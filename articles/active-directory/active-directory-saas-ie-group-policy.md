@@ -1,5 +1,5 @@
 ---
-title: "如何使用组策略部署 Internet Explorer 的访问面板扩展 | Microsoft 文档"
+title: "使用 GPO 为 IE 部署 Azure 访问面板扩展 | Microsoft 文档"
 description: "如何使用组策略为我的应用门户部署 Internet Explorer 加载项。"
 services: active-directory
 documentationcenter: 
@@ -11,11 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2017
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b312e1a37b15e170847fae02e40bae26103b6d6d
+ms.sourcegitcommit: c06c089fb08c19b55246122201c378917a560e14
+ms.openlocfilehash: af36f45e66b68e2e76651eb408682f36ee0cbb68
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -31,7 +33,7 @@ ms.openlocfilehash: b312e1a37b15e170847fae02e40bae26103b6d6d
 * 必须拥有“编辑设置”权限才能编辑组策略对象 (GPO)。 默认情况下，以下安全组的成员拥有此权限：域管理员、企业管理员和组策略创建者和所有者。 [了解详细信息。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>步骤 1：创建分发点
-首先，必须将安装程序包放在网络位置中，该位置应该可以从要在其上远程安装扩展的所有计算机访问。 为此，请执行以下步骤：
+首先，必须将安装程序包放在网络位置中，该位置可以由要在其上远程安装扩展的计算机访问。 为此，请执行以下步骤：
 
 1. 以管理员身份登录到服务器
 2. 在“服务器管理器”窗口中，转到“文件和存储服务”。
@@ -58,13 +60,13 @@ ms.openlocfilehash: b312e1a37b15e170847fae02e40bae26103b6d6d
    > 如果想要创建或编辑组织单位 (OU)，请切换回到“服务器管理器”，然后转到“工具” > “Active Directory 用户和计算机”。
    > 
    > 
-4. 选择 OU 后，请右键单击它，然后选择“在这个域中创建 GPO 并在此处链接...”
+4. 选择 OU 后，请右键单击它，然后选择“在这个域中创建 GPO 并在此处链接它...”
    
     ![创建新 GPO](./media/active-directory-saas-ie-group-policy/create-gpo.png)
 5. 在“新建 GPO”提示窗口中，输入新组策略对象的名称。
    
     ![为新 GPO 命名](./media/active-directory-saas-ie-group-policy/name-gpo.png)
-6. 右键单击刚刚创建的组策略对象，然后选择“编辑”。
+6. 右键单击创建的组策略对象，然后选择“编辑”。
    
     ![编辑新 GPO](./media/active-directory-saas-ie-group-policy/edit-gpo.png)
 
@@ -121,7 +123,7 @@ ms.openlocfilehash: b312e1a37b15e170847fae02e40bae26103b6d6d
 
 如果不希望用户看到此提示，请根据以下步骤防止自动完成功能记住密码：
 
-1. 在“组策略管理编辑器”窗口中，转到下面列出的路径。 请注意，此配置设置仅在“用户配置”下提供。
+1. 在“组策略管理编辑器”窗口中，转到下面列出的路径。 此配置设置仅在“用户配置”下提供。
    
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
 2. 查找名为“对表单上的用户名和密码打开自动完成功能”的设置。
@@ -150,7 +152,7 @@ ms.openlocfilehash: b312e1a37b15e170847fae02e40bae26103b6d6d
 
 1. 如果扩展是使用“计算机配置”部署的，请登录到属于[步骤 2：创建组策略对象](#step-2-create-the-group-policy-object)中选择的 OU 的客户端计算机。 如果扩展是使用“用户配置”部署的，请务必使用属于该 OU 的用户的身份登录。
 2. 可能要登录好几次才能在此计算机上完全更新组策略更改。 若要强制更新，请打开“命令提示”窗口，然后运行以下命令：`gpupdate /force`
-3. 需要重新启动计算机才能开始安装。 安装扩展时，启动花费的时间可能比平时要长很多。
+3. 必须重新启动计算机才能开始安装。 安装扩展时，启动花费的时间可能比平时要长很多。
 4. 重新启动后，打开 **Internet Explorer**。 在窗口右上角单击“工具”（齿轮图标），然后选择“管理加载项”。
    
     ![转到“工具”>“管理加载项”](./media/active-directory-saas-ie-group-policy/manage-add-ons.png)
@@ -162,10 +164,5 @@ ms.openlocfilehash: b312e1a37b15e170847fae02e40bae26103b6d6d
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [Azure Active Directory 的应用程序访问与单一登录](active-directory-appssoaccess-whatis.md)
 * [Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

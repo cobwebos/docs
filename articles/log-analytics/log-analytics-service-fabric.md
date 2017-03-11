@@ -1,6 +1,6 @@
 ---
-title: "评估 Azure Service Fabric 应用程序和微服务| Microsoft Docs"
-description: "可以使用 Service Fabric 解决方案访问 Service Fabric 应用程序、微服务、节点和群集的风险和运行状况。"
+title: "通过 PowerShell 使用 Azure Log Analytics 评估 Service Fabric 应用程序 | Microsoft 文档"
+description: "可以通过 PowerShell 使用 Log Analytics 中的 Service Fabric 解决方案评估 Service Fabric 应用程序、微服务、节点和群集的风险和运行状况。"
 services: log-analytics
 documentationcenter: 
 author: niniikhena
@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: nini
 translationtype: Human Translation
-ms.sourcegitcommit: 7695debd9f8152efbbc04b6d63a0b44e70646f16
-ms.openlocfilehash: 7cf1174791187cd7d751c4e2d2646282f4a0a5ce
+ms.sourcegitcommit: 6d20dc322a2493b9dd9a3fd843512befc1e90100
+ms.openlocfilehash: a822e7eb85eca42cba85d191e1effd7240deb1af
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="service-fabric-solution-in-log-analytics"></a>Log Analytics 中的 Service Fabric 解决方案
+# <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>使用 PowerShell 评估 Azure Service Fabric 应用程序和微服务
 > [!div class="op_single_selector"]
-> * [资源管理器](log-analytics-service-fabric-azure-resource-manager.md)
+> * [Resource Manager](log-analytics-service-fabric-azure-resource-manager.md)
 > * [PowerShell](log-analytics-service-fabric.md)
 >
 >
@@ -354,7 +355,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.Res
 | 值得注意的问题 |显示 RunAsyncFailures RunAsynCancellations 和 Node Down 等问题。 |
 | 操作事件 |应用程序升级和部署等值得注意的操作事件。 |
 | 可靠服务事件 |Runasyncinvocations 等值得注意的可靠服务事件。 |
-| 执行组件事件 |由微服务生成的，值得注意的执行组件事件，例如执行组件方法产生的异常、执行组件激活和停用等。 |
+| 执行组件事件 |由微服务生成的值得注意的执行组件事件，例如执行组件方法产生的异常、执行组件激活和停用等。 |
 | 应用程序事件 |由应用程序生成的所有自定义 ETW 事件。 |
 
 ![Service Fabric 仪表板](./media/log-analytics-service-fabric/sf3.png)
@@ -636,9 +637,4 @@ foreach($storageAccount in $storageAccountsToCheck)
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看详细的 Service Fabric 事件数据。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

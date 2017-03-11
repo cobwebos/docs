@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics 中的 Active Directory 复制状态解决方案 | Microsoft Docs"
+title: "使用 Azure Log Analytics 监视 Active Directory 复制状态 | Microsoft 文档"
 description: "Active Directory 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败，并在 OMS 仪表板上报告结果。"
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 744c4bd37b7b1443cf78586aab8ec2661e02254e
-ms.openlocfilehash: c0fc2ae5318068c204296b9e053c2cc7324e84c7
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: ffae86cb963f0df7f879effbace073d7e830cd94
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="active-directory-replication-status-solution-in-log-analytics"></a>Log Analytics 中的 Active Directory 复制状态解决方案
+# <a name="monitor-active-directory-replication-status-with-log-analytics"></a>使用 Log Analytics 监视 Active Directory 复制状态
+
 Active Directory 是企业 IT 环境的关键组件。 若要确保高可用性和高性能，每个域控制器都有其自己的 Active Directory 数据库副本。 域控制器会彼此相互复制，以便在整个企业内传播更改。 这一复制过程中的失败可能导致整个企业内出现各种问题。
 
 AD 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败，并在 OMS 仪表板上报告结果。
@@ -150,9 +153,4 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看详细的 Active Directory 复制状态数据。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

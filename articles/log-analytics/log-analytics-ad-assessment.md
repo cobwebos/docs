@@ -1,5 +1,5 @@
 ---
-title: "在 Log Analytics 中使用 Active Directory 评估解决方案优化环境 | Microsoft Docs"
+title: "使用 Azure Log Analytics 优化 Active Directory 环境 | Microsoft 文档"
 description: "可以使用 Active Directory 评估解决方案定期评估服务器环境的风险和运行状况。"
 services: log-analytics
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e0971ca8064a6e4de272a8d890a6fdc88c0f8cc2
-ms.openlocfilehash: 24e3da0ed3aa04e000a4c88fb7b0745d5b880d0d
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: d5caa7a6c1b1a36a4ad08e1b28c7f9157a2c6349
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="optimize-your-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>在 Log Analytics 中使用 Active Directory 评估解决方案优化环境
+# <a name="optimize-your-active-directory-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>使用 Log Analytics 中的 Active Directory 评估解决方案优化 Active Directory 环境
+
 可以使用 Active Directory 评估解决方案定期评估服务器环境的风险和运行状况。 本文将帮助你安装和使用该解决方案，以便针对潜在问题采取纠正措施。
 
 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。 该建议跨四个重点领域进行了分类，将帮助你快速了解风险并采取措施。

@@ -1,5 +1,5 @@
 ---
-title: "将 Linux 计算机连接到 Log Analytics | Microsoft Docs"
+title: "将 Linux 计算机连接到 Azure Log Analytics | Microsoft 文档"
 description: "使用 Log Analytics，可以帮助收集和分析处理从 Linux 计算机生成的数据。"
 services: log-analytics
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 218ffec4601c5b0b4ee9872b5bbd03489cb3ddcf
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: fba4e68e78b8267ff2413f94d5ca5066325f9c76
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-linux-computers-to-log-analytics"></a>将 Linux 计算机连接到 Log Analytics
-使用 Log Analytics，可以帮助收集和分析处理从 Linux 计算机生成的数据。 通过将从 Linux 收集的数据添加到 OMS，你几乎可以在任何地方管理 Linux 系统和容器解决方案（如 Docker），而无需考虑计算机所在的物理位置。 因此，这些数据源可以作为物理服务器驻留在本地数据中心中、云托管服务（如 Amazon Web Services (AWS) 或 Microsoft Azure）中的虚拟计算机中，甚至办公桌上的便携式计算机中。 此外，OMS 同样还可以从 Windows 计算机收集数据，因此它支持真正的混合 IT 环境。
+# <a name="connect-your-linux-computers-to-log-analytics"></a>将 Linux 计算机连接到 Log Analytics
+使用 Log Analytics，可以帮助收集和分析处理从 Linux 计算机生成的数据。 通过将从 Linux 收集的数据添加到 OMS，你几乎可以在任何地方管理 Linux 系统和容器解决方案（如 Docker），而无需考虑计算机所在的物理位置。 数据源可以作为物理服务器驻留在本地数据中心中、云托管服务（如 Amazon Web Services (AWS) 或 Microsoft Azure）中的虚拟计算机中，甚至办公桌上的笔记本电脑中。 此外，OMS 同样还可以从 Windows 计算机收集数据，因此它支持真正的混合 IT 环境。
 
 你可以使用单一管理门户，在 OMS 中借助 Log Analytics 查看和管理所有这些数据源。 这样，无需使用多个不同的系统便可监视数据源，使得数据源的使用更加容易，并且你可以将喜欢的任何数据导出到已有的任何业务分析解决方案或系统。
 
@@ -35,7 +37,7 @@ ms.openlocfilehash: 218ffec4601c5b0b4ee9872b5bbd03489cb3ddcf
 * Docker 容器性能指标、库存和日志
 
 ## <a name="supported-linux-versions"></a>支持的 Linux 版本
-X86 和 x64 版都是各种 Linux 发行版的正式受支持版本。 不过，OMS Agent for Linux 也可以在未列出的其他发行版上运行。
+很多 Linux 发行版对 X86 和 x64 版本均提供官方支持。 不过，OMS Agent for Linux 在未列出的其他发行版上可能也可以运行。
 
 * Amazon Linux 2015.09 - 2012.09
 * CentOS Linux 5、6 和 7
@@ -52,18 +54,18 @@ Operations Management Suite Agent for Linux 包含多个程序包。 发布文�
 | --- | --- | --- |
 | omsagent |1.1.0 |Operations Management Suite Agent for Linux |
 | omsconfig |1.1.1 |配置 OMS Agent 的代理 |
-| omi |1.0.8.3 |Open Management Infrastructure (OMI) - 轻量 CIM 服务器 |
+| omi |1.0.8.3 |Open Management Infrastructure (OMI) - 一款轻量级 CIM 服务器 |
 | scx |1.6.2 |操作系统性能指标的 OMI CIM 提供程序 |
 | apache-cimprov |1.0.0 |OMI 的 Apache HTTP 服务器性能监视提供程序。 仅当检测到 Apache HTTP 服务器时才安装。 |
 | mysql-cimprov |1.0.0 |OMI 的 MySQL 服务器性能监视提供程序。 仅当检测到 MySQL/MariaDB 服务器时才安装。 |
 | docker-cimprov |0.1.0 |OMI 的 Docker 提供程序。 仅当检测到 Docker 时才安装。 |
 
 ### <a name="additional-installation-artifacts"></a>其他安装项目
-在安装 OMS Agent for Linux 程序包后，将应用下列其他系统范围的配置更改。 这些项目会在卸载 omsagent 程序包时删除。
+在安装 OMS Agent for Linux 程序包后，将应用下列其他系统范围的配置更改。 卸载 omsagent 程序包时会删除这些项目。
 
-* 创建一个名为 `omsagent` 的非特权用户。 这是 omsagent 守护程序运行的帐户
-* 在 /etc/sudoers.d/omsagent 创建一个 sudoers “include” 文件。这将授权 omsagent 重新启动 syslog 和 omsagent 守护程序。 如果 sudo “include” 指令在安装的 sudo 版本中不受支持，则这些条目将写入 /etc/sudoers。
-* syslog 配置修改为将事件子集转发到代理。 有关详细信息，请参阅下面的**配置数据收集**一节
+* 创建一个名为 `omsagent` 的非特权用户。 这是 omsagent 守护程序运行时使用的帐户
+* 在 /etc/sudoers.d/omsagent 目录下创建一个 sudoers “include” 文件。这将授权 omsagent 重新启动 syslog 和 omsagent 守护程序。 如果安装的 sudo 版本不支持 sudo “include” 指令，则会将这些条目写入 /etc/sudoers。
+* 修改 syslog 配置，以将事件子集转发到代理。 有关详细信息，请参阅下面的**配置数据收集**一节
 
 ### <a name="linux-data-collection-details"></a>Linux 数据收集详细信息
 下表显示数据收集方法以及有关如何收集数据的其他详细信息。
@@ -96,9 +98,7 @@ Operations Management Suite Agent for Linux 包含多个程序包。 发布文�
 ![工作区详细信息](./media/log-analytics-linux-agents/oms-direct-agent-primary-key.png)
 
 ```
-wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.1.0-28/omsagent-1.1.0-28.universal.x64.sh
-sha256sum ./omsagent-1.1.0-28.universal.x64.sh
-sudo sh ./omsagent-1.1.0-28.universal.x64.sh --upgrade -w <YOUR OMS WORKSPACE ID> -s <YOUR OMS WORKSPACE PRIMARY KEY>
+wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR OMS WORKSPACE ID> -s <YOUR OMS WORKSPACE PRIMARY KEY>
 ```
 
 可以使用多种其他方法来安装和升级代理。 有关这些方法的详细信息，请参阅[安装 OMS Agent for Linux 的步骤](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#steps-to-install-the-oms-agent-for-linux)。
@@ -106,12 +106,12 @@ sudo sh ./omsagent-1.1.0-28.universal.x64.sh --upgrade -w <YOUR OMS WORKSPACE ID
 你还可以观看 [Azure 视频演练](https://www.youtube.com/watch?v=mF1wtHPEzT0)。
 
 ## <a name="choose-your-linux-data-collection-method"></a>选择 Linux 数据收集方法
-如何选择想要收集的数据类型取决于是要使用 OMS 门户，还是要直接在 Linux 客户端上编辑各种配置文件。 如果选择使用门户，则配置会自动发送到你的所有 Linux 客户端。 如果不同的 Linux 客户端需要不同的配置，则需要单独编辑客户端文件，或使用 PowerShell DSC、Chef 或 Puppet 等替代方法。
+如何选择想要收集的数据类型取决于是要使用 OMS 门户，还是要直接在 Linux 客户端上编辑各种配置文件。 如果选择使用门户，则会自动将配置发送到你的所有 Linux 客户端。 如果不同的 Linux 客户端需要不同的配置，则需要单独编辑客户端文件，或使用 PowerShell DSC、Chef 或 Puppet 等替代方法。
 
 你可以指定要使用 Linux 计算机上的配置文件收集的 syslog 事件和性能计数器。 *如果选择通过编辑代理配置文件来配置数据收集，则应禁用集中式配置。*  下面内容说明了如何在代理的配置文件中配置数据收集，以及如何禁用所有 OMS Agents for Linux 或单个计算机的集中配置。
 
 ### <a name="disable-oms-management-for-an-individual-linux-computer"></a>禁用单个 Linux 计算机的 OMS 管理
-使用 OMS_MetaConfigHelper.py 脚本对单个 Linux 计算机禁用配置数据的集中式数据收集。 这在计算机的子集应具有专门配置的情况下很有用。
+使用 OMS_MetaConfigHelper.py 脚本对单个 Linux 计算机禁用配置数据的集中式数据收集。 如果有一部分计算机需要专门配置，这种方法很有用。
 
 禁用集中式配置︰
 
@@ -134,7 +134,7 @@ Linux 性能计数器类似于 Windows 性能计数器 — 运行方式类似。
     ![数据](./media/log-analytics-linux-agents/oms-settings-data01.png)
 3. 如果不知道计数器的全名，你可以开始键入部分名称，系统会显示可用的计数器列表。 当找到想要添加的计数器时，请单击列表中的名称，然后单击加号图标以添加计数器。
 4. 添加计数器后，它将在计数器列表中以彩色条突出显示。
-5. 默认情况下，选择“**将下列配置用于我的计算机**”选项。 如果想要禁止发送配置数据，请清除该选项。
+5. 默认情况下，已选择“**将下列配置用于我的计算机**”选项。 如果想要禁止发送配置数据，请清除该选项。
 6. 完成性能计数器修改后，在页面底部单击“**保存**”以完成所做的更改。 然后，所做的配置更改通常会在 5 分钟内发送到所有使用 OMS 注册的 OMS Agents for Linux。
 
 ### <a name="configure-linux-performance-counters-in-oms"></a>在 OMS 中配置 Linux 性能计数器
@@ -782,9 +782,4 @@ azure vm extension set <resource-group> <vm-name> LinuxDiagnostic Microsoft.OSTC
 * [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
 * 熟悉[日志搜索](log-analytics-log-searches.md)以查看解决方案收集的详细信息。
 * 使用[仪表板](log-analytics-dashboards.md)保存并显示你自己的自定义搜索。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

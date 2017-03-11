@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
-ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
+ms.sourcegitcommit: 1c22e4fc17226578aaaf272fdf79178da65c63c2
+ms.openlocfilehash: 54c7da3fc0693ee44358cb77973c8c37e653d3cc
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-topdesk-public-tutorial/IC790613.png "Scenario")
+![方案](./media/active-directory-saas-topdesk-public-tutorial/IC790613.png "方案")
 
 ## <a name="enabling-the-application-integration-for-topdesk---public"></a>为 TOPdesk - Public 启用应用程序集成
 本部分的目的是概述如何为 TOPdesk - Public 启用应用程序集成。
@@ -45,23 +46,23 @@ ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
    
     ![Active Directory](./media/active-directory-saas-topdesk-public-tutorial/IC700993.png "Active Directory")
 
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-    ![应用程序](./media/active-directory-saas-topdesk-public-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-topdesk-public-tutorial/IC700994.png "应用程序")
 
 4. 在页面底部单击“添加”。
    
-    ![添加应用程序](./media/active-directory-saas-topdesk-public-tutorial/IC749321.png "Add application")
+    ![添加应用程序](./media/active-directory-saas-topdesk-public-tutorial/IC749321.png "添加应用程序")
 
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-    ![从库中添加应用程序](./media/active-directory-saas-topdesk-public-tutorial/IC749322.png "Add an application from gallerry")
+    ![从库添加应用程序](./media/active-directory-saas-topdesk-public-tutorial/IC749322.png "从库添加应用程序")
 
 6. 在搜索框中，键入“TOPdesk - Public”。
    
-    ![应用程序库](./media/active-directory-saas-topdesk-public-tutorial/IC790614.png "Application Gallery")
+    ![应用程序库](./media/active-directory-saas-topdesk-public-tutorial/IC790614.png "应用程序库")
 
 7. 在结果窗格中，选择“TOPdesk - Public”，然后单击“完成”以添加该应用程序。
    
@@ -76,19 +77,19 @@ ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
 
 2. 在“TOPdesk”菜单中，单击“设置”。
    
-    ![设置](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "Settings")
+    ![设置](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "设置")
 
 3. 单击“登录设置”。
    
-    ![登录设置](./media/active-directory-saas-topdesk-public-tutorial/IC790599.png "Login Settings")
+    ![登录设置](./media/active-directory-saas-topdesk-public-tutorial/IC790599.png "登录设置")
 
 4. 展开“登录设置”菜单，然后单击“常规”。
    
-    ![常规](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "General")
+    ![常规](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "常规")
 
 5. 在“SAML 登录”配置部分的“公共”部分中，执行以下步骤：
    
-    ![技术设置](./media/active-directory-saas-topdesk-public-tutorial/IC790601.png "Technical Settings")
+    ![技术设置](./media/active-directory-saas-topdesk-public-tutorial/IC790601.png "技术设置")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载”下载公共元数据文件，并将该文件保存到本地计算机上。
    
@@ -106,15 +107,15 @@ ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
 
 7. 在“TOPdesk - Public”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-topdesk-public-tutorial/IC790620.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-topdesk-public-tutorial/IC790620.png "配置单一登录")
 
 8. 在“你希望用户如何登录 TOPdesk - Public”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-topdesk-public-tutorial/IC790621.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-topdesk-public-tutorial/IC790621.png "配置单一登录")
 
 9. 在“配置应用 URL”页上，执行以下步骤：
    
-    ![配置应用 URL](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "Configure App URL")
+    ![配置应用 URL](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "配置应用 URL")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“TOPdesk - Public 登录 URL”文本框中，输入用户用于登录 TOPdesk - Public 应用程序的 URL（例如：“*https://qssolutions.topdesk.net*”）。
    
@@ -124,11 +125,11 @@ ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
 
 10. 在“配置 TOPdesk - Public 的单一登录”页上，若要下载元数据文件，请单击“下载元数据”，然后将文件保存在本地计算机上。
     
-    ![配置单一登录](./media/active-directory-saas-topdesk-public-tutorial/IC790623.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-topdesk-public-tutorial/IC790623.png "配置单一登录")
 
 11. 若要创建证书文件，请执行以下步骤：
     
-    ![证书](./media/active-directory-saas-topdesk-public-tutorial/IC790606.png "Certificate")
+    ![证书](./media/active-directory-saas-topdesk-public-tutorial/IC790606.png "证书")
     
     1. 打开下载的元数据文件。
     2. 展开其 **xsi:type** 为 **fed:ApplicationServiceType** 的 **RoleDescriptor** 节点。
@@ -136,19 +137,19 @@ ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
     4. 将复制的 **X509Certificate** 值保存到本地计算机上的文件中。
 12. 在 TOPdesk - Public 公司站点上的“TOPdesk”菜单中，单击“设置”。
     
-    ![设置](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "Settings")
+    ![设置](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "设置")
 13. 单击“登录设置”。
     
-    ![登录设置](./media/active-directory-saas-topdesk-public-tutorial/IC790599.png "Login Settings")
+    ![登录设置](./media/active-directory-saas-topdesk-public-tutorial/IC790599.png "登录设置")
 14. 展开“登录设置”菜单，然后单击“常规”。
     
-    ![常规](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "General")
+    ![常规](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "常规")
 15. 在“公共”部分中，单击“添加”。
     
-    ![SAML 登录](./media/active-directory-saas-topdesk-public-tutorial/IC790625.png "SAML Login")
+    ![SAML 登录](./media/active-directory-saas-topdesk-public-tutorial/IC790625.png "SAML 登录")
 16. 在“SAML 配置助手”对话框页上，执行以下步骤：
     
-    ![SAML 配置助手](./media/active-directory-saas-topdesk-public-tutorial/IC790608.png "SAML Configuration Assistant")
+    ![SAML 配置助手](./media/active-directory-saas-topdesk-public-tutorial/IC790608.png "SAML 配置助手")
     
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 若要上载已下载的元数据文件，请在“联合元数据”下单击“浏览”。
 
@@ -164,7 +165,7 @@ ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
 
 17. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
     
-    ![配置单一登录](./media/active-directory-saas-topdesk-public-tutorial/IC790627.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-topdesk-public-tutorial/IC790627.png "配置单一登录")
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 要使 Azure AD 用户能够登录 TOPdesk - Public，必须将这些用户预配到 TOPdesk - Public 中。  
@@ -175,11 +176,11 @@ ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
 
 2. 在顶部菜单中，单击“TOPdesk”\>“新建”\>“支持文件”\>“人员”。
    
-    ![人员](./media/active-directory-saas-topdesk-public-tutorial/IC790628.png "Person")
+    ![人员](./media/active-directory-saas-topdesk-public-tutorial/IC790628.png "人员")
 
 3. 在“新建用户”对话框中，执行以下步骤：
    
-    ![新建人员](./media/active-directory-saas-topdesk-public-tutorial/IC790629.png "New Person")
+    ![新建人员](./media/active-directory-saas-topdesk-public-tutorial/IC790629.png "新建人员")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“常规”选项卡。
 
@@ -202,17 +203,12 @@ ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
 
 2. 在“TOPdesk - Public”应用程序集成页上，单击“分配用户”。
    
-    ![分配用户](./media/active-directory-saas-topdesk-public-tutorial/IC790630.png "Assign Users")
+    ![分配用户](./media/active-directory-saas-topdesk-public-tutorial/IC790630.png "分配用户")
 
-3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
+3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-    ![是](./media/active-directory-saas-topdesk-public-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-topdesk-public-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
-ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
+ms.sourcegitcommit: 1c22e4fc17226578aaaf272fdf79178da65c63c2
+ms.openlocfilehash: 28f0542dbe87bb34c83a7852db7c3a9fef055ce9
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-topdesk-secure-tutorial/IC790596.png "Scenario")
+![方案](./media/active-directory-saas-topdesk-secure-tutorial/IC790596.png "方案")
 
 ## <a name="enabling-the-application-integration-for-topdesk---secure"></a>为 TOPdesk - Secure 启用应用程序集成
 本部分的目的是概述如何为 TOPdesk - Secure 启用应用程序集成。
@@ -45,23 +46,23 @@ ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
    
     ![Active Directory](./media/active-directory-saas-topdesk-secure-tutorial/IC700993.png "Active Directory")
 
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-    ![应用程序](./media/active-directory-saas-topdesk-secure-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-topdesk-secure-tutorial/IC700994.png "应用程序")
 
 4. 在页面底部单击“添加”。
    
-    ![添加应用程序](./media/active-directory-saas-topdesk-secure-tutorial/IC749321.png "Add application")
+    ![添加应用程序](./media/active-directory-saas-topdesk-secure-tutorial/IC749321.png "添加应用程序")
 
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-    ![从库中添加应用程序](./media/active-directory-saas-topdesk-secure-tutorial/IC749322.png "Add an application from gallerry")
+    ![从库添加应用程序](./media/active-directory-saas-topdesk-secure-tutorial/IC749322.png "从库添加应用程序")
 
 6. 在搜索框中，键入“TOPdesk - Secure”。
    
-    ![应用程序库](./media/active-directory-saas-topdesk-secure-tutorial/IC790597.png "Application Gallery")
+    ![应用程序库](./media/active-directory-saas-topdesk-secure-tutorial/IC790597.png "应用程序库")
 
 7. 在结果窗格中，选择“TOPdesk - Secure”，然后单击“完成”以添加该应用程序。
    
@@ -75,25 +76,25 @@ ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
 1. 以管理员身份登录 **TOPdesk - Secure** 公司站点。
 2. 在“TOPdesk”菜单中，单击“设置”。
    
-    ![设置](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "Settings")
+    ![设置](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "设置")
 
 3. 单击“登录设置”。
    
-    ![登录设置](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "Login Settings")
+    ![登录设置](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "登录设置")
 
 4. 展开“登录设置”菜单，然后单击“常规”。
    
-    ![常规](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "General")
+    ![常规](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "常规")
 
 5. 在“SAML 登录”配置部分的“安全”部分中，执行以下步骤：
    
-    ![技术设置](./media/active-directory-saas-topdesk-secure-tutorial/IC790855.png "Technical Settings")
+    ![技术设置](./media/active-directory-saas-topdesk-secure-tutorial/IC790855.png "技术设置")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载”下载公共元数据文件，并将该文件保存到本地计算机上。
    
     b. 打开元数据文件，然后找到“AssertionConsumerService”节点。
     
-    ![断言使用者服务](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "Assertion Consumer Service")
+    ![断言使用者服务](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "断言使用者服务")
    
     c. 复制 **AssertionConsumerService** 值。  
       
@@ -106,15 +107,15 @@ ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
 
 7. 在“TOPdesk - Secure”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-topdesk-secure-tutorial/IC790602.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-topdesk-secure-tutorial/IC790602.png "配置单一登录")
 
 8. 在“你希望用户如何登录 TOPdesk - Secure”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-topdesk-secure-tutorial/IC790603.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-topdesk-secure-tutorial/IC790603.png "配置单一登录")
 
 9. 在“配置应用 URL”页上，执行以下步骤：
    
-    ![配置应用 URL](./media/active-directory-saas-topdesk-secure-tutorial/IC790604.png "Configure App URL")
+    ![配置应用 URL](./media/active-directory-saas-topdesk-secure-tutorial/IC790604.png "配置应用 URL")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“TOPdesk - Secure 登录 URL”文本框中，输入用户用于登录 TOPdesk - Secure 应用程序的 URL（例如：“*https://qssolutions.topdesk.net*”）。
    
@@ -124,11 +125,11 @@ ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
 
 10. 在“配置 TOPdesk - Secure 的单一登录”页上，若要下载元数据文件，请单击“下载元数据”，然后将文件保存在本地计算机上。
     
-    ![配置单一登录](./media/active-directory-saas-topdesk-secure-tutorial/IC790605.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-topdesk-secure-tutorial/IC790605.png "配置单一登录")
 
 11. 若要创建证书文件，请执行以下步骤：
     
-    ![证书](./media/active-directory-saas-topdesk-secure-tutorial/IC790606.png "Certificate")
+    ![证书](./media/active-directory-saas-topdesk-secure-tutorial/IC790606.png "证书")
     
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 打开下载的元数据文件。
     b. 展开其 **xsi:type** 为 **fed:ApplicationServiceType** 的 **RoleDescriptor** 节点。
@@ -137,15 +138,15 @@ ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
 
 12. 在 TOPdesk - Secure 公司站点上的“TOPdesk”菜单中，单击“设置”。
     
-    ![设置](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "Settings")
+    ![设置](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "设置")
 
 13. 单击“登录设置”。
     
-    ![登录设置](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "Login Settings")
+    ![登录设置](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "登录设置")
 
 14. 展开“登录设置”菜单，然后单击“常规”。
     
-    ![常规](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "General")
+    ![常规](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "常规")
 
 15. 在“公共”部分中，单击“添加”。
     
@@ -153,7 +154,7 @@ ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
 
 16. 在“SAML 配置助手”对话框页上，执行以下步骤：
     
-    ![SAML 配置助手](./media/active-directory-saas-topdesk-secure-tutorial/IC790608.png "SAML Configuration Assistant")
+    ![SAML 配置助手](./media/active-directory-saas-topdesk-secure-tutorial/IC790608.png "SAML 配置助手")
     
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 若要上载已下载的元数据文件，请在“联合元数据”下单击“浏览”。
 
@@ -169,7 +170,7 @@ ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
 
 17. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
     
-    ![配置单一登录](./media/active-directory-saas-topdesk-secure-tutorial/IC790609.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-topdesk-secure-tutorial/IC790609.png "配置单一登录")
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 要使 Azure AD 用户能够登录 TOPdesk - Secure，必须将这些用户预配到 TOPdesk - Secure 中。  
@@ -179,11 +180,11 @@ ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
 1. 以管理员身份登录 **TOPdesk - Secure** 公司站点。
 2. 在顶部菜单中，单击“TOPdesk”\>“新建”\>“支持文件”\>“操作员”。
    
-    ![运算符](./media/active-directory-saas-topdesk-secure-tutorial/IC790610.png "Operator")
+    ![操作员](./media/active-directory-saas-topdesk-secure-tutorial/IC790610.png "操作员")
 
 3. 在“新建操作员”对话框中，执行以下步骤：
    
-    ![新建操作员](./media/active-directory-saas-topdesk-secure-tutorial/IC790611.png "New Operator")
+    ![新建操作员](./media/active-directory-saas-topdesk-secure-tutorial/IC790611.png "新建操作员")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“常规”选项卡。
    
@@ -207,17 +208,12 @@ ms.openlocfilehash: 3566534a18af5211222e973616cbdd712d1080ee
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“TOPdesk - Secure”应用程序集成页上，单击“分配用户”。
    
-    ![分配用户](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "Assign Users")
+    ![分配用户](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "分配用户")
 
-3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
+3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-    ![是](./media/active-directory-saas-topdesk-secure-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-topdesk-secure-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 
