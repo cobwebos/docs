@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/13/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 9b18af35dc0a70c7335fd54477a6d8f57048b685
-ms.openlocfilehash: 5bf418af22746610e96712ed33fd389998e4fa46
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 278caf2afa889466736f3d98ff4ad292f72e5098
+ms.lasthandoff: 03/03/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/01/2017
 
 本文中的表格提供有关 ExpressRoute 连接提供商、ExpressRoute 地理覆盖范围、通过 ExpressRoute 支持的 Microsoft 云服务以及 ExpressRoute 系统集成商 (SI) 的信息。
 
-## <a name="a-namepartnersaexpressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute 连接服务提供商
+## <a name="partners"></a>ExpressRoute 连接服务提供商
 所有的 Azure 区域和位置都支持 ExpressRoute。 以下地图提供了 Azure 区域和 ExpressRoute 位置的列表。 ExpressRoute 位置是指 Microsoft 与多个服务提供商对等互连的位置。
 
 ![位置地图][0]
@@ -61,7 +61,7 @@ ms.lasthandoff: 03/01/2017
 
 标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 你需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如有需要，请联系连接服务提供商。
 
-## <a name="a-namelocationsaconnectivity-provider-locations"></a><a name="locations"></a>连接服务提供商位置
+## <a name="locations"></a>连接服务提供商位置
 
 下表显示连接位置和每个位置的服务提供商。 若要查看服务提供商及其提供服务的位置，请参阅[按服务提供商列出的位置](expressroute-locations.md#locations)。 
 
@@ -73,8 +73,8 @@ ms.lasthandoff: 03/01/2017
 | **亚特兰大** |Equinix |
 | **釜山** |LG CNS+、Sejong Telecom |
 | **金奈** |Global CloudXchange (GCX)、SIFY、Tata Communications |
-| **芝加哥** |AT&T NetBond、Comcast、Equinix、Level 3 Communications、Zayo Group |
-| **达拉斯** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport |
+| **芝加哥** |AT&T NetBond、Comcast、Equinix、Level 3 Communications、Verizon、Zayo Group |
+| **达拉斯** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon |
 | **都柏林** |Colt、Telecity Group |
 | **香港** |British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **伦敦** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telenor、Verizon、Vodafone |
@@ -125,7 +125,7 @@ ms.lasthandoff: 03/01/2017
 | **柏林** |Colt+、e-shelter、Megaport+ |
 | **法兰克福** |Colt、Equinix、Interxion |
 
-## <a name="a-namenonpartnersaconnectivity-through-service-providers-not-listed"></a><a name="nonpartners"></a>通过未列出的服务提供商建立连接
+## <a name="nonpartners"></a>通过未列出的服务提供商建立连接
 如果前面部分中未列出你的连接服务提供商，你仍可以建立连接。
 
 * 请咨询你的连接服务提供商，以确定他们是否已连接到上表中列出的任何 Exchange 提供商。 你可以访问以下链接，以收集 Exchange 提供商所提供的服务的详细信息。 已有多个连接提供商连接到以太网 Exchange。

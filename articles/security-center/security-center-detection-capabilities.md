@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a18ffc2b3b0f317a4209a9d6457bdcc571d9f899
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 8d24ab744715df69c707df5a119fa71c72338b62
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: a18ffc2b3b0f317a4209a9d6457bdcc571d9f899
 本文档讨论 Azure 安全中心的高级检测功能，帮助用户确定以 Microsoft Azure 资源为目标的活跃威胁，了解进行快速响应所需的知识。
 
 > [!NOTE]
-> Azure 安全中心的标准层提供高级检测功能。 提供 90 天的免费试用期。 可以在 [安全策略](security-center-policies.md)中从选择定价层开始升级。 访问 [“安全中心”页](https://azure.microsoft.com/pricing/details/security-center/) ，了解详细的定价情况。 
+> Azure 安全中心的标准层提供高级检测功能。 可免费试用 60 天。 可以在 [安全策略](security-center-policies.md)中从选择定价层开始升级。 访问 [“安全中心”页](https://azure.microsoft.com/pricing/details/security-center/) ，了解详细的定价情况。 
 > 
 > 
 
@@ -89,10 +90,5 @@ Azure 安全中心建立了安全研究和数据科学团队，持续监视威�
 * [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) （通过 Azure 安全中心监视合作伙伴解决方案）- 了解如何监视合作伙伴解决方案的运行状况。
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

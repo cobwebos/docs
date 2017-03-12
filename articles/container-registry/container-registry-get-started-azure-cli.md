@@ -1,6 +1,6 @@
 ---
-title: "创建 Azure 容器注册表 - CLI | Microsoft 文档"
-description: "开始使用 Azure CLI 2.0 创建和管理 Azure 容器注册表"
+title: "创建专用 Docker 容器注册表 - Azure CLI | Microsoft 文档"
+description: "开始使用 Azure CLI 2.0 创建和管理专用 Docker 容器注册表"
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 03/03/2017
 ms.author: stevelas
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 1d5e16952cbc56a381ead23843515cf6ed1d74a9
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 6ef43ed43358357c94460a27d3e2b2c8530b6c54
+ms.lasthandoff: 03/06/2017
 
 ---
-# <a name="create-a-container-registry-using-the-azure-cli"></a>使用 Azure CLI 创建容器注册表
+# <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建专用 Docker 容器注册表
 使用 [Azure CLI 2.0](https://github.com/Azure/azure-cli) 中的命令从 Linux、Mac 或 Windows 计算机创建容器注册表并管理其设置。 也可以使用 [Azure 门户](container-registry-get-started-portal.md)或者使用容器注册表 [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) 以编程方式创建和管理容器注册表。
 
 
-* 有关背景信息和概念，请参阅[什么是 Azure 容器注册表？](container-registry-intro.md)
+* 有关背景和概念，请参阅[概述](container-registry-intro.md)
 * 如需容器注册表 CLI 命令（`az acr` 命令）的帮助，请在任一命令中传递 `-h` 参数。
 
 > [!NOTE]
@@ -35,10 +36,10 @@ ms.lasthandoff: 02/22/2017
 > 
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure CLI 2.0** - 若要安装并开始使用 CLI 2.0，请参阅[安装说明](https://github.com/Azure/azure-cli/blob/master/README.rst)。 运行 `az login` 登录到你的 Azure 订阅。
-* **资源组** - 在创建容器注册表之前创建[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或使用现有资源组。 请确保该资源组位于[提供](https://azure.microsoft.com/regions/services/)容器注册表服务的位置。 若要使用 CLI 2.0 创建资源组，请参阅 [CLI 2.0 示例](https://github.com/Azure/azure-cli-samples/tree/master/arm)。 
-* **存储帐户**（可选）- 创建一个标准的 Azure [存储帐户](../storage/storage-introduction.md)用于在同一位置备份容器注册表。 如果使用 `az acr create` 创建注册表时未指定存储帐户，该命令将自动创建一个存储帐户。 若要使用 CLI 2.0 创建存储帐户，请参阅 [CLI 2.0 示例](https://github.com/Azure/azure-cli-samples/tree/master/storage)。
-* **服务主体**（可选）- 使用 CLI 创建注册表时，默认情况下不会为该注册表设置访问权限。 可以根据需要将现有 Azure Active Directory 服务主体分配到注册表（或创建并分配新的服务主体），或者启用注册表的管理员用户帐户。 请参阅本文稍后的部分。 有关注册表访问权限的详细信息，请参阅 [Authenticate with the container registry](container-registry-authentication.md)（使用容器注册表进行身份验证）。 
+* **Azure CLI 2.0**：若要安装并开始使用 CLI 2.0，请参阅[安装说明](/cli/azure/install-azure-cli)。 运行 `az login` 登录到你的 Azure 订阅。 有关详细信息，请参阅 [CLI 2.0 入门](/cli/azure/get-started-with-azure-cli)。
+* **资源组**：在创建容器注册表之前创建[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或使用现有资源组。 请确保该资源组位于[提供](https://azure.microsoft.com/regions/services/)容器注册表服务的位置。 若要使用 CLI 2.0 创建资源组，请查看 [CLI 2.0 参考](/cli/azure/group)。 
+* **存储帐户**（可选）：创建一个标准的 Azure [存储帐户](../storage/storage-introduction.md)，用于在同一位置备份容器注册表。 如果使用 `az acr create` 创建注册表时未指定存储帐户，该命令将自动创建一个存储帐户。 若要使用 CLI 2.0 创建存储帐户，请查看 [CLI 2.0 参考](/cli/azure/storage/account)。 当前不支持高级存储。
+* **服务主体**（可选）：使用 CLI 创建注册表时，默认情况下不会为该注册表设置访问权限。 可以根据需要将现有 Azure Active Directory 服务主体分配到注册表（或创建并分配新的服务主体），或者启用注册表的管理员用户帐户。 请参阅本文稍后的部分。 有关注册表访问权限的详细信息，请参阅 [Authenticate with the container registry](container-registry-authentication.md)（使用容器注册表进行身份验证）。 
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 运行 `az acr create` 命令可以创建容器注册表。 

@@ -18,18 +18,19 @@
 
 相反，单实例配置用于未放置在可用性集中的独立虚拟机。 这些虚拟机不符合服务级别协议 (SLA) 的要求，SLA 要求在同一可用性集中部署两个或更多虚拟机。
 
-有关 SLA 的详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)中的“云服务、虚拟机和虚拟网络”部分。
+有关 SLA 的详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)中的“云服务和虚拟机”部分。
 
 ## <a name="multi-instance-configuration-updates"></a>多实例配置更新
-在计划内维护期间，Azure 平台首先更新托管在多实例配置中的虚拟机集。 这将导致这些虚拟机重新启动，从而有大约 15 分钟的停机时间。
+在计划内维护期间，Azure 平台首先更新托管在多实例配置中的虚拟机集。 更新将导致这些虚拟机重新启动，从而有大约 15 分钟的停机时间。
 
-在多实例配置更新中，虚拟机在整个更新过程中都保持可用性，但前提是可用性集中每个虚拟机的用途都与其他虚拟机相似。
+多实例配置更新假定每个虚拟机在可用性集中发挥的功能与其他虚拟机类似。 在此设置中，虚拟机进行更新时采用的方式可确保整个过程中的可用性。
 
 基础 Azure 平台为可用性集中的每个虚拟机分配一个更新域和一个容错域。 每个更新域是在同一时间内重新启动的一组虚拟机。 每个容错域是共享公共电源和网络交换机的一组虚拟机。
 
+
 有关更新域和容错域的详细信息，请参阅[配置可用性集中的多个虚拟机以实现冗余](../articles/virtual-machines/virtual-machines-windows-manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。
 
-为防止更新域同时离线，可通过以下方式执行维护：关闭某个更新域中的所有虚拟机，将更新应用到主机，重新启动虚拟机，然后继续对下一个更新域执行相同操作。 更新完所有更新域后，计划内维护事件结束。
+为了通过更新保持可用性，Azure 通过更新域进行维护，一次更新一个域。 在更新域中进行维护时，其步骤包括：关闭域中的每个虚拟机，对主机应用更新，然后重新启动虚拟机。 当域中的维护完成以后，Azure 对下一个更新域重复此过程，继续对每个域进行操作，直至所有域都进行了更新。
 
 在计划内维护期间，更新域的重启顺序可能不会按序进行，但一次只能重启一个更新域。 现在，Azure 可为多实例配置中虚拟机的计划内维护提供 1 周提前通知功能。
 
@@ -38,60 +39,66 @@
 <!--Image reference-->
 ![][image2]
 
-使用查看器确定在使用 Azure 门户、Azure PowerShell 或 Azure CLI 的多实例配置中配置的虚拟机。 例如，若要确定多实例配置中的虚拟机，可以浏览虚拟机列表（已将“可用性集”列添加到虚拟机浏览对话框）。 在以下示例中，示例-VM1 和示例-VM2 虚拟机都采用多实例配置：
+
+使用查看器报告在使用 Azure 门户、Azure PowerShell 或 Azure CLI 的多实例配置中配置的虚拟机。 例如，可以使用 Azure 门户将“可用性集”添加到“虚拟机(经典)”浏览器对话框。 用于报告同一可用性集的虚拟机是多实例配置的一部分。 在以下示例中，多实例配置包含虚拟机 SQLContoso01 和 SQLContoso02。
 
 <!--Image reference-->
-![][image4]
+  ![Azure 门户中的“虚拟机(经典)”视图][image4]
 
 ## <a name="single-instance-configuration-updates"></a>单实例配置更新
-完成多实例配置更新后，Azure 将执行单实例配置更新。 此更新也会导致不在可用性集中运行的虚拟机重新启动。
+完成多实例配置更新后，Azure 将执行单实例配置更新。 这些更新也会导致不在可用性集中运行的虚拟机重新启动。
 
-请注意，即使可用性集中只有一个实例在运行，Azure 平台也会将其视作多实例配置更新。
+> [!NOTE]
+> 如果可用性集只有一个虚拟机实例在运行，Azure 平台会将其视作多实例配置更新。
+>
 
-对于单实例配置中的虚拟机，可通过以下方式更新虚拟机：关闭虚拟机，将更新应用到主机，然后重新启动虚拟机，将会有大约 15 分钟的停机时间。 这些更新在单个维护时段内跨某个区域中的所有虚拟机运行。
+在单实例配置中进行维护时，其步骤包括：关闭在主机上运行的每个虚拟机，更新主机，然后重新启动虚拟机。 维护需要大约 15 分钟的停机时间。 计划内维护事件在单个维护时段内跨某个区域中的所有虚拟机运行。
 
-对于此类型的虚拟机配置，该计划内维护事件可能会对应用程序的可用性产生影响。 Azure 可为单实例配置中虚拟机的计划内维护提供 1 周高级通知功能。
+
+对于单实例配置，计划内维护事件可能会对应用程序的可用性产生影响。 Azure 可为单实例配置中虚拟机的计划内维护提供一周高级通知功能。
 
 ## <a name="email-notification"></a>电子邮件通知
-Azure 会提前发送电子邮件通信，提醒你即将执行计划内维护（提前 1 周），该功能仅适用于单实例和多实例虚拟机配置。 此电子邮件将发送到订阅管理员和共同管理员的电子邮件帐户。 下面是这类电子邮件的示例：
+Azure 会提前发送电子邮件通信，提醒用户即将执行计划内维护（提前一周），该功能仅适用于单实例和多实例虚拟机配置。 此电子邮件发送到订阅管理员和共同管理员的电子邮件帐户。 下面是这类电子邮件的示例：
 
 <!--Image reference-->
 ![][image1]
 
 ## <a name="region-pairs"></a>区域对
-执行维护时，Azure 将只更新区域对中单个区域的虚拟机实例。 例如，更新美国中北部的虚拟机时，Azure 不会同时更新美国中南部的任何虚拟机。 后者会安排在其他时间进行，以便在区域之间进行故障转移或负载平衡。 但是，北欧等其他区域可以与美国东部同时进行维护。
 
-有关当前区域对的信息，请参阅下表：
+执行维护时，Azure 只更新区域对中单个区域的虚拟机实例。 例如，更新美国中北部的虚拟机时，Azure 不会同时更新美国中南部的任何虚拟机。 后者会安排在其他时间进行，以便在区域之间进行故障转移或负载均衡。 但是，北欧等其他区域可以与美国东部同时进行维护。
+
+请参阅下表以了解当前区域对：
 
 | 区域 1 | 区域 2 |
 |:--- | ---:|
-| 美国中北部 |美国中南部 |
 | 美国东部 |美国西部 |
 | 美国东部 2 |美国中部 |
-| 欧洲北部 |欧洲西部 |
-| 东南亚 |东亚 |
-| 中国东部 |中国北部 |
-| 日本东部 |日本西部 |
+| 美国中北部 |美国中南部 |
+| 美国中西部 |美国西部 2 |
+| 加拿大东部 |加拿大中部 |
 | 巴西南部 |美国中南部 |
+| 美国政府爱荷华州 |美国政府弗吉尼亚州 |
+| 美国 DoD 东部 |美国 DoD 中部 |
+| 欧洲北部 |欧洲西部 |
+| 英国西部 |英国南部 |
+| 德国中部 |德国东北部 |
+| 东南亚 |东亚 |
 | 澳大利亚东南部 |澳大利亚东部 |
 | 印度中部 |印度南部 |
 | 印度西部 |印度南部 |
-| 美国政府爱荷华州 |美国政府弗吉尼亚州 |
+| 日本东部 |日本西部 |
+| 韩国中部 |韩国南部 |
+| 中国东部 |中国北部 |
+
 
 <!--Anchors-->
 [image1]: ./media/virtual-machines-common-planned-maintenance/vmplanned1.png
 [image2]: ./media/virtual-machines-common-planned-maintenance/EventViewerPostReboot.png
 [image3]: ./media/virtual-machines-planned-maintenance/RegionPairs.PNG
-[image4]: ./media/virtual-machines-common-planned-maintenance/AvailabilitySetExample.png
+[image4]: ./media/virtual-machines-common-planned-maintenance/availabilitysetexample.png
 
 
 <!--Link references-->
-[虚拟机管理可用性]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
+[Virtual Machines Manage Availability]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
 
-[了解计划内与计划外维护]: ../articles/virtual-machines/virtual-machines-windows-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+[Understand planned versus unplanned maintenance]: ../articles/virtual-machines/virtual-machines-windows-manage-availability.md#Understand-planned-versus-unplanned-maintenance/

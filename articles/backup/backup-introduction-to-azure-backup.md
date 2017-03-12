@@ -1,6 +1,6 @@
 ---
 title: "什么是 Azure 备份？ | Microsoft 文档"
-description: "使用 Azure 备份和恢复服务，可以从 Windows Server 和工作站、System Center DPM 服务器和工作负荷，及 Azure 虚拟机备份和还原数据与应用程序。"
+description: "使用 Azure 备份，可以从 Windows Server、Windows 工作站、System Center DPM 服务器以及 Azure 虚拟机备份和还原数据与工作负荷。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,16 +13,17 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/23/2017
+ms.date: 2/27/2017
 ms.author: markgal;trinadhk
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 39ad8e07659a228e4a4b861cc98e9f3e830aaab0
-ms.openlocfilehash: 63d3d95300f3d2353471b8ca4923f3bf682464bb
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: bafcd7f23a2a90a1cfdcd9286c20a09bd7a316b7
+ms.openlocfilehash: c9fd621ca2d4440b4a8c90e2fd8ab7924f4dbce8
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="what-is-azure-backup"></a>什么是 Azure 备份？
+# <a name="overview-of-the-features-in-azure-backup"></a>Azure 备份功能概述
 Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 Microsoft 云端数据。 Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。 Azure 备份提供多个组件，可将其下载并部署到适当计算机、服务器或云端。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 的备份保管库中。 请参阅本文稍后部分的 [Azure 备份组件表格](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)，了解保护特定数据、应用程序或工作负荷所用的组件。
 
 [观看 Azure 备份概述视频](https://azure.microsoft.com/documentation/videos/what-is-azure-backup/)
@@ -94,17 +95,15 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | Azure IaaS VM 备份 |是 |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>结合使用高级存储 VM 和 Azure 备份
-Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储的详细信息，请参阅[高级存储：Azure 虚拟机工作负荷的高性能存储](../storage/storage-premium-storage.md)一文
+Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储的详细信息，请参阅[高级存储：Azure 虚拟机工作负荷的高性能存储](../storage/storage-premium-storage.md)一文。
 
 ### <a name="back-up-premium-storage-vms"></a>备份高级存储 VM
-在备份高级存储 VM 时，备份服务在高级存储帐户中创建临时暂存位置。 名为“AzureBackup-”的暂存位置相当于连接到 VM 的高级磁盘的数据大小总计。 检查存储帐户中的暂存位置是否有足够的可用空间。 有关详细信息，请参阅[高级存储限制](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)一文。
+在备份高级存储 VM 时，备份服务在高级存储帐户中创建名为“AzureBackup-”的临时暂存位置。 暂存位置与恢复点快照大小相同。 请确保存储帐户中存在适用于临时暂存位置的空间。 有关详细信息，请参阅[高级存储限制](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)一文。 备份作业完成后，将删除暂存位置。 用于暂存位置的存储的价格与所有 [高级存储定价](../storage/storage-premium-storage.md#pricing-and-billing)一致。
 
 > [!NOTE]
 > 请不要修改或编辑暂存位置。
 >
 >
-
-备份作业完成后，将删除暂存位置。 用于暂存位置的存储的价格与所有 [高级存储定价](../storage/storage-premium-storage.md#pricing-and-billing)一致。
 
 ### <a name="restore-premium-storage-vms"></a>还原高级存储 VM
 可将高级存储 VM 还原到高级存储或常规存储中。 将高级存储 VM 的恢复点还原到高级存储是典型的还原过程。 但是，将高级存储 VM 的恢复点还原到标准存储更符合成本效益。 如果需要 VM 中的一部分文件，可以使用这种还原类型。

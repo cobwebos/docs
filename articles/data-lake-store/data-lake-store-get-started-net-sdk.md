@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 02/28/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 8ec76c597dfb59860b456e42a78239c67d289f13
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 2ab4e2be8509bb264f496e7ebc6b4b50187c0151
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -37,8 +38,11 @@ ms.openlocfilehash: 8ec76c597dfb59860b456e42a78239c67d289f13
 
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2013 或 2015**。 以下说明使用 Visual Studio 2015。
+
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+
 * **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
+
 * **创建 Azure Active Directory 应用程序**。 使用 Azure AD 应用程序对 Data Lake Store 应用程序进行 Azure AD 身份验证。 有不同的方式可进行 Azure AD 身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
@@ -58,9 +62,9 @@ ms.openlocfilehash: 8ec76c597dfb59860b456e42a78239c67d289f13
    2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。
    3. 搜索并安装以下 NuGet 包：
       
-      * `Microsoft.Azure.Management.DataLake.Store` - 本教程使用 v0.12.5 预览版。
-      * `Microsoft.Azure.Management.DataLake.StoreUploader` - 本教程使用 v0.10.6 预览版。
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.2.8 预览版。
+      * `Microsoft.Azure.Management.DataLake.Store` - 本教程使用 v1.0.4。
+      * `Microsoft.Azure.Management.DataLake.StoreUploader` - 本教程使用 v1.0.1-preview。
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.2.11。
         
         ![添加 Nuget 源](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "创建新的 Azure Data Lake 帐户")
    4. 关闭“NuGet 包管理器” 。
@@ -71,7 +75,11 @@ ms.openlocfilehash: 8ec76c597dfb59860b456e42a78239c67d289f13
    
         using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Azure.Management.DataLake.Store;
+        using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.Azure.Management.DataLake.StoreUploader;
+        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+        using System.Security.Cryptography.X509Certificates; //Required only if you are using an Azure AD application created with certificates
+
 7. 按如下所示声明变量，提供已存在的 Data Lake Store 名称和资源组名称的值。 此外，确保计算机中必须存在此处提供的本地路径和文件名。 在命名空间声明后，添加以下代码片段。
    
         namespace SdkSample
@@ -104,32 +112,31 @@ ms.openlocfilehash: 8ec76c597dfb59860b456e42a78239c67d289f13
 本文的剩余部分介绍如何使用现有的 .NET 方法来执行操作，例如身份验证和文件上传等。
 
 ## <a name="authentication"></a>身份验证
+
 ### <a name="if-you-are-using-end-user-authentication-recommended-for-this-tutorial"></a>如果使用最终用户身份验证（本教程推荐）
-请在现有的 Azure AD“本机客户端”应用程序中使用这种身份验证；下面提供了示例代码。 为了更快完成本教程，我们建议使用此方法。
+
+可以对现有的 Azure AD 本机应用程序使用此方法，以**交互方式**对应用程序进行身份验证，这意味着系统会提示用户输入其 Azure 凭据。 
+
+为了方便使用，下面的代码片段使用客户端 ID 和重定向 URI 的默认值，这些默认值将适用于任何 Azure 订阅。 为了更快完成本教程，我们建议使用此方法。 在下面的代码片段中，直接提供租户 ID 的值。 可以根据[创建 Active Directory 应用程序](data-lake-store-end-user-authenticate-using-active-directory.md)中提供的说明进行检索。
 
     // User login via interactive popup
-    // Use the client ID of an existing AAD "Native Client" application.
+    // Use the client ID of an existing AAD Web application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
-    var domain = "common"; // Replace this string with the user's Azure Active Directory tenant ID or domain name, if needed.
+    var tenant_id = "<AAD_tenant_id>"; // Replace this string with the user's Azure Active Directory tenant ID
     var nativeClientApp_clientId = "1950a258-227b-4e31-a9cf-717495945fc2";
     var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"));
-    var creds = UserTokenProvider.LoginWithPromptAsync(domain, activeDirectoryClientSettings).Result;
+    var creds = UserTokenProvider.LoginWithPromptAsync(tenant_id, activeDirectoryClientSettings).Result;
 
 对于上述代码片段，需要注意几个问题。
 
 * 为了帮助读者更快完成本教程，此代码片段使用了为所有 Azure 订阅默认提供的 Azure AD 域和客户端 ID。 因此，可以**在应用程序中按原样使用此代码片段**。
-* 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，然后使用所创建的应用程序的 Azure AD 域、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序](data-lake-store-end-user-authenticate-using-active-directory.md)。
-
-> [!NOTE]
-> 以上链接中的说明适用于 Azure AD web 应用程序。 但是，即使选择创建本地客户端应用程序，步骤也相同。 
-> 
-> 
+* 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，然后使用所创建的应用程序的 Azure AD 租户 ID、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序，以便使用 Data Lake Store 进行最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
 
 ### <a name="if-you-are-using-service-to-service-authentication-with-client-secret"></a>如果结合客户端机密使用服务到服务身份验证
-可以使用以下代码片段通过客户端密码/应用程序密钥/服务主体对应用程序进行非交互式身份验证。 请对现有的 [Azure AD“Web 应用”应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md)使用这种身份验证。
+可以使用以下代码片段通过客户端密码/应用程序密钥/服务主体对应用程序进行**非交互式**身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。 有关如何创建 Azure AD Web 应用程序以及如何检索以下代码片段中需要的客户端 ID 和客户端机密的说明，请参阅[创建 Active Directory 应用程序，以便使用 Data Lake Store 进行服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
     // Service principal / appplication authentication with client secret / key
-    // Use the client ID and certificate of an existing AAD "Web App" application.
+    // Use the client ID of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
@@ -138,7 +145,7 @@ ms.openlocfilehash: 8ec76c597dfb59860b456e42a78239c67d289f13
     var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
 
 ### <a name="if-you-are-using-service-to-service-authentication-with-certificate"></a>如果结合证书使用服务到服务身份验证
-还可以使用以下代码片段通过应用程序证书/服务主体对应用程序进行非交互式身份验证。 请对现有的 [Azure AD“Web 应用”应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md)使用这种身份验证。
+还可以使用以下代码片段，通过 Azure Active Directory 应用程序/服务主体的证书对应用程序进行**非交互式**身份验证。 请对现有的[带证书的 Azure AD 应用程序](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)使用这种身份验证。
 
     // Service principal / application authentication with certificate
     // Use the client ID and certificate of an existing AAD "Web App" application.
@@ -257,10 +264,5 @@ ms.openlocfilehash: 8ec76c597dfb59860b456e42a78239c67d289f13
 * [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Data Lake Store .NET SDK 参考](https://msdn.microsoft.com/library/mt581387.aspx)
 * [Data Lake Store REST 参考](https://msdn.microsoft.com/library/mt693424.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

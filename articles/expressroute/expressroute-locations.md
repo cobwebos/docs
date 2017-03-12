@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/13/2017
+ms.date: 03/03/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 4f20e8d3d5774eb57038e40fac6a4bac2e17909e
-ms.openlocfilehash: 569786c864d5f8ceb93422c65ae1ffb47f66a787
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 38fb1cd513823c39184508cc61e4928e2b8a76a3
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/01/2017
 
 本文中的表格提供有关 ExpressRoute 连接提供商、ExpressRoute 地理覆盖范围、通过 ExpressRoute 支持的 Microsoft 云服务以及 ExpressRoute 系统集成商 (SI) 的信息。
 
-## <a name="a-namepartnersaexpressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute 连接服务提供商
+## <a name="partners"></a>ExpressRoute 连接服务提供商
 所有的 Azure 区域和位置都支持 ExpressRoute。 以下地图提供了 Azure 区域和 ExpressRoute 位置的列表。 ExpressRoute 位置是指 Microsoft 与多个服务提供商对等互连的位置。
 
 ![位置地图][0]
@@ -62,7 +62,7 @@ ms.lasthandoff: 03/01/2017
 
 标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 你需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如有需要，请联系连接服务提供商。
 
-## <a name="a-namelocationsaconnectivity-provider-locations"></a><a name="locations"></a>连接服务提供商位置
+## <a name="locations"></a>连接服务提供商位置
 
 下表显示按服务提供商列出的位置。 若要按位置查看可用的提供商，请参阅[按位置列出的服务提供商](expressroute-locations-providers.md#locations)。
 
@@ -106,13 +106,13 @@ ms.lasthandoff: 03/01/2017
 | **Sejong Telecom** |支持 |支持 |釜山、首尔 |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |支持 |支持 |金奈 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |支持 |支持 |新加坡 |
-| **Softbank** |支持 |支持 |大坂、东京 |
+| **[Softbank](http://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |支持 |支持 |大坂、东京 |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |支持 |支持 |阿姆斯特丹、金奈、中国香港特别行政区、伦敦、孟买、硅谷、新加坡、华盛顿特区 |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** |支持 |支持 |阿姆斯特丹、都柏林、伦敦 |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |支持 |支持 |圣保罗 |
 | **Telenor** |支持 |支持 |阿姆斯特丹、伦敦 |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |支持 |支持 |墨尔本、悉尼 |
-| **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |支持 |支持 |阿姆斯特丹、中国香港特别行政区、伦敦、硅谷、新加坡、悉尼、东京、华盛顿特区 |
+| **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、中国香港特别行政区、伦敦、硅谷、新加坡、悉尼、东京、华盛顿特区 |
 | **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |支持 |不支持 |伦敦 |
 | **[Zayo Group](http://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |支持 |支持 |芝加哥、洛杉矶、纽约、硅谷、多伦多、华盛顿特区 |
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 03/01/2017
 | **Interxion** |支持 |不支持 |法兰克福 |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持  | 不支持 | 柏林 |
 
-## <a name="a-namenonpartnersaconnectivity-through-service-providers-not-listed"></a><a name="nonpartners"></a>通过未列出的服务提供商建立连接
+## <a name="nonpartners"></a>通过未列出的服务提供商建立连接
 如果前面部分中未列出你的连接服务提供商，你仍可以建立连接。
 
 * 请咨询你的连接服务提供商，以确定他们是否已连接到上表中列出的任何 Exchange 提供商。 你可以访问以下链接，以收集 Exchange 提供商所提供的服务的详细信息。 已有多个连接提供商连接到以太网 Exchange。

@@ -12,12 +12,12 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/14/2016
+ms.date: 03/07/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 45411dcfd2dc221de9566b382a1b1c62da914208
-ms.openlocfilehash: 21f2e6e9b422d497882a2414fd24974d60ea685e
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 296f02dd7deb22fd4ca15478b7f90a7688b4304a
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/16/2017
 > 
 > 
 
-Service Fabric SDK 包含一个用于 Visual Studio 的外接程序，它可提供用于创建、部署和调试 Service Fabric 应用程序的模板和工具。 本主题会指导您完成在 Visual Studio 中创建您的第一个应用程序的过程。
+Service Fabric SDK 包含一个用于 Visual Studio 的外接程序，它可提供用于创建、部署和调试 Service Fabric 应用程序的模板和工具。 本主题介绍在 Visual Studio 2017 或 Visual Studio 2015 中创建用户的第一个应用程序的过程。
 
 ## <a name="prerequisites"></a>先决条件
 开始之前，请确保已 [设置开发环境](service-fabric-get-started.md)。

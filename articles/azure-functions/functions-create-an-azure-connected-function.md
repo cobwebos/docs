@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/23/2017
-ms.author: rachelap@microsoft.com
+ms.date: 03/01/2017
+ms.author: rachelap; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: a8f6d111a010666bf4aaaf05e061381cc8fffed0
-ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 4bea7f73871f8bfc755f30b9ef41a1960893152e
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
 
 ## <a name="create-a-function-that-writes-to-the-queue"></a>创建一个向队列写入数据的函数
 
-在连接到存储队列之前，需要创建一个函数用于加载消息队列。 此 JavaScript 函数使用计时器触发器每隔 10 秒将消息写入队列。 如果你尚未创建 Azure 帐户，请查看 [Try Azure Functions](https://functions.azure.com/try)（试用 Azure Functions）主题，或[免费创建一个 Azure 帐户](https://azure.microsoft.com/free/)。
+在连接到存储队列之前，需要创建一个函数用于加载消息队列。 此 JavaScript 函数使用计时器触发器每隔 10 秒将消息写入队列。 如果尚未创建 Azure 帐户，请查看 [Try Azure Functions](https://functions.azure.com/try)（试用 Azure Functions）主题，或[免费创建一个 Azure 帐户](https://azure.microsoft.com/free/)。
 
 1. 转到 Azure 门户并找到你的函数应用。
 
@@ -125,7 +126,7 @@ ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
 
     ![将绑定添加到 Azure 存储表](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab.png) 
 
-2. 在“表名称”中输入 `TableItem`，在“表参数名称”中输入 `functionbindings`，选择“存储帐户连接”或创建一个新连接，然后单击“保存”。
+2. 在“表名称”中输入 `functionbindings`，在“表参数名称”中输入 `myTable`，选择“存储帐户连接”或创建一个新连接，然后单击“保存”。
 
     ![配置存储表绑定](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab2.png)
    
@@ -180,7 +181,7 @@ ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
 [!INCLUDE [More binding information](../../includes/functions-bindings-next-steps.md)]
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下主题，获取有关 Azure Functions 的详细信息。
+有关 Azure Functions 的详细信息，请参阅以下主题：
 
 * [Azure Functions 开发人员参考](functions-reference.md)  
   ，用于编码函数和定义触发器及绑定的程序员参考。
@@ -190,10 +191,5 @@ ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
   讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。 
 
 [!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

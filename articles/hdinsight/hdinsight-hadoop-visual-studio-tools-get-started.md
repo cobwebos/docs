@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 03/07/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1fd0451809c8afca5c330229390ec691f4a25eb5
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 8bea5c13b8657be737cdc135b2d46bd0068b6b88
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -31,17 +32,11 @@ ms.openlocfilehash: 1fd0451809c8afca5c330229390ec691f4a25eb5
 
 若要完成本教程并使用 Visual Studio 中的 Data Lake 工具，需要做好以下准备：
 
-* Azure HDInsight 群集：基于 Linux 或 Windows 的群集可用于本文档中的步骤。 有关创建群集的详细信息，请参阅下列主题之一：
-  
-  * [开始使用基于 Linux 的 HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
-  * [开始使用基于 Windows 的 HDInsight](hdinsight-hadoop-tutorial-get-started-windows.md)
+* 一个 Azure HDInsight 群集：若要创建一个，请参阅[基于 Linux 的 HDInsight 使用入门](hdinsight-hadoop-linux-tutorial-get-started.md)
 * 安装有以下软件的工作站：
   
-  * Windows 8.1、Windows 8 或 Windows 7
-  * Visual Studio（以下版本之一）：
-    
-    * 包含 [Update 4](https://www.microsoft.com/download/details.aspx?id=44921)
-    * Visual Studio 2015 (Community/Enterprise)
+  * Windows 10、Windows 8.1、Windows 8 或 Windows 7。
+  * Visual Studio 2013/2015/2017。
     
     > [!NOTE]
     > 目前，用于 Visual Studio 的 Data Lake 工具仅有英文版。
@@ -49,7 +44,8 @@ ms.openlocfilehash: 1fd0451809c8afca5c330229390ec691f4a25eb5
     > 
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>安装用于 Visual Studio 的 Data Lake 工具
-可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/)安装 Data Lake 工具。 你必须选择与你的 Visual Studio 版本匹配的版本。 如果尚未安装 Visual Studio，可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/)安装最新 Visual Studio Community 和 Azure SDK：
+
+默认为 Visual Studio 2017 安装 Data Lake 工具。 如需更旧的版本，可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/)进行安装。 你必须选择与你的 Visual Studio 版本匹配的版本。 如果尚未安装 Visual Studio，可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/)安装最新 Visual Studio Community 和 Azure SDK：
 
 ![用于 Visual Studio 的 Data Lake 工具 Web 平台安装程序][1]
 
@@ -128,7 +124,7 @@ ms.openlocfilehash: 1fd0451809c8afca5c330229390ec691f4a25eb5
    
     ![Data Lake 工具：HDInsight Visual Studio 工具创建 hive 表][7]
 
-### <a name="a-namerunqueriesavalidate-and-run-hive-queries"></a><a name="run.queries"></a>验证和运行 Hive 查询
+### <a name="run.queries"></a>验证和运行 Hive 查询
 你可以使用两种方法创建和运行 Hive 查询：
 
 * 创建临时查询
@@ -278,9 +274,4 @@ Data Lake Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业
 [hdinsight.access.application.logs]: hdinsight-hadoop-access-yarn-app-logs.md
 
 [apache.hive]: http://hive.apache.org
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

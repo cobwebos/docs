@@ -1,6 +1,6 @@
 ---
 title: "NoSQL 教程：Azure DocumentDB Java SDK | Microsoft 文档"
-description: "使用 DocumentDB Java SDK 创建联机数据库和 Java 控制台应用程序的 NoSQL 教程。 Azure DocumentDB 是适用于 JSON 的 NoSQL 数据库。"
+description: "使用 DocumentDB Java SDK 创建联机数据库和 Java 控制台应用程序的 NoSQL 教程。 Azure DocumentDB 是用于 JSON 的 NoSQL 数据库。"
 keywords: "nosql 教程, 联机数据库, java 控制台应用程序"
 services: documentdb
 documentationcenter: Java
@@ -16,8 +16,9 @@ ms.topic: hero-article
 ms.date: 01/05/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: ddd676df429c20d1c07cfe64abc9ab69ef11bd8c
-ms.openlocfilehash: 845858c3df6456293a2552f55ffb35254024931b
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 74af5fda495adc726bfa85ad48a407fd61d4dd88
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -25,8 +26,9 @@ ms.openlocfilehash: 845858c3df6456293a2552f55ffb35254024931b
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
-> * [Java](documentdb-java-get-started.md)
+> * [用于 MongoDB 的 Node.js](documentdb-mongodb-samples.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
+> * [Java](documentdb-java-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
 >  
 > 
@@ -62,7 +64,7 @@ ms.openlocfilehash: 845858c3df6456293a2552f55ffb35254024931b
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a name="a-idgitcloneastep-2-clone-the-github-project"></a><a id="GitClone"></a>步骤 2：克隆 Github 项目
+## <a id="GitClone"></a>步骤 2：克隆 Github 项目
 首先，可以根据 [DocumentDB 和 Java 入门](https://github.com/Azure-Samples/documentdb-java-getting-started)中所述克隆 Github 存储库。 例如，在本地目录中运行以下命令，在本地检索示例项目。
 
     git clone git@github.com:Azure-Samples/documentdb-java-getting-started.git
@@ -77,7 +79,7 @@ ms.openlocfilehash: 845858c3df6456293a2552f55ffb35254024931b
         <version>LATEST</version>
     </dependency>
 
-## <a name="a-idconnectastep-3-connect-to-a-documentdb-account"></a><a id="Connect"></a>第 3 步：连接到 DocumentDB 帐户
+## <a id="Connect"></a>第 3 步：连接到 DocumentDB 帐户
 接下来，返回到 [Azure 门户](https://portal.azure.com)检索终结点和主密钥。 DocumentDB 终结点和主密钥是必需的，可让应用程序知道要连接的对象，使 DocumentDB 信任应用程序的连接。
 
 在 Azure 门户中，导航到 DocumentDB 帐户，然后单击“密钥” 。 从门户中复制该 URI 并将它粘贴到 Program.java 文件中的 `<your endpoint URI>`。 然后从门户中复制“主密钥”并将它粘贴到 `<your key>`。
@@ -97,7 +99,7 @@ ms.openlocfilehash: 845858c3df6456293a2552f55ffb35254024931b
     database.setId("familydb");
     this.client.createDatabase(database, null);
 
-## <a name="a-idcreatecollastep-5-create-a-collection"></a><a id="CreateColl"></a>步骤 5：创建集合
+## <a id="CreateColl"></a>步骤 5：创建集合
 > [!WARNING]
 > **createCollection** 创建一个具有保留吞吐量的新集合，这会牵涉到价格问题。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/documentdb/)。
 > 
@@ -116,7 +118,7 @@ ms.openlocfilehash: 845858c3df6456293a2552f55ffb35254024931b
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a name="a-idcreatedocastep-6-create-json-documents"></a><a id="CreateDoc"></a>步骤 6：创建 JSON 文档
+## <a id="CreateDoc"></a>步骤 6：创建 JSON 文档
 可以使用 **DocumentClient** 类的 [createDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#createDocument-java.lang.String-java.lang.Object-com.microsoft.azure.documentdb.RequestOptions-boolean-) 方法创建[文档](documentdb-resources.md#documents)。 文档是用户定义的（任意）JSON 内容。 现在，我们可以插入一个或多个文档。 如果已有要在数据库中存储的数据，则可使用 DocumentDB 的 [数据迁移工具](documentdb-import-data.md)将数据导入数据库。
 
     // Insert your Java objects as documents 
@@ -139,7 +141,7 @@ ms.openlocfilehash: 845858c3df6456293a2552f55ffb35254024931b
 
 ![演示在 NoSQL 教程中创建 Java 控制台应用程序所用的帐户、联机数据库、集合和文档的层次关系的示意图。](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
-## <a name="a-idqueryastep-7-query-documentdb-resources"></a><a id="Query"></a>步骤 7：查询 DocumentDB 资源
+## <a id="Query"></a>步骤 7：查询 DocumentDB 资源
 DocumentDB 支持对存储在每个集合中的 JSON 文档进行各种 [查询](documentdb-sql-query.md) 。  以下示例代码演示如何使用 [queryDocuments](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#queryDocuments-java.lang.String-com.microsoft.azure.documentdb.SqlQuerySpec-com.microsoft.azure.documentdb.FeedOptions-) 方法，以 SQL 语法查询 DocumentDB 中的文档。
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -152,7 +154,7 @@ DocumentDB 支持对存储在每个集合中的 JSON 文档进行各种 [查询]
         System.out.println(String.format("\tRead %s", family));
     }
 
-## <a name="a-idreplacedocumentastep-8-replace-json-document"></a><a id="ReplaceDocument"></a>步骤 8：替换 JSON 文档
+## <a id="ReplaceDocument"></a>步骤 8：替换 JSON 文档
 DocumentDB 支持使用 [replaceDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#replaceDocument-com.microsoft.azure.documentdb.Document-com.microsoft.azure.documentdb.RequestOptions-) 方法更新 JSON 文档。
 
     // Update a property
@@ -163,17 +165,17 @@ DocumentDB 支持使用 [replaceDocument](http://azure.github.io/azure-documentd
         andersenFamily,
         null);
 
-## <a name="a-iddeletedocumentastep-9-delete-json-document"></a><a id="DeleteDocument"></a>步骤 9：删除 JSON 文档
+## <a id="DeleteDocument"></a>步骤 9：删除 JSON 文档
 类似地，DocumentDB 支持使用 [deleteDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#deleteDocument-java.lang.String-com.microsoft.azure.documentdb.RequestOptions-) 方法删除 JSON 文档。  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
 
-## <a name="a-iddeletedatabaseastep-10-delete-the-database"></a><a id="DeleteDatabase"></a>步骤 10：删除数据库
+## <a id="DeleteDatabase"></a>步骤 10：删除数据库
 删除已创建的数据库会删除该数据库及其所有子资源（集合、文档等）。
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a name="a-idrunastep-11-run-your-java-console-application-all-together"></a><a id="Run"></a>步骤 11：一起运行 Java 控制台应用程序！
+## <a id="Run"></a>步骤 11：一起运行 Java 控制台应用程序！
 若要从控制台运行应用程序，请先使用 Maven 编译该应用程序：
     
     mvn package
@@ -192,9 +194,4 @@ DocumentDB 支持使用 [replaceDocument](http://azure.github.io/azure-documentd
 
 [documentdb-create-account]: documentdb-create-account.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

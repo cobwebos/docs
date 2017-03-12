@@ -12,12 +12,12 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/14/2017
+ms.date: 03/07/2017
 ms.author: ryanwi, mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: a3367bc4eb66a97263abc2e057eda41770e3face
-ms.openlocfilehash: c461706167728361576f42f8ac7f9b4a2d120609
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 935b0ba8725b083878a0f9213e4fbd31bd27ab2c
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -47,8 +47,8 @@ ms.lasthandoff: 02/16/2017
 > 
 
 ## <a name="install-the-sdk-and-tools"></a>安装 SDK 和工具
-### <a name="to-use-visual-studio-2017-rc"></a>使用 Visual Studio 2017 RC
-Service Fabric 工具是 Visual Studio 2017 RC 中 Azure 开发和管理工作负荷的一部分。 在 Visual Studio 安装过程中启用此工作负荷。
+### <a name="to-use-visual-studio-2017"></a>使用 Visual Studio 2017
+Service Fabric 工具是 Visual Studio 2017 中 Azure 开发和管理工作负荷的一部分。 在 Visual Studio 安装过程中启用此工作负荷。
 此外还需使用 Web 平台安装程序安装 Microsoft Azure Service Fabric SDK。
 
 * [安装 Microsoft Azure Service Fabric SDK][core-sdk]

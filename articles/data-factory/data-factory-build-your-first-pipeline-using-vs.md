@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/15/2016
+ms.date: 03/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 0a4eb02e50c90f41bdc4f2db2af87e2b194da25a
-ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 23927acae12f0db13fe6dd24a4e1fde8ced25d40
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -44,7 +45,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
 3. 必须在计算机上安装以下软件：
    * Visual Studio 2013 或 Visual Studio 2015
    * 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。
-   * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可以执行以下步骤来更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。
+   * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可通过执行以下步骤更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。
 
 现在，使用 Visual Studio 创建 Azure 数据工厂。
 
@@ -78,7 +79,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
 
 1. 在“解决方案资源管理器”中，右键单击“链接服务”，指向“添加”，然后单击“新建项”。
 2. 选择“HDInsight 按需链接服务”，然后单击“添加”。
-3. 将 **JSON** 替换为以下代码：
+3. 将 **JSON** 替换为以下 JSON：
 
     ```JSON
     {
@@ -98,19 +99,19 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
     下表提供了代码片段中使用的 JSON 属性的描述：
 
    | 属性 | 说明 |
-   | --- | --- |
-   |  版本 |指定所创建的 HDInsight 版本为 3.2。 |
-   |  ClusterSize |指定 HDInsight 群集的大小。 |
-   |  TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
-   |  linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户 |
+   | -------- | ----------- |
+   | 版本 | 指定所创建的 HDInsight 版本为 3.2。 |
+   | ClusterSize |指定 HDInsight 群集的大小。 |
+   | TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
+   | linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户 |
 
-    注意以下事项：
+    注意以下几点：
 
    * 数据工厂使用前面的 JSON 创建 **基于 Windows 的** HDInsight 群集。 也可以让它创建 **基于 Linux 的** HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
    * 可以使用 **自己的 HDInsight 群集** ，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) （HDInsight 链接服务）。
    * HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时，都会创建 HDInsight 群集。 处理完成后将自动删除该群集。
 
-       随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
+       随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 
      有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 4. 保存 **HDInsightOnDemandLinkedService1.json** 文件。
@@ -121,9 +122,9 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
 #### <a name="create-input-dataset"></a>创建输入数据集
 1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，然后单击“新建项”。
 2. 从列表中选择“Azure Blob”，将文件名更改为 **InputDataSet.json**，然后单击“添加”。
-3. 在编辑器中将 **JSON** 替换为以下代码：
+3. 在编辑器中将 **JSON** 替换为以下 JSON 代码片段：
 
-    在 JSON 代码片段中，创建名为 **AzureBlobInput** 的数据集，表示管道中活动的输入数据。 此外，指定将输入数据放在名为 **adfgetstarted** 的 Blob 容器及名为 **inputdata** 的文件夹中
+    在 JSON 代码片段中，创建名为 **AzureBlobInput** 的数据集，表示管道中活动的输入数据。 此外，指定将输入数据放在名为 `adfgetstarted` 的 Blob 容器及名为 `inputdata` 的文件夹中。
 
     ```JSON
     {
@@ -151,7 +152,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
     下表提供了代码片段中使用的 JSON 属性的描述：
 
    | 属性 | 说明 |
-   |:--- |:--- |
+   | -------- | ----------- |
    | type |type 属性设置为 AzureBlob，因为数据位于 Azure Blob 存储中。 |
    | linkedServiceName |表示前面创建的 AzureStorageLinkedService1。 |
    | fileName |此属性是可选的。 如果省略此属性，将选择 folderPath 中的所有文件。 在这种情况下，只处理 input.log。 |
@@ -166,9 +167,9 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
 
 1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，然后单击“新建项”。
 2. 从列表中选择“Azure Blob”，将文件名更改为 **OutputDataset.json**，然后单击“添加”。
-3. 在编辑器中将 **JSON** 替换为以下代码：
+3. 在编辑器中将 **JSON** 替换为以下 JSON：
 
-    在 JSON 代码片段中，创建名为 **AzureBlobOutput**的数据集，指定 Hive 脚本生成的数据结构。 此外，指定将结果存储在名为 **adfgetstarted** 的 Blob 容器及名为 **partitioneddata** 的文件夹中。 **availability** 节指定每月生成输出数据集一次。
+    在 JSON 代码片段中，创建名为 **AzureBlobOutput**的数据集，指定 Hive 脚本生成的数据结构。 此外，指定将结果存储在名为 `adfgetstarted` 的 Blob 容器及名为 `partitioneddata` 的文件夹中。 **availability** 节指定每月生成输出数据集一次。
 
     ```JSON
     {
@@ -252,7 +253,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
     ```
      在 JSON 代码片段中创建一个管道，其中包括在 HDInsight 群集上使用 Hive 处理数据的单个活动。
 
-    Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 **AzureStorageLinkedService1**）中，以及 **adfgetstarted** 容器的 **script** 文件夹中。
+    Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 **AzureStorageLinkedService1**）中，以及 `adfgetstarted` 容器的 `script` 文件夹中。
 
     **defines** 节用于指定运行时设置，这些设置将作为 Hive 配置值（例如 ${hiveconf:inputtable}、${hiveconf:partitionedtable}）传递到 Hive 脚本。
 
@@ -269,7 +270,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
 1. 在“解决方案资源管理器”窗口中右键单击“依赖项”，指向“添加”，然后单击“现有项”。  
 2. 导航到 **C:\ADFGettingStarted**，选择 **partitionweblogs.hql** 和 **input.log** 文件，然后单击“添加”。 现已根据[教程概述](data-factory-build-your-first-pipeline.md)的部分先决条件创建两个文件。
 
-在下一步骤中发布解决方案时，会将 **partitionweblogs.hql** 文件上载到 **adfgetstarted** Blob 容器中的 scripts 文件夹。   
+在下一步骤中发布解决方案时，会将 **partitionweblogs.hql** 文件上载到 `adfgetstarted` Blob 容器中的 scripts 文件夹。   
 
 ### <a name="publishdeploy-data-factory-entities"></a>发布/部署数据工厂实体
 1. 在“解决方案资源管理器”中，右键单击该项目，并单击“发布” 。
@@ -277,7 +278,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
 3. 应该会看到以下对话框：
 
    ![“发布”对话框](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
-4. 在“配置数据工厂”页中执行以下步骤：
+4. 在“配置数据工厂”页，按照以下步骤操作：
 
    1. 选择“新建数据工厂”  选项。
    2. 输入数据工厂的唯一 **名称** 。 例如： **FirstDataFactoryUsingVS09152016**。 该名称必须全局唯一。
@@ -310,7 +311,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
 
 ## <a name="monitor-pipeline"></a>监视管道
 ### <a name="monitor-pipeline-using-diagram-view"></a>使用图示视图监视管道
-1. 登录到 [Azure 门户](https://portal.azure.com/)，执行以下操作：
+1. 登录到 [Azure 门户](https://portal.azure.com/)，执行以下步骤：
    1. 单击“更多服务”，然后单击“数据工厂”。
        
         ![浏览数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
@@ -331,7 +332,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
     ![“打开管道”视图](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-view.png)
 
     若要导航回到上一个视图，请单击顶部痕迹导航菜单中的“数据工厂”。
-6. 在“图示视图”中，双击数据集 **AzureBlobInput**。  确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”状态。 如果一段时间后未显示此状态，请检查是否已将输入文件 (input.log) 放置在正确的容器 (adfgetstarted) 和文件夹 (inputdata) 中。
+6. 在“图示视图”中，双击数据集 **AzureBlobInput**。  确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”状态。 如果一段时间后未显示此状态，请检查是否已将输入文件 (input.log) 放置在正确的容器 (`adfgetstarted`) 和文件夹 (`inputdata`) 中。
 
    ![输入切片处于就绪状态](./media/data-factory-build-your-first-pipeline-using-vs/input-slice-ready.png)
 7. 单击“X”关闭“AzureBlobInput”边栏选项卡。
@@ -346,7 +347,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
    >
 
     ![数据集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
-10. 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  
+10. 当切片处于“就绪”状态时，检查 Blob 存储中 `adfgetstarted` 容器内 `partitioneddata` 文件夹的输出数据。  
 
     ![输出数据](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
 11. 单击切片可在“数据切片”边栏选项卡中查看其详细信息。
@@ -373,7 +374,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
     ![活动窗口详细信息](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
 
 > [!IMPORTANT]
-> 成功处理切片后，将会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上载到 adfgetstarted 容器的 inputdata 文件夹中。
+> 成功处理切片后，将会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上载到 `adfgetstarted` 容器的 `inputdata` 文件夹中。
 >
 >
 
@@ -387,7 +388,7 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
     ![导出数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/export-data-factory-menu.png)
 
 ## <a name="update-data-factory-tools-for-visual-studio"></a>更新用于 Visual Studio 的数据工厂工具
-若要更新用于 Visual Studio 的 Azure 数据工厂工具，请执行以下操作：
+若要更新适用于 Visual Studio 的 Azure 数据工厂工具，请执行以下步骤：
 
 1. 在菜单中单击“工具”，然后选择“扩展和更新”。
 2. 在左窗格中选择“更新”，然后选择“Visual Studio 库”。
@@ -523,9 +524,4 @@ ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
 | [Data Transformation Activities](data-factory-data-transformation-activities.md) |此文提供 Azure 数据工厂支持的数据转换活动列表（例如本教程中使用的 HDInsight Hive 转换）。 |
 | [Scheduling and execution](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 | [使用监视应用监视和管理管道](data-factory-monitor-manage-app.md) |本文介绍如何使用监视和管理应用来监视、管理和调试管道。 |
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

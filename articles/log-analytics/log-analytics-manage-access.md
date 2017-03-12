@@ -1,6 +1,6 @@
 ---
-title: "管理工作区 | Microsoft 文档"
-description: "通过对用户、帐户、工作区和 Azure 帐户使用各种管理任务来管理 Azure Log Analytics 中的工作区。"
+title: "管理 Azure Log Analytics 和 OMS 门户中的工作区 | Microsoft 文档"
+description: "可以通过对用户、帐户、工作区和 Azure 帐户使用各种管理任务来管理 Azure Log Analytics 和 OMS 门户中的工作区。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/17/2017
+ms.date: 03/01/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
-ms.openlocfilehash: 1d330362389ee690dc2942c9bb1bc32e1f10e08a
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: dd09c109594e0ba86fe2f40625e765494bfc06eb
+ms.openlocfilehash: 1221de9ae16022f7300510b2db67ed0849b61397
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -163,25 +163,16 @@ ms.lasthandoff: 02/21/2017
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>将现有工作区链接到 Azure 订阅
 2016 年 9 月 26 日之后创建的所有工作区必须在创建时链接到 Azure 订阅。 此日期之前创建的工作区必须在下次登录时链接到某工作区。 从 Azure 门户创建工作区或者将工作区链接到 Azure 订阅时，Azure Active Directory 会链接为组织帐户。
 
-![链接 Azure 订阅](./media/log-analytics-manage-access/required-link.png)
-
-> [!IMPORTANT]
-> 若要链接工作区，Azure 帐户必须已可以访问要链接的工作区。  换言之，用于访问 Azure 门户的帐户必须与用于访问工作区的帐户**相同**。 否则，请参阅[将用户添加到现有工作区](#add-a-user-to-an-existing-workspace)。
->
->
-
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-oms-portal"></a>将工作区链接到 OMS 门户中的 Azure 订阅
-若要将工作区链接到 OMS 门户中的 Azure 订阅，登录用户必须已有付费的 Azure 帐户。
 
-1. 在 OMS 门户中，单击“设置”磁贴。
-2. 单击“帐户”选项卡，然后单击“Azure 订阅和数据计划”选项卡。
-3. 单击要使用的数据计划。
-4. 单击“保存”。  
-   ![订阅和数据计划](./media/log-analytics-manage-access/subscription-tab.png)
+- 登录到 OMS 门户时，系统会提示用户选择一个 Azure 订阅。 选择要链接到工作区的订阅，然后单击“链接”。  
+    ![链接 Azure 订阅](./media/log-analytics-manage-access/required-link.png)
 
-新数据计划会显示网页顶部的 OMS 门户功能区。
+    > [!IMPORTANT]
+    > 若要链接工作区，Azure 帐户必须已可以访问要链接的工作区。  换言之，用于访问 Azure 门户的帐户必须与用于访问工作区的帐户**相同**。 否则，请参阅[将用户添加到现有工作区](#add-a-user-to-an-existing-workspace)。
 
-![OMS 功能区](./media/log-analytics-manage-access/data-plan-changed.png)
+
+
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>将工作区链接到 Azure 门户中的 Azure 订阅
 1. 登录到 [Azure 门户](http://portal.azure.com)。
@@ -236,7 +227,7 @@ OMS 订阅权利在 Azure 或 OMS 门户中不可见。 可在企业门户中看
 
 如果需要更改工作区链接到的 Azure 订阅，可以使用 Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) cmdlet。  
 
-### <a name="change-a-workspace-to-a-paid-pricing-tier"></a>将工作区更改为付费定价层
+### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>在 Azure 门户中将工作区更改为付费定价层
 1. 登录到 [Azure 门户](http://portal.azure.com)。
 2. 浏览到 **Log Analytics**，然后选择它。
 3. 随即会看到现有工作区列表。 选择工作区。  
@@ -250,6 +241,21 @@ OMS 订阅权利在 Azure 或 OMS 门户中不可见。 可在企业门户中看
 > 如果工作区关联到自动化帐户，则在选择“单独(按 GB)”定价层之前，必须删除任何“自动化和控制”解决方案，并取消自动化帐户的关联。 在工作区边栏选项卡的“常规”下，单击“解决方案”查看和删除解决方案。 若要取消自动化帐户的关联，请在“定价层”边栏选项卡上单击自动化帐户的名称。
 >
 >
+
+## <a name="change-your-data-plan-in-the-oms-portal"></a>在 OMS 门户中更改流量套餐
+
+若要使用 OMS 门户更改流量套餐，已登录的用户必须具有 Azure 帐户。
+
+1. 在 OMS 门户中，单击“设置”磁贴。
+2. 单击“帐户”选项卡，然后单击“Azure 订阅和数据计划”选项卡。
+3. 单击要使用的数据计划。
+4. 单击“保存”。  
+   ![订阅和数据计划](./media/log-analytics-manage-access/subscription-tab.png)
+
+新数据计划会显示网页顶部的 OMS 门户功能区。
+
+![OMS 功能区](./media/log-analytics-manage-access/data-plan-changed.png)
+
 
 ## <a name="change-how-long-log-analytics-stores-data"></a>更改 Log Analytics 的数据存储期限
 
@@ -266,8 +272,8 @@ OMS 订阅权利在 Azure 或 OMS 门户中不可见。 可在企业门户中看
 2. 浏览到 **Log Analytics**，然后选择它。
 3. 随即会看到现有工作区列表。 选择工作区。  
 4. 在工作区边栏选项卡中“常规”下面，单击“保留期”。  
-5. 使用滑块增加或减少保留天数，然后单击“保存”
-“更改保留期”****![](./media/log-analytics-manage-access/manage-access-change-retention01.png)
+5. 使用滑块增加或减少保留天数，然后单击“保存”。  
+    ![更改保持期](./media/log-analytics-manage-access/manage-access-change-retention01.png)
 
 ## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>更改工作区的 Azure Active Directory 组织
 

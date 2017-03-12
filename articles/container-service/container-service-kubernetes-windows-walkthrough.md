@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
-ms.author: dlepow
+ms.date: 03/03/2017
+ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 31aaa122bfca5140dcd22d2a2233c46cd28f27b9
-ms.openlocfilehash: c139fc34d15545ce6a7a91842a3ebdff7c029a01
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: ef1e790edc4cd329245331bf1178ed1f610e914c
+ms.lasthandoff: 03/06/2017
 
 
 ---
 
-# <a name="get-started-with-windows-containers-in-a-kubernetes-cluster"></a>Kubernetes 群集中的 Windows 容器入门
+# <a name="get-started-with-kubernetes-and-windows-containers-in-container-service"></a>容器服务中的 Kubernetes 和 Windows 容器入门
 
 
 本文介绍如何在包含 Windows 节点的 Azure 容器服务中创建 Kubernetes 群集，以运行 Windows 容器。 
@@ -59,10 +60,16 @@ ms.lasthandoff: 02/23/2017
 可以使用 Azure 门户[创建 Kubernetes 群集](container-service-deployment.md#create-a-cluster-by-using-the-azure-portal)（含 Windows 代理节点）。 创建群集时，请注意以下设置：
 
 * 在“基本信息”边栏选项卡的“Orchestrator”中，选择“Kubernetes”。 
-* 在“主配置”边栏选项卡上，输入 Linux 主节点的用户凭据和服务主体凭据。
+
+  ![选择 Kubernetes Orchestrator](media/container-service-kubernetes-windows-walkthrough/portal-select-kubernetes.png)
+
+* 在“主配置”边栏选项卡上，输入 Linux 主节点的用户凭据和服务主体凭据。 选择 1个、3 个或 5 个主节点。
+
 * 在“代理配置”边栏选项卡的“操作系统”中，选择“Windows (预览版)”。 输入 Windows 代理节点的管理员凭据。
 
-有关详细信息，请参阅 [部署 Azure 容器服务群集](container-service-deployment.md)。
+  ![选择 Windows 代理](media/container-service-kubernetes-windows-walkthrough/portal-select-windows.png)
+
+有关更多详细信息，请参阅[部署 Azure 容器服务群集](container-service-deployment.md)。
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
 

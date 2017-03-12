@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2017
+ms.date: 03/03/2017
 ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 409f22dcc352aae1af9100bb7a30120ea861009b
-ms.openlocfilehash: 4acca777cb5e34719c9b8ccef09bd04b82f74ce6
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: e678062429605db34c1e6c835841aaf2508d81a3
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -161,6 +162,9 @@ ExpressRoute 不能配置为传输路由器。 你必须依赖连接服务提供
 | 印度南部 |12076:51019 |
 | 印度西部 |12076:51018 |
 | 印度中部 |12076:51017 |
+| **韩国** | |
+| 韩国南部 |12076:51028 |
+| 韩国中部 |12076:51029 |
 
 所有 Microsoft 播发的路由都标有适当的社区值。 
 
@@ -212,10 +216,5 @@ ExpressRoute 不能配置为传输路由器。 你必须依赖连接服务提供
   * [创建经典部署模型的 ExpressRoute 线路](expressroute-howto-circuit-classic.md)或[使用 Azure Resource Manager 创建和修改 ExpressRoute 线路](expressroute-howto-circuit-arm.md)
   * [为经典部署模型配置路由](expressroute-howto-routing-classic.md)或[为 Resource Manager 部署模型配置路由](expressroute-howto-routing-arm.md)
   * [将经典 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)或[将 Resource Manager VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/17/2017
+ms.date: 03/02/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: cf72197aba2c6e6c7a51f96d1161cf1fbe88a0c5
-ms.openlocfilehash: 149f3daf1f61f459b0a0834c0f112574510d5259
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 3ff2dcba568ed7ff83154cb6e1f1861ffb32a0d2
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -56,7 +56,7 @@ ms.lasthandoff: 02/18/2017
 * **第 3 部分** 导出并安装客户端证书。
 * **第 4 部分** 配置 VPN 客户端。
 
-## <a name="a-namevnetvpnasection-1---create-a-virtual-network-and-a-vpn-gateway"></a><a name="vnetvpn"></a>第 1 部分 - 创建虚拟网络和 VPN 网关
+## <a name="vnetvpn"></a>第 1 部分 - 创建虚拟网络和 VPN 网关
 ### <a name="part-1-create-a-virtual-network"></a>第 1 部分：创建虚拟网络
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。 这些步骤使用的是经典门户，而不是 Azure 门户。 目前不能使用 Azure 门户创建 P2S 连接。
 2. 在屏幕左下角，单击“新建”。 在导航窗格中，单击“网络服务”，然后单击“虚拟网络”。 单击“自定义创建”以启动配置向导  。
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/18/2017
 1. 在 Azure 经典门户的“网络”页上，单击刚创建的虚拟网络，然后导航到“仪表板”页。
 2. 在“仪表板”页的底部，单击“创建网关”。 。 单击“是”  即可开始创建网关。 创建网关最多可能需要 45 分钟。
 
-## <a name="a-namegenerateasection-2---generate-and-upload-certificates"></a><a name="generate"></a>第 2 部分 - 生成证书并上传
+## <a name="generate"></a>第 2 部分 - 生成证书并上传
 证书用于对点到站点 VPN 的 VPN 客户端进行身份验证。 可以使用企业证书解决方案生成的根证书，也可以使用自签名证书。 最多可以将 20 个根证书上载到 Azure。 上传 .cer 文件后，Azure 可以使用其中包含的信息来对已安装客户端证书的客户端进行身份验证。 客户端证书必须从 .cer 文件代表的同一个证书生成。
 
 在本部分中，需要执行以下操作：
@@ -96,35 +96,48 @@ ms.lasthandoff: 02/18/2017
 * 将 .cer 文件上传到 Azure。
 * 生成客户端证书。
 
-### <a name="a-namerootapart-1-obtain-the-cer-file-for-the-root-certificate"></a><a name="root"></a>第 1 部分：获取根证书的 .cer 文件
-如果使用企业证书系统，请获取要使用的根证书的 .cer 文件。 在 [第 3 部分](#createclientcert)中，从根证书生成客户端证书。
+### <a name="root"></a>第 1 部分：获取根证书的 .cer 文件
+如果要使用企业级解决方案，可以使用现有的证书链。 获取要使用的根证书的 .cer 文件。
 
-如果你使用的不是企业证书解决方案，则需生成自签名根证书。 有关适用于 Windows 10 的步骤，请参阅 [为点到站点配置使用自签名根证书](vpn-gateway-certificates-point-to-site.md)。 本文将指导用户使用 makecert 来生成自签名证书，然后导出 .cer 文件。
+如果使用的不是企业证书解决方案，则需要创建自签名根证书。 若要创建包含进行 P2S 身份验证所需的字段的自签名证书，请使用 makecert。 [为 P2S 连接创建自签名的根证书](vpn-gateway-certificates-point-to-site.md)将引导用户完成相关步骤，以便创建自签名的根证书。 我们知道 makecert 已弃用，但它目前仍是受支持的解决方案。
 
-### <a name="a-nameuploadapart-2-upload-the-root-certificate-cer-file-to-the-azure-classic-portal"></a><a name="upload"></a>第 2 部分：将根证书的 .cer 文件上传到 Azure 经典门户
+>[!NOTE]
+>虽然可以使用 PowerShell 创建自签名证书，但是使用 PowerShell 生成的证书不包含进行点到站点身份验证所需的字段。
+>
+
+
+#### <a name="to-obtain-the-cer-file-from-a-self-signed-root-certificate"></a>获取自签名根证书中的 .cer 文件
+
+1. 若要从自签名根证书中获取 .cer 文件，请打开 **certmgr.msc** 并查找所创建的根证书。 该证书通常位于“Certificates-Current User/ Personal/Certificates”中，其名称是用户在创建它时选择的。 右键单击自签名根证书，单击“所有任务”，然后单击“导出”。 此操作将打开“证书导出向导”。
+2. 在向导中，单击“下一步”，选择“否，不导出私钥”，然后单击“下一步”。
+3. 在“导出文件格式”页上，选择“Base-64 编码的 X.509 (.CER)”。 然后单击“下一步”。
+4. 在“要导出的文件”中，“浏览”到要将证书导出的目标位置。 在“文件名”中，为证书文件命名。 。
+5. 单击“完成”导出证书。
+
+### <a name="upload"></a>第 2 部分：将根证书的 .cer 文件上传到 Azure 经典门户
 将受信任的证书添加到 Azure。 在将 Base64 编码 X.509 (.cer) 文件添加到 Azure 时，则是在告诉 Azure 信任该文件所代表的根证书。
 
 1. 在 Azure 经典门户的虚拟网络“证书”页上，单击“上载根证书”。
 2. 在“上载证书”页上  ，浏览 .cer 根证书，然后单击复选标记。
 
-### <a name="a-namecreateclientcertapart-3-generate-a-client-certificate"></a><a name="createclientcert"></a>第 3 部分：生成客户端证书
+### <a name="createclientcert"></a>第 3 部分：生成客户端证书
 接下来，生成客户端证书。 可以为要连接的每个客户端生成唯一证书，也可以在多台客户端上使用同一个证书。 生成唯一客户端证书的优点是能够在需要时撤销单个证书。 如果所有客户端都使用同一个客户端证书，那么当需要为一台客户端撤销证书时，就需要为使用该证书进行身份验证的所有客户端生成并安装新的证书。
 
 ####<a name="enterprise-certificate"></a>企业证书
-- 如果使用的是企业证书解决方案，请使用通用名称值格式 'name@yourdomain.com', 生成客户端证书，而不要使用“域名\用户名”格式。
+- 如果使用的是企业证书解决方案，请使用通用名称值格式“name@yourdomain.com”生成客户端证书，而不要使用“域名\用户名”格式。
 - 请确保颁发的客户端证书基于“用户”证书模板，该模板使用“客户端身份验证”作为使用列表中的第一项，而不是智能卡登录等。可以通过双击客户端证书，然后查看“详细信息”>“增强型密钥用法”来检查证书。
 
 ####<a name="self-signed-certificate"></a>自签名证书 
 如果使用自签名证书，请参阅 [为点到站点配置使用自签名根证书](vpn-gateway-certificates-point-to-site.md) ，生成客户端证书。
 
-## <a name="a-nameinstallclientcertasection-3---export-and-install-the-client-certificate"></a><a name="installclientcert"></a>第 3 部分 - 导出并安装客户端证书
+## <a name="installclientcert"></a>第 3 部分 - 导出并安装客户端证书
 在要连接到虚拟网络的每台计算机上安装客户端证书。 进行身份验证需要客户端证书。 可以自动安装客户端证书，也可以手动安装。 以下步骤将引导用户手动导出并安装客户端证书。
 
 1. 若要导出客户端证书，可以使用 *certmgr.msc*。 右键单击要导出的客户端证书，单击“所有任务”，然后单击“导出”。
 2. 导出带私钥的客户端证书。 这是一个 *.pfx* 文件。 请确保记录或记住为此证书设置的密码（密钥）。
 3. 将 *.pfx* 文件复制到客户端计算机。 在客户端计算机上，双击 *.pfx* 文件进行安装。 系统请求你输入密码时，请输入相应的密码。 请勿修改安装位置。
 
-## <a name="a-namevpnclientconfigasection-4---configure-your-vpn-client"></a><a name="vpnclientconfig"></a>第 4 部分 - 配置 VPN 客户端
+## <a name="vpnclientconfig"></a>第 4 部分 - 配置 VPN 客户端
 要连接到虚拟网络，还需要配置 VPN 客户端。 客户端要求你提供客户端证书和正确的 VPN 客户端配置才能进行连接。 要配置 VPN 客户端，请按顺序执行以下步骤。
 
 ### <a name="part-1-create-the-vpn-client-configuration-package"></a>第 1 部分：创建 VPN 客户端配置包
@@ -173,7 +186,7 @@ ms.lasthandoff: 02/18/2017
         Default Gateway.................:
         NetBIOS over Tcpip..............: Enabled
 
-## <a name="a-namefaqapoint-to-site-faq"></a><a name="faq"></a>点到站点常见问题解答
+## <a name="faq"></a>点到站点常见问题解答
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 

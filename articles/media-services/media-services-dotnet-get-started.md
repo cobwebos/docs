@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 34b166d63e539883a110dc96f7333a2379bc4963
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 124eff2edccb6b4ad56ee39a2b37e892ef8c6cb4
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -33,8 +33,8 @@ ms.lasthandoff: 01/13/2017
 
 * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
-* .NET Framework 4.0 或更高版本
-* Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
+* .NET Framework 4.0 或更高版本。
+* Visual Studio。
 
 本教程包括以下任务：
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 01/13/2017
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 在 Visual Studio 2013、Visual Studio 2012 或 Visual Studio 2010 SP1 中创建一个新的 C# 控制台应用程序。 输入“名称”、“位置”和“解决方案名称”，然后单击“确定”。
+1. 在 Visual Studio 中创建新的 C# 控制台应用程序。 输入“名称”、“位置”和“解决方案名称”，然后单击“确定”。
 2. 使用 [windowsazure.mediaservices.extensions](https://www.nuget.org/packages/windowsazure.mediaservices.extensions) NuGet 包安装 **Azure 媒体服务 .NET SDK 扩展**。  媒体服务.NET SDK 扩展是一组扩展方法和帮助器函数，可简化你的代码，并令使用媒体服务进行开发变得更加容易。 安装此包也会安装 **媒体服务 .NET SDK** 并添加所有其他必需的依赖项。
 
     若要使用 NuGet 添加引用，请执行以下操作：在解决方案资源管理器中，在项目名称上单击鼠标右键按钮，选择“管理 NuGet 包”。 然后，搜索 **windowsazure.mediaservices.extensions**，并单击“安装”。
@@ -184,7 +184,7 @@ ms.lasthandoff: 01/13/2017
 
 * **无** - 不使用加密。 这是默认值。 请注意，使用此选项时，你的内容在传送过程中或静态存储过程中都不会受到保护。
   如果计划使用渐进式下载交付 MP4，则使用此选项。
-* **StorageEncrypted** - 使用此选项可以通过高级加密标准 (AES) 256 位加密在本地加密明文内容，然后将其上载到 Azure 存储空间中以加密形式静态存储相关内容。 受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上载为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
+* **StorageEncrypted** - 使用此选项可以通过高级加密标准 (AES)&256; 位加密在本地加密明文内容，然后将其上载到 Azure 存储空间中以加密形式静态存储相关内容。 受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上载为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
 * **CommonEncryptionProtected** - 上载经过通用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流）时使用此选项。
 * **EnvelopeEncryptionProtected** - 如果要上载使用 AES 加密的 HLS，请使用此选项。 请注意，Transform Manager 必须已对文件进行编码和加密。
 

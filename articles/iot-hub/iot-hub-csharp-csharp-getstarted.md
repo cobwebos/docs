@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: dobett
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
-ms.openlocfilehash: 90ca7089b2ce6a541f6890c6d50e912f2127ff85
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 969e6bd55ca69e293f13b66f1a51f1d5fd1996b7
+ms.lasthandoff: 03/06/2017
 
 
 ---
-# <a name="get-started-with-azure-iot-hub-net"></a>Azure IoT 中心入门 (.NET)
+# <a name="connect-your-simulated-device-to-your-iot-hub-using-net"></a>使用 .NET 将模拟设备连接到 IoT 中心
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 本教程结束时，将会创建三个 .NET 控制台应用：
@@ -36,7 +38,7 @@ ms.openlocfilehash: 90ca7089b2ce6a541f6890c6d50e912f2127ff85
 
 若要完成本教程，您需要以下各项：
 
-* Microsoft Visual Studio 2015。
+* Visual Studio 2015 或 Visual Studio 2017。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -46,7 +48,7 @@ ms.openlocfilehash: 90ca7089b2ce6a541f6890c6d50e912f2127ff85
 ## <a name="create-a-device-identity"></a>创建设备标识
 本部分将创建一个 .NET 控制台应用，用于在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]中的“标识注册表”部分。 当你运行此控制台应用时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
 
-1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **CreateDeviceIdentity**。
+1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到新解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **CreateDeviceIdentity**，将解决方案命名为 **IoTHubGetStarted**。
    
     ![新的 Visual C# Windows 经典桌面项目][10]
 2. 在解决方案资源管理器中，右键单击“CreateDeviceIdentity”项目，然后单击“管理 NuGet 包”。
@@ -101,9 +103,9 @@ ms.openlocfilehash: 90ca7089b2ce6a541f6890c6d50e912f2127ff85
 > 
 > 
 
-1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **ReadDeviceToCloudMessages**。
+1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **ReadDeviceToCloudMessages**。
    
-    ![新的 Visual C# Windows 经典桌面项目][10]
+    ![新的 Visual C# Windows 经典桌面项目][10a]
 2. 在解决方案资源管理器中，右键单击“ReadDeviceToCloudMessages”项目，然后单击“管理 NuGet 包”。
 3. 在“NuGet 包管理器”窗口中，搜索 **WindowsAzure.ServiceBus**，选择“安装”并接受使用条款。 该过程将下载、安装 [Azure 服务总线][lnk-servicebus-nuget]及其所有依赖项并添加对它的引用。 此包可让应用程序连接到 IoT 中心上与事件中心兼容的终结点。
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
@@ -158,9 +160,9 @@ ms.openlocfilehash: 90ca7089b2ce6a541f6890c6d50e912f2127ff85
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 本部分将创建一个 .NET 控制台应用，用于模拟向 IoT 中心发送设备到云消息的设备。
 
-1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **SimulatedDevice**。
+1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **SimulatedDevice**。
    
-    ![新的 Visual C# Windows 经典桌面项目][10]
+    ![新的 Visual C# Windows 经典桌面项目][10b]
 2. 在解决方案资源管理器中，右键单击“SimulatedDevice”项目，然后单击“管理 NuGet 包”。
 3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **Microsoft.Azure.Devices.Client**，选择“安装”以安装 **Microsoft.Azure.Devices.Client** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 设备 SDK][lnk-device-nuget] NuGet 包及其依赖项并添加对它的引用。
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
@@ -245,6 +247,8 @@ ms.openlocfilehash: 90ca7089b2ce6a541f6890c6d50e912f2127ff85
 [42]: ./media/iot-hub-csharp-csharp-getstarted/run-apps2.png
 [43]: ./media/iot-hub-csharp-csharp-getstarted/usage.png
 [10]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp1.png
+[10a]: ./media/iot-hub-csharp-csharp-getstarted/create-receive-csharp1.png
+[10b]: ./media/iot-hub-csharp-csharp-getstarted/create-device-csharp1.png
 [11]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp2.png
 [12]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp3.png
 
@@ -267,9 +271,4 @@ ms.openlocfilehash: 90ca7089b2ce6a541f6890c6d50e912f2127ff85
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 
