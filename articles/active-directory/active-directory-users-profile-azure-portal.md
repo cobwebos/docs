@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/24/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bf8930a73c334265c828cd01ca1910201b231f3b
+ms.sourcegitcommit: 0dc1f1ef73334187fe76302ff3bd5a5446dec768
+ms.openlocfilehash: 21370f9c30ac1dcaa979ab9724155c91bda128f7
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: bf8930a73c334265c828cd01ca1910201b231f3b
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，在文本框中输入“用户和组”，然后选择 **Enter**。
 
-   ![打开“用户管理”](./media/active-directory-users-profile-azure-portal/create-users-user-management.png)
+   ![打开用户和组](./media/active-directory-users-profile-azure-portal/create-users-user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“用户”。
 
    ![打开“用户”边栏选项卡](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
@@ -43,9 +44,4 @@ ms.openlocfilehash: bf8930a73c334265c828cd01ca1910201b231f3b
 * [在 Azure Active Directory 预览版中向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)
 * [在 Azure Active Directory 预览版中添加或更改用户的个人资料信息](active-directory-users-work-info-azure-portal.md)
 * [从 Azure Active Directory 预览版的目录中删除用户](active-directory-users-delete-user-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

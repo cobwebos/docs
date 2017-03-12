@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
-ms.openlocfilehash: d6845f666c8b987319bd0b5a7bbe8726f8501249
+ms.sourcegitcommit: 1c22e4fc17226578aaaf272fdf79178da65c63c2
+ms.openlocfilehash: 8c8ac0af8a39afdd9755040d21585185ceca890e
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: d6845f666c8b987319bd0b5a7bbe8726f8501249
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-veracode-tutorial/IC802903.png "Scenario")
+![方案](./media/active-directory-saas-veracode-tutorial/IC802903.png "方案")
 
 ## <a name="enabling-the-application-integration-for-veracode"></a>为 Veracode 启用应用程序集成
 本部分旨在概述如何为 Veracode 启用应用程序集成。
@@ -44,23 +45,23 @@ ms.openlocfilehash: d6845f666c8b987319bd0b5a7bbe8726f8501249
    
     ![Active Directory](./media/active-directory-saas-veracode-tutorial/IC700993.png "Active Directory")
 
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-    ![应用程序](./media/active-directory-saas-veracode-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-veracode-tutorial/IC700994.png "应用程序")
 
 4. 在页面底部单击“添加”。
    
-    ![添加应用程序](./media/active-directory-saas-veracode-tutorial/IC749321.png "Add application")
+    ![添加应用程序](./media/active-directory-saas-veracode-tutorial/IC749321.png "添加应用程序")
 
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-    ![从库中添加应用程序](./media/active-directory-saas-veracode-tutorial/IC749322.png "Add an application from gallerry")
+    ![从库添加应用程序](./media/active-directory-saas-veracode-tutorial/IC749322.png "从库添加应用程序")
 
 6. 在“搜索框”中，键入“Veracode”。
    
-    ![应用程序库](./media/active-directory-saas-veracode-tutorial/IC802904.png "Application Gallery")
+    ![应用程序库](./media/active-directory-saas-veracode-tutorial/IC802904.png "应用程序库")
 
 7. 在结果窗格中，选择“Veracode”，然后单击“完成”以添加该应用程序。
    
@@ -71,24 +72,24 @@ ms.openlocfilehash: d6845f666c8b987319bd0b5a7bbe8726f8501249
 Veracode 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。  
 以下屏幕截图显示一个示例。
 
-![属性](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attributes")
+![属性](./media/active-directory-saas-veracode-tutorial/IC802906.png "属性")
 
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户中的“Veracode”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-veracode-tutorial/IC802907.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-veracode-tutorial/IC802907.png "配置单一登录")
 
 2. 在“你希望用户如何登录 Veracode”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-veracode-tutorial/IC802908.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-veracode-tutorial/IC802908.png "配置单一登录")
 
 3. 在“配置应用设置”页上，单击“下一步”。
    
-    ![配置应用设置](./media/active-directory-saas-veracode-tutorial/IC802909.png "Configure App Settings")
+    ![配置应用设置](./media/active-directory-saas-veracode-tutorial/IC802909.png "配置应用设置")
 
 4. 在“配置 Veracode 的单一登录”页上，若要下载证书，单击“下载证书”，然后将证书文件保存在本地计算机上。
    
-    ![配置单一登录](./media/active-directory-saas-veracode-tutorial/IC802910.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-veracode-tutorial/IC802910.png "配置单一登录")
 
 5. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Veracode 公司站点。
 
@@ -130,15 +131,15 @@ Veracode 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令
 
 10. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
     
-    ![配置单一登录](./media/active-directory-saas-veracode-tutorial/IC802914.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-veracode-tutorial/IC802914.png "配置单一登录")
 
-11. 在顶部菜单中单击“属性”，打开“SAML 令牌属性”对话框。
+11. 在顶部菜单中，单击“属性”，打开“SAML 令牌属性”对话框。
     
-    ![属性](./media/active-directory-saas-veracode-tutorial/IC795920.png "Attributes")
+    ![属性](./media/active-directory-saas-veracode-tutorial/IC795920.png "属性")
 
 12. 若要添加所需的属性映射，请执行以下步骤：
     
-    ![属性](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attributes")
+    ![属性](./media/active-directory-saas-veracode-tutorial/IC802906.png "属性")
     
     | 属性名称 | 属性值 |
     |:--- |:--- |
@@ -176,17 +177,12 @@ Veracode 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令
 
 2. 在“Veracode”应用程序集成页上，单击“分配用户”。
    
-    ![分配用户](./media/active-directory-saas-veracode-tutorial/IC802915.png "Assign Users")
+    ![分配用户](./media/active-directory-saas-veracode-tutorial/IC802915.png "分配用户")
 
-3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
+3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-    ![是](./media/active-directory-saas-veracode-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-veracode-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
+ms.sourcegitcommit: 3152a1306f2c3eeb42dd3b21cff62b696ed01e5d
+ms.openlocfilehash: 75ea0486a1b5abc71df3b7d9e8385717954b89f4
+ms.lasthandoff: 03/01/2017
 
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
@@ -35,12 +36,12 @@ ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
 > -   若要下载此视频中使用的策略语句，请参阅 [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) github 存储库。  
   
   
-##  <a name="a-namesyntaxa-syntax"></a><a name="Syntax"></a> 语法  
+##  <a name="Syntax"></a> 语法  
  单一语句表达式括在 `@(expression)` 中，其中 `expression` 是格式正确的 C# 表达式语句。  
   
  多语句表达式括在 `@{expression}` 中。 多语句表达式中的所有代码路径必须以 `return` 语句结尾。  
   
-##  <a name="a-namepolicyexpressionsexamplesa-examples"></a><a name="PolicyExpressionsExamples"></a> 示例  
+##  <a name="PolicyExpressionsExamples"></a> 示例  
   
 ```  
 @(true)  
@@ -51,7 +52,7 @@ ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
   
 @(Regex.Match(context.Response.Headers.GetValueOrDefault("Cache-Control",""), @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value)  
   
-@(context.Variables.ContainsKey("maxAge")?3600:int.Parse((string)context.Variables["maxAge"]))  
+@(context.Variables.ContainsKey("maxAge") ? int.Parse((string)context.Variables["maxAge"]) : 3600)  
   
 @{   
   string value;   
@@ -66,13 +67,13 @@ ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
 }  
 ```  
   
-##  <a name="a-namepolicyexpressionsusagea-usage"></a><a name="PolicyExpressionsUsage"></a> 用法  
+##  <a name="PolicyExpressionsUsage"></a> 用法  
  在任何 API 管理[策略](api-management-policies.md)中，表达式可以用作属性值或文本值，除非策略引用另行指定。  
   
 > [!IMPORTANT]
 >  请注意，在使用策略表达式对策略进行定义时，只能对策略表达式进行有限的验证。 由于表达式是在运行时的入站或出站管道中通过网关执行的，因此只要策略表达式生成了运行时异常，就会在 API 调用中出现运行时错误。  
   
-##  <a name="a-nameclrtypesa-net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a> 策略表达式中允许的 .NET Framework 类型  
+##  <a name="CLRTypes"></a> 策略表达式中允许的 .NET Framework 类型  
  下表列出了策略表达式中允许的 .NET Framework 类型及其成员。  
   
 |CLR 类型|支持的方法|  
@@ -166,12 +167,12 @@ ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
 |System.Xml.Linq.XText|支持所有方法|  
 |System.Xml.XmlNodeType|全部|  
   
-##  <a name="a-namecontextvariablesa-context-variable"></a><a name="ContextVariables"></a> 上下文变量  
+##  <a name="ContextVariables"></a> 上下文变量  
  在每个策略[表达式](api-management-policy-expressions.md#Syntax)中均可隐式使用名为 `context` 的变量。 其成员提供与 `\request` 相关的信息。 所有 `context` 成员均为只读。  
   
 |上下文变量|允许的方法、属性和参数值|  
 |----------------------|-------------------------------------------------------|  
-|上下文|Api: IApi<br /><br /> 部署<br /><br /> LastError<br /><br /> 操作<br /><br /> 产品<br /><br /> 请求<br /><br /> 响应<br /><br /> 订阅<br /><br /> Tracing：布尔值<br /><br /> 用户<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
+|上下文|Api: IApi<br /><br /> 部署<br /><br /> LastError<br /><br /> 操作<br /><br /> 产品<br /><br /> 请求<br /><br /> RequestId：字符串<br /><br /> 响应<br /><br /> 订阅<br /><br /> Tracing：布尔值<br /><br /> 用户<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
 |context.Api|Id: 字符串<br /><br /> Name: 字符串<br /><br /> Path: 字符串<br /><br /> ServiceUrl: IUrl|  
 |context.Deployment|Region: 字符串<br /><br /> ServiceName: 字符串|  
 |context.LastError|Source: 字符串<br /><br /> Reason: 字符串<br /><br /> Message: 字符串<br /><br /> Scope: 字符串<br /><br /> Section: 字符串<br /><br /> Path: 字符串<br /><br /> PolicyId: 字符串<br /><br /> 有关 context.LastError 的详细信息，请参阅[错误处理](api-management-error-handling-policies.md)。|  
@@ -201,8 +202,4 @@ ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
 
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
-
-
-<!--HONumber=Jan17_HO2-->
-
 

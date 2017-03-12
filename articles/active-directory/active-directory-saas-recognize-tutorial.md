@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 43e9febd4bc230db69b55ae3f5bb13ff17b2e3f6
+ms.sourcegitcommit: a2ce8c3a6aad76ca491ca17beab8555ad77a1142
+ms.openlocfilehash: 3bfb340639674406a0a983106b56ca4a993aaf14
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -26,8 +27,8 @@ ms.openlocfilehash: 43e9febd4bc230db69b55ae3f5bb13ff17b2e3f6
 将 Recognize 与 Azure AD 集成提供以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 Recognize
-* 可以让用户使用其 Azure AD 帐户自动登录到 Recognize（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可以让用户使用其 Azure AD 帐户自动登录到 Recognize 单一登录
+* 可以在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,25 +36,24 @@ ms.openlocfilehash: 43e9febd4bc230db69b55ae3f5bb13ff17b2e3f6
 若要配置 Azure AD 与 Recognize 的集成，需要以下项：
 
 * Azure AD 订阅
-* 已启用 Recognize 单一登录的订阅
+* 已启用 Recognize 单一登录 (SSO) 的订阅
 
-> [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
-> 
-> 
+ >[!NOTE]
+ >不建议使用生产环境测试本教程中的步骤。 
+ > 
 
 测试本教程中的步骤应遵循以下建议：
 
 * 不应使用生产环境，除非有此必要。
-* 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-本教程的目的是介绍如何在测试环境中测试 Azure AD 单一登录。
+本教程旨在介绍如何在测试环境中测试 Azure AD SSO。
 
 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Recognize
-2. 配置和测试 Azure AD 单一登录
+2. 配置和测试 Azure AD SSO
 
 ## <a name="adding-recognize-from-the-gallery"></a>从库中添加 Recognize
 若要配置 Recognize 与 Azure AD 的集成，需要从库中将 Recognize 添加到托管 SaaS 应用列表。
@@ -80,25 +80,25 @@ ms.openlocfilehash: 43e9febd4bc230db69b55ae3f5bb13ff17b2e3f6
    
     ![在库中选择应用](./media/active-directory-saas-recognize-tutorial/tutorial_recognize_0001.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-本部分的目的是说明如何基于名为“Britta Simon”的测试用户配置和测试 Recognize 的 Azure AD 单一登录。
+## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
+本部分旨在说明如何基于名为“Britta Simon”的测试用户配置和测试 Recognize 的 Azure AD SSO。
 
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Recognize 用户。 换句话说，需要在 Azure AD 用户与 Recognize 中相关用户之间建立链接关系。
+若要运行 SSO，Azure AD 需要知道与 Azure AD 用户相对应的 Recognize 用户。 换句话说，需要在 Azure AD 用户与 Recognize 中相关用户之间建立链接关系。
 
 通过将 Azure AD 中“用户名”的值分配为 Recognize 中“用户名”的值来建立此链接关系。
 
-若要配置和测试 Recognize 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 Recognize 的 Azure AD SSO，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[创建 Recognize 测试用户](#creating-a-recognize-test-user)** - 在 Recognize 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-在本部分中，将在经典门户中启用 Azure AD 单一登录并在 Recognize 应用程序中配置单一登录。
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+在本部分中，将在经典门户中启用 Azure AD SSO，并在 Recognize 应用程序中配置 SSO。
 
-**若要配置 Recognize 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 Recognize 的 Azure AD SSO，请执行以下步骤：**
 
 1. 在经典门户中的“Recognize”应用程序集成页上，单击“配置单一登录”打开“配置单一登录”对话框。
    
@@ -109,17 +109,14 @@ ms.openlocfilehash: 43e9febd4bc230db69b55ae3f5bb13ff17b2e3f6
 3. 在“配置应用设置”对话框页上，执行以下步骤，然后单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-recognize-tutorial/tutorial_recognize_04.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://recognizeapp.com/<your-domain>/saml/sso`。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 在“标识符”文本框中，使用以下模式键入 URL：`https://recognizeapp.com/<your-domain>/saml/metadata`。
-   
-    c. 单击“下一步”
-   
-   > [!NOTE]
-   > 如果不知道这些 URL，请使用示例模式键入示例 URL。 若要获取这些值，可以参考步骤 9 以了解更多详细信息或通过 <mailto:support@recognizeapp.com> 联系 Recognize 支持团队。
-   > 
-   > 
+  1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://recognizeapp.com/<your-domain>/saml/sso`。 
+  2. 在“标识符”文本框中，使用以下模式键入 URL：`https://recognizeapp.com/<your-domain>/saml/metadata`。
+  3. 单击“下一步”。
+  
+    >[!NOTE]
+    >如果不知道这些 URL，请使用示例模式键入示例 URL。 若要获取这些值，可以参考步骤 9 以了解更多详细信息或通过 <mailto:support@recognizeapp.com> 联系 Recognize 支持团队。
+    >
+
 4. 在“配置 Recognize 的单一登录”页上，请单击“下载证书”，然后在计算机上保存该文件：
    
     ![配置单一登录](./media/active-directory-saas-recognize-tutorial/tutorial_recognize_05.png)
@@ -133,18 +130,12 @@ ms.openlocfilehash: 43e9febd4bc230db69b55ae3f5bb13ff17b2e3f6
 8. 在“SSO 设置”部分中执行以下步骤。
    
     ![在应用端配置单一登录](./media/active-directory-saas-recognize-tutorial/tutorial_recognize_002.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“启用 SSO”，选择“启用”。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 在“IDP 实体 ID”文本框中放置 Azure AD 应用程序配置向导中**颁发者 URL** 的值。
-   
-    c. 在“Sso 目标 URL”文本框中放置 Azure AD 应用程序配置向导中**单一登录服务 URL** 的值。
-   
-    d.单击“下一步”。 在“Slo 目标 URL”文本框中放置 Azure AD 应用程序配置向导中**单一注销服务 URL** 的值。
-   
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在记事本中打开下载的证书，将其内容复制到剪贴板，然后将其粘贴到“证书”文本框中。 
-   
-    f. 单击“保存设置”按钮。 
+ 1. 对于“启用 SSO”，选择“启用”。
+ 2. 在“IDP 实体 ID”文本框中放置 Azure AD 应用程序配置向导中**颁发者 URL** 的值。 
+ 3. 在“Sso 目标 URL”文本框中放置 Azure AD 应用程序配置向导中**单一登录服务 URL** 的值。 
+ 4. 在“Slo 目标 URL”文本框中放置 Azure AD 应用程序配置向导中**单一注销服务 URL** 的值。 
+ 5. 在记事本中打开下载的证书，将其内容复制到剪贴板，然后将其粘贴到“证书”文本框中。  
+ 6. 单击“保存设置”按钮。 
 9. 在“SSO 设置”部分旁边，复制“服务提供程序元数据 url”下的 URL。
    
     ![在应用端配置单一登录](./media/active-directory-saas-recognize-tutorial/tutorial_recognize_003.png)
@@ -158,7 +149,7 @@ ms.openlocfilehash: 43e9febd4bc230db69b55ae3f5bb13ff17b2e3f6
     
     ![Azure AD 单一登录][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在经典门户中创建名为“Britta Simon”的测试用户。
 
 ![创建 Azure AD 用户][20]
@@ -178,56 +169,44 @@ ms.openlocfilehash: 43e9febd4bc230db69b55ae3f5bb13ff17b2e3f6
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-recognize-tutorial/create_aaduser_05.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+ 1. 在“用户类型”中，选择“你的组织中的新用户”。  
+ 2. 在“用户名”文本框中，键入“BrittaSimon”。 
+ 3. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-recognize-tutorial/create_aaduser_06.png)
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   ![创建 Azure AD 测试用户](./media/active-directory-saas-recognize-tutorial/create_aaduser_06.png) 
+ 1. 在“名字”文本框中，键入“Britta”。   
+ 2. 在“姓氏”文本框中，键入“Simon”。 
+ 3. 在“显示名称”文本框中，键入“Britta Simon”。 
+ 4. 在“角色”列表中，选择“用户”。 
+ 5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-recognize-tutorial/create_aaduser_07.png)
 8. 在“获取临时密码”对话框页上，执行以下步骤：
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-recognize-tutorial/create_aaduser_08.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-recognize-tutorial/create_aaduser_08.png) 
+ 1. 写下“新密码”的值。 
+ 2. 单击“完成”。   
 
-### <a name="creating-a-recognize-test-user"></a>创建 Recognize 测试用户
+### <a name="create-a-recognize-test-user"></a>创建 Recognize 测试用户
 要使 Azure AD 用户能够登录 Recognize，必须将这些用户预配到 Recognize 中。 对于 Recognize，预配是一项手动任务。
 
 此应用不支持 SCIM 预配，但具有替代的可预配用户的用户同步。 
 
-#### <a name="to-provision-a-user-account-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
+**若要预配用户帐户，请执行以下步骤：**
+
 1. 以管理员身份登录 Recognize 公司站点。
 2. 在右上角，单击“菜单”。 转到“公司管理员”。
 3. 在左侧导航窗格上，单击“设置”。
 4. 在“用户同步”部分中，执行以下步骤。
    
-   ![新建用户](./media/active-directory-saas-recognize-tutorial/tutorial_recognize_005.png "New User")
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“启用同步”，选择“启用”。
-   
-   b.保留“数据库类型”设置，即设置为“共享”。 对于“选择同步提供程序”，选择“Microsoft/Office 365”。
-   
-   c. 单击“运行用户同步”
+   ![新建用户](./media/active-directory-saas-recognize-tutorial/tutorial_recognize_005.png "New User")   
+ 1. 对于“启用同步”，选择“启用”。 
+ 2. 对于“选择同步提供程序”，选择“Microsoft/Office 365”。 
+ 3. 单击“运行用户同步”。
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 本部分的目的是通过授予 Britta Simon 访问 Recognize 的权限，允许她使用 Azure 单一登录。
 
 ![分配用户][200]
@@ -248,8 +227,8 @@ ms.openlocfilehash: 43e9febd4bc230db69b55ae3f5bb13ff17b2e3f6
    
     ![分配用户][205]
 
-### <a name="testing-single-sign-on"></a>测试单一登录
-本部分的目的是使用“访问面板”测试 Azure AD 单一登录配置。
+### <a name="test-single-sign-on"></a>测试单一登录
+本部分旨在使用“访问面板”测试 Azure AD SSO 配置。
 
 单击访问面板中的“Recognize”磁贴时，用户应自动登录到 Recognize 应用程序。
 
@@ -274,9 +253,4 @@ ms.openlocfilehash: 43e9febd4bc230db69b55ae3f5bb13ff17b2e3f6
 [203]: ./media/active-directory-saas-recognize-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-recognize-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-recognize-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
