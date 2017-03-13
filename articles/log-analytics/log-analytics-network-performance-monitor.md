@@ -1,6 +1,6 @@
 ---
-title: "OMS 中的网络性能监视器解决方案 | Microsoft 文档"
-description: "网络性能监视器帮助你近乎实时地监视网络性能，以检测并找到网络性能瓶颈。"
+title: "Azure Log Analytics 中的网络性能监视器解决方案 | Microsoft 文档"
+description: "借助 Azure Log Analytics 中的网络性能监视器可以监视网络的性能，即时检测出网络性能瓶颈。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,21 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 02/22/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: d1cae87bb312ef903d099b8be59ad39a5b83d468
-ms.openlocfilehash: 4b683ef50ca1046686213b55c32e07b5fb8cca68
+ms.sourcegitcommit: 2b427d37a144b947d8d905e8f310ea35785ddf61
+ms.openlocfilehash: f397266afa269831d3791c625342454054b86ff2
+ms.lasthandoff: 02/23/2017
 
 
 ---
-# <a name="network-performance-monitor-preview-solution-in-oms"></a>OMS 中的网络性能监视器（预览）解决方案
-> [!NOTE]
-> 这是[预览解决方案](log-analytics-add-solutions.md#preview-management-solutions-and-features)。
->
->
+# <a name="network-performance-monitor-solution-in-log-analytics"></a>Log Analytics 中的网络性能监视器解决方案
 
-本文档介绍了如何设置和使用 OMS 中的网络性能监视器解决方案，这可帮助你近乎实时地监视网络性能，以检测并找到网络性能瓶颈。 通过使用网络性能监视器解决方案，可以监视两个网络、子网或服务器之间的丢失和延迟。 网络性能监视器会检测到诸如流量黑洞、路由错误和常规网络监视方法无法检测到的问题之类的网络问题。 只要突破网络链接的阈值，网络性能监视器就会生成警报并进行通知。 系统可以自动获知这些阈值，也可以配置这些阈值以使用自定义警报规则。 网络性能监视器确保及时检测到网络性能问题，然后将问题的根源本地化为特定网络段或设备。
+本文档介绍了如何设置和使用 Log Analytics 中的网络性能监视器解决方案，它可以帮助你监视网络的性能，即时检测出网络性能瓶颈。 通过使用网络性能监视器解决方案，可以监视两个网络、子网或服务器之间的丢失和延迟。 网络性能监视器会检测到诸如流量黑洞、路由错误和常规网络监视方法无法检测到的问题之类的网络问题。 只要突破网络链接的阈值，网络性能监视器就会生成警报并进行通知。 系统可以自动获知这些阈值，也可以配置这些阈值以使用自定义警报规则。 网络性能监视器确保及时检测到网络性能问题，然后将问题的根源本地化为特定网络段或设备。
 
 可以使用解决方案仪表板检测网络问题，该仪表板会显示与网络相关的汇总信息，包括最近的网络运行状况事件、不正常的网络链接以及面临大量数据包丢失和延迟的子网链接。 可以深入网络链接，查看子网链接的当前运行状况状态以及节点到节点链接。 还可以查看网络、子网和节点到节点级别的丢失和延迟的历史走向。 可以通过查看历史走向图检测到瞬时网络问题，并在拓扑图上找到网络瓶颈。 交互式拓扑图使你可以可视化逐跳网络路由，并确定问题的根源。 如同任何其他解决方案一样，可以针对各种分析需求使用日志搜索，以基于网络性能监视器收集的数据创建自定义报告。
 
@@ -63,7 +60,8 @@ ms.openlocfilehash: 4b683ef50ca1046686213b55c32e07b5fb8cca68
 代理会监视主机之间的网络连接（链接） - 而不是主机本身。 因此，若要监视某个网络链接，必须在该链接的两个终结点上都安装代理。
 
 ### <a name="configure-agents"></a>配置代理
-在完成安装代理后，需要打开这些计算机的防火墙端口，确保代理可以进行通信。 需要下载 [EnableRules.ps1 PowerShell 脚本](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634)，然后使用管理员权限在 PowerShell 窗口中在不使用任何参数的情况下运行该脚本。
+
+如果想要为综合事务使用 ICMP 协议，则不需要配置代理。 在这种情况下，可以直接开始配置解决方案。 但是，如果想要使用 TCP 协议，则需要打开这些计算机的防火墙端口，确保代理可以通信。 需要下载 [EnableRules.ps1 PowerShell 脚本](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634)，然后使用管理员权限在 PowerShell 窗口中在不使用任何参数的情况下运行该脚本。
 
 该脚本会创建网络性能监视器所需的注册表项，还会创建用于允许代理创建相互之间的 TCP 连接的 Windows 防火墙规则。 该脚本创建的注册表项还指定是否记录调试日志和该日志文件的路径。 还会定义用于通信的代理 TCP 端口。 该脚本会自动设置这些注册表项的值，因此不应手动更改这些注册表项。
 
@@ -77,8 +75,8 @@ ms.openlocfilehash: 4b683ef50ca1046686213b55c32e07b5fb8cca68
 ## <a name="configuring-the-solution"></a>配置解决方案
 使用以下信息安装和配置解决方案。
 
-1. 网络性能监视器解决方案将从运行 Windows Server 2008 SP1 或更高版本或者 Windows 7 SP1 或更高版本的计算机获取数据，这与 Microsoft Monitoring Agent (MMA) 的要求是相同的。
-2. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将网络性能监视器解决方案添加到 OMS 工作区。  
+1. 网络性能监视器解决方案将从运行 Windows Server 2008 SP1 或更高版本或者 Windows 7 SP1 或更高版本的计算机获取数据，这与 Microsoft Monitoring Agent (MMA) 的要求是相同的。 NPM 代理也可以在 Windows 桌面/客户端操作系统（Windows 10、Windows 8.1、Windows 8 和 Windows 7）上运行。
+2. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将网络性能监视器解决方案添加到工作区。  
    ![网络性能监视器符号](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 3. 在 OMS 门户中，将看到一个标题为**网络性能监视器**的新磁贴以及*解决方案需要进行额外配置*消息。 需要配置解决方案，以基于代理发现的子网和节点添加网络。 单击“网络性能监视器”开始配置默认网络。  
    ![解决方案需要进行额外配置](./media/log-analytics-network-performance-monitor/npm-config.png)
@@ -143,11 +141,14 @@ ms.openlocfilehash: 4b683ef50ca1046686213b55c32e07b5fb8cca68
 2. 从列表中选择要监视的网络或子网链接对。
 3. 首先从网络下拉列表中选择含有第一个感兴趣子网的网络，然后从相应的子网下拉列表中选择子网。
    如果想要监视网络链接中的所有子网，请选择“全部子网”。 同样，选择其他感兴趣的子网。 还可以单击“添加例外”从已选项中排除对特定子网链接的监视。
-4. 如果不希望针对所选项生成运行状况事件，请清除“启用对此规则覆盖的链接进行运行状况监视”。
-5. 选择监视条件。
+4. 选择 ICMP 或 TCP 协议来执行综合事务。
+5. 如果不希望针对所选项生成运行状况事件，请清除“启用对此规则覆盖的链接进行运行状况监视”。
+6. 选择监视条件。
    可以通过键入阈值，针对运行状况事件生成设置自定义阈值。 只要条件值超出其针对所选网络/子网对选择的阈值，就会生成运行状况事件。
-6. 单击“保存”以保存配置。  
+7. 单击“保存”以保存配置。  
    ![创建自定义监视规则](./media/log-analytics-network-performance-monitor/npm-monitor-rule.png)
+
+保存监视规则后，可以单击“创建警报”，将该规则与警报管理集成。 系统将使用搜索查询与其他自动填入的所需参数自动创建警报规则。 使用警报规则可以收到基于电子邮件的警报，以及 NPM 中的现有警报。 警报还能配合 Runbook 触发补救措施，或者，可以使用 Webhook 将警报与现有服务管理解决方案集成。 可以单击“管理警报”来编辑警报设置。
 
 ### <a name="choose-the-right-protocol-icmp-or-tcp"></a>选择正确的协议 - ICMP 或 TCP
 
@@ -183,27 +184,25 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 如果在部署期间选择使用 ICMP，可以随时通过编辑默认监视规则来切换到 TCP。
 
 ##### <a name="to-edit-the-default-monitoring-rule"></a>编辑默认监视规则
-1.  导航到“网络性能” > “监视” > “配置” > “监视”，然后单击“默认规则” 。
-2.  滚动到“协议”部分，然后选择要使用的协议。
-3.  单击“保存”以应用设置。
+1.    导航到“网络性能” > “监视” > “配置” > “监视”，然后单击“默认规则” 。
+2.    滚动到“协议”部分，然后选择要使用的协议。
+3.    单击“保存”以应用设置。
 
 即使默认规则使用特定协议，也可以使用其他协议创建新规则。 甚至可以创建混合规则，其中一些规则使用 ICMP，另一些规则使用 TCP。
 
 
 
 
-
-
 ## <a name="data-collection-details"></a>数据收集详细信息
-网络性能监视器使用 TCP SYN-SYNACK-ACK 握手数据包收集丢失和延迟信息，还使用路由跟踪获取拓扑信息。
+选择 TCP 作为协议来收集丢失与延迟信息时，网络性能监视器使用 TCP SYN-SYNACK-ACK 握手数据包；如果选择 ICMP 作为协议来收集此类信息，则它会使用 ICMP ECHO ICMP ECHO REPLY。 此外，还使用跟踪路由来获取拓扑信息。
 
 下表显示了数据收集方法，以及有关如何为网络性能监视器收集数据的其他详细信息。
 
-| 平台 | 直接代理 | SCOM 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![是](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![是](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |每隔 5 秒钟进行 TCP 握手，每隔 3 分钟发送数据 |
+| Windows |![是](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![是](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |每隔 5 秒发送 TCP 握手/ICMP ECHO 消息，每隔 3 分钟发送数据 |
 
-该解决方案利用综合事务来评估网络的运行状况。 网络中各个点安装的 OMS 代理会与另一个代理交换 TCP 数据包，并且在该过程中了解往返时间和数据包丢失（如果存在）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和数据包丢失图。 代理每隔&5; 秒钟重复执行测试，聚合数据持续&3; 分钟，然后再将数据上传到 OMS。
+解决方案使用综合事务来评估网络的运行状况。 网络中各个点安装的 OMS 代理将会相互交换 TCP 数据包或 ICMP Echo（取决于选择用于监视的协议）。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 代理每隔&5; 秒钟重复执行测试，聚合数据&3; 分钟，然后将数据上载到 Log Analytics 服务。
 
 > [!NOTE]
 > 尽管代理相互频繁地通信，但它们在进行测试时并不会产生大量网络流量。 代理仅仅依靠 TCP SYN-SYNACK-ACK 握手数据包确定丢失和延迟 - 不会交换任何数据包。 在此过程中，代理只在需要时才会进行相互通信，并且会对代理通信拓扑进行优化以减少网络流量。
@@ -238,6 +237,12 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 
 ![数据挖掘](./media/log-analytics-network-performance-monitor/npm-drill.png)
 
+### <a name="network-state-recorder"></a>网络状态记录器
+
+每个视图显示特定时间点的网络运行状况快照。 默认会显示最新的状态。 页面顶部栏显示该状态所处的时间点。 可以选择后退到某个时间，然后在栏中单击“操作”查看网络运行状况的快照。 查看最新状态时，还可以选择启用或禁用任何页面的自动刷新。
+
+![网络状态](./media/log-analytics-network-performance-monitor/network-state.png)
+
 #### <a name="trend-charts"></a>趋势图
 在进行挖掘的每个级别，都可以查看某个网络链接的丢失和延迟趋势。 趋势图也适用于子网和节点链接。 可以通过使用图表顶部的时间控制，更改图绘制的时间间隔。
 
@@ -252,7 +257,7 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 
 拓扑图会显示两个节点之间存在多少个路由，以及数据包会采用哪条路径。 在拓扑图上，网络性能瓶颈会以红色标记。 可以通过查看拓扑图上标为红色的元素，定位到发生问题的网络连接或网络设备。
 
-当在拓扑图上单击某个节点或将光标悬停在其上方时，会看到诸如 FQDN 和 IP 地址之类的节点属性。 单击跃点查看其 IP 地址。 可以通过以下方式突出显示特定路由：清除并仅选择要在该图上突出显示的路由。 可以通过使用鼠标滚轮来放大或缩小拓扑图。
+当在拓扑图上单击某个节点或将光标悬停在其上方时，会看到诸如 FQDN 和 IP 地址之类的节点属性。 单击跃点查看其 IP 地址。 可以使用可折叠的操作窗格中的筛选器来选择筛选特定的路由。 还可以通过使用操作窗格中的滑块隐藏中间跃点来简化网络拓扑。 可以使用鼠标滚轮来放大或缩小拓扑图。
 
 请注意，图中所示的拓扑为第 3 层拓扑，不包含第 2 层的设备和连接。
 
@@ -271,26 +276,21 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 ## <a name="investigate-the-root-cause-of-a-health-alert"></a>调查运行状况警报的根本原因
 现在，你已对网络性能监视器有所了解，下面我们简单分析一下某个运行状况事件的根本原因。
 
-1. 在“概述”页上，通过观察“网络性能监视器”磁贴即可快速获取网络的运行状况快照。 请注意，除受监视的 80 子网链接之外，43 不正常。 这需要调查。 单击该磁贴以查看解决方案仪表板。  
+1. 在“概述”页上，通过观察“网络性能监视器”磁贴即可快速获取网络的运行状况快照。 可以看到，在 6 个受监视的子网链接中，有 2 个是不正常的。 这需要调查。 单击该磁贴以查看解决方案仪表板。  
    ![网络性能监视器磁贴](./media/log-analytics-network-performance-monitor/npm-investigation01.png)
-2. 在以下示例图中，会观察到当前存在 4 个运行状况事件以及 4 个不正常的网络链接。 若要调查该问题，请单击 **Sharepoint-Web** 网络链接以找出问题的根源。  
+2. 在以下示例图中，可以看到有某个运行状况事件指出网络链接不正常。 若要调查该问题，请单击“DMZ2-DMZ1”网络链接找出问题的根源。  
    ![不正常的网络链接示例](./media/log-analytics-network-performance-monitor/npm-investigation02.png)
-3. “挖掘”页中会显示 **Sharepoint-Web** 网络链接中的所有子网链接。 你会注意到，这两个子网链接的延迟已超过阈值，使网络链接不正常。 还会看到这两个子网链接的延迟趋势。 图表中的时间选择控制可用于重点关注所需时间范围。 可以查看延迟达到其峰值时的当天时间。 若要调查问题，稍后也可以搜索日志来获取此时间段。 单击“查看节点链接”以进一步进行挖掘。  
+3. 深化页显示“DMZ2-DMZ1”网络链接中的所有子网链接。 你会注意到，这两个子网链接的延迟已超过阈值，使网络链接不正常。 还会看到这两个子网链接的延迟趋势。 图表中的时间选择控制可用于重点关注所需时间范围。 可以查看延迟达到其峰值时的当天时间。 若要调查问题，稍后也可以搜索日志来获取此时间段。 单击“查看节点链接”以进一步进行挖掘。  
    ![不正常的子网链接示例](./media/log-analytics-network-performance-monitor/npm-investigation03.png)
 4. 与上一页类似，特定子网链接的挖掘页面会列出其构成节点链接。 可以在此处执行与上一步类似的操作。 单击“查看拓扑”即可查看 2 个节点之间的拓扑。  
    ![不正常的节点链接示例](./media/log-analytics-network-performance-monitor/npm-investigation04.png)
 5. 2 个所选节点之间的所有路径绘制在拓扑图中。 可以在拓扑图上可视化两个节点之间路由的逐跳拓扑。 它清晰地呈现两个节点之间存在多少个路由，以及数据包会采用哪条路径。 网络性能瓶颈会标记为红色。 可以通过查看拓扑图上标为红色的元素，定位到发生问题的网络连接或网络设备。  
    ![不正常的拓扑视图示例](./media/log-analytics-network-performance-monitor/npm-investigation05.png)
-6. 可以在“路径详细信息”窗格中查看每个路径中的丢失、延迟和跃点数。 在此示例中，可以看到存在 3 个不正常的路径，如窗格中所示。 滚动条可用于查看这些不正常的路径的详细信息。  使用复选框选择其中一个路径，以便只绘制这一个路径的拓扑。 可以使用鼠标滚轮放大或缩小拓扑图。
+6. 可在“操作”窗格中查看每个路径中的丢失情况、延迟和跃点数。 滚动条可用于查看这些不正常的路径的详细信息。  使用筛选器可以选择包含不正常跃点的路径，以便只绘制所选路径的拓扑。 可以使用鼠标滚轮放大或缩小拓扑图。
 
    在下图中，通过查看红色标记的路径和跃点，就可以清楚地了解到网络特定部分的问题区域的根本原因。 单击拓扑图中的节点会呈现该节点的属性，包括 FQDN 和 IP 地址。 单击跃点会显示该跃点的 IP 地址。  
    ![不正常的拓扑 - 路径详细信息示例](./media/log-analytics-network-performance-monitor/npm-investigation06.png)
 
 ## <a name="next-steps"></a>后续步骤
 * [搜索日志](log-analytics-log-searches.md)以查看详细的网络性能数据记录。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
