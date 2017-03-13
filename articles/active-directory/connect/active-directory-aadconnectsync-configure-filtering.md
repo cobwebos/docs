@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: d5c8972e539ace9440a166eaed6c95fe93e2792a
-ms.openlocfilehash: 792e6c0d70a4786535174fa9c5f863a72da41143
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: fa9e86552f61693b953f636bff3cd9d869feba23
+ms.openlocfilehash: 14c179d76664876695f2974de44e6bc000942184
+ms.lasthandoff: 03/02/2017
 
 ---
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/22/2017
 
 为了防止意外删除许多对象，默认情况下已打开[防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)功能。 如果由于筛选而删除了许多对象（默认为&500; 个），则需要遵循本文中的步骤来允许将删除结果传播到 Azure AD。
 
-如果使用 2015 年 11 月 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)) 之前的内部版本、更改筛选器配置或使用密码同步，则在完成配置之后，需要触发所有密码的完全同步。 有关如何触发密码完全同步的步骤，请参阅[触发所有密码的完全同步](active-directory-aadconnectsync-implement-password-synchronization.md#trigger-a-full-sync-of-all-passwords)。 如果使用内部版本 1.0.9125 或更高版本，则常规的**完全同步**操作也会计算是否应同步密码，因此不再需要执行这个额外的步骤。
+如果使用 2015 年 11 月 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)) 之前的内部版本、更改筛选器配置或使用密码同步，则在完成配置之后，需要触发所有密码的完全同步。 有关如何触发密码完全同步的步骤，请参阅[触发所有密码的完全同步](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords)。 如果使用内部版本 1.0.9125 或更高版本，则常规的**完全同步**操作也会计算是否应同步密码，因此不再需要执行这个额外的步骤。
 
 如果在 Azure AD 中由于筛选错误导致**用户**对象被无意中删除，可以通过删除筛选配置，在 Azure AD 中重新创建用户对象。 然后再次同步目录。 此操作可以从 Azure AD 的回收站中还原用户。 但是，无法取消删除其他对象类型。 例如，如果意外删除了某个安全组，而该组用于将资源加入 ACL，则无法恢复该组及其 ACL。
 

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3e7595baa26ba9eebfcb8a2fd5c2744d9c0fbfcb
-ms.openlocfilehash: 350ba23dbc0e8557f9609f7fb3a15169d26c9b4a
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: de48da2c77c65f3e806474ae37ffd00772622b02
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -29,8 +29,7 @@ ms.lasthandoff: 02/23/2017
 
 在门户中，规则按生效时间、子网、网络接口和默认值划分。 这将提供一个应用于虚拟机的规则的简单视图。 无论哪个标签页，提供的下载按钮均可将所有安全规则轻松地转换为 CSV 文件。
 
-> [!NOTE]
-> 网络观察程序目前处于预览状态，若要使用网络观察程序的功能，[需要注册该功能](network-watcher-create.md#register-the-preview-capability)。
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ![安全组视图][1]
 

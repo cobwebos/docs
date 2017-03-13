@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2c25854795b6c577dff38af26543d915f8482240
-ms.openlocfilehash: 0bcbd8d15fb3b4c20ef32e7002249b9ad9ebba1e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 864185e62fb6c3cef4116824b36ee7e5d3447662
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -25,8 +25,7 @@ ms.lasthandoff: 02/22/2017
 
 来自 VM 的流量将基于与 NIC 关联的有效路由发送到目标。 “下一跃点”功能可获取来自特定虚拟机和 NIC 的数据包的下一跃点类型和 IP 地址。 这可帮助确定是将数据包定向到目标，还是将流量定向到黑洞。 用户进行的不正确的路由配置（将流量定向到本地位置或虚拟设备）可能会导致连接问题。 “下一跃点”功能也返回与下一跃点关联的路由表。 查询下一跃点时，如果路由定义为用户定义的路由，则将返回该路由。 否则，“下一跃点”功能返回“系统路由”。
 
-> [!NOTE]
-> 网络观察程序目前处于预览状态，若要使用网络观察程序的功能，[需要注册该功能](network-watcher-create.md#register-the-preview-capability)。
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ![下一跃点概述][1]
 

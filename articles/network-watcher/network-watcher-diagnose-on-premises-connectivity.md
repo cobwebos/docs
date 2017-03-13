@@ -15,17 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 78f367de862e4fa9203cc794549abb935f117848
-ms.openlocfilehash: f27a98894e3414479ce10adabbabe0f32a8cae54
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c232e334e60f9205076ba09d9f561c9fb1b42a4c
+ms.lasthandoff: 03/06/2017
 
 ---
 
 # <a name="diagnose-on-premise-connectivity-via-vpn-gateways"></a>通过 VPN 网关诊断本地连接
 
-使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#a-namedevicetableavalidated-vpn-devices)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec-parameters)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 否则会导致连接断开，而到目前为止，排查这些问题并非小事一桩，通常需要花费几个小时来识别和修复问题。
+使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#a-namedevicetableavalidated-vpn-devices)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#IPSec)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 否则会导致连接断开，而到目前为止，排查这些问题并非小事一桩，通常需要花费几个小时来识别和修复问题。
 
 使用 Azure 网络观察程序故障排除功能，可以诊断任何网关和连接问题，在几分钟内获得足够的信息，就如何解决问题做出明智的决策。
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>方案
 

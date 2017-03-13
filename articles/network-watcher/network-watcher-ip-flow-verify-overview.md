@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2c25854795b6c577dff38af26543d915f8482240
-ms.openlocfilehash: 0ae12529c48976c7852c7a562cb3f165c29c9d5f
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: bf015f8f646ecce6821379affd4d041329967fc8
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -29,8 +29,7 @@ ms.lasthandoff: 02/22/2017
 
 需要在要运行“IP 流验证”的所有区域中创建网络观察程序实例。 网络观察程序是一个区域性服务，只能针对同一区域中的资源运行。 这不会影响“IP 流验证”的结果，因为仍将返回与 NIC 关联的路由。
 
-> [!NOTE]
-> 网络观察程序目前处于预览状态，若要使用网络观察程序的功能，[需要注册该功能](network-watcher-create.md#register-the-preview-capability)。
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ![1][1]
 
