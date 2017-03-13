@@ -11,40 +11,34 @@ ms.assetid: c05abd9e-28a7-4c97-9bdf-bc60d08fc92e
 ms.service: sql-database
 ms.custom: overview
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 11/28/2016
+ms.date: 02/22/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 3f9077733725174f1eed61d37d544e4f36822f6e
-ms.openlocfilehash: d935571ccd18bc15baa000fb8c07fed11b66ba6c
+ms.sourcegitcommit: a08d9f2ef29002f10473b0e041737c9c607f3ca0
+ms.openlocfilehash: 7d6de93c99141248ea970ea668fb0b2191267b62
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="azure-sql-database-transact-sql-differences"></a>Azure SQL 数据库 Transact-SQL 的差异   
 Microsoft SQL Server 和 Azure SQL 数据库都支持应用程序依赖的大多数 Transact-SQL 功能。 例如，核心 SQL 组件（如数据类型、运算符、字符串、算术、逻辑和光标函数等）正常工作，与 SQL Server 没有差别。
 
-## <a name="why-some-transact-sql-is-not-supported"></a>为什么不支持某些 Transact-SQL
+# <a name="why-some-transact-sql-is-not-supported"></a>为什么不支持某些 Transact-SQL
 Azure SQL 数据库设计为将功能与 master 数据库和操作系统上的依赖项相隔离。 因此，许多服务器级活动并不适用于 SQL 数据库。 Transact-SQL 语句在配置服务器级选项、操作系统组件或指定文件系统配置时通常不可用。 当用户数据库外部的功能必需时，通常是以某种其他方式从 SQL 数据库或从其他 Azure 功能或服务获取相应的替代项。 
 
-例如，将 Always On 替换为活动异地复制。 因此，SQL 数据库不支持与可用性组相关的任何 Transact-SQL 语句，也不支持与 Always On 相关的动态管理视图。  
+例如，Always On 不适用于 Azure SQL 数据库，因为高可用性内置于服务中 - 每个数据库是高度可用的。 因此，SQL 数据库不支持与可用性组相关的任何 Transact-SQL 语句，也不支持与 Always On 相关的动态管理视图。  
 
 有关 SQL 数据库支持和不支持的功能的列表，请参阅 [Azure SQL 数据库注意事项、准则和功能](sql-database-features.md)。
 
-SQL Server 中弃用的语法通常不受 SQL 数据库支持。
 
 ## <a name="transact-sql-syntax-partially-supported-in-sql-database"></a>SQL 数据库部分支持的 Transact-SQL 语法
-SQL 数据库支持相应 SQL Server 2016 Transact-SQL 语句中存在的某些（但不是所有）参数。 例如，`CREATE PROCEDURE` 语句可用，但 `CREATE PROCEDURE` 的所有选项不可用。 在此处说明完整语法可能会令人困惑和感到多余。 请参阅链接的语法主题，了解有关每个语句支持的区域的详细信息。
+SQL 数据库支持使用相应 SQL Server 2016 Transact-SQL 语句中存在的某些（但不是所有）参数管理数据库和登录名。 例如，`CREATE DATABASE` 语句在 Azure SQL 数据库中可用，并非 SQL Server 中支持的所有选项都在 Azure SQL 数据库中受支持，反之亦然。 请参阅链接的语法主题，了解有关每个语句支持的区域的详细信息。
 
-- 数据库：[CREATE](https://msdn.microsoft.com/library/dn268335.aspx)/[ALTER DATABASE](https://msdn.microsoft.com/library/ms174269.aspx)   
-- 函数：[CREATE](https://msdn.microsoft.com/library/ms186755.aspx)/[ALTER FUNCTION](https://msdn.microsoft.com/library/ms186967.aspx)   
+- 数据库：[CREATE](https://msdn.microsoft.com/library/dn268335.aspx)/[ALTER DATABASE](https://msdn.microsoft.com/library/mt574871.aspx)   
 - 登录名：[CREATE](https://msdn.microsoft.com/library/ms189751.aspx)/[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)   
-- 存储过程：[CREATE](https://msdn.microsoft.com/library/ms187926.aspx)/[ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)   
-- 表：[CREATE](https://msdn.microsoft.com/library/dn305849.aspx)/[ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)   
-- 类型（自定义）：[CREATE TYPE](https://msdn.microsoft.com/library/ms175007.aspx)   
-- 用户：[CREATE](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)   
-- 视图：[CREATE](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)   
 
 ## <a name="transact-sql-syntax-not-supported-in-sql-database"></a>SQL 数据库不支持的 Transact-SQL 语法   
 除了与 [Azure SQL 数据库注意事项、准则和功能](sql-database-features.md)中所述的不支持的功能相关的 Transact-SQL 语句外，也不支持以下语句和语句组。
@@ -65,7 +59,7 @@ SQL 数据库支持相应 SQL Server 2016 Transact-SQL 语句中存在的某些�
 - 与硬件相关的服务器设置：内存、工作线程、CPU 相关性、跟踪标志等有关的语法。改用服务级别。
 - `HAS_DBACCESS`
 - `KILL STATS JOB`
-- `OPENQUERY`、`OPENROWSET`、`OPENDATASOURCE`、`BULK INSERT` 和由四部分构成的名称
+- `OPENQUERY`、`OPENROWSET`、`OPENDATASOURCE` 和由四部分构成的名称
 - .NET Framework [CLR 与 SQL Server 集成](http://msdn.microsoft.com/library/ms254963.aspx)
 - 语义搜索
 - 服务器凭据。 改用数据库范围的凭据。
@@ -90,9 +84,4 @@ SQL 数据库支持相应 SQL Server 2016 Transact-SQL 语句中存在的某些�
 Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关主题。 主题标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。 [CREATE AVAILABILTY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) 主题指明该语句适用于 **SQL Server（从版本 2012 开始）**。 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure SQL 数据仓库或并行数据仓库。
 
 在某些情况下，产品中可能使用了某个主题的常规主旨，但产品之间存在细微的差异。 在适当的情况下，我们会在主题的中间位置指出差异。
-
-
-
-<!--HONumber=Nov16_HO5-->
-
 
