@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 02/22/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 8afc15321db5c6d3b7c6cae2692a9a0d61ccdf6a
-ms.openlocfilehash: d62431f3fae21388d8ccfc0d411267f69823b700
+ms.sourcegitcommit: 4f8235ae743a63129799972ca1024d672faccbe9
+ms.openlocfilehash: 441e2adf6a222a0fc2e7e06c9b0140548655d542
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -88,15 +89,18 @@ DocumentDB 是面向 NoSQL 文档的数据库，以 JSON 格式存储数据。  
 
 ## <a name="database-questions-about-developing-against-microsoft-azure-documentdb"></a>针对 Microsoft Azure DocumentDB 进行开发的相关数据库问题
 ### <a name="how-to-do-i-start-developing-against-documentdb"></a>如何开始针对 DocumentDB 进行开发？
-[SDK](documentdb-sdk-dotnet.md) 适用于 .NET、Python、Node.js、JavaScript 和 Java。  开发人员也可以利用 [RESTful HTTP API](https://msdn.microsoft.com/library/azure/dn781481.aspx)，从各种平台、使用各种语言与 DocumentDB 资源进行交互。
+[SDK](documentdb-sdk-dotnet.md) 适用于 .NET、Python、Node.js、JavaScript 和 Java。  开发人员也可以利用 [RESTful HTTP API](https://msdn.microsoft.com/library/azure/dn781481.aspx)，从各种平台使用各种语言与 DocumentDB 资源进行交互。
 
 GitHub 上提供 DocumentDB [.NET](documentdb-dotnet-samples.md)、[Java](https://github.com/Azure/azure-documentdb-java)、[Node.js](documentdb-nodejs-samples.md) 和 [Python](documentdb-python-samples.md) SDK 的示例。
 
 ### <a name="does-documentdb-support-sql"></a>DocumentDB 是否支持 SQL？
 DocumentDB SQL 查询语言是 SQL 支持的查询功能增强子集。 DocumentDB SQL 查询语言通过基于 JavaScript 的用户定义函数 (UDF)，提供丰富的分层和关系运算符以及可扩展性。 JSON 语法允许将 JSON 文档模型化为以标签作为树节点的树状，由 DocumentDB 的自动索引技术及 DocumentDB 的 SQL 查询方言使用。  有关如何使用 SQL 语法的详细信息，请参阅[查询 DocumentDB][query] 一文。
 
+### <a name="does-documentdb-support-sql-aggregation-functions"></a>DocumentDB 是否支持 SQL 聚合函数？
+DocumentDB 支持通过聚合函数 `COUNT`、`MIN`、`MAX`、`AVG` 和 `SUM` 通过 SQL 语法实现的任何规模的低延迟聚合。 有关详细信息，请参阅[聚合函数](documentdb-sql-query.md#Aggregates)。
+
 ### <a name="what-are-the-data-types-supported-by-documentdb"></a>DocumentDB 支持什么数据类型？
-DocumentDB 支持的基元数据类型与 JSON 相同。 JSON 有一套简单的类型系统，包含字符串、数值（IEEE754 双精度）和布尔值（true、false 和 Null）。  通过使用 { } 运算符创建嵌套对象和使用 [ ] 运算符创建数组，可以在 JSON 和 DocumentDB 中表示更复杂的数据类型（例如 DateTime、Guid、Int64 和 Geometry）。
+DocumentDB 支持的基元数据类型与 JSON 相同。 JSON 有一套简单的类型系统，包含字符串、数值（IEEE754 双精度）和布尔值（true、false 和 Null）。 DocumentDB 以本机方式支持用 GeoJSON 表示的空间类型 Point、Polygon 和 LineString。 通过使用 { } 运算符创建嵌套对象和使用 [ ] 运算符创建数组，可以在 JSON 和 DocumentDB 中表示更复杂的数据类型（例如 DateTime、Guid、Int64 和 Geometry）。
 
 ### <a name="how-does-documentdb-provide-concurrency"></a>DocumentDB 如何提供并发？
 DocumentDB 通过 HTTP 实体标记或 ETag 支持乐观并发控制 (OCC)。 每个 DocumentDB 资源都有一个 ETag，并且会在每次更新文档时，在服务器上设置此 ETag。 ETag 标头和当前值会包含在所有响应消息中。 ETag 可与 If-Match 标头配合使用，让服务器能够决定是否应该更新资源。 If-Match 值是用作检查依据的 ETag 值。 如果 ETag 值与服务器的 ETag 值匹配，就会更新资源。 如果 ETag 不再是最新状态，则服务器会拒绝该操作，并提供“HTTP 412 前置条件失败”响应代码。 客户端接着必须重新提取资源，以获取该资源当前的 ETag 值。 此外，ETag 可以与 If-None-Match 标头配合使用，以确定是否需要重新提取资源。
@@ -121,9 +125,4 @@ DocumentDB 通过 JavaScript 存储过程和触发器支持语言集成式事务
 
 [azure-portal]: https://portal.azure.com
 [query]: documentdb-sql-query.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

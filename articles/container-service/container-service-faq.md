@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
+ms.date: 03/03/2017
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: c28391b752c071161796421aee63402899d2a0a4
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c11adbe77131d4e0337ccd926da03041042c3703
+ms.lasthandoff: 03/06/2017
 
 
 ---
-# <a name="frequently-asked-questions-azure-container-service"></a>常见问题：Azure 容器服务
+# <a name="container-service-frequently-asked-questions"></a>容器服务常见问题
 
 
 ## <a name="orchestrators"></a>协调器
@@ -82,6 +83,17 @@ DNSnamePrefix.AzureRegion.cloudapp.azure.net
 ```
 
 可以在 Azure 门户、Azure 资源浏览器或其他 Azure 工具中找到群集的常用 URL。
+
+### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>如何确定在群集中运行的 Orchestrator 版本？
+
+* DC/OS：请参阅 [Mesosphere 文档](https://support.mesosphere.com/hc/en-us/articles/207719793-How-to-get-the-DCOS-version-from-the-command-line-)
+* Docker Swarm：运行 `docker version`
+* Kubernetes：运行 `kubectl version`
+
+
+### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>如何在部署后升级 Orchestrator？
+
+目前，Azure 容器服务不提供可将部署到群集的 Orchestrator 版本升级的工具。 如果容器服务支持更高的版本，可以部署新群集。 另一选项是使用特定于 Orchestrator 的工具（如果该工具可以用来对群集就地升级）。 有关示例，请参阅 [DC/OS 升级](https://dcos.io/docs/1.8/administration/upgrading/)。
  
 ### <a name="where-do-i-find-the-ssh-connection-string-to-my-cluster"></a>在哪里查找用于连接到我的群集的 SSH 连接字符串？
 

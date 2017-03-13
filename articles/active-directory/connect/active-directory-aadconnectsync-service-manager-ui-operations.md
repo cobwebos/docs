@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect 同步：Synchronization Service Manager UI | Microsoft Docs"
+title: "Azure AD Connect Synchronization Service Manager 操作 | Microsoft 文档"
 description: "了解 Azure AD Connect 的 Synchronization Service Manager 中的“操作”选项卡。"
 services: active-directory
 documentationcenter: 
@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 610dab0af17f927d86b677f647acd0dfe2569583
-ms.openlocfilehash: 53b98aaf67b874b0af7d0e94e29bcbe23fc6fc5b
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: fadb15a95edb3ec82b284faa594706963618b9eb
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="azure-ad-connect-sync-synchronization-service-manager"></a>Azure AD Connect 同步：Synchronization Service Manager
+# <a name="using-the-sync-service-manager-operations-tab"></a>使用“Sync Service Manager 操作”选项卡
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/operations.png)
 
@@ -59,9 +60,4 @@ ms.openlocfilehash: 53b98aaf67b874b0af7d0e94e29bcbe23fc6fc5b
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
 
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

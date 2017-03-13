@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
+ms.sourcegitcommit: dc279718cbb360e611d7e4cfb6961a087159fb01
+ms.openlocfilehash: 7637e6419d17a2d75904fbe63df5f27d4be4bbe3
+ms.lasthandoff: 02/24/2017
 
 ---
 # <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 ## <a name="overview"></a>概述
-本指南介绍如何为一个或多个 Azure Active Directory 中的所有用户启用对开发人员门户的访问。 本指南还介绍如何通过添加包含 Azure Active Directory 用户的外部组管理 Azure Active Directory 用户组。
+本指南介绍如何为 Azure Active Directory 中的用户启用对开发人员门户的访问。 本指南还介绍如何通过添加包含 Azure Active Directory 用户的外部组管理 Azure Active Directory 用户组。
 
 > 若要完成本指南中的步骤，必须先有一个 Azure Active Directory，用于在其中创建应用程序。
 > 
@@ -54,11 +55,11 @@ ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
 
 对于“登录 URL”，输入开发人员门户的登录 URL。 在此示例中，“登录 URL”为 `https://aad03.portal.current.int-azure-api.net/signin`。 
 
-对于“应用 ID URL”，输入 Azure Active Directory 的默认域或自定义域，然后向其追加一个唯一字符串。 在此示例中，**https://contoso5api.onmicrosoft.com** 的默认域与指定 **/api** 的后缀一起使用。
+对于“应用 ID URL”，输入 Azure Active Directory 的默认域或自定义域，然后向其追加一个唯一字符串。 在此示例中，**https://contoso5api.onmicrosoft.com** 的默认域与指定的 **/api** 的后缀一起使用。
 
 ![新的 Azure Active Directory 应用程序属性][api-management-new-aad-application-2]
 
-单击复选按钮保存并创建新应用程序，然后切换到“配置”选项卡配置新应用程序。
+单击复选按钮保存并创建应用程序，然后切换到“配置”选项卡配置新应用程序。
 
 ![创建的新 Azure Active Directory 应用程序][api-management-new-aad-app-created]
 
@@ -92,7 +93,7 @@ ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
 
 切换回 Azure Active Directory 配置，然后单击“密钥”部分中的“选择持续时间”下拉列表并指定间隔。 在此示例中使用“1 年”。
 
-![键][api-management-aad-key-before-save]
+![密钥][api-management-aad-key-before-save]
 
 单击“保存”保存配置并显示密钥。 将该密钥复制到剪贴板。
 
@@ -110,7 +111,18 @@ ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
 
 ![允许的租户][api-management-client-allowed-tenants]
 
-可在“允许的租户”部分中指定多个域。 在任何用户可以从注册应用程序的原始域以外的其他域登录之前，不同域的全局管理员必须先授予权限以使应用程序访问目录数据。 若要授予权限，全局管理员必须登录应用程序并单击“接受”。 在以下示例中，`miaoaad.onmicrosoft.com` 已添加到“允许的租户”，并且来自该域的全局管理员首次登录。
+
+指定所需配置后，单击“保存”。
+
+![保存][api-management-client-allowed-tenants-save]
+
+保存更改后，指定的 Azure Active Directory 中的用户可按照[使用 Azure Active Directory 帐户登录开发人员门户][Log in to the Developer portal using an Azure Active Directory account]中的步骤登录到开发人员门户中。
+
+可在“允许的租户”部分中指定多个域。 在任何用户可以从注册应用程序的原始域以外的其他域登录之前，不同域的全局管理员必须先授予权限以使应用程序访问目录数据。 若要授予权限，全局管理员应转到 `https://<URL of your developer portal>/aadadminconsent`（例如，https://contoso.portal.azure-api.net/aadadminconsent），键入他们要授予访问权限的 Active Directory 租户的域名，然后单击“提交”。 在以下示例中，`miaoaad.onmicrosoft.com` 中的全局管理员想要授予对此特定开发人员门户的权限。 
+
+![权限][api-management-aad-consent]
+
+在下一个屏幕中，将提示全局管理员确认授予权限。 
 
 ![权限][api-management-permissions-form]
 
@@ -118,16 +130,10 @@ ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
 > 
 > 
 
-指定所需配置后，单击“保存”。
-
-![保存][api-management-client-allowed-tenants-save]
-
-保存更改后，指定 Azure Active Directory 中的用户可按照[使用 Azure Active Directory 帐户登录开发人员门户][Log in to the Developer portal using an Azure Active Directory account]中的步骤登录到开发人员门户中。
-
 ## <a name="how-to-add-an-external-azure-active-directory-group"></a>如何添加外部 Azure Active Directory 组
 在为 Azure Active Directory 中的用户启用访问之前，可将 Azure Active Directory 组添加到 API 管理中，以便更轻松地管理具有所需产品的组中的开发人员关联。
 
-> 为了配置外部 Azure Active Directory 组，必须先按照之前部分中的过程在“标识”选项卡中配置 Azure Active Directory。 
+> 若要配置外部 Azure Active Directory 组，必须先按照之前部分中的过程在“标识”选项卡中配置 Azure Active Directory。 
 > 
 > 
 
@@ -147,7 +153,7 @@ ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
 
 ![Azure Active Directory 组列表][api-management-aad-groups-list]
 
-单击“添加”验证组名称并添加组。 在此示例中，添加 **Contoso 5 开发人员**外部组。 
+单击“添加”验证组名称并添加组。 在此示例中，将添加 **Contoso 5 开发人员**外部组。 
 
 ![添加的组][api-management-aad-group-added]
 
@@ -204,6 +210,7 @@ ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
 [api-management-registration-complete]: ./media/api-management-howto-aad/api-management-registration-complete.png
 [api-management-aad-app-multi-tenant]: ./media/api-management-howto-aad/api-management-aad-app-multi-tenant.png
 [api-management-aad-reply-url]: ./media/api-management-howto-aad/api-management-aad-reply-url.png
+[api-management-aad-consent]: ./media/api-management-howto-aad/api-management-aad-consent.png
 [api-management-permissions-form]: ./media/api-management-howto-aad/api-management-permissions-form.png
 [api-management-configure-product]: ./media/api-management-howto-aad/api-management-configure-product.png
 [api-management-add-groups]: ./media/api-management-howto-aad/api-management-add-groups.png
@@ -234,10 +241,5 @@ ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
 [Next steps]: #next-steps
 
 [Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

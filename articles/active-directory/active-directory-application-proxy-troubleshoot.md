@@ -13,16 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 02/27/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2e7815702f2d2f4ce935826c4769838727a83696
-ms.openlocfilehash: 325e993138e34f5619e0d208b281b3b40caedb0f
+ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
+ms.openlocfilehash: 0762f69968e19e55229a9d5b08b202b4ac595a46
+ms.lasthandoff: 02/28/2017
 
 ---
 
 
-# <a name="troubleshoot-application-proxy"></a>应用程序代理故障排除
+# <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>应用程序代理问题和错误消息故障排除
 如果在访问已发布应用程序或发布应用程序时出现错误，请检查以下选项，查看 Microsoft Azure AD 应用程序代理是否正确工作：
 
 * 打开 Windows 服务控制台并验证 **Microsoft AAD 应用程序代理连接器**服务已启用并且正在运行。 另请查看应用程序代理服务属性页，如下图所示：  
@@ -156,9 +158,4 @@ ms.openlocfilehash: 325e993138e34f5619e0d208b281b3b40caedb0f
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-troubleshoot/connectorproperties.png
 [2]: ./media/active-directory-application-proxy-troubleshoot/sessionlog.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

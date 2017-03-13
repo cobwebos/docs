@@ -12,12 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2017
+ms.date: 03/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: 9ee2d2ef7b21fab8cfc4a70561d612be7367d366
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: b66128a2bb0c3237541ae991a98daa09deeff5d5
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/17/2017
 本文档有助于用户了解 Azure 安全中心提供的各类安全警报。 阅读 [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) （管理和响应 Azure 安全中心的安全警报），详细了解如何管理警报。
 
 > [!NOTE]
-> 若要启用高级检测，请升级到 Azure 安全中心标准版。 它可以免费试用 90 天。 要升级，请选择 [安全策略](security-center-policies.md)中的“定价层”。 若要了解详细信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/security-center/) 。
+> 若要启用高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 要升级，请选择 [安全策略](security-center-policies.md)中的“定价层”。 若要了解详细信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/security-center/) 。
 >
 >
 

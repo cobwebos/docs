@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: bradsev;weig
 translationtype: Human Translation
-ms.sourcegitcommit: 34441f27e842214d009d64fbc658ff5b7c05df5d
-ms.openlocfilehash: e2aab1363c6a2ffef529f0708cb3bec9c095cf59
+ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
+ms.openlocfilehash: c7444d457592538a26834091c77f49a3c1ef8591
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -46,7 +47,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 在开始阅读这些主题前，必须具有：
 
 * Azure 订阅。 如果还没有 Azure 订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* [推荐] Visual Studio 2013 或 2015。 如果尚未安装这些版本之一，可从[此处](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)下载免费的 Community 版本。 在 Visual Studio 部分下，单击“下载 Community 2015”按钮。 
+* [建议] Visual Studio 2013 或更高版本。 如果尚未安装这些版本之一，可从 [Visual Studio Community](https://www.visualstudio.com/vs/community/) 下载免费的 Community 版本。
 
 > [!NOTE]
 > 除了 Visual Studio，还可以使用 Azure 门户提交 Azure Data Lake 查询。 我们将在标题为**使用 U-SQL 处理数据**的部分中提供相关说明，其中将介绍如何使用 Visual Studio 和 Azure 门户完成此操作。 
@@ -145,7 +146,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 
 ![9](./media/machine-learning-data-science-process-data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="a-nameingestadata-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>数据引入：从公共 blob 读入数据
+### <a name="ingest"></a>数据引入：从公共 blob 读入数据
 将 Azure blob 中数据的位置引用为 **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**，且可以使用 **Extractors.Csv()** 进行提取。 将以下脚本中的 wasb 地址 container_name@blob_storage_account_name 替换为自己的容器名和存储帐户名。 由于文件名的格式都相同，因此可使用 **trip\_data_{\*\}.csv** 读入所有的 12 个行程文件。 
 
     ///Read in Trip data
@@ -207,7 +208,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 
  ![11](./media/machine-learning-data-science-process-data-lake-walkthrough/11-data-in-ADL.PNG)
 
-### <a name="a-namequalityadata-quality-checks"></a><a name="quality"></a>数据质量检查
+### <a name="quality"></a>数据质量检查
 读入行程和费用表之后，可按以下方式完成数据质量检查。 可将生成的 CSV 文件输出到 Azure Blob 存储或 Azure Data Lake Store。 
 
 查找徽章的数量以及唯一的徽章数量：
@@ -279,7 +280,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 
 
 
-### <a name="a-nameexploreadata-exploration"></a><a name="explore"></a>数据浏览
+### <a name="explore"></a>数据浏览
 对数据进行浏览可更好地了解数据。
 
 了解已付小费和未付小费的行程分布：
@@ -346,7 +347,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
     USING Outputters.Csv(); 
 
 
-### <a name="a-namejoinajoin-trip-and-fare-tables"></a><a name="join"></a>联接行程和费用表
+### <a name="join"></a>联接行程和费用表
 可通过徽章、hack_license 和 pickup_time 联接行程和费用表。
 
     //join trip and fare table
@@ -388,7 +389,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
     USING Outputters.Csv();
 
 
-### <a name="a-namesampleadata-sampling"></a><a name="sample"></a>数据采样
+### <a name="sample"></a>数据采样
 首先随机从联接表中选择 0.1% 的数据：
 
     //random select 1/1000 data for modeling purpose
@@ -428,7 +429,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
     USING Outputters.Csv(); 
 
 
-### <a name="a-namerunarun-u-sql-jobs"></a><a name="run"></a>运行 U-SQL 作业
+### <a name="run"></a>运行 U-SQL 作业
 完成 U-SQL 脚本编辑后，可使用 Azure Data Lake Analytics 帐户将其提交到服务器。 依次单击“Data Lake”、“提交作业”，选择你的“Analytics 帐户”，然后选择“并行度”，最后单击“提交”按钮。  
 
  ![12](./media/machine-learning-data-science-process-data-lake-walkthrough/12-submit-USQL.PNG)
@@ -685,10 +686,5 @@ Azure 机器学习工作室可直接从 Azure Data Lake Store 中读取数据，
 * [运行中的 Team Data Science Process：使用 HDInsight Hadoop 群集](machine-learning-data-science-process-hive-walkthrough.md)
 * [Team Data Science Process：使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
 * [有关使用 Spark on Azure HDInsight 的 Data Science Process 概述](machine-learning-data-science-spark-overview.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -16,14 +16,16 @@ ms.topic: hero-article
 ms.date: 12/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: a5abaa698de2978e676153832d252cf2bc43e72b
-ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 284bf43ceae0c42b88d6ea3fe8a2e68e7530e5fe
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="a-nametoc395783175abuild-a-nodejs-web-application-using-documentdb"></a><a name="_Toc395783175"></a>使用 DocumentDB 生成 Node.js Web 应用程序
+# <a name="_Toc395783175"></a>使用 DocumentDB 生成 Node.js Web 应用程序
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
+> * [适用于 MongoDB 的 .NET](documentdb-mongodb-application.md)
 > * [Node.js](documentdb-nodejs-application.md)
 > * [Java](documentdb-java-application.md)
 > * [Python](documentdb-python-application.md)
@@ -36,7 +38,7 @@ ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
 
 没有时间完成本教程且只想获取完整的解决方案？ 没有问题，可以从 [GitHub][GitHub] 获得完整的示例解决方案。 只需读取[自述](https://github.com/Azure-Samples/documentdb-node-todo-app/blob/master/README.md)文件，了解如何运行该应用。
 
-## <a name="a-nametoc395783176aprerequisites"></a><a name="_Toc395783176"></a>先决条件
+## <a name="_Toc395783176"></a>先决条件
 > [!TIP]
 > 本 Node.js 教程假定你之前有使用 Node.js 和 Azure 网站的经验。
 > 
@@ -53,14 +55,14 @@ ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
 * [Express 生成器](http://www.expressjs.com/starter/generator.html)（可以通过 `npm install express-generator -g` 安装）
 * [Git][Git]。
 
-## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>步骤 1：创建 DocumentDB 数据库帐户
+## <a name="_Toc395637761"></a>步骤 1：创建 DocumentDB 数据库帐户
 让我们首先创建 DocumentDB 帐户。 如果已有一个帐户，或者要在本教程中使用 DocumentDB Emulator，可以跳到[步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 [!INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-## <a name="a-nametoc395783178astep-2-learn-to-create-a-new-nodejs-application"></a><a name="_Toc395783178"></a>步骤 2：了解如何创建新的 Node.js 应用程序
+## <a name="_Toc395783178"></a>步骤 2：了解如何创建新的 Node.js 应用程序
 现在让我们来了解如何使用 [Express](http://expressjs.com/) 框架创建基本的 Hello World Node.js 项目。
 
 1. 打开最喜欢的终端，如 Node.js 命令提示符。
@@ -81,7 +83,7 @@ ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
 
     然后，若要停止应用程序，可在终端窗口中按 CTRL+C 并单击“y”终止批处理作业。
 
-## <a name="a-nametoc395783179astep-3-install-additional-modules"></a><a name="_Toc395783179"></a>步骤 3：安装其他模块
+## <a name="_Toc395783179"></a>步骤 3：安装其他模块
 **package.json** 文件是在项目的根目录中创建的文件之一。 此文件包含一系列其他模块，它们是 Node.js 应用程序必需的。 稍后，在你将此应用程序部署到 Azure 网站时，使用此文件以确定需要在 Azure 上安装哪些模块来支持你的应用程序。 我们仍需要为本教程多安装两个包。
 
 1. 返回终端，通过 npm 安装 **async** 模块。
@@ -114,7 +116,7 @@ ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
    
     这将告知 Node（稍后告知 Azure），你的应用程序依赖于这些模块。
 
-## <a name="a-nametoc395783180astep-4-using-the-documentdb-service-in-a-node-application"></a><a name="_Toc395783180"></a>步骤 4：在节点应用程序中使用 DocumentDB 服务
+## <a name="_Toc395783180"></a>步骤 4：在节点应用程序中使用 DocumentDB 服务
 这负责处理所有的初始安装和配置，现在让我们看看为什么要用这步，可以使用 Azure DocumentDB 编写一些代码。
 
 ### <a name="create-the-model"></a>创建模型
@@ -428,7 +430,7 @@ ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
 5. 这些行（使用从 **config.js** 中读取的值）定义 **TaskDao** 对象的新实例以及与 DocumentDB 的新连接，初始化该任务对象，然后将窗体操作与 **TaskList** 控制器上的方法绑定。 
 6. 最后，保存并关闭 **app.js** 文件，我们就快完成了。
 
-## <a name="a-nametoc395783181astep-5-build-a-user-interface"></a><a name="_Toc395783181"></a>步骤 5：构建用户界面
+## <a name="_Toc395783181"></a>步骤 5：构建用户界面
 现在让我们把注意力转向构建用户界面，因此用户可以与我们的应用程序进行切实的交互。 我们创建的 Express 应用程序使用 **Jade** 作为视图引擎。 有关 Jade 的详细信息，请参阅 [http://jade-lang.com/](http://jade-lang.com/)。
 
 1. **views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。 在此步骤中，你将对其进行修改以使用 [Twitter Bootstrap](https://github.com/twbs/bootstrap)（一个可以轻松设计美观网站的工具包）。 
@@ -519,7 +521,7 @@ ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
    
     保存并关闭此 **style.css** 文件。
 
-## <a name="a-nametoc395783181astep-6-run-your-application-locally"></a><a name="_Toc395783181"></a>步骤 6：在本地运行应用程序
+## <a name="_Toc395783181"></a>步骤 6：在本地运行应用程序
 1. 若要在本地计算机上测试应用程序，请在终端中运行 `npm start` 以启动应用程序，然后刷新 [http://localhost:3000](http://localhost:3000) 浏览器页。 该页此时看起来应如下图所示：
    
     ![浏览器窗口中 MyTodo List 应用程序的屏幕截图](./media/documentdb-nodejs-application/image18.png)
@@ -535,7 +537,7 @@ ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
 
 5. 若要停止应用程序，可在终端窗口中按 CTRL+C 并单击“Y”终止批处理作业。
 
-## <a name="a-nametoc395783182astep-7-deploy-your-application-development-project-to-azure-websites"></a><a name="_Toc395783182"></a>步骤 7：将应用程序开发项目部署到 Azure 网站
+## <a name="_Toc395783182"></a>步骤 7：将应用程序开发项目部署到 Azure 网站
 1. 如果尚未部署，则启用 Azure 网站的 git 存储库。 可以在 [Local Git Deployment to Azure App Service](../app-service-web/app-service-deploy-local-git.md) （从本地 GIT 部署到 Azure App Service）主题中找到如何执行此操作的说明。
 2. 将 Azure 网站添加为 git 远程。
    
@@ -549,7 +551,7 @@ ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
 
     若需下载或参考本教程的完整参考应用程序，可从 [GitHub][GitHub] 下载。
 
-## <a name="a-nametoc395637775anext-steps"></a><a name="_Toc395637775"></a>后续步骤
+## <a name="_Toc395637775"></a>后续步骤
 
 * 想要使用 DocumentDB 执行规模和性能测试？ 请参阅 [Performance and Scale Testing with Azure DocumentDB](documentdb-performance-testing.md)
 * 了解如何 [监视 DocumentDB 帐户](documentdb-monitor-accounts.md)。
@@ -559,10 +561,5 @@ ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
 [Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

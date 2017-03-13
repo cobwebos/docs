@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
+ms.sourcegitcommit: 1c22e4fc17226578aaaf272fdf79178da65c63c2
+ms.openlocfilehash: e6b1c8cbf45fea4f5af16231003ccc07a2a53233
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 3. 配置用户设置
 4. 配置用户设置
 
-![方案](./media/active-directory-saas-workday-tutorial/IC782919.png "Scenario")
+![方案](./media/active-directory-saas-workday-tutorial/IC782919.png "方案")
 
 ## <a name="enabling-the-application-integration-for-workday"></a>为 Workday 启用应用程序集成
 本部分旨在概述如何为 Salesforce 启用应用程序集成。
@@ -42,15 +43,15 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
    
     ![Active Directory](./media/active-directory-saas-workday-tutorial/IC700993.png "Active Directory")
 
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-    ![应用程序](./media/active-directory-saas-workday-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-workday-tutorial/IC700994.png "应用程序")
 
 4. 若要打开**应用程序库**，请单击“添加应用”，然后单击“为组织添加要使用的应用程序”。
    
-    ![要执行什么操作？](./media/active-directory-saas-workday-tutorial/IC700995.png "What do you want to do?")
+    ![想要做什么？](./media/active-directory-saas-workday-tutorial/IC700995.png "想要做什么？")
 
 5. 在搜索框中，键入“Workday”。
    
@@ -68,15 +69,15 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在“Workday”应用程序集成页上，单击“配置单一登录”，以打开“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-workday-tutorial/IC782920.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-workday-tutorial/IC782920.png "配置单一登录")
 
 2. 在“你希望用户如何登录 Workday”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-workday-tutorial/IC782921.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-workday-tutorial/IC782921.png "配置单一登录")
 
-3. 在“配置应用 URL”对话框页上，执行以下步骤，然后单击“下一步”。
+3. 在“配置应用 URL”页上，执行以下步骤，然后单击“下一步”。
    
-    ![配置应用 URL](./media/active-directory-saas-workday-tutorial/IC782957.png "Configure App URL")
+    ![配置应用 URL](./media/active-directory-saas-workday-tutorial/IC782957.png "配置应用 URL")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录到 Workday 的 URL：`https://impl.workday.com/<tenant>/login-saml2.htmld`
    
@@ -89,25 +90,25 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
 4. 在“配置 Workday 的单一登录”页上，若要下载证书，请单击“下载证书”，然后将该证书文件保存到计算机上。
  
-    ![配置单一登录](./media/active-directory-saas-workday-tutorial/IC782922.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-workday-tutorial/IC782922.png "配置单一登录")
 
 5. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Workday 公司站点。
 
 6. 转到“菜单”\>“工作台”。
    
-    ![工作台](./media/active-directory-saas-workday-tutorial/IC782923.png "Workbench")
+    ![工作台](./media/active-directory-saas-workday-tutorial/IC782923.png "工作台")
 
 7. 转到“帐户管理”。
    
-    ![帐户管理](./media/active-directory-saas-workday-tutorial/IC782924.png "Account Administration")
+    ![帐户管理](./media/active-directory-saas-workday-tutorial/IC782924.png "帐户管理")
 
 8. 转到“编辑租户设置 - 安全”。
    
-    ![编辑租户安全](./media/active-directory-saas-workday-tutorial/IC782925.png "Edit Tenant Security")
+    ![编辑租户安全性](./media/active-directory-saas-workday-tutorial/IC782925.png "编辑租户安全性")
 
 9. 在“重定向 URL”部分中，执行以下步骤：
    
-    ![重定向 URL](./media/active-directory-saas-workday-tutorial/IC7829581.png "Redirection URLs")
+    ![重定向 URL](./media/active-directory-saas-workday-tutorial/IC7829581.png "重定向 URL")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加行”。
    
@@ -124,7 +125,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
 1. 在“SAML 设置”部分中执行以下步骤：
    
-    ![SAML 设置](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML Setup")
+    ![SAML 设置](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML 设置")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  选择“启用 SAML 身份验证”。
    
@@ -132,7 +133,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
 2. 在“SAML 标识提供者”部分中，执行以下步骤：
    
-    ![SAML 标识提供者](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML Identity Providers")
+    ![SAML 标识提供者](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML 标识提供者")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识提供者名称”文本框中，键入提供者名称（例如：*SPInitiatedSSO*）。
    
@@ -144,16 +145,16 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“标识提供者公钥证书”，然后单击“创建”。 
 
-    ![创建](./media/active-directory-saas-workday-tutorial/IC782928.png "Create")
+    ![创建](./media/active-directory-saas-workday-tutorial/IC782928.png "创建")
 
     f. 单击“创建 x509 公钥”。 
 
-    ![创建](./media/active-directory-saas-workday-tutorial/IC782929.png "Create")
+    ![创建](./media/active-directory-saas-workday-tutorial/IC782929.png "创建")
 
 
 1. 在“查看 x509 公钥”部分中，执行以下步骤： 
    
-    ![查看 x509 公钥](./media/active-directory-saas-workday-tutorial/IC782930.png "View x509 Public Key") 
+    ![查看 x509 公钥](./media/active-directory-saas-workday-tutorial/IC782930.png "查看 x509 公钥") 
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入证书名称（例如：*PPE\_SP*）。
    
@@ -181,7 +182,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
 2. 执行以下步骤： 
    
-    ![SSO 配置](./media/active-directory-saas-workday-tutorial/IC7829351111.png "SSO configuration")
+    ![SSO 配置](./media/active-directory-saas-workday-tutorial/IC7829351111.png "SSO 配置")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  启用“x509 私钥对”。
    
@@ -195,19 +196,19 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
    
     f. 对于**身份验证请求签名方法**，请选择 **SHA256**。 
    
-    ![身份验证请求签名方法](./media/active-directory-saas-workday-tutorial/IC782932.png "Authentication Request Signature Method") 
+    ![身份验证请求签名方法](./media/active-directory-saas-workday-tutorial/IC782932.png "身份验证请求签名方法") 
    
     g. 单击 **“确定”**。 
    
-    ![确定](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
+    ![确定](./media/active-directory-saas-workday-tutorial/IC782933.png "确定")
 
 3. 在 Azure 经典门户中的“配置 Workday 的单一登录”页上，单击“下一步”。 
    
-    ![配置单一登录](./media/active-directory-saas-workday-tutorial/IC782934.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-workday-tutorial/IC782934.png "配置单一登录")
 
 4. 在“单一登录确认”页上，单击“完成”。 
    
-    ![配置单一登录](./media/active-directory-saas-workday-tutorial/IC782935111.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-workday-tutorial/IC782935111.png "配置单一登录")
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 若要将测试用户预配到 Workday 中，需要联系 Workday 支持团队。  
@@ -221,17 +222,12 @@ Workday 支持团队将为你创建用户。
 
 2. 在“Workday”应用程序集成页上，单击“分配用户”。
    
-    ![分配用户](./media/active-directory-saas-workday-tutorial/IC782935.png "Assign Users")
+    ![分配用户](./media/active-directory-saas-workday-tutorial/IC782935.png "分配用户")
 
-3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
+3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-    ![是](./media/active-directory-saas-workday-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-workday-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

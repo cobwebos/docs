@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 8d5c21f8e746a9bcddc2eb9b0294836e0de55bf2
-ms.openlocfilehash: 6300aa7030cfd29ec4b8b1db7b42227855fddbcf
+ms.sourcegitcommit: ea6b80e289f039a5924fcc2ccf9d71dbbb432982
+ms.openlocfilehash: 2f2676d85a513a152832cfd336c3b643577341b9
+ms.lasthandoff: 02/24/2017
 
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
@@ -44,7 +45,7 @@ ms.openlocfilehash: 6300aa7030cfd29ec4b8b1db7b42227855fddbcf
 * [为何在尝试克隆 GIT 存储库时得到身份验证失败？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API 管理是否适用于 Azure ExpressRoute ？](#does-api-management-work-with-azure-expressroute)
 * [是否可将 API 管理服务从一个订阅移到另一个订阅？](#can-i-move-an-api-management-service-from-one-subscription-to-another)
-* [导入 API 是否存在限制或已知问题？](#api-management-api-import-restrictions)
+* [导入 API 是否存在限制或已知问题？](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
 ### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>如何向 Microsoft Azure API 管理团队提问？
 可使用以下选项之一联系我们：
@@ -62,7 +63,7 @@ ms.openlocfilehash: 6300aa7030cfd29ec4b8b1db7b42227855fddbcf
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[配置 SharePoint](api-management-howto-create-apis.md#configure-api-settings)。
 * 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 SSL 相互身份验证。
 * 在后端服务上使用 IP 允许列表。 如果有标准或高级层 API 管理实例，则网关的 IP 地址保持不变。 可设置允许列表以允许此 IP 地址。 可在 Azure 门户中的仪表板上获取 API 管理实例的 IP 地址。
-* 将 API 管理实例连接到 Azure 虚拟网络。 有关详细信息，请参阅[如何在 Azure API 管理中设置 VPN 连接](api-management-howto-setup-vpn.md)。
+* 将 API 管理实例连接到 Azure 虚拟网络。 
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？
 如果要将 API 管理实例复制到新实例，则有多个选项。 你可以：
@@ -149,9 +150,4 @@ API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-ro
 
 ### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>导入 API 是否存在限制或已知问题？
 [Open API(Swagger)、WSDL 和 WADL 格式的已知问题和限制](api-management-api-import-restrictions.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

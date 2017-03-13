@@ -15,20 +15,28 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: 01fb45cc2d2323290427a08e3210fadf27f6cda8
+ms.sourcegitcommit: 2434762c2a1174a40d9c6daad6c317bc3ca8f374
+ms.openlocfilehash: 40d25726d31d2018785b77d169a8811c565316bf
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
-Azure API Management 提供多个自定义功能，允许管理员[自定义开发人员门户的外观](api-management-customize-portal.md)，以及使用一组模板自定义开发人员门户页面，这些模板自行配置页面内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和一组提供的本地化字符串资源、图标和页面控件，可根据使用这些模板的需要非常灵活地配置页面内容。
+
+在 Azure API 管理中自定义开发人员门户有三种基本方法：
+
+* [编辑静态页面内容和页面布局元素][modify-content-layout]
+* [跨开发人员门户更新页面元素所用的样式][customize-styles]
+* [修改门户生成的页面所用的模板][portal-templates]（在本指南中说明）
+
+模板用于自定义系统生成的开发人员门户页的内容（例如，API 文档、产品、用户身份验证等）。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和一组提供的本地化字符串资源、图标和页面控件，可根据需要非常灵活地配置页面内容。
 
 ## <a name="developer-portal-templates-overview"></a>开发人员门户模板概述
-开发人员门户模板由 API 管理服务实例的管理员在开发人员门户中管理。 若要管理开发人员模板，请导航到 Azure 门户中的 API 管理服务实例，然后从工具栏单击“开发人员门户”。
+在以管理员身份登录时，可从“开发人员门户”编辑模板。 若要访问它，请先打开 Azure 门户，再单击 API 管理实例的服务工具栏中的“发布者门户”。
 
-![开发人员门户][api-management-browse]
+![发布者门户][api-management-management-console]
 
-如果已在发布者门户中，可通过单击“开发人员门户”访问开发人员门户。
+然后单击右上角的“开发人员门户”。 
 
 ![开发人员门户菜单][api-management-developer-portal-menu]
 
@@ -181,6 +189,9 @@ Azure API Management 提供多个自定义功能，允许管理员[自定义开�
 ## <a name="next-steps"></a>后续步骤
 有关开发人员门户模板、字符串资源、图标和页面控件的参考信息，请参阅 [API 管理开发人员门户模板参考](api-management-developer-portal-templates-reference.md)。
 
+[modify-content-layout]: api-management-modify-content-layout.md
+[customize-styles]: api-management-customize-styles.md
+[portal-templates]: api-management-developer-portal-templates.md
 
 [api-management-customize-menu]: ./media/api-management-developer-portal-templates/api-management-customize-menu.png
 [api-management-templates-menu]: ./media/api-management-developer-portal-templates/api-management-templates-menu.png
@@ -188,6 +199,7 @@ Azure API Management 提供多个自定义功能，允许管理员[自定义开�
 [api-management-template]: ./media/api-management-developer-portal-templates/api-management-template.png
 [api-management-template-data]: ./media/api-management-developer-portal-templates/api-management-template-data.png
 [api-management-developer-portal-menu]: ./media/api-management-developer-portal-templates/api-management-developer-portal-menu.png
+[api-management-management-console]: ./media/api-management-developer-portal-templates/api-management-management-console.png
 [api-management-browse]: ./media/api-management-developer-portal-templates/api-management-browse.png
 [api-management-user-profile-templates]: ./media/api-management-developer-portal-templates/api-management-user-profile-templates.png
 [api-management-save-template]: ./media/api-management-developer-portal-templates/api-management-save-template.png
@@ -206,10 +218,5 @@ Azure API Management 提供多个自定义功能，允许管理员[自定义开�
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

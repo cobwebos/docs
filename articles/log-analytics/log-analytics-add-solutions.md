@@ -1,5 +1,5 @@
 ---
-title: "添加 Operations Management Suite (OMS) 管理解决方案 | Microsoft Docs"
+title: "添加 Azure Log Analytics 管理解决方案 | Microsoft 文档"
 description: "Operations Management Suite (OMS)/Log Analytics 管理解决方案是逻辑、可视化效果和数据采集规则的集合，用于提供围绕特定问题区域透视的指标。"
 services: log-analytics
 documentationcenter: 
@@ -12,17 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: db7bc67a7797bc83450b07c4f32accc3ea7c0354
-ms.openlocfilehash: 757fd850bf1cc9fb058a0a7e0f4b65d95ba3ce03
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: ecb848efd8516ae43d07f8c6ebbf3868b8e20757
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="add-operations-management-suite-oms-management-solutions"></a>添加 Operations Management Suite (OMS) 管理解决方案
+# <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>将 Azure Log Analytics 管理解决方案添加到工作区
 
-Operations Management Suite (OMS) 管理解决方案是**逻辑**、**可视化效果**和**数据采集规则**的集合，用于提供围绕特定问题区域透视的指标。 本文列出了 Log Analytics 支持的管理解决方案，并说明了如何使用 Azure 门户为工作区添加和删除管理解决方案。 还可以在 OMS 门户中使用解决方案库添加解决方案。
+Log Analytics 管理解决方案是**逻辑**、**可视化**和**数据采集规则**的集合，用于提供围绕特定问题区域透视的指标。 本文列出了 Log Analytics 支持的管理解决方案，并说明了如何使用 Azure 门户为工作区添加和删除管理解决方案。 还可以在 OMS 门户中使用解决方案库添加解决方案。
 
 管理解决方案可提供深入探索，以便：
 
@@ -61,9 +63,11 @@ Operations Management Suite (OMS) 管理解决方案是**逻辑**、**可视化�
 
 ## <a name="offers-and-pricing-tiers"></a>产品和定价层
 
-下表标识了属于每个操作管理和安全产品的管理解决方案。 该表还标识了适合每个管理解决方案的定价层。 下表中的所有解决方案都可从 Azure 门户和 Log Analytics 门户的解决方案库中获取。
+下表标识了属于每个操作管理和安全产品的管理解决方案。
+该表还标识了适合每个管理解决方案的定价层。
+下表中的所有解决方案都可从 Azure 门户和 Log Analytics 门户的解决方案库中获取。
 
-| 管理解决方案                                                                        | 产品                                                                     | 定价层<sup>1</sup>                                                    | 说明 | 
+| 管理解决方案                                                                        | 产品                                                                     | 定价层<sup>1</sup>                                                    | 说明 |
 | ---                                                                                        | ---                                                                       | ---                                                                                                       | ---   |
 | 活动 Log Analytics                                                                     | <ul><li>见解与分析&nbsp;&nbsp;</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 90 天内数据免费使用 |
 | [AD 评估](log-analytics-ad-assessment.md)                                              | <ul><li>见解与分析&nbsp;&nbsp;</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
@@ -74,7 +78,7 @@ Operations Management Suite (OMS) 管理解决方案是**逻辑**、**可视化�
 | 自动化混合辅助角色                                                                     | <ul><li>自动化与控制</li></ul>                                    | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                            | 需要将 Log Analytics 工作区链接到自动化帐户 |
 | [Azure 应用程序网关分析](log-analytics-azure-networking-analytics.md)      | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | [Azure 网络安全组分析](log-analytics-azure-networking-analytics.md)      | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
-| Azure SQL 分析 <br>（预览版）                                                         | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br>按&nbsp;节点&nbsp;(OMS)                                                                             | 需要将 Log Analytics 工作区链接到自动化帐户|
+| [Azure SQL Analytics（预览版）](log-analytics-azure-sql.md)                                                          | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br>按&nbsp;节点&nbsp;(OMS)                                                                             | 需要将 Log Analytics 工作区链接到自动化帐户|
 | 备份                                                                                    | <ul><li>见解与分析</li></ul>                                     | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                            | 需要经典备份保管库 |
 | 容量和性能 <br>（预览版）                                                     | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | [更改跟踪](log-analytics-change-tracking.md)                                         | <ul><li>自动化与控制</li></ul>                                    | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                            | 需要将 Log Analytics 工作区链接到自动化帐户 |
@@ -103,7 +107,7 @@ Operations Management Suite (OMS) 管理解决方案是**逻辑**、**可视化�
 
 社区提供的管理解决方案可从 [Azure 模板库](https://azure.microsoft.com/resources/templates/?term=Per&nbsp;Node&nbsp;(OMS))或直接从作者处获取。
 
-| 管理解决方案                 | 产品                                                                     | 定价层                         | 说明 | 
+| 管理解决方案                 | 产品                                                                     | 定价层                         | 说明 |
 | ---                                 | ---                                                                       | ---                                   | ---   |
 | 所有社区提供的解决方案  | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 按&nbsp;节点&nbsp;(OMS)     |    需要将 Log Analytics 工作区链接到自动化帐户 |
 
@@ -122,7 +126,7 @@ Log Analytics Windows 代理和 System Center Operations Manager 代理实质上
 > - 不需要 Operations Manager 且表显示使用管理组将 Operations Manager 代理数据发送到 OMS 时，始终使用管理组将 Operations Manager 代理数据发送到 OMS。 Windows 代理绕过管理组，直接将其数据发送到 OMS。
 > - 不使用管理组发送 Operations Manager 代理数据时，这些数据绕过管理组直接发送到 OMS。
 
-### <a name="insight--analytics--log-analytics"></a>见解与分析 / Log Analytics 
+### <a name="insight--analytics--log-analytics"></a>见解与分析 / Log Analytics
 
 | 管理解决方案 | 平台 | Microsoft Monitoring Agent | Operations Manager 代理 | Azure 存储空间 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -136,8 +140,9 @@ Log Analytics Windows 代理和 System Center Operations Manager 代理实质上
 | Application Insights Connector（预览版） | Azure | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | 通知时 |
 | Azure 应用程序网关分析 | Azure | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![是](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | 10 分钟 |
 | Azure 网络安全组分析 | Azure | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![是](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | 10 分钟 |
+| Azure SQL Analytics（预览版） |Windows |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | 10 分钟 |
 | 容量管理 |Windows |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |每小时 |
-| 容器 | Linux | ![是](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | 3 分钟 |
+| 容器 | Windows 和 Linux | ![是](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | 3 分钟 |
 | 密钥保管库分析 |Windows |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |10 分钟 |
 | 网络性能监视器 | Windows | ![是](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![是](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![否](./media/log-analytics-add-solutions/oms-bullet-red.png) | 每隔 5 秒钟进行 TCP 握手，每隔 3 分钟发送数据 |
 | Office 365 分析（预览版） |Windows |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |通知时 |
@@ -265,9 +270,4 @@ Log Analytics Windows 代理和 System Center Operations Manager 代理实质上
 
 ## <a name="next-steps"></a>后续步骤
 * [搜索日志](log-analytics-log-searches.md)以查看管理解决方案收集的详细信息。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

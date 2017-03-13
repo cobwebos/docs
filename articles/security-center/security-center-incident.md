@@ -15,12 +15,13 @@ ms.workload: na
 ms.date: 02/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 9852981e530cd147c2d34ac2ede251b58a167a0a
-ms.openlocfilehash: a688c392434be5a27f5691c2d89ad934e435a3c9
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 841257fe74dad05d6a25ec35a62e415d6c1917b4
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="handling-security-incident-in-azure-security-center"></a>处理 Azure 安全中心的安全事件
+# <a name="handling-security-incidents-in-azure-security-center"></a>处理 Azure 安全中心的安全事件
 会审和调查安全警报可能会非常耗时，即使对于技术高超的安全分析员也是如此，并且很多人不知道从何处开始。 通过使用[分析](security-center-detection-capabilities.md)来连接不同的[安全警报](security-center-managing-and-responding-alerts.md)之间的信息，安全中心可以提供攻击活动及其所有相关警报的单一视图，让你快速了解攻击者所采取的操作以及哪些资源受到了影响。
 
 本文档介绍如何在安全中心使用安全警报功能，帮助你处理安全事件。
@@ -61,9 +62,4 @@ ms.openlocfilehash: a688c392434be5a27f5691c2d89ad934e435a3c9
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)
 * [Azure 安全中心常见问题解答](security-center-faq.md)-- 查找有关使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/)-- 查找关于 Azure 安全性及合规性的博客文章。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 02/22/2017
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: bf58d333e81fb76ffc3cca8a8e1ccb3f71ac72c9
+ms.sourcegitcommit: 4f8235ae743a63129799972ca1024d672faccbe9
+ms.openlocfilehash: 7c32d69f3d6d2cc60f830db96b6aea47ce8712ca
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -26,7 +27,11 @@ ms.openlocfilehash: bf58d333e81fb76ffc3cca8a8e1ccb3f71ac72c9
 ![吞吐量计算器][5]
 
 ## <a name="introduction"></a>介绍
-本文概述了 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 中的请求单位。 
+[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 是一个适用于 JSON 文档的完全托管、可缩放的 NoSQL 数据库服务。 使用 DocumentDB，你无需租用虚拟机、部署软件或监视数据库。 DocumentDB 由 Microsoft 工程师操作和持续监视，以提供一流的可用性、性能和数据保护。 DocumentDB 中的数据存储在集合中。集合是高度可用的弹性容器。 使用集合时无需考虑和管理 CPU、内存和 IOPs 等硬件资源，可以根据每秒请求数来保留吞吐量。 DocumentDB 将自动管理集合的预配、透明分区和缩放，以满足预配的每秒请求数。 
+
+DocumentDB 支持众多的读取、写入、查询和存储过程执行 API。 并非所有请求都是相同的，因此系统会根据请求所需的计算量为它们分配规范化数量的**请求单位**。 操作的请求单位数是确定性的，可以通过响应标头跟踪 DocumentDB 中的任何操作消耗的请求单位数。
+
+可为 DocumentDB 中的每个集合保留吞吐量（也以请求单位数表示）。 此值以每秒 100 个请求单位的块表示，范围为每秒几百到几百万个请求单位。 可以在集合的整个生命周期内调整设置的吞吐量，以适应不断变化的应用程序的处理需求和访问模式。 
 
 阅读本文之后，你将能够回答以下问题：  
 
@@ -47,9 +52,45 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 > 
 
 ## <a name="specifying-request-unit-capacity"></a>指定请求单位容量
-创建 DocumentDB 集合时，可以指定希望为集合保留的每秒请求单位的数量 (RU)。  创建集合之后，将保留指定的 RU 的完整分配供集合使用。  保证每个集合具有专用的和隔离的吞吐量特征。  
+创建 DocumentDB 集合时，可以指定要为集合保留的每秒请求单位数（每秒 RU 数）。 DocumentDB 将会根据预配的吞吐量分配物理分区来托管集合，并拆分/重新均衡分区中不断增长的数据。
 
-值得注意的是，DocumentDB 在保留模型上操作；也就是说，按照为集合所保留的吞吐量计费，无论主动使用了多少该吞吐量均是如此。  但是请记住，随着应用程序的负载、数据和使用情况模式的更改，可以通过 DocumentDB SDK 或使用 [Azure 门户](https://portal.azure.com)轻松增加或减少保留的 RU。  有关增加和减少吞吐量的详细信息，请参阅 [DocumentDB 性能级别](documentdb-performance-levels.md)。
+如果为集合预配的请求单位数大于或等于 1,0000，DocumentDB 要求指定分区键。 以后将集合的吞吐量扩展到 10,000 个请求单位以上时，也需要使用分区键。 因此，强烈建议在创建吞吐量集合时配置[分区键](documentdb-partition-data.md)，不管初始吞吐量有多大。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（几百到几百万个非重复值）的分区键，以便 DocumentDB 能够统一缩放集合与请求。 
+
+> [!NOTE]
+> 分区键是一个逻辑边界而不是物理边界。 因此，不需要限制非重复分区键值的数目。 事实上，分区键值宁多勿少，因为 DocumentDB 提供的负载均衡选项较多。
+
+以下代码片段使用 .NET SDK 创建每秒 3,000 个请求单位的集合：
+
+```C#
+DocumentCollection myCollection = new DocumentCollection();
+myCollection.Id = "coll";
+myCollection.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(
+    UriFactory.CreateDatabaseUri("db"),
+    myCollection,
+    new RequestOptions { OfferThroughput = 3000 });
+```
+
+DocumentDB 运行一个保留模型来预配吞吐量。 也就是说，用户需要根据为集合*保留的*吞吐量付费，不管实际*使用的*吞吐量是多少。 随着应用程序的负载、数据和使用情况模式的更改，可以通过 DocumentDB SDK 或使用 [Azure 门户](https://portal.azure.com)轻松扩展和缩减保留的 RU 数量。
+
+每个集合映射到 DocumentDB 中的 `Offer` 资源，该资源包含有关集合预配吞吐量的元数据。 可以通过查找集合的相应服务资源，然后使用新的吞吐量值来对它进行更新，来更改分配的吞吐量。 以下代码片段使用 .NET SDK 将集合的吞吐量更改为每秒 5,000 个请求单位：
+
+```C#
+// Fetch the resource to be updated
+Offer offer = client.CreateOfferQuery()
+                .Where(r => r.ResourceLink == collection.SelfLink)    
+                .AsEnumerable()
+                .SingleOrDefault();
+
+// Set the throughput to 5000 request units per second
+offer = new OfferV2(offer, 5000);
+
+// Now persist these changes to the database by replacing the original resource
+await client.ReplaceOfferAsync(offer);
+```
+
+更改吞吐量不会影响集合的可用性。 通常，新的保留吞吐量在几秒内就会在应用程序上生效。
 
 ## <a name="request-unit-considerations"></a>请求单位注意事项
 在估计为 DocumentDB 集合保留的请求单位数量时，务必要考虑以下变量：
@@ -69,6 +110,55 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 > 用于 1 KB 文档的 1 个请求单位基线通过自链接或文档的ID 与简单的 GET 对应。
 > 
 > 
+
+例如，下表显示了三种不同的文档大小（1 KB、4 KB 和 64 KB）和两个不同的性能级别（500 次读取/秒 + 100 次写入/秒和 500 次读取/秒 + 500 次写入/秒）所要设置的请求单位数。 数据一致性配置为会话级别，索引策略设置为无。
+
+<table border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td valign="top"><p><strong>文档大小</strong></p></td>
+            <td valign="top"><p><strong>读取数/秒</strong></p></td>
+            <td valign="top"><p><strong>写入数/秒</strong></p></td>
+            <td valign="top"><p><strong>请求单位</strong></p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>1 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>100</p></td>
+            <td valign="top"><p>(500 * 1) + (100 * 5) = 1,000 RU/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>1 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>(500 * 5) + (100 * 5) = 3,000 RU/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>4 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>100</p></td>
+            <td valign="top"><p>(500 * 1.3) + (100 * 7) = 1,350 RU/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>4 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>(500 * 1.3) + (500 * 7) = 4,150 RU/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>64 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>100</p></td>
+            <td valign="top"><p>(500 * 10) + (100 * 48) = 9,800 RU/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>64 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>(500 * 10) + (500 * 48) = 29,000 RU/秒</p></td>
+        </tr>
+    </tbody>
+</table>
 
 ### <a name="use-the-request-unit-calculator"></a>使用请求单位计算器
 若要帮助客户微调其吞吐量估算，可以使用一个基于 Web 的[请求单位计算器](https://www.documentdb.com/capacityplanner)来帮助估计典型操作的请求单位要求，包括：
@@ -99,7 +189,7 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 > 
 
 ### <a name="use-the-documentdb-request-charge-response-header"></a>使用 DocumentDB 请求费用响应标头
-每个来自 DocumentDB 服务的响应都包含一个包含用于请求的请求单位的自定义标头 (x-ms-request-charge)。 此标头也可通过 DocumentDB SDK 访问。 在 .NET SDK 中，RequestCharge 是 ResourceResponse 对象的属性。  对于查询，在 Azure 门户中的 DocumentDB 查询资源管理器提供了用于执行的查询的请求费用信息。
+每个来自 DocumentDB 服务的响应都包含一个自定义标头 (`x-ms-request-charge`)，该标头包含请求消耗的请求单位数。 此标头也可通过 DocumentDB SDK 访问。 在 .NET SDK 中，RequestCharge 是 ResourceResponse 对象的属性。  对于查询，在 Azure 门户中的 DocumentDB 查询资源管理器提供了用于执行的查询的请求费用信息。
 
 ![检查查询资源管理器中的 RU 费用][1]
 
@@ -122,53 +212,55 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 ## <a name="a-request-unit-estimation-example"></a>请求单位估计示例
 请考虑以下 ~1 KB 文档：
 
+```JSON
+{
+ "id": "08259",
+  "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
+  "tags": [
     {
-     "id": "08259",
-      "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
-      "tags": [
-        {
-          "name": "cereals ready-to-eat"
-        },
-        {
-          "name": "kellogg"
-        },
-        {
-          "name": "kellogg's crispix"
-        }
-    ],
-      "version": 1,
-      "commonName": "Includes USDA Commodity B855",
-      "manufacturerName": "Kellogg, Co.",
-      "isFromSurvey": false,
-      "foodGroup": "Breakfast Cereals",
-      "nutrients": [
-        {
-          "id": "262",
-          "description": "Caffeine",
-          "nutritionValue": 0,
-          "units": "mg"
-        },
-        {
-          "id": "307",
-          "description": "Sodium, Na",
-          "nutritionValue": 611,
-          "units": "mg"
-        },
-        {
-          "id": "309",
-          "description": "Zinc, Zn",
-          "nutritionValue": 5.2,
-          "units": "mg"
-        }
-      ],
-      "servings": [
-        {
-          "amount": 1,
-          "description": "cup (1 NLEA serving)",
-          "weightInGrams": 29
-        }
-      ]
+      "name": "cereals ready-to-eat"
+    },
+    {
+      "name": "kellogg"
+    },
+    {
+      "name": "kellogg's crispix"
     }
+  ],
+  "version": 1,
+  "commonName": "Includes USDA Commodity B855",
+  "manufacturerName": "Kellogg, Co.",
+  "isFromSurvey": false,
+  "foodGroup": "Breakfast Cereals",
+  "nutrients": [
+    {
+      "id": "262",
+      "description": "Caffeine",
+      "nutritionValue": 0,
+      "units": "mg"
+    },
+    {
+      "id": "307",
+      "description": "Sodium, Na",
+      "nutritionValue": 611,
+      "units": "mg"
+    },
+    {
+      "id": "309",
+      "description": "Zinc, Zn",
+      "nutritionValue": 5.2,
+      "units": "mg"
+    }
+  ],
+  "servings": [
+    {
+      "amount": 1,
+      "description": "cup (1 NLEA serving)",
+      "weightInGrams": 29
+    }
+  ]
+}
+```
 
 > [!NOTE]
 > 文档在 DocumentDB 中已缩小，所以系统计算的上述文档的大小略小于 1 KB。
@@ -209,7 +301,7 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 
 在此示例中，我们认为平均吞吐量需求为 1,275 RU/s。  舍入到最接近的百位数，我们会将此应用程序的集合设置为 1,300 RU/s。
 
-## <a name="a-idrequestratetoolargea-exceeding-reserved-throughput-limits"></a><a id="RequestRateTooLarge"></a>超过保留的吞吐量限制
+## <a id="RequestRateTooLarge"></a>超过保留的吞吐量限制
 前面提到，请求单位消耗以每秒速率进行评估。 对于超过集合设置的请求单位速率的应用程序，将限制对该集合的请求数，直到速率降低到保留级别之下。 被限制时，服务器将抢先结束请求、引发 RequestRateTooLargeException（HTTP 状态代码 429）并返回 x-ms-retry-after-ms 标头，该标头指示重试请求前用户必须等待的时间（以毫秒为单位）。
 
     HTTP Status 429
@@ -236,9 +328,4 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 [3]: ./media/documentdb-request-units/RUEstimatorDocuments.png
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

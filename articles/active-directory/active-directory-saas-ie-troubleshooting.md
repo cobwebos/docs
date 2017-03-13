@@ -1,5 +1,5 @@
 ---
-title: "Internet Explorer 访问面板扩展故障排除 | Microsoft Docs"
+title: "适用于 IE 的 Azure 访问面板扩展故障排除 | Microsoft 文档"
 description: "如何使用组策略为我的应用门户部署 Internet Explorer 加载项。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2017
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 43768d76e3cdc0dc34a3412675ea4fb84170c021
+ms.sourcegitcommit: f593ecca4f4c82dcbd07e6f57ad120537f7d2134
+ms.openlocfilehash: 4c3f7f95b1052512547a9996019803b6185a3405
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -92,10 +94,5 @@ ms.openlocfilehash: 43768d76e3cdc0dc34a3412675ea4fb84170c021
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [Azure Active Directory 的应用程序访问与单一登录](active-directory-appssoaccess-whatis.md)
 * [如何使用组策略部署 Internet Explorer 的访问面板扩展](active-directory-saas-ie-group-policy.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

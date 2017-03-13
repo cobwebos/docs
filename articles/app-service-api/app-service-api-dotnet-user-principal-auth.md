@@ -35,7 +35,7 @@ ms.lasthandoff: 01/24/2017
 * [如何在 Azure App Service 中配置用户身份验证](#authconfig)部分概括说明如何为 API 应用配置用户身份验证，这些内容同样适用于应用服务支持的所有框架，包括 .NET、Node.js 和 Java。
 * 从[继续学习 .NET API 应用教程](#tutorialstart)部分开始，本文逐步说明如何使用 .NET 后端和 AngularJS 前端配置示例应用程序，使其使用 Azure Active Directory 进行用户身份验证。 
 
-## <a name="a-idauthconfiga-how-to-configure-user-authentication-in-azure-app-service"></a><a id="authconfig"></a>如何在 Azure 应用服务中配置用户身份验证
+## <a id="authconfig"></a>如何在 Azure 应用服务中配置用户身份验证
 本部分提供适用于任何 API 应用的一般说明。 有关待办事项列表 .NET 示例应用程序的特定步骤，请转到[继续学习 .NET 入门教程](#tutorialstart)。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，导航到要保护的 API 应用的“设置”边栏选项卡，找到“功能”部分，然后单击“身份验证/授权”。
@@ -64,7 +64,7 @@ ms.lasthandoff: 01/24/2017
 
 为了使 API 调用经过身份验证，调用方将在 HTTP 请求的 Authorization 标头中包含身份验证提供程序的 OAuth 2.0 持有者令牌。 使用身份验证提供程序的 SDK 可以获取该令牌。
 
-## <a name="a-idtutorialstarta-continuing-the-net-api-apps-tutorials"></a><a id="tutorialstart"></a>继续学习 .NET API 应用教程
+## <a id="tutorialstart"></a>继续学习 .NET API 应用教程
 如果要遵循适用于 API 应用的 Node.js 或 Java 教程，请跳到下一篇文章：[API 应用的服务主体身份验证](app-service-api-dotnet-service-principal-auth.md)。 
 
 如果要遵循适用于 API 应用的 .NET 系列教程，并已根据[第一篇](app-service-api-dotnet-get-started.md)和[第二篇](app-service-api-cors-consume-javascript.md)教程中的说明部署示例应用程序，请跳到[在应用服务和 Azure AD 中设置身份验证](#azureauth)部分。
@@ -77,10 +77,10 @@ ms.lasthandoff: 01/24/2017
 > 
 
 1. 确保满足[第一篇教程](app-service-api-dotnet-get-started.md)中所列的所有先决条件。 除了所列的先决条件以外，这些身份验证教程还假设读者在 Visual Studio 和 Azure 门户中用过应用服务 Web 应用和 API 应用。
-2. 在**待办事项列表示例存储库自述文件**中单击“部署到 Azure”[](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md)按钮，部署 API 应用和 Web 应用。 记下创建的 Azure 资源组，因为稍后可以用它来查找 Web 应用和 API 应用名称。
+2. 在[待办事项列表示例存储库自述文件](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md)中单击“部署到 Azure”按钮，部署 API 应用和 Web 应用。 记下创建的 Azure 资源组，因为稍后可以用它来查找 Web 应用和 API 应用名称。
 3. 下载或克隆[待办事项示例存储库](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list)，获取要在 Visual Studio 中本地使用的代码。
 
-## <a name="a-idazureautha-set-up-authentication-in-app-service-and-azure-ad"></a><a id="azureauth"></a>在应用服务和 Azure AD 中设置身份验证
+## <a id="azureauth"></a>在应用服务和 Azure AD 中设置身份验证
 现在，有一个应用程序在 Azure 应用服务中运行且不要求对用户进行身份验证。 在本部分中，通过执行以下任务来添加身份验证：
 
 * 配置应用服务，要求在调用中间层 API 应用时进行 Azure Active Directory (Azure AD) 身份验证。

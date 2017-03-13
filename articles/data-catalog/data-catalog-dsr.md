@@ -441,7 +441,7 @@ ms.lasthandoff: 02/18/2017
        <td><b>DSL 结构<b></td>
     </tr>
     <tr>
-      <td>Azure 数据湖存储</td>
+      <td>Azure Data Lake Store</td>
       <td>容器</td>
       <td>Data Lake</td>
       <td>
@@ -449,7 +449,7 @@ ms.lasthandoff: 02/18/2017
       </td>
     </tr>
     <tr>
-      <td>Azure 数据湖存储</td>
+      <td>Azure Data Lake Store</td>
       <td>表</td>
       <td>目录，文件</td>
       <td>

@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6f9974c109905f432705b85dcc8fc4d3549f16e9
-ms.openlocfilehash: 445bc1259cb3fa6f02fa1cadec11b1ac4b186e78
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: de2e6d201ba54774697356e1cd55c4881664a401
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-computers-and-devices-to-oms-using-the-oms-gateway"></a>使用 OMS 网关将计算机和设备连接到 OMS
+# <a name="connect-computers-and-devices-without-internet-access-to-oms-using-the-oms-gateway"></a>使用 OMS 网关将无法访问 Internet 的计算机和设备连接到 OMS
+
 本文档介绍 OMS 管理的设备和 System Center Operations Manager (SCOM) 监视的计算机在无法访问 Internet 的情况下，如何将数据发送到 OMS 服务。 OMS 网关可以收集数据，然后代表这些设备将数据发送到 OMS 服务。
 
 网关是使用 HTTP CONNECT 命令支持 HTTP 隧道的 HTTP 转发代理。 在使用 Windows 操作系统的 4 核 CPU、16-GB 服务器上运行时，网关最多可以处理 2000 个并行连接的 OMS 设备。
@@ -277,9 +280,4 @@ Operations Manager 代理通过管理服务器发送某些数据，例如 Operat
 
 ## <a name="next-steps"></a>后续步骤
 * [添加数据源](log-analytics-data-sources.md)，以便从 OMS 工作区中已连接的源收集数据并将其存储在 OMS 存储库中。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

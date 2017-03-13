@@ -83,7 +83,7 @@ ms.lasthandoff: 02/03/2017
    6. 单击“创建” 。
       
       > [!IMPORTANT]
-      > 只有订阅/资源组级别的“数据工厂参与者”角色成员才能创建数据工厂实例。[](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor)
+      > 只有订阅/资源组级别的 [数据工厂参与者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。
       > 
       > 数据工厂名称可能在将来被注册为 DNS 名称，因此将变成公开可见。                
       > 

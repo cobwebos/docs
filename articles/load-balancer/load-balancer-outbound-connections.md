@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: bec4f89556a2daa41e19b0ecb2ab9bbbed849107
-ms.openlocfilehash: 0bf40c5b44ea87c88d4464baf958e8afb7a59c38
+ms.sourcegitcommit: 273598a6eecb358c0b308c481193323e67dd475c
+ms.openlocfilehash: 24c3fdd8124ff3cc43feacb6f25dda84be9f46d9
+ms.lasthandoff: 02/28/2017
 
 ---
 
@@ -36,7 +37,7 @@ Azure 提供三种不同的方法来实现出站连接。 每种方法都有自�
 
 ## <a name="standalone-vm-with-no-instance-level-public-ip-address"></a>独立 VM（无实例级公共 IP 地址）
 
-在此场景中，VM 不是 Azure Load Balancer 池的一部分，并且没有分配给它的实例级公共 IP (ILPIP) 地址。 当 VM 创建出站流时，Azure 将此出站流的专用源 IP 地址转换为公共源 IP 地址。 用于此出站流的公共 IP 地址是不可配置的。 Azure 使用源网络地址转换 (SNAT) 来执行此功能。 使用公共 IP 地址的临时端口区分由 VM 产生的各个流。 创建流后 SNAT 动态分配临时端口。 在此情况下，用于 SNAT 的临时端口被称为 SNAT 端口。
+在此场景中，VM 不是 Azure Load Balancer 池的一部分，并且没有分配给它的实例级公共 IP (ILPIP) 地址。 当 VM 创建出站流时，Azure 将此出站流的专用源 IP 地址转换为公共源 IP 地址。 用于此出站流的公共 IP 地址是不可配置的，并且不会影响订阅的公共 IP 资源限制。 Azure 使用源网络地址转换 (SNAT) 来执行此功能。 使用公共 IP 地址的临时端口区分由 VM 产生的各个流。 创建流后 SNAT 动态分配临时端口。 在此情况下，用于 SNAT 的临时端口被称为 SNAT 端口。
 
 SNAT 端口是可能会被耗尽的有限资源。 因此了解它们的使用方式很重要。 每个到单个目标 IP 地址的流使用一个 SNAT 端口。 对于到相同的目标 IP 地址的多个流，每个流使用一个 SNAT 端口。 这可以确保源自相同的公共 IP 地址，并到相同的目标 IP 地址的流的唯一性。 每个流到不同的目标 IP 地址的多个流对于每个目标使用一个 SNAT 端口。 目标 IP 地址使流具有唯一性。
 
@@ -65,9 +66,4 @@ SNAT 端口是可能会被耗尽的有限资源。 因此了解它们的使用�
 有时允许 VM 创建出站流是不可取的，或者可能需要管理哪些目标可以通过出站流进行访问。 在此情况下，使用[网络安全组 (NSG)](../virtual-network/virtual-networks-nsg.md) 管理 VM 可以访问的目标。 将 NSG 应用于负载平衡的 VM 时，需要注意[默认标记](../virtual-network/virtual-networks-nsg.md#default-tags)和[默认规则](../virtual-network/virtual-networks-nsg.md#default-rules)。
 
 必须确保 VM 可以接收来自 Azure Load Balancer 的运行状况探测请求。 如果 NSG 阻止来自 AZURE_LOADBALANCER 默认标记的运行状况探测请求，那么 VM 的运行状况探测程序将失败，并且 VM 被标记为停机。 负载平衡器停止向此 VM 发送新流。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

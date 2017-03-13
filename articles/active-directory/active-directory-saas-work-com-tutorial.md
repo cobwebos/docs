@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
-ms.openlocfilehash: 69d94659f4eff72e1c449fd915616d81fd4712de
+ms.sourcegitcommit: 86742dc7ee1429a0cdb23f4da3fa58341468afbc
+ms.openlocfilehash: 8d75ee95bcaf506c2378bb9cf34da576fb1c83e1
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: 69d94659f4eff72e1c449fd915616d81fd4712de
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-work-com-tutorial/IC794105.png "Scenario")
+![方案](./media/active-directory-saas-work-com-tutorial/IC794105.png "方案")
 
 ## <a name="enabling-the-application-integration-for-workcom"></a>启用 Work.com 的应用程序集成
 本部分旨在概述如何启用 Work.com 的应用程序集成。
@@ -45,23 +46,23 @@ ms.openlocfilehash: 69d94659f4eff72e1c449fd915616d81fd4712de
    
     ![Active Directory](./media/active-directory-saas-work-com-tutorial/IC700993.png "Active Directory")
 
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-    ![应用程序](./media/active-directory-saas-work-com-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-work-com-tutorial/IC700994.png "应用程序")
 
 4. 在页面底部单击“添加”。
    
-    ![添加应用程序](./media/active-directory-saas-work-com-tutorial/IC749321.png "Add application")
+    ![添加应用程序](./media/active-directory-saas-work-com-tutorial/IC749321.png "添加应用程序")
 
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-    ![从库中添加应用程序](./media/active-directory-saas-work-com-tutorial/IC749322.png "Add an application from gallerry")
+    ![从库添加应用程序](./media/active-directory-saas-work-com-tutorial/IC749322.png "从库添加应用程序")
 
 6. 在“搜索框”中，键入“Work.com”。
    
-    ![应用程序库](./media/active-directory-saas-work-com-tutorial/IC794106.png "Application Gallery")
+    ![应用程序库](./media/active-directory-saas-work-com-tutorial/IC794106.png "应用程序库")
 
 7. 在“结果”窗格中，选择“Work.com”，然后单击“完成”以添加该应用程序。
    
@@ -80,39 +81,39 @@ ms.openlocfilehash: 69d94659f4eff72e1c449fd915616d81fd4712de
 1. 以管理员身份登录到 Work.com 租户。
 2. 转到“设置”。
    
-    ![设置](./media/active-directory-saas-work-com-tutorial/IC794108.png "Setup")
+    ![设置](./media/active-directory-saas-work-com-tutorial/IC794108.png "设置")
 
 3. 在左侧导航窗格中的“管理”部分中，单击“域管理”以展开相关部分，然后单击“我的域”，打开“我的域”页。 
    
-    ![我的域](./media/active-directory-saas-work-com-tutorial/IC767825.png "My Domain")
+    ![我的域](./media/active-directory-saas-work-com-tutorial/IC767825.png "我的域")
 
 4. 若要验证你的域是否已正确设置，请确保它在“步骤 4 部署到用户”中，并复查“我的域设置”。
    
-    ![部署到用户的域](./media/active-directory-saas-work-com-tutorial/IC784377.png "Doman Deployed to User")
+    ![部署到用户的域](./media/active-directory-saas-work-com-tutorial/IC784377.png "部署到用户的域")
 
 5. 在另一个 Web 浏览器窗口中，登录到 Azure 经典门户。
 
 6. 在“Work.com”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-work-com-tutorial/IC794109.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-work-com-tutorial/IC794109.png "配置单一登录")
 
 7. 在“你希望用户如何登录 Work.com”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-work-com-tutorial/IC794110.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-work-com-tutorial/IC794110.png "配置单一登录")
 
 8. 在“配置应用 URL”页的“Work.com 登录 URL”文本框中，键入用户用于登录 Work.com 应用程序的 URL（例如：“http://company.my.salesforce.com”），然后单击“下一步”： 
    
-    ![配置应用 URL](./media/active-directory-saas-work-com-tutorial/IC794111.png "Configure App URL")
+    ![配置应用 URL](./media/active-directory-saas-work-com-tutorial/IC794111.png "配置应用 URL")
 
 9. 在“配置 Work.com 的单一登录”页面上，若要下载证书，请单击“下载证书”，然后将证书文件保存在本地计算机上。
    
-    ![配置单一登录](./media/active-directory-saas-work-com-tutorial/IC794112.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-work-com-tutorial/IC794112.png "配置单一登录")
 
 10. 登录到 Work.com 租户。
 
 11. 转到“设置”。
     
-    ![设置](./media/active-directory-saas-work-com-tutorial/IC794108.png "Setup")
+    ![设置](./media/active-directory-saas-work-com-tutorial/IC794108.png "设置")
 
 12. 展开“安全控件”菜单，然后单击“单一登录设置”。
     
@@ -120,7 +121,7 @@ ms.openlocfilehash: 69d94659f4eff72e1c449fd915616d81fd4712de
 
 13. 在“单一登录设置”对话框页上，执行以下步骤：
     
-    ![已启用 SAML](./media/active-directory-saas-work-com-tutorial/IC781026.png "SAML Enabled")
+    ![已启用 SAML](./media/active-directory-saas-work-com-tutorial/IC781026.png "已启用 SAML")
     
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“已启用 SAML”。
     
@@ -128,7 +129,7 @@ ms.openlocfilehash: 69d94659f4eff72e1c449fd915616d81fd4712de
 
 14. 在“SAML 单一登录设置”部分中，执行以下步骤：
     
-    ![SAML 单一登录设置](./media/active-directory-saas-work-com-tutorial/IC794114.png "SAML Single Sign-On Setting")
+    ![SAML 单一登录设置](./media/active-directory-saas-work-com-tutorial/IC794114.png "SAML Single Sign-On Settings")
     
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入配置名称。  
        
@@ -157,19 +158,19 @@ ms.openlocfilehash: 69d94659f4eff72e1c449fd915616d81fd4712de
 
 15. 在 Work.com 经典门户内，从左侧导航窗格中，单击“域管理”以展开相关部分，然后单击“我的域”，打开“我的域”页。 
     
-    ![我的域](./media/active-directory-saas-work-com-tutorial/IC794115.png "My Domain")
+    ![我的域](./media/active-directory-saas-work-com-tutorial/IC794115.png "我的域")
 
 16. 在“我的域”页上的“登录页品牌打造”部分中，单击“编辑”。
     
-    ![登录页品牌打造](./media/active-directory-saas-work-com-tutorial/IC767826.png "Login Page Branding")
+    ![登录页品牌打造](./media/active-directory-saas-work-com-tutorial/IC767826.png "登录页品牌打造")
 
 17. 在“登录页品牌打造”页上的“身份验证服务”部分中，会显示 **SAML SSO 设置**的名称。 选择它，然后单击“保存”。
     
-    ![登录页品牌打造](./media/active-directory-saas-work-com-tutorial/IC784366.png "Login Page Branding")
+    ![登录页品牌打造](./media/active-directory-saas-work-com-tutorial/IC784366.png "登录页品牌打造")
 
 18. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
     
-    ![配置单一登录](./media/active-directory-saas-work-com-tutorial/IC794116.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-work-com-tutorial/IC794116.png "配置单一登录")
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 要使 Azure Active Directory 用户能够登录，必须将这些用户预配到 Work.com 中。  
@@ -180,18 +181,18 @@ ms.openlocfilehash: 69d94659f4eff72e1c449fd915616d81fd4712de
 
 2. 转到“设置”。
    
-    ![设置](./media/active-directory-saas-work-com-tutorial/IC794108.png "Setup")
+    ![设置](./media/active-directory-saas-work-com-tutorial/IC794108.png "设置")
 3. 转到“管理用户”\>“用户”。
    
-    ![管理用户](./media/active-directory-saas-work-com-tutorial/IC784369.png "Manage Users")
+    ![管理用户](./media/active-directory-saas-work-com-tutorial/IC784369.png "管理用户")
 
 4. 单击“新建用户”。
    
-    ![所有用户](./media/active-directory-saas-work-com-tutorial/IC794117.png "All Users")
+    ![所有用户](./media/active-directory-saas-work-com-tutorial/IC794117.png "所有用户")
 
 5. 在“用户编辑”部分中，执行以下步骤：
    
-    ![用户编辑](./media/active-directory-saas-work-com-tutorial/IC794118.png "User Edit")
+    ![用户编辑](./media/active-directory-saas-work-com-tutorial/IC794118.png "用户编辑")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“姓氏”、“别名”、“电子邮件”、“用户名”和“昵称”。
    
@@ -212,19 +213,14 @@ ms.openlocfilehash: 69d94659f4eff72e1c449fd915616d81fd4712de
 
 2. 在“Work.com”应用程序集成页上，单击“分配用户”。
    
-    ![分配用户](./media/active-directory-saas-work-com-tutorial/IC794119.png "Assign Users")
+    ![分配用户](./media/active-directory-saas-work-com-tutorial/IC794119.png "分配用户")
 
-3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
+3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-    ![是](./media/active-directory-saas-work-com-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-work-com-tutorial/IC767830.png "是")
 
 现在请等待 10 分钟，然后验证该帐户是否已同步到 Work.com 沙盒。
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08e2e0894810693696b326538a7449ddab30d2f8
-ms.openlocfilehash: 7b156e647bbf27fe31d9c89b764c6c1c363a8827
+ms.sourcegitcommit: 1330d8be444f596b0d1ed2038eaeb1200e8b9285
+ms.openlocfilehash: 6951a50050c5b0c8edb2deb1eb64aef44e94ff96
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -39,7 +40,7 @@ API 在所有平台中是一致的，只有一些微小的差异。
 
 可以[将属性和指标附加到](#properties)其中的大多数遥测调用。
 
-## <a name="a-nameprepabefore-you-start"></a><a name="prep"></a>开始之前
+## <a name="prep"></a>开始之前
 如果尚未完成以下操作：
 
 * 将 Application Insights SDK 添加到项目：
@@ -399,12 +400,12 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 还可以[搜索][diagnostic]具有特定用户名和帐户的客户端数据点。
 
-## <a name="a-namepropertiesafiltering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>使用属性筛选、搜索和细分数据
+## <a name="properties"></a>使用属性筛选、搜索和细分数据
 可以将属性和度量值附加到事件（以及指标、页面视图、异常和其他遥测数据）。
 
 *属性*是可以在使用情况报告中用来筛选遥测数据的字符串值。 例如，如果应用提供多种游戏，可以将游戏的名称附加到每个事件，了解哪些游戏更受欢迎。
 
-字符串长度限制为 1,000。 （如果想要发送大型数据区块，请使用消息参数 [TrackTrace](#track-trace)。）
+字符串长度限制为 8192。 （如果想要发送大型数据区块，请使用消息参数 [TrackTrace](#track-trace)。）
 
 *指标*是能够以图形方式呈现的数字值。 例如，可以查看玩家的分数是否逐渐增加。 可以根据连同事件一起发送的属性对图表进行分段，以便获取不同游戏的独立图形或堆积图。
 
@@ -516,7 +517,7 @@ Visual Basic
 >
 >
 
-## <a name="a-nametimeda-timing-events"></a><a name="timed"></a>计时事件
+## <a name="timed"></a>计时事件
 有时，需要绘制图表来呈现执行某个操作花费了多少时间。 例如，你可能想要知道用户在游戏中考虑如何选择时花费了多少时间。 为此，可以使用度量参数。
 
 *C#*
@@ -539,7 +540,7 @@ Visual Basic
 
 
 
-## <a name="a-namedefaultsadefault-properties-for-custom-telemetry"></a><a name="defaults"></a>自定义遥测的默认属性
+## <a name="defaults"></a>自定义遥测的默认属性
 如果想要为编写的一些自定义事件设置默认属性值，可以在 TelemetryClient 实例中设置。 这些值将附加到从该客户端发送的每个遥测项。
 
 *C#*
@@ -604,7 +605,7 @@ Visual Basic
 
 若要禁用选定的标准收集器（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config][config] 中的相关行。 例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
 
-## <a name="a-namedebugadeveloper-mode"></a><a name="debug"></a>开发人员模式
+## <a name="debug"></a>开发人员模式
 在调试期间，通过管道加速遥测会很有效，这样可以立即看到结果。 此外，还可以获得其他消息来帮助跟踪任何遥测问题。 在生产环境中请关闭此模式，因为它可能会拖慢应用。
 
 *C#*
@@ -616,7 +617,7 @@ Visual Basic
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 
-## <a name="a-nameikeya-setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>设置所选自定义遥测的检测密钥
+## <a name="ikey"></a>设置所选自定义遥测的检测密钥
 *C#*
 
     var telemetry = new TelemetryClient();
@@ -624,7 +625,7 @@ Visual Basic
     // ...
 
 
-## <a name="a-namedynamic-ikeya-dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
+## <a name="dynamic-ikey"></a> 动态检测密钥
 若要避免混合来自开发、测试和生产环境的遥测，可以[创建单独的 Application Insights 资源][create]，并根据环境更改其密钥。
 
 无需从配置文件获取检测密钥，可以在代码中设置密钥。 在初始化方法中设置密钥，如 ASP.NET 服务中的 global.aspx.cs：
@@ -709,7 +710,7 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
 
     是的，可以使用[数据访问 API](https://dev.applicationinsights.io/)。 提取数据的其他方法包括[从 Analytics 导出到 Power BI](app-insights-export-power-bi.md) 和[连续导出](app-insights-export-telemetry.md)。
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
+## <a name="next"></a>后续步骤
 * [搜索事件和日志][diagnostic]
 
 * [示例和演练](app-insights-code-samples.md)
@@ -729,9 +730,4 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
 [trace]: app-insights-search-diagnostic-logs.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

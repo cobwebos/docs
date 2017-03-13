@@ -13,19 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/16/2017
+ms.date: 02/26/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: eccd394a29376a20371732023bfbf9b53435f0ae
-ms.openlocfilehash: 51c994a37ebaca472c360e0c5f7b4a7fab5f55fc
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c5a26a17ab50993f8b57c8868b02541251de1cb1
+ms.lasthandoff: 03/06/2017
 
 ---
 
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication 服务器入门
+
 <center>![本地 MFA](./media/multi-factor-authentication-get-started-server/server2.png)</center>
 
-决定使用本地多重身份验证服务器后，让我们继续下一步。 本页介绍如何全新安装服务器，以及在本地 Active Directory 上对它进行设置。 如果已安装 PhoneFactor 服务器，并正在寻求升级的方法，请参阅[升级到 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server-upgrade.md)；如果你正在寻找有关只安装 Web 服务的信息，请参阅[部署 Azure 多重身份验证服务器移动应用 Web 服务](multi-factor-authentication-get-started-server-webservice.md)。
+决定使用本地多重身份验证服务器后，让我们继续下一步。 本页介绍如何全新安装服务器，以及在本地 Active Directory 上对它进行设置。 如果已安装 MFA 服务器，但需进行升级，请参阅[升级到最新的 Azure 多重身份验证服务器](multi-factor-authentication-server-upgrade.md)。 若要了解如何只安装 Web 服务，请参阅[部署 Azure 多重身份验证服务器移动应用 Web 服务](multi-factor-authentication-get-started-server-webservice.md)。
+ 
 
 ## <a name="download-the-azure-multi-factor-authentication-server"></a>下载 Azure Multi-Factor Authentication 服务器
 可以使用两种不同的方法下载 Azure Multi-Factor Authentication 服务器。 两种方法都是通过 Azure 门户进行的。 第一种方法是直接管理 Multi-Factor Auth 提供程序。 第二种方法是通过服务设置。 第二个选项需要多重身份验证提供程序或 Azure MFA、Azure AD Premium 或 Enterprise Mobility Suite 许可证。
@@ -87,7 +89,7 @@ ms.lasthandoff: 02/17/2017
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
 | 70.37.154.128/25 |255.255.255.128 |70.37.154.129 – 70.37.154.254 |
 
-如果你不使用“事件确认”功能，并且用户也不在企业网络中的设备上使用移动应用进行验证，则 IP 地址可缩减为以下范围：
+如果不使用“事件确认”功能，并且用户也不在企业网络中的设备上使用移动应用进行验证，则只需以下范围：
 
 | IP 子网 | 网络掩码 | IP 范围 |
 |:--- |:--- |:--- |
@@ -97,14 +99,14 @@ ms.lasthandoff: 02/17/2017
 
 ### <a name="to-install-and-configure-the-azure-multi-factor-authentication-server"></a>安装和配置 Azure 多重身份验证服务器
 
-1. 双击可执行文件。 随即将开始安装。
+这些步骤是在使用配置向导快速进行设置后执行的。 如果看不到向导，或者需要重新运行向导，则可从服务器上的“工具”菜单进行选择。
+
+1. 双击可执行文件。 
 2. 在“选择安装文件夹”屏幕中，确保文件夹正确，然后单击“下一步”。
 3. 安装完成后，单击“完成”。  此时将启动配置向导。
-4. 在配置向导欢迎屏幕上，选中“跳过使用身份验证配置向导”，然后单击“下一步”。  这会关闭向导并启动服务器。
+4. 在配置向导欢迎屏幕上，选中“跳过使用身份验证配置向导”，然后单击“下一步”。  此时向导将关闭，服务器会启动。
     ![云](./media/multi-factor-authentication-get-started-server/skip2.png)
 5. 返回下载服务器的页面，单击“生成激活凭据”按钮  。 在提供的框中，将此信息复制到“Azure MFA 服务器”，然后单击“激活” 。
-
-上述步骤说明了使用配置向导快速进行设置的过程。  可以通过从服务器上的“工具”菜单选择身份验证向导来重新运行该向导。
 
 ## <a name="import-users-from-active-directory"></a>从 Active Directory 导入用户
 安装并配置服务器后，你可以快速地将用户导入 Azure MFA 服务器。
@@ -117,9 +119,9 @@ ms.lasthandoff: 02/17/2017
 ![云](./media/multi-factor-authentication-get-started-server/import2.png)
 
 ## <a name="send-users-an-email"></a>向用户发送电子邮件
-将用户导入 MFA 服务器后，建议向用户发送一封电子邮件，告知已经为他们注册了双步验证。
+将用户导入 MFA 服务器后，请向用户发送一封电子邮件，告知已经为他们注册了双重验证。
 
-应该根据为用户配置双步验证的方式来确定该电子邮件的内容。 例如，如果可以从公司目录导入用户的电话号码，则电子邮件中应该包含默认电话号码，使用户知道预期会发生什么。 同样，如果未导入用户的电话号码，或者用户配置为使用移动应用，则发送的电子邮件应该指导用户通过 Azure 多重身份验证用户门户的超链接完成帐户注册。
+应该根据为用户配置双步验证的方式来确定该电子邮件的内容。 例如，如果可以从公司目录导入电话号码，则电子邮件中应该包含默认电话号码，使用户知道下一步会发生什么。 如果未导入电话号码，或者用户要使用移动应用，则发送的电子邮件应该指导用户通过 Azure 多重身份验证用户门户的超链接完成帐户注册。
 
 此外，电子邮件的内容根据为用户设置的验证方法（电话呼叫、短信或移动应用）的不同而异。  例如，如果要求用户在身份验证时使用 PIN 码，则该电子邮件将告诉用户其初始 PIN 码的设置。  要求用户在首次验证期间更改其 PIN 码。
 
@@ -150,18 +152,18 @@ ms.lasthandoff: 02/17/2017
 除了上述字段，验证结果（成功/拒绝）和任何拒绝的原因还与身份验证数据一起存储，可通过身份验证/使用情况报告获取。
 
 ## <a name="next-steps"></a>后续步骤
-有关高级设置的详细信息和配置信息，请单击下表中的链接：
 
-| 方法 | 说明 |
-|:--- |:--- |
-| [用户门户](multi-factor-authentication-get-started-portal.md) |有关设置和配置用户门户的信息，包括部署和用户自助服务。 |
-| [Active Directory 联合身份验证服务](multi-factor-authentication-get-started-adfs.md) |有关设置使用 AD FS 的 Azure 多重身份验证的信息。 |
-| [RADIUS 身份验证](multi-factor-authentication-get-started-server-radius.md) |有关设置和配置使用 RADIUS 的 Azure MFA 服务器的信息。 使用 RADIUS 可将各种第三方系统与 Azure MFA 服务器集成。 |
-| [IIS 身份验证](multi-factor-authentication-get-started-server-iis.md) |有关设置和配置使用 IIS 的 Azure MFA 服务器的信息。 使用 IIS 可将各种第三方系统与 Azure MFA 服务器集成。 |
-| [Windows 身份验证](multi-factor-authentication-get-started-server-windows.md) |有关设置和配置使用 Windows 身份验证的 Azure MFA 服务器的信息。 |
-| [LDAP 身份验证](multi-factor-authentication-get-started-server-ldap.md) |有关设置和配置使用 LDAP 身份验证的 Azure MFA 服务器的信息。 使用 LDAP 可将各种第三方系统与 Azure MFA 服务器集成。 |
-| [使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server-rdg.md) |有关设置和配置使用 RADIUS 的、具有远程桌面网关的 Azure MFA 服务器的信息。 |
-| [与 Windows Server Active Directory 同步](multi-factor-authentication-get-started-server-dirint.md) |有关在 Active Directory 与 Azure MFA 服务器之间设置和配置同步的信息。 |
-| [部署 Azure 多重身份验证服务器移动应用 Web 服务](multi-factor-authentication-get-started-server-webservice.md) |有关设置和配置 Azure MFA 服务器 Web 服务的信息。 |
-| [使用 Azure 多重身份验证与第三方 VPN 的高级方案](multi-factor-authentication-advanced-vpn-configurations.md) | Cisco、Citrix 和 Juniper VPN 设备的分步配置指南。 |
+- 为用户的自助服务设置和配置[用户门户](multi-factor-authentication-get-started-portal.md)。
+
+- 设置使用 [Active Directory 联合服务](multi-factor-authentication-get-started-adfs.md) 的多重身份验证
+
+- 设置和配置使用 [RADIUS 身份验证](multi-factor-authentication-get-started-server-radius.md)的 Azure MFA 服务器。 使用 RADIUS 可将各种第三方系统与 Azure MFA 服务器集成。 
+
+- 设置和配置使用 [Windows 身份验证](multi-factor-authentication-get-started-server-windows.md)的 Azure MFA 服务器。
+
+- 设置和配置[使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server-rdg.md)。 
+
+- [部署 Azure 多重身份验证服务器移动应用 Web 服务](multi-factor-authentication-get-started-server-webservice.md)。
+
+- [使用 Azure 多重身份验证与第三方 VPN 的高级方案](multi-factor-authentication-advanced-vpn-configurations.md)。
 

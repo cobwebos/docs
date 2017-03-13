@@ -12,11 +12,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2017
+ms.date: 03/03/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
-ms.openlocfilehash: 6a20f75dbb2c914b1239adb5ba10189a7193584c
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 1ec1a20dec318153923afd6a0875545d1e102f29
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -133,6 +134,10 @@ ms.openlocfilehash: 6a20f75dbb2c914b1239adb5ba10189a7193584c
 
 虽然从技术上讲，你可以为 Azure AD 支持的每种语言都配置不同的设置，但由于维护和性能方面的原因，我们建议你尽量少使用不同的设置。
 
+> [!IMPORTANT]
+> 在用户登录之前，Yammer 不显示 Azure AD 品牌的登录页。 用户先看到一般性的 Office 365 登录页，然后看到品牌页。   
+ 
+ 
 **若要将公司品牌添加到目录，请执行以下步骤：**
 
 1. 以你想要自定义的目录的管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com) 。
@@ -148,7 +153,7 @@ ms.openlocfilehash: 6a20f75dbb2c914b1239adb5ba10189a7193584c
 
 1. 以你想要自定义的目录的管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com) 。
 2. 选择要自定义的目录。
-3. 在顶部菜单栏中，单击“配置”。
+fs3。 在顶部菜单栏中，单击“配置”。
 4. 单击“自定义品牌”。
 5. 单击“为特定语言添加品牌”。
 6. 选择要为其自定义徽标的语言，然后单击“下一步”。
@@ -221,9 +226,4 @@ Azure AD 中的某些可自定义的元素具有多个用例。 只需为每个�
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 [9]: ./media/active-directory-add-company-branding/hidekmsi.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

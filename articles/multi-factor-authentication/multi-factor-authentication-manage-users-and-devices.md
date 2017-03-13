@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 27ff53646992308d574dcc2e631cd63b8227f9c8
-ms.openlocfilehash: 826fc2b2eaaf180d922c7a9a4c329ec4379c2ae0
+ms.sourcegitcommit: 847a8bdcf880b56f587f6759058825fd1965d29e
+ms.openlocfilehash: 43ab735b91bf3f3f1e9631067827f2c456dd7b72
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="managing-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置
-作为管理员，你可以管理以下用户和设备设置。  
+作为管理员，可以管理以下用户和设备设置：
 
-* [要求选定用户重新提供联系方式](#require-selected-users-to-provide-contact-methods-again)
-* [删除用户现有的应用密码](#delete-users-existing-app-passwords)
-* [还原用户所有已暂停设备上的 MFA](#restore-mfa-on-all-suspended-devices-for-a-user)
-
-如果计算机或设备丢失、被盗或你需要删除用户访问权限，则此项设置将很有用。
+* 要求选定的用户再次提供联系方法
+* 删除用户现有的应用密码
+* 还原用户所有已暂停设备上的 MFA
 
 ## <a name="require-selected-users-to-provide-contact-methods-again"></a>要求选定的用户再次提供联系方法
 此项设置将强制用户在登录时再次完成注册过程。 请注意，如果用户拥有应用密码，则非浏览器应用将继续工作。  也可以通过选择“删除选定用户生成的所有现有应用密码”删除用户的应用密码。
@@ -62,7 +61,11 @@ ms.openlocfilehash: 826fc2b2eaaf180d922c7a9a4c329ec4379c2ae0
 10. 单击“关闭”。
 
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>还原用户的所有已记住设备的 MFA
-管理员可以还原用户设备和浏览器的多重身份验证。 执行此操作时，将从用户的所有设备和浏览器中删除记住的 MFA，并且用户在下次登录时需要使用 MFA。
+Azure 多重身份验证的可配置功能之一是为用户提供将设备标记为受信任的选项。 有关详细信息，请参阅[配置 Azure 多重身份验证设置](multi-factor-authentication-whats-next.md#remember-multi-factor-authentication-for-devices-that-users-trust)
+
+用户可以选择在其常规设备上可配置的天数内不进行双重验证。 如果帐户受到安全威胁，或者丢失了受信任的设备，则需要能够删除受信任状态并需要重新进行双重验证。
+
+“在所有已记住的设备上还原多重身份验证”设置表示，将对用户进行质询，要求他们在下次登录时执行双重验证，而无论他们是否选择将其设备标记为受信任。 
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>如何还原用户所有已暂停设备上的 MFA
 1. 登录到 Azure 经典门户。
@@ -76,9 +79,4 @@ ms.openlocfilehash: 826fc2b2eaaf180d922c7a9a4c329ec4379c2ae0
    ![删除应用密码](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png)
 9. 单击“保存”。
 10. 单击“关闭”。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

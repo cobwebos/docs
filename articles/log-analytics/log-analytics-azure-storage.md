@@ -1,5 +1,5 @@
 ---
-title: "在 Log Analytics 中收集 Azure 服务的日志和度量值 | Microsoft 文档"
+title: "为 Log Analytics 收集 Azure 服务日志和指标 | Microsoft 文档"
 description: "在 Azure 资源上配置诊断，将日志和度量值写入 Log Analytics。"
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fcb2c38b18e40d3ca4406810e523ae339d612bcf
-ms.openlocfilehash: b2049e2b3673ddc0455fc07c298f1054c8c8e78e
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: 935680e33c1b32619b7acb8d50a61e48b6703402
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="collecting-logs-and-metrics-for-azure-services-in-log-analytics"></a>在 Log Analytics 中收集 Azure 服务的日志和度量值
+# <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>在 Log Analytics 中收集要使用的 Azure 服务日志和指标
 
 有四种不同方式可收集 Azure 服务的日志和度量值：
 
@@ -149,9 +151,4 @@ Azure 模板库有[使用 Azure 自动化的示例](https://azure.microsoft.com/
 * [使用适用于 IIS 的 blob 存储和适用于事件的表存储](log-analytics-azure-storage-iis-table.md)，读取将诊断写入到表存储或将 ISS 日志写入到 blob 存储的 Azure 服务的日志。
 * [启用解决方案](log-analytics-add-solutions.md)深入分析数据。
 * [使用搜索查询](log-analytics-log-searches.md)分析数据。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -1,7 +1,7 @@
 ---
-title: "使用 DocumentDB 开发 Python Flask Web 应用程序 | Microsoft 文档"
+title: "适用于 Azure DocumentDB 的 Python Flask Web 应用程序教程 | Microsoft 文档"
 description: "查看使用 DocumentDB 来存储和访问托管于 Azure 的 Python Flask Web 应用程序的数据的数据库教程。 查找应用程序开发解决方案。"
-keywords: "应用程序开发, 数据库教程, Python Flask, Python web 应用程序, Python Web 开发, DocumentDB, Azure, Microsoft Azure"
+keywords: "应用程序开发, Python Flask, Python Web 应用程序, Python Web 开发"
 services: documentdb
 documentationcenter: python
 author: syamkmsft
@@ -15,15 +15,18 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: syamk
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8dc246755c90686f890d2ac9df05b3a8b2a9341f
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 4f05075efea0f0fd8ca4424f771d3991a65c6d67
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="python-flask-web-application-development-with-documentdb"></a>使用 DocumentDB 开发 Python Flask Web 应用程序
+# <a name="build-a-python-flask-web-application-using-documentdb"></a>使用 DocumentDB 生成 Python Flask Web 应用程序
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
+> * [适用于 MongoDB 的 .NET](documentdb-mongodb-application.md)
 > * [Node.js](documentdb-nodejs-application.md)
 > * [Java](documentdb-java-application.md)
 > * [Python](documentdb-python-application.md)
@@ -71,7 +74,7 @@ ms.openlocfilehash: 8dc246755c90686f890d2ac9df05b3a8b2a9341f
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 <br/>
- 现在，我们将演练如何从头开始新建 Python Flask Web 应用程序。
+现在，我们将演练如何从头开始新建 Python Flask Web 应用程序。
 
 ## <a name="step-2-create-a-new-python-flask-web-application"></a>步骤 2：新建 Python Flask Web 应用程序
 1. 在 Visual Studio 的“文件”菜单中，指向“新建”，然后单击“项目”。
@@ -410,9 +413,4 @@ def vote():
 [3]: https://www.microsoft.com/download/details.aspx?id=44266
 [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [Azure portal]: http://portal.azure.com
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

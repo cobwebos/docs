@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Active Directory 预览版中重置用户的密码 | Microsoft Docs"
+title: "Azure Active Directory 中的重置密码 | Microsoft 文档"
 description: "说明如何在 Azure Active Directory 中重置用户的密码"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
-ms.openlocfilehash: 7b58db43f247182553a5766e11fa263ee93beff7
+ms.sourcegitcommit: 15cb521e928bab6c7966d19e74d9ae3bca99ef34
+ms.openlocfilehash: a5e48f43751e90f41ffd61049a17af3ff48d132e
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="reset-the-password-for-a-user-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中重置用户的密码
+# <a name="reset-the-password-for-a-user-in-azure-active-directory---public-preview"></a>在 Azure Active Directory 中重置用户的密码 - 公共预览版
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-users-reset-password-azure-portal.md)
 > * [Azure 经典门户](active-directory-create-users-reset-password.md)
@@ -47,9 +49,4 @@ ms.openlocfilehash: 7b58db43f247182553a5766e11fa263ee93beff7
 * [更改用户的工作信息](active-directory-users-work-info-azure-portal.md)
 * [管理用户个人资料](active-directory-users-profile-azure-portal.md)
 * [在 Azure AD 中删除用户](active-directory-users-delete-user-azure-portal.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

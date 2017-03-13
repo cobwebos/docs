@@ -1,6 +1,6 @@
 ---
 title: "Azure 多重身份验证常见问题解答 | Microsoft Docs"
-description: "提供与 Azure 多重身份验证相关的常见问题与解答列表。 Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名和密码）来验证用户身份的一种方法。 它为用户登录和事务提供了额外的安全层。"
+description: "与 Azure 多重身份验证相关的常见问题与解答。 Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名和密码）来验证用户身份的一种方法。 它为用户登录和事务提供了额外的安全层。"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/26/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9617cd00ed4a5f8f867542238e5008a9a17663c9
-ms.openlocfilehash: 1e01bdc099af865e01eb2784cf367e482300ade8
-
+ms.sourcegitcommit: 20afeb3ba290ddf728d2b52c076c7a57fadc77c6
+ms.openlocfilehash: dfbb5e2358cd857c2a16ded5d4d82c1f246cbe20
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="azure-multi-factor-authentication-faq"></a>Azure Multi-Factor Authentication 常见问题
+# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题
 本“常见问题”文章解答有关 Azure 多重身份验证和使用多重身份验证服务的常见问题，包括计费模式和可用性相关问题。
 
 ## <a name="general"></a>常规
@@ -62,7 +63,7 @@ ms.openlocfilehash: 1e01bdc099af865e01eb2784cf367e482300ade8
 
 使用授权模式时，需要购买 Azure 多重身份验证许可证并将其分配给用户，如同购买 Office 365 及其他订阅产品时一样。
 
-在 [Azure 多重身份验证的工作原理](multi-factor-authentication-how-it-works.md#how-to-get-azure-multi-factor-authentication)中，了解各选项的详细信息
+在 [Azure 多重身份验证的工作原理](multi-factor-authentication-how-it-works.md)中，了解各选项的详细信息
 
 **问：是否有可供管理员使用的免费 Azure 多重身份验证版本？**
 
@@ -166,10 +167,5 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 * 在 [Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)中搜索和浏览来自社区的技术问题与解答，或者提出自己的问题。
 * 对于旧版 PhoneFactor 客户，如果有疑问或需要重置密码方面的帮助，请使用[密码重置](mailto:phonefactorsupport@microsoft.com)链接建立支持案例。
 * 通过 [Azure 多重身份验证服务器 (PhoneFactor) 支持](https://support.microsoft.com/oas/default.aspx?prid=14947)联系支持专业人员。 与我们联系时，尽可能包含有关问题的更多信息将很有帮助。 可提供的信息包括看到错误的页面、特定错误代码、特定会话 ID 和看到错误的用户的 ID。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

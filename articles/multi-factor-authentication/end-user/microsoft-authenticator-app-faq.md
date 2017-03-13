@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/17/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 28846f2effd26c5b7ca7a79fba52d8ba1cb4ea91
-ms.openlocfilehash: 9abf35aebceb4a109becba6e97e0a506fc4375d7
+ms.sourcegitcommit: 7c91ae265dd86e8d7f206c1ada021c40fd8c4479
+ms.openlocfilehash: cb3b7cfefe22176e17064ad6cbb9df4da8c57c0f
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -24,13 +25,19 @@ ms.openlocfilehash: 9abf35aebceb4a109becba6e97e0a506fc4375d7
 
 本文回答我们收到的有关 Microsoft Authenticator 应用的常见问题。 如果没有看到所提问题的答案，请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)。 我们还提供了另一个有关应用上一个特定功能的常见问题解答，即[使用手机登录常见问题解答](microsoft-authenticator-app-phone-signin-faq.md)。
 
-Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使用 Azure Multi-Factor Authentication 时使用该应用。 此应用可用于 Windows Phone、Android 和 iOS。
+Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使用 Azure Multi-Factor Authentication 时使用该应用。 Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
-### <a name="what-happened-to-the-azure-authenticator-multi-factor-auth-and-microsoft-account-apps"></a>Azure Authenticator、多重身份验证和 Microsoft 帐户应用怎么了？
-Microsoft Authenticator 应用替代了这些应用。 Azure Authenticator 升级到 Microsoft Authenticator。 如果使用的是多重身份验证或 Microsoft 帐户应用，现在需要安装 Microsoft Authenticator 并重新添加帐户。 请务必在将帐户添加到新应用后，再删除旧帐户。
 
-Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。
+### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>此应用中的代码有哪些用途？ 为什么数字会保持倒计数？
+
+打开 Microsoft 验证器应用时，将看到已添加的帐户以及按每个已添加的帐户列出的六位或八位数字。 你可能会看到倒计时的三十秒计时器。
+
+登录到帐户时，将使用这些代码。 输入用户名和密码后，可能需要输入验证码。 打开 Microsoft 验证器应用，并复制当前显示的代码。 在登录页中输入该代码，以完成登录。
+
+代码每隔 30 秒更改一次的原因是，使你永远不会使用同一代码两次。 它不像你应记住的密码。 其思想是，只有有权访问你的手机的人员知道你的验证码。
+
+这些代码不需要 Internet 或数据，因此你不必担心使用电话服务进行登录，也不必担心应用将用完你的流量套餐。 关闭该应用后，该应用不会在后台继续运行，因此不会耗尽你的电池。 可以关闭该应用，并在下次登录之前忽略它。  
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>我已使用 Microsoft Authenticator 应用程序生成验证代码。 如何切换到一键式推送通知？
 通过推送通知批准登录仅适用于个人 Microsoft 帐户或工作和学校 Microsoft 帐户，并不适用于 Google 或 Facebook 等第三方帐户。 如果你拥有工作或学校 Microsoft 帐户，你的组织可以选择禁用此选项。
@@ -87,10 +94,5 @@ Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/
 * 关于 Microsoft 帐户的[双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)
 * 为工作或学校帐户[进行设置双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)？
 * [使用 Microsoft Authenticator 通过手机登录](microsoft-authenticator-app-phone-signin-faq.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

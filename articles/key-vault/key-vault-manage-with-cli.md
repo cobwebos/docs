@@ -17,6 +17,7 @@ ms.author: bruceper
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: c52d41bbac22c6a20b1632b529b061ed7e640ea1
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -166,7 +167,7 @@ ms.openlocfilehash: c52d41bbac22c6a20b1632b529b061ed7e640ea1
 要在 Azure Active Directory 中注册应用程序，请执行以下操作：
 
 1. 登录到 Azure 门户。
-2. 单击左侧的“Active Directory”，然后选择你要在其中注册应用程序的目录 **注意：**必须选择包含用于创建密钥保管库的 Azure 订阅的相同目录。 <br> <br> 注意：必须选择包含用于创建密钥保管库的 Azure 订阅的相同目录。 If you do not know which directory this is, click **Settings**, identify the subscription with which you created your key vault, and note the name of the directory displayed in the last column.
+2. 单击左侧的“Active Directory”，然后选择你要在其中注册应用程序的目录 **注意：**必须选择包含用于创建密钥保管库的 Azure 订阅的相同目录。 <br> <br> 注意：必须选择包含用于创建密钥保管库的 Azure 订阅的相同目录。 如果你不知道是哪个目录，请单击“设置”，找到用于创建密钥保管库的订阅，并记下最后一列中显示的目录名称。
 3. 单击“应用程序” 。 如果目录中尚未添加任何应用，此页面将仅显示“添加应用”链接。 单击该链接，或者单击命令栏上的“添加”。
 4. 在“添加应用程序”向导的“要执行什么操作?”页面上，单击“添加我的组织正在开发的应用程序”。
 5. 在“向我们说明你的应用程序”页上，指定应用程序名称，然后选择“Web 应用程序和/或 Web API”（默认值）。 单击“下一步”图标。
@@ -251,10 +252,5 @@ ms.openlocfilehash: c52d41bbac22c6a20b1632b529b061ed7e640ea1
 
 ## <a name="next-steps"></a>后续步骤
 有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](key-vault-developers-guide.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: c4983024e5f5902620c0be7b422bc3d1eaf4a36f
-ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
+ms.sourcegitcommit: 1c22e4fc17226578aaaf272fdf79178da65c63c2
+ms.openlocfilehash: 4ef08fb592ff8558fa779d628945d14144dc09b7
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-zendesk-tutorial/IC773083.png "Scenario")
+![方案](./media/active-directory-saas-zendesk-tutorial/IC773083.png "方案")
 
 ## <a name="enabling-the-application-integration-for-zendesk"></a>为 Zendesk 启用应用程序集成
 本部分旨在概述如何为 Zendesk 启用应用程序集成。
@@ -45,23 +46,23 @@ ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
    
     ![Active Directory](./media/active-directory-saas-zendesk-tutorial/IC700993.png "Active Directory")
 
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-    ![应用程序](./media/active-directory-saas-zendesk-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-zendesk-tutorial/IC700994.png "应用程序")
 
 4. 在页面底部单击“添加”。
    
-    ![添加应用程序](./media/active-directory-saas-zendesk-tutorial/IC749321.png "Add application")
+    ![添加应用程序](./media/active-directory-saas-zendesk-tutorial/IC749321.png "添加应用程序")
 
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-    ![从库中添加应用程序](./media/active-directory-saas-zendesk-tutorial/IC749322.png "Add an application from gallerry")
+    ![从库添加应用程序](./media/active-directory-saas-zendesk-tutorial/IC749322.png "从库添加应用程序")
 
 6. 在“搜索框”中，键入“Zendesk”。
    
-    ![应用程序库](./media/active-directory-saas-zendesk-tutorial/IC773084.png "Application Gallery")
+    ![应用程序库](./media/active-directory-saas-zendesk-tutorial/IC773084.png "应用程序库")
 
 7. 在结果窗格中，选择“Zendesk”，然后单击“完成”以添加该应用程序。
    
@@ -75,15 +76,15 @@ ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure AD 门户中的“Zendesk”应用程序集成页上，单击“配置单一登录”以打开“配置单一登录”对话框。
    
-    ![单一登录](./media/active-directory-saas-zendesk-tutorial/IC773086.png "Single sign-on")
+    ![单一登录](./media/active-directory-saas-zendesk-tutorial/IC773086.png "单一登录")
 
 2. 在“你希望用户如何登录 Zendesk”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-zendesk-tutorial/IC773087.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-zendesk-tutorial/IC773087.png "配置单一登录")
 
 3. 在“配置应用 URL”页上，执行以下步骤：
    
-    ![配置应用 URL](./media/active-directory-saas-zendesk-tutorial/IC773088.png "Configure app URL")
+    ![配置应用 URL](./media/active-directory-saas-zendesk-tutorial/IC773088.png "配置应用 URL")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“Zendesk 登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.zendesk.com`
    
@@ -91,7 +92,7 @@ ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
 
 4. 在“配置 Zendesk 的单一登录”页上，单击“下载证书”，然后将证书文件保存在本地计算机上。
    
-    ![配置单一登录](./media/active-directory-saas-zendesk-tutorial/IC777534.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-zendesk-tutorial/IC777534.png "配置单一登录")
 
 5. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zendesk 公司站点。
 
@@ -99,7 +100,7 @@ ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
 
 7. 在左侧导航窗格中，单击“设置”，然后单击“安全”。
    
-    ![“安全”](./media/active-directory-saas-zendesk-tutorial/IC773089.png "Security")
+    ![安全](./media/active-directory-saas-zendesk-tutorial/IC773089.png "安全")
 
 8. 在“安全”页上，单击“管理员和代理”选项卡。
 
@@ -109,7 +110,7 @@ ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
 
 11. 在 Azure AD 门户的“配置 Zendesk 的单一登录”页上，复制“远程注销 URL”值，然后将其粘贴到“远程注销 URL”文本框中。
     
-    ![单一登录](./media/active-directory-saas-zendesk-tutorial/IC773090.png "Single sign-on")
+    ![单一登录](./media/active-directory-saas-zendesk-tutorial/IC773090.png "单一登录")
 
 12. 从导出的证书中复制“指纹”值，然后将其粘贴到“证书指纹”文本框中。
     
@@ -122,7 +123,7 @@ ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
 
 14. 在 Azure AD 门户中，选择“单一登录配置确认”，然后单击“完成”以关闭“配置单一登录”对话框。
     
-    ![配置单一登录](./media/active-directory-saas-zendesk-tutorial/IC773093.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-zendesk-tutorial/IC773093.png "配置单一登录")
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 为使 Azure AD 用户能够登录到“Zendesk”，必须将其预配到“Zendesk”。  
@@ -135,10 +136,10 @@ ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
 
 3. 选择“用户”选项卡，然后单击“添加”。
    
-    ![添加用户](./media/active-directory-saas-zendesk-tutorial/IC773632.png "Add user")
+    ![添加用户](./media/active-directory-saas-zendesk-tutorial/IC773632.png "添加用户")
 4. 键入要预配的现有 Azure AD 帐户的电子邮件地址，然后单击“保存”。
    
-    ![新建用户](./media/active-directory-saas-zendesk-tutorial/IC773633.png "New user")
+    ![新用户](./media/active-directory-saas-zendesk-tutorial/IC773633.png "新用户")
 
 > [!NOTE]
 > 可以使用 Zendesk 提供的任何其他 Zendesk 用户帐户创建工具或 API 来预配 AAD 用户帐户。
@@ -153,17 +154,12 @@ ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
 
 2. 在“Zendesk”应用程序集成页上，单击“分配用户”。
    
-    ![分配用户](./media/active-directory-saas-zendesk-tutorial/IC773094.png "Assign users")
+    ![分配用户](./media/active-directory-saas-zendesk-tutorial/IC773094.png "分配用户")
 
 3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-    ![是](./media/active-directory-saas-zendesk-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-zendesk-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

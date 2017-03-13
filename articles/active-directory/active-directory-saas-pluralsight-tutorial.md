@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/17/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6b71ba7f928871768851357bcb4bce1fbf4fed3
+ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
+ms.openlocfilehash: f77f459219a5c9a0e218de924c0c7578647a3594
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -26,8 +27,8 @@ ms.openlocfilehash: e6b71ba7f928871768851357bcb4bce1fbf4fed3
 将 Pluralsight 与 Azure AD 集成具有以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 Pluralsight
-* 可以让用户通过其 Azure AD 帐户自动登录到 Pluralsight（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可以让用户通过其 Azure AD 帐户自动登录到 Pluralsight 单一登录 (SSO)
+* 可以在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,17 +36,16 @@ ms.openlocfilehash: e6b71ba7f928871768851357bcb4bce1fbf4fed3
 若要配置 Azure AD 与 Pluralsight 的集成，需备齐以下项目：
 
 * Azure 订阅
-* 启用了 Pluralsight 单一登录的订阅
+* 启用了 Pluralsight SSO 的订阅
 
-> [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
-> 
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。 
 > 
 
 测试本教程中的步骤应遵循以下建议：
 
 * 不应使用生产环境，除非有此必要。
-* 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
 本教程的目的是介绍如何在测试环境中测试 Azure AD 单一登录。 
@@ -53,9 +53,9 @@ ms.openlocfilehash: e6b71ba7f928871768851357bcb4bce1fbf4fed3
 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Pluralsight
-2. 配置和测试 Azure AD 单一登录
+2. 配置和测试 Azure AD SSO
 
-## <a name="adding-pluralsight-from-the-gallery"></a>从库中添加 Pluralsight
+## <a name="add-pluralsight-from-the-gallery"></a>从库中添加 Pluralsight
 若要通过配置将 Pluralsight 集成到 Azure AD 中，需从库将 Pluralsight 添加到托管式 SaaS 应用的列表中。
 
 **若要从库添加 Pluralsight，请执行以下步骤：**
@@ -80,19 +80,19 @@ ms.openlocfilehash: e6b71ba7f928871768851357bcb4bce1fbf4fed3
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_06.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-本部分的目的是介绍如何根据名为“Britta Simon”的测试用户的情况，配置和测试 Pluralsight 的 Azure AD 单一登录。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+本部分旨在说明如何基于名为“Britta Simon”的测试用户配置和测试 Pluralsight 的 Azure AD SSO。
 
-若要使用 Pluralsight 配置和测试 Azure AD 单一登录，需完成以下构建基块：
+若要配置和测试 Pluralsight 的 Azure AD SSO，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[创建 Pluralsight 测试用户](#creating-a-pluralsight-test-user)** - 目的是在 Pluralsight 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-本部分的目的是在 Azure 经典门户中启用 Azure AD 单一登录并在 Pluralsight 应用程序中配置单一登录。
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+本部分的目的是在 Azure 经典门户中启用 Azure AD 单一登录并在 Pluralsight 应用程序中配置 SSO。
 
 Pluralsight 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示一个示例。 
 
@@ -108,72 +108,57 @@ Pluralsight 应用程序需要特定格式的 SAML 断言，这要求将自定�
 2. 若要删除冗余的 **SAML 令牌属性**，请执行以下步骤： 
    
     ![配置单一登录](./media/active-directory-saas-pluralsight-tutorial/2829.png) 
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于上表红框中的每个用户属性，请先将光标悬停在属性上，然后单击“删除”即可。 
-
-
-
-
-1. 若要添加必需的 **SAML 令牌属性**，请对下表中显示的每一行执行以下步骤：
+  * 对于上表红框中的每个用户属性，请先将光标悬停在属性上，然后单击“删除”即可。 
+3. 若要添加必需的 **SAML 令牌属性**，请对下表中显示的每一行执行以下步骤：
    
    | 属性名称 | 属性值 |
    | --- | --- |
    | 名字 |user.givenname |
    | 姓氏 |user.surname |
    | 电子邮件 |user.mail |
+4. 单击“添加用户属性”，打开“添加用户属性”对话框。
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加用户属性”，打开“添加用户属性”对话框。
-   
-    ![配置单一登录](./media/active-directory-saas-pluralsight-tutorial/tutorial_general_82.png) 
-
-    b. 在“属性名称”文本框中，键入为该行显示的属性名称。
-
-    c. 在“属性值”列表中，选择为该行显示的属性值。
-
-    d.单击“下一步”。 单击“完成”。    
-
-
-
-1. 单击“应用更改”。
-   
-    ![配置单一登录](./media/active-directory-saas-pluralsight-tutorial/3232.png)  
-2. 在顶部菜单中，单击“快速启动”。
+    ![配置单一登录](./media/active-directory-saas-pluralsight-tutorial/tutorial_general_82.png)
+  1. 在“属性名称”文本框中，键入为该行显示的属性名称。
+  2. 在“属性值”列表中，选择为该行显示的属性值。
+  3. 单击“完成”。    
+  4. 单击“应用更改”。
+ 
+   ![配置单一登录](./media/active-directory-saas-pluralsight-tutorial/3232.png) 
+    
+5. 在顶部菜单中，单击“快速启动”。
    
     ![配置单一登录](./media/active-directory-saas-pluralsight-tutorial/tutorial_general_83.png)  
-3. 在 Azure 经典门户中的“Pluralsight”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
+6. 在 Azure 经典门户中的“Pluralsight”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录][6] 
-4. 在“你希望用户如何登录 Pluralsight”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
+7. 在“你希望用户如何登录 Pluralsight”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
    
     ![配置单一登录](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_03.png) 
-5. 在“配置应用设置”对话框页上，执行以下步骤：
+8. 在“配置应用设置”对话框页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_04.png) 
+  1. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Pluralsight 应用程序的 URL：`https://<instance name>.pluralsight.com/sso/<comapny name>`
+  2. 单击“资源组名称” 的 Azure 数据工厂。
+9. 在“配置 Pluralsight 的单一登录”页，执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Pluralsight 应用程序的 URL：`https://<instance name>.pluralsight.com/sso/<comapny name>`
-
-    b. 单击“资源组名称” 的 Azure 数据工厂。
-
-
-1. 在“配置 Pluralsight 的单一登录”页上，执行以下步骤： ![配置单一登录](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_05.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
-   
-    b. 单击“资源组名称” 的 Azure 数据工厂。
-2. 若要为应用程序配置 SSO，请联系 Pluralsight [专业服务](mailTo:professionalservices@pluralsight.com)团队并提供下载的元数据文件。
-3. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
+  ![配置单一登录](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_05.png)   
+  1. 单击“下载元数据”，然后在计算机上保存该文件。
+  2. 单击“下一步”。
+10. 若要为应用程序配置 SSO，请联系 Pluralsight [专业服务](mailTo:professionalservices@pluralsight.com)团队并提供下载的元数据文件。
+11. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
     ![Azure AD 单一登录][10]
-4. 在“单一登录确认”页上，单击“完成”。  
+12. 在“单一登录确认”页上，单击“完成”。  
    
     ![Azure AD 单一登录][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-本部分的目的是在 Azure 经典门户中创建名为“Britta Simon”的测试用户。
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 经典门户中创建名为 Britta Simon 的测试用户。
 
-在“用户列表”中，选择“Britta Simon”。
+* 在“用户列表”中，选择“Britta Simon”。
 
-![创建 Azure AD 用户][20]
+  ![创建 Azure AD 用户][20]
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
@@ -189,47 +174,36 @@ Pluralsight 应用程序需要特定格式的 SAML 断言，这要求将自定�
     ![创建 Azure AD 测试用户](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_04.png) 
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_05.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_05.png)  
+  1. 在“用户类型”中，选择“你的组织中的新用户”。
+  2. 在“用户名”文本框中，键入“BrittaSimon”。
+  3. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_06.png) 
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+  1. 在“名字”文本框中，键入“Britta”。  
+  2. 在“姓氏”文本框中，键入“Simon”。
+  3. 在“显示名称”文本框中，键入“Britta Simon”。
+  4. 在“角色”列表中，选择“用户”。
+  5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_07.png) 
 8. 在“获取临时密码”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_08.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+  1. 写下“新密码”的值。
+  2. 单击“完成”。   
 
-### <a name="creating-a-pluralsight-test-user"></a>创建 Pluralsight 测试用户
+### <a name="create-a-pluralsight-test-user"></a>创建 Pluralsight 测试用户
 本部分的目的是在 Pluralsight 中创建名为“Britta Simon”的用户。 请与 Pluralsight 支持团队合作，在 Pluralsight 帐户中添加用户。 
 
-> [!NOTE]
-> 如果需要手动创建用户，则需联系 Pluralsight 支持团队。
-> 
+>[!NOTE]
+>如果需要手动创建用户，则需联系 Pluralsight 支持团队。 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-本部分的目的是通过授予 Britta Simon 访问 Pluralsight 的权限，允许她使用 Azure 单一登录。
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+本部分旨在通过授予 Britta Simon 访问 Pluralsight 的权限，允许她使用 Azure SSO。
 
 ![分配用户][200] 
 
@@ -249,8 +223,8 @@ Pluralsight 应用程序需要特定格式的 SAML 断言，这要求将自定�
    
     ![分配用户][205]
 
-### <a name="testing-single-sign-on"></a>测试单一登录
-本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
+### <a name="test-single-sign-on"></a>测试单一登录
+本部分旨在使用“访问面板”测试 Azure AD SSO 配置。
 
 单击访问面板中的“Pluralsight”磁贴时，用户就会自动登录到 Pluralsight 应用程序。
 
@@ -275,9 +249,4 @@ Pluralsight 应用程序需要特定格式的 SAML 断言，这要求将自定�
 [203]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

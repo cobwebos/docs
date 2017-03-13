@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2017
+ms.date: 03/06/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: fa9b427afff2c12babde30aa354e59d31c8f5b2c
-ms.openlocfilehash: 219fe64481df2c5c5cbfe622afdab11dcc1b7100
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: f709fe00cce61f6766a0a56ea31b023e00c91fce
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -48,12 +48,9 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    通过运行以下命令安装适用于 Linux 的 OMS 代理最新版本。  将 <Workspace ID> 替换为工作区 ID，并将 <Key> 替换为主密钥或辅助密钥。
    
         cd ~
-        wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh  
-        sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID>  -s <PrimaryKey> -d opinsights.azure.com 
 
-   b. 若要删除代理，请运行以下命令。
-   
-        sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+   b.保留“数据库类型”设置，即设置为“共享”。 若要删除代理，请执行 [Uninstalling the OMS Agent for Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#uninstalling-the-oms-agent-for-linux)（卸载适用于 Linux 的 OMS 代理）部分描述的过程。  
 
 ## <a name="management-packs"></a>管理包
 如果 System Center Operations Manager 管理组已连接到 OMS 工作区，则添加此解决方案时会在 Operations Manager 中安装以下管理包。 无需对这些管理包进行任何配置或维护。 
@@ -85,7 +82,7 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 ![更新管理摘要磁贴](media/oms-solution-update-management/update-management-summary-tile.png)  
 
 ## <a name="viewing-update-assessments"></a>查看更新评估
-单击“更新管理”磁贴打开“更新管理”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”或单击列标题运行返回所有记录的日志搜索。
+单击“更新管理”磁贴打开“更新管理”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”或单击列标题运行返回所有记录的日志搜索。。
 
 | 列 | 说明 |
 | --- | --- |

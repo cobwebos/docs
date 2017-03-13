@@ -1,6 +1,6 @@
 ---
-title: "使用 Log Analytics 中的 SQL 评估解决方案优化环境 | Microsoft Docs"
-description: "借助 Azure Log Analytics，可以使用 SQL 评估解决方案定期评估服务器环境的风险和运行状况。"
+title: "使用 Azure Log Analytics 优化 SQL Server 环境 | Microsoft 文档"
+description: "借助 Azure Log Analytics，可以使用 SQL 评估解决方案定期评估 SQL Server 环境的风险和运行状况。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
-ms.openlocfilehash: fc8b2d74737bc334d5c4f27782d4e0d46adbcb18
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: a78c3877ac64b9376104d853d6b66b90fbb476d8
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="optimize-your-environment-with-the-sql-assessment-solution-in-log-analytics"></a>使用 Log Analytics 中的 SQL 评估解决方案优化环境
+# <a name="optimize-your-sql-server-environment-with-the-sql-assessment-solution-in-log-analytics"></a>使用 Log Analytics 中的 SQL 评估解决方案优化 SQL Server 环境
+
 可以使用 SQL 评估解决方案定期评估服务器环境的风险和运行状况。 本文将帮助你安装该解决方案，以便针对潜在问题采取纠正措施。
 
 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。 这些建议对六个重点领域的问题进行了分类，可帮助你快速了解风险并采取纠正措施。

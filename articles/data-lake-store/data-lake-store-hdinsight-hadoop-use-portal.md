@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 02/16/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 9e480c13f48e93da32ff5a3c8d3064e98fed0265
-ms.openlocfilehash: 0ec19832d395547e8ebd3eee0d44dcf466a2ace7
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 8876a37b78fa8a80eba7af133d661c3d7ed425d7
+ms.openlocfilehash: 76e098525951d122799f11bdcd9ee5451c9a3777
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/17/2017
 >
 >
 
-了解如何通过 Azure 门户创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集。 对于支持的群集类型，Data Lake Store 用作默认存储或其他存储帐户。 在 Data Lake Store 用作其他存储时，该群集的默认存储帐户仍将是 Azure 存储 Blob (WASB)，与群集相关的文件（例如日志等）仍会写入到默认存储，而要处理的数据可以存储在 Data Lake Store 帐户中。 使用 Data Lake Store 作为其他存储帐户不会影响读/写到此群集的存储的性能或能力。
+了解如何通过 Azure 门户创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集。 对于支持的群集类型，Data Lake Store 可用作默认存储或其他存储帐户。 在 Data Lake Store 用作其他存储时，该群集的默认存储帐户仍将是 Azure 存储 Blob (WASB)，与群集相关的文件（例如日志等）仍会写入到默认存储，而要处理的数据可以存储在 Data Lake Store 帐户中。 使用 Data Lake Store 作为其他存储帐户不会影响读/写到此群集的存储的性能或能力。
 
 ## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>将 Data Lake Store 用于 HDInsight 群集存储
 

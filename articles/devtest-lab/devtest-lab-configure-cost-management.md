@@ -44,7 +44,7 @@ ms.lasthandoff: 02/08/2017
 * 5.50 将计为 6
 * 5.99 将计为 6
 
-如图表上方所述，图表中出现的成本是使用*即用即付*优惠率的评估[](https://azure.microsoft.com/offers/ms-azr-0003p/)成本。
+如图表上方所述，图表中出现的成本是使用 [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/) 优惠率的评估成本。
 此外，以下未计入成本计算：
 
 * 当前 不支持 CSP 和 Dreamspark 订阅，因为 Azure 开发测试实验室使用不支持 CSP 和 Dreamspark 订阅的 [Azure 计费 API](../billing/billing-usage-rate-card-overview.md)。

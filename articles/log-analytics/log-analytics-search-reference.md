@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics 搜索参考 | Microsoft 文档"
+title: "Azure Log Analytics 搜索参考 | Microsoft 文档"
 description: "Log Analytics 搜索参考介绍搜索语言并提供常规查询语法选项，可用于搜索数据和筛选表达式，以帮助缩小搜索范围。"
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 81fd8dfa480fc6365b6373a4eefef1149248d800
-ms.openlocfilehash: 5e4fba6ff82cbe8af0116e35d71c8f9f04474f0f
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: a294ef357ea3c656e4e6392e89ad1d90b829e2cb
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -254,7 +256,7 @@ SampleValue:[0..2]
 ```
 
 ### <a name="regular-expressions"></a>正则表达式
-可以使用正则表达式关键字，针对具有正则表达式的字段指定搜索条件。
+可以使用正则表达式关键字，针对具有正则表达式的字段指定搜索条件。  在[使用正则表达式筛选 Log Analytics 中的日志搜索](log-analytics-log-searches-regex.md)中获取可在正则表达式中使用的语法的完整说明。
 
 **语法**
 
@@ -581,7 +583,29 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | me
     Type:Perf CounterName:"% Total Run Time" | Measure max(CounterValue) by Computer | where (AggregatedValue>50 and AggregatedValue<90)
 
 ### <a name="in"></a>IN
-语法：
+使用 **IN** 关键字可从值列表中选择。  根据所使用的语法，这可以是所提供的值的简单列表或聚合值的列表。
+
+语法 1：
+
+```
+field IN {value1,value2,value3,...}
+```
+
+说明：使用此语法可包括简单列表中的所有值。
+
+
+
+示例:
+
+```
+EventID IN {1201,1204,1210}
+```
+
+```
+Computer IN {"srv01.contoso.com","srv02.contoso.com"}
+```
+
+语法 2：
 
 ```
 (Outer Query) (Field to use with inner query results) IN {Inner query | measure count() by (Field to send to outer query)} (rest  of outer query)  
@@ -810,9 +834,4 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 
 * 熟悉[日志搜索](log-analytics-log-searches.md)以查看解决方案收集的详细信息。
 * 使用 [Log Analytics 中的自定义字段](log-analytics-custom-fields.md)扩展日志搜索。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

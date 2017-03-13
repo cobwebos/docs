@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2017
+ms.date: 03/06/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 1460a3e6b3d225a507e5da51dcc66810862ee2de
-ms.openlocfilehash: 4001c2d9bf2a635d7189ae46a855e347b93185c8
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: eed360b6c996d1901b40f3d1fcf4b8ff859da573
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -92,10 +93,10 @@ Resource Manager 提供一致的管理层，用于管理通过 Azure PowerShell�
 Get-AzureRmResourceProvider -ListAvailable
 ```
 
-或者通过 Azure CLI，使用以下命令检索所有资源提供程序：
+或者通过 Azure CLI 2.0，使用以下命令检索所有资源提供程序：
 
 ```azurecli
-azure provider list
+az provider list
 ```
 
 可浏览需要使用的资源提供程序的返回列表。
@@ -106,10 +107,10 @@ azure provider list
 (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
 ```
 
-或者通过 Azure CLI，使用以下命令检索 Microsoft.Compute 支持的资源类型、位置和 API 版本：
+或者通过 Azure CLI 2.0，使用以下命令检索 Microsoft.Compute 支持的资源类型、位置和 API 版本：
 
 ```azurecli
-azure provider show Microsoft.Compute --json > c:\Azure\compute.json
+az provider show --namespace Microsoft.Compute
 ```
 
 有关详细信息，请参阅 [Resource Manager 提供程序、区域、 API 版本和架构](resource-manager-supported-services.md)。
@@ -214,10 +215,10 @@ Azure Resource Manager 会分析依赖关系，以确保按正确的顺序创建
 Find-AzureRmResource -TagName costCenter -TagValue Finance
 ```
 
-或者运行以下 Azure CLI 命令：
+或者运行以下 Azure CLI 2.0 命令：
 
 ```azurecli
-azure resource list -t costCenter=Finance --json
+az resource list --tag costCenter=Finance
 ```
 
 也可通过 Azure 门户查看标记的资源。
@@ -343,9 +344,4 @@ AutoRest 将这些 RESTful API 规范转换成采用多种语言的客户端库�
 
 
 [powershellref]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

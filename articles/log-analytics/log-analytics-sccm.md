@@ -12,34 +12,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/22/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 820a9463c0e58054cf70324b680c5af8fdcacade
-ms.openlocfilehash: 18479c3680aa46113e59d25b6e034830f78a1859
+ms.sourcegitcommit: aca83d2de9247bedacce0fb03efe141d903d8605
+ms.openlocfilehash: f93d37ad5be4bf7fdc78d83ec68ba56a427b3e35
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
-你可以将 System Center Configuration Manager 连接到 Log Analytics 以同步收集数据。 这就使得来自配置管理器部署的数据可在 OMS 中使用。
+你可以将 System Center Configuration Manager 连接到 Log Analytics 以同步收集数据。 这就使得来自配置管理器层次结构的数据可在 OMS 中使用。
 
-将配置管理器连接到 OMS 需要执行很多步骤，因此以下是整个过程的概要说明：
+## <a name="prerequisites"></a>先决条件
+
+Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1606 和更高版本。  
+
+## <a name="configuration-overview"></a>配置概述
+以下步骤总结了将配置管理器连接到 Log Analytics 的过程。  
 
 1. 在 Azure 管理门户中，将配置管理器注册为 Web 应用程序和/或 Web API 应用程序，并确保你有在 Azure Active Directory 中进行注册时收到的客户端 ID 和客户端密钥。 如需了解如何完成此步骤的详细信息，请参阅[使用门户创建可访问资源的 Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
 2. 在 Azure 管理门户中，[为配置管理器（已注册的 Web 应用）提供访问 OMS 的权限](#provide-configuration-manager-with-permissions-to-oms)。
 3. 在配置管理器中，[使用添加 OMS 连接向导来添加连接](#add-an-oms-connection-to-configuration-manager)。
 4. 在配置管理器中，如果密码或客户端密钥曾过期或丢失，可以[更新连接属性](#update-oms-connection-properties)。
 5. 使用 OMS 门户中的信息，在运行配置管理器服务连接点站点系统角色的计算机上[下载并安装 Microsoft Monitoring Agent](#download-and-install-the-agent)。 代理将配置管理器数据发送到 OMS。
-6. 在 OMS 中，以计算机组的形式[从配置管理器导入收集的数据](#import-collections)。
-7. 在 OMS 中，以[计算机组](log-analytics-computer-groups.md)的形式查看配置管理器中的数据。
+6. 在 Log Analytics 中，以计算机组的形式[从配置管理器导入收集的数据](#import-collections)。
+7. 在 Log Analytics 中，以[计算机组](log-analytics-computer-groups.md)的形式查看配置管理器中的数据。
 
 如需了解有关将配置管理器连接到 OMS 的详细信息，请参阅[将配置管理器中的数据同步到 Microsoft Operations Management Suite](https://technet.microsoft.com/library/mt757374.aspx)。
 
 ## <a name="provide-configuration-manager-with-permissions-to-oms"></a>为配置管理器提供访问 OMS 的权限
-下列过程将介绍如何为 Azure 管理门户提供访问 OMS 的权限。 具体而言，你必须对资源组中的用户授予*参与者角色*。 继而，才可以使 Azure 管理门户将配置管理器连接到 OMS。
+下列过程将介绍如何为 Azure 管理门户提供访问 OMS 的权限。 具体而言，你必须向资源组中的用户授予*参与者角色*，以允许 Azure 管理门户将配置管理器连接到 OMS。
 
 > [!NOTE]
-> 必须为配置管理器指定到 OMS 的权限。 否则，在配置管理器中使用配置向导时会收到一条错误消息。
+> 必须为配置管理器指定 OMS 中的权限。 否则，在配置管理器中使用配置向导时会收到一条错误消息。
 >
 >
 
@@ -129,9 +135,4 @@ ms.openlocfilehash: 18479c3680aa46113e59d25b6e034830f78a1859
 
 ## <a name="next-steps"></a>后续步骤
 * 使用[日志搜索](log-analytics-log-searches.md)查看有关配置管理器数据的详细信息。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

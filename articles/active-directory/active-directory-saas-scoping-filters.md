@@ -1,5 +1,5 @@
 ---
-title: "使用范围筛选器进行基于属性的应用预配 | Microsoft 文档"
+title: "使用范围筛选器预配应用 | Microsoft 文档"
 description: "了解如何使用范围筛选器阻止应用中支持自动用户预配的对象实际进行预配（如果对象不满足业务要求）。"
 services: active-directory
 documentationcenter: 
@@ -11,15 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4b95782793956470fd147a98c17759a1a1a3a0de
+ms.sourcegitcommit: c06c089fb08c19b55246122201c378917a560e14
+ms.openlocfilehash: 3e4458f70afce9ebd9477b00afc39b6e84e49319
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="attribute-based-app-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用预配
+# <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本部分的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
 
 ## <a name="clauses-and-scope-groups"></a>子句和范围组
@@ -27,7 +29,7 @@ ms.openlocfilehash: 4b95782793956470fd147a98c17759a1a1a3a0de
 
 范围筛选器由一个或多个**范围组**定义，每个范围组拥有一个或多个**子句**。 若要查看特定范围组的子句，请通过单击组名称左侧的箭头展开它。
 
-**子句**通过评估每个用户的属性来确定允许哪些用户通过范围筛选器。 例如，你可能有一个子句要求用户的“state”属性等于“New York”，这意味着只有纽约用户将预配到应用程序。
+**子句**通过评估每个用户的属性来确定允许哪些用户通过范围筛选器。 例如，你可能有一个子句要求用户的“state”属性等于“New York”，因此只有纽约用户将预配到应用程序。
 
 ![范围组名称][2] 
 
@@ -38,9 +40,9 @@ ms.openlocfilehash: 4b95782793956470fd147a98c17759a1a1a3a0de
 ## <a name="how-scoping-filters-are-evaluated"></a>如何评估范围筛选器
 在预配期间，我们将针对范围筛选器测试每个已分配用户来确定该用户是否应该访问此应用程序。 可以将每个子句想成一个测试，用户必须通过该测试以避免被筛选出去。 
 
-如果已定义多个范围组，每个用户必须至少通过其中一个范围组才能访问应用程序。 但是，在每个范围组中，用户必须通过每一个子句才能通过该特定的范围组。 
+如果已定义多个范围组，每个用户必须至少通过其中一个范围组才能访问应用程序。 但是，在每个范围组中，用户必须通过每个子句才能通过该特定的范围组。 
 
-换而言之，可以将范围组想成通过 OR 连接在一起，将其中的子句想成通过 AND 连接在一起。例如，请考虑以下范围筛选器：
+换而言之，可以将范围组想成通过 OR 连接在一起，将其中的子句想成通过 AND 连接在一起。 例如，考虑以下范围筛选器：
 
 ![范围组名称][3]  
 
@@ -63,9 +65,4 @@ ms.openlocfilehash: 4b95782793956470fd147a98c17759a1a1a3a0de
 [1]: ./media/active-directory-saas-scoping-filters/ic782811.png
 [2]: ./media/active-directory-saas-scoping-filters/ic782812.png
 [3]: ./media/active-directory-saas-scoping-filters/ic782813.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

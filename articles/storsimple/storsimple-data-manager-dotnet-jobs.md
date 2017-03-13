@@ -17,6 +17,7 @@ ms.author: vidarmsft
 translationtype: Human Translation
 ms.sourcegitcommit: 37f795fe59496b0267120537115cf56d44cc5325
 ms.openlocfilehash: 60cde851a466a5b4b0752908f11272eedb246b0a
+ms.lasthandoff: 12/23/2016
 
 ---
 
@@ -50,7 +51,7 @@ ms.openlocfilehash: 60cde851a466a5b4b0752908f11272eedb246b0a
         可以为 ActiveDirectoryKey 和 AppName 传入任何值。
 
 
-2. 此脚本将输出以下值     - 客户端 ID      - 租户 ID      - Active Directory 密钥（与上面输入的相同）      - 订阅 ID
+2. 此脚本将输出以下值      - 客户端 ID      - 租户 ID      - Active Directory 密钥（与上面输入的相同）      - 订阅 ID
 
 3. 使用 Visual Studio 2012、2013 或 2015 创建 C# .NET 控制台应用程序。
 
@@ -177,9 +178,4 @@ ms.openlocfilehash: 60cde851a466a5b4b0752908f11272eedb246b0a
 ## <a name="next-steps"></a>后续步骤
 
 [使用 StorSimple Data Manager UI 转换数据](storsimple-data-manager-ui.md)。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

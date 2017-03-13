@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics 警报 Webhook 示例"
+title: "OMS Log Analytics 中的 Webhook 警报操作示例 | Microsoft 文档"
 description: "响应 Log Analytics 警报可以运行的操作之一是 *Webhook*，它令你可以通过单个 HTTP 请求调用外部进程。 本文将为你逐步讲解如何使用 Slack 在 Log Analytics 警报中创建 Webhook 操作。"
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 02/27/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 001f8abfc5862aeb1914f6e93b68cadeed42eba0
+ms.sourcegitcommit: c8e67f2dcd061e3cd92eec40d6e6bb3de5d73b67
+ms.openlocfilehash: 55b66132f7ec5c26c0a7cac1ec0a5c403dbd1082
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="webhooks-in-log-analytics-alerts"></a>Log Analytics 警报中的 Webhook
+
+# <a name="create-an-alert-webhook-action-in-oms-log-analytics-to-send-message-to-slack"></a>在 OMS Log Analytics 中创建警报 webhook 操作以将消息发送到 Slack
 响应 [Log Analytics 警报](log-analytics-alerts.md)可以运行的操作之一是 *Webhook*，它令你可以通过单个 HTTP 请求调用外部进程。  如需了解警报和 Webhook 的详细信息，请参阅 [Log Analytics 中的警报](log-analytics-alerts.md)
 
 在本文中，我们将为你逐步讲解如何使用消息服务 Slack 在 Log Analytics 警报中创建 Webhook 操作。
@@ -109,12 +111,7 @@ ms.openlocfilehash: 001f8abfc5862aeb1914f6e93b68cadeed42eba0
 这是为响应警报唯一可以创建的操作示例。  可以创建调用另一个外部服务的 Webhook 操作、在 Azure 自动化中启动 Runbook 的 Runbook 操作，或要将邮件发送给你自己或其他收件人的电子邮件操作。   
 
 ## <a name="next-steps"></a>后续步骤
-* 了解更多有关包括其他操作的 [Log Analytics 中的警报](log-analytics-alerts.md)。
-* [在 Azure 自动化中创建 Runbook](../automation/automation-webhooks.md)，可从 Webhook 对其进行调用。
+* 了解 [Log Analytics 中的其他警报操作](log-analytics-alerts-actions.md)，包括其他操作。
 
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

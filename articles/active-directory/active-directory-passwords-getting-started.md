@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: d391aeacd5a755c3d344a359cae130788d1a5402
-ms.openlocfilehash: 02c7cd73951b7af83760ee10be4bb8f2da142283
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c40fca54b02f2673194ab16c41314f1e50be12be
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -80,13 +80,10 @@ ms.lasthandoff: 02/24/2017
 
    ![][003]
 
-5. 在“配置”选项卡上，向下滚动到“用户密码重置策略”部分。  你将在此为给定目录配置用户密码重置策略的各个方面。 **如果未看见“配置”选项卡，请确保已注册了 Azure Active Directory Premium 或 Basic，并为要配置此功能的管理员帐户分配了许可证**  
+5. 在“配置”选项卡上，向下滚动到“用户密码重置策略”部分。  你将在此为给定目录配置用户密码重置策略的各个方面。 *如果未看见“配置”选项卡，请确保已注册了 Azure Active Directory Premium 或 Basic，并为要配置此功能的管理员帐户分配了许可证。*  
 
    > [!NOTE]
    > **设置的策略仅适用于组织中的最终用户，而不是管理员**。 出于安全原因，Microsoft 控制了管理员的密码重置策略。 针对管理员的当前策略要求两个质询 - 移动电话和电子邮件地址。
-
-   >
-   >
 
    ![][004]
 6. 若要配置用户密码重置策略，请将“为用户启用密码重置”开关滑动到“是”设置。  这将显示更多控件，通过这些控件你可以配置此功能如何在你目录中工作。  根据需要随意自定义密码重置。  如果你想详细了解每个密码重置策略控件的作用，请参阅 [自定义：Azure AD 密码管理](active-directory-passwords-customize.md)。
@@ -264,13 +261,19 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
   ![][023]
 
 ### <a name="step-3-configure-your-firewall"></a>步骤 3：配置防火墙
-启用密码写回后，需要确保运行 Azure AD Connect 的计算机能够访问 Microsoft 云服务以接收密码写回请求。 此步骤包括更新网络设备（代理服务器、防火墙等）中的连接规则，以允许通过特定网络端口与某些 Microsoft 自有的 URL 和 IP 地址进行出站连接。 这些更改可能会根据 Azure AD Connect 工具的版本而有所不同。 有关更多上下文，可阅读有关[密码写回的工作原理](active-directory-passwords-learn-more.md#how-password-writeback-works)和[密码写回安全模型](active-directory-passwords-learn-more.md#password-writeback-security-model)的详细信息。
+启用密码写回后，需要确保运行 Azure AD Connect 的计算机能够访问 Microsoft 云服务以接收密码写回请求。 此步骤包括更新网络设备（代理服务器、防火墙等）中的连接规则，以允许通过特定网络端口与某些 [Microsoft 自有的 URL 和 IP 地址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)进行出站连接。 这些更改可能会根据 Azure AD Connect 工具的版本而有所不同。 有关更多上下文，可阅读有关[密码写回的工作原理](active-directory-passwords-learn-more.md#how-password-writeback-works)和[密码写回安全模型](active-directory-passwords-learn-more.md#password-writeback-security-model)的详细信息。
 
 #### <a name="why-do-i-need-to-do-this"></a>为什么需要执行此操作？
 
 为了使密码写回正常运行，运行 Azure AD Connect 的计算机需要能够建立到 **.servicebus.windows.net* 的出站 HTTPS 连接以及 Azure 使用的特定 IP 地址，如[Microsoft Azure 数据中 IP 范围列表](https://www.microsoft.com/download/details.aspx?id=41653)中所述。
 
-对于 Azure AD Connect 工具版本 1.0.8667.0 以及更高版本：
+对于 Azure AD Connect 工具 **1.1.439.0**（最新）以及更高版本：
+
+- 最新版的 Azure AD Connect 工具将需要以下网站的**出站 HTTPS** 访问权限：
+    - *passwordreset.microsoftonline.com*
+    - *servicbus.windows.net*
+
+对于 Azure AD Connect 工具版本 **1.0.8667.0** 到 **1.1.380.0**：
 
 - **选项 1：**允许通过端口 443 使用 URL 或 IP 地址的所有出站 HTTPS 连接。
     - 何时使用此选项：
@@ -298,6 +301,9 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 > 如果使用的是 1.0.8667.0 之前的 Azure AD Connect 版本，Microsoft 强烈建议升级到[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)，该版本包括许多写回网络增强功能，可简化配置。
 
 配置网络设备后，重新启动运行 Azure AD Connect 工具的计算机。
+
+#### <a name="idle-connections-on-azure-ad-connect-114390-and-up"></a>Azure AD Connect 上的空闲连接（1.1.439.0 及以上）
+Azure AD Connect 工具会定期将 ping/keepalive 发送到 ServiceBus 终结点，确保连接始终处于活动状态。 如果该工具检测到丢失的连接过多，则会自动增加发送到终结点的 ping 的频率。 最低的“ping 间隔”将降至每 60 秒 ping 1 次，但是，**我们强烈建议将代理/防火墙设置为允许空闲连接保持至少 2-3 分钟。** \*对于较旧的版本，我们建议让空闲连接保持 4 分钟或更长时间。
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>步骤 4：设置适当的 Active Directory 权限
 对于包含密码将要重置的用户的每个林，如果 X 是（初始配置期间）在配置向导中为该林指定的帐户，则必须为 X 授予对 `lockoutTime` 的“重置密码”、“更改密码”和“写入”权限，对 `pwdLastSet` 的“写入”权限，以及对该林中每个域的根对象的扩展权限。 应当将权限标记为“由所有用户对象继承”。  

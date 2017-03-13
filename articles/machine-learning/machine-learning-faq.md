@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 31157645006b24e9ed6ee9187c355310356615a7
-ms.openlocfilehash: 7d9dbf3af8e7d84d470bf6f42e2d2be01c5cb27d
+ms.sourcegitcommit: 21d2c20a3ac8dc4fee0680028d6c004c80a3ae38
+ms.openlocfilehash: 2835e4e8be2a11b659118f836d53c84a2c021263
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -83,7 +84,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 若要了解有关支持的文件格式的详细信息，请参阅[将训练数据导入机器学习工作室](machine-learning-data-science-import-data.md)。
 
-#### <a name="a-idmodulelimitahow-large-can-the-data-set-be-for-my-modules"></a><a id="ModuleLimit"></a>模块适合多大的数据集？
+#### <a id="ModuleLimit"></a>模块适合多大的数据集？
 机器学习工作室中的模块针对常见用例支持最多包含 10 GB 密集数字数据的数据集。 如果模块接受多个输入，10 GB 这个值是所有输入大小的总计。 也可通过 Hive 或 Azure SQL 数据库查询对更大的数据集采样，或者在引入之前使用“按计数学习”预处理。  
 
 以下数据类型可以在特征规范化期间扩展为较大数据集，其限制为小于 10 GB：
@@ -101,7 +102,7 @@ Azure 机器学习有两种类型的 Web 服务：
 * 输出数据大小可以大于输入数据大小的模块，例如联接或特征哈希
 * 迭代数目极大时的交叉验证、调整模型超参数、顺序回归和一对多的多类
 
-#### <a name="a-iduploadlimitawhat-are-the-limits-for-data-upload"></a><a id="UploadLimit"></a>数据上载的限制是什么？
+#### <a id="UploadLimit"></a>数据上载的限制是什么？
 对于大于数 GB 的数据集，应该将数据上载到 Azure 存储或 Azure SQL 数据库，或者使用 Azure HDInsight，而不要直接从本地文件上载。
 
 **是否可以从 Amazon S3 读取数据？**
@@ -429,7 +430,11 @@ API 计算小时数是使用机器学习计算资源运行 API 调用所花费�
 
 **哪些区域提供新计划？**
 
-有关区域可用性的信息，请参阅[可用产品(按区域)](https://azure.microsoft.com/regions/services/)。
+支持新 Web 服务的三个生产区域提供新的计费计划：
+
+* 美国中南部
+* 欧洲西部
+* 东南亚
 
 **如果在多个区域拥有 Web 服务，是否每个区域都需要一个计划？**
 
@@ -464,7 +469,13 @@ BES 工作负荷的计费方式相同， 但 API 事务成本表示提交的批�
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Azure 机器学习免费层和标准层
 **Azure 机器学习免费层中包括什么？**
 
-Azure 机器学习免费层旨在提供针对 Azure 机器学习工作室的深入介绍。 只需使用 Microsoft 帐户即可注册。 免费层包括每个 [Microsoft 帐户](https://www.microsoft.com/account/default.aspx)免费访问一个 Azure 机器学习工作室工作区。 在此层中，可以使用最多 10 GB 存储，并将模型作为过渡 API 进行操作。 免费层工作负载不在 SLA 范围内，只适合开发和个人使用。 免费层工作负荷无法通过连接本地服务器（用于运行 SQL Server）来访问数据。
+Azure 机器学习免费层旨在提供针对 Azure 机器学习工作室的深入介绍。 只需使用 Microsoft 帐户即可注册。 免费层包括每个 [Microsoft 帐户](https://www.microsoft.com/account/default.aspx)免费访问一个 Azure 机器学习工作室工作区。 在此层中，可以使用最多 10 GB 存储，并将模型作为过渡 API 进行操作。 免费层工作负载不在 SLA 范围内，只适合开发和个人使用。 
+
+免费层工作区存在以下限制：
+
+* 工作负荷无法通过连接本地服务器（用于运行 SQL Server）来访问数据。
+* 无法部署新的 Resource Manager 库 Web 服务。
+
 
 **Azure 机器学习标准层和计划中包括什么？**
 
@@ -546,9 +557,4 @@ Azure 机器学习 API 服务根据它是经典 Web 服务还是新（基于 Res
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -118,7 +118,7 @@
   - name: "数据湖分析"
     tocHref: /azure/data-lake-analytics/
     topicHref: /azure/data-lake-analytics/
-  - name: "数据湖存储"
+  - name: "Data Lake Store"
     tocHref: /azure/data-lake-store/
     topicHref: /azure/data-lake-store/
   - name: "开发测试实验室"
@@ -215,7 +215,7 @@
   - name: "搜索"
     tocHref: /azure/search/
     topicHref: /azure/search/
-  - name: "“安全”"
+  - name: "安全"
     tocHref: /azure/security/
     topicHref: /azure/security/
   - name: "安全中心"

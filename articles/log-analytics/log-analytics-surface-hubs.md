@@ -1,5 +1,5 @@
 ---
-title: "使用 Log Analytics 监视 Surface Hub | Microsoft Docs"
+title: "使用 Azure Log Analytics 监视 Surface Hub | Microsoft 文档"
 description: "使用 Surface Hub 解决方案来跟踪 Surface Hub 的运行状况并了解它们的使用情况。"
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 9ba6b1b3fcdaf090eee696ba3cb33be5d94be039
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: d568c52a7cbbe593658fb95203bfa98af13a1554
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="monitor-surface-hubs-with-log-analytics"></a>使用 Log Analytics 监视 Surface Hub
+# <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>使用 Log Analytics 监视 Surface Hub 以跟踪其运行状况
+
 本文介绍如何使用 Log Analytics 中的 Surface Hub 解决方案来监视具有 Microsoft Operations Management Suite (OMS) 的 Microsoft Surface Hub 设备。 Log Analytics 可帮助你同时了解 Surface Hub 的运行状况和使用情况。
 
 每个 Surface Hub 都安装了 Microsoft Monitoring Agent。 通过代理，你可以将数据从 Surface Hub 发送到 OMS。 日志文件从 Surface Hub 读取，然后发送到 OMS 服务。 类似于服务器处于脱机状态、日历不同步，或设备帐户无法登录 Skype 等这些问题都将显示在 Surface Hub 仪表板的 OMS 中。 通过使用仪表板中的数据，你可以确定未运行或遇到其他问题的设备，并潜在解决检测到的问题。
@@ -84,9 +87,4 @@ InTune 然后会在 OMS 工作区中注册设备，从而将 OMS 设置与目标
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)，查看详细的 Surface Hub 数据。
 * 创建[警报](log-analytics-alerts.md)，以便在 Surface Hub 出现问题时通知你。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

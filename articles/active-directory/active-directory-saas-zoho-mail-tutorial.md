@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2016
-ms.author: markvi
+ms.date: 02/22/2017
+ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
-ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
+ms.sourcegitcommit: fd79688a66c2b3919b11c0b06d268b60e1d93a8f
+ms.openlocfilehash: 60165d0cd7fea3cd0861f36d9a4a245cedabe07a
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-zoho-mail-tutorial/IC789600.png "Scenario")
+![方案](./media/active-directory-saas-zoho-mail-tutorial/IC789600.png "方案")
 
 ## <a name="enabling-the-application-integration-for-zoho-mail"></a>实现 Zoho Mail 的应用程序集成
 本部分旨在概述如何实现 Zoho Mail 的应用程序集成。
@@ -45,23 +46,23 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
    
     ![Active Directory](./media/active-directory-saas-zoho-mail-tutorial/IC700993.png "Active Directory")
 
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-    ![应用程序](./media/active-directory-saas-zoho-mail-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-zoho-mail-tutorial/IC700994.png "应用程序")
 
 4. 在页面底部单击“添加”。
    
-    ![添加应用程序](./media/active-directory-saas-zoho-mail-tutorial/IC749321.png "Add application")
+    ![添加应用程序](./media/active-directory-saas-zoho-mail-tutorial/IC749321.png "添加应用程序")
 
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-    ![从库中添加应用程序](./media/active-directory-saas-zoho-mail-tutorial/IC749322.png "Add an application from gallerry")
+    ![从库添加应用程序](./media/active-directory-saas-zoho-mail-tutorial/IC749322.png "从库添加应用程序")
 
 6. 在“搜索框”中，键入“Zoho Mail”。
    
-    ![应用程序库](./media/active-directory-saas-zoho-mail-tutorial/IC789601.png "Application Gallery")
+    ![应用程序库](./media/active-directory-saas-zoho-mail-tutorial/IC789601.png "应用程序库")
 
 7. 在结果窗格中，选择“Zoho Mail”，然后单击“完成”以添加该应用程序。
    
@@ -75,15 +76,15 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户的“Zoho Mail”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-zoho-mail-tutorial/IC789603.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-zoho-mail-tutorial/IC789603.png "配置单一登录")
 
 2. 在“你希望用户如何登录 Zoho Mail”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-zoho-mail-tutorial/IC789604.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-zoho-mail-tutorial/IC789604.png "配置单一登录")
 
 3. 在“配置应用 URL”页上，执行以下步骤：
    
-    ![配置应用 URL](./media/active-directory-saas-zoho-mail-tutorial/IC789605.png "Configure App URL")
+    ![配置应用 URL](./media/active-directory-saas-zoho-mail-tutorial/IC789605.png "配置应用 URL")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“Zoho Mail 登录 URL”文本框中，使用以下模式键入 URL：`http://<company name>.ZohoMail.com`
    
@@ -91,21 +92,21 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 
 4. 在“配置 Zoho Mail 的单一登录”页上，单击“下载证书”，然后将该证书文件保存到计算机上。
    
-    ![配置单一登录](./media/active-directory-saas-zoho-mail-tutorial/IC789606.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-zoho-mail-tutorial/IC789606.png "配置单一登录")
 
 5. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zoho Mail 公司站点。
 
 6. 转到“控制面板”。
    
-    ![控制面板](./media/active-directory-saas-zoho-mail-tutorial/IC789607.png "Control Panel")
+    ![控制面板](./media/active-directory-saas-zoho-mail-tutorial/IC789607.png "控制面板")
 
 7. 单击“SAML 身份验证”选项卡。
    
-    ![SAML 身份验证](./media/active-directory-saas-zoho-mail-tutorial/IC789608.png "SAML Authentication")
+    ![SAML 身份验证](./media/active-directory-saas-zoho-mail-tutorial/IC789608.png "SAML 身份验证")
 
 8. 在“SAML 身份验证详细信息”部分，执行以下步骤：
    
-    ![SAML 身份验证详细信息](./media/active-directory-saas-zoho-mail-tutorial/IC789609.png "SAML Authentication Details")
+    ![SAML 身份验证详细信息](./media/active-directory-saas-zoho-mail-tutorial/IC789609.png "SAML 身份验证详细信息")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 Azure 经典门户的“配置 Zoho Mail 的单一登录”对话框页上，复制“远程登录 URL”值，然后将其粘贴到“登录 URL”文本框中。
    
@@ -128,7 +129,7 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 
 9. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-zoho-mail-tutorial/IC789610.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-zoho-mail-tutorial/IC789610.png "配置单一登录")
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 要使 Azure AD 用户能够登录 Zoho Mail，必须将这些用户预配到 Zoho Mail 中。  
@@ -141,11 +142,11 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 
 3. 转到“用户详细信息\>添加用户”。
    
-    ![添加用户](./media/active-directory-saas-zoho-mail-tutorial/IC789611.png "Add User")
+    ![添加用户](./media/active-directory-saas-zoho-mail-tutorial/IC789611.png "添加用户")
 
 4. 在“添加用户”对话框中，执行以下步骤：
    
-    ![添加用户](./media/active-directory-saas-zoho-mail-tutorial/IC789612.png "Add User")
+    ![添加用户](./media/active-directory-saas-zoho-mail-tutorial/IC789612.png "添加用户")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在相关文本框中，键入要预配的有效 Azure Active Directory 帐户的“名字”、“姓氏”、“电子邮件 ID”和“密码”。
    
@@ -169,17 +170,12 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 
 2. 在“Zoho Mail”应用程序集成页面上，单击“分配用户”。
    
-    ![分配用户](./media/active-directory-saas-zoho-mail-tutorial/IC789613.png "Assign Users")
+    ![分配用户](./media/active-directory-saas-zoho-mail-tutorial/IC789613.png "分配用户")
 
-3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
+3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-    ![是](./media/active-directory-saas-zoho-mail-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-zoho-mail-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

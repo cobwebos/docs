@@ -1,6 +1,6 @@
 ---
-title: "Azure 容器注册表中的 Docker 映像 | Microsoft 文档"
-description: "使用 Docker CLI 在 Azure 容器注册表中推送和提取 Docker 映像"
+title: "将 Docker 映像推送到专用 Azure 注册表 | Microsoft 文档"
+description: "使用 Docker CLI 在 Azure 的专用容器注册表中推送和拉取 Docker 映像"
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -16,16 +16,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 1e70f41dd15b0243fb8edd137710ac555821434e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 0433e22dc7722ef9c8edfaf949dbd9a9d8645e67
+ms.openlocfilehash: e778c09991da73cd5064532119d92bff36f0a00e
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="push-your-first-image-to-a-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到 Azure 容器注册表
+# <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 Azure 容器注册表存储和管理专用 [Docker](http://hub.docker.com) 容器映像，其方式类似于 [Docker Hub](https://hub.docker.com/) 存储公共 Docker 映像。 可以使用 [Docker 命令行接口](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 对容器注册表执行[登录](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他操作。 
 
-有关更多背景信息和概念，请参阅[什么是 Azure 容器注册表？](container-registry-intro.md)
+如需更多背景和概念，请参阅[概述](container-registry-intro.md)
 
 
 > [!NOTE]

@@ -16,98 +16,95 @@ ms.workload: identity
 ms.date: 02/06/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c05cd490ee9125f7e5182cb502db6f4e9390094
-ms.openlocfilehash: 3f41fdaa4f0ec31c9f11f2826b5cb9ccbf4db30d
+ms.sourcegitcommit: 42f93a638ea0bb5139063b76b223fd811ba58fb4
+ms.openlocfilehash: 98bf824831f60a70877e8c41f8b60c339df173d6
+ms.lasthandoff: 02/24/2017
 
 
 ---
 
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>为 B2B 协作配置 SaaS 应用
 
-Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大多数应用程序。 在此部分中，我们将浏览有关如何配置某些常用的 SAS 应用以用于 Azure AD B2B 的说明。
-在查看特定于应用程序的说明之前，以下是一些经验法则：
+Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大多数应用。 本部分逐步说明如何配置一些常用的 SaaS 应用来与 Azure AD B2B 配合使用。
 
-* 请记住，对于大多数应用程序来说，用户预配需要手动进行（即，必须也在应用程序中手动创建用户）。
+在查看应用特定的说明之前，请考虑以下经验法则：
 
-* 对于支持自动预配的应用（例如 Dropbox），将会从应用程序创建单独的邀请。 用户必须确保接受每个邀请。
+* 对于大多数应用，需要手动完成用户设置。 也就是说，还必须在应用中手动创建用户。
 
-* 在用户属性中，始终将用户标识符设置为 user.mail（以缓解来宾用户的已损坏 UPD 所带来的任何问题）
+* 对于支持自动设置的应用（例如 Dropbox），可从这些应用创建单独的邀请。 用户必须接受每个邀请。
+
+* 在用户属性中，为了缓解来宾用户的任何用户配置文件磁盘 (UPD) 损坏问题，请始终将“用户标识符”设置为 **user.mail**。
 
 
-##<a name="dropbox-for-business"></a>DropBox for Business
+## <a name="dropbox-business"></a>Dropbox Business
 
-对于能够使用其组织帐户登录的用户，必须手动配置 Dropbox for Business 以使用 Azure AD 作为 SAML 标识提供者。 如果尚未这样配置，Dropbox for Business 将无法提示或以其他方式允许用户使用 Azure AD 进行登录。
+为了让用户使用其组织帐户登录，必须手动将 Dropbox Business 配置为使用 Azure AD 作为安全断言标记语言 (SAML) 标识提供者。 如果不这样配置 Dropbox Business，它不会显示提示，或者以其他方式允许用户使用 Azure AD 登录。
 
-1. 将 DropBox for Business 应用程序添加到 Azure AD 中，如屏幕截图中所示。
+1. 若要将 Dropbox Business 应用添加到 Azure AD 中，请在左窗格中选择“企业应用程序”，然后单击“添加”。
 
-  ![将 Dropbox 添加到 Azure AD](media/active-directory-b2b-configure-saas-apps/add-dropbox.png)
+  ![“企业应用程序”页上的“添加”按钮](media/active-directory-b2b-configure-saas-apps/add-dropbox.png)
 
-  ![将 Dropbox 添加到 Azure AD](media/active-directory-b2b-configure-saas-apps/add-app-dialog.png)
+2. 在“添加应用程序”窗口中的搜索框内输入 **dropbox**，然后在结果列表中选择“Dropbox for Business”。
 
-2. 配置应用程序。
+  ![在“添加应用程序”页上搜索“dropbox”](media/active-directory-b2b-configure-saas-apps/add-app-dialog.png)
+
+3. 在“单一登录”页上的左窗格中选择“单一登录”，然后在“用户标识符”框中输入 **user.mail**。 （用户标识符默认设置为“UPN”。）
 
   ![为应用配置单一登录](media/active-directory-b2b-configure-saas-apps/configure-app-sso.png)
 
-3. 选择单一登录配置并将用户标识符更改为 user.mail（默认情况下，为其 UPN）
+4. 若要下载用于 Dropbox 配置的证书，请选择“配置 DropBox”，然后在列表中选择“SAML 单一登录服务 URL”。
 
-4. 下载要用于 DropBox 配置的证书。
+  ![下载用于 DropBox 配置的证书](media/active-directory-b2b-configure-saas-apps/download-certificate.png)
 
-  ![下载证书](media/active-directory-b2b-configure-saas-apps/download-certificate.png)
+5. 在“单一登录”页中使用登录 URL 登录到 Dropbox。
 
-5. 使用“配置 DropBox”选项（下面的屏幕截图详细说明了该过程）
+  ![Dropbox 登录页](media/active-directory-b2b-configure-saas-apps/sign-in-to-dropbox.png)
 
-6. 获取要在配置中使用的 SAML 单一登录 URL。
+6. 在菜单中选择“管理控制台”。
 
-7. 从 DropBox 配置页获取登录 URL。
+  ![Dropbox 菜单中的“管理控制台”链接](media/active-directory-b2b-configure-saas-apps/dropbox-menu.png)
 
-  ![登录到 dropbox](media/active-directory-b2b-configure-saas-apps/sign-in-to-dropbox.png)
+7. 在“身份验证”对话框中选择“更多”，上载证书，然后在“登录 URL”框中输入 SAML 单一登录 URL。
 
-  ![Dropbox 菜单](media/active-directory-b2b-configure-saas-apps/dropbox-menu.png)
+  ![折叠的“身份验证”对话框中的“更多”链接](media/active-directory-b2b-configure-saas-apps/dropbox-auth-01.png)
 
-  ![折叠的 Dropbox 身份验证对话框](media/active-directory-b2b-configure-saas-apps/dropbox-auth-01.png)
+  ![展开的“身份验证”对话框中的“登录 URL”链接](media/active-directory-b2b-configure-saas-apps/paste-single-sign-on-URL.png)
 
-  ![展开的 Dropbox 身份验证对话框](media/active-directory-b2b-configure-saas-apps/dropbox-auth-02.png)
+8. 若要在 Azure 门户中配置自动用户设置，请在左窗格中选择“预配”，在“预配模式”框中选择“自动”，然后选择“授权”。
 
-8. 在此处上载证书并粘贴 SAML 单一登录 URL。
+  ![在 Azure 门户中配置自动用户预配](media/active-directory-b2b-configure-saas-apps/set-up-automatic-provisioning.png)
 
-  ![粘贴 SAML SSO URL](media/active-directory-b2b-configure-saas-apps/paste-single-sign-on-URL.png)
-
-9. 在 Azure 门户中配置自动用户预配。
-
-  ![设置自动用户预配](media/active-directory-b2b-configure-saas-apps/set-up-automatic-provisioning.png)
-
-10. 在 DropBox 应用程序中预配后，来宾/成员用户将从 DropBox 收到单独邀请。 被邀请者必须通过单击该链接接受邀请，以便在 DropBox 中使用单一登录。
+在 Dropbox 应用中设置来宾或成员用户后，他们会收到来自 Dropbox 的单独邀请。 若要使用 Dropbox 单一登录，受邀者必须单击邀请中的某个链接接受邀请。
 
 ## <a name="box"></a>Box
-本部分概述如何让用户使用基于 SAML 协议的联合身份验证通过其在 Azure AD 中的帐户向 Box 进行来宾用户身份验证。 在此过程中，需要将元数据上传到 Box.com。
+使用基于 SAML 协议的联合身份验证，可让用户使用其 Azure AD 帐户对 Box 来宾用户进行身份验证。 在此过程中，需要将元数据上载到 Box.com。
 
-1. 从企业应用程序添加 Box
+1. 从企业应用添加 Box 应用。
 
-2. 配置单一登录
+2. 执行以下操作来配置单一登录：
 
   ![配置 Box 单一登录](media/active-directory-b2b-configure-saas-apps/configure-box-sso.png)
 
-3. 首先，确保在 Azure 管理门户中为 Box 正确设置了登录 URL。 这是 Box.com 租户的 URL，应遵循以下格式：https://.box.com。
+ a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”框中，确保登录 URL 是在 Azure 门户中为 Box 适当设置的 URL。 此 URL 是 Box.com 租户的 URL。 它应该遵循 *https://.box.com* 中所述的命名约定。  
+ “标识符”不适用于此应用，但仍显示为必填字段。
 
-4. 该标识符不适用于此应用程序，但仍显示为必填字段，只需注意这一事实。
+ b.保留“数据库类型”设置，即设置为“共享”。 在“用户标识符”框中输入 **user.mail**（适用于来宾帐户 SSO）。
 
-5. user.mail 的用户标识符（以确保来宾帐户的 SSO）
+ c. 在“SAML 签名证书”下面，单击“创建新证书”。
 
-6. 创建新的 SAML 证书
+ d. 若要开始将 Box.com 租户配置为使用 Azure AD 作为标识提供者，请下载元数据文件并将其保存到本地驱动器。
 
-7. 若要开始配置 Box.com 租户以使用 Azure Active Directory 作为标识提供者，首先请下载以下元数据文件，并将其保存在本地计算机上：下载元数据文件（确保使其处于活动状态）
+ e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将元数据文件转发给 Box 支持团队，他们将为你配置单一登录。
 
-8. 将该元数据文件转发给 Box 支持团队。 支持团队将为你配置单一登录。
+3. 为了在 Azure AD 中启用自动用户设置，请在左窗格中选择“预配”，然后选择“授权”。
 
-9. 为 Azure AD 自动用户预配做准备。
+  ![授权 Azure AD 连接到 Box](media/active-directory-b2b-configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 
-  ![授权 Azure AD，使其可以连接到 box](media/active-directory-b2b-configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
-
-受邀者还必须从 Box 应用程序兑换其邀请。
+与 Dropbox 受邀者一样，Box 受邀者也必须从 Box 应用兑换其邀请。
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
+请参阅以下有关 Azure AD B2B 协作的文章：
 
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [B2B 协作用户属性](active-directory-b2b-user-properties.md)
@@ -118,10 +115,5 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 * [B2B 协作用户令牌](active-directory-b2b-user-token.md)
 * [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
 * [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
-* [B2B 协作当前限制](active-directory-b2b-current-limitations.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+* [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)
 

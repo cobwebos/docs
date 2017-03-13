@@ -12,21 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 12/9/2016
+ms.date: 2/20/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: f3f9bc205cd038ae636face742292cb28654fd39
-ms.openlocfilehash: 1212ab52afac346ce6c70e6e6f64b9bc87a13320
+ms.sourcegitcommit: 1f4075d6a3ab81bdbde614bbee400bd23f6cea20
+ms.openlocfilehash: 1fd481d06f355547fd15200999c4bca3a503ec31
+ms.lasthandoff: 02/23/2017
 
 ---
 
 # <a name="installing-mobility-service-vmwarephysical-to-azure"></a>安装移动服务（VMware/物理到 Azure）
-需要将移动服务部署到要复制到 Azure 的每个计算机（VMware VM 或物理服务器）上。 它可以捕获计算机上的数据写入，并将其转发到进程服务器。  可以使用以下方法将移动服务部署到需要保护的服务器上
+需要将移动服务部署到要复制到 Azure 的每个计算机（VMware VM 或物理服务器）上。 它可以捕获计算机上的数据写入，并将其转发到进程服务器。 可以使用以下方法将移动服务部署到需要保护的服务器上
+
+
 1. [使用 System Center Configuration Manager 等软件部署工具安装移动服务](site-recovery-install-mobility-service-using-sccm.md)
 2. [使用 Azure 自动化和 Desired State Configuration (DSC) 安装移动服务](site-recovery-automate-mobility-service-install.md)
 3. [使用图形用户界面 (GUI) 手动安装移动服务](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-using-the-graphical-user-interface)
 4. [使用命令行手动安装移动服务](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-using-command-line)
 5. [使用推送安装从 Azure Site Recovery 安装移动服务](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-using-push-install-from-azure-site-recovery)
+
+
+>[!IMPORTANT]
+> 从版本 9.7.0.0 开始，在 Windows 虚拟机上，移动服务安装程序还将安装最新可用的 [Azure VM 代理](../virtual-machines/virtual-machines-windows-extensions-features.md#azure-vm-agent)。 这可确保当计算机故障转移到 Azure 时，它满足使用任何 VM 扩展所需的此先决条件。
 
 ## <a name="prerequisites"></a>先决条件
 开始在服务器上手动安装移动服务之前，请执行这些先决条件。
@@ -77,9 +84,4 @@ ms.openlocfilehash: 1212ab52afac346ce6c70e6e6f64b9bc87a13320
 
 ## <a name="next-steps"></a>后续步骤
 安装移动服务后，可以使用 Azure 门户中的“+复制”按钮开始为这些 VM 启用保护。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

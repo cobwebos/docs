@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: 4ecf4f8594f7a274bec231fb74c4caa22c3cc354
 ms.openlocfilehash: b5f2ae124ca3276e15e0d1f75d655ec346bf8ee8
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -83,7 +84,7 @@ ms.openlocfilehash: b5f2ae124ca3276e15e0d1f75d655ec346bf8ee8
 
     ![为作业添加输出](./media/data-lake-store-stream-analytics/create.output.2.png "为作业添加输出")
 
-    * 对于“输出别名”，输入此作业输出的唯一名称。 该名称是在查询中使用的友好名称，用于将查询输出定向到此数据湖存储。
+    * 对于“输出别名”，输入此作业输出的唯一名称。 该名称是在查询中使用的友好名称，用于将查询输出定向到此 Data Lake Store。
     * 对于“接收器”，选择“Data Lake Store”。
     * 系统将会提示你授权访问 Data Lake Store 帐户。 单击“授权”。
 
@@ -127,9 +128,4 @@ ms.openlocfilehash: b5f2ae124ca3276e15e0d1f75d655ec346bf8ee8
 
 ## <a name="see-also"></a>另请参阅
 * [创建 HDInsight 群集以使用 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -16,9 +16,9 @@ ms.tgt_pltfrm: na
 ms.date: 02/22/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 3f608b8ae7a7812b939e0d9ab1cb8e19853220fd
-ms.openlocfilehash: 6ed23693c95ce9025576d59fa6df9d640950ada3
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 7945ee77be8a09dcac9ddd6b338bdd542ec18540
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -35,11 +35,13 @@ ms.lasthandoff: 02/24/2017
 
 **估计所需时间：**大约 15 分钟，但如果还需要注册帐户或服务，则所需时间会更长。 
 
-此外，也可以花费大约 3 分钟时间观看这部 [Azure 搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)，其中对本教程所述的步骤做了 6 分钟的演示。
+也可参阅[在 .NET 中进行基于代码的 Azure 搜索编程简介](search-howto-dotnet-sdk.md)来加强相关知识。
 
 ## <a name="prerequisites"></a>先决条件
 
 本教程假设读者拥有 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)和 [Azure 搜索服务](search-create-service-portal.md)。 
+
+如果不需立即预配某项服务，也可以观看这部 [Azure 搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)（在大约 3 分钟时开始观看），其中对本教程所述的步骤做了 6 分钟的演示。
 
 ## <a name="find-your-service"></a>找到服务
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -57,7 +59,7 @@ ms.lasthandoff: 02/24/2017
 > ![索引器和数据源的磁贴][1]
 >
 
-## <a name="a-namecreate-indexa-create-an-index-and-load-data"></a><a name="create-index"></a>创建索引并加载数据
+## <a name="create-index"></a>创建索引并加载数据
 搜索查询将循环访问 *索引* ，索引中包含可搜索数据、元数据，以及用于优化某些搜索行为的构造。
 
 为了在门户中完成此任务，我们将使用可通过“导入数据”向导利用索引器进行爬网的内置示例数据集。 
@@ -100,7 +102,7 @@ ms.lasthandoff: 02/24/2017
 
    ![索引器进度消息][4]
 
-## <a name="a-namequery-indexa-query-the-index"></a><a name="query-index"></a>查询索引
+## <a name="query-index"></a>查询索引
 现在已有一个可以查询的搜索索引。 **搜索浏览器** 是内置于门户中的查询工具。 它提供一个搜索框，用于验证搜索结果是否符合预期。 
 
 > [!TIP]
