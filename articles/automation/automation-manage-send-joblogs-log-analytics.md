@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/10/2017
+ms.date: 02/24/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: d7cba9126c11418f8ccafb1ace0816a9a9cc3b6d
-ms.openlocfilehash: babfda8735699b9f9991bffd22a8d2d9847ae759
+ms.sourcegitcommit: 83ae00afbcbb5d3ff38ee1f934e3b2f8d1c8f624
+ms.openlocfilehash: 95a6933d64428255eb061e7077c3e0768c72e207
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -52,22 +53,24 @@ Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 
 ## <a name="set-up-integration-with-log-analytics"></a>设置与 Log Analytics 的集成
 1. 在计算机上，从“开始”屏幕启动 **Windows PowerShell**。  
-2. 复制和粘贴以下 PowerShell，并编辑 `$workspaceId` 和 `$automationAccountId` 的值。  如果使用的是 Azure 政府云，则需要在执行时将 `$GovCloud` 的布尔值设置为 *$True* 或 *1*。     
+2. 复制和粘贴以下 PowerShell，并编辑 `$workspaceId` 和 `$automationAccountId` 的值。  对于 `-Environment` 参数，有效值为 *AzureCloud* 或 *AzureUSGovernment*，具体取决于运行的云环境。     
 
 ```powershell
 [cmdletBinding()]
     Param
     (
-        [Parameter(Mandatory=$true)]
-        [bool]$GovCloud = $False
+        [Parameter(Mandatory=$True)]
+        [ValidateSet("AzureCloud","AzureUSGovernment")]
+        [string]$Environment="AzureCloud"
     )
 
-#Check to see if we need to log into Commercial or Government cloud.
-If ($GovCloud -eq $False) {
-    Login-AzureRmAccount
-}Else{
-    Login-AzureRmAccount -EnvironmentName AzureUSGovernment 
-}
+#Check to see which cloud environment to sign into.
+Switch ($Environment)
+   {
+       "AzureCloud" {Login-AzureRmAccount}
+       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
+   }
+
 # if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
@@ -88,16 +91,17 @@ Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $work
 [cmdletBinding()]
     Param
     (
-        [Parameter(Mandatory=$true)]
-        [bool]$GovCloud = $False
+        [Parameter(Mandatory=$True)]
+        [ValidateSet("AzureCloud","AzureUSGovernment")]
+        [string]$Environment="AzureCloud"
     )
 
-#Check to see if we need to log into Commercial or Government cloud.
-If ($GovCloud -eq $False) {
-    Login-AzureRmAccount
-}Else{
-    Login-AzureRmAccount -EnvironmentName AzureUSGovernment 
-}
+#Check to see which cloud environment to sign into.
+Switch ($Environment)
+   {
+       "AzureCloud" {Login-AzureRmAccount}
+       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
+   }
 # if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
@@ -203,9 +207,4 @@ Log Analytics 可以更直观地显示自动化作业的运行情况，并且可
 * 若要了解如何创建输出和错误消息以及从 Runbook 检索此类消息，请参阅 [Runbook 输出和消息](automation-runbook-output-and-messages.md)
 * 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅 [Track a runbook job](automation-runbook-execution.md)（跟踪 Runbook 作业）
 * 若要了解有关 OMS Log Analytics 和数据收集源的详细信息，请参阅 [Collecting Azure storage data in Log Analytics overview](../log-analytics/log-analytics-azure-storage.md)（在 Log Analytics 中收集 Azure 存储数据概述）
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

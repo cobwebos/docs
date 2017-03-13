@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 3ed1b4121e8e64b07abaeb1117f2b8a0cfd75406
-ms.openlocfilehash: 7b2380e45c62684ed29fe819db7e254b968d55d0
+ms.sourcegitcommit: cf8873a3cc5067717edf586da209b05cef3092ff
+ms.openlocfilehash: fc921785e5e4aae84982a348814c1760ddd6bb8c
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -500,7 +501,7 @@ DataLakeAnalyticsCatalogManagementClient 对象提供用于管理 SQL 数据库�
 
     wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/<path to source>
 
-例如，如果源文件 (SearchLog.tsv) 存储在“contso_33”存储帐户中名为“samples”的 Blob 容器内，则 FROM 语句的路径为：
+例如，如果源文件 (SearchLog.tsv) 存储在“contoso_33”存储帐户中名为“samples”的 Blob 容器内，则 FROM 语句的路径为：
 
     FROM: "wasb://samples@constoso_33.blob.core.windows.net/SearchLog.tsv"
 
@@ -528,9 +529,4 @@ Data Lake Analytics 帐户和从属存储帐户必须位于同一个 Azure 数�
 * [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
 * [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

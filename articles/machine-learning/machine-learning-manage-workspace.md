@@ -12,19 +12,45 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/27/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: c5479dd817e8929ff5e9129d4643d49758e7ab16
-ms.openlocfilehash: 32e74821309507fed4a20b005dbfbba12ffb0703
+ms.sourcegitcommit: cf0cd5202288a9da55e0f8409a51ea904eeb2d55
+ms.openlocfilehash: 775ef958846ad2a780abb761d1c3934e671d5f1c
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>管理 Azure 机器学习工作区
+
 > [!NOTE]
-> 本文中的过程与 Azure 机器学习经典 Web 服务相关。 有关在机器学习 Web 服务门户中管理 Web 服务的信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。
+> 有关在机器学习 Web 服务门户中管理 Web 服务的信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。
 > 
 > 
+
+可以在 Azure 门户或 Azure 经典门户中管理机器学习工作区。
+
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+## <a name="use-the-azure-portal"></a>使用 Azure 门户
+
+若要在 Azure 门户中管理工作区，请执行以下操作：
+
+1. 使用 Azure 订阅管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
+2. 在页面顶部的搜索框中，输入“机器学习工作区”，然后选择“机器学习工作区”。
+3. 单击想要管理的工作区。
+
+除了标准的资源管理信息和可用选项外，还可以：
+
+- 查看**属性** - 此页显示工作区和资源信息，并可以更改此工作区连接到的订阅和资源组。
+- **重新同步存储密钥** - 此工作区维护存储帐户的密钥。 如果存储帐户更改密钥，则可以单击“重新同步密钥”将密钥与工作区同步。
+
+若要管理与此工作区关联的 Web 服务，请使用“机器学习 Web 服务”门户。 有关完整信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。
+
+> [!NOTE]
+> 若要部署或管理新 Web 服务，必须分配有该 Web 服务部署到的订阅上的参与者或管理员角色。 如果邀请其他用户加入机器学习工作区，必须向其分配订阅上的参与者或管理员角色，他们才能部署或管理 Web 服务。 
+
+## <a name="use-the-azure-classic-portal"></a>使用 Azure 经典门户
 
 使用 Azure 经典门户，可管理机器学习工作区以：
 
@@ -33,8 +59,6 @@ ms.openlocfilehash: 32e74821309507fed4a20b005dbfbba12ffb0703
 * 管理在工作区中创建的 Web 服务
 * 删除工作区
 
-[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
 此外，仪表板选项卡提供工作区使用情况的概述和工作区信息的速览。  
 
 > [!TIP]
@@ -42,7 +66,7 @@ ms.openlocfilehash: 32e74821309507fed4a20b005dbfbba12ffb0703
 > 
 > 
 
-要管理工作区：
+若要在 Azure 经典门户中管理工作区，请执行以下操作：
 
 1. 使用 Microsoft Azure 帐户登录到 [Azure 经典门户](https://manage.windowsazure.com/) - 使用与 Azure 订阅相关联的帐户。
 2. 在 Microsoft Azure 服务面板中，单击“**机器学习**”。
@@ -54,7 +78,7 @@ ms.openlocfilehash: 32e74821309507fed4a20b005dbfbba12ffb0703
 * **配置** - 允许管理对工作区的访问
 * **Web 服务** - 允许管理已从此工作区发布的 Web 服务
 
-## <a name="to-monitor-how-the-workspace-is-being-used"></a>监视工作区的使用情况
+### <a name="to-monitor-how-the-workspace-is-being-used"></a>监视工作区的使用情况
 单击“**仪表板**”选项卡 。
 
 从仪表板中，可查看工作区的总体使用情况，并获取工作区信息的速览。
@@ -68,7 +92,7 @@ ms.openlocfilehash: 32e74821309507fed4a20b005dbfbba12ffb0703
 > 
 > 
 
-## <a name="to-grant-or-suspend-access-for-users"></a>为用户授予或暂停访问权限
+### <a name="to-grant-or-suspend-access-for-users"></a>为用户授予或暂停访问权限
 单击“**配置**” 选项卡。
 
 从配置选项卡，可执行以下操作：
@@ -77,7 +101,7 @@ ms.openlocfilehash: 32e74821309507fed4a20b005dbfbba12ffb0703
 
 若要管理其他有权访问机器学习工作室中的工作区的帐户，请单击”仪表板“选项卡中的“登录到机器学习工作室”（请参阅关于**登录到机器学习工作室**的以前说明）。 这将打开机器学习工作室中的工作区。 从此处单击”**设置**“选项卡，然后单击”**用户**“。 你可以单击”**邀请多个用户**“，以允许用户访问工作区，或选择一个用户并单击”**删除**“。
 
-## <a name="to-manage-web-services-in-this-workspace"></a>管理此工作区中的 Web 服务
+### <a name="to-manage-web-services-in-this-workspace"></a>管理此工作区中的 Web 服务
 单击“Web 服务”选项卡。
 
 这显示从此工作区发布的 Web 服务的列表。
@@ -110,10 +134,5 @@ Web 服务可能已定义一个或多个终结点。
 * “**说明**”允许你输入 Web 服务的说明。 “说明”是必填字段。
 * “**日志记录**”允许启用或禁用终结点上的错误记录。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](machine-learning-web-services-logging.md)。
 * “**启用示例数据**”允许提供可用于测试请求 - 响应服务的示例数据。 如果在机器学习工作室中创建 Web 服务，示例数据将来自你用于训练模型的数据。 如果以编程方式创建服务，则从作为 JSON 包的一部分提供的示例数据中获取数据。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/21/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 0b5bdb5036024cc0e05b3845e0073b2ea66a0a73
-ms.openlocfilehash: 9f615c3936cf3207ace787dd7293f94d2b760149
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: d5c8972e539ace9440a166eaed6c95fe93e2792a
+ms.openlocfilehash: 792e6c0d70a4786535174fa9c5f863a72da41143
+ms.lasthandoff: 02/22/2017
 
 ---
 
@@ -200,7 +200,7 @@ Azure AD Connect 安装向导将始终创建此配置。
 
 以下示例和步骤以用户对象为例，但可以将此例子应用到所有对象类型。
 
-在以下示例中，优先顺序值从 500 开始。 此值可确保这些规则在现有规则（优先顺序更低、数字值更高）之后进行评估。
+在以下示例中，优先顺序值从 50 开始。 这可以是未使用的任何数值，但应小于 100。
 
 #### <a name="negative-filtering-do-not-sync-these"></a>负筛选：“不同步这些项目”
 在以下示例中，将筛选出（不同步）其中 **extensionAttribute15** 具有值 **NoSync** 的所有用户。
@@ -208,7 +208,7 @@ Azure AD Connect 安装向导将始终创建此配置。
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从开始菜单启动“同步规则编辑器”。
 3. 确保选择了“入站”，然后单击“添加新规则”。
-4. 为规则指定一个描述性名称，如“*In from AD – User DoNotSyncFilter*”。 选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。 在“链接类型”中选择“联接”。 在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 500），然后单击“下一步”。  
+4. 为规则指定一个描述性名称，如“*In from AD – User DoNotSyncFilter*”。 选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。 在“链接类型”中选择“联接”。 在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 50），然后单击“下一步”。  
    ![入站 1 说明](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
 5. 在“范围筛选器”中，单击“添加组”，然后单击“添加子句”。 在“属性”中选择“ExtensionAttribute15”。 确保“运算符”设置为“等于”，在“值”框中键入值 **NoSync**。 单击“资源组名称” 的 Azure 数据工厂。  
    ![入站 2 范围](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
@@ -218,7 +218,7 @@ Azure AD Connect 安装向导将始终创建此配置。
 8. 若要完成配置，需要运行**完全同步**。 继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
 
 #### <a name="positive-filtering-only-sync-these"></a>正筛选：“只同步这些项目”
-表达正筛选更加复杂，因为必须同时考虑不是明显需要同步的对象，例如会议室。
+表达正筛选更加复杂，因为必须同时考虑不是明显需要同步的对象，例如会议室。 还要替代现成规则 **In from AD - User Join** 中的默认筛选器。 创建自定义筛选器时，请确保不包括 Azure AD Connect 的关键系统对象、复制冲突对象、特殊邮箱和服务帐户。
 
 正筛选选项需要两个同步规则。 需要一个或多个包含要同步对象的正确范围的规则。 还需要另一个全方位同步规则，用于筛选出尚未标识为属于应同步对象的所有对象。
 
@@ -227,7 +227,7 @@ Azure AD Connect 安装向导将始终创建此配置。
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从开始菜单启动“同步规则编辑器”。
 3. 确保选择了“入站”，然后单击“添加新规则”。
-4. 为规则指定一个描述性名称，如“In from AD – User Sales sync”。 选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。 在“链接类型”中选择“联接”。 在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 501），然后单击“下一步”。  
+4. 为规则指定一个描述性名称，如“In from AD – User Sales sync”。 选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。 在“链接类型”中选择“联接”。 在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 51），然后单击“下一步”。  
    ![入站 4 说明](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
 5. 在“范围筛选器”中，单击“添加组”，然后单击“添加子句”。 在“属性”中选择“department”。 确保“运算符”设置为“等于”，在“值”框中键入值 **Sales**。 单击“下一步”。  
    ![入站 5 范围](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
@@ -235,7 +235,7 @@ Azure AD Connect 安装向导将始终创建此配置。
 7. 单击“添加转换”，为“FlowType”选择“Constant”，为“目标属性”选择“cloudFiltered”。 在“源”框中键入 **False**。 单击“添加”保存规则。  
    ![入站 6 转换](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png)  
    这是一种特殊情况，在此将 cloudFiltered 显式设置为 **False**。
-8. 我们现在必须创建全方位同步规则。 为规则指定一个描述性名称，如“In from AD – User Catch-all filter”。 选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。 在“链接类型”中选择“联接”。 在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 600）。 现已选择高于先前同步规则的优先顺序值（较低优先顺序）。 但同时也预留了一些空间，以便可以在稍后想要开始同步其他部门时添加其他筛选同步规则。 单击“下一步”。  
+8. 我们现在必须创建全方位同步规则。 为规则指定一个描述性名称，如“In from AD – User Catch-all filter”。 选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。 在“链接类型”中选择“联接”。 在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 99）。 现已选择高于先前同步规则的优先顺序值（较低优先顺序）。 但同时也预留了一些空间，以便可以在稍后想要开始同步其他部门时添加其他筛选同步规则。 单击“下一步”。  
    ![入站 7 说明](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)  
 9. 让“范围筛选器”保留空白，然后单击“下一步”。 空白筛选器表示规则将应用到所有对象。
 10. 将“联接”规则留空，然后单击“下一步”。
