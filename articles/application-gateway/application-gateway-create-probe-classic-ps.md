@@ -18,6 +18,7 @@ ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: 4787a382b837b71a28c45211a26aa512e8fb177e
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -156,7 +157,7 @@ Get-AzureApplicationGateway AppGwTest
 
 * **Name** - 自定义探测的引用名称。
 * **Protocol** - 使用的协议（可能的值为 HTTP 或 HTTPS）。
-* **Host** 和 **Path** - 应用程序网关为了确定实例运行状况而调用的完整 URL 路径。 例如，如果网站为 http://contoso.com/，则可以为“http://contoso.com/path/custompath.htm”配置自定义探测，使探测检查能够获得成功的 HTTP 响应。
+* **Host** 和 **Path** - 应用程序网关为了确定实例运行状况而调用的完整 URL 路径。 例如，如果网站为 http://contoso.com/ ，则可以为 “http://contoso.com/path/custompath.htm” 配置自定义探测，使探测检查能够获得成功的 HTTP 响应。
 * **Interval** - 配置探测检查间隔，以秒为单位。
 * **Timeout** - 定义 HTTP 响应检查的探测超时。
 * **UnhealthyThreshold** - 将后端实例标记为*不正常*所需的失败 HTTP 响应数目。
@@ -221,10 +222,5 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 如果要配置安全套接字层 (SSL) 卸载，请参阅[配置应用程序网关以进行 SSL 卸载](application-gateway-ssl.md)。
 
 如果你想要将应用程序网关配置为与内部负载平衡器配合使用，请参阅 [Create an application gateway with an internal load balancer (ILB)](application-gateway-ilb.md)（创建具有内部负载平衡器 (ILB) 的应用程序网关）。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
