@@ -27,7 +27,7 @@
 >
 > 执行“Configure multi-tenant application”（配置多租户应用程序）步骤时，请选择“No”（否）。
 >
-> 执行“Assign application to role”（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读取者”角色来分配“CDN 配置文件参与者”角色。[](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role)  在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
+> 执行 [Assign application to role](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role)（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读取者”角色来分配“CDN 配置文件参与者”角色。  在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
 >
 >
 
@@ -51,8 +51,3 @@
 4. 我们不会向“CDN 配置文件参与者”角色分配服务主体，而是分配个人用户或组。  在本示例中，可以看到已将“CDN 演示用户”分配到“CDN 配置文件参与者”角色。  
 
     ![个人用户访问权限](./media/cdn-app-dev-prep/cdn-aad-user-include.png)
-
-
-<!--HONumber=Dec16_HO1-->
-
-
