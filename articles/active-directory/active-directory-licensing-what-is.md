@@ -1,5 +1,5 @@
 ---
-title: "什么是 Microsoft Azure Active Directory 许可？ | Microsoft 文档"
+title: "在 Azure 经典门户中向 Azure Active Directory 用户进行授权 | Microsoft 文档"
 description: "介绍 Microsoft Azure Active Directory 许可及其工作原理、入门方法和最佳实践，涉及的产品包括 Office 365、Microsoft Intune 及 Azure Active Directory Premium 和 Basic 版本"
 services: active-directory
 keywords: "Azure AD 许可"
@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ae4961611195c1574f5b94edbca74e1f182b4361
-ms.openlocfilehash: eb0b428f84dc16abd5cfee73dc8e4191698ebdd6
+ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
+ms.openlocfilehash: 7df8805139b6e3cc23041a8201b496fb7fce8063
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="what-is-microsoft-azure-active-directory-licensing"></a>什么是 Microsoft Azure Active Directory 许可？
+# <a name="what-is-microsoft-azure-active-directory-licensing-in-the-azure-classic-portal"></a>什么是 Azure 经典门户中的 Microsoft Azure Active Directory 许可？
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-licensing-get-started-azure-portal.md)
@@ -158,9 +160,4 @@ Azure AD 很容易入门；你始终可以在注册免费 Azure 试用版过程�
 * [将组分配到应用程序](active-directory-manage-groups.md)
 * [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
 * [直接购买 Azure AD Premium 许可证](http://aka.ms/buyaadp)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

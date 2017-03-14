@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 Novatus 的集成 | Microsoft 文档"
+title: "教程：Azure Active Directory 与 10,000ft Plans 的集成 | Microsoft 文档"
 description: "了解如何在 Azure Active Directory 和 10,000ft Plans 之间配置单一登录。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: b1dded643a2526b7df799eddaca071c95ea35442
-ms.openlocfilehash: fbc47fe42fabbe65233364d86252d2e722600975
+ms.sourcegitcommit: 2a1f3df856116e372518b2f88460b3c6905c4c9a
+ms.openlocfilehash: 584ddcfc53afee6a8ff11a03d662d8acf58e4820
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -107,7 +108,7 @@ ms.openlocfilehash: fbc47fe42fabbe65233364d86252d2e722600975
    
     ![配置单一登录](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，键入 `https://app.10000ft.com`。
+    a. 在“登录 URL”文本框中，键入 `https://app.10000ft.com`。
 
     b. 在“标识符”文本框中，键入 `https://app.10000ft.com/saml/metadata`。
 
@@ -121,7 +122,7 @@ ms.openlocfilehash: fbc47fe42fabbe65233364d86252d2e722600975
    
     ![配置单一登录](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    a. 单击“下载证书”，然后将文件保存在计算机上。
    
     b. 单击“下一步”。
 2. 若要获取为你的应用程序配置的 SSO，请联系 [10,000ft Plans 支持团队](mailto:support@10000ft.com)、附加下载的证书并向他们提供颁发者 URL、SAML SSO URL 和注销 URL。
@@ -153,7 +154,7 @@ ms.openlocfilehash: fbc47fe42fabbe65233364d86252d2e722600975
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
+    a. 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
@@ -162,7 +163,7 @@ ms.openlocfilehash: fbc47fe42fabbe65233364d86252d2e722600975
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_06.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a. 在“名字”文本框中，键入“Britta”。  
    
     b. 在“姓氏”文本框中，键入“Simon”。
    
@@ -179,7 +180,7 @@ ms.openlocfilehash: fbc47fe42fabbe65233364d86252d2e722600975
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
+    a. 写下“新密码”的值。
    
     b. 单击“完成”。   
 
@@ -239,9 +240,4 @@ ms.openlocfilehash: fbc47fe42fabbe65233364d86252d2e722600975
 [203]: ./media/active-directory-saas-10000ftplans-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-10000ftplans-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-10000ftplans-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

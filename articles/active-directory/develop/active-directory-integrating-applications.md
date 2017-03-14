@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: mbaldwin;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: b5dbb8c28bd6b2bdbb53939314348104bbbe4f34
-ms.openlocfilehash: f6ec7634a1d21c7205ac8ae7377a312ed386ee61
+ms.sourcegitcommit: 57383c11682342cb0a6446c79e603843a698fc8c
+ms.openlocfilehash: 835e1c494de59576fd8ac529240729cb33eaa50b
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -55,13 +56,13 @@ ms.openlocfilehash: f6ec7634a1d21c7205ac8ae7377a312ed386ee61
 有关如何在 Azure AD 中进行身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
 
 ### <a name="overview-of-the-consent-framework"></a>同意框架概述
-使用 Azure AD 的同意架构可以轻松开发需要访问 Azure AD 租户保护的多租户 Web API 的 Web 应用程序和本机客户端应用程序（不同于注册客户端应用程序的框架）。 这些 Web API 包括图形 API、Office 365 和其他 Microsoft 服务，以及你自己的 Web API。 该框架基于某个用户或管理员，该用户或管理员允许某个应用程序在其目录中注册，这可能涉及到访问目录数据。
+使用 Azure AD 的同意架构可以轻松开发需要访问 Azure AD 租户保护的多租户 Web API 的 Web 应用程序和本机客户端应用程序（不同于注册客户端应用程序的框架）。 除了你自己的 Web API 之外，这些 Web API 还包括 Microsoft Graph API（用于访问 Azure Active Directory、Intune 以及 Office 365 中的服务）和其他 Microsoft 服务 API。 该框架基于某个用户或管理员，该用户或管理员允许某个应用程序在其目录中注册，这可能涉及到访问目录数据。
 
-例如，如果某个 Web 客户端应用程序需要调用 Office 365 Web API/资源应用程序以读取有关用户的日历信息，则该用户需要同意该客户端应用程序。 同意后，该客户端应用程序能够代表该用户调用 Office 365 Web API，并根据需要使用日历信息。
+例如，如果某个 Web 客户端应用程序需要从 Office 365 中读取关于用户的日历信息，则该用户需要同意该客户端应用程序。 同意后，该客户端应用程序将能够代表该用户调用 Microsoft Graph API，并根据需要使用日历信息。 [Microsoft Graph API](https://graph.microsoft.io) 可用来访问 Office 365 中的数据（例如日历、来自 Exchange 的邮件、来自 SharePoint 的站点和列表、来自 OneDrive 的文档、来自 OneNote 的笔记本、来自 Planner 的任务、来自 Excel 的工作簿，等等）、Azure AD 中的用户和组以及更多 Microsoft 云服务中的其他数据对象。 
 
 同意框架使用公共或机密客户端，建立在 OAuth 2.0 及其各种流程的基础之上，例如，代码授权和客户端凭据授权。 通过使用 OAuth 2.0，可以在 Azure AD 中生成多种不同类型的客户端应用程序（例如手机、平板电脑、服务器或 Web 应用程序），并获取对所需资源的访问权限。
 
-有关同意框架的更多详细信息，请参阅 [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx)（Azure AD 中的 OAuth 2.0）、[Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)和 Office 365 主题 [Understanding authentication with Office 365 APIs](https://msdn.microsoft.com/office/office365/howto/common-app-authentication-tasks)（了解如何使用 Office 365 API 进行身份验证）。
+有关同意框架的更多详细信息，请参阅 [Azure AD 中的 OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)、[针对 Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。有关通过 Microsoft Graph 获取对 Office 365 的授权访问的信息，请参阅[使用 Microsoft Graph 进行应用身份验证](https://graph.microsoft.io/docs/authorization/auth_overview)。
 
 #### <a name="example-of-the-consent-experience"></a>同意体验示例
 以下步骤将说明同意体验对应用程序开发人员和用户的工作方式。
@@ -88,7 +89,7 @@ ms.openlocfilehash: f6ec7634a1d21c7205ac8ae7377a312ed386ee61
 ### <a name="configuring-a-client-application-to-access-web-apis"></a>将客户端应用程序配置为访问 Web API
 为使 Web/机密客户端应用程序能够参与要求身份验证的授权流程（以及获取访问令牌），必须建立安全凭据。 Azure 门户支持的默认身份验证方法是客户端 ID + 对称密钥。 本部分介绍需要执行哪些配置步骤来提供客户端凭据的机密密钥。
 
-在此，在客户端访问资源应用程序公开的 Web API（例如 Azure AD 图形 API）之前，同意框架将确保客户端根据请求的权限获取所需的授权。 默认情况下，所有应用程序可以从 Azure Active Directory（图形 API）和 Azure 服务管理 API 中选择权限。默认情况下已选择 Azure AD 的“启用登录并读取用户的配置文件”权限。 如果客户端应用程序已在 Office 365 Azure AD 租户中注册，则也可以选择 SharePoint 与 Exchange Online 的 Web API 和权限。 可以从所需 Web API 旁边的下拉菜单中的[两种类型的权限](active-directory-dev-glossary.md#permissions)中进行选择：
+此外，在客户端可以访问资源应用程序公开的 Web API（例如 Microsoft Graph API）之前，同意框架将确保客户端根据请求的权限获取所需的授权。 默认情况下，所有应用程序可以从 Azure Active Directory（图形 API）和 Azure 服务管理 API 中选择权限。默认情况下已选择 Azure AD 的“启用登录并读取用户的配置文件”权限。 如果客户端应用程序已在 Office 365 Azure AD 租户中注册，则也可以选择 SharePoint 与 Exchange Online 的 Web API 和权限。 可以从所需 Web API 旁边的下拉菜单中的[两种类型的权限](active-directory-dev-glossary.md#permissions)中进行选择：
 
 * 应用程序权限：客户端应用程序需要亲自直接访问 Web API（无用户上下文）。 此类型的权限需要管理员同意，并且不可用于本机客户端应用程序。
 * 委托的权限：客户端应用程序需要以登录用户的身份访问 Web API，但访问权限受所选权限的限制。 除非权限已配置为需要管理员同意，否则用户可以授予此类型的权限。 
@@ -165,13 +166,10 @@ ms.openlocfilehash: f6ec7634a1d21c7205ac8ae7377a312ed386ee61
 
 有关应用程序清单概念的一般详细信息，请参阅[了解 Azure Active Directory 应用程序清单](active-directory-application-manifest.md)。
 
-### <a name="accessing-the-azure-ad-graph-and-office-365-apis"></a>访问 Azure AD Graph 和 Office 365 API
-如前文所述，除了在自己的资源应用程序上公开/访问 API 以外，你还可以更新客户端应用程序以访问 Microsoft 资源公开的 API。  默认情况下，Azure AD 图形 API（在其他应用程序的“权限”列表中称为“Azure Active Directory”）可供注册到 Azure AD 的所有应用程序使用。 如果要在 Office 365 预配的 Azure AD 租户中注册客户端应用程序，你也可以访问 API 向各种 Office 365 资源公开的所有权限。
+### <a name="accessing-the-azure-ad-graph-and-office-365-via-microsoft-graph-apis"></a>通过 Microsoft Graph API 访问 Azure AD Graph 和 Office 365  
+如前文所述，除了在自己的资源应用程序上公开/访问 API 以外，你还可以更新客户端应用程序以访问 Microsoft 资源公开的 API。  Microsoft Graph API（在其他应用程序的“权限”列表中称为“Microsoft Graph”）可供注册到 Azure AD 的所有应用程序使用。 如果要在 Office 365 预配的 Azure AD 租户中注册客户端应用程序，你也可以访问 Microsoft Graph API 向各种 Office 365 资源公开的所有权限。
 
-有关以下各项公开的访问权限范围的完整介绍：  
-
-* Azure AD 图形 API，请参阅[权限范围 | 图形 API 概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)一文。
-* Office 365 API，请参阅 [Authentication and Authorization using Common Consent Framework](https://msdn.microsoft.com/office/office365/howto/application-manifest)（使用通用同意框架进行身份验证和授权）一文。 有关如何生成可与 Office 365 API 集成的客户端应用的详细介绍，请参阅 [Set up your Office 365 development environment](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment)（设置 Office 365 开发环境）。
+有关 Microsoft Graph API 公开的所有访问权限范围的完整讨论，请参阅[权限范围 | Microsoft Graph API 概念](https://graph.microsoft.io/docs/authorization/permission_scopes)一文。
 
 > [!NOTE]
 > 由于当前存在的限制，如果本机客户端应用程序使用“访问组织的目录”权限，则它们只能调用 Azure AD 图形 API。  此限制不适用于 Web 应用程序。
@@ -258,10 +256,5 @@ Web 应用程序也可为用户提供注册体验。 如果你确实提供注册
 * 若要了解有关应用程序清单扮演的角色的详细信息，请参阅[了解 Azure Active Directory 应用程序清单](active-directory-application-manifest.md)
 * 请参阅 [Azure AD developer glossary](active-directory-dev-glossary.md)（Azure AD 开发人员术语表），了解某些核心的 Azure Active Directory (AD) 开发人员概念的定义。
 * 请参阅 [Active Directory 开发人员指南](active-directory-developers-guide.md)，了解与所有开发人员相关内容的概述。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,9 @@ ms.tgt_pltfrm: NA
 ms.date: 02/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 319e22e2fb423e0fe1fabf95d0018d4fa3232e0b
-ms.openlocfilehash: 5d7f11b9b027f86adf3d2382e82f2d382d71ee51
+ms.sourcegitcommit: 5e01db2676e3515f41bf98d23595e6509c0d6805
+ms.openlocfilehash: c5f50213be9cd20c82acf8dd94463e7dce0a0195
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -49,6 +50,7 @@ ms.openlocfilehash: 5d7f11b9b027f86adf3d2382e82f2d382d71ee51
     ![新示例数据库边栏选项卡](./media/sql-database-get-started/new-sample-db-blade.png)
 
 ## <a name="change-the-service-tier-and-performance-level-of-a-single-database"></a>更改单一数据库的服务层和性能级别
+
 打开要增加或减少的数据库的 SQL 数据库边栏选项卡：
 
 1. 在 [Azure 门户](https://portal.azure.com)中，依次单击“**更多服务**” > “**SQL 数据库**”。
@@ -59,12 +61,11 @@ ms.openlocfilehash: 5d7f11b9b027f86adf3d2382e82f2d382d71ee51
 
 4. 选择新层，然后单击“**选择**”：
    
-   单击“**选择**”将提交更改定价层的缩放请求。 根据数据库的大小，缩放操作可能需要一些时间才能完成（请参阅本文顶部的信息）。
+   单击“**选择**”将提交更改定价层的缩放请求。 根据数据库的大小，缩放操作可能需要一些时间才能完成（请参阅[服务层](sql-database-service-tiers.md)）。
    
    > [!NOTE]
    > 更改数据库定价层不会更改最大数据库大小。 若要更改数据库最大大小，请使用 [Transact-SQL (T-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) 或 [PowerShell](https://msdn.microsoft.com/library/mt619433.aspx)。
-   > 
-   > 
+   >  
    
    ![选择定价层](./media/sql-database-manage-single-database-portal/choose-tier.png)
 5. 单击右上角中的通知图标（铃铛）：
@@ -80,9 +81,4 @@ ms.openlocfilehash: 5d7f11b9b027f86adf3d2382e82f2d382d71ee51
 * 若要了解如何使用 SQL Server Management Studio 执行管理任务，请参阅 [SQL Server Management Studio](sql-database-manage-azure-ssms.md)。
 * 有关 SQL 数据库服务的信息，请参阅[什么是 SQL 数据库](sql-database-technical-overview.md)。 
 * 有关 Azure 数据库服务器和数据库功能的信息，请参阅[功能](sql-database-features.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 02/01/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4b8343ac07aa7b2c0771a723306cf1f875cb6147
-ms.openlocfilehash: aeba32d62458f948c7aa99294c90519979924d57
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 16a13909079306256ded06f2100815c46ff562a3
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="azure-batch-diagnostic-logging"></a>Azure Batch 诊断日志记录
+# <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>记录事件以用来对 Batch 解决方案进行诊断评估和监视
+
 与许多 Azure 服务一样，Batch 服务也会在某些资源的生命周期内针对这些资源生成日志事件。 可以启用 Azure Batch 诊断日志来记录资源（诸如池和任务）的事件，然后使用日志进行进行诊断评估和监视。 Batch 诊断日志中包括诸如池创建、池删除、任务启动、任务完成之类的事件和其他事件。
 
 > [!NOTE]
@@ -105,9 +108,4 @@ Batch 服务当前会生成以下服务日志事件。 此列表可能不完整�
 [task_start]: https://msdn.microsoft.com/library/azure/mt743616.aspx
 [task_complete]: https://msdn.microsoft.com/library/azure/mt743612.aspx
 [task_fail]: https://msdn.microsoft.com/library/azure/mt743607.aspx
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

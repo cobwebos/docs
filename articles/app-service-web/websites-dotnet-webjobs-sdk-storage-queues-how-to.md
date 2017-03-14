@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
 ms.openlocfilehash: 5110a86c3cc25ada27ddba9b0caef68e4509aa73
@@ -69,7 +69,7 @@ ms.lasthandoff: 12/08/2016
 * [如何处理错误和配置超时](#errors)
 * [后续步骤](#nextsteps)
 
-## <a name="a-idtriggera-how-to-trigger-a-function-when-a-queue-message-is-received"></a><a id="trigger"></a>如何在收到队列消息时触发函数
+## <a id="trigger"></a>如何在收到队列消息时触发函数
 若要编写在收到队列消息时 WebJobs SDK 调用的函数，请使用 `QueueTrigger` 属性。 该属性构造函数使用一个字符串参数来指定要轮询的队列名称。 也可以[动态设置队列名称](#config)。
 
 ### <a name="string-queue-messages"></a>字符串队列消息
@@ -115,7 +115,7 @@ SDK 使用 [Newtonsoft.Json NuGet 包](http://www.nuget.org/packages/Newtonsoft.
             await blobInput.CopyToAsync(blobOutput, 4096, token);
         }
 
-### <a name="a-idqtattributetypesa-types-the-queuetrigger-attribute-works-with"></a><a id="qtattributetypes"></a>QueueTrigger 属性适用的类型
+### <a id="qtattributetypes"></a>QueueTrigger 属性适用的类型
 可以对 `QueueTrigger` 使用以下类型：
 
 * `string`
@@ -123,20 +123,20 @@ SDK 使用 [Newtonsoft.Json NuGet 包](http://www.nuget.org/packages/Newtonsoft.
 * `byte[]`
 * `CloudQueueMessage`
 
-### <a name="a-idpollinga-polling-algorithm"></a><a id="polling"></a>轮询算法
+### <a id="polling"></a>轮询算法
 SDK 实现了随机指数退让算法，以降低空闲队列轮询对存储交易成本造成的影响。  当找到消息时，SDK 将等待两秒钟，然后检查另一条消息；如果未找到消息，它将等待大约四秒，然后重试。 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 1 分钟）。 [最长等待时间是可配置的](#config)。
 
-### <a name="a-idinstancesa-multiple-instances"></a><a id="instances"></a>多个实例
+### <a id="instances"></a>多个实例
 如果 Web 应用在多个实例上运行，则每台计算机上都会运行连续的 Web 作业，并且每台计算机将等待触发器并尝试运行函数。 WebJobs SDK 队列触发器会自动阻止函数多次处理队列消息；无需将函数编写为幂等函数。 但是，如果要确保即使有多个主机 Web 应用的实例，也只有一个函数实例运行，可以使用 `Singleton` 属性。
 
-### <a name="a-idparallela-parallel-execution"></a><a id="parallel"></a>并行执行
+### <a id="parallel"></a>并行执行
 如果有多个函数在侦听不同的队列，SDK 将在同时接收消息时并行调用这些函数。
 
 接收单个队列的多个消息时，也是如此。 默认情况下，SDK 每次获取包含 16 个队列消息的批，然后并行执行处理这些消息的函数。 [批大小是可配置的](#config)。 当处理的数量达到批大小的一半时，SDK 将获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是批大小的 1.5 倍。 应将此限制分别应用于各个包含 `QueueTrigger` 属性的函数。
 
 如果不希望对队列上收到的消息并行执行，可以将批处理大小设置为 1。 另请参阅 [Azure WebJobs SDK 1.1.0 RTM](https://azure.microsoft.com/blog/azure-webjobs-sdk-1-1-0-rtm/) 中的**更好地控制队列处理**。
 
-### <a name="a-idqueuemetadataaget-queue-or-queue-message-metadata"></a><a id="queuemetadata"></a>获取队列或队列消息元数据
+### <a id="queuemetadata"></a>获取队列或队列消息元数据
 可以通过将参数添加到方法签名获取以下消息属性：
 
 * `DateTimeOffset` expirationTime
@@ -188,7 +188,7 @@ SDK 实现了随机指数退让算法，以降低空闲队列轮询对存储交�
         queue endpoint=https://contosoads.queue.core.windows.net/
         queueTrigger=Hello world!
 
-### <a name="a-idgracefulagraceful-shutdown"></a><a id="graceful"></a>正常关闭
+### <a id="graceful"></a>正常关闭
 在连续 Web 作业中运行的函数可以接受 `CancellationToken` 参数，以便操作系统能够在 Web 作业即将终止时通知此函数。 可以使用此通知确保该函数不会意外终止，从而导致数据处于不一致状态。
 
 下面的示例演示了如何在函数中检查即将发生的 Web 作业终止。
@@ -214,7 +214,7 @@ SDK 实现了随机指数退让算法，以降低空闲队列轮询对存储交�
 
 有关详细信息，请参阅 [WebJobs 正常关闭](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)。   
 
-## <a name="a-idcreatequeuea-how-to-create-a-queue-message-while-processing-a-queue-message"></a><a id="createqueue"></a>如何在处理队列消息时创建队列消息
+## <a id="createqueue"></a>如何在处理队列消息时创建队列消息
 若要编写用于新建队列消息的函数，请使用 `Queue` 属性。 与 `QueueTrigger` 一样，可以传入字符串形式的队列名称，或者[动态设置队列名称](#config)。
 
 ### <a name="string-queue-messages"></a>字符串队列消息
@@ -265,7 +265,7 @@ SDK 会自动将对象序列化为 JSON。 即使对象为 null，也始终会�
 * `IAsyncCollector`
 * `CloudQueue`（用于直接通过 Azure 存储 API 手动创建消息）
 
-### <a name="a-idibinderause-webjobs-sdk-attributes-in-the-body-of-a-function"></a><a id="ibinder"></a>在函数主体中使用 WebJobs SDK 属性
+### <a id="ibinder"></a>在函数主体中使用 WebJobs SDK 属性
 如果需要在使用 `Queue`、`Blob` 或 `Table` 等 WebJobs SDK 属性之前在函数中执行某项操作，则可以使用 `IBinder` 接口。
 
 下述示例使用输入队列消息，并在输出队列中创建具有相同内容的新消息。 输出队列名称由函数正文中的代码设置。
@@ -282,7 +282,7 @@ SDK 会自动将对象序列化为 JSON。 即使对象为 null，也始终会�
 
 `IBinder` 接口也可以与 `Table` 和 `Blob` 属性一起使用。
 
-## <a name="a-idblobsa-how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message"></a><a id="blobs"></a>如何在处理队列消息时读取和写入 blob 和表
+## <a id="blobs"></a>如何在处理队列消息时读取和写入 blob 和表
 可以使用 `Blob` 和 `Table` 属性来读取和写入 blob 和表。 本部分中的示例适用于 Blob。 有关展示如何在创建或更新 blob 时触发进程的代码示例，请参阅[如何结合使用 Azure blob 存储和 WebJobs SDK](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)；有关用于读取和写入表的代码示例，请参阅[如何结合使用 Azure 表存储和 WebJobs SDK](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)。
 
 ### <a name="string-queue-messages-triggering-blob-operations"></a>触发 Blob 操作的字符串队列消息
@@ -311,7 +311,7 @@ SDK 会自动将对象序列化为 JSON。 即使对象为 null，也始终会�
             blobToDelete.Delete();
         }
 
-### <a name="a-idpocoblobsa-poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a><a id="pocoblobs"></a> POCO [（普通旧 CLR 对象](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
+### <a id="pocoblobs"></a> POCO [（普通旧 CLR 对象](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 对于在队列消息中存储为 JSON 的 POCO，可以使用占位符命名 `Queue` 属性的 `blobPath` 参数中的对象属性。 还可以将[队列元数据属性名称](#queuemetadata)用作占位符。
 
 下面的示例将 Blob 复制到具有不同扩展名的新 Blob。 队列消息是包含 `BlobName` 和 `BlobNameWithoutExtension` 属性的 `BlobInformation` 对象。 属性名称用作 `Blob` 属性的 blob 路径中的占位符。
@@ -332,7 +332,7 @@ SDK 使用 [Newtonsoft.Json NuGet 包](http://www.nuget.org/packages/Newtonsoft.
 
 如果在将 blob 绑定到对象之前，需要在函数中执行某项操作，则可以在函数主体中使用属性，[如前面的 Queue 属性所示](#ibinder)。
 
-### <a name="a-idblobattributetypesa-types-you-can-use-the-blob-attribute-with"></a><a id="blobattributetypes"></a>Blob 属性适用的类型
+### <a id="blobattributetypes"></a>Blob 属性适用的类型
 `Blob` 属性适用以下类型：
 
 * `Stream`（读取或写入，通过使用 FileAccess 构造函数参数指定）
@@ -347,7 +347,7 @@ SDK 使用 [Newtonsoft.Json NuGet 包](http://www.nuget.org/packages/Newtonsoft.
 * `CloudBlockBlob`（读取或写入）
 * `CloudPageBlob`（读取或写入）
 
-## <a name="a-idpoisona-how-to-handle-poison-messages"></a><a id="poison"></a>如何处理病毒消息
+## <a id="poison"></a>如何处理病毒消息
 其内容导致函数失败的消息称为有害消息。 当函数失败时，将不删除并最终再次选择队列消息，从而导致周期重复。 在达到限制的迭代次数后，SDK 可自动中断周期，你也可以手动中断。
 
 ### <a name="automatic-poison-message-handling"></a>自动处理有害消息
@@ -394,14 +394,14 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第
             }
         }
 
-## <a name="a-idconfiga-how-to-set-configuration-options"></a><a id="config"></a>如何设置配置选项
+## <a id="config"></a>如何设置配置选项
 可以使用 `JobHostConfiguration` 类型设置以下配置选项：
 
 * 在代码中设置 SDK 连接字符串。
 * 配置 `QueueTrigger` 设置，例如最大取消排队计数。
 * 从配置中获取队列名称。
 
-### <a name="a-idsetconnstraset-sdk-connection-strings-in-code"></a><a id="setconnstr"></a>在代码中设置 SDK 连接字符串
+### <a id="setconnstr"></a>在代码中设置 SDK 连接字符串
 在代码中设置 SDK 连接字符串可以在配置文件或环境变量中使用自己的连接字符串名称，如以下示例中所示。
 
         static void Main(string[] args)
@@ -423,7 +423,7 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第
             host.RunAndBlock();
         }
 
-### <a name="a-idconfigqueueaconfigure-queuetrigger--settings"></a><a id="configqueue"></a>配置 QueueTrigger 设置
+### <a id="configqueue"></a>配置 QueueTrigger 设置
 你可以配置以下用于处理队列消息的设置：
 
 * 同时选择的、要并行执行的最大队列消息数（默认值为 16）。
@@ -442,7 +442,7 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第
             host.RunAndBlock();
         }
 
-### <a name="a-idsetnamesincodeaset-values-for-webjobs-sdk-constructor-parameters-in-code"></a><a id="setnamesincode"></a>在代码中设置 WebJobs SDK 构造函数参数的值
+### <a id="setnamesincode"></a>在代码中设置 WebJobs SDK 构造函数参数的值
 有时，要在代码中指定队列名称、Blob 名称、容器或表名称，而不是进行硬编码。 例如，可能要在配置文件或环境变量中指定 `QueueTrigger` 的队列名称。
 
 为此，可以向 `JobHostConfiguration` 类型传递 `NameResolver` 对象。 此时，可以在 WebJobs SDK 属性构造函数参数中包含以百分号 (%) 括住的特殊占位符，`NameResolver` 代码将指定要用于取代这些占位符的实际值。
@@ -476,7 +476,7 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第
 
 **注意：**每次调用函数，都会解析队列名称、表名称和 blob 名称，但 blob 容器名称只会在应用程序启动时进行解析。 作业运行时，无法更改 blob 容器名称。
 
-## <a name="a-idmanualahow-to-trigger-a-function-manually"></a><a id="manual"></a>如何手动触发函数
+## <a id="manual"></a>如何手动触发函数
 若要手动触发函数，请对 `JobHost` 对象使用 `Call` 或 `CallAsync` 方法，并对函数使用 `NoAutomaticTrigger` 属性，如以下示例所示。
 
         public class Program
@@ -498,7 +498,7 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第
             }
         }
 
-## <a name="a-idlogsahow-to-write-logs"></a><a id="logs"></a>如何写入日志
+## <a id="logs"></a>如何写入日志
 仪表板在两个位置显示日志：针对 Web 作业的页，以及针对特定 Web 作业调用的页。
 
 ![WebJob 页中的日志](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardapplogs.png)
@@ -558,7 +558,7 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第
 
 如果要插入自己的记录器，请参阅[此示例](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Program.cs)。
 
-## <a name="a-iderrorsahow-to-handle-errors-and-configure-timeouts"></a><a id="errors"></a>如何处理错误和配置超时
+## <a id="errors"></a>如何处理错误和配置超时
 WebJobs SDK 还包括 [Timeout](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs) 属性，可用于在函数未在指定的时间内完成时取消函数。 而且，如果要在指定的时间内发生太多错误时引发警报，可以使用 `ErrorTrigger` 属性。 下面是 [ErrorTrigger 示例](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Error-Monitoring)。
 
 ```
@@ -577,6 +577,6 @@ public static void ErrorMonitor(
 
 还可以使用配置开关（可以是应用设置或环境变量名称）动态禁用和启用函数，以控制是否可以触发它们。 有关示例代码，请参阅 [WebJobs SDK 示例存储库](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs)中的 `Disable` 属性。
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 本指南提供的代码示例演示了如何处理使用 Azure 队列的常见方案。 有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 推荐资源](http://go.microsoft.com/fwlink/?linkid=390226)。
 

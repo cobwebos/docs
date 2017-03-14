@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 4d5205b1c693b8c1f199235784263f3f7b6189ff
@@ -44,7 +44,7 @@ public class Program
 
 在 GitHub.com 上的 azure-webjobs-sdk-samples 存储库中有[完整的服务总线代码示例](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Program.cs)。
 
-## <a name="a-idprerequisitesa-prerequisites"></a><a id="prerequisites"></a>先决条件
+## <a id="prerequisites"></a>先决条件
 你必须先安装 [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/) NuGet 包和其他 WebJobs SDK 包，然后才能使用服务总线。 
 
 你还必须设置 AzureWebJobsServiceBus 连接字符串，以及存储连接字符串。  你可以在 App.config 文件的 `connectionStrings` 部分中执行此操作，如以下示例所示：
@@ -59,7 +59,7 @@ public class Program
 
 也可以在 Azure 运行时环境中设置连接字符串，当 WebJob 在 Azure 中运行时，这些设置将覆盖 App.config 设置；有关详细信息，请参阅 [WebJobs SDK 入门](websites-dotnet-webjobs-sdk-get-started.md#configure-the-web-app-to-use-your-azure-sql-database-and-storage-account)。
 
-## <a name="a-idtriggera-how-to-trigger-a-function-when-a-service-bus-queue-message-is-received"></a><a id="trigger"></a>如何在接收服务总线队列消息时触发函数
+## <a id="trigger"></a>如何在接收服务总线队列消息时触发函数
 若要编写在收到队列消息时 WebJobs SDK 调用的函数，请使用 `ServiceBusTrigger` 属性。 该属性构造函数使用一个参数来指定要轮询的队列名称。
 
 ### <a name="how-servicebustrigger-works"></a>ServicebusTrigger 工作原理
@@ -99,7 +99,7 @@ SDK 会自动反序列化包含 POCO[（普通旧 CLR 对象](http://en.wikipedi
 ### <a name="types-servicebustrigger-works-with"></a>ServiceBusTrigger 适用的类型
 除了 `string` 和 POCO 类型以外，你还可以使用具有字节数组或 `BrokeredMessage` 对象的 `ServiceBusTrigger` 属性。
 
-## <a name="a-idcreatea-how-to-create-service-bus-queue-messages"></a><a id="create"></a>如何创建服务总线队列消息
+## <a id="create"></a>如何创建服务总线队列消息
 若要编写用于新建队列消息的函数，请使用 `ServiceBus` 属性，并将队列名称传递给属性构造函数。 
 
 ### <a name="create-a-single-queue-message-in-a-non-async-function"></a>在非异步函数中创建单个队列消息
@@ -136,7 +136,7 @@ SDK 会自动反序列化包含 POCO[（普通旧 CLR 对象](http://en.wikipedi
 
 调用 `Add` 方法时，将立即创建每个队列消息。
 
-## <a name="a-idtopicsahow-to-work-with-service-bus-topics"></a><a id="topics"></a>如何使用服务总线主题
+## <a id="topics"></a>如何使用服务总线主题
 若要编写 SDK 在收到服务总线主题消息时调用的函数，请使用具有可捕获主题名称和订阅名称的构造函数的 `ServiceBusTrigger` 属性，如以下代码示例所示：
 
         public static void WriteLog([ServiceBusTrigger("outputtopic","subscription1")] string message,
@@ -157,7 +157,7 @@ SDK 会自动反序列化包含 POCO[（普通旧 CLR 对象](http://en.wikipedi
 * 可以轻松通过 `ServiceBusConfiguration.MessageOptions` 对 `OnMessageOptions` 进行自定义。
 * 允许在 `ServiceBusTriggerAttribute`/`ServiceBusAttribute` 上指定 [AccessRights](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Functions.cs#L71)（适用于你可能不具有管理权限的情况）。 
 
-## <a name="a-idqueuesarelated-topics-covered-by-the-storage-queues-how-to-article"></a><a id="queues"></a>存储队列操作说明文章涉及的相关主题
+## <a id="queues"></a>存储队列操作说明文章涉及的相关主题
 有关非特定于服务总线的 WebJobs SDK 方案的详细信息，请参阅[如何结合使用 Azure 队列存储和 WebJobs SDK](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)。 
 
 该文章涵盖的主题包括：
@@ -171,7 +171,7 @@ SDK 会自动反序列化包含 POCO[（普通旧 CLR 对象](http://en.wikipedi
 * 手动触发函数
 * 写入日志
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 本指南中包含的代码示例展示了如何处理常见方案来结合使用 Azure 服务总线。 有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 推荐资源](http://go.microsoft.com/fwlink/?linkid=390226)。
 
 

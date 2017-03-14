@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 545ec23bc720dc1a17ce3d084642e96c2397d482
-ms.openlocfilehash: e61638db3c6c3acdc58f374b94b28d855161cf59
+ms.sourcegitcommit: e89ec01cb47a87a45378f73d138224095bcbebed
+ms.openlocfilehash: 201d98c4f4ff29393ad308824ed0575f1ff602ee
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -127,9 +128,9 @@ ms.openlocfilehash: e61638db3c6c3acdc58f374b94b28d855161cf59
 
 若要对发往容器 Web 应用的 HTTP 或 HTTPS 流量进行负载均衡并管理传输层安全性 (TLS) 的证书，可以使用 Kubernetes [入口](https://kubernetes.io/docs/user-guide/ingress/)资源。 入口是允许与群集服务建立入站连接的规则集合。 要使入口资源正常工作，Kubernetes 群集上必须运行[入口控制器](https://kubernetes.io/docs/user-guide/ingress/#ingress-controllers)。
 
-Azure 容器服务不会自动实现 Kubernetes 入口控制器。 有多个控制器实现可用。 目前，建议使用 [Nginx 入口控制器](https://github.com/kubernetes/contrib/blob/master/ingress/controllers/nginx/README.md)来配置入站规则以及对 HTTP 和 HTTPS 流量进行负载均衡。 
+Azure 容器服务不会自动实现 Kubernetes 入口控制器。 有多个控制器实现可用。 目前，建议使用 [Nginx 入口控制器](https://github.com/kubernetes/ingress/tree/master/examples/deployment/nginx)来配置入站规则以及对 HTTP 和 HTTPS 流量进行负载均衡。 
 
-有关详细信息和示例，请参阅 [Nginx 入口控制器文档](https://github.com/kubernetes/contrib/blob/master/ingress/controllers/nginx/README.md)。
+有关详细信息，请参阅 [Nginx 入口控制器文档](https://github.com/kubernetes/ingress/tree/master/controllers/nginx/README.md)。
 
 > [!IMPORTANT]
 > 在 Azure 容器服务中使用 Nginx 入口控制器时，必须使用 `type: LoadBalancer` 将控制器部署公开为服务。 这会将 Azure Load Balancer 配置为向控制器路由流量。 有关详细信息，请参阅上一部分。
@@ -140,10 +141,5 @@ Azure 容器服务不会自动实现 Kubernetes 入口控制器。 有多个控�
 * 参阅 [Kubernetes LoadBalancer 文档](https://kubernetes.io/docs/user-guide/load-balancer/)
 * 详细了解 [Kubernetes 入口和入口控制器](https://kubernetes.io/docs/user-guide/ingress/)
 * 参阅 [Kubernetes 示例](https://github.com/kubernetes/kubernetes/tree/master/examples)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

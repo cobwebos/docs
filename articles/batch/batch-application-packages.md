@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/30/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 08db84f3f3f66930a81e3627dadebbe181dd7da3
-ms.openlocfilehash: 1c89f86c382d627def6cbaf23d8a67a71cd9e890
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 9c7073e55b98406fc8f9db9a40bf1a6ffc626f47
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="application-deployment-with-azure-batch-application-packages"></a>使用 Azure Batch 应用程序包部署应用程序
+# <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
+
 使用 Azure Batch 的应用程序包功能可以轻松管理任务应用程序并将其部署到池中的计算节点。 使用应用程序包可以上载和管理任务运行的多个应用程序版本，包括其支持文件。 然后，可以将一个或多个此类应用程序自动部署到池中的计算节点。
 
 本文介绍如何使用 Azure 门户上载和管理应用程序包。 然后，介绍如何使用 [Batch .NET][api_net] 库将包安装到池的计算节点。
@@ -155,10 +158,10 @@ Batch 服务在应用程序包的存储和检索操作中使用关联的存储�
 
 指定包含应用程序二进制文件和执行应用程序所需的任何支持文件的 .zip 文件。 单击“选择文件”文本框或文件夹图标，以浏览并选择包含应用程序文件的 .zip 文件。
 
-选择文件后，单击“确定”开始上传到 Azure 存储。 上载操作完成时，系统将发出通知，且边栏选项卡会关闭。 因上载之文件的大小和网络连接速度不尽相同，此操作可能需要花费一些时间。
+选择文件后，单击“确定”开始上载到 Azure 存储。 上载操作完成时，系统将发出通知，且边栏选项卡会关闭。 因上载之文件的大小和网络连接速度不尽相同，此操作可能需要花费一些时间。
 
 > [!WARNING]
-> 上传操作完成之前，请勿关闭“新建应用程序”边栏选项卡， 否则上载过程将会停止。
+> 上载操作完成之前，请勿关闭“新建应用程序”边栏选项卡， 否则上载过程将会停止。
 > 
 > 
 
@@ -167,7 +170,7 @@ Batch 服务在应用程序包的存储和检索操作中使用关联的存储�
 
 ![Azure 门户中的添加应用程序包边栏选项卡][8]
 
-可以看到，除了“应用程序 ID”文本框已禁用之外，字段与“新建应用程序”边栏选项卡中的字段匹配。 如前面创建新应用程序一样，指定新包的“版本”，浏览到“应用程序包”.zip 文件，然后单击“确定”上传包。
+可以看到，除了“应用程序 ID”文本框已禁用之外，字段与“新建应用程序”边栏选项卡中的字段匹配。 如前面创建新应用程序一样，指定新包的“版本”，浏览到“应用程序包”.zip 文件，然后单击“确定”上载包。
 
 ### <a name="update-or-delete-an-application-package"></a>更新或删除应用程序包
 若要更新或删除现有的应用程序包，请打开应用程序的详细信息边栏选项卡，单击“包”以打开“包”边栏选项卡，单击要修改的应用程序包数据列中的**省略号**，然后选择要执行的操作。
@@ -176,7 +179,7 @@ Batch 服务在应用程序包的存储和检索操作中使用关联的存储�
 
 **更新**
 
-单击“更新”时，“更新包”边栏选项卡随即出现。 此边栏选项卡与“新建应用程序包”边栏选项卡相似，只不过包选择字段已启用，因此可以指定要上传的新 ZIP 文件。
+单击“更新”时，“更新包”边栏选项卡随即出现。 此边栏选项卡与“新建应用程序包”边栏选项卡相似，只不过包选择字段已启用，因此可以指定要上载的新 ZIP 文件。
 
 ![Azure 门户中的更新包边栏选项卡][11]
 
@@ -348,9 +351,4 @@ foreach (ApplicationSummary app in applications)
 [10]: ./media/batch-application-packages/app_pkg_10.png "在 Azure 门户中选择存储帐户边栏选项卡"
 [11]: ./media/batch-application-packages/app_pkg_11.png "Azure 门户中的更新包边栏选项卡"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Azure 门户中的删除包确认对话框"
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

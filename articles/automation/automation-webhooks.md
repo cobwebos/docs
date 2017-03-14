@@ -1,5 +1,5 @@
 ---
-title: "Azure 自动化 Webhook | Microsoft Docs"
+title: "通过 Webhook 启动 Azure 自动化 Runbook | Microsoft 文档"
 description: "一个可供客户端通过 HTTP 调用在 Azure 自动化中启动 Runbook 的 Webhook。  本文介绍了如何创建 Webhook，以及如何通过调用 Webhook 来启动 Runbook。"
 services: automation
 documentationcenter: 
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
+ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 155d89ed6aed0afd2780a017c221bd807ca61ba2
+ms.sourcegitcommit: deb32f98bbfc0032ffbdcf168a2b4c42f1c4ae76
+ms.openlocfilehash: 4cf402877d5ddee8f4944a104163a55025013cc0
+ms.lasthandoff: 02/23/2017
 
 
 ---
-# <a name="azure-automation-webhooks"></a>Azure 自动化 Webhook
-Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特定的 Runbook。 这样，外部服务（例如 Visual Studio Team Services、GitHub 或自定义应用程序）就可以在不通过 Azure 自动化 API 实现完整解决方案的情况下启动 Runbook。  
+# <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook
+Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特定的 Runbook。 这样，外部服务（例如 Visual Studio Team Services、GitHub、Microsoft Operations Management Suite Log Analytics 或自定义应用程序）就可以在不通过 Azure 自动化 API 实现完整解决方案的情况下启动 Runbook。  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 你可以将 Webhook 与[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md) 中其他启动 Runbook 的方法进行比较
@@ -33,7 +34,7 @@ Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特�
 |:--- |:--- |
 | Name |你可以提供要用于 Webhook 的任何名称，因为该名称不会公开给客户端。  它只供你用来标识 Azure 自动化中的 Runbook。 <br>  最好是为 Webhook 提供一个与名称，该名称需要与将要使用的客户端相关。 |
 | 代码 |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。  它是在你创建 Webhook 时自动生成的。  不能指定自定义 URL。 <br> <br>  URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。  出于安全原因，你只能在创建 Webhook 时通过 Azure 门户查看该 URL。 你应该将保存在安全位置的 URL 记下来，供将来使用。 |
-| 到期日期 |与证书一样，每个 Webhook 都有一个过期日期，到了过期日期 Webhook 将不再可用。  此到期日期在 Webhook 创建后将无法更改，而在到达到期日期以后，Webhook 也将无法再次启用。  在这种情况下，你必须创建另一个 Webhook 来替换当前的 Webhook，并对客户端进行更新，使之能够使用新的 Webhook。 |
+| 到期日期 |与证书一样，每个 Webhook 都有一个过期日期，到了过期日期 Webhook 将不再可用。  创建 Webhook 后，可以修改此到期日期。 |
 | Enabled |Webhook 在创建后已按默认启用。  如果将 Runbook 设置为“Disabled”，将没有客户端能够使用它。  可以在创建 Webhook 时设置 **Enabled** 属性，也可以在创建后随时设置它。 |
 
 ### <a name="parameters"></a>parameters
@@ -73,7 +74,6 @@ Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会
 
 > [!NOTE]
 > 所有输入参数的值都会通过 Runbook 作业进行记录。  这意味着，客户端在 Webhook 请求中提供的任何输入都将记录下来，并可供有权访问自动化作业的任何人使用。  因此，在 Webhook 调用中包括敏感信息时，应该特别小心。
-> 
 > 
 
 ## <a name="security"></a>“安全”
@@ -264,13 +264,9 @@ Runbook 预期请求的正文中包含 JSON 格式的虚拟机列表。 我们�
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关以不同方式启动 Runbook 的详细信息，请参阅[启动 Runbook](automation-starting-a-runbook.md)
-* 有关查看 Runbook 作业状态的信息，请参阅[在 Azure 自动化中执行 Runbook](automation-runbook-execution.md)
-* 若要了解如何使用 Azure 自动化对 Azure 警报执行操作，请参阅[使用自动化 Runbook 解决 Azure VM 警报](automation-azure-vm-alert-integration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+* 有关以不同方式启动 Runbook 的详细信息，请参阅 [启动 Runbook](automation-starting-a-runbook.md)
+* 有关查看 Runbook 作业状态的信息，请参阅[在 Azure 自动化中执行 Runbook](automation-runbook-execution.md)。
+* 若要了解如何使用 Azure 自动化对 Azure 警报执行操作，请参阅[使用自动化 Runbook 解决 Azure VM 警报](automation-azure-vm-alert-integration.md)。
+* 若要了解如何从 OMS Log Analytics 警报调用 Runbook，请参阅[针对 Log Analytics 警报的 Runbook 操作](../log-analytics/log-analytics-alerts.md#runbook-actions)。
 
 

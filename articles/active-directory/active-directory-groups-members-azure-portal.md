@@ -1,6 +1,6 @@
 ---
 title: "在 Azure Active Directory 预览版中管理组的成员 | Microsoft 文档"
-description: "如何在 Azure Active Directory 中管理已成为组成员的用户和设备"
+description: "如何在 Azure Active Directory 中的组中添加或删除用户和设备"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7c0c411f6e2f51fa2d55d46ff92153dc8882bb38
+ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
+ms.openlocfilehash: 3373af848720c7c04e679d7fd4b075c5571fb417
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="manage-the-members-for-a-group-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中管理组的成员
+# <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>在 Azure Active Directory 租户中管理用户的组成员身份
 本文介绍如何在 Azure Active Directory (Azure AD) 预览版中管理组的成员。 [预览包括哪些内容？](active-directory-preview-explainer.md)
 
 ## <a name="how-do-i-find-the-members-and-manage-them"></a>如何查找成员并对其进行管理？
@@ -53,9 +55,4 @@ ms.openlocfilehash: 7c0c411f6e2f51fa2d55d46ff92153dc8882bb38
 * [管理组的设置](active-directory-groups-settings-azure-portal.md)
 * [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
 * [管理组中用户的动态规则](active-directory-groups-dynamic-membership-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

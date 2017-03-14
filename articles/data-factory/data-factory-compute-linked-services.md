@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 080376a50e4cde3d3f9f801408e4a02b75bc72da
-ms.openlocfilehash: 40da274d0dcbf1efb22afc474a1c365f7770fdcb
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 789373189ff0ec1dd9c08bc1725bb781f8b7428b
+ms.openlocfilehash: df25e320e046355bc4a538f8acc4bb9e9cd98d8e
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -52,7 +52,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 * 仅对 HDInsight 群集启动并运行作业的时间进行收费。
 
 > [!IMPORTANT]
-> 按需预配 Azure HDInsight 群集通常需要**15 分钟**以上。
+> 按需预配 Azure HDInsight 群集通常需要 **20 分钟**或更长时间。
 > 
 > 
 
@@ -183,7 +183,9 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 * Azure HDInsight
 * Azure 批处理
-* Azure 机器学习。
+* Azure 机器学习
+* Azure Data Lake Analytics
+* Azure SQL DB、Azure SQL DW、SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 链接服务
 可以创建 Azure HDInsight 链接服务，以向数据工厂注册自己的 HDInsight 群集。
@@ -325,7 +327,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
-| 不由 Azure Active Directory 管理的用户帐户 (@hotmail.com, @live.com, 等） |12 小时 |
+| 不由 Azure Active Directory 管理的用户帐户（@hotmail.com、@live.com，等等） |12 小时 |
 | 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的&14; 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
 若要避免/解决此错误，需要在**令牌过期**时使用“授权”按钮重新授权，并重新部署链接服务。 还可使用以下部分中的代码以编程方式生成 sessionId 和 authorization 属性的值。 

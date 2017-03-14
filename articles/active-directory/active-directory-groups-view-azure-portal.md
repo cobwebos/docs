@@ -1,6 +1,6 @@
 ---
 title: "在 Azure Active Directory 预览版中查看所有现有组 | Microsoft 文档"
-description: "如何在 Azure Active Directory 预览版中查看已创建的组。"
+description: "如何在 Azure Active Directory 预览版中查看或搜索组"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,22 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3b31bd036d9c3ff8036b314b93cbddd94874ff63
-ms.openlocfilehash: 8fa5a0f08eeb1c1443a6c8adeabf27a66be597c5
+ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
+ms.openlocfilehash: 3546ae6951a514108e62f8840a601930aa1ac4c2
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="view-all-existing-groups-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中查看所有现有组
+# <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>在 Azure Active Directory 中查看或搜索用户组
 本文介绍如何在 Azure Active Directory (Azure AD) 预览版中查看所有组。 [预览包括哪些内容？](active-directory-preview-explainer.md) Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创建可用你的用户填充的组。 你可以使用组来执行管理任务，例如一次向多个用户分配许可证或权限。
 
 ## <a name="how-do-i-see-all-the-groups"></a>如何查看所有组？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，在文本框中输入“用户和组”，然后选择 **Enter**。
 
-   ![打开“用户管理”](./media/active-directory-groups-view-azure-portal/search-user-management.png)
+   ![打开用户和组](./media/active-directory-groups-view-azure-portal/search-user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“所有组”。
 
    ![打开“组”边栏选项卡](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
@@ -42,9 +44,4 @@ ms.openlocfilehash: 8fa5a0f08eeb1c1443a6c8adeabf27a66be597c5
 * [管理组的成员](active-directory-groups-members-azure-portal.md)
 * [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
 * [管理组中用户的动态规则](active-directory-groups-dynamic-membership-azure-portal.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

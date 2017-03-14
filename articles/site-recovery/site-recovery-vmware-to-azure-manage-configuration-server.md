@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/14/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 96e6696818a0de2fadd55ff7e0ccee350d2666ad
-ms.openlocfilehash: 0e49b7dded14ab6b76c7c73af714af5f5c854bbc
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 73d5f91f31780350c68b3475c2cbbb597f9b438e
+ms.openlocfilehash: 0c8f37055a6c64a54009ecafd883426824dcd901
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -104,11 +104,32 @@ ProxyPassword="Password"
   ```
 
   >[!WARNING]
-  如果已将横向扩展进程服务器附加到此配置服务器，需在部署中[修复所有横向扩展进程服务器上的代理设置](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)。
+  如果已将横向扩展进程服务器附加到此配置服务器，需在部署中[修复所有横向扩展进程服务器上的代理设置](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server)。
+
+## <a name="re-register-a-configuration-server-with-the-same-recovery-services-vault"></a>将配置服务器重新注册到同一个恢复服务保管库
+  1. 登录到配置服务器。
+  2. 使用桌面上的快捷方式启动 cspsconfigtool.exe。
+  3. 单击“保管库注册”选项卡。
+  4. 从门户下载新的注册文件，并将其作为输入提供给该工具。
+        ![register-configuration-server](./media/site-recovery-vmware-to-azure-manage-configuration-server/register-csonfiguration-server.png)
+  5. 提供代理服务器的详细信息，然后单击“注册”按钮。  
+  6. 打开管理员 PowerShell 命令窗口。
+  7. 运行以下命令
+
+      ```
+      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+      net stop obengine
+      net start obengine
+      ```
+
+  >[!WARNING]
+  如果已将横向扩展进程服务器附加到此配置服务器，需在部署中[重新注册所有横向扩展进程服务器](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server)。
 
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>将配置服务器注册到不同的恢复服务保管库。
 1. 登录到配置服务器。
 2. 在管理员命令提示窗口中，运行命令
+
 ```
 reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
 net stop dra
@@ -152,11 +173,11 @@ net stop dra
 1. 以管理员身份登录到配置服务器。
 2. 打开“控制面板”>“程序”>“卸载程序”
 3. 按以下顺序卸载程序：
+  * Microsoft Azure 恢复服务代理
   * Microsoft Azure Site Recovery 移动服务/主目标服务器
+  * Microsoft Azure Site Recovery 提供程序
   * Microsoft Azure Site Recovery 配置服务器/进程服务器
   * Microsoft Azure Site Recovery 配置服务器依赖项
-  * Microsoft Azure 恢复服务代理
-  * Microsoft Azure Site Recovery 提供程序
   * MySQL Server 5.5
 4. 在管理员命令提示窗口中运行以下命令。
   ```

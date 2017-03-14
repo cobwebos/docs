@@ -16,8 +16,9 @@ ms.workload: identity
 ms.date: 02/09/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 59a7fe2d1eea948f1452f21d2185e6bdf93dc41f
+ms.sourcegitcommit: 64af2509036d035c5802f4b1985c3f986b685545
+ms.openlocfilehash: 2b677e684021a873c0bc4db751d8e60d9eaa6f9d
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 59a7fe2d1eea948f1452f21d2185e6bdf93dc41f
 Azure Active Directory (Azure AD) B2B 协作将一组选定的现有 Azure AD 功能扩展到了受邀加入 Azure AD 租户的来宾用户。 因此，Azure AD B2B 协作来宾用户将通过 Azure AD 许可证授权，并与此处所述的现有免费、基本和高级 P1/P2 许可证层相适应：https://azure.microsoft.com/en-us/pricing/details/active-directory/。
 
 邀请 B2B 用户并将其分配到 Azure AD 中的应用程序不会产生费用。 此外，B2B 用户的每个来宾用户最多可免费创建 10 个应用，B2B 用户可免费创建 3 份基本报告，因为他们属于 Azure AD“免费”层。
-通过 B2B 协作功能扩展到 B2B 用户的任何付费 Azure AD 功能需要使用 Azure AD 付费许可证（基本、高级 P1 或高级 P2，具体取决于使用的功能）授权。 邀请方租户将会凭借每个 Azure AD 付费许可证获得 5 个 B2B 用户权限。 也就是说，向租户中的一个员工用户提供权限的每个 Azure AD 付费许可证现在还包括向受邀加入该租户的 5 个 B2B 用户提供权限。
+通过 B2B 协作功能扩展到 B2B 用户的任何付费 Azure AD 功能需要使用 Azure AD 付费许可证（基本、高级 P1 或高级 P2，具体取决于使用的功能）授权。 邀请方租户将会凭借每个 Azure AD 付费许可证获得 5 个 B2B 用户权限。 也就是说，向某个租户中的一个员工用户提供对 Azure AD 付费功能的权限的每个 Azure AD 付费许可证现在还向被邀请到该租户的另外 5 个 B2B 用户提供对那些相同 Azure AD 付费功能的权限。
 
 ## <a name="licensing-examples"></a>授权示例
 - 某个客户想要邀请 100 个 B2B 用户加入其 Azure AD 租户，并针对所有用户使用基于组的访问管理和预配，但其中的 50 个用户还需要 MFA 和条件访问。 在这种情况下，该客户必须购买 10 个 Azure AD 基本许可证和 10 个 Azure AD 高级 P1 许可证，才能正常涵盖其所有 B2B 用户。 同样，如果邀请方租户打算对 B2B 用户使用 Identity Protection 功能，则必须购买足够的 Azure AD 高级 P2 许可证才能以 5:1 的比例涵盖所有这些 B2B 用户。
@@ -60,9 +61,4 @@ Azure Active Directory (Azure AD) B2B 协作将一组选定的现有 Azure AD �
 * [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
 * [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

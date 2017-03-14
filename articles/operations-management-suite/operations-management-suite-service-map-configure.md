@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 1ce47043f85e30f616c8b22e1107b192d4962d8a
-ms.openlocfilehash: 73c35da427f1e2080ab6fdd086d3168dad495415
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 450755b94d7abab9ab7fa626e02f404a73c97865
+ms.openlocfilehash: ac17a567092b8ecf4908d28e6743ba0816fa214e
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -181,7 +181,7 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 1.    在 C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs 中查找名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor.mp 的文件。  
 2.    如果该文件不存在并且代理已连接到 SCOM 管理组，则验证是否已通过在操作控制台的管理工作区中检查管理包将其导入到 SCOM。
 
-服务映射 MP 将事件写入 Operations Manager Windows 事件日志。  该日志可通过系统日志解决方案[在 OMS 中搜索](../log-analytics/log-analytics-log-searches.md)，你可以在其中配置要上传的日志文件。  如果启用了调试事件，它们将写入应用程序事件日志，事件源为 *ADMConnector*。
+服务映射 MP 将事件写入 Operations Manager Windows 事件日志。  该日志可通过系统日志解决方案[在 OMS 中搜索](../log-analytics/log-analytics-log-searches.md)，你可以在其中配置要上载的日志文件。  如果启用了调试事件，它们将写入应用程序事件日志，事件源为 *ADMConnector*。
 
 #### <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
 若要收集诊断跟踪，请以管理员身份打开“命令提示符”并运行以下命令： 
@@ -256,6 +256,7 @@ omsconfig（代理配置）的日志位于 */var/opt/microsoft/omsconfig/log/*�
 | 7.0 | 3.10.0-123 |
 | 7.1 | 3.10.0-229 |
 | 7.2 | 3.10.0-327 |
+| 7.3 | 3.10.0-514 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 | OS 版本。 | 内核版本 |
@@ -276,7 +277,7 @@ omsconfig（代理配置）的日志位于 */var/opt/microsoft/omsconfig/log/*�
 | 5.8 | 2.6.18-308 |
 | 5.9 | 2.6.18-348 |
 | 5.10 | 2.6.18-371 |
-| 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416 |
+| 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417 |
 
 #### <a name="oracle-enterprise-linux-w-unbreakable-kernel-uek"></a>具有 Unbreakable Kernel (UEK) 的 Oracle Enterprise Linux
 

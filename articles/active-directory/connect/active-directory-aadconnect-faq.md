@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/22/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 85458f4477dadb83a6a2627ef490471ca38ac634
-ms.openlocfilehash: c2b78731feb1993e5c7123ff676f38704120ccff
+ms.sourcegitcommit: c22a8f4a895efc86abc328c6cf82685d7db8c19c
+ms.openlocfilehash: 33de5839e1e8fa70f75636488a0769f7aebf8b95
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -72,12 +73,33 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 **问：是否支持手动设置现有 Azure AD 组/联系人对象的 ImmutableId 属性，以将其硬匹配到本地 AD 组/联系人对象？**  
 不能，目前不支持。
 
+## <a name="security"></a>“安全”
+**问：帐户在经过特定次数的失败尝试后被锁定还是使用了更复杂的策略？**</br>
+我们使用更复杂的策略来锁定帐户。  这基于请求的 IP 和输入的密码。 锁定的持续时间也会根据存在攻击的可能性而延长。  
+
+**问：某些（通用）密码会被拒绝并且显示消息“此密码已使用了许多次”，这是否是指当前 Active Directory 中使用的密码？**</br>
+这指的是全局通用的密码，例如“Password”和“123456”的任何变体。
+
+**问：B2C 租户中就会阻止来自可疑来源（僵尸网络、Tor 终结点）的登录请求还是需要使用基本或高级版租户才能阻止？**</br>
+我们有一个网关，它会筛选请求并针对僵尸网络提供一定的防护，它适用于所有 B2C 租户。 
+
 ## <a name="custom-configuration"></a>自定义配置
 **问：在哪里可以找到 Azure AD Connect 的 PowerShell cmdlet 介绍？**  
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
 
 **问：我是否可以使用 *Synchronization Service Manager* 中的“服务器导出/服务器导入”在服务器之间移动配置？  
-否。 此选项不会检索所有配置设置，因此不应使用。 应该改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 请参阅[将自定义配置从活动服务器移到暂存服务器](active-directory-aadconnect-upgrade-previous-version.md#move-custom-configuration-from-active-to-staging-server)。
+否。 此选项不会检索所有配置设置，因此不应使用。 应该改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 请参阅[交叉迁移](active-directory-aadconnect-upgrade-previous-version.md#swing-migration)。
+
+**问：是否可以为 Azure 登录页缓存密码，这是否会因为它包含一个具有 autocomplete = "false" 属性的密码输入元素而被阻止？**</br>
+目前不支持修改密码输入字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 Javascript 向密码字段添加任何属性。 此功能应当会在 2017 年的下半年推出。
+
+**问：Azure 登录页上会显示之前已成功登录的用户的用户名。是否可以关闭此行为？**</br>
+目前不支持修改登录页的 HTML 属性。 我们目前正在开发一种功能，它将允许使用自定义 Javascript 向密码字段添加任何属性。 此功能应当会在 2017 年的下半年推出。
+
+**问：是否有方法来阻止并发会话？**</br>
+否。
+
+
 
 ## <a name="troubleshooting"></a>故障排除
 **问：如何获取有关 Azure AD Connect 的帮助？**
@@ -93,10 +115,5 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 [Azure AD Connect 客户支持](https://manage.windowsazure.com/?getsupport=true)
 
 * 使用此链接，以便通过 Azure 门户获取支持。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

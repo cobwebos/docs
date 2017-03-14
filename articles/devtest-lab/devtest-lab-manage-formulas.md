@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f7ea1762e3a3ffe8d3c0c6af307b846dc1f3c696
+ms.sourcegitcommit: 52590f0c47954d115f39cbe988e04a0ed3feb94d
+ms.openlocfilehash: cd3352ae30734cce116fda5a838f95e5e0b86a8a
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -95,7 +96,7 @@ Azure 开发测试实验室中的公式是用于创建虚拟机（VM）的默认
 7. 选择“确定”创建公式。
 
 ## <a name="use-a-formula-to-provision-a-vm"></a>使用公式配置 VM
-公式创建完成后，便可创建基于该公式的 VM。 [添加包含项目的 VM](devtest-lab-add-vm-with-artifacts.md#add-a-vm-with-artifacts) 将指导完成该过程。
+公式创建完成后，便可创建基于该公式的 VM。 [添加包含项目的 VM](devtest-lab-add-vm-with-artifacts.md) 一文指导你完成该过程。
 
 ## <a name="modify-a-formula"></a>修改公式
 若要修改公式，请按照下列步骤操作：
@@ -133,10 +134,5 @@ Azure 开发测试实验室中的公式是用于创建虚拟机（VM）的默认
 
 ## <a name="next-steps"></a>后续步骤
 创建完用于创建 VM 的公式后，下一步就是[将 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

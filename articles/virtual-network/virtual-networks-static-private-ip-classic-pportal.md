@@ -1,6 +1,6 @@
 ---
-title: "设置静态专用 IP 地址 | Azure 门户 | 经典 | Microsoft 文档"
-description: "了解静态专用 IP 以及如何使用 Azure 门户在经典模式下管理它们"
+title: "为 VM（经典）配置专用 IP 地址 - Azure 门户 | Microsoft 文档"
+description: "了解如何使用 Azure 门户为虚拟机（经典）配置专用 IP 地址。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 446a7dd37e6a58875ba0202cb512b4cc661e0c93
-ms.openlocfilehash: 162b65cb9cfa9129279c78312eafd73b0ffd8d6e
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: bde6de3495c2909b63b1f85e420a4ff5e7ac2c1a
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-set-a-static-private-ip-address-classic-in-the-azure-portal"></a>如何在 Azure 门户中设置静态专用 IP 地址（经典）
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>使用 Azure 门户为虚拟机（经典）配置专用 IP 地址
+
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -79,10 +82,5 @@ ms.openlocfilehash: 162b65cb9cfa9129279c78312eafd73b0ffd8d6e
 * 了解[保留公共 IP](virtual-networks-reserved-public-ip.md) 地址。
 * 了解[实例层级公共 IP (ILPIP) 地址](virtual-networks-instance-level-public-ip.md)。
 * 查阅[保留 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

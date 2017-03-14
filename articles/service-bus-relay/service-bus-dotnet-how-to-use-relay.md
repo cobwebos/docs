@@ -1,5 +1,5 @@
 ---
-title: "如何通过 .NET 使用服务总线 WCF 中继 | Microsoft 文档"
+title: "通过 .NET 使用服务总线 WCF 中继 | Microsoft 文档"
 description: "了解如何使用 Azure 服务总线中继服务连接两个托管于不同位置的应用程序。"
 services: service-bus-relay
 documentationcenter: .net
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 8d8bcb7c85b9f2ea751be9d098c527c58bc8a567
-ms.openlocfilehash: 8ce35169f58378161b67c8f1f93bd2ab6a48d757
+ms.sourcegitcommit: 4a972b9b8b52a90f27afda98d8bdc661016d1fe1
+ms.openlocfilehash: ff4451fd81fa9b22cf350983a6a635d9e3e233b4
+ms.lasthandoff: 02/28/2017
 
 ---
 
@@ -224,9 +225,4 @@ using (var ch = cf.CreateChannel())
 [Shared Access Signature Authentication with Service Bus]: ../service-bus-messaging/service-bus-shared-access-signature-authentication.md
 [Azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 [overview of Service Bus samples]: ../service-bus-messaging/service-bus-samples.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -1,6 +1,6 @@
 ---
-title: "使用 PowerShell 创建虚拟网络| Microsoft 文档"
-description: "了解如何使用 PowerShell 创建虚拟网络 | 资源管理器"
+title: "创建虚拟网络 - Azure PowerShell | Microsoft 文档"
+description: "了解如何使用 PowerShell 创建虚拟网络"
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: 33f3a1f490b51123054440b6098de1ae4aca941f
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: d229d6add2c06952eaf662bdacc92a5163b1e945
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -180,9 +182,4 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 - 通过阅读文章[创建 Windows VM](../virtual-machines/virtual-machines-windows-ps-create.md)， 将虚拟机 (VM) 连接到虚拟网络。 不要根据这两篇文章的步骤创建 VNet 和子网，可以选择要将 VM 连接到的现有 VNet 和子网。
 - 阅读[连接 VNet](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) 一文，将一个虚拟网络连接到其他虚拟网络。
 - 使用站点到站点虚拟专用网络 (VPN) 或 ExpressRoute 线路，将本地网络连接到虚拟网络。 阅读文章[使用站点到站点 VPN 将 VNet 连接到本地网络](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)和[将 VNet 链接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-arm.md)，了解相关操作方法。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

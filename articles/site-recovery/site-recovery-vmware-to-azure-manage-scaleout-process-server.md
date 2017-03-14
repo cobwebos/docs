@@ -15,8 +15,8 @@ ms.workload: backup-recovery
 ms.date: 2/14/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 96e6696818a0de2fadd55ff7e0ccee350d2666ad
-ms.openlocfilehash: af40c53972845d93a2fbbdf3210d55d84d55650e
+ms.sourcegitcommit: cabbce12a07720c37375092962ee1f89c32269ef
+ms.openlocfilehash: 03bb87bdbf3dce07a282323f484d0aefae8bad62
 ms.lasthandoff: 02/22/2017
 
 ---
@@ -71,8 +71,8 @@ UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /
 [!INCLUDE [site-recovery-unified-setup-parameters](../../includes/site-recovery-unified-installer-command-parameters.md)]
 
 
-### <a name="create-a-proxy-settings-configuration-file"></a>创建一个代理设置配置文件
-ProxySettingsFilePath 参数将文件作为输入。 创建使用以下格式的文件并将其作为输入 ProxySettingsFilePath 参数进行传递。
+### <a name="create-a-proxy-settings-configuration-file"></a>创建代理设置配置文件
+ProxySettingsFilePath 参数使用某个文件作为输入。 创建使用以下格式的文件并将其作为输入 ProxySettingsFilePath 参数进行传递。
 ```
 * [ProxySettings]
 * ProxyAuthentication = "Yes/No"
@@ -95,11 +95,27 @@ ProxySettingsFilePath 参数将文件作为输入。 创建使用以下格式的
   ```
   cmd
   cdpcli.exe --registermt
+  
+  net stop obengine
+
+  net start obengine
+
   exit
   ```
 
 ## <a name="re-registering-a-scale-out-process-server"></a>重新注册横向扩展进程服务器
 [!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
+
+* 接下来，打开管理员命令提示符。
+* 浏览到目录 **%PROGRAMDATA%\ASR\Agent** 并运行以下命令
+
+```
+cdpcli.exe --registermt
+
+net stop obengine
+
+net start obengine
+```
 
 ## <a name="upgrading-a-scale-out-process-server"></a>升级横向扩展进程服务器
 [!INCLUDE [site-recovery-vmware-upgrade -process-server](../../includes/site-recovery-vmware-upgrade-process-server-internal.md)]

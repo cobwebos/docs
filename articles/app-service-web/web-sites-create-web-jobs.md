@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
 ms.openlocfilehash: 5d0d46447c3e0a3a1047e2bbedd44bbd46dd7f1b
@@ -33,7 +33,7 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。 有关详细信息�
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="a-nameacceptablefilesaacceptable-file-types-for-scripts-or-programs"></a><a name="acceptablefiles"></a>可接受的脚本或程序文件类型
+## <a name="acceptablefiles"></a>可接受的脚本或程序文件类型
 接受以下文件类型：
 
 * .cmd、.bat、.exe（使用 Windows cmd）
@@ -44,7 +44,7 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。 有关详细信息�
 * .js（使用 Node）
 * .jar（使用 java）
 
-## <a name="a-namecreateondemandacreate-an-on-demand-webjob-in-the-portal"></a><a name="CreateOnDemand"></a>在门户中创建按需 Web 作业
+## <a name="CreateOnDemand"></a>在门户中创建按需 Web 作业
 1. 在 [Azure 门户](https://portal.azure.com)的“Web 应用”边栏选项卡中，依次单击“所有设置”>“WebJobs”以显示“WebJobs”边栏选项卡。
    
     ![Web 作业边栏选项卡](./media/web-sites-create-web-jobs/wjblade.png)
@@ -61,7 +61,7 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。 有关详细信息�
    
     ![运行 Web 作业](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="a-namecreatecontinuousacreate-a-continuously-running-webjob"></a><a name="CreateContinuous"></a>创建连续运行 Web 作业
+## <a name="CreateContinuous"></a>创建连续运行 Web 作业
 1. 若要创建连续执行的 WebJob，请按照与创建单次运行的 WebJob 相同的步骤操作，但在“运行方式”框中选择“连续”。
 2. 若要启动或停止连续 WebJob，右键单击列表中的 WebJob，然后单击“启动”或“停止”。
 
@@ -72,7 +72,7 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。 有关详细信息�
 > 
 > 
 
-## <a name="a-namecreatescheduledcronacreate-a-scheduled-webjob-using-a-cron-expression"></a><a name="CreateScheduledCRON"></a>使用 CRON 表达式创建计划的 Web 作业
+## <a name="CreateScheduledCRON"></a>使用 CRON 表达式创建计划的 Web 作业
 此方法可用于在基本、标准或高级模式下运行的 Web 应用，但需要在应用上启用“AlwaysOn”设置。
 
 若要将按需 Web 作业变成按计划的 Web 作业，只需在 Web 作业 zip 文件的根目录中包含 `settings.job` 文件。 此 JSON 文件应包括 `schedule` 属性和 [CRON 表达式](https://en.wikipedia.org/wiki/Cron)，如下例所示。
@@ -96,7 +96,7 @@ CRON 表达式由 6 个字段组成：`{second} {minute} {hour} {day} {month} {d
 
 **注意**：从 Visual Studio 部署 WebJob 时，请确保将 `settings.job` 文件属性标记为“如果较新则复制”。
 
-## <a name="a-namecreatescheduledacreate-a-scheduled-webjob-using-the-azure-scheduler"></a><a name="CreateScheduled"></a>使用 Azure 计划程序创建计划的 Web 作业
+## <a name="CreateScheduled"></a>使用 Azure 计划程序创建计划的 Web 作业
 以下备用技术利用 Azure 计划程序。 在这种情况下，Web 作业没有计划的任何直接知识。 而是将 Azure 计划程序配置为按计划触发 Web 作业。 
 
 Azure 门户尚不能创建计划 WebJob，但在增添该功能之前，可使用[经典门户](http://manage.windowsazure.com)执行此类操作。
@@ -134,7 +134,7 @@ Azure 门户尚不能创建计划 WebJob，但在增添该功能之前，可使�
     
     ![作业列表][WebJobsListWithSeveralJobs]
 
-### <a name="a-nameschedulerascheduled-jobs-and-azure-scheduler"></a><a name="Scheduler"></a>计划作业和 Azure 计划程序
+### <a name="Scheduler"></a>计划作业和 Azure 计划程序
 可在[经典门户](http://manage.windowsazure.com)的“Azure 计划程序”页中进一步配置计划作业。
 
 1. 在“WebJobs”页上，单击作业的**计划**链接，以导航到 Azure 计划程序门户页。 
@@ -147,7 +147,7 @@ Azure 门户尚不能创建计划 WebJob，但在增添该功能之前，可使�
    
     ![作业操作 PageInScheduler][JobActionPageInScheduler]
 
-## <a name="a-nameviewjobhistoryaview-the-job-history"></a><a name="ViewJobHistory"></a>查看作业历史记录
+## <a name="ViewJobHistory"></a>查看作业历史记录
 1. 若要查看作业的执行历史记录（包括使用 WebJobs SDK 创建的作业），请单击“WebJobs”边栏选项卡的“日志”列下方的相应链接。 （如果需要，你可以使用剪贴板图标将日志文件页的 URL 复制到剪贴板中。）
    
     ![日志链接](./media/web-sites-create-web-jobs/wjbladelogslink.png)
@@ -168,14 +168,14 @@ Azure 门户尚不能创建计划 WebJob，但在增添该功能之前，可使�
    
     单击其中一个链接可将你带到所选作业的 Web 作业详细信息页。
 
-## <a name="a-namewhpnotesanotes"></a><a name="WHPNotes"></a>说明
+## <a name="WHPNotes"></a>说明
 * 如果没有对 scm（部署）站点发出任何请求，并且未在 Azure 中打开 Web 应用的门户，则免费模式下的 Web 应用可能会在 20 分钟后超时。 对实际站点发出的请求不会对此进行重置。
 * 需要对连续作业的代码进行编写，才能使其在无穷循环中运行。
 * 仅当 Web 应用启动后连续作业才能连续运行。
 * 基本和标准模式提供了 AlwaysOn 功能，启用该功能可防止 Web 应用进入空闲状态。
 * 仅可以调试连续运行 Web 作业。 不支持按计划或按需调试 Web 作业。
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>后续步骤
+## <a name="NextSteps"></a>后续步骤
 有关详细信息，请参阅 [Azure WebJobs 推荐资源][WebJobsRecommendedResources]。
 
 [PSonWebJobs]:http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx

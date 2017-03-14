@@ -1,5 +1,6 @@
 ---
-title: "在 Azure Active Directory 预览版中使用属性创建组成员身份的高级规则 | Microsoft 文档"
+
+title: "Azure Active Directory 预览版中基于属性的动态组成员身份 | Microsoft 文档"
 description: "如何为动态组成员身份创建高级规则，包括支持的表达式规则运算符和参数。"
 services: active-directory
 documentationcenter: 
@@ -12,16 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e5103ccd0cc9ac46a29d98c613b58eead01f5e31
-ms.openlocfilehash: 6c7adb5d20c70c52400f1b003d4a81fdbf62b405
+ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
+ms.openlocfilehash: 16dd02934d4bd18f87f6508dce6c6829fe6aa0ac
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="using-attributes-to-create-advanced-rules-for-group-membership-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中使用属性创建组成员身份的高级规则
-可以在 Azure 门户中创建高级规则来启用 Azure Active Directory (Azure AD) 预览版组的更复杂的基于属性的动态成员身份。 [预览包括哪些内容？](active-directory-preview-explainer.md) 本文详细介绍用于创建这些高级规则的规则属性和语法。
+# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中为动态组成员身份创建基于属性的规则
+可以在 Azure 门户中创建高级规则来启用 Azure Active Directory (Azure AD) 预览版组的更复杂的基于属性的动态成员身份。 [预览版包括哪些内容？](active-directory-preview-explainer.md) 
+
+本文详细介绍了用于创建动态成员身份规则的属性和语法。
 
 ## <a name="to-create-the-advanced-rule"></a>创建高级规则
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
@@ -85,7 +90,7 @@ ms.openlocfilehash: 6c7adb5d20c70c52400f1b003d4a81fdbf62b405
 | --- | --- | --- |
 | 错误: 不支持的属性。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/>属性应匹配[支持的属性列表](#supported-properties)中的一个属性。 |
 | 错误: 不支持对属性使用运算符。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/>属性为布尔值类型。 对布尔值类型使用上面列出的受支持运算符（-eq 或 -ne）。 |
-| 错误: 查询编译错误。 |(user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") |(user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>逻辑运算符应匹配上述受支持属性列表中的某个属性。(user.userPrincipalName - 匹配 ".*@domain.ext")or(user.userPrincipalName - 匹配正则表达式中的 "@domain.ext$")Error。 |
+| 错误: 查询编译错误。 |(user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") |(user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>逻辑运算符应匹配上述受支持属性列表中的一个属性。(user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$")正则表达式中有错误。 |
 | 错误: 二进制表达式的格式不正确。 |(user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>查询包含多个错误。 括号的位置不正确。 |
 | 错误: 在设置动态成员身份期间发生未知的错误。 |(user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>查询包含多个错误。 括号的位置不正确。 |
 
@@ -203,9 +208,4 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 * [管理组的设置](active-directory-groups-settings-azure-portal.md)
 * [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
 * [管理组中用户的动态规则](active-directory-groups-dynamic-membership-azure-portal.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

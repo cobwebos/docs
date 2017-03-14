@@ -1,5 +1,5 @@
 ---
-title: "保留作业和任务的输出内容 - Azure Batch | Microsoft Docs"
+title: "将作业和任务输出保存到 Azure 存储 - Azure Batch | Microsoft 文档"
 description: "了解如何使用 Azure 存储作为 Batch 任务和作业输出的持久性存储，在 Azure 门户中查看这些保存的输出。"
 services: batch
 documentationcenter: .net
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
-ms.openlocfilehash: e5231970b772f7cc043441954ebab6cb1bb6ed8b
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 2c80f9d2bc788c60c5a7b3a5fd0d38cb86cbf838
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="persist-azure-batch-job-and-task-output"></a>保存 Azure Batch 作业和任务输出
+# <a name="persist-results-from-completed-jobs-and-tasks-to-azure-storage"></a>将已完成作业和任务的结果保存到 Azure 存储
+
 在 Batch 中运行的任务通常会生成输出，这些输出必须得到存储，以便今后由作业中的其他任务和/或执行作业的客户端应用程序检索。 此输出可能是处理输入数据后创建的文件，也可能是与任务执行关联的日志文件。 本文将介绍一个 .NET 类库，它使用基于约定的技术在 Azure Blob 存储中保存此类任务输出，这样，即使在删除池、作业和计算节点后，你也可以使用这些输出。
 
 使用本文所述的方法，还可以在 [Azure 门户][portal]上的“保存的输出文件”和“保存的日志”中查看任务输出。
@@ -36,7 +39,7 @@ ms.openlocfilehash: e5231970b772f7cc043441954ebab6cb1bb6ed8b
 设计 Batch 解决方案时，必须考虑几个与作业和任务输出相关的因素。
 
 * **计算节点生存期**：计算节点通常是瞬态的，尤其是在启用了自动缩放的池中。 在某个节点上运行的任务的输出仅在该节点存在时才可用，并且仅在你为任务设置的文件保留时间范围内才可用。 为了确保保留任务输出，你的任务必须将其输出文件上载到持久性存储，例如 Azure 存储空间。
-* **输出存储**：若要将任务输出数据保存到持久性存储，可以在任务代码中使用 [Azure 存储 SDK](../storage/storage-dotnet-how-to-use-blobs.md)，将任务输出上传到 Blob 存储容器中。 如果你实现了容器和文件命名约定，则客户端应用程序或作业中的其他任务可以根据该约定查找并下载此输出。
+* **输出存储**：若要将任务输出数据保存到持久性存储，可以在任务代码中使用 [Azure 存储 SDK](../storage/storage-dotnet-how-to-use-blobs.md)，将任务输出上载到 Blob 存储容器中。 如果你实现了容器和文件命名约定，则客户端应用程序或作业中的其他任务可以根据该约定查找并下载此输出。
 * **输出检索**：可以直接从池中的计算节点检索任务输出；如果任务保存了其输出，则可以从 Azure 存储检索任务输出。 若要直接从计算节点检索任务输出，需要获取文件名及其在节点上的输出位置。 如果将输出保存到 Azure 存储，则下游任务或客户端应用程序必须获得 Azure 存储中文件的完整路径才能使用 Azure 存储 SDK 来下载输出。
 * **查看输出**：导航到 Azure 门户中的某个 Batch 任务并选择“节点上的文件”时，将看到与该任务关联的所有文件，而不仅仅是想要查看的输出文件。 同样，计算节点上的文件仅在该节点存在时才可用，并且仅在你为任务设置的文件保留时间范围内才可用。 若要在门户或某个应用程序（例如 [Azure 存储资源管理器][storage_explorer]）中查看已保存到 Azure 存储的任务输出，必须知道该文件的位置并直接导航到该文件。
 
@@ -212,7 +215,7 @@ Azure 门户将显示使用 [Azure Batch 文件约定自述文件][github_file_c
 1. 在 **Visual Studio 2015** 中打开该项目。
 2. 将 Batch 和存储**帐户凭据**添加到 Microsoft.Azure.Batch.Samples.Common 项目中的 **AccountSettings.settings**。
 3. **生成**（但不要运行）该解决方案。 根据提示还原所有 NuGet 包。
-4. 使用 Azure 门户上传 **PersistOutputsTask** 的[应用程序包](batch-application-packages.md)。 在 .zip 包中包含 `PersistOutputsTask.exe` 及其依赖程序集，将应用程序 ID 设置为“PersistOutputsTask”，将应用程序包版本设置为“1.0”。
+4. 使用 Azure 门户上载 **PersistOutputsTask** 的[应用程序包](batch-application-packages.md)。 在 .zip 包中包含 `PersistOutputsTask.exe` 及其依赖程序集，将应用程序 ID 设置为“PersistOutputsTask”，将应用程序包版本设置为“1.0”。
 5. **启动**（运行）**PersistOutputs** 项目。
 
 ## <a name="next-steps"></a>后续步骤
@@ -248,9 +251,4 @@ Azure 门户将显示使用 [Azure Batch 文件约定自述文件][github_file_c
 
 [1]: ./media/batch-task-output/task-output-01.png "门户中“保存的输出文件”和“保存的日志”选择器"
 [2]: ./media/batch-task-output/task-output-02.png "Azure 门户中的“任务输出”边栏选项卡"
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 02/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: d49d7e6b4a9485c2371eb02ac8068adfde9bad6b
-ms.openlocfilehash: aa2aabee72d1ca381502f9332df7fb88cf2384a2
+ms.sourcegitcommit: 3ec7a230a4051d23e741360f3f714cccadf85902
+ms.openlocfilehash: 511021e43e7d5b3247744592cbeab67769758375
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: aa2aabee72d1ca381502f9332df7fb88cf2384a2
 ## <a name="supported-sources-and-sinks"></a>受支持的源和接收器
 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 可将数据从任一支持的源数据存储移动到 Azure Blob 存储，或从 Azure Blob 存储移动到任一支持的接收器数据存储。
 
-复制活动支持从常规用途的 Azure 存储帐户和冷/热 Blob 存储中复制数据，以及将数据复制到常规用途的 Azure 存储帐户和冷/热 Blob 存储。 活动支持从块 blob、追加 blob 或页 blob 进行读取，但仅支持对块 blob 写入。
+复制活动支持从常规用途的 Azure 存储帐户和冷/热 Blob 存储中复制数据，以及将数据复制到常规用途的 Azure 存储帐户和冷/热 Blob 存储。 活动支持从块 blob、追加 blob 或页 blob 进行读取，但仅支持对块 blob 写入。 请注意，Azure 高级存储不支持在其页 blob 下提供为接收器。
 
 ## <a name="create-pipeline"></a>创建管道
 可以使用不同的工具/API 创建包含复制活动的管道，此管道将数据移入/移出 Azure Blob 存储。  
@@ -521,9 +522,4 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

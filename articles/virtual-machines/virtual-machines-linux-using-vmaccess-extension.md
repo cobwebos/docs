@@ -1,6 +1,6 @@
 ---
-title: "使用 VMAccess 扩展和 Azure CLI 2.0（预览版）重置访问权限 | Microsoft Docs"
-description: "如何使用 VMAccess 扩展和 Azure CLI 2.0（预览版）在 Linux VM 上管理用户和重置访问权限"
+title: "使用 VMAccess 扩展和 Azure CLI 2.0 重置访问权限 | Microsoft 文档"
+description: "如何使用 VMAccess 扩展和 Azure CLI 2.0 在 Linux VM 上管理用户和重置访问权限"
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -16,32 +16,25 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 98646daf5a4d2c9aca7dfc02a36f39d12f749443
-ms.openlocfilehash: 7752b486bda4a68b14ff3e8aaf1a369a649c83b5
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: debdb8a16c8cfd6a137bd2a7c3b82cfdbedb0d8c
+ms.openlocfilehash: 4fac98d37dde195af69d8bd03fd796c6eeae3734
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20-preview"></a>配合使用 VMAccess 扩展和 Azure CLI 2.0（预览版）管理用户、SSH，并检查或修复 Linux VM 上的磁盘
+# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>配合使用 VMAccess 扩展和 Azure CLI 2.0 管理用户、SSH，并检查或修复 Linux VM 上的磁盘
 Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密码，或者不小心删除了 SSH 私钥。 如果在数据中心的时代发生这种情况，则需要开车到那里，然后打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许你访问控制台以重置 Linux 访问或执行磁盘级维护。
 
-本文说明如何使用 Azure VMAcesss 扩展检查或修复磁盘、重置用户访问权限、管理用户帐户，或重置 Linux 上的 SSHD 配置。
-
-
-## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
-可以使用以下 CLI 版本之一完成任务：
-
-- [Azure CLI 1.0](virtual-machines-linux-using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - 适用于经典部署模型和资源管理部署模型的 CLI
-- [Azure CLI 2.0（预览版）](#ways-to-use-the-vmaccess-extension)- 适用于资源管理部署模型的下一代 CLI（本文）
+本文说明如何使用 Azure VMAcesss 扩展检查或修复磁盘、重置用户访问权限、管理用户帐户，或重置 Linux 上的 SSHD 配置。 也可以使用 [Azure CLI 1.0](virtual-machines-linux-using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
 
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>使用 VMAccess 扩展的方法
 可通过两种方法在 Linux VM 上使用 VMAccess 扩展：
 
-* 使用 Azure CLI 2.0（预览版）及所需的参数。
+* 使用 Azure CLI 2.0 和所需参数。
 * [使用 VMAccess 要处理和操作的原始 JSON 文件](#use-json-files-and-the-vmaccess-extension)。
 
-以下示例使用 [az vm access](/cli/azure/vm/access) 及相应参数。 若要执行这些步骤，需要安装最新的 [Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+以下示例使用 [az vm access](/cli/azure/vm/access) 及相应参数。 若要执行这些步骤，需要安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
 
 ## <a name="reset-ssh-key"></a>重置 SSH 密钥
 以下示例重置名为 `myVM` 的 VM 上用户 `azureuser` 的 SSH 密钥：

@@ -11,16 +11,18 @@ ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
+ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: efa52b5f30cab16bfde4202dbfe2c95f4464e2c4
-ms.openlocfilehash: 4950edd41f58175c675afb7a7ea9f14fe4a59b26
+ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
+ms.openlocfilehash: 4e25ec1ece6017dc58c24ce593802293b7fc12b8
+ms.lasthandoff: 03/01/2017
 
 ---
 
-# <a name="dns-zones-and-records"></a>DNS 区域和记录
+# <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
 
 此页说明域、DNS 区域和 DNS 记录和记录集的关键概念以及它们在 Azure DNS 中的受支持方式。
 
@@ -58,19 +60,19 @@ Azure DNS 支持 [通配符记录](https://en.wikipedia.org/wiki/Wildcard_DNS_re
 
 CNAME 记录集不能与其他具有相同名称的记录集共存。 例如，不能同时创建具有相对名称“www”的 CNAME 记录集和具有相对名称“www”的 A 记录。
 
-由于区域顶点（名称 = '@')）始终包含创建区域时创建的 NS 和 SOA 记录集，因此不能在区域顶点创建 CNAME 记录集。
+由于区域顶点（名称 =“@”）始终包含创建区域时创建的 NS 和 SOA 记录集，因此不能在区域顶点创建 CNAME 记录集。
 
 这些约束起源于 DNS 标准，并非 Azure DNS 的限制。
 
 ### <a name="ns-records"></a>NS 记录
 
-NS 记录集在每个区域（名称 = '@'),）的顶点处自动创建，并在删除该区域时自动删除（不能单独删除）。  用户可以修改此记录集的 TTL，但无法修改记录，该记录预配置为引用分配给该区域的 Azure DNS 名称服务器。
+NS 记录集在每个区域（名称 =“@”）的顶点处自动创建，并在删除该区域时自动删除（不能单独删除）。  用户可以修改此记录集的 TTL，但无法修改记录，该记录预配置为引用分配给该区域的 Azure DNS 名称服务器。
 
 可以创建和删除该区域内（不在区域顶点处）的其他 NS 记录。  通过此操作可配置子区域（请参阅[在 Azure DNS 中委托子域](dns-domain-delegation.md#delegating-sub-domains-in-azure-dns)。）
 
 ### <a name="soa-records"></a>SOA 记录
 
-SOA 记录集在每个区域（名称 = '@'),）的顶点处自动创建，并在删除该区域时自动删除。  无法单独创建或删除 SOA 记录。
+SOA 记录集在每个区域（名称 =“@”）的顶点处自动创建，并在删除该区域时自动删除。  无法单独创建或删除 SOA 记录。
 
 用户可以修改 SOA 记录的所有属性，但“主机”属性除外，此属性预配置为引用 Azure DNS 所提供的主名称服务器名。
 
@@ -86,7 +88,7 @@ DNS RFC 最初引入了新的“SPF”记录类型来支持这种方案。 为�
 
 多种服务使用 [SRV 记录](https://en.wikipedia.org/wiki/SRV_record)指定服务器位置。 在 Azure DNS 中指定 SRV 记录时：
 
-* 服务和协议 必须指定为前面带下划线的记录集名称的一部分。  例如，“\_sip.\_tcp.name”。  对于区域顶点处的记录，无需在记录名称中指定 '@'，只需使用服务和协议，例如“\_sip.\_tcp”。
+* 服务和协议 必须指定为前面带下划线的记录集名称的一部分。  例如，“\_sip.\_tcp.name”。  对于区域顶点处的记录，无需在记录名称中指定“@”，只需使用服务和协议，例如“\_sip.\_tcp”。
 * 将 priority、weight、port 和 target 指定为记录集中每个记录的参数。
 
 ### <a name="txt-records"></a>TXT 记录
@@ -139,10 +141,5 @@ Etag 是在 Azure DNS REST API 级别使用 HTTP 标头指定的。  下表给�
 
 * 若要开始使用 Azure DNS，请了解如何[创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)和[创建 DNS 记录](dns-getstarted-create-recordset-portal.md)。
 * 若要迁移现有 DNS 区域，请了解如何[导入和导出 DNS 区域文件](dns-import-export.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

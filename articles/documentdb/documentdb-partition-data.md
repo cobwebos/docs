@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 02/22/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 876e0fd12d045bba85d1e30d4abfcb8ce421213a
-ms.openlocfilehash: ed58e623ff74a21df25fc93346e571edec7b40da
+ms.sourcegitcommit: 5ed72d95ae258d6fa8e808cd72ab6e8a665901c9
+ms.openlocfilehash: 0a8b53f7860548a2a013bfc7813cdf798b6a4910
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -41,14 +42,22 @@ ms.openlocfilehash: ed58e623ff74a21df25fc93346e571edec7b40da
 
 分区是对应用程序完全透明。 DocumentDB 通过 REST API 对单一集合资源的调用来支持快速读取和写入、SQL 和 LINQ 查询、基于 JavaScript 的事务逻辑、一致性级别和精细的访问控制。 该服务处理跨分区发配数据并将查询请求路由到正确的分区。 
 
-它的工作原理是什么？ 在 DocumentDB 中创建集合时，会注意到，存在可以指定的**分区键属性**配置值。 这是文档内 DocumentDB 可用的 JSON 属性（或路径），以在多个服务器或分区间分发数据。 DocumentDB 将对分区键值进行哈希，并使用经过哈希运算的结果来确定将在其中存储 JSON 文档的分区。 具有相同分区键的所有文档将存储在同一分区中。 
+它的工作原理是什么？ 在 DocumentDB 中创建集合时，你可以指定**分区键属性**配置值。 这是文档内 DocumentDB 可用的 JSON 属性（或路径），以在多个服务器或分区间分发数据。 DocumentDB 将对分区键值进行哈希，并使用经过哈希运算的结果来确定将在其中存储 JSON 文档的分区。 具有相同分区键的所有文档将存储在同一分区中。 
 
 例如，假设一个应用程序在 DocumentDB 中存储有关员工和部门的数据。 让我们选择 `"department"` 作为分区键属性，以便按部门扩展数据。 在 DocumentDB 中的每个文档必须包含必需的 `"id"` 属性，该属性对每个具有相同分区键值（如 `"Marketing`"）的文档必须是唯一的。 存储在集合中的每个文档都必须具有分区键和 ID 的唯一组合，例如 `{ "Department": "Marketing", "id": "0001" }`、`{ "Department": "Marketing", "id": "0002" }` 和 `{ "Department": "Sales", "id": "0001" }`。 换言之，分区键、ID 的复合属性是集合的主键。
 
-## <a name="partition-keys"></a>分区键
-选择分区键是设计时需要做的一项重要决定。 选择的 JSON 属性名必须具有一系列的值，且有望均匀地分布访问模式。 分区键指定为 JSON 路径，例如 `/department` 表示属性部门。 
+DocumentDB 将根据存储大小和预配的吞吐量在每个集合后创建少量物理分区。 你定义为分区键的属性是一个逻辑分区。 多个分区键值通常共享单个物理分区，但单个值永远不会跨分区。 如果存在具有许多值的分区键，则这很好，因为当你的数据增长时或者当你增大了预配的吞吐量时 DocumentDB 将能够更好地执行负载均衡。
 
-下表显示分区键定义和与每个对应的 JSON 值的示例。
+例如，假设你创建了一个吞吐量为每秒 25,000 个请求的集合并且 DocumentDB 对于单个物理分区可以支持每秒 10,000 个请求。 DocumentDB 将为你的集合创建 3 个物理分区：P1、P2 和 P3。 在插入或读取文档期间，DocumentDB 服务会对相应的 `Department` 值进行哈希处理，以将数据映射到三个分区：P1、P2 和 P3。 因此，假设“Marketing”和“Sales”被哈希处理到 1，则它们都存储在 P1 中。 并且如果 P1 已满，则 DocumentDB 会将 P1 拆分为两个新分区：P4 和 P5。 然后，在拆分后，该服务可以将“Marketing”移动到 P4，将“Sales”移动到 P5，然后丢弃 P1。 分区键在分区间的这些移动对你的应用程序是透明的，不会影响你的集合的可用性。
+
+## <a name="partition-keys"></a>分区键
+选择分区键是设计时需要做的一项重要决定。 选择的 JSON 属性名必须具有一系列的值，且有望均匀地分布访问模式。 
+
+> [!NOTE]
+> 采用具有大量不同值（最少&100; -&1000; 个）的分区键是最佳做法。 许多客户高效地将 DocumentDB 用作键值存储，其中唯一“id”是数百万-数十亿分区键的分区键。
+>
+
+下表显示分区键定义和与每个对应的 JSON 值的示例。 分区键指定为 JSON 路径，例如 `/department` 表示属性部门。 
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -157,21 +166,22 @@ Azure DocumentDB 增加了对 [REST API 版本 2015-12-16](https://msdn.microsof
 
 对于此示例，我们选取了 `deviceId`，因为我们知道：(a) 由于存在大量的设备，写入可以跨分区均匀地分步并且我们可以扩展数据库以引入海量数据，(b) 许多请求（如提取设备最近读取内容）仅限于单个 deviceId，并且可以从单个分区进行检索。
 
-    DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
-    await client.CreateDatabaseAsync(new Database { Id = "db" });
+```csharp
+DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
+await client.CreateDatabaseAsync(new Database { Id = "db" });
 
-    // Collection for device telemetry. Here the JSON property deviceId will be used as the partition key to 
-    // spread across partitions. Configured for 10K RU/s throughput and an indexing policy that supports 
-    // sorting against any number or string property.
-    DocumentCollection myCollection = new DocumentCollection();
-    myCollection.Id = "coll";
-    myCollection.PartitionKey.Paths.Add("/deviceId");
+// Collection for device telemetry. Here the JSON property deviceId will be used as the partition key to 
+// spread across partitions. Configured for 10K RU/s throughput and an indexing policy that supports 
+// sorting against any number or string property.
+DocumentCollection myCollection = new DocumentCollection();
+myCollection.Id = "coll";
+myCollection.PartitionKey.Paths.Add("/deviceId");
 
-    await client.CreateDocumentCollectionAsync(
-        UriFactory.CreateDatabaseUri("db"),
-        myCollection,
-        new RequestOptions { OfferThroughput = 20000 });
-
+await client.CreateDocumentCollectionAsync(
+    UriFactory.CreateDatabaseUri("db"),
+    myCollection,
+    new RequestOptions { OfferThroughput = 20000 });
+```
 
 > [!NOTE]
 > 若要使用 SDK 创建简单的分区集合，必须指定大于或等于 10,100 RU/秒的吞吐量值。 若要为分区集合设置介于 2,500 和 10,000 之间的吞吐量值，必须暂时使用 Azure 门户，因为 SDK 目前不支持这些新的较小值。
@@ -183,92 +193,101 @@ Azure DocumentDB 增加了对 [REST API 版本 2015-12-16](https://msdn.microsof
 ### <a name="reading-and-writing-documents"></a>读取和写入文档
 现在，让我们将数据插入 DocumentDB。 以下的示例类包含设备读取和对 CreateDocumentAsync 的调用，将新设备读数插入到集合。
 
-    public class DeviceReading
+```csharp
+public class DeviceReading
+{
+    [JsonProperty("id")]
+    public string Id;
+
+    [JsonProperty("deviceId")]
+    public string DeviceId;
+
+    [JsonConverter(typeof(IsoDateTimeConverter))]
+    [JsonProperty("readingTime")]
+    public DateTime ReadingTime;
+
+    [JsonProperty("metricType")]
+    public string MetricType;
+
+    [JsonProperty("unit")]
+    public string Unit;
+
+    [JsonProperty("metricValue")]
+    public double MetricValue;
+  }
+
+// Create a document. Here the partition key is extracted as "XMS-0001" based on the collection definition
+await client.CreateDocumentAsync(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"),
+    new DeviceReading
     {
-        [JsonProperty("id")]
-        public string Id;
-
-        [JsonProperty("deviceId")]
-        public string DeviceId;
-
-        [JsonConverter(typeof(IsoDateTimeConverter))]
-        [JsonProperty("readingTime")]
-        public DateTime ReadingTime;
-
-        [JsonProperty("metricType")]
-        public string MetricType;
-
-        [JsonProperty("unit")]
-        public string Unit;
-
-        [JsonProperty("metricValue")]
-        public double MetricValue;
-      }
-
-    // Create a document. Here the partition key is extracted as "XMS-0001" based on the collection definition
-    await client.CreateDocumentAsync(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"),
-        new DeviceReading
-        {
-            Id = "XMS-001-FE24C",
-            DeviceId = "XMS-0001",
-            MetricType = "Temperature",
-            MetricValue = 105.00,
-            Unit = "Fahrenheit",
-            ReadingTime = DateTime.UtcNow
-        });
-
+        Id = "XMS-001-FE24C",
+        DeviceId = "XMS-0001",
+        MetricType = "Temperature",
+        MetricValue = 105.00,
+        Unit = "Fahrenheit",
+        ReadingTime = DateTime.UtcNow
+    });
+```
 
 让我们来按分区键和 ID 读取文档，更新该文档，最后按分区键和 ID 将其删除。 请注意，读取包括 PartitionKey 值（对应 REST API 中的 `x-ms-documentdb-partitionkey` 请求标头）。
 
-    // Read document. Needs the partition key and the ID to be specified
-    Document result = await client.ReadDocumentAsync(
-      UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
+```csharp
+// Read document. Needs the partition key and the ID to be specified
+Document result = await client.ReadDocumentAsync(
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 
-    DeviceReading reading = (DeviceReading)(dynamic)result;
+DeviceReading reading = (DeviceReading)(dynamic)result;
 
-    // Update the document. Partition key is not required, again extracted from the document
-    reading.MetricValue = 104;
-    reading.ReadingTime = DateTime.UtcNow;
+// Update the document. Partition key is not required, again extracted from the document
+reading.MetricValue = 104;
+reading.ReadingTime = DateTime.UtcNow;
 
-    await client.ReplaceDocumentAsync(
-      UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      reading);
+await client.ReplaceDocumentAsync(
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  reading);
 
-    // Delete document. Needs partition key
-    await client.DeleteDocumentAsync(
-      UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
-
-
+// Delete document. Needs partition key
+await client.DeleteDocumentAsync(
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
+```
 
 ### <a name="querying-partitioned-collections"></a>查询已分区集合
 当在已分区集合中查询数据时，DocumentDB 会自动将查询路由到筛选器（如果有）中所指定分区键值对应的分区。 例如，此查询将只路由到包含分区键“XMS-0001”的分区。
 
-    // Query using partition key
-    IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"))
-        .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
-
+```csharp
+// Query using partition key
+IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"))
+    .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
+```
+    
 下面的查询在分区键 (DeviceId) 上没有筛选器，并且以扇形展开到针对分区索引执行该查询的所有分区。 请注意，必须指定 EnableCrossPartitionQuery（REST API 中的 `x-ms-documentdb-query-enablecrosspartition`）以使 SDK 跨分区执行查询。
 
-    // Query across partition keys
-    IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"), 
-        new FeedOptions { EnableCrossPartitionQuery = true })
-        .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
+```csharp
+// Query across partition keys
+IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    new FeedOptions { EnableCrossPartitionQuery = true })
+    .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
+```
+
+从 SDK 1.12.0 及更高版本开始，DocumentDB 支持 [聚合函数]（使用 SQL 对已分区的集合执行[聚合函数](documentdb-sql-query.md#Aggregates) `COUNT`、`MIN`、`MAX`、`SUM` 和 `AVG`）。 查询必须包括单个聚合运算符，并且必须在投影中包括单个值。
 
 ### <a name="parallel-query-execution"></a>并行查询执行
 DocumentDB SDK 1.9.0 及更高版本支持并行查询执行选项，这些选项可用于对已分区集合执行低延迟查询，即使在这些查询需要处理大量分区时，也是如此。 例如，以下查询配置为跨分区并行运行。
 
-    // Cross-partition Order By Queries
-    IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"), 
-        new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
-        .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
-        .OrderBy(m => m.MetricValue);
-
+```csharp
+// Cross-partition Order By Queries
+IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
+    .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
+    .OrderBy(m => m.MetricValue);
+```
+    
 可以通过调整以下参数来管理并行查询执行：
 
 * 通过设置 `MaxDegreeOfParallelism`，可以控制并行度，即，与集合的分区同时进行的网络连接的最大数量。 如果将此参数设置为 -1，则由 SDK 管理并行度。 如果 `MaxDegreeOfParallelism` 未指定或设置为 0（默认值），则与集合的分区的网络连接将有一个。
@@ -279,11 +298,13 @@ DocumentDB SDK 1.9.0 及更高版本支持并行查询执行选项，这些选�
 ### <a name="executing-stored-procedures"></a>执行存储过程
 你还可以对具有相同设备 ID 的文档执行原子事务，例如，如果你要在单个文档中维护聚合或设备的最新状态。 
 
-    await client.ExecuteStoredProcedureAsync<DeviceReading>(
-        UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
-        "XMS-001-FE24C");
-
+```csharp
+await client.ExecuteStoredProcedureAsync<DeviceReading>(
+    UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
+    new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
+    "XMS-001-FE24C");
+```
+    
 在下一节，我们将介绍如何从单个分区集合移动到已分区集合。
 
 <a name="migrating-from-single-partition"></a>
@@ -335,7 +356,7 @@ DocumentDB 最常见的使用案例之一是记录和遥测。 选取适当的�
 如果你要使用 DocumentDB 实现多租户应用程序，有两种模式来使用 DocumentDB 实现租户，一种是一个租户一个分区键，另一种是一个租户一个集合。 下面是每种模式的优缺点：
 
 * 一个租户一个分区键：在此模型中，租户共置于单个集合。 但是，可以针对单个分区执行单个租户内的文档查询和插入。 你可以在租户中的所有文档间实现事务逻辑。 由于多个租户共享一个集合，你可以通过在单个集合内集中租户资源而不是为每个租户配置额外的多余空间来节约存储和吞吐量成本。 缺点是你没有依据租户隔离性能。 性能/吞吐量的增加适用于整个集合，针对性增加适用于租户。
-* 一个租户一个集合：每个租户都有它自己的集合。 在此模型中，你可以依据租户保留性能。 因为 DocumentDB 新的基于消耗的定价模型，这种模型对拥有少量租户的多租户应用程序更加划算。
+* 一个租户一个集合：每个租户都有它自己的集合。 在此模型中，你可以依据租户保留性能。 DocumentDB 采用新的基于消耗的定价模型，这种模型对拥有少量租户的多租户应用程序更加划算。
 
 此外可以使用一种组合/分层的方法，该方法共置小租户并将较大的租户迁移至它们自己的集合中。
 
@@ -350,10 +371,5 @@ DocumentDB 最常见的使用案例之一是记录和遥测。 选取适当的�
 [2]: ./media/documentdb-partition-data/single-and-partitioned.png
 [3]: ./media/documentdb-partition-data/documentdb-migration-partitioned-collection.png  
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

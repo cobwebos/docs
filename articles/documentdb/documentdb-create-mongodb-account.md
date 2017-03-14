@@ -1,23 +1,11 @@
 ---
-title: "创建用于 MongoDB 应用的 DocumentDB 帐户 | Microsoft Docs"
-description: "通过此教程了解如何创建具有 MongoDB 协议支持的 DocumentDB 帐户（目前以预览版提供）。"
-keywords: "mongodb 应用"
-services: documentdb
-author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
-ms.assetid: 413f3ae1-a68e-43be-b0d7-fa2987644f3e
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/24/2016
-ms.author: anhoh
+redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-create-account
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 9b83a0878f45bf3a79d00ad77965308d95f33d28
-ms.openlocfilehash: 797ee3b1209e5abf545f0614c408d94391a29c8b
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: dbd15e0d2b1bc3b5f559d19961e3c45b5079e1c4
+ms.lasthandoff: 03/08/2017
+
 
 
 ---
@@ -25,7 +13,7 @@ ms.openlocfilehash: 797ee3b1209e5abf545f0614c408d94391a29c8b
 # <a name="create-a-documentdb-account-for-use-with-mongodb-apps"></a>创建用于 MongoDB 应用的 DocumentDB 帐户
 现在可以将 DocumentDB 数据库用作为 MongoDB 编写的应用的数据存储。 若要使用此功能，需要 Azure 帐户和 DocumentDB 帐户。 本教程将指导用户创建用于 MongoDB 应用的 DocumentDB 帐户。 
 
-可使用 Azure 门户或者 Azure CLI（结合 Azure Resource Manager 模板）创建支持 MongoDB 帐户的 DocumentDB。 本文说明如何使用 Azure 门户创建支持 MongoDB 帐户的 DocumentDB。 若要使用 Azure CLI 和 Azure Resource Manager 创建帐户，请参阅[自动创建支持 MongoDB 帐户的 DocumentDB](documentdb-automation-resource-manager-cli.md#quick-create-documentdb-with-mongodb-api-account)。
+可使用 Azure 门户或者 Azure CLI（结合 Azure Resource Manager 模板）创建支持 MongoDB 帐户的 DocumentDB。 本文说明如何使用 Azure 门户创建支持 MongoDB 帐户的 DocumentDB。 若要将 Azure CLI 和 Azure Resource Manager 配合使用来创建帐户，请参阅[使用 Azure CLI 2.0 自动执行 Azure DocumentDB 帐户管理](documentdb-automation-resource-manager-cli.md)。
 
 ## <a name="prerequisite"></a>先决条件
 一个 Azure 帐户。 如果没有 Azure 帐户，则创建[免费的 Azure 帐户](https://azure.microsoft.com/free/)。
@@ -71,9 +59,4 @@ ms.openlocfilehash: 797ee3b1209e5abf545f0614c408d94391a29c8b
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[连接](documentdb-connect-mongodb-account.md)到具有 MongoDB 协议支持的 DocumentDB 帐户。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

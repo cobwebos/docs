@@ -1,9 +1,9 @@
 ---
-title: "详细了解：Azure AD 密码管理 | Microsoft 文档"
+title: "详细了解：Azure Active Directory 密码管理 | Microsoft 文档"
 description: "有关 Azure AD 密码管理的高级主题，内容包括密码写回的工作原理、密码写回安全性、密码重置门户的工作原理，以及密码重置使用的数据。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: d3be2912-76c8-40a0-9507-b7b1a7ce2f8f
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: 534373f72a4181914e3b7ea98ded507418e3d299
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: 8a9e412776acf4e08658517b714d9644b172f523
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 534373f72a4181914e3b7ea98ded507418e3d299
 >
 >
 
-如果你已部署密码管理，或只是想要在部署之前深入了解密码管理工作原理的技术细节，则本部分可让你大致了解该服务背后的技术概念。 本部分将介绍以下内容：
+如果你已部署了密码管理，或只是想要在部署之前深入了解密码管理工作原理的技术细节，则本部分可让你大致了解该服务背后的技术概念。 本部分将介绍以下内容：
 
 * [**密码写回概述**](#password-writeback-overview)
   * [密码写回的工作原理](#how-password-writeback-works)
@@ -257,7 +258,7 @@ ms.openlocfilehash: 534373f72a4181914e3b7ea98ded507418e3d299
             </td>
             <td>
               <p>
-                <a href="mailto:user@domain.com">user@domain.com</a> 或 甲斐@黒川.日本</p>
+                <a href="mailto:user@domain.com">user@domain.com</a> or 甲斐@黒川.日本</p>
               <ul>
                 <li class="unordered">
 电子邮件应遵循标准格式。<br><br></li>
@@ -390,7 +391,7 @@ Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
 ```
 
-## <a name="links-to-password-reset-documentation"></a>密码重置文档的链接
+## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
 * **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
@@ -404,9 +405,4 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

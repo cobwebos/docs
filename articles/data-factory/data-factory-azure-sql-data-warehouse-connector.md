@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 445dd0dcd05aa25cc531e2d10cc32ad8f32a6e8c
-ms.openlocfilehash: 98e06e683e6ee473a0747b423ed7cf6ae2b8cfed
+ms.sourcegitcommit: aada5b96eb9ee999c5b1f60b6e7b9840fd650fbe
+ms.openlocfilehash: 2831416bbb290905835396835db2eb6cb5e7b46f
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 98e06e683e6ee473a0747b423ed7cf6ae2b8cfed
 >
 
 ## <a name="copy-data-wizard"></a>复制数据向导
-若要创建从/向 Azure SQL 数据仓库复制数据的管道，最简单的方法是使用复制数据向导。 有关使用“复制数据”向导创建管道的快速演练，请参阅[教程：使用数据工厂将数据载入 SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)。
+若要创建从/向 Azure SQL 数据仓库复制数据的管道，最简单的方法是使用复制数据向导。 有关使用“复制数据”向导创建管道的快速演练，请参阅[教程：使用数据工厂将数据加载到 SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)。
 
 > [!TIP]
 > 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure SQL 数据仓库时，如果目标存储中不存在该表，数据工厂支持使用源架构自动创建表。 尝试使用复制向导实现该操作并从[自动表创建](#auto-table-creation)了解详细信息。
@@ -559,7 +560,7 @@ GO
 5. 复制活动的关联内容中没有使用 `columnMapping`。
 
 ### <a name="staged-copy-using-polybase"></a>使用 PolyBase 的暂存复制
-源数据不满足上一部分中介绍的标准时，可通过暂存 Azure blob 存储启用复制数据。 在这种情况下，Azure 数据工厂对数据执行转换以满足 PolyBase 的数据格式要求，然后使用 PolyBase 将数据加载到 SQL 数据仓库。 有关通常如何通过暂存 Azure Blob 复制数据的详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
+源数据不满足上一部分中介绍的标准时，可通过暂存 Azure Blob 存储（不能是高级存储）启用复制数据。 在这种情况下，Azure 数据工厂对数据执行转换以满足 PolyBase 的数据格式要求，然后使用 PolyBase 将数据加载到 SQL 数据仓库。 有关通常如何通过暂存 Azure Blob 复制数据的详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
 
 > [!NOTE]
 > 使用 PolyBase 和暂存将数据从本地数据存储复制到 Azure SQL 数据仓库时，如果数据管理网关版本低于 2.4，则网关计算机上需要 JRE（Java 运行时环境），其用于将源数据转换为正确格式。 建议将网关升级到最新版本，以避免此类依赖项。
@@ -596,17 +597,13 @@ GO
 ### <a name="required-database-permission"></a>所需数据库权限
 若要使用 PolyBase，要求将数据加载到 SQL 数据仓库的用户具有目标数据库上的[“CONTROL”权限](https://msdn.microsoft.com/library/ms191291.aspx)。 一种实现方法是将该用户添加为“db_owner”角色的成员。 参阅[本节](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)了解如何进行此操作。
 
-### <a name="row-size-limitation"></a>行大小限制
-Polybase 不支持大小超过 32 KB 的行。 尝试加载行超过 32 KB 的表将导致以下错误：
+### <a name="row-size-and-data-type-limitation"></a>行大小和数据类型限制
+Polybase 加载限制为加载小于 **1MB** 的行，并且无法加载到 VARCHR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。 请参阅[此处](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)。
 
-```
-Type=System.Data.SqlClient.SqlException,Message=107093;Row size exceeds the defined Maximum DMS row size: [35328 bytes] is larger than the limit of [32768 bytes],Source=.Net SqlClient
-```
-
-如果源数据的行大小大于 32 KB，则需要将源表垂直拆分为几个小的源表，其中每个源表的最大行大小不超过限制。 然后可以使用 PolyBase 加载这些较小的表，并在 Azure SQL 数据仓库中将它们合并在一起。
+如果源数据的行大小大于 1MB，则需要将源表垂直拆分为几个小的源表，其中每个源表的最大行大小不超过限制。 然后可以使用 PolyBase 加载这些较小的表，并在 Azure SQL 数据仓库中将它们合并在一起。
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL 数据仓库资源类
-若要实现最佳吞吐量，请考虑向通过 PolyBase 将数据加载到 SQL 数据仓库的用户分配更大的资源类。 请参阅[更改用户资源类示例](https://acom-sandbox.azurewebsites.net/en-us/documentation/articles/sql-data-warehouse-develop-concurrency/#change-a-user-resource-class-example)，了解如何执行该操作。
+若要实现最佳吞吐量，请考虑向通过 PolyBase 将数据加载到 SQL 数据仓库的用户分配更大的资源类。 请参阅[更改用户资源类示例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)，了解如何执行该操作。
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的 tableName
 下表提供了示例，说明如何在数据集 JSON 中为架构和表名的各种组合指定 **tableName** 属性。
@@ -723,9 +720,4 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

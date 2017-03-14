@@ -1,10 +1,10 @@
 ---
-title: "如何使用模板在 ARM 模式下创建 NSG | Microsoft 文档"
-description: "了解如何使用模板在 ARM 下创建和部署 NSG"
+title: "创建网络安全组 - Azure Resource Manager 模板 | Microsoft 文档"
+description: "了解如何使用  Azure Resource Manager 模板创建和部署网络安全组。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: f3e7385d-717c-44ff-be20-f9aa450aa99b
@@ -15,20 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: 5e5a0283fee79b9068784ad88017e96d3ab8e729
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 627dba0f3a0a65ad75ef2799b7e5df56e9d8bfcb
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-create-nsgs-using-a-template"></a>如何使用模板创建 NSG
+# <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>使用  Azure Resource Manager 模板创建网络安全组
+
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-本文介绍 Resource Manager 部署模型。 还可[在经典部署模型中创建 NSG](virtual-networks-create-nsg-classic-ps.md)。
+本文介绍资源管理器部署模型。 还可[在经典部署模型中创建 NSG](virtual-networks-create-nsg-classic-ps.md)。
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
@@ -187,10 +190,5 @@ ms.openlocfilehash: 5e5a0283fee79b9068784ad88017e96d3ab8e729
    * **-l（或 --location）**。 要创建资源组所在的 Azure 区域。
    * **-f（或 --template-file）**。 ARM 模板文件的路径。
    * **-e（或 --parameters-file）**。 ARM 参数文件的路径。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

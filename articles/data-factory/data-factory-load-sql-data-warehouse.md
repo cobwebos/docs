@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/08/2017
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 9e61eeb9ec7895b4f436534a1fd8b2cb608cf613
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -32,50 +33,50 @@ ms.openlocfilehash: 9e61eeb9ec7895b4f436534a1fd8b2cb608cf613
 
 本文演示了如何使用数据工厂复制向导在不到 15 分钟的时间里以超过 1.2 GBps 的吞吐量将 1 TB 数据从 Azure Blob 存储加载到 Azure SQL 数据仓库。
 
-本文提供了使用复制向导将数据移动到 Azure SQL 数据仓库的分步说明。 
+本文提供了使用复制向导将数据移动到 Azure SQL 数据仓库的分步说明。
 
 > [!NOTE]
-> 有关数据工厂将数据移入/移出 Azure SQL 数据仓库的功能的一般信息，请参阅[使用 Azure 数据工厂将数据移入和移出 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文。 
-> 
+> 有关数据工厂将数据移入/移出 Azure SQL 数据仓库的功能的一般信息，请参阅[使用 Azure 数据工厂将数据移入和移出 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文。
+>
 > 还可以使用 Azure 门户、Visual Studio、PowerShell 等生成管道。有关在 Azure 数据工厂中使用复制活动的分步说明的快速演练，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。  
-> 
-> 
+>
+>
 
 ## <a name="prerequisites"></a>先决条件
 * Azure Blob 存储：此试验使用 Azure Blob 存储 (GRS) 来存储 TPC-H 测试数据集。  如果还没有 Azure 存储帐户，请参阅[如何创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
 * [TPC-H](http://www.tpc.org/tpch/) 数据：我们将使用 TPC-H 作为测试数据集。  为此，需要使用 TPC-H 工具包中的 `dbgen`，它将有助于生成数据集。  可以从 [TPC 工具](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp)下载 `dbgen` 的源代码，然后自己进行编译，或从 [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools) 下载已编译的二进制。  使用以下命令运行 dbgen.exe，为分布在 10 个文件中的 `lineitem` 表生成 1 TB 的平面文件：
-  
+
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
   * …
-  * `Dbgen -s 1000 -S **10** -C 10 -T L -v` 
-    
+  * `Dbgen -s 1000 -S **10** -C 10 -T L -v`
+
     现在将生成的文件复制到 Azure Blob。  请参阅[使用 Azure 数据工厂将数据移入和移出本地文件系统](data-factory-onprem-file-system-connector.md)，了解如何使用 ADF 复制执行此操作。    
 * Azure SQL 数据仓库：此试验将数据加载到通过 6,000 DWU 创建的 Azure SQL 数据仓库
-  
+
     有关如何创建 SQL 数据仓库数据库的详细说明，请参阅[创建 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)。  若要使用 Polybase 获取到 SQL 数据仓库的最佳加载性能，我们选择性能设置中允许的数据仓库单位 (DWU) 的最大数，即 6,000 DWU。
-  
+
   > [!NOTE]
   > 从 Azure Blob 加载时，数据加载性能与在 SQL 数据仓库中配置的 DWU 数直接成正比：
-  > 
-  > 加载 1 TB 数据到 1,000 DWU SQL 数据仓库花费 87 分钟（~200MBps 吞吐量）加载 1 TB 数据到 2,000 DWU SQL 数据仓库花费 46 分钟（~380MBps 吞吐量）加载 1 TB 数据到 6,000 DWU SQL 数据仓库花费 14 分钟（~1.2GBps 吞吐量） 
-  > 
-  > 
-  
+  >
+  > 加载 1 TB 数据到 1,000 DWU SQL 数据仓库花费 87 分钟（~200MBps 吞吐量）加载 1 TB 数据到 2,000 DWU SQL 数据仓库花费 46 分钟（~380MBps 吞吐量）加载 1 TB 数据到 6,000 DWU SQL 数据仓库花费 14 分钟（~1.2GBps 吞吐量）
+  >
+  >
+
     若要创建 6,000 DWU 的 SQL 数据仓库，可将性能滑块移动到最右侧：
-  
+
     ![性能滑块](media/data-factory-load-sql-data-warehouse/performance-slider.png)
-  
+
     对于未配置为 6,000 DWU 的现有数据库，可以使用 Azure 门户对其进行扩展。  导航到 Azure 门户中的数据库，在“概述”面板中有一个“缩放”按钮，如下图所示：
-  
+
     ![“缩放”按钮](media/data-factory-load-sql-data-warehouse/scale-button.png)    
-  
+
     单击“缩放”按钮以打开以下面板，将滑块移动到最大值，然后单击“保存”按钮。
-  
+
     ![“缩放”对话框](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
-  
+
     此实验使用 `xlargerc` 资源类将数据加载到 Azure SQL 数据仓库。
-  
+
     若要获得可能的最佳吞吐量，需要使用属于 `xlargerc` 资源类的 SQL 数据仓库用户来执行复制操作。  请参阅[更改用户资源类示例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)，了解如何执行该操作。  
 * 通过运行以下 DDL 语句在 Azure SQL 数据仓库数据库中创建目标表架构：
 
@@ -109,27 +110,27 @@ ms.openlocfilehash: 9e61eeb9ec7895b4f436534a1fd8b2cb608cf613
 
 ## <a name="launch-copy-wizard"></a>启动复制向导
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击左上角的“+ 新建”，单击“智能 + 分析”，然后单击“数据工厂”。 
+2. 单击左上角的“+ 新建”，单击“智能 + 分析”，然后单击“数据工厂”。
 3. 在“新建数据工厂”  边栏选项卡中：
-   
+
    1. 输入 **LoadIntoSQLDWDataFactory** 作为**名称**。
        Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“LoadIntoSQLDWDataFactory”不可用**，请更改该数据工厂名称（例如改为“yournameLoadIntoSQLDWDataFactory”），并尝试再次创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
    2. 选择 **Azure 订阅**。
-   3. 对于资源组，请执行以下步骤之一： 
+   3. 对于资源组，请执行以下步骤之一：
       1. 选择“使用现有资源组”并选择一个现有的资源组。
       2. 选择“新建”并输入资源组的名称。
    4. 选择数据工厂的**位置**。
    5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。  
    6. 单击“创建” 。
 4. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：
-   
+
    ![数据工厂主页](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
-5. 在“数据工厂”主页上，单击“复制数据”磁贴，启动“复制向导”。 
-   
+5. 在“数据工厂”主页上，单击“复制数据”磁贴，启动“复制向导”。
+
    > [!NOTE]
    > 如果 Web 浏览器卡在“正在授权...”处，请禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 **login.microsoftonline.com** 创建一个例外，然后尝试再次启动该向导。
-   > 
-   > 
+   >
+   >
 
 ## <a name="step-1-configure-data-loading-schedule"></a>步骤 1：配置数据加载计划
 第一步是配置数据加载计划。  
@@ -168,7 +169,7 @@ ms.openlocfilehash: 9e61eeb9ec7895b4f436534a1fd8b2cb608cf613
 
     ![复制向导 - 选择目标数据存储](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. 填写 Azure SQL 数据仓库的连接信息。  请确保指定作为 `xlargerc` 角色的成员的用户（有关详细说明，请参阅**先决条件**部分），然后单击“下一步”。 
+2. 填写 Azure SQL 数据仓库的连接信息。  请确保指定作为 `xlargerc` 角色的成员的用户（有关详细说明，请参阅**先决条件**部分），然后单击“下一步”。
 
     ![复制向导 - 目标连接信息](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
@@ -187,7 +188,7 @@ ms.openlocfilehash: 9e61eeb9ec7895b4f436534a1fd8b2cb608cf613
 ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
 ## <a name="step-5-deploy-and-monitor-load-results"></a>步骤 5：部署和监视加载结果
-1. 单击“完成”按钮以便部署。 
+1. 单击“完成”按钮以便部署。
 
     ![复制向导 - 摘要页](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
@@ -209,15 +210,9 @@ ms.openlocfilehash: 9e61eeb9ec7895b4f436534a1fd8b2cb608cf613
 * 若要提高加载速度，请考虑对临时数据使用堆。
 * 加载 Azure SQL 数据仓库完成后，请创建统计信息。
 
-有关详细信息，请参阅 [Azure SQL 数据仓库最佳实践](../sql-data-warehouse/sql-data-warehouse-best-practices.md)。 
+有关详细信息，请参阅 [Azure SQL 数据仓库最佳实践](../sql-data-warehouse/sql-data-warehouse-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [数据工厂复制向导](data-factory-copy-wizard.md) - 此文章提供有关复制向导的详细信息。 
+* [数据工厂复制向导](data-factory-copy-wizard.md) - 此文章提供有关复制向导的详细信息。
 * [复制活动性能和优化指南](data-factory-copy-activity-performance.md) - 此文章包含参考性能度量和优化指南。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

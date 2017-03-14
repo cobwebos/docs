@@ -1,9 +1,9 @@
 ---
-title: "Azure AD 密码重置 | Microsoft 文档"
+title: "Azure Active Directory 重置密码 | Microsoft 文档"
 description: "介绍 Azure AD 中的密码管理功能，包括密码重置、更改、密码管理报告，以及将密码写回到本地 Active Directory。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: be6164fc-bae1-49df-af76-761329ba70a1
@@ -12,21 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a6287228622070d566266f184dc1c32ec6c3dea5
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: 760c248c92948af2c7e9ae54b0c42f396f0376f6
+ms.lasthandoff: 02/24/2017
 
 
 ---
-# <a name="azure-ad-password-reset-for-it-administrators"></a>IT 管理员的 Azure AD 密码重置
+# <a name="azure-active-directory-password-reset-for-it-administrators"></a>Azure Active Directory 中针对 IT 管理员的密码重置
 > [!IMPORTANT]
 > 你是因为想要重置 Azure 或 O365 密码而来到这里吗？  如果是这样，请[跳到此部分](#users-how-to-manage-your-own-password)。
-> 
-> 
+>
+>
 
-利用自助服务降低成本和节省人力，一直以来都是世界各地 IT 部门追求的主要目标。  事实上，市场中充斥着各种产品，让你能够从云或本地管理本地组、密码或用户配置文件。 独树一帜的 Azure AD 提供一些现今市场上最容易使用且最强大的自助服务功能。
+利用自助服务降低成本和节省人力，一直以来都是世界各地 IT 部门追求的主要目标。  事实上，市场中充斥着各种产品，让你能够从云或本地管理本地组、密码或用户配置文件。 独树一帜的 Azure Active Directory (Azure AD) 提供了一些现今市场上最容易使用且最强大的自助服务功能。
 
 **Azure AD 密码管理**提供一组让用户随时随地从任何设备管理任何密码的功能，同时还能遵循你定义的安全策略。
 
@@ -105,7 +106,7 @@ Azure AD 密码重置根据用户使用的订阅提供 3 个级别：
 | --- | --- |
 | 如何知道某个帐户是否已设置密码重置？ |[如何为密码重置配置帐户？](active-directory-passwords-best-practices.md#what-makes-an-account-configured) |
 | 如何为用户配置密码重置？ |[为用户填充密码重置身份验证数据的方式](active-directory-passwords-best-practices.md#ways-to-populate-authentication-data) |
-| 如何手动上载用户的数据？ |[自行上传密码重置数据](active-directory-passwords-best-practices.md#uploading-data-yourself) |
+| 如何手动上载用户的数据？ |[自行上载密码重置数据](active-directory-passwords-best-practices.md#uploading-data-yourself) |
 | 如何使用 PowerShell 读取或设置用户的数据？ |[如何访问用户的密码重置数据](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users) |
 | 如何从本地同步密码重置数据？ |[密码重置使用哪些数据](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) |
 | 如何使用电子邮件市场活动促使我的用户注册并使用密码重置？ |[基于电子邮件的密码重置推广](active-directory-passwords-best-practices.md#email-based-rollout) |
@@ -169,8 +170,8 @@ Azure AD 密码重置根据用户使用的订阅提供 3 个级别：
 #### <a name="enforce-password-reset-registration-at-sign-in-to-office-365-apps---november-2015"></a>在登录 Office 365 应用时强制密码重置注册 - 2015 年 11 月
 * 现在，在启用[强制注册](active-directory-passwords-customize.md#require-users-to-register-when-signing-in)功能后，用户需要使用工作或学校帐户从他们登录的任何位置进行注册。  这可以大幅提高许多组织登记密码重置的速度。  我们发现，使用此新增功能的组织在短短 2 周内即可完成登记！
 
-#### <a name="support-for-unlocking-active-directory-accounts-without-resetting-a-password---november-2015"></a>支持在不重置密码的情况下解锁 Active Directory 帐户 - 2015 年 11 月
-* 只解锁而不重置，是近来客服中心繁重的任务之一。  事实上，许多组织有高达 70% 的密码重置预算都花在解锁帐户上。  为了满足此要求，现在你可以使用 Azure AD 密码重置启用特定功能，让用户直接解锁 AD 帐户，而不需要重置密码。  请在此处了解如何启用此功能：[设置：让用户直接解锁 AD 帐户而不必重置密码](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password)。
+#### <a name="support-for-unlocking-on-premises-ad-accounts-without-resetting-a-password---november-2015"></a>支持在不重置密码的情况下解锁本地 AD 帐户 - 2015 年 11 月
+* 只解锁而不重置，是近来客服中心繁重的任务之一。  事实上，许多组织有高达 70% 的密码重置预算都花在解锁帐户上。  为了满足此要求，现在你可以使用 Azure AD 密码重置启用特定功能，让用户直接解锁本地 AD 帐户，而不需要重置密码。  请在此处了解如何启用此功能：[设置：让用户直接解锁本地 AD 帐户而不必重置密码](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password)。
 
 #### <a name="usability-updates-to-registration-page---october-2015"></a>注册页的可用性更新 - 2015 年 11 月
 * 现在，在用户注册数据之后，他（她）只需单击“看起来不错”即可更新数据，而无需重新发送电子邮件或拨打电话。
@@ -187,16 +188,16 @@ Azure AD 密码重置根据用户使用的订阅提供 3 个级别：
 #### <a name="enforce-password-reset-registration-at-sign-in-to-azure-and-federated-apps---july-2015"></a>在登录 Azure 和联合应用时强制密码重置注册 - 2015 年 7 月
 * 除了在登录 myapps.microsoft.com 时强制注册以外，我们现在支持在登录 Azure 管理门户和任何联合单一登录应用程序期间强制注册
 
-#### <a name="security-question-localization-support---may-2015"></a>安全提问本地化支持 - 2015 年 5 月
+#### <a name="security-question-localization-support---may-2015"></a>安全问题本地化支持 - 2015 年 5 月
 * 现在，你可以在配置密码重置的安全问题时，选择以完整 O365 语言集本地化的预定义安全问题。
 
 #### <a name="account-unlock-support-during-password-reset---june-2015"></a>密码重置期间的帐户解锁支持 - 2015 年 6 月
 * 如果你正在使用密码写回并在帐户已锁定时重置密码，我们将自动解锁你的 Active Directory 帐户！
 
-#### <a name="branded-sspr-registration---april-2015"></a>带品牌的 SSPR 注册 - 2015 年 4 月
+#### <a name="branded-self-service-password-reset-sspr-registration---april-2015"></a>品牌化自助服务密码重置 (SSPR) 注册 - 2015 年 4 月
 * 密码重置注册页面现在已加上你的公司徽标！
 
-#### <a name="security-questions---march-2015"></a>安全提问 - 2015 年 3 月
+#### <a name="security-questions---march-2015"></a>安全问题 - 2015 年 3 月
 * 我们已将安全问题发布到 GA！
 
 #### <a name="account-unlock---march-2015"></a>帐户解锁 - 2015 年 3 月
@@ -209,7 +210,7 @@ Azure AD 密码重置根据用户使用的订阅提供 3 个级别：
 
 * 目前，我们支持在访问 myapps.microsoft.com 时提醒用户更新其注册的数据，但我们正努力实现对所有登录使用此功能。
 
-## <a name="links-to-password-reset-documentation"></a>密码重置文档的链接
+## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
 * **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
@@ -221,10 +222,4 @@ Azure AD 密码重置根据用户使用的订阅提供 3 个级别：
 * [**常见问题**](active-directory-passwords-faq.md) - 获取常见问题的解答
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何快速排查服务的问题
 * [**了解详细信息**](active-directory-passwords-learn-more.md) - 深入探索服务工作原理的技术详细信息
-
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 02/22/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 40f8f1b52c39a170a57168db9227a7c2fa069570
-ms.openlocfilehash: 12abed3f1220398574e04d6b367f57d86547bc61
+ms.sourcegitcommit: 56a61479971c4a03345bee8a044dbc17d16371ce
+ms.openlocfilehash: 8e87f9bd8122ec3c80d11e8ac563849f540e0cc5
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -109,7 +110,7 @@ ms.openlocfilehash: 12abed3f1220398574e04d6b367f57d86547bc61
 * 配置 Azure 订阅的安全策略： 有关详细信息，请参阅[在 Azure 安全中心设置安全策略](security-center-policies.md)。
 * 利用安全中心内的建议帮助保护 Azure 资源。 有关详细信息，请参阅[管理 Azure 安全中心内的安全建议](security-center-recommendations.md)。
 * 查看并管理当前的安全警报。 有关详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
-* 深入了解随附安全中心[标准层](security-center-pricing.md)提供的[高级威胁检测功能](security-center-detection-capabilities.md)。 可免费试用标准层 90 天。
+* 深入了解随附安全中心[标准层](security-center-pricing.md)提供的[高级威胁检测功能](security-center-detection-capabilities.md)。 标准层在前 60 天免费提供。
 * 如果存在使用安全中心方面的问题，请参阅 [Azure 安全中心常见问题解答](security-center-faq.md)。
 
 <!--Image references-->
@@ -123,9 +124,4 @@ ms.openlocfilehash: 12abed3f1220398574e04d6b367f57d86547bc61
 [8]: ./media/security-center-get-started/security-alert-detail.png
 [9]: ./media/security-center-get-started/partner-solutions.png
 [10]: ./media/security-center-get-started/welcome.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

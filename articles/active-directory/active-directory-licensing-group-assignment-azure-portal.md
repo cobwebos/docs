@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6a9cebafd1ad8f513bfab897970241f7b82b2a53
-ms.openlocfilehash: cea745934c36297f5fe0867f4335a797a3ae2515
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
+ms.openlocfilehash: 73727d8d1e5de01794589538bd67d3d698d325a0
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="assigning-licenses-to-a-group-in-azure-active-directory"></a>将许可证分配到 Azure Active Directory 中的组
+# <a name="assign-licenses-to-a-group-of-users-in-azure-active-directory"></a>将许可证分配到 Azure Active Directory 中的用户组
 
 本文逐步讲解有关将产品许可证分配到组并验证是否为组的所有成员正确分配许可证的一个基本方案。
 
@@ -105,5 +106,5 @@ ms.lasthandoff: 02/22/2017
 * [Azure Active Directory 中基于组的许可是什么？](active-directory-licensing-whatis-azure-portal.md)
 * [识别和解决 Azure Active Directory 中组的许可问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
-* [基于 Azure Active Directory 组的许可的其他方案](active-directory-licensing-group-advanced.md)
+* [Azure Active Directory 基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 

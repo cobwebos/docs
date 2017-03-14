@@ -1,9 +1,9 @@
 ---
-title: "自定义：Azure AD 密码管理 | Microsoft 文档"
+title: "自定义：Azure Active Directory 密码管理 | Microsoft 文档"
 description: "如何根据需要在 Azure AD 中自定义密码管理外观、行为和通知。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 2cddd150-8747-447a-a7cf-1d7d5775c0b3
@@ -12,19 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: 88a1d39337a8aebf58b6b35841acc4348e1baeae
+ms.lasthandoff: 02/24/2017
 
 
 ---
-# <a name="customizing-password-management-to-fit-your-organizations-needs"></a>自定义密码管理以符合组织的需求
+# <a name="customizing-password-management-to-fit-your-organizations-needs"></a>自定义密码管理以满足组织的需求
 > [!IMPORTANT]
 > **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
-> 
-> 
+>
+>
 
 为了尽可能地向用户提供最佳体验，我们建议你了解并试用你可以使用的所有密码管理配置选项。 事实上，可以转到 [Azure 经典门户](https://manage.windowsazure.com)的“Active Directory 扩展”中的配置选项卡，立即开始探索。 本主题将引导你从 [Azure 经典门户](https://manage.windowsazure.com)中目录的“配置”选项卡，完成管理员可以进行的不同密码管理自定义，包括：
 
@@ -40,7 +41,7 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
 | 如何强制用户在登录时注册？ |[基于强制注册的密码重置推广](#require-users-to-register-when-signing-in) |
 | 如何强制用户定期重新确认注册？ |[设置：用户必须在几天后重新确认其身份验证数据](#number-of-days-before-users-must-confirm-their-contact-data) |
 | 如何自定义用户联系管理员的方式？ |[设置：自定义“联系管理员”链接](#customize-the-contact-your-administrator-link) |
-| 如何让用户直接解锁 AD 帐户而不必重置密码？ |[设置：让用户直接解锁 AD 帐户而不必重置密码](#allow-users-to-unlock-accounts-without-resetting-their-password) |
+| 如何让用户直接解锁本地 AD 帐户而不必重置密码？ |[设置：让用户直接解锁 AD 帐户而不必重置密码](#allow-users-to-unlock-accounts-without-resetting-their-password) |
 | 如何为用户启用密码重置通知？ |[设置：在用户的密码重置时通知用户](#notify-users-and-admins-when-their-own-password-has-been-reset) |
 | 如何为管理员启用密码重置通知？ |[设置：在管理员重置自己的密码时通知其他管理员](#notify-admins-when-other-admins-reset-their-own-passwords) |
 | 如何自定义密码重置的外观？ |[设置：公司名称、品牌和徽标](#password-management-look-and-feel) |
@@ -140,8 +141,8 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
 
 > [!NOTE]
 > 使用的管理员帐户必须分配了 AAD Premium 许可证才能看到这些策略控件。<br><br>这些策略控件仅适用于重置密码的最终用户，而不是管理员。  **Microsoft 为管理员指定了默认的备用电子邮件和/或移动电话策略，这些策略无法更改。**
-> 
-> 
+>
+>
 
 <table>
             <tbody><tr>
@@ -302,7 +303,7 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
                   <li class="unordered">
 “安全问题”以专用、安全的方式存储在目录的用户对象上，并且只能由用户在注册期间进行回答。  出于安全目的，管理员目前无法编辑或查看这些答案。<br><br></li>
                   <li class="unordered">
-                    <strong>注意：</strong>默认情况下，只有“办公电话”和“移动电话”两个云属性才会从本地目录同步到云目录。  若要详细了解哪些本地属性同步到云，请参阅<a href="https://msdn.microsoft.com/library/azure/dn764938.aspx">同步到 Azure AD 的属性。</a><br><br></li>
+                    <strong>注意：</strong>默认情况下，只有“办公电话”和“移动电话”两个云属性才会从本地目录同步到云目录。  若要详细了解哪些本地属性同步到云，请参阅<a href="https://msdn.microsoft.com/library/azure/dn764938.aspx">同步到 Azure AD 的属性</a>。<br><br></li>
                 </ul>
                 <p>
                   <strong>注册门户：</strong>
@@ -724,7 +725,7 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
                   <li class="unordered">
 如果启用了密码写回功能，但认为存在服务配置问题，可以进入此选项卡并查看“密码写回服务状态”标签，看看是否有问题。<strong></strong><br><br></li>
                   <li class="unordered">
-可能显示的状态如下：<br><br><ul><li class="unordered"><strong>已配置 </strong>– 所有内容均按预期工作<br><br></li><li class="unordered"><strong>未配置 </strong>– 已安装写回功能，但我们不能访问此服务，请检查并确保未阻止到 443 的出站连接；如果问题仍然存在，请尝试重新安装该服务。<br><br></li></ul></li>
+可能显示的状态如下：<br><br><ul><li class="unordered"><strong>已配置</strong> – 所有内容均按预期工作<br><br></li><li class="unordered"><strong>未配置</strong> – 已安装写回功能，但我们不能访问此服务，请检查并确保未阻止到 443 的出站连接；如果问题仍然存在，请尝试重新安装该服务。<br><br></li></ul></li>
                 </ul>
                 <p>
                   <strong>注册门户：</strong>
@@ -744,12 +745,12 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
                   <li class="unordered">
 如果此开关设置为“是”，则将启用写回，因此联合用户和已进行密码哈希同步的用户将能够重置他们的密码。<strong></strong><br><br></li>
                 </ul>
-              </td>
+              </td
             </tr>
              <tr>
               <td>
                 <div id="allow-users-to-unlock-accounts-without-resetting-their-password">
-                  <p>允许用户在不重置密码的情况下解锁帐户</p>
+                  <p>允许用户直接解锁本地 Active Directory 帐户而不重置密码</p>
                 </div>
               </td>
               <td>
@@ -767,7 +768,7 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
                 </p>
                 <ul>
                   <li class="unordered">
-若要使用此功能，必须安装 2015 年 8 月或更高版本的 Azure AD Connect（v. 1.0.8667.0 或更高版本）。<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">单击此处下载最新版本的 Azure AD Connect。</a></li>
+若要使用此功能，必须安装 2015 年 8 月或更高版本的 Azure AD Connect（v. 1.0.8667.0 或更高版本）。<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">单击此处下载最新版本的 Azure AD Connect</a>。</li>
 
                   <li class="unordered">
                     <strong>注意：</strong>若要测试此功能，需要启用密码写回，并使用源自本地（例如联合或密码同步的用户）的帐户，并且有一个已锁定的帐户。  非本地并且没有锁定帐户的用户将看不到解锁其帐户的选项。</li>
@@ -864,7 +865,7 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
 <br/>
 <br/>
 
-## <a name="links-to-password-reset-documentation"></a>密码重置文档的链接
+## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
 * **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
@@ -877,9 +878,4 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
 * [**了解详细信息**](active-directory-passwords-learn-more.md) - 深入探索服务工作原理的技术详细信息
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

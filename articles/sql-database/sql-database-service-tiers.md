@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 02/09/2017
+wms.date: 02/21/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
-ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
+ms.sourcegitcommit: d830c43f860b70c6f47d94eaff5105b988158cdf
+ms.openlocfilehash: 4add7ad944e0b36e2eded5767b0123af74602e8e
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL 数据库选项和性能：了解每个服务层提供的功能
-[Azure SQL 数据库](sql-database-technical-overview.md)提供了&3; 个具有多个性能级别的服务层（**基本**、**标准**和**高级**），用于处理不同的工作负荷。 更高的性能级别提供更多的资源，旨在递增式提供更高的吞吐量。 可在不停机的情况下动态更改[服务层和性能级别](sql-database-service-tiers.md)。 基本、标准和高级服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 
+
+[Azure SQL 数据库](sql-database-technical-overview.md)提供了三个具有多个性能级别的[服务层](sql-database-service-tiers.md)（**基本**、**标准**和**高级**），用于处理不同的工作负荷。 更高的性能级别提供更多的资源，旨在递增式提供更高的吞吐量。 可在不停机的情况下动态更改服务层和性能级别。 基本、标准和高级服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 
 
 可以使用选定[性能级别](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)上的专用资源创建单一数据库。 还可在[弹性池](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)中管理多个数据库，弹性池中的资源在整个数据库中共享。 可用于单一数据库的资源以数据库事务单位 (DTU) 表示，弹性池以弹性 DTU (eDTU) 表示。 有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU？](sql-database-what-is-a-dtu.md) 
 
@@ -48,7 +50,7 @@ ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
 确定了最低服务层后，就可以确定数据库的性能级别（DTU 数）。 通常情况下，可以先使用标准 S2 和 S3 性能级别。 对于具有高 CPU 或 IO 要求的数据库，开始适合使用高级性能级别。 高级版提供更多的 CPU，并且一开始就提供比最高标准性能水平高出 10 倍的 IO。
 
 ## <a name="single-database-service-tiers-and-performance-levels"></a>单一数据库服务层和性能级别
-对于单一数据库，每个服务层内都有多个性能级别。 你可以灵活选择最能满足你的工作负荷需求的级别。 如果你需要增加或减少工作负荷，可以轻松更改数据库层。 有关详细信息，请参阅 [更改数据库服务层和性能级别](sql-database-service-tiers.md) 。
+对于单一数据库，每个服务层内都有多个性能级别。 可以使用 [Azure 门户](sql-database-manage-single-databases-portal.md)、[PowerShell](sql-database-manage-single-databases-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C# 和 REST API 灵活选择最适合你的工作负荷的要求的级别。 
 
 尽管有多个托管的数据库，你的数据库仍可确保获得一组资源，并且数据库的预期性能特征不受影响。
 
@@ -60,7 +62,7 @@ ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
 
 ## <a name="scaling-up-or-scaling-down-a-single-database"></a>上下缩放单一数据库
 
-在最初选择服务层和性能级别之后，可根据实际经验动态地上下缩放单一数据库。 
+在最初选择服务层和性能级别之后，可根据实际经验动态地上下缩放单一数据库。 如果你需要向上或向下缩放，可以使用 [Azure 门户](sql-database-manage-single-databases-portal.md)、[PowerShell](sql-database-manage-single-databases-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C# 和 REST API 轻松更改数据库层。 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
@@ -96,9 +98,7 @@ ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
 * 更改每个数据库的最小 eDTU 数或每个数据库的最大 eDTU 数通常可在五分钟或更少的时间内完成。
 * 更改池大小 (eDTU) 所需的时间取决于池中所有数据库的总大小。 更改平均起来每 100 GB 需要 90 分钟或更短的时间。 例如，如果池中所有数据库的总空间为 200 GB，则更改每个池的池 eDTU 时，预计延迟为 3 小时或更短的时间。
 
-> [!IMPORTANT]
-> 如需详细步骤，请参阅[使用 Azure 门户管理弹性池](sql-database-elastic-pool-manage-portal.md)、[使用 Powershell 管理弹性池](sql-database-elastic-pool-manage-powershell.md)、[使用 Transact-SQL 管理弹性池](sql-database-elastic-pool-manage-tsql.md)或[使用 C# 管理弹性池](sql-database-elastic-pool-manage-csharp.md)。
->
+如需详细步骤，请参阅[使用 Azure 门户管理弹性池](sql-database-elastic-pool-manage-portal.md)、[使用 Powershell 管理弹性池](sql-database-elastic-pool-manage-powershell.md)、[使用 Transact-SQL 管理弹性池](sql-database-elastic-pool-manage-tsql.md)或[使用 C# 管理弹性池](sql-database-elastic-pool-manage-csharp.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -106,10 +106,5 @@ ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
 * 了解如何[监视、管理弹性池和调整其大小](sql-database-elastic-pool-manage-portal.md)以及如何[监视单一数据库的性能](sql-database-single-database-monitor.md)。
 * 你了解了 SQL 数据库层，接下来请使用[免费帐户](https://azure.microsoft.com/pricing/free-trial/)试用一下这些层并了解[如何创建首个 SQL 数据库](sql-database-get-started.md)。
 * 对于迁移方案，可使用 [DTU 计算器](http://dtucalculator.azurewebsites.net/)估计所需的 DTU 数。 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

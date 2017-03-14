@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 02/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
-ms.openlocfilehash: 88f746a4802e13e062f4414e5d2032dfcee565b7
+ms.sourcegitcommit: 5046ec3f6a29fb4791cd6badc67c2111a9e3ab2c
+ms.openlocfilehash: 132ecec8aef2f166753214fce410237103583c08
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -186,9 +187,7 @@ ms.openlocfilehash: 88f746a4802e13e062f4414e5d2032dfcee565b7
 | --- | --- | --- |
 | type |type 属性必须设置为：**Web** |是 |
 | URL |Web 源的 URL |是 |
-| authenticationType |匿名或基本。 |是 |
-| userName |基本身份验证的用户名。 |是（对于基本身份验证） |
-| password |基本身份验证的密码。 |是（对于基本身份验证） |
+| authenticationType |匿名。 |是 |
 
 ### <a name="using-anonymous-authentication"></a>使用匿名身份验证
 
@@ -202,25 +201,6 @@ ms.openlocfilehash: 88f746a4802e13e062f4414e5d2032dfcee565b7
         {
             "authenticationType": "Anonymous",
             "url" : "https://en.wikipedia.org/wiki/"
-        }
-    }
-}
-```
-
-### <a name="using-basic-authentication"></a>使用基本身份验证
-
-```JSON
-{
-    "name": "web",
-    "properties":
-    {
-        "type": "Web",
-        "typeProperties":
-        {
-            "authenticationType": "basic",
-            "url" : "http://myit.mycompany.com/",
-            "userName": "Administrator",
-            "password": "password"
         }
     }
 }
@@ -296,9 +276,4 @@ ms.openlocfilehash: 88f746a4802e13e062f4414e5d2032dfcee565b7
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

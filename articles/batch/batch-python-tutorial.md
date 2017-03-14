@@ -215,7 +215,7 @@ Batch 包含的内置支持支持与 Azure 存储空间交互。 存储帐户中
 
 使用列表推导，针对集合中的每个文件调用 `upload_file_to_container` 函数并填充两个 [ResourceFile][py_resource_file] 集合。 `upload_file_to_container` 函数如下所示：
 
-```
+```python
 def upload_file_to_container(block_blob_client, container_name, file_path):
     """
     Uploads a local file to an Azure Blob storage container.
@@ -572,7 +572,7 @@ def download_blobs_from_container(block_blob_client,
 ## <a name="step-8-delete-containers"></a>步骤 8：删除容器
 由于你需要对位于 Azure 存储空间中的数据付费，因此我们建议删除 Batch 作业不再需要的所有 Blob。 在 *python_tutorial_client.py* 中，可通过调用 [BlockBlobService.delete_container][py_delete_container] 三次来实现此目的：
 
-```
+```python
 # Clean up storage resources
 print('Deleting containers...')
 blob_client.delete_container(app_container_name)

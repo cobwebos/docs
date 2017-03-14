@@ -1,5 +1,5 @@
 ---
-title: "存在现有的租户时如何使用 Azure AD Connect | Microsoft 文档"
+title: "Azure AD Connect：已具有 Azure AD 时 | Microsoft 文档"
 description: "本主题介绍当存在现有的 Azure AD 租户时如何使用 Connect。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/22/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: e358f6d1937a45f375777cea1153b975a745a719
-ms.openlocfilehash: 160a3ae7190dab76eee4634bd6babb5b047cd5ac
+ms.sourcegitcommit: f59028a2f909914222236f3b3575afd0949b4277
+ms.openlocfilehash: c89e206462856d25a81729e7028065ac1cd13ef3
+ms.lasthandoff: 02/23/2017
 
 ---
 
@@ -26,7 +27,7 @@ ms.openlocfilehash: 160a3ae7190dab76eee4634bd6babb5b047cd5ac
 ## <a name="the-basics"></a>基础知识
 Azure AD 中的对象在云中 (Azure AD) 或本地掌控。 对于单个对象而言，无法在本地管理一些属性，在 Azure AD 中管理另一些属性。 每个对象都有一个标志，指示对象的管理位置。
 
-可以在本地管理一些用户，在云中管理另一些用户。 下面是此配置的常见应用情景：某家组织既有办公室工作人员，也有蓝领工人。 办公员工作人员使用本地 AD 帐户，蓝领工人则不是。 这样，就需要在本地管理一些用户，在 Azure AD 中管理另一些用户。
+可以在本地管理一些用户，在云中管理另一些用户。 下面是此配置的常见应用情景：某家组织既有会计人员，也有销售人员。 会计人员有本地 AD 帐户，但销售人员没有，他们在 Azure AD 中有帐户。 这样，就需要在本地管理一些用户，在 Azure AD 中管理另一些用户。
 
 如果你最初在 Azure AD 中管理用户，而这些用户同时又在本地 AD 中，后来你想要使用 Connect，那么，就需要考虑到其他一些因素。
 
@@ -60,9 +61,4 @@ Azure AD 中的对象在云中 (Azure AD) 或本地掌控。 对于单个对象�
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

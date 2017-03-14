@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/12/2017
+ms.date: 02/28/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 4b7912b48ef37eac3148582d1d635d8a4c4a4b44
-ms.openlocfilehash: 8ee5dfea961984bd01a24815b9d3c94f486a57d7
-
+ms.sourcegitcommit: ca145339ab14ef29851b53deca9be9ad137317c9
+ms.openlocfilehash: 77d3a4114b23114c0b4bf97a461cee2356d66a4a
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="azure-automation-hybrid-runbook-workers"></a>Azure 自动化混合 Runbook 辅助角色
+
+# <a name="automate-resources-in-your-data-center-with-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心内的资源实现自动化
 Azure 自动化中的 Runbook 无法访问你本地数据中心的资源，因为它们运行在 Azure 云中。  利用 Azure 自动化的混合 Runbook 辅助角色功能，你可以在位于数据中心的计算机上运行 Runbook，以便管理本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后会发送到一个或多个本地计算机。  
 
 下图说明了此功能。<br>  
@@ -34,7 +35,7 @@ Azure 自动化中的 Runbook 无法访问你本地数据中心的资源，因�
 > [!NOTE]
 > 为了使用所需状态配置 (DSC) 管理支持混合 Runbook 辅助角色的服务器配置，需将其添加为 DSC 节点。  若要进一步了解如何载入它们以供 DSC 管理，请参阅[载入由 Azure Automation DSC 管理的计算机](automation-dsc-onboarding.md)。           
 ><br>
->目前，如果启用[更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)，则任何连接到 OMS 工作区的 Windows 计算机都会自动配置为混合 Runbook 辅助角色，以便支持属于该解决方案一部分的 Runbook。  但是，该计算机不会注册到自动化帐户中创建的任何混合辅助角色组，并且无法将它添加到混合辅助角色组来运行自己的 Runbook。  如果 Windows 计算机已指定为混合 Runbook 辅助角色并连接到 OMS 工作区，则需先将其从 OMS 工作区删除，然后才能添加解决方案，防止 Runbook 出现无法正常工作的情况。  
+>如果启用[更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)，则连接到 OMS 工作区的任何 Windows 计算机将自动配置为混合 Runbook 辅助角色，以支持将 Runbook 用作此解决方案的一部分。  但是，该计算机未注册到任何已在自动化帐户中定义的混合辅助角色组。  只要将同一个帐户同时用于解决方案和混合 Runbook 辅助角色组成员身份，即可将该计算机添加到自动化帐户的混合 Runbook 辅助角色组，以支持自动化 Runbook。  此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。  
 
 
 ## <a name="hybrid-runbook-worker-groups"></a>混合 Runbook 辅助角色组
@@ -56,7 +57,7 @@ Azure 自动化中的 Runbook 无法访问你本地数据中心的资源，因�
 * 请考虑使用实际位于或接近自动化帐户所在区域的计算机，因为当作业完成时，作业数据将发回到 Azure 自动化。
 
 ### <a name="configure-proxy-and-firewall-settings"></a>配置代理和防火墙设置
-要使本地混合 Runbook 辅助角色连接到并注册到 Microsoft Operations Management Suite (OMS) 服务，它必须有权访问下面所述的端口号和 URL。  除了这些端口和 URL 以外，还需要有权访问 [Microsoft Monitoring Agent 连接 OMS 时所要使用的端口和 URL](../log-analytics/log-analytics-proxy-firewall.md#configure-proxy-and-firewall-settings-with-the-microsoft-monitoring-agent)。 如果使用代理服务器在代理与 OMS 服务之间通信，则需要确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问。
+要使本地混合 Runbook 辅助角色连接到并注册到 Microsoft Operations Management Suite (OMS) 服务，它必须有权访问下面所述的端口号和 URL。  除了这些端口和 URL 以外，还需要有权访问 [Microsoft Monitoring Agent 连接 OMS 时所要使用的端口和 URL](../log-analytics/log-analytics-proxy-firewall.md#configure-settings-with-the-microsoft-monitoring-agent)。 如果使用代理服务器在代理与 OMS 服务之间通信，则需要确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问。
 
 下面的信息列出了混合 Runbook 辅助角色与自动化通信时所要使用的端口和 URL。
 
@@ -248,9 +249,4 @@ Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任�
 ## <a name="next-steps"></a>后续步骤
 * 若要详细了解其他可用于启动 Runbook 的方法，请参阅[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md)。  
 * 若要了解如何通过不同过程使用文本编辑器在 Azure 自动化中处理 PowerShell Runbook 和 PowerShell 工作流 Runbook，请参阅[在 Azure 自动化中编辑 Runbook](automation-edit-textual-runbook.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

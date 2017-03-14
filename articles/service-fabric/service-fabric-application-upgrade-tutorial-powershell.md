@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2016
+ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 1825e1400b95eb2a810082b6a3f15324261084b0
-ms.openlocfilehash: 210f368598f0073f11c9d6f9be2fb2220eed29e0
+ms.sourcegitcommit: 3cd1c20151d02fb2a520c5b6d510597828847234
+ms.openlocfilehash: 0a9460e25b54ad51c0b0cb0db39be75dac01ed51
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -45,9 +46,9 @@ ms.openlocfilehash: 210f368598f0073f11c9d6f9be2fb2220eed29e0
 > 
 > 
 
-在 Visual Studio 中构建项目后，可以使用 PowerShell 命令 **Copy-ServiceFabricApplicationPackage** 将应用程序包复制到 ImageStore。 下一个步骤是使用 **Register-ServiceFabricApplicationPackage** cmdlet 将应用程序注册到 Service Fabric 运行时。 最后一个步骤是使用 **New-ServiceFabricApplication** cmdlet 启动应用程序的实例。  这三个步骤类似于使用 Visual Studio 中的“**部署**”菜单项。
+在 Visual Studio 中构建项目后，可以使用 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) 将应用程序包复制到 ImageStore。 如果要在本地验证应用包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) cmdlet。 下一个步骤是使用 [Register-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) cmdlet 将应用程序注册到 Service Fabric 运行时。 最后一个步骤是使用 [New-ServiceFabricApplication](/powershell/servicefabric/vlatest/new-servicefabricapplication) cmdlet 启动应用程序的实例。  这三个步骤类似于使用 Visual Studio 中的“**部署**”菜单项。
 
-现在可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 应用程序具有一个 Web 服务，可通过在 Internet Explorer 地址栏中键入 [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) 导航到该 Web 服务。  你应在屏幕上看到一些四处移动的浮动视觉对象。  此外，可使用 **Get-ServiceFabricApplication** 检查应用程序状态。
+现在可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 应用程序具有一个 Web 服务，可通过在 Internet Explorer 地址栏中键入 [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) 导航到该 Web 服务。  你应在屏幕上看到一些四处移动的浮动视觉对象。  此外，可使用 [Get-ServiceFabricApplication](/powershell/servicefabric/vlatest/get-servicefabricapplication) 检查应用程序状态。
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>步骤 2：更新可视对象示例
 你可能会注意到，使用步骤 1 中部署的版本，视觉对象不会旋转。 让我们将此应用程序升级到可视对象也会旋转的版本。
@@ -92,7 +93,7 @@ UpgradeDomainTimeoutSec = 1200
 UpgradeTimeout = 3000
 
 ## <a name="step-4-prepare-application-for-upgrade"></a>步骤 4：准备应用程序升级
-现在，应用程序已生成并准备好进行升级。 如果以管理员身份打开 PowerShell 窗口并键入 **Get-ServiceFabricApplication**，将会看到已部署 **VisualObjects** 的 1.0.0.0 应用程序类型。  
+现在，应用程序已生成并准备好进行升级。 如果以管理员身份打开 PowerShell 窗口并键入 [Get-ServiceFabricApplication](/powershell/servicefabric/vlatest/get-servicefabricapplication)，将会看到已部署 **VisualObjects** 的 1.0.0.0 应用程序类型。  
 
 应用程序包存储在解压 Service Fabric SDK 的位置，其相对路径为 *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*。 该目录中应会出现一个“Package”文件夹，这是存储应用程序包的位置。 请检查时间戳，确保它是最新版本（可能还需要相应地修改路径）。
 
@@ -103,7 +104,7 @@ Copy-ServiceFabricApplicationPackage  -ApplicationPackagePath .\Samples\Services
 -ImageStoreConnectionString fabric:ImageStore   -ApplicationPackagePathInImageStore "VisualObjects\_V2"
 ```
 
-下一步是向 Service Fabric 注册此应用程序，可使用以下命令执行此操作：
+下一步是将此应用程序注册到 Service Fabric，这可以使用 [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) 命令来执行：
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
@@ -112,7 +113,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObject
 如果上面的命令未成功，可能需要重新生成所有服务。 如步骤 2 中所述，你可能还需要更新 WebService 版本。
 
 ## <a name="step-5-start-the-application-upgrade"></a>步骤 5：启动应用程序升级
-现在，我们将使用以下命令启动应用程序升级：
+现在你可以使用 [Start-ServiceFabricApplicationUpgrade](/powershell/servicefabric/vlatest/start-servicefabricapplicationupgrade) 命令开始升级应用程序：
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -ApplicationTypeVersion 2.0.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000   -FailureAction Rollback -Monitored
@@ -121,7 +122,11 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 应用程序名称与 *ApplicationManifest.xml* 文件中所述的相同。 Service Fabric 使用此名称来确定升级的应用程序。 如果设置的超时太短，则可能遇到一条说明该问题的失败消息。 请参阅故障排除部分，或增加超时值。
 
-现在，应用程序升级继续进行，可以使用 Service Fabric Explorer 或以下 PowerShell 命令对其进行监视：**Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects**。
+现在，在应用程序升级进行时，你可以使用 Service Fabric Explorer 或 PowerShell 命令 [Get-ServiceFabricApplicationUpgrade](/powershell/servicefabric/vlatest/get-servicefabricapplicationupgrade) 对其进行监视： 
+
+```powershell
+Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
+```
 
 几分钟后，使用上述 PowerShell 命令获得的状态应说明所有更新域均已升级（已完成）。 此外，浏览器窗口中的视觉对象已开始旋转！
 
@@ -137,10 +142,5 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

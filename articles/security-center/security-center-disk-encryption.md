@@ -1,23 +1,7 @@
----
-title: "加密 Azure 虚拟机 | Microsoft Docs"
-description: "本文档介绍如何在收到 Azure 安全中心的警报后加密 Azure 虚拟机。"
-services: security, security-center
-documentationcenter: na
-author: TomShinder
-manager: swadhwa
-editor: 
-ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
-ms.service: security
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/27/2016
-ms.author: tomsh
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 83e277fe261338aed960dea8e2ab15cbff3c895e
+le--- title: 加密 Azure 虚拟机 | Microsoft 文档 description: 本文档介绍了如何在收到 Azure 安全中心的警报后加密 Azure 虚拟机。
+services: 安全性, 安全中心 documentationcenter: na author: TomShinder manager: swadhwa editor: ''
 
+ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5 ms.service: security ms.devlang: na ms.topic: hero-article ms.tgt_pltfrm: na ms.workload: na ms.date: 05/27/2016 ms.author: tomsh
 
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>加密 Azure 虚拟机
@@ -26,7 +10,7 @@ ms.openlocfilehash: 83e277fe261338aed960dea8e2ab15cbff3c895e
 ![磁盘加密建议](./media/security-center-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
-> 本文档中的信息适用于 Azure 安全中心预览版。
+> 本文档中的信息适用于在不使用密钥加密密钥（该密钥是使用“Azure 备份”备份虚拟机时必需的）的情况下对虚拟机进行加密。 有关如何使用密钥加密密钥支持将 Azure 备份用于已加密 Azure 虚拟机的信息，请参阅文章 [Windows 和 Linux Azure 虚拟机的 Azure 磁盘加密](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)。
 >
 >
 
@@ -178,9 +162,3 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) （管理和响应 Azure 安全中心的安全警报）- 了解如何管理和响应安全警报
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

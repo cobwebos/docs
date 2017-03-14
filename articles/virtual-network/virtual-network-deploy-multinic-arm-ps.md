@@ -1,10 +1,10 @@
 ---
-title: "使用 PowerShell 创建具有多个 NIC 的 VM | Microsoft 文档"
-description: "了解如何使用 PowerShell 通过 Azure Resource Manager 创建具有多个 NIC 的 VM。"
+title: "创建具有多个 NIC 的 VM - Azure PowerShell | Microsoft 文档"
+description: "了解如何使用 PowerShell 创建具有多个 NIC 的 VM。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 88880483-8f9e-4eeb-b783-64b8613407d9
@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bd5f3b3cd46ce347896ed9ef229e438b2a3c830f
-ms.openlocfilehash: f2d9ee0d7e7d1168407e545de4f2614e7d12a9b3
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: ae6c92d4f005b389de2d65c30113580190914b42
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -226,8 +228,8 @@ ms.openlocfilehash: f2d9ee0d7e7d1168407e545de4f2614e7d12a9b3
         Tags                         :
         TagsText                     : null
         AvailabilitySetReference     : Microsoft.Azure.Management.Compute.Models.AvailabilitySetReference
-        AvailabilitySetReferenceText :  {
-                                    "ReferenceUri": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend/providers/Microsoft.Compute/availabilitySets/ASDB"
+        AvailabilitySetReferenceText :     {
+                                     "ReferenceUri": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend/providers/Microsoft.Compute/availabilitySets/ASDB"
                                     }
         Extensions                   :
         ExtensionsText               : null
@@ -335,9 +337,4 @@ ms.openlocfilehash: f2d9ee0d7e7d1168407e545de4f2614e7d12a9b3
         TrackingOperationId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         RequestId           : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         StatusCode          : OK
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
