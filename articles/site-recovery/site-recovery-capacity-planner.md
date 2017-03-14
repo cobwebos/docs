@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: 7ec48138cf18cf50dc34f28e177c8d774034090b
+ms.sourcegitcommit: d4183b73bcb0441c9ad5f12e7a3a1e4d8e31f4b5
+ms.openlocfilehash: 243fbea75c4ba9b280c65a378d6f2d069add1098
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -38,7 +39,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
 2. 确定已复制数据的每日更改（改动）率。 为此，请按以下步骤操作：
 
    * 如果是在复制 Hyper-V VM，则可下载 [Hyper-V 容量计划工具](https://www.microsoft.com/download/details.aspx?id=39057)来获取更改率。 [详细了解](site-recovery-capacity-planning-for-hyper-v-replication.md)此工具。 我们建议你运行此工具一周以上的时间以获取平均值。
-   * 如果你是在复制 VMware 虚拟机，则可使用 [vSphere 容量规划工具](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance)来计算改动率。
+   * 如果你是在复制 VMware 虚拟机，则可使用 [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) 来计算改动率。
    * 如果要复制物理服务器，则需要手动进行估算。
 
 ## <a name="run-the-quick-planner"></a>运行快速规划器
@@ -49,7 +50,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
 3. 在“Capacity Planner”工作表中输入所需信息。 你必须填写以下屏幕快照中标有红圈的所有字段。
 
    * 在“选择你的方案”中，选择“从 Hyper-V 到 Azure”或“从 VMware/物理设备到 Azure”。
-   * 在“平均每日数据更改率(%)”中输入使用 [Hyper-V 容量计划工具](site-recovery-capacity-planning-for-hyper-v-replication.md)或 [vSphere 容量计划工具](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance)收集的信息。  
+   * 在“平均每日数据更改率(%)”中输入使用 [Hyper-V 容量计划工具](site-recovery-capacity-planning-for-hyper-v-replication.md)或 [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) 收集的信息。  
    * “**压缩**”仅适用于将 VMware VM 或物理服务器复制到 Azure 时提供的压缩。 我们的估计值是 30% 或以上，不过用户可以根据需要修改此设置。 将 Hyper-V VM 复制到 Azure 时，如果需要进行压缩，可以使用第三方工具，例如 Riverbed。
    * 在“保留输入”中，指定副本应保留的时间。 如果复制的是 VMware 或物理服务器，则请输入天数值。 如果复制的是 Hyper-V，则请以小时为单位指定时间。
    * 在“完成成批虚拟机的初始复制所需的小时数”和“初始复制批处理的虚拟机数”中，可以输入用于计算初始复制要求的设置。  部署 Site Recovery 时，应上载整个初始数据集。
@@ -119,16 +120,11 @@ AA 到 AE 列为输出，提供的是每个 VM 的信息。
     > 标准存储和高级存储的 IOPS 在 VM 级别（而非磁盘级别）进行计算。 标准虚拟机最多可处理每个磁盘 500 IOPS。 如果磁盘的 IOPS 大于 500，则需要高级存储。 不过，如果某个磁盘的 IOPS 超出 500 但所有 VM 磁盘的 IOPS 仍在标准 Azure VM 的支持范围（VM 大小、磁盘数、适配器数、CPU、内存）内，则规划器会选取标准 VM 而不是 DS 或 GS 系列。 需要使用相应的 DS 或 GS 系列 VM 来手动更新“映射 Azure 大小”单元格。
 
 
-1. 输入所有详细信息以后，单击“将数据提交到规划器工具”以打开“Capacity Planner”。工作负荷会突出显示，以表明其是否符合受保护资格。
+输入所有详细信息以后，单击“将数据提交到规划器工具”以打开“Capacity Planner”。工作负荷会突出显示，以表明其是否符合受保护资格。
 
 ### <a name="submit-data-in-the-capacity-planner"></a>在容量规划器中提交数据
 1. 当你打开“**容量规划器**”工作表时，该表会根据你所指定的设置进行填充。 “工作负荷”一词会出现在“基础输入源”单元格中，用来表示输入是“工作负荷限定”工作表。
 2. 如果想要进行更改，则需修改“工作负荷限定”工作表，然后再次单击“将数据提交到规划器工具”。  
 
    ![容量规划器](./media/site-recovery-capacity-planner/capacity-planner.png)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

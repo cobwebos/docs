@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 01/25/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 43e818b0b60045f9e88d587441d39f46ab2fbfad
-ms.openlocfilehash: e529461d3c6e1876572848fbf6af5b0a1c64ac30
+ms.sourcegitcommit: 511e61552ec0a2c862ebd99fd881f87b56b69398
+ms.openlocfilehash: 84eabb9c898d32efeb6e1c4b1f17b683940b4c04
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: e529461d3c6e1876572848fbf6af5b0a1c64ac30
 > * [复制到归客户所有的辅助站点](site-recovery-support-matrix-to-sec-site.md)
 
 
-本文总结了复制和恢复到 Azure 时 Azure Site Recovery 支持的配置和组件。 有关 Azure Site Recovery 的详细先决条件，请参阅 [Site Recovery 最佳做法](site-recovery-best-practices.md)。
+本文总结了复制和恢复到 Azure 时 Azure Site Recovery 支持的配置和组件。 有关 Azure Site Recovery 要求的详细信息，请参阅[先决条件](site-recovery-prereq.md)。
 
 
 ## <a name="support-for-deployment-options"></a>部署选项支持
@@ -64,7 +65,7 @@ ms.openlocfilehash: e529461d3c6e1876572848fbf6af5b0a1c64ac30
 
 ## <a name="support-for-replicated-machine-os-versions"></a>已复制的计算机操作系统版本支持
 
-复制到 Azure 时，受保护的虚拟机必须符合 [Azure 要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+复制到 Azure 时，受保护的虚拟机必须符合 [Azure 要求](#failed-over-azure-vm-requirements)。
 下表汇总了使用 Azure Site Recovery 时多种部署方案中的已复制操作系统支持。 该支持适用于在所提及的 OS 上运行的所有工作负荷。
 
  **VMware/物理服务器** | **Hyper-V（无 Virtual Machine Manager）** | **Hyper-V（具有 Virtual Machine Manager）**
@@ -147,7 +148,7 @@ RDM | 是<br/><br/> 不适用于物理服务器 | 不适用 | 不适用
 
 **Azure 存储空间** | **VMware/物理服务器** | **Hyper-V（无 Virtual Machine Manager）** | **Hyper-V（具有 Virtual Machine Manager）**
 --- | --- | --- | ---
-LRS | 是 | 是 | 是 
+LRS | 是 | 是 | 是
 GRS | 是 | 是 | 是
 冷存储 | 否 | 否 | 否
 热存储| 否 | 否 | 否
@@ -206,10 +207,5 @@ HUB | 是 | 是 | 是
 
 
 ## <a name="next-steps"></a>后续步骤
-[准备部署](site-recovery-best-practices.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+[检查先决条件](site-recovery-prereq.md)
 

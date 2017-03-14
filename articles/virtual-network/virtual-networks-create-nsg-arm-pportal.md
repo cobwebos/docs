@@ -1,10 +1,10 @@
 ---
-title: "如何使用 Azure 门户在 ARM 模式下创建 NSG | Microsoft 文档"
-description: "了解如何使用 Azure 门户在 ARM 模式下创建和部署 NSG"
+title: "创建网络安全组 - Azure 门户 | Microsoft 文档"
+description: "了解如何使用 Azure 门户创建和部署网络安全组。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 5bc8fc2e-1e81-40e2-8231-0484cd5605cb
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7c00b45be99d254c1967bff8a1150ad4c1eaab6d
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 865032f350735d35668bb199ccf1ef3f0fae81de
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-manage-nsgs-using-the-azure-portal"></a>如何使用 Azure 门户管理 NSG
+# <a name="create-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户创建网络安全组
+
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
@@ -92,10 +95,5 @@ ms.openlocfilehash: 7c00b45be99d254c1967bff8a1150ad4c1eaab6d
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理现有 NSG](virtual-network-manage-nsg-arm-portal.md)
 * 为 NSG [启用日志记录](virtual-network-nsg-manage-log.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

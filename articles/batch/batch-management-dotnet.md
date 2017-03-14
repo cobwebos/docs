@@ -13,15 +13,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 94d2de0d18863872510ed03a5701f4fc6d133659
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: c47e9263e1eefe8d1c3c0e164a186f095ca88a80
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="manage-azure-batch-accounts-and-quotas-with-batch-management-net"></a>使用 Batch Management .NET 管理 Azure Batch 帐户和配额
+# <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>通过用于 .NET 的 Batch Management 客户端库管理 Batch 帐户和配额
+
 > [!div class="op_single_selector"]
 > * [Azure 门户](batch-account-create-portal.md)
 > * [Batch Management .NET](batch-management-dotnet.md)
@@ -225,9 +228,4 @@ Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进�
 [1]: ./media/batch-management-dotnet/portal-01.png
 [2]: ./media/batch-management-dotnet/portal-02.png
 [3]: ./media/batch-management-dotnet/portal-03.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

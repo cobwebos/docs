@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 06/23/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: f72ae06c2e31de5d8a1121a9e265c23f016fffe9
+ms.sourcegitcommit: f2d009477a614c3b2876ce98a355d3775abf772b
+ms.openlocfilehash: 04f2d5d8e501ebf41cf95ea925d238f64b096c1d
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: f72ae06c2e31de5d8a1121a9e265c23f016fffe9
         "properties": {
             "enabledForDeployment": bool,
             "enabledForTemplateDeployment": bool,
-            "enabledForVolumeEncryption": bool,
+            "enabledForDiskEncryption": bool,
             "tenantId": string,
             "accessPolicies": [
                 {
@@ -75,7 +76,7 @@ ms.openlocfilehash: f72ae06c2e31de5d8a1121a9e265c23f016fffe9
 | --- | --- |
 | enabledForDeployment |布尔<br />可选<br />**true** 或 **false**<br /><br />指定是否已为虚拟机或 Service Fabric 部署启用了保管库。 |
 | enabledForTemplateDeployment |布尔<br />可选<br />**true** 或 **false**<br /><br />指定是否在 Resource Manager 模板部署中启用了保管库。 有关详细信息，请参阅[在部署期间传递安全值](resource-manager-keyvault-parameter.md) |
-| enabledForVolumeEncryption |布尔<br />可选<br />**true** 或 **false**<br /><br />指定是否为卷加密启用了保管库。 |
+| enabledForDiskEncryption |布尔<br />可选<br />**true** 或 **false**<br /><br />指定是否为卷加密启用了保管库。 |
 | tenantId |String<br />必选<br />**全局唯一标识符**<br /><br />订阅的租户标识符。 可以使用 [Get-AzureRmSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) PowerShell cmdlet 或 **azure account show** Azure CLI 命令来检索该值。 |
 | accessPolicies |Array<br />必选<br />[accessPolicies 对象](#accesspolicies)<br /><br />最多包含 16 个对象的数组，指定用户或服务主体的权限。 |
 | sku |对象<br />必选<br />[sku 对象](#sku)<br /><br />密钥保管库的 SKU。 |
@@ -169,7 +170,7 @@ ms.openlocfilehash: f72ae06c2e31de5d8a1121a9e265c23f016fffe9
                     "description": "Specifies if the vault is enabled for ARM template deployment"
                 }
             },
-            "enableVaultForVolumeEncryption": {
+            "enableVaultForDiskEncryption": {
                 "type": "bool",
                 "defaultValue": false,
                 "metadata": {
@@ -201,7 +202,7 @@ ms.openlocfilehash: f72ae06c2e31de5d8a1121a9e265c23f016fffe9
             "properties": {
                 "enabledForDeployment": "[parameters('enabledForDeployment')]",
                 "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
-                "enabledForVolumeEncryption": "[parameters('enableVaultForVolumeEncryption')]",
+                "enabledForDiskEncryption": "[parameters('enableVaultForDiskEncryption')]",
                 "tenantId": "[parameters('tenantId')]",
                 "accessPolicies": [
                 {
@@ -240,10 +241,5 @@ ms.openlocfilehash: f72ae06c2e31de5d8a1121a9e265c23f016fffe9
 ## <a name="next-steps"></a>后续步骤
 * 有关密钥保管库的一般信息，请参阅 [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)。
 * 有关在部署模板时引用密钥保管库机密的示例，请参阅[在部署期间传递安全值](resource-manager-keyvault-parameter.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

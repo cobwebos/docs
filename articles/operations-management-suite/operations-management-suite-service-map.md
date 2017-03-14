@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 638410921c6dad72e1bbe0c035243cea70a3deb1
-ms.openlocfilehash: 4bab1ba9c30cee50baeddc06931a3997aac0f33f
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 48a0060edf30b53f685f25efebcb896af2c6122b
+ms.openlocfilehash: ee69cc8402cd9321d1f47ceb4be045274376f440
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -138,7 +138,7 @@ ms.lasthandoff: 02/16/2017
 
 
 ## <a name="oms-performance-integration"></a>OMS 性能集成
-计算机性能面板将显示所选服务器的标准性能指标。  指标包括 CPU 利用率、内存利用率、发送和接收的网络字节数，以及发送和接收网络字节数最多的进程的列表。
+计算机性能面板将显示所选服务器的标准性能指标。  指标包括 CPU 利用率、内存利用率、发送和接收的网络字节数，以及发送和接收网络字节数最多的进程的列表。  注意，要获取网络性能数据，还必须在 OMS 中启用 Wire Data 2.0 解决方案。
 ![“计算机更改跟踪”面板](media/oms-service-map/machine-performance.png)
 
 

@@ -1,5 +1,5 @@
 ---
-title: "服务总线队列、主题和订阅 | Microsoft 文档"
+title: "服务总线消息传送队列、主题和订阅概述 | Microsoft 文档"
 description: "服务总线消息传送实例概述。"
 services: service-bus-messaging
 documentationcenter: na
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 12/20/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 60a914e4706414891863c5d1d07846898936815b
-ms.openlocfilehash: cd3b8b73db87a6b15b5a408609417ff2d2ca0a86
+ms.sourcegitcommit: 4a972b9b8b52a90f27afda98d8bdc661016d1fe1
+ms.openlocfilehash: b4c551e1d0511c868c8a54d1307529436c107945
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -165,10 +166,5 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 * [服务总线中转消息传送 REST 教程](service-bus-brokered-tutorial-rest.md)
 * [主题筛选器示例](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)
 * [Brokered Messaging: Advanced Filters sample](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)（中转消息传送：高级筛选器示例）
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

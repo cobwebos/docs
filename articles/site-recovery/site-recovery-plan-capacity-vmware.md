@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/05/2017
 ms.author: rayne
 translationtype: Human Translation
-ms.sourcegitcommit: 6521cada7adeacd98fae46e5119ceffa0351e9b5
-ms.openlocfilehash: a5c6759d9826084ae339dd291140f8383b55b6db
+ms.sourcegitcommit: 993449b7840f5077f23b3809439b89f27759e35d
+ms.openlocfilehash: 1a991d1e4ac20019695fb557310e1981b5b491ec
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -26,22 +27,7 @@ ms.openlocfilehash: a5c6759d9826084ae339dd291140f8383b55b6db
 
 ## <a name="how-do-i-start-capacity-planning"></a>如何开始容量规划？
 
-1. 使用 Azure Site Recovery Capacity Planner 收集有关复制环境的信息。 其中包括关于 VM、磁盘（按 VM）和存储（按磁盘）的信息。
-2. 估计环境中已复制数据的每日更改（改动率）。
-
-
-## <a name="gather-information"></a>收集信息
-
-1. 下载并运行 [Capacity Planner[(https://gallery.technet.microsoft.com/Azure-Recovery-Capacity-d01dc40e)]。
-2. [获取相关说明](site-recovery-capacity-planner.md)，了解如何运行该工具。
-
-
-## <a name="estimate-the-daily-churn-rate"></a>估计每日的改动率
-
-Site Recovery Capacity Planner 要求输入平均每日数据改动率（百分比）。 目前可以使用 [vSphere 容量规划设备](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance)收集此信息。
-
-在此工具中，可以通过将 vSphere 规划工具指向所有源 VM 并获取每日总改动率来计算此百分比。 这实质上是网络流量。 [详细了解](https://blogs.vmware.com/vsphere/2014/04/vsphere-replication-capacity-planning-appliance.html)如何运行此工具。
-
+使用 [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) 收集有关你的复制环境的信息。 这包括以下信息：兼容的和不兼容的虚拟机的数目、每个 VM 的磁盘、每个磁盘的数据更改、成功的复制和测试故障转移/故障转移的网络带宽要求和所需的 Azure 基础结构。
 
 ## <a name="capacity-considerations"></a>容量注意事项
 
@@ -55,7 +41,7 @@ Site Recovery Capacity Planner 要求输入平均每日数据改动率（百分�
 
 **CPU** | **内存** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机**
 --- | --- | --- | --- | ---
-8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5GHz） | 16 GB | 300 GB | 500 GB 或更少 | 复制少于 100 台计算机。
+8 个 vCPU（2 个套接字 * 4 个核心 @ 2.5GHz） | 16 GB | 300 GB | 500 GB 或更少 | 复制少于 100 台计算机。
 12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5GHz） | 18 GB | 600 GB | 500 GB 到 1 TB | 复制 100-150 台计算机。
 16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5GHz） | 32 GB | 1 TB | 1 TB 到 2 TB | 复制 150-200 台计算机。
 部署另一个进程服务器 | | | > 2 TB | 如果你要复制 200 多台计算机，或者每日数据更改率超过 2 TB，则需部署额外的进程服务器。
@@ -81,9 +67,9 @@ Site Recovery Capacity Planner 要求输入平均每日数据改动率（百分�
 
 **配置服务器** | **额外的进程服务器** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机**
 --- | --- | --- | --- | ---
-8 个 vCPU（2 个插槽 * 4个核心 @ 2.5GHz），16 GB 内存 | 4 个 vCPU（2 个插槽 * 2 个核心 @ 2.5GHz），8 GB 内存 | 300 GB | 250 GB 或更少 | 复制 85 台或更少的计算机。
-8 个 vCPU（2 个插槽 * 4个核心 @ 2.5GHz），16 GB 内存 | 8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5GHz），12 GB 内存 | 600 GB | 250 GB 到 1 TB | 复制 85-150 台计算机。
-12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5GHz），18 GB 内存 | 12 个 vCPU（2 个插槽 * 6个核心 @ 2.5GHz），24 GB 内存 | 1 TB | 1 TB 到 2 TB | 复制 150-225 台计算机。
+8 个 vCPU（2 个套接字 * 4 个核心 @ 2.5GHz），16 GB 内存 | 4 个 vCPU（2 个套接字 * 2 个核心 @ 2.5GHz），8 GB 内存 | 300 GB | 250 GB 或更少 | 复制 85 台或更少的计算机。
+8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5GHz），16 GB 内存 | 8 个 vCPU（2 个套接字 * 4 个核心 @ 2.5GHz），12 GB 内存 | 600 GB | 250 GB 到 1 TB | 复制 85-150 台计算机。
+12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5GHz），18 GB 内存 | 12 个 vCPU（2 个套接字 * 6 个核心 @ 2.5GHz），24 GB 内存 | 1 TB | 1 TB 到 2 TB | 复制 150-225 台计算机。
 
 使用哪种方式来扩展服务器将取决于你是偏好纵向扩展模型还是横向扩展模型。  向上扩展时，需要部署一些高端配置服务器和进程服务器，而向外扩展时，需要部署较多服务器，需要的资源较少。 例如，如果需要对 220 台计算机进行保护，可执行以下操作之一：
 
@@ -93,7 +79,7 @@ Site Recovery Capacity Planner 要求输入平均每日数据改动率（百分�
 
 ## <a name="control-network-bandwidth"></a>控制网络带宽
 
-可以使用 Capacity Planner 工具来计算复制（初始复制，然后是增量复制）所需的带宽。 若要控制复制所用的带宽量，可以使用几个选项：
+可以使用[部署规划器工具](https://aka.ms/asr-deployment-planner-doc)来计算复制（初始复制，然后是增量复制）所需的带宽。 若要控制复制所用的带宽量，可以使用几个选项：
 
 * **限制带宽**：复制到 Azure 的 VMware 流量会经过特定的进程服务器。 可以在运行进程服务器的计算机上限制带宽。
 * **影响带宽**：可以使用几个注册表项来控制用于复制的带宽：
@@ -158,10 +144,5 @@ Site Recovery Capacity Planner 要求输入平均每日数据改动率（百分�
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

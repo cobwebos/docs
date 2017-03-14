@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2016
+ms.date: 02/27/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c308524e41047220fbad026edb6a87f196d89580
-ms.openlocfilehash: 3f293996d2565c495f707f99a0bb75bb7c24054e
+ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
+ms.openlocfilehash: aac56543b2b3b7fa8f8baf1cc719ead79b3c1b00
+ms.lasthandoff: 02/28/2017
 
 ---
 
-# <a name="single-sign-on-with-application-proxy"></a>使用应用程序代理进行单一登录
+# <a name="provide-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理提供到你的应用的单一登录
 单一登录是 Azure AD 应用程序代理的一个关键要素。 它通过以下步骤提供最佳用户体验：
 
 1. 用户登录到云。  
@@ -124,8 +126,8 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 
 此功能可让许多具有不同本地标识与云标识的组织从云单一登录到本地应用程序，而不需要用户输入不同的用户名与密码。 这包括如下所述的组织：
 
-* 在内部有多个域（(joe@us.contoso.com,、joe@eu.contoso.com)），在云中有单个域 ((joe@contoso.com))。
-* 在内部有不可路由的域名 ((joe@contoso.usa))，在云中有合法域名。
+* 在内部有多个域（joe@us.contoso.com、joe@eu.contoso.com），在云中有单个域 (joe@contoso.com)。
+* 在内部有不可路由的域名 (joe@contoso.usa)，在云中有合法域名。
 * 不使用内部域名 (joe)
 * 在本地和云中使用不同的别名。 例如 joe-johns@contoso.com 与 joej@contoso.com  
 
@@ -159,9 +161,4 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
 [2]: ./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

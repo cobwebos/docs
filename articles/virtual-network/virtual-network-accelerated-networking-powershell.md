@@ -4,7 +4,7 @@ description: "了解如何使用 PowerShell 为 Azure 虚拟机配置加速网�
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: a0b63599-c23b-40b5-a8ab-23af8b07dded
@@ -15,13 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: 979ff03320063fc02366c738a10f028bcecba76b
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 2dd6e9ba1d08d3528cdf8194e1e338422361d1d5
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="accelerated-networking-for-a-virtual-machine"></a>适用于虚拟机的加快网络
+# <a name="accelerated-networking-for-a-virtual-machine-using-powershell"></a>使用 PowerShell 为虚拟机配置加速网络
 > [!div class="op_single_selector"]
 > * [Azure 门户](virtual-network-accelerated-networking-portal.md)
 > * [PowerShell](virtual-network-accelerated-networking-powershell.md)
@@ -125,10 +127,5 @@ ms.openlocfilehash: 979ff03320063fc02366c738a10f028bcecba76b
 13. 右键单击 Windows 按钮，然后单击“**设备管理器**”。 检查“**Mellanox ConnectX-3 Virtual Function Ethernet Adapter**”是否显示在展开的“**网络**”选项下面，如下图所示：
     
     ![设备管理器](./media/virtual-network-accelerated-networking-powershell/image2.png)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

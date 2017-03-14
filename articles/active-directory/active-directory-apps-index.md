@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: acb1cd18cf6e4fa9504d76fcac48dbe85579eab0
+ms.sourcegitcommit: ed8ef101a0757fd32585f5b3249e49d4fb0e09b4
+ms.openlocfilehash: ea3aa0b94c6a74747f7efa8633d5b6bfff75a230
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -109,7 +110,7 @@ Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure
 | 跨 Azure AD、Office365 和 Intune 提供的条件性访问功能简介 |[使用条件性访问管理风险](active-directory-conditional-access.md) |
 | 如何为以下类型的资源启用条件性访问 |[SaaS 应用的条件性访问](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Office 365 服务的条件性访问](active-directory-conditional-access-device-policies.md)<br /><br />[本地应用程序的条件性访问](active-directory-conditional-access-on-premises-setup.md)<br /><br />[通过 Azure AD 应用代理发布的本地应用程序的条件性访问](active-directory-application-proxy-conditional-access.md) |
 | 如何向 Azure Active Directory 注册设备以启用基于设备的条件性访问策略 |[Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)<br /><br />[如何为加入域的 Windows 设备启用自动设备注册](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 设备的步骤](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)<br />— [Windows 7 设备的步骤](active-directory-conditional-access-automatic-device-registration-windows7.md) |
-| 如何对涉及多重身份验证的策略使用 Android 版 Azure 验证器应用 |[适用于 Android 的 Azure 验证器](active-directory-conditional-access-azure-authenticator-app.md) |
+| 如何使用 Microsoft Authenticator 应用进行双重验证 |[Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
 
 条件性访问是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。
 
@@ -209,10 +210,5 @@ Azure Active Directory 提供多个报告和警报，以帮助你监视组织对
 [Azure Active Directory 域服务](https://azure.microsoft.com/services/active-directory-ds/)
 
 [Azure 多重身份验证](https://azure.microsoft.com/services/multi-factor-authentication/)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

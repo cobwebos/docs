@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 02/22/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: d49d7e6b4a9485c2371eb02ac8068adfde9bad6b
-ms.openlocfilehash: 92195f4479f429f0911d9e2ca7be29c1aef7785e
+ms.sourcegitcommit: bf5010537d222045b5bf13d85cab6c48c9659ed0
+ms.openlocfilehash: b055342d8e11e4d38688681b36ef9a1f717fdf15
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: 92195f4479f429f0911d9e2ca7be29c1aef7785e
 若要从 Amazon S3 复制数据，请确保已具有以下权限：
 
 * Amazon S3 对象操作的 **s3:GetObject** 和 **s3:GetObjectVersion**
-* Amazon S3 存储桶操作的 **s3:ListBucket** 和 **s3:ListAllMyBuckets**（仅用于复制向导）
+* 针对 Amazon S3 存储桶操作的 **s3:ListBucket**。 如果你使用复制向导，则还需要 **s3:ListAllMyBuckets**。
 
 可以从 [Specifying Permissions in a Policy](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)（在策略中指定权限）中找到 Amazon S3 权限的完整列表（包含详细信息）。
 
@@ -340,9 +341,4 @@ ms.openlocfilehash: 92195f4479f429f0911d9e2ca7be29c1aef7785e
 请参阅以下文章：
 
 * [复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，了解创建包含复制活动的管道的分步说明。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: c3c3938577f610eba522ba593bfab5e93c70e459
-ms.openlocfilehash: d47a97fb023e2cc3ad4acaa07eb4edfd1f82509e
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: a4a770ec6f258c62864cd3fcc79b33b5cac38ace
+ms.openlocfilehash: 8f05957e8c40dee8ceb7fb1355d8d8776935cf5a
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -76,7 +76,7 @@ VNet 对等互连中的每个链接都有上述属性集。 从门户中，可�
 [!INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
 1. 从浏览器导航到 http://portal.azure.com，并在必要时用 Azure 帐户登录。
-2. 在此示例中，用户 A 具有订阅 A 的管理权限，用户 B 具有订阅 B 的管理权限。
+2. 在此示例中，用户 A 具有订阅 A 的管理权限，用户 B 具有订阅 B 的管理权限。 两个订阅都关联到同一个 Azure Active Directory 租户。 无法在关联到不同 Azure Active Directory 租户的订阅之间创建对等互连。
 3. 在门户中，单击“浏览”，然后选择“虚拟网络”。 单击要设置对等互连的 VNet。
 4. 在所选 VNet 的边栏选项卡中，依次单击“访问控制”、“添加”，如下图所示：
 

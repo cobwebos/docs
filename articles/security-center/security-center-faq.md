@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 02/22/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 40f8f1b52c39a170a57168db9227a7c2fa069570
-ms.openlocfilehash: 466d4a566ebb426f48e8c271e1305b844842d638
+ms.sourcegitcommit: f07cd15658f7d367bdf364ece449dd5d09b2f9d3
+ms.openlocfilehash: 38503e36f9c0ad981d0239d82a858dbe2c5263a4
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -36,7 +37,7 @@ Azure 安全中心提供两种层级：免费层和标准层。
 
 通过免费层可设置安全策略和接收安全警报、事件和建议（这些建议将对配置所需控件的整个过程提供指导）。 使用免费层还可监视 Azure 资源和与 Azure 订阅集成的合作伙伴解决方案的安全状态。
 
-标准层除包含免费层的功能外，还提供高级检测：威胁情报、行为分析、故障分析和异常检测。 可免费试用标准层 90 天。 如要升级，请选择[安全策略](security-center-policies.md#set-security-policies-for-subscriptions)中的“定价层”。 若要了解详细信息，请参阅[安全中心定价](security-center-pricing.md)。
+标准层除包含免费层的功能外，还提供高级检测：威胁情报、行为分析、故障分析和异常检测。 标准层在前 60 天免费提供。 如果在 60 天后选择继续使用该服务，将自动开始计费。 如要升级，请选择[安全策略](security-center-policies.md#set-security-policies-for-subscriptions)中的“定价层”。 若要了解详细信息，请参阅[安全中心定价](security-center-pricing.md)。
 
 ## <a name="permissions"></a>权限
 Azure 安全中心使用[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../active-directory/role-based-access-built-in-roles.md)。
@@ -161,9 +162,4 @@ Azure 安全中心仅可识别出通过 Azure 扩展安装的反恶意软件。 
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>为什么会显示消息称“VM 代理缺失”？
 VM 代理必须安装在 VM 上才能启用数据收集。 对于从 Azure 应用商店部署的 VM，默认安装 VM 代理。 有关如何在其他 VM 上安装 VM 代理的详细信息，请参阅博客文章 [VM 代理和扩展](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

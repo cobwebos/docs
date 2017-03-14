@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 080dce21c2c803fc05c945cdadb1edd55bd7fe1c
-ms.openlocfilehash: 84c9ac92ec08d1e7c1a163c2990c4fe3e14bf9e5
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: aebd94edbad210f15bce5b39ebf73269ec67a209
+ms.openlocfilehash: 3bcba1123d3ec00c760d022d200609bf28c22362
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -129,10 +129,10 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-do-i-need"></a>如果要复制到 Azure，我需要哪种存储帐户？
 * **Azure 经典门户**：如果要在 Azure 经典门户中部署站点恢复，则你需要 [标准异地冗余存储帐户](../storage/storage-redundancy.md#geo-redundant-storage)。 当前不支持高级存储。 该帐户必须位于与站点恢复保管库相同的区域中。
-* **Azure 门户**：如果要在 Azure 门户中部署站点恢复，则你需要 LRS 或 GRS 存储帐户。 建议使用 GRS，以便在发生区域性故障或无法恢复主要区域时，能够复原数据。 该帐户必须位于与恢复服务保管库相同的区域中。 仅在复制 VMware VM 或物理服务器时支持高级存储。
+* **Azure 门户**：如果要在 Azure 门户中部署站点恢复，则你需要 LRS 或 GRS 存储帐户。 建议使用 GRS，以便在发生区域性故障或无法恢复主要区域时，能够复原数据。 该帐户必须位于与恢复服务保管库相同的区域中。 在 Azure 门户中部署 Site Recovery 时，现在支持将高级存储用于 VMware VM、Hyper-V VM 和物理服务器复制。
 
 ### <a name="how-often-can-i-replicate-data"></a>我可以多久复制数据一次？
-* **Hyper-V：**可以每隔 30 秒、5 分钟或 15 分钟复制 Hyper-V VM 一次。 如果你已设置 SAN 复制，则复制将是同步的。
+* **Hyper-V：**可以每隔 30 秒（高级存储除外）、5 分钟或 15 分钟复制一次 Hyper-V VM。 如果你已设置 SAN 复制，则复制将是同步的。
 * **VMware 和物理服务器：**复制频率无关紧要。 复制是连续的。
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>我可以将复制从现有的恢复站点扩展到其他站点吗？
@@ -142,7 +142,7 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 不支持此操作。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中请求此功能。
 
 ### <a name="can-i-exclude-specific-disks-from-replication"></a>可以从复制中排除特定的磁盘吗？
-使用 Azure 门户将 [VMware VM 和物理服务器复制](site-recovery-exclude-disk.md)到 Azure 时支持此操作。
+使用 Azure 门户将 [VMware VM 和 Hyper-V VM 复制](site-recovery-exclude-disk.md)到 Azure 时支持此操作。
 
 ### <a name="can-i-replicate-virtual-machines-with-dynamic-disks"></a>可以使用动态磁盘来复制虚拟机吗？
 复制 Hyper-V 虚拟机时，支持使用动态磁盘。 将 VMware VM 和物理计算机复制到 Azure 时也支持使用动态磁盘。 操作系统磁盘必须为基本磁盘。

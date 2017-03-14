@@ -1,5 +1,5 @@
 ---
-title: "开发适用于 Azure AD 的 LOB 应用 | Microsoft 文档"
+title: "为 Azure AD 开发应用 | Microsoft 文档"
 description: "本文专门为 IT 专业人员编写，提供有关将 Azure 应用程序与 Active Directory 集成的指导。"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/27/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
-ms.openlocfilehash: cd1c8d74afa51815b3f6c093e6a9054b97359843
-
+ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
+ms.openlocfilehash: aa3c83f82d1a60253f70350e88aa96fb285ef3d9
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="azure-ad-and-applications-develop-line-of-business-apps"></a>Azure AD 和应用程序：开发业务线应用
+# <a name="develop-line-of-business-apps-for-azure-active-directory"></a>为 Azure Active Directory 开发业务线应用
 本指南提供开发用于 Azure Active Directory (AD) 的业务线 (LoB) 应用程序的概述，目标受众为 Active Directory/Office 365 全局管理员。
 
 ## <a name="overview"></a>概述
@@ -80,9 +81,4 @@ ms.openlocfilehash: cd1c8d74afa51815b3f6c093e6a9054b97359843
 * [适用于 SaaS 应用的 Azure 条件性访问预览版](active-directory-conditional-access-azuread-connected-apps.md)
 * [使用 Azure AD 管理对应用的访问](active-directory-managing-access-to-apps.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

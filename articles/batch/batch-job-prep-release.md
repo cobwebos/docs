@@ -1,5 +1,5 @@
 ---
-title: "使用作业准备和释放任务 - Azure Batch | Microsoft Docs"
+title: "创建任务以在计算节点上准备作业并完成作业 - Azure Batch | Microsoft 文档"
 description: "使用作业级准备任务最大程度地减少 Azure Batch 计算节点的数据传输，在完成作业时执行释放任务来清理节点。"
 services: batch
 documentationcenter: .net
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 3b34a9665bfab85abbd633d01139ba2da2249bbf
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 6a2525c02ce7bd3969469d2e28a5fccc948f89b1
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="run-job-preparation-and-completion-tasks-on-azure-batch-compute-nodes"></a>在 Azure Batch 计算节点上运行作业准备和完成任务
+# <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>在 Batch 计算节点上运行作业准备和作业发布任务
+
  Azure Batch 作业在执行其任务之前，通常需要经过某种形式的设置，并且需要在其任务完成时进行作业后维护。 可能需要将常见的任务输入数据下载到计算节点，或者在作业完成之后，将任务输出数据上载到 Azure 存储。 可以使用“作业准备”和“作业释放”任务来执行这些操作。
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>什么是作业准备和作业释放任务？
@@ -48,7 +51,7 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。 例�
 
 **日志保留期**
 
-你可能想要保留任务生成的日志文件的副本，或失败应用程序可能生成的崩溃转储文件。 在这种情况下，使用**作业释放任务**可将这些数据压缩并上传到 [Azure 存储][azure_storage]帐户。
+你可能想要保留任务生成的日志文件的副本，或失败应用程序可能生成的崩溃转储文件。 在这种情况下，使用**作业释放任务**可将这些数据压缩并上载到 [Azure 存储][azure_storage]帐户。
 
 > [!TIP]
 > 保存日志及其他作业和任务输出数据的另一种方法是，使用 [Azure Batch 文件约定](batch-task-output.md)库。
@@ -222,9 +225,4 @@ Sample complete, hit ENTER to exit...
 [net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
 
 [1]: ./media/batch-job-prep-release/portal-jobprep-01.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 01/04/2017
+ms.date: 02/23/2017
 ms.author: bharatn
 translationtype: Human Translation
-ms.sourcegitcommit: c738b9d6461da032f216b8a51c69204066d5cfd3
-ms.openlocfilehash: 9487209a8e5d976d56da50b8c70e69950d0ad129
+ms.sourcegitcommit: 76234592c0eda9f8317b2e9e5e8c8d3fbfca20c7
+ms.openlocfilehash: 8d7d447a6bfb537a6901455f28bb8d8cbd0832b5
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -48,14 +49,15 @@ Service Fabric 反向代理在群集的所有节点上运行。 它会代表客�
 
 > [!WARNING]
 > 在负载均衡器上配置反向代理的端口以后，即可从群集外部访问群集中公开了 HTTP 终结点的所有微服务。
-> 
-> 
+>
+>
+
 
 ## <a name="uri-format-for-addressing-services-via-the-reverse-proxy"></a>通过反向代理进行服务寻址的 URI 格式
 反向代理使用特定的 URI 格式来确定传入请求所应转发到的服务分区：
 
 ```
-http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&Timeout=<timeout_in_seconds>
+http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
 * **http(s)：**可以将反向代理配置为接受 HTTP 或 HTTPS 流量。 如果为 HTTPS 流量，则会在反向代理中出现 SSL 终止的情况。 由反向代理转发到群集中服务的请求是通过 HTTP 进行的。 **请注意，当前不支持 HTTPS 服务。**
@@ -65,6 +67,10 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **Suffix path：**这是要连接到的服务的实际 URL 路径。 例如，*myapi/values/add/3*
 * **PartitionKey：**对于已分区服务，这是针对你要访问的分区进行计算所得的分区键。 请注意，这*不*是分区 ID GUID。 对于使用单独分区方案的服务，此参数不是必需的。
 * **PartitionKind：**服务分区方案。 该方案可以是“Int64Range”或“Named”。 对于使用单独分区方案的服务，此参数不是必需的。
+* **ListenerName** 服务中的终结点采用以下形式：{"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}}。 当服务公开了多个终结点时，这标识应当将客户端请求转发到这些终结点中的哪一个。 如果服务只有一个侦听器，则可以省略此项。
+* **TargetReplicaSelector** 这指定应当如何选择目标副本或实例。
+  * 当目标服务为有状态服务时，TargetReplicaSelector 可以是“PrimaryReplica” 或“RandomSecondaryReplica”或“RandomReplica”之一。 未指定此参数时的默认值为“PrimaryReplica”。
+  * 当目标服务为无状态服务时，反向代理将选择服务分区的一个随机实例来将实例转发到其中。
 * **Timeout：**此参数指定反向代理针对服务创建的 http 请求（代表客户端请求）的超时。 此参数的默认值为 60 秒。 这是一个可选参数。
 
 ### <a name="example-usage"></a>用法示例
@@ -132,7 +138,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 获得要部署的群集的模板以后（不管你是通过示例模板获得，还是通过创建自定义 Resource Manager 模板来获得），即可通过以下步骤在模板中启用反向代理。
 
 1. 在模板的[“参数”部分](../azure-resource-manager/resource-group-authoring-templates.md)定义反向代理的端口。
-   
+
     ```json
     "SFReverseProxyPort": {
         "type": "int",
@@ -143,30 +149,9 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
     },
     ```
 2. 为**群集**的[“资源类型”部分](../azure-resource-manager/resource-group-authoring-templates.md)中的每个 nodetype 对象指定端口
-   
-    对于“2016-09-01”之前的 apiVersion，端口使用参数名称 ***httpApplicationGatewayEndpointPort*** 标识
-   
-    ```json
-    {
-        "apiVersion": "2016-03-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        ...
-       "nodeTypes": [
-          {
-           ...
-           "httpApplicationGatewayEndpointPort": "[parameters('SFReverseProxyPort')]",
-           ...
-          },
-        ...
-        ],
-        ...
-    }
-    ```
-   
-    对于“2016-09-01”当日或之后的的 apiVersion，端口使用参数名称 ***reverseProxyEndpointPort*** 标识
-   
+
+    端口由参数名称 ***reverseProxyEndpointPort*** 予以标识
+
     ```json
     {
         "apiVersion": "2016-09-01",
@@ -186,7 +171,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
     }
     ```
 3. 若要从 Azure 群集外部与反向代理通信，请为步骤 1 中指定的端口设置 **Azure Load Balancer 规则**。
-   
+
     ```json
     {
         "apiVersion": "[variables('lbApiVersion')]",
@@ -229,32 +214,8 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         ]
     }
     ```
-4. 若要在反向代理的端口上配置 SSL 证书，请在**群集**的[“资源类型”部分](../azure-resource-manager/resource-group-authoring-templates.md)将证书添加到 httpApplicationGatewayCertificate 属性中
-   
-    对于“2016-09-01”之前的 apiVersion，证书使用参数名称 ***httpApplicationGatewayCertificate*** 标识
-   
-    ```json
-    {
-        "apiVersion": "2016-03-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        "dependsOn": [
-            "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
-        ],
-        "properties": {
-            ...
-            "httpApplicationGatewayCertificate": {
-                "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
-                "x509StoreName": "[parameters('sfReverseProxyCertificateStoreName')]"
-            },
-            ...
-            "clusterState": "Default",
-        }
-    }
-    ```
-    对于“2016-09-01”当日及之后的 apiVersion，证书使用参数名称 ***reverseProxyCertificate*** 标识
-   
+4. 若要在反向代理的端口上配置 SSL 证书，请在**群集**的[“资源类型”部分](../resource-group-authoring-templates.md)中将证书添加到 ***reverseProxyCertificate*** 属性中
+
     ```json
     {
         "apiVersion": "2016-09-01",
@@ -276,6 +237,61 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
     }
     ```
 
+### <a name="supporting-reverse-proxy-certificate-different-from-cluster-certificate"></a>支持不同于群集证书的反向代理证书
+ 如果反向代理证书不同于用来保护群集的证书，则应当将上面指定的证书安装在 VM 上并为其设置访问控制列表，以便 service fabric 可以访问它。 这可以通过 **virtualMachineScaleSets** [资源类型部分](../resource-group-authoring-templates.md)来完成。 安装可以通过将证书添加到 osProfile 来完成，访问控制列表设置可以通过将证书添加到模板的扩展部分来完成。
+
+  ```json
+  {
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    ....
+      "osProfile": {
+          "adminPassword": "[parameters('adminPassword')]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "computernamePrefix": "[parameters('vmNodeType0Name')]",
+          "secrets": [
+            {
+              "sourceVault": {
+                "id": "[parameters('sfReverseProxySourceVaultValue')]"
+              },
+              "vaultCertificates": [
+                {
+                  "certificateStore": "[parameters('sfReverseProxyCertificateStoreValue')]",
+                  "certificateUrl": "[parameters('sfReverseProxyCertificateUrlValue')]"
+                }
+              ]
+            }
+          ]
+        }
+   ....
+   "extensions": [
+          {
+              "name": "[concat(parameters('vmNodeType0Name'),'_ServiceFabricNode')]",
+              "properties": {
+                      "type": "ServiceFabricNode",
+                      "autoUpgradeMinorVersion": false,
+                      ...
+                      "publisher": "Microsoft.Azure.ServiceFabric",
+                      "settings": {
+                        "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                        "nodeTypeRef": "[parameters('vmNodeType0Name')]",
+                        "dataPath": "D:\\\\SvcFab",
+                        "durabilityLevel": "Bronze",
+                        "testExtension": true,
+                        "reverseProxyCertificate": {
+                          "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
+                          "x509StoreName": "[parameters('sfReverseProxyCertificateStoreValue')]"
+                        },
+                  },
+                  "typeHandlerVersion": "1.0"
+              }
+          },
+      ]
+    }
+  ```
+> [!NOTE]
+> 当在现有群集上启用反向代理，且证书不同于群集证书时，应当在启用反向代理之前在群集上安装反向代理证书设置并为其设置访问控制列表。 也就是说，在使用步骤 1-4 开始部署以启用反向代理之前应当使用上面提到的设置完成 [Azure Resource Manager 模板](service-fabric-cluster-creation-via-arm.md)部署。
+
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [GitHUb 上的示例项目](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount)中服务之间的 HTTP 通信示例。
 * [使用 Reliable Services 远程控制执行远程过程调用](service-fabric-reliable-services-communication-remoting.md)
@@ -284,9 +300,4 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

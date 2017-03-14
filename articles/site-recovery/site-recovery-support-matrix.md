@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 12/04/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1e88eba53b8ec3388ede1ae69cb290423919fda6
-ms.openlocfilehash: d683e25ef96bbd87a6d5b5ea143754b8f67f288e
+ms.sourcegitcommit: 3b9d269a780e9a4c61263208f26f440b1121c682
+ms.openlocfilehash: f437598b612a145c5dd8b46a1ba340d298a76981
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -62,7 +63,7 @@ vCenter 5.5 或 6.0（仅支持 5.5 功能） <br/><br/> vSphere 6.0、5.5 或 5
 
 ### <a name="machines-replicate-to-azure"></a>计算机（复制到 Azure）
 
-虚拟机必须满足 [Azure 要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+虚拟机必须满足 [Azure 要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 **要求** | **VMware/物理服务器** | **Hyper-V（不包含 VMM）** | **Hyper-V（包含 VMM）**
 --- | --- | --- | ---
@@ -163,17 +164,17 @@ RDM | 是<br/><br/> 物理服务器不支持 | 不可用 | 不可用
 包含条带化磁盘的卷 > 1 TB<br/><br/> LVM | 是 | 是 | 是
 存储空间 | 否 | 是 | 是
 热添加/移除磁盘 | 否 | 否 | 否
-排除磁盘 | 是 | 否 | 否
+排除磁盘 | 是 | 是 | 是
 多路径 (MPIO) | 不可用 | 是 | 是
 
 **Azure 存储空间** | **VMware/物理服务器** | **Hyper-V（不包含 VMM）** | **Hyper-V（包含 VMM）**
 --- | --- | --- | ---
 LRS | 是 | 是 | 是
-GRS | 是 | 是 | 是
+GRS（仅适用于标准存储） | 是 | 是 | 是
 冷存储 | 否 | 否 | 否
 热存储| 否 | 否 | 否
 静态加密 | 是 | 是 | 是
-高级存储 | 是 | 否 | 否
+高级存储 | 是 | 是 | 是
 导入/导出服务 | 否 | 否 | 否
 
 
@@ -261,10 +262,5 @@ HUB | 是 | 是 | 是
 
 
 ## <a name="next-steps"></a>后续步骤
-[准备部署](site-recovery-best-practices.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+检查[先决条件](site-recovery-prereq.md)
 

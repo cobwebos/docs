@@ -1,10 +1,10 @@
 ---
-title: "管理虚拟网络 (VNet) 使用的 DNS 服务器"
-description: "了解如何在虚拟网络 (VNet) 中添加和删除 DNS 服务器"
+title: "管理虚拟网络（经典）使用的 DNS 服务器 - Azure 门户（经典）| Microsoft 文档"
+description: "了解如何使用 Azure 门户（经典）在虚拟网络（经典）中添加和删除 DNS 服务器。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: b582be7d-dc78-4cfe-a766-185bd7e5dc68
 ms.service: virtual-network
@@ -14,22 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3416cf13180e124dab1c74b9c7254390ac5e49c4
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: b765fb94f881453ae6a90ec0ae6b6f06843b3aa2
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="manage-dns-servers-used-by-a-virtual-network-vnet"></a>管理虚拟网络 (VNet) 使用的 DNS 服务器
-你可以在管理门户或网络配置文件中管理 VNet 中使用的 DNS 服务器列表。 对于每个 VNet，最多可以添加 12 个 DNS 服务器。 指定 DNS 服务器时，请确认按所处环境的正确顺序列出 DNS 服务器，这一点很重要。 DNS 服务器列表不采用循环机制。 将按指定服务器的顺序使用这些服务器。 如果可访问列表上的第一个 DNS 服务器，则无论该 DNS 服务器是否工作正常，客户端都将使用它。 若要更改你的虚拟网络的 DNS 服务器顺序，请从列表中删除 DNS 服务器，然后按你所需的顺序重新添加这些服务器。
+# <a name="manage-dns-servers-used-by-a-virtual-network-classic-using-the-azure-portal-classic"></a>使用 Azure 门户（经典）管理虚拟网络（经典）使用的 DNS 服务器
+
+你可以在 Azure 门户（经典）或网络配置文件中管理虚拟网络 (VNet) 中使用的 DNS 服务器的列表。 对于每个 VNet，最多可以添加 12 个 DNS 服务器。 指定 DNS 服务器时，请确认按所处环境的正确顺序列出 DNS 服务器，这一点很重要。 DNS 服务器列表不采用循环机制。 将按指定服务器的顺序使用这些服务器。 如果可访问列表上的第一个 DNS 服务器，则无论该 DNS 服务器是否工作正常，客户端都将使用它。 若要更改你的虚拟网络的 DNS 服务器顺序，请从列表中删除 DNS 服务器，然后按你所需的顺序重新添加这些服务器。
 
 > [!WARNING]
 > 更新 DNS 列表后，必须重新启动位于虚拟网络中的虚拟机，以使其选取新的 DNS 服务器设置。 虚拟机将继续使用其当前配置，直至其重新启动为止。
 > 
 > 
 
-## <a name="edit-a-dns-server-list-for-a-virtual-network-using-the-management-portal"></a>使用管理门户编辑虚拟网络的 DNS 服务器列表
-1. 登录到**管理门户**。
+## <a name="edit-a-dns-server-list-for-a-virtual-network-using-the-azure-portal-classic"></a>使用 Azure 门户（经典）编辑虚拟网络的 DNS 服务器列表
+1. 登录到 [Azure 门户（经典）](https://manage.windowsazure.com)。
 2. 在导航窗格中，单击“**网络**”，然后在“**名称**”列中单击你的虚拟网络名称。
 3. 单击“**配置**”。
 4. 在“**DNS 服务器**”中，可以进行以下配置：
@@ -43,16 +46,11 @@ ms.openlocfilehash: 3416cf13180e124dab1c74b9c7254390ac5e49c4
 6. 重新启动位于虚拟网络中的虚拟机以使其可获取新的 DNS 设置。
 
 ## <a name="edit-a-dns-server-list-using-a-network-configuration-file"></a>使用网络配置文件编辑 DNS 服务器列表
-若要使用网络配置文件编辑 DNS 服务器列表，将首先从管理门户中导出配置设置。 然后，将编辑网络配置文件，再通过管理门户向回导入该文件。 下面概括列出了用于完成此过程的步骤。
+若要使用网络配置文件编辑 DNS 服务器列表，将首先从管理门户中导出配置设置。 然后，你将编辑网络配置文件，再通过 Azure 门户（经典）将该文件导入回来。 下面概括列出了用于完成此过程的步骤。
 
 1. 将虚拟网络设置导出到网络配置文件。 有关导出网络配置设置的详细信息和步骤，请参阅[将虚拟网络设置导出到网络配置文件](virtual-networks-using-network-configuration-file.md)。
 2. 指定虚拟网络的 DNS 服务器信息。 有关指定 DNS 服务器的详细信息，请参阅[在虚拟网络配置文件中指定 DNS 服务器](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)。 有关网络配置文件的其他信息，请参阅 [Azure 虚拟网络配置架构](https://msdn.microsoft.com/library/azure/jj157100.aspx)和[使用网络配置文件配置虚拟网络](virtual-networks-using-network-configuration-file.md)。
 3. 导入网络配置文件。 有关导入网络配置文件的详细信息和步骤，请参阅[导入网络配置文件](virtual-networks-using-network-configuration-file.md)。
 4. 重新启动位于虚拟网络中的虚拟机以使其可获取新的 DNS 设置。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

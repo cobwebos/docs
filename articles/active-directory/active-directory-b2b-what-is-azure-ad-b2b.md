@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 02/18/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 5e55afe6eb88a558ea4eb147860ac5e2ebc97dbc
+ms.sourcegitcommit: 14028332ecc17478230d035206e8e00f6af67f7b
+ms.openlocfilehash: 8b6bf676dfa0df45d59763db70655d85fa08809a
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -34,7 +35,7 @@ Azure AD B2B 协作功能可让各种规模、各个行业的组织轻松安全�
 
 B2B 协作用户通常是通过邀请与兑换过程登记的。 工作原理如下。
 
-1. WoodGrove 公司的 John Doe 想要使用 Sam Oogle 的 gmail 地址 (gsamoogle@gmail.com) 来添加他
+1. WoodGrove 公司的 John Doe 想要使用 Sam Oogle 的 gmail 地址  (gsamoogle@gmail.com) 来添加他
 
 2. John 转到 WoodGrove 门户 (portal.azure.com) 或访问面板 (myapps.microsoft.com)，登录，然后将该用户添加到 WoodGrove 目录、组或应用程序。
 
@@ -93,10 +94,7 @@ B2B 协作用户通常是通过邀请与兑换过程登记的。 工作原理如
 * [Azure Active Directory B2B 协作 API 和自定义](active-directory-b2b-api.md)
 * [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
 * [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
+
+* [B2B 协作用户审核和报告](active-directory-b2b-auditing-and-reporting.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

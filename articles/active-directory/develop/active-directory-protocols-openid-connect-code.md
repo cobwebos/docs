@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: d24fd29cfe453a12d72998176177018f322e64d8
-ms.openlocfilehash: 2000e2005533d4e4d4c7bba9d5168c395af1499f
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 3d5ad974c01e0ee3954da4f990da87338b2d1756
+ms.openlocfilehash: e41620d3192dbb77a26b79663494e441ccd96d40
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -169,9 +169,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 | post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。  如果未包含此参数，系统会向用户显示一条常规消息。 |
 
 ## <a name="single-sign-out"></a>单一登录
-Azure AD 使用 Cookie 标识用户会话。 Web 应用程序也可能会设置 Cookie 以管理应用程序中的会话。 用户首次登录到应用程序时，Azure AD 在用户的浏览器中设置了 Cookie。 当用户以后登录到其他应用程序时，Azure AD 将首先检查 Cookie 以确定用户是否具有 Azure AD 终结点的有效登录会话，而不是重新对用户进行身份验证。
-
-同样，当用户首次注销应用程序时，Azure AD 将从浏览器中清除 Cookie。 但是，用户可能仍登录到其他使用 Azure AD 进行身份验证的应用程序。 若要确保从所有应用程序中注销该用户，Azure AD 会将 HTTP GET 请求发送到用户当前已登录的所有应用程序的 `LogoutUrl`。 应用程序必须通过清除任何标识用户会话的 Cookie 来响应此请求。 可以从 Azure 门户设置 `LogoutUrl`。
+将用户重定向到 `end_session_endpoint` 时，Azure AD 将从浏览器中清除用户的会话。 但是，用户可能仍登录到其他使用 Azure AD 进行身份验证的应用程序。 要使这些应用程序能够同时注销用户，Azure AD 会将 HTTP GET 请求发送到用户当前登录到的所有应用程序的已注册 `LogoutUrl`。 应用程序必须通过清除任何标识用户的会话并返回 `200` 响应来响应此请求。  如果要在应用程序中支持单一注销，必须在应用程序代码中实现此类 `LogoutUrl`。  可以从 Azure 门户设置 `LogoutUrl`：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 2. 通过单击页面右上角的帐户选择你的 Active Directory。

@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 993408c9d008a94dfd4004ed6826a2fe6180b20c
-ms.openlocfilehash: aa3c77c0bf9db1f875dd992c4eb7a494af58c400
+ms.sourcegitcommit: 11a120338a9f76bfb0a56a70d0c566625bc518b9
+ms.openlocfilehash: ee3265032a839b1c35821e60e1143ae772389804
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -46,7 +47,6 @@ Azure 流量管理器支持使用三种流量路由方法来确定如何将网�
 ## <a name="priority-traffic-routing-method"></a>优先级流量路由方法
 
 组织往往会提供一个或多个备份服务来防范主服务发生故障，从而确保其服务的可靠性。 Azure 客户可以通过“优先级”流量路由方法来轻松实现此故障转移模式。
-
 ![Azure 流量管理器的“优先级”流量路由方法][1]
 
 流量管理器配置文件包含服务终结点的优先顺序列表。 默认情况下，流量管理器将所有流量发送到主终结点（优先级最高）。 如果主终结点不可用，流量管理器会将流量路由到第二个终结点。 如果主终结点和辅助终结点都不可用，流量将转到第三个终结点，依此类推。 终结点的可用性取决于配置的状态（已启用或已禁用）和正在进行的终结点监视。
@@ -58,7 +58,6 @@ Azure 流量管理器支持使用三种流量路由方法来确定如何将网�
 在经典界面中，可以隐式配置终结点优先级。 该优先级基于终结点在配置文件定义中的列出顺序。
 
 ## <a name="weighted-traffic-routing-method"></a>加权流量路由方法
-
 使用“加权”流量路由方法可以均匀分布流量，或使用预定义的权重。
 
 ![Azure 流量管理器的“加权”流量路由方法][2]
@@ -97,7 +96,9 @@ Azure 流量管理器支持使用三种流量路由方法来确定如何将网�
 
 如[流量管理器工作原理](traffic-manager-how-traffic-manager-works.md)中所述，流量管理器不会直接从客户端接收 DNS 查询。 DNS 查询来自客户端配置使用的递归 DNS 服务。 因此，用于确定“最靠近”终结点的 IP 地址不是客户端的 IP 地址，而是递归 DNS 服务的 IP 地址。 在实践中，此 IP 地址是客户端的适当代理。
 
-流量管理器定期更新 Internet 延迟表，反映全球 Internet 的变化以及新的 Azure 区域。 但是，由于 Internet 上的负载会实时变化，应用程序性能也会随之变化。 “性能”流量路由不会监视给定服务终结点上的负载。 但是，如果某个终结点变得不可用，流量管理器不会在 DNS 查询响应中返回该终结点。
+
+流量管理器定期更新 Internet 延迟表，反映全球 Internet 的变化以及新的 Azure 区域。 但是，由于 Internet 上的负载会实时变化，应用程序性能也会随之变化。 “性能”流量路由不会监视给定服务终结点上的负载。 但是，如果某个终结点变得不可用，则流量管理器不会在 DNS 查询响应中包括该终结点。
+
 
 需要注意的要点：
 
@@ -117,9 +118,4 @@ Azure 流量管理器支持使用三种流量路由方法来确定如何将网�
 [1]: ./media/traffic-manager-routing-methods/priority.png
 [2]: ./media/traffic-manager-routing-methods/weighted.png
 [3]: ./media/traffic-manager-routing-methods/performance.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

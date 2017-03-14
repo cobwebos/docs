@@ -14,12 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 02/18/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
-ms.openlocfilehash: 6a854486060c77d743cbdd42b7a341860ab77361
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: a4e25c0dab34f0977b4511046ad53f4c0b409990
+ms.openlocfilehash: 830cc28cdd5ca523c43cf1fa9cdff5131727d71f
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -46,6 +46,13 @@ ms.lasthandoff: 02/17/2017
 以 Azure AD 管理员身份将 B2B 协作用户添加到应用程序，如以下视频中所示：
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps/Player]
+
+## <a name="admins-resending-invitations-to-guest-users"></a>管理员向来宾用户重新发送邀请
+你可以转到 B2B 协作用户的配置文件页，向尚未兑换的来宾用户重新发送邀请：
+
+![重新发送邀请](./media/active-directory-b2b-admin-add-users/resend-invitation.png)
+
+> ![注意] 这将从已登录用户重新发送邀请并邀请用户加入目录，即使原始邀请是发到特定应用或组，也是如此。
 
 
 ## <a name="related-articles"></a>相关文章

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/19/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 34bb02d93f74d437962334802f3bfbf938bbb258
-ms.openlocfilehash: 2bc98da479e6efea322a3782879fae72b106538a
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 29084a52aca22b31a2fa42660ec2cdf050aec7ca
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -190,7 +190,7 @@ ms.lasthandoff: 02/22/2017
 
    * 如果要使用自定义代理，请在安装提供程序之前进行设置。 当配置自定义代理设置时，会运行测试来检查代理连接。
    * 如果确实使用自定义代理，或者默认代理要求进行身份验证，则应输入代理详细信息，包括地址和端口。
-   * 应可从 VMM 服务器访问这些 [URL](site-recovery-best-practices.md#url-access)。
+   * 应当可从 VMM 服务器访问必需的 URL。
    * 如果使用自定义代理，系统将使用指定的代理凭据自动创建一个 VMM 运行方式帐户 (DRAProxyAccount)。 对代理服务器进行配置以便该帐户可以通过身份验证。 可在 VMM 控制台中修改运行方式帐户设置（“设置” > “安全” > “运行方式帐户” > “DRAProxyAccount”）。 必须重新启动 VMM 服务才能让更改生效。
 10. 在“注册密钥”中，选择从门户下载并复制到 VMM 服务器的密钥。
 11. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。
@@ -321,7 +321,7 @@ Site Recovery、VMM 和 SMI-S 提供程序会设置目标站点存储 LUN，并�
 
     ![选择虚拟机](./media/site-recovery-vmm-san/r-plan-vm.png)
 4. 创建恢复计划后，它将出现在“恢复计划”选项卡上的列表中。 选择计划，然后选择“测试故障转移”。
-5. 在“**确认测试故障转移**”页面上，选择“**无**”。 启用此选项后，故障转移副本 VM 不会连接到任何网络。 这会测试 VM 是否按预期方式进行故障转移，但不会测试网络环境。 有关其他网络选项的详细信息，请参阅 [Site Recovery 故障转移](site-recovery-failover.md#run-a-test-failover)。
+5. 在“**确认测试故障转移**”页面上，选择“**无**”。 启用此选项后，故障转移副本 VM 不会连接到任何网络。 这会测试 VM 是否按预期方式进行故障转移，但不会测试网络环境。 有关其他网络选项的详细信息，请参阅 [Site Recovery 故障转移](site-recovery-failover.md)。
 
     ![选择测试网络](./media/site-recovery-vmm-san/test-fail1.png)
 
