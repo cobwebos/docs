@@ -1,6 +1,6 @@
 ---
-title: "添加和管理多个 Azure Active Directory 目录 | Microsoft Docs"
-description: "有关添加和管理 Azure Active Directory 目录的说明与最佳实践，解释目录为何是完全独立的资源"
+title: "Azure Active Directory 目录的特征 | Microsoft 文档"
+description: "通过了解你的目录将你的 Azure Active Directory 目录作为完全独立的资源进行管理"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
-ms.openlocfilehash: 23aad0421088b620f32bbf3f6b3f0b11e001e3ae
+ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
+ms.openlocfilehash: 5ec00d5e8380f121dd9302cf08a0708c530aab9b
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="add-and-manage-multiple-azure-active-directory-directories"></a>添加和管理多个 Azure Active Directory 目录
+# <a name="understand-how-multiple-azure-active-directory-directories-interact"></a>了解多个 Azure Active Directory 目录如何交互
 在 Azure Active Directory (Azure AD) 中，每个目录都是完全独立的资源：一个具有完整功能的对等方，在逻辑上独立于你所管理的其他目录。 目录之间不存在父子关系。 目录之间的这种独立性包括资源独立性、管理独立性和同步独立性。
 
 ## <a name="resource-independence"></a>资源独立性
@@ -49,9 +51,4 @@ ms.openlocfilehash: 23aad0421088b620f32bbf3f6b3f0b11e001e3ae
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure AD 许可问题和最佳实践的一般概述，请参阅[什么是 Azure Active Directory 许可？](active-directory-licensing-what-is.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

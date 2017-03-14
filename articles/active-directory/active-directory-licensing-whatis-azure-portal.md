@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6a9cebafd1ad8f513bfab897970241f7b82b2a53
-ms.openlocfilehash: 1f4e0904c9025ce0b21d904acc7b959e823039ef
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
+ms.openlocfilehash: 0591b536a9be901085074f4b49fc65b097382835
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可是什么？
+# <a name="group-based-licensing-basics-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可基础知识
 
 Microsoft 云服务（如 Office 365、企业移动性 + 安全性、Dynamics CRM 及其他类似产品）要求为需要访问这些服务的每个用户分配许可证。 管理员通过 Office 或 Azure 管理门户使用 PowerShell cmdlet 管理许可证。 许可证分配状态存储在 Azure Active Directory 这一底层基础结构，它支持所有 Microsoft 云服务的身份管理。
 

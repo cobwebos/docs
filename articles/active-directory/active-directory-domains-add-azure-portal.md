@@ -3,7 +3,7 @@ title: "将自定义域名添加到 Azure Active Directory 预览版 | Microsoft
 description: "如何将公司域名添加到 Azure Active Directory，以及如何验证域名。"
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: d97e57c6-578a-4929-8fb8-42e858a711c7
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0cf396fb2ce60868383d28afa1c4455aa108b3ba
+ms.sourcegitcommit: f1f3d6fa1ba29b0d43d29c7d9cccfc430fdd6f1e
+ms.openlocfilehash: 5153926f34961a397ef9632ca1f8ac868ba1986e
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 0cf396fb2ce60868383d28afa1c4455aa108b3ba
 > 
 > 
 
-你的组织购买了一个或多个域名来开展业务，而你的用户将使用企业域名来登录你的企业网络。 使用 Azure Active Directory (Azure AD) 预览版时，也可以将企业域名添加到 Azure AD。 [预览包括哪些内容？](active-directory-preview-explainer.md) 这样，你便可以在目录中分配用户熟悉的用户名，例如 ‘alice@contoso.com.’。此过程很简单：
+你的组织购买了一个或多个域名来开展业务，而你的用户将使用企业域名来登录你的企业网络。 使用 Azure Active Directory (Azure AD) 预览版时，也可以将企业域名添加到 Azure AD。 [预览包括哪些内容？](active-directory-preview-explainer.md) 如此一来，便可在目录中分配用户熟悉的用户名，例如“alice@contoso.com”。 过程很简单：
 
 1. 将自定义域名添加到目录
 2. 在域名注册机构中为域名添加 DNS 条目
@@ -83,10 +84,5 @@ ms.openlocfilehash: 0cf396fb2ce60868383d28afa1c4455aa108b3ba
 
 ## <a name="next-steps"></a>后续步骤
 [管理自定义域名](active-directory-domains-manage-azure-portal.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 02/27/2017
 ms.author: billmath
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 03adc1873e8187a9104f42ba9b50df2ac0d015b5
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: ba06eb7e9f3f09e2d1d04cb4118dd81b9e66853e
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="the-azure-ad-privileged-identity-management-security-wizard"></a>Azure AD Privileged Identity Management 安全向导
+# <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>使用 Azure AD Privileged Identity Management 中的安全向导 
 如果你是第一个在组织中运行 Azure Privileged Identity Management (PIM) 的人，就会看到一个向导。 该向导可帮助你了解特权标识的安全风险，以及如何使用 PIM 来降低这些风险。 如果希望以后再对现有的角色分配进行任何更改，则暂时不需要在向导中进行这些更改。
 
 ## <a name="what-to-expect"></a>期望
@@ -41,10 +42,5 @@ ms.openlocfilehash: 03adc1873e8187a9104f42ba9b50df2ac0d015b5
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

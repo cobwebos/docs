@@ -1,6 +1,6 @@
 ---
-title: "在 Azure Active Directory 预览版中创建新组 | Microsoft 文档"
-description: "如何在 Azure Active Directory 中创建组并将用户（成员）添加到该组"
+title: "在 Azure Active Directory 预览版中创建用户组 | Microsoft 文档"
+description: "如何在 Azure Active Directory 中创建组并向该组添加成员"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 24a6ae1b259a1524ec3a8542dcbf55ff0450421e
-ms.openlocfilehash: ab74ff51f6dd1af91c4ec4d5de570ca30fb963bd
+ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
+ms.openlocfilehash: 4b85a754dfa9632f27308a3d9234213533dea4c4
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-a-new-group-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中创建新组
+# <a name="create-a-group-and-add-members-in-azure-active-directory"></a>在 Azure Active Directory 中创建组并添加成员
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-groups-create-azure-portal.md)
 > * [Azure 经典门户](active-directory-accessmanagement-manage-groups.md)
@@ -58,9 +60,4 @@ ms.openlocfilehash: ab74ff51f6dd1af91c4ec4d5de570ca30fb963bd
 * [管理组的成员](active-directory-groups-members-azure-portal.md)
 * [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
 * [管理组中用户的动态规则](active-directory-groups-dynamic-membership-azure-portal.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

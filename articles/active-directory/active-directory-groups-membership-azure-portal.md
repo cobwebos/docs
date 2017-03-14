@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Active Directory 预览版中管理包含你所在组的组 | Microsoft 文档"
+title: "在 Azure Active Directory 预览版中管理你的组所属的组 | Microsoft 文档"
 description: "在 Azure Active Directory 中，组可以包含其他组。 下面介绍如何管理这些成员身份。"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1968862a68d86c0f42e86ecb1f23aeebd264076c
+ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
+ms.openlocfilehash: 8e0563f3490186a19dd9418ebf7beac7dd8dd046
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="manage-the-groups-your-group-is-a-member-of-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中管理包含你的组的组
+# <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>在 Azure Active Directory 租户中管理某个组属于哪些组
 在 Azure Active Directory 预览版中，组可以包含其他组。 [预览包括哪些内容？](active-directory-preview-explainer.md) 下面介绍如何管理这些成员身份。
 
 ## <a name="how-do-i-find-the-groups-my-group-is-a-member-of"></a>如何查找包含我的组的组？
@@ -53,9 +55,4 @@ ms.openlocfilehash: 1968862a68d86c0f42e86ecb1f23aeebd264076c
 * [管理组的设置](active-directory-groups-settings-azure-portal.md)
 * [管理组的成员](active-directory-groups-members-azure-portal.md)
 * [管理组中用户的动态规则](active-directory-groups-dynamic-membership-azure-portal.md)
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

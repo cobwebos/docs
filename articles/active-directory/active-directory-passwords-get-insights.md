@@ -1,9 +1,9 @@
 ---
 title: "深入分析：Azure AD 密码管理报告 | Microsoft 文档"
-description: "本文介绍如何使用报告来深入分析组织中的密码管理操作。"
+description: "本文介绍了如何使用报告来深入分析组织中的密码管理操作。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 1472b51d-53f4-4b0f-b1be-57f6fa88fa65
@@ -12,21 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: 50255c1eabc5ac0f51fa8d45851fb632928070cc
+ms.lasthandoff: 02/24/2017
 
 
 ---
-# <a name="how-to-get-operational-insights-with-password-management-reports"></a>如何使用密码管理报告获取 Operational Insights
+# <a name="how-to-get-operational-insights-with-password-management-reports"></a>如何使用密码管理报告获取操作见解
 > [!IMPORTANT]
 > **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
-> 
-> 
+>
+>
 
-本部分介绍如何使用 Azure Active Directory 的密码管理报告来查看组织中用户对密码重置和更改的使用情况。
+本部分介绍了如何使用 Azure Active Directory 的密码管理报告来查看组织中用户对密码重置和更改的使用情况。
 
 * [**密码管理报告概述**](#overview-of-password-management-reports)
 * [**如何查看密码管理报告**](#how-to-view-password-management-reports)
@@ -48,12 +49,12 @@ ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
 ## <a name="how-to-view-password-management-reports"></a>如何查看密码管理报告
 若要查找密码管理报告，请按照以下步骤操作：
 
-1. 在 [Azure 管理门户](https://manage.windowsazure.com)中单击“Active Directory”扩展。
+1. 在 [Azure 经典门户](https://manage.windowsazure.com)中单击“Active Directory”扩展。
 2. 从门户显示的列表中选择你的目录。
 3. 单击“报告”选项卡。
 4. 查看“活动日志”部分的下面。
 5. 选择“密码重置活动报告”或“密码重置注册活动”报告。
-   
+
    ![][001]
 
 ## <a name="how-to-access-password-management-reports-from-an-api"></a>如何通过 API 访问密码管理报告
@@ -72,7 +73,7 @@ ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
 * **最大时间范围**：1 个月
 * **最大行数**：无限制
 * **可下载**：是，通过 CSV 文件
-  
+
     ![][002]
 
 ### <a name="description-of-report-columns"></a>报告列的说明
@@ -96,7 +97,7 @@ ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
 * **最大时间范围**：1 个月
 * **最大行数**：无限制
 * **可下载**：是，通过 CSV 文件
-  
+
     ![][003]
 
 ### <a name="description-of-report-columns"></a>报告列的说明
@@ -159,7 +160,7 @@ ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
 | 已对此租户完全禁用密码重置。 若要解决此问题，请参阅[此文](http://aka.ms/ssprtroubleshoot)。 |已失败 |
 | 用户已成功重置密码 |已成功 |
 
-## <a name="links-to-password-reset-documentation"></a>密码重置文档的链接
+## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
 * **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
@@ -174,9 +175,4 @@ ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
 [001]: ./media/active-directory-passwords-get-insights/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

@@ -1,6 +1,6 @@
 ---
 
-title: "识别和解决 Azure Active Directory 中组的许可问题 | Microsoft 文档"
+title: "在 Azure Active Directory 中解决组的许可证问题 | Microsoft 文档"
 description: "如何使用基于 Azure Active Directory 组的许可来识别和解决许可证分配问题"
 services: active-directory
 keywords: "Azure AD 许可"
@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 02/28/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6a9cebafd1ad8f513bfab897970241f7b82b2a53
-ms.openlocfilehash: 9a434cf35d7934dc5eb759851fb65ad2a9f06eef
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: ac3f563828c5fa379f328392a3f5cf7c7932f534
+ms.openlocfilehash: 4ed83a1af1c31d41860931d363d93c7d61df9c98
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="identifying-and-resolving-license-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可问题
+# <a name="identifying-and-resolving-license-assignment-problems-when-using-groups-in-azure-active-directory"></a>当在 Azure Active Directory 中使用组时识别并解决许可证分配问题
 
 
 Azure Active Directory (Azure AD) 中基于组的许可引入了用户处于许可错误状态的概念。 本文说明用户为何会进入这种状态。 如果直接将许可证分配给单个用户而不使用基于组的许可，分配操作可能失败。 例如，当管理员针对某个用户执行 PowerShell cmdlet `Set-MsolUserLicense` 时，该 cmdlet 可能会出于业务逻辑相关的多种原因而失败，例如，许可证数量不足，或者两个无法同时分配的服务计划之间存在冲突。 系统会立即将该问题报告给执行命令的用户。
@@ -89,5 +90,5 @@ Azure AD 会尝试将该组中指定的所有许可证分配给每个用户。 �
 * [将许可证分配到 Azure Active Directory 中的组](active-directory-licensing-group-assignment-azure-portal.md)
 * [Azure Active Directory 中基于组的许可是什么？](active-directory-licensing-whatis-azure-portal.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
-* [基于 Azure Active Directory 组的许可的其他方案](active-directory-licensing-group-advanced.md)
+* [Azure Active Directory 基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 

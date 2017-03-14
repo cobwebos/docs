@@ -16,37 +16,38 @@ ms.workload: identity
 ms.date: 02/06/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c05cd490ee9125f7e5182cb502db6f4e9390094
-ms.openlocfilehash: 6c6d757a770613498bedca0f8f3a965241d692eb
+ms.sourcegitcommit: f06af80b14b439a223607e91c031a887c200d88d
+ms.openlocfilehash: 11da3f4ff55e8d52a1d0cecb0e275a8af80727ea
+ms.lasthandoff: 02/24/2017
 
 
 ---
 
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>委托 Azure Active Directory B2B 协作邀请
 
-使用 Azure Active Directory (Azure AD) B2B 协作公共预览版刷新，你不必是全局管理员就能邀请用户。 你可以通过策略控制谁可以邀请并可将邀请委托给具有允许邀请角色的用户。 委托来宾用户邀请的重要新方法是通过“来宾邀请者”角色邀请。
+使用 Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作公共预览版全新版本，你不必成为全局管理员便可发送邀请。 相反，你可以使用策略并将邀请委托给其角色允许他们发送邀请的用户。 委托来宾用户邀请的重要新方法是通过“来宾邀请者”角色邀请。
 
 ## <a name="guest-inviter-role"></a>“来宾邀请者”角色
-我们可以将用户分配给可发送邀请的“来宾邀请者”角色。 你不必是全局管理员的成员，就能发送邀请。 默认情况下，常规用户还可以调用邀请 API，除非全局管理员已对常规用户禁用邀请。 可以通过 Azure 门户和 PowerShell 执行此操作。
+我们可以将用户分配给可发送邀请的“来宾邀请者”角色。 你不必成为全局管理员角色的成员便可发送邀请。 默认情况下，常规用户还可以调用邀请 API，除非全局管理员已对常规用户禁用邀请。 可以使用 Azure 门户或 PowerShell 执行此操作。
 
-下面是一个示例，演示如何通过 PowerShell 将用户添加到“来宾邀请者”角色：
+下面是一个示例，它展示了如何使用 PowerShell 将用户添加到“来宾邀请者”角色：
 
 ```
-Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress >
+Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress>
 ```
 
-## <a name="controlling-who-can-invite"></a>控制谁可以邀请
+## <a name="control-who-can-invite"></a>控制谁可以邀请
 
-![控制邀请方式](media/active-directory-b2b-delegate-invitations/control-who-to-invite.png)
+![控制如何邀请](media/active-directory-b2b-delegate-invitations/control-who-to-invite.png)
 
-通过 Azure AD B2B 协作，允许租户管理员设置以下邀请策略：
+使用 Azure AD B2B 协作，租户管理员可以设置以下邀请策略：
 
-1. 关闭邀请
-2. 仅管理员和具有“来宾邀请者”角色的用户可以邀请
-3. 管理员、“来宾邀请者”角色和成员可以邀请
-4. 所有用户（包括来宾）都可以邀请
+- 关闭邀请
+- 只有管理员和具有“来宾邀请者”角色的用户可以邀请
+- 管理员、“来宾邀请者”角色和成员可以邀请
+- 所有用户（包括来宾）都可以邀请
 
-默认情况下，租户设置为第 4 项策略（所有用户（包括来宾）都可以邀请 B2B 用户）。
+默认情况下，租户设置为 #4。 （所有用户（包括来宾）都可以邀请 B2B 用户。）
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -61,10 +62,5 @@ Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMembe
 * [B2B 协作用户令牌](active-directory-b2b-user-token.md)
 * [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
 * [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
-* [B2B 协作当前限制](active-directory-b2b-current-limitations.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+* [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)
 

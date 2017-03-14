@@ -3,7 +3,7 @@ title: "故障排除：Azure AD 密码管理 | Microsoft 文档"
 description: "针对 Azure AD 密码管理的常见故障排除步骤，包括重置、更改、写回、注册，以及寻求帮助时要提供的信息。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 18f3dcf7-9314-4a2b-8fed-54b00c0026dd
@@ -12,19 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: 3515091cf71ecb595d8c08902ff13549a9ddd2f4
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: e4a4e1968ec43b76bfa9bd938804ef23e37477e5
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="how-to-troubleshoot-password-management"></a>如何排查密码管理问题
 > [!IMPORTANT]
 > **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
-> 
-> 
+>
+>
 
 如果你有密码管理方面的问题，我们随时可提供帮助。 你可能会遇到的大多数问题都可以通过以下简单故障排除步骤来解决，请阅读以下内容来排查你的部署问题：
 
@@ -46,11 +47,11 @@ ms.openlocfilehash: 3515091cf71ecb595d8c08902ff13549a9ddd2f4
 * **页面** – 看到错误时所在的页面（包括 URL）。
 * **日期/时间/时区** – 看到错误时的准确日期和时间（包括时区）。
 * **支持代码** – 用户看到错误时所生成的支持代码（若要找到支持代码，请再现错误，然后单击屏幕底部的“支持代码”链接，将生成的 GUID 发送给支持工程师）。
-  
+
   * 如果所在页面的底部没有支持代码，请按 F12，搜索 SID 和 CID，然后将这两个结果发送给支持工程师。
-    
+
     ![][001]
-* **用户 IDuser@contoso.com)? – 看到错误的用户的 ID 是什么（例如 **）？
+* **用户 ID** – 看到错误的用户的 ID 是什么（例如 user@contoso.com）？
 * **有关用户的信息** – 用户是否已联合、密码哈希是否已同步、是否只在云中？  用户是否已获 AAD Premium 或 AAD Basic 授权？
 * **应用程序事件日志** – 如果使用密码写回，而且错误位于本地基础结构中，请将 Azure AD Connect 服务器中的应用程序事件日志副本进行压缩，然后连同请求一起发送。
 
@@ -524,7 +525,7 @@ ms.openlocfilehash: 3515091cf71ecb595d8c08902ff13549a9ddd2f4
               </ul>
               <ul>
                 <li class="unordered">
-出站连接 <br\><br\></li>
+出站连接<br\><br\></li>
               </ul>
               <p>
 
@@ -726,7 +727,7 @@ ms.openlocfilehash: 3515091cf71ecb595d8c08902ff13549a9ddd2f4
               <p>HR 8023042</p>
             </td>
             <td>
-              <p>同步引擎返回了错误：hr = 80230402，消息 = 由于存在使用相同定位点的重复条目，尝试获取对象失败</p>
+              <p>同步引擎返回了错误：hr =&80230;402，消息 = 由于存在使用相同定位点的重复条目，尝试获取对象失败</p>
             </td>
             <td>
               <p>ADSync</p>
@@ -1455,7 +1456,7 @@ MA 服务帐户没有合适的权限在相关的用户帐户上设置新密码�
 2. 在搜索框中键入“services.msc”，然后按 **Enter**。
 3. 找到 **Microsoft Azure AD Connect** 条目。
 4. 右键单击该服务条目，单击“重新启动”，并等待操作完成。
-   
+
    ![][002]
 
 这些步骤将重新建立与云服务的连接，并且可解决可能遇到的任何中断。  如果重新启动同步服务无法解决你遇到的问题，我们建议你接下来尝试禁用密码写回功能，然后重新启用该功能。
@@ -1468,14 +1469,14 @@ MA 服务帐户没有合适的权限在相关的用户帐户上设置新密码�
 3. 在“连接到 AD DS”对话框中，输入 **AD 域服务管理员凭据**。
 4. 在“唯一标识你的用户”对话框中，单击“下一步”按钮。
 5. 在“可选功能”对话框中，取消选中“密码写回”复选框。
-   
+
    ![][003]
 6. 单击“下一步”完成剩余的对话框页，而不更改任何内容，直到转到“准备好配置”页。
 7. 确保配置页上的“密码写回”选项显示为禁用，然后单击绿色的“配置”按钮提交所做的更改。
 8. 在“已完成”对话框中，取消选择“立即同步”选项，然后单击“完成”关闭向导。
 9. 重新打开 **Azure AD Connect 配置向导**。
 10. **重复步骤 2-8**，但确保选中“可选功能”屏幕上的“密码写回”选项以重新启用该服务。
-    
+
     ![][004]
 
 这些步骤将重新建立与云服务的连接，并且可解决可能遇到的任何中断。
@@ -1496,11 +1497,9 @@ MA 服务帐户没有合适的权限在相关的用户帐户上设置新密码�
 
 如果这样做仍无法解决遇到的问题，我们建议查看[排查密码写回问题](#troubleshoot-password-writeback)和 [Azure AD 密码管理常见问题](active-directory-passwords-faq.md)，了解其中是否讨论了所遇到的问题。
 
-<br/>
-<br/>
-<br/>
 
-## <a name="links-to-password-reset-documentation"></a>密码重置文档的链接
+
+## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
 * **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
@@ -1516,9 +1515,4 @@ MA 服务帐户没有合适的权限在相关的用户帐户上设置新密码�
 [002]: ./media/active-directory-passwords-troubleshoot/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-troubleshoot/003.jpg "Image_003.jpg"
 [004]: ./media/active-directory-passwords-troubleshoot/004.jpg "Image_004.jpg"
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

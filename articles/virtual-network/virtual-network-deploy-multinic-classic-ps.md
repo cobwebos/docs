@@ -1,10 +1,10 @@
 ---
-title: "使用 PowerShell 创建具有多个 NIC 的 VM（经典）| Microsoft 文档"
-description: "了解如何使用 PowerShell 通过经典部署模型创建具有多个 NIC 的 VM。"
+title: "创建具有多个 NIC 的 VM（经典） - Azure PowerShell | Microsoft 文档"
+description: "了解如何使用 PowerShell 创建具有多个 NIC 的 VM（经典）。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 6e50f39a-2497-4845-a5d4-7332dbc203c5
@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5f6f14a3bf779de0c4ef6d1f31c283b72d3a18f7
-ms.openlocfilehash: 9243294318c3f6c4c7a3563444f0db0ebcf33f28
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: cd3e6c548fd1f7dccaf478d3324efc8d768e3064
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -140,8 +142,8 @@ ms.openlocfilehash: 9243294318c3f6c4c7a3563444f0db0ebcf33f28
 4. 设置默认 NIC，并为其分配静态 IP 地址。
 
     ```powershell
-    Set-AzureSubnet         -SubnetNames $backendSubnetName -VM $vmConfig
-    Set-AzureStaticVNetIP   -IPAddress ($ipAddressPrefix+$suffixNumber+3) -VM $vmConfig
+    Set-AzureSubnet            -SubnetNames $backendSubnetName -VM $vmConfig
+    Set-AzureStaticVNetIP     -IPAddress ($ipAddressPrefix+$suffixNumber+3) -VM $vmConfig
     ```
 
 5. 为每个 VM 添加第二个 NIC。
@@ -194,10 +196,5 @@ ms.openlocfilehash: 9243294318c3f6c4c7a3563444f0db0ebcf33f28
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
