@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: b4a64bbccabf0e7b0e7aec659d066883139c8207
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/16/2017
 
 此应用程序示例可处理 [Azure 队列](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 和 [Azure blob](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)。 本教程演示如何将应用程序部署到 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) 和 [Azure SQL 数据库](http://msdn.microsoft.com/library/azure/ee336279)。
 
-## <a name="a-idprerequisitesaprerequisites"></a><a id="prerequisites"></a>先决条件
+## <a id="prerequisites"></a>先决条件
 本教程假设你知道如何在 Visual Studio 中处理 [ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) 项目。
 
 本教程针对 Visual Studio 2013 编写。 如果尚未安装 Visual Studio，则在安装 Azure SDK for .NET 时会自动安装 Visual Studio。
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/16/2017
 >
 >
 
-## <a name="a-idlearnawhat-youll-learn"></a><a id="learn"></a>学习内容
+## <a id="learn"></a>学习内容
 本教程介绍如何执行以下任务：
 
 * 在计算机上安装 Azure SDK 进行 Azure 开发。
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/16/2017
 * 上载文件并将其存储在 Azure Blob 服务中。
 * 使用 Azure WebJobs SDK 处理 Azure 存储队列和 Blob。
 
-## <a name="a-idcontosoadsaapplication-architecture"></a><a id="contosoads"></a>应用程序体系结构
+## <a id="contosoads"></a>应用程序体系结构
 应用程序示例使用[以队列为中心的工作模式](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)，减轻后端进程创建缩略图的 CPU 密集型工作。
 
 该应用程序将广告存储在 SQL 数据库中，通过使用实体框架 Code First 创建表和访问数据。 对于每个广告，数据库存储两个 URL：一个用于全尺寸图像，另一个用于缩略图。
@@ -74,7 +74,7 @@ ms.lasthandoff: 02/16/2017
 
 本教程中的说明不适用于 Azure SDK for .NET 2.7.1 或更高版本。
 
-## <a name="a-idstorageacreate-an-azure-storage-account"></a><a id="storage"></a>创建 Azure 存储帐户
+## <a id="storage"></a>创建 Azure 存储帐户
 Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并且，WebJobs SDK 还可用于存储仪表板的日志记录数据。
 
 在实际应用程序中，通常会为应用程序数据与记录数据创建单独帐户，并为测试数据与生产数据创建单独帐户。 对于本教程，你将只使用一个帐户。
@@ -100,7 +100,7 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 
     ![新的存储帐户](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
 
-## <a name="a-iddownloadadownload-the-application"></a><a id="download"></a>下载应用程序
+## <a id="download"></a>下载应用程序
 1. 下载并解压缩 [已完成的解决方案](http://code.msdn.microsoft.com/Simple-Azure-Website-with-b4391eeb)。
 2. 启动 Visual Studio。
 3. 从“文件”菜单中，选择“打开”>“项目/解决方案”、导航到下载解决方案的位置，然后打开解决方案文件。
@@ -109,7 +109,7 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
     默认情况下，Visual Studio 会自动还原 NuGet 包的内容，它未包括在 *.zip* 文件中。 如果包无法还原，请转到“管理解决方案的 NuGet 包”对话框，并单击右上角的“还原”按钮进行手动安装。
 5. 在“解决方案资源管理器”中，请确保选择“ContosoAdsWeb”作为启动项目。
 
-## <a name="a-idconfigurestorageaconfigure-the-application-to-use-your-storage-account"></a><a id="configurestorage"></a>将应用程序配置为使用你的存储帐户
+## <a id="configurestorage"></a>将应用程序配置为使用你的存储帐户
 1. 打开 ContosoAdsWeb 项目中的应用程序 *Web.config* 文件。
 
     该文件包含用于处理 Blob 和队列的 SQL 连接字符串和 Azure 存储连接字符串。
@@ -153,7 +153,7 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 7. 将两个存储连接字符串替换为先前复制的连接字符串。
 8. 保存所做更改。
 
-## <a name="a-idrunarun-the-application-locally"></a><a id="run"></a>在本地运行应用程序
+## <a id="run"></a>在本地运行应用程序
 1. 若要启动应用程序的 Web 前端，请按 CTRL+F5。
 
     默认浏览器将打开主页。 （Web 项目运行，因为已将其设为启动项目。）
@@ -183,7 +183,7 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 
 你已在本地计算机上运行应用程序，该应用程序正在使用计算机上的 SQL Server 数据库，但它在处理云中的队列和 Blob。 在下一节中，将使用云数据库以及云 Blob 和队列在云中运行该应用程序。  
 
-## <a name="a-idrunincloudarun-the-application-in-the-cloud"></a><a id="runincloud"></a>在云中运行应用程序
+## <a id="runincloud"></a>在云中运行应用程序
 执行以下步骤在云中运行应用程序：
 
 * 部署到 Web 应用。 Visual Studio 在应用服务中自动创建新的 Web 应用和 SQL 数据库实例。
@@ -308,7 +308,7 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 >
 >
 
-## <a name="a-idcreateacreate-the-application-from-scratch"></a><a id="create"></a>从头开始创建应用程序
+## <a id="create"></a>从头开始创建应用程序
 在本节中，将执行以下任务：
 
 * 创建包含 Web 项目的 Visual Studio 解决方案。
@@ -407,7 +407,7 @@ Web 项目和 Web 作业项目都处理 SQL 数据库，因此两者都需要引
 
 现在，可以根据本教程前面所述生成、运行和部署应用程序。 但是，在执行此操作前，在部署到的第一个 Web 应用中停止正在运行的 Web 作业。 否则，Web 作业将处理本地创建的，或新 Web 应用运行的应用程序创建的队列消息，因为所有消息使用相同的存储帐户。
 
-## <a name="a-idcodeareview-the-application-code"></a><a id="code"></a>查看应用程序代码
+## <a id="code"></a>查看应用程序代码
 以下各节解释与处理 WebJobs SDK 和 Azure 存储 Blob 与队列相关的代码。
 
 > [!NOTE]
@@ -636,7 +636,7 @@ HttpPost `Edit` 方法的代码类似，不同之处在于如果用户选择新�
 
         <input type="file" name="imageFile" accept="image/*" class="form-control fileupload" />
 
-### <a name="a-idprogramcsacontosoadswebjob---programcs"></a><a id="programcs"></a>ContosoAdsWebJob - Program.cs
+### <a id="programcs"></a>ContosoAdsWebJob - Program.cs
 当 Web 作业启动时，`Main` 方法将调用 WebJobs SDK `JobHost.RunAndBlock` 方法，以开始执行当前线程上触发的函数。
 
         static void Main(string[] args)
@@ -645,7 +645,7 @@ HttpPost `Edit` 方法的代码类似，不同之处在于如果用户选择新�
             host.RunAndBlock();
         }
 
-### <a name="a-idgeneratethumbnailacontosoadswebjob---functionscs---generatethumbnail-method"></a><a id="generatethumbnail"></a>ContosoAdsWebJob - Functions.cs - GenerateThumbnail 方法
+### <a id="generatethumbnail"></a>ContosoAdsWebJob - Functions.cs - GenerateThumbnail 方法
 接收队列消息时，WebJobs SDK 将调用此方法。 该方法创建缩略图，并将缩略图放在数据库中的 URL。
 
         public static void GenerateThumbnail(

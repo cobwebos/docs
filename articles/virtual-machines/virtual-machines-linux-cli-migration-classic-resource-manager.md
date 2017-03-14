@@ -101,7 +101,7 @@ azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 
 如果你想要迁移到 Resource Manager 部署模型中的现有虚拟网络，请使用以下命令。
 
-    azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> subnetName <vnetName>
+    azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
 
 准备操作成功后，可以查看详细输出，以获取 VM 的迁移状态，并确保其处于 `Prepared` 状态。
 

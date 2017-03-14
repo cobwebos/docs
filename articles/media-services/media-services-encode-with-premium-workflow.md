@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 6dcc79a2adf81c82d245c99116f28eb4db983396
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -131,18 +132,10 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
                 Console.WriteLine("Created assetFile {0}", assetFile.Name);
 
-                var accessPolicy = _context.AccessPolicies.Create(assetName, TimeSpan.FromDays(30),
-                                                                    AccessPermissions.Write | AccessPermissions.List);
-
-                var locator = _context.Locators.CreateLocator(LocatorType.Sas, asset, accessPolicy);
-
                 Console.WriteLine("Upload {0}", assetFile.Name);
 
                 assetFile.Upload(singleFilePath);
                 Console.WriteLine("Done uploading {0}", assetFile.Name);
-
-                locator.Delete();
-                accessPolicy.Delete();
 
                 return asset;
             }
@@ -276,9 +269,4 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

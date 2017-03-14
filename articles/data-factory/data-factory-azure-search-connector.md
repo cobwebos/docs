@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 03/08/2017
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 55c988bf74ff0f2e519e895a735dc68f3dc99855
 ms.openlocfilehash: e2deed13106db9467eef181f25a0a226034df5a2
+ms.lasthandoff: 12/21/2016
 
 ---
 
@@ -37,11 +38,11 @@ ms.openlocfilehash: e2deed13106db9467eef181f25a0a226034df5a2
 
 以下示例显示：
 
-1.  [AzureSearch](#azure-search-linked-service-properties) 类型的链接服务。
-2.  [OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties) 类型的链接服务。
-3.  [SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4.  [AzureSearchIndex](#azure-search-index-dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-4.  包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) 和 [AzureSearchIndexSink](#azure-search-index-sink-properties)。
+1.    [AzureSearch](#azure-search-linked-service-properties) 类型的链接服务。
+2.    [OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties) 类型的链接服务。
+3.    [SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
+4.    [AzureSearchIndex](#azure-search-index-dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+4.    包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) 和 [AzureSearchIndexSink](#azure-search-index-sink-properties)。
 
 本示例每小时将时间序列数据从本地 SQL Server 数据库复制到 Azure 搜索索引。 此示例中使用的 JSON 属性会在示例后的各部分进行说明。
 
@@ -52,13 +53,13 @@ ms.openlocfilehash: e2deed13106db9467eef181f25a0a226034df5a2
 ```JSON
 {
     "name": "AzureSearchLinkedService",
-    "properties": {
+       "properties": {
         "type": "AzureSearch",
-        "typeProperties": {
+           "typeProperties": {
             "url": "https://<service>.search.windows.net",
             "key": "<AdminKey>"
         }
-    }
+       }
 }
 ```
 
@@ -118,7 +119,7 @@ ms.openlocfilehash: e2deed13106db9467eef181f25a0a226034df5a2
     "properties": {
         "type": "AzureSearchIndex",
         "linkedServiceName": "AzureSearchLinkedService",
-        "typeProperties" : {
+         "typeProperties" : {
             "indexName": "products",
         },
         "availability": {
@@ -327,9 +328,4 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 请参阅以下文章：
 
 * [复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，了解创建包含复制活动的管道的分步说明。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

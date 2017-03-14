@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/20/2017
+ms.date: 03/13/2017
 ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: ec9e12667bc82043fbdc0b3f113533cf518f39be
 ms.openlocfilehash: 9593f49d98794e72728e0683e34a407e39144a5d
+ms.lasthandoff: 01/21/2017
 
 
 ---
@@ -435,10 +436,5 @@ NuGet 包还添加对以下程序集的引用：
 [Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 
 [Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
