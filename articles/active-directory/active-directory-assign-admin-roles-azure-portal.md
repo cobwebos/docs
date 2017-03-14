@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/07/2017
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 82abd4724200d71da9ad577a0b0a37b2e8db3481
-ms.openlocfilehash: 4e96a48080ff299172a5f50960dda92dee145ce4
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: faffd356191b7cca124f0a2cd147837078e4150f
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -31,13 +31,6 @@ ms.lasthandoff: 02/24/2017
 使用 Azure Active Directory (Azure AD) 时，可以指定不同的管理员来执行不同的功能。 这些管理员可以按角色访问 Azure 门户或 Azure 经典门户中的各种功能：创建或编辑用户、将管理角色分配给他人、重置用户密码、管理用户许可证以及管理域等。 分配为管理员角色的用户在你的组织所订阅的所有云服务中拥有相同的权限，不管该角色是通过 Office 365 门户、Azure 经典门户还是用于 Windows PowerShell 的 Azure AD 模块分配的。
 
 提供以下管理员角色：
-
-
-- **应用程序管理员**：具有此角色的用户可以创建和管理所有应用程序、管理许可证分配、监视服务运行状况以及管理服务请求。
-
-- **应用程序开发人员**：具有此角色的用户可以创建应用程序。 当 **UsersPermissionToCreateLOBAppsEnabled** 标志（允许所有用户创建应用程序）设置为 false 时，此角色用来允许某些用户保持其创建应用程序的能力。
-
-- **应用程序代理服务管理员**：具有此角色的用户有权在 Azure AD 中管理应用程序代理服务的所有方面。
 
 * **计费管理员**：进行采购、管理订阅、管理支持票证并监视服务运行状况。
 

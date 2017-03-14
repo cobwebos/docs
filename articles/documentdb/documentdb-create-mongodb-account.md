@@ -1,24 +1,11 @@
 ---
-title: "创建用于 MongoDB 应用的 DocumentDB 帐户 | Microsoft Docs"
-description: "通过此教程了解如何创建具有 MongoDB 协议支持的 DocumentDB 帐户（目前以预览版提供）。"
-keywords: "mongodb 应用"
-services: documentdb
-author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
-ms.assetid: 413f3ae1-a68e-43be-b0d7-fa2987644f3e
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/24/2016
-ms.author: anhoh
+redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-create-account
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 1c9e8d5a00445b31c81547df7bd2dbc55f8feac2
-ms.openlocfilehash: e9176ec520b05e5613eab610fbc96144e9405d07
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: dbd15e0d2b1bc3b5f559d19961e3c45b5079e1c4
+ms.lasthandoff: 03/08/2017
+
 
 
 ---
