@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: multiple
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
-ms.openlocfilehash: 89ff5d5deeda72361cb619516681aca386c5a422
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: b8cad4541d4e17f98a35289c6c031b9331ab4a8b
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="automatically-scale-compute-nodes-in-an-azure-batch-pool"></a>自动缩放 Azure Batch 池中的计算节点
+# <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动缩放公式
+
 使用自动缩放，Azure Batch 可以根据所定义的参数在池中动态添加或删除计算节点。 还可以通过自动调整你的应用程序使用的计算能力（当工作的任务要求提高时增加节点，当任务要求降低时删除节点）来节省时间和金钱。
 
 可通过将定义的*自动缩放公式*与计算节点池相关联（例如，使用 [Batch .NET](batch-dotnet-get-started.md) 库中的 [PoolOperations.EnableAutoScale][net_enableautoscale] 方法），对计算节点池启用自动缩放。 然后，Batch 服务将使用此公式来确定执行工作负荷所需的计算节点数目。 Batch 将会响应定期收集的服务指标数据样本，并根据公式按可配置的间隔调整池中的计算节点数。
@@ -182,7 +185,7 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 
 *doubleVecList* 值在计算之前将转换为单个 *doubleVec*。 例如，如果 `v = [1,2,3]`，则调用 `avg(v)` 相当于调用 `avg(1,2,3)`。 调用 `avg(v, 7)` 相当于调用 `avg(1,2,3,7)`。
 
-## <a name="a-namegetsampledataaobtain-sample-data"></a><a name="getsampledata"></a>获取样本数据
+## <a name="getsampledata"></a>获取样本数据
 自动缩放公式使用 Batch 服务提供的度量值数据（样本）。 公式根据服务所提供的值来扩大或缩小池的大小。 上述服务定义的变量是可提供各种方法来访问与该对象关联的数据的对象。 例如，以下表达式显示了一个用于获取过去五分钟 CPU 使用率的请求：
 
 ```
@@ -643,9 +646,4 @@ string formula = string.Format(@"
 [rest_autoscaleformula]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 [rest_autoscaleinterval]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 [rest_enableautoscale]: https://msdn.microsoft.com/library/azure/dn820173.aspx
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
