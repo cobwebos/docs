@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 201b07536bcee58e2b7102379dff1c1c93c4b675
-ms.openlocfilehash: adf31b2e309e4ec19bb19e5683bd5298d27ad3eb
+ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
+ms.openlocfilehash: dc4716a26ba5c2ba93dda83890dbff81f22cbd2a
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -25,6 +26,9 @@ ms.openlocfilehash: adf31b2e309e4ec19bb19e5683bd5298d27ad3eb
 
 * 具有训练实验以及已部署为运营 Web 服务的预测实验。
 * 具有想要预测 Web 服务用以执行评分的新数据。
+
+> [!NOTE] 
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。 
 
 若要开始使用现有 Web 服务和实验，需要遵循以下操作：
 
@@ -190,9 +194,4 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 
 <!-- Module References -->
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 
