@@ -12,12 +12,13 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 11/16/2016
 ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: e8a6db7963203d747b1f506d0cfae8b3e98d58d3
 ms.openlocfilehash: 4b5c9e4c62fbcf548aad1dbe242e2df0f2f5d41f
+ms.lasthandoff: 11/18/2016
 
 
 ---
@@ -254,9 +255,4 @@ Web 服务包无效。 请检查提供的 Web 包是否正确，然后重试。
 | BackendInitializationTimeout | 无法在允许的时间内完成 Web 服务初始化。 |
 | BackendScoreTimeout | 无法在允许的时间内完成 Web 服务请求执行。 |
  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

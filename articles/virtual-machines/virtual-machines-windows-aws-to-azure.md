@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
 ms.openlocfilehash: 6854ebe781220dfdf957fa1d89ec19d32e6febea
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: 6854ebe781220dfdf957fa1d89ec19d32e6febea
 如果使用 PowerShell，请确保使用最新版本的 AzureRM.Compute PowerShell 模块。 运行以下命令进行安装。
 
 ```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM.Compute -MinimumVersion 2.6.0
 ```
 有关详细信息，请参阅 [Azure PowerShell 版本控制](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)。
 
@@ -347,9 +348,4 @@ New-AzureRmVM -VM $vm -ResourceGroupName $rgName -Location $location
 
 若要登录到新虚拟机，请在[门户](https://portal.azure.com)中浏览到该 VM，单击“连接”，然后打开远程桌面 RDP 文件。 使用原始虚拟机的帐户凭据登录到新虚拟机。 有关详细信息，请参阅 [How to connect and log on to an Azure virtual machine running Windows](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（如何连接并登录到运行 Windows 的 Azure 虚拟机）。 
  
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
