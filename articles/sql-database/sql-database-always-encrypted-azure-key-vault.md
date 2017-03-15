@@ -14,12 +14,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2016
+ms.date: 03/02/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: a2a738ef1df470e17b805e843a159e0abc23efdf
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 9d654904e06758bc8634efa9b18ea3bac2b64523
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -60,8 +60,8 @@ ms.lasthandoff: 02/16/2017
 7. 复制你的“客户端 ID”。 （稍后在代码中将需要此值。）
 8. 在“密钥”部分中，从“选择持续时间”下拉列表选择“1 年”。 （在步骤 13 中保存后将复制该密钥。）
 9. 向下滚动并单击“添加应用程序”。
-10. 保留“显示”设置为“Microsoft 应用”，然后选择“Microsoft Azure 服务管理”。 单击复选标记以继续。
-11. 从“委派权限”下拉列表选择“访问 Azure 服务管理”。
+10. 保留“显示”设置为“Microsoft 应用”，然后选择“Microsoft Azure 服务管理 API”。 单击复选标记以继续。
+11. 从“委派权限”下拉列表选择“访问 Azure 服务管理...”。
 12. 单击“保存”。
 13. 在保存完成后，将密钥值复制到“密钥”部分。 （稍后在代码中将需要此值。）
 

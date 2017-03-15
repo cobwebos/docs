@@ -10,15 +10,9 @@
 | 每个订阅的保留的 IP |20 |100 |
 | 每个订阅的托管服务证书数 |400 |400 |
 | 每个订阅的[地缘组数](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) |256 |256 |
-| 每个区域每个订阅的[批处理](https://azure.microsoft.com/services/batch/)帐户数 |1 |50 |
 | 每个订阅的警报规则数 |250 |250 |
 
 <sup>1</sup>特小实例作为一项核心至核心限制计数，即使使用了部分核心。
 
 <sup>2</sup>这包括标准和高级存储帐户。 如果需要的存储帐户超过 100 个，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提出请求。 Azure 存储空间团队将评审你的业务案例，最多可以批准 250 个存储帐户。 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

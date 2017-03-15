@@ -1,5 +1,5 @@
 ---
-title: "使用存储分析收集日志和指标数据 | Microsoft Docs"
+title: "使用 Azure 存储分析收集日志和指标数据 | Microsoft Docs"
 description: "使用存储分析，可以跟踪所有存储服务的度量值数据，并收集 Blob、队列和表存储的日志。"
 services: storage
 documentationcenter: 
@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: af5fae5c5153c91fe78bdfb310c407a2c4462e04
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 4680985e5c66444ca8a356cc92d45dc0f1838f55
+ms.lasthandoff: 03/06/2017
 
 
 ---
 # <a name="storage-analytics"></a>存储分析
-## <a name="overview"></a>概述
+
 Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 可以使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。
 
 若要使用存储分析，必须为每个要监视的服务单独启用它。 可以从 [Azure 门户](https://portal.azure.com)中启用它。 有关详细信息，请参阅[在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)。 还可以通过 REST API 或客户端库以编程方式启用存储分析。 使用[获取 Blob 服务属性](https://msdn.microsoft.com/library/hh452239.aspx)、[获取队列服务属性](https://msdn.microsoft.com/library/hh452243.aspx)、[获取表服务属性](https://msdn.microsoft.com/library/hh452238.aspx)和[获取文件服务属性](https://msdn.microsoft.com/library/mt427369.aspx)操作，为每个服务启用存储分析。
@@ -85,7 +86,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 | DD |用两位数表示的日志月份。 例如：07。 |
 | hh |用两位数表示的日志起始小时，采用 24 小时 UTC 格式。 例如：18。 |
 | mm |用两位数表示的日志起始分钟。 最新的存储分析版本中不支持该值，其值始终为 00。 |
-| <counter> |从零开始且具有六位数字的计数器，表示在 1 小时内为存储服务生成的日志 Blob 数。 此计数器从 000000 开始。 例如：000001。 |
+| <counter> |从零开始且具有六位数字的计数器，表示在&1; 小时内为存储服务生成的日志 Blob 数。 此计数器从 000000 开始。 例如：000001。 |
 
 下面是组合前述示例的完整示例日志名称。
 
@@ -163,7 +164,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 度量值表中的所有数据都可以使用表服务 API 进行访问，包括 Azure 托管库提供的 .NET API。 存储帐户管理员可以读取和删除表实体，但不能创建或更新表实体。
 
 ## <a name="billing-for-storage-analytics"></a>存储分析计费
-存储分析是由存储帐户所有者启用的；默认情况下，不会启用存储分析。 所有度量数据是由存储帐户服务写入的。 因此，存储分析执行的每个写入操作都是计费的。 此外，度量数据使用的存储量也是计费的。
+所有度量数据是由存储帐户服务写入的。 因此，存储分析执行的每个写入操作都是计费的。 此外，度量数据使用的存储量也是计费的。
 
 存储分析执行的以下操作都是计费的：
 
@@ -191,10 +192,5 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 * [关于存储分析指标](https://msdn.microsoft.com/library/hh343258.aspx)
 * [存储分析指标表架构](https://msdn.microsoft.com/library/hh343264.aspx)
 * [存储分析记录的操作和状态消息](https://msdn.microsoft.com/library/hh343260.aspx)  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -11,12 +11,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: b046dcb32e6796f4e66009361783fa95936794b8
-ms.openlocfilehash: 662fbbdda2c6d4d7da2c7c94dabb984a6bfc7296
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 8b9e174523b3d08be20a4d30cc83c11f5bc93cd5
+ms.lasthandoff: 03/06/2017
 
 ---
 
@@ -693,8 +693,7 @@ Azure 文件存储使用标准 SMB 协议为应用程序提供共享存储。 Mi
 有关 Azure 文件存储的详细信息，请参阅[在 Windows 上开始使用 Azure 文件存储](storage-dotnet-how-to-use-files.md)和 [File Service REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)（文件服务 REST API）。
 
 ## <a name="how-to-set-and-query-storage-analytics"></a>如何设置和查询存储分析
-可使用 [Azure 存储分析](storage-analytics.md)从 Azure 存储帐户收集度量值，并记录与发送到存储帐户的请求有关的数据。 可以使用存储度量值监视存储帐户的运行状况，并使用存储日志记录诊断和解决与存储帐户有关的问题。
-对于存储服务，默认情况下不启用存储指标。 可以使用 Azure 门户或 Windows PowerShell 启用监视，也可以使用存储客户端库以编程方式启用监视。 存储日志记录在服务器端执行，可用于在存储帐户中记录成功和失败请求的相关详细信息。 使用这些日志，可以查看针对表、队列和 Blob 的读取、写入和删除操作的详细信息，以及请求失败的原因。
+可使用 [Azure 存储分析](storage-analytics.md)从 Azure 存储帐户收集度量值，并记录与发送到存储帐户的请求有关的数据。 可以使用存储度量值监视存储帐户的运行状况，并使用存储日志记录诊断和解决与存储帐户有关的问题。 可以使用 Azure 门户或 Windows PowerShell 配置监视，也可以使用存储客户端库以编程方式配置监视。 存储日志记录在服务器端执行，可用于在存储帐户中记录成功和失败请求的相关详细信息。 使用这些日志，可以查看针对表、队列和 Blob 的读取、写入和删除操作的详细信息，以及请求失败的原因。
 
 若要了解如何使用 PowerShell 启用和查看存储度量值数据，请参阅[如何使用 PowerShell 启用存储度量值](http://msdn.microsoft.com/library/azure/dn782843.aspx#HowtoenableStorageMetricsusingPowerShell)。
 

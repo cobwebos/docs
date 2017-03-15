@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 794f87c3d4b8378d7aeca63791a8fbfd03e44ceb
-ms.openlocfilehash: 50802013de0bd6f4bf1396df00cdc72bc378d503
+ms.sourcegitcommit: e34a2bfbf5f1ae544a729c994d91c485d48bb440
+ms.openlocfilehash: 7cd157cd1c5730443a710ac46d923319789aec61
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -35,13 +36,9 @@ ms.openlocfilehash: 50802013de0bd6f4bf1396df00cdc72bc378d503
 每个虚拟机都附加了一个操作系统磁盘。 默认情况下，它注册为 SATA 驱动器并标为 /dev/sda。 此磁盘的最大容量为 1023 GB。 
 
 ## <a name="temporary-disk"></a>临时磁盘
-临时磁盘是自动为你创建的。 在 Linux 虚拟机上，此磁盘通常为 /dev/sdb，通过 Azure Linux 代理格式化和装入 /mnt/resource。
+每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](../virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-planned-vs-unplanned-maintenance)期间或[重新部署 VM](../virtual-machines/virtual-machines-linux-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。
 
-临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Linux 虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md)。
-
-> [!WARNING]
-> 不要在临时磁盘上存储数据。 该磁盘为应用程序和进程提供临时存储空间，只用于存储页面文件或交换文件等数据。 
-> 
+在 Linux 虚拟机上，此磁盘通常为 **/dev/sdb**，并且由 Azure Linux 代理格式化和装入到 **/mnt**。 临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Linux 虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md)。
 
 有关 Azure 如何使用临时磁盘的详细信息，请参阅 [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)（了解 Microsoft Azure 虚拟机上的临时驱动器）
 
@@ -65,10 +62,5 @@ ms.openlocfilehash: 50802013de0bd6f4bf1396df00cdc72bc378d503
 * [附加磁盘](../virtual-machines/virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)可为 VM 添加额外的存储。
 * [配置软件 RAID](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 实现冗余。
 * [捕获 Linux 虚拟机](../virtual-machines/virtual-machines-linux-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)，以便快速部署更多 VM。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

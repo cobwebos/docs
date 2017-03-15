@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: 641fe31fc4b160fe5f0628df717006fb540394b9
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eaf3df69428124127ef3daf134bc948cd0988ec6
+ms.openlocfilehash: c1956e97444077f197ab5d0fd67097ddea0f7244
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -55,7 +55,7 @@ Azure 负责保护运行应用程序的基础结构和平台，而你负责保�
 
 如果想要执行自己的渗透测试，或者想要使用其他扫描程序套件或提供程序，则必须按照 [Azure 渗透测试审批流程](https://security-forms.azure.com/penetration-testing/terms)来进行并获得事先批准才能执行所需的渗透测试。
 
-## <a name="a-namehttpsa-secure-communication-with-customers"></a><a name="https"></a>保护与客户的通信
+## <a name="https"></a>保护与客户的通信
 如果使用为应用服务应用创建的 **\*.azurewebsites.net** 域名，则可以立即使用 HTTPS，因为 SSL 证书是针对所有 **\*.azurewebsites.net** 域名提供的。 如果你的网站使用[自定义域名](web-sites-custom-domain-name.md)，则可以上载 SSL 证书，为自定义域[启用 HTTPS](web-sites-configure-ssl-certificate.md)。
 
 启用 [HTTPS](https://en.wikipedia.org/wiki/HTTPS) 可帮助防范对应用与其用户之间的通信进行的 MITM 攻击。
@@ -65,7 +65,7 @@ Azure 负责保护运行应用程序的基础结构和平台，而你负责保�
 
 如果你使用第三方数据库提供程序（如 ClearDB），则应直接查阅提供程序文档以了解安全性最佳实践。  
 
-## <a name="a-namedevelopa-secure-development-and-deployment"></a><a name="develop"></a>安全开发和部署
+## <a name="develop"></a>安全开发和部署
 ### <a name="publishing-profiles-and-publish-settings"></a>发布配置文件和发布设置
 在开发应用程序、执行管理任务或使用实用程序（如 **Visual Studio**、**Web Matrix**、**Azure PowerShell** 或 **Azure 命令行接口 (Azure CLI)**）自动执行任务时，你可以使用*发布设置*文件或*发布配置文件*。 这两种文件类型都使用 Azure 验证你的身份，并应受保护以防止未经授权的访问。
 

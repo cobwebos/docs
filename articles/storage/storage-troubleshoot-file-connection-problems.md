@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 7aa2a60f2a02e0f9d837b5b1cecc03709f040898
-ms.openlocfilehash: cce72f374e2cc6f1a42428d9f8e1f3ab8be50f7b
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 212b4481affc345cff3e8abd2475c838926f5eda
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -40,14 +40,14 @@ ms.lasthandoff: 02/28/2017
 * [我的存储帐户包含 "/" 且 net use 命令失败](#slashfails)
 * [我的应用程序/服务无法访问装载的 Azure 文件驱动器。](#accessfiledrive)
 * [优化性能的其他建议](#additional)
+* [将文件上传/复制到 Azure 文件时，出现错误“要将该文件复制到的目标不支持加密”](#encryption)
 
 **Linux 客户端问题**
 
-* [将文件上传/复制到 Azure 文件时，出现错误“要将该文件复制到的目标不支持加密”](#encryption)
-* [间歇性 IO 错误 - 在装载点上执行列表命令时，现有的文件共享上出现错误“主机已关闭”或外壳挂起](#errorhold)
+* [间歇性 IO 错误 - 现有文件共享上出现“主机已关闭（错误 112）”或在装入点上执行列表命令时外壳挂起](#errorhold)
 * [尝试在 Linux VM 上装载 Azure 文件时，出现装载错误 115](#error15)
-* [Linux VM 在类似 "ls" 的命令中出现随机延迟](#delayproblem)
-* [错误 112 - 超时错误](#error112)
+* [装载在 Linux VM 上的 Azure 文件共享目前性能缓慢](#delayproblem)
+
 
 **从其他应用程序访问**
 
@@ -193,7 +193,7 @@ Azure 文件仅支持 NTLMv2 身份验证。 请确保客户端应用了组策�
 ### <a name="solution"></a>解决方案
 从应用程序所在的同一用户帐户下装载驱动器。 可使用类似 psexec 的工具来完成操作。
 
-或者，可创建与网络服务或系统帐户特权相同的新用户，然后在该帐户下运行 **cmdkey** 和 **net use**。 用户名应为存储帐户名，密码应为存储帐户密钥。 **net use** 还可用于传递 **net use** 命令的用户名和密码参数中的存储帐户名和密钥。
+**net use** 还可用于传递 **net use** 命令的用户名和密码参数中的存储帐户名和密钥。
 
 按照这些说明操作后， 如果为系统/网络服务帐户运行 **net use**可能会收到以下错误消息：“发生系统错误&1312;。指定的登录会话不存在。可能已终止。” 若发生此情况，请确保传递到 **net use** 的用户名包括域信息，例如“[storage account name].file.core.windows.net”。
 
@@ -219,14 +219,31 @@ Azure 文件仅支持 NTLMv2 身份验证。 请确保客户端应用了组策�
 
 <a id="errorhold"></a>
 
-## <a name="host-is-down-error-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>在装载点上运行列表命令时，现有的文件共享上出现错误“主机已关闭”或外壳挂起
+## <a name="host-is-down-error-112-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>现有文件共享上出现“主机已关闭（错误 112）”或在装入点上执行列表命令时外壳挂起
 ### <a name="cause"></a>原因
-如果客户端长时间处于空闲状态，Linux 客户端上将发生此错误。 此时，客户端将断开连接，客户端连接超时。
+如果客户端长时间处于空闲状态，Linux 客户端上将发生此错误。 此时，客户端将断开连接，客户端连接超时。 此外，该错误可能指示出现通信故障，该故障将阻止在使用“soft”装载选项（默认设置）时重新与服务器建立 TCP 连接。
+
+此错误可能表明 Linux 存在重新连接问题，这可能是由于旧版内核中某些已知 bug 或网络错误等其他阻止连接的问题所导致。 
 
 ### <a name="solution"></a>解决方案
-Linux 内核中已将该问题作为[变更集](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)的一部分进行了修复，该变更集正在等待向后移植到 Linux 分发中。
 
-若要解决此问题，可在要定期写入的 Azure 文件共享中放置一个文件，保持连接并避免客户端处于空闲状态。 这必须是一个写入操作，例如在文件上重写创建/修改的日期。 否则，结果可能会延迟，操作可能不会触发连接。
+指定硬装载会强制客户端等待，直到建立连接或显式中断为止，可用于避免由于网络超时而引起的错误。 但用户应注意，这可能会导致无限期等待，应在必要时停止连接。
+
+此 Linux 内核中重新连接的问题现已在以下更改集中得到了修复
+
+* [修复重新连接以在 socket 重新连接后缩短 smb3 会话的重新连接延迟时间](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
+
+* [socket 重新连接后立即调用 echo 服务](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
+
+* [CIFS：修复重新连接期间潜在的内存损坏](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+
+* [CIFS：修复重新连接期间潜在的互斥双锁 - 适用于内核 v4.9 及更高版本](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183) 
+
+但是，此更改可能尚未移植到所有的 Linux 发布版本。 这是包含该修复以及其他重新连接问题修复的已知常用的 Linux 内核列表：4.4.40+ 4.8.16+ 4.9.1+。可使用上述推荐的内核版本以获取最新修复。
+
+### <a name="workaround"></a>解决方法
+如果无法获取最新内核版本，可通过将每隔 30 秒或更少的时间间隔便会对其进行写入操作的文件保留在 Azure 文件共享中来解决此问题。 这必须是一个写入操作，例如在文件上重写创建/修改的日期。 否则，可能会得到缓存的结果，并且操作可能不会触发重新连接。 
+
 
 <a id="error15"></a>
 
@@ -239,36 +256,21 @@ Linux 分发尚不支持 SMB 3.0 中的加密功能。 在某些分发中，如�
 
 <a id="delayproblem"></a>
 
-## <a name="linux-vm-experiencing-random-delays-in-commands-like-ls"></a>Linux VM 在类似“ls”的命令中出现随机延迟
-### <a name="cause"></a>原因
-如果装载命令不包括“serverino”选项，则可能发生此错误。 没有“serverino”，Is 命令将在每个文件上运行 **stat**。
+## <a name="azure-file-share-mounted-on-linux-vm-experiencing-slow-performance"></a>装载在 Linux VM 上的 Azure 文件共享目前性能缓慢
 
-### <a name="solution"></a>解决方案
-在“/etc/fstab”项中检查“serverino”：
+性能降低的一个原因可能是禁用了缓存。 若要检查是否启用了缓存，请查找“cache=”。  *cache=none* 指示缓存已禁用。 请使用默认的装载命令重新装载共享，或者显式添加 **cache=strict** 选项到装载命令中，确保默认缓存或“strict”缓存模式已启用。
+
+在某些方案中，serverino 装载选项可能导致 ls 命令针对每个目录条目运行 stat，该行为会导致在列出大目录时性能降低。 可在“/etc/fstab”条目中检查装载选项：
 
 `//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-还可以通过运行 **sudo mount | grep cifs** 命令并查看其输出，来检查是否正在使用该选项：
+还可以通过运行 **sudo mount | grep cifs** 命令并查看其输出来检查是否正在使用正确的选项：
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs
+(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
+dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-如果“serverino”选项不存在，可通过选中“serverino”选项卸载并再次装载 Azure 文件。
-
-性能降低的另一个原因可能是禁用了缓存。 若要检查是否启用了缓存，请查找“cache=”。  *cache=none* 指示缓存已禁用。 请使用默认的装载命令重新装载共享，或者显式添加 **cache=strict** 选项到装载命令中，确保默认缓存或“strict”缓存模式已启用。
-
-<a id="error112"></a>
-## <a name="error-112---timeout-error"></a>错误 112 - 超时错误
-
-此错误指示出现通信故障，导致使用“soft”装载选项（默认设置）时阻止 TCP 与服务器重新建立连接。
-
-### <a name="cause"></a>原因
-
-此错误可由 Linux 重新连接问题或阻止重新连接的其他问题（如网络错误）引发。 指定硬装载会强制客户端等待，直到建立连接或显式中断为止，可用于避免由于网络超时而引起的错误。 但用户应注意，这可能会导致无限期等待，应在必要时停止连接。
-
-
-### <a name="workaround"></a>解决方法
-
-Linux 问题已修复，但尚未移植到 Linux 分发版。 如果此问题由 Linux 中的重新连接问题引起，可通过避免进入空闲状态解决此问题。 若要实现此目的，请在 Azure 文件共享中保留一个文件，并每隔 30 秒或更短时间在该文件上执行写入操作。 这必须是一个写入操作，例如在文件上重写创建/修改的日期。 否则，结果可能会延迟，操作可能不会触发连接。 这是常用的 Linux 内核的列表，这些内核包含这样和那样的重新连接修补程序：4.4.40+ 4.8.16+ 4.9.1+
+如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)中的装载命令卸载并再次装载 Azure 文件，然后重新检查“/etc/fstab”条目是否具有正确选项。
 
 <a id="webjobs"></a>
 

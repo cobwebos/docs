@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: dc6d0a2d48895da12a95e3f482ad8588b98db4ec
-ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 56eb95f5c8dfb34c0dbaec75efc5509f0c930ec3
+ms.lasthandoff: 03/06/2017
 
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
   
-##  <a name="a-nametransformationpoliciesa-transformation-policies"></a><a name="TransformationPolicies"></a> 转换策略  
+##  <a name="TransformationPolicies"></a> 转换策略  
   
 -   [将 JSON 转换为 XML](api-management-transformation-policies.md#ConvertJSONtoXML) - 将请求或响应正文从 JSON 转换为 XML。  
   
@@ -44,7 +45,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   [使用 XSLT 转换 XML](api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中将 XSL 转换应用到 XML。  
   
-##  <a name="a-nameconvertjsontoxmla-convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> 将 JSON 转换为 XML  
+##  <a name="ConvertJSONtoXML"></a> 将 JSON 转换为 XML  
  `json-to-xml` 策略将请求或响应正文从 JSON 转换为 XML。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -87,7 +88,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-nameconvertxmltojsona-convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> 将 XML 转换为 JSON  
+##  <a name="ConvertXMLtoJSON"></a> 将 XML 转换为 JSON  
  `xml-to-json` 策略将请求或响应正文从 XML 转换为 JSON。 此策略可以用来根据仅用 XML 的后端 Web 服务来提升 API。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -131,7 +132,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namefindandreplacestringinbodya-find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> 在正文中查找并替换字符串  
+##  <a name="Findandreplacestringinbody"></a> 在正文中查找并替换字符串  
  `find-and-replace` 策略查找请求或响应子字符串并将其替换为不同的子字符串。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -166,7 +167,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namemaskurlscontenta-mask-urls-in-content"></a><a name="MaskURLSContent"></a> 在内容中屏蔽 URL  
+##  <a name="MaskURLSContent"></a> 在内容中屏蔽 URL  
  `redirect-content-urls` 策略重写（屏蔽）响应正文中的链接，使其通过网关指向等效的链接。 在出站节中用于重写响应正文链接，使之指向网关。 在入站节中使用，以便获得相反的效果。  
   
 > [!NOTE]
@@ -197,7 +198,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namesetbackendservicea-set-backend-service"></a><a name="SetBackendService"></a> 设置后端服务  
+##  <a name="SetBackendService"></a> 设置后端服务  
  使用 `set-backend-service` 策略将传入请求重定向到一个后端，此后端不同于在 API 设置中为该操作指定的后端。 此策略将传入请求的后端服务基 URL 更改为在策略中指定的基 URL。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -254,7 +255,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namesetbodya-set-body"></a><a name="SetBody"></a> 设置正文  
+##  <a name="SetBody"></a> 设置正文  
  使用 `set-body` 策略设置传入和传出请求的消息正文。 可以使用 `context.Request.Body` 属性或 `context.Response.Body` 访问消息正文，具体取决于策略是在入站节中还是在出站节中。  
   
 > [!IMPORTANT]
@@ -330,13 +331,71 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   </when>  
 </choose>  
 ```  
-  
+
+### <a name="using-liquid-templates-with-set-body"></a>将 Liquid 模板用于设置正文 
+可将 `set-body` 策略配置为使用 [Liquid](https://shopify.github.io/liquid/basics/introduction/) 模板语言以转换请求或响应正文。 如需完全重设消息格式，则此模板非常有用。
+
+> [!IMPORTANT]
+> 在“C# 模式”下配置 `set-body` 策略中使用的 Liquid 的实现。 执行筛选等操作时这点尤为重要。 例如，使用日期筛选器需要使用 Pascal 大小写和 C# 日期格式，如：
+>
+> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ddZ"}}
+
+> [!IMPORTANT]
+> 为正确绑定到使用 Liquid 模板的 XML 正文，请使用 `set-header` 策略将内容类型设置为 application/xml、text/xml 或任何以 +xml 结尾的类型；对于 JSON 正文，其必须是 application/json、text/json 或任何以 +json 结尾的类型。
+
+#### <a name="convert-json-to-soap-using-a-liquid-template"></a>使用 Liquid 模板将 JSON 转换为 SOAP
+```xml
+<set-body template="liquid">
+    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <soap:Body>
+            <GetOpenOrders>
+                <cust>{{body.getOpenOrders.cust}}</cust>
+            </GetOpenOrders>
+        </soap:Body>
+    </soap:Envelope>
+</set-body>
+```
+
+#### <a name="tranform-json-using-a-liquid-template"></a>使用 Liquid 模板转换 JSON
+```xml
+{
+"order": {
+    "id": "{{body.customer.purchase.identifier}}",
+    "summary": "{{body.customer.purchase.orderShortDesc}}"
+    }
+}
+```
+
 ### <a name="elements"></a>元素  
   
 |Name|说明|必选|  
 |----------|-----------------|--------------|  
 |set-body|根元素。 包含正文文本，或者包含会返回正文的表达式。|是|  
+
+### <a name="properties"></a>属性  
   
+|Name|说明|必选|默认|  
+|----------|-----------------|--------------|-------------|  
+|template|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- Liquid - 设置正文策略会使用 Liquid 模板引擎 |否|Liquid|  
+
+对于访问请求和响应信息，Liquid 模板可绑定到具有以下属性的上下文对象： <br />
+<pre>上下文。
+请求。
+Url Method OriginalMethod OriginalUrl IpAddress MatchedParameters HasBody ClientCertificates 标头
+
+    Response.
+        StatusCode
+        Method
+        Headers
+URL。
+Scheme Host Port Path Query QueryString ToUri ToString
+
+OriginalUrl。
+Scheme Host Port Path Query QueryString ToUri ToString
+</pre>
+
+
+
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
@@ -344,7 +403,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namesethttpheadera-set-http-header"></a><a name="SetHTTPheader"></a> 设置 HTTP 标头  
+##  <a name="SetHTTPheader"></a> 设置 HTTP 标头  
  `set-header` 策略向现有的响应和/或请求标头赋值，或者添加新的响应和/或请求标头。  
   
  在 HTTP 消息中插入 HTTP 标头列表。 将此策略放到入站管道中后，它将为传递给目标服务的请求设置 HTTP 标头。 将此策略放到出站管道中后，它将为发送到网关客户端的响应设置 HTTP 标头。  
@@ -401,7 +460,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namesetquerystringparametera-set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> 设置查询字符串参数  
+##  <a name="SetQueryStringParameter"></a> 设置查询字符串参数  
  `set-query-parameter` 策略添加、删除请求查询字符串参数或替换其值。 可用于传递后端服务所需的查询参数，这些参数是可选的或者永远不能出现在请求中。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -461,7 +520,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namerewriteurla-rewrite-url"></a><a name="RewriteURL"></a> 重写 URL  
+##  <a name="RewriteURL"></a> 重写 URL  
  `rewrite-uri` 策略将请求 URL 从其公用格式转换为 Web 服务所需的格式，如以下示例所示。  
   
 -   公共 URL - `http://api.example.com/storenumber/ordernumber`  
@@ -539,7 +598,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **策略范围：**产品、API、操作  
   
-##  <a name="a-namexsltransforma-transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> 使用 XSLT 转换 XML  
+##  <a name="XSLTransform"></a> 使用 XSLT 转换 XML  
  `Transform XML using an XSLT` 策略在请求或响应正文中将 XSL 转换应用到 XML。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -605,9 +664,4 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

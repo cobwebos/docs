@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/22/2017
+ms.date: 03/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: cd5ab90167501d5876381e0575042e19a23e702c
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 8377c936e37b464c2d566f9482ebda63a1e374df
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -38,19 +39,14 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **Azure 存储帐户**。 请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
-* **Visual Studio 2013 或 2015**。
+* **Visual Studio 2013、Visual Studio 2015 或 Visual Studio 2017**。
 
 ### <a name="access-control-requirements"></a>访问控制要求
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-clusters"></a>创建群集
-1. 打开 Visual Studio 2013 或 2015。
-2. 创建一个具有以下设置的新 Visual Studio 项目：
-   
-   | 属性 | 值 |
-   | --- | --- |
-   | 模板 |模板/Visual C#/Windows/控制台应用程序 |
-   | Name |CreateHDICluster |
+1. 打开 Visual Studio 2017。
+2. 创建新的 Visual C# 控制台应用程序。
 3. 在“工具”菜单中，单击“Nuget 程序包管理器”，然后单击“程序包管理器控制台”。
 4. 在控制台中运行下列命令以安装程序包：
    
@@ -92,7 +88,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
                 private const string NewClusterLocation = "EAST US 2";     // Must be the same as the default Storage account
                 private const OSType NewClusterOSType = OSType.Linux;
                 private const string NewClusterType = "Hadoop";
-                private const string NewClusterVersion = "3.4";
+                private const string NewClusterVersion = "3.5";
                 private const string NewClusterUsername = "admin";
                 private const string NewClusterPassword = "<Enter HTTP User Password>";
                 private const string NewClusterSshUserName = "sshuser";
@@ -381,10 +377,5 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
 * [使用.NET SDK 在 HDInsight 中运行 Pig 作业](hdinsight-hadoop-use-pig-dotnet-sdk.md)
 * [使用.NET SDK 在 HDInsight 中运行 Sqoop 作业](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
 * [在 HDInsight 中运行 Oozie 作业](hdinsight-use-oozie.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

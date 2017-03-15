@@ -12,24 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 03/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 522496ddcd3cc21501f2390e8cdc158798b6289d
-ms.openlocfilehash: 35d33625badeb0b32079f0487b8bf2a3dd97e141
-ms.lasthandoff: 02/04/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 7680aafcefbe6f1e6e3b55137da2e46b42df5a9b
+ms.lasthandoff: 03/04/2017
 
 
 ---
 # <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>修正 Azure 安全中心中的 OS 漏洞
-Azure 安全中心每日分析虚拟机 (VM) 操作系统 (OS) 的配置（该配置使 VM 更易受到攻击），并建议配置更改以解决这些漏洞。 有关受监视的具体配置的详细信息，请参阅[建议的配置规则列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 当 VM 的 OS 配置与建议的配置规则不匹配时，安全中心建议你解决漏洞。
+Azure 安全中心每日分析虚拟机 (VM) 操作系统 (OS) 的配置（该配置使 VM 更易受到攻击），并建议配置更改以解决这些漏洞。 当 VM 的 OS 配置与建议的配置规则不匹配时，安全中心建议你解决漏洞。
 
 > [!NOTE]
-> 本文档通过使用示例部署介绍该服务。  这并非一份循序渐进的指南。
+> 有关受监视的具体配置的详细信息，请参阅[建议的配置规则列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 目前不对 Windows Server 2016 提供完全支持。
 >
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
+
+> [!NOTE]
+> 本文档将使用示例部署介绍该服务。  这并非一份循序渐进的指南。
+>
+>
+
 1. 在“建议”边栏选项卡中，选择“修正 OS 漏洞”。
    ![修正 OS 漏洞][1]
 

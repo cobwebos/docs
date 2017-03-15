@@ -17,8 +17,9 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 7ca726f5dc67feae7eeccfdcc00b41aa95c38348
+ms.sourcegitcommit: a6489fd5ff5e60bc3a1c06485d330556250c21cd
+ms.openlocfilehash: eddbdda847d7d0cc12f3e1c6128ce76d15f6f39f
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -117,7 +118,7 @@ ms.openlocfilehash: 7ca726f5dc67feae7eeccfdcc00b41aa95c38348
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
 ### <a name="net-sqlconnection-parameters-for-connection-retry"></a>连接重试的 .NET SqlConnection 参数
-如果客户端程序使用 .NET Framework 类 **System.Data.SqlClient.SqlConnection** 连接 Azure SQL 数据库，应使用 .NET 4.6.1 或更高版本，以便可以利用其连接重试功能。 有关该功能的详细信息请参阅[此处](http://go.microsoft.com/fwlink/?linkid=393996)。
+如果客户端程序使用 .NET Framework 类 **System.Data.SqlClient.SqlConnection** 连接 Azure SQL 数据库，应使用 .NET 4.6.1 或更高版本（或 .NET Core），以便利用其连接重试功能。 有关该功能的详细信息请参阅[此处](http://go.microsoft.com/fwlink/?linkid=393996)。
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -446,10 +447,5 @@ public bool IsTransient(Exception ex)
 * 有关其他常见的 Azure SQL 数据库连接问题的疑难解答，请访问 [Azure SQL 数据库的连接问题疑难解答](sql-database-troubleshoot-common-connection-issues.md)。
 * [SQL Server 连接池 (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
 * [*重试*是 Apache 2.0 授权的通用重试库，它以 **Python** 编写，可以简化向几乎任何程序添加重试行为的任务。](https://pypi.python.org/pypi/retrying)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

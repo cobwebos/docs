@@ -4,7 +4,7 @@ description: "Linux 上的 Azure 应用服务 Web 应用常见问题解答。"
 keywords: "Azure 应用服务, Web 应用, 常见问题解答, Linux, oss"
 services: app-service
 documentationCenter: 
-authors: aelnably
+authors: ahmedelnably
 manager: erikre
 editor: 
 ms.assetid: 
@@ -16,83 +16,81 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: 831ef097027721146531e8d699fe3f67417a57ea
-ms.openlocfilehash: b88aa3d0ae89aec81c2b9144fb5de3210a0b8d1e
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: 842eb16768fd5064bd57a0c3672e7ae57885720e
+ms.openlocfilehash: 6ed0f07268715102be197bb8a6654fb05b52b0c4
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="azure-app-service-web-apps-on-linux-faq"></a>Linux 上的 Azure 应用服务 Web 应用常见问题解答 #
+# <a name="azure-app-service-web-apps-on-linux-faq"></a>Linux 上的 Azure 应用服务 Web 应用常见问题解答
 
-随着 Linux 上 Azure 应用服务的发布（目前为预览版），我们正在努力添加功能和改进我们的平台。 以下是过去几个月中我们的客户提出的一些常见问题。
+随着 Linux 上 Azure 应用服务的发布（目前为预览版），我们正在努力添加功能和改进我们的平台。 以下是过去几个月中我们的客户提出的一些常见问题 (FAQ)。
 如果你有疑问，请对本文做出评论，我们会尽快为你解答。
 
-## <a name="built-in-images"></a>内置映像 ##
+## <a name="built-in-images"></a>内置映像
 
 **问：**我想对平台提供的内置 Docker 容器进行分叉。 在哪里可以找到这些文件？
 
-**答：**此处可以找到所有 Docker 文件：https://github.com/azure-app-service。 此处可以找到所有 Docker 容器：https://hub.docker.com/u/appsvc/。
-
-## <a name="management"></a>管理 ##
-
-**问：**在门户中按重启按钮后，我的 Web 应用未启动，这是为什么？
-
-**答：**我们正在努力尽快启用重置按钮，目前你有两个选项。
-1. 添加或更改虚拟应用程序设置，这将强制 Web 应用重启。 
-2. 停止，然后启动 Web 应用。
-
-**问：**是否可以通过 SSH 连接到 VM？
-
-**答：**不能，我们将在以后的版本中提供通过 SSH 连接到应用容器的方法。
-
-## <a name="continuous-integration--deployment"></a>持续集成/部署 ##
-
-**问：**更新 DockerHub 上的映像后，我的 Web 应用是否仍使用旧的 Docker 容器映像？ 是否支持自定义容器的持续集成/部署？
-
-**答：**可以通过停止然后启动 Web 应用或更改/添加虚拟应用程序设置来强制刷新容器，我们将在以后的版本中为自定义容器提供 CI/CD 功能。
-
-## <a name="language-support"></a>语言支持 ##
-
-**问：**是否支持未编译的 .NET Core 应用？
-
-**答：**不支持，需要使用所有依赖项部署已编译的 .NET Core 应用，我们将在以后的版本中提供完整的部署和生成体验。
-
-## <a name="built-in-images"></a>内置映像 ##
+**答：**可以在 [GitHub](https://github.com/azure-app-service) 上找到所有 Docker 文件。 可以在 [Docker Hub](https://hub.docker.com/u/appsvc/) 上找到所有 Docker 容器。
 
 **问：**配置运行时堆栈时，“启动文件”部分的所需值是什么？
 
-**答：**对于 Node.Js，可以指定 PM2 配置文件或脚本文件。 对于 .Net Core，应指定已编译的 dll 名称。 对于 Ruby，可以指定要用于初始化应用的 Ruby 脚本。
+**答：**对于 Node.Js，指定 PM2 配置文件或脚本文件。 对于 .NET Core，指定已编译的 DLL 名称。 对于 Ruby，可以指定要用于初始化应用的 Ruby 脚本。
 
-## <a name="custom-containers"></a>自定义容器 ##
+## <a name="management"></a>管理
 
-**问：**我正在使用我自己的自定义容器。 我的应用位于 \home\ directory 中，但是当我使用 SCM 站点或 ftp 客户端浏览内容时找不到我的文件。 文件在哪里？
+**问：**我在 Azure 门户中按了“重启”按钮，但我的 web 应用未重新启动。 为什么？
 
-**答：**我们将 SMB 共享装载到 \home\ directory；因此会替代此处的任何内容。
+**答：**我们正努力解决此问题，不久后会启用“重启”按钮。 现在，可以使用以下两个选项：
+- 添加或更改虚拟应用程序设置。 这将强制重启 web 应用。
+- 停止，然后启动 Web 应用。
+
+**问：**我可以使用安全外壳 (SSH) 连接到应用容器虚拟机 (VM) 吗？
+
+**答：**否。 我们将在以后的版本中提供使用 SSH 连接到应用容器的方法。
+
+## <a name="continuous-integrationdeployment"></a>持续集成/部署
+
+**问：**更新 Docker Hub 上的映像后，我的 Web 应用仍使用旧的 Docker 容器映像。 是否支持自定义容器的持续集成/部署？
+
+**答：**可以通过先停止然后启动 web 应用来刷新容器。 或者，可以更改或添加虚拟应用程序设置，从而强制刷新容器。 我们计划在以后的版本中添加自定义容器的持续集成/部署功能。
+
+## <a name="language-support"></a>语言支持
+
+**问：**是否支持未编译的 .NET Core 应用？
+
+**答：**否。 需要通过所有依赖项部署已编译的 .NET Core 应用。 我们计划在以后的版本中添加完整部署和生成体验。
+
+## <a name="custom-containers"></a>自定义容器
+
+**问：**我使用的是我自己的自定义容器。 我的应用位于 \home\ directory 中，但是当我使用 [SCM 站点](https://github.com/projectkudu/kudu)或 FTP 客户端浏览内容时找不到我的文件。 文件在哪里？
+
+**答：**我们将 SMB 共享装入 \home\ 目录。 这将替代此处的所有内容。
 
 **问：**我想在自定义容器映像上公开多个端口。 可以吗？
 
-**答：**目前不支持此功能。
+**答：**目前不支持此操作。
 
 **问：**我可以自带存储吗？
 
-**答：**目前不支持此功能。
+**答：**目前不支持此操作。
 
 **问：**我无法从 SCM 站点浏览自定义容器的文件系统或正在运行的进程。 为什么会这样？
 
-**答：**SCM 站点在单独的容器中运行，你无法查看应用容器的文件系统或正在运行的进程。
+**答：**SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件系统或正在运行的进程。
 
-**问：**我的自定义容器侦听端口 80 以外的端口。 如何配置我的应用将请求路由到该端口？
+**问：**我的自定义容器侦听除端口 80 以外的端口。 如何配置我的应用将请求路由到该端口？
 
 **答：**可以指定名为 **PORT** 的应用程序设置，并为其提供所需的端口号值。
 
-## <a name="pricing-and-sla"></a>定价和 SLA ##
+## <a name="pricing-and-sla"></a>定价和 SLA
 
-**问：**公共预览版的定价是多少？
+**问：**使用公共预览版时的定价是什么？
 
-**答：**采用 Azure 应用服务的常规定价，但会将应用运行小时数减半后进行计费；即按 Azure 应用服务常规定价的 50% 计费。
+**答：**根据 Azure 应用服务常规定价，按照应用运行小时数的一半计费。 这意味着你将获得 Azure 应用服务常规定价的 50% 的折扣。
 
-## <a name="other"></a>其他 ##
+## <a name="other"></a>其他
 
 **问：**应用程序设置名称中支持的字符有哪些？
 
@@ -100,9 +98,9 @@ ms.lasthandoff: 02/18/2017
 
 **问：**可在何处请求新功能？
 
-**答：**可在此处提交你的建议：https://aka.ms/webapps-uservoice。 请将 [Linux] 添加到建议的标题中。
+**答：**可以在 [Web 应用反馈论坛](https://aka.ms/webapps-uservoice)提交你的建议。 请将“[Linux]”添加到建议的标题中。
 
 ## <a name="next-steps"></a>后续步骤
-* [什么是 Linux 的应用服务？](app-service-linux-intro.md)
+* [什么是 Linux 应用服务？](app-service-linux-intro.md)
 * [在 Linux 应用服务中创建 Web 应用](app-service-linux-how-to-create-a-web-app.md)
 

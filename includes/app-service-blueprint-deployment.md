@@ -4,10 +4,4 @@
 * [发布和基于角色的访问控制 (RBAC)](https://azure.microsoft.com/blog/rbac-and-azure-websites-publishing/)
 
 ## <a name="videos"></a>视频
-* [自动执行版本管理的部署工作流](/documentation/videos/azurecon-2015-manage-code-changes-to-web-apps-using-the-devops-features-of-azure-app-service-and-visual-studio-release-management/)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+* [自动执行版本管理的部署工作流](https://azure.microsoft.com/resources/videos/azurecon-2015-manage-code-changes-to-web-apps-using-the-devops-features-of-azure-app-service-and-visual-studio-release-management/)

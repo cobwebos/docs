@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/22/2016
+ms.date: 02/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d853e2ea005eea99d7ea461e21c51c89c6e4aca3
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: d9ef14d1d83d98de5c1d95b237a2e06ea2506766
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -25,12 +26,11 @@ ms.openlocfilehash: d853e2ea005eea99d7ea461e21c51c89c6e4aca3
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST API](role-based-access-control-manage-access-rest.md)
-> 
-> 
+
 
 可以使用 Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API，精细地管理对订阅和资源的访问。 使用此功能，可以通过在特定范围内为 Active Directory 用户、组或服务主体分配某些角色来向其授予访问权限。
 
-在使用 Azure 命令行接口 (CLI) 管理 RBAC 之前，必须具备以下条件：
+在使用 Azure 命令行接口 (CLI) 管理 RBAC 之前，必须具备以下先决条件：
 
 * Azure CLI 0.8.8 版或更高。 若要安装最新版本并将其与 Azure 订阅相关联，请参阅[安装和配置 Azure CLI](../xplat-cli-install.md)。
 * Azure CLI 中的 Azure Resource Manager。 转到[将 Azure CLI 用于 Resource Manager](../xplat-cli-azure-resource-manager.md) 了解详细信息。
@@ -153,7 +153,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 
     azure role create --inputfile <file path>
 
-以下示例创建名为“虚拟机操作员”的自定义角色。 自定义的角色授权对 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作的访问，并授权对启动、重启和监视虚拟机的访问。 该自定义角色可以在两个订阅中使用。 此示例将 JSON 文件用作输入。
+以下示例创建名为“虚拟机操作员”的自定义角色。 该自定义角色授权访问 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作，并授权访问虚拟机启动、重启和监视操作。 该自定义角色可以在两个订阅中使用。 此示例将 JSON 文件用作输入。
 
 ![JSON - 自定义角色定义 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-1.png)
 
@@ -180,7 +180,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ## <a name="list-custom-roles"></a>列出自定义角色
 若要列出可在某范围内进行分配的角色，请使用 `azure role list` 命令。
 
-以下示例列出了可在所选订阅中进行分配的所有角色。
+以下命令列出可在所选订阅中进行分配的所有角色。
 
 ```
 azure role list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
@@ -198,10 +198,5 @@ azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .pro
 
 ## <a name="rbac-topics"></a>RBAC 主题
 [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

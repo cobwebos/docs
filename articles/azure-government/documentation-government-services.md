@@ -15,9 +15,9 @@ ms.workload: azure-government
 ms.date: 02/13/2017
 ms.author: stemi
 translationtype: Human Translation
-ms.sourcegitcommit: ffe3991f68bbd255ff6f4ffedbd6638f32897d1a
-ms.openlocfilehash: 914870f59b488716bb283162078535849f732018
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 21c2a0faad87b84058093f02c831b374a644b4b6
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -25,13 +25,13 @@ ms.lasthandoff: 02/21/2017
 Azure 政府版正在不断扩展可用的服务。  这些服务使用 Azure 公共中使用的相同代码部署。  本部分介绍 Azure 政府上当前可用的服务，包括两种关键类型的信息：
 
 * **变体：**变体产生的原因是因为尚未部署功能，或某些属性在政府版环境中是唯一的（例如 URL）。  
-* **注意事项：**特定于政府版的实现详细信息，可用于确保数据不会超出合规性范围。
+* **注意事项：**特定于政府版的实现详细信息，可用于确保数据不超出符合性范围。
 
 可在常规文档中找到了解这些服务所需的其他所有内容。
 
 有关服务的最新列表，请参阅[产品（按区域）](https://azure.microsoft.com/regions/services/)。 
 
-在下表中，指定为启用了资源管理器的服务具有可以使用 PowerShell 管理的资源提供程序。 有关资源管理器提供程序、API 版本和架构的详细信息，请参阅 [此处](../azure-resource-manager/resource-manager-supported-services.md)。 指定为在门户中可用的资源提供程序可以在 [Azure 政府门户](https://portal.azure.us/)中进行管理。 
+在下表中，指定为启用了 Resource Manager 的服务具有资源提供程序，并且可以使用 PowerShell 进行管理。 有关 Resource Manager 提供程序、API 版本和架构的详细信息，请参阅[此处](../azure-resource-manager/resource-manager-supported-services.md)。 指定为在门户中可用的资源提供程序可以在 [Azure 政府门户](https://portal.azure.us/)中进行管理。 
 
 
 ## <a name="computedocumentation-government-computemd"></a>[计算](documentation-government-compute.md)
@@ -95,6 +95,12 @@ Azure 政府版正在不断扩展可用的服务。  这些服务使用 Azure �
 | [Redis 缓存](documentation-government-services-database.md#azure-redis-cache) | 是 | 是 |
 
 
+## <a name="intelligence--analyticsdocumentation-government-services-intelligenceandanalyticsmd"></a>[智能 + 分析](documentation-government-services-intelligenceandanalytics.md)
+
+| 服务 | 已启用资源管理器 | 门户 |
+| --- | --- | --- |
+| [HDInsights](documentation-government-services-intelligenceandanalytics.md#hdinsight) | 是 | 是 |
+| [Power BI Pro](documentation-government-services-intelligenceandanalytics.md#power-bi) | 否 | 无（Office 365 管理门户） |
 
 
 ## <a name="internet-of-things-iot"></a>物联网 (IoT)
@@ -122,7 +128,6 @@ Azure 政府版正在不断扩展可用的服务。  这些服务使用 Azure �
 | Azure Active Directory | 是 | 是 |
 | [密钥保管库](documentation-government-services-securityandidentity.md#key-vault) | 是 | 否（即将包括） |
 | 多重身份验证 | 是 | 是 |
-| InTune | 是 | 否 |
 
 
 ## <a name="intelligence--analytics"></a>智能 + 分析

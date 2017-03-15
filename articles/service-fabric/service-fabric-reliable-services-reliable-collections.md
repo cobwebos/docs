@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 10/18/2016
+ms.date: 3/1/2017
 ms.author: mcoskun
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 287707d528d2327637ad3d17633ef830657c04f8
+ms.sourcegitcommit: 4952dfded6ec5c4512a61cb18d4c754bf001dade
+ms.openlocfilehash: b5fab7cf91493d477cafd66e27e346ea3ad02f04
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -147,6 +148,7 @@ Reliable Collections 负责保存到该点为止的状态。
 * 意图更新某项而读取该项时，切勿更新锁以防止出现某类死锁。
 * 请考虑使用备份和还原功能来进行灾难恢复。
 * 避免在同一事务中混合使用单个实体操作和多个实体操作（例如 `GetCountAsync`、`CreateEnumerableAsync`），因为它们的隔离级别不同。
+* 务必处理 InvalidOperationException。 系统可能出于各种原因中止用户事务。 例如，当可靠状态管理器将其角色从“主要”更改为其他角色时，或者当长时间运行的事务阻止截断事务日志时。 在这类情况下，用户可能会收到 InvalidOperationException，指示其事务已终止。 假设用户未请求终止事务，那么，处理此异常的最佳方式是释放事务，然后检查是否发出了取消令牌（或者是否更改了副本的角色），如果没有，则创建新的事务并重试。  
 
 需谨记以下几点：
 
@@ -167,10 +169,5 @@ Reliable Collections 负责保存到该点为止的状态。
 * [Service Fabric Web API 服务入门](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services 编程模型的高级用法](service-fabric-reliable-services-advanced-usage.md)
 * [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

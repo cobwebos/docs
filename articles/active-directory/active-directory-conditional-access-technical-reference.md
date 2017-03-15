@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2017
+ms.date: 03/01/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 00124aa9d0729880bf2314f5c35c1797b7a6827f
-ms.openlocfilehash: 79d844f8fa3d3d0898b642f561df34588e044f9a
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 4296bbc7123f6571ad564351612864a6315d8abf
+ms.openlocfilehash: 450f3e001a0bc4a45fea4c4f0a81e676e9a80cc4
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -24,16 +24,19 @@ ms.lasthandoff: 02/17/2017
 ## <a name="services-enabled-with-conditional-access"></a>通过条件性访问启用的服务
 各种 Azure AD 应用程序类型支持条件性访问规则。 这些应用程序包括：
 
-* Azure AD 应用程序库中的联合应用程序
-* Azure AD 应用程序库中的密码 SSO 应用程序
+
 * 向 Azure 应用程序代理注册的应用程序
-* 向 Azure AD 注册的开发业务应用程序和多租户应用程序
-* Visual Studio Online
 * Azure 远程应用
+* 向 Azure AD 注册的开发业务应用程序和多租户应用程序
 * Dynamics CRM
+* Azure AD 应用程序库中的联合应用程序
 * Microsoft Office 365 Yammer
 * Microsoft Office 365 Exchange Online
 * Microsoft Office 365 SharePoint Online（包括 OneDrive for Business）
+* Microsoft Power BI 
+* Azure AD 应用程序库中的密码 SSO 应用程序
+* Visual Studio Online
+
 
 ## <a name="enable-access-rules"></a>启用访问规则
 可以对每个应用程序启用或禁用每个规则。 当规则处于“启用”状态时，可以对访问应用程序的用户启用并执行规则。 当规则处于“禁用”状态时，则不使用规则，并且规则不会影响用户的登录体验。

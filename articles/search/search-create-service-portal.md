@@ -11,12 +11,12 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/16/2017
+ms.date: 03/05/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 4d7c0afe5e43e0c119f534cdedaaa03a16ed5303
-ms.openlocfilehash: 0d5198c74fa81358dcdfec514e1fe422d17f368f
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 379bc2e80a89b6d46db3bd536737583d51029328
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -88,6 +88,22 @@ ms.lasthandoff: 02/17/2017
 
 > [!Note] 
 > 每个层对于单个服务中允许的搜索单位总数都有不同的[限制](search-limits-quotas-capacity.md)（副本 * 分区 = 搜索单位总数）。
+
+## <a name="when-to-add-a-second-service"></a>何时添加第二个服务
+
+大多数客户只使用定价层上预配的一个服务，以提供[适当的资源平衡](search-sku-tier.md)。 一个服务可以托管多个索引（但受制于[所选层的最大限制](search-capacity-planning.md)），各索引之间相互隔离。 在 Azure 搜索中，请求只能定向到一个索引，从而将从同一服务中的其他索引意外或故意检索数据的可能性降至最低。
+
+尽管大多数客户只使用一个服务，但若有以下操作要求，则可能需要提供服务冗余：
+
++ 灾难恢复（数据中心服务中断）。 Azure 搜索在发生服务中断时不提供即时故障转移。 请参阅[服务管理](search-manage.md)获取相关建议和指南。
++ 通过调查多租户建模，确定附加服务是最佳设计。 有关详细信息，请参阅[多租户设计](search-modeling-multitenant-saas-applications.md)。
++ 对于在全球部署的应用程序，可能需要在多个区域运行 Azure 搜索实例，以尽量减少应用程序国际流量的延迟。
+
+> [!NOTE]
+> 在 Azure 搜索中，无法分离索引工作负荷和查询工作负荷；因此永远无需为分离的工作负荷创建多个服务。 查询索引时，始终是在创建该索引时所在的服务中查询（不能在一个服务中创建索引，然后将其复制到另一个服务）。
+>
+
+无需为实现高可用性添加第二个服务。 在同一服务中使用 2 个或更多个副本，便可实现查询的高可用性。 副本更新是连续的，这意味着当服务更新推出时，至少有一个副本能正常工作。 有关运行时间的详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
 
 ## <a name="next-steps"></a>后续步骤
 预配 Azure 搜索服务后，即可[定义索引](search-what-is-an-index.md)，从而上传和搜索数据。

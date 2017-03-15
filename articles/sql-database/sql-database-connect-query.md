@@ -1,8 +1,8 @@
 ---
-title: "使用 C# 查询连接到 SQL 数据库 | Microsoft Docs"
-description: "用 C# 编写用于查询和连接到 SQL 数据库的程序。 有关 IP 地址、连接字符串、安全登录和免费 Visual Studio 的信息。"
+title: "使用 Visual Studio 连接到 Azure SQL 数据库 | Microsoft Docs"
+description: "了解如何使用 Visual Studio 连接到 Azure SQL 数据库。"
 services: sql-database
-keywords: "c# 数据库查询、c# 查询、连接到数据库、SQL C#"
+keywords: "连接到数据库"
 documentationcenter: 
 author: stevestein
 manager: jhubbard
@@ -14,12 +14,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 03/03/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: 317193c178c4da283de7d61204aa7b824170d72a
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 6789662847197ff3abb44df2d65a8ab761dfc1e7
+ms.lasthandoff: 03/04/2017
 
 
 ---

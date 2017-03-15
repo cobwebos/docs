@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
-ms.openlocfilehash: fb670dd7296f329fc280cf9f2c2adba2df44c07c
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 710307b01fe64852771c071c070f5fcee59c9579
+ms.openlocfilehash: 494dbaf23de22efa79cfe65aa22bb7c948b3da80
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -232,6 +232,13 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 我们将讨论存储服务加密 (SSE) 以及如何对存储帐户启用它，从而使你的块 Blob、页 Blob 以及追加 Blob 在写入到 Azure 存储空间时自动进行加密。 此外，将了解如何使用 Azure 磁盘加密，并探究磁盘加密、SSE 与客户端加密之间的基本差异和用例。 我们将简要探讨美国政府针对计算机实施的FIPS 合规性。
 
 * [Azure 存储安全指南](../storage/storage-security-guide.md)
+
+## <a name="temporary-disk"></a>临时磁盘
+每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-planned-vs-unplanned-maintenance)期间或[重新部署 VM](virtual-machines-linux-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。
+
+在 Linux 虚拟机上，此磁盘通常为 **/dev/sdb**，并且由 Azure Linux 代理格式化和装入到 **/mnt**。 临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Linux 虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md)。
+
+有关 Azure 如何使用临时磁盘的详细信息，请参阅 [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)（了解 Microsoft Azure 虚拟机上的临时驱动器）
 
 ## <a name="cost-savings"></a>成本节约
 * [存储成本](https://azure.microsoft.com/pricing/details/storage/)

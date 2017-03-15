@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/05/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 341e66158f1aeb5de02f3038a0c5d81240fad8d1
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5c26aaea6acfab8c4c60478968e0b68543086a9d
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -101,6 +102,8 @@ ms.openlocfilehash: 341e66158f1aeb5de02f3038a0c5d81240fad8d1
 
 ## <a name="considerations"></a>注意事项
 * 目前，实时事件的最大建议持续时间为 8 小时。 如果要运行一个需要更长时间的通道，请通过 Microsoft.com 联系 amslived。
+* 不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
+
 
 ## <a name="download-sample"></a>下载示例
 从 [此处](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)获取并运行示例。
@@ -129,6 +132,7 @@ ms.openlocfilehash: 341e66158f1aeb5de02f3038a0c5d81240fad8d1
 
 
 ## <a name="code-example"></a>代码示例
+
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -524,10 +528,5 @@ ms.openlocfilehash: 341e66158f1aeb5de02f3038a0c5d81240fad8d1
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

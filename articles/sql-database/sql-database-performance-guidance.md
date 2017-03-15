@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 02/09/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 984adf244596578a3301719e5ac2f68a841153bf
-ms.openlocfilehash: c01b8c174567f745e2803a1498ec0b9a762e94ae
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 12da8c9f7b55a8758d7f4bf743cd85e493fb24b9
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -137,7 +137,7 @@ SQL 数据库所需的服务级别取决于每个资源维度的峰值负载要�
 有关其他查询，请参阅 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 中的示例。
 
 ### <a name="sysresourcestats"></a>sys.resource_stats
-**master** 数据库中的 [Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图包含可帮助你监视 SQL 数据库在特定服务层和性能级别的性能。 每 5 分钟收集一次数据，并且会保留大约 35 天。 此视图可用于 SQL 数据库使用资源的方式的长期历史分析。
+**master** 数据库中的 [Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图包含可帮助你监视 SQL 数据库在特定服务层和性能级别的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于 SQL 数据库使用资源的方式的长期历史分析。
 
 下图显示一周内每小时的 P2 性能级别高级数据库的 CPU 资源使用情况。 此图形从周一开始，显示 5 个工作日，然后显示周末（应用程序上很少发生的情况）。
 

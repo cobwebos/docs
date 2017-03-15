@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 01/19/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5ef0bd33cb37474573cd136b882ca5141f365476
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 664a1bd9df9ace4993a8389dbeb049e721932082
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -35,12 +36,12 @@ ms.openlocfilehash: 5ef0bd33cb37474573cd136b882ca5141f365476
 ![针对本地站点之间复制的 Virtual Machine Manager 站点部署](media/site-recovery-monitoring-and-troubleshooting/image1.png)
 
 ### <a name="virtual-machine-manager-site-deployment-for-replication-between-on-premises-locations-and-azure"></a>针对本地位置与 Azure 之间复制的 Virtual Machine Manager 站点部署
-若要在本地位置和 Azure 之间设置数据库恢复，需要下载 Azure Site Recovery 提供程序，并将其安装在 Virtual Machine Manager 服务器上。 此外，还需要在每个 Hyper-V 主机上安装 Azure 恢复服务代理。 有关详细信息，请参阅[了解站点到 Azure 的保护](site-recovery-understanding-site-to-azure-protection.md)。
+若要在本地位置和 Azure 之间设置数据库恢复，需要下载 Azure Site Recovery 提供程序，并将其安装在 Virtual Machine Manager 服务器上。 此外，还需要在每个 Hyper-V 主机上安装 Azure 恢复服务代理。 [了解详细信息](site-recovery-hyper-v-azure-architecture.md)。
 
 ![针对本地位置与 Azure 之间复制的 Virtual Machine Manager 站点部署](media/site-recovery-monitoring-and-troubleshooting/image2.png)
 
 ### <a name="hyper-v-site-deployment-for-replication-between-on-premises-locations-and-azure"></a>针对本地位置与 Azure 之间复制的 Hyper-V 站点部署
-此过程与 Virtual Machine Manager 部署类似。 唯一的区别在于，Azure Site Recovery 提供程序和 Azure 恢复服务代理将在 Hyper-V 主机上自行安装。 有关详细信息，请参阅[了解站点到 Azure 的保护](site-recovery-understanding-site-to-azure-protection.md)。
+此过程与 Virtual Machine Manager 部署类似。 唯一的区别在于，Azure Site Recovery 提供程序和 Azure 恢复服务代理将在 Hyper-V 主机上自行安装。 [了解详细信息](site-recovery-hyper-v-azure-architecture.md)。 。
 
 ## <a name="monitor-configuration-protection-and-recovery-operations"></a>监视配置、保护和恢复操作
 在“**作业**”选项卡下，Azure Site Recovery 中的每项操作都会经过审核和跟踪。 若要查看任何配置、保护或恢复错误，请转到“**作业**”选项卡，然后查找故障。
@@ -80,8 +81,8 @@ Azure 门户可用于远程监视每个受保护的实体的 Azure Site Recovery
 
 > [!NOTE]
 > 如果任何可用操作正在进行或失败，请转到“**作业**”视图（如前所述），查看特定作业的错误。
-> 
-> 
+>
+>
 
 ## <a name="troubleshoot-on-premises-hyper-v-issues"></a>排查本地 Hyper-V 问题
 连接本地 Hyper-V 管理器控制台，选择虚拟机，然后查看复制运行状况。
@@ -194,10 +195,4 @@ Azure 门户可用于远程监视每个受保护的实体的 Azure Site Recovery
 如果门户中的“**连接**”按钮灰显，并且你未通过 Express Route 或站点到站点 VPN 连接连接 Azure，必须先为虚拟机创建并分配一个公共 IP 地址，然后才能使用远程桌面/共享的 Shell。 然后，可以在虚拟机的网络接口上添加公共 IP。  
 
 ![在已故障转移的虚拟机的网络接口上添加公共 IP](media/site-recovery-monitoring-and-troubleshooting/createpublicip.gif)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

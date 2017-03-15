@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 01/23/2017
 ms.author: skwan;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 7d6525f4614c6301f0ddb621b0483da70842a71b
-ms.openlocfilehash: 8daad095d80b244f53b4ee94c48ae9421172f062
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: f87aedd989ab091efeac5f99e198fb60b6781ab2
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -163,6 +164,10 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>多租户应用程序和缓存访问令牌
 多租户应用程序也可以获取访问令牌来调用受 Azure AD 保护的 API。  配合多租户应用程序使用 Active Directory 身份验证库 (ADAL) 时经常会出现一个错误，就是一开始即使用 /common 来为用户请求令牌、接收响应，然后同样使用 /common 来为同一用户请求后续令牌。  由于从 Azure AD 返回的响应来自租户而不同 /common，因此 ADAL 缓存令牌时将它视为来自租户。 后续为了为用户获取访问令牌而执行的 /common 调用将错过缓存项，因此系统会再次提示用户登录。  为了避免缓存未命中，请确保后续为登录用户执行的调用是针对租户的终结点发出的。
 
+## <a name="next-steps"></a>后续步骤
+本文介绍了如何生成可从任何 Azure Active Directory 租户登录用户的应用程序。 在应用和 Azure Active Directory 之间启用单一登录后，还可以更新应用程序以访问 Microsoft 资源（如 Office 365）公开的 API。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要了解有关对 Azure Active Directory 和 Office 365 服务（如 Exchange、SharePoint、OneDrive、OneNote、Planner、Excel 等）进行 API 调用的详细信息，请访问：[Microsoft Graph API][MSFT-Graph-overview]。
+
+
 ## <a name="related-content"></a>相关内容
 * [多租户应用程序示例][AAD-Samples-MT]
 * [适用于应用程序的品牌准则][AAD-App-Branding]
@@ -170,7 +175,7 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 * [应用程序对象和服务主体对象][AAD-App-SP-Objects]
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
 * [同意框架概述][AAD-Consent-Overview]
-* [Microsoft 图形 API 权限范围][MSFT-Graph-AAD]
+* [Microsoft 图形 API 权限范围][MSFT-Graph-permision-scopes]
 * [Azure AD 图形 API 权限范围][AAD-Graph-Perm-Scopes]
 
 欢迎使用以下意见部分提供反馈，帮助我们改进与制作内容。
@@ -189,7 +194,8 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 [AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
-[MSFT-Graph-AAD]: https://graph.microsoft.io/en-us/docs/authorization/permission_scopes
+[MSFT-Graph-overview]: https://graph.microsoft.io/en-us/docs/overview/overview
+[MSFT-Graph-permision-scopes]: https://graph.microsoft.io/en-us/docs/authorization/permission_scopes
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
@@ -235,10 +241,5 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

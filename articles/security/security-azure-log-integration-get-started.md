@@ -15,9 +15,9 @@ ums.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 9c27ea02ae341197a70d2b399cf8d534d79c9e4c
-ms.openlocfilehash: 001cc873960733bfe3e37fad95dbac29872ba00a
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 6ec3397f62cb2ae57cd9ce27a0a5022fd876e263
+ms.openlocfilehash: 39bac7d0cc6fee8a99949d167e3aa0c15cfaebc2
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -129,15 +129,22 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 
 ## <a name="integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志
 1. 打开命令提示符并键入 **cd** **c:\Program Files\Microsoft Azure Log Integration**
-2. 运行命令 .\AZLOG.exe authorizedirectoryreader <TenantID> 示例 - 
+2. 运行提供 tenantID 的命令。 需要成为租户管理员角色的成员才能运行此命令。
 
-.\AZLOG.exe authorizedirectoryreader ba2c0023-d24b-4f4e-92b1-48c4469999
+AZLOG.exe authorizedirectoryreader tenantId
+
+示例 -  
+
+AZLOG.exe authorizedirectoryreader ba2c0023-d24b-4f4e-92b1-48c4469999
+
 
 3. 检查以下文件夹，确认其中是否创建了 Azure Active Directory 审核日志 JSON 文件： 
 * **C:\Users\azlog\AzureActiveDirectoryJson**   
 * **C:\Users\azlog\AzureActiveDirectoryJsonLD**
 
 4. 将标准 SIEM 文件转发器连接器指向相应的文件夹，以将数据发送给 SIEM 实例。 根据所使用的 SIEM 产品，你可能需要某些字段映射。
+
+[Azure Active Directory 中当前记录为审核事件的事件列表](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events)
 
 如果在安装和配置过程中遇到问题，请开具[支持请求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)，选择“日志集成”作为需要请求支持的服务。
 

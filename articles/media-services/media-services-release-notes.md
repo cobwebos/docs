@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 03/02/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f76277ab93c58098648ee65ea5aba0757495da68
-ms.openlocfilehash: 1222a670a1bf530871a19c79b7da441c03f8df51
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 353677bc7eb7fe791d23bcfdb79f3a0df6366c6f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -29,8 +29,8 @@ ms.lasthandoff: 02/22/2017
 > 
 > 
 
-## <a name="a-idissuesacurrently-known-issues"></a><a id="issues"></a>当前已知的问题
-### <a name="a-idgeneralissuesamedia-services-general-issues"></a><a id="general_issues"></a>媒体服务一般问题
+## <a id="issues"></a>当前已知的问题
+### <a id="general_issues"></a>媒体服务一般问题
 | 问题 | 说明 |
 | --- | --- |
 | REST API 中未提供几种常见的 HTTP 标头。 |如果你使用 REST API 来开发媒体服务应用程序，你将发现一些常见的 HTTP 标头字段（包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID）不受支持。 未来的更新将增加这些标头。 |
@@ -42,8 +42,15 @@ ms.lasthandoff: 02/22/2017
 | Azure 媒体服务 .NET SDK 对象无法进行序列化，因此无法与 Azure Caching 配合使用。 |如果你尝试对 SDK AssetCollection 对象进行序列化以将其添加到 Azure Caching，则会引发异常。 |
 | 编码作业失败，出现消息字符串“Stage: DownloadFile. Code: System.NullReferenceException”。 |典型的编码工作流会将输入视频文件上传到输入资产，并提交该输入资产的一个或多个编码作业，无需进一步修改该输入资产。 但是，如果修改输入资产（例如通过添加/删除/重命名资产中的文件），后续作业可能因出现 DownloadFile 错误而失败。 解决方法是删除输入资产，并将输入文件重新上传到新的资产。 |
 
-## <a name="a-idrestversionhistoryarest-api-version-history"></a><a id="rest_version_history"></a>REST API 版本历史记录
+## <a id="rest_version_history"></a>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
+
+## <a name="march-2017-release"></a>2017 年 3 月版本
+
+在创建编码任务时，现在可通过指定“自适应流式处理”预设字符串使用 Azure 媒体标准[自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)。 如果想要使用媒体服务对视频进行编码以实现流式处理，建议使用“自适应流式处理”预设。 如果需要为特定方案自定义编码预设，则可从[这些](media-services-mes-presets-overview.md)预设开始。
+
+现在可使用 Azure 媒体标准或媒体编码器高级工作流来[创建生成 fMP4 区块的编码任务](media-services-generate-fmp4-chunks.md)。 
+
 
 ## <a name="febuary-2017-release"></a>2017 年 2 月版本
 
@@ -59,7 +66,7 @@ ms.lasthandoff: 02/22/2017
 
 通过 Azure 媒体服务可访问其服务的遥测/指标数据。 使用当前版本的 AMS 可收集实时 Channel、StreamingEndpoint 和 Archive 实体的遥测数据。 有关详细信息，请参阅[此](media-services-telemetry-overview.md)主题。
 
-## <a name="a-idjulychanges16ajuly-2016-release"></a><a id="july_changes16"></a>2016 年 7 月版本
+## <a id="july_changes16"></a>2016 年 7 月版本
 ### <a name="updates-to-manifest-file-ism-generated-by-encoding-tasks"></a>通过编码任务生成的清单文件 (*.ISM) 的更新
 将某个编码任务提交到 Media Encoder Standard 或 Azure 媒体编码器以后，该编码任务会在输出资产中生成[流式处理清单文件](media-services-deliver-content-overview.md) (*.ism) 文件。 最新的服务版本已更新此流式处理清单文件的语法。
 
@@ -81,14 +88,14 @@ ms.lasthandoff: 02/22/2017
 ### <a name="known-issues"></a>已知问题
 某些客户端可能会在平滑流式处理清单中碰到重复标记问题。 有关详细信息，请参阅[此](media-services-deliver-content-overview.md#known-issues)部分。
 
-## <a name="a-idaprchanges16aapril-2016-release"></a><a id="apr_changes16"></a>2016 年 4 月版本
+## <a id="apr_changes16"></a>2016 年 4 月版本
 ### <a name="azure-media-analytics"></a>Azure 媒体分析
 Azure 媒体服务引入了视频智能很强大的 Azure 媒体分析。 有关详细信息，请参阅 [Azure 媒体服务分析概述](media-services-analytics-overview.md)。
 
 ### <a name="apple-fairplay-preview"></a>Apple FairPlay（预览版）
 现在，即可使用 Azure 媒体服务通过 Apple FairPlay 动态加密 HTTP Live Streaming (HLS) 内容。 你还可以使用 AMS 许可证传送服务将 FairPlay 许可证传送到客户端。 有关更多详细信息，请参阅[使用 Azure 媒体服务流式传输受 Apple FairPlay 保护的 HLS 内容](media-services-protect-hls-with-fairplay.md)。
 
-## <a name="a-idfebchanges16afebruary-2016-release"></a><a id="feb_changes16"></a>2016 年 2 月版本
+## <a id="feb_changes16"></a>2016 年 2 月版本
 适用于 .NET 的 Azure 媒体服务 SDK 最新版本 (3.5.3) 包含 Widevine 相关的 bug 修复程序。 问题是：无法对 Widevine 加密的多个资产重复使用 AssetDeliveryPolicy。 为了修复此 bug，SDK 中添加了以下属性：**WidevineBaseLicenseAcquisitionUrl**。
 
     Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
@@ -98,12 +105,12 @@ Azure 媒体服务引入了视频智能很强大的 Azure 媒体分析。 有关
 
     };
 
-## <a name="a-idjanchanges16ajanuary-2016-release"></a><a id="jan_changes_16"></a>2016 年 1 月版本
+## <a id="jan_changes_16"></a>2016 年 1 月版本
 编码保留单位已重命名，以减少与编码器名称的混淆。
 
 基本、标准和高级编码保留单位已分别重命名为 S1、S2 和 S3 保留单位。  目前使用基本编码保留单位的客户在 Azure 门户（和帐单中）将看到 S1 的标签，标准和高级客户将分别看到 S2 和 S3 的标签。 
 
-## <a name="a-iddecchanges15adecember-2015-release"></a><a id="dec_changes_15"></a>2015 年 12 月版本
+## <a id="dec_changes_15"></a>2015 年 12 月版本
 
 ### <a name="azure-media-encoder-deprecation-announcement"></a>Azure 媒体编码器弃用公告
 
@@ -120,18 +127,18 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](http://github.com/Azure/azur
   * **vodworkflow_aes.php**：这是一个 PHP 文件，演示如何使用 PlayReady 动态加密和许可证传送服务。 该文件基于[此](media-services-protect-with-drm.md)文章中所述的 .NET 示例。
   * **scale_encoding_units.php**：这是一个 PHP 文件，演示如何缩放编码保留单位。
 
-## <a name="a-idnovchanges15anovember-2015-release"></a><a id="nov_changes_15"></a>2015 年 11 月版本
+## <a id="nov_changes_15"></a>2015 年 11 月版本
 现在，Azure 媒体服务在云中提供 Google Widevine 许可证传送服务。 有关更多详细信息，请阅读[此通知博客](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)。 另请参阅[此教程](media-services-protect-with-drm.md)和 [GitHub 存储库](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)。 
 
 请注意，Azure 媒体服务提供的 Widevine 许可证传送服务是预览版。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)。
 
-## <a name="a-idoctchanges15aoctober-2015-release"></a><a id="oct_changes_15"></a>2015 年 10 月版本
+## <a id="oct_changes_15"></a>2015 年 10 月版本
 Azure 媒体服务 (AMS) 现已在以下数据中心推出：巴西南部、印度西部、印度南部和印度中部。 现在可以使用 Azure 门户[创建媒体服务帐户](media-services-portal-create-account.md)，以及执行[此处](https://azure.microsoft.com/documentation/services/media-services/)所述的各项任务。 不过，这些数据中心未启用实时编码。 此外，并非所有类型的编码保留单位都可用于这些数据中心。
 
 * 巴西南部：                                          只可以使用标准和基本编码保留单位
 * 印度西部、印度南部和印度中部：             只可以使用基本编码保留单位
 
-## <a name="a-idseptemberchanges15aseptember-2015-release"></a><a id="september_changes_15"></a>2015 年 9 月版本
+## <a id="september_changes_15"></a>2015 年 9 月版本
 * AMS 现在提供通过 Widevine 模块化 DRM 技术保护点播视频 (VOD) 和实时流的功能。 可以通过以下交付服务合作伙伴来交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)。
   
     你可以通过 [AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) （从版本 3.5.1 开始）或 REST API 来配置 AssetDeliveryConfiguration 以使用 Widevine。  
@@ -147,7 +154,7 @@ Azure 媒体服务 (AMS) 现已在以下数据中心推出：巴西南部、印�
   
     有关详细信息，请参阅[此](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)博客。
 
-## <a name="a-idaugustchanges15aaugust-2015-release"></a><a id="august_changes_15"></a>2015 年 8 月版本
+## <a id="august_changes_15"></a>2015 年 8 月版本
 * 用于 Java V0.8.0 版的 Azure 媒体服务 SDK 和新示例现已推出。 有关详细信息，请参阅：
   
   * [博客文章](http://southworks.com/blog/2015/08/25/microsoft-azure-media-services-sdk-for-java-v0-8-0-released-and-new-samples-available/)
@@ -155,7 +162,7 @@ Azure 媒体服务 (AMS) 现已在以下数据中心推出：巴西南部、印�
 * 支持多音频流的 Azure Media Player 更新。 有关详细信息，请参阅：
   * [博客文章](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)
 
-## <a name="a-idjulychanges15ajuly-2015-release"></a><a id="july_changes_15"></a>2015 年 7 月版本
+## <a id="july_changes_15"></a>2015 年 7 月版本
 * 宣布媒体编码器标准版公开上市。 有关详细信息，请参阅[此博客文章](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)。
   
     Media Encoder Standard 使用[本](http://go.microsoft.com/fwlink/?LinkId=618336)部分中所述的预设值。 注意，使用预设值进行 4k 编码时，应获取**高级**保留单位类型。 有关详细信息，请参阅[如何缩放编码](media-services-scale-media-processing-overview.md)。
@@ -170,7 +177,7 @@ Azure 媒体服务 .NET SDK 当前版本为 3.4.0.0。 此版本中增加了以�
 * 修复了与频道中的重试策略相关的 Bug。
 * 启用了**媒体编码器高级工作流**。
 
-## <a name="a-idjunechanges15ajune-2015-release"></a><a id="june_changes_15"></a>2015 年 6 月版本
+## <a id="june_changes_15"></a>2015 年 6 月版本
 ### <a name="media-services-net-sdk-updates"></a>媒体服务 .NET SDK 更新
 Azure 媒体服务 .NET SDK 当前版本为 3.3.0.0。 此版本中增加了以下功能：  
 
@@ -181,14 +188,14 @@ Azure 媒体服务 .NET SDK 当前版本为 3.3.0.0。 此版本中增加了以�
 
 有关详细信息，请参阅[使用 OpenID Connect 发现规范中的 Json Web 密钥以在 Azure 媒体服务中进行 JWT 令牌身份验证](http://gtrifonov.com/2015/06/07/using-json-web-keys-from-openid-connect-discovery-spec-to-work-with-jwt-token-authentication-in-azure-media-services/)。
 
-## <a name="a-idmaychanges15amay-2015-release"></a><a id="may_changes_15"></a>2015 年 5 月版本
+## <a id="may_changes_15"></a>2015 年 5 月版本
 宣布推出以下新功能：
 
 * [使用媒体服务进行实时编码的预览](media-services-manage-live-encoder-enabled-channels.md)
 * [动态清单](media-services-dynamic-manifest-overview.md)
 * [Azure Media Hyperlapse 媒体处理器预览](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
-## <a name="a-idaprilchanges15aapril-2015-release"></a><a id="april_changes_15"></a>2015 年 4 月版本
+## <a id="april_changes_15"></a>2015 年 4 月版本
 ### <a name="general-media-services-updates"></a>媒体服务一般更新
 * [宣布推出 Azure Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)。
 * 自媒体服务 REST 2.10 起，频道被配置为插入 RTMP 协议，并使用主要和辅助插入 URL 进行创建。 有关详细信息，请参阅[频道引入配置](media-services-live-streaming-with-onprem-encoders.md#channel_input)
@@ -208,16 +215,16 @@ Azure 媒体服务 .NET SDK 当前版本为 3.2.0.0。
 * 与上载/下载文件相关的 Bug 修复。
 * **MediaServicesCredentials** 类现在接受向主要和辅助访问控制终结点进行身份验证。
 
-## <a name="a-idmarchchanges15amarch-2015-release"></a><a id="march_changes_15"></a>2015 年 3 月版本
+## <a id="march_changes_15"></a>2015 年 3 月版本
 ### <a name="general-media-services-updates"></a>媒体服务一般更新
 * 媒体服务现在提供 Azure CDN 集成。 为了支持集成，将 **CdnEnabled** 属性添加到了 **StreamingEndpoint**。  **CdnEnabled** 可用于版本 2.9 以上的 REST API（有关详细信息，请参阅 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)）。  **CdnEnabled** 可用于版本 3.1.0.2 以上的 .NET SDK（有关详细信息，请参阅 [StreamingEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint\(v=azure.10\).aspx)）。
 * 宣布推出**媒体编码器高级工作流**。 有关详细信息，请参阅[在 Azure 媒体服务中引入高级编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)。
 
-## <a name="a-idfebruarychanges15afebruary-2015-release"></a><a id="february_changes_15"></a>2015 年 2 月版本
+## <a id="february_changes_15"></a>2015 年 2 月版本
 ### <a name="general-media-services-updates"></a>媒体服务一般更新
 媒体服务 REST API 当前版本为 2.9。 自此版本起，可以通过流式处理终结点启用 Azure CDN 集成。 有关详细信息，请参阅 [StreamingEndpoint](https://msdn.microsoft.com/library/dn783468.aspx)。
 
-## <a name="a-idjanuarychanges15ajanuary-2015-release"></a><a id="january_changes_15"></a>2015 年 1 月版本
+## <a id="january_changes_15"></a>2015 年 1 月版本
 ### <a name="general-media-services-updates"></a>媒体服务一般更新
 宣布采用动态加密的内容保护公开上市 (GA)。 有关详细信息，请参阅 [Azure 媒体服务采用公开上市的 DRM 技术增强流式处理的安全性](https://azure.microsoft.com/blog/2015/01/29/azure-media-services-enhances-streaming-security-with-general-availability-of-drm-technology/)。
 
@@ -229,7 +236,7 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
     TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 
 
-## <a name="a-iddecemberchanges14adecember-2014-release"></a><a id="december_changes_14"></a>2014 年 12 月版本
+## <a id="december_changes_14"></a>2014 年 12 月版本
 ### <a name="general-media-services-updates"></a>媒体服务一般更新
 * Azure 媒体索引器处理器增加了一些更新和新功能。 有关详细信息，请参阅 [Azure Media Indexer 1.1.6.7 版发行说明](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/)。
 * 增加了一个新的 REST API，使你可以更新编码保留单位：[EncodingReservedUnitType with REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)。
@@ -245,16 +252,16 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 * 增加了对令牌身份验证的 JWT（JSON Web 令牌）支持。 有关详细信息，请参阅 [Azure 媒体服务和动态加密中的 JWT 令牌身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
 * 增加了 PlayReady 许可证模板中 BeginDate 和 ExpirationDate 的相对偏移量。
 
-## <a name="a-idnovemberchanges14anovember-2014-release"></a><a id="november_changes_14"></a>2014 年 11 月版本
+## <a id="november_changes_14"></a>2014 年 11 月版本
 * 媒体服务现在允许你通过 SSL 连接插入实时平滑流式处理 (FMP4) 内容。 若要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。  请注意，目前 AMS 对自定义域不支持 SSL。  有关实时传送视频流的详细信息，请参阅[使用 Azure 媒体服务实时传送视频流]。
 * 当前，无法通过 SSL 连接摄取 RTMP 实时流。
 * 仅当要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的情况下，才可以通过 SSL 流式传输内容。 如果流 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含“origin.mediaservices.windows.net”（旧格式）的流 URL 不支持 SSL。 如果 URL 采用旧格式，并且希望能够通过 SSL 流式传输内容，请[创建新的流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。 使用基于新流式处理终结点创建的 URL 通过 SSL 流式传输你的内容。
 
-## <a name="a-idoctoberchanges14aoctober-2014-release"></a><a id="october_changes_14"></a>2014 年 10 月版本
-### <a name="a-idnewencoderreleaseamedia-services-encoder-release"></a><a id="new_encoder_release"></a>媒体服务编码器版本
+## <a id="october_changes_14"></a>2014 年 10 月版本
+### <a id="new_encoder_release"></a>媒体服务编码器版本
 宣布推出新版媒体服务 Azure 媒体编码器。 使用最新的 Azure 媒体编码器，只需支付输出 GB 费用，但新编码器的功能与以前的编码器兼容。 有关详细信息，请参阅[媒体服务定价详细信息]）。
 
-### <a name="a-idoctsdkamedia-services-net-sdk"></a><a id="oct_sdk"></a>媒体服务 .NET SDK
+### <a id="oct_sdk"></a>媒体服务 .NET SDK
 适用于 .NET 的媒体服务 SDK 扩展当前版本为 2.0.0.3。
 
 适用于 .NET 的媒体服务 SDK 当前版本为 3.0.0.8。
@@ -270,12 +277,12 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 ### <a name="new-github-repository-to-host-media-services-samples"></a>新增了承载媒体服务示例的 GitHub 存储库
 示例位于 [Azure 媒体服务示例 GitHub 存储库](https://github.com/Azure/Azure-Media-Services-Samples)中。
 
-## <a name="a-idseptemberchanges14aseptember-2014-release"></a><a id="september_changes_14"></a>2014 年 9 月版本
+## <a id="september_changes_14"></a>2014 年 9 月版本
 媒体服务 REST 元数据当前版本为 2.7。 有关最新 REST 更新的详细信息，请参阅 [Azure 媒体服务 REST API 参考]。
 
 适用于 .NET 的媒体服务 SDK 当前版本为 3.0.0.7。
 
-### <a name="a-idsept14breakingchangesabreaking-changes"></a><a id="sept_14_breaking_changes"></a>重大更改
+### <a id="sept_14_breaking_changes"></a>重大更改
 * **原点**重命名为了 [StreamingEndpoint]。
 * 使用 **Azure 门户**进行编码然后发布 MP4 文件时的默认行为发生变化。
 
@@ -286,7 +293,7 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 * 启用流式处理单位并使用动态打包将 .mp4 资产流式处理为平滑流式处理演示内容。
 * 创建一个 SAS URL 以下载（或渐进式播放）.mp4。 有关如何创建 SAS 定位符的详细信息，请参阅[交付内容]。
 
-### <a name="a-idsept14gachangesanew-featuresscenarios-that-are-part-of-ga-release"></a><a id="sept_14_GA_changes"></a>公开上市版本的新增功能/方案
+### <a id="sept_14_GA_changes"></a>公开上市版本的新增功能/方案
 * **媒体索引器处理器**。 有关详细信息，请参阅[使用 Azure Media Indexer 为媒体文件编制索引]。
 * [StreamingEndpoint] 实体现在允许你添加自定义域（主机）名。
   
@@ -300,7 +307,7 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 
     有关详细信息，请参阅 [StreamingEndpoint] 主题中的 **CustomHostNames** 属性。
 
-### <a name="a-idsept14previewchangesanew-featuresscenarios-that-are-part-of-the-public-preview-release"></a><a id="sept_14_preview_changes"></a>公共预览版的新增功能/方案
+### <a id="sept_14_preview_changes"></a>公共预览版的新增功能/方案
 * 实时流式处理预览版。 有关详细信息，请参阅[使用 Azure 媒体服务实时传送视频流]。
 * 密钥传递服务。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务]。
 * AES 动态加密。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务]。
@@ -309,22 +316,22 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 * 媒体服务 PlayReady 许可证模板。 有关详细信息，请参阅[媒体服务 PlayReady 许可证模板概述]。
 * 流式处理存储加密资产。 有关详细信息，请参阅[流式处理存储加密内容]。
 
-## <a name="a-idaugustchanges14aaugust-2014-release"></a><a id="august_changes_14"></a>2014 年 8 月版本
+## <a id="august_changes_14"></a>2014 年 8 月版本
 对资产进行编码时，完成编码作业后会生成输出资产。 在此版本之前，Azure 媒体服务编码器会生成有关输出资产的元数据。 自此版本起，编码器还将生成有关输入资产的元数据。 有关详细信息，请参阅[输入元数据]和[输出元数据]主题。
 
-## <a name="a-idjulychanges14ajuly-2014-release"></a><a id="july_changes_14"></a>2014 年 7 月版本
+## <a id="july_changes_14"></a>2014 年 7 月版本
 修复了 Azure 媒体服务包装程序和加密程序中的以下 Bug：
 
 * 传输实时归档资产以进行 HTTP 实时流式处理时仅播放音频 – 此问题已修复，现在将同时播放音频和视频。
 * 打包资产以进行 HTTP 实时流式处理和 AES 128 位信封加密时，Android 设备将不会播放已打包的流 – 此 Bug 已修复，现在支持 HTTP 实时流式处理的 Android 设备将播放已打包的流。
 
-## <a name="a-idmaychanges14amay-2014-release"></a><a id="may_changes_14"></a>2014 年 5 月版本
-### <a name="a-idmay14changesageneral-media-services-updates"></a><a id="may_14_changes"></a>媒体服务一般更新
+## <a id="may_changes_14"></a>2014 年 5 月版本
+### <a id="may_14_changes"></a>媒体服务一般更新
 现在可以使用[动态打包]对 HTTP Live Streaming (HLS) v3 进行流式处理。 若要对 HLS v3 进行流式处理，请将以下格式添加到原点定位符路径：*.ism/manifest(format=m3u8-aapl-v3)。 有关详细信息，请参阅 [Nick Drouin 的博客]。
 
 动态打包现在还支持基于使用 PlayReady 静态加密的平滑流式处理内容传递使用 PlayReady 加密的 HLS（v3 和 v4）。 有关如何使用 PlayReady 加密平滑流式处理内容的信息，请参阅[使用 PlayReady 保护平滑流]。
 
-### <a name="a-namemay14donnetchangesamedia-services-net-sdk-updates"></a><a name="may_14_donnet_changes"></a>媒体服务 .NET SDK 更新
+### <a name="may_14_donnet_changes"></a>媒体服务 .NET SDK 更新
 媒体服务 .NET SDK 3.0.0.5 版本中包含以下改进：
 
 * 上载/下载媒体资产时具有更快的速度和更佳的可靠性。
@@ -335,16 +342,16 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 
 有关详细信息，请参阅[适用于 .NET 的媒体服务 SDK 中的重试逻辑]。
 
-## <a name="a-idaprilchanges14aapril-2014-encoder-release"></a><a id="april_changes_14"></a>2014 年 4 月编码器版本
-### <a name="a-nameapril14enocerchangesamedia-services-encoder-updates"></a><a name="april_14_enocer_changes"></a>媒体服务编码器更新
+## <a id="april_changes_14"></a>2014 年 4 月编码器版本
+### <a name="april_14_enocer_changes"></a>媒体服务编码器更新
 * 增加了对插入使用 Grass Valley EDIUS 非线性编辑器创作的 AVI 文件的支持，其中的视频使用 Grass Valley HQ/HQX 编解码器进行轻微压缩。 有关详细信息，请参阅 [Grass Valley 宣布通过云对 EDIUS 7 进行流式处理]。
 * 增加了对媒体编码器所生成文件指定命名约定的支持。 有关详细信息，请参阅[控制媒体服务编码器输出文件名]。
 * 增加了对视频和/或音频覆盖的支持。 有关详细信息，请参阅[创建覆盖]。
 * 增加了对将多个视频片段拼接在一起的支持。 有关详细信息，请参阅[拼结视频片段]。
 * 修复了与 MP4 转码相关的 Bug，MP4 中的音频采用 MPEG-1 Audio layer 3（又名 MP3）进行编码。
 
-## <a name="a-idjanfebchanges14ajanuaryfebruary-2014-releases"></a><a id="jan_feb_changes_14"></a>2014 年 1/2 月版本
-### <a name="a-namejanfab14donnetchangesaazure-media-services-net-sdk-3001-3002-and-3003"></a><a name="jan_fab_14_donnet_changes"></a>Azure 媒体服务 .NET SDK 3.0.0.1、3.0.0.2 和 3.0.0.3
+## <a id="jan_feb_changes_14"></a>2014 年 1/2 月版本
+### <a name="jan_fab_14_donnet_changes"></a>Azure 媒体服务 .NET SDK 3.0.0.1、3.0.0.2 和 3.0.0.3
 3.0.0.1 和 3.0.0.2 中的更改包括：
 
 * 修复了与具有 OrderBy 语句的 LINQ 查询的使用相关的问题。
@@ -357,8 +364,8 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 * 升级了 Azure 存储空间依赖项以使用版本 3.0.3.0。 
 * 修复了 3.0.*.* 版本的向后兼容性问题。 
 
-## <a name="a-iddecemberchanges13adecember-2013-release"></a><a id="december_changes_13"></a>2013 年 12 月版本
-### <a name="a-namedec13donnetchangesaazure-media-services-net-sdk-3000"></a><a name="dec_13_donnet_changes"></a>Azure 媒体服务 .NET SDK 3.0.0.0
+## <a id="december_changes_13"></a>2013 年 12 月版本
+### <a name="dec_13_donnet_changes"></a>Azure 媒体服务 .NET SDK 3.0.0.0
 > [!NOTE]
 > 3.0.x.x 版本与 2.4.x.x 版本不向后兼容。
 > 
@@ -368,15 +375,15 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 
 自媒体服务 SDK 3.0.0.0 版本起，可以重复使用 [Azure Active Directory 访问控制服务 (ACS)] 令牌。 有关详细信息，请参阅[使用适用于 .NET 的媒体服务 SDK 连接到媒体服务]主题中的"重复使用访问控制服务令牌"部分。
 
-### <a name="a-namedec13donnetextchangesaazure-media-services-net-sdk-extensions-2000"></a><a name="dec_13_donnet_ext_changes"></a>Azure 媒体服务 .NET SDK 扩展 2.0.0.0
+### <a name="dec_13_donnet_ext_changes"></a>Azure 媒体服务 .NET SDK 扩展 2.0.0.0
 Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可简化你的代码，并令使用 Azure 媒体服务进行开发变得更加容易。 可以从 [Azure 媒体服务 .NET SDK 扩展]中获取最新资料。
 
-## <a name="a-idnovemberchanges13anovember-2013-release"></a><a id="november_changes_13"></a>2013 年 11 月版本
-### <a name="a-namenov13donnetchangesaazure-media-services-net-sdk-changes"></a><a name="nov_13_donnet_changes"></a>Azure 媒体服务 .NET SDK 更改
+## <a id="november_changes_13"></a>2013 年 11 月版本
+### <a name="nov_13_donnet_changes"></a>Azure 媒体服务 .NET SDK 更改
 自此版本起，适用于 .NET 的媒体服务 SDK 将处理在调用媒体服务 REST API 层时可能发生的暂时性故障错误。
 
-## <a name="a-idaugustchanges13aaugust-2013-release"></a><a id="august_changes_13"></a>2013 年 8 月版本
-### <a name="a-nameaug13powershellchangesamedia-services-powershell-cmdlets-included-in-azure-sdk-tools"></a><a name="aug_13_powershell_changes"></a>Azure SDK 工具中包含的媒体服务 PowerShell Cmdlet
+## <a id="august_changes_13"></a>2013 年 8 月版本
+### <a name="aug_13_powershell_changes"></a>Azure SDK 工具中包含的媒体服务 PowerShell Cmdlet
 [azure-sdk-tools] 中现在包含以下媒体服务 PowerShell cmdlet。
 
 * Get-AzureMediaServices 
@@ -392,8 +399,8 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
   
     例如，`Remove-AzureMediaServicesAccount -Name “MediaAccountName” -Force`。
 
-## <a name="a-idjunechanges13ajune-2013-release"></a><a id="june_changes_13"></a>2013 年 6 月版本
-### <a name="a-namejune13generalchangesaazure-media-services-changes"></a><a name="june_13_general_changes"></a>Azure 媒体服务更改
+## <a id="june_changes_13"></a>2013 年 6 月版本
+### <a name="june_13_general_changes"></a>Azure 媒体服务更改
 本部分所述的变化是 2013 年 6 月媒体服务版本中包含的更新。
 
 * 将多个存储帐户链接到一个媒体服务帐户的功能。 
@@ -412,7 +419,7 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
 * Asset.Uri 
 * Locator.Name 
 
-### <a name="a-namejune13dotnetchangesaazure-media-services-net-sdk-changes"></a><a name="june_13_dotnet_changes"></a>Azure 媒体服务 .NET SDK 更改
+### <a name="june_13_dotnet_changes"></a>Azure 媒体服务 .NET SDK 更改
 2013 年 6 月媒体服务 SDK 版本中包含以下更改。 GitHub 上提供有最新的媒体服务 SDK。
 
 * 自 2.3.0.0 版起，媒体服务 SDK 支持将多个存储帐户链接到一个媒体服务帐户。 以下 API 支持此功能：
@@ -442,8 +449,8 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
 * Azure 存储空间客户端 SDK 2.0 中的依赖项 (Microsoft.WindowsAzure.StorageClient.dll)。
 * OData 5.5 中的依赖项 (Microsoft.Data.OData.dll)。
 
-## <a name="a-iddecemberchanges12adecember-2012-release"></a><a id="december_changes_12"></a>2012 年 12 月版本
-### <a name="a-namedec12dotnetchangesaazure-media-services-net-sdk-changes"></a><a name="dec_12_dotnet_changes"></a>Azure 媒体服务 .NET SDK 更改
+## <a id="december_changes_12"></a>2012 年 12 月版本
+### <a name="dec_12_dotnet_changes"></a>Azure 媒体服务 .NET SDK 更改
 * Intellisense：为许多类型增加了缺少的 Intellisense 文档。
 * Microsoft.Practices.TransientFaultHandling.Core：修复了 SDK 仍依赖于此程序集的旧版本的问题。 SDK 现在引用此程序集的 5.1.1209.1 版本。
 
@@ -461,7 +468,7 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
 * Jobs：修复了使用作业模板将“MP4 到平滑流任务”和“PlayReady 保护任务”链接到一起时，根本不会创建任何任务的问题。
 * EncryptionUtils.GetCertificateFromStore()：此方法不会再因证书配置问题找不到证书而引发空引用异常。
 
-## <a name="a-idnovemberchanges12anovember-2012-release"></a><a id="november_changes_12"></a>2012 年 11 月版本
+## <a id="november_changes_12"></a>2012 年 11 月版本
 本部分所述的变化是 2012 年 11 月（2.0.0.0 版）SDK 中包含的更新。 这些更改可能要求对 2012 年 6 月预览版 SDK 的代码进行修改或重写。
 
 * 资产
@@ -485,7 +492,7 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
   
     已删除原点特定的版本。 SAS 特定的 context.Locators.CreateSasLocator(asset, accessPolicy) 将标记为已弃用或通过 GA 删除。 请参阅“新增功能”下的“定位符”部分以了解更新行为。
 
-## <a name="a-idjunechanges12ajune-2012-preview-release"></a><a id="june_changes_12"></a>2012 年 6 月预览版
+## <a id="june_changes_12"></a>2012 年 6 月预览版
 以下是&11; 月版 SDK 中的新增功能。
 
 * 删除实体

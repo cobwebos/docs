@@ -17,15 +17,15 @@ ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1a218c8b9a1119ed284bc55071eed2a082122802
-ms.openlocfilehash: 78efd3d80f066d6b182b142564dbd0a7a9e01431
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: d149e51441dbf440732b1930245d27a6ff144970
+ms.lasthandoff: 03/03/2017
+
 
 ---
+# <a name="resize-a-linux-virtual-machine-using-cli-20"></a>使用 CLI 2.0 调整 Linux 虚拟机的大小
 
-# <a name="resize-a-linux-vm-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 调整 Linux VM 的大小
-
-预配虚拟机 (VM) 后，可以通过更改 [VM 大小][vm-sizes]来扩展或缩减 VM。 在某些情况下，必须先解除分配 VM。 如果所需大小在托管 VM 的硬件群集上不可用，则需要解除分配 VM。 
+预配虚拟机 (VM) 后，可以通过更改 [VM 大小][vm-sizes]来扩展或缩减 VM。 在某些情况下，必须先解除分配 VM。 如果所需大小在托管 VM 的硬件群集上不可用，则需要解除分配 VM。 本文详细介绍了如何使用 Azure CLI 2.0 来调整 Linux VM 的大小。 还可以使用 [Azure CLI 1.0](virtual-machines-linux-change-vm-size-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
 可以使用以下 CLI 版本之一完成任务：

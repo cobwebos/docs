@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: df0dec0731031f2dee69719dd03a588ad6589044
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 242c3a6bf656da9b029a780e8b80667405b7b92f
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -44,12 +45,16 @@ ms.openlocfilehash: df0dec0731031f2dee69719dd03a588ad6589044
     “加载”边栏选项卡随即打开。
    
     ![CDN 加载边栏选项卡](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. 在“**路径**”文本框中输入你想要加载的每个资产的完整路径 (例如，`/pictures/kitten.png`。
+4. 在“**路径**”文本框中输入想要加载的每个资产的完整路径（例如，`/pictures/kitten.png`）。
    
    > [!TIP]
-   > 输入文本后，会显示更多“**路径**”文本框，以便允许你生成包含多个资产的列表。  通过单击省略号 (...) 按钮，可以从列表中删除资产。
+   > 输入文本后，将会出现更多“**路径**”文本框，以便允许你生成包含多个资产的列表。  通过单击省略号 (...) 按钮，可以从列表中删除资产。
    > 
-   > 路径必须是符合以下[正则表达式](https://msdn.microsoft.com/library/az24scfc.aspx)的相对 URL：`^(?:\/[a-zA-Z0-9-_.\u0020]+)+$`。  每个资产都必须有其自己的路径。  预加载的资产没有通配符功能。
+   > 路径必须是符合以下[正则表达式](https://msdn.microsoft.com/library/az24scfc.aspx)的相对 URL：  
+   > >加载单个文件路径 `@"^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$"`；  
+   > >加载包含查询字符串 `@"^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$";` 的单个文件  
+   > 
+   > 每个资产都必须有其自己的路径。  预加载的资产没有通配符功能。
    > 
    > 
    
@@ -66,10 +71,5 @@ ms.openlocfilehash: df0dec0731031f2dee69719dd03a588ad6589044
 ## <a name="see-also"></a>另请参阅
 * [清除 Azure CDN 终结点](cdn-purge-endpoint.md)
 * [Azure CDN REST API 参考 - 清除或预加载终结点](https://msdn.microsoft.com/library/mt634451.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/09/2017
+ms.date: 02/28/2017
 ms.author: kyliel
 translationtype: Human Translation
-ms.sourcegitcommit: 8c96cacadb34a3d4eca1fe523d8a159c69a0ebe3
-ms.openlocfilehash: 01c855972d66d8ae2e975b206791ab8f9abcec41
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 24410a07995d5ac813b2bf4cdeed320c72ce7e06
+ms.openlocfilehash: 7845b552bd1360927eae414f57fefbd74ac0b7f7
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -38,10 +38,47 @@ Microsoft Corporation 在 Azure 上提供预先配置了 [Azure VM 来宾代理]
 至于未来版本的 FreeBSD，所采用的策略是始终进行更新，确保在 FreeBSD 版本工程团队发布最新版本后很快就可以使用这些版本。
 
 ## <a name="deploying-a-freebsd-virtual-machine"></a>部署 FreeBSD 虚拟机
-在使用 Azure 应用商店中的映像时，部署 FreeBSD 虚拟机是一个非常简单的过程：
+在 Azure 门户中使用来自 Azure 应用商店的映像部署 FreeBSD 虚拟机是一个非常简单的过程：
 
 - [Azure 应用商店中的 FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
 - [Azure 应用商店中的 FreeBSD 11.0](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)
+
+### <a name="create-a-freebsd-vm-through-azure-cli-20-on-freebsd"></a>通过 FreeBSD 上的 Azure CLI 2.0 创建 FreeBSD VM
+首先需要通过以下命令在 FreeBSD 计算机上安装 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
+
+```bash 
+    curl -L https://aka.ms/InstallAzureCli | bash
+```
+
+如果 FreeBSD 计算机上未安装 bash，请在安装前运行以下命令。 
+
+```
+    sudo pkg install bash
+```
+
+如果 FreeBSD 计算机上未安装 python，请在安装前运行以下命令。 
+
+```
+    sudo pkg install python35
+    cd /usr/local/bin 
+    sudo rm /usr/local/bin/python 
+    sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
+```
+
+安装期间，系统将询问你 `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`。 如果回答 `y` 并输入 `/etc/rc.conf` 作为 `a path to an rc file to update`，则可能会出现问题 `ERROR: [Errno 13] Permission denied`。 为了解决该问题，应针对文件 `etc/rc.conf` 向当前用户授予写入权限。
+
+现在可登录 Azure 并创建 FreeBSD VM。 以下是创建 FreeBSD 11.0 VM 的一个示例。 也可以为新创建的公共 IP 添加具有全局唯一 DNS 名称的 `--public-ip-address-dns-name` 参数。 
+
+```azurecli
+    az login 
+    az group create -n myResourceGroup -l westus az vm create -n myFreeBSD11 -g myResourceGroup --image MicrosoftOSTC:FreeBSD:11.0:latest --admin-username azureuser --ssh-key-value /etc/ssh/ssh_host_rsa_key.pub 
+```
+
+然后可通过上述部署输出中打印的 IP 地址登录到 FreeBSD VM。 
+
+```bash
+    ssh azureuser@xx.xx.xx.xx -i /etc/ssh/ssh_host_rsa_key
+```   
 
 ## <a name="vm-extensions-for-freebsd"></a>FreeBSD 的 VM 扩展
 下面是 FreeBSD VM 中支持的 VM 扩展。
@@ -68,7 +105,8 @@ Microsoft Corporation 在 Azure 上提供预先配置了 [Azure VM 来宾代理]
 * 自动删除 shell 和 Python 脚本中的 BOM。
 * 保护 CommandToExecute 中的敏感数据。
 
-[!NOTE]目前 FreeBSD VM 仅支持 CustomScript 1.x。  
+> [!NOTE]
+> 目前 FreeBSD VM 仅支持 CustomScript 1.x。  
 
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>身份验证：用户名、密码和 SSH 密钥
 使用 Azure 门户创建 FreeBSD 虚拟机时，必须提供用户名、密码或 SSH 公钥。
@@ -79,12 +117,14 @@ Microsoft Corporation 在 Azure 上提供预先配置了 [Azure VM 来宾代理]
 在 Azure 上部署虚拟机实例的过程中指定的用户帐户是特权帐户。 sudo 的包已安装在所发布的 FreeBSD 映像中。
 通过此用户帐户登录后，即可使用命令语法以 root 用户身份运行命令。
 
+```
     $ sudo <COMMAND>
+```
 
 可以选择使用 `sudo -s` 获取 root shell。
 
 ## <a name="known-issues"></a>已知问题
-1. [Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.2 存在 [已知问题] (https://github.com/Azure/WALinuxAgent/pull/517)，此问题导致 Azure 上的 FreeBSD VM 预配失败。 [Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.3 及更高版本已修复此问题。 
+[Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.2 存在 [已知问题] (https://github.com/Azure/WALinuxAgent/pull/517)，此问题导致 Azure 上的 FreeBSD VM 预配失败。 [Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.3 及更高版本已修复此问题。 
 
 ## <a name="next-steps"></a>后续步骤
 * 转到 [Azure 应用商店](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)创建 FreeBSD VM。

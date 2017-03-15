@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 02/28/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: fda7455320e1c043f1f5aa2a92b72329fc20e76a
-ms.openlocfilehash: b4aca222974e3165c9131134a8e1a2171b3d5088
+ms.sourcegitcommit: feb6e388a98cd6e133d010cada97f895140c3f4f
+ms.openlocfilehash: ee9a3b605c5445007f880a37e96c2326dd7c9b89
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -40,7 +41,7 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 ## <a name="scheduler-configuration"></a>计划程序配置
 若要查看当前配置设置，请转到 PowerShell 并运行 `Get-ADSyncScheduler`。 它显示的内容将如此图所示：
 
-![GetSyncScheduler](./media/active-directory-aadconnectsync-feature-scheduler/getsynccyclesettings.png)
+![GetSyncScheduler](./media/active-directory-aadconnectsync-feature-scheduler/getsynccyclesettings2016.png)
 
 若在运行此 cmdlet 时看到“此同步命令或 cmdlet 不可用”，则 PowerShell 模块未加载。 如果你在 PowerShell 限制级别高于默认设置的域控制器或服务器上运行 Azure AD Connect，则可能会发生这种问题。 如果你看到此错误，则运行 `Import-Module ADSync` 可使该 cmdlet 可用。
 
@@ -52,7 +53,8 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 * **PurgeRunHistoryInterval**。 操作日志应保留的时间。 可以在 Synchronization Service Manager 中查看这些日志。 默认设置是保留这些日志 7 天。
 * **SyncCycleEnabled**。 指示计划程序是否正在运行导入、同步和导出过程作为其操作的一部分。
 * **MaintenanceEnabled**。 显示是否启用了维护过程。 它将更新证书/密钥，并清除操作日志。
-* **IsStagingModeEnabled**。 显示是否启用了[暂存模式](active-directory-aadconnectsync-operations.md#staging-mode)。 若启用此设置，它将取消导出运行，但仍将运行导入和同步。
+* **StagingModeEnabled**。 显示是否启用了[暂存模式](active-directory-aadconnectsync-operations.md#staging-mode)。 若启用此设置，它将取消导出运行，但仍将运行导入和同步。
+* **SchedulerSuspended**。 由 Connect 在升级期间设置，用于暂时阻止计划程序运行。
 
 你可以使用 `Set-ADSyncScheduler` 更改上述一些设置。 可以修改以下参数：
 
@@ -61,6 +63,8 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 * PurgeRunHistoryInterval
 * SyncCycleEnabled
 * MaintenanceEnabled
+
+在早期版本的 Azure AD Connect 中，已在 Set-ADSyncScheduler 中公开 **isStagingModeEnabled**。 **不支持**设置此属性。 应只有 Connect 能修改属性 **SchedulerSuspended**。 **不支持**使用 PowerShell 直接对其进行设置。
 
 计划程序配置存储在 Azure AD 中。 如果你设有暂存服务器，主服务器上的任何更改还将影响暂存服务器（IsStagingModeEnabled 除外）。
 
@@ -169,9 +173,4 @@ Get-ADSyncConnectorRunStatus
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
 
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

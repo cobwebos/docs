@@ -13,12 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/02/2017
 ms.author: bprakash
 translationtype: Human Translation
-ms.sourcegitcommit: 0371c6ba2434c315db1bdbacab8639fd40d5c999
-ms.openlocfilehash: 1986a4f19d89f1451ca47a94511ff998705ed785
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: d9c85736e9578ff4f821a118a25055e360e33ae9
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -39,7 +39,7 @@ Azure HDInsight 提供了两个类别的大数据云产品/服务：**标准**�
 | --- | --- |
 | 已加入域的 HDInsight 群集 |将 HDInsight 群集加入 Azure Active Directory (AAD) 域以实现企业级安全性。 现在可配置企业员工的列表，这些员工可通过 Azure Active Directory 进行身份验证登录到 HDInsight 群集。 企业管理员还可以使用 [Apache Ranger](http://hortonworks.com/apache/ranger/) 配置基于角色的访问控制来实现 Hive 安全性，从而根据最大需求权限来限制数据访问权限。 最后，管理员可以审核员工访问的数据以及对访问控制策略所做的任何更改，从而以较大的力度监管其企业资源。 有关详细信息，请参阅 [Configure domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。 |
 
-### <a name="cluster-types-supported-for-premium"></a>高级版支持的群集类型
+### <a name="cluster-types-supported-for-hdinsight-premium"></a>HDInsight Premium 支持的群集类型
 下表列出了 HDInsight 群集类型和高级版支持矩阵。
 
 | 群集类型 | 标准 | 高级 |
@@ -48,10 +48,17 @@ Azure HDInsight 提供了两个类别的大数据云产品/服务：**标准**�
 | Spark |是 |否 |
 | HBase |是 |否 |
 | Storm |是 |否 |
+| R Server  |是 |否 |
 | 交互式 Hive（预览版） |是 |否 |
-| R Server（预览版） |是 |否 |
+| Kafka（预览版）|是|否| 
 
 随着 HDInsight 高级版中包含的群集类型更多，此表也会随之更新。
+
+### <a name="features-not-supported-for-hdinsight-premium"></a>HDInsight Premium 不支持的功能
+
+HDInsight Premium 群集当前不支持以下功能。
+
+* **不支持将 Azure Data Lake Store 作为主存储**。 仍然可以将 Azure Data Lake Store 用作 HDInsight Premium 群集的附加存储。
 
 ### <a name="pricing-and-sla"></a>定价和 SLA
 有关 HDInsight 高级版的定价和 SLA 的信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
@@ -65,9 +72,22 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 >
 
 
-| 组件 | HDInsight 版本 3.5（默认）| HDInsight 版本 3.4 | HDInsight 版本 3.3 | HDInsight 版本 3.2 | HDInsight 版本 3.1 | HDInsight 版本 3.0 |
-
-| --- | --- | --- | --- | --- | --- | --- | | Hortonworks 数据平台 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 | | Apache Hadoop 和 YARN |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 | | Apache Tez |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 | | | Apache Pig |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 | | Apache Hive 和 HCatalog |1.2.1.2.5 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 | | Apache HBase |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 | | | Apache Sqoop |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 | | Apache Oozie |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 | | Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 | | Apache Storm |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 | | | Apache Mahout |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 | | | Apache Phoenix |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 | | | Apache Spark |1.6.2 + 2.0（仅 Linux）|1.6.0（仅 Linux）|1.5.2（仅 Linux/试验版本）|1.3.1（仅 Windows）| | |
+| 组件 | HDInsight version 3.5（默认） | HDInsight 版本 3.4 | HDInsight 版本 3.3 | HDInsight 版本 3.2 | HDInsight 版本 3.1 | HDInsight 版本 3.0 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Hortonworks 数据平台 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
+| Apache Hadoop 和 YARN |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
+| Apache Tez |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 |-|
+| Apache Pig |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
+| Apache Hive 和 HCatalog |1.2.1.2.5 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 |
+| Apache HBase |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 |-|
+| Apache Sqoop |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
+| Apache Oozie |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
+| Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
+| Apache Storm |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
+| Apache Mahout |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
+| Apache Phoenix |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
+| Apache Spark |1.6.2 + 2.0（仅限 Linux） |1.6.0（仅限 Linux） |1.5.2（仅限 Linux/实验性生成） |1.3.1（仅限 Windows） |-|-|
+| Apache Kafka | 0.10.0 | 0.9.0 |-|-|-|-|
 
 **获取当前组件版本信息**
 

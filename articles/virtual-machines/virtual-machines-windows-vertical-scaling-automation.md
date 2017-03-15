@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 自动化垂直缩放 Azure 虚拟机 | Microsoft Docs"
-description: "如何使用 Azure 自动化垂直缩放 Windows 虚拟机以响应监视警报"
+title: "使用 Azure 自动化垂直缩放 Windows 虚拟机 | Microsoft Docs"
+description: "使用 Azure 自动化垂直缩放 Windows 虚拟机以响应监视警报"
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -17,13 +17,15 @@ ms.date: 03/29/2016
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0a888f945a39a8bb88a730a226af6ec21d133f44
-ms.openlocfilehash: 0075160ea9c0dae991fc2344c46d216a8203bec3
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 861552da68c2268c42122b0da6633c7935bb3502
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="how-to-vertically-scale-virtual-machines-with-azure-automation"></a>如何使用 Azure 自动化垂直缩放虚拟机
+
+# <a name="vertically-scale-windows-vms-with-azure-automation"></a>使用 Azure 自动化垂直缩放 Windows VM
+
 垂直缩放是增加或减少计算机的资源以响应工作负荷的过程。 在 Azure 中，这可以通过更改虚拟机的大小来实现。 这种做法可为以下方案提供方便
 
 * 如果你不经常使用某个虚拟机，可以缩小其大小，以降低每月成本

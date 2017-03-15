@@ -4,7 +4,7 @@ description: "说明如何拆卸和更换 StorSimple 设备上的一个或两个
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: e25b52b7-60f5-47f3-bffc-6c157d57ab5d
 ms.service: storsimple
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/18/2016
+ms.date: 03/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dcf0ff5c4d6ebb7d0aea0b9518cbbe66c9f0a649
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 5dd5ffc7c08fcc9263b91ca5ac86de5163f91657
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -105,8 +106,9 @@ ms.openlocfilehash: dcf0ff5c4d6ebb7d0aea0b9518cbbe66c9f0a649
 8. 控制器重新启动后，在 Azure 经典门户中检查“控制器状态”和“群集状态”，确认该控制器是否已恢复到正常工作状态，并且处于备用模式。
 
 > [!NOTE]
-> 如果通过串行控制台监视设备，可以发现在控制器从更换过程恢复时会多次重新启动。 显示串行控制器菜单即表示更换过程已完成。 如果该菜单在开始更换控制器后的 2 小时内未出现，请[联系 Microsoft 支持](storsimple-contact-microsoft-support.md)。
-> 
+> 如果通过串行控制台监视设备，可以发现在控制器从更换过程恢复时会多次重新启动。 显示串行控制器菜单即表示更换过程已完成。 如果该菜单在开始更换控制器后的&2; 小时内未出现，请[联系 Microsoft 支持](storsimple-contact-microsoft-support.md)。
+>
+> 从更新 4 开始，还可以使用设备 Windows PowerShell 界面中的 cmdlet `Get-HCSControllerReplacementStatus` 监视控制器更换过程的状态。
 > 
 
 ## <a name="replace-both-controllers"></a>更换两个控制器
@@ -246,10 +248,5 @@ ms.openlocfilehash: dcf0ff5c4d6ebb7d0aea0b9518cbbe66c9f0a649
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

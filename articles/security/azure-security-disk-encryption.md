@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: 1dd5be3ba3a0fbbb4657a2c0b2ca6757a94cc76a
-ms.openlocfilehash: 1c6b4b45b9e0b018a7cb3f28f7868c89ad0fda61
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: b21867e41acb1e0658041bd931327047095bb159
+ms.openlocfilehash: b5ecba98fd5c3061f68f94f5004c7cf00d0dfb36
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -139,7 +139,7 @@ Azure 磁盘加密管理解决方案可以解决以下业务需求：
 > 以下 Linux 服务器版本支持 Azure 磁盘加密：Ubuntu、CentOS、SUSE、SUSE Linux Enterprise Server (SLES) 和 Red Hat Enterprise Linux。
 
 > [!NOTE]
-> Linux 分发（RHEL 7.2、CentOS 7.2n 和 Ubuntu 16.04）当前支持 Linux OS 磁盘加密。
+> Linux 分发（RHEL 7.2、RHEL 7.3、CentOS 7.2n 和 Ubuntu 16.04）当前支持 Linux OS 磁盘加密。
 >
 > 所有资源（例如 Key Vault、存储帐户和 VM 等）必须属于同一个 Azure 区域和订阅。
 
