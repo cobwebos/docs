@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 03/14/2017
 ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
 ms.openlocfilehash: ad511174f8df2fca752447ed942880d02c141308
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -294,9 +295,4 @@ ms.openlocfilehash: ad511174f8df2fca752447ed942880d02c141308
             }
         }
     }
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
