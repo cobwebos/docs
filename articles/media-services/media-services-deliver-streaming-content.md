@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: cd9a73d1830be132a1176fcb6cdeadedcdc96d04
-ms.openlocfilehash: 98bfdc49524edd5cedc85b5f94a74ca8c29ae2e9
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5598a16511713a76193c13c4521e4884d8f5b75d
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -49,6 +50,10 @@ ms.openlocfilehash: 98bfdc49524edd5cedc85b5f94a74ca8c29ae2e9
    
    如果你想要渐进式下载，请获取资产中的 MP4 文件名。  
 4. 生成清单文件或 MP4 文件的 URL。 
+
+
+>[!NOTE]
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 
 ### <a name="use-media-services-net-sdk"></a>使用媒体服务 .NET SDK
 生成流 URL 
@@ -173,10 +178,5 @@ ms.openlocfilehash: 98bfdc49524edd5cedc85b5f94a74ca8c29ae2e9
 ## <a name="see-also"></a>另请参阅
 [下载资产](media-services-deliver-asset-download.md)
 [配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
