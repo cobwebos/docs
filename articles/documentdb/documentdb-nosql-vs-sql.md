@@ -14,11 +14,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 03/14/2017
 ms.author: mimig
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 84b0b4121e8fc10bdfd3b5daf7fff280dc301d28
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -129,10 +130,5 @@ Microsoft 提供了五种 SQL 产品/服务：
   
   * [SQL Server](https://www.microsoft.com/server-cloud/products/sql-server-2016/)
   * [Azure 虚拟机中的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

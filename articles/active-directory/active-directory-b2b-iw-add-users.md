@@ -37,7 +37,7 @@ ms.lasthandoff: 02/17/2017
 
 同样，信息工作者可以将 B2B 协作用户添加到已为自助服务组管理启用的分配组中。
 > [!NOTE]
-不能将 B2B 协作用户添加到动态组或已与本地 Active Directory 同步的组。
+> 不能将 B2B 协作用户添加到动态组或已与本地 Active Directory 同步的组。
 
 
 ## <a name="next-steps"></a>后续步骤
