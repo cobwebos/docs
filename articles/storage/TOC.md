@@ -169,7 +169,7 @@
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
 ### [资源管理器](/dotnet/api/microsoft.azure.management.storage)
-### [数据移动](https://msdn.microsoft.com/library/azure/mt684990.aspx)
+### [数据移动](/dotnet/api/microsoft.windowsazure.storage.datamovement)
 ### [Blob、队列、表和文件](https://msdn.microsoft.com/library/azure/mt347887.aspx)
 ## [Java](http://azure.github.io/azure-storage-java/)
 ## [Node.js](http://azure.github.io/azure-storage-node)

@@ -4,9 +4,9 @@ hide_bc: true
 title: "Microsoft Azure 文档 | Microsoft 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 translationtype: Human Translation
-ms.sourcegitcommit: a2f5d05e9911e0ceb9a3815245fb92704b0619a7
-ms.openlocfilehash: 989b9a20705290ed6764f2e5857cc1485ced39dc
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 359cb51a6107d6556ba261d19bfb1b8b31405d34
+ms.lasthandoff: 03/14/2017
 
 ---
 <div id="main" class="v2">
@@ -2435,10 +2435,10 @@ ms.lasthandoff: 02/28/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent">获取 .NET SDK</a>
+                                                    <a href="/dotnet/api">获取 .NET SDK</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/dotnet/api/">入门</a>
+                                                    <a href="/azure/app-service-web/app-service-web-get-started-dotnet">入门</a>
                                                 </p>
                                                 <p>
                                                     <a href="/dotnet/api">API 参考</a>
