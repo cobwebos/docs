@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: 88b75c2b222ee153c935898dbece0c366c7f198d
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: ff0b234f27e2d5068cc0dcdc73e32e60f8622633
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -42,7 +43,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
 若要完成本教程，您需要以下各项：
 
-* Microsoft Visual Studio 2015。
+* Visual Studio 2015 或 Visual Studio 2017。
 * 有效的 Azure 帐户。 <br/>如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 应具备 [Azure 存储]和 [Azure 服务总线]的一些基础知识。
@@ -129,7 +130,7 @@ private static async void SendDeviceToCloudMessagesAsync()
 ## <a name="read-from-the-queue-endpoint"></a>从队列终结点读取
 在本部分中，会从队列终结点读取消息。
 
-1. 在当前的 Visual Studio 解决方案中，通过使用“**控制台应用程序**”项目模板创建 Visual C# Windows 项目。 将项目命名为 **ReadCriticalQueue**。
+1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为 **ReadCriticalQueue**。
 
 2. 在解决方案资源管理器中，右键单击 **ReadCriticalQueue** 项目，然后单击“管理 NuGet 包”。 此操作将显示“**NuGet 包管理器**”窗口。
 
@@ -225,9 +226,4 @@ private static async void SendDeviceToCloudMessagesAsync()
 [lnk-classic-portal]: https://manage.windowsazure.com
 [lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

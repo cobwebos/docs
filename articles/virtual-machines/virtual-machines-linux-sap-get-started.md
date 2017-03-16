@@ -16,13 +16,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: rclaus
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
-ms.openlocfilehash: 21b7bf78e70b7d4534220913987cdac5f04cb462
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 9e64fc5425db5ffde6af493e961edfcac527b6df
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="using-sap-on-azure-virtual-machines-vms"></a>使用 Azure 虚拟机 (VM) 上的 SAP
+# <a name="using-sap-on-azure-linux-virtual-machines-vms"></a>在 Azure Linux 虚拟机 (VM) 上使用 SAP
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
@@ -329,7 +331,7 @@ ms.openlocfilehash: 21b7bf78e70b7d4534220913987cdac5f04cb462
 
 [可在此处找到此指南](virtual-machines-linux-sap-on-suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="a-name3da0389e-708b-4e82-b2a2-e92f132df89caplanning-and-implementation"></a><a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>规划和实现
+## <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>规划和实现
 标题：Linux 虚拟机 (VM) 上的 SAP NetWeaver – 规划和实施指南
 
 摘要：如果你正在考虑在 Azure 虚拟机中运行 SAP NetWeaver，可从本文开始着手。 此规划和实现指南可帮助你评估现有或计划的基于 SAP NetWeaver 的系统是否可以部署到 Azure 虚拟机环境。 它介绍了多个 SAP NetWeaver 部署方案，并包括特定于 Azure 的 SAP 配置。 该文列出并说明了在 SAP/Azure 端运行混合 SAP 布局产品时所需的所有必要配置信息。 此外，还介绍了为确保 IaaS 上基于 SAP NetWeaver 的系统实现高可用性可以采取的措施。
@@ -338,7 +340,7 @@ ms.openlocfilehash: 21b7bf78e70b7d4534220913987cdac5f04cb462
 
 [可在此处找到此指南][planning-guide]
 
-## <a name="a-name6aadadd2-76b5-46d8-8713-e8d63630e955adeployment"></a><a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>部署
+## <a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>部署
 标题：Linux 虚拟机 (VM) 上的 SAP NetWeaver – 部署指南
 
 摘要：本文档提供将 SAP NetWeaver 软件部署到 Azure 中虚拟机的过程指导。 此文重点介绍三种特定部署方案，主要侧重于启用 SAP 的 Azure 监视扩展，包括针对 SAP 的 Azure 监视扩展的故障排除建议。 此文假定你已阅读规划和实现指南。
@@ -347,7 +349,7 @@ ms.openlocfilehash: 21b7bf78e70b7d4534220913987cdac5f04cb462
 
 [可在此处找到此指南][deployment-guide]
 
-## <a name="a-name1343ffe1-8021-4ce6-a08d-3a1553a4db82adbms-deployment-guide"></a><a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS 部署指南
+## <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS 部署指南
 标题：Linux 虚拟机 (VM) 上的 SAP NetWeaver – DBMS 部署指南
 
 摘要：此文介绍了应与 SAP 一起运行的 DBMS 系统的规划和实现注意事项。 在第一部分中，列出并提供了一般注意事项。 此文的以下部分与在 Azure 中部署 SAP 所支持的不同 DBMS 相关。 提供的不同 DBMS 为 SQL Server、SAP ASE 和 Oracle。 在这些特定部分中，讨论了在 Azure 上将 SAP 系统与这些 DBMS 一起运行时必须考虑的注意事项。 提供了 Azure 上的不同 DBMS 支持的备份和高可用性方法等主题，以便用于 SAP 应用程序。
@@ -355,10 +357,5 @@ ms.openlocfilehash: 21b7bf78e70b7d4534220913987cdac5f04cb462
 更新时间：2016 年 3 月
 
 [可在此处找到此指南][dbms-guide]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

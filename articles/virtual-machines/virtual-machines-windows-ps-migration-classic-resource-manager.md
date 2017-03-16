@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: e90036d97451b271451d0ba5845c788ac05d7abf
-ms.openlocfilehash: 4253d60a8a12877a3c5dac073bd06d70d020ccdc
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 30faf4b99414e5f7b5131c231b4dccf3a7272d25
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -49,7 +49,10 @@ ms.lasthandoff: 02/10/2017
 
 <br>
 
-## <a name="step-3-set-your-subscription-and-sign-up-for-migration"></a>步骤 3：设置订阅并针对迁移进行注册
+## <a name="step-3-ensure-that-you-are-co-administrator-for-the-subscription-in-azure-classic-portal"></a>步骤 3：确保你是 Azure 经典门户中订阅的协同管理员
+若要执行此迁移，必须在 [Azure 经典门户](https://manage.windowsazure.com/)中将你添加为订阅的协同管理员。 即使你已被添加为 [Azure 门户](https://portal.azure.com) 中的所有者，这仍是必需的操作。 尝试[在 Azure 经典门户中添加订阅的协同管理员](../billing/billing-add-change-azure-subscription-administrator.md)以了解你是否是订阅的协同管理员。 如果不能添加协同管理员，请联系订阅的服务管理员或协同管理员，以将自己添加为协同管理员。   
+
+## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>步骤 4：设置订阅并针对迁移进行注册
 首先，请启动 PowerShell 提示符。 对于迁移，需要针对经典部署模型和 Resource Manager 部署模型设置环境。
 
 登录到 Resource Manager 模型的帐户。
@@ -111,7 +114,7 @@ ms.lasthandoff: 02/10/2017
 
 <br>
 
-## <a name="step-4-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>步骤 4：确保在当前部署或 VNET 的 Azure 区域中有足够的 Azure Resource Manager 虚拟机核心
+## <a name="step-5-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>步骤 5：确保在当前部署或 VNET 的 Azure 区域中有足够的 Azure Resource Manager 虚拟机核心
 可以使用以下 PowerShell 命令检查 Azure Resource Manager 中目前的核心数量。 若要了解有关核心配额的详细信息，请参阅[限制和 Azure Resource Manager](../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)。 
 
 此示例检查在“美国西部”区域中的可用性。 将示例区域名称替换为你自己的名称。 
@@ -120,7 +123,7 @@ ms.lasthandoff: 02/10/2017
 Get-AzureRmVMUsage -Location "West US"
 ```
 
-## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>步骤 5：运行迁移 IaaS 资源的命令
+## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>步骤 6：运行迁移 IaaS 资源的命令
 > [!NOTE]
 > 此处描述的所有操作都是幂等的。 如果你遇到功能不受支持或配置错误以外的问题，建议你重试准备、中止或提交操作。 然后，平台会尝试再次操作。
 > 

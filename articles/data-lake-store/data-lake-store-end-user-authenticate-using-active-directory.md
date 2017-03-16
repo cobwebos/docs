@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/10/2017
+ms.date: 03/02/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
-ms.openlocfilehash: a50fc687a1738a55c3d22eb3e12060397c162e06
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 0f6af54b351235390afa88f1ce156abd839a723f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -34,14 +35,16 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 这两个选项都会将 OAuth 2.0 令牌提供给应用程序，此令牌会附加到对 Azure Data Lake Store 或 Azure Data Lake Analytics 作出的每个请求。
 
-本文讨论如何为最终用户身份验证创建 Azure AD Web 应用程序。 有关服务到服务身份验证的 Azure AD 应用程序配置的说明，请参阅[使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
+本文讨论如何**创建 Azure AD 本机应用程序以进行最终用户身份验**。 有关服务到服务身份验证的 Azure AD 应用程序配置的说明，请参阅[使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+
 * 订阅 ID。 可从 Azure 门户进行检索。 例如，Data Lake Store 帐户边栏选项卡中提供有此 ID。
   
     ![获取订阅 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
-* Azure AD 域名。 可将鼠标悬停在 Azure 门户右上角进行检索。 在屏幕截图下方，域名为 **contoso.microsoft.com**，括号中的 GUID 是租户 ID。 
+
+* Azure AD 域名。 可将鼠标悬停在 Azure 门户右上角进行检索。 在以下屏幕截图中，域名为 **contoso.onmicrosoft.com**，括号中的 GUID 是租户 ID。 
   
     ![获取 AAD 域](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
@@ -63,77 +66,59 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 ### <a name="what-do-i-need-to-use-this-approach"></a>使用此方式需要什么？
 * Azure AD 域名。 已在本文的先决条件中列出。
-* Azure AD **Web 应用程序**
-* Azure AD Web 应用程序的客户端 ID
-* Azure AD Web 应用程序的回复 URI
+* Azure AD **本机应用程序**
+* Azure AD 本机应用程序的客户端 ID
+* Azure AD 本机应用程序的回复 URI
 * 设置委派权限
 
-有关如何创建 Azure AD Web 应用程序、如何按上述要求对其进行配置的说明，请参阅下方的[创建 Active Directory 应用程序](#create-an-active-directory-application)部分。 
 
-## <a name="create-an-active-directory-application"></a>创建 Active Directory 应用程序
-本部分介绍如何使用 Azure Active Directory，针对通过 Azure Data Lake Store 进行最终用户身份验证，创建和配置 Azure AD Web 应用程序。
+## <a name="step-1-create-an-active-directory-web-application"></a>步骤 1：创建 Active Directory Web 应用程序
 
-### <a name="step-1-create-an-azure-active-directory-application"></a>步骤 1：创建 Azure Active Directory 应用程序
-> [!NOTE]
-> 以下步骤使用 Azure 门户。 还可使用 [Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md) 或 [Azure CLI](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md).来创建 Azure AD 应用程序。
-> 
-> 
+创建并配置用于通过使用 Azure Active Directory 的 Azure Data Lake Store 进行最终用户身份验证的应用程序。 有关说明，请参阅[创建 Azure AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
 
-1. 通过[经典门户](https://manage.windowsazure.com/)登录到 Azure 帐户。
-2. 在左侧窗格中选择“**Active Directory**”。
-   
-     ![选择“Active Directory”](./media/data-lake-store-end-user-authenticate-using-active-directory/active-directory.png)
-3. 选择要用于创建新应用程序的 Active Directory。 如果有多个 Active Directory，通常需要在订阅所在目录中创建应用程序。 只能为与订阅在同一目录中的应用程序授予对订阅中资源的访问权限。  
-   
-     ![选择目录](./media/data-lake-store-end-user-authenticate-using-active-directory/active-directory-details.png)
-4. 若要查看目录中的应用程序，请单击“**应用程序”**。
-   
-     ![查看应用程序](./media/data-lake-store-end-user-authenticate-using-active-directory/view-applications.png)
-5. 如果你之前尚未在该目录中创建应用程序，则应该会看到与下面类似的图像。 单击“添加应用程序”
-   
-     ![添加应用程序](./media/data-lake-store-end-user-authenticate-using-active-directory/create-application.png)
-   
-     或者，单击底部窗格中的“添加”。
-   
-     ![添加](./media/data-lake-store-end-user-authenticate-using-active-directory/add-icon.png)
-6. 提供应用程序的名称，并选择要创建的应用程序的类型。 对于本教程，请创建“WEB 应用程序和/或 WEB API”，然后单击“下一步”按钮。
-   
-     ![命名应用程序](./media/data-lake-store-end-user-authenticate-using-active-directory/tell-us-about-your-application.png)
-7. 填写应用程序的属性。 对于“登录 URL”，请提供用于描述应用程序的网站 URI。 将不验证该网站是否存在。 
-   对于“应用 ID URI”，请提供用于标识应用程序的 URI。
-   
-     ![应用程序属性](./media/data-lake-store-end-user-authenticate-using-active-directory/app-properties.png)
-   
-    单击复选标记以完成向导，并创建应用程序。
+遵循以上链接中的说明进行操作时，请确保选择“本机”作为应用程序类型，如以下屏幕截图中所示。
 
-### <a name="step-2-get-client-id-reply-uri-and-set-delegated-permissions"></a>步骤 2：获取客户端 ID、回复 URI，并设置委派权限
-1. 单击“配置”选项卡以配置应用程序的密码。
-   
-     ![配置应用程序](./media/data-lake-store-end-user-authenticate-using-active-directory/application-configure.png)
-2. 复制**客户端 ID**。
-   
-     ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/client-id.png)
-3. 在“单一登录”部分的下方，复制**回复 URI**。
-   
-    ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-get-reply-uri.png)
-4. 在“针对其他应用程序的权限”中，单击“添加应用程序”
-   
+![创建 Web 应用](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "创建本机应用")
+
+## <a name="step-2-get-client-id-reply-uri-and-set-delegated-permissions"></a>步骤 2：获取客户端 ID、回复 URI，并设置委派权限
+
+请参阅[获取客户端添加](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)，以检索 Azure AD 本机应用程序的客户端 ID（也称为应用程序 ID）。
+
+若要检索重定向 URI，请按照以下步骤进行操作。
+
+1. 从 Azure 门户中选择“Azure Active Directory”，单击“应用注册”，然后找到并单击刚刚创建的 Azure AD 本机应用程序。
+
+2. 在应用程序的“设置”边栏选项卡上，单击“重定向 URI”。
+
+    ![获取重定向 URI](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-redirect-uri.png)
+
+3. 复制显示的值。
+
+
+## <a name="step-3-set-permissions"></a>步骤 3：设置权限
+
+1. 从 Azure 门户中选择“Azure Active Directory”，单击“应用注册”，然后找到并单击刚刚创建的 Azure AD 本机应用程序。
+
+2. 在应用程序的“设置”边栏选项卡上，单击“所需权限”，然后单击“添加”。
+
     ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
-5. 在“针对其他应用程序的权限”向导中，选择“Azure Data Lake”和“Windows Azure 服务管理 API”，然后单击复选标记。
-6. 默认情况下，新添加的服务的“委派权限”设置为零。 单击 Azure Data Lake 和 Windows Azure 管理服务的“委派权限”下拉列表，并将可用的复选框的值设为 1。 结果应如下所示。
-   
-     ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
-7. 单击“保存” 。
 
+3. 在“添加 API 访问”边栏选项卡上，依次单击“选择 API”、“Azure Data Lake”和“选择”。
+
+    ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+ 
+4.  在“添加 API 访问”边栏选项卡上，单击“选择权限”，选中复选框以给予“Data Lake Store 的完全访问权限”，然后单击“选择”。
+
+    ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+
+    单击“Done”（完成） 。
+
+5. 重复最后两步，同时为 **Windows Azure 服务管理 API** 授予权限。
+   
 ## <a name="next-steps"></a>后续步骤
 在本文中，创建了一个 Azure AD Web 应用程序，并使用 .NET SDK、Java SDK 等在创作的客户端应用程序中收集了所需的信息。现在可以转到以下文章，它们讨论了如何使用 Azure AD Web 应用程序先进行 Data Lake Store 身份验证，再在存储中执行其他操作。
 
 * [Get started with Azure Data Lake Store using .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [通过 Java SDK 实现 Azure Data Lake Store 入门](data-lake-store-get-started-java-sdk.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2016
 ms.author: elioda
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 7683a6c6afa3dbec3fccadc9f095480ed90aa039
+ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
+ms.openlocfilehash: cbff931e7acc88b29ed6f51a16156b44c1596d3f
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="scaling-iot-hub"></a>缩放 IoT 中心
+# <a name="scale-your-iot-hub-solution"></a>缩放 IoT 中心解决方案
 Azure IoT 中心可支持多达一百万台设备同时连接。 有关详细信息，请参阅 [IoT 中心定价][lnk-pricing]。 每个 IoT 中心单元允许一定数量的每日消息。
 
 若要正确地缩放解决方案，请考虑你的 IoT 中心特定使用情况。 尤其要考虑以下类别的操作所需的高峰吞吐量：
@@ -61,9 +63,4 @@ Azure IoT 中心可支持多达一百万台设备同时连接。 有关详细信
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

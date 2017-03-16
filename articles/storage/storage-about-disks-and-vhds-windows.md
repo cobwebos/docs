@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 794f87c3d4b8378d7aeca63791a8fbfd03e44ceb
-ms.openlocfilehash: c226d43e8cc24af7c86ae13b3752bfd6fb53b1c8
+ms.sourcegitcommit: e34a2bfbf5f1ae544a729c994d91c485d48bb440
+ms.openlocfilehash: 1027f9c73a45b7d148643f5ec217683f71c4e899
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -35,15 +36,12 @@ ms.openlocfilehash: c226d43e8cc24af7c86ae13b3752bfd6fb53b1c8
 每个虚拟机都附加了一个操作系统磁盘。 默认情况下，它注册为 SATA 驱动器并标为 C: 盘。 此磁盘的最大容量为 1023 GB。 
 
 ### <a name="temporary-disk"></a>临时磁盘
-临时磁盘是自动为你创建的。 临时磁盘默认标记为 D: 盘，用于存储 pagefile.sys。 
+每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](../virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-planned-vs-unplanned-maintenance)期间或[重新部署 VM](../virtual-machines/virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。
 
-临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Sizes for Windows virtual machines](../virtual-machines/virtual-machines-windows-sizes.md)（Windows 虚拟机的大小）。
-
-> [!WARNING]
-> 不要在临时磁盘上存储数据。 该磁盘为应用程序和进程提供临时存储空间，只用于存储页面文件或交换文件等数据。 若要将此磁盘重新映射到其他驱动器号，请参阅 [Change the drive letter of the Windows temporary disk](../virtual-machines/virtual-machines-windows-classic-change-drive-letter.md)（更改 Windows 临时磁盘的驱动器号）。
-> 
+临时磁盘默认标记为 D: 盘，用于存储 pagefile.sys。 若要将此磁盘重新映射到其他驱动器号，请参阅 [Change the drive letter of the Windows temporary disk](../virtual-machines/virtual-machines-windows-classic-change-drive-letter.md)（更改 Windows 临时磁盘的驱动器号）。 临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Sizes for Windows virtual machines](../virtual-machines/virtual-machines-windows-sizes.md)（Windows 虚拟机的大小）。
 
 有关 Azure 如何使用临时磁盘的详细信息，请参阅 [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)（了解 Microsoft Azure 虚拟机上的临时驱动器）
+
 
 ### <a name="data-disk"></a>数据磁盘
 数据磁盘是附加到虚拟机的 VHD，用于存储应用程序数据或其他需要保留的数据。 数据磁盘注册为 SCSI 驱动器并且带有所选择的字母标记。 每个数据磁盘的最大容量为 1023 GB。 虚拟机的大小决定了可附加的磁盘数目，以及可用来托管磁盘的存储类型。
@@ -80,10 +78,5 @@ fsutil behavior set DisableDeleteNotify 0
 * [附加磁盘](../virtual-machines/virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)可为 VM 添加额外的存储。
 * [将 Windows VM 映像上传到 Azure](../virtual-machines/virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，以便在创建新 VM 时使用。
 * [更改 Windows 临时磁盘的驱动器号](../virtual-machines/virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)，使应用程序能够将 D: 盘用于数据。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

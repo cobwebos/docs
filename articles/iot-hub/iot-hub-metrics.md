@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2017
 ms.author: nberdy
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3f3ff3d196e9c640e9bd7cf01f9f1218c774ec6b
-ms.openlocfilehash: c06c43d430760a56d08dc0c2f9d158f4124db6d3
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
+ms.openlocfilehash: a736be397e07a1ea98819f6e016df8c0c7c637eb
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="iot-hub-metrics"></a>IoT 中心度量值
+# <a name="understand-iot-hub-metrics"></a>了解 IoT 中心指标
 IoT 中心度量值提供更棒的数据，清晰显示 Azure 订阅中的 Azure IoT 资源状态。 通过 IoT 中心度量值，可评估 IoT 中心服务及其所连接的设备的总体运行状况。 面向用户的统计信息非常重要，因为它们可以帮助了解 IoT 中心的情况，并可以帮助在不联系 Azure 支持人员的情况下解决根本问题。
 
 默认启用度量值。 可在 Azure 门户中查看 IoT 中心度量值。

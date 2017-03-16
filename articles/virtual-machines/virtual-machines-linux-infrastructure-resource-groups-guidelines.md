@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: adf382fef7a83d31f35321187c7c5d20c48db6ef
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 5c86a7fab851d98a33e610c1625fd04ae9b29c28
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-resource-group-guidelines"></a>Azure 资源组准则
+# <a name="azure-resource-group-guidelines-for-linux-vms"></a>适用于 Linux VM 的 Azure 资源组准则 
+
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 本文重点介绍如何以逻辑方式构建环境并将所有组件组合到资源组中。

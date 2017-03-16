@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 3309db6a926c3c2a0ff6340f0ade3d73093f6d6b
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 8f11b9a6606e30e323295d4144497fae90040d2a
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -88,17 +88,17 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 有关如何编码的说明，请参阅 [如何使用媒体编码器标准版对资产进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)。
 
-## <a name="a-idcreatecontentkeyacreate-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联
+## <a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联
 在媒体服务中，内容密钥包含用于加密资产的密钥。
 
 有关详细信息，请参阅 [创建内容密钥](media-services-dotnet-create-contentkey.md)。
 
-## <a name="a-idconfigurekeyauthpolicyaconfigure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>配置内容密钥授权策略
+## <a id="configure_key_auth_policy"></a>配置内容密钥授权策略
 媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 你必须配置内容密钥授权策略，客户端（播放器）必须遵守该策略，才能将密钥传送到客户端。 内容密钥授权策略可能受到一种或多种授权限制：开放或令牌限制。
 
 有关详细信息，请参阅 [配置内容密钥授权策略](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption)。
 
-## <a name="a-idconfigureassetdeliverypolicyaconfigure-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>配置资产传送策略
+## <a id="configure_asset_delivery_policy"></a>配置资产传送策略
 为资产配置传送策略。 资产传送策略配置包括：
 
 * DRM 许可证获取 URL。
@@ -107,7 +107,7 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 有关详细信息，请参阅 [配置资产传送策略 ](media-services-rest-configure-asset-delivery-policy.md)。
 
-## <a name="a-idcreatelocatoracreate-an-ondemand-streaming-locator-in-order-to-get-a-streaming-url"></a><a id="create_locator"></a>创建 OnDemand 流定位符以获取流 URL
+## <a id="create_locator"></a>创建 OnDemand 流定位符以获取流 URL
 需要为用户提供平滑流、DASH 或 HLS 的流 URL。
 
 > [!NOTE]
@@ -134,7 +134,7 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 你可以使用 [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) 来测试你的流。
 
-## <a name="a-idexampleaexample"></a><a id="example"></a>示例
+## <a id="example"></a>示例
 以下示例演示了适用于 .Net 的 Azure 媒体服务 SDK 版本 3.5.2 中引入的功能（具体而言，定义 Widevine 许可证模板并从 Azure 媒体服务请求 Widevine 许可证的功能）。 以下 Nuget 包命令用于安装该包：
 
     PM> Install-Package windowsazure.mediaservices -Version 3.5.2
@@ -160,6 +160,9 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
               </appSettings>
         </configuration>
 7. 使用本部分中所示的代码覆盖 Program.cs 文件中的代码。
+
+    >[!NOTE]
+    >不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 
     请务必将变量更新为指向输入文件所在的文件夹。
 
@@ -276,20 +279,10 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
                     Console.WriteLine("Created assetFile {0}", assetFile.Name);
 
-                    var policy = _context.AccessPolicies.Create(
-                                            assetName,
-                                            TimeSpan.FromDays(30),
-                                            AccessPermissions.Write | AccessPermissions.List);
-
-                    var locator = _context.Locators.CreateLocator(LocatorType.Sas, inputAsset, policy);
-
                     Console.WriteLine("Upload {0}", assetFile.Name);
 
                     assetFile.Upload(singleFilePath);
                     Console.WriteLine("Done uploading {0}", assetFile.Name);
-
-                    locator.Delete();
-                    policy.Delete();
 
                     return inputAsset;
                 }

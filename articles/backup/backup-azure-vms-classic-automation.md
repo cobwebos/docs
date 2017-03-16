@@ -1,6 +1,6 @@
 ---
 title: "通过 PowerShell 为 Azure VM 部署和管理备份 | Microsoft Docs"
-description: "了解如何使用 PowerShell 部署和管理 Azure 备份"
+description: "了解如何使用 PowerShell 部署和管理 Azure 备份。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: markgal;trinadhk;jimpark
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: ad7fb6f05a40cced28555521049f85ad59fb9878
+ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
+ms.openlocfilehash: aa1934447b53b725a08cebb47da9171a136b76ff
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="deploy-and-manage-backup-for-azure-vms-using-powershell"></a>通过 PowerShell 为 Azure VM 部署和管理备份
+# <a name="use-azurermbackup-cmdlets-to-back-up-virtual-machines"></a>使用 AzureRM.Backup cmdlet 来备份虚拟机
 > [!div class="op_single_selector"]
 > * [Resource Manager](backup-azure-vms-automation.md)
 > * [经典](backup-azure-vms-classic-automation.md)
@@ -350,9 +352,4 @@ $DAILYBACKUPSTATS | Out-GridView
 
 ## <a name="next-steps"></a>后续步骤
 如果你更愿意使用 PowerShell 来处理 Azure 资源，则请查看有关如何保护 Windows Server 的 PowerShell 文章：[为 Windows Server 部署和管理备份](backup-client-automation-classic.md)。 此外还有一篇有关如何管理 DPM 备份的 PowerShell 文章：[为 DPM 部署和管理备份](backup-dpm-automation-classic.md)。 这两篇文章都为 Resource Manager 部署和经典部署提供了一个版本。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/05/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: d1f4b7806f72dc2632ba981781097b19e89d07f3
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 407e9a1e4a50b875fa65e61d3e9aae245dd907e5
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -56,10 +57,10 @@ Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 ## <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
 处理解决方案之前，必须登录到帐户。
 
-请使用 **Add-AzureRmAccount** cmdlet 登录到 Azure 帐户。
+若要登录到 Azure 帐户，请使用 **Login-AzureRmAccount** cmdlet。
 
 ```powershell
-Add-AzureRmAccount
+Login-AzureRmAccount
 ```
 
 该 cmdlet 将提示您提供您的 Azure 帐户的登录凭据。 登录后它会下载你的帐户设置，供 Azure PowerShell 使用。
@@ -273,10 +274,5 @@ Export-AzureRmResourceGroup -ResourceGroupName TestRG1 -Path c:\Azure\Templates\
 * 若要了解如何部署模板，请参阅[使用 Azure Resource Manager 模板部署应用程序](resource-group-template-deploy.md)。
 * 可以将现有资源移动到新的资源组。 有关示例，请参阅[将资源移动到新的资源组或订阅中](resource-group-move-resources.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

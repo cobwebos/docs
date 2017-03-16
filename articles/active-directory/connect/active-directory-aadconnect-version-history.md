@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 0966b1332ee6d831a1f24ee817aa8022538a5558
-ms.openlocfilehash: f8cd2b907bd6b20ec778dc6257e2a30113dd4909
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 7e16fa749389ab876ae413e2ffef7713ed22adac
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -34,6 +34,37 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 从 Azure AD Connect 升级的步骤 | [从旧版升级到最新版](active-directory-aadconnect-upgrade-previous-version.md) Azure AD Connect 的不同方法。
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](./active-directory-aadconnect-accounts-permissions.md#upgrade)。
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
+
+## <a name="114430"></a>1.1.443.0
+发布日期：2017 年 3 月
+
+**已解决的问题：**
+
+Azure AD Connect 同步
+* 修复了在 Azure AD 连接器的显示名称没有包含分配给 Azure AD 租户的初始 onmicrosoft.com 域时，Azure AD Connect 向导将失败的问题。
+* 修复了在同步服务帐户的密码包含特殊字符（如撇号、冒号和空格）的情况下，在与 SQL 数据库进行连接时，Azure AD Connect 向导将失败的问题。
+* 修复了在暂时不同步某个本地 AD 对象，然后再将其进行同步后，暂存模式下的 Azure AD Connect 服务器上将出现“该 dimage 具有不同于映像的定位点”错误的问题。
+* 修复了在暂时不同步某个本地 AD 对象，然后再将其进行同步后，暂存模式下的 Azure AD Connect 服务器上将出现“DN 定位的对象是一个幻影”错误的问题。
+
+AD FS 管理
+* 修复了在配置备用登录 ID 后，Azure AD Connect 向导不会更新 AD FS 配置并设置对信赖方信任的正确声明的问题。
+* 修复了 Azure AD Connect 向导无法正确处理 AD FS 服务器（该服务器的服务帐户是通过 userPrincipalName 格式设置的，而非 sAMAccountName 格式）的问题。
+
+直通身份验证
+* 修复了在选择了“直通身份验证”但其连接器注册失败时，Azure AD Connect 向导将失败的问题。
+* 修复了在启用了桌面 SSO 功能时，Azure AD Connect 向导将绕过对所选登录方法的验证检查。
+
+**新功能/改进：**
+
+Azure AD Connect 同步
+* Get-ADSyncScheduler cmdlet 现在可返回一个名为 SyncCycleInProgress 的新的布尔属性。 如果返回的值为 true，则意味着正在进行计划的同步周期。
+* 已将用于存储 Azure AD Connect 安装和安装程序日志的目标文件夹从 %localappdata%\AADConnect 移至 %programdata%\AADConnect，以提高日志文件的访问性。
+
+AD FS 管理
+* 添加了对更新 AD FS 场 SSL 证书的支持。
+* 添加了对管理 AD FS 2016 的支持。
+* 现在可以在 AD FS 安装期间指定现有 gMSA（组托管服务帐户）。
+* 现在可以将 SHA-256 配置为 Azure AD 信赖方信任的签名哈希算法。
 
 ## <a name="113800"></a>1.1.380.0
 发布日期：2016 年 12 月

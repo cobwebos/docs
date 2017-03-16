@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 02/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 36e737ebc3451a190e99dc2bc91ef4242d2f573e
-ms.openlocfilehash: e9dfe8ad62dfa0eec810ecdeeddadbecc25b9163
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 41d6f678dba769cf7f949751da8cacf3df7f88c1
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -26,8 +27,6 @@ ms.openlocfilehash: e9dfe8ad62dfa0eec810ecdeeddadbecc25b9163
 
 > [!NOTE]
 > 应用程序代理是一项仅当升级到高级版或基本版的 Azure Active Directory 才可用的功能。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
-> 
-> 
 
 ## <a name="what-are-azure-ad-application-proxy-connectors"></a>Azure AD 应用程序代理连接器是什么？
 在网络中安装一个名为连接器的 Windows Server 服务后，应用程序代理便开始工作。 可以根据高可用性和可伸缩性的需要安装连接器。 一开始可以安装一个，以后可根据需要添加。 每次安装连接器后，它会添加到为租户提供服务的连接器池中。
@@ -56,6 +55,8 @@ ms.openlocfilehash: e9dfe8ad62dfa0eec810ecdeeddadbecc25b9163
 由于只会发生出站流量，因此不需要在连接器之间设置负载均衡，或者通过防火墙配置入站访问。
 
 有关配置出站防火墙规则的信息，请参阅 [Work with existing on-premise Proxy servers](application-proxy-working-with-proxy-servers.md)（使用现有的本地代理服务器）。
+
+使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。 
 
 ## <a name="network-security"></a>网络安全
 
@@ -114,7 +115,7 @@ ms.openlocfilehash: e9dfe8ad62dfa0eec810ecdeeddadbecc25b9163
 * _后端应用程序：_在某些情况下，连接器与后端应用程序之间存在其他代理。 在连接器计算机中打开浏览器并访问这些应用程序，就能轻松排查相关问题。 如果连接器在 Azure 中运行，而这些应用程序位于本地，则用户的体验可能与期望不符。
 * _域控制器：_如果连接器使用 Kerberos 约束委派 (KCD) 执行 SSO，在向后端发送请求之前，它们会联系域控制器。 连接器提供 Kerberos 票证缓存，但在繁忙的环境中，域控制器的响应能力下降可能会影响体验。 如果连接器在 Azure 中运行，而域控制器位于本地，则更容易出现这种情况。
 
-##<a name="automatic-updates-to-the-connector"></a>连接器的自动更新
+## <a name="automatic-updates-to-the-connector"></a>连接器的自动更新
 
 我们通过连接器更新程序服务使连接器自动保持最新状态。 这样，你便可以持续获得所有新增功能，以及安全与性能增强功能，保持自己的优势。
 
@@ -152,13 +153,9 @@ _其他租户：_在更新连接器期间，流量将重新路由到其他连接
 
 有关解决应用程序代理连接器错误的信息，请参阅[应用程序代理故障排除](https://azure.microsoft.com/en-us/documentation/articles/active-directory-application-proxy-troubleshoot)。
 
-##<a name="next-steps"></a>后续步骤
-[使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md)<br>
+## <a name="next-steps"></a>后续步骤
+[使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md)
+
 [如何以无提示方式安装 Azure AD 应用程序代理连接器](active-directory-application-proxy-silent-installation.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

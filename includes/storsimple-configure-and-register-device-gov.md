@@ -12,7 +12,7 @@
 5. 执行以下步骤，为设备配置最低要求的网络设置。
    
    > [!IMPORTANT]
-   > 需要在该设备的活动控制器上执行这些配置步骤。  串行控制台菜单指示标题消息中的控制器状态。 如果未连接到活动控制器，请断开连接，然后连接到活动控制器。
+   > 需要在该设备的活动控制器上执行这些配置步骤。 串行控制台菜单指示标题消息中的控制器状态。 如果未连接到活动控制器，请断开连接，然后连接到活动控制器。
    > 
    > 
    
@@ -71,72 +71,70 @@
       Controller0Events   :
       Controller1Events   :
       
-      It may take up to 11 hours to apply all the updates, including the Windows Updates.
-8. After all the updates are successfully installed, run the following cmdlet to confirm that the software updates were applied correctly:
+      ````
+      
+      它可能需要长达 11 个小时，才能应用包括 Windows 更新在内的所有更新。
+
+8. 在所有更新都已成功安装后，运行以下 cmdlet，确认已应用正确的软件更新：
    
      `Get-HcsSystem`
    
-    You should see the following versions:
+    你应该会看到以下版本：
    
-   * HcsSoftwareVersion: 6.3.9600.17491
-   * CisAgentVersion: 1.0.9037.0
-   * MdsAgentVersion: 26.0.4696.1433
-9. Run the following cmdlet to confirm that the firmware update was applied correctly:
+   * HcsSoftwareVersion：6.3.9600.17491
+   * CisAgentVersion：1.0.9037.0
+   * MdsAgentVersion：26.0.4696.1433
+9. 运行以下 cmdlet，确认已正确应用固件更新：
    
-    `Start-HcsFirmwareCheck`.
+    `Start-HcsFirmwareCheck`。
    
-     The firmware status should be **UpToDate**.
-10. Run the following cmdlet to point the device to the Microsoft Azure Government portal (because it points to the public Azure classic portal by default). This will restart both controllers. We recommend that you use two PuTTY sessions to simultaneously connect to both controllers so that you can see when each controller is restarted.
+     固件状态应为 **UpToDate**。
+10. 运行以下 cmdlet，以将设备指向 Microsoft Azure 政府门户（因为它默认指向公共 Azure 经典门户）。 这将重新启动两个控制器。 我们建议使用两个 PuTTY 会话以便同时连接两个控制器，这样你可以查看每个控制器何时重新启动。
     
      `Set-CloudPlatform -AzureGovt_US`
     
-    You will see a confirmation message. Accept the default (**Y**).
-11. Run the following cmdlet to resume setup:
+    将显示确认消息。 接受默认值 (**Y**)。
+11. 运行以下 cmdlet 以恢复安装：
     
      `Invoke-HcsSetupWizard`
     
-     ![Resume setup wizard](./media/storsimple-configure-and-register-device-gov/HCS_ResumeSetup-gov-include.png)
+     ![恢复安装向导](./media/storsimple-configure-and-register-device-gov/HCS_ResumeSetup-gov-include.png)
     
-    When you resume setup, the wizard will be the Update 1 version (which corresponds to version 17469). 
-12. Accept the network settings. You will see a validation message after you accept each setting.
-13. For security reasons, the device administrator password expires after the first session, and you will need to change it now. When prompted, provide a device administrator password. A valid device administrator password must be between 8 and 15 characters. The password must contain three of the following: lowercase, uppercase, numeric, and special characters.
+    恢复安装时，向导将为 Update 1 版本（这对应于版本 17469）。 
+12. 接受网络设置。 接受每个设置后，你将看到一条验证消息。
+13. 出于安全原因，设备管理员密码将在第一个会话后过期，因此需要现在更改密码。 出现提示时，提供设备管理员密码。 有效的设备管理员密码必须介于 8 到 15 个字符之间。 密码必须包含以下各项的其中三个组合：小写字母、大写字母、数字和特殊字符。
     
-    <br/>![StorSimple register device 5](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice5_gov-include.png)
-14. The final step in the setup wizard registers your device with the StorSimple Manager service. For this, you will need the service registration key that you obtained in [Step 2: Get the service registration key](#step-2-get-the-service-registration-key). After you supply the registration key, you may need to wait for 2-3 minutes before the device is registered.
+    <br/>![StorSimple 注册设备 5](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice5_gov-include.png)
+14. 安装向导中的最后一步使用 StorSimple Manager 服务注册设备。 为此，将需要使用在[步骤 2：获取服务注册密钥](#step-2-get-the-service-registration-key)中所获取的服务注册密钥。 提供注册密钥后，可能需要等待 2-3 分钟，然后注册该设备。
     
     > [!NOTE]
-    > You can press Ctrl + C at any time to exit the setup wizard. If you have entered all the network settings (IP address for Data 0, Subnet mask, and Gateway), your entries will be retained.
+    > 可以随时按 Ctrl+C 退出安装向导。 如果已输入所有网络设置（DATA 0 的 IP 地址、子网掩码和网关），将保留这些条目。
     > 
     > 
     
-    ![StorSimple registration progress](./media/storsimple-configure-and-register-device-gov/HCS_RegistrationProgress-gov-include.png)
-15. After the device is registered, a Service Data Encryption key will appear. Copy this key and save it in a safe location. **This key will be required with the service registration key to register additional devices with the StorSimple Manager service.** Refer to [StorSimple security](../articles/storsimple/storsimple-security.md) for more information about this key.
+    ![StorSimple 注册进度](./media/storsimple-configure-and-register-device-gov/HCS_RegistrationProgress-gov-include.png)
+15. 注册设备后，将显示一个服务数据加密密钥。 复制此密钥并将其保存到一个安全位置。 **向 StorSimple Manager 服务注册其他设备时将需要此密钥以及该服务注册密钥。** 有关此密钥的详细信息，请参阅 [StorSimple 安全性](../articles/storsimple/storsimple-security.md) 。
     
-    ![StorSimple register device 7](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice7_gov-include.png)    
+    ![StorSimple 注册设备 7](./media/storsimple-configure-and-register-device-gov/HCS_RegisterYourDevice7_gov-include.png)    
     
     > [!IMPORTANT]
-    > To copy the text from the serial console window, simply select the text. You should then be able to paste it in the clipboard or any text editor. 
+    > 要复制串行控制台窗口中的文本，只需选择该文本。 然后应能够将其粘贴到剪贴板或任何文本编辑器中。 
     > 
-    > DO NOT use Ctrl + C to copy the service data encryption key. Using Ctrl + C will cause you to exit the setup wizard. As a result, the device administrator password will not be changed and the device will revert to the default password.
+    > 请勿使用 Ctrl + C 复制服务数据加密密钥。 使用 Ctrl+C 会导致退出安装向导。 这样做的结果是，将不会更改设备管理员密码，并且设备将还原为默认密码。
     > 
     > 
-16. Exit the serial console.
-17. Return to the Azure Government Portal, and complete the following steps:
+16. 退出串行控制台。
+17. 返回到 Azure 政府门户，并完成以下步骤：
     
-    1. Double-click your StorSimple Manager service to access the **Quick Start** page.
-    2. Click **View connected devices**.
-    3. On the **Devices** page, verify that the device has successfully connected to the service by looking up the status. The device status should be **Online**.
+    1. 双击 StorSimple Manager 服务，以访问“ **快速启动** ”页。
+    2. 单击“ **查看连接的设备**”。
+    3. 在“ **设备** ”页上，通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“ **联机**”。
        
-        ![StorSimple Devices page](./media/storsimple-configure-and-register-device-gov/HCS_DeviceOnline-gov-include.png) 
+        ![StorSimple 设备页](./media/storsimple-configure-and-register-device-gov/HCS_DeviceOnline-gov-include.png) 
        
-        If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
+        如果设备状态为“ **脱机**”，请等待几分钟以便设备联机。 
        
-        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in [networking requirements for your StorSimple device](../articles/storsimple/storsimple-system-requirements.md). 
+        如果几分钟后设备仍处于脱机状态，需要确保防火墙网络已按 [StorSimple 设备的网络要求](../articles/storsimple/storsimple-system-requirements.md)中所述进行配置。 
        
-        Verify that port 9354 is open for outbound communication as this is used by the service bus for StorSimple Manager service-to-device communication.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+        确认端口 9354 已对出站通信打开，因为这将用于 StorSimple Manager 服务之间通信的服务总线。
 

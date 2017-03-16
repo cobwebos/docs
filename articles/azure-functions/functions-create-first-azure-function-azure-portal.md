@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: ab0b218a99ab3ff98edfa075eabbd3eb2c2bd1d4
-ms.openlocfilehash: 996fc80ff926117dc12180efe1949b3dbeba3f91
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 4ee741cbec8db6b6400ff9f27daa2a0120bd2618
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -46,7 +46,12 @@ Function App 在 Azure 中托管函数的执行。 如果尚未创建 Azure 帐�
 
 3. 单击“创建”来预配和部署新的 Function App。  
 
-预配 Function App 后，可创建自己的第一个函数。
+### <a name="storage-account-requirements"></a>存储帐户要求
+
+创建 Function App 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 Azure Functions 内部使用 Azure 存储以进行操作（如管理触发器和记录函数执行）。 某些存储帐户不支持队列和表，例如仅限 blob 的存储帐户（包括高级存储）和使用 ZRS 复制的常规用途的存储帐户。 创建新的 Function App 时，将从“存储帐户”边栏选项卡对这些帐户进行筛选。
+使用消耗托管计划时，Function App 内容（如函数代码文件和绑定配置）存储在主存储帐户的 Azure 文件共享上。 如果删除主存储帐户，此内容将被删除，并且无法恢复。
+
+若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介] (.../ storage/storage-introduction.md#introducing-the-azure-storage-services)。
 
 ## <a name="create-a-function"></a>创建函数
 这些步骤从 Azure Functions 快速入门中创建函数。
@@ -56,6 +61,7 @@ Function App 在 Azure 中托管函数的执行。 如果尚未创建 Azure 帐�
     ![](./media/functions-create-first-azure-function-azure-portal/function-app-quickstart-node-webhook.png)
 
 2. （可选）此时，在快速入门中，可以选择在门户内进行 Azure Functions 功能快速浏览。    完成或跳过浏览后，可以使用 HTTP 触发器测试新函数。
+
 
 ## <a name="test-the-function"></a>测试函数
 [!INCLUDE [Functions quickstart test](../../includes/functions-quickstart-test.md)]

@@ -1,6 +1,7 @@
 ---
 title: "将免费 Azure 订阅升级为即用即付 | Microsoft Docs"
-description: "介绍将免费订阅升级到即用即付的过程和要求"
+description: "描述如何可从免费订阅升级到即用即付及其要求"
+keywords: "即用即付升级"
 services: 
 documentationcenter: 
 author: adpick
@@ -13,30 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 03/01/2017
 ms.author: jlian
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
-ms.openlocfilehash: 9d58a61521fe4e9171bf570e386e54ca79c7a26d
-
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 3ffb5d9828c167953c6553ff34e2d0dcdfe701b0
+ms.lasthandoff: 03/03/2017
 
 ---
-# <a name="upgrade-your-free-azure-subscription-to-pay-as-you-go"></a>将免费 Azure 订阅升级到即用即付
-可以在 Azure 帐户门户中将[免费试用版](https://azure.microsoft.com/free/)或 [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) 订阅升级为[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)。 
+# <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付
+在 Azure 帐户门户中将[免费试用版](https://azure.microsoft.com/free/)或 [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) 订阅升级为[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)。 
 
 1. 登录到 [Azure 帐户门户](https://account.windowsazure.com/subscriptions)并导航到“订阅”选项卡。
 2. 在订阅状态分区中，选择“立即升级”横幅。
    
-    ![注意从免费试用版升级到即用即付版](./media/billing-upgrade-azure-subscription/billpage.png)
+    ![显示点击何处以从免费试用版升级到即用即付的屏幕截图](./media/billing-upgrade-azure-subscription/billpage.png)
 3. 确认升级。
    
-    ![确认升级订阅](./media/billing-upgrade-azure-subscription/Upgrade.png)
+    ![显示如何选择以确认想要升级订阅的屏幕截图](./media/billing-upgrade-azure-subscription/Upgrade.png)
 
-升级免费试用版即用即付时，免费试用版留下的任何权益（如 30 天限制或 $200 信用额度）将继续生效，直到其中一种权益用尽。 之后将进行订阅升级。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
+使用免费试用版剩余的任何权益，如 30 天限制或 200 美元的信用额度。 使用所有的权益后，将升级订阅。
 
 

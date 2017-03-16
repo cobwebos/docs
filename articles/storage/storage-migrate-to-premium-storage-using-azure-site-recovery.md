@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/30/2016
+ms.date: 3/1/2016
 ms.author: luywang
 translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: 0cf61b6bb9817bbf9508b10301b5e95b12ecea39
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 106e03a5a99134eb6e5744cbf29ba32efc31f0ba
+ms.openlocfilehash: d76aa3e62c691c4537684bc70d3a91a3dbb8b446
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/23/2017
 
 [Azure 高级存储](storage-premium-storage.md)为运行 I/O 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 本指南的目的是帮助用户使用 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 将其 VM 磁盘从标准存储帐户迁移到高级存储帐户。
 
-Site Recovery 是一个 Azure 服务，可通过协调从本地物理服务器和 VM 到云 (Azure) 或辅助数据中心的复制，来为业务连续性和灾难恢复策略提供辅助。 当主要位置发生故障时，可以故障转移到辅助位置，使应用程序和工作负荷保持可用。 当主要位置恢复正常时，可以故障转移回到主要位置。 Site Recovery 提供测试故障转移，既能支持灾难恢复练习，又不会影响生产环境。 可以针对意外的灾难，以最低的数据丢失程度运行计划外故障转移（根据复制频率）。 在迁移到高级存储的方案中，可以使用 Azure Site Recovery 中的[计划外故障转移](../site-recovery/site-recovery-failover.md)将目标磁盘迁移到高级存储帐户。
+Site Recovery 是一个 Azure 服务，可通过协调从本地物理服务器和 VM 到云 (Azure) 或辅助数据中心的复制，来为业务连续性和灾难恢复策略提供辅助。 当主要位置发生故障时，可以故障转移到辅助位置，使应用程序和工作负荷保持可用。 当主要位置恢复正常时，可以故障转移回到主要位置。 Site Recovery 提供测试故障转移，既能支持灾难恢复练习，又不会影响生产环境。 可针对意外灾难以最低的数据丢失程度（取决于复制频率）运行故障转移。 在迁移到高级存储的方案中，可以使用 Azure Site Recovery 中的 [Site Recovery 中的故障转移](../site-recovery/site-recovery-failover.md)，将目标磁盘迁移到高级存储帐户。
 
 之所以建议使用 Site Recovery 迁移到高级存储，是因为此选项造成的停机时间最短，并可以避免手动复制磁盘和创建新 VM。 在故障转移过程中，Site Recovery 将系统性地复制磁盘并创建新的 VM。 Site Recovery 支持多种类型的、停机时间极短或不造成停机的故障转移。 若要规划停机时间和评估数据丢失情况，请参阅 Site Recovery 中的[故障转移类型](../site-recovery/site-recovery-failover.md)表。 如果[已准备好在故障转移后连接到 Azure VM](../site-recovery/site-recovery-vmware-to-azure.md#prepare-vms-for-replication)，应该能够在故障转移后使用 RDP 连接到 Azure VM。
 
@@ -60,7 +60,7 @@ Site Recovery 是一个 Azure 服务，可通过协调从本地物理服务器�
 ## <a name="prerequisites"></a>先决条件
 
 * 在上一部分中了解相关的迁移方案组件
-* 通过 [Site Recovery 中的故障转移](../site-recovery/site-recovery-failover.md)了解计划外故障转移，规划停机时间
+* 了解 [Site Recovery 中的故障转移](../site-recovery/site-recovery-failover.md)，规划停机时间
 
 ## <a name="setup-and-migration-steps"></a>设置和迁移步骤
 
@@ -133,9 +133,9 @@ Site Recovery 是一个 Azure 服务，可通过协调从本地物理服务器�
   
   设计 Azure 存储环境时，我们建议针对可用性集中的每个 VM 使用不同的存储帐户。 建议遵循 [Windows](../virtual-machines/virtual-machines-windows-manage-availability.md#use-multiple-storage-accounts-for-each-availability-set) 和 [Linux](../virtual-machines/virtual-machines-linux-manage-availability.md#use-multiple-storage-accounts-for-each-availability-set) VM 存储层的最佳做法。 将 VM 磁盘分配到多个存储帐户有助于改善存储可用性，以及在整个 Azure 存储基础结构中分配 I/O。 如果 VM 位于可用性集中，我们强烈建议分多次迁移多个 VM，而不要将所有 VM 的磁盘都复制到一个存储帐户，这是为了避免同一个可用性集中的 VM 共享单个存储帐户。 使用“启用复制”边栏选项卡为每个 VM 设置目标存储帐户，一次设置一个。 可以根据需要选择故障转移后的部署模型。 如果选择 Resource Manager (RM) 作为故障转移后的部署模型，可将 RM VM 故障转移到 RM VM，或者将经典 VM 故障转移到 RM VM。
 
-8. **运行测试故障转移**。 若要检查复制是否完成，请单击“Site Recovery”，然后单击“设置” > “已复制的项”。 此时将显示复制过程的状态和完成百分比。 初始复制完成后，请运行测试故障转移来验证复制策略。 有关测试故障转移的详细步骤，请参阅 [Run a test failover in Site Recovery](../site-recovery/site-recovery-vmware-to-azure.md#run-a-test-failover)（在 Site Recovery 中运行测试故障转移）。 可在“设置” > “作业” > “YOUR_FAILOVER_PLAN_NAME”中查看测试故障转移的状态。 在边栏选项卡中，可以看到具体的步骤，以及成功/失败结果。 如果测试故障转移在执行任一步骤时失败，请单击该步骤查看错误消息。 运行计划外故障转移之前，请确保 VM 和复制策略满足要求。
+8. **运行测试故障转移**。 若要检查复制是否完成，请单击“Site Recovery”，然后单击“设置” > “已复制的项”。 此时将显示复制过程的状态和完成百分比。 初始复制完成后，请运行测试故障转移来验证复制策略。 有关测试故障转移的详细步骤，请参阅 [Run a test failover in Site Recovery](../site-recovery/site-recovery-vmware-to-azure.md#run-a-test-failover)（在 Site Recovery 中运行测试故障转移）。 可在“设置” > “作业” > “YOUR_FAILOVER_PLAN_NAME”中查看测试故障转移的状态。 在边栏选项卡中，可以看到具体的步骤，以及成功/失败结果。 如果测试故障转移在执行任一步骤时失败，请单击该步骤查看错误消息。 运行故障转移之前，请确保 VM 和复制策略满足要求。 有关测试故障转移的详细信息和说明，请阅读[在 Site Recovery 中执行到 Azure 的测试故障转移](../site-recovery/site-recovery-test-failover-to-azure.md)。
 
-9. **运行计划外故障转移**。 完成测试故障转移后，请运行计划外故障转移，将磁盘迁移到高级存储并复制 VM 实例。 请遵循 [Run an unplanned failover in Site Recovery](../site-recovery/site-recovery-failover.md)（在 Site Recovery 中运行计划外故障转移）中的详细步骤。 请务必选择“关闭 VM 并同步最新数据”，指定 Azure Site Recovery 应尝试关闭受保护的 VM 并同步数据，以便对最新版的数据进行故障转移。 如果不选择此选项或尝试不成功，系统将从 VM 的最近恢复点开始故障转移。 Site Recovery 将创建类型与支持高级存储的 VM 相同或类似的 VM 实例。 可以参阅 [Windows 虚拟机定价](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/windows/)或 [Linux 虚拟机定价](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/)了解各种 VM 实例的性能和价格。
+9. **运行故障转移**。 完成测试故障转移后，请运行故障转移，将磁盘迁移到高级存储并复制 VM 实例。 请遵循[运行故障转移](../site-recovery/site-recovery-failover.md#run-a-failover)中的详细步骤。 请务必选择“关闭 VM 并同步最新数据”，指定 Azure Site Recovery 应尝试关闭受保护的 VM 并同步数据，以便对最新版的数据进行故障转移。 如果不选择此选项或尝试不成功，系统将从 VM 的最近恢复点开始故障转移。 Site Recovery 将创建类型与支持高级存储的 VM 相同或类似的 VM 实例。 可以参阅 [Windows 虚拟机定价](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/windows/)或 [Linux 虚拟机定价](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/)了解各种 VM 实例的性能和价格。
 
 ## <a name="post-migration-steps"></a>迁移后的步骤
 

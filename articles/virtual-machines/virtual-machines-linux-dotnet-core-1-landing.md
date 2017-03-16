@@ -15,13 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 64ad540536dcf3f4d4a73f49d99fb6142b33ea9c
-ms.openlocfilehash: d761bd2cb01d121a3abdd91b59737bece567aba5
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: d9d65d8fb5fd7b1ff226e96fe33f8b0757d7a12e
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="automating-application-deployments-to-azure-virtual-machines"></a>将应用程序自动部署到 Azure 虚拟机
+# <a name="automating-application-deployments-to-linux-virtual-machines"></a>将应用程序自动部署到 Linux 虚拟机 
+
 本系列教程包括四个部分，详细说明如何使用 Azure Resource Manager 模板来部署和配置 Azure 资源与应用程序。 本系列教程将部署一个示例模板，并检查部署模板。 本系列教程旨在讲解 Azure 资源之间的关系，并实践有关部署完全集成的 Azure Resource Manager 模板的体验。 本文档假设读者对 Azure Resource Manager 有一个基本的了解。开始本教程之前，请先熟悉 Azure Resource Manager 的概念。 
 
 ## <a name="music-store-application"></a>音乐应用商店应用程序
@@ -69,10 +72,5 @@ Azure Resource Manager 模板需要以下参数值。
 [步骤 3 - Azure Resource Manager 模板的可用性和缩放](virtual-machines-linux-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [步骤 4 - 使用 Azure Resource Manager 模板部署应用程序](virtual-machines-linux-dotnet-core-5-app-deployment.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

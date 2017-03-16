@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/10/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 93ac6629df82b1a5b8d14a1ad289e1e462b49b17
-ms.openlocfilehash: 8883b2d15592ea5e0c286bd6e6fc7c38134326a7
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 310f2a2fe793601d22952bf516a812bf4867bbec
+ms.lasthandoff: 03/03/2017
 
 ---
 # <a name="automate-mobility-service-installation-using-software-deployment-tools"></a>使用软件部署工具自动执行移动服务安装
@@ -199,11 +200,30 @@ ms.openlocfilehash: 8883b2d15592ea5e0c286bd6e6fc7c38134326a7
 * [使用配置服务器推送安装](http://aka.ms/pushinstall)
 * [使用 Azure 自动化和 Desired State Configuration 自动安装](http://aka.ms/mobsvcdscinstall)
 
+## <a name="uninstall-mobility-service"></a>卸载移动服务
+与安装一样，可以创建 SCCM 包来卸载移动服务。 使用以下脚本卸载移动服务。
+
+```
+Time /t >> C:\logfile.log
+REM ==================================================
+REM ==== Check if Mob Svc is already installed =======
+REM ==== If not installed no operation required ========
+REM ==== Else run uninstall command =====================
+REM ==== {275197FC-14FD-4560-A5EB-38217F80CBD1} is ====
+REM ==== guid for Mob Svc Installer ====================
+whoami >> C:\logfile.log
+NET START | FIND "InMage Scout Application Service"
+IF  %ERRORLEVEL% EQU 1 (GOTO :INSTALL) ELSE GOTO :UNINSTALL
+:NOOPERATION
+                echo "No Operation Required." >> c:\logfile.log
+                GOTO :ENDSCRIPT
+:UNINSTALL
+                echo "Uninstall" >> C:\logfile.log
+                MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
+:ENDSCRIPT
+
+```
+
 ## <a name="next-steps"></a>后续步骤
 现在可以为虚拟机[启用保护](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-vmware-to-azure#step-6-replicate-applications)了。
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

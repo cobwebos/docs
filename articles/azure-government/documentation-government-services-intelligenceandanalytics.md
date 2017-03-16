@@ -15,16 +15,16 @@ ms.workload: azure-government
 ms.date: 12/06/2016
 ms.author: MeganYount
 translationtype: Human Translation
-ms.sourcegitcommit: 14fb62669e15873770ef9b8470e34db70f1ca2ca
-ms.openlocfilehash: 2b89d78e20cccee81c9581e762e4c61bacd84fd4
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 0233aa66bc4f4f135456ec15bd09756e63192b14
+ms.lasthandoff: 03/06/2017
 
 
 ---
 # <a name="azure-government-intelligence--analytics"></a>Azure 政府智能 + 分析
 本文概述了 Azure 政府环境的智能和分析服务、变体和注意事项。
 
-## <a name="azure-hdinsight"></a>Azure HDInsight
+## <a name="hdinsight"></a>HDInsight
 Linux Standard 上的 HDInsight 已在 Azure 政府正式发布。 可以在<a href=https://channel9.msdn.com/Blogs/Azure/Cognitive-Services-HDInsight-and-Power-BI-on-Azure-Government/>此处</a>看到一个演示如何使用 HDInsight 在 Azure 政府上生成以数据为中心的解决方案的演示。
 
 Linux Premium 上的 HDInsight 即将推出。
@@ -41,7 +41,7 @@ Log Analytics 的 URL 在 Azure 政府版中是不同的：
 | --- | --- | --- |
 | HDInsight 群集 | \*.azurehdinsight.net | \*.azurehdinsight.us |
 
-有关详细信息，请参阅 [Azure HDInsight 公共文档](../hdinsight/hdinsight-hadoop-introduction.md)。
+有关详细信息，请参阅 [HDInsight 公共文档](../hdinsight/hdinsight-hadoop-introduction.md)。
 
 ## <a name="power-bi"></a>Power BI
 Power BI 美国政府版已作为 Office 365 美国政府社区版订阅的一部分正式发布。 可以在<a href=https://powerbi.microsoft.com/en-us/documentation/powerbi-service-govus-overview/>此处</a>了解 Power BI 美国政府版。 可以在<a href=https://channel9.msdn.com/Blogs/Azure/Cognitive-Services-HDInsight-and-Power-BI-on-Azure-Government/>此处</a>看到一个演示如何使用 Power BI 在 Azure 政府上生成以数据为中心的解决方案的演示。
@@ -57,5 +57,5 @@ Power BI 的 URL 在美国政府版中是不同的：
 | Power BI URL | app.powerbi.com | app.powerbigov.us |
 
 ## <a name="next-steps"></a>后续步骤
-有关补充信息和更新，请订阅 <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government 博客</a>。
+有关补充信息和更新，请订阅 <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure 政府博客</a>。
 

@@ -17,14 +17,17 @@ ms.date: 05/16/2016
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b93844d55cf1c41e1e388d7bbaa3fedf88113423
-ms.openlocfilehash: bf28993330619a25fcf0bc79055be0d7453c2be4
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: fecd0dc34fad70706ac0451a24dac0dc4bf55e40
+ms.lasthandoff: 03/03/2017
+
 
 ---
-# <a name="resize-a-linux-vm-with-the-azure-cli-10"></a>使用 Azure CLI 1.0 调整 Linux VM 的大小
+
+# <a name="resize-a-linux-vm-with-azure-cli-10"></a>使用 Azure CLI 1.0 调整 Linux VM 的大小
 
 ## <a name="overview"></a>概述
+
 预配虚拟机 (VM) 后，可以通过更改 [VM 大小][vm-sizes]来扩展或缩减 VM。 在某些情况下，必须先解除分配 VM。 如果新大小在托管 VM 的硬件群集上不可用，则可能会出现这种情况。
 
 本文介绍了如何使用 [Azure CLI][azure-cli] 来调整 Linux VM 的大小。

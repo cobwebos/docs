@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 87a3d4fc849cee5d9abed1e4c32a9da583ea9516
-ms.openlocfilehash: 1ccde46c7adafdaa4a9efca450a3dd2efde8413a
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: b86bfcbd8b49dfcf383c48d57f237f2433bf20d6
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-infrastructure-naming-guidelines"></a>Azure 基础结构命名准则
+# <a name="azure-infrastructure-naming-guidelines-for-linux-vms"></a>适用于 Linux VM 的 Azure 基础结构命名准则 
+
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 本文着重介绍如何对各项 Azure 资源实行命名约定，以便在环境中生成一组易于识别的逻辑资源。
@@ -103,10 +106,5 @@ ms.openlocfilehash: 1ccde46c7adafdaa4a9efca450a3dd2efde8413a
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

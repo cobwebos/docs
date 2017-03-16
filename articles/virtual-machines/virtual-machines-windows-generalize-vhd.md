@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: c70793c707252582d4ba77ac8b04c39521b245f8
-ms.openlocfilehash: a9b2cf638f52a6b7c371e443d9b5a104a57f910c
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: a0fca1e2a1d354be9ad34fb3a36714d0bdf393d2
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -40,13 +41,13 @@ ms.openlocfilehash: a9b2cf638f52a6b7c371e443d9b5a104a57f910c
     ![启动 Sysprep](./media/virtual-machines-windows-upload-image/sysprepgeneral.png)
 6. Sysprep 在完成运行后会关闭虚拟机。 
 
+> [!IMPORTANT]
+> 将 VHD 上传到 Azure 或从 VM 创建映像完成之前不要重启 VM。 如果 VM 意外重启，请运行 Sysprep 将其再次通用化。
+> 
+> 
+
 ## <a name="next-steps"></a>后续步骤
 * 如果 VM 位于本地，则现在可以[将 VHD 上载到 Azure](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 如果 VM 已在 Azure 中，现在可以[从通用 VM 创建映像](virtual-machines-windows-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

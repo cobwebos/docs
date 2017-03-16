@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 201b07536bcee58e2b7102379dff1c1c93c4b675
-ms.openlocfilehash: 882157d2cb544e5bb59caf7d64de579e23b12480
+ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
+ms.openlocfilehash: 3fd731d83ca32359193534f043b3eb3e0333e0aa
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -58,6 +59,9 @@ ms.openlocfilehash: 882157d2cb544e5bb59caf7d64de579e23b12480
 
 有关上述步骤的演练，请参阅[以编程方式重新训练机器学习模型](machine-learning-retrain-models-programmatically.md)。
 
+> [!NOTE] 
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。 
+
 如果已部署了经典 Web 服务：
 
 * 在预测 Web 服务上创建新终结点
@@ -95,10 +99,5 @@ ms.openlocfilehash: 882157d2cb544e5bb59caf7d64de579e23b12480
 <!--image links-->
 [1]: ./media/machine-learning-retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE01.png
 [7]: ./media/machine-learning-retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE07.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: a9ebbbdc431a34553de04e920efbbc8c2496ce5f
-ms.openlocfilehash: dd5ce9de46d4089d285268125f2b63f1117d48c7
+ms.sourcegitcommit: ac5dfa34c867ecf2f38ebe33d7f5cf6610c33472
+ms.openlocfilehash: 005d96d66843b50d9c7003ae5264896718c37151
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -113,6 +114,10 @@ ms.openlocfilehash: dd5ce9de46d4089d285268125f2b63f1117d48c7
 ![配置 Web 服务][5]  
 
 ### <a name="deploy-as-a-new-web-service"></a>部署为新式 Web 服务
+
+> [!NOTE] 
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。 
+
 若要部署从实验派生的新的 Web 服务，请执行以下操作：
 
 1. 单击画布下面的“部署 Web 服务”，然后选择“部署 Web 服务 [新]”。 机器学习工作室会将你转到 Azure 机器学习 Web 服务的“部署实验”页。
@@ -225,9 +230,4 @@ ms.openlocfilehash: dd5ce9de46d4089d285268125f2b63f1117d48c7
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
 [project-columns]: https://msdn.microsoft.com/en-us/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

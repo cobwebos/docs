@@ -12,11 +12,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 02/28/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: ef3f31c633eeba92f343e2126626bd029aebbf64
-ms.openlocfilehash: 170657601a0ea6b0c0ebabfd34befdce290cebd8
+ms.sourcegitcommit: c0dd85570f052c4a9651faecbaeb3eaa181f9017
+ms.openlocfilehash: b00b2cf1d3a54bba716d7470643aa1a5e6a58633
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -37,13 +38,13 @@ Azure Analysis Services cmdlet 包含在 [AzureRM.AnalysisServices](https://www.
 
 |Cmdlet|说明| 
 |------------|-----------------| 
-|Get-AzureRmAnalysisServicesServer|获取服务器实例的详细信息。|  
-|New-AzureRmAnalysisServicesServer|创建新的服务器实例。|
-|Remove-AzureRmAnalysisServicesServer|删除服务器实例。|  
-|Suspend-AzureRmAnalysisServicesServe|挂起服务器实例。| 
-|Resume-AzureRmAnalysisServicesServer|恢复服务器实例。|  
-|Set-AzureRmAnalysisServicesServer|修改服务器实例。|   
-|Test-AzureRmAnalysisServicesServer|测试服务器实例的存在。| 
+|[Get-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/get-azurermanalysisservicesserver)|获取服务器实例的详细信息。|  
+|[New-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/new-azurermanalysisservicesserver)|创建新的服务器实例。|
+|[Remove-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/remove-azurermanalysisservicesserver)|删除服务器实例。|  
+|[Suspend-AzureRmAnalysisServicesServe](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/suspend-azurermanalysisservicesserver)|挂起服务器实例。| 
+|[Resume-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/resume-azurermanalysisservicesserver)|恢复服务器实例。|  
+|[Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/set-azurermanalysisservicesserver)|修改服务器实例。|   
+|[Test-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/test-azurermanalysisservicesserver)|测试服务器实例的存在。| 
 
 ## <a name="database-operations"></a>数据库操作
 Azure Analysis Services 数据库操作使用与 SQL Server Analysis Services 相同的 [SQLASCMDLETS](https://msdn.microsoft.com/library/hh758425.aspx) 模块。 但是，并非所有 cmdlet 都支持 Azure Analysis Services 预览。 
@@ -64,8 +65,3 @@ SQLASCMDLETS 模块提供任务特定的数据库管理 cmdlet，以及接受表
 ## <a name="related-information"></a>相关信息
 * [PowerShell scripting in Analysis Services](https://msdn.microsoft.com/library/hh213141.aspx)（Analysis Services 中的 PowerShell 脚本）。
 * [Tabular Model Programming for Compatibility Level 1200](https://msdn.microsoft.com/library/mt712541.aspx)（适用于兼容级别 1200 的表格模型编程）
-
-
-<!--HONumber=Jan17_HO5-->
-
-

@@ -13,16 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2016
+ms.date: 03/01/2017
 ms.author: drewm
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: f81d4a407e738aa8133e91a24f06feba5af75e63
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: fecc7666f80f7a9a5b2f8daaa65fd1766616fc85
+ms.lasthandoff: 03/03/2017
 
 
 ---
 # <a name="planned-maintenance-for-virtual-machines-in-azure"></a>Azure 中虚拟机的计划内维护
-了解什么是 Azure 计划内维护，以及它如何影响 Windows 虚拟机的可用性。 本文也适用于 [Linux 虚拟机](virtual-machines-linux-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
+了解什么是 Azure 计划内维护，以及它如何影响 Windows 虚拟机的可用性。 本文也适用于 [Linux 虚拟机](virtual-machines-linux-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 本文提供有关 Azure 计划内维护过程的背景信息。 如果想要排查 VM 重新启动的原因，可以[阅读此博客文章，其中详细说明了如何查看 VM 重新启动日志](https://azure.microsoft.com/blog/viewing-vm-reboot-logs/)。
 
@@ -36,10 +37,4 @@ Microsoft Azure 在全球范围内定期执行更新，以提高虚拟机所基�
 请注意，有两类维护可能会影响虚拟机的可用性：计划内维护和计划外维护。 本页介绍 Microsoft Azure 如何执行计划内维护。 有关计划外维护的详细信息，请参阅[了解计划内与计划外维护](virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 [!INCLUDE [virtual-machines-common-planned-maintenance](../../includes/virtual-machines-common-planned-maintenance.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/19/2017
+ms.date: 03/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: c4129d5b5ebd0295035e81760b2a39f3caf16499
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c7ef2a9535362a3dc352b92732abcdf6cd4836c2
+ms.lasthandoff: 03/06/2017
 
 ---
 
@@ -121,8 +121,8 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 ## <a name="step-1-choose-your-protection-goals"></a>步骤 1：选择保护目标
 选择要复制的内容以及要复制到的位置。
 
-1. 在“恢复服务保管库”边栏选项卡中选择保管库，然后单击“设置”。
-2. 在“设置” > “快速启动”中，单击“Site Recovery” > “步骤 1: 准备基础结构” > “保护目标”。
+1. 在“恢复服务保管库”中，选择保管库。
+2. 在“快速启动”中，单击“Site Recovery” > “步骤 1: 准备基础结构” > “保护目标”。
 
     ![选择目标](./media/site-recovery-hyper-v-site-to-azure/choose-goals.png)
 3. 在“保护目标”中选择“到 Azure”，然后选择“是，使用 Hyper-V”。 选择“否”，确认未使用 VMM。 。
@@ -168,7 +168,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
     ![安装位置](./media/site-recovery-hyper-v-site-to-azure/provider2.png)
 
-7. 完成注册后，Azure Site Recovery 将检索 Hyper-V 服务器中的元数据，该服务器将显示在“设置” > “Site Recovery 基础结构” > “Hyper-V 主机”边栏选项卡上。
+7. 完成注册后，Azure Site Recovery 将检索 Hyper-V 服务器中的元数据，该服务器显示在“Site Recovery 基础结构” > “Hyper-V 主机”边栏选项卡上。
 
 ### <a name="command-line-installation"></a>命令行安装
 也可使用以下命令行来安装 Azure Site Recovery 提供程序和代理。 此方法可用来将提供程序安装在 Server Core for Windows Server 2012 R2 上。
@@ -204,7 +204,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 3. Site Recovery 将检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
-      ![存储](./media/site-recovery-vmware-to-azure/enable-rep3.png))
+      ![存储](./media/site-recovery-vmware-to-azure/enable-rep3.png)
 
 
 4. 如果尚未创建存储帐户并想要使用 Resource Manager 来创建一个，请单击“+存储帐户”以内联方式执行该操作。  在“创建存储帐户”边栏选项卡中，指定帐户名、类型、订阅和位置。 该帐户应位于与恢复服务保管库相同的位置。
@@ -233,7 +233,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
     ![复制策略](./media/site-recovery-hyper-v-site-to-azure/gs-replication2.png)
 
-当创建新策略时，该策略自动与 Hyper-V 站点关联。 单击“确定”。 可以在“设置” > “复制”> 策略名称 >“关联 Hyper-V 站点”中，将一个 Hyper-V 站点（以及其中的 VM）与多个复制策略关联。
+当创建新策略时，该策略自动与 Hyper-V 站点关联。 单击 **“确定”**。 可以在“复制”> 策略名称 >“关联 Hyper-V 站点”中，将一个 Hyper-V 站点（以及其中的 VM）与多个复制策略关联。
 
 ## <a name="step-5-capacity-planning"></a>步骤 5：容量规划
 你已经设置了基本基础结构，现在可以考虑容量计划并确定是否需要额外的资源。
@@ -304,16 +304,16 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
     >
     >       
 
-8. 在“复制设置” > “配置复制设置”中，选择要应用于受保护 VM 的复制策略。 。 可以在“设置” > “复制策略”>“策略名称”>“编辑设置”中修改复制策略。 应用的更改将用于已在复制的计算机和新计算机。
+8. 在“复制设置” > “配置复制设置”中，选择要应用于受保护 VM 的复制策略。 。 可以在“复制策略”> 策略名称 >“编辑设置”中修改复制策略。 应用的更改将用于已在复制的计算机和新计算机。
 
    ![启用复制](./media/site-recovery-hyper-v-site-to-azure/enable-replication7.png)
 
-可以在“设置” > “作业” > “站点恢复作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
+可以在“作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
 
 ### <a name="view-and-manage-vm-properties"></a>查看和管理 VM 属性
 建议你验证源计算机的属性。
 
-1. 单击“设置” > “受保护的项” > “复制的项”，然后选择计算机。
+1. 在“受保护的项”中，单击“复制的项”，然后选择计算机。
 
     ![启用复制](./media/site-recovery-hyper-v-site-to-azure/test-failover1.png)
 2. 在“属性”中，可以查看 VM 的复制和故障转移信息。
@@ -369,10 +369,10 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 ## <a name="step-7-run-a-test-failover"></a>步骤 7：运行测试故障转移
 为了对部署进行测试，可以针对单个虚拟机或单个恢复计划（其中包含一个或多个虚拟机）运行测试故障转移。
 
-1. 若要故障转移单个计算机，请在“设置”>“复制的项”中，单击“VM” > “+测试故障转移”图标。
-2. 若要故障转移某个恢复计划，请在“设置” > “恢复计划”中，右键单击该计划 >“测试性故障转移”。 若要创建恢复计划，请[遵循这些说明](site-recovery-create-recovery-plans.md)。
+1. 若要故障转移单个计算机，请在“复制的项”中，单击该 VM >“+测试故障转移”图标。
+2. 若要故障转移某个恢复计划，请在“恢复计划”中，右键单击该计划 >“测试故障转移”。 若要创建恢复计划，请[遵循这些说明](site-recovery-create-recovery-plans.md)。
 3. 在“测试故障转移”中，选择 Azure VM 在故障转移之后要连接到的 Azure 网络。
-4. 单击“确定”开始故障转移。 若要跟踪进度，可以单击 VM 以打开其属性，或者在保管库名称 >“设置” > “作业” > “Site Recovery 作业”中选择“测试故障转移”作业。
+4. 单击“确定”开始故障转移。 若要跟踪进度，可以单击 VM 以打开其属性，或者在保管库名称 >“作业” > “Site Recovery 作业”中单击“测试故障转移”作业。
 5. 故障转移完成后，你还应该能够看到副本 Azure 计算机显示在 Azure 门户的“虚拟机”中。 应确保 VM 的大小适当、已连接到相应的网络，并且正在运行。
 6. 如果[已准备好故障转移后的连接](#prepare-to-connect-to-azure-vms-after-failover)，应该能够连接到 Azure VM。
 7. 完成后，在恢复计划上单击“清理测试故障转移”。 在“**说明**”中，记录并保存与测试性故障转移相关联的任何观测结果。 此时会删除在测试性故障转移期间创建的虚拟机。
@@ -417,10 +417,10 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 >
 
 1. 按[此处](site-recovery-failover.md)所述执行计划的故障转移
-2. 在“设置”>“复制的项”中，右键单击虚拟机并选择“完成迁移”
+2. 在“复制的项”中，右键单击虚拟机并选择“完成迁移”
 
     ![完成迁移](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
-3. 单击“确定”完成迁移。 若要跟踪进度，可以单击 VM 打开其属性，或者在“设置”>“Site Recovery 作业”中使用“完成迁移”作业。
+3. 单击“确定”完成迁移。 若要跟踪进度，可以单击 VM 以打开其属性，或者在“Site Recovery 作业”中使用“完成迁移”作业。
 
 ## <a name="monitor-your-deployment"></a>监视部署
 下面是监视 Site Recovery 部署的配置设置、状态和运行状况的方式：
@@ -429,5 +429,5 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
     ![概要](./media/site-recovery-hyper-v-site-to-azure/essentials.png)
 2. 在“运行状况”磁贴中，可以监视发生问题的站点服务器，以及 Site Recovery 在过去 24 小时内引发的事件。
-3. 可以在“复制的项”、“恢复计划”和“Site Recovery 作业”磁贴中管理和监视复制。 可通过“设置” -> “作业” -> “站点恢复作业”钻取到不同的作业。
+3. 可以在“复制的项”、“恢复计划”和“Site Recovery 作业”磁贴中管理和监视复制。 可通过“作业” > “Site Recovery 作业”钻取到不同的作业，以获取更多详细信息。
 

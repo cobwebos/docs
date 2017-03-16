@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 02/28/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: ef24162006c508134db3f385e791306495ac4614
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: ad1314aa4b504bd2cb3285789073d4f1de1f545d
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -32,6 +33,19 @@ ms.openlocfilehash: ef24162006c508134db3f385e791306495ac4614
 * 添加和删除终结点（仅限于经典 Web 服务）
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>用于管理基于资源管理器的新 Web 服务的权限
+
+新 Web 服务以 Azure 资源的形式部署。 因此，必须拥有正确的权限才能部署和管理新 Web 服务。  若要部署或管理新 Web 服务，必须分配有该 Web 服务部署到的订阅上的参与者或管理员角色。 如果邀请其他用户加入机器学习工作区，必须向其分配订阅上的参与者或管理员角色，他们才能部署或管理 Web 服务。 
+
+如果用户没有访问 Azure 机器学习 Web 服务门户中的资源的正确权限，那么在尝试部署 Web 服务时会收到以下错误：
+
+*Web Service deployment failed.This account does not have sufficient access to the Azure subscription that contains the Workspace.In order to deploy a Web Service to Azure, the same account must be invited to the Workspace and be given access to the Azure subscription that contains the Workspace.*（Web 服务部署失败。此帐户没有足够的权限访问工作区所属的 Azure 订阅。若要将 Web 服务部署到 Azure，必须邀请同一帐户加入工作区并为其授予对工作区所属的 Azure 订阅的访问权限。）
+
+有关创建工作区的详细信息，请参阅[创建并共享 Azure 机器学习工作区](machine-learning-create-workspace.md)。
+
+有关设置访问权限的详细信息，请参阅[在 Azure 门户中查看用户和组的访问权限分配 — 公开预览版](../active-directory/role-based-access-control-manage-assignments.md)。
+
 
 ## <a name="manage-new-web-services"></a>管理新的 Web 服务
 要管理新的 Web 服务：
@@ -174,10 +188,5 @@ ms.openlocfilehash: ef24162006c508134db3f385e791306495ac4614
 > ”**登录到机器学习工作室**“链接会使用当前登录的 Microsoft 帐户打开机器学习工作室。 用于登录 Azure 经典门户以创建工作区的 Microsoft 帐户不会自动具有打开工作区的权限。 若要打开工作区，则必须登录到已定义为工作区所有者的 Microsoft 帐户，或者需要收到所有者发出的邀请以加入工作区。
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

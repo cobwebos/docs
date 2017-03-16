@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 03/06/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 9faf3e48983ded91016e39992bc03a0b62720c06
-ms.openlocfilehash: 4b46a46e6a9de58b9640830852ca19939b3eabdb
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 01850cbf8967fd5f79db64103fb18c6ec01babea
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -37,10 +38,10 @@ ms.openlocfilehash: 4b46a46e6a9de58b9640830852ca19939b3eabdb
 若要完成本教程，需要以下必备条件：
 
 * 最新版本的 [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-* Visual Studio 2015 或免费版 [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
+* Visual Studio 2017、2015 或免费版 [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)
 * 计算机上的管理权限
-* 从 Microsoft 下载中心下载 [TollApp.zip](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip)
+* 从 Microsoft 下载中心下载 [TollApp.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip)
 * 可选：[GitHub](https://aka.ms/azure-stream-analytics-toll-source) 中 TollApp 事件生成器的源代码
 
 ## <a name="scenario-introduction-hello-toll"></a>方案简介：“你好，收费站！”
@@ -135,7 +136,7 @@ ms.openlocfilehash: 4b46a46e6a9de58b9640830852ca19939b3eabdb
 
 可以使用 GitHub 上 TollApp 文件夹中的 Setup.ps1 脚本创建所有必要的资源。 为了节省时间，我们建议运行此脚本。 如果想要详细了解如何在 Azure 门户中配置这些资源，请参阅附录“在 Azure 门户中配置教程资源”。
 
-下载并保存 [TollApp](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) 支持文件夹和文件。
+下载并保存 [TollApp](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) 支持文件夹和文件。
 
 *以管理员身份*打开“Microsoft Azure PowerShell”窗口。 如果还没有安装 Azure PowerShell，请根据[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)中的说明安装 Azure PowerShell。
 
@@ -441,10 +442,5 @@ Azure 流分析能够弹性缩放，因而能够处理大量数据。 Azure 流�
    > 
    > 
 
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "服务总线消息传送异常 | Microsoft 文档"
+title: "Azure 服务总线消息传送异常 | Microsoft Docs"
 description: "服务总线消息传送异常和建议的操作列表。"
 services: service-bus-messaging
 documentationcenter: na
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2017
+ms.date: 03/03/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: e872848a91834cf19cd6ebdd4db637c54120c33b
-ms.openlocfilehash: 5321a465a0fab9dac4c4c0755da3e3ca4c8d7369
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 3b543b1c94122a037cdd3b16e25d60957add1cb7
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -49,7 +50,7 @@ ms.openlocfilehash: 5321a465a0fab9dac4c4c0755da3e3ca4c8d7369
 | [SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception) |与此会话关联的锁已丢失。 |中止 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 对象。 |重试不会解决问题。 |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |在以下情况下，可能会引发一般消息异常：<br /> 尝试使用属于其他实体类型（例如主题）的名称或路径创建 [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient)。<br />  尝试发送大于 256KB 的消息。 服务器或服务在处理请求期间遇到错误。 有关详细信息，请查看异常消息。 这通常是暂时性的异常。 |检查代码，并确保只对消息正文使用可序列化对象（或使用自定义序列化程序）。 在文档中查看属性支持的值类型，并只使用支持的类型。 检查 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception#Microsoft_ServiceBus_Messaging_MessagingException_IsTransient) 属性。 如果为 **true**，你可以重试操作。 |重试行为的效果不确定，可能不会解决问题。 |
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |尝试使用已被该服务命名空间中另一实体使用的名称创建实体。 |删除现有的实体，或者选择不同的名称来创建实体。 |重试不会解决问题。 |
-| [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |消息实体已达到其最大允许大小。 |通过从实体或其子队列接收消息在该实体中创建空间。 请参阅[QuotaExceededException](#quotaexceededexception)。 |如果同时已删除消息，则重试可能会有帮助。 |
+| [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |消息实体已达到其允许的最大大小，或已超出到命名空间的最大连接数。 |通过从实体或其子队列接收消息在该实体中创建空间。 请参阅[QuotaExceededException](#quotaexceededexception)。 |如果同时已删除消息，则重试可能会有帮助。 |
 | [RuleActionException](/dotnet/api/microsoft.servicebus.messaging.ruleactionexception) |如果你尝试创建无效的规则操作，服务总线将返回此异常。 如果在处理该消息的规则操作时出错，服务总线会将此异常附加到死信消息。 |检查规则操作是否正确。 |重试不会解决问题。 |
 | [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) |如果你尝试创建无效的筛选器，服务总线将返回此异常。 如果在处理该消息的筛选器时出错，服务总线会将此异常附加到死信消息。 |检查筛选器是否正确。 |重试不会解决问题。 |
 | [SessionCannotBeLockedException](/dotnet/api/microsoft.servicebus.messaging.sessioncannotbelockedexception) |尝试接受具有特定会话 ID 的会话，但该会话当前已被另一客户端锁定。 |确保该会话未由其他客户端锁定。 |如果在此期间会话已释放，则重试可能会有帮助。 |
@@ -74,6 +75,17 @@ Message: The maximum entity size has been reached or exceeded for Topic: ‘xxx-
 ```
 
 该消息指出，主题超过其大小限制，本例中为 1 GB（默认大小限制）。 
+
+### <a name="namespaces"></a>命名空间
+
+对于命名空间，[QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) 可指示应用程序已超出到命名空间的最大连接数。 例如：
+
+```
+Microsoft.ServiceBus.Messaging.QuotaExceededException: ConnectionsQuotaExceeded for namespace xxx.
+<tracking-id-guid>_G12 ---> 
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: 
+ConnectionsQuotaExceeded for namespace xxx.
+```
 
 #### <a name="common-causes"></a>常见原因
 此错误有两个常见的原因：死信队列和无法正常运行的消息接收器。
@@ -115,10 +127,5 @@ Message: The maximum entity size has been reached or exceeded for Topic: ‘xxx-
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线体系结构](service-bus-architecture.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

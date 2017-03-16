@@ -1,5 +1,5 @@
 ---
-title: "如何更改 Azure 帐户的个人资料信息 | Microsoft Docs"
+title: "更改 Azure 帐户个人资料信息 | Microsoft Docs"
 description: "介绍如何更改 Azure 帐户的个人资料，并解答一些常见问题，例如为何无法在 Azure 帐户中心更改国家/地区"
 services: 
 documentationcenter: 
@@ -13,15 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/01/2017
 ms.author: genli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8587b157886f2d0f5778573aeec55c072a50bf93
-ms.openlocfilehash: dd28c37bc63d1c457d7c8ffc60b1bad1f2831f31
-
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: c4f76065996c7db43ec5503ff76fc7a1bbeb87ed
+ms.lasthandoff: 03/03/2017
 
 ---
-# <a name="how-to-change-profile-information-of-your-azure-account-such-as-contact-email-address-and-phone-number"></a>如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息
+# <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>更改 Azure 帐户的个人资料信息，如联系人电子邮件、地址和电话号码等
 Microsoft 使用帐户管理员个人资料中的电子邮件地址来通知与订阅计费相关的最新重要信息。 建议你指定一个定期收信的联系人电子邮件地址。
 
 ## <a name="how-to-change-your-profile-information"></a>如何更改个人资料信息
@@ -51,10 +52,5 @@ Microsoft 使用帐户管理员个人资料中的电子邮件地址来通知与�
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

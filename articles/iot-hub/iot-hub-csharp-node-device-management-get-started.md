@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: e4072903a0040d34ad4d41e6c28793d3594fa2f2
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 0a4dc9c39d864dcfd52121ed4e4fa2393b56f872
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -50,7 +51,7 @@ ms.openlocfilehash: e4072903a0040d34ad4d41e6c28793d3594fa2f2
 
 若要完成本教程，您需要以下各项：
 
-* Microsoft Visual Studio 2015。
+* Visual Studio 2015 或 Visual Studio 2017。
 * Node.js 版本 0.12.x 或更高版本， <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
@@ -61,7 +62,7 @@ ms.openlocfilehash: e4072903a0040d34ad4d41e6c28793d3594fa2f2
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>使用直接方法在设备上触发远程重新启动
 在此部分中，会创建一个 .NET 控制台应用（使用 C#），它直接在设备上启动远程重新启动，并使用设备克隆查询找到该设备上次重新启动的时间。
 
-1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为 **TriggerReboot**。
+1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到新解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **TriggerReboot**。
 
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
 
@@ -251,8 +252,3 @@ IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设�
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-
-
-<!--HONumber=Dec16_HO1-->
-
-

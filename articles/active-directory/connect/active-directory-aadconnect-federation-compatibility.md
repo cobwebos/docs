@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/01/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: cb06c5bd74816777ec7c5836d362d509a265bd9c
-ms.openlocfilehash: 9e16fd3112b093f22ed99829c223a3a80e008f28
+ms.sourcegitcommit: 1f004b499eb01009ae824ece74d06a03474c4d53
+ms.openlocfilehash: 93a159001fabad513295b0958cf7918b0ed2d1b7
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -57,7 +58,8 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 * [CA Secure Cloud](#ca-secure-cloud) 
 * [Dell One Identity Cloud Access Manager v7.1](#dell-one-identity-cloud-access-manager-v71) 
 * [AuthAnvil Single Sign On 4.5](#authavil-single-sign-on-45)
-* [Sailpoint IdentityNow](#sailpoint-identitynow) 
+* [Sailpoint IdentityNow](#sailpoint-identitynow)
+* [NetIQ Access Manager 4.x](#netiq-access-manager-4x) 
 
 > [!IMPORTANT]
 > 由于这些是第三方产品，Microsoft 不会对与这些标识提供者相关的问题和疑问提供支持，例如部署、配置、故障排除、最佳实践等方面的问题和疑问。 如果需要获得支持或者存在有关这些标识提供者的疑问，请直接联系提供支持的第三方。
@@ -344,10 +346,17 @@ Sailpoint IdentityNow 实施广泛使用的 WS 联合标识标准以提供单一
 
 有关详细信息，请参阅 [Sailpoint IdentityNow](https://www.sailpoint.com/idaas-identity-as-a-service-identitynow/)
 
+## <a name="netiq-access-manager-4x"></a>NetIQ Access Manager 4.x
+NetIQ Access Manager 实施广泛使用的 WS 联合/WS 信任标识标准，以提供单一登录和属性交换框架。
 
+下面是此单一登录体验的方案支持对照表：
 
+| 客户端 | 支持 | 异常 |
+| --- | --- | --- |
+| 基于 Web 的客户端（如 Exchange Web Access 和 SharePoint Online） |支持 |无|
+| 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |无|
+| 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-
-<!--HONumber=Jan17_HO3-->
+有关详细信息，请参阅 [NetIQ Access Manager](https://www.netiq.com/documentation/access-manager-43/admin/data/b65ogn0.html#b12iqp0m)
 
 

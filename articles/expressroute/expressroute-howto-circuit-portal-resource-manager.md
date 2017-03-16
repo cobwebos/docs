@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 03/02/2017
 ms.author: cherylmc;ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 81face4253f50f17d48b940c1e355565958c829d
-ms.openlocfilehash: 7edda7d64f6bf1d2b8eb03bb6c14db68cc81eca9
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 46b4e1b149a3e9427e1384abc0d95eb616002ab6
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -123,7 +123,7 @@ ms.lasthandoff: 02/03/2017
 ![ExpressRoute 线路的状态](./media/expressroute-howto-circuit-portal-resource-manager/listproperties1.png)
 
 ## <a name="modifying-an-expressroute-circuit"></a>修改 ExpressRoute 线路
-你可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。 此时不能使用 Azure 门户修改 ExpressRoute 线路属性。 但是，你可以使用 PowerShell 来修改线路属性。 有关详细信息，请参阅[使用 PowerShell 修改 ExpressRoute 线路部分](expressroute-howto-circuit-arm.md#modify)。
+你可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。
 
 你可以在不停机的情况下执行以下操作：
 
@@ -133,6 +133,19 @@ ms.lasthandoff: 02/03/2017
 * 可以启用和禁用允许经典操作。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
+
+若要修改 ExpressRoute 线路，请单击“配置”，如下图所示。
+
+![修改线路](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+
+可以在“配置”边栏选项卡内修改带宽、SKU、计费模型，以及允许经典操作。
+
+> [!IMPORTANT]
+> 但是，你无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，然后重新预配新的 ExpressRoute 线路。
+> 
+> 如果使用的资源超出了标准线路所允许的范围，禁用高级版外接程序的操作可能会失败。
+> 
+> 
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a>取消预配和删除 ExpressRoute 线路
 可以通过选择“删除”图标来删除 ExpressRoute 线路。 注意以下事项：

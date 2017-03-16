@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: ba615e296c39ccdd15f5867681f7274feb5478b0
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 3c3c7924655f5b932be2a3d947a4df786fc0630d
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: ba615e296c39ccdd15f5867681f7274feb5478b0
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>概述
-对于存储服务，默认情况下不启用存储度量值。 可按以下方式实现监视：通过 [Azure 经典门户](https://manage.windowsazure.com)、Windows PowerShell 或按编程方式通过存储 API。
+创建新的存储帐户时默认情况下会启用存储度量。 可按以下方式配置监视：通过 [Azure 经典门户](https://manage.windowsazure.com)、Windows PowerShell 或按编程方式通过存储 API。
 
 启用存储度量值时，必须为数据选择保留期：此期限用于确定存储服务保留度量值并针对存储度量值所需的空间向你收费的时长。 通常，由于分钟度量值需要大量额外的空间，因此，应对分钟度量值而非小时度量值使用较短的保留期。 你应该选择恰当的保留期，以便有足够的时间分析数据，并下载任何需要保留下来进行脱机分析或报告的度量值。 请记住，从存储帐户下载度量值数据时，你也需要付费。
 
@@ -46,7 +47,7 @@ ms.openlocfilehash: ba615e296c39ccdd15f5867681f7274feb5478b0
 * ServiceType 的可能值为 Blob、Queue 和 Table。
 * MetricsLevel，可能值是 None（相当于 Azure 经典门户中的“关”）、Service（相当于 Azure 经典门户中的“最小”）和 ServiceAndApi（相当于 Azure 经典门户中的“详细”）。
 
-例如，以下命令在保留期设为 5 天的情况下，在默认存储帐户中为 Blob 服务打开分钟度量值：
+例如，以下命令在保留期设为&5; 天的情况下，在默认存储帐户中为 Blob 服务打开分钟度量值：
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5
@@ -190,8 +191,3 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 
 ## <a name="next-steps"></a>后续步骤：
 [Enabling Storage Analytics Logging and Accessing Log Data](https://msdn.microsoft.com/library/dn782840.aspx)（启用存储分析日志记录和访问日志数据）
-
-
-<!--HONumber=Dec16_HO1-->
-
-

@@ -140,7 +140,7 @@ ms.lasthandoff: 01/30/2017
 > 
 
 ## <a name="step-3-add-a-share"></a>步骤 3：添加共享
-请在 Azure 经典门户中执行以下步骤，创建共享。[](https://manage.windowsazure.com/)
+请在 [Azure 经典门户](https://manage.windowsazure.com/) 中执行以下步骤，创建共享。
 
 #### <a name="to-create-a-share"></a>创建共享
 1. 在设备“快速启动”页上，单击“添加共享”。 此时会启动“添加共享向导”。

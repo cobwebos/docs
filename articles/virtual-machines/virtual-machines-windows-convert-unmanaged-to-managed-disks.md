@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: e25eaee75b1637447447ace88c2bf1d9aed83880
-ms.openlocfilehash: 484cc6419150b84ee6ed7d2c92960a4d0202e10b
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 59798ae9412a7550c94f8fa67c39f504aad8d00c
+ms.openlocfilehash: 3867c57d40a218c80403578d30cb999bf9f6cd38
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -48,17 +48,6 @@ ms.lasthandoff: 02/27/2017
 2.    将 OS VHD 复制到从未启用 SSE 的存储帐户。 若要将磁盘复制到另一存储帐户，请使用 [AzCopy](../storage/storage-use-azcopy.md): `AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:myVhd.vhd`
 3.    创建使用托管磁盘的 VM，并在创建过程中将 VHD 文件作为 OS 磁盘附加。
 
-
-## <a name="before-you-begin"></a>开始之前
-如果使用 PowerShell，请确保使用最新版本的 AzureRM.Compute PowerShell 模块。 运行以下命令进行安装。
-
-```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
-```
-有关详细信息，请参阅 [Azure PowerShell 版本控制](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)。
-
-
-
 ## <a name="convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set"></a>将可用性集中的 VM 转换为托管可用性集中的托管磁盘
 
 如果要转换为托管磁盘的 VM 位于可用性集中，则需要先将可用性集转换为托管可用性集。
@@ -87,7 +76,7 @@ foreach($vmInfo in $avSet.VirtualMachinesReferences)
 ## <a name="convert-existing-azure-vms-to-managed-disks-of-the-same-storage-type"></a>将现有 Azure VM 转换为同一存储类型的托管磁盘
 
 > [!IMPORTANT]
-> 执行下列过程后，默认/VHD 容器中将保留一个单独的块 blob。 文件的名称是“VMName.xxxxxxx.status”。 请勿删除此剩余的状态对象。 将来应能解决此问题。
+> 执行下列过程后，默认 /vhds 容器中将保留一个 blob。 文件的名称是“VMName.xxxxxxx.status”。 只有在 VM 上安装了 [VM 扩展](virtual-machines-windows-classic-agents-and-extensions.md)，Azure 才会创建此文件。 请勿删除此剩余的状态对象。 将来应能解决此问题。
 
 本部分介绍如何在使用相同存储类型时，将现有 Azure VM 从存储帐户中的非托管磁盘转换为托管磁盘。 可以通过此过程，将高级 (SDD) 非托管磁盘转换为高级托管磁盘，或将标准 (HDD) 非托管磁盘转换为标准托管磁盘。 
 
@@ -149,7 +138,7 @@ foreach($vmInfo in $avSet.VirtualMachinesReferences)
 1. 停止（解除分配）VM。
 
     ```powershell
-    Stop-AzureRmVM -ResourceGroupName $resourceGroupName -VMName $vmName -Force
+    Stop-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName -Force
     ```
 2.  将所有磁盘升级为高级存储。
 
@@ -168,7 +157,7 @@ foreach($vmInfo in $avSet.VirtualMachinesReferences)
 1. 启动 VM。
 
     ```powershell
-    Start-AzureRmVM -ResourceGroupName $resourceGroupName -VMName $vmName
+    Start-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
     ```
     
 还可使用具有标准和高级存储的混合磁盘。

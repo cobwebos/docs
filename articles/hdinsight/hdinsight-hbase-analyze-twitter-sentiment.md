@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: a62cd616f0abd59c83c834bf13b4ba8549a9c73e
-ms.openlocfilehash: dd47e9c8f5c440c72acb60877d556476fe187ddf
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 8f8b84d600082336fe3659cefa6598210861ce86
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -55,7 +55,7 @@ ms.lasthandoff: 02/23/2017
     <tr><td>群集用户密码</td><td>Hadoop 群集用户密码。</td></tr>
     </table>
 
-* 安装有 Visual Studio 2013 的**工作站**。 有关说明，请参阅[安装 Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)。
+* 安装有 Visual Studio 2013/2015/2017 的**一个工作站**。 有关说明，请参阅[安装 Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)。
 
 ## <a name="create-a-twitter-application-id-and-secrets"></a>创建 Twitter 应用程序 ID 和机密
 Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 使用 OAuth 的第一步是在 Twitter 开发人员网站上创建新的应用程序。

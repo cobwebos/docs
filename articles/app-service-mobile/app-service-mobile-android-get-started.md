@@ -4,7 +4,7 @@ description: "遵循本教程开始使用 Azure 移动应用后端进行 Android
 services: app-service\mobile
 documentationcenter: android
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 355f0959-aa7f-472c-a6c7-9eecea3a34a9
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e4aa29329242a7397fdb5939fa7b5b04340b53c5
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 7752cd091d7952a905001f14414eba84b90f0d51
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -45,11 +46,6 @@ ms.openlocfilehash: e4aa29329242a7397fdb5939fa7b5b04340b53c5
 [!INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
 
 <!-- URLs -->
-[Azure 门户]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

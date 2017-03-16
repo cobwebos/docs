@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
-ms.openlocfilehash: 08ebf8f6f5a2adab90c7de1084bfb5e4aed77fd3
+ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
+ms.openlocfilehash: a7d6cad6faa5fc3a64fe416b44a03ad3992c7862
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="identity-registry"></a>标识注册表
+# <a name="understand-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 ## <a name="overview"></a>概述
 每个 IoT 中心都有一个标识注册表，存储允许连接到 IoT 中心的设备的相关信息。 IoT 中心的标识注册表中必须先有设备的条目，然后该设备才能连接到 IoT 中心。 设备还必须基于标识注册表中存储的凭据向 IoT 中心进行身份验证。
 
@@ -165,9 +167,4 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

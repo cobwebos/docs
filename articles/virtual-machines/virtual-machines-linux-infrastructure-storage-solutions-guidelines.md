@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 61bd36ff8b3bff0acb262f6d181ffe69e6b92d27
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 2aba475cd93e4d3ec37d2eb70f7ba06bc317c222
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-storage-infrastructure-guidelines"></a>Azure 存储基础结构准则
+# <a name="azure-storage-infrastructure-guidelines-for-linux-vms"></a>适用于 Linux VM 的 Azure 存储基础结构准则
+
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 本文重点介绍实现最佳虚拟机 (VM) 性能的存储需求和设计注意事项。

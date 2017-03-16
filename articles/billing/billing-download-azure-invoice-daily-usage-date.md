@@ -1,6 +1,7 @@
 ---
-title: "如何获取 Azure 帐单发票和每日使用数据 | Microsoft Docs"
-description: "介绍如何获取 Azure 帐单发票和每日使用数据"
+title: "下载 Azure 帐单发票和每日使用数据 | Microsoft Docs"
+description: "介绍如何下载或查看 Azure 帐单发票和每日使用数据。"
+keywords: "帐单发票, 发票下载, azure 发票, azure 使用情况"
 services: 
 documentationcenter: 
 author: genlin
@@ -13,19 +14,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/28/2017
 ms.author: genli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4d974590ee7677a4f3fcebd9e2474c99a974f663
-ms.openlocfilehash: 60ac57fd22f237b7fe62773486fe46913aca8dd0
+ms.sourcegitcommit: 9c181935e7ba897087d286bea22ebf500ef36e52
+ms.openlocfilehash: 307bfae0e7161782a9ddb97f4ca0d510fc772ab7
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="how-to-get-your-azure-billing-invoice-and-daily-usage-data"></a>如何获取 Azure 帐单发票和每日使用数据
-可以选择加入并配置其他收件人来通过电子邮件接收 Azure 发票。 也可以从 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)下载发票。 此外，还可以在 [Azure 帐户中心](https://account.windowsazure.com)下载使用情况 CSV。 只有帐户管理员有权访问计费发票和使用情况信息。 若要找出谁是订阅的帐户管理员，请参阅[转让 Azure 订阅的所有权 - 常见问题解答](billing-subscription-transfer.md#faq)。
+# <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下载或查看 Azure 帐单发票和每日使用数据
+可以从 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)下载发票，也可通过电子邮件发送发票。 若要下载每日使用情况，请转到 [Azure 帐户中心](https://account.windowsazure.com)。 只有帐户管理员有权访问计费发票和使用情况信息。 若要找出谁是订阅的帐户管理员，请参阅[转让 Azure 订阅的所有权 - 常见问题解答](billing-subscription-transfer.md#faq)。
 
-## <a name="get-your-invoice-over-email-pdf"></a>通过电子邮件获取发票 (.pdf)
-1. 从[“订阅”边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择订阅。 需要为拥有的每个订阅执行选择加入操作。 依次单击“发票”、“通过电子邮件发送我的发票”。 如果不是帐户管理员，则不会看到此选项。
+## <a name="get-your-invoice-in-email-pdf"></a>通过电子邮件获取发票 (.pdf)
+可以选择加入并配置其他收件人来通过电子邮件接收 Azure 发票。 此功能可能不适用于某些订阅，例如支持提供、企业协议或 Azure 开放许可。
+
+1. 从[“订阅”边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择订阅。 为拥有的每个订阅执行选择加入操作。 依次单击“发票”、“通过电子邮件发送我的发票”。 
 
     ![显示了“选择加入”流的屏幕截图](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
     
@@ -37,12 +42,8 @@ ms.openlocfilehash: 60ac57fd22f237b7fe62773486fe46913aca8dd0
 
     ![显示了“选择加入”流的屏幕截图](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
     
-也可以在月度声明通知电子邮件中访问此边栏选项卡深层链接
+如果执行步骤后未收到电子邮件，请确保[个人资料通讯首选项](https://account.windowsazure.com/profile)中的电子邮件地址正确。
 
-### <a name="i-cant-access-the-email-settings-blade"></a>我无法访问电子邮件设置边栏选项卡
-* 必须是帐户管理员才能配置此设置，不清楚这是什么意思？ [在此处了解更多信息](billing-add-change-azure-subscription-administrator.md)。
-* 如果有月度发票，但没有收到电子邮件，请确认[通讯电子邮件设置正确](https://account.windowsazure.com/profile)。
-* 此功能可能不适用于某些订阅，例如支持提供、企业协议或 Azure 开放许可。
 
 ## <a name="download-invoice-from-azure-portal-pdf"></a>从 Azure 门户下载发票 (.pdf)
 
@@ -86,18 +87,13 @@ ms.openlocfilehash: 60ac57fd22f237b7fe62773486fe46913aca8dd0
 
 有关每日使用情况的详细信息，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。
 
-## <a name="a-namenoinvoicea-why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a> 为何看不到最后一个计费周期的发票。
+## <a name="noinvoice"></a> 为何看不到最后一个计费周期的发票。
 看不到发票的几个可能原因：
-- 尚未超过订阅的每月信用额度，或者使用的是免费试用版。 除非用户欠钱，否则不生成发票。
+- 尚未超过订阅的每月信用额度，或者使用的是免费试用版。 仅当欠费时，才会生成发票。
 - 从订阅 Azure 开始算还不到 30 天。
 - 尚未生成发票。 请等到计费周期结束。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2017
+ms.date: 03/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 7ff27bb866bd9b1f2a24b5c0ff5d83dea2227f49
-ms.openlocfilehash: 70a71bae81d4e499041c140b1d61b621e168ec43
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 8af22f98b5dfde35df441ba054875616ced9988a
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 70a71bae81d4e499041c140b1d61b621e168ec43
 >
 >
 
-本文介绍如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 将 System Center Virtual Machine Manager (VMM) 云中管理的本地 Hyper-V 虚拟机复制到辅助站点。 详细了解此[方案体系结构](site-recovery-components.md#replicate-hyper-v-vms-to-a-secondary-site)。
+本文介绍如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 将 System Center Virtual Machine Manager (VMM) 云中管理的本地 Hyper-V 虚拟机复制到辅助站点。 详细了解此[方案体系结构](site-recovery-components.md#hyper-v-vm-replication-to-a-secondary-site)。
 
 阅读本文后，请在底部发布评论，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
@@ -43,13 +44,13 @@ ms.openlocfilehash: 70a71bae81d4e499041c140b1d61b621e168ec43
 **Hyper-V** | Hyper-V 服务器必须至少运行具有 Hyper-V 角色且安装了最新更新的 Windows Server 2012。<br/><br/> Hyper-V 服务器应包含一个或多个 VM。<br/><br/>  Hyper-V 主机服务器应位于主要和辅助 VMM 云中的主机组内。<br/><br/> 如果在 Windows Server 2012 R2 的群集中运行 Hyper-V，则安装[更新 2961977](https://support.microsoft.com/kb/2961977)<br/><br/> 如果在 Windows Server 2012 的群集中运行 Hyper-V，并且具有基于静态 IP 地址的群集，则不会自动创建群集代理。 手动配置群集代理。 [了解详细信息](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)。<br/><br/> Hyper-V 服务器需要访问Internet。
 **URLs** | VMM 服务器和 Hyper-V 主机应能够访问以下 URL：<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
 
-## <a name="steps"></a>步骤
+## <a name="deployment-steps"></a>部署步骤
 
 要执行的操作如下：
 
 1. 验证先决条件。
 2. 准备 VMM 服务器和 Hyper-V 主机。
-3. 创建恢复服务保管库。 保管库包含配置设置并安排复制。
+3. 创建恢复服务保管库。 保管库包含配置设置，并且安排复制。
 4. 指定源、目标和复制设置。
 5. 部署想要复制的 VM 上的移动服务。
 6. 准备进行复制，并为 Hyper-V VM 启用复制。
@@ -64,7 +65,7 @@ ms.openlocfilehash: 70a71bae81d4e499041c140b1d61b621e168ec43
 
     - 确保源 Hyper-V 主机服务器上的 VM 已连接到 VMM VM 网络。 该网络应当该链接到与该云相关联的逻辑网络。
     验证用于恢复的辅助云中是否配置了相应的 VM 网络。 该 VM 网络应该链接到与辅助云关联的逻辑网络。
-    
+
 3. 如果要在同一 VMM 服务器上的云之间复制 VM，请准备进行[单一服务器部署](#single-vmm-server-deployment)。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
@@ -173,7 +174,7 @@ ms.openlocfilehash: 70a71bae81d4e499041c140b1d61b621e168ec43
 10. 如果要通过网络进行复制，请在“初始复制方法”中指定是要启动还是计划初始复制。 若要节省网络带宽，可以将它计划在非高峰时间运行。 。
 
      ![复制策略](./media/site-recovery-vmm-to-vmm/gs-replication2.png)
-11. 当创建新策略时，该策略自动与 VMM 云关联。 在“复制策略”中单击“确定”。 可以在“设置” > “复制”“策略名称”>“关联 VMM 云”中，将其他 VMM 云（及其中的 VM）与此复制策略相关联。
+11. 当创建新策略时，该策略自动与 VMM 云关联。 在“复制策略”中单击“确定”。 可以在“复制”“策略名称”>“关联 VMM 云”中，将其他 VMM 云（及其中的 VM）与此复制策略相关联。
 
      ![复制策略](./media/site-recovery-vmm-to-vmm/policy-associate.png)
 
@@ -184,7 +185,7 @@ ms.openlocfilehash: 70a71bae81d4e499041c140b1d61b621e168ec43
 - 验证 VMM 服务器上的虚拟机是否已连接到 VM 网络。
 
 
-1. 在“设置” > “Site Recovery 基础结构” > “网络映射” > “网络映射”中，单击“+网络映射”。
+1. 在“Site Recovery 基础结构” > “网络映射” > “网络映射”中，单击“+网络映射”。
 
     ![网络映射](./media/site-recovery-vmm-to-azure/network-mapping1.png)
 2. 在“添加网络映射”选项卡中，选择源和目标 VMM 服务器。 系统将检索与 VMM 服务器关联的 VM 网络。
@@ -224,12 +225,12 @@ ms.openlocfilehash: 70a71bae81d4e499041c140b1d61b621e168ec43
 
     ![启用虚拟机保护](./media/site-recovery-vmm-to-vmm/enable-replication5.png)
 
-可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”操作的进度。 在“完成保护”作业完毕后，虚拟机即可执行故障转移。
+可以在“作业” > “Site Recovery 作业”中，跟踪“启用保护”操作的进度。 在“完成保护”作业完毕后，虚拟机即可执行故障转移。
 
 请注意：
 
 - 你还可以在 VMM 控制台中为虚拟机启用保护。 在工具栏上的虚拟机属性的“Azure Site Recovery”选项卡中单击“启用保护”。
-- 启用复制后，可以在“设置” > “复制的项”中查看 VM 的属性。 在“概要”仪表板中，可以看到有关 VM 复制策略及其状态的信息。 单击“属性”可查看详细信息。
+- 启用复制后，可以在“复制的项”中查看 VM 的属性。 在“概要”仪表板中，可以看到有关 VM 复制策略及其状态的信息。 单击“属性”可查看详细信息。
 
 ### <a name="onboard-existing-virtual-machines"></a>将现有虚拟机加入进来
 如果在 VMM 中已有使用 Hyper-V 副本进行复制的虚拟机，可以将它们加入到 Azure Site Recovery 复制中，如下所述：
@@ -242,10 +243,6 @@ ms.openlocfilehash: 70a71bae81d4e499041c140b1d61b621e168ec43
 
 为了测试部署，可针对单个虚拟机运行[测试故障转移](site-recovery-test-failover-vmm-to-vmm.md)，或者创建包含一个或多个虚拟机[恢复计划](site-recovery-create-recovery-plans.md)。
 
-
-## <a name="next-steps"></a>后续步骤
-
-测试部署后，详细了解[故障转移](site-recovery-failover.md)的其他类型
 
 
 ## <a name="prepare-for-offline-initial-replication"></a>为脱机初始复制做准备
@@ -444,8 +441,7 @@ ms.openlocfilehash: 70a71bae81d4e499041c140b1d61b621e168ec43
 | **网络映射** | 将主数据中心内的网络信息映射到恢复数据中心。 当在恢复站点上恢复 VM 时，网络映射可帮助建立网络连接。 |站点恢复将收集、处理和传输每个站点（主站点和数据中心）的逻辑网络的元数据。 |元数据用于填充网络设置，以便可以映射网络信息。 | 此功能是服务必不可少的组成部分，不可关闭。 如果不想要将此信息发送到站点恢复，请不要使用网络映射。 |
 | **故障转移（计划内/计划外/测试）** | 故障转移将 VM 从 VMM 管理的一个数据中心故障转转到另一个数据中心。 故障转移操作是在 Azure 门户中手动触发的。 |VMM 服务器上的提供程序将从站点恢复那里收到故障转移事件通知，并通过 VMM 接口在 Hyper-V 主机上运行故障转移操作。 VM 的实际故障转移是从一台 Hyper-V 主机到另一台主机，并通过 Windows Server 2012 或 Windows Server 2012 R2 Hyper-V 副本来处理。 Site Recovery 使用发送的信息来填充 Azure 门户中故障转移操作信息的状态。 | 此功能是服务必不可少的组成部分，不可关闭。 如果不想要将此信息发送到站点恢复，请不要使用故障转移。 |
 
+## <a name="next-steps"></a>后续步骤
 
-
-<!--HONumber=Feb17_HO2-->
-
+测试部署后，详细了解[故障转移](site-recovery-failover.md)的其他类型
 

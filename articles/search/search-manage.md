@@ -13,11 +13,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2016
+ms.date: 03/05/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 71cfd2ea327cad22cdb1085558658934804c15f1
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: e0de3b12b98bf9bf361607dac4b087e4eacabf1e
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -41,13 +42,10 @@ Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自�
 
 *查询性能*也超出了本文的范围。 有关详细信息，请参阅[监视使用情况和查询度量值](search-monitor-usage.md)以及[性能和优化](search-performance-optimization.md)。
 
-Azure 搜索将故障转移到其他群集和数据中心（如果出现中断），但它不会为手动备份和还原操作提供内置的解决方案（如果索引或服务被恶意或无意中删除）。 对于将对象和数据推送至其服务的客户，如果你意外删除索引，则用于创建和填充索引的源代码实际上是还原选项。 
-
-Azure 搜索不提供跨服务的索引异地复制。 如果解决方案具有全球性影响，请考虑在不同区域中数据中心内通过附加服务添加冗余，以便所有应用程序组件都托管在一个位置。 有关详细信息，请参阅 [Azure 搜索中的性能和优化](search-performance-optimization.md)。
 
 <a id="admin-rights"></a>
 
-## <a name="administrator-rights-in-azure-search"></a>Azure 搜索中的管理员权限
+## <a name="administrator-rights"></a>管理员权限
 预配或解除对服务本身的授权可以通过 Azure 订阅管理员或协同管理员完成。
 
 在服务中，具有服务 URL 与管理员 API 密钥访问权限的任何人都可以读取和写入服务，相当于可以对服务器对象（例如 API 密钥、索引、索引器、数据源、计划和角色分配）进行添加、删除或修改，就像通过 [RBAC 定义的角色](#rbac)实现一样。
@@ -56,7 +54,21 @@ Azure 搜索服务的所有用户交互属于下列模式之一：对服务的�
 
 <a id="sys-info"></a>
 
-## <a name="logging-in-azure-search-and-system-information"></a>登录 Azure 搜索和系统信息
+## <a name="set-rbac-roles-for-administrative-access"></a>针对管理访问权限设置 RBAC 角色
+对于通过门户或 Resource Manager API 管理的所有服务，Azure 提供了[基于全局角色的授权模型](../active-directory/role-based-access-control-configure.md)。 所有者、参与者和读者角色根据分配给每个角色的 Active Directory 用户、组和安全主体的服务管理，确定服务管理的级别。 
+
+对于 Azure 搜索，RBAC 权限确定以下管理任务：
+
+| 角色 | 任务 |
+| --- | --- |
+| 所有者 |创建或删除服务或者服务上的任何对象，包括 API 密钥、索引、索引器、索引器数据源和索引器计划。<p>查看服务状态，包括计数和存储大小。<p>添加或删除角色成员身份（仅所有者才能管理角色成员身份）。<p>订阅管理员和服务所有者拥有所有者角色的自动成员身份。 |
+| 参与者 |访问级别与所有者的访问级别相同，不包括 RBAC 角色管理。 例如，参与者可以查看和重新生成 `api-key`，但不能修改角色成员身份。 |
+| 读取器 |查看服务状态和查询密钥。 此角色的成员既不能更改服务配置，也无法查看管理密钥。 |
+
+请注意，角色不授予对服务终结点的访问权限。 搜索服务操作（例如索引管理、索引填充和搜索数据的查询）可通过 API 密钥而非角色进行控制。 有关详细信息，请参阅[什么是基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)中的“管理授权与数据操作”。
+
+<a id="secure-keys"></a>
+## <a name="logging-and-system-information"></a>日志记录和系统信息
 Azure 搜索服务不会通过门户或程序设计界面公开单个服务的日志文件。 在基本层以及更高层上，Microsoft 会监视所有 Azure 搜索服务以达到服务级别协议 (SLA) 的 99.9% 可用性。 如果服务的速度较慢或请求吞吐量低于 SLA 阈值，则支持团队审查提供给他们的日志文件并解决问题。
 
 根据服务的常规信息，可以通过以下方式获取信息：
@@ -67,7 +79,7 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 
 <a id="manage-keys"></a>
 
-## <a name="manage-the-api-keys"></a>管理 API 密钥
+## <a name="manage-api-keys"></a>管理 API 密钥
 对搜索服务的所有请求都需要专为服务生成的 API 密钥。 此 API 密钥是用于验证搜索服务终结点的访问的唯一机制。 
 
 API 密钥是随机生成的数字和字母所组成的字符串。 它以独占方式由服务生成。 通过 [RBAC 权限](#rbac)，可以删除或读取密钥，但无法借助用户定义的字符串替代已生成的密钥（具体而言，如果有常用的密码，则无法借助用户定义的密码替代 API 密钥）。 
@@ -87,22 +99,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 它以独占
 
 <a id="rbac"></a>
 
-## <a name="set-rbac-roles-on-administrative-access-for-azure-search"></a>针对 Azure 搜索的管理访问设定 RBAC 角色
-对于通过门户或 Resource Manager API 管理的所有服务，Azure 提供了[基于全局角色的授权模型](../active-directory/role-based-access-control-configure.md)。 所有者、参与者和读者角色根据分配给每个角色的 Active Directory 用户、组和安全主体的服务管理，确定服务管理的级别。 
-
-对于 Azure 搜索，RBAC 权限确定以下管理任务：
-
-| 角色 | 任务 |
-| --- | --- |
-| 所有者 |创建或删除服务或者服务上的任何对象，包括 API 密钥、索引、索引器、索引器数据源和索引器计划。<p>查看服务状态，包括计数和存储大小。<p>添加或删除角色成员身份（仅所有者才能管理角色成员身份）。<p>订阅管理员和服务所有者拥有所有者角色的自动成员身份。 |
-| 参与者 |访问级别与所有者的访问级别相同，不包括 RBAC 角色管理。 例如，参与者可以查看和重新生成 `api-key`，但不能修改角色成员身份。 |
-| 读取器 |查看服务状态和查询密钥。 此角色的成员既不能更改服务配置，也无法查看管理密钥。 |
-
-请注意，角色不授予对服务终结点的访问权限。 搜索服务操作（例如索引管理、索引填充和搜索数据的查询）可通过 API 密钥而非角色进行控制。 有关详细信息，请参阅[什么是基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)中的“管理授权与数据操作”。
-
-<a id="secure-keys"></a>
-
-## <a name="secure-the-api-keys"></a>保护 API 密钥
+## <a name="secure-api-keys"></a>保护 API 密钥
 通过门户或 Resource Manager 界面（PowerShell 或命令行接口）以限制访问，从而保护密钥安全。 如前所述，订阅管理员可以查看和重新生成所有 API 密钥。 作为预防措施，查看角色分配以了解谁有权访问管理密钥。
 
 1. 在服务仪表板中，单击“访问”图标以滑动打开“用户”边栏选项卡。
@@ -126,6 +123,21 @@ API 密钥是随机生成的数字和字母所组成的字符串。 它以独占
 > 缓存行为可暂时放宽限制。 例如，使用共享的服务时，你可能会看到文档计数超过 10,000 个文档的硬限制。 该超出情形是暂时的，将在下一次限制强制检查中检测出来。 
 > 
 > 
+
+## <a name="disaster-recovery-and-service-outages"></a>灾难恢复和服务中断
+
+虽然我们可以挽救你的数据，但 Azure 搜索在群集或数据中心级别发生服务中断时不提供服务的即时故障转移。 如果数据中心的群集出现故障，运营团队会检测故障，并努力还原服务。 你在服务还原期间会出现停机的情况。 可以根据[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) 申请服务信用额度来补偿服务不可用的情况。 
+
+为确保服务的连续性，包括超出 Microsoft 控制的灾难性故障，应在其他区域[预配一个附加服务](search-create-service-portal.md)并实施异地复制策略，以确保索引跨所有服务完全冗余。
+
+使用索引器来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 除了索引器，也可使用应用程序代码将对象和数据并行推送到其他服务。 有关详细信息，请参阅 [Azure 搜索中的性能和优化](search-performance-optimization.md)。
+
+## <a name="backup-and-restore"></a>备份和还原
+
+由于 Azure 搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 如果误删索引，用于创建和填充索引的应用程序代码是事实上的还原选项。 
+
+若要重新生成索引，请删除它（假设其存在），在服务中重新创建该索引，然后通过从主数据存储中检索数据来重新加载该索引。 在发生区域性服务中断时，也可以联系[客户支持]()来挽救索引。
+
 
 <a id="scale"></a>
 
@@ -162,7 +174,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 它以独占
 
 <a id="advanced-deployment"></a>
 
-## <a name="best-practices-on-scale-and-deployment-video"></a>缩放和部署的最佳实践（视频）
+## <a name="best-practices-on-scale-and-deployment"></a>缩放和部署的最佳实践
 此 30 分钟视频介绍高级部署方案的最佳实践，包括地理位置分布式工作负荷。 也可以查看 [Azure 搜索服务中的性能和优化](search-performance-optimization.md)，以获取有关介绍相同要点的帮助页。
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
@@ -186,10 +198,5 @@ API 密钥是随机生成的数字和字母所组成的字符串。 它以独占
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
 
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/16/2017
+ms.date: 03/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: a87a4a8b290318bb9fdd1ae0b5fdce00085f59df
-ms.openlocfilehash: 3fe19196ce6af2aeb52bf941ced1892a9a172d87
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: c682f9eac1a6ff5e3771aa9e4dfa5b5ffefc1223
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -75,6 +75,7 @@ Update 4 中进行了以下重大改进和 bug 修复。
 | 3 |支持包 |之前版本中存在与支持包相关的问题，该问题会导致 System.OutOfMemory 异常，或支持包创建失败的其他错误。 在此版本中已修复这些 bug。 |是 |是 |
 | 4 |监视 |在之前版本中，当监视本地固定卷的图表时会出现占用量显示在 EB 中的问题。 在此版本中已修复了此 bug。 |是 |是 |
 | 5 |迁移 |在之前版本中，当从 5000-7000 系列迁移到 8000 系列设备时，会出现若干与迁移可靠性相关的问题。 此版本中已解决这些问题。 |是 |是 |
+| 6 |更新 |在以前版本中，如果有更新失败，控制器会进入恢复模式，用户因此无法继续更新，需要联系 Microsoft 支持部门。 <br> 此版本更改了这一行为。 当两个控制器都运行相同版本（更新 4）后，如果用户遇到更新失败，控制器不进入恢复模式。 如果用户遇到此失败，建议稍作等待，然后重试更新。 重试可能会成功。 如果重试失败，应联系 Microsoft 支持部门。 |是 |是 |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>Update 4 中的已知问题（来自之前版本）

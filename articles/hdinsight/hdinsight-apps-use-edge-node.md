@@ -13,15 +13,17 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/02/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: a344a3a05c2a27e6b6500a6560c7fbb2096c9bfc
-ms.openlocfilehash: 0303145ba0ce611242f218cdf6a2274e9e393fb4
+ms.sourcegitcommit: fd30c5befb378a031e818c29e9bde72c1105bf78
+ms.openlocfilehash: ac7e47835b0ae4fee724c18df949cedfc3a16957
+ms.lasthandoff: 03/02/2017
 
 
 ---
 # <a name="use-empty-edge-nodes-in-hdinsight"></a>在 HDInsight 中使用空边缘节点
+
 了解如何将空边缘节点添加到基于 Linux 的 HDInsight 群集。 空边缘节点是安装并配置了与头节点中相同的客户端工具，但未运行 hadoop 服务的 Linux 虚拟机。 可以使用该边缘节点来访问群集、测试客户端应用程序和托管客户端应用程序。 
 
 可以将空边缘节点添加到现有 HDInsight 群集，或者在创建群集时将此类节点添加到新群集。 添加空边缘节点的操作是使用 Azure Resource Manager 模板完成的。  以下示例演示如何使用模板执行此操作：
@@ -57,6 +59,8 @@ ms.openlocfilehash: 0303145ba0ce611242f218cdf6a2274e9e393fb4
 
 如示例中所示，可以选择性地调用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md)来执行其他配置，例如，在边缘节点中安装 [Apache Hue](hdinsight-hadoop-hue-linux.md)。
 
+边缘节点虚拟机大小必须满足 HDInsight 群集工作节点 vm 的大小要求。 有关建议的工作节点 vm 的大小信息，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。
+
 创建边缘节点后，可以使用 SSH 连接到该节点，运行客户端工具访问 HDInsight 中的 Hadoop 群集。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>将边缘节点添加到现有群集
@@ -74,7 +78,7 @@ ms.openlocfilehash: 0303145ba0ce611242f218cdf6a2274e9e393fb4
    * **资源组**：选择用于现有 HDInsight 群集的资源组。
    * **位置**：选择现有 HDInsight 群集的位置。
    * **群集名**：输入现有 HDInsight 群集的名称。
-   * **边缘节点大小**：选择一个 VM 大小。
+   * **边缘节点大小**：选择一个 VM 大小。 vm 的大小必须满足工作节点 vm 的大小要求。 有关建议的工作节点 vm 的大小信息，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。
    * **边缘节点前缀**：默认值为 **new**。  如果使用默认值，边缘节点的名称为 **new-edgenode**。  可以通过门户自定义前缀。 也可以通过模板自定义完整名称。
 4. 选中“我同意上述条款和条件”，然后单击“购买”创建边缘节点。
 
@@ -144,10 +148,5 @@ ms.openlocfilehash: 0303145ba0ce611242f218cdf6a2274e9e393fb4
 * [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
 * [使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)：了解如何调用 Resource Manager 模板创建 HDInsight 群集。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

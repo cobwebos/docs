@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/14/2017
+ms.date: 02/28/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 296a842157e4ecae1b3700e1d22c56852ffc06a2
-ms.openlocfilehash: ad88d998302d264b2a0f607d8408cd12bf833a68
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 59d4e08d0e93096120cc74deb641385084cfd912
+ms.openlocfilehash: 8a4f3616ff314cb280e6673c71ebdcd5d9b3441c
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -52,6 +52,7 @@ ms.lasthandoff: 02/17/2017
     * [Redis 数据持久性](#redis-data-persistence)
     * [计划更新](#schedule-updates)
     * [虚拟网络](#virtual-network)
+    * [防火墙](#firewall)
     * [属性](#properties)
     * [锁](#locks)
     * [自动化脚本](#automation-script)
@@ -104,6 +105,7 @@ ms.lasthandoff: 02/17/2017
 * [Redis 数据持久性](#redis-data-persistence)
 * [计划更新](#schedule-updates)
 * [虚拟网络](#virtual-network)
+* [防火墙](#firewall)
 * [属性](#properties)
 * [锁](#locks)
 * [自动化脚本](#automation-script)
@@ -262,7 +264,7 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 
 
 
-## <a name="virtual-network"></a>虚拟网络
+### <a name="virtual-network"></a>虚拟网络
 使用“虚拟网络”部分，可配置缓存的虚拟网络设置。 有关利用 VNET 支持创建高级缓存并更新其设置的信息，请参阅[如何配置高级 Azure Redis 缓存的虚拟网络支持](cache-how-to-premium-vnet.md)。
 
 > [!IMPORTANT]
@@ -270,6 +272,20 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 > 
 > 
 
+### <a name="firewall"></a>防火墙
+
+单击“防火墙”，查看和配置高级 Azure Redis 缓存的防火墙规则。
+
+![防火墙](./media/cache-configure/redis-firewall-rules.png)
+
+可以指定具有开始和结束 IP 地址范围的防火墙规则。 配置防火墙规则时，仅指定 IP 地址范围内的客户端连接可以连接到缓存。 保存防火墙规则后，规则生效前会有短暂延迟。 延迟通常不超过&1; 分钟。
+
+> [!IMPORTANT]
+> 即使配置了防火墙规则，仍始终允许来自 Azure Redis 缓存监视系统的连接。
+> 
+> 防火墙规则仅适用于高级层缓存。
+> 
+> 
 
 ### <a name="properties"></a>属性
 单击“属性”查看有关缓存的信息，包括缓存终结点和端口。

@@ -12,27 +12,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 03/02/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 42acc73e1c97f5570e674d95627a760a7fc88154
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: e9018ffa74c2895560adbd4c0d2b83ee67e9eb1c
+ms.lasthandoff: 03/03/2017
 
 
 ---
 
 # <a name="task-presets-for-mes-media-encoder-standard"></a>MES (Media Encoder Standard) 的任务预设
 
-`Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设  
-  
- XML 或 JSON 现有字符串应基于以下文件中显示的预设。 可以将使用自定义值的预设传递到编码器（值必须有效。）有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
+**Media Encoder Standard** 定义了一组可以在创建编码作业时使用的编码预设。 如果想要使用媒体服务对视频进行编码以实现流式处理，建议使用“自适应流式处理”预设。 指定此预设时，Media Encoder Standard 将[自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)。 
+
+但是，如果需要自定义编码预设，应采用此部分中定义的某个编码预设作为模板，以用于自定义配置。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
   
 > [!NOTE]
 >  使用预设进行 4k 编码时，应获取 `S3` 保留单位类型。 有关详细信息，请参阅[如何缩放编码](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units)。  
   
- 使用 Media Encoder Standard 时，默认启用旋转。 如果视频在智能手机或其他移动设备上采用纵向模式录制，则默认情况下，这些预设会在编码之前将其旋转为横向模式（与 Azure 媒体编码器不同，使用 Azure 媒体编码器时，需手动进行视频旋转，如[此](http://azure.microsoft.com/blog/2014/08/21/advanced-encoding-features-in-azure-media-encoder/)博客的“视频旋转”中所述）。  
+使用 Media Encoder Standard 时，默认启用旋转。 如果视频在智能手机或其他移动设备上采用纵向模式录制，则默认情况下，这些预设会在编码之前将其旋转为横向模式（与 Azure 媒体编码器不同，使用 Azure 媒体编码器时，需手动进行视频旋转，如[此](http://azure.microsoft.com/blog/2014/08/21/advanced-encoding-features-in-azure-media-encoder/)博客的“视频旋转”中所述）。  
   
- 预设名称会映射到以下主题中所示的预设。  
+可用预设：  
   
  [H264 多比特率 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md) 生成一组 8 GOP 对齐的 MP4 文件（范围从 6000 kbps 到 400 kbps）和 AAC 5.1 音频。  
   
@@ -85,9 +86,4 @@ ms.openlocfilehash: 42acc73e1c97f5570e674d95627a760a7fc88154
  [H264 单比特率低质量 SD (Android)](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) 生成比特率为 56 kbps 的单个 MP4 文件和立体声 AAC 音频。  
   
  有关媒体服务编码器的详细信息，请参阅[使用 Azure 媒体服务按需编码](https://azure.microsoft.com/en-us/documentation/articles/media-services-encode-asset/)。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

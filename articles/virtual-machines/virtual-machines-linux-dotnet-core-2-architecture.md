@@ -15,13 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bd214be3aec3fbfa70fe579447f1e00f17a354c7
-ms.openlocfilehash: e3840e6f688d586650d877a854ee81035ce39b48
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 764ef15f631166bf720c846aa3b4f4b6936054d9
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="application-architecture-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板的应用程序体系结构
+# <a name="application-architecture-with-azure-resource-manager-templates-for-linux-vms"></a>适用于 Linux VM 的使用 Azure Resource Manager 模板的应用程序体系结构
+
 开发 Azure Resource Manager 部署时，需要将计算要求映射到 Azure 资源和服务。 如果应用程序由多个 http 终结点、一个数据库和一个数据缓存服务组成，则需要合理化托管其中每个组件的 Azure 资源。 例如，示例音乐应用商店应用程序包含一个托管在虚拟机上的 Web 应用程序，以及一个托管在 Azure SQL 数据库中的 SQL 数据库。 
 
 本文档详细说明如何在示例 Azure Resource Manager 模板中配置音乐应用商店计算资源。 所有依赖项和独特配置都已突出显示。 为了获得最佳体验，请将一个解决方案实例预先部署到 Azure 订阅，然后将它与 Azure Resource Manager 模板配合运行。 可通过以下链接找到完整模板 – [Ubuntu 上的音乐应用商店部署](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。 
@@ -270,10 +273,5 @@ Azure 门户中显示的 SQL Server 和 MusicStore 数据库视图。
 <hr>
 
 [步骤 2 - Azure Resource Manager 模板中的访问权限和安全性](virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

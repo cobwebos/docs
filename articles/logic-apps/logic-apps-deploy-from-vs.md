@@ -1,6 +1,6 @@
 ---
-title: "在 Visual Studio 中生成和部署 Azure 逻辑应用 | Microsoft Docs"
-description: "创建 Visual Studio 项目以在 Azure 中设计、生成和部署逻辑应用。"
+title: "在 Visual Studio 中创建、生成和部署逻辑应用 - Azure 逻辑应用 | Microsoft Docs"
+description: "创建 Visual Studio 项目以便设计、生成和部署 Azure 逻辑应用。"
 author: jeffhollan
 manager: anneta
 editor: 
@@ -12,17 +12,21 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: bbee0bae5a20375f0de8adaedadd682dc051fb64
-ms.openlocfilehash: d1b0ca953e5ee40129f00b78ad1a46514270d448
-
+ms.sourcegitcommit: 2fafb3c127183c4903ed7ee0da5811988db9116c
+ms.openlocfilehash: 3c0c24a75c82355798bcaa6d8a36f055400a2649
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="build-and-deploy-azure-logic-apps-in-visual-studio"></a>在 Visual Studio 中生成和部署 Azure 逻辑应用
 
-虽然 [Azure 门户](https://portal.azure.com/)提供了设计和管理逻辑应用很好的方法，但你可能想要使用 Visual Studio 生成和部署逻辑应用。 Visual Studio 提供了丰富的工具，使你能够使用逻辑应用设计器生成逻辑应用，配置部署和自动化模板，并部署到任何环境。
+# <a name="design-build-and-deploy-azure-logic-apps-in-visual-studio"></a>在 Visual Studio 中设计、生成和部署 Azure 逻辑应用
+
+虽然 [Azure 门户](https://portal.azure.com/)提供了创建和管理 Azure 逻辑应用的良好方法，但你可能想要使用 Visual Studio 设计、生成和部署逻辑应用。 Visual Studio 提供了丰富的工具（如逻辑应用设计器），使你能够创建逻辑应用，配置部署和自动化模板，并部署到任何环境。 
+
+若要开始使用 Azure 逻辑应用，请参阅[如何在 Azure 门户中创建第一个逻辑应用](logic-apps-create-a-logic-app.md)。
 
 ## <a name="installation-steps"></a>安装步骤
 
@@ -30,7 +34,7 @@ ms.openlocfilehash: d1b0ca953e5ee40129f00b78ad1a46514270d448
 
 ### <a name="prerequisites"></a>先决条件
 
-* [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
+* [Visual Studio 2015 或 Visual Studio 2017](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * [最新版 Azure SDK](https://azure.microsoft.com/downloads/)（2.9.1 或更高版本）
 * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 * 使用嵌入式设计器访问 Web
@@ -39,7 +43,7 @@ ms.openlocfilehash: d1b0ca953e5ee40129f00b78ad1a46514270d448
 
 安装必备组件后，请执行以下操作：
 
-1. 打开 Visual Studio 2015。 在“工具”菜单上，选择“扩展和更新”。
+1. 打开 Visual Studio。 在“工具”菜单上，选择“扩展和更新”。
 2. 展开“联机”类别以在线搜索。
 3. 浏览或搜索“逻辑应用”，直至找到“适用于 Visual Studio 的 Azure 逻辑应用工具”。
 4. 若要下载和安装扩展，请单击“下载”。
@@ -69,7 +73,7 @@ ms.openlocfilehash: d1b0ca953e5ee40129f00b78ad1a46514270d448
 
     ![部署文件](./media/logic-apps-deploy-from-vs/deployment.png)
 
-## <a name="create-your-logic-app-in-logic-app-designer"></a>在逻辑应用设计器中创建逻辑应用
+## <a name="create-your-logic-app-with-logic-app-designer"></a>使用逻辑应用设计器创建逻辑应用
 
 如果已具有包含逻辑应用的 Azure 资源组项目，可以在 Visual Studio 中打开逻辑应用设计器以创建工作流。 
 
@@ -156,7 +160,7 @@ Visual Studio 将 `Microsoft.Web/connections` 资源添加到逻辑应用运行�
 
 如果保存应用时逻辑应用出现任何错误，这些错误都将显示在 Visual Studio 的“输出”窗口中。
 
-## <a name="deploy-your-logic-app"></a>部署逻辑应用
+## <a name="deploy-your-logic-app-from-visual-studio"></a>从 Visual Studio 部署逻辑应用
 
 完成应用配置后，只需几个步骤，即可直接从 Visual Studio 进行部署。 
 
@@ -201,13 +205,8 @@ Visual Studio 将 `Microsoft.Web/connections` 资源添加到逻辑应用运行�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要开始使用 Azure 逻辑应用，请参阅本教程：[创建第一个逻辑应用](logic-apps-create-a-logic-app.md)
+* [使用 Visual Studio Cloud Explorer 管理逻辑应用](logic-apps-manage-from-vs.md)
 * [查看常见示例和方案](logic-apps-examples-and-scenarios.md)
 * [了解如何使用 Azure 逻辑应用自动执行业务流程](http://channel9.msdn.com/Events/Build/2016/T694)
 * [了解如何将系统与 Azure 逻辑应用集成](http://channel9.msdn.com/Events/Build/2016/P462)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

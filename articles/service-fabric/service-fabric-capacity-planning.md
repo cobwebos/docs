@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/14/2016
+ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e95d00d0ff9bcb825bfe3fcc787386c8c8133c69
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: caeb0569de89b1af7b87f393601c7aa1a1e293dc
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -45,30 +46,25 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 ## <a name="account-for-growth"></a>考虑增长
 除了最初使用的 DB_Size，可能需要根据预期服务增长的 DB_Size 来计算节点。 然后，随着服务的发展而增加节点数目，以便不会过度预配节点数目。 但是，分区数目应该基于以最大增长率运行服务时所需的节点数。
 
-最好随时准备几台额外的计算机，以便可以处理任何意外的高峰或故障（例如，一些 VM 停机）。  尽管额外的容量要使用预期高峰来确定，但一开始可以多预留几个 VM（额外准备 5-10%）。
+最好随时准备几台额外的计算机，以便可以处理任何意外的高峰或故障（例如，一些 VM 停机）。  尽管额外的容量要使用预期高峰来确定，但一开始可以多预留几个 VM（额外准备&5;-10%）。
 
 上面假设只有一个有状态服务。 如果有多个有状态服务，则必须将与其他服务关联的 DB_Size 添加到公式中。 或者，可以单独为每个有状态服务计算节点数。  服务可能包含不平衡的副本或分区。 请记住，有些分区的数据可能比其他分区要多。 有关分区的详细信息，请参阅[分区最佳实践文章](service-fabric-concepts-partitioning.md)。 但是，上述公式不受分区或副本影响，因为 Service Fabric 可确保副本以优化方式分散在节点之间。
 
 ## <a name="use-a-spreadsheet-for-cost-calculation"></a>使用电子表格进行成本计算
 现在，让我们在公式中放入一些实际数字。 [示例电子表格](https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/SF%20VM%20Cost%20calculator-NEW.xlsx)显示如何规划包含三种数据对象类型的应用程序的容量。 针对每个对象，我们将估算其大小以及预期需要的对象数。 我们还将选择对每个对象类型需要的副本数。 电子表格将计算要在群集中存储的内存量总计。
 
-然后，输入 VM 大小和每月成本。 根据 VM 大小，电子表格将告诉你必须至少要提供多少个分区才能拆分数据，使其能够实际包含在节点中。 可能需要大量的分区才能应对应用程序的特定计算和网络流量需求。 电子表格显示目前管理用户配置文件对象的分区数已从 1 个增加到 6 个。
+然后，输入 VM 大小和每月成本。 根据 VM 大小，电子表格将告诉你必须至少要提供多少个分区才能拆分数据，使其能够实际包含在节点中。 可能需要大量的分区才能应对应用程序的特定计算和网络流量需求。 电子表格显示目前管理用户配置文件对象的分区数已从&1; 个增加到&6; 个。
 
 现在，根据所有这些信息，电子表格将显示你实际可以获取包含 26 个节点的群集上所需分区和副本的所有数据。 但是，此群集将密集压缩，因此你可能想要添加一些节点来应对节点故障和升级。 电子表格还显示，节点数超过 57 个不会带来任何附加价值，因为这会出现空节点。 不过，你可能仍然想要配置超过 57 个节点，以应对节点故障和升级。 你可以根据应用程序的特定需求调整电子表格。   
 
 ![用于成本计算的电子表格][Image1]
 
 ## <a name="next-steps"></a>后续步骤
-查看[为 Service Fabric 服务分区][10]，了解有关为服务分区的详细信息。
+查看 [Service Fabric 服务分区][10]，了解有关对服务进行分区的详细信息。
 
 <!--Image references-->
 [Image1]: ./media/SF-Cost.png
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-concepts-partitioning.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

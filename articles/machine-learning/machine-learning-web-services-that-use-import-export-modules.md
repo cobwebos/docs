@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/13/2016
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: 0dc02034ea1f3c4f8413aca1ff693838ad1e49bd
+ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
+ms.openlocfilehash: 30a3a6c438bae191605e35c352cf03fd8eaddf0f
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -107,7 +108,7 @@ ms.openlocfilehash: 0dc02034ea1f3c4f8413aca1ff693838ad1e49bd
 9. 找到请求声明并更新传递到*导入数据*和*导出数据*模块的值。 在此情况下，将使用原始查询，但定义新的表名称。
    
         var request = new BatchExecutionRequest() 
-        {           
+        {            
             GlobalParameters = new Dictionary<string, string>() {
                 { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
                 { "Table", "dbo.ScoredTable2" },
@@ -118,6 +119,10 @@ ms.openlocfilehash: 0dc02034ea1f3c4f8413aca1ff693838ad1e49bd
 完成运行时，将新表添加到包含评分结果的数据库。
 
 ### <a name="deploy-a-new-web-service"></a>部署新的 Web 服务
+
+> [!NOTE] 
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。 
+
 若要部署为新的 Web 服务并创建一个应用程序来使用它：
 
 1. 在实验画布的底部，单击“**运行**”。
@@ -131,7 +136,7 @@ ms.openlocfilehash: 0dc02034ea1f3c4f8413aca1ff693838ad1e49bd
 9. 找到 *scoreRequest* 声明并更新传递到*导入数据*和*导出数据*模块的值。 在此情况下，将使用原始查询，但定义新的表名称。
    
         var scoreRequest = new
-        {       
+        {        
             Inputs = new Dictionary<string, StringTable>()
             {
             },
@@ -141,10 +146,5 @@ ms.openlocfilehash: 0dc02034ea1f3c4f8413aca1ff693838ad1e49bd
             }
         };
 10. 运行应用程序。 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

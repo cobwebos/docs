@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/10/2016
+ms.date: 3/01/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87fa4373e5496a91d4e808ceb45095a6aea9e884
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 55baaf0984e01f3cbca7b2296f0b24661e70e7b5
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -24,8 +25,6 @@ ms.openlocfilehash: 87fa4373e5496a91d4e808ceb45095a6aea9e884
 > [!div class="op_single_selector"]
 > * [管理用户或组的访问权限](role-based-access-control-manage-assignments.md)
 > * [管理资源的访问权限](role-based-access-control-configure.md)
-> 
-> 
 
 借助 Azure Active Directory 预览版中基于角色的访问控制 (RBAC)，可以管理对你的 Azure 资源的访问权限。 [预览包括哪些内容？](active-directory-preview-explainer.md)
 
@@ -48,7 +47,7 @@ ms.openlocfilehash: 87fa4373e5496a91d4e808ceb45095a6aea9e884
 4. 在用户边栏选项卡上，选择“Azure 资源”。 将列出该用户的所有访问权限分配。
 
 ### <a name="read-permissions-to-view-assignments"></a>查看分配的读取权限
-本页仅显示你有权读取的访问权限分配。 例如，你具有对订阅 A 的读取权限，然后转到 Azure 资源边栏选项卡以检查用户的分配。 你可以看到她的订阅 A 的访问权限分配，但看不到她还具有的订阅 B 上的访问权限分配。
+本页仅显示你有权读取的访问权限分配。 例如，你具有对订阅 A 的读取权限，然后转到 Azure 资源边栏选项卡以检查用户的分配。 你可以看到她的订阅 A 的访问权限分配，但看不到她还具有订阅 B 上的访问权限分配。
 
 ## <a name="delete-access-assignments"></a>删除访问权限分配
 通过此边栏选项卡，可以删除已直接分配给用户或组的访问权限分配。 如果访问权限分配继承自父组，需要转到资源或订阅，然后在该处管理相应的分配。
@@ -57,13 +56,9 @@ ms.openlocfilehash: 87fa4373e5496a91d4e808ceb45095a6aea9e884
 2. 选择“删除”，然后选择“是”以确认。
     ![删除访问权限分配 - 屏幕截图](./media/role-based-access-control-manage-assignments/delete_assignment.png)
 
-## <a name="related-topics"></a>相关主题
+## <a name="next-steps"></a>后续步骤
+
 * 开始使用基于角色的访问控制，以[使用角色分配来管理对 Azure 订阅资源的访问权限](role-based-access-control-configure.md)。
 * 请参阅 [RBAC 内置角色](role-based-access-built-in-roles.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

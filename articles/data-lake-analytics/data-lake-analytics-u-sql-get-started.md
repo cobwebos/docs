@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 96747e898b2d84cbce9251758a90941f85112dd0
-ms.openlocfilehash: 7aa3844b9bdc2c5372c6e54b05296dcde6b1c05f
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: dc8c7beaf5b8e8d4f5467ffe22390c41f446d787
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -55,7 +56,7 @@ U-SQL 在某些方面与 ANSI SQL 或 T-SQL 不同。 例如，SELECT 这样的�
 
 在脚本中，可以找到以下概念和关键字：
 
-* 行集变量：生成行集的每个查询表达式都可以分配给一个变量。 U-SQL 遵循 T-SQL 变量命名模式，例如，脚本中的 (@searchlog,)。
+* 行集变量：生成行集的每个查询表达式都可以分配给一个变量。 在脚本中，U-SQL 遵循 T-SQL 变量命名模式（例如 @searchlog）。
 
  >[!NOTE]
  >分配不会强制执行。 它只是为表达式命名，以便可以构建更复杂的表达式。
@@ -64,9 +65,9 @@ U-SQL 在某些方面与 ANSI SQL 或 T-SQL 不同。 例如，SELECT 这样的�
 
  >[!NOTE]
  >这两个路径是相对路径。 也可使用绝对路径。 例如：    
- >     adl://<ADLStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
+ >     adl://\<ADLStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
  >
- >必须使用绝对路径来访问链接存储帐户中的文件。  链接的 Azure 存储帐户中存储的文件的语法是：wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
+ >必须使用绝对路径来访问链接存储帐户中的文件。  链接 Azure 存储帐户中存储的文件的语法是：wasb://\<BlobContainerName>@\<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
  >[!NOTE]
  >当前不支持对含公共 Blob 的 Azure Blob 存储容器或公共容器的访问权限。
@@ -410,9 +411,4 @@ JOIN 中的谓词必须是相等联接而不是表达式。 如果想要使用�
 * [提交功能请求](http://aka.ms/adlafeedback)
 * [在论坛中获得帮助](http://aka.ms/adlaforums)
 * [提供有关 U-SQL 的反馈](http://aka.ms/usqldiscuss)
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 
