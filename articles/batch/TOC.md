@@ -1,6 +1,7 @@
 # 概述
 ## [什么是 Azure 批处理](batch-technical-overview.md)
 ## [功能概述](batch-api-basics.md)
+## [API 和工具](batch-apis-tools.md)
 ## [配额和限制](batch-quota-limit.md)
 # 入门
 ## [创建批处理帐户](batch-account-create-portal.md)
@@ -25,7 +26,8 @@
 ### [批处理诊断日志](batch-diagnostics.md)
 
 # 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.3.0/azurerm.batch)
+## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)
+## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest)
@@ -45,9 +47,4 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -5,17 +5,20 @@
 
 # 入门
 ## [创建实验室](devtest-lab-create-lab.md)
+## [创建公式](devtest-lab-create-formulas.md)
 ## [创建 VM](devtest-lab-add-vm.md)
+## [管理基本实验室策略](devtest-lab-get-started-with-lab-policies.md)
 ## [创建训练实验室](devtest-lab-training-lab.md)
 ## [常见问题](devtest-lab-faq.md)
 
 # 如何
 ## 管理实验室
 ### [添加实验室所有者与用户](devtest-lab-add-devtest-user.md)
-### [定义实验室策略](devtest-lab-set-lab-policy.md)
+### [管理所有实验室策略](devtest-lab-set-lab-policy.md)
 ### [为策略授予权限](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)
 ### [配置成本管理](devtest-lab-configure-cost-management.md)
 ### [配置虚拟网络](devtest-lab-configure-vnet.md)
+### [了解共享的 IP 地址](devtest-lab-shared-ip.md)
 
 ## 管理项目
 ### [添加项目存储库](devtest-lab-add-artifact-repo.md)
@@ -33,8 +36,6 @@
 ### [使用 AzCopy 上载 VHD 文件](devtest-lab-upload-vhd-using-azcopy.md)
 ### [使用 PowerShell 上载 VHD 文件](devtest-lab-upload-vhd-using-powershell.md)
 ### [使用存储资源管理器上载 VHD 文件](devtest-lab-upload-vhd-using-storage-explorer.md)
-
-
 
 # 资源
 ## [服务更新](https://azure.microsoft.com/updates/?product=devtest-lab)

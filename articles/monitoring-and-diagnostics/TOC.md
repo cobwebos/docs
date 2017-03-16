@@ -37,8 +37,10 @@
 ### [使用 Resource Manager 模板启用诊断设置](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)
 ## 使用 REST API
 ### [REST API 用法演练](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
+## 使用 Azure 诊断
+### [发送到 Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-applicationinsights.md)
 
-# 参考
+# 引用
 ## [PowerShell](/powershell/resourcemanager/azurerm.insights/v1.0.12/azurerm.insights?redirectedfrom=msdn#40v=azure.200#41)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST](/rest/api/monitor/)
@@ -52,8 +54,3 @@
 ## [PowerShell 示例](../monitoring-and-diagnostics/insights-powershell-samples.md)
 ## [Azure CLI 1.0 示例](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [支持的指标列表](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

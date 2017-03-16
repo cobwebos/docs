@@ -2,13 +2,16 @@
 ## [什么是虚拟机规模集？](virtual-machine-scale-sets-overview.md)
 
 # 入门
-## [在门户中创建规模集](virtual-machine-scale-sets-portal-create.md)
-## [使用 Azure CLI 创建规模集](virtual-machine-scale-sets-linux-create-cli.md)
-## [使用 Resource Manager 模板创建规模集](virtual-machine-scale-sets-mvss-start.md)
+## [在门户中部署规模集](virtual-machine-scale-sets-portal-create.md)
+## [使用 Azure CLI 部署规模集](virtual-machine-scale-sets-linux-create-cli.md)
+## [使用 Resource Manager 模板部署简单规模集](virtual-machine-scale-sets-mvss-start.md)
 
 # 如何
 ## 规划和设计
 ### [设计注意事项](virtual-machine-scale-sets-design-overview.md)
+## 编写 VM 规模集模板以
+### [部署简单规模集](virtual-machine-scale-sets-mvss-start.md)
+### [将规模集部署到现有虚拟网络](virtual-machine-scale-sets-mvss-existing-vnet.md)
 
 ## 部署
 ### [使用门户部署规模集](virtual-machine-scale-sets-portal-create.md)
@@ -37,7 +40,10 @@
 ## 故障排除
 ### [自动缩放](virtual-machine-scale-sets-troubleshoot.md)
 
-# 参考
+## 常见问题
+### [规模集常见问题](virtual-machine-scale-sets-faq.md)
+
+# 引用
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
 ## [REST](/rest/api/virtualmachinescalesets/)

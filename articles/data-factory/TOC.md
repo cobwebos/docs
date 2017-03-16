@@ -62,12 +62,12 @@
 ### [HDInsight Pig 活动](data-factory-pig-activity.md)
 ### [HDInsight MapReduce 活动](data-factory-map-reduce.md)
 ### [HDInsight Streaming 活动](data-factory-hadoop-streaming-activity.md)
+### [HDInsight Spark 活动](data-factory-spark.md)
 ### [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 ### [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 ### [存储过程活动](data-factory-stored-proc-activity.md)
 ### [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 ### [.NET 自定义活动](data-factory-use-custom-activities.md)
-### [调用 Spark 程序](data-factory-spark.md)
 ### [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 ## 开发
 ### [Azure Resource Manager 模板](data-factory-how-to-use-resource-manager-templates.md)

@@ -19,9 +19,10 @@
 ## 计划
 ### [部署先决条件](site-recovery-prereq.md)
 ### [网络基础结构注意事项](site-recovery-network-design.md)
-### [运行 Site Recovery Capacity Planner 以进行 Hyper-V 复制](site-recovery-capacity-planner.md)
 ### [规划容量以及缩放 VMware 在 Azure 中的复制](site-recovery-plan-capacity-vmware.md)
-### [运行 Deployment Planner 将 VMware 复制到 Azure](site-recovery-deployment-planner.md)
+### [用于将 VMware 复制到 Azure 的 Deployment Planner](site-recovery-deployment-planner.md)
+### [用于 Hyper-V 复制的 Site Recovery Capacity Planner](site-recovery-capacity-planner.md)
+
 ## 配置
 ### [设置源环境](site-recovery-set-up-vmware-to-azure.md)
 ### [设置目标环境](site-recovery-prepare-target-vmware-to-azure.md)
@@ -29,14 +30,14 @@
 ### [部署移动服务用于 VMware 复制](site-recovery-vmware-to-azure-install-mob-svc.md)
 #### [使用 System Center Configuration Manager 部署移动服务](site-recovery-install-mobility-service-using-sccm.md)
 #### [使用 Azure Automation DSC 部署移动服务](site-recovery-automate-mobility-service-install.md)
+### [启用复制](site-recovery-replicate-vmware-to-azure.md)
 ## 故障转移和故障回复
-### [Site Recovery 中的故障转移](site-recovery-failover.md)
+### [故障转移受保护的计算机](site-recovery-failover.md)
 ### [设置恢复计划](site-recovery-create-recovery-plans.md)
 #### [将 Azure Runbook 添加到恢复计划](site-recovery-runbook-automation.md)
-### [运行测试故障转移到 Azure](site-recovery-test-failover-to-azure.md)
-### [在两个 VMM 站点之间运行测试故障转移](site-recovery-test-failover-vmm-to-vmm.md)
-### [从 Azure 故障回复 VMware VM/物理服务器](site-recovery-how-to-failback-azure-to-vmware.md)
-### [从 Azure 故障回复 Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
+### [运行测试故障转移](site-recovery-test-failover-to-azure.md)
+### [在故障转移后重新保护计算机](site-recovery-how-to-reprotect.md)
+### [从 Azure 进行故障回复](site-recovery-failback-azure-to-vmware.md)
 
 ## 迁移
 ### [迁移到 Azure](site-recovery-migrate-to-azure.md)
@@ -56,9 +57,13 @@
 ### [将 Hyper-V 自动复制到 Azure（包含 VMM）](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 ### [将 Hyper-V 自动复制到辅助站点（包含 VMM）](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
 ## 管理
+### [编辑复制设置](site-recovery-setup-replication-settings-vmware.md#edit-replication-policy.md)
+### [在 Azure 中管理进程服务器](site-recovery-vmware-setup-azure-ps-resource-manager.md)
+### [管理配置服务器](site-recovery-vmware-to-azure-manage-configuration-server.md)
+### [管理横向扩展的进程服务器](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)
+### [管理 vCenter 服务器](site-recovery-vmware-to-azure-manage-vCenter.md)
 ### [删除服务器并禁用保护](site-recovery-manage-registration-and-protection.md)
-### [横向扩展进程服务器](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)
-### [监视和故障排除](site-recovery-monitoring-and-troubleshooting.md)
+## [监视和故障排除](site-recovery-monitoring-and-troubleshooting.md)
 
 # 参考
 ## [PowerShell](/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery)

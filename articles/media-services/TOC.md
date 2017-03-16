@@ -45,6 +45,7 @@
 
 ## [对内容进行编码](media-services-encode-asset.md)
 ### [比较编码器](media-services-compare-encoders.md)
+### [管理编码的速度和并发度](media-services-manage-encoding-speed.md)
 ### Media Encoder Standard (MES)
 #### [Media Encoder Standard 格式和编解码器](media-services-media-encoder-standard-formats.md)
 #### [使用 MES 自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)
@@ -120,16 +121,16 @@
 ## [保护](media-services-content-protection-overview.md)
 ### [在门户中配置内容保护](media-services-portal-protect-content.md)
 ### [为流配置 AES-128 明文密钥](media-services-protect-with-aes128.md)
-### [使用 AMS REST API 通过存储空间加密来加密内容](media-services-rest-storage-encryption.md)
+### [将 REST 与存储加密配合使用来加密内容](media-services-rest-storage-encryption.md)
 ### [媒体服务 PlayReady 许可证模板概述](media-services-playready-license-template-overview.md)
 ### [Widevine 许可证模板概述](media-services-widevine-license-template-overview.md)
 ### [DRM 许可证传送](media-services-deliver-keys-and-licenses.md)
-### [使用合作伙伴将 Widevine 许可证传送到 Azure 媒体服务](media-services-licenses-partner-integration.md)
+### [使用合作伙伴将 Widevine 许可证传送到媒体服务](media-services-licenses-partner-integration.md)
 ### [使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-drm.md)
-### [使用 Azure 媒体服务流式传输受 Apple FairPlay 保护的 HLS 内容](media-services-protect-hls-with-fairplay.md)
-### [使用多重 DRM 的 CENC 和访问控制：Azure 与 Azure 媒体服务的参考设计和实现](media-services-cenc-with-multidrm-access-control.md)
-### [使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务](media-services-axinom-integration.md)
-### [使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务](media-services-castlabs-integration.md)
+### [流式传输受 Apple FairPlay 保护的 HLS 内容](media-services-protect-hls-with-fairplay.md)
+### [使用多重 DRM 的 CENC 和访问控制](media-services-cenc-with-multidrm-access-control.md)
+### [使用 Axinom 将 Widevine 许可证传送到媒体服务](media-services-axinom-integration.md)
+### [使用 castLabs 将 Widevine 许可证传送到媒体服务](media-services-castlabs-integration.md)
 
 ### 资产传送
 #### 配置资产传送策略
@@ -191,7 +192,8 @@
 ### [授权 Microsoft 平滑流式处理客户端移植工具包](media-services-sspk.md)
 
 ## 集成
-### [Azure Functions](https://github.com/azure-samples/media-services-dotnet-functions-integration)
+### [将 Azure Functions 与媒体服务配合使用](media-services-dotnet-how-to-use-azure-functions.md)
+### [将 Azure Functions 与媒体服务配合使用的示例](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
 ## 监视
 ### 检查作业进度

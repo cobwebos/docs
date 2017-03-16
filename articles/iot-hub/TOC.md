@@ -96,7 +96,10 @@
 #### [故障排除](iot-hub-intel-edison-kit-c-troubleshooting.md)
 
 ## 使用 Arduino
-### [Node.js](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+
+### [Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
+
+### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### 第 1 课：配置设备
 ##### [配置设备](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-configure-your-device.md)
 ##### [获取工具 (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md)
@@ -116,6 +119,7 @@
 ##### [运行用于接收消息的示例应用程序](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
 ##### [可选：更改 LED 行为](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
 #### [故障排除](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
+
 
 ## 使用网关 SDK
 ### [Linux 上的模拟](iot-hub-linux-gateway-sdk-get-started.md)
@@ -140,6 +144,8 @@
 ##### [创建 Azure Function App 和 Azure 存储帐户](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
 ##### [读取 Azure 表存储中保存的消息](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md)
 
+#### [第 5 课：创建你的第一个 Azure IoT 网关模块](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
+
 #### [故障排除](iot-hub-gateway-kit-c-sim-troubleshooting.md)
 
 ### [SensorTag 设备](iot-hub-gateway-kit-c-get-started.md)
@@ -159,6 +165,8 @@
 #### 第 4 课：将消息保存到 Azure 表存储
 ##### [创建 Azure Function App 和 Azure 存储帐户](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
 ##### [读取 Azure 表存储中保存的消息](iot-hub-gateway-kit-c-lesson4-read-table-storage.md)
+
+#### [第 5 课：创建你的第一个 Azure IoT 网关模块](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
 
 ##### [故障排除](iot-hub-gateway-kit-c-troubleshooting.md)
 
@@ -180,7 +188,7 @@
 #### [从设备上载文件](iot-hub-devguide-file-upload.md)
 #### [管理设备标识](iot-hub-devguide-identity-registry.md)
 #### [控制对 IoT 中心的访问](iot-hub-devguide-security.md)
-#### [了解设备克隆](iot-hub-devguide-device-twins.md)
+#### [了解设备孪生](iot-hub-devguide-device-twins.md)
 #### [对设备调用直接方法](iot-hub-devguide-direct-methods.md)
 #### [在多个设备上计划作业](iot-hub-devguide-jobs.md)
 #### [IoT 中心终结点](iot-hub-devguide-endpoints.md)
@@ -198,7 +206,7 @@
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
 ### [从设备上载文件](iot-hub-csharp-csharp-file-upload.md)
-### 设备克隆入门
+### 设备孪生入门
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-twin-getstarted.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-getstarted.md)
 ### 使用直接方法
@@ -219,7 +227,7 @@
 ## 管理
 ### 创建 IoT 中心 
 #### [使用门户](iot-hub-create-through-portal.md)
-#### [使用 CLI 2.0 预览版](iot-hub-create-using-cli.md)
+#### [使用 CLI 2.0](iot-hub-create-using-cli.md)
 #### [使用 CLI](iot-hub-create-using-cli-nodejs.md)
 #### [使用 REST API](iot-hub-rm-rest.md)
 #### [使用 PowerShell](iot-hub-rm-template-powershell.md)
@@ -250,7 +258,7 @@
 ## [网关 SDK](http://azure.github.io/azure-iot-gateway-sdk)
 ## [REST（资源提供程序）](https://docs.microsoft.com/rest/api/iothub/iothubresource)
 ## [REST（设备标识）](https://docs.microsoft.com/rest/api/iothub/deviceapi)
-## [REST（设备克隆）](https://docs.microsoft.com/rest/api/iothub/devicetwinapi)
+## [REST（设备孪生）](https://docs.microsoft.com/rest/api/iothub/devicetwinapi)
 ## [REST（设备消息传送）](https://docs.microsoft.com/rest/api/iothub/httpruntime)
 ## [REST（作业）](https://docs.microsoft.com/rest/api/iothub/jobapi)
 

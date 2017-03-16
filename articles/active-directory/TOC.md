@@ -79,9 +79,12 @@
 ### [有风险的登录](active-directory-reporting-security-risky-sign-ins.md)
 ### [风险事件](active-directory-reporting-risk-events.md)
 ### [命名网络](active-directory-known-networks-azure-portal.md)
-### [常见问题](active-directory-reporting-faq.md)
 ### [报告迁移](active-directory-reporting-migration.md)
 ### [保留](active-directory-reporting-retention.md)
+### [常见问题](active-directory-reporting-faq.md)
+### 故障排除
+#### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
+#### [在下载项中缺少数据](active-directory-reporting-troubleshoot-missing-data-download.md)
 ###    以编程方式访问
 #### [审核参考](active-directory-reporting-api-audit-reference.md)
 #### [审核示例](active-directory-reporting-api-audit-samples.md)
@@ -124,13 +127,14 @@
 #### [故障排除](active-directory-passwords-troubleshoot.md)
 
 ## 管理设备
-### [注册设备](active-directory-conditional-access-device-registration-overview.md)
-#### [管理自动注册](active-directory-conditional-access-automatic-device-registration.md)
+### [注册设备](active-directory-device-registration-overview.md)
+#### [管理自动注册](active-directory-device-registration.md)
 #### [设置](active-directory-conditional-access-automatic-device-registration-setup.md)
-#### [常见问题](active-directory-conditional-access-automatic-device-registration-faq.md)
+#### [本地部署](active-directory-device-registration-on-premises-setup.md)
+#### [常见问题](active-directory-device-registration-faq.md)
 #### 故障排除
-##### [对 Windows 10 和 Windows Server 2016 进行故障排除](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
-##### [对 Windows 下层客户端进行故障排除](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
+##### [对 Windows 10 和 Windows Server 2016 进行故障排除](active-directory-device-registration-troubleshoot-windows.md)
+##### [对 Windows 下层客户端进行故障排除](active-directory-device-registration-troubleshoot-windows-legacy.md)
 ### [Azure AD Join](active-directory-azureadjoin-overview.md)
 #### [规划](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [设置设备注册](active-directory-azureadjoin-setup.md)
@@ -277,7 +281,6 @@
 #### [支持的应用](active-directory-conditional-access-supported-apps.md)
 #### [了解设备策略](active-directory-conditional-access-device-policies.md)
 #### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
-#### [本地部署](active-directory-conditional-access-on-premises-setup.md)
 #### [常见问题](active-directory-conditional-faqs.md)
 #### [故障排除](active-directory-conditional-access-device-remediation.md)
 #### [参考](active-directory-conditional-access-technical-reference.md)

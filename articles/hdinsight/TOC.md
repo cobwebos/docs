@@ -53,6 +53,7 @@
 ### [存储选项](hdinsight-hadoop-r-server-storage.md)
 ### [安装 RStudio](hdinsight-hadoop-r-server-install-r-studio.md)
 ### [计算上下文](hdinsight-hadoop-r-server-compute-contexts.md)
+### [ScaleR 和 SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## 使用 Spark 进行内存中处理
 ### [使用 Data Lake Store](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [使用 BI 工具](hdinsight-apache-spark-use-bi-tools.md)
