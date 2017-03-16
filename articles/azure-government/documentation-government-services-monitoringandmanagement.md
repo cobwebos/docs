@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 1/13/2017
+ms.date: 2/28/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: ec62cc79aeffa21e5d9d772dcd2da6f973c18d81
-ms.openlocfilehash: 3d9f2308d20e723da324be7e3aec3106ff5ff846
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: a04b2f26c8ab34fdbfc7412d47292a560466eb44
+ms.openlocfilehash: c33d50a900be53a3161ad60bc34e2e819fe62947
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -84,7 +84,6 @@ Log Analytics 已在 Azure Government 中正式发布。
   * Azure 自动化分析解决方案
   * 密钥保管库分析解决方案
 * 需要更新到本地软件的解决方案和功能包括：
-  * 与 System Center Operations Manager 2016 的集成（支持早期版本的 Operations Manager）
   * System Center Configuration Manager 中的计算机组
   * Surface Hub 解决方案
 * 公共 Azure 中预览的功能包括：
@@ -104,12 +103,18 @@ Log Analytics 的 URL 在 Azure 政府版中是不同的：
 
 以下 Log Analytics 功能在 Azure 政府版中的表现不同：
 
-* 必须从 Azure 政府版的 [Log Analytics 门户](https://oms.microsoft.us)下载 Windows 代理。
 * 若要将 System Center Operations Manager 管理服务器连接到 Log Analytics，需要下载并导入更新后的管理包。
-  1. 下载并保存[更新管理包](http://go.microsoft.com/fwlink/?LinkId=828749)。
-  2. 解压缩已下载的文件。
-  3. 将管理包导入 Operations Manager。 有关如何从磁盘导入管理包的信息，请参阅 Microsoft TechNet 网站中的[如何导入 Operations Manager 管理包](http://technet.microsoft.com/library/hh212691.aspx)。
-  4. 若要将 Operations Manager 连接到 Log Analytics，请按照[将 Operations Manager 连接到 Log Analytics](../log-analytics/log-analytics-om-agents.md) 中的步骤进行操作。
+  + System Center Operations Manager 2016
+    1. 安装 [System Center Operations Manager 2016 更新汇总 2](https://support.microsoft.com/help/3209591)。
+    2. 将更新汇总 2 中附带的管理包导入 Operations Manager。 有关如何从磁盘导入管理包的信息，请参阅 Microsoft TechNet 网站中的[如何导入 Operations Manager 管理包](http://technet.microsoft.com/library/hh212691.aspx)。
+    3. 若要将 Operations Manager 连接到 Log Analytics，请按照[将 Operations Manager 连接到 Log Analytics](../log-analytics/log-analytics-om-agents.md) 中的步骤进行操作。
+  + System Center Operations Manager 2012 R2 UR3（或更高版本）/Operations Manager 2012 SP1 UR7（或更高版本）
+    1. 下载并保存[更新管理包](http://go.microsoft.com/fwlink/?LinkId=828749)。
+    2. 解压缩已下载的文件。
+    3. 将管理包导入 Operations Manager。 有关如何从磁盘导入管理包的信息，请参阅 Microsoft TechNet 网站中的[如何导入 Operations Manager 管理包](http://technet.microsoft.com/library/hh212691.aspx)。
+    4. 若要将 Operations Manager 连接到 Log Analytics，请按照[将 Operations Manager 连接到 Log Analytics](../log-analytics/log-analytics-om-agents.md) 中的步骤进行操作。
+  
+
 
 ### <a name="frequently-asked-questions"></a>常见问题
 * 能否将数据从 Microsoft Azure 中的 Log Analytics 迁移到 Azure 政府版？

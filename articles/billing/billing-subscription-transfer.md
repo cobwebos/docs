@@ -1,6 +1,7 @@
 ---
-title: "转让 Azure 订阅的所有权 | Microsoft Docs"
-description: "如何将 Azure 订阅转让给另一用户，以及有关转让过程的一些常见问题 (FAQ)"
+title: "将 Azure 订阅所有权转让给其他帐户 |Microsoft Docs"
+description: "介绍如何将 Azure 订阅转让给其他用户，以及有关转让过程的一些常见问题 (FAQ)"
+keywords: "转让 Azure 订阅, Azure 转让订阅, 将 Azure 订阅移至其他帐户, Azure 更改订阅所有者, 将 Azure 订阅转让给其他帐户"
 services: 
 documentationcenter: 
 author: genlin
@@ -13,15 +14,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 02/28/2017
 ms.author: genli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1faa99b774d5f6cc4e4939ee465809710fd31524
-ms.openlocfilehash: 0cb3237f923faa32d77285775dafde55d678c7db
-
+ms.sourcegitcommit: 0ec56111847300833ba92cc9149e8a276ba2c6c1
+ms.openlocfilehash: af7cabf3d5286dc3cd368db191bc5218cd9c5893
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="transferring-ownership-of-an-azure-subscription"></a>转让 Azure 订阅的所有权
+# <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
 在帐户中心中，可将即用即付、Visual Studio、Action Pack 或 BizSpark 订阅转让给其他用户。 还支持转让从 Azure 外部服务的这些订阅类型。 
 
@@ -34,7 +36,7 @@ ms.openlocfilehash: 0cb3237f923faa32d77285775dafde55d678c7db
 
 若要将订阅更改为其他产品/服务，请参阅[将 Azure 订阅切换到其他产品/服务](billing-how-to-switch-azure-offer.md)。 
 
-## <a name="how-to-transfer-ownership-of-an-azure-subscription"></a>如何转让 Azure 订阅的所有权
+## <a name="transfer-ownership-of-an-azure-subscription"></a>转让 Azure 订阅的所有权
 > [!VIDEO https://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/Transfer-an-Azure-subscription/player]
 >
 >
@@ -46,7 +48,7 @@ ms.openlocfilehash: 0cb3237f923faa32d77285775dafde55d678c7db
 3. 单击“转让订阅”选项。 如果没有看到按钮，请参阅[常见问题](#no-button)。
 
    ![Azure 帐户订阅选项卡](./media/billing-subscription-transfer/image1.png)
-4. 根据提示指定接收方。
+4. 指定接收方。
 
    ![“转让订阅”对话框](./media/billing-subscription-transfer/image2.PNG)
 5. 接收方会自动收到含有接受链接的电子邮件。
@@ -58,6 +60,26 @@ ms.openlocfilehash: 0cb3237f923faa32d77285775dafde55d678c7db
 
    ![第二个订阅转移网页](./media/billing-subscription-transfer/image5.png)
 7. 成功！ 订阅现已转让。
+
+## <a name="transfer-subscription-ownership-for-enterprise-agreement-ea-customers"></a>转让企业协议 (EA) 客户的订阅所有权
+企业管理员可以转让注册内的订阅的所有权。 若要开始使用，请参阅 EA 门户中的[装让帐户所有权](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription)。
+
+## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>接受订阅所有权后的后续步骤
+1. 现在你是帐户管理员。 请查看并更新服务管理员和共同管理员。 在 [Azure 经典门户](https://manage.windowsazure.com)中转到“设置”来管理管理员。 [了解有关管理员角色的详细信息](billing-add-change-azure-subscription-administrator.md)。
+
+2. 用户还可以针对订阅和服务使用基于角色的访问控制 (RBAC)。 访问 [Azure 门户](https://portal.azure.com)。 [了解有关 RBAC 的详细信息](../active-directory/role-based-access-control-configure.md)
+
+3. 更新与此订阅的服务关联的凭据，包括：
+   
+   * 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上载 Azure 的管理证书](../cloud-services/cloud-services-certs-create.md)
+   
+   * 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)
+   
+   * Azure 虚拟机等服务的远程访问凭据。 
+
+4. 请在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)[更新此订阅的计费警报](billing-set-up-alerts.md)。 
+
+5. 若正与合作伙伴合作，请考虑更新此订阅的合作伙伴 ID。 可以在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)更新合作伙伴 ID。
 
 <a id="faq"></a>
 
@@ -95,7 +117,7 @@ ms.openlocfilehash: 0cb3237f923faa32d77285775dafde55d678c7db
   * 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
   * Azure 虚拟机等服务的远程访问凭据。
 
-  此列表并不完整。 如果接收方需要限制对其资源的访问，则应考虑更新与服务关联的任何机密。 可按如下所述更新大多数资源：
+ 如果接收方需要限制对其资源的访问，他们应考虑更新与服务关联的任何机密。 可通过以下步骤更新大多数资源：
 
     1. 转到 [Azure 门户](https://portal.azure.com)。
     2. 在“中心”菜单上，选择“所有资源”。
@@ -124,40 +146,16 @@ ms.openlocfilehash: 0cb3237f923faa32d77285775dafde55d678c7db
 
 * **转让 Azure 订阅后，付款方式会受到影响吗？**
 
-  若要接受订阅转让，必须提供信用卡或类似的付款方式为订阅付款。 例如，如果 Bob 将订阅转让给 Jane，而 Jane 接受转让，那么，Jane 还必须提供订阅付款方式。 完成转让后，就不会再为转让给 Jane 的订阅向 Bob 收费。
+  若要接受订阅转让，必须提供信用卡或类似的付款方式为订阅付款。 例如，如果 Bob 将订阅转让给 Jane，而 Jane 接受转让，那么 Jane 必须提供订阅的付款方式。 转让完成后，将向 Jane（而非 Bob）收取订阅费用。
 
 * **如何将 Azure 订阅的数据和服务迁移到新的订阅？**
 
-  如果无法转让订阅所有权，则可以手动迁移资源。 请参阅[将资源移到新资源组或订阅中](../azure-resource-manager/resource-group-move-resources.md)。
+  如果无法转让订阅所有权，可以手动迁移资源。 请参阅[将资源移到新资源组或订阅中](../azure-resource-manager/resource-group-move-resources.md)。
 
-## <a name="transfer-subscription-ownership-for-enterprise-agreement-ea-customers"></a>转让企业协议 (EA) 客户的订阅所有权
-企业管理员可以转让注册内的订阅的所有权。 若要开始使用，请参阅 EA 门户中的[装让帐户所有权](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription)。
-
-## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>接受订阅所有权后的后续步骤
-1. 现在你是帐户管理员。 请查看并更新服务管理员和共同管理员。 在 [Azure 经典门户](https://manage.windowsazure.com)中转到“设置”来管理管理员。 [了解有关管理员角色的详细信息](billing-add-change-azure-subscription-administrator.md)。
-
-2. 用户还可以针对订阅和服务使用基于角色的访问控制 (RBAC)。 访问 [Azure 门户](https://portal.azure.com)。 [了解有关 RBAC 的详细信息](../active-directory/role-based-access-control-configure.md)
-
-3. 更新与此订阅服务关联的凭据。 其中包括：
-   
-   * 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上载 Azure 的管理证书](../cloud-services/cloud-services-certs-create.md)
-   
-   * 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)
-   
-   * Azure 虚拟机等服务的远程访问凭据。 
-
-4. 请在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)[更新此订阅的计费警报](billing-set-up-alerts.md)。 
-
-5. 若正与合作伙伴合作，请考虑更新此订阅的合作伙伴 ID。 可以在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)更新合作伙伴 ID。
 
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

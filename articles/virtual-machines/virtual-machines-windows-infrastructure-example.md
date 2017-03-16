@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1e52ae69951b6b1feee6207033a85a583d13bcc2
-ms.openlocfilehash: 851dd4a2a76eff0e2f95c9a0a7280986cfb3e26a
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: b01825022189722c9c0d396984a1a369a5d57584
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="example-azure-infrastructure-walkthrough"></a>示例 Azure 基础结构演练
+# <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>适用于 Windows VM 的 Azure 示例基础结构演练
+
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 本文将逐步讲述如何构建示例应用程序基础结构。 我们将详细介绍如何设计简单在线商店的基础结构，此在线商店可将关于命名约定、可用性集、虚拟网络及负载均衡器的所有准则和决策聚集在一起；以及如何实际部署你的虚拟机 (VM)。
@@ -120,10 +123,5 @@ Adventure Works Cycles 决定为其 Azure VM 使用以下名称：
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

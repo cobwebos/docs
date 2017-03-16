@@ -1,6 +1,6 @@
 ---
-title: "逻辑应用中的日志记录和错误处理 | Microsoft Docs"
-description: "使用逻辑应用查看高级错误处理和日志记录的实际用例"
+title: "异常处理和错误日志记录方案 — Azure 逻辑应用 | Microsoft Docs"
+description: "介绍 Azure 逻辑应用的高级异常处理和错误日志记录的实际用例"
 keywords: 
 services: logic-apps
 author: hedidin
@@ -13,54 +13,55 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: b-hoedid
 translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
+ms.sourcegitcommit: 03467542669d9719d2634d20d4c0e7bba265ac6f
+ms.openlocfilehash: dff2c67f5e529d40d31e9bad1af00938ddf547b8
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="logging-and-error-handling-in-logic-apps"></a>逻辑应用中的日志记录和错误处理
-本指南介绍如何扩展逻辑应用以更好地支持异常处理。 这是实际用例，以及我们对问题“逻辑应用是否支持异常和错误处理？”的回答
+# <a name="scenario-exception-handling-and-logging-errors-for-logic-apps"></a>方案：逻辑应用的异常处理和日志记录错误
+
+本方案介绍如何扩展逻辑应用以更好地支持异常处理。 我们已经通过一个实际用例回答了“Azure 逻辑应用是否支持异常和错误处理？”的问题
 
 > [!NOTE]
-> 当前的逻辑应用架构提供操作响应的标准模板。
-> 这包括内部验证以及从 API 应用返回的错误响应。
-> 
-> 
+> 当前的 Azure 逻辑应用架构提供操作响应的标准模板。 此模板包括内部验证以及从 API 应用返回的错误响应。
 
-## <a name="overview-of-the-use-case-and-scenario"></a>用例和方案的概述
-下列案例是本文的使用案例。
-一个著名的医疗保健组织与我们合作开发一个使用 Microsoft Dynamics CRM Online 创建患者门户的 Azure 解决方案。 他们需要在 Dynamics CRM Online 患者门户与 Salesforce 之间发送约会记录。  我们需要对所有患者记录使用 [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 标准。
+## <a name="scenario-and-use-case-overview"></a>方案和用例概述
+
+下面是本方案的用例： 
+
+一个著名的医疗保健组织与我们合作开发一个使用 Microsoft Dynamics CRM Online 创建患者门户的 Azure 解决方案。 他们需要在 Dynamics CRM Online 患者门户与 Salesforce 之间发送约会记录。 我们需要对所有患者记录使用 [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 标准。
 
 该项目具有两个主要要求：  
 
 * 用于对从 Dynamics CRM Online 门户发送的记录进行日志记录的一种方法
 * 用于查看工作流中发生的任何错误的一种方式
 
-## <a name="how-we-solved-the-problem"></a>我们如何解决问题
 > [!TIP]
-> 可在[集成用户组](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/ "Integration User Group")中查看项目的高级视频。
-> 
-> 
+> 有关本项目的高级视频，请参阅[集成用户组](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group")。
 
-我们选择 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") 作为日志和错误记录的存储库（DocumentDB 将记录作为文档来引用）。 由于逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
+## <a name="how-we-solved-the-problem"></a>我们如何解决问题
 
-另一个要求是清除特定日期之后的记录。 DocumentDB 具有一个名为 [生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "生存时间") (TTL) 的属性，通过它可以为每个记录或集合设置“生存时间”值。 这样便无需在 DocumentDB 中手动删除记录。
+我们选择 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") 作为日志和错误记录的存储库（DocumentDB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
 
-### <a name="creation-of-the-logic-app"></a>逻辑应用的创建
-第一步是在设计器中创建逻辑应用并进行加载。 在此示例中，我们使用父-子逻辑应用。 我们假设已创建了父级并将创建一个子逻辑应用。
-
-因为我们要对从 Dynamics CRM Online 传出的记录进行日志记录，所以我们从顶部开始。 我们需要使用请求触发器，因为父逻辑应用会触发此子级。
+另一个要求是清除特定日期之后的记录。 DocumentDB 具有一个名为[生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "生存时间") (TTL) 的属性，通过它可以为每个记录或集合设置“生存时间”值。 这样便无需在 DocumentDB 中手动删除记录。
 
 > [!IMPORTANT]
 > 若要完成本教程，需要创建一个 DocumentDB 数据库和两个集合（日志记录和错误）。
-> 
-> 
+
+## <a name="create-the-logic-app"></a>创建逻辑应用
+
+第一步是在逻辑应用设计器中创建并打开逻辑应用。 在此示例中，我们使用父-子逻辑应用。 我们假设已创建了父级并将创建一个子逻辑应用。
+
+因为我们要对从 Dynamics CRM Online 传出的记录进行日志记录，所以我们从顶部开始。 我们必须使用“Request”触发器，因为父逻辑应用会触发此子级。
 
 ### <a name="logic-app-trigger"></a>逻辑应用触发器
-我们使用如下面示例中所示的请求触发器。
+
+我们使用如下面示例中所示的“Request”触发器。
 
 ```` json
 "triggers": {
@@ -98,34 +99,41 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 ````
 
 
-### <a name="steps"></a>步骤
-我们需要对来自 Dynamics CRM Online 门户的患者记录的源（请求）进行日志记录。
+## <a name="steps"></a>步骤
 
-1. 我们需要从 Dynamics CRM Online 获取新的约会记录。
-    来自 CRM 的触发器为我们提供 **CRM PatentId**、**记录类型**、**新的或更新的记录**（新的或更新的布尔值）以及 **SalesforceId**。 **SalesforceId** 可以为 null，因为它只用于更新。
-    我们使用 CRM **PatientID** 和**记录类型**来获取 CRM 记录。
-2. 接下来，我们需要添加 DocumentDB API 应用 **InsertLogEntry** 操作，如以下各图所示。
+必须对来自 Dynamics CRM Online 门户的患者记录的源（请求）进行日志记录。
 
-#### <a name="insert-log-entry-designer-view"></a>插入日志条目设计器视图
+1. 必须从 Dynamics CRM Online 获取新的预约记录。
+
+    来自 CRM 的触发器为我们提供 **CRM PatentId**、 **记录类型**、**新的或更新的记录**（新的或更新的布尔值）以及 **SalesforceId**。 **SalesforceId** 可以为 null，因为它只用于更新。
+    使用 CRM 的“PatientID”和“记录类型”来获取 CRM 记录。
+
+2. 接下来，需要添加 DocumentDB API 应用 **InsertLogEntry** 操作，如下所示。
+
+### <a name="insert-log-entry-designer-view"></a>插入日志条目设计器视图
+
 ![插入日志条目](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
-#### <a name="insert-error-entry-designer-view"></a>插入错误条目设计器视图
+### <a name="insert-error-entry-designer-view"></a>插入错误条目设计器视图
+
 ![插入日志条目](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
-#### <a name="check-for-create-record-failure"></a>检查是否存在创建记录失败
+### <a name="check-for-create-record-failure"></a>检查是否存在创建记录失败
+
 ![条件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>逻辑应用源代码
+
 > [!NOTE]
-> 以下只是示例。 由于本教程基于当前在生产中的实现，因此“源节点”的值可能不会显示与安排约会相关的属性。
-> 
-> 
+> 以下内容只是示例。 由于本教程基于正在生产中的实现，因此“源节点”的值可能不会显示与安排预约相关的属性。 
 
 ### <a name="logging"></a>日志记录
+
 以下逻辑应用代码示例演示如何处理日志记录。
 
 #### <a name="log-entry"></a>日志条目
-这是用于插入日志条目的逻辑应用源代码。
+
+下面是用于插入日志条目的逻辑应用源代码。
 
 ``` json
 "InsertLogEntry": {
@@ -152,7 +160,8 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 ```
 
 #### <a name="log-request"></a>日志请求
-这是发布到 API 应用的日志请求消息。
+
+下面是发布到 API 应用的日志请求消息。
 
 ``` json
     {
@@ -171,7 +180,8 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 
 
 #### <a name="log-response"></a>日志响应
-这是来自 API 应用的日志响应消息。
+
+下面是来自 API 应用的日志响应消息。
 
 ``` json
 {
@@ -208,10 +218,12 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 现在我们来看一下错误处理步骤。
 
 ### <a name="error-handling"></a>错误处理。
+
 以下逻辑应用代码示例演示如何实现错误处理。
 
 #### <a name="create-error-record"></a>创建错误记录
-这是用于创建错误记录的逻辑应用源代码。
+
+下面是用于创建错误记录的逻辑应用源代码。
 
 ``` json
 "actions": {
@@ -247,6 +259,7 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 ```
 
 #### <a name="insert-error-into-documentdb--request"></a>将错误插入到 DocumentDB 中 - 请求
+
 ``` json
 
 {
@@ -269,6 +282,7 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 ```
 
 #### <a name="insert-error-into-documentdb--response"></a>将错误插入到 DocumentDB 中 - 响应
+
 ``` json
 {
     "statusCode": 200,
@@ -307,6 +321,7 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 ```
 
 #### <a name="salesforce-error-response"></a>Salesforce 错误响应
+
 ``` json
 {
     "statusCode": 400,
@@ -334,10 +349,12 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 
 ```
 
-### <a name="returning-the-response-back-to-the-parent-logic-app"></a>将响应返回给父逻辑应用
+### <a name="return-the-response-back-to-parent-logic-app"></a>将响应返回给父逻辑应用
+
 获取响应之后，可以将它传递回父逻辑应用。
 
-#### <a name="return-success-response-to-the-parent-logic-app"></a>将成功响应返回给父逻辑应用
+#### <a name="return-success-response-to-parent-logic-app"></a>将成功响应返回给父逻辑应用
+
 ``` json
 "SuccessResponse": {
     "runAfter":
@@ -358,7 +375,8 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 }
 ```
 
-#### <a name="return-error-response-to-the-parent-logic-app"></a>将错误响应返回给父逻辑应用
+#### <a name="return-error-response-to-parent-logic-app"></a>将错误响应返回给父逻辑应用
+
 ``` json
 "ErrorResponse": {
     "runAfter":
@@ -382,18 +400,17 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 
 
 ## <a name="documentdb-repository-and-portal"></a>DocumentDB 存储库和门户
-我们的解决方案使用 [DocumentDB](https://azure.microsoft.com/services/documentdb) 添加了其他功能。
+
+我们的解决方案通过引入 [DocumentDB](https://azure.microsoft.com/services/documentdb) 新增了多项功能。
 
 ### <a name="error-management-portal"></a>错误管理门户
-若要查看这些错误，可以创建 MVC web 应用，以显示来自 DocumentDB 的错误记录。 **列表**、**详细信息**、**编辑**和**删除**操作包含在当前版本中。
+
+若要查看这些错误，可以创建 MVC web 应用，以显示来自 DocumentDB 的错误记录。 当前版本包含“列表”、“详细信息”、“编辑”和“删除”操作。
 
 > [!NOTE]
-> 编辑操作：DocumentDB 对整个文档进行替换。
-> **列表**和**详细信息**视图中显示的记录只是示例。 它们不是实际的患者约会记录。
-> 
-> 
+> “编辑”操作：DocumentDB 对整个文档进行替换。 **列表**和**详细信息**视图中显示的记录只是示例。 它们不是实际的患者约会记录。
 
-以下是我们使用前面所述的方法创建的 MVC 应用详细信息的示例。
+下面是使用前面所述的方法创建的 MVC 应用详细信息的示例。
 
 #### <a name="error-management-list"></a>错误管理列表
 ![错误列表](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
@@ -402,14 +419,17 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 ![错误详细信息](media/logic-apps-scenario-error-and-exception-handling/errordetails.png)
 
 ### <a name="log-management-portal"></a>日志管理门户
-为了查看日志，我们也创建了一个 MVC web 应用。  以下是我们使用前面所述的方法创建的 MVC 应用详细信息的示例。
+
+为了查看日志，我们也创建了一个 MVC web 应用。 下面是使用前面所述的方法创建的 MVC 应用详细信息的示例。
 
 #### <a name="sample-log-detail-view"></a>示例日志详细信息视图
 ![日志详细信息视图](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
 
 ### <a name="api-app-details"></a>API 应用详细信息
+
 #### <a name="logic-apps-exception-management-api"></a>逻辑应用异常管理 API
-我们的开源逻辑应用异常管理 API 应用提供了以下功能。
+
+开源 Azure 逻辑应用异常管理 API 应用提供以下功能。
 
 有两个控制器：
 
@@ -417,15 +437,14 @@ ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
 * **LogController** 将日志记录（文档）插入 DocumentDB 集合中。
 
 > [!TIP]
-> 这两个控制器都使用 `async Task<dynamic>` 操作。 这样可以在运行时解析操作，因此我们可以在操作的正文中创建 DocumentDB 架构。
-> 
+> 这两个控制器都使用 `async Task<dynamic>` 操作，这样可以在运行时解析操作，因此我们可以在操作的正文中创建 DocumentDB 架构。 
 > 
 
-DocumentDB 中的每个文档都必须具有唯一 ID。 我们使用 `PatientId` 并添加戳转换为 Unix 时间戳值（双精度型）的时间戳。 我们将它截断以删除小数值。
+DocumentDB 中的每个文档都必须具有唯一 ID。 我们使用 `PatientId` 并添加戳转换为 Unix 时间戳值（双精度型）的时间戳。 将该值截断以删除小数值。
 
 可以[从 GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs) 查看我们的错误控制器 API 的源代码。
 
-我们使用以下语法从逻辑应用调用该 API。
+使用以下语法从逻辑应用调用该 API：
 
 ``` json
  "actions": {
@@ -458,24 +477,20 @@ DocumentDB 中的每个文档都必须具有唯一 ID。 我们使用 `PatientId
  }
 ```
 
-前面代码示例中的表达式在检查 Create_NewPatientRecord 的状态是否为 **Failed**。
+前面代码示例中的表达式检查“Create_NewPatientRecord”的状态是否为“Failed”。
 
 ## <a name="summary"></a>摘要
+
 * 可以在逻辑应用中轻松实现日志记录和错误处理。
 * 可以使用 DocumentDB 作为日志和错误记录的存储库（文档）。
 * 可以使用 MVC 创建门户来显示日志和错误记录。
 
 ### <a name="source-code"></a>源代码
+
 逻辑应用异常管理 API 应用程序的源代码位于此 [GitHub 存储库](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "逻辑应用异常管理 API")中。
 
 ## <a name="next-steps"></a>后续步骤
+
 * [查看更多逻辑应用示例和方案](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [了解逻辑应用监视工具](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [创建逻辑应用自动部署模板](../logic-apps/logic-apps-create-deploy-template.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+* [了解如何监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [为逻辑应用创建自动部署模板](../logic-apps/logic-apps-create-deploy-template.md)

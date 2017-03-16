@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/14/2017
+ms.date: 03/02/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 307070c755cff059b4b82494d28e06cf490a6f7a
-ms.openlocfilehash: 6c5badbbea7385cac1407e4af148d5b647af04ac
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 01c75f20909c7334981bf407e775656476972276
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -37,6 +37,8 @@ ms.lasthandoff: 02/16/2017
 下面是结合使用 HDInsight 和 Data Lake Store 的一些重要注意事项：
 
 * HDInsight 版本 3.5 提供创建 HDInsight 群集（可访问作为默认存储的 Data Lake Store）的选项。
+
+* 创建 HDInsight 群集（可访问作为默认存储的 Data Lake Store）的选项不可用于 HDInsight Premium 群集。
 
 * 对于 HBase 群集（Windows 和 Linux），Data Lake Store **不支持**用作存储选项（包括默认存储和其他存储）。
 

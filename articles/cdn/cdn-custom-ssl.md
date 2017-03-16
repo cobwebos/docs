@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: casoper
 translationtype: Human Translation
-ms.sourcegitcommit: aea6f0fedb447e953b9db40342e5091bd35486af
-ms.openlocfilehash: 9b80ae8c247480e69025b86fac322166a4d5cb4c
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: b334ba6bbec1d0a7e23a514174bffae01c7fff05
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -59,7 +60,13 @@ HTTPS 功能的一些关键属性包括：
 >[!IMPORTANT] 
 >必须先完成域验证，然后才能在自定义域上激活 HTTPS。 你有 6 个工作日来批准域。 如果 6 个工作日内未批准，请求将被取消。  
 
-在自定义域上启用 HTTPS 之后，我们的 HTTPS 证书提供商 DigiCert 将根据 WHOIS 注册者信息，通过电子邮件（默认情况下）或电话通过联系域的注册者来验证域的所有权。 如果 WHOIS 注册者信息是私有的，DigiCert 会将验证电子邮件发送到 **admin@*<your-domain-name.com>***。
+在自定义域上启用 HTTPS 之后，我们的 HTTPS 证书提供商 DigiCert 将根据 WHOIS 注册者信息，通过电子邮件（默认情况下）或电话通过联系域的注册者来验证域的所有权。 DigiCert 还将验证电子邮件发送到以下地址。 如果 WHOIS 注册信息是私人的，请确保可以直接从以下任一地址进行审批。
+
+>admin@<your-domain-name.com> administrator@<your-domain-name.com>  
+>webmaster@<your-domain-name.com>  
+>hostmaster@<your-domain-name.com>  
+>postmaster@<your-domain-name.com>
+
 
 收到电子邮件后，你有两个验证选项：
 
@@ -104,10 +111,5 @@ HTTPS 功能的一些关键属性包括：
 
 - 了解如何[在Azure CDN 终结点上设置自定义域](./cdn-map-content-to-custom-domain.md)
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

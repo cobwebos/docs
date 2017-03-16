@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 52153526fb5b127823316b86fa05c0528151e18f
-ms.openlocfilehash: df8aebc78969ac6ceb00ee8b20a60cb153e8891b
+ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
+ms.openlocfilehash: fa62c0883b8230e514f60626b59fa3b3b20a6784
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -62,6 +63,9 @@ Azure 机器学习让用户能够生成、测试和部署预测分析解决方�
 现在，已准备好预测实验，可将其部署为新 Azure Web 服务。 使用 web 服务，用户可以将数据发送到模型，该模型将返回其预测。
 
 若要部署预测实验，请单击实验画布底部的“运行”。 实验运行完毕后，单击“部署 Web 服务”或“部署 Web 服务[新]”。  将打开机器学习 Web 服务门户的部署页。
+
+> [!NOTE] 
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。 
 
 #### <a name="machine-learning-web-service-portal-deploy-experiment-page"></a>机器学习 Web 服务门户部署实验页
 在“部署实验”页上，输入 Web 服务的名称。
@@ -116,7 +120,7 @@ RRS 测试页显示你为实验定义的输入、输出和任何全局参数。 
 有关访问机器学习 Web 服务的详细信息，请参阅[如何使用已部署的 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 
 #### <a name="manage-your-new-web-service"></a>管理新 Web 服务
-可管理经典 Web 服务机器学习 Web 服务门户。 在[主门户页](https://services.azureml-test.net/)中，单击“Web 服务”。 在 Web 服务页中，可删除或复制服务。 若要监视特定服务，请单击该服务，然后单击“仪表板”。 若要监视与 Web 服务相关联的 Batch 作业，请单击“Batch 请求日志”。
+可通过机器学习 Web 服务门户管理新的 Web 服务。 在[主门户页](https://services.azureml-test.net/)中，单击“Web 服务”。 在 Web 服务页中，可删除或复制服务。 若要监视特定服务，请单击该服务，然后单击“仪表板”。 若要监视与 Web 服务相关联的 Batch 作业，请单击“Batch 请求日志”。
 
 ### <a name="deploy-the-predictive-experiment-as-a-classic-web-service"></a>将预测实验部署为经典 Web 服务
 
@@ -187,9 +191,4 @@ For more information on how to manage Azure Machine Learning web service endpoin
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

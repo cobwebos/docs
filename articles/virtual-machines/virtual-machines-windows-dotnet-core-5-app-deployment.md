@@ -15,13 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b4fb534cf18fd17f636e88cc31d6c997a9f09e45
-ms.openlocfilehash: e72afd857025773b3aadc3de124b4e79ec6cd512
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 495ee4a14e779099f828db0c08068bc3772cd7d4
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="application-deployment-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板部署应用程序
+# <a name="application-deployment-with-azure-resource-manager-templates-for-windows-vms"></a>适用于 Windows VM 的使用 Azure Resource Manager 模板的应用程序部署
+
 确定所有 Azure 基础结构要求并转换成部署模板后，需要解决实际的应用程序部署需求。 此处的应用程序部署是指将实际应用程序二进制文件安装到 Azure 资源上。 在音乐商店示例中，需要在每个虚拟机上安装并配置 .Net Core 和 IIS。 需要将音乐应用商店二进制文件安装到虚拟机上，并预先创建音乐应用商店数据库。
 
 本文档详细说明虚拟机扩展如何自动化 Azure 虚拟机的应用程序部署和配置。 所有依赖项和独特配置都已突出显示。 为了获得最佳体验，请将一个解决方案实例预先部署到 Azure 订阅，然后将它与 Azure Resource Manager 模板配合运行。 可在此处找到完整模板 - [Windows 上的音乐商店部署](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)。
@@ -124,10 +127,5 @@ New-Website -Name "MusicStore" -Port 80 -PhysicalPath C:\music\ -ApplicationPool
 <hr>
 
 [探索更多 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

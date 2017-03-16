@@ -1,6 +1,6 @@
 ---
 title: "缩放 Azure 容器服务群集 | Microsoft 文档"
-description: "如何使用 Azure CLI 或 Azure 门户缩放 Azure 容器服务群集。"
+description: "如何使用 Azure CLI 或 Azure 门户在 Azure 容器服务中缩放 DC/OS、Docker Swarm 或 Kubernetes 群集中的代理节点。"
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
+ms.date: 03/01/2017
 ms.author: saudas
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 773eba80715cb990b23ecec548a18c112ba73a42
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 2464901d22bb91cbf396ef60f4bda6d979b578b7
+ms.openlocfilehash: 022e34811de9d2023d113c43d6f85842812dfee3
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="scale-an-azure-container-service-cluster"></a>缩放 Azure 容器服务群集
+# <a name="scale-agent-nodes-in-a-container-service-cluster"></a>在容器服务群集中缩放代理节点
 [部署 Azure 容器服务群集](container-service-deployment.md)后，可能需要更改代理节点数。 例如，可能需要更多代理，以便运行更多容器应用程序或实例。 
 
-可以使用 Azure 门户或 Azure CLI 2.0（预览版）更改 DC/OS、Docker Swarm 或 Kubernetes 群集中的代理节点数。 Azure CLI 2.0 是适用于 Resource Manager 部署模型的[新一代 CLI](/cli/azure/old-and-new-clis)。
+可以使用 Azure 门户或 Azure CLI 2.0（预览版）更改 DC/OS、Docker Swarm 或 Kubernetes 群集中的代理节点数。 
 
 ## <a name="scale-with-the-azure-portal"></a>使用 Azure 门户缩放
 

@@ -1,5 +1,5 @@
 ---
-title: "基于角色的访问控制故障排除 | Microsoft Docs"
+title: "Azure RBAC 故障排除 | Microsoft Docs"
 description: "获取有关基于角色的访问控制资源问题或疑问的帮助。"
 services: azure-portal
 documentationcenter: na
@@ -12,19 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 03/02/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a6fd242b89e6a7cd61be6ceadf15852e9ef61a8a
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 32b335d8a1f84348ab28bcc081cc42fd79fb08fc
+ms.lasthandoff: 03/04/2017
 
 
 ---
 # <a name="role-based-access-control-troubleshooting"></a>基于角色的访问控制故障排除
-## <a name="introduction"></a>介绍
-[基于角色的访问控制](role-based-access-control-configure.md)是强大的功能，允许你委派 Azure 中的资源的精细访问权限。 这意味着你可以确信授予特定人员他们刚好所需的权限，但仅此而已。 但是，有时 Azure 资源的资源模型可能十分复杂，并且可能难于完全了解要授予对什么的权限。
 
-本文档会让你了解在 Azure 门户中使用一些角色时的预期步骤。 以下三种角色涵盖所有资源类型：
+本文解答了有关为角色授予的特定访问权限的常见问题，让你能够预料到在 Azure 门户中使用角色时可能出现的情况，并解决访问权限问题。 以下三种角色涵盖所有资源类型：
 
 * 所有者  
 * 参与者  
@@ -34,7 +33,7 @@ ms.openlocfilehash: a6fd242b89e6a7cd61be6ceadf15852e9ef61a8a
 
 ## <a name="app-service-workloads"></a>App Service 工作负荷
 ### <a name="write-access-capabilities"></a>写访问功能
-如果你为用户授予单个 Web 应用的只读访问权限，某些功能可能会被禁用，这可能不是你所期望的。 以下管理功能需要对 Web 应用具有**写**访问权限（参与者或所有者），并且在任何只读方案中将不可用。
+如果你为用户授予单个 Web 应用的只读访问权限，某些功能可能会被禁用，这可能不是你所期望的。 以下管理功能需要对 Web 应用具有**写**访问权限（参与者或所有者），并且在任何只读方案中不可用。
 
 * 命令（例如启动、停止等。）
 * 更改设置（如常规配置、缩放设置、备份设置和监视设置）
@@ -88,17 +87,12 @@ ms.openlocfilehash: a6fd242b89e6a7cd61be6ceadf15852e9ef61a8a
 * 负载平衡集  
 * 警报规则  
 
-如果你不能访问以上任何磁贴，则需要让管理员为你提供对资源组的“参与者”访问权限。
+如果你不能访问以上任何磁贴，则需要让管理员提供对资源组的“参与者”访问权限。
 
 ## <a name="see-more"></a>另请参阅
 * [基于角色的访问控制](role-based-access-control-configure.md)：Azure 门户中的 RBAC 入门。
 * [内置角色](role-based-access-built-in-roles.md)：获取有关 RBAC 中标配角色的详细信息。
 * [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)：了解如何创建自定义角色，以满足访问需要。
 * [创建访问权限更改历史记录报告](role-based-access-control-access-change-history-report.md)：记录 RBAC 中的角色分配更改。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

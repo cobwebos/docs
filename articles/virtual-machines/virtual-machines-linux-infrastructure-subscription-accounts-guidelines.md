@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 0a4ddfa550913df1c987d1782bcd4bc3c41eb048
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 44a82f3eaafa231c22429968fcac63872b74c75b
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-subscription-and-accounts-guidelines"></a>Azure 订阅和帐户准则
+# <a name="azure-subscription-and-accounts-guidelines-for-linux-vms"></a>适用于 Linux VM 的 Azure 订阅和帐户准则
+
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 本文重点介绍如何随环境和用户群的增长实行订阅和帐户管理。

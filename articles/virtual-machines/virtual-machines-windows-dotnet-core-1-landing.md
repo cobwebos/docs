@@ -15,14 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8284fa063d8ffa0d9951b77eb06be14159fc2561
-ms.openlocfilehash: 5b40d5476d85a4eeba65f01320e0ea03ed4debaa
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 3aeefecabb72b57c64fb47aeb5b6523b9ff3239b
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="automating-application-deployments-to-azure-virtual-machines"></a>将应用程序自动部署到 Azure 虚拟机
+# <a name="automating-application-deployments-to-windows-virtual-machines"></a>将应用程序自动部署到 Windows 虚拟机
+
 本系列教程包括四个部分，详细说明如何使用 Azure Resource Manager 模板来部署和配置 Azure 资源与应用程序。 本系列教程将部署一个示例模板，并检查部署模板。 本系列教程旨在讲解 Azure 资源之间的关系，并实践有关部署完全集成的 Azure Resource Manager 模板的体验。 本文档假设读者对 Azure Resource Manager 有一个基本的了解。开始本教程之前，请先熟悉 Azure Resource Manager 的概念。
 
 ## <a name="music-store-application"></a>音乐应用商店应用程序

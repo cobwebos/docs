@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 03/06/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
-ms.openlocfilehash: 55fc17009a31c84f7ef23140b31bf53858e56ec7
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: b2729dfdb6bf85e6d254b08669eeb259f4ab59d5
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -31,7 +32,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，你必须具有：
 
-* 安装 Visual Studio 2012 或 2013
+* 安装 Visual Studio 2017 或 2015。
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 * 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)；  
 
@@ -350,9 +351,4 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

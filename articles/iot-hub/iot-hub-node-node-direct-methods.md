@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: nberdy
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 52eb502054120af4c03c649dee810366f99d326b
+ms.sourcegitcommit: c76870c49f5c8e51f521fd4be920d976e4cdbcef
+ms.openlocfilehash: 7100856b02935fba7bbf1427d86859ddb7a2b5f3
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="use-direct-methods-node"></a>使用直接方法 (Node)
+# <a name="use-direct-methods-on-your-iot-device-with-nodejs"></a>通过 Node.js 使用 IoT 设备上的直接方法
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
 
 在本教程结束时，将会创建两个 Node.js 控制台应用：
@@ -210,9 +212,4 @@ ms.openlocfilehash: 52eb502054120af4c03c649dee810366f99d326b
 [Send Cloud-to-Device messages with IoT Hub]: iot-hub-csharp-csharp-c2d.md
 [Process Device-to-Cloud messages]: iot-hub-csharp-csharp-process-d2c.md
 [IoT 中心入门]: iot-hub-node-node-getstarted.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

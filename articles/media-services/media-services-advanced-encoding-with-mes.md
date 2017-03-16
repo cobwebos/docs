@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
+ms.sourcegitcommit: 01448fcff64e99429e2ee7df916b110c869307fb
+ms.openlocfilehash: 7776ac35f1a8a30c959286a9e31beb666f5fc799
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -27,18 +28,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
 
 本主题演示如何自定义 Media Encoder Standard 预设。 [通过使用自定义预设的 Media Encoder Standard 进行编码](media-services-custom-mes-presets-with-dotnet.md)主题演示如何使用 .NET 创建编码任务和执行此任务的作业。 自定义预设后，请将其提供给编码任务。 
 
-本主题演示了执行以下编码任务的自定义预设：
-
-- [生成缩略图](#thumbnails)
-- [剪裁视频（剪辑）](#trim_video)
-- [创建覆盖层](#overlay)
-- [在输入不包含音频时插入静音音轨](#silent_audio)
-- [禁用自动取消隔行扫描](#deinterlacing)
-- [仅音频预设](#audio_only)
-- [连接两个或更多个视频文件](#concatenate)
-- [使用 Media Encoder Standard 剪辑视频](#crop)
-- [在输入不包含视频时插入视频轨迹](#no_video)
-- [旋转视频](#rotate_video)
+本主题演示了执行以下编码任务的自定义预设。
 
 ## <a name="support-for-relative-sizes"></a>支持相对大小
 
@@ -52,7 +42,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
     <Width>100%</Width>
     <Height>100%</Height>
 
-## <a name="a-idthumbnailsagenerate-thumbnails"></a><a id="thumbnails"></a>生成缩略图
+## <a id="thumbnails"></a>生成缩略图
 
 本部分说明如何自定义生成缩略图的预设。 下面定义的预设包含有关如何将文件编码的信息，以及生成缩略图时所需的信息。 可使用[此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并添加生成缩略图的代码。  
 
@@ -65,7 +55,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
 
 请务必仔细阅读[注意事项](#considerations)部分。
 
-### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON 预设
+### <a id="json"></a>JSON 预设
     {
       "Version": 1.0,
       "Codecs": [
@@ -165,7 +155,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
     }
 
 
-### <a name="a-idxmlaxml-preset"></a><a id="xml"></a>XML 预设
+### <a id="xml"></a>XML 预设
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -255,12 +245,12 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
   * 默认值：Start:{Best}
 * 需要显式提供每个图像格式的输出格式：Jpg/Png/BmpFormat。 MES 会将 JpgVideo（如果已指定）与 JpgFormat 进行匹配，依此类推。 OutputFormat 引入了新的图像编解码器特定宏 {Index}，需要为图像输出格式提供该宏一次（且只需一次）。
 
-## <a name="a-idtrimvideoatrim-a-video-clipping"></a><a id="trim_video"></a>剪裁视频（剪切）
+## <a id="trim_video"></a>剪裁视频（剪切）
 本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。 也可以使用编码器来剪辑或剪裁从实时流捕获或存档的资产 – [此博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供了详细信息。
 
 若要裁剪视频，可以使用[此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 在以下示例中，假设输入视频的起始时间戳为零。 **Sources** 应位于预设的开始处。
 
-### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON 预设
+### <a id="json"></a>JSON 预设
     {
       "Version": 1.0,
       "Sources": [
@@ -497,7 +487,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
       </Outputs>
     </Preset>
 
-## <a name="a-idoverlayacreate-an-overlay"></a><a id="overlay"></a>创建覆盖层
+## <a id="overlay"></a>创建覆盖层
 
 媒体编码器标准允许你在现有视频上覆盖图像。 目前支持以下格式：png、jpg、gif 和 bmp。 下面定义的预设是视频覆盖层的基本示例。
 
@@ -707,7 +697,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
     </Preset>
 
 
-## <a name="a-idsilentaudioainsert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>在输入不包含音频时插入静音曲目
+## <a id="silent_audio"></a>在输入不包含音频时插入静音曲目
 默认情况下，如果要向编码器发送仅包含视频而不包含音频的输入，则输出资产将包含仅有视频数据的文件。 某些播放器可能无法处理此类输出流。 对于这种方案，你可以使用此设置来强制编码器将静音曲目添加到输出。
 
 若要强制编码器在输入不包含音频时生成包含静音曲目的资产，请指定“InsertSilenceIfNoAudio”值。
@@ -730,7 +720,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a name="a-iddeinterlacingadisable-auto-de-interlacing"></a><a id="deinterlacing"></a>禁用自动取消隔行扫描
+## <a id="deinterlacing"></a>禁用自动取消隔行扫描
 如果客户想要将隔行扫描内容自动取消隔行扫描，不需要执行任何操作。 当自动取消隔行扫描打开（默认设置）时，MES 将自动检测隔行扫描帧，并且只将标记为隔行扫描的帧取消隔行扫描。
 
 你可以关闭自动取消隔行扫描， 但不建议这样做。
@@ -758,7 +748,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
     </Sources>
 
 
-## <a name="a-idaudioonlyaaudio-only-presets"></a><a id="audio_only"></a>仅音频预设
+## <a id="audio_only"></a>仅音频预设
 本部分介绍两个仅音频 MES 预设：AAC 音频和 AAC 优质音频。
 
 ### <a name="aac-audio"></a>AAC 音频
@@ -805,7 +795,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
       ]
     }
 
-## <a name="a-idconcatenateaconcatenate-two-or-more-video-files"></a><a id="concatenate"></a>连接两个或更多视频文件
+## <a id="concatenate"></a>连接两个或更多视频文件
 
 以下示例演示如何生成预设来连接两个或更多个视频文件。 最常见的应用场景：你想在主视频中添加标题或预告片。 预期使用场合：当一起编辑的视频文件共享属性（视频分辨率、帧速率、音轨计数等）时。 务必注意不要混合使用不同帧速率或不同音轨数的视频。
 
@@ -915,10 +905,10 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
       ]
     }
 
-## <a name="a-idcropacrop-videos-with-media-encoder-standard"></a><a id="crop"></a>使用媒体编码器标准版裁剪视频
+## <a id="crop"></a>使用媒体编码器标准版裁剪视频
 请参阅[使用 Media Encoder Standard 剪辑视频](media-services-crop-video.md)主题。
 
-## <a name="a-idnovideoainsert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>在输入不包含视频时插入视频轨迹
+## <a id="no_video"></a>在输入不包含视频时插入视频轨迹
 默认情况下，如果要向编码器发送仅包含音频而不包含视频的输入，则输出资产将包含仅有音频数据的文件。 某些播放器（包括 Azure 媒体播放器）（请参阅[此处](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)）可能无法处理这样的流。 对于这种方案，可使用此设置来强制编码器将单色视频轨迹添加到输出。
 
 > [!NOTE]
@@ -927,7 +917,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
 >
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>仅以最低比特率插入视频
-假设要使用多比特率编码预设（如[“H264 多比特率 720p”](https://msdn.microsoft.com/library/mt269960.aspx)）对整个输入目录进行编码以实现流式处理，且输入目录中混合了视频文件和仅音频文件。 在此方案中，如果输入不包含视频，用户可能想要强制编码器仅以最低比特率插入单色视频轨迹，而不是按每个输出比特率插入视频。 要实现此目的，需要指定“InsertBlackIfNoVideoBottomLayerOnly”标志。
+假设要使用多比特率编码预设（如[“H264 多比特率 720p”](media-services-mes-preset-h264-multiple-bitrate-720p.md)）对整个输入目录进行编码以实现流式处理，且输入目录中混合了视频文件和仅音频文件。 在此方案中，如果输入不包含视频，用户可能想要强制编码器仅以最低比特率插入单色视频轨迹，而不是按每个输出比特率插入视频。 要实现此目的，需要指定“InsertBlackIfNoVideoBottomLayerOnly”标志。
 
 可使用[此部分](media-services-mes-presets-overview.md)中所述的任何 MES 预设，并进行以下修改：
 
@@ -966,7 +956,7 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
     <StretchMode>AutoSize</StretchMode>
     <Condition>InsertBlackIfNoVideo</Condition>
 
-## <a name="a-idrotatevideoarotate-a-video"></a><a id="rotate_video"></a>旋转视频
+## <a id="rotate_video"></a>旋转视频
 [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支持旋转 0/90/180/270 度。 默认行为是“自动”，即尝试在传入的视频文件中检测旋转元数据并对其进行补偿。 将以下 **Sources** 元素包含在[此部分](media-services-mes-presets-overview.md)定义的其中一个预设中：
 
 ### <a name="json-preset"></a>JSON 预设
@@ -1003,9 +993,4 @@ ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
 
 ## <a name="see-also"></a>另请参阅
 [媒体服务编码概述](media-services-encode-asset.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

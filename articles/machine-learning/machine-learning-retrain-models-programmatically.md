@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: raymondl;garye;v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: cd32cb7d2247676795f345448960d547eafba084
-ms.openlocfilehash: 9290258998f6756dce55a764e020fb3278c2f8a6
+ms.sourcegitcommit: 0dc0f84ed65e76a95dcac523e42268039212773c
+ms.openlocfilehash: 5032e66556622e44e5f5bba84c4ddf5318b1e194
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -56,6 +57,9 @@ ms.openlocfilehash: 9290258998f6756dce55a764e020fb3278c2f8a6
 1. 在实验画布的底部，单击“**设置 Web 服务**”，然后选择“**预测 Web 服务**”。 这会将该模型保存为训练模型，并将添加 Web 服务输入和输出模块。 
 2. 单击“**运行**”。 
 3. 实验运行完毕后，单击“部署 Web 服务 [经典]”或“部署 Web 服务 [全新] ”。
+
+> [!NOTE] 
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。 
 
 ## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>将训练实验部署为训练 Web 服务
 若要重新训练已经训练的模型，必须部署作为重新训练 Web 服务而创建的训练实验。 此 Web 服务需要一个与*[训练模型][train-model]* 模块连接的 Web 服务输出模块，以便生成新的训练模型。
@@ -183,9 +187,4 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 
 <!-- Module References -->
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

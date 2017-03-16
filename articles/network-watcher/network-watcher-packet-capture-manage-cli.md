@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d2a65104743d9497debdc85c134fd1a06114c514
-ms.openlocfilehash: 279664a51eab79c42a14ed9c9bb5f65cc43aaab2
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 5437c94983d3ebbc0e96b261e9069935b00ca43a
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -30,6 +30,8 @@ ms.lasthandoff: 02/23/2017
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
 使用网络观察程序数据包捕获，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻手动运行数据包捕获的负担，并可在所需计算机上运行，从而可节省宝贵的时间。
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 本文将引导你完成当前可用于数据包捕获的不同管理任务。
 
@@ -57,8 +59,14 @@ ms.lasthandoff: 02/23/2017
 对于 Windows 虚拟机：
 
 ```azurecli
-azure vm extension set -g resourceGroupName -m virtualMachineName -p Microsoft.Azure.NetworkWatcher -r anyExtensionReferenceName -n NetworkWatcherAgentWindows -o 1.4
+azure vm extension set -g resourceGroupName -m virtualMachineName -p Microsoft.Azure.NetworkWatcher -r AzureNetworkWatcherExtension -n NetworkWatcherAgentWindows -o 1.4
 ```
+
+对于 Linux 虚拟机：
+
+```azurecli
+azure vm extension set -g resourceGroupName -m virtualMachineName -p Microsoft.Azure.NetworkWatcher -r AzureNetworkWatcherExtension -n NetworkWatcherAgentLinux -o 1.4
+````
 
 ### <a name="step-2"></a>步骤 2
 

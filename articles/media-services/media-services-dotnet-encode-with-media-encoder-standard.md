@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 775578cb4e89f561449eea10b21a300f20646424
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 452b6a541309736ee4bd7e1dbbf5288289e70922
+ms.openlocfilehash: 6a48bae7cd5c394f7b400f6870dba4da7f0d19f2
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -58,7 +58,7 @@ Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618
 
 * 创建编码作业。
 * 获取对媒体编码器标准版编码器的引用。
-* 指定使用“H264 多比特率 720p”预设。 可在[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)看到所有预设。 还可在[此处](https://msdn.microsoft.com/library/mt269962.aspx)查看相关主题，了解这些预设必须遵循的架构。
+* 指定使用[自适应流式处理](media-services-autogen-bitrate-ladder-with-mes.md)预设。 
 * 将一个编码任务添加到该作业。 
 * 指定要编码的输入资产。
 * 创建将包含所编码资产的输出资产。
@@ -74,10 +74,10 @@ Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
             // Create a task with the encoding details, using a string preset.
-            // In this case "H264 Multiple Bitrate 720p" preset is used.
+            // In this case "Adaptive Streaming" preset is used.
             ITask task = job.Tasks.AddNew("My encoding task",
                 processor,
-                "H264 Multiple Bitrate 720p",
+                "Adaptive Streaming",
                 TaskOptions.None);
 
             // Specify the input asset to be encoded.

@@ -13,15 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/01/2017
 ms.author: cjiang
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f058194302949d1f5ba7d86e9a693ba229bdc9a2
-ms.openlocfilehash: b913fd0d944568e422ffcf86791910a746367add
-
+ms.sourcegitcommit: 459d0526961d03b564a35178f9ff4ff2e343e08c
+ms.openlocfilehash: 70a9d96e36f5e386e8b1c0036ef8e2f770924930
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="i-cant-sign-up-for-azure"></a>不能注册 Azure
+# <a name="troubleshoot-sign-up-issues-for-azure"></a>排查 Azure 注册问题
 如果无法注册 Azure，可以通过几种方法来检查并解决此问题。
 
 ## <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>“使用卡进行身份验证”部分中的进度条挂起
@@ -82,9 +83,4 @@ ms.openlocfilehash: b913fd0d944568e422ffcf86791910a746367add
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

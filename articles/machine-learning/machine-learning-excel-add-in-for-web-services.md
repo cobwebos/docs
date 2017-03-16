@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/15/2016
+ms.date: 03/01/2016
 ms.author: tedway;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 97f5972dcda1c70cd56c00cc8153d3fba5491404
-ms.openlocfilehash: b1039dbddc4e42f890254ec98e7cbe45347c5b4c
+ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
+ms.openlocfilehash: 814decc2aace0379332af229d232eef1a26939de
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -25,31 +26,31 @@ ms.openlocfilehash: b1039dbddc4e42f890254ec98e7cbe45347c5b4c
 Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>在工作簿中使用现有 Web 服务的步骤
+
 1. 打开“[示例 Excel 文件](http://aka.ms/amlexcel-sample-2)”，其中包含 Excel 外接程序和有关 Titanic 上的乘客数据。
-2. 通过单击以选择 Web 服务，在此示例中为“Titanic 存活者预测器（Excel 外接程序示例）[分数]”。
+2. 通过单击来选择 Web 服务，在此示例中为“Titanic 存活者预测器（Excel 外接程序示例）[分数]”。
    
     ![选择 Web 服务][01]
-3. 这将使你转到“**预测**”部分。  此工作簿已包含示例数据，但如果是空白工作簿，可以在 Excel 中选择一个单元格，并单击“**使用示例数据**”。
+3. 系统转到“预测”部分。  此工作簿已包含示例数据，但如果是空白工作簿，可以在 Excel 中选择一个单元格，并单击“**使用示例数据**”。
 4. 选择具有标头的数据，然后单击输入数据范围图标。  请确保选中“我的数据带有标题”框。
 5. 在“**输出**”下方，输入你想要输出所在的单元格号，例如此处的 "H1"。
 6. 单击“**预测**”。
    
     ![预测部分][02]
 
-## <a name="steps-to-add-a-new-web-service"></a>添加新的 Web 服务的步骤
 部署 Web 服务或使用现有的 Web 服务。 有关部署 Web 服务的详细信息，请参阅[演练步骤 5：部署 Azure 机器学习 Web 服务](machine-learning-walkthrough-5-publish-web-service.md)。
 
 获取 Web 服务的 API 密钥。 执行此操作的位置取决于是否发布了新的机器学习 Web 服务的经典机器学习 Web 服务。
 
 **使用经典 Web 服务** 
 
-1. 在机器学习工作室中，单击左窗格中的“**WEB 服务**”部分，然后选择 Web 服务。
+1. 在机器学习工作室中，单击左窗格中的“Web 服务”部分，然后选择 Web 服务。
    
     ![工作室选择一个 Web 服务][04]
 2. 复制 Web 服务的 API 密钥。
    
     ![工作室 API 密钥][05]
-3. 在 Web 服务的“**DASHBOARD**”选项卡上，单击“**REQUEST/RESPONSE**”链接。
+3. 在 Web 服务的“仪表板”选项卡上，单击“请求/响应”链接。
 4. 查找**请求 URI** 部分。  复制并保存 URL。
 
 > [!NOTE]
@@ -59,15 +60,16 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 
 **使用新的 Web 服务**
 
-1. 在[Azure 机器学习 Web 服务](https://services.azureml.net)门户中，单击“**Web 服务**”，然后选择你的 Web 服务。 
+1. 在 [Azure 机器学习 Web 服务](https://services.azureml.net)门户中，单击“Web 服务”，然后选择 Web 服务。 
 2. 单击“**使用**”。
 3. 查找**基本使用信息**部分。 复制并保存**主密钥**和**请求-响应** URL。
 
-## <a name="steps-to-add-a-new-web-service"></a>添加新的 Web 服务的步骤
+## <a name="steps-to-add-a-new-web-service"></a>添加新 Web 服务的步骤
+
 1. 部署 Web 服务或使用现有的 Web 服务。 有关部署 Web 服务的详细信息，请参阅[演练步骤 5：部署 Azure 机器学习 Web 服务](machine-learning-walkthrough-5-publish-web-service.md)。
 2. 单击“**使用**”。
 3. 查找**基本使用信息**部分。 复制并保存**主密钥**和**请求-响应** URL。
-4. 在 Excel 中，转到 **Web 服务**部分（如果你在**预测**部分中，请单击返回箭头转到 Web 服务列表）。
+4. 在 Excel 中，转到“Web 服务”部分（如果在“预测”部分中，请单击返回箭头转到 Web 服务列表）。
    
     ![转到 Web 服务选择][03]
 5. 单击“**添加 Web 服务**”。
@@ -76,7 +78,7 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 8. 单击 **“添加”**。
    
     ![经典 Web 服务的 URL 和 API 密钥。][06]
-9. 若要使用 Web 服务，请按照前面的指导：“使用现有 Web 服务的步骤”。
+9. 若要使用 Web 服务，请按照前面的指导操作：“使用现有 Web 服务的步骤”。
 
 ## <a name="sharing-your-workbook"></a>共享工作簿
 如果保存工作簿，则会一并保存为 Web 服务添加的 API/主密钥。 这意味着你只应与自己信任的人共享该工作簿。
@@ -89,9 +91,4 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 [04]: ./media/machine-learning-excel-add-in-for-web-services/image4.png
 [05]: ./media/machine-learning-excel-add-in-for-web-services/image5.png
 [06]: ./media/machine-learning-excel-add-in-for-web-services/image6.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

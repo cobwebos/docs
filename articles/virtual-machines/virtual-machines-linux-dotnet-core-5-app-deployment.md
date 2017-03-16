@@ -15,13 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: b4ddeb091c2c6d2fdfd32d0094567f9e9d8914a7
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 031943c4d7b7736d249b507e2e59f0cc9896a54e
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="application-deployment-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板部署应用程序
+# <a name="application-deployment-with-azure-resource-manager-templates-for-linux-vms"></a>适用于 Linux VM 的使用 Azure Resource Manager 模板的应用程序部署
+
 确定所有 Azure 基础结构要求并转换成部署模板后，需要解决实际的应用程序部署需求。 此处的应用程序部署是指将实际应用程序二进制文件安装到 Azure 资源上。 以音乐应用商店示例而言，需要在每个虚拟机上安装并配置 .Net Core、NGINX 和监督程序。 需要将音乐应用商店二进制文件安装到虚拟机上，并预先创建音乐应用商店数据库。
 
 本文档详细说明虚拟机扩展如何自动化 Azure 虚拟机的应用程序部署和配置。 所有依赖项和独特配置都已突出显示。 为了获得最佳体验，请将一个解决方案实例预先部署到 Azure 订阅，然后将它与 Azure Resource Manager 模板配合运行。 可通过以下链接找到完整模板 – [Ubuntu 上的音乐应用商店部署](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
@@ -119,10 +122,5 @@ sudo service supervisor start
 <hr>
 
 [探索更多 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

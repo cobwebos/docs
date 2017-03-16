@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Functions 将自定义代码添加到逻辑应用 | Microsoft Docs"
-description: "使用 Azure Functions 为 Azure 逻辑应用创建自定义代码"
+title: "使用 Azure Functions 的 Azure 逻辑应用的自定义代码 | Microsoft Docs"
+description: "使用 Azure Functions 为 Azure 逻辑应用创建和运行自定义代码"
 services: logic-apps,functions
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -12,25 +12,26 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
+ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: c63dde728eaaf8237970e05cc524c6220b69a074
-ms.openlocfilehash: 8b68f017a2c7a17603508438b0d4bd760bec4f78
-ms.lasthandoff: 02/15/2017
-
+ms.sourcegitcommit: 8a606e5d009fd210212bd9d7a92ddb3e0cb2e3a2
+ms.openlocfilehash: 1c939e26212b2454cf3e666021036680d5494cfb
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="add-custom-code-to-azure-logic-apps-with-azure-functions"></a>使用 Azure Functions 将自定义代码添加到 Azure 逻辑应用
 
-通过在逻辑应用中使用 Azure Functions 可以运行 C# 或 node.js 的自定义代码片段。 
+# <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>通过 Azure Functions 为逻辑应用添加和运行自定义代码
+
+若要在逻辑应用中运行 C# 或 node.js 的自定义代码段，可以通过 Azure Functions 创建自定义函数。 
 在 Microsoft Azure 中 [Azure Functions](../azure-functions/functions-overview.md) 提供与服务器无关的计算，可用于执行以下这些任务：
 
 * 逻辑应用中字段的高级格式设置或计算
 * 在工作流中执行计算。
 * 使用 C# 或 node.js 中支持的函数扩展逻辑应用功能
 
-## <a name="create-functions-for-logic-apps"></a>为逻辑应用创建函数
+## <a name="create-custom-functions-for-your-logic-apps"></a>为逻辑应用创建自定义函数
 
 我们建议在 Azure Functions 门户中通过**泛型 Webhook — 节点**或**泛型 Webhook — C#** 模板创建函数。 结果会创建自动填充的模板，它从逻辑应用接受 `application/json`。 系统会自动发现通过这些模板创建的函数，并在逻辑应用设计器的“我的区域中的 Azure Functions”下面显示。
 

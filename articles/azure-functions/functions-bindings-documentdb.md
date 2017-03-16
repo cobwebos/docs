@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/10/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: c9e736f7ce5330823f3890c669da40e2bb1ecf43
-ms.openlocfilehash: 13b69118c6732ed872bec11e880737db3b8fa3c5
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: e476a80a3846b8c80c35d6803d5518727f008824
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -53,7 +54,7 @@ DocumentDB 输入绑定检索 DocumentDB 文档，并将其传递给函数的命
 注意以下事项：
 
 * `id` 支持类似 `{queueTrigger}` 的绑定，它使用队列消息的字符串值作为文档 ID。
-* `connection` 必须是某个应用设置的名称，该设置指向 DocumentDB 帐户的终结点（包含值 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`）。 如果通过函数门户 UI 创建 DocumentDB 帐户，则帐户创建过程会创建一个应用设置。 若要使用现有 DocumentDB 帐户，需要[手动配置此应用设置]()。 
+* `connection` 必须是某个应用设置的名称，该设置指向 DocumentDB 帐户的终结点（包含值 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`）。 如果通过函数门户 UI 创建 DocumentDB 帐户，则帐户创建过程会创建一个应用设置。 若要使用现有 DocumentDB 帐户，需要[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
 * 若未找到指定文档，则函数的命名输入参数设置为 `null`。 
 
 ## <a name="input-usage"></a>输入使用情况
@@ -132,7 +133,7 @@ module.exports = function (context) {
 };
 ```
 
-## <a name="a-iddocdboutputadocumentdb-output-binding"></a><a id="docdboutput"></a>DocumentDB 输出绑定
+## <a id="docdboutput"></a>DocumentDB 输出绑定
 DocumentDB 输出绑定允许将新文档写入 Azure DocumentDB 数据库。 
 
 输出绑定在 function.json 的 `bindings` 数组中使用以下 JSON 对象： 
@@ -157,7 +158,10 @@ DocumentDB 输出绑定允许将新文档写入 Azure DocumentDB 数据库。
 ## <a name="output-usage"></a>输出使用情况
 本部分演示如何在函数代码中使用 DocumentDB 输出绑定。
 
-当写入函数中的输出参数时，默认情况下数据库中将生成一个新文档，并以自动生成的 GUID 作为文档 ID。 可以通过在输出参数中指定 `id` JSON 属性，来指定输出文档的文档 ID。 如果具有该 ID 的文档已存在，则输出文档将覆盖它。 
+当写入函数中的输出参数时，默认情况下数据库中将生成一个新文档，并以自动生成的 GUID 作为文档 ID。 可以通过在输出参数中指定 `id` JSON 属性，来指定输出文档的文档 ID。 
+
+>[!Note]  
+>如果指定现有文档的 ID，它会被新的输出文档覆盖。 
 
 可使用以下任意类型写入到输出：
 
@@ -306,9 +310,4 @@ module.exports = function (context) {
   context.done();
 };
 ```
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

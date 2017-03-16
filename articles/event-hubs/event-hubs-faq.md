@@ -13,11 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2017
-ms.author: sethm;jotaub
+ms.author: sethm;jotaub;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: 8e483b17e453dedf17a21c673d3b2231b9bfba3a
-ms.openlocfilehash: 3c04f0225ec36f700fff59d87c6d0939ab74355c
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 59622f283daeca59464dfb7a13ca76c7a0148a21
+ms.lasthandoff: 03/03/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/21/2017
 ## <a name="general"></a>常规
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>事件中心基本和标准这两种服务层有什么不同？
-事件中心标准层提供的功能要超出事件中心基本层以及某些竞争对手系统的功能。 这些功能包括：超过 24 小时的保留期，能够使用一个 AMQP 连接将命令发送到大量设备而延迟为次秒级，并且能够从那些设备将遥测发送到事件中心。 有关功能列表，请参阅[事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)。
+事件中心标准层提供的功能要超出事件中心基本层以及某些竞争对手系统的功能。 这些功能包括：超过 24 小时的保留期，能够使用一个 AMQP 连接将命令发送到大量设备而延迟为次秒级，并且能够从那些设备将遥测发送到事件中心。 标准还提供事件中心[存档](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)功能。有关功能的列表，请参阅[事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 ### <a name="what-are-event-hubs-throughput-units"></a>什么是事件中心吞吐量单元？
 通过 Azure 门户或事件中心 Resource Manager 模板明确选择事件中心吞吐量单位。 吞吐量单位适用于事件中心命名空间中的所有事件中心，每个吞吐量单位为命名空间赋予以下功能：
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/21/2017
 可以，但前提是所有事件中心都在同一个命名空间中。
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>事件的最长保留期有多久？
-事件中心标准目前支持的最长保留期为 7 天。 请注意，事件中心并不是永久性的数据存储区。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新计算机学习模型。
+事件中心标准目前支持的最长保留期为 7 天。 请注意，事件中心并不是永久性的数据存储区。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新计算机学习模型。 如果需要将消息保留 7 天以上，那么启用事件中心的[存档](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)功能可将数据从事件中心拉取到你选择的存储。 启用存档功能会基于你购买的吞吐量单位进行计价。
 
 ### <a name="where-is-azure-event-hubs-available"></a>Azure 事件中心在哪些区域可用？
 在所有支持的 Azure 区域中都可使用 Azure 事件中心。 有关列表，请访问 [Azure 区域](https://azure.microsoft.com/regions/)页。  
@@ -69,7 +69,7 @@ ms.lasthandoff: 02/21/2017
 有关事件中心定价的完整信息，请参阅[事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 ### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>保留事件中心事件超过 24 小时的话，要收取费用吗？
-事件中心标准允许消息保留期长于 24 小时，最长以 30 天为限。 如果所存储事件总量的大小超过所选吞吐量单位数量的存储限制（每个吞吐量单位&84; GB），超出限制的部分会按公布的 Azure Blob 存储区费率收费。 每个吞吐量单元的存储限制包括 24 小时（默认值）的保留期期间的所有存储成本，即使吞吐量单元已经用到了最大入口限制。
+事件中心标准层允许消息保留期长于 24 小时，最长以 7 天为限。 如果所存储事件总量的大小超过所选吞吐量单位数量的存储限制（每个吞吐量单位&84; GB），超出限制的部分会按公布的 Azure Blob 存储区费率收费。 每个吞吐量单元的存储限制包括 24 小时（默认值）的保留期期间的所有存储成本，即使吞吐量单元已经用到了最大入口限制。
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>怎样对事件中心存储区大小进行计算和收费？
 所有存储的事件的总大小，包括所有事件中心中用于事件标头的或磁盘存储结构上的任何内部开销，在一整天当中都会被测量。 在一天结束时，计算存储区大小峰值。 每天的存储限制根据在当天所选择的吞吐量单元的最小数量（每个吞吐量单元提供 84 GB 的限制）来计算。 如果总大小超过计算出的每日存储限额，超出的存储量会采用 Azure Blob 存储费率（按**本地冗余存储**费率）来计费。
@@ -81,6 +81,13 @@ ms.lasthandoff: 02/21/2017
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>中转连接费用是否适用于事件中心？
 连接费用只在使用 AMQP 协议时适用。 使用 HTTP 发送事件没有连接费用，无论发送系统或设备的数量是多少。 如果计划使用 AMQP（例如，为了实现更高效的事件流式传输，或者为了对 IoT 命令和控制方案启用双向通信），请参阅[事件中心定价信息](https://azure.microsoft.com/pricing/details/event-hubs/)页，了解有关每个服务层中包括多少连接的详细信息。
+
+### <a name="how-is-event-hubs-archive-billed"></a>事件中心存档如何计费？
+如果命名空间中的任何事件中心启用存档功能，即可启用存档功能。 存档按所购买的吞吐量单位进行小时计费。 吞吐量单位计数增加或减少时，事件中心存档计费将在整个的小时增量中反映这些改变。
+有关事件中心存档计费的详细信息，请参阅[事件中心定价信息](https://azure.microsoft.com/pricing/details/event-hubs/)页。
+
+### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-archive"></a>是否要为事件中心存档所选择的存储帐户付费？
+存档使用在事件中心启用存档时提供的存储帐户。 因为这是你的存储帐户，任何针对此存储帐户的费用更改都将计入你的 Azure 订阅。
 
 ## <a name="quotas"></a>配额
 

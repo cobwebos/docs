@@ -1,6 +1,6 @@
 ---
-title: "企业集成与 EDIFACT | Microsoft Docs"
-description: "了解如何使用 EDIFACT 协议创建逻辑应用"
+title: "用于企业集成的 EDIFACT 消息 — Azure 逻辑应用| Microsoft Docs"
+description: "通过 Azure 逻辑应用交换 EDIFACT 消息来实现企业集成"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -12,24 +12,28 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: jonfan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 30c26d1fb2dfb7c458789e70f4f8d1a6c39cd0ca
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: c5ed4f7413bf8a0b4fd188ca451d4a60b761e886
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="enterprise-integration-with-edifact"></a>企业集成与 EDIFACT
+# <a name="exchange-edifact-messages-with-logic-apps"></a>通过逻辑应用交换 EDIFACT 消息
+
 > [!NOTE]
-> 此页介绍逻辑应用的 EDIFACT 功能。 有关详细信息，请参阅 [X12](logic-apps-enterprise-integration-x12.md)。
-> 
-> 
+> 本页介绍 Azure 逻辑应用的 EDIFACT 功能。 有关详细信息，请参阅 [X12](logic-apps-enterprise-integration-x12.md)。
 
 ## <a name="create-an-edifact-agreement"></a>创建 EDIFACT 协议
 首先需要创建 EDIFACT 协议并将它存储在集成帐户中，然后才能交换 EDIFACT 消息。 以下步骤将逐步引导你完成创建 EDIFACT 协议的过程。
 
-### <a name="heres-what-you-need-before-you-get-started"></a>以下是开始之前需要满足的条件
+### <a name="before-you-get-started"></a>准备工作
+
+需要以下项目：
+
 * 在 Azure 订阅中定义了[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)  
 * 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)  
 
@@ -194,10 +198,5 @@ ms.openlocfilehash: 30c26d1fb2dfb7c458789e70f4f8d1a6c39cd0ca
 
 ## <a name="learn-more"></a>了解详细信息
 * [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

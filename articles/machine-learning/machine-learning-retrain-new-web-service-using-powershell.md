@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/13/2016
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: d57d3802e1678c6754b0d770acc4fe6c092329a3
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: e971bd36f9245032296537ea3e0b64e5f3e18ddd
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -27,9 +28,9 @@ ms.openlocfilehash: d57d3802e1678c6754b0d770acc4fe6c092329a3
 必须设置训练实验和预测实验，如[以编程方式重新训练机器学习模型](machine-learning-retrain-models-programmatically.md)中所示。 
 
 > [!IMPORTANT]
-> 预测实验必须部署为基于 Azure Resource Manager（全新）的机器学习 Web 服务。 
-> 
-> 
+> 预测实验必须部署为基于 Azure Resource Manager（全新）的机器学习 Web 服务。 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。 
+
+
 
 有关部署 Web 服务的其他信息，请参阅[部署 Azure 机器学习 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)。
 
@@ -108,10 +109,5 @@ ms.openlocfilehash: d57d3802e1678c6754b0d770acc4fe6c092329a3
 
 * 使用新数据定期重新训练模型。
 * 向客户分配模型，以便他们可以使用自己的数据重新训练模型。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

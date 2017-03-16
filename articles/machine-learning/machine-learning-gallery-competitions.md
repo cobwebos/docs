@@ -30,7 +30,7 @@ ms.lasthandoff: 02/21/2017
 有关竞赛的常见问题的解答，请参阅 [Microsoft Cortana Intelligence 竞赛常见问题](machine-learning-competition-faq.md)。
 
 ## <a name="discover"></a>发现
-  若要浏览库中的竞赛，请打开“库”[](http://gallery.cortanaintelligence.com)、将鼠标指向库主页顶部的“更多”，然后选择“竞赛”。
+  若要浏览库中的竞赛，请打开 [库](http://gallery.cortanaintelligence.com)、将鼠标指向库主页顶部的 **更多**，然后选择 **竞赛**。
 
 ![从库主页中选择“竞争”](media/machine-learning-gallery-competitions/select-competitions-in-gallery.png)
 

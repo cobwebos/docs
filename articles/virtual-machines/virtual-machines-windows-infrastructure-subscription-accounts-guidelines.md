@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 09c87e78aaccae4f70b2ff61cfc2a0a174dbdfaf
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 5b4b039c8f706a4b113cbe76c01e8330f5cebf3a
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-subscription-and-accounts-guidelines"></a>Azure 订阅和帐户准则
+# <a name="azure-subscription-and-accounts-guidelines-for-windows-vms"></a>适用于 Windows VM 的 Azure 订阅和帐户准则
+
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 本文重点介绍如何随环境和用户群的增长实行订阅和帐户管理。
@@ -65,10 +68,5 @@ ms.openlocfilehash: 09c87e78aaccae4f70b2ff61cfc2a0a174dbdfaf
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

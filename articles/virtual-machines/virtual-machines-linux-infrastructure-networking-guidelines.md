@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 84b64fd79da641987d5346d90bb77bde154b58c4
-ms.openlocfilehash: a519c101e24a340078adcfde3e5733db71630aea
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 1faab292ec93c2138eed2efd977a0bdecbb4574b
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-networking-infrastructure-guidelines"></a>Azure 网络基础结构准则
+# <a name="azure-networking-infrastructure-guidelines-for-linux-vms"></a>适用于 Linux VM 的 Azure 网络基础结构准则
+
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 本文着重于了解 Azure 内虚拟网络的必要计划步骤，以及现有本地环境之间的连接性。
@@ -102,10 +105,5 @@ ms.openlocfilehash: a519c101e24a340078adcfde3e5733db71630aea
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

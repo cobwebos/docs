@@ -12,16 +12,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2016
+ms.date: 03/01/2017
 ms.author: kdotchko
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 47e1d5172dabac18c1b355d8514ae492cd973d32
-ms.openlocfilehash: 5c362af149afd4a204c2705ae3d7f67361d8d528
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: c09caf68b4acf90b5a76d2d715e07fc3a522f18c
+ms.openlocfilehash: 7b9b7e558a95de88dedcb744e2a4b3c18cde35cc
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="iot-hub-mqtt-support"></a>IoT 中心 MQTT 支持
+# <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 IoT 中心让设备能够在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] 协议，或在端口 443 上使用基于 WebSocket 的 MQTT v3.1.1 协议来与 IoT 中心设备终结点通信。 IoT 中心要求使用 TLS/SSL 保护所有设备通信（因此，IoT 中心不支持端口 1883 上的非安全连接）。
 
 ## <a name="connecting-to-iot-hub"></a>连接到 IoT 中心
@@ -105,12 +106,12 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 ### <a name="retrieving-a-device-twins-properties"></a>检索设备克隆的属性
 
-首先，设备订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它向主题 `$iothub/twin/GET/?$rid={request id}` 发送一条空消息，其中包含 **request id** 的填充值。 服务随后会发送一条响应消息，其中包含关于主题 `$iothub/twin/res/{status}/?$rid={request id}` 的设备克隆数据，并且使用与请求相同的 **request id**。
+首先，设备订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它向主题 `$iothub/twin/GET/?$rid={request id}` 发送一条空消息，其中包含 **request id** 的填充值。 服务随后会发送一条响应消息，其中包含关于主题 `$iothub/twin/res/{status}/?$rid={request id}` 的设备孪生数据，并且使用与请求相同的 **request id**。
 
 request id 可以是消息属性值的任何有效值（如 [IoT 中心消息传送开发人员指南][lnk-messaging]中所述），且需要验证确保状态是整数。
-响应正文将包含设备孪生的属性部分：
+响应正文将包含设备孪生的 properties 节：
 
-标识注册表项的正文限制为“属性”成员，例如，
+标识注册表项的正文限制为“properties”成员，例如：
 
         {
             "properties": {
@@ -134,7 +135,7 @@ request id 可以是消息属性值的任何有效值（如 [IoT 中心消息传
 | 429 | 请求过多（受限），如 [IoT 中心限制][lnk-quotas]中所述 |
 | 5** | 服务器错误 |
 
-有关详细信息，请参阅[设备克隆开发人员指南][lnk-devguide-twin]。
+有关详细信息，请参阅[设备孪生开发人员指南][lnk-devguide-twin]。
 
 ### <a name="update-device-twins-reported-properties"></a>更新设备孪生的报告属性
 
@@ -163,7 +164,7 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 | 429 | 请求过多（受限），如 [IoT 中心限制][lnk-quotas]中所述 |
 | 5** | 服务器错误 |
 
-有关详细信息，请参阅[设备克隆开发人员指南][lnk-devguide-twin]。
+有关详细信息，请参阅[设备孪生开发人员指南][lnk-devguide-twin]。
 
 ### <a name="receiving-desired-properties-update-notifications"></a>接收所需属性更新通知
 
@@ -178,9 +179,9 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 
 
 > [!IMPORTANT] 
-> IoT 中心在仅在连接设备时才会生成更改通知，请确保实现[设备重新连接流][lnk-devguide-twin-reconnection]，让 IoT 中心和设备应用之间的所需属性保持同步。
+> IoT 中心仅在连接设备时才会生成更改通知。 请确保实现[设备重新连接流][lnk-devguide-twin-reconnection]，让 IoT 中心和设备应用之间的所需属性保持同步。
 
-有关详细信息，请参阅[设备克隆开发人员指南][lnk-devguide-twin]。
+有关详细信息，请参阅[设备孪生开发人员指南][lnk-devguide-twin]。
 
 ### <a name="respond-to-a-direct-method"></a>响应直接方法
 

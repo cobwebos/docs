@@ -15,13 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0dee2c3b92adc4098a51014dd7379aa3d53c1627
-ms.openlocfilehash: 6f352b000ce4e284a1f1cc9ba9b384827ee62003
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 1c8f8a958a6ea6ea096d4a55479879aab7c7e96d
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="availability-and-scale-in-azure-resource-manager-templates"></a>Azure Resource Manager 模板的可用性和缩放
+# <a name="availability-and-scale-in-azure-resource-manager-templates-for-linux-vms"></a>用于 Linux VM 的 Azure Resource Manager 模板的可用性和缩放性
+
 可用性和缩放是指满足特定需求而要达到的运行时间与能力。 如果应用程序必须在 99.9% 的时间保持运行状态，则就需要一个允许多个并发计算资源的体系结构。 例如，具有较高程度可用性的配置不会使用单个网站，而是使用同一网站的多个实例，这些实例采用均衡技术。 在此配置中，可以关闭一个应用程序实例进行维护，剩余的实例继续正常运行。 另一方面，缩放是指应用程序为需求提供服务的能力。 使用负载均衡的应用程序时，在池中添加或删除实例，即可让应用程序根据需求缩放。
 
 本文档详细说明如何针对可用性和缩放配置“音乐应用商店”示例部署。 所有依赖项和独特配置都已突出显示。 为了获得最佳体验，请将一个解决方案实例预先部署到 Azure 订阅，然后将它与 Azure Resource Manager 模板配合运行。 可通过以下链接找到完整模板 – [Ubuntu 上的音乐应用商店部署](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
@@ -261,10 +264,5 @@ Azure 门户中显示的一个示例入站 NAT 规则。 在部署中为每个�
 <hr>
 
 [步骤 4 - 使用 Azure Resource Manager 模板部署应用程序](virtual-machines-linux-dotnet-core-5-app-deployment.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

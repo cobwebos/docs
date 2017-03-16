@@ -1,6 +1,6 @@
 ---
-title: "如何标记 Linux 虚拟机 | Microsoft Docs"
-description: "了解如何标记使用 Resource Manager 部署模型在 Azure 中创建的 Linux 虚拟机。"
+title: "如何标记 Azure Linux 虚拟机 | Microsoft Docs"
+description: "了解如何标记使用 Resource Manager 部署模型在 Azure 中创建的 Azure Linux 虚拟机。"
 services: virtual-machines-linux
 documentationcenter: 
 author: mmccrory
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/05/2016
+ms.date: 02/28/2017
 ms.author: memccror
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 56777605e84326fdde1821b42279bd7fc752c553
+ms.sourcegitcommit: 2ec95674901130c9c24de331257e40311c88cb6a
+ms.openlocfilehash: 8fad89189ba6836c5748c656457ab25564147550
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -27,19 +28,21 @@ ms.openlocfilehash: 56777605e84326fdde1821b42279bd7fc752c553
 [!INCLUDE [virtual-machines-common-tag](../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-azure-cli"></a>使用 Azure CLI 进行标记
-若要开始， 请[安装和配置 Azure CLI](../xplat-cli-azure-resource-manager.md) 并确保处于 Resource Manager 模式 (`azure config mode arm`)。
+首先需要安装最新的 [Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+
+还可以使用 [Azure CLI 1.0](virtual-machines-linux-tag-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
 
 你可以使用此命令查看给定虚拟机的所有属性，包括标记：
 
-        azure vm show -g MyResourceGroup -n MyTestVM
+        az vm show --resource-group MyResourceGroup --name MyTestVM
 
-若要通过 Azure CLI 添加新的 VM 标记，可以使用 `azure vm set` 命令以及标记参数 **-t**：
+若要通过 Azure CLI 添加新的 VM 标记，可以使用 `azure vm update` 命令以及标记参数 **--set**：
 
-        azure vm set -g MyResourceGroup -n MyTestVM –t myNewTagName1=myNewTagValue1;myNewTagName2=myNewTagValue2
+        az vm update --resource-group MyResourceGroup --name MyTestVM –-set tags.myNewTagName1=myNewTagValue1 tags.myNewTagName2=myNewTagValue2
 
-若要删除所有标记，可以在 `azure vm set` 命令中使用 **–T** 参数。
+若要删除标记，可以在 `azure vm update` 命令中使用 **--remove** 参数。
 
-        azure vm set – g MyResourceGroup –n MyTestVM -T
+        az vm update –-resource-group MyResourceGroup –-name MyTestVM --remove tags.myNewTagName1
 
 
 既然我们已通过 Azure CLI 和门户将标记应用到资源中，那就让我们看一看使用情况详细信息，以在计费门户中查看标记。
@@ -55,9 +58,4 @@ ms.openlocfilehash: 56777605e84326fdde1821b42279bd7fc752c553
 [Using Tags to organize your Azure Resources]: ../azure-resource-manager/resource-group-using-tags.md
 [Understanding your Azure Bill]: ../billing/billing-understand-your-bill.md
 [Gain insights into your Microsoft Azure resource consumption]: ../billing/billing-usage-rate-card-overview.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

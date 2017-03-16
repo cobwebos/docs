@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/26/2017
+ms.date: 02/28/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 5a73094c90b2a7400a664a827e07d5ada2184952
-ms.openlocfilehash: 372f6413903fbf7344871a136ffcddcadfc81782
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: ea2124e01753b914ebd1691e5d89091ac5cd5859
+ms.lasthandoff: 03/04/2017
 
 
 ---
-# <a name="azure-virtual-machine-cli-samples"></a>Azure 虚拟机 CLI 示例
+# <a name="azure-cli-samples-for-linux-virtual-machines"></a>适用于 Linux 虚拟机的 Azure CLI 示例
 
 下表包含指向使用 Azure CLI 生成的 bash 脚本的链接。
 
@@ -39,6 +39,8 @@ ms.lasthandoff: 02/27/2017
 | [保护虚拟机之间的网络流量](./scripts/virtual-machines-linux-cli-sample-create-vm-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建两个虚拟机、所有相关资源以及内部和外部网络安全组 (NSG)。 |
 |**监视虚拟机**||
 | [使用 Operations Management Suite 监视 VM](./scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个虚拟机，安装 Operations Management Suite 代理，并在 OMS 工作区中注册该 VM。  |
+|**重新启动虚拟机**||
+| [重新启动 VM](./scripts/virtual-machines-linux-cli-sample-restart-by-tag.md) | 创建并重新启动 VM。 |
 |**对虚拟机进行故障排除**||
 | [对 VM 操作系统磁盘进行故障排除](./scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将一个 VM 中的操作系统磁盘作为数据磁盘装载到第二个 VM 中。 |
 | | |
