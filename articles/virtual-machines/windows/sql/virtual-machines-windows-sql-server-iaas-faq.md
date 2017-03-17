@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/07/2017
 ms.author: v-shysun
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 42b3e222f24e9b5c1bb26f7e1e36b1e11c2f48b8
-ms.openlocfilehash: 7a8d1451fc1b5ace2996faec22090b1f872bf547
-
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 6df28527f502fe2191ee0127a3f9d467ca53c5b5
+ms.lasthandoff: 03/07/2017
 
 ---
-# <a name="sql-server-on-azure-virtual-machines-faq"></a>Azure 虚拟机中的 SQL Server 常见问题
+# <a name="frequently-asked-questions-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server 常见问题
 本主题提供有关运行 [Azure 虚拟机中的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 时出现的一些最常见问题的解答。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
@@ -77,10 +78,5 @@ ms.openlocfilehash: 7a8d1451fc1b5ace2996faec22090b1f872bf547
 * [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md)
 * [Azure 虚拟机中 SQL Server 的性能最佳实践](virtual-machines-windows-sql-performance.md)
 * [Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

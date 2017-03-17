@@ -1,6 +1,6 @@
 ---
 title: "将 mongoimport 和 mongorestore 与 Azure DocumentDB 配合使用 | Microsoft Docs"
-description: "了解如何使用 mongoimport 和 mongorestore 将数据导入到具有 MongoDB 协议支持的 DocumentDB 帐户（目前以预览版提供）。"
+description: "了解如何使用 mongoimport 和 mongorestore 将数据导入到 DocumentDB：MongoDB 帐户的 API"
 keywords: "mongoimport，mongorestore"
 services: documentdb
 author: AndrewHoh
@@ -13,16 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 03/06/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: df43600a11aa829ba7fc6b858d64b5f8e98d22fb
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 2af8691326550c631e6668890cb0d6b893fa7740
+ms.lasthandoff: 03/08/2017
 
 
 ---
 # <a name="migrate-data-to-documentdb-by-using-mongoimport-and-mongorestore"></a>使用 mongoimport 和 mongorestore 将数据迁移到 DocumentDB
-若要将数据迁移到具有 MongoDB 协议支持的 Azure DocumentDB 帐户，必须：
+> [!div class="op_single_selector"]
+> * [导入到 DocumentDB](documentdb-import-data.md)
+> * [导入到 MongoDB 的 API](documentdb-mongodb-migrate.md)
+>
+>
+
+若要将数据迁移到 Azure DocumentDB：MongoDB 帐户的 API，必须：
 
 * 从 [MongoDB 下载中心](https://www.mongodb.com/download-center)下载 *mongoimport.exe* 或 *mongorestore.exe*。
 * 获取 [MongoDB 连接字符串的 DocumentDB 支持](documentdb-connect-mongodb-account.md)。
@@ -42,7 +49,7 @@ ms.openlocfilehash: df43600a11aa829ba7fc6b858d64b5f8e98d22fb
 
     ![“连接字符串”边栏选项卡](./media/documentdb-mongodb-migrate/ConnectionStringBlade.png)
 
-## <a name="import-data-to-documentdb-with-protocol-support-for-mongodb-with-mongoimport"></a>使用 mongoimport 将数据导入到具有 MongoDB 协议支持的 DocumentDB
+## <a name="import-data-to-api-for-mongodb-with-mongoimport"></a>使用 mongoimport 将数据导入到 MongoDB 的 API
 
 若要将数据导入 DocumentDB 帐户，请使用以下模板执行导入。 使用特定于帐户的值填写“主机”、“用户名”和“密码”。  
 
@@ -54,7 +61,7 @@ ms.openlocfilehash: df43600a11aa829ba7fc6b858d64b5f8e98d22fb
 
     mongoimport.exe --host anhoh-host.documents.azure.com:10250 -u anhoh-host -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file C:\Users\anhoh\Desktop\*.json
 
-## <a name="import-data-to-documentdb-with-protocol-support-for-mongodb-with-mongorestore"></a>使用 mongorestore 将数据导入到具有 MongoDB 协议支持的 DocumentDB
+## <a name="import-data-to-api-for-mongodb-with-mongorestore"></a>使用 mongorestore 将数据导入到 MongoDB 的 API
 
 若要将数据还原到 DocumentDB 帐户，请使用以下模板执行导入。 使用特定于帐户的值填写“主机”、“用户名”和“密码”。
 
@@ -67,10 +74,5 @@ ms.openlocfilehash: df43600a11aa829ba7fc6b858d64b5f8e98d22fb
     mongorestore.exe --host anhoh-host.documents.azure.com:10250 -u anhoh-host -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
 
 ## <a name="next-steps"></a>后续步骤
-* 有关详细信息，请浏览 [DocumentDB 的 MongoDB 协议支持示例](documentdb-mongodb-samples.md)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* 有关详细信息，请浏览 [DocumentDB：MongoDB 示例的 API](documentdb-mongodb-samples.md)。
 

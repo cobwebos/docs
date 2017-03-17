@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
 translationtype: Human Translation
-ms.sourcegitcommit: 071e8056382128f7c5070b46591b2a66ba5b7e41
-ms.openlocfilehash: 57c38c3d19810fd8c2789a27983c521517f2303b
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 904a2251328ec7b2a6ed6f3c91e2aaba33076860
+ms.lasthandoff: 03/07/2017
 
 
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>连续部署到 Azure App Service
-本教程说明如何为 [Azure 应用服务]应用配置连续部署工作流。 将应用服务与 BitBucket、GitHub 和 Visual Studio Team Services (VSTS) 集成可以实现一种连续部署工作流，在其中，Azure 可以从发布到其中一种服务的项目中拉取最近的更新。 连续部署选项非常适合用于频繁集成多个分发内容的项目。
+本教程说明如何为 [Azure 应用服务]应用配置连续部署工作流。 将应用服务与 BitBucket、GitHub 和 [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) 集成可以实现一种连续部署工作流，在其中，Azure 可以从发布到其中一种服务的项目中拉取最近的更新。 连续部署选项非常适合用于频繁集成多个分发内容的项目。
 
 若要了解如何通过 Azure 门户中未列出的云存储库（如 [GitLab](https://gitlab.com/)）手动配置连续部署，请参阅[使用手动步骤设置连续部署](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)。
 
-## <a name="a-nameoverviewaenable-continuous-deployment"></a><a name="overview"></a>启用连续部署
+## <a name="overview"></a>启用连续部署
 若要启用连续部署，请执行以下操作：
 
 1. 将应用内容发布到用于连续部署的存储库。  
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/27/2017
 5. 若要验证是否已成功部署应用，请在 Azure 门户的应用边栏选项卡顶部单击“URL”。
 6. 若要验证是否能够在从所选存储库进行连续部署，请将更改推送到该存储库。 推送到存储库完成后，你的应用应该很快更新以反映更改。 可在应用的“部署选项”边栏选项卡中验证是否已拉取更新。
 
-## <a name="a-namevssolutionacontinuous-deployment-of-a-visual-studio-solution"></a><a name="VSsolution"></a>连续部署 Visual Studio 解决方案
+## <a name="VSsolution"></a>连续部署 Visual Studio 解决方案
 将 Visual Studio 解决方案推送到 Azure App Service 就像推送简单的 index.html 文件一样容易。 应用服务部署过程简化了所有细节，包括还原 NuGet 依赖项和生成应用程序二进制文件。 可以按照仅在 Git 存储库中维护代码的源控件最佳实践操作，并让应用服务部署处理其余工作。
 
 将 Visual Studio 解决方案推送到应用服务的步骤与[上一部分](#overview)中的步骤相同，前提是按以下方式配置解决方案和存储库：
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/27/2017
 
 你按照说明设置存储库并将 Azure 中的应用配置为从某个联机 Git 存储库连续发布后，你就可以在 Visual Studio 中从本地开发 ASP.NET 应用程序，并且只需通过将所做的更改推送到联机的 Git 存储库即可连续部署代码。
 
-## <a name="a-namedisablecdadisable-continuous-deployment"></a><a name="disableCD"></a>禁用连续部署
+## <a name="disableCD"></a>禁用连续部署
 若要禁用连续部署，请执行以下操作：
 
 1. 访问[Azure 门户]，在你的应用的菜单边栏选项卡中单击“应用部署”>“部署选项”。 然后单击“部署选项”边栏选项卡中的“断开连接”。
@@ -79,9 +79,10 @@ ms.lasthandoff: 01/27/2017
 * [如何使用针对 Mac 和 Linux 的 Azure 命令行工具]
 * [Git 文档]
 * [项目 Kudu](https://github.com/projectkudu/kudu/wiki)
+* [Use Azure to automatically generate a CI/CD pipeline to deploy an ASP.NET 4 app](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)（使用 Azure 自动生成部署 ASP.NET 4 应用的 CI/CD 管道）
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://azure.microsoft.com/try/app-service/)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 

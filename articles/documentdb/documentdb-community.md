@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/16/2017
+ms.date: 03/07/2017
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: cf163b2809f50daf0273398d6fec50dfc6fd69a2
-ms.openlocfilehash: 96dbc1f5a84f52ab39a3515511c7851bba5fa9a9
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 4e5d915d474d7ea161f467def931e3013255f843
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -100,6 +100,7 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 |[南佛罗里达编解码器：NoSQL for .NET 开发人员使用 Azure DocumentDB 在 10 分钟内完成](http://www.fladotnet.com/codecamp/Agenda.aspx)| [Santosh Hari](https://twitter.com/_s_hari)|佛罗里达州戴维|2017 年 3 月 11 日|[#sflcc](https://twitter.com/search?q=%23sflcc&ref_src=twsrc%5Etfw)|
 |[奥兰多编解码器：NoSQL for .NET 开发人员使用 Azure DocumentDB 在 10 分钟内完成](http://orlandocodecamp.com/Sessions/Details/20)| [Santosh Hari](https://twitter.com/_s_hari)|佛罗里达州桑福德|2017 年 4 月 8 日|[#OrlandoCC](https://twitter.com/hashtag/OrlandoCC?src=hash&ref_src=twsrc%5Etfw)|
 |[Global Azure Bootcamp：使用 Azure Functions 和 DocumentDB 在 Azure 中进行的无服务器计算](https://www.eventbrite.com/e/2017-global-azure-bootcamp-atlanta-usa-tickets-31817713638)| [Josh Lane](https://twitter.com/jplane)|亚特兰大|2017 年 4 月 22 日|[#GlobalAzure](https://twitter.com/hashtag/GlobalAzure?src=hash)|
+|[NDC Olso 2017: Azure DocumentDB - 可能尚未使用的最佳 NoSQL 数据库](http://ndcoslo.com/talk/azure-documentdb-the-best-nosql-database-youre-probably-not-using-yet/)|[Josh Lane](https://twitter.com/jplane)|奥斯陆，挪威|2017 年 6 月 14 日|[#ndcoslo](https://twitter.com/search?q=%23ndcoslo)|
 
 *要演讲或举办活动吗？[让我们知道](mailto:askdocdb@microsoft.com)我们能为你做些什么！*
 

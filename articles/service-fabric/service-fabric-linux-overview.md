@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: SubramaR
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 175edd2c45319f197d1df65ae22853ca0dc3d310
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: c4c83345596900162826feab9fe549bc261e7d00
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -27,16 +27,16 @@ ms.lasthandoff: 01/30/2017
 Linux 上的 Service Fabric 在概念上等同于 Windows 上的 Service Fabric（OS 细节和编程语言支持除外）。 因此，我们的大部分[现有文档](http://aka.ms/servicefabricdocs)都能帮助你熟悉该技术。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Service-Fabric-Linux-Preview/player]
-> 
-> 
+>
+>
 
 ## <a name="supported-operating-systems-and-programming-languages"></a>支持操作系统和编程语言
 受限预览版支持创建单机开发群集，以及在 Azure 中运行 Ubuntu Server 16.04 的多计算机群集。 除了来宾可执行文件和协调 Docker 容器以外，预览版还支持 Java 和 C# 中的 Reliable Actors 和 Reliable Stateless Services 框架。  
 
 > [!NOTE]
 > Linux 尚不支持 Reliable 集合。 此外，也不支持独立群集 - 预览版仅支持单机群集和 Azure Linux 多计算机群集。
-> 
-> 
+>
+>
 
 
 ## <a name="supported-tooling"></a>支持的工具
@@ -47,5 +47,5 @@ Linux 上的 Service Fabric 在概念上等同于 Windows 上的 Service Fabric�
 2. [在 Linux 上准备开发环境](service-fabric-get-started-linux.md)
 3. [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
 4. [在 Linux 上创建第一个 Service Fabric Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
-
+5. [使用 Jenkins 和 GitHub 设置 Service Fabric 持续集成和部署](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 

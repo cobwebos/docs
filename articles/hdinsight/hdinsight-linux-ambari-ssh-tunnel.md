@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/08/2017
+ms.date: 03/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
-ms.openlocfilehash: 8045f9d927e9c877573085eb43eaadcd60f96a67
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: a09fc0052538316a37a9ff07dfddd89de00cb499
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -52,9 +52,17 @@ ms.lasthandoff: 02/09/2017
   > [!NOTE]
   > 如果想要使用 `ssh` 或 PuTTY 以外的 SSH 客户端，请参阅客户端的文档，以了解如何建立 SSH 隧道。
 
-* 可配置为使用 SOCKS 代理的 Web 浏览器
+* 可配置为使用 SOCKS5 代理的 Web 浏览器。
 
-## <a name="a-nameusesshacreate-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>使用 SSH 命令创建隧道
+    > [!WARNING]
+    > 内置于 Windows 中的 SOCKS 代理支持不支持 SOCKS5，不适用于此文档中的步骤。 以下浏览器依赖于 Windows 代理设置，当前不适用于此文档中的步骤：
+    > 
+    > * Microsoft Edge
+    > * Microsoft Internet Explorer
+    >
+    > Google Chrome 也依赖于 Windows 代理设置。 但是，可以安装支持 SOCKS5 的扩展。 我们建议使用 [FoxyProxy Standard](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp)。
+
+## <a name="usessh"></a>使用 SSH 命令创建隧道
 
 使用以下 `ssh` 命令创建 SSH 隧道。 将 **USERNAME** 替换为 HDInsight 群集的 SSH 用户，并将 **CLUSTERNAME** 替换为 HDInsight 群集的名称
 
@@ -77,7 +85,7 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
 命令完成后，发送到本地计算机上端口 9876 的流量将通过安全套接字层 (SSL) 路由到群集头节点，且看上去源于该节点。
 
-## <a name="a-nameuseputtyacreate-a-tunnel-using-putty"></a><a name="useputty"></a>使用 PuTTY 创建隧道
+## <a name="useputty"></a>使用 PuTTY 创建隧道
 
 执行以下步骤使用 PuTTY 创建 SSH 隧道。
 
@@ -101,8 +109,8 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
 ## <a name="use-the-tunnel-from-your-browser"></a>从浏览器使用隧道
 
-> [!NOTE]
-> 本部分中的步骤使用 FireFox 浏览器，因为它在 Linux、Unix、Macintosh OS X 和 Windows 系统上均可任意使用。 其他支持使用 SOCKS 代理的新式浏览器同样可正常运行。
+> [!IMPORTANT]
+> 本部分中的步骤使用 Mozilla FireFox 浏览器，因为它在所有平台中提供相同的代理设置。 对于其他新式浏览器（如 Google Chrome），可能需要 FoxyProxy 等扩展才能使用隧道。
 
 1. 将浏览器配置为使用 **localhost**，并将创建隧道时使用的端口配置为 **SOCKS v5** 代理。 Firefox 中的设置如下所示。 如果使用的端口不是 9876，请将端口更改为所用的端口：
    
@@ -145,6 +153,7 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    > 
 
 ## <a name="next-steps"></a>后续步骤
+
 学会如何创建和使用 SSH 隧道后，请参阅以下链接，了解如何通过 Ambari 监视和管理群集：
 
 * [使用 Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)

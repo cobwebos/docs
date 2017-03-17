@@ -1,5 +1,5 @@
 ---
-title: "在 Azure VM 中配置 AlwaysOn 可用性组 - 经典"
+title: "在 Azure VM 中配置 AlwaysOn 可用性组（经典）| Microsoft 文档"
 description: "创建包含 Azure 虚拟机的 AlwaysOn 可用性组。 本教程主要使用用户界面和工具而不是脚本。"
 services: virtual-machines-windows
 documentationcenter: na
@@ -16,12 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 09/22/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: c1a1c7d2fd56e20d30cf0468de2d7d6c2935ef3e
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="configure-always-on-availability-group-in-azure-vm---classic"></a>在 Azure VM 中配置 AlwaysOn 可用性组 - 经典
+# <a name="configure-always-on-availability-group-in-azure-vm-classic"></a>在 Azure VM 中配置 AlwaysOn 可用性组（经典）
 > [!div class="op_single_selector"]
 > * [Resource Manager：模板](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 > * [Resource Manager：手动](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
@@ -177,7 +178,7 @@ ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
 <br/>
 
 > [!NOTE]
-> 前面的配置建议使用标准层虚拟机，因为基本层计算机不支持稍后创建可用性组侦听器所需的负载平衡终结点。 此外，此处建议的虚拟机大小是为了在 Azure VM 中测试可用性组。 为获得生产工作负荷的最佳性能，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳实践](../sql/virtual-machines-windows-sql-performance.md)中关于 SQL Server 计算机大小和配置的建议。
+> 前面的配置建议使用标准层虚拟机，因为基本层计算机不支持稍后创建可用性组侦听器所需的负载均衡终结点。 此外，此处建议的虚拟机大小是为了在 Azure VM 中测试可用性组。 为获得生产工作负荷的最佳性能，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳实践](../sql/virtual-machines-windows-sql-performance.md)中关于 SQL Server 计算机大小和配置的建议。
 > 
 > 
 
@@ -415,10 +416,5 @@ ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
 现在，你已通过在 Azure 中创建可用性组成功实现了 SQL Server Always On。 若要为此可用性组配置侦听器，请参阅[在 Azure 中配置 Always On 可用性组的 ILB 侦听器](virtual-machines-windows-classic-ps-sql-int-listener.md)。
 
 有关在 Azure 中使用 SQL Server 的其他信息，请参阅 [SQL Server on Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)（Azure 虚拟机上的 SQL Server）。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "适用于 SQL Server VM 的 SQL Server 代理扩展（经典）| Microsoft Docs"
+title: "在 SQL VM 上自动完成管理任务（经典）| Microsoft 文档"
 description: "本主题介绍如何管理可以自动执行特定 SQL Server 管理任务的 SQL Server 代理扩展。 这些任务包括自动备份、自动修补和 Azure 密钥保管库集成。 本主题使用经典部署模式。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,19 +15,20 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/18/2017
 ms.author: jroth
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6494f8bd610c26ceda718a38faf32d0346a063d7
-ms.openlocfilehash: 73187757207eef345f262dfc16780e7a6dbfb739
-
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: ca346405590d7caa63a888aa139ab1a6f21e365b
+ms.lasthandoff: 03/07/2017
 
 ---
-# <a name="sql-server-agent-extension-for-sql-server-vms-classic"></a>适用于 SQL Server VM 的 SQL Server 代理扩展（经典）
+# <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>使用 SQL Server 代理扩展在 Azure 虚拟机上自动完成管理任务（经典）
 > [!div class="op_single_selector"]
-> * [资源管理器](../sql/virtual-machines-windows-sql-server-agent-extension.md)
+> * [Resource Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md)
 > * [经典](virtual-machines-windows-classic-sql-server-agent-extension.md)
 > 
-> 
-
+>
+ 
 Azure 虚拟机上运行的 SQL Server IaaS 代理扩展 (SQLIaaSAgent) 可以自动执行管理任务。 本主题概述了该扩展支持的服务以及有关安装、状态及删除的说明。
 
 > [!IMPORTANT] 
@@ -103,10 +104,5 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 开始使用扩展支持的服务之一。 有关详细信息，请参阅本文的[支持的服务](#supported-services)部分中提到的主题。
 
 有关在 Azure 虚拟机中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](../sql/virtual-machines-windows-sql-server-iaas-overview.md)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

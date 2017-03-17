@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 98f1c50774c2ee70afd18a1e036b6e3264518552
-ms.openlocfilehash: b67be76eab9b6c467f8ab9760f7ea481f1d6db90
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 40a1d76cc4167858a9bebac9845230473cc71e3e
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -84,8 +84,7 @@ Set-AzureRmContext -SubscriptionId <subscription ID>
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>在 HDInsight 群集上运行测试作业以使用 Data Lake Store
 配置 HDInsight 群集后，可在该群集上运行测试作业来测试该 HDInsight 群集是否可访问 Data Lake Store。 为此，我们会运行示例 Hive 作业，该作业会使用先前已上传至 Data Lake Store 的示例数据创建一个表。
 
-### <a name="for-a-linux-cluster"></a>对于 Linux 群集
-本节中，将连接 SSH 到群集中，然后运行示例 Hive 查询。 Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载的 **PuTTY**。
+在本部分中，通过 SSH 连接到 HDInsight Linux 群集，然后运行示例 Hive 查询。 如果使用 Windows 客户端，我们建议使用 **PuTTY**，可以从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载它。
 
 有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 
@@ -117,60 +116,11 @@ Set-AzureRmContext -SubscriptionId <subscription ID>
    1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
    ```
 
-### <a name="for-a-windows-cluster"></a>对于 Windows 群集
-使用以下 cmdlet 运行 Hive 查询。 在此查询中，以 Data Lake Store 中的数据创建一个表，然后在创建的表上运行选择查询。
-
-```
-$queryString = "DROP TABLE vehicles;" + "CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://$dataLakeStoreName.azuredatalakestore.net:443/';" + "SELECT * FROM vehicles LIMIT 10;"
-
-$hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString
-
-$hiveJob = Start-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $httpCredentials
-
-Wait-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $httpCredentials
-```
-
-应会显示以下输出。 输出中的 **ExitValue** 0 表明此作业已成功完成。
-
-```
-Cluster         : hdiadlcluster.
-HttpEndpoint    : hdiadlcluster.azurehdinsight.net
-State           : SUCCEEDED
-JobId           : job_1445386885331_0012
-ParentId        :
-PercentComplete :
-ExitValue       : 0
-User            : admin
-Callback        :
-Completed       : done
-```
-
-使用下面的 cmdlet 从作业检索输出：
-
-```
-Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $hiveJob.JobId -DefaultContainer $containerName -DefaultStorageAccountName $storageAccountName -DefaultStorageAccountKey $storageAccountKey -ClusterCredential $httpCredentials
-```
-
-该作业输出如下：
-
-```
-1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
-1,2,2014-09-14 00:00:06,46.81006,-92.08174,13,NE,1
-1,3,2014-09-14 00:00:09,46.81006,-92.08174,48,NE,1
-1,4,2014-09-14 00:00:12,46.81006,-92.08174,30,W,1
-1,5,2014-09-14 00:00:15,46.81006,-92.08174,47,S,1
-1,6,2014-09-14 00:00:18,46.81006,-92.08174,9,S,1
-1,7,2014-09-14 00:00:21,46.81006,-92.08174,53,N,1
-1,8,2014-09-14 00:00:24,46.81006,-92.08174,63,SW,1
-1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
-1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
-```
 
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>使用 HDFS 命令访问 Data Lake Store
 配置 HDInsight 群集使用 Data Lake Store 后，可使用 HDFS shell 命令访问此存储。
 
-### <a name="for-a-linux-cluster"></a>对于 Linux 群集
-本节中，将连接 SSH 到群集中，然后运行 HDFS 命令。 Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载的 **PuTTY**。
+在本部分中，通过 SSH 连接到 HDInsight Linux 群集，然后运行 HDFS 命令。 如果使用 Windows 客户端，我们建议使用 **PuTTY**，可以从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载它。
 
 有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 
@@ -190,29 +140,6 @@ Found 1 items
 
 可使用 `hdfs dfs -put` 命令上传部分文件到 Data Lake Store 中，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
-### <a name="for-a-windows-cluster"></a>对于 Windows 群集
-1. 登录到新的 [Azure 门户](https://portal.azure.com)。
-2. 单击“浏览”，单击“HDInsight 群集”，然后单击已创建的 HDInsight 群集。
-3. 在群集边栏选项卡中，单击“远程桌面”，然后在“远程桌面”边栏选项卡中，单击“连接”。
-
-   ![远程登录到 HDI 群集](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png)
-
-   出现提示时，输入你提供给远程桌面用户的凭据。
-4. 在远程会话中，启动 Windows PowerShell，并使用 HDFS 文件系统命令列出 Azure Data Lake Store 中的文件。
-
-   ```
-   hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
-   ```
-
-   这会列出先前上传到 Data Lake Store 中的文件。
-
-   ```
-   15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
-   Found 1 items
-   -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/vehicle1_09142014.csv
-   ```
-
-   可使用 `hdfs dfs -put` 命令上传部分文件到 Data Lake Store 中，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
 ## <a name="next-steps"></a>后续步骤
 * [从 Azure 存储 blob 复制数据到 Data Lake Store](data-lake-store-copy-data-wasb-distcp.md)

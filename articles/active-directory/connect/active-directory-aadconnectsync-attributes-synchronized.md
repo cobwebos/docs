@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: markvi;andkjell
 translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: ff5a7091e985629763dde416b17e060236f8f7ad
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 9238141fc56abcb618d71e4bfd1eccb77f282c71
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -32,8 +33,8 @@ ms.openlocfilehash: ff5a7091e985629763dde416b17e060236f8f7ad
 
 > [!WARNING]
 > 取消选择属性时，应该小心，只取消选择那些绝对不能同步的属性。 取消选择其他属性可能会对功能造成负面影响。
-> 
-> 
+>
+>
 
 ## <a name="office-365-proplus"></a>Office 365 ProPlus
 | 属性名称 | 用户 | 注释 |
@@ -421,7 +422,7 @@ ms.openlocfilehash: ff5a7091e985629763dde416b17e060236f8f7ad
 
 | 属性名称 | 用户 | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
-| msDS-ExternalDirectoryObjectID |X | | |派生自 Azure AD 中的 cloudAnchor。 此属性是 Exchange 2016 中的新增属性。 |
+| msDS-ExternalDirectoryObjectID |X | | |派生自 Azure AD 中的 cloudAnchor。 此属性是 Exchange 2016 和 Windows Server 2016 AD 中的新增属性。 |
 | msExchArchiveStatus |X | | |联机存档：使客户能够存档邮件。 |
 | msExchBlockedSendersHash |X | | |筛选：从客户端写回本地筛选及在线安全和已阻止的发件人数据。 |
 | msExchSafeRecipientsHash |X | | |筛选：从客户端写回本地筛选及在线安全和已阻止的发件人数据。 |
@@ -458,10 +459,4 @@ ms.openlocfilehash: ff5a7091e985629763dde416b17e060236f8f7ad
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
 
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

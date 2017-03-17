@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure DocumentDB 中的地理空间数据 | Microsoft Docs"
+title: "使用 Azure DocumentDB 中的地理空间数据 | Microsoft 文档"
 description: "了解如何使用 Azure DocumentDB 创建、索引和查询空间对象。"
 services: documentdb
 documentationcenter: 
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/16/2016
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: f78c0fc1959f72164508af9d8945744b67fac68b
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 60219a9c78884e01fcf46e18ac03e2a955787bc5
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="working-with-geospatial-data-in-azure-documentdb"></a>使用 Azure DocumentDB 中的地理空间数据
+# <a name="working-with-geospatial-and-geojson-location-data-in-documentdb"></a>使用 DocumentDB 中的地理空间和 GeoJSON 位置数据
 本文将介绍 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 中的地理空间功能。 在阅读本文之后，你将能够回答以下问题：
 
 * 我如何在 Azure DocumentDB 中存储空间数据？
@@ -387,10 +389,5 @@ DocumentDB .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用�
 * 在 [DocumentDB 查询板块](http://www.documentdb.com/sql/demo#geospatial)中实际操作地理空间查询
 * 详细了解 [DocumentDB 查询](documentdb-sql-query.md)
 * 详细了解 [DocumentDB 索引策略](documentdb-indexing-policies.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

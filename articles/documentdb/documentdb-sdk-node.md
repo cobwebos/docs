@@ -1,5 +1,5 @@
 ---
-title: "Node.js API 和 SDK 资源 - Azure DocumentDB | Microsoft 文档"
+title: "Azure DocumentDB Node.js API、SDK 和资源 | Microsoft 文档"
 description: "了解有关 Node.js API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB Node.js SDK 各版本之间所做的更改。"
 services: documentdb
 documentationcenter: nodejs
@@ -14,14 +14,15 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: rnagpal
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8ffbf7807bdd3d0f9147dcd0237a999386553c37
-ms.openlocfilehash: b84597fb44b28f827a14a1c1b319a766b8a0b4dd
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 36b3eab758d006710467d23a30f889b605df1583
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="documentdb-apis-and-sdks"></a>DocumentDB API 和 SDK
+# <a name="documentdb-nodejs-sdk-release-notes-and-resources"></a>DocumentDB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
@@ -34,7 +35,6 @@ ms.lasthandoff: 02/23/2017
 > 
 > 
 
-## <a name="documentdb-nodejs-api-and-sdk"></a>DocumentDB Node.js API 和 SDK
 <table>
 
 <tr><td>**下载 SDK**</td><td>[NPM](https://www.npmjs.com/package/documentdb)</td></tr>

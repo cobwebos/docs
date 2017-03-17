@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2016
+ms.date: 03/07/2017
 ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 05ca343cfdfc602759eb3ea30a7186a0bb47bd74
-ms.openlocfilehash: 3f20a19c212c082aa766cc2bd67e938aaabf715e
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 930b3da630b88eecdec56e86d621daee53070257
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -28,7 +29,7 @@ Azure 事件中心安全模型满足以下要求：
 * 可以阻止恶意设备向事件中心发送数据。
 
 ## <a name="device-authentication"></a>设备身份验证
-事件中心安全模型基于[共享访问签名 (SAS)](../service-bus-messaging/service-bus-shared-access-signature-authentication.md) 令牌与*事件发布者*的组合。 事件发布者定义事件中心的虚拟终结点。 发布者只能用于将消息发送到事件中心。 无法从发布者接收消息。
+事件中心安全模型基于[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 令牌与*事件发布者*的组合。 事件发布者定义事件中心的虚拟终结点。 发布者只能用于将消息发送到事件中心。 无法从发布者接收消息。
 
 通常，事件中心为每个设备使用一个发布者。 发送到事件中心的任何发布者的所有消息都将在该事件中心内排队。 发布者允许进行精细的访问控制和限制。
 
@@ -103,16 +104,11 @@ SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFm
 若要了解有关事件中心的详细信息，请访问以下主题：
 
 * [事件中心概述]
-* [SAS 概述]
-* [使用事件中心的完整示例应用程序]
+* [共享访问签名概述]
+* [使用事件中心的示例应用程序]
 
-[事件中心概述]: event-hubs-overview.md
-[使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[SAS 概述]: ../service-bus-messaging/service-bus-sas-overview.md
-
-
-
-
-<!--HONumber=Dec16_HO1-->
+[事件中心概述]: event-hubs-what-is-event-hubs.md
+[使用事件中心的示例应用程序]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[共享访问签名概述]: ../service-bus-messaging/service-bus-sas.md
 
 

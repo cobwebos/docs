@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/06/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: ecee44194c32569f1d50001543ef4b37ecdb5eb3
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 0868eb2269b3675a132e106cd66740b0ce52b00a
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -76,7 +76,7 @@ ms.lasthandoff: 02/28/2017
 8. 完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 可在该处查看配置并验证代理是否已连接到 Operational Insights (OMS)。 如果连接到 OMS，代理会显示一条消息，指出：**Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务。**
 
 ## <a name="install-the-agent-using-the-command-line"></a>使用命令行安装代理
-- 修改后参照以下示例使用命令行安装代理。
+- 修改后参照以下示例使用命令行安装代理。 该示例执行完全无提示安装。
 
     >[!NOTE]
     如果想要升级代理，需要使用 Log Analytics 脚本 API。 请参阅下一节升级代理。
@@ -84,6 +84,8 @@ ms.lasthandoff: 02/28/2017
     ```
     MMASetup-AMD64.exe /Q:A /R:N /C:"setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1"
     ```
+
+该代理通过 `/c` 命令使用 IExpress 作为其自解压缩程序。 可以查看 [IExpress 的命令行开关](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages)中的命令行开关，然后更新示例以满足你的需求。
 
 ## <a name="upgrade-the-agent-and-add-a-workspace-using-a-script"></a>升级代理并使用脚本添加工作区
 可通过以下 PowerShell 示例升级代理并使用 Log Analytics 脚本 API 添加工作区。

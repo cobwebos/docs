@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/17/2016
+ms.date: 03/06/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 31c6cb19827279995502c68ed6d86d23ef9eacd0
-ms.openlocfilehash: 5d98f086b4ccee300b18c8271f940272f618e93e
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: c6c92f0d357909921a9f3ee2f484ff355ddde0be
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -36,7 +37,7 @@ Azure 虚拟机扩展是小型应用程序，可在Azure 虚拟机上提供部�
 - 使用 Datadog 扩展配置 Azure 基础结构监视功能。 有关详细信息，请参阅 [Datadog 博客](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 - 使用 Docker VM 扩展在 Azure 虚拟机上配置 Docker 主机。 有关详细信息，请参阅 [Docker VM extension](virtual-machines-linux-dockerextension.md)（Docker VM 扩展）。
 
-除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Linux 的“自定义脚本”扩展允许在虚拟机上运行任何 Bash 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，这很有用。 有关详细信息，请参阅 [Linux VM Custom Script extension](virtual-machines-linux-extensions-customscript.md)（Linux VM“自定义脚本”扩展）。
+除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Linux 的“自定义脚本”扩展允许在虚拟机上运行任何 Bash 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Linux VM Custom Script extension](virtual-machines-linux-extensions-customscript.md)（Linux VM“自定义脚本”扩展）。
 
 若要完成在端到端应用程序部署中使用 VM 扩展的示例，请参阅[将应用程序自动部署到 Azure 虚拟机](virtual-machines-linux-dotnet-core-1-landing.md)。
 
@@ -74,7 +75,7 @@ azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensi
   --public-config '{"fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],"commandToExecute": "./hello.sh"}'
 ```
 
-这将提供类似于以下文本的输出：
+脚本生成的输出类似于以下文本：
 
 ```azurecli
 info:    Executing command vm extension set
@@ -85,15 +86,15 @@ info:    vm extension set command OK
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可通过 Azure 门户将 VM 扩展应用到现有虚拟机。 为此，请选择虚拟机，选择“扩展”，然后单击“添加”。 这将提供可用扩展的列表。 选择所需的扩展并按照向导中的说明进行操作。
+可通过 Azure 门户将 VM 扩展应用到现有虚拟机。 为此，请选择虚拟机，选择“扩展”，然后单击“添加”。 从可用扩展的列表中选择所需扩展，并按向导中的说明操作。
 
 下图展示了如何从 Azure 门户安装 Linux 自定义脚本扩展。
 
-![自定义脚本扩展](./media/virtual-machines-linux-extensions-features/script-extension-linux.jpg)
+![安装自定义脚本扩展](./media/virtual-machines-linux-extensions-features/installscriptextensionlinux.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 
-VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自一个 Resource Manager 模板，该模板将在每个 VM 上部署一组负载平衡的虚拟机、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
+VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自 Resource Manager 模板。 该模板将在每个 VM 上部署一组负载均衡的虚拟机、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
 
 有关详细信息，请参阅完整的 [Resource Manager 模板](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
 
@@ -222,7 +223,7 @@ info:    vm extension get command OK         :
 
 ### <a name="rerun-a-vm-extension"></a>重新运行 VM 扩展
 
-在某些情况下，可能需要重新运行虚拟机扩展。 这可以通过删除扩展，然后使用所选执行方法重新运行扩展来实现。 若要删除扩展，请使用 Azure CLI 模块运行以下命令。 请将示例参数名称替换为你自己的值。
+在某些情况下，可能需要重新运行虚拟机扩展。 若要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 Azure CLI 模块运行以下命令。 请将示例参数名称替换为你自己的值。
 
 ```azurecli
 azure vm extension set myResourceGroup myVM --uninstall CustomScript Microsoft.Azure.Extensions 2.0
@@ -243,9 +244,4 @@ azure vm extension set myResourceGroup myVM --uninstall CustomScript Microsoft.A
 | VM 访问扩展 |重新获取对 Azure 虚拟机的访问权限 |[VM 访问扩展](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 | Azure 诊断扩展 |管理 Azure 诊断 |[Azure 诊断扩展](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM 访问扩展 |管理用户和凭据 |[适用于 Linux 的 VM 访问扩展](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

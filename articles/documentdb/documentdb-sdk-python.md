@@ -1,5 +1,5 @@
 ---
-title: "适用于 Azure DocumentDB 的 Python API 和 SDK 资源 | Microsoft Docs"
+title: "Azure DocumentDB Python API、SDK 和资源 | Microsoft 文档"
 description: "了解有关 Python API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB Python SDK 各版本之间所做的更改。"
 services: documentdb
 documentationcenter: python
@@ -14,13 +14,15 @@ ms.devlang: python
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: rnagpal
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: 377b1c5a5f1a3425f255d227c6d2800b9ec61a33
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 4c83bcbf3e5849afd15060947ef5f0faab17ce19
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="documentdb-apis-and-sdks"></a>DocumentDB API 和 SDK
+# <a name="documentdb-python-sdk-release-notes-and-resources"></a>DocumentDB Python SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
@@ -33,7 +35,6 @@ ms.openlocfilehash: 377b1c5a5f1a3425f255d227c6d2800b9ec61a33
 > 
 > 
 
-## <a name="documentdb-python-api-and-sdk"></a>DocumentDB Python API 和 SDK
 <table>
 
 <tr><td>**下载 SDK**</td><td>[PyPI](https://pypi.python.org/pypi/pydocumentdb)</td></tr>
@@ -138,10 +139,5 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 ## <a name="see-also"></a>另请参阅
 要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服务页。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

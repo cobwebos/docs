@@ -1,5 +1,5 @@
 ---
-title: "使用 DocumentDB 和 HDInsight 运行 Hadoop 作业 | Microsoft Docs"
+title: "使用 Azure DocumentDB 和 HDInsight 运行 Hadoop 作业 | Microsoft 文档"
 description: "了解如何使用 DocumentDB 和 Azure HDInsight 运行一个简单的 Hive、Pig 和 MapReduce 作业。"
 services: documentdb
 author: dennyglee
@@ -14,13 +14,15 @@ ms.devlang: java
 ms.topic: article
 ms.date: 09/20/2016
 ms.author: denlee
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 9304acd9f99b7f492a37bc4243ed8fb617998c6f
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="a-namedocumentdb-hdinsightarun-a-hadoop-job-using-documentdb-and-hdinsight"></a><a name="DocumentDB-HDInsight"></a>使用 DocumentDB 和 HDInsight 运行 Hadoop 作业
+# <a name="DocumentDB-HDInsight"></a>使用 DocumentDB 和 HDInsight 运行 Apache Hive、Pig 或 Hadoop 作业
 本教程演示如何在带有 DocumentDB 的 Hadoop 连接器的 Azure HDInsight 上运行 [Apache Hive][apache-hive]、[Apache Pig][apache-pig] 和 [Apache Hadoop][apache-hadoop] MapReduce 作业。 DocumentDB 的 Hadoop 连接器使 DocumentDB 可以充当 Hive、Pig 以及 MapReduce 作业的源和接收器。 本教程将 DocumentDB 用作 Hadoop 作业的数据源和目的地。
 
 完成本教程后，你将能够回答以下问题：
@@ -43,7 +45,7 @@ ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
 
 没有时间完成教程，只想获得有关 Hive、Pig 和 MapReduce 的完整示例 PowerShell 脚本？ 没问题，可在[此处][documentdb-hdinsight-samples]获得。 此下载还包含对于这些示例的 hql、pig 及 java 文件。
 
-## <a name="a-namenewestversionanewest-version"></a><a name="NewestVersion"></a>最新版本
+## <a name="NewestVersion"></a>最新版本
 <table border='1'>
     <tr><th>Hadoop 连接器版本</th>
         <td>1.2.0</td></tr>
@@ -59,7 +61,7 @@ ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
         </td></tr>
 </table>
 
-## <a name="a-nameprerequisitesaprerequisites"></a><a name="Prerequisites"></a>先决条件
+## <a name="Prerequisites"></a>先决条件
 在按照本教程中的说明操作之前，请确保已有下列各项：
 
 * DocumentDB 帐户、数据库，以及内部已有文档的集合。 有关详细信息，请参阅 [DocumentDB 入门][getting-started]。 使用 [DocumentDB 导入工具][documentdb-import-data]将示例数据导入到 DocumentDB 帐户中。
@@ -73,7 +75,7 @@ ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
 >
 >
 
-## <a name="a-nameprovisionhdinsightastep-1-create-a-new-hdinsight-cluster"></a><a name="ProvisionHDInsight"></a>步骤 1：创建新的 HDInsight 群集
+## <a name="ProvisionHDInsight"></a>步骤 1：创建新的 HDInsight 群集
 本教程使用 Azure 门户中的脚本操作自定义 HDInsight 群集。 在本教程中，我们将使用 Azure 门户来创建 HDInsight 群集。 有关如何使用 PowerShell cmdlet 或 HDInsight .NET SDK 的说明，请查看[使用脚本操作自定义 HDInsight 群集][hdinsight-custom-provision]一文。
 
 1. 登录到 [Azure 门户][azure-portal]。
@@ -139,7 +141,7 @@ ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
 11. 创建一个新的**资源组**或使用你的 Azure 订阅下的现有资源组。
 12. 现可选中“固定到仪表板”来跟踪其部署并单击“创建”！
 
-## <a name="a-nameinstallcmdletsastep-2-install-and-configure-azure-powershell"></a><a name="InstallCmdlets"></a>步骤 2：安装和配置 Azure PowerShell
+## <a name="InstallCmdlets"></a>步骤 2：安装和配置 Azure PowerShell
 1. 安装 Azure PowerShell 中的说明进行操作。 可在[此处][powershell-install-configure]找到说明。
 
    > [!NOTE]
@@ -160,7 +162,7 @@ ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
 
     ![Azure PowerShell 的关系图][azure-powershell-diagram]
 
-## <a name="a-namerunhiveastep-3-run-a-hive-job-using-documentdb-and-hdinsight"></a><a name="RunHive"></a>步骤 3：使用 DocumentDB 和 HDInsight 运行 Hive 作业
+## <a name="RunHive"></a>步骤 3：使用 DocumentDB 和 HDInsight 运行 Hive 作业
 > [!IMPORTANT]
 > 必须使用你的配置设置填写所有由 < > 表示的变量。
 >
@@ -261,7 +263,7 @@ ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
 
    ![Hive 查询结果][image-hive-query-results]
 
-## <a name="a-namerunpigastep-4-run-a-pig-job-using-documentdb-and-hdinsight"></a><a name="RunPig"></a>步骤 4：使用 DocumentDB 和 HDInsight 运行 Pig 作业
+## <a name="RunPig"></a>步骤 4：使用 DocumentDB 和 HDInsight 运行 Pig 作业
 > [!IMPORTANT]
 > 必须使用你的配置设置填写所有由 < > 表示的变量。
 >
@@ -348,7 +350,7 @@ ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
 
     ![Pig 查询结果][image-pig-query-results]
 
-## <a name="a-namerunmapreduceastep-5-run-a-mapreduce-job-using-documentdb-and-hdinsight"></a><a name="RunMapReduce"></a>步骤 5：使用 DocumentDB 和 HDInsight 运行 MapReduce 作业
+## <a name="RunMapReduce"></a>步骤 5：使用 DocumentDB 和 HDInsight 运行 MapReduce 作业
 1. 在你的 PowerShell 脚本窗格中设置以下变量。
 
         $subscriptionName = "<SubscriptionName>"   # Azure subscription name
@@ -389,7 +391,7 @@ ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
 
       ![MapReduce 查询结果][image-mapreduce-query-results]
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>后续步骤
+## <a name="NextSteps"></a>后续步骤
 祝贺你！ 你只需使用 Azure DocumentDB 和 HDInsight 运行你的第一个 Hive、Pig 和 MapReduce 作业。
 
 我们的 Hadoop Connector 是开源的。 如果你有兴趣，欢迎在 [GitHub][documentdb-github] 上供稿。
@@ -433,9 +435,4 @@ ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
 [image-pig-query-results]: ./media/documentdb-run-hadoop-with-hdinsight/pigqueryresults.PNG
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

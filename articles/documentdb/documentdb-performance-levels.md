@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: mimig
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b9902de45477bb7970da6c8f2234775bdb6edba8
-ms.openlocfilehash: 65f19191bbb736d3b7fbdd94d73f2308ee6dea83
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 659d6bd63ea996af7b7b172f998884354e5d5858
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="performance-levels-in-documentdb"></a>DocumentDB 中的性能级别
+# <a name="retiring-the-s1-s2-and-s3-performance-levels-in-documentdb"></a>停用 DocumentDB 中的 S1、S2 和 S3 性能级别
 
 > [!IMPORTANT] 
 > 本文中所述的 S1、S2 和 S3 性能级别即将停用，到时不再适用于新的 DocumentDB 集合。

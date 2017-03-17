@@ -13,11 +13,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 03/06/2017
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 86391212e70a0f0a8ec0e53dce26b11218a5780c
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: a1e45a1ea15f76bcc7c0cd3bceca703818b3a9ff
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -33,20 +34,11 @@ ms.openlocfilehash: 86391212e70a0f0a8ec0e53dce26b11218a5780c
 ## <a name="download-and-run-the-sample-app"></a>下载并运行示例应用
 **支持 Azure SQL 的弹性数据库 - 入门**示例应用程序演示了使用 Azure SQL 弹性数据库工具进行分片应用程序开发的最重要体验方面。 它注重于[分片映射管理](sql-database-elastic-scale-shard-map-management.md)、[数据相关路由](sql-database-elastic-scale-data-dependent-routing.md)和[多分片查询](sql-database-elastic-scale-multishard-querying.md)的主要用例。 若要下载并运行该示例，请遵循以下步骤： 
 
-1. 打开 Visual Studio 并选择“文件”->“新建”->“项目”。
-2. 在对话框中，单击“联机”。
-   
-    ![“新建项目”>“联机”][2]
-3. 然后单击“示例”下面的“Visual C#”。
-   
-    ![单击“Visual C#”#][3]
-4. 在搜索框中，键入 **elastic db** 搜索示例。 标题“**Azure SQL 弹性数据库工具 - 入门**”出现。
-   
-    ![搜索框][1]
-5. 选择该示例，选择新项目的名称和位置，然后按“确定”创建该项目。
-6. 在示例项目的解决方案中打开 **app.config** 文件，然后遵循该文件中的说明添加 Azure SQL 数据库服务器名称和你的登录信息（用户名和密码）。
-7. 构建并运行应用程序。 当出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 这将会从 NuGet 下载最新版本的弹性数据库客户端库。
-8. 尝试使用不同的选项，以了解有关弹性缩放功能的详细信息。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
+1. 从 MSDN 下载 [Elastic DB Tools for Azure SQL - Getting Started sample](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6)（Azure SQL 弹性数据库工具 - 入门示例）。 将示例解压缩到所选位置。
+2. 从 **C#** 目录打开 **ElasticScaleStarterKit.sln** 解决方案，以便创建项目。
+3. 在示例项目的解决方案中打开 **app.config** 文件，然后遵循该文件中的说明添加 Azure SQL 数据库服务器名称和你的登录信息（用户名和密码）。
+4. 构建并运行应用程序。 当出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 这将会从 NuGet 下载最新版本的弹性数据库客户端库。
+5. 尝试使用不同的选项，以了解有关弹性缩放功能的详细信息。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
    
     ![进度][4]
 
@@ -58,10 +50,10 @@ ms.openlocfilehash: 86391212e70a0f0a8ec0e53dce26b11218a5780c
 > 
 
 ### <a name="key-pieces-of-the-code-sample"></a>重要的代码示例片段
-1. **管理分片和分片映射**：该代码演示如何在文件 **ShardMapManagerSample.cs** 中处理分片、范围和映射。 你可以在以下位置找到有关此主题的详细信息：[分片映射管理](http://go.microsoft.com/?linkid=9862595)。  
+1. **管理分片和分片映射**：该代码演示如何在文件 **ShardManagementUtils.cs** 中处理分片、范围和映射。 你可以在以下位置找到有关此主题的详细信息：[分片映射管理](http://go.microsoft.com/?linkid=9862595)。  
 2. **数据依赖型路由**：**DataDependentRoutingSample.cs** 中演示了如何向正确的分片路由事务。 有关详细信息，请参阅[数据依赖型路由](http://go.microsoft.com/?linkid=9862596)。 
 3. **查询多个分片**：文件 **MultiShardQuerySample.cs** 中演示了如何查询多个分片。 有关详细信息，请参阅[多分片查询](http://go.microsoft.com/?linkid=9862597)。
-4. **添加空分片**：文件 **AddNewShardsSample.cs** 中的代码以迭代方式添加新的空分片。 以下位置提供了此主题的详细信息：[分片映射管理](http://go.microsoft.com/?linkid=9862595)。
+4. **添加空分片**：文件 **CreateShardSample.cs** 中的代码以迭代方式添加新的空分片。 以下位置提供了此主题的详细信息：[分片映射管理](http://go.microsoft.com/?linkid=9862595)。
 
 ### <a name="other-elastic-scale-operations"></a>其他弹性缩放操作
 1. **拆分现有分片**：拆分分片的功能是通过**拆分/工具**提供的。 可在以下位置找到有关此服务的详细信息：[拆分 / 合并工具概述](sql-database-elastic-scale-overview-split-and-merge.md)。
@@ -99,10 +91,5 @@ ms.openlocfilehash: 86391212e70a0f0a8ec0e53dce26b11218a5780c
 [2]: ./media/sql-database-elastic-scale-get-started/click-online.png
 [3]: ./media/sql-database-elastic-scale-get-started/click-CSharp.png
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

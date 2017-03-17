@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 5e531c6c23c510936fe7e4e844db2ec3afb170dc
-ms.openlocfilehash: 32d79cf050968738764c2239cbd79c73734ee855
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 41be26b5dc3b7333521f02053ecb4b6ae1b17f73
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -32,7 +32,7 @@ Xamarin 使开发人员能够通过共享的 C# 代码库来使用其本机用�
 [!INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="create-a-new-xamarin-application"></a>创建新的 Xamarin 应用程序
-对于本入门教程，我们将创建面向 Android、iOS 和 Windows 的应用。 此应用只需将创建一个容器，并将 Blob 上传到此容器中。 我们将通过 Windows 上 Visual Studio 开始入门，这些知识同样适用于通过 Mac OS 上的 Xamarin Studio 创建应用。
+对于本教程，我们将创建面向 Android、iOS 和 Windows 的应用。 此应用只需将创建一个容器，并将 Blob 上传到此容器中。 我们将使用 Windows 上的 Visual Studio，这些知识同样适用于通过 Mac OS 上的 Xamarin Studio 创建应用的情况。
 
 请按以下步骤创建应用程序：
 
@@ -242,7 +242,7 @@ namespace XamarinApp.WinPhone
 运行应用后，会在存储帐户中创建容器 `mycontainer`。 它应该包含 Blob `myblob`，Blob 中包含文本 `Hello, world!`。 可以使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)对此进行验证。
 
 ## <a name="next-steps"></a>后续步骤
-在本入门指南中，你学习了如何使用 Azure 存储在 Xamarin 中创建跨平台应用程序。 本入门指南侧重于 Blob 存储中的情况。 但是，还可以进行更多操作，不光是使用 Blob 存储，还可以使用表、文件和队列存储。 请参阅以下文章以了解更多信息：
+本教程介绍了如何在 Xamarin 中创建使用 Azure 存储的跨平台应用程序，特别介绍了 Blob 存储中的一个方案。 但是，还可以进行更多操作，不光是使用 Blob 存储，还可以使用表、文件和队列存储。 请参阅以下文章以了解更多信息：
 
 * [通过 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)
 * [通过 .NET 开始使用 Azure 表存储](storage-dotnet-how-to-use-tables.md)

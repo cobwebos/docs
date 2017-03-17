@@ -1,5 +1,5 @@
 ---
-title: "适用于 SQL Server VM 的 SQL Server 代理扩展 (Resource Manager) | Microsoft Docs"
+title: "在 SQL VM (Resource Manager) 上自动完成管理任务 | Microsoft 文档"
 description: "本主题介绍如何管理可以自动执行特定 SQL Server 管理任务的 SQL Server 代理扩展。 这些任务包括自动备份、自动修补和 Azure 密钥保管库集成。 本主题使用 Resource Manager 部署模型。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: jroth
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: 9480c6e2d7f58bfa3934c5895dca8c6a82acbfe8
-
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 00832fcabfb3d1f6d9b7b9745335d4154a2caae3
+ms.lasthandoff: 03/07/2017
 
 ---
-# <a name="sql-server-agent-extension-for-sql-server-vms-resource-manager"></a>适用于 SQL Server VM 的 SQL Server 代理扩展 (Resource Manager)
+# <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>使用 SQL Server 代理扩展 (Resource Manager) 在 Azure 虚拟机上自动完成管理任务
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-server-agent-extension.md)
 > * [经典](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
@@ -103,10 +104,5 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 开始使用扩展支持的服务之一。 有关详细信息，请参阅本文的[支持的服务](#supported-services)部分中提到的主题。
 
 有关在 Azure 虚拟机中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

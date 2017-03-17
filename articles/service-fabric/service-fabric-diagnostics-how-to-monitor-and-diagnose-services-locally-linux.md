@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: a8f077168dbc8660625371a2b988926c69491337
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 86ed3f25f0bdd6bb5d8a93f124a0d2bcd7e2b07a
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -36,15 +36,15 @@ ms.lasthandoff: 01/24/2017
 
 ## <a name="debugging-service-fabric-java-applications"></a>调试 Service Fabric Java 应用程序
 
-对于 Java 应用程序，可以使用[多个记录框架](http://en.wikipedia.org/wiki/Java_logging_framework)。 由于 `java.util.logging` 是 JRE 的默认选项，因此也适用于 [github 中的代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)。  以下内容说明如何配置 `java.util.logging` 框架。 
- 
-使用 java.util.logging 可将应用程序日志重定向到内存、输出流、控制台文件或套接字。 对于其中的每个选项，框架中已提供默认处理程序。 可以创建 `app.properties` 文件来配置应用程序的文件处理程序，将所有日志重定向到本地文件。 
+对于 Java 应用程序，可以使用[多个记录框架](http://en.wikipedia.org/wiki/Java_logging_framework)。 由于 `java.util.logging` 是 JRE 的默认选项，因此也适用于 [github 中的代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)。  以下内容说明如何配置 `java.util.logging` 框架。
 
-以下代码片段包含一个示例配置： 
+使用 java.util.logging 可将应用程序日志重定向到内存、输出流、控制台文件或套接字。 对于其中的每个选项，框架中已提供默认处理程序。 可以创建 `app.properties` 文件来配置应用程序的文件处理程序，将所有日志重定向到本地文件。
 
-```java 
+以下代码片段包含一个示例配置：
+
+```java
 handlers = java.util.logging.FileHandler
- 
+
 java.util.logging.FileHandler.level = ALL
 java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 java.util.logging.FileHandler.limit = 1024000
@@ -54,13 +54,17 @@ java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 
 `app.properties` 文件指向的文件夹必须存在。 创建 `app.properties` 文件后，还需要修改 `<applicationfolder>/<servicePkg>/Code/` 文件夹中的入口点脚本 `entrypoint.sh`，将属性 `java.util.logging.config.file` 设置为 `app.propertes` 文件。 该入口点应如以下代码片段中所示：
 
-```sh 
+```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
- 
- 
-此设置会导致在 `/tmp/servicefabric/logs/` 中以轮替方式收集日志。 使用 **%u** 和 **%g** 可以创建文件，文件名为 mysfapp0.log、mysfapp1.log，依此类推。 默认情况下，如果未显式配置处理程序，将会注册控制台处理程序。 可以在 /var/log/syslog 下查看 syslog 中的日志。
- 
+
+
+此设置会导致在 `/tmp/servicefabric/logs/` 中以轮替方式收集日志。 本示例中的日志文件名为 mysfapp%u.%g.log，其中：
+* **%u** 是唯一编号，用于解决同时进行的 Java 进程之间的冲突。
+* **%g** 是生成编号，用于区分轮换日志。
+
+默认情况下，如果未显式配置处理程序，将会注册控制台处理程序。 可以在 /var/log/syslog 下查看 syslog 中的日志。
+
 有关详细信息，请参阅 [github 中的代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)。  
 
 
@@ -78,7 +82,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 可以使用自定义 EventListener 侦听服务事件，然后将其相应地重定向到跟踪文件。 以下代码片段展示了使用 EventSource 和自定义 EventListener 进行日志记录的实现示例：
 
 
-```c#
+```csharp
 
  public class ServiceEventSource : EventSource
  {
@@ -93,7 +97,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
                 this.Message(finalMessage);
             }
         }
-        
+
         // TBD: Need to add method for sample event.
 
 }
@@ -101,7 +105,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 ```
 
 
-```
+```csharp
    internal class ServiceEventListener : EventListener
    {
 
@@ -112,7 +116,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
             using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
-        {  
+        { 
                  // report all event information               
           Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
                 if (eventData.Message != null)              
@@ -130,11 +134,11 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 上述片段将日志输出到 `/tmp/MyServiceLog.txt` 中的文件内。 需要相应地更新此文件名。 如果要将日志重定向到控制台，请在自定义的 EventListener 类中使用以下片段：
 
-```
+```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-[C# 示例](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)中的示例使用 EventSource 和自定义 EventListener 在文件中记录事件。 
+[C# 示例](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)中的示例使用 EventSource 和自定义 EventListener 在文件中记录事件。
 
 
 

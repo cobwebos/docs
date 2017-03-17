@@ -16,8 +16,9 @@ ms.workload: tbd
 ms.date: 11/30/2016
 ms.author: v-six
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 00b09be636a01872070a1bec5f0f19885496bbcc
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 47a9736fd6498d15305fb2296446c61e709ad0b8
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -55,7 +56,7 @@ Azure 是一个 64 位的环境。 因此，针对 32 位目标编译的 .NET �
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
-  如果你要使用 Azure Tools for Microsoft Visual Studio 来开发应用程序，则可使用[属性页](https://msdn.microsoft.com/library/ee405486)设置此值。
+  如果要使用 Azure Tools for Microsoft Visual Studio 来开发应用程序，则可使用属性页设置此值。
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>导出的证书不含私钥
 若要在 SSL 下运行 Web 角色，必须确保导出的管理证书包含私钥。 如果使用 *Windows 证书管理器*来导出证书，请务必对“**导出私钥**”选项选择“**是**”。 该证书必须以 PFX 格式导出，这是当前支持的唯一格式。
@@ -69,9 +70,4 @@ Azure 是一个 64 位的环境。 因此，针对 32 位目标编译的 .NET �
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

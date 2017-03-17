@@ -1,6 +1,6 @@
 ---
-title: "将适用于 MongoDB 的 Robomongo 与 Azure DocumentDB 配合使用 | Microsoft Docs"
-description: "了解如何将 Robomongo 与具有 MongoDB 协议支持的 DocumentDB 帐户（目前以预览版提供）配合使用。"
+title: "将适用于 MongoDB 的 Robomongo 与 Azure DocumentDB 配合使用 | Microsoft 文档"
+description: "了解如何配合 DocumentDB：MongoDB 帐户的 API 使用 Robomongo"
 keywords: robomongo
 services: documentdb
 author: AndrewHoh
@@ -13,24 +13,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 03/06/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: 141154f9e8236e595f77bd4880c4f63d480da445
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: a8db7fbde5d6cd01b558ec351719bae361710efd
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="use-robomongo-with-a-documentdb-account-with-protocol-support-for-mongodb"></a>将 Robomongo 与具有 MongoDB 协议支持的 DocumentDB 帐户配合使用
-若要使用 Robomongo 连接到具有 MongoDB 协议支持的 Azure DocumentDB 帐户，必须：
+# <a name="use-robomongo-with-a-documentdb-api-for-mongodb-account"></a>配合 DocumentDB：MongoDB 帐户的 API 使用 Robomongo
+若要使用 Robomongo 连接到 Azure DocumentDB：MongoDB 帐户的 API，必须：
 
 * 下载并安装 [Robomongo](https://robomongo.org/)
-* 提供具有 MongoDB 协议支持的 DocumentDB 帐户的[连接字符串](documentdb-connect-mongodb-account.md)信息
+* 具有 DocumentDB：MongoDB 帐户的 API [连接字符串](documentdb-connect-mongodb-account.md)信息
 
 ## <a name="connect-using-robomongo"></a>使用 Robomongo 进行连接
-若要将具有 MongoDB 协议支持的 DocumentDB 帐户添加到 Robomongo MongoDB 连接，请执行以下步骤。
+若要将 DocumentDB：MongoDB 帐户的 API 添加到 Robomongo MongoDB 连接，请执行以下步骤。
 
-1. 使用[此处](documentdb-connect-mongodb-account.md)的指令检索具有 MongoDB 协议支持的 DocumentDB 的连接信息。
+1. 使用[此处](documentdb-connect-mongodb-account.md)的指令检索 DocumentDB：MongoDB 帐户的 API 连接信息。
 
     ![连接字符串边栏选项卡的屏幕截图](./media/documentdb-mongodb-robomongo/connectionstringblade.png)
 2. 运行 Robomongo.exe
@@ -50,10 +51,5 @@ ms.openlocfilehash: 141154f9e8236e595f77bd4880c4f63d480da445
 7. 最后，单击“测试”验证是否能够连接，然后单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
-* 浏览具有 MongoDB 协议支持的 DocumentDB [示例](documentdb-mongodb-samples.md)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* 浏览 MongoDB [示例](documentdb-mongodb-samples.md)的 DocumentDB: API。
 

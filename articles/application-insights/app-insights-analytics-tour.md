@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 13c524cdc5ef0d9e70820cc3dac8d747e5bb5845
-ms.openlocfilehash: 12e832b8e0d0509f5b59d588b43f062fb07ddcde
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: ca96cd4ddf1be5ab70475d40fa65e73d248fd67b
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -100,8 +101,8 @@ ms.openlocfilehash: 12e832b8e0d0509f5b59d588b43f062fb07ddcde
 `where` 运算符采用布尔表达式。 以下为相关要点：
 
 * `and`、`or`：布尔运算符
-* `==`、`<>`：等于和不等于
-* `=~`、`!=`：不区分大小写的字符串等于和不等于。 还有许多其他字符串比较运算符。
+* `==`、`<>`、`!=`：等于和不等于
+* `=~`、`!~`：不区分大小写的字符串等于和不等于。 还有许多其他字符串比较运算符。
 
 了解[标量表达式](app-insights-analytics-reference.md#scalars)的所有相关信息。
 
@@ -695,9 +696,4 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 * [SQL 用户的备忘单](https://aka.ms/sql-analytics)转换最常见的惯用语言。
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

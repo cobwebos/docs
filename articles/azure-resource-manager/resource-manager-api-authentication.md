@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 12/27/2016
 ms.author: dugill;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: cacb2ce368a09c71c6f02548c5a1836ad77f540a
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 32f5959a9b96318208c46789ec406d614081bc8d
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: cacb2ce368a09c71c6f02548c5a1836ad77f540a
 应用可通过多种方式访问 Resource Manager API：
 
 1. **用户 + 应用访问**：适用于代表登录用户访问资源的应用。 此方法适用于仅处理“交互式管理”Azure 资源的应用，例如 Web 应用和命令行工具。
-2. **仅限应用的访问**：适用于运行守护程序服务和计划作业的应用。 应用的标识获得资源的直接访问权限。 此方法适用于需要长期“脱机访问”Azure 的应用。
+2. **仅限应用的访问**：适用于运行守护程序服务和计划作业的应用。 应用的标识获得资源的直接访问权限。 此方法适用于需要长期无提示（无人参与）访问 Azure 的应用。
 
 本主题提供创建应用来利用这两种授权方法的逐步说明。 其中说明如何使用 REST API 或 C# 执行每个步骤。 完整的 ASP.NET MVC 应用程序可在 [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense) 中找到。
 
@@ -362,10 +363,5 @@ ASP.NET MVC 示例应用的 [ServicePrincipalHasReadAccessToSubscription](https:
 ASP.net MVC 示例应用的 [RevokeRoleFromServicePrincipalOnSubscription 方法](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L200)可实现此调用。
 
 大功告成 - 用户现在可以使用应用程序来轻松连接和管理其 Azure 订阅。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

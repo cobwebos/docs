@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: f5143bc817215d075129170adcabf3dd53b5e15a
-ms.openlocfilehash: 1f6abf9bf123534f29b7976ecadbcf8cb49ce040
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 0c9a9a56e1489ee91fcc332beeef36cdc9c93dc1
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -67,7 +68,7 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 | 用户和组的 SID 历史记录 |本地主用户和组 SID |托管域中用户和组的 SidHistory 属性已设置为与本地域中相应的主用户或组 SID 相匹配。 借助此功能可以更方便地将本地应用程序即时转移到托管域，因为不需要重新将资源加入 ACL。 |
 
 > [!NOTE]
-> **使用 UPN 格式登录到托管域：**可以针对托管域中的某些用户帐户自动生成 SAMAccountName 属性。 如果多个用户具有相同的 mailNickname 属性或者用户具有很长的 UPN 前缀，可能会自动生成这些用户的 SAMAccountName。 因此，使用 SAMAccountName 格式（例如“CONTOSO100\joeuser”）不一定能够可靠地登录到域。 为用户自动生成的 SAMAccountName 可能不同于其 UPN 前缀。 请使用 UPN 格式（例如 'joeuser@contoso100.com')可靠地登录到托管域。
+> **使用 UPN 格式登录到托管域：**可以针对托管域中的某些用户帐户自动生成 SAMAccountName 属性。 如果多个用户具有相同的 mailNickname 属性或者用户具有很长的 UPN 前缀，可能会自动生成这些用户的 SAMAccountName。 因此，使用 SAMAccountName 格式（例如“CONTOSO100\joeuser”）不一定能够可靠地登录到域。 为用户自动生成的 SAMAccountName 可能不同于其 UPN 前缀。 请使用 UPN 格式（例如“joeuser@contoso100.com”）可靠地登录到托管域。
 >
 >
 
@@ -121,9 +122,4 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 * [部署方案 - Azure AD 域服务](active-directory-ds-scenarios.md)
 * [有关 Azure AD 域服务的网络注意事项](active-directory-ds-networking.md)
 * [Azure AD 域服务入门](active-directory-ds-getting-started.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

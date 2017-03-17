@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 56220f357cbb44946d601167234636a1bce03bfa
-ms.openlocfilehash: bf69d2fdfb80395f9af58d113e4f8838c6bb93be
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 9b6668bf4b3f826a1d41527ce4a7ae8d05936731
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -86,9 +87,21 @@ IMyActor myActor = ActorProxy.Create<IMyActor>(actorId, new Uri("fabric:/MyApp/M
 await myActor.DoWorkAsync();
 ```
 
+```java
+// Create actor ID with some name
+ActorId actorId = new ActorId("Actor1");
+
+// This only creates a proxy object, it does not activate an actor or invoke any methods yet.
+MyActor myActor = ActorProxyBase.create(actorId, new URI("fabric:/MyApp/MyActorService"), MyActor.class);
+
+// This will invoke a method on the actor. If an actor with the given ID does not exist, it will be activated by this method call.
+myActor.DoWorkAsync().get();
+```
+
+
 请注意用于创建执行组件代理对象的两条信息为执行组件 ID 和应用程序名称。 执行组件 ID 用于唯一标识执行组件，而应用程序名称用于标识其中部署执行组件的 [Service Fabric 应用程序](service-fabric-reliable-actors-platform.md#application-model)。
 
-客户端上的 `ActorProxy` 类执行必要的解析工作，以便按 ID 查找执行组件，并使用该执行组件打开信道。 如果出现通信故障和故障转移，`ActorProxy` 还会重新尝试查找执行组件。 因此，消息传送具有以下特征：
+客户端上的 `ActorProxy`(C#) / `ActorProxyBase`(Java) 类执行必要的解析工作，以便按 ID 查找执行组件，并使用该执行组件打开信道。 如果出现通信故障和故障转移，它还会重新尝试查找执行组件。 因此，消息传送具有以下特征：
 
 * 消息传送将尽力而为。
 * 执行组件可能会收到来自同一客户端的重复消息。
@@ -122,7 +135,7 @@ Reliable Actors 运行时提供简单的基于轮次的访问模型用于访问�
 * 当代表 *ActorId2* 执行 *Method1* 以响应客户端请求 *xyz789* 时，收到另一个客户端请求 (*abc123*)，也要求由 *ActorId2* 执行 *Method1*。 不过，在上一次执行完成之前，不会开始第二次执行 *Method1*。 同样，在执行 *Method1* 以响应客户端请求 *xyz789* 时，触发了 *ActorId2* 注册的提醒。 只有当这两次 *Method1* 执行都完成之后，才会执行提醒回叫。 一切都是因为，为 *ActorId2* 强制执行基于轮次的并发。
 * 同样，也为 *ActorId1* 强制执行了基于轮次的并发，代表 *ActorId1* 以串行方式执行 *Method1*、*Method2* 和计时器回叫就表明了这一点。
 * 代表 *ActorId1* 执行 *Method1* 与代表 *ActorId2* 执行此方法相互重叠。 这是因为仅在同一个执行组件内，而不是在不同执行组件之间强制执行基于轮次的并发执行。
-* 在一些方法/回叫执行中，方法/回叫返回的 `Task` 在方法返回之后完成。 在另一些方法/回叫执行中，`Task` 在方法/回叫返回时就已完成。 在这两种情况下，只有在方法/回叫返回且 `Task` 已完成后，才会解除每个执行组件锁定。
+* 在一些方法/回叫执行中，方法/回叫返回的 `Task`(C#) / `CompletableFuture`(Java) 在方法返回之后完成。 在另一些方法/回叫执行中，异步操作在方法/回叫返回时就已完成。 在这两种情况下，只有在方法/回叫返回且异步操作已完成后，才会解除每个执行组件锁定。
 
 #### <a name="reentrancy"></a>重新进入
 执行组件运行时默认情况下允许重新进入。 也就是说，如果 *Actor A* 的执行组件方法调用 *Actor B* 上的方法，后者反过来又调用 *Actor A* 上的另一个方法，则允许运行另一个方法。 这是因为它是同一逻辑调用链上下文的一部分。 所有计时器和提醒调用都使用新的逻辑上下文开始。 如需了解更多详情，请参阅 [Reliable Actors 可重入性](service-fabric-reliable-actors-reentrancy.md)。
@@ -145,9 +158,4 @@ Reliable Actors 运行时提供简单的基于轮次的访问模型用于访问�
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
 [2]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 [3]: ./media/service-fabric-reliable-actors-introduction/actor-communication.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
