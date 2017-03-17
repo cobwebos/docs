@@ -135,7 +135,7 @@
 ### [OMS 代理扩展](../virtual-machines-linux-extensions-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## 运行应用程序
-## [Cloud Foundry](../virtual-machines-linux-cloudfoundry-get-started.md)
+### [Cloud Foundry](../virtual-machines-linux-cloudfoundry-get-started.md)
 ### [数据科研 VM 概述](../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [MongoDB](../virtual-machines-linux-install-mongodb.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [MySQL](../virtual-machines-linux-mysql-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

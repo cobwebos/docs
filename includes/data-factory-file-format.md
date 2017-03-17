@@ -56,7 +56,7 @@ Azure 数据工厂支持以下格式类型：
 * 你要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
 
 ### <a name="specifying-jsonformat"></a>指定 JsonFormat
-若要**在 DocumentDB 中按原样导入/导出 JSON 文件**，请参阅 DocumentDB 连接器中的“导入/导出 JSON 文档”部分，了解详细信息。[](../articles/data-factory/data-factory-azure-documentdb-connector.md#importexport-json-documents)
+若要**在 DocumentDB 中按原样导入/导出 JSON 文件**，请参阅 DocumentDB 连接器中的 [导入/导出 JSON 文档](../articles/data-factory/data-factory-azure-documentdb-connector.md#importexport-json-documents) 部分，了解详细信息。
 
 若要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
@@ -427,8 +427,3 @@ Azure 数据工厂支持以下格式类型：
 
 * 不支持复杂数据类型（MAP、LIST）
 * Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，数据工厂会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。
-
-
-<!--HONumber=Jan17_HO4-->
-
-

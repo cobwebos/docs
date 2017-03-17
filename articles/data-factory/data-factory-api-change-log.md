@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2016
+ms.date: 03/15/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: c2350ae447ccebf1a6b85a563e7fa1d7c12b16d7
 ms.openlocfilehash: 01ef15db6e62443a2d34bae8bc133f21f4d874f0
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -181,9 +182,4 @@ ms.openlocfilehash: 01ef15db6e62443a2d34bae8bc133f21f4d874f0
 ### <a name="feature-additions"></a>新增功能
 * [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) 类支持两个新属性（即 **SliceIdentifierColumnName** 和 **SqlWriterCleanupScript**），以支持到 Azure SQL 数据仓库的幂等复制。 有关这些属性的详细信息，请参阅 [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文，具体为[机制 1](data-factory-azure-sql-data-warehouse-connector.md#mechanism-1) 和[机制 2](data-factory-azure-sql-data-warehouse-connector.md#mechanism-2) 部分中。
 * 当前支持针对 Azure SQL 数据库和 Azure SQL 数据仓库源作为复制活动的一部分运行存储过程。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [Azure SQL 数据库](data-factory-azure-sql-connector.md#sqlsource)和 [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource)文章。  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

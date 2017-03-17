@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
 ms.openlocfilehash: 6de7798f117f0362ac80a390b7e341c7f6fc01b8
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -141,10 +143,5 @@ Tez UI 包含数据的前提是使用 Tez 引擎的作业当前正在运行或�
 既然已了解如何使用 Tez 视图，接下来将详细了解如何[使用 Hive on HDInsight](hdinsight-use-hive.md)。
 
 有关 Tez 的更多详细的技术信息，请参阅 [Hortonworks 的 Tez 页](http://hortonworks.com/hadoop/tez/)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
