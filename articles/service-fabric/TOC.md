@@ -54,7 +54,6 @@
 #### 入门
 ##### [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
 ##### [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
-#### [体系结构](service-fabric-reliable-services-platform-architecture.md)
 #### [Reliable Services 生命周期](service-fabric-reliable-services-lifecycle.md)
 #### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
 #### [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
@@ -78,8 +77,8 @@
 #### [生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
 #### [多形性](service-fabric-reliable-actors-polymorphism.md)
 #### [重新进入](service-fabric-reliable-actors-reentrancy.md)
+#### [事件](service-fabric-reliable-actors-events.md) 
 #### [计时器和提醒](service-fabric-reliable-actors-timers-reminders.md)
-#### [事件](service-fabric-reliable-actors-events.md)
 #### [状态管理](service-fabric-reliable-actors-state-management.md)
 #### [配置 KvsActorStateProvider](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [类型序列化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
@@ -166,7 +165,6 @@
 ### [有状态的 Reliable Services 中的诊断](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors 中的诊断](service-fabric-reliable-actors-diagnostics.md)
 ### [排查本地群集的故障](service-fabric-troubleshoot-local-cluster-setup.md)
-### [排查常见问题](service-fabric-diagnostics-troubleshoot-common-scenarios.md)
 
 ## 缩放应用程序
 ### [分区 Reliable Services](service-fabric-concepts-partitioning.md)
@@ -181,7 +179,6 @@
 #### [使用受控的混沌](service-fabric-controlled-chaos.md)
 #### [使用测试操作](service-fabric-testability-actions.md)
 #### [运行工作负荷期间](service-fabric-testability-workload-tests.md)
-#### [通过调用数据丢失](service-fabric-use-data-loss-api.md)
 #### [使用测试方案](service-fabric-testability-scenarios.md)
 #### [使用节点转换 API](service-fabric-node-transition-apis.md)
 ### [对应用程序进行负载测试](service-fabric-vso-load-test.md)

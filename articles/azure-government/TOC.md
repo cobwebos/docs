@@ -37,6 +37,7 @@
 ### [安全性 + 标识](documentation-government-services-securityandidentity.md)
 ### [监视 + 管理](documentation-government-services-monitoringandmanagement.md)
 ### [Web 与移动](documentation-government-services-webandmobile.md)
+### [媒体服务](documentation-government-services-media.md)
 
 
 # 资源
