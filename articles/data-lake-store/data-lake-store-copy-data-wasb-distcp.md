@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/02/2016
+ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f1c8c5b9bfa14b817efb635cf812242afaa70e35
-ms.openlocfilehash: d0475ff29da03d2c4a12e72e458175d03ce608fd
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 1e66ce0af4d3d33b584f9f3a881c34aa04e783b7
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -39,12 +40,12 @@ ms.openlocfilehash: d0475ff29da03d2c4a12e72e458175d03ce608fd
 ## <a name="do-you-learn-fast-with-videos"></a>通过视频学得更快？
 [观看此视频](https://mix.office.com/watch/1liuojvdx6sie)，了解如何使用 DistCp 在 Azure 存储 Blob 和 Data Lake Store 之间复制数据。
 
-## <a name="use-distcp-from-remote-desktop-windows-cluster-or-ssh-linux-cluster"></a>从远程桌面（Windows 群集）或 SSH （Linux 群集）使用 Distcp
+## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>从 HDInsight Linux 群集使用 Distcp
+
 HDInsight 群集附带 Distcp 实用工具，该实用工具可用于从不同源中复制数据到 HDInsight 群集。 如果已配置 HDInsight 将 Data Lake Store 用作其他存储，则 Distcp 实用工具也可独立用于向/从 Data Lake Store 帐户复制数据。 本部分介绍如何使用 Distcp 实用工具。
 
-1. 如果具有 Windows 群集，请远程连接到具有 Data Lake Store 帐户访问权限的 HDInsight 群集。 有关说明，请参阅[使用 RDP 连接到群集](../hdinsight/hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)。 从群集桌面上打开 Hadoop 命令行。
+1. 从桌面使用 SSH 连接到群集。 请参阅[连接到基于 Linux 的 HDInsight 群集](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md#connect)。 通过 SSH 提示符运行命令。
 
-    如果具有 Linux 群居，请使用 SSH 连接到该群集。 请参阅[连接到基于 Linux 的 HDInsight 群集](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md#connect)。 通过 SSH 提示符运行命令。
 2. 验证是否可访问 Azure 存储 Blob (WASB)。 运行以下命令：
 
         hdfs dfs –ls wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
@@ -100,7 +101,7 @@ HDInsight 群集附带 Distcp 实用工具，该实用工具可用于从不同�
 
 ### <a name="copying-large-datasets"></a>复制大型数据集
 
-当要移动的数据集非常大（例如，> 1TB）时，或者如果你有许多不同的文件夹，则应考虑使用多个 DistCp 作业。 可能没有任何性能提升，但它将展开作业，因此如果有任何作业失败，你只需重新启动该特定作业（而不是整个作业）。
+当要移动的数据集非常大（例如，>&1;TB）时，或者如果你有许多不同的文件夹，则应考虑使用多个 DistCp 作业。 可能没有任何性能提升，但它将展开作业，因此如果有任何作业失败，你只需重新启动该特定作业（而不是整个作业）。
 
 ### <a name="limitations"></a>限制
 
@@ -117,9 +118,4 @@ HDInsight 群集附带 Distcp 实用工具，该实用工具可用于从不同�
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

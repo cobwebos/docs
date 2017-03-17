@@ -15,6 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: d83bfd81768722592565fe924c4d00610b149999
 ms.openlocfilehash: 16801860b78b40cc883393ca4db3ffa208b889fd
@@ -57,7 +58,7 @@ Web 上有许多介绍 Hadoop 相关技术（例如基于 Java 的 MapReduce 编
     >
     > 请按照[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的步骤安装最新版本的 Azure PowerShell。 如果脚本需要修改后才能使用与 Azure Resource Manager 兼容的新 cmdlet，请参阅[迁移到基于 Azure Resource Manager 的面向 HDInsight 群集的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)。
 
-## <a name="a-namehdinsight-sample-wordcountaword-count---java"></a><a name="hdinsight-sample-wordcount"></a>字数统计 - Java
+## <a name="hdinsight-sample-wordcount"></a>字数统计 - Java
 若要提交 MapReduce 项目，请先创建 MapReduce 作业定义。 在作业定义中，指定 MapReduce 程序 jar 文件和 jar 文件的位置（即 **wasbs:///example/jars/hadoop-mapreduce-examples.jar**）、类名和参数。  Wordcount MapReduce 程序采用两个参数：输出位置以及用于计算字数的源文件。
 
 可以在[附录 A](#apendix-a---the-word-count-MapReduce-program-in-java) 中找到源代码。
@@ -123,7 +124,7 @@ Web 上有许多介绍 Hadoop 相关技术（例如基于 Java 的 MapReduce 编
     MapReduce 作业将生成一个名为 part-r-00000 的文件，其中包含单词和计数。 该脚本使用 **findstr** 命令列出包含“there”的所有单词。
 3. 设置前&3; 个变量，然后运行脚本。
 
-## <a name="a-namehdinsight-sample-csharp-streamingaword-count---c-streaming"></a><a name="hdinsight-sample-csharp-streaming"></a>字数统计 - C# 流式处理
+## <a name="hdinsight-sample-csharp-streaming"></a>字数统计 - C# 流式处理
 Hadoop 向 MapReduce 提供了一个流式处理 API，利用它，你可以采用 Java 之外的其他语言来编写映射函数和化简函数。
 
 > [!NOTE]
@@ -156,7 +157,7 @@ Hadoop 向 MapReduce 提供了一个流式处理 API，利用它，你可以采�
 
         example/data/StreamingOutput/wc.txt/part-00000
 
-## <a name="a-namehdinsight-sample-pi-estimatorapi-estimator"></a><a name="hdinsight-sample-pi-estimator"></a>PI 估计器
+## <a name="hdinsight-sample-pi-estimator"></a>PI 估计器
 pi 估计器使用统计学方法（拟蒙特卡罗法）来估算 pi 值。 单位平方形内部随机放置的点也落入该平方形内嵌的圆圈内，其概率等于圆圈面积 pi/4。 可以从 4R 的值来估算 pi 的值，其中 R 是落入圆圈内的点数与平方形内总点数的比率。 所使用的取样点越多，估算值越准确。
 
 为此示例提供的脚本提交了一个 Hadoop jar 作业，设置为使用特定的值（16 个映射）运行，其中每个映射都必须通过参数值计算 1 千万个取样点。 可以更改这些参数值以改进 pi 的估算值。 例如，pi 采用前 10 位小数时为 3.1415926535。
@@ -172,7 +173,7 @@ pi 估计器使用统计学方法（拟蒙特卡罗法）来估算 pi 值。 单
                                 -Arguments "16", "10000000"
     ```
 
-## <a name="a-namehdinsight-sample-10gb-graysorta10-gb-graysort"></a><a name="hdinsight-sample-10gb-graysort"></a>10-GB Graysort
+## <a name="hdinsight-sample-10gb-graysort"></a>10-GB Graysort
 此示例使用适中的 10GB 数据，这样它运行时能相对快一点。 它使用由 Owen O'Malley 和 Arun Murthy 开发的 MapReduce 应用程序，此应用程序以 0.578TB/分钟（100TB 用时 173 分钟）的速率赢得了 2009 年年度常用（“daytona”）TB 级排序基准。 有关这一排序基准和其他排序基准的详细信息，请参阅 [Sortbenchmark](http://sortbenchmark.org/) 站点。
 
 本示例使用三组 MapReduce 程序：

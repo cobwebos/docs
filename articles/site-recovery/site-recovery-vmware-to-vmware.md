@@ -17,6 +17,7 @@ ms.author: nisoneji
 translationtype: Human Translation
 ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
 ms.openlocfilehash: cff6ef0c1c49110edc53ec82f88d9875439aab8a
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -197,9 +198,4 @@ Update 1 包含以下 bug 修复和新功能：
 
 ## <a name="next-steps"></a>后续步骤
 请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上发布任何问题。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -17,6 +17,7 @@ ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
 ms.sourcegitcommit: 6e6d0539c35d403c24ddd5e0b5d49f4d6116eead
 ms.openlocfilehash: 86f7e0565fe30af613f06764a494cbb996abcabe
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -354,9 +355,4 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 ## <a name="next-steps"></a>后续步骤
 * [了解](site-recovery-vmware-to-azure-classic.md)如何使用增强版部署将 VMware 虚拟机和物理服务器复制到 Azure 中。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

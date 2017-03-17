@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/31/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 55ee9f685427168c02865d204fda34066c6779c5
-ms.openlocfilehash: a8533926bbb26770d8e665436e38172aeffbb035
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 6a466937358932a28604cddf7f32cdfd02a5b88d
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -193,7 +194,7 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 4. Bob 的 userPrincipalName 不会更新，并且会导致“DataValidationFailed”同步错误。
 
 #### <a name="how-to-fix"></a>如何解决
-如果用户的 UserPrincipalName 后缀已从 bob@**contoso.com** 更新为 bob@**fabrikam.com**，其中 **contoso.com** 和 **fabrikam.com** 都是**联合域**，则执行以下步骤可以解决同步错误
+如果用户的 UserPrincipalName 后缀已从 bob@**contoso.com** 更新为 bob@**fabrikam.com**，并且 **contoso.com** 和 **fabrikam.com** 都是**联合域**，则执行以下步骤可以解决同步错误
 
 1. 在 Azure AD 中将用户的 UserPrincipalName 从 bob@contoso.com 更新为 bob@contoso.onmicrosoft.com。 可以在 Azure AD PowerShell 模块中使用以下 PowerShell 命令：`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. 允许下一个同步周期尝试同步。 这一次，同步将会成功，并且会按预期将 Bob 的 UserPrincipalName 更新为 bob@fabrikam.com。
@@ -206,13 +207,15 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 当某个属性超过 Azure Active Directory 架构设置的允许大小限制、长度限制或计数限制时，同步操作将导致 **LargeObject** 或 **ExceededAllowedLength** 同步错误。 通常，此错误发生在以下属性上
 
 * userCertificate
+* userSMIMECertificate
 * thumbnailPhoto
 * proxyAddresses
 
 ### <a name="possible-scenarios"></a>可能的方案
-1. Bob 的 userCertificate 属性存储了过多的分配给 Bob 的证书。 其中可能包括旧的或过期的证书。 硬限制为 50 个证书，但建议具有少于 25 个证书。
-2. 在 Active Directory 中为 Bob 设置的 thumbnailPhoto 过大，无法在 Azure AD 中同步。
-3. 在 Active Directory 中自动填充 ProxyAddresses 属性期间，为某个对象分配了&500; 个以上的 ProxyAddresses。
+1. Bob 的 userCertificate 属性存储了过多的分配给 Bob 的证书。 其中可能包括旧的或过期的证书。 硬限制为 15 个证书。
+2. Bob 的 userSMIMECertificate 属性存储了过多的分配给 Bob 的证书。 其中可能包括旧的或过期的证书。 硬限制为 15 个证书。
+3. 在 Active Directory 中为 Bob 设置的 thumbnailPhoto 过大，无法在 Azure AD 中同步。
+4. 在 Active Directory 中自动填充 ProxyAddresses 属性期间，为某个对象分配了&500; 个以上的 ProxyAddresses。
 
 ### <a name="how-to-fix"></a>如何解决
 1. 确保导致错误的属性在允许的限制范围内。
@@ -220,9 +223,4 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 ## <a name="related-links"></a>相关链接
 * [Locate Active Directory Objects in Active Directory Administrative Center](https://technet.microsoft.com/library/dd560661.aspx)（在 Active Directory 管理中心查找 Active Directory 对象）
 * [How to query Azure Active Directory for an object using Azure Active Directory PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx)（如何使用 Azure Active Directory PowerShell 在 Azure Active Directory 中查询对象）
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

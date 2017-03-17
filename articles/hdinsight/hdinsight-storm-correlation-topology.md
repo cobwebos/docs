@@ -13,31 +13,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/13/2017
+ms.date: 03/01/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
-ms.openlocfilehash: 2f2792c409b579ba721195e5749a38c6396f339d
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: a16b3eee9ed52a197b5407dc7ebe71c0710d6fa1
+ms.lasthandoff: 03/07/2017
 
 ---
-# <a name="correlate-events-that-arrive-at-differnet-times-using-storm-and-hbase"></a>使用 Storm 和 HBase 关联在不同时间到达的事件
+# <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>使用 Storm 和 HBase 关联在不同时间到达的事件
 
 通过使用 Apache Storm 的持久数据存储，你可以将不同时间到达的数据条目关联起来。 例如，将用户会话的登录事件和注销事件关联起来即可计算该会话的持续时间。
 
-本文档介绍如何创建基本的 C# Storm 拓扑，该拓扑用于跟踪用户会话的登录事件和注销事件并计算会话的持续时间。 拓扑使用 HBase 作为永久性数据存储。 HBase 还可用于对历史数据执行批查询，以便获得额外的信息，例如在特定的时段有多少用户会话启动或结束。
+本文档介绍如何创建基本的 C# Storm 拓扑，该拓扑用于跟踪用户会话的登录事件和注销事件并计算会话的持续时间。 拓扑使用 HBase 作为永久性数据存储。 HBase 还允许你对历史数据执行批查询以生成其他见解。 例如，在特定时间段内已启动或已结束多少用户会话。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Visual Studio 和 Visual Studio 的 HDInsight 工具：有关安装信息，请参阅[开始使用 Visual Studio 的 HDInsight 工具](hdinsight-hadoop-visual-studio-tools-get-started.md)。
+* Visual Studio 和用于 Visual Studio 的 HDInsight 工具。 有关详细信息，请参阅[用于 Visual Studio 的 HDInsight 工具入门](hdinsight-hadoop-visual-studio-tools-get-started.md)。
 
-* Apache Storm on HDInsight 群集（基于 Windows）。 这将运行 Storm 拓扑，以便处理传入的数据并将其存储在 HBase 中。
+* Apache Storm on HDInsight 群集（基于 Windows）。
   
   > [!IMPORTANT]
   > 尽管在 2016/10/28 之后创建的基于 Linux 的 Storm 群集支持 SCP.NET 拓扑，但是在 2016/10/28 之后可用的 HBase SDK for .NET 包在 Linux 上无法正常工作。
 
-* HDInsight 群集上的 Apache HBase（基于 Linux 或 Windows）。 这是本示例的数据存储。
+* HDInsight 群集上的 Apache HBase（基于 Linux 或 Windows）。
 
   > [!IMPORTANT]
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
@@ -81,7 +81,7 @@ ms.lasthandoff: 03/01/2017
 
 * Session.cs：通过创建随机会话 ID、开始时间和会话持续时间来模拟用户会话。
 
-* Spout.cs: 创建 100 个会话，发出一个开始事件，等待每个会话随机超时，然后发出一个结束事件。 然后回收结束的会话，以便生成新的会话。
+* Spout.cs：创建 100 个会话，发出一个开始事件，等待每个会话随机超时，然后发出一个结束事件。 然后回收结束的会话，以便生成新的会话。
 
 * HBaseLookupBolt.cs：使用的会话 ID 来查找 HBase 中的会话信息。 处理结束事件时，它会查找相应的开始事件，然后计算会话的持续时间。
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 03/01/2017
 * 版本：“cf”系列设置为每行保留 5 个版本。
   
   > [!NOTE]
-  > 可以使用版本来记录以前为特定行键存储的值。 默认情况下，HBase 只返回行的最新版本的值。 在这种情况下，同一行将用于所有事件（开始、结束）。每个版本的行通过时间戳值来标识。 这样即可通过历史视图来查看针对特定 ID 记录的事件。
+  > 可以使用版本来记录以前为特定行键存储的值。 默认情况下，HBase 只返回行的最新版本的值。 在这种情况下，同一行将用于所有事件（开始、结束）。每个版本的行通过时间戳值来标识。 使用版本可通过历史视图来查看针对特定 ID 记录的事件。
 
 ## <a name="download-the-project"></a>下载项目
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 03/01/2017
 
 2. 在“解决方案资源管理器”中，右键单击 **CorrelationTopology** 项目，然后选择属性。
 
-3. 在属性窗口中，选择“设置”并提供以下信息。 前 5 个属性的值应与 **SessionInfo** 项目所使用的值相同：
+3. 在属性窗口中，选择“设置”，然后输入此项目的配置值。 前 5 个属性的值与 **SessionInfo** 项目所使用的值相同：
    
    * HBaseClusterURL：到 HBase 群集的 URL。 例如，https://myhbasecluster.azurehdinsight.net。
 
@@ -156,9 +156,9 @@ ms.lasthandoff: 03/01/2017
 
    * HBaseClusterPassword：管理员/HTTP 用户帐户的密码。
 
-   * HBaseTableName：用于此示例的表的名称。 该名称包含的表名称应该与 SessionInfo 项目中使用的相同。
+   * HBaseTableName：用于此示例的表的名称。 此值是与 SessionInfo 项目中使用的相同的表名。
 
-   * HBaseTableColumnFamily：列系列名称。 该名称包含的列系列名称应该与 SessionInfo 项目中使用的相同。
+   * HBaseTableColumnFamily：列系列名称。 此值是与 SessionInfo 项目中使用的相同的列系列名称。
    
    > [!IMPORTANT]
    > 请勿更改 HBaseTableColumnNames，因为其默认值是 **SessionInfo** 用来检索数据的名称。
@@ -174,7 +174,7 @@ ms.lasthandoff: 03/01/2017
    > [!NOTE]
    > 第一次提交拓扑时，可能需要几秒钟来检索 HDInsight 群集名称。
 
-7. 将拓扑上传并提交到该群集后，“Storm 拓扑视图”将打开并显示正在运行的拓扑。 选择“CorrelationTopology”，然后使用页面右上角的刷新按钮刷新拓扑信息。
+7. 将拓扑上传并提交到该群集后，“Storm 拓扑视图”将打开并显示正在运行的拓扑。 若要刷新数据，请选择“CorrelationTopology”，然后使用页面右上角的“刷新”按钮。
    
    ![拓扑视图的图像](./media/hdinsight-storm-correlation-topology/topologyview.png)
    
@@ -184,7 +184,7 @@ ms.lasthandoff: 03/01/2017
    > 如果“Storm 拓扑视图”不会自动打开，可使用以下步骤将其打开：
    > 
    > 1. 在“解决方案资源管理器”中，展开“Azure”，然后展开“HDInsight”。
-   > 2. 右键单击拓扑正在其上运行的 Storm 群集，然后选择“查看 Storm 拓扑”
+   > 2. 右键单击运行拓扑的 Storm 群集，然后选择“查看 Storm 拓扑”
 
 ## <a name="query-the-data"></a>查询数据
 
@@ -196,11 +196,11 @@ ms.lasthandoff: 03/01/2017
    
     输入开始和结束时间时使用以下格式：HH:MM 以及“am”或“pm”。 例如，11:20pm。
    
-    由于刚刚启动拓扑，可使用部署之前的某个时间作为开始时间，而使用现在的时间作为结束时间。 这应该会捕获大多数在启动时生成的开始事件。 当查询处于运行状态时，你会看到如下所示的条目列表：
+    若要返回记录的事件，可使用部署 Storm 拓扑之前的某个时间作为开始时间，而使用现在的时间作为结束时间。 返回的数据包含类似于以下文本的条目：
    
         Session e6992b3e-79be-4991-afcf-5cb47dd1c81c started at 6/5/2015 6:10:15 PM. Timestamp = 1433527820737
 
-搜索结束事件与搜索开始事件在原理上是相同的。 不过，结束事件是在开始事件之后 1 到 5 分钟随机生成的。 因此，你可能需要尝试数个时间范围才能找到结束事件。 结束事件还会包含会话持续时间 - 开始事件时间与结束事件时间之差。 下面是结束事件数据的一个示例：
+搜索结束事件与搜索开始事件在原理上是相同的。 不过，结束事件是在开始事件之后 1 到 5 分钟随机生成的。 你可能需要尝试数个时间范围才能找到结束事件。 结束事件还会包含会话持续时间 - 开始事件时间与结束事件时间之差。 下面是结束事件数据的一个示例：
 
     Session fc9fa8e6-6892-4073-93b3-a587040d892e lasted 2 minutes, and ended at 6/5/2015 6:12:15 PM
 

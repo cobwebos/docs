@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
 ms.openlocfilehash: 81deb3b31a4483b8c0031cf3571e5c5752db39ac
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -60,9 +61,4 @@ ms.openlocfilehash: 81deb3b31a4483b8c0031cf3571e5c5752db39ac
 
 [1]: ./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_add_PRA.png
 [2]: ./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_select_users.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

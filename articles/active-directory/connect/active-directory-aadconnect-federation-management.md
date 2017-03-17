@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: 4ed22092621949d53da5b8c961a080270dde1db7
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: da3b8a375d380a0e2f1c2e243a475f2f3ff94bfc
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -31,6 +32,7 @@ ms.openlocfilehash: 4ed22092621949d53da5b8c961a080270dde1db7
 | [添加 AD FS 服务器](#addadfsserver) |使用附加的 AD FS 服务器扩展 AD FS 场 |
 | [添加 AD FS Web 应用程序代理服务器](#addwapserver) |使用附加的 WAP 服务器扩展 AD FS 场 |
 | [添加联合域](#addfeddomain) |添加联合域 |
+| [更新 SSL 证书](active-directory-aadconnectfed-ssl-update.md)| 更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书|
 | **AD FS 自定义** | |
 | [添加自定义公司徽标或插图](#customlogo) |使用公司徽标和插图自定义 AD FS 登录页 |
 | [添加登录说明](#addsignindescription) |添加登录页说明 |
@@ -39,7 +41,7 @@ ms.openlocfilehash: 4ed22092621949d53da5b8c961a080270dde1db7
 ## <a name="ad-fs-management"></a>AD FS 管理
 Azure AD Connect 提供了各种 AD FS 相关的任务，通过使用 Azure AD Connect 向导，可以用最少的用户干预执行这些任务。 在通过运行向导来完成安装 Azure AD Connect 后，你可以再次运行向导，以执行其他任务。
 
-### <a name="repair-the-trust-a-namerepairthetrusta"></a>修复信任 <a name=repairthetrust></a>
+## 修复信任 <a name=repairthetrust></a>
 Azure AD Connect 可检查 AD FS 和 Azure Active Directory 信任的当前运行状况，并采取适当措施修复信任。 请按照以下步骤修复 Azure AD 和 AD FS 信任。
 
 1. 从其他任务列表中选择“修复 AAD 和 ADFS 信任”。
@@ -63,7 +65,8 @@ Azure AD Connect 可检查 AD FS 和 Azure Active Directory 信任的当前运�
 >
 >
 
-### <a name="add-an-ad-fs-server-a-nameaddadfsservera"></a>添加 AD FS 服务器 <a name=addadfsserver></a>
+## 添加 AD FS 服务器 <a name=addadfsserver></a>
+
 > [!NOTE]
 > Azure AD Connect 要求 PFX 证书文件添加 AD FS 服务器。 因此，只有使用 Azure AD Connect 配置了 AD FS 场，才能执行此操作。
 >
@@ -86,7 +89,8 @@ Azure AD Connect 可检查 AD FS 和 Azure Active Directory 信任的当前运�
 
     ![安装完成](media/active-directory-aadconnect-federation-management/AddNewADFSServer8.PNG)
 
-### <a name="add-an-ad-fs-web-application-proxy-server-a-nameaddwapservera"></a>添加 AD FS Web 应用程序代理服务器<a name=addwapserver></a>
+## 添加 AD FS Web 应用程序代理服务器<a name=addwapserver></a>
+
 > [!NOTE]
 > Azure AD Connect 需要具有 PFX 证书文件才能添加 Web 应用程序代理服务器。 因此，只有使用 Azure AD Connect 配置了 AD FS 场，才能执行此操作。
 >
@@ -109,7 +113,8 @@ Azure AD Connect 可检查 AD FS 和 Azure Active Directory 信任的当前运�
 7. 单击“安装”完成配置。 完成配置后，向导将提供验证到服务器的连接性的选项。 单击“验证”检查连接性。
    ![安装完成](media/active-directory-aadconnect-federation-management/WapServer8.PNG)
 
-### <a name="add-a-federated-domain-a-nameaddfeddomaina"></a>添加联合域 <a name=addfeddomain></a>
+## 添加联合域 <a name=addfeddomain></a>
+
 使用 Azure AD Connect 可以轻松添加要与 Azure AD 联合的域。 Azure AD Connect 将添加域用于联合身份验证，并修改声明规则，以便在你有多个域与 Azure AD 联合时，正确反映发布者。
 
 1. 若要添加联合域，请选择任务“添加其他 Azure AD 域”。
@@ -128,11 +133,11 @@ Azure AD Connect 可检查 AD FS 和 Azure Active Directory 信任的当前运�
 ## <a name="ad-fs-customization"></a>AD FS 自定义
 以下部分提供有关自定义 AD FS 登录页时可能必须执行的一些常见任务的详细信息。
 
-### <a name="add-a-custom-company-logo-or-illustration-a-namecustomlogoa"></a>添加自定义公司徽标或插图 <a name=customlogo></a>
+## 添加自定义公司徽标或插图 <a name=customlogo></a>
 若要更改“登录”页上显示的公司徽标，请使用以下 Windows PowerShell cmdlet 和语法。
 
 > [!NOTE]
-> 徽标的建议尺寸为 260x35 @ 96 dpi，文件大小不超过 10 KB。
+> 建议徽标维度为 260x35 @ 96 dpi，且文件大小不应超过 10 KB。
 >
 >
 
@@ -143,17 +148,17 @@ Azure AD Connect 可检查 AD FS 和 Azure Active Directory 信任的当前运�
 >
 >
 
-### <a name="add-a-sign-in-description-a-nameaddsignindescriptiona"></a>添加登录说明 <a name=addsignindescription></a>
+## 添加登录说明 <a name=addsignindescription></a>
 若要将登录页说明添加到“登录”页，请使用以下 Windows PowerShell cmdlet 和语法。
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
-### <a name="modify-ad-fs-claim-rules-a-namemodclaimsa"></a>修改 AD FS 声明规则 <a name=modclaims></a>
+## 修改 AD FS 声明规则 <a name=modclaims></a>
 AD FS 支持丰富的声明语言，让你用来创建自定义声明规则。 有关详细信息，请参阅[声明规则语言的作用](https://technet.microsoft.com/library/dd807118.aspx)。
 
 以下部分详细介绍了如何针对与 Azure AD 和 AD FS 联合身份验证有关的某些情况编写自定义规则。
 
-#### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>属性中存在的值上的不可变 ID 条件
+### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>属性中存在的值上的不可变 ID 条件
 当对象将同步到 Azure AD 时，通过 Azure AD Connect，你可以指定一个属性以用作源锚点。 如果自定义属性中的值非空，你可能需要发出不可变的 ID 声明。 例如，可以选择“ms-ds-consistencyguid”作为源锚点的属性，并且需要发出 **ImmutableID** 作为 **ms-ds-consistencyguid** 以防属性具有反对自身的值。 如果没有反对属性的值，则发出 **objectGuid** 作为不可变 ID。  可以按以下部分中所述构造自定义声明规则集。
 
 **规则 1：查询属性**
@@ -192,7 +197,7 @@ AD FS 支持丰富的声明语言，让你用来创建自定义声明规则。 �
 >
 >
 
-#### <a name="sso-with-a-subdomain-upn"></a>具有子域 UPN 的 SSO
+### <a name="sso-with-a-subdomain-upn"></a>具有子域 UPN 的 SSO
 可以使用 Azure AD Connect 添加要联合的多个域（如[添加新联合域](active-directory-aadconnect-federation-management.md#addfeddomain)中所述）。 必须修改 UPN 声明，以便颁发者 ID 对应于根域而非子域，因为联合根域也涵盖子级。
 
 默认情况下，发布者 ID 的声明规则设置为：
@@ -221,9 +226,4 @@ AD FS 支持丰富的声明语言，让你用来创建自定义声明规则。 �
 
 ## <a name="next-steps"></a>后续步骤
 了解有关[用户登录选项](active-directory-aadconnect-user-signin.md)的详细信息。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

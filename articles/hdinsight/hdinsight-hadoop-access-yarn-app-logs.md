@@ -15,6 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
 ms.openlocfilehash: bd9133fde0c3ebfd915c8ae33daa6d0113b37889

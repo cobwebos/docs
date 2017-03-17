@@ -13,18 +13,18 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/13/2017
+ms.date: 03/01/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 1336f95809712779ca5c4c68237a3a8c6d630af4
-ms.openlocfilehash: 337e1c185ef8989345ec3abb60f6b255dbc9ef4f
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: c2a92e3be7616d241eba3c6690c8f10326d8004c
+ms.lasthandoff: 03/07/2017
 
 
 ---
 # <a name="develop-c-topologies-for-apache-storm-on-hdinsight-using-hadoop-tools-for-visual-studio"></a>使用 Hadoop Tools for Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑
 
-了解如何使用 HDInsight Tools for Visual Studio 创建 C# Storm 拓扑。 本教程逐步说明在 Visual Studio 中创建新的 Storm 项目、在本地测试该项目，然后将它部署到 Apache Storm on HDInsight 群集的过程。
+了解如何使用 HDInsight Tools for Visual Studio 创建 C# Storm 拓扑。 本文档逐步说明在 Visual Studio 中创建 Storm 项目，在本地测试该项目，然后将它部署到 Apache Storm on HDInsight 群集的过程。
 
 还可了解如何创建使用 C# 和 Java 组件的混合拓扑。
 
@@ -48,6 +48,7 @@ ms.lasthandoff: 02/14/2017
   * Visual Studio 2012 [Update 4](http://www.microsoft.com/download/details.aspx?id=39305)
   * Visual Studio 2013 [Update 4](http://www.microsoft.com/download/details.aspx?id=44921) 或 [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
   * Visual Studio 2015 或 [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
+  * Visual Studio 2017（任何版本）
 
 * Azure SDK 2.9.5 或更高版本
 
@@ -78,7 +79,7 @@ Visual Studio 的 HDInsight 工具提供以下模板：
 | Storm 混合示例 |如何使用 Java 组件 |
 | Storm 示例 |基本的单词计数拓扑 |
 
-在本文档的步骤中，使用基本 Storm 应用程序项目类型创建新拓扑。
+在本文档的步骤中，使用基本 Storm 应用程序项目类型创建拓扑。
 
 ### <a name="hbase-templates-notes"></a>HBase 模板说明
 
@@ -97,13 +98,13 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
 
 2. 打开 Visual Studio，选择“文件” > “新建”，然后选择“项目”。
 
-3. 在“新建项目”屏幕中，展开“已安装” > “模板”，然后选择“HDInsight”。 从模板列表中，选择“Storm 应用程序”。 在屏幕底部，输入 **WordCount** 作为应用程序名称。
+3. 在“新建项目”屏幕中，展开“已安装” > “模板”，然后选择“Azure Data Lake”。 从模板列表中，选择“Storm 应用程序”。 在屏幕底部，输入 **WordCount** 作为应用程序名称。
    
     ![图像](./media/hdinsight-storm-develop-csharp-visual-studio-topology/new-project.png)
 
 4. 创建项目后，应有以下文件：
    
-   * **Program.cs**：定义项目的拓扑。 请注意，默认情况下会创建包含一个 Spout 和一个 Bolt 的默认拓扑。
+   * **Program.cs**：此文件定义项目的拓扑。 默认情况下会创建包含一个 Spout 和一个 Bolt 的默认拓扑。
 
    * **Spout.cs**：发出随机数的示例 Spout。
 
@@ -123,9 +124,9 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
 
    * **Ack**（仅限事务拓扑）：针对从此 Spout 发送的元组，处理拓扑中其他组件所发起的确认。 确认元组可让 Spout 知了解下游组件已成功处理元组。
 
-   * **失败**（仅限事务拓扑）：处理无法处理拓扑中其他组件的元组。 这可提供重新发出以便重新处理元组的机会。
+   * **失败**（仅限事务拓扑）：处理无法处理拓扑中其他组件的元组。 实现失败方法可以重新发出元组，以便可以再次处理。
 
-2. 将 **Spout** 类的内容替换为以下内容。 这会创建将句子随机发出到拓扑中的 Spout。
+2. 将 **Spout** 类的内容替换为以下文本。 此 Spout 随机将句子发出到拓扑中。
     
     ```csharp
     private Context ctx;
@@ -191,16 +192,16 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
 
 1. 删除项目中的现有 **Bolt.cs** 文件。
 
-2. 在“解决方案资源管理器”中，右键单击“项目”，然后依次选择“添加” > 和“新建项”。 从列表中选择“Storm Bolt”，并输入 **Splitter.cs** 作为名称。 重复此操作，以创建名为 **Counter.cs** 的另一个 bolt。
+2. 在“解决方案资源管理器”中，右键单击“项目”，然后依次选择“添加” > 和“新建项”。 从列表中选择“Storm Bolt”，并输入 **Splitter.cs** 作为名称。 重复此过程，以创建名为 **Counter.cs** 的另一个 Bolt。
    
    * **Splitter.cs**：实现 Bolt，以将句子分割成不同的单词并发出一串新单词。
 
    * **Counter.cs**：实现 Bolt，以统计每个单词的数目，并发出一串新单词和每个单词的计数。
      
      > [!NOTE]
-     > 这些 Bolt 只会读取和写入流，但是你也可以使用 Bolt 来与数据库或服务等源进行通信。
+     > 这些 Bolt 读取和写入流，但是你也可以使用 Bolt 来与数据库或服务等源进行通信。
 
-3. 打开 **Splitter.cs**。 请注意，默认情况下它只包含一个方法：**执行**。 在 Bolt 收到要处理的元组时将调用此方法。 此时，可读取和处理传入元组，以及发出传出元组。
+3. 打开 **Splitter.cs**。 默认情况下它只包含一个方法：**Execute**。 在 Bolt 收到要处理的元组时将调用 Execute 方法。 此时，可读取和处理传入元组，以及发出传出元组。
 
 4. 将 **Splitter** 类的内容替换为以下代码：
     
@@ -314,7 +315,7 @@ Spout 和 Bolt 以图形方式排列，用于定义数据在组件之间的流�
 
 句子从 Spout 发出，并分布到 Splitter Bolt 的实例。 Splitter Bolt 将句子分割成多个单词，并将这些单词分布到 Counter Bolt。
 
-因为字数会本地保留在 Counter 实例中，所以我们想要确保特定单词流向相同的 Counter Bolt 实例，因此只能有一个实例跟踪特定单词。 但是，针对 Splitter Bolt，哪个 Bolt 收到哪个句子并不重要，因此，我们只想要将句子负载平衡到那些实例。
+因为字数会本地保留在 Counter 实例中，所以我们想要确保特定单词流向相同的 Counter Bolt 实例。 每个实例均跟踪特定单词。 由于 Splitter Bolt 不维护任何状态，因此哪个拆分器实例收到哪个句子并不重要。
 
 打开 **Program.cs**。 重要的方法是 **GetTopologyBuilder**，它用于定义提交到 Storm 的拓扑。 将 **GetTopologyBuilder** 的内容替换为以下代码，以实现上面所述的拓扑：
 
@@ -391,7 +392,7 @@ return topologyBuilder;
    > [!NOTE]
    > 也可以展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”，以从“服务器资源管理器”查看“Storm 拓扑”。
 
-    使用 Spout 或 Bolt 的链接查看有关这些组件的信息。 每选择一项都会打开一个新窗口。
+    若要在拓扑中查看有关组件的信息，请双击关系图中的组件。
 
 4. 从“拓扑摘要”视图中，单击“终止”以停止拓扑。
    
@@ -400,21 +401,21 @@ return topologyBuilder;
 
 ## <a name="transactional-topology"></a>事务拓扑
 
-前面的拓扑是非事务性的 如果拓扑中某个组件的处理失败，则拓扑内的组件不会实现任何功能来重播消息。 对于示例事务拓扑，请创建新项目，然后选择“Storm 示例”作为项目类型。
+前面的拓扑是非事务性的 拓扑中的组件不会实现重播消息的功能。 对于示例事务拓扑，请创建项目，然后选择“Storm 示例”作为项目类型。
 
 事务拓扑会实现以下项来支持重播数据：
 
 * **元数据缓存**：Spout 必须存储所发出数据的元数据，只有这样，才能在失败时检索和发出数据。 此示例所发出的数据较少，因此将每个元组的原始数据存储在字典中以便重播。
 
-* **Ack**：拓扑中的每个 Bolt 都可以调用 `this.ctx.Ack(tuple)` 来确认它已成功处理元组。 所有 Bolt 都已确认 Tuple 之后，即会调用 Spout 的 `Ack` 方法。 这可让 Spout 删除用于重播的缓存数据，因为已完全处理数据。
+* **Ack**：拓扑中的每个 Bolt 都可以调用 `this.ctx.Ack(tuple)` 来确认它已成功处理元组。 所有 Bolt 都已确认 Tuple 之后，即会调用 Spout 的 `Ack` 方法。 `Ack` 方法可让 Spout 删除为重播缓存的数据。
 
 * **失败**：每个 Bolt 都可以调用 `this.ctx.Fail(tuple)`，指出元组的处理失败。 这项失败会传播到 Spout 的 `Fail` 方法，在其中，可以使用缓存的元数据来重放 Tuple。
 
-* **序列 ID**：发出元组时，可以指定序列 ID。 这应该是标识要进行重播（确认和失败）处理的元组的值。 例如，发出数据时，**Storm 示例项目**中的 Spout 会使用以下项：
+* **序列 ID**：发出元组时，可以指定唯一序列 ID。 此值标识要进行重播（确认和失败）处理的元组。 例如，发出数据时，**Storm 示例项目**中的 Spout 会使用以下项：
   
         this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);
   
-    这会发出包含默认数据流的句子的新元组，以及 **lastSeqId** 中所含的序列 ID 值。 在此示例中，**lastSeqId** 仅针对发出的每个元祖递增。
+    此代码会发出包含默认数据流的句子的元组，以及 **lastSeqId** 中所含的序列 ID 值。 在此示例中，**lastSeqId** 针对发出的每个元组递增。
 
 如 **Storm 示例**项目中所示，在运行时，可以根据配置来设置组件是否为事务性。
 
@@ -422,7 +423,7 @@ return topologyBuilder;
 
 HDInsight Tools for Visual Studio 还可用于创建混合拓扑，其中某些组件采用 C# 编写，其他采用 Java 编写。
 
-对于示例混合拓扑，请创建一个新项目，然后选择“Storm 混合示例”。 这会创建完全注释的示例，此示例包含演示以下项的多个拓扑：
+对于示例混合拓扑，请创建一个项目，然后选择“Storm 混合示例”。 此示例类型演示以下概念：
 
 * **Java Spout** 和 **C# Bolt**：在 **HybridTopology_javaSpout_csharpBolt** 中定义
   
@@ -444,7 +445,7 @@ HDInsight Tools for Visual Studio 还可用于创建混合拓扑，其中某些�
 
 创建和提交混合拓扑时，需注意以下事项：
 
-* 必须使用 **JavaComponentConstructor** 创建 Spout 或 Bolt 的 Java 类的新实例。
+* 必须使用 **JavaComponentConstructor** 创建 Spout 或 Bolt 的 Java 类的实例。
 
 * 应使用 **microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** 将传入或传出 Java 组件的数据从 Java 对象序列化为 JSON。
 
@@ -452,18 +453,18 @@ HDInsight Tools for Visual Studio 还可用于创建混合拓扑，其中某些�
 
 ### <a name="azure-event-hubs"></a>Azure 事件中心
 
-SCP.Net 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心读取的 Java Spout）的新类和方法。创建采用此 Spout 的拓扑时，请使用以下方法：
+SCP.Net 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心读取的 Java Spout）的新类和方法。创建使用事件中心 Spout 的拓扑时，请使用以下方法：
 
 * **EventHubSpoutConfig** 类：创建一个对象，其中包含 Spout 组件的配置。
 
 * **TopologyBuilder.SetEventHubSpout** 方法：将事件中心 Spout 组件添加到拓扑。
 
 > [!NOTE]
-> 相比于其他 Java 组件，尽管通过这些方法可更轻松地处理事件中心 Spout，但仍然必须使用 CustomizedInteropJSONSerializer 来序列化 Spout 生成的数据。
+> 仍必须使用 CustomizedInteropJSONSerializer 来序列化 Spout 生成的数据。
 
-## <a name="a-idconfigurationmanagerausing-configurationmanager"></a><a id="configurationmanager"></a>使用 ConfigurationManager
+## <a id="configurationmanager"></a>使用 ConfigurationManager
 
-请勿使用 ConfigurationManager 从 Bolt 和 Spout 组件检索配置值；这会导致空指针异常。 而项目的配置将作为拓扑上下文中的键/值对传递到 Storm 拓扑中。 对于依赖于配置值的每个组件，必须在初始化期间从上下文中检索它们。
+请勿使用 ConfigurationManager 从 Bolt 和 Spout 组件检索配置值。 这样做会导致空指针异常。 而项目的配置将作为拓扑上下文中的键/值对传递到 Storm 拓扑中。 对于依赖于配置值的每个组件，必须在初始化期间从上下文中检索它们。
 
 下面的代码演示了如何检索这些值：
 
@@ -507,7 +508,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 2. 从包管理器中选择“更新”。 有可用更新时将列出。 单击“更新”按钮可让包安装更新。
 
 > [!IMPORTANT]
-> 如果项目是通过未使用 NuGet 进行包更新的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到新版本：
+> 如果项目是通过未使用 NuGet 的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到更新版本：
 > 
 > 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“管理 NuGet 包”。
 > 2. 使用“搜索”字段搜索 **Microsoft.SCP.Net.SDK**，然后将其添加到项目中。
@@ -516,11 +517,11 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 ### <a name="null-pointer-exceptions"></a>空指针异常
 
-在基于 Linux 的 HDInsight 集群中使用 C＃ 拓扑时，使用 ConfigurationManager 在运行时读取配置设置的 bolt 和 spout 组件可能会返回空指针异常。 这是因为加载域的配置不是来自包含项目的程序集。
+在基于 Linux 的 HDInsight 集群中使用 C＃ 拓扑时，使用 ConfigurationManager 在运行时读取配置设置的 bolt 和 spout 组件可能会返回空指针异常。
 
-项目的配置作为拓扑上下文中的键/值对传递到 Storm 拓扑中，并且可以从初始化时传递给组件的字典对象中检索。
+项目的配置将作为拓扑上下文中的键/值对传递到 Storm 拓扑中。 初始化组件时，可以从传递到组件的字典对象检索该配置。
 
-以下示例演示了如何从拓扑上下文加载配置值，请参阅本文档的 [ConfigurationManager](#configurationmanager) 部分。
+有关详细信息，请参阅本文档的 [ConfigurationManager](#configurationmanager) 部分。
 
 ### <a name="systemtypeloadexception"></a>System.TypeLoadException
 
@@ -528,7 +529,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
     System.TypeLoadException: Failure has occurred while loading a type.
 
-这通常发生在使用与 mono 支持的 .NET 版本不兼容的二进制文件时。
+在使用与 mono 支持的 .NET 版本不兼容的二进制文件时，会发生此错误。
 
 对于基于 Linux 的 HDInsight 集群，应确保项目使用的是为 .NET 4.5 编译的二进制文件。
 
@@ -537,7 +538,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 虽然很容易就可以将拓扑部署到群集，但是，在某些情况下，你可能需要在本地测试拓扑。 使用以下步骤，在开发环境上本地执行和测试本教程中的示例拓扑。
 
 > [!WARNING]
-> 本地测试只适用于仅限 C# 的基本拓扑。 本地测试不可用于混合拓扑或用于使用多个流的拓扑。
+> 本地测试只适用于仅限 C# 的基本拓扑。 不能将本地测试用于混合拓扑或使用多个流的拓扑。
 
 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“属性”。 在项目属性中，将“输出类型”更改为“控制台应用程序”。
    
@@ -554,7 +555,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
     using Microsoft.SCP;
     ```
 
-4. 使用以下内容作为 **LocalTest** 类的内容：
+4. 使用以下代码作为 **LocalTest** 类的内容：
     
     ```csharp
     // Drives the topology components
@@ -663,9 +664,6 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
    > [!NOTE]
    > 字符串数据会保存为这些文件中的十进制值数组。 例如，**splitter.txt** 文件中的 \[[97,103,111]] 是单词“and”。
 
-
-虽然在本地测试基本字数应用程序相当简单，但是真正的价值在于与外部数据来源进行通信或执行复杂数据分析的复杂拓扑。 处理此类项目时，你可能需要在组件中设置断点并逐步运行代码，以找出问题。
-
 > [!NOTE]
 > 在部署到 Storm on HDInsight 群集之前，请记得将“项目类型”设置回“类库”。
 
@@ -680,7 +678,7 @@ Context.Logger.Info("Component started");
 可从“服务器资源管理器”中的“Hadoop 服务日志”查看记录的信息。 展开 Storm on HDInsight 群集的条目，然后展开“Hadoop 服务日志”。 最后，选择要查看的日志文件。
 
 > [!NOTE]
-> 日志存储在群集使用的 Azure 存储帐户中。 如果这不是登录 Visual Studio 时所用的订阅，需登录到包含可查看此信息的存储帐户的订阅。
+> 日志存储在群集使用的 Azure 存储帐户中。 若要查看 Visual Studio 中的日志，必须登录到拥有存储帐户的 Azure 订阅。
 
 ### <a name="view-error-information"></a>查看错误信息
 
@@ -704,13 +702,13 @@ Context.Logger.Info("Component started");
 
 ## <a name="next-steps"></a>后续步骤
 
-在了解如何使用 HDInsight Tools for Visual Studio 开发和部署 Storm 拓扑后，请了解如何[使用 Storm on HDInsight 从 Azure 事件中心处理事件](hdinsight-storm-develop-csharp-event-hub-topology.md)。
+有关处理事件中心数据的示例，请参阅[使用 Storm on HDInsight 处理 Azure 事件中心的事件](hdinsight-storm-develop-csharp-event-hub-topology.md)。
 
 有关将流数据拆分为多个流的 C# 拓扑示例，请参阅 [C# Storm 示例](https://github.com/Blackmist/csharp-storm-example)。
 
 若要了解有关创建 C# 拓扑的详细信息，请访问 [SCP.NET GettingStarted.md](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md)。
 
-有关 HDInsight 的其他用法和其他 Storm on HDinsight 示例，请参阅以下主题：
+有关 HDInsight 的更多用法和更多 Storm on HDinsight 示例，请参阅以下文档：
 
 **Microsoft SCP.NET**
 

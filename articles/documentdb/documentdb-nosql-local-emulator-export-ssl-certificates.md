@@ -1,5 +1,5 @@
 ---
-title: "导出 DocumentDB 模拟器证书 | Microsoft Docs"
+title: "导出 DocumentDB 模拟器证书 | Microsoft 文档"
 description: "以不使用 Windows 证书存储的语言和运行时进行开发时，需要导出并管理 SSL 证书。 本文提供分步说明。"
 services: documentdb
 documentationcenter: 
@@ -15,14 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2017
 ms.author: tvoellm
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 224897c09073fe36c7d4f9f8c965212c25297271
-ms.openlocfilehash: 3f89e192052bb633190610a4dffbefb930dbc01c
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 5f2fd8810041d47be2ef0b21e1487426a643d541
+ms.lasthandoff: 03/07/2017
 
 
 ---
 
-# <a name="export-the-documentdb-emulator-certificates"></a>导出 DocumentDB 模拟器证书
+# <a name="export-the-documentdb-emulator-certificates-for-use-with-java-python-and-nodejs"></a>使用 Java、Python 和 Node.js 导出要使用的 DocumentDB 模拟器证书
 
 [**下载模拟器**](https://aka.ms/documentdb-emulator)
 
@@ -89,9 +91,4 @@ DocumentDB 本地模拟器中的证书在首次运行模拟器时生成。 证�
 ## <a name="next-steps"></a>后续步骤
 * 若要了解有关 DocumentDB 的详细信息，请参阅 [Azure DocumentDB 简介](documentdb-introduction.md)
 * 若要开始使用 DocumentDB 模拟器进行开发，请下载一个[支持的 DocumentDB SDK](documentdb-sdk-dotnet.md)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

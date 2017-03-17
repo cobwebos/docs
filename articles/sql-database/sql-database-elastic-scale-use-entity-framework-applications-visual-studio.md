@@ -13,11 +13,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 03/06/2017
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 91fe35cb57775c1ab9c30fdfe5cf82cd1afafd14
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 2a7229c9658cbbab676801f5c532a50bc0adedce
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -28,13 +29,10 @@ ms.openlocfilehash: 91fe35cb57775c1ab9c30fdfe5cf82cd1afafd14
 若要下载本文的代码：
 
 * 需要 Visual Studio 2012 或更高版本。 
+* 从 MSDN 下载 [Elastic DB Tools for Azure SQL - Entity Framework Integration sample](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba)（Azure SQL 弹性数据库工具 - Entity Framework 集成示例）。 将示例解压缩到所选位置。
 * 启动 Visual Studio。 
-* 在 Visual Studio 中，选择“文件”->“新建项目”。 
-* 在“新建项目”对话框中，导航到“Visual C#”的“联机示例”，然后在右上方的搜索框中键入“弹性数据库”。
-  
-    ![实体框架和弹性数据库示例应用][1] 
-  
-    选择名为 **Azure SQL 的弹性数据库工具 – 实体框架集成**的示例。 在接受许可证后，该示例将加载。 
+* 在 Visual Studio 中，选择“文件”->“打开项目/解决方案”。 
+* 在“打开项目”对话框中，导航到已下载的示例，然后选择 **EntityFrameworkCodeFirst.sln** 打开该示例。 
 
 若要运行该示例，您需要在 Azure SQL 数据库中创建三个空数据库：
 
@@ -266,9 +264,4 @@ Microsoft 模式和实践团队已发布[暂时性故障处理应用程序块](h
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-scale-use-entity-framework-applications-visual-studio/sample.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

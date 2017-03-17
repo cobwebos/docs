@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
 ms.openlocfilehash: 51eafa16bd918a065f896ba89dec54d2340b5c69
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -55,7 +56,7 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 >
 >
 
-## <a name="check-if-the-certificates-need-to-be-updated-a-namemanagecertsa"></a>检查是否需要更新证书 <a name="managecerts"></a>
+## 检查是否需要更新证书 <a name="managecerts"></a>
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>步骤 1：检查 AutoCertificateRollover 状态
 在 AD FS 服务器上打开 PowerShell。 检查 AutoCertRollover 值是否设置为 True。
 
@@ -95,7 +96,7 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 
 \[-]  无关紧要
 
-## <a name="renew-the-token-signing-certificate-automatically-recommended-a-nameautorenewa"></a>自动续订令牌签名证书（建议）<a name="autorenew"></a>
+## 自动续订令牌签名证书（建议）<a name="autorenew"></a>
 如果同时满足以下两个条件，则不需要执行任何手动步骤：
 
 * 你已部署 Web 应用程序代理，能够从 Extranet 访问联合元数据。
@@ -113,7 +114,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 示例：https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 
-## <a name="renew-the-token-signing-certificate-manually-a-namemanualrenewa"></a>手动续订令牌签名证书 <a name="manualrenew"></a>
+## 手动续订令牌签名证书 <a name="manualrenew"></a>
 你可以选择手动续订令牌签名证书。 例如，在以下情况下，可能更合适手动续订：
 
 * 令牌签名证书不是自签名证书。 这种情况最常见的原因是，你的组织通过组织证书颁发机构来管理注册的 AD FS 证书。
@@ -160,13 +161,8 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 >
 >
 
-## <a name="repair-azure-ad-trust-by-using-azure-ad-connect-a-nameconnectrenewa"></a>使用 Azure AD Connect 修复 Azure AD 信任 <a name="connectrenew"></a>
+## 使用 Azure AD Connect 修复 Azure AD 信任 <a name="connectrenew"></a>
 如果你已使用 Azure AD Connect 配置了 AD FS 场和 Azure AD 信任，则可以使用 Azure AD Connect 来检测是否需要对令牌签名证书采取任何操作。 如果需要续订证书，可以使用 Azure AD Connect 来执行此操作。
 
 有关详细信息，请阅读[修复信任](active-directory-aadconnect-federation-management.md)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

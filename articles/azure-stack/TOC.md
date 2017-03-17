@@ -55,6 +55,8 @@
 #### [准备工作](azure-stack-app-service-before-you-get-started.md)
 #### [部署应用服务资源提供程序](azure-stack-app-service-deploy.md)
 #### [添加更多 Web 辅助角色](azure-stack-app-service-add-worker-roles.md)
+#### [配置部署源](azure-stack-app-service-configure-deployment-sources.md)
+#### [在 Azure Stack 上的应用服务中启用 FTP](azure-stack-app-service-enable-ftp.md)
 ### 填充应用商店
 #### [应用商店概述](azure-stack-marketplace.md)
 #### [下载应用商店项](azure-stack-download-azure-marketplace-item.md)
@@ -110,6 +112,7 @@
 
 # 故障排除
 ## [已知问题](azure-stack-troubleshooting.md)
+## [Azure Stack 中的诊断](azure-stack-diagnostics.md)
 
 # 资源
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack)  

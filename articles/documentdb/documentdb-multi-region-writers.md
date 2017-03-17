@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2017
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 788a1b9ef6a470c8f696228fd8fe51052c4f7007
-ms.openlocfilehash: 15c5a8be1097253e88af3a9f36b9067f0e2fbba3
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: d6292567bbf7afd71b21be3b236537c609c63644
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="multi-master-database-architectures-with-azure-documentdb"></a>使用 Azure DocumentDB 的多主数据库结构
+# <a name="multi-master-globally-replicated-database-architectures-with-documentdb"></a>使用 DocumentDB 多主机全局复制数据库体系结构
 DocumentDB 支持统包的[全球复制](documentdb-distribute-data-globally.md)，允许在工作负荷中的任意位置以低延迟的访问将数据分布到多个区域。 此模型常用于发布者/使用者工作负荷。在这些工作负荷中，单个地理区域具有作者，其他（读取）区域具有分布于全球的读者。 
 
 也可以使用 DocumentDB 的全球复制支持来生成应用程序，在该应用程序中，作者和读者分布于全球。 本文档概述了使用 Azure DocumentDB 实现分布于全球的作者的本地写入和本地读取访问的模式。
 
-## <a name="a-idexamplescenarioacontent-publishing---an-example-scenario"></a><a id="ExampleScenario"></a>内容发布 - 示例方案
+## <a id="ExampleScenario"></a>内容发布 - 示例方案
 以下是一个实际方案，该方案介绍如何通过 DocumentDB 使用全球分布式多区域/多主读写模式。 假设在 DocumentDB 上构建一个内容发布平台。 为了向发布者和使用者提供良好的用户体验，此平台必须满足以下要求。
 
 * 作者和订户遍布全球 
@@ -39,7 +41,7 @@ DocumentDB 支持统包的[全球复制](documentdb-distribute-data-globally.md)
 
 若要了解有关分区和分区键的详细信息，请参阅 [Azure DocumentDB 中的分区和缩放](documentdb-partition-data.md)。
 
-## <a name="a-idmodelingnotificationsamodeling-notifications"></a><a id="ModelingNotifications"></a>通知建模
+## <a id="ModelingNotifications"></a>通知建模
 通知是特定于用户的数据馈送。 因此，通知文档的访问模式总是在单个用户的背景中。 例如，可以“向某个用户发布通知”或“为某个给定用户获取所有通知”。 因此，对于此类型，分区键的最佳选择是 `UserId`。
 
     class Notification 
@@ -66,7 +68,7 @@ DocumentDB 支持统包的[全球复制](documentdb-distribute-data-globally.md)
         public string ArticleId { get; set; } 
     }
 
-## <a name="a-idmodelingsubscriptionsamodeling-subscriptions"></a><a id="ModelingSubscriptions"></a>订阅建模
+## <a id="ModelingSubscriptions"></a>订阅建模
 订阅可以根据各种标准创建，如感兴趣的特定类别的文章或特定的发布者。 因此，`SubscriptionFilter` 是很好的分区键选择。
 
     class Subscriptions 
@@ -89,7 +91,7 @@ DocumentDB 支持统包的[全球复制](documentdb-distribute-data-globally.md)
         } 
     }
 
-## <a name="a-idmodelingarticlesamodeling-articles"></a><a id="ModelingArticles"></a>文章建模
+## <a id="ModelingArticles"></a>文章建模
 通过通知标识一篇文章后，后续查询通常基于 `ArticleId`。 选择 `ArticleID` 作为分区键将为在 DocumentDB 集合内存储文章提供最佳分布。 
 
     class Article 
@@ -118,7 +120,7 @@ DocumentDB 支持统包的[全球复制](documentdb-distribute-data-globally.md)
         //... 
     }
 
-## <a name="a-idmodelingreviewsamodeling-reviews"></a><a id="ModelingReviews"></a>评论建模
+## <a id="ModelingReviews"></a>评论建模
 和文章一样，评论通常在文章背景下写入和读取。 选择 `ArticleId` 作为分区键将为与文章相关的评论提供最佳分布和高效访问。 
 
     class Review 
@@ -144,7 +146,7 @@ DocumentDB 支持统包的[全球复制](documentdb-distribute-data-globally.md)
         public int Rating { get; set; } }
     }
 
-## <a name="a-iddataaccessmethodsadata-access-layer-methods"></a><a id="DataAccessMethods"></a>数据访问层方法
+## <a id="DataAccessMethods"></a>数据访问层方法
 现在让我们来看看需要实现的主要数据访问方法。 以下是 `ContentPublishDatabase` 需要的方法列表：
 
     class ContentPublishDatabase 
@@ -160,7 +162,7 @@ DocumentDB 支持统包的[全球复制](documentdb-distribute-data-globally.md)
         public async Task<IEnumerable<Review>> ReadReviewsAsync(string articleId); 
     }
 
-## <a name="a-idarchitectureadocumentdb-account-configuration"></a><a id="Architecture"></a>DocumentDB 帐户配置
+## <a id="Architecture"></a>DocumentDB 帐户配置
 若要保证本地读取和写入，数据分区不仅要基于分区键，还要基于不同区域的地理访问模式。 该模型依赖于每个区域具有异地复制的 Azure DocumentDB 数据库帐户。 例如，对于两个区域，具有针对多区域写入的设置：
 
 | 帐户名 | 写入区域 | 读取区域 |
@@ -200,7 +202,7 @@ DocumentDB 支持统包的[全球复制](documentdb-distribute-data-globally.md)
 | `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |`Southeast Asia` |
 | `contentpubdatabase-asia.documents.azure.com` | `Southeast Asia` |`North Europe` |`West US` |
 
-## <a name="a-iddataaccessimplementationadata-access-layer-implementation"></a><a id="DataAccessImplementation"></a>数据访问层实现
+## <a id="DataAccessImplementation"></a>数据访问层实现
 现在让我们看一下如何实现具有两个可写区域的应用程序的数据访问层 (DAL)。 DAL 必须执行以下步骤：
 
 * 为每个帐户创建多个 `DocumentClient` 实例。 在两个区域的情况下，每个 DAL 实例具有&1; 个 `writeClient` 和&1; 个 `readClient`。 
@@ -309,15 +311,10 @@ DocumentDB 支持统包的[全球复制](documentdb-distribute-data-globally.md)
 
 因此，通过选择合适的分区键和静态的基于帐户的分区，可以使用 Azure DocumentDB 实现多区域本地写入和读取。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="NextSteps"></a>后续步骤
+## <a id="NextSteps"></a>后续步骤
 本文以内容发布作为示例方案，描述了如何通过 DocumentDB 使用全球分布式多区域读写模式。
 
 * 了解 DocumentDB 如何支持[全球分布](documentdb-distribute-data-globally.md)
 * 了解 [Azure DocumentDB 中的自动和手动故障转移](documentdb-regional-failovers.md)
 * 了解 [DocumentDB 的全球一致性](documentdb-consistency-levels.md)
 * 使用 [Azure DocumentDB SDK](documentdb-developing-with-multiple-regions.md) 进行多个区域开发
-
-
-<!--HONumber=Jan17_HO4-->
-
-

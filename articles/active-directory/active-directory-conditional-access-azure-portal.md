@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/19/2017
+ms.date: 03/06/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 4dad4bd824f199562cb972c98cfcb452f2823828
-ms.openlocfilehash: b85b10b9504c5efa7ec05b92b544ad777e3abacc
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 62804019a8c2c5e719c36021ee04cbd20e03dd05
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -36,9 +36,10 @@ ms.lasthandoff: 02/16/2017
 - 使最终用户能够随时随地保持高效的工作
 - 随时保持企业资产
 
-为了提高工作效率，Azure Active Directory 提供多种选项来让用户访问你的企业资产。 Azure Active Directory 通过应用程序访问管理确保只有*适当的人员*才可以访问你的应用程序。 如何以更大的力度控制适当的人员在特定的条件下如何访问你的资源？ 对于*适当的人员*，在某些情况下如何阻止其访问特定的应用？ 例如，有时你可能允许适当的人员通过受信任的网络访问特定的应用，但不允许他们通过不受信任的网络访问这些应用。 使用条件性访问可以解决这些问题。 
+为了提高工作效率，Azure Active Directory 提供多种选项来让用户访问你的企业资产。 Azure Active Directory 通过应用程序访问管理确保只有*适当的人员*才可以访问你的应用程序。 如何以更大的力度控制适当的人员在特定的条件下如何访问你的资源？ 对于*适当的人员*，在某些情况下如何阻止其访问特定的应用？ 例如，有时可以允许适当的人员通过受信任的网络访问特定的应用，但不允许他们通过不受信任的网络访问这些应用。 使用条件性访问可以解决这些问题。
 
 条件性访问是 Azure Active Directory 的一项功能，可让你根据特定的条件针对环境中的应用实施访问控制。 通过这种控制，可以将其他要求关联到访问，或者阻止访问。 条件性访问的实现基于策略。 基于策略的方法可以简化配置体验，因为它遵循访问要求方面的考虑因素。  
+
 通常，我们会使用基于以下模式的语句来定义访问要求：
 
 ![控制](./media/active-directory-conditional-access-azure-portal/10.png)
@@ -47,9 +48,9 @@ ms.lasthandoff: 02/16/2017
 
 *如何分包商尝试从不受信任的网络访问我们的云应用，则阻止访问。*
 
-上述策略语句突显了条件性访问的能力。 虽然可以使用条件性访问让分包商（**谁**）对云应用进行基本的访问，但还可以定义在哪种条件下可以进行这种访问（**如何**）。 
+上述策略语句突显了条件性访问的能力。 虽然可以使用条件性访问让分包商（**谁**）对云应用进行基本的访问，但还可以定义在哪种条件下可以进行这种访问（**如何**）。
 
-在 Azure Active Directory 条件性访问的上下文中： 
+在 Azure Active Directory 条件性访问的上下文中：
 
 - “**如何发生这种情况**”称为**条件语句**
 - “**则执行这种操作**”称为**控制**
@@ -67,7 +68,8 @@ ms.lasthandoff: 02/16/2017
 使用控制可以阻止访问，或者在满足其他要求的情况下允许访问。
 配置允许访问的策略时，至少需要选择一项要求。   
 
-Azure Active Directory 的当前实现允许配置以下要求： 
+### <a name="grant-controls"></a>授权控制
+Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 ![控制](./media/active-directory-conditional-access-azure-portal/05.png)
 
@@ -81,13 +83,21 @@ Azure Active Directory 的当前实现允许配置以下要求：
 
 ![控制](./media/active-directory-conditional-access-azure-portal/06.png)
 
+### <a name="session-controls"></a>会话控制
+可以通过会话控制限制云应用中的体验。 会话控制由云应用强制实施，取决于由 Azure AD 提供给应用的有关会话的其他信息。
+
+![控制](./media/active-directory-conditional-access-azure-portal/session-control-pic.png)
+
+#### <a name="use-app-enforced-restrictions"></a>使用应用所强制实施的限制
+可以使用此控制要求 Azure AD 将设备信息传递给云应用。 这样是为了让云应用了解用户是否来自合规的设备或已加入域的设备。 目前仅用作云应用的 SharePoint 支持此控制。 SharePoint 在收到设备信息后，会根据设备状态为用户通过受限的体验或完整的体验。
+若要详细了解如何设置 SharePoint 的受限访问条件，请访问[此链接](https://aka.ms/spolimitedaccessdocs)。
 
 ## <a name="condition-statement"></a>条件语句
 
 上一部分介绍了可以使用哪些支持的选项，以控制形式来阻止或限制对资源的访问。 在条件性访问策略中，可以定义需要满足哪种条件，才以条件语句的形式应用控制。  
 
 可在条件语句中包含以下分配：
-    
+
 ![控制](./media/active-directory-conditional-access-azure-portal/07.png)
 
 
@@ -98,7 +108,8 @@ Azure Active Directory 的当前实现允许配置以下要求：
 
 
 
-- **什么** - 通常，从保护的角度来看，环境中运行的某些应用需要的关注程度比其他应用要多一些。 举例而言，这种控制会影响到有权访问敏感数据的应用。 通过选择云应用，可以定义要将策略适用到的云应用范围。 如果需要，还可以从策略中明确排除一组应用。 
+- **什么** - 通常，从保护的角度来看，环境中运行的某些应用需要的关注程度比其他应用要多一些。 举例而言，这种控制会影响到有权访问敏感数据的应用。
+通过选择云应用，可以定义要将策略适用到的云应用范围。 如果需要，还可以从策略中明确排除一组应用。
 
     ![控制](./media/active-directory-conditional-access-azure-portal/09.png)
 
@@ -114,7 +125,7 @@ Azure Active Directory 的当前实现允许配置以下要求：
 
 
 - **设备平台** – 设备平台根据设备上运行的操作系统（Android、iOS、Windows Phone、Windows）来划分特征。 可以定义要在策略中包含以及排除的设备平台。  
-若要在策略中使用设备平台，请先将“配置”开关更改为“是”，然后选择要将策略应用到的所有或单个设备平台。 如果选择单个设备平台，该策略只对这些平台产生影响。 在这种情况下，登录到其他受支持的平台不受该策略的影响。 
+若要在策略中使用设备平台，请先将“配置”开关更改为“是”，然后选择要将策略应用到的所有或单个设备平台。 如果选择单个设备平台，该策略只对这些平台产生影响。 在这种情况下，登录到其他受支持的平台不受该策略的影响。
 
     ![条件](./media/active-directory-conditional-access-azure-portal/02.png)
 
@@ -146,20 +157,20 @@ Azure Active Directory 的当前实现允许配置以下要求：
 如果需要配置一个位置条件并将其应用到从组织网络外部进行的所有连接，可通过以下方式实现此目的：
 
 - 包含**所有位置**
-- 排除**所有受信任的 IP** 
+- 排除**所有受信任的 IP**
 
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>如果在 Azure 经典门户和 Azure 门户中配置了策略，会发生什么情况？  
 仅当满足所有要求时，Azure Active Directory 才实施策略，用户才可获取访问权限。
 
 ### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>如果在 Intune Silverlight 门户和 Azure 门户中配置了策略，会发生什么情况？
-仅当满足所有要求时，Azure Active Directory 才实施策略，用户才可获取访问权限。 
+仅当满足所有要求时，Azure Active Directory 才实施策略，用户才可获取访问权限。
 
 ### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>如果对同一个用户配置了多个策略，会发生什么情况？  
 每次登录时，Azure Active Directory 都会评估所有策略，确保只有满足所有要求，才向该用户授予访问权限。
 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件性访问是否适用于 Exchange ActiveSync？
- 
+
 不适用，此时不能在条件性访问策略中使用 Exchange ActiveSync。
 
 
@@ -182,9 +193,9 @@ Azure Active Directory 的当前实现允许配置以下要求：
 - **需要符合的设备** - 对于尚未注册其设备的用户，此策略将阻止所有访问权限（包括对 Intune 门户的访问权限）。 如果你是不具有注册设备的管理员，则此策略会阻止你回到 Azure 门户更改策略。
 
 - **需要加入域** - 如果你不具有加入域的设备，此阻止访问权限的策略还可能会阻止你组织中所有用户的访问权限。
- 
 
-**对于所有用户、所有云应用、所有设备平台：** 
+
+**对于所有用户、所有云应用、所有设备平台：**
 
 - **阻止访问** - 此配置将阻止你的整个组织（这绝对不是一个好的选项）。
 
@@ -194,7 +205,8 @@ Azure Active Directory 的当前实现允许配置以下要求：
 ### <a name="requiring-multi-factor-authentication-for-apps"></a>要求对应用使用多重身份验证
 
 在许多环境中，某些应用所需的保护级别要比其他应用要高一些。
-例如，有权访问敏感数据的应用就需要更高的保护级别。 如果想要为这些应用添加另一层保护，可以配置条件访问策略，要求访问这些应用的用户执行多重身份验证。
+例如，有权访问敏感数据的应用就需要更高的保护级别。
+如果想要为这些应用添加另一层保护，可以配置条件访问策略，要求访问这些应用的用户执行多重身份验证。
 
 
 ### <a name="requiring-multi-factor-authentication-for-access-from-networks-that-are-not-trusted"></a>通过不受信任的网络访问时要求执行多重身份验证
@@ -202,14 +214,14 @@ Azure Active Directory 的当前实现允许配置以下要求：
 此方案与前一种方案类似，两者都提出了多重身份验证的要求。
 但是，主要区别在于此项要求的条件。  
 前一种方案的重心是有权访问敏感数据的应用，而本方案的重心则是受信任的位置。  
-换而言之，如果用户通过不受信任的网络访问应用，则你可能要求执行多重身份验证。 
+换而言之，如果用户通过不受信任的网络访问应用，则你可能要求执行多重身份验证。
 
 
 ### <a name="only-trusted-devices-can-access-office-365-services"></a>只允许受信任的设备访问 Office 365 服务
 
 如果在环境中使用 Intune，马上就可以在 Azure 控制台中开始使用条件性访问策略接口。
 
-许多 Intune 客户都在使用条件性访问来确保只有受信任的设备可以访问 Office 365 服务。 这意味着，访问这些服务的移动设备已注册到 Intune 并满足合规策略要求，Windows 电脑已加入本地域。 一项重要改进是不需要针对每个 Office 365 服务设置相同的策略。  创建新策略时，可以配置云应用，以包含想要使用条件性访问保护的每个 O365 应用。 
+许多 Intune 客户都在使用条件性访问来确保只有受信任的设备可以访问 Office 365 服务。 这意味着，访问这些服务的移动设备已注册到 Intune 并满足合规策略要求，Windows 电脑已加入本地域。 一项重要改进是不需要针对每个 Office 365 服务设置相同的策略。  创建新策略时，可以配置云应用，以包含想要使用条件性访问保护的每个 O365 应用。
 
 ## <a name="next-steps"></a>后续步骤
 

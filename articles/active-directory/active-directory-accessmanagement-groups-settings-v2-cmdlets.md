@@ -1,5 +1,5 @@
 ---
-title: "用于在 Azure AD 中进行组管理的 Azure Active Directory PowerShell 预览版 cmdlet | Microsoft Docs"
+title: "用于在 Azure AD 中进行组管理的 Azure Active Directory PowerShell cmdlet | Microsoft 文档"
 description: "本页提供的 PowerShell 示例适用于在 Azure Active Directory 中管理组"
 keywords: "Azure AD, Azure Active Directory, PowerShell, 组, 组管理"
 services: active-directory
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4f12fdf6732d44903fb1e971f05d0233d7aff08e
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: f4aeeaf13604443e0902112b4cc998ae1dcce4c2
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -29,12 +30,12 @@ ms.openlocfilehash: 4f12fdf6732d44903fb1e971f05d0233d7aff08e
 >
 >
 
-以下文档提供的示例介绍如何使用 PowerShell 在 Azure Active Directory (Azure AD) 中管理组。  该文档还介绍如何使用 Azure AD PowerShell 预览版模块进行设置。 首先，必须[下载 Azure AD PowerShell 模块](http://go.microsoft.com/fwlink/p/?LinkId=828627)。
+以下文档提供的示例介绍如何使用 PowerShell 在 Azure Active Directory (Azure AD) 中管理组。  该文档还介绍如何使用 Azure AD PowerShell 预览版模块进行设置。 首先，必须[下载 Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。
 
 ## <a name="installing-the-azure-ad-powershell-module"></a>安装 Azure AD PowerShell 模块
-若要安装 AzureAD PowerShell 预览版模块，请使用以下命令：
+若要安装 AzureAD PowerShell 模块，请使用以下命令：
 
-    PS C:\Windows\system32> install-module azureadpreview
+    PS C:\Windows\system32> install-module azuread
 
 若要验证预览版模块是否已安装，请使用以下命令：
 
@@ -44,10 +45,10 @@ ms.openlocfilehash: 4f12fdf6732d44903fb1e971f05d0233d7aff08e
     ---------- -------    ----                                ----------------
     Binary     1.1.146.0  azureadpreview                      {Add-AzureADAdministrati...}
 
-现在可以开始使用模块中的 cmdlet 了。 有关 AzureAD 预览版模块中 cmdlet 的完整说明，请参阅[联机参考文档](https://msdn.microsoft.com/library/azure/mt757216.aspx)。
+现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅[联机参考文档](https://docs.microsoft.com/en-us/powershell/azuread/)。
 
 ## <a name="connecting-to-the-directory"></a>连接到目录
-在开始使用 Azure AD PowerShell 预览版 cmdlet 管理组之前，必须将 PowerShell 会话连接到要管理的目录。 为此，请使用以下命令：
+在开始使用 Azure AD PowerShell cmdlet 管理组之前，必须将 PowerShell 会话连接到要管理的目录。 为此，请使用以下命令：
 
     PS C:\Windows\system32> Connect-AzureAD
 
@@ -57,7 +58,7 @@ ms.openlocfilehash: 4f12fdf6732d44903fb1e971f05d0233d7aff08e
     -------                       ----------- ------
     Karen@drumkit.onmicrosoft.com AzureCloud  85b5ff1e-0402-400c-9e3c-0f…
 
-现在可以开始使用 AzureAD 预览版 cmdlet 管理目录中的组。
+现在可以开始使用 AzureAD cmdlet 管理目录中的组。
 
 ## <a name="retrieving-groups"></a>检索组
 若要从目录中检索现有组，可使用 Get-AzureADGroups cmdlet。 若要检索目录中的所有组，请使用不带参数的 cmdlet：
@@ -225,13 +226,8 @@ ms.openlocfilehash: 4f12fdf6732d44903fb1e971f05d0233d7aff08e
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
 
 ## <a name="next-steps"></a>后续步骤
-如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=808260)。
+如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](https://docs.microsoft.com/en-us/powershell/azuread/)。
 
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

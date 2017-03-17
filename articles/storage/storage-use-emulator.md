@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: e207c221a7294d1288e38c377d64327d889b29de
-ms.openlocfilehash: 7a635fa0f63e851f63f56dc7eb3bca405603dec0
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: fe1d7abf3585efab67a7dbc10afa7bf3c4d466e5
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 7a635fa0f63e851f63f56dc7eb3bca405603dec0
 Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表服务以进行开发的本地环境。 使用存储模拟器，可以在本地针对存储服务测试应用程序，而无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure 存储帐户。
 
 > [!NOTE]
-> 存储模拟器作为 [Microsoft Azure SDK](https://azure.microsoft.com/downloads/) 的一部分提供。 此外，还可以使用[独立安装程序](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)来安装存储模拟器。 若要配置存储模拟器，必须在计算机上具有管理权限。
+> 存储模拟器作为 [Microsoft Azure SDK](https://azure.microsoft.com/downloads/) 的一部分提供。 此外，还可以使用[独立安装程序](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)来安装存储模拟器。 若要安装存储模拟器，必须在计算机上具有管理权限。
 >
 > 存储模拟器目前仅在 Windows 上运行。
 >
@@ -88,10 +89,10 @@ New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryT
 存储模拟器默认情况下安装到 C:\Program Files (x86) \Microsoft SDKs\Azure\Storage 模拟器目录。
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>初始化存储模拟器以使用其他的 SQL 数据库
-可以使用存储模拟器命令行工具初始化存储模拟器，使其指向默认 LocalDB 实例以外的其他 SQL 数据库实例。 必须使用管理权限运行命令行工具来初始化存储模拟器的后端数据库：
+可以使用存储模拟器命令行工具初始化存储模拟器，使其指向默认 LocalDB 实例以外的其他 SQL 数据库实例：
 
 1. 单击“开始”按钮或按“Windows”键。 开始键入 `Azure Storage Emulator`并在其启动存储模拟器命令行工具时将其选中。
-2. 在命令提示符窗口中，键入以下命令，其中 `<SQLServerInstance>` 是 SQL Server 实例的名称。 若要使用 LocalDb，请指定 `(localdb)\v11.0` 作为 SQL Server 实例。
+2. 在命令提示符窗口中，键入以下命令，其中 `<SQLServerInstance>` 是 SQL Server 实例的名称。 若要使用 LocalDb，请指定 `(localdb)\MSSQLLocalDb` 作为 SQL Server 实例。
 
         AzureStorageEmulator init /server <SQLServerInstance>
 
@@ -160,7 +161,7 @@ New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryT
 | **Stop** |停止存储模拟器。 |`AzureStorageEmulator stop` | |
 | **Status** |打印存储模拟器的状态。 |`AzureStorageEmulator status` | |
 | **Clear** |清除命令行上指定的所有服务中的数据。 |`AzureStorageEmulator clear [blob] [table] [queue] [all]                                                    ` |*blob*：清除 blob 数据。 <br/>*queue*：清除队列数据。 <br/>*table*：清除表数据。 <br/>*all*：清除所有服务中的所有数据。 |
-| **Init** |执行一次性初始化以设置模拟器。 |`AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate] [-inprocess]` |*-server serverName\instanceName*：指定托管 SQL 实例的服务器。 <br/>*-sqlinstance instanceName*：指定要在默认服务器实例中使用的 SQL 实例的名称。 <br/>*-forcecreate*：强制创建 SQL 数据库，即使它已存在。 <br/>*-inprocess*：在当前进程中执行初始化，而不是生成新的进程。 必须使用提升的权限启动当前进程以执行初始化。 |
+| **Init** |执行一次性初始化以设置模拟器。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*：指定托管 SQL 实例的服务器。 <br/>*-sqlinstance instanceName*：指定要在默认服务器实例中使用的 SQL 实例的名称。 <br/>*-forcecreate*：强制创建 SQL 数据库，即使它已存在。 <br/>*-skipcreate*：跳过创建 SQL 数据库的步骤。 此命令优先于 -forcecreate。<br/>*-reserveports*：尝试保留与服务关联的 HTTP 端口。<br/>*-unreserveports*：尝试取消保留与服务关联的 HTTP 端口。 此命令优先于 -reserveports。<br/>*-inprocess*：在当前进程中执行初始化，而不是生成新的进程。 如果更改端口保留设置，必须使用提升的权限启动当前进程。 |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>存储模拟器与 Azure 存储之间的差异
 因为存储模拟器是在本地的 SQL 实例中运行的模拟环境，所以模拟器与云中的 Azure 存储帐户之间存在功能差异：
@@ -195,6 +196,18 @@ New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryT
 模拟器中的队列存储没有任何差异。
 
 ## <a name="storage-emulator-release-notes"></a>存储模拟器发行说明
+### <a name="version-51"></a>版本 5.1
+* 修复了一个 Bug。出现该 Bug 时，存储模拟器会在某些不包含服务的响应中返回 `DataServiceVersion` 标头。
+
+### <a name="version-50"></a>版本 5.0
+* 存储模拟器安装程序不再检查现有的 MSSQL 和 .NET Framework 是否已安装。
+* 存储模拟器安装程序不再在安装过程中创建数据库。  仍会在启动过程中视需要创建数据库。
+* 创建数据库不再需要特权提升。
+* 进行启动不再需要保留端口。
+* 向 *init* 添加了以下选项：-reserveports（需要特权提升）、-unreserveports（需要特权提升）、-skipcreate。
+* 系统托盘图标上的“存储模拟器 UI”选项现在可启动命令行界面。  不再提供旧的 GUI。
+* 删除或重命名了某些 DLL。
+
 ### <a name="version-46"></a>版本 4.6
 * 存储模拟器现在支持 Blob、队列和表服务终结点上的 2016-05-31 版的存储服务。
 
@@ -231,9 +244,4 @@ New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryT
 * Azure 存储模拟器中不再与计算模拟器在同一个包中提供。
 * 为支持可编脚本的命令行界面，已弃用存储模拟器图形用户界面。 有关命令行界面的详细信息，请参阅“存储模拟器命令行工具参考”。 图形界面将继续存在于 3.0 版中，但仅在安装了计算模拟器的情况下通过右键单击系统托盘图标并选择“显示存储模拟器用户界面”来访问。
 * 现在完全支持版本 2013年-08-15 的 Azure 存储服务。 （以前仅存储模拟器 2.2.1 预览版本支持此版本。）
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

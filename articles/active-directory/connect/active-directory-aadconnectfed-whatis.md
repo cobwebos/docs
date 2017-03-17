@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: fd3699e4ce423ae9490d5bf788729c43eaa623eb
-ms.openlocfilehash: 19ebfae5de8576402348e3163f99a54b9308a078
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 39b0b15dba098c0ddc59e39a81bfb6809f8cb2eb
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -39,6 +39,7 @@ ms.lasthandoff: 01/13/2017
 | [添加新的 AD FS 服务器](active-directory-aadconnect-federation-management.md#addadfsserver) |初始安装后，使用其他 AD FS 服务器扩展 AD FS 场 |
 | [添加新的 AD FS WAP 服务器](active-directory-aadconnect-federation-management.md#addwapserver) |初始安装后，使用其他 WAP 服务器扩展 AD FS 场 |
 | [添加新的联合域](active-directory-aadconnect-federation-management.md#addfeddomain) |添加另一个域来与 Azure AD 联合 |
+| [更新 SSL 证书](active-directory-aadconnectfed-ssl-update.md)| 更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书|
 | **安装后任务** | |
 | [添加自定义公司徽标/插图](active-directory-aadconnect-federation-management.md#customlogo) |通过指定将在 AD FS 登录页显示的自定义徽标来调整登录体验 |
 | [添加登录说明](active-directory-aadconnect-federation-management.md#addsignindescription) |更改 AD FS 登录页上的登录说明 |

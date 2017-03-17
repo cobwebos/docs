@@ -12,11 +12,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 03/06/2017
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 44c2c181b1ca463c5d2bd92b77e4b92604964ba2
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 0bbbc4f61c37fe4d296221c372bfdf6dd429a32b
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -35,6 +36,7 @@ ms.openlocfilehash: 44c2c181b1ca463c5d2bd92b77e4b92604964ba2
 * 在 Visual Studio 解决方案中，选择“**工具**” --> “**Nuget 程序包管理器**” -->  “**管理解决方案的 Nuget 程序包**”。 
 * (Visual Studio 2013) 在左侧面板中，选择“**更新**”，然后选择窗口中显示的包“**Azure SQL 数据库弹性扩展客户端库**”上的“**更新**”按钮。
 * (Visual Studio 2015) 将“筛选器”框设置为“**可用升级**”。 选择要更新的程序包，然后单击“**更新**”按钮。
+* (Visual Studio 2017) 在对话框顶部，选择“更新”。 选择要更新的程序包，然后单击“**更新**”按钮。
 * 生成并部署。 
 
 **2.升级你的脚本。** 如果使用 **PowerShell** 脚本来管理分片，请[下载新的库版本](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)并将其复制到从中执行脚本的目录中。 
@@ -77,10 +79,5 @@ ms.openlocfilehash: 44c2c181b1ca463c5d2bd92b77e4b92604964ba2
 
 <!--Image references-->
 [1]:./media/sql-database-elastic-scale-upgrade-client-library/nuget-upgrade.png
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

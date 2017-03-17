@@ -17,6 +17,7 @@ ms.author: ruturajd
 translationtype: Human Translation
 ms.sourcegitcommit: 75653b84d6ccbefe7d5230449bea81f498e10a98
 ms.openlocfilehash: a898cb9c66a22bb8d19170fdd03d0fc3b4d93000
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -188,9 +189,4 @@ ms.openlocfilehash: a898cb9c66a22bb8d19170fdd03d0fc3b4d93000
 
 * 应在 Azure 虚拟网络上设置 ExpressRoute，源计算机会故障转移到该网络，而故障转移完成后，Azure VM 也将位于其中。
 * 在公共终结点上，数据将复制到 Azure 存储帐户。 你应该在 ExpressRoute 中设置公共对等互连，以便通过进行 Site Recovery 复制的目标数据中心使用 ExpressRoute。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

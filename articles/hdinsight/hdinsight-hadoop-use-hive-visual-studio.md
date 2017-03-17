@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/23/2017
+ms.date: 02/28/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8b35b5c49141ba90e65b4e07b1e67ae5315a087a
-ms.openlocfilehash: 18447962966eca67e914d0bd8cd6c25c5f2ccc3b
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 0627155a86f961531cfb11c0d8dc7a66eafbf0cf
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/23/2017
 
 了解如何使用适用于 Visual Studio 的 HDInsight 工具将 Hive 查询提交到 HDInsight 群集。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
+## <a id="prereq"></a>先决条件
 
 若要完成本文中的步骤，需要以下各项。
 
@@ -39,13 +39,15 @@ ms.lasthandoff: 02/23/2017
 
 * Visual Studio（以下版本之一）：
   
-    包含 [Update 4](https://www.microsoft.com/download/details.aspx?id=44921)
+    * 包含 [Update 4](https://www.microsoft.com/download/details.aspx?id=44921)
   
-    Visual Studio 2015 (Community/Enterprise)
+    * Visual Studio 2015（任何版本）
+
+    * Visual Studio 2017（任何版本）
 
 * Visual Studio 的 HDInsight 工具或 Visual Studio 的 Azure Data Lake 工具。 请参阅 [Get started using Visual Studio Hadoop tools for HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md)（开始使用 Visual Studio Hadoop tools for HDInsight），了解如何安装和配置这些工具。
 
-## <a name="a-idruna-run-hive-queries-using-the-visual-studio"></a><a id="run"></a>使用 Visual Studio 运行 Hive 查询
+## <a id="run"></a>使用 Visual Studio 运行 Hive 查询
 
 1. 打开“Visual Studio”，选择“新建” > “项目” > “Azure Data Lake” > “HIVE” > “Hive 应用程序”。 提供此项目的名称。
 
@@ -114,7 +116,7 @@ ms.lasthandoff: 02/23/2017
 
 9. 若要验证作业是否已创建新表，请使用“服务器资源管理器”，然后展开“Azure” > “HDInsight”> 你的 HDInsight 群集 >“Hive 数据库” > “默认值”。 此时会列出 **errorLogs** 表和 **log4jLogs** 表。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 
 可以看到，适用于 Visual Studio 的 HDInsight 工具可以轻松地在 HDInsight 上处理 Hive 查询。
 

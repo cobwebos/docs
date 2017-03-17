@@ -12,16 +12,17 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 03/07/2017
 ms.author: shvija;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: fffa437acabc2f26cbe285be9aec47c89232948c
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: cab8a4de9d8d98d77094da5d73f29237829e743a
+ms.lasthandoff: 03/08/2017
 
 
 ---
 # <a name="create-an-event-hubs-namespace-with-event-hub-and-enable-archive-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含事件中心的事件中心命名空间并启用存档
-本文介绍如何使用 Azure Resource Manager 模板创建包含事件中心的事件中心命名空间，并在事件中心上启用存档。 你将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
+本文介绍如何使用 Azure Resource Manager 模板创建包含一个事件中心的事件中心类型命名空间，并在事件中心上启用存档功能。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
 
 有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
 
@@ -73,7 +74,7 @@ ms.openlocfilehash: fffa437acabc2f26cbe285be9aec47c89232948c
 ```
 
 ### <a name="messageretentionindays"></a>messageRetentionInDays
-希望消息保留在事件中心内的天数。 
+要在事件中心中保留消息的天数。 
 
 ```json
 "messageRetentionInDays":{
@@ -88,7 +89,7 @@ ms.openlocfilehash: fffa437acabc2f26cbe285be9aec47c89232948c
 ```
 
 ### <a name="partitioncount"></a>partitionCount
-事件中心内所需的分区数。
+要在事件中心中创建的分区数。
 
 ```json
 "partitionCount":{
@@ -133,7 +134,7 @@ ms.openlocfilehash: fffa437acabc2f26cbe285be9aec47c89232948c
 ```
 
 ### <a name="archivetime"></a>archiveTime
-存档开始将数据存档在 Azure Blob 存储中的时间间隔。
+事件中心存档开始将数据存档在 Azure Blob 存储中的时间间隔。
 
 ```json
 "archiveTime":{
@@ -175,7 +176,7 @@ ms.openlocfilehash: fffa437acabc2f26cbe285be9aec47c89232948c
 ```
 
 ### <a name="blobcontainername"></a>blobContainerName
-要在其中存档事件数据的 blob 容器。
+用于存档事件数据的 blob 容器。
 
 ```json
  "blobContainerName":{
@@ -201,7 +202,7 @@ ms.openlocfilehash: fffa437acabc2f26cbe285be9aec47c89232948c
 ```
 
 ## <a name="resources-to-deploy"></a>要部署的资源
-创建包含事件中心的 **EventHubs** 类型的命名空间并启用存档。
+创建包含一个事件中心的 **EventHubs** 类型的命名空间并启用存档。
 
 ```json
 "resources":[  
@@ -257,7 +258,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -T
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```
+```cli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json][]
@@ -276,9 +277,4 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 [Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
 [Azure Resources Naming Conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
 [Event Hub and enable Archive template]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: c9a5091973395dd888939432292fbd06dcbf0680
 ms.openlocfilehash: 565220fa7b90ac49fd0c9ad01d36ba50fd7f6849
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -31,16 +33,16 @@ ms.openlocfilehash: 565220fa7b90ac49fd0c9ad01d36ba50fd7f6849
 >
 > 有关 HDInsight 3.4 或更高版本，请参阅[将 Hive 与 HDInsight 和 Beeline 配合使用](hdinsight-hadoop-use-hive-beeline.md)，了解如何通过命令行直接在群集上运行 Hive 查询。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
+## <a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
 
 * 基于 Windows 的 HDInsight（HDInsight 上的 Hadoop）群集
 * 运行 Windows 10、Window 8 或 Windows 7 的客户端计算机
 
-## <a name="a-idconnectaconnect-with-remote-desktop"></a><a id="connect"></a>使用远程桌面进行连接
+## <a id="connect"></a>使用远程桌面进行连接
 为 HDInsight 群集启用远程桌面，然后根据[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)中的说明连接到该群集。
 
-## <a name="a-idhiveause-the-hive-command"></a><a id="hive"></a>使用 Hive 命令
+## <a id="hive"></a>使用 Hive 命令
 连接到 HDInsight 群集的桌面之后，请执行以下步骤来使用 Hive：
 
 1. 从 HDInsight 桌面启动“Hadoop 命令行”。
@@ -95,10 +97,10 @@ ms.openlocfilehash: 565220fa7b90ac49fd0c9ad01d36ba50fd7f6849
 
      应返回三行数据，所有行都包含 t4 列中的 **[ERROR]**：
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>摘要
+## <a id="summary"></a>摘要
 如你所见，Hive 命令提供了简单的方法让你以交互方式在 HDInsight 群集上运行 Hive 查询、监视作业状态，以及检索输出。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Hive 的一般信息：
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
@@ -142,9 +144,4 @@ ms.openlocfilehash: 565220fa7b90ac49fd0c9ad01d36ba50fd7f6849
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

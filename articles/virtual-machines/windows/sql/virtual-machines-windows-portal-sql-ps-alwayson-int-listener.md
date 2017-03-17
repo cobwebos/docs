@@ -1,5 +1,5 @@
 ---
-title: "配置 Always On 可用性组侦听器 – Microsoft Azure"
+title: "配置 AlwaysOn 可用性组侦听器 - Microsoft Azure | Microsoft 文档"
 description: "使用具有一个或多个 IP 地址的内部负载均衡器在 Azure Resource Manager 模型上配置可用性组侦听器。"
 services: virtual-machines
 documentationcenter: na
@@ -15,8 +15,9 @@ ms.workload: iaas-sql-server
 ms.date: 12/28/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: dd6eb530f715d98c39ab8730ee33922887d5f9cc
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 1430807db46326779866f57bca3982e5f9448951
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -98,7 +99,7 @@ foreach($VMName in $VMNames)
     }
 ```
 
-## <a name="a-nameadd-ipa-example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a>示例脚本：使用 PowerShell 将 IP 地址添加到现有负载均衡器
+## <a name="Add-IP"></a>示例脚本：使用 PowerShell 将 IP 地址添加到现有负载均衡器
 若要使用多个可用性组，请向负载均衡器添加其他 IP 地址。 每个 IP 地址都需要有自身的负载均衡规则、探测端口和前端端口。
 
 前端端口是应用程序用来连接到 SQL Server 实例的端口。 不同可用性组的 IP 地址可以使用相同的前端端口。
@@ -283,7 +284,7 @@ SQLCMD 连接将自动连接到托管主副本的 SQL Server 实例。
 > 
 
 ## <a name="guidelines-and-limitations"></a>指导原则和限制
-请注意有关 Azure 中使用内部负载平衡器的可用性组侦听器的以下准则：
+请注意有关 Azure 中使用内部负载均衡器的可用性组侦听器的以下准则：
 
 * 使用内部负载均衡器只能从同一个虚拟网络中访问侦听器。
 
@@ -300,9 +301,4 @@ SQLCMD 连接将自动连接到托管主副本的 SQL Server 实例。
 * 使用 [New-AzureRmLoadBalancerBackendAddressPoolConfig](http://msdn.microsoft.com/library/mt603791.aspx) 创建负载均衡器的后端地址池配置。 
 * 使用 [New-AzureRmLoadBalancerProbeConfig](http://msdn.microsoft.com/library/mt603847.aspx) 创建负载均衡器的探测配置。
 * 使用 [Remove-AzureRmLoadBalancer](http://msdn.microsoft.com/library/mt603862.aspx) 从 Azure 资源组中删除负载均衡器。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

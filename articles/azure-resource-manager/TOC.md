@@ -38,7 +38,8 @@
 ### [将资源移到新组或订阅](resource-group-move-resources.md)
 ## 控制访问
 ### [使用 PowerShell 创建服务主体](resource-group-authenticate-service-principal.md)
-### [使用 Azure CLI 创建服务主体](resource-group-authenticate-service-principal-cli.md)
+### [使用 Azure CLI 2.0 创建服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [使用 Azure CLI 1.0 创建服务主体](resource-group-authenticate-service-principal-cli.md)
 ### [使用门户创建服务主体](resource-group-create-service-principal-portal.md)
 ### [用于访问订阅的身份验证 API](resource-manager-api-authentication.md)
 ### [锁定资源](resource-group-lock-resources.md)

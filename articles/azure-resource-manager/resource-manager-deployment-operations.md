@@ -16,8 +16,9 @@ ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: c2f30eecb62ac578e8635346e1f67d441f29f189
-ms.openlocfilehash: e441e338a97c31b9131105ef08186c897d301ceb
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -121,7 +122,15 @@ ms.openlocfilehash: e441e338a97c31b9131105ef08186c897d301ceb
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
+4. Azure 中的每个部署操作均包括请求和响应内容。 请求内容是在部署过程中发送到 Azure 的内容（例如，创建 VM、OS 磁盘和其他资源）。 响应内容是 Azure 从部署请求发送回的内容。 在部署期间，可以使用 **DeploymentDebugLogLevel** 参数指定将请求和/或响应保留在日志中。 
 
+  可以使用以下 PowerShell 命令从日志中获取该信息，然后将其保存在本地：
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+
+  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+  ```
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -208,10 +217,5 @@ ms.openlocfilehash: e441e338a97c31b9131105ef08186c897d301ceb
 * 有关解决特定部署错误的帮助，请参阅 [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md)（解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误）。
 * 若要了解如何使用活动日志监视其他类型的操作，请参阅[通过查看活动日志管理 Azure 资源](resource-group-audit.md)。
 * 若要在执行部署之前验证部署，请参阅 [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署资源组）。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2017
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0921464c10d5ca3d426a535d434eab6cf02013e6
-ms.openlocfilehash: c234958f5fc1ba0dbcb727e18e733d13ad0c7e71
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 4af4d30a3378e1aea66309a1d757be1c1da2ea0d
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="regional-failovers-in-azure-documentdb"></a>Azure DocumentDB 中的区域故障转移
+# <a name="automatic-regional-failovers-for-business-continuity-in-documentdb"></a>DocumentDB 中的自动区域故障转移以实现业务连续性
 Azure DocumentDB 可通过提供完全托管的[多区域数据库帐户](documentdb-distribute-data-globally.md)简化全局数据分布。这些帐户在一致性、可用性和性能方面进行了很好的平衡，各方面的效果都有相应的保证。 DocumentDB 帐户具有以下特点：高可用性、10 毫秒以下的延迟、[妥善定义的一致性级别](documentdb-consistency-levels.md)、使用多宿主 API 实现透明的区域性故障转移，以及在全球范围内弹性缩放吞吐量和存储。 
 
 Azure DocumentDB 支持显式和策略驱动型故障转移，方便用户在发生故障时控制端到端系统行为。 本文介绍：
@@ -33,7 +35,7 @@ Azure DocumentDB 支持显式和策略驱动型故障转移，方便用户在发
 
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
 
-## <a name="a-idconfiguremultiregionapplicationsaconfiguring-multi-region-applications"></a><a id="ConfigureMultiRegionApplications"></a>配置多区域应用程序
+## <a id="ConfigureMultiRegionApplications"></a>配置多区域应用程序
 在探讨故障转移模式之前，我们先介绍如何配置应用程序，以便在需要进行区域故障转移时充分利用多区域可用性，确保足够的还原能力。
 
 * 首先，在多个区域中部署应用程序
@@ -69,7 +71,7 @@ Azure DocumentDB 支持显式和策略驱动型故障转移，方便用户在发
 
 现在，让我们看看 DocumentDB 服务如何通过自动故障转移处理区域性故障。 
 
-## <a name="a-idautomaticfailoversaautomatic-failovers"></a><a id="AutomaticFailovers"></a>自动故障转移
+## <a id="AutomaticFailovers"></a>自动故障转移
 在极少数情况下，当出现 Azure 区域性中断时，DocumentDB 会自动触发故障转移，对存在于受影响区域的所有 DocumentDB 帐户进行转移。 
 
 **某个读取区域中断时会发生什么情况？**
@@ -96,7 +98,7 @@ Azure DocumentDB 支持显式和策略驱动型故障转移，方便用户在发
 * 用户可以查询该区域，通过与当前写入区域中的可用数据进行比较，计算中断期间未复制的写入内容。 可以根据应用程序的需求，执行合并和/或冲突解决方案，将最终的更改集写回到当前的写入区域。 
 * 合并完所做的更改以后，即可通过删除该区域并将其重新添加到 DocumentDB 帐户的方式，让受影响区域回到联机状态。 将区域添加回来以后，即可通过 Azure 门户或[以编程方式](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate)执行手动故障转移，将其重新配置为写入区域。
 
-## <a name="a-idmanualfailoversamanual-failovers"></a><a id="ManualFailovers"></a>手动故障转移
+## <a id="ManualFailovers"></a>手动故障转移
 
 除了自动故障转移，还可以通过动态方式将给定 DocumentDB 帐户当前的写入区域手动更改为现有的读取区域之一。 可以通过 Azure 门户或[以编程方式](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate)启动手动故障转移。 
 
@@ -114,15 +116,10 @@ Azure DocumentDB 支持显式和策略驱动型故障转移，方便用户在发
 
 本文探讨了如何在 Azure DocumentDB 中使用手动和自动故障转移，以及如何配置 DocumentDB 帐户和应用程序才能让其全局可用。 可以利用 Azure DocumentDB 的全局复制支持改善端到端延迟情况，确保即使在发生区域故障的情况下，也可以顺利使用这些帐户和应用程序。 
 
-## <a name="a-idnextstepsanext-steps"></a><a id="NextSteps"></a>后续步骤
+## <a id="NextSteps"></a>后续步骤
 * 了解 DocumentDB 如何支持[全局分配](documentdb-distribute-data-globally.md)
 * 了解 [DocumentDB 的全局一致性](documentdb-consistency-levels.md)
 * 使用 [Azure DocumentDB SDK](documentdb-developing-with-multiple-regions.md) 通过多个区域进行开发
 * 了解如何通过 Azure DocumentDB 构建[多区域写入器体系结构](documentdb-multi-region-writers.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

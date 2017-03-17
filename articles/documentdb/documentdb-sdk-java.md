@@ -1,5 +1,5 @@
 ---
-title: "Java API 和 SDK 资源 - Azure DocumentDB | Microsoft 文档"
+title: "Azure DocumentDB Java API、SDK 和资源 | Microsoft 文档"
 description: "了解有关 Java API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB Java SDK 各版本之间所做的更改。"
 services: documentdb
 documentationcenter: java
@@ -14,14 +14,15 @@ ms.devlang: java
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: khdang
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 64858123a75686ba460de5e0f26b143c29f9f067
-ms.openlocfilehash: 7b7afa0ac55327b83e7ea8983a5e25782bda9f07
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 50f8f6a2d64959a1981f95bfe821a2a79f6cafc6
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="documentdb-apis-and-sdks"></a>DocumentDB API 和 SDK
+# <a name="documentdb-java-sdk-release-notes-and-resources"></a>DocumentDB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
@@ -34,7 +35,6 @@ ms.lasthandoff: 02/23/2017
 > 
 > 
 
-## <a name="documentdb-java-api-and-sdk"></a>DocumentDB Java API 和 SDK
 <table>
 
 <tr><td>**SDK 下载**</td><td>[Maven](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>

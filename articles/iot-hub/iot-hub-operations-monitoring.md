@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 12/13/2016
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: 8f72f2ca66a5d1394e87c7c0f8d8dff9da73732f
-ms.openlocfilehash: 612ef94efb9776ae0ce768de1b59fb208824da93
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 796bf9b1219b7f0e2c68688c5f5b51163ef4b49b
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -165,6 +165,26 @@ IoT 中心监视&6; 种类别的事件：
         "details": "ExternalEndpointDisabled"
     }
 
+## <a name="view-events"></a>查看事件
+
+可以使用 *iothub-explorer* 工具快速测试 IoT 中心是否正在生成监视事件。 若要安装该工具，请参阅 [iothub-explorer][lnk-iothub-explorer] GitHub 存储库中的说明。
+
+1. 请确保门户中的“连接”监视类别设置为“详细”。
+
+1. 在命令提示符下，运行以下命令以读取监视终结点：
+
+    ```
+    iothub-explorer monitor-ops --login {your iothubowner connection string}
+    ```
+
+1. 在另一个命令提示符下，运行以下命令以模拟发送设备到云消息的设备：
+
+    ```
+    iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
+    ```
+
+1. 当模拟设备连接到 IoT 中心时，第一个命令提示符显示监视事件。
+
 ## <a name="next-steps"></a>后续步骤
 若要进一步探索 IoT 中心的功能，请参阅：
 
@@ -182,4 +202,5 @@ IoT 中心监视&6; 种类别的事件：
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 

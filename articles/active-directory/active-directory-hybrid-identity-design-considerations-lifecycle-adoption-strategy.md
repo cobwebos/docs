@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
 ms.openlocfilehash: 14e78eca1e03125143b8814c5652c43f3f3fd3a8
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -99,10 +100,5 @@ Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序�
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
