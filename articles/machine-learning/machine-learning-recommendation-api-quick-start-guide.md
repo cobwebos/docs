@@ -17,6 +17,7 @@ ms.author: luisca
 translationtype: Human Translation
 ms.sourcegitcommit: c5d1812a3bd7e1ad3621ca691339f01729882b08
 ms.openlocfilehash: 67131bbaccff549817bfe5fdf874d609ea22c2bc
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -701,10 +702,5 @@ OData XML
 
 ## <a name="legal"></a>法律
 本文档“按原样”提供。 本文档表达的信息和观点，包括 URL 和其他 Internet 网站参考，若有更改，恕不另行通知。 本文所述的一些示例仅为解释提供，并且纯属虚构。 没有计划产生实际关联或联系，也不应妄加推断。 本文档不向你提供对任何 Microsoft 产品的任何知识产权的任何法律权利。 可复制本文档，将其用于内部、参考用途。 © 2014 Microsoft。 保留所有权利。 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

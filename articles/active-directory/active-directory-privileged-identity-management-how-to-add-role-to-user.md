@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5dde6b98f72306d6fe78f3c12377d3ce2ec5ddea
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -64,10 +65,5 @@ Azure AD Privileged Identity Management 应用程序还允许特权角色管理�
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

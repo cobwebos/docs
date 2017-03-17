@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: ce4d51c4ed38645ee81325404ff7214f845d5bf0
 ms.openlocfilehash: 317f3be6cb39da7c7c57f7f368c750672609726e
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -68,9 +69,4 @@ Microsoft Azure 政府版云中当前不存在的功能：
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: b30ed9727229c082bff65023bfe4900640caa995
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -39,9 +40,4 @@ ms.openlocfilehash: b30ed9727229c082bff65023bfe4900640caa995
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Active Directory 版本](active-directory-editions.md)
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

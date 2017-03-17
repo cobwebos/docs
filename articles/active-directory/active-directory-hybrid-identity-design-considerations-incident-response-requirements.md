@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
 ms.openlocfilehash: bc8e3b76aad18e8d7a73de8bc12e6527e415035d
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -65,10 +66,5 @@ ms.openlocfilehash: bc8e3b76aad18e8d7a73de8bc12e6527e415035d
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

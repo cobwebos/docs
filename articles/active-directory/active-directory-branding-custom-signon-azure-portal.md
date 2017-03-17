@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3a054a01cf21bba4bbaf15c404f74086b2f25651
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 48f85fd7e50c1cb3ece7f8b75779fe7cde92c7da
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -81,9 +82,4 @@ ms.openlocfilehash: 3a054a01cf21bba4bbaf15c404f74086b2f25651
 
 ## <a name="next-steps"></a>后续步骤
 [添加特定于语言的公司品牌元素](active-directory-branding-localize-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
