@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 8af22f98b5dfde35df441ba054875616ced9988a
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: a2bc32193ad539053984794a411ae7307b8d8532
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/06/2017
 >
 >
 
-本文介绍如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 将 System Center Virtual Machine Manager (VMM) 云中管理的本地 Hyper-V 虚拟机复制到辅助站点。 详细了解此[方案体系结构](site-recovery-components.md#hyper-v-vm-replication-to-a-secondary-site)。
+本文介绍如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 将 System Center Virtual Machine Manager (VMM) 云中管理的本地 Hyper-V 虚拟机复制到辅助站点。 详细了解此[方案体系结构](site-recovery-components.md#hyper-v-to-a-secondary-site)。
 
 阅读本文后，请在底部发布评论，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 

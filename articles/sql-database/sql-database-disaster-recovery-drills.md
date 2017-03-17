@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 07/31/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: d3456b190d78560dc9380d5ecb56e0e82006e2ea
-ms.openlocfilehash: 209446ae6b1a4f951bc141d95ff481f2f5ab43b0
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 821be267a109bdcb1a1d22107f0ab4c469e6d6aa
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -53,7 +54,7 @@ ms.openlocfilehash: 209446ae6b1a4f951bc141d95ff481f2f5ab43b0
 
 #### <a name="recovery"></a>恢复
 * 确保 DR 区域中的应用程序配置指向以前的辅助数据库，故障转移后，该数据库将成为完全可访问的新主数据库。
-* 执行[计划的故障转移](sql-database-geo-replication-failover-powershell.md#initiate-a-planned-failover)，使辅助数据库成为新的主数据库
+* 执行[计划的故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)，使辅助数据库成为新的主数据库
 * 根据在[恢复后配置数据库](sql-database-disaster-recovery.md)指南完成恢复。
 
 #### <a name="validation"></a>验证
@@ -64,9 +65,4 @@ ms.openlocfilehash: 209446ae6b1a4f951bc141d95ff481f2f5ab43b0
 * 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)
 * 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)
 * 若要了解更快的恢复选项，请参阅[活动异地复制](sql-database-geo-replication-overview.md)  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

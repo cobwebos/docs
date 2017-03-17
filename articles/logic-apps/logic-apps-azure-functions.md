@@ -16,9 +16,9 @@ ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 8a606e5d009fd210212bd9d7a92ddb3e0cb2e3a2
-ms.openlocfilehash: 1c939e26212b2454cf3e666021036680d5494cfb
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 7d21ab1180fcd6df39a5dcc5c095c9521c00f6fd
+ms.lasthandoff: 03/10/2017
 
 ---
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/02/2017
 
 在 Azure 门户中的函数“集成”窗格上，模板应显示“模式”设置为“Webhook”，而“Webhook 类型”设置为“泛型 JSON”。 
 
-Webhook 函数接受请求，并通过 `data` 变量将其传递给方法。 可以使用点表示法如 `data.foo` 来访问有效负载的属性。 如以下示例所示，此简单的 JavaScript 函数将 DateTime 值转换为日期字符串：
+Webhook 函数接受请求，并通过 `data` 变量将其传递给方法。 可以使用点表示法如 `data.function-name` 来访问有效负载的属性。 如以下示例所示，此简单的 JavaScript 函数将 DateTime 值转换为日期字符串：
 
 ```
 function start(req, res){

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
-ms.openlocfilehash: bebfd5e0cc209d8c1fc28d2300c57e3519410954
-ms.lasthandoff: 01/07/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: cc61146e0353455c5c763297a002afb86b76887a
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -84,11 +84,11 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 | 应用程序 |删除应用程序 |删除应用程序，包括其所有的服务以及状态（如果有）。 |
 | 服务 |删除服务 |删除服务及其状态（如果有）。 |
 | 节点 |激活 |激活节点。 |
-| 停用（暂停） |在其当前的状态中暂停节点。 服务继续运行，但 Service Fabric 并不主动在节点上移入或移出任何项目，除非需要避免服务中断或数据不一致的问题。 此操作通常用于在特定节点上启用调试服务，以确保它们不在检查期间移动。 | |
-| 停用（重新启动） |从节点中安全删除所有内存服务，并关闭永久性服务。 通常在需要重新启动主机进程或计算机时使用。 | |
-| 停用（删除数据） |在构建足够的备用副本之后，安全关闭节点上运行的所有服务。 通常在永久性淘汰某个节点（或至少其存储）时使用。 | |
-| 删除节点状态 |从群集中删除节点副本的信息。 通常在发生故障的节点肯定无法恢复时使用。 | |
-| 节点 | 重新启动 | 重启节点可模拟节点故障。 详细信息请参见[此处](https://docs.microsoft.com/en-us/powershell/servicefabric/vlatest/Restart-ServiceFabricNode) ||
+| 节点 | 停用（暂停） | 在其当前的状态中暂停节点。 服务继续运行，但 Service Fabric 并不主动在节点上移入或移出任何项目，除非需要避免服务中断或数据不一致的问题。 此操作通常用于在特定节点上启用调试服务，以确保它们不在检查期间移动。 | |
+| 节点 | 停用（重新启动） | 从节点中安全删除所有内存服务，并关闭永久性服务。 通常在需要重新启动主机进程或计算机时使用。 | |
+| 节点 | 停用（删除数据） | 在构建足够的备用副本之后，安全关闭节点上运行的所有服务。 通常在永久性淘汰某个节点（或至少其存储）时使用。 | |
+| 节点 | 删除节点状态 | 从群集中删除节点副本的信息。 通常在发生故障的节点肯定无法恢复时使用。 | |
+| 节点 | 重新启动 | 重启节点可模拟节点故障。 详细信息请参见[此处](https://docs.microsoft.com/en-us/powershell/servicefabric/vlatest/Restart-ServiceFabricNode) | |
 
 由于许多操作都具有破坏性，因此在完成该操作之前，系统可能会请求你确认意图。
 

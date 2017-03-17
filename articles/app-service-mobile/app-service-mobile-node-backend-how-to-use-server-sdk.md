@@ -4,7 +4,7 @@ description: "了解如何使用适用于 Azure 应用服务移动应用的 Node
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 96683bc02cefb94e4252eac5364d1b9ff55cf3d4
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 8a6fd3711bf273d7035587d3731a334fd2268c32
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 96683bc02cefb94e4252eac5364d1b9ff55cf3d4
 
 本文提供详细的信息和示例，说明如何在 Azure 应用服务移动应用中使用 Node.js 后端。
 
-## <a name="a-nameintroductionaintroduction"></a><a name="Introduction"></a>介绍
+## <a name="Introduction"></a>介绍
 使用 Azure 应用服务移动应用可将移动优化的数据访问 Web API 添加到 Web 应用程序。  提供的 Azure 应用服务移动应用 SDK 适用于 ASP.NET 和 Node.js Web 应用程序。  此 SDK 提供以下操作：
 
 * 数据访问的表操作（读取、插入、更新、删除）
@@ -40,7 +41,7 @@ Azure 移动应用 Node SDK 支持 Node 的当前 LTS 版本及更高版本。  
 
 Azure 移动应用 Node SDK 支持两个数据库驱动程序 - node-mssqll 驱动程序支持 SQL Azure 和本地 SQL Server 实例。  sqlite3 驱动程序仅支持单个实例上的 SQLite 数据库。
 
-### <a name="a-namehowto-cmdline-basicappahow-to-create-a-basic-nodejs-backend-using-the-command-line"></a><a name="howto-cmdline-basicapp"></a>如何使用命令行创建基本 Node.js 后端
+### <a name="howto-cmdline-basicapp"></a>如何使用命令行创建基本 Node.js 后端
 每个 Azure 应用服务移动应用 Node.js 后端都以 ExpressJS 应用程序的形式启动。  在适用于 Node.js 的 Web 服务框架中，ExpressJS 最广为使用。  可按以下方式创建基本的 [Express] 应用程序：
 
 1. 在命令窗口或 PowerShell 窗口中，为项目创建目录。
@@ -86,7 +87,7 @@ Azure 移动应用 Node SDK 支持两个数据库驱动程序 - node-mssqll 驱�
 
 可以在 [GitHub 上的 basicapp 示例]中找到此基本应用程序的代码。
 
-### <a name="a-namehowto-vs2015-basicappahow-to-create-a-node-backend-with-visual-studio-2015"></a><a name="howto-vs2015-basicapp"></a>如何使用 Visual Studio 2015 创建 Node 后端
+### <a name="howto-vs2015-basicapp"></a>如何使用 Visual Studio 2015 创建 Node 后端
 Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程序。  首先，请安装[用于 Visual Studio 的 Node.js 工具 1.1]。  安装用于 Visual Studio 的 Node.js 工具后，请创建 Express 4.x 应用程序：
 
 1. 打开“新建项目”对话框（从“文件” > “新建” > “项目...”）。
@@ -118,14 +119,14 @@ Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程�
     保存文件。
 10. 在本地运行应用程序（API 将在 http://localhost:3000 上提供），或发布到 Azure。
 
-### <a name="a-namecreate-node-backend-portalahow-to-create-a-nodejs-backend-using-the-azure-portal"></a><a name="create-node-backend-portal"></a>如何使用 Azure 门户创建 Node.js 后端
+### <a name="create-node-backend-portal"></a>如何使用 Azure 门户创建 Node.js 后端
 可以在 [Azure 门户]中直接创建移动应用后端。 可以遵循以下步骤，或根据[创建移动应用](app-service-mobile-ios-get-started.md)教程同时创建客户端和服务器。 本教程包含以下说明的简化版本，最适合用于概念认证项目。
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
 返回“开始使用”边栏选项卡，在“创建表 API”下面，选择“Node.js”作为“后端语言”。 选中“我已了解此操作会覆盖所有站点内容”框，然后单击“创建 TodoItem 表”。
 
-### <a name="a-namedownload-quickstartahow-to-download-the-nodejs-backend-quickstart-code-project-using-git"></a><a name="download-quickstart"></a>如何：使用 Git 下载 Node.js 后端快速入门代码项目
+### <a name="download-quickstart"></a>如何：使用 Git 下载 Node.js 后端快速入门代码项目
 使用门户的“快速启动”边栏选项卡创建 Node.js 移动应用后端时，系统将为你创建 Node.js 项目并将其部署到你的站点。 可以在门户中添加表和 API，以及编辑 Node.js 后端的代码文件。 还可以使用多种部署工具下载后端项目，以便添加或修改表和 API，然后重新发布项目。 有关详细信息，请参阅 [Azure App Service 部署指南]。 以下过程使用 Git 存储库下载快速入门项目代码。
 
 1. 安装 Git（如果尚未安装）。 安装 Git 所需的步骤因操作系统的不同而异。 有关操作系统特定的分发和安装指南，请参阅[安装 Git](http://git-scm.com/book/en/Getting-Started-Installing-Git)。
@@ -144,7 +145,7 @@ Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程�
 
 每次将一组新的提交内容推送到站点时，将重新发布站点。
 
-### <a name="a-namehowto-publish-to-azureahow-to-publish-your-nodejs-backend-to-azure"></a><a name="howto-publish-to-azure"></a>如何将 Node.js 后端发布到 Azure
+### <a name="howto-publish-to-azure"></a>如何将 Node.js 后端发布到 Azure
 Microsoft Azure 提供了许多将 Azure App Service 移动应用 Node.js 后端发布到 Azure 服务的机制。  其中包括利用集成到 Visual Studio 的部署工具、命令行工具，以及基于源代码管理的连续部署选项。  有关此主题的详细信息，请参阅 [Azure App Service 部署指南]。
 
 Azure 应用服务提供有关 Node.js 应用程序的具体建议，请在部署之前查看：
@@ -152,14 +153,14 @@ Azure 应用服务提供有关 Node.js 应用程序的具体建议，请在部�
 * 如何[指定 Node 版本]
 * 如何[使用 Node 模块]
 
-### <a name="a-namehowto-enable-homepageahow-to-enable-a-home-page-for-your-application"></a><a name="howto-enable-homepage"></a>如何启用应用程序的主页
+### <a name="howto-enable-homepage"></a>如何启用应用程序的主页
 许多应用程序是 Web 和移动应用的组合，ExpressJS 框架允许组合两个方面。  但有时，我们可能只想要实现移动接口。  移动接口用于提供登录页，确保应用服务已启动并在运行。  可以提供自己的主页，或启用临时主页。  若要启用临时主页，请使用以下步骤来实例化 Azure 移动应用：
 
     var mobile = azureMobileApps({ homePage: true });
 
 如果想要让此选项仅在本地开发时可供使用，可以将此设置添加到 `azureMobile.js` 文件。
 
-## <a name="a-nametableoperationsatable-operations"></a><a name="TableOperations"></a>表操作
+## <a name="TableOperations"></a>表操作
 azure-mobile-apps Node.js Server SDK 提供将存储在 Azure SQL 数据库中的表公开为 WebAPI 的机制。  提供的操作有五种。
 
 | 操作 | 说明 |
@@ -172,7 +173,7 @@ azure-mobile-apps Node.js Server SDK 提供将存储在 Azure SQL 数据库中�
 
 此 WebAPI 支持 [OData]，并扩展表架构以支持[脱机数据同步]。
 
-### <a name="a-namehowto-dynamicschemaahow-to-define-tables-using-a-dynamic-schema"></a><a name="howto-dynamicschema"></a>如何使用动态架构定义表
+### <a name="howto-dynamicschema"></a>如何使用动态架构定义表
 表必须先经过定义才能使用。  表可用静态架构来定义（开发人员在架构中定义列），或以动态方式定义（SDK 根据传入的请求控制架构）。 此外，开发人员可将 Javascript 代码添加到定义，控制 WebAPI 的特定层面。
 
 根据最佳实践，应在表目录中的 Javascript 文件内定义每个表，然后使用 tables.import() 方法导入表。  扩展基本应用后，调整 app.js 文件：
@@ -209,7 +210,7 @@ azure-mobile-apps Node.js Server SDK 提供将存储在 Azure SQL 数据库中�
 
 可以在 [GitHub 上的 todo 示例]中找到完整示例。
 
-### <a name="a-namehowto-staticschemaahow-to-define-tables-using-a-static-schema"></a><a name="howto-staticschema"></a>如何使用静态架构定义表
+### <a name="howto-staticschema"></a>如何使用静态架构定义表
 可以将列显式定义为通过 WebAPI 公开。  azure-mobile-apps Node.js SDK 自动将脱机数据同步所需的任何其他列添加到所提供的列表。  例如，快速入门客户端应用程序需要包含两个列的表：text（字符串）和 complete（布尔值）。  
 可以在表定义 JavaScript 文件中（位于表目录中）定义该表，如下所示：
 
@@ -230,7 +231,7 @@ azure-mobile-apps Node.js Server SDK 提供将存储在 Azure SQL 数据库中�
 
 如果以静态方式定义表，则还必须调用 tables.initialize() 方法，在启动时创建数据库架构。  tables.initialize() 方法返回 [Promise]，以使 Web 服务不会在数据库初始化之前处理请求。
 
-### <a name="a-namehowto-sqlexpress-setupahow-to-use-sql-express-as-a-development-data-store-on-your-local-machine"></a><a name="howto-sqlexpress-setup"></a>如何使用 SQL Express 作为本地计算机上的开发数据存储
+### <a name="howto-sqlexpress-setup"></a>如何使用 SQL Express 作为本地计算机上的开发数据存储
 Azure 移动应用：Azure 移动应用 Node SDK 提供三种现成可用的数据提供选项：
 
 * 使用**内存**驱动程序提供非持久性示例存储
@@ -287,7 +288,7 @@ Node.js 应用程序将读取 **SQLCONNSTR_MS_TableConnectionString** 环境变�
 
 必须通过 TCP/IP 连接访问数据库，并提供连接的用户名和密码。
 
-### <a name="a-namehowto-config-localdevahow-to-configure-your-project-for-local-development"></a><a name="howto-config-localdev"></a>如何配置项目以进行本地开发
+### <a name="howto-config-localdev"></a>如何配置项目以进行本地开发
 Azure 移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScript 文件。  不要使用此文件在生产环境中配置 Azure 移动应用 SDK，请改用 [Azure 门户]中的“应用设置”。  *azureMobile.js* 文件应导出配置对象。  最常见的设置如下：
 
 * 数据库设置
@@ -314,7 +315,7 @@ Azure 移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScr
 
 建议将 *azureMobile.js* 添加到 *.gitignore* 文件（或其他源代码管理 ignore 文件），防止将密码存储在云中。  请始终在 [Azure 门户]中的“应用设置”内配置生产设置。
 
-### <a name="a-namehowto-appsettingsahow-configure-app-settings-for-your-mobile-app"></a><a name="howto-appsettings"></a>如何配置移动应用的应用设置
+### <a name="howto-appsettings"></a>如何配置移动应用的应用设置
 *azureMobile.js* 文件中的大多数设置在 [Azure 门户]中都有对等的应用设置。  请使用以下列表在“应用设置”中配置应用：
 
 | 应用设置 | *azureMobile.js* 设置 | 说明 | 有效值 |
@@ -340,7 +341,7 @@ Azure 移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScr
 
 更改大多数应用设置后都需要重新启动服务。
 
-### <a name="a-namehowto-use-sqlazureahow-to-use-sql-database-as-your-production-data-store"></a><a name="howto-use-sqlazure"></a>如何使用 SQL 数据库作为生产数据存储
+### <a name="howto-use-sqlazure"></a>如何使用 SQL 数据库作为生产数据存储
 <!--- ALTERNATE INCLUDE - we can't use ../includes/app-service-mobile-dotnet-backend-create-new-service.md - slightly different semantics -->
 
 无论使用哪种 Azure 应用服务应用程序类型，将 SQL 数据库用作数据存储的过程都是相同的。 如果尚未这样做，请根据以下步骤创建移动应用后端。
@@ -371,7 +372,7 @@ Azure 移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScr
 
 创建数据库可能需要几分钟时间。  在“通知”区域中监视部署进度。  在数据库成功部署之前，请不要继续操作。  成功部署后，将在移动后端的“应用设置”中创建 SQL 数据库实例的连接字符串。  可以在“设置” > “应用程序设置” > “连接字符串”中查看此应用设置。
 
-### <a name="a-namehowto-tables-authahow-to-require-authentication-for-access-to-tables"></a><a name="howto-tables-auth"></a>如何要求在访问表时进行身份验证
+### <a name="howto-tables-auth"></a>如何要求在访问表时进行身份验证
 如果想要对表终结点使用应用服务身份验证，必须先在 [Azure 门户]中配置应用服务身份验证。  有关在 Azure 应用服务中配置身份验证的详细信息，请参阅要使用的标识提供者所提供的配置指南：
 
 * [如何配置 Azure Active Directory 身份验证]
@@ -408,7 +409,7 @@ Azure 移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScr
 
 如果未定义访问属性，则允许未经身份验证的访问。
 
-### <a name="a-namehowto-tables-getidentityahow-to-use-authentication-claims-with-your-tables"></a><a name="howto-tables-getidentity"></a>如何对表使用身份验证声明
+### <a name="howto-tables-getidentity"></a>如何对表使用身份验证声明
 可以设置不同的声明，在设置身份验证时将请求这些声明。  这些声明通常无法通过 `context.user` 对象获取。  但是，它们可以使用 `context.user.getIdentity()` 方法来检索。  `getIdentity()` 方法返回可解析成某个对象的 Promise。  该对象由身份验证方法（Facebook、Google、Twitter、microsoftaccount 或 AAD）进行键控。
 
 例如，如果设置 Microsoft 帐户身份验证并请求电子邮件地址声明，可以使用以下表控制器将电子邮件地址添加到记录：
@@ -468,7 +469,7 @@ Azure 移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScr
 
 若要查看哪些声明可用，请使用 Web 浏览器查看站点的 `/.auth/me` 终结点。
 
-### <a name="a-namehowto-tables-disabledahow-to-disable-access-to-specific-table-operations"></a><a name="howto-tables-disabled"></a>如何禁用对特定表操作的访问
+### <a name="howto-tables-disabled"></a>如何禁用对特定表操作的访问
 除了出现在表上以外，访问属性还可用于控制单个操作。  共有四项操作：
 
 * *read* 是对表运行的 RESTful GET 操作
@@ -490,7 +491,7 @@ Azure 移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScr
 
     module.exports = table;
 
-### <a name="a-namehowto-tables-queryahow-to-adjust-the-query-that-is-used-with-table-operations"></a><a name="howto-tables-query"></a>如何调整与表操作配合使用的查询
+### <a name="howto-tables-query"></a>如何调整与表操作配合使用的查询
 表操作的常见要求是提供受限制的数据视图。  例如，可以提供标有已经过身份验证的用户 ID 的表，以便只有你能够读取或更新自己的记录。  以下表定义提供此功能：
 
     var azureMobileApps = require('azure-mobile-apps');
@@ -526,7 +527,7 @@ Azure 移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScr
 
     context.query.where('myfield eq ?', 'value');
 
-### <a name="a-namehowto-tables-softdeleteahow-to-configure-soft-delete-on-a-table"></a><a name="howto-tables-softdelete"></a>如何在表中配置软删除
+### <a name="howto-tables-softdelete"></a>如何在表中配置软删除
 软删除并不实际删除记录。  它将已删除的列设置为 true，将记录标记为已在数据库中删除。  Azure 移动应用 SDK 自动从结果中删除已软删除的记录，除非 Mobile Client SDK 使用 IncludeDeleted()。  若要为表配置软删除，请在表定义文件中设置 `softDelete` 属性：
 
     var azureMobileApps = require('azure-mobile-apps');
@@ -552,7 +553,7 @@ Azure 移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScr
 
 应该建立记录清除机制 - 从客户端应用程序、通过 Web 作业、Azure Function 或通过自定义 API。
 
-### <a name="a-namehowto-tables-seedingahow-to-seed-your-database-with-data"></a><a name="howto-tables-seeding"></a>如何在数据库中植入数据
+### <a name="howto-tables-seeding"></a>如何在数据库中植入数据
 在创建新应用程序时，可能需要在表中植入数据。  这可以在表定义 JavaScript 文件中实现，如下所示：
 
     var azureMobileApps = require('azure-mobile-apps');
@@ -581,7 +582,7 @@ Azure 移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScr
 
 建议显式调用 `tables.initialize()` 方法，在服务开始运行时创建表。
 
-### <a name="a-nameswaggerahow-to-enable-swagger-support"></a><a name="Swagger"></a>如何启用 Swagger 支持
+### <a name="Swagger"></a>如何启用 Swagger 支持
 Azure App Service 移动应用随附内置的 [Swagger] 支持。  若要启用 Swagger 支持，请先安装 swagger-ui 作为依赖项：
 
     npm install --save swagger-ui
@@ -601,7 +602,7 @@ swagger 终结点位于 http://*yoursite*.azurewebsites.net/swagger。  可以�
 ## <a name="a-namepushpush-notifications"></a><a name="push">推送通知
 移动应用与 Azure 通知中心集成，允许跨所有主要平台向数百万台设备发送有针对性的推送通知。 使用通知中心可将推送通知发送到 iOS、Android 和 Windows 设备。 若要详细了解通知中心的所有功能，请参阅[通知中心概述](../notification-hubs/notification-hubs-push-notification-overview.md)。
 
-### <a name="aa-namesend-pushahow-to-send-push-notifications"></a></a><a name="send-push"></a>如何发送推送通知
+### </a><a name="send-push"></a>如何发送推送通知
 以下代码演示如何使用推送对象向已注册的 iOS 设备发送广播推送通知：
 
     // Create an APNS payload.
@@ -633,7 +634,7 @@ swagger 终结点位于 http://*yoursite*.azurewebsites.net/swagger。  可以�
     }
 
 
-### <a name="a-namepush-userahow-to-send-push-notifications-to-an-authenticated-user-using-tags"></a><a name="push-user"></a>如何使用标记将推送通知发送到经过身份验证的用户
+### <a name="push-user"></a>如何使用标记将推送通知发送到经过身份验证的用户
 当经过身份验证的用户注册推送通知时，用户 ID 标记将自动添加到注册中。 使用此标记可以向特定用户注册的所有设备发送推送通知。 以下代码获取发出请求的用户的 SID，并将模板推送通知发送到该用户的每个设备注册：
 
     // Only do the push if configured
@@ -648,8 +649,8 @@ swagger 终结点位于 http://*yoursite*.azurewebsites.net/swagger。  可以�
 
 在注册来自经过身份验证客户端的推送通知时，请确保在尝试注册之前身份验证已完成。
 
-## <a name="a-namecustomapia-custom-apis"></a><a name="CustomAPI"></a>自定义 API
-### <a name="a-namehowto-customapi-basicahow-to-define-a-custom-api"></a><a name="howto-customapi-basic"></a>如何：定义自定义 API
+## <a name="CustomAPI"></a>自定义 API
+### <a name="howto-customapi-basic"></a>如何：定义自定义 API
 除了通过 /tables 终结点的数据访问 API 以外，Azure 移动应用还可提供自定义 API 覆盖范围。  自定义 API 以类似于表定义的方法定义，可访问所有相同的功能，包括身份验证。
 
 如果想要将应用服务身份验证与自定义 API 配合使用，必须先在 [Azure 门户]中配置应用服务身份验证。  有关在 Azure 应用服务中配置身份验证的详细信息，请参阅要使用的标识提供者所提供的配置指南：
@@ -696,7 +697,7 @@ swagger 终结点位于 http://*yoursite*.azurewebsites.net/swagger。  可以�
 
 每个参数是标准的 RESTful 谓词之一 - GET、POST、PATCH 或 DELETE。  此方法是发送所需输出的标准 [ExpressJS 中间件]函数。
 
-### <a name="a-namehowto-customapi-authahow-to-require-authentication-for-access-to-a-custom-api"></a><a name="howto-customapi-auth"></a>如何要求在访问自定义 API 时进行身份验证
+### <a name="howto-customapi-auth"></a>如何要求在访问自定义 API 时进行身份验证
 Azure 移动应用 SDK 对表终结点和自定义 API 使用相同的方式实现身份验证。  若要在前一部分开发的 API 中添加身份验证，请添加 **access** 属性：
 
     var api = {
@@ -725,7 +726,7 @@ Azure 移动应用 SDK 对表终结点和自定义 API 使用相同的方式实�
 
 对于要求身份验证的自定义 API，必须使用与表终结点相同的令牌。
 
-### <a name="a-namehowto-customapi-authahow-to-handle-large-file-uploads"></a><a name="howto-customapi-auth"></a>如何处理大型文件上载
+### <a name="howto-customapi-auth"></a>如何处理大型文件上载
 Azure 移动应用 SDK 使用[正文分析器中间件](https://github.com/expressjs/body-parser)来接受和解码提交件的正文内容。  可以将正文分析器预先配置为接受大型文件上载：
 
     var express = require('express'),
@@ -750,7 +751,7 @@ Azure 移动应用 SDK 使用[正文分析器中间件](https://github.com/expre
 
 该文件在传输之前是以 Base-64 编码的。  这会增加实际上传的大小（因此必须考虑该大小）。
 
-### <a name="a-namehowto-customapi-sqlahow-to-execute-custom-sql-statements"></a><a name="howto-customapi-sql"></a>如何执行自定义 SQL 语句
+### <a name="howto-customapi-sql"></a>如何执行自定义 SQL 语句
 Azure 移动应用 SDK 允许通过请求对象访问整个上下文，使用户能够轻松针对定义的数据提供程序执行参数化的 SQL 语句：
 
     var api = {
@@ -780,8 +781,8 @@ Azure 移动应用 SDK 允许通过请求对象访问整个上下文，使用户
     api.get.access = 'authenticated';
     module.exports = api;
 
-## <a name="a-namedebuggingadebugging-easy-tables-and-easy-apis"></a><a name="Debugging"></a>调试、简易表和简易 API
-### <a name="a-namehowto-diagnostic-logsahow-to-debug-diagnose-and-troubleshoot-azure-mobile-apps"></a><a name="howto-diagnostic-logs"></a>如何：对 Azure 移动应用进行调试、诊断和故障排除
+## <a name="Debugging"></a>调试、简易表和简易 API
+### <a name="howto-diagnostic-logs"></a>如何：对 Azure 移动应用进行调试、诊断和故障排除
 Azure 应用服务提供多种适用于 Node.js 应用程序的调试和故障排除方法。
 若要开始针对 Node.js 移动后端进行故障排除，请参阅以下文章：
 
@@ -791,7 +792,7 @@ Azure 应用服务提供多种适用于 Node.js 应用程序的调试和故障�
 
 Node.js 应用程序可访问各种诊断日志工具。  在内部，Azure 移动应用 Node.js SDK 使用 [Winston] 进行诊断日志记录。  启用调试模式，或者在 [Azure 门户]中将 **MS_DebugMode** 应用设置设为 true，即可自动启用日志记录。 生成的日志显示在 [Azure 门户]上的“诊断日志”中。
 
-### <a name="a-namein-portal-editingaa-namework-easy-tablesahow-to-work-with-easy-tables-in-the-azure-portal"></a><a name="in-portal-editing"></a><a name="work-easy-tables"></a>如何在 Azure 门户中使用简易表
+### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>如何在 Azure 门户中使用简易表
 使用门户中的简易表可以直接在门户中创建和使用表。 甚至可以使用应用服务编辑器来编辑表操作。
 
 在后端站点设置中单击“简易表”时，可以添加、修改或删除表。 还可以查看表中的数据。
@@ -808,7 +809,7 @@ Node.js 应用程序可访问各种诊断日志工具。  在内部，Azure 移�
 * **删除行** - 删除单个数据行。
 * **查看流式处理日志** - 连接到站点的流式处理日志服务。
 
-### <a name="a-namework-easy-apisahow-to-work-with-easy-apis-in-the-azure-portal"></a><a name="work-easy-apis"></a>如何在 Azure 门户中使用简易 API
+### <a name="work-easy-apis"></a>如何在 Azure 门户中使用简易 API
 使用门户中的简易 API 可以直接在门户中创建和使用自定义 API。 可以使用应用服务编辑器编辑 API 脚本。
 
 在后端站点设置中单击“简易 API”时，可以添加、修改或删除自定义 API 终结点。
@@ -817,7 +818,7 @@ Node.js 应用程序可访问各种诊断日志工具。  在内部，Azure 移�
 
 在门户中，可以更改给定 HTTP 操作的访问权限、在应用服务编辑器中编辑 API 脚本文件，或查看流式处理日志。
 
-### <a name="a-nameonline-editorahow-to-edit-code-in-the-app-service-editor"></a><a name="online-editor"></a>如何在应用服务编辑器中编辑代码
+### <a name="online-editor"></a>如何在应用服务编辑器中编辑代码
 Azure 门户允许在应用服务编辑器中编辑 Node.js 后端脚本文件，而无需将项目下载到本地计算机。 若要在在线编辑器中编辑脚本文件，请执行以下操作：
 
 1. 在移动应用后端边栏选项卡中，单击“所有设置”>“简易表”或“简易 API”，单击表或 API，然后单击“编辑脚本”。 脚本文件将在应用服务编辑器中打开。
@@ -842,7 +843,7 @@ Azure 门户允许在应用服务编辑器中编辑 Node.js 后端脚本文件�
 [Xamarin.Android 客户端快速入门]: app-service-mobile-xamarin-android-get-started.md
 [Xamarin.Forms 客户端快速入门]: app-service-mobile-xamarin-forms-get-started.md
 [Windows 应用商店客户端快速入门]: app-service-mobile-windows-store-dotnet-get-started.md
-[HTML/Javascript 客户端快速入门]: app-service-html-get-started.md
+[HTML/Javascript Client QuickStart]: app-service-html-get-started.md
 [脱机数据同步]: app-service-mobile-offline-data-sync.md
 [如何配置 Azure Active Directory 身份验证]: app-service-mobile-how-to-configure-active-directory-authentication.md
 [如何配置 Facebook 身份验证]: app-service-mobile-how-to-configure-facebook-authentication.md
@@ -855,7 +856,7 @@ Azure 门户允许在应用服务编辑器中编辑 Node.js 后端脚本文件�
 [在 Visual Studio 中对 Azure App Service 进行故障排除]: ../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md
 [指定 Node 版本]: ../nodejs-specify-node-version-azure-apps.md
 [使用 Node 模块]: ../nodejs-use-node-modules-azure-apps.md
-[创建新的 Azure App Service]: ../app-service-web/
+[Create a new Azure App Service]: ../app-service-web/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
 [Express]: http://expressjs.com/
 [Swagger]: http://swagger.io/
@@ -866,16 +867,11 @@ Azure 门户允许在应用服务编辑器中编辑 Node.js 后端脚本文件�
 [GitHub 上的 basicapp 示例]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
 [GitHub 上的 todo 示例]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
 [GitHub 上的示例目录]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
-[GitHub 上的 static-schema 示例]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
+[static-schema sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
 [QueryJS]: https://github.com/Azure/queryjs
 [用于 Visual Studio 的 Node.js 工具 1.1]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [mssql Node.js 包]: https://www.npmjs.com/package/mssql
 [Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
 [ExpressJS 中间件]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

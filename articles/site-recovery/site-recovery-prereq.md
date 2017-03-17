@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 12/11/2016
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 080dce21c2c803fc05c945cdadb1edd55bd7fe1c
-ms.openlocfilehash: a8e374c247be49d4b1390fb4061b4c9b1311f58a
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b20d1a20119e8bffa3ece7105c38b3ee51c942d5
+ms.lasthandoff: 03/15/2017
 
 ---
 
@@ -104,6 +104,20 @@ Azure Site Recovery 服务可协调本地物理服务器和虚拟机到云 (Azur
 | --- | --- |
 | **Virtual Machine Manager** |  建议在主站点和辅助站点中各部署一个 Virtual Machine Manager 服务器。<br/><br/> 可以[在单个 VMM 服务器上的云之间复制](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)。 为此，至少需要在 Virtual Machine Manager 服务器上配置两个云。<br/><br/> Virtual Machine Manager 服务器应至少运行具有最新更新的 System Center 2012 SP1。<br/><br/> 每个 Virtual Machine Manager 服务器上必须至少有一个或多个云。 必须为所有云设置 Hyper-V 容量配置文件。 <br/><br/>云必须包含一个或多个 Virtual Machine Manager 主机组。 有关设置 Virtual Machine Manager 云的详细信息，请参阅[准备 Azure Site Recovery 部署](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)。 |
 | **Hyper-V** | Hyper-V 服务器必须至少运行具有 Hyper-V 角色且安装了最新更新的 Windows Server 2012。<br/><br/> Hyper-V 服务器应包含一个或多个 VM。<br/><br/>  Hyper-V 主机服务器应位于主要和辅助 VMM 云中的主机组内。<br/><br/> 如果在 Windows Server 2012 R2 的群集中运行 Hyper-V，建议安装[更新 2961977](https://support.microsoft.com/kb/2961977)。<br/><br/> 如果在 Windows Server 2012 的群集中运行 Hyper-V，并且具有基于静态 IP 地址的群集，则不会自动创建群集代理。 必须手动配置群集代理。 有关群集代理的详细信息，请参阅 [Configure replica broker role cluster to cluster replication](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)（将副本代理角色群集配置为群集复制）。 |
-
 | **提供程序** | 在 Site Recovery 部署期间，在 Virtual Machine Manager 服务器上安装 Azure Site Recovery 提供程序。 提供程序通过 HTTPS 443 与站点恢复通信，以协调复制。 数据复制是通过 LAN 或 VPN 连接在主要和辅助 Hyper-V 服务器之间发生的。<br/><br/> 在 Virtual Machine Manager 服务器上运行的提供程序需要访问以下 URL：<br/><br/>[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)] <br/><br/>提供程序必须允许从 Virtual Machine Manager 服务器到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)的防火墙通信，并允许 HTTPS (443) 协议。 |
+
+
+## <a name="url-access"></a>URL 访问
+应该可从 VMware、VMM 和 Hyper-V 主机服务器访问以下 URL。
+
+|**URL** | **VMM 到 VMM** | **VMM 到 Azure** | **Hyper-V 到 Azure** | **VMware 到 Azure** |
+|--- | --- | --- | --- | --- |
+|``*.accesscontrol.windows.net`` | ALLOW | 允许 | 允许 | ALLOW |
+|``*.backup.windowsazure.com`` | 不是必需 | 允许 | 允许 | 允许 |
+|``*.hypervrecoverymanager.windowsazure.com`` | 允许 | 允许 | 允许 | 允许 |
+|``*.store.core.windows.net`` | 允许 | 允许 | 允许 | ALLOW |
+|``*.blob.core.windows.net`` | 不是必需 | 允许 | 允许 | ALLOW |
+|``https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi`` | 不是必需 | 不是必需 | 不是必需 | 允许 SQL 下载 |
+|``time.windows.com`` | ALLOW | 允许 | 允许 | 允许|
+|``time.nist.gov`` | 允许 | 允许 | 允许 | ALLOW |
 

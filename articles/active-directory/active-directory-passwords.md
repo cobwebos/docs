@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
-ms.openlocfilehash: 760c248c92948af2c7e9ae54b0c42f396f0376f6
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 68334eab580e7117cf0b18f84ba56ed699fea12e
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="azure-active-directory-password-reset-for-it-administrators"></a>Azure Active Directory 中针对 IT 管理员的密码重置
 > [!IMPORTANT]
-> 你是因为想要重置 Azure 或 O365 密码而来到这里吗？  如果是这样，请[跳到此部分](#users-how-to-manage-your-own-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 >
 >
 
@@ -118,8 +118,8 @@ Azure AD 密码重置根据用户使用的订阅提供 3 个级别：
 | 主题 |  |
 | --- | --- |
 | 可以在何处查看密码重置报告？ |[密码管理报告概述](active-directory-passwords-get-insights.md#overview-of-password-management-reports) |
-| 可以在何处查看用户在我的组织中使用密码重置的方式？ |[查看密码重置活动](active-directory-passwords-get-insights.md#view-password-reset-activity) |
-| 可以在何处查看有多少用户注册及其注册的项目？ |[查看密码重置注册活动](active-directory-passwords-get-insights.md#view-password-reset-registration-activity) |
+| 可以在何处查看用户在我的组织中使用密码重置的方式？ |[查看密码重置活动](active-directory-passwords-get-insights.md#how-to-view-password-management-reports) |
+| 可以在何处查看有多少用户注册及其注册的项目？ |[查看密码重置注册活动](active-directory-passwords-get-insights.md#how-to-view-password-management-reports) |
 | 如何从 API 获取密码重置报告？ |[创建 Azure AD 应用程序以访问报告 API](active-directory-reporting-api-getting-started.md) |
 | 通过 API 可获取哪种密码重置报告信息？ |[报告 API 提供的密码重置和注册事件](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview#SsprActivityEvent) |
 
@@ -213,7 +213,7 @@ Azure AD 密码重置根据用户使用的订阅提供 3 个级别：
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置和更改云密码或本地密码
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为

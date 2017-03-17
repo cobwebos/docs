@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: af5a8b4dd87d041282d6a857a505ad6c167caac0
-ms.openlocfilehash: ab1879cc1ef998f889a86ea7e2d4e7143e6c1cc4
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: a439f421d726f58b2d21fb4a0e883e16db719364
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -39,7 +40,6 @@ Azure AD Connect 的同步功能有两个组件：
 
 | DirSyncFeature | 注释 |
 | --- | --- |
-| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |如果某些属性是另一个对象的副本而不会在导出期间导致整个对象失败，则允许隔离该属性。 |
 | [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |除了允许对象加入主 SMTP 地址，还允许对象加入 userPrincipalName。 |
 | [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |允许同步引擎更新托管/许可（非联合）用户的 userPrincipalName 属性。 |
 
@@ -56,12 +56,13 @@ Azure AD Connect 的同步功能有两个组件：
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect：启用设备写回](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect 同步：目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md) |
+| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |如果某些属性是另一个对象的副本而不会在导出期间导致整个对象失败，则允许隔离该属性。 |
 | PasswordSync |[使用 Azure AD Connect 同步实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md) |
 | UnifiedGroupWriteback |[预览：组写回](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |目前不支持。 |
 
 ## <a name="duplicate-attribute-resiliency"></a>重复属性复原
-将属性“隔离”并分配临时值，而不是使预配包含重复 UPNs/proxyAddresses 的对象失败。 解决冲突时，自动将临时 UPN 更改为适当的值。 可以单独为 UPN 和 proxyAddress 启用此行为。 有关详细信息，请参阅[标识同步和重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)。
+将属性“隔离”并分配临时值，而不是使预配包含重复 UPNs/proxyAddresses 的对象失败。 解决冲突时，自动将临时 UPN 更改为适当的值。 有关详细信息，请参阅[标识同步和重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)。
 
 ## <a name="userprincipalname-soft-match"></a>UserPrincipalName 软匹配
 启用此功能后，除了始终启用的[主 SMTP 地址](https://support.microsoft.com/kb/2641663)，将为 UPN 启用软匹配。 软匹配功能用于将 Azure AD 中的现有云用户与本地用户进行匹配。
@@ -107,10 +108,5 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 ## <a name="see-also"></a>另请参阅
 * [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

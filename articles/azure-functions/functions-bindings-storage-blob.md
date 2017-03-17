@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/11/2017
-ms.author: chrande
+ms.date: 03/06/2017
+ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: c2c9d84bc6699f4487e82b117d27b19f66313018
-ms.openlocfilehash: cde63b21e4bac8f635ef9125101735a07deb1bc2
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 1c071390fd6cd9bb5889cb225696b7782fe2bd6b
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -238,7 +238,7 @@ Azure 存储 blob 输入绑定可让用户在函数中使用存储容器中的 b
 blob 可以反序列化为以下任何类型：
 
 * 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 适用于 JSON 序列化的 blob 数据。
-  如果声明自定义输入类型（如 `FooType`），Azure Functions 会尝试将 JSON 数据反序列化为指定类型。
+  如果声明自定义输入类型（如 `InputType`），Azure Functions 会尝试将 JSON 数据反序列化为指定类型。
 * 字符串 - 适用于文本 blob 数据。
 
 在 C# 函数中，还可绑定到以下任意类型，Functions 运行时将尝试使用此类型反序列化此 blob 数据：
@@ -350,7 +350,7 @@ module.exports = function(context) {
 可使用以下任意类型写入输出 blob：
 
 * 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 有助于 JSON 序列化。
-  如果声明自定义输出类型（例如 `out FooType paramName`），Azure Functions 将尝试将对象序列化为 JSON。 如果函数退出时输出参数为 null，则 Functions 运行时将创建一个 blob 作为 null 对象。
+  如果声明自定义输出类型（例如 `out OutputType paramName`），Azure Functions 将尝试将对象序列化为 JSON。 如果函数退出时输出参数为 null，则 Functions 运行时将创建一个 blob 作为 null 对象。
 * 字符串 - (`out string paramName`) 适用于文本 blob 数据。 Functions 运行时仅在函数退出时字符串参数为非 null 才创建 blob。
 
 在 C# 函数中，还可输出到以下任意类型：
@@ -361,8 +361,6 @@ module.exports = function(context) {
 * `ICloudBlob`
 * `CloudBlockBlob` 
 * `CloudPageBlob` 
-* `ICollector<T>`（要输出多个 blob）
-* `IAsyncCollector<T>`（异步版`ICollector<T>`）
 
 <a name="outputsample"></a>
 

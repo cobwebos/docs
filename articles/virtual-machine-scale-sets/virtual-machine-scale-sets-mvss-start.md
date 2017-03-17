@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 2/14/2017
 ms.author: negat
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 65a400b63688c50fd97c34a5aa5dadc2f5dd286c
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: eee63d76941f327304348262f00afafe8413cb6b
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -189,6 +189,4 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
 
 ## <a name="next-steps"></a>后续步骤
 
-可以按照[此处的文档](../azure-resource-manager/resource-group-template-deploy.md)部署上述模板。
-
-有关规模集的更多常规信息，可以参考[规模集概述页](./virtual-machine-scale-sets-overview.md)
+[!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
