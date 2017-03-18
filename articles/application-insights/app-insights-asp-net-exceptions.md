@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
 ms.openlocfilehash: c4a20fe310d9a70bb3a954bd936daf6f3d432db9
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -85,7 +86,7 @@ ms.openlocfilehash: c4a20fe310d9a70bb3a954bd936daf6f3d432db9
 * [TrackException()](#exceptions) 可发送堆栈跟踪。 [有关异常的详细信息](#exceptions)。
 * 如果已使用 Log4Net 或 NLog 等记录框架，可以[捕获这些日志](app-insights-asp-net-trace-logs.md)并在诊断搜索中查看它们以及请求和异常数据。
 
-若要查看这些事件，请打开“搜索”、打开“筛选器”，然后选择“自定义事件”、“跟踪”或“异常”。[](app-insights-diagnostic-search.md)
+若要查看这些事件，请打开 [搜索](app-insights-diagnostic-search.md)、打开“筛选器”，然后选择“自定义事件”、“跟踪”或“异常”。
 
 ![深入了解](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
 
@@ -103,7 +104,7 @@ ms.openlocfilehash: c4a20fe310d9a70bb3a954bd936daf6f3d432db9
 
 ![深入了解](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
-## <a name="a-nameexceptionsa-capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>捕获异常和相关的诊断数据
+## <a name="exceptions"></a>捕获异常和相关的诊断数据
 首先，你不会在门户中看到在你的应用中导致失败的所有异常。 将显示所有浏览器异常（如果在网页中使用 [JavaScript SDK](app-insights-javascript.md)）， 但大多数服务器异常由 IIS 导致，你必须编写几行代码才能看到它们。
 
 你可以：
@@ -441,9 +442,4 @@ VB
 * [监视 REST、SQL 以及对其他依赖项的调用](app-insights-asp-net-dependencies.md)
 * [监视器页面加载时间、浏览器异常和 AJAX 调用](app-insights-javascript.md)
 * [监视性能计数器](app-insights-performance-counters.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
