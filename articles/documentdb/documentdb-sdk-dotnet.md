@@ -1,5 +1,5 @@
 ---
-title: ".NET API 和 SDK 资源 - Azure DocumentDB | Microsoft Docs"
+title: "Azure DocumentDB .NET SDK 和资源 | Microsoft 文档"
 description: "了解有关 .NET API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB.NET SDK 各版本之间的更改。"
 services: documentdb
 documentationcenter: .net
@@ -14,14 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e37416268802b849f6be350a8d7e0e6b284e830b
-ms.openlocfilehash: c92a54c40c329e519832f2f8de71aa5d8e15a090
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: a3aa00bce54ad9d2aa0236cc211affaa537a36e5
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="documentdb-apis-and-sdks"></a>DocumentDB API 和 SDK
+# <a name="documentdb-net-sdk-download-and-release-notes"></a>DocumentDB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
@@ -34,7 +35,6 @@ ms.lasthandoff: 02/22/2017
 > 
 > 
 
-## <a name="documentdb-net-api-and-sdk"></a>DocumentDB .NET API 和 SDK
 <table>
 
 <tr><td>**SDK 下载**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
