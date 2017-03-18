@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 translationtype: Human Translation
-ms.sourcegitcommit: 9e62ed235d872738bc1a99ad33d977745c8b2d08
-ms.openlocfilehash: 417ea0aa6315683f72239fafed0caad5c71ad2d6
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 10f07b5eb649739ff1288ebb2703186fd75930cc
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -163,7 +163,7 @@ SendGrid 通过使用邮件设置和跟踪设置提供其他电子邮件功能�
 
 以下示例演示了脚注和单击跟踪筛选器：
 
-### <a name="footer"></a>脚注
+### <a name="footer-settings"></a>页脚设置
     msg.SetFooterSetting(
                          true,
                          "Some Footer HTML",

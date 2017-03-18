@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/24/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 691e2e9156a825e64890f035b23cb2526d502107
-ms.openlocfilehash: c7d8cea9a15ec79356c89f628ef9d8e8ccbaaec3
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 41b75cf3059cd3758f1bce149ad8fcad4e5644ac
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -27,15 +28,10 @@ ms.openlocfilehash: c7d8cea9a15ec79356c89f628ef9d8e8ccbaaec3
 
 有关 DocumentDB 中全局数据库复制工作原理的信息，请参阅[使用 DocumentDB 全局分发数据](documentdb-distribute-data-globally.md)。 有关以编程方式执行全局数据库复制的信息，请参阅[使用多区域 DocumentDB 帐户进行开发](documentdb-developing-with-multiple-regions.md)。
 
-> [!NOTE]
-> DocumentDB 数据库全局分发功能已正式推出，所有新建的 DocumentDB 帐户将自动启用该功能。 我们正在努力为所有现有帐户启用全局分发，但在此之前，如果要为帐户启用全局分发，请[与支持部门联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，我们将会帮助你启用。
-> 
-> 
+## <a id="addregion"></a>添加全局数据库区域
+DocumentDB 已在大部分 [Azure 区域][azureregions]中推出。 为数据库帐户选择默认的一致性级别后，可以关联一个或多个区域（具体取决于所选的默认一致性级别和全局分发需求）。
 
-## <a name="a-idaddregionaadd-global-database-regions"></a><a id="addregion"></a>添加全局数据库区域
-DocumentDB 已在大部分 [Azure 区域][azureregions]中可用。 为数据库帐户选择默认的一致性级别后，可以关联一个或多个区域（具体取决于所选的默认一致性级别和全局分发需求）。
-
-1. 在 [Azure 门户](https://portal.azure.com/)的跳转栏中，单击“NoSQL (DocumentDB)”。
+1. 在 [Azure 门户](https://portal.azure.com/)的左侧栏中，单击“NoSQL (DocumentDB)”。
 2. 在“NoSQL (DocumentDB)”边栏选项卡中，选择要修改的数据库帐户。
 3. 在“帐户”边栏选项卡上的菜单中单击“全局复制数据”。
 4. 在“全局复制数据”边栏选项卡中，选择要添加或删除的区域，然后单击“保存”。 添加区域会产生费用，有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/documentdb/)或[使用 DocumentDB 全局分发数据](documentdb-distribute-data-globally.md)。
@@ -45,7 +41,7 @@ DocumentDB 已在大部分 [Azure 区域][azureregions]中可用。 为数据库
 添加第二个区域后，在门户中的“本地复制数据”边栏选项卡中启用“手动故障转移”选项。 此选项可用于测试故障转移过程。 添加第三个区域后，在同一边栏选项卡上启用“故障转移优先级”选项，以便更改读取的故障转移顺序。  
 
 ### <a name="selecting-global-database-regions"></a>选择全局数据库区域
-在配置两个或更多个区域时，建议按照[业务连续性和灾难恢复 (BCDR)：Azure 配对区域][bcdr] 一文中所述，根据区域对选择区域。
+在配置两个或更多个区域时，建议按照[业务连续性和灾难恢复 (BCDR)：Azure 配对区域][bcdr]一文中所述，根据区域对选择区域。
 
 具体而言，在配置多个区域时，请确保从每个配对区域列中选择相同数目的区域（使用 +/-1 可更改为奇数/偶数）。 例如，如果你要部署到四个美国区域，请从左列中选择两个美国区域，再从右列中选择两个美国区域。 因此，下面是适当的设置：美国西部、美国东部、美国中北部和美国中南部。
 
@@ -65,7 +61,7 @@ While all regions associated with your DocumentDB database account can serve rea
     ![Change the write region by reordering the region list under DocumentDB Account > Settings > Change Write Regions][3]
 -->
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>后续步骤
+## <a id="next"></a>后续步骤
 阅读 [DocumentDB 中的一致性级别](documentdb-consistency-levels.md)，了解如何管理全局复制帐户的一致性。
 
 有关 DocumentDB 中全局数据库复制工作原理的信息，请参阅[使用 DocumentDB 全局分发数据](documentdb-distribute-data-globally.md)。 有关以编程方式复制多个区域中数据的信息，请参阅[使用多区域 DocumentDB 帐户进行开发](documentdb-developing-with-multiple-regions.md)。
@@ -79,10 +75,5 @@ While all regions associated with your DocumentDB database account can serve rea
 [bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
 [azureregions]: https://azure.microsoft.com/en-us/regions/#services
-[服务]: https://azure.microsoft.com/en-us/pricing/details/documentdb/
-
-
-
-<!--HONumber=Nov16_HO4-->
-
+[offers]: https://azure.microsoft.com/en-us/pricing/details/documentdb/
 

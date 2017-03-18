@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/24/2017
+ms.date: 03/07/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: dc9f9c39a8eb644229887f76b5c441d4211af059
-ms.openlocfilehash: 6bf9136e1d95d4abd98010a1debbe875dc152e3f
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 017e6942bc49717f98836a2465824c0a42ff8a81
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -58,22 +58,21 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 2. 在 **App** 类中添加以下 **MessageCallback** 类作为嵌套类。 设备从 IoT 中心接收消息时，将调用 **execute** 方法。 在本示例中，设备始终通知 IoT 中心它已完成消息：
    
     ```
-    private static class MessageCallback implements
-    com.microsoft.azure.iothub.MessageCallback {
+    private static class AppMessageCallback implements MessageCallback {
       public IotHubMessageResult execute(Message msg, Object context) {
         System.out.println("Received message from hub: "
           + new String(msg.getBytes(), Message.DEFAULT_IOTHUB_MESSAGE_CHARSET));
-   
+    
         return IotHubMessageResult.COMPLETE;
       }
     }
     ```
-3. 修改 **main** 方法，以创建 **MessageCallback** 实例，并在打开客户端之前调用 **setMessageCallback**，如下所示：
+3. 修改 **main** 方法，以创建 **AppMessageCallback** 实例，并在打开客户端之前调用 **setMessageCallback** 方法，如下所示：
    
     ```
     client = new DeviceClient(connString, protocol);
    
-    MessageCallback callback = new MessageCallback();
+    MessageCallback callback = new AppMessageCallback();
     client.setMessageCallback(callback, null);
     client.open();
     ```
@@ -96,9 +95,9 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    
     ```
     <dependency>
-      <groupId>com.microsoft.azure.iothub-java-client</groupId>
-      <artifactId>iothub-java-service-client</artifactId>
-      <version>1.0.11</version>
+      <groupId>com.microsoft.azure.sdk.iot</groupId>
+      <artifactId>iot-service-client</artifactId>
+      <version>1.0.14</version>
     </dependency>
     ```
 4. 保存并关闭 pom.xml 文件。
@@ -106,7 +105,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 6. 在该文件中添加以下 **import** 语句：
    
     ```
-    import com.microsoft.azure.iot.service.sdk.*;
+    import com.microsoft.azure.sdk.iot.service.sdk.*;
     import java.io.IOException;
     import java.net.URISyntaxException;
     ```

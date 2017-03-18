@@ -16,13 +16,19 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: fd3ebcaa82952815ad31decd1b44cf6d41365d2f
-ms.lasthandoff: 01/14/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: f46965946905bc29a9058904ba62465aba1fa1bf
+ms.lasthandoff: 03/08/2017
 
 
 ---
 # <a name="import-data-to-documentdb-with-the-database-migration-tool"></a>使用数据库迁移工具将数据导入到 DocumentDB 
+> [!div class="op_single_selector"]
+> * [导入到 DocumentDB](documentdb-import-data.md)
+> * [导入到 MongoDB 的 API](documentdb-mongodb-migrate.md)
+>
+>
+
 本文介绍如何使用官方开放源代码 DocumentDB 数据迁移工具将数据从各种源（包括 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 和 DocumentDB集合）导入到 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)。
 
 如果要将数据导入具有 MongoDB 支持的 DocumentDB 帐户，请按照[将数据迁移到具有 MongoDB 协议支持的 DocumentDB](documentdb-mongodb-migrate.md) 中的说明操作。
@@ -33,12 +39,12 @@ ms.lasthandoff: 01/14/2017
 * 如何将数据从 Azure 表存储、Amazon DynamoDB 和 HBase 导入到 DocumentDB？
 * 如何在 DocumentDB 集合之间迁移数据？
 
-## <a name="a-idprerequisitesaprerequisites"></a><a id="Prerequisites"></a>先决条件
+## <a id="Prerequisites"></a>先决条件
 在按照本文中的说明操作之前，请确保已安装下列项：
 
 * [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) 或更高版本。
 
-## <a name="a-idoverviewlaoverview-of-the-documentdb-data-migration-tool"></a><a id="Overviewl"></a>DocumentDB 数据迁移工具概述
+## <a id="Overviewl"></a>DocumentDB 数据迁移工具概述
 DocumentDB 数据迁移工具是一个开源解决方案，它将数据从多个源导入到 DocumentDB，包括︰
 
 * JSON 文件
@@ -52,13 +58,13 @@ DocumentDB 数据迁移工具是一个开源解决方案，它将数据从多个
 
 导入工具将包括图形用户界面 (dtui.exe)，还可从命令行 (dt.exe) 中驱动。 实际上，有一个选项可以在通过用户界面设置导入后输出关联的命令。 可以转换表格源数据（例如 SQL Server 或 CSV 文件），以便可以在导入过程中创建层次结构关系（子文档）。 继续阅读，以了解有关源选项、用于从每个源导入的示例命令行以及目标选项的详细信息，并查看导入结果。
 
-## <a name="a-idinstallainstalling-the-documentdb-data-migration-tool"></a><a id="Install"></a>DocumentDB 数据迁移工具的安装
+## <a id="Install"></a>DocumentDB 数据迁移工具的安装
 迁移工具源代码可从[此存储库](https://github.com/azure/azure-documentdb-datamigrationtool)中的 GitHub 上下载，编译版本可从 [Microsoft 下载中心](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)获取。 你可以编译解决方案，或者只下载并将编译版本解压缩到所选的目录中。 然后运行以下任一文件：
 
 * **Dtui.exe**：该工具的图形界面版本
 * **Dt.exe**：该工具的命令行版本
 
-## <a name="a-idjsonaimport-json-files"></a><a id="JSON"></a>导入 JSON 文件
+## <a id="JSON"></a>导入 JSON 文件
 借助 JSON 文件源导入程序选项，可以导入一个或多个只包含单个文档的 JSON 文件或者每个都包含一组 JSON 文档的 JSON 文件。 添加包含 JSON 文件的文件夹以供导入时，可以选择递归搜索子文件夹中的文件。
 
 ![JSON 文件源选项的屏幕截图 - 数据库迁移工具](./media/documentdb-import-data/jsonsource.png)
@@ -80,7 +86,7 @@ DocumentDB 数据迁移工具是一个开源解决方案，它将数据从多个
     #Import a single JSON file and partition the data across 4 collections
     dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
 
-## <a name="a-idmongodbaimport-from-mongodb"></a><a id="MongoDB"></a>从 MongoDB 中导入
+## <a id="MongoDB"></a>从 MongoDB 中导入
 
 > [!IMPORTANT]
 > 如果要导入到具有 MongoDB 支持的 DocumentDB 帐户，请按照这些[说明](documentdb-mongodb-migrate.md)操作。
@@ -110,7 +116,7 @@ DocumentDB 数据迁移工具是一个开源解决方案，它将数据从多个
     #Import documents from a MongoDB collection which match the query and exclude the loc field
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
 
-## <a name="a-idmongodbexportaimport-mongodb-export-files"></a><a id="MongoDBExport"></a>导入 MongoDB 导出文件
+## <a id="MongoDBExport"></a>导入 MongoDB 导出文件
 
 > [!IMPORTANT]
 > 如果要导入到具有 MongoDB 支持的 DocumentDB 帐户，请按照这些[说明](documentdb-mongodb-migrate.md)操作。
@@ -127,7 +133,7 @@ DocumentDB 数据迁移工具是一个开源解决方案，它将数据从多个
 
     dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:employees /t.IdField:_id /t.Dates:Epoch /t.CollectionThroughput:2500
 
-## <a name="a-idsqlaimport-from-sql-server"></a><a id="SQL"></a>从 SQL Server 中导入
+## <a id="SQL"></a>从 SQL Server 中导入
 借助 SQL 源导入程序选项，可以从单个 SQL Server 数据库中导入，并且选择筛选要使用查询来导入的记录。 此外，可以通过指定嵌套分隔符（稍后进行详细介绍）来修改文档结构。  
 
 ![SQL 源选项的屏幕截图 - 数据库迁移工具](./media/documentdb-import-data/sqlexportsource.png)
@@ -159,7 +165,7 @@ select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.Ad
     #Import records from sql which match a query and create hierarchical relationships
     dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionThroughput:2500
 
-## <a name="a-idcsvaimport-csv-files---convert-csv-to-json"></a><a id="CSV"></a>导入 CSV 文件 - 将 CSV 转换为 JSON
+## <a id="CSV"></a>导入 CSV 文件 - 将 CSV 转换为 JSON
 CSV 文件源导入程序选项可用于导入一个或多个 CSV 文件。 添加包含 CSV 文件的文件夹以供导入时，可以选择递归搜索子文件夹中的文件。
 
 ![CSV 源选项的屏幕截图 - CSV 到 JSON](media/documentdb-import-data/csvsource.png)
@@ -183,7 +189,7 @@ CSV 文件源导入程序选项可用于导入一个或多个 CSV 文件。 添�
 
     dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionThroughput:2500
 
-## <a name="a-idazuretablesourceaimport-from-azure-table-storage"></a><a id="AzureTableSource"></a>从 Azure 表存储中导入
+## <a id="AzureTableSource"></a>从 Azure 表存储中导入
 借助 Azure 表存储源导入程序选项，可以从单个 Azure 表存储表中导入，并且选择筛选要导入的表实体。  
 
 ![Azure 表存储源选项的屏幕截图](./media/documentdb-import-data/azuretablesource.png)
@@ -212,7 +218,7 @@ Azure 表存储源导入程序选项具有下列附加选项︰
 
     dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;AccountName=<Account Name>;AccountKey=<Account Key>" /s.Table:metrics /s.InternalFields:All /s.Filter:"PartitionKey eq 'Partition1' and RowKey gt '00001'" /s.Projection:ObjectCount;ObjectSize  /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:metrics /t.CollectionThroughput:2500
 
-## <a name="a-iddynamodbsourceaimport-from-amazon-dynamodb"></a><a id="DynamoDBSource"></a>从 Amazon DynamoDB 中导入
+## <a id="DynamoDBSource"></a>从 Amazon DynamoDB 中导入
 借助 Amazon DynamoDB 源导入程序选项，可以从单个 Amazon DynamoDB 表中导入，并且可以选择筛选要导入的实体。 提供多个模板，以便尽可能简化导入设置。
 
 ![Amazon DynamoDB 源选项的屏幕截图 - 数据库迁移工具](./media/documentdb-import-data/dynamodbsource1.png)
@@ -232,7 +238,7 @@ Amazon DynamoDB 连接字符串的格式为：
 
     dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
 
-## <a name="a-idblobimportaimport-files-from-azure-blob-storage"></a><a id="BlobImport"></a>从 Azure Blob 存储中导入文件
+## <a id="BlobImport"></a>从 Azure Blob 存储中导入文件
 借助 JSON 文件、MongoDB 导出文件和 CSV 文件源导入程序选项，可以从 Azure Blob 存储中导入一个或多个文件。 在指定 Blob 容器 URL 和帐户密钥后，只需提供正则表达式来选择要导入的文件。
 
 ![Blob 文件源选项的屏幕截图](./media/documentdb-import-data/blobsource.png)
@@ -241,7 +247,7 @@ Amazon DynamoDB 连接字符串的格式为：
 
     dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:doctest
 
-## <a name="a-iddocumentdbsourceaimport-from-documentdb"></a><a id="DocumentDBSource"></a>从 DocumentDB 中导入
+## <a id="DocumentDBSource"></a>从 DocumentDB 中导入
 借助 DocumentDB 源导入程序选项，可以从一个或多个 DocumentDB 集合中导入数据，并且选择使用查询来筛选文档。  
 
 ![DocumentDB 源选项的屏幕截图](./media/documentdb-import-data/documentdbsource.png)
@@ -296,7 +302,7 @@ DocumentDB 源导入程序选项具有下列高级选项︰
 > 
 > 
 
-## <a name="a-idhbasesourceaimport-from-hbase"></a><a id="HBaseSource"></a>从 HBase 中导入
+## <a id="HBaseSource"></a>从 HBase 中导入
 借助 HBase 源导入程序选项，可以从 HBase 表中导入数据并且选择筛选数据。 提供多个模板，以便尽可能简化导入设置。
 
 ![HBase 源选项的屏幕截图](./media/documentdb-import-data/hbasesource1.png)
@@ -316,7 +322,7 @@ HBase Stargate 连接字符串的格式为︰
 
     dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:hbaseimport
 
-## <a name="a-iddocumentdbbulktargetaimport-to-documentdb-bulk-import"></a><a id="DocumentDBBulkTarget"></a>导入到 DocumentDB（批量导入）
+## <a id="DocumentDBBulkTarget"></a>导入到 DocumentDB（批量导入）
 借助 DocumentDB 批量导入程序，可以使用 DocumentDB 存储的过程从所有可用的源选项中导入，以提高效率。 该工具支持导入到一个单分区的 DocumentDB 集合以及分区导入，从而可跨多个单分区 DocumentDB 集合对数据进行分区。 有关数据分区的详细信息，请参阅 [Azure DocumentDB 中的分区和扩展](documentdb-partition-data.md)。 该工具将创建、执行，然后删除目标集合中存储的过程。  
 
 ![DocumentDB 批量选项的屏幕截图](./media/documentdb-import-data/documentdbbulk.png)
@@ -380,7 +386,7 @@ DocumentDB 批量导入程序具有下列高级附加选项︰
 > 
 > 
 
-## <a name="a-iddocumentdbseqtargetaimport-to-documentdb-sequential-record-import"></a><a id="DocumentDBSeqTarget"></a>导入到 DocumentDB（顺序记录导入）
+## <a id="DocumentDBSeqTarget"></a>导入到 DocumentDB（顺序记录导入）
 借助 DocumentDB 顺序记录导入程序，可以从任何可用的源选项中逐条导入记录。 如果要导入到已达到存储过程配额的现有集合中，可以选择此选项。 该工具支持导入到单个（单分区和多分区）DocumentDB 集合以及分片导入，从而可跨多个单分区和/或多分区 DocumentDB 集合对数据进行分区。 有关数据分区的详细信息，请参阅 [Azure DocumentDB 中的分区和扩展](documentdb-partition-data.md)。
 
 ![DocumentDB 顺序记录导入选项的屏幕截图](./media/documentdb-import-data/documentdbsequential.png)
@@ -439,7 +445,7 @@ DocumentDB - 顺序记录导入程序具有下列高级附加选项︰
 > 
 > 
 
-## <a name="a-idindexingpolicyaspecify-an-indexing-policy-when-creating-documentdb-collections"></a><a id="IndexingPolicy"></a>在创建 DocumentDB 集合时指定索引策略
+## <a id="IndexingPolicy"></a>在创建 DocumentDB 集合时指定索引策略
 当允许迁移工具在导入过程中创建集合时，可以指定集合的索引策略。 在 DocumentDB 批量导入和 DocumentDB 顺序记录选项的高级选项部分，导航到“索引策略”部分。
 
 ![DocumentDB 索引策略高级选项的屏幕截图](./media/documentdb-import-data/indexingpolicy1.png)

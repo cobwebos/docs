@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c93d0d47721546f25e72d97f4e019886ef801eba
-ms.openlocfilehash: a7ffc5e2547ca7ac52a56ec82b493b14acd7aaaa
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 0644efd8753c33c0404b45f567759c0be666bcef
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -42,10 +42,10 @@ ms.lasthandoff: 02/15/2017
 * **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可以在 [Azure 门户][lnk-management-portal]中定义策略，或使用 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis] 以编程方式定义策略。 新建的 IoT 中心有以下默认策略：
   
   * **iothubowner**：包含所有权限的策略。
-  * **service**：包含 ServiceConnect 权限的策略。
-  * **device**：包含 DeviceConnect 权限的策略。
-  * **registryRead**：包含 RegistryRead 权限的策略。
-  * **registryReadWrite**：包含 RegistryRead 和 RegistryWrite 权限的策略。
+  * **service**：包含 **ServiceConnect** 权限的策略。
+  * **device**：包含 **DeviceConnect** 权限的策略。
+  * **registryRead**：包含 **RegistryRead** 权限的策略。
+  * **registryReadWrite**：包含 **RegistryRead** 和 RegistryWrite 权限的策略。
   * **每个设备的安全凭据**。 每个 IoT 中心都包含一个[标识注册表][lnk-identity-registry]。 对于此标识注册表中的每个设备，可配置安全凭据，授予局限于相应设备终结点的 **DeviceConnect** 权限。
 
 例如，在典型的 IoT 解决方案中：
@@ -54,6 +54,9 @@ ms.lasthandoff: 02/15/2017
 * 事件处理器组件使用 *service* 策略。
 * 运行时设备业务逻辑组件使用 service 策略。
 * 各个设备的连接使用 IoT 中心的标识注册表中存储的凭据。
+
+> [!NOTE]
+> 有关详细信息，请参阅[权限](#iot-hub-permissions)。
 
 ## <a name="authentication"></a>身份验证
 Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验证令牌，以授予对终结点的访问权限。
@@ -370,10 +373,10 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 | 权限 | 说明 |
 | --- | --- |
-| **RegistryRead** |授予对标识注册表的读取访问权限。 有关详细信息，请参阅[标识注册表][lnk-identity-registry]。 |
-| **RegistryReadWrite** |授予对标识注册表的读取和写入访问权限。 有关详细信息，请参阅[标识注册表][lnk-identity-registry]。 |
-| **ServiceConnect** |授予对面向云服务的通信和监视终结点的访问权限。 例如，它授权后端云服务接收设备到云的消息、发送云到设备的消息，以及检索对应的传送确认。 |
-| **DeviceConnect** |授予对面向设备的终结点的访问权限。 例如，它授予发送设备到云的消息和接收云到设备的消息的权限。 此权限由设备使用。 |
+| **RegistryRead** |授予对标识注册表的读取访问权限。 有关详细信息，请参阅[标识注册表][lnk-identity-registry]。 <br/>后端云服务将使用此权限。 |
+| **RegistryReadWrite** |授予对标识注册表的读取和写入访问权限。 有关详细信息，请参阅[标识注册表][lnk-identity-registry]。 <br/>后端云服务将使用此权限。 |
+| **ServiceConnect** |授予对面向云服务的通信和监视终结点的访问权限。 <br/>授予接收设备到云消息、发送云到设备消息和检索相应传送确认的权限。 <br/>授予检索文件上载的传送确认的权限。 <br/>授予访问设备孪生以更新标记和所需属性、检索报告属性和运行查询的权限。 <br/>后端云服务将使用此权限。 |
+| **DeviceConnect** |授予对面向设备的终结点的访问权限。 <br/>授予发送设备到云消息和接收云到设备消息的权限。 <br/>授予从设备执行文件上载的权限。 <br/>授予接收设备孪生所需属性通知和更新设备孪生报告属性的权限。 <br/>授予执行文件上载的权限。 <br/>此权限由设备使用。 |
 
 ## <a name="additional-reference-material"></a>其他参考资料
 IoT 中心开发人员指南中的其他参考主题包括：
@@ -381,13 +384,13 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [IoT 中心终结点][lnk-endpoints]，介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
 * [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
 * [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
-* [设备克隆和作业的 IoT 中心查询语言][lnk-query]介绍了可用来从 IoT 中心检索设备克隆和作业相关信息的 IoT 中心查询语言。
+* [设备孪生和作业的 IoT 中心查询语言][lnk-query]介绍了可用来从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 现已了解如何控制对 IoT 中心的访问，你可能有兴趣了解以下 IoT 中心开发人员指南主题：
 
-* [使用设备克隆来同步状态和配置][lnk-devguide-device-twins]
+* [使用设备孪生来同步状态和配置][lnk-devguide-device-twins]
 * [在设备上调用直接方法][lnk-devguide-directmethods]
 * [在多台设备上安排作业][lnk-devguide-jobs]
 
