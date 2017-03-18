@@ -49,8 +49,3 @@
 
 对于 Datetime 和 Datetimeoffset，可以选择性地指定“culture”和“format”字符串来帮助分析自定义的 Datetime 字符串。 请参阅下面的类型转换示例。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

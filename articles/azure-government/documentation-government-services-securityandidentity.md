@@ -17,6 +17,7 @@ ms.author: ryansoc
 translationtype: Human Translation
 ms.sourcegitcommit: cd01170c3c0a3f62024de3357d342af1f4f90c6c
 ms.openlocfilehash: 27d447e8e3c336bbce2e1ca81d2c7c413b0360fc
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -35,10 +36,5 @@ ms.openlocfilehash: 27d447e8e3c336bbce2e1ca81d2c7c413b0360fc
 
 ## <a name="next-steps"></a>后续步骤
 有关补充信息和更新，请订阅 <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure 政府博客</a>。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
