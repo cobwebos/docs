@@ -3,7 +3,7 @@ title: "Azure SQL 数据库审核入门 | Microsoft 文档"
 description: "SQL 数据库审核入门"
 services: sql-database
 documentationcenter: 
-author: ronitr
+author: giladm
 manager: jhubbard
 editor: giladm
 ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
@@ -13,12 +13,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
-ms.author: ronitr; giladm
+ms.date: 7/3/2017
+ms.author: giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 506fd7b5cbf11dd4d9348962db5e06077953bd51
-ms.openlocfilehash: 185c6aaa2db0820421c8ea3523865bc90a1475f7
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 6b5b357c996f5c4642e61b09c5a7e5e0ec6a93c7
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -76,7 +76,8 @@ SQL 数据库审核可让你：
     <a id="storage-screenshot"></a>
     ![导航窗格][4]
 6. 若要自定义审核的事件，可以使用 PowerShell 或 REST API - 有关更多详细信息，请参阅[自动化 (PowerShell/REST API)](#subheading-7) 部分。
-7. 单击“保存” 。
+7. 配置审核设置后，可以打开新的**威胁检测**（预览版）功能，并配置电子邮件用于接收安全警报。 使用威胁检测可以接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关更多详细信息，请参阅[威胁检测入门](sql-database-threat-detection-get-started.md)。
+8. 单击“保存” 。
 
 ### <a id="subheading-2-2">表审核</a>
 
@@ -136,7 +137,7 @@ SQL 数据库审核可让你：
 ### <a id="subheading-3-1">Blob 审核</a>
 Blob 审核日志以 Blob 文件集合的形式保存在名为“**sqldbauditlogs**”的容器中。
 
-有关 Blob 审核日志存储文件夹层次结构、Blob 命名约定和日志格式的详细信息，请参阅 [Blob Audit Log Format Reference（文档下载）](https://go.microsoft.com/fwlink/?linkid=829599)（Blob 审核日志格式参考）。
+有关 Blob 审核日志存储文件夹层次结构、blob 命名约定和日志格式的详细信息，请参阅 [Blob 审核日志格式参考（doc 文件下载）](https://go.microsoft.com/fwlink/?linkid=829599)。
 
 可通过多种方法查看 Blob 审核日志：
 
@@ -282,3 +283,4 @@ Blob 审核日志以 Blob 文件集合的形式保存在名为“**sqldbauditlog
 [105]: https://msdn.microsoft.com/library/azure/mt603531(v=azure.200).aspx
 [106]: https://msdn.microsoft.com/library/azure/mt603794(v=azure.200).aspx
 [107]: https://msdn.microsoft.com/library/azure/mt619353(v=azure.200).aspx
+

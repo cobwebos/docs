@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: 842eb16768fd5064bd57a0c3672e7ae57885720e
-ms.openlocfilehash: 6ed0f07268715102be197bb8a6654fb05b52b0c4
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 148bc76b7f3e09745cbecfa41710a5e949704948
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -61,6 +61,10 @@ ms.lasthandoff: 03/01/2017
 **问：**是否支持未编译的 .NET Core 应用？
 
 **答：**否。 需要通过所有依赖项部署已编译的 .NET Core 应用。 我们计划在以后的版本中添加完整部署和生成体验。
+
+**问：**是否支持将 Composer 用作 PHP 应用的依赖关系管理器？
+
+**答：**否。 需要使用所有依赖关系部署 PHP 应用。 我们计划在以后的版本中添加完整部署体验。
 
 ## <a name="custom-containers"></a>自定义容器
 

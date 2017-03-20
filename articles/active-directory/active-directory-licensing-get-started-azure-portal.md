@@ -18,9 +18,9 @@ ms.date: 02/27/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 09f0ed3f7624bb242c40868710fb3eae49cda906
-ms.openlocfilehash: a798de49ed08eedaf27267c6bac12f8b0b64739f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: bbad7fbd1395c3982ecba03ab6ba90d833c889a9
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -59,7 +59,9 @@ Azure Active Directory (Azure AD) 是 Microsoft 的标识即服务 (IDaaS) 解�
 
 只要获取了订阅，就能配置付费功能；但是，要使用 Azure AD 付费功能，就必须将许可证分发给适当的个人。 一般而言，应访问 Azure AD 付费功能或者通过 Azure AD 付费功能管理的人员都必须被分配许可证。 许可证分配是用户与购买的服务（例如 Azure AD Premium、Basic 或 Enterprise Mobility Suite）之间的映射。
 
-管理目录中哪些用户应该拥有许可证很简单。 只要通过在 Azure 门户中将许可证分配给组，或者通过门户、PowerShell 或 API 直接将许可证分配给适当的人员即可。 将许可证分配给组时，将对所有组成员分配许可证。 如果在组中添加或删除用户，则会相应地分配或删除其许可证。 组分配可以使用可用的任何组管理功能，而且与基于组的应用程序分配一致。 使用这种方法，你可以设置规则以便为目录中所有用户进行自动分配，确保有适当职务的每个人都获得许可证，甚至委派决策权给组织中的其他管理人员。 有关将许可证分配到组的详细介绍（包括高级方案和 Office 365 许可方案），请参阅此文章。
+管理目录中哪些用户应该拥有许可证很简单。 只要通过在 Azure 门户中将许可证分配给组，或者通过门户、PowerShell 或 API 直接将许可证分配给适当的人员即可。 将许可证分配给组时，将对所有组成员分配许可证。 如果在组中添加或删除用户，则会相应地分配或删除其许可证。 组分配可以使用可用的任何组管理功能，而且与基于组的应用程序分配一致。 使用这种方法，你可以设置规则以便为目录中所有用户进行自动分配，确保有适当职务的每个人都获得许可证，甚至委派决策权给组织中的其他管理人员。 
+
+有关将许可证分配到组的详细介绍（包括高级方案和 Office 365 许可方案），请参阅[此文](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-assignment-azure-portal)。
 
 ## <a name="getting-started-with-azure-ad-licensing"></a>Azure AD 许可入门
 
@@ -152,6 +154,7 @@ Azure AD 很容易入门；始终可以在注册免费 Azure 试用版过程中�
 * [自助组管理](active-directory-accessmanagement-self-service-group-management.md)
 * [Azure AD Connect Heath](active-directory-aadconnect-health.md)
 * [将组分配到应用程序](active-directory-manage-groups.md)
+* [将许可证分配到组](active-directory-licensing-group-assignment-azure-portal.md)
 * [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
 * [直接购买 Azure AD Premium 许可证](http://aka.ms/buyaadp)
 

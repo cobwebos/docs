@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 30faf4b99414e5f7b5131c231b4dccf3a7272d25
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: bd67cb868e57be0d6cb9c3ea37f67de6dca4e307
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -250,6 +250,34 @@ Get-AzureRmVMUsage -Location "West US"
 
 ### <a name="migrate-a-storage-account"></a>迁移存储帐户
 完成虚拟机迁移之后，建议迁移存储帐户。
+
+在迁移存储帐户之前，请执行以下先决条件检查：
+
+* **检查经典 VM 磁盘是否存储在存储帐户中**
+
+    使用以下命令查找已附加到存储帐户中 VM 的 VM 磁盘： 
+
+    ```powershell
+     $storageAccountName = 'yourStorageAccountName'
+      Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
+      DiskName | Format-List -Property RoleName, DiskName 
+
+    ```
+    上述命令返回存储帐户中所有经典 VM 磁盘的 RoleName 和 DiskName 属性。 RoleName 是磁盘附加到的虚拟机的名称。 如果上述命令返回了磁盘，请确保先迁移这些磁盘附加到虚拟机，然后再迁移存储帐户。
+
+    使用以下命令查找存储帐户中未附加的经典 VM 磁盘： 
+
+    ```powershell
+        $storageAccountName = 'yourStorageAccountName'
+        Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Format-List -Property DiskName  
+
+    ```
+    如果上述命令返回了磁盘，请使用以下命令删除这些磁盘：
+
+    ```powershell
+       Remove-AzureDisk -DiskName 'yourDiskName'
+    ```
+     
 
 使用以下命令准备要迁移的每个存储帐户。 在此示例中，存储帐户名称是 **myStorageAccount**。 将该示例名称替换为你自己的存储帐户名称。 
 

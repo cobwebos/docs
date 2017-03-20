@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 789373189ff0ec1dd9c08bc1725bb781f8b7428b
-ms.openlocfilehash: df25e320e046355bc4a538f8acc4bb9e9cd98d8e
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 5b3ff989c31f45f3344d406f9f419510dd380f8b
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -87,7 +87,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | type |类型属性应设置为 **HDInsightOnDemand**。 |是 |
-| clusterSize |群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助进程节点的群集拥有 24 个内核（具有 4 个辅助进程节点（4 个） + 具有 4 个头节点（2 个））。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 |是 |
+| clusterSize |群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助节点的群集拥有 24 个核心（辅助节点有 4\*4 = 16 个核心，头节点有 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 |是 |
 | timetolive |按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。<br/><br/>例如，如果一个活动运行需要 6 分钟，而 timetolive 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br/><br/>创建按需 HDInsight 群集是一项开销非常大的操作（可能会花费一定的时间），因此请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br/><br/>如果将 timetolive 值设置为 0，则群集在活动运行处理完后很快便会被删除。 另一方面，如果设置较高的值，群集可能会保持不必要的空闲状态，从而造成较高成本。 因此，根据具体需要设置适当的值非常重要。<br/><br/>如果设置了适当的 timetolive 属性值，多个管道则可以共享按需 HDInsight 群集的同一实例 |是 |
 | 版本 |HDInsight 群集的版本。 对于 Windows 群集，默认值为 3.1；对于 Linux 群集，则为 3.2。 |否 |
 | linkedServiceName |由按需群集用于存储和处理数据的 Azure 存储链接服务。 <p>目前，无法创建使用 Azure Data Lake Store 作为存储的按需 HDInsight 群集。 如果想要存储在 Azure Data Lake Store 中处理的来自 HDInsight 的结果数据，请使用复制活动将数据从 Azure Blob 存储复制到 Azure Data Lake Store。</p>  | 是 |
@@ -242,7 +242,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 }
 ```
 
-在 **accountName** 属性的 Batch 帐户名后追加 “**.<region name**”。 示例：
+在 **accountName** 属性的批处理帐户名后追加 “**.\<region name\>**”。 示例：
 
 ```json
 "accountName": "mybatchaccount.eastus"
@@ -327,7 +327,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
-| 不由 Azure Active Directory 管理的用户帐户（@hotmail.com、@live.com，等等） |12 小时 |
+| 不由 Azure Active Directory 管理的用户帐户（例如 @hotmail.com、@live.com、@outlook.com） |12 小时 |
 | 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的&14; 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
 若要避免/解决此错误，需要在**令牌过期**时使用“授权”按钮重新授权，并重新部署链接服务。 还可使用以下部分中的代码以编程方式生成 sessionId 和 authorization 属性的值。 

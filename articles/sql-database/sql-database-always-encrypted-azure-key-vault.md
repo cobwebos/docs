@@ -14,12 +14,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/06/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 9d654904e06758bc8634efa9b18ea3bac2b64523
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: aa3f2bc04fe33466ca44abd7331a4b3aa7be26fc
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -192,9 +192,8 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 > 
 > 
 
-1. 打开 Visual Studio 并创建新的 C# 控制台应用程序。 确保将你的项目设置为 **.NET Framework 4.6** 或更高版本。
+1. 打开 Visual Studio 并创建新的 C# **控制台应用程序**（Visual Studio 2015 和更低版本）或**控制台应用 (.NET Framework)**（Visual Studio 2017 和更高版本）。 确保将你的项目设置为 **.NET Framework 4.6** 或更高版本。
 2. 将项目命名为 **AlwaysEncryptedConsoleAKVApp**，然后单击“确定”。
-   ![新建控制台应用程序](./media/sql-database-always-encrypted-azure-key-vault/console-app.png)
 3. 通过转到“工具” > “NuGet 包管理器” > “包管理器控制台”来安装以下 NuGet 包。
 
 在包管理器控制台中运行以下&2; 行代码。
