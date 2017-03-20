@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 81549c4bc0cabcf46bc7dc66d7e6662d7f787b1e
 ms.openlocfilehash: df6353f84f898a1722e3e985244a90dbd6b22522
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -73,9 +74,4 @@ Azure AD Connect 为全新安装提供两种安装类型：快速安装和自定
 
 ## <a name="next-steps"></a>后续步骤
 根据选择使用的选项，请参考左侧的目录查找包含详细步骤的文章。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
