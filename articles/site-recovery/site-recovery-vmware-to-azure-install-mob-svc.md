@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/20/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 1f4075d6a3ab81bdbde614bbee400bd23f6cea20
-ms.openlocfilehash: 1fd481d06f355547fd15200999c4bca3a503ec31
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 7e82ac74a8aef4e3cc8aff4dea3c572dcb9d9c40
+ms.lasthandoff: 03/03/2017
 
 ---
 
@@ -82,6 +82,30 @@ ms.lasthandoff: 02/23/2017
 [!INCLUDE [site-recovery-prepare-push-install-mob-svc-lin](../../includes/site-recovery-prepare-push-install-mob-svc-lin.md)]
 
 
-## <a name="next-steps"></a>后续步骤
+> [!NOTE]
 安装移动服务后，可以使用 Azure 门户中的“+复制”按钮开始为这些 VM 启用保护。
+
+## <a name="uninstall-mobility-service-on-windows-servers"></a>卸载 Windows Server 上的移动服务
+可通过两种方法卸载 Windows Server 上的移动服务
+
+### <a name="uninstall-using-graphical-user-interface"></a>使用图形用户界面卸载
+1. 打开“控制面板”>“程序”
+2. 选择“Microsoft Azure Site Recovery 移动服务/主目标服务器”并单击“卸装”。
+
+### <a name="uninstall-using-command-line"></a>使用命令行卸载
+1. 打开管理员命令提示符
+2. 运行以下命令以卸载移动服务。
+
+```
+MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
+```
+
+## <a name="uninstall-mobility-service-on-linux-computers"></a>卸载 Linux 计算机上的移动服务
+1. 以 **ROOT** 身份在 Linux 服务器上登录
+2. 在**终端**中浏览到 /user/local/ASR
+3. 运行以下命令以卸载移动服务
+
+```
+uninstall.sh -Y
+```
 

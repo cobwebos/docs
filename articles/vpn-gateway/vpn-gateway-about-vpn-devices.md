@@ -16,33 +16,30 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: bea87fce9f1b1587af5a3e0d827a75e93d7bf534
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 13ef48ebe79571c7139e46f9510a5f8d2f504cb7
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>关于站点到站点 VPN 网关连接的 VPN 设备
-通过 VPN 网关配置站点到站点 (S2S) 跨界 VPN 连接需要用到 VPN 设备。 在创建混合解决方案时，或者每当你想要在本地网络与虚拟网络之间建立安全连接时，可以使用站点到站点连接。 本文介绍兼容的 VPN 设备和配置参数。
+# <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
+
+通过 VPN 网关配置站点到站点 (S2S) 跨界 VPN 连接需要用到 VPN 设备。 在创建混合解决方案时，或者每当你想要在本地网络与虚拟网络之间建立安全连接时，可以使用站点到站点连接。 本文介绍兼容的 VPN 设备和配置参数。 本文档提供了适用于 Azure VPN 网关的 IPsec/IKE 参数的列表，以及连接到 Azure VPN 网关的有效 VPN 设备的列表。
 
 
 > [!IMPORTANT]
-> 如果遇到本地 VPN 设备与 Azure VPN 网关之间的连接问题，请参阅[已知的设备兼容性问题](#known)。
-> 
-> 
+> 如果遇到本地 VPN 设备与 Azure VPN 网关之间的连接问题，请参阅[已知的设备兼容性问题](#known)。 
 
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>查看表时的注意事项：
 
-* 静态和动态路由的术语已更改。 这两个术语你可能都会碰到。 无功能性更改，只是名称进行了更改。
+* Azure VPN 网关的术语已更改。 这两个术语你可能都会碰到。 无功能性更改，只是名称进行了更改。
   * 静态路由 = PolicyBased
   * 动态路由 = RouteBased
 * 除非另有说明，否则高性能 VPN 网关和 RouteBased VPN 网关的规范相同。 例如，经验证与 RouteBased VPN 网关兼容的 VPN 设备也与 Azure 高性能 VPN 网关兼容。
 
 > [!NOTE]
 > 配置站点到站点连接时，需要为你的 VPN 设备提供面向公众的 IPv4 IP 地址。                                                                                                                                                                               
->
->
 
 
 ## <a name="devicetable"></a>已验证的 VPN 设备
@@ -102,58 +99,80 @@ ms.lasthandoff: 03/04/2017
 | &lt;SP_AzureGatewayIpAddress&gt; |此信息特定于你的虚拟网络，位于管理门户的“网关 IP 地址”中。 |
 | &lt;SP_PresharedKey&gt; |此信息特定于你的虚拟网络，位于管理门户的“管理密钥”中。 |
 
-## <a name="IPSec"></a>IPsec 参数
+## <a name="IPSec"></a>IPsec/IKE 参数
 > [!NOTE]
-> 尽管 Azure VPN 网关支持下表中列出的值，但您目前无法从 Azure VPN 网关中选择或指定特定的组合。 你必须从本地 VPN 设备指定任何约束。 此外，你必须将 MSS 固定在 1350。
->
->
+> 尽管 Azure VPN 网关支持下表中列出的值，但你目前无法从 Azure VPN 网关中选择或指定算法或参数的特定组合。 你必须从本地 VPN 设备指定任何约束。
+> 
+> 此外，还必须将 **MSS** 固定在 **1350**。
 
-### <a name="ike-phase-1-setup"></a>IKE 阶段 1 设置
-| **属性** | **PolicyBased** | **RouteBased 和标准或高性能 VPN 网关** |
-| --- | --- | --- |
-| SDK 版本 |IKEv1 |IKEv2 |
-| Diffie-Hellman 组 |组 2（1024 位） |组 2（1024 位） |
-| 身份验证方法 |预共享密钥 |预共享密钥 |
-| 加密算法 |AES256 AES128 3DES |AES256 3DES |
-| 哈希算法 |SHA1(SHA128) |SHA1(SHA128)、SHA2(SHA256) |
-| 阶段 1 安全关联 (SA) 生命周期（时间） |28,800 秒 |10,800 秒 |
+在下表中：
 
-### <a name="ike-phase-2-setup"></a>IKE 阶段 2 设置
-| **属性** | **PolicyBased** | **RouteBased 和标准或高性能 VPN 网关** |
-| --- | --- | --- |
-| SDK 版本 |IKEv1 |IKEv2 |
-| 哈希算法 |SHA1(SHA128)、SHA2(SHA256) |SHA1(SHA128)、SHA2(SHA256) |
-| 阶段 2 安全关联 (SA) 生命周期（时间） |3,600 秒 |3,600 秒 |
-| 阶段 2 安全关联 (SA) 生命周期（吞吐量） |102,400,000 KB |- |
-| IPsec SA 加密和身份验证产品（按偏好顺序列出） |1.ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. 不适用 |请参阅“RouteBased 网关 IPsec 安全关联 (SA) 产品”（下文） |
-| 完全向前保密 (PFS) |否 |否 (*) |
-| 死对等体检测 |不支持 |支持 |
+* SA = 安全关联
+* IKE 阶段 1 也称“主模式”
+* IKE 阶段 2 也称“快速模式”
 
-(*) 作为 IKE 响应方的 Azure 网关可以接受 PFS DH 组 1、2、5、14、24。
+### <a name="ike-phase-1-main-mode-parameters"></a>IKE 阶段 1（主模式）参数
+| **属性**          |**PolicyBased**    | **RouteBased**    |
+| ---                   | ---               | ---               |
+| SDK 版本           |IKEv1              |IKEv2              |
+| Diffie-Hellman 组  |组 2（1024 位） |组 2（1024 位） |
+| 身份验证方法 |预共享密钥     |预共享密钥     |
+| 加密和哈希算法 |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
+| SA 生存期           |28,800 秒     |10,800 秒     |
 
-### <a name="routebased-gateway-ipsec-security-association-sa-offers"></a>RouteBased 网关 IPsec 安全关联 (SA) 产品
-下表列出 IPsec SA 加密和身份验证产品。 这些产品按提供或接受产品的偏好顺序列出。
+### <a name="ike-phase-2-quick-mode-parameters"></a>IKE 阶段 2（快速模式）参数
+| **属性**                  |**PolicyBased**| **RouteBased**                              |
+| ---                           | ---           | ---                                         |
+| SDK 版本                   |IKEv1          |IKEv2                                        |
+| 加密和哈希算法 |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
+| SA 生存期（时间）            |3,600 秒  |3,600 秒                                |
+| SA 生存期（字节数）           |102,400,000 KB | -                                           |
+| 完全向前保密 (PFS) |否             |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
+| 死对等体检测 (DPD)     |不支持  |支持                                    |
 
-| **IPsec SA 加密和身份验证产品** | **Azure 网关作为发起方** | **Azure 网关作为响应方** |
-| --- | --- | --- |
-| 1 |ESP AES_256 SHA |ESP AES_128 SHA |
-| 2 |ESP AES_128 SHA |ESP 3_DES MD5 |
-| 3 |ESP 3_DES MD5 |ESP 3_DES SHA |
-| 4 |ESP 3_DES SHA |AH SHA1（具有含 null HMAC 的 ESP AES_128） |
-| 5 |AH SHA1（具有含 null HMAC 的 ESP AES_256） |AH SHA1（具有含 null HMAC 的 ESP 3_DES） |
-| 6 |AH SHA1（具有含 null HMAC 的 ESP AES_128） |AH MD5（具有含 null HMAC 的 ESP 3_DES），不建议生命周期 |
-| 7 |AH SHA1（具有含 null HMAC 的 ESP 3_DES） |AH SHA1（具有 ESP 3_DES SHA1），无生命周期 |
-| 8 |AH MD5（具有含 null HMAC 的 ESP 3_DES），不建议生命周期 |AH MD5（具有 ESP 3_DES MD5），无生命周期 |
-| 9 |AH SHA1（具有 ESP 3_DES SHA1），无生命周期 |ESP DES MD5 |
-| 10 |AH MD5（具有 ESP 3_DES MD5），无生命周期 |ESP DES SHA1，无生命周期 |
-| 11 |ESP DES MD5 |AH SHA1（具有 ESP DES null HMAC），不建议生命周期 |
-| 12 |ESP DES SHA1，无生命周期 |AH MD5（具有 ESP DES null HMAC），不建议生命周期 |
-| 13 |AH SHA1（具有 ESP DES null HMAC），不建议生命周期 |AH SHA1（具有 ESP DES SHA1），无生命周期 |
-| 14 |AH MD5（具有 ESP DES null HMAC），不建议生命周期 |AH MD5（具有 ESP DES MD5），无生命周期 |
-| 15 |AH SHA1（具有 ESP DES SHA1），无生命周期 |ESP SHA，无生命周期 |
-| 16 |AH MD5（具有 ESP DES MD5），无生命周期 |ESP MD5，无生命周期 |
-| 17 |- |AH SHA，无生命周期 |
-| 18 |- |AH MD5，无生命周期 |
+
+### <a name ="RouteBasedOffers"></a>RouteBased VPN IPsec 安全关联（IKE 快速模式 SA）产品/服务
+下表列出了 IPsec SA（IKE 快速模式）产品/服务。 这些产品按提供或接受产品的偏好顺序列出。
+
+#### <a name="azure-gateway-as-initiator"></a>Azure 网关作为发起方
+|-  |**加密**|**身份验证**|**PFS 组**|
+|---| ---          |---               |---          |
+| 1 |GCM AES256    |GCM (AES256)      |无         |
+| 2 |AES256        |SHA1              |无         |
+| 3 |3DES          |SHA1              |无         |
+| 4 |AES256        |SHA256            |无         |
+| 5 |AES128        |SHA1              |无         |
+| 6 |3DES          |SHA256            |无         |
+
+#### <a name="azure-gateway-as-responder"></a>Azure 网关作为响应方
+|-  |**加密**|**身份验证**|**PFS 组**|
+|---| ---          | ---              |---          |
+| 1 |GCM AES256    |GCM (AES256)      |无         |
+| 2 |AES256        |SHA1              |无         |
+| 3 |3DES          |SHA1              |无         |
+| 4 |AES256        |SHA256            |无         |
+| 5 |AES128        |SHA1              |无         |
+| 6 |3DES          |SHA256            |无         |
+| 7 |DES           |SHA1              |无         |
+| 8 |AES256        |SHA1              |1            |
+| 9 |AES256        |SHA1              |2            |
+| 10|AES256        |SHA1              |14           |
+| 11|AES128        |SHA1              |1            |
+| 12|AES128        |SHA1              |2            |
+| 13|AES128        |SHA1              |14           |
+| 14|3DES          |SHA1              |1            |
+| 15|3DES          |SHA1              |2            |
+| 16|3DES          |SHA256            |2            |
+| 17|AES256        |SHA256            |1            |
+| 18|AES256        |SHA256            |2            |
+| 19|AES256        |SHA256            |14           |
+| 20|AES256        |SHA1              |24           |
+| 21|AES256        |SHA256            |24           |
+| 22|AES128        |SHA256            |无         |
+| 23|AES128        |SHA256            |1            |
+| 24|AES128        |SHA256            |2            |
+| 25|AES128        |SHA256            |14           |
+| 26|3DES          |SHA1              |14           |
 
 * 可以使用 RouteBased 和高性能 VPN 网关指定 IPsec ESP NULL 加密。 基于 Null 的加密不对传输中的数据提供保护，仅应在需要最大吞吐量和最小延迟时才使用。  客户端可以在 VNet 到 VNet 通信方案中选择使用此方法，或者在解决方案中的其他位置应用加密时使用此方法。
 * 若要通过 Internet 建立跨界连接，请使用默认的 Azure VPN 网关设置以及上表中列出的加密和哈希算法，确保关键通信的安全性。

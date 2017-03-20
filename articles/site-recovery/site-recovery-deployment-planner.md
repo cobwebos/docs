@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 4e444deaa84c7f02608f4910e31f7033df51a73b
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 2575621d72b7db2b090ba923324697b7fa7b8308
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -82,9 +82,9 @@ Azure Site Recovery Deployment Planner 公共预览版是一个命令行工具�
 解压缩 zip 文件夹。 可以看到其中包含多个文件和子文件夹。 可执行文件是父文件夹中的 ASRDeploymentPlanner.exe。
 
 示例：将 .zip 文件复制到 E:\ 驱动器并将它解压缩。
-E:\ASR Deployment Planner-Preview_v1.0.zip
+E:\ASR Deployment Planner-Preview_v1.1.zip
 
-E:\ASR Deployment Planner-Preview_v1.0\ ASR Deployment Planner-Preview_v1.0\ ASRDeploymentPlanner.exe
+E:\ASR Deployment Planner-Preview_v1.1\ ASR Deployment Planner-Preview_v1.1\ ASRDeploymentPlanner.exe
 
 ##<a name="capabilities"></a>功能
 可使用以下三种模式之一运行该命令行工具 (ASRDeploymentPlanner.exe)：
@@ -199,7 +199,7 @@ ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.cont
 
 
 ##### <a name="example-2-to-generate-report-when-profiled-data-is-on-a-remote-server-user-should-have-readwrite-access-on-the-remote-directory"></a>示例 2：当分析的数据位于远程服务器上时生成报告。 用户应该对远程目录拥有读/写访问权限。
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 
 ##### <a name="example-3-generate-report-with-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>示例 3：生成报告来列出在指定时间内完成 IR 所需的特定带宽以及需要实现的目标
 ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt” **-Bandwidth** 100 **-GoalToCompleteIR** 24
@@ -407,10 +407,10 @@ d.单击“下一步”。 更改进程服务器中的 Azure Site Recovery 设�
 
 **要放置的虚拟机**列出为了实现最佳性能和利用率，应放置在给定 Azure 存储帐户中的虚拟机。
 
-##<a name="compatible-vms"></a>兼容的 VM
+## <a name="compatible-vms"></a>兼容的 VM
 ![Deployment Planner](./media/site-recovery-deployment-planner/compatible-vms.png)
 
-**VM 名称**是生成报告时在 VMListFile 中使用的虚拟机名称或 IP 地址。 此列还列出附加到虚拟机的磁盘 (VMDK)。
+**VM 名称**是生成报告时在 VMListFile 中使用的虚拟机名称或 IP 地址。 此列还列出附加到虚拟机的磁盘 (VMDK)。 在提及 vCenter 上使用重复名称或 IP 地址的虚拟机时，会使用 ESXi 主机名称以区分每个虚拟机。 列出的 ESXi 主机是特定的主机，当工具在分析阶段首次发现虚拟机时，该虚拟机放置在此主机中。
 
 **VM 兼容性**包含两个值 - 是/是如果虚拟机适合[高级 Azure 存储](https://aka.ms/premium-storage-workload)，其分析的高变动量/IOPS 磁盘适合 P20 或 P30 类别，但磁盘大小会导致向下映射到 P10 或 P20，则值为“是”。 Azure 存储会根据高级存储磁盘类型的大小将其映射到某个磁盘 – 即，小于 128 GB 的磁盘为 P10，128 到 512 GB 的磁盘为 P20，512 到 1023 GB 的磁盘为 P30。 因此，如果磁盘的工作负荷特征确定了它是 P20 或 P30 磁盘，但其大小将其映射到更低的高级存储磁盘类型，则该工具会将该虚拟机标记为“是*”，并建议更改源磁盘大小来适应建议的适当高级存储磁盘类型，或者在故障转移后更改目标磁盘类型。
 存储类型为标准或高级。
@@ -439,7 +439,7 @@ d.单击“下一步”。 更改进程服务器中的 Azure Site Recovery 设�
 
 ![Deployment Planner](./media/site-recovery-deployment-planner/incompatible-vms.png)
 
-**VM 名称**是生成报告时在 VMListFile 中使用的虚拟机名称或 IP 地址。 此列还列出附加到虚拟机的磁盘 (VMDK)。
+**VM 名称**是生成报告时在 VMListFile 中使用的虚拟机名称或 IP 地址。 此列还列出附加到虚拟机的磁盘 (VMDK)。 在提及 vCenter 上使用重复名称或 IP 地址的虚拟机时，会使用 ESXi 主机名称以区分每个虚拟机。 列出的 ESXi 主机是特定的主机，当工具在分析阶段首次发现虚拟机时，该虚拟机放置在此主机中。
 
 **VM 兼容性**指示给定的虚拟机为何无法与 Azure Site Recovery 兼容使用。 原因将根据虚拟机的不兼容磁盘给出，根据发布的 Azure 存储[限制](https://aka.ms/azure-storage-scalbility-performance)，原因可能是下面其中一项。
 
@@ -483,7 +483,24 @@ d.单击“下一步”。 更改进程服务器中的 Azure Site Recovery 设�
 
 上面发布的限制基于我们的测试，但无法涵盖所有可能的应用程序 I/O 组合。 实际结果根据应用程序 I/O 的混合形式而异。 为获得最佳结果，我们始终建议使用测试故障转移执行广泛的应用程序测试，获取真实的性能视图，即使在规划部署后，也应如此。
 
-##<a name="release-notes"></a>发行说明
+## <a name="how-to-update-the-deployment-planner"></a>如何更新 Deployment Planner？
+[下载](site-recovery-deployment-planner.md#download)最新版本的 Azure Site Recovery Deployment Planner。 将 zip 文件复制到要在其中运行的服务器。 解压缩 zip 文件。
+如果已经有旧版 Deployment Planner 且分析正在进行，则不需停止分析，除非新版包含分析修补程序。 如果版本的分析组件中包含修补程序，则建议停止使用旧版进行的分析，然后使用新版再次启动分析。 请注意，使用新版启动分析时，需传递相同的输出目录路径，以便工具将配置文件数据追加到现有文件，然后即可在生成报告时使用已分析数据的完整集。 如果传递不同的输出目录，则会创建新文件，生成报告时不能使用旧的已配置数据。<br> 每个更新都是使用 zip 文件的累积更新。 使用时，不需将新版文件复制到旧版文件夹。 可以对其使用新文件夹。
+
+
+##<a name="version-history"></a>版本历史记录
+### <a name="11"></a>1.1
+更新日期：2017 年 3 月 9 日 <br>
+
+修复了以下问题<br>
+
+* 如果 vCenter 中有两个或更多个虚拟机跨不同的 ESXi 主机使用相同的名称/IP 地址，则无法分析虚拟机。<br>
+* 兼容 VM 和不兼容 VM 的工作表均已禁用复制和搜索。
+
+
+### <a name="10"></a>1.0 
+更新日期：2017 年 2 月 23 日 
+
 Azure Site Recovery Deployment Planner 公共预览版 1.0 存在以下已知问题，以后的更新将解决这些问题。
 
 * 该工具仅适用于 VMware 到 Azure 的方案，而不适用 Hyper-V 到 Azure 的部署。 对于 Hyper-V 到 Azure 的方案，可以使用 [Hyper-V Capacity Planner 工具](./site-recovery-capacity-planning-for-hyper-v-replication.md)。

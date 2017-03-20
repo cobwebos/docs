@@ -15,15 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3bde4a676cce8ab914c000c8fef2b07d0c77e380
-ms.openlocfilehash: e172756f60ac1e8361f5481cd9defe61fa5f6448
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: dcf8a88ebd66f5e4a5a06538532fbfbae7ce852e
+ms.lasthandoff: 03/04/2017
 
 ---
 
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
 虚拟网关在 Azure 中的本地资源和其他虚拟网络之间提供连接。 监视这些网关及其连接对于确保通信不中断至关重要。 网络观察程序提供对虚拟网关和连接进行故障排除的功能。 可以通过 PowerShell、CLI 或 REST API 调用网络观察程序。 调用后，网络观察程序将对虚拟网关或连接的运行状况进行诊断，并返回相应的结果。 该请求是一个长时间运行的事务。一旦诊断完毕，就会返回结果。
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="results"></a>结果
 
@@ -43,7 +45,7 @@ ms.lasthandoff: 02/24/2017
       * **actionUri** - 此值提供操作说明文档的 URI。
       * **actionUriText** - 此值对操作文本进行了简短的说明。
 
-下面的表显示了提供的不同错误类型（即前面的列表中 results 下的 id）以及该错误是否创建日志。
+下表显示了提供的不同错误类型（即前面的列表中结果下的 id）以及该错误是否创建日志。
 
 ### <a name="gateway"></a>网关
 
@@ -57,7 +59,7 @@ ms.lasthandoff: 02/24/2017
 | PlatformInActive | 平台出现问题。 | 否|
 | ServiceNotRunning | 底层服务未运行。 | 否|
 | NoConnectionsFoundForGateway | 网关未建立连接。 这只是一条警告。| 否|
-| ConnectionsNotConnected | 未连接任何连接设备。 这只是一条警告。| 是|
+| ConnectionsNotConnected | 未连接任何连接。 这只是一条警告。| 是|
 | GatewayCPUUsageExceeded | 当前网关 CPU 使用率超过 95%。 | 是 |
 
 ### <a name="connection"></a>连接

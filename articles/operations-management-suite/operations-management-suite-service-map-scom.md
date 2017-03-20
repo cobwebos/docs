@@ -15,38 +15,42 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 834e805e05696175bfc5a1d71f2223a8f7cf45e8
-ms.openlocfilehash: 2c4b07a7bf541c0ad1e979df9cb2937bfa66c216
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: afba457134ba0fbc4ed35040828bb3745364ef78
+ms.lasthandoff: 03/03/2017
 
 
 ---
 
 # <a name="service-map-integration-with-system-center-operations-manager-integration"></a>服务映射与 System Center Operations Manager 的集成
+  > [!NOTE]
+  > 此功能处于个人预览状态，因此不应在生产系统上使用它。
+  > 
+  
 Operations Management Suite (OMS) 服务映射可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许你如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。  有关详细信息，请参阅[服务映射文档](operations-management-suite-service-map.md)。
 
-使用服务映射与 System Center Operations Manager (SCOM) 集成预览版，可以根据服务映射中的动态依赖关系映射，在 SCOM 中自动创建分布式应用程序关系图。
+通过服务映射与 System Center Operations Manager (SCOM) 的此集成，可以根据服务映射中的动态依赖关系映射，在 SCOM 中自动创建分布式应用程序关系图。
 
-# <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 1.    用于管理一组服务器的 SCOM 管理组。
 2.    已启用服务映射解决方案的 OMS 工作区。
 3.    由 SCOM 管理并可向服务映射发送数据的一组服务器（至少一台）。  支持 Windows 和 Linux 服务器。
-4.    与 OMS 工作区关联的、具有 Azure 订阅访问权限的服务主体。  有关服务主体的详细信息，请参阅“附录”。
+4.    与 OMS 工作区关联的、具有 Azure 订阅访问权限的服务主体。  [有关创建服务主体的详细信息](#creating-a-service-principal)。
 
-# <a name="installing-service-map-management-pack"></a>安装服务映射管理包
+## <a name="installing-service-map-management-pack"></a>安装服务映射管理包
 导入 Microsoft.SystemCenter.ServiceMap 管理捆绑包 (Microsoft.SystemCenter.ServiceMap.mpb) 可以启用 SCOM 与服务映射之间的集成。  该捆绑包包含以下管理包：
 * Microsoft ServiceMap Application Views
 * Microsoft System Center ServiceMap Internal
 * Microsoft System Center ServiceMap Overrides
 * Microsoft System Center ServiceMap
 
-# <a name="configuring-the-service-map-integration"></a>配置服务映射集成
+## <a name="configuring-the-service-map-integration"></a>配置服务映射集成
 1. 安装 ServiceMap 管理包后，“管理”窗格中 Operations Management Suite 的下面会出现新节点“服务映射”。
 2. 在“服务映射概述”窗格中单击“添加工作区”打开配置向导。
 
     ![SCOM 配置向导](media/oms-service-map/scom-configuration.png)
 
-3. 向导中的第一个步骤是使用“连接配置”来配置服务主体名称。 输入服务主体的租户 ID、应用程序 ID（或者用户名或 ClientID）和密码。  有关如何创建服务主体，请参阅“附录”部分。
+3. 向导中的第一步是在其中输入 Azure 服务主体的信息的连接配置。 输入服务主体的租户名称或 ID、应用程序 ID（或者用户名或 ClientID）和密码。  [有关创建服务主体的详细信息](#creating-a-service-principal)。
 
     ![SCOM 配置 SPN](media/oms-service-map/scom-config-spn.png)
 
@@ -68,31 +72,31 @@ Operations Management Suite (OMS) 服务映射可自动发现 Windows 和 Linux 
 
 **注意：**默认同步间隔设置为 60 分钟。 用户可配置重写来更改同步间隔。 用户还可以通过“创作”窗格手动将服务器添加到服务映射服务器组（“创作”窗格 -->“组”，然后搜索“服务映射服务器组”）。 下一次同步时，将同步这些服务器的服务器映射（根据配置的同步间隔）。
 
-# <a name="monitoring-service-map"></a>监视服务映射
+## <a name="monitoring-service-map"></a>监视服务映射
 连接 OMS 工作区后，SCOM 控制台的“监视”窗格中将显示新文件夹“服务映射”。
 ![SCOM 监视](media/oms-service-map/scom-monitoring.png)
 
 “服务映射”文件夹包含三个节点：
-## <a name="all-alerts"></a>所有警报：
+### <a name="all-alerts"></a>所有警报：
 显示 SCOM 与 OMS 中服务映射解决方案之间的通信的所有相关警报。
 
 **注意：**这些警报不是 SCOM 中显示的 OMS 警报。
-## <a name="servers"></a>服务器：
+### <a name="servers"></a>服务器：
 包含配置为从服务映射同步的受监视服务器的列表。
 
 ![SCOM 监视服务器](media/oms-service-map/scom-monitoring-servers.png)
 
-## <a name="server-dependency-views"></a>服务器依赖关系视图：
+### <a name="server-dependency-views"></a>服务器依赖关系视图：
 此视图包含从服务映射同步的所有服务器的列表。 用户可以单击任一服务器来查看其分布式应用程序关系图。
 
 ![SCOM 分布式应用程序关系图](media/oms-service-map/scom-dad.png)
 
-# <a name="editdelete-workspace"></a>编辑/删除工作区：
+## <a name="editdelete-workspace"></a>编辑/删除工作区：
 用户可以通过“服务映射概述”窗格编辑或删除配置的工作区（“管理”窗格 -->“Operations Management Suite”-->“服务映射”）。  请注意，目前只能配置一个 OMS 工作区。
 
 ![SCOM 编辑工作区](media/oms-service-map/scom-edit-workspace.png)
 
-# <a name="configuring-rules-and-overrides"></a>配置规则和重写：
+## <a name="configuring-rules-and-overrides"></a>配置规则和重写：
 已创建一个**_Microsoft.SystemCenter.ServiceMap.Import.Rule**_ 规则用于定期从服务映射提取信息。  用户可以配置此规则的重写来更改同步计时。
 “创作”窗格 -->“规则”-->“Microsoft.SystemCenter.ServiceMapImport.Rule”
 
@@ -102,18 +106,17 @@ Operations Management Suite (OMS) 服务映射可自动发现 Windows 和 Linux 
 * **TimeoutSeconds** – 请求在多长时间后超时 
 * **TimeWindowMinutes** – 数据查询的持续时间。  默认值为 60 分钟时限。 最大值为 1 小时（服务映射允许的最大值）。
 
-# <a name="known-issueslimitations"></a>已知问题/限制：
+## <a name="known-issueslimitations"></a>已知问题/限制：
 在当前设计中：
 1. 尽管用户可以通过创作窗格手动将服务器添加到“服务映射服务器组”，但只会在下一个同步周期（默认值为&60; 分钟。 用户可以重写同步计时），从服务映射同步这些服务器的映射。 
 2. 用户可以连接到单个 OMS 工作区。
 
-# <a name="appendix"></a>附录
 ## <a name="creating-a-service-principal"></a>创建服务主体
 单击以下链接可以访问有关创建服务主体的三种不同方法的 Azure 正式文档。
 * [使用 PowerShell 创建服务主体](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [使用 Azure CLI 创建服务主体](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 * [使用 Azure 门户创建服务主体](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
-## <a name="feedback"></a>反馈
+### <a name="feedback"></a>反馈
 是否有任何关于服务映射或本文档的反馈？  请访问 [User Voice 页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。
 

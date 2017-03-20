@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2017
+ms.date: 03/03/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 83ae00afbcbb5d3ff38ee1f934e3b2f8d1c8f624
-ms.openlocfilehash: 95a6933d64428255eb061e7077c3e0768c72e207
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 3e166b82e547975a5d44465231da057a9465f81c
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -126,7 +126,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 | Caller_s |谁启动了该操作。  可能的值为电子邮件地址或计划作业的系统。 |
 | Tenant_g | GUID，用于为 Caller 标识租户。 |
 | JobId_g |用作 Runbook 作业 ID 的 GUID。 |
-| ResultType |Runbook 作业的状态。  可能的值包括：<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Succeeded（成功） |
+| ResultType |Runbook 作业的状态。  可能的值包括：<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Completed（已完成） |
 | 类别 | 数据类型的分类。  对于自动化，该值为 JobLogs。 |
 | OperationName | 指定在 Azure 中执行的操作类型。  对于自动化，该值为 Job。 |
 | 资源 | 自动化帐户的名称 |
@@ -176,7 +176,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 2. 通过在查询字段中键入以下搜索，为警报创建日志搜索查询：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended)`  还可以使用以下命令按 RunbookName 分组：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended) | measure Count() by RunbookName_s`   
 
    如果已设置在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。  自动化帐户名称可能派生自 JobLogs 搜索中的 Resource 字段。  
-3. 若要打开“添加警报规则”屏幕，请单击页面顶部的“警报”。 若要详细了解用于配置警报的选项，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md#creating-an-alert-rule)。
+3. 若要打开“添加警报规则”屏幕，请单击页面顶部的“警报”。 若要详细了解用于配置警报的选项，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md#creating-alert-rules)。
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>查找已完成但出错的所有作业
 除了在失败时发出警报外，还可以发现 Runbook 作业何时发生非终止错误。 在这些情况下，PowerShell 会生成错误流，但非终止错误不会导致作业暂停或失败。    

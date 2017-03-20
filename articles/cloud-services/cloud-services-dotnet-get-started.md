@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 02474f8ab77763be1b40da95f5d7cd935ba7f121
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f72a3650de5b1d43c992a801ffce1384774594f2
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -54,8 +55,9 @@ ms.openlocfilehash: 02474f8ab77763be1b40da95f5d7cd935ba7f121
 
 * Visual Studio 2013
 * Visual Studio 2015
+* Visual Studio 2017
 
-上述产品中，只要缺少其中任意一个，安装 Azure SDK 时就将自动安装 Visual Studio 2015。
+上述产品中，只要缺少其中任意一个，安装 Azure SDK 时就会自动安装 Visual Studio。
 
 ## <a name="application-architecture"></a>应用程序体系结构
 该应用程序将广告存储在 SQL 数据库中，通过使用实体框架 Code First 创建表和访问数据。 对于每个广告，数据库存储两个 URL，一个用于完全尺寸的图像，一个用于缩略图。
@@ -76,7 +78,7 @@ ms.openlocfilehash: 02474f8ab77763be1b40da95f5d7cd935ba7f121
 
     默认情况下，Visual Studio 会自动还原 NuGet 包的内容，它未包括在 *.zip* 文件中。 如果包未还原，请通过转到“管理解决方案的 NuGet 包”对话框并单击右上角的“还原”按钮手动安装。
 5. 在“解决方案资源管理器”中，确保 **ContosoAdsCloudService** 被选为启动项目。
-6. 如果使用 Visual Studio 2015，请在 ContosoAdsWeb 项目的应用程序 *Web.config* 文件以及 ContosoAdsCloudService 项目的 *ServiceConfiguration.Local.cscfg* 文件中，更改 SQL Server 连接字符串。 对于每种情况，请将“(localdb)\v11.0”更改为“(localdb)\MSSQLLocalDB”。
+6. 如果使用 Visual Studio 2015 或更高版本，请在 ContosoAdsWeb 项目的应用程序 *Web.config* 文件以及 ContosoAdsCloudService 项目的 *ServiceConfiguration.Local.cscfg* 文件中，更改 SQL Server 连接字符串。 对于每种情况，请将“(localdb)\v11.0”更改为“(localdb)\MSSQLLocalDB”。
 7. 按 Ctrl+F5 运行应用程序。
 
     在本地运行云服务项目时，Visual Studio 会自动调用 Azure *计算模拟器*和 Azure *存储模拟器*。 计算仿真程序使用您的计算机资源，以模拟 web 角色和辅助角色环境。 存储模拟器使用 [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) 数据库模拟 Azure 云存储。
@@ -364,7 +366,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
     </connectionStrings>
     ```
 
-    如果你使用的是 Visual Studio 2015，请将“v11.0”替换为“MSSQLLocalDB”。
+    如果你使用的是 Visual Studio 2015 或更高版本，请将“v11.0”替换为“MSSQLLocalDB”。
 2. 保存所做更改。
 3. 在 ContosoAdsCloudService 项目中，右键单击“角色”下的 ContosoAdsWeb，然后单击“属性”。
 
@@ -381,7 +383,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
    * 名称：ContosoAdsDbConnectionString
    * 类型：字符串
-   * 值：粘贴用于 Web 角色项目的相同连接字符串。 （以下示例适用于 Visual Studio 2013；如果你使用 Visual Studio 2015 并想要复制此示例，请记得更改数据源。）
+   * 值：粘贴用于 Web 角色项目的相同连接字符串。 （以下示例适用于 Visual Studio 2013；如果你使用 Visual Studio 2015 或更高版本并想要复制此示例，请记得更改数据源。）
 
        ```
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
@@ -769,9 +771,4 @@ Contoso 广告应用程序有意保持入门教程的简单性。 例如，它�
 * [如何管理云服务](cloud-services-how-to-manage.md)
 * [Azure 存储空间](/documentation/services/storage/)
 * [如何选择云服务提供商](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

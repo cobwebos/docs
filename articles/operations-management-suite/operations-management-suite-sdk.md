@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 03/01/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 47c897afd6321a59f540d1f0cb86602d4ea18ed1
-ms.openlocfilehash: 5aed4eb336d55c2954da563422972644e25d0140
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 03e0f5b6fa26806083cd7852e123495c898bcf0c
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -40,15 +40,16 @@ ms.lasthandoff: 02/23/2017
 * [Log Analytics 文档](http://azure.microsoft.com/documentation/services/log-analytics)
 * [Log Analytics REST API](/rest/api/loganalytics)
 * [Log Analytics HTTP 数据收集器 API](../log-analytics/log-analytics-data-collector-api.md)
-* [日志搜索 API](../log-analytics/log-analytics-log-search-api.md)
-* [警报 API](../log-analytics/log-analytics-api-alerts.md)
+* [日志搜索 REST API](../log-analytics/log-analytics-log-search-api.md)
+* [警报 REST API](../log-analytics/log-analytics-api-alerts.md)
 * [Log Analytics PowerShell Cmdlet](https://msdn.microsoft.com/library/mt188224.aspx)
 * [Log Analytics .NET 库](https://www.nuget.org/packages/Microsoft.Azure.Management.OperationalInsights/0.16.0-preview)
 
 ## <a name="service-map"></a>服务映射
 * [服务映射文档](operations-management-suite-service-map.md)
+* [服务映射 REST API](https://docs.microsoft.com/rest/api/servicemap/)
 
-## <a name="site-recovery"></a>Site Recovery
+## <a name="site-recovery"></a>站点恢复
 * [站点恢复 PowerShell cmdlet](https://msdn.microsoft.com/library/mt637930.aspx)
 * [站点恢复 REST API](https://msdn.microsoft.com/library/azure/mt750497.aspx)
 * [将 Azure 自动化 Runbook 添加到恢复计划](../site-recovery/site-recovery-runbook-automation.md)
@@ -56,6 +57,6 @@ ms.lasthandoff: 02/23/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 阅读关于[与 OMS 服务集成](operations-management-suite-integration.md)的不同选项。
-* 在 OMS 中创建自定义解决方案（即将推出）。
+* [在 OMS 中创建自定义解决方案](operations-management-suite-solutions-creating.md)。
 
 

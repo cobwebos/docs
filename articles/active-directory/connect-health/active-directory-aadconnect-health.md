@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 03/10/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 6a1d5cea8f7f501851dce9813012df51ec9e3dcf
-ms.openlocfilehash: ea1dc55af79cf3285dfa1e245fcafb07dd8a6379
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: d995918ef51f345bf76a25f9b6908cf5f4aac6c9
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) Connect Health 可帮助你监视和深入了�
 >
 >
 
-## <a name="azure-ad-connect-health-for-ad-ds-previewactive-directory-aadconnect-health-addsmd"></a>[用于 AD DS 的 Azure AD Connect Health（预览版）](active-directory-aadconnect-health-adds.md)
+## <a name="azure-ad-connect-health-for-ad-dsactive-directory-aadconnect-health-addsmd"></a>[用于 AD DS 的 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)
 用于 Active Directory 域服务 (AD DS) 的 Azure AD Connect Health 负责监视 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 上已安装的域控制器。 使用 Health 代理安装可以从云监视本地 AD DS 环境。 用于 AD DS 的 Azure AD Connect Health 提供以下关键功能集：
 
 * 检测到域控制器不正常时的监视警报以及关键警报的电子邮件通知

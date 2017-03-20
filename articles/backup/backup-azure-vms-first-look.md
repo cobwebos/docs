@@ -1,6 +1,6 @@
 ---
-title: "初步了解：使用备份保管库保护 Azure VM | Microsoft Docs"
-description: "使用备份保管库保护 Azure VM。 本教程介绍如何在 Azure 中创建保管库、注册 VM、创建策略和保护 VM。"
+title: "初步了解：使用备份保管库备份 Azure VM | Microsoft 文档"
+description: "使用经典门户将 Azure VM 备份到备份保管库。 本教程介绍了所有阶段，包括：创建备份保管库、注册 VM、创建备份策略，以及运行初始备份作业。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -12,11 +12,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 1/10/2017
+ms.date: 3/10/2017
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
-ms.openlocfilehash: 895eeb27b6050897575c5d6f20f16ea3f99fdcf3
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 8883ff1601c521d05068452b1b58cadaee1a941f
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -27,66 +28,30 @@ ms.openlocfilehash: 895eeb27b6050897575c5d6f20f16ea3f99fdcf3
 >
 >
 
-本教程将引导你完成将 Azure 虚拟机 (VM) 备份到 Azure 的备份保管库的步骤。 本文将介绍用于备份 VM 的经典模型或服务管理器部署模型。 如果你对将 VM 备份到属于资源组的恢复服务保管库感兴趣，请参阅 [初步了解：使用恢复服务保管库保护 VM](backup-azure-vms-first-look-arm.md)。 若要顺利完成本教程，必须满足以下先决条件：
+本教程将引导你完成将 Azure 虚拟机 (VM) 备份到 Azure 的备份保管库的步骤。 本文介绍用于备份 VM 的经典模型或服务管理器部署模型。 以下步骤仅适用于在经典门户中创建的备份保管库。 Microsoft 建议新部署使用 Resource Manager 模型。
+
+如果你对将 VM 备份到属于资源组的恢复服务保管库感兴趣，请参阅 [初步了解：使用恢复服务保管库保护 VM](backup-azure-vms-first-look-arm.md)。
+
+若要顺利完成本教程，必须满足以下先决条件：
 
 * 你已在 Azure 订阅中创建了一个 VM。
 * VM 已连接到 Azure 公共 IP 地址。 有关更多信息，请参阅[网络连接](backup-azure-vms-prepare.md#network-connectivity)。
 
-若要备份 VM，需要执行五个主要步骤：  
-
-![步骤 1](./media/backup-azure-vms-first-look/step-one.png) 创建一个备份保管库，或指定现有的备份保管库。 <br/>
-![步骤 2](./media/backup-azure-vms-first-look/step-two.png) 使用 Azure 经典门户来发现并注册虚拟机。 <br/>
-![步骤 3](./media/backup-azure-vms-first-look/step-three.png) 安装 VM 代理。 <br/>
-![步骤 4](./media/backup-azure-vms-first-look/step-four.png) 创建用于保护虚拟机的策略。 <br/>
-![步骤 5](./media/backup-azure-vms-first-look/step-five.png) 运行备份。
-
-![VM 备份过程的高级视图](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
 > [!NOTE]
-> Azure 有两种用于创建和使用资源的部署模型： [Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本教程适用于可在 Azure 经典门户中创建的 VM。 Azure 备份服务支持基于资源管理器的 VM。 有关将 VM 备份到恢复服务保管库的详细信息，请参阅 [初步了解：使用恢复服务保管库保护 VM](backup-azure-vms-first-look-arm.md)。
+> Azure 有两种用于创建和使用资源的部署模型： [Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本教程适用于在经典门户中创建的虚拟机。
 >
 >
 
-## <a name="step-1---create-a-backup-vault-for-a-vm"></a>步骤 1 - 为 VM 创建备份保管库
+## <a name="create-a-backup-vault"></a>创建备份保管库
 备份保管库是存储所有按时间创建的备份和恢复点的实体。 备份保管库还包含将应用到要备份的虚拟机的备份策略。
 
-1. 登录到 [Azure 经典门户](http://manage.windowsazure.com/)。
-2. 在 Azure 门户的左下角单击“ **新建**
+> [!IMPORTANT]
+> 从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。 现有备份保管库仍然受支持，并且可以[使用 Azure PowerShell 创建备份保管库](./backup-client-automation-classic.md#create-a-backup-vault)。 不过，Microsoft 建议你为所有部署创建恢复服务保管库，因为将来只会对恢复服务保管库进行增强。
 
-    ![单击“新建”菜单](./media/backup-azure-vms-first-look/new-button.png)
-3. 在“快速创建”向导中，单击“数据服务” > “恢复服务” > “备份保管库” > “快速创建”。
 
-    ![创建备份保管库](./media/backup-azure-vms-first-look/new-vault-wizard-one-subscription.png)
 
-    向导将提示你输入**名称**和**区域**。 如果你管理多个订阅，则会出现一个对话框让你选择该订阅。
-4. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。
-5. 在“区域” 中，为保管库选择地理区域。 保管库**必须**与要保护的虚拟机位于同一区域中。
-
-    如果你不知道 VM 所在的区域，请关闭此向导，然后单击 Azure 服务列表中的“ **虚拟机** ”。 “位置”列提供区域的名称。 如果你在多个区域中具有虚拟机，请在每个区域中创建备份保管库。
-6. 如果向导中没有任何“ **订阅** ”对话框，请跳到下一步。 如果要使用多个订阅，请选择要与新的备份保管库关联的订阅。
-
-    ![创建保管库 toast 通知](./media/backup-azure-vms-first-look/backup-vaultcreate.png)
-7. 单击“**创建保管库**”。 创建备份保管库可能需要一段时间。 可以在门户底部监视状态通知。
-
-    ![创建保管库 toast 通知](./media/backup-azure-vms-first-look/create-vault-demo.png)
-
-    将出现一条消息确认保管库已成功创建。 该保管库在“恢复服务”页中以“活动”状态列出。
-
-    ![创建保管库 toast 通知](./media/backup-azure-vms-first-look/create-vault-demo-success.png)
-8. 在“恢复服务”页的保管库列表中，选择创建的保管库以启动“快速启动”页。
-
-    ![备份保管库列表](./media/backup-azure-vms-first-look/active-vault-demo.png)
-9. 在“快速启动”页上，单击“配置”打开存储复制选项。
-    ![备份保管库列表](./media/backup-azure-vms-first-look/configure-storage.png)
-10. 在“ **存储复制** ”选项中，选择保管库的复制选项。
-
-    ![备份保管库列表](./media/backup-azure-vms-first-look/backup-vault-storage-options-border.png)
-
-    默认情况下，保管库具有异地冗余存储。 如果这是你的主要备份，请选择异地冗余存储。 如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储空间复制概述](../storage/storage-redundancy.md)部分，深入了解异地冗余和本地冗余存储选项。
-
-选择好保管库的存储选项后，可以开始将 VM 与保管库相关联。 若要开始关联，请发现及注册 Azure 虚拟机。
-
-## <a name="step-2---discover-and-register-azure-virtual-machines"></a>步骤 2 - 发现并注册 Azure 虚拟机
+## <a name="discover-and-register-azure-virtual-machines"></a>发现并注册 Azure 虚拟机
 向保管库注册 VM 之前，请运行发现过程以识别所有新 VM。 该过程将在订阅中返回虚拟机列表和其他信息，例如云服务名称、区域等。
 
 1. 登录到 [Azure 经典门户](http://manage.windowsazure.com/)
@@ -133,12 +98,12 @@ ms.openlocfilehash: 895eeb27b6050897575c5d6f20f16ea3f99fdcf3
 
     ![注册状态 2](./media/backup-azure-vms/register-status02.png)
 
-## <a name="step-3---install-the-vm-agent-on-the-virtual-machine"></a>步骤 3 - 在虚拟机中安装 VM 代理
-Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 如果你的 VM 是从 Azure 库创建的，则该 VM 上已包含 VM 代理。 可以跳到 [保护 VM](backup-azure-vms-first-look.md#step-4---create-the-backup-policy)。
+## <a name="install-the-vm-agent-on-the-virtual-machine"></a>在虚拟机中安装 VM 代理
+Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 如果 VM 是从 Azure 库创建的，则该 VM 上已包含 VM 代理；你可以跳到[保护 VM](backup-azure-vms-first-look.md#create-the-backup-policy)。
 
 如果你的 VM 是从本地数据中心迁移的，则该 VM 上可能尚未安装 VM 代理。 必须先在虚拟机上安装 VM 代理，然后才能继续保护 VM。 有关安装 VM 代理的详细步骤，请参阅 [“备份 VMs”一文中“VM 代理”部分](backup-azure-vms-prepare.md#vm-agent)。
 
-## <a name="step-4---create-the-backup-policy"></a>步骤 4 - 创建备份策略
+## <a name="create-the-backup-policy"></a>创建备份策略
 在触发初始备份作业之前，请设置计划来规定何时创建备份快照。 规定备份快照创建时间以及快照保留时长的计划就是备份策略。 保留期信息基于祖父-父-子备份轮转方案。
 
 1. 导航到备份保管库（位于 Azure 经典门户的“恢复服务”下），然后单击“已注册项”。
@@ -175,7 +140,7 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 
 
     现在你已创建策略，接下来请转到下一步骤，运行初始备份。
 
-## <a name="step-5---initial-backup"></a>步骤 5 - 初始备份
+## <a name="initial-backup"></a>初始备份
 在虚拟机受到策略保护后，可以在“ **受保护的项** ”选项卡上查看该关系。 在执行初始备份之前，“保护状态”将显示为“受保护 - (等待初始备份)”。 默认情况下，第一个计划的备份是 *初始备份*。
 
 ![等待中的备份](./media/backup-azure-vms-first-look/protection-pending-border.png)
@@ -208,9 +173,4 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 
 
 ## <a name="questions"></a>有疑问？
 如果你有疑问，或者希望包含某种功能，请 [给我们反馈](http://aka.ms/azurebackup_feedback)。
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

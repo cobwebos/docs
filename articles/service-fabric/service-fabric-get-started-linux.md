@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: fc04c5f8a9cdee4b51c67b480d70678c3dca7c93
-ms.openlocfilehash: 49391b604446ae1b08d04ca42c5bdcd132f8cf31
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 1e961eccbc4fb8af90c7da831429c942f92bdf79
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -46,17 +47,25 @@ ms.openlocfilehash: 49391b604446ae1b08d04ca42c5bdcd132f8cf31
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
-3. 将新的 GPG 密钥添加到你 apt keyring。
+3. 将 dotnet 存储库添加到源列表。
+
+    ```bash
+    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+    ```
+4. 将新的 GPG 密钥添加到你 apt keyring。
 
     ```bash
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     ```
-4. 根据新添加的存储库刷新包列表。
+    ```bash
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+    ```
+
+5. 根据新添加的存储库刷新包列表。
 
     ```bash
     sudo apt-get update
     ```
-
 ## <a name="install-and-set-up-the-sdk"></a>安装和设置 SDK
 源进行更新后，可以安装 SDK。
 
@@ -136,16 +145,19 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
     sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
     ```
 
-可以从 Eclipse Neon IDE 内安装用于 Service Fabric 的 Eclipse 插件。
+可以在**适用于 Java 开发人员的 Eclipse IDE** 中安装适用于 Service Fabric 的 Eclipse 插件。
 
-1. 在 Eclipse 中，确保已安装了 Buildship 版本 1.0.17 或更高版本。 可以通过“帮助”>“安装详细信息”检查已安装组件的版本。 可以使用[此处][buildship-update]的说明更新 Buildship。
+1. 在 Eclipse 中，请确保已安装最新 Eclipse **Neon** 和最新 Buildship（1.0.17 或更高版本）。 可以通过“帮助”>“安装详细信息”检查已安装组件的版本。 可以使用[此处][buildship-update]的说明更新 Buildship。
 2. 若要安装 Service Fabric 插件，请选择“帮助”>“安装新软件...”
 3. 在“使用”文本框中，输入：http://dl.windowsazure.com/eclipse/servicefabric
 4. 单击“添加”。
-
     ![Eclipse 插件][sf-eclipse-plugin]
 5. 选择 Service Fabric 插件，然后单击“下一步”。
 6. 继续执行安装并接受最终用户许可协议。
+
+如果已安装 Service Fabric Eclipse 插件，请确保使用的是最新版本。 若要检查是否可以进一步进行更新，可转到``Help => Installation Details``。 然后，在已安装插件的列表中搜索 Service Fabric 并单击“更新”。 如果存在任何挂起的更新，则会提取并安装该更新。
+
+如需详细了解如何使用 Service Fabric Eclipse 插件来创建、生成、部署、升级 Service Fabric Java 应用程序，请参阅我们的详细指南 - [Service Fabric 与 Eclipse 配合使用入门](service-fabric-get-started-eclipse.md)。
 
 ## <a name="install-the-net-core-sdk-optional"></a>安装 .NET Core SDK（可选）
 .NET Core SDK 提供使用跨平台 .NET Core 生成 Service Fabric 服务所需的库和模板。
@@ -174,7 +186,8 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 若要更新 CLI，请导航到 CLI 克隆到的目录，然后运行 `git pull` 进行更新。
 
 ## <a name="next-steps"></a>后续步骤
-* [在 Linux 上创建第一个 Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
+* [使用 Yeoman 在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
+* [使用适用于 Eclipse 的 Service Fabric 插件在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
 * [在 Linux 上创建第一个 CSharp 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
 * [使用 Azure CLI 管理 Service Fabric 应用程序](service-fabric-azure-cli.md)
@@ -189,9 +202,4 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 
 [sf-eclipse-plugin]: ./media/service-fabric-get-started-linux/service-fabric-eclipse-plugin.png
 [sfx-linux]: ./media/service-fabric-get-started-linux/sfx-linux.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

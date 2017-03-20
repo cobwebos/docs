@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/14/2017
+ms.date: 03/09/2017
 ms.author: babanisa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: 1b9423c22ff6e003a6236e01118b600a2c746db4
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 9fd40892c77630bd4f0b7abf5c3458a6dc200402
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -32,7 +33,7 @@ Azure 中继服务简化了混合应用程序，通过允许安全地向公有�
 Azure 中继具有两项功能：
 
 1. [混合连接](#hybrid-connections) - 使用开放标准 Web 套接字，实现多平台方案。
-2. [WCF 中继](#wcf-relays) - 使用 Windows Communication Foundation (WCF) 实现远程过程调用。 WCF 中继是传统的中继产品，很多客户可能已在其 WCF 编程模型中使用。
+2. [WCF 中继](#wcf-relays) - 使用 Windows Communication Foundation (WCF) 实现远程过程调用。 WCF 中继是传统的中继产品，很多客户已在其 WCF 编程模型中使用。
 
 使用混合连接和 WCF 中继都能与企业网络中的资产建立安全连接。 哪一种功能更好将取决于具体的需求，如下表中所述：
 
@@ -41,12 +42,9 @@ Azure 中继具有两项功能：
 | **WCF** |x | |
 | **.NET Core** | |x |
 | **.NET Framework** |x |x |
-| **JavaScript/NodeJS*** | |x |
-| **Java*** | |x |
+| **JavaScript/NodeJS** | |x |
 | **基于标准的开放协议** | |x |
 | **多个 RPC 编程模型** | |x |
-
-*正式版
 
 ## <a name="hybrid-connections"></a>混合连接
 [Azure 中继混合连接](relay-hybrid-connections-protocol.md)功能是在现有中继功能的基础上演进的安全开放协议，可在包含基本 WebSocket 功能（明确包括常用 Web 浏览器中的 WebSocket API）的任何平台和任何语言中实现。 混合连接基于 HTTP 和 WebSocket。
@@ -62,10 +60,5 @@ WCF 中继适用于整个 .NET Framework (NETFX) 和 WCF。 可以使用一套 W
 * [创建命名空间](relay-create-namespace-portal.md)
 * [.NET 入门](relay-hybrid-connections-dotnet-get-started.md)
 * [节点入门](relay-hybrid-connections-node-get-started.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

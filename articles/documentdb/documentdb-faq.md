@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/03/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 4f8235ae743a63129799972ca1024d672faccbe9
-ms.openlocfilehash: 441e2adf6a222a0fc2e7e06c9b0140548655d542
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: cf8db132c7f541017744505bf0fca9393db8b3f9
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -59,7 +59,7 @@ DocumentDB 是面向 NoSQL 文档的数据库，以 JSON 格式存储数据。  
 如果工作负荷可以大致平均分配给足够大量的分区键，则在 DocumentDB 中集合可以支持的吞吐量总量没有限制。
 
 ### <a name="how-much-does-microsoft-azure-documentdb-cost"></a>Microsoft Azure DocumentDB 的费用是多少？
-请参考 [DocumentDB 定价详细信息](https://azure.microsoft.com/pricing/details/documentdb/)页面了解详细信息。 DocumentDB 使用量费用取决于正在使用的集合数目、集合的在线小时数，以及每个集合的已使用存储和已预配吞吐量。
+请参考 [DocumentDB 定价详细信息](https://azure.microsoft.com/pricing/details/documentdb/)页面了解详细信息。 DocumentDB 使用量费用取决于预配的集合数目、集合的联机小时数，以及每个集合的已预配吞吐量。
 
 ### <a name="is-there-a-free-account-available"></a>有免费的帐户吗？
 如果不熟悉 Azure，可以注册 [Azure 免费帐户](https://azure.microsoft.com/free/)，这样可以得到 30 天试用期和 200 美元，让你试用所有 Azure 服务。 或者，如果有 Visual Studio 订阅，则有资格[免费获取每月&150; 美元的 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，可用于任何 Azure 服务。  

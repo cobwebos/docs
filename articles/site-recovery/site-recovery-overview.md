@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/26/2017
+ms.date: 03/14/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: e4bb13a73f6338d2d844a0561edc65063c685d59
-ms.openlocfilehash: e554a0ba87efb0272e092a121ba96edc9d9eb011
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: d8e4e4bb7dd1e40d8c561adba04b8346fcb2127d
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="what-is-site-recovery"></a>什么是 Site Recovery？
 
-欢迎使用 Azure Site Recovery 服务！ 本文概述了该服务，并提供了详细信息链接。
+欢迎使用 Azure Site Recovery 服务！ 本文快速简要地介绍了该服务。
 
-自然事件和操作失败会导致业务中断。 组织需制定业务连续性和灾难恢复 (BCDR) 策略，借此保证计划内和计划外停机期间的数据安全和应用可用性，并尽快恢复正常运行状态。
+自然事件和操作失败会导致中断。 组织需制定业务连续性和灾难恢复 (BCDR) 策略，借此保证计划内和计划外停机期间的数据安全和应用可用性，并尽快恢复业务的正常运营状态。
 
-Azure 恢复服务有助于制定 BCDR 策略。 [Azure 备份](https://docs.microsoft.com/en-us/azure/backup/)保证数据安全性和可恢复性。 Site Recovery 可对工作负荷进行复制、故障转移和恢复，因此发生故障时这些工作负荷仍然可用。
+Azure 恢复服务有助于制定 BCDR 策略。 [Azure 备份](https://docs.microsoft.com/en-us/azure/backup/)服务保证数据安全性和可恢复性。 Site Recovery 可对工作负荷进行复制、故障转移和恢复，因此发生故障时这些工作负荷仍然可用。
 
 ## <a name="what-does-site-recovery-provide"></a>Site Recovery 提供什么功能？
 
@@ -47,12 +47,6 @@ Azure 恢复服务有助于制定 BCDR 策略。 [Azure 备份](https://docs.mic
 * **与自动化库集成** - 丰富的 Azure 自动化库提供特定于应用程序的生产就绪型脚本，可下载它们并与 Site Recovery 集成。
 * **简化网络管理** - Site Recovery 和 Azure 中的高级网络管理可保留 IP 地址、配置负载均衡器并与 Azure 流量管理器集成来实现高效的网络切换，进而简化应用程序网络要求。
 
-## <a name="which-azure-portal"></a>哪个 Azure 门户？
-
-* 在较新的 [Azure 门户](https://portal.azure.com)或 [Azure 经典门户](https://manage.windowsazure.com/)中均可部署 Site Recovery。
-* 在 Azure 经典门户中，可使用经典服务管理模型支持 Site Recovery。
-* 在 Azure 门户中，可以支持经典模型或较新的 [Resource Manager 部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。
-- 经典门户应仅用于维护现有 Site Recovery 部署。 无法在经典门户中创建新的保管库。
 
 ## <a name="whats-supported"></a>支持的操作
 
@@ -64,6 +58,14 @@ Azure 恢复服务有助于制定 BCDR 策略。 [Azure 备份](https://docs.mic
 **可复制到何处？** | 复制到 Azure 存储或辅助数据中心<br/><br/> 对于 Hyper-V，仅 System Center VMM 云中托管的 Hyper-V 主机上的 VM 才能复制到辅助数据中心。
 **需要哪些 VMware 服务器/主机？** | 可通过[支持的 vSphere 主机/vCenter 服务器](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)托管想要复制的 VMware VM
 **可复制哪些工作负荷** | 可复制支持的复制计算机上运行的任何工作负荷。 另外，Site Recovery 团队已针对[多个应用](site-recovery-workload.md#workload-summary)执行特定于应用的测试。
+
+
+## <a name="which-azure-portal"></a>哪个 Azure 门户？
+
+* 在较新的 [Azure 门户](https://portal.azure.com)或 [Azure 经典门户](https://manage.windowsazure.com/)中均可部署 Site Recovery。
+* 在 Azure 经典门户中，可使用经典服务管理模型支持 Site Recovery。
+* 在 Azure 门户中，可以支持经典模型或较新的 [Resource Manager 部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。
+- 经典门户应仅用于维护现有 Site Recovery 部署。 无法在经典门户中创建新的保管库。
 
 ## <a name="next-steps"></a>后续步骤
 * 阅读有关[工作负荷支持](site-recovery-workload.md)的更多内容

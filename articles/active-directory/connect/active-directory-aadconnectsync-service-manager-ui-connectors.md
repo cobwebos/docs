@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/02/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: 55adbf800c6312371d937ed2da98a4a5ce704e51
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: bd2240678fed44db748ae062bdf91e457159b4a2
+ms.lasthandoff: 03/04/2017
 
 ---
-# <a name="using-connectors-with-the-auzre-ad-connect-sync-service-manager"></a>将连接器与 Auzre AD Connect Sync Service Manager 配合使用
+# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>将连接器与 Azure AD Connect Sync Service Manager 配合使用
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
 
@@ -66,48 +66,7 @@ ms.lasthandoff: 02/28/2017
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchscope.png)  
 例如，如果进行子树搜索，将获取某个 OU 中的所有对象。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)  
-可以从此网格中选择一个对象，选择“属性”，并从源连接器空间到 Metaverse 再到目标连接器空间一直[跟踪对象](#follow-an-object-and-its-data-through-the-system)。
-
-## <a name="follow-an-object-and-its-data-through-the-system"></a>在整个系统中跟踪对象及其数据
-当你排查数据问题时，从源连接器空间到 Metaverse 再到目标连接器空间一直跟踪对象是一个关键过程，可从中了解为什么数据没有预期值。
-
-### <a name="connector-space-object-properties"></a>连接器空间对象属性
-**导入**  
-打开 cs 对象时，顶端会出现数个选项卡。 “导入”选项卡显示导入后暂存的数据。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/csimport.png)  
-“旧值”显示当前存储在系统中的数据，而“新值”显示从源系统收到但尚未应用的数据。 在本例中，由于发生同步错误，因此无法应用更改。
-
-**错误**  
-对象出现问题时才会显示“错误”页面。 有关如何[排查同步错误](active-directory-aadconnectsync-service-manager-ui-operations.md#troubleshoot-errors-in-operations-tab)的详细信息，请参阅“操作”页上的详细信息。
-
-**沿袭**  
-“沿袭”选项卡显示连接器空间对象与 Metaverse 对象关联的方式。 可以看到连接器上次从连接的系统导入更改的时间，以及应用哪些规则以便在 Metaverse 中填充数据。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cslineage.png)  
-在“操作”列中，可以看到有一个操作为“预配”的“入站”同步规则。 这表示只要此连接器空间对象存在，就会保留 Metaverse 对象。 如果同步规则列表显示的同步规则方向为“出站”和“预配”，则表示删除 Metaverse 对象时，也将删除此对象。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cslineageout.png)  
-在“PasswordSync”列中，还会发现入站连接器空间可进行密码更改，因为有一个同步规则的值为 **True**。 此密码接着会通过出站规则发送到 Azure AD。
-
-从“沿袭”选项卡中，可以单击“Metaverse 对象属性”转到 Metaverse。[](#metaverse-object-properties)
-
-所有选项卡的底部都有两个按钮：“预览”和“日志”。
-
-**预览**  
-“预览”页面可用于同步单个对象。 如果你正在对某些客户同步规则进行故障排除，并且想要在单个对象上查看更改的效果，则此页面非常有用。 可以在“完全同步”和“增量同步”之间选择。 还可以在“生成预览”（仅在内存中保留更改）和“提交预览”（将暂存目标连接器空间的所有更改）之间选择。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/preview1.png)  
-可以检查对象，以及哪一个规则适用于特定的属性流。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/preview2.png)
-
-**日志**  
-“日志”页用于查看密码同步状态和历史记录。
-
-### <a name="metaverse-object-properties"></a>Metaverse 对象属性
-**属性**  
-在“属性”选项卡中，可以看到值，以及是由哪一个连接器提供它。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvattributes.png)  
-**连接器**  
-“连接器”选项卡显示所有具有对象表示形式的连接器空间。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvconnectors.png)  
-此选项卡也可让你导航到[连接器空间对象](#connector-space-object-properties)。
+可以从此网格中选择一个对象，选择“属性”，并从源连接器空间到 Metaverse 再到目标连接器空间一直[跟踪对象](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。

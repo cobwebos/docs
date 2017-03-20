@@ -12,30 +12,33 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 03/14/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 22b50dd6242e8c10241b0626b48f8ef842b6b0fd
-ms.openlocfilehash: c33ca9e5292096a0fd96d98da3e89d721463e903
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 4674985363bc1267449e018ab15a53757a8fd32d
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="how-does-azure-site-recovery-work"></a>Azure Site Recovery 的工作原理
 
-阅读本文，了解 [Azure Site Recovery](site-recovery-overview.md) 服务的基础体系结构以及它运行时必需的组件。
+本文介绍 [Azure Site Recovery](site-recovery-overview.md) 服务的基础体系结构以及它运行时必需的组件。
 
 请将任何评论发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
 
-## <a name="replication-to-azure"></a>复制到 Azure
+## <a name="replicate-to-azure"></a>复制到 Azure
 
 可以将以下内容复制到 Azure：
+
 - **VMware**：本地 VMware VM，运行在[支持的主机](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)上。 可以复制运行[支持的操作系统](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)的 VMware VM
 - **Hyper-V**：本地 Hyper-V VM，运行在[支持的主机](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)上。
 - **物理机**：本地物理服务器，在[支持的操作系统](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)上运行 Windows 或 Linux。 可以复制运行任何[受 Hyper-V 和 Azure 支持的](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)来宾操作系统的 Hyper-V VM。
 
-## <a name="vmware-replication-to-azure"></a>从 VMware 复制到 Azure
+## <a name="vmware-to-azure"></a>VMware 到 Azure
+
+将 VMware VM 复制到 Azure 时需要提供：
 
 区域 | 组件 | 详细信息
 --- | --- | ---
@@ -85,14 +88,16 @@ ms.lasthandoff: 03/02/2017
 
 ![故障回复](./media/site-recovery-components/enhanced-failback.png)
 
-## <a name="physical-server-replication-to-azure"></a>从物理服务器复制到 Azure
+## <a name="physical-to-azure"></a>物理机到 Azure
 
-此复制方案也使用与 [VMware 到 Azure 的复制](#vmware-replication-to-azure)相同的组件和进程，但请注意存在以下差异：
+将本地物理服务器复制到 Azure 时，复制过程还会使用各种组件和过程，这些组件和过程与[将 VMware 复制到 Azure](#vmware-replication-to-azure) 相同，但请注意以下区别：
 
 - 可以将物理服务器用于配置服务器，代替 VMware VM
 - 需要构建本地 VMware 基础结构，用于故障回复。 无法故障回复到物理服务器。
 
-## <a name="hyper-v-replication-to-azure"></a>从 Hyper-V 复制到 Azure
+## <a name="hyper-v-to-azure"></a>Hyper-V 到 Azure
+
+将 Hyper-V VM 复制到 Azure 时需要提供：
 
 **区域** | **组件** | **详细信息**
 --- | --- | ---
@@ -130,7 +135,7 @@ ms.lasthandoff: 03/02/2017
 ![组件](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
 
 
-## <a name="replication-to-a-secondary-site"></a>复制到辅助站点
+## <a name="replicate-to-a-secondary-site"></a>复制到辅助站点
 
 可以将以下内容复制到辅助站点：
 
@@ -139,13 +144,15 @@ ms.lasthandoff: 03/02/2017
 - **Hyper-V**：本地 Hyper-V VM，运行在[支持的 Hyper-V 主机](site-recovery-support-matrix-to-sec-site.md#on-premises-servers)上，后者在 VMM 云中管理。 [支持的主机](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)。 可以复制运行任何[受 Hyper-V 和 Azure 支持的](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)来宾操作系统的 Hyper-V VM。
 
 
-## <a name="vmware-vmphysical-server-replication-to-a-secondary-site"></a>将 VMware VM/物理服务器复制到辅助站点
+## <a name="vmwarephysical-to-a-secondary-site"></a>VMware/物理服务器到辅助站点
+
+使用 InMage Scout 将 VMware VM 或物理服务器复制到辅助站点。
 
 ### <a name="components"></a>组件
 
 **区域** | **组件** | **详细信息**
 --- | --- | ---
-**Azure** | 使用 InMage Scout 部署此方案。 | 若要获取 InMage Scout，需要 Azure 订阅。<br/><br/> 创建恢复服务保管库后，可以下载 InMage Scout 并安装最新的更新，以设置部署。
+**Azure** | InMage Scout。 | 若要获取 InMage Scout，需要 Azure 订阅。<br/><br/> 创建恢复服务保管库后，可以下载 InMage Scout 并安装最新的更新，以设置部署。
 **进程服务器** | 位于主站点 | 可以部署进程服务器来处理缓存、压缩和数据优化操作。<br/><br/> 它还可以将安装的统一代理推送到你要保护的计算机。
 **配置服务器** | 位于辅助站点 | 配置服务器可以通过管理网站或 vContinuum 控制台管理、配置和监视部署。
 **vContinuum 服务器** | 可选。 安装在配置服务器所在的同一位置。 | 它提供一个控制台用于管理和监视受保护的环境。
@@ -166,7 +173,9 @@ ms.lasthandoff: 03/02/2017
 
 
 
-## <a name="hyper-v-vm-replication-to-a-secondary-site"></a>从 Hyper-V VM 复制到辅助站点
+## <a name="hyper-v-to-a-secondary-site"></a>Hyper-V 到辅助站点
+
+将 Hyper-V VM 复制到辅助站点时需要提供：
 
 
 **区域** | **组件** | **详细信息**
@@ -202,25 +211,8 @@ ms.lasthandoff: 03/02/2017
 7. 若要使主站点再次成为活动位置，可以启动从辅助站点到主站点的计划内故障转移，然后再次启动反向复制。
 
 
-## <a name="hyper-v-replication-workflow"></a>Hyper-V 复制工作流
-
-**工作流阶段** | **操作**
---- | ---
-1.**启用保护** | 为 Hyper-V VM 启用保护后，将启动“启用保护”作业，检查计算机是否符合先决条件。 该作业将调用两个方法：<br/><br/> [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx)：使用已配置的设置来设置复制。<br/><br/> [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx)：初始化完整 VM 复制。
-2.**初始复制** |  创建虚拟机快照并逐个复制虚拟硬盘，直到它们已全部复制到辅助位置。<br/><br/> 完成复制所需的时间取决于 VM 大小和网络带宽以及初始复制方法。<br/><br/> 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中，该文件位于与磁盘相同的文件夹中。<br/><br/> 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助存储。<br/><br/> 当初始复制正在进行时，快照和日志将占用磁盘资源。 初始复制完成后，将删除 VM 快照，并且将同步并合并日志中的增量磁盘更改。
-3.**完成保护** | 初始复制完成后，“完成保护”作业将配置网络和其他复制后设置，使虚拟机受到保护。<br/><br/> 如果要复制到 Azure，可能需要调整虚拟机的设置，使其随时可进行故障转移。<br/><br/> 此时，你可以运行测试故障转移以检查一切是否按预期工作。
-4.**复制** | 在完成初始复制后，根据复制设置开始增量同步。<br/><br/> **复制失败**：如果增量复制失败且完整复制因为带宽或时间限制而需要大量开销，将会发生重新同步。 例如，如果 .hrl 文件达到磁盘大小的 50%，系统会将 VM 标记为重新同步。 重新同步通过计算源虚拟机磁盘和目标虚拟机的校验和并只发送增量来最大程度地减小发送的数据量。 重新同步完成后，将会恢复增量复制。 默认情况下，重新同步安排为在非工作时间自动运行，但你可以手动重新同步虚拟机。<br/><br/> **复制错误**：如果发生复制错误，将会进行内置重试。 如果是无法恢复的错误，例如身份验证或授权错误，或者副本计算机处于无效状态，则不会重试。 如果是可恢复的错误，例如网络错误，或磁盘空间/内存不足，则会发生重试。重试的间隔将会递增（依次为 1、2、4、8、10、30 分钟）。
-5.**计划内/计划外故障转移** | 如果需要，可以运行计划内或计划外故障转移。<br/><br/> 如果运行计划的故障转移，源 VM 将关闭以确保不会丢失数据。<br/><br/> 副本 VM 在创建后处于待提交状态。 需要提交这些操作才能完成故障转移。<br/><br/> 主站点启动并运行后，可以故障回复到主站点（如果可用）。
-
-
-**图 8：Hyper-V 工作流**
-
-![工作流](./media/site-recovery-components/arch-hyperv-azure-workflow.png)
-
-
-
-
 ## <a name="next-steps"></a>后续步骤
 
-[检查先决条件](site-recovery-prereq.md)
+- [详细了解](site-recovery-hyper-v-azure-architecture.md) Hyper-V 复制工作流。
+- [检查先决条件](site-recovery-prereq.md)
 

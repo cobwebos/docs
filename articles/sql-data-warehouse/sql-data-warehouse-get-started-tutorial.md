@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2c88c1abd2af7a1ca041cd5003fd1f848e1b311c
-ms.openlocfilehash: 12f72e76ee991dfb701637847f2e406cd0f8c449
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f5f21fa9a0265258b065a844ffd002749c4dee03
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -76,7 +76,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 
     **源**：空白数据库
 
-    **服务器**：选择在 [先决条件] 部分中创建的服务器。
+    **服务器**：选择在[先决条件]部分中创建的服务器。
 
     **排序规则**：保留默认的排序规则 SQL_Latin1_General_CP1_CI_AS。
 
@@ -94,7 +94,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 
 ### <a name="get-connection-information"></a>获取连接信息
 
-若要连接到数据仓库，需要通过在 [先决条件] 部分中创建的逻辑 SQL 服务器进行连接。
+若要连接到数据仓库，需要通过在[先决条件]部分中创建的逻辑 SQL 服务器进行连接。
 
 1. 从仪表板中选择数据仓库，或者在资源中搜索。
 
@@ -104,7 +104,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 
     ![选择服务器名称](./media/sql-data-warehouse-get-started-tutorial/select-server.png)
 
-3. 打开 SSMS，使用对象资源管理器通过在 [先决条件] 部分中创建的服务器管理员凭据连接到此服务器
+3. 打开 SSMS，使用对象资源管理器通过在[先决条件]部分中创建的服务器管理员凭据连接到此服务器
 
     ![使用 SSMS 进行连接](./media/sql-data-warehouse-get-started-tutorial/ssms-connect.png)
 
@@ -240,7 +240,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
     ```sql
     CREATE SCHEMA ext;
     ```
-5. 创建外部表。 这些表引用 Azure Blob 存储中存储的数据。 运行以下 T-SQL 命令创建几个外部表，所有这些表都指向前面在外部数据源中定义的 Azure Blob。
+5. 创建外部表。 这些表引用 Azure Blob 存储中存储的数据。 运行以下 T-SQL 命令以创建若干外部表，这些表都指向我们之前在外部数据源中定义的 Azure blob。
 
 ```sql
     CREATE EXTERNAL TABLE [ext].[Date] 
@@ -415,13 +415,13 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
         REJECT_VALUE = 0
     )
     ;
-    ```
+```
 
-### Import the data from Azure blob storage.
+### <a name="import-the-data-from-azure-blob-storage"></a>从 Azure Blob 存储导入数据。
 
-SQL Data Warehouse supports a key statement called CREATE TABLE AS SELECT (CTAS). This statement creates a new table based on the results of a select statement. The new table has the same columns and data types as the results of the select statement.  This is an elegant way to import data from Azure blob storage into SQL Data Warehouse.
+SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 此语句基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。  这是将数据从 Azure Blob 存储导入到 SQL 数据仓库的简洁方法。
 
-1. Run this script to import your data.
+1. 运行此脚本导入数据。
 
     ```sql
     CREATE TABLE [dbo].[Date]
@@ -496,9 +496,9 @@ SQL Data Warehouse supports a key statement called CREATE TABLE AS SELECT (CTAS)
     ;
     ```
 
-2. View your data as it loads.
+2. 在加载数据的同时查看数据。
 
-   You’re loading several GBs of data and compressing it into highly performant clustered columnstore indexes. Run the following query that uses a dynamic management views (DMVs) to show the status of the load. After starting the query, grab a coffee and a snack while SQL Data Warehouse does some heavy lifting.
+   假设要加载几个 GB 的数据，并将其压缩成高性能群集列存储索引。 运行以下使用动态管理视图 (DMV) 的查询以显示负载的状态。 开始查询后，在 SQL 数据仓库执行繁重任务的同时，可享用咖啡和小吃。
     
     ```sql
     SELECT
@@ -528,62 +528,61 @@ SQL Data Warehouse supports a key statement called CREATE TABLE AS SELECT (CTAS)
         gb_processed desc;
     ```
 
-3. View all system queries.
+3. 查看所有系统查询。
 
     ```sql
     SELECT * FROM sys.dm_pdw_exec_requests;
     ```
 
-4. Enjoy seeing your data nicely loaded into your Azure SQL Data Warehouse.
+4. 结果让人欣慰，数据已顺利载入 Azure SQL 数据仓库。
 
-    ![See Data Loaded](./media/sql-data-warehouse-get-started-tutorial/see-data-loaded.png)
+    ![查看加载的数据](./media/sql-data-warehouse-get-started-tutorial/see-data-loaded.png)
 
 
-## Improve query performance
+## <a name="improve-query-performance"></a>提高查询性能
 
-There are several ways to improve query performance and to achieve the high-speed performance that SQL Data Warehouse is designed to provide.  
+有多种方法可以提高查询性能并实现 SQL 数据仓库旨在提供的高速性能。  
 
-### See the effect of scaling on query performance 
+### <a name="see-the-effect-of-scaling-on-query-performance"></a>了解缩放对查询性能的影响 
 
-One way to improve query performance is to scale resources by changing the DWU service level for your data warehouse. Each service level costs more, but you can scale back or pause resources at any time. 
+提高查询性能的一种方法是通过更改数据仓库的 DWU 服务级别来缩放资源。 服务级别越高，成本越高，但可以随时往回缩减或暂停资源。 
 
-In this step, you compare performance at two different DWU settings.
+在此步骤中，将比较两种不同 DWU 设置的性能。
 
-First, let's scale the sizing down to 100 DWU so we can get an idea of how one compute node might perform on its own.
+首先，让我们缩减到 100 个 DWU，以便可以了解单独一个计算节点的表现如何。
 
-1. Go to the portal and select your SQL Data Warehouse.
+1. 转到门户，选择 SQL 数据仓库。
 
-2. Select scale in the SQL Data Warehouse blade. 
+2. 在“SQL 数据仓库”边栏选项卡中选择“缩放”。 
 
-    ![Scale DW From portal](./media/sql-data-warehouse-get-started-tutorial/scale-dw.png)
+    ![在门户中缩放数据仓库](./media/sql-data-warehouse-get-started-tutorial/scale-dw.png)
 
-3. Scale down the performance bar to 100 DWU and hit save.
+3. 将性能条缩减到 100 个 DWU，然后单击“保存”。
 
-    ![Scale and save](./media/sql-data-warehouse-get-started-tutorial/scale-and-save.png)
+    ![缩放并保存](./media/sql-data-warehouse-get-started-tutorial/scale-and-save.png)
 
-4. Wait for your scale operation to finish.
+4. 等到缩放操作完成。
 
     > [!NOTE]
-    > Queries cannot run while changing the scale. Scaling **kills** your currently running queries. You can restart them when the operation is finished.
+    > 更改规模时，查询无法运行。 缩放会**终止**当前运行的查询。 操作完成后，可重启这些查询。
     >
     
-5. Do a scan operation on the trip data, selecting the top million entries for all the columns. If you're eager to move on quickly, feel free to select fewer rows. Take note of the time it takes to run this operation.
+5. 选择所有列中的前&100; 万个条目，针对行程数据执行扫描操作。 如果希望很快就能获得结果，请选择更少的行。 记下运行此操作所花费的时间。
 
     ```sql
     SELECT TOP(1000000) * FROM dbo.[Trip]
     ```
-6. Scale your data warehouse back to 400 DWU. Remember, each 100 DWU is adding another compute node to your Azure SQL Data Warehouse.
+6. 将数据仓库缩减到 400 个 DWU。 请记住，每增加 100 个 DWU，就会向 Azure SQL 数据仓库添加一个计算节点。
 
-7. Run the query again! You should notice a significant difference. 
+7. 再次运行查询！ 应会看到明显的差异。 
 
 > [!NOTE]
-> Since SQL Data Warehouse uses massively parallel processing. Queries that scan or perform analytic functions on millions of rows experience the true power of
-> Azure SQL Data Warehouse.
+> SQL 数据仓库使用大规模并行处理。 在数百万行上扫描或执行分析功能的查询可体验到 Azure SQL 数据仓库的真正强大之处。
 >
 
-### See the effect of statistics on query performance
+### <a name="see-the-effect-of-statistics-on-query-performance"></a>了解统计信息对查询性能的影响
 
-1. Run a query that joins the Date table with the Trip table
+1. 运行可将“日期”表与“行程”表相联接的查询
 
     ```sql
     SELECT TOP (1000000) 
@@ -615,10 +614,10 @@ First, let's scale the sizing down to 100 DWU so we can get an idea of how one c
         ON  tr.DateID = dt.DateID
     ```
 
-    This query takes a while because SQL Data Warehouse has to shuffle data before it can perform the join. Joins do not have to shuffle data if they are designed to join data in the same way it is distributed. That's a deeper subject. 
+    此查询需要一段时间，因为 SQL 数据仓库必须先对数据进行随机排列，然后才能执行联接。 如果联接旨在以与分布数据相同的方式联接数据，则它们不必随机排列数据。 这是一个更深入的主题。 
 
-2. Statistics make a difference. 
-3. Run this statement to create statistics on the join columns.
+2. 统计信息会有所帮助。 
+3. 运行此语句以在联接列上创建统计信息。
 
     ```sql
     CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
@@ -626,48 +625,45 @@ First, let's scale the sizing down to 100 DWU so we can get an idea of how one c
     ```
 
     > [!NOTE]
-    > SQL DW does not automatically manage statistics for you. Statistics are important for query
-    > performance and it is highly recommended you create and update statistics.
+    > SQL 数据仓库不会自动管理统计信息。 统计信息对于查询性能非常重要，我们强烈建议创建并更新统计信息。
     > 
-    > **You gain the most benefit by having statistics on columns involved in joins, columns
-    > used in the WHERE clause and columns found in GROUP BY.**
+    > **基于涉及联接的列、WHERE 子句中使用的列以及 GROUP BY 中的列创建信息统计可以获得最大的效益。**
     >
 
-3. Run the query from Prerequisites again and observe any performance differences. While the differences in query performance will not be as drastic as scaling up, you should notice a  speed-up. 
+3. 再次根据“先决条件”中的步骤运行查询，然后观察性能是否出现任何差异。 尽管查询性能的差异不像扩展实例那样明显，但仍可注意到速度有所提升。 
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-You're now ready to query and explore. Check out our best practices or tips.
+现在，可以查询和浏览数据。 请查看我们的最佳实践或提示。
 
-If you're done exploring for the day, make sure to pause your instance! In production, you can experience enormous 
-savings by pausing and scaling to meet your business needs.
+在完成一天的浏览工作后，请务必暂停你的实例！ 在生产环境中，根据业务需要暂停和缩放实例可以大幅节省成本。
 
-![Pause](./media/sql-data-warehouse-get-started-tutorial/pause.png)
+![暂停](./media/sql-data-warehouse-get-started-tutorial/pause.png)
 
-## Useful readings
+## <a name="useful-readings"></a>有用的资料
 
-[Concurrency and Workload Management][]
+[并发性和工作负荷管理][]
 
-[Best practices for Azure SQL Data Warehouse][]
+[Azure SQL 数据仓库最佳实践][]
 
-[Query Monitoring][]
+[查询监视][]
 
-[Top 10 Best Practices for Building a Large Scale Relational Data Warehouse][]
+[有关构建大规模关系数据仓库的前 10 条最佳实践][]
 
-[Migrating Data to Azure SQL Data Warehouse][]
+[将数据迁移到 Azure SQL 数据仓库][]
 
-[Concurrency and Workload Management]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
-[Best practices for Azure SQL Data Warehouse]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
-[Query Monitoring]: sql-data-warehouse-manage-monitor.md
-[Top 10 Best Practices for Building a Large Scale Relational Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/
-[Migrating Data to Azure SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[并发性和工作负荷管理]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
+[Azure SQL 数据仓库最佳实践]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
+[查询监视]: sql-data-warehouse-manage-monitor.md
+[有关构建大规模关系数据仓库的前 10 条最佳实践]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/
+[将数据迁移到 Azure SQL 数据仓库]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 
 
 [!INCLUDE [Additional Resources](../../includes/sql-data-warehouse-article-footer.md)]
 
 <!-- Internal Links -->
-[Prerequisites]: sql-data-warehouse-get-started-tutorial.md#prerequisites
+[先决条件]: sql-data-warehouse-get-started-tutorial.md#prerequisites
 
 <!--Other Web references-->
 [Visual Studio]: https://www.visualstudio.com/

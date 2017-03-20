@@ -4,7 +4,7 @@ description: "使用 Azure 机器学习，基于存储在 Azure SQL 数据仓库
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
-manager: barbkess
+manager: jhubbard
 editor: 
 ms.assetid: 95635460-150f-4a50-be9c-5ddc5797f8a9
 ms.service: sql-data-warehouse
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
+ms.date: 03/02/2017
+ms.author: kevin
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: db402a9d8bdccf0db9783450fa4cb60a2c047ece
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: a5befbf1dc1862b3b0803eb4940341d246ec036c
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -41,7 +42,7 @@ ms.openlocfilehash: db402a9d8bdccf0db9783450fa4cb60a2c047ece
 
 * 随 AdventureWorksDW 示例数据预先加载的 SQL 数据仓库。 若要完成此预配，请参阅[创建 SQL 数据仓库][Create a SQL Data Warehouse]，并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以[手动加载示例数据][load sample data manually]。
 
-## <a name="1-get-data"></a>1.获取数据
+## <a name="1-get-the-data"></a>1.获取数据
 数据位于 AdventureWorksDW 数据库的 dbo.vTargetMail 视图中。 若要读取此数据：
 
 1. 登录到 [Azure 机器学习工作室][Azure Machine Learning studio]并单击“我的试验”。
@@ -146,9 +147,4 @@ FROM [dbo].[vTargetMail]
 [Introduction to Machine Learning on Azure]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
 [load sample data manually]: sql-data-warehouse-load-sample-databases.md
 [Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 
