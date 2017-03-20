@@ -27,7 +27,7 @@ ms.lasthandoff: 02/16/2017
 本文将逐步指导你完成创建 Service Fabric 独立群集的过程。
 
 > [!NOTE]
-> 可购买此独立 Windows Server 包并将其用于生产部署。 此包可能包含“预览”形式的新 Service Fabric 功能。 向下滚动到“此包中包括的预览功能”[](#previewfeatures_anchor) 预览功能列表部分。 现在，可以[下载 EULA 的副本](http://go.microsoft.com/fwlink/?LinkID=733084)。
+> 可购买此独立 Windows Server 包并将其用于生产部署。 此包可能包含“预览”形式的新 Service Fabric 功能。 向下滚动到 [此包中包括的预览功能](#previewfeatures_anchor) 预览功能列表部分。 现在，可以[下载 EULA 的副本](http://go.microsoft.com/fwlink/?LinkID=733084)。
 > 
 > 
 
