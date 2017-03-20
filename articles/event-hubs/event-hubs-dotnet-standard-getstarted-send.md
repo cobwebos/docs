@@ -12,59 +12,57 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/31/2017
+ms.date: 03/01/2017
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: dcb8bb1dcf287ecb2d91e19bf4df38765fe79114
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 6a6fe5e2e706fd8ab4ee6c51cde5b54fa703688b
+ms.lasthandoff: 03/06/2017
 
 ---
 
 # <a name="get-started-sending-messages-to-event-hubs-in-net-standard"></a>使用 .NET Standard 将消息发送到事件中心入门
 
 > [!NOTE]
-> [GitHub](https://github.com/Azure/azure-event-hubs-dotnet/tree/master/samples/SampleSender) 上提供了此示例。
+> [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) 上提供了此示例。
 
-## <a name="what-will-be-accomplished"></a>将要完成的任务
-
-本教程演示如何创建现有解决方案 **SampleSender**（在此文件夹中）。 可以按原样运行该解决方案，并将 `EhConnectionString`、`EhEntityPath` 和 `StorageAccount` 字符串替换为事件中心的值，也可以按照本教程创建自己的解决方案。
-
-在本教程中，我们将编写 .NET Core 控制台应用程序，以将消息发送到事件中心。
+本教程演示如何编写 .NET Core 控制台应用程序，以将一组消息发送到事件中心。 可以按原样运行 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) 解决方案，并将 `EhConnectionString` 和 `EhEntityPath` 字符串替换为事件中心的值，也可以按照本教程中的步骤创建自己的解决方案。
 
 ## <a name="prerequisites"></a>先决条件
 
-1. [Microsoft Visual Studio 2015 或 2017](http://www.visualstudio.com)。
-
+1. [Microsoft Visual Studio 2015 或 2017](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2015，但也支持 Visual Studio 2017。
 2. [.NET Core Visual Studio 2015 或 2017 工具](http://www.microsoft.com/net/core)。
-
 3. Azure 订阅。
-
 4. 事件中心命名空间。
-
-## <a name="send-messages-to-an-event-hub"></a>将消息发送到事件中心
 
 为将消息发送到事件中心，我们将使用 Visual Studio 编写 C# 控制台应用程序。
 
-### <a name="create-a-console-application"></a>创建控制台应用程序
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
 
-* 启动 Visual Studio 并创建新的 .NET Core 控制台应用程序。
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤进行操作，然后继续执行以下步骤。
 
-### <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
+## <a name="create-a-console-application"></a>创建控制台应用程序
 
-* 将 [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet 包添加到项目。
+启动 Visual Studio。 在“文件”菜单中，单击“新建”，然后单击“项目”。 创建 .NET Core 控制台应用程序。
 
-### <a name="write-some-code-to-send-messages-to-the-event-hub"></a>编写一些代码将消息发送到事件中心
+![][1]
+
+## <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
+
+将 [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet 包添加到项目。
+
+## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>编写一些代码将消息发送到事件中心
 
 1. 在 Program.cs 文件顶部添加以下 `using` 语句。
 
-    ```cs
+    ```csharp
     using Microsoft.Azure.EventHubs;
+    using System.Text;
     ```
 
 2. 向 `Program` 类添加常量作为事件中心连接字符串和实体路径（单个事件中心名称）。 将括号中的占位符替换为在创建事件中心时获得的相应值。
 
-    ```cs
+    ```csharp
     private static EventHubClient eventHubClient;
     private const string EhConnectionString = "{Event Hubs connection string}";
     private const string EhEntityPath = "{Event Hub path/name}";
@@ -72,7 +70,7 @@ ms.lasthandoff: 03/01/2017
 
 3. 将名为 `MainAsync` 的新方法添加到 `Program` 类，如下所示：
 
-    ```cs
+    ```csharp
     private static async Task MainAsync(string[] args)
     {
         // Creates an EventHubsConnectionStringBuilder object from a the connection string, and sets the EntityPath.
@@ -89,14 +87,14 @@ ms.lasthandoff: 03/01/2017
 
         await eventHubClient.CloseAsync();
 
-        Console.WriteLine("Press any key to exit.");
+        Console.WriteLine("Press ENTER to exit.");
         Console.ReadLine();
     }
     ```
     
 4. 将名为 `SendMessagesToEventHub` 的新方法添加到 `Program` 类，如下所示：
 
-    ```cs
+    ```csharp
     // Creates an Event Hub client and sends 100 messages to the event hub.
     private static async Task SendMessagesToEventHub(int numMessagesToSend)
     {
@@ -122,31 +120,31 @@ ms.lasthandoff: 03/01/2017
 
 5. 在 `Program` 类的 `Main` 方法中添加以下代码。
 
-    ```cs
+    ```csharp
     MainAsync(args).GetAwaiter().GetResult();
     ```
 
-    Program.cs 文件的内容如下所示。
+   Program.cs 文件的内容如下所示。
 
-    ```cs
+    ```csharp
     namespace SampleSender
     {
         using System;
         using System.Text;
         using System.Threading.Tasks;
         using Microsoft.Azure.EventHubs;
-    
+       
         public class Program
         {
             private static EventHubClient eventHubClient;
             private const string EhConnectionString = "{Event Hubs connection string}";
             private const string EhEntityPath = "{Event Hub path/name}";
-    
+        
             public static void Main(string[] args)
             {
                 MainAsync(args).GetAwaiter().GetResult();
             }
-    
+        
             private static async Task MainAsync(string[] args)
             {
                 // Creates an EventHubsConnectionStringBuilder object from a the connection string, and sets the EntityPath.
@@ -156,17 +154,17 @@ ms.lasthandoff: 03/01/2017
                 {
                     EntityPath = EhEntityPath
                 };
-    
+        
                 eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
-    
+        
                 await SendMessagesToEventHub(100);
-    
+        
                 await eventHubClient.CloseAsync();
-    
-                Console.WriteLine("Press any key to exit.");
+        
+                Console.WriteLine("Press ENTER to exit.");
                 Console.ReadLine();
             }
-    
+        
             // Creates an Event Hub client and sends 100 messages to the event hub.
             private static async Task SendMessagesToEventHub(int numMessagesToSend)
             {
@@ -182,17 +180,17 @@ ms.lasthandoff: 03/01/2017
                     {
                         Console.WriteLine($"{DateTime.Now} > Exception: {exception.Message}");
                     }
-    
+        
                     await Task.Delay(10);
                 }
-    
+        
                 Console.WriteLine($"{numMessagesToSend} messages sent.");
             }
         }
     }
     ```
   
-6. 运行程序，并确保没有引发任何错误。
+6. 运行程序，并确保没有任何错误。
   
 祝贺你！ 现在你已向事件中心发送消息。
 
@@ -203,3 +201,5 @@ ms.lasthandoff: 03/01/2017
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [创建事件中心](event-hubs-create.md)
 * [事件中心常见问题](event-hubs-faq.md)
+
+[1]: ./media/event-hubs-dotnet-standard-getstarted-send/netcore.png

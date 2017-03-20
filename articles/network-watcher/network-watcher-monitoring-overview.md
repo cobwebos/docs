@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3e7595baa26ba9eebfcb8a2fd5c2744d9c0fbfcb
-ms.openlocfilehash: 03dbde64aefc12145a589d8b741c67865162b9b5
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: f9e4fededc2bbb069cc653791137f248a7dc3fe8
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -35,6 +35,8 @@ ms.lasthandoff: 02/23/2017
 ## <a name="network-watcher"></a>网络观察程序
 
 网络观察程序是一个区域性的服务，可用于在网络级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 网络观察程序目前提供以下功能：
 

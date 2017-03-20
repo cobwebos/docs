@@ -291,7 +291,7 @@ AD FS 管理
 
 **已删除的预览版功能：**
 
-* 根据预览版客户的反馈，已暂时删除“用户写回”[](active-directory-aadconnect-feature-preview.md#user-writeback)预览版功能。 今后在解决所提供的反馈意见后，我们将再次添加此功能。
+* 根据预览版客户的反馈，已暂时删除 [用户写回](active-directory-aadconnect-feature-preview.md#user-writeback) 预览版功能。 今后在解决所提供的反馈意见后，我们将再次添加此功能。
 
 ## <a name="1086410"></a>1.0.8641.0
 发布日期：2015 年 6 月

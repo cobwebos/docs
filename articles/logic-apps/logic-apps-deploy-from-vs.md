@@ -16,9 +16,9 @@ ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2fafb3c127183c4903ed7ee0da5811988db9116c
-ms.openlocfilehash: 3c0c24a75c82355798bcaa6d8a36f055400a2649
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5dfff8620d66eca0d54763efbc5702e4b4d122d1
+ms.lasthandoff: 03/14/2017
 
 ---
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/02/2017
 
 ### <a name="prerequisites"></a>先决条件
 
-* [Visual Studio 2015 或 Visual Studio 2017](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
+* [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * [最新版 Azure SDK](https://azure.microsoft.com/downloads/)（2.9.1 或更高版本）
 * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 * 使用嵌入式设计器访问 Web

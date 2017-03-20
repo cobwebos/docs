@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: d58462cbd6578093e00c93c7e2753efc1493441d
-ms.openlocfilehash: 8f17399846eafcac8b86a9b7d7baa7a029005c8c
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: c0ea95ed12a704116e8cdff257dacd7768b45708
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -186,6 +187,10 @@ AMS 还可用于批量上载资产。 有关详细信息，请参阅[此](media-
 
 
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>创建具有写入权限的 AccessPolicy。
+
+>[!NOTE]
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
+
 将任何文件上载到 BLOB 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)。
 
 以下示例说明了如何创建 AccessPolicy：
@@ -371,7 +376,7 @@ SAS URL 采用以下格式：
     HTTP/1.1 204 No Content 
     ...
 
-## <a name="a-iduploadinbulkaupload-assets-in-bulk"></a><a id="upload_in_bulk"></a>批量上载资产
+## <a id="upload_in_bulk"></a>批量上载资产
 ### <a name="create-the-ingestmanifest"></a>创建 IngestManifest
 IngestManifest 是一个容器，用于放置一组资产、资产文件以及可用于确定该组资产或文件的批量引入进度的统计信息。
 
@@ -519,10 +524,5 @@ ContentKey 通过发送 HTTP POST 请求关联到一个或多个资产。 以下
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

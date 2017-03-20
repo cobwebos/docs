@@ -17,9 +17,9 @@ ms.topic: hero-article
 ms.date: 12/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 93efe1a08149e7c027830b03a9e426ac5a05b27b
-ms.openlocfilehash: 444954fa2152fbd8b7e25b9787a13fa4a62ec77f
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 797d91b21fcd71672890c6c77bc81eadd73b47ff
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -39,11 +39,15 @@ ms.lasthandoff: 02/18/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* 需要一个 Azure 帐户。 可以[建立一个免费 Azure 帐户](https://azure.microsoft.com/free/)或[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)。 
+* **一个 Azure 帐户**。 需要一个 Azure 帐户。 可以[建立一个免费 Azure 帐户](https://azure.microsoft.com/free/)或[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)。 
 
-* 必须能够使用属于订阅所有者成员或参与者角色成员的帐户连接到 Azure 门户。 有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Getting started with access management in the Azure portal](../active-directory/role-based-access-control-what-is.md)（Azure 门户中的访问管理入门）。
+* **Azure 创建权限**。 必须能够使用属于订阅所有者成员或参与者角色成员的帐户连接到 Azure 门户。 有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Getting started with access management in the Azure portal](../active-directory/role-based-access-control-what-is.md)（Azure 门户中的访问管理入门）。
 
-* 已完成本教程中[通过 Azure 门户和 SQL Server Management Studio 开始使用 Azure SQL 数据库服务器、数据库和防火墙规则](sql-database-get-started.md)或等效的 [PowerShell 版本](sql-database-get-started-powershell.md)的步骤。 如果没有，请完成此必备教程或在本教程的 [PowerShell 版本](sql-database-get-started-powershell.md)结束时执行 PowerShell 脚本，然后再继续。
+* **SQL Server Management Studio**。 可以通过[下载 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 下载并安装最新版本的 SQL Server Management Studio (SSMS)。 连接到 Azure SQL 数据库时，请始终使用最新版本的 SSMS，因为其中会不断地发布新功能。
+
+* **基服务器和数据库** 若要安装和配置在本教程中使用的服务器和两个数据库，请单击“部署到 Azure”按钮。 单击该按钮会打开“从模板部署”边栏选项卡；创建新的资源组，为将要创建的新服务器提供“管理员登录密码”：
+
+   [![下载](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fsqldbtutorial.blob.core.windows.net%2Ftemplates%2Fsqldbgetstarted.json)
 
 
 > [!NOTE]

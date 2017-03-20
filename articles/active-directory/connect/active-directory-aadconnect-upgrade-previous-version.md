@@ -15,9 +15,9 @@ ms.workload: Identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: b6ec60f9e15e459f70127448eb7d9c03e4b118e8
-ms.openlocfilehash: 3bd1ca8e0bb9f17b76dda68a6cb2f9f64a5d05dd
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 085706dacdcb0cd5a4169ccac4dc7fd8b8ddb6e0
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -40,15 +40,15 @@ ms.lasthandoff: 02/23/2017
 > 启用新的 Azure AD Connect 服务器并开始将更改同步到 Azure AD 以后，不得通过回退来使用 DirSync 或 Azure AD Sync。 不支持从 Azure AD Connect 降级到旧客户端（包括 DirSync 和 Azure AD Sync），那样可能会导致各种问题，例如数据在 Azure AD 中丢失。
 
 ## <a name="in-place-upgrade"></a>就地升级
-就地升级适用于从 Azure AD Sync 或 Azure AD Connect 迁移。 无法从 DirSync 迁移，也无法从使用 Forefront Identity Manager (FIM) + Azure AD 连接器的解决方案迁移。
+就地升级适用于从 Azure AD Sync 或 Azure AD Connect 迁移。 它不适用于从 DirSync 迁移，也不适用于使用 Forefront Identity Manager (FIM) + Azure AD 连接器的解决方案。
 
-如果只有一台服务器且对象数少于 100,000 个，则这是首选方法。 升级后，如果对现成的同步规则进行任何更改，则会发生完全导入和完全同步。 这可以确保将新配置应用到系统中的所有现有对象。 这可能需要花费几小时的时间，具体取决于同步引擎作用域内的对象数。 正常增量同步计划程序（默认为每隔 30 分钟同步一次）将会暂停，但密码同步将会继续。 可以考虑在周末进行就地升级。 如果未对新版 Azure AD Connect 中的现成配置进行更改，则启动一般的增量导入/同步。  
+如果只有一台服务器且对象数少于 100,000 个，则这是首选方法。 升级后，如果对现成的同步规则进行任何更改，则会发生完全导入和完全同步。 此方法可确保将新配置应用到系统中的所有现有对象。 此运行可能需要花费几小时的时间，具体取决于同步引擎作用域内的对象数。 正常增量同步计划程序（默认为每隔 30 分钟同步一次）将会暂停，但密码同步将会继续。 可以考虑在周末进行就地升级。 如果未对新版 Azure AD Connect 中的现成配置进行更改，则将改为启动一般的增量导入/同步。  
 ![就地升级](./media/active-directory-aadconnect-upgrade-previous-version/inplaceupgrade.png)
 
-如果已更改默认的同步规则，这些规则将在系统升级完成之后重置为默认配置。 为了确保配置在每次升级之后得到保留，请务必按照[更改默认配置的最佳做法](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)中所述的步骤来更改配置。
+如果已更改现成的同步规则，这些规则将在系统升级完成之后重置为默认配置。 为了确保配置在每次升级之后得到保留，请务必按照[更改默认配置的最佳做法](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)中所述的步骤来更改配置。
 
 ## <a name="swing-migration"></a>交叉迁移
-如果部署复杂或者有多个对象，在活动的系统上进行就地升级可能不切合实际。 某些客户可能要花费好几天时间来升级系统，并且系统在升级期间无法处理任何增量更改。 如果打算对配置进行重大更改，并且希望在将这些更改推送到云之前对其进行测试，则也可以使用此方法。
+如果部署复杂或者有多个对象，在活动的系统上进行就地升级可能不切合实际。 对于某些客户来说，此过程可能要花费几天时间，在此期间无法处理任何增量更改。 如果打算对配置进行重大更改，并且希望在将这些更改推送到云之前对其进行测试，则也可以使用此方法。
 
 针对这些方案的建议方法是使用交叉迁移。 至少需要两台服务器，一台是活动服务器，另一台是过渡服务器。 活动服务器（在下图中以蓝色实线表示）负责处理活动的生产负载。 过渡服务器（以紫色虚线表示）已升级到最新版本或配置。 完全就绪以后，该服务器处于活动状态。 将目前安装了旧版本或配置的前一台活动服务器设为过渡服务器，然后进行升级。
 
@@ -70,9 +70,9 @@ ms.lasthandoff: 02/23/2017
 7. 若要升级 Azure AD Connect，请将现在处于过渡模式的服务器升级到最新版本。 按照与前面相同的步骤来升级数据和配置。 如果已从 Azure AD Sync 升级，现在可以关闭并解除旧服务器。
 
 ### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>将自定义配置从活动服务器移到过渡服务器
-如果对活动服务器做了配置更改，需确保将相同的更改应用到过渡服务器。
+如果对活动服务器做了配置更改，需确保将相同的更改应用到过渡服务器。 有关此移动的帮助，可以使用 [Azure AD Connect 配置文档](https://github.com/Microsoft/AADConnectConfigDocumenter)。
 
-可以使用 PowerShell 移动所创建的自定义同步规则。 必须在两个系统上使用同一方式应用其他更改，不能迁移所做的更改。
+可以使用 PowerShell 移动所创建的自定义同步规则。 必须在两个系统上使用同一方式应用其他更改，不能迁移所做的更改。 [配置文档](https://github.com/Microsoft/AADConnectConfigDocumenter)可帮助你比较两个系统，以确保它们相同。 该工具还可帮助自动执行本部分中的步骤。
 
 需在两个服务器上使用同一方式配置以下内容：
 

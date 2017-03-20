@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 09851d3f2b3cf33015e508aec6cdae613a747038
-ms.openlocfilehash: b10da867c4ab43053019313956b09635917781e4
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 20ea69ea285fc97bbcf755ea1c40447745ff4be0
+ms.lasthandoff: 03/11/2017
 
 ---
 
@@ -33,13 +33,7 @@ ms.lasthandoff: 02/27/2017
 
 [!code-azurecli[主要](../../../cli_scripts/app-service/deploy-local-git/deploy-local-git.sh?highlight=3-5 "从本地 Git 存储库创建 Web 应用并部署代码")]
 
-## <a name="clean-up-deployment"></a>清理部署 
-
-运行脚本示例后，可以使用以下命令删除资源组、应用服务应用以及所有相关资源。
-
-```azurecli
-az group delete --name myResourceGroup
-```
+[!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>脚本说明
 

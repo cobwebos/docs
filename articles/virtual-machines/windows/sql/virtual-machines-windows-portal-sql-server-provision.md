@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 5121b2f9d33ebf4749fae6d990feab3bf9244e93
-ms.openlocfilehash: 6b99dbbacd9451285cca29de4a72ffb1473479fc
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: fa7c846cf5018b5f0d918e5dc9d9020313833d77
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -53,8 +53,8 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 
    ![Azure 虚拟机边栏选项卡](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
-5. 查看可用的 SQL Server 模板。 每个模板均可标识 SQL Server 版本和操作系统。 
-6. 在 Windows Server 2016 上选择 SQL Server 2016 SP1 Developer 的模板。
+5. 查看可用的 SQL Server 映像。 每个映像均可标识 SQL Server 版本和操作系统。 
+6. 在 Windows Server 2016 上选择 SQL Server 2016 SP1 Developer 的映像。
 
    > [!TIP]
    > 本教程中使用 Developer 版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。
@@ -97,7 +97,7 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
     ![SQL 基本信息边栏选项卡](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
 ## <a name="2-choose-virtual-machine-size"></a>2.选择虚拟机大小
-执行“大小”设置步骤时，请在“选择大小”边栏选项卡中选择虚拟机大小。 边栏选项卡最初将根据你选择的模板显示建议的计算机大小。 系统还会估算每月运行 VM 的费用。
+执行“大小”设置步骤时，请在“选择大小”边栏选项卡中选择虚拟机大小。 边栏选项卡最初将根据你选择的映像显示建议的计算机大小。 系统还会估算每月运行 VM 的费用。
 
 ![SQL VM 大小选项](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 

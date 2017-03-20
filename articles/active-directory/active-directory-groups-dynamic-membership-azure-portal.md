@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/07/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
-ms.openlocfilehash: 16dd02934d4bd18f87f6508dce6c6829fe6aa0ac
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: aa6ab3d2133019203a75b07853908059684bbaae
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -191,14 +191,27 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 ## <a name="using-attributes-to-create-rules-for-device-objects"></a>使用属性创建设备对象的规则
 还可以创建一个规则来为组中的成员身份选择设备对象。 可以使用以下设备属性：
 
-| 属性 | 允许的值 | 使用情况 |
-| --- | --- | --- |
-| displayName |任意字符串值 |(device.displayName -eq "Rob Iphone”) |
-| deviceOSType |任意字符串值 |(device.deviceOSType -eq "IOS") |
-| deviceOSVersion |任意字符串值 |(device.OSVersion -eq "9.1") |
-| isDirSynced |true false null |(device.isDirSynced -eq "true") |
-| isManaged |true false null |(device.isManaged -eq "false") |
-| isCompliant |true false null |(device.isCompliant -eq "true") |
+| 属性              | 允许的值                  | 使用情况                                                       |
+|-------------------------|---------------------------------|-------------------------------------------------------------|
+| displayName             | 任意字符串值                | (device.displayName -eq "Rob Iphone”)                       |
+| deviceOSType            | 任意字符串值                | (device.deviceOSType -eq "IOS")                             |
+| deviceOSVersion         | 任意字符串值                | (device.OSVersion -eq "9.1")                                |
+| isDirSynced             | true false null                 | (device.isDirSynced -eq "true")                             |
+| isManaged               | true false null                 | (device.isManaged -eq "false")                              |
+| isCompliant             | true false null                 | (device.isCompliant -eq "true")                             |
+| deviceCategory          | 任意字符串值                | (device.deviceCategory -eq "")                              |
+| deviceManufacturer      | 任意字符串值                | (device.deviceManufacturer -eq "Microsoft")                 |
+| deviceModel             | 任意字符串值                | (device.deviceModel -eq "IPhone 7+")                        |
+| deviceOwnership         | 任意字符串值                | (device.deviceOwnership -eq "")                             |
+| domainName              | 任意字符串值                | (device.domainName -eq "contoso.com")                       |
+| enrollmentProfileName   | 任意字符串值                | (device.enrollmentProfileName -eq "")                       |
+| isRooted                | true false null                 | (device.deviceOSType -eq "true")                            |
+| managementType          | 任意字符串值                | (device.managementType -eq "")                              |
+| organizationalUnit      | 任意字符串值                | (device.organizationalUnit -eq "")                          |
+| deviceId                | 有效 deviceId                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d" |
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 以下文章提供了有关 Azure Active Directory 中的组的更多信息。

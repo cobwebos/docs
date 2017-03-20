@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: nberdy
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d04f073ebf846955fde81434fd015ee4b943f695
-ms.openlocfilehash: 179abb91438fb20cd6b6adebfedb8a25e0127ad7
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
+ms.openlocfilehash: 930be4397a56dc0af0fd13305e0e4171929cb2cc
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="direct-methods"></a>直接方法
+# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 ## <a name="overview"></a>概述
 借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 这适用于即时操作过程取决于设备能否响应的情况，例如，如果设备脱机，则向设备发送短信以唤醒设备（短信的开销比方法调用更大）。
 

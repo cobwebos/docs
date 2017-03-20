@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/02/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: fadb15a95edb3ec82b284faa594706963618b9eb
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 7f50ce0d4842bde809664c392ebee5425a70e6f0
+ms.lasthandoff: 03/08/2017
 
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>使用“Sync Service Manager 操作”选项卡
@@ -42,19 +42,7 @@ ms.lasthandoff: 02/28/2017
 
 选择某一行时，底部将更新以显示该运行的详细信息。 在底部的最左边，可能会有一份显示“步骤编号”的列表。 仅当林中有多个域，而且每个域都以一个步骤表示时，才会显示此列表。 可以在“分区”标题下方找到域名。 在“同步统计信息”下方，可以找到有关已处理更改次数的详细信息。 可以单击链接获取已更改对象的列表。 如果有对象发生错误，这些错误将显示在“同步错误”下方。
 
-## <a name="troubleshoot-errors-in-operations-tab"></a>排查“操作”选项卡中的错误
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/errorsync.png)  
-遇到错误时，发生错误的对象与错误本身都是链接，这些链接提供更多信息。
-
-首先单击错误字符串（图中的 **sync-rule-error-function-triggered**）。 随后会先看到对象概述。 若要查看实际的错误，可单击“堆栈跟踪”按钮。 此跟踪提供错误的调试级别信息。
-
-**提示：**可以在“调用堆栈信息”框中单击右键，然后依次选择“全选”、“复制”。 接着可以复制堆栈，并在最喜爱的编辑器（例如记事本）中查看此错误。
-
-* 如果错误来自 **SyncRulesEngine**，则调用堆栈信息首先会列出对象上的所有属性。 向下滚动，直到你看到 **InnerException =>** 标题为止。  
-  ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/errorinnerexception.png)  
-  后面的行显示错误。 在上图中，错误来自所创建的自定义同步规则 Fabrikam。
-
-如果错误本身未提供足够的信息，则请查看数据本身。 可以单击对象标识符的链接，然后[在整个系统中跟踪对象及其数据](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system)。
+有关详细信息，请参阅[排查对象不同步的问题](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。

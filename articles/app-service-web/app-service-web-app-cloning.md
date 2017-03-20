@@ -17,6 +17,7 @@ ms.author: aelnably
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: e238f804d4a96e10101e7aa2e2a1bcb78a44e967
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -46,7 +47,7 @@ ms.openlocfilehash: e238f804d4a96e10101e7aa2e2a1bcb78a44e967
 
 若要克隆现有的 Web 应用（包括所有关联的部署槽），用户必须使用 IncludeSourceWebAppSlots 参数。以下 PowerShell 命令演示了如何在 New-AzureRmWebApp 命令中配合使用该参数：
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots $true
+    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
 
 若要在同一区域中克隆现有的 Web 应用，用户必须在同一区域中创建新资源组和新的 App Service 计划，然后使用以下 PowerShell 命令来克隆 Web 应用
 
@@ -112,10 +113,5 @@ ms.openlocfilehash: e238f804d4a96e10101e7aa2e2a1bcb78a44e967
 * [Azure 流量管理器预览版对 Azure Resource Manager 的支持](../traffic-manager/traffic-manager-powershell-arm.md)
 * [应用服务环境简介](app-service-app-service-environment-intro.md)
 * [将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 437bbb47a490ecc66c5820eccfc8db8ec28d76be
-ms.openlocfilehash: 0a5aaf64f22e6c116165a63b77618b535dfd3797
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 7018320e601c1e8762e1c8fc409813a113a35044
+ms.lasthandoff: 03/06/2017
 
 ---
 
@@ -26,6 +26,8 @@ ms.lasthandoff: 02/24/2017
 可以通过网络安全组流日志提供的信息了解网络安全组的入口和出口 IP 流量。 这些流日志根据规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
 这些流日志可能难以手动分析并获取见解。 不过，可以使用多个开源工具将相关数据可视化。 本文将提供一个使用 Elastic Stack 将这些日志可视化的解决方案，方便用户在 Kibana 仪表板上快速完成流日志的索引和可视化操作。
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>方案
 
@@ -156,7 +158,7 @@ ms.lasthandoff: 02/24/2017
 
 ### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>安装适用于 Azure Blob 存储的 Logstash 输入插件
 
-可以使用该 Logstash 插件直接从指定的存储帐户访问流日志。 若要安装该插件，请运行以下命令：
+可以使用该 Logstash 插件直接从指定的存储帐户访问流日志。 若要安装此插件，请从默认 Logstash 安装目录（在此示例中为 /usr/share/logstash/bin）运行以下命令：
 
 ```
 logstash-plugin install logstash-input-azureblob
@@ -230,7 +232,7 @@ sudo /etc/init.d/logstash start
 1. 流元组 - 此表显示包含在每个流元组中的信息及其相应的 NSG 和规则。
 
   ![图&7;][7]
-  
+
 用户可以使用仪表板顶部的查询栏，根据流的任何参数（例如订阅 ID、资源组、规则或者任何其他感兴趣的变量）对仪表板的内容进行筛选。 有关 Kibana 的查询和筛选器的详细信息，请参阅[正式文档](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)
 
 ## <a name="conclusion"></a>结束语
@@ -252,5 +254,4 @@ sudo /etc/init.d/logstash start
 [5]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure5.png
 [6]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure6.png
 [7]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure7.png
-
 

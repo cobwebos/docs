@@ -65,8 +65,3 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 ```
 存储过程功能利用[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

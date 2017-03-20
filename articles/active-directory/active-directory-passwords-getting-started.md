@@ -13,35 +13,168 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2017
+ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c40fca54b02f2673194ab16c41314f1e50be12be
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 441caf3cc9a3b9074bd263f4a4c45763967fa580
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="getting-started-with-password-management"></a>密码管理入门
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 >
 >
 
 只要完成几个简单的步骤，就能让你的用户管理他们自己的云 Azure Active Directory 密码或本地 Active Directory 密码。 在确保符合几个简单的先决条件之后，你将在不知不觉中为整个组织启用密码更改和重置。 本文将引导你完成以下操作思路：
 
+* [**我们的客户提供的供你在开始之前阅读的重要提示**](#top-tips-from-our-customers-to-read-before-you-begin)
+ * [**重要提示：文档导航** - 请使用目录和浏览器的查找功能来查找答案](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
+ * [**提示 1：许可** - 请务必了解许可要求](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
+ * [**提示 2：测试** - 请使用最终用户而非管理员进行测试，试点时请使用一小组用户](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+ * [**提示 3：部署** - 请为用户预填充数据，这样用户就不需注册](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
+ * [**提示 4：部署** - 请使用密码重置，这样就不需向用户发送临时密码](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
+ * [**提示 5：写回** - 请查看 AAD Connect 计算机上的应用程序事件日志，排查密码写回问题](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
+ * [**提示 6：写回** - 请确保为密码写回启用正确的权限、防火墙规则和连接设置](#tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback)
+ * [**提示 7：报告** - 请通过 Azure AD SSPR 审核日志了解谁正在注册或重置密码](#tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs)
+ * [**提示 8：故障排除** - 请阅读我们的故障排除指南和常见问题解答，这样可以解决许多问题](#tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues)
+ * [**提示 9：故障排除** - 如果仍需帮助，请提供充足的信息，以便我们为你提供帮助](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
 * [**如何让用户重置其 Azure Active Directory 密码**](#enable-users-to-reset-their-azure-ad-passwords)
-  * [自助密码重置先决条件](#prerequisites)
-  * [步骤 1：配置密码重置策略](#step-1-configure-password-reset-policy)
-  * [步骤 2：为测试用户添加联系人数据](#step-2-add-contact-data-for-your-test-user)
-  * [步骤 3：以用户身份重置密码](#step-3-reset-your-azure-ad-password-as-a-user)
+ * [自助密码重置先决条件](#prerequisites)
+ * [步骤 1：配置密码重置策略](#step-1-configure-password-reset-policy)
+ * [步骤 2：为测试用户添加联系人数据](#step-2-add-contact-data-for-your-test-user)
+ * [步骤 3：以用户身份重置密码](#step-3-reset-your-azure-ad-password-as-a-user)
 * [**如何让用户重置或更改其本地 Active Directory 密码**](#enable-users-to-reset-or-change-their-ad-passwords)
-  * [密码写回先决条件](#writeback-prerequisites)
-  * [步骤 1：下载最新版本的 Azure AD Connect](#step-1-download-the-latest-version-of-azure-ad-connect)
-  * [步骤 2：通过 UI 或 PowerShell 在 Azure AD Connect 中启用密码写回并验证](#step-2-enable-password-writeback-in-azure-ad-connect)
-  * [步骤 3：配置防火墙](#step-3-configure-your-firewall)
-  * [步骤 4：设置适当的权限](#step-4-set-up-the-appropriate-active-directory-permissions)
-  * [步骤 5：以用户身份重置 AD 密码并验证](#step-5-reset-your-ad-password-as-a-user)
+ * [密码写回先决条件](#writeback-prerequisites)
+ * [步骤 1：下载最新版本的 Azure AD Connect](#step-1-download-the-latest-version-of-azure-ad-connect)
+ * [步骤 2：通过 UI 或 PowerShell 在 Azure AD Connect 中启用密码写回并验证](#step-2-enable-password-writeback-in-azure-ad-connect)
+ * [步骤 3：配置防火墙](#step-3-configure-your-firewall)
+ * [步骤 4：设置适当的权限](#step-4-set-up-the-appropriate-active-directory-permissions)
+ * [步骤 5：以用户身份重置 AD 密码并验证](#step-5-reset-your-ad-password-as-a-user)
+
+## <a name="top-tips-from-our-customers-to-read-before-you-begin"></a>我们的客户提供的供你在开始之前阅读的重要提示
+下面是一些重要提示，这些提示对于需要在其组织中部署密码管理的客户很有用。
+
+* [**重要提示：文档导航** - 请使用目录和浏览器的查找功能来查找答案](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
+* [**提示 1：许可** - 请务必了解许可要求](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
+* [**提示 2：测试** - 请使用最终用户而非管理员进行测试，试点时请使用一小组用户](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+* [**提示 3：部署** - 请为用户预填充数据，这样用户就不需注册](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
+* [**提示 4：部署** - 请使用密码重置，这样就不需向用户发送临时密码](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
+* [**提示 5：写回** - 请查看 AAD Connect 计算机上的应用程序事件日志，排查密码写回问题](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
+* [**提示 6：写回** - 请确保为密码写回启用正确的权限、防火墙规则和连接设置](#tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback)
+* [**提示 7：报告** - 请通过 Azure AD SSPR 审核日志了解谁正在注册或重置密码](#tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs)
+* [**提示 8：故障排除** - 请阅读我们的故障排除指南和常见问题解答，这样可以解决许多问题](#tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues)
+* [**提示 9：故障排除** - 如果仍需帮助，请提供充足的信息，以便我们为你提供帮助](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
+
+### <a name="top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers"></a>重要提示：文档导航 - 请使用目录和浏览器的查找功能来查找答案
+如果你使用我们的文档，你会发现，我们会尽量在目录中提供所有相关内容的快速链接，方便管理员进行了解。 
+
+请查看以下目录： 
+* [Azure AD 密码重置：文档目录](https://docs.microsoft.com/azure/active-directory/active-directory-passwords)
+
+### <a name="tip-1-licensing---make-sure-you-understand-the-licensing-requirements"></a>提示 1：许可 - 请务必了解许可要求
+为了启用 Azure AD 密码重置，必须在组织中至少分配一次许可证。 我们不强制要求就密码重置体验本身进行单个用户的许可，但是，如果你在使用此功能时没有向用户分配许可证，则会被视为不符合 Microsoft 许可协议，因此仍需向相关用户分配许可证。
+
+你可以阅读下面这些文档，了解进行密码重置时需要哪些许可证。
+* [常规密码重置许可信息]()
+* [按功能密码重置许可信息]()
+* [密码写回支持的方案]()
+
+### <a name="tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users"></a>提示 2：测试 - 请使用最终用户而非管理员进行测试，试点时请使用一小组用户
+使用管理员进行测试时，我们会强制实施管理员密码重置策略，该策略定义如下。  这意味着，你不会看到我们为你的最终用户配置的策略的预期结果。
+
+在管理性的 UX ONLY 中配置的策略适用于最终用户而非管理员。 为了确保组织的安全，Microsoft 强制实施针对管理员的强默认密码重置策略，该策略可能不同于你为最终用户设置的策略。
+
+#### <a name="administrator-password-reset-policy"></a>管理员密码重置策略
+* **适用对象** - 任何管理员角色（全局管理员、支持管理员、密码管理员等）
+* **单门策略适用条件...**
+ * ...启动/创建试用版后头 30 天，**或**
+ * ...虚域不存在**且** Azure AD Connect 未在同步标识
+ * **_必需条件_**：“身份验证电子邮件”、“备用电子邮件”、“身份验证电话”、“移动电话”或“办公电话”中的任何**一个**有值存在
+* **双门策略适用条件...** 
+ * ...头 30 天试用已过，**或**
+ * ...虚域存在，**或** 
+ * ... 已允许 Azure AD Connect 从本地环境同步标识
+ * _**必需条件**_：“身份验证电子邮件”、“备用电子邮件”、“身份验证电话”、“移动电话”或“办公电话”中的任何**两个**有值存在
+
+### <a name="tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register"></a>提示 3：部署 - 请为用户预填充数据，这样用户就不需注册
+许多人并未认识到，使用此功能不需要让用户注册密码重置。  预先为用户设置电话或电子邮件属性后，即可立刻将密码重置推广到整个组织，**不需用户执行任何操作！**
+
+若要了解如何通过 API、PowerShell 或 Azure AD Connect 执行该操作，请阅读以下文档：
+* [在无需用户注册的情况下部署密码重置](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#deploying-password-reset-without-requiring-end-user-registration)
+* [密码重置使用哪些数据](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-data-is-used-by-password-reset)
+
+### <a name="tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords"></a>提示 4：部署 - 请使用密码重置，这样就不需向用户发送临时密码
+这是对提示 3 的补充。 针对密码重置预配置用户以后，设想一下这样一个场景：一位雇员首次加入你的公司。 你现在可以直接让其导航到 [Azure AD 密码重置门户](https://passwordreset.microsoftonline.com)来重置其密码，而不必向其发送临时密码。
+
+如果用户使用[已加入 Windows 10 Azure AD 域的设备](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy)，甚至可以直接从 Windows 10 的现成登录屏幕执行该操作，轻松访问全新的电脑。
+
+若要了解如何通过 API、PowerShell 或 Azure AD Connect 执行该操作，请阅读以下文档。 预填充该数据后，即可让用户重置其密码并立即访问其帐户：
+* [在无需用户注册的情况下部署密码重置](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#deploying-password-reset-without-requiring-end-user-registration)
+* [密码重置使用哪些数据](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-data-is-used-by-password-reset)
+
+### <a name="tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback"></a>提示 5：写回 - 请查看 AAD Connect 计算机上的应用程序事件日志，排查密码写回问题
+Azure AD Connect 应用程序事件日志包含大量的日志记录信息，这些信息主要描述实时发生的与密码写回服务相关的事件。 若要访问该日志，请执行以下步骤：
+
+1. 登录到 **Azure AD Connect** 计算机
+2. 按“开始”并键入“事件查看器”，打开“Windows 事件查看器”
+3. 打开“应用程序”事件日志
+4. 查找来自 **PasswordResetService** 或 **ADSync** 源的事件，详细了解可能出现的问题
+
+如需可能出现在此日志中的事件的完整列表以及更多有关密码写回的故障排除指南，请参阅：
+* [故障排除：密码写回](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)
+* [写回事件日志错误代码](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
+* [故障排除：密码写回连接](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)
+* [写回部署 - 步骤 3：配置防火墙](#step-3-configure-your-firewall)
+* [写回部署 - 步骤 4：设置适当的权限](#step-4-set-up-the-appropriate-active-directory-permissions)
+
+### <a name="tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback"></a>提示 6：写回 - 请确保为密码写回启用正确的权限、防火墙规则和连接设置
+为了使写回正常工作，必须确保：
+
+1. 已为使用密码写回功能的用户设置适当的 **Active Directory 权限**，使之有权在 AD 中修改其密码和帐户解锁标志
+2. 已打开适当的**防火墙端口**，因此密码写回服务可以通过出站连接安全地与外界通信
+3. 已为密码重置服务 URL（例如服务总线）设置适当的**防火墙例外**
+4. **代理和防火墙不终止空闲的出站连接**。建议将空闲时间设置为至少 10 分钟
+
+针对密码写回配置权限和防火墙规则时，如需完整的故障排除指南列表和具体的准则，请参阅：
+* [故障排除：密码写回](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)
+* [写回事件日志错误代码](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
+* [故障排除：密码写回连接](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)
+* [写回部署 - 步骤 3：配置防火墙](#step-3-configure-your-firewall)
+* [写回部署 - 步骤 4：设置适当的权限](#step-4-set-up-the-appropriate-active-directory-permissions)
+
+### <a name="tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs"></a>提示 7：报告 - 请通过 Azure AD SSPR 审核日志了解谁正在注册或重置密码 
+完成密码重置的部署和运行以后，下一逻辑步骤是查看其是否正常运行并分析谁仍需注册、用户在重置时遇到的常见问题，以及此功能的投资回报率。
+
+使用 Azure AD 密码重置审核日志，你可以通过 Azure 门户、PowerBI、Azure AD 报告事件 API 或 PowerShell 执行该操作以及更多其他操作。  若要详细了解如何使用这些报告功能，请参阅：
+* [密码管理报告概述](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#overview-of-password-management-reports)
+* [如何在 Azure 门户中查看密码管理报告](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#how-to-view-password-management-reports)
+* [Azure 门户中的自助服务密码管理活动类型](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#self-service-password-management-activity-types-in-the-new-azure-portal)
+* [如何通过 Azure AD 报告和事件 API 检索密码管理事件](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api)
+* [如何通过 PowerShell 快速下载密码重置注册事件](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#how-to-download-password-reset-registration-events-quickly-with-powershell)
+
+### <a name="tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues"></a>提示 8：故障排除 - 请阅读我们的故障排除指南和常见问题解答，这样可以解决许多问题
+你是否知道密码重置有大量故障排除指南和常见问题解答？ 如果你有问题，则很有可能会在下面的链接中找到答案。
+
+除此之外，还可以使用 [Azure 门户](https://portal.azure.com)中的“支持和故障排除”边栏选项卡，访问左侧导航窗格的“Azure Active Directory” -> “用户和组” -> “密码重置” -> “支持和故障排除”下密码管理管理性用户体验中的大量故障排除内容。
+
+密码重置故障排除指南和常见问题解答的链接：
+* [排查密码管理问题](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot)
+* [密码管理常见问题解答](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-faq)
+
+### <a name="tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you"></a>提示 9：故障排除 - 如果仍需帮助，请提供充足的信息，以便我们为你提供帮助
+如果仍需故障排除帮助，我们很乐意为你提供帮助。 你可以提交支持案例，也可以通过你的客户管理团队直接与我们联系。 欢迎咨询！
+
+但在联系我们之前，请**确保收集下面要求的所有信息**，以便我们为你提供快速帮助！
+* [你需要帮助时应包含的信息](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#information-to-include-when-you-need-help)
+
+#### <a name="ways-to-provide-password-reset-feedback"></a>提供密码重置反馈的方式
+* [功能请求或故障排除 - 在 Azure AD MSDN 论坛上发帖](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD)
+* [功能请求或故障排除 - 在 StackOverflow 上发帖](http://stackoverflow.com/questions/tagged/azure-active-directory)
+* [功能请求或故障排除 - 发推@azuread！](https://twitter.com/azuread)
+* [仅功能请求 - 在 UserVoice 上留言](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 ## <a name="enable-users-to-reset-their-azure-ad-passwords"></a>让用户重置其 Azure AD 密码
 本部分详细介绍如何为 AAD 云目录启用自助密码重置、注册用户进行自助密码重置，以及最终以用户身份执行测试性的自助密码重置。
@@ -267,11 +400,11 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 
 为了使密码写回正常运行，运行 Azure AD Connect 的计算机需要能够建立到 **.servicebus.windows.net* 的出站 HTTPS 连接以及 Azure 使用的特定 IP 地址，如[Microsoft Azure 数据中 IP 范围列表](https://www.microsoft.com/download/details.aspx?id=41653)中所述。
 
-对于 Azure AD Connect 工具 **1.1.439.0**（最新）以及更高版本：
+对于 Azure AD Connect 工具 **1.1.443.0**（最新）及更高版本：
 
 - 最新版的 Azure AD Connect 工具将需要以下网站的**出站 HTTPS** 访问权限：
     - *passwordreset.microsoftonline.com*
-    - *servicbus.windows.net*
+    - *servicebus.windows.net*
 
 对于 Azure AD Connect 工具版本 **1.0.8667.0** 到 **1.1.380.0**：
 
@@ -302,11 +435,11 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 
 配置网络设备后，重新启动运行 Azure AD Connect 工具的计算机。
 
-#### <a name="idle-connections-on-azure-ad-connect-114390-and-up"></a>Azure AD Connect 上的空闲连接（1.1.439.0 及以上）
+#### <a name="idle-connections-on-azure-ad-connect-114430-and-up"></a>Azure AD Connect（1.1.443.0 及更高版本）上的空闲连接
 Azure AD Connect 工具会定期将 ping/keepalive 发送到 ServiceBus 终结点，确保连接始终处于活动状态。 如果该工具检测到丢失的连接过多，则会自动增加发送到终结点的 ping 的频率。 最低的“ping 间隔”将降至每 60 秒 ping 1 次，但是，**我们强烈建议将代理/防火墙设置为允许空闲连接保持至少 2-3 分钟。** \*对于较旧的版本，我们建议让空闲连接保持 4 分钟或更长时间。
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>步骤 4：设置适当的 Active Directory 权限
-对于包含密码将要重置的用户的每个林，如果 X 是（初始配置期间）在配置向导中为该林指定的帐户，则必须为 X 授予对 `lockoutTime` 的“重置密码”、“更改密码”和“写入”权限，对 `pwdLastSet` 的“写入”权限，以及对该林中每个域的根对象的扩展权限。 应当将权限标记为“由所有用户对象继承”。  
+对于包含密码将要重置的用户的每个林，如果 X 是（初始配置期间）在配置向导中为该林指定的帐户，则必须为 X 授予对 `lockoutTime` 的“重置密码”、“更改密码”和“写入”权限，对 `pwdLastSet` 的“写入”权限，以及对该林中每个域的根对象的扩展权限，或者对要添加到 SSPR 范围中的用户 OU 的扩展权限。  如果要将重置权限限定于特定的用户对象集，而针对域的根目录这样做是不可接受的，则可使用后一选项。 应当将权限标记为“由所有用户对象继承”。  
 
 如果你不确定上面指的是哪个帐户，请打开 Azure Active Directory Connect 配置 UI，然后单击“查看解决方案”选项。  在下面的屏幕截图中，需要将权限添加到的帐户标有红色下划线。
 
@@ -361,7 +494,7 @@ Azure AD Connect 工具会定期将 ping/keepalive 发送到 ServiceBus 终结�
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为
 * [**最佳做法**](active-directory-passwords-best-practices.md) - 了解如何快速部署且有效管理组织的密码

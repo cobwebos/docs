@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5ed72d95ae258d6fa8e808cd72ab6e8a665901c9
-ms.openlocfilehash: 0a8b53f7860548a2a013bfc7813cdf798b6a4910
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 1f5f0b1aca581900b94f0f87563c5c7e720f46c8
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="partitioning-and-scaling-in-azure-documentdb"></a>Azure DocumentDB 中的分区和缩放
+# <a name="partitioning-partition-keys-and-scaling-in-documentdb"></a>DocumentDB 中的分区、分区键和缩放
+
 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 旨在帮助实现快速、可预测的性能并且随着应用程序的增长无缝扩展。 本文概述 DocumentDB 分区的工作原理，并且描述如何配置 DocumentDB 集合以有效地扩展应用程序。
 
 阅读本文后，你将能够回答以下问题：   

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: b21867e41acb1e0658041bd931327047095bb159
-ms.openlocfilehash: b5ecba98fd5c3061f68f94f5004c7cf00d0dfb36
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 10cc114451da7e73726772da4159776e76f5b8c9
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -537,7 +537,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
  ```
 
 ### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-in-azure"></a>在 Azure 中现有或正在运行的 IaaS Linux VM 上启用加密
-可通过 [Resource Manager 模板模板](https://github.com/Azure/azure-quick-start-templates/tree/master/201-encrypt-running-linux-vm) 在 Azure 中为现有或正在运行的 IaaS Linux VM 启用磁盘加密。
+可通过 [Resource Manager 模板模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm) 在 Azure 中为现有或正在运行的 IaaS Linux VM 启用磁盘加密。
 
 1. 在 Azure 快速入门模板上，单击“部署到 Azure”，在“参数”边栏选项卡中输入加密配置，然后单击“确定”。
 

@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 02/14/2017
+ms.date: 03/08/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: a3fc1a6bf552ed8c6511c432c0d74b76247ce877
-ms.openlocfilehash: c08d863ef8913b9bad766c6232faaaa0a6cfa950
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 1d208f931af4704528309780b45e170627f1753c
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -140,6 +140,8 @@ Azure Redis Cache 非常容易上手。 若要开始使用，需要首先设置�
     // Simple get of data types from the cache
     string key1 = cache.StringGet("key1");
     int key2 = (int)cache.StringGet("key2");
+
+Azure Redis 缓存的数据库数目（默认为 16 个）是可以配置的，因此可以通过逻辑方式隔离 Redis 缓存中的数据。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-faq.md#what-are-redis-databases)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。
 
 你已经知道如何连接到 Azure Redis 缓存实例并返回对缓存数据库的引用，现在让我们看看如何使用缓存。
 

@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 02/28/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: ea2124e01753b914ebd1691e5d89091ac5cd5859
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 6d4287d391fee55419cf8bd17f4b48a0e5bbfb81
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -35,6 +35,7 @@ ms.lasthandoff: 03/04/2017
 | [创建已启用 Docker 的 VM](./scripts/virtual-machines-linux-cli-sample-create-docker-host.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个虚拟机，将此 VM 配置为 Docker 主机，并运行 NGINX 容器。 |
 | [创建 VM 并运行配置脚本](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个虚拟机，并使用 Azure 自定义脚本扩展安装 NGINX。 |
 | [创建安装有 WordPress 的 VM](./scripts/virtual-machines-linux-cli-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个虚拟机，并使用 Azure 自定义脚本扩展安装 WordPress。 |
+| [使用虚拟硬盘创建 VM](./scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将一个虚拟硬盘上载到存储帐户，然后使用该虚拟硬盘来创建虚拟机。 |
 |**网络虚拟机**||
 | [保护虚拟机之间的网络流量](./scripts/virtual-machines-linux-cli-sample-create-vm-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建两个虚拟机、所有相关资源以及内部和外部网络安全组 (NSG)。 |
 |**监视虚拟机**||

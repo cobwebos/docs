@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 01/07/2017
+ms.date: 03/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec3397f62cb2ae57cd9ce27a0a5022fd876e263
-ms.openlocfilehash: 39bac7d0cc6fee8a99949d167e3aa0c15cfaebc2
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: f5f5597e09128236fd659b68c70d587d87a0832a
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="get-started-with-azure-log-integration-preview"></a>Azure 日志集成入门（预览版）
+# <a name="get-started-with-azure-log-integration"></a>Azure 日志集成入门
 Azure 日志集成使你能够将原始日志从你的 Azure 资源集成到你的本地安全信息和事件管理 (SIEM) 系统。 此集成为本地或云中的所有资产提供统一的仪表板，以便聚合、相互关联、分析和警示与应用程序相关的安全事件。
 
 本教程将引导你完成 Azure 日志集成的安装并集成来自 Azure 存储、Azure 审核日志和 Azure 安全中心警报的日志。 本教程预计完成时间为&1; 小时。
@@ -133,13 +133,13 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 
 AZLOG.exe authorizedirectoryreader tenantId
 
-示例 -  
+示例 - 
 
 AZLOG.exe authorizedirectoryreader ba2c0023-d24b-4f4e-92b1-48c4469999
 
 
-3. 检查以下文件夹，确认其中是否创建了 Azure Active Directory 审核日志 JSON 文件： 
-* **C:\Users\azlog\AzureActiveDirectoryJson**   
+3. 检查以下文件夹，确认其中是否创建了 Azure Active Directory 审核日志 JSON 文件：
+* **C:\Users\azlog\AzureActiveDirectoryJson**  
 * **C:\Users\azlog\AzureActiveDirectoryJsonLD**
 
 4. 将标准 SIEM 文件转发器连接器指向相应的文件夹，以将数据发送给 SIEM 实例。 根据所使用的 SIEM 产品，你可能需要某些字段映射。

@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: 9a17b749a50c0f75890fa71b4ae00391aa63876a
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 0682a048429d8e980da529975a24dde28a9812fe
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -105,7 +105,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
   * 与辅助角色一样，对于 *OS 版本*，建议指定 `*`，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 *OS 版本*并安装新的操作系统映像 – 所有正在运行的任务将会中断并重新排队。
 * **节点大小**
 
-    **Sizes for Cloud Services** （云服务的大小）中列出了 [云服务配置](../cloud-services/cloud-services-sizes-specs.md)计算节点大小。 Batch 支持 `ExtraSmall`以外的所有云服务大小。
+    **Sizes for Cloud Services** （云服务的大小）中列出了 [云服务配置](../cloud-services/cloud-services-sizes-specs.md)计算节点大小。 批处理支持 `ExtraSmall`、`STANDARD_A1_V2`、`STANDARD_A2_V2` 以外的所有云服务大小。
 
     [Sizes for virtual machines in Azure](../virtual-machines/virtual-machines-linux-sizes.md)（Azure 中虚拟机的大小）(Linux) 和 [Sizes for virtual machines in Azure](../virtual-machines/virtual-machines-windows-sizes.md)（Azure 中虚拟机的大小）(Windows) 中列出了“虚拟机配置”计算节点大小。 Batch 支持除 `STANDARD_A0` 和高级存储大小（`STANDARD_GS`、`STANDARD_DS` 和 `STANDARD_DSV2` 系列）以外所有的 Azure VM 大小。
 

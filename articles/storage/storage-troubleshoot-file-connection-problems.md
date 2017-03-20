@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 212b4481affc345cff3e8abd2475c838926f5eda
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 0479db07710d7ff6037dc692e5387a314bed32ca
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/03/2017
 * [从 Windows 8.1 或 Windows Server 2012 R2 访问 Azure 文件存储时性能不佳](#windowsslow)
 * [尝试装载 Azure 文件共享时出现错误 53](#error53)
 * [尝试装载 Azure 文件共享时出现错误 87 参数不正确](#error87)
-* [Net use 成功，但Windows Explorer 中未显示已装载的 Azure 文件共享](#netuse)
+* [Net use 成功，但 Windows 资源管理器 UI 中未显示装载的 Azure 文件共享或驱动器号](#netuse)
 * [我的存储帐户包含 "/" 且 net use 命令失败](#slashfails)
 * [我的应用程序/服务无法访问装载的 Azure 文件驱动器。](#accessfiledrive)
 * [优化性能的其他建议](#additional)
@@ -221,9 +221,11 @@ Azure 文件仅支持 NTLMv2 身份验证。 请确保客户端应用了组策�
 
 ## <a name="host-is-down-error-112-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>现有文件共享上出现“主机已关闭（错误 112）”或在装入点上执行列表命令时外壳挂起
 ### <a name="cause"></a>原因
-如果客户端长时间处于空闲状态，Linux 客户端上将发生此错误。 此时，客户端将断开连接，客户端连接超时。 此外，该错误可能指示出现通信故障，该故障将阻止在使用“soft”装载选项（默认设置）时重新与服务器建立 TCP 连接。
+如果客户端长时间处于空闲状态，Linux 客户端上将发生此错误。 如果客户端长时间处于空闲状态，客户端将断开连接，并发生连接超时。 
 
-此错误可能表明 Linux 存在重新连接问题，这可能是由于旧版内核中某些已知 bug 或网络错误等其他阻止连接的问题所导致。 
+连接可出于各种原因而进入空闲状态。 原因之一是发生通信故障，导致使用“soft”装载选项（默认设置）时阻止 TCP 与服务器重新建立连接。
+
+另一个可能的原因是，某些重新连接修复程序未在旧版内核中提供。
 
 ### <a name="solution"></a>解决方案
 
@@ -239,7 +241,8 @@ Azure 文件仅支持 NTLMv2 身份验证。 请确保客户端应用了组策�
 
 * [CIFS：修复重新连接期间潜在的互斥双锁 - 适用于内核 v4.9 及更高版本](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183) 
 
-但是，此更改可能尚未移植到所有的 Linux 发布版本。 这是包含该修复以及其他重新连接问题修复的已知常用的 Linux 内核列表：4.4.40+ 4.8.16+ 4.9.1+。可使用上述推荐的内核版本以获取最新修复。
+但是，此更改可能尚未移植到所有的 Linux 发布版本。 这是已知常用的 Linux 内核的列表，这些内核包含这样和那样的重新连接修补程序：4.4.40+ 4.8.16+ 4.9.1+
+可以改用上面建议的内核版本，以利用最新的修复程序。
 
 ### <a name="workaround"></a>解决方法
 如果无法获取最新内核版本，可通过将每隔 30 秒或更少的时间间隔便会对其进行写入操作的文件保留在 Azure 文件共享中来解决此问题。 这必须是一个写入操作，例如在文件上重写创建/修改的日期。 否则，可能会得到缓存的结果，并且操作可能不会触发重新连接。 

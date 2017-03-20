@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2017
+ms.date: 03/06/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 56a61479971c4a03345bee8a044dbc17d16371ce
-ms.openlocfilehash: 8e87f9bd8122ec3c80d11e8ac563849f540e0cc5
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 40636aa9d847b97ea872bf4689a1da6e3eb23eb4
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -92,7 +92,7 @@ ms.lasthandoff: 02/23/2017
    ![Azure 安全中心中的安全警报][7]
 
    > [!NOTE]
-   > 仅在启用了安全中心的标准层后，才可使用安全中心。 可免费试用标准层 90 天。 请参阅[后续步骤](#next-steps)，了解如何获取标准层。
+   > 仅在启用了安全中心的标准层后，才可使用安全中心。 可免费试用标准层 60 天。 请参阅[后续步骤](#next-steps)，了解如何获取标准层。
    >
    >
 2. 选择一个警报以查看附加信息。 本例中，我们选择“发现修改的系统二进制文件”。 这将打开相应边栏选项卡，提供警报的额外详细信息。

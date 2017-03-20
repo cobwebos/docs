@@ -1,5 +1,5 @@
 ---
-title: "在 Azure VM 上配置 SQL Server 的 Azure 密钥保管库集成（经典）"
+title: "为 SQL VM 自动配置 Azure Key Vault（经典）| Microsoft 文档"
 description: "了解如何自动配置用于 Azure 密钥保管库的 SQL Server 加密。 本主题说明了如何将 Azure 密钥保管库集成和经典部署模型中创建的 SQL Server 虚拟机结合使用。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/17/2017
 ms.author: jroth
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6a5724d4291a0b1878d528a59f693c046ba960f9
-ms.openlocfilehash: d7133180f4fc9263894c522fcaacaeea4a985847
-
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 763b8b57c5914e7be39256d58de1b6769dbbaf9d
+ms.lasthandoff: 03/07/2017
 
 ---
-# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-classic"></a>在 Azure VM 上配置 SQL Server 的 Azure 密钥保管库集成（经典）
+# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>在 Azure 虚拟机上配置 SQL Server 的 Azure Key Vault 集成（经典）
 > [!div class="op_single_selector"]
-> * [资源管理器](../sql/virtual-machines-windows-ps-sql-keyvault.md)
+> * [Resource Manager](../sql/virtual-machines-windows-ps-sql-keyvault.md)
 > * [经典](virtual-machines-windows-classic-ps-sql-keyvault.md)
 > 
 > 
@@ -78,10 +79,5 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](https://m
 SQL IaaS 代理扩展将使用此新配置来更新 SQL VM。
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

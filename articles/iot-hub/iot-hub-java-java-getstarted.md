@@ -16,9 +16,9 @@ ms.date: 03/07/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: a8bc1b0a1011cc2d7719d93fad9db76a7b0f0795
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b7dbfff716806e8b91488d3eb5eafab582e173ba
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -64,9 +64,13 @@ ms.lasthandoff: 03/07/2017
     ```
     <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.0.14</version>
+      <version>1.0.15</version>
     </dependency>
     ```
+    
+    > [!NOTE]
+    > 可以使用 [Maven 搜索][lnk-maven-service-search]检查是否有最新版本的 **iot-service-client**。
+
 4. 保存并关闭 pom.xml 文件。
 5. 使用文本编辑器打开 create-device-identity\src\main\java\com\mycompany\app\App.java 文件。
 6. 在该文件中添加以下 **import** 语句：
@@ -150,6 +154,10 @@ ms.lasthandoff: 03/07/2017
         <version>0.11.0</version> 
     </dependency>
     ```
+
+    > [!NOTE]
+    > 可以使用 [Maven 搜索][lnk-maven-eventhubs-search]检查是否有最新版本的 **azure-eventhubs**。
+
 4. 保存并关闭 pom.xml 文件。
 5. 使用文本编辑器打开 read-d2c-messages\src\main\java\com\mycompany\app\App.java 文件。
 6. 在该文件中添加以下 **import** 语句：
@@ -280,7 +288,7 @@ ms.lasthandoff: 03/07/2017
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.0.20</version>
+      <version>1.0.21</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -288,6 +296,10 @@ ms.lasthandoff: 03/07/2017
       <version>2.3.1</version>
     </dependency>
     ```
+
+    > [!NOTE]
+    > 可以使用 [Maven 搜索][lnk-maven-device-search]检查是否有最新版本的 **iot-device-client**。
+
 4. 保存并关闭 pom.xml 文件。
 5. 使用文本编辑器打开 simulated-device\src\main\java\com\mycompany\app\App.java 文件。
 6. 在该文件中添加以下 **import** 语句：
@@ -470,3 +482,6 @@ ms.lasthandoff: 03/07/2017
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 [lnk-maven]: https://maven.apache.org/what-is-maven.html
+[lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
+[lnk-maven-device-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
+[lnk-maven-eventhubs-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22

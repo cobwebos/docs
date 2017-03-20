@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 46b829ce52994a5112494145a02e78859c5fae2d
-ms.openlocfilehash: d4c7fa2058b1c07671329304c37630d2e6e8e8a7
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: bc7b0d4037effd7bcc8685a357a49de339e31d7b
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/23/2017
 
 * [Microsoft Azure](http://azure.com)订阅。 如果你的团队或组织拥有 Azure 订阅，则所有者可以使用你的 [Microsoft 帐户](http://live.com)将你加入其中。
 
-## <a name="a-nameaddacreate-an-application-insights-resource"></a><a name="add"></a>创建 Application Insights 资源
+## <a name="add"></a>创建 Application Insights 资源
 登录 [Azure 门户][portal]，创建新的 Application Insights 资源。 Azure 中的[资源][roles]是服务的实例。 将在此资源中分析并呈现来自应用的遥测。
 
 ![依次单击“新建”、“Application Insights”](./media/app-insights-nodejs/01-new-asp.png)
@@ -46,7 +46,7 @@ ms.lasthandoff: 02/23/2017
 
 ![单击“属性”，选择密钥，然后按 Ctrl+C](./media/app-insights-nodejs/02-props-asp.png)
 
-## <a name="a-namesdka-install-the-sdk-in-your-application"></a><a name="sdk"></a> 在应用程序中安装 SDK
+## <a name="sdk"></a> 在应用程序中安装 SDK
 ```
 npm install applicationinsights --save
 ```
@@ -64,10 +64,10 @@ appInsights.setup("<instrumentation_key>").start();
 
 可以尝试 SDK 而不用发送遥测：将检测密钥设置为非空字符串。
 
-## <a name="a-nameruna-run-your-project"></a><a name="run"></a> 运行项目
+## <a name="run"></a> 运行项目
 运行应用程序并试用：打开不同的页面来生成一些遥测。
 
-## <a name="a-namemonitora-view-your-telemetry"></a><a name="monitor"></a> 查看遥测
+## <a name="monitor"></a> 查看遥测
 返回 [Azure 门户](https://portal.azure.com) ，浏览到 Application Insights 资源。
 
 在“概述”页中查找数据。 首先，只会看到一个或两个点。 例如：
@@ -86,10 +86,7 @@ appInsights.setup("<instrumentation_key>").start();
 现在，将应用程序部署到 IIS 或 Azure，然后观看数据累积。
 
 #### <a name="no-data-after-you-publish-to-your-server"></a>发布到服务器后却没有数据？
-在服务器的防火墙中打开这些出口流量的端口：
-
-* `dc.services.visualstudio.com:443`
-* `f5.services.visualstudio.com:443`
+检查[所需防火墙端口是否已打开](app-insights-ip-addresses.md)。
 
 #### <a name="trouble-on-your-build-server"></a>生成服务器遇到问题？
 请参阅 [此疑难解答项](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)。

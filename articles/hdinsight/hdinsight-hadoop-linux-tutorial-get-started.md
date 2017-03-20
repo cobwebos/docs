@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: c08b568642e88da1aeddd36cb25a9f5c94b083e2
-ms.openlocfilehash: f283f103804d8e6d4a3c2037c8d38daafcb3f3e8
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: d038245747ff8cfd2c80d7a7e0f05373ccb1e5fe
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -63,7 +63,7 @@ ms.lasthandoff: 02/15/2017
     * **OS 类型**：Linux
     * **辅助角色节点数**：2
 
-     每个群集都有一个 Azure Blob 存储帐户依赖项。 该帐户通常称为默认存储帐户。 HDInsight 群集与其默认存储帐户必须一起放置在同一个 Azure 区域中。 删除群集不会删除存储帐户。 
+     每个群集都有一个 Azure 存储帐户依赖项。 该帐户通常称为默认存储帐户。 HDInsight 群集与其默认存储帐户必须一起放置在同一个 Azure 区域中。 删除群集不会删除存储帐户。 
      
      有关这些属性的详细说明，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 02/15/2017
 
 如果已准备好开始处理自己的数据，并需要进一步了解 HDInsight 存储数据的方式或如何将数据导入 HDInsight，请参阅以下主题：
 
-* 有关 HDInsight 如何使用 Azure Blob 存储的信息，请参阅 [Use Azure Blob storage with HDInsight](hdinsight-hadoop-use-blob-storage.md)（将 Azure Blob 存储与 HDInsight 配合使用）。
+* 有关 HDInsight 如何使用 Azure 存储的信息，请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。
 * 有关如何将数据上载到 HDInsight 的信息，请参阅[将数据上载到 HDInsight][hdinsight-upload-data]。
 
 若要详细了解如何创建或管理 HDInsight 群集，请参阅以下主题：

@@ -16,9 +16,9 @@ ms.workload: web
 ms.date: 02/23/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 862aad510a9d6e8ae15324457d8b15378b2b2776
-ms.openlocfilehash: 61d0f71d13429cffa3b7e01cf2fb18eb358a1817
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 711aaed5521625ee4c4250ad7a2aa6f8b1d6666f
+ms.lasthandoff: 03/11/2017
 
 ---
 
@@ -32,13 +32,7 @@ ms.lasthandoff: 02/27/2017
 
 [!code-azurecli[主要](../../../cli_scripts/app-service/deploy-linux-acr/deploy-linux-acr.sh?highlight=6-9 "Linux Azure 容器注册表")]
 
-## <a name="clean-up-deployment"></a>清理部署 
-
-运行脚本示例后，可以使用以下命令删除资源组、VM 以及所有相关资源。
-
-```azurecli
-az group delete --name myResourceGroup
-```
+[!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>脚本说明
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
-ms.openlocfilehash: 8dd4c5ab11c43ca09085004ee4dce3e616b19d8e
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: b875c83ba7d87a572e78625e4038840aadcf9c85
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -144,7 +145,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 **更多详细信息：**
 
-* [如何更新自己的密码](active-directory-passwords-update-your-own-password.md)
+* [如何更新自己的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)
 
 #### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>Connect（将本地目录扩展到 Azure Active Directory 的同步引擎）
 **类型：**常用功能
@@ -241,7 +242,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 ## <a name="premium-features"></a>Premium 功能
 
 
-#### <a name="a-nameself-service-groupaself-service-group-and-app-managementself-service-application-additionsdynamic-groups"></a><a name="self-service-group"></a>自助组和应用管理/自助应用程序添加/动态组
+#### <a name="self-service-group"></a>自助组和应用管理/自助应用程序添加/动态组
 **类型：**Premium 功能
 
 **可用性：**
@@ -273,7 +274,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 * [什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)
 
 
-#### <a name="a-namemim-cal-mim-serveramim-cal--mim-server"></a><a name="mim-cal-mim-server"></a>MIM CAL + MIM 服务器
+#### <a name="mim-cal-mim-server"></a>MIM CAL + MIM 服务器
 Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任意版本）一起授予。 由于 Microsoft 标识管理器在 Windows Server 操作系统上运行，只要服务器正在运行有效的、经过许可的 Windows Server 副本，就能在该服务器上安装和使用 Microsoft 标识管理器。 Microsoft 标识管理器服务器不需要其他单独的许可证。
 
 **类型：**Premium 功能
@@ -344,7 +345,7 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 | ![勾选标记][12] |![勾选标记][12] |![勾选标记][12] |![勾选标记][12] |
 
 
-#### <a name="a-namemdm-auto-enrollmentamdm-auto-enrollment-self-service-bitlocker-recovery-additional-local-administrators-to-windows-10-devices-via-azure-ad-join"></a><a name="mdm-auto-enrollment"></a>MDM 自动注册、自助 Bitlocker 恢复、通过 Azure AD Join 将其他本地管理员加入 Windows 10 设备
+#### <a name="mdm-auto-enrollment"></a>MDM 自动注册、自助 Bitlocker 恢复、通过 Azure AD Join 将其他本地管理员加入 Windows 10 设备
 **类型：**Azure Active Directory Join - 仅适用于 Windows 10 的相关功能
 
 **可用性：**
@@ -384,9 +385,4 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

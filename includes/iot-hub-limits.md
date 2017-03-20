@@ -38,8 +38,10 @@
 
 > [!NOTE]
 > 如果需要在 Azure 订阅中有 10 个以上的付费 IoT 中心，请联系 Microsoft 支持。
-> 
-> 
+
+
+> [!NOTE]
+> 目前，可以连接到单个 IoT 中心的设备的最大数目是 500,000。 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/en-us/support/options/)。
 
 超过以下配额时，IoT 中心服务将限制请求：
 

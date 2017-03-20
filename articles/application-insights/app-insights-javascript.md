@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 601045a6048266cbd317f3a8ff328caa7edf877f
 ms.openlocfilehash: a7b17961ea23c109dc840192fa3f7cea1d88326e
+ms.lasthandoff: 01/23/2017
 
 
 ---
@@ -54,7 +55,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 紧靠在要跟踪的每个页面的 `</head>` 标记前面插入脚本。 如果网站有母版页，可以在那里插入脚本。 例如：
 
 * 在 ASP.NET MVC 项目中，请将脚本放在 `View\Shared\_Layout.cshtml`
-* 在 SharePoint 站点的控制面板中，打开“站点设置/母版页”[](app-insights-sharepoint.md)。
+* 在 SharePoint 站点的控制面板中，打开 [站点设置/母版页](app-insights-sharepoint.md)。
 
 脚本包含检测密钥，可将数据定向到 Application Insights 资源。 
 
@@ -97,7 +98,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 
 
-## <a name="a-namerunarun-your-app"></a><a name="run"></a>运行应用
+## <a name="run"></a>运行应用
 运行 Web 应用，使用它生成遥测数据，然后等待几秒钟。 可以在开发计算机上使用 **F5** 键运行应用，或者发布应用供用户操作。
 
 如果想要检查 Web 应用发送到 Application Insights 的遥测数据，请使用浏览器的调试工具（许多浏览器支持的**F12** 键）。 数据将发送到 dc.services.visualStudio.com。
@@ -189,7 +190,7 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 选择任一事件查看更多详细信息。 在详细信息页中，单击“...”查看更多详细信息。
 
 > [!NOTE]
-> 如果使用“搜索”，请注意，必须匹配整个字词：“Abou”和“bout”与“About”并不匹配[](app-insights-diagnostic-search.md)。
+> 如果使用 [搜索](app-insights-diagnostic-search.md)，请注意，必须匹配整个字词：“Abou”和“bout”与“About”并不匹配。
 > 
 > 
 
@@ -217,19 +218,14 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 * [了解使用情况跟踪](app-insights-web-track-usage.md)
 * [了解自定义事件和指标 API。](app-insights-api-custom-events-metrics.md)
 
-#### <a name="a-namevideoa-video-tracking-usage"></a><a name="video"></a> 视频：跟踪使用情况
+#### <a name="video"></a> 视频：跟踪使用情况
 > [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Tracking-Usage-with-Application-Insights/player]
 > 
 > 
 
-## <a name="a-namenexta-next-steps"></a><a name="next"></a>后续步骤
+## <a name="next"></a>后续步骤
 * [跟踪使用情况](app-insights-web-track-usage.md)
 * [自定义事件和指标](app-insights-api-custom-events-metrics.md)
 * [Build-measure-learn](app-insights-overview-usage.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

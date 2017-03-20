@@ -3,7 +3,7 @@ title: "为 Azure 移动应用启用脱机同步 (Android)"
 description: "了解如何在 Android 应用程序中使用应用服务移动应用来缓存和同步脱机数据"
 documentationcenter: android
 author: ysxu
-manager: erikre
+manager: adrianha
 services: app-service\mobile
 ms.assetid: 32a8a079-9b3c-4faf-8588-ccff02097224
 ms.service: app-service-mobile
@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 00d800dda92c3cd9bb4a6c7edbb11647726f9883
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 6135c042010147270e06740038afe80efc738f2d
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -101,11 +102,6 @@ ms.openlocfilehash: 00d800dda92c3cd9bb4a6c7edbb11647726f9883
 [创建 Android 应用]: app-service-mobile-android-get-started.md
 
 [云覆盖：Azure 移动服务中的脱机同步]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday：Azure 移动服务中允许脱机的应用]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
 

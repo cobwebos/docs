@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: ec522d843b2827c12ff04afac15d89d525d88676
-ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: a42dbefe6805cff5fb2df604265f0e62e2c25f69
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -35,9 +36,9 @@ ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
 
 可使用数据工厂[管道](data-factory-create-pipelines.md)中的数据转换活动将原始数据转换和处理为预测和见解。 存储过程活动是数据工厂支持的转换活动之一。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
-可以使用存储过程活动调用以下数据存储中的存储过程：Azure SQL 数据库、Azure SQL 数据仓库、企业中或 Azure 虚拟机 (VM) 上的 SQL Server 数据库。  如果使用 SQL Server，则必须在托管数据库的同一计算机上或在单独的计算机上安装数据管理网关，以避免与数据库争用资源。 数据管理网关是一种以安全和托管的方式将本地/Azure VM 上的数据源与云服务进行连接的软件。 有关详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
+可以使用存储过程活动调用以下数据存储中的存储过程：Azure SQL 数据库、Azure SQL 数据仓库、企业中或 Azure 虚拟机 (VM) 上的 SQL Server 数据库。  如果使用 SQL Server，请在托管数据库的同一计算机上或在可以访问数据库的单独计算机上安装数据管理网关。 数据管理网关是一种以安全和托管的方式将本地/Azure VM 上的数据源与云服务进行连接的组件。 有关详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
 
-下面的演练提供有关使用存储过程活动从数据工厂管道调用 Azure SQL 数据库中的存储过程的分步说明。 
+以下演练使用管道中的存储过程活动来调用 Azure SQL 数据库中的存储过程。 
 
 ## <a name="walkthrough"></a>演练
 ### <a name="sample-table-and-stored-procedure"></a>示例表和存储过程
@@ -58,7 +59,7 @@ ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
     
     ![样本数据](./media/data-factory-stored-proc-activity/sample-data.png)
 
-    此示例使用的是 Azure SQL 数据库，但同样适用于 Azure SQL 数据仓库和 SQL Server 数据库。对于 SQL Server 数据库，必须安装[数据管理网关](data-factory-data-management-gateway.md)。
+    在此示例中，存储过程在 Azure SQL 数据库中。 如果存储过程在 Azure SQL 数据仓库和 SQL Server 数据库中，则方法非常相似。 对于 SQL Server 数据库，必须安装[数据管理网关](data-factory-data-management-gateway.md)。
 2. 创建以下**存储过程**，将数据插入 **sampletable**。
 
     ```SQL
@@ -102,13 +103,13 @@ ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
    ![新建数据存储](media/data-factory-stored-proc-activity/new-data-store.png)
 3. 在 JSON 脚本中，进行以下更改：
 
-   1. 将 **&lt;servername&gt;** 替换为 Azure SQL 数据库服务器的名称。
-   2. 将 **&lt;databasename&gt;** 替换为在其中创建表和存储过程的数据库。
-   3. 将 **&lt;username@servername&gt;** 替换为有权访问数据库的用户帐户。
-   4. 将 **&lt;password&gt;** 替换为用户帐户的密码。
+   1. 将 `<servername>` 替换为 Azure SQL 数据库服务器的名称。
+   2. 将 `<databasename>` 替换为在其中创建表和存储过程的数据库。
+   3. 将 `<username@servername>` 替换为有权访问数据库的用户帐户。
+   4. 将 `<password>` 替换为用户帐户的密码。
 
       ![新建数据存储](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
-4. 单击命令栏上的“部署”，部署链接服务。 确认在左侧的树视图中已显示 AzureSqlLinkedService。
+4. 若要部署链接服务，请单击命令栏上的“部署”。 确认在左侧的树视图中已显示 AzureSqlLinkedService。
 
     ![包含链接服务的树视图](media/data-factory-stored-proc-activity/tree-view.png)
 
@@ -134,7 +135,7 @@ ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
         }
     }
     ```
-3. 单击命令栏上的“部署”来部署数据集。 确认树视图中显示了此数据集。
+3. 若要部署数据集，请单击命令栏上的“部署”。 确认树视图中显示了此数据集。
 
     ![包含链接服务的树视图](media/data-factory-stored-proc-activity/tree-view-2.png)
 
@@ -142,7 +143,7 @@ ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
 现在，我们来使用 SqlServerStoredProcedure 活动创建管道。
 
 1. 单击命令栏上的“...更多”并单击“新建管道”。
-2. 复制/粘贴以下 JSON 代码段。 **StoredProcedureName** 设置为 **sp_sample**。 **DateTime** 参数的名称和大小写必须与存储过程定义中参数的名称和大小写相匹配。  
+2. 复制/粘贴以下 JSON 代码段：   
 
     ```JSON
     {
@@ -176,8 +177,10 @@ ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
     }
     ```
 
+    **StoredProcedureName** 设置为 **sp_sample**。 **DateTime** 参数的名称和大小写必须与存储过程定义中参数的名称和大小写相匹配。
+
     如果需要为参数传递 null，请使用语法："param1": null（全部小写）。
-3. 单击工具栏上的“部署”来部署管道。  
+3. 若要部署管道，请单击工具栏上的“部署”。  
 
 ### <a name="monitor-the-pipeline"></a>监视管道
 1. 单击“X”关闭“数据工厂编辑器”边栏选项卡，导航回到“数据工厂”边栏选项卡，然后单击“图示”。
@@ -186,10 +189,10 @@ ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
 2. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
 
     ![图示磁贴](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. 在“图示视图”中，双击数据集 **sprocsampleout**。 将看到切片处于“就绪”状态。 由于切片是在 JSON 中针对开始时间和结束时间之间的每一小时生成的，因此，应该有 5 个切片。
+3. 在“图示视图”中，双击数据集 `sprocsampleout`。 将看到切片处于“就绪”状态。 由于切片是在 JSON 中针对开始时间和结束时间之间的每一小时生成的，因此，应该有&5; 个切片。
 
     ![图示磁贴](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. 切片处于“就绪”状态时，对 Azure SQL 数据库运行 **select * from sampletable** 查询，以验证存储过程是否已将数据插入到表中。
+4. 切片处于“就绪”状态时，对 Azure SQL 数据库运行 `select * from sampletable` 查询，以验证存储过程是否已将数据插入到表中。
 
    ![输出数据](./media/data-factory-stored-proc-activity/output.png)
 
@@ -229,7 +232,7 @@ ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
 | description |描述活动用途的文本 |否 |
 | type | 必须设置为：**SqlServerStoredProcedure** | 是 |
 | inputs | 可选。 如果指定了输入数据集，则它必须可供使用（“就绪”状态），存储过程才能运行。 该输入数据集无法在存储过程中用作参数。 它仅用于在开始存储过程活动前检查依赖项。 |否 |
-| outputs |必须指定存储过程活动的输出数据集。 输出数据集为存储过程活动指定**计划**（每小时、每周、每月等）。 <br/><br/>输出数据集必须使用**链接服务**，其指代 Azure SQL 数据库或 Azure SQL 数据仓库或要在其中运行存储过程的 SQL Server 数据库。 <br/><br/>输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 <br/><br/>在某些情况下，输出数据集可以是**虚拟数据集**，它仅用于指定运行存储过程活动的计划。 |是 |
+| outputs | 必须指定存储过程活动的输出数据集。 输出数据集为存储过程活动指定**计划**（每小时、每周、每月等）。 <br/><br/>输出数据集必须使用**链接服务**，其指代 Azure SQL 数据库或 Azure SQL 数据仓库或要在其中运行存储过程的 SQL Server 数据库。 <br/><br/>输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 <br/><br/>在某些情况下，输出数据集可以是**虚拟数据集**，它仅用于指定运行存储过程活动的计划。 |是 |
 | storedProcedureName |在 Azure SQL 数据库或 Azure SQL 数据仓库中指定存储过程的名称，用输出表使用的链接服务表示。 |是 |
 | storedProcedureParameters |指定存储过程的参数值。 如果需要为参数传递 null，请使用语法："param1": null（全部小写）。 请参阅以下示例了解如何使用此属性。 |否 |
 
@@ -332,8 +335,3 @@ END
     }
 }
 ```
-
-
-<!--HONumber=Dec16_HO3-->
-
-

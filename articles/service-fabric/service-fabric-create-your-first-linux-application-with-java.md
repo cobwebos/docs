@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: dc9234760b0dfb5d109fc86ac47a89c8fcf7d991
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 88b16b0b7c951ab0350649de05c00263ec76e630
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -101,40 +102,22 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 
 3. 单击上一步找到的节点，然后在“操作”菜单中选择“停用(重启)”。 此操作将在本地群集中重新启动五个节点中的一个，并强制故障转移到在另一个节点上运行的其中一个辅助副本。 在执行此操作时，请注意来自测试客户端的输出，并注意虽然发生故障转移，但是计数器仍将继续递增。
 
-## <a name="build-and-deploy-an-application-with-the-eclipse-neon-plugin"></a>使用 Eclipse Neon 插件生成和部署应用程序
+## <a name="create-and-deploy-an-application-with-the-eclipse-neon-plugin"></a>使用 Eclipse Neon 插件创建和部署应用程序
 
-如果安装了适用于 Eclipse Neon 的 [Service Fabric 插件](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-linux#install-the-java-sdk-and-eclipse-neon-plugin-optional)，则可以将其用于创建、生成和部署使用 Java 生成的 Service Fabric 应用程序。  安装 Eclipse 时，请选择“适用于 Java 开发人员的 Eclipse IDE”。
-
-### <a name="create-the-application"></a>创建应用程序
-
-Service Fabric 插件可通过 Eclipse 扩展性获得。
-
-1. 在 Eclipse 中，选择“文件”>“其他”>“Service Fabric”。 然后将出现一组选项，其中包括“角色”和“容器”。
-
-    ![Eclipse 中的 Service Fabric 模板][sf-eclipse-templates]
-
-2. 在此例中，选择“无状态服务”。
-
-3. 系统会要求确认使用 Service Fabric，这样可以优化 Eclipse 以用于 Service Fabric 项目。 选择“是”。
-
-### <a name="deploy-the-application"></a>部署应用程序
-Service Fabric 模板包括一组用于生成和部署应用程序的 Gradle 任务，该任务可以通过 Eclipse 触发。
-
-1. 选择“运行”>“运行配置”。
-2. 指定“本地”或“云”。 默认设置为“本地”。 若要部署到远程群集，请选择“云”。
-3. 相应地编辑 `local.json` 或 `cloud.json`，确保在发布配置文件中填充正确的信息。
-4. 单击“**运行**”。
-
-应用将在片刻之后生成和部署。 可以从 Service Fabric Explorer 监视其状态。
+Service Fabric 还为你提供预配，用于通过 Eclipse 创建、生成和部署 Service Fabric Java 应用程序。 安装 Eclipse 时，请选择“适用于 Java 开发人员的 Eclipse IDE”。 另外，Service Fabric 目前还支持适用于 Eclipse **Neon** 的插件。 请参阅详细文档 - [使用适用于 Eclipse 的 Service Fabric 插件在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
 
 ## <a name="adding-more-services-to-an-existing-application"></a>将更多服务添加到现有应用程序
 
+### <a name="using-command-line-utility"></a>使用命令行实用程序
 若要将其他服务添加到使用 `yo` 创建的应用程序，请执行以下步骤：
 1. 将目录更改为现有应用程序的根目录。  例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
 2. 运行 `yo azuresfjava:AddService`
 
+### <a name="using-service-fabric-eclipse-plugin-for-java-on-linux"></a>在 Linux 上使用适用于 Java 的 Service Fabric Eclipse 插件
+若要将服务添加到使用适用于 Service Fabric 的 Eclipse 插件创建的现有应用程序，请参阅[此处](service-fabric-get-started-eclipse.md#add-new-service-fabric-service-to-your-service-fabric-application)的文档。
 
 ## <a name="next-steps"></a>后续步骤
+* [使用适用于 Eclipse 的 Service Fabric 插件在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
 * [了解有关 Reliable Actors 的详细信息](service-fabric-reliable-actors-introduction.md)
 * [使用 Azure CLI 与 Service Fabric 群集交互](service-fabric-azure-cli.md)
 * [排查部署问题](service-fabric-azure-cli.md#troubleshooting)
@@ -144,9 +127,4 @@ Service Fabric 模板包括一组用于生成和部署应用程序的 Gradle 任
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png
 [sfx-primary]: ./media/service-fabric-create-your-first-linux-application-with-java/sfx-primary.png
 [sf-eclipse-templates]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-eclipse-templates.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

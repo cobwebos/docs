@@ -13,12 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/22/2017
+ms.date: 03/13/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a3bdeb6fea306babc9358134c37044843b9bdd1c
-ms.openlocfilehash: d8d9c5111a19bb165c25d2796d6b6e933d75042a
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 33256025811f18529c942fa00726b40191127b7a
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -28,23 +28,11 @@ ms.lasthandoff: 02/06/2017
 
    ![HDInsight 中的 Apache Spark 入门](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "HDInsight 中的 Apache Spark 入门教程。演示的步骤：创建存储帐户；创建群集；运行 Spark SQL 语句")
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
-
 ## <a name="prerequisites"></a>先决条件
 * **一个 Azure 订阅**。 在开始学习本教程之前，你必须有一个 Azure 订阅。 请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free)。
 
-* **安全外壳 (SSH) 客户端**：Linux、Unix 和 OS X 系统可通过 `ssh` 命令提供 SSH 客户端。 对于 Windows 客户端，请参阅[在装有 PuTTY 的 Windows 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)；对于 Linux、Unix 或 OS X，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-> [!NOTE]
-> 本文通过 Azure Resource Manager 模板创建使用 [Azure 存储 Blob 作为群集存储](hdinsight-hadoop-use-blob-storage.md)的 Spark 群集。 除了使用 Azure 存储 Blob 作为默认存储外，还可以创建使用 [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) 作为附加存储的 Spark 群集。 有关说明，请参阅 [Create an HDInsight cluster with Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)（创建包含 Data Lake Store 的 HDInsight 群集）。
->
->
-
-### <a name="access-control-requirements"></a>访问控制要求
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
-
-## <a name="create-spark-cluster"></a>创建 Spark 群集
-本部分介绍如何使用 [Azure Resource Manager 模板](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/)在 HDInsight 中创建 Spark 群集。 有关 HDInsight 版本及其 SLA 的信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。 有关其他群集创建方法，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。
+## <a name="create-a-spark-cluster"></a>创建 Spark 群集
+本部分介绍如何使用 [Azure Resource Manager 模板](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/)在 HDInsight 中创建 Spark 群集。 有关其他群集创建方法，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。
 
 1. 单击下面的图像即可在 Azure 门户中打开该模板。         
 
@@ -54,24 +42,32 @@ ms.lasthandoff: 02/06/2017
 
     ![使用 Azure Resource Manager 模板在 HDInsight 中创建 Spark 群集](./media/hdinsight-apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "使用 Azure Resource Manager 模板在 HDInsight 中创建 Spark 群集")
 
-   * **订阅**：为此群集选择你的 Azure 订阅。
-   * **资源组**：创建新的资源组，或选择现有的资源组。 资源组用于管理项目的 Azure 资源。
-   * **位置**：选择资源组的位置。  此位置还用于默认群集存储和 HDInsight 群集。
-   * **ClusterName**：为将创建的 Hadoop 群集输入名称。
-   * **群集登录名和密码**：默认登录名是 admin。
-   * **SSH 用户名和密码**。
+    * **订阅**：为此群集选择你的 Azure 订阅。
+    * **资源组**：创建资源组，或选择现有的资源组。 资源组用于管理项目的 Azure 资源。
+    * **位置**：选择资源组的位置。  此位置还用于默认群集存储和 HDInsight 群集。
+    * **ClusterName**：为创建的 Hadoop 群集输入名称。
+    * **Spark 版本**：选择要安装在群集上的 Spark 版本。
+    * **群集登录名和密码**：默认登录名是 admin。
+    * **SSH 用户名和密码**。
 
-   请记下这些值。  本教程后面的步骤中将会用到它们。
+   记下这些值。  本教程后面会用到它们。
 
 3. 选择“我同意上述条款和条件”，选择“固定到仪表板”，然后单击“购买”。 此时会出现一个标题为“为模板部署提交部署”的新磁贴。 创建群集大约需要 20 分钟时间。
 
-## <a name="run-spark-sql-queries-using-a-jupyter-notebook"></a>使用 Jupyter 笔记本运行 Spark SQL 查询
-在本部分中，你将使用 Jupyter 笔记本针对 Spark 群集运行 Spark SQL 查询。 HDInsight Spark 群集提供了可在 Jupyter 笔记本中使用的两个内核。 它们是：
+> [!NOTE]
+> 本文创建的 Spark 群集使用 [Azure 存储 Blob 作为群集存储](hdinsight-hadoop-use-blob-storage.md)。 除了使用 Azure 存储 Blob 作为默认存储外，还可以创建使用 [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) 作为附加存储的 Spark 群集。 有关说明，请参阅 [Create an HDInsight cluster with Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)（创建包含 Data Lake Store 的 HDInsight 群集）。
+>
+>
+
+## <a name="run-a-spark-sql-query"></a>运行 Spark SQL 查询
+
+在本部分中，你将使用 Jupyter 笔记本针对 Spark 群集运行 Spark SQL 查询。 HDInsight Spark 群集提供了可在 Jupyter Notebook 中使用的三个内核。 其中包括：
 
 * **PySpark** （适用于以 Python 编写的应用程序）
+* **PySpark3**（适用于以 Python3 编写的应用程序）
 * **Spark** （适用于以 Scala 编写的应用程序）
 
-本文使用 PySpark 内核。 有关两个内核的详细信息，请参阅[将 Jupyter Ntebook 内核与 HDInsight 中的 Apache Spark 群集配合使用](hdinsight-apache-spark-jupyter-notebook-kernels.md)。 使用 PySpark 内核的部分主要好处包括：
+本文使用 **PySpark** 内核。 有关内核的详细信息，请参阅[将 Jupyter Notebook 内核与 HDInsight 中的 Apache Spark 群集配合使用](hdinsight-apache-spark-jupyter-notebook-kernels.md)。 使用 PySpark 内核的部分主要好处包括：
 
 * 自动设置 Spark 和 Hive 的上下文。
 * 可以使用 cell magic（例如 `%%sql`）直接运行 SQL 或 Hive 查询，而不需要任何前置的代码片段。
@@ -80,11 +76,12 @@ ms.lasthandoff: 02/06/2017
 ### <a name="create-jupyter-notebook-with-pyspark-kernel"></a>使用 PySpark 内核创建 Jupyter 笔记本
 
 1. 打开 [Azure 门户](https://portal.azure.com/)。
-2. 在左侧菜单中，单击“资源组”。
-3. 单击在上一部分中创建的资源组。 如果有太多的资源组，可以使用搜索功能。 在组中可以看到两个资源：HDInsight 群集和默认的存储帐户。
-4. 单击群集将其打开。
 
-2. 在“快速链接”中，单击“群集仪表板”，然后单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+2. 如果已选择将群集固定到仪表板，请单击仪表板中的群集磁贴，启动群集边栏选项卡。
+
+    如果未将群集固定到仪表板，则请单击左窗格中的“HDInsight 群集”，然后单击已创建的群集。
+
+3. 在“快速链接”中，单击“群集仪表板”，然后单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
 
    ![HDInsight 群集仪表板](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-azure-portal-cluster-dashboards.png "HDInsight 群集仪表板")
 
@@ -94,26 +91,27 @@ ms.lasthandoff: 02/06/2017
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
-3. 创建新的笔记本。 单击“新建”，然后单击“PySpark”。
+3. 创建 Notebook。 单击“新建”，然后单击“PySpark”。
 
-   ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "创建新的 Jupyter 笔记本")
+   ![创建 Jupyter Notebook](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "创建 Jupyter Notebook")
 
    新笔记本随即已创建，并以 Untitled(Untitled.pynb) 名称打开。
 
 4. 在顶部单击笔记本名称，然后根据需要输入友好名称。
 
     ![提供笔记本的名称](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "提供笔记本的名称")
+
 5. 将以下代码粘贴到空白单元格中，然后按 **SHIFT + ENTER** 执行这些代码。 这些代码会导入此方案所需的类型：
 
         from pyspark.sql.types import *
 
-    使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。
+    使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。
 
     ![Jupyter 笔记本作业的状态](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.jupyter.job.status.png "Jupyter 笔记本作业的状态")
 
-    每次在 Jupyter 中运行作业时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和笔记本标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。 作业完成后，实心圆将变成空心圆。
+    每次在 Jupyter 中运行作业时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和 Notebook 标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。 作业完成后，实心圆将变成空心圆。
 
-6. 运行以下代码，将一些示例数据注册到名为 **hvac** 的临时表中。
+6. 运行以下代码，将示例数据集注册为临时表 (**hvac**)。
 
         # Load the data
         hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -132,12 +130,12 @@ ms.lasthandoff: 02/06/2017
 
     HDInsight 中的 Spark 群集在 **\HdiSamples\HdiSamples\SensorSampleData\hvac** 下面随附了一个示例数据文件 **hvac.csv**。
 
-7. 运行以下代码来查询数据：
+7. 若要查询数据，请运行以下代码。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
-   由于使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
+   由于使用的是 PySpark 内核，因此现在可直接在使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅[包含 Spark HDInsight 群集的 Jupyter Notebook 上可用的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)。
 
    默认会显示以下表格输出。
 
@@ -147,7 +145,14 @@ ms.lasthandoff: 02/06/2017
 
     ![查询结果分区图](./media/hdinsight-apache-spark-jupyter-spark-sql/area.output.png "查询结果分区图")
 
-9. 运行完应用程序后，可以关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这将会关闭笔记本。
+9. 运行完应用程序后，可以关闭 Notebook 以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。
+
+## <a name="troubleshoot"></a>故障排除
+
+以下是在使用 HDInsight 群集时可能会遇到的一些常见问题。
+
+### <a name="access-control-requirements"></a>访问控制要求
+[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="delete-the-cluster"></a>删除群集
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]

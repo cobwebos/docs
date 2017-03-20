@@ -15,9 +15,9 @@ ms.date: 02/15/2017
 ms.author: heidist
 experiment_id: heidist-20170221
 translationtype: Human Translation
-ms.sourcegitcommit: 71694028366f48682881523c0220a4158078a76c
-ms.openlocfilehash: b851f906b57225dce516d9704fdace80c44c4897
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 8f4947ba2641bc8a39a71945ff2a6818d1ff7830
+ms.lasthandoff: 03/08/2017
 
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
@@ -49,7 +49,7 @@ Azure 搜索在云中作为 Microsoft 提供的托管服务运行。 它可以�
 
 多个云服务提供商提供了自定义搜索引擎，该引擎包含为自定义应用中的搜索栏提供支持的功能。 某些引擎提供了可比较的基线功能，以及全文搜索、地理搜索，并且能够处理搜索输入中一定程度的模糊性。 通常，它是一项[专用功能](#feature-drilldown)，或者是 API、工具以及用于确定最匹配项的管理功能的易化和总体简化。
 
-与其他搜索解决方案相比，Azure 搜索为主要依赖于信息检索搜索和内容导航的应用提供了必要的一层附加功能，因此在处理 Azure 上的内容存储和数据库的全文搜索工作负荷方面，它最为强大。 
+与其他搜索解决方案相比，Azure 搜索为主要依赖于信息检索搜索和内容导航的应用提供了必要的一层附加功能，因此在处理 Azure 上的内容存储和数据库的全文搜索工作负荷方面，它最为强大。 主要优势包括：
 
 + 在索引层的 Azure 数据集成（爬网程序）
 + 用于集中管理的 Azure 门户

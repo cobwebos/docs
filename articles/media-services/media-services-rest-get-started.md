@@ -15,15 +15,14 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f1b8c68639fd2b778e7e56a6826e91d5bffd4ae8
-ms.openlocfilehash: c6f843e452353edc7c4c7e9bacf653c555145afe
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 52f672dcf42a19bf10935fcf733b8f07ff559a8d
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
-
 
 本快速入门介绍了使用 Azure 媒体服务 (AMS) REST API 实现视频点播 (VoD) 内容传送应用程序的步骤。
 
@@ -52,6 +51,9 @@ ms.lasthandoff: 01/13/2017
 5. 使用 REST API 发布资产并获取流式处理和渐进式下载 URL。
 6. 播放内容。
 
+>[!NOTE]
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
+
 
 若要深入了解本主题中使用的 AMS REST 实体，请参阅 [Azure 媒体服务 REST API 参考](/rest/api/media/services/azure-media-services-rest-api-reference)。 也可参阅 [Azure 媒体服务概念](media-services-concepts.md)。
 
@@ -73,7 +75,7 @@ ms.lasthandoff: 01/13/2017
 4. 单击“启动”图标。
 5. 单击“保存”按钮保存更改。
 
-## <a name="a-idconnectaconnect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>使用 REST API 连接到媒体服务帐户
+## <a id="connect"></a>使用 REST API 连接到媒体服务帐户
 访问 Azure 媒体服务时需要以下两项内容：由 Azure 访问控制服务 (ACS) 提供的访问令牌和媒体服务本身的 URI。 在创建这些请求时，可以使用任何想要的方法，前提是在调用媒体服务时指定了正确的标头值，并且正确地传入了访问令牌。
 
 以下步骤描述了在使用媒体服务 REST API 连接到媒体服务时运用的最常见工作流：
@@ -216,7 +218,7 @@ ms.lasthandoff: 01/13/2017
 >
 >
 
-## <a name="a-iduploadacreate-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>使用 REST API 创建新资产并上载视频文件
+## <a id="upload"></a>使用 REST API 创建新资产并上载视频文件
 
 在媒体服务中，可以将数字文件上载到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上载到资产后，相关内容即安全地存储在云中供后续处理和流式处理。
 
@@ -540,7 +542,7 @@ SAS URL 采用以下格式：
     HTTP/1.1 204 No Content
     ...
 
-## <a name="a-idencodeaencode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>将源文件编码为一组自适应比特率 MP4 文件
+## <a id="encode"></a>将源文件编码为一组自适应比特率 MP4 文件
 
 将资产引入媒体服务后，即可对媒体进行编码、传输复用、打水印等处理，然后将其传送至客户端。 将根据多个后台角色实例调度把那个运行这些活动，以确保较高的性能和可用性。 这些活动称为作业，每个作业由原子任务构成，这些原子任务在资产文件上完成具体的工作（有关详细信息，请参阅[作业](/rest/api/media/services/job)、[任务](/rest/api/media/services/task)描述）。
 
@@ -829,7 +831,7 @@ SAS URL 采用以下格式：
 
 
 
-## <a name="a-idpublishgeturlsapublish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>使用 REST API 发布资产并获取流式处理和渐进式下载 URL
+## <a id="publish_get_urls"></a>使用 REST API 发布资产并获取流式处理和渐进式下载 URL
 
 若要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如 MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。 有关 SAS 定位符的详细信息，请参阅[此](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/)博客。
 
@@ -1052,7 +1054,7 @@ MPEG DASH 的流 URL 采用以下格式：
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-## <a name="a-idplayaplay-your-content"></a><a id="play"></a>播放内容
+## <a id="play"></a>播放内容
 若要流式处理视频，请使用 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
 
 若要测试渐进式下载，请将 URL 粘贴到浏览器（例如 IE、Chrome、Safari）中。

@@ -18,9 +18,9 @@ ms.date: 02/27/2017
 ms.author: dariagrigoriu, glenga
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1c740ac1f98a07b08bdf922dde99ce54bac23ee5
-ms.openlocfilehash: e41e246b081efbdf5edf70ee5de86cd2a68043b2
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: f4d589382fe337549f117e7c03af6fd5e237491f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -49,6 +49,12 @@ Azure Functions 有两个不同的服务计划：消耗量计划和应用服务�
 消耗量计划会根据 Function App 中函数的运行时需求添加额外的处理实例，自动缩放 CPU 和内存资源。 会为每个 Function App 处理实例分配最多 1.5 GB 的内存资源。
 
 基于消耗量计划运行时，如果 Function App 处于空闲状态，则在处理新 Blob 时，可能会出现某天耗时长达 10 分钟的情况。 Function App 运行以后，Blob 处理速度会加快。 若要避免这种初始延迟，可以使用常规的应用服务计划并启用“始终可用”，或者使用其他机制来触发 Blob 处理，例如使用包含 Blob 名称的队列消息。 
+
+创建 Function App 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 Azure Functions 内部使用 Azure 存储以进行操作（如管理触发器和记录函数执行）。 某些存储帐户不支持队列和表，例如仅限 blob 的存储帐户（包括高级存储）和使用 ZRS 复制的常规用途的存储帐户。 创建新的 Function App 时，将从“存储帐户”边栏选项卡对这些帐户进行筛选。
+
+使用消耗托管计划时，Function App 内容（如函数代码文件和绑定配置）存储在主存储帐户的 Azure 文件共享上。 如果删除主存储帐户，将删除此内容，并且无法恢复。
+
+若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介] (.../ storage/storage-introduction.md#introducing-the-azure-storage-services)。
 
 ### <a name="runtime-scaling"></a>运行时缩放
 

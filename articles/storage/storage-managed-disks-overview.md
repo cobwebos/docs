@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: c8cd6efc9af5b0022ed5fed315a63395477e1c34
-ms.openlocfilehash: 7b132387468a97b2fb149576092f7867edc43e6e
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: d9e79c78f55dc80e113062bf0a134c02787e06a1
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -100,7 +100,7 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 
 ## <a name="images"></a>映像
 
-托管磁盘还支持创建托管自定义映像。 可以从存储帐户中的自定义 VHD 创建映像，也可以直接从正在运行的 VM 创建映像。 这会将与正在运行的 VM 关联的所有托管磁盘捕获到单个映像中，包括 OS 和数据磁盘。 这将允许使用自定义映像创建数百台 VM，且不需要复制或管理任何存储帐户。
+托管磁盘还支持创建托管自定义映像。 可以从存储帐户中的自定义 VHD 创建映像或者直接从通用化 (sys-prepped) VM 创建映像。 这会将与 VM 关联的所有托管磁盘捕获到单个映像中，包括 OS 和数据磁盘。 这将允许使用自定义映像创建数百台 VM，且不需要复制或管理任何存储帐户。
 
 有关创建映像的信息，请查看以下文章：
 * [如何在 Azure 中捕获通用 VM 的托管映像](../virtual-machines/virtual-machines-windows-capture-image-resource.md)
@@ -112,7 +112,7 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 
 快照是磁盘在创建快照那一刻的副本。 它仅应用于一个磁盘。 如果存在仅具有一个磁盘（OS）的 VM，则可以为其创建快照或映像，并且可以通过该快照或映像创建 VM。
 
-如果 VM 具有五个磁盘且这些磁盘是条带化的，将会怎样？ 你可以创建每个磁盘的快照，但是系统对于 VM 中的磁盘状况没有意识 – 快照只知道那一个磁盘的状况。 在这种情况下，快照彼此之间需要相互协调，目前不支持此功能。 因此，在这种情况下，如果希望创建 VM 的副本，则需要创建映像。 默认情况下，映像将包括所有五个磁盘的协调副本。
+如果 VM 具有五个磁盘且这些磁盘是条带化的，将会怎样？ 你可以创建每个磁盘的快照，但是系统对于 VM 中的磁盘状况没有意识 – 快照只知道那一个磁盘的状况。 在这种情况下，快照彼此之间需要相互协调，目前不支持此功能。
 
 ## <a name="azure-backup-service-support"></a>Azure 备份服务支持 
 

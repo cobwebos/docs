@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: bc0fe3341bc5b698032c56dec836b942ce7fa8be
-ms.openlocfilehash: 3ca6156369bf4ae530a91520e86166592181511a
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 75ddbacbd4dd14597b786d26f0730477f6c85811
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -116,9 +116,9 @@ ms.lasthandoff: 03/02/2017
 * 有关 Azure应用服务最佳实践的信息，包括构建可缩放和可复原的体系结构，请参阅 [Best Practices: Azure App Service Web Apps](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)（最佳实践：Azure 应用服务 Web 应用）。
 * 有关缩放应用服务应用的视频，请参阅以下资源：
   
-  * [When to Scale Azure Websites](https://azure.microsoft.com/en-us/resources/videos/azure-web-sites-free-vs-standard-scaling/)（何时缩放 Azure 网站）- 主讲人：Stefan Schackow
-  * [Auto Scaling Azure Websites, CPU or Scheduled](https://azure.microsoft.com/en-us/resources/videos/auto-scaling-azure-web-sites/)（自动缩放 Azure 网站、CPU 或计划）- 主讲人：Stefan Schackow
-  * [How Azure Websites Scale](https://azure.microsoft.com/en-us/resources/videos/how-azure-web-sites-scale/)（Azure 网站如何缩放）- 主讲人：Stefan Schackow
+  * [When to Scale Azure Websites](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)（何时缩放 Azure 网站）- 主讲人：Stefan Schackow
+  * [Auto Scaling Azure Websites, CPU or Scheduled](https://azure.microsoft.com/resources/videos/auto-scaling-azure-web-sites/)（自动缩放 Azure 网站、CPU 或计划）- 主讲人：Stefan Schackow
+  * [How Azure Websites Scale](https://azure.microsoft.com/resources/videos/how-azure-web-sites-scale/)（Azure 网站如何缩放）- 主讲人：Stefan Schackow
 
 <!-- LINKS -->
 [vmsizes]:/pricing/details/app-service/

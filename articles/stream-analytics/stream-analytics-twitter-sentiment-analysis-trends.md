@@ -16,15 +16,15 @@ ms.workload: big-data
 ms.date: 03/03/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 576d8663f61d344628a38a98bf9902f4194949d0
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 214bd6ca8abb3adc9447536215f28f478959be07
+ms.lasthandoff: 03/07/2017
 
 ---
 
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 
-了解如何通过将实时 Twitter 事件引入 Azure 事件中心，生成用于社交媒体分析的情绪分析解决方案。 将编写一个 Azure 流分析查询以分析数据。 然后存储结果供以后审阅或使用仪表板和 [Power BI](https://powerbi.com/) 来提供实时见解。
+了解如何通过将实时 Twitter 事件引入 Azure 事件中心，生成用于社交媒体分析的情绪分析解决方案。 我们将编写一个 Azure 流分析查询来分析数据。 然后存储结果供以后审阅或使用仪表板和 [Power BI](https://powerbi.com/) 来提供实时见解。
 
 社交媒体分析工具可帮助组织了解热门主题，即社交媒体中拥有大量帖子的主题和观点。 情绪分析（也称为“观点挖掘”）使用社交媒体分析工具来确定大众对产品、理念等的态度。 实时 Twitter 趋势分析就是一个很好的示例，因为井号标记订阅模型使你可以侦听特定关键字并在源上开发情绪分析。
 

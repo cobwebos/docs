@@ -1,6 +1,6 @@
 ---
 title: "帮助进行标识管理的 Azure 安全功能 | Microsoft Docs"
-description: " 本文概述了可帮助进行标识管理的核心 Azure 安全功能。 Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略. "
+description: " 本文概述了可帮助进行标识管理的核心 Azure 安全功能。 Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略。 "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 03/09/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
-ms.openlocfilehash: 9c5af888ec0130ec8506602ab805221f0a83ea47
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: bb9d08d6164ec01ce1d76fc4a23e782213ecfcd9
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -109,15 +110,15 @@ Azure Active Directory B2C 是一个高度可用的全局性标识管理服务�
 * [Azure Active Directory B2C 预览版：应用程序的类型](../active-directory-b2c/active-directory-b2c-apps.md)
 
 ## <a name="device-registration"></a>设备注册
-Azure AD 设备注册是基于设备的[条件性访问](../active-directory/active-directory-conditional-access-on-premises-setup.md)方案的基础。 在注册设备时，Azure Active Directory 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
+Azure AD 设备注册是基于设备的[条件性访问](../active-directory/active-directory-conditional-access-device-registration-overview.md)方案的基础。 在注册设备时，Azure Active Directory 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
 
 当与 Intune 之类的移动设备管理 (MDM) 解决方案结合使用时，Azure Active Directory 中的设备属性将使用关于设备的更多信息进行更新。 这将允许你创建条件性访问规则，用于从设备强制访问满足你的安全和合规性标准。
 
 了解更多：
 
 * [Azure Active Directory 设备注册入门](../active-directory/active-directory-conditional-access-device-registration-overview.md)
-* [使用 Azure Active Directory Device Registration 设置本地条件性访问](../active-directory/active-directory-conditional-access-on-premises-setup.md)
 * [将已加入 Windows 域的设备自动注册到 Azure Active Directory](../active-directory/active-directory-conditional-access-automatic-device-registration.md)
+* [对已加入域的 Windows 设备在 Azure Active Directory 中的自动注册进行设置](../active-directory/active-directory-conditional-access-automatic-device-registration-setup.md)
 
 ## <a name="privileged-identity-management"></a>Privileged identity management
 利用 Azure Active Directory (AD) Privileged Identity Management，可以管理、控制和监视特权标识以及对 Azure AD 中和 Office 365 或 Microsoft Intune 等其他 Microsoft Online Services 中资源的访问权限。
@@ -153,9 +154,4 @@ Microsoft 的标识方法跨越本地和云，创建单一用户标识对所有�
 * [混合标识白皮书](http://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
 * [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
 * [有关 RBAC 的 Active Directory 团队博客](https://blogs.technet.microsoft.com/ad/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

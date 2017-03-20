@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/17/2017
+ms.date: 03/01/2017
 ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: afd48a77faeeab6d5a8730934345cb7000a59831
-ms.openlocfilehash: e72e49140aaad55a6e66a9f331ce7fde20b8577c
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 35323a56297c9aaf4939febd32140d6d101ee4e5
+ms.openlocfilehash: 9cb98ad710d82bade25f99d171f49433aea1204c
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -110,8 +110,25 @@ Azure 经典门户中的报表划分为各种类别：
 
 ### <a name="security-reports"></a>安全报表
 
-安全报表已合并，以提供 Azure Active Directory 可以检测和报告的所有安全相关风险事件视图的完整概述。 有关完整概述，请参阅 [Azure Active Directory 风险事件](active-directory-identity-protection-risk-events.md)。  
-在本主题中，可以找到 Azure Active Directry 异常活动报告如何映射到 [Azure AD 异常活动报告](active-directory-identity-protection-risk-events.md#azure-ad-anomalous-activity-reports)部分中 Azure AD 中的风险事件的概述。
+来自 Azure 经典门户的“Azure AD 异常活动”安全报告已合并，以向你提供 Azure Active Directory 可以检测和报告的所有安全相关风险事件的一个主要视图。 
+
+下表列出了 Azure 门户中各种“Azure AD 异常活动”安全报告和相应的风险事件类型。 
+
+| Azure AD 异常活动报告 |  Identity Protection 风险事件类型|
+| :--- | :--- |
+| 具有已泄漏凭据的用户 | 已泄漏凭据 |
+| 异常登录活动 | 不可能前往异常位置 |
+| 从可能受感染的设备登录 | 从受感染的设备登录|
+| 从未知源登录 | 从匿名 IP 地址登录 |
+| 从具有可疑活动的 IP 地址登录 | 从具有可疑活动的 IP 地址登录 |
+| - | 从不熟悉的位置登录 |
+
+以下 Azure AD 异常活动安全报告未作为风险事件包含在 Azure AD 中。 这些报告仍可通过 Azure 经典门户获得。 但是，它们将在未来某个时间弃用。
+
+* 多次失败后登录
+* 从多个地理区域登录
+
+有关完整概述，请参阅 [Azure Active Directory 风险事件](active-directory-identity-protection-risk-events.md)。  
 
 在 Azure 门户中，可以访问有关 **Azure Active Directory** 边栏选项卡的“安全性”部分中检测到的风险事件的报告。 跟踪以下报告中检测到的风险事件：   
 

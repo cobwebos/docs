@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 0a4dc9c39d864dcfd52121ed4e4fa2393b56f872
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: f03b8d192255a3c93284f3c5e898f68a1234644f
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/06/2017
 本教程演示如何：
 
 * 使用 Azure 门户创建 IoT 中心，以及如何在 IoT 中心创建设备标识。
-* 创建一个具有直接方法的模拟设备应用，以便启用可由云调用的重新启动。
+* 创建包含重新启动该设备的直接方法的模拟设备应用。 直接方法是从云中调用的。
 * 创建一个 .NET 控制台应用，其通过 IoT 中心在模拟设备应用上调用重新启动直接方法。
 
 本教程结束时，用户会有一个 Node.js 控制台设备应用，以及一个 .NET (C#) 控制台后端应用：
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/06/2017
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>使用直接方法在设备上触发远程重新启动
-在此部分中，会创建一个 .NET 控制台应用（使用 C#），它直接在设备上启动远程重新启动，并使用设备克隆查询找到该设备上次重新启动的时间。
+在本部分中，你将创建一个 .NET 控制台应用（使用 C#）以使用直接方法在设备上启动远程重新启动。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
 
 1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到新解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **TriggerReboot**。
 
@@ -200,7 +200,8 @@ ms.lasthandoff: 03/06/2017
     ```
 8. 保存并关闭 **dmpatterns_getstarted_device.js** 文件。
    
-   [AZURE.NOTE] 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按 MSDN 文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
+> [!NOTE]
+> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按 MSDN 文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
 
 
 ## <a name="run-the-apps"></a>运行应用
@@ -211,18 +212,18 @@ ms.lasthandoff: 03/06/2017
     ```
     node dmpatterns_getstarted_device.js
     ```
-2. 运行 C# 控制台应用 **TriggerReboot** - 右键单击“TriggerReboot”项目，然后依次选择“调试”和“启动新实例”。
+2. 运行 C# 控制台应用 **TriggerReboot**。 右键单击“TriggerReboot”项目，选择“调试”，然后选择“启动新实例”。
 
 3. 可在控制台查看对直接方法的设备响应。
 
 ## <a name="customize-and-extend-the-device-management-actions"></a>自定义和扩展设备管理操作
-IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设备克隆和云到设备的方法基元启用自定义模式。 设备管理操作的其他示例包括恢复出厂设置、固件更新、软件更新、电源管理、网络和连接管理以及数据加密。
+IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设备孪生和云到设备方法基元启用自定义模式。 设备管理操作的其他示例包括恢复出厂设置、固件更新、软件更新、电源管理、网络和连接管理以及数据加密。
 
 ## <a name="device-maintenance-windows"></a>设备维护时段
 通常情况下，将设备配置为在某一时间执行操作，以最大程度减少中断和停机时间。  设备维护时段是一种常用模式，用于定义设备应更新其配置的时间。 后端解决方案使用设备克隆所需属性在设备上定义并激活策略，以启用维护时段。 当设备收到维护时段策略时，它可以使用设备克隆报告属性报告策略状态。 然后，后端应用可以使用设备克隆查询来证明设备和每个策略的符合性。
 
 ## <a name="next-steps"></a>后续步骤
-本教程使用直接方法来触发设备的远程重新启动，使用报告的属性来报告设备上次重新启动时间，并查询设备克隆，从云中发现设备上次重新启动的时间。
+在本教程中，将使用直接方法触发设备上的远程重新启动。 使用报告属性报告设备上次重新启动时间，并查询设备孪生从云中发现设备上次重新启动时间。
 
 若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请参阅：
 

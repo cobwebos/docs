@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: cf0cd5202288a9da55e0f8409a51ea904eeb2d55
-ms.openlocfilehash: 775ef958846ad2a780abb761d1c3934e671d5f1c
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: 94800f51baf83311c33490cada5f991ff2101da9
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -49,6 +49,8 @@ ms.lasthandoff: 03/01/2017
 
 > [!NOTE]
 > 若要部署或管理新 Web 服务，必须分配有该 Web 服务部署到的订阅上的参与者或管理员角色。 如果邀请其他用户加入机器学习工作区，必须向其分配订阅上的参与者或管理员角色，他们才能部署或管理 Web 服务。 
+> 
+>有关设置访问权限的详细信息，请参阅[在 Azure 门户中查看用户和组的访问权限分配 - 公开预览版](../active-directory/role-based-access-control-manage-assignments.md)。
 
 ## <a name="use-the-azure-classic-portal"></a>使用 Azure 经典门户
 

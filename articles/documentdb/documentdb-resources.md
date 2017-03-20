@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB 分层资源模型和概念 | Microsoft Docs"
+title: "Azure DocumentDB 资源模型和概念 | Microsoft 文档"
 description: "了解 DocumentDB 的数据库、集合、用户自定义函数 (UDF)、文档、管理资源的权限等的分层模型。"
 keywords: "分层模型, DocumentDB, Azure, Microsoft Azure"
 services: documentdb
@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: anhoh
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4125a8d930ead541420c83ef5d8aa3ae1ea2a263
-ms.openlocfilehash: 520dc84bfd882d33d32719d5225af91eb124f015
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 456ff5cd0c91232ace87e02363f812a36cc38297
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="documentdb-hierarchical-resource-model-and-concepts"></a>DocumentDB 分层资源模型和概念
+# <a name="documentdb-hierarchical-resource-model-and-core-concepts"></a>DocumentDB 分层资源模型和核心概念
 DocumentDB 管理的数据库实体被称为**资源**。 每个资源都通过逻辑 URI 进行唯一标识。 你可以使用标准 HTTP 谓词、请求/响应标头和状态代码与资源进行交互。 
 
 通过阅读本文，你将能够回答以下问题：

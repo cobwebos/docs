@@ -17,9 +17,9 @@ ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
-ms.openlocfilehash: 92c8f2e0f2dfa35c904a1132d72c037ceb7d3765
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 8d4823576fe0d44fa565fdb72e8b229d31dff609
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -51,7 +51,7 @@ ms.lasthandoff: 02/11/2017
 
 以下列表包含的建议可帮助用户在导入过程中获得最佳性能。
 
-* 若要获得最高的传输性能，请在预算允许范围内选择最高的服务级别和性能层。 为了节省资金，可以在迁移完成后向下缩放。 请参阅[使用 Azure 门户更改单一数据库的服务层和性能级别](sql-database-manage-single-databases-portal.md#change-the-service-tier-and-performance-level-of-a-single-database)、[使用 PowerShell 更改单一数据库的服务层和性能级别](sql-database-manage-single-databases-powershell.md#change-the-service-tier-and-performance-level-of-a-single-database)、[使用 Transact-SQL 更改单一数据库的服务层和性能级别](sql-database-manage-single-databases-tsql.md#change-the-service-tier-and-performance-level-of-a-single-database)
+* 若要获得最高的传输性能，请在预算允许范围内选择最高的服务级别和性能层。 为了节省资金，可以在迁移完成后向下缩放。 
 * 尽量缩短 .BACPAC 文件和目标数据中心的距离。
 * 在迁移过程中禁用自动进行数据统计
 * 分区表和索引

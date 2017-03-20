@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/19/2017
+ms.date: 03/06/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: a13850cf09424f7e4402204d97d1f6755d691550
-ms.openlocfilehash: 0d3f6dc80141d26cace60f177b35d527fd294261
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: c0cf8a3d4e257f88f81fca9a6a1161c158b335b8
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -30,8 +30,8 @@ ms.lasthandoff: 02/22/2017
 
 * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
-* .NET Framework 4.0 或更高版本
-* Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
+* .NET Framework 4.0 或更高版本。
+* Visual Studio。
 * 了解[如何使用 Azure Functions](../azure-functions/functions-overview.md)。 另请查看 [Azure Functions HTTP 和 webhook 绑定](../azure-functions/functions-bindings-http-webhook.md)。
 
 本主题演示如何
@@ -46,7 +46,7 @@ ms.lasthandoff: 02/22/2017
     
 * 向编码任务添加 webhook，并指定此 webhook 响应的 webhook URL 和密钥。 在此处显示的示例中，创建编码任务的代码是一个控制台应用。
 
-## <a name="getting-webhook-notifications"></a>获取 Webhook 通知
+## <a name="setting-up-webhook-notification-azure-functions"></a>设置“webhook 通知”Azure 函数
 
 此部分中的代码演示一个作为 webhook 的 Azure 函数的实现。 在此示例中，函数侦听来自媒体服务通知的 webhook 回调，并在作业完成之后发布输出资产。
 
@@ -56,7 +56,20 @@ Webhook 需要签名密钥（凭据）以匹配在配置通知终结点时传递
 
 可以在[此处](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/Notification_Webhook_Function)找到以下媒体服务 .NET Azure 函数的定义。
 
-以下代码列表显示与 Azure 函数关联的三个文件的定义：function.json、project.json 和 run.csx。
+以下代码列表显示与 Azure 函数关联的 Azure 函数参数和三个文件的定义：function.json、project.json 和 run.csx。
+
+### <a name="application-settings"></a>应用程序设置 
+
+下表显示了本部分中定义的 Azure 函数所用的参数。 
+
+|Name|定义|示例| 
+|---|---|---|
+|AMSAccount|AMS 帐户名称。 |juliakomediaservices|
+|AMSKey |AMS 帐户密钥。 | JUWJdDaOHQQqsZeiXZuE76eDt2SO+YMJk25Lghgy2nY=|
+|MediaServicesStorageAccountName |与 AMS 帐户关联的存储帐户名称。| storagepkeewmg5c3peq|
+|MediaServicesStorageAccountKey |与 AMS 帐户关联的存储帐户密钥。|
+|SigningKey |签名密钥。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
+|WebHookEndpoint | webhook 终结点地址。 | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
 ### <a name="functionjson"></a>function.json
 
@@ -410,7 +423,6 @@ project.json 文件包含依赖项。
                 processor,
                 "Adaptive Streaming",
                 TaskOptions.None);
-
 
                 // Specify the input asset to be encoded.
                 task.InputAssets.Add(newAsset);

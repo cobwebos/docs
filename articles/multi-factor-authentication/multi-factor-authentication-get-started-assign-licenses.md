@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/13/2017
 ms.author: kgremban
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
 ms.openlocfilehash: 536968a803e14019c42e7beed4c948ab760cf020
-
+ms.lasthandoff: 02/15/2017
 
 ---
 # <a name="assigning-an-azure-mfa-azure-ad-premium-or-enterprise-mobility-license-to-users"></a>向用户分配 Azure MFA、Azure AD Premium 或企业移动性许可证
@@ -41,8 +42,3 @@ ms.openlocfilehash: 536968a803e14019c42e7beed4c948ab760cf020
 ## <a name="next-steps"></a>后续步骤
 
 - 有关详细信息，请参阅[什么是 Microsoft Azure Active Directory 许可？](../active-directory/active-directory-licensing-what-is.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

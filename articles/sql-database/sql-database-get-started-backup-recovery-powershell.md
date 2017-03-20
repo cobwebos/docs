@@ -17,9 +17,9 @@ ms.topic: hero-article
 ms.date: 12/19/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 93efe1a08149e7c027830b03a9e426ac5a05b27b
-ms.openlocfilehash: 8a3ede8af471e656e830e38e0cf2f3a909fdaadb
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 85897322bc341f549c52dbe4758e8c7f860df22c
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -39,13 +39,17 @@ ms.lasthandoff: 02/18/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* 需要一个 Azure 帐户。 可以[建立一个免费 Azure 帐户](https://azure.microsoft.com/free/)或[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)。 
+* **一个 Azure 帐户**。 需要一个 Azure 帐户。 可以[建立一个免费 Azure 帐户](https://azure.microsoft.com/free/)或[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)。 
 
-* 需使用属于订阅所有者成员或参与者角色成员的帐户连接到 Azure。 有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Getting started with access management in the Azure portal](../active-directory/role-based-access-control-what-is.md)（Azure 门户中的访问管理入门）。
+* **Azure 创建权限**。 必须能够使用属于订阅所有者成员或参与者角色成员的帐户连接到 Azure 门户。 有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Getting started with access management in the Azure portal](../active-directory/role-based-access-control-what-is.md)（Azure 门户中的访问管理入门）。
 
-* 需安装并运行最新的 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* **PowerShell** 需安装并运行最新的 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
-* 已完成[通过 Azure 门户和 SQL Server Management Studio 开始使用 Azure SQL 数据库服务器、数据库和防火墙规则](sql-database-get-started.md)或等效的 [PowerShell 版本](sql-database-get-started-powershell.md)的步骤。 如果没有，请完成此必备教程或在 [PowerShell 版本](sql-database-get-started-powershell.md)结束时执行 PowerShell 脚本，然后再继续。
+* **SQL Server Management Studio**。 可以通过[下载 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 下载并安装最新版本的 SQL Server Management Studio (SSMS)。 连接到 Azure SQL 数据库时，请始终使用最新版本的 SSMS，因为其中会不断地发布新功能。
+
+* **基服务器和数据库** 若要安装和配置在本教程中使用的服务器和两个数据库，请单击“部署到 Azure”按钮。 单击该按钮会打开“从模板部署”边栏选项卡；创建新的资源组，为将要创建的新服务器提供“管理员登录密码”：
+
+   [![下载](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fsqldbtutorial.blob.core.windows.net%2Ftemplates%2Fsqldbgetstarted.json)
 
 > [!TIP]
 > 可以使用 [Azure 门户](sql-database-get-started-backup-recovery-portal.md)执行入门教程中这些相同的任务。

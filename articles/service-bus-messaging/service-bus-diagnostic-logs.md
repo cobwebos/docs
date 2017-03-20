@@ -1,6 +1,6 @@
 ---
 title: "Azure 服务总线诊断日志 | Microsoft 文档"
-description: "了解如何分析 Microsoft Azure 中的服务总线的诊断日志。"
+description: "了解如何为 Azure 中的服务总线设置诊断日志。"
 keywords: 
 documentationcenter: 
 services: service-bus-messaging
@@ -16,64 +16,71 @@ ms.workload: data-services
 ms.date: 02/17/2017
 ms.author: babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: 90321171586110a3b60c3df5b749003ebbf70ec9
-ms.openlocfilehash: 70205b33e9d52e41f5c1a637fee4da192e2a971a
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: abcb0eee979853948cf6d981ff8f3a457eeeeef0
+ms.openlocfilehash: 65fe81dc90f2dc7a251860adfdd8374912cb8d73
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="service-bus-diagnostic-logs"></a>服务总线诊断日志
 
-## <a name="introduction"></a>介绍
-服务总线公开两种类型的日志： 
-* [活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)：始终启用，提供针对作业执行的操作的深入信息；
-* [诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)：用户可配置的日志，提供作业发生的所有情况的更多深入信息，包括从创建作业开始，到更新、运行作业，直到删除作业为止的所有信息；
+可以查看两种类型的 Azure 服务总线日志：
+* **[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**。 此类日志提供对作业执行的操作的相关信息。 此类日志始终开启。
+* **[诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 可以配置诊断日志，以便更深入地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
-## <a name="how-to-enable-diagnostic-logs"></a>如何启用诊断日志
+## <a name="turn-on-diagnostic-logs"></a>启用诊断日志
 诊断日志默认已**禁用**。 若要启用诊断日志，请执行下列步骤：
 
-登录到 Azure 门户并导航到流式处理作业边栏选项卡，然后使用“监视”下面的“诊断日志”边栏选项卡。
+1.    在 Azure 门户中，转到流式处理作业边栏选项卡。
 
-![在边栏选项卡中导航到诊断日志](./media/service-bus-diagnostic-logs/image1.png)  
+2.    在“监视”下面，转到“诊断日志”边栏选项卡。
 
-然后单击“启用诊断”链接
+    ![在边栏选项卡中导航到诊断日志](./media/service-bus-diagnostic-logs/image1.png)  
 
-![启用诊断日志](./media/service-bus-diagnostic-logs/image2.png)
+3.    选择“启用诊断”。
 
-在打开的诊断中，将状态更改为“打开”。
+    ![启用诊断日志](./media/service-bus-diagnostic-logs/image2.png)
 
-![更改诊断日志的状态](./media/service-bus-diagnostic-logs/image3.png)
+4.    对于“状态”，选择“打开”。
 
-配置所需的存档目标（存储帐户、事件中心、Log Analytics）并选择想要收集的日志类别（“执行”、“创作”）。 然后保存新的诊断配置。
+    ![更改诊断日志的状态](./media/service-bus-diagnostic-logs/image3.png)
 
-保存后，配置将在大约 10 分钟后生效，在此之后，日志将开始出现在配置的存档目标中，可在“诊断日志”边栏选项卡中看到：
+5.    设置所需的存档目标，例如存储帐户、事件中心或 Azure Log Analytics。
 
-[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)页中提供了有关配置诊断的详细信息。
+6.    选择想要收集的日志类别，例如“执行”或“创作”。
+
+7.    保存新的诊断设置。
+
+新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”边栏选项卡上配置的存档目标中。
+
+有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。
 
 ## <a name="diagnostic-logs-schema"></a>诊断日志架构
 
-所有日志以 JSON 格式存储，每个项包含以下格式的字符串字段。
+所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个日志项目均包含字符串字段，这些字段采用以下示例中所述的格式。
 
-### <a name="operation-logs"></a>操作日志
+## <a name="operation-logs-example"></a>操作日志示例
 
-OperationalLogs 捕获服务总线操作期间发生的日志 - 特别是队列创建等操作类型、所使用的资源和操作的状态。
+**OperationalLogs** 类别中的日志捕获在服务总线操作期间发生的情况。 具体而言，这些日志捕获操作类型，包括队列创建、所用的资源和操作状态。
+
+操作日志 JSON 字符串包括下表列出的元素：
 
 Name | 说明
 ------- | -------
-ActivityId | 用于跟踪目的的内部 ID
+ActivityId | 用于跟踪的内部 ID
 EventName | 操作名称             
-resourceId | ARM 资源 ID
+resourceId | Azure Resource Manager 资源 ID
 SubscriptionId | 订阅 ID
 EventTimeString | 操作时间
 EventProperties | 操作属性
 状态 | 操作状态
-调用方 | 操作的调用方（门户或管理客户端）
+调用方 | 操作的调用方（Azure 门户或管理客户端）
 category | OperationalLogs
 
-#### <a name="example-operation-log"></a>示例操作日志
+下面是操作日志 JSON 字符串的示例：
 
 ```json
-Example: 
+Example:
 {
      "ActivityId": "6aa994ac-b56e-4292-8448-0767a5657cc7",
      "EventName": "Create Queue",

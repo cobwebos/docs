@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
-ms.openlocfilehash: f7dd06f1fc789a74ec7ce2182824ff759dcf7a9f
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 6c711fd3a843604d62d6589d0a742f03a049bc5c
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="deploying-password-management-and-training-users-to-use-it"></a>部署密码管理并向用户培训其用法
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 >
 >
 
@@ -74,8 +74,8 @@ ms.lasthandoff: 02/24/2017
 2. 转到 [Azure 管理门户](https://manage.windowsazure.com)中的“许可证”选项卡，将相应许可证分配给要向其提供密码重置的每个用户。
 3. 也可以将密码重置限制在随时间推移缓慢启用该功能的一组用户内，方法是将“限制访问密码重置”开关设置为“是”并选择要为密码重置启用的安全组（请注意，这些用户必须全部分配有许可证）。
 4. 指导用户使用密码重置，方法是向他们发送一封电子邮件指导他们注册、在访问面板上启用强制注册，或者通过 DirSync、PowerShell 或 [Azure 管理门户](https://manage.windowsazure.com)自行为这些用户上载适当的身份验证数据。下面提供此方面的更多详细信息。  下面提供了与此相关的更多详细信息。
-5. 经过一段时间后，导航到“报告”选项卡并查看[**密码重置注册活动**](active-directory-passwords-get-insights.md#view-password-reset-registration-activity)报告，查看用户注册情况。
-6. 适当数量的用户完成注册后，导航到“报告”选项卡并查看[**密码重置活动**](active-directory-passwords-get-insights.md#view-password-reset-activity)报告，观看他们使用密码重置。
+5. 经过一段时间后，导航到“报告”选项卡并查看[**密码重置注册活动**](active-directory-passwords-get-insights.md#view-password-reset-registration-activity-in-the-classic-portal)报告，查看用户注册情况。
+6. 适当数量的用户完成注册后，导航到“报告”选项卡并查看[**密码重置活动**](active-directory-passwords-get-insights.md#view-password-reset-activity-in-the-classic-portal)报告，观看他们使用密码重置。
 
 通知用户可以注册并在组织中使用密码重置的方法有多种。  下面将详细介绍。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 02/24/2017
 
   ![][001]
 
-可以[从此处下载电子邮件模板](http://1drv.ms/1xWFtQM)。
+可以[从此处下载电子邮件模板](https://1drv.ms/f/s!AharQMeRmrWggcNnPlk_7xHInYJzow)。
 
 ### <a name="creating-your-own-password-portal"></a>创建自己的密码门户
 对于部署密码管理功能的大型客户而言，一种策略是创建用户可在单个位置管理所有与其密码相关的事项的单一“密码门户”。  
@@ -144,7 +144,7 @@ ms.lasthandoff: 02/24/2017
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置和更改云密码或本地密码
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9ec07aacbde3f218d7a1bbddadad7552e737e1ea
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4feb0eb81823835e8e0b701463d85b27f5598019
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -49,6 +50,9 @@ ms.openlocfilehash: 9ec07aacbde3f218d7a1bbddadad7552e737e1ea
         Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
    
     应该将后续 API 调用发布到 https://wamsbayclus001rest-hs.cloudapp.net/api/。
+
+    >[!NOTE]
+    >不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 
 ## <a name="access-control-address"></a>访问控制地址
 媒体服务访问控制地址是 https://wamsprodglobal001acs.accesscontrol.windows.net（中国北部地区除外，该地区的地址是 https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn）。
@@ -182,10 +186,5 @@ ms.openlocfilehash: 9ec07aacbde3f218d7a1bbddadad7552e737e1ea
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

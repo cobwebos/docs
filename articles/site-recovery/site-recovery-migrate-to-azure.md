@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/04/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: 2fb457166b4ebe61c11173aa75bdcd2fbce3f03d
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 981155c38bdc8cb54639d2271be1f3bd3036125c
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -26,6 +26,9 @@ ms.lasthandoff: 02/23/2017
 本文概述如何使用 Azure Site Recovery 服务迁移虚拟机和物理服务器。
 
 Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。 当主要位置发生故障时，你可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，你可以故障转移回到主要位置。 有关详细信息，请参阅 [什么是 Site Recovery？](site-recovery-overview.md) 还可使用 Site Recovery 将现有本地工作负荷迁移到 Azure，加快云进程并增益 Azure 提供的大量功能。
+
+有关如何执行迁移的快速概述，请观看以下视频。
+>[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/ASRHowTo-Video2-Migrate-Virtual-Machines-to-Azure/player]
 
 本文介绍如何在 [Azure 门户](https://portal.azure.com)中部署。 使用 [Azure 经典门户](https://manage.windowsazure.com/)可以维护现有的 Site Recovery 保管库，但无法创建新保管库。
 

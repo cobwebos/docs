@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 4d6ea516717077ffb4b832caa9e8a064905fce09
-ms.openlocfilehash: e101972777e45bcf3b49b113c6fd92d220ad43fc
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: d65f730a0f84b89d0228a22b42d0421ad4f2678f
+ms.lasthandoff: 03/09/2017
 
 
 ---
 # <a name="use-view-designer-to-create-custom-views-in-log-analytics"></a>使用视图设计器在 Log Analytics 中创建自定义视图
-通过 [Log Analytics]() 中的视图设计器可在 OMS 控制台中创建自定义视图，其包含 OMS 存储库中不同数据的可视化效果。 本文包含了视图设计器以及创建和编辑自定义视图的过程概述。
+通过 [Log Analytics](log-analytics-overview.md) 中的视图设计器可在 OMS 控制台中创建自定义视图，其包含 OMS 存储库中不同数据的可视化效果。 本文包含了视图设计器以及创建和编辑自定义视图的过程概述。
 
 可用于视图设计器的其他文章有：
 
@@ -95,10 +96,5 @@ ms.openlocfilehash: e101972777e45bcf3b49b113c6fd92d220ad43fc
 ## <a name="next-steps"></a>后续步骤
 * 将“磁贴”[](log-analytics-view-designer-tiles.md)添加到自定义视图。
 * 将“可视化部件”[](log-analytics-view-designer-parts.md)添加到自定义视图。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

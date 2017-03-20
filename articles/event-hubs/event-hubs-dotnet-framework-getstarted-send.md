@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/30/2017
-ms.author: jotaub
+ms.date: 03/08/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: c52f7055897ba8e851add431e5ab9c0defdb5bfc
-ms.openlocfilehash: 29523e308e038904773582c73c1688f57e3c31e3
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 5c326a025a4276ae9b1a777439ed6c728d3e7103
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -29,17 +30,21 @@ ms.openlocfilehash: 29523e308e038904773582c73c1688f57e3c31e3
 
 若要完成本教程，你需要以下各项：
 
-* [Microsoft Visual Studio](http://visualstudio.com)
+* [Microsoft Visual Studio 2015 或更高版本](http://visualstudio.com)。 本教程中的屏幕截图使用 Visual Studio 2017。
 * 有效的 Azure 帐户。 如果没有帐户，只需几分钟的时间就能创建一个免费帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/free/)。
 
-## <a name="send-messages-to-event-hubs"></a>将消息发送到事件中心
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
+
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤进行操作，然后继续执行以下步骤。
+
+## <a name="create-a-console-application"></a>创建控制台应用程序
 在此部分中，你将编写用于将事件发送到事件中心的 Windows 控制台应用。
 
 1. 在 Visual Studio 中，使用 **控制台应用程序** 项目模板创建一个新的 Visual C# 桌面应用项目。 将该项目命名为 **Sender**。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
-2. 在解决方案资源管理器中，右键单击该解决方案，然后单击“为解决方案管理 NuGet 包” 。 
-3. 单击“浏览”选项卡，然后搜索 `Microsoft Azure Service Bus`。 确保在“版本”框中指定项目名称（“Sender”）。 单击“安装” 并接受使用条款。 
+2. 在解决方案资源管理器中，右键单击“Sender”项目，然后单击“为解决方案管理 NuGet 包”。 
+3. 单击“浏览”选项卡，然后搜索 `Microsoft Azure Service Bus`。 单击“安装” 并接受使用条款。 
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
@@ -91,6 +96,9 @@ ms.openlocfilehash: 29523e308e038904773582c73c1688f57e3c31e3
     Console.ReadLine();
     SendingRandomMessages();
     ```
+8. 运行程序，并确保没有任何错误。
+  
+祝贺你！ 现在你已向事件中心发送消息。
 
 ## <a name="next-steps"></a>后续步骤
 现在已生成了一个可以创建事件中心以及发送数据的有效应用程序，接下来请继续学习以下方案：
@@ -104,14 +112,5 @@ ms.openlocfilehash: 29523e308e038904773582c73c1688f57e3c31e3
 [20]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj2.png
 [21]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs1.png
 [22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
-
-<!-- Links -->
-[Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs overview]: event-hubs-overview.md
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 
