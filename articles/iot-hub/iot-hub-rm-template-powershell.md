@@ -2,7 +2,7 @@
 title: "使用模板创建 Azure IoT 中心 (PowerShell) | Microsoft Docs"
 description: "如何使用 Azure Resource Manager 模板和 PowerShell 创建 IoT 中心。"
 services: iot-hub
-documentationcenter: .net
+documentationcenter: 
 author: dominicbetts
 manager: timlt
 editor: 

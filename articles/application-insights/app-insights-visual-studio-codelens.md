@@ -4,18 +4,19 @@ description: "借助 Visual Studio 中的 CodeLens，快速访问 Application In
 services: application-insights
 documentationcenter: .net
 author: numberbycolors
-manager: douge
+manager: carmonm
 ms.assetid: 93559e44-23cb-4b9d-8425-60f7f0d0a82c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/14/2016
+ms.date: 03/17/2017
 ms.author: daviste
 translationtype: Human Translation
 ms.sourcegitcommit: ebfed89674dc132bd5d93f34a8b5ed5ab12bd73e
 ms.openlocfilehash: 3e7cb9dfbc3a0985794294c94d331f12829c2bdc
+ms.lasthandoff: 11/16/2016
 
 
 ---
@@ -72,16 +73,11 @@ ms.openlocfilehash: 3e7cb9dfbc3a0985794294c94d331f12829c2bdc
 * 选择“趋势”  可查看过去 24 小时内的请求、失败的请求或平均响应时间的趋势可视化效果。
 * 选择 CodeLens 详细信息视图左上角的 Application Insights 资源名称，更改 CodeLens 数据源对应的资源。
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
+## <a name="next"></a>后续步骤
 |  |  |
 | --- | --- |
 | **[在 Visual Studio 中使用 Application Insights](app-insights-visual-studio.md)**<br/>搜索遥测、查看 CodeLens 中的数据以及配置 Application Insights。 一切尽在 Visual Studio 中。 |![右键单击项目，然后依次选择“Application Insights”、“搜索”](./media/app-insights-visual-studio-codelens/34.png) |
 | **[添加更多数据](app-insights-asp-net-more.md)**<br/>监视使用情况、可用性、依赖项、异常。 集成来自记录框架的跟踪。 编写自定义遥测。 |![Visual Studio](./media/app-insights-visual-studio-codelens/64.png) |
 | **[使用 Application Insights 门户](app-insights-dashboards.md)**<br/>仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和遥测导出。 |![Visual Studio](./media/app-insights-visual-studio-codelens/62.png) |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

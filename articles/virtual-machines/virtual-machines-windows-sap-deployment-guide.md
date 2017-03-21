@@ -71,7 +71,7 @@ ms.lasthandoff: 03/01/2017
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
-[azure-cli]:../xplat-cli-install.md
+[azure-cli]:../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -303,7 +303,7 @@ ms.lasthandoff: 03/01/2017
 [vpn-gateway-cross-premises-options]:../vpn-gateway/vpn-gateway-plan-design.md
 [vpn-gateway-site-to-site-create]:../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md
 [vpn-gateway-vpn-faq]:../vpn-gateway/vpn-gateway-vpn-faq.md
-[xplat-cli]:../xplat-cli-install.md
+[xplat-cli]:../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../azure-resource-manager/xplat-cli-azure-resource-manager.md
 
 对于需要在最短时间内获得计算和存储资源的组织，Azure 虚拟机是合适的解决方案，它没有冗长的采购周期。 可以使用 Azure 虚拟机在 Azure 中部署经典应用程序，例如基于 SAP NetWeaver 的应用程序。 无需额外的本地资源即可扩展应用程序的可靠性和可用性。 Azure 虚拟机支持跨界连接，因此，可将 Azure 虚拟机集成到组织的本地域、私有云和 SAP 系统布局中。
