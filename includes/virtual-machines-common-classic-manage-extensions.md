@@ -79,8 +79,8 @@ Azure VM 扩展实现了可帮助其他程序在 Azure VM 上正常工作的行�
 ### <a name="service-management-rest-apis"></a>服务管理 REST API
 可以使用以下 REST API 获取有关可用扩展的信息：
 
-* 对于 Web 角色或辅助角色的实例，可以使用“列出可用扩展”操作。[](https://msdn.microsoft.com/library/dn169559.aspx) 若要列出可用扩展的版本，可以使用“列出扩展版本”。[](https://msdn.microsoft.com/library/dn495437.aspx)
-* 对于虚拟机的实例，可以使用“列出资源扩展”操作。[](https://msdn.microsoft.com/library/dn495441.aspx) 若要列出可用扩展的版本，可以使用“列出资源扩展版本”。[](https://msdn.microsoft.com/library/dn495440.aspx)
+* 对于 Web 角色或辅助角色的实例，可以使用[列出可用扩展](https://msdn.microsoft.com/library/dn169559.aspx)操作。 若要列出可用扩展的版本，可以使用[列出扩展版本](https://msdn.microsoft.com/library/dn495437.aspx)。
+* 对于虚拟机的实例，可以使用[列出资源扩展](https://msdn.microsoft.com/library/dn495441.aspx)操作。 若要列出可用扩展的版本，可以使用[列出资源扩展版本](https://msdn.microsoft.com/library/dn495440.aspx)。
 
 ## <a name="add-update-or-disable-extensions"></a>添加、更新或禁用扩展
 扩展可以在创建实例时添加，也可以将它们添加到正在运行的实例。 可以更新、禁用或删除扩展。 可以通过使用 Azure PowerShell cmdlet 或使用服务管理 REST API 操作来执行这些操作。 需要使用参数才能安装和设置某些扩展。 扩展支持公共和私有参数。
@@ -98,16 +98,11 @@ Azure VM 扩展实现了可帮助其他程序在 Azure VM 上正常工作的行�
 
 可以使用以下 REST API 来了解扩展是否需要配置公共和私有参数：
 
-* 对于 Web 角色或辅助角色的实例，**PublicConfigurationSchema** 和 **PrivateConfigurationSchema** 元素包含“列出可用扩展”操作的响应中的信息。[](https://msdn.microsoft.com/library/dn169559.aspx)
-* 对于虚拟机的实例，**PublicConfigurationSchema** 和 **PrivateConfigurationSchema** 元素包含“列出资源扩展”操作的响应中的信息。[](https://msdn.microsoft.com/library/dn495441.aspx)
+* 对于 Web 角色或辅助角色的实例，**PublicConfigurationSchema** 和 **PrivateConfigurationSchema** 元素包含[列出可用扩展](https://msdn.microsoft.com/library/dn169559.aspx)操作的响应中的信息。
+* 对于虚拟机的实例，**PublicConfigurationSchema** 和 **PrivateConfigurationSchema** 元素包含[列出资源扩展](https://msdn.microsoft.com/library/dn495441.aspx)操作的响应中的信息。
 
 > [!NOTE]
 > 扩展也可以使用使用 JSON 定义的配置。 使用这些类型的扩展时，仅使用 **SampleConfig** 元素。
 > 
 > 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

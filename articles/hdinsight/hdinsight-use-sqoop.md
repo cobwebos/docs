@@ -64,7 +64,7 @@ HDInsight 群集带有某些示例数据。 你将会使用以下两个示例：
     /tutorials/usesqoop/importeddata
 
 ## <a name="create-cluster-and-sql-database"></a>创建群集和 SQL 数据库
-本部分演示如何使用 Azure 门户和 Azure Resource Manager 模板创建群集、SQL 数据库和 SQL 数据库架构，以便运行教程。 可以在 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)中找到此模板。 Resource Manager 模板调用 bacpac 包以将表架构部署到 SQL 数据库。  Bacpac 包位于公共 blob 容器https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac 中。 如果你想要为 bacpac 文件使用私有容器，请使用模板中的以下值：
+本部分演示如何使用 Azure 门户和 Azure Resource Manager 模板创建群集、SQL 数据库和 SQL 数据库架构，以便运行教程。 可以在 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)中找到此模板。 Resource Manager 模板调用 bacpac 包以将表架构部署到 SQL 数据库。  Bacpac 包位于公共 blob 容器 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac 中。 如果你想要为 bacpac 文件使用私有容器，请使用模板中的以下值：
    
         "storageKeyType": "Primary",
         "storageKey": "<TheAzureStorageAccountKey>",
