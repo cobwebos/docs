@@ -34,7 +34,7 @@ ms.lasthandoff: 03/01/2017
 可以执行以下步骤来创建支持请求：
 
 #### <a name="to-create-a-support-request"></a>创建支持请求
-1. 在“Azure 经典门户”的右上角单击帐户名称，然后单击“联系 Microsoft 支持部门”。[](https://manage.windowsazure.com/)
+1. 在[Azure 经典门户](https://manage.windowsazure.com/)的右上角单击帐户名称，然后单击“联系 Microsoft 支持部门”。
    
     ![通过管理门户联系 MS 支持部门](./media/storsimple-contact-microsoft-support/Ibiza1.png)
 2. 系统会将用户重定向到新的 Azure 门户 (portal.azure.com)。 单击“新建支持请求”磁贴。

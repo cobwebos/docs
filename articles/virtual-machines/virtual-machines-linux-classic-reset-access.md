@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
 ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -51,7 +52,7 @@ ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
     ```
 * 设置一个新密码或一组新 SSH 密钥（如果想要重置任一项）。 如果想要重置 SSH 配置，则不需要这些。
 
-## <a name="a-namepwresetcliareset-the-password"></a><a name="pwresetcli"></a>重置密码
+## <a name="pwresetcli"></a>重置密码
 1. 使用以下代码行在本地计算机上创建名为 PrivateConf.json 的文件。 将 **myUserName** 和 **myP@ssW0rd** 替换为自己的用户名和密码，并设置自己的过期日期。
 
     ```   
@@ -68,7 +69,7 @@ ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
         azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* –-private-config-path PrivateConf.json
     ```
 
-## <a name="a-namesshkeyresetcliareset-the-ssh-key"></a><a name="sshkeyresetcli"></a>重置 SSH 密钥
+## <a name="sshkeyresetcli"></a>重置 SSH 密钥
 1. 使用以下内容创建名为 PrivateConf.json 的文件。 将 **myUserName** 和 **mySSHKey** 值替换为自己的信息。
 
     ```   
@@ -81,7 +82,7 @@ ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
    
         azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
 
-## <a name="a-nameresetbothcliareset-both-the-password-and-the-ssh-key"></a><a name="resetbothcli"></a>重置密码和 SSH 密钥
+## <a name="resetbothcli"></a>重置密码和 SSH 密钥
 1. 使用以下内容创建名为 PrivateConf.json 的文件。 将 **myUserName**、**mySSHKey** 和 **myP@ssW0rd** 值替换为自己的信息。
 
     ``` 
@@ -98,17 +99,17 @@ ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
         azure vm extension set MyVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
     ```
 
-## <a name="a-namecreatenewsudocliacreate-a-new-sudo-user-account"></a><a name="createnewsudocli"></a>创建新的 sudo 用户帐户
+## <a name="createnewsudocli"></a>创建新的 sudo 用户帐户
 
 如果忘记了用户名，可以使用 VMAccess 创建一个具有 sudo 授权的新用户帐户。 在这种情况下，不会修改现有的用户名和密码。
 
-若要创建具有密码访问权限的新 sudo 用户，请使用“重置密码”中的脚本并指定新用户名。[](#pwresetcli)
+若要创建具有密码访问权限的新 sudo 用户，请使用[重置密码](#pwresetcli)中的脚本并指定新用户名。
 
-若要创建具有 SSH 密钥访问权限的新 sudo 用户，请使用“重置 SSH 密钥”中的脚本并指定新用户名。[](#sshkeyresetcli)
+若要创建具有 SSH 密钥访问权限的新 sudo 用户，请使用[重置 SSH 密钥](#sshkeyresetcli)中的脚本并指定新用户名。
 
-还可以使用“重置密码和 SSH 密钥”来创建同时具有密码和 SSH 密钥访问权限的新用户。[](#resetbothcli)
+还可以使用[重置密码和 SSH 密钥](#resetbothcli)来创建同时具有密码和 SSH 密钥访问权限的新用户。
 
-## <a name="a-namesshconfigresetcliareset-the-ssh-configuration"></a><a name="sshconfigresetcli"></a>重置 SSH 配置
+## <a name="sshconfigresetcli"></a>重置 SSH 配置
 如果 SSH 配置处于某种意外状态，你可能会丢失对 VM 的访问权限。 可以使用 VMAccess 扩展将配置重置为其默认状态。 为此，只需将“reset_ssh”键设置为“True”。 该扩展将重新启动 SSH 服务器，打开 VM 上的 SSH 端口，然后将 SSH 配置重置为默认值。 将不会更改用户帐户（名称、密码或 SSH 密钥）。
 
 > [!NOTE]
@@ -130,7 +131,7 @@ ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
         azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
     ```
 
-## <a name="a-namedeletecliadelete-a-user"></a><a name="deletecli"></a>删除用户
+## <a name="deletecli"></a>删除用户
 如果想要不登录 VM 就直接删除用户帐户，可以使用此脚本。
 
 1. 创建包含以下内容的名为 PrivateConf.json 的文件（请将 **removeUserName** 替换为要删除的用户名）。 
@@ -147,14 +148,14 @@ ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
         azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
     ```
 
-## <a name="a-namestatuscliadisplay-the-status-of-the-vmaccess-extension"></a><a name="statuscli"></a>显示 VMAccess 扩展的状态
+## <a name="statuscli"></a>显示 VMAccess 扩展的状态
 若要显示 VMAccess 扩展的状态，请运行以下命令。
 
 ```
         azure vm extension get
 ```
 
-## <a name="a-namecheckdiskacheck-consistency-of-added-disks"></a><a name='checkdisk'></a>检查添加磁盘的一致性
+## <a name='checkdisk'></a>检查添加磁盘的一致性
 若要在 Linux 虚拟机的所有磁盘上运行 fsck，需执行以下操作：
 
 1. 使用以下内容创建名为 PublicConf.json 的文件。 Check Disk 采用的布尔值表示是否检查附加到虚拟机的磁盘。 
@@ -171,7 +172,7 @@ ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
         azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json 
     ```
 
-## <a name="a-namerepairdiskarepair-disks"></a><a name='repairdisk'></a>修复磁盘
+## <a name='repairdisk'></a>修复磁盘
 若要修复无法装入或存在装入配置错误的磁盘，请使用 VMAccess 扩展重置 Linux 虚拟机上的装入配置。 请将 **myDisk** 替换为自己的磁盘名称。
 
 1. 使用以下内容创建名为 PublicConf.json 的文件。 
@@ -193,10 +194,5 @@ ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
 * 若要使用 Azure PowerShell cmdlet 或 Azure Resource Manager 模板来重置密码或 SSH 密钥、修复 SSH 配置和检查磁盘一致性，请参阅 [GitHub 上的 VMAccess 扩展文档](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)。 
 * 也可以使用 [Azure 门户](https://portal.azure.com)来重置部署在经典部署模型中的 Linux VM 的密码或 SSH 密钥。 目前你无法使用门户来针对部署在 Resource Manager 部署模型中的 Linux VM 执行上述操作。
 * 有关使用适用于 Azure 虚拟机的 VM 扩展的详细信息，请参阅[关于虚拟机扩展和功能](virtual-machines-linux-extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

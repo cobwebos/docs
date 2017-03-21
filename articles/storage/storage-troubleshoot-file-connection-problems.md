@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 0479db07710d7ff6037dc692e5387a314bed32ca
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 62d2cd990bff4ffc982eef507ad69c68c00a65ab
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -48,10 +48,6 @@ ms.lasthandoff: 03/08/2017
 * [尝试在 Linux VM 上装载 Azure 文件时，出现装载错误 115](#error15)
 * [装载在 Linux VM 上的 Azure 文件共享目前性能缓慢](#delayproblem)
 
-
-**从其他应用程序访问**
-
-* [可以通过 Web 作业为应用程序引用 Azure 文件共享吗？](#webjobs)
 
 <a id="quotaerror"></a>
 
@@ -275,11 +271,6 @@ dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=10
 
 如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)中的装载命令卸载并再次装载 Azure 文件，然后重新检查“/etc/fstab”条目是否具有正确选项。
 
-<a id="webjobs"></a>
-
-## <a name="accessing-from-other-applications"></a>从其他应用程序访问
-### <a name="can-i-reference-the-azure-file-share-for-my-application-through-a-webjob"></a>可以通过 Web 作业为应用程序引用 Azure 文件共享吗？
-无法在 AppService 沙盒中装载 SMB 共享。 可以将 Azure 文件共享作为映射驱动器映射，并允许应用程序作为驱动器号访问它来解决此问题。
 ## <a name="learn-more"></a>了解详细信息
 * [在 Windows 上开始使用 Azure 文件存储](storage-dotnet-how-to-use-files.md)
 * [在 Linux 上实现 Azure 文件存储入门](storage-how-to-use-files-linux.md)

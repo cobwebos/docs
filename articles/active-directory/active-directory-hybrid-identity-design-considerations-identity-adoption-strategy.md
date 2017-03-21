@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
 ms.openlocfilehash: 47fb1724ac72df8b83012bcacdc435ea847547da
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -212,10 +213,5 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

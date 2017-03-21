@@ -28,7 +28,7 @@ ms.lasthandoff: 01/30/2017
 
 Azure AD 直通身份验证为这些客户提供了一个简单的解决方案， 确保针对本地 Active Directory 执行 Azure AD 服务的密码验证。 可以对密码进行验证，不需要复杂的网络基础结构，也不需要云中存在任何形式的本地密码。
 
-结合使用“单一登录”选项以后，用户登录到 Azure AD 或其他云服务就不需要键入密码。[](active-directory-aadconnect-sso.md) 有了此功能，这些客户就可以在公司计算机上享受真正集成的体验。
+结合使用[单一登录](active-directory-aadconnect-sso.md)选项以后，用户登录到 Azure AD 或其他云服务就不需要键入密码。 有了此功能，这些客户就可以在公司计算机上享受真正集成的体验。
 
 ![直通身份验证](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 

@@ -60,7 +60,7 @@ ms.lasthandoff: 02/16/2017
 
 #### <a name="create-the-application-identity-in-the-azure-classic-portal"></a>在 Azure 经典门户中创建应用程序标识
 
-1. 在 Azure 经典门户中，转到“Azure Active Directory”。[](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) 
+1. 在 Azure 经典门户中，转到 [Azure Active Directory](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) 。 
 2. 选择要用于你的 Web 应用的目录。
 3. 选择“应用程序”选项卡。 在页面底部的命令栏中，单击“添加”。
 5. 为应用标识指定一个名称，单击下一步箭头。
@@ -88,7 +88,7 @@ ms.lasthandoff: 02/16/2017
 
 此时，自动创建了应用程序。 在第 3 部分中你需要使用此应用程序的客户端 ID，因此，必须执行以下步骤：
 
-1. 在 Azure 经典门户中，转到“Azure Active Directory”。[](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory)
+1. 在 Azure 经典门户中，转到 [Azure Active Directory](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) 。
 2.    选择你的目录。
 3. 在搜索框中，找到你的应用。
 4. 在列表中，选择你的应用。
