@@ -17,6 +17,7 @@ ms.author: padmavc
 translationtype: Human Translation
 ms.sourcegitcommit: 67313e4ff780e6c64dfc3d767ea49167c2a390f4
 ms.openlocfilehash: 701a3bbadb340c9390b486a5295eced056db70a0
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 701a3bbadb340c9390b486a5295eced056db70a0
 
 ## <a name="prereqs"></a>先决条件
 
-对于调试和更详细的诊断信息，请在“集成帐户”[](logic-apps-monitor-b2b-message.md)中为具有 X12 控制器的“逻辑应用”[](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics-and-alerts)启用诊断。 然后，按照此处的步骤[发布诊断数据](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)到 Operations Management Suite 门户。
+对于调试和更详细的诊断信息，请在[集成帐户](logic-apps-monitor-b2b-message.md)中为具有 X12 控制器的[逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics-and-alerts)启用诊断。 然后，按照此处的步骤[发布诊断数据](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)到 Operations Management Suite 门户。
 
 ## <a name="search-for-an-interchange-control-number"></a>搜索交换控制编号
 
@@ -59,9 +60,4 @@ ms.openlocfilehash: 701a3bbadb340c9390b486a5295eced056db70a0
 * 了解有关 [AS2 跟踪架构](logic-apps-track-integration-account-as2-tracking-schemas.md)的详细信息。    
 * 了解有关 [X12 跟踪架构](logic-apps-track-integration-account-x12-tracking-schema.md)的详细信息。  
 * 了解有关 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) 的详细信息。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 
