@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
+ms.custom: loading
 translationtype: Human Translation
 ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
 ms.openlocfilehash: cb0b5489ccfabb0e2a4ee412162a18930073b309
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -151,9 +153,4 @@ DPS 会以可视化方式显示从本地 SQL Server 提取和上载数据的进�
 [Migrate your solution to SQL Data Warehouse]: ./sql-data-warehouse-overview-migrate.md
 [Load data into Azure SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
 [SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

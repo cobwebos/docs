@@ -13,11 +13,12 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/13/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 3789c07cd6142ba5b6a58a67813c0ead6b87bd76
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -101,8 +102,3 @@ ms.openlocfilehash: 3789c07cd6142ba5b6a58a67813c0ead6b87bd76
 [computer-usb]: media/iot-hub-adafruit-feather-m0-wifi-lessons/lesson1/computer_usb.jpg
 [hardware-is-ready]: media/iot-hub-adafruit-feather-m0-wifi-lessons/lesson1/hardware_ready.jpg
 [get-the-tools]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

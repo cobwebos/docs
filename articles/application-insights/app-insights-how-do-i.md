@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
 ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -135,7 +136,7 @@ ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
 
 ## <a name="visualize-data"></a>可视化数据
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>包含来自多个应用的指标的仪表板
-* 在“指标资源管理器”中，自定义图表并将它保存到收藏夹。[](app-insights-metrics-explorer.md) 将图表固定到 Azure 仪表板。
+* 在 [指标资源管理器](app-insights-metrics-explorer.md) 中，自定义图表并将它保存到收藏夹。 将图表固定到 Azure 仪表板。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>包含来自其他源和 Application Insights 的数据的仪表板
 * [将遥测数据导出到 Power BI](app-insights-export-power-bi.md)。
@@ -205,9 +206,4 @@ ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
 ### <a name="to-display-more-performance-counters"></a>显示更多性能计数器
 * 首先[添加一个新图表](app-insights-metrics-explorer.md)，然后查看计数器是否出现在提供的基本集内。
 * 如果没有，请[将计数器添加到性能计数器模块收集的集内](app-insights-performance-counters.md)。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

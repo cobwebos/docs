@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: f0615f10adaf3bd03bc9a3b446830f2906875a89
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -74,10 +75,5 @@ Azure CLI 为 Azure 提供了多平台命令行体验。 可以直接从命令�
 
 ## <a name="next-steps"></a>后续步骤
 [创建 IoT 中心并注册 Raspberry Pi 3](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

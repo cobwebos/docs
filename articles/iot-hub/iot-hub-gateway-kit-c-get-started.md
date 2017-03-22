@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/21/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: dd14d137c23fbccb3616b60db8a63e668ae7ea80
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -107,8 +108,3 @@ ms.openlocfilehash: dd14d137c23fbccb3616b60db8a63e668ae7ea80
 
 ## <a name="explore-more"></a>了解更多
 请访问 [Intel IoT 网关工具包开发人员区域](http://software.intel.com/iot/microsoft-azure)了解详细信息。
-
-
-<!--HONumber=Jan17_HO4-->
-
-
