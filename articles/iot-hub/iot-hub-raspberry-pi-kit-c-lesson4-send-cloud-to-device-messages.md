@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 4f9feb665ac93028023df86889ca53a64ac2ec0e
 ms.openlocfilehash: 3a6957ebbb239eacb4fce696b7fcfd02e690310b
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -87,9 +88,4 @@ Gulp 命令首先运行 install-tools 任务， 然后将示例应用程序部�
 
 ## <a name="next-steps"></a>后续步骤
 [更改 LED 的亮起和熄灭行为](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

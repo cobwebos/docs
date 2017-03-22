@@ -13,11 +13,12 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 53c9408bedc6c61cdb0e755b46b3090e8723e271
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -100,10 +101,5 @@ gulp deploy && gulp run
 
 ### <a name="summary"></a>摘要
 此可选部分展示了如何自定义消息，以便使示例应用程序能够以不同的方式控制 LED 的亮起和熄灭行为。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

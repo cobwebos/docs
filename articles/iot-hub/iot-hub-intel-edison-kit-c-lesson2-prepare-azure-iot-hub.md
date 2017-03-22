@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: 9eebae32bf469e0744855ed9f98306bd36eb9671
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -103,8 +104,3 @@ az iot device create --device-id myinteledison --hub-name {my hub name}
 
 [troubleshooting]: iot-hub-intel-edison-kit-c-troubleshooting.md
 [process-and-store-iot-hub-messages]: iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

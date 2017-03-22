@@ -17,6 +17,7 @@ ms.author: dkershaw;bryanla
 translationtype: Human Translation
 ms.sourcegitcommit: 7d6525f4614c6301f0ddb621b0483da70842a71b
 ms.openlocfilehash: 2dc166a346c58d43e9ed60332f47619c1de89816
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 2dc166a346c58d43e9ed60332f47619c1de89816
 ## <a name="updating-an-applications-identity-configuration"></a>更新应用程序的标识配置
 实际上有多个可用的选项可以更新应用程序的标识配置属性，这些选项因功能与难度而有所不同，包括：
 
-* **Azure 门户[][的 AZURE-PORTAL]Web 用户界面**可让你更新应用程序的最常见属性。 这是更新应用程序属性最快且最不容易出错的方法，但无法像下面两种方法一样提供对所有属性的完全访问权限。
+* **[Azure 门户][AZURE-PORTAL] 的 Web 用户界面**可让你更新应用程序的最常见属性。 这是更新应用程序属性最快且最不容易出错的方法，但无法像下面两种方法一样提供对所有属性的完全访问权限。
 * 对于需要在其中更新 Azure 经典门户中未公开的属性的更高级方案，可以修改**应用程序清单**。 这是本文的重点，将在下一部分中开始详细讨论。
 * 还可以**编写使用[图形 API][GRAPH-API] 的应用程序**来更新应用程序，这是最费力的方法。 如果要编写管理软件或需要自动定期更新应用程序属性，这可能是个不错的选择。
 
@@ -112,10 +113,5 @@ ms.openlocfilehash: 2dc166a346c58d43e9ed60332f47619c1de89816
 [O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

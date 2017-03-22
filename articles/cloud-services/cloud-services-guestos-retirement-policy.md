@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/24/2016
+ms.date: 3/21/2017
 ms.author: raiye
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: a7fde12e9ead0b64a99c93a3839fe2b5a0de93cd
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -79,10 +80,5 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 
 ## <a name="next-steps"></a>后续步骤
 查看最新的[来宾 OS 版本](cloud-services-guestos-update-matrix.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

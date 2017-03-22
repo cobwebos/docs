@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: c0589d488be5ec62686551b97d8949e5fed2f0a3
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -124,9 +125,4 @@ LED 闪烁 20 次后，示例应用程序会自动终止。 如果未看到 LED 
 [repo-structure]: media/iot-hub-intel-edison-lessons/lesson1/repo_structure_c.png
 [led-blinking]: media/iot-hub-intel-edison-lessons/lesson1/led_blinking_c.jpg
 [get-the-azure-tools]: iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-win32.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

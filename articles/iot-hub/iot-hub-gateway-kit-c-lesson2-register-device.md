@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/07/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: a895f18b4cefc01f12613e701c71bd471bb369c3
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -106,8 +107,3 @@ az iot device create --device-id mydevice --hub-name {my hub name} --resource-gr
 
 ## <a name="next-steps"></a>后续步骤
 [配置并运行 BLE 示例应用程序](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

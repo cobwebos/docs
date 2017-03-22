@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 52d76bb967471ae49b55b0fcb930c223984b39e3
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -120,9 +121,4 @@ iothub-explorer help
 
 ## <a name="azure-storage-issues"></a>Azure 存储问题
 [Microsoft Azure 存储资源管理器（预览版）](http://storageexplorer.com)是 Microsoft 提供的一款独立应用，可用于在 Windows、macOS 和 Linux 上处理 Azure 存储数据。 通过使用此工具，可以连接到表并查看其中的数据。 可以使用此工具排除 Azure 存储问题。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

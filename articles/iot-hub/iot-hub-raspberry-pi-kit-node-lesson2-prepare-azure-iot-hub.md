@@ -15,11 +15,12 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: add684549056a824e5534d071a5d0215e27f7a0e
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -101,10 +102,5 @@ az iot device create --device-id myraspberrypi --hub-name {my hub name} --x509 -
 
 ## <a name="next-steps"></a>后续步骤
 [创建 Azure Function App 和 Azure 存储帐户来处理和存储 IoT 中心消息](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

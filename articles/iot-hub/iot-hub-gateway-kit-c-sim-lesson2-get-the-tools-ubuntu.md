@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: f09ad1624f8a7ce4e1b13217d085cfc172d870ca
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -121,9 +122,4 @@ sudo npm install -g gulp
 
 ## <a name="next-steps"></a>后续步骤
 [创建 IoT 中心并注册设备](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
