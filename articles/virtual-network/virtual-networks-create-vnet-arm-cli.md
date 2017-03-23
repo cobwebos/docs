@@ -38,13 +38,13 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
     此外，也可以使用其他工具通过 Resource Manager 创建 VNet，或者从以下列表中选择一个不同的选项，通过经典部署模型创建 VNet：
 
 > [!div class="op_single_selector"]
-- [门户](virtual-networks-create-vnet-arm-pportal.md)
-- [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-- [CLI](virtual-networks-create-vnet-arm-cli.md)
-- [模板](virtual-networks-create-vnet-arm-template-click.md)
-- [门户 经典）](virtual-networks-create-vnet-classic-pportal.md)
-- [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
-- [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
+> * [门户](virtual-networks-create-vnet-arm-pportal.md)
+> * [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+> * [CLI](virtual-networks-create-vnet-arm-cli.md)
+> * [模板](virtual-networks-create-vnet-arm-template-click.md)
+> * [门户 经典）](virtual-networks-create-vnet-classic-pportal.md)
+> * [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
+> * [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
@@ -65,22 +65,22 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
     ```azurecli
     az network vnet create \
-        --name TestVNet \
-        --resource-group TestRG \
-        --location centralus \
-        --address-prefix 192.168.0.0/16 \
-        --subnet-name FrontEnd \
-        --subnet-prefix 192.168.1.0/24
+    --name TestVNet \
+    --resource-group TestRG \
+    --location centralus \
+    --address-prefix 192.168.0.0/16 \
+    --subnet-name FrontEnd \
+    --subnet-prefix 192.168.1.0/24
     ```
 
     预期输出：
-   
+    
     ```json
     {
         "newVNet": {
             "addressSpace": {
             "addressPrefixes": [
-                "192.168.0.0/16"
+            "192.168.0.0/16"
             ]
             },
             "dhcpOptions": {
@@ -100,7 +100,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
                 "resourceGroup": "TestRG"
             }
             ]
-        }
+            }
     }
     ```
 
@@ -121,20 +121,20 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
     这将生成以下输出：
 
-            Where      Name      Group
-            ---------  --------  -------
-            centralus  TestVNet  TestRG
+        Where      Name      Group
+
+        centralus  TestVNet  TestRG
 
 4. 创建子网：
 
     ```azurecli
     az network vnet subnet create \
-        --address-prefix 192.168.2.0/24 \
-        --name BackEnd \
-        --resource-group TestRG \
-        --vnet-name TestVNet
+    --address-prefix 192.168.2.0/24 \
+    --name BackEnd \
+    --resource-group TestRG \
+    --vnet-name TestVNet
     ```
-   
+
     预期输出：
 
     ```json
@@ -168,11 +168,11 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
     --query '{Name:name,Where:location,Group:resourceGroup,Status:provisioningState,SubnetCount:subnets | length(@)}' \
     -o table
     ```
-   
+
     预期输出：
-   
+
         Name      Where      Group    Status       SubnetCount
-        --------  ---------  -------  ---------  -------------
+
         TestVNet  centralus  TestRG   Succeeded              2
 
 6. 查询子网的属性：
@@ -188,7 +188,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
     预期输出：
 
         Name      CIDR            Status
-        --------  --------------  ---------
+
         FrontEnd  192.168.1.0/24  Succeeded
         BackEnd   192.168.2.0/24  Succeeded
 

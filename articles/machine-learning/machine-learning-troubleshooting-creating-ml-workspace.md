@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
 ms.openlocfilehash: b4740816ac61ffad032b86367fef99be7581f4c6
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -70,9 +71,4 @@ ms.openlocfilehash: b4740816ac61ffad032b86367fef99be7581f4c6
 [screen4]:media/machine-learning-troubleshooting-creating-ml-workspace/screen4.png
 [screen5]:media/machine-learning-troubleshooting-creating-ml-workspace/screen5.png
 [screen6]:media/machine-learning-troubleshooting-creating-ml-workspace/screen6.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

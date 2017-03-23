@@ -32,13 +32,13 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 本文说明如何使用 PowerShell 通过资源管理器部署模型创建 VNet。 此外，也可以使用其他工具通过 Resource Manager 创建 VNet，或者从以下列表中选择一个不同的选项，通过经典部署模型创建 VNet：
 
 > [!div class="op_single_selector"]
-- [门户](virtual-networks-create-vnet-arm-pportal.md)
-- [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-- [CLI](virtual-networks-create-vnet-arm-cli.md)
-- [模板](virtual-networks-create-vnet-arm-template-click.md)
-- [门户 经典）](virtual-networks-create-vnet-classic-pportal.md)
-- [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
-- [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
+> * [门户](virtual-networks-create-vnet-arm-pportal.md)
+> * [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+> * [CLI](virtual-networks-create-vnet-arm-cli.md)
+> * [模板](virtual-networks-create-vnet-arm-template-click.md)
+> * [门户 经典）](virtual-networks-create-vnet-classic-pportal.md)
+> * [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
+> * [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
