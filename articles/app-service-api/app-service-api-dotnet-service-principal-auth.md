@@ -3,7 +3,7 @@ title: "Azure 应用服务中 API 应用的服务主体身份验证 | Microsoft 
 description: "了解如何在服务到服务方案中保护 Azure 应用服务中的 API 应用。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: 7ca0bab2-1d29-4d51-b779-dce0edd34f8b
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
 ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
 ms.openlocfilehash: 232446806309148f7958609608d4afc28ffea98d
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/20/2017
 * [如何在 Azure 应用服务中配置服务主体身份验证](#authconfig)部分介绍了如何为任何 API 应用配置身份验证，以及如何使用受保护的 API 应用。 此部分适用于应用服务支持的所有框架，包括 .NET、Node.js 和 Java。
 * 本教程从[继续学习 .NET 入门教程](#tutorialstart)部分开始，指导如何针对应用服务中运行的 .NET 示例应用程序配置“内部访问”方案。 
 
-## <a name="a-idauthconfiga-how-to-configure-service-principal-authentication-in-azure-app-service"></a><a id="authconfig"></a>如何在 Azure 应用服务中配置服务主体身份验证
+## <a id="authconfig"></a>如何在 Azure 应用服务中配置服务主体身份验证
 本部分提供适用于任何 API 应用的一般说明。 有关待办事项列表 .NET 示例应用程序的特定步骤，请转到[继续学习 .NET API 应用系列教程](#tutorialstart)。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，导航到要保护的 API 应用的“设置”边栏选项卡，然后找到“功能”部分并单击“身份验证/授权”。
@@ -84,7 +84,7 @@ ms.lasthandoff: 01/20/2017
 ### <a name="how-to-protect-the-api-app-from-browser-access"></a>如何防止浏览器访问 API 应用
 如果不验证受保护 API 应用的代码中的声明并为受保护的 API 应用使用不同的 Azure AD 应用程序，请确保 Azure AD 应用的回复 URL 与 API 应用的基 URL 不同。 如果回复 URL 直接指向受保护的 API 应用，同一 Azure AD 租户中的用户将能够浏览到 API 应用、进行登录，并成功调用 API。
 
-## <a name="a-idtutorialstarta-continuing-the-net-api-apps-tutorial-series"></a><a id="tutorialstart"></a>继续学习 .NET API 应用系列教程
+## <a id="tutorialstart"></a>继续学习 .NET API 应用系列教程
 如果正在按照适用于 API 应用的 Node.js 或 Java 系列教程进行操作，请跳到[后续步骤](#next-steps)部分。 
 
 本文余下部分将续接 .NET API 应用系列教程，并且假设你已完成了[用户身份验证教程](app-service-api-dotnet-user-principal-auth.md)，并拥有在 Azure 中运行、已启用用户身份验证的示例应用程序。

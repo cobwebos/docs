@@ -3,7 +3,7 @@ title: "Azure App Service 中 API 应用的身份验证和授权 | Microsoft Doc
 description: "了解 Azure 应用服务为 API 应用提供的身份验证和授权服务。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: d620b53a-5a6f-41c9-84c7-f7ef5ff02ae7
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
 ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
 ms.openlocfilehash: cd66296718d8ae3cd2bcd69c66f54684f57d7ece
@@ -77,7 +77,7 @@ Azure App Service 提供内置的身份验证与授权服务，可实现 [OAuth 
 
 有关如何配置身份验证的详细信息，请参阅[如何配置应用服务应用程序以使用 Azure Active Directory 登录](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)。 此文章适用于 API 应用和移动应用，并链接到有关其他身份验证提供程序的其他文章。
 
-## <a name="a-idinternala-service-account-authentication"></a><a id="internal"></a>服务帐户身份验证
+## <a id="internal"></a>服务帐户身份验证
 应用服务身份验证适用于从某个 API 应用调用另一个 API 应用之类的内部方案。 在此方案中，可以使用服务帐户凭据（而不是用户凭据）来获取令牌。 在 Azure Active Directory 中，服务帐户也称为*服务主体*，使用此类帐户的身份验证也称为服务到服务方案。 
 
 对于服务到服务方案，请使用 Azure Active Directory 保护所调用的 API 应用，并在调用 API 应用时提供 AAD 服务主体授权令牌。 通过提供客户端 ID 和客户端机密，可以从 AAD 应用程序获取令牌。 不需要像过去处理移动服务 Zumo 令牌时那样使用仅限 Azure 的特殊代码。 [API 应用的服务主体身份验证](app-service-api-dotnet-service-principal-auth.md)教程讲解了这种使用 ASP.NET API 应用的方案示例。

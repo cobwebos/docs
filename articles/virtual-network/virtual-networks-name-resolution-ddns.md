@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2016
+ms.date: 02/23/2017
 ms.author: garbrad
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b4fffba6d95f4c9c30ab3a1ecd9dfeb7acd9119d
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -57,8 +58,8 @@ Linux 客户端通常在启动时注册到 DNS 服务器，并假设 DHCP 服务
               nsupdate $nsupdatecmds
         fi
 
-        #done
-        exit 0;
+        
+        
 
 还可以使用 *nsupdate* 命令来执行安全的动态 DNS 更新。 例如，在使用 Bind DNS 服务器时，将[生成](http://linux.yyz.us/nsupdate/)公钥-私钥对。  已向 DNS 服务器[配置](http://linux.yyz.us/dns/ddns-server.html)密钥的公共部分，所以它可以验证请求中的签名。 必须使用 *-k* 选项将密钥对提供给 *nsupdate*，以便对动态 DNS 更新请求进行签名。
 
@@ -67,10 +68,5 @@ Linux 客户端通常在启动时注册到 DNS 服务器，并假设 DHCP 服务
 如果需要，可以将 DNS 搜索后缀添加到 VM。 DNS 后缀在 */etc/resolv.conf* 文件中指定。 大多数 Linux 发行版自动管理此文件中的内容，因此通常不能对其进行编辑。 但是，可以通过使用 DHCP 客户端的 *supersede* 命令重写该后缀。 若要执行此操作，请在 */etc/dhcp/dhclient.conf* 中添加：
 
         supersede domain-name <required-dns-suffix>;
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
