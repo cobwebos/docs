@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 03/20/2017
 ms.author: garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 1738899a271045e37cdcedaaf862553f29ec92f1
 ms.openlocfilehash: b1c06135cf8628197fb9601affd6a7131b41d0ca
+ms.lasthandoff: 12/19/2016
 
 
 ---
@@ -32,10 +33,5 @@ ms.openlocfilehash: b1c06135cf8628197fb9601affd6a7131b41d0ca
 4. 单击“确定”复选标记。
 
 保存完成时，数据集将能在工作区的任何实验中使用。 可在模块面板的“保存的数据集”列表中找到它。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

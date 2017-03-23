@@ -48,8 +48,9 @@ ms.lasthandoff: 03/07/2017
 * **Windows 软件开发工具包 (SDK)**：若要安装 Windows SDK，请转到[适用于 Windows 10 的下载内容和工具](https://dev.windows.com/en-us/downloads)。 可以使用 Windows SDK 来创建安全证书。
 * **Azure Active Directory 服务主体**：本教程将介绍如何在 Azure Active Directory (Azure AD) 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 管理员可以跳过此先决条件部分，继续阅读本教程。
 
- >[!NOTE]
- >仅当你是 Azure AD 管理员时，才能创建服务主体。 Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 必须根据[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)中所述，使用证书创建服务主体。
+    >[!NOTE]
+    >仅当你是 Azure AD 管理员时，才能创建服务主体。 Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 必须根据[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)中所述，使用证书创建服务主体。
+    >
 
 ## <a name="create-a-data-lake-store-account"></a>创建 Data Lake Store 帐户
 若要创建 Data Lake Store 帐户，请执行以下操作：
@@ -68,8 +69,9 @@ ms.lasthandoff: 03/07/2017
         # Register for Data Lake Store
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
- > [!NOTE]
- > 如果在注册 Data Lake Store 资源提供程序时收到类似于 `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的错误，原因可能是你的订阅未列入 Data Lake Store 的允许列表。 若要在 Data Lake Store 公共预览版中启用你的 Azure 订阅，请遵循[通过 Azure 门户开始使用 Azure Data Lake Store](data-lake-store-get-started-portal.md) 中的说明。
+    > [!NOTE]
+    > 如果在注册 Data Lake Store 资源提供程序时收到类似于 `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的错误，原因可能是你的订阅未列入 Data Lake Store 的允许列表。 若要在 Data Lake Store 公共预览版中启用你的 Azure 订阅，请遵循[通过 Azure 门户开始使用 Azure Data Lake Store](data-lake-store-get-started-portal.md) 中的说明。
+    > 
 
 2. 出现登录的提示时，请以订阅管理员或所有者的身份登录：
 3. Data Lake Store 帐户与 Azure 资源组关联。 首先请创建资源组。
@@ -217,7 +219,8 @@ ms.lasthandoff: 03/07/2017
     可以在 SSH 控制台上看到查询输出。
 
     >[!NOTE]
-       >上面 CREATE TABLE 命令中的示例数据的路径为 `adl:///example/data/`，其中 `adl:///` 是群集根。 根据本教程中指定的群集根示例，该命令为 `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`。 可以使用更短的替代内容，或者提供群集根的完整路径。
+    >上面 CREATE TABLE 命令中的示例数据的路径为 `adl:///example/data/`，其中 `adl:///` 是群集根。 根据本教程中指定的群集根示例，该命令为 `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`。 可以使用更短的替代内容，或者提供群集根的完整路径。
+    >
 
 ## <a name="access-data-lake-store-by-using-hdfs-commands"></a>使用 HDFS 命令访问 Data Lake Store
 将 HDInsight 群集配置为使用 Data Lake Store 后，可以使用 Hadoop 分布式文件系统 (HDFS) shell 命令来访问该存储。
