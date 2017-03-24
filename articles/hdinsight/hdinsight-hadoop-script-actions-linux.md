@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: cf4c89cd-f7da-4a10-857f-838004965d3e
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
 ms.openlocfilehash: 6eb692f7c3374f9073944b8c4c0f34af2ed35b3c
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -43,7 +45,7 @@ ms.openlocfilehash: 6eb692f7c3374f9073944b8c4c0f34af2ed35b3c
 
 有关使用这些方法应用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="a-namebestpracticescriptingabest-practices-for-script-development"></a><a name="bestPracticeScripting"></a>脚本开发最佳实践
+## <a name="bestPracticeScripting"></a>脚本开发最佳实践
 
 在针对 HDInsight 群集开发自定义脚本时，有些最佳做法要铭记于心：
 
@@ -61,11 +63,11 @@ ms.openlocfilehash: 6eb692f7c3374f9073944b8c4c0f34af2ed35b3c
 > [!IMPORTANT]
 > 脚本操作必须在 60 分钟内完成，否则将会超时。 在节点预配期间，脚本将与其他安装和配置进程一同运行。 争用 CPU 时间和网络带宽等资源可能导致完成脚本所需的时间要长于在开发环境中所需的时间。
 
-### <a name="a-namebps1atarget-the-hadoop-version"></a><a name="bPS1"></a>选择目标 Hadoop 版本
+### <a name="bPS1"></a>选择目标 Hadoop 版本
 
 不同版本的 HDInsight 有不同版本的 Hadoop 服务和已安装的组件。 如果脚本需要特定版本的服务或组件，你应该只在包含所需组件的 HDInsight 版本中使用该脚本。 可以使用 [HDInsight 组件版本控制](hdinsight-component-versioning.md)来查找有关 HDInsight 随附组件版本的信息。
 
-### <a name="a-namebps10a-target-the-os-version"></a><a name="bps10"></a>选择目标 OS 版本
+### <a name="bps10"></a>选择目标 OS 版本
 
 基于 Linux 的 HDInsight 取决于 Ubuntu Linux 分发。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会影响脚本的行为方式。 例如，HDInsight 3.4 及更早版本取决于使用 Upstart 的 Ubuntu 版本。 版本 3.5 取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 依赖不同的命令，因此编写的脚本应该同时使用两者。
 
@@ -108,7 +110,7 @@ fi
 
 若要了解 Systemd 和 Upstart 之间的差异，请参阅 [Systemd for Upstart users](https://wiki.ubuntu.com/SystemdForUpstartUsers)（适用于 Upstart 用户的 Systemd）。
 
-### <a name="a-namebps2aprovide-stable-links-to-script-resources"></a><a name="bPS2"></a>提供指向脚本资源的可靠链接
+### <a name="bPS2"></a>提供指向脚本资源的可靠链接
 
 应确保在群集的整个生存期内，脚本使用的脚本和资源都保持可用，并且这些文件的版本在此持续时间内不会更改。 如果在缩放操作期间将新节点添加到了群集，将需要用到这些资源。
 
@@ -119,24 +121,24 @@ fi
 
 例如，Microsoft 提供的示例存储在 [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) 存储帐户中，这是 HDInsight 团队维护的公共只读容器。
 
-### <a name="a-namebps4ause-pre-compiled-resources"></a><a name="bPS4"></a>使用预编译的资源
+### <a name="bPS4"></a>使用预编译的资源
 
 若要减少运行脚本所花费的时间，请避免使用从源代码编译资源的操作。 应预编译这些资源，并将二进制文件存储在 Azure Blob 存储中，以便能够通过脚本快速将其下载到群集中。
 
-### <a name="a-namebps3aensure-that-the-cluster-customization-script-is-idempotent"></a><a name="bPS3"></a>确保群集自定义脚本是幂等的
+### <a name="bPS3"></a>确保群集自定义脚本是幂等的
 
 必须将脚本设计为具有幂等性，也就是说，如果多次运行脚本，应确保群集在每次运行时都会返回到相同状态。
 
 例如，如果自定义脚本在其首次运行时在 /usr/local/bin 上安装了应用程序，则在重新制作映像时，该脚本应检查应用程序是否已在 /usr/local/bin 位置存在，然后才能继续在该脚本中执行其他步骤。
 
-### <a name="a-namebps5aensure-high-availability-of-the-cluster-architecture"></a><a name="bPS5"></a>确保群集体系结构的高可用性
+### <a name="bPS5"></a>确保群集体系结构的高可用性
 
 基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作将针对这两个节点运行。 如果安装的组件预期只有一个头节点，则必须将脚本设计为只在群集中两个头节点之一上安装组件。
 
 > [!IMPORTANT]
 > 安装为 HDInsight 一部分的默认服务旨在根据需要在两个头节点之间故障转移，但是此功能未扩展到通过脚本操作安装的自定义组件。 如果需要让通过脚本操作安装的组件高度可用，则必须实现自己的、使用两个可用头节点的故障转移机制。
 
-### <a name="a-namebps6aconfigure-the-custom-components-to-use-azure-blob-storage"></a><a name="bPS6"></a>配置自定义组件以使用 Azure Blob 存储
+### <a name="bPS6"></a>配置自定义组件以使用 Azure Blob 存储
 
 在群集上安装的组件可能具有使用 Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 HDInsight 使用 Azure Blob 存储 (WASB) 作为默认存储。 这可以提供与 HDFS 兼容的文件系统，即使删除了群集，也能保存数据。 应将安装的组件配置为使用 WASB 而不是 HDFS。
 
@@ -146,7 +148,7 @@ fi
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-### <a name="a-namebps7awrite-information-to-stdout-and-stderr"></a><a name="bPS7"></a>将信息写入 STDOUT 和 STDERR
+### <a name="bPS7"></a>将信息写入 STDOUT 和 STDERR
 
 系统将会记录脚本执行期间写入 STDOUT 和 STDERR 的信息，你可以使用 Ambari Web UI 来查看这些信息。
 
@@ -169,7 +171,7 @@ echo "Getting ready to install Foo"
 
 有关查看脚本操作记录的信息的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
-### <a name="a-namebps8a-save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>将文件另存为包含 LF 行尾的 ASCII
+### <a name="bps8"></a>将文件另存为包含 LF 行尾的 ASCII
 
 应将 Bash 脚本存储为 ASCII 格式，该格式以 LF 作为行尾。 如果将文件存储为 UTF-8，文件开头可能包含字节顺序标记，或者以 CRLF 作为行尾，这对于 Windows 编辑器很常见，在这种情况下，脚本将会失败并返回如下所示的错误：
 
@@ -178,7 +180,7 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="a-namebps9a-use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a>使用重试逻辑从暂时性错误中恢复
+### <a name="bps9"></a>使用重试逻辑从暂时性错误中恢复
 
 下载文件、使用 apt-get 安装包或者执行通过 Internet 传输数据的其他操作时，可能会由于暂时性网络错误而失败。 例如，与你通信的远程资源可能正在故障转移到备份节点。
 
@@ -216,7 +218,7 @@ retry ls -ltr foo
 retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
 ```
 
-## <a name="a-namehelpermethodsahelper-methods-for-custom-scripts"></a><a name="helpermethods"></a>自定义脚本的帮助器方法
+## <a name="helpermethods"></a>自定义脚本的帮助器方法
 
 脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法在 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 中定义，可以使用以下语法将其包括在你的脚本中：
 
@@ -240,7 +242,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 | `get_primary_headnode_number` |获取主头节点的数字后缀。 出错时返回空字符串。 |
 | `get_secondary_headnode_number` |获取辅助头节点的数字后缀。 出错时返回空字符串。 |
 
-## <a name="a-namecommonusageacommon-usage-patterns"></a><a name="commonusage"></a>常见使用模式
+## <a name="commonusage"></a>常见使用模式
 
 本部分提供有关实现你在编写自己的自定义脚本时可能遇到的一些常见使用模式的指导。
 
@@ -309,7 +311,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-## <a name="a-namedeployscriptachecklist-for-deploying-a-script-action"></a><a name="deployScript"></a>有关部署脚本操作的清单
+## <a name="deployScript"></a>有关部署脚本操作的清单
 
 下面是我们在准备部署这些脚本时执行的步骤：
 
@@ -318,11 +320,11 @@ fi
 * 使用临时文件目录 /tmp 来保存脚本使用的下载文件，并在执行脚本后将其清除。
 * 如果 OS 级设置或 Hadoop 服务配置文件发生更改，则你可能需要重新启动 HDInsight 服务，使其可以选取任何 OS 级设置，例如脚本中设置的环境变量。
 
-## <a name="a-namerunscriptactionahow-to-run-a-script-action"></a><a name="runScriptAction"></a>如何运行脚本操作
+## <a name="runScriptAction"></a>如何运行脚本操作
 
 可以使用脚本操作通过 Azure 门户、Azure PowerShell、Azure Resource Manager 模板或 HDInsight .NET SDK 来自定义 HDInsight 群集。 有关说明，请参阅[如何使用脚本操作](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="a-namesamplescriptsacustom-script-samples"></a><a name="sampleScripts"></a>自定义脚本示例
+## <a name="sampleScripts"></a>自定义脚本示例
 
 Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 示例脚本以及有关如何使用这些脚本的说明可以在以下链接上找到：
 
@@ -366,15 +368,10 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 示例�
 
 对于上述命令，请将 **INFILE** 替换为包含 BOM 的文件。 **OUTFILE** 应是新文件的名称，包含不带 BOM 的脚本。
 
-## <a name="a-nameseealsoanext-steps"></a><a name="seeAlso"></a>后续步骤
+## <a name="seeAlso"></a>后续步骤
 
 * 了解如何[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)
 * 使用 [HDInsight.NET SDK 参考](https://msdn.microsoft.com/library/mt271028.aspx)详细了解如何创建用于管理 HDInsight 的 .NET 应用程序
 * 使用 [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) 了解如何通过 REST 在 HDInsight 群集上执行管理操作。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

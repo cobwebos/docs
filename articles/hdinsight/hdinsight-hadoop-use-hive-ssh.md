@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 0e919171-03e6-4f5a-ab4e-3eec3e34c347
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -18,6 +19,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
 ms.openlocfilehash: 6971e3d36629640d3a550539b29ba7cc4c0da6b7
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -30,7 +32,7 @@ ms.openlocfilehash: 6971e3d36629640d3a550539b29ba7cc4c0da6b7
 > 虽然可以在 HDInsight 群集上使用 Hive 命令，但仍应考虑使用 Beeline。 Beeline 是一个较新的客户端，与 Hive 搭配使用，随附在 HDInsight 群集中。 有关使用 Beeline 的详细信息，请参阅[通过 Beeline 将 Hive 与 HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-hive-beeline.md)。
 
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
+## <a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
 
 * 基于 Linux 的 HDInsight 上的 Hadoop 群集。
@@ -40,7 +42,7 @@ ms.openlocfilehash: 6971e3d36629640d3a550539b29ba7cc4c0da6b7
 
 * SSH 客户端。 SSH 客户端上应该装有 Linux、Unix 和 Mac OS。 Windows 用户必须下载 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 之类的客户端。
 
-## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>使用 SSH 进行连接
+## <a id="ssh"></a>使用 SSH 进行连接
 使用 SSH 命令连接到 HDInsight 群集的完全限定域名 (FQDN)。 FQDN 是你为群集指定的名称，后接 **.azurehdinsight.net**。 例如，以下命令将连接到名为 **myhdinsight** 的群集：
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
@@ -58,7 +60,7 @@ Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiar
 
 有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)。
 
-## <a name="a-idhiveause-the-hive-command"></a><a id="hive"></a>使用 Hive 命令
+## <a id="hive"></a>使用 Hive 命令
 1. 连接后，请使用以下命令启动 Hive 命令行界面 (CLI)。
    
         hive
@@ -107,10 +109,10 @@ Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiar
      > 
      > 
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>摘要
+## <a id="summary"></a>摘要
 如你所见，Hive 命令提供了简单的方法让你以交互方式在 HDInsight 群集上运行 Hive 查询、监视作业状态，以及检索输出。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Hive 的一般信息：
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
@@ -153,10 +155,5 @@ Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiar
 
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 1abe9104-f4b2-41b9-9161-abbc43de8294
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -62,7 +63,7 @@ Ambari 是基于 Linux 的 HDInsight 群集随附提供的管理和监视工具�
 
 由于表是通过执行本文档中的步骤添的，因此可使用数据库资源管理器右上角的刷新图标来刷新列表。
 
-## <a name="a-namehivequeryaquery-editor"></a><a name="hivequery"></a>查询编辑器
+## <a name="hivequery"></a>查询编辑器
 
 使用 Hive 视图中的以下步骤执行 Hive 查询。
 
@@ -225,7 +226,7 @@ create temporary function myawesomeudf as 'com.myudfs.Awesome';
 * [在 HDInsight 中将 Python 与 Hive 和 Pig 配合使用](hdinsight-python.md)
 * [如何将自定义 Hive UDF 添加到 HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Hive 的一般信息：
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)

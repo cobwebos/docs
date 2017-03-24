@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: b646a93b-4c51-4ba4-84da-3275d9124ebe
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -33,7 +34,7 @@ ms.lasthandoff: 01/18/2017
 > 如果已熟悉如何使用基于 Linux 的 Hadoop 服务器，但刚接触 HDInsight，请参阅[基于 Linux 的 HDInsight 提示](hdinsight-hadoop-linux-information.md)。
 
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
+## <a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
 
 * 基于 Linux 的 HDInsight（HDInsight 上的 Hadoop）群集。
@@ -43,7 +44,7 @@ ms.lasthandoff: 01/18/2017
 
 * SSH 客户端。 SSH 客户端上应该装有 Linux、Unix 和 Mac OS。 Windows 用户必须下载 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 之类的客户端。
 
-## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>使用 SSH 进行连接
+## <a id="ssh"></a>使用 SSH 进行连接
 使用 SSH 命令连接到 HDInsight 群集的完全限定域名 (FQDN)。 FQDN 是你为群集指定的名称，后接 **.azurehdinsight.net**。 例如，以下命令将连接到名为 **myhdinsight** 的群集。
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
@@ -61,7 +62,7 @@ Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiar
 
 有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)。
 
-## <a name="a-idpigause-the-pig-command"></a><a id="pig"></a>使用 Pig 命令
+## <a id="pig"></a>使用 Pig 命令
 1. 连接后，请使用以下命令启动 Pig 命令行界面 (CLI)。
    
         pig
@@ -138,10 +139,10 @@ Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiar
         (ERROR,6)
         (FATAL,2)
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>摘要
+## <a id="summary"></a>摘要
 如你所见，Pig 命令可让你使用 Pig Latin 以交互方式运行 MapReduce 作业，以及运行批处理文件中存储的语句。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Pig 的一般信息。
 
 * [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)

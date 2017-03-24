@@ -12,17 +12,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 03/24/2017
 ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: e95d02e706b87eaa355951a34bbaa3abf2ac2370
+ms.lasthandoff: 01/24/2017
 
 
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
 Azure IoT 中心是一项 Azure 服务，可在一个解决方案后端和数百万个设备之间实现安全可靠的双向通信。 它使解决方案后端可以：
 
 * 从你的设备大规模接收遥测。
@@ -46,9 +48,4 @@ Azure IoT 中心是一项 Azure 服务，可在一个解决方案后端和数百
 [lnk-iot-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-device-management-overview.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
