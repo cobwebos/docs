@@ -10,6 +10,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 2c10f989-7636-41bf-b7f7-c4b67ec0814f
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,9 +18,9 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 18131c083a0dc24eaa6f58445aa61d5872210417
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 2f37c2d635920dd286bf0cb5f9a74a01259a786a
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 01/18/2017
 
 在本教程中，你将学习如何在 HDInsight 上使用 Hadoop 中的 Apache Hive，以及选择如何运行 Hive 作业。 此外，你还将了解 HiveQL 以及如何分析一个示例 Apache log4j 文件。
 
-## <a name="a-idwhyawhat-is-hive-and-why-use-it"></a><a id="why"></a>什么是 Hive，为何要使用它？
+## <a id="why"></a>什么是 Hive，为何要使用它？
 [Apache Hive](http://hive.apache.org/) 是适用于 Hadoop 的数据仓库系统，可让你使用 HiveQL（类似于 SQL 的查询语言）来进行数据汇总、查询和数据分析。 使用 Hive 能够以交互方式浏览数据，或者创建可重用的批处理作业。
 
 Hive 允许你在很大程度上未结构化的数据上投影结构。 在定义结构后，你可以使用 Hive 来查询这些数据，而不需要具备 Java 或 MapReduce 的知识。 **HiveQL**（Hive 查询语言）可让你使用类似于 T-SQL 的语句编写查询。
@@ -55,7 +56,7 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 
 有关详细信息，请参阅 [HDInsight：Hive 内部和外部表简介][cindygross-hive-tables]。
 
-## <a name="a-iddataaabout-the-sample-data-an-apache-log4j-file"></a><a id="data"></a>关于示例数据（一个 Apache log4j 文件）
+## <a id="data"></a>关于示例数据（一个 Apache log4j 文件）
 本示例使用 *log4j* 示例文件，该文件存储在 Blob 存储容器中的 **/example/data/sample.log** 处。 该文件中的每个日志都包含一行字段，其中包含一个 `[LOG LEVEL]` 字段，用于显示类型和严重性，例如：
 
     2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
@@ -78,7 +79,7 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 > 
 > 
 
-## <a name="a-idjobasample-job-project-columns-onto-delimited-data"></a><a id="job"></a>示例作业：将列投影到分隔的数据
+## <a id="job"></a>示例作业：将列投影到分隔的数据
 以下 HiveQL 语句将列投影到 **wasbs:///example/data** 目录中存储的分隔数据：
 
     set hive.execution.engine=tez;
@@ -129,7 +130,7 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 > 
 > 
 
-## <a name="a-idusetezause-apache-tez-for-improved-performance"></a><a id="usetez"></a>使用 Apache Tez 提高性能
+## <a id="usetez"></a>使用 Apache Tez 提高性能
 [Apache Tez](http://tez.apache.org) 是可让数据密集型应用程序（例如 Hive）大规模高效运行的框架。 在最新版的 HDInsight 中，Hive 支持在 Tez 上运行。 基于 Linux 的 HDInsight 群集在默认情况下会启用 Tez。
 
 > [!NOTE]
@@ -137,7 +138,7 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 > 
 > ```set hive.execution.engine=tez;```
 > 
-> 你可为每个查询提交此值，只需将它放置在查询的开头即可。 你也可以在创建群集时设置配置值，而在群集上将此值默认为打开。 可以在[预配 HDInsight 群集](hdinsight-provision-clusters.md)中找到详细信息。
+> 你可为每个查询提交此值，只需将它放置在查询的开头即可。 你也可以在创建群集时设置配置值，而在群集上将此值默认为打开。 可以在[预配 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)中找到详细信息。
 > 
 > 
 
@@ -148,7 +149,7 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 * [在基于 Windows 的 HDInsight 上使用 Tez UI](hdinsight-debug-tez-ui.md)
 * [在基于 Linux 的 HDInsight 上使用 Ambari Tez 视图](hdinsight-debug-ambari-tez-view.md)
 
-## <a name="a-idrunachoose-how-to-run-the-hiveql-job"></a><a id="run"></a>选择如何运行 HiveQL 作业
+## <a id="run"></a>选择如何运行 HiveQL 作业
 HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定哪种方法最适合你，然后按链接进行演练。
 
 | **使用此方法**，如果你想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
@@ -173,13 +174,11 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定�
 
 在[此处][ssispack]了解有关 Azure Feature Pack for SSIS 的详细信息。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 现在，你已了解什么是 Hive，以及如何将它与 HDInsight 中的 Hadoop 配合使用，请使用以下链接来学习 Azure HDInsight 的其他用法。
 
 * [将数据上传到 HDInsight][hdinsight-upload-data]
 * [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
-* [将 Sqoop 与 HDInsight 配合使用](hdinsight-use-sqoop.md)
-* [将 Oozie 与 HDInsight 配合使用](hdinsight-use-oozie.md)
 * [将 MapReduce 作业与 HDInsight 配合使用][hdinsight-use-mapreduce]
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx

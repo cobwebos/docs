@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 722c867f00628731f4001b050c5f4df0f2f21db7
-ms.openlocfilehash: bdbd2323b1fda2b4e4b4d3ce6755b04cec03085b
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a6230ae2e9b22655988cd25e5f3660bf1bc214d7
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -44,7 +44,7 @@ Azure Resource Manager 模板定义环境的整个结构。 模板可用于创�
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>使用 Azure Docker VM 扩展部署模板
 让我们使用现有的快速入门模板来创建 Ubuntu VM，以使用 Azure Docker VM 扩展来安装和配置 Docker 主机。 可以在此处查看模板：[使用 Docker 轻松部署 Ubuntu VM](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)。 
 
-需要安装[最新的 Azure CLI](../xplat-cli-install.md)，然后按如下所示，使用 Resource Manager 模式登录：
+需要安装[最新的 Azure CLI](../cli-install-nodejs.md)，然后按如下所示，使用 Resource Manager 模式登录：
 
 ```azurecli
 azure config mode arm

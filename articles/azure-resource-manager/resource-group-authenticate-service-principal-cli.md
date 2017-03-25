@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 76c5bdeb2a27b733d8566c7a19f9457feebdc273
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a99b55c98f29356fb78e053434f6f3fc5c9d0efc
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: 76c5bdeb2a27b733d8566c7a19f9457feebdc273
 * 你的职责变化时，无需更改应用的凭据。 
 * 执行无人参与的脚本时，可使用证书自动进行身份验证。
 
-本主题介绍如何通过[适用于 Mac、Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md) 为应用程序进行设置，使之能够使用自己的凭据和标识运行。
+本主题介绍如何通过[适用于 Mac、Linux 和 Windows 的 Azure CLI](../cli-install-nodejs.md) 为应用程序进行设置，使之能够使用自己的凭据和标识运行。
 
 使用 Azure CLI 时，可以通过&2; 个选项进行 AD 应用程序身份验证：
 
@@ -372,10 +373,5 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 ## <a name="next-steps"></a>后续步骤
 * 有关将应用程序集成到 Azure 以管理资源的详细步骤，请参阅 [Developer's guide to authorization with the Azure Resource Manager API](resource-manager-api-authentication.md)（使用 Azure Resource Manager API 进行授权的开发人员指南）。
 * 若要获取有关使用证书和 Azure CLI 的详细信息，请参阅[从 Linux 命令行对 Azure 服务主体进行基于证书的身份验证](http://blogs.msdn.com/b/arsen/archive/2015/09/18/certificate-based-auth-with-azure-service-principals-from-linux-command-line.aspx)。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/05/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
-ms.openlocfilehash: a46db1815b84f0ecf93c805f3ea36e4e3d4282ac
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 42d9e68c3c18d04c02ab818d84a653ece811fc52
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,14 +27,6 @@ ms.lasthandoff: 02/11/2017
 
 
 本部分有助于将现有 Azure VM 从经典部署模型迁移到 Resource Manager 部署模型中的[托管磁盘](../storage/storage-managed-disks-overview.md)。
-
-## <a name="before-you-begin"></a>开始之前
-如果使用 PowerShell，请确保使用最新版本的 AzureRM.Compute PowerShell 模块。 运行以下命令进行安装。
-
-```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
-```
-有关详细信息，请参阅 [Azure PowerShell 版本控制](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)。
 
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>计划迁移到托管磁盘

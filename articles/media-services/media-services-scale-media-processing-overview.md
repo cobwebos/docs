@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 03/13/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 1cde923ad0aef1ce1c91d1240f7b3e3d3c26e105
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: eb77dd2aaaeced8c71c2c89937f7f1cc10c7b292
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -47,7 +47,16 @@ ms.lasthandoff: 01/13/2017
 * 如果使用共享的池（即没有任何保留单位），则编码任务将具有与 S1 RU 相同的性能。 但是，任务在排队状态下花费的时间可能没有上限，并且在任何给定的时间内，最多只会运行一项任务。
 * 下面的数据中心不提供 **S2** 保留单位类型：巴西南部和印度西部。
 * 下面的数据中心不提供 **S3** 保留单位类型：印度西部。
-* 为 24 小时期间指定的最大单位数将用于计算成本。
+
+## <a name="billing"></a>计费
+
+将根据媒体保留单位的实际使用分钟数对你进行收费。 以下是更详细的示例。 假设 Joe 开始有零个媒体保留单位 (RU)，那天上午 10:00 他将其帐户设为使用两个 S1 RU。 下午来了其他视频，因此他又在下午 1:15 将其帐户改为使用 4 个 S3 RU。 所有视频在下午 4:00 前进行了处理，然后他关闭了帐户中的 RU（将 RU 数设为零）。 Joe 的使用量计算如下。
+
+S1 媒体保留单位：2 个单位 x 3.25 小时（上午 10 点到下午 1:15）x $0.02/小时 = $0.13 S3 媒体保留单位：4 个单位 x 2.75 小时（下午 1:15 到下午 4 点）x $0.08/小时 = $0.88
+
+因此，Joe 那天使用媒体保留单位的总成本将是 $0.13 + $0.88 = $1.01 与媒体保留单位不同，流单元的收费依据是每天配置的流单元的最大数目（高水印）。
+
+有关详细信息，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)页。 FAQ 部分提供了详细说明。  
 
 ## <a name="quotas-and-limitations"></a>配额和限制
 有关配额和限制以及如何开具支持票证的信息，请参阅[配额和限制](media-services-quotas-and-limitations.md)。

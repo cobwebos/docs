@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 97dd91986751031daef24fc806adc7021b2f94fc
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: c6acdf97ee5e947ac48866c003480e393dd4bf35
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/31/2017
 ## <a name="quick-commands"></a>快速命令
 如果需要快速完成任务，请参阅以下部分，其中详细说明了用于加密 VM 中虚拟磁盘的基本命令。 本文档的余下部分（[从此处开始](#overview-of-disk-encryption)）提供了每个步骤的更详细信息和上下文。
 
-需要安装[最新的 Azure CLI](../xplat-cli-install.md)，然后按如下所示，使用 Resource Manager 模式登录：
+需要安装[最新的 Azure CLI](../cli-install-nodejs.md)，然后按如下所示，使用 Resource Manager 模式登录：
 
 ```azurecli
 azure config mode arm
@@ -157,7 +157,7 @@ Linux VM 上的虚拟磁盘是使用 [dm-crypt](https://wikipedia.org/wiki/Dm-cr
 * 在已加密的 Linux VM 上更新加密密钥。
 
 ## <a name="create-the-azure-key-vault-and-keys"></a>创建 Azure 密钥保管库和密钥
-若要安装本指南的余下部分，需要安装[最新的 Azure CLI](../xplat-cli-install.md)，然后按如下所示，使用 Resource Manager 模式登录：
+若要安装本指南的余下部分，需要安装[最新的 Azure CLI](../cli-install-nodejs.md)，然后按如下所示，使用 Resource Manager 模式登录：
 
 ```azurecli
 azure config mode arm

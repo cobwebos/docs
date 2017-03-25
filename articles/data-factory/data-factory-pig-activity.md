@@ -15,21 +15,24 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
-ms.openlocfilehash: 1f9900218dc64b9a11e30335db234108859a2d2d
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 3c04cee00b7dc7c8833daf21cdbca11a065e9dae
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Pig 活动转换数据
-> [!div class="op_single_selector"]
-> * [Hive](data-factory-hive-activity.md)  
-> * [Pig](data-factory-pig-activity.md)  
-> * [MapReduce](data-factory-map-reduce.md)  
-> * [Hadoop 流式处理](data-factory-hadoop-streaming-activity.md)
-> * [机器学习](data-factory-azure-ml-batch-execution-activity.md) 
-> * [存储过程](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> * [.NET 自定义](data-factory-use-custom-activities.md)
+> [!div class="op_single_selector" title1="Transformation Activities"]
+> * [Hive 活动](data-factory-hive-activity.md) 
+> * [Pig 活动](data-factory-pig-activity.md)
+> * [MapReduce 活动](data-factory-map-reduce.md)
+> * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
+> * [Spark 活动](data-factory-spark.md)
+> * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
+> * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
+> * [存储过程活动](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
+> * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight Pig 活动会在[你自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Pig 查询。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
@@ -214,10 +217,5 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 * [调用 Spark 程序](data-factory-spark.md)
 * [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: f5bc2d4d52e10af6b8393e78a53c4bd983596cda
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 9ed502efadbc27ca507fa5be455f32c3bd1b9eee
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -32,9 +32,18 @@ Linux 上的 Azure 应用服务目前为公共预览版，支持在本地 Linux 
 Linux 应用服务目前支持以下应用程序堆栈：
 
 * Node.js
+    * 4.5.0
+    * 4.4.7
+    * 6.2.2
+    * 6.6.0
+    * 6.9.3
 * PHP
+    * 5.6.23
+    * 7.0.6
 * .NET Core
+    * 1.0
 * Ruby
+    * 2.3
 
 客户可通过以下几种方式部署其应用程序：
 

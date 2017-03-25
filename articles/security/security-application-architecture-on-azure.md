@@ -1,6 +1,6 @@
 ---
 title: "将安全性集成到 Azure 体系结构设计 | Microsoft Docs"
-description: " 本文将帮助你了解 Azure 上的应用程序和服务体系结构，以便更容易地将安全集成到设计和实现中. "
+description: " 本文将帮助你了解 Azure 上的应用程序和服务体系结构，以便更容易地将安全集成到设计和实现中。 "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
-ms.openlocfilehash: e7ccc71f222d4af9a52cbf55bb6bb446f211e819
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 91e46d690d3e7c298bc3b4020cc383ca99c43c4f
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -48,16 +49,11 @@ Microsoft 发布了一套高级别的[体系结构蓝图](http://aka.ms/azbluepr
 [观看 Visio 和符号培训视频](http://aka.ms/CnESymbolsVideo)，然后[下载云和企业符号集](http://aka.ms/CnESymbols)以帮助创建介绍 Azure、Windows Server 和 SQL Server 等的技术资料。 如果此书培训用户如何使用 Microsoft 产品，则可以使用体系结构图、培训材料、演示文稿、数据表、信息图、白皮书甚至是第三方书籍中的符号。 但是，它们并不适合在用户界面中使用。
 
 ## <a name="3d-blueprint-visio-template"></a>3D Blueprint Visio 模板
-3D 版本的 [Microsoft 体系结构蓝图](http://aka.ms/azblueprints)最初在非 Microsoft 工具中创建。 新的 Visio 2013（和更高版本）模板于 2015 年 8 月 5 日发布，作为 [Microsoft 体系结构认证课程的一部分在 EDX.ORG 上分发](../architecture-overview.md#microsoft-architecture-certification-course)。
+3D 版本的 [Microsoft 体系结构蓝图](http://aka.ms/azblueprints)最初在非 Microsoft 工具中创建。 新的 Visio 2013（和更高版本）模板于 2015 年 8 月 5 日发布，作为 [Microsoft 体系结构认证课程的一部分在 EDX.ORG 上分发](https://docs.microsoft.com/azure/architecture/#microsoft-architecture-certification-course)。
 
 该模板在本课程外也可用。
 
 * 首先[观看视频培训](http://aka.ms/3dBlueprintTemplateVideo)了解其功能
 * 下载 [Microsoft 3d Blueprint Visio 模板](http://aka.ms/3DBlueprintTemplate)
-* 下载与 3D 模板配合使用的[云和企业符号](../architecture-overview.md#drawing-symbol-and-icon-sets)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* 下载与 3D 模板配合使用的[云和企业符号](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets)
 

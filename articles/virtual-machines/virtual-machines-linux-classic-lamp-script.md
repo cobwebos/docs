@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 6fe3bd55b23432a8fddb1ffeeed33bc113b8bd73
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f63649cc3b6c4acad6e39356f0210d3726548b17
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.openlocfilehash: 6fe3bd55b23432a8fddb1ffeeed33bc113b8bd73
 
 安装命令假设使用的是 Ubuntu，不过，你可以针对任何受支持的 Linux 分发版改动安装。
 
-script-vm VM 需要使用与 Azure 之间的有效连接安装 Azure CLI。 有关这方面的帮助，请参阅 [Install and Configure the Azure Command-Line Interface](../xplat-cli-install.md)（安装和配置 Azure 命令行接口）。
+script-vm VM 需要使用与 Azure 之间的有效连接安装 Azure CLI。 有关这方面的帮助，请参阅 [Install and Configure the Azure Command-Line Interface](../cli-install-nodejs.md)（安装和配置 Azure 命令行接口）。
 
 ## <a name="upload-a-script"></a>上载脚本
 我们将使用 CustomScript 扩展在远程 VM 上运行脚本，以便安装 LAMP 堆栈并创建 PHP 页。 为了能够从任何位置访问该脚本，我们将其上载为 Azure blob。
@@ -105,10 +106,5 @@ script-vm VM 需要使用与 Azure 之间的有效连接安装 Azure CLI。 有�
 [Azure Linux 扩展 (GitHub)](https://github.com/Azure/azure-linux-extensions)
 
 [Azure 上的 Linux 和开源计算](virtual-machines-linux-opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

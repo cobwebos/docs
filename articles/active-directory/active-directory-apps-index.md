@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: ed8ef101a0757fd32585f5b3249e49d4fb0e09b4
-ms.openlocfilehash: ea3aa0b94c6a74747f7efa8633d5b6bfff75a230
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 6017fa3fe2134452bf24d2fc54c8f82b08862dbb
+ms.lasthandoff: 03/18/2017
 
 
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
 
-每个主要功能区都有简介，同时也根据你要查找的信息指导需要阅读的文章。 
+每个主要功能区都有简介，同时也根据你要查找的信息指导需要阅读的文章。
 
 ## <a name="overview-articles"></a>概述文章
 对于只需要 Azure AD 应用程序管理功能的简要说明的用户，以下文章是很好的起点。
@@ -100,7 +100,7 @@ ms.lasthandoff: 02/23/2017
 | 有关使用第三方标识提供者启用 SSO 的指导 |[可用于启用单一登录的兼容第三方标识提供者列表](https://aka.ms/ssoproviders) |
 | Windows 10 用户如何通过 Azure AD Join 享受单一登录的优点 |[通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-overview.md) |
 
-Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。 Azure AD 自助密码重置适用于 [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/)。 对本地 AD 进行密码写回是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。 
+Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。 Azure AD 自助密码重置适用于 [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/)。 对本地 AD 进行密码写回是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。
 
 ### <a name="conditional-access-enforce-additional-security-requirements-for-high-risk-apps"></a>条件性访问：强制高风险应用符合额外的安全要求
 对应用程序和资源设置单一登录后，可以在每次登录该应用程序时，强制符合特定的安全要求，进一步保护机密应用的安全。 例如，你可以使用 Azure AD 来要求每次访问特定的应用都需要执行多重身份验证，而不管该应用原本是否支持该功能。 条件性访问的另一个常见示例是请求用户连接到组织信任的网络，以便能够访问特别机密的应用程序。
@@ -108,8 +108,8 @@ Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure
 | 文章指南 |  |
 |:---:| --- |
 | 跨 Azure AD、Office365 和 Intune 提供的条件性访问功能简介 |[使用条件性访问管理风险](active-directory-conditional-access.md) |
-| 如何为以下类型的资源启用条件性访问 |[SaaS 应用的条件性访问](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Office 365 服务的条件性访问](active-directory-conditional-access-device-policies.md)<br /><br />[本地应用程序的条件性访问](active-directory-conditional-access-on-premises-setup.md)<br /><br />[通过 Azure AD 应用代理发布的本地应用程序的条件性访问](active-directory-application-proxy-conditional-access.md) |
-| 如何向 Azure Active Directory 注册设备以启用基于设备的条件性访问策略 |[Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)<br /><br />[如何为加入域的 Windows 设备启用自动设备注册](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 设备的步骤](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)<br />— [Windows 7 设备的步骤](active-directory-conditional-access-automatic-device-registration-windows7.md) |
+| 如何为以下类型的资源启用条件性访问 |[SaaS 应用的条件性访问](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Office 365 服务的条件性访问](active-directory-conditional-access-device-policies.md)<br /><br />[本地应用程序的条件性访问](active-directory-conditional-access.md)<br /><br />[通过 Azure AD 应用代理发布的本地应用程序的条件性访问](active-directory-application-proxy-conditional-access.md) |
+| 如何向 Azure Active Directory 注册设备以启用基于设备的条件性访问策略 |[Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)<br /><br />[如何为加入域的 Windows 设备启用自动设备注册](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 设备的步骤](active-directory-device-registration.md#configure-automatic-device-registration-for-windows-7-and-windows-81-domain-joined-devices)<br />— [Windows 7 设备的步骤](active-directory-device-registration.md#configure-automatic-device-registration-for-windows-7-and-windows-81-domain-joined-devices) |
 | 如何使用 Microsoft Authenticator 应用进行双重验证 |[Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
 
 条件性访问是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。
@@ -142,7 +142,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 自动化用户预配适用于所有版本的 Azure AD，每个用户最多十个应用程序。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) 或 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来管理要预配哪些用户](#managing-access-to-applications)。
 
 ### <a name="building-applications-that-integrate-with-azure-ad"></a>构建与 Azure AD 集成的应用程序
-如果你的组织正在开发或维护业务线 (LoB) 应用程序，或者如果你是 Azure Active Directory 客户的应用开发人员，以下教程可帮助你将应用程序与 Azure AD 集成。 
+如果你的组织正在开发或维护业务线 (LoB) 应用程序，或者如果你是 Azure Active Directory 客户的应用开发人员，以下教程可帮助你将应用程序与 Azure AD 集成。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -178,7 +178,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 B2B 协作预览版目前适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ### <a name="access-panel-a-portal-for-accessing-apps-and-self-service-features"></a>访问面板：用于访问应用和自助功能的门户
-用户可以在 Azure AD 访问面板上启动应用程序和访问自助功能，而自助功能可让用户管理自己的应用程序和组成员资格。 除了访问面板外，以下列表还包括其他用于访问启用 SSO 的应用程序的选项。 
+用户可以在 Azure AD 访问面板上启动应用程序和访问自助功能，而自助功能可让用户管理自己的应用程序和组成员资格。 除了访问面板外，以下列表还包括其他用于访问启用 SSO 的应用程序的选项。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -210,5 +210,4 @@ Azure Active Directory 提供多个报告和警报，以帮助你监视组织对
 [Azure Active Directory 域服务](https://azure.microsoft.com/services/active-directory-ds/)
 
 [Azure 多重身份验证](https://azure.microsoft.com/services/multi-factor-authentication/)
-
 

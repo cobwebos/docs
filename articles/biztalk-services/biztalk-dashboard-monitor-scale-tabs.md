@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: ec1c54c8520170cd19095bf8d752c79c2fd812d8
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
 
 此时会打开一个新窗口，其中包含以下选项卡： 本主题介绍这些选项卡。
 
-## <a name="quick-start-quick-startquickstart"></a>快速启动（![快速启动][QuickStart])
+## <a name="quickstart-quickstartquickstart"></a>快速入门 (![快速入门][Quickstart])
 你不一定能够使用列出的所有选项，这取决于所用的 BizTalk 服务版本。 
 
 <table border="1">
@@ -67,14 +68,14 @@ ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
 </tr>
 
 <tr>
-<td><strong>访问控制命名空间的连接信息</strong></td>
+<td>访问控制命名空间的<strong>连接信息</strong></td>
 <td>选择“连接信息”时，将显示“访问控制命名空间”、“默认颁发者”和“默认密钥”。 你可以复制这些值。
 <br/><br/>
 还可打开访问控制门户。 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">创建访问控制命名空间</a>提供与访问控制门户有关的详细信息。</td>
 </tr>
 
 <tr>
-<td><strong>存储帐户中的密钥同步</strong></td>
+<td><strong>同步存储帐户中的密钥</strong></td>
 <td>当你创建存储帐户时，将自动创建主密钥和辅助密钥。 这些加密密钥可控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。 “同步密钥”<strong></strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
 <br/><br/>
 例如，你希望 BizTalk 服务为存储帐户使用新的主密钥。 为此，请按以下步骤操作：
@@ -125,7 +126,7 @@ ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
 <td>可以将 BizTalk 服务使用的 SSL 证书下载到本地计算机。</td>
 </tr>
 <tr>
-<td><strong>状态</strong></td>
+<td><strong>Status</strong></td>
 <td>显示 BizTalk 服务的当前状态。 请参阅 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=329870">BizTalk 服务：服务状态图表</a>。 </td>
 </tr>
 <tr>
@@ -133,7 +134,7 @@ ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
 <td>BizTalk 服务的 URL。 这与你在创建 BizTalk 服务时输入的“域 URL”<strong></strong>相同。</td>
 </tr>
 <tr>
-<td><strong>公用虚拟 IP (VIP) 地址</strong></td>
+<td><strong>公共虚拟 IP (VIP) 地址</strong></td>
 <td>分配给 BizTalk 服务的 IP 地址。 它用于所有输入终结点，并且是出站流量的源地址。 只要创建了 BizTalk 服务，此 IP 地址就属于你的 BizTalk 服务。 如果你删除 BizTalk 服务，则会将该 IP 地址分配给其他 BizTalk 服务。</td>
 </tr>
 <tr>
@@ -149,7 +150,7 @@ ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
 <td>显示托管 BizTalk 服务的地理区域。</td>
 </tr>
 <tr>
-<td><strong>已创建</strong></td>
+<td><strong>创建时间</strong></td>
 <td>显示创建 BizTalk 服务时的日期和时间。</td>
 </tr>
 <tr>
@@ -188,7 +189,7 @@ ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传送的组件</a>提供了有关 BizTalk 服务门户的详细信息。</td>
 </tr>
 <tr>
-<td><strong>访问控制命名空间的连接信息</strong></td>
+<td>访问控制命名空间的<strong>连接信息</strong></td>
 <td>显示“Access Control 命名空间”、“默认颁发者”和“默认密钥”值；可以复制这些值。
 <br/><br/>
 还可打开访问控制门户。 此访问控制门户与左导航窗格中使用“Active Directory”选项相同。
@@ -196,7 +197,7 @@ ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">管理 ACS 命名空间</a>提供与访问控制门户有关的详细信息。</td>
 </tr>
 <tr>
-<td><strong>存储帐户中的密钥同步</strong></td>
+<td><strong>同步存储帐户中的密钥</strong></td>
 <td>当你创建存储帐户时，将自动创建主密钥和辅助密钥。 这些加密密钥可控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。 “同步密钥”<strong></strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
 <br/><br/>
 例如，你希望 BizTalk 服务为存储帐户使用新的主密钥。 为此，请按以下步骤操作：
@@ -243,7 +244,7 @@ ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
    ![CPU 使用率度量值已启用][EnabledMetric]
 6. 若要从显示图表和列表中删除度量值，请选择任务栏中的“删除度量值”。 若要将此度量值重新添回到列表，请在任务栏中选择“添加度量值”，检查此度量值，并选择复选标记以返回到“监视”选项卡。 选择灰显的圆圈可启用该度量值。
 
-## <a name="a-namemetricsaavailable-metrics"></a><a name="Metrics"></a>可用度量值
+## <a name="Metrics"></a>可用度量值
 提供以下性能计数器/度量值：
 
 <table border="1">
@@ -325,7 +326,7 @@ ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
 
 [BizTalk 服务：备份和还原](biztalk-backup-restore.md)提供了详细信息。 
 
-## <a name="a-namehybridconnectionsahybrid-connections"></a><a name="HybridConnections"></a>混合连接
+## <a name="HybridConnections"></a>混合连接
 混合连接可将 Web 应用或 Azure 应用服务中的移动应用等 Azure 应用程序连接到使用静态 TCP 端口的本地资源，例如 SQL Server、MySQL、HTTP Web API 和大多数自定义 Web 服务。 可以在 Azure 经典门户中的 BizTalk 服务内管理混合连接。
 
 若要在 Azure 应用服务中创建混合连接，请参阅[在 Azure 应用服务中使用混合连接访问本地资源](../app-service-web/web-sites-hybrid-connection-get-started.md)。
@@ -346,14 +347,9 @@ ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
 * [BizTalk 服务：BizTalk 服务状态图表](biztalk-service-state-chart.md)  
 * [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
-[QuickStart]: ./media/biztalk-dashboard-monitor-scale-tabs/QuickStartIcon.png
+[Quickstart]: ./media/biztalk-dashboard-monitor-scale-tabs/QuickStartIcon.png
 [AddMetrics]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_AddMetrics.png
 [GrayedMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_GrayedMetric.png
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

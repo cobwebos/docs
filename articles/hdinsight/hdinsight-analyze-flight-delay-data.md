@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
-ms.openlocfilehash: d8ea4fb54db5c114aa886a6267b18eba6563d231
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 05e8c264376b976bcdc8f3e1f03ed79cb712991e
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -241,7 +242,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
 
 - - -
 
-## <a name="a-idappendix-aaappendix-a---upload-flight-delay-data-to-azure-blob-storage"></a><a id="appendix-a"></a>附录 A - 将航班延迟数据上载到 Azure Blob 存储
+## <a id="appendix-a"></a>附录 A - 将航班延迟数据上载到 Azure Blob 存储
 上传数据文件和 HiveQL 脚本文件（请参阅[附录 B](#appendix-b)）需要进行规划。 思路是在创建 HDInsight 群集和运行 Hive 作业之前存储数据文件和 HiveQL 文件。 可以使用两个选项：
 
 * **使用将由 HDInsight 群集用作默认文件系统的同一 Azure 存储帐户。** 由于 HDInsight 群集将具有存储帐户访问密钥，因此你无需进行任何其他更改。
@@ -361,7 +362,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
 
 - - -
 
-## <a name="a-idappendix-baappendix-b---create-and-upload-a-hiveql-script"></a><a id="appendix-b"></a>附录 B - 创建并上载 HiveQL 脚本
+## <a id="appendix-b"></a>附录 B - 创建并上载 HiveQL 脚本
 使用 Azure PowerShell，你可以一次运行多个 HiveQL 语句，或者将 HiveQL 语句打包到一个脚本文件中。 本部分说明如何创建 HiveQL 脚本，以及使用 Azure PowerShell 将脚本上载到 Azure Blob 存储。 Hive 要求 HiveQL 脚本必须存储在 Azure Blob 存储中。
 
 HiveQL 脚本将执行以下操作：
@@ -560,7 +561,7 @@ HiveQL 脚本将执行以下操作：
    * **$srcDataFolder** 和 **$dstDataFolder** - = "tutorials/flightdelay/data" = "tutorials/flightdelay/output"
 
 - - -
-## <a name="a-idappendix-caappendix-c---prepare-an-azure-sql-database-for-the-sqoop-job-output"></a><a id="appendix-c"></a>附录 C - 针对 Sqoop 作业输出准备 Azure SQL 数据库
+## <a id="appendix-c"></a>附录 C - 针对 Sqoop 作业输出准备 Azure SQL 数据库
 **准备 SQL 数据库（将此部分与 Sqoop 脚本合并）**
 
 1. 准备参数：
@@ -710,7 +711,7 @@ HiveQL 脚本将执行以下操作：
 4. 按 **F5** 运行脚本。
 5. 验证脚本输出。 确保已成功运行脚本。
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 现在你已了解如何执行以下操作：将文件上载到 Azure Blob 存储、使用 Azure Blob 存储中的数据填充 Hive 表、运行 Hive 查询以及使用 Sqoop 将数据从 HDFS 导出到 Azure SQL 数据库。 若要了解更多信息，请参阅下列文章：
 
 * [HDInsight 入门][hdinsight-get-started]

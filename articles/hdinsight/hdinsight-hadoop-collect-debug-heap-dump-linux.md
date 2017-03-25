@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 8f151adb-f687-41e4-aca0-82b551953725
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,6 +19,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
 ms.openlocfilehash: 9c5f3c36cc317a4e3700610799872d35c05d386f
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -31,7 +33,7 @@ ms.openlocfilehash: 9c5f3c36cc317a4e3700610799872d35c05d386f
 > [!IMPORTANT]
 > 本文档中的步骤仅适用于使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
 
-## <a name="a-namewhichservicesaservices"></a><a name="whichServices"></a>服务
+## <a name="whichServices"></a>服务
 你可以启用以下服务的堆转储：
 
 * **hcatalog** - tempelton
@@ -42,7 +44,7 @@ ms.openlocfilehash: 9c5f3c36cc317a4e3700610799872d35c05d386f
 
 你还可以启用映射的堆转储，并减少由 HDInsight 运行的流程数。
 
-## <a name="a-nameconfigurationaunderstanding-heap-dump-configuration"></a><a name="configuration"></a>了解堆转储配置
+## <a name="configuration"></a>了解堆转储配置
 在某项服务启动时，可以通过将选项（有时称为 opts 或参数）传递到 JVM 来启用堆转储。 对于大多数 Hadoop 服务，这可以通过修改用于启动该服务的 shell 脚本来完成。
 
 在每个脚本中，有一个针对 **\*\_OPTS** 的导出，其中包含传递到 JVM 的选项。 例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含用于 NameNode 服务的选项。
@@ -130,10 +132,5 @@ ms.openlocfilehash: 9c5f3c36cc317a4e3700610799872d35c05d386f
    > 
    > 
 8. 一旦重启服务，可使用“服务操作”按钮“关闭维护模式”。 这样一来，Ambari 就可以继续监视服务的警报。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

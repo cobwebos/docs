@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: c0fd4baa-946d-4e03-ad2c-a03491bd90c8
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
-ms.openlocfilehash: d39f9b4f55f93745afea48a4b581d76e57a824c3
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 2b9b635abac0d74a270933b8f39d13b1c8436dde
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -38,17 +39,17 @@ ms.lasthandoff: 02/07/2017
 * 单值分解 (SVD) 和主体组件分析 (PCA)
 * 假设测试和计算示例统计信息
 
-本文介绍一种通过逻辑回归*分类*的简单方法。
+本文介绍一种通过逻辑回归*进行分类*的简单方法。
 
 ## <a name="what-are-classification-and-logistic-regression"></a>什么是分类和逻辑回归？
 *分类*是非常常见的机器学习任务，是将输入数据按类别排序的过程。 它是一种分类算法的作业，旨在算出如何将“标签”分配到提供的输入数据。 例如，可以联想机器学习算法，其可接受股票信息作为输入并将股票划分为两个类别：应该卖出的股票和应该保留的股票。
 
-逻辑回归是用于分类的算法。 Spark 的逻辑回归 API 可用于 *二元分类*，或将输入数据分类到两组中的一组。 有关逻辑回归的详细信息，请参阅[维基百科](https://en.wikipedia.org/wiki/Logistic_regression)。
+逻辑回归是用于分类的算法。 Spark 的逻辑回归 API 可用于 *二元分类*，或将输入数据归类到两组中的一组。 有关逻辑回归的详细信息，请参阅[维基百科](https://en.wikipedia.org/wiki/Logistic_regression)。
 
-总之，逻辑回归的过程会产生 *逻辑函数*，可用于预测属于一组或另一组的输入向量的概率。  
+总之，逻辑回归的过程会产生 *逻辑函数*，可用于预测输入向量属于一个组或另一个组的概率。  
 
-## <a name="what-are-we-trying-to-accomplish-in-this-article"></a>将在本文中完善的内容是什么？
-将使用 Spark 对食物检测数据 (**Food_Inspections1.csv**) 执行一些预测分析，这些数据通过 [City of Chicago data portal](https://data.cityofchicago.org/)（芝加哥市数据门户）获取。 此数据集包含关于在芝加哥执行的食物检测的信息，包括接受检测的每个食物企业、发现的违规行为（若有），以及检测结果。 CSV 数据文件在与群集（位于 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**）关联的存储帐户中可用。
+## <a name="what-are-we-trying-to-accomplish-in-this-article"></a>将在本文中完成哪些任务？
+将使用 Spark 对食物检测数据 (**Food_Inspections1.csv**) 执行一些预测分析，这些数据通过 [City of Chicago data portal](https://data.cityofchicago.org/)（芝加哥市数据门户）获取。 此数据集包含有关在芝加哥执行的食物检测的信息，包括接受检测的每个食品企业、发现的违规行为（若有），以及检测结果。 CSV 数据文件在与群集（位于 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**）关联的存储帐户中可用。
 
 在以下步骤中，将开发一个模型以查看如何通过食物检测或为何失败。
 
@@ -119,7 +120,7 @@ ms.lasthandoff: 02/07/2017
           '41.97583445690982',
           '-87.7107455232781',
           '(41.97583445690982, -87.7107455232781)']]
-1. 通过上面的输出可了解输入文件的构架；文件包括每个企业的名称、企业类型、地址、检测数据、位置，以及其他事项。 请选择将用于预测分析的几列，并将结果分组为数据帧，然后勇气创建临时表。
+1. 通过上面的输出可了解输入文件的构架；文件包括每个企业的名称、企业类型、地址、检测数据、位置，以及其他事项。 请选择将用于预测分析的几个列，并将结果分组为数据帧，然后用该数据帧来创建临时表。
 
         schema = StructType([
         StructField("id", IntegerType(), False),
@@ -182,8 +183,8 @@ ms.lasthandoff: 02/07/2017
 
     ![SQL 查询输出](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/query.output.png "SQL 查询输出")
 
-    有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
-1. 也可以使用 Matplotlib（用于构造数据可视化的库）创建绘图。 因为必须从本地保存的 **countResultsdf** 数据帧中创建绘图，所以代码片段必须以 `%%local` magic 开头。 这可确保代码在 Jupyter 服务器上本地运行。
+    有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
+1. 也可以使用 Matplotlib（用于构造数据可视化的库）进行绘图。 因为必须从本地保存的 **countResultsdf** 数据帧中创建绘图，所以代码片段必须以 `%%local` magic 开头。 这可确保代码在 Jupyter 服务器上本地运行。
 
         %%local
         %matplotlib inline
@@ -278,7 +279,7 @@ MLLib 提供了一种简单方法来执行此操作。 首先，“标记”每�
         predictionsDf.take(1)
 
     将会显示测试针对数据集中的第一项的预测。
-1. `model.transform()` 方法会将相同转换应用于任何具有相同构架的新数据中，并成功预测如何对数据进行分类。 可以执行一个简单的统计以了解预测的准确性：
+1. `model.transform()` 方法会将相同转换应用于任何具有相同构架的新数据中，并成功预测如何对数据进行分类。 可以执行一些简单的统计以了解预测的准确性：
 
         numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
                                               (prediction = 1 AND (results = 'Pass' OR
@@ -297,7 +298,7 @@ MLLib 提供了一种简单方法来执行此操作。 首先，“标记”每�
         There were 9315 inspections and there were 8087 successful predictions
         This is a 86.8169618894% success rate
 
-    将逻辑回归与 Spark 配合使用可得到关于违规行为（中文）描述和给定企业是否通过或未通过食物检测之间关系的准确模型。
+    将逻辑回归与 Spark 配合使用可得到关于违规行为（中文）描述和给定企业是通过还是未通过食物检测之间关系的准确模型。
 
 ## <a name="create-a-visual-representation-of-the-prediction"></a>创建预测的直观表示形式
 现在可以构造最终可视化以解释本测试的结果。
@@ -336,7 +337,7 @@ MLLib 提供了一种简单方法来执行此操作。 首先，“标记”每�
 ## <a name="shut-down-the-notebook"></a>关闭笔记本
 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这将会关闭笔记本。
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>另请参阅
+## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案

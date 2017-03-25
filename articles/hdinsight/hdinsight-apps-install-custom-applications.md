@@ -10,14 +10,15 @@ tags: azure-portal
 ms.assetid: e556b29c-8176-4bc5-a90b-aa01abfd3aee
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: eec0106ac43796b2a8a05e89d36cbb51fc222f5d
-ms.openlocfilehash: 9c90d46afd5aa8c1daa12c72e59e518bc42f3d0b
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 44786974a86a8cef9bfbaa9ea2a131b11747b01e
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -42,20 +43,20 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 部署此应用程序 (Hue) 时所需的文件：
 
 * [azuredeploy.json](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/azuredeploy.json)：用于安装 HDInsight 应用程序的 Resource Manager 模板。 有关如何开发自己的 Resource Manager 模板的信息，请参阅 [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx) 。
-* [hue-install_v0.sh](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/scripts/Hue-install_v0.sh)：Resource Manager 模板为配置边缘节点而调用的脚本操作。 
-* [hue-binaries.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz)：从 hui-install_v0.sh 调用的 hue 二进制文件。 
-* [hue-binaries-14-04.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz)：从 hui-install_v0.sh 调用的 hue 二进制文件。 
+* [hue-install_v0.sh](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/scripts/Hue-install_v0.sh)：Resource Manager 模板为配置边缘节点而调用的脚本操作。
+* [hue-binaries.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz)：从 hui-install_v0.sh 调用的 hue 二进制文件。
+* [hue-binaries-14-04.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz)：从 hui-install_v0.sh 调用的 hue 二进制文件。
 * [webwasb-tomcat.tar.gz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/webwasb-tomcat.tar.gz)：从 hui-install_v0.sh 调用的示例 Web 应用程序 (Tomcat)。
 
 **将 Hue 安装到现有的 HDInsight 群集**
 
-1. 单击以下映像以登录到 Azure，然后在 Azure 门户中打开 Resource Manager 模板。 
-   
+1. 单击以下映像以登录到 Azure，然后在 Azure 门户中打开 Resource Manager 模板。
+
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
-   
+
     单击此按钮可在 Azure 门户上打开 Resource Manager 模板。  Resource Manager 模板位于 [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue)中。  若要了解如何编写此 Resource Manager 模板，请参阅 [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)。
 2. 在“参数”  边栏选项卡中，输入以下内容：
-   
+
    * **ClusterName**：输入要安装应用程序的群集的名称。 此群集必须是现有的群集。
 3. 单击“确定”  保存参数。
 4. 在“自定义部署”边栏选项卡中输入“资源组”。  资源组是对群集、依赖存储帐户和其他资源进行分组的容器。 必须使用与群集相同的资源组。
@@ -64,14 +65,14 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 **若要创建群集的同时安装色调**
 
-1. 单击以下映像以登录到 Azure，然后在 Azure 门户中打开 Resource Manager 模板。 
-   
+1. 单击以下映像以登录到 Azure，然后在 Azure 门户中打开 Resource Manager 模板。
+
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
-   
+
     单击此按钮可在 Azure 门户上打开 Resource Manager 模板。  Resource Manager 模板位于 [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json)中。  若要了解如何编写此 Resource Manager 模板，请参阅 [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)。
 2. 根据说明来创建群集并安装 Hue。 有关创建 HDInsight 群集的详细信息，请参阅 [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
-除了 Azure 门户，也可以使用 [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-powershell) 和 [Azure CLI](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-azure-cli) 来调用 Resource Manager 模板。
+除了 Azure 门户，也可以使用 [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-powershell) 和 [Azure CLI](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-cli) 来调用 Resource Manager 模板。
 
 ## <a name="validate-the-installation"></a>验证安装
 可以在 Azure 门户中检查应用程序状态，以验证应用程序安装。 此外，还可以验证所有 HTTP 终结点和网页（如果有）是否按预期出现：
@@ -86,22 +87,22 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 6. 单击网页链接以验证网站；在浏览器中打开 HTTP 终结点以验证 Hue Web UI，并使用 [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md) 或其他 [SSH 客户端](hdinsight-hadoop-linux-use-ssh-unix.md)打开 SSH 终结点。
 
 ## <a name="troubleshoot-the-installation"></a>排查安装问题
-可以通过门户通知查看应用程序安装状态（单击门户顶部的铃铛图标）。 
+可以通过门户通知查看应用程序安装状态（单击门户顶部的铃铛图标）。
 
 如果应用程序安装失败，可以从 3 个位置查看错误消息和调试信息：
 
 * HDInsight 应用程序：常规错误信息。
-  
+
     从门户打开群集，然后在“设置”边栏选项卡中单击“应用程序”：
-  
+
     ![hdinsight 应用程序安装错误](./media/hdinsight-apps-install-applications/hdinsight-apps-error.png)
 * HDInsight 脚本操作：如果 HDInsight 应用程序的错误消息指出脚本操作失败，“脚本操作”窗格会显示有关脚本失败的详细信息。
-  
+
     在“设置”边栏选项卡中单击“脚本操作”。 脚本操作历史记录中显示了错误消息
-  
+
     ![hdinsight 应用程序脚本操作错误](./media/hdinsight-apps-install-applications/hdinsight-apps-script-action-error.png)
 * Ambari Web UI：如果安装脚本是失败的原因，请使用 Ambari Web UI 来检查有关安装脚本的完整日志。
-  
+
     有关详细信息，请参阅 [故障排除](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)。
 
 ## <a name="remove-hdinsight-applications"></a>删除 HDInsight 应用程序
@@ -132,10 +133,4 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
 * [使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)：了解如何调用 Resource Manager 模板创建 HDInsight 群集。
 * [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集、测试 HDInsight 应用程序以及托管 HDInsight 应用程序。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

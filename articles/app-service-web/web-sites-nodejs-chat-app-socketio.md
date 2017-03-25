@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: e3de500e3dc64abbbe7a5983db0ad14a0a9b76c8
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4f5c04525437aefeccbe58e06b084433d0413dc1
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -65,7 +66,7 @@ Socket.IO 使用 WebSocket 在 node.js 服务器和客户端之间提供实时�
 > 
 > 
 
-1. 安装 Azure 命令行接口 (Azure CLI)，并连接到 Azure 订阅。 请参阅[安装和配置 Azure CLI](../xplat-cli-install.md)。
+1. 安装 Azure 命令行接口 (Azure CLI)，并连接到 Azure 订阅。 请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)。
 2. 如果首次在 Azure 中设置存储库，需要创建登录凭据。 从 Azure CLI 输入以下命令：
    
         azure site deployment user set [username] [password]
@@ -262,7 +263,7 @@ Azure Web 应用可提供多个 SKU，用于确定站点可用的资源。 包�
           </system.webServer>
         </configuration>
   
-    如果应用程序使用入口点而不是 **app.js**，必须将出现的所有 **app.js** 替换为正确的入口点。 例如，将** app.js** 替换为 **server.js**。
+    如果应用程序使用入口点而不是 **app.js**，必须将出现的所有 **app.js** 替换为正确的入口点。 例如，将**app.js** 替换为 **server.js**。
 
 > [!NOTE]
 > 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service]，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
@@ -283,7 +284,7 @@ Azure Web 应用可提供多个 SKU，用于确定站点可用的资源。 包�
 [应用服务 Web 应用]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Web 应用定价页]: http://go.microsoft.com/fwlink/?LinkId=511643
 [在 Azure 云服务中使用 Socket.IO 构建 Node.js 聊天应用程序]: ../cloud-services/cloud-services-nodejs-chat-app-socketio.md
-[Install and Configure the Azure CLI]: ../xplat-cli-install.md
+[Install and Configure the Azure CLI]: ../cli-install-nodejs.md
 [Azure App Service 及其对现有 Azure 服务的影响]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Node.js 开发人员中心]: /develop/nodejs/
 [试用 App Service]: https://azure.microsoft.com/try/app-service/
@@ -299,9 +300,4 @@ Azure Web 应用可提供多个 SKU，用于确定站点可用的资源。 包�
 [chat-example-view]: ./media/web-sites-nodejs-chat-app-socketio/socketio-2.png
 [npm-output]: ./media/web-sites-nodejs-chat-app-socketio/socketio-7.png
 [completed-app]: ./media/web-sites-nodejs-chat-app-socketio/websitesocketcomplete.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

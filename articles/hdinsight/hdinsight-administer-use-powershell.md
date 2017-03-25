@@ -9,6 +9,7 @@ author: mumian
 documentationcenter: 
 ms.assetid: bfdfa754-18e5-4ef9-b0d6-2dbdcebc0283
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,6 +19,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
 ms.openlocfilehash: af9e0b7c0f7077b8d4e20ccafdc1fb4e1eb58505
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -228,9 +230,4 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

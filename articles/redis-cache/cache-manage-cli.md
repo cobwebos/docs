@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: c885edd7064f7ee3c9907e6b938d826e181dcae5
-ms.openlocfilehash: 940210325c28252de2f38cfe56e56d4c3ecd28ed
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ae8e531c32b49e121b1c43b15071c138aaacf498
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,7 +34,7 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演�
 若要使用 Azure CLI 创建和管理 Azure Redis 缓存实例，必须完成以下步骤。
 
 * 你必须具有 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-* [安装 Azure CLI](../xplat-cli-install.md)。
+* [安装 Azure CLI](../cli-install-nodejs.md)。
 * 将 Azure CLI 安装与个人 Azure 帐户或者工作或学校 Azure 帐户关联，然后使用 `azure login` 命令从 Azure CLI 登录。 若要了解差别并进行选择，请参阅[从 Azure 命令行界面 (Azure CLI) 连接到 Azure 订阅](../xplat-cli-connect.md)。
 * 在运行以下任何命令之前，通过运行 `azure config mode arm` 命令将 Azure CLI 切换到资源管理器模式下。 有关更多详细信息，请参阅[使用 Azure CLI 管理 Azure 资源和资源组](../xplat-cli-azure-resource-manager.md)。
 
@@ -266,9 +267,4 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演�
     help:      -s, --subscription <subscription>      the subscription identifier
     help:
     help:    Current Mode: arm (Azure Resource Management)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

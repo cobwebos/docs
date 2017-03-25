@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/18/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 4232c27926c2d48adb91eedd15884e44cc004ac2
-ms.openlocfilehash: 2fad0a4e7c4ac282802c2bc0dd10c7d86b651e08
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f09aa6cffbbaa2a3df7f84edee2d3e03aa23a719
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -39,7 +40,7 @@ Microsoft 对基于云的标识的保护期超过十年。 通过 Azure Active D
 
 因此需要：
 
-- 保护任何权限级别的所有标识 
+- 保护任何权限级别的所有标识
 
 - 主动防止滥用遭到入侵的标识
 
@@ -74,12 +75,12 @@ Azure Active Directory Identity Protection 不只是一个监视和报告工具�
 
 ### <a name="vulnerabilities"></a>漏洞
 
-Azure Active Directory Identity Protection 分析配置，并检测影响用户标识的漏洞。 有关详细信息，请参阅 [Azure Active Directory Identity Protection 检测到的漏洞](active-directory-identityprotection-vulnerabilities.md)。 
+Azure Active Directory Identity Protection 分析配置，并检测影响用户标识的漏洞。 有关详细信息，请参阅 [Azure Active Directory Identity Protection 检测到的漏洞](active-directory-identityprotection-vulnerabilities.md)。
 
 ### <a name="risk-events"></a>风险事件
 
 Azure Active Directory 使用自适应机器学习算法和试探法来检测与用户标识相关的可疑操作。 系统为检测到的每个可疑操作创建记录。 这些记录也称为风险事件。  
-有关详细信息，请参阅 [Azure Active Directory 风险事件](active-directory-identity-protection-risk-events.md)。 
+有关详细信息，请参阅 [Azure Active Directory 风险事件](active-directory-identity-protection-risk-events.md)。
 
 
 ## <a name="investigation"></a>调查
@@ -101,11 +102,11 @@ Identity Protection 的使用通常从 Identity Protection 仪表板开始。
 
 ## <a name="risky-sign-ins"></a>有风险的登录
 
-Aure Active Directory 可实时检测某些[风险事件类型](active-directory-identity-protection-risk-events.md#risk-event-types)。 用户登录期间检测到的所有实时风险事件组成名为*风险登录*的逻辑概念。 风险登录是指可能不是由用户帐户合法拥有者进行的登录尝试。 用户注销时风险登录的生命周期也随之结束。
+Aure Active Directory 可实时检测某些[风险事件类型](active-directory-reporting-risk-events.md#risk-event-types)。 用户登录期间检测到的所有实时风险事件组成名为*风险登录*的逻辑概念。 风险登录是指可能不是由用户帐户合法拥有者进行的登录尝试。 用户注销时风险登录的生命周期也随之结束。
 
 ### <a name="sign-in-risk-level"></a>登录风险级别
 
-登录风险级别是指不是由用户帐户合法拥有者进行登录尝试的可能性（高、中、低）。 
+登录风险级别是指不是由用户帐户合法拥有者进行登录尝试的可能性（高、中、低）。
 
 ### <a name="mitigating-sign-in-risk-events"></a>缓解登录风险事件
 
@@ -395,9 +396,4 @@ Azure AD Identity Protection 可以通过配置一个策略来帮助管理首次
 * [Azure Active Directory Identity Protection - 如何取消阻止用户](active-directory-identityprotection-unblock-howto.md)
 
 * [Azure Active Directory Identity Protection 和 Microsoft Graph 入门](active-directory-identityprotection-graph-getting-started.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

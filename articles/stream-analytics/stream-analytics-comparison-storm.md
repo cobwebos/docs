@@ -16,8 +16,9 @@ ms.workload: big-data
 ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 528266346733fff72113104d585540d75512b3a6
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9dcac84fdc33515ef12ab5b8154f700bb8618290
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -27,6 +28,7 @@ ms.openlocfilehash: 528266346733fff72113104d585540d75512b3a6
 这两种分析平台都具有 PaaS 解决方案的优势，但几项主要功能却存在各种差异。 下面列出了这些服务的功能和限制，以帮助你选择所需的解决方案来实现目标。
 
 ## <a name="storm-comparison-to-stream-analytics-general-features"></a>Storm 与流分析的比较：常规功能
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -137,7 +139,9 @@ ms.openlocfilehash: 528266346733fff72113104d585540d75512b3a6
         </tr>
     </tbody>
 </table>
-##在每个分析平台上创作##
+
+## <a name="authoring-on-each-analytics-platform"></a>在每个分析平台上创作 ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -261,7 +265,9 @@ UDF 可以使用 C#、Java 或用户选择的语言进行编写。
         </tr>
     </tbody>
 </table>
-##数据源和输出##
+
+## <a name="data-sources-and-outputs"></a>数据源和输出 ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -350,7 +356,9 @@ UDF 可以使用 C#、Java 或用户选择的语言进行编写。
         </tr>
     </tbody>
 </table>
-##管理和操作##
+
+## <a name="management-and-operations"></a>管理和操作 ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -503,13 +511,15 @@ SLA：99.9% 的运行时间 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-SLA：99.9% 的 Storm 群集运行时间。 Apache Storm 是一种容错性的流式处理平台，不过，客户必须负责确保其流式处理作业的不间断运行。
+SLA：99.9% 的 Storm 群集运行时间。 Apache Storm 是一种容错性的流式处理平台，不过，客户必须负责确保其流式处理作业不间断运行。
                 </p>
             </td>
         </tr>
     </tbody>
 </table>
-##高级功能##
+
+## <a name="advanced-features"></a>高级功能 ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -585,9 +595,4 @@ Azure Blob（带有最大大小为 100 MB 的内存中查找缓存）提供引�
         </tr>
     </tbody>
 </table>
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

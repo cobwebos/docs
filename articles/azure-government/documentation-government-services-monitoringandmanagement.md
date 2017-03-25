@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 2/28/2017
+ms.date: 3/13/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: a04b2f26c8ab34fdbfc7412d47292a560466eb44
-ms.openlocfilehash: c33d50a900be53a3161ad60bc34e2e819fe62947
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4d7de786dc902cb1c32e70a1f69bc74282de44f1
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -39,15 +39,19 @@ ms.lasthandoff: 03/01/2017
 
 有关详细信息，请参阅 [Azure 政府版备份](documentation-government-services-backup.md)。
 
+## <a name="resource-policy"></a>资源策略
+
+[Azure 资源策略](../azure-resource-manager/resource-manager-policy.md)在 Azure 政府中不可用。
+
 ## <a name="site-recovery"></a>Site Recovery
-Site Recovery (ASR) 已在 Azure 政府版中正式发布。
+Azure Site Recovery 已在 Azure 政府中正式发布。
 
 有关详细信息，请参阅[站点恢复公共文档](../site-recovery/site-recovery-overview.md)。
 
 ### <a name="variations"></a>变体
 当前，以下站点恢复功能在 Azure 政府版中尚不可用：
 
-* Azure Resource Manager 站点恢复保管库
+* Azure Resource Manager Site Recovery 保管库
 * 电子邮件通知
 
 | Site Recovery | 经典 | 资源管理器 |
@@ -59,13 +63,13 @@ Site Recovery (ASR) 已在 Azure 政府版中正式发布。
 >[!NOTE]
 >适用于美国弗吉尼亚州政府和美国爱荷华州政府的表格
 
-ASR 的以下 URL 在 Azure 政府版中是不同的：
+Site Recovery 的以下 URL 在 Azure 政府中是不同的：
 
 | Azure Public | Azure Government  | 说明 |
 | --- | --- | --- |
-| *.hypervrecoverymanager.windowsazure.com | *.hypervrecoverymanager.windowsazure.us | 访问 Site Recovery 服务 |
-| *. backup.windowsazure.com  | *.backup.windowsazure.us | 访问保护服务 |
-| *.blob.core.windows.net | *.blob.core.usgovcloudapi.net | 用于存储 VM 快照 |
+| \*.hypervrecoverymanager.windowsazure.com | \*.hypervrecoverymanager.windowsazure.us | 访问 Site Recovery 服务 |
+| \*.backup.windowsazure.com  | \*.backup.windowsazure.us | 访问保护服务 |
+| \*.blob.core.windows.net | \*.blob.core.usgovcloudapi.net | 用于存储 VM 快照 |
 | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | 下载 MySQL |
 
 ## <a name="log-analytics"></a>Log Analytics
@@ -84,7 +88,6 @@ Log Analytics 已在 Azure Government 中正式发布。
   * Azure 自动化分析解决方案
   * 密钥保管库分析解决方案
 * 需要更新到本地软件的解决方案和功能包括：
-  * System Center Configuration Manager 中的计算机组
   * Surface Hub 解决方案
 * 公共 Azure 中预览的功能包括：
   * 将数据导出到 Power BI
@@ -106,15 +109,15 @@ Log Analytics 的 URL 在 Azure 政府版中是不同的：
 * 若要将 System Center Operations Manager 管理服务器连接到 Log Analytics，需要下载并导入更新后的管理包。
   + System Center Operations Manager 2016
     1. 安装 [System Center Operations Manager 2016 更新汇总 2](https://support.microsoft.com/help/3209591)。
-    2. 将更新汇总 2 中附带的管理包导入 Operations Manager。 有关如何从磁盘导入管理包的信息，请参阅 Microsoft TechNet 网站中的[如何导入 Operations Manager 管理包](http://technet.microsoft.com/library/hh212691.aspx)。
+    2. 将更新汇总 2 中附带的管理包导入 Operations Manager。 有关如何从磁盘导入管理包的信息，请参阅[如何导入 Operations Manager 管理包](http://technet.microsoft.com/library/hh212691.aspx)。
     3. 若要将 Operations Manager 连接到 Log Analytics，请按照[将 Operations Manager 连接到 Log Analytics](../log-analytics/log-analytics-om-agents.md) 中的步骤进行操作。
   + System Center Operations Manager 2012 R2 UR3（或更高版本）/Operations Manager 2012 SP1 UR7（或更高版本）
     1. 下载并保存[更新管理包](http://go.microsoft.com/fwlink/?LinkId=828749)。
     2. 解压缩已下载的文件。
-    3. 将管理包导入 Operations Manager。 有关如何从磁盘导入管理包的信息，请参阅 Microsoft TechNet 网站中的[如何导入 Operations Manager 管理包](http://technet.microsoft.com/library/hh212691.aspx)。
+    3. 将管理包导入 Operations Manager。 有关如何从磁盘导入管理包的信息，请参阅[如何导入 Operations Manager 管理包](http://technet.microsoft.com/library/hh212691.aspx)。
     4. 若要将 Operations Manager 连接到 Log Analytics，请按照[将 Operations Manager 连接到 Log Analytics](../log-analytics/log-analytics-om-agents.md) 中的步骤进行操作。
   
-
+* 若要使用 [System Center Configuration Manager 2016 中的计算机组](../log-analytics/log-analytics-sccm.md)，需要使用 [Technical Preview 1701](https://docs.microsoft.com/en-us/sccm/core/get-started/technical-preview) 或更高版本。
 
 ### <a name="frequently-asked-questions"></a>常见问题
 * 能否将数据从 Microsoft Azure 中的 Log Analytics 迁移到 Azure 政府版？

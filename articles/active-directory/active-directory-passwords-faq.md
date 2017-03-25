@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
-ms.openlocfilehash: 138560f4bc8e400f7b3ca2d5a1b80ea0c25ec4da
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: cdf233c2b141f4c73abcabc199b5fc583f14962c
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 >
 >
 
@@ -35,13 +35,14 @@ ms.lasthandoff: 02/24/2017
 
 * [**有关密码重置注册的问题**](#password-reset-registration)
 * [**有关密码重置的问题**](#password-reset)
+* [**有关密码更改的问题**](#password-change)
 * [**有关密码管理报告的问题**](#password-management-reports)
 * [**有关密码写回的问题**](#password-writeback)
 
 ## <a name="password-reset-registration"></a>密码重置注册
 * **问：用户是否可以注册其自己的密码重置数据？**
 
-  > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户（网址为 http://aka.ms/ssprsetup）来注册他们用于密码重置的身份验证信息。 用户还可以通过以下方式进行注册：转到访问面板 (http://myapps.microsoft.com)，单击配置文件选项卡，然后单击“注册密码重置”选项。 阅读“如何为用户配置密码重置”，了解如何为你的用户配置密码重置。
+  > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户（网址为 http://aka.ms/ssprsetup）来注册他们用于密码重置的身份验证信息。 用户还可以通过以下方式进行注册：转到访问面板 ( http://myapps.microsoft.com )，单击配置文件选项卡，然后单击“注册密码重置”选项。 阅读“如何为用户配置密码重置”，了解如何为你的用户配置密码重置。
   >
   >
 * **问：我能否代表用户定义密码重置数据？**
@@ -169,6 +170,18 @@ ms.lasthandoff: 02/24/2017
   >
   >
 
+## <a name="password-change"></a>密码更改
+* **问：我的用户应当到何处去更改其密码？**
+
+  > **答：**用户可以在能够看到其个人资料图片或图标的任何位置（例如在其 [Office 365](https://portal.office.com) 或[访问面板](https://myapps.microsoft.com)体验的右上角）更改其密码。 用户可以从[访问面板个人资料页](https://account.activedirectory.windowsazure.com/r#/profile)更改其密码。 如果用户的密码已过期，还可以在 Azure AD 登录屏幕上自动要求他们更改其密码。 最后，如果用户希望更改其密码，可以直接导航到 [Azure AD 密码更改门户](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)。
+  >
+  >
+* **问：当用户的本地密码过期时，他们是否可以在 Office 门户中收到通知？**
+
+  > **答：**如果你根据[使用 ADFS 发送密码策略声明](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)中的说明使用 ADFS，则目前这是可以的。 如果你使用密码哈希同步，则目前这不可以。 这是因为我们不从本地同步密码策略，因此我们无法将过期通知发布到云体验。 在任一情况下，都还可以[使用 PowerShell 向其密码即将过期的用户发送通知](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)。
+  >
+  >
+  
 ## <a name="password-management-reports"></a>密码管理报告
 * **问：需要多长时间才能在密码管理报告上看到数据？**
 
@@ -184,7 +197,7 @@ ms.lasthandoff: 02/24/2017
   ![][002]
 * **问：密码管理报告中存储的事件数目上限是多少？**
 
-  > **答：**密码管理报告中最多存储 1,000 个密码重置事件或密码重置注册事件。  我们正在努力增大此数目，以包含更多事件。
+  > **答：**密码管理报告中最多存储 75,000 个密码重置事件或密码重置注册事件，时间跨度为过去的 30 天。  我们正在努力增大此数目，以包含更多事件。
   >
   >
 * **问：密码管理报告可向前追溯多久？**
@@ -194,7 +207,7 @@ ms.lasthandoff: 02/24/2017
   >
 * **问：密码管理报告中显示的行数是否存在上限？**
 
-  > **答：**有。任一密码管理报告都最多只能显示 1,000 行，不论是 UI 中正在显示的行数还是正在下载的行数都存在此限制。 我们目前正在研究如何增大此限制。
+  > **答：**有。任一密码管理报告都最多只能显示 75,000 行，不论是 UI 中正在显示的行数还是正在下载的行数都存在此限制。 我们目前正在研究如何增大此限制。
   >
   >
 * **问：是否可以使用一个 API 来访问密码重置数据或注册报告数据？**
@@ -233,7 +246,7 @@ ms.lasthandoff: 02/24/2017
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置和更改云密码或本地密码
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为

@@ -4,7 +4,7 @@ description: "介绍 StorSimple 警报条件和严重性、如何配置警报通
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: bee49253-9ac7-4131-95f6-6bf0e72b8438
 ms.service: storsimple
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/18/2016
+ms.date: 03/08/2017
 ms.author: anbacker
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c09a105bd321ec29f4331d2ba4c8cf80a796da45
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 2a1e44920581771af77fb46984b1cea31a957d67
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -33,15 +34,15 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 
 * **硬件问题** – 这些警报告知硬件的运行状况。 通过这些警报，可以知道是否需要进行固件升级、网络接口是否存在问题，或者某个数据驱动器是否有问题。
 * **连接问题** – 传输数据遇到困难时，会生成这些警报。 在通过 Azure 存储帐户往返传输数据时，可能会遇到通信问题，另外通信问题也可能是由于设备与 StorSimple Manager 服务之间没有连接而导致。 由于故障点众多，通信问题属于修复难度最大的问题。 在继续进行更高级的故障排除之前，始终应该先验证网络连接和 Internet 访问是否可用。 有关故障排除的帮助，请转到[使用 Test-Connection cmdlet 进行故障排除](storsimple-troubleshoot-deployment.md)。
-* **性能问题** – 当系统没有在最佳状态下运行时（例如在高负载下运行），就会导致生成这些警报。
+* **性能问题** - 当系统未在最佳状态下运行时（例如在高负载下运行），会导致这些警报。
 
 此外，还可能会看到与安全、更新或作业失败相关的警报。
 
 ## <a name="alert-severity-levels"></a>警报严重级别
 警报具有不同的严重级别，具体取决于警报情况将产生的影响，以及对警报响应的需要。 严重级别包括：
 
-* **关键** – 当出现影响系统成功运行的条件时，将生成此类警报。 必须采取措施，确保 StorSimple 服务不会中断。
-* **警告** – 如果得不到解决，此类条件可能变成关键级别。 应针对这种情况进行调查，并采取任何必要的措施来解决问题。
+* **关键** - 当出现影响系统成功运行的条件时，将生成此类警报。 必须采取措施，确保 StorSimple 服务不会中断。
+* **警告** - 如果得不到解决，此类条件可能变成关键级别。 应针对这种情况进行调查，并采取任何必要的措施来解决问题。
 * **信息** – 此类警报包含可用于跟踪和管理系统的信息。
 
 ## <a name="configure-alert-settings"></a>配置警报设置
@@ -78,7 +79,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 
 ![“警报”仪表板](./media/storsimple-manage-alerts/admin_alerts_dashboard.png)
 
-单击严重级别可打开“警报”选项卡。 结果仅包括与该严重级别相匹配的警报。
+单击严重级别可打开“警报”选项卡。 结果仅包括与该严重级别匹配的警报。
 
 ![警报报告已划归到警报类型](./media/storsimple-manage-alerts/admin_alerts_scoped.png)
 
@@ -95,7 +96,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 ## <a name="sort-and-review-alerts"></a>排序和查看警报
 运行警报报告以分组查看和清除警报可能更有效率。 此外，“警报”选项卡最多可显示 250 个警报。 如果超过该警报数目，默认视图中不一定会显示所有警报。 可以结合以下字段来自定义要显示的通知：
 
-* **状态** – 可以显示“活动”或“已清除”的警报。 活动警报仍在系统上触发，已清除的警报已由管理员手动清除，或由于系统以新信息更新警报条件而以编程方式清除。
+* **状态** - 可以显示“活动”或“已清除”的警报。 活动警报仍在系统上触发，而已清除的警报已由管理员手动清除，或由于系统以新信息更新警报条件而以编程方式清除。
 * **严重性** – 可以显示所有严重级别（关键、警告、信息）的警报，或只显示特定严重性的警报，例如只显示关键警报。
 * **源** – 可以显示来自所有源的警报，或只显示来自服务或者某一个或所有设备的警报。
 * **时间范围** – 可以指定“从”和“到”日期时间戳，查看所需时段内的警报。
@@ -155,6 +156,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 |:--- |:--- |:--- |
 | 硬件组件 <*组件 ID*> 将状态报告为 <*状态*>。 | |有时，临时性的情况可能会导致生成这些警报。 如果是这样，此警报将在一段时间后自动清除。 如果问题持续出现，请联系 Microsoft 支持。 |
 | 被动控制器故障。 |被动（辅助）控制器未正常运行。 |设备正在运行，但某个控制器有故障。 尝试重新启动该控制器。 如果未解决问题，请联系 Microsoft 支持。 |
+| 检测到即将出现的驱动器故障。 | 检测到即将出现的驱动器故障。 |我们在硬件组件“机箱 <*机箱 ID*>、插槽 <*插槽 ID*> 中的驱动器”中检测到即将出现的驱动器故障。 请考虑更换驱动器。 <br> 开始磁盘更换之前，请查看以下信息。<br><br>如果你的设备有多个磁盘发生故障，则无论何时都不要删除多个 SSD 或 HDD。 这样做可能导致数据丢失。<br><br>请确保将更换用 SSD 置于以前装有 SSD 的插槽中。 这同样适用于 HDD。<br><br>插槽从 0 到 11 进行编号。 设备的插槽 2 中发生故障的磁盘映射到插槽 3 中发生故障的磁盘（从左上角）。<br><br>有关磁盘更换的详细信息，请转到 https://go.microsoft.com/fwlink/?linkid=838653。 如果问题仍然存在，请通过 https://go.microsoft.com/fwlink/?linkid=838654 联系 Microsoft 支持。 |
 
 ### <a name="job-failure-alerts"></a>作业失败警报
 | 警报文本 | 事件 | 详细信息/建议的操作 |
@@ -213,10 +215,5 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 错误以及如何排查运行中设备的问题](storsimple-troubleshoot-operational-device.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -9,6 +9,7 @@ tags: azure-portal
 author: mumian
 ms.assetid: 8e32430f-6404-498a-9fcd-f20338d964af
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,6 +19,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: a423975e8a091183154217678706817694f3e346
 ms.openlocfilehash: d5256250d6d3a6d7df3a90ae4a0801af131b830e
+ms.lasthandoff: 12/21/2016
 
 
 ---
@@ -126,9 +128,4 @@ ms.openlocfilehash: d5256250d6d3a6d7df3a90ae4a0801af131b830e
 * [使用门户创建 Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)
 * [通过 Azure Resource Manager 对服务主体进行身份验证](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

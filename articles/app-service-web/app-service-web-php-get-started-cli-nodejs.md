@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: 7877662f43b83d6d60c3ef836d14b291245d8d42
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: fe1143a2c6966a547caab6b9bd35d78a91446e34
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/01/2017
 ## <a name="prerequisites"></a>先决条件
 * [PHP 5.6.29](http://php.net/downloads.php)
 * [编辑器](https://getcomposer.org/download/)
-* [Azure CLI](../xplat-cli-install.md)
+* [Azure CLI](../cli-install-nodejs.md)
 * [Git](http://www.git-scm.com/downloads)
 * 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 

@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d4f5d9dbe60e549d270e190e626a87a66696f07c
-ms.lasthandoff: 12/29/2016
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 82bc44b20158a22dfae0d6c8fbf5f1c1f4577c91
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -51,8 +51,8 @@ ms.lasthandoff: 12/29/2016
 > [!NOTE]
 > 请阅读 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)提供的[功能合规性](https://azure.microsoft.com/support/trust-center/services/)，详细了解每项 Azure 服务已通过的认证。
 > 由于数据保护选项采用多层方式，因此在运行此任务时无法比较这些选项。 请确保根据数据所处的每种状态，利用所有可用选项。
-> 
-> 
+>
+>
 
 ## <a name="define-content-management-options"></a>定义内容管理选项
 使用 Azure AD 管理混合标识基础结构的优点之一是整个过程对用户而言是完全透明的。 用户尝试访问共享资源，资源需要身份验证，因此用户必须将身份验证请求发送到 Azure AD 才能够获取令牌和访问资源。 整个过程在后台发生，无需用户交互。 还可以向某个用户[组](active-directory-manage-groups.md#getting-started-with-access-management)授权，使其能够执行某些常见操作。
@@ -73,8 +73,8 @@ ms.lasthandoff: 12/29/2016
 > [!NOTE]
 > 请阅读 [Microsoft Azure 安全和审核日志管理](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)详细了解 Azure 中的日志记录功能。
 > 根据在[确定内容管理要求](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)中回答问题的情况，应该能够确定在混合标识解决方案中要如何保护内容。 尽管表 6 中显示的所有选项都能够与 Azure AD 集成，但请务必定义更适合业务要求的选项。
-> 
-> 
+>
+>
 
 | 内容管理选项 | 优点 | 缺点 |
 | --- | --- | --- |
@@ -99,15 +99,15 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 
 > [!NOTE]
 > 请阅读 [Azure Active Directory 身份验证协议](https://msdn.microsoft.com/library/azure/dn151124.aspx)，详细了解 Azure 中的每个协议及其功能。
-> 
-> 
+>
+>
 
 通过 Azure AD 支持，移动业务应用程序可以使用相同的简单移动服务身份验证体验，让员工使用企业的 Active Directory 凭据登录到其移动应用程序。 通过此功能，Azure AD 可受到支持作为移动服务中的标识提供者，与支持的其他标识提供者（包括 Microsoft 帐户、Facebook ID、Google ID 和 Twitter ID）配合运行。 如果本地应用程序使用位于公司 AD DS 的用户凭据，则来自云的第三方和用户所做的访问应该是透明的。 可以使用条件性访问控制管理用户对（基于云）Web 应用程序、Web API、Microsoft 云服务、第三方 SaaS 应用程序和本机（移动）客户端应用程序的访问，并且可以在一个位置实现安全性、审核和报告。 但是，建议在非生产环境中或用户数量有限的环境中进行此验证。
 
 > [!TIP]
 > 必须提到的是，Azure AD 不像 AD DS 一样具有组策略。 若要为设备强制实施策略，需要使用移动设备管理解决方案，例如 [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx)。
-> 
-> 
+>
+>
 
 使用 Azure AD 验证用户身份之后，必须评估用户将要获得的访问级别。 用户对资源的访问级别可能改变。由于 Azure AD 可通过控制对某些资源的访问而增加额外的安全级别，因此必须记住，资源本身也可能有其本身的访问控制列表，例如，对位于文件服务器中的文件的访问控制。 下图汇总了可以在混合方案中使用的访问控制级别：
 
@@ -115,7 +115,7 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 
 图 X 中显示的每个交互分别代表一个可在 Azure AD 中引入的访问控制方案。 每种方案的说明如下：
 
-1.对在本地托管的应用程序的条件性访问：可以将已注册的设备与配置为将 AD FS 与 Windows Server 2012 R2 一起使用的应用程序的访问策略一起使用。 有关设置本地条件性访问的详细信息，请参阅 [使用 Azure Active Directory 设备注册设置本地条件性访问](active-directory-conditional-access-on-premises-setup.md)。
+1.对在本地托管的应用程序的条件性访问：可以将已注册的设备与配置为将 AD FS 与 Windows Server 2012 R2 一起使用的应用程序的访问策略一起使用。 有关设置本地条件性访问的详细信息，请参阅 [使用 Azure Active Directory 设备注册设置本地条件性访问](active-directory-conditional-access.md)。
 2. 对 Azure 管理门户的访问控制：Azure 还能使用 RBAC（基于角色的访问控制）来控制对管理门户的访问。 公司可以使用此方法限制有权访问 Azure 管理门户的个人可以执行的操作数量。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方式委派访问权限：
 
 * 基于组的角色分配：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这使你能够充分利用组织在工具和组管理过程中已有的现有投资。 你也可以使用 Azure AD 高级版中的委派组管理功能。
@@ -124,8 +124,8 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 
 > [!NOTE]
 > 请阅读 [Azure 中基于角色的访问控制](https://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/)详细了解此功能。 构建应用程序并想要自定义其访问控制的开发人员可以使用 Azure AD 应用程序角色进行授权。 请参阅 [WebApp-RoleClaims-DotNet 示例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet)，了解如何构建使用此功能的应用。
-> 
-> 
+>
+>
 
 3.使用 Microsoft Intune 的 Office 365 应用程序的条件性访问 ：IT 管理员可以预配条件性访问设备策略来保护公司资源，同时允许信息工作者在符合条件的设备上访问服务。 有关详细信息，请参阅 [Office 365 服务的条件性访问设备策略](active-directory-conditional-access-device-policies.md)。
 
@@ -144,8 +144,8 @@ Azure AD 可通过监视用户活动，帮助 IT 人员识别环境中潜在的�
 
 > [!TIP]
 > 此外，可帮助事件响应团队处理案例的另一份报告是[凭据已泄漏的用户](http://blogs.technet.com/b/ad/archive/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials.aspx)报告。  此报告呈现这些泄漏凭据列表与租户之间的所有匹配项。
-> 
-> 
+>
+>
 
 Azure AD 中还提供其他可在事件响应调查期间使用的重要内置报告，包括：
 
@@ -169,5 +169,4 @@ Azure AD 中还提供其他可在事件响应调查期间使用的重要内置�
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
 

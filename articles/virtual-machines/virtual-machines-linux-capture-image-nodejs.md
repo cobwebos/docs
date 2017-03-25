@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
-ms.openlocfilehash: 18d70fc1dc85efe699e6ec498e024a0b8d3525f0
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4505bb5f572add13c21df06fc7997358eaae6352
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/27/2017
 * **在 Resource Manager 部署模型中创建的 Azure VM** - 如果尚未创建 Linux VM，则可以使用[门户](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[Azure CLI](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Resource Manager 模板](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
   
     根据需要配置 VM。 例如， [添加数据磁盘](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、应用更新和安装应用程序。 
-* **Azure CLI** - 在本地计算机上安装 [Azure CLI](../xplat-cli-install.md)。
+* **Azure CLI** - 在本地计算机上安装 [Azure CLI](../cli-install-nodejs.md)。
 
 ## <a name="step-1-remove-the-azure-linux-agent"></a>步骤 1：删除 Azure Linux 代理
 首先，在 Linux VM 上使用 **deprovision** 参数运行 **waagent** 命令。 此命令将删除文件和数据，使 VM 准备好进行通用化。 有关详细信息，请参阅 [Azure Linux 代理用户指南](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

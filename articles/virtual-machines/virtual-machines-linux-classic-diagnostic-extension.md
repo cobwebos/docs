@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 11a1f6ea289db38aeb8c2fff2c9b0e6b1f0f044c
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e43a3920da0baafa1be0d3a9a8596f19bf7ebc3e
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -45,7 +46,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 ## <a name="enable-the-extension"></a>启用扩展
 使用 [Azure 门户](https://portal.azure.com/#)、Azure PowerShell 或 Azure CLI 脚本，可以启用此扩展。
 
-若要直接从 Azure 门户查看和配置系统和性能数据，请按照 [Azure 博客上的这些步骤]（https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/"Windows 博客的 URL"/）进行操作。
+若要直接从 Azure 门户查看和配置系统和性能数据，请执行 [Azure 博客上的这些步骤](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)。
 
 本文重点介绍如何使用 Azure CLI 命令来启用和配置此扩展。 这可让你直接从存储表读取和查看数据。
 
@@ -54,7 +55,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 ## <a name="prerequisites"></a>先决条件
 * **Azure Linux 代理 2.0.6 版或更高版本**。
   请注意，大部分 Azure VM Linux 库映像都包含 2.0.6 版本或更高版本。 可以运行 **WAAgent -version** 以确认 VM 上安装的版本。 如果 VM 正在运行的版本早于 2.0.6，则可以按照 [GitHub 上的这些说明](https://github.com/Azure/WALinuxAgent "说明")进行更新。
-* **Azure CLI**。 请按照[此 CLI 安装指南](../xplat-cli-install.md)中的说明在计算机上设置 Azure CLI 环境。 安装 Azure CLI 之后，可以从命令行接口（Bash、终端或命令提示符）使用 **azure** 命令访问 Azure CLI 命令。 例如：
+* **Azure CLI**。 请按照[此 CLI 安装指南](../cli-install-nodejs.md)中的说明在计算机上设置 Azure CLI 环境。 安装 Azure CLI 之后，可以从命令行接口（Bash、终端或命令提示符）使用 **azure** 命令访问 Azure CLI 命令。 例如：
   
   * 运行 **azure vm extension set --help** 了解详细的帮助信息。
   * 运行 **azure login** 登录到 Azure。
@@ -138,7 +139,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 此外，可以使用以下 UI 工具来访问数据：
 
-1. Visual Studio 服务器资源管理器。 转到存储帐户。 VM 运行约 5 分钟后，将看到四个默认表：“LinuxCpu”、“LinuxDisk”、“LinuxMemory”和“Linuxsyslog”。 双击表名以查看数据。
+1. Visual Studio 服务器资源管理器。 转到存储帐户。 VM 运行约&5; 分钟后，将看到四个默认表：“LinuxCpu”、“LinuxDisk”、“LinuxMemory”和“Linuxsyslog”。 双击表名以查看数据。
 2. [Azure 存储资源管理器](https://azurestorageexplorer.codeplex.com/ "Azure 存储资源管理器")。
 
 ![图像](./media/virtual-machines-linux-classic-diagnostic-extension/no1.png)
@@ -147,10 +148,5 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 ## <a name="known-issues"></a>已知问题
 * 在 Linux 诊断扩展的当前版本 (2.3) 中，只能通过脚本访问 Rsyslog 信息和客户指定的日志文件。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

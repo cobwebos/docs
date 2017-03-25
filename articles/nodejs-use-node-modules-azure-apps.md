@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: f9a216f3f76ef84e745ef29575d20da971e5eb61
-ms.openlocfilehash: 2ccd414e0eec04dbee7c412cef245e1ab0da2bff
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 2d57fc14803e273157151d24efb12c3f5dd15a61
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -85,14 +86,9 @@ Azure App Service 不支持部分本机模块，并且在编译具有高度专�
 有关详细信息，请参阅 [Node.js 开发人员中心](/develop/nodejs/)。
 
 [指定 Node.js 版本]: nodejs-specify-node-version-azure-apps.md
-[如何使用适用于 Mac 和 Linux 的 Azure 命令行接口]: xplat-cli-install.md
+[如何使用适用于 Mac 和 Linux 的 Azure 命令行接口]:cli-install-nodejs.md
 [build and deploy a Node.js web app]: web-sites-nodejs-develop-deploy-mac.md
 [Node.js Web Application with Storage on MongoDB (MongoLab)]: store-mongolab-web-sites-nodejs-store-data-mongodb.md
 [Build and deploy a Node.js application to an Azure Cloud Service]: cloud-services-nodejs-develop-deploy-app.md
 [使用 Kudu 自定义网站部署脚本]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

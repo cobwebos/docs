@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: 289bf7ab1ba91bd9edc6288af93e06170d8f2def
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b246d8813a41d353a9c0fa31fe838e025fc93046
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/27/2017
 
 Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 Azure 平台。 它提供 [Azure 门户](https://portal.azure.com)所提供的很多相同功能，此外还有各种数据访问功能。
 
-在本指南中，我们将探讨如何使用 [Azure 命令行接口 (Azure CLI)](../xplat-cli-install.md)，以通过 Azure 存储执行各种开发和管理任务。 在使用本指南之前，我们建议你下载和安装或者升级到最新版 Azure CLI。
+在本指南中，我们将探讨如何使用 [Azure 命令行接口 (Azure CLI)](../cli-install-nodejs.md)，以通过 Azure 存储执行各种开发和管理任务。 在使用本指南之前，我们建议你下载和安装或者升级到最新版 Azure CLI。
 
 本指南假定你了解 Azure 存储空间的基本概念。 本指南提供了大量的脚本，用于演示 Azure CLI 与 Azure 存储空间的用法。 在运行每个脚本之前，请确保根据配置更新脚本变量。
 
@@ -47,7 +47,7 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 
 **创建 Microsoft Azure 订阅和帐户之后：**
 
-1. 按照[安装 Azure CLI](../xplat-cli-install.md) 中的概要说明，下载和安装 Azure CLI。
+1. 按照[安装 Azure CLI](../cli-install-nodejs.md) 中的概要说明，下载和安装 Azure CLI。
 2. 安装了 Azure CLI 之后，你将可以从命令行界面（Bash、终端、命令提示符）使用 azure 命令访问 Azure CLI 命令。 键入 _azure_ 命令，可看到以下输出。
 
     ![Azure 命令输出][Image1]
@@ -239,7 +239,7 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 你可以在此处查找使用存储资源的 Azure CLI 1.0 命令参考：
 
 * [Resource Manager 模式下的 Azure CLI 命令](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
-* [Azure 服务管理模式下的 Azure CLI 命令](../xplat-cli-install.md)
+* [Azure 服务管理模式下的 Azure CLI 命令](../cli-install-nodejs.md)
 
 你可能还想尝试将 [Azure CLI 2.0](storage-azure-cli.md)（使用 Python 编写的下一代 CLI）与 Resource Manager 部署模型配合使用。
 

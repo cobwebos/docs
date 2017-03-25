@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 12/02/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: de250fbc3982cdc493f74976914290d8ac89bb08
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f26b191d9d98768d766e4c974138c9d191340027
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -40,7 +41,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 ![DC/OS UI](./media/dcos/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>探索 Marathon UI
-若要查看 Marathon UI，请浏览到 http://localhost/Marathon。 在此屏幕中，可以在 Azure 容器服务 DC/OS 群集上启动新容器或其他应用程序。 还可以查看有关正在运行的容器和应用程序的信息。  
+若要查看 Marathon UI，请浏览到 http://localhost/marathon。 在此屏幕中，可以在 Azure 容器服务 DC/OS 群集上启动新容器或其他应用程序。 还可以查看有关正在运行的容器和应用程序的信息。  
 
 ![Marathon UI](./media/dcos/dcos3.png)
 
@@ -110,9 +111,4 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
     > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON203/player]
     > 
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

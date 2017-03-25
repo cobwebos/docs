@@ -16,19 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 39dafb04f2b155790d58db524a3ff52960891e16
-ms.openlocfilehash: fdce1c32d7c538a29328f0e1f0c847af2e731e17
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: e9564d223cb85529f1fa97bc398d35c6debcedae
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>使用 PowerShell 控制路由和使用虚拟设备（经典）
 
 > [!div class="op_single_selector"]
-- [PowerShell](virtual-network-create-udr-arm-ps.md)
-- [Azure CLI](virtual-network-create-udr-arm-cli.md)
-- [模板](virtual-network-create-udr-arm-template.md)
-- [PowerShell（经典）](virtual-network-create-udr-classic-ps.md)
-- [CLI（经典）](virtual-network-create-udr-classic-cli.md)
+> * [PowerShell](virtual-network-create-udr-arm-ps.md)
+> * [Azure CLI](virtual-network-create-udr-arm-cli.md)
+> * [模板](virtual-network-create-udr-arm-template.md)
+> * [PowerShell（经典）](virtual-network-create-udr-classic-ps.md)
+> * [CLI（经典）](virtual-network-create-udr-classic-cli.md)
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
@@ -52,11 +53,6 @@ ms.openlocfilehash: fdce1c32d7c538a29328f0e1f0c847af2e731e17
     -Label "Route table for front end subnet"
     ```
 
-    输出：
-   
-        Name         Location   Label                          
-        ----         --------   -----                          
-        UDR-FrontEnd West US    Route table for front end subnet
 2. 运行以下命令，在路由表中创建路由，将目标为后端子网 (192.168.2.0/24) 的所有流量发送到 **FW1** VM (192.168.0.4)：
 
     ```powershell
@@ -65,16 +61,7 @@ ms.openlocfilehash: fdce1c32d7c538a29328f0e1f0c847af2e731e17
     -NextHopType VirtualAppliance `
     -NextHopIpAddress 192.168.0.4
     ```
-   
-    输出：
-   
-        Name     : UDR-FrontEnd
-        Location : West US
-        Label    : Route table for frontend subnet
-        Routes   : 
-                   Name                 Address Prefix    Next hop type        Next hop IP address
-                   ----                 --------------    -------------        -------------------
-                   RouteToBackEnd       192.168.2.0/24    VirtualAppliance     192.168.0.4  
+
 3. 运行以下命令将路由表与 **FrontEnd** 子网关联：
 
     ```powershell
@@ -97,8 +84,10 @@ ms.openlocfilehash: fdce1c32d7c538a29328f0e1f0c847af2e731e17
 2. 运行以下命令，在路由表中创建路由，将目标为前端子网 (192.168.1.0/24) 的所有流量发送到 **FW1** VM (192.168.0.4)：
 
     ```powershell
-    Get-AzureRouteTable UDR-BackEnd `
-    |Set-AzureRoute -RouteName RouteToFrontEnd -AddressPrefix 192.168.1.0/24 `
+    Get-AzureRouteTable UDR-BackEnd
+    | Set-AzureRoute `
+    -RouteName RouteToFrontEnd `
+    -AddressPrefix 192.168.1.0/24 `
     -NextHopType VirtualAppliance `
     -NextHopIpAddress 192.168.0.4
     ```
@@ -122,18 +111,10 @@ ms.openlocfilehash: fdce1c32d7c538a29328f0e1f0c847af2e731e17
     | Get-AzureIPForwarding
     ```
 
-    输出：
-   
-        Disabled
 2. 运行以下命令以对 *FW1* VM 启用 IP 转发：
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `
     | Set-AzureIPForwarding -Enable
     ```
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

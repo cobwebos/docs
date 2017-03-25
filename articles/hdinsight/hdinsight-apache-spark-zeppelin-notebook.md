@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: df489d70-7788-4efa-a089-e5e5006421e2
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +18,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
 ms.openlocfilehash: a5494f16e3398be507080dd4fac591144f69d9fc
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -159,7 +161,7 @@ Zeppelin 笔记本的保存位置为群集头节点。 因此，如果删除该�
     ![重启 Livy 解释程序](./media/hdinsight-apache-spark-zeppelin-notebook/hdispark.zeppelin.restart.interpreter.png "重启 Zeppelin 解释程序")
 3. 从现有的 Zeppelin 笔记本运行代码单元格。 这将在 HDInsight 群集中创建新的 Livy 会话。
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>另请参阅
+## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案
@@ -199,10 +201,5 @@ Zeppelin 笔记本的保存位置为群集头节点。 因此，如果删除该�
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

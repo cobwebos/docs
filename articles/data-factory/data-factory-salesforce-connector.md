@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 03/14/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 9e70638af1ecdd0bf89244b2a83cd7a51d527037
-ms.openlocfilehash: 98b841e300d5b704d134bcfab0968523f3b9c3f0
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: c5daac3b8374927c094e79299ce52031181ea24d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -33,7 +34,11 @@ Azure 数据工厂当前仅支持将数据从 Salesforce 移动到[支持的接�
 * 若要将数据从 Salesforce 复制到本地数据存储，必须在本地环境中至少安装有数据管理网关 2.0。
 
 ## <a name="salesforce-request-limits"></a>Salesforce 请求限制
-Salesforce 对 API 请求总数和并发 API 请求均有限制。 有关详细信息，请参阅 [Salesforce Developer Limits](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)（Salesforce 开发人员限制）文章中的"API 请求限制"一节。 请注意如果并发请求数超过限制，将出现限制情况，并显示随机失败；如果总请求数超过限制，Salesforce 帐户将被阻止 24 小时；在这两种情况中，还可能会收到“REQUEST_LIMIT_EXCEEDED”错误。
+Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下事项：
+* 如果并发请求数超过限制，则将进行限制并且你将看到随机失败；
+* 如果请求总数超过限制，将阻止 Salesforce 帐户 24 小时。
+
+在这两种情况下，你还可能会收到“REQUEST_LIMIT_EXCEEDED”错误。 有关详细信息，请参阅 [Salesforce Developer Limits](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)（Salesforce 开发人员限制）文章中的"API 请求限制"一节。
 
 ## <a name="copy-data-wizard"></a>复制数据向导
 若要创建将数据从 Salesforce 复制到任何支持的接收数据存储的管道，最简单的方法是使用复制数据向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，了解有关使用复制数据向导创建管道的快速演练。
@@ -206,7 +211,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 有关详细�
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| type |类型属性必须设置为：**Salesforce ** |是 |
+| type |类型属性必须设置为：**Salesforce** |是 |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认值为“https://login.salesforce.com”。 <br> - 若要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定“https://[domain].my.salesforce.com”等内容。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。 |是 |
@@ -250,8 +255,10 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 有关详细�
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>使用 DateTime 列上的 where 子句检索数据
 当指定 SOQL 或 SQL 查询时，请注意 DateTime 的格式差异。 例如：
 
-* **SOQL 示例**：$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)
-* **SQL 示例**：$$Text.Format('SELECT * FROM Account  WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate  < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`。
+* **SOQL 示例**：`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **SQL 示例**：
+    * **使用复制向导指定查询：**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
+    * **使用 JSON 编辑指定查询（正确转义字符）：**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>从 Salesforce 报表检索数据
 可通过将查询指定为 `{call "<report name>"}` 从 Salesforce 报表检索数据，例如 `"query": "{call \"TestReport\"}"`
@@ -259,8 +266,8 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 有关详细�
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>从 Salesforce 回收站中检索删除的记录
 若要从 Salesforce 回收站中检索软删除的记录，需要在查询中指定 **“IsDeleted = 1”**。 例如，
 
-* 若仅查询已删除的记录，请指定“select * from MyTable__c **where IsDeleted= 1**”
-* 若要查询包括现有和已删除记录的所有记录，请指定“select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**”
+* 若仅查询已删除的记录，请指定“select *from MyTable__c**where IsDeleted= 1**”
+* 若要查询包括现有和已删除记录的所有记录，请指定“select *from MyTable__c**where IsDeleted = 0 or IsDeleted = 1**”
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -293,9 +300,4 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 有关详细�
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/22/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
-ms.openlocfilehash: 7fcf16ac835089a1c4127fd34264f2cf7cb098ac
-ms.lasthandoff: 01/14/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: bd6f81ee12a7bb655166cf059236175bfb9994e5
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/14/2017
 Azure 命令行接口 (Azure CLI) 是可以配合 Resource Manager 部署和管理资源的多种工具之一。 本文介绍在 Resource Manager 模式下使用 Azure CLI 管理 Azure 资源和资源组的常见方式。 有关使用 CLI 部署资源的信息，请参阅[使用 Resource Manager 模板和 Azure CLI 部署资源](resource-group-template-deploy-cli.md)。 有关 Azure 资源和 Resource Manager 的背景信息，请访问 [Azure Resource Manager 概述](resource-group-overview.md)。
 
 > [!NOTE]
-> 若要使用 Azure CLI 管理 Azure 资源，需要[安装 Azure CLI](../xplat-cli-install.md) 并使用 `azure login` 命令[登录 Azure](../xplat-cli-connect.md)。 请确保 CLI 处于 Resource Manager 模式（运行 `azure config mode arm`）。 如果已做好了这些准备，你便可以开始了。
+> 若要使用 Azure CLI 管理 Azure 资源，需要[安装 Azure CLI](../cli-install-nodejs.md) 并使用 `azure login` 命令[登录 Azure](../xplat-cli-connect.md)。 请确保 CLI 处于 Resource Manager 模式（运行 `azure config mode arm`）。 如果已做好了这些准备，你便可以开始了。
 > 
 > 
 

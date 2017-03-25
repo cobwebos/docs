@@ -1,6 +1,6 @@
 ---
-title: "实现故障转移流式处理方案 | Microsoft Docs"
-description: "本主题演示如何实现故障转移流式处理方案。"
+title: "使用 Azure 媒体服务实现故障转移流式处理 | Microsoft 文档"
+description: "本主题说明如何实现故障转移流式处理方案。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -15,40 +15,40 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 84d42efc54f7dcbde8330360941969a5b0884a1a
-ms.openlocfilehash: ed249f63098a82b935016ccac3e0416951cb1b0a
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: eaa87671a90ab6b090fb04f346ef551edba4d173
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="implementing-failover-streaming-scenario"></a>实现故障转移流式处理方案
+# <a name="implement-failover-streaming-with-azure-media-services"></a>使用 Azure 媒体服务实现故障转移流式处理
 
-本演练演示如何将内容 (blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。 此方案适用于想要将其 CDN 设置为当我们的某个数据中心出现中断时，在两个数据中心之间进行故障转移的客户。
-本演练使用 Microsoft Azure 媒体服务 SDK、Microsoft Azure 媒体服务 REST API 和 Azure 存储空间 SDK 来演示以下任务。
+本演练演示如何将内容 (Blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。 如果想要将 Azure 内容交付网络设置为当某个数据中心发生中断时在两个数据中心之间故障转移，则很适合采用此方案。 本演练使用 Azure 媒体服务 SDK、Azure 媒体服务 REST API 和 Azure 存储 SDK 来演示以下任务：
 
 1. 在“数据中心 A”中设置一个媒体服务帐户。
 2. 将一个夹层文件上载到源资产中。
 3. 将该资产编码成多比特率 MP4 文件。 
-4. 为源资产创建一个只读 SAS 定位器，以获取对关联到源资产的存储帐户中的容器的读取权限。
-5. 从上一步创建的只读 SAS 定位器中获取源资产的容器名称。 我们需要使用此信息在存储帐户之间复制 blob（在本主题后面介绍。）
+4. 创建一个只读的共享访问签名定位符。 源资产可以使用此定位符获取对关联到源资产的存储帐户中的容器的读取访问权限。
+5. 从上一步骤中创建的只读共享访问签名定位符获取源资产的容器名称。 在存储帐户之间复制 Blob 时必须使用此名称（本主题稍后将会介绍。）
 6. 为通过编码任务创建的资产创建源定位器。 
 
 然后，若要处理故障转移，请执行以下操作：
 
 1. 在“数据中心 B”中设置一个媒体服务帐户。
 2. 在目标媒体服务帐户中创建一个目标空资产。
-3. 为目标空资产创建一个写入 SAS 定位器，以获取对关联到目标资产的目标存储帐户中的容器的写入权限。
-4. 使用 Azure 存储空间 SDK 在“数据中心 A”中的源存储帐户与“数据中心 B”中的目标存储帐户（这些存储帐户与所需资产关联）之间复制 blob（资产文件）。
+3. 创建一个写入共享访问签名定位符。 目标空资产将使用此定位符获取对关联到目标资产的目标存储帐户中的容器的写入访问权限。
+4. 使用 Azure 存储 SDK 在“数据中心 A”中的源存储帐户与“数据中心 B”中的目标存储帐户之间复制 Blob（资产文件）。 这些存储帐户与所需的资产关联。
 5. 将复制到目标 blob 容器的 blob（资产文件）与目标资产关联。 
-6. 在“数据中心 B”中为资产创建源定位器，并指定为“数据中心 A”中的资产生成的定位器 ID。 
-7. 这样，便会提供 URL 的相对路径相同（只有基本 URL 不同）的流式处理 URL。 
+6. 在“数据中心 B”中为资产创建来源定位符，并指定针对“数据中心 A”中的资产生成的定位符 ID。
 
-然后，若要处理任何中断情况，可以在这些源定位器之上创建 CDN。 
+这样，便会提供 URL 的相对路径相同（只有基本 URL 不同）的流式处理 URL。 
+
+然后，若要处理任何中断情况，可在这些源定位符的顶层创建内容交付网络。 
 
 请注意以下事项：
 
-* 当前版本的媒体服务 SDK 不支持以编程方式生成会将资产与资产文件关联的 IAssetFile 信息。 若要完成此任务，我们将使用 CreateFileInfos 媒体服务 REST API。 
-* 不支持使用存储加密资产 (AssetCreationOptions.StorageEncrypted) 进行复制（因为两个媒体服务帐户中的加密密钥将会有所不同）。 
+* 当前版本的媒体服务 SDK 不支持以编程方式生成会将资产与资产文件关联的 IAssetFile 信息。 应该使用 CreateFileInfos 媒体服务 REST API 来实现此目的。 
+* 不支持使用存储加密资产 (AssetCreationOptions.StorageEncrypted) 进行复制（因为两个媒体服务帐户中的加密密钥不同）。 
 * 若要使用动态打包，请确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。
 
 > [!NOTE]
@@ -63,13 +63,13 @@ ms.lasthandoff: 01/31/2017
 * Visual Studio 2010 SP1 或更高版本（专业版、高级专业版、旗舰版或学习版）。
 
 ## <a name="set-up-your-project"></a>设置项目
-在本部分中，你将创建和设置一个 C# 控制台应用程序项目。
+在本部分，将要创建并设置一个 C# 控制台应用程序项目。
 
-1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。 针对“名称”输入“HandleRedundancyForOnDemandStreaming”，然后单击“确定”。
-2. 在与 HandleRedundancyForOnDemandStreaming.csproj 项目文件相同的级别上创建 SupportFiles 文件夹。 在 SupportFiles 文件夹下创建 OutputFiles 和 MP4Files 文件夹。 将一个 .mp4 文件复制到 MP4Files 文件夹（在本示例中使用 BigBuckBunny.mp4 文件）。 
-3. 使用 **Nuget** 添加对媒体服务相关 DLL 的引用。 在 Visual Studio 主菜单中，选择“工具”->“库程序包管理器”->“程序包管理器控制台”。 在控制台窗口中，键入 Install-Package windowsazure.mediaservices，然后按 Enter。
+1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。 输入 **HandleRedundancyForOnDemandStreaming** 作为名称，然后单击“确定”。
+2. 在与 **HandleRedundancyForOnDemandStreaming.csproj** 项目文件相同的级别创建 **SupportFiles** 文件夹。 在 **SupportFiles** 文件夹下创建 **OutputFiles** 和 **MP4Files** 文件夹。 将一个 .mp4 文件复制到 **MP4Files** 文件夹。 （本示例使用 **BigBuckBunny.mp4** 文件。） 
+3. 使用 **Nuget** 添加对媒体服务相关 DLL 的引用。 在 **Visual Studio 主菜单**中，选择“工具” > “库包管理器” > “包管理器控制台”。 在控制台窗口中键入 **Install-Package windowsazure.mediaservices**，然后按 Enter。
 4. 添加此项目所需的其他引用：System.Configuration、System.Runtime.Serialization 和 System.Web。
-5. 将默认添加到 Programs.cs 文件中的 using 语句替换为以下语句：
+5. 将默认添加到 **Programs.cs** 文件中的 **using** 语句替换为以下语句：
    
         using System;
         using System.Configuration;
@@ -88,7 +88,7 @@ ms.lasthandoff: 01/31/2017
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using Microsoft.WindowsAzure.Storage.Auth;
-6. 将 appSettings 节添加到 .config 文件，并根据媒体服务和 Storage 密钥与名称值更新值。 
+6. 将 **appSettings** 节添加到 **.config** 文件，并根据媒体服务和存储密钥与名称值更新值。 
    
         <appSettings>
           <add key="MediaServicesAccountNameSource" value="Media-Services-Account-Name-Source"/>
@@ -102,6 +102,8 @@ ms.lasthandoff: 01/31/2017
         </appSettings>
 
 ## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>添加用于处理按需流式处理冗余的代码
+在本部分，将创建用于处理冗余的功能。
+
 1. 将以下类级字段添加到 Program 类。
        
         // Read values from the App.config file.
@@ -207,8 +209,11 @@ ms.lasthandoff: 01/31/2017
                 writeSasLocator.Delete();
         }
 
-3. 从 Main 调用的方法定义。
-   
+3. 以下方法定义是从 Main 调用的。
+
+    >[!NOTE]
+    >不同媒体服务策略的策略数限制为 1,000,000 个（例如，对于 Locator 策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的天数和访问权限，应使用相同的策略 ID。 例如，对于需要长期保留使用的定位符，请使用相同的策略 ID（非上载策略）。 有关详细信息，请参阅[此主题](media-services-dotnet-manage-entities.md#limit-access-policies)。
+
         public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
                                                         AssetCreationOptions assetCreationOptions,
                                                         string singleFilePath)
@@ -471,8 +476,8 @@ ms.lasthandoff: 01/31/2017
 
                 if (sourceCloudBlob.Properties.Length > 0)
                 {
-                    // In AMS, the files are stored as block blobs. 
-                    // Page blobs are not supported by AMS.  
+                    // In Azure Media Services, the files are stored as block blobs. 
+                    // Page blobs are not supported by Azure Media Services.  
                     var destinationBlob = targetContainer.GetBlockBlobReference(fileName);
                     destinationBlob.StartCopyFromBlob(new Uri(sourceBlob.Uri.AbsoluteUri + blobToken));
 
@@ -939,7 +944,7 @@ ms.lasthandoff: 01/31/2017
 
 
 ## <a name="next-steps"></a>后续步骤
-现在，你可以使用流量管理器在两个数据中心之间路由请求，因此可在任何中断情况下进行故障转移。
+现在，可以使用流量管理器在两个数据中心之间路由请求，因此可在发生任何中断时故障转移。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

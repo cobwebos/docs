@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 03/24/2017
 ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: caa4f001871beeb83cc0406bd2f89c5aa026cd97
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -169,9 +170,4 @@ ms.openlocfilehash: caa4f001871beeb83cc0406bd2f89c5aa026cd97
 [7]: ./media/security-center-intro/security-alert.png
 [8]: ./media/security-center-intro/security-alert-detail.png
 [9]: ./media/security-center-intro/partner-solutions.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

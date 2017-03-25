@@ -17,24 +17,24 @@ ms.date: 10/04/2016
 ms.author: rasquill
 "\"/": 
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: 88414392c4ee03e0b140bba0f73e44b6886c4038
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 31efab60690b54faf7992251fcd01e307c4464f2
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="log-in-to-azure-from-the-azure-cli"></a>通过 Azure CLI 登录到 Azure
 Azure CLI 是一组开源且跨平台的命令，用于处理 Azure 资源。 本文介绍了提供 Azure 帐户凭据以将 Azure CLI 连接到 Azure 订阅的各种方式。
 
-* 运行 `azure login` CLI 命令以通过 Azure Active Directory 进行身份验证。 此方法允许你以两种[命令模式](#cli-command-modes)访问 CLI 命令。 在不采用附加选项的情况下运行命令时，`azure login` 会通过 web 门户以交互方式提示你继续登录。 有关附加的 `azure login` 命令选项，请参阅本文中的方案或者键入 `azure login --help`。
-* 如果只需要使用 Azure 服务管理模式 CLI 命令（对于大多数新部署，不推荐使用），可以下载并在计算机上安装发布设置。
+* 运行 `azure login` CLI 命令以通过 Azure Active Directory 进行身份验证。 此方法允许你以两种[命令模式](#cli-command-modes)访问 CLI 命令。 在不采用附加选项的情况下运行命令时，`azure login` 会提示你通过 Web 门户以交互方式继续登录。 有关附加的 `azure login` 命令选项，请参阅本文中的方案或者键入 `azure login --help`。
+* 如果只需要使用 Azure 服务管理模式 CLI 命令（对于大多数新部署，不推荐使用），可以下载并在计算机上安装发布设置文件。
 
-如果尚未安装 CLI，请参阅[安装 Azure CLI](xplat-cli-install.md)。 如果没有 Azure 订阅，只需几分钟即可创建一个[免费帐户](http://azure.microsoft.com/free/)。
+如果尚未安装 CLI，请参阅[安装 Azure CLI](cli-install-nodejs.md)。 如果没有 Azure 订阅，只需几分钟即可创建一个[免费帐户](http://azure.microsoft.com/free/)。
 
 有关不同的帐户标识和 Azure 订阅的背景信息，请参阅 [Azure 订阅如何与 Azure Active Directory 相关联](active-directory/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="scenario-1-azure-login-with-interactive-login"></a>方案 1：使用交互式登录的 azure 登录
-使用某些帐户时，CLI 会要求你运行 `azure login` 然后使用 web 浏览器通过某个 web 门户继续执行登录过程，此过程称为*交互式登录*。 一个常见原因是你具有设置为要求进行多重身份验证的工作或学校帐户（也称为*组织帐户*）。 希望使用资源管理器模式的命令时，也请使用 Microsoft 帐户进行交互式登录。
+使用某些帐户时，CLI 会要求你运行 `azure login`，然后使用 Web 浏览器通过某个 Web 门户继续执行登录过程，此过程称为*交互式登录*。 一个常见原因是你具有设置为要求进行多重身份验证的工作或学校帐户（也称为*组织帐户*）。 希望使用资源管理器模式的命令时，也请使用 Microsoft 帐户进行交互式登录。
 
 交互式登录很简单：键入 `azure login` -- 不带任何选项 -- 如下例中所示：
 
@@ -62,7 +62,7 @@ info:    To sign in, use a web browser to open the page http://aka.ms/devicelogi
 >
 
 ## <a name="scenario-2-azure-login-with-a-username-and-password"></a>方案 2：使用用户名和密码的 azure 登录
-如果希望使用不需要多重身份验证的工作或学校帐户，请使用带 (`-u`) 参数的 `azure login` 命令进行身份验证。 将在命令行上提示你输入密码（你还可以将密码传递为 `azure login` 命令的附加参数）。 以下示例将传递组织帐户的用户名：
+如果希望使用不需要多重身份验证的工作或学校帐户，请使用带 (`-u`) 参数的 `azure login` 命令进行身份验证。 将在命令行上提示你输入密码（你还可以将密码作为 `azure login` 命令的附加参数传递）。 以下示例将传递组织帐户的用户名：
 
     azure login -u myUserName@contoso.onmicrosoft.com
 

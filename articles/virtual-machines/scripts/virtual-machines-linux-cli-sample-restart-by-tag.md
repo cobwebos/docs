@@ -16,45 +16,64 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: b292a02770fa74812e74fa38f870e47ed7473b63
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: be1c613744d510e4ace636b47fdf730462a2ae07
+ms.lasthandoff: 03/15/2017
 
 ---
 
-# <a name="restart-vms-by-tag"></a>按标记重新启动 VM
+# <a name="restart-vms"></a>重新启动 VM
 
-本示例在多个资源组中使用给定标记创建虚拟机。
-它使用 `--no-wait` 并行创建这些虚拟机，然后等其集体完成。
+此示例展示了用来获取一些 VM 并重新启动它们的几种方法。
 
-创建完成后，使用两种不同的查询机制重新启动虚拟机。
+第一种方法重新启动资源组中的所有 VM。
 
-第一种机制通过用于等待 VM 异步创建的查询来重新启动 VM。
 ```bash
-az vm restart --ids $(az vm list --query "join(' ', ${GROUP_QUERY}] | [].id)" \
-    -o tsv) $1>/dev/null
+az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
-第二种机制使用通用资源列表和查询按标记来提取其 ID。
+第二种方法使用 `az resouce list` 获取带标记的 VM，并筛选出是 VM 的资源，然后重新启动那些 VM。
+
 ```bash
-az vm restart --ids $(az resource list --tag ${TAG} \
-    --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv) $1>/dev/null
+az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
 此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../virtual-machines-windows-cli-options.md)。
 
+
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/restart-by-tag/restart-by-tag.sh "按标记重新启动 VM")]
+此示例具有三个脚本。
+第一个脚本用来预配虚拟机。
+它使用了 no-wait 选项，因此，命令不会等待每个 VM 完成部署便会返回。
+第二个脚本等到 VM 完全部署后才会返回。
+第三个脚本重新启动已部署的所有 VM，然后仅重新启动带标记的 VM。
+
+### <a name="provision-the-vms"></a>预配 VM
+
+此脚本创建一个资源组，然后它创建三个 VM 并重新启动。
+其中的两个带有标记。
+
+[!code-azurecli[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "预配 VM")]
+
+### <a name="wait"></a>等待
+
+此脚本每隔 20 秒检查一次预配状态，直到三个 VM 全部完成预配，或者其中一个未能完成预配。
+
+[!code-azurecli[main](../../../cli_scripts/virtual-machine/restart-by-tag/wait.sh "等待 VM 完成预配")]
+
+### <a name="restart-the-vms"></a>重新启动 VM
+
+此脚本重新启动资源组中的所有 VM，然后它仅重新启动带标记的 VM。
+
+[!code-azurecli[main](../../../cli_scripts/virtual-machine/restart-by-tag/restart.sh "按标记重新启动 VM")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
-运行脚本示例后，可以使用以下命令删除资源组、VM 以及所有相关资源。
+运行脚本示例后，可以使用以下命令删除资源组、VM 以及所有相关的资源。
 
 ```azurecli
-az group delete -n GROUP1 --no-wait --yes && \ 
-az group delete -n GROUP2 --no-wait --yes && \
-az group delete -n GROUP3 --no-wait --yes
+az group delete -n myResourceGroup --no-wait --yes
 ```
 
 ## <a name="script-explanation"></a>脚本说明
@@ -65,7 +84,8 @@ az group delete -n GROUP3 --no-wait --yes
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | 创建虚拟机。  |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#list) | 与 `--query` 结合使用，确保在重新启动 VM 之前对其进行预配。 |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm#list) | 与 `--query` 一起使用，用来确保在重新启动 VM 之前已对其进行了预配，然后获取这些 VM 的 ID 以将其重新启动。 |
+| [az resource list](https://docs.microsoft.com/cli/azure/vm#list) | 与 `--query` 一起使用来获取使用该标记的 VM 的 ID。 |
 | [az vm restart](https://docs.microsoft.com/cli/azure/vm#list) | 重新启动 VM。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | 删除资源组，包括所有嵌套的资源。 |
 

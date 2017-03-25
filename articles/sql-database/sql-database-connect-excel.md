@@ -14,20 +14,20 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2016
+ms.date: 03/10/2017
 ms.author: jhubbard
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: d70c0350809325234db366acc676e381ff042c13
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 0bab2cde451687311936ee74f304580a2a3b4b5e
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库并创建报表
 
-了解如何将 Excel 连接到云中的 SQL 数据库，以便导入数据并根据数据库中的值来创建表和图表。 在本教程中，你将设置 Excel 与数据库表之间的连接，保存用于存储 Excel 的数据和连接信息的文件，然后根据数据库值创建分析数据透视图。
+将 Excel 连接到云中的 SQL 数据库，导入数据并根据数据库中的值来创建表和图表。 在本教程中，你将设置 Excel 与数据库表之间的连接，保存用于存储 Excel 的数据和连接信息的文件，然后根据数据库值创建分析数据透视图。
 
-在开始之前，需要在 Azure 中创建一个 SQL 数据库。 如果你没有，请参阅 [创建你的第一个 SQL 数据库](sql-database-get-started.md) ，以在几分钟内获取数据库，并让其中的示例数据正常运行。 在本文中，你可以从那篇文章中的示例数据导入 Excel，但你可以对自己的数据执行类似的步骤。
+在开始之前，需要在 Azure 中创建一个 SQL 数据库。 如果你没有，请参阅 [创建你的第一个 SQL 数据库](sql-database-get-started.md) ，以在几分钟内获取数据库，并让其中的示例数据正常运行。 在本文中，会将该文章中的示例数据导入 Excel，但你可以使用自己的数据执行类似的步骤。
 
 你还需要 Excel 的副本。 本文使用 [Microsoft Excel 2016](https://products.office.com/en-US/)。
 

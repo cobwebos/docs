@@ -17,9 +17,9 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
-ms.openlocfilehash: 3a917b34c925965aacd161e8a01284d9a01bebae
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 239b4a141c0e7a1ac5bbb23030fede45ed749138
+ms.lasthandoff: 03/21/2017
 
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS 如何与其他 Azure 服务一起工作
@@ -34,11 +34,10 @@ Azure DNS 是一种托管的 DNS 管理和名称解析服务。 这样，你能�
 | Azure 服务 | 网络接口 | 说明 |
 | --- | --- | --- |
 | 应用程序网关 |前端的公共 IP |可以创建 DNS A 或 CNAME 记录。 |
-| 负载平衡器 |前端的公共 IP |可以创建 DNS A 或 CNAME 记录。 负载平衡器可以拥有一个动态分配的 IPv6 公共 IP 地址。 因此，你必须为 IPv6 地址创建 CNAME 记录。 |
-| 流量管理器 |公共名称 |只能创建映射到分配给你的流量管理器配置文件的 trafficmanager.net 名称的 CNAME。 有关详细信息，请参阅[流量管理器工作原理](../traffic-manager/traffic-manager-how-traffic-manager-works.md#traffic-manager-example)。 |
+| 负载均衡器 |前端的公共 IP |可以创建 DNS A 或 CNAME 记录。 负载均衡器可以拥有一个动态分配的 IPv6 公共 IP 地址。 因此，你必须为 IPv6 地址创建 CNAME 记录。 |
+| 流量管理器 |公共名称 |只能创建映射到分配给你的流量管理器配置文件的 trafficmanager.net 名称的 CNAME。 有关详细信息，请参阅[流量管理器工作原理](../traffic-manager/traffic-manager-overview.md#traffic-manager-example)。 |
 | 云服务 |公共 IP |对于静态分配的 IP 地址，可以创建一条 DNS A 记录。 对于动态分配的 IP 地址，必须创建一条映射到 *cloudapp.net* 名称的 CNAME 记录。 此规则适用于在经典门户中创建的 VM，因为它们是作为云服务部署的。 有关详细信息，请参阅[在云服务中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 |
 | App Service |外部 IP |对于外部 IP 地址，可以创建一条 DNS A 记录。 否则，必须创建一条映射到 azurewebsites.net 名称的 CNAME 记录。 有关详细信息，请参阅[将自定义域名映射到 Azure 应用](../app-service-web/web-sites-custom-domain-name.md) |
-| Resource Manager VM |公共 IP |Resource Manager VM 可以具有公共 IP 地址。 使用公共 IP 地址的 VM 也可能在负载平衡器后面。 你可以为公共地址创建 DNS A 或 CNAME 记录。 此自定义名称可用于绕过负载平衡器中的 VIP。 |
+| Resource Manager VM |公共 IP |Resource Manager VM 可以具有公共 IP 地址。 使用公共 IP 地址的 VM 也可能在负载均衡器后面。 你可以为公共地址创建 DNS A 或 CNAME 记录。 此自定义名称可用于绕过负载均衡器中的 VIP。 |
 | 经典 VM |公共 IP |使用 PowerShell 或 CLI 创建的经典 VM 可以配置为使用动态或静态（保留）的虚拟地址。 你可以分别创建 DNS CNAME 或 A 记录。 |
-
 

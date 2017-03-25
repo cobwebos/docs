@@ -13,85 +13,53 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/07/2016
+ms.date: 03/10/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 0d7eba02757fb1b2263cf11c561b374eab837f21
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 1701646ce8cb9494561c37d46cd435b4e7608fe8
+ms.lasthandoff: 03/14/2017
 
 
 ---
-# <a name="set-up-gpu-drivers-for-n-series-linux-vms"></a>为 N 系列 Linux VM 安装 GPU 驱动程序
-若要利用运行支持的 Linux 分发的 Azure N 系列 VM 的 GPU 功能，部署后必须在每个 VM 上安装 NVIDIA 图形驱动程序。 本文同样适用于 [Windows VM](virtual-machines-windows-n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-有关 N 系列 VM 规格、存储容量和磁盘详细信息，请参阅[虚拟机的大小](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+# <a name="set-up-gpu-drivers-for-n-series-vms-running-linux"></a>为运行 Linux 的 N 系列 VM 安装 GPU 驱动程序
+
+若要利用运行支持的 Linux 分发的 Azure N 系列 VM 的 GPU 功能，部署后必须在每个 VM 上安装 NVIDIA 图形驱动程序。 针对 [Windows VM](virtual-machines-windows-n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 也提供了驱动程序安装信息。
+
+
+> [!IMPORTANT]
+> 目前，仅在运行 Ubuntu Server 16.04 LTS 的 Azure NC VM 上提供 Linux GPU 支持。
+> 
+
+有关 N 系列 VM 规格、存储容量和磁盘详细信息，请参阅[虚拟机的大小](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 另请参阅 [N 系列 VM 的一般注意事项](#general-considerations-for-n-series-vms)。
 
 
 
-## <a name="supported-gpu-drivers"></a>支持的 GPU 驱动程序
+## <a name="install-nvidia-cuda-drivers"></a>安装 NVIDIA CUDA 驱动程序
+
+下面是从 NVIDIA CUDA 工具包 8.0 在 Linux NC VM 上安装 NVIDIA 驱动程序的步骤。 C 和 C++ 开发人员可以选择安装完整的工具包来生成 GPU 加速应用程序。 有关详细信息，请参阅 [CUDA 安装指南](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)。
 
 
 > [!NOTE]
-> 目前，仅在运行 Ubuntu Server 16.04 LTS 的 Azure NC VM 上提供 Linux GPU 支持。
+> 此处提供的驱动程序下载链接在本文发布时是最新的。 有关最新驱动程序，请访问 [NVIDIA](http://www.nvidia.com/) 网站。
 
-### <a name="nvidia-tesla-drivers-for-nc-vms"></a>适用于 NC VM 的 NVIDIA Tesla 驱动程序
-
-* [Ubuntu 16.04 LTS](https://go.microsoft.com/fwlink/?linkid=836899)（.run 自解压安装程序）
-
-## <a name="tesla-driver-installation-on-ubuntu-1604-lts"></a>在 Ubuntu 16.04 LTS 上安装 Tesla 驱动程序
-
-1. 与 Azure N 系列 VM 建立 SSH 连接。
-
-2. 若要验证系统是否具有支持 CUDA 的 GPU，请运行以下命令：
-
-    ```bash
-    lspci | grep -i NVIDIA
-    ```
-    你将看到类似于以下示例（显示 NVIDIA Tesla K80 卡）的输出：
-
-    ![lspci 命令输出](./media/virtual-machines-linux-n-series-driver-setup/lspci.png)
-
-3. 下载分发的驱动程序的 .run 文件。 以下示例命令将 Ubuntu 16.04 LTS Tesla 驱动程序下载到 /tmp 目录中：
-
-    ```bash
-    wget -O /tmp/NVIDIA-Linux-x86_64-367.48.run https://go.microsoft.com/fwlink/?linkid=836899
-    ```
-
-4. 如果需要在系统上安装 `gcc` 和 `make`（Tesla 驱动程序所必需），请键入以下命令：
-
-    ```bash
-    sudo apt-get update
-    
-    sudo apt install gcc
-
-    sudo apt install make
-    ```
-
-4. 更改到包含驱动程序安装程序的目录并运行如下命令：
-
-    ```bash
-    chmod +x NVIDIA-Linux-x86_64-367.48.run
-    
-    sudo sh ./NVIDIA-Linux-x86_64-367.48.run
-    ```
-
-## <a name="verify-driver-installation"></a>验证驱动程序安装
-
-
-若要查询 GPU 设备状态，请运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。 
-
-![NVIDIA 设备状态](./media/virtual-machines-linux-n-series-driver-setup/smi.png)
-
-## <a name="optional-installation-of-nvidia-cuda-toolkit-on-ubuntu-1604-lts"></a>Ubuntu 16.04 LTS 上 NVIDIA CUDA 工具包的可选安装
-
-可以选择在运行 Ubuntu 16.04 LTS 的 NC VM 上安装 NVIDIA CUDA 工具包 8.0。 除了 GPU 驱动程序外，该工具包还为生成 GPU 加速应用程序的 C 和 C++ 开发人员提供全面的开发环境。
-
-若要安装 CUDA 工具包，请运行如下命令：
+若要安装 CUDA 工具包，请建立到每个虚拟机的 SSH 连接。 若要验证系统是否具有支持 CUDA 的 GPU，请运行以下命令：
 
 ```bash
-CUDA_REPO_PKG=cuda-repo-ubuntu1604_8.0.44-1_amd64.deb
+lspci | grep -i NVIDIA
+```
+你将看到类似于以下示例（显示 NVIDIA Tesla K80 卡）的输出：
+
+![lspci 命令输出](./media/virtual-machines-linux-n-series-driver-setup/lspci.png)
+
+然后，运行特定于你的分发的命令。
+
+### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+
+```bash
+CUDA_REPO_PKG=cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 
 wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
@@ -102,9 +70,49 @@ rm -f /tmp/${CUDA_REPO_PKG}
 sudo apt-get update
 
 sudo apt-get install cuda-drivers
+
+```
+安装可能需要几分钟。
+
+若要安装完整的 CUDA 工具包，请键入：
+
+```bash
+sudo apt-get install cuda
 ```
 
-安装可能需要几分钟。
+重新启动 VM，然后继续验证安装。
+
+## <a name="verify-driver-installation"></a>验证驱动程序安装
+
+
+若要查询 GPU 设备状态，请建立到 VM 的 SSH 连接，然后运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。 
+
+![NVIDIA 设备状态](./media/virtual-machines-linux-n-series-driver-setup/smi.png)
+
+## <a name="cuda-driver-updates"></a>CUDA 驱动程序更新
+
+在部署后，建议你定期更新 CUDA 驱动程序。
+
+### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+
+```bash
+sudo apt-get update
+
+sudo apt-get upgrade -y
+
+sudo apt-get dist-upgrade -y
+
+sudo apt-get install cuda-drivers
+```
+
+在更新完成后，重新启动 VM。
+
+
+[!INCLUDE [virtual-machines-n-series-considerations](../../includes/virtual-machines-n-series-considerations.md)]
+
+* 我们不建议在 Ubuntu NC VM 上安装 X server 或使用 nouveau 驱动程序的其他系统。 在安装 NVIDIA GPU 驱动程序之前，需要禁用 nouveau 驱动程序。  
+
+* 如果希望捕获你在其中安装了 NVIDIA 驱动程序的 Linux VM 的映像，请参阅[如何通用化和捕获 Linux 虚拟机](virtual-machines-linux-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 

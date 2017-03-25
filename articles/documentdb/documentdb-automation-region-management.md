@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: 655f501f920e3169450831f501f7183ae46a4a60
-ms.openlocfilehash: 70614f7d97466fb7e8a2f325d744f5e1632640a6
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 19ba92fae63cadef20cd5414fa23bf4821ab6d56
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -30,7 +30,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 [Azure Resource Manager �
 
 ## <a name="getting-ready"></a>做好准备
 
-必须拥有正确的 Azure CLI 1.0 版本和 Azure 帐户，才能将 Azure CLI 1.0 与 Azure 资源组配合使用。 如果没有 Azure CLI 1.0，[请安装它](../xplat-cli-install.md)。
+必须拥有正确的 Azure CLI 1.0 版本和 Azure 帐户，才能将 Azure CLI 1.0 与 Azure 资源组配合使用。 如果没有 Azure CLI 1.0，[请安装它](../cli-install-nodejs.md)。
 
 ### <a name="update-your-azure-cli-10-version"></a>更新 Azure CLI 1.0 版本
 
@@ -39,7 +39,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 [Azure Resource Manager �
     azure --version
     0.10.4 (node: 4.2.4)
 
-如果版本不是 0.10.4 或更高版本，则需要使用某个本机安装程序[安装 Azure CLI 1.0](../xplat-cli-install.md) 或进行更新，或者通过在 **npm** 中键入 `npm update -g azure-cli` 进行更新或键入 `npm install -g azure-cli` 进行安装。
+如果版本不是 0.10.4 或更高版本，则需要使用某个本机安装程序[安装 Azure CLI 1.0](../cli-install-nodejs.md) 或进行更新，或者通过在 **npm** 中键入 `npm update -g azure-cli` 进行更新或键入 `npm install -g azure-cli` 进行安装。
 
 ### <a name="set-your-azure-account-and-subscription"></a>设置 Azure 帐户和订阅
 

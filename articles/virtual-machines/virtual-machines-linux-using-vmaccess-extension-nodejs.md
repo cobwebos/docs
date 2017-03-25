@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: debdb8a16c8cfd6a137bd2a7c3b82cfdbedb0d8c
-ms.openlocfilehash: 3f5a5f908106adab72f7e8ba5a15af58f8e1175d
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 5574f726d90ff804ae40852ee20850150a179a00
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -26,8 +26,8 @@ ms.lasthandoff: 02/27/2017
 本文说明如何使用 Azure VMAcesss 扩展检查或修复磁盘、重置用户访问权限、管理用户帐户，或重置 Linux 上的 SSHD 配置。 本文需要以下条件：
 
 * 一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）。
-* 已使用 `azure login` 登录 [Azure CLI](../xplat-cli-install.md)。
-* Azure CLI *必须处于 *Azure Resource Manager 模式`azure config mode arm`。
+* 已使用 `azure login` 登录 [Azure CLI](../cli-install-nodejs.md)。
+* Azure CLI *必须处于*Azure Resource Manager 模式`azure config mode arm`。
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
+ms.custom: loading
 translationtype: Human Translation
-ms.sourcegitcommit: 3aa72480898e00cab8ee48e646ea63ade01f347f
-ms.openlocfilehash: 31c7337bdf9dd302ea2f7c5dd0af9d668b23acb2
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: aca0e4cfdcfb3e3ed2e69ad8153b4c965b299806
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.lasthandoff: 02/22/2017
 >[!NOTE] 
 > 要从 SQL 数据仓库连接到 Azure Data Lake，需要 Active Directory 应用程序的客户端 ID、密钥和 OAuth2.0 令牌终结点值。 有关如何获取这些值的详细信息可在上面的链接中找到。
 
-* SQL Server Management Studio 或 SQL Server Data Tools，若要下载 SSMS 并进行连接，请参阅[查询 SSMS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms.md)
+* SQL Server Management Studio 或 SQL Server Data Tools，若要下载 SSMS 并进行连接，请参阅[查询 SSMS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)
 
 * Azure SQL 数据仓库，若要创建一个，请遵循：https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
 
@@ -56,7 +57,7 @@ PolyBase 使用 T-SQL 外部对象来定义外部数据的位置和属性。 外
 ###  <a name="create-a-credential"></a>创建凭据
 若要访问 Azure Data Lake Store，需要创建数据库主密钥，以便加密下一步中使用的凭据密码。
 然后创建数据库范围的凭据，以存储 AAD 中设置的服务主体凭据。 已使用 PolyBase 连接到 Windows Azure 存储 Blob 的用户请注意，该凭据语法有所不同。
-若要连接到 Azure Data Lake Store，必须先创建 Azure Active Directory 应用程序，然后再创建数据库范围的凭据。
+若要连接到 Azure Data Lake Store，必须**先**创建 Azure Active Directory 应用程序，创建访问密钥，并授予应用程序访问 Azure Data Lake 资源的权限。 执行这些步骤的说明位于[此处](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)。
 
 ```sql
 -- A: Create a Database Master Key.
@@ -72,7 +73,7 @@ CREATE MASTER KEY;
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/en-us/library/mt270260.aspx
 
-CREATE DATABASE SCOPED CREDENTIAL ADL_User
+CREATE DATABASE SCOPED CREDENTIAL ADLCredential
 WITH
     IDENTITY = '<client_id>@<OAuth_2.0_Token_EndPoint>',
     SECRET = '<key>'
@@ -95,7 +96,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 WITH (
     TYPE = HADOOP,
     LOCATION = 'adl://<AzureDataLake account_name>.azuredatalake.net',
-    CREDENTIAL = AzureStorageCredential
+    CREDENTIAL = ADLCredential
 );
 ```
 

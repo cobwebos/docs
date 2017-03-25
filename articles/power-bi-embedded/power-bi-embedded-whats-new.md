@@ -13,16 +13,42 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 03/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2f0f36e7ffeec52bacc35ac5039cd183976dc3aa
-ms.openlocfilehash: fd2649f9936da9f86d4fe24b4fa87ca1733d1f3c
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 07c53a5d6b1881a4c207a2aefed9fcede0fa069e
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="whats-new-in-power-bi-embedded"></a>Power BI Embedded 中的新增功能
+
 定期发布 **Power BI Embedded** 更新。 但是，并非每个版本都包括面向用户的新功能；某些版本聚焦于后端的服务功能。 此处将重点介绍面向用户的新功能。 请务必经常查看。
+
+## <a name="march-2017"></a>2017 年 3 月
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/ibuN4DzCl5c?showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+**自助服务功能**
+
+* [新建报表](power-bi-embedded-create-report-from-dataset.md)
+* [报表另存为](power-bi-embedded-save-reports.md)
+* 在“读取/编辑/新建”模式下嵌入报表 
+* [在“编辑/读取”模式之间切换报表](power-bi-embedded-toggle-mode.md)
+
+**使用 REST API 进行数据连接**
+
+* [创建数据集](https://msdn.microsoft.com/library/azure/mt778875.aspx)
+* 推送数据 
+
+**管理 API**
+
+* 克隆报表和数据集
+* 将报表绑定到不同数据集
+
+**示例**
+
+* 更新的 [JavaScript 报表嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 ## <a name="december-2016"></a>2016 年 12 月
 
@@ -50,10 +76,5 @@ ms.openlocfilehash: fd2649f9936da9f86d4fe24b4fa87ca1733d1f3c
 * 提供了对 Azure SDK、PowerShell 和 CLI 的 Power BI Embedded 支持。
 * 用户可以将可视化数据导出到 **.csv** 文件。
 * 现在，与 Microsoft Azure 相同的所有语言/区域设置都支持 Power BI Embedded。 若要了解详细信息，请参阅 [Azure - 语言](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx)。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

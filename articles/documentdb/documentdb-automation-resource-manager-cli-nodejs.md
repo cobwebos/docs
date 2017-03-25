@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 9ebf15e5f2ca21f3ec39af9be93253694a97cdf8
-ms.openlocfilehash: ba2f9d965528e69ce2d1fce62e5b16e738263c87
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4725f4200446434bfcb8754aac9bf0d99f8a7526
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/27/2017
 DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和 Azure CLI 1.0 创建的 DocumentDB 资源。
 
 ## <a name="getting-ready"></a>做好准备
-必须拥有正确的 Azure CLI 版本和 Azure 帐户，才能将 Azure CLI 1.0 与 Azure 资源组配合使用。 如果没有 Azure CLI 1.0，[请安装](../xplat-cli-install.md)。
+必须拥有正确的 Azure CLI 版本和 Azure 帐户，才能将 Azure CLI 1.0 与 Azure 资源组配合使用。 如果没有 Azure CLI 1.0，[请安装](../cli-install-nodejs.md)。
 
 ### <a name="update-your-azure-cli-10-version"></a>更新 Azure CLI 1.0 版本
 在命令提示符处，键入 `azure --version` 即可查看安装的是否为版本 0.10.4 或更高版本。 系统可能会在此步骤提示参与 Microsoft Azure CLI 数据收集，此时可以选择 y 或 n 来选择参与或不参与。
@@ -42,7 +42,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
     azure --version
     0.10.4 (node: 4.2.4)
 
-如果版本不是 0.10.4 或更高版本，则需要使用某个本机安装程序[安装 Azure CLI 1.0](../xplat-cli-install.md) 或进行更新，或者通过在 **npm** 中键入 `npm update -g azure-cli` 进行更新或键入 `npm install -g azure-cli` 进行安装。
+如果版本不是 0.10.4 或更高版本，则需要使用某个本机安装程序[安装 Azure CLI 1.0](../cli-install-nodejs.md) 或进行更新，或者通过在 **npm** 中键入 `npm update -g azure-cli` 进行更新或键入 `npm install -g azure-cli` 进行安装。
 
 ### <a name="set-your-azure-account-and-subscription"></a>设置 Azure 帐户和订阅
 如果没有 Azure 订阅，但是有 Visual Studio 订阅，则可以激活 [Visual Studio 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 或者注册获取[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -64,7 +64,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
 
 在浏览器中打开 [https://aka.ms/devicelogin](https://aka.ms/devicelogin)，然后输入命令输出中提供的代码。
 
-![屏幕截图：显示 Microsoft Azure CLI 1.0 的设备登录屏幕](media/documentdb-automation-resource-manager-cli/azure-cli-login-code.png)
+![屏幕截图：显示了 Microsoft Azure CLI 1.0 的设备登录屏幕](media/documentdb-automation-resource-manager-cli/azure-cli-login-code.png)
 
 输入代码后，便可选择想要在浏览器中使用的标识，并根据需要提供用户名和密码。
 
@@ -84,7 +84,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
 除了此处所述的交互式登录方法之外，还有一些其他的 Azure CLI 1.0 登录方法可供使用。 有关其他方法的详细信息以及处理多个订阅的相关信息，请参阅[从 Azure 命令行接口 (Azure CLI 1.0) 连接到 Azure 订阅](../xplat-cli-connect.md)。
 
 ### <a name="switch-to-azure-cli-10-resource-group-mode"></a>切换到 Azure CLI 1.0 资源组模式
-默认情况下，Azure CLI 1.0 在服务管理模式下启动（**asm** 模式）。 键入以下内容，切换到资源组模式。
+默认情况下，Azure CLI 1.0 以服务管理模式（**asm** 模式）启动。 键入以下内容，切换到资源组模式。
 
     azure config mode arm
 
@@ -137,10 +137,10 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
 
 可在 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)中了解有关 Azure 资源组及其功能的详细信息。 若要了解如何创作模板，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
-## <a name="a-idquick-create-documentdb-accountatask-create-a-single-region-documentdb-account"></a><a id="quick-create-documentdb-account"></a>任务：创建单区域 DocumentDB 帐户
+## <a id="quick-create-documentdb-account"></a>任务：创建单区域 DocumentDB 帐户
 使用本部分中的说明创建单区域 DocumentDB 帐户。 可以在 Azure CLI 1.0 中使用或不使用 Resource Manager 模板完成此任务。
 
-### <a name="a-idcreate-single-documentdb-account-cli-arma-create-a-single-region-documentdb-account-using-azure-cli-10-without-resource-manager-templates"></a><a id="create-single-documentdb-account-cli-arm"></a>在 Azure CLI 1.0 中不使用 Resource Manager 模板创建单区域 DocumentDB 帐户
+### <a id="create-single-documentdb-account-cli-arm"></a>在 Azure CLI 1.0 中不使用 Resource Manager 模板创建单区域 DocumentDB 帐户
 在命令提示符处输入下列命令，于新的或现有的资源组中创建 DocumentDB 帐户：
 
 > [!TIP]
@@ -180,7 +180,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
 
 在此命令返回之后，在帐户更改为“联机”状态以准备好可供使用之前，该帐户将会进入“正在创建”状态数分钟的时间。 可以在 [Azure 门户](https://portal.azure.com)中的“DocumentDB 帐户”边栏选项卡上检查帐户的状态。
 
-### <a name="a-idcreate-single-documentdb-account-cli-arma-create-a-single-region-documentdb-account-using-azure-cli-10-with-resource-manager-templates"></a><a id="create-single-documentdb-account-cli-arm"></a>在 Azure CLI 1.0 中使用 Resource Manager 模板创建单区域 DocumentDB 帐户
+### <a id="create-single-documentdb-account-cli-arm"></a>在 Azure CLI 1.0 中使用 Resource Manager 模板创建单区域 DocumentDB 帐户
 本部分中的说明介绍如何使用 Azure Resource Manager 模板和可选参数文件（这两者都是 JSON 文件）来创建 DocumentDB 帐户。 使用模板可以准确描述所需的信息，并可重复使用而不会出现任何错误。
 
 创建含有下列内容的本地模板文件。 将文件命名为 azuredeploy.json。
@@ -292,10 +292,10 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
 
 在此命令返回之后，在帐户更改为“联机”状态以准备好可供使用之前，该帐户将会进入“正在创建”状态数分钟的时间。 可以在 [Azure 门户](https://portal.azure.com)中的“DocumentDB 帐户”边栏选项卡上检查帐户的状态。
 
-## <a name="a-idquick-create-documentdb-with-mongodb-api-accountatask-create-a-single-region-documentdb-api-for-mongodb-account"></a><a id="quick-create-documentdb-with-mongodb-api-account"></a>任务：创建单区域 DocumentDB：MongoDB 帐户 API
+## <a id="quick-create-documentdb-with-mongodb-api-account"></a>任务：创建单区域 DocumentDB：MongoDB 帐户 API
 使用本部分中的说明为 MongoDB 帐户创建单区域 API。 可以在 Azure CLI 1.0 中使用 Resource Manager 模板完成此任务。
 
-### <a name="a-idcreate-single-documentdb-with-mongodb-api-account-cli-arma-create-a-single-region-mongodb-account-using-azure-cli-10-with-resource-manager-templates"></a><a id="create-single-documentdb-with-mongodb-api-account-cli-arm"></a>在 Azure CLI 1.0 中使用 Resource Manager 模板创建单区域 MongoDB 帐户
+### <a id="create-single-documentdb-with-mongodb-api-account-cli-arm"></a>在 Azure CLI 1.0 中使用 Resource Manager 模板创建单区域 MongoDB 帐户
 本部分中的说明介绍如何使用 Azure Resource Manager 模板和可选参数文件（这两者都是 JSON 文件）来创建 MongoDB 帐户 API。 使用模板可以准确描述所需的信息，并可重复使用而不会出现任何错误。
 
 创建含有下列内容的本地模板文件。 将文件命名为 azuredeploy.json。
@@ -410,10 +410,10 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
 
 在此命令返回之后，在帐户更改为“联机”状态以准备好可供使用之前，该帐户将会进入“正在创建”状态数分钟的时间。 可以在 [Azure 门户](https://portal.azure.com)中的“DocumentDB 帐户”边栏选项卡上检查帐户的状态。
 
-## <a name="a-idcreate-multi-documentdb-accountatask-create-a-multi-region-documentdb-account"></a><a id="create-multi-documentdb-account"></a>任务：创建多区域 DocumentDB 帐户
+## <a id="create-multi-documentdb-account"></a>任务：创建多区域 DocumentDB 帐户
 DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions/#services)[全局分发数据][distribute-globally]。 创建 DocumentDB 帐户时，可以指定要将服务放在哪个区域。 使用本部分中的说明创建多区域 DocumentDB 帐户。 可以在 Azure CLI 1.0 中使用或不使用 Resource Manager 模板完成此任务。
 
-### <a name="a-idcreate-multi-documentdb-account-clia-create-a-multi-region-documentdb-account-using-azure-cli-10-without-resource-manager-templates"></a><a id="create-multi-documentdb-account-cli"></a> 在 Azure CLI 1.0 中不使用 Resource Manager 模板创建多区域 DocumentDB 帐户
+### <a id="create-multi-documentdb-account-cli"></a> 在 Azure CLI 1.0 中不使用 Resource Manager 模板创建多区域 DocumentDB 帐户
 在命令提示符处输入下列命令，于新的或现有的资源组中创建 DocumentDB 帐户：
 
 > [!TIP]
@@ -453,7 +453,7 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
 在此命令返回之后，在帐户更改为“联机”状态以准备好可供使用之前，该帐户将会进入“正在创建”状态数分钟的时间。 可以在 [Azure 门户](https://portal.azure.com)中的“DocumentDB 帐户”边栏选项卡上检查帐户的状态。
 
-### <a name="a-idcreate-multi-documentdb-account-cli-arma-create-a-multi-region-documentdb-account-using-azure-cli-10-with-resource-manager-templates"></a><a id="create-multi-documentdb-account-cli-arm"></a> 在 Azure CLI 1.0 中使用 Resource Manager 模板创建多区域 DocumentDB 帐户
+### <a id="create-multi-documentdb-account-cli-arm"></a> 在 Azure CLI 1.0 中使用 Resource Manager 模板创建多区域 DocumentDB 帐户
 本部分中的说明介绍如何使用 Azure Resource Manager 模板和可选参数文件（这两者都是 JSON 文件）来创建 DocumentDB 帐户。 使用模板可以准确描述所需的信息，并可重复使用而不会出现任何错误。
 
 创建含有下列内容的本地模板文件。 将文件命名为 azuredeploy.json。

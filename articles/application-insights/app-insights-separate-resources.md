@@ -4,18 +4,19 @@ description: "在开发的不同阶段监视应用程序的性能和使用情况
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 96614dd3c0bf9c55ffd81d0912ecb62b71c32b22
-ms.openlocfilehash: 2eeb22d310a3aa67bacf821d319fb2919d0b536f
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 43fb1e764c929be14d42c3d214b051aeb5367d77
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 2eeb22d310a3aa67bacf821d319fb2919d0b536f
 
 首先，让我们了解问题。 从应用程序收到的数据由 Application Insights 在 Microsoft Azure *资源*中进行存储和处理。 每个资源都由*检测密钥* (iKey) 标识。 在应用中，此密钥提供给 Application Insights SDK，以便它将收集的数据发送到正确的资源。 该密钥可以在代码中或 ApplicationInsights.config 中提供。 通过在 SDK 中更改密钥，可以将数据定向到不同的资源。 
 
-在简单的案例中，在为新应用程序创建代码时，也在 Application Insights 中创建新资源。 在 Visual Studio 中，“新建项目”对话框为你执行此操作。
+在简单的案例中，将应用程序注册到 Application Insights 时，将在 Application Insights 中创建新资源。 在 Visual Studio 中，“配置 Application Insights”或“添加 Application Insights”对话框将为你执行此操作。
 
 如果它是大容量网站，则可能在多个服务器实例上部署它。
 
@@ -61,7 +62,7 @@ ms.openlocfilehash: 2eeb22d310a3aa67bacf821d319fb2919d0b536f
 
 （如果系统是 Azure 云服务，有[另一种方法可以设置单独 ikey](app-insights-cloudservices.md)。）
 
-### <a name="a-namedynamic-ikeya-dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
+### <a name="dynamic-ikey"></a> 动态检测密钥
 在初始化方法中设置密钥，如 ASP.NET 服务中的 global.aspx.cs：
 
 *C#*
@@ -115,10 +116,5 @@ ms.openlocfilehash: 2eeb22d310a3aa67bacf821d319fb2919d0b536f
 ![单击“Essentials”、单击“检测密钥，然后按“CTRL+C”](./media/app-insights-separate-resources/02-props.png)
 
 需要将向其发送数据的所有资源的检测密钥。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 2/21/2017
 ms.author: juluk
 translationtype: Human Translation
-ms.sourcegitcommit: 59af3469a5b2d5cca68bf18dca1aa1e3ab684adb
-ms.openlocfilehash: 0675b6471e37e89e426df85e2fb696fcff2927fd
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: c216b573e91894f2b9e17bf870c03b7d2a0f7161
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="deploy-lamp-stack-with-the-azure-cli-10"></a>使用 Azure CLI 1.0 部署 LAMP 堆栈
-本文介绍如何在 Azure 上部署 Apache web 服务器、MySQL 和 PHP（LAMP 堆栈）。 用户需要一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）和[连接到 Azure 帐户](../xplat-cli-connect.md)的 [Azure CLI](../xplat-cli-install.md)。
+本文介绍如何在 Azure 上部署 Apache web 服务器、MySQL 和 PHP（LAMP 堆栈）。 用户需要一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）和[连接到 Azure 帐户](../xplat-cli-connect.md)的 [Azure CLI](../cli-install-nodejs.md)。
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
 可以使用以下 CLI 版本之一完成任务：

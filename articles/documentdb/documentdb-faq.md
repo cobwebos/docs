@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 03/08/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: cf8db132c7f541017744505bf0fca9393db8b3f9
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 8ebc1aa663f298d1f3f495523d85bda8777d5d29
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -122,6 +122,26 @@ DocumentDB 通过 JavaScript 存储过程和触发器支持语言集成式事务
 
 ### <a name="is-a-local-instance-of-documentdb-available"></a>DocumentDB 的本地实例是否可用？
 是的。 [Azure DocumentDB 模拟器](documentdb-nosql-local-emulator.md)提供对 DocumentDB 服务的高保真模拟。 它支持与 Azure DocumentDB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 DocumentDB 模拟器开发和测试应用程序，并通过对 DocumentDB 的连接终结点进行单一配置更改将其部署到全局范围的 Azure。
+
+## <a name="database-questions-about-developing-against-api-for-mongodb"></a>针对 MongoDB 的 API 进行开发的相关数据库问题
+### <a name="what-is-documentdbs-api-for-mongodb"></a>什么是 DocumentDB：MongoDB 的 API？
+Microsoft Azure DocumentDB：MongoDB 的 API 是一个兼容层，使应用程序可以使用现有的社区支持的 Apache MongoDB API 和驱动程序轻松透明地与本机 DocumentDB 数据库引擎进行通信。 开发人员现在可以使用现有 MongoDB 工具链和技能构建利用 DocumentDB、受益于 DocumentDB 的独特功能（包括自动索引、备份维护、得到资金支持的服务级别协议 (SLA) 等）的应用程序。
+
+### <a name="how-to-do-i-connect-to-my-api-for-mongodb-database"></a>如何连接到 MongoDB 的 API 数据库？
+连接到 DocumentDB：MongoDB 的 API 的最快捷方法是前往 [Azure 门户](https://portal.azure.com)。 导航到你的帐户。 在帐户的*左导航*中，单击“快速启动”。 *快速启动*是获取用于连接到数据库的代码片段的最佳方式。 
+
+DocumentDB 强制实施严格的安全要求和标准。 DocumentDB 帐户需要通过 *SSL* 进行身份验证和安全通信，因此请确保使用 TLSv1.2。
+
+有关更多详细信息，请参阅[连接到 MongoDB 的 API 数据库](documentdb-connect-mongodb-account.md)。
+
+### <a name="are-there-additional-error-codes-for-an-api-for-mongodb-database"></a>MongoDB 的 API 数据库是否有其他错误代码？
+除了常见的 MongoDB 错误代码外，MongoDB 的 API 具有其自己的特定错误代码。
+
+
+| 错误               | 代码  | 说明  | 解决方案  |
+|---------------------|-------|--------------|-----------|
+| TooManyRequests     | 16500 | 使用的请求单位总数已超过了集合的预配请求单位率，已达到限制。 | 请考虑从 Azure 门户缩放集合的吞吐量或重试。 |
+| ExceededMemoryLimit | 16501 | 作为一种多租户服务，操作已超出客户端的内存配额。 | 通过限制性更强的查询条件缩小操作的作用域，或者通过 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)联系技术支持。 <br><br>*Ex:  &nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
 [azure-portal]: https://portal.azure.com
 [query]: documentdb-sql-query.md

@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: dd7c67bf83e4b95b978b793c8169b7e9c98bc939
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 53c9b75599af48be82c63bc7a9df31d4c2de13a3
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -68,7 +68,7 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 ## <a name="preparation"></a>准备工作
 建议创建可在其中包含作业管理器和任务处理器的解决方案，因为这样可以更轻松地在作业管理器和任务处理器程序之间共享代码。 若要创建此解决方案，请遵循以下步骤：
 
-1. 打开 Visual Studio 2015，然后选择“文件” > “新建” > “项目”。
+1. 打开 Visual Studio，然后选择“文件” > “新建” > “项目”。
 2. 在“模板”下展开“其他项目类型”，单击“Visual Studio 解决方案”，然后选择“空白解决方案”。
 3. 键入用于描述应用程序和此解决方案用途的名称（例如，“LitwareBatchTaskPrograms”）。
 4. 若要创建新解决方案，请单击“确定”。
@@ -87,7 +87,7 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 ### <a name="create-a-job-manager-using-the-template"></a>使用模板创建作业管理器
 若要在前面创建的解决方案中添加作业管理器，请遵循以下步骤：
 
-1. 在 Visual Studio 2015 中打开现有解决方案。
+1. 在 Visual Studio 中打开现有解决方案。
 2. 在解决方案资源管理器中，右键单击解决方案，然后单击“添加” > “新建项目”。
 3. 在“Visual C#”下单击“云”，然后单击“随附作业拆分器的 Azure Batch 作业管理器”。
 4. 键入用于描述应用程序并将此项目标识为作业管理器的名称（例如“LitwareJobManager”）。
@@ -256,7 +256,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 ### <a name="create-a-task-processor-using-the-template"></a>使用模板创建任务处理器
 若要在前面创建的解决方案中添加任务处理器，请遵循以下步骤：
 
-1. 在 Visual Studio 2015 中打开现有解决方案。
+1. 在 Visual Studio 中打开现有解决方案。
 2. 在解决方案资源管理器中，右键单击解决方案，单击“添加”，然后单击“新建项目”。
 3. 在“Visual C#”下单击“云”，然后单击“Azure Batch 任务处理器”。
 4. 键入用于描述应用程序并将此项目标识为任务处理器的名称（例如“LitwareTaskProcessor”）。

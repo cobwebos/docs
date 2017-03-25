@@ -3,7 +3,7 @@ title: "用于 API 发现和代码生成的应用服务 API 应用元数据 | Mi
 description: "了解 Azure 应用服务中的 API 应用如何使用 Swagger 元数据来简化 API 发现和代码生成。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: c7f8e33a-61cc-486f-89df-4a97dc3c71d4
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
-ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
-ms.openlocfilehash: 3b41340f30239dc0102808b5e492ee7300dcd12b
-ms.lasthandoff: 12/21/2016
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 92057ef0c40bfc79a66265d2d369d7abf72adc8e
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/21/2016
 ![](./media/app-service-api-metadata/apidefblade.png)
 
 ### <a name="azure-resource-manager-property"></a>Azure Resource Manager 属性
-也可以在 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 和 [Azure CLI](../xplat-cli-install.md) 等命令行工具中使用[资源浏览器](https://resources.azure.com/)或 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md) 配置 API 应用的 API 定义 URL。 
+也可以在 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 和 [Azure CLI](../cli-install-nodejs.md) 等命令行工具中使用[资源浏览器](https://resources.azure.com/)或 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md) 配置 API 应用的 API 定义 URL。 
 
 在“资源浏览器”中，转到“订阅”>“{订阅}”>“resourceGroups”>“{资源组}”>“提供程序”>“Microsoft.Web”>“站点”>“{站点}”>“配置”>“Web”，即可查看 `apiDefinition` 属性：
 

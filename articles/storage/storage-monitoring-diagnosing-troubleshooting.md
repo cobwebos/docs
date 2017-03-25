@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: jahogg
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 2e2978f6e81b3f584eb73ce10fb373b62f7b85ff
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: a5193cb222fab1f3ed3e700d45c4a51676707d5a
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -305,7 +305,7 @@ catch (StorageException storageException)
 
 **故障排除决策树**
 
-- - -
+---
 你的问题是否与其中一个存储服务的性能相关？
 
 * [度量值显示高 AverageE2ELatency 和低 AverageServerLatency]
@@ -313,39 +313,39 @@ catch (StorageException storageException)
 * [度量值显示高 AverageServerLatency]
 * [队列中的消息传递出现意外延迟]
 
-- - -
+---
 你的问题是否与其中一个存储服务的可用性相关？
 
 * [度量值显示 PercentThrottlingError 增加]
 * [度量值显示 PercentTimeoutError 增加]
 * [度量值显示 PercentNetworkError 增加]
 
-- - -
-客户端应用程序是否从存储服务收到 HTTP 4XX（如 404）响应？
+---
+ 客户端应用程序是否从存储服务收到 HTTP 4XX（如 404）响应？
 
 * [客户端正在接收“HTTP 403 (禁止访问)”消息]
 * [客户端正在接收“HTTP 404 (未找到)”消息]
 * [客户端正在接收“HTTP 409 (冲突)”消息]
 
-- - -
-[度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作]
+---
+[Metrics show low PercentSuccess or analytics log entries have operations with transaction status of ClientOtherErrors]
 
-- - -
+---
 [容量度量值显示存储容量使用量意外增加]
 
-- - -
-[具有大量附加 VHD 的虚拟机出现意外重启]
+---
+[You are experiencing unexpected reboots of Virtual Machines that have a large number of attached VHDs]
 
-- - -
+---
 [该问题是由于使用存储模拟器进行开发或测试而导致]
 
-- - -
-[安装 Azure SDK for .NET 时遇到问题]
+---
+[You are encountering problems installing the Azure SDK for .NET]
 
-- - -
+---
 [遇到了其他存储服务问题]
 
-- - -
+---
 ### <a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>度量值显示高 AverageE2ELatency 和低 AverageServerLatency
 下面来自 [Azure 门户](https://portal.azure.com)监视工具的插图显示了一个示例，其中 **AverageE2ELatency** 明显高于 **AverageServerLatency**。
 

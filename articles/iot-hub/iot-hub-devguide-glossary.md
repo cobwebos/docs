@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c2b0c6b125ededd30e9db8e7f42796bdf6b413d4
-ms.openlocfilehash: f254b4a9b942004f0d1d1065ec2efb2ea5df8418
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 408dfd655db7a4a5fa33920e0c8bc8b7a065e886
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/01/2017
 [高级消息队列协议 (AMQP)](https://www.amqp.org/) 是 [IoT 中心](#iot-hub)支持的一种消息传送协议，适用于与设备通信。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
 
 ## <a name="azure-cli"></a>Azure CLI
-[Azure CLI](../xplat-cli-install.md) 是一个跨平台、开源、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。 此版本的 CLI 通过 Node.js 实现。
+[Azure CLI](../cli-install-nodejs.md) 是一个跨平台、开源、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。 此版本的 CLI 通过 Node.js 实现。
 
 ## <a name="azure-cli-20"></a>Azure CLI 2.0
 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) 是一个跨平台、开源、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。 此预览版的 CLI 通过 Python 实现。
@@ -85,10 +85,10 @@ ms.lasthandoff: 03/01/2017
 数据点消息是指[设备到云](#device-to-cloud)的消息，其中包含[遥测](#telemetry)数据（例如风速或温度）。
 
 ## <a name="desired-configuration"></a>所需配置
-在与[设备克隆](iot-hub-devguide-device-twins.md)相关的语境中，所需配置是指设备克隆中要与设备同步的完整的属性和元数据集。
+在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，所需配置是指设备孪生中要与设备同步的完整的属性和元数据集。
 
 ## <a name="desired-properties"></a>所需的属性
-在与[设备克隆](iot-hub-devguide-device-twins.md)相关的语境中，所需属性是设备克隆的一部分，和[报告属性](#reported-properties)一起用于同步设备配置或条件。 所需属性只能由[后端应用](#back-end-app)设置，并由[设备应用](#device-app)遵守。
+在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，所需属性是设备孪生的一部分，和[报告属性](#reported-properties)一起用于同步设备配置或条件。 所需属性只能由[后端应用](#back-end-app)设置，并由[设备应用](#device-app)遵守。
 
 ## <a name="device-to-cloud"></a>设备到云
 指从已连接设备发送到 [IoT 中心](#iot-hub)的消息。 这些消息可能是[数据点](#data-point-message)或[交互式](#interactive-message)消息。 有关详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
@@ -100,7 +100,7 @@ ms.lasthandoff: 03/01/2017
 设备应用在用户的[设备](#device)上运行，处理与 [IoT 中心](#iot-hub)的通信。 通常情况下，实现设备应用时会使用一个 [Azure IoT 设备 SDK](#azure-iot-device-sdks)。 在许多 IoT 教程中，为方便起见使用[模拟设备](#simulated-device)。
 
 ## <a name="device-condition"></a>设备条件
-指[设备应用](#device-app)报告的设备状态信息，例如当前使用的连接方法。 [设备应用](#device-app)还可以报告其功能。 可以使用设备克隆查询条件和功能的信息。
+指[设备应用](#device-app)报告的设备状态信息，例如当前使用的连接方法。 [设备应用](#device-app)还可以报告其功能。 可以使用设备孪生查询条件和功能的信息。
 
 ## <a name="device-data"></a>设备数据
 设备数据是指存储在 IoT 中心[标识注册表](#identity-registry)中的每个设备数据。 可以导入和导出此数据。
@@ -126,17 +126,17 @@ ms.lasthandoff: 03/01/2017
 ## <a name="device-provisioning"></a>设备预配
 [设备预配](#device-data)是将初始设备数据添加到解决方案中存储中的过程。 若要使新设备能够连接到中心，必须将新设备 ID 和密钥添加到 IoT 中心的[标识注册表](#identity-registry)。 在预配过程中，你可能需要初始化其他解决方案存储中的设备特定数据。
 
-## <a name="device-twin"></a>设备克隆
-[设备克隆](iot-hub-devguide-device-twins.md)是存储设备状态信息（如元数据、配置和条件）的 JSON 文档。 [IoT 中心](#iot-hub)为在 IoT 中心预配的每台设备保留一个设备克隆。 借助设备克隆可以在设备和解决方案后端之间同步[设备条件](#device-condition)和配置。 可以通过查询设备克隆来定位特定设备和查询长时间运行的操作状态。
+## <a name="device-twin"></a>设备孪生
+[设备孪生](iot-hub-devguide-device-twins.md)是存储设备状态信息（如元数据、配置和条件）的 JSON 文档。 [IoT 中心](#iot-hub)为在 IoT 中心预配的每台设备保留一个设备孪生。 借助设备孪生可以在设备和解决方案后端之间同步[设备条件](#device-condition)和配置。 可以通过查询设备孪生来定位特定设备和查询长时间运行的操作状态。
 
-## <a name="device-twin-queries"></a>设备克隆查询
-[设备克隆查询](iot-hub-devguide-query-language.md)使用类似于 SQL 的 IoT 中心查询语言从设备克隆中检索信息。 可以使用相同的 IoT 中心查询语言检索在 IoT 中心运行的[作业](#job)的信息。
+## <a name="device-twin-queries"></a>设备孪生查询
+[设备孪生查询](iot-hub-devguide-query-language.md)使用类似于 SQL 的 IoT 中心查询语言从设备孪生中检索信息。 可以使用相同的 IoT 中心查询语言检索在 IoT 中心运行的[作业](#job)的信息。
 
 ## <a name="device-twin-rest-api"></a>设备孪生 REST API
 可从解决方案后端使用[设备孪生 REST API](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) 来管理设备孪生。 API 可用于检索和更新[设备孪生](#device-twin)属性并调用[直接方法](#direct-method)。 通常，应使用 IoT 中心教程中演示的一种较高级别的[服务 SDK](#azure-iot-service-sdks)。
 
-## <a name="device-twin-synchronization"></a>设备克隆同步
-设备克隆同步使用设备克隆中的[所需属性](#desired-properties)配置设备并检索设备中的[报告属性](#reported-properties)，以将其存储在设备克隆中。
+## <a name="device-twin-synchronization"></a>设备孪生同步
+设备孪生同步使用设备孪生中的[所需属性](#desired-properties)配置设备并检索设备中的[报告属性](#reported-properties)，以将其存储在设备孪生中。
 
 ## <a name="direct-method"></a>直接方法
 [直接方法](iot-hub-devguide-direct-methods.md)可让你通过在 IoT 中心上调用 API来触发在设备上执行的方法。
@@ -172,7 +172,7 @@ IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解
 [IoT 中心指标](iot-hub-metrics.md)向用户提供有关 [Azure 订阅](#subscription)中的 IoT 中心的状态数据。 你可以使用 IoT 中心度量值评估服务以及连接到服务的设备的总体运行状况。 IoT 中心度量值可以帮助用户了解 IoT 中心发生的情况，并调查根本原因，而无需联系 Azure 支持部门。
 
 ## <a name="iot-hub-query-language"></a>IoT 中心查询语言
-[IoT 中心查询语言](iot-hub-devguide-query-language.md)是一种类似于 SQL 的语言，用于查询[作业](#job)和设备克隆。
+[IoT 中心查询语言](iot-hub-devguide-query-language.md)是一种类似于 SQL 的语言，用于查询[作业](#job)和设备孪生。
 
 ## <a name="iot-hub-resource-provider-rest-api"></a>IoT 中心资源提供程序 REST API
 可以使用 [IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) 管理 [Azure 订阅](#subscription)中的 IoT 中心，以便执行一些操作，例如创建、更新和删除中心。
@@ -184,7 +184,7 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 [iothub-explorer](https://github.com/azure/iothub-explorer) 是跨平台的命令行工具。 使用该工具可以管理[标识注册表](#identity-registry)中的设备、向设备发送消息和文件和接收来自设备的消息和文件，以及监视 IoT 中心的操作。
 
 ## <a name="job"></a>作业
-解决方案后端可以使用[作业](iot-hub-devguide-jobs.md)来计划和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备克隆[所需的属性](#desired-properties)、更新设备克隆[标记](#tags)，以及调用[直接方法](#direct-method)。 [IoT 中心](#iot-hub)还使用作业在[标识注册表](#identity-registry)中[导入和导出](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)。
+解决方案后端可以使用[作业](iot-hub-devguide-jobs.md)来计划和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备孪生[所需的属性](#desired-properties)、更新设备孪生[标记](#tags)，以及调用[直接方法](#direct-method)。 [IoT 中心](#iot-hub)还使用作业在[标识注册表](#identity-registry)中[导入和导出](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)。
 
 ## <a name="jobs-rest-api"></a>作业 REST API
 使用[作业 REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) 可以管理 IoT 中心内运行的[作业](#job)。
@@ -214,7 +214,7 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 在与[设备孪生](iot-hub-devguide-device-twins.md)相关的上下文中，报告的配置是指设备孪生中的完整属性和元数据集，该配置应报告给解决方案后端。
 
 ## <a name="reported-properties"></a>报告的属性
-在与[设备克隆](iot-hub-devguide-device-twins.md)相关的语境中，报告的属性是设备克隆的一部分，和[所需属性](#desired-properties)一起用于同步设备配置或条件。 报告的属性只能由[设备应用](#device-app)设置，可由[后端应用](#back-end-app)读取和查询。
+在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，报告的属性是设备孪生的一部分，和[所需属性](#desired-properties)一起用于同步设备配置或条件。 报告的属性只能由[设备应用](#device-app)设置，可由[后端应用](#back-end-app)读取和查询。
 
 ## <a name="resource-group"></a>资源组
 [Azure Resource Manager](#azure-resource-manager) 使用资源组将相关的资源组合在一起。 通过使用资源组，可以对组中的所有资源同时执行操作。
@@ -244,7 +244,7 @@ _解决方案_可以是包含一个或多个项目的 Visual Studio 解决方案
 Azure 订阅是发生计费的地方。 创建的每个 Azure 资源或使用的 Azure 服务均与单个订阅关联。 许多配额也在订阅级别应用。
 
 ## <a name="system-properties"></a>系统属性
-在与[设备克隆](iot-hub-devguide-device-twins.md)相关的语境中，系统属性为只读，其中包括与设备使用情况相关的信息，例如上次活动时间和连接状态。
+在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，系统属性为只读，其中包括与设备使用情况相关的信息，例如上次活动时间和连接状态。
 
 ## <a name="tags"></a>标记
 在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，标记是指由解决方案后端以 JSON 文档形式存储和检索的设备元数据。 标记对于设备上的应用程序不可见。

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/21/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 7680aafcefbe6f1e6e3b55137da2e46b42df5a9b
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: c88dc19cdacc94b9b81adcdbf69f22aac8f6eabe
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -70,7 +70,7 @@ Azure 安全中心每日分析虚拟机 (VM) 操作系统 (OS) 的配置（该�
   - EVALUATION RESULT - 分析的结果：传递、失败
 
 ## <a name="see-also"></a>另请参阅
-本文档演示如何实现安全中心建议“修正 OS 漏洞”。 可以在[此处](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)查看配置规则的集。 安全中心使用 CCE（通用配置枚举）来分配配置规则的唯一标识符。 请访问 [CCE](http://cce.mitre.org) 站点以了解详细信息。
+本文档演示如何实现安全中心建议“修正 OS 漏洞”。 可以在[此处](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)查看配置规则的集。 安全中心使用 CCE（通用配置枚举）来分配配置规则的唯一标识符。 请访问 [CCE](https://nvd.nist.gov/cce/index.cfm) 站点以了解详细信息。
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 

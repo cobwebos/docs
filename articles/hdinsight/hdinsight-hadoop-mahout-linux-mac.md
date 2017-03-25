@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: c78ec37c-9a8c-4bb6-9e38-0bdb9e89fbd7
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -41,7 +42,7 @@ Mahout 是适用于 Apache Hadoop 的[机器学习][ml]库。 Mahout 包含用�
 
 若要深入了解 HDInsight 中的 Mahout 版本，请参阅 [HDInsight 版本和 Hadoop 组件](hdinsight-component-versioning.md)。
 
-## <a name="a-namerecommendationsaunderstanding-recommendations"></a><a name="recommendations"></a>了解建议
+## <a name="recommendations"></a>了解建议
 
 由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的首选项）的数据。 然后，Mahout 将执行共现分析，以确定：偏好某个项的用户也偏好其他类似项。 Mahout 然后确定拥有类似项首选项的用户，这些首选项可用于推荐。
 

@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 12/21/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
-ms.openlocfilehash: c17b96fa5d37a8cfbb0b6a5c026891cb84523fac
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 8df7eff135b6cb316562a503bb938b051d87562f
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/27/2017
 2. 重置用户的凭据。
 3. 确认[网络安全组](../virtual-network/virtual-networks-nsg.md)规则是否允许 SSH 流量。
    * 确保有一条网络安全组规则允许 SSH 流量（默认为 TCP 端口 22）。
-   * 在不使用 Azure Load Balancer 的情况下无法使用端口重定向/映射。
+   * 在不使用 Azure 负载均衡器的情况下无法使用端口重定向/映射。
 4. 查看 [VM 资源运行状况](../resource-health/resource-health-overview.md)。 
    * 确保 VM 报告为正常。
    * 如果已启用启动诊断，请验证 VM 在日志中是否未报告启动错误。
@@ -136,7 +136,7 @@ azure vm extension set myResourceGroup myVM \
 ```
 
 ## <a name="use-the-azure-cli-10"></a>使用 Azure CLI 1.0
-[安装 Azure CLI 1.0 并连接到 Azure 订阅](../xplat-cli-install.md)（如果尚未这样做）。 确保按如下所示使用 Resource Manager 模式：
+[安装 Azure CLI 1.0 并连接到 Azure 订阅](../cli-install-nodejs.md)（如果尚未这样做）。 确保按如下所示使用 Resource Manager 模式：
 
 ```azurecli
 azure config mode arm

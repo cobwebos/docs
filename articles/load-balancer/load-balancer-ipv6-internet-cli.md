@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 6edfe8ee8011200e208117f5e03eac8fa741a548
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: d009cf50be1f597c266fd565c9ff4799c9df6dbb
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -28,13 +29,13 @@ ms.openlocfilehash: 6edfe8ee8011200e208117f5e03eac8fa741a548
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [模板](load-balancer-ipv6-internet-template.md)
 
-Azure load balancer 是位于第&4; 层 (TCP, UDP) 的负载平衡器。 该负载平衡器可以在云服务或负载平衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure 负载均衡器是位于第&4; 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 ## <a name="example-deployment-scenario"></a>示例部署方案
 
 下图演示了使用本文所述示例模板部署的负载均衡解决方案。
 
-![负载平衡器方案](./media/load-balancer-ipv6-internet-cli/lb-ipv6-scenario-cli.png)
+![负载均衡器方案](./media/load-balancer-ipv6-internet-cli/lb-ipv6-scenario-cli.png)
 
 在此方案中，将创建以下 Azure 资源：
 
@@ -51,9 +52,9 @@ Azure load balancer 是位于第&4; 层 (TCP, UDP) 的负载平衡器。 该负�
 若要部署负载均衡器，需要创建并配置以下对象：
 
 * 前端 IP 配置 - 包含传入网络流量的公共 IP 地址。
-* 后端地址池 - 包含从负载平衡器接收网络流量的虚拟机网络接口 (NIC)。
-* 负载平衡规则 - 包含将负载平衡器上的公共端口映射到后端地址池中的端口的规则。
-* 入站 NAT 规则 - 包含将负载平衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
+* 后端地址池 - 包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
+* 负载平衡规则 - 包含将负载均衡器上的公共端口映射到后端地址池中的端口的规则。
+* 入站 NAT 规则 - 包含将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
 * 探测器 - 包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
 
 有关详细信息，请参阅 [Azure Resource Manager 对负载均衡器的支持](load-balancer-arm.md)。
@@ -62,7 +63,7 @@ Azure load balancer 是位于第&4; 层 (TCP, UDP) 的负载平衡器。 该负�
 
 本示例在 PowerShell 命令窗口中运行 CLI 工具。 此处没有使用 Azure PowerShell cmdlet，而是使用 PowerShell 的脚本功能来改善可读性与重用性。
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../xplat-cli-install.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **azure config mode** 命令切换到 Resource Manager 模式。
 
     ```azurecli
@@ -342,9 +343,4 @@ Azure load balancer 是位于第&4; 层 (TCP, UDP) 的负载平衡器。 该负�
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

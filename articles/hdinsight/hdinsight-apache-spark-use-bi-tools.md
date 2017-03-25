@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 1448b536-9bc8-46bc-bbc6-d7001623642a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,15 +17,15 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: ba238a5d18dd83e4adb9e5ba737ec0cff135d34e
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 36b7aaf99db48efa1b56b84ac0616cf9ee2830ac
+ms.lasthandoff: 03/18/2017
 
 
 ---
 # <a name="use-bi-tools-with-apache-spark-cluster-on-azure-hdinsight"></a>将 BI 工具与 Azure HDInsight 上的 Apache Spark 群集配合使用
 
-了解如何使用 Azure HDInsight 中的 Apache Spark 来分析原始示例数据集，然后使用 BI 工具来可视化数据。 本文演示如何对 HDInsight Spark 群集使用 Power BI 和 Tableau 等 BI 工具。 
+了解如何使用 Azure HDInsight 中的 Apache Spark 来分析原始示例数据集，然后使用 BI 工具来可视化数据。 本文演示如何对 HDInsight Spark 群集使用 Power BI 和 Tableau 等 BI 工具。
 
 > [!NOTE]
 > Spark 2.1 on Azure HDInsight 3.6 预览版不支持使用本文所述的 BI 工具进行连接。 仅支持 Spark 1.6 和 2.0 版（分别为 HDInsight 3.4 和 3.5）。
@@ -86,7 +87,7 @@ ms.lasthandoff: 03/15/2017
         dfw = DataFrameWriter(hvacTable)
         dfw.saveAsTable('hvac')
 
-7. 确认是否已成功创建表。 可以使用 `%%sql` 幻数直接运行 Hive 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅[包含 Spark HDInsight 群集的 Jupyter Notebook 上可用的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)。
+7. 确认是否已成功创建表。 可以使用 `%%sql` 幻数直接运行 Hive 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅[包含 Spark HDInsight 群集的 Jupyter Notebook 上可用的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
 
         %%sql
         SHOW TABLES
@@ -160,7 +161,7 @@ ms.lasthandoff: 03/15/2017
 >
 >
 
-1. 在运行本教程的计算机上安装 [Tableau Desktop](http://www.tableau.com/products/desktop)。 
+1. 在运行本教程的计算机上安装 [Tableau Desktop](http://www.tableau.com/products/desktop)。
 
 2. 确保该计算机上还安装了 Microsoft Spark ODBC 驱动程序。 可从[此处](http://go.microsoft.com/fwlink/?LinkId=616229)安装该驱动程序。
 

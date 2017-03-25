@@ -16,9 +16,9 @@ ms.date: 01/11/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
-ms.openlocfilehash: 930be4397a56dc0af0fd13305e0e4171929cb2cc
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: ce7860e291c71e825561caf3ee7eafe904101799
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -78,7 +78,7 @@ ms.lasthandoff: 03/02/2017
 由后端应用接收响应，其中包括：
 
 * HTTP 状态代码，用于 IoT 中心发出的错误，包括 404 错误（针对当前未连接的设备）
-* 标头，其中包含 ETag、请求 ID、内容类型和内容编码
+* *标头*，其中包含 ETag、请求 ID、内容类型和内容编码
 * 采用以下格式的 JSON 正文：
 
 ```
