@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 03/07/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 16ec322d0c921f97819375cfe52d2c3f02a2c53b
-ms.openlocfilehash: d573090fb2dc4ea02308e0711c24371e17fb3cde
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 87c3b66a8789254e962ccfd7fc1eb7842c0db638
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -63,7 +64,7 @@ ms.openlocfilehash: d573090fb2dc4ea02308e0711c24371e17fb3cde
 
 目前，SAP HANA Cloud Platform Identity Authentication 充当 SAP 应用程序的代理标识提供者， 而 Azure Active Directory 则在此设置中充当主要标识提供者。 下图表明：    
 
-![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/architecture-01.png)
+![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-tutorial/architecture-01.png)
 
 在此设置中，SAP HANA Cloud Platform Identity Authentication 租户将配置为 Azure Active Directory 中的可信应用程序。 
 
@@ -81,7 +82,7 @@ ms.openlocfilehash: d573090fb2dc4ea02308e0711c24371e17fb3cde
 
 **若要从库添加 SAP HANA Cloud Platform Identity Authentication，请执行以下步骤：**
 
-1. 在 Azure 管理门户的左侧导航面板中，单击“Azure Active Directory”图标。[](https://portal.azure.com) 
+1. 在 [**Azure 管理门户**](https://portal.azure.com)的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -95,11 +96,11 @@ ms.openlocfilehash: d573090fb2dc4ea02308e0711c24371e17fb3cde
 
 4. 在搜索框中，键入“SAP HANA Cloud Platform Identity Authentication”。
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_01.png)
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_01.png)
 
 5. 在结果面板中选择“SAP HANA Cloud Platform Identity Authentication”，然后单击“添加”按钮该添加应用程序。
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_02.png)
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_02.png)
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
@@ -123,7 +124,7 @@ ms.openlocfilehash: d573090fb2dc4ea02308e0711c24371e17fb3cde
 
 SAP HANA Cloud Platform Identity Authentication 应用程序要求 SAML 断言采用特定格式。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
 
-![配置单一登录](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_03.png)
+![配置单一登录](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_03.png)
 
 **若要通过 SAP HANA Cloud Platform Identity Authentication 配置 Azure AD 单一登录，请执行以下步骤：**
 
@@ -135,13 +136,13 @@ SAP HANA Cloud Platform Identity Authentication 应用程序要求 SAML 断言�
  
     ![配置单一登录][5]
 
-3. 在“单一登录”对话框的“用户属性”部分，如果 SAP 应用程序需要一个属性（例如“firstName”），则在 SAML 令牌属性对话框上，添加“firstName”属性。
+3. 在“单一登录”对话框的“用户属性”部分，如果 SAP 应用程序需要一个属性（例如“firstName”）， 则可在 SAML 令牌属性对话框中，添加“firstName”属性。
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录][6]
 
-    ![配置单一登录](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_05.png)
+    ![配置单一登录](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_05.png)
     
     b.保留“数据库类型”设置，即设置为“共享”。 在“属性名称”文本框中，键入属性名称“firstName”。
 
@@ -152,24 +153,31 @@ SAP HANA Cloud Platform Identity Authentication 应用程序要求 SAML 断言�
 
 4. 在“SAP HANA Cloud Platform Identity Authentication 域和 URL”部分，执行以下步骤：
 
-    ![配置单一登录](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_06.png)
+    ![配置单一登录](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_06.png)
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，键入 SAP 应用程序的登录 URL。
 
-    b. 在“标识符”文本框中，按 `<tenant-id>.accounts.ondemand.com` 模式键入值。 如果不知道此值，请按有关 [Tenant SAML 2.0 Configuration](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)租户 SAML 2.0 配置）的 SAP HANA Cloud Platform Identity Authentication 文档的说明操作。
+    b. 在“标识符”文本框中，按 `<entity-id>.accounts.ondemand.com` 模式键入值。 如果不知道此值，请按有关 [Tenant SAML 2.0 Configuration](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)租户 SAML 2.0 配置）的 SAP HANA Cloud Platform Identity Authentication 文档的说明操作。
 
 
 5. 在“SAP HANA Cloud Platform Identity Authentication 配置”部分，单击“配置 SAP HANA Cloud Platform Identity Authentication”打开“配置登录”对话框。 然后单击“SAML XML 元数据”，在计算机上保存该文件
 
-    ![配置单一登录](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_07.png) 
+    ![配置单一登录](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_07.png) 
 
-    ![配置单一登录](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_08.png)
+    ![配置单一登录](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_08.png)
 
 
 6. 若要为应用程序配置 SSO，请转到“SAP HANA Cloud Platform Identity Authentication 管理控制台”。 URL 采用以下模式：`https://<tenant-id>.accounts.ondemand.com/admin`。 然后，按照有关 SAP HANA Cloud Platform Identity Authentication 的文档的说明操作，以便[在 SAP HANA Cloud Platform Identity Authentication 上将 Microsoft Azure AD 配置为企业标识提供者](https://help.hana.ondemand.com/cloud_identity/frameset.htm?626b17331b4d4014b8790d3aea70b240.html) 
 
-10. 在 Azure 管理门户中，单击“保存”按钮。  
-  
+7. 在 Azure 管理门户中，单击“保存”按钮。
+8. 仅当要为另一个 SAP 应用程序添加和启用 SSO 时，才继续执行以下步骤。 重复“从库中添加 SAP HANA Cloud Platform Identity Authentication”部分下的步骤，添加 SAP HANA Cloud Platform Identity Authentication 的另一个实例。
+9. 在 Azure 管理门户的 **SAP HANA Cloud Platform Identity Authentication** 应用程序集成页上，单击“链接登录”。
+
+     ![配置链接登录](./media/active-directory-saas-sap-hana-cloud-tutorial/linked_sign_on.png)
+10. 然后，保存配置。
+
+>[!NOTE] 
+>新应用程序将利用以前 SAP 应用程序的 SSO 配置。 请确保在 SAP HANA Cloud Platform Identity Authentication 管理控制台中使用相同的企业标识提供程序。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在新门户中创建名为“Britta Simon”的测试用户。
@@ -178,25 +186,25 @@ SAP HANA Cloud Platform Identity Authentication 应用程序要求 SAML 断言�
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 **Azure 管理门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+1. 在 Azure 管理门户的左侧导航窗格中，单击“Azure Active Directory”图标。
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_01.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-tutorial/create_aaduser_01.png) 
 
-2. 转到“用户和组”，单击“所有用户”，显示用户列表。
+2. 转到“用户和组”，单击“所有用户”显示用户列表。
     
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_02.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-tutorial/create_aaduser_02.png) 
 
 3. 在对话框顶部单击“添加”，打开“用户”对话框。
  
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_03.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-tutorial/create_aaduser_03.png) 
 
 4. 在“用户”对话框页上，执行以下步骤：
  
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_04.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-tutorial/create_aaduser_04.png) 
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -227,7 +235,7 @@ SAP HANA Cloud Platform Identity Authentication 支持“联合身份验证”�
 
 2. 在应用程序列表中，选择“SAP HANA Cloud Platform Identity Authentication”。
 
-    ![配置单一登录](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_09.png)
+    ![配置单一登录](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_09.png)
 
 3. 在左侧菜单中，单击“用户和组”。
 
@@ -261,22 +269,16 @@ SAP HANA Cloud Platform Identity Authentication 支持“联合身份验证”�
 
 <!--Image references-->
 
-[1]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_01.png
-[2]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_02.png
-[3]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_03.png
-[4]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_04.png
-[5]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_05.png
-[6]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_06.png
+[1]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_04.png
+[5]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_05.png
+[6]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_06.png
 
-[100]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_100.png
 
-[200]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_200.png
-[201]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_201.png
-[202]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_202.png
-[203]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_203.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+[200]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_203.png

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2017
+ms.date: 03/13/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 239702c8b099dd422e6b67a267b1185a27a21807
-ms.openlocfilehash: 52d9194920019291696d5ace3ac24751fde674ab
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 0df7bba472daf2c499f3ccff1296b8a9ee8ab89d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,9 +27,6 @@ ExpressRoute 是一项 Azure 服务，允许你在 Microsoft 数据中心与你�
 
 ### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>使用 ExpressRoute 和专用网络连接的好处是什么？
 ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和较低的一致延迟。 在某些情况下，使用 ExpressRoute 连接在本地设备和 Azure 之间传输数据可以产生显著的成本效益。
-
-### <a name="what-microsoft-cloud-services-are-supported-over-expressroute"></a>可通过 ExpressRoute 支持哪些 Microsoft 云服务？
-ExpressRoute 目前支持大多数 Microsoft Azure 服务，包括 Office 365。  在正式版发布后，请查看最新信息。
 
 ### <a name="where-is-the-service-available"></a>哪里提供该服务？
 参阅 [ExpressRoute 合作伙伴和位置](expressroute-locations.md)了解服务上市区域和可用性。
@@ -99,7 +96,7 @@ ExpressRoute 不支持以下 Azure 服务
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>如果我的某个 ExpressRoute 链路出现故障，我会失去连接吗？
 如果其中一个交叉连接出现故障，你不会失去连接。 冗余连接可用于支持网络负载。 另外，你还可以在不同对等位置创建多条线路以获得故障恢复能力。
 
-### <a name="a-nameonep2plinkaif-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>如果我不在云交换中共置，而我的服务提供商提供点到点连接，我需要在本地网络与 Microsoft 之间订购两个物理连接吗？
+### <a name="onep2plink"></a>如果我不在云交换中共置，而我的服务提供商提供点到点连接，我需要在本地网络与 Microsoft 之间订购两个物理连接吗？
 不需要，如果你的服务提供商可以通过物理连接建立两条以太网虚拟电路，你就只需要一个物理连接。 物理连接（例如光纤）的终点在第 1 层 (L1) 设备上（请参阅下图）。 两条以太网虚拟电路使用不同的 VLAN ID 进行标记，一个供主要电路使用，一个供次要电路使用。 这些 VLAN ID 位于外部 802.1Q 以太网标头中。 内部 802.1Q 以太网标头（不显示）会映射到特定的 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。 
 
 ![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
@@ -111,7 +108,10 @@ ExpressRoute 不支持以下 Azure 服务
 是的。 你可以在订阅中有多条 ExpressRoute 线路。 专用线路数的默认限制设置为 10。 如果你需要增大限制，请联系 Microsoft 支持。
 
 ### <a name="can-i-have-expressroute-circuits-from-different-service-providers"></a>能否使用不同服务提供商的 ExpressRoute 线路？
-是的。 你可以使用许多服务提供商的 ExpressRoute 线路。 每条 ExpressRoute 线路将只与一个服务提供商相关联。
+是的。 你可以使用许多服务提供商的 ExpressRoute 线路。 每条 ExpressRoute 线路将只与一个服务提供商相关联。 
+
+### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-location"></a>在同一位置中是否可以有多条 ExpressRoute 线路？
+是的。 在同一位置中可以有多条 ExpressRoute 线路，它们可以具有相同或不同的服务提供商。 不过，无法将多条 ExpressRoute 线路关联到同一虚拟网络。
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>如何将我的虚拟网络连接到 ExpressRoute 线路
 基本步骤如下所述。
@@ -126,7 +126,7 @@ ExpressRoute 不支持以下 Azure 服务
 是的。 [ExpressRoute 合作伙伴和位置](expressroute-locations.md)页概述了 ExpressRoute 线路的连接界限。 一条 ExpressRoute 线路的连接范围限制为单个地缘政治区域。 可以通过启用 ExpressRoute 高级功能，将连接扩展为跨地缘政治区域。
 
 ### <a name="can-i-link-to-more-than-one-virtual-network-to-an-expressroute-circuit"></a>能否将多个虚拟网络链接到一条 ExpressRoute 线路？
-是的。 最多可以将 10 个虚拟网络链接到一条 ExpressRoute 线路。
+是的。 在标准 ExpressRoute 线路上最多可以有 10 个虚拟网络连接，在[高级 ExpressRoute 线路](#expressroute-premium)上最多可以有 100 个。 
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>我有多个包含虚拟网络的 Azure 订阅。 能否将不同订阅中的虚拟网络连接到单个 ExpressRoute 线路？
 是的。 最多可以授权其他 10 个 Azure 订阅使用单条 ExpressRoute 线路。 可以通过启用 ExpressRoute 高级功能来提高此限制。
@@ -154,6 +154,9 @@ ExpressRoute 不支持以下 Azure 服务
 ### <a name="can-i-move-a-virtual-network-from-site-to-site--point-to-site-configuration-to-use-expressroute"></a>能否将虚拟网络从站点到站点/点到站点配置转为使用 ExpressRoute？
 是的。 必须在虚拟网络中创建 ExpressRoute 网关。 该过程将会造成较短的停机时间。
 
+### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>为什么有一个公共 IP 地址与虚拟网络上的 ExpressRoute 网关相关联？
+这仅用于内部管理。 此公共 IP 地址没有公开到 Internet，因此不会给虚拟网络带来安全隐患。
+
 ### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>通过 ExpressRoute 连接到 Azure 存储需要执行哪些操作？
 你必须建立一条 ExpressRoute 线路并为公共对等互连配置路由。
 
@@ -179,7 +182,7 @@ BGP 会话将被删除。 当前缀计数低于限制后，将重置这些会话
    * 让你的 NSP 提供商通过公共对等互连将流量路由回到 Azure。
 
 ### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>是否可以更改 ExpressRoute 线路的带宽？
-是的。 你无需拆解 ExpressRoute 线路，就能提高它的带宽。 必须跟进你的连接提供商，以确保他们更新其网络中的阈值，为提高的带宽提供支持。 但是，你无法降低 ExpressRoute 线路的带宽。 降低带宽意味着要拆解然后重新创建 ExpressRoute 线路。
+是的，你可以尝试在 Azure 门户中或者使用 PowerShell.mpt 来增加 ExpressRoute 线路的带宽。 如果在创建线路的物理端口上有容量可用，则更改将会成功。 如果更改失败，这意味着当前端口上没有剩余足够的容量，你需要创建具有更高带宽的新 ExpressRoute 线路；或者意味着在该位置没有额外的容量，在这种情况下将无法增加带宽。 还必须跟进你的连接服务提供商，确保他们更新其网络中的限制以支持带宽增加。 不过，你无法减小 ExpressRoute 线路的带宽。 你必须创建具有更低带宽的新 ExpressRoute 线路并删除旧线路。
 
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>如何更改 ExpressRoute 线路的带宽？
 你可以使用“更新专用线路 API”和 PowerShell cmdlet 来更新 ExpressRoute 线路的带宽。
@@ -190,7 +193,7 @@ ExpressRoute 高级版包括下面列出的功能集合。
 
 * 对于专用对等互连，将路由表限制从 4000 个路由提升为 10,000 个路由。
 * 增加了可连接到 ExpressRoute 线路的 VNet 数量（默认数量为 10 个）。 有关详细信息，请参阅下表。
-* 通过 Microsoft 核心网络建立全局连接。 现在，你可以将一个地缘政治区域中 VNet 链接到另一个区域中的 ExpressRoute 线路。 **示例：**可以将欧洲西部创建的 VNet 链接到硅谷创建的 ExpressRoute 线路。
+* 通过 Microsoft 核心网络建立全局连接。 现在，你可以将一个地缘政治区域中 VNet 链接到另一个区域中的 ExpressRoute 线路。 **示例：**可以将欧洲西部创建的 VNet 链接到硅谷创建的 ExpressRoute 线路。 **其他示例：**在公共对等互连中，会播发来自其他地缘政治区域的前缀，以便你可以进行连接，例如，通过硅谷的线路连接到欧洲西部地区的 SQL Azure。
 * 连接到 Office 365 服务和 CRM Online。
 
 ### <a name="how-many-vnets-can-i-link-to-an-expressroute-circuit-if-i-enabled-expressroute-premium"></a>如果启用 ExpressRoute 高级版，可将多少个 VNet 链接到一条 ExpressRoute 线路？

@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/06/2017
+ms.date: 03/13/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 988d859e2cc9cd723e23704193b6c3bbdce08379
-ms.openlocfilehash: 976aa382e34cdc417a79b513c0e8e063b30d9e01
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 3457601f1d295d17d50725ec19cae96ae6efb5b6
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -85,7 +85,7 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 | 顺序 | KB | 说明 | 更新类型 | 安装时间 | 在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
-| 3. |KB3121899 |磁盘固件 |维护 <br></br>中断性 |约 30 分钟 | ThirdOrderUpdate |
+| 3. |KB4011837 |磁盘固件 |维护 <br></br>中断性 |约 30 分钟 | ThirdOrderUpdate |
 
 <br></br>
 

@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 逻辑应用中为 X12 消息解码 | Microsoft 文档"
-description: "如何在逻辑应用中使用 Enterprise Integration Pack 内的 X12 解码器"
+title: "为 X12 消息解码 - Azure 逻辑应用 | Microsoft 文档"
+description: "使用 Enterprise Integration Pack 中的 X12 消息解码器为 Azure 逻辑应用验证 EDI 并为事务集生成 XML"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -15,48 +15,61 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
-ms.openlocfilehash: 2fa435d5a52ee7a9c18926912a7212ee862b3832
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 717069dbe211ea9cc04925875e0f28c85ef25ac2
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="get-started-with-decode-x12-messages"></a>解码 X12 消息入门
-验证 EDI 和特定于合作伙伴的属性，为每个事务集生成 XML 文档并为处理的事务生成确认。
+# <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 X12 消息
 
-## <a name="prereqs"></a>先决条件
+使用解码 X12 消息连接器，可以验证 EDI 和特定于合作伙伴的属性，为每个事务集生成 XML 文档并为处理的事务生成确认。 若要使用此连接器，必须将此连接器添加到你的逻辑应用中的现有触发器。
+
+## <a name="before-you-start"></a>开始之前
+
+需要具有以下各项：
+
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 使用解码 X12 消息连接器需要集成帐户。 请参阅有关如何创建[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)、[合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)和 [X12 协议](../logic-apps/logic-apps-enterprise-integration-x12.md)的详细信息
+* 已定义的、与你的 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 X12 消息连接器。
+* 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
+* 已在集成帐户中定义了 [X12 协议](logic-apps-enterprise-integration-x12.md)
 
 ## <a name="decode-x12-messages"></a>解码 X12 消息
 
-1. [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)提供了一个示例
-2. 此连接器没有任何触发器。 使用其他触发器启动逻辑应用（如请求触发器）。  在逻辑应用设计器中，添加触发器和操作。  在下拉列表中选择“显示 Microsoft 托管的 API”，然后在搜索框中输入“x12”。  选择“X12 – 解码 X12 消息”：
+1. [创建逻辑应用](logic-apps-create-a-logic-app.md)。
+
+2. 解码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加一个触发器，然后向逻辑应用中添加一个操作。
+
+3.    在搜索框中，输入“x12”作为筛选器。 选择“X12 - 解码 X12 消息”。
    
-    ![搜索 x12](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
-3. 如果事先未与集成帐户建立任何连接，系统会提示输入连接详细信息：
+    ![搜索“x12”](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
+
+3. 如果以前未创建与集成帐户的任何连接，系统会提示你现在创建该连接。 为你的连接命名，并选择要连接的集成帐户。 
+
+    ![提供集成帐户连接详细信息](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
+
+    带有星号的属性必填。
+
+    | 属性 | 详细信息 |
+    | --- | --- |
+    | 连接名称 * |为连接输入任何名称。 |
+    | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
+
+5.    完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
    
-    ![集成帐户连接](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)     
-4. 输入集成帐户详细信息。  带星号的属性是必填的：
-   
-   | 属性 | 详细信息 |
-   | --- | --- |
-   | 连接名称 * |为连接输入任何名称 |
-   | 集成帐户 * |输入集成帐户名称。 确保集成帐户和逻辑应用处于相同 Azure 位置 |
-   
-    完成之后，连接详细信息会类似于下面这样：
-   
-    ![集成帐户连接已创建](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
-5. 选择“创建” 。
-6. 可以看到，已创建连接：
-   
-    ![集成帐户连接详细信息](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
-7. 选择要解码的 X12 平面文件消息：
-   
-    ![提供必填字段](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
+    ![集成帐户连接详细信息](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
+
+6. 在创建连接后，选择要解码的 X12 平面文件消息，如此示例中所示。
+
+    ![集成帐户连接已创建](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
+
+    例如：
+
+    ![选择要解码的 X12 平面文件消息](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
 ## <a name="x12-decode-details"></a>X12 解码详细信息
 
-X12 解码连接器执行以下操作：
+X12 解码连接器执行以下任务：
 
 * 针对贸易合作伙伴协议验证信封
 * 为每个事务集生成 XML 文档。
@@ -81,10 +94,5 @@ X12 解码连接器执行以下操作：
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

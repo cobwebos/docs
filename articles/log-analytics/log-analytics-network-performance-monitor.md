@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/09/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 2b427d37a144b947d8d905e8f310ea35785ddf61
-ms.openlocfilehash: f397266afa269831d3791c625342454054b86ff2
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 7e9ca0c15c29fb670b742d939107bb5d4a48245c
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -61,7 +61,19 @@ ms.lasthandoff: 02/23/2017
 
 ### <a name="configure-agents"></a>配置代理
 
-如果想要为综合事务使用 ICMP 协议，则不需要配置代理。 在这种情况下，可以直接开始配置解决方案。 但是，如果想要使用 TCP 协议，则需要打开这些计算机的防火墙端口，确保代理可以通信。 需要下载 [EnableRules.ps1 PowerShell 脚本](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634)，然后使用管理员权限在 PowerShell 窗口中在不使用任何参数的情况下运行该脚本。
+如果打算为综合事务使用 ICMP 协议，则需要启用以下防火墙规则以便可靠地利用 ICMP：
+
+```
+netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV6Echo" protocol="icmpv6:128,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV4DestinationUnreachable" protocol="icmpv4:3,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV6DestinationUnreachable" protocol="icmpv6:1,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmpv4:11,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow
+```
+
+
+如果打算使用 TCP 协议，则需要打开这些计算机的防火墙端口，确保代理可以通信。 你需要下载 [EnableRules.ps1 PowerShell 脚本](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634)，然后使用管理员权限在 PowerShell 窗口中在不使用任何参数的情况下运行该脚本。
 
 该脚本会创建网络性能监视器所需的注册表项，还会创建用于允许代理创建相互之间的 TCP 连接的 Windows 防火墙规则。 该脚本创建的注册表项还指定是否记录调试日志和该日志文件的路径。 还会定义用于通信的代理 TCP 端口。 该脚本会自动设置这些注册表项的值，因此不应手动更改这些注册表项。
 
@@ -76,7 +88,10 @@ ms.lasthandoff: 02/23/2017
 使用以下信息安装和配置解决方案。
 
 1. 网络性能监视器解决方案将从运行 Windows Server 2008 SP1 或更高版本或者 Windows 7 SP1 或更高版本的计算机获取数据，这与 Microsoft Monitoring Agent (MMA) 的要求是相同的。 NPM 代理也可以在 Windows 桌面/客户端操作系统（Windows 10、Windows 8.1、Windows 8 和 Windows 7）上运行。
-2. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将网络性能监视器解决方案添加到工作区。  
+    >[!NOTE]
+    >Windows 服务器操作系统的代理同时支持使用 TCP 和 ICMP 作为综合事务的协议。 不过，Windows 客户端操作系统的代理仅支持使用 ICMP 作为综合事务的协议。
+
+2. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将网络性能监视器解决方案添加到工作区。  
    ![网络性能监视器符号](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 3. 在 OMS 门户中，将看到一个标题为**网络性能监视器**的新磁贴以及*解决方案需要进行额外配置*消息。 需要配置解决方案，以基于代理发现的子网和节点添加网络。 单击“网络性能监视器”开始配置默认网络。  
    ![解决方案需要进行额外配置](./media/log-analytics-network-performance-monitor/npm-config.png)
@@ -290,6 +305,11 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 
    在下图中，通过查看红色标记的路径和跃点，就可以清楚地了解到网络特定部分的问题区域的根本原因。 单击拓扑图中的节点会呈现该节点的属性，包括 FQDN 和 IP 地址。 单击跃点会显示该跃点的 IP 地址。  
    ![不正常的拓扑 - 路径详细信息示例](./media/log-analytics-network-performance-monitor/npm-investigation06.png)
+
+## <a name="provide-feedback"></a>提供反馈
+
+- **UserVoice** - 你可以发表有关你希望我们开发的网络性能监视器功能的想法。 请访问我们的 [UserVoice 页](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)。
+- **加入我们的队伍** - 我们总是希望一直有新客户不断加入我们的队伍。 那样，你将能够在早期接触到新功能并帮助我们改进网络性能监视器。 如果你有兴趣加入，请填写此[快速调查](https://aka.ms/npmcohort)。
 
 ## <a name="next-steps"></a>后续步骤
 * [搜索日志](log-analytics-log-searches.md)以查看详细的网络性能数据记录。

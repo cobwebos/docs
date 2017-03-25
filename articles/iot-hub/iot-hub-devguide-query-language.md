@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 64f44c176633db4179f954d2f70cdf26d08b60b4
-ms.openlocfilehash: 28ea238484d86b044899aa9f95861bbdbbf3a06c
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 44169ba74f6af2b1c27ea4c2a8fd0214892f90d5
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -420,7 +421,7 @@ GROUP BY 的正式语法为：
 | ABS(x) | 返回指定数值表达式的绝对（正）值。 |
 | EXP(x) | 返回指定数值表达式 (e^x) 的指数值。 |
 | POWER(x,y) | 返回指定表达式相对指定幂 (x^y) 的值。|
-| SQUARE(x) | 返回指定数字值的平方。 |
+| SQUARE(x)    | 返回指定数字值的平方。 |
 | CEILING(x) | 返回大于或等于指定数值表达式的最小整数值。 |
 | FLOOR(x) | 返回小于或等于指定数值表达式的最大整数。 |
 | SIGN(x) | 返回指定数值表达式的正数 (+1)、零 (0) 或负数 (-1)。|
@@ -471,9 +472,4 @@ GROUP BY 的正式语法为：
 
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -15,21 +15,24 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 7c9f14503a7cf5c0808e26884a73cd2918ff1c74
-ms.openlocfilehash: 7a26b44f1c2c97174fb98ffdf0cb74a71d27710a
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: b41d906d6948f0f9e3cdb38b4a478b39f55ce219
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
-> [!div class="op_single_selector"]
-> * [Hive](data-factory-hive-activity.md)  
-> * [Pig](data-factory-pig-activity.md)  
-> * [MapReduce](data-factory-map-reduce.md)  
-> * [Hadoop 流式处理](data-factory-hadoop-streaming-activity.md)
-> * [机器学习](data-factory-azure-ml-batch-execution-activity.md) 
-> * [存储过程](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> * [.NET 自定义](data-factory-use-custom-activities.md)
+> [!div class="op_single_selector" title1="Transformation Activities"]
+> * [Hive 活动](data-factory-hive-activity.md) 
+> * [Pig 活动](data-factory-pig-activity.md)
+> * [MapReduce 活动](data-factory-map-reduce.md)
+> * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
+> * [Spark 活动](data-factory-spark.md)
+> * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
+> * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
+> * [存储过程活动](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
+> * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍在 **Azure Data Lake Analytics** 计算链接服务上运行 **U-SQL** 脚本的 **Data Lake Analytics U-SQL 活动**。 
 
@@ -78,7 +81,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
-| 不由 Azure Active Directory 管理的用户帐户 (@hotmail.com, @live.com, 等） |12 小时 |
+| 不由 Azure Active Directory 管理的用户帐户（@hotmail.com、@live.com，等等） |12 小时 |
 | 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的&14; 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
 若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用以下部分中的代码以编程方式生成 **sessionId** 和 **authorization** 属性的值。 
@@ -299,10 +302,5 @@ ADF 使用“parameters”部分动态传递 U-SQL 脚本中 **@in** 和 **@out*
 ```
 
 在这种情况下，输入文件仍从 /datalake/input 文件夹中获取，输出文件仍在 /datalake/output 文件夹中生成。 文件名则根据切片开始时间动态产生。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

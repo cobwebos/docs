@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 071ef9c0784bdb24c7d29f49c36aee2271f4b524
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 214913cb63e38c5df0ab32ad19629507e5fdb35c
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -160,7 +160,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 你�
 
     ![资源组内容](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-若要详细了解 VM、磁盘和存储帐户，请阅读[虚拟机](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[磁盘](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[存储帐户](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)这三篇概述文章。 可以看到门户创建的两个默认 NSG。 还可以看到门户创建了两个网络接口 (NIC) 资源。 VM 可以使用 NIC 通过 VNet 连接到其他资源。 若要详细了解 NIC，请阅读 [NIC](virtual-network-network-interface-overview.md) 一文。 门户还创建了一个公共 IP 地址资源。 公共 IP 地址是针对公共 IP 地址资源的一种设置。 若要详细了解公共 IP 地址，请阅读 [IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)一文。
+若要详细了解 VM、磁盘和存储帐户，请阅读[虚拟机](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[磁盘](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[存储帐户](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)这三篇概述文章。 可以看到门户创建的两个默认 NSG。 还可以看到门户创建了两个网络接口 (NIC) 资源。 VM 可以使用 NIC 通过 VNet 连接到其他资源。 若要详细了解 NIC，请阅读 [NIC](virtual-network-network-interface.md) 一文。 门户还创建了一个公共 IP 地址资源。 公共 IP 地址是针对公共 IP 地址资源的一种设置。 若要详细了解公共 IP 地址，请阅读 [IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)一文。
 
 ## <a name="connect-to-from-vms"></a>连接到 VM
 
@@ -250,7 +250,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 你�
 
 - [虚拟网络](virtual-networks-overview.md)
 - [公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [网络接口](virtual-network-network-interface-overview.md)
+- [网络接口](virtual-network-network-interface.md)
 - [网络安全组](virtual-networks-nsg.md)
 - [虚拟机](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 

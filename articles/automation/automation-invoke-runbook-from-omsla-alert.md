@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 4ce5ad30d79e92a11231313fe13dd42b94fc2aa4
-ms.openlocfilehash: 50969591267ca74e5c4d4aa5c1efe5b673498309
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 8460ed6be3e922fb85f46982662d44eed21dda7c
+ms.lasthandoff: 03/18/2017
 
 ---
 
@@ -35,7 +36,7 @@ ms.openlocfilehash: 50969591267ca74e5c4d4aa5c1efe5b673498309
 
 ## <a name="calling-a-runbook-using-a-webhook"></a>使用 Webhook 调用 Runbook
 
-使用 Webhook 可在 Azure 自动化中通过单个 HTTP 请求启动特定的 Runbook。  在将 [Log Analytics 警报](../log-analytics/log-analytics-alerts.md#creating-an-alert-rule)配置为使用 Webhook 以警报操作的形式调用 Runbook 之前，首先需要针对使用此方法调用的 Runbook 创建一个 Webhook。  请查看并遵循[创建 Webhook](automation-webhooks.md#creating-a-webhook) 一文中的步骤，别忘了要记下 Webhook URL，以便在配置警报规则时引用。   
+使用 Webhook 可在 Azure 自动化中通过单个 HTTP 请求启动特定的 Runbook。  在将 [Log Analytics 警报](../log-analytics/log-analytics-alerts.md#creating-alert-rules)配置为使用 Webhook 以警报操作的形式调用 Runbook 之前，首先需要针对使用此方法调用的 Runbook 创建一个 Webhook。  请查看并遵循[创建 Webhook](automation-webhooks.md#creating-a-webhook) 一文中的步骤，别忘了要记下 Webhook URL，以便在配置警报规则时引用。   
 
 ## <a name="calling-a-runbook-directly"></a>直接调用 Runbook
 
@@ -52,14 +53,14 @@ ms.openlocfilehash: 50969591267ca74e5c4d4aa5c1efe5b673498309
           [Parameter (Mandatory=$true)]  
           [object] $WebhookData  
          )
-  
+
 *  必须使用代码将 WebhookData 转换为 PowerShell 对象。
 
     `$SearchResults = (ConvertFrom-Json $WebhookData.RequestBody).SearchResults.value`
 
     *$SearchResults* 是一个对象数组；每个对象包含一些字段，字段值取自一条搜索结果
 
-### <a name="webhookdata-inconsistencies-between-the-webhook-option-and-runbook-option"></a>Webhook 选项与 Runbook 选项之间的 WebhookData 不一致性 
+### <a name="webhookdata-inconsistencies-between-the-webhook-option-and-runbook-option"></a>Webhook 选项与 Runbook 选项之间的 WebhookData 不一致性
 
 * 将警报配置为调用 Webhook 时，请输入针对 Runbook 创建的 Webhook URL，然后单击“测试 Webhook”按钮。  发送到 Runbook 的最终 WebhookData 不包含 *.SearchResult* 或 *.SearchResults*。
 
@@ -68,7 +69,7 @@ ms.openlocfilehash: 50969591267ca74e5c4d4aa5c1efe5b673498309
 
 因此在上面的代码示例中，如果警报调用 Webhook，则你需要获取 *.SearchResult*；如果警报直接调用 Runbook，则你需要获取 *.SearchResults*。
 
-## <a name="example-walkthrough"></a>示例演练 
+## <a name="example-walkthrough"></a>示例演练
 
 本部分使用以下可以启动 Windows 服务的示例图形 Runbook 来演示上述操作。<br><br> ![启动 Windows 服务的图形 Runbook](media/automation-invoke-runbook-from-omsla-alert/automation-runbook-restartservice.png)<br>
 
@@ -90,9 +91,4 @@ Runbook 代码活动“从 LA 获取服务名称”会将 JSON 格式的字符�
 * 若要详细了解 Log Analytics 中的警报以及如何创建警报，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md)。
 
 * 若要了解如何使用 Webhook 触发 Runbook，请参阅 [Azure 自动化 Webhook](automation-webhooks.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

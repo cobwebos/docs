@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 3/14/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: f46965946905bc29a9058904ba62465aba1fa1bf
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 41e0b9a875b350f5b4a8ce63711ba45e2acb8cae
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/08/2017
 
 本文介绍如何使用官方开放源代码 DocumentDB 数据迁移工具将数据从各种源（包括 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 和 DocumentDB集合）导入到 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)。
 
-如果要将数据导入具有 MongoDB 支持的 DocumentDB 帐户，请按照[将数据迁移到具有 MongoDB 协议支持的 DocumentDB](documentdb-mongodb-migrate.md) 中的说明操作。
+如果要将数据导入到 MongoDB 的 API 数据库，请按照[将数据迁移到具有 MongoDB 协议支持的 DocumentDB](documentdb-mongodb-migrate.md) 中的说明进行操作。
 
 阅读本文之后，你将能够回答以下问题：  
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
-ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 2a7f2cb27cb4ed2d23fee09d53f85283a8592b3a
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -44,7 +45,7 @@ ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
 
 本教程面向 Web 开发人员，他们已经了解有关在 Azure 上创建 Web 应用程序的基本知识。 有关 Azure Web Apps 的详细信息，请参阅 [Web Apps 概述](../app-service-web/app-service-web-overview.md)。
 
-## <a name="a-idpackagesaadd-nuget-packages"></a><a id="packages"></a>添加 NuGet 包
+## <a id="packages"></a>添加 NuGet 包
 需要在 Web 应用程序上安装两个包。
 
 * Active Directory 身份验证库 - 包含用来与 Azure Active Directory 交互以及管理用户标识的方法
@@ -58,7 +59,7 @@ ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
     Install-Package Microsoft.Azure.KeyVault
 
 
-## <a name="a-idwebconfigamodify-webconfig"></a><a id="webconfig"></a>修改 Web.Config
+## <a id="webconfig"></a>修改 Web.Config
 需要按如下所示将三个应用程序设置添加到 web.config 文件。
 
     <!-- ClientId and ClientSecret refer to the web application registration with Azure Active Directory -->
@@ -71,7 +72,7 @@ ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
 
 如果你不打算将应用程序作作为 Azure Web 应用程序托管，则应在 web.config 中添加实际的客户端 Id、客户端密钥和机密 URI 值。 否则，请将这些虚构值，因为我们将在 Azure 门户中添加实际值以提高安全级别。
 
-## <a name="a-idgettokenaadd-method-to-get-an-access-token"></a><a id="gettoken"></a>添加方法以获取访问令牌
+## <a id="gettoken"></a>添加方法以获取访问令牌
 若要使用密钥保管库 API，你需要一个访问令牌。 密钥保管库客户端将处理对密钥保管库 API 的调用，但你需要为该 API 提供一个用于获取访问令牌的函数。  
 
 以下代码可从 Azure Active Directory 获取访问令牌。 可将此代码添加在应用程序中的任意位置。 我想要添加一个 Utils 或 EncryptionHelper 类。  
@@ -103,7 +104,7 @@ ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
 > 
 > 
 
-## <a name="a-idappstartaretrieve-the-secret-on-application-start"></a><a id="appstart"></a>在 Application Start 中检索机密
+## <a id="appstart"></a>在 Application Start 中检索机密
 现在，我们需要添加代码来调用密钥保管库 API 并检索机密。 以下代码可添加到任何位置，前提是在使用之前调用它。 我已将此代码放在 Global.asax 中的 Application Start 事件内，这样，在启动应用程序时，该代码将运行一次，并使机密可用于应用程序。
 
     //add these using statements
@@ -120,7 +121,7 @@ ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
 
 
 
-## <a name="a-idportalsettingsaadd-app-settings-in-the-azure-portal-optional"></a><a id="portalsettings"></a>在 Azure 门户中添加应用程序设置（可选）
+## <a id="portalsettings"></a>在 Azure 门户中添加应用程序设置（可选）
 如果你有一个 Azure Web 应用程序，则现在可以在 Azure 门户中添加 AppSettings 的实际值。 如果这样做，实际值不会出现在 web.config 中，而是通过门户受到保护，你在门户中拥有不同的访问控制功能。 这些值将取代为你在 web.config 中输入的值。 请确保名称相同。
 
 ![Azure 门户中显示的应用程序设置][1]
@@ -133,10 +134,8 @@ ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
 3. 在 Web 应用中添加代码以使用证书
 4. 将证书添加到 Web 应用
 
-**获取或创建证书**出于我们的目的，我们将生成测试证书。 下面是几个可在开发人员命令提示符下使用以创建证书的命令。 将目录更改为要在其中创建证书文件的位置。
-
-    makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2015 -e 07/31/2016 -r
-    pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
+**获取或创建证书**出于我们的目的，我们将生成测试证书。 下面是几个可在开发人员命令提示符下使用以创建证书的命令。 将目录更改为要在其中创建证书文件的位置。  此外，对于证书的开始和结束日期，使用当前日期加上 1 年。
+makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 
 记下 .pfx 的结束日期和密码（在此示例中为：07/31/2016 和 test123）。 稍后你将需要它们。
 
@@ -147,12 +146,12 @@ ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
     $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
     $x509.Import("C:\data\KVWebApp.cer")
     $credValue = [System.Convert]::ToBase64String($x509.GetRawCertData())
+
+    # If you used different dates for makecert then adjust these values
     $now = [System.DateTime]::Now
+    $yearfromnow = $now.AddYears(1)
 
-    # this is where the end date from the cert above is used
-    $yearfromnow = [System.DateTime]::Parse("2016-07-31")
-
-    $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwebapp" -IdentifierUris "http://kvwebapp" -KeyValue $credValue -KeyType "AsymmetricX509Cert" -KeyUsage "Verify" -StartDate $now -EndDate $yearfromnow
+    $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwebapp" -IdentifierUris "http://kvwebapp" -CertValue $credValue -StartDate $now -EndDate $yearfromnow
 
     $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
 
@@ -231,15 +230,10 @@ ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
 
 **将证书作为机密添加到密钥保管库** 如果不直接将证书上载到 Web App Service，可以在密钥保管库中将它存储为机密，然后从密钥保管库部署该证书。 此过程包括两个步骤，以下博客文章对此做了概述：[Deploying Azure Web App Certificate through Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)（通过密钥保管库部署 Azure Web 应用证书）
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>后续步骤
+## <a id="next"></a>后续步骤
 有关编程参考，请参阅 [Azure 密钥保管库 C# 客户端 API 参考](https://msdn.microsoft.com/library/azure/dn903628.aspx)。
 
 <!--Image references-->
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

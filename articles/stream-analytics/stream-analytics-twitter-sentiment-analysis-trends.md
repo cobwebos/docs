@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/03/2017
+ms.date: 03/09/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 214bd6ca8abb3adc9447536215f28f478959be07
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 09860b34bf4b1664e8d82af0e049cfd1a2d8defa
+ms.lasthandoff: 03/10/2017
 
 ---
 
@@ -172,7 +172,7 @@ GROUP BY TUMBLINGWINDOW(s, 5), Topic
 
 ![powerbi](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 
-## <a name="another-query-of-interest--in-this-scenario"></a>本场景中的另一个偏好查询
+## <a name="another-query-of-interest-in-this-scenario"></a>本场景中的另一个偏好查询
 
 我们为此场景创建的另一个示例查询基于[滑动窗口](https://msdn.microsoft.com/library/azure/dn835051.aspx)。 为了标识热门话题，我们将查找给定时间内超出某一提及次数阈值的主题。 对于本教程而言，我们检查过去五秒内提及次数超过 20 次的主题。
 
@@ -182,6 +182,19 @@ FROM TwitterStream TIMESTAMP BY CreatedAt
 GROUP BY SLIDINGWINDOW(s, 5), topic
 HAVING COUNT(*) > 20
 ```
+
+## <a name="table-of-the-field-headers"></a>字段标头表
+
+为了充分披露，该表列出了可以在此练习中使用的字段标签。 请随意在查询编辑器中练习。
+
+JSON 属性 | 定义
+--- | ---
+CreatedAt | 推文的创建时间
+主题 | 与指定的关键字匹配的主题
+SentimentScore | Sentiment140 的观点分数
+作者 | 发送推文的 Twitter 句柄
+文本 | 推文的完整正文
+
 
 ## <a name="get-support"></a>获取支持
 如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。

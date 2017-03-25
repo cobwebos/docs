@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 9bf2e87353901a043f01ff7d634e1b174cd6a52a
-ms.openlocfilehash: 3dd67e08951780725c4d81ce54aa841a5d13e59a
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 1209acfb13d53288b1ff0ed232c44c3fdcd3a9f4
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -50,7 +51,8 @@ Azure Active Directory 并不是完全无法预配或更新具有重复属性的
 ### <a name="enabling-duplicate-attribute-resiliency"></a>启用重复属性复原
 重复属性复原将是所有 Azure Active Directory 租户上的新默认行为。 对于在 2016 年 8 月 22 日或以后首次启用同步的所有租户，它将默认打开。 在此日期前启用同步的租户将分批启用此功能。 此部署将于 2016 年 9 月开始，将向每个租户的技术通知联系人发送电子邮件通知，其中包含将要启用此功能的具体日期。
 
-一旦打开重复属性复原，便无法禁用它。
+> [!NOTE]
+> 一旦打开重复属性复原，便无法禁用它。
 
 若要检查是否已为租户启用该功能，可下载 Azure Active Directory PowerShell 模块的最新版本并运行：
 
@@ -58,11 +60,8 @@ Azure Active Directory 并不是完全无法预配或更新具有重复属性的
 
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
-如果要在为租户打开该功能之前主动启用它，可下载 Azure Active Directory PowerShell 模块的最新版本并运行：
-
-`Set-MsolDirSyncFeature -Feature DuplicateUPNResiliency -Enable $true`
-
-`Set-MsolDirSyncFeature -Feature DuplicateProxyAddressResiliency -Enable $true`
+> [!NOTE]
+> 为租户启用“重复属性复原”功能之前，将不再能够使用 Set-MsolDirSyncFeature cmdlet 主动启用“重复属性复原”功能。 若要能够测试该功能，将需要创建新的 Azure Active Directory 租户。
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>识别具有 DirSyncProvisioningErrors 的对象
 目前有两种方法可识别因为重复属性冲突而发生错误的对象：Azure Active Directory PowerShell 和 Office 365 管理门户。 我们已计划将来扩展到其他基于门户的报告。
@@ -174,10 +173,5 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 * [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
 * [识别 Office 365 中的目录同步错误](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

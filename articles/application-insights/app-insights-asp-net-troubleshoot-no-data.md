@@ -4,18 +4,19 @@ description: "在 Azure Application Insights 中看不到数据？ 试试这里�
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
 ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
-ms.openlocfilehash: 1911fd24f0873a40a186af217b6f8af317abbbc8
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: db8d7b0e117276dd63ee83a1c2337e69253184b8
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -35,16 +36,16 @@ ms.openlocfilehash: 1911fd24f0873a40a186af217b6f8af317abbbc8
 
 * 请参阅[排查状态监视器问题](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)。 
 
-## <a name="a-nameq01ano-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio 中没有“添加 Application Insights”选项
-*在 Visual Studio 中创建新项目，或者在解决方案资源管理器中右键单击现有项目时，未看到任何 Application Insights 选项。*
+## <a name="q01"></a>Visual Studio 中没有“添加 Application Insights”选项
+*在解决方案资源管理器中右键单击现有项目时，未看到任何 Application Insights 选项。*
 
 * 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](app-insights-windows-desktop.md)。
-* 请务必使用 [Visual Studio 2013 Update 3 或更高版本](http://go.microsoft.com/fwlink/?LinkId=397827)。 Application Insights 工具上已预装此软件。
-* 选择“工具”、“扩展和更新”，检查“Application Insights 工具”是否已安装并启用。 如果是，请单击“更新”查看是否有可用的更新。
+* 请务必使用 [Visual Studio 2013 Update 3 或更高版本](http://go.microsoft.com/fwlink/?LinkId=397827)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
+* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。 如果是，请单击“更新”查看是否有可用的更新。
 * 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 否则，请尝试卸载再重新安装 Application Insights 工具。
 
-## <a name="a-nameq02aadding-application-insights-failed"></a><a name="q02"></a>添加 Application Insights 失败
-*创建新的 Web 项目或者尝试将 Application Insights 添加到现有项目时看到错误消息。*
+## <a name="q02"></a>添加 Application Insights 失败
+*尝试将 Application Insights 添加到现有项目时看到错误消息。*
 
 可能的原因：
 
@@ -59,12 +60,12 @@ ms.openlocfilehash: 1911fd24f0873a40a186af217b6f8af317abbbc8
 * [将 Application Insights 添加到现有项目](app-insights-asp-net.md)：在解决方案资源管理器中右键单击你的项目，然后选择“添加 Application Insights”。
 * 如果仍不起作用，请执行[手动过程](app-insights-windows-services.md)在门户中添加资源，然后将 SDK 添加到项目。 
 
-## <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>我得到错误“检测密钥不能为空”
+## <a name="emptykey"></a>我得到错误“检测密钥不能为空”
 可能是在安装 Application Insights 或日志记录适配器时发生了问题。
 
-在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“配置 Application Insights”。 你将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。
+在解决方案资源管理器中右键单击项目，然后选择“Application Insights”>“配置 Application Insights”。 你将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。
 
-## <a name="a-namenugetbuilda-nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> 生成服务器上出现“缺少 NuGet 包”
+## <a name="NuGetBuild"></a> 生成服务器上出现“缺少 NuGet 包”
 *在开发计算机上调试时所有生成都没有问题，但生成服务器上出现 NuGet 错误。*
 
 请参阅 [NuGet Package Restore](http://docs.nuget.org/Consume/Package-Restore)（NuGet 包还原）和 [Automatic Package Restore](http://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore)（自动包还原）。
@@ -75,14 +76,14 @@ ms.openlocfilehash: 1911fd24f0873a40a186af217b6f8af317abbbc8
 可能的原因：
 
 * Application Insights 资源是手动创建的，或者项目是 Application Insights 工具不支持的类型。
-* Application Insights 工具已在 Visual Studio 中禁用。
+* 开发人员分析工具已在 Visual Studio 中禁用。 
 * Visual Studio 版本低于 2013 Update 3。
 
 解决方法：
 
 * 确保 Visual Studio 版本为 2013 Update 3 或更高。
-* 选择“工具”、“扩展和更新”，检查“Application Insights 工具”是否已安装并启用。 如果是，请单击“更新”查看是否有可用的更新。
-* 在解决方案资源管理器中右键单击你的项目。 如果看到命令“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。
+* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。 如果是，请单击“更新”查看是否有可用的更新。
+* 在解决方案资源管理器中右键单击你的项目。 如果看到命令“Application Insights”>“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。
 
 否则，Application Insights 工具不会直接支持你的项目类型。 若要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中选择“Application Insights”，然后选择你的应用程序。
 
@@ -123,13 +124,13 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
     然后，将会看到一些摘要图表。 可以逐个单击这些图表查看详细信息。
 * 在 Visual Studio 中调试应用时，请单击“Application Insights”按钮。
 
-## <a name="a-nameq03a-no-server-data-or-no-data-at-all"></a><a name="q03"></a>没有服务器数据（或根本没有数据）
+## <a name="q03"></a>没有服务器数据（或根本没有数据）
 *我运行了应用，然后在 Microsoft Azure 中打开 Application Insights 服务，但所有图表都显示“了解如何收集...”或“未配置”。* 或者，*只有页面视图和用户数据，但没有任何服务器数据。*
 
 * 在 Visual Studio 中以调试模式运行应用程序 (F5)。 使用应用程序，以便生成一些遥测。 检查是否可以在 Visual Studio 的“输出”窗口中看到记录的事件。 
   
     ![](./media/app-insights-asp-net-troubleshoot-no-data/output-window.png)
-* 在 Application Insights 门户中，打开“诊断搜索”。[](app-insights-diagnostic-search.md) 数据通常会先显示在此处。
+* 在 Application Insights 门户中，打开[诊断搜索](app-insights-diagnostic-search.md)。 数据通常会先显示在此处。
 * 单击“刷新”按钮。 边栏选项卡会定期自动刷新，但你也可以手动刷新。 时间范围越大，刷新间隔就越长。
 * 检查检测密钥是否匹配。 在 Application Insights 门户的应用主边栏选项卡中，查看“概要”下拉列表中的“检测密钥”。 然后，在 Visual Studio 的项目中，打开 ApplicationInsights.config 并找到 `<instrumentationkey>`。 检查两个密钥是否相同。 如果不同：
   
@@ -143,7 +144,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 * 你是否针对[服务器端 SDK](app-insights-api-custom-events-metrics.md) 编写了可能更改 `TelemetryClient` 实例或 `TelemetryContext` 中的检测密钥的任何代码？ 或者，是否编写了可能筛选掉过多内容的[筛选或采样配置](app-insights-api-filtering-sampling.md)？
 * 如果编辑了 ApplicationInsights.config，请仔细检查 [TelemetryInitializers 和 TelemetryProcessors](app-insights-api-filtering-sampling.md) 的配置。 命名不当的类型或参数可能导致 SDK 不发送任何数据。
 
-## <a name="a-nameq04ano-data-on-page-views-browsers-usage"></a><a name="q04"></a>未提供有关页面视图、浏览器和使用情况的任何数据
+## <a name="q04"></a>未提供有关页面视图、浏览器和使用情况的任何数据
 *在“服务器响应时间”和“服务器请求”图表中看到了数据，但“页面视图加载时间”或者“浏览器”或“使用情况”边栏选项卡中没有任何数据。*
 
 这些数据来自网页中的脚本。 
@@ -183,10 +184,5 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
 * [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

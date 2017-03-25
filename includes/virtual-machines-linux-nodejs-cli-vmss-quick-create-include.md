@@ -1,6 +1,6 @@
 ## <a name="prerequisites"></a>先决条件
 
-如果尚未这样做，可以将 [Azure 订阅免费试用版](https://azure.microsoft.com/pricing/free-trial/)和 [Azure CLI 1.0](../articles/xplat-cli-install.md)[ 连接到 Azure 帐户](../articles/xplat-cli-connect.md)。 请确保 Azure CLI 处于 Resource Manager 模式，如下所示：
+如果尚未这样做，可以将 [Azure 订阅免费试用版](https://azure.microsoft.com/pricing/free-trial/)和 [Azure CLI 1.0](../articles/cli-install-nodejs.md)[ 连接到 Azure 帐户](../articles/xplat-cli-connect.md)。 请确保 Azure CLI 处于 Resource Manager 模式，如下所示：
 
 ```azurecli
 azure config mode arm

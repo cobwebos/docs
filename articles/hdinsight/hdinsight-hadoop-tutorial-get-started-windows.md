@@ -17,8 +17,9 @@ ms.workload: big-data
 ms.date: 03/07/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: e2d78b7e71cd17c88ce4e283cc0b0ddc9bf7b479
-ms.openlocfilehash: 0b12dcfbf69c0f66df7587f6a755f74089090960
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 8a925c38a561d11f1c0e394b8c993f739e912f54
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -157,8 +158,8 @@ Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HD
 2. 依次单击“Power Query”菜单、“从其他源”和“从 Azure HDInsight”。
    
     ![为 Azure HDInsight 打开的 Excel PowerQuery 导入菜单。][image-hdi-gettingstarted-powerquery-importdata]
-3. 输入与你的群集关联的 Azure Blob 存储帐户的“帐户名”，然后单击“确定”。 （这是先前在教程中创建的存储帐户。）
-4. 输入 Azure Blob 存储帐户的“帐户密钥”，然后单击“保存”。
+3. 输入与你的群集关联的 Azure 存储帐户的“帐户名称”，然后单击“确定”。 （这是先前在教程中创建的存储帐户。）
+4. 输入 Azure 存储帐户的“帐户密钥”，然后单击“保存”。
 5. 在右窗格中，双击 Blob 名称。 默认情况下，该 Blob 名称与群集名称相同。
 6. 在“名称”列中找到 **stdout**。 确认对应“文件夹路径”列中的 GUID 是否与前面记下的 GUID 匹配。 若匹配，则表明输出数据与所提交的作业相对应。 单击 **stdout** 列左侧的“二进制”。
    
@@ -190,7 +191,7 @@ HDInsight 群集提供包括入门库的查询控制台以直接从门户运行�
 
 * [用于 Visual Studio 的 HDInsight Hadoop 工具入门][1]
 * [HDInsight Emulator 入门][hdinsight-emulator]
-* [将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]
+* [将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]
 * [使用 PowerShell 管理 HDInsight][hdinsight-admin-powershell]
 * [将数据上传到 HDInsight][hdinsight-upload-data]
 * [将 MapReduce 与 HDInsight 配合使用][hdinsight-use-mapreduce]
@@ -252,10 +253,5 @@ HDInsight 群集提供包括入门库的查询控制台以直接从门户运行�
 
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

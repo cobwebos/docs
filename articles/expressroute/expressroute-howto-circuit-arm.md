@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 9a8a72f5255184a1ac571532355c7f7a23d7f7bd
-ms.openlocfilehash: 0aacbdafdb5ded81dbc8495a30837e2f4941075f
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: ced4347baf7eca4dd8fc9cf1c8c0b451314f0ad2
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -286,13 +286,13 @@ PowerShell cmdlet `Get-AzureRmExpressRouteServiceProvider` 将返回此信息，
     get-help get-azurededicatedcircuit -detailed
 
 
-## <a name="a-namemodifyamodifying-an-expressroute-circuit"></a><a name="modify"></a>修改 ExpressRoute 线路
+## <a name="modify"></a>修改 ExpressRoute 线路
 你可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。
 
 你可以在不停机的情况下执行以下操作：
 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
-* 增加 ExpressRoute 线路的带宽。 请注意，不支持对线路的带宽进行降级。
+* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 请注意，不支持对线路的带宽进行降级。 
 * 将计量套餐从数据流量套餐更改为无限制流量套餐。 请注意，不支持将计量套餐从无限制流量套餐更改为数据流量套餐。
 * 可以启用和禁用允许经典操作。
 
@@ -337,8 +337,9 @@ PowerShell cmdlet `Get-AzureRmExpressRouteServiceProvider` 将返回此信息，
 有关提供商支持的带宽选项，请查看 [ExpressRoute 常见问题解答](expressroute-faqs.md)。 你可以选取大于现有线路大小的任何大小。
 
 > [!IMPORTANT]
+> 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
+>
 > 但是，你无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，然后重新预配新的 ExpressRoute 线路。
-> 
 > 
 
 确定所需的大小后，可以使用以下命令调整线路的大小。

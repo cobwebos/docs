@@ -53,7 +53,7 @@
 运行 **New-AzureRmResourceGroupDeployment** 命令时，系统会提示输入模板中参数的值。 根据具体模板，Azure 可能需花费一些时间部署资源。
 
 ## <a name="azure-cli"></a>Azure CLI
-[安装 Azure CLI](../articles/xplat-cli-install.md)，登录，确保启用 Resource Manager 命令。 有关如何执行此操作的信息，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用](../articles/xplat-cli-azure-resource-manager.md)。
+[安装 Azure CLI](../articles/cli-install-nodejs.md)，登录，确保启用 Resource Manager 命令。 有关如何执行此操作的信息，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用](../articles/xplat-cli-azure-resource-manager.md)。
 
 在将括号中的文本替换为资源组名称、位置、部署名称和模板名称以后，运行以下命令即可创建资源组和部署：
 
@@ -66,9 +66,4 @@
 发现 [GitHub](https://github.com/Azure/azure-quickstart-templates) 上可自由应用的所有模板。
 
 了解有关 [Azure Resource Manager](../articles/resource-group-template-deploy.md) 的详细信息。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

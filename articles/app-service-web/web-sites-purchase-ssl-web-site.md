@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: 3629280101a6c8c53dacf9f80c09becf1db53f03
-ms.openlocfilehash: e4331c6d5a07e6450c1fdde43d4c226e9a06de54
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: edcb6d37eb4d82ff5928ee33cf456c3795eb8131
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/27/2017
 > 
 > 
 
-## <a name="a-namebkmkoverviewaoverview"></a><a name="bkmk_Overview"></a>概述
+## <a name="bkmk_Overview"></a>概述
 > [!NOTE]
 > 请不要尝试使用没有与有效信用卡关联的订阅购买 SSL 证书。 否则可能导致你的订阅被禁用。 
 > 
@@ -48,7 +48,7 @@ ms.lasthandoff: 02/27/2017
 
 请求 SSL 证书之前，必须先确定将受证书保护的域名。 这将确定必须获取的证书类型。 如果你只需保护单个域名（例如 contoso.com 或 www.contoso.com）的安全，标准（基本）证书就足够了。 如果需要保护多个域名（例如 contoso.com、www.contoso.com 和 mail.contoso.com）的安全，可以获取**[通配符证书](http://en.wikipedia.org/wiki/Wildcard_certificate)**
 
-## <a name="a-namebkmkpurchasecertastep-0-place-an-ssl-certificate-order"></a><a name="bkmk_purchasecert"></a>步骤 0：订购 SSL 证书
+## <a name="bkmk_purchasecert"></a>步骤 0：订购 SSL 证书
 在此步骤中，你将了解如何订购所选的 SSL 证书。
 
 1. 在 **[Azure 门户](https://portal.azure.com/)**中，单击“浏览”并在搜索栏中键入“应用服务证书”，从结果中选择“应用服务证书”，然后单击“添加”。 
@@ -84,7 +84,7 @@ ms.lasthandoff: 02/27/2017
 > 
 > 
 
-## <a name="a-namebkmkstorekeyvaultastep-1-store-the-certificate-in-azure-key-vault"></a><a name="bkmk_StoreKeyVault"></a>步骤 1：将证书上载到 Azure 密钥保管库
+## <a name="bkmk_StoreKeyVault"></a>步骤 1：将证书上载到 Azure 密钥保管库
 在此步骤中，你将了解如何将 SSL 证书存储到所选的 Azure 密钥保管库。
 
 1. SSL 证书购买过程完成之后，需要再次浏览到“应用服务证书”资源边栏选项卡将它手动打开（请参阅上述“步骤 1”）   
@@ -105,7 +105,7 @@ ms.lasthandoff: 02/27/2017
    
     然后应会完成使用所选的 Azure 密钥保管库存储购买的证书的步骤。 刷新边栏选项卡后，你应会看到此步骤也带有绿色复选标记。
 
-## <a name="a-namebkmkverifyownershipastep-2-verify-the-domain-ownership"></a><a name="bkmk_VerifyOwnership"></a>步骤 2：验证域所有权
+## <a name="bkmk_VerifyOwnership"></a>步骤 2：验证域所有权
 在此步骤中，你将了解如何对刚刚订购的 SSL 证书执行域所有权验证。 
 
 1. 在“证书设置”边栏选项卡中单击“步骤 2: 验证”步骤。 应用服务证书支持 3 种类型的域验证。
@@ -138,7 +138,7 @@ ms.lasthandoff: 02/27/2017
           
           例如，若要对主机名为 **\*.contosocertdemo.com** 或 **\*.subdomain.contosocertdemo.com** 且域验证令牌为 **tgjgthq8d11ttaeah97s3fr2sh** 的通配符证书执行验证，则需要在 **contosocertdemo.com** 上创建一条值为 **tgjgthq8d11ttaeah97s3fr2sh** 的 TXT 记录     
 
-## <a name="a-namebkmkassigncertificateastep-3-assign-certificate-to-app-service-app"></a><a name="bkmk_AssignCertificate"></a>步骤 3：将证书分配到应用服务应用
+## <a name="bkmk_AssignCertificate"></a>步骤 3：将证书分配到应用服务应用
 在此步骤中，将了解如何将这个新购买的证书分配到应用服务应用。 
 
 > [!NOTE]
@@ -170,10 +170,13 @@ ms.lasthandoff: 02/27/2017
   
     请注意，此 IP 地址将与以前用于配置您的域的 A 记录的虚拟 IP 地址不同。 如果将您配置为使用基于 SNI 的 SSL，或未将您配置为使用 SSL，则不会为此条目列出任何地址。
 
-1. 通过使用您的域名注册机构所提供的工具，修改您的自定义域名的 A 记录以指向上一步中的 IP 地址。
+* 通过使用您的域名注册机构所提供的工具，修改您的自定义域名的 A 记录以指向上一步中的 IP 地址。
    此时，你应该能够使用 HTTPS:// 而不是 HTTP:// 访问你的应用，以便验证证书是否已正确配置。
 
-## <a name="a-namebkmkrekeyarekey-and-sync-the-certificate"></a><a name="bkmk_Rekey"></a>重新生成密钥并同步证书
+## <a name="bkmk_Rekey"></a>导出应用服务证书
+可以创建应用服务证书的本地 PFX 副本，以便将其用于其他 Azure 服务。 有关详细信息，请**[阅读我们的博客文章](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)**
+
+## <a name="bkmk_Rekey"></a>重新生成密钥并同步证书
 1. 如果出于安全原因而需要重新生成证书的密钥，只需在“证书属性”边栏选项卡中选择“重新生成密钥并同步”选项。 
 2. 单击“重新生成密钥”按钮启动该过程。 此过程需要 1 - 10 分钟才能完成。 
    

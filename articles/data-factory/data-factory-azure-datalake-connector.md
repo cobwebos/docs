@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/13/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: b2d1a740782a20a7c6b7b8cec8335a41f16231f5
-ms.openlocfilehash: 5a6a14e5fc8f6915b34f9667c4294a46c8591633
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: ee0cee5e653cb8900936e12e87c56cfee5639bc5
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -425,7 +425,7 @@ Azure Data Lake Store 连接器支持**服务主体**身份验证和**用户凭�
 若要使用服务主体身份验证，首选需要在 Azure Active Directory (AAD) 中注册应用程序实体并在 Data Lake Store 中对其授予访问权限。 之后，可在 Azure 数据工厂中对相应的应用程序 ID、应用程序密钥和租户信息指定以下属性，以将数据复制出/到 Data Lake Store。 有关如何设置和检索所需信息，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
 
 > [!IMPORTANT]
-> 使用复制向导时，请务必向服务主体至少授予对 ADLS 帐户的 ADLS 根（“/”）或“读取者”角色的“读取”权限，这样才能在文件夹之间成功导航。 否则，可能会看到“提供的凭据无效”错误。
+> 使用复制向导创作时，请确保在访问控制 (IAM) 中向服务主体至少授予对 ADLS 帐户的“读取者”角色以及对 ADLS 根 ("/") 及其子级的“读取+执行”权限，这样才能在文件夹之间成功导航。 否则，可能会看到“提供的凭据无效”错误。
 >
 > 如果从 AAD 新建/更新服务主体，可能需要几分钟才能生效。 首先请反复检查服务主体和 ADLS ACL 配置，如果仍有错误指出“提供的凭据无效”，请等待一段时间，然后重试。
 >
@@ -484,7 +484,7 @@ Azure Data Lake Store 连接器支持**服务主体**身份验证和**用户凭�
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
-| 不由 Azure Active Directory 管理的用户帐户 (@hotmail.com, @live.com, 等）。 |12 小时 |
+| 不由 Azure Active Directory 管理的用户帐户（@hotmail.com、@live.com，等等）。 |12 小时 |
 | 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的&14; 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
 如果在此令牌的过期时间之前更改密码，则该令牌将立即过期，并且你将看到此部分中所提到的错误。
@@ -527,7 +527,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | folderPath |到 Azure Data Lake Sore 中的容器和文件夹的路径。 |是 |
-| fileName |Azure Data Lake Sore 中文件的名称。 fileName 可选，并且区分大小写。 <br/><br/>如果指定 filename，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称将采用以下格式：Data.<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
+| fileName |Azure Data Lake Sore 中文件的名称。 fileName 可选，并且区分大小写。 <br/><br/>如果指定 filename，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称将采用以下格式：Data<Guid>.txt (for example: : Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 是一个可选属性。 它可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 请参阅[使用 partitionedBy 属性](#using-partitionedby-property)部分了解详细信息和示例。 |否 |
 | 格式 | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](#specifying-textformat)、[Json 格式](#specifying-jsonformat)、[Avro 格式](#specifying-avroformat)、[Orc 格式](#specifying-orcformat)和 [Parquet 格式](#specifying-parquetformat)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**；支持的级别为：**Optimal** 和 **Fastest**。 有关详细信息，请参阅[指定压缩](#specifying-compression)部分。 |否 |

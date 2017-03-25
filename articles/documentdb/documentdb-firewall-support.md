@@ -14,11 +14,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 03/10/2017
 ms.author: ankshah
 translationtype: Human Translation
-ms.sourcegitcommit: 08cac64a6b08266f78bca03f1139a13e9686ebc3
-ms.openlocfilehash: 819602cda932ea698287724e307ebbd73f1af988
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 7acbdda2e8179219c21370d20d30a94feb405fce
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -47,25 +48,32 @@ ms.openlocfilehash: 819602cda932ea698287724e307ebbd73f1af988
 ## <a name="connections-from-the-internet"></a>从 Internet 连接
 从 Internet 上的计算机访问 DocumentDB 数据库帐户时，必须将客户端 IP 地址或计算机的 IP 地址范围添加到 DocumentDB 数据库帐户 IP 地址的允许列表中。 
 
-## <a name="a-idconfigure-ip-policya-configuring-the-ip-access-control-policy"></a><a id="configure-ip-policy"></a>配置 IP 访问控制策略
-更新 `ipRangeFilter` 属性后，可以通过 [Azure CLI](documentdb-automation-resource-manager-cli.md)、[Azure Powershell](documentdb-manage-account-with-powershell.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 以编程方式设置 IP 访问控制策略。 IP 地址/范围必须以逗号分隔，且不能包含空格。 示例：“13.91.6.132,13.91.6.1/24”。 通过这些方法更新数据库帐户时，请确保填充所有属性以防止重置为默认设置。
+## <a id="configure-ip-policy"></a>配置 IP 访问控制策略
+可以在 Azure 门户中设置 IP 访问控制策略，也可以通过 [Azure CLI](documentdb-automation-resource-manager-cli.md)、[Azure Powershell](documentdb-manage-account-with-powershell.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 通过更新 `ipRangeFilter` 属性以编程方式设置 IP 访问控制策略。 IP 地址/范围必须以逗号分隔，且不能包含空格。 示例：“13.91.6.132,13.91.6.1/24”。 通过这些方法更新数据库帐户时，请确保填充所有属性以防止重置为默认设置。
 
 > [!NOTE]
 > 通过启用 DocumentDB 数据库帐户的 IP 访问控制策略，阻止从 IP 地址范围已配置的允许列表外部的计算机访问 DocumentDB 数据库帐户。 通过此模型，也将阻止从门户浏览数据平面操作，以确保访问控制的完整性。
 
+为简化开发，Azure 门户将帮助你识别你的客户端计算机的 IP 并将其添加到允许的列表中，以便在你的计算机上运行的应用可以访问 DocumentDB 帐户。 请注意，此处的客户端 IP 地址与通过门户看到的一样。 它可能是你的计算机的客户端 IP 地址，也可能是你的网络网关的 IP 地址。 在迁移到生产环境之前，不要忘记将其删除。
+
+若要在 Azure 门户中设置 IP 访问控制策略，请导航到 DocumentDB 帐户边栏选项卡，在导航菜单中单击“防火墙”，然后单击“开启”。 
+
+![此屏幕截图显示了如何在 Azure 门户中打开“防火墙”边栏选项卡](./media/documentdb-firewall-support/documentdb-azure-portal-firewall.png)
+
+在新窗格中，指定 Azure 门户是否可以访问该帐户，并根据情况添加其他地址和范围，然后单击“保存”。  
+
+![此屏幕截图显示了如何在 Azure 门户中配置防火墙设置](./media/documentdb-firewall-support/documentdb-azure-portal-firewall-configure.png)
+
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>IP 访问控制策略的故障排除
 ### <a name="portal-operations"></a>门户操作
-通过启用 DocumentDB 数据库帐户的 IP 访问控制策略，阻止从 IP 地址范围已配置的允许列表外部的计算机访问 DocumentDB 数据库帐户。 通过此模型，也将阻止从门户浏览数据平面操作，以确保访问控制的完整性。 
+通过启用 DocumentDB 数据库帐户的 IP 访问控制策略，阻止从 IP 地址范围已配置的允许列表外部的计算机访问 DocumentDB 数据库帐户。 因此，如果希望启用门户数据平面操作，例如浏览集合和查询文档，则需要使用门户中的“防火墙”边栏选项卡显式允许 Azure 门户访问。 
+
+![此屏幕截图显示了如何启用对 Azure 门户的访问](./media/documentdb-firewall-support/documentdb-azure-portal-access-firewall.png)
 
 ### <a name="sdk--rest-api"></a>SDK & Rest API
 出于安全考虑，通过 SDK 或 REST API 从允许列表以外的计算机进行的访问将返回通用的“404 未找到”响应，不包含任何其他详细信息。 请验证 DocumentDB 数据库帐户配置的 IP 允许列表，以确保将正确的策略配置应用到 DocumentDB 数据库帐户。
 
 ## <a name="next-steps"></a>后续步骤
 有关网络相关性能技巧的信息，请参阅[性能提示](documentdb-performance-tips.md)。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

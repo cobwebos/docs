@@ -13,17 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/06/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
-ms.openlocfilehash: a2df2169acda706a0fc3e1b7daf743ce29e5f030
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 28a6858729adbef439625864abc2fd7aa77fab35
+ms.lasthandoff: 03/11/2017
 
 
 ---
 # <a name="upload-a-windows-vhd-from-an-on-premises-vm-to-azure"></a>将 Windows VHD 从本地 VM 上载到 Azure
 本文说明如何创建和上载 Windows 虚拟硬盘 (VHD)，以便在创建 Azure VM 时使用。 可以从通用 VM 或专用 VM 上载 VHD。 
+
+有关如何使用托管磁盘准备、上载和创建新 VM 的完整演练，请参阅[从使用托管磁盘上载到 Azure 的通用 VHD 创建新 VM](virtual-machines-windows-upload-generalized-managed.md) 或[上载专用 VHD 以在 Azure 中创建 VM](virtual-machines-windows-upload-specialized.md)。
 
 有关 Azure 中的磁盘和 VHD 的更多详细信息，请参阅 [About disks and VHDs for virtual machines](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（关于虚拟机的磁盘和 VHD）。
 

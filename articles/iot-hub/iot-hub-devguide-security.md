@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 0644efd8753c33c0404b45f567759c0be666bcef
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: efd7aab21a9899ed0f56ffeeda362a61d69ffdc9
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -329,7 +329,7 @@ await registryManager.AddDeviceAsync(device);
 [用于 .NET 的 Azure IoT 设备 SDK][lnk-client-sdk]（版本 1.0.11+）支持使用 X.509 证书。
 
 ### <a name="c-support"></a>C\# 支持
-类 **DeviceAuthenticationWithX509Certificate** 支持使用 X.509 证书创建  **DeviceClient** 实例。
+类 **DeviceAuthenticationWithX509Certificate** 支持使用 X.509 证书创建  **DeviceClient** 实例。 X.509 证书必须采用 PFX（也称为 PKCS #12）格式，其中包含私钥。 
 
 下面是示例代码片段：
 
@@ -384,7 +384,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [IoT 中心终结点][lnk-endpoints]，介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
 * [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
 * [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
-* [设备孪生和作业的 IoT 中心查询语言][lnk-query]介绍了可用来从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
+* [设备克隆和作业的 IoT 中心查询语言][lnk-query]介绍了可用来从 IoT 中心检索设备克隆和作业相关信息的 IoT 中心查询语言。
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤

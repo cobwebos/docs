@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: fc917c9c9a92bf944d922a9418e065fa661c69df
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 6d376b9db07a46c467bd772959de3f7acf9c123d
+ms.lasthandoff: 03/15/2017
 
 
 ---
 
-# <a name="connect-a-mongodb-app-to-a-documentdb-account-using-a-mongodb-connection-string"></a>使用 MongoDB 连接字符串将 MongoDB 应用连接到 DocumentDB 帐户
+# <a name="connect-an-application-to-documentdb-api-for-mongodb"></a>将应用程序连接到 DocumentDB：MongoDB 的 API
 了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure DocumentDB 帐户。 通过将 MongoDB 应用连接到 Azure DocumentDB 数据库，可以将 DocumentDB 数据库用作 MongoDB 应用的数据存储。 
 
 本教程提供了两种方法来检索连接字符串信息：
 
-- [快速启动方法](#QuickStartConnection)，适合搭配 .NET、Node.js、MongoDB Shell、Java 和 Python 驱动程序使用。
+- [快速启动方法](#QuickstartConnection)，适合搭配 .NET、Node.js、MongoDB Shell、Java 和 Python 驱动程序使用。
 - [自定义连接字符串方法](#GetCustomConnection)，适合搭配其他驱动程序使用。
 
 ## <a name="prerequisites"></a>先决条件
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/08/2017
 - 一个 Azure 帐户。 如果没有 Azure 帐户，则创建[免费的 Azure 帐户](https://azure.microsoft.com/free/)。 
 - DocumentDB 帐户。 有关说明，请参阅[创建与 MongoDB 应用配合使用的 DocumentDB 帐户](documentdb-create-mongodb-account.md)。
 
-## <a id="QuickStartConnection"></a>使用快速启动方法获取 MongoDB 连接字符串
+## <a id="QuickstartConnection"></a>使用快速启动方法获取 MongoDB 连接字符串
 1. 在 Internet 浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在“NoSQL (DocumentDB)”边栏选项卡中，选择 DocumentDB：MongoDB 帐户的 API。 
 3. 在“帐户”边栏选项卡的“左导航”栏中，单击“快速启动”。 

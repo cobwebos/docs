@@ -17,22 +17,23 @@ ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
-ms.openlocfilehash: 6abc5c10f6116886ac5d6cbc11f251f083ee2b29
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 0cb96f97358378a723d7528e53f5c5a771e2000b
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="storing-azure-sql-database-backups-for-up-to-10-years"></a>将 Azure SQL 数据库备份存储 10 年之久
-出于法规要求、符合性或其他商业目的，许多应用程序要求保留 SQL 数据库的[自动备份](sql-database-automated-backups.md)功能所提供过去 7-35 天的自动完整数据库备份。
+出于法规要求、符合性或其他商业目的，许多应用程序要求保留 SQL 数据库的[自动备份](sql-database-automated-backups.md)功能所提供过去 7-35 天的自动完整数据库备份。 使用**长期备份保留**功能，可将 Azure SQL 数据库备份存储在 Azure 恢复服务保管库中至多 10 年。 每个保管库可存储至多 1000 个数据库。 可选择保管库中的任何备份，并将其还原为新数据库。
 
-使用**长期备份保留**功能，可将 Azure SQL 数据库备份存储在 Azure 恢复服务保管库中至多 10 年。 每个保管库可存储至多 1000 个数据库。 可选择保管库中的任何备份，并将其还原为新数据库。
+> [!IMPORTANT]
+> 长期备份保留期当前处于预览状态，在以下区域中提供：澳大利亚东部、澳大利亚东南部、巴西南部、美国中部、亚洲东部、美国东部、美国东部 2、印度中部、印度南部、日本东部、日本西部、美国中北部、欧洲北部、美国中南部、亚洲东南部、欧洲西部和美国西部。
+>
 
 > [!NOTE]
 > 24 小时内，每个保管库最多可启用 200 个数据库。 因此，建议对每个服务器使用单独的保管库，将此限制的影响降至最低。 
 > 
 > 
-
 ## <a name="how-does-sql-database-long-term-backup-retention-work"></a>SQL 数据库长期备份保留的工作原理是什么？
 
 通过备份的长期备份保留，可将 Azure SQL 数据库服务器与 Azure 恢复服务保管库相关联。 
@@ -40,7 +41,6 @@ ms.lasthandoff: 02/16/2017
 * 必须在创建 SQL Server 的 Azure 订阅中，在相同地理区域和资源组内创建保管库。 
 * 然后为任何数据库配置保留策略。 使用该策略时，会将每周完整数据库备份复制到恢复服务保管库，并在指定的保留期（至多 10 年）内保留此数据。 
 * 此后，可从其中任意备份还原到订阅中任意服务器内的新数据库。 由 Azure 存储从现有备份进行复制，不会对现有数据库的性能造成影响。
-
 
 > [!TIP]
 > 相关教程，请参阅[通过 Azure 门户开始使用备份和还原进行数据保护和恢复](sql-database-get-started-backup-recovery-portal.md)或[通过 PowerShell 开始使用备份和还原进行数据保护和恢复](sql-database-get-started-backup-recovery-powershell.md)

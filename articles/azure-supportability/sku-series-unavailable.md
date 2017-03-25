@@ -17,6 +17,7 @@ ms.author: gangan
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 0f41aac0512e78039e6038795c72c07251bbcf76
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 0f41aac0512e78039e6038795c72c07251bbcf76
 在某些地区，某些 SKU 未自动在新订阅上可用。  当[某个区域中引入更强大的 SKU 而传统 SKU 的受欢迎程度下降](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/)时，可能会出现这种情况。
 当创建支持请求以增加计算核心配额时，将显示消息“*对于该区域的选定订阅，某些 SKU 系列不可用*”。
 
-可以在“按区域的 Azure 服务”[](https://azure.microsoft.com/regions/#services)页上查看 SKU 可用性。 
+可以在 [按区域的 Azure 服务](https://azure.microsoft.com/regions/#services) 页上查看 SKU 可用性。 
 
 若要请求访问订阅中受限制的 SKU，请创建一个“订阅管理”支持请求。
 
@@ -46,10 +47,5 @@ ms.openlocfilehash: 0f41aac0512e78039e6038795c72c07251bbcf76
 
 ## <a name="learn-more"></a>了解详细信息
 [Azure 支持常见问题](https://azure.microsoft.com/support/faq)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

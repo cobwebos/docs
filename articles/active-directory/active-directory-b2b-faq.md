@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/07/2017
+ms.date: 03/14/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 0abe257f3c1c2f35c92fa5f382e9778217f01159
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 4b7ed095729e810f7f1112d3b6becfaf186bf508
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -72,8 +72,6 @@ B2B 协作来宾用户在目录中。 你可以将它们添加到有权访问 Sh
 
   >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player]
 
-  如果此视频未显示嵌入，可以在[此处](https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user)访问它。
-
 ### <a name="what-is-the-timeline-by-which-azure-ad-b2b-collaboration-will-start-support-for-mfa-and-consumer-email-accounts"></a>Azure AD B2B 协作开始为 MFA 和使用者电子邮件帐户提供支持的日程表是怎样的？
 在此公共预览版刷新中现在支持 MFA 和使用者电子邮件帐户。
 
@@ -89,8 +87,16 @@ B2B 协作来宾用户在目录中。 你可以将它们添加到有权访问 Sh
 ### <a name="does-microsoft-crm-provide-online-support-to-azure-ad-b2b-collaboration"></a>Microsoft CRM 是否为 Azure AD B2B 协作提供联机支持？
 CRM 将在 Azure AD B2B 协作可以广泛使用后为其提供支持。
 
+### <a name="are-b2b-collaboration-guest-users-visible-in-sharepoint-onlineonedrive-people-picker"></a>B2B 协作来宾用户在 SharePoint Online/OneDrive 人员选取器中是否可见？
+ 
+是！ 不过，默认情况下，搜索现有来宾用户的功能在 SharePoint Online 人员选取器中处于关闭状态以匹配旧行为。 你可以使用“ShowPeoplePickerSuggestionsForGuestUsers”设置在租户和网站集级别启用此功能。 这可以使用 Set-SPOTenant 和 Set-SPOSite cmdlet 进行设置，这将允许用户搜索目录中的所有现有来宾用户。 租户范围中的更改不会影响已经预配的 SharePoint Online 站点。
+
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>新创建的 B2B 协作用户的初始密码的生存期是什么？
 Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样适用于所有 Azure AD 云用户帐户。 云用户帐户是指未与其他标识提供者，例如 Microsoft 帐户、Facebook、ADFS 甚至另一个云租户（就 B2B 协作而言）联合的帐户。 对于联合帐户，密码策略取决于本地租户中的策略和用户的 Microsoft 帐户设置。
+
+### <a name="applications-want-to-differentiate-their-experience-between-a-tenant-user-and-a-guest-user-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-right-model-for-this"></a>应用程序希望在其租户用户与来宾用户之间提供有差别的体验。 是否有针对此事项的标准指南？ 标识提供者声明是否是适用于此事项的确切模型？
+ 
+如我们在 [B2B 协作用户的属性](active-directory-b2b-user-properties.md)中所讨论，来宾用户可以使用任何标识提供者进行身份验证。 因此，UserType 是决定此事项的确切属性。 令牌中当前未包括 UserType 声明。 应用程序应当使用 Graph API 从目录中查询用户并获取其 UserType。
 
 ### <a name="next-steps"></a>后续步骤
 

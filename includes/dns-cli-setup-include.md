@@ -5,7 +5,7 @@
 在开始配置之前，请确认你具有以下各项。
 
 * Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-* 安装最新版本的 Azure CLI（在 Windows、Linux 或 MAC 中可用）。 有关详细信息，请参阅[安装 Azure CLI](../articles/xplat-cli-install.md)。
+* 安装最新版本的 Azure CLI（在 Windows、Linux 或 MAC 中可用）。 有关详细信息，请参阅[安装 Azure CLI](../articles/cli-install-nodejs.md)。
 
 ### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
@@ -54,9 +54,4 @@ Azure DNS 服务由 Microsoft.Network 资源提供程序管理。 使用 Azure D
 ```azurecli
 azure provider register --namespace Microsoft.Network
 ```
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

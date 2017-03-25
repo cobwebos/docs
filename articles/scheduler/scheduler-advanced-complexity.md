@@ -17,6 +17,7 @@ ms.author: deli
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: e329d152ea6a95c8cdfa6a507504601d4e0957cd
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -108,7 +109,7 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 
 让我们查看 *startTime* 在过去，并且指定了 *recurrence* 但未指定 *schedule* 的情况下会发生的情况示例。  假设当前时间为 2015-04-08 13:00，*startTime* 为 2015-04-07 14:00，*recurrence* 为每隔 2 天（定义方式为 *frequency*: day，*interval*: 2）。请注意，*startTime* 在过去，即发生在当前时间以前
 
-在这些条件下，*首次执行*将为 2015-04-09 14:00\.。计划程序引擎将从开始时间计算执行循环。  过去的所有实例将被丢弃。 引擎将使用将来发生的下一个实例。  在本例中，*startTime* 为 2015-04-07 2:00pm，因此，下一个实例为从该时间算起的 2 天，即 2015-04-09 2:00pm。
+在这些条件下，*首次执行*将为 2015-04-09 14:00\. 计划程序引擎将从开始时间计算执行循环。  过去的所有实例将被丢弃。 引擎将使用将来发生的下一个实例。  在本例中，*startTime* 为 2015-04-07 2:00pm，因此，下一个实例为从该时间算起的 2 天，即 2015-04-09 2:00pm。
 
 请注意，不管 startTime 是 2015-04-05 14:00 还是 2015-04-01 14:00\.，第一次执行时间均相同。在第一次执行后，将使用计划循环计算后续执行 – 依次为 2015-04-11 2:00pm、2015-04-13 2:00pm、2015-04-15 2:00pm 等。
 
@@ -134,7 +135,7 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 ## <a name="examples-recurrence-schedules"></a>示例：循环计划
 以下是循环计划的不同示例 – 着重于计划对象及其子元素。
 
-以下计划均假定 *interval* 设为 1\.。此外，用户必须假设正确的频率符合 *schedule*，例如，不能使用频率“day”，并且计划中不能包含“monthDays”修改。 上面介绍了此类限制。
+以下计划均假定 *interval* 设为 1\. 此外，用户必须假设正确的频率符合 *schedule*，例如，不能使用频率“day”，并且计划中不能包含“monthDays”修改。 上面介绍了此类限制。
 
 | **示例** | **说明** |
 |:--- |:--- |
@@ -159,7 +160,7 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 | <code>{"minutes":[0], "hours":[6], "monthDays":[-1]}</code> |在月份最后一天的 6AM 运行。 如果你要在月份的最后一天运行作业，请使用 -1 而不是日期 28、29、30 或 31。 |
 | <code>{"minutes":[0], "hours":[6], "monthDays":[1,-1]}</code> |在每月第一天和最后一天的 6AM 运行 |
 | <code>{monthDays":[1,-1]}</code> |在每月第一天和最后一天的开始时间运行 |
-| <code>{monthDays":[1,14]}</code> |在每月第一天和第 14 天的开始时间运行 |
+| <code>{monthDays":[1,14]}</code> |在每月第一天和第&14; 天的开始时间运行 |
 | <code>{monthDays":[2]}</code> |在月份第二天的开始时间运行 |
 | <code>{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}</code> |在每月第一个星期五的 5AM 运行 |
 | <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}</code> |在每月第一个星期五的开始时间运行 |
@@ -188,10 +189,5 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
  [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
 
  [Azure 计划程序出站身份验证](scheduler-outbound-authentication.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

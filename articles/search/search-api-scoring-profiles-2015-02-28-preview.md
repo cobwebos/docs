@@ -15,8 +15,9 @@ ms.tgt_pltfrm: na
 ms.author: heidist
 ms.date: 10/27/2016
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 076e97d1a264216d7f51914ed53dc70450aa2677
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 960880e44ad4de74339df7d0786dd8aa34962e3f
+ms.lasthandoff: 03/15/2017
 
 ---
 
@@ -244,7 +245,7 @@ Azure 搜索使用默认计分计算初始分数，但可以通过计分概要�
 
 | 属性 | 说明 |
 | --- | --- |
-| `name` |必需。 这是计分概要文件的名称。 它遵循与字段相同的命名约定。 它必须以字母开头，不得包含点、冒号或 @ 符号，不得以短语“azureSearch”（区分大小写）开头。 |
+| `name` |必需。 这是计分概要文件的名称。 它遵循与字段相同的命名约定。 它必须以字母开头，不得包含圆点、冒号或 @ 符号，不得以短语“azureSearch”（区分大小写）开头。 |
 | `text` |包含 Weights 属性。 |
 | `weights` |可选。 指定字段名称和相对权重的名称-值对。 相对权重必须为正整数或浮点数。 可以指定不带相应权重的字段名称。 权重用于指示一个字段相对于另一个字段的重要性。 |
 | `functions` |可选。 请注意，计分函数仅可应用于可筛选字段。 |
@@ -257,7 +258,7 @@ Azure 搜索使用默认计分计算初始分数，但可以通过计分概要�
 | `magnitude:boostingRangeEnd` |设置对其进行量值计分的范围的结束值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 4。 |
 | `magnitude:constantBoostBeyondRange` |有效值为 true 或 false（默认）。 设置为 true 时，完整的提升将继续应用到有一个目标字段值高于范围上限的文档。 如果为 false，此函数的提升不会应用到有一个目标字段值超出范围的文档。 |
 | `freshness` |freshness 计分函数用于改变基于 DateTimeOffset 字段值的项的排名分数。 例如，具有较新日期的项可以排在日期较旧的项之上。 （请注意，也可以排列日历事件等具有未来日期的项，以便接近当前日期的项可以排在距离当前日期较远的将来的项之上。）在当前服务版本中，范围的一端将固定为当前时间。 另一端是基于 `boostingDuration` 的过去的时间。 若要提升将来时间的范围，请使用负 `boostingDuration`。 提升从最大范围和最小范围改变的比率由应用到计分概要文件的内插确定（请见下图）。 若要反转应用的提升系数，请选择不超过 1 的提升系数。 |
-| `freshness:boostingDuration` |设置一个有效期，超过这个有效期之后，针对特定文档的 Boosting 将停止。 请参阅以下语法和示例部分的 [Set boostingDuration][#bkmk_boostdur]。 |
+| `freshness:boostingDuration` |设置一个有效期，超过这个有效期之后，针对特定文档的 Boosting 将停止。 请参阅以下语法和示例部分中的[设置 boostingDuration](#bkmk_boostdur)。 |
 | `distance` |距离计分函数用于影响基于其相对的参考地理位置远近程度的文档分数。 参考位置在参数中指定为查询的一部分（使用 `scoringParameter` 查询参数），作为经纬度实参。 |
 | `distance:referencePointParameter` |要在查询中传递以用作参考位置的参数。 scoringParameter 是一个查询参数。 请参阅[搜索文档](search-api-2015-02-28-preview.md#SearchDocs)获取查询参数的说明。 |
 | `distance:boostingDistance` |以公里为单位指示与参考位置（提升范围结束）之间距离的数字。 |
@@ -304,9 +305,4 @@ MSDN 上的 [Azure 搜索服务 REST API](http://msdn.microsoft.com/library/azur
 
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -4,7 +4,7 @@ description: "使用 Application Insights 有效监视 Web 角色和辅助角色
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 editor: alancameronwills
 ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
 ms.service: application-insights
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.workload: tbd
-ms.date: 11/02/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 925411deed422af00b10ff6787606f5039a5fb23
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 42e4fe54eec414549f09b93a3e12ea130eeee68f
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -98,19 +99,19 @@ ms.openlocfilehash: 925411deed422af00b10ff6787606f5039a5fb23
 
 如果想要改变发送到 Application Insights 的诊断信息级别，可以[直接编辑 .cscfg 文件](app-insights-azure-diagnostics.md)。
 
-## <a name="a-namesdkainstall-the-sdk-in-each-project"></a><a name="sdk"></a>在每个项目中安装 SDK
+## <a name="sdk"></a>在每个项目中安装 SDK
 使用此选项可将自定义的业务遥测数据添加到任何角色，以便更细致地分析应用程序的用法和性能。
 
-在 Visual Studio 中，将 Application Insights SDK 添加到每个云应用项目。
+在 Visual Studio 中，为每个云应用项目配置 Application Insights SDK。
 
-1. 编辑项目的 NuGet 包。
+1. **Web 角色**：右键单击项目，然后选择“配置 Application Insights”或“添加”>“Application Insights 遥测”。
    
-    ![右键单击项目，然后选择“管理 NuGet 包”](./media/app-insights-cloudservices/03-nuget.png)
-2. **Web 角色**：添加[适用于网页的 Application Insights](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)。 此版本的 SDK 包括可以收集 HTTP 请求数据和添加服务器上下文（如角色信息）的模块。
-   
-    **辅助角色**：添加[适用于 Windows Server 的 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)。
+2. **辅助角色**： 
+ * 右键单击项目，然后选择“管理 Nuget 包”。
+ * 添加[适用于 Windows Server 的 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)。
    
     ![搜索“Application Insights”](./media/app-insights-cloudservices/04-ai-nuget.png)
+
 3. 将 SDK 配置为向 Application Insights 资源发送数据。
    
     在适当的启动函数中，通过 .cscfg 文件中的配置设置指定检测密钥：
@@ -245,9 +246,4 @@ Application Insights 提供丰富的诊断体验，可让用户查明请求失�
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md 
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

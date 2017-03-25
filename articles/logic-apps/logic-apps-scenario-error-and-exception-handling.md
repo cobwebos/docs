@@ -17,13 +17,13 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: b-hoedid
 translationtype: Human Translation
-ms.sourcegitcommit: 03467542669d9719d2634d20d4c0e7bba265ac6f
-ms.openlocfilehash: dff2c67f5e529d40d31e9bad1af00938ddf547b8
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: db5f70c88eb0b429a8d5d76f192a742f97fdf131
+ms.lasthandoff: 03/09/2017
 
 
 ---
-# <a name="scenario-exception-handling-and-logging-errors-for-logic-apps"></a>方案：逻辑应用的异常处理和日志记录错误
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 
 本方案介绍如何扩展逻辑应用以更好地支持异常处理。 我们已经通过一个实际用例回答了“Azure 逻辑应用是否支持异常和错误处理？”的问题
 
@@ -429,9 +429,7 @@ ms.lasthandoff: 03/02/2017
 
 #### <a name="logic-apps-exception-management-api"></a>逻辑应用异常管理 API
 
-开源 Azure 逻辑应用异常管理 API 应用提供以下功能。
-
-有两个控制器：
+我们的开源 Azure 逻辑应用异常管理 API 应用提供如下所述的功能 - 有两个控制器：
 
 * **ErrorController** 将错误记录（文档）插入 DocumentDB 集合中。
 * **LogController** 将日志记录（文档）插入 DocumentDB 集合中。

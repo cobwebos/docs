@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2d9feed054fb4641e660c685d396260246ed1d54
-ms.openlocfilehash: 6a02bb20ff2ed10ed528bfe2a3aae51ab20e4a60
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 598f5ce445e520b6cdc347c80f7f3dcbc9c2c9e5
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -51,7 +51,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 * 准备好数据之后，在数据集的几个变量之间执行相关性分析。
 * 最后，我们创建牛奶生产的季节性时序预测模型。
 
-## <a name="a-idmlstudioainteract-with-r-language-in-machine-learning-studio"></a><a id="mlstudio"></a>在机器学习工作室中与 R 语言交互
+## <a id="mlstudio"></a>在机器学习工作室中与 R 语言交互
 本节向你演示在机器学习工作室环境中与 R 编程语言交互的一些基础知识。 R 语言提供了功能强大的工具用于在 Azure 机器学习环境中创建自定义的分析和数据操作模块。
 
 我将使用 RStudio 开发、测试和调试小规模的 R 代码。 之后将此代码剪切和粘贴到机器学习工作室中的[执行 R 脚本][execute-r-script]模块以供运行。  
@@ -86,7 +86,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 
 在 Azure 机器学习平台上执行 R 代码的输出结果主要在 output.log 文件中。 其他一些信息可在 error.log 中看到。  
 
-如果运行 R 代码时机器学习工作室发生错误，那么首先应该做的是查看 error.log 文件。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看 error.log 文件，请单击包含错误的“执行 R 脚本”的“属性”窗格上的“查看错误日志”。[][execute-r-script]
+如果运行 R 代码时机器学习工作室发生错误，那么首先应该做的是查看 error.log 文件。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看 error.log 文件，请单击包含错误的[执行 R 脚本][execute-r-script]的“属性”窗格上的“查看错误日志”。
 
 例如，我在[执行 R 脚本][execute-r-script]模块中运行下面的 R 代码，其中 y 为未定义变量：
 
@@ -132,13 +132,13 @@ RStudio 教程简介可从 https://support.rstudio.com/hc/sections/200107586-Usi
 
 我在[附录 A] [appendixa]中提供了一些其他有关使用 RStudio 的信息。  
 
-## <a name="a-idscriptmoduleaget-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>在执行 R 脚本模块中输入和输出数据
+## <a id="scriptmodule"></a>在执行 R 脚本模块中输入和输出数据
 本节我们讨论如何在[执行 R 脚本][execute-r-script]模块中输入和输出数据。 我们将复习如何在[执行 R 脚本][execute-r-script]模块中处理各种数据类型的输入和输出。
 
 本节的完整代码在前面下载的 zip 文件中。
 
 ### <a name="load-and-check-data-in-machine-learning-studio"></a>在机器学习工作室中加载和检查数据
-#### <a name="a-idloadingaload-the-dataset"></a><a id="loading"></a>加载数据集
+#### <a id="loading"></a>加载数据集
 我们首先将 **csdairydata.csv** 文件加载到 Azure 机器学习工作室。
 
 * 启动 Azure 机器学习工作室环境。
@@ -315,7 +315,7 @@ Dataset2 的输入行为与 Dataset1 相同。 使用此输入可以将另一个
 
 *图 8.来自 R 设备端口的图形输出*  
 
-## <a name="a-idfilteringadata-filtering-and-transformation"></a><a id="filtering"></a>数据筛选和转换
+## <a id="filtering"></a>数据筛选和转换
 本节将对加利福尼亚州乳品数据执行一些基本的数据筛选和转换操作。 本节末尾我们将具有适合生成分析模型的格式的数据。  
 
 更具体地说，本节我们将执行几种常见的数据清理和转换任务：类型转换、筛选数据框、添加新的计算列，以及值的转换。 此背景知识可帮助你应对遇到的各种实际问题。
@@ -598,7 +598,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 此时数据已清理，我们可以进行一些建模操作。 查看[执行 R 脚本][execute-r-script]模块的结果数据集输出的可视化摘要，会看到“Month”列的类型为“分类”，具有 12 个唯一值，这又和我们希望的一样。
 
-## <a name="a-idtimeseriesatime-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>时序对象和相关性分析
+## <a id="timeseries"></a>时序对象和相关性分析
 本节我们将探讨几个基本的 R 时序对象，并分析一些变量之间的相关性。 我们的目的是输出包含几个滞后时间内的成对相关性信息的数据框。
 
 本节的完整 R 代码在前面下载的 zip 文件中。
@@ -879,7 +879,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 *图 19.相关性分析的结果输出*
 
-## <a name="a-idseasonalforecastingatime-series-example-seasonal-forecasting"></a><a id="seasonalforecasting"></a>时序示例：季节性预测
+## <a id="seasonalforecasting"></a>时序示例：季节性预测
 现在我们的数据格式已适合分析，并且我们已确定变量之间没有显著的相关性。 让我们继续并创建时序预测模型。 使用此模型可以预测 2013年 12 个月的加利福尼亚州的牛奶生产。
 
 我们的预测模型包含两个成分：趋势成分和季节性成分。 完满的预测是这两个成分的乘积。 此类型模型被称为乘法模型。 另一种可供选择的模型为加法模型。 我们已经对相关变量应用了对数转换，这样可以使分析变得容易。
@@ -1209,7 +1209,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 从这些结果可以看出，向模型中添加季节性因子使 RMS 误差显著减少。 不出所料，训练数据的 RMS 误差略小于预测数据的误差。
 
-## <a name="a-idappendixaaappendix-a-guide-to-rstudio"></a><a id="appendixa"></a>附录 A：RStudio 指南
+## <a id="appendixa"></a>附录 A：RStudio 指南
 RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向 RStudio 文档的重要章节的链接，可以帮助你入门。
 
 1. 创建项目
@@ -1226,7 +1226,7 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
    
    断点故障排除功能的文档位于 https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting。
 
-## <a name="a-idappendixbaappendix-b-further-reading"></a><a id="appendixb"></a>附录 B：深入阅读
+## <a id="appendixb"></a>附录 B：深入阅读
 此 R 编程教程介绍了在 Azure 机器学习工作室中使用 R 语言所需的基础知识。 如果不熟悉 R 语言，CRAN 上提供了两个简介：
 
 * 由 Emmanuel Paradis 编写的《R for Beginners》（面向初学者的 R 语言）是一个不错的入门文档，该文档位于 http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf。  
@@ -1246,7 +1246,8 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
 
 一些非常好的 Internet 资源：
 
-* DataCamp：在浏览器中舒适地观看 DataCamp 的 R 课程的视频和编码练习。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。 可从以下网址获取免费的互动式 R 教程：https://www.datacamp.com/courses/introduction-to-r  
+* DataCamp：在浏览器中舒适地观看 DataCamp 的 R 课程的视频和编码练习。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。 可从以下网址获取免费的互动式 R 教程：https://www.datacamp.com/courses/introduction-to-r
+* 有关 R from Programiz 入门的指南：https://www.programiz.com/r-programming
 * Clarkson 大学的 Kelly Black 编写的快速 R 教程，网址为 http://www.cyclismo.org/tutorial/R/
 * 以下网址中列出了&60; 多个 R 资源：http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
 

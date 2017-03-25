@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 门户为 Azure SQL 数据库配置异地复制 | Microsoft 文档"
-description: "使用 Azure 门户为 Azure SQL 数据库配置异地复制"
+title: "Azure 门户：SQL 数据库异地复制 | Microsoft 文档"
+description: "在 Azure 门户中为 Azure SQL 数据库配置异地复制，并启动故障转移"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/22/2016
+ms.date: 03/062/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: fe2d2ef731fb94c7e4e8da0e518bcef8c1ada650
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 6f646b3776f0aa0bbfba227c81ac5fc4fde9265f
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="configure-active-geo-replication-for-azure-sql-database-with-the-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库配置活动异地复制
+# <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 门户中为 Azure SQL 数据库配置活动异地复制，并启动故障转移
 
-本文介绍如何使用 [Azure 门户](http://portal.azure.com)为 SQL 数据库配置活动异地复制。
+本文说明如何在 [Azure 门户](http://portal.azure.com)中为 SQL 数据库配置活动异地复制，以及如何启动故障转移。
 
 若要使用 Azure 门户启动故障转移，请参阅[使用 Azure 门户为 Azure SQL 数据库启动计划内或计划外故障转移](sql-database-geo-replication-failover-portal.md)。
 
@@ -51,9 +51,7 @@ ms.lasthandoff: 02/16/2017
 > [!NOTE]
 > 如果合作伙伴数据库已存在（例如，在终止之前的异地复制关系的情况下），命令会失败。
 > 
-> 
 
-### <a name="add-secondary"></a>添加辅助数据库
 1. 在 [Azure 门户](http://portal.azure.com)中，浏览到需要设置以便进行异地复制的数据库。
 2. 在 SQL 数据库页上，选择“异地复制”，然后选择要创建辅助数据库的区域。 可以选择除托管主数据库的区域以外的任何区域，但我们建议选择[配对的区域](../best-practices-availability-paired-regions.md)。
    
@@ -69,6 +67,26 @@ ms.lasthandoff: 02/16/2017
 7. 完成种子设定过程时，辅助数据库会显示其状态。
    
     ![种子设定完成](./media/sql-database-geo-replication-portal/seeding-complete.png)
+
+## <a name="initiate-a-failover"></a>启动故障转移
+
+辅助数据库可以通过切换变为主数据库。  
+
+1. 在 [Azure 门户](http://portal.azure.com)中，浏览到异地复制合作关系中的主数据库。
+2. 在 SQL 数据库边栏选项卡中，选择“所有设置” > “异地复制”。
+3. 在“辅助数据库”列表中，选择想要其成为新的主数据库的数据库并单击“故障转移”。
+   
+    ![故障转移](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+4. 单击“是”开始故障转移。
+
+该命令会立即将辅助数据库切换为主数据库角色。 
+
+切换角色时，有一小段时间无法使用这两个数据库（大约为 0 到 25 秒）。 如果主数据库具有多个辅助数据库，则该命令将自动重新配置其他辅助数据库以连接到新的主数据库。 在正常情况下，完成整个操作所需的时间应该少于一分钟。 
+
+> [!NOTE]
+> 如果发出命令时主数据库处于在线状态且正在提交事务，则可能会丢失某些数据。
+> 
+> 
 
 ## <a name="remove-secondary-database"></a>删除辅助数据库
 此操作会永久终止到辅助数据库的复制，并会将辅助数据库的角色更改为常规的读写数据库。 如果与辅助数据库的连接断开，命令会成功，但辅助数据库必须等到连接恢复后才会变为可读写。  

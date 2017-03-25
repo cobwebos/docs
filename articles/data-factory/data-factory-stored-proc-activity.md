@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: a42dbefe6805cff5fb2df604265f0e62e2c25f69
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 7faa27220bcc07fff0bb2a77e7b90c386cc5ae1e
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
-
-> [!div class="op_single_selector"]
-> * [Hive](data-factory-hive-activity.md) 
-> * [Pig](data-factory-pig-activity.md)
-> * [MapReduce](data-factory-map-reduce.md)
-> * [Hadoop 流式处理](data-factory-hadoop-streaming-activity.md)
-> * [机器学习](data-factory-azure-ml-batch-execution-activity.md)
-> * [存储过程](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> * [.NET 自定义](data-factory-use-custom-activities.md)
->
+> [!div class="op_single_selector" title1="Transformation Activities"]
+> * [Hive 活动](data-factory-hive-activity.md) 
+> * [Pig 活动](data-factory-pig-activity.md)
+> * [MapReduce 活动](data-factory-map-reduce.md)
+> * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
+> * [Spark 活动](data-factory-spark.md)
+> * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
+> * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
+> * [存储过程活动](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
+> * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 可使用数据工厂[管道](data-factory-create-pipelines.md)中的数据转换活动将原始数据转换和处理为预测和见解。 存储过程活动是数据工厂支持的转换活动之一。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 

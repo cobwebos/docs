@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: c0cf8a3d4e257f88f81fca9a6a1161c158b335b8
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 357a707724266acfef016add97e19d4b1abb41e3
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -54,9 +54,9 @@ Webhook 需要签名密钥（凭据）以匹配在配置通知终结点时传递
 
 在下面的代码中，**VerifyWebHookRequestSignature** 方法对通知消息执行验证。 此验证的用途是确保消息由 Azure 媒体服务发送并且未篡改。 签名对于 Azure Functions 是可选的，因为它将 **Code** 值作为传输层安全性 (TLS) 上的查询参数。 
 
-可以在[此处](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/Notification_Webhook_Function)找到以下媒体服务 .NET Azure 函数的定义。
+可以在[此处](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)找到各种媒体服务 .NET Azure 函数的定义（包括本主题中所示的定义）。
 
-以下代码列表显示与 Azure 函数关联的 Azure 函数参数和三个文件的定义：function.json、project.json 和 run.csx。
+以下代码列表显示 Azure 函数参数和与 Azure 函数关联的三个文件（function.json、project.json 和 run.csx）的定义。
 
 ### <a name="application-settings"></a>应用程序设置 
 
@@ -115,6 +115,10 @@ project.json 文件包含依赖项。
 ### <a name="runcsx"></a>run.csx
 
 下面的 C# 代码演示一个作为 webhook 的 Azure 函数的定义。 函数侦听来自媒体服务通知的 webhook 回调，并在作业完成之后发布输出资产。 
+
+
+>[!NOTE]
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 
     ///////////////////////////////////////////////////
     #r "Newtonsoft.Json"
@@ -345,7 +349,7 @@ project.json 文件包含依赖项。
 在此部分中，演示向任务添加 webhook 通知的代码。 还可以添加作业级别通知，这对于具有连锁任务的作业更有用。  
 
 1. 在 Visual Studio 中创建新的 C# 控制台应用程序。 输入“名称”、“位置”和“解决方案名称”，然后单击“确定”。
-2. 使用 [Nuget](https://www.nuget.org/packages/windowsazure.mediaservices) 安装 Azure 媒体服务。
+2. 使用 [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) 安装 Azure 媒体服务。
 3. 使用适当的值更新 App.config 文件： 
     
     * 将发送通知的 Azure 媒体服务名称和密钥， 

@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/11/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 354292f51d07bff00e7a6811e4d1d7beb7844920
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 0cf2d7f4cbbed730d690693fd006665355155c22
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -68,7 +68,7 @@ Apache Storm on HDInsight 提供以下重要优势：
 你可以在分钟数设置好新的 Storm on HDInsight 群集。 指定群集名称、大小、管理员帐户和存储帐户。 Azure 创建该群集，包括示例拓扑和 Web 管理仪表板。
 
 > [!NOTE]
-> 也可以使用 [Azure CLI](../xplat-cli-install.md) 或 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 预配 Storm 群集。
+> 也可以使用 [Azure CLI](../cli-install-nodejs.md) 或 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 预配 Storm 群集。
 
 在提交请求后的 15 分钟内，你就可以运行新的 Storm 群集，并准备好建立第一个实时分析管道。
 
@@ -177,7 +177,7 @@ Apache Storm 运行的是 **拓扑** ，而不是你在 HDInsight 或 Hadoop 中
 
 有关 Java 和 Trident 拓扑的示例，请参阅 [Storm 拓扑示例列表](hdinsight-storm-example-topology.md) 或 HDInsight 群集上的 storm-starter 示例。
 
-storm-starter 示例位于 HDInsight 群集上的 ** /usr/hdp/current/storm-client/contrib/storm-starter** 目录中。
+storm-starter 示例位于 HDInsight 群集上的 **/usr/hdp/current/storm-client/contrib/storm-starter** 目录中。
 
 ### <a name="python"></a>Python
 

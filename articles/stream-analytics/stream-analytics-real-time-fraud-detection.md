@@ -18,6 +18,7 @@ ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 18156086ca3eaf3ee99dfeb61096bc1eee49458b
 ms.openlocfilehash: 3d32518bed64ebe3dd1790bb511949624b5dcac1
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -43,7 +44,7 @@ Canonical 物联网 (IoT) 方案具有传感器的大量遥测或数据。 客�
 
 创建事件中心的步骤：
 
-1. 在“Azure 门户”[](https://manage.windowsazure.com/)中，依次单击“新建” > “应用服务” > “服务总线” > “事件中心” > “快速创建”。 提供创建新事件中心所需的名称、区域以及新的或现有的命名空间。  
+1. 在“[Azure 门户中](https://manage.windowsazure.com/)，依次单击“新建” > “应用服务” > “服务总线” > “事件中心” > “快速创建”。 提供创建新事件中心所需的名称、区域以及新的或现有的命名空间。  
 2. 最佳做法是让每个流分析作业都从单个事件中心使用者组读取数据。 我们稍后将引导你完成创建使用者组的过程。 [了解关于使用者组的详细信息](https://msdn.microsoft.com/library/azure/dn836025.aspx)。 若要创建使用者组，请转到新创建的事件中心，单击“使用者组”选项卡、单击页面底部的“创建”，然后为使用者组提供名称。
 3. 若要授予对事件中心的访问权限，需创建共享访问策略。 单击事件中心的“配置”选项卡。
 4. 在“共享访问策略”下，创建具有“管理”权限的新策略。
@@ -228,10 +229,5 @@ Canonical 物联网 (IoT) 方案具有传感器的大量遥测或数据。 客�
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

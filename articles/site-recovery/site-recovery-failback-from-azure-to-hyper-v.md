@@ -15,13 +15,17 @@ ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 88a09929582e69941101e884697592c91c0f5cfa
-ms.openlocfilehash: 862b80bdb00efcbf8863699df12aacdbab60bcef
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: a1769a522d13926e887e82b8d26b36afb4c80b08
+ms.lasthandoff: 03/09/2017
 
 
 ---
 # <a name="failback-in-site-recovery"></a>在 Site Recovery 中进行故障回复
+> [!div class="op_single_selector"]
+> * [来自 Azure 的 VMware 虚拟机/物理计算机](site-recovery-failback-azure-to-vmware.md)
+> * [来自 Azure 的 Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
+
 本文介绍了如何对由 Site Recovery 保护的虚拟机进行故障回复。 
 
 ## <a name="prerequisites"></a>先决条件

@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2017
+ms.date: 03/15/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: da98bc3e4dda1a05cba38701c0042f1c023c419a
-ms.openlocfilehash: 40b172356b3171557d6309a6bb2984fba34f485d
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 91a2ac08f6daac8cba195454e09bb07afe265046
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -73,7 +74,7 @@ ms.openlocfilehash: 40b172356b3171557d6309a6bb2984fba34f485d
 * 从本地 SQL Server 中复制数据，并将其以 ORC 格式写入 Azure Data Lake Store。
 * 从本地文件系统中复制压缩文件，并将其解压缩然后传到 Azure Data Lake Store。
 
-## <a name="a-nameglobalaglobally-available-data-movement"></a><a name="global"></a>全局可用的数据移动
+## <a name="global"></a>全局可用的数据移动
 Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 但是，为复制活动提供支持的服务在以下区域和地域内全局可用。 全局可用拓扑可确保高效的数据移动，此类移动通常避免跨区域跃点。 有关某区域内数据工厂和数据移动的可用性，请参阅[服务（按区域）](https://azure.microsoft.com/regions/#services)。
 
 ### <a name="copy-data-between-cloud-data-stores"></a>在云数据存储之间复制数据
@@ -104,7 +105,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | 。 | 印度西部 | 印度中部 |
 | 。 | 印度南部 | 印度中部 |
 
-或者可以通过指定复制活动 `typeProperties` 下的 `executionLocation` 属性，明确指示要用于执行复制的数据工厂服务的区域。 上述**用于数据移动的区域**列中列举了此属性支持的值。 请注意复制过程中数据将通过网络经过该区域。 例如，在英国的 Azure 存储间进行复制时，可以将 `executionLocation` 指定为“欧洲北部”，以便经过欧洲北部。
+或者可以通过指定复制活动 `typeProperties` 下的 `executionLocation` 属性，明确指示要用于执行复制的数据工厂服务的区域。 上述**用于数据移动的区域**列中列举了此属性支持的值。 请注意复制过程中数据将通过网络经过该区域。 例如，若要在英国的 Azure 存储间进行复制，可以指定 `"executionLocation": "North Europe"`，以便经过欧洲北部（请参阅[示例 JSON](#by-using-json-scripts) 作为参考）。
 
 > [!NOTE]
 > 如果目标数据存储的区域不在上方列表中或未找到该区域，默认情况下，复制活动将失败，而不会通过其他区域完成，除非指定了 `executionLocation`。 以后支持的区域列表还将扩大。
@@ -124,7 +125,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 
 JSON 属性（例如名称、说明、输入和输出表，以及策略）可用于所有类型的活动。 可用于此活动的 `typeProperties` 节的属性因每个活动类型而异。
 
-对于复制活动，`typeProperties` 节因源和接收器的类型而异。 单击[支持的源和接收器](#supported-data-stores)部分中的源/接收器，可了解复制活动支持该数据存储的哪些类型属性。   
+对于复制活动，`typeProperties` 节因源和接收器的类型而异。 单击[支持的源和接收器](#supported-data-stores-and-formats)部分中的源/接收器，可了解复制活动支持该数据存储的哪些类型属性。
 
 下面是示例 JSON 定义：
 
@@ -152,10 +153,9 @@ JSON 属性（例如名称、说明、输入和输出表，以及策略）可用
             "type": "BlobSource"
           },
           "sink": {
-            "type": "SqlSink",
-            "writeBatchSize": 10000,
-            "writeBatchTimeout": "60:00:00"
-          }
+            "type": "SqlSink"
+          },
+          "executionLocation": "North Europe"          
         },
         "Policy": {
           "concurrency": 1,
@@ -191,9 +191,4 @@ JSON 属性（例如名称、说明、输入和输出表，以及策略）可用
 ## <a name="next-steps"></a>后续步骤
 * 若要详细了解复制活动，请参阅[将数据从 Azure Blob 存储复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 * 若要了解如何将数据从本地数据存储移动到云数据存储，请参阅[在本地和云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

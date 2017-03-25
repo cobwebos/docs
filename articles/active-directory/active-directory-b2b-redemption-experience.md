@@ -14,12 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 03/13/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
-ms.openlocfilehash: 92bf625a9e62a24287b752bc1cbe061f1ef83a03
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: a063918766ccff6f5d0ec8a344160b912657d55a
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/17/2017
 ## <a name="social-id-user-first-time-redemption"></a>社交 ID 用户第一时间兑换
 Azure AD B2B 协作可轻松地将任何电子邮件地址用于兑换。 请看一下将非 Microsoft 电子邮件地址用于 B2B 协作时的兑换体验。 这是一个更复杂的兑换流程，因为你可能需要在兑换时创建帐户。 在以下视频中一探究竟：
 
->[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group/Player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-collaboration-redemption/Player]
 
 ## <a name="next-steps"></a>后续步骤
 

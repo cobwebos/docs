@@ -1,108 +1,77 @@
 ---
-title: "使用 Azure 门户创建 Linux VM | Microsoft Docs"
-description: "使用 Azure 门户创建 Linux VM。"
+title: "Azure 快速入门 - 创建 VM 门户 | Microsoft 文档"
+description: "Azure 快速入门 - 创建 VM 门户"
 services: virtual-machines-linux
-documentationcenter: 
-author: iainfoulds
+documentationcenter: virtual-machines
+author: neilpeterson
 manager: timlt
-editor: 
+editor: tysonn
 tags: azure-resource-manager
-ms.assetid: cc5dc395-dc54-4402-8804-2bb15aba8ea2
+ms.assetid: 
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 1/17/2017
-ms.author: iainfou
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 03/10/2017
+ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: beff4fb41ed46b016088734054e7a7897fed1a30
-ms.openlocfilehash: 7287b87b1e50e28de06a5363a1f35bd7ac34d51c
-ms.lasthandoff: 02/15/2017
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 348407b57bbb3329d7d27a6f38623e052aecc58b
+ms.lasthandoff: 03/14/2017
 
 ---
-# <a name="create-a-linux-vm-on-azure-using-the-portal"></a>使用门户在 Azure 上创建 Linux VM
-本文说明如何使用 [Azure 门户](https://portal.azure.com/)创建 Linux 虚拟机。
 
-要求如下：
+# <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>使用 Azure 门户创建 Linux 虚拟机
 
-* [一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)
-* [SSH 公钥和私钥文件](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+可以通过 Azure 门户创建 Azure 虚拟机。 此方法提供一个基于浏览器的用户界面，用于创建和配置 VM 和所有相关的 Azure 资源。
 
-## <a name="sign-in"></a>登录
-使用 Azure 帐户标识登录到 Azure 门户。 单击左上角的“+ 新建”：
+在开始之前，需要同时准备好专用和公共 SSH 密钥。 有关创建适用于 Azure 的 SSH 密钥的详细信息，请参阅[创建适用于 Azure 的 SSH 密钥](./virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-![创建 Azure 资源](./media/virtual-machines-linux-quick-create-portal/create_new_resource.png)
+## <a name="log-in-to-azure"></a>登录 Azure 
 
-## <a name="choose-vm"></a>选择 VM
-在“应用商店”中单击“计算”，然后从“特别推荐的应用”映像列表中选择“Ubuntu Server 16.04 LTS”。  确认底部显示的部署模型是 `Resource Manager`，然后单击“创建”。
+通过 http://portal.azure.com 登录到 Azure 门户。
 
-![从 Azure 应用商店选择虚拟机映像](./media/virtual-machines-linux-quick-create-portal/create_new_vm.png)
+## <a name="create-virtual-machine"></a>创建虚拟机
 
-## <a name="enter-vm-options"></a>输入 VM 选项
-在“基本信息”页上输入： 
+2. 单击 Azure 门户左上角的“新建”按钮。
 
-* VM 的名称
-* VM 磁盘类型（SSD（默认）或 HDD）
-* 管理员用户的用户名
-* 将“身份验证类型”设置为“SSH 公钥”
-* 字符串形式的 SSH 公钥（位于 `~/.ssh/` 目录中）
-* 资源组名称，或选择现有资源组
+3. 从“新建”边栏选项卡中选择“计算”，从“计算”边栏选项卡中选择“Ubuntu Server 16.04 LTS”，然后单击“创建”按钮。
 
-单击“确定”继续。 边栏选项卡应如以下屏幕截图所示：
+4. 填写虚拟机“基本信息”表单。 对于“身份验证类型”，建议选择“SSH”。 粘贴“SSH 公钥”时，请务必删除所有前导或尾随空格。 对于“资源组”，请创建一个新的资源组。 资源组是在其中创建并集中管理 Azure 资源的逻辑容器。 完成后，单击“确定”。
 
-![输入基本的 Azure VM 选项](./media/virtual-machines-linux-quick-create-portal/enter_basic_vm_details.png)
+    ![在门户边栏选项卡中输入 VM 的基本信息](./media/virtual-machine-quick-start/create-vm-portal-basic-blade.png)  
 
-## <a name="choose-vm-size"></a>选择 VM 大小
-选择 VM 大小。 以下示例选择 **DS1_V2 Standard**，在高级 SSD 上安装 Ubuntu。 VM 大小中的 **S** 表示 SSD 支持。 单击“选择”对设置进行配置。
+5. 选择 VM 的大小，然后单击“选择”。 
 
-![选择 Azure VM 大小](./media/virtual-machines-linux-quick-create-portal/select_vm_size.png)
+    ![在门户边栏选项卡中选择 VM 的大小](./media/virtual-machine-quick-start/create-vm-portal-size-blade.png)
 
-## <a name="storage-and-network"></a>存储和网络
-在“设置”边栏选项卡中，可以选择为 VM 使用 Azure 托管磁盘。 当前的默认设置是使用非托管磁盘。 Azure 托管磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../storage/storage-managed-disks-overview.md)。 对于非托管磁盘，需要创建或选择虚拟硬盘的存储帐户：
+6. 在“设置”边栏选项卡中的“使用托管磁盘”下选择“是”，为其余设置保留默认值，然后单击“确定”。
 
-![选择用于非托管磁盘的存储帐户](./media/virtual-machines-linux-quick-create-portal/configure_non_managed_disks.png)
+7. 在摘要页上，单击“确定”开始部署虚拟机。
 
-如果选择使用 Azure 托管磁盘，则不需配置其他存储选项，如以下示例所示：
+## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
-![在门户中选择“Azure 托管磁盘”选项](./media/virtual-machines-linux-quick-create-portal/select_managed_disks.png)
+完成部署后，请与虚拟机建立 SSH 连接。
 
-将网络设置的其余部分保留为默认值。
+1. 单击该虚拟机。 可以在 Azure 门户的主屏幕上或者通过从左侧菜单中选择“虚拟机”来找到该 VM。
 
-## <a name="confirm-vm-settings-and-launch"></a>确认 VM 设置并启动
-确认新 Ubuntu VM 的设置，然后单击“确定”。
+2. 单击“连接”按钮。 单击“连接”按钮后，将显示可用于连接到虚拟机的 SSH 连接字符串。
 
-![查看 Azure VM 设置并创建 VM](./media/virtual-machines-linux-quick-create-portal/review_final_vm_settings.png)
+    ![门户 9](./media/virtual-machine-quick-start/portal-quick-start-9.png) 
 
-## <a name="select-the-vm-resource"></a>选择 VM 资源
-打开门户主页，然后从左上角的菜单中选择“资源组”。 根据需要单击菜单顶部的三个条，展开列表如下：
+3. 运行以下命令创建 SSH 会话。 将连接字符串替换为从 Azure 门户复制的值。
 
-![打开资源组的列表](./media/virtual-machines-linux-quick-create-portal/select_resource_group.png)
-
-选择资源组，然后单击新的 VM：
-
-![查找 Azure VM NIC 设置](./media/virtual-machines-linux-quick-create-portal/select_vm_resource.png)
-
-## <a name="find-the-public-ip"></a>查找公共 IP
-查看分配给 VM 的“公共 IP 地址”：
-
-![获取 Azure VM 的公共 IP 地址](./media/virtual-machines-linux-quick-create-portal/view_public_ip_address.png)
-
-## <a name="ssh-to-the-vm"></a>SSH 到 VM
-使用 SSH 公钥通过 SSH 连接到公共 IP。  可以在 Mac 或 Linux 工作站中从终端直接进行 SSH 操作。 如果是在 Windows 工作站上操作，则需使用 PuTTY、MobaXTerm 或 Cygwin 通过 SSH 连接到 Linux。  如果还没有做好准备，可以参阅以下文档，了解如何准备 Windows 工作站，以便通过 SSH 连接到 Linux。
-
-[如何在 Azure 上结合使用 SSH 密钥和 Windows](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+```bash 
+ssh <replace with IP address>
 ```
-ssh -i ~/.ssh/azure_id_rsa ops@40.112.255.214
-```
+## <a name="delete-virtual-machine"></a>删除虚拟机
+
+不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请从虚拟机边栏选项卡中选择该资源组，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
-现在，你已快速创建了一个用于测试或演示的 Linux VM。 若要创建针对基础结构自定义的 Linux VM，可以遵循以下任一文章操作。
 
-* [Create a Linux VM on Azure using Templates（使用模板在 Azure 上创建 Linux VM）](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用模板在 Azure 上创建受 SSH 保护的 Linux VM](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Create a Linux VM using the Azure CLI（使用 Azure CLI 创建 Linux VM）](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[创建高可用性虚拟机教程](./virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
+[浏览 VM 部署 CLI 示例](./virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

@@ -15,24 +15,37 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: 14df6b49d79aa1bf6f414070c60e7acac6578301
-ms.openlocfilehash: 7267b41d5d1a7903a084eea2c813bc40249fbf6a
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 1095267ce0c2a922d4bd9cb95a607ce8993df310
+ms.lasthandoff: 03/11/2017
 
 
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics 中的 Azure 网络监视解决方案
 
-可以使用 Log Analytics 中的 Azure 应用程序网关分析解决方案来查看：
+Log Analytics 提供了用来监视网络的以下解决方案：
+* 网络性能监视器 (NPM)
+ * 监视网络的运行状况
+* 要查看的 Azure 应用程序网关分析
+ * Azure 应用程序网关日志
+ * Azure 应用程序网关指标
+* 要查看的 Azure 网络安全组分析
+ * Azure 网络安全组日志
 
-* Azure 应用程序网关日志
-* Azure 应用程序网关指标
+## <a name="network-performance-monitor-npm"></a>网络性能监视器 (NPM)
+[网络性能监视器](log-analytics-network-performance-monitor.md)管理解决方案是一个网络监视解决方案，它监视网络的运行状况、可用性和可访问性。  它用来监视以下项之间的连接：
+* 公有云与本地 
+* 数据中心和用户位置（分支机构）
+* 托管着多层应用程序的各个层次的子网。
 
-可以使用 Log Analytics 中的 Azure 网络安全组分析解决方案来查看：
+ ![网络性能监视器的图像](./media/log-analytics-network-performance-monitor/npm-topology.png)
 
-* Azure 网络安全组日志
+有关详细信息，请参阅[网络性能监视器](log-analytics-network-performance-monitor.md)。
 
-若要使用该解决方案，请启用 Azure 应用程序网关日志和 Azure 网络安全组的诊断，并将诊断引导至 Log Analytics 工作区。 不需要将日志写入 Azure Blob 存储。
+## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure 应用程序网关和网络安全组分析
+若要使用解决方案，请执行以下操作：
+1. 将管理解决方案添加到 Log Analytics，并且
+2. 启用诊断以将诊断信息定向到 Log Analytics 工作区。 不需要将日志写入 Azure Blob 存储。
 
 可为应用程序网关和/或网络安全组启用诊断和相应的解决方案。
 
@@ -68,8 +81,8 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 ### <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明安装并配置 Azure 应用程序网关分析解决方案：
 
-1. 为需要监视的[应用程序网关](../application-gateway/application-gateway-diagnostics.md)启用诊断日志记录。
-2. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure 应用程序网关分析解决方案。 
+1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure 应用程序网关分析解决方案。
+2. 为需要监视的[应用程序网关](../application-gateway/application-gateway-diagnostics.md)启用诊断日志记录。 
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>在门户中启用 Azure 应用程序网关诊断
 
@@ -131,8 +144,8 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ### <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明安装和配置 Azure 网络分析解决方案：
 
-1. 为想要监视的[网络安全组](../virtual-network/virtual-network-nsg-manage-log.md)资源启用诊断日志记录。
-2. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure 网络安全组分析解决方案。 
+1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure 网关安全组分析解决方案。 
+2. 为想要监视的[网络安全组](../virtual-network/virtual-network-nsg-manage-log.md)资源启用诊断日志记录。
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>在门户中启用 Azure 网络安全组诊断
 

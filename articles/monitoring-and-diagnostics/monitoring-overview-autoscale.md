@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 03/02/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: f28c528b51fdf08129f78fce74dba298be7326dd
-ms.openlocfilehash: 20f820a4883643e8941be3ec59667242d727b0c1
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 99c972b4adf1dedbc556b20cdc7587edeb7f50e0
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -26,30 +27,29 @@ ms.openlocfilehash: 20f820a4883643e8941be3ec59667242d727b0c1
 Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)和[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)。
 
 > [!NOTE]
-> Azure 有两个自动缩放方法。 旧版自动缩放适用于虚拟机（可用性集）。 此功能的支持有限。若要获取更快速、更可靠的自动缩放支持，建议迁移到 VM 规模集。 本文提供了此旧技术的使用方法链接。  
-> 
-> 
+> Azure 有两个自动缩放方法。 旧版自动缩放适用于虚拟机（可用性集）。 此功能的支持有限。若要获取更快速、更可靠的自动缩放支持，建议迁移到虚拟机规模集。 本文提供了此旧技术的使用方法链接。  
+>
+>
 
 ## <a name="what-is-autoscale"></a>自动缩放是什么？
-自动缩放是指在处理应用程序负载时让适当数量的资源运行。 在负载增加时，可以通过自动缩放添加资源；在资源处于空闲状态时，可以通过自动缩放删除资源，节省资金。 可以指定需要运行的实例的最小数目和最大数目，根据规则集自动添加或删除 VM。 设置最小数目可确保应用程序在没有负载的情况下也会运行。 设置最大数目是为了限制每小时可能会引发的总成本。 可以使用创建的规则在这两种极限之间自动缩放。
+自动缩放是指在处理应用程序负载时让适当数量的资源运行。 当负载增加时，它可以添加资源来处理增加的负载；当资源空闲时，它可以删除资源以节省资金。 可以指定需要运行的实例的最小数目和最大数目，根据规则集自动添加或删除 VM。 设置最小数目可确保应用程序在没有负载的情况下也会运行。 设置最大数目是为了限制每小时可能会引发的总成本。 可以使用创建的规则在这两种极限之间自动缩放。
 
- ![描述的自动缩放。 添加和删除 VM](./media/monitoring-autoscale-overview/AutoscaleConcept.png)
+ ![描述的自动缩放。 添加和删除 VM](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
 
 当满足规则条件时，将触发一个或多个自动缩放操作。 可以添加和删除虚拟机，或执行其他操作。 下面的概念关系图演示了此过程。  
 
- ![自动缩放流概念关系图](./media/monitoring-autoscale-overview/AutoscaleOverview3.png)
+ ![自动缩放流关系图](./media/monitoring-overview-autoscale/Autoscale_Overview_v4.png)
 
-## <a name="autoscale-process-explained"></a>描述的自动缩放过程
 以下说明适用于上面的关系图的各个部分。   
 
-### <a name="resource-metrics"></a>资源指标
+## <a name="resource-metrics"></a>资源指标
 资源会发出指标，这些指标随后通过规则进行处理。 指标通过不同方法发出。
-VM 规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和云服务的遥测则直接来自 Azure 基础结构。 一些常用的统计信息包括：CPU 使用率、内存使用情况、线程计数、队列长度和磁盘使用情况。 如需可用遥测数据的列表，请参阅[自动缩放常用指标](insights-autoscale-common-metrics.md)。
+虚拟机规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和云服务的遥测则直接来自 Azure 基础结构。 一些常用的统计信息包括：CPU 使用率、内存使用情况、线程计数、队列长度和磁盘使用情况。 如需可用遥测数据的列表，请参阅[自动缩放常用指标](insights-autoscale-common-metrics.md)。
 
-### <a name="time"></a>时间
+## <a name="time"></a>时间
 基于计划的规则以 UTC 为基础。 设置规则时，必须正确设置时区。  
 
-### <a name="rules"></a>规则
+## <a name="rules"></a>规则
 此图仅显示了一个自动缩放规则，但用户可以有许多个这样的规则。 可以根据自身情况所需创建复杂的、互相重叠的规则。  规则类型包括  
 
 * **基于指标** - 例如，在 CPU 使用率超出 50% 时执行该操作。
@@ -57,7 +57,7 @@ VM 规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和�
 
 基于指标的规则会衡量应用程序负载，根据负载添加或删除 VM。 如果使用基于计划的规则，则当用户看到负载时间模式并且想要在负载可能升高或降低之前进行缩放时，完成相应的缩放。  
 
-### <a name="actions-and-automation"></a>操作和自动化
+## <a name="actions-and-automation"></a>操作和自动化
 规则可以触发一个或多个类型的操作。
 
 * **缩放** - 扩大或缩小 VM
@@ -67,14 +67,20 @@ VM 规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和�
 ## <a name="autoscale-settings"></a>自动缩放设置
 自动缩放使用下列术语和结构。
 
-* **自动缩放设置**：由自动缩放引擎读取，用于确定是进行扩展还是进行缩减。 它包含一个或多个配置文件、目标资源的信息，以及通知设置。
-  * **自动缩放配置文件**：组合了容量设置、控制触发器的规则集、适用于配置文件的缩放操作，以及定期设置。 可以有多个配置文件，以应对不同的互相重叠的要求。
-    * **容量设置**：表示实例数的最小值、最大值和默认值。 [使用图 1 的适当位置]
-    * **规则**：包括触发器（指标触发器或时间触发器）和缩放操作，表示在满足此规则的情况下，自动缩放应缩还是放。
-    * **定期**：表示自动缩放应在何时执行此配置文件。 例如，可以针对一天中的不同时间或者一周中的不同日期设置不同的自动缩放配置文件。
-* **通知设置**：定义在发生自动缩放事件时应发送的通知，前提是符合某个自动缩放设置的配置文件的条件。 自动缩放可以将通知发送到一个或多个电子邮件地址，也可以对一个或多个 webhook 进行调用。
+- **自动缩放设置**：由自动缩放引擎读取，用于确定是进行扩展还是进行缩减。 它包含一个或多个配置文件、目标资源的信息，以及通知设置。
 
-![Azure 自动缩放设置、配置文件和规则结构](./media/monitoring-autoscale-overview/AzureResourceManagerRuleStructure3.png)
+    - **自动缩放配置文件**是以下项的组合：
+
+        - **容量设置**：表示实例数的最小值、最大值和默认值。
+        - **规则集**，其中的每个规则都包括一个触发器（时间或指标）和一个缩放操作（增加或缩减）。
+        - **定期**：表示自动缩放应在何时使此配置文件生效。
+
+        可以有多个配置文件，以应对不同的互相重叠的要求。 例如，可以针对一天中的不同时间或者一周中的不同日期设置不同的自动缩放配置文件。
+
+    - **通知设置**：定义在发生自动缩放事件时应发送的通知，前提是符合某个自动缩放设置的配置文件的条件。 自动缩放可以将通知发送到一个或多个电子邮件地址，也可以对一个或多个 webhook 进行调用。
+
+
+![Azure 自动缩放设置、配置文件和规则结构](./media/monitoring-overview-autoscale/AzureResourceManagerRuleStructure3.png)
 
 [自动缩放 REST API](https://msdn.microsoft.com/library/dn931928.aspx) 中提供了可配置字段和说明的完整列表。
 
@@ -84,9 +90,9 @@ VM 规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和�
 * [自动缩放 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>水平缩放和垂直缩放
-自动缩放仅以横向方式调整资源的规模，即只增加（“放”）或减少（“缩”）VM 实例的数目。  横向缩放在使用云服务的情况下更为灵活，因为这样可以运行数千个处理负载的 VM。 
+自动缩放仅以横向方式调整资源的规模，即只增加（“放”）或减少（“缩”）VM 实例的数目。  横向缩放在使用云服务的情况下更为灵活，因为这样可以运行数千个处理负载的 VM。
 
-纵向缩放与此不同。 它保持 VM 数量不变，但会增强（“提高”）或削弱（“降低”）VM 的功能。 功能按内存、CPU 速度、磁盘空间等指标衡量。垂直缩放有更多的限制。 具体取决于更大型硬件的可用性，此可用性会快速达到上限，并因区域而异。 纵向缩放通常还需要停止和重新启动 VM。 
+纵向缩放与此不同。 它保持 VM 数量不变，但会增强（“提高”）或削弱（“降低”）VM 的功能。 功能按内存、CPU 速度、磁盘空间等指标衡量。垂直缩放有更多的限制。 具体取决于更大型硬件的可用性，此可用性会快速达到上限，并因区域而异。 纵向缩放通常还需要停止和重新启动 VM。
 
 有关详细信息，请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/virtual-machines-linux-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -104,8 +110,8 @@ VM 规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和�
 | Web 应用 |[缩放 Web 应用](insights-how-to-scale.md) |
 | 云服务 |[自动缩放云服务](../cloud-services/cloud-services-how-to-scale.md) |
 | 虚拟机：经典 |[缩放经典虚拟机可用性集](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
-| 虚拟机：Windows 规模集 |[在 Windows 中缩放 VM 规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
-| 虚拟机：Linux 规模集 |[在 Linux 中缩放 VM 规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
+| 虚拟机：Windows 规模集 |[缩放 Windows 中的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
+| 虚拟机：Linux 规模集 |[缩放 Linux 中的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
 | 虚拟机：Windows 示例 |[通过用于 VM 规模集的 Resource Manager 模板进行的高级自动缩放配置](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
 
 ## <a name="next-steps"></a>后续步骤
@@ -116,10 +122,4 @@ VM 规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和�
 * [使用自动缩放操作发送电子邮件和 webhook 警报通知](insights-autoscale-to-webhook-email.md)
 * [自动缩放 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
 * [虚拟机规模集自动缩放疑难解答](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

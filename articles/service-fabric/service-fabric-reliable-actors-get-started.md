@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
+ms.date: 03/06/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 25b24e6d267ac14147f426fce46d609954b7dfc9
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 41f9742befcc034f46f166b1f3f3d81ef67f83e7
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -51,7 +52,7 @@ ms.openlocfilehash: 25b24e6d267ac14147f426fce46d609954b7dfc9
 * 不支持泛型接口。
 
 ## <a name="create-a-new-project-in-visual-studio"></a>在 Visual Studio 中创建新项目
-安装了适用于 Visual Studio 的 Service Fabric 工具之后，你可以创建新的项目类型。 新的项目类型位于“**新建项目**”对话框的“**云**”类别下。
+以管理员身份启动 Visual Studio 2015 或 Visual Studio 2017，并新建一个 Service Fabric 应用程序项目：
 
 ![适用于 Visual Studio 的 Service Fabric 工具 - 新建项目][1]
 
@@ -152,9 +153,4 @@ internal static class Program
 [3]: ./media/service-fabric-reliable-actors-get-started/debugging-output.PNG
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

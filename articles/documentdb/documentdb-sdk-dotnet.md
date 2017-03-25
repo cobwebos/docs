@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: a3aa00bce54ad9d2aa0236cc211affaa537a36e5
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 2de833df26de9a9e160dd0cfcc1589eb0ebb7d34
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -51,6 +51,12 @@ ms.lasthandoff: 03/07/2017
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11211121httpswwwnugetorgpackagesmicrosoftazuredocumentdb1121"></a><a name="1.12.1"/>[1.12.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.1)
+* 添加了对聚合查询（COUNT、MIN、MAX、SUM 和 AVG）的 LINQ 支持。
+* 修复了由于使用了事件处理程序而导致的 ConnectionPolicy 对象的内存泄漏问题。
+* 修复了使用 ETag 时 UpsertAttachmentAsync 不正常工作的问题。
+* 修复了对字符串字段进行排序时跨分区按查询条件排序不正常工作的问题。
 
 ### <a name="a-name11201120httpswwwnugetorgpackagesmicrosoftazuredocumentdb1120"></a><a name="1.12.0"/>[1.12.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.0)
 * 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。 请参阅[聚合支持](documentdb-sql-query.md#Aggregates)。
@@ -206,6 +212,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.12.1](#1.12.1) |2017 年 3 月 14 日 |--- |
 | [1.12.0](#1.12.0) |2017 年 2 月 15 日 |--- |
 | [1.11.4](#1.11.4) |2017 年 2 月 6 日 |--- |
 | [1.11.3](#1.11.3) |2017 年 1 月 26 日 |--- |

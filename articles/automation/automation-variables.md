@@ -4,7 +4,7 @@ description: "变量资产是可供 Azure 自动化中的所有 Runbook 和 DSC 
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: b880c15f-46f5-4881-8e98-e034cc5a66ec
 ms.service: automation
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/14/2016
+ms.date: 03/10/2017
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: 299b419c0271bbe7355a491cddf32dc922090621
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 4c0c4f8c0d6c7cdc98406559f1cd36c87d33bf47
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -28,9 +29,9 @@ ms.openlocfilehash: 299b419c0271bbe7355a491cddf32dc922090621
 
 - 在同一 Runbook 或 DSC 配置中的多个作业之间共享某个值。
 
-- 从门户或 Windows PowerShell 命令行管理由 Runbook 或 DSC 配置使用的值，例如一组常用配置项，如特定的 VM 名称列表、特定资源组、AD 域名等。  
+- 从门户或 Windows PowerShell 命令行管理由 Runbook 或 DSC 配置使用的值，例如一组常用配置项，如特定的 VM 名称列表、特定资源组、AD 域名。  
 
-自动化变量将保留，以便在 Runbook 或 DSC 配置失败时它们仍然继续可用。  这也允许一个 Runbook 设置的值随后由另一个 Runbook 使用，或由同一 Runbook 或 DSC 配置在下次运行时使用。
+自动化变量将保留，以便在 Runbook 或 DSC 配置失败时它们仍然继续可用。  这也允许一个 Runbook 设置的值随后由另一个 Runbook 使用，或由同一 Runbook 或 DSC 配置在下次运行时使用。     
 
 创建变量时，可以指定将其加密存储。  当变量加密后，它将安全地存储在 Azure 自动化中并且不能从 Azure PowerShell 模块随附的 [Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx) cmdlet 检索变量值。  可以检索加密值的唯一方法是从 Runbook 或 DSC 配置中的 **Get-AutomationVariable** 活动进行检索。
 
@@ -51,9 +52,12 @@ ms.openlocfilehash: 299b419c0271bbe7355a491cddf32dc922090621
 * 布尔
 * Null
 
+>[!NOTE]
+>变量资产限制为 1024 个字符。 
+
 ## <a name="cmdlets-and-workflow-activities"></a>Cmdlet 和工作流活动
 
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化变量。 可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azureps-cmdlets-docs)已随附了这些 cmdlet。
+下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化变量。 可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azureps-cmdlets-docs)已附带了这些 cmdlet。
 
 |Cmdlet|说明|
 |:---|:---|
@@ -72,27 +76,19 @@ ms.openlocfilehash: 299b419c0271bbe7355a491cddf32dc922090621
 > [!NOTE] 
 > 应避免在 Runbook 或 DSC 配置中的 **Get-AutomationVariable** 的 –Name 参数中使用变量，因为这可能会使设计时发现 Runbook 或 DSC 配置与自动化变量之间的依赖关系变得复杂化。
 
-## <a name="creating-a-new-automation-variable"></a>创建新的自动化变量
+## <a name="creating-an-automation-variable"></a>创建自动化变量
 
-### <a name="to-create-a-new-variable-with-the-azure-portal"></a>使用 Azure 门户创建新变量
+### <a name="to-create-a-variable-with-the-azure-portal"></a>使用 Azure 门户创建变量
 
-1. 在自动化帐户中，单击窗口顶部的“资产”。
-1. 在窗口底部，单击“添加设置”。
-1. 单击“添加变量”。
-1. 完成向导并单击复选框以保存新变量。
-
-
-### <a name="to-create-a-new-variable-with-the-azure-portal"></a>使用 Azure 门户创建新变量
-
-1. 在自动化帐户中，单击“资产”部分以打开“资产”边栏选项卡。
-1. 单击“变量”部分以打开“变量”边栏选项卡。
-1. 单击边栏选项卡顶部的“添加变量”。
+1. 在自动化帐户中，单击“资产”磁贴以打开“资产”边栏选项卡。
+1. 单击“变量”磁贴以打开“变量”边栏选项卡。
+1. 在边栏选项卡顶部选择“添加变量”。
 1. 完成表单，然后单击“创建”以保存新变量。
 
 
-### <a name="to-create-a-new-variable-with-windows-powershell"></a>使用 Windows PowerShell 创建新变量
+### <a name="to-create-a-variable-with-windows-powershell"></a>使用 Windows PowerShell 创建变量
 
-[New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx) cmdlet 创建一个新的变量并设置其初始值。 可以使用 [Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx) 检索该值。 如果该值为简单类型，则返回相同的类型。 如果其为复杂类型，则返回 **PSCustomObject**。
+[New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx) cmdlet 创建一个变量并设置其初始值。 可以使用 [Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx) 检索该值。 如果该值为简单类型，则返回相同的类型。 如果其为复杂类型，则返回 **PSCustomObject**。
 
 下面的示例命令演示如何创建字符串类型的变量，然后返回其值。
 
@@ -113,10 +109,9 @@ ms.openlocfilehash: 299b419c0271bbe7355a491cddf32dc922090621
     $vmIpAddress = $vmValue.IpAddress
 
 
-
 ## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>使用 Runbook 或 DSC 配置中的变量
 
-使用 **Set-AutomationVariable** 活动设置 Runbook 或 DSC 配置中自动化变量的值，并使用 **Get-AutomationVariable** 来检索该值。  不应在 Runbook 或 DSC 配置中使用 **Set-AzureAutomationVariable** 或 **Get-AzureAutomationVariable** cmdlet，因为它们的效率低于工作流活动。  也不能使用 **Get-AzureAutomationVariable** 来检索安全变量的值。  从 Runbook 或 DSC 配置中创建新变量的唯一方法是使用 [New-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913771.aspx) cmdlet。
+使用 **Set-AutomationVariable** 活动设置 Runbook 或 DSC 配置中自动化变量的值，并使用 **Get-AutomationVariable** 来检索该值。  不应在 Runbook 或 DSC 配置中使用 **Set-AzureAutomationVariable** 或 **Get-AzureAutomationVariable** cmdlet，因为它们的效率低于工作流活动。  也不能使用 **Get-AzureAutomationVariable** 来检索安全变量的值。  从 Runbook 或 DSC 配置中创建变量的唯一方法是使用 [New-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913771.aspx) cmdlet。
 
 
 ### <a name="textual-runbook-samples"></a>文本 Runbook 示例
@@ -169,6 +164,32 @@ ms.openlocfilehash: 299b419c0271bbe7355a491cddf32dc922090621
        }
     }
 
+#### <a name="setting-and-retrieving-a-secure-string"></a>设置和检索安全的字符串
+
+如果需要传入安全的字符串或凭据，则首先应当将此资产创建为一个凭据或安全的变量。 
+
+    $securecredential = get-credential
+
+    New-AzureRmAutomationCredential -ResourceGroupName contoso `
+    -AutomationAccountName contosoaccount -Name ContosoCredentialAsset -Value $securecredential
+
+然后，可以将此资产的名称作为参数传递给 runbook 并使用内置的活动在你的脚本中进行检索和使用，如以下示例代码中所演示：  
+
+    ExampleScript
+    Param
+
+      (
+         $ContosoCredentialAssetName
+      )
+
+    $ContosoCred = Get-AutomationPSCredential -Name $ContosoCredentialAssetName
+
+以下示例展示了如何调用 Runbook：  
+
+    $RunbookParams = @{"ContosoCredentialAssetName"="ContosoCredentialAsset"}
+
+    Start-AzureRMAutomationRunbook -ResourceGroupName contoso `
+    -AutomationAccountName contosoaccount -Name ExampleScript -Parameters $RunbookParams
 
 ### <a name="graphical-runbook-samples"></a>图形 Runbook 示例
 
@@ -185,10 +206,5 @@ ms.openlocfilehash: 299b419c0271bbe7355a491cddf32dc922090621
 
 * 若要了解有关在图形创作中将活动连接在一起的详细信息，请参阅[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)
 * 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md) 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

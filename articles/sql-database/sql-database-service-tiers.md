@@ -14,22 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-wms.date: 02/21/2017
+wms.date: 03/06/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: d830c43f860b70c6f47d94eaff5105b988158cdf
-ms.openlocfilehash: 4add7ad944e0b36e2eded5767b0123af74602e8e
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 4307797b3961d8efef4045590e340268f0ad226d
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL 数据库选项和性能：了解每个服务层提供的功能
 
-[Azure SQL 数据库](sql-database-technical-overview.md)提供了三个具有多个性能级别的[服务层](sql-database-service-tiers.md)（**基本**、**标准**和**高级**），用于处理不同的工作负荷。 更高的性能级别提供更多的资源，旨在递增式提供更高的吞吐量。 可在不停机的情况下动态更改服务层和性能级别。 基本、标准和高级服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 
+[Azure SQL 数据库](sql-database-technical-overview.md)提供四个服务层：**基本**、**标准**、**高级**和**高级 RS**。 每个服务层提供多个性能级别来处理不同的工作负荷。 更高的性能级别提供更多的资源，旨在逐级提高吞吐量。 可在不停机的情况下动态更改服务层和性能级别。 基本、标准和高级服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 高级 RS 层提供的性能级别、安全功能和业务连续性功能与高级层相同，但 SLA 更低。
 
-可以使用选定[性能级别](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)上的专用资源创建单一数据库。 还可在[弹性池](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)中管理多个数据库，弹性池中的资源在整个数据库中共享。 可用于单一数据库的资源以数据库事务单位 (DTU) 表示，弹性池以弹性 DTU (eDTU) 表示。 有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU？](sql-database-what-is-a-dtu.md) 
+> [!IMPORTANT]
+> 与高级或标准数据库相比，高级 RS 数据库以更少的冗余副本运行。 因此，在发生服务故障时，可能需要从备份中恢复数据库，这最长会出现 5 分钟的滞后时间。
+>
 
-在这两种情况下，服务层包括“**基本**”、“**标准**”和“**高级**”。 
+可以使用服务层中具有特定[性能级别](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)的专用资源创建单一数据库。 还可以在[弹性池](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)中创建数据库，弹性池中的资源在多个数据库之间共享。 可用于单一数据库的资源以数据库事务单位 (DTU) 表示，可用于弹性池的资源则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU？](sql-database-what-is-a-dtu.md) 
 
 ## <a name="choosing-a-service-tier"></a>选择服务层
 下表提供了最适用于不同应用程序工作负荷的层的示例。
@@ -39,13 +41,22 @@ ms.lasthandoff: 03/01/2017
 | **基本** | 最适合小型数据库，通常支持在给定时间执行一个活动操作。 示例包括用于开发或测试的数据库，或不常使用的小型应用程序。 |
 | **标准** |云应用程序的首选选项具有低到中等的 IO 性能要求，支持多个并发查询。 示例包括工作组或 Web 应用程序。 |
 | **高级** | 专为具有高 IO 性能要求的高事务量设计，支持多个并发用户。 示例包括支持任务关键型应用程序的数据库。 |
+| **高级 RS** | 专为不需要最高可用性保证的 IO 密集型工作负荷设计。 示例包括测试高性能工作负荷或数据库不是记录系统的分析工作负荷。 |
+|||
 
-首先确定是要运行单一数据库还是运行共享资源的组数据库。 查看[弹性池注意事项](sql-database-elastic-pool-guidance.md)。 若要确定服务层，首先确定需要的最少数据库功能：
+首先请确定是要运行包含定义数量的专用资源的单一数据库，还是要在一组数据库之间共享某个资源池。 查看[弹性池注意事项](sql-database-elastic-pool-guidance.md)。 若要确定服务层，首先确定需要的最少数据库功能：
 
-* 单个数据库的最大大小（基本数据库最大 2 GB、标准数据库最大 250 GB、高端性能级别的高级数据库 500 GB 到 1 TB）
-* 弹性池的最大总存储量（基本为 117 GB，标准为 1200 GB，高级为 750 GB）
-* 每个池最多包含的数据库数（基本池 400 个、标准池 400 个、高级池 50 个）
-* 数据库备份保留期（基本数据库 7 天、标准数据库 35 天、高级数据库 35 天）
+| **服务层功能** | **基本** | **标准** | **高级** | **高级 RS**|
+| :-- | --: | --: | --: | --: |
+| 单个数据库的最大大小 | 2 GB | 250 GB | 4 TB*  | 500 GB  |
+| 弹性池中的最大总存储 | 117 GB | 1200 GB | 750 GB | 750 GB |
+| 每个池的数据库数目上限 | 400  | 400 | 50 | 50 |
+| 数据库备份保留期 | 7 天 | 35 天 | 35 天 | 35 天 |
+||||||
+
+> [!IMPORTANT]
+> 使用 P11 和 P15 性能级别的客户最多可以使用 4 TB 的包含存储，而无需额外付费。 此 4 TB 选项目前在以下区域以公共预览版提供：美国东部 2 区、美国西部、西欧、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 有关当前的限制，请参阅[当前的 4 TB 限制](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)
+>
 
 确定了最低服务层后，就可以确定数据库的性能级别（DTU 数）。 通常情况下，可以先使用标准 S2 和 S3 性能级别。 对于具有高 CPU 或 IO 要求的数据库，开始适合使用高级性能级别。 高级版提供更多的 CPU，并且一开始就提供比最高标准性能水平高出 10 倍的 IO。
 
@@ -78,7 +89,7 @@ ms.lasthandoff: 03/01/2017
 * 所做的更改完成之前不会应用数据库的新属性。
 
 > [!IMPORTANT]
-> 如需详细步骤，请参阅[使用 Azure 门户管理单一数据库](sql-database-manage-single-databases-portal.md)、[使用 Powershell 管理单一数据库](sql-database-manage-single-databases-powershell.md)或[使用 Transact-SQL 管理单一数据库](sql-database-manage-single-databases-tsql.md)。
+> 如需详细步骤，请参阅[在 Azure 门户中管理单一数据库](sql-database-manage-single-databases-portal.md)、[使用 PowerShell 管理单一数据库](sql-database-manage-single-databases-powershell.md)或[使用 Transact-SQL 管理单一数据库](sql-database-manage-single-databases-tsql.md)。
 >
 
 ## <a name="elastic-pool-service-tiers-and-performance-in-edtus"></a>弹性池服务层和性能 (eDTU)
@@ -98,13 +109,47 @@ ms.lasthandoff: 03/01/2017
 * 更改每个数据库的最小 eDTU 数或每个数据库的最大 eDTU 数通常可在五分钟或更少的时间内完成。
 * 更改池大小 (eDTU) 所需的时间取决于池中所有数据库的总大小。 更改平均起来每 100 GB 需要 90 分钟或更短的时间。 例如，如果池中所有数据库的总空间为 200 GB，则更改每个池的池 eDTU 时，预计延迟为 3 小时或更短的时间。
 
-如需详细步骤，请参阅[使用 Azure 门户管理弹性池](sql-database-elastic-pool-manage-portal.md)、[使用 Powershell 管理弹性池](sql-database-elastic-pool-manage-powershell.md)、[使用 Transact-SQL 管理弹性池](sql-database-elastic-pool-manage-tsql.md)或[使用 C# 管理弹性池](sql-database-elastic-pool-manage-csharp.md)。
+如需详细步骤，请参阅[在 Azure 门户中管理弹性池](sql-database-elastic-pool-manage-portal.md)、[使用 Powershell 管理弹性池](sql-database-elastic-pool-manage-powershell.md)、[使用 Transact-SQL 管理弹性池](sql-database-elastic-pool-manage-tsql.md)或[使用 C# 管理弹性池](sql-database-elastic-pool-manage-csharp.md)。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="creating-or-upgrading-to-4tb"></a>创建或升级到 4TB
 
-* 详细了解[弹性池](sql-database-elastic-pool-guidance.md)和[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
-* 了解如何[监视、管理弹性池和调整其大小](sql-database-elastic-pool-manage-portal.md)以及如何[监视单一数据库的性能](sql-database-single-database-monitor.md)。
-* 你了解了 SQL 数据库层，接下来请使用[免费帐户](https://azure.microsoft.com/pricing/free-trial/)试用一下这些层并了解[如何创建首个 SQL 数据库](sql-database-get-started.md)。
-* 对于迁移方案，可使用 [DTU 计算器](http://dtucalculator.azurewebsites.net/)估计所需的 DTU 数。 
+以下部分介绍 4 TB 选项的实现细节。
+
+### <a name="creating-in-the-azure-portal"></a>在 Azure 门户中创建
+
+创建 P11/P15 数据库时，系统已预先选择默认的 1TB 存储选项。 对于位于一个受支持区域中的数据库，可将最大存储空间增加到 4TB。 对于其他所有区域，无法更改存储滑块。 选择 4 TB 的随附存储时，价格不会更改。
+
+### <a name="creating-using-powershell-or-transact-sql"></a>使用 PowerShell 或 Transact-SQL 创建
+
+创建 P11/P15 数据库时，可将最大大小值设置为 1 TB（默认值）或 4 TB。 也接受“1024 GB”和“4096 GB”值。 如果在不受支持的区域中预配数据库，则选择 4 TB 最大大小选项时，create 命令将会失败并出错。
+
+### <a name="upgrading-to-4tb"></a>升级到 4TB 
+
+对于位于一个受支持区域中的 P11 和 P15 数据库，可将最大存储大小增加到 4 TB。 可在 Azure 门户、PowerShell 或 Transact-SQL 中执行此操作。 以下示例演示如何使用 ALTER DATABASE 命令更改最大大小：
+
+```ALTER DATABASE <DatabaseName> MODIFY (MAXSIZE = 4096 GB);
+```
+
+Upgrading an existing P11 or P15 database can only be performed by a server-level principal login or by members of the dbmanager database role. 
+If executed in a supported region the configuration will be updated immediately. This can be checked using the [SELECT DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx) or by inspecting the database size in the Azure portal. The database will remain online during the upgrade process. However, you will not be able to utilize the full 4 TB of storage until the actual database files have been upgraded to the new maxsize. The length of time required depends upon on the size of the database being upgraded.  
+
+### Error messages
+When creating or upgrading an P11/P15 database in an unsupported region, the create or upgrade operation will fail with the following error message: **P11 and P15 database with up to 4TB of storage are available in US East 2, West US, South East Asia, West Europe, Canada East, Canada Central, Japan East, and Australia East.**
+
+## Current limitations of P11 and P15 databases with 4 TB maxsize
+
+- When creating or updating a P11 or P15 database, you can only chose between 1 TB and 4 TB maxsize. Intermediate storage sizes are not currently supported.
+- The 4 TB database maxsize cannot be changed to 1 TB even if the actual storage used is below 1 TB. Thus, you cannot downgrade a P11-4TB/P15-4TB to a P11-1TB/P15-1TB or a lower performance tier (e.g., to P1-P6) until we are providing additional storage options for the rest of the performance tiers. This restriction also applies to the restore and copy scenarios including point-in-time, geo-restore, long-term-backup-retention, and database copy. Once a database is configured with the 4 TB option, all restore operations of this database must be into a P11/P15 with 4 TB maxsize.
+- For Active Geo-Replication scenarios:
+   - Setting up a geo-replication relationship: If the primary database is P11 or P15, the secondary(ies) must also be P11 or P15; lower performance tiers will be rejected as secondaries since they are not capable of supporting 4 TB.
+   - Upgrading the primary database in a geo-replication relationship: Changing the maxsize to 4 TB on a primary database will trigger the same change on the secondary database. Both upgrades must be successful for the change on the primary to take effect. Region limitations for the 4TB option apply (see above). If the secondary is in a region that does not support 4 TB, the primary will not be upgraded.
+- Using the Import/Export service for loading P11-4TB/P15-4TB databases is not supported. Use SqlPackage.exe to [import](sql-database-import-sqlpackage.md) and [export](sql-database-export-sqlpackage.md) data.
+
+## Next steps
+
+* Learn the details of [elastic pools](sql-database-elastic-pool-guidance.md) and [price and performance considerations for elastic pools](sql-database-elastic-pool-guidance.md).
+* Learn how to [Monitor, manage, and resize elastic pools](sql-database-elastic-pool-manage-portal.md) and [Monitor the performance of single databases](sql-database-single-database-monitor.md).
+* Now that you know about the SQL Database tiers, try them out with a [free account](https://azure.microsoft.com/pricing/free-trial/) and learn [how to create your first SQL database](sql-database-get-started.md).
+* For migration scenarios, use the [DTU Calculator](http://dtucalculator.azurewebsites.net/) to approximate the number of DTUs needed. 
 
 

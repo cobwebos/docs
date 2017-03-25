@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/29/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: d4be6bf16527fa1a08ad758cbccf1329122a5e65
-ms.openlocfilehash: 5cb44681f9bbd07a95eb2eed1d8de08243a18d6d
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 244413be8b094605883445bb3cbf675b538b704e
+ms.lasthandoff: 03/10/2017
 
 
 ---
-#  <a name="use-azure-media-standard-to-auto-generate-a-bitrate-ladder"></a>使用 Azure Media Encoder Standard 自动生成比特率阶梯
+#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用 Azure Media Encoder Standard 自动生成比特率阶梯
 
 ## <a name="overview"></a>概述
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/28/2017
 
 若要使用此功能，需在创建编码任务时指定“自适应流式处理”预设。 使用“自适应流式处理”预设时，MES 编码器会以智能方式为比特率阶梯设置一个上限。 但是，用户无法控制编码成本，因为是由服务确定要使用的层数和分辨率。 可以在本主题[末尾](#output)看到 MES 生成的输出层的示例，是使用“自适应流式处理”预设进行编码得来的。
 
-## <a name="a-idencodingwithdotnetaencoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
+## <a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 
 以下代码示例使用媒体服务 .NET SDK 执行下列任务：
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 02/28/2017
 
         }
 
-## <a name="a-idoutputaoutput"></a><a id="output"></a>输出
+## <a id="output"></a>输出
 
 此部分显示 MES 生成的输出层的三个示例，是使用“自适应流式处理”预设进行编码得来的。 
 

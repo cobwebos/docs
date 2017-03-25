@@ -1,6 +1,6 @@
 ---
 title: "监视负载均衡器的操作、事件和计数器 | Microsoft 文档"
-description: "了解如何为 Azure Load Balancer 启用警报事件以及探测运行状况日志记录"
+description: "了解如何为 Azure 负载均衡器启用警报事件以及探测运行状况日志记录"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: ca52a8cfdc4262f55a1fed439f29631966211a00
-ms.openlocfilehash: c605b2f0b49fcc26955e73c931192ada5e407525
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 93640e208c99db41d922399d42c80622022287eb
+ms.lasthandoff: 03/09/2017
 
 ---
 
-# <a name="log-analytics-for-azure-load-balancer"></a>Azure Load Balancer 的 Log Analytics
+# <a name="log-analytics-for-azure-load-balancer"></a>Azure 负载均衡器的 Log Analytics
 
-可以在 Azure 中使用不同类型的日志对负载均衡器进行管理和故障排除。 可通过门户访问其中某些日志。 可从 Azure Blob 存储提取并在 Excel 和 PowerBI 等各种工具中查看所有日志。 可从下表了解有关各种类型日志的详细信息。
+可以在 Azure 中使用不同类型的日志对负载均衡器进行管理和故障排除。 可通过门户访问其中某些日志。 可从 Azure Blob 存储提取所有日志并在 Excel 和 PowerBI 等各种工具中查看。 可从下表了解有关各种类型日志的详细信息。
 
 * **审核日志：**可以使用 [Azure 审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)（旧称为“运行日志”）查看提交到 Azure 订阅的所有操作及其状态。 审核日志默认情况下启用，并且可以在 Azure 门户中查看。
-* **警报事件日志：**可以使用此日志来查看针对负载均衡器发出的警报。 每隔五分钟收集一次负载均衡器的状态。 仅在引发了负载均衡器警报事件的情况下，才会向此日志写入相关内容。
-* **运行状况探测日志：**可以使用此日志来查看探测运行状况时的检查状态、负载均衡器后端处于联机状态的实例的数目，以及从负载均衡器接收网络流量的虚拟机的百分比。 探测状态事件变化时，将会向此日志写入相应内容。
+* **警报事件日志：**可以使用此日志查看负载均衡器引发的警报。 每隔五分钟收集一次负载均衡器的状态。 仅在引发了负载均衡器警报事件的情况下，才会向此日志写入相关内容。
+* **运行状况探测日志：**可以使用此日志查看运行状况探测器检测到的问题，例如后端池中由于运行状况探测失败未从负载均衡器接收请求的实例数。 当运行状况探测状态发生更改时，将写入此日志。
 
 > [!IMPORTANT]
 > Log Analytics 当前仅适用于面向 Internet 的负载均衡器。 日志仅适用于 Resource Manager 部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
@@ -50,7 +50,8 @@ ms.lasthandoff: 01/31/2017
 
 5. 在“诊断”窗格中，在“状态”下选择“开”。
 6. 单击“存储帐户”。
-7. 在“日志”下，选择现有存储帐户或创建新存储帐户。 使用滑块来确定事件数据可在事件日志中保存的天数。 8. 单击“保存” 。
+7. 在“日志”下，选择现有存储帐户或创建新存储帐户。 使用滑块来确定事件数据值得在事件日志中存储的天数。 
+8. 单击“保存” 。
 
     ![门户 - 诊断日志](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
 

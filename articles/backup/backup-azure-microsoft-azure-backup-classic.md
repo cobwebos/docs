@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/10/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
-ms.openlocfilehash: 2d32e8bb650d682684be0e093a9f5dfd9d536a8f
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 2b278b5c512d3ea0ff045869487d4551118c0e5c
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -52,31 +53,19 @@ ms.openlocfilehash: 2d32e8bb650d682684be0e093a9f5dfd9d536a8f
 >
 >
 
-如果你打算在将来某个时间将此服务器加入域中，建议在安装 Azure 备份服务器之前完成域加入活动。 部署之后，*不支持*将现有 Azure 备份服务器计算机移到新域中。
+如果计划将 Azure 备份服务器加入到域，建议在安装 Azure 备份服务器软件之前，将物理服务器或虚拟机加入到域。 部署之后，*不支持*将 Azure 备份服务器移到新域。
 
 ## <a name="2-backup-vault"></a>2.备份保管库
 ![步骤&2;](./media/backup-azure-microsoft-azure-backup/step2.png)
 
-无论是要将备份数据发送到 Azure，还是将其保存在本地，软件都需要连接到 Azure。 具体而言，需要将 Azure 备份服务器计算机注册到备份保管库。
+无论是将备份数据发送到 Azure 还是在本地保留，都必须将 Azure 备份服务器注册到保管库。
 
-创建备份保管库的步骤：
+> [!IMPORTANT]
+> 从 2017 年 3 月开始，无法再使用经典门户来创建备份保管库。 仍支持现有备份保管库，并且可以[使用 Azure PowerShell 创建备份保管库](./backup-client-automation-classic.md#create-a-backup-vault)。 不过，Microsoft 建议你为所有部署创建恢复服务保管库，因为将来只会对恢复服务保管库进行增强。
+>
+>
 
-1. 登录到[管理门户](http://manage.windowsazure.com/)。
-2. 单击“**新建**”“ > **数据服务** > ”“**恢复服务**”“ > **备份保管库** > ”“**快速创建**”。 如果有多个订阅与组织帐户相关联，请选择要与备份保管库关联的正确订阅。
-3. 在“名称”中，输入一个友好名称以标识此保管库。 这必须是每个订阅的唯一名称。
-4. 在“区域” 中，为保管库选择地理区域。 通常，保管库的区域是数据数据所有权或网络延迟约束选择的。
 
-    ![创建备份保管库](./media/backup-azure-microsoft-azure-backup/backup_vaultcreate.png)
-5. 单击“**创建保管库**”。 创建备份保管库可能需要一段时间。 可以在门户底部监视状态通知。
-
-    ![创建保管库 toast 通知](./media/backup-azure-microsoft-azure-backup/creating-vault.png)
-6. 将出现一条消息来确认保管库已成功创建，并且将在“恢复服务”页上将保管库列出为“活动”保管库。
-    ![备份保管库列表](./media/backup-azure-microsoft-azure-backup/backup_vaultslist.png)
-
-   > [!IMPORTANT]
-   > 确保在创建保管库后立即选择适当的存储冗余选项。 请在此[概述](../storage/storage-redundancy.md)中深入了解 [异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)选项。
-   >
-   >
 
 ## <a name="3-software-package"></a>3.软件包
 ![步骤&3;](./media/backup-azure-microsoft-azure-backup/step3.png)
@@ -124,6 +113,7 @@ ms.openlocfilehash: 2d32e8bb650d682684be0e093a9f5dfd9d536a8f
    > Azure 备份服务器不能与远程 SQL Server 实例配合使用。 Azure 备份服务器使用的实例需在本地。
    >
    >
+
 4. 提供 Microsoft Azure 备份服务器文件的安装位置，然后单击“**下一步**”。
 
     ![Microsoft Azure 备份先决条件&2;](./media/backup-azure-microsoft-azure-backup/space-screen.png)
@@ -209,9 +199,4 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 * [SQL Server 备份](backup-azure-backup-sql.md)
 * [SharePoint Server 备份](backup-azure-backup-sharepoint.md)
 * [备用服务器备份](backup-azure-alternate-dpm-server.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
