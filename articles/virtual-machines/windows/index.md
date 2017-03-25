@@ -13,14 +13,24 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 90d760207ee6b6e0d8c15ff597bf53512f071ef0
-ms.openlocfilehash: ace8475bd9a75eb92a3b5c084ee27b9813f13bfb
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 91c81cdba745be375ea6cbdb689d5b6f46e53f98
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 虚拟机文档
 
+<div class="introHolder">
+    <div class="intro">
 了解如何创建 Windows 虚拟机。 教程、API 参考和其他文档可帮助你在云中规划、部署和管理虚拟机计算环境。
+    </div>
+    <div class="calloutHolder">
+        <div class="callout">
+            <a href="https://azure.microsoft.com/community/training/courses/managing-infrastructure-microsoft-azure-getting-started/">
+                <img src="media/index/pluralsight.svg" />免费 PluralSight 视频培训 - 使用 Microsoft Azure 管理基础结构</a>
+        </div>
+    </div>
+</div>
 
 <ul class="panelContent cardsFTitle">
     <li>

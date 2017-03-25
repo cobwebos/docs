@@ -32,6 +32,7 @@
 ### [监视运行状况和警报](azure-stack-monitor-health.md)
 ### [管理网络资源](azure-stack-viewing-public-ip-address-consumption-in-tp2.md)
 ### [管理存储资源](azure-stack-manage-storage-accounts.md)
+### [管理 Windows Azure Pack VM](azure-stack-manage-windows-azure-pack.md)
 
 # 安全性和遵从性
 ## 如何
@@ -86,7 +87,6 @@
 #### [使用门户进行管理](azure-stack-kv-manage-portal.md)
 #### [使用 PowerShell 进行管理](azure-stack-kv-manage-powershell.md)
 ### 如何
-#### [使用密码部署 VM](azure-stack-kv-deploy-vm-with-secret.md)
 #### [使用证书创建 VM](azure-stack-kv-push-secret-into-vm.md)
 #### [密钥保管库示例应用](azure-stack-kv-sample-app.md)
 

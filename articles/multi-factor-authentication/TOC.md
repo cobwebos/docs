@@ -25,9 +25,9 @@
 #### [从 PhoneFactor 升级](multi-factor-authentication-get-started-server-upgrade.md)
 
 ## 管理用户
-### [分配许可证](multi-factor-authentication-get-started-assign-licenses.md)
 ### [启用或禁用 MFA](multi-factor-authentication-get-started-user-states.md)
 ### [用户和设备设置](multi-factor-authentication-manage-users-and-devices.md)
+### [MFA 用户指南](./end-user/multi-factor-authentication-end-user.md)
 
 ## 集成
 ### [联合身份验证服务](multi-factor-authentication-get-started-adfs.md)

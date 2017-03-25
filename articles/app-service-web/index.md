@@ -13,14 +13,24 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 9075b2da7a4caa88328ef7220c4d543ff7cdebdf
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 71c2d5cff0a2deb1f44127a3483b696d1a695898
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="azure-web-apps-documentation"></a>Azure Web 应用文档
 
+<div class="introHolder">
+    <div class="intro">
 了解如何使用应用服务 Web 应用来构建和托管网站和 Web 应用程序。 教程、视频、API 参考和其他文档演示了如何针对这个完全托管的计算平台进行开发。
+    </div>
+    <div class="calloutHolder">
+        <div class="callout">
+            <a href="https://azure.microsoft.com/community/training/courses/developing-dotnet-microsoft-azure-getting-started/">
+                <img src="media/index/pluralsight.svg" />免费 PluralSight 视频培训 - 在 Microsoft Azure 上使用 .NET 进行开发</a>
+        </div>
+    </div>
+</div>
 
 <ul class="panelContent cardsFTitle">
     <li>

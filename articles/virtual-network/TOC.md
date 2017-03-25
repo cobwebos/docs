@@ -7,9 +7,6 @@
 ## IP 寻址
 ### [资源管理器](virtual-network-ip-addresses-overview-arm.md)
 ### [经典](virtual-network-ip-addresses-overview-classic.md)
-## 虚拟机
-### [网络接口](virtual-network-network-interface-overview.md)
-### [名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 # 入门
 ## [创建自己的首个虚拟网络](virtual-network-get-started-vnet-subnet.md)
@@ -107,6 +104,7 @@
 ### 访问控制列表
 #### [经典门户](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
+### [VM 和云服务的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ## 管理
 ### 网络安全组

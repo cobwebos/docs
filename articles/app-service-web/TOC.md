@@ -82,7 +82,6 @@
 
 ### [从 IIS 迁移](web-sites-migration-from-iis-server.md)
 ### [在生产中测试](app-service-web-test-in-production-get-start.md)
-### [运行性能测试](app-service-web-app-performance-test.md) 
 
 ## 连接到数据库/资源        
 

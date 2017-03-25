@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: a180f89814c3186e98018eee4d97a6b6904742cf
-ms.openlocfilehash: 11ec370ee2736d66d19a33eab938fe9639cafed7
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: e36c82b7fb93659ad2fb3b7af5b6660438293bc9
+ms.lasthandoff: 03/18/2017
 
 ---
 #<a name="batch-documentation"></a>批处理文档
@@ -124,7 +125,8 @@ ms.openlocfilehash: 11ec370ee2736d66d19a33eab938fe9639cafed7
                 <div class="card">
                     <div class="cardText">
                         <h3>命令行</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.batch/v2.3.0/azurerm.batch">PowerShell</a></p>
+                        <p><a href="/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch">PowerShell</a></p>
+                        <p><a href="/cli/azure/batch">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
@@ -159,10 +161,5 @@ ms.openlocfilehash: 11ec370ee2736d66d19a33eab938fe9639cafed7
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

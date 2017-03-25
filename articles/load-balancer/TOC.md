@@ -41,7 +41,8 @@
 ## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 ## [使用多个 IP 配置](load-balancer-multiple-ip.md)
 ### [使用多个 IP 配置 (CLI)](load-balancer-multiple-ip-cli.md)
-## [Azure Load Balancer 的 Log Analytics](load-balancer-monitor-log.md)
+### [使用多个 IP 配置 (PowerShell)](load-balancer-multiple-ip-powershell.md)
+## [Azure 负载均衡器的 Log Analytics](load-balancer-monitor-log.md)
 ## [为 Linux VM 配置 DHCPv6](load-balancer-ipv6-for-linux.md)
 
 # 参考
