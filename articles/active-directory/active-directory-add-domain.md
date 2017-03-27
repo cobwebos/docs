@@ -3,7 +3,7 @@ title: "将自定义域名添加到 Azure Active Directory | Microsoft Docs"
 description: "如何将公司域名添加到 Azure Active Directory，以及如何验证域名。"
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: 35a6e20a-9907-432b-9d36-16b916a5c249
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 09/30/2016
 ms.author: curtand;jeffsta
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d24af6385c24860f40f6aab633e6212431809aea
+ms.sourcegitcommit: f1f3d6fa1ba29b0d43d29c7d9cccfc430fdd6f1e
+ms.openlocfilehash: 9803b4e41223bc979e4c0b0a4f22586a441c28df
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: d24af6385c24860f40f6aab633e6212431809aea
 > 
 > 
 
-你的组织购买了一个或多个域名来开展业务，而你的用户将使用企业域名来登录你的企业网络。 使用 Azure Active Directory (Azure AD) 时，也可以将企业域名添加到 Azure AD。 这样，你便可以在目录中分配用户熟悉的用户名，例如 ‘alice@contoso.com.’。此过程很简单：
+你的组织购买了一个或多个域名来开展业务，而你的用户将使用企业域名来登录你的企业网络。 使用 Azure Active Directory (Azure AD) 时，也可以将企业域名添加到 Azure AD。 如此一来，便可在目录中分配用户熟悉的用户名，例如“alice@contoso.com”。 过程很简单：
 
 1. 将自定义域名添加到目录
 2. 在域名注册机构中为域名添加 DNS 条目
@@ -85,10 +86,5 @@ ms.openlocfilehash: d24af6385c24860f40f6aab633e6212431809aea
 * [了解 Azure AD 中的域管理概念](active-directory-add-domain-concepts.md)
 * [在用户登录时显示公司的品牌](active-directory-add-company-branding.md)
 * [使用 PowerShell 管理 Azure AD 中的域名](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

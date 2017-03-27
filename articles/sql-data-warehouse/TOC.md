@@ -3,16 +3,15 @@
 ## [什么是 SQL 数据仓库？](sql-data-warehouse-overview-what-is.md)
 ## [数据仓库工作负荷](sql-data-warehouse-overview-workload.md)
 ## [分布式数据](sql-data-warehouse-distributed-data.md)
+## [常见问题](sql-data-warehouse-overview-faq.md)
 
 # 入门
 
-## 创建 SQL 数据仓库
-### [Azure 门户](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
+## [入门教程](sql-data-warehouse-get-started-tutorial.md)
 ## [最佳实践](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 ## [获取支持](sql-data-warehouse-get-started-create-support-ticket.md)
+## [故障排除](sql-data-warehouse-troubleshoot.md)
 
 # 如何
 
@@ -28,11 +27,15 @@
 
 ### [概述](sql-data-warehouse-connect-overview.md)
 ### [连接字符串](sql-data-warehouse-connection-strings.md)
-### 查询
-#### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
-#### [SSMS](sql-data-warehouse-query-ssms.md)
-#### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+### [SSMS](sql-data-warehouse-query-ssms.md)
+### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [安装 Visual Studio](sql-data-warehouse-install-visual-studio.md)
+
+## 创建
+### [Azure 门户](sql-data-warehouse-get-started-provision.md)
+### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## 开发
 
@@ -79,11 +82,10 @@
 
 ### [概述](sql-data-warehouse-overview-load.md)
 ### [示例数据](sql-data-warehouse-load-sample-databases.md)
+### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [AZCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
-### [从 SQL Server 使用 BCP](sql-data-warehouse-load-from-sql-server-with-bcp.md)
-### [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
-### [从 Blob 存储使用数据工厂](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
+### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
 ### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
 ### [PolyBase 指南](sql-data-warehouse-load-polybase-guide.md)
 ### [从 Blob 存储使用 PolyBase ](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
@@ -100,7 +102,7 @@
 ### [迁移数据](sql-data-warehouse-migrate-data.md)
 ### [迁移到高级存储](sql-data-warehouse-migrate-to-premium-storage.md)
 
-## 暂停和缩放
+## 管理计算
 
 ### [概述](sql-data-warehouse-manage-compute-overview.md)
 ### [Azure 门户](sql-data-warehouse-manage-compute-portal.md)
@@ -111,9 +113,9 @@
 ## 性能
 
 ### [概述](sql-data-warehouse-overview-manage-user-queries.md)
+### [列存储压缩](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [查询](sql-data-warehouse-manage-monitor.md)
-### [工作负荷](sql-data-warehouse-develop-concurrency.md)
-### [排除故障](sql-data-warehouse-troubleshoot.md)
+### [工作负载](sql-data-warehouse-develop-concurrency.md)
 
 ## “安全”
 
@@ -144,8 +146,3 @@
 ### [商业智能](sql-data-warehouse-partner-business-intelligence.md)
 ### [数据集成](sql-data-warehouse-partner-data-integration.md)
 ### [数据管理](sql-data-warehouse-partner-data-management.md)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c90fe9e9f088e8af80b5d9dcf7ab5b970034122f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a1d30c77dd29a134017be7deec6bb50991e6a698
+ms.lasthandoff: 12/08/2016
 
 
 ---
 # <a name="overview-of-azure-data-lake-store"></a>Azure Data Lake Store 概述
-Azure 数据湖存储是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。 使用 Azure Data Lake 可以在单个位置捕获任何大小、类型和引入速度的数据进行操作和探索分析。
+Azure Data Lake Store 是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。 使用 Azure Data Lake 可以在单个位置捕获任何大小、类型和引入速度的数据进行操作和探索分析。
 
 > [!TIP]
 > 使用 [Data Lake Store learning path](https://azure.microsoft.com/documentation/learning-paths/data-lake-store-self-guided-training/) （Data Lake Store 学习路径）开始探索 Azure Data Lake Store 服务。
@@ -42,10 +43,10 @@ Azure Data Lake Store 是一个 Apache Hadoop 文件系统，该系统与 Hadoop
 ### <a name="unlimited-storage-petabyte-files"></a>无限存储空间，PB 量级的文件
 Azure Data Lake Store 提供无限存储空间，适合用于存储各种分析数据。 帐户大小、文件大小或 Data Lake 中可存储的数据量均无任何限制。 支持 KB 到 PB 量级的单个文件大小，非常适合用于存储任何类型的数据。 通过创建多个副本来长期存储数据，数据在 Data Lake 中的存储持续时间没有限制。
 
-### <a name="performancetuned-for-big-data-analytics"></a>针对大数据分析优化了性能
+### <a name="performance-tuned-for-big-data-analytics"></a>针对大数据分析优化了性能
 Azure Data Lake Store 旨在运行需要利用超大吞吐量查询和分析海量数据的大规模分析系统。 Data Lake 将文件的各个部分散在大量独立的存储服务器中。 这可改善执行数据分析时并行读取文件的吞吐量。
 
-### <a name="enterpriseready-highlyavailable-and-secure"></a>随时可供企业使用：高度可用且安全
+### <a name="enterprise-ready-highly-available-and-secure"></a>随时可供企业使用：高度可用且安全
 Azure Data Lake Store 提供符合行业标准的可用性和可靠性。 数据资产可通过创建冗余副本来长期存储，防范任何意外的故障。 企业可以在其解决方案中使用 Azure Data Lake 作为现有数据平台的重要组成部分。
 
 Data Lake Store 还为存储的数据提供企业级安全性。 有关详细信息，请参阅 [Securing data in Azure Data Lake Store](#DataLakeStoreSecurity)（保护 Azure Data Lake 中的数据）。
@@ -55,7 +56,7 @@ Azure Data Lake Store 可按本机格式（原样）存储任何数据，不需�
 
 Azure Data Lake Store 的数据容器本质上是文件夹和文件。 可以使用 SDK、Azure 门户和 Azure Powershell 来处理存储的数据。 只要使用这些接口和相应容器将数据放入存储，就能存储任何类型的数据。 Data Lake Store 不会根据其存储的数据类型对数据执行任何特殊处理。
 
-## <a name="a-namedatalakestoresecurityasecuring-data-in-azure-data-lake-store"></a><a name="DataLakeStoreSecurity"></a>保护 Azure Data Lake Store 中的数据
+## <a name="DataLakeStoreSecurity"></a>保护 Azure Data Lake Store 中的数据
 Azure Data Lake Store 使用 Azure Active Directory 进行身份验证，使用访问控制列表 (ACL) 管理对数据的访问。
 
 | 功能 | 说明 |
@@ -101,10 +102,5 @@ Azure Data Lake Store 与 Hadoop 生态系统中的大多数开源组件兼容�
 * [Use Apache Sqoop to move data between relational sources and Azure Data Lake Store](https://mix.office.com/watch/1butcdjxmu114)
 * [Data Orchestration using Azure Data Factory for Azure Data Lake Store](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Securing Data in the Azure Data Lake Store](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

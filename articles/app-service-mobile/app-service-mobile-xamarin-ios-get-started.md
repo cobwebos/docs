@@ -4,7 +4,7 @@ description: "按照本教程进行操作，开始使用移动应用进行 Xamar
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: dwrede
+manager: adrianha
 editor: 
 ms.assetid: 14428794-52ad-4b51-956c-deb296cafa34
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cf8f9a06c4d720dade11ea67fc1befe07a56cf85
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: ed289d0755bbad08de01b0f311d14f5514ce0631
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.openlocfilehash: cf8f9a06c4d720dade11ea67fc1befe07a56cf85
 * 安装了 Xcode v7.0 版或更高版本以及 Xamarin Studio Community 的 Mac。 请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 以及 [Mac 用户的设置、安装和验证](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN)。
 
 > [!NOTE]
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile)（试用应用服务）。 可以立即在应用服务中创建短期的入门级移动应用 - 无需信用卡，也无需做出承诺。
+> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://azure.microsoft.com/try/app-service/mobile/)（试用应用服务）。 可以立即在应用服务中创建短期的入门级移动应用 - 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -81,9 +82,9 @@ ms.openlocfilehash: cf8f9a06c4d720dade11ea67fc1befe07a56cf85
 * [如何使用 Azure 移动应用的托管客户端](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 <!-- Anchors. -->
-[移动应用后端入门]:#getting-started
-[创建新的移动应用后端]:#create-new-service
-[后续步骤]:#next-steps
+[Getting started with mobile app backends]:#getting-started
+[Create a new mobile app backend]:#create-new-service
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 [6]: ./media/app-service-mobile-xamarin-ios-get-started/xamarin-ios-quickstart.png
@@ -93,9 +94,4 @@ ms.openlocfilehash: cf8f9a06c4d720dade11ea67fc1befe07a56cf85
 
 <!-- URLs. -->
 [Azure 门户]: https://portal.azure.com/
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

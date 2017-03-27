@@ -45,21 +45,16 @@
 ###[更新为不同的大小和层](cache-how-to-scale.md)
 ###[使用 Redis 群集进行缩减/扩展](cache-how-to-premium-clustering.md)
 
-#参考
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [Azure CLI](https://docs.microsoft.com/cli/azure/)
-## [Java](https://docs.microsoft.com/java/api/)
-## [.NET](https://docs.microsoft.com/dotnet/api/)
+# 参考
+## [PowerShell](/powershell/resourcemanager/azurerm.rediscache/v2.3.0/azurerm.rediscache)
+## [Azure CLI 2.0 预览版](/cli/azure/redis)
+## [.NET](/dotnet/api/microsoft.azure.management.redis)
+## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)
 ## [Redis 客户端](http://redis.io/clients)
 ## [Redis 命令](http://redis.io/commands#)
 ## [REST](https://docs.microsoft.com/rest/api/redis/)
+
+# 资源
 ## [Redis 缓存示例](cache-redis-samples.md)
-
-#资源
-##[定价](https://azure.microsoft.com/pricing/details/cache/)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+## [定价](https://azure.microsoft.com/pricing/details/cache/)
 

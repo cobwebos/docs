@@ -6,18 +6,18 @@ keywords: "基于设备的条件访问, 设备注册, 启用设备注册, 设备
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fd2076f22c6048fda83d6da3b069e2805afb453f
+ms.sourcegitcommit: fbabf6f2e1e588ba509c4da84ab1700b1b5d4f87
+ms.openlocfilehash: ad9f9a8c5b370ffa916b9089ef3ce523fe0266c7
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -48,7 +48,7 @@ ms.openlocfilehash: fd2076f22c6048fda83d6da3b069e2805afb453f
 ### <a name="device-is-not-registered"></a>未注册设备
 如果未在 Azure AD 中注册设备，并且应用程序使用基于设备的策略进行保护，可能会看到页面上显示以下错误消息之一：
 
-![针对未注册的设备的“无法从此处访问”消息](./media/active-directory-conditional-access-device-remediation/01.png "Scenario")
+![针对未注册的设备的“无法从此处访问”消息](./media/active-directory-conditional-access-device-remediation/01.png "方案")
 
 如果设备已通过域加入组织的 Active Directory，请尝试以下操作：
 
@@ -122,16 +122,11 @@ ms.openlocfilehash: fd2076f22c6048fda83d6da3b069e2805afb453f
 
 你将看到如下所示的错误页面：
 
-![针对不支持的浏览器的“无法从此处访问”消息](./media/active-directory-conditional-access-device-remediation/02.png "Scenario")
+![针对不支持的浏览器的“无法从此处访问”消息](./media/active-directory-conditional-access-device-remediation/02.png "方案")
 
 唯一的修复方法是在设备平台上使用应用程序支持的浏览器。
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Active Directory 条件访问](active-directory-conditional-access.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

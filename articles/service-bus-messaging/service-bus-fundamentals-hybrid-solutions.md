@@ -1,22 +1,23 @@
 ---
-title: "Azure 服务总线 | Microsoft Docs"
+title: "Azure 服务总线基础概述 | Microsoft 文档"
 description: "介绍如何使用服务总线将 Azure 应用程序连接到其他软件。"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 12654cdd-82ab-4b95-b56f-08a5a8bbc6f9
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/31/2016
+ms.date: 03/08/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c8d8549db680b0189fa94064b930d4f91ff2472b
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 4d7523c2bd865039cc989b3d6a288f870288b102
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: c8d8549db680b0189fa94064b930d4f91ff2472b
 
 **图 1：服务总线为通过云连接应用程序提供多租户服务。**
 
-在命名空间内，你可以使用四种不同通信机制的一个或多个实例，每种机制使用不同方式连接应用程序。 选项有：
+在命名空间内，您可以使用三种不同通信机制的一个或多个实例，每种机制使用不同方式连接应用程序。 选项有：
 
 * *队列*，允许单向通信。 每个队列均充当一个中介（有时称为 *代理*），可存储发送的消息，直到它们被接收为止。 每条消息由单个接收方接收。
 * 主题，使用订阅提供单向通信 — 单个主题可有多个订阅。 主题与队列一样可充当中转站，但每个订阅可以选择使用筛选器接收仅符合特定条件的消息。
@@ -40,7 +41,7 @@ ms.openlocfilehash: c8d8549db680b0189fa94064b930d4f91ff2472b
 
 当您创建队列、主题或中继时，请对其进行命名。 结合您对命名空间的任何命名，此名称可创建对象的唯一标识符。 应用程序可将此名称提供给服务总线，然后使用队列、主题或中继相互通信。 
 
-若要在中继场景中使用任意这些对象，Windows 应用程序可使用 Windows Communication Foundation (WCF)。 对于队列和主题，Windows 应用程序可使用服务总线定义的消息传送 API。 为了更轻松地通过非 Windows 应用程序使用这些对象，Microsoft 提供了 Java、Node.js 和其他语言的 SDK。 此外，也可以使用 REST API 通过 HTTP 访问队列和主题。 
+若要在中继场景中使用任意这些对象，Windows 应用程序可使用 Windows Communication Foundation (WCF)。 对于队列和主题，Windows 应用程序可使用服务总线定义的消息传送 API。 为了更轻松地通过非 Windows 应用程序使用这些对象，Microsoft 提供了 Java、Node.js 和其他语言的 SDK。 此外，也可以使用 [REST API](/rest/api/servicebus/) 通过 HTTP 访问队列和主题。 
 
 即使服务总线本身在云（即 Microsoft 的 Azure 数据中心）中运行，使用它的应用程序也能随处运行，了解这一点很重要。 您可以使用服务总线连接在 Azure 上运行的应用程序或在您自己的数据中心内运行的应用程序。 您也可以使用服务总线通过本地应用程序或通过平板电脑和手机来连接在 Azure 或其他云平台上运行的应用程序。 甚至可以将家用电器、传感器和其他设备连接到中央应用程序或其他应用程序。 服务总线是云中的通信机制，几乎可从任何位置对其进行访问。 使用服务总线的方式取决于应用程序需要执行的操作。
 
@@ -53,19 +54,19 @@ ms.openlocfilehash: c8d8549db680b0189fa94064b930d4f91ff2472b
 
 过程很简单：发送方将消息发送至服务总线队列，接收方在随后的某个时间内接收该消息。 一个队列可能只有一个接收方，如图 2 所示。 否则多个应用程序可从同一个队列读取。 在后一种情况下，每条消息通常仅由一个接收方读取。 对于多播服务，应改用主题。
 
-每条消息均由两部分组成：一组属性（每个都是键/值对）和二进制消息正文。 使用的方式取决于应用程序尝试执行的操作。 例如，发送近期销售消息的应用程序可能包含属性 Seller="Ava" 和 Amount=10000。 消息正文可能包含已签署的销售合同的扫描图像，如果不包含该合同，只需留空。
+每条消息均由两部分组成：一组属性（每个都是键/值对）和消息有效负载。 有效负载可为二进制值、文本甚至 XML。 使用的方式取决于应用程序尝试执行的操作。 例如，发送近期销售消息的应用程序可能包含属性 Seller="Ava" 和 Amount=10000。 消息正文可能包含已签署的销售合同的扫描图像，如果不包含该合同，只需留空。
 
-接收方可采用两种不同方式从服务总线队列中读取消息。 第一种方式称作 *ReceiveAndDelete*，即，从队列中移除消息并立即将其删除。 此操作很简单，但如果接收方在完成处理消息之前崩溃，则该消息将丢失。 因为消息已从队列中移除，所以接收方无法访问该消息。 
+接收方可采用两种不同方式从服务总线队列中读取消息。 第一种方式称作 *[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)*，即，从队列中移除消息并立即将其删除。 此操作很简单，但如果接收方在完成处理消息之前崩溃，则该消息将丢失。 因为消息已从队列中移除，所以接收方无法访问该消息。 
 
-第二种方式 *PeekLock*旨在帮助解决这个问题。 与 **ReceiveAndDelete** 类似，**PeekLock** 可从队列中移除消息。 但是，它不会删除该消息。 相反，它会锁定该消息，使其对其他接收方不可见，然后等待以下三个事件之一：
+第二种方式 *[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)* 旨在帮助解决这个问题。 与 **ReceiveAndDelete** 类似，**PeekLock** 可从队列中移除消息。 但是，它不会删除该消息。 相反，它会锁定该消息，使其对其他接收方不可见，然后等待以下三个事件之一：
 
-* 如果接收方成功处理了该消息，将调用 **Complete**，并且队列将删除该消息。 
-* 如果接收方判定它无法成功处理该消息，将调用 **Abandon**。 队列即会解除对该消息的锁定，使其可供其他接收方使用。
+* 如果接收方成功处理了该消息，将调用 [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)，并且队列将删除该消息。 
+* 如果接收方判定它无法成功处理该消息，将调用 [Abandon()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon)。 队列即会解除对该消息的锁定，使其可供其他接收方使用。
 * 如果接收方在可配置时间段（默认为 60 秒）内没有调用这两个命令，队列将假定接收方失败。 在这种情况下，队列的行为就像接收方已调用 **Abandon**一样，即，使消息可供其他接收方使用。
 
-请注意此处可能发生的情况：同一条消息可能发送两次，可能将其发送给两个不同的接收方。 使用服务总线队列的应用程序必须为这种情况做好准备。 为了更轻松地进行重复检测，每条消息都具有一个唯一的 **MessageID** 属性，无论从队列中读取消息多少次，该属性在默认情况下始终保持不变。 
+请注意此处可能发生的情况：同一条消息可能发送两次，可能将其发送给两个不同的接收方。 使用服务总线队列的应用程序必须为这种情况做好准备。 为了更轻松地进行重复检测，每条消息都具有一个唯一的 [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) 属性，无论从队列中读取消息多少次，该属性在默认情况下始终保持不变。 
 
-队列在很多情况下都非常有用。 即使两个应用程序没有同时运行，队列也可使这两个应用程序之间相互通信，这对于批处理和移动应用程序尤为方便。 当所发送的消息传播给多个接收方时，具有这些接收方的队列还提供自动负载平衡。
+队列在很多情况下都非常有用。 即使两个应用程序没有同时运行，队列也可使这两个应用程序之间相互通信，这对于批处理和移动应用程序尤为方便。 当所发送的消息传播给多个接收方时，具有这些接收方的队列还提供自动负载均衡。
 
 ## <a name="topics"></a>主题
 队列虽然在一些情况下有用，但并非总是正确的解决方案。 有时，服务总线主题更好。 图 3 说明了这一点。
@@ -80,7 +81,7 @@ ms.openlocfilehash: c8d8549db680b0189fa94064b930d4f91ff2472b
 * 订户 2 接收包含属性 Seller="Ruby" 和/或包含的 Amount 属性值大于 100,000 的消息。 Ruby 可能是销售经理，因此她希望查看她自己的销售和其他人所做的所有大单销售。
 * 订户 3 将其筛选器设置为 *True*，这意味着它将接收所有消息。 例如，此应用程序可能负责维护审核跟踪，因此它需要查看所有消息。
 
-与队列一样，某主题的订户可使用 **ReceiveAndDelete** 或 **PeekLock** 读取消息。 不过与队列不同的是，发送至主题的单个消息可由多个订阅接收。 此方法通常称作发布和订阅（或 pub/sub），在当多个应用程序对相同消息感兴趣时非常有用。 通过定义适当的筛选器，每位订户可以只访问需要查看的消息流部分。
+与队列一样，某主题的订户可使用 [ReceiveAndDelete 或 PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) 读取消息。 不过与队列不同的是，发送至主题的单个消息可由多个订阅接收。 此方法通常称作发布和订阅（或 pub/sub），在当多个应用程序对相同消息感兴趣时非常有用。 通过定义适当的筛选器，每位订户可以只访问需要查看的消息流部分。
 
 ## <a name="relays"></a>中继
 队列和主题均通过代理提供单向异步通信。 流量只按一个方向流动，发送方和接收方之间没有直接连接。 但是，如果您不希望这样怎么办？ 假设你的应用程序需要同时发送和接收消息，或者可能你希望应用程序之间进行直接链接，而不需要使用代理存储消息。 为解决此类情况，服务总线提供了 *中继*，如图 4 所示。
@@ -116,9 +117,4 @@ ms.openlocfilehash: c8d8549db680b0189fa94064b930d4f91ff2472b
 [2]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_02_queues.png
 [3]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [4]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_04_relay.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

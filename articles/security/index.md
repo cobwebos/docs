@@ -1,13 +1,30 @@
 ---
+title: "Azure 安全文档 - 教程 | Microsoft 文档"
+description: "了解如何根据服务部署以及云中数据的要求，在 Azure 服务中自定义安全选项。"
+services: security
+author: carolz
+manager: carolz
 layout: LandingPage
----
-# Security Documentation
+ms.assetid: 
+ms.service: security
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 92b37ea86e4744a46efd81e4731c7949413011e3
+ms.openlocfilehash: f85d46d513dc4600c09112e1a52e207681da6f38
+ms.lasthandoff: 02/09/2017
 
-Azure’s infrastructure is designed from the facility to applications for hosting millions of customers simultaneously, and it provides a trustworthy foundation upon which businesses can meet their security needs. In addition, Azure provides you with a wide array of configurable security options and the ability to control them so that you can customize security to meet the unique requirements of your deployments.
+---
+# <a name="security-documentation"></a>安全文档
+
+了解如何使用 Azure 安全性来保护云中的服务和数据。 教程和其他文档可帮助你根据部署要求，在 Azure 服务中自定义安全选项。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/security/azure-security-services-technology">
+        <a href="/azure/security/azure-security-services-technologies">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -17,7 +34,7 @@ Azure’s infrastructure is designed from the facility to applications for hosti
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Security</h3>
+                        <h3>了解 Azure 安全性</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +52,7 @@ Azure’s infrastructure is designed from the facility to applications for hosti
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Security</h3>
+                        <h3>Azure 安全入门</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +70,7 @@ Azure’s infrastructure is designed from the facility to applications for hosti
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Network Security</h3>
+                        <h3>网络安全入门</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +88,7 @@ Azure’s infrastructure is designed from the facility to applications for hosti
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Storage Security</h3>
+                        <h3>存储安全入门</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +106,7 @@ Azure’s infrastructure is designed from the facility to applications for hosti
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Virtual Machines Security</h3>
+                        <h3>虚拟机安全入门</h3>
                     </div>
                 </div>
             </div>
@@ -100,11 +117,5 @@ Azure’s infrastructure is designed from the facility to applications for hosti
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/security.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Security Documentation
-        </div>
-    </a>
-</div>
+
+

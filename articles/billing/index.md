@@ -1,13 +1,30 @@
 ---
+title: "Azure 计费文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解 Azure 计费方式，以及如何管理和监视使用量与费用。 教程、常见问题解答、API 参考和其他文档。"
+services: billing
+author: carolz
+manager: carolz
 layout: LandingPage
----
-# Azure Billing Documentation
+ms.assetid: 
+ms.service: billing
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 4a6b1a9e581904f7f7de2a6592dfb163ab2ec45e
+ms.openlocfilehash: 2284db5eaeba0bad709f7e2181ec357f58201d1e
+ms.lasthandoff: 02/09/2017
 
-Customers and partners require the ability to accurately predict and manage their Azure costs. As they move from a Capex to an Opex model, they also need the ability to do showback vs. chargeback analysis, as well as provide mode fidelity in estimation and billing, especially for large cloud deployments.
+---
+# <a name="azure-billing-documentation"></a>Azure 计费文档
+
+了解 Azure 计费方式，以及如何监视使用量与费用。 教程、常见问题解答、API 参考和其他文档介绍了如何管理帐户。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/billing-usage-rate-card-overview">
+        <a href="/azure/billing/billing-getting-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -17,7 +34,7 @@ Customers and partners require the ability to accurately predict and manage thei
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Billing</h3>
+                        <h3>了解 Azure 计费</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +42,7 @@ Customers and partners require the ability to accurately predict and manage thei
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/free/">
+        <a href="https://azure.microsoft.com/free">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +52,7 @@ Customers and partners require the ability to accurately predict and manage thei
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a free account</h3>
+                        <h3>创建免费帐户</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +70,7 @@ Customers and partners require the ability to accurately predict and manage thei
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Download invoice and usage</h3>
+                        <h3>下载发票和使用情况</h3>
                     </div>
                 </div>
             </div>
@@ -64,18 +81,35 @@ Customers and partners require the ability to accurately predict and manage thei
 
 ---
 
-## Reference
-
-### REST
-[Billing REST API Reference](https://msdn.microsoft.com/en-us/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
-
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/billing.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Billing Documentation
+<h2>参考</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>其他</h3>
+                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-overview">API 概述</a></p>
+                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudcruiser">合作伙伴解决方案：Cloud Cruiser</a></p>
+                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudyn">合作伙伴解决方案：Cloudyn</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+

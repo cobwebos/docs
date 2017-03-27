@@ -11,11 +11,12 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/08/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f85c3a0d3bb9fb61802ba3ce070ead2e650a29cc
+ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
+ms.openlocfilehash: 88d5148806e58d61b7b64327e07809eea5126211
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -28,16 +29,16 @@ ms.openlocfilehash: f85c3a0d3bb9fb61802ba3ce070ead2e650a29cc
 > 
 > 
 
-本文介绍如何使用 [Azure 搜索 .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)查询索引。
+本文介绍如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)查询索引。
 
 开始本演练前，应已[创建 Azure 搜索索引](search-what-is-an-index.md)并[填充数据](search-what-is-data-import.md)。
 
 注意，本文中的所有示例代码均用 C# 编写。 可以在 [GitHub](http://aka.ms/search-dotnet-howto)上找到完整的源代码。
 
-## <a name="i-identify-your-azure-search-services-query-apikey"></a>I. 标识 Azure 搜索服务的查询 API 密钥
+## <a name="identify-your-azure-search-services-query-api-key"></a>标识 Azure 搜索服务的查询 API 密钥
 创建好 Azure 搜索索引后，即可使用 .NET SDK 发出查询。 首先，需要获取为已预配的搜索服务生成的其中一个查询 API 密钥。 每次向服务发出请求时，NET SDK 都会发送这个 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-1. 若要查找服务的 API 密钥，必须登录到 [Azure 门户](https://portal.azure.com/)
+1. 若要查找服务的 API 密钥，可登录到 [Azure 门户](https://portal.azure.com/)
 2. 转到 Azure 搜索服务的边栏选项卡
 3. 单击“密钥”图标
 
@@ -48,7 +49,7 @@ ms.openlocfilehash: f85c3a0d3bb9fb61802ba3ce070ead2e650a29cc
 
 可以使用其中一个查询密钥来查询索引。 查询也可使用管理密钥，但最好在应用程序代码中使用查询密钥，因为这更符合 [最低特权原则](https://en.wikipedia.org/wiki/Principle_of_least_privilege)。
 
-## <a name="ii-create-an-instance-of-the-searchindexclient-class"></a>II. 创建 SearchIndexClient 类的实例
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>创建 SearchIndexClient 类的实例
 若要使用 Azure 搜索 .NET SDK 发出查询，需要创建 `SearchIndexClient` 类的实例。 此类具有几个构造函数。 需要将搜索服务名称、索引名称和 `SearchCredentials` 对象用作参数。 `SearchCredentials` 包装 API 密钥。
 
 下面的代码使用搜索服务名称值以及应用程序配置文件（`app.config`或 `web.config`）中存储的 API 密钥值为“hotels”索引创建新的 `SearchIndexClient`（该索引在[使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md)中创建）：
@@ -62,7 +63,7 @@ SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels
 
 `SearchIndexClient` 具有 `Documents` 属性。 此属性提供查询 Azure 搜索索引所需的全部方法。
 
-## <a name="iii-query-your-index"></a>III. 查询索引
+## <a name="query-your-index"></a>查询索引
 使用 .NET SDK 进行搜索与对 `SearchIndexClient` 调用 `Documents.Search` 方法一样简单。 此方法采用几个参数，包括搜索文本以及可用于进一步优化查询的 `SearchParameters` 对象。
 
 #### <a name="types-of-queries"></a>查询类型
@@ -127,7 +128,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-## <a name="iv-handle-search-results"></a>IV. 处理搜索结果
+## <a name="handle-search-results"></a>处理搜索结果
 `Documents.Search` 方法返回包含查询结果的 `DocumentSearchResult` 对象。 上一节中的示例使用名为 `WriteDocuments` 的方法将搜索结果输出到控制台：
 
 ```csharp
@@ -162,14 +163,8 @@ Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
 Search the entire index for the term 'motel':
 
 ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
-
 ```
 
 上面的示例代码使用控制台来输出搜索结果。 同样需要在自己的应用程序中显示搜索结果。 请在 [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) 上查看此示例，查看如何在基于 ASP.NET MVC 的 Web 应用程序中呈现搜索结果。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

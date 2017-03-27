@@ -1,10 +1,10 @@
 ---
-title: "在 Azure App Service 中 Node.js Web 应用入门"
+title: "开发适用于 Azure 应用服务的 Node.js Web 应用 | Microsoft 文档"
 description: "学习如何将 Node.js 应用程序部署到 Azure App Service 中的 Web 应用。"
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: fb2b90c8-02b6-4700-929b-5de9a35d67cc
 ms.service: app-service-web
@@ -12,37 +12,49 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: get-started-article
-ms.date: 07/01/2016
+ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 3405fa7bf960ff1ba4b9f789e5e89f3f75fe96d4
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="get-started-with-nodejs-web-apps-in-azure-app-service"></a>在 Azure App Service 中 Node.js Web 应用入门
+# <a name="develop-nodejs-web-apps-for-azure-app-service"></a>开发适用于 Azure 应用服务的 Node.js Web 应用
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 本教程说明如何创建一个简单的 [Node.js] 应用程序，然后通过 cmd.exe 或 bash 等命令行环境将它部署到 [Azure 应用服务]。 本教程中的说明适用于任何能够运行 Node.js 的操作系统。
 
-> [!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
-> 
-> 
+[!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
 
 <a name="prereq"></a>
+
+## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
+
+可以使用以下 CLI 版本之一完成任务：
+
+- [Azure CLI 1.0](app-service-web-nodejs-get-started-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI
+- [Azure CLI 2.0](app-service-web-nodejs-get-started.md) - 适用于资源管理部署模型的下一代 CLI
 
 ## <a name="prerequisites"></a>先决条件
 * [Node.js]
 * [Bower]
 * [Yeoman]
 * [Git]
-* [Azure CLI]
+* [Azure CLI 2.0 预览版](/cli/azure/install-az-cli2)
 * 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户]，或者[激活 Visual Studio 订户权益]。
 
-## <a name="create-and-deploy-a-simple-nodejs-web-app"></a>创建并部署简单的 Node.js Web 应用
+> [!NOTE]
+> 无需 Azure 帐户即可 [试用应用服务](https://azure.microsoft.com/try/app-service/) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
+> 
+> 
+
+## <a name="create-and-configure-a-simple-nodejs-app-for-azure"></a>创建和配置简单的适用于 Azure 的 Node.js 应用
 1. 打开所选的命令行终端并安装 [适用于 Yeoman 的 Express 生成器]。
    
         npm install -g generator-express
+
 2. `CD` 进入工作目录，并使用下列语法生成 express 应用：
    
         yo express
@@ -56,22 +68,13 @@ ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
     `? Select a css preprocessor to use (Sass Requires Ruby):` **无**  
     `? Select a database to use:` **无**  
     `? Select a build tool to use:` **Grunt**
+
 3. `CD` 进入新应用的根目录，并将它启动以确保它在开发环境中运行：
    
         npm start
    
     在浏览器中导航到 <http://localhost:3000>，确保可以看到 Express 主页。 确认应用正常运行后，请使用 `Ctrl-C` 将它停止。
-4. 更改为 ASM 模式并登录 Azure（需要 [Azure CLI](#prereq)）：
-   
-        azure config mode asm
-        azure login
-   
-    根据提示，在浏览器中继续使用具有 Azure 订阅的 Microsoft 帐户登录。
-5. 确保仍在应用的根目录中，然后使用下一个命令，以唯一的应用名称在 Azure 中创建应用服务应用资源。 例如，http://{appname}.azurewebsites.net
-   
-        azure site create --git {appname}
-   
-    根据提示选择要部署到的 Azure 区域。 如果你从未设置 Azure 订阅的 Git/FTP 部署凭据，则系统还会提示你创建凭据。
+
 6. 从应用程序根目录打开 ./config/config.js 文件，并将生产端口更改为 `process.env.port`；`config` 对象中的 `production` 属性应类似下面的示例：
    
         production: {
@@ -82,22 +85,73 @@ ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
             port: process.env.port,
         }
    
-    这样，你的 Node.js 应用便可以在 iisnode 侦听的默认端口上响应 Web 请求。
+    > [!NOTE] 
+    > 默认情况下，Azure 应用服务使用 `production` 环境变量 (`process.env.NODE_ENV="production"` 运行 Node.js 应用程序。
+    > 因此，Azure 中的 Node.js 应用可以使用此处的配置在 iisnode 侦听的默认端口上响应 Web 请求。
+    >
+    >
+
 7. 打开 ./package.json，添加 `engines` 属性，[指定所需的 Node.js 版本](#version)。
    
         "engines": {
-            "node": "6.6.0"
+            "node": "6.9.1"
         }, 
-8. 保存更改，然后使用 git 将应用部署到 Azure：
+
+8. 保存所做的更改，然后初始化应用程序根目录中的 Git 存储库并提交代码：
    
         git add .
+        git add -f config
         git commit -m "{your commit message}"
+
+## <a name="deploy-your-nodejs-app-to-azure"></a>将 Node.js 应用部署到 Azure
+
+1. 登录到 Azure（需 [Azure CLI 2.0 预览版](#prereq)）：
+   
+        az login
+   
+    根据提示，在浏览器中继续使用具有 Azure 订阅的 Microsoft 帐户登录。
+
+3. 设置应用服务的部署用户。 稍后将使用这些凭据部署代码。
+   
+        az appservice web deployment user set --user-name <username> --password <password>
+
+3. 创建新[资源组](../azure-resource-manager/resource-group-overview.md)。 对于本 node.js 教程，实际上并不需要知道什么是资源组。
+
+        az group create --location "<location>" --name my-nodejs-app-group
+
+    若要查看可为 `<location>` 使用的可能值，请使用 `az appservice list-locations` CLI 命令。
+
+3. 创建新的“免费”[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 对于本 node.js 教程，只需知道此计划中的 Web 应用不会产生费用。
+
+        az appservice plan create --name my-nodejs-appservice-plan --resource-group my-nodejs-app-group --sku FREE
+
+4. 在 `<app_name>` 中创建使用唯一名称的新 Web 应用。
+
+        az appservice web create --name <app_name> --resource-group my-nodejs-app-group --plan my-nodejs-appservice-plan
+
+5. 使用以下命令为新的 Web 应用配置本地 Git 部署：
+
+        az appservice web source-control config-local-git --name <app_name> --resource-group my-nodejs-app-group
+
+    将返回类似于下面的 JSON 输出，这表示已配置远程 Git 存储库：
+
+        {
+        "url": "https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git"
+        }
+
+6. 在 JSON 中添加该 URL 作为本地存储库（简称 `azure`）的 Git 远程地址。
+
+        git remote add azure https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git
+   
+7. 将示例代码部署到 `azure` Git 远程地址。 出现提示时，请使用前面配置的部署凭据。
+
         git push azure master
    
     Express 生成器已提供 .gitignore 文件，因此 `git push` 不会占用带宽来尝试上传 node_modules/ 目录。
+
 9. 最后，在浏览器中启动实时 Azure 应用：
    
-        azure site browse
+        az appservice web browse --name <app_name> --resource-group my-nodejs-app-group
    
     现在，应看到 Node.js Web 应用在 Azure App Service 中实时运行。
    
@@ -107,9 +161,9 @@ ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
 若要更新应用服务中运行的 Node.js Web 应用，只需和首次部署 Web 应用时一样运行 `git add`、`git commit` 和 `git push`。
 
 ## <a name="how-app-service-deploys-your-nodejs-app"></a>应用服务如何部署 Node.js 应用
-Azure App Service 使用 [iisnode] 运行 Node.js 应用。 Azure CLI 和 Kudu 引擎（Git 部署）合作，让你在通过命令行开发和部署 Node.js 应用时获得顺畅的体验。 
+Azure App Service 使用 [iisnode] 运行 Node.js 应用。 使用 Azure CLI 2.0 预览版和 Kudu 引擎（Git 部署），用户在通过命令行开发和部署 Node.js 应用时可以获得顺畅的体验。 
 
-* `azure site create --git` 可识别 server.js 或 app.js 的常见 Node.js 模式，并在根目录中创建 iisnode.yml。 你可以使用此文件来自定义 iisnode。
+* 可以在根目录中创建一个 iisnode.yml 文件，用于自定义 iisnode 属性。 所有可配置的设置都记录在[此处](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/iisnode.yml)。
 * 在 `git push azure master`中，Kudu 可自动完成以下部署任务：
   
   * 如果 package.json 位于存储库根目录中，请运行 `npm install --production`。
@@ -117,7 +171,7 @@ Azure App Service 使用 [iisnode] 运行 Node.js 应用。 Azure CLI 和 Kudu �
   * 自定义 Web.config 以让应用程序准备好使用 Node-Inspector 进行调试。
 
 ## <a name="use-a-nodejs-framework"></a>使用 Node.js 框架
-如果使用常用 Node.js 框架（例如 [Sails.js][SAILSJS] 或 [MEAN.js][MEANJS]）开发应用，则可将这些应用部署到应用服务。 流行的 Node.js 框架有其特定的行为模式，并且其包依赖性不断更新。 但是，应用服务提供 stdout 和 stderr 日志，方便确切了解应用中发生了什么并做出相应更改。 有关详细信息，请参阅[从 iisnode 获取 stdout 和 stderr 日志](#iisnodelog)。
+如果使用流行的 Node.js 框架（例如 [Sails.js][SAILSJS] 或 [MEAN.js][MEANJS]）来开发应用，则可将这些应用部署到应用服务。 流行的 Node.js 框架有其特定的行为模式，并且其包依赖性不断更新。 但是，应用服务提供 stdout 和 stderr 日志，方便确切了解应用中发生了什么并做出相应更改。 有关详细信息，请参阅[从 iisnode 获取 stdout 和 stderr 日志](#iisnodelog)。
 
 以下教程说明如何在应用服务中使用特定框架：
 
@@ -132,7 +186,7 @@ Azure App Service 使用 [iisnode] 运行 Node.js 应用。 Azure CLI 和 Kudu �
 例如：
 
     "engines": {
-        "node": "6.6.0"
+        "node": "6.9.1"
     }, 
 
 Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
@@ -140,6 +194,10 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
 * 首先，查看 iisnode.yml 以确认是否已指定 `nodeProcessCommandLine` 。 如果是，则使用它。
 * 接下来，查看 package.json 以确认是否已在 `engines` 对象中指定 `"node": "..."`。 如果是，则使用它。
 * 默认情况下会选择默认的 Node.js 版本。
+
+如需 Azure 应用服务中所有受支持的 Node.js/NPM 版本的已更新列表，请访问适合你的应用的以下 URL：
+
+    https://<app_name>.scm.azurewebsites.net/api/diagnostics/runtime
 
 > [!NOTE]
 > 建议显式定义所需的 Node.js 引擎。 默认的 Node.js 版本可以更改，并且可能会因为默认的 Node.js 版本不适合应用而在 Azure Web 应用中收到错误。
@@ -156,7 +214,7 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
 > 
 > 
 
-1. 打开 Azure CLI 提供的 iisnode.yml 文件。
+1. 打开 Azure CLI 2.0 预览版提供的 iisnode.yml 文件。
 2. 设置以下两个参数： 
    
         loggingEnabled: true
@@ -186,7 +244,7 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
    
     ![检查 iisnode 日志文件。][iislog-kudu-console-read]
 
-## <a name="debug-your-app-with-nodeinspector"></a>使用 Node-Inspector 调试应用
+## <a name="debug-your-app-with-node-inspector"></a>使用 Node-Inspector 调试应用
 如果使用 Node-Inspector 调试 Node.js 应用，可将它用于实时应用服务应用。 Node-Inspector 已预先安装在应用服务的 iisnode 安装中。 如果你通过 Git 部署，则从 Kudu 自动生成的 Web.config 已包含启用 Node-Inspector 所需的所有配置。
 
 若要启用 Node-Inspector，请遵循以下步骤：
@@ -220,8 +278,7 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
 
 <!-- URL List -->
 
-[Azure CLI]: ../xplat-cli-install.md
-[Web 应用]: ../app-service/app-service-value-prop-what-is.md
+[Azure 应用服务]: ../app-service/app-service-value-prop-what-is.md
 [激活 Visual Studio 订户权益]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Bower]: http://bower.io/
 [在 Azure App Service 中使用 Socket.IO 创建 Node.js 聊天应用程序]: ./web-sites-nodejs-chat-app-socketio.md
@@ -235,7 +292,7 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
 [Node.js]: http://nodejs.org
 [SAILSJS]: http://sailsjs.org/
 [注册免费试用帐户]: http://go.microsoft.com/fwlink/?LinkId=623901
-[Web 应用]: ./app-service-web-overview.md
+[web app]: ./app-service-web-overview.md
 [Yeoman]: http://yeoman.io/
 
 <!-- IMG List -->
@@ -244,9 +301,4 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
 [iislog-kudu-console-find]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-navigate.png
 [iislog-kudu-console-open]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
 [iislog-kudu-console-read]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

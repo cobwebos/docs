@@ -1,6 +1,7 @@
 # 概述
 ## [什么是 Azure 多重身份验证？](multi-factor-authentication.md)
 ## [工作原理](multi-factor-authentication-how-it-works.md)
+## [如何获取 Azure MFA](multi-factor-authentication-versions-plans.md)
 
 # 入门
 ## [选择部署位置](multi-factor-authentication-get-started.md)
@@ -14,17 +15,19 @@
 ### [创建身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)
 ### [配置设置](multi-factor-authentication-whats-next.md)
 ### [MFA 中的报告](multi-factor-authentication-manage-reports.md)
+### [使用现有网络策略服务器](multi-factor-authentication-nps-extension.md)
 ### 本地 Azure MFA
 #### [安装用户门户](multi-factor-authentication-get-started-portal.md)
 #### [高级 VPN 配置](multi-factor-authentication-advanced-vpn-configurations.md)
 #### [移动应用 Web 服务](multi-factor-authentication-get-started-server-webservice.md)
 #### [Windows 身份验证](multi-factor-authentication-get-started-server-windows.md)
+#### [升级 MFA 服务器](multi-factor-authentication-server-upgrade.md)
 #### [从 PhoneFactor 升级](multi-factor-authentication-get-started-server-upgrade.md)
 
 ## 管理用户
-### [分配许可证](multi-factor-authentication-get-started-assign-licenses.md)
 ### [启用或禁用 MFA](multi-factor-authentication-get-started-user-states.md)
 ### [用户和设备设置](multi-factor-authentication-manage-users-and-devices.md)
+### [MFA 用户指南](./end-user/multi-factor-authentication-end-user.md)
 
 ## 集成
 ### [联合身份验证服务](multi-factor-authentication-get-started-adfs.md)
@@ -38,14 +41,9 @@
 ### [IIS Web 应用](multi-factor-authentication-get-started-server-iis.md)
 ### [远程桌面网关](multi-factor-authentication-get-started-server-rdg.md)
 
-## 开发 
+## 开发
 ### [构建到自定义应用中 (SDK)](multi-factor-authentication-sdk.md)
 
 ## 故障排除
 ### [常见问题](multi-factor-authentication-faq.md)
 ### [提问](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

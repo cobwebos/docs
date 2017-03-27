@@ -13,27 +13,29 @@
 
 ## 管理
 ### [连接到数据源](power-bi-embedded-connect-datasource.md)
-### [嵌入带有 IFrame 的 Power BI 报表](power-bi-embedded-iframe.md)
+### [嵌入 Power BI 报表](power-bi-embedded-embed-report.md)
 ### [与报表交互](power-bi-embedded-interact-with-reports.md)
+### [从数据集创建新报表](power-bi-embedded-create-report-from-dataset.md)
+### [保存报表](power-bi-embedded-save-reports.md)
+### [在查看和编辑之间切换](power-bi-embedded-toggle-mode.md)
 
 ## 安全
 ### [身份验证和授权](power-bi-embedded-app-token-flow.md)
 ### [Power BI Embedded 的行级别安全性](power-bi-embedded-rls.md)
 
-# 引用
-## [PowerShell](/powershell/resourcemanager/)
-## [.NET](/dotnet/api/)
+# 参考
+## [PowerShell](/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded)
+## [.NET Azure Resource Manager](/dotnet/api/microsoft.azure.management.powerbiembedded)
 ## [.NET SDK 下载](https://www.nuget.org/profiles/powerbi)
-## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
-## [REST](/rest/api/powerbiembedded/)
+## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
+## [管理 REST API](/rest/api/powerbiembedded/)
+## [REST API](https://msdn.microsoft.com/library/azure/mt711507.aspx)
 
 
 # 资源
-## [示例](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [示例应用程序](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)
+## [JavaScript Git 存储库](https://github.com/Microsoft/PowerBI-JavaScript)
+## [Power BI C# Git 存储库](https://github.com/Microsoft/PowerBI-CSharp)
 ## [Power BI 社区](http://community.powerbi.com/t5/Developer/bd-p/Developer)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
-
-
-<!--HONumber=Nov16_HO2-->
-
-
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/powerbi)

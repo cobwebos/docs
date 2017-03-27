@@ -1,17 +1,31 @@
 ---
+title: "Azure 存储文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用云中的 Azure 存储 - Blob、表、队列、文件和虚拟机磁盘存储。 教程、API 参考和其他文档。"
+services: storage
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 4d6fd9344eaee31de4ee1e614ae558ce159c9245
-ms.openlocfilehash: 34ead7be5278478047f8c6e56c56dfb977ca1d7c
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 8c76eaa6681b10370fd4db3df88e0c50c46df44d
+ms.lasthandoff: 03/14/2017
 
 ---
-#<a name="storage-documentation"></a>存储文档
 
-Azure 存储是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。  它具有高度可伸缩、弹性和全球可访问性，可以自动根据流量对数据进行负载均衡。  Azure 存储提供以下四项服务来满足应用程序的需求：Blob 存储、表存储、队列存储和文件存储。
+# <a name="storage-documentation"></a>存储文档
+
+了解如何使用 Azure 存储 - 一种持久、高度可用、可缩放的云存储服务。 教程、API 参考和其他文档介绍了如何设置及管理 Blob、表、队列、文件和虚拟机磁盘存储。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/storage/storage-introduction/ ">
+        <a href="/azure/storage/storage-introduction">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,7 +61,7 @@ Azure 存储是依赖于持续性、可用性和可缩放性来满足客户需�
         </a>
     </li>
     <li>
-        <a href="/azure/storage/storage-getting-started-guide/ ">
+        <a href="/azure/storage/storage-getting-started-guide">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -85,39 +99,59 @@ Azure 存储是依赖于持续性、可用性和可缩放性来满足客户需�
 </ul>
 
 ---
+ 
+<h2>参考</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/storage">PowerShell</a></p>
+                        <p><a href="/cli/azure/storage">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.storage">.NET：Resource Manager</a></p>
+                        <p><a href="/dotnet/api/microsoft.windowsazure.storage.datamovement">.NET：数据移动</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt347887.aspx">.NET：Blob、队列、表和文件</a></p>
+                        <p><a href="/java/api/">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-node">Node.js</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p>
+                        <p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p>
+                        <p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">Blob、队列、表和文件</a></p>
+                        <p><a href="/rest/api/storagerp">资源提供程序</a></p>
+                        <p><a href="/rest/api/storageimportexport">导入/导出</a></p>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">存储数据 REST API</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-##<a name="reference"></a>参考
-
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell](/powershell/azureps-cmdlets-docs)
-
-###<a name="azure-cli"></a>Azure CLI 
-[有关在 Azure CLI 中使用存储的参考](/cli/azure/storage)
-
-###<a name="java"></a>Java 
-[Java 中的存储参考](/java/api/)
-
-###<a name="net"></a>.NET 
-[存储托管参考 API](https://msdn.microsoft.com/library/azure/mt347887) 
-
-###<a name="rest"></a>REST 
-[存储 REST API 参考](/rest/api/storageservices) 
-[存储资源提供程序 REST API 参考](/rest/api/storagerp)  
-
-
-
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storage.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载存储文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

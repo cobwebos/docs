@@ -1,5 +1,5 @@
 ---
-title: "查询 Azure SQL 数据仓库 (Visual Studio) | Microsoft Docs"
+title: "连接到 Azure SQL 数据仓库 - VSTS | Microsoft 文档"
 description: "使用 Visual Studio 查询 SQL 数据仓库。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,12 +15,12 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5e97fefdf3cc13f2fd3e060da901e90ef5ef9a29
+ms.sourcegitcommit: 77474214c6fafe7f591030d30f6a46c66fbc5c09
+ms.openlocfilehash: 71a56d0e99308d3f7f514283792a2155a05a7172
 
 
 ---
-# <a name="query-azure-sql-data-warehouse-visual-studio"></a>查询 Azure SQL 数据仓库 (Visual Studio)
+# <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure 机器学习](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -35,9 +35,9 @@ ms.openlocfilehash: 5e97fefdf3cc13f2fd3e060da901e90ef5ef9a29
 ## <a name="prerequisites"></a>先决条件
 要使用本教程，你需要：
 
-* 现有 SQL 数据仓库。 若要创建这样一个数据仓库，请参阅[创建 SQL 数据仓库][Create a SQL Data Warehouse]。
-* 适用于 Visual Studio 的 SSDT。 如果你具有 Visual Studio，则可以已具有此工具。 有关安装指说明和选项，请参阅[安装 Visual Studio 和 SSDT][Installing Visual Studio and SSDT]。
-* 完全限定的 SQL Server 名称。 若要查找此名称，请参阅[连接到 SQL 数据仓库][Connect to SQL Data Warehouse]。
+* 现有 SQL 数据仓库。 若要创建这样一个数据仓库，请参阅[创建 SQL 数据仓库][创建 SQL 数据仓库]。
+* 适用于 Visual Studio 的 SSDT。 如果你具有 Visual Studio，则可以已具有此工具。 有关安装指说明和选项，请参阅[安装 Visual Studio 和 SSDT][安装 Visual Studio 和 SSDT]。
+* 完全限定的 SQL Server 名称。 若要查找此名称，请参阅[连接到 SQL 数据仓库][连接到 SQL 数据仓库]。
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1.连接到 SQL 数据仓库
 1. 打开 Visual Studio 2013 或 2015。
@@ -79,9 +79,9 @@ ms.openlocfilehash: 5e97fefdf3cc13f2fd3e060da901e90ef5ef9a29
     ![查询结果][7]
 
 ## <a name="next-steps"></a>后续步骤
-既然你可以执行连接和查询，接下来请尝试[使用 PowerBI 可视化数据][visualizing the data with PowerBI]。
+既然你可以执行连接和查询，接下来请尝试[使用 PowerBI 可视化数据][使用 PowerBI 可视化数据]。
 
-若要为 Azure Active Directory 配置环境，请参阅 [SQL 数据仓库身份验证][Authenticate to SQL Data Warehouse]。
+若要为 Azure Active Directory 配置环境，请参阅 [SQL 数据仓库身份验证][SQL 数据仓库身份验证]。
 
 <!--Arcticles-->
 [连接到 SQL 数据仓库]: sql-data-warehouse-connect-overview.md
@@ -105,6 +105,6 @@ ms.openlocfilehash: 5e97fefdf3cc13f2fd3e060da901e90ef5ef9a29
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

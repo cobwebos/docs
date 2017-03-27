@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 安全中心进行安全运行状况监视 | Microsoft Docs"
+title: "在 Azure 安全中心进行安全监视 | Microsoft 文档"
 description: "本文介绍如何开始使用 Azure 安全中心的监视功能。"
 services: security-center
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2016
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
 
 
 ---
@@ -33,9 +33,9 @@ ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
 
 在“资源安全运行状况”磁贴中，可以监视资源的安全状态。 在下面的示例中，可以看到许多问题严重级别为“高”和“中”，需要引起注意。 启用的安全策略会影响受监视控件的类型。
 
-![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-new4.png)
+![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-new4-2017.png)
 
-如果安全中心确定需要解决的漏洞（例如虚拟机缺少安全更新，或者子网没有[网络安全组](../virtual-network/virtual-networks-nsg.md)），会将其列在此处。
+如果安全中心确定需要解决的漏洞（例如虚拟机缺少安全更新，或者子网没有[网络安全组](/virtual-network/virtual-networks-nsg.md)），会将其列在此处。
 
 ### <a name="monitor-virtual-machines"></a>监视虚拟机
 在“资源安全运行状况”磁贴中单击“虚拟机”时，“虚拟机”边栏选项卡随即打开，显示有关载入的更多详细信息、预防步骤以及安全中心监视的所有虚拟机的列表，如以下屏幕截图所示。
@@ -60,8 +60,8 @@ ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
 
 > [!NOTE]
 > “网络拓扑”列表的“网络运行状况”边栏选项卡中仅显示至少具有一个公共终结点的虚拟机。
-> 
-> 
+>
+>
 
 每个建议都有一组操作，单击即可执行。 例如，如果单击“缺少的系统更新”，则“缺少的系统更新”边栏选项卡随即打开。 其中会列出缺少修补程序的虚拟机，以及所缺少更新的严重级别，如以下屏幕截图所示。
 
@@ -87,8 +87,8 @@ ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
 
 > [!NOTE]
 > 此处提供的安全建议与“建议”边栏选项卡中的相同。 请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)，详细了解如何应用建议。 这不仅适用于虚拟机，还适用于“资源运行状况”磁贴中提供的所有资源。
-> 
-> 
+>
+>
 
 #### <a name="virtual-machines-section"></a>虚拟机部分
 通过虚拟机部分可概览所有虚拟机和建议。 每一列代表一组建议，如以下屏幕截图所示：
@@ -162,22 +162,23 @@ ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
 * 橙色：优先级中，应尽快处理
 * 绿色（最后一条）：运行状况正常
 
-在此拓扑视图中，第一层级包括[虚拟网络](../virtual-network/virtual-networks-overview.md)、[虚拟网络网关](../vpn-gateway/vpn-gateway-site-to-site-create.md)和[虚拟网络（经典）](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 第二层级包括子网，第三层级包括属于这些子网的虚拟机。 右侧一栏为这些资源的网络安全组的当前状态，如以下示例所示：
+在此拓扑视图中，第一层级包括[虚拟网络](../virtual-network/virtual-networks-overview.md)、[虚拟网络网关](/vpn-gateway/vpn-gateway-site-to-site-create.md)和[虚拟网络（经典）](/virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 第二层级包括子网，第三层级包括属于这些子网的虚拟机。 右侧一栏为这些资源的网络安全组的当前状态，如以下示例所示：
 
 ![“网络拓扑”部分中网络安全组的状态](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 
 此边栏选项卡底部为对此虚拟机的建议，与前述内容类似。 单击某个建议即可了解其详细信息或应用所需的安全控制或配置。
 
 ### <a name="monitor-data"></a>监视数据
-单击“资源安全运行状况”磁贴中的“SQL”即可打开“SQL”边栏选项卡，其中包含对各种问题（例如：正在进行审核，透明数据加密未启用）的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。
 
-![SQL 资源运行状况](./media/security-center-monitoring/security-center-monitoring-fig13-ga.png)
+在“资源安全运行状况”磁贴中单击“SQL 和数据”时，“数据资源”边栏选项卡将会打开，其中显示了有关 SQL 和存储的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读 [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md)（在 Azure 安全中心为 Azure 存储帐户启用加密）。
 
-可以单击任何建议，并获取有关进一步操作的更多详细信息以解决问题。 以下示例对“数据库审核未启用”这个建议的问题进行了说明。
+![数据资源](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
 
-![有关 SQL 建议的详细信息](./media/security-center-monitoring/security-center-monitoring-fig14-ga.png)
+在“SQL 建议”下面，可以单击任一建议，获取有关进一步操作的更多详细信息来解决问题。 以下示例显示了“SQL 数据库的数据库审核与威胁检测”建议的补充说明。
 
-“对 SQL 数据库启用审核”边栏选项卡包含以下信息： 
+![有关 SQL 建议的详细信息](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
+
+“对 SQL 数据库启用审核与威胁检测”边栏选项卡包含以下信息：
 
 * SQL 数据库列表
 * 所在的服务器
@@ -192,7 +193,8 @@ ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
 若要启用审核，请在“审核”选项下选择“启用”。
 
 ### <a name="monitor-applications"></a>监视应用程序
-如果 Azure 工作负荷中的应用程序位于[（通过 Azure Resource Manager 创建的）虚拟机](../resource-manager-deployment-model.md)中，且后者使用公开的 Web 端口（TCP 端口 80 和 443），安全中心可以监视这些端口，确定潜在的安全问题并提供补救步骤方面的建议。 单击“应用程序”磁贴即可打开“应用程序”边栏选项卡，在“预防步骤”部分包含一系列建议。 此外还会根据主机/虚拟 IP 显示应用程序明细，如以下屏幕截图所示。
+
+如果 Azure 工作负荷中的应用程序位于[（通过 Azure Resource Manager 创建的）虚拟机](../azure-resource-manager/resource-manager-deployment-model.md)中，且后者使用公开的 Web 端口（TCP 端口 80 和 443），安全中心可以监视这些端口，确定潜在的安全问题并提供补救步骤方面的建议。 单击“应用程序”磁贴即可打开“应用程序”边栏选项卡，在“应用程序建议”部分包含一系列建议。 此外还会根据主机/虚拟 IP 显示应用程序明细，如以下屏幕截图所示。
 
 ![应用程序安全运行状况](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
 
@@ -215,7 +217,6 @@ ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

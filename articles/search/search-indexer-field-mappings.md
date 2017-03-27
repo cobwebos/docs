@@ -1,0 +1,175 @@
+---
+title: "Azure 搜索索引器中的字段映射"
+description: "针对字段名称和数据表示的差异配置帐户的 Azure 搜索索引器字段映射"
+services: search
+documentationcenter: 
+author: chaosrealm
+manager: pablocas
+editor: 
+ms.assetid: 0325a4de-0190-4dd5-a64d-4e56601d973b
+ms.service: search
+ms.devlang: rest-api
+ms.workload: search
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.date: 10/27/2016
+ms.author: eugenesh
+translationtype: Human Translation
+ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
+ms.openlocfilehash: 57e91f070d9a42882a56e708f12b1ce238ed9191
+
+---
+
+# <a name="field-mappings-in-azure-search-indexers"></a>Azure 搜索索引器中的字段映射
+使用 Azure 搜索索引器时，偶尔可能发现自己处于输入数据与目标索引架构不完全匹配的情形。 在这些情况下，可以使用**字段映射**将数据转换为所需形状。
+
+在某些情况下，字段映射会很有用：
+
+* 数据源具有字段 `_id`，但 Azure 搜索不允许字段名称以下划线开头。 字段映射允许“重命名”字段。
+* 例如，你想要使用相同的数据来源数据填充索引中的多个字段，因为想要将不同的分析器应用于这些字段。 字段映射让你可以“分叉”数据源字段。
+* 需要对数据进行 Base64 编码或解码。 字段映射支持多个**映射函数**，包括用于 Base64 编码和解码的函数。   
+
+## <a name="setting-up-field-mappings"></a>设置字段映射
+当使用[创建索引器](https://msdn.microsoft.com/library/azure/dn946899.aspx) API 创建新索引器时，可以添加字段映射。 使用[更新索引器](https://msdn.microsoft.com/library/azure/dn946892.aspx) API，可以管理编制索引索引器上的字段映射。
+
+字段映射由 3 部分组成：
+
+1. `sourceFieldName`，它表示数据源中的字段。 此属性是必需项。
+2. 可选的 `targetFieldName`，它表示搜索索引中的字段。 如果已省略，则使用数据源中相同的名称。
+3. 可选的 `mappingFunction`，它可以使用几个预定义函数中的一个来转换数据。 函数的完整列表[如下](#mappingFunctions)。
+
+字段映射将添加到索引器定义上的 `fieldMappings` 数组中。
+
+例如，下面介绍如何适应字段名称的差异：
+
+```JSON
+
+PUT https://[service name].search.windows.net/indexers/myindexer?api-version=[api-version]
+Content-Type: application/json
+api-key: [admin key]
+{
+    "dataSourceName" : "mydatasource",
+    "targetIndexName" : "myindex",
+    "fieldMappings" : [ { "sourceFieldName" : "_id", "targetFieldName" : "id" } ]
+}
+```
+
+索引器可以有多个字段映射。 例如，下面介绍如何“分叉”某个字段：
+
+```JSON
+
+"fieldMappings" : [
+    { "sourceFieldName" : "text", "targetFieldName" : "textStandardEnglishAnalyzer" },
+    { "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" },
+]
+```
+
+> [!NOTE]
+> Azure 搜索使用不区分大小写的比较，来解析字段映射中的字段和函数名称。 此操作很方便（大小写无需全都正确），但这表示数据源或索引无法具有仅大小写不同的字段。  
+>
+>
+
+<a name="mappingFunctions"></a>
+
+## <a name="field-mapping-functions"></a>字段映射函数
+当前支持以下函数：
+
+* [base64Encode](#base64EncodeFunction)
+* [base64Decode](#base64DecodeFunction)
+* [extractTokenAtPosition](#extractTokenAtPositionFunction)
+* [jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
+
+<a name="base64EncodeFunction"></a>
+
+### <a name="base64encode"></a>base64Encode
+执行输入字符串的 *URL 安全* Base64 编码。 假定输入采用 UTF-8 进行编码。
+
+#### <a name="sample-use-case"></a>示例用例
+Azure 搜索服务文档索引密钥中仅显示 URL 安全字符（例如，由于客户必须能够使用查找 API 处理文档）。 如果数据包含 URL 不安全的字符，但你希望使用它来填充搜索索引中的密钥字段，可使用此函数。   
+
+#### <a name="example"></a>示例
+```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "Path",
+    "targetFieldName" : "UrlSafePath",
+    "mappingFunction" : { "name" : "base64Encode" }
+  }]
+```
+
+<a name="base64DecodeFunction"></a>
+
+### <a name="base64decode"></a>base64Decode
+执行输入字符串的 Base64 解码。 输入假定为 *URL 安全* Base64 编码的字符串。
+
+#### <a name="sample-use-case"></a>示例用例
+Blob 自定义元数据值必须以 ASCII 进行编码。 可以使用 Base64 编码来表示 blob 自定义元数据中的任意 Unicode 字符串。 但是，为了使搜索有意义，可以在填充搜索索引时，使用此函数将编码的数据转换回“常规”字符串。  
+
+#### <a name="example"></a>示例
+```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "Base64EncodedMetadata",
+    "targetFieldName" : "SearchableMetadata",
+    "mappingFunction" : { "name" : "base64Decode" }
+  }]
+```
+
+<a name="extractTokenAtPositionFunction"></a>
+
+### <a name="extracttokenatposition"></a>extractTokenAtPosition
+使用指定的分隔符拆分字符串字段，并在所生成拆分的指定位置处选取令牌。
+
+例如，如果输入是 `Jane Doe`，`delimiter` 是 `" "`（空格）并且 `position` 是 0，则结果为 `Jane`；如果 `position` 是 1，则结果是 `Doe`。 如果位置引用的令牌不存在，将返回错误。
+
+#### <a name="sample-use-case"></a>示例用例
+数据源包含 `PersonName` 字段，并且想要为其编制索引作为两个单独的 `FirstName` 和 `LastName` 字段。 可以使用此函数来拆分将空格字符用作分隔符的输入。
+
+#### <a name="parameters"></a>parameters
+* `delimiter`：在拆分输入字符串时，用作分隔符的字符串。
+* `position`：在拆分输入字段串后要选取的位置，以零为底的整数。    
+
+#### <a name="example"></a>示例
+```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "PersonName",
+    "targetFieldName" : "FirstName",
+    "mappingFunction" : { "name" : "extractTokenAtPosition", "parameters" : { "delimiter" : " ", "position" : 0 } }
+  },
+  {
+    "sourceFieldName" : "PersonName",
+    "targetFieldName" : "LastName",
+    "mappingFunction" : { "name" : "extractTokenAtPosition", "parameters" : { "delimiter" : " ", "position" : 1 } }
+  }]
+```
+
+<a name="jsonArrayToStringCollectionFunction"></a>
+
+### <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
+将已格式化为 JSON 字符串数组的字符串转换为可用于填充索引中 `Collection(Edm.String)` 字段的字符串数组。
+
+例如，如果输入字符串是 `["red", "white", "blue"]`，类型 `Collection(Edm.String)` 的目标字段将由 `red`、`white` 和 `blue` 这三个值填充。 对于无法分析为 JSON 字符串数组的输入值，将返回错误。
+
+#### <a name="sample-use-case"></a>示例用例
+Azure SQL 数据库不具有能自然映射到 Azure 搜索中 `Collection(Edm.String)` 字段的内置数据类型。 若要填充字符串集合字段，请将源数据格式为 JSON 字符串数组，并使用此函数。
+
+#### <a name="example"></a>示例
+```JSON
+
+"fieldMappings" : [
+  { "sourceFieldName" : "tags", "mappingFunction" : { "name" : "jsonArrayToStringCollection" } }
+]
+```
+
+## <a name="help-us-make-azure-search-better"></a>帮助我们改进 Azure 搜索
+如果你有功能请求或改进建议，请通过我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)与我们联系。
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

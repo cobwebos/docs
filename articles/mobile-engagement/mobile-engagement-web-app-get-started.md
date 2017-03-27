@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 06/01/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 96f4fa714aa5a76f3e7e17c2741b17b626cfe010
+ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
+ms.openlocfilehash: ef75623a0b8c2a4d38f527a26cbc2cf070765302
 
 
 ---
@@ -40,7 +40,7 @@ ms.openlocfilehash: 96f4fa714aa5a76f3e7e17c2741b17b626cfe010
 ## <a name="setup-mobile-engagement-for-your-web-app"></a>为 Web 应用设置 Mobile Engagement
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
+## <a name="a-idconnecting-appaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
 本教程提供的“基本集成”是收集数据的最低要求。
 
 我们将使用 Visual Studio 创建一个基本 Web 应用来演示集成，但你也可以按照在 Visual Studio 外部创建任何 Web 应用程序的步骤。 
@@ -65,7 +65,7 @@ ms.openlocfilehash: 96f4fa714aa5a76f3e7e17c2741b17b626cfe010
    
     ![具有 js 文件的 Visual Studio][1]
 
-## <a name="enable-realtime-monitoring"></a>启用实时监视
+## <a name="enable-real-time-monitoring"></a>启用实时监视
 为了开始发送数据并确保用户处于活动状态，必须向 Mobile Engagement 后端发送至少一个活动。 在 Web 应用上下文中的活动是一个网页。 
 
 1. 在解决方案中创建名为 **home.html** 的新页面，并将其设置为 Web 应用的起始页。 
@@ -88,7 +88,7 @@ ms.openlocfilehash: 96f4fa714aa5a76f3e7e17c2741b17b626cfe010
         </body>
         </html>
 
-## <a name="connect-app-with-realtime-monitoring"></a>将应用与实时监视相连接
+## <a name="connect-app-with-real-time-monitoring"></a>将应用与实时监视相连接
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
   ![][2]

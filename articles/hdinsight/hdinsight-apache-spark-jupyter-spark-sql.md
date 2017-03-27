@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight Linux 上创建 Spark 群集并从 Jupyter 使用 Spark SQL 执行交互式分析 | Microsoft Docs"
+title: "Azure HDInsight 中的 Apache Spark 群集入门 | Microsoft 文档"
 description: "逐步说明如何在 HDInsight 群集中快速创建 Apache Spark 群集，然后从 Jupyter 笔记本使用 Spark SQL 来运行交互式查询。"
 services: hdinsight
 documentationcenter: 
@@ -9,142 +9,151 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 91f41e6a-d463-4eb4-83ef-7bbb1f4556cc
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/28/2016
+ms.date: 03/13/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 906d78b3177289dc5d2806ec9fbdb868a5bcb6fb
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f43a08a7096476fea79884163f89441e7e0c34cf
+ms.lasthandoff: 03/18/2017
 
 
 ---
-# <a name="get-started-create-apache-spark-cluster-on-hdinsight-linux-and-run-interactive-queries-using-spark-sql"></a>入门：在 HDInsight Linux 上创建 Apache Spark 群集并使用 Spark SQL 运行交互式查询
-了解如何在 HDInsight 中创建 Apache Spark 群集，然后使用 [Jupyter](https://jupyter.org) 笔记本在 Spark 群集上运行 Spark SQL 交互式查询。
+# <a name="get-started-create-apache-spark-cluster-in-azure-hdinsight-and-run-interactive-queries-using-spark-sql"></a>入门：在 Azure HDInsight 中创建 Apache Spark 群集并使用 Spark SQL 运行交互式查询
 
-   ![开始使用 HDInsight 中的 Apache Spark](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "Get started using Apache Spark in HDInsight tutorial. Steps illustrated: create a storage account; create a cluster; run Spark SQL statements")
+了解如何在 HDInsight 中创建 [Apache Spark](hdinsight-apache-spark-overview.md) 群集，然后使用 [Jupyter](https://jupyter.org) 笔记本在 Spark 群集上运行 Spark SQL 交互式查询。
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+   ![HDInsight 中的 Apache Spark 入门](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "HDInsight 中的 Apache Spark 入门教程。演示的步骤：创建存储帐户；创建群集；运行 Spark SQL 语句")
 
 ## <a name="prerequisites"></a>先决条件
-* **一个 Azure 订阅**。 在开始学习本教程之前，你必须有一个 Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* **安全外壳 (SSH) 客户端**：Linux、Unix 和 OS X 系统可通过 `ssh` 命令提供 SSH 客户端。 对于 Windows 系统，我们建议使用 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
-* **安全外壳 (SSH) 密钥（可选）**：可以使用密码或公钥来保护用于连接群集的 SSH 帐户。 使用密码可以快速开始，如果想要快速创建群集并运行一些测试作业，则应使用此选项。 使用密钥更安全，但是需要额外的设置。 创建生产群集时，可能需要使用此方法。 在本文中，我们将使用密码方法。 有关如何创建 SSH 密钥并将其用于 HDInsight 的说明，请参阅以下文章：
-  
-  * 在 Linux 计算机中 - [从 Linux、Unix 或 OS X 搭配使用 SSH 与基于 Linux 的 HDInsight (Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)
-  * 在 Windows 计算机中 - [在 Windows 中将 SSH 与基于 Linux 的 HDInsight (Hadoop) 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)。
+* **一个 Azure 订阅**。 在开始学习本教程之前，你必须有一个 Azure 订阅。 请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free)。
+
+## <a name="create-a-spark-cluster"></a>创建 Spark 群集
+本部分介绍如何使用 [Azure Resource Manager 模板](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/)在 HDInsight 中创建 Spark 群集。 有关其他群集创建方法，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。
+
+1. 单击下面的图像即可在 Azure 门户中打开该模板。         
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apache-spark-jupyter-spark-sql/deploy-to-azure.png" alt="Deploy to Azure"></a>
+
+2. 输入以下值：
+
+    ![使用 Azure Resource Manager 模板在 HDInsight 中创建 Spark 群集](./media/hdinsight-apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "使用 Azure Resource Manager 模板在 HDInsight 中创建 Spark 群集")
+
+    * **订阅**：为此群集选择你的 Azure 订阅。
+    * **资源组**：创建资源组，或选择现有的资源组。 资源组用于管理项目的 Azure 资源。
+    * **位置**：选择资源组的位置。  此位置还用于默认群集存储和 HDInsight 群集。
+    * **ClusterName**：为创建的 Hadoop 群集输入名称。
+    * **Spark 版本**：选择要安装在群集上的 Spark 版本。
+    * **群集登录名和密码**：默认登录名是 admin。
+    * **SSH 用户名和密码**。
+
+   记下这些值。  本教程后面会用到它们。
+
+3. 选择“我同意上述条款和条件”，选择“固定到仪表板”，然后单击“购买”。 此时会出现一个标题为“为模板部署提交部署”的新磁贴。 创建群集大约需要 20 分钟时间。
 
 > [!NOTE]
-> 本文通过 Azure Resource Manager 模板创建使用 [Azure 存储 Blob 作为群集存储](hdinsight-hadoop-use-blob-storage.md)的 Spark 群集。 除了使用 Azure 存储 Blob 作为默认存储外，还可以创建使用 [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) 作为附加存储的 Spark 群集。 有关说明，请参阅 [Create an HDInsight cluster with Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)（创建包含 Data Lake Store 的 HDInsight 群集）。
-> 
-> 
+> 本文创建的 Spark 群集使用 [Azure 存储 Blob 作为群集存储](hdinsight-hadoop-use-blob-storage.md)。 除了使用 Azure 存储 Blob 作为默认存储外，还可以创建使用 [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) 作为附加存储的 Spark 群集。 有关说明，请参阅 [Create an HDInsight cluster with Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)（创建包含 Data Lake Store 的 HDInsight 群集）。
+>
+>
 
-### <a name="access-control-requirements"></a>访问控制要求
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
+## <a name="run-a-spark-sql-query"></a>运行 Spark SQL 查询
 
-## <a name="create-spark-cluster"></a>创建 Spark 群集
-本节使用 Azure Resource Manager 模板创建 HDInsight 3.4 版群集（Spark 1.6.1 版）。 有关 HDInsight 版本及其 SLA 的信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。 有关其他群集创建方法，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。
-
-1. 单击下面的图像即可在 Azure 门户中打开模板。         
-   
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-spark-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
-   
-    该模板位于公共 Blob 容器 *https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-spark-cluster-in-hdinsight.json* 中。 
-2. 在“参数”边栏选项卡中，输入以下内容：
-   
-   * **ClusterName**：为将创建的 Hadoop 群集输入名称。
-   * **群集登录名和密码**：默认登录名是 admin。
-   * **SSH 用户名和密码**。
-     
-     请记下这些值。  本教程后面的步骤中将会用到它们。
-     
-     > [!NOTE]
-     > 使用 SSH 可通过命令行远程访问 HDInsight 群集。 在通过 SSH 连接群集时，将用到此处所用的用户名和密码。 此外，SSH 用户名必须唯一，因为它将在所有 HDInsight 群集节点上创建一个用户帐户。 下面是一些保留给群集上的服务使用的帐户名，不能将其用作 SSH 用户名：
-     > 
-     > root、hdiuser、storm、hbase、ubuntu、zookeeper、hdfs、yarn、mapred、hbase、hive、oozie、falcon、sqoop、admin、tez、hcat、hdinsight-zookeeper。
-     > 
-     > 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文章之一：
-     > 
-     > * [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-     > * [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
-     > 
-     > 
-
-3.单击“确定”保存参数。
-
-4.在“自定义部署”边栏选项卡中，单击“资源组”下拉框，然后单击“新建”以创建新资源组。 资源组是对群集、依赖存储帐户和其他链接资源进行分组的容器。
-
-5.单击“法律条款”，然后单击“创建”。
-
-6. 单击“创建”。 你会看到一个标题为“为模板部署提交部署”的新磁贴。 创建群集和 SQL 数据库大约需要 20 分钟时间。
-
-## <a name="run-spark-sql-queries-using-a-jupyter-notebook"></a>使用 Jupyter 笔记本运行 Spark SQL 查询
-在本部分中，你将使用 Jupyter 笔记本针对 Spark 群集运行 Spark SQL 查询。 HDInsight Spark 群集提供了可在 Jupyter 笔记本中使用的两个内核。 它们是：
+在本部分中，你将使用 Jupyter 笔记本针对 Spark 群集运行 Spark SQL 查询。 HDInsight Spark 群集提供了可在 Jupyter Notebook 中使用的三个内核。 其中包括：
 
 * **PySpark** （适用于以 Python 编写的应用程序）
+* **PySpark3**（适用于以 Python3 编写的应用程序）
 * **Spark** （适用于以 Scala 编写的应用程序）
 
-本文将使用 PySpark 内核。 在 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels) （包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）一文中，可以详细了解使用 PySpark 内核带来的好处。 但是，使用 PySpark 内核的主要好处包括：
+本文使用 **PySpark** 内核。 有关内核的详细信息，请参阅[将 Jupyter Notebook 内核与 HDInsight 中的 Apache Spark 群集配合使用](hdinsight-apache-spark-jupyter-notebook-kernels.md)。 使用 PySpark 内核的部分主要好处包括：
 
-* 不需要设置 Spark 和 Hive 的上下文。 系统会自动为你设置。
+* 自动设置 Spark 和 Hive 的上下文。
 * 可以使用 cell magic（例如 `%%sql`）直接运行 SQL 或 Hive 查询，而不需要任何前置的代码片段。
 * SQL 或 Hive 查询的输出将自动可视化。
 
 ### <a name="create-jupyter-notebook-with-pyspark-kernel"></a>使用 PySpark 内核创建 Jupyter 笔记本
-1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。   
-2. 在 Spark 群集边栏选项卡中单击“群集仪表板”，然后单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
-   
+
+1. 打开 [Azure 门户](https://portal.azure.com/)。
+
+2. 如果已选择将群集固定到仪表板，请单击仪表板中的群集磁贴，启动群集边栏选项卡。
+
+    如果未将群集固定到仪表板，则请单击左窗格中的“HDInsight 群集”，然后单击已创建的群集。
+
+3. 在“快速链接”中，单击“群集仪表板”，然后单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+
+   ![HDInsight 群集仪表板](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-azure-portal-cluster-dashboards.png "HDInsight 群集仪表板")
+
    > [!NOTE]
    > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
-   > 
+   >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   > 
-   > 
-3. 创建新的笔记本。 单击“新建”，然后单击“PySpark”。
-   
-    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "Create a new Jupyter notebook")
-4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
-   
-    ![提供笔记本的名称](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "Provide a name for the notebook")
-5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 为此，请将以下代码片段粘贴到某个单元中，然后按 **SHIFT + ENTER**。
-   
+   >
+   >
+3. 创建笔记本。 单击“新建”，然后单击“PySpark”。
+
+   ![创建 Jupyter Notebook](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "创建 Jupyter Notebook")
+
+   新笔记本随即已创建，并以 Untitled(Untitled.pynb) 名称打开。
+
+4. 在顶部单击笔记本名称，然后根据需要输入友好名称。
+
+    ![提供笔记本的名称](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "提供笔记本的名称")
+
+5. 将以下代码粘贴到空白单元格中，然后按 **SHIFT + ENTER** 执行这些代码。 这些代码会导入此方案所需的类型：
+
         from pyspark.sql.types import *
-   
-    每次在 Jupyter 中运行作业时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和笔记本标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。 作业完成后，实心圆将变成空心圆。
-   
-     ![Jupyter 笔记本作业的状态](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.jupyter.job.status.png "Status of a Jupyter notebook job")
-6. 将示例数据载入临时表。 在 HDInsight 中创建 Spark 群集时，系统会将示例数据文件 **hvac.csv** 复制到 **\HdiSamples\HdiSamples\SensorSampleData\hvac** 下的关联存储帐户。
-   
-    将以下代码示例粘贴到空白单元格中，然后按 **SHIFT + ENTER**。 此代码示例会将数据注册到名为 **hvac**的临时表中。
-   
+
+    使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。
+
+    ![Jupyter 笔记本作业的状态](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.jupyter.job.status.png "Jupyter 笔记本作业的状态")
+
+    每次在 Jupyter 中运行作业时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和 Notebook 标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。 作业完成后，实心圆将变成空心圆。
+
+6. 运行以下代码，将示例数据集注册为临时表 (**hvac**)。
+
         # Load the data
         hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
-   
+
         # Create the schema
         hvacSchema = StructType([StructField("date", StringType(), False),StructField("time", StringType(), False),StructField("targettemp", IntegerType(), False),StructField("actualtemp", IntegerType(), False),StructField("buildingID", StringType(), False)])
-   
+
         # Parse the data in hvacText
         hvac = hvacText.map(lambda s: s.split(",")).filter(lambda s: s[0] != "Date").map(lambda s:(str(s[0]), str(s[1]), int(s[2]), int(s[3]), str(s[6]) ))
-   
+
         # Create a data frame
         hvacdf = sqlContext.createDataFrame(hvac,hvacSchema)
-   
+
         # Register the data fram as a table to run queries against
         hvacdf.registerTempTable("hvac")
-7. 由于使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
-   
+
+    HDInsight 中的 Spark 群集在 **\HdiSamples\HdiSamples\SensorSampleData\hvac** 下面随附了一个示例数据文件 **hvac.csv**。
+
+7. 若要查询数据，请运行以下代码。
+
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
-8. 作业成功完成后，默认情况下会显示以下表格输出。
-   
-     ![查询结果的表输出](./media/hdinsight-apache-spark-jupyter-spark-sql/tabular.output.png "Table output of query result")
-   
+
+   由于使用的是 PySpark 内核，因此现在可直接在使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅[包含 Spark HDInsight 群集的 Jupyter Notebook 上可用的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
+
+   默认会显示以下表格输出。
+
+     ![查询结果的表输出](./media/hdinsight-apache-spark-jupyter-spark-sql/tabular.output.png "查询结果的表输出")
+
     你也可以在其他视觉效果中查看结果。 例如，同一输出的分区图看起来如下所示。
-   
-    ![查询结果分区图](./media/hdinsight-apache-spark-jupyter-spark-sql/area.output.png "Area graph of query result")
-9. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这将会关闭笔记本。
+
+    ![查询结果分区图](./media/hdinsight-apache-spark-jupyter-spark-sql/area.output.png "查询结果分区图")
+
+9. 运行完应用程序后，可以关闭 Notebook 以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。
+
+## <a name="troubleshoot"></a>故障排除
+
+以下是在使用 HDInsight 群集时可能会遇到的一些常见问题。
+
+### <a name="access-control-requirements"></a>访问控制要求
+[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="delete-the-cluster"></a>删除群集
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -185,9 +194,4 @@ ms.openlocfilehash: 906d78b3177289dc5d2806ec9fbdb868a5bcb6fb
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

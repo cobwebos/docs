@@ -3,8 +3,8 @@ title: "API 应用简介 | Microsoft Docs"
 description: "了解 Azure 应用服务如何帮助开发、托管和使用 RESTful API。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
-manager: wpickett
+author: alexkarcher-msft
+manager: erikre
 editor: 
 ms.assetid: 60049a16-8159-47aa-a34b-110be0d8dab6
 ms.service: app-service-api
@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/23/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eda73900ded4c587bacfa3b4d4e8465c1de5a5ed
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 62b1541414543fc947886374424dadee09759323
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="api-apps-overview"></a>API 应用概述
-Azure 应用服务中的 API 应用提供各种功能，用于轻松在云中和本地开发、托管和使用 API。 使用 API 应用可实现企业级安全性、简单的访问控制、混合连接、自动 SDK 生成以及与 [逻辑应用](../app-service-logic/app-service-logic-what-are-logic-apps.md)的无缝集成。
+Azure 应用服务中的 API 应用提供各种功能，用于轻松在云中和本地开发、托管和使用 API。 使用 API 应用可实现企业级安全性、简单的访问控制、混合连接、自动 SDK 生成以及与 [逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)的无缝集成。
 
 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md) 是完全托管的平台，适用于 Web、移动和集成方案。 API 应用是 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)提供的四种应用类型之一。
 
@@ -33,8 +34,8 @@ Azure 应用服务中的 API 应用提供各种功能，用于轻松在云中和
 * **保留现有的 API** - 无需更改现有 API 的任何代码就能使用 API 应用，只需将代码部署到 API 应用即可。 API 可以使用应用服务支持的任何语言或框架，包括 ASP.NET 和 C#、Java、PHP、Node.js 和 Python。
 * **易于使用** - 通过 [Swagger API 元数据](http://swagger.io/) 的集成支持，各种客户端都能轻松使用 API。  使用各种语言（包括 C#、Java 和 Javascript）为 API 自动生成客户端代码。 轻松配置 [CORS](app-service-api-cors-consume-javascript.md) 而无需更改代码。 有关详细信息，请参阅 [App Service API Apps metadata for API discovery and code generation](app-service-api-metadata.md)（用于 API 发现和代码生成的应用服务 API 应用元数据）和 [Consume an API app from JavaScript using CORS](app-service-api-cors-consume-javascript.md)（借助 CORS 从 JavaScript 使用 API 应用）。 
 * **简单的访问控制** - 可以保护 API 应用避免其遭到未经身份验证的访问，且无需更改代码。 其他服务或代表用户的客户端访问 API 时，内置的身份验证服务将提供保护。 支持的标识提供者包括 Azure Active Directory、Facebook、Twitter、Google 和 Microsoft 帐户。 客户端可以使用 Active Directory 身份验证库 (ADAL) 或移动应用 SDK。 有关详细信息，请参阅 [Authentication and authorization for API Apps in Azure App Service](app-service-api-authentication.md)（Azure 应用服务中 API 应用的身份验证和授权）。
-* **Visual Studio 集成** - Visual Studio 中的专用工具可以简化创建、部署、使用、调试和管理 API 应用的工作。 有关详细信息，请参阅 [Announcing the Azure SDK 2.8.1 for .NET](/blog/announcing-azure-sdk-2-8-1-for-net/)（宣告推出用于 .NET 的 Azure SDK 2.8.1）。
-* **与逻辑应用集成** - [应用服务逻辑应用](../app-service-logic/app-service-logic-what-are-logic-apps.md)可使用你创建的 API 应用。  有关详细信息，请参阅[将应用服务上托管的自定义 API 与逻辑应用结合使用](../app-service-logic/app-service-logic-custom-hosted-api.md)和[新架构版本 2015 年 8 月 1 日预览版](../app-service-logic/app-service-logic-schema-2015-08-01.md)。
+* **Visual Studio 集成** - Visual Studio 中的专用工具可以简化创建、部署、使用、调试和管理 API 应用的工作。 有关详细信息，请参阅 [Announcing the Azure SDK 2.8.1 for .NET](https://azure.microsoft.com/blog/announcing-azure-sdk-2-8-1-for-net/)（宣告推出用于 .NET 的 Azure SDK 2.8.1）。
+* **与逻辑应用集成** - [应用服务逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)可使用你创建的 API 应用。  有关详细信息，请参阅[将应用服务上托管的自定义 API 与逻辑应用结合使用](../logic-apps/logic-apps-custom-hosted-api.md)和[新架构版本 2015 年 8 月 1 日预览版](../logic-apps/logic-apps-schema-2015-08-01.md)。
 
 此外，API 应用可以利用 [Web 应用](../app-service-web/app-service-web-overview.md)和[移动应用](../app-service-mobile/app-service-mobile-value-prop.md)提供的功能。 反之亦然：如果使用某个 Web 应用或移动应用来托管 API，该应用可以利用 Swagger 元数据等 API 应用功能来生成客户端代码，以及使用 CORS 进行跨域浏览器访问。 这三个应用程序类型（API、Web、移动）之间的唯一差别在于 Azure 门户中使用的名称和图标。
 
@@ -58,10 +59,5 @@ API 管理与 API 应用的某些功能类似。  例如，两者都可以自动
 * [Java](app-service-api-java-api-app.md) 
 
 若要咨询有关 API 应用的问题，请在 [API 应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAPIApps)中发贴。 
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

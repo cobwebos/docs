@@ -3,7 +3,7 @@
    
     记下 SDK 路径，因为后面的步骤将要用到。 
    
-       ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
 3. 打开应用目录中的 **build.gradle** 文件。
    
     ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
@@ -18,6 +18,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

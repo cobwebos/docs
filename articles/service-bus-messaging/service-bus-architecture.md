@@ -1,37 +1,37 @@
 ---
-title: "服务总线体系结构 | Microsoft Docs"
+title: "Azure 服务总线消息处理体系结构概述 | Microsoft 文档"
 description: "介绍 Azure 服务总线的消息和中继处理体系结构。"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: baf94c2d-0e58-4d5d-a588-767f996ccf7f
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2016
+ms.date: 11/30/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c69783341eaed67ac29ab63d2127a4038bc0f6d
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: cd0e53955495752cd91323b9926f9494a70c5797
 
 
 ---
 # <a name="service-bus-architecture"></a>服务总线体系结构
-本文介绍 Azure 服务总线的消息和中继处理体系结构。
+本文介绍 Azure 服务总线的消息处理体系结构。
 
 ## <a name="service-bus-scale-units"></a>服务总线缩放单位
 服务总线按 *缩放单位*进行组织。 缩放单位是部署单位，包含运行服务所需的全部组件。 每个区域部署一个或多个服务总线缩放单位。
 
 一个服务总线命名空间映射到一个缩放单位。 缩放单位负责处理各种类型的服务总线实体：中继和中转消息传送实体（队列、主题、订阅）。 服务总线缩放单位由以下组件构成：
 
-* **一组网关节点。**  网关节点对传入请求进行身份验证并处理中继请求。 每个网关节点都有一个公共 IP 地址。
-* **一组消息代理节点。**  消息代理节点处理有关消息实体的请求。
-* **一个网关存储。**  网关存储保存此缩放单位中定义的每个实体的数据。 网关存储在 SQL Azure 数据库顶层实施。
-* **多个消息存储。**  消息存储可保留在此缩放单位中定义的所有队列、主题和订阅的消息。 它还包含所有订阅数据。 除非启用了 [分区消息实体](service-bus-partitioning.md) ，否则队列或主题将映射到一个消息存储。 订阅是存储在与其父主题相同的消息存储中。 除了服务总线 [高级消息传送](service-bus-premium-messaging.md)外，消息存储在 SQL Azure 数据库顶层实施。
+* **一组网关节点。** 网关节点对传入请求进行身份验证并处理中继请求。 每个网关节点都有一个公共 IP 地址。
+* **一组消息代理节点。** 消息代理节点处理有关消息实体的请求。
+* **一个网关存储。** 网关存储保存此缩放单位中定义的每个实体的数据。 网关存储在 SQL Azure 数据库顶层实施。
+* **多个消息存储。** 消息存储可保留在此缩放单位中定义的所有队列、主题和订阅的消息。 它还包含所有订阅数据。 除非启用了 [分区消息实体](service-bus-partitioning.md) ，否则队列或主题将映射到一个消息存储。 订阅是存储在与其父主题相同的消息存储中。 除了服务总线 [高级消息传送](service-bus-premium-messaging.md)外，消息存储在 SQL Azure 数据库顶层实施。
 
 ## <a name="containers"></a>容器
 将为每个消息实体分配特定的容器。 容器是一种逻辑构造，它刚好使用一个消息存储来存储此容器的所有相关数据。 将为每个容器分配一个消息代理节点。 通常，容器比消息代理节点要多。 因此，每个消息代理节点将加载多个容器。 消息代理节点的容器分配经过适当的组织，可以均衡加载所有消息代理节点。 如果加载模式发生更改（例如其中一个容器变得十分繁忙），或消息代理节点暂时不可用，则会在消息代理节点之间重新分配容器。
@@ -49,7 +49,7 @@ ms.openlocfilehash: 3c69783341eaed67ac29ab63d2127a4038bc0f6d
 ![处理传入 WCF 中继请求](./media/service-bus-architecture/IC690645.png)
 
 ## <a name="next-steps"></a>后续步骤
-在阅读有关服务总线体系结构的概述后，请访问以下链接：
+阅读服务总线体系结构的概述后，请参阅以下链接了解详细信息。
 
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
@@ -58,6 +58,6 @@ ms.openlocfilehash: 3c69783341eaed67ac29ab63d2127a4038bc0f6d
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

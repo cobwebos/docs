@@ -1,22 +1,23 @@
 ---
-title: "服务总线队列入门 | Microsoft Docs"
+title: "编写使用 Azure 服务总线队列的程序 | Microsoft Docs"
 description: "如何编写用于服务总线消息传送的 C# 控制台应用程序"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: jtaubensee
 manager: timlt
 editor: 
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/23/2016
+ms.date: 03/23/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: 83649bdad1d369cdfe4edf3c2bdaa67180db8668
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
 4. 编写一个控制台应用程序用于接收消息。
 
 ## <a name="prerequisites"></a>先决条件
-1. [Visual Studio 2013 或 Visual Studio 2015](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2015。
+1. [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2015。
 2. Azure 订阅。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
@@ -51,7 +52,8 @@ ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
 为了将消息发送到队列中，我们将使用 Visual Studio 编写一个 C# 控制台应用程序。
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
-1. 启动 Visual Studio 并创建新的控制台应用程序。
+
+- 启动 Visual Studio 并创建新的控制台应用程序。
 
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 1. 右键单击新创建的项目，然后选择“管理 NuGet 包” 。
@@ -62,12 +64,12 @@ ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
 ### <a name="write-some-code-to-send-a-message-to-the-queue"></a>编写一些代码以向队列发送消息
 1. 在 Program.cs 文件的顶部添加以下 using 语句。
    
-    ```
+    ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
 2. 将以下代码添加到 `Main` 方法，并将 **connectionString** 变量设置为创建命名空间时获取的连接字符串，以及将 **queueName** 设置为创建队列时使用的队列名称。
    
-    ```
+    ```csharp
     var connectionString = "<Your connection string>";
     var queueName = "<Your queue name>";
    
@@ -78,7 +80,7 @@ ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
    
     Program.cs 文件的内容如下所示。
    
-    ```
+    ```csharp
     using System;
     using Microsoft.ServiceBus.Messaging;
    
@@ -107,12 +109,12 @@ ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
 1. 创建新的控制台应用程序并添加对服务总线 NuGet 程序包的引用，类似于前面的发送应用程序。
 2. 在 Program.cs 文件顶部添加以下 `using` 语句。
    
-    ```
+    ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
 3. 将以下代码添加到 `Main` 方法，并将 **connectionString** 变量设置为创建命名空间时获取的连接字符串，以及将 **queueName** 设置为创建队列时使用的队列名称。
    
-    ```
+    ```csharp
     var connectionString = "";
     var queueName = "samplequeue";
    
@@ -129,7 +131,7 @@ ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
    
     Program.cs 文件的内容如下所示：
    
-    ```
+    ```csharp
     using System;
     using Microsoft.ServiceBus.Messaging;
    
@@ -162,21 +164,12 @@ ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
 祝贺你！ 你已创建队列、发送和接收消息。
 
 ## <a name="next-steps"></a>后续步骤
-查看 [GitHub 存储库](https://github.com/Azure-Samples/azure-servicebus-messaging-samples) 中的示例，了解 Azure 服务总线消息传送的一些更高级的功能。
+查看 [GitHub 存储库](https://github.com/Azure-Samples/azure-servicebus-messaging-samples)中的示例，了解 Azure 服务总线消息传送的一些更高级的功能。
 
 <!--Image references-->
 
 [nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
 [queue-message]: ./media/service-bus-dotnet-get-started-with-queues/queue-message.png
 [queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive.png
-
-
-<!--Reference style links - using these makes the source content way more readable than using inline links-->
-
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

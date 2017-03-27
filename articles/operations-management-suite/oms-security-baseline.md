@@ -8,15 +8,16 @@ manager: swadhwa
 editor: 
 ms.assetid: 17837c8b-3e79-47c0-9b83-a51c6ca44ca6
 ms.service: operations-management-suite
+ms.custom: oms-security
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2016
+ms.date: 12/05/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1c3e2cf86a33f9bbe6b34f4f52b82a078b91661f
+ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
+ms.openlocfilehash: f29b20ba11b030d98a7a5574f816ea132edc3f6d
 
 
 ---
@@ -75,7 +76,7 @@ Microsoft 及全球的产业和政府组织定义了一个代表高安全度服�
 > 
 
 ### <a name="accessing-computers-missing-baseline-assessment"></a>评估缺少基线评估的计算机
-OMS 支持 Windows Server 2008 R2 到 Windows Server 2012 R2 上的域成员基线配置文件。 Windows Server 2016 基线尚未完成，将在其发布时尽快添加。 通过 OMS 安全和审核基线评估扫描的所有其他操作系统显示在“缺少基线评估的计算机”部分下。
+OMS 支持 Windows Server 2008 R2 到 Windows Server 2012 R2 上的域成员和域控制器基线配置文件。 Windows Server 2016 基线尚未完成，将在其发布时尽快添加。 通过 OMS 安全和审核基线评估扫描的所有其他操作系统显示在“缺少基线评估的计算机”部分下。
 
 ## <a name="see-also"></a>另请参阅
 本文档介绍了有关 OMS 安全和审核基线评估。 若要了解有关 OMS 安全的详细信息，请参阅以下文章：
@@ -87,6 +88,6 @@ OMS 支持 Windows Server 2008 R2 到 Windows Server 2012 R2 上的域成员基�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

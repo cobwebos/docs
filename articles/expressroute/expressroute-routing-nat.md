@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
-ms.author: osamazia
+ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bd7537a81661bc175a770fdbd6388ba07ea912ae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5e3c65d9ada5c75e0ddef3b3778a79ca77aa07d8
 
 
 ---
@@ -101,7 +101,7 @@ Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等
 
 如果前缀数目超过此限制，将丢弃 BGP 会话。 我们只接受专用对等互连链路上的默认路由。 提供商必须从 Azure 公共和 Microsoft 对等互连路径中筛选出默认路由和专用 IP 地址 (RFC 1918)。 
 
-## <a name="transit-routing-and-crossregion-routing"></a>传输路由和跨区域路由
+## <a name="transit-routing-and-cross-region-routing"></a>传输路由和跨区域路由
 ExpressRoute 不能配置为传输路由器。 你必须依赖连接服务提供商的传输路由服务。
 
 ## <a name="advertising-default-routes"></a>播发默认路由
@@ -194,6 +194,6 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

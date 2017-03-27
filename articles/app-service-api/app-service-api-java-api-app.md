@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 12/22/2016
 ms.author: rachelap;robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b073958fd41fec05b473594b23b586d561e996f3
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
 
 
 ---
@@ -168,13 +168,11 @@ ms.openlocfilehash: b073958fd41fec05b473594b23b586d561e996f3
         package io.swagger.api.impl;
    
         import io.swagger.api.*;
-        import io.swagger.model.*;
+        
         import io.swagger.model.Contact;
         import java.util.*;
         import io.swagger.api.NotFoundException;
-        import java.io.InputStream;
-        import com.sun.jersey.core.header.FormDataContentDisposition;
-        import com.sun.jersey.multipart.FormDataParam;
+               
         import javax.ws.rs.core.Response;
         import javax.ws.rs.core.SecurityContext;
    
@@ -271,7 +269,7 @@ ms.openlocfilehash: b073958fd41fec05b473594b23b586d561e996f3
     ![在 Azure 中实时使用 Java 联系人 REST API][postman-calling-azure-contacts]
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了通过 Swagger.io 编辑器开始处理 Swagger JSON 文件，以及获得的一些 Java 基架代码。 在该编辑器中，可以进行简单的更改，并使用 Git 部署过程以 Java 编写正常运行的 API 应用。 下一篇教程说明如何[借助 CORS 从 JavaScript 客户端使用 API 应用][应用服务 API CORS]。 本系列教程的后续文章说明如何实现身份验证和授权。
+本文介绍了通过 Swagger.io 编辑器开始处理 Swagger JSON 文件，以及获得的一些 Java 基架代码。 在该编辑器中，可以进行简单的更改，并使用 Git 部署过程以 Java 编写正常运行的 API 应用。 下一篇教程说明如何[借助 CORS 从 JavaScript 客户端使用 API 应用][App Service API CORS]。 本系列教程的后续文章说明如何实现身份验证和授权。
 
 若要基于本示例生成应用，可以详细了解如何使用 [用于 Java 的存储 SDK] 来持久保存 JSON Blob。 或者，可以使用 [Document DB Java SDK] 将联系人数据保存到 Azure Document DB。 
 
@@ -282,16 +280,16 @@ ms.openlocfilehash: b073958fd41fec05b473594b23b586d561e996f3
 
 <!-- URL List -->
 
-[应用服务 API CORS]: app-service-api-cors-consume-javascript.md
+[App Service API CORS]: app-service-api-cors-consume-javascript.md
 [Azure 门户]: https://portal.azure.com/
 [Document DB Java SDK]: ../documentdb/documentdb-java-application.md
-[free trial]: https://azure.microsoft.com/pricing/free-trial/
+[免费试用版]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/
 [Azure Java 开发人员中心]: /develop/java/
 [Java 开发人员工具包 8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [Jax-RS]: https://jax-rs-spec.java.net/
 [Maven]: https://maven.apache.org/
-[免费试用版]: https://azure.microsoft.com/
+[Microsoft Azure]: https://azure.microsoft.com/
 [在线 Swagger 编辑器]: http://editor.swagger.io/
 [Postman]: https://www.getpostman.com/
 [用于 Java 的存储 SDK]: ../storage/storage-java-how-to-use-blob-storage.md
@@ -319,6 +317,6 @@ ms.openlocfilehash: b073958fd41fec05b473594b23b586d561e996f3
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

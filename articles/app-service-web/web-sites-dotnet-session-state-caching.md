@@ -4,7 +4,7 @@ description: "了解如何使用 Azure 缓存服务来支持 ASP.NET 会话状�
 services: app-service\web
 documentationcenter: .net
 author: Rick-Anderson
-manager: wpickett
+manager: erikre
 editor: none
 ms.assetid: 4f98d289-2698-464d-85cd-99ec40fad1f2
 ms.service: app-service-web
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 06/27/2016
 ms.author: riande
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ac0fde19d61a9c3a9f54b42982c7096434cb965
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: a682e51bfaed9056b170c3e9473180ca210557b9
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -86,10 +87,10 @@ ms.openlocfilehash: 7ac0fde19d61a9c3a9f54b42982c7096434cb965
        strValue = (string)objValue;    
 
 还可以使用 Redis Cache 在 Web 应用程序中缓存对象。 有关详细信息，请参阅 [15 分钟学会创建包含 Azure Redis 缓存的 MVC 影片应用](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/)。
-有关如何使用 ASP.NET 会话状态的详细信息，请参阅 [ASP.NET 会话状态概述][ASP.NET 会话状态概述]。
+有关如何使用 ASP.NET 会话状态的更多详细信息，请参阅 [ASP.NET 会话状态概述][ASP.NET Session State Overview]。
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -98,8 +99,8 @@ ms.openlocfilehash: 7ac0fde19d61a9c3a9f54b42982c7096434cb965
   
   *[Rick Anderson](https://twitter.com/RickAndMSFT) 撰写*
 
-[已安装最新的]: http://www.windowsazure.com/downloads/?sdk=net  
-[ASP.NET 会话状态概述]: http://msdn.microsoft.com/library/ms178581.aspx
+[installed the latest]: http://www.windowsazure.com/downloads/?sdk=net  
+[ASP.NET Session State Overview]: http://msdn.microsoft.com/library/ms178581.aspx
 
 [NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png
 [NewCacheDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CreateOptions.png
@@ -109,10 +110,5 @@ ms.openlocfilehash: 7ac0fde19d61a9c3a9f54b42982c7096434cb965
 [CacheConfig]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CacheConfig.png
 [EndpointURL]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_EndpointURL.png
 [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

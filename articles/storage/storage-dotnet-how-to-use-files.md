@@ -3,7 +3,7 @@ title: "在 Windows 上开始使用 Azure 文件存储 | Microsoft Docs"
 description: "使用 Azure 文件存储在云中存储文件数据和从 Azure 虚拟机 (VM) 或从运行 Windows 的本地应用程序装载你的云文件共享。"
 services: storage
 documentationcenter: .net
-author: mine-msft
+author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
 ms.assetid: 6a889ee1-1e60-46ec-a592-ae854f9fb8b6
@@ -12,18 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/18/2016
-ms.author: minet
+/ms.date: 3/8/2017
+ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: af7b1c3d302282920ce9b347a7686903d1c6fe03
+ms.sourcegitcommit: 4e81088857c0e9cacaf91342227ae63080fc90c5
+ms.openlocfilehash: 780066b1e71d967c64da0a1c1a284ffd5d1b7481
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="get-started-with-azure-file-storage-on-windows"></a>在 Windows 上开始使用 Azure 文件存储
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
+[!INCLUDE [storage-check-out-samples-dotnet](../../includes/storage-check-out-samples-dotnet.md)]
 
 [!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
 
@@ -38,7 +39,7 @@ ms.openlocfilehash: af7b1c3d302282920ce9b347a7686903d1c6fe03
 ## <a name="video-using-azure-file-storage-with-windows"></a>视频：通过 Windows 使用 Azure 文件存储
 下面是演示如何在 Windows 上创建和使用 Azure 文件共享的视频。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-File-Storage-with-Windows/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-File-Storage-with-Windows/player]
 > 
 > 
 
@@ -118,7 +119,7 @@ ms.openlocfilehash: af7b1c3d302282920ce9b347a7686903d1c6fe03
 也可以使用 Azure PowerShell 来创建和管理文件共享。
 
 ### <a name="install-the-powershell-cmdlets-for-azure-storage"></a>为 Azure 存储空间安装 PowerShell cmdlet
-若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 。
+若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
 
 > [!NOTE]
 > 建议你下载并安装最新的 Azure PowerShell 模块或升级到最新模块。
@@ -133,16 +134,16 @@ ms.openlocfilehash: af7b1c3d302282920ce9b347a7686903d1c6fe03
 请将下面示例中的 `storage-account-name` 和 `storage-account-key` 替换为你的存储帐户名称和密钥。
 
 ```powershell
-    # create a context for account and key
-    $ctx=New-AzureStorageContext storage-account-name storage-account-key
+# create a context for account and key
+$ctx=New-AzureStorageContext storage-account-name storage-account-key
 ```
 
 ### <a name="create-a-new-file-share"></a>创建新的文件共享
 接下来，创建名为 `logs`的新共享。
 
 ```powershell
-    # create a new share
-    $s = New-AzureStorageShare logs -Context $ctx
+# create a new share
+$s = New-AzureStorageShare logs -Context $ctx
 ```
 
 现在，你在文件存储中已有一个文件共享。 接下来，我们将添加目录和文件。
@@ -156,24 +157,24 @@ ms.openlocfilehash: af7b1c3d302282920ce9b347a7686903d1c6fe03
 接下来，将在共享中创建目录。 在下面的示例中，目录名为 `CustomLogs`。
 
 ```powershell
-    # create a directory in the share
-    New-AzureStorageDirectory -Share $s -Path CustomLogs
+# create a directory in the share
+New-AzureStorageDirectory -Share $s -Path CustomLogs
 ```
 
 ### <a name="upload-a-local-file-to-the-directory"></a>将本地文件上载到目录
 现在，将本地文件上载到该目录。 以下示例从 `C:\temp\Log1.txt`上载文件。 请编辑文件路径，使其指向你本地计算机上的有效文件。
 
 ```powershell
-    # upload a local file to the new directory
-    Set-AzureStorageFileContent -Share $s -Source C:\temp\Log1.txt -Path CustomLogs
+# upload a local file to the new directory
+Set-AzureStorageFileContent -Share $s -Source C:\temp\Log1.txt -Path CustomLogs
 ```
 
 ### <a name="list-the-files-in-the-directory"></a>列出目录中的文件
 若要查看目录中的文件，你可以列出目录的所有文件。 此命令将返回 CustomLogs 目录中的文件和子目录（如果有的话）。
 
 ```powershell
-    # list files in the new directory
-    Get-AzureStorageFile -Share $s -Path CustomLogs | Get-AzureStorageFile
+# list files in the new directory
+Get-AzureStorageFile -Share $s -Path CustomLogs | Get-AzureStorageFile
 ```
 
 Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列表。 “Get-AzureStorageFile -Share $s”将返回根目录中的文件和目录列表。 若要获取子目录中的文件列表，必须将子目录传递给 Get AzureStorageFile。 这就是此功能的作用 -- 到达管道的命令的第一部分将返回子目录 CustomLogs 的目录实例。 然后，该实例将传递到 Get-AzureStorageFile，从而返回 CustomLogs 中的文件和目录。
@@ -182,11 +183,11 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 从 Azure PowerShell 的 0.9.7 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 下面，我们演示如何使用 PowerShell cmdlet 执行这些复制操作。
 
 ```powershell
-    # copy a file to the new directory
-    Start-AzureStorageFileCopy -SrcShareName srcshare -SrcFilePath srcdir/hello.txt -DestShareName destshare -DestFilePath destdir/hellocopy.txt -Context $srcCtx -DestContext $destCtx
+# copy a file to the new directory
+Start-AzureStorageFileCopy -SrcShareName srcshare -SrcFilePath srcdir/hello.txt -DestShareName destshare -DestFilePath destdir/hellocopy.txt -Context $srcCtx -DestContext $destCtx
 
-    # copy a blob to a file directory
-    Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
+# copy a blob to a file directory
+Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
 ```
 
 ## <a name="mount-the-file-share"></a>装载文件共享
@@ -210,14 +211,16 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 ### <a name="mount-the-file-share-from-an-azure-virtual-machine-running-windows"></a>从运行 Windows 的 Azure 虚拟机装载文件共享
 为了演示如何装载 Azure 文件共享，现在我们将创建一个运行 Windows 的 Azure 虚拟机，并远程登录到它内部以装载共享。
 
-1. 首先，按照 [在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)中的说明创建新的 Azure 虚拟机。
-2. 接下来，按照 [使用 Azure 门户登录到 Windows 虚拟机](../virtual-machines/virtual-machines-windows-connect-logon.md)中的说明远程登录到虚拟机。
+1. 首先，按照 [在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的说明创建新的 Azure 虚拟机。
+2. 接下来，按照 [使用 Azure 门户登录到 Windows 虚拟机](../virtual-machines/virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的说明远程登录到虚拟机。
 3. 在该虚拟机上打开 PowerShell 窗口。
 
 ### <a name="persist-your-storage-account-credentials-for-the-virtual-machine"></a>保存虚拟机的存储帐户凭据
-装载到文件共享之前，先在虚拟机上保存存储帐户凭据。 当虚拟机重新启动时，此步骤允许 Windows 自动重新连接到文件共享。 若要持久保存帐户凭据，请在虚拟机上的 PowerShell 窗口中运行 `cmdkey` 命令。 请将 `<storage-account-name>` 替换为你的存储帐户名称，将 `<storage-account-key>` 替换为你的存储帐户密钥。
+装载到文件共享之前，先在虚拟机上保存存储帐户凭据。 当虚拟机重新启动时，此步骤允许 Windows 自动重新连接到文件共享。 若要持久保存帐户凭据，请在虚拟机上的 PowerShell 窗口中运行 `cmdkey` 命令。 请将 `<storage-account-name>` 替换为你的存储帐户名称，将 `<storage-account-key>` 替换为你的存储帐户密钥。 必须显式指定域“AZURE”，如以下示例所示。 
 
-    cmdkey /add:<storage-account-name>.file.core.windows.net /user:<storage-account-name> /pass:<storage-account-key>
+```
+cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>
+```
 
 现在，当虚拟机重新启动时，Windows 将重新连接到你的文件共享。 可以通过在 PowerShell 窗口中运行 `net use` 命令来验证是否已重新连接共享。
 
@@ -226,23 +229,27 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 ### <a name="mount-the-file-share-using-the-persisted-credentials"></a>使用保存的凭据装载文件共享
 建立与虚拟机的远程连接后，便可以使用以下语法运行 `net use` 命令来装载文件共享了。 请将 `<storage-account-name>` 替换为你的存储帐户名称，将 `<share-name>` 替换为你的文件存储共享名称。
 
-    net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
+```
+net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
 
-    example :
-    net use z: \\samples.file.core.windows.net\logs
+example :
+net use z: \\samples.file.core.windows.net\logs
+```
 
 由于你已在上一步中保存了存储帐户凭据，因此你无需随 `net use` 命令提供这些凭据。 如果你尚未保存凭据，请作为传递给 `net use` 命令的参数提供凭据，如以下示例所示。
 
-    net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /u:<storage-account-name> <storage-account-key>
+```
+net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /u:AZURE\<storage-account-name> <storage-account-key>
 
-    example :
-    net use z: \\samples.file.core.windows.net\logs /u:samples <storage-account-key>
+example :
+net use z: \\samples.file.core.windows.net\logs /u:AZURE\samples <storage-account-key>
+```
 
 现在，你可以使用虚拟机中的文件存储共享，就像使用任何其他驱动器一样。 你可以从命令提示符发出标准文件命令，也可以从文件资源管理器查看已装载的共享及其内容。 你也可以在虚拟机中运行代码，以便访问使用标准 Windows 文件 I/O API 的文件共享，例如 .NET Framework 中由 [System.IO 命名空间](http://msdn.microsoft.com/library/gg145019.aspx) 提供的文件共享。
 
 你还可以通过远程登录到角色中从 Azure 云服务中运行的角色装载文件共享。
 
-### <a name="mount-the-file-share-from-an-onpremises-client-running-windows"></a>从运行 Windows 的本地客户端装载文件共享
+### <a name="mount-the-file-share-from-an-on-premises-client-running-windows"></a>从运行 Windows 的本地客户端装载文件共享
 若要从本地客户端装载文件共享，必须首先执行以下步骤：
 
 * 安装支持 SMB 3.0 的 Windows 版本。 Windows 将利用 SMB 3.0 加密来在本地客户端和云中的 Azure 文件共享之间安全地传输数据。
@@ -272,16 +279,17 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 ### <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 app.config 文件
 接下来，将你的凭据保存到项目的 app.config 文件中。 编辑 app.config 文件，使其看起来类似于下面的示例，将 `myaccount` 替换为你的存储帐户名称，并将 `mykey` 替换为你的存储帐户密钥。
 
-    <?xml version="1.0" encoding="utf-8" ?>
-    <configuration>
-        <startup>
-            <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
-        </startup>
-        <appSettings>
-            <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=StorageAccountKeyEndingIn==" />
-        </appSettings>
-    </configuration>
-
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <startup>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+    </startup>
+    <appSettings>
+        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=StorageAccountKeyEndingIn==" />
+    </appSettings>
+</configuration>
+```
 
 > [!NOTE]
 > 最新版本的 Azure 存储模拟器不支持文件存储。 连接字符串必须针对云中要使用文件存储的 Azure 存储帐户。
@@ -292,10 +300,10 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 从解决方案资源管理器打开 `program.cs` 文件，并在该文件顶部添加以下命名空间声明。
 
 ```csharp
-    using Microsoft.Azure; // Namespace for Azure Configuration Manager
-    using Microsoft.WindowsAzure.Storage; // Namespace for Storage Client Library
-    using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage
-    using Microsoft.WindowsAzure.Storage.File; // Namespace for File storage
+using Microsoft.Azure; // Namespace for Azure Configuration Manager
+using Microsoft.WindowsAzure.Storage; // Namespace for Storage Client Library
+using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage
+using Microsoft.WindowsAzure.Storage.File; // Namespace for File storage
 ```
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
@@ -304,35 +312,35 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 接下来，将以下代码添加到 `Main()` 方法（在上面显示的代码后面）以检索连接字符串。 此代码将获取我们先前创建的文件的引用，并将其内容输出到控制台窗口中。
 
 ```csharp
-    // Create a CloudFileClient object for credentialed access to File storage.
-    CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
+// Create a CloudFileClient object for credentialed access to File storage.
+CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-    // Get a reference to the file share we created previously.
-    CloudFileShare share = fileClient.GetShareReference("logs");
+// Get a reference to the file share we created previously.
+CloudFileShare share = fileClient.GetShareReference("logs");
 
-    // Ensure that the share exists.
-    if (share.Exists())
+// Ensure that the share exists.
+if (share.Exists())
+{
+    // Get a reference to the root directory for the share.
+    CloudFileDirectory rootDir = share.GetRootDirectoryReference();
+
+    // Get a reference to the directory we created previously.
+    CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
+
+    // Ensure that the directory exists.
+    if (sampleDir.Exists())
     {
-        // Get a reference to the root directory for the share.
-        CloudFileDirectory rootDir = share.GetRootDirectoryReference();
+        // Get a reference to the file we created previously.
+        CloudFile file = sampleDir.GetFileReference("Log1.txt");
 
-        // Get a reference to the directory we created previously.
-        CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
-
-        // Ensure that the directory exists.
-        if (sampleDir.Exists())
+        // Ensure that the file exists.
+        if (file.Exists())
         {
-            // Get a reference to the file we created previously.
-            CloudFile file = sampleDir.GetFileReference("Log1.txt");
-
-            // Ensure that the file exists.
-            if (file.Exists())
-            {
-                // Write the contents of the file to the console window.
-                Console.WriteLine(file.DownloadTextAsync().Result);
-            }
+            // Write the contents of the file to the console window.
+            Console.WriteLine(file.DownloadTextAsync().Result);
         }
     }
+}
 ```
 
 运行控制台应用程序以查看输出。
@@ -345,33 +353,33 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 下面的示例演示如何检查共享的当前使用情况，以及如何设置共享的配额。
 
 ```csharp
-    // Parse the connection string for the storage account.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Parse the connection string for the storage account.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create a CloudFileClient object for credentialed access to File storage.
-    CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
+// Create a CloudFileClient object for credentialed access to File storage.
+CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-    // Get a reference to the file share we created previously.
-    CloudFileShare share = fileClient.GetShareReference("logs");
+// Get a reference to the file share we created previously.
+CloudFileShare share = fileClient.GetShareReference("logs");
 
-    // Ensure that the share exists.
-    if (share.Exists())
-    {
-        // Check current usage stats for the share.
-        // Note that the ShareStats object is part of the protocol layer for the File service.
-        Microsoft.WindowsAzure.Storage.File.Protocol.ShareStats stats = share.GetStats();
-        Console.WriteLine("Current share usage: {0} GB", stats.Usage.ToString());
+// Ensure that the share exists.
+if (share.Exists())
+{
+    // Check current usage stats for the share.
+    // Note that the ShareStats object is part of the protocol layer for the File service.
+    Microsoft.WindowsAzure.Storage.File.Protocol.ShareStats stats = share.GetStats();
+    Console.WriteLine("Current share usage: {0} GB", stats.Usage.ToString());
 
-        // Specify the maximum size of the share, in GB.
-        // This line sets the quota to be 10 GB greater than the current usage of the share.
-        share.Properties.Quota = 10 + stats.Usage;
-        share.SetProperties();
+    // Specify the maximum size of the share, in GB.
+    // This line sets the quota to be 10 GB greater than the current usage of the share.
+    share.Properties.Quota = 10 + stats.Usage;
+    share.SetProperties();
 
-        // Now check the quota for the share. Call FetchAttributes() to populate the share's properties.
-        share.FetchAttributes();
-        Console.WriteLine("Current share quota: {0} GB", share.Properties.Quota);
-    }
+    // Now check the quota for the share. Call FetchAttributes() to populate the share's properties.
+    share.FetchAttributes();
+    Console.WriteLine("Current share quota: {0} GB", share.Properties.Quota);
+}
 ```
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>为文件或文件共享生成共享访问签名
@@ -380,47 +388,47 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 以下示例在一个共享上创建共享访问策略，然后使用该策略为共享中的一个文件提供 SAS 约束。
 
 ```csharp
-    // Parse the connection string for the storage account.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Parse the connection string for the storage account.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create a CloudFileClient object for credentialed access to File storage.
-    CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
+// Create a CloudFileClient object for credentialed access to File storage.
+CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-    // Get a reference to the file share we created previously.
-    CloudFileShare share = fileClient.GetShareReference("logs");
+// Get a reference to the file share we created previously.
+CloudFileShare share = fileClient.GetShareReference("logs");
 
-    // Ensure that the share exists.
-    if (share.Exists())
-    {
-        string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
+// Ensure that the share exists.
+if (share.Exists())
+{
+    string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
 
-        // Create a new shared access policy and define its constraints.
-        SharedAccessFilePolicy sharedPolicy = new SharedAccessFilePolicy()
-            {
-                SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
-                Permissions = SharedAccessFilePermissions.Read | SharedAccessFilePermissions.Write
-            };
+    // Create a new shared access policy and define its constraints.
+    SharedAccessFilePolicy sharedPolicy = new SharedAccessFilePolicy()
+        {
+            SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
+            Permissions = SharedAccessFilePermissions.Read | SharedAccessFilePermissions.Write
+        };
 
-        // Get existing permissions for the share.
-        FileSharePermissions permissions = share.GetPermissions();
+    // Get existing permissions for the share.
+    FileSharePermissions permissions = share.GetPermissions();
 
-        // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
-        permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
-        share.SetPermissions(permissions);
+    // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
+    permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
+    share.SetPermissions(permissions);
 
-        // Generate a SAS for a file in the share and associate this access policy with it.
-        CloudFileDirectory rootDir = share.GetRootDirectoryReference();
-        CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
-        CloudFile file = sampleDir.GetFileReference("Log1.txt");
-        string sasToken = file.GetSharedAccessSignature(null, policyName);
-        Uri fileSasUri = new Uri(file.StorageUri.PrimaryUri.ToString() + sasToken);
+    // Generate a SAS for a file in the share and associate this access policy with it.
+    CloudFileDirectory rootDir = share.GetRootDirectoryReference();
+    CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
+    CloudFile file = sampleDir.GetFileReference("Log1.txt");
+    string sasToken = file.GetSharedAccessSignature(null, policyName);
+    Uri fileSasUri = new Uri(file.StorageUri.PrimaryUri.ToString() + sasToken);
 
-        // Create a new CloudFile object from the SAS, and write some text to the file.
-        CloudFile fileSas = new CloudFile(fileSasUri);
-        fileSas.UploadText("This write operation is authenticated via SAS.");
-        Console.WriteLine(fileSas.DownloadText());
-    }
+    // Create a new CloudFile object from the SAS, and write some text to the file.
+    CloudFile fileSas = new CloudFile(fileSasUri);
+    fileSas.UploadText("This write operation is authenticated via SAS.");
+    Console.WriteLine(fileSas.DownloadText());
+}
 ```
 
 有关创建和使用共享访问签名的更多信息，请参阅[使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md) 和[创建 SAS 并将其与 Blob 存储结合使用](storage-dotnet-shared-access-signature-part-2.md)。
@@ -440,45 +448,45 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 以下示例将一个文件复制到同一共享中的另一个文件。 因为此操作在同一存储帐户中的文件之间进行复制，可以使用共享密钥身份验证来进行复制。
 
 ```csharp
-    // Parse the connection string for the storage account.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Parse the connection string for the storage account.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create a CloudFileClient object for credentialed access to File storage.
-    CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
+// Create a CloudFileClient object for credentialed access to File storage.
+CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-    // Get a reference to the file share we created previously.
-    CloudFileShare share = fileClient.GetShareReference("logs");
+// Get a reference to the file share we created previously.
+CloudFileShare share = fileClient.GetShareReference("logs");
 
-    // Ensure that the share exists.
-    if (share.Exists())
+// Ensure that the share exists.
+if (share.Exists())
+{
+    // Get a reference to the root directory for the share.
+    CloudFileDirectory rootDir = share.GetRootDirectoryReference();
+
+    // Get a reference to the directory we created previously.
+    CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
+
+    // Ensure that the directory exists.
+    if (sampleDir.Exists())
     {
-        // Get a reference to the root directory for the share.
-        CloudFileDirectory rootDir = share.GetRootDirectoryReference();
+        // Get a reference to the file we created previously.
+        CloudFile sourceFile = sampleDir.GetFileReference("Log1.txt");
 
-        // Get a reference to the directory we created previously.
-        CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
-
-        // Ensure that the directory exists.
-        if (sampleDir.Exists())
+        // Ensure that the source file exists.
+        if (sourceFile.Exists())
         {
-            // Get a reference to the file we created previously.
-            CloudFile sourceFile = sampleDir.GetFileReference("Log1.txt");
+            // Get a reference to the destination file.
+            CloudFile destFile = sampleDir.GetFileReference("Log1Copy.txt");
 
-            // Ensure that the source file exists.
-            if (sourceFile.Exists())
-            {
-                // Get a reference to the destination file.
-                CloudFile destFile = sampleDir.GetFileReference("Log1Copy.txt");
+            // Start the copy operation.
+            destFile.StartCopy(sourceFile);
 
-                // Start the copy operation.
-                destFile.StartCopy(sourceFile);
-
-                // Write the contents of the destination file to the console window.
-                Console.WriteLine(destFile.DownloadText());
-            }
+            // Write the contents of the destination file to the console window.
+            Console.WriteLine(destFile.DownloadText());
         }
     }
+}
 ```
 
 **将一个文件复制到一个 Blob**
@@ -486,47 +494,47 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 以下示例创建一个文件并将其复制到同一存储帐户中的某个 blob。 该示例为源文件创建一个 SAS，服务在复制操作期间使用该 SAS 验证对源文件的访问。
 
 ```csharp
-    // Parse the connection string for the storage account.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Parse the connection string for the storage account.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create a CloudFileClient object for credentialed access to File storage.
-    CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
+// Create a CloudFileClient object for credentialed access to File storage.
+CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-    // Create a new file share, if it does not already exist.
-    CloudFileShare share = fileClient.GetShareReference("sample-share");
-    share.CreateIfNotExists();
+// Create a new file share, if it does not already exist.
+CloudFileShare share = fileClient.GetShareReference("sample-share");
+share.CreateIfNotExists();
 
-    // Create a new file in the root directory.
-    CloudFile sourceFile = share.GetRootDirectoryReference().GetFileReference("sample-file.txt");
-    sourceFile.UploadText("A sample file in the root directory.");
+// Create a new file in the root directory.
+CloudFile sourceFile = share.GetRootDirectoryReference().GetFileReference("sample-file.txt");
+sourceFile.UploadText("A sample file in the root directory.");
 
-    // Get a reference to the blob to which the file will be copied.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-    CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
-    container.CreateIfNotExists();
-    CloudBlockBlob destBlob = container.GetBlockBlobReference("sample-blob.txt");
+// Get a reference to the blob to which the file will be copied.
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
+container.CreateIfNotExists();
+CloudBlockBlob destBlob = container.GetBlockBlobReference("sample-blob.txt");
 
-    // Create a SAS for the file that's valid for 24 hours.
-    // Note that when you are copying a file to a blob, or a blob to a file, you must use a SAS
-    // to authenticate access to the source object, even if you are copying within the same
-    // storage account.
-    string fileSas = sourceFile.GetSharedAccessSignature(new SharedAccessFilePolicy()
-    {
-        // Only read permissions are required for the source file.
-        Permissions = SharedAccessFilePermissions.Read,
-        SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24)
-    });
+// Create a SAS for the file that's valid for 24 hours.
+// Note that when you are copying a file to a blob, or a blob to a file, you must use a SAS
+// to authenticate access to the source object, even if you are copying within the same
+// storage account.
+string fileSas = sourceFile.GetSharedAccessSignature(new SharedAccessFilePolicy()
+{
+    // Only read permissions are required for the source file.
+    Permissions = SharedAccessFilePermissions.Read,
+    SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24)
+});
 
-    // Construct the URI to the source file, including the SAS token.
-    Uri fileSasUri = new Uri(sourceFile.StorageUri.PrimaryUri.ToString() + fileSas);
+// Construct the URI to the source file, including the SAS token.
+Uri fileSasUri = new Uri(sourceFile.StorageUri.PrimaryUri.ToString() + fileSas);
 
-    // Copy the file to the blob.
-    destBlob.StartCopy(fileSasUri);
+// Copy the file to the blob.
+destBlob.StartCopy(fileSasUri);
 
-    // Write the contents of the file to the console window.
-    Console.WriteLine("Source file contents: {0}", sourceFile.DownloadText());
-    Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
+// Write the contents of the file to the console window.
+Console.WriteLine("Source file contents: {0}", sourceFile.DownloadText());
+Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 ```
 
 可以用相同的方式将一个 Blob 复制到一个文件。 如果源对象是一个 Blob，则创建一个 SAS 以复制操作期间验证对该 Blob 的访问。
@@ -541,51 +549,51 @@ Azure 存储空间分析现在支持用于文件存储的指标。 使用指标�
 首先，在添加以上语句后，将以下 `using` 语句添加到你的 program.cs 文件中：
 
 ```csharp
-    using Microsoft.WindowsAzure.Storage.File.Protocol;
-    using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Microsoft.WindowsAzure.Storage.File.Protocol;
+using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 ```
 
 请注意，Blob、表和队列存储使用 `Microsoft.WindowsAzure.Storage.Shared.Protocol` 命名空间中的共享 `ServiceProperties` 类型，而文件存储使用其自己的类型，即 `Microsoft.WindowsAzure.Storage.File.Protocol` 命名空间中的 `FileServiceProperties` 类型。 但是，你的代码中必须同时引用这两个命名空间，才能编译后续代码。
 
 ```csharp
-    // Parse your storage connection string from your application's configuration file.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-            Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    // Create the File service client.
-    CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
+// Parse your storage connection string from your application's configuration file.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+        Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Create the File service client.
+CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-    // Set metrics properties for File service.
-    // Note that the File service currently uses its own service properties type,
-    // available in the Microsoft.WindowsAzure.Storage.File.Protocol namespace.
-    fileClient.SetServiceProperties(new FileServiceProperties()
+// Set metrics properties for File service.
+// Note that the File service currently uses its own service properties type,
+// available in the Microsoft.WindowsAzure.Storage.File.Protocol namespace.
+fileClient.SetServiceProperties(new FileServiceProperties()
+{
+    // Set hour metrics
+    HourMetrics = new MetricsProperties()
     {
-        // Set hour metrics
-        HourMetrics = new MetricsProperties()
-        {
-            MetricsLevel = MetricsLevel.ServiceAndApi,
-            RetentionDays = 14,
-            Version = "1.0"
-        },
-        // Set minute metrics
-        MinuteMetrics = new MetricsProperties()
-        {
-            MetricsLevel = MetricsLevel.ServiceAndApi,
-            RetentionDays = 7,
-            Version = "1.0"
-        }
-    });
+        MetricsLevel = MetricsLevel.ServiceAndApi,
+        RetentionDays = 14,
+        Version = "1.0"
+    },
+    // Set minute metrics
+    MinuteMetrics = new MetricsProperties()
+    {
+        MetricsLevel = MetricsLevel.ServiceAndApi,
+        RetentionDays = 7,
+        Version = "1.0"
+    }
+});
 
-    // Read the metrics properties we just set.
-    FileServiceProperties serviceProperties = fileClient.GetServiceProperties();
-    Console.WriteLine("Hour metrics:");
-    Console.WriteLine(serviceProperties.HourMetrics.MetricsLevel);
-    Console.WriteLine(serviceProperties.HourMetrics.RetentionDays);
-    Console.WriteLine(serviceProperties.HourMetrics.Version);
-    Console.WriteLine();
-    Console.WriteLine("Minute metrics:");
-    Console.WriteLine(serviceProperties.MinuteMetrics.MetricsLevel);
-    Console.WriteLine(serviceProperties.MinuteMetrics.RetentionDays);
-    Console.WriteLine(serviceProperties.MinuteMetrics.Version);
+// Read the metrics properties we just set.
+FileServiceProperties serviceProperties = fileClient.GetServiceProperties();
+Console.WriteLine("Hour metrics:");
+Console.WriteLine(serviceProperties.HourMetrics.MetricsLevel);
+Console.WriteLine(serviceProperties.HourMetrics.RetentionDays);
+Console.WriteLine(serviceProperties.HourMetrics.Version);
+Console.WriteLine();
+Console.WriteLine("Minute metrics:");
+Console.WriteLine(serviceProperties.MinuteMetrics.MetricsLevel);
+Console.WriteLine(serviceProperties.MinuteMetrics.RetentionDays);
+Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ```
 
 还可以参考 [Azure 文件故障排除文章](storage-troubleshoot-file-connection-problems.md) 了解有关端到端故障排除指南。 
@@ -595,49 +603,61 @@ Azure 存储空间分析现在支持用于文件存储的指标。 使用指标�
    
     我们目前不支持基于 AD 的身份验证或 ACL，但会将其列入我们的功能请求列表中。 目前，Azure 存储帐户密钥用于为文件共享提供身份验证。 我们确实提供通过 REST API 或客户端库使用共享访问签名 (SAS) 的解决方法。 使用 SAS，可以生成具有在指定的时间间隔内有效的特定权限的令牌。 例如，你可以生成对给定文件具有只读访问权限的令牌。 在此令牌的有效期内拥有此令牌的任何人对该文件具有只读访问权限。
    
-    仅通过 REST API 或客户端库支持 SAS。 通过 SMB 协议装载文件共享时，不能使用 SAS 委派对其内容的访问权限。
-2. **Azure 文件共享是在 Internet 上公开可见，还是只能通过 Azure 对其进行访问？**
-   
-    只要端口 445（TCP 出站）处于打开状态且客户端支持 SMB 3.0 协议（*例如*，Windows 8 或 Windows Server 2012），文件共享就可通过 Internet 使用。  
-3. **Azure 虚拟机与文件共享之间的网络流量是否算作对订阅计费的外部带宽？**
+    仅通过 REST API 或客户端库支持 SAS。 通过 SMB 协议装载文件共享时，不能使用 SAS 委派对其内容的访问权限。 
+
+2. **如何通过 Web 浏览器提供对特定文件的访问权限？**
+   使用 SAS，可以生成具有在指定的时间间隔内有效的特定权限的令牌。 例如，可以生成一个令牌，该令牌只能在特定时段内以只读方式访问特定文件。 任何人均可使用该 URL 直接从任何 Web 浏览器下载，只要该 URL 有效。 SAS 密钥可以轻松地从 UI（例如存储资源管理器）生成。
+
+3.   **访问 Azure 文件存储中的文件有哪些不同方式？**
+    可以使用 SMB 3.0 协议将文件共享装载在本地计算机上，也可以使用[存储资源管理器](http://storageexplorer.com/)或 Cloudberry 之类的工具访问文件共享中的文件。 在应用程序中，可以使用客户端库、REST API 或 Powershell 访问 Azure 文件共享中的文件。
+    
+4.   **如何在本地计算机上装载 Azure 文件共享？** 可以通过 SMB 协议装载文件共享，只要端口 445（TCP 出站）处于打开状态且客户端支持 SMB 3.0 协议（*例如*，Windows 8 或 Windows Server 2012）。 请通过本地 ISP 提供商来取消阻止端口。 在此期间，可以使用存储资源管理器或任何其他的第三方软件（例如 Cloudberry）来查看文件。
+
+5. **Azure 虚拟机与文件共享之间的网络流量是否算作对订阅计费的外部带宽？**
    
     如果文件共享和虚拟机位于不同的区域，则它们之间的流量将作为外部带宽收费。
-4. **如果是虚拟机和同一区域中的文件共享之间的网络流量，是免费吗？**
+6. **如果是虚拟机和同一区域中的文件共享之间的网络流量，是免费吗？**
    
     是的。 如果流量在同一区域，是免费的。
-5. **从本地虚拟机连接到 Azure 文件存储是否依赖于 Azure ExpressRoute？**
+7. **从本地虚拟机连接到 Azure 文件存储是否依赖于 Azure ExpressRoute？**
    
     否。 如果你没有 ExpressRoute，你仍可以从本地访问文件共享，只要你将端口 445（TCP 出站）打开供 Internet 访问。 但是，如果你愿意，你可以将 ExpressRoute 用于文件存储。
-6. **故障转移群集的“文件共享见证”是 Azure 文件存储的使用案例之一吗？**
+8. **故障转移群集的“文件共享见证”是 Azure 文件存储的使用案例之一吗？**
    
     目前，不支持此功能。
-7. **当前仅通过 LRS 或 GRS 复制文件存储，对吗？**  
+9. **当前仅通过 LRS 或 GRS 复制文件存储，对吗？**  
    
     我们计划支持 RA-GRS，但尚没有共享时间表。
-8. **何时能够将现有存储帐户用于 Azure 文件存储？**
+10. **何时能够将现有存储帐户用于 Azure 文件存储？**
    
     现已为所有存储帐户启用 Azure 文件存储。
-9. **是否会将重命名操作也添加到 REST API？**
+11. **是否会将重命名操作也添加到 REST API？**
    
     在我们的 REST API 中尚不支持重命名。
-10. **能否使用嵌套共享，换而言之就是共享下的共享？**
+12. **能否使用嵌套共享，换而言之就是共享下的共享？**
     
     否。 文件共享是你可以装载的虚拟驱动程序，因此不支持嵌套共享。
-11. **是否可以对共享中的文件夹指定只读或只写权限？**
+13. **是否可以对共享中的文件夹指定只读或只写权限？**
     
     如果通过 SMB 装载文件共享，你不具有此级别的权限控制。 但是，你可以通过 REST API 或客户端库创建共享访问签名 (SAS) 来实现此控制。  
-12. **尝试将文件解压缩到文件存储中时我的性能速度太慢。我该怎样做？**
+14. **尝试将文件解压缩到文件存储中时我的性能速度太慢。我该怎样做？**
     
     若要将大量文件传输到文件存储，建议使用 AzCopy、Azure Powershell (Windows) 或 Azure CLI (Linux/Unix)，因为这些工具已针对网络传输进行优化。
-13. **发布了修复 Azure 文件慢速性能问题的修补程序**
+15. **发布了修复 Azure 文件慢速性能问题的修补程序**
     
     Windows 团队最近发布了一个修补程序，旨在修复客户从 Windows 8.1 计算机或 Windows Server 2012 R2 服务器访问 Azure 文件存储时遇到的慢速性能问题。 有关详细信息，请查看相关的知识库文章： [Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2](https://support.microsoft.com/en-us/kb/3114025)（从 Windows 8.1 或 Server 2012 R2 访问 Azure 文件存储时性能降低）。
-14. **通过 IBM MQ 使用 Azure 文件存储**
+16. **通过 IBM MQ 使用 Azure 文件存储**
     
     IBM 已发布相关文档来指导 IBM MQ 客户通过其服务配置 Azure 文件存储。 有关详细信息，请查阅 [如何通过 Microsoft Azure 文件服务设置 IBM MQ 多实例队列管理器](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)。
-15. **如何解决 Azure 文件存储错误的问题？**
+17. **如何解决 Azure 文件存储错误的问题？**
     
     可以参考 [Azure 文件故障排除文章](storage-troubleshoot-file-connection-problems.md)了解有关端到端故障排除指南。               
+
+18. **如何针对 Azure 文件启用服务器端加密？**
+
+    [服务器端加密](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)目前提供预览版。 在预览期间，只能为新创建的 Azure Resource Manager (ARM) 存储帐户启用此功能。
+    可以使用 Azure 门户在 Azure Resource Manager 存储帐户上启用此功能。 我们计划二月底在 [Azure Powershell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx)、[Azure CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli-nodejs) 或 [Microsoft Azure 存储资源提供程序 API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) 上启用针对文件存储的加密。 启用此功能不需额外付费。 针对 Azure 文件存储启用存储服务加密以后，系统会自动加密数据。 
+    了解有关存储服务加密的详细信息。 有关预览版的其他问题，也可发送邮件至 ssediscussions@microsoft.com。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。
@@ -650,6 +670,7 @@ Azure 存储空间分析现在支持用于文件存储的指标。 使用指标�
 * [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)
 * [如何对 Microsoft Azure 存储空间使用 AzCopy](storage-use-azcopy.md)
 * [将 Azure CLI 用于 Azure 存储空间](storage-azure-cli.md#create-and-manage-file-shares)
+* [排查 Azure 文件存储问题](https://docs.microsoft.com/en-us/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>引用
 * [.NET 存储客户端库参考](https://msdn.microsoft.com/library/azure/dn261237.aspx)
@@ -660,10 +681,4 @@ Azure 存储空间分析现在支持用于文件存储的指标。 使用指标�
 * [Azure 文件存储内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Microsoft Azure 文件服务简介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [将连接保存到 Microsoft Azure 文件中](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

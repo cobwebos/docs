@@ -1,10 +1,27 @@
 ---
+title: "Azure 容器服务文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用容器服务通过 DC/OS、Docker Swarm 或 Kubernetes 来部署和管理应用程序容器。 教程、API 参考和其他资源。"
+services: container-service
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: container-service
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 9cf690482bfdfc8448542171066f2d9ab3ec3569
+ms.lasthandoff: 02/27/2017
+
 ---
 
-#Azure Container Service Documentation
+# <a name="azure-container-service-documentation"></a>Azure 容器服务文档
 
-Azure Container Service makes it simple for you to create, configure, and manage a cluster of virtual machines that are preconfigured to run containerized applications. Container Service uses an optimized configuration of popular open-source scheduling and orchestration tools. This lets you use your existing skills or draw upon a large and growing body of community expertise to deploy and manage container-based applications on Microsoft Azure.
+了解如何使用容器服务来部署和管理完全可移植的应用程序容器。 教程、API 参考和其他文档介绍了如何使用 DC/OS、Docker Swarm 或 Kubernetes 来缩放与协调容器。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +35,7 @@ Azure Container Service makes it simple for you to create, configure, and manage
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Container Service</h3>
+                        <h3>了解 Azure 容器服务</h3>
                     </div>
                 </div>
             </div>
@@ -32,11 +49,11 @@ Azure Container Service makes it simple for you to create, configure, and manage
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="./media/index/deploy.svg" alt="" />
+                            <img src="./media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Deploy a Container Service cluster</h3>
+                        <h3>Azure 容器服务入门</h3>
                     </div>
                 </div>
             </div>
@@ -47,22 +64,32 @@ Azure Container Service makes it simple for you to create, configure, and manage
 
 ---
 
-##Reference
-
-###.NET
-[Azure Container Service Managed Reference API](/dotnet/api/)
-
-###REST (Compute) 
-[Compute REST API Reference](/rest/api/)  
-
-###PowerShell
-[Compute Module](/powershell/)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/container-service.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Azure Container Service Documentation
+<h2>参考</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/cli/azure/acs">Azure CLI 2.0</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/compute/containerservices">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+

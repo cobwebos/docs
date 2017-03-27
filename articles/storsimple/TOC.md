@@ -1,7 +1,4 @@
-# StorSimple 概述
-
 # StorSimple 虚拟阵列
-
 ## 概述
 ### [什么是解决方案？](storsimple-ova-overview.md)
 
@@ -10,16 +7,44 @@
 #### [查看要求](storsimple-ova-system-requirements.md)
 #### [了解限制](storsimple-ova-limits.md)
 #### [查看最佳实践](storsimple-ova-best-practices.md)
-### 部署
+
+### 部署（Azure 门户）
+#### [准备部署](storsimple-virtual-array-deploy1-portal-prep.md)
+##### [部署 StorSimple Manager 服务](storsimple-virtual-array-manage-service.md)
+#### [在 HYPER-V 中预配](storsimple-virtual-array-deploy2-provision-hyperv.md)
+#### [在 VMware 中预配](storsimple-virtual-array-deploy2-provision-vmware.md)
+#### [设置为文件服务器](storsimple-virtual-array-deploy3-fs-setup.md)
+#### [设置为 iSCSI 服务器](storsimple-virtual-array-deploy3-iscsi-setup.md)
+
+### 部署（经典门户）
 #### [准备部署](storsimple-ova-deploy1-portal-prep.md)
-#### [部署 StorSimple Manager 服务](storsimple-ova-manage-service.md)
+##### [部署 StorSimple Manager 服务](storsimple-ova-manage-service.md)
 #### [在 HYPER-V 中预配](storsimple-ova-deploy2-provision-hyperv.md)
 #### [在 VMware 中预配](storsimple-ova-deploy2-provision-vmware.md)
 #### [设置为文件服务器](storsimple-ova-deploy3-fs-setup.md)
 #### [设置为 iSCSI 服务器](storsimple-ova-deploy3-iscsi-setup.md)
 
 ## 如何
-### [通过 Azure 门户管理](storsimple-ova-manager-service-administration.md)
+### [通过 Azure 门户管理](storsimple-virtual-array-manager-service-administration.md)
+#### [安装最新更新](storsimple-virtual-array-install-update-04.md)
+##### [安装 Update 0.3](storsimple-virtual-array-install-update.md)
+#### [创建和管理备份](storsimple-virtual-array-backup.md)
+#### [从备份克隆](storsimple-virtual-array-clone.md)
+#### [故障转移和灾难恢复](storsimple-virtual-array-failover-dr.md)
+#### [停用和删除](storsimple-virtual-array-deactivate-and-delete-device.md)
+#### [管理共享](storsimple-virtual-array-manage-shares.md)
+#### [管理卷](storsimple-virtual-array-manage-volumes.md)
+#### [查看服务摘要](storsimple-virtual-array-service-summary.md)
+#### [查看设备摘要](storsimple-virtual-array-device-summary.md)
+#### [管理存储帐户](storsimple-virtual-array-manage-storage-accounts.md)
+#### [管理 ACR](storsimple-virtual-array-manage-acrs.md)
+#### [管理作业](storsimple-virtual-array-manage-jobs.md)
+#### [更改设备密码](storsimple-virtual-array-change-device-admin-password.md)
+#### [在 Windows Server 主机上配置 MPIO](storsimple-virtual-array-configure-mpio-windows-server.md)
+#### [诊断和故障排除](storsimple-virtual-array-diagnose-problems.md)
+#### [记录支持请求](storsimple-virtual-array-log-support-ticket.md)
+
+### [通过 Azure 经典门户进行管理](storsimple-ova-manager-service-administration.md)
 #### [安装最新更新](storsimple-ova-install-update-01.md)
 #### [创建和管理备份](storsimple-ova-backup.md)
 #### [从备份还原](storsimple-ova-restore.md)
@@ -34,7 +59,8 @@
 ### [通过本地 Web UI 进行配置](storsimple-ova-web-ui-admin.md)
 
 ## 发行说明
-### [Update 0.3 - 最新版](storsimple-ova-update-03-release-notes.md)
+### [Update 0.4 - 最新版](storsimple-virtual-array-update-04-release-notes.md)
+### [Update 0.3](storsimple-ova-update-03-release-notes.md)
 ### [Update 0.2 和 0.1](storsimple-ova-update-01-release-notes.md)
 
 # StorSimple 8000 系列
@@ -54,6 +80,7 @@
 ### 安装
 #### [查看安全性](storsimple-safety.md)
 #### [解压缩、安装机架，将电缆连接到 8100](storsimple-8100-hardware-installation.md)
+
 #### [解压缩、安装机架，将电缆连接到 8600](storsimple-8600-hardware-installation.md)
 #### [10 GbE 网络接口支持的硬件](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
@@ -63,6 +90,7 @@
 ##### [Azure 中的物理设备 - Update 1](storsimple-deployment-walkthrough-u1.md)
 ##### [Azure 中的物理设备 - GA](storsimple-deployment-walkthrough.md)
 #### [政务门户中的物理设备 - 最新版](storsimple-deployment-walkthrough-gov-u2.md)
+##### [政务门户中的物理设备 - Update 1](storsimple-deployment-walkthrough-gov.md)
 #### [Azure 中的虚拟设备](storsimple-virtual-device-u2.md)
 #### [StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)
 #### [StorSimple Adapter for SharePoint](storsimple-adapter-for-sharepoint.md)
@@ -114,19 +142,26 @@
 ##### [使用 StorSimple Snapshot Manager 中的 MMC 操作](storsimple-snapshot-manager-mmc-menu.md)
 
 ### 构建解决方案
-#### [分布式全局命名空间](https://www.microsoft.com/download/details.aspx?id=45507)
+#### [采用 Veeam 的 StorSimple](storsimple-configure-backup-target-veeam.md)
+#### [采用 Veritas Backup Exec 的 StorSimple](storsimple-configure-backup-target-using-backup-exec.md)
+#### [采用 Veritas NetBackup 的 StorSimple](storsimple-configure-backuptarget-netbackup.md)
 #### [在 Azure 中实现自动化文件服务器灾难恢复](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [通过 Express Route 使用 StorSimple](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
+#### [采用 VMware 的 StorSimple](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
+#### [采用 Hyper-V 的 StorSimple](https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6)
+#### [分布式全局命名空间](https://www.microsoft.com/download/details.aspx?id=45507)
 
 ### 监视
 #### [使用服务仪表板](storsimple-service-dashboard.md)
 #### [使用设备仪表板](storsimple-device-dashboard.md)
+#### [使用监视图表](storsimple-monitor-device.md)
 #### [使用服务警报](storsimple-manage-alerts.md)
 #### [使用硬件状态](storsimple-monitor-hardware-status.md)
 #### [使用监视 LED](storsimple-monitoring-indicators.md)
 
 ### 故障排除
 #### [部署问题](storsimple-troubleshoot-deployment.md)
+#### [使用诊断工具](storsimple-8000-diagnostics.md)
 #### [操作问题](storsimple-troubleshoot-operational-device.md)
 #### [硬件更换](storsimple-hardware-component-replacement.md)
 ##### [更换设备控制器](storsimple-controller-replacement.md)
@@ -139,10 +174,11 @@
 ##### [创建支持包](storsimple-create-manage-support-package.md)
 
 ### 迁移
-#### [从 5000-7000 系列](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-19253270)
+#### [从 5000-7000 系列](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
 #### [从其他存储设备](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### 更新
+#### [安装 Update 4](storsimple-install-update-4.md)
 #### [安装 Update 3](storsimple-install-update-3.md)
 #### [安装 Update 2.2](storsimple-install-update-21.md)
 #### [安装 Update 2](storsimple-install-update-2.md)
@@ -150,7 +186,8 @@
 #### [更新设备](storsimple-update-device.md)
 
 ## 发行说明
-### [Update 3 - 最新版](storsimple-update3-release-notes.md)
+### [Update 4 - 最新版](storsimple-update4-release-notes.md)
+### [Update 3](storsimple-update3-release-notes.md)
 ### [Update 2.2](storsimple-update21-release-notes.md)
 ### [Update 2 ](storsimple-update2-release-notes.md)
 ### [Update 1 ](storsimple-update1-release-notes.md)
@@ -159,23 +196,47 @@
 ### [Update 0.1](storsimple-october-2014-release-notes.md)
 ### [Release - GA](storsimple-july-2014-release-notes.md)
 
-## 参考
-### [PowerShell](/powershell/servicemanagement/)
+## 引用
+### [Azure PowerShell](/powershell/servicemanagement)
+### [Windows PowerShell for StorSimple cmdlet](https://technet.microsoft.com/library/dn688168.aspx)
+
+# StorSimple Data Manager（个人预览版）
+
+## 概述
+### [什么是解决方案？](storsimple-data-manager-overview.md)
+
+## 入门
+### [使用 StorSimple Data Manager](storsimple-data-manager-ui.md)
+
+## 如何
+### [使用 .NET 启动作业](storsimple-data-manager-dotnet-jobs.md)
+### [使用自动化启动作业](storsimple-data-manager-job-using-automation.md)
+### [更改默认 Blob 路径](storsimple-data-manager-change-default-blob-path.md)
+
+# StorSimple 合作伙伴版
+## 概述
+### [什么是解决方案？](storsimple-partner-csp-overview.md)
+
+## 入门
+### [为 CSP 部署虚拟阵列](storsimple-partner-csp-deploy.md)
+
+## 发行说明
+### [StorSimple 发行说明](https://aka.ms/storsimple-virtual-array-latest-relnote)
+### [CSP 发行说明](https://partner.microsoft.com/Support/whats-new)
+### [StorSimple for CSP：常见问题](storsimple-partner-csp-faq.md)
 
 # 相关内容
 ## [StorSimple 5000-7000 系列](http://onlinehelp.storsimple.com)
 
 # 资源
-## [论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [定价](https://azure.microsoft.com/pricing/details/storsimple/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
+## [服务更新](https://azure.microsoft.com/updates/?product=storsimple)
 ## [市场营销博客](http://blogs.technet.com/b/cis/)
 ## [市场营销](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
 ## [支持博客](http://blogs.msdn.com/b/storsimple/)
 ## [第三方通知](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
-## [服务更新](https://azure.microsoft.com/updates/?product=storsimple)
-## [定价](https://azure.microsoft.com/pricing/details/storsimple/)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
-
-<!--HONumber=Nov16_HO2-->
 
 

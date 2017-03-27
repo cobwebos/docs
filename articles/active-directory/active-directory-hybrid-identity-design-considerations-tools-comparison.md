@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/08/2016
+ms.date: 02/14/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1df15de1c24e80b0692149dfc7cb660f74941886
+ms.sourcegitcommit: facdbff229eaf5ee20d98214c62c8b2b46acc0fd
+ms.openlocfilehash: 80617b203bf5efa4cd6bed590ea937b2e68db9e1
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 1df15de1c24e80b0692149dfc7cb660f74941886
 FR = 未来版本  
 PP = 公开预览版  
 
-## <a name="onpremises-to-cloud-synchronization"></a>本地到云的同步
+## <a name="on-premises-to-cloud-synchronization"></a>本地到云的同步
 | 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 (AAD Sync) | Azure Active Directory 同步工具 (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 连接到单个本地 AD 林 |● |● |● |● |● |
@@ -52,12 +52,12 @@ PP = 公开预览版
 | 连接到本地 HR（即 SAP、Oracle eBusiness、PeopleSoft） |FR | | |● |● |
 | 支持用于预配到本地系统的 FIM 同步规则和连接器。 | | | |● |● |
 
-## <a name="cloud-to-onpremises-synchronization"></a>云到本地的同步
+## <a name="cloud-to-on-premises-synchronization"></a>云到本地的同步
 | 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 | Azure Active Directory 同步工具 (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 设备写回 |● | |● | | |
 | 属性写回（适用于 Exchange 混合部署） |● |● |● |● |● |
-| 用户和组对象写回 |● | | | | |
+| 组对象写回 |● | | | | |
 | 密码写回（通过自助密码重置 (SSPR) 和密码更改） |● |● | | | |
 
 ## <a name="authentication-feature-support"></a>身份验证功能支持
@@ -68,7 +68,7 @@ PP = 公开预览版
 | 使用联合身份验证的单一登录 |● |● |● |● |● |
 | 密码写回（通过 SSPR 和密码更改） |● |● | | | |
 
-## <a name="setup-and-installation"></a>设置和安装
+## <a name="set-up-and-installation"></a>设置和安装
 | 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 | Azure Active Directory 同步工具 (DirSync) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|
 | 支持在域控制器上安装 |● |● |● | |
@@ -95,6 +95,6 @@ PP = 公开预览版
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

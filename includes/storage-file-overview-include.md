@@ -7,6 +7,6 @@ Azure 文件存储是一种使用标准 [服务器消息块 (SMB) 协议](https:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

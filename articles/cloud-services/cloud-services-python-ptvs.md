@@ -1,5 +1,5 @@
 ---
-title: "Visual Studio 中的 Python Web 角色和辅助角色 | Microsoft Docs"
+title: "Python 和 Azure 云服务入门 | Microsoft 文档"
 description: "有关使用 Python Tools for Visual Studio 来创建包括 Web 角色和辅助角色的 Azure 云服务的概述。"
 services: cloud-services
 documentationcenter: python
@@ -12,33 +12,37 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 08/03/2016
+ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d951e05a9a0ae59adb64d53726e9898d95424d80
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: c03122972228f30d56a8e0636b1c35ac92b42977
+ms.lasthandoff: 03/07/2017
 
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>用于 Visual Studio 的 Python 工具中的 Python Web 角色和辅助角色
-本文概述了如何在[用于 Visual Studio 的 Python 工具][用于 Visual Studio 的 Python 工具]中使用 Python Web 角色和辅助角色。 其中介绍了如何使用 Visual Studio 来创建和部署使用 Python 的基本云服务。
+
+本文概述了如何在[用于 Visual Studio 的 Python 工具][Python Tools for Visual Studio]中使用 Python Web 角色和辅助角色。 其中介绍了如何使用 Visual Studio 来创建和部署使用 Python 的基本云服务。
 
 ## <a name="prerequisites"></a>先决条件
-* Visual Studio 2013 或 2015
-* [用于 Visual Studio 的 Python 工具][用于 Visual Studio 的 Python 工具] (PTVS)
-* [用于 VS 2013 的 Azure SDK 工具][用于 VS 2013 的 Azure SDK 工具]或[用于 VS 2015 的 Azure SDK 工具][用于 VS 2015 的 Azure SDK 工具]
-* [Python 2.7（32 位）][Python 2.7（32 位）]或 [Python 3.5（32 位）][Python 3.5（32 位）]
+* [Visual Studio 2013、2015 或 2017](https://www.visualstudio.com/)
+* [Python Tools for Visual Studio][Python Tools for Visual Studio]（用于 Visual Studio 的 Python 工具，简称 PTVS）
+* [用于 VS 2013 的 Azure SDK 工具][Azure SDK Tools for VS 2013]或  
+[用于 VS 2015 的 Azure SDK 工具][Azure SDK Tools for VS 2015]或  
+[用于 VS 2017 的 Azure SDK 工具][Azure SDK Tools for VS 2017]
+* [Python 2.7（32 位）][Python 2.7 32-bit]或 [Python 3.5（32 位）][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>什么是 Python Web 角色和辅助角色？
-Azure 为运行应用程序提供了三种计算模型：[Azure 应用服务中的 Web 应用功能][执行模型-网站]、[Azure 虚拟机][执行模型-vm]，以及 [Azure 云服务][执行模型-云服务]。 这三种模型都支持 Python。 云服务（包括 Web 角色和辅助角色）提供了 *平台即服务 (PaaS)*。 在云服务中，Web 角色提供专用的 Internet Information Services (IIS) Web 服务器来托管前端 Web 应用程序，而辅助角色可独立于用户交互或输入运行异步任务、运行时间较长的任务或永久性任务。
+Azure 为运行应用程序提供了三种计算模型：[Azure 应用服务中的 Web 应用功能][execution model-web sites]、[Azure 虚拟机][execution model-vms]和 [Azure 云服务][execution model-cloud services]。 这三种模型都支持 Python。 云服务（包括 Web 角色和辅助角色）提供了 *平台即服务 (PaaS)*。 在云服务中，Web 角色提供专用的 Internet Information Services (IIS) Web 服务器来托管前端 Web 应用程序，而辅助角色可独立于用户交互或输入运行异步任务、运行时间较长的任务或永久性任务。
 
 有关详细信息，请参阅 [什么是云服务？]。
 
 > [!NOTE]
 > *想要构建一个简单的网站？*
->  如果你的方案只涉及一个简单的网站前端，请考虑使用 Azure App Service 中的轻型 Web Apps 功能。 随着您网站的不断扩大和需求的变化，您可以轻松升级到云服务。 请参阅 <a href="/develop/python/">Python 开发人员中心</a>关于如何在 Azure 应用服务中开发 Web 应用功能的文章。
+> 如果你的方案只涉及一个简单的网站前端，请考虑使用 Azure App Service 中的轻型 Web Apps 功能。 随着您网站的不断扩大和需求的变化，您可以轻松升级到云服务。 请参阅 <a href="/develop/python/">Python 开发人员中心</a>关于如何在 Azure 应用服务中开发 Web 应用功能的文章。
 > <br />
 > 
 > 
@@ -328,43 +332,39 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 ## <a name="next-steps"></a>后续步骤
 有关在 Python Tools for Visual Studio 中使用 Web 角色和辅助角色的更多详细信息，请参阅 PTVS 文档：
 
-* [云服务项目][云服务项目]
+* [云服务项目][Cloud Service Projects]
 
 有关作为 Web 角色和辅助角色使用 Azure 服务（例如使用 Azure 存储空间或服务总线）的详细信息，请参阅以下文章。
 
-* [Blob 服务][Blob 服务]
-* [表服务][表服务]
-* [队列服务][队列服务]
-* [服务总线队列][服务总线队列]
-* [服务总线主题][服务总线主题]
+* [Blob 服务][Blob Service]
+* [表服务][Table Service]
+* [队列服务][Queue Service]
+* [服务总线队列][Service Bus Queues]
+* [服务总线主题][Service Bus Topics]
 
 <!--Link references-->
 
 [什么是云服务？]: cloud-services-choose-me.md
-[执行模型-网站]: ../app-service-web/app-service-web-overview.md
-[执行模型-vm]: ../virtual-machines/virtual-machines-windows-about.md
-[执行模型-云服务]: cloud-services-choose-me.md
-[Python 开发人员中心]: /develop/python/
+[execution model-web sites]: ../app-service-web/app-service-web-overview.md
+[execution model-vms]: ../virtual-machines/virtual-machines-windows-about.md
+[execution model-cloud services]: cloud-services-choose-me.md
+[Python Developer Center]: /develop/python/
 
-[Blob 服务]: ../storage/storage-python-how-to-use-blob-storage.md
-[队列服务]: ../storage/storage-python-how-to-use-queue-storage.md
-[表服务]: ../storage/storage-python-how-to-use-table-storage.md
-[服务总线队列]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
-[服务总线主题]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
+[Blob Service]: ../storage/storage-python-how-to-use-blob-storage.md
+[Queue Service]: ../storage/storage-python-how-to-use-queue-storage.md
+[Table Service]: ../storage/storage-python-how-to-use-table-storage.md
+[Service Bus Queues]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
+[Service Bus Topics]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
 
 
 <!--External Link references-->
 
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools for Visual Studio 文档]: http://aka.ms/ptvsdocs
-[云服务项目]: http://go.microsoft.com/fwlink/?LinkId=624028
-[用于 VS 2013 的 Azure SDK 工具]: http://go.microsoft.com/fwlink/?LinkId=323510
-[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
-[Python 2.7（32 位）]: https://www.python.org/downloads/
-[Python 3.5（32 位）]: https://www.python.org/downloads/
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
+[Cloud Service Projects]: http://go.microsoft.com/fwlink/?LinkId=624028
+[Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=746482
+[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=746481
+[Azure SDK Tools for VS 2017]: http://go.microsoft.com/fwlink/?LinkId=746483
+[Python 2.7 32-bit]: https://www.python.org/downloads/
+[Python 3.5 32-bit]: https://www.python.org/downloads/
 

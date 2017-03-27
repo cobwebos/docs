@@ -1,10 +1,10 @@
 ---
-title: "使用 Resource Manager 部署模型和 Azure 门户连接 VNet | Microsoft Docs"
+title: "将 Azure 虚拟网络连接到另一 VNet：门户 | Microsoft 文档"
 description: "使用 Resource Manager 和 Azure 门户创建 VNet 之间的 VPN 网关连接。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: a7015cfc-764b-46a1-bfac-043d30a275df
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2016
+ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7dbfcbc27d7a071027055bc52d96e423c37abd2d
+ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
+ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
 
 
 ---
-# <a name="configure-a-vnettovnet-connection-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet 连接
+# <a name="configure-a-vnet-to-vnet-connection-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet 连接
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
@@ -35,22 +35,23 @@ ms.openlocfilehash: 7dbfcbc27d7a071027055bc52d96e423c37abd2d
 
 ![v2v 示意图](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
 
-### <a name="deployment-models-and-methods-for-vnettovnet-connections"></a>VNet 到 VNet 连接的部署模型和方法
+### <a name="deployment-models-and-methods-for-vnet-to-vnet-connections"></a>VNet 到 VNet 连接的部署模型和方法
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
 
 下表显示了 VNet 到 VNet 配置的当前可用部署模型和方法。 当有配置步骤相关的文章发布时，我们会直接从此表格链接到该文章。
 
 [!INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
-#### <a name="vnet-peering"></a>VNet 对等互连
+**VNet 对等互连**
+
 [!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
 
-## <a name="about-vnettovnet-connections"></a>关于 VNet 到 VNet 的连接
+## <a name="about-vnet-to-vnet-connections"></a>关于 VNet 到 VNet 的连接
 将一个虚拟网络连接到另一个虚拟网络（VNet 到 VNet）类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 Azure VPN 网关来提供使用 IPsec/IKE 的安全隧道。 连接的 VNet 可位于不同的区域或不同的订阅中。
 
 你甚至可以将 VNet 到 VNet 通信与多站点配置组合使用。 这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑，如下图所示：
 
-![关于连接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "About connections")
+![关于连接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "关于连接")
 
 ### <a name="why-connect-virtual-networks"></a>为什么要连接虚拟网络？
 你可能会出于以下原因而连接虚拟网络：
@@ -63,7 +64,7 @@ ms.openlocfilehash: 7dbfcbc27d7a071027055bc52d96e423c37abd2d
   
   * 在同一区域中，由于存在隔离或管理要求，可以设置多个虚拟网络连接在一起的多层应用程序。
 
-有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet常见问题解答](#faq)。
+有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet 注意事项](#faq)。
 
 ### <a name="a-namevaluesaexample-settings"></a><a name="values"></a>示例设置
 练习这些步骤时，可以使用示例配置值。 为了举例，我们对每个 VNet 使用了多个地址空间。 但是，VNet 到 VNet 配置并不需要多个地址空间。
@@ -122,6 +123,7 @@ ms.openlocfilehash: 7dbfcbc27d7a071027055bc52d96e423c37abd2d
 
 ## <a name="a-namesubnetsa2-add-additional-address-space-and-create-subnets"></a><a name="subnets"></a>2.添加其他地址空间并创建子网
 创建 VNet 后，可以添加其他地址空间和创建子网。
+
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="a-namegatewaysubneta3-create-a-gateway-subnet"></a><a name="gatewaysubnet"></a>3.创建网关子网
@@ -153,21 +155,21 @@ TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创�
 
 1. 在“所有资源”中，导航到你的 VNet 的虚拟网络网关。 例如，**TestVNet1GW**。 单击“TestVNet1GW”打开“虚拟网络网关”边栏选项卡。
    
-    ![“连接”边栏选项卡](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/settings_connection.png "Connections blade")
+    ![连接边栏选项卡](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/settings_connection.png "连接边栏选项卡")
 2. 单击“+添加”打开“添加连接”边栏选项卡。
 3. 在“添加连接”边栏选项卡上的“名称”字段中，键入连接名称。 例如，**TestVNet1toTestVNet4**。
    
-    ![连接名称](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v1tov4.png "Connection name")
+    ![连接名称](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v1tov4.png "连接名称")
 4. 对于“连接类型”。 从下拉列表选择“VNet 到 VNet”。
 5. **第一个虚拟网络网关**字段值会自动填充，因为你是从指定的虚拟网络网关创建此连接。
 6. **第二个虚拟网络网关**字段是你想要创建连接的 VNet 的虚拟网络网关。 单击“选择另一个虚拟网络网关”可打开“选择虚拟网络网关”边栏选项卡。
    
-    ![添加连接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add_connection.png "Add a connection")
+    ![添加连接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add_connection.png "添加连接")
 7. 查看此边栏选项卡上列出的虚拟网络网关。 请注意，仅会列出你的订阅中的虚拟网络网关。 如果想要连接到订阅外的虚拟网络网关，请参阅 [PowerShell 文章](vpn-gateway-vnet-vnet-rm-ps.md)。 
 8. 单击想要连接的虚拟网络网关。
 9. 在“共享密钥”字段中，键入连接的共享密钥。 可以自己生成或创建此密钥。 在站点到站点连接中，使用的密钥应与本地设备和虚拟网络网关连接的密钥完全相同。 原理大致相同，所不同的是此时不是连接到 VPN 设备，而是连接到另一个虚拟网络网关。
    
-    ![共享密钥](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "Shared key")
+    ![共享密钥](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "共享密钥")
 10. 单击边栏选项卡底部的“确定”以保存更改。
 
 ## <a name="a-nametestvnet4connectiona8-configure-the-testvnet4-connection"></a><a name="TestVNet4Connection"></a>8.配置 TestVNet4 连接
@@ -181,23 +183,22 @@ TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创�
 
 查看连接并验证状态。 创建连接后，“状态”值将显示为“已成功”和“已连接”。
 
-![已成功](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connected.png "Succeeded")
+![成功](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connected.png "成功")
 
 可以单独双击每个连接，查看有关该连接的详细信息。
 
-![概要](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Essentials")
+![概要](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "概要")
 
-## <a name="a-namefaqavnettovnet-faq"></a><a name="faq"></a>VNet 到 VNet 常见问题解答
+## <a name="a-namefaqavnet-to-vnet-considerations"></a><a name="faq"></a>VNet 到 VNet 注意事项
 查看常见问题解答详细信息以获取有关 VNet 到 VNet 连接的其他信息。
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
-连接完成后，即可将虚拟机添加到虚拟网络。 请参阅 [创建虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 以获取相关步骤。
+连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机文档](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

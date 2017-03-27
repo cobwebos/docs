@@ -1,17 +1,76 @@
 ---
+title: "Azure Linux 虚拟机文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用所选的 Linux 分发版创建虚拟机。 文档介绍了创建 VM 模板的不同方式。"
+services: virtual-machines\linux
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: virtual-machines\linux
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 8125aca5030c869476499a07b17c8e21fcb76ef6
-ms.openlocfilehash: e5640566e8781441713ca5491abee1d9334b3970
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a83884a61475d6bc06e405bc7c72d4ac2435c398
+ms.lasthandoff: 03/18/2017
 
 ---
-#<a name="linux-virtual-machine-documentation"></a>Linux 虚拟机文档
+# <a name="linux-virtual-machine-documentation"></a>Linux 虚拟机文档
 
-使用 Azure 虚拟机创建 Linux 虚拟机，并在 Azure 计算机、网络和存储基础结构上运行它。  扩展至数千台计算机以便进行 Internet 范围内的部署，或在几分钟内运行一台虚拟机以便进行繁重的数字运算：同时保证速度与一致性。
+<div class="introHolder">
+    <div class="intro">
+了解如何使用所选的 Linux 分发版在 Azure 上运行虚拟机。 文档、API 参考和示例介绍了创建与部署 VM 模板的不同方式。
+    </div>
+    <div class="calloutHolder">
+        <div class="callout">
+            <a href="https://azure.microsoft.com/community/training/courses/managing-infrastructure-microsoft-azure-getting-started/">
+                <img src="media/index/pluralsight.svg" />免费 PluralSight 视频培训 - 使用 Microsoft Azure 管理基础结构</a>
+        </div>
+    </div>
+</div>
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-azure-overview">
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/cli.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>使用 Azure CLI 2.0 创建 Linux VM</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/portal.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>使用门户创建 VM</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -46,112 +105,53 @@ ms.openlocfilehash: e5640566e8781441713ca5491abee1d9334b3970
         </div>
         </a>
     </li>
-    <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/portal.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>使用门户创建 VM</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/xplat-cli-install">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/cli.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>安装 Azure CLI</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-cli">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/cli.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>使用 CLI 在 Azure 上创建 Linux VM</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
 </ul>
 
 ---
+ 
+<h2>参考</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/cli/azure/vm">Azure CLI</a></p>
+                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p>
+                        <p><a href="/java/api">Java</a></p>
+                        <p><a href="https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html">Python</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/compute">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-##<a name="reference"></a>参考
-
-###<a name="azure-cli"></a>Azure CLI
-[Azure CLI](/cli/azure/vm)
-
-###<a name="net"></a>.NET
-[托管参考 API 参考](/dotnet/api/)
-
-###<a name="java-sdk"></a>Java SDK
-[Java](/java/api/)
-
-###<a name="rest-compute"></a>REST（计算）
-[计算 REST API 参考](/rest/api/compute)
-
-###<a name="rest-network"></a>REST（网络）
-[网络 REST API 参考](https://msdn.microsoft.com/library/mt163658.aspx)
-
-###<a name="rest-storage"></a>REST（存储）
-[存储 REST API 参考](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/linux.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Linux 虚拟机文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

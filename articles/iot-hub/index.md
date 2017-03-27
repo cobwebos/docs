@@ -1,13 +1,27 @@
 ---
+title: "Azure IoT 中心文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 IoT 中心来连接、监视和控制数十亿个物联网资产。 教程、API 参考、视频和其他文档。"
+services: iot-hub
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: iot-hub
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 1b5ea8b5b5fb99fa65a1efd0eeff48af2e39346c
-ms.openlocfilehash: 7e3e54511ef1205d04eef1820a3e20f480386ed1
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9a27b7dc57772a8e4c82c96546463576daa6b1d9
+ms.lasthandoff: 03/18/2017
 
 ---
-#<a name="iot-hub-documentation"></a>IoT 中心文档
 
-Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备和一个解决方案后端之间实现安全可靠的双向通信。  IoT 中心针对设备连接提供广泛的监视功能，并且包含最流行语言和平台的设备库。 
+# <a name="iot-hub-documentation"></a>IoT 中心文档
+
+了解如何使用 IoT 中心来连接、监视和控制数十亿个物联网资产。 教程、API 参考、视频和其他文档可帮助你在 IoT 设备与解决方案后端之间部署可靠的双向通信。 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -103,32 +117,56 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备�
 </ul>
 
 ---
+ 
+<h2>参考</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/cli/azure/iot">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.devices">.NET（服务）</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.devices.client">.NET（设备）</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.sdk.iot.service.auth">Java（服务）</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java（设备）</a></p>
+                        <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iothub/1.1.7/index.html">Node（服务）</a></p>
+                        <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iot-device/1.1.7/index.html">Node（设备）</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-sdks/">Azure IoT SDK</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-gateway-sdk">网关 SDK</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/iothub/iothubresource">REST（资源提供程序）</a></p>
+                        <p><a href="/rest/api/iothub/deviceapi">REST（设备标识）</a></p>
+                        <p><a href="/rest/api/iothub/httpruntime">REST（设备消息传送）</a></p>
+                        <p><a href="/rest/api/iothub/jobapi">REST（作业）</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-##<a name="reference"></a>参考
-
-###<a name="azure-cli"></a>Azure CLI 
-[在 Azure CLI 中使用 IoT 中心](/cli/azure/iot)  
-
-###<a name="net"></a>.NET 
-[.NET 托管参考 API](/dotnet/api/) 
-
-###<a name="java"></a>Java 
-[Java SDK 参考](/java/api/) 
-
-###<a name="rest"></a>REST 
-[IoT 中心 REST API 参考](/rest/api/iothub) 
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-hub.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 IoT 中心文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

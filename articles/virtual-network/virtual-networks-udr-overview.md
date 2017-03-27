@@ -1,10 +1,10 @@
 ---
-title: "什么是用户定义的路由和 IP 转发？"
-description: "了解如何在 Azure 中使用用户定义的路由 (UDR) 和 IP 转发将流量转发到虚拟设备。"
+title: "Azure 中的用户定义的路由和 IP 转发 | Microsoft Docs"
+description: "了解如何在 Azure 中配置用户定义的路由 (UDR) 和 IP 转发将流量转发到网络虚拟设备。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: c39076c4-11b7-4b46-a904-817503c4b486
 ms.service: virtual-network
@@ -14,13 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
+ms.sourcegitcommit: c9996d2160c4082c18e9022835725c4c7270a248
+ms.openlocfilehash: 555939d6181d43d89a2d355744b74887d41df6ff
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="what-are-user-defined-routes-and-ip-forwarding"></a>什么是用户定义的路由和 IP 转发？
+# <a name="user-defined-routes-and-ip-forwarding"></a>用户定义的路由和 IP 转发
+
 当在 Azure 中将虚拟机 (VM) 添加到虚拟网络 (VNet) 时，将会注意到 VM 能够自动通过网络进行相互通信。 你不需要指定网关，即使这些 VM 位于不同子网中。 存在从 Azure 到你自己的数据中心的混合连接时，这同样适用于从 VM 到公共 Internet 甚至到本地网络的通信。
 
 之所以允许这种通信流，是因为 Azure 使用一系列系统路由来定义 IP 流量的流动方式。 系统路由通过以下方案来控制通信流：
@@ -29,6 +32,7 @@ ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
 * 在 VNet 中从一个子网到另一个子网。
 * 从 VM 到 Internet。
 * 通过 VPN 网关从一个 VNet 到另一个 VNet。
+* 通过对等互连从一个 VNet 连接到另一个 VNet（服务链接）。
 * 通过 VPN 网关从 VNet 到本地网络。
 
 下图显示了通过一个 VNet、两个子网、数个 VM 以及允许 IP 通信流动的系统路由完成的简单设置。
@@ -52,8 +56,8 @@ ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
 | 属性 | 说明 | 约束 | 注意事项 |
 | --- | --- | --- | --- |
 | 地址前缀 |将路由应用到的目标 CIDR，例如 10.1.0.0/16。 |必须是表示公共 Internet、Azure 虚拟网络或本地数据中心中的地址的有效 CIDR 范围。 |请确保**地址前缀**中不包含**下一跃点地址**的地址，否则数据包将进入从源到下一跃点的循环，而从不会到达目的地。 |
-| 下一跃点类型 |数据包应发送到的 Azure 跃点的类型。 |必须是以下值之一： <br/> **虚拟网络**。 表示本地虚拟网络。 例如，如果你在同一虚拟网络中有两个子网 10.1.0.0/16 和 10.2.0.0/16，则路由表中每个子网的路由的下一跃点值将为 *虚拟网络*。 <br/> **虚拟网络网关**。 表示 Azure S2S VPN 网关。 <br/> **Internet**。 表示由 Azure 基础结构提供的默认 Internet 网关。 <br/> **虚拟设备**。 表示已添加到 Azure 虚拟网络的虚拟设备。 <br/> **无**。 表示黑洞。 转发到黑洞的数据包根本就不会进行转发。 |请考虑使用“无”  类型，以停止将数据包流动到给定目标。 |
-| 下一跃点地址 |下一跃点地址包含应将数据包转发到的 IP 地址。 下一跃点值只允许在下一跃点类型为 *虚拟设备*的路由中使用。 |并且必须是在应用用户定义路由的虚拟网络中可以访问的 IP 地址。 |如果 IP 地址表示 VM，请确保在 Azure 中为 VM 启用“IP 转发” [](#IP-forwarding) 。 |
+| 下一跃点类型 |数据包应发送到的 Azure 跃点的类型。 |必须是以下值之一： <br/> **虚拟网络**。 表示本地虚拟网络。 例如，如果你在同一虚拟网络中有两个子网 10.1.0.0/16 和 10.2.0.0/16，则路由表中每个子网的路由的下一跃点值将为 *虚拟网络*。 <br/> **虚拟网络网关**。 表示 Azure S2S VPN 网关。 <br/> **Internet**。 表示由 Azure 基础结构提供的默认 Internet 网关。 <br/> **虚拟设备**。 表示已添加到 Azure 虚拟网络的虚拟设备。 <br/> **无**。 表示黑洞。 转发到黑洞的数据包根本就不会进行转发。 |可以考虑使用“虚拟设备”将流量定向到 VM 或 Azure 负载均衡器内部 IP 地址。  此类型允许指定 IP 地址，如下所述。 请考虑使用“无”  类型，以停止将数据包流动到给定目标。 |
+| 下一跃点地址 |下一跃点地址包含应将数据包转发到的 IP 地址。 下一跃点值只允许在下一跃点类型为 *虚拟设备*的路由中使用。 |并且必须是在应用用户定义路由的虚拟网络中可以访问的 IP 地址。 |如果 IP 地址表示 VM，请确保在 Azure 中为 VM 启用 [“IP 转发”](#IP-forwarding) 。 如果 IP 地址代表 Azure 负载均衡器的内部 IP 地址，请确保每个想要实现负载均衡的端口都有相应的负载均衡规则。|
 
 在 Azure PowerShell 中，某些“NextHopType”值具有不同名称：
 
@@ -107,10 +111,5 @@ ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [在 Resource Manager 部署模型中创建路由](virtual-network-create-udr-arm-template.md) 并将路由关联到子网。 
 * 了解如何 [在经典部署模型中创建路由](virtual-network-create-udr-classic-ps.md) 并将路由关联到子网。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

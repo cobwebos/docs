@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/24/2016
+ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 217ffc63e07d66de522accc42c246125d01713c8
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 851319639f1443c062b87305bbde351f41846433
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -40,7 +41,7 @@ Azure Active Directory B2C 是一个综合性的云标识管理解决方案，�
 * 当前的 [服务限制、制约和约束](active-directory-b2c-limitations.md)。
 * 最后是使用 Azure AD B2C 和 ASP.NET Core 的[代码示例](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c)。
 
-## <a name="howto-articles"></a>操作方法文章
+## <a name="how-to-articles"></a>操作方法文章
 了解如何使用 Azure Active Directory B2C 的特定功能：
 
 * 配置在面向用户的应用程序中使用的 [Facebook](active-directory-b2c-setup-fb-app.md)、[Google+](active-directory-b2c-setup-goog-app.md)、[Microsoft account](active-directory-b2c-setup-msa-app.md)、[Amazon](active-directory-b2c-setup-amzn-app.md) 和 [LinkedIn](active-directory-b2c-setup-li-app.md) 帐户。
@@ -54,8 +55,9 @@ Azure Active Directory B2C 是一个综合性的云标识管理解决方案，�
 以下链接有助于深入探索服务：
 
 * 请参阅 [Azure Active Directory B2C 定价信息](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。
-* 使用 [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) 或 [adal](http://stackoverflow.com/questions/tagged/adal) 标记获取有关 Stack Overflow 的帮助。
-* 使用 [用户之声](https://feedback.azure.com/forums/169401-azure-active-directory/)反馈你的看法 — 我们希望听到这些！ 在帖子标题中使用短语“AzureADB2C:”，以便我们可以找到该帖子。
+* 查看我们提供的适用于 Azure Active Directory B2C 的[代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c)。 
+* 使用 [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c) 标记获取有关 Stack Overflow 的帮助。
+* 使用 [用户之声](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)反馈你的看法 — 我们希望听到这些！
 * 查看 [Azure AD B2C 协议参考](active-directory-b2c-reference-protocols.md)。
 * 查看 [Azure AD B2C 令牌参考](active-directory-b2c-reference-tokens.md)。
 * 参阅 [Azure Active Directory B2C 常见问题解答](active-directory-b2c-faqs.md)。
@@ -63,10 +65,5 @@ Azure Active Directory B2C 是一个综合性的云标识管理解决方案，�
 
 ## <a name="get-security-updates-for-our-products"></a>获取关于我们产品的安全更新
 建议发生安全事件时获取相关通知，方法是访问 [此页](https://technet.microsoft.com/security/dd252948) 并订阅“安全公告通知”。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

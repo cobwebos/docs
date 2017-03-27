@@ -1,13 +1,27 @@
 ---
+title: "Azure 负载均衡器文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用负载均衡器提高应用的网络性能。 管理虚拟机、云资源和跨界虚拟网络中的流量。"
+services: load-balancer
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: load-balancer
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 4d6fd9344eaee31de4ee1e614ae558ce159c9245
-ms.openlocfilehash: 926beb8579ccdb1b0ed502ecb1892063ba976025
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 96da506c8545a1b863e62133706a2687c2498bbd
+ms.lasthandoff: 03/22/2017
 
 ---
+
 #<a name="load-balancer-documentation"></a>负载均衡器文档
 
-Azure Load Balancer 可提高应用程序的可用性和网络性能。  可将负载均衡器配置为针对传入虚拟机的 Internet 流量、云资源之间的流量、跨界虚拟网络中的流量，或者发往特定虚拟机的外部流量进行负载均衡。
+了解如何配置负载均衡器，提高应用程序的可用性和网络性能。 文档介绍了如何对传入和传出虚拟机、云资源和跨界虚拟网络的流量进行负载均衡。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -86,34 +100,50 @@ Azure Load Balancer 可提高应用程序的可用性和网络性能。  可将�
 
 ---
 
-##<a name="reference"></a>参考
+<h2>引用</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network">PowerShell</a></p>
+                        <p><a href="/cli/azure/network/lb">Azure CLI 2.0</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.network.models">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html">Node.js</a></p>
+                        <p><a href="http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers">Ruby</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations#azure.mgmt.network.operations.LoadBalancersOperations">Python</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt163651.aspx">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-###<a name="powershell"></a>PowerShell
-[负载均衡器 PowerShell 参考](/powershell/azureps-cmdlets-doc)
-
-###<a name="azure-cli"></a>Azure CLI
-[负载均衡器 Azure CLI] (/cli/azure/network/lb)
-
-###<a name="net"></a>.NET
-[.NET API 参考](/dotnet/api)
-
-###<a name="java"></a>Java
-[Java API 参考](/java/api)
-
-###<a name="rest"></a>REST
-[负载均衡器 REST API 参考](https://msdn.microsoft.com/library/azure/mt163651.aspx)
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/load-balancer.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载负载均衡器文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -9,29 +9,25 @@ manager: jhubbard
 editor: 
 ms.assetid: 906924bc-2707-48d3-bac6-397976a0409d
 ms.service: sql-database
+ms.custom: development
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 07/05/2016
-ms.author: joseidz
+ms.topic: article
+ms.date: 03/10/2017
+ms.author: jhubbard
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3a0f9501760ba3ea97341d30cd706c971c826430
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 0bab2cde451687311936ee74f304580a2a3b4b5e
+ms.lasthandoff: 03/14/2017
 
 
 ---
-# <a name="sql-database-tutorial-connect-excel-to-an-azure-sql-database-and-create-a-report"></a>SQL 数据库教程：将 Excel 连接到 Azure SQL 数据库并创建报表
-> [!div class="op_single_selector"]
-> * [Visual Studio](sql-database-connect-query.md)
-> * [SSMS](sql-database-connect-query-ssms.md)
-> * [Excel](sql-database-connect-excel.md)
-> 
-> 
+# <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库并创建报表
 
-了解如何将 Excel 连接到云中的 SQL 数据库，以便导入数据并根据数据库中的值来创建表和图表。 在本教程中，你将设置 Excel 与数据库表之间的连接，保存用于存储 Excel 的数据和连接信息的文件，然后根据数据库值创建分析数据透视图。
+将 Excel 连接到云中的 SQL 数据库，导入数据并根据数据库中的值来创建表和图表。 在本教程中，你将设置 Excel 与数据库表之间的连接，保存用于存储 Excel 的数据和连接信息的文件，然后根据数据库值创建分析数据透视图。
 
-在开始之前，需要在 Azure 中创建一个 SQL 数据库。 如果你没有，请参阅 [创建你的第一个 SQL 数据库](sql-database-get-started.md) ，以在几分钟内获取数据库，并让其中的示例数据正常运行。 在本文中，你可以从那篇文章中的示例数据导入 Excel，但你可以对自己的数据执行类似的步骤。
+在开始之前，需要在 Azure 中创建一个 SQL 数据库。 如果你没有，请参阅 [创建你的第一个 SQL 数据库](sql-database-get-started.md) ，以在几分钟内获取数据库，并让其中的示例数据正常运行。 在本文中，会将该文章中的示例数据导入 Excel，但你可以使用自己的数据执行类似的步骤。
 
 你还需要 Excel 的副本。 本文使用 [Microsoft Excel 2016](https://products.office.com/en-US/)。
 
@@ -65,7 +61,7 @@ ms.openlocfilehash: 3a0f9501760ba3ea97341d30cd706c971c826430
 ## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>将数据导入 Excel 并创建数据透视图
 创建连接并创建包含数据与连接信息的文件后，便可以导入数据。
 
-1. 在“导入数据”对话框中，单击要在工作表中呈现数据的选项，然后单击“确定”。 **将此数据添加到数据模型**。 你也可以选择创建**新工作表**或**将此数据添加到数据模型**。 有关数据模型的详细信息，请参阅[在 Excel 中创建数据模型](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)。 Click <bpt id="p1">**</bpt>Properties<ept id="p1">**</ept> to explore information about the odc file you created in the previous step and to choose options for refreshing the data.
+1. 在“导入数据”对话框中，单击要在工作表中呈现数据的选项，然后单击“确定”。 **将此数据添加到数据模型**。 你也可以选择创建**新工作表**或**将此数据添加到数据模型**。 有关数据模型的详细信息，请参阅[在 Excel 中创建数据模型](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)。 单击**“属性”**浏览在上一个步骤中创建的 odc 文件的相关信息，并选择用于刷新数据的选项。
    
     ![选择 Excel 中数据的格式](./media/sql-database-connect-excel/import-data.png)
    
@@ -84,10 +80,5 @@ ms.openlocfilehash: 3a0f9501760ba3ea97341d30cd706c971c826430
 * 了解如何 [使用 SQL Server Management Studio 连接到 SQL 数据库](sql-database-connect-query-ssms.md) ，以便进行高级查询和分析。
 * 了解 [弹性池](sql-database-elastic-pool.md)的优点。
 * 了解如何 [创建与后端 SQL 数据库连接的 Web 应用程序](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

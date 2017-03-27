@@ -1,6 +1,6 @@
 ---
-title: "Linux 教程：Hadoop 和 Hive 入门 | Microsoft 文档"
-description: "遵循本 Linux 教程开始使用 HDInsight 中的 Hadoop。 了解如何设置 Linux 群集，以及如何使用 Hive 查询数据。"
+title: "Hadoop 教程：HDInsight 中的 Hadoop 和 Hive 入门 | Microsoft 文档"
+description: "遵循本教程开始使用 HDInsight 中的 Hadoop。 了解如何创建 Linux 群集，以及如何使用 Hive 查询数据。"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -9,29 +9,25 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 6a12ed4c-9d49-4990-abf5-0a79fdfca459
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/14/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 63a4eaf9fbb76480e0617b36d15aebae03ec3da4
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: d038245747ff8cfd2c80d7a7e0f05373ccb1e5fe
+ms.lasthandoff: 03/11/2017
 
 
 ---
-# <a name="hadoop-tutorial-get-started-using-linuxbased-hadoop-in-hdinsight"></a>Hadoop 教程：在 HDInsight 中使用基于 Linux 的 Hadoop 入门
-> [!div class="op_single_selector"]
-> * [基于 Linux](hdinsight-hadoop-linux-tutorial-get-started.md)
-> * [基于 Windows](hdinsight-hadoop-tutorial-get-started-windows.md)
-> 
-> 
+# <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop 教程：开始使用 HDInsight 中的 Hadoop
 
-了解如何在 HDInsight 中创建基于 Linux 的 [Hadoop](http://hadoop.apache.org/) 群集，以及如何在 HDInsight 中运行 Hive 作业。 [Apache Hive](https://hive.apache.org/) 是 Hadoop 生态系统中最热门的组件。 当前 HDInsight 包括 4 种不同的群集类型：[Hadoop](hdinsight-hadoop-introduction.md)、[Spark](hdinsight-apache-spark-overview.md)、[HBase](hdinsight-hbase-overview.md) 和 [Storm](hdinsight-storm-overview.md)。  每个群集类型都支持一组不同的组件。 所有 4 种群集类型都支持 Hive。 有关 HDInsight 中受支持组件的列表，请参阅 [HDInsight 提供的 Hadoop 群集版本中有哪些新功能？](hdinsight-component-versioning.md)  
+了解如何在 HDInsight 中创建 [Hadoop](http://hadoop.apache.org/) 群集，以及如何在 HDInsight 中运行 Hive 作业。 [Apache Hive](https://hive.apache.org/) 是 Hadoop 生态系统中最热门的组件。 目前，HDInsight 随附六种不同类型的群集：[Hadoop](hdinsight-hadoop-introduction.md)、[Spark](hdinsight-apache-spark-overview.md)、[HBase](hdinsight-hbase-overview.md)、[Storm](hdinsight-storm-overview.md)、[交互式 Hive（预览版）](hdinsight-hadoop-use-interactive-hive.md)和 [R Server](hdinsight-hadoop-r-server-overview.md)。  每个群集类型都支持一组不同的组件。 所有六种群集类型都支持 Hive。 有关 HDInsight 中受支持组件的列表，请参阅 [HDInsight 提供的 Hadoop 群集版本中有哪些新功能？](hdinsight-component-versioning.md)  
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
-
 ## <a name="prerequisites"></a>先决条件
 开始学习本教程之前，必须做好以下准备：
 
@@ -41,36 +37,50 @@ ms.openlocfilehash: 63a4eaf9fbb76480e0617b36d15aebae03ec3da4
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-cluster"></a>创建群集
-大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，然后删除群集。 在本部分中，将使用 [Azure Resource Manager 模板](../resource-group-template-deploy.md)在 HDInsight 中创建基于 Linux 的 Hadoop 群集。 Resource Manager 模板完全可自定义，使用它可以轻松创建 HDInsight 等 Azure 资源。 学习本教程不需要有 Resource Manager 模板方面的经验。 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。 本教程使用的 Resource Manager 模板位于公共 Blob 容器 [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json)中。 
+
+大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，然后删除群集。 本部分介绍如何使用 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-template-deploy.md)在 HDInsight 中创建 Hadoop 群集。 Resource Manager 模板完全可自定义，使用它可以轻松创建 HDInsight 等 Azure 资源。 学习本教程不需要有 Resource Manager 模板方面的经验。 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。 使用页面顶部的选择器选择群集创建选项。
+
+在本教程中使用的 Resource Manager 模板位于 [Github](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)。 
 
 1. 单击以下映像以登录到 Azure，然后在 Azure 门户中打开 Resource Manager 模板。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. 在“参数”边栏选项卡中，输入以下内容： 
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-ssh-password%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
+2. 输入或选择下列值：
    
     ![在门户上开始使用 Resource Manager 模板 (HDInsight Linux)](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png)。
    
-   * **ClusterName**：为将创建的 Hadoop 群集输入名称。
-   * **群集登录名和密码**：默认登录名是 **admin**。
-   * **SSH 用户名和密码**：默认用户名是 **sshuser**。  可以重命名它。 
+    * **订阅**：选择你的 Azure 订阅。
+    * **资源组**：创建新资源组或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 
+    * **位置**：选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 
+    * **群集类型**：对于本教程，选择“Hadoop”。
+    * **群集名称**：输入 Hadoop 群集的名称。
+    * **群集登录名和密码**：默认登录名是 **admin**。
+    * **SSH 用户名和密码**：默认用户名是 **sshuser**。  可以重命名它。 
      
-     其他参数在本教程中是可选的。 可以将它们保留原样。 
+    某些属性已在模板中硬编码。  可以通过模板配置这些值。
+
+    * **位置**：群集和依赖的存储帐户所用的位置与资源组使用。
+    * **群集版本**：3.5
+    * **OS 类型**：Linux
+    * **辅助角色节点数**：2
+
+     每个群集都有一个 Azure 存储帐户依赖项。 该帐户通常称为默认存储帐户。 HDInsight 群集与其默认存储帐户必须一起放置在同一个 Azure 区域中。 删除群集不会删除存储帐户。 
      
-     每个群集都依赖于某个 Azure Blob 存储帐户。 该帐户通常称为默认存储帐户。 HDInsight 群集与其默认存储帐户必须一起放置在同一个 Azure 区域中。 删除群集不会删除存储帐户。 在模板中，默认存储帐户名已定义为附加了“store”的群集名称。 
-3. 单击“确定”  保存参数。
-4. 在“自定义部署”边栏选项卡中，单击“新建资源组名称”创建新资源组。  资源组是对群集、依赖存储帐户和其他资源进行分组的容器。 资源组位置可与群集位置不同。
-5. 单击“法律条款”，然后单击“创建”。
-6. 确认已选中“固定到仪表板”复选框，然后单击“创建”。 此时会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 
-7. 创建群集后，磁贴的标题被更改为指定的资源组名称。 门户中会自动打开两个边栏选项卡，其中显示了群集和群集设置。 
+     有关这些属性的详细说明，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+
+3. 依次选择“我同意上述条款和条件”、“固定到仪表板”，然后单击“购买”。 门户仪表板上应会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 创建群集后，磁贴的标题被更改为指定的资源组名称。 门户将在新边栏选项卡中自动打开该资源组。 可以看到已同时列出群集和默认存储。
    
-   ![HDInsight Linux 群集设置入门](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png)。
-   
-   列出了两个资源：群集和默认存储帐户。
+    ![HDInsight Linux 入门资源组](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png)。
+
+4. 单击群集名称，在新边栏选项卡中打开该群集。
+
+   ![HDInsight Linux 群集设置入门](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png)
+
 
 ## <a name="run-hive-queries"></a>运行 Hive 查询
 [Apache Hive](hdinsight-use-hive.md) 是 HDInsight 中最流行的组件。 可通过多种方法在 HDInsight 中运行 Hive 作业。 本教程使用门户中的 Ambari Hive 视图运行一些 Hive 作业。 有关提交 Hive 作业的其他方法，请参阅 [Use Hive in HDInsight](hdinsight-use-hive.md)（在 HDInsight 中使用 Hive）。
 
-1. 浏览到 **https://&lt;ClusterName>.azurehdinsight.net** 打开 Ambari，其中 &lt;ClusterName> 是在上一部分中创建的群集。
+1. 根据上面的屏幕截图所示单击“群集仪表板”，然后单击“HDInsight 群集仪表板”。  也可以浏览到 **https://&lt;ClusterName>.azurehdinsight.net** 打开 Ambari，其中 &lt;ClusterName> 是在上一部分中创建的群集。
 2. 输入在上一部分中指定的 Hadoop 用户名和密码。 默认的用户名为 **admin**。
 3. 打开“Hive 视图”，如以下屏幕截图中所示： 
    
@@ -112,7 +122,7 @@ ms.openlocfilehash: 63a4eaf9fbb76480e0617b36d15aebae03ec3da4
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在门户仪表板中，单击显示了创建群集时所用资源组名称的磁贴。
-3. 在资源边栏选项卡中单击“删除”，删除包含群集和默认存储帐户的资源组；或者，在“资源”磁贴中单击群集名称，然后在群集边栏选项卡中单击“删除”。 请注意，删除资源组将删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
+3. 在资源边栏选项卡中单击“删除”，删除包含群集和默认存储帐户的资源组；或者，在“资源”磁贴中单击群集名称，然后在群集边栏选项卡中单击“删除”。 请注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
 
 ## <a name="next-steps"></a>后续步骤
 本教程已介绍如何使用 Resource Manager 模板创建基于 Linux 的 HDInsight 群集，以及如何执行基本 Hive 查询。
@@ -126,7 +136,7 @@ ms.openlocfilehash: 63a4eaf9fbb76480e0617b36d15aebae03ec3da4
 
 如果已准备好开始处理自己的数据，并需要进一步了解 HDInsight 存储数据的方式或如何将数据导入 HDInsight，请参阅以下主题：
 
-* 有关 HDInsight 如何使用 Azure Blob 存储的信息，请参阅 [Use Azure Blob storage with HDInsight](hdinsight-hadoop-use-blob-storage.md)（将 Azure Blob 存储与 HDInsight 配合使用）。
+* 有关 HDInsight 如何使用 Azure 存储的信息，请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。
 * 有关如何将数据上载到 HDInsight 的信息，请参阅[将数据上载到 HDInsight][hdinsight-upload-data]。
 
 若要详细了解如何创建或管理 HDInsight 群集，请参阅以下主题：
@@ -141,28 +151,11 @@ ms.openlocfilehash: 63a4eaf9fbb76480e0617b36d15aebae03ec3da4
 
 [1]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
+[hdinsight-provision]: hdinsight-provision-linux-clusters.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-[powershell-download]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[powershell-install-configure]: powershell-install-configure.md
-[powershell-open]: powershell-install-configure.md#Install
-
-[img-hdi-dashboard]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.png
-[img-hdi-dashboard-query-select]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.query.select.png
-[img-hdi-dashboard-query-select-result]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.query.select.result.png
-[img-hdi-dashboard-query-select-result-output]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.query.select.result.output.png
-[img-hdi-dashboard-query-browse-output]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.query.browse.output.png
-[image-hdi-clusterstatus]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.ClusterStatus.png
-[image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
-[image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

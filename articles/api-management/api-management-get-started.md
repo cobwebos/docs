@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 587c7346bcb8e6549febd3904c8d0a9e46cbc50a
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 6376faa50613288a797e2c0683a0890fa21879e1
 
 
 ---
@@ -59,11 +59,11 @@ ms.openlocfilehash: 587c7346bcb8e6549febd3904c8d0a9e46cbc50a
 
 ## <a name="create-service-instance"> </a>创建 API 管理实例
 > [!NOTE]
-> 若要完成本教程，你需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费帐户。 有关详细信息，请参阅 [Azure 免费试用][Azure 免费试用]。
+> 若要完成本教程，你需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费帐户。 有关详细信息，请参阅 [Azure 免费试用][Azure Free Trial]。
 > 
 > 
 
-使用 API 管理的第一步是创建一个服务实例。 登录到 [Azure 门户][Azure 门户]，单击“新建”、“Web + 移动”、“API 管理”。
+使用 API 管理的第一步是创建一个服务实例。 登录到 [Azure 门户][Azure Portal]，单击“新建”、“Web + 移动”、“API 管理”。
 
 ![API 管理新实例][api-management-create-instance-menu]
 
@@ -74,7 +74,7 @@ ms.openlocfilehash: 587c7346bcb8e6549febd3904c8d0a9e46cbc50a
 输入 **Contoso Ltd.** 作为**组织名称**，并在“管理员电子邮件”字段中输入电子邮件地址。
 
 > [!NOTE]
-> 此电子邮件地址用于来自 API 管理系统的通知。 有关详细信息，请参阅[如何在 Azure API 管理中配置通知和电子邮件模板][如何在 Azure API 管理中配置通知和电子邮件模板]。
+> 此电子邮件地址用于来自 API 管理系统的通知。 有关详细信息，请参阅[如何在 Azure API 管理中配置通知和电子邮件模板][How to configure notifications and email templates in Azure API Management]。
 > 
 > 
 
@@ -83,7 +83,7 @@ ms.openlocfilehash: 587c7346bcb8e6549febd3904c8d0a9e46cbc50a
 API 管理服务实例在以下三层中提供：开发人员、标准和高级。
 
 > [!NOTE]
-> “开发人员”层用于开发、测试和试验 API 程序，在其中高可用性不是需要考虑的因素。 在“标准”和“高级”层中，可以扩展保留单位计数以处理更多流量。 “标准”和“高级”层为 API 管理服务提供最多处理能力和性能。 可以使用任何层完成本教程。 有关 API 管理层的详细信息，请参阅 [API 管理定价][API 管理定价]。
+> “开发人员”层用于开发、测试和试验 API 程序，在其中高可用性不是需要考虑的因素。 在“标准”和“高级”层中，可以扩展保留单位计数以处理更多流量。 “标准”和“高级”层为 API 管理服务提供最多处理能力和性能。 可以使用任何层完成本教程。 有关 API 管理层的详细信息，请参阅 [API 管理定价][API Management pricing]。
 > 
 > 
 
@@ -199,26 +199,26 @@ API 部分有几个选项卡。 “摘要”选项卡显示有关 API 的基本�
 ## <a name="next-steps"> </a>后续步骤
 * 了解如何 [使用速率限制保护 API](api-management-howto-product-with-rules.md)。
 
-[Azure 免费试用]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
+[Azure Free Trial]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
-[创建 API 管理实例]: #create-service-instance
-[创建 API]: #create-api
-[添加操作]: #add-operation
-[将新的 API 添加到产品]: #add-api-to-product
-[订阅包含 API 的产品]: #subscribe
+[Create an API Management instance]: #create-service-instance
+[Create an API]: #create-api
+[Add an operation]: #add-operation
+[Add the new API to a product]: #add-api-to-product
+[Subscribe to the product that contains the API]: #subscribe
 [Call an operation from the Developer Portal]: #call-operation
-[查看分析]: #view-analytics
-[后续步骤]: #next-steps
+[View analytics]: #view-analytics
+[Next steps]: #next-steps
 
 
-[如何管理 Azure API 管理中的开发人员帐户]: api-management-howto-create-or-invite-developers.md
-[配置 API 设置]: api-management-howto-create-apis.md#configure-api-settings
-[如何在 Azure API 管理中配置通知和电子邮件模板]: api-management-howto-configure-notifications.md
-[响应]: api-management-howto-add-operations.md#responses
-[如何创建和发布产品]: api-management-howto-add-products.md
-[API 管理定价]: http://azure.microsoft.com/pricing/details/api-management/
+[How to manage developer accounts in Azure API Management]: api-management-howto-create-or-invite-developers.md
+[Configure API settings]: api-management-howto-create-apis.md#configure-api-settings
+[How to configure notifications and email templates in Azure API Management]: api-management-howto-configure-notifications.md
+[Responses]: api-management-howto-add-operations.md#responses
+[How create and publish a product]: api-management-howto-add-products.md
+[API Management pricing]: http://azure.microsoft.com/pricing/details/api-management/
 
-[Azure 门户]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 
 [api-management-management-console]: ./media/api-management-get-started/api-management-management-console.png
 [api-management-create-instance-menu]: ./media/api-management-get-started/api-management-create-instance-menu.png
@@ -257,6 +257,6 @@ API 部分有几个选项卡。 “摘要”选项卡显示有关 API 的基本�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

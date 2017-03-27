@@ -1,17 +1,30 @@
 ---
+title: "Azure Redis 缓存文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 Azure Redis 缓存 - 一个安全的数据缓存和消息传送中转站，可让应用程序快速访问数据。 教程、API 参考和其他资源。"
+services: redis-cache
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: redis-cache
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: cd96f7ea32696ea920cd1622ae6d08692b4f8f4c
-ms.openlocfilehash: a244eaf8dff788354caab1c327a22cb5c5b423cf
+ms.sourcegitcommit: ba5cba11b7b5ba142094e9d2c0b027386266e83a
+ms.openlocfilehash: 19756171a8831eef9ac25cfa619a815d17140257
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="redis-cache-documentation"></a>Redis 缓存文档
 
-Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓存可以访问 Microsoft 管理的、可从 Azure 中的任何应用程序访问的安全专用 Redis 缓存。 Azure Redis 缓存提供高吞吐量、一贯的低延迟数据访问速度，为可缩放的快速 Azure 应用程序提供支持。
+了解如何使用 Azure Redis 缓存 - 一个安全的数据缓存和消息传送中转站，可让应用程序以较高的吞吐量、较低的延迟访问数据。 教程、API 参考和其他文档介绍了如何从 Azure 上的任何应用程序使用 Redis 缓存。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/redis-cache/cache-premium-tier-intro/">
+        <a href="/azure/redis-cache/cache-premium-tier-intro">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -52,7 +65,7 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/nodejs.svg" alt="" />
+                            <img src="media/index/dotnet.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -64,7 +77,7 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
         </a>
     </li>
     <li>
-        <a href="/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache">
+        <a href="/azure/redis-cache/cache-web-app-howto">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -82,7 +95,7 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
         </a>
     </li>
     <li>
-        <a href="/azure/redis-cache/documentdb-nodejs-get-started">
+        <a href="/azure/redis-cache/cache-nodejs-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -139,34 +152,49 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
 
 ---
 
-##<a name="reference"></a>参考
+<h2>引用</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.rediscache/v2.3.0/azurerm.rediscache">PowerShell</a></p>
+                        <p><a href="/cli/azure/redis">Azure CLI 2.0（预览版）</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.redis">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.redis._redis_cache">Java</a></p>
+                        <p><a href="http://redis.io/clients">Redis 客户端</a></p>
+                        <p><a href="http://redis.io/commands#">Redis 命令</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="https://docs.microsoft.com/rest/api/redis/">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell 参考](/powershell/azureps-cmdlets-docs)
-
-###<a name="azure-cli"></a>Azure CLI
-[在 Azure CLI 中使用 Redis 缓存](/cli/azure/redis) 
-
-###<a name="net"></a>.NET 
-[Redis 缓存托管参考 API](/dotnet/api/) 
-
-###<a name="java"></a>Java 
-[Azure Java SDK](/java/api/)
-
-###<a name="rest"></a>REST 
-[Redis 缓存 REST API 参考](/rest/api/)  
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/redis-cache.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Redis 缓存文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

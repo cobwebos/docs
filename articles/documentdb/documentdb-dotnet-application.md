@@ -13,20 +13,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 12/25/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 44307f258ea05635addf85bf9c59cd78b2ac0f1e
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="a-nametoc395809351aaspnet-mvc-tutorial-web-application-development-with-documentdb"></a><a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 DocumentDB 开发 Web 应用程序
+# <a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 DocumentDB 开发 Web 应用程序
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
+> * [适用于 MongoDB 的 .NET](documentdb-mongodb-application.md)
 > * [Node.js](documentdb-nodejs-application.md)
 > * [Java](documentdb-java-application.md)
-> * [Python](documentdb-python-application.md) 
+> * [Python](documentdb-python-application.md)
 > 
 > 
 
@@ -41,26 +43,30 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 > 
 > 
 
-## <a name="a-nametoc395637760aprerequisites-for-this-database-tutorial"></a><a name="_Toc395637760"></a>本数据库教程的先决条件
+## <a name="_Toc395637760"></a>本数据库教程的先决条件
 在按照本文中的说明操作之前，你应确保已拥有下列项：
 
-* 有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+* 有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/) 
+
+    或
+
+    本地安装的 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)。
 * [Visual Studio 2015](http://www.visualstudio.com/) 、Visual Studio 2013 Update 4 或更高版本。 如果使用的是 Visual Studio 2013，则需安装 [Microsoft.Net.Compilers Nuget 包](https://www.nuget.org/packages/Microsoft.Net.Compilers/) 以添加对 C# 6.0 的支持。 
-* 用于 .NET 的 Azure SDK 2.5.1 或更高版本，可通过 [Microsoft Web 平台安装程序][Microsoft Web 平台安装程序]获取。
+* 用于 .NET 的 Azure SDK 2.5.1 或更高版本，可通过 [Microsoft Web 平台安装程序][Microsoft Web Platform Installer]获取。
 
 本文中的所有屏幕截图都是使用已应用 Update 4 的 Visual Studio 2013 以及 Azure SDK for .NET 2.5.1 版获取的。 如果你的系统配备了不同的版本，那么，你的屏幕和选项可能不会完全相符，但只要你符合上述先决条件，本解决方案应该还是有效。
 
-## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>步骤 1：创建 DocumentDB 数据库帐户
-让我们首先创建 DocumentDB 帐户。 如果已有帐户，则可以跳到 [创建新的 ASP.NET MVC 应用程序](#_Toc395637762)。
+## <a name="_Toc395637761"></a>步骤 1：创建 DocumentDB 数据库帐户
+让我们首先创建 DocumentDB 帐户。 如果已有一个帐户，或者要在本教程中使用 DocumentDB Emulator，可以跳到[创建新的 ASP.NET MVC 应用程序](#_Toc395637762)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 [!INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
 <br/>
- 现在，我们将演练如何从头开始创建新的 ASP.NET MVC 应用程序。 
+现在，我们将演练如何从头开始创建新的 ASP.NET MVC 应用程序。 
 
-## <a name="a-nametoc395637762astep-2-create-a-new-aspnet-mvc-application"></a><a name="_Toc395637762"></a>步骤 2：创建新的 ASP.NET MVC 应用程序
+## <a name="_Toc395637762"></a>步骤 2：创建新的 ASP.NET MVC 应用程序
 现在你已有帐户，我们可以开始创建新的 ASP.NET 项目。
 
 1. 在 Visual Studio 的“文件”菜单中，指向“新建”，然后单击“项目”。
@@ -78,6 +84,9 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 5. 在模板窗格中，选择“MVC”。
 6. 如果想要在 Azure 中托管应用程序，请选择右下角的“在云中托管”，让 Azure 托管应用程序。 我们已选择要在云中托管，并运行 Azure 网站中托管的应用程序。 选择此选项将会预先预配 Azure 网站，让你在需要部署最终的工作应用程序时更为容易。 如果想要在其他位置托管或者不想预先配置 Azure，只需清除“在云中托管”。
 7. 单击“确定”，让 Visual Studio 围绕空白 ASP.NET MVC 模板基架的搭建执行操作。 
+
+    如果收到错误“处理请求时出错”，请参阅[故障排除](#troubleshooting)部分。
+
 8. 如果你选择在云中托管，则会出现至少一个附加屏幕，要求你登录 Azure 帐户并提供新网站的部分值。 提供所有附加值，然后继续操作。 
    
       我在此处没有选择“数据库服务器”，因为我们并未使用 Azure SQL Database 服务器，稍后我们会在 Azure 门户中创建新的 Azure DocumentDB 帐户。
@@ -89,7 +98,7 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
    
     我们会跳过在本地运行项目，因为我确定我们都已看过 ASP.NET“Hello World”应用程序。 让我们直接跳到将 DocumentDB 添加到此项目并构建应用程序的步骤。
 
-## <a name="a-nametoc395637767astep-3-add-documentdb-to-your-mvc-web-application-project"></a><a name="_Toc395637767"></a>步骤 3：将 DocumentDB 添加到 MVC Web 应用程序项目
+## <a name="_Toc395637767"></a>步骤 3：将 DocumentDB 添加到 MVC Web 应用程序项目
 我们已经完成了此解决方案的大部分 ASP.NET MVC 琐事，现在可以开始本教程的真正目的，也就是将 Azure DocumentDB 添加到 MVC Web 应用程序。
 
 1. DocumentDB .NET SDK 将打包并以 NuGet 程序包的形式分发。 若要在 Visual Studio 中获取 NuGet 包，请使用 Visual Studio 中的 NuGet 包管理器，方法是右键单击“解决方案资源管理器”中的项目，然后单击“管理 NuGet 包”。
@@ -110,14 +119,14 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
    
       ![屏幕截图：解决方案资源管理器中添加到 JSON 数据项目的两个引用](./media/documentdb-dotnet-application/image22.png)
 
-## <a name="a-nametoc395637763astep-4-set-up-the-aspnet-mvc-application"></a><a name="_Toc395637763"></a>步骤 4：设置 ASP.NET MVC 应用程序
+## <a name="_Toc395637763"></a>步骤 4：设置 ASP.NET MVC 应用程序
 现在我们可以开始向此 MVC 应用程序添加模型、视图和控制器：
 
 * [添加模型](#_Toc395637764)。
 * [添加控制器](#_Toc395637765)。
 * [添加视图](#_Toc395637766)。
 
-### <a name="a-nametoc395637764aadd-a-json-data-model"></a><a name="_Toc395637764"></a>添加 JSON 数据模型
+### <a name="_Toc395637764"></a>添加 JSON 数据模型
 首先，让我们在 MVC 中创建 **M** （模型）。 
 
 1. 在“解决方案资源管理器”中，右键单击“模型”文件夹，单击“添加”，然后单击“类”。
@@ -154,7 +163,7 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
    
     使用 JSON 时，你不但可以控制属性名称的格式，还可以像我命名 **Description** 属性一样重命名你的 .NET 属性。 
 
-### <a name="a-nametoc395637765aadd-a-controller"></a><a name="_Toc395637765"></a>添加控制器
+### <a name="_Toc395637765"></a>添加控制器
 现已创建 **M**，接下来创建 MVC 中的 **C**（控制器类）。
 
 1. 在“解决方案资源管理器”中，右键单击“控制器”文件夹，单击“添加”，然后单击“控制器”。
@@ -173,14 +182,14 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
    
     你可以关闭 ItemController.cs，我们稍后会回头使用此文件。 
 
-### <a name="a-nametoc395637766aadd-views"></a><a name="_Toc395637766"></a>添加视图
+### <a name="_Toc395637766"></a>添加视图
 现在，我们可以开始创建 MVC 中的 **V** （视图）：
 
 * [添加“项索引”视图](#AddItemIndexView)
 * [添加“新建项”视图](#AddNewIndexView)。
 * [添加“编辑项”视图](#_Toc395888515)。
 
-#### <a name="a-nameadditemindexviewaadd-an-item-index-view"></a><a name="AddItemIndexView"></a>添加“项索引”视图
+#### <a name="AddItemIndexView"></a>添加“项索引”视图
 1. 在“解决方案资源管理器”中，展开“视图”文件夹，右键单击先前在添加 **ItemController** 时 Visual Studio 创建的空白“项”文件夹，单击“添加”，然后单击“视图”。
    
     ![屏幕截图：显示 Visual Studio 使用突出显示的“添加视图”命令创建的 Item 文件夹的解决方案资源管理器](./media/documentdb-dotnet-application/image17.png)
@@ -195,7 +204,7 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
      ![屏幕截图：显示“添加视图”对话框](./media/documentdb-dotnet-application/image18.png)
 3. 设置完所有这些值之后，单击“添加”，让 Visual Studio 创建新的模板视图。 完成之后，它会打开刚创建的 cshtml 文件。 我们可以在 Visual Studio 中关闭该文件，我们稍后会回头使用此文件。
 
-#### <a name="a-nameaddnewindexviewaadd-a-new-item-view"></a><a name="AddNewIndexView"></a>添加“新建项”视图
+#### <a name="AddNewIndexView"></a>添加“新建项”视图
 与创建“项索引”视图的方式类似，我们现在可以开始创建新的视图，以供创建新**项**使用。
 
 1. 在“解决方案资源管理器”中，再次右键单击“Item”文件夹，单击“添加”，然后单击“视图”。
@@ -208,7 +217,7 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
    * 在“布局页”框中，键入 ***~/Views/Shared/_Layout.cshtml***。
    * 单击 **“添加”**。
 
-#### <a name="a-nametoc395888515aadd-an-edit-item-view"></a><a name="_Toc395888515"></a>添加“编辑项”视图
+#### <a name="_Toc395888515"></a>添加“编辑项”视图
 最后，采用与之前相同的方式添加最后一个视图，以供编辑 **项** 使用。
 
 1. 在“解决方案资源管理器”中，再次右键单击“Item”文件夹，单击“添加”，然后单击“视图”。
@@ -223,7 +232,7 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 
 完成此操作之后，关闭 Visual Studio 中的所有 cshtml 文档，我们稍后会回头使用这些视图。
 
-## <a name="a-nametoc395637769astep-5-wiring-up-documentdb"></a><a name="_Toc395637769"></a>步骤 5：连接 DocumentDB
+## <a name="_Toc395637769"></a>步骤 5：连接 DocumentDB
 我们已经创建了标准的 MVC 项目，现在我们可以开始添加 DocumentDB 的代码。 
 
 在本节中，我们将添加代码来处理下列操作：
@@ -232,7 +241,7 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 * [添加项](#_Toc395637771)。
 * [编辑项](#_Toc395637772)。
 
-### <a name="a-nametoc395637770alisting-incomplete-items-in-your-mvc-web-application"></a><a name="_Toc395637770"></a>列出 MVC Web 应用程序中未完成的项
+### <a name="_Toc395637770"></a>列出 MVC Web 应用程序中未完成的项
 首先要执行的操作是添加类，其中包含要连接并使用 DocumentDB 的所有逻辑。 在本教程中，我们会将所有逻辑封装到名为 DocumentDBRepository 的存储库类中。 
 
 1. 在“解决方案资源管理器”中，右键单击该项目，单击“添加”，然后单击“类”。 将新类命名为 **DocumentDBRepository**，然后单击“添加”。
@@ -383,7 +392,7 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 
 ![屏幕截图：本数据库教程创建的待办事项列表 Web 应用程序](./media/documentdb-dotnet-application/image23.png)
 
-### <a name="a-nametoc395637771aadding-items"></a><a name="_Toc395637771"></a>添加项
+### <a name="_Toc395637771"></a>添加项
 我们可以开始将一些项放入数据库中，所以除了空白网格以外，我们还可以看到其他内容。
 
 让我们将一些代码添加到 DocumentDBRepository 和 ItemController，以在 DocumentDB 中保留记录。
@@ -423,13 +432,13 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
    
     此代码会调用到 DocumentDBRepository，并使用 CreateItemAsync 方法将新的待办事项保存到数据库。 
    
-    **安全说明**：此处所使用的 **ValidateAntiForgeryToken** 属性可帮助此应用程序防止跨站点请求伪造攻击。 这不仅仅是添加此属性，你的视图也必须使用此防伪令牌。 有关此主题的详细信息以及如何正确实施此操作的示例，请参阅[防止跨站点请求伪造][防止跨站点请求伪造]。 [GitHub][GitHub] 上提供的源代码已有完整实现。
+    **安全说明**：此处所使用的 **ValidateAntiForgeryToken** 属性可帮助此应用程序防止跨站点请求伪造攻击。 这不仅仅是添加此属性，你的视图也必须使用此防伪令牌。 有关此主题的详细信息以及如何正确实施此操作的示例，请参阅[防止跨站点请求伪造][Preventing Cross-Site Request Forgery]。 [GitHub][GitHub] 上提供的源代码已有完整实现。
    
-    **安全说明**：我们还会在方法参数中使用 **Bind** 属性，帮助防范 over-posting 攻击。 有关更多详细信息，请参阅 [ASP.NET MVC 中的基本 CRUD 操作][ASP.NET MVC 中的基本 CRUD 操作]。
+    **安全说明**：我们还会在方法参数中使用 **Bind** 属性，帮助防范 over-posting 攻击。 有关更多详细信息，请参阅 [ASP.NET MVC 中的基本 CRUD 操作][Basic CRUD Operations in ASP.NET MVC]。
 
 将新项添加到数据库所需的代码至此结束。
 
-### <a name="a-nametoc395637772aediting-items"></a><a name="_Toc395637772"></a>编辑项
+### <a name="_Toc395637772"></a>编辑项
 我们最后还要做一件事，那就是添加在数据库中编辑 **项** 并将它们标记为已完成的功能。 编辑视图已添加到项目中，因此，我们只需重新将某些代码添加到控制器和 **DocumentDBRepository** 类。
 
 1. 将下列代码添加到 **DocumentDBRepository** 类。
@@ -503,14 +512,14 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 
 这样便大功告成了，这些就是我们必须运行应用程序的所有操作：列出未完成的**项**，添加新**项**，最后是编辑**项**。
 
-## <a name="a-nametoc395637773astep-6-run-the-application-locally"></a><a name="_Toc395637773"></a>步骤 6：在本地运行应用程序
+## <a name="_Toc395637773"></a>步骤 6：在本地运行应用程序
 若要在本地计算机上测试应用程序，请执行以下操作：
 
 1. 在 Visual Studio 中按 F5，即可在调试模式下构建应用程序。 这样应该可以构建应用程序，并启动包含先前看到的空白网格页面的浏览器：
    
     ![屏幕截图：本数据库教程创建的待办事项列表 Web 应用程序](./media/documentdb-dotnet-application/image24.png)
    
-    如果使用的是 Visual Studio 2013 并收到“不能在 catch 子句的正文中等待。 ”错误，则需安装 [Microsoft.Net.Compilers Nuget 包](https://www.nuget.org/packages/Microsoft.Net.Compilers/)。 也可将你的代码与 [GitHub][GitHub] 上的示例项目进行比较。 
+    如果使用的是 Visual Studio 2013 并收到“不能在 catch 子句的正文中等待。 ”错误，则需安装 [Microsoft.Net.Compilers Nuget 包](https://www.nuget.org/packages/Microsoft.Net.Compilers/)。 也可将代码与 [GitHub][GitHub] 上的示例项目进行比较。 
 2. 单击“新建”链接，然后在“名称”和“描述”字段中添加值。 将“已完成”复选框保持为未选中状态，否则，新**项**将以已完成状态添加，不会出现在初始列表中。
    
     ![屏幕截图：“创建”视图](./media/documentdb-dotnet-application/image25.png)
@@ -524,7 +533,7 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
     ![屏幕截图：选中了“已完成”框的“索引”视图](./media/documentdb-dotnet-application/image27.png)
 5. 完成应用测试后，按 Ctrl+F5 停止调试应用。 你可以开始部署了！
 
-## <a name="a-nametoc395637774astep-7-deploy-the-application-to-azure-websites"></a><a name="_Toc395637774"></a>步骤 7：将应用程序部署到 Azure 网站
+## <a name="_Toc395637774"></a>步骤 7：将应用程序部署到 Azure 网站
 你已经拥有可在 DocumentDB 正常工作的完整应用程序，我们现在要将此 Web 应用部署到 Azure 网站。 如果在创建空白 ASP.NET MVC 项目时选择了“在云中托管”，则 Visual Studio 可让这项操作变得十分简单，大部分任务会自动完成。 
 
 1. 若要发布此应用程序，只需要右键单击“解决方案资源管理器”中的项目，然后单击“发布”即可。
@@ -536,20 +545,34 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 
 在几秒钟内，Visual Studio 将完成 Web 应用程序发布并启动浏览器，你可从中查看在 Azure 中运行的简单作品！
 
-## <a name="a-nametoc395637775anext-steps"></a><a name="_Toc395637775"></a>后续步骤
+## <a name="Troubleshooting"></a>故障排除
+
+如果在尝试部署 Web 应用时收到“处理请求时出错”，请执行以下操作： 
+
+1. 关闭该错误消息，然后再次选择“Microsoft Azure Web 应用”。 
+2. 登录，然后选择“新建”创建新的 Web 应用。 
+3. 在“在 Microsoft Azure 上创建 Web 应用”屏幕中执行以下操作： 
+    
+    - Web 应用名称：“todo-net-app”
+    - 应用服务计划：创建名为“todo-net-app”的新计划
+    - 资源组：创建名为“todo-net-app”的新组
+    - 区域：选择最靠近应用用户的区域
+    - 数据库服务器：单击“数据库”，然后单击“创建”。 
+
+4. 在“todo-net-app *”屏幕中，单击“验证连接”。**验证连接后，单击“发布”。** 
+    
+    然后，该应用将显示在浏览器中。
+
+
+## <a name="_Toc395637775"></a>后续步骤
 祝贺你！ 你刚使用 Azure DocumentDB 构建了第一个 ASP.NET MVC 应用程序并将其发布到了 Azure 网站。 可以从 [GitHub][GitHub] 下载或克隆完整应用程序（包括本教程未涵盖的详细信息和删除功能）的源代码。 因此，如果你想将代码添加到应用中，请捕捉代码，再将它添加到此应用中。
 
-若要向应用程序添加其他功能，请查看 [DocumentDB .NET 库](https://msdn.microsoft.com/library/azure/dn948556.aspx)中提供的 API，我们欢迎各位在 [GitHub][GitHub] 上的 DocumentDB .NET 库中补充内容。 
+若要向应用程序添加其他功能，请查看 [DocumentDB .NET 库](https://msdn.microsoft.com/library/azure/dn948556.aspx)中提供的 API，并欢迎在 [GitHub][GitHub] 上的 DocumentDB .NET 库中补充内容。 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web 平台安装程序]: http://www.microsoft.com/web/downloads/platform.aspx
-[防止跨站点请求伪造]: http://go.microsoft.com/fwlink/?LinkID=517254
-[ASP.NET MVC 中的基本 CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

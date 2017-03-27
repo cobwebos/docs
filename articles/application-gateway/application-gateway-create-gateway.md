@@ -4,44 +4,47 @@ description: "此页提供有关创建、配置、启动和删除 Azure 应用�
 documentationcenter: na
 services: application-gateway
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 577054ca-8368-4fbf-8d53-a813f29dc3bc
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
+ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 11/10/2016
+ms.date: 12/12/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 996bac38e6b67cfe7b72e11bf29831b12086bf1b
+ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
+ms.openlocfilehash: 8b72a3f26e356af588e9f5c2039bcc525366ce11
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-start-or-delete-an-application-gateway"></a>创建、启动或删除应用程序网关
+# <a name="create-start-or-delete-an-application-gateway-with-powershell"></a>使用 PowerShell 创建、启动或删除应用程序网关 
+
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure 经典 PowerShell](application-gateway-create-gateway.md)
 > * [Azure Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
-> 
-> 
 
-Azure 应用程序网关是第 7 层负载平衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载平衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
+Azure 应用程序网关是第&7; 层负载平衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载平衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
 
 本文将指导你完成创建、配置、启动和删除应用程序网关的步骤。
 
 ## <a name="before-you-begin"></a>开始之前
+
 1. 使用 Web 平台安装程序安装最新版本的 Azure PowerShell cmdlet。 可以从[下载页](https://azure.microsoft.com/downloads/)的“Windows PowerShell”部分下载并安装最新版本。
 2. 如果你有现有的虚拟网络，请选择现有一个空子网，或者在现有虚拟网络中创建一个新子网，专门供应用程序网关使用。 除非使用 vnet 对等互连，否则应用程序网关部署到的虚拟网络必须与要部署在应用程序网关后面的资源相同。 若要了解详细信息，请访问 [Vnet 对等互连](../virtual-network/virtual-network-peering-overview.md)
 3. 请确认你已创建包含有效子网、可正常运行的虚拟网络。 请确保没有虚拟机或云部署正在使用子网。 应用程序网关必须单独位于虚拟网络子网中。
 4. 必须存在配置为使用应用程序网关的服务器，或者必须在虚拟网络中为其创建终结点，或者必须为其分配公共 IP/VIP。
 
 ## <a name="what-is-required-to-create-an-application-gateway"></a>创建应用程序网关需要什么？
-使用 **New-AzureApplicationGateway** 命令创建应用程序网关时，此时无需设置配置；配置新创建的资源时，必须使用 XML 或配置对象进行配置。
+
+使用 `New-AzureApplicationGateway` 命令创建应用程序网关时，此时无需设置配置；配置新创建的资源时，必须使用 XML 或配置对象进行配置。
 
 有效值为：
 
@@ -52,6 +55,7 @@ Azure 应用程序网关是第 7 层负载平衡器。 它在不同服务器之�
 * **规则：** 规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
+
 创建应用程序网关：
 
 1. 创建应用程序网关资源。
@@ -60,15 +64,14 @@ Azure 应用程序网关是第 7 层负载平衡器。 它在不同服务器之�
 
 > [!NOTE]
 > 如果你需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-classic-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请查看 [custom probes and health monitoring](application-gateway-probe-overview.md) （自定义探测和运行状况监视）。
-> 
-> 
 
 ![方案示例][scenario]
 
 ### <a name="create-an-application-gateway-resource"></a>创建应用程序网关资源
-若要创建网关，请使用 **New-AzureApplicationGateway** cmdlet，并将值替换为你自己的值。 此时不会开始计收网关的费用。 计费将在后面已成功启动网关时开始。
 
-以下示例使用名为“testvnet1”的虚拟网络和名为“subnet-1”的子网创建应用程序网关。
+若要创建网关，请使用 `New-AzureApplicationGateway` cmdlet，并将值替换为你自己的值。 此时不会开始计收网关的费用。 计费将在后面已成功启动网关时开始。
+
+以下示例使用名为“testvnet1”的虚拟网络和名为“subnet-1”的子网创建应用程序网关：
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -76,7 +79,7 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 
 *Description*、*InstanceCount* 和 *GatewaySize* 是可选参数。
 
-若要验证是否已创建网关，可以使用 **Get-AzureApplicationGateway** cmdlet。
+若要验证是否已创建网关，可以使用 `Get-AzureApplicationGateway` cmdlet。
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -96,18 +99,19 @@ DnsName       :
 
 > [!NOTE]
 > *InstanceCount* 的默认值为 2，最大值为 10。 *GatewaySize* 的默认值为 Medium。 你可以选择 Small、Medium 或 Large。
-> 
-> 
 
 *VirtualIPs* 和 *DnsName* 显示为空白，因为网关尚未启动。 这些值在网关进入运行状态后立即创建。
 
 ## <a name="configure-the-application-gateway"></a>配置应用程序网关
+
 可以使用 XML 或配置对象配置应用程序网关。
 
 ## <a name="configure-the-application-gateway-by-using-xml"></a>使用 XML 配置应用程序网关
+
 在以下示例中，使用 XML 文件配置所有应用程序网关设置，并将这些设置提交到应用程序网关资源。  
 
 ### <a name="step-1"></a>步骤 1
+
 将以下文本复制到记事本中。
 
 ```xml
@@ -159,8 +163,6 @@ DnsName       :
 
 > [!IMPORTANT]
 > 协议项 Http 或 Https 区分大小写。
-> 
-> 
 
 以下示例演示如何使用配置文件设置应用程序网关。 该示例负载平衡公共端口 80 上的 HTTP 流量，并将网络流量发送到两个 IP 地址之间的后端端口 80。
 
@@ -210,21 +212,22 @@ DnsName       :
 ```
 
 ### <a name="step-2"></a>步骤 2
-下一步，设置应用程序网关。 将 **Set-AzureApplicationGatewayConfig** cmdlet 用于配置 XML 文件。
+
+下一步，设置应用程序网关。 将 `Set-AzureApplicationGatewayConfig` cmdlet 与配置 XML 文件配合使用。
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 ```
 
 ## <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>使用配置对象配置应用程序网关
-以下示例演示如何使用配置对象配置应用程序网关。 必须单独配置所有配置项，然后将其添加到应用程序网关配置对象。 创建配置对象之后，使用 **Set-AzureApplicationGateway** 命令将配置提交到前面创建的应用程序网关资源。
+
+以下示例演示如何使用配置对象配置应用程序网关。 必须单独配置所有配置项，然后将其添加到应用程序网关配置对象。 创建配置对象之后，使用 `Set-AzureApplicationGateway` 命令将配置提交到之前创建的应用程序网关资源。
 
 > [!NOTE]
-> 在为每个配置对象分配值之前，需要声明 PowerShell 用于存储的对象类型。 用于创建单独项的第一行定义了要使用哪个 Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(对象名称)。
-> 
-> 
+> 在为每个配置对象分配值之前，需要声明 PowerShell 用于存储的对象类型。 创建各项的第一行定义了所使用的 `Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)`。
 
 ### <a name="step-1"></a>步骤 1
+
 创建每个配置项。
 
 按以下示例中所示创建前端 IP。
@@ -295,6 +298,7 @@ $rule.BackendAddressPool = "pool1"
 ```
 
 ### <a name="step-2"></a>步骤 2
+
 将每个配置项分配给应用程序网关配置对象 ($appgwconfig)。
 
 将前端 IP 添加到配置。
@@ -340,26 +344,26 @@ $appgwconfig.HttpLoadBalancingRules.Add($rule)
 ```
 
 ### <a name="step-3"></a>步骤 3
-使用 **Set-AzureApplicationGatewayConfig**将配置对象提交到应用程序网关资源。
+使用 `Set-AzureApplicationGatewayConfig` 将配置对象提交到应用程序网关资源。
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -Config $appgwconfig
 ```
 
 ## <a name="start-the-gateway"></a>启动网关
-配置网关后，使用 **Start-AzureApplicationGateway** cmdlet 来启动网关。 成功启动网关后，将开始计收应用程序网关的费用。
+
+配置网关后，使用 `Start-AzureApplicationGateway` cmdlet 来启动网关。 成功启动网关后，将开始计收应用程序网关的费用。
 
 > [!NOTE]
-> **Start-AzureApplicationGateway** cmdlet 可能需要 15-20 分钟的时间才能完成。
-> 
-> 
+> `Start-AzureApplicationGateway` cmdlet 最多可能需要 15 到 20 分钟才能完成。
 
 ```powershell
 Start-AzureApplicationGateway AppGwTest
 ```
 
 ## <a name="verify-the-gateway-status"></a>验证网关状态
-使用 **Get-AzureApplicationGateway** cmdlet 检查网关的状态。 如果前一步骤中的 **Start-AzureApplicationGateway** 成功，则 *State* 应为 Running，*Vip* 和 *DnsName* 应包含有效的条目。
+
+使用 `Get-AzureApplicationGateway` cmdlet 检查网关状态。 如果前一步骤中的 `Start-AzureApplicationGateway` 成功，则 *State* 应为 Running，*Vip* 和 *DnsName* 应包含有效的条目。
 
 以下示例演示了一个正常运行并已准备好将流量定向到 `http://<generated-dns-name>.cloudapp.net`的应用程序网关。
 
@@ -382,13 +386,14 @@ DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 ```
 
 ## <a name="delete-an-application-gateway"></a>删除应用程序网关
+
 若要删除应用程序网关，请执行以下操作：
 
-1. 使用 **Stop-AzureApplicationGateway** cmdlet 停止网关。
-2. 使用 **Remove-AzureApplicationGateway** cmdlet 删除网关。
-3. 验证是否已使用 **Get-AzureApplicationGateway** cmdlet 删除网关。
+1. 使用 `Stop-AzureApplicationGateway` cmdlet 停止该网关。
+2. 使用 `Remove-AzureApplicationGateway` cmdlet 删除该网关。
+3. 使用 `Get-AzureApplicationGateway` cmdlet 验证是否已删除该网关。
 
-以下示例在第一行显示 **Stop-AzureApplicationGateway** cmdlet，接着显示输出。
+以下示例在第一行显示 `Stop-AzureApplicationGateway` cmdlet，接着显示输出。
 
 ```powershell
 Stop-AzureApplicationGateway AppGwTest
@@ -402,7 +407,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 ```
 
-应用程序网关进入停止状态后，请使用 **Remove-AzureApplicationGateway** cmdlet 删除该服务。
+在应用程序网关进入停止状态后，使用 `Remove-AzureApplicationGateway` cmdlet 删除该服务。
 
 ```powershell
 Remove-AzureApplicationGateway AppGwTest
@@ -416,7 +421,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 ```
 
-若要验证是否已删除服务，可以使用 **Get-AzureApplicationGateway** cmdlet。 此步骤不是必需的。
+若要验证是否已删除服务，可以使用 `Get-AzureApplicationGateway` cmdlet。 此步骤不是必需的。
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -430,6 +435,7 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 如果你要配置 SSL 卸载，请参阅 [Configure an application gateway for SSL offload](application-gateway-ssl.md)（配置应用程序网关以进行 SSL 卸载）。
 
 如果你想要将应用程序网关配置为与内部负载平衡器配合使用，请参阅 [Create an application gateway with an internal load balancer (ILB)](application-gateway-ilb.md)（创建具有内部负载平衡器 (ILB) 的应用程序网关）。
@@ -440,9 +446,4 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
 [scenario]: ./media/application-gateway-create-gateway/scenario.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

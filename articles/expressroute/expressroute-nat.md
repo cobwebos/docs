@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d16326340f668285e185a6e8adb1a8316d8bd0eb
+ms.sourcegitcommit: 371c76ed36cd9d21026a5a49c6ef86a0cd3cc816
+ms.openlocfilehash: 8fd8b4b9611adb15df7e436a00f8ec35ea1e9614
 
 
 ---
@@ -45,7 +45,7 @@ Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
-#### <a name="traffic-originating-from-your-network-destined-to-microsoft"></a>从你的网络发起的，目标为 Microsoft 的流量
+### <a name="traffic-originating-from-your-network-destined-to-microsoft"></a>从你的网络发起的，目标为 Microsoft 的流量
 * 你必须确保流量进入公共 IPv4 地址有效的 Microsoft 对等互连路径。 Microsoft 必须能够根据区域路由 Internet 注册表 (RIR) 或 Internet 路由注册表 (IRR) 验证 IPv4 NAT 地址池的所有权。 将会根据配对的 AS 编号和用于 NAT 的 IP 地址执行检查。 有关路由注册的信息，请参阅 [ExpressRoute 路由要求](expressroute-routing.md) 页。
 * 用于 Azure 公共对等互连设置和其他 ExpressRoute 线路的 IP 地址不得通过 BGP 会话向 Microsoft 播发。 通过此对等互连播发的 NAT IP 前缀长度没有限制。
   
@@ -54,7 +54,7 @@ Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等
   > 
   > 
 
-#### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>从 Microsoft 发起的，目标为你的网络的流量
+### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>从 Microsoft 发起的，目标为你的网络的流量
 * 在某些情况下，需要由 Microsoft 对你网络中托管的服务终结点发起连接。 一个典型的示例就是从 Office 365 连接到你网络中托管的 ADFS 服务器。 在这种情况下，你必须将网络中相应的前缀透露给 Microsoft 对等互连。 
 * 你必须使用 SNAT 转换从 Microsoft 定向到你网络中 IP 地址的流量。 
 
@@ -70,6 +70,6 @@ Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

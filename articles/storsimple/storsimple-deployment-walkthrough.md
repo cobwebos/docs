@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d9e5f3b177f6b91abe48d3bb6d49a2d3195e6f79
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a14be6bf8135cdfc7e5b9eb3b6d7af3bdd4561a7
 
 
 ---
-# <a name="deploy-your-onpremises-storsimple-device"></a>部署本地 StorSimple 设备
+# <a name="deploy-your-on-premises-storsimple-device"></a>部署本地 StorSimple 设备
 > [!div class="op_single_selector"]
 > * [Update 2 ](storsimple-deployment-walkthrough-u2.md)
 > * [Update 1](storsimple-deployment-walkthrough-u1.md)
@@ -146,7 +146,7 @@ ms.openlocfilehash: d9e5f3b177f6b91abe48d3bb6d49a2d3195e6f79
 |  | | |
 | **注册** |检查出站 TCP 端口 443、80、9354 是否打开。 |`Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[有关 Test-NetConnection cmdlet 的详细信息](https://technet.microsoft.com/library/dn372891.aspx) |
 
-## <a name="stepbystep-deployment"></a>逐步部署
+## <a name="step-by-step-deployment"></a>逐步部署
 使用下面的分步说明在数据中心部署 StorSimple 设备。
 
 ## <a name="step-1-create-a-new-service"></a>步骤 1：创建新服务
@@ -286,6 +286,6 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 部署第一个
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

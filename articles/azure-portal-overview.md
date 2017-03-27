@@ -4,7 +4,7 @@ description: "了解如何使用 Microsoft Azure 门户。"
 services: 
 documentationcenter: 
 author: davidwrede
-manager: dwrede
+manager: erikre
 editor: jimbe
 ms.assetid: 53cb9df1-c96a-4f4e-b022-18336cd3d697
 ms.service: na
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 31bea465db1afb5efc22b2280d83d3b50bced329
+ms.sourcegitcommit: 6ab02779d65dfc1519b457486678ace5fafc9fb5
+ms.openlocfilehash: 60733f973e7b88389816c1ea7cc15532ba967693
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -31,7 +32,7 @@ Microsoft Azure 门户是一个中心位置，你可以在其中预配和管理 
   ![熟悉 Azure 门户 UI][UIOrientation]
 
 ## <a name="before-you-get-started"></a>准备工作
-您必须拥有有效的 Azure 订阅，才能完整浏览本教程。  如果您没有，请立即 [注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) 。  拥有订阅后，即可访问门户 [https://portal.azure.com]。
+您必须拥有有效的 Azure 订阅，才能完整浏览本教程。  如果您没有，请立即 [注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) 。  拥有订阅后，即可访问门户 [https://portal.azure.com] 。
 
 ## <a name="how-to-create-a-resource"></a>如何创建资源
 Azure 应用商店提供数千商品，您可以在一个位置集中创建商品。  假设您要新建 Windows Server 2012 VM。  “+新”中心是您从应用商店进入特色类别的精选组的入口点。  每个类别都有少量的特色项目，以及指向完整应用商店（显示所有类别和搜索）的链接。 若要新建 Windows Server 2012 VM，请执行以下操作：  
@@ -60,16 +61,6 @@ Azure 应用商店提供数千商品，您可以在一个位置集中创建商�
 
 ![管理资源][ManageResource]
 
-## <a name="how-to-customize-a-resource-blade"></a>如何自定义资源边栏选项卡
-Azure 会为您的资源预配置边栏选项卡，但这些边栏选项卡上的磁贴由您控制。  您可以轻松地转到自定义模式来添加、删除、调整或重新排列磁贴。 若要自定义边栏选项卡，请执行以下操作：
-
-1. 浏览您的资源。
-2. 单击 要自定义的边栏选项卡顶部的“...”。
-3. 单击“添加部件”。
-4. 开始拖放部件。  
-
-![自定义边栏选项卡][CustomizeBlades]
-
 ## <a name="how-to-get-help"></a>如何获取帮助
 如果您遇到问题，请随时与我们联系。  预览门户具有帮助和支持页面，可以为您指引正确的方向。  根据 [支持计划](https://azure.microsoft.com/support/plans/)，你还可以直接在门户中创建支持请求。  创建支持请求之后，您可以在门户内管理请求的生命周期。 您可以导航到“浏览”->“帮助 + 支持”，访问帮助和支持页面。  
 
@@ -94,9 +85,4 @@ Microsoft Azure 门户大大简化了在云中构建和管理应用程序的工�
 [ManageResource]: ./media/azure-portal-how-to-use/azure_portal_4.png
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

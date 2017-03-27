@@ -8,15 +8,16 @@ manager: swadhwa
 editor: 
 ms.assetid: 754796ef-a43e-468a-86c9-04a2eda55b5b
 ms.service: operations-management-suite
+ms.custom: oms-security
 ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2016
+ms.date: 12/01/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fe043cd4438612ada9a31ae895aae75b913b0a37
+ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
+ms.openlocfilehash: 888b9786de8302ccd2e11f271aa417bcbcc2620b
 
 
 ---
@@ -148,7 +149,7 @@ OMS 安全和审核仪表板有四个主要类别：
 
 ![威胁智能](./media/oms-security-getting-started/oms-getting-started-fig12.png)
 
-此选项还可在事件响应调查期间使用，从而执行评估并获取有关攻击的详细信息。
+此选项还可在[事件响应调查](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/)期间使用，从而执行评估并获取有关攻击的详细信息。
 
 > [!NOTE]
 > 有关如何针对事件响应使用 OMS 的详细信息，请观看 [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)（如何针对事件响应利用 Azure 安全中心和 Microsoft Operations Management Suite）。
@@ -186,6 +187,6 @@ OMS 安全和审核仪表板有四个主要类别：
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

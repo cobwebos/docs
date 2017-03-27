@@ -1,22 +1,22 @@
 ---
-title: "中继混合连接入门 | Microsoft Docs"
+title: "开始在 Node 中使用 Azure 中继混合连接 | Microsoft 文档"
 description: "如何为混合连接编写节点控制台应用程序"
-services: service-bus
+services: service-bus-relay
 documentationcenter: node
 author: jtaubensee
 manager: timlt
 editor: 
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.devlang: tbd
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub
+ms.date: 02/13/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f59faed2edb75e32ea62fa7f1d7013da5f387d8
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: bee101d19cb5f5fc790b53295069b4d4db247366
 
 
 ---
@@ -75,6 +75,6 @@ ms.openlocfilehash: 0f59faed2edb75e32ea62fa7f1d7013da5f387d8
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

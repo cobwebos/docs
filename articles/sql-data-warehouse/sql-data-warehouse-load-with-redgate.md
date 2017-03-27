@@ -1,5 +1,5 @@
 ---
-title: "使用 Redgate 的 Data Platform Studio 将数据载入 SQL 数据仓库 | Microsoft Docs"
+title: "使用 Redgate 将数据加载到 Azure 数据仓库 | Microsoft 文档"
 description: "了解如何将 Redgate 的 Data Platform Studio 用于数据仓库方案。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
+ms.custom: loading
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 804b0ba72ca73da1a076bd4dbca8bbca33cb76b1
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: cb0b5489ccfabb0e2a4ee412162a18930073b309
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -121,7 +123,7 @@ DPS 会以可视化方式显示从本地 SQL Server 提取和上载数据的进�
 若要浏览 SQL 数据仓库中的数据，请先查看以下内容：
 
 * [查询 Azure SQL 数据仓库 (Visual Studio)][Query Azure SQL Data Warehouse (Visual Studio)]
-* [使用 Power BI 可视化数据][Visualize data with Power BI]
+* [使用 Power BI 的可视化数据][Visualize data with Power BI]
 
 若要详细了解 Redgate 的 Data Platform Studio，请：
 
@@ -146,14 +148,9 @@ DPS 会以可视化方式显示从本地 SQL Server 提取和上载数据的进�
 [8]: media/sql-data-warehouse-redgate/2016-10-05_12-57-10.png
 
 <!--Article references-->
-[查询 Azure SQL 数据仓库 (Visual Studio)]: ./sql-data-warehouse-query-visual-studio.md
-[使用 Power BI 的可视化数据]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
-[将解决方案迁移到 SQL 数据仓库]: ./sql-data-warehouse-overview-migrate.md
-[将数据载入 Azure SQL 数据仓库]: ./sql-data-warehouse-overview-load.md
-[SQL 数据仓库开发概述]: ./sql-data-warehouse-overview-develop.md
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Query Azure SQL Data Warehouse (Visual Studio)]: ./sql-data-warehouse-query-visual-studio.md
+[Visualize data with Power BI]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
+[Migrate your solution to SQL Data Warehouse]: ./sql-data-warehouse-overview-migrate.md
+[Load data into Azure SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
 

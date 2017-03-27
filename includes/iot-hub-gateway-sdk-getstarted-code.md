@@ -53,51 +53,64 @@ int main(int argc, char** argv)
         Gateway_LL_Destroy(gateway);
     }
     return 0;
-}
+} 
 ```
 
-JSON 设置文件包含要加载的模块的列表。 每个模块必须指定：
+JSON 设置文件包含要加载的模块的列表以及模块之间的链接。
+每个模块必须指定：
 
-* **module_name**：模块的唯一名称。
-* **module_path**：包含模块的库的路径。 在 Linux 上，这是一个 .so 文件，而在 Windows 上，这是一个 .dll 文件。
+* **name**：模块的唯一名称。
+* **loader**：一个知道如何加载所需模块的加载程序。  加载程序是一个扩展点，用于加载不同类型的模块。 我们提供了用于以原生 C、Node.js、Java 和 .NET 编写的模块的加载程序。 Hello World 示例仅使用了“原生”加载程序，因为此示例中的所有模块都是以 C 编写的动态库。有关使用以不同语言编写的模块的详细信息，请参阅 [Node.js](https://github.com/Azure/azure-iot-gateway-sdk/blob/develop/samples/nodejs_simple_sample/)、[Java](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/java_sample) 或 [.NET](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/dotnet_binding_sample) 示例。
+    * **name**：用来加载模块的加载程序的名称。  
+    * **entrypoint**：包含模块的库的路径。 在 Linux 上，这是一个 .so 文件，而在 Windows 上，这是一个 .dll 文件。 请注意，此入口点特定于所使用的加载程序的类型。 例如，Node.js 加载程序的入口点是一个 .js 文件，Java 加载程序的入口点是一个类路径 + 类名称，.NET 加载程序的入口点是一个程序集名称 + 类名称。
+
 * **args**：模块所需的任何配置信息。
+
+以下代码显示了 Linux 上用来声明 Hello World 示例的所有模块的 JSON。 模块是否需要参数取决于模块的设计。 在此示例中，logger 模块使用的参数是输出文件的路径，而 Hello World 模块则不使用任何参数。
+
+```
+"modules" :
+[
+    {
+        "name" : "logger",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "./modules/logger/liblogger.so"
+        }
+        },
+        "args" : {"filename":"log.txt"}
+    },
+    {
+        "name" : "hello_world",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "./modules/hello_world/libhello_world.so"
+        }
+        },
+        "args" : null
+    }
+]
+```
 
 JSON 文件还包含要传递到中转站的模块之间的链接。 链接具有两个属性：
 
 * **源**：来自 `modules` 部分的模块名称，或“\*”。
-* **接收器**：来自 `modules` 部分的模块名称
+* **接收器**：来自 `modules` 部分的模块名称。
 
 每个链接都会定义消息路由和方向。 来自模块 `source` 的消息会传递到模块 `sink`。 `source` 可能会设置为“\*”，指示来自任何模块的消息都会由 `sink` 接收。
 
-以下示例显示了用于在 Linux 上配置 Hello World 示例的 JSON 设置文件。 模块 `hello_world` 生成的每条消息都会被模块 `logger` 使用。 模块是否需要参数取决于模块的设计。 在此示例中，记录器模块使用的参数是输出文件的路径，而 Hello World 模块则不使用任何参数：
+以下代码显示了 Linux 上用来配置 Hello World 示例中所用模块之间的链接的 JSON。 模块 `hello_world` 生成的每条消息都会被模块 `logger` 使用。
 
 ```
-{
-    "modules" :
-    [ 
-        {
-            "module name" : "logger",
-            "loading args": {
-              "module path" : "./modules/logger/liblogger_hl.so"
-            },
-            "args" : {"filename":"log.txt"}
-        },
-        {
-            "module name" : "hello_world",
-            "loading args": {
-              "module path" : "./modules/hello_world/libhello_world_hl.so"
-            },
-            "args" : null
-        }
-    ],
-    "links" :
-    [
-        {
-            "source" : "hello_world",
-            "sink" : "logger"
-        }
-    ]
-}
+"links": 
+[
+    {
+        "source": "hello_world",
+        "sink": "logger"
+    }
+]
 ```
 
 ### <a name="hello-world-module-message-publishing"></a>Hello World 模块消息发布
@@ -207,7 +220,7 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 若要了解如何使用 IoT 网关 SDK，请参阅：
 
 * [IoT 网关 SDK - 使用 Linux 通过模拟设备发送设备到云消息][lnk-gateway-simulated]。
-* GitHub 上的 [Azure IoT 网关 SDK][lnk-sdk]。
+* GitHub 上的 [Azure IoT 网关 SDK][lnk-gateway-sdk]。
 
 <!-- Links -->
 [lnk-main-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/hello_world/src/main.c
@@ -216,6 +229,6 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -11,18 +11,18 @@ keywords: "容器, Marathon, 微服务, DC/OS, Azure"
 ms.assetid: 16ecc16e-e504-480e-8dc3-cac14e9e1561
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: befd26888b653c660cc614221684732771496aed
+ms.sourcegitcommit: 3f6bc85230b57d7b9523a87f90783c27039ef820
+ms.openlocfilehash: 1ea024d83c1d8881467be1556675a47c605fee66
 
 
 ---
-# <a name="create-an-application-or-userspecific-marathon-service"></a>创建特定于应用程序或用户的 Marathon 服务
+# <a name="create-an-application-or-user-specific-marathon-service"></a>创建特定于应用程序或用户的 Marathon 服务
 Azure 容器服务提供了一组主服务器，我们可以在上面预配置 Apache Mesos 和 Marathon。 这些服务可用于在群集上安排你的应用程序，但最好不要将主服务器用于此目的。 例如，调整 Marathon 的配置需要登录到主服务器本身并执行更改，该过程鼓励使用与标准稍有不同并需要单独监控和管理的唯一主服务器。 此外，一个团队所需的配置可能并不是另一个团队的最佳配置。
 
 在本文中，我们将介绍如何添加特定于应用程序或用户的 Marathon 服务。
@@ -34,7 +34,7 @@ Azure 容器服务提供了一组主服务器，我们可以在上面预配置 A
 
 [!INCLUDE [install the DC/OS CLI](../../includes/container-service-install-dcos-cli-include.md)]
 
-## <a name="create-an-application-or-userspecific-marathon-service"></a>创建特定于应用程序或用户的 Marathon 服务
+## <a name="create-an-application-or-user-specific-marathon-service"></a>创建特定于应用程序或用户的 Marathon 服务
 首先，创建一个 JSON 配置文件，用来定义你想要创建的应用程序服务的名称。 在此，我们将 `marathon-alice` 用作框架名称。 将文件保存为类似如下的 `marathon-alice.json`：
 
 ```json
@@ -61,6 +61,6 @@ dcos config set marathon.url http://<hostname>/service/marathon-alice/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

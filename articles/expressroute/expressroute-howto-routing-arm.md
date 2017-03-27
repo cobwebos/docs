@@ -10,22 +10,26 @@ tags: azure-resource-manager
 ms.assetid: 0a036d51-77ae-4fee-9ddb-35f040fbdcdf
 ms.service: expressroute
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/05/2016
+ms.date: 12/13/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 45c0646f6eb1067f49bc185f1592cd1c94fc9470
+ms.sourcegitcommit: ec79ec654505f3e082f9ff106ce24801eae66faf
+ms.openlocfilehash: c33270d17cd32e32fac926f62441f0787c056a3e
+ms.lasthandoff: 03/02/2017
 
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的路由
 > [!div class="op_single_selector"]
-> [Azure 门户 - Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
-> [PowerShell - Resource Manager](expressroute-howto-routing-arm.md)
-> [PowerShell - 经典](expressroute-howto-routing-classic.md)
+> * [资源管理器 - Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-routing-arm.md)
+> * [经典 - PowerShell](expressroute-howto-routing-classic.md)
+> * [视频 - 专用对等互连](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [视频 - 公共对等互连](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [视频 - Microsoft 对等互连](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > 
 > 
 
@@ -120,17 +124,17 @@ ms.openlocfilehash: 45c0646f6eb1067f49bc185f1592cd1c94fc9470
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。 可以将专用 AS 编号用于此对等互连。 请务必不要使用 65515。
    * MD5 哈希（如果选择使用）。 **这是可选的**。
      
-     可以运行以下 cmdlet 来为线路配置 Azure 专用对等互连。
+    可以运行以下 cmdlet 来为线路配置 Azure 专用对等互连。
      
-       Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
+         Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
      
-       Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+         Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
      
-     如果选择使用 MD5 哈希，则可以使用以下 cmdlet。
+    如果选择使用 MD5 哈希，则可以使用以下 cmdlet。
      
-       Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200  -SharedKey "A1B2C3D4"
+         Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200  -SharedKey "A1B2C3D4"
      
-       Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+         Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
      
      > [!IMPORTANT]
      > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
@@ -249,7 +253,9 @@ ms.openlocfilehash: 45c0646f6eb1067f49bc185f1592cd1c94fc9470
      
        Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-    >[AZURE.IMPORTANT] 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
+    > [!IMPORTANT]
+    > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
+
 
 ### <a name="to-view-azure-public-peering-details"></a>查看 Azure 公共对等互连详细信息
 可以使用以下 cmdlet 来获取配置详细信息
@@ -262,7 +268,7 @@ ms.openlocfilehash: 45c0646f6eb1067f49bc185f1592cd1c94fc9470
 ### <a name="to-update-azure-public-peering-configuration"></a>更新 Azure 公共对等互连配置
 可以使用以下 cmdlet 来更新配置的任何部分
 
-    Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600 
+    Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600 
 
     Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
@@ -383,10 +389,5 @@ ms.openlocfilehash: 45c0646f6eb1067f49bc185f1592cd1c94fc9470
 * 有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](expressroute-workflows.md)。
 * 有关线路对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
 * 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

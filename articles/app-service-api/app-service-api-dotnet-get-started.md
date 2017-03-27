@@ -3,8 +3,8 @@ title: "应用服务中的 API 应用和 ASP.NET 入门 | Microsoft Docs"
 description: "了解如何使用 Visual Studio 2015 在 Azure 应用服务中创建、部署和使用 ASP.NET API 应用。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
-manager: wpickett
+author: alexkarcher-msft
+manager: erikre
 editor: 
 ms.assetid: ddc028b2-cde0-4567-a6ee-32cb264a830a
 ms.service: app-service-api
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/20/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 45e8331e0953dd646f132478741394a5b4907a9e
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c7b4e39e01ae335c3e6a5cf9cb1efe8a64490e35
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -56,9 +57,9 @@ Visual Studio 解决方案包含三个项目：
 
 ## <a name="prerequisites"></a>先决条件
 * ASP.NET Web API - 本教程中的说明假设读者基本了解如何在 Visual Studio 中使用 ASP.NET [Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) 。
-* Azure 帐户 - 可以[建立免费 Azure 帐户](/pricing/free-trial/?WT.mc_id=A261C142F)或[激活 Visual Studio 订户权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
+* Azure 帐户 - 可以[建立免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)或[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
   
-    如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751)（试用应用服务）。 在那里，可以立即在应用服务中创建短期的入门级应用 - **无需信用卡**，也无需做出承诺。
+    如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://azure.microsoft.com/try/app-service/)（试用应用服务）。 在那里，可以立即在应用服务中创建短期的入门级应用 - **无需信用卡**，也无需做出承诺。
 * Visual Studio 2015 和 [用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/archive-net-downloads/) - SDK 会自动安装 Visual Studio 2015（如果尚未安装）。
   
   * 在 Visual Studio 中，依次单击“帮助”->“关于 Microsoft Visual Studio”，并确保已安装“Azure App Service Tools v2.9.1”或更高版本。
@@ -198,7 +199,7 @@ Swashbuckle 可用于任何 ASP.NET Web API 项目。 如果要将 Swagger 元�
 > 
 > 
 
-## <a name="a-idcreateapiappa-create-an-api-app-in-azure-and-deploy-code-to-it"></a><a id="createapiapp"></a> 在 Azure 中创建 API 应用并向其部署代码
+## <a id="createapiapp"></a> 在 Azure 中创建 API 应用并向其部署代码
 本部分使用已集成到 Visual Studio 的“发布 Web”向导中的 Azure 工具，在 Azure 中创建新的 API 应用。 然后，将 ToDoListDataAPI 项目部署到新的 API 应用，并通过运行 Swagger UI 来调用 API。
 
 1. 在“解决方案资源管理器”中，右键单击 ToDoListDataAPI 项目，然后单击“发布”。
@@ -302,7 +303,7 @@ Swashbuckle 可用于任何 ASP.NET Web API 项目。 如果要将 Swagger 元�
     
     选择要为其生成客户端代码的 API 应用时，Visual Studio 将从此 URL 检索元数据。
 
-## <a name="a-idcodegena-generate-client-code-for-the-data-tier"></a><a id="codegen"></a> 生成数据层的客户端代码
+## <a id="codegen"></a> 生成数据层的客户端代码
 将 Swagger 集成到 Azure API 应用的优势之一是自动生成代码。 使用生成的客户端类可以更轻松地编写调用 API 应用的代码。
 
 ToDoListAPI 项目已有生成的客户端代码，但在以下步骤中，要先将这些代码删除再重新生成，才能了解如何生成代码。
@@ -438,10 +439,5 @@ ToDoListAPI 项目已有生成的客户端代码，但在以下步骤中，要�
 ![Visual Studio 中的 API 应用模板](./media/app-service-api-dotnet-get-started/apiapptemplate.png)
 
 **Azure API 应用**项目模板相当于选择**空的** ASP.NET 4.5.2 模板，单击复选框以添加 Web API 支持，然后安装 Swashbuckle NuGet 包。 此外，该模板添加了一些 Swashbuckle 配置代码，旨在避免创建重复的 Swagger 操作 ID。 创建 API 应用项目之后，可以使用本教程中所述的相同方式将它部署到 API 应用。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -3,7 +3,7 @@ title: "什么是 Azure RemoteApp？ | Microsoft Docs"
 description: "了解如何通过 Azure RemoteApp 将应用和资源共享给任何设备。"
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: mbaldwin
 editor: 
 ms.assetid: d7a8a311-e70a-4463-ac85-c7f62c500921
@@ -12,11 +12,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 95b4e6914de787bb2c25527ce9635f872b4746a6
+ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
+ms.openlocfilehash: bf8f7763db5844a0706264d24ad7a035758ebbda
 
 
 ---
@@ -87,6 +87,6 @@ Azure RemoteApp 是 [Microsoft 虚拟桌面基础结构](http://www.microsoft.co
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

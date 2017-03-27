@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure CLI 在 Resource Manager 中创建面向 Internet 的负载均衡器 | Microsoft Docs"
-description: "了解如何使用 Azure CLI 在 Resource Manager 中创建面向 Internet 的负载平衡器"
+title: "创建面向 Internet 的负载均衡器 - Azure CLI | Microsoft 文档"
+description: "了解如何使用 Azure CLI 在 Resource Manager 中创建面向 Internet 的负载均衡器"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
@@ -13,16 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
-ms.author: sewhee
+ms.date: 01/23/2017
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3b1780033cbc8aa3e108a213a4d2bfd0332fd7d7
+ms.lasthandoff: 03/21/2017
 
 ---
-# <a name="creating-an-internal-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载平衡器
+# <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器
 
-[!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [门户](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
+> * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
+> * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
@@ -34,21 +39,21 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
 
 ## <a name="deploying-the-solution-using-the-azure-cli"></a>使用 Azure CLI 部署解决方案
 
-以下步骤说明如何使用 Azure Resource Manager 和 CLI 创建面向 Internet 的负载平衡器。 借助 Azure Resource Manager，可单独创建和配置每个资源，再将其合成一个新资源。
+以下步骤说明如何使用 Azure Resource Manager 和 CLI 创建面向 Internet 的负载均衡器。 借助 Azure Resource Manager，可单独创建和配置每个资源，再将其合成一个新资源。
 
-需要创建和配置以下对象才能部署负载平衡器：
+需要创建和配置以下对象才能部署负载均衡器：
 
 * 前端 IP 配置 - 包含传入网络流量的公共 IP 地址。
-* 后端地址池 - 包含从负载平衡器接收网络流量的虚拟机网络接口 (NIC)。
-* 负载平衡规则 - 包含将负载平衡器上的公共端口映射到后端地址池中的端口的规则。
-* 入站 NAT 规则 - 包含将负载平衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
+* 后端地址池 - 包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
+* 负载平衡规则 - 包含将负载均衡器上的公共端口映射到后端地址池中的端口的规则。
+* 入站 NAT 规则 - 包含将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
 * 探测器 - 包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
 
 有关详细信息，请参阅 [Azure Resource Manager 对负载均衡器的支持](load-balancer-arm.md)。
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>将 CLI 设置为使用 Resource Manager
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../xplat-cli-install.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **azure config mode** 命令以切换到资源管理器模式，如下所示。
 
     ```azurecli
@@ -59,7 +64,7 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
 
         info:    New mode is arm
 
-## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-frontend-ip-pool"></a>为前端 IP 池创建虚拟网络和公共 IP 地址
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>为前端 IP 池创建虚拟网络和公共 IP 地址
 
 1. 使用名为 *NRPRG* 的资源组在美国东部位置创建名为 *NRPVnet* 的虚拟网络 (VNet)。
 
@@ -80,10 +85,10 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
     ```
 
    > [!IMPORTANT]
-   > 负载平衡器将使用公共 IP 的域标签作为其 FQDN。 这与经典部署不同，后者使用云服务作为负载均衡器完全限定的域名 (FQDN)。
+   > 负载均衡器将使用公共 IP 的域标签作为其 FQDN。 这与经典部署不同，后者使用云服务作为负载均衡器完全限定的域名 (FQDN)。
    > 在本示例中，FQDN 是 *loadbalancernrp.eastus.cloudapp.azure.com*。
 
-## <a name="create-a-load-balancer"></a>创建负载平衡器
+## <a name="create-a-load-balancer"></a>创建负载均衡器
 
 以下命令会在美国东部 Azure 位置的 *NRPRG* 资源组中创建名为 *NRPlb* 的负载均衡器。
 
@@ -91,10 +96,10 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
     azure network lb create NRPRG NRPlb eastus
     ```
 
-## <a name="create-a-frontend-ip-pool-and-a-backend-address-pool"></a>创建前端 IP 池和后端地址池
+## <a name="create-a-front-end-ip-pool-and-a-backend-address-pool"></a>创建前端 IP 池和后端地址池
 本示例演示如何创建前端和后端 IP 池，前者接收负载均衡器上的传入网络流量，后者发送负载平衡的网络流量。
 
-1. 创建前端 IP 池，它与负载平衡器和上一步中创建的公共 IP 相关联。
+1. 创建前端 IP 池，它与负载均衡器和上一步中创建的公共 IP 相关联。
 
     ```azurecli
         azure network lb frontend-ip create nrpRG NRPlb NRPfrontendpool -i nrppublicip
@@ -112,10 +117,10 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
 
 * 用于将端口 21 上的所有传入流量转换到端口 22 的 NAT 规则<sup>1</sup>
 * 用于将端口 23 上的所有传入流量转换到端口 22 的 NAT 规则
-* 用于将端口 80 上的所有传入流量平衡到后端池中的地址端口 80 的负载平衡器规则。
+* 用于将端口 80 上的所有传入流量平衡到后端池中的地址端口 80 的负载均衡器规则。
 * 用于检查 *HealthProbe.aspx* 页面上的运行状况状态的探测规则。
 
-<sup>1</sup> NAT 规则将关联到负载平衡器后面的特定虚拟机实例。 到达端口 21 的网络流量发送至端口 22 上与该 NAT 规则关联的特定虚拟机。 必须为 NAT 规则指定协议（UDP 或 TCP）。 这两种协议不能分配给同一个端口。
+<sup>1</sup> NAT 规则将关联到负载均衡器后面的特定虚拟机实例。 到达端口 21 的网络流量发送至端口 22 上与该 NAT 规则关联的特定虚拟机。 必须为 NAT 规则指定协议（UDP 或 TCP）。 这两种协议不能分配给同一个端口。
 
 1. 创建 NAT 规则。
 
@@ -124,10 +129,10 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
         azure network lb inbound-nat-rule create --resource-group nrprg --lb-name nrplb --name ssh2 --protocol tcp --frontend-port 23 --backend-port 22
     ```
 
-2. 创建负载平衡器规则。
+2. 创建负载均衡器规则。
 
     ```azurecli
-        azure network lb rule create --resource-group nrprg nrplb --lb-name lbrule --protocol tcp --frontend-port 80 --backend-port 80 --frontend-ip-name NRPfrontendpool --backend-address-pool-name NRPbackendpool
+        azure network lb rule create --resource-group nrprg --lb-name nrplb --name lbrule --protocol tcp --frontend-port 80 --backend-port 80 --frontend-ip-name NRPfrontendpool --backend-address-pool-name NRPbackendpool
     ```
 
 3. 创建运行状况探测器。
@@ -205,7 +210,7 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
 
 ## <a name="create-nics"></a>创建 NIC
 
-你需要创建 NIC（或修改现有 NIC），并将其关联到 NAT 规则、负载平衡器规则和探测器。
+你需要创建 NIC（或修改现有 NIC），并将其关联到 NAT 规则、负载均衡器规则和探测器。
 
 1. 创建名为 *lb-nic1-be* 的 NIC，并将其与 *rdp1* NAT 规则和 *NRPbackendpool* 后端地址池相关联。
 
@@ -252,7 +257,7 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
     ```
 
     > [!IMPORTANT]
-    > 负载平衡器中的 VM 需要在同一可用性集中。 使用 `azure availset create` 创建可用性集。
+    > 负载均衡器中的 VM 需要在同一可用性集中。 使用 `azure availset create` 创建可用性集。
 
     输出应如下所示：
 
@@ -284,15 +289,15 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
         azure vm create --resource-group nrprg --name web2 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic2-be --availset-name nrp-avset --storage-account-name web2nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
     ```
 
-## <a name="update-an-existing-load-balancer"></a>更新现有的负载平衡器
-可添加引用现有负载平衡器的规则。 在下例中，向现有负载均衡器 **NRPlb** 添加了新的负载均衡器规则
+## <a name="update-an-existing-load-balancer"></a>更新现有的负载均衡器
+可添加引用现有负载均衡器的规则。 在下例中，向现有负载均衡器 **NRPlb** 添加了新的负载均衡器规则
 
 ```azurecli
 azure network lb rule create --resource-group nrprg --lb-name nrplb --name lbrule2 --protocol tcp --frontend-port 8080 --backend-port 8051 --frontend-ip-name frontendnrppool --backend-address-pool-name NRPbackendpool
 ```
 
-## <a name="delete-a-load-balancer"></a>删除负载平衡器
-以下命令可删除负载平衡器：
+## <a name="delete-a-load-balancer"></a>删除负载均衡器
+以下命令可删除负载均衡器：
 
 ```azurecli
 azure network lb delete --resource-group nrprg --name nrplb
@@ -304,9 +309,4 @@ azure network lb delete --resource-group nrprg --name nrplb
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

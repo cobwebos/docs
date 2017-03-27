@@ -1,38 +1,41 @@
 ---
-title: "中继混合连接入门 | Microsoft Docs"
+title: "开始在 .NET 中使用 Azure 中继混合连接 | Microsoft 文档"
 description: "如何为混合连接编写 C# 控制台应用程序"
-services: service-bus
+services: service-bus-relay
 documentationcenter: .net
 author: jtaubensee
 manager: timlt
 editor: 
 ms.assetid: d1386900-b942-4abf-acfc-38d2ef826253
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub
+ms.date: 02/03/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 92d7935596ab1dede6dc1d613cb635c32d52e3ab
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: d27016559ede5d810d7efcec2a3abc78334f0f0a
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>中继混合连接入门
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
+本教程简单介绍了 [Azure 中继混合连接](relay-what-is-it.md#hybrid-connections)，同时介绍了如何创建客户端应用程序，以便将消息发送到相应的侦听器应用程序。 
+
 ## <a name="what-will-be-accomplished"></a>将要完成的任务
-由于混合连接要求客户端和服务器组件，我们将在本教程中创建两个控制台应用程序。 下面是相关步骤：
+由于混合连接要求客户端和服务器组件，本教程将创建两个控制台应用程序。 步骤如下：
 
 1. 使用 Azure 门户创建中继命名空间。
 2. 使用 Azure 门户创建混合连接。
-3. 编写服务器控制台应用程序用于接收消息。
-4. 编写客户端控制台应用程序用于发送消息。
+3. 编写服务器（侦听器）控制台应用程序，用于接收消息。
+4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 
 ## <a name="prerequisites"></a>先决条件
-1. [Visual Studio 2013 或 Visual Studio 2015](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2015。
+1. [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2015。
 2. Azure 订阅。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
@@ -64,16 +67,11 @@ ms.openlocfilehash: 92d7935596ab1dede6dc1d613cb635c32d52e3ab
 
 ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
-祝贺，现已创建端到端混合连接应用程序。
+祝贺你，现已创建端到端混合连接应用程序。
 
 ## <a name="next-steps"></a>后续步骤：
 * [中继常见问题](relay-faq.md)
 * [创建命名空间](relay-create-namespace-portal.md)
 * [节点入门](relay-hybrid-connections-node-get-started.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

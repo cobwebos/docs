@@ -1,13 +1,27 @@
 ---
+title: "Azure Key Vault 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用密钥保管库来创建及维护用于访问和加密云资源、应用和解决方案的密钥。 教程、API 参考和其他资源。"
+services: key-vault
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: key-vault
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: d6059070f8cb8765986763a2ae52068ab692d41d
-ms.openlocfilehash: 9614778d6c7502f16639d2ccb2f259a98be5b0c9
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 1913116e8d43d25a01ea2a8f4eb112c001dbc7ff
+ms.lasthandoff: 03/22/2017
 
 ---
+
 # <a name="key-vault-documentation"></a>密钥保管库文档
 
-Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过密钥保管库，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。
+了解如何使用 Azure 密钥保管库来保护及管理云应用程序与服务使用的加密密钥和机密。 教程、API 参考和其他文档介绍了如何创建及维护用于访问和加密资源与解决方案的密钥。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +43,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=key-vault">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=key-vault">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -103,36 +117,51 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 </ul>
 
 ---
-
-## <a name="reference"></a>参考
-
-### <a name="powershell"></a>PowerShell
-[Azure PowerShell 参考](/PowerShell/azureps-cmdlets-docs)
-
-### <a name="azure-cli"></a>Azure CLI 
-[在 Azure CLI 中使用密钥保管库](/cli/azure/keyvault)
-
-### <a name="java"></a>Java 
-[Java 中的密钥保管库参考](/java/api/)
-
-### <a name="net"></a>.NET 
-[密钥保管库托管参考 API](/dotnet/api/) 
-
-### <a name="rest"></a>REST 
-[密钥保管库 REST API 参考](/rest/api/keyvault) 
+ 
+<h2>参考</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault">PowerShell</a></p>
+                         <p><a href="/cli/azure/keyvault">Azure CLI 2.0</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.keyvault">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.keyvault">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest">Node.js</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.keyvault">Java</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/keyvault">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 ---
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/key-vault.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载密钥保管库文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

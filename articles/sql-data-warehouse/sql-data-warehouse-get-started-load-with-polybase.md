@@ -4,7 +4,7 @@ description: "了解什么是 PolyBase，以及如何将其用于数据仓库方
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
-manager: barbkess
+manager: jhubbard
 editor: 
 ms.assetid: 0a0103b4-ddd6-4d1e-87be-4965d6e99f3f
 ms.service: sql-data-warehouse
@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
-ms.author: cakarst;barbkess
+ms.date: 03/01/2017
+ms.author: cakarst
+ms.custom: loading
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 936bfcb7d4e7d2a901304f31a58b31e6cd14498a
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 1e3cd48aebf6f00802863c1a1b20fcb625e03c25
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -35,7 +37,7 @@ ms.openlocfilehash: 936bfcb7d4e7d2a901304f31a58b31e6cd14498a
 * 创建数据库对象以定义数据
 * 运行 T-SQL 查询以加载数据
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
@@ -44,7 +46,7 @@ ms.openlocfilehash: 936bfcb7d4e7d2a901304f31a58b31e6cd14498a
 
 * 一个 SQL 数据仓库数据库。
 * 一个标准本地冗余存储 (Standard-LRS)、标准异地冗余存储 (Standard-GRS) 或标准读取访问权限异地冗余存储 (Standard-RAGRS) 类型的 Azure 存储帐户。
-* AzCopy 命令行实用程序。 下载并安装 Microsoft Azure 存储工具随附的[最新版本的 AzCopy][latest version of AzCopy]。
+* AzCopy 命令行实用程序。 下载并安装 Microsoft Azure 存储工具随附的 [最新版本的 AzCopy][latest version of AzCopy]。
   
     ![Azure 存储空间工具](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
@@ -101,20 +103,20 @@ ms.openlocfilehash: 936bfcb7d4e7d2a901304f31a58b31e6cd14498a
     ```
     cd /d "%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy"
     ```
-2. 运行以下命令以上载该文件。 指定 <blob service endpoint URL> 的 Blob 服务终结点 URL，以及 <azure_storage_account_key> 的 Azure 存储帐户密钥。
+2. 运行以下命令以上载该文件。 指定 <blob service endpoint URL> 的 BLOB 服务终结点 URL，以及 <azure_storage_account_key> 的 Azure 存储帐户密钥。
    
     ```
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-另请参阅 [AzCopy 命令行实用程序入门][Getting Started with the AzCopy Command-Line Utility]。
+另请参阅 [AzCopy 命令行实用工具入门][Getting Started with the AzCopy Command-Line Utility]。
 
 ### <a name="e-explore-your-blob-storage-container"></a>E. 浏览 Blob 存储容器
 若要查看已上载到 Blob 存储的文件，请执行以下操作：
 
 1. 返回你的 Blob 服务边栏选项卡。
 2. 在“容器”下，双击“datacontainer”。
-3. 若要浏览数据的路径，请单击文件夹 **datedimension**，即可看到已上载的文件 **DimDate2.txt**。
+3. 若要浏览数据的路径，请单击文件夹 **datedimension**，然后将看到已上传的文件 **DimDate2.txt**。
 4. 若要查看属性，请单击“DimDate2.txt”。
 5. 请注意，在 Blob 属性边栏选项卡中，你可以下载或删除该文件。
    
@@ -127,7 +129,7 @@ PolyBase 使用外部表来访问 Azure Blob 存储中的数据。 由于数据�
 
 本步骤中的示例使用这些 Transact-SQL 语句来创建外部表。
 
-* [Create Master Key (TRANSACT-SQL)][Create Master Key (Transact-SQL)]：加密数据库范围凭据的密码。
+* [Create Master Key (Transact-SQL)][Create Master Key (Transact-SQL)]：加密数据库范围凭据的机密。
 * [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)]：指定 Azure 存储帐户的身份验证信息。
 * [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)]：指定 Azure Blob 存储的位置。
 * [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)]：指定数据的格式。
@@ -238,26 +240,26 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-若要了解详细信息，请参阅[统计信息][Statistics]。  
+若要了解详细信息，请参阅 [统计信息][Statistics]。  
 
 ## <a name="next-steps"></a>后续步骤
-有关在开发使用 PolyBase 的解决方案时应了解的更多信息，请参阅 [PolyBase 指南][PolyBase guide]。
+有关在开发使用 PolyBase 的解决方案时应了解的其他信息，请参阅 [PolyBase 指南][PolyBase guide]。
 
 <!--Image references-->
 
 
 <!--Article references-->
-[SQL 数据仓库中的 PolyBase 教程]: ./sql-data-warehouse-get-started-load-with-polybase.md
-[使用 bcp 加载数据]: ./sql-data-warehouse-load-with-bcp.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
-[PolyBase 指南]: ./sql-data-warehouse-load-polybase-guide.md
-[AzCopy 命令行实用程序入门]: ../storage/storage-use-azcopy.md
-[最新版本的 AzCopy]: ../storage/storage-use-azcopy.md
+[PolyBase in SQL Data Warehouse Tutorial]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[PolyBase guide]: ./sql-data-warehouse-load-polybase-guide.md
+[Getting Started with the AzCopy Command-Line Utility]: ../storage/storage-use-azcopy.md
+[latest version of AzCopy]: ../storage/storage-use-azcopy.md
 
 <!--External references-->
-[受支持的源/接收器]: https://msdn.microsoft.com/library/dn894007.aspx
-[复制活动]: https://msdn.microsoft.com/library/dn835035.aspx
-[SQL Server 目标适配器]: https://msdn.microsoft.com/library/ms141095.aspx
+[supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
+[copy activity]: https://msdn.microsoft.com/library/dn835035.aspx
+[SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141095.aspx
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 
@@ -275,9 +277,4 @@ CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 [CREATE CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189522.aspx
 [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189450.aspx
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

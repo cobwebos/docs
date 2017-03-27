@@ -1,9 +1,26 @@
 ---
+title: "Azure 数据工厂文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用数据工厂来与本地源与云源建立自动化数据管道，以便移动和处理要分析的数据。"
+services: data-factory
+author: carolz
+manager: carolz
 layout: LandingPage
----
-#Azure Data Factory Documentation
+ms.assetid: 
+ms.service: data-factory
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 7e5e1b41828d0c3d81f5594609910ecdba02a249
+ms.openlocfilehash: 9e9a23f8ddcff428b45f08ab001489d00b3ed7a9
+ms.lasthandoff: 02/09/2017
 
-Azure Data Factory is a cloud-based data integration service that orchestrates and automates the movement and transformation of data. Using the Data Factory service, you can create data integration solutions that can ingest data from various stores, transform and process the data, and publish the result data back to the data stores.
+---
+# <a name="azure-data-factory-documentation"></a>Azure 数据工厂文档
+
+了解如何使用数据工厂（云数据集成服务）将数据存储服务、移动服务和处理服务组合成自动化数据管道。 教程和其他文档介绍了如何设置和管理数据管线，以及移动和转换要分析的数据。
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -17,7 +34,7 @@ Azure Data Factory is a cloud-based data integration service that orchestrates a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Data Factory</h3>
+                        <h3>了解 Azure 数据工厂</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +52,7 @@ Azure Data Factory is a cloud-based data integration service that orchestrates a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Data Factory Video Library</h3>
+                        <h3>Azure 数据工厂视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +70,7 @@ Azure Data Factory is a cloud-based data integration service that orchestrates a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Factory</h3>
+                        <h3>Azure 数据工厂入门</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +88,7 @@ Azure Data Factory is a cloud-based data integration service that orchestrates a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create your pipeline for Data Factory</h3>
+                        <h3>开始创建数据工厂的管道</h3>
                     </div>
                 </div>
             </div>
@@ -82,22 +99,44 @@ Azure Data Factory is a cloud-based data integration service that orchestrates a
 
 ---
 
-##Reference
-
-###PowerShell
-[Azure PowerShell Reference](/powershell/azureps-cmdlets-docs)
-
-###.NET
-[Data Factory Managed Reference](/dotnet/api)
-
-###REST
-[Data Factory REST API Reference](/rest/api/datafactory)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-factory.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Data Factory Documentation
+<h2>参考</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/datafactory/">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+

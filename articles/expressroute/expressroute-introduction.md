@@ -1,10 +1,10 @@
 ---
-title: "ExpressRoute 简介 | Microsoft Docs"
-description: "本页提供 ExpressRoute 服务的概述，包括 ExpressRoute 连接的工作原理。"
+title: "ExpressRoute 概述：通过专用连接将本地网络扩展到 Azure | Microsoft 文档"
+description: "此 ExpressRoute 技术概述介绍了如何使用 ExpressRoute 连接，以便用户通过专用连接将本地网络扩展到 Azure。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: fd95dcd5-df1d-41d6-85dd-e91d0091af05
 ms.service: expressroute
@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 02/28/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3b3e0fd5342c4729d6ffee4858089099b31404a8
+ms.sourcegitcommit: 280a17677714a522ca978a6eb6baf3e70f853d7a
+ms.openlocfilehash: 5b0865310076557c8f7ce6f9d9b553950854407c
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="expressroute-technical-overview"></a>ExpressRoute 技术概述
-Microsoft Azure ExpressRoute 可让你通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。
+Microsoft Azure ExpressRoute 可让你通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。 
 
-![](./media/expressroute-introduction/expressroute-basic.png)
+可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。 若要了解如何使用 ExpressRoute 将网络连接到 Microsoft，请参阅 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。
 
-**主要优势包括：**
+![](./media/expressroute-introduction/expressroute-connection-overview-diagram.png)
+
+## <a name="key-benefits"></a>主要优点
 
 * 通过连接服务提供商在本地网络与 Microsoft 云之间建立第 3 层连接。 可以从任意位置之间的 (IPVPN) 网络、点到点以太网，或通过以太网交换经由虚拟交叉连接来建立这种连接。
 * 跨地缘政治区域中的所有区域连接到 Microsoft 云服务。
@@ -33,28 +36,11 @@ Microsoft Azure ExpressRoute 可让你通过连接服务提供商所提供的专
 * 通过行业标准协议 (BGP) 在你的网络与 Microsoft 之间进行动态路由。
 * 在每个对等位置提供内置冗余以提高可靠性。
 * 连接运行时间 [SLA](https://azure.microsoft.com/support/legal/sla/)。
-* 提供 QoS，并支持特殊应用程序（例如 Skype for Business）的多种服务等级。
+* Skype for Business 的 QoS 支持。
 
-有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 。
+有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
-## <a name="a-namehowtoconnectahow-can-i-connect-my-network-to-microsoft-using-expressroute"></a><a name="howtoconnect"></a>如何使用 ExpressRoute 将我的网络连接到 Microsoft？
-有三种方法可以在本地网络与 Microsoft 云之间建立连接：
-
-### <a name="colocated-at-a-cloud-exchange"></a>共置于云交换位置
-如果你所在的位置提供云交换设施，则你可以订购虚拟交叉连接，以通过共同租用提供商的以太网交换连接到 Microsoft 云。 共同租用提供商可以在共置设施中的基础结构与 Microsoft 云之间提供第 2 层交叉连接或托管的第 3 层交叉连接。
-
-### <a name="pointtopoint-ethernet-connections"></a>点到点以太网连接
-你可以通过点到点以太网链路，将本地数据中心/办公室连接到 Microsoft 云。 点到点以太网提供商可以在你的站点与 Microsoft 云之间提供第 2 层连接或托管的第 3 层连接。
-
-### <a name="anytoany-ipvpn-networks"></a>任意位置之间的 (IPVPN) 网络
-你可以将 WAN 集成到 Microsoft 云。 IPVPN 提供商（通常提供 MPLS VPN）可在分支机构与数据中心之间提供任意位置之间的连接。 Microsoft 云可与你的 WAN 互连，就如同它是其他任何一个分支机构。 WAN 提供商通常提供托管的第 3 层连接。 在上述所有连接模型中，ExpressRoute 功能与特性完全相同。 
-
-连接服务提供商可以提供一个或多个连接模型。 你可以咨询连接服务提供商以选择最合适的模型。
-
-![](./media/expressroute-introduction/expressroute-connectivitymodels.png)
-
-## <a name="expressroute-features"></a>ExpressRoute 功能
-ExpressRoute 支持以下特性和功能： 
+## <a name="features"></a>功能
 
 ### <a name="layer-3-connectivity"></a>第 3 层连接
 Microsoft 采用行业标准动态路由协议 (BGP)，在本地网络、Azure 中的实例和 Microsoft 公共地址之间交换路由。  我们根据不同的流量配置文件来与网络建立多个 BGP 会话。 有关详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md) 一文。
@@ -76,9 +62,9 @@ Microsoft 采用行业标准动态路由协议 (BGP)，在本地网络、Azure �
 ### <a name="connectivity-to-all-regions-within-a-geopolitical-region"></a>与地缘政治区域中的所有区域建立连接
 可以在我们的某个 [对等位置](expressroute-locations.md) 连接到 Microsoft，然后访问该地缘政治区域中的所有区域。 
 
-例如，如果你在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则就能够访问在欧洲北部和欧洲西部托管的所有 Microsoft 云服务。 有关地缘政治地区、关联的 Microsoft 云区域和对应的 ExpressRoute 对等位置的概述，请参阅 [ExpressRoute 合作伙伴和对等位置](expressroute-locations.md) 。
+例如，如果你在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则就能够访问在欧洲北部和欧洲西部托管的所有 Microsoft 云服务。 有关地缘政治地区、关联的 Microsoft 云区域和对应的 ExpressRoute 对等位置的概述，请参阅 [ExpressRoute 合作伙伴和对等位置](expressroute-locations.md)。
 
-### <a name="global-connectivity-with-expressroute-premium-addon"></a>使用 ExpressRoute 高级版附加组件建立全球连接
+### <a name="global-connectivity-with-expressroute-premium-add-on"></a>使用 ExpressRoute 高级版附加组件建立全球连接
 你可以启用 ExpressRoute 高级版附加功能，将连接扩展为跨越地缘政治边界。 例如，如果你在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则就能够访问全球所有区域托管的所有 Microsoft 云服务（不包括国家/地区云）。 就像访问欧洲北部和西部区域一样，你还可以访问部署在南美洲或澳大利亚的服务。
 
 ### <a name="rich-connectivity-partner-ecosystem"></a>丰富的连接合作伙伴生态系统
@@ -87,7 +73,7 @@ ExpressRoute 的连接服务提供商和 SI 合作伙伴生态系统不断发展
 ### <a name="connectivity-to-national-clouds"></a>与国家/地区云建立连接
 Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。 有关国家/地区云和提供商的列表，请参阅 [ExpressRoute 提供商和位置](expressroute-locations.md) 页。
 
-### <a name="supported-bandwidth-options"></a>支持的带宽选项
+### <a name="bandwidth-options"></a>带宽选项
 你可以购买各种带宽的 ExpressRoute 线路。 支持的带宽列表如下。 请务必咨询连接服务提供商，以获取他们支持的带宽列表。
 
 * 50 Mbps
@@ -100,10 +86,10 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。 
 * 10 Gbps
 
 ### <a name="dynamic-scaling-of-bandwidth"></a>动态调整带宽
-你可以在不中断连接的情况下增大 ExpressRoute 线路带宽（尽最大努力）。 
+用户可以在不中断连接的情况下增大 ExpressRoute 线路带宽（尽最大努力）。 
 
 ### <a name="flexible-billing-models"></a>弹性计费模式
-你可以选择最适合自己的计费模式。 请从以下计费模式中选择。 有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 页。 
+你可以选择最适合自己的计费模式。 请从以下计费模式中选择。 有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
 * **无限制数据**。 ExpressRoute 线路按月计费，所有入站和出站数据传输不收取费用。 
 * **计量数据**。 ExpressRoute 线路按月计费。 所有入站数据传输免费。 出站数据传输按每 GB 数据传输计费。 数据传输费率根据区域不同而异。
@@ -113,18 +99,14 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。 
   * 增加了每个 ExpressRoute 线路的 VNet 链接数量，从 10 增加至更大的限制，具体取决于线路的带宽。
 
 ## <a name="next-steps"></a>后续步骤
+
+* 了解 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。
 * 了解 ExpressRoute 连接和路由域。 请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
 * 查找服务提供商。 请参阅 [ExpressRoute 合作伙伴和对等位置](expressroute-locations.md)。
 * 确保符合所有先决条件。 请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)。
 * 请参阅[路由](expressroute-routing.md)、[NAT](expressroute-nat.md) 和 [QoS](expressroute-qos.md) 的要求。
 * 配置 ExpressRoute 连接。
-  * [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)
-  * [配置路由](expressroute-howto-routing-classic.md)
-  * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+  * [创建 ExpressRoute 线路](expressroute-howto-circuit-portal-resource-manager.md)
+  * [配置路由](expressroute-howto-routing-portal-resource-manager.md)
+  * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-portal-resource-manager.md)
 

@@ -4,7 +4,7 @@ description: "本文旨在帮助你了解如何使用此解决方案来管理 Wi
 services: operations-management-suite
 documentationcenter: 
 author: MGoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
 ms.service: operations-management-suite
@@ -12,18 +12,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 03/06/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4bd1e84fd9af1273f95f70d941c3a4535984c8a9
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: f709fe00cce61f6766a0a56ea31b023e00c91fce
+ms.lasthandoff: 03/06/2017
 
 
 ---
-# <a name="update-management-solution-in-omsmediaomssolutionupdatemanagementupdatemanagementsolutioniconpng-update-management-solution-in-oms"></a>![更新 OMS 中的管理解决方案](./media/oms-solution-update-management/update-management-solution-icon.png) 更新 OMS 中的管理解决方案
+# <a name="update-management-solution-in-oms"></a>更新 OMS 中的管理解决方案
 OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新。  你可以快速评估所有代理计算机上可用更新的状态并启动为服务器安装所需更新的过程。 
 
 ## <a name="prerequisites"></a>先决条件
+* 该解决方案仅支持对 Windows Server 2008 和更高版本执行更新评估，以及对 Windows Server 2012 和更高版本执行更新部署。  不支持服务器核心和 Nano Server 安装选项。
+* 不支持 Windows 客户端操作系统。  
 * Windows 代理也必须配置为与 Windows Server Update Services (WSUS) 服务器通信或有权访问 Microsoft 更新。  
   
   > [!NOTE]
@@ -33,7 +36,10 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 * Linux 代理必须具有访问更新存储库的权限。  可以从 [GitHub](https://github.com/microsoft/oms-agent-for-linux) 下载适用于 Linux 的 OMS 代理。 
 
 ## <a name="configuration"></a>配置
-执行以下步骤以将更新管理解决方案添加到 OMS 工作区并添加 Linux 代理。  Windows 代理会自动添加，无额外配置。
+执行以下步骤以将更新管理解决方案添加到 OMS 工作区并添加 Linux 代理。 Windows 代理会自动添加，无额外配置。
+
+> [!NOTE]
+> 如果启用此解决方案，连接到 OMS 工作区的任何 Windows 计算机将自动配置为混合 Runbook 辅助角色，以支持将 Runbook 用作此解决方案的一部分。  但是，该计算机未注册到任何已在自动化帐户中定义的混合辅助角色组。  只要将同一个帐户同时用于解决方案和混合 Runbook 辅助角色组成员身份，即可将该计算机添加到自动化帐户的混合 Runbook 辅助角色组，以支持自动化 Runbook。  此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。   
 
 1. 使用从解决方案库中添加 [OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)中所述的过程，将更新管理解决方案添加到 OMS 工作区。  
 2. 在 OMS 门户中，选择“设置”然后选择“已连接的源”。  记下**工作区 ID** 和**主密钥**或**辅助密钥**。
@@ -41,11 +47,10 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
    
    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    通过运行以下命令安装适用于 Linux 的 OMS 代理最新版本。  将 <Workspace ID> 替换为工作区 ID，并将 <Key> 替换为主密钥或辅助密钥。
    
-     cd ~   wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh   sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
-   
-   b.保留“数据库类型”设置，即设置为“共享”。 若要删除代理，请运行以下命令。
-   
-     sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+        cd ~
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID>  -s <PrimaryKey> -d opinsights.azure.com 
+
+   b.保留“数据库类型”设置，即设置为“共享”。 若要删除代理，请执行 [Uninstalling the OMS Agent for Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#uninstalling-the-oms-agent-for-linux)（卸载适用于 Linux 的 OMS 代理）部分描述的过程。  
 
 ## <a name="management-packs"></a>管理包
 如果 System Center Operations Manager 管理组已连接到 OMS 工作区，则添加此解决方案时会在 Operations Manager 中安装以下管理包。 无需对这些管理包进行任何配置或维护。 
@@ -99,7 +104,9 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 ## <a name="installing-updates"></a>安装更新
 环境中的所有 Windows 计算机进行了更新评估后，你可以新通过创建“更新部署”安装所需的更新。  更新部署是为一台或多台 Windows 计算机计划的所需更新安装。  你需要指定部署的日期和时间，以及要包括的计算机或计算机组。  
 
-通过 Azure 自动化中的 runbook 安装更新。  当前无法查看这些 runbook，它们不需要任何配置。  创建更新的部署时，它创建计划，并在指定的时间为包括在内的计算机启动主更新 runbook。  而此主要 runbook 在每个 Windows 代理上启动子 runbook，来执行所需更新的安装。  
+通过 Azure 自动化中的 runbook 安装更新。  无法查看这些 runbook，它们不需要任何配置。  创建更新的部署时，它创建计划，并在指定的时间为包括在内的计算机启动主更新 runbook。  而此主要 runbook 在每个 Windows 代理上启动子 runbook，来执行所需更新的安装。  
+
+对于从 Azure 应用商店中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。  对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。  
 
 ### <a name="viewing-update-deployments"></a>查看更新部署
 单击“更新部署” 磁贴以查看现有的更新部署列表。  这些对象按状态分组 – **已计划**、**正在运行**和 **已完成**。<br><br> ![更新部署计划页](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
@@ -238,10 +245,5 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 * 使用[Log Analytics](../log-analytics/log-analytics-log-searches.md)中的日志搜索可查看详细的更新数据。
 * [创建自己的仪表板](../log-analytics/log-analytics-dashboards.md)显示你管理的计算机的更新符合性。
 * [创建警报](../log-analytics/log-analytics-alerts.md)检测到计算机缺少关键更新或计算机禁用了自动更新时发出警报。  
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

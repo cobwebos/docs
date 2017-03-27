@@ -1,6 +1,7 @@
 # 概述
 ## [什么是 Azure 批处理](batch-technical-overview.md)
 ## [功能概述](batch-api-basics.md)
+## [API 和工具](batch-apis-tools.md)
 ## [配额和限制](batch-quota-limit.md)
 # 入门
 ## [创建批处理帐户](batch-account-create-portal.md)
@@ -10,6 +11,7 @@
 ## 开发
 ### [应用程序包](batch-application-packages.md)
 ### [自动缩放计算节点](batch-automatic-scaling.md)
+### [Azure AD 身份验证](batch-aad-auth.md)
 ### [并发节点任务](batch-parallel-node-tasks.md)
 ### [高效列表查询](batch-efficient-list-queries.md)
 ### [作业准备与作业完成任务](batch-job-prep-release.md)
@@ -25,12 +27,13 @@
 ### [批处理诊断日志](batch-diagnostics.md)
 
 # 参考
-## [PowerShell cmdlets](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/)
-## [Java](https://docs.microsoft.com/java/api)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
-## [Python SDK](https://go.microsoft.com/fwlink/p/?linkid=833496)
-## [Node.js](https://go.microsoft.com/fwlink/p/?linkid=833544)
-## [REST](https://docs.microsoft.com/rest/api/batchservice/)
+## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)
+## [Azure CLI](/cli/azure/batch)
+## [.NET](/dotnet/api/microsoft.azure.batch)
+## [Java](/java/api/com.microsoft.azure.batch)
+## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest)
+## [Python SDK](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.html)
+## [REST](/rest/api/batchservice)
 
 # 相关内容
 ## [批处理 Shipyard](https://github.com/Azure/batch-shipyard)
@@ -43,11 +46,7 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-batch)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 ## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
-## [批处理 C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
-## [批处理 Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+## [C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
+## [Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [博客](https://blogs.technet.microsoft.com/windowshpc/)
 

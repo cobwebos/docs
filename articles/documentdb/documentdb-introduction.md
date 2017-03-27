@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/13/2016
+ms.date: 03/14/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 23a6be60d7bf8fa47589fffb5132a09994d33d4c
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 4f6ae0c3c40a10f75b46c6e44b0aa9e8ce440b4d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -41,12 +42,13 @@ Azure DocumentDB 具有以下主要功能和优势：
 * **多区域复制：** DocumentDB 以透明方式将数据复制到与你的 DocumentDB 帐户关联的所有区域，使你可以开发那些对全局性数据访问有要求的应用程序，与此同时还在一致性、可用性和性能方面做出权衡，所有这些都有相应的保证。 DocumentDB 提供了具有多宿主 API 的透明区域故障转移，还可以弹性缩放全局吞吐量和存储空间。 有关详细信息，请参阅 [使用 DocumentDB 全局分发数据](documentdb-distribute-data-globally.md)。
 * **使用熟悉的 SQL 语法进行即席查询：** 在 DocumentDB 中存储异类 JSON 文档，并通过熟悉的 SQL 语法查询这些文档。 DocumentDB 使用高并发、无锁、日志结构化索引技术为所有文档内容自动创建索引。 这样可以实现各种实时查询，而无需指定架构提示、二级索引或视图。 有关详细信息，请参阅 [DocumentDB 查询](documentdb-sql-query.md)。 
 * **在数据库中执行 JavaScript：** 使用标准 JavaScript 将应用程序逻辑表示为存储过程、触发器和用户定义函数 (UDF)。 这样，你的应用程序逻辑可基于数据进行运作，而无需担心应用程序和数据库架构之间的不匹配。 DocumentDB 支持在数据库引擎内部直接进行 JavaScript 应用程序逻辑的完全事务执行。 对 JavaScript 的深度集成支持在一个 JavaScript 程序中将 INSERT、REPLACE、DELETE 和 SELECT 操作作为独立的事务来执行。 有关详细信息，请参阅 [DocumentDB 服务器端编程](documentdb-programming.md)。
-* **可调优的一致性级别：** 从 4 个定义好的一致性级别中选择，以实现一致性和性能之间的最佳平衡。 对于查询和读取操作，DocumentDB 提供了四种不同的一致性级别：强、有限过时、会话和最终。 通过这些细化的定义完好的一致性级别，你可以在一致性、可用性和延迟之间实现合理的平衡。 有关详细信息，请参阅 [使用一致性级别最大化 DocumentDB 中的可用性和性能](documentdb-consistency-levels.md)。
+* **可调优的一致性级别：** 从&4; 个定义好的一致性级别中选择，以实现一致性和性能之间的最佳平衡。 对于查询和读取操作，DocumentDB 提供了四种不同的一致性级别：强、有限过时、会话和最终。 通过这些细化的定义完好的一致性级别，你可以在一致性、可用性和延迟之间实现合理的平衡。 有关详细信息，请参阅 [使用一致性级别最大化 DocumentDB 中的可用性和性能](documentdb-consistency-levels.md)。
 * **完全托管：** 无需管理数据库和计算机资源。 作为一种完全托管的 Microsoft Azure 服务，你无需管理虚拟机、部署并配置软件、管理数据库和资源的增减，或处理复杂的数据层升级。 每个数据库都将自动备份，以防受到区域故障的影响。 你可以轻松添加 DocumentDB 帐户并按照你的需求设置容量，从而使你专注于你的应用程序而不是操作和管理你的数据库。 
 * **源于设计的开放性：** 通过使用现有的技能和工具快速入门。 针对 DocumentDB 的编程非常简单易学，你无需使用新的工具或遵循 JSON 或 JavaScript 的自定义扩展。 你可以通过简单的 RESTful HTTP 接口访问所有数据库功能，包括 CRUD、查询和 JavaScript 处理。 DocumentDB 包含现有格式、语言和标准，并同时基于这些内容提供高价值的数据库功能。
-* **自动索引：** 默认情况下，DocumentDB 将 [自动索引](documentdb-indexing.md) 数据库中的所有文档，并且无需任何架构或创建二级索引。 不想索引所有内容？ 别担心，还可以 [退出 JSON 文件中的路径](documentdb-indexing-policies.md) 。
+* **自动索引：**默认情况下，DocumentDB 将自动为数据库中的所有文档编制，无需任何架构或创建二级索引。 不想索引所有内容？ 别担心，还可以 [退出 JSON 文件中的路径](documentdb-indexing-policies.md) 。
+* **兼容 MongoDB 应用：**使用适用于 MongoDB 的 DocumentDB: API 时，你可以将 DocumentDB 数据库用作针对 MongoDB 编写的应用的数据存储。 这意味着，通过使用 MongoDB 数据库的现有驱动程序，为 MongoDB 编写的应用程序现在可与 DocumentDB 进行通信，并可使用 DocumentDB 数据库而不是 MongoDB 数据库。 在许多情况下，只需更改连接字符串便可从使用 DocumentDB 切换到使用 MongoDB。 在[什么是适用于 MongoDB 的 DocumentDB: API？](documentdb-protocol-mongodb.md)中了解详细信息
 
-## <a name="a-namedatamanagementahow-does-documentdb-manage-data"></a><a name="data-management"></a>DocumentDB 如何管理数据？
+## <a name="data-management"></a>DocumentDB 如何管理数据？
 Azure DocumentDB 通过定义完好的数据库资源管理 JSON 数据。 这些资源经过复制具有高可用性，并且使用其逻辑 URI 进行唯一寻址。 DocumentDB 为所有资源提供简单的基于 HTTP 的 RESTful 编程模型。 
 
 DocumentDB 数据库帐户是授予你 Azure DocumentDB 访问权限的唯一命名空间。 在创建数据库帐户之前，你必须具有 Azure 订阅，以便为你提供访问各种 Azure 服务的权限。 
@@ -59,8 +61,8 @@ DocumentDB 中的所有资源都以 JSON 文档的形式建模和存储。 将�
 
 一个数据库帐户可以包含一组数据库，每个数据库都包含多个集合，每个集合又包含存储过程、触发器、UDF、文档及相关附件。 数据库也有关联的用户，每个用户都有一组权限来访问其他各种集合、存储过程、触发器、UDF、文档或附件。 尽管数据库、用户、权限和集合是系统定义的具有已知架构的资源，文档、存储过程、触发器、UDF 和附件也包含任意的用户定义的 JSON 内容。  
 
-## <a name="a-namedevelopa-how-can-i-develop-apps-with-documentdb"></a><a name="develop"></a> 如何通过 DocumentDB 开发应用程序？
-Azure DocumentDB 通过 REST API 公开资源，此 API 可以使用能够发出 HTTP/HTTPS 请求的任何语言调用。 另外，DocumentDB 还为多种主流语言提供了编程库。 这些库通过处理一些细节，例如地址缓存、异常管理、自动重试等，简化了使用 Azure DocumentDB 的许多方面。 当前这些库可用于以下语言和平台：  
+## <a name="develop"></a> 如何通过 DocumentDB 开发应用程序？
+Azure DocumentDB 通过 REST API 公开资源，此 API 可以使用能够发出 HTTP/HTTPS 请求的任何语言调用。 另外，DocumentDB 还为多种主流语言提供了编程库，且兼容 MongoDB API。 客户端库通过处理一些细节，例如地址缓存、异常管理、自动重试等，简化了使用 Azure DocumentDB 的许多方面。 当前这些库可用于以下语言和平台：  
 
 | 下载 | 文档 |
 | --- | --- |
@@ -70,6 +72,9 @@ Azure DocumentDB 通过 REST API 公开资源，此 API 可以使用能够发出
 | [JavaScript SDK](http://go.microsoft.com/fwlink/?LinkID=402991) |[JavaScript 库](http://azure.github.io/azure-documentdb-js/) |
 | 不适用 |[服务器端 JavaScript SDK](http://azure.github.io/azure-documentdb-js-server/) |
 | [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python 库](http://azure.github.io/azure-documentdb-python/) |
+| 不适用 | [适用于 MongoDB 的 API](documentdb-protocol-mongodb.md)
+
+使用  [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) 可在本地开发和测试应用程序，无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在 DocumentDB Emulator 中的工作情况感到满意，可以改为在云中使用 Azure DocumentDB 帐户。
 
 除了基本的创建、读取、更新和删除操作，DocumentDB 还提供丰富的 SQL 查询接口用于检索 JSON 文档和针对 JavaScript 应用程序逻辑的事务执行的服务器端支持。 可通过所有平台库获取查询和脚本执行接口以及 REST API。 
 
@@ -85,21 +90,25 @@ DocumentDB 允许将应用程序逻辑编写为完全使用 JavaScript 编写的
 
 DocumentDB 中的 JavaScript 执行是在关系型数据库系统所支持的概念的基础之上建立的，只是现代性的将 Transact-SQL 换成了 JavaScript。 所有 JavaScript 逻辑都在使用快照隔离的环境 ACID 事务内执行。 在其执行过程中，如果 JavaScript 引发异常，则整个事务将被中止。
 
+## <a name="are-there-any-online-courses-on-documentdb"></a>是否有 DocumentDB 方面的在线课程？
+
+有。有一个 [Microsoft 虚拟大学](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847)课程，是关于 Azure DocumentDB 的。 
+
+>[!VIDEO https://mva.microsoft.com/en-US/training-courses-embed/azure-documentdb-planetscale-nosql-16847]
+>
+>
+
 ## <a name="next-steps"></a>后续步骤
 已有 Azure 帐户？ 那么可以在 [Azure 门户](https://portal.azure.com/#gallery/Microsoft.DocumentDB)中通过[创建 DocumentDB 数据库帐户](documentdb-create-account.md)开始使用 DocumentDB。
 
 还没有 Azure 帐户？ 你可以：
 
 * 注册 [Azure 免费试用版](https://azure.microsoft.com/free/)，以获取 30 天试用期和 200 美元信用额度，可试用所有 Azure 服务。 
-* 如果有 MSDN 订阅，则有资格参加 [每月 150 美元的免费 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ，用于任何 Azure 服务。 
+* 如果有 MSDN 订阅，则有资格参加 [每月&150; 美元的免费 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ，用于任何 Azure 服务。 
+* 下载 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)，以便在本地开发应用程序。
 
 当你准备好帐户可了解更多信息之后，即可访问我们的 [学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/) 浏览所有可供你使用的学习资源。 
 
 [1]: ./media/documentdb-introduction/json-database-resources1.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

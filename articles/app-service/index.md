@@ -1,9 +1,26 @@
 ---
+title: "Azure 应用服务文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何借助教程、视频、API 参考和其他文档，使用应用服务为任何平台或设备创建 Web 应用和移动应用。"
+services: app-service
+author: carolz
+manager: carolz
 layout: LandingPage
----
-#App Service Documentation
+ms.assetid: 
+ms.service: app-service
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: ebcde75ba7d5ed155fb7ec822ba037de5141c31c
+ms.openlocfilehash: a9b7cb3492fa71b33c4aa6b2c0ecda9eaac9ea4b
+ms.lasthandoff: 02/09/2017
 
-App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Create web and mobile apps for any platform or device. Integrate your apps with SaaS solutions, connect with on-premises applications, and automate your business processes.
+---
+#<a name="app-service-documentation"></a>应用服务文档
+
+了解如何借助教程、视频、API 参考和其他文档，使用应用服务为任何平台或设备开发和托管 Web 应用和移动应用。 了解如何将应用与 SaaS 解决方案集成、与本地应用程序进行连接，以及将业务流程自动化。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +34,7 @@ App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Creat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure App Service</h3>
+                        <h3>了解 Azure 应用服务</h3>
                     </div>
                 </div>
             </div>
@@ -25,25 +42,7 @@ App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Creat
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Get started with Azure App Service</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=app-service">
+        <a href="https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -53,7 +52,7 @@ App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Creat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service Video Library</h3>
+                        <h3>Azure 应用服务入门</h3>
                     </div>
                 </div>
             </div>
@@ -61,7 +60,25 @@ App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Creat
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-api/app-service-api-dotnet-get-started">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=app-service">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>应用服务视频库</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/app-service-api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -71,7 +88,7 @@ App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Creat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with API Apps in App Service</h3>
+                        <h3>应用服务中的 API 应用入门</h3>
                     </div>
                 </div>
             </div>
@@ -79,7 +96,7 @@ App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Creat
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-mobile/app-service-mobile-android-get-started">
+        <a href="/azure/app-service-mobile/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -89,7 +106,7 @@ App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Creat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Mobile Apps in App Service</h3>
+                        <h3>应用服务中的移动应用入门</h3>
                     </div>
                 </div>
             </div>
@@ -97,7 +114,7 @@ App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Creat
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
+        <a href="/azure/app-service-web/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -107,7 +124,7 @@ App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Creat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Web Apps in App Service</h3>
+                        <h3>应用服务中的 Web 应用入门</h3>
                     </div>
                 </div>
             </div>
@@ -116,19 +133,5 @@ App Service is a platform-as-a-service (PaaS) offering of Microsoft Azure. Creat
     </li>
 </ul>
 
-##Reference
 
-###REST
-[App Service REST API Reference](/rest/api/appservice)
 
-###Java
-[App Service in Java Reference](/java/api/)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download App Service Documentation
-        </div>
-    </a>
-</div>

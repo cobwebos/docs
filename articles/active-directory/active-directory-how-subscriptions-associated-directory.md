@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73d58df13d3265312b371a02e12fbb9342fb3980
+ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
+ms.openlocfilehash: 4eee1b3f30c9e47983af5c1dfa60fe0deb8c2cc8
 
 
 ---
@@ -39,8 +39,8 @@ ms.openlocfilehash: 73d58df13d3265312b371a02e12fbb9342fb3980
 
 > [!NOTE]
 > 若要登录到 Azure 经典门户，msmith@hotmail.com 必须拥有 Azure 订阅。 该帐户必须是服务管理员，或者订阅的协同管理员。
-> 
-> 
+>
+>
 
 ![][1]
 
@@ -104,8 +104,8 @@ Azure AD 提供一组不同的管理角色，用于管理目录和标识相关�
 
 > [!NOTE]
 > 只有当用户使用 Microsoft 帐户登录时才能完成这些步骤。 如果用户是使用工作或学校帐户登录的，则“使用现有目录”选项不可用，因为工作或学校帐户只能通过其主目录（也就是存储工作或学校帐户的目录，该目录归工作单位或学校拥有）进行身份验证。
-> 
-> 
+>
+>
 
 1. 使用你的 Microsoft 帐户登录到 Azure 经典门户。
 2. 单击“新建” > “应用程序服务” > “Active Directory” > “目录” > “自定义创建”。
@@ -116,7 +116,7 @@ Azure AD 提供一组不同的管理角色，用于管理目录和标识相关�
 7. 使用你的 Microsoft 帐户重新登录到 Azure 经典门户。 这两个目录将显示在“Active Directory”扩展中。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)
+* 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [如何添加或更改 Azure 管理员角色](../billing/billing-add-change-azure-subscription-administrator.md)
 * 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [了解 Azure 中的资源访问权限](active-directory-understanding-resource-access.md)
 * 有关如何在 Azure AD 中分配角色的详细信息，请参阅 [在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)
 * [以组织身份注册 Azure](sign-up-organization.md)
@@ -128,6 +128,6 @@ Azure AD 提供一组不同的管理角色，用于管理目录和标识相关�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

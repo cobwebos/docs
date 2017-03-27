@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/31/2016
+ms.date: 01/07/2017
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 51732acdad74dd6dbfc47fae62efc87df6ce5c15
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -40,18 +41,16 @@ ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
 > 
 > 
 
-可以通过使用 Operations Management Suite 中的 Log Analytics 可视化你收集的日志。 有关详细信息，请参阅 [Log Analytics 中的 Azure 密钥保管库（预览版）解决方案](../log-analytics/log-analytics-azure-key-vault.md)。
-
 有关 Azure 密钥保管库的概述信息，请参阅 [什么是 Azure 密钥保管库？](key-vault-whatis.md)
 
 ## <a name="prerequisites"></a>先决条件
 若要完成本教程，你必须准备好以下各项：
 
 * 你正在使用的现有密钥保管库。  
-* Azure PowerShell， **最低版本为 1.0.1**。 若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。 如果你已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。  
+* Azure PowerShell， **最低版本为 1.0.1**。 若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 如果你已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。  
 * 足够的 Azure 存储空间用于保存密钥保管库日志。
 
-## <a name="a-idconnectaconnect-to-your-subscriptions"></a><a id="connect"></a>连接到订阅
+## <a id="connect"></a>连接到订阅
 启动 Azure PowerShell 会话，然后使用以下命令登录你的 Azure 帐户：  
 
     Login-AzureRmAccount
@@ -66,14 +65,19 @@ ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-有关配置 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+> [!NOTE]
+> 这是很重要的一步，在你有多个订阅与帐户相关联的情况下特别有用。 如果跳过此步骤，则在注册 Microsoft.Insights 时可能会出错。 
+>   
+>
 
-## <a name="a-idstorageacreate-a-new-storage-account-for-your-logs"></a><a id="storage"></a>为日志创建新的存储帐户
+有关配置 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+
+## <a id="storage"></a>为日志创建新的存储帐户
 尽管你可以使用现有的存储帐户来保存日志，但我们将专门创建一个新的存储帐户来保存密钥保管库日志。 为方便起见，在稍后遇到必须指定此帐户的情况时，我们会将详细信息存储到名为 **sa**的变量中。
 
 为了进一步简化管理，我们还使用了包含密钥保管库的同一个资源组。 在 [入门教程](key-vault-get-started.md)中，此资源组的名称为 **ContosoResourceGroup** ，我们将继续使用“东亚”位置。 请根据情况将这些值替换成你自己的值：
 
-    $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name ContosoKeyVaultLogs -Type Standard_LRS -Location 'East Asia'
+    $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 
 
 > [!NOTE]
@@ -81,13 +85,13 @@ ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
 > 
 > 
 
-## <a name="a-ididentifyaidentify-the-key-vault-for-your-logs"></a><a id="identify"></a>标识用于保存日志的密钥保管库
+## <a id="identify"></a>标识用于保存日志的密钥保管库
 在入门教程中，密钥保管库名为 **ContosoKeyVault**，因此继续使用该名称，并将详细信息存储到名为 **kv** 的变量中：
 
     $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
 
-## <a name="a-idenableaenable-logging"></a><a id="enable"></a>启用日志记录
+## <a id="enable"></a>启用日志记录
 为了启用密钥保管库日志记录，我们将使用 Set-AzureRmDiagnosticSetting cmdlet 并配合针对新存储帐户和密钥保管库创建的变量。 还将 **-Enabled** 标志设置为 **$true**，并将类别设置为 AuditEvent（密钥保管库日志记录的唯一类别）：
 
     Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
@@ -118,11 +122,16 @@ ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
 * 对密钥保管库中的密钥和机密执行的操作，包括创建、修改或删除这些密钥或机密，以及签名、验证、加密、解密、包装和解包密钥、获取机密、列出密钥和机密及其版本。
 * 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。  
 
-## <a name="a-idaccessaaccess-your-logs"></a><a id="access"></a>访问日志
+## <a id="access"></a>访问日志
 密钥保管库日志存储在你提供的存储帐户的 **insights-logs-auditevent** 容器中。 若要列出此容器中的所有 Blob，请键入：
 
-    Get-AzureStorageBlob -Container 'insights-logs-auditevent' -Context $sa.Context
+首先，请为容器名称创建一个变量。 该变量将在余下的演练中全程使用。
 
+    $container = 'insights-logs-auditevent'
+
+若要列出此容器中的所有 Blob，请键入：
+
+    Get-AzureStorageBlob -Container $container -Context $sa.Context
 输出如下所示：
 
 **容器 URI：https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
@@ -173,7 +182,7 @@ ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
 * 若要查询密钥保管库资源的诊断设置状态：`Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
 * 若要禁用密钥保管库资源的日志记录： `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
 
-## <a name="a-idinterpretainterpret-your-key-vault-logs"></a><a id="interpret"></a>解释密钥保管库日志
+## <a id="interpret"></a>解释密钥保管库日志
 每个 Blob 存储为文本，并格式化为 JSON Blob。 以下是运行 `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`后得到的示例日志条目：
 
     {
@@ -254,7 +263,11 @@ ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
 | SecretList |[列出保管库中的机密](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
 | SecretListVersions |[列出机密的版本](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>后续步骤
+## <a id="loganalytics"></a>使用 Log Analytics
+
+你可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。 有关详细信息，包括如何进行设置，请参阅 [Log Analytics 中的Azure Key Vault 解决方案](../log-analytics/log-analytics-azure-key-vault.md)。 如果需要从 Log Analytics 预览版提供的旧 Key Vault 解决方案进行迁移，且之前在该方案中，首先将日志路由到了 Azure 存储帐户，并将 Log Analytics 配置为了从此处读取，则本文也可提供指导。
+
+## <a id="next"></a>后续步骤
 有关在 Web 应用程序中使用 Azure 密钥保管库的教程，请参阅 [从 Web 应用程序使用 Azure 密钥保管库](key-vault-use-from-web-application.md)。
 
 有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](key-vault-developers-guide.md)。
@@ -262,10 +275,5 @@ ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
 有关 Azure 密钥保管库的 Azure PowerShell 1.0 cmdlet 列表，请参阅 [Azure 密钥保管库 Cmdlet](https://msdn.microsoft.com/library/azure/dn868052.aspx)。
 
 有关使用 Azure 密钥保管库进行密钥轮替和日志审核的教程，请参阅 [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md)（如何使用端到端密钥轮替和审核设置密钥保管库）。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

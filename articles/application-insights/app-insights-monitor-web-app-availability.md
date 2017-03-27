@@ -4,37 +4,38 @@ description: "在 Application Insights 中设置 Web 测试。 当网站不可�
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/07/2016
+ms.date: 03/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: d3478ef704c0029f69cca141bd3fa0b3ac54de15
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 153a97154faf65598141f321bcd33c4503fa30b0
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
-将 Web 应用或网站部署到任何服务器之后，可以设置 Web 测试来监视其可用性和响应能力。 [Visual Studio Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
+将 Web 应用或网站部署到任何服务器之后，可以设置 Web 测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
 
 ![Web 测试示例](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
-对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置 Web 测试。
+对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置 Web 测试。 无需将任何内容添加到要测试的网站。 它甚至不一定是站点：可以测试你所依赖的 REST API 服务。
 
 Web 测试有两种类型：
 
 * [URL ping 测试](#create)：可以在 Azure 门户中创建的简单测试。
-* [多步骤 Web 测试](#multi-step-web-tests)：可以在 Visual Studio Ultimate 或 Visual Studio Enterprise 中创建并上载到门户的测试。
+* [多步骤 Web 测试](#multi-step-web-tests)：可以在 Visual Studio Enterprise 中创建并上载到门户的测试。
 
 对于每个应用程序资源，最多可以创建 10 个 Web 测试。
 
-## <a name="a-namecreatea1-create-a-resource-for-your-test-reports"></a><a name="create"></a>1.为测试报告创建资源
-如果已经为此应用程序[设置 Application Insights 资源][启动]，并且想要在同一位置中查看可用性报告，请跳过本步骤。
+## <a name="create"></a>1.为测试报告创建资源
+如果已经为此应用程序[设置 Application Insights 资源][start]，并且想要在同一位置查看可用性报告，请跳过本步骤。
 
 注册 [Microsoft Azure](http://azure.com)，转到 [Azure 门户](https://portal.azure.com)，然后创建 Application Insights 资源。
 
@@ -42,7 +43,7 @@ Web 测试有两种类型：
 
 单击“所有资源”，打开新资源的“概述”边栏选项卡。
 
-## <a name="a-namesetupa2-create-a-url-ping-test"></a><a name="setup"></a>2.创建 URL ping 测试
+## <a name="setup"></a>2.创建 URL ping 测试
 在 Application Insights 资源中，找到“可用性”磁贴。 单击它，打开应用程序的“Web 测试”边栏选项卡，然后添加 Web 测试。
 
 ![至少填写网站的 URL](./media/app-insights-monitor-web-app-availability/13-availability.png)
@@ -56,9 +57,9 @@ Web 测试有两种类型：
 
     **测试超时**：减少此值可以接收有关响应变慢的警报。 如果未在这段时间内收到站点的响应，则将测试视为失败。 如果选择了“分析依赖请求”，则必须在这段时间内收到所有图像、样式文件、脚本和其他依赖资源。
 
-    **HTTP 响应**：视为成功的返回状态代码。 代码 200 指示返回了正常网页。
+    **HTTP 响应**：视为成功的返回状态代码。 代码&200; 指示返回了正常网页。
 
-    **内容匹配**：类似于“欢迎!”的字符串。 将测试它是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。
+    **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。
 * **警报** 。 某个位置的失败很可能是网络问题，而不是站点问题。 但是，可以将阈值更改为更敏感或更不敏感，也可以更改要将电子邮件发送给哪个人。
 
     可以设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)。 （但请注意，查询参数不会以“属性”的形式传递。）
@@ -66,7 +67,7 @@ Web 测试有两种类型：
 ### <a name="test-more-urls"></a>测试其他 URL
 添加更多测试。 例如，除了测试主页，还可以测试搜索 URL 来确保数据库正在运行。
 
-## <a name="a-namemonitora3-see-your-web-test-results"></a><a name="monitor"></a>3.查看 Web 测试结果
+## <a name="monitor"></a>3.查看 Web 测试结果
 1-2 分钟后，结果将出现在“Web 测试”边栏选项卡中。
 
 ![主页边栏选项卡中的摘要结果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
@@ -75,46 +76,44 @@ Web 测试有两种类型：
 
 这些图表合并了此应用程序的所有 Web 测试结果。
 
-## <a name="a-namefailuresaif-you-see-failures"></a><a name="failures"></a>如果看到失败
+## <a name="failures"></a>如果看到失败
 单击红点。
 
-![单击红点](./media/app-insights-monitor-web-app-availability/14-availRedDot.png)
+![单击红点](./media/app-insights-monitor-web-app-availability/open-instance.png)
 
-或者，向下滚动并单击成功率小于 100% 的测试。
 
-![单击特定的 Web 测试](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
+从 Web 测试结果，可以：
 
-该测试的结果将会打开。
+* 检查从服务器收到的响应。
+* 在处理失败的请求实例时将打开服务器应用发送的遥测。
+* 在 Git 或 VSTS 中记录问题或工作项以跟踪问题。 Bug 中将包含转至此事件的链接。
+* 在 Visual Studio 中打开 Web 测试结果。
 
-![单击特定的 Web 测试](./media/app-insights-monitor-web-app-availability/16-1test.png)
 
-从多个位置运行测试 &#151; 选择结果小于 100% 的测试。
+*看起来正常，但却报告为失败* 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。
 
-![单击特定的 Web 测试](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
+*没有相关项？* 这可能是因为正在进行[采样](app-insights-sampling.md)。
 
-向下滚动到“失败的测试”并选择结果。
-
-单击该结果，在门户中对它进行评估并查看失败原因。
-
-![Web 测试运行结果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
-
-或者，可以下载结果文件，然后在 Visual Studio 中检查。
-
-*看起来正常，但却报告为失败*  检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。
-
-## <a name="multistep-web-tests"></a>多步骤 Web 测试
+## <a name="multi-step-web-tests"></a>多步骤 Web 测试
 可以监视涉及一连串 URL 的方案。 例如，如果正在监视销售网站，可以测试是否能够正常地将商品添加购物车。
 
-若要创建多步骤测试，可以使用 Visual Studio 来录制方案，然后将录制内容上载到 Application Insights。 Application Insights 将按特定间隔重放该方案，并验证响应。
+> [!NOTE] 
+> 对多步骤 Web 测试要收取费用。 [定价方案](http://azure.microsoft.com/pricing/details/application-insights/)。
+> 
+
+若要创建多步骤测试，可以使用 Visual Studio Enterprise 来录制方案，然后将录制内容上载到 Application Insights。 Application Insights 将按特定间隔重放该方案，并验证响应。
 
 请注意，无法在测试中使用编码的函数：方案步骤必须作为脚本包含在 .webtest 文件中。
 
 #### <a name="1-record-a-scenario"></a>1.录制方案
-使用 Visual Studio Enterprise 或 Ultimate 录制 Web 会话。
+使用 Visual Studio Enterprise 录制 Web 会话。
 
 1. 创建 Web 性能测试项目。
 
-    ![在 Visual Studio 中，基于“Web 性能测试和负载测试”模板创建项目。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+    ![在 Visual Studio Enterprise 版中，基于“Web 性能测试和负载测试”模板创建项目。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+
+ * *看不到 Web 性能与负载测试模板？* - 关闭 Visual Studio Enterprise。 打开 **Visual Studio 安装程序**，修改 Visual Studio Enterprise 安装。 在“各个组件”下，选择“Web 性能和负载测试工具”。
+
 2. 打开 .webtest 文件并开始录制。
 
     ![打开 .webtest 文件并单击“录制”。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
@@ -153,7 +152,7 @@ Web 测试有两种类型：
 
 请注意，Web 测试必须完全包含在 .webtest 文件中：不能在测试中使用编码的函数。
 
-### <a name="plugging-time-and-random-numbers-into-your-multistep-test"></a>将时间和随机数插入多步骤测试
+### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>将时间和随机数插入多步骤测试
 假设要测试的工具从外部源获取与时间相关的数据（例如股票）。 录制 Web 测试时，必须使用具体的时间，但要将它们设置为测试参数：StartTime 和 EndTime。
 
 ![带参数的 Web 测试。](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-parameters.png)
@@ -176,7 +175,7 @@ Web 测试插件提供时间参数化方式。
 
 现在，将测试上载到门户。 每次运行测试时，将使用动态值。
 
-## <a name="dealing-with-signin"></a>处理登录
+## <a name="dealing-with-sign-in"></a>处理登录
 如果用户登录应用，可以使用许多选项来模拟登录，以便可以在登录后测试页面。 使用的方法取决于应用提供的安全性类型。
 
 在所有情况下，应该只针对测试目的在应用程序中创建帐户。 如果可能，请限制此测试帐户的权限，以便 Web 测试不会影响实际用户。
@@ -212,7 +211,7 @@ Web 测试插件提供时间参数化方式。
 * 参数化令牌，设置参数来指定从验证器返回令牌的时间，并在站点查询中使用该参数。
   （Visual Studio 会尝试参数化测试，但无法正确参数化令牌。）
 
-## <a name="a-nameedita-edit-or-disable-a-test"></a><a name="edit"></a> 编辑或禁用测试
+## <a name="edit"></a> 编辑或禁用测试
 打开单个测试进行编辑或将其禁用。
 
 ![编辑或禁用 Web 测试](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
@@ -227,7 +226,7 @@ Web 测试插件提供时间参数化方式。
 测试完成时，将显示响应时间和成功率。
 
 ## <a name="automation"></a>自动化
-* [使用 PowerShell 脚本设置 Web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/) 。
+* [使用 PowerShell 脚本设置 Web 测试](app-insights-powershell.md#add-an-availability-test) 。
 * 设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 。
 
 ## <a name="questions-problems"></a>有疑问？ 遇到问题？
@@ -261,27 +260,22 @@ Web 测试插件提供时间参数化方式。
 
     抱歉，不支持这种测试。
 
-## <a name="a-namevideoavideo"></a><a name="video"></a>视频
+## <a name="video"></a>视频
 > [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Monitoring-Availability-with-Application-Insights/player]
 >
 >
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
-[搜索诊断日志][诊断]
+## <a name="next"></a>后续步骤
+[搜索诊断日志][diagnostic]
 
-[故障排除][问题与解答]
+[故障排除][qna]
 
 [Web 测试代理 IP 地址](app-insights-ip-addresses.md)
 
 <!--Link references-->
 
-[Azure 可用性]: ../insights-create-web-tests.md
-[诊断]: app-insights-diagnostic-search.md
-[问题与解答]: app-insights-troubleshoot-faq.md
-[启动]: app-insights-overview.md
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[azure-availability]: ../insights-create-web-tests.md
+[diagnostic]: app-insights-diagnostic-search.md
+[qna]: app-insights-troubleshoot-faq.md
+[start]: app-insights-overview.md
 

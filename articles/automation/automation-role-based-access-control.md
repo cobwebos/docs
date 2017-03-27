@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 09/12/2016
 ms.author: magoedte;sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9fff24dfd2b20a785c6046b6c9700b583c309de4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
 
 
 ---
-# <a name="rolebased-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
-## <a name="rolebased-access-control"></a>基于角色的访问控制
+# <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
+## <a name="role-based-access-control"></a>基于角色的访问控制
 基于角色的访问控制 (RBAC) 可用于对 Azure 资源进行访问管理。 使用 [RBAC](../active-directory/role-based-access-control-configure.md)，可在团队中对职责进行分配，仅授予执行作业所需的对用户、组和应用程序的适当访问权限。 可以使用 Azure 门户、Azure 命令行工具或 Azure 管理 API 将基于角色的访问权限授予用户。
 
 ## <a name="rbac-in-automation-accounts"></a>自动化帐户中的 RBAC
@@ -233,6 +233,6 @@ ms.openlocfilehash: 9fff24dfd2b20a785c6046b6c9700b583c309de4
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/16/2016
+ms.date: 02/14/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
+ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
+ms.openlocfilehash: 299a55865c1c91e664d67095de76708f444d30b9
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -34,6 +35,11 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
 > 
 
 本教程演示如何使用 Azure 门户创建和监视 Azure 数据工厂。 数据工厂中的管道使用复制活动将数据从 Azure Blob 存储复制到 SQL 数据库。
+
+> [!NOTE]
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
+> 
+> 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。 
 
 下面是本教程中要执行的步骤：
 
@@ -68,8 +74,8 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
    2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一：
       
-      1. 选择“使用现有资源组”，然后从下拉列表选择现有的资源组。 
-      2. 选择“新建”，然后输入资源组的名称。   
+      - 选择“使用现有资源组”，然后从下拉列表选择现有的资源组。 
+      - 选择“新建”，然后输入资源组的名称。   
          
           本教程中部分步骤假定你使用 **ADFTutorialResourceGroup** 作为资源组名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
    4. 选择数据工厂的**位置**。 下拉列表中只显示数据工厂服务支持的区域。
@@ -77,7 +83,7 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
    6. 单击“创建” 。
       
       > [!IMPORTANT]
-      > 只有订阅/资源组级别的“数据工厂参与者”角色成员才能创建数据工厂实例。[](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor)
+      > 只有订阅/资源组级别的 [数据工厂参与者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。
       > 
       > 数据工厂名称可能在将来被注册为 DNS 名称，因此将变成公开可见。                
       > 
@@ -90,7 +96,7 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
    ![数据工厂主页](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-data-factory-home-page.png)
 
 ## <a name="create-linked-services"></a>创建链接服务
-链接服务将数据存储或计算服务链接到 Azure 数据工厂。 有关复制活动支持的所有源和接收器，请参阅[支持的数据存储](data-factory-data-movement-activities.md##supported-data-stores-and-formats)。 有关数据工厂支持的计算服务列表，请参阅[计算链接的服务](data-factory-compute-linked-services.md)。 本教程不使用任何计算服务。 
+链接服务将数据存储或计算服务链接到 Azure 数据工厂。 有关复制活动支持的所有源和接收器，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 有关数据工厂支持的计算服务列表，请参阅[计算链接的服务](data-factory-compute-linked-services.md)。 本教程不使用任何计算服务。 
 
 本步骤创建两个链接服务：**AzureStorageLinkedService** 和 **AzureSqlLinkedService**。 AzureStorageLinkedService 和 AzureSqlLinkedService 链接服务分别将 Azure 存储帐户和 Azure SQL 数据库链接到 **ADFTutorialDataFactory**。 稍后要在本教程中创建管道，将数据从 AzureStorageLinkedService 中的 Blob 容器复制到 AzureSqlLinkedService 中的 SQL 表。
 
@@ -135,38 +141,39 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
     ![“新建数据集”菜单](./media/data-factory-copy-activity-tutorial-using-azure-portal/new-dataset-menu.png)
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段： 
    
-        {
-          "name": "InputDataset",
-          "properties": {
-            "structure": [
-              {
-                "name": "FirstName",
-                "type": "String"
-              },
-              {
-                "name": "LastName",
-                "type": "String"
-              }
-            ],
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties": {
-              "folderPath": "adftutorial/",
-              "fileName": "emp.txt",
-              "format": {
-                "type": "TextFormat",
-                "columnDelimiter": ","
-              }
-            },
-            "external": true,
-            "availability": {
-              "frequency": "Hour",
-              "interval": 1
-            }
+    ```JSON
+    {
+      "name": "InputDataset",
+      "properties": {
+        "structure": [
+          {
+            "name": "FirstName",
+            "type": "String"
+          },
+          {
+            "name": "LastName",
+            "type": "String"
           }
+        ],
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+          "folderPath": "adftutorial/",
+          "fileName": "emp.txt",
+          "format": {
+            "type": "TextFormat",
+            "columnDelimiter": ","
+          }
+        },
+        "external": true,
+        "availability": {
+          "frequency": "Hour",
+          "interval": 1
         }
-   
-     注意以下几点： 
+      }
+    }
+    ```   
+    注意以下几点： 
    
    * 数据集 **type** 设置为 **AzureBlob**。
    * **linkedServiceName** 设置为 **AzureStorageLinkedService**。 已在步骤 2 中创建此链接服务。
@@ -177,19 +184,21 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
      
      如果没有指定**输入**数据集的 **fileName**，则输入文件夹 (**folderPath**) 中的所有文件/Blob 都被视为输入。 如果在 JSON 中指定 fileName，则只有指定的文件/Blob 被视为输入。
      
-     如果未指定**输出表**的 **fileName**，**folderPath** 中生成的文件根据以下格式命名：Data.&lt;Guid\&gt;.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt）。
+     如果未指定**输出表**的 **fileName**，**folderPath** 中生成的文件根据以下格式命名：Data.&lt;Guid&gt;.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt）。
      
      若要根据 **SliceStart** 时间动态设置 **folderPath** 和 **fileName**，请使用 **partitionedBy** 属性。 在以下示例中，folderPath 使用 SliceStart（所处理的切片的开始时间）中的年、月和日，fileName 使用 SliceStart 中的小时。 例如，如果切片生成于 2016-09-20T08:00:00，folderName 将设置为 wikidatagateway/wikisampledataout/2016/09/20，fileName 设置为 08.csv。 
-     
-           "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-           "fileName": "{Hour}.csv",
-           "partitionedBy": 
-           [
-               { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-               { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
-               { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
-               { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
-           ],
+
+    ```JSON     
+    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+    "fileName": "{Hour}.csv",
+    "partitionedBy": 
+    [
+       { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+       { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
+       { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
+       { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
+    ],
+    ```
 3. 单击工具栏上的“部署”，创建并部署 **InputDataset** 数据集。 确认树视图中显示了 **InputDataset**。
 
 > [!NOTE]
@@ -202,33 +211,34 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
 
 1. 在数据工厂的“编辑器”中，依次单击下拉菜单中的“......更多”、“新建数据集”、“Azure SQL”。 
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段：
-   
-        {
-          "name": "OutputDataset",
-          "properties": {
-            "structure": [
-              {
-                "name": "FirstName",
-                "type": "String"
-              },
-              {
-                "name": "LastName",
-                "type": "String"
-              }
-            ],
-            "type": "AzureSqlTable",
-            "linkedServiceName": "AzureSqlLinkedService",
-            "typeProperties": {
-              "tableName": "emp"
-            },
-            "availability": {
-              "frequency": "Hour",
-              "interval": 1
-            }
+
+    ```JSON   
+    {
+      "name": "OutputDataset",
+      "properties": {
+        "structure": [
+          {
+            "name": "FirstName",
+            "type": "String"
+          },
+          {
+            "name": "LastName",
+            "type": "String"
           }
+        ],
+        "type": "AzureSqlTable",
+        "linkedServiceName": "AzureSqlLinkedService",
+        "typeProperties": {
+          "tableName": "emp"
+        },
+        "availability": {
+          "frequency": "Hour",
+          "interval": 1
         }
-   
-     注意以下几点： 
+      }
+    }
+    ```       
+    注意以下几点： 
    
    * 数据集 **type** 设置为 **AzureSQLTable**。
    * **linkedServiceName** 设置为 **AzureSqlLinkedService**（已在步骤 2 中创建此链接服务）。
@@ -247,48 +257,50 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
 
 1. 在数据工厂的“编辑器”中，单击“...更多”，然后单击“新建管道”。 或者，也可以在树视图中，右键单击“管道”，然后单击“新建管道”。
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段： 
-   
-        {
-          "name": "ADFTutorialPipeline",
-          "properties": {
-            "description": "Copy data from a blob to Azure SQL table",
-            "activities": [
+
+    ```JSON   
+    {
+      "name": "ADFTutorialPipeline",
+      "properties": {
+        "description": "Copy data from a blob to Azure SQL table",
+        "activities": [
+          {
+            "name": "CopyFromBlobToSQL",
+            "type": "Copy",
+            "inputs": [
               {
-                "name": "CopyFromBlobToSQL",
-                "type": "Copy",
-                "inputs": [
-                  {
-                    "name": "InputDataset"
-                  }
-                ],
-                "outputs": [
-                  {
-                    "name": "OutputDataset"
-                  }
-                ],
-                "typeProperties": {
-                  "source": {
-                    "type": "BlobSource"
-                  },
-                  "sink": {
-                    "type": "SqlSink",
-                    "writeBatchSize": 10000,
-                    "writeBatchTimeout": "60:00:00"
-                  }
-                },
-                "Policy": {
-                  "concurrency": 1,
-                  "executionPriorityOrder": "NewestFirst",
-                  "retry": 0,
-                  "timeout": "01:00:00"
-                }
+                "name": "InputDataset"
               }
             ],
-            "start": "2016-07-12T00:00:00Z",
-            "end": "2016-07-13T00:00:00Z"
+            "outputs": [
+              {
+                "name": "OutputDataset"
+              }
+            ],
+            "typeProperties": {
+              "source": {
+                "type": "BlobSource"
+              },
+              "sink": {
+                "type": "SqlSink",
+                "writeBatchSize": 10000,
+                "writeBatchTimeout": "60:00:00"
+              }
+            },
+            "Policy": {
+              "concurrency": 1,
+              "executionPriorityOrder": "NewestFirst",
+              "retry": 0,
+              "timeout": "01:00:00"
+            }
           }
-        } 
-   
+        ],
+        "start": "2016-07-12T00:00:00Z",
+        "end": "2016-07-13T00:00:00Z"
+      }
+    } 
+    ```   
+    
     注意以下几点：
    
    * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
@@ -305,7 +317,7 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
 3. 单击工具栏上的“部署”，创建并部署 **ADFTutorialPipeline**。 确认树视图中显示了该管道。 
 4. 现在，请单击“X”关闭“编辑器”边栏选项卡。再次单击“X”查看 **ADFTutorialDataFactory** 的“数据工厂”主页。
 
-**祝贺你！**  现已成功创建 Azure 数据工厂、链接服务、表和管道，并已计划好管道。   
+**祝贺你！** 现已成功创建 Azure 数据工厂、链接服务、表和管道，并已计划好管道。   
 
 ### <a name="view-the-data-factory-in-a-diagram-view"></a>在图示视图中查看数据工厂
 1. 在“数据工厂”边栏选项卡中，单击“图示”。
@@ -373,7 +385,7 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
     
     ![SQL 查询结果](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-sql-query-results.png)
 
-### <a name="monitor-pipeline-using-monitor-manage-app"></a>使用“监视和管理”应用来监视管道
+### <a name="monitor-pipeline-using-monitor--manage-app"></a>使用“监视和管理”应用来监视管道
 还可以使用“监视和管理”应用程序来监视管道。 有关使用此应用程序的详细信息，请参阅 [Monitor and manage Azure Data Factory pipelines using Monitoring and Management App](data-factory-monitor-manage-app.md)（使用监视和管理应用程序来监视和管理 Azure 数据工厂管道）。
 
 1. 在数据工厂的主页上单击“监视和管理”磁贴。
@@ -398,15 +410,7 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
 ## <a name="see-also"></a>另请参阅
 | 主题 | 说明 |
 |:--- |:--- |
-| [数据移动活动](data-factory-data-movement-activities.md) |本文提供有关教程中所用复制活动的详细信息。 |
-| [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 | [管道](data-factory-create-pipelines.md) |帮助了解 Azure 数据工厂中的管道和活动 |
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
-| [使用监视应用监视和管理管道](data-factory-monitor-manage-app.md) |本文介绍如何使用监视和管理应用来监视、管理和调试管道。 |
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+| [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 

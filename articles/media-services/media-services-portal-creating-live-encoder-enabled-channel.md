@@ -12,19 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: e764936afda8bd498f97a8dc3426136815c18a5a
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-the-azure-portal"></a>如何使用 Azure 媒体服务实时传送视频流，通过 Azure 门户创建多比特率流
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>如何使用 Azure 媒体服务实时传送视频流，通过 Azure 门户创建多比特率流
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
@@ -54,9 +55,7 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
    
     使用此 URL 来验证频道是否正常接收实时流。
 5. 创建事件/节目（这也会创建资产）。 
-6. 发布事件（这将为关联的资产创建点播定位符）。  
-   
-    确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
+6. 发布事件（这将为关联的资产创建点播定位符）。    
 7. 在准备好开始流式传输和存档时，启动事件。
 8. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
 9. 要停止流式传输并存档事件时，停止事件。
@@ -65,13 +64,12 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
 ## <a name="in-this-tutorial"></a>本教程的内容
 在本教程中，将使用 Azure 门户完成以下任务： 
 
-1. 配置流式处理终结点。
-2. 创建能够执行实时编码的通道。
-3. 获取引入 URL，以便将其提供给实时编码器。 实时编码器将使用此 URL 将流引入通道。 。
-4. 创建事件/节目（和资产）
-5. 发布资产并获取流 URL  
-6. 播放内容 
-7. 清理
+1. 创建能够执行实时编码的通道。
+2. 获取引入 URL，以便将其提供给实时编码器。 实时编码器将使用此 URL 将流引入通道。
+3. 创建事件/节目（和资产）。
+4. 发布资产并获取流式处理 URL。  
+5. 播放内容。
+6. 清理。
 
 ## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需具备的条件。
@@ -80,28 +78,6 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
   有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个媒体服务 帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * 可以发送单比特率实时流的摄像头和编码器。
-
-## <a name="configure-streaming-endpoints"></a>配置流式处理终结点
-媒体服务所提供的动态打包可让你以下述流格式传送多比特率 MP4，而无须重新打包成这些流格式：MPEG DASH、HLS、Smooth Streaming 或 HDS。 通过动态打包，你只需要存储及支付一种存储格式的文件，媒体服务将会根据客户端的要求创建并提供适当的响应。
-
-若要利用动态打包，你需要获取计划从中传送内容的流式处理终结点的至少一个流式处理单元。  
-
-若要创建和更改流式处理保留单元数，请执行以下操作：
-
-1. 登录 [Azure 门户](https://portal.azure.com/) 并选择你的 AMS 帐户。
-2. 在“设置”窗口中，单击“流式处理终结点”。 
-3. 单击默认的流式处理终结点。 
-   
-    此时会显示“默认流式处理终结点详细信息”窗口。
-4. 若要指定流式处理单元数，请滑动“流式处理单元”滑块。
-   
-    ![流式处理单位](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-streaming-units.png)
-5. 单击“保存”按钮保存更改。
-   
-   > [!NOTE]
-   > 分配新的单元最多需要 20 分钟即可完成。
-   > 
-   > 
 
 ## <a name="create-a-channel"></a>创建频道
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择“媒体服务”，然后单击媒体服务帐户名。
@@ -172,6 +148,9 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
 ### <a name="createstartstop-events"></a>创建/启动/停止事件
 将流传输到通道后，你可以通过创建资产、节目和流定位符来启动流式传输事件。 这将会存档流，并使观看者可通过流式处理终结点使用该流。 
 
+>[!NOTE]
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+
 可通过两种方式启动该事件： 
 
 1. 在“通道”页上，按“实时事件”添加新事件。
@@ -216,7 +195,7 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
 
 ## <a name="considerations"></a>注意事项
 * 目前，实时事件的最大建议持续时间为 8 小时。 如果要运行一个需要更长时间的通道，请通过 Microsoft.com 联系 amslived。
-* 确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
+* 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。
 
 ## <a name="next-step"></a>后续步骤
 查看媒体服务学习路径。
@@ -225,10 +204,5 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

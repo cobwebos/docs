@@ -4,7 +4,7 @@ description: "了解如何将带分析和推送通知功能的 Azure Mobile Enga
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 54fe9113-e239-4ed7-9fd1-a502d7ac7f47
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86e6597340867ffd620eac38a55de9113f571880
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 2fc534e90431d7c44dc05327fd3d32a2e6ab1c8b
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -45,10 +46,10 @@ ms.openlocfilehash: 86e6597340867ffd620eac38a55de9113f571880
 > 
 > 
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-cordova-app"></a><a id="setup-azme"></a>为 Cordova 应用设置 Mobile Engagement
+## <a name="a-idsetup-azmeasetup-mobile-engagement-for-your-cordova-app"></a><a id="setup-azme"></a>为 Cordova 应用设置 Mobile Engagement
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnecting-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
+## <a name="a-idconnecting-appaconnecting-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
 本教程提供的“基本集成”是收集数据和发送推送通知的最低要求。 
 
 通过 Cordova 创建基本应用即可演示该集成：
@@ -67,8 +68,10 @@ ms.openlocfilehash: 86e6597340867ffd620eac38a55de9113f571880
         $ cordova platform add android
         $ cordova run android
 4. 添加 Cordova 控制台插件。 
-   
-    $ cordova 插件添加 cordova-plugin-console 
+
+    ```
+    $ cordova plugin add cordova-plugin-console
+    ``` 
 
 ### <a name="connect-your-app-to-mobile-engagement-backend"></a>将应用连接到 Mobile Engagement 后端
 1. 安装 Azure Mobile Engagement Cordova 插件，同时提供配置该插件的变量值：
@@ -87,7 +90,7 @@ ms.openlocfilehash: 86e6597340867ffd620eac38a55de9113f571880
 
 iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotificationicon.png），且必须通过 XCode 将图标文件添加到 iOS 项目中（使用“添加文件”菜单）
 
-## <a name="a-idmonitoraenabling-realtime-monitoring"></a><a id="monitor"></a>启用实时监视
+## <a name="a-idmonitoraenabling-real-time-monitoring"></a><a id="monitor"></a>启用实时监视
 1. 在 Cordova 项目中 - 编辑 **www/js/index.js** 添加对 Mobile Engagement 的调用，在接收到 *deviceReady* 事件后声明新活动。
    
          onDeviceReady: function() {
@@ -114,10 +117,10 @@ iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotifica
         [Engagement] Connection: Sent: startSession
         [Engagement] Connection: Sent: activity name='myPage'
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>将应用与实时监视相连
+## <a name="a-idmonitoraconnect-app-with-real-time-monitoring"></a><a id="monitor"></a>将应用与实时监视相连
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenabling-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>启用推送通知和应用内消息传送
+## <a name="a-idintegrate-pushaenabling-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>启用推送通知和应用内消息传送
 进行营销活动时，可以使用 Mobile Engagement 通过推送通知和应用内消息传送与用户交互。 在 Mobile Engagement 门户中，此模块称为 REACH。
 以下部分会将应用设置为接收此类通知和消息。
 
@@ -203,7 +206,7 @@ iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotifica
     ![][10]
 9. 此时会在设备或模拟器上显示此活动的推送通知。 
 
-## <a name="a-idnextstepsanext-steps"></a><a id="next-steps"></a>后续步骤
+## <a name="a-idnext-stepsanext-steps"></a><a id="next-steps"></a>后续步骤
 [Overview of all methods available with Cordova Mobile Engagement SDK](https://github.com/Azure/azure-mobile-engagement-cordova)
 
 <!-- Images. -->
@@ -217,10 +220,5 @@ iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotifica
 [10]: ./media/mobile-engagement-cordova-get-started/campaign-activate.png
 [11]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-android.png
 [12]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-ios.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

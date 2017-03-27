@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
+ms.custom: loading
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5a0519a0fdbfc428530e5b30a3f8e4e8bcdaa50b
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: e368ae8b249fe3c33371794160440e472b0f35e3
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -29,7 +31,7 @@ ms.openlocfilehash: 5a0519a0fdbfc428530e5b30a3f8e4e8bcdaa50b
 > 
 > 
 
-**[bcp][bcp]** 是一个命令行批量加载实用程序，可让用户在 SQL Server、数据文件和 SQL 数据仓库之间复制数据。 使用 bcp 实用程序可将大量的行导入 SQL 数据仓库表，或将 SQL Server 表中的数据导出到数据文件。 除非与 queryout 选项一起使用，否则 bcp 不需要 Transact-SQL 方面的知识。
+**[bcp][bcp]** 是一个命令行批量加载实用工具，用于在 SQL Server、数据文件和 SQL 数据仓库之间复制数据。 使用 bcp 实用程序可将大量的行导入 SQL 数据仓库表，或将 SQL Server 表中的数据导出到数据文件。 除非与 queryout 选项一起使用，否则 bcp 不需要 Transact-SQL 方面的知识。
 
 bcp 是将较小数据集移入和移出 SQL 数据仓库数据库的快速轻松方式。 通过 bcp 加载/提取数据时，建议的确切数据量取决于 Azure 数据中心的网络连接。  通常，使用 bcp 可以轻松地加载和提取维度表，但是，不建议使用 bcp 来加载或提取大量数据。  Polybase 是用于加载和提取大量数据的推荐工具，因为它能够更好地利用 SQL 数据仓库的大规模并行处理体系结构。
 
@@ -43,7 +45,7 @@ bcp 是将较小数据集移入和移出 SQL 数据仓库数据库的快速轻�
 * 使用 bcp in 命令将数据导入表中
 * 使用 bcp out 命令从表中导出数据
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
 > 
 > 
 
@@ -55,7 +57,7 @@ bcp 是将较小数据集移入和移出 SQL 数据仓库数据库的快速轻�
 * 已安装 SQLCMD 命令行实用工具
 
 > [!NOTE]
-> 可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用程序。
+> 可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用工具。
 > 
 > 
 
@@ -82,7 +84,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> 有关在 SQL 数据仓库中创建表和 WITH 子句中可用选项的详细信息，请参阅[][表概述]或[创建表语法][CREATE TABLE syntax]。
+> 有关在 SQL 数据仓库中创建表和 WITH 子句中可用选项的详细信息，请参阅 [Table Overview][Table Overview]（表概述）或 [CREATE TABLE syntax][CREATE TABLE syntax]（CREATE TABLE 语法）。
 > 
 > 
 
@@ -191,20 +193,15 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 
 <!--Article references-->
 
-[将数据载入 SQL 数据仓库]: ./sql-data-warehouse-overview-load.md
-[SQL 数据仓库开发概述]: ./sql-data-warehouse-overview-develop.md
-[表概述]: ./sql-data-warehouse-tables-overview.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
+[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
+[Table Overview]: ./sql-data-warehouse-tables-overview.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE 语法]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft 下载中心]: https://www.microsoft.com/download/details.aspx?id=36433
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 

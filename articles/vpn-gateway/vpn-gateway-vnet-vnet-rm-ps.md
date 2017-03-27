@@ -1,10 +1,10 @@
 ---
-title: "使用 VPN 网关和 Powershell 连接 Azure VNet | Microsoft Docs"
+title: "将 Azure 虚拟网络连接到另一 VNet：PowerShell | Microsoft 文档"
 description: "本文指导你使用 Azure 资源管理器和 PowerShell 将虚拟网络连接在一起。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2016
+ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
+ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
+ms.openlocfilehash: eb21e6cc47da18d2e6fa5cbb00c3b71bf36173c6
 
 
 ---
-# <a name="configure-a-vnettovnet-connection-for-resource-manager-using-powershell"></a>使用 PowerShell 为 Resource Manager 配置 VNet 到 VNet 连接
+# <a name="configure-a-vnet-to-vnet-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet 连接
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
@@ -33,17 +33,18 @@ ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
 
 ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-### <a name="deployment-models-and-methods-for-vnettovnet-connections"></a>VNet 到 VNet 连接的部署模型和方法
+### <a name="deployment-models-and-methods-for-vnet-to-vnet-connections"></a>VNet 到 VNet 连接的部署模型和方法
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
 
-下表显示了 VNet 到 VNet 配置当前可用的部署模型和方法。 当有配置步骤相关的文章发布时，我们会直接从此表格链接到该文章。
+下表显示了 VNet 到 VNet 配置的当前可用部署模型和方法。 当有配置步骤相关的文章发布时，我们会直接从此表格链接到该文章。 
 
 [!INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
-#### <a name="vnet-peering"></a>VNet 对等互连
+**VNet 对等互连**
+
 [!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
 
-## <a name="about-vnettovnet-connections"></a>关于 VNet 到 VNet 的连接
+## <a name="about-vnet-to-vnet-connections"></a>关于 VNet 到 VNet 的连接
 将一个虚拟网络连接到另一个虚拟网络（VNet 到 VNet）类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 Azure VPN 网关来提供使用 IPsec/IKE 的安全隧道。 你连接的 VNet 可位于不同的区域中。 或者位于不同的订阅中。 你甚至可以将 VNet 到 VNet 通信与多站点配置组合使用。 这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑，如下图所示：
 
 ![关于连接](./media/vpn-gateway-vnet-vnet-rm-ps/aboutconnections.png)
@@ -59,7 +60,7 @@ ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
   
   * 在同一区域中，由于存在隔离或管理要求，可以设置多个虚拟网络连接在一起的多层应用程序。
 
-### <a name="vnettovnet-faq"></a>VNet 到 VNet 常见问题
+### <a name="vnet-to-vnet-considerations"></a>VNet 到 VNet 注意事项
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
 ## <a name="which-set-of-steps-should-i-use"></a>我应使用哪个步骤集？
@@ -73,9 +74,9 @@ ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
 ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 ### <a name="before-you-begin"></a>开始之前
-开始前，需要安装 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 。
+开始前，需要安装 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
 
-### <a name="a-namestep1astep-1-plan-your-ip-address-ranges"></a><a name="Step1"></a>步骤 1 - 规划 IP 地址范围
+### <a name="a-namestep1astep-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>步骤 1 - 规划 IP 地址范围
 以下步骤将创建两个虚拟网络，以及它们各自的网关子网和配置。 然后在两个 VNet 之间创建 VPN 连接。 必须计划用于网络配置的 IP 地址范围。 请记住，必须确保没有任何 VNet 范围或本地网络范围存在任何形式的重叠。
 
 示例中使用以下值：
@@ -113,7 +114,7 @@ ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
 * 连接：VNet4toVNet1
 * ConnectionType：VNet2VNet
 
-### <a name="a-namestep2astep-2-create-and-configure-testvnet1"></a><a name="Step2"></a>步骤 2 - 创建并配置 TestVNet1
+### <a name="a-namestep2astep-2---create-and-configure-testvnet1"></a><a name="Step2"></a>步骤 2 - 创建并配置 TestVNet1
 1. 声明变量
    
     首先声明变量。 本示例使用此练习中的值来声明变量。 在大多数情况下，应将这些值替换为自己的值。 但是，如果执行这些步骤的目的是熟悉这种类型的配置，可以直接使用这些变量。 根据需要修改变量，然后将变量复制并粘贴到 PowerShell 控制台中。
@@ -187,7 +188,7 @@ ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
         -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn `
         -VpnType RouteBased -GatewaySku Standard
 
-### <a name="step-3-create-and-configure-testvnet4"></a>步骤 3 - 创建并配置 TestVNet4
+### <a name="step-3---create-and-configure-testvnet4"></a>步骤 3 - 创建并配置 TestVNet4
 配置 TestVNet1 后，即可创建 TestVNet4。 遵循以下步骤，并根据需要替换为自己的值。 此步骤可在相同的 PowerShell 会话中完成，因为其位于相同的订阅中。
 
 1. 声明变量
@@ -239,7 +240,7 @@ ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
         -Location $Location4 -IpConfigurations $gwipconf4 -GatewayType Vpn `
         -VpnType RouteBased -GatewaySku Standard
 
-### <a name="step-4-connect-the-gateways"></a>步骤 4 - 连接网关
+### <a name="step-4---connect-the-gateways"></a>步骤 4 - 连接网关
 1. 获取两个虚拟网络网关
    
     在本示例中，由于这两个网关位于相同的订阅中，此步骤可在相同的 PowerShell 会话中完成。
@@ -273,7 +274,7 @@ ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
 
 说明延续上面所列的步骤。 必须完成[步骤 1](#Step1) 和[步骤 2](#Step2)，才能创建并配置 TestVNet1 和 TestVNet1 的 VPN 网关。 完成步骤 1 和步骤 2 后，继续执行步骤 5，创建 TestVNet5。
 
-### <a name="step-5-verify-the-additional-ip-address-ranges"></a>步骤 5 - 验证其他 IP 地址范围
+### <a name="step-5---verify-the-additional-ip-address-ranges"></a>步骤 5 - 验证其他 IP 地址范围
 必须确保新虚拟网络的 IP 地址空间 TestVNet5 不与任何 VNet 范围或局域网网关范围重叠。 
 
 在本示例中，虚拟网络可能属于不同的组织。 对于本练习，你可以对 TestVNet5 使用以下值：
@@ -298,7 +299,7 @@ ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
 
 * 连接：VNet1toVNet5
 
-### <a name="step-6-create-and-configure-testvnet5"></a>步骤 6 - 创建并配置 TestVNet5
+### <a name="step-6---create-and-configure-testvnet5"></a>步骤 6 - 创建并配置 TestVNet5
 必须在新订阅环境中完成此步骤。 此部分可能由拥有订阅的不同组织的管理员执行。
 
 1. 声明变量
@@ -361,7 +362,7 @@ ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
         New-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5 -Location $Location5 `
         -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 
-### <a name="step-7-connecting-the-gateways"></a>步骤 7 - 连接网关
+### <a name="step-7---connecting-the-gateways"></a>步骤 7 - 连接网关
 在本示例中，由于网关位于不同订阅中，因此将此步骤拆分为了两个 PowerShell 会话，分别标记为 [订阅 1] 和 [订阅 5]。
 
 1. **[订阅 1]** 获取订阅 1 的虚拟网络网关
@@ -426,12 +427,13 @@ ms.openlocfilehash: 636606f5f5f651c10d174854de8471b5dd060dce
 [!INCLUDE [verify connection powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 连接完成后，即可将虚拟机添加到虚拟网络。 请参阅 [创建虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 以获取相关步骤。
+
+* 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机文档](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
 * 有关 BGP 的信息，请参阅 [BGP 概述](vpn-gateway-bgp-overview.md)和[如何配置 BGP](vpn-gateway-bgp-resource-manager-ps.md)。 
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

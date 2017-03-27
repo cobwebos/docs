@@ -36,8 +36,8 @@
 #### [使用任务在云服务角色上安装 .NET](cloud-services-dotnet-install-dotnet.md)
 
 ### 配置远程桌面
-#### [Visual Studio](cloud-services-role-enable-remote-desktop.md)
-#### [Node.js](cloud-services-nodejs-enable-remote-desktop.md)
+#### [门户](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [经典门户](cloud-services-role-enable-remote-desktop.md)
 #### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## 部署
@@ -63,6 +63,13 @@
 #### [门户](cloud-services-how-to-scale-portal.md)
 #### [经典门户](cloud-services-how-to-scale.md)
 ### [使用 Python 管理 Azure 资源](cloud-services-python-how-to-use-service-management.md)
+
+### [来宾 OS 修补程序](cloud-services-guestos-msrc-releases.md)
+### 来宾 OS 停用
+#### [停用策略](cloud-services-guestos-retirement-policy.md)
+#### [系列 1 停用通知](cloud-services-guestos-family1-retirement.md)
+### [来宾 OS 发行动态](cloud-services-guestos-update-matrix.md)
+### [云服务角色配置 XPath 备忘单](cloud-services-role-config-xpath.md)
 
 ## 管理证书
 ### [云服务和管理证书](cloud-services-certs-create.md)
@@ -98,15 +105,9 @@
 ### [云服务常见问题](cloud-services-faq.md)
 
 # 参考
-## [.NET](https://msdn.microsoft.com/library)
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
-## [来宾 OS 修补程序](cloud-services-guestos-msrc-releases.md)
-## 来宾 OS 停用
-### [停用策略](cloud-services-guestos-retirement-policy.md)
-### [系列 1 停用通知](cloud-services-guestos-family1-retirement.md)
-## [来宾 OS 发行动态](cloud-services-guestos-update-matrix.md)
-## [云服务角色配置 XPath 备忘单](cloud-services-role-config-xpath.md)
+## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/cloud-services/)
@@ -114,8 +115,3 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)
 ## [服务更新](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

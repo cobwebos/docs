@@ -7,13 +7,9 @@
 ## IP 寻址
 ### [资源管理器](virtual-network-ip-addresses-overview-arm.md)
 ### [经典](virtual-network-ip-addresses-overview-classic.md)
-## 虚拟机
-### [网络接口](virtual-network-network-interface-overview.md)
-### [名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 # 入门
-## [创建虚拟网络](virtual-networks-create-vnet-arm-pportal.md)
-## [将 VM 部署到虚拟网络](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+## [创建自己的首个虚拟网络](virtual-network-get-started-vnet-subnet.md)
 
 # 如何
 ## 规划和设计
@@ -50,6 +46,10 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [模板](virtual-networks-create-vnetpeering-arm-template-click.md)
 
+### [网络接口](virtual-network-network-interface.md)
+
+### [公共 IP 地址](virtual-network-public-ip-address.md)
+
 ### 虚拟机
 
 #### 静态公共 IP 地址
@@ -77,6 +77,8 @@
 #### 多个 IP 地址
 ##### [Azure 门户](virtual-network-multiple-ip-addresses-portal.md)
 ##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+##### [CLI](virtual-network-multiple-ip-addresses-cli.md)
+##### [模板](virtual-network-multiple-ip-addresses-template.md)
 
 ### 连接方案
 #### [虚拟网络 (VNet) 到 VNet](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -95,12 +97,14 @@
 ##### [示例应用程序](virtual-networks-sample-app.md)
 
 ## 配置
-### 加速网络
+### 适用于 VM 的加速网络
 #### [Azure 门户](virtual-network-accelerated-networking-portal.md)
 #### [PowerShell](virtual-network-accelerated-networking-powershell.md)
+### [优化 VM 网络吞吐量](virtual-network-optimize-network-bandwidth.md)
 ### 访问控制列表
 #### [经典门户](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
+### [VM 和云服务的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ## 管理
 ### 网络安全组
@@ -108,20 +112,22 @@
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [CLI](virtual-network-manage-nsg-arm-cli.md)
 #### [日志](virtual-network-nsg-manage-log.md)
-#### 故障排除
-##### [门户](virtual-network-nsg-troubleshoot-portal.md)
-##### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
-### 路由故障排除
-#### [门户](virtual-network-routes-troubleshoot-portal.md)
-#### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### 虚拟机
 #### [查看和修改主机名](virtual-networks-viewing-and-modifying-hostnames.md)
 #### [将 VM 移到其他子网](virtual-networks-move-vm-role-to-subnet.md)
 
-# 参考
-## [PowerShell (Resource Manager)](https://msdn.microsoft.com/library/mt163510(v=azure.300))
-## [PowerShell（经典）](https://msdn.microsoft.com/library/mt270335(v=azure.300))
-## [Azure CLI](/cli/azure/)
+## 故障排除
+### 网络安全组
+#### [门户](virtual-network-nsg-troubleshoot-portal.md)
+#### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
+### 路由
+#### [门户](virtual-network-routes-troubleshoot-portal.md)
+#### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
+
+# 引用
+## [PowerShell (Resource Manager)](/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network)
+## [PowerShell（经典）](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
+## [Azure CLI](/cli/azure/network)
 ## [Java](/java/api/)
 ## [REST (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)
 ## [REST（经典）](https://msdn.microsoft.com/library/jj157182.aspx)
@@ -141,8 +147,3 @@
 ## [网络论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-network)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-network)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

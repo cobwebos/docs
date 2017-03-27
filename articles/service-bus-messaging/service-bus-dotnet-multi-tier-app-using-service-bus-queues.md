@@ -1,26 +1,27 @@
 ---
-title: ".NET 多层应用程序 | Microsoft Docs"
+title: "使用 Azure 服务总线的 .NET 多层应用程序 | Microsoft 文档"
 description: "本 .NET 教程可帮助你在 Azure 中开发使用服务总线队列在各层之间进行通信的多层应用。"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 1b8608ca-aa5a-4700-b400-54d65b02615c
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 09/01/2016
+ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: 76c884bfdfbfacf474489d41f1e388956e4daaa0
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="net-multitier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
+# <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 ## <a name="introduction"></a>介绍
 使用 Visual Studio 和免费的 Azure SDK for .NET，可以轻松针对 Microsoft Azure 进行开发。 本教程将指导你完成创建使用在本地环境中运行的多个 Azure 资源的应用程序的步骤。 这些步骤假设你之前未使用过 Azure。
 
@@ -33,13 +34,13 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-在本教程中，你将生成多层应用程序并在 Azure 云服务中运行它。 前端将为 ASP.NET MVC Web 角色，后端将为使用服务总线队列的辅助角色。 你可以创建与前端相同的多层应用程序，作为将部署到 Azure 网站而不是云服务的 Web 项目。 有关如何以不同方式处理 Azure 网站前端的说明，请参阅 [后续步骤](#nextsteps) 部分。 还可以试用 [.NET 本地/云混合应用程序](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教程。
+在本教程中，你将生成多层应用程序并在 Azure 云服务中运行它。 前端为 ASP.NET MVC Web 角色，后端为使用服务总线队列的辅助角色。 可以创建与前端相同的多层应用程序，作为要部署到 Azure 网站而不是云服务的 Web 项目。 有关如何以不同方式处理 Azure 网站前端的说明，请参阅 [后续步骤](#nextsteps) 部分。 还可以试用 [.NET 本地/云混合应用程序](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教程。
 
 以下屏幕截图显示了已完成的应用程序。
 
 ![][0]
 
-## <a name="scenario-overview-interrole-communication"></a>方案概述：角色间通信
+## <a name="scenario-overview-inter-role-communication"></a>方案概述：角色间通信
 若要提交处理命令，以 Web 角色运行的前端 UI 组件必须与以辅助角色运行的中间层逻辑进行交互。 此示例使用服务总线中转消息传送在各层之间进行通信。
 
 在 Web 层和中间层之间使用中转消息传送将分离这两个组件。 与直接消息传送（即 TCP 或 HTTP）不同，Web 层不会直接连接到中间层，而是将工作单元作为消息推送到服务总线，服务总线将以可靠方式保留这些工作单元，直到中间层准备好使用和处理它们。
@@ -50,9 +51,9 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 
 与直接消息传送相比，此通信机制具有多项优势：
 
-* **暂时分离。**  使用异步消息传送模式，生产者和使用者不需要在同一时间联机。 服务总线可靠地存储消息，直到使用方准备好接收它们。 这将允许分布式应用程序的组件断开连接，例如，为进行维护而自动断开，或因组件故障断开连接，而不会影响系统的整体性能。 此外，使用方应用程序可能只需在一天的特定时段内联机。
-* **负载量。**  在许多应用程序中，系统负载随时间而变化，而每个工作单元所需的处理时间通常为常量。 使用队列在消息创建者与使用者之间中继意味着，只需将使用方应用程序（辅助）预配为适应平均负载而非最大负载。 队列深度将随传入负载的变化而加大和减小。 这将直接根据为应用程序加载提供服务所需的基础结构的数目来节省成本。
-* **负载平衡。**  随着负载增加，可添加更多的工作进程以从队列中读取。 每条消息仅由一个辅助进程处理。 另外，可通过此基于拉取的负载平衡来以最合理的方式使用辅助计算机，即使这些辅助计算机具有不同的处理能力（因为它们将以其最大速率拉取消息）也是如此。 此模式通常称为 *使用者竞争* 模式。
+* **暂时分离。** 使用异步消息传送模式，生产者和使用者不需要在同一时间联机。 服务总线可靠地存储消息，直到使用方准备好接收它们。 这将允许分布式应用程序的组件断开连接，例如，为进行维护而自动断开，或因组件故障断开连接，而不会影响系统的整体性能。 此外，使用方应用程序可能只需在一天的特定时段内联机。
+* **负载量。** 在许多应用程序中，系统负载随时间而变化，而每个工作单元所需的处理时间通常为常量。 使用队列在消息创建者与使用者之间中继意味着，只需将使用方应用程序（辅助）预配为适应平均负载而非最大负载。 队列深度将随传入负载的变化而加大和减小。 这将直接根据为应用程序加载提供服务所需的基础结构的数目来节省成本。
+* **负载平衡。** 随着负载增加，可添加更多的工作进程以从队列中读取。 每条消息仅由一个辅助进程处理。 另外，可通过此基于拉取的负载平衡来以最合理的方式使用辅助计算机，即使这些辅助计算机具有不同的处理能力（因为它们将以其最大速率拉取消息）也是如此。 此模式通常称为 *使用者竞争* 模式。
   
   ![][2]
 
@@ -61,11 +62,11 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 ## <a name="set-up-the-development-environment"></a>设置开发环境
 在开始开发 Azure 应用程序之前，需要获取工具并设置开发环境。
 
-1. 在[获取工具和 SDK][Get Tools and SDK] 安装 Azure SDK for .NET。
-2. 单击你正在使用的 Visual Studio 版本的“安装 SDK”  。 本教程中的步骤使用 Visual Studio 2015。
+1. 从 SDK [下载页](https://azure.microsoft.com/downloads/)安装用于 .NET 的 Azure SDK。
+2. 在“.NET”列中，单击要使用的 [Visual Studio](http://www.visualstudio.com) 版本。 本教程中的步骤使用 Visual Studio 2015。
 3. 当提示你是要运行还是保存安装程序时，单击“运行” 。
 4. 在“Web 平台安装程序”中，单击“安装”，然后继续安装。
-5. 安装完成后，你就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。 如果你未安装 Visual Studio，SDK 还会安装免费的 Visual Studio Express。
+5. 安装完成后，你就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
 
 ## <a name="create-a-namespace"></a>创建命名空间
 下一步是创建服务命名空间并获取共享访问签名 (SAS) 密钥。 命名空间为每个通过服务总线公开的应用程序提供应用程序边界。 创建命名空间后，系统将生成一个 SAS 密钥。 命名空间与 SAS 密钥的组合为服务总线提供了用于验证应用程序访问权限的凭据。
@@ -109,7 +110,7 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 
 1. 在 Visual Studio 的 OnlineOrder.cs 文件中将现有命名空间定义替换为以下代码：
    
-   ```
+   ```csharp
    namespace FrontendWebRole.Models
    {
        public class OnlineOrder
@@ -121,14 +122,14 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
    ```
 2. 在“解决方案资源管理器”中，双击“Controllers\HomeController.cs”。 **using** 语句以包括针对你刚创建的模型以及服务总线的命名空间。
    
-   ```
+   ```csharp
    using FrontendWebRole.Models;
    using Microsoft.ServiceBus.Messaging;
    using Microsoft.ServiceBus;
    ```
 3. 仍在 Visual Studio 的 HomeController.cs 文件中，将现有命名空间定义替换为以下代码。 此代码包含用于处理将项提交到队列这一任务的方法。
    
-   ```
+   ```csharp
    namespace FrontendWebRole.Controllers
    {
        public class HomeController : Controller
@@ -193,7 +194,7 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
     ![][28]
 11. 最后，修改提交页以包含有关队列的一些信息。 在“解决方案资源管理器”中，双击“Views\Home\Submit.cshtml”文件以在 Visual Studio 编辑器中将其打开。 `<h2>Submit</h2>`后面添加以下行。 `ViewBag.MessageCount` 当前为空。 稍后你将填充它。
     
-    ```
+    ```html
     <p>Current number of orders in queue waiting to be processed: @ViewBag.MessageCount</p>
     ```
 12. 现在，你已实现你的 UI。 你可以按 **F5** 运行应用程序并确认其按预期方式运行。
@@ -207,7 +208,7 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 2. 将类命名为 **QueueConnector.cs**。 单击“添加”以创建类。
 3. 现在，将添加可封装连接信息并初始化服务总线队列连接的代码。 将 QueueConnector.cs 的全部内容替换为下面的代码，并输入 `your Service Bus namespace`（命名空间名称）和 `yourKey`（之前从 Azure 门户中获取的**主要密钥**）的值。
    
-   ```
+   ```csharp
    using System;
    using System.Collections.Generic;
    using System.Linq;
@@ -269,13 +270,13 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 4. 现在，请确保你的 **Initialize** 方法会被调用。 在“解决方案资源管理器”中，双击“Global.asax\Global.asax.cs”。
 5. 在 **Application_Start** 方法的末尾添加以下代码行。
    
-   ```
+   ```csharp
    FrontendWebRole.QueueConnector.Initialize();
    ```
 6. 最后，更新之前创建的 Web 代码以便将项提交到队列。 在“解决方案资源管理器”中，双击“Controllers\HomeController.cs”。
 7. 更新 `Submit()` 方法（不包含任何参数的重载），如下所示，获取队列的消息计数。
    
-   ```
+   ```csharp
    public ActionResult Submit()
    {
        // Get a NamespaceManager which allows you to perform management and
@@ -291,7 +292,7 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
    ```
 8. 更新 `Submit(OnlineOrder order)` 方法（包含一个参数的重载），如下所示，将订单信息提交到队列。
    
-   ```
+   ```csharp
    public ActionResult Submit(OnlineOrder order)
    {
        if (ModelState.IsValid)
@@ -334,18 +335,18 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 10. 浏览到 **FrontendWebRole\Models** 的子文件夹，然后双击“OnlineOrder.cs”以将其添加到此项目中。
 11. 在 **WorkerRole.cs** 中，将 **QueueName** 变量的值 `"ProcessingQueue"` 更改为 `"OrdersQueue"`，如以下代码所示。
     
-    ```
+    ```csharp
     // The name of your queue.
     const string QueueName = "OrdersQueue";
     ```
 12. 在 WorkerRole.cs 文件顶部添加以下 using 语句。
     
-    ```
+    ```csharp
     using FrontendWebRole.Models;
     ```
 13. 在 `Run()` 函数中，在 `OnMessage()` 调用的内部，将 `try` 子句的内容替换为以下代码。
     
-    ```
+    ```csharp
     Trace.WriteLine("Processing", receivedMessage.SequenceNumber.ToString());
     // View the message as an OnlineOrder.
     OnlineOrder order = receivedMessage.GetBody<OnlineOrder>();
@@ -362,8 +363,8 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 若要了解有关 Service Bus 的详细信息，请参阅以下资源：  
 
 * [Azure 服务总线][sbmsdn]  
-* [服务总线服务页][sbwacom]  
-* [如何使用服务总线队列][sbwacomqhowto]  
+* [服务总线服务页][sbacom]  
+* [如何使用服务总线队列][sbacomqhowto]  
 
 若要了解有关多层方案的详细信息，请参阅：  
 
@@ -372,19 +373,6 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
 [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
 [2]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
-[获取工具和 SDK]: http://go.microsoft.com/fwlink/?LinkId=271920
-
-
-[GetSetting]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.getsetting.aspx
-[Microsoft.WindowsAzure.Configuration.CloudConfigurationManager]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.aspx
-[NamespaceMananger]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx
-
-[QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
-
-[TopicClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx
-
-[EventHubClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx
-
 [9]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
 [10]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-11.png
 [11]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-02.png
@@ -404,12 +392,7 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
 [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx  
-[sbwacom]: /documentation/services/service-bus/  
-[sbwacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
+[sbacom]: https://azure.microsoft.com/services/service-bus/  
+[sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

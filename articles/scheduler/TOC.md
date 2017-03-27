@@ -5,6 +5,7 @@
 
 # 入门
 ## [创建并管理作业](scheduler-get-started-portal.md)
+## [概念和术语](scheduler-concepts-terms.md)
 
 # 如何
 ## 规划和设计
@@ -14,24 +15,21 @@
 
 ## 开发
 ### [使用 REST API 的复杂计划](scheduler-advanced-complexity.md)
-### [概念和术语](scheduler-concepts-terms.md)
+
 
 ## 安全
 ### [出站身份验证](scheduler-outbound-authentication.md)
 
 # 参考
-## [Azure 计划程序 PowerShell cmdlet](https://msdn.microsoft.com/en-us/library/mt490138(v=azure.200).aspx)
-## [.NET](/dotnet/api)
-## [REST](/rest/api/scheduler/)
+## [PowerShell](/powershell/resourcemanager/azurerm.scheduler/v0.11.1/azurerm.scheduler)
+## [REST](/rest/api/scheduler)
 
 # 资源
-## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
-## [服务更新](https://azure.microsoft.com/updates/?product=scheduler)
 ## [定价](https://azure.microsoft.com/pricing/details/scheduler/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
+## [服务更新](https://azure.microsoft.com/updates/?product=scheduler)
 
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -12,23 +12,24 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2016
+ms.date: 10/27/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 6ff31940f3a4e7557e0caf3d9d3740590be3bc04
-ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
-
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c38b73fa69bee34ce2434c6274cb017c99ef3c35
 
 ---
+
 # <a name="use-fiddler-to-evaluate-and-test-azure-search-rest-apis"></a>使用 Fiddler 评估和测试 Azure 搜索 REST API
 > [!div class="op_single_selector"]
+>
 > * [概述](search-query-overview.md)
 > * [搜索浏览器](search-explorer.md)
 > * [Fiddler](search-fiddler.md)
 > * [.NET](search-query-dotnet.md)
 > * [REST](search-query-rest-api.md)
-> 
-> 
+>
+>
 
 本文介绍如何使用 Fiddler（以 [Telerik 的免费下载项](http://www.telerik.com/fiddler)的形式提供）通过 Azure 搜索 REST API（而无需编写任何代码）发出 HTTP 请求并查看响应。 Azure 搜索是在 Microsoft Azure 上完全托管的托管云搜索服务，可通过 .NET 和 REST API 简化编程。 [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx)上介绍了 Azure 搜索服务 REST API。
 
@@ -39,26 +40,26 @@ ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
 ## <a name="create-an-index"></a>创建索引
 1. 启动 Fiddler。 在“文件”菜单上，关闭“捕获流量”，隐藏与当前任务无关的外部 HTTP 活动。
 2. 在“编辑器”  选项卡上，将构建如以下屏幕截图所示的请求。
-   
+
       ![][1]
 3. 选择“PUT” 。
 4. 输入一个 URL，其中指定服务 URL、请求属性和 api 版本。 要记住的几个要点：
-   
+
    * 使用 HTTPS 作为前缀。
    * 请求属性是“/indexes/hotels”。 这会指示搜索创建名为“hotels”的索引。
-   * Api 版本是小写，指定为“?api-version=2015-02-28”。 API 版本很重要，因为 Azure 搜索定期部署更新。 在极少数情况下，服务更新可能会对 API 引入重大更改。 由于此原因，Azure 搜索要求在每个请求中都指定 api 版本，这样用户可以完全控制使用哪一个版本。
-     
+   * Api 版本采用小写，指定为“?api-version=2016-09-01”。 API 版本很重要，因为 Azure 搜索定期部署更新。 在极少数情况下，服务更新可能会对 API 引入重大更改。 由于此原因，Azure 搜索要求在每个请求中都指定 api 版本，这样用户可以完全控制使用哪一个版本。
+
      完整的 URL 应如以下示例所示。
-     
-             https://my-app.search.windows.net/indexes/hotels?api-version=2015-02-28
+
+             https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01
 5. 指定请求标头，并将 host 和 api-key 替换为对服务有效的值。
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
 6. 在请求正文中，粘贴构成索引定义的字段。
-   
+
           {
          "name": "hotels",  
          "fields": [
@@ -87,17 +88,17 @@ ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
    ![][2]
 
 1. 选择“POST” 。
-2. 输入以 HTTPS 开头，后跟服务 URL，后跟“/indexes/<'indexname'>/docs/index?api-version=2015-02-28”的 URL。 完整的 URL 应如以下示例所示。
-   
-         https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
+2. 输入以 HTTPS 开头，后接服务 URL，再后接“/indexes/<'indexname'>/docs/index?api-version=2016-09-01”的 URL。 完整的 URL 应如以下示例所示。
+
+         https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
 3. 请求标头应与前面的相同。 请记住，将 host 和 api-key 替换为对服务有效的值。
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
 4. 请求正文包含四个要添加到 hotels 索引的文档。
-   
+
          {
          "value": [
          {
@@ -169,12 +170,12 @@ ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
 
 1. 选择“GET” 。
 2. 输入以 HTTPS 开头，后跟服务 URL，后跟“/indexes/<'indexname'>/docs?”，后跟查询参数的 URL。 例如，使用以下 URL，并将示例主机名替换为对服务有效的主机名。
-   
-         https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2015-02-28
-   
+
+         https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2016-09-01
+
    此查询将搜索词语“motel”并检索分级的 facet 类别。
 3. 请求标头应与前面的相同。 请记住，将 host 和 api-key 替换为对服务有效的值。
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
@@ -188,11 +189,11 @@ ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
 
 **替换空格前：**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2015-02-28
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01
 
 **使用“+”替换空格后：**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2015-02-28
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
 
 ## <a name="query-the-system"></a>查询系统
 还可以查询系统以获取文档计数和存储使用量。 在“编辑器”  选项卡上，请求将如下所示，并且响应将返回文档计数和已用空间。
@@ -200,11 +201,11 @@ ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
  ![][5]
 
 1. 选择“GET” 。
-2. 输入 URL，其中包含服务 URL，后跟“/indexes/hotels/stats?api-version=2015-02-28”：
-   
-         https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28
+2. 输入 URL，其中包含服务 URL，后接“/indexes/hotels/stats?api-version=2016-09-01”：
+
+         https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01
 3. 指定请求标头，并将 host 和 api-key 替换为对服务有效的值。
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
@@ -225,6 +226,6 @@ ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

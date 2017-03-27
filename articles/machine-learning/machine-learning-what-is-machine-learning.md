@@ -1,7 +1,7 @@
 ---
-title: "Azure 中的机器学习是什么？| Microsoft Docs"
+title: "Azure 中的机器学习是什么？ | Microsoft Docs"
 description: "解释云中机器学习的基本概念，介绍其作用，以及定义机器学习的术语。"
-keywords: "什么是机器学习,机器学习术语,预测,什么是预测分析,操作"
+keywords: "什么是机器学习,机器学习术语,预测,什么是预测分析,机器学习术语"
 services: machine-learning
 documentationcenter: 
 author: cjgronlund
@@ -13,15 +13,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 02/13/2017
 ms.author: cgronlun;tedway;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a0415a3a07a1334f1947ff89e79bc710332de113
+ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
+ms.openlocfilehash: 50963d47d030d43d1c98dfb9a5878af7b9e99d47
+ms.lasthandoff: 02/13/2017
 
 
 ---
-# <a name="introduction-to-machine-learning-in-the-cloud"></a>云中的机器学习简介
+# <a name="introduction-to-azure-machine-learning-in-the-cloud"></a>云中的 Azure 机器学习简介
 ## <a name="what-is-machine-learning"></a>什么是机器学习？
 机器学习是一项数据科研技术，可帮助计算机从现有的数据中学习，预测将来的行为、结果和趋势。  
 
@@ -30,47 +31,47 @@ ms.openlocfilehash: a0415a3a07a1334f1947ff89e79bc710332de113
 有关简短概述，请观看 [Data Science for Beginners](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)（适合初学者的数据科研）系列视频。 “Data Science for Beginners”（适合初学者的数据科学）介绍了机器学习，并逐步讲解了一个简单的预测模型，整篇文章未使用行语或数学理论。
 
 ## <a name="what-is-machine-learning-in-the-microsoft-azure-cloud"></a>什么是 Microsoft Azure 云中的机器学习？
-Azure 机器学习是基于云的强大预测分析服务，使用它可以快速创建预测模型，并将其部署为分析解决方案。 使用 Azure 云运行机器学习试验或构建解决方案时，不需要购买昂贵的硬件或基础结构。
+Azure 机器学习是一种云预测分析服务，使用它可以快速创建预测模型，并将其部署为分析解决方案。
+
+你可以从现成可用的算法库开始工作，在连接 Internet 的电脑上使用它们创建模型和快速部署预测解决方案。 可以从 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/)中的现成示例和解决方案着手。
 
 ![什么是机器学习？ 在 Azure 机器学习中操作预测分析的基本工作流。](./media/machine-learning-what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
 
-Azure 机器学习不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。 Azure 机器学习提供可在云中创建完整预测分析解决方案的工具：可以快速创建、测试、操作和管理预测模型。
-
-[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+Azure 机器学习不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。
 
 ## <a name="what-is-predictive-analytics"></a>什么是预测分析？
-预测分析使用称为算法的各种数学公式分析以往或当前的数据，找到模式或趋势，以便预测将来的事件。
+预测分析使用称为算法的数学公式分析以往或当前的数据，找到模式或趋势，以便预测将来的事件。
 
-Azure 机器学习是特别强大的预测分析方式：可以使用现成的算法库，在连接到 Internet 的电脑上使用算法创建模型，快速部署预测解决方案。 若要快速入门，可以从 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)中的现成示例和解决方案着手。
-
-## <a name="build-complete-machine-learning-solutions-in-the-cloud"></a>在云中构建完整的机器学习解决方案
-Azure 机器学习具有在云中创建预测分析解决方案所需的一切功能，从大型算法库、用于构建模型的 Studio，到可将模型部署为 Web 服务的简单方法。
+## <a name="tools-to-build-complete-machine-learning-solutions-in-the-cloud"></a>用于在云中构建完整的机器学习解决方案的工具
+Azure 机器学习具有在云中创建完整的预测分析解决方案所需的一切功能，从大型算法库、用于构建模型的工作室，到可将模型部署为 Web 服务的简单方法。 快速创建、测试、实施和管理预测模型。
 
 ### <a name="machine-learning-studio-create-predictive-models"></a>机器学习工作室：创建预测模型
-在 [机器学习工作室](machine-learning-what-is-ml-studio.md)中，可以通过拖放和连接模块快速创建预测模型。 可以轻松试验不同的组合，并且这种试验都是 [免费](https://studio.azureml.net/?selectAccess=true&o=2)的。
+在 [机器学习工作室](machine-learning-what-is-ml-studio.md)中，可以通过拖放和连接模块快速创建预测模型。 可以试验不同的组合，并且这种试验都是[免费](https://studio.azureml.net/?selectAccess=true&o=2)的。
 
 * 在 [Cortana Intelligence 库](machine-learning-gallery-how-to-use-contribute-publish.md)中，可以尝试其他人编写的分析解决方案，或者提供自己的解决方案。 在社区发表关于试验的问题或看法，或者通过 LinkedIn 和 Twitter 等社交网络分享试验的链接。
-  
+
   ![在 Azure Cortana Intelligence 库中尝试运行预测试验，或者补充自己的试验](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
 * 在机器学习工作室中使用 [机器学习算法和模块](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) 大型库立即开始创建预测模型。 从示例试验、R 和 Python 包，以及 Xbox 和 Bing 等 Microsoft 业务的一流算法中选择。 使用自定义的 [R](machine-learning-r-quickstart.md) 和 [Python](machine-learning-execute-python-scripts.md) 脚本扩展工作室模块。
-  
+
   ![什么是预测分析：Azure 机器学习工作室中的预测分析试验示例](./media/machine-learning-what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
 
-### <a name="operationalize-predictive-analytics-solutions-purchase-web-services-or-publish-your-own"></a>操作预测分析解决方案：购买 Web 服务或发布自己的服务
-* 从 [Microsoft Azure 应用商店](https://datamarket.azure.com/browse?query=machine+learning)购买现成的 Web 服务，例如推荐、文本分析和异常检测。
-* 操作预测分析模型：
-  
-  * [部署 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)
-  * [通过 API 训练和重新训练模型](machine-learning-retrain-models-programmatically.md)
-  * [管理 Web 服务终结点](machine-learning-create-endpoint.md)
-  * [缩放 Web 服务](machine-learning-scaling-webservice.md)
-  * [使用 Web 服务](machine-learning-consume-web-services.md)
+### <a name="operationalize-predictive-analytics-solutions-by-publishing-your-own"></a>通过发布自己的解决方案实施预测分析解决方案
+以下教程说明了如何实施预测分析模型：
+
+ * [部署 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)
+ * [通过 API 重新训练模型](machine-learning-retrain-models-programmatically.md)
+ * [管理 Web 服务终结点](machine-learning-create-endpoint.md)
+ * [缩放 Web 服务](machine-learning-scaling-webservice.md)
+ * [使用 Web 服务](machine-learning-consume-web-services.md)
 
 ## <a name="key-machine-learning-terms-and-concepts"></a>机器学习的重要术语和概念
 机器学习的术语有点难懂。 下面提供了重要术语的定义。 可以使用下面的“意见”部分告诉我们还要阐释哪些术语。
 
 ### <a name="data-exploration-descriptive-analytics-and-predictive-analytics"></a>数据探索、描述性分析和预测分析
-**数据探索** 是收集大量的、通常是非结构化的数据集的相关信息，找到要重点分析的特征的过程。 **数据挖掘** 指自动化的数据探索。
+
+**数据探索** 是收集大量的、通常是非结构化的数据集的相关信息，找到要重点分析的特征的过程。
+
+**数据挖掘** 指自动化的数据探索。
 
 **描述性分析** 是分析数据集以汇总事件的过程。 大多数商业分析（例如销售报表、Web 指标和社交网络分析）都具有描述性。
 
@@ -112,9 +113,4 @@ Azure 机器学习具有在云中创建预测分析解决方案所需的一切�
 
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

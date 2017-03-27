@@ -13,7 +13,9 @@
 ### [导入 API 定义](api-management-howto-import-api.md)
 ## 保护后端
 ### [使用 AAD 保护 Web API 后端](api-management-howto-protect-backend-with-aad.md)
-### [通过 VPN 或 ExpressRoute 连接](api-management-howto-setup-vpn.md)
+### [连接到虚拟网络](api-management-using-with-vnet.md)
+### [连接到内部虚拟网络](api-management-using-with-internal-vnet.md)
+### [在内部 VNET 中集成应用程序网关](api-management-howto-integrate-internal-vnet-appgateway.md)
 ### [使用证书进行相互身份验证](api-management-howto-mutual-certificates.md)
 ## 配置策略
 ### [自定义缓存](api-management-sample-cache-by-key.md)
@@ -23,13 +25,16 @@
 ### [策略引用索引](api-management-policy-reference.md)
 ### [策略概述](api-management-howto-policies.md)
 ### [使用属性管理密码](api-management-howto-properties.md)
+### [使用客户端证书身份验证保护 API](api-management-howto-mutual-certificates-for-clients.md)
 ## 自定义开发人员体验
-### [自定义开发人员门户](api-management-customize-portal.md)
+### [修改页面内容和布局](api-management-modify-content-layout.md)
+### [自定义页面元素的样式](api-management-customize-styles.md)
+### [使用模板自定义系统页面](api-management-developer-portal-templates.md)
 ### [使用 AAD 进行身份验证](api-management-howto-aad.md)
+### [使用 AAD B2C 进行身份验证](api-management-howto-aad-b2c.md)
 ### [委托身份验证](api-management-howto-setup-delegation.md)
 ### [电子邮件通知和模板](api-management-howto-configure-notifications.md)
 ### [启动控制台 OAuth 支持](api-management-howto-oauth2.md)
-### [使用模板进行自定义](api-management-developer-portal-templates.md)
 ## 在生产环境中进行管理
 ### [管理组](api-management-howto-create-groups.md)
 ### [部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)
@@ -39,14 +44,37 @@
 ### [管理用户帐户](api-management-howto-create-or-invite-developers.md)
 ### [使用自动化进行管理](automation-manage-api-management.md)
 ### [使用 Git 进行配置](api-management-configuration-repository-git.md)
-#参考
-## [资源管理 PowerShell cmdlet]/powershell/resourcemanager()
-## [经典部署 PowerShell cmdlet 参考](https://msdn.microsoft.com/en-us/library/azure/mt613507)
-## [REST API](/rest/api/apimanagement/)
-## [策略](https://msdn.microsoft.com/en-us/library/azure/dn894081)
-## [模板](https://msdn.microsoft.com/en-us/library/azure/mt697540)
-#资源
+# 参考
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [REST](/rest/api/apimanagement/)
+## [REST（原始）](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
+## [策略](api-management-policies.md)
+### 策略参考
+#### [访问限制策略](api-management-access-restriction-policies.md)
+#### [高级策略](api-management-advanced-policies.md)
+#### [身份验证策略](api-management-authentication-policies.md)
+#### [缓存策略](api-management-caching-policies.md)
+#### [跨域策略](api-management-cross-domain-policies.md)
+#### [转换策略](api-management-transformation-policies.md)
+### [错误处理](api-management-error-handling-policies.md)
+### [策略表达式](api-management-policy-expressions.md)
+## [模板](api-management-developer-portal-templates-reference.md)
+### 模板参考
+#### [API](api-management-api-templates.md)
+#### [产品](api-management-product-templates.md)
+#### [应用程序](api-management-application-templates.md)
+#### [问题](api-management-issue-templates.md)
+#### [用户配置文件](api-management-user-profile-templates.md)
+#### [页](api-management-page-templates.md)
+### [数据模型参考](api-management-template-data-model-reference.md)
+### [页面控件](api-management-page-controls.md)
+### [模板资源](api-management-template-resources.md)
+# 资源
 ## [定价](https://azure.microsoft.com/pricing/details/api-management/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-api-management)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
+## [服务更新](https://azure.microsoft.com/updates/?product=api-management)
 ## [白皮书：基于云的 API 管理](http://j.mp/ms-apim-whitepaper)
 ## [API 设计指南](../best-practices-api-design.md?toc=%2fazure%2fapi-management%2ftoc.json)
 ## [API 实现指南](../best-practices-api-implementation.md?toc=%2fazure%2fapi-management%2ftoc.json)
@@ -56,9 +84,4 @@
 ## [使用 REST API 提供类似于 RBAC 的访问权限](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
 ## [设置 PostMan 以调用 API 管理 API](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
 ## [适用于 SmartBear Ready! API 的API 管理插件](http://smartbear.com/plugins/microsoft-azure-api-management-plugin/)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

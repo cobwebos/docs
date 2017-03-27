@@ -4,7 +4,7 @@ description: "使用 Azure 机器学习，基于存储在 Azure SQL 数据仓库
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
-manager: barbkess
+manager: jhubbard
 editor: 
 ms.assetid: 95635460-150f-4a50-be9c-5ddc5797f8a9
 ms.service: sql-data-warehouse
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
+ms.date: 03/02/2017
+ms.author: kevin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: edc3a915a59d83718d05ce39a1ce2bcd14333da4
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: a5befbf1dc1862b3b0803eb4940341d246ec036c
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: edc3a915a59d83718d05ce39a1ce2bcd14333da4
 
 本教程使用 Azure 机器学习功能，根据存储在 Azure SQL 数据仓库中的数据，生成预测机器学习模型。 具体而言，这就是通过预测客户是否有可能购买自行车，为自行车商店 Adventure Works 打造的有针对性的市场营销活动。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
@@ -41,10 +42,10 @@ ms.openlocfilehash: edc3a915a59d83718d05ce39a1ce2bcd14333da4
 
 * 随 AdventureWorksDW 示例数据预先加载的 SQL 数据仓库。 若要完成此预配，请参阅[创建 SQL 数据仓库][Create a SQL Data Warehouse]，并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以[手动加载示例数据][load sample data manually]。
 
-## <a name="1-get-data"></a>1.获取数据
+## <a name="1-get-the-data"></a>1.获取数据
 数据位于 AdventureWorksDW 数据库的 dbo.vTargetMail 视图中。 若要读取此数据：
 
-1. 登录到 [Azure 机器学习工作室][Azure Machine Learning studio]并单击我的试验。
+1. 登录到 [Azure 机器学习工作室][Azure Machine Learning studio]并单击“我的试验”。
 2. 单击“+新建”并选择“空白试验”。
 3. 输入试验名称：目标营销。
 4. 将“读取器”模块从模块窗格拖放到画布上。
@@ -142,13 +143,8 @@ FROM [dbo].[vTargetMail]
 
 
 <!--Article references-->
-[Azure 机器学习工作室]:https://studio.azureml.net/
-[Azure 上的机器学习简介]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
-[手动加载示例数据]: sql-data-warehouse-load-sample-databases.md
-[创建 SQL 数据仓库]: sql-data-warehouse-get-started-provision.md
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Azure Machine Learning studio]:https://studio.azureml.net/
+[Introduction to Machine Learning on Azure]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[load sample data manually]: sql-data-warehouse-load-sample-databases.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 

@@ -4,7 +4,7 @@ description: "在本教程中，你将了解如何通过百度使用 Azure 通�
 services: notification-hubs
 documentationcenter: android
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9e6af9016318f9e31a143c6cf1329a7ab2c8acd6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ec2a69ff5a7f1f3a954eae70f1cd776242b0b7f4
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -43,16 +44,16 @@ ms.openlocfilehash: 9e6af9016318f9e31a143c6cf1329a7ab2c8acd6
 
 1. 转到[百度门户]并单击“登录”链接。 单击“立即注册”以启动帐户注册过程。
    
-       ![][1]
+   ![][1]
 2. 输入所需的详细信息（电话/电子邮件地址、密码和验证码），然后单击“注册”。
    
-       ![][2]
+   ![][2]
 3. 系统会将一封电子邮件发送到你输入的电子邮件地址，该邮件包含一个用于激活你的百度帐户的链接。
    
-       ![][3]
+   ![][3]
 4. 登录到你的电子邮件帐户，打开百度激活邮件，然后单击激活链接以激活你的百度帐号。
    
-       ![][4]
+   ![][4]
 
 当你有已激活的百度帐户后，请登录 [百度门户]。
 
@@ -446,9 +447,4 @@ ms.openlocfilehash: 9e6af9016318f9e31a143c6cf1329a7ab2c8acd6
 [百度推送 Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
 [Azure 经典门户]: https://manage.windowsazure.com/
 [百度门户]: http://www.baidu.com/
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

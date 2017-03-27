@@ -10,22 +10,26 @@ tags: azure-resource-manager
 ms.assetid: 8c2a7ed2-ae5c-4e49-81f6-77cf9f2b2ac9
 ms.service: expressroute
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1d78bdb6cbb9870298b050207fd1fa9c5e71d674
+ms.sourcegitcommit: 65eef5df67adc089f52d8478fd1bb37a481d7d2a
+ms.openlocfilehash: 8d0b9f142ef274667692009bf8dafeb1f2f0f9c7
+ms.lasthandoff: 02/22/2017
 
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的路由
 > [!div class="op_single_selector"]
-> [Azure 门户 - Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
-> [PowerShell - Resource Manager](expressroute-howto-routing-arm.md)
-> [PowerShell - 经典](expressroute-howto-routing-classic.md)
+> * [资源管理器 - Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-routing-arm.md)
+> * [经典 - PowerShell](expressroute-howto-routing-classic.md)
+> * [视频 - 专用对等互连](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [视频 - 公共对等互连](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [视频 - Microsoft 对等互连](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > 
 > 
 
@@ -38,6 +42,7 @@ ms.openlocfilehash: 1d78bdb6cbb9870298b050207fd1fa9c5e71d674
 ## <a name="configuration-prerequisites"></a>配置先决条件
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)页、[路由要求](expressroute-routing.md)页和[工作流](expressroute-workflows.md)页。
 * 你必须有一个活动的 ExpressRoute 线路。 在继续下一步之前，请按说明 [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并通过连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，你才能运行下述 cmdlet。
+* 如果计划使用共享密钥/MD5 哈希，请确保在隧道两端都使用该哈希，并将最大字符数限制为 25。
 
 这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果你的服务提供商提供第 3 层托管服务（通常是 IPVPN，如 MPLS），则连接服务提供商将为你设置和管理路由。 
 
@@ -186,10 +191,5 @@ ms.openlocfilehash: 1d78bdb6cbb9870298b050207fd1fa9c5e71d674
 * 有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](expressroute-workflows.md)。
 * 有关线路对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
 * 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -1,9 +1,25 @@
 ---
+title: "Azure 认知服务文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何向应用程序添加影像、语音和语言分析等智能功能。 获取快速入门指南和 API 参考。"
+services: cognitive-services
+author: carolz
+manager: carolz
 layout: LandingPage
----
-#Cognitive Services Documentation
+ms.assetid: 
+ms.service: cognitive-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 0c5f1ba593952cb6dc6a8200a5666ecb7a32fce7
+ms.openlocfilehash: 3895b02f25b0e27b46a5e5493fe2b7f8f83201c1
 
-Cognitive Services (Preview) is a series of APIs which can be used to enable natural and contextual interaction within your applications.  Cognitive Services offers Language, Speech, Vision, Search, and Knowledge APIs.
+---
+#<a name="cognitive-services-documentation"></a>认知服务文档
+
+了解如何使用认知服务在应用程序中启用自然交互和上下文交互。 快速入门教程和 API 参考可帮助你在文本、语音、视觉和搜索应用中整合人工智能功能。 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -17,7 +33,7 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Cognitive Services Video Library</h3>
+                        <h3>认知服务视频库</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +51,7 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with the Text Analytics APIs</h3>
+                        <h3>文本分析 API 入门</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +69,7 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with the Recommendations APIs</h3>
+                        <h3>推荐 API 入门</h3>
                     </div>
                 </div>
             </div>
@@ -64,22 +80,38 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
 
 ---
 
-##Reference
-
-###PowerShell
-[Azure PowerShell Reference](/powershell/azureps-cmdlets-docs)
-
-###.NET
-[Cognitive Services Managed Reference](https://msdn.microsoft.com/library/azure/mt416943)
-
-###REST
-[Cognitive Services REST API Reference](/rest/api/cognitiveservices)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cognitive-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Cognitive Services Documentation
+<h2>引用</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.cognitiveservices/v0.4.1/azurerm.cognitiveservices">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+
+
+
+<!--HONumber=Feb17_HO2-->
+
+

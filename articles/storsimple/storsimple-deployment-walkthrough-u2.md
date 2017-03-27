@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2016
+ms.date: 11/16/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 636b4ca48d242edfad2770a29f73f7a76edca034
+ms.sourcegitcommit: aaef3322fc98b0874222e4a3728d54a38a34b602
+ms.openlocfilehash: f71c7e080b2c0b382f241d55b9ca0c7507c24a88
 
 
 ---
-# <a name="deploy-your-onpremises-storsimple-device-update-2"></a>部署本地 StorSimple 设备 (Update 2)
+# <a name="deploy-your-on-premises-storsimple-device-update-2"></a>部署本地 StorSimple 设备 (Update 2)
 > [!div class="op_single_selector"]
 > * [Update 2 和更高版本 ](storsimple-deployment-walkthrough-u2.md)
 > * [Update 1](storsimple-deployment-walkthrough-u1.md)
@@ -56,7 +56,7 @@ ms.openlocfilehash: 636b4ca48d242edfad2770a29f73f7a76edca034
 | [步骤 1：创建新服务](#step-1-create-a-new-service) |设置 StorSimple 设备的云管理和存储。 *如果其他 StorSimple 设备有现有服务，请跳过此步骤*。 |
 | [步骤 2：获取服务注册密钥](#step-2-get-the-service-registration-key) |使用此密钥来注册 StorSimple 设备，并将其连接到管理服务。 |
 | [步骤 3︰通过 Windows PowerShell for StorSimple 配置和注册设备](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |使用管理服务将设备连接到网络，并通过 Azure 注册以完成安装。 |
-| [步骤 4：完成最低版本的设备安装](#step-4-complete-minimum-device-setupd)</br>[可选：更新 StorSimple 设备](#scan-for-and-apply-updates) |使用管理服务来完成设备安装，并启用以使其能够提供存储。 |
+| [步骤 4：完成最低版本的设备安装](#step-4-complete-minimum-device-setup)</br>[可选：更新 StorSimple 设备](#scan-for-and-apply-updates) |使用管理服务来完成设备安装，并启用以使其能够提供存储。 |
 | [步骤 5：创建卷容器](#step-5-create-a-volume-container) |创建容器来预配卷。 卷容器具有其中所包含的所有卷的存储帐户、带宽和加密设置。 |
 | [步骤 6：创建卷](#step-6-create-a-volume) |在服务器的 StorSimple 设备上预配存储卷。 |
 | [步骤 7：装载、初始化和格式化卷](#step-7-mount-initialize-and-format-a-volume)</br>[可选：配置 MPIO](storsimple-configure-mpio-windows-server.md) |将服务器连接到设备提供的 iSCSI 存储。 根据情况配置 MPIO，以确保服务器可以容许链接、网络和接口故障。 |
@@ -95,7 +95,7 @@ ms.openlocfilehash: 636b4ca48d242edfad2770a29f73f7a76edca034
 
 * 数据中心防火墙的端口已开放，以允许 iSCSI 和云流量，如 [StorSimple 设备的网络要求](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)中所述。
 
-## <a name="stepbystep-deployment"></a>逐步部署
+## <a name="step-by-step-deployment"></a>逐步部署
 使用下面的分步说明在数据中心部署 StorSimple 设备。
 
 ## <a name="step-1-create-a-new-service"></a>步骤 1：创建新服务
@@ -224,6 +224,6 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 执行以下步
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

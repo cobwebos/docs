@@ -1,13 +1,37 @@
 ---
+title: "Azure SQL 数据库文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解 SQL 数据库（云中的数据库即服务）。 教程、视频和其他文档演示了如何设置、连接及管理关系数据库。"
+services: sql-database
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: sql-database
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: edfc23605c738fbe8aac99c0db89c6f588a09d60
-ms.openlocfilehash: 85bf943fb28348a17e609fff506dddf855b28dfa
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: e982e07b6279c1338398980aa07d46ce08ede11c
+ms.lasthandoff: 03/22/2017
 
 ---
-#<a name="sql-database-documentation"></a>SQL 数据库文档
 
-Azure SQL 数据库是云中的关系数据库服务，提供基于 Microsoft SQL Server 引擎的任务关键型功能。 SQL 数据库提供可预测的性能、不停机缩放能力、业务连续性和数据保护功能，并且所需的管理工作量极少。 SQL 数据库基于 SQL Server 引擎，因此支持现有的 SQL Server 工具、库和 API，可以更轻松地移动和扩展到云中。
+# <a name="sql-database-documentation"></a>SQL 数据库文档
+
+<div class="introHolder">
+    <div class="intro">
+了解如何使用 SQL 数据库 - 构建在 Microsoft SQL Server 引擎基础之上的云中关系数据库即服务。 教程、视频和其他文档演示了如何设置、连接及管理 SQL 数据库。
+    </div>
+    <div class="calloutHolder">
+        <div class="callout">
+            <a href="https://azure.microsoft.com/community/training/courses/managing-infrastructure-microsoft-azure-getting-started/">
+                <img src="media/index/pluralsight.svg" />免费 PluralSight 视频培训 - 使用 Microsoft Azure 管理基础结构</a>
+        </div>
+    </div>
+</div>
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -104,34 +128,84 @@ Azure SQL 数据库是云中的关系数据库服务，提供基于 Microsoft SQ
 
 ---
 
-##<a name="reference"></a>参考
+<h2>引用</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql">PowerShell</a></p>
+                        <p><a href="/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs">PowerShell（弹性数据库）</a></p>
+                        <p><a href="/cli/azure/sql">Azure CLI 2.0</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/sql/">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server工具</a></h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p>
+                        <p><a href="https://msdn.microsoft.com/hh550080.aspx">SqlPackage</a></p>
+                        <p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL 数据库管理库包</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server 驱动程序</a></h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell 参考] (/powershell/azureps-cmdlets-docs)
-
-###<a name="net"></a>.NET
-[.NET 托管参考](/dotnet/api)
-
-### <a name="java"></a>Java
-[Java SDK 参考](/java/api)
-
-###<a name="rest"></a>REST
-[SQL 数据库 REST API 参考](/rest/api/sql)
-
-###<a name="tsql"></a>T-SQL
-[T-SQL 参考](https://msdn.microsoft.com/library/azure/bb510741)
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-database.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 SQL 数据库文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

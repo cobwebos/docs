@@ -1,13 +1,26 @@
 ---
+title: "Azure 搜索文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何向自定义 Web 应用程序或移动应用程序添加强大的搜索功能，包括活动监视功能。 API 参考和其他文档。"
+services: search
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: search
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: cdfe04908d68292d07eeb9c20a4772d11fa30eff
-ms.openlocfilehash: d3ef28f2cb1459410ec90982fff94fbbced55f72
+ms.sourcegitcommit: d8bf549455e427549a81ff5476a00cdfb836b5ff
+ms.openlocfilehash: aa0c12a669b6b2a1602b9d2f6698f65535b4f7d4
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="azure-search-documentation"></a>Azure 搜索文档
 
-Azure 搜索是一种搜索即服务云解决方案，它将服务器和基础结构的管理委托给 Microsoft，为用户提供随时可用的服务，用户可在填充数据后使用此服务将搜索添加到 Web 或移动应用程序。 借助 Azure 搜索，可以使用简单的 REST API 或 .NET SDK 在应用程序中添加成熟的搜索体验，无需管理搜索基础结构或精通搜索技术。
+了解如何使用 Azure 搜索（托管的云搜索服务）向自定义 Web 应用或移动应用添加搜索功能。 教程、API 参考和其他文档介绍了如何添加可缩放的多语言全文搜索、地理空间搜索、筛选和多面导航、提前键入查询、命中突出显示以及自定义分析器。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +42,7 @@ Azure 搜索是一种搜索即服务云解决方案，它将服务器和基础�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=search">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=search">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,7 +60,7 @@ Azure 搜索是一种搜索即服务云解决方案，它将服务器和基础�
         </a>
     </li>
     <li>
-        <a href="/azure/search/search-create-service">
+        <a href="/azure/search/search-create-service-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -82,29 +95,76 @@ Azure 搜索是一种搜索即服务云解决方案，它将服务器和基础�
         </div>
         </a>
     </li>
+    <li>
+        <a href="/azure/search/search-query-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>查询 Azure 搜索索引</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/search/search-howto-dotnet-sdk">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>在 .NET 中使用 Azure 搜索</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 </ul>
-
 
 ---
 
-## <a name="reference"></a>参考
+<h2>引用</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.search">.NET</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.management.search">.NET（管理）</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html">Python（管理）</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/searchservice">REST API 参考</a></p>
+                        <p><a href="/rest/api/searchmanagement">REST（管理）API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-### <a name="net"></a>.NET 
-[.NET 托管参考 API](/dotnet/api/) 
-
-### <a name="rest"></a>REST 
-[搜索 REST API 参考](/rest/api/searchmanagement/) 
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/search.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure 搜索文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

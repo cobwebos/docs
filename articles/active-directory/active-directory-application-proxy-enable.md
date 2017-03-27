@@ -5,21 +5,22 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 07/19/2016
+ms.topic: article
+ms.date: 02/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d0a5cfe8fe9782cc9b75392d6f21965430ee2347
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: c979e6328f09618642aa7a432c873c7ce20c072b
+ms.lasthandoff: 03/03/2017
 
 
 ---
+
 # <a name="enable-application-proxy-in-the-azure-portal"></a>在 Azure 门户中启用应用程序代理
 本文将指导你完成在 Azure AD 中为云目录启用 Microsoft Azure AD 应用程序代理的步骤。
 
@@ -31,7 +32,7 @@ ms.openlocfilehash: d0a5cfe8fe9782cc9b75392d6f21965430ee2347
 * [Microsoft Azure AD 基本或高级版订阅](active-directory-editions.md) 以及你本人为全局管理员的 Azure AD 目录。
 * 可以安装应用程序代理连接器，运行 Windows Server 2012 R2 或 Windows 8.1 或更高版本的服务器。 该服务器将请求发送到云中的应用程序代理服务，并且需要与要发布的应用程序建立 HTTP 或 HTTPS 连接。
   
-  * 若要单一登录到已发布的应用程序，此计算机应域加入要发布的应用程序所在的同一 AD 域。
+  * 若要单一登录到已发布的应用程序，此计算机应域加入要发布的应用程序所在的同一 AD 域。 相关信息，请参阅[使用应用程序代理进行单一登录](active-directory-application-proxy-sso-using-kcd.md)
 * 如果路径中有防火墙，请确保防火墙已打开，以便连接器向应用程序代理发出 HTTPS (TCP) 请求。 连接器将连同属于高级域 msappproxy.net 和 servicebus.windows.net 的子域一起使用这些端口。 确保打开以下用于 **出站** 流量的端口：
   
   | 端口号 | 说明 |
@@ -46,7 +47,8 @@ ms.openlocfilehash: d0a5cfe8fe9782cc9b75392d6f21965430ee2347
   | 9091 |启用连接器信任证书自动续订 |
   
     如果你的防火墙根据发起用户强制实施流量，请针对来自作为网络服务运行的 Windows 服务的流量打开这些端口。 此外，请确保为 NT Authority\System 启用端口 8080。
-* 如果组织使用代理服务器连接 Internet，请查看博客文章 [使用现有本地代理服务器](https://blogs.technet.microsoft.com/applicationproxyblog/2016/03/07/working-with-existing-on-prem-proxy-servers-configuration-considerations-for-your-connectors/) 了解配置方法的详细信息。
+* 使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。 
+* 如果组织使用代理服务器连接 Internet，请查看博客文章[使用现有本地代理服务器](https://blogs.technet.microsoft.com/applicationproxyblog/2016/03/07/working-with-existing-on-prem-proxy-servers-configuration-considerations-for-your-connectors/)，了解配置方法的详细信息。
 
 ## <a name="step-1-enable-application-proxy-in-azure-ad"></a>步骤 1：在 Azure AD 中启用应用程序代理
 1. 在 [Azure 经典门户](https://manage.windowsazure.com/)中，以管理员身份登录。
@@ -77,6 +79,8 @@ ms.openlocfilehash: d0a5cfe8fe9782cc9b75392d6f21965430ee2347
      ![应用代理连接器服务 - 屏幕截图](./media/active-directory-application-proxy-enable/app_proxy_services.png)
 5. 在安装窗口中单击“完成”  。
 
+有关连接器的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)。 
+
 为了获得高可用性，应该部署至少两个连接器。 若要部署更多连接器，请重复上面的步骤 2 和 3。 每个连接器必须分开注册。
 
 如果要卸载连接器，请先卸载连接器服务和更新程序服务。 重新启动计算机以完全删除该服务。
@@ -85,10 +89,5 @@ ms.openlocfilehash: d0a5cfe8fe9782cc9b75392d6f21965430ee2347
 现在，你可以随时 [使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
 
 如果应用程序位于单独网络或其他位置，可以使用连接器组将不同连接器组织到逻辑单元中。 了解有关 [使用应用程序代理连接器](active-directory-application-proxy-connectors.md)的详细信息。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

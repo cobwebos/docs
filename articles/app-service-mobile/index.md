@@ -1,10 +1,26 @@
 ---
+title: "Azure 移动应用文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建和托管本机 iOS、Android 或 Windows 应用，或者跨平台应用。"
+services: app-service\mobile
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: app-service\mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: 6f1ca5fe5125728b51a6d46e55415afb72405910
+ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
+ms.lasthandoff: 02/09/2017
 
 ---
-# Mobile Apps Documentation
+# <a name="mobile-apps-documentation"></a>移动应用文档
 
-API Management helps organizations publish APIs to external, partner and internal developers to unlock the potential of their data and services. Businesses everywhere are looking to extend their operations as a digital platform, creating new channels, finding new customers and driving deeper engagement with existing ones. API Management provides the core competencies to ensure a successful API program through developer engagement, business insights, analytics, security and protection.
+了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建本机 iOS、Android 或 Windows 应用，或者跨平台应用。 教程、视频、客户端 SDK 文档和其他资源介绍了如何构建与托管任何移动应用的后端。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +34,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Mobile Apps</h3>
+                        <h3>了解移动应用</h3>
                     </div>
                 </div>
             </div>
@@ -26,7 +42,7 @@ API Management helps organizations publish APIs to external, partner and interna
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=app-service">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=app-service">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -36,7 +52,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service Video Library</h3>
+                        <h3>应用服务视频库</h3>
                     </div>
                 </div>
             </div>
@@ -54,7 +70,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Andriod app</h3>
+                        <h3>开始创建 Android 应用</h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +88,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Apache Cordova app</h3>
+                        <h3>开始创建 Apache Cordova 应用</h3>
                     </div>
                 </div>
             </div>
@@ -90,7 +106,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an iOS app</h3>
+                        <h3>开始创建 iOS 应用</h3>
                     </div>
                 </div>
             </div>
@@ -108,7 +124,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Windows app</h3>
+                        <h3>开始创建 Windows 应用</h3>
                     </div>
                 </div>
             </div>
@@ -126,7 +142,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a xamarin.Andriod app</h3>
+                        <h3>开始创建 xamarin.Android 应用</h3>
                     </div>
                 </div>
             </div>
@@ -144,7 +160,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a xamarin.Forms app</h3>
+                        <h3>开始创建 xamarin.Forms 应用</h3>
                     </div>
                 </div>
             </div>
@@ -162,7 +178,7 @@ API Management helps organizations publish APIs to external, partner and interna
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a xamarin.iOS app</h3>
+                        <h3>开始创建 Xamarin.iOS 应用</h3>
                     </div>
                 </div>
             </div>
@@ -173,16 +189,24 @@ API Management helps organizations publish APIs to external, partner and interna
 
 ---
 
-## Reference
-
-### .NET
-[Mobile Apps .NET Reference](https://msdn.microsoft.com/library/azure/dn961176)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-mobile.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Mobile Apps Documentation
+<h2>引用</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET 后端 SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-node/">Node.js 后端 SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-android-client/">Android 客户端 SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-ios-client/">iOS 客户端 SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-js-client/">JavaScript/Cordova 客户端 SDK</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt419521.aspx">Windows/Xamarin 客户端 SDK</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+</ul>
+

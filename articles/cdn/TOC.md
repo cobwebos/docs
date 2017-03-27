@@ -1,5 +1,6 @@
 # [概述](cdn-overview.md)
 ## [什么是 Azure CDN？](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+
 # 入门
 ## [启用 Azure CDN](cdn-create-new-endpoint.md)
 
@@ -11,6 +12,7 @@
 ### [跨域资源共享](cdn-cors.md)
 
 ## 管理
+### [在自定义域上启用 HTTPS](cdn-custom-ssl.md)
 ### [使用 PowerShell 进行管理](cdn-manage-powershell.md)
 ### 配置生存时间
 #### [Web 应用/云服务、ASP.NET 或 IIS 内容](cdn-manage-expiration-of-cloud-service-content.md)
@@ -23,6 +25,8 @@
 #### [高级层](cdn-query-string-premium.md)
 ### [清除缓存资产](cdn-purge-endpoint.md)
 ### [预加载缓存资产](cdn-preload-endpoint.md)
+### [令牌身份验证](cdn-token-auth.md)
+### [监视资源](cdn-resource-health.md)
 ### [用规则覆盖行为](cdn-rules-engine.md)
 ### [获取实时警报](cdn-real-time-alerts.md)
 
@@ -41,19 +45,24 @@
 ### [文件压缩](cdn-troubleshoot-compression.md)
 
 # 参考
-## [PowerShell cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
-## [Azure CDN POP 位置](cdn-pop-locations.md)
-## [REST](https://msdn.microsoft.com/library/mt634456.aspx)
+## [PowerShell](/powershell/resourcemanager/azurerm.cdn/v2.3.0/azurerm.cdn)
+## [.NET](/dotnet/api/microsoft.azure.management.cdn)
+## [Java](/java/api/com.microsoft.azure.management.cdn)
+## [REST](/rest/api/cdn/)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/cdn/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/forums/home?forum=azurecdn)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
+##  [规则引擎参考](cdn-rules-engine-reference.md)
+### [规则引擎条件表达式](cdn-rules-engine-reference-conditional-expressions.md)
+### [规则引擎匹配条件](cdn-rules-engine-reference-match-conditions.md)
+### [规则引擎功能](cdn-rules-engine-reference-features.md)
+## [Azure CDN 的 POP 位置](cdn-pop-locations.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=cdn)
+## [定价](https://azure.microsoft.com/pricing/details/cdn/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-cdn)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,13 +1,25 @@
 ---
+title: "Azure Functions 文档 - 教程 | Microsoft 文档"
+description: "了解如何在不设置特殊基础结构的情况下，使用所选的语言开发和部署函数，以便在后台或者按计划运行任务。"
+services: functions
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: functions
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 29794682e0258a6d30c9b2ac96b6e58272bc3f48
-ms.openlocfilehash: af563864a5f76452ea2d28c548731c025f5f8390
+ms.sourcegitcommit: b490d47b03cd3c7c57c3630fafb95777fffaa3aa
+ms.openlocfilehash: b2f2e067fd6c6c2c34bee167356756721c8fd0cd
 
 ---
 #<a name="azure-functions-documentation"></a>Azure Functions 文档
 
-Azure Functions 是用于在云中轻松运行小段代码（“函数”）的一个解决方案。 用户可以编写解决现有问题所需的代码，无需担心要运行该代码的整个应用程序或基础结构。 用户还可以使用所选的语言（例如 C#、F#、Node.js、Python 或 PHP）开发软件。
+了解如何在不设置基础结构的情况下，使用 Functions 以所选的语言在云中开发和部署小型代码片段。 教程、模板和其他文档说明了如何针对想要在后台线程中或按计划运行的任务创建函数。
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -28,7 +40,7 @@ Azure Functions 是用于在云中轻松运行小段代码（“函数”）的�
         </div>
         </a>
     </li>
-   
+
    <li>
         <a href="/azure/azure-functions/functions-create-first-azure-function">
         <div class="cardSize">
@@ -54,11 +66,11 @@ Azure Functions 是用于在云中轻松运行小段代码（“函数”）的�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>创建 Webhook 函数</h3>
+                        <h3>Webhook 函数入门</h3>
                     </div>
                 </div>
             </div>
@@ -72,11 +84,11 @@ Azure Functions 是用于在云中轻松运行小段代码（“函数”）的�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>创建连接到 Azure 的函数</h3>
+                        <h3>Azure 连接函数入门</h3>
                     </div>
                 </div>
             </div>
@@ -90,11 +102,11 @@ Azure Functions 是用于在云中轻松运行小段代码（“函数”）的�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>创建事件处理函数</h3>
+                        <h3>事件处理函数入门</h3>
                     </div>
                 </div>
             </div>
@@ -103,30 +115,9 @@ Azure Functions 是用于在云中轻松运行小段代码（“函数”）的�
     </li>
 </ul>
 
----
-
-##<a name="reference"></a>参考
-
-### <a name="c35"></a>C&#35;
-[C# 开发人员参考](/azure/azure-functions/functions-reference-csharp)
-
-### <a name="f35"></a>F&#35;
-[F# 开发人员参考](/azure/azure-functions/functions-reference-fsharp)
-
-### <a name="nodejs"></a>Node.js
-[Node.js 开发人员参考](/azure/azure-functions/functions-reference-node)
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-functions.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure Functions 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

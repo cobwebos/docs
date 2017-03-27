@@ -1,4 +1,10 @@
-1. 转到 [Azure 门户][Azure 门户]。
+## <a name="create-a-service-namespace"></a>创建服务命名空间
+
+若要开始在 Azure 中使用服务总线队列，必须先创建一个命名空间。 命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。 
+
+创建命名空间：
+
+1. 登录到 [Azure 门户][Azure portal]。
 2. 在门户的左侧导航窗格中，依次单击“新建”、“企业集成”和“服务总线”。
 3. 在“创建命名空间”  对话框中，输入命名空间名称。 系统会立即检查该名称是否可用。
 4. 在确保命名空间名称可用后，选择定价层（基础版、标准版或高级版）。
@@ -19,15 +25,15 @@
    
     ![connection-string][connection-string]
 
+5. 重复上述步骤，将**主键**的值复制和粘贴到临时位置，以供将来使用。
+
 <!--Image references-->
 
 [create-namespace]: ./media/service-bus-create-namespace-portal/create-namespace.png
 [connection-info]: ./media/service-bus-create-namespace-portal/connection-info.png
 [connection-string]: ./media/service-bus-create-namespace-portal/connection-string.png
+[Azure portal]: https://portal.azure.com
 
-<!--Reference style links - using these makes the source content way more readable than using inline links-->
-[Azure 门户]: https://portal.azure.com
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

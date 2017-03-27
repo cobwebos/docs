@@ -4,7 +4,7 @@ description: "此版常见问题支持 Azure 备份服务公共预览版。 针�
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: jwhit
+manager: carmonm
 editor: 
 keywords: "备份解决方案; 备份服务"
 ms.assetid: 5f55b500-1ee9-4f64-9306-02d6f7a8eded
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/21/2016
-ms.author: trinadhk; markgal; jimpark;
+ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fdc596def57968381ea48dfc5df2269a682c9de7
+ms.sourcegitcommit: e12d533ac5befe020c0aad4aa64ca9ed50349c3d
+ms.openlocfilehash: 271f447a36f42330ed7b8dea78b32c06eebdeda6
+ms.lasthandoff: 02/17/2017
 
 
 ---
-# <a name="recovery-services-vault-faq"></a>恢复服务保管库 - 常见问题
+# <a name="recovery-services-vault---faq"></a>恢复服务保管库 - 常见问题
 本文提供特定于恢复服务保管库的信息，并对 [Azure 备份常见问题解答](backup-azure-backup-faq.md)进行了补充。 Azure 备份常见问题提供整套有关 Azure 备份服务的问答。  
 
 你可以在本文或相关章的 Disqus 部分中提出有关 Azure 备份的问题。 你也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -35,16 +36,10 @@ ms.openlocfilehash: fdc596def57968381ea48dfc5df2269a682c9de7
 ## <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>恢复服务保管库是支持基于经典 VM 还是支持基于资源管理器的 VM？ <br/>
 恢复服务保管库同时支持这两种模式。  可以将经典门户中创建的 VM（即经典模式 VM）或 Azure 门户中创建的 VM（即基于资源管理器的 VM）备份到恢复服务保管库。
 
-## <a name="i-have-backed-up-my-classic-vms-in-backup-vault-now-i-want-to-migrate-my-vms-from-classic-mode-to-resource-manager-mode-how-can-i-backup-them-in-recovery-services-vault"></a>我已在备份保管库中备份经典 VM。 现在，我想将我的 VM 从经典模式迁移到资源管理器模式。  如何在恢复服务保管库中备份它们？
+## <a name="i-have-backed-up-my-classic-vms-in-backup-vault-now-i-want-to-migrate-my-vms-from-classic-mode-to-resource-manager-mode--how-can-i-backup-them-in-recovery-services-vault"></a>我已在备份保管库中备份经典 VM。 现在，我想将我的 VM 从经典模式迁移到资源管理器模式。  如何在恢复服务保管库中备份它们？
 如果在备份保管库中备份经典 VM，将 VM 从经典迁移到资源管理器模式时不会自动迁移到恢复服务。 请按照以下步骤迁移 VM 备份：
 
 1. 在备份保管库中，请转到“ **受保护的项** ”选项卡并选择 VM。 单击“ [停止保护](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines)”。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
 2. 将虚拟机从经典模式迁移到资源管理器模式。 确保与虚拟机对应的存储和网络也已迁移到资源管理器模式。
 3. 创建恢复服务保管库，使用保管库仪表板顶部的“ **备份** ”操作在迁移的虚拟机上配置备份。 了解有关如何 [在恢复服务保管库中启用备份](backup-azure-vms-first-look-arm.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

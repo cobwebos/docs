@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fa0fe7ee7b0a24b679b86dece2a3294004b57815
+ms.sourcegitcommit: 46e6ab8a9c5d4e6a00d61ee4e5bbfd42307bfc69
+ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: fa0fe7ee7b0a24b679b86dece2a3294004b57815
 * [ASP.NET - 适用于已处于活动状态的应用](app-insights-monitor-performance-live-website-now.md)
 * [ASP.NET 5](app-insights-asp-net-core.md)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
-* [Azure Web 应用和 VM](app-insights-azure-web-apps.md)
+* [Azure Web 应用](app-insights-azure-web-apps.md)
 * [Azure 云服务](app-insights-cloudservices.md)&#151;包括 Web 角色和辅助角色
 * [Microsoft Dynamics 中的 CRM Online](app-insights-sample-mscrm.md)
 * [Docker](app-insights-docker.md)
@@ -68,7 +68,7 @@ ms.openlocfilehash: fa0fe7ee7b0a24b679b86dece2a3294004b57815
 * [Concrete](https://github.com/fidmor89/appInsights-Concrete)
 * [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
 * [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
-* [Orchard](https://orchardazureappinsights.codeplex.com) 
+* [Orchard](https://orchardazureappinsights.codeplex.com)
 * [SharePoint](app-insights-sharepoint.md)
 * [WordPress](https://wordpress.org/plugins/application-insights/)
 
@@ -82,7 +82,6 @@ ms.openlocfilehash: fa0fe7ee7b0a24b679b86dece2a3294004b57815
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

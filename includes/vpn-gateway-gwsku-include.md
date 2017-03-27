@@ -17,6 +17,6 @@ VPN 网关不使用 UltraPerformance 网关 SKU。 有关 UltraPerformance SKU �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "通过跨平台命令行接口开始使用 Data Lake Store | Microsoft 文档"
+title: "通过命令行界面开始使用 Azure Data Lake Store | Microsoft 文档"
 description: "使用 Azure 跨平台命令行来创建 Data Lake Store 帐户以及执行基本操作"
 services: data-lake-store
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/31/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b4b2449f00e298385579c4d7b229ceea18dcc598
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e43a6ea9510c481518becb52cc571ec62e3b151d
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -29,8 +30,14 @@ ms.openlocfilehash: b4b2449f00e298385579c4d7b229ceea18dcc598
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
+> * [Python](data-lake-store-get-started-python.md)
+>
+>
+
+> [!NOTE]
+> 若要上载和下载大量数据（大型文件和/或大量文件），建议使用 [Python SDK](data-lake-store-get-started-python.md)、[.NET SDK](data-lake-store-get-started-net-sdk.md) 或 [Azure PowerShell](data-lake-store-get-started-powershell.md)。 这些选项都有更好的性能，因为使用了多个线程并行执行数据移动操作。
 > 
-> 
+>  
 
 了解如何使用 Azure 命令行接口来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。
 
@@ -40,7 +47,7 @@ Azure CLI 是以 Node.js 实现的。 可以在支持 Node.js 的任意平台（
 在开始阅读本文前，你必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure CLI** - 有关安装和配置信息，请参阅 [安装和配置 Azure CLI](../xplat-cli-install.md) 。 安装 CLI 后，确保重启计算机。
+* **Azure CLI** - 有关安装和配置信息，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) 。 安装 CLI 后，确保重启计算机。
 
 ## <a name="authentication"></a>身份验证
 本文对 Data Lake Store 使用一种较为简单的身份验证方法，可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别监管对 Data Lake Store 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Store 中进行身份验证，即**最终用户身份验证**或**服务到服务身份验证**。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。
@@ -170,12 +177,7 @@ Azure CLI 是以 Node.js 实现的。 可以在支持 Node.js 的任意平台（
 ## <a name="next-steps"></a>后续步骤
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Use Azure HDInsight with Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[azure-command-line-tools]: ../xplat-cli-install.md
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[azure-command-line-tools]: ../cli-install-nodejs.md
 

@@ -1,5 +1,5 @@
 ---
-title: "API 管理关键概念"
+title: "Azure API 管理概述和重要概念 | Microsoft 文档"
 description: "了解有关 API、产品、角色、组和其他 API 管理关键概念。"
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dcff834c9d4aff82e8319e6c23a74c2e49902a8c
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 47358c6c209488d7a12e8afbf7a2d9b3f872f0de
 
 ---
 # <a name="what-is-api-management"></a>什么是 API 管理？
@@ -25,7 +24,7 @@ API 管理可帮助组织将 API 发布给外部、合作伙伴和内部开发�
 
 观看以下视频，概要了解 Azure API 管理，并学习如何使用 API 管理将更多功能添加到 API，包括访问控制、速率限制、监视、事件日志记录和响应缓存，将你的工作量降至最低。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-API-Management-Overview/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-API-Management-Overview/player]
 > 
 > 
 
@@ -42,7 +41,7 @@ API 管理可帮助组织将 API 发布给外部、合作伙伴和内部开发�
 > * 保护访问权限
 > * 分析和度量值
 > * 控制并深入了解 API 管理平台
-> * 云与本地解决方案使用对比
+> * 云解决方案与本地解决方案使用对比
 > * Azure API 管理
 > 
 > 
@@ -50,14 +49,14 @@ API 管理可帮助组织将 API 发布给外部、合作伙伴和内部开发�
 ## <a name="apis"> </a>API 和操作
 API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发人员使用的操作。 每个 API 包含对实施 API 的后端服务的引用，而其操作映射到后端服务实施的操作。 API 管理中的操作高度可配置，可控制 URL 映射、查询和路径参数、请求和响应内容以及操作响应缓存。 速率限制、配额和 IP 限制策略还可以在 API 或单个操作级别实施。
 
-有关详细信息，请参阅[如何创建 API][如何创建 API] 和[如何将操作添加到 API][如何将操作添加到 API]。
+有关详细信息，请参阅[如何创建 API][How to create APIs] 和[如何将操作添加到 API][How to add operations to an API]。
 
 ## <a name="products"> </a> 产品
 产品是如何将 API 提供给开发人员。 API 管理中的产品有一个或多个 API，并且配置为包含一个标题、说明和使用条款。 产品可以**公开**或**受保护**。 必须先订阅受保护的产品，然后才能使用它们，但公开的产品无需订阅即可使用。 产品可以发布时准备供开发人员使用。 产品一旦发布，开发人员就可以查看（如果是受保护的产品，应先进行订阅）。 在产品级别配置订阅批准，也可由管理员批准或被自动批准。
 
 组用于管理产品对开发人员的可见性。 产品向组授予可见性，并且开发人员可以查看和订阅对他们所属的组可见的产品。 
 
-有关详细信息，请参阅[如何创建和发布产品][如何创建和发布产品]及以下视频。
+有关详细信息，请参阅[如何创建和发布产品][How to create and publish a product]及以下视频。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Using-Products/player]
 > 
@@ -72,14 +71,14 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 
 除了这些系统组，管理员还可以创建自定义组或[利用关联 Azure Active Directory 租户中的外部组](api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group)。 自定义组和外部组可与系统组一起使用为开发人员提供可见性并可以访问 API 产品。 例如，可以为隶属于一个特定合作伙伴组织的开发人员创建一个自定义组并允许他们从仅包含相关 API 的产品中访问 API。 用户可以是多个组的成员。
 
-有关详细信息，请参阅[如何创建和使用组][如何创建和使用组]。
+有关详细信息，请参阅[如何创建和使用组][How to create and use groups]。
 
 ## <a name="developers"> </a> 开发人员
-开发人员表示 API 管理服务实例中的用户帐户。 管理员可以创建开发人员或邀请开发人员加入，或者开发人员可以从[开发人员门户][开发人员门户]注册。 每个开发人员是一个或多个组的成员，并且可以订阅授予这些组的可见性的产品。
+开发人员表示 API 管理服务实例中的用户帐户。 可以让管理员创建或邀请开发人员加入，也可以让开发人员从[开发人员门户][Developer portal]注册。 每个开发人员是一个或多个组的成员，并且可以订阅授予这些组的可见性的产品。
 
 开发人员需要他们订阅被授予该产品的主要和辅助密钥的产品。 在调用产品的 API 时使用此键。
 
-有关详细信息，请参阅[如何创建或邀请开发人员][如何创建或邀请开发人员]以及[如何将组与开发人员关联][如何将组与开发人员关联]。
+有关详细信息，请参阅[如何创建或邀请开发人员][How to create or invite developers]和[如何将组与开发人员关联][How to associate groups with developers]。
 
 ## <a name="policies"> </a> 策略
 策略是 API 管理的一项强大功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 流行的语句包含 XML 格式转换为 JSON 和调用速率限制，以限制从开发人员传入的呼叫量，还有许多其他策略可用。
@@ -90,7 +89,7 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 > 
 > 
 
-有关 API 管理策略的完整列表，请参阅[策略参考][策略参考]。 有关使用和配置策略的详细信息，请参阅 [API 管理策略][API 管理策略]。 有关使用速率限制和配额策略创建产品的教程，请参阅[如何创建和配置高级产品设置][如何创建和配置高级产品设置]。 有关演示，请观看下面的视频。
+有关 API 管理策略的完整列表，请参阅[策略参考][Policy reference]。 有关使用和配置策略的详细信息，请参阅 [API 管理策略][API Management policies]。 有关使用速率限制和配额策略创建产品的教程，请参阅[如何创建和配置高级产品设置][How create and configure advanced product settings]。 有关演示，请观看下面的视频。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 > 
@@ -108,30 +107,30 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 > 
 > 
 
-[API 和操作]: #apis
-[产品]: #products
-[组]: #groups
-[开发人员]: #developers
-[策略]: #policies
-[开发人员门户]: #developer-portal
+[APIs and operations]: #apis
+[Products]: #products
+[Groups]: #groups
+[Developers]: #developers
+[Policies]: #policies
+[Developer portal]: #developer-portal
 
-[如何创建 API]: api-management-howto-create-apis.md
-[如何将操作添加到 API]: api-management-howto-add-operations.md
-[如何创建和发布产品]: api-management-howto-add-products.md
-[如何创建和使用组]: api-management-howto-create-groups.md
-[如何将组与开发人员关联]: api-management-howto-create-groups.md#associate-group-developer
-[如何创建和配置高级产品设置]: api-management-howto-product-with-rules.md
-[如何创建或邀请开发人员]: api-management-howto-create-or-invite-developers.md
-[策略参考]: api-management-policy-reference.md
-[API 管理策略]: api-management-howto-policies.md
-[创建 API 管理服务实例]: api-management-get-started.md#create-service-instance
-
-
+[How to create APIs]: api-management-howto-create-apis.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
+[How to create and use groups]: api-management-howto-create-groups.md
+[How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
+[How create and configure advanced product settings]: api-management-howto-product-with-rules.md
+[How to create or invite developers]: api-management-howto-create-or-invite-developers.md
+[Policy reference]: api-management-policy-reference.md
+[API Management policies]: api-management-howto-policies.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+<!--HONumber=Jan17_HO5-->
 
 

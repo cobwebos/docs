@@ -1,21 +1,22 @@
 ---
-title: "适用于 JavaScript Web 应用的 Application Insights | Microsoft Docs"
+title: "适用于 JavaScript Web 应用的 Azure Application Insights | Microsoft Docs"
 description: "获取页面视图、会话计数和 Web 客户端数据，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 57daba3f23b2a35afc2d704e4913584f21259ec7
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: c4e1ecc824b09fd7523cdc7a29559adca19488f3
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -44,7 +45,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 ![选择“新建”、“开发人员服务”、“Application Insights”。](./media/app-insights-javascript/01-create.png)
 
-*有问题吗？* [有关创建资源的详细信息](app-insights-create-new-resource。md)。
+*有问题吗？* [有关创建资源的详细信息](app-insights-create-new-resource.md)。
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>将 SDK 脚本添加到应用或网页
 在“快速启动”中获取网页的脚本：
@@ -54,7 +55,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 紧靠在要跟踪的每个页面的 `</head>` 标记前面插入脚本。 如果网站有母版页，可以在那里插入脚本。 例如：
 
 * 在 ASP.NET MVC 项目中，请将脚本放在 `View\Shared\_Layout.cshtml`
-* 在 SharePoint 站点的控制面板中，打开“站点设置/母版页”[](app-insights-sharepoint.md)。
+* 在 SharePoint 站点的控制面板中，打开 [站点设置/母版页](app-insights-sharepoint.md)。
 
 脚本包含检测密钥，可将数据定向到 Application Insights 资源。 
 
@@ -97,7 +98,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 
 
-## <a name="a-namerunarun-your-app"></a><a name="run"></a>运行应用
+## <a name="run"></a>运行应用
 运行 Web 应用，使用它生成遥测数据，然后等待几秒钟。 可以在开发计算机上使用 **F5** 键运行应用，或者发布应用供用户操作。
 
 如果想要检查 Web 应用发送到 Application Insights 的遥测数据，请使用浏览器的调试工具（许多浏览器支持的**F12** 键）。 数据将发送到 dc.services.visualStudio.com。
@@ -129,17 +130,17 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 请注意页面视图计数和标准偏差。 如果页面计数很小，则问题对用户的影响不大。 如果标准偏差（相对于平均值本身）较大，则表示单个测量之间存在很大的差异。
 
-**放大一个 URL 和一个页面视图。**  单击任一页面名称可以查看针对该 URL 筛选的浏览器图表的边栏选项卡，然后是网页视图的实例。
+**放大一个 URL 和一个页面视图。** 单击任一页面名称可以查看针对该 URL 筛选的浏览器图表的边栏选项卡，然后是网页视图的实例。
 
 ![](./media/app-insights-javascript/35.png)
 
 单击 `...` 获取该事件的属性的完整列表，或检查 Ajax 调用和相关事件。 如果它们是同步的，缓慢的 Ajax 调用会影响整体页面加载时间。 相关事件包含服务器对同一 URL 的请求（如果已在 Web 服务器上设置 Application Insights）。
 
-**一段时间内的页面性能。**  返回“浏览器”边栏选项卡，将“页面视图加载时间”网格更改为折线图，查看在特定时间是否出现高峰：
+**一段时间内的页面性能。** 返回“浏览器”边栏选项卡，将“页面视图加载时间”网格更改为折线图，查看在特定时间是否出现高峰：
 
 ![单击网格标题，然后选择新图表类型](./media/app-insights-javascript/10-page-perf-area.png)
 
-**按其他维度分段。**  也许页面在特定浏览器、客户端 OS 或用户位置的加载速度较缓慢？ 添加具有 **分组依据** 维度的图表和试验。
+**按其他维度分段。** 也许页面在特定浏览器、客户端 OS 或用户位置的加载速度较缓慢？ 添加具有 **分组依据** 维度的图表和试验。
 
 ![](./media/app-insights-javascript/21.png)
 
@@ -167,10 +168,11 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 ![](./media/app-insights-javascript/37.png)
 
+
 单击 `...` 获取 Ajax 调用的完整遥测数据。
 
 ### <a name="no-ajax-calls-reported"></a>未报告任何 Ajax 调用？
-Ajax 调用包含从网页脚本发出的任何 HTTP 调用。 如果没有看到这些报告，请检查代码片段中是否未设置 `disableAjaxTracking` 或 `maxAjaxCallsPerView` [参数](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)。
+Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没有看到这些报告，请检查代码片段中是否未设置 `disableAjaxTracking` 或 `maxAjaxCallsPerView` [参数](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)。
 
 ## <a name="browser-exceptions"></a>浏览器异常
 “浏览器”边栏选项卡上有一个异常摘要图表，其下面还提供了异常类型网格。
@@ -180,6 +182,7 @@ Ajax 调用包含从网页脚本发出的任何 HTTP 调用。 如果没有看�
 如果未看到有报告浏览器异常，请检查代码片段中是否未设置 `disableExceptionTracking` [参数](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)。
 
 ## <a name="inspect-individual-page-view-events"></a>检查各个页面视图事件
+
 页面视图遥测数据通常由 Application Insights 分析，我们只会看到累积报告，其中的数据是基于所有用户的平均值。 但在调试时，也可以查看各个页面视图事件。
 
 在“诊断搜索”边栏选项卡中，将“筛选器”设置为“页面视图”。
@@ -189,11 +192,11 @@ Ajax 调用包含从网页脚本发出的任何 HTTP 调用。 如果没有看�
 选择任一事件查看更多详细信息。 在详细信息页中，单击“...”查看更多详细信息。
 
 > [!NOTE]
-> 如果使用“搜索”，请注意，必须匹配整个字词：“Abou”和“bout”与“About”并不匹配[](app-insights-diagnostic-search.md)。
+> 如果使用 [搜索](app-insights-diagnostic-search.md)，请注意，必须匹配整个字词：“Abou”和“bout”与“About”并不匹配。
 > 
 > 
 
-也可以使用功能强大的 [分析查询语言](app-insights-analytics-tour.md) 来搜索页面视图。
+也可以使用功能强大的 [分析查询语言](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) 来搜索页面视图。
 
 ### <a name="page-view-properties"></a>页面视图属性
 * **页面视图持续时间** 
@@ -217,19 +220,16 @@ Ajax 调用包含从网页脚本发出的任何 HTTP 调用。 如果没有看�
 * [了解使用情况跟踪](app-insights-web-track-usage.md)
 * [了解自定义事件和指标 API。](app-insights-api-custom-events-metrics.md)
 
-#### <a name="a-namevideoa-video-tracking-usage"></a><a name="video"></a> 视频：跟踪使用情况
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Tracking-Usage-with-Application-Insights/player]
-> 
-> 
+## <a name="video"></a> 视频
 
-## <a name="a-namenexta-next-steps"></a><a name="next"></a>后续步骤
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+
+
+## <a name="next"></a>后续步骤
 * [跟踪使用情况](app-insights-web-track-usage.md)
 * [自定义事件和指标](app-insights-api-custom-events-metrics.md)
 * [Build-measure-learn](app-insights-overview-usage.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

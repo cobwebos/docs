@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
-ms.author: edmaca
+ms.date: 03/17/2017
+ms.author: edmaca, yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 7450400920517bed56f608fd74c62238f2fb9eab
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f5a27eba14560a56ad5020daf7741f37ac2cc6f2
+ms.lasthandoff: 03/21/2017
 
 
 ---
-# <a name="tutorial-develop-usql-scripts-using-data-lake-tools-for-visual-studio"></a>教程：使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本
+# <a name="tutorial-develop-u-sql-scripts-using-data-lake-tools-for-visual-studio"></a>教程：使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 了解如何安装用于 Visual Studio 的 Data Lake 工具，以及如何使用用于 Visual Studio 的 Data Lake 工具来编写和测试 U-SQL 脚本。
@@ -28,19 +29,19 @@ ms.openlocfilehash: 7450400920517bed56f608fd74c62238f2fb9eab
 U-SQL 是高度可缩放、高度可扩展的语言，用于准备、转换和分析 Data Lake 中的所有数据，此外还提供其他功能。 有关详细信息，请参阅 [U-SQL Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348)（U-SQL 参考）。
 
 ## <a name="prerequisites"></a>先决条件
-* **Visual Studio 2015、Visual Studio 2013 Update 4 或 Visual Studio 2012。支持 Enterprise (Ultimate/Premium)、Professional、Community 版本；不支持 Express 版本。目前不支持 Visual Studio“15”，我们正在努力提供此项支持。**
+* **Visual Studio 2015 update 3、Visual Studio 2013 update 4 或 Visual Studio 2012。支持 Enterprise (Ultimate/Premium)、Professional、Community 版本；不支持 Express 版本。目前不支持 Visual Studio 2017。**
 * **用于 .NET 的 Microsoft Azure SDK 2.7.1 或更高版本**。  可以使用 [Web 平台安装程序](http://www.microsoft.com/web/downloads/platform.aspx)安装它。
 * **[适用于 Visual Studio 的 Data Lake 工具](http://aka.ms/adltoolsvs)**。
 
     安装用于 Visual Studio 的 Data Lake 工具后，可以在服务器资源管理器的“Azure”节点下看到“Data Lake Analytics”节点（可以按 Ctrl+Alt+S 打开服务器资源管理器）。
-* **完成[在 Azure 门户中开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)** 中的以下两个部分。
 
-  * [创建 Azure Data Lake Analytics 帐户](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)。
-  * [将 SearchLog.tsv 上载到默认的 Data Lake Storage 帐户](data-lake-analytics-get-started-portal.md#prepare-source-data)。
+* **Data Lake Analytics 帐户和示例数据** Data Lake 工具不支持创建 Data Lake Analytics 帐户。 可使用 Azure 门户、Azure PowerShell、.NET SDK 或 Azure CLI 创建帐户。
+为方便起见，[附录 A：用于准备教程的 PowerShell 示例](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)部分中提供了用于创建 Data Lake Analytics 服务及上传源数据文件的 PowerShell 脚本。
 
-    为方便起见， [附录 A：用于准备教程的 PowerShell 示例](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)部分中提供了用于创建 Data Lake Analytics 服务及上载源数据文件的 PowerShell 示例脚本。
+    也可浏览[通过 Azure 门户开始使用 Azure Data Lake Analytics ](data-lake-analytics-get-started-portal.md)中的以下两个部分，手动创建帐户和上传数据：
 
-    Data Lake 工具不支持创建 Data Lake Analytics 帐户。 因此必须使用 Azure 门户、Azure PowerShell、.NET SDK 或 Azure CLI 创建该帐户。 若要运行 Data Lake Analytics 作业，需要提供一些数据。 尽管 Data Lake 工具支持上载数据，但为了方便理解本教程，这里将使用门户来上载示例数据。
+    1. [创建 Azure Data Lake Analytics 帐户](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)。
+    2. [将 SearchLog.tsv 上载到默认的 Data Lake Storage 帐户](data-lake-analytics-get-started-portal.md#prepare-source-data)。
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 **连接到 Data Lake Analytics**
@@ -72,7 +73,7 @@ U-SQL 是高度可缩放、高度可扩展的语言，用于准备、转换和�
 4. 浏览到要上载的文件所在的文件夹。
 5. 右键单击任何空白区域，然后单击“上载”。
 
-## <a name="develop-usql-scripts"></a>开发 U-SQL 脚本
+## <a name="develop-u-sql-scripts"></a>开发 U-SQL 脚本
 Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 U-SQL 的详细信息，请参阅 [U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)和 [U-SQL 语言参考](http://go.microsoft.com/fwlink/?LinkId=691348)。
 
 **创建并提交 Data Lake Analytics 作业**
@@ -127,10 +128,10 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
        自动填写名称，并显示行集、类、数据库、架构和用户定义对象 (UDO) 的成员。
 
        目录实体（数据库、架构、表、UDO 等）的 IntelliSense 与计算帐户相关。 可以在顶部工具栏中检查当前活动的计算帐户、数据库和架构，通过下拉列表切换实体。
-   * **展开 * 列**
+   * **展开* 列**
 
-       单击 *的右侧，可以看到 *下面出现蓝色下划线。 将鼠标光标悬停在蓝色下划线上，然后单击向下箭头。
-       ![Data Lake visual studio 工具展开*](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+       单击 *的右侧，可以看到*下面出现蓝色下划线。 将鼠标光标悬停在蓝色下划线上，然后单击向下箭头。
+       ![Data Lake visual studio 工具展开](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        单击“展开列”，工具会将 * 替换为列名称。
    * **自动套用格式**
@@ -195,86 +196,31 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
 ### <a name="heat-map"></a>热度地图
 用于 Visual Studio 的 Data Lake 工具允许用户在作业视图中选择颜色覆盖层来指示每个阶段的进度、数据 I/O、执行时间和 I/O 吞吐量。 通过此方法，用户可以直接且直观地找到潜在问题和作业属性的分布。 可以从下拉列表中选择要显示的数据源。  
 
-## <a name="run-usql-locally"></a>在本地运行 U-SQL
-在 Visual Studio 中使用 U-SQL 本地运行体验可以：
+## <a name="run-u-sql-locally"></a>在本地运行 U-SQL
 
-* 在本地运行 U-SQL 脚本以及 C# 程序集。
-* 在本地调试 C# 程序集。
-* 在服务器资源管理器中创建/删除/查看本地数据库、程序集、架构和表，就如同在 Azure Data Lake Analytics 服务中所做的一样。
+与在 Azure Data Lake 服务中一样，可以使用用于 Visual Studio 的 Azure Data Lake 工具和 Azure Data Lake U-SQL SDK 在工作站上运行 U-SQL 作业。 这两个本地运行功能可节省测试和调试 U-SQL 作业的时间。 
 
-Visual Studio 中会显示“本地”帐户，安装程序将在 *C:\LocalRunRoot* 中创建 *DataRoot* 文件夹。 DataRoot 文件夹用于：
+* [使用本地运行和 Azure Data Lake U-SQL SDK 来测试及调试 U-SQL 作业](data-lake-analytics-data-lake-tools-local-run.md)
 
-* 存储元数据，包括表、数据库、TVF 等。
-* 对于特定的脚本：如果在输入/输出路径中引用相对路径，则会查找 DataRoot（以及脚本的路径，如果它是输入）
-* 如果尝试注册程序集并使用相对路径，则不会引用 DataRoot 文件夹（有关详细信息，请参阅“执行本地运行时使用程序集”部分）
-
-以下视频演示 U-SQL 本地运行功能：
-
-> [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/USQL-LocalRun/player]
->
->
-
-### <a name="known-issues-and-limitations"></a>已知问题和限制
-* 无法在服务器资源管理器中为本地帐户创建表/DB 等对象。
-* 引用相对路径时：
-
-  * 在脚本输入 (EXTRACT * FROM “/path/abc”) 中 - 将同时搜索 DataRoot 路径和脚本路径。
-  * 在脚本输出 (OUTPUT TO “path/abc”) 中：将使用 DataRoot 路径作为输出文件夹。
-  * 在程序集注册 (CREATE ASSEMBLY xyz FROM “/path/abc”) 中：将搜索脚本路径，但不搜索 DataRoot。
-  * 在注册的 TVF/视图或其他元数据项中：将搜索 DataRoot 路径，但不搜索脚本路径。
-
-    对于在 Data Lake 服务上运行的脚本，默认存储帐户将用作根文件夹，因而会在其中搜索。
-
-### <a name="test-usql-scripts-locally"></a>在本地测试 U-SQL 脚本
-有关开发 U-SQL 脚本的说明，请参阅 [Develop U-SQL scripts](#develop-and-test-u-sql-scripts)（开发 U-SQL 脚本）。 若要在本地生成和运行 U-SQL 脚本，请在群集下拉列表中选择“(本地)”，然后单击“提交”。 确保引用正确的数据：引用绝对路径，或者将数据放在 DataRoot 文件夹下。
-
-![在本地提交 U-SQL Visual Studio 项目](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
-
-也可以右键单击脚本，然后在上下文菜单中单击“运行本地计划”，或者按 **CTRL+F5** 触发本地运行。
-
-### <a name="use-assemblies-in-local-run"></a>在本地运行中使用程序集
-可以通过两种方式运行自定义 C# 文件：
-
-* 在代码隐藏文件中编写程序集，这样，组件将自动注册，并在脚本完成后删除。
-* 创建 C# 程序集项目，通过类似于下面的脚本在本地帐户中注册输出 dll。 请注意，该路径相对于脚本而不是 DataRoot 文件夹。
-
-![在 u-sql 本地运行中使用程序集](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-local-run-assembly.png)
-
-### <a name="debug-scripts-and-c-assemblies-locally"></a>在本地调试脚本和 C# 程序集
-无需将 C# 程序集提交并注册到 Azure Data Lake Analytics 服务即可对其进行调试。 可以在两个代码隐藏文件和引用的 C# 项目中设置断点。
-
-**在代码隐藏文件中调试本地代码**
-
-1. 在代码隐藏文件中设置断点。
-2. 按 **F5** 在本地调试脚本。
-
-以下过程仅适用于 Visual Studio 2015。 在旧版 Visual Studio 中，可能需要手动添加 pdb 文件。
-
-**在引用的 C# 项目中调试本地代码**
-
-1. 创建 C# 程序集项目，生成该项目以生成输出 dll。
-2. 使用 U-SQL 语句注册该 dll：
-
-     CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-3. 在 C# 代码中设置断点。
-4. 按 **F5** ，在本地调试引用 C# dll 的脚本。  
 
 ## <a name="see-also"></a>另请参阅
 若要借助不同的工具开始使用 Data Lake Analytics，请参阅：
 
-* [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
-* [Get started with Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Get started with Data Lake Analytics using .NET SDK](data-lake-analytics-get-started-net-sdk.md)
-* [Debug C# code in U-SQL jobs](data-lake-analytics-debug-u-sql-jobs.md)
+* [通过 Azure 门户实现 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
+* [通过 Azure PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
+* [通过 .NET SDK 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-net-sdk.md)
+* [Debug C# code in U-SQL jobs（在 U-SQL 作业中调试 C# 代码）](data-lake-analytics-debug-u-sql-jobs.md)
+
+若要了解用于 Visual Studio 的 Data Lake 工具代码，请参阅[使用用于 Visual Studio 的 Data Lake 工具代码](data-lake-analytics-data-lake-tools-for-vscode.md)。
 
 查看更多开发主题：
 
-* [Analyze weblogs using Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
+* [Analyze weblogs using Data Lake Analytics（使用 Data Lake Analytics 分析网络日志）](data-lake-analytics-analyze-weblogs.md)
 * [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
-* [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)
-* [Develop U-SQL user defined operators for Data Lake Analytics jobs](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+* [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)
+* [为 Data Lake Analytics 作业开发 U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-## <a name="appxa-powershell-sample-for-preparing-the-tutorial"></a>附录 A：用于准备教程的 PowerShell 示例
+## <a name="appx-a-powershell-sample-for-preparing-the-tutorial"></a>附录 A：用于准备教程的 PowerShell 示例
 以下 PowerShell 脚本可以准备 Azure Data Lake Analytics 帐户和源数据，这样就可以直接跳到 [开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts)部分。
 
     #region - used for creating Azure service names
@@ -344,9 +290,4 @@ Visual Studio 中会显示“本地”帐户，安装程序将在 *C:\LocalRunRo
     Write-Host "List the source data ..."  -ForegroundColor Green
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

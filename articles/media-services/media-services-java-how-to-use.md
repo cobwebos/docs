@@ -1,6 +1,6 @@
 ---
 title: "使用 Java 按需交付内容入门 | Microsoft Docs"
-description: "介绍如何使用 Azure 媒体服务执行编码、加密和流式处理资源等常见任务。"
+description: "本教程介绍了在 Java 中使用 Azure 媒体服务 (AMS) 应用程序实施基本的视频点播 (VoD) 内容传送服务的步骤。"
 services: media-services
 documentationcenter: java
 author: juliako
@@ -12,28 +12,36 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4cf3aaa9678c423c71cf542591a5a98547bb5cf5
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-java"></a>使用 Java 按需传送内容入门
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-## <a name="setting-up-an-azure-account-for-media-services"></a>针对媒体服务设置 Azure 帐户
-若要设置你的媒体服务帐户，请使用 Azure 经典门户。 请参阅主题[如何创建媒体服务帐户](media-services-portal-create-account.md)。 在 Azure 经典门户中创建帐户后，可以设置你的计算机以进行媒体服务开发。
+本教程介绍了在 Java 中使用 Azure 媒体服务 (AMS) 应用程序实施基本的视频点播 (VoD) 内容传送服务的步骤。
 
-## <a name="setting-up-for-media-services-development"></a>完成设置以进行媒体服务开发
-本部分介绍使用用于 Java 的媒体服务 SDK 进行媒体服务开发需要满足的一般性先决条件。
+## <a name="prerequisites"></a>先决条件
 
-### <a name="prerequisites"></a>先决条件
-* 在新的或现有的 Azure 订阅中拥有一个媒体服务帐户。 请参阅主题[如何创建媒体服务帐户](media-services-portal-create-account.md)。
+以下是完成本教程所需具备的条件：
+
+* 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
+* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 适用于 Java 的 Azure 库，可以从 [Azure Java 开发人员中心][Azure Java Developer Center]安装。
 
 ## <a name="how-to-use-media-services-with-java"></a>如何：将媒体服务与 Java 配合使用
+
+>[!NOTE]
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+
+>[!NOTE]
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
+
 以下代码演示了如何创建资产、将媒体文件上载到该资产、使用任务运行某个作业以转换该资产，以及创建定位符流式传输视频。
 
 在使用此代码之前，需要设置一个媒体服务帐户。 有关设置帐户的信息，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
@@ -80,7 +88,7 @@ ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
 
         // Encoder configuration
         private static String preferedEncoder = "Media Encoder Standard";
-        private static String encodingPreset = "H264 Multiple Bitrate 720p";
+        private static String encodingPreset = "Adaptive Streaming";
 
         public static void main(String[] args)
         {
@@ -264,12 +272,7 @@ ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
 
 <!-- URLs. -->
 
-[Azure Java 开发人员中心]: http://azure.microsoft.com/develop/java/
-[适用于 Java 的 Azure 库文档]: http://dl.windowsazure.com/javadoc/
-[媒体服务客户端开发]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
+[Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
+[Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 

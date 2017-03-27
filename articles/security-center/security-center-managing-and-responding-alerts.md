@@ -1,10 +1,10 @@
 ---
-title: "管理和响应 Azure 安全中心的安全警报 | Microsoft Docs"
+title: "在 Azure 安全中心管理安全警报 | Microsoft 文档"
 description: "本文档旨在帮助使用 Azure 安全中心功能来管理和响应安全警报。"
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: b88a8df7-6979-479b-8039-04da1b8737a7
 ms.service: security-center
@@ -12,11 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 03/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8bf0ca0768939cbc99947191eab80a789f551363
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: bf3aa51b4b1224840ae6897ff7df86cf3d2b3477
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -24,49 +25,46 @@ ms.openlocfilehash: 8bf0ca0768939cbc99947191eab80a789f551363
 本文档旨在帮助使用 Azure 安全中心来管理和响应安全警报。
 
 > [!NOTE]
-> 要启用高级检测，请升级到 Azure 安全中心标准版。 它可以免费试用 90 天。 要升级，请选择 [安全策略](security-center-policies.md)中的“定价层”。 请参阅 [Azure 安全中心定价](security-center-pricing.md)，了解详细信息。
-> 
-> 
+> 若要启用高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 要升级，请选择 [安全策略](security-center-policies.md)中的“定价层”。 请参阅 [Azure 安全中心定价](security-center-pricing.md)，了解详细信息。
+>
+>
 
 ## <a name="what-are-security-alerts"></a>什么是安全警报？
-安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。 Azure 安全中心还会将形成杀伤链模式的警报聚合成 [事件](security-center-incident.md)。 
+安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。
+
 
 > [!NOTE]
 > 有关安全中心检测功能工作原理的详细信息，请参阅 [Azure 安全中心检测功能](security-center-detection-capabilities.md)。
-> 
-> 
+>
+>
 
 ## <a name="managing-security-alerts"></a>管理安全警报
 可以通过查看“安全警报”  磁贴查看当前警报。 打开 Azure 门户，按照以下步骤查看每个警报的更多详细信息：
 
 1. 在安全中心仪表板中，可以看到“安全警报”  磁贴。
-   
+
     ![安全中心的“安全警报”磁贴](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig1-ga.png)
+
 2. 单击该磁贴，打开“安全警报”  边栏选项卡，该边栏选项卡包含以下警报详细信息。
-   
+
    ![安全中心的“安全警报”边栏选项卡](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig2-ga.png)
 
 此边栏选项卡的底部是每个警报的详细信息。 要进行排序，请单击按其排序的列。 下面给出了每个列的定义：
 
-* **警报**：警报的简要说明。
+* **说明**：警报的简要说明。
 * **计数**：在特定日期检测到的此特定类型的所有警报的列表。
 * **检测程序**：负责触发警报的服务。
 * **日期**：事件发生的日期。
 * **状态**：该警报的当前状态。 状态有两种：
-  
   * **活动**：已检测到安全警报。
-  * **已消除**：用户已消除安全警报。 此状态通常用于已调查但已缓解或发现不是真正攻击的警报。
 * **严重性**：严重性级别，分为高、中和低。
 
 ### <a name="filtering-alerts"></a>筛选警报
 可以根据日期、状态和严重性筛选警报。 对于需要缩小安全警报显示范围的情况，筛选警报非常有用。 例如，假设正在调查系统中的潜在危害，需要处理过去 24 小时内发生的安全警报。
 
 1. 单击“安全警报”边栏选项卡上的“筛选器”。 此时将打开“筛选器”  边栏选项卡，选择要查看的日期、状态和严重性值。
-   
-    ![筛选安全中心的警报](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig3-ga.png)
-2. 调查某个安全警报后，可能会发现该警报对环境而言为误报，或者指示特定资源的预期行为。 无论哪种情况，如果确定某个安全警报不适用，即可消除该警报，将其从视图中筛除。 有两种方法可消除安全警报。 右键单击某个警报，选择“消除”；或者将鼠标悬停在某个项目上，单击右侧显示的三个点，选择“消除”。 可以单击“筛选器”，选择“已消除”，查看已消除的安全警报。
-   
-   ![消除安全中心的警报](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig4-ga.png)
+
+    ![筛选安全中心的警报](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig3-2017.png)
 
 ### <a name="respond-to-security-alerts"></a>响应安全警报
 选择某个安全警报，了解触发该警报的事件详细信息以及修复攻击所需的步骤（如有）。 安全警报按类型和日期进行分组。 单击某个安全警告会打开一个边栏选项卡，该边栏选项卡中包含一个分组警报列表。
@@ -83,8 +81,8 @@ ms.openlocfilehash: 8bf0ca0768939cbc99947191eab80a789f551363
 
 > [!NOTE]
 > 有关不同类型的警报的详细信息，请参阅 [Azure 安全中心的安全警报（按类型）](security-center-alerts-type.md)。
-> 
-> 
+>
+>
 
 ## <a name="see-also"></a>另请参阅
 本文档中已经介绍了如何在安全中心配置安全策略。 要了解有关安全中心的详细信息，请参阅以下内容：
@@ -94,10 +92,4 @@ ms.openlocfilehash: 8bf0ca0768939cbc99947191eab80a789f551363
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
 * [Azure 安全中心常见问题解答](security-center-faq.md) — 查找有关使用该服务的常见问题解答。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

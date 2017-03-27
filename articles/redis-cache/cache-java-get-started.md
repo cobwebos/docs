@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 08/24/2016
+ms.date: 02/10/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 907f75dc02bff7e25712a564410c1974e22f0d99
+ms.sourcegitcommit: 5369dcd6ad1ec93c63eb442db9fc5ffdcca37375
+ms.openlocfilehash: b95f37db90b105962c01545e25c8e14c53257ebc
 
 
 ---
@@ -45,27 +45,35 @@ Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。 可�
 ## <a name="retrieve-the-host-name-and-access-keys"></a>检索主机名和访问密钥
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## <a name="enable-the-nonssl-endpoint"></a>启用非 SSL 终结点
-某些 Redis 客户端不支持 SSL，默认情况下， [为新的 Azure Redis 缓存实例禁用了非 SSL 端口](cache-configure.md#access-ports)。 在编写本文时， [Jedis](https://github.com/xetorthio/jedis) 客户端不支持 SSL。 
+## <a name="connect-to-the-cache-securely-using-ssl"></a>使用 SSL 安全连接到缓存
+最新版本的 [redis](https://github.com/xetorthio/jedis) 支持使用 SSL 连接到 Azure Redis 缓存。 下面的示例展示了如何使用 SSL 终结点 6380 连接到 Azure Redis 缓存。 将 `<name>` 替换为缓存名称，将 `<key>` 替换为主密钥或辅助密钥，如前面的[检索主机名和访问密钥](#retrieve-the-host-name-and-access-keys)部分中所述。
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
+    boolean useSsl = true;
+    /* In this line, replace <name> with your cache name: */
+    JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379, useSsl);
+    shardInfo.setPassword("<key>"); /* Use your access key. */
+
+> [!NOTE]
+> 已为新的 Azure Redis 缓存实例禁用了非 SSL 端口。 如果使用的是其他不支持 SSL 的客户端，请参阅[如何启用非 SSL 端口](cache-configure.md#access-ports)。
+> 
+> 
 
 ## <a name="add-something-to-the-cache-and-retrieve-it"></a>在缓存中添加一些内容并检索此内容
     package com.mycompany.app;
     import redis.clients.jedis.Jedis;
     import redis.clients.jedis.JedisShardInfo;
 
-    /* Make sure you turn on non-SSL port in Azure Redis using the Configuration section in the Azure Portal */
     public class App
     {
       public static void main( String[] args )
       {
+        boolean useSsl = true;
         /* In this line, replace <name> with your cache name: */
-        JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379);
+        JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379, useSsl);
         shardInfo.setPassword("<key>"); /* Use your access key. */
         Jedis jedis = new Jedis(shardInfo);
-         jedis.set("foo", "bar");
-         String value = jedis.get("foo");
+        jedis.set("foo", "bar");
+        String value = jedis.get("foo");
       }
     }
 
@@ -76,7 +84,6 @@ Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。 可�
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,13 +15,18 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ede330870f451bd1e0ed6805fa937e74438fd644
+ms.sourcegitcommit: 889776269aa3d722115ea0632b7c3db2775924eb
+ms.openlocfilehash: cc3bc8a0463842ba11b9cdcc996319e2d811ce8a
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>如何创建 SQL 数据仓库的支持票证
-如果你在 SQL 数据仓库方面遇到任何问题，请创建支持票证，以便我们的工程团队可提供帮助。
+如果在 SQL 数据仓库方面遇到任何问题，请创建支持票证，让我们的工程团队提供帮助。
+
+> [!NOTE] 
+> 截止 2016 年 12 月 20 日，Azure 门户中的资源运行状况检查结果并不准确。 我们正在努力解决此问题。 
+
 
 ## <a name="create-a-support-ticket"></a>创建支持票证
 1. 打开 [Azure 门户][Azure portal]。
@@ -50,13 +55,13 @@ ms.openlocfilehash: ede330870f451bd1e0ed6805fa937e74438fd644
 7. 选择 [Azure 支持计划][Azure support plan]。
    
    * **计费、配额和订阅管理** 支持可用于所有支持级别。
-   * **故障维修服务**支持通过 [开发人员支持][Developer]、[标准支持][Standard]、[专业直接支持][Professional Direct]或[顶级支持][Premier]提供。 故障维修服务问题是客户在使用 Azure 时遇到的确定是由 Microsoft 引起的问题。
-   * 我们在 [专业直接][Professional Direct] 和 [顶级][Premier] 支持级别提供**开发人员辅导**与**咨询服务**。 
+   * **故障维修服务**支持通过[开发人员支持][Developer]、[标准支持][Standard]、[专业直接支持][Professional Direct]或[顶级支持][Premier]提供。 故障维修服务问题是客户在使用 Azure 时遇到的确定是由 Microsoft 引起的问题。
+   * 我们在[专业直接支持][Professional Direct]和[顶级支持][Premier]级别提供**开发人员辅导**与**咨询服务**。 
      
-     如果购买了顶级支持计划，则还可以在 [Microsoft Premier 在线门户][Microsoft Premier online portal]中报告 SQL 数据仓库的相关问题。  若要深入了解各种支持计划（包括范围、响应时间、定价等），请参阅 [Azure 支持计划][Azure support plan]。有关 Azure 支持的常见问题，请参阅 [Azure 支持常见问题][Azure support FAQs]。  
+     如果你购买了顶级支持计划，还可以在 [Microsoft Premier 在线门户][Microsoft Premier online portal]中报告 SQL 数据仓库的相关问题。  若要深入了解各种支持计划（包括范围、响应时间、定价等），请参阅 [Azure 支持计划][Azure support plan]。有关 Azure 支持的常见问题，请参阅 [Azure 支持常见问题][Azure support FAQs]。  
      
      ![支持计划](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
-8. 选择“问题类型”和“类别”。
+8. 选择“问题类型”和“类别”。 在本示例中，我们已选择“工具”作为问题类型，选择“客户端工具”作为类别。 
    
     ![问题类型和类别](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
 9. 描述问题并选择业务影响级别。
@@ -78,25 +83,20 @@ ms.openlocfilehash: ede330870f451bd1e0ed6805fa937e74438fd644
 <!--Image references--> 
 
 <!--Article references--> 
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[DWU]: ./sql-data-warehouse-overview-what-is.md
 
 <!--MSDN references--> 
 
 <!--Other web references--> 
-[Azure 门户]: https://portal.azure.com/
-[Azure 支持计划]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/  
-[开发人员]: https://azure.microsoft.com/support/plans/developer/  
-[标准]: https://azure.microsoft.com/support/plans/standard/  
-[专业直接]: https://azure.microsoft.com/support/plans/prodirect/  
-[顶级支持]: https://azure.microsoft.com/support/plans/premier/  
-[Azure 支持常见问题]: https://azure.microsoft.com/support/faq/
-[Microsoft Premier 在线门户]: https://premier.microsoft.com/
+[Azure portal]: https://portal.azure.com/
+[Azure support plan]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/  
+[Developer]: https://azure.microsoft.com/support/plans/developer/  
+[Standard]: https://azure.microsoft.com/support/plans/standard/  
+[Professional Direct]: https://azure.microsoft.com/support/plans/prodirect/  
+[Premier]: https://azure.microsoft.com/support/plans/premier/  
+[Azure support FAQs]: https://azure.microsoft.com/support/faq/
+[Microsoft Premier online portal]: https://premier.microsoft.com/
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
-[Azure SQL 数据仓库 MSDN 论坛]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
-
-
-
-
-<!--HONumber=Nov16_HO2-->
+[Azure SQL Data Warehouse MSDN forum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
 

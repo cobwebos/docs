@@ -1,13 +1,31 @@
 ---
+title: "Azure 多重身份验证文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用可提供简单登录过程的多种验证方法来部署多重身份验证。 教程、SDK 和其他资源。"
+services: multi-factor-authentication
+author: carolz
+manager: carolz
 layout: LandingPage
----
-# Multi-factor Authentication Documentation
+ms.assetid: 
+ms.service: multi-factor-authentication
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: acd9ead9012043bc6db8c32add86bb7797fcf8c9
+ms.openlocfilehash: c4aaa14007bf441f99ef6599bda411bcaed92a92
+ms.lasthandoff: 02/09/2017
 
-Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification solution. Azure MFA helps safeguard access to data and applications while meeting user demand for a simple sign-in process. It delivers strong authentication via a range of verification methods, including phone call, text message, or mobile app verification.
+---
+
+# <a name="multi-factor-authentication-documentation"></a>多重身份验证文档
+
+了解如何部署和管理 Azure 多重身份验证（双步骤身份验证系统）。 教程、SDK 和其他文档介绍了如何使用多种验证方法，在提供简单登录过程的同时实现增强的身份验证。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/multi-factor-authentication/multi-factor-authentication/">
+        <a href="/azure/multi-factor-authentication/multi-factor-authentication">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -17,7 +35,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Multi-factor Authentication</h3>
+                        <h3>了解 Azure 多重身份验证</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +43,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=multi-factor-authentication">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=multi-factor-authentication">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +53,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Multi-factor Authentication Video Library</h3>
+                        <h3>Azure 多重身份验证视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +71,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Multi-factor Authentication Deployment options</h3>
+                        <h3>开始使用 Azure 多重身份验证部署选项</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +89,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Multi-factor Authentication in the cloud</h3>
+                        <h3>云中的 Azure 多重身份验证入门</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +107,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Multi-factor Authentication Server</h3>
+                        <h3>本地 Azure 多重身份验证入门</h3>
                     </div>
                 </div>
             </div>
@@ -100,11 +118,5 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/multi-factor-authentication.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Multi-factor Authentication Documentation
-        </div>
-    </a>
-</div>
+
+

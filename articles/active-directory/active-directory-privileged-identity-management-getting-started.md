@@ -3,7 +3,7 @@ title: "Azure AD Privileged Identity Management 入门 | Microsoft Docs"
 description: "了解如何在 Azure 门户中使用 Azure Active Directory Privileged Identity Management 应用程序管理特权标识。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 2299db7d-bee7-40d0-b3c6-8d628ac61071
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2016
-ms.author: kgremban
+ms.date: 02/27/2017
+ms.author: billmath
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e84b361ec2acb062142d15ff9a6e02aca07d0958
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: 6945529b8189c270ca6e5c41be0cd0d9caa37cb4
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="get-started-with-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management 入门
+# <a name="start-using-azure-ad-privileged-identity-management"></a>开始使用 Azure AD Privileged Identity Management
 使用 Azure Active Directory (AD) Privileged Identity Management，可以管理、控制和监视组织内的访问。 这包括访问 Azure AD 和其他 Microsoft Online Services（如 Office 365 或 Microsoft Intune）中的资源。
 
 本文介绍了如何将 Azure AD PIM 应用添加到 Azure 门户仪表板。
@@ -44,7 +45,6 @@ ms.openlocfilehash: e84b361ec2acb062142d15ff9a6e02aca07d0958
 * **管理特权角色** 是特权角色管理员用于管理角色分配、更改角色激活设置、开始访问审阅等的仪表板。 如果不是特权角色管理员，则会禁用此仪表板中的选项。
 * **审阅特权访问** 可将你带到需要完成的任何挂起的访问审阅，无论你是审阅自己还是审阅其他人的访问权限。 
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
 [Azure AD Privileged Identity Management 概述](active-directory-privileged-identity-management-configure.md) 包括有关如何管理组织中管理访问权限的更多详细信息。
 
@@ -53,9 +53,4 @@ ms.openlocfilehash: e84b361ec2acb062142d15ff9a6e02aca07d0958
 <!--Image references-->
 
 [1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

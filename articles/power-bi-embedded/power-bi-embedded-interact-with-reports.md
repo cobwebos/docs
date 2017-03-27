@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 83d997577d3a5854eafd9906bd38d3e703c09f5e
+ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
+ms.openlocfilehash: 28eddb52c33d9883219f146480b110574f728f89
 
 
 ---
@@ -26,18 +26,18 @@ Power BI JavaScript API 可轻松地将 Power BI 报表嵌入到应用程序中�
 
 使用作为应用程序一部分托管的 IFrame 将 Power BI 报表嵌入到应用程序中。 IFrame 充当应用程序和报表之间的边界，如下图所示。 
 
-![没有 Javascript API 的 Power BI Embedded IFrame](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-1.png)
+![没有 Javascript API 的 Power BI Embedded IFrame](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-1.png)
 
 IFrame 使得嵌入过程更容易，但如果没有 JavaScript API，报表和应用程序将不能彼此交互。 缺乏交互会让人觉得报表不是应用程序的一部分。 报表和应用程序确实需要进行相互通信，如下图中所示。
 
-![带有 Javascript API 的 Power BI Embedded IFrame](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-2.png)
+![带有 Javascript API 的 Power BI Embedded IFrame](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-2.png)
 
 Power BI JavaScript API 允许编写可以安全通过 IFrame 边界的代码。 这使应用程序可在报表中以编程方式执行某项操作，并侦听用户在报表中所做操作中的事件。
 
 ## <a name="what-can-you-do-with-the-power-bi-javascript-api"></a>可以使用 Power BI JavaScript API 执行哪些操作？
 使用 JavaScript API，可以管理报表、导航到报表中的页、筛选报表和处理嵌入事件。 下图显示了 API 的结构。
 
-![Power BI JavaScript API 图示](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-3.png)
+![Power BI JavaScript API 图示](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-3.png)
 
 ### <a name="manage-reports"></a>管理报表
 Javascript API 允许管理报表和页级别的行为：
@@ -139,6 +139,6 @@ const advancedFilter: pbi.models.IAdvancedFilter = {
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

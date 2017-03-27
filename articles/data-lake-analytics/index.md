@@ -1,9 +1,26 @@
 ---
+title: "Azure Data Lake Analytics 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 Data Lake Analytics 执行大数据分析。 教程介绍了如何运行实时交互式批处理分析，以及如何编写 U-SQL 查询。"
+services: data-lake-analytics
+author: carolz
+manager: carolz
 layout: LandingPage
----
-# Data Lake Analytics Documentation
+ms.assetid: 
+ms.service: data-lake-analytics
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: b6b6a217f6fa54928b2c05cf44c5b0b74aaf8ce6
+ms.openlocfilehash: 21b56baf3e17b7955e6baf4b996b02d67fe50b81
+ms.lasthandoff: 02/09/2017
 
-Azure Data Lake Analytics is a new service, built to make big data analytics easy. This service lets you focus on writing, running and managing jobs, rather than operating distributed infrastructure. Instead of deploying, configuring and tuning hardware, you write queries to transform your data and extract valuable insights. The analytics service can handle jobs of any scale instantly by simply setting the dial for how much power you need. You only pay for your job when it is running making it cost-effective. The analytics service supports Azure Active Directory letting you simply manage access and roles, integrated with your on-premises identity system. It also includes U-SQL, a language that unifies the benefits of SQL with the expressive power of user code. U-SQL’s scalable distributed runtime enables you to efficiently analyze data in the store and across SQL Servers in Azure, Azure SQL Database and Azure SQL Data Warehouse.
+---
+# <a name="data-lake-analytics-documentation"></a>Data Lake Analytics 文档
+
+了解如何使用 Data Lake Analytics 运行可扩展为大规模数据集的大数据分析作业。 教程和其他文档介绍了如何创建和管理实时交互式批处理分析作业，以及如何使用 U-SQL 语言执行查询。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +34,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Data Lake Analytics</h3>
+                        <h3>了解 Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -25,7 +42,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=data-lake-analytics">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=data-lake-analytics">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -35,7 +52,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Data Lake Analytics Video Library</h3>
+                        <h3>Azure Data Lake Analytics 视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +70,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Azure portal</h3>
+                        <h3>通过 Azure 门户开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +88,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Azure PowerShell</h3>
+                        <h3>通过 Azure PowerShell 开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +106,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using .NET SDK</h3>
+                        <h3>通过 .NET SDK 开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -107,7 +124,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Java SDK</h3>
+                        <h3>通过 Java SDK 开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -125,7 +142,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create U-SQL scripts using Data Lake Tools for Visual Studio</h3>
+                        <h3>使用用于 Visual Studio 的 Data Lake 工具创建 U-SQL 脚本</h3>
                     </div>
                 </div>
             </div>
@@ -143,7 +160,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Azure CLI</h3>
+                        <h3>通过 Azure CLI 开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -157,11 +174,29 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/placeholder.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using REST APIs</h3>
+                        <h3>通过 REST API 开始使用 Azure Data Lake Analytics</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/data-lake-analytics/data-lake-analytics-get-started-python">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/python.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>通过 Python 使用 Azure Data Lake Store 入门</h3>
                     </div>
                 </div>
             </div>
@@ -171,28 +206,49 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
 </ul>
 
 ---
-
-## Reference
-
-### PowerShell
-[Data Lake Analytics Resource Manager PowerShell Cmdlets](/powershell/resourcemanager/)
-
-### Java
-[Data Lake Analytics Java API Reference](/java/api/)
-
-### .NET
-[Data Lake Analytics Managed Reference](/dotnet/api)
-
-### REST
-[Data Lake Analytics REST API Reference](/rest/api/datalakeanalytics/)
-
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-lake-analytics.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Data Lake Analytics Documentation
+ 
+<h2>引用</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.datalake.analytics">.NET</a></p>
+                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-analytics">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html">Python</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt591959">U-SQL</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/datalakeanalytics/">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+

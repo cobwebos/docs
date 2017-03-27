@@ -1,13 +1,26 @@
 ---
+title: "Azure 批处理文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用批处理有效运行大规模并行和高性能计算应用程序。 教程、API 参考和其他文档。"
+services: batch
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: batch
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 00db07b08a15b37c38e6c3a303e3e35cf16b0774
-ms.openlocfilehash: fc268f8905ff7b1a0e0cc1e98776a9ec8fa132c4
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: e36c82b7fb93659ad2fb3b7af5b6660438293bc9
+ms.lasthandoff: 03/18/2017
 
 ---
 #<a name="batch-documentation"></a>批处理文档
 
-使用 Azure 批处理可在云中有效运行大规模并行和高性能计算 (HPC) 应用程序。 使用批处理服务时，可以定义用于大规模并行执行应用程序的 Azure 计算资源。 可以运行按需作业或计划的作业，无需考虑如何手动创建或管理基础结构。
+了解如何使用批处理在云中有效运行大规模并行和高性能计算应用程序。 教程、API 参考和其他文档介绍了如何定义 Azure 计算资源，以并行执行或大规模执行应用程序，而无需手动配置或管理基础结构。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -22,24 +35,6 @@ ms.openlocfilehash: fc268f8905ff7b1a0e0cc1e98776a9ec8fa132c4
                     </div>
                     <div class="cardText">
                         <h3>了解批处理</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/Batch/batch-account-create-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>批处理入门</h3>
                     </div>
                 </div>
             </div>
@@ -64,6 +59,24 @@ ms.openlocfilehash: fc268f8905ff7b1a0e0cc1e98776a9ec8fa132c4
         </div>
         </a>
     </li>
+    <li>
+        <a href="/azure/Batch/batch-account-create-portal">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>批处理入门</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
      <li>
         <a href="/azure/batch/batch-dotnet-get-started">
         <div class="cardSize">
@@ -75,7 +88,7 @@ ms.openlocfilehash: fc268f8905ff7b1a0e0cc1e98776a9ec8fa132c4
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>创建您的首个 .NET 应用程序</h3>
+                        <h3>通过 .NET 开始使用批处理</h3>
                     </div>
                 </div>
             </div>
@@ -93,7 +106,7 @@ ms.openlocfilehash: fc268f8905ff7b1a0e0cc1e98776a9ec8fa132c4
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>创建您的首个 Python 应用程序</h3>
+                        <h3>通过 Python 开始使用批处理</h3>
                     </div>
                 </div>
             </div>
@@ -104,41 +117,49 @@ ms.openlocfilehash: fc268f8905ff7b1a0e0cc1e98776a9ec8fa132c4
 
 ---
 
-##<a name="reference"></a>参考
+<h2>参考</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch">PowerShell</a></p>
+                        <p><a href="/cli/azure/batch">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.batch">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.batch">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-batch/latest.azure.batch">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.html">Python</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/batchservice">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-###<a name="powershell"></a>PowerShell
-[批处理 PowerShell 参考](/powershell)
-
-###<a name="azure-cli"></a>Azure CLI
-[在 Azure CLI 中使用批处理](/azure/batch/batch-cli-get-started)
-
-
-###<a name="net"></a>.NET
-[批处理托管参考](https://msdn.microsoft.com/library/azure/mt348682)
-
-###<a name="java"></a>Java
-[Java SDK 参考](/java/api)
-
-###<a name="nodejs"></a>Node.js
-[Node.js 参考](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/)
-
-###<a name="python"></a>Python
-[Python SDK 参考](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementbatch.html)
-
-###<a name="rest"></a>REST
-[批处理 REST API 参考](/rest/api/batchmanagement)
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/batch.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure 批处理文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

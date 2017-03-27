@@ -12,22 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/12/2016
+ms.date: 01/05/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5c26aaea6acfab8c4c60478968e0b68543086a9d
+ms.lasthandoff: 03/14/2017
 
 
 ---
-# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> 若要完成本教程，你需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](/pricing/free-trial/?WT.mc_id=A261C142F)。
+> 若要完成本教程，你需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
 > 
 > 
 
@@ -46,31 +47,32 @@ ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
 
 1. 将视频摄像机连接到计算机。 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP、平滑流式处理或 RTP (MPEG-TS)。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](http://go.microsoft.com/fwlink/?LinkId=532824)。
 
-此步骤也可以在创建频道后执行。
+    此步骤也可以在创建频道后执行。
 
-1. 创建并启动频道。
-2. 检索频道引入 URL。
+2. 创建并启动频道。
+3. 检索频道引入 URL。
 
-实时编码器使用引入 URL 将流发送到频道。
+    实时编码器使用引入 URL 将流发送到频道。
 
-1. 检索频道预览 URL。
+4. 检索频道预览 URL。
 
-使用此 URL 来验证频道是否正常接收实时流。
+    使用此 URL 来验证频道是否正常接收实时流。
 
-1. 创建资源。
-2. 如果你想让资源在播放期间进行动态加密，请执行以下操作：
-3. 创建内容密钥。
-4. 配置内容密钥授权策略。
-5. 配置资产传送策略（由动态打包和动态加密使用）。
-6. 创建节目并指定使用你创建的资产。
-7. 通过创建按需定位器发布与节目关联的资产。
+5. 创建资源。
+6. 如果你想让资源在播放期间进行动态加密，请执行以下操作：
+7. 创建内容密钥。
+8. 配置内容密钥授权策略。
+9. 配置资产传送策略（由动态打包和动态加密使用）。
+10. 创建节目并指定使用你创建的资产。
+11. 通过创建按需定位器发布与节目关联的资产。
 
-确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
+    >[!NOTE]
+    >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 
-1. 在准备好开始流式传输和存档时，启动节目。
-2. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
-3. 在要停止对事件进行流式传输和存档时，停止节目。
-4. 删除节目（并选择性地删除资产）。
+12. 在准备好开始流式传输和存档时，启动节目。
+13. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
+14. 在要停止对事件进行流式传输和存档时，停止节目。
+15. 删除节目（并选择性地删除资产）。
 
 ## <a name="what-youll-learn"></a>学习内容
 本主题演示如何使用适用于 .NET 的媒体服务 SDK 对频道和节目执行不同操作。 由于许多操作都长时间运行，因此将使用管理长时间运行的操作的 .NET API。
@@ -91,7 +93,7 @@ ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
 
 * 若要完成本教程，你需要一个 Azure 帐户。
 
-如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留该帐户，使用免费 Azure 服务和功能，例如 Azure App Service 中的 Web 应用功能。
+如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留该帐户，使用免费 Azure 服务和功能，例如 Azure App Service 中的 Web 应用功能。
 
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
@@ -100,7 +102,8 @@ ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
 
 ## <a name="considerations"></a>注意事项
 * 目前，实时事件的最大建议持续时间为 8 小时。 如果要运行一个需要更长时间的通道，请通过 Microsoft.com 联系 amslived。
-* 确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
+* 不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
+
 
 ## <a name="download-sample"></a>下载示例
 从 [此处](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)获取并运行示例。
@@ -129,6 +132,7 @@ ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
 
 
 ## <a name="code-example"></a>代码示例
+
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -524,12 +528,5 @@ ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### <a name="looking-for-something-else"></a>想要寻找其他内容吗？
-如果本主题不包含你所期待的内容、缺少某些内容，或在其他方面不符合你的需求，请使用下面的 Disqus 会话向我们提供反馈。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure 搜索入门 | Microsoft Docs"
-description: "使用此教程演练及 DocumentDB 示例数据，了解如何创建第一个 Azure 搜索索引。 这一基于门户的无代码练习使用“导入数据”向导。"
+title: "在门户中构建第一个 Azure 搜索索引 | Microsoft 文档"
+description: "在 Azure 门户中使用预定义的示例数据生成索引。 探索全文搜索、筛选器、分面 (Facet)、模糊搜索、地域搜索等功能。"
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,174 +13,211 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 10/03/2016
+ms.date: 02/22/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dddbcbcd82900d7537c2d60631cc1753554d9486
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 7945ee77be8a09dcac9ddd6b338bdd542ec18540
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="get-started-with-azure-search-in-the-portal"></a>门户中的 Azure 搜索入门
-此无代码的简介让用户通过内置于门户中的功能开始使用 Microsoft Azure 搜索。 
+# <a name="build-and-query-your-first-azure-search-index-in-the-portal"></a>在门户中生成和查询第一个 Azure 搜索索引
 
-本教程采用 [示例 Azure DocumentDB 数据库](#apdx-sampledata) ，该数据库可以使用数据和指令简单地创建，但用户也可以对 DocumentDB 或 SQL 数据库中的现有数据应用这些步骤。
+在 Azure 门户中，通过“导入数据”向导开始使用预定义的示例数据集快速生成索引。 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索。  
 
-> [!NOTE]
-> 本入门教程需要 [Azure 订阅](/pricing/free-trial/?WT.mc_id=A261C142F)和 [Azure 搜索服务](search-create-service-portal.md)。 
-> 
-> 
+这篇不包含代码的简介可帮助用户开始使用预定义的数据，使他们能够立即编写有趣的查询。 尽管门户工具不能取代代码，但可以帮助完成以下任务：
+
++ 在没有丰富专业知识的情况下展开实践和学习
++ 在“导入数据”中编写代码之前制作索引原型
++ 在“搜索浏览器”中测试查询和分析器语法
++ 查看已发布到服务的现有索引并查找其属性
+
+**估计所需时间：**大约 15 分钟，但如果还需要注册帐户或服务，则所需时间会更长。 
+
+也可参阅[在 .NET 中进行基于代码的 Azure 搜索编程简介](search-howto-dotnet-sdk.md)来加强相关知识。
+
+## <a name="prerequisites"></a>先决条件
+
+本教程假设读者拥有 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)和 [Azure 搜索服务](search-create-service-portal.md)。 
+
+如果不需立即预配某项服务，也可以观看这部 [Azure 搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)（在大约 3 分钟时开始观看），其中对本教程所述的步骤做了 6 分钟的演示。
 
 ## <a name="find-your-service"></a>找到服务
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 打开 Azure 搜索服务的服务仪表板。 可通过以下几种方法找到仪表板。
+2. 打开 Azure 搜索服务的服务仪表板。 如果未将服务磁贴固定到仪表板，可通过以下方式找到你的服务： 
    
-   * 在跳转栏中，单击“搜索服务” 。 跳转栏会列出订阅中预配的每个服务。 如果搜索服务已定义，会在列表中看到“搜索服务”  。
-   * 在跳转栏中，单击“浏览”  ，然后在搜索框中键入“搜索”，生成订阅中已创建的所有搜索服务的列表。
+   * 在跳转栏中，单击左侧导航窗格底部的“更多服务”。
+   * 在搜索框中，键入“搜索”获取订阅的搜索服务列表。 你的服务应会出现在该列表中。 
 
 ## <a name="check-for-space"></a>检查空间
-很多客户开始使用免费服务。 此版本限制为三个索引、三个数据源和三个索引器。 在开始之前，请确保有空间存储额外的项目。 本演练将创建每个对象。
+很多客户开始使用免费服务。 此版本限制为三个索引、三个数据源和三个索引器。 在开始之前，请确保有空间存储额外的项目。 本教程将创建每个对象的一个实例。 
 
-## <a name="create-an-index-and-load-data"></a>创建索引和加载数据
-搜索查询将循环访问 *索引* ，索引中包含可搜索数据、元数据，以及用于优化某些搜索行为的构造。 第一步，定义并填充索引。
+> [!TIP] 
+> 服务仪表板中的磁贴将你已有多少个索引、索引器和数据源。 “索引器”磁贴显示成功和失败指示器。 单击该磁贴可查看索引器计数。 
+>
+> ![索引器和数据源的磁贴][1]
+>
 
-有多种方法可创建索引。 如果数据是在 Azure 搜索可以搜索的存储中（如 Azure SQL 数据库、Azure VM 上 SQL Server 或 DocumentDB），可以使用 *索引器*非常轻松地创建和填充索引。
+## <a name="create-index"></a>创建索引并加载数据
+搜索查询将循环访问 *索引* ，索引中包含可搜索数据、元数据，以及用于优化某些搜索行为的构造。
 
-为使此任务保持基于门户，使用可通过“导入数据”向导利用索引器进行爬网的 DocumentDB 中的数据。 
+为了在门户中完成此任务，我们将使用可通过“导入数据”向导利用索引器进行爬网的内置示例数据集。 
 
-在继续之前，请先创建本教程要使用的 [示例 DocumentDB 数据库](#apdx-sampledata) ，然后再返回到本部分完成以下步骤。
-
-<a id="defineDS"></a>
-
-#### <a name="step-1-define-the-data-source"></a>步骤 1：定义数据源
+#### <a name="step-1-start-the-import-data-wizard"></a>步骤 1：启动“导入数据”向导
 1. 在 Azure 搜索服务仪表板上，单击命令栏中的“导入数据”  ，以启动用于创建和填充索引的向导。
    
-    ![][7]
-2. 在向导中，单击“数据源” > “DocumentDB” > “名称”，键入数据源的名称。 数据源是 Azure 搜索中的连接对象，可用于其他索引器。 创建数据源后，它将作为服务中的“现有数据源”提供。
-3. 选择现有的 DocumentDB 帐户，以及数据库和集合。 如果使用提供的示例数据，则数据源定义如下所示：
-   
-    ![][2]
+    ![导入数据命令][2]
 
-请注意，将跳过该查询。 这是因为此时不想实现数据集中的更改跟踪。 如果数据集中的字段跟踪更新记录时的时间，可以将 Azure 搜索索引器配置为对索引的选择性更新使用更改跟踪。
+2. 在向导中，单击“数据源” > “示例” > “realestate-us-sample”。 此数据源中已预先配置名称、类型和连接信息。 创建后，它将成为可在其他导入操作中重复使用的“现有数据源”。
 
-单击“确定”  ，完成向导的此步骤。
+    ![选择示例数据集][9]
+
+3. 单击“确定”使用该数据集。
 
 #### <a name="step-2-define-the-index"></a>步骤 2：定义索引
-仍在向导中，单击“索引”  ，然后查看一下用来创建 Azure 搜索索引的设计图面。 索引至少需要一个名称和一个字段集合（其中一个字段标记为文档键）。 由于使用的是 DocumentDB 数据集，因此向导会自动检测字段，并且索引会预先加载字段和数据类型分配。 
+创建索引通常是基于代码的手动过程，但向导可以针对它能够爬网的所有数据源生成索引。 索引至少需要使用一个名称和一个字段集合（其中一个字段标记为文档键）来唯一标识每个文档。
 
-  ![][3]
-
-虽然配置了字段和数据类型，但仍需要分配属性。 字段列表顶部的复选框为 *索引属性* ，用于控制如何使用字段。 
+字段包含数据类型和属性。 顶部的复选框为*索引属性*，用于控制如何使用字段。 
 
 *  意味着该字段将显示在搜索结果列表中。 清除此复选框即可将单个字段标记为关闭搜索结果限制，例如当字段仅用于筛选器表达式时。 
 * “可筛选”、“可排序”和“可查找”确定字段是否可用于筛选器、排序或方面导航结构。 
-*  意味着该字段将包括在全文搜索中。 字符串通常可搜索。 数值字段和布尔字段通常标记为不可搜索。 
+*  意味着该字段将包括在全文搜索中。 字符串可搜索。 数值字段和布尔字段通常标记为不可搜索。 
 
-离开此页之前，请将索引中的字段标记为使用以下选项（“可检索”、“可搜索”等）。 大多数字段是“可检索”。 大多数字符串字段是“可搜索”（不需要将键设为可搜索）。 几个字段（如“genre”、orderableOnline、“rating”和“tags”）也是“可筛选”、“可排序”和“可查找”。 
+默认情况下，向导将在数据源中扫描用作键字段基础的唯一标识符。 字符串经过属性化，可检索且可搜索。 整数经过属性化，可检索、可筛选、可排序且可分面。
 
-| 字段 | 类型 | 选项 |
-| --- | --- | --- |
-| id |Edm.String | |
-| albumTitle |Edm.String |可检索、可搜索 |
-| albumUrl |Edm.String |可检索、可搜索 |
-| genre |Edm.String |可检索、可搜索、可筛选、可排序、可查找 |
-| genreDescription |Edm.String |可检索、可搜索 |
-| artistName |Edm.String |可检索、可搜索 |
-| orderableOnline |Edm.Boolean |可检索、可筛选、可排序、可查找 |
-| 标记 |集合 (Edm.String) |可检索、可筛选、可查找 |
-| price |Edm.Double |可检索、可筛选、可查找 |
-| margin |Edm.Int32 | |
-| rating |Edm.Int32 |可检索、可筛选、可排序、可查找 |
-| inventory |Edm.Int32 |可检索 |
-| lastUpdated |Edm.DateTimeOffset | |
+  ![生成的 realestate 索引][3]
 
-作为对比，下面的屏幕截图是对根据上表中的规范构建的索引的说明。
-
- ![][4]
-
-单击“确定”  ，完成向导的此步骤。
+单击“确定”创建该索引。
 
 #### <a name="step-3-define-the-indexer"></a>步骤 3：定义索引器
-仍然在“导入数据”向导中，单击“索引器” > “名称”，键入索引器的名称，对所有其他值使用默认值。 此对象定义一个可执行过程。 创建它后，可将其放置在定期计划上，但现在单击“确定”时 将使用默认选项立即运行一次索引器。 
+仍在“导入数据”向导中，单击“索引器” > “名称”，然后键入索引器的名称。 
 
-导入数据条目应已全部填充并准备就绪。
+此对象定义一个可执行过程。 可将该对象放入定期计划，但我们暂时单击“确定”，使用默认选项立即运行索引器一次。  
 
-  ![][5]
-
-若要运行向导，请单击“确定”  ，以开始导入并关闭向导。
+  ![realestate 索引器][8]
 
 ## <a name="check-progress"></a>检查进度
-若要检查进度，请返回到服务仪表板，向下滚动，然后双击“索引器”  磁贴以打开索引器列表。 应在列表中看到刚创建的索引器，并应看到状态指示“正在进行”或“成功”，以及已在 Azure 搜索中编制索引的文档数。
+若要监视数据导入，请返回服务仪表板并向下滚动，然后双击“索引器”磁贴打开索引器列表。 列表中应会出现新建的索引器，其状态指示“正在进行”或“成功”，此外还会列出已编制索引的文档数。
 
-  ![][6]
+   ![索引器进度消息][4]
 
-## <a name="query-the-index"></a>查询索引
-现在已有一个可以查询的搜索索引。 
+## <a name="query-index"></a>查询索引
+现在已有一个可以查询的搜索索引。 **搜索浏览器** 是内置于门户中的查询工具。 它提供一个搜索框，用于验证搜索结果是否符合预期。 
 
-**搜索浏览器** 是内置于门户中的查询工具。 它提供了搜索框，以便可以验证搜索输入是否返回了所需的数据。 
+> [!TIP]
+> 在 [Azure 搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)中，从第 6 分 8 秒开始的片段演示了以下步骤。
+>
 
 1. 单击命令栏上的“搜索浏览器”  。
-2. 请注意哪个索引处于活动状态。 如果该索引不是刚创建的索引，请在命令栏中单击“更改索引”  ，选择所需的索引。
-3. 将搜索框留空，然后单击“搜索”  按钮执行通配符搜索，以返回所有文档。
-4. 输入几个全文搜索查询。 可以通过通配符搜索查看结果，以熟悉要查询的艺术家、专辑和流派。
-5. 请使用 [本文末尾提供的示例](https://msdn.microsoft.com/library/azure/dn798927.aspx) 尝试其他查询语法以获得想法，并修改查询以使用可能会在索引中找到的搜索字符串。
+
+   ![搜索浏览器命令][5]
+
+2. 在命令栏中单击“更改索引”切换到 *realestate-us-sample*。
+
+   ![索引和 API 命令][6]
+
+3. 在命令栏中单击“设置 API 版本”，查看有哪些 REST API 可用。 使用预览 API 可以访问尚未正式发布的新功能。 对于以下查询，除非有明确的指示，否则请使用正式版 (2016-09-01)。 
+
+    > [!NOTE]
+    > [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 与 [.NET 库](search-howto-dotnet-sdk.md#core-scenarios)完全相同，但**搜索浏览器**只适合处理 REST 调用。 搜索浏览器接受[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)的语法，加上可在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作中使用的所有搜索参数。
+    > 
+
+4. 在搜索栏中输入以下查询字符串，然后单击“搜索”。
+
+  ![搜索查询示例][7]
+
+**`search=seattle`**
+
++ `search` 参数用于输入关键字来执行全文搜索，在本例中，将返回华盛顿州金县的结果列表，其中包含文档中任何可搜索字段内的 *Seattle*。 
+
++ **搜索浏览器**以 JSON 格式返回结果，如果文档采用密集结构，这种结果将很冗长且难以阅读。 根据具体的文档，可能需要编写用于处理搜索结果的代码来提取重要元素。 
+
++ 文档由标记为可在索引中检索的所有字段构成。 若要在门户中查看索引属性，请在“索引”磁贴中单击“realestate-us-sample”。
+
+**`search=seattle&$count=true&$top=100`**
+
++ `&` 符号用于追加可以按任意顺序指定的搜索参数。 
+
++  `$count=true` 参数返回所有已返回文档的总计数。 可以通过监视 `$count=true` 报告的更改来验证筛选器查询。 
+
++ `$top=100` 返回所有文档中排名最高的 100 个文档。 默认情况下，Azure 搜索返回前 50 个最佳匹配项。 可以通过 `$top` 增加或减少返回的结果。
+
+**`search=*&facet=city&$top=2`**
+
++ `search=*` 是空搜索。 空搜索会搜索所有内容。 提交空查询的原因之一是针对整个文档集进行筛选器或分面。 例如，你希望某个分面导航结构由索引中的所有城市组成。
+
++  `facet` 返回可传递给 UI 控件的导航结构。 它将返回类别和计数。 在本例中，类别基于城市数目。 Azure 搜索中没有聚合，但你可以通过 `facet` 进行近似聚合，提供每个类别中的文档计数。
+
++ `$top=2` 返回两个文档，演示如何使用 `top` 来减少或增加结果。
+
+**`search=seattle&facet=beds`**
+
++ 此查询针对 *Seattle* 执行文本搜索后返回的床位分面。 可将 `"beds"` 指定为分面，因为该字段已标记为可在索引中检索、筛选和分面，并且它包含的值（数字 1 到 5）适合用于将列表分类为组（包含 3 间卧室和 4 间卧室的房屋列表）。 
+
++ 只有可筛选的字段才可分面。 结果中只返回仅可检索的字段。
+
+**`search=seattle&$filter=beds gt 3`**
+
++ `filter` 参数返回与提供的条件匹配的结果。 在本例中，条件为卧室数大于 3。 
+
++ 筛选器语法是一种 OData 构造。 有关详细信息，请参阅 [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）。
+
+**`search=granite countertops&highlight=description`**
+
++ 搜索词突出显示是对与关键字匹配的文本设置的格式，表示在特定字段中找到的匹配项。 如果搜索词深藏在说明中，可以添加搜索词突出显示来方便找到这些词。 在本例中，使用带有格式的短语 `"granite countertops"` 可以更方便地在说明字段中看到该短语。
+
+**`search=mice&highlight=description`**
+
++ 全文搜索将查找具有类似语义的单词形式。 在本例中，搜索结果包含搜索“mice”关键字后，包含“mouse”的突出显示文本（针对老鼠泛滥的家庭执行的搜索）。 由于执行了语言分析，同一单词的不同形式可能会显示在结果中。 
+
++ Azure 搜索支持 Lucene 和 Microsoft 提供的 56 种分析器。 Azure 搜索使用的默认分析器是标准的 Lucene 分析器。 
+
+**`search=samamish`**
+
++ 执行典型的搜索时，如果拼错单词（例如，将西雅图地区的 Samammish 高原拼写为“samamish”），则无法返回匹配项。 若要处理拼写错误，可以使用下一个示例所述的模糊搜索。
+
+**`search=samamish~&queryType=full`**
+
++ 指定 `~` 符号并使用完整查询分析器时，将启用模糊搜索，它会解释并正确分析 `~` 语法。 
+
++ 选择启用完整查询分析器（设置 `queryType=full`）后，可以使用模糊搜索。 有关完整查询分析器支持的查询方案的详细信息，请参阅 [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)（Azure 搜索中的 Lucene 查询语法）。
+
++ 如果未指定 `queryType`，将使用默认的简单查询分析器。 简单查询分析器速度更快，但如果需要执行模糊搜索、正则表达式、近似搜索或其他高级查询类型，则需要使用完整语法。 
+
+**`search=*&$count=true&$filter=geo.distance(location,geography'POINT(-122.121513 47.673988)') le 5`**
+
++ 对于包含坐标的字段，支持通过 [edm.GeographyPoint 数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)执行地理空间搜索。 地域搜索是 [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）中指定的一种筛选器类型。 
+
++ 该示例查询将筛选位置数据的所有结果，这些结果与给定地点（以纬度和经度坐标的形式指定）之间的距离小于 5 公里。 通过添加 `$count`，可以查看在更改距离或坐标时会返回多少个结果。 
+
++ 如果搜索应用程序具有“附近查找”功能或使用地图导航，地理空间搜索非常有用。 但它不属于全文搜索。 如果用户要求是按名称搜索城市或国家/地区，请添加包含该城市或国家/地区的名称的字段，并添加坐标。
 
 ## <a name="next-steps"></a>后续步骤
-运行一次该向导后，可以返回查看或修改单个组件：索引、索引器或数据源。 不允许对索引进行某些编辑操作（如更改字段数据类型），但大多数属性和设置是可修改的。 若要查看单个组件，请单击仪表板上的“索引”、“索引器”或“数据源”磁贴，显示现有对象的列表。
 
-若要详细了解本文中提到的其他功能，请访问以下链接：
++ 修改刚刚创建的任一对象。 运行一次该向导后，可以返回查看或修改单个组件：索引、索引器或数据源。 不允许对索引进行某些编辑操作（如更改字段数据类型），但大多数属性和设置是可修改的。
 
-* [索引器](search-indexer-overview.md)
-* [创建索引（包括索引属性的详细说明）](https://msdn.microsoft.com/library/azure/dn798941.aspx)
+  若要查看单个组件，请单击仪表板上的“索引”、“索引器”或“数据源”磁贴，显示现有对象的列表。 若要详细了解如何在不重新生成的情况下进行索引编辑，请参阅 [Update Index (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/update-index)（更新索引（Azure 搜索 REST API）。
+
++ 尝试针对其他数据源使用上述工具和步骤。 示例数据集 `realestate-us-sample` 摘自 Azure 搜索可爬网的 Azure SQL 数据库。 除了 Azure SQL 数据库以外，Azure 搜索还可爬网 Azure VM 和 DocumentDB 上的 Azure 表存储、Blob 存储、SQL Server 中的平面数据结构中的索引并对其进行推断。 向导支持所有这些数据源。 在代码中，可以使用*索引器*轻松填充索引。
+
++ 可通过推送模型支持其他所有非索引器数据源，代码会将 JSON 格式的新行集与更改的行集推送到索引。 有关详细信息，请参阅 [Add, update, or delete documents in Azure Search](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)（在 Azure 搜索中添加、更新或删除文档）。
+
+若要详细了解本文中所述的其他功能，请访问以下链接：
+
+* [索引器概述](search-indexer-overview.md)
+* [创建索引（包括索引属性的详细说明）](https://docs.microsoft.com/rest/api/searchservice/create-index)
 * [搜索浏览器](search-explorer.md)
-* [搜索文档（包括查询语法的示例）](https://msdn.microsoft.com/library/azure/dn798927.aspx)
+* [搜索文档（包括查询语法的示例）](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 
-可以对其他数据源（如 Azure SQL 数据库或 Azure 虚拟机上的 SQL Server）使用“导入数据”向导，尝试此同一工作流。
-
-> [!NOTE]
-> 新发布的索引器支持搜索 Azure Blob 存储，但该功能处于预览状态，尚不是门户选项。 若要试用该索引器，需要编写代码。 有关详细信息，请参阅 [Indexing Azure Blob storage in Azure Search](search-howto-indexing-azure-blob-storage.md) （在 Azure 搜索中为 Azure Blob 存储编制索引）。
-> <a id="apdx-sampledata"></a>
-> 
-> 
-
-## <a name="appendix-create-sample-data-in-documentdb"></a>附录：在 DocumentDB 中创建示例数据
-本部分在 DocumentDB 中创建一个小型数据库，可使用它完成本教程中的任务。
-
-下面的说明提供了一般指南，但并不详尽。 如果对于 DocumentDB 门户导航或任务需要更多帮助，可以参考 DocumentDB 文档，但所需的大多数命令在仪表板顶部的服务命令栏中或在数据库边栏选项卡中。 
-
-  ![][1]
-
-### <a name="create-musicstoredb-for-this-tutorial"></a>为本教程创建 musicstoredb
-1. [单击此处](https://github.com/HeidiSteen/azure-search-get-started-sample-data) 可下载一个 ZIP 文件，其中包含音乐商店 JSON 数据文件。 我们为此数据集提供了 246 个 JSON 文档。
-2. 将 DocumentDB 添加到订阅，然后打开服务仪表板。
-3. 单击“添加数据库”，创建 ID 为 `musicstoredb` 的新数据库。 创建后，此数据库将显示在该页下部的数据库磁贴中。
-4. 单击数据库名称，打开数据库边栏选项卡。
-5. 单击“添加集合”，创建 ID 为 `musicstorecoll` 的集合。
-6. 单击“文档资源管理器” 。
-7. 单击“上载” 。
-8. 在“上载文档” 中，导航到包含前面下载的 JSON 文件的本地文件夹。 以每批 100 个或更少文件选择 JSON 文件。
-   * 386.json
-   * 387.json
-   * 。 。 。
-   * 486.json
-9. 重复此操作以获取下一批文件，直到已上载最后一个文件 669.json。
-10. 单击“查询浏览器”  ，验证上载的数据是否符合文档资源管理器的上载要求。
-
-执行此操作的简单方法是使用默认查询，但也可以修改默认查询使其选择前 300 个项目（此数据集中的项目少于 300 个）。
-
-应收到这样的 JSON 输出：从编号 386 的文档开始，到编号 669 的文档结束。 加载数据后，便可以[返回到本演练中的步骤](#defineDS)，使用“导入数据”向导生成索引。
 
 <!--Image references-->
-[1]: ./media/search-get-started-portal/AzureSearch-GetStart-Docdbmenu1.png
-[2]: ./media/search-get-started-portal/AzureSearch-GetStart-DataSource.png
-[3]: ./media/search-get-started-portal/AzureSearch-GetStart-DefaultIndex.png
-[4]: ./media/search-get-started-portal/AzureSearch-GetStart-FinishedIndex.png
-[5]: ./media/search-get-started-portal/AzureSearch-GetStart-ImportReady.png
-[6]: ./media/search-get-started-portal/AzureSearch-GetStart-IndexerList.png
-[7]: ./media/search-get-started-portal/search-data-import-wiz-btn.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-
+[1]: ./media/search-get-started-portal/tiles-indexers-datasources2.png
+[2]: ./media/search-get-started-portal/import-data-cmd2.png
+[3]: ./media/search-get-started-portal/realestateindex2.png
+[4]: ./media/search-get-started-portal/indexers-inprogress2.png
+[5]: ./media/search-get-started-portal/search-explorer-cmd2.png
+[6]: ./media/search-get-started-portal/search-explorer-changeindex-se2.png
+[7]: ./media/search-get-started-portal/search-explorer-query2.png
+[8]: ./media/search-get-started-portal/realestate-indexer2.png
+[9]: ./media/search-get-started-portal/import-datasource-sample2.png

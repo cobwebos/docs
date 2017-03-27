@@ -1,13 +1,27 @@
 ---
+title: "Azure HDInsight 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解 HDInsight 上的 Hadoop。 文档介绍了如何使用 Hadoop、Spark、HBase、R-Server 和其他技术来处理、分析大数据以及从中获得见解。"
+services: hdinsight
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: hdinsight
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 1b5f6156de634d3e32dd848518d4433a5d2e4b5c
-ms.openlocfilehash: 050d31a70a7dddff1f840235002f9b233dee9059
+ms.sourcegitcommit: 2d07e801ea3375e06c9f66db49219b6c79f97e61
+ms.openlocfilehash: bf303554aa47116cdfce074d87235901b5390769
+ms.lasthandoff: 02/09/2017
 
 ---
+
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight 文档
 
-Azure HDInsight 是采用云技术的 Apache Hadoop 分发版。  借助 Azure HDInsight，可以在云中使用 Hortonworks 数据平台 (HDP) 分发版中的 Hadoop 组件，并且可以部署和预配具有高可靠性与可用性的托管群集。  Azure HDInsight 为 Apache Hadoop、Spark、HBase 和 Storm 提供群集配置。  用户还可以通过脚本操作使用自定义群集。  
+了解如何在 HDInsight 上使用云中的 Hadoop 来分析流数据或历史数据。 教程和其他文档介绍了如何使用 Hadoop 生态系统中的 Hadoop、Spark、HBase、R-Server、Storm 和其他技术来创建群集、处理与分析大数据，以及开发解决方案。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -122,29 +136,49 @@ Azure HDInsight 是采用云技术的 Apache Hadoop 分发版。  借助 Azure H
 </ul>
 
 ---
+ 
+<h2>参考</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt271028.aspx">.NET (Hadoop)</a></p>
+                        <p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p>
+                        <p><a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library">.NET (Avro)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/hdinsight/">REST API</a></p>
+                        <p><a href="/rest/api/hdinsightspark/">REST API (Spark)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-##<a name="reference"></a>参考
-
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell 参考](/powershell/azureps-cmdlets-docs)
-
-###<a name="rest"></a>REST
-[HDInsight REST API 参考](/rest/api/hdinsight)
-[Spark for HDInsight REST API 参考](/rest/api/hdinsightspark)
-
-###<a name="net"></a>.NET
-[HDInsight 托管参考](https://msdn.microsoft.com/library/azure/mt271028)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/hdinsight.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 HDInsight 文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

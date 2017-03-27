@@ -1,5 +1,5 @@
 ---
-title: "采用 Azure 数据目录 | Microsoft Docs"
+title: "采用 Azure 数据目录的方法和过程 | Microsoft 文档"
 description: "本文介绍组织考虑采用 Azure 数据目录时可用的方法和过程，包括定义愿景、识别关键业务用例，以及选择试运行项目。"
 services: data-catalog
 documentationcenter: 
@@ -13,15 +13,16 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/11/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6299c6eaab1e62281e23d2dd43c14fbb9769a316
+ms.sourcegitcommit: 15e72950ef30b8540d0303292fb9882f500c875e
+ms.openlocfilehash: 646a7611f5680a4c08e9a5f5ff4e2a3e5631276f
+ms.lasthandoff: 01/24/2017
 
 
 ---
-# <a name="adopting-azure-data-catalog"></a>采用 Azure 数据目录
+# <a name="approach-and-process-for-adopting-azure-data-catalog"></a>采用 Azure 数据目录的方法和过程
 本文介绍如何在组织中采用 **Azure 数据目录**。 若要成功采用 **Azure 数据目录**，请将重点放在三个要点上：定义愿景、找到组织内的重要业务用例，以及选择试运行项目。
 
 ## <a name="introducing-the-azure-data-catalog"></a>Azure 数据目录简介
@@ -102,8 +103,8 @@ ms.openlocfilehash: 6299c6eaab1e62281e23d2dd43c14fbb9769a316
 
 **Azure 数据目录**解决的其中一个业务问题是将**数据生成者**连接到**数据使用者**。 其解决方式是作为企业数据源相关信息的中心存储库。 David 使用数据目录注册了 Adventure Works 和 SQL Server 数据源。 通过众包，任何找到此数据源的用户就能分享其对于数据的意见，而不必使用其找到的数据。 例如，Nancy 在搜索目录后找到数据源，并分享其关于数据的专业知识。  现在，组织中的其他人只要搜索数据目录就能从所分享的知识获益。
 
-* 有关如何注册数据源的详细信息，请参阅 [Register data sources](data-catalog-get-started.md#exercise-2-registering-data-sources)（注册数据源）。
-* 有关如何发现数据源的详细信息，请参阅 [Search data sources](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets)（搜索数据源）。
+* 有关如何注册数据源的详细信息，请参阅 [Register data sources](data-catalog-get-started.md)（注册数据源）。
+* 有关如何发现数据源的详细信息，请参阅 [Search data sources](data-catalog-get-started.md)（搜索数据源）。
 
 ### <a name="start-small-and-focused"></a>从小规模着手并保持专注
 对于大多数的企业试运行项目而言，应该在目录中植入高价值的数据源，让业务用户可以快速看到数据目录的价值。 IT 部门很适合用于作为试运行团队感兴趣的一般数据源的查找起点。 对于支持的数据源（例如 SQL Server），建议使用 **Azure 数据目录** 数据源注册工具。 使用数据源注册工具可以注册各种数据源，包括 SQL Server 和 Oracle 数据库以及 SQL Server Reporting Services 报表。 有关最新数据源的完整列表，请参阅 [Azure Data Catalog supported data sources](data-catalog-dsr.md)（Azure 数据目录支持的数据源）。
@@ -123,8 +124,8 @@ ms.openlocfilehash: 6299c6eaab1e62281e23d2dd43c14fbb9769a316
 
 > [!NOTE]
 > 我们已编写使用 **Azure 数据目录** API 的示例工具，将 Excel 工作簿迁移到数据目录。 有关数据目录 API 和示例工具的详细信息，可以[下载即席工作簿代码示例](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/)，并查看 [Azure 数据目录 REST API](https://msdn.microsoft.com/library/azure/mt267593.aspx) 文档。
-> 
-> 
+>
+>
 
 在准备好试运行项目后，可以开始执行数据目录采用计划。
 
@@ -142,9 +143,9 @@ ms.openlocfilehash: 6299c6eaab1e62281e23d2dd43c14fbb9769a316
 在试运行团队开始使用数据目录之前安排启动会议，介绍对于试运行项目的期望，并提供初始培训。
 
 ### <a name="set-expectations"></a>设立期望
-设立期望和目标可帮助业务用户专注于特定交付成果上。 若要让项目如期展开，请分配（每天或每周，根据试运行的范围和期间而定）家庭作业。 数据目录的其中一个最有价值的功能是将数据资产众包，使业务用户可以受益于企业数据的知识。 对于每个试运行团队成员而言，注册至少一个他们使用的数据源并为其加上批注，便是绝佳的家庭作业。 请参阅[注册数据源](data-catalog-get-started.md#exercise-2-registering-data-sources)和[如何批注数据源](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)。
+设立期望和目标可帮助业务用户专注于特定交付成果上。 若要让项目如期展开，请分配（每天或每周，根据试运行的范围和期间而定）家庭作业。 数据目录的其中一个最有价值的功能是将数据资产众包，使业务用户可以受益于企业数据的知识。 对于每个试运行团队成员而言，注册至少一个他们使用的数据源并为其加上批注，便是绝佳的家庭作业。 请参阅[注册数据源](data-catalog-get-started.md)和[如何批注数据源](data-catalog-get-started.md)。
 
-定期与团队碰面，评审其中的一些批注。 好的数据源批注是成功采用数据目录的关键，因为它们可以在集中位置提供有意义的数据源见解。 如果没有良好的批注，整个企业中关于数据源的知识就杂乱无章。 请参阅 [How to annotate data sources](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)（如何批注数据源）。
+定期与团队碰面，评审其中的一些批注。 好的数据源批注是成功采用数据目录的关键，因为它们可以在集中位置提供有意义的数据源见解。 如果没有良好的批注，整个企业中关于数据源的知识就杂乱无章。 请参阅 [How to annotate data sources](data-catalog-get-started.md)（如何批注数据源）。
 
 当然，项目的最终测试是用户是否可以发现并了解他们需要使用的数据源。 试运行用户应定期测试目录，确保其日常工作中使用的数据源具有相关性。 当所需的数据源丢失或未正确批注时，可以将它当作注册其他数据源或提供其他批注的提醒。 这种做法不仅能增加试运行工作的价值，而且还能养成有效的习惯，在试运行完成后带到其他团队。
 
@@ -162,14 +163,8 @@ ms.openlocfilehash: 6299c6eaab1e62281e23d2dd43c14fbb9769a316
 * [Azure 数据目录产品页](https://azure.microsoft.com/services/data-catalog/)
 * [Azure 数据目录文档](https://azure.microsoft.com/documentation/services/data-catalog/)
 * [Azure Data Catalog common scenarios](data-catalog-common-scenarios.md)
-* [Register data sources](data-catalog-get-started.md#exercise-2-registering-data-sources)
-* [Search data sources](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets)
-* [Annotate data sources](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)
-* [Crowdsourcing metadata](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+* [Register data sources](data-catalog-get-started.md)
+* [Search data sources](data-catalog-get-started.md)
+* [Annotate data sources](data-catalog-get-started.md)
+* [Crowdsourcing metadata](data-catalog-get-started.md)
 

@@ -6,7 +6,7 @@
 
 # [入门](../../virtual-machines-linux-opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ## [使用门户创建 Linux VM](../../virtual-machines-linux-classic-createportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-## [安装 Azure CLI](../../../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+## [安装 Azure CLI](../../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ## [创建 SSH 密钥](../../virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 # 如何
@@ -52,7 +52,7 @@
 ### [使用 Visual Studio 编写的 Web 应用程序](../../virtual-machines-linux-classic-web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [用于运行 MPI 应用程序的 RDMA 群集](../../virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [如何在 Hudson CI 中使用 Azure 从属插件](../../virtual-machines-azure-slave-plugin-for-hudson.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-### [如何在 Jenkins 中使用 Azure 从属插件](../../virtual-machines-azure-slave-plugin-for-jenkins.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+
 
 ## HPC Pack
 ### [用于运行 MPI 应用的 Windows RDMA 群集](../../virtual-machines-linux-classic-hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
@@ -65,23 +65,19 @@
 ### [VM 部署](../../virtual-machines-linux-classic-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [重启 VM 或调整其大小](../../virtual-machines-linux-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
-# 参考
+# 引用
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](/cli/azure/vm)
-## [Java](/java/api/)
-## [创建 Resource Manager 模板](../../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [社区模板](https://azure.microsoft.com/documentation/templates/)
-## [计算 REST](/rest/api/compute/)
-## [网络 REST](/rest/api/)
-## [存储 REST](/rest/api/storageservices/)
+## [Java](/java/api)
+## [创建 Resource Manager 模板](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## [社区模板](https://azure.microsoft.com/documentation/templates)
+## [计算 REST](/rest/api/compute)
+## [网络 REST](/rest/api)
+## [存储 REST](/rest/api/storageservices)
 
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
-## [区域可用性](https://azure.microsoft.com/regions/services/)
+## [区域可用性](https://azure.microsoft.com/regions/services)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

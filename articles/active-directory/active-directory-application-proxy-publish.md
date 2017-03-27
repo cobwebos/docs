@@ -1,26 +1,31 @@
 ---
 title: "使用 Azure AD 应用程序代理发布应用 | Microsoft Docs"
-description: "使用 Azure AD 应用程序代理将本地应用程序发布到云。"
+description: "在经典门户中使用 Azure AD 应用程序代理将本地应用程序发布到云。"
 services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
+editor: harshja
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/19/2016
+ms.date: 11/30/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0ba28b2708045a216e1b9fdd7601010b2b554737
+ms.sourcegitcommit: d7fe552e0c8856a8d7799ae8a7732e57a350fee3
+ms.openlocfilehash: 2a42605c75fe183d57030e4a3ff3f3218a7dbc2b
 
 
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布应用程序
+
+> [!div class="op_single_selector"]
+> * [Azure 门户](application-proxy-publish-azure-portal.md)
+> * [Azure 经典门户](active-directory-application-proxy-publish.md)
+
 Azure AD 应用程序代理可发布要通过 Internet 访问的本地应用程序，从而帮助你为远程辅助角色提供支持。 至此，你应该已 [在 Azure 经典门户中启用应用程序代理](active-directory-application-proxy-enable.md)。 本文将指导你完成发布要在本地网络上运行并提供从网络外部进行的安全远程访问的应用程序的步骤。 阅读完成这篇文章后，你将能够根据个性化信息或安全要求配置该应用程序。
 
 > [!NOTE]
@@ -101,6 +106,6 @@ Azure AD 应用程序代理可发布要通过 Internet 访问的本地应用程�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

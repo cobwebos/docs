@@ -1,27 +1,28 @@
 ---
-title: "在第一个 Web 应用中添加功能"
+title: "在第一个 Web 应用中添加功能 | Microsoft 文档"
 description: "在短时间内将一些新奇功能添加到你的第一个 Web 应用。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 542671c2-22f0-4f20-8b4b-fa477264c492
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.date: 05/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 310bf3656db6ae6e0a8d3c1cc13442e2aa4e7752
+ms.sourcegitcommit: 9916000ddf38fdda1dcbdcf8818c5833a445efc8
+ms.openlocfilehash: 3f099db9f75466b5571aa732bb60343af7bd86da
+ms.lasthandoff: 01/24/2017
 
 
 ---
 # <a name="add-functionality-to-your-first-web-app"></a>在第一个 Web 应用中添加功能
-通过[在 5 分钟内将第一个 Web 应用部署到 Azure](app-service-web-get-started.md) 教程，你已将一个示例 Web 应用部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 在本文中，你将会快速地在所部署的 Web 应用中添加一些强大功能。 只需几分钟，你就能够：
+通过[在&5; 分钟内将第一个 Web 应用部署到 Azure](app-service-web-get-started-cli-nodejs.md) 教程，你已将一个示例 Web 应用部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 在本文中，你将会快速地在所部署的 Web 应用中添加一些强大功能。 只需几分钟，你就能够：
 
 * 强制实施用户身份验证
 * 自动缩放应用
@@ -128,7 +129,7 @@ App Service 针对某些常见的身份验证要求提供周全的解决方案�
 
 祝贺你，你现在可以接收警报。
 
-此警报设置将每隔 5 分钟检查一次 CPU 使用率。 如果该数字高于 90%，以及获得授权的人员都收到电子邮件警报。 若要查看有权接收警报的人员，请回到应用的边栏选项卡，然后单击“ **访问** ”按钮。  
+此警报设置将每隔&5; 分钟检查一次 CPU 使用率。 如果该数字高于 90%，以及获得授权的人员都收到电子邮件警报。 若要查看有权接收警报的人员，请回到应用的边栏选项卡，然后单击“ **访问** ”按钮。  
 ![查看谁会收到警报](./media/app-service-web-get-started/alert-rbac.png)
 
 应会看到“订阅管理员”已是应用的“所有者”。 如果你是 Azure 订阅（例如你的试用订阅）的帐户管理员，该组将包括你。 有关 Azure 基于角色的访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
@@ -150,13 +151,8 @@ App Service 针对某些常见的身份验证要求提供周全的解决方案�
 * [备份应用](web-sites-backup.md) - 为 Web 应用设置备份和还原。 针对意外的故障做好准备，并能够从中恢复。
 * [启用诊断日志](web-sites-enable-diagnostic-log.md) - 从 Azure 或应用程序跟踪中读取 IIS 日志。 以串流的形式读取日志、下载日志，或者将日志移植到 [Application Insights](../application-insights/app-insights-overview.md) 以进行全方位的分析。
 * [扫描应用中的漏洞](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) -
-  使用 Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) 提供的服务扫描 Web 应用，以查出新型威胁。
+  使用 [Tinfoil Security](https://www.tinfoilsecurity.com/) 提供的服务扫描 Web 应用，以查出新型威胁。
 * [运行后台作业](../azure-functions/functions-overview.md) - 运行作业来进行数据处理、报告，等等。
 * [了解 App Service 的工作方式](../app-service/app-service-how-works-readme.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

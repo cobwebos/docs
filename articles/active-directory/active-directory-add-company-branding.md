@@ -12,15 +12,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/30/2016
+ms.date: 03/03/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 1ec1a20dec318153923afd6a0875545d1e102f29
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="add-company-branding-to-your-signin-and-access-panel-pages"></a>在登录页和访问面板页中添加公司品牌
+# <a name="add-company-branding-to-your-sign-in-and-access-panel-pages"></a>在登录页和访问面板页中添加公司品牌
 许多公司想要在他们管理的所有网站和服务上应用一致的外观，以免用户感到困惑。 Azure Active Directory 提供了此功能，它允许你使用自己的公司徽标和自定义颜色方案来自定义以下网页的外观：
 
 * **登录页** - 登录到 Office 365 或其他使用 Azure AD 作为标识提供者的基于 Web 的应用程序时，将显示此页。 在执行主领域发现期间或输入凭据时，你将与此页交互。 主领域发现可让系统将联合用户重定向到其本地 STS（例如 AD FS）。
@@ -31,10 +32,10 @@ ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
 > [!NOTE]
 > * 只有在升级到 Azure Active Directory 高级或基本版（或者成为 Office 365 用户）后，才可以使用公司品牌这一功能。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
 > * 在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。 由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。 有关详细信息，请在 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
-> 
-> 
+>
+>
 
-## <a name="customizing-the-signin-page"></a>自定义登录页
+## <a name="customizing-the-sign-in-page"></a>自定义登录页
 通常，如果你需要通过浏览器访问组织订阅的云应用和服务，可以使用登录页。
 
 如果你已对登录页应用了更改，最多需要一小时更改才会出现。
@@ -46,8 +47,8 @@ ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
 > [!NOTE]
 > * 在已配置品牌的 Azure 经典门户的“Active Directory” > “目录” > “域”部分中，你的域名必须显示为“活动”。
 > * 登录页品牌不会带到 Microsoft 的使用者登录页。 如果你使用个人 Microsoft 帐户登录，则可以看到 Azure AD 呈现的经过品牌打造的用户磁贴列表，但你组织的品牌将不会应用于 Microsoft 帐户登录页。
-> 
-> 
+>
+>
 
 如果你要在此页上显示你公司的品牌、颜色和其他可自定义元素，请参阅下图以了解两种体验之间的差异。
 
@@ -91,8 +92,8 @@ ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
 
 > [!NOTE]
 > 所有元素都是可选的。 例如，如果你指定了横幅徽标，但没有指定大图，则登录页将显示你的徽标和目标站点的插图（即 Office 365 加利福尼亚州高速公路图像）。
-> 
-> 
+>
+>
 
 在登录页中，“使我保持登录状态”复选框允许用户在关闭和重新打开浏览器时保持登录状态。 它不会影响会话生存期。 可以隐藏 Azure Active Directory 登录页上的此复选框。
 
@@ -100,12 +101,12 @@ ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
 
 ![][9]
 
-若要隐藏复选框，可将此设置配置为“隐藏”。 
+若要隐藏复选框，可将此设置配置为“隐藏”。
 
 > [!NOTE]
 > SharePoint Online 和 Office 2010 的某些功能取决于用户能否勾选此框。 如果将此设置配置为“隐藏”，用户可能会在登录时看到其他意外的提示。
-> 
-> 
+>
+>
 
 你还可以本地化此页上的所有元素。 在配置“默认”的一组自定义元素后，便可以针对不同的区域设置配置其他版本。 你还可以混搭各种元素。 例如，你可以：
 
@@ -133,6 +134,10 @@ ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
 
 虽然从技术上讲，你可以为 Azure AD 支持的每种语言都配置不同的设置，但由于维护和性能方面的原因，我们建议你尽量少使用不同的设置。
 
+> [!IMPORTANT]
+> 在用户登录之前，Yammer 不显示 Azure AD 品牌的登录页。 用户先看到一般性的 Office 365 登录页，然后看到品牌页。   
+ 
+ 
 **若要将公司品牌添加到目录，请执行以下步骤：**
 
 1. 以你想要自定义的目录的管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com) 。
@@ -148,7 +153,7 @@ ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
 
 1. 以你想要自定义的目录的管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com) 。
 2. 选择要自定义的目录。
-3. 在顶部菜单栏中，单击“配置”。
+fs3。 在顶部菜单栏中，单击“配置”。
 4. 单击“自定义品牌”。
 5. 单击“为特定语言添加品牌”。
 6. 选择要为其自定义徽标的语言，然后单击“下一步”。
@@ -163,15 +168,15 @@ ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
 4. 单击“自定义品牌”。
 5. 在“自定义品牌”页上，选择“编辑现有品牌设置”，然后转到下一页。
 6. 根据要删除哪些元素，执行以下一项或多项操作：
-   
+
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“横幅徽标”下，选择“删除上载的徽标”。
-   
+
     b.保留“数据库类型”设置，即设置为“共享”。 在“磁贴徽标”下，选择“删除上载的徽标”。
-   
+
     c. 删除所有文本框中的文本。
-   
+
     d.单击“下一步”。 单击“下一步”。
-   
+
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 删除所有文本框中的文本。
 7. 单击“保存”按钮以删除这些元素。
 8. 如有必要，请再次单击“自定义品牌”，然后对需要删除的所有特定于语言的品牌重复这些步骤。
@@ -221,9 +226,4 @@ Azure AD 中的某些可自定义的元素具有多个用例。 只需为每个�
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 [9]: ./media/active-directory-add-company-branding/hidekmsi.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

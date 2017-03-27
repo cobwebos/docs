@@ -1,10 +1,10 @@
 ---
-title: "如何在 Azure 经典门户中创建、管理或删除存储帐户 | Microsoft Docs"
-description: "创建新的存储帐户、管理帐户访问密钥，或删除 Azure 门户中的存储帐户。 了解标准和高级存储帐户。"
+title: "如何在 Azure 经典门户中创建、管理或删除存储帐户 | Microsoft 文档"
+description: "在 Azure 门户中创建新的存储帐户、管理帐户访问密钥或删除存储帐户。 了解标准和高级存储帐户。"
 services: storage
 documentationcenter: 
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 5e4f4360-3f81-4d63-a0b1-e7771b67af11
 ms.service: storage
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/26/2016
+ms.date: 01/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 90e9fcf933173b5609eff70fa1ce4bfa027fee3d
+ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
+ms.openlocfilehash: 599d509d00e8366a5095cac7503b11cf818e6a34
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -99,7 +100,7 @@ Azure 存储帐户授予你访问 Azure 存储空间中的 Azure Blob、队列�
 
 此外还可以配置用于存储帐户的自定义域名称。 请参阅 [为 Blob 存储终结点配置自定义域名称](storage-custom-domain-name.md) 以了解详细信息。
 
-### <a name="service-colocation-with-an-affinity-group"></a>服务与地缘组的归置
+### <a name="service-co-location-with-an-affinity-group"></a>服务与地缘组的归置
 *地缘组* 是你的 Azure 服务和 VM 及 Azure 存储帐户的地理分组。 通过定位同一数据中心或靠近目标用户受众的计算机工作负载，地缘组可提高服务性能。 此外，当某个存储帐户中的数据被另一个服务访问，而该服务是同一个地缘组的一部分时，不会对出口流量收费。
 
 > [!NOTE]
@@ -171,10 +172,5 @@ Azure 存储帐户授予你访问 Azure 存储空间中的 Azure Blob、队列�
 * 若要了解有关 Azure 存储空间的详细信息，请参阅 [Azure 存储空间文档](https://azure.microsoft.com/documentation/services/storage/)。
 * 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -14,14 +14,14 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: charleywen
+ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 44f6761b3c3680af923f2a3b16671ca19672e281
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 68ad5679a2a6fcb7cfca25410af3f2f113490bdc
 
 
 ---
-# <a name="configure-expressroute-and-sitetosite-coexisting-connections-for-the-resource-manager-deployment-model"></a>为 Resource Manager 部署模型配置 ExpressRoute 和站点到站点共存的连接
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-for-the-resource-manager-deployment-model"></a>为 Resource Manager 部署模型配置 ExpressRoute 和站点到站点共存的连接
 > [!div class="op_single_selector"]
 > * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - 经典](expressroute-howto-coexist-classic.md)
@@ -47,7 +47,7 @@ ms.openlocfilehash: 44f6761b3c3680af923f2a3b16671ca19672e281
 * **必须先配置 ExpressRoute 网关。** 必须先创建 ExpressRoute 网关，然后才能添加站点到站点 VPN 网关。
 
 ## <a name="configuration-designs"></a>配置设计
-### <a name="configure-a-sitetosite-vpn-as-a-failover-path-for-expressroute"></a>将站点到站点 VPN 配置为 ExpressRoute 的故障转移路径
+### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>将站点到站点 VPN 配置为 ExpressRoute 的故障转移路径
 你可以将站点到站点 VPN 连接配置为 ExpressRoute 的备份。 这仅适用于链接到 Azure 专用对等路径的虚拟网络。 对于可通过 Azure 公共线路和 Microsoft 对等线路访问的服务，没有基于 VPN 的故障转移解决方案。 ExpressRoute 线路始终是主链接。 仅当 ExpressRoute 线路失败时，数据才会流经站点到站点 VPN 路径。
 
 > [!NOTE]
@@ -57,7 +57,7 @@ ms.openlocfilehash: 44f6761b3c3680af923f2a3b16671ca19672e281
 
 ![共存](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
 
-### <a name="configure-a-sitetosite-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>配置站点到站点 VPN，以便连接到不通过 ExpressRoute 进行连接的站点
+### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>配置站点到站点 VPN，以便连接到不通过 ExpressRoute 进行连接的站点
 你可以对网络进行配置，使得部分站点通过站点到站点 VPN 直接连接到 Azure，部分站点通过 ExpressRoute 进行连接。 
 
 ![共存](media/expressroute-howto-coexist-resource-manager/scenario2.jpg)
@@ -82,7 +82,7 @@ ms.openlocfilehash: 44f6761b3c3680af923f2a3b16671ca19672e281
 ## <a name="a-namenewato-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>创建新的虚拟网络和并存连接
 本过程将指导你创建 VNet，以及创建将共存的站点到站点连接和 ExpressRoute 连接。
 
-1. 你需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。
+1. 你需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。
 2. 登录你的帐户并设置环境。
    
         login-AzureRmAccount
@@ -160,7 +160,7 @@ ms.openlocfilehash: 44f6761b3c3680af923f2a3b16671ca19672e281
 > 
 > 
 
-1. 你需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
+1. 你需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
 2. 删除现有的 ExpressRoute 或站点到站点 VPN 网关。 
    
         Remove-AzureRmVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup>
@@ -183,7 +183,7 @@ ms.openlocfilehash: 44f6761b3c3680af923f2a3b16671ca19672e281
         $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 5. 此时，你将拥有不带网关的虚拟网络。 若要创建新网关并完成连接，可以转到 [步骤 4 - 创建 ExpressRoute 网关](#gw)（可以在前一组步骤中找到）。
 
-## <a name="to-add-pointtosite-configuration-to-the-vpn-gateway"></a>将点到站点配置添加到 VPN 网关
+## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>将点到站点配置添加到 VPN 网关
 可以按照下面的步骤将点到站点配置添加到共存设置中的 VPN 网关。
 
 1. 添加 VPN 客户端地址池。 
@@ -212,6 +212,6 @@ ms.openlocfilehash: 44f6761b3c3680af923f2a3b16671ca19672e281
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

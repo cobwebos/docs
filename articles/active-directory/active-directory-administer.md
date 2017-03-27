@@ -6,18 +6,17 @@ documentationcenter:
 author: MarkusVi
 writer: markvi
 manager: femila
-editor: 
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2016
+ms.date: 01/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 20f38ef90d9f3793c0bb0814e6fd5d67aa550209
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 001ffc0f9c7465552392a9848ef1487a4c0eafce
 
 
 ---
@@ -66,7 +65,7 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 * [Office 365](http://products.office.com/business/compare-office-365-for-business-plans/)
 * [Microsoft Intune](https://account.manage.microsoft.com/Signup/MainSignUp.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&ali=1)
 
-### <a name="manage-an-azureprovisioned-default-directory"></a>管理 Azure 设置的默认目录
+### <a name="manage-an-azure-provisioned-default-directory"></a>管理 Azure 设置的默认目录
 现今，注册 Azure 时会自动创建一个目录，并且你的订阅与该目录相关联。 但是，如果你最初是在 2013 年 10 月之前注册 Azure 的，则不会自动创建一个目录。 在那种情况下，Azure 可能已为你的帐户进行了“回填”，即为其设置了默认目录。 然后你的订阅与该默认目录相关联。
 
 在 2013 年 10 月进行了目录回填，作为对 Azure 安全模型总体增强的一部分。 它有助于向所有 Azure 客户提供组织标识功能，并确保通过目录中的一个用户即可访问所有 Azure 资源。 没有目录就无法使用 Azure。 因此，在 2013 年 7 月 7 日之前注册但没有目录的任何用户都必须创建一个目录。 如果你已创建了一个目录，则你的订阅已与该目录相关联。
@@ -150,6 +149,6 @@ Azure AD 要求删除目录之前必须符合特定的条件。 这可以降低�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

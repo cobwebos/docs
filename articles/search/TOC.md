@@ -1,5 +1,5 @@
 # 概述
-## [What is Azure Search?](search-what-is-azure-search.md)
+## [什么是 Azure 搜索？](search-what-is-azure-search.md)
 # 入门
 ## [选择 SKU](search-sku-tier.md)
 ## [创建服务](search-create-service-portal.md)
@@ -8,6 +8,7 @@
 ### [.NET](search-create-index-dotnet.md)
 ### [REST](search-create-index-rest-api.md)
 ## [添加数据](search-what-is-data-import.md)
+### [Azure 门户](search-import-data-portal.md)
 ### [.NET](search-import-data-dotnet.md)
 ### [REST](search-import-data-rest-api.md)
 ## [搜索索引](search-query-overview.md)
@@ -25,8 +26,10 @@
 ### [服务限制](search-limits-quotas-capacity.md)
 ### [服务可伸缩性](search-capacity-planning.md)
 ### [多租户的设计模式](search-modeling-multitenant-saas-applications.md)
+
 ## 开发
 ### [升级 SDK](search-dotnet-sdk-migration.md)
+### [升级 REST API](search-api-migration.md)
 ### [为复杂数据类型建模](search-howto-complex-data-types.md)
 ## 管理
 ### 管理 Azure 搜索
@@ -37,35 +40,37 @@
 ### [搜索流量分析](search-traffic-analytics.md)
 ### [性能和优化](search-performance-optimization.md)
 ## 加载数据
-### [为数据源编制索引](search-indexer-overview.md)
-#### [Blob 存储](search-howto-indexing-azure-blob-storage.md)
-#### [Azure 表](search-howto-indexing-azure-tables.md)
-#### [SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-#### [CSV Blob](search-howto-index-csv-blobs.md)
-### [SQL Server Azure VM 连接配置](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+### [索引器概述](search-indexer-overview.md)
+### [Azure Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)
+### [Azure 表存储索引器](search-howto-indexing-azure-tables.md)
+### [Azure SQL 索引器](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+### [Azure DocumentDB 索引器](search-howto-index-documentdb.md)
+### [为 CSV Blob 创建索引](search-howto-index-csv-blobs.md)
+### [为 JSON Blob 创建索引](search-howto-index-json-blobs.md)
+### [配置与 Azure VM 上 SQL Server 的索引器连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [索引器中的字段映射](search-indexer-field-mappings.md)
-##  设计搜索体验
+##  搜索体验
+### [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
+### [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 ### [Lucene 语法查询示例](search-query-lucene-examples.md)
-### [为配置文件评分](search-get-started-scoring-profiles.md)
-### [建议器](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)
-### [标记提升](https://azure.microsoft.com/blog/2015/02/05/personalizing-search-results-announcing-tag-boosting-in-azure-search/)
+### [筛选器表达式语法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+### [评分](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
+### [建议](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [多面导航](search-faceted-navigation.md)
-### [语言分析器](https://msdn.microsoft.com/library/azure/dn879793)
-### [自定义分析器](https://msdn.microsoft.com/library/azure/mt605304)
-### [多语言搜索](search-language-support.md)
+### [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)
+### [自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 
-# 参考
-## [API 版本](search-api-versions.md)
-## [Java](/java/api/)
-## [.NET](/dotnet/api/)
-## [Lucene 查询语法](https://msdn.microsoft.com/library/azure/mt589323)
-## [简单的查询语法](https://msdn.microsoft.com/library/azure/dn798920)
-## [服务 REST](/rest/api/searchservice/)
-## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
-## [管理 REST](/rest/api/searchmanagement/)
+# 引用
+## [.NET](/dotnet/api/microsoft.azure.search)
+## [.NET（管理）](/dotnet/api/microsoft.azure.management.search)
+## [Python（管理）](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
+## [REST](/rest/api/searchservice)
+## [.NET（管理）](/rest/api/searchmanagement)
 
 # 资源
 ## [服务更新](https://azure.microsoft.com/updates/?product=search)
+## [API 版本](search-api-versions.md)
+## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
 ## [定价](https://azure.microsoft.com/pricing/details/search/)
 ## 演示站点
 ### [作业列表应用](http://aka.ms/azjobsdemo)
@@ -82,6 +87,6 @@
 ### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

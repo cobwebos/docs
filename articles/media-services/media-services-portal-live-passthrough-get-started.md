@@ -1,5 +1,5 @@
 ---
-title: "如何通过 Azure 门户使用本地编码器执行实时传送视频流 | Microsoft Docs"
+title: "在 Azure 门户中使用本地编码器实时传送流 | Microsoft 文档"
 description: "本教程将指导你完成相关步骤，以便创建经配置后可以进行直通传递的“通道”。"
 services: media-services
 documentationcenter: 
@@ -12,19 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
+ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
+ms.openlocfilehash: 0818c3124815b53119a5b2d43f16e3154afbc225
+ms.lasthandoff: 01/27/2017
 
 
 ---
-# <a name="how-to-perform-live-streaming-with-onpremise-encoders-using-the-azure-portal"></a>如何通过 Azure 门户使用本地编码器执行实时流式处理
+# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-the-azure-portal"></a>如何通过 Azure 门户使用本地编码器执行实时流式处理
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
@@ -34,7 +35,7 @@ ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
 以下是完成本教程所需具备的条件：
 
 * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
-* 一个媒体服务帐户。    若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
+* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 网络摄像机。 例如， [Telestream Wirecast 编码器](http://www.telestream.net/wirecast/overview.htm)。
 
 强烈建议你阅读以下文章：
@@ -46,6 +47,9 @@ ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
 ## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>常见实时流式处理方案
 以下步骤说明了在创建常用的实时传送视频流应用程序时涉及的任务，这些应用程序使用的通道经配置后可以进行直通传递。 本教程说明了如何创建和管理直通通道和实时事件。
 
+>[!NOTE]
+>确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。 
+    
 1. 将视频摄像机连接到计算机。 启动并配置输出多比特率 RTMP 或分段 MP4 流的本地实时编码器接收实时输入流。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](http://go.microsoft.com/fwlink/?LinkId=532824)。
    
     此步骤也可以在创建频道后执行。
@@ -59,11 +63,7 @@ ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
 5. 创建实时事件/节目。 
    
     使用 Azure 门户时，创建实时事件的同时还会创建资产。 
-   
-   > [!NOTE]
-   > 确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
-   > 
-   > 
+
 6. 在准备好开始流式传输和存档时，启动事件/节目。
 7. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
 8. 在要停止对事件进行流式传输和存档时，停止事件/节目。
@@ -79,29 +79,7 @@ ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
 
 ![通知](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
 
-## <a name="configure-streaming-endpoints"></a>配置流式处理终结点
-媒体服务所提供的动态打包可让你以下述流格式传送多比特率 MP4，无需重新打包成这些流格式：MPEG DASH、HLS、Smooth Streaming 或 HDS。 通过动态打包，只需要存储及支付一种存储格式的文件，媒体服务将根据客户端的要求创建并提供适当的响应。
-
-若要利用动态打包，你需要获取计划从中传送内容的流式处理终结点的至少一个流式处理单元。  
-
-若要创建和更改流式处理保留单元数，请执行以下操作：
-
-1. 在 [Azure 门户](https://portal.azure.com/)登录。
-2. 在“设置”窗口中，单击“流式处理终结点”。 
-3. 单击默认的流式处理终结点。 
-   
-    此时会显示“默认流式处理终结点详细信息”窗口。
-4. 若要指定流式处理单元数，请滑动“流式处理单元”滑块。
-   
-    ![流式处理单位](./media/media-services-portal-passthrough-get-started/media-services-streaming-units.png)
-5. 单击“保存”按钮保存更改。
-   
-   > [!NOTE]
-   > 分配新的单元最多需要 20 分钟即可完成。
-   > 
-   > 
-
-## <a name="create-and-start-passthrough-channels-and-events"></a>创建并启动直通通道和事件
+## <a name="create-and-start-pass-through-channels-and-events"></a>创建并启动直通通道和事件
 频道与事件/节目相关联，使用事件/节目，你可以控制实时流中的段的发布和存储。 通道管理事件。 
 
 可以通过设置 **存档窗口** 长度，指定你希望保留节目录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存储时间窗口长度还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，事件也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
@@ -176,10 +154,5 @@ ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

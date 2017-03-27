@@ -13,19 +13,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 08/29/2016
+ms.date: 03/19/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 639eb424c31abea4106cf37b14fee99a8fd9d307
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="nosql-tutorial-build-a-documentdb-c-console-application"></a>NoSQL 教程︰构建 DocumentDB C# 控制台应用程序
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
+> * [.NET Core](documentdb-dotnetcore-get-started.md)
+> * [用于 MongoDB 的 Node.js](documentdb-mongodb-samples.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
-> 
+> * [Java](documentdb-java-get-started.md)
+> * [C++](documentdb-cpp-get-started.md)
+>  
 > 
 
 欢迎使用 Azure DocumentDB .NET SDK 的 NoSQL 教程！ 学习本教程后，你将拥有一个可创建并查询 DocumentDB 资源的控制台应用程序。
@@ -42,7 +47,7 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
 * 删除文档
 * 删除数据库
 
-没有时间？ 不必担心！ 可在 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started)上获取完整的解决方案。 有关快速说明，请转到 [获取完整解决方案部分](#GetSolution) 。
+没有时间？ 不必担心！ 可在 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started)上获取完整的解决方案。 有关快速说明，请转到[“获取完整的 NoSQL 教程解决方案”部分](#GetSolution)。
 
 然后，请使用位于本页顶部或底部的投票按钮向我们提供反馈。 如果你希望我们直接与你联系，欢迎将你的电子邮件地址附在评论中。
 
@@ -51,31 +56,33 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
 ## <a name="prerequisites"></a>先决条件
 请确保你具有以下内容：
 
-* 有效的 Azure 帐户。 如果没有，可以注册 [免费帐户](https://azure.microsoft.com/free/)。
+* 有效的 Azure 帐户。 如果没有，可以注册 [免费帐户](https://azure.microsoft.com/free/)。 
+    * 或者，也可以在本教程中使用 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)。
 * [Visual Studio 2013 / Visual Studio 2015](http://www.visualstudio.com/)。
-* .NET Framework 4.6
 
 ## <a name="step-1-create-a-documentdb-account"></a>第 1 步：创建 DocumentDB 帐户
-让我们创建一个 DocumentDB 帐户。 如果已经有一个想要使用的帐户，可以跳到 [设置 Visual Studio 解决方案](#SetupVS)。
+让我们创建一个 DocumentDB 帐户。 如果已经有一个想要使用的帐户，可以跳到 [设置 Visual Studio 解决方案](#SetupVS)。 如果使用 DocumentDB Emulator，请遵循 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) 中的步骤设置该模拟器，然后直接跳到[设置 Visual Studio 解决方案](#SetupVS)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a name="a-idsetupvsastep-2-setup-your-visual-studio-solution"></a><a id="SetupVS"></a>第 2 步：设置 Visual Studio 解决方案
+## <a id="SetupVS"></a>第 2 步：设置 Visual Studio 解决方案
 1. 在计算机上打开 **Visual Studio 2015** 。
 2. 在“文件”菜单中，选择“新建”，然后选择“项目”。
 3. 在“新建项目”对话框中，选择“模板” / “Visual C#” / “控制台应用程序”，为项目命名，然后单击“确定”。
    ![“新建项目”窗口屏幕截图](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
-4. 在 **“解决方案资源管理器”**中，右键单击 Visual Studio 解决方案下方的新控制台应用程序。
-5. 接下来，在未关闭菜单的情况下，单击“管理 NuGet 包...”****
-   ![“项目”的右键菜单屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
-6. 在“Nuget”选项卡上，单击“浏览”，然后在搜索框中输入 **azure documentdb**。
-7. 在结果中找到 **Microsoft.Azure.DocumentDB**，然后单击“安装”。
-   DocumentDB 客户端库的程序包 ID 为 [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB)
+4. 在“解决方案资源管理器”中，右键单击 Visual Studio 解决方案下方的新控制台应用程序，然后单击“管理 NuGet 包...”
+    
+    ![“项目”右键菜单屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+5. 在“Nuget”选项卡上，单击“浏览”，然后在搜索框中输入 **azure documentdb**。
+6. 在结果中找到 **Microsoft.Azure.DocumentDB**，然后单击“安装”。
+   DocumentDB 客户端库的程序包 ID 是 [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB)。
    ![用于查找 DocumentDB 客户端 SDK 的 Nuget 菜单的屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+
+    如果获得有关查看解决方案更改的消息，请单击“确定”。 如果获得有关接受许可证的消息，请单击“我接受”。
 
 很好！ 现在，我们已完成安装，让我们开始编写一些代码。 可以在 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs)上找到本教程的完整代码项目。
 
-## <a name="a-idconnectastep-3-connect-to-a-documentdb-account"></a><a id="Connect"></a>第 3 步：连接到 DocumentDB 帐户
+## <a id="Connect"></a>第 3 步：连接到 DocumentDB 帐户
 首先，在 Program.cs 文件中 C# 应用程序的开始位置添加这些引用︰
 
     using System;
@@ -98,19 +105,19 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
     public class Program
     {
         // ADD THIS PART TO YOUR CODE
-        private const string EndpointUri = "<your endpoint URI>";
-        private const string PrimaryKey = "<your key>";
+        private const string EndpointUrl = "<your endpoint URL>";
+        private const string PrimaryKey = "<your primary key>";
         private DocumentClient client;
 
-接下来，转到 [Azure 门户](https://portal.azure.com) 检索 URI 和主密钥。 DocumentDB URI 和主密钥是必需的，可让应用程序知道要连接的对象，让 DocumentDB 信任应用程序的连接。
+接下来，返回到 [Azure 门户](https://portal.azure.com)检索终结点 URL 和主密钥。 终结点 URL 和主密钥是必需的，可让应用程序知道要连接的对象，使 DocumentDB 信任应用程序的连接。
 
 在 Azure 门户中，导航到 DocumentDB 帐户，然后单击“密钥” 。
 
-从门户中复制该 URI 并将它粘贴到 program.cs 文件中的 `<your endpoint URI>` 。 然后从门户中复制“主密钥”并将它粘贴到 `<your key>`。
+从门户中复制该 URI 并将它粘贴到 program.cs 文件中的 `<your endpoint URL>` 。 然后从门户中复制“主密钥”并将它粘贴到 `<your primary key>`。
 
 ![NoSQL 教程用于创建 C# 控制台应用程序的 Azure 门户的屏幕截图。 显示 DocumentDB 帐户，在“DocumentDB 帐户”边栏选项卡上突出显示“ACTIVE”中心、“键”按钮，在“键”边栏选项卡上突出显示 URI、主键、辅键的值][keys]
 
-开始使用入门应用程序时，请首先创建一个新的 **DocumentClient**实例。
+接下来，我们开始使用应用程序时，请首先创建一个新的 **DocumentClient** 实例。
 
 在 **Main** 方法下面，添加这个名为 **GetStartedDemo** 的新异步任务，将新的 **DocumentClient** 实例化。
 
@@ -121,7 +128,7 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
     // ADD THIS PART TO YOUR CODE
     private async Task GetStartedDemo()
     {
-        this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
+        this.client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
     }
 
 添加以下代码，从 **Main** 方法中运行异步任务。 **Main** 方法将捕获异常并将它们写到控制台上。
@@ -150,14 +157,14 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
                     Console.ReadKey();
             }
 
-按 **F5** 运行应用程序。
+按 **F5** 运行应用程序。 控制台窗口输出会显示消息`End of demo, press any key to exit.`，确认已建立连接。  然后即可关闭控制台窗口。 
 
 祝贺你！ 已成功连接到 DocumentDB 帐户了，现在让我们看看如何使用 DocumentDB 资源。  
 
 ## <a name="step-4-create-a-database"></a>第 4 步：创建数据库
 在添加创建数据库的代码之前，添加一个用于向控制台写入的帮助器方法。
 
-将 **WriteToConsoleAndPromptToContinue** 方法复制并粘贴到 **GetStartedDemo** 方法下面。
+将 **WriteToConsoleAndPromptToContinue** 方法复制并粘贴到 **GetStartedDemo** 方法后面。
 
     // ADD THIS PART TO YOUR CODE
     private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
@@ -167,110 +174,48 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
             Console.ReadKey();
     }
 
-可以通过使用 **DocumentClient** 类的 [CreateDatabaseAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) 方法来创建 DocumentDB [数据库](documentdb-resources.md#databases)。 数据库是跨集合分区的 JSON 文档存储的逻辑容器。
+可以通过使用 **DocumentClient** 类的 [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) 方法来创建 DocumentDB [数据库](documentdb-resources.md#databases)。 数据库是跨集合分区的 JSON 文档存储的逻辑容器。
 
-将 **CreateDatabaseIfNotExists** 方法复制并粘贴到 **WriteToConsoleAndPromptToContinue** 方法下面。
-
-    // ADD THIS PART TO YOUR CODE
-    private async Task CreateDatabaseIfNotExists(string databaseName)
-    {
-            // Check to verify a database with the id=FamilyDB does not exist
-            try
-            {
-                    await this.client.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(databaseName));
-                    this.WriteToConsoleAndPromptToContinue("Found {0}", databaseName);
-            }
-            catch (DocumentClientException de)
-            {
-                    // If the database does not exist, create a new database
-                    if (de.StatusCode == HttpStatusCode.NotFound)
-                    {
-                            await this.client.CreateDatabaseAsync(new Database { Id = databaseName });
-                            this.WriteToConsoleAndPromptToContinue("Created {0}", databaseName);
-                    }
-                    else
-                    {
-                            throw;
-                    }
-            }
-    }
-
-将以下代码复制并粘贴到客户端创建下方的 **GetStartedDemo** 方法。 这将创建一个名为 *FamilyDB*的数据库。
+将以下代码复制并粘贴到客户端创建后的 **GetStartedDemo** 方法。 这将创建一个名为 *FamilyDB*的数据库。
 
     private async Task GetStartedDemo()
     {
-        this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
+        this.client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
 
         // ADD THIS PART TO YOUR CODE
-        await this.CreateDatabaseIfNotExists("FamilyDB_oa");
+        await this.client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });
 
 按 **F5** 运行应用程序。
 
 祝贺你！ 你已成功创建 DocumentDB 数据库。  
 
-## <a name="a-idcreatecollastep-5-create-a-collection"></a><a id="CreateColl"></a>步骤 5：创建集合
+## <a id="CreateColl"></a>步骤 5：创建集合
 > [!WARNING]
-> **CreateDocumentCollectionAsync** 将创建一个具有保留吞吐量的新集合，它牵涉定价。 有关详细信息，请访问 [定价页](https://azure.microsoft.com/pricing/details/documentdb/)。
+> **CreateDocumentCollectionIfNotExistsAsync** 将创建一个具有保留吞吐量的新集合，它牵涉定价。 有关详细信息，请访问 [定价页](https://azure.microsoft.com/pricing/details/documentdb/)。
 > 
 > 
 
-可以通过使用 **DocumentClient** 类的 [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) 方法来创建[集合](documentdb-resources.md#collections)。 集合是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。
+可以通过使用 **DocumentClient** 类的 [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) 方法来创建[集合](documentdb-resources.md#collections)。 集合是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。
 
-将 **CreateDocumentCollectionIfNotExists** 方法复制并粘贴到 **CreateDatabaseIfNotExists** 方法下面。
+将以下代码复制并粘贴到数据库创建后的 **GetStartedDemo** 方法。 这将创建一个名为 *FamilyCollection* 的文档集合。
 
-    // ADD THIS PART TO YOUR CODE
-    private async Task CreateDocumentCollectionIfNotExists(string databaseName, string collectionName)
-    {
-        try
-        {
-            await this.client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri(databaseName, collectionName));
-            this.WriteToConsoleAndPromptToContinue("Found {0}", collectionName);
-        }
-        catch (DocumentClientException de)
-        {
-            // If the document collection does not exist, create a new collection
-            if (de.StatusCode == HttpStatusCode.NotFound)
-            {
-                DocumentCollection collectionInfo = new DocumentCollection();
-                collectionInfo.Id = collectionName;
+        this.client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
 
-                // Configure collections for maximum query flexibility including string range queries.
-                collectionInfo.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
-
-                // Here we create a collection with 400 RU/s.
-                await this.client.CreateDocumentCollectionAsync(
-                    UriFactory.CreateDatabaseUri(databaseName),
-                    collectionInfo,
-                    new RequestOptions { OfferThroughput = 400 });
-
-                this.WriteToConsoleAndPromptToContinue("Created {0}", collectionName);
-            }
-            else
-            {
-                throw;
-            }
-        }
-    }
-
-将以下代码复制并粘贴到数据库创建下方的 **GetStartedDemo** 方法。 这将创建一个名为 *FamilyCollection_oa* 的文档集合。
-
-        this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
-
-        await this.CreateDatabaseIfNotExists("FamilyDB_oa");
+        await this.client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });
 
         // ADD THIS PART TO YOUR CODE
-        await this.CreateDocumentCollectionIfNotExists("FamilyDB_oa", "FamilyCollection_oa");
+         await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("FamilyDB"), new DocumentCollection { Id = "FamilyCollection" });
 
 按 **F5** 运行应用程序。
 
 祝贺你！ 你已成功创建 DocumentDB 文档集合。  
 
-## <a name="a-idcreatedocastep-6-create-json-documents"></a><a id="CreateDoc"></a>步骤 6：创建 JSON 文档
-可以通过使用 **DocumentClient** 类的 [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) 方法创建[文档](documentdb-resources.md#documents)。 文档为用户定义的（任意）JSON 内容。 现在，我们可以插入一个或多个文档。 如果已有要在数据库中存储的数据，则可以使用 DocumentDB 的 [数据迁移工具](documentdb-import-data.md)。
+## <a id="CreateDoc"></a>步骤 6：创建 JSON 文档
+可以通过使用 **DocumentClient** 类的 [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) 方法创建[文档](documentdb-resources.md#documents)。 文档为用户定义的（任意）JSON 内容。 现在，我们可以插入一个或多个文档。 如果已有要在数据库中存储的数据，则可使用 DocumentDB 的 [数据迁移工具](documentdb-import-data.md)将数据导入数据库。
 
 在本例中，首先需要创建 **Family** 类来表示存储在 DocumentDB 中的对象。 此外还将创建 **Family** 中使用的 **Parent**、**Child**、**Pet** 和 **Address** 子类。 请注意，文档必须将 **ID** 属性序列化为 JSON 格式的 **ID**。 通过在 **GetStartedDemo** 方法后添加以下内部子类来创建这些类。
 
-将 **Family**、**Parent**、**Child**、**Pet** 和 **Address** 类复制并粘贴到 **WriteToConsoleAndPromptToContinue** 方法下面。
+将 **Family**、**Parent**、**Child**、**Pet** 和 **Address** 类复制并粘贴到 **WriteToConsoleAndPromptToContinue** 方法后面。
 
     private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
     {
@@ -291,7 +236,7 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
         public bool IsRegistered { get; set; }
         public override string ToString()
         {
-                return JsonConvert.SerializeObject(this);
+            return JsonConvert.SerializeObject(this);
         }
     }
 
@@ -322,7 +267,7 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
         public string City { get; set; }
     }
 
-将 **CreateFamilyDocumentIfNotExists** 方法复制并粘贴到 **CreateDocumentCollectionIfNotExists** 方法下面。
+将 **CreateFamilyDocumentIfNotExists** 方法复制并粘贴到 **Address** 类下面。
 
     // ADD THIS PART TO YOUR CODE
     private async Task CreateFamilyDocumentIfNotExists(string databaseName, string collectionName, Family family)
@@ -348,11 +293,12 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
 
 然后插入两个文档，Andersen Family 和 Wakefield Family 各一个。
 
-将以下代码复制并粘贴到文档集合创建下的 **GetStartedDemo** 方法。
+将以下代码复制并粘贴到文档集合创建后的 **GetStartedDemo** 方法。
 
-    await this.CreateDatabaseIfNotExists("FamilyDB_oa");
+    await this.client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });
+    
+    await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("FamilyDB"), new DocumentCollection { Id = "FamilyCollection" });
 
-    await this.CreateDocumentCollectionIfNotExists("FamilyDB_oa", "FamilyCollection_oa");
 
     // ADD THIS PART TO YOUR CODE
     Family andersenFamily = new Family
@@ -381,7 +327,7 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
             IsRegistered = true
     };
 
-    await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", andersenFamily);
+    await this.CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", andersenFamily);
 
     Family wakefieldFamily = new Family
     {
@@ -418,7 +364,7 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
             IsRegistered = false
     };
 
-    await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
+    await this.CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
 
 按 **F5** 运行应用程序。
 
@@ -426,10 +372,10 @@ ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
 
 ![说明 NoSQL 教程创建 C# 控制台应用程序所用帐户、联机数据库、集合和文档的层次关系的图表。](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
-## <a name="a-idqueryastep-7-query-documentdb-resources"></a><a id="Query"></a>步骤 7：查询 DocumentDB 资源
+## <a id="Query"></a>步骤 7：查询 DocumentDB 资源
 DocumentDB 支持对存储在每个集合中的 JSON 文档进行各种 [查询](documentdb-sql-query.md) 。  下面的示例代码演示了各种查询（使用 DocumentDB SQL 语法以及 LINQ），我们可以针对上一步中插入的文档执行查询。
 
-将 **ExecuteSimpleQuery** 方法复制并粘贴到 **CreateFamilyDocumentIfNotExists** 方法下面。
+将 **ExecuteSimpleQuery** 方法复制并粘贴到 **CreateFamilyDocumentIfNotExists** 方法后面。
 
     // ADD THIS PART TO YOUR CODE
     private void ExecuteSimpleQuery(string databaseName, string collectionName)
@@ -465,12 +411,12 @@ DocumentDB 支持对存储在每个集合中的 JSON 文档进行各种 [查询]
             Console.ReadKey();
     }
 
-将以下代码复制并粘贴到第二次文档创建下的 **GetStartedDemo** 方法。
+将以下代码复制并粘贴到第二个文档创建后的 **GetStartedDemo** 方法。
 
-    await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
+    await this.CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
 
     // ADD THIS PART TO YOUR CODE
-    this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
+    this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
 
 按 **F5** 运行应用程序。
 
@@ -480,102 +426,88 @@ DocumentDB 支持对存储在每个集合中的 JSON 文档进行各种 [查询]
 
 ![说明 NoSQL 教程创建 C# 控制台应用程序所用查询的范围和意义的图表。](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
 
-查询中的 [FROM](documentdb-sql-query.md#from-clause) 关键字是可选的，因为 DocumentDB 查询的范围已限制为单个集合。 因此，“FROM Families f”可与“FROM root r”或者任何其他所选变量名进行交换。 默认情况下，DocumentDB 将推断你选择的 Families、root 或变量名，并默认引用当前集合。
+查询中的 [FROM](documentdb-sql-query.md#FromClause) 关键字是可选的，因为 DocumentDB 查询的范围已限制为单个集合。 因此，“FROM Families f”可与“FROM root r”或者任何其他所选变量名进行交换。 默认情况下，DocumentDB 将推断你选择的 Families、root 或变量名，并默认引用当前集合。
 
-## <a name="a-idreplacedocumentastep-8-replace-json-document"></a><a id="ReplaceDocument"></a>步骤 8：替换 JSON 文档
+## <a id="ReplaceDocument"></a>步骤 8：替换 JSON 文档
 DocumentDB 支持替换 JSON 文档。  
 
-将 **ReplaceFamilyDocument** 方法复制并粘贴到 **ExecuteSimpleQuery** 方法下面。
+将 **ReplaceFamilyDocument** 方法复制并粘贴到 **ExecuteSimpleQuery** 方法后面。
 
     // ADD THIS PART TO YOUR CODE
     private async Task ReplaceFamilyDocument(string databaseName, string collectionName, string familyName, Family updatedFamily)
     {
-        try
-        {
-            await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
-            this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
-        }
-        catch (DocumentClientException de)
-        {
-            throw;
-        }
+         await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
+         this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
     }
 
-将以下代码复制并粘贴到查询执行下的 **GetStartedDemo** 方法。 替换文档之后，将再次运行相同查询以查看更改后的文档。
+将以下代码复制并粘贴到查询执行后的 **GetStartedDemo** 方法结尾。 替换文档之后，将再次运行相同查询以查看更改后的文档。
 
-    await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
+    await this.CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
 
-    this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
+    this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
 
     // ADD THIS PART TO YOUR CODE
     // Update the Grade of the Andersen Family child
     andersenFamily.Children[0].Grade = 6;
 
-    await this.ReplaceFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1", andersenFamily);
+    await this.ReplaceFamilyDocument("FamilyDB", "FamilyCollection", "Andersen.1", andersenFamily);
 
-    this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
+    this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
 
 按 **F5** 运行应用程序。
 
 祝贺你！ 你已成功替换 DocumentDB 文档。
 
-## <a name="a-iddeletedocumentastep-9-delete-json-document"></a><a id="DeleteDocument"></a>步骤 9：删除 JSON 文档
+## <a id="DeleteDocument"></a>步骤 9：删除 JSON 文档
 DocumentDB 支持删除 JSON 文档。  
 
-将 **DeleteFamilyDocument** 方法复制并粘贴到 **ReplaceFamilyDocument** 方法下面。
+将 **DeleteFamilyDocument** 方法复制并粘贴到 **ReplaceFamilyDocument** 方法后面。
 
     // ADD THIS PART TO YOUR CODE
     private async Task DeleteFamilyDocument(string databaseName, string collectionName, string documentName)
     {
-        try
-        {
-            await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
-            Console.WriteLine("Deleted Family {0}", documentName);
-        }
-        catch (DocumentClientException de)
-        {
-            throw;
-        }
+         await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
+         Console.WriteLine("Deleted Family {0}", documentName);
     }
 
-将以下代码复制并粘贴到第二次查询执行下的 **GetStartedDemo** 方法。
+将以下代码复制并粘贴到第二个查询执行后的 **GetStartedDemo** 方法结尾。
 
-    await this.ReplaceFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1", andersenFamily);
-
-    this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
-
+    await this.ReplaceFamilyDocument("FamilyDB", "FamilyCollection", "Andersen.1", andersenFamily);
+    
+    this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
+    
     // ADD THIS PART TO CODE
-    await this.DeleteFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1");
+    await this.DeleteFamilyDocument("FamilyDB", "FamilyCollection", "Andersen.1");
 
 按 **F5** 运行应用程序。
 
 祝贺你！ 你已成功删除 DocumentDB 文档。
 
-## <a name="a-iddeletedatabaseastep-10-delete-the-database"></a><a id="DeleteDatabase"></a>步骤 10：删除数据库
+## <a id="DeleteDatabase"></a>步骤 10：删除数据库
 删除已创建的数据库将删除该数据库及其所有子资源（集合、文档等）。
 
-将以下代码复制并粘贴到文档删除下的 **GetStartedDemo** 方法，删除整个数据库和所有子资源。
+将以下代码复制并粘贴到文档删除后的 **GetStartedDemo** 方法，删除整个数据库和所有子资源。
 
-    this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
+    this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
 
-    await this.DeleteFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1");
+    await this.DeleteFamilyDocument("FamilyDB", "FamilyCollection", "Andersen.1");
 
     // ADD THIS PART TO CODE
     // Clean up/delete the database
-    await this.client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB_oa"));
+    await this.client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB"));
 
 按 **F5** 运行应用程序。
 
 祝贺你！ 你已成功删除 DocumentDB 数据库。
 
-## <a name="a-idrunastep-11-run-your-c-console-application-all-together"></a><a id="Run"></a>步骤 11：一起运行 C# 控制台应用程序！
+## <a id="Run"></a>步骤 11：一起运行 C# 控制台应用程序！
 在 Visual Studio 中按 F5，即可在调试模式下构建应用程序。
 
 你应该看到已启动应用的输出。 输出会显示我们所添加的查询的结果，并且应与下面的示例文本相匹配。
 
-    Created FamilyDB_oa
+    Created FamilyDB
     Press any key to continue ...
-    Created FamilyCollection_oa
+    Created FamilyCollection
     Press any key to continue ...
     Created Family Andersen.1
     Press any key to continue ...
@@ -596,14 +528,19 @@ DocumentDB 支持删除 JSON 文档。
 
 祝贺你！ 你已经完成该 NoSQL 教程，并且获得了一个正常工作的 C# 控制台应用程序！
 
-## <a name="a-idgetsolutiona-get-the-complete-nosql-tutorial-solution"></a><a id="GetSolution"></a> 获取完整的 NoSQL 教程解决方案
-若要生成包含本文所有示例的 GetStarted 解决方案，你将需要以下内容：
+## <a id="GetSolution"></a> 获取完整的 NoSQL 教程解决方案
+如果没有时间完成本教程中的步骤，或者只需下载代码示例，则可从 [Github](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) 获取。 
+
+若要生成 GetStarted 解决方案，需备齐以下各项：
 
 * 有效的 Azure 帐户。 如果没有，可以注册 [免费帐户](https://azure.microsoft.com/free/)。
-* 一个 [DocumentDB 帐户][documentdb-create-account]。
+* [DocumentDB 帐户][documentdb-create-account]。
 * GitHub 上提供的 [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) 解决方案。
 
 若要在 Visual Studio 中还原 DocumentDB.NET SDK 引用，请在解决方案资源管理器中右键单击“GetStarted”解决方案，然后单击“启用 NuGet 包还原”。 接下来，按照[连接到 DocumentDB 帐户](#Connect)中所述的方法在 App.config 文件中更新 EndpointUrl 和 AuthorizationKey 值。
+
+就这么简单，生成以后即可开始操作！
+
 
 ## <a name="next-steps"></a>后续步骤
 * 需要更复杂的 ASP.NET MVC NoSQL 教程？ 请参阅 [Build a web application with ASP.NET MVC using DocumentDB](documentdb-dotnet-application.md)（使用 DocumentDB 构建具有 ASP.NET MVC 的 Web 应用程序）。
@@ -613,11 +550,5 @@ DocumentDB 支持删除 JSON 文档。
 * 在 [DocumentDB 文档页](https://azure.microsoft.com/documentation/services/documentdb/)的“Develop”（开发）部分中了解有关编程模型的详细信息。
 
 [documentdb-create-account]: documentdb-create-account.md
-[documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

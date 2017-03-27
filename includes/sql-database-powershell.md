@@ -1,6 +1,6 @@
 
 ## <a name="start-your-powershell-session"></a>启动 PowerShell 会话
-首先，应安装并运行最新的 [Azure PowerShell](https://msdn.microsoft.com/library/mt619274\(v=azure.300\).aspx)。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](../articles/powershell-install-configure.md)。
+首先，应安装并运行最新的 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 > [!NOTE]
 > SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型](../articles/azure-resource-manager/resource-group-overview.md)时才可用，因此示例使用面向 Resource Manager 的 [Azure SQL 数据库 PowerShell cmdlet](https://msdn.microsoft.com/library/azure/mt574084\(v=azure.300\).aspx)。 向后兼容支持服务管理（经典）部署模型 [Azure SQL 数据库服务管理 cmdlet](https://msdn.microsoft.com/library/azure/dn546723\(v=azure.300\).aspx)，但建议使用 Resource Manager cmdlet。
@@ -16,6 +16,6 @@
     Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

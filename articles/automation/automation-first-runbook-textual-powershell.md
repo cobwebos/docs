@@ -16,13 +16,17 @@ ms.topic: get-started-article
 ms.date: 07/19/2016
 ms.author: magoedte;sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 483a02e2f59439a278412284b9cf9b18c4ca5ee4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0f8c103b2ce0fcd4596d21af33b0a13e03dad54a
 
 
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook
-> [AZURE.SELECTOR] - [图形](automation-first-runbook-graphical.md) - [PowerShell](automation-first-runbook-textual-powershell.md) - [PowerShell 工作流](automation-first-runbook-textual.md)  
+
+> [!div class="op_single_selector"]
+> * [图形](automation-first-runbook-graphical.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
+> * [PowerShell 工作流](automation-first-runbook-textual.md)
 > 
 > 
 
@@ -35,11 +39,11 @@ ms.openlocfilehash: 483a02e2f59439a278412284b9cf9b18c4ca5ee4
 * [自动化帐户](automation-security-overview.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。  此帐户必须有权启动和停止虚拟机。
 * Azure 虚拟机。 我们将停止并启动该计算机，因此其不应为生产用计算机。
 
-## <a name="step-1-create-new-runbook"></a>步骤 1 - 创建新的 Runbook
+## <a name="step-1---create-new-runbook"></a>步骤 1 - 创建新的 Runbook
 我们首先创建一个输出文本 *Hello World*的简单 Runbook 。
 
 1. 在 Azure 门户中，打开你的自动化帐户。  
-   通过自动化帐户页面可快速查看此帐户中的资源。 你应该已拥有某些资产。 大多数资产都是自动包括在新的自动化帐户中的模块。 你还应具有在“先决条件”中提到的凭证资产 [](#prerequisites)。
+   通过自动化帐户页面可快速查看此帐户中的资源。 你应该已拥有某些资产。 大多数资产都是自动包括在新的自动化帐户中的模块。 你还应具有在 [“先决条件”](#prerequisites)中提到的凭证资产 。
 2. 单击“Runbook”  磁贴打开 Runbook 的列表。  
    ![RunbooksControl](media/automation-first-runbook-textual-powershell/automation-runbooks-control.png)  
 3. 通过单击“添加 Runbook”按钮，然后单击“创建新 Runbook”，创建一个新 Runbook。
@@ -48,7 +52,7 @@ ms.openlocfilehash: 483a02e2f59439a278412284b9cf9b18c4ca5ee4
    ![Runbook 类型](media/automation-first-runbook-textual-powershell/automation-runbook-type.png)  
 6. 单击“创建”以创建 Runbook 并打开文本编辑器  。
 
-## <a name="step-2-add-code-to-the-runbook"></a>步骤 2 - 将代码添加到 Runbook
+## <a name="step-2---add-code-to-the-runbook"></a>步骤 2 - 将代码添加到 Runbook
 你可以直接将代码键入 Runbook 中，或者通过“库”控件选择 cmdlet、Runbook 和资产，并使用任何相关的参数将它们添加到 Runbook。 在本演练中，我们将直接键入 Runbook。
 
 1. 我们的 Runbook 当前为空，请键入 *Write-Output "Hello World."*。  
@@ -56,7 +60,7 @@ ms.openlocfilehash: 483a02e2f59439a278412284b9cf9b18c4ca5ee4
 2. 通过单击“保存” 保存 Runbook。  
    ![“保存”按钮](media/automation-first-runbook-textual-powershell/automation-save-button.png)  
 
-## <a name="step-3-test-the-runbook"></a>步骤 3 - 测试 Runbook
+## <a name="step-3---test-the-runbook"></a>步骤 3 - 测试 Runbook
 在我们发布 Runbook 使其可在生产中使用之前，我们要对其进行测试以确保其能正常工作。 测试 Runbook 时，你可以运行其“草稿”版本并以交互方式查看其输出  。
 
 1. 单击“测试窗格”  打开测试窗格。  
@@ -68,7 +72,7 @@ ms.openlocfilehash: 483a02e2f59439a278412284b9cf9b18c4ca5ee4
    ![测试窗格输出](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)  
 5. 关闭测试窗格以返回到画布。
 
-## <a name="step-4-publish-and-start-the-runbook"></a>步骤 4 - 发布和启动 Runbook
+## <a name="step-4---publish-and-start-the-runbook"></a>步骤 4 - 发布和启动 Runbook
 我们刚刚创建的 Runbook 仍处于草稿模式。 我们需要发布该 Runbook，然后才可将其用于生产。 当发布 Runbook 时，你可以用草稿版本覆盖现有的已发布版本。 在本例中，我们还没有已发布版本，因为我们刚刚创建 Runbook。
 
 1. 单击“发布”以发布该 Runbook，然后在出现提示时单击“是”。  
@@ -80,8 +84,8 @@ ms.openlocfilehash: 483a02e2f59439a278412284b9cf9b18c4ca5ee4
    ![“启动”按钮](media/automation-first-runbook-textual-powershell/automation-start-button.png)  
 5. 会为我们刚刚创建的 Runbook 作业打开作业窗格。 我们可以关闭此窗格，但在这种情况下我们将其保持打开，以便可以查看该作业的进度。
 6. 作业状态显示在“作业摘要”  中并且与我们在测试该 Runbook 时看到的状态相匹配。  
-   ![](media/automation-first-runbook-textual-powershell/automation-job-summary.png)  
-7. 一旦此 Runbook 状态显示“已完成”，单击“输出”。  *Hello World*。  
+   ![作业摘要](media/automation-first-runbook-textual-powershell/automation-job-summary.png)  
+7. 一旦此 Runbook 状态显示“已完成”，单击“输出”。  Hello World。  
    ![作业输出](media/automation-first-runbook-textual-powershell/automation-job-output.png)
 8. 关闭“输出”窗格。
 9. 单击“所有日志”打开 Runbook 作业的“流”窗格。 应该只会在输出流中看到 *Hello World*，但此窗格也可以显示 Runbook 作业的其他流，例如，“详细”和“错误”（如果 Runbook 向其写入)。  
@@ -91,8 +95,8 @@ ms.openlocfilehash: 483a02e2f59439a278412284b9cf9b18c4ca5ee4
     ![作业列表](media/automation-first-runbook-textual-powershell/automation-job-list.png)  
 12. 你可以在此作业上单击以打开我们启动 Runbook 时查看的相同的作业窗格。 这样你就可以回溯并查看为特定 Runbook 创建的任何作业的详细信息。
 
-## <a name="step-5-add-authentication-to-manage-azure-resources"></a>步骤 5 - 添加身份验证来管理 Azure 资源
-我们已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 我们想要让其管理 Azure 资源。 然而，除非使用“先决条件”中引用的凭据对其进行身份验证，否则它将无法进行管理 [](#prerequisites)。 我们使用 **Add-AzureRmAccount** cmdlet 实现此目的。
+## <a name="step-5---add-authentication-to-manage-azure-resources"></a>步骤 5 - 添加身份验证来管理 Azure 资源
+我们已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 我们想要让其管理 Azure 资源。 然而，除非使用[“先决条件”](#prerequisites)中引用的凭据对其进行身份验证，否则它将无法进行管理 。 我们使用 **Add-AzureRmAccount** cmdlet 实现此目的。
 
 1. 通过单击 MyFirstRunbook-PowerShell 窗格上的“编辑”  打开文本编辑器。  
    ![编辑 Runbook](media/automation-first-runbook-textual-powershell/automation-edit-runbook.png)  
@@ -108,7 +112,7 @@ ms.openlocfilehash: 483a02e2f59439a278412284b9cf9b18c4ca5ee4
 4. 单击“测试”窗格，以便我们可以测试 Runbook  。
 5. 单击“启动”以启动测试  。 测试完成后，应收到类似以下显示你帐户中基本信息的输出。 这可确认凭据有效。 <br> ![身份验证](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 
-## <a name="step-6-add-code-to-start-a-virtual-machine"></a>步骤 6 – 添加用于启动虚拟机的代码
+## <a name="step-6---add-code-to-start-a-virtual-machine"></a>步骤 6 – 添加用于启动虚拟机的代码
 现在我们的 Runbook 要对 Azure 订阅进行身份验证，我们可以管理资源。 我们将添加一个命令用于启动虚拟机。 可以在你的 Azure 订阅中选取任何虚拟机，现在将该名称硬编码到该 cmdlet。
 
 1. 在 *Add-AzureRmAccount* 后面键入 *Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'*（提供要启动的虚拟机的名称和资源组名称）。  
@@ -123,7 +127,7 @@ ms.openlocfilehash: 483a02e2f59439a278412284b9cf9b18c4ca5ee4
 2. 保存 Runbook，然后单击“测试”窗格，以便我们可以测试 Runbook  。
 3. 单击“启动”以启动测试  。 一旦测试完成后，检查已启动的虚拟机。
 
-## <a name="step-7-add-an-input-parameter-to-the-runbook"></a>步骤 7 - 将输入参数添加到 Runbook
+## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>步骤 7 - 将输入参数添加到 Runbook
 我们的 Runbook 目前会启动我们在 Runbook 中硬编码的虚拟机，但如果可以在启动 Runbook 时指定虚拟机，它会更有用。 我们现在将输入参数添加到 Runbook，以提供该功能。
 
 1. 将 *VMName* 和 *ResourceGroupName* 的参数添加到 Runbook，并将这些变量与 **Start-AzureRmVM** cmdlet 配合使用，如以下示例所示。  
@@ -164,6 +168,6 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

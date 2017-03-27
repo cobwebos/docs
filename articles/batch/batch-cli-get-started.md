@@ -3,7 +3,7 @@ title: "Azure 批处理 CLI 入门 | Microsoft 文档"
 description: "Azure CLI 中用于管理 Azure Batch 服务资源的 Batch 命令简介"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -12,21 +12,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 09/30/2016
-ms.author: marsma
+ms.date: 01/23/2017
+ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a874623c7ab24478af14e6cf4391dcc29052590f
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 698c481e2eff5e0a3b893a0377d9f4cd2f052eb4
+ms.lasthandoff: 03/21/2017
 
 
 ---
-# <a name="get-started-with-azure-batch-cli"></a>Azure Batch CLI 入门
+# <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
+
 使用跨平台 Azure 命令行接口 (Azure CLI) 可以在 Linux、Mac 和 Windows 命令 shell 中管理 Batch 帐户和资源，例如池、作业和任务。 使用 Azure CLI，可以执行许多与通过 Batch API、Azure 门户和 Batch PowerShell cmdlet 执行的相同任务并为其编写脚本。
 
 本文基于 Azure CLI 版本 0.10.5。
 
 ## <a name="prerequisites"></a>先决条件
-* [安装 Azure CLI](../xplat-cli-install.md)
+* [安装 Azure CLI](../cli-install-nodejs.md)
 * [将 Azure CLI 连接到 Azure 订阅](../xplat-cli-connect.md)
 * 切换到 **Resource Manager 模式**：`azure config mode arm`
 
@@ -129,7 +132,7 @@ ms.openlocfilehash: a874623c7ab24478af14e6cf4391dcc29052590f
 
 尽管可以使用命令行选项执行许多资源创建操作，但有些功能需要 JSON 格式的文件（包含资源详细信息）。 例如，若要指定启动任务的资源文件，必须使用 JSON 文件。
 
-若要查找创建资源所需的 JSON，请参阅 MSDN 上的[批处理 REST API 参考][rest_api]文档。 每个“Add *resource type*”（添加 &lt;资源类型&gt;）主题都包含用于创建资源的示例 JSON，可将它用作 JSON 文件的模板。 例如，在[将池添加到帐户][rest_add_pool]中可以找到用于创建池的 JSON。
+若要查找创建资源所需的 JSON，请参阅 MSDN 上的 [Batch REST API 参考][rest_api]文档。 每个“Add *resource type*”（添加 &lt;资源类型&gt;）主题都包含用于创建资源的示例 JSON，可将它用作 JSON 文件的模板。 例如，在[将池添加到帐户][rest_add_pool]中可以找到用于创建池的 JSON。
 
 > [!NOTE]
 > 如果在创建资源时指定 JSON 文件，则会忽略在命令行上为该资源指定的所有其他参数。
@@ -259,20 +262,15 @@ Batch CLI 支持 Batch 服务所支持的所有三个子句：
 * 使用 `-h` 获取任何 CLI 命令的 **帮助文本**
 * 使用 `-v` 和 `-vv` 显示 **verbose** 命令输出；`-vv` 表示“特别”详细，可显示实际的 REST 请求和响应。 使用这些开关可以方便地显示完整的错误输出。
 * 可以使用 `--json` 选项查看 **JSON 格式的命令输出**。 例如， `azure batch pool show "pool001" --json` 以 JSON 格式显示 pool001 的属性。 然后，可以复制并修改此输出，以便在 `--json-file` 中使用（请参阅本文前面的 [JSON 文件](#json-files) ）。
-* [MSDN 上的批处理论坛][batch_forum]是一个极佳的帮助资源，受到批处理团队成员的重点关注。 如果遇到问题或需要特定操作的帮助，请务必在这里发布问题。
+* [MSDN 上的 Batch 论坛][batch_forum]是一个极佳的帮助资源，受到 Batch 团队成员的密切关注。 如果遇到问题或需要特定操作的帮助，请务必在这里发布问题。
 * Azure CLI 目前不一定支持所有的 Batch 资源操作。 例如，目前无法指定池的应用程序包 *版本* ，只能指定包 ID。 在这种情况下，可能需要为命令提供 `--json-file` ，而不是使用命令行选项。 请务必安装最新的 CLI 版本，获取将来所做的增强。
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [Application deployment with Azure Batch application packages](batch-application-packages.md) （使用 Azure Batch 应用程序包部署应用程序），了解如何使用此功能来管理和部署 Batch 计算节点上执行的应用程序。
-* 有关如何减少项数和有关针对 Batch 查询返回的信息类型的详细信息，请参阅 [有效地查询 Batch 服务](batch-efficient-list-queries.md) 。
+* 有关如何减少项数以及针对 Batch 查询返回的信息类型的详细信息，请参阅 [Query the Batch service efficiently](batch-efficient-list-queries.md) （有效查询 Batch 服务）。
 
 [batch_forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

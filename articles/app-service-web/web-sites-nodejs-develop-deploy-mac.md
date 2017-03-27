@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c63b2b59143b57d6666910e701d8810bd517a42d
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 335c6fc1bab097367f2d380466d19ea70c7660c2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -47,7 +48,7 @@ ms.openlocfilehash: c63b2b59143b57d6666910e701d8810bd517a42d
 > [!NOTE]
 > 若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益](/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)，或者[注册免费试用帐户](/en-us/pricing/free-trial/?WT.mc_id=A261C142F)。
 > 
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751)（试用应用服务）。 在那里，可以立即在应用服务中创建短期的入门级 Web 应用 - 无需信用卡，也无需做出承诺。
+> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://azure.microsoft.com/try/app-service/)（试用应用服务）。 在那里，可以立即在应用服务中创建短期的入门级 Web 应用 - 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -117,7 +118,7 @@ ms.openlocfilehash: c63b2b59143b57d6666910e701d8810bd517a42d
 4. 打开命令行，并使用以下命令在本地启动 Web 应用。
    
         node server.js
-5. 打开 web 浏览器并导航到 http://localhost:1337。 
+5. 打开 web 浏览器并导航到 http://localhost:1337 。 
    
     显示“Hello World”的网页随即出现，如以下屏幕截图所示。
    
@@ -186,7 +187,7 @@ Node.js 提供可由您的应用程序使用的丰富的模块生态系统。 �
 
 如果将应用程序部署到 Azure 后遇到问题，请参阅 [如何在 Azure App Service 中调试 Node.js 应用程序](web-sites-nodejs-debug.md) ，以了解有关诊断问题的信息。
 
-本文将使用 Azure 门户来创建 Web 应用。 你也可以使用 [Azure 命令行接口](../xplat-cli-install.md)或 [Azure PowerShell](../powershell-install-configure.md) 执行相同的操作。
+本文将使用 Azure 门户来创建 Web 应用。 你也可以使用 [Azure 命令行接口](../cli-install-nodejs.md)或 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 执行相同的操作。
 
 有关如何在 Azure 上开发 Node.js 应用程序的详细信息，请参阅 [Node.js 开发人员中心](/develop/nodejs/)。
 
@@ -199,9 +200,4 @@ Node.js 提供可由您的应用程序使用的丰富的模块生态系统。 �
 [deployment-part]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-part.png
 [deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

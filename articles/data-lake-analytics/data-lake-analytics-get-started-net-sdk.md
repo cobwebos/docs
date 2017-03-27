@@ -1,6 +1,6 @@
 ---
 title: "通过 .NET SDK 开始使用 Azure Data Lake Analytics | Microsoft 文档"
-description: "了解如何使用 .NET SDK 来创建 Data Lake Store 帐户、创建 Data Lake Analytics 作业以及提交用 U SQL 编写的作业。 "
+description: "了解如何使用 .NET SDK 创建 Data Lake Analytics 帐户、创建 Data Lake Analytics 作业，以及提交使用 U-SQL 编写的作业。 "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 10/26/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60deb681b1090444f5c178fb0c9b0458ea83f73d
+ms.sourcegitcommit: 8e092e30c9c4186e4687efeacf9ea1f6b4bf431c
+ms.openlocfilehash: f617d997bc34d39f7635a87c4e5c88b1ebdc0ff8
 
 
 ---
@@ -196,7 +196,6 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
                     Console.WriteLine(nextAction);
             }
 
-
             // List all Data Lake Analytics accounts within the subscription
             public static List<DataLakeAnalyticsAccount> ListADLAAccounts()
             {
@@ -217,6 +216,7 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
 
                 return accounts;
             }
+
             public static Guid SubmitJobByPath(string scriptPath, string jobName)
             {
                 var script = File.ReadAllText(scriptPath);
@@ -241,10 +241,10 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
           }
         }
 
-1. 按 **F5** 运行应用程序。 输出如下所示：
+5. 按 **F5** 运行应用程序。 输出如下所示：
    
     ![Azure Data Lake Analytics 作业 U-SQL .NET SDK 输出](./media/data-lake-analytics-get-started-net-sdk/data-lake-analytics-dotnet-job-output.png)
-2. 检查输出文件。  默认路径和文件名为 c:\Temp\SearchLog-from-Data-Lake.csv。
+6. 检查输出文件。  默认路径和文件名为 c:\Temp\SearchLog-from-Data-Lake.csv。
 
 ## <a name="see-also"></a>另请参阅
 * 若要了解使用其他工具来完成此教程，请单击页面顶部的选项卡选择器。
@@ -257,6 +257,6 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

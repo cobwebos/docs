@@ -3,7 +3,7 @@ title: "Azure RemoteApp 模板映像中的内容是什么？ | Microsoft Docs"
 description: "了解 Azure RemoteApp 包含的模板映像。"
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: mbaldwin
 ms.assetid: 7f8442b2-81da-421e-a453-aa53ba2066b7
 ms.service: remoteapp
@@ -11,11 +11,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b589fb3b1cdbf1f14ece6adf43e1eb0313ff09df
+ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
+ms.openlocfilehash: 21ae6458d1d65698c0c8fc7081696cb7406a918c
 
 
 ---
@@ -40,7 +40,7 @@ Azure RemoteApp 订阅包括三个模板映像：
 
 继续阅读了解每个映像所包含内容的详细信息。
 
-## <a name="windows-server-2012-r2-the-vanilla-image"></a>Windows Server 2012 R2（“普通映像”）
+## <a name="windows-server-2012-r2--the-vanilla-image"></a>Windows Server 2012 R2（“普通映像”）
 此映像基于 Microsoft Windows Server 2012 R2 Datacenter 操作系统，安装有以下角色和功能，以便满足 Azure RemoteApp 模板映像的要求：
 
 * .NET Framework 4.5, 3.5.1, 3.5
@@ -115,6 +115,6 @@ Office 365 是最常用的应用程序，因此创建了可以使用它的“自
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

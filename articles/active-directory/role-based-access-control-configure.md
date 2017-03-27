@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 门户中使用基于角色的访问控制 | Microsoft Docs"
+title: "Azure 门户中基于角色的访问控制 | Microsoft Docs"
 description: "在 Azure 门户中使用基于角色的访问控制开始进行访问权限管理。 角色分配用于将权限分配给你的资源。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/10/2016
+ms.date: 02/17/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b930fe0a4a47cffebb579be43a77e87548549cfd
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: c3e3e407eb6a05b208863443bb8ccf3cba701b23
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -24,8 +25,6 @@ ms.openlocfilehash: b930fe0a4a47cffebb579be43a77e87548549cfd
 > [!div class="op_single_selector"]
 > * [管理用户或组的访问权限](role-based-access-control-manage-assignments.md)
 > * [管理资源的访问权限](role-based-access-control-configure.md)
-> 
-> 
 
 Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，你可以仅授予用户执行其作业所需的访问次数。 本文可帮助你在 Azure 门户中启动并运行 RBAC。 如果想要解有关 RBAC 如何帮助你管理访问权限的详细信息，请参阅 [什么是基于角色的访问控制](role-based-access-control-what-is.md)。
 
@@ -44,8 +43,6 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访�
 
 > [!NOTE]
 > 经典订阅管理员和协同管理员被视为新的 RBAC 模型中订阅的所有者。
-> 
-> 
 
 ## <a name="add-access"></a>添加访问权限
 授予资源、资源组或订阅（即角色分配范围）内的访问权限。
@@ -61,12 +58,11 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访�
 成功添加角色分配后，该角色分配将出现在“用户”  边栏选项卡上。
 
 ## <a name="remove-access"></a>删除访问权限
-1. 在“访问控制”边栏选项卡上选择角色分配。
-2. 选择“分配详细信息”边栏选项卡中的“删除”  。  
-3. 选择“确定”  以确认删除操作。  
-    ![用户边栏选项卡 - 从角色中删除屏幕截图](./media/role-based-access-control-configure/remove-access1.png)
+1. 使用访问控制边栏选项卡上的复选框选择一个或多个角色分配。
+2. 选择“删除”。  
+3. 将弹出一个对话框，要求确认操作。 选择“是”以删除角色分配。
 
-不能删除继承的分配。 请注意，在下图中，“删除”按钮为灰显。 相反，看看“分配在”  的详细信息。 请转到该处列出的资源以删除角色分配。
+不能删除继承的分配。 如果需要删除继承的分配，则需要在创建角色分配的作用域上进行操作。 在“作用域”列的“继承”旁，有一条链接指向分配了此角色的资源。 请转到该处列出的资源以删除角色分配。
 
 ![用户边栏选项卡 - 继承的访问权限禁用删除按钮屏幕截图](./media/role-based-access-control-configure/remove-access2.png)
 
@@ -81,10 +77,5 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访�
 * [创建访问变更历史记录报表](role-based-access-control-access-change-history-report.md)
 * 请参阅 [RBAC 内置角色](role-based-access-built-in-roles.md)
 * 定义你在 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

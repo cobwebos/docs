@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/20/2016
+ms.date: 03/17/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e072c3592ec8e62df9064d33df90de67da394671
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 4969b43831a3813a4e76c6447c252a9c458f371a
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -30,13 +31,20 @@ ms.openlocfilehash: e072c3592ec8e62df9064d33df90de67da394671
 > [!div class="op_single_selector"]
 > * [仅限云的 Azure AD 租户](active-directory-ds-getting-started-password-sync.md)
 > * [已同步的 Azure AD 租户](active-directory-ds-getting-started-password-sync-synced-tenant.md)
-> 
-> 
+>
+>
 
 <br>
 
 ## <a name="task-5-enable-password-synchronization-to-aad-domain-services-for-a-synced-azure-ad-tenant"></a>任务 5：对已同步的 Azure AD 租户启用 AAD 域服务的密码同步
-已同步的 Azure AD 租户设置为使用 Azure AD Connect 与组织的本地目录同步。 默认情况下，Azure AD Connect 不会将 NTLM 和 Kerberos 凭据哈希同步到 Azure AD。 若要使用 Azure AD 域服务，需要将 Azure AD Connect 配置为同步 NTLM 和 Kerberos 身份验证所需的凭据哈希。 通过以下步骤可将所需的凭据哈希同步到 Azure AD 租户。
+已同步的 Azure AD 租户设置为使用 Azure AD Connect 与组织的本地目录同步。 默认情况下，Azure AD Connect 不会将 NTLM 和 Kerberos 凭据哈希同步到 Azure AD。 若要使用 Azure AD 域服务，需要将 Azure AD Connect 配置为同步 NTLM 和 Kerberos 身份验证所需的凭据哈希。 
+
+> [!WARNING]
+> 每次启用 Azure AD 域服务时，必须允许密码同步到 AAD 域服务。 你可能曾经为 Azure AD 目录启用 Azure AD 域服务，但随后又关闭了它。 但是，下一次为目录启用 Azure AD 域服务时，仍需启用密码同步。
+>
+>
+
+通过以下步骤可将所需的凭据哈希同步到 Azure AD 租户。
 
 ### <a name="install-or-update-azure-ad-connect"></a>安装或更新 Azure AD Connect
 在加入域的计算机上安装 Azure AD Connect 的最新建议的版本。 如果有 Azure AD Connect 安装的现有实例，需要更新该实例以使用最新版本的 Azure AD Connect。 若要避免可能已修复的已知的问题/bug，请确保始终使用最新版本的 Azure AD Connect。
@@ -47,8 +55,8 @@ ms.openlocfilehash: e072c3592ec8e62df9064d33df90de67da394671
 
 > [!WARNING]
 > 必须安装推荐的最新的 Azure AD Connect 版本，才能将旧密码凭据（NTLM 和 Kerberos 身份验证需要的）同步到 Azure AD 租户。 此功能不可用于之前的 Azure AD Connect 版本或旧版的 DirSync 工具。
-> 
-> 
+>
+>
 
 有关 Azure AD connect 的安装说明，请参阅以下文章 — [Azure AD Connect 入门](../active-directory/active-directory-aadconnect.md)
 
@@ -78,10 +86,4 @@ Azure AD 的凭据哈希同步需要一些时间，具体取决于目录的大�
 * [管理受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-administer-domain.md)
 * [将 Windows 虚拟机加入到受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-join-windows-vm.md)
 * [将 Red Hat Enterprise Linux 虚拟机加入到受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

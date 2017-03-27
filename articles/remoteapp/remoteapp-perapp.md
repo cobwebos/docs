@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 08/15/2016
+ms.date: 11/23/2016
 ms.author: piotrci
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 07cadd332edc4c55d87ca76aabeaba824d1e2673
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6dcadbfb99d4d111ab9ddde9d74db65b5542a8f5
 
 
 ---
@@ -49,7 +49,7 @@ Azure RemoteApp 最初只启用了一种“发布”应用程序的方式：管�
 ## <a name="how-to-get-azure-remoteapp-powershell-cmdlets"></a>如何获取 Azure RemoteApp PowerShell cmdlet
 若要试用新的预览版功能，需要使用 Azure PowerShell cmdlet。 目前不能使用 Azure 管理门户启用新的应用程序发布模式。
 
-首先，请确保已安装 [Azure PowerShell 模块](../powershell-install-configure.md) 。
+首先，请确保已安装 [Azure PowerShell 模块](/powershell/azureps-cmdlets-docs) 。
 
 然后在管理员模式下启动 PowerShell 控制台并运行以下 cmdlet：
 
@@ -106,6 +106,6 @@ AclLevel 属性具有以下值：
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

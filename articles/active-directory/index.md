@@ -1,14 +1,27 @@
 ---
 layout: LandingPage
+description: Learn how to synchronize directories and enable single sign-on. Documentation shows you how to integrate a full suite of identity management capabilities.
+title: "Azure Active Directory 文档 - 教程和 API 参考 | Microsoft 文档"
+services: active-directory
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: active-directory
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 844e18a1ab702773799cf9045844d982d9ee2581
-ms.openlocfilehash: 0e1d5e7e38aa23c0888e166d584b17fdcbdce40f
+ms.sourcegitcommit: 2dc340dcb864325554700f58057d157dd46f7f7a
+ms.openlocfilehash: ba13ea0d6c17e50e7b1887373d67ca691bdfad01
+ms.lasthandoff: 02/09/2017
 
 ---
 
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory 文档
 
-Azure Active Directory (Azure AD) 是 Microsoft 提供的基于多租户云的目录和标识管理服务。  Azure AD 为运行在 Azure 和本地的应用程序提供标识和访问功能。  
+了解如何使用 Azure Active Directory (Azure AD) 同步目录和启用单一登录。 教程、API 参考和其他文档介绍了如何集成标识管理功能，包括多重身份验证、设备注册、基于角色的访问控制以及安全监视和警报。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -30,7 +43,7 @@ Azure Active Directory (Azure AD) 是 Microsoft 提供的基于多租户云的�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=active-directory">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=active-directory">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -87,33 +100,44 @@ Azure Active Directory (Azure AD) 是 Microsoft 提供的基于多租户云的�
 
 ---
 
-## <a name="reference"></a>参考
-
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell 参考](/powershell/)
-
-###<a name="azure-cli"></a>Azure CLI
-[在 Azure CLI 中使用 Azure Active Directory](/cli/azure/ad)
-
-###<a name="net"></a>.NET
-[Azure Active Directory .NET 参考](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
-
-###<a name="java"></a>Java
-[Azure Java API 参考](/java/api/)
-
-
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure Active Directory 文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+<h2>引用</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/active-directory/adal/microsoft.identitymodel.clients.activedirectory">.NET</a></p>
+                        <p><a href="/java/api">Java</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>其他</h3>
+                        <p><a href="/azure/active-directory/active-directory-service-limits-restrictions">服务限制和局限性</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 

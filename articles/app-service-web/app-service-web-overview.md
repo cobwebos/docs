@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/28/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d366fc36e2731be34d70fd4e4fa082370c452d63
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 83c063bb003ccda80ba6c1a74aadcd624d77ae47
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -46,7 +47,7 @@ ms.openlocfilehash: d366fc36e2731be34d70fd4e4fa082370c452d63
 以下是适用于 Web 应用的一些主要应用服务功能：
 
 * **多种语言和框架** — 应用服务为 ASP.NET、Node.js、Java、PHP 和 Python 提供一流支持。 也可以在应用服务 VM 上运行 [PowerShell 和其他脚本或可执行文件](web-sites-create-web-jobs.md) 。
-* **DevOps 优化** — 使用 Visual Studio Team Services、GitHub 或 BitBucket 设置 [持续集成和部署](app-service-continuous-deployment.md) 。 通过 [测试和过渡环境](web-sites-staged-publishing.md)提升更新。 执行 [A/B 测试](app-service-web-test-in-production-get-start.md)。 在应用服务中，利用 [Azure PowerShell](../powershell-install-configure.md) 或[跨平台命令行接口 (CLI)](../xplat-cli-install.md) 来管理应用。
+* **DevOps 优化** — 使用 Visual Studio Team Services、GitHub 或 BitBucket 设置 [持续集成和部署](app-service-continuous-deployment.md) 。 通过 [测试和过渡环境](web-sites-staged-publishing.md)提升更新。 执行 [A/B 测试](app-service-web-test-in-production-get-start.md)。 在应用服务中，利用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[跨平台命令行接口 (CLI)](../cli-install-nodejs.md) 来管理应用。
 * **具有高可用性的全局缩放** - 以手动或自动方式进行[增大](web-sites-scale.md)或[扩大](../monitoring-and-diagnostics/insights-how-to-scale.md)。 在 Microsoft 全球数据中心基础结构中的任意位置托管应用，并且应用服务 [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) 承诺高可用性。
 * **到 SaaS 平台和本地数据的连接** - 从适用于企业系统（例如 SAP、Siebel 和 Oracle）的 50 多个 [连接器](../connectors/apis-list.md) 、SaaS 服务（例如 Salesforce 和 Office 365）以及 Internet 服务（例如 Facebook 和 Twitter）中进行选择。 使用[混合连接](../biztalk-services/integration-hybrid-connection-overview.md)和 [Azure 虚拟网络](web-sites-integrate-with-vnet.md)访问本地数据。
 * **安全性和合规性** - 应用服务符合 [ISO、SOC 和 PCI](https://www.microsoft.com/TrustCenter/)的要求。
@@ -58,13 +59,20 @@ ms.openlocfilehash: d366fc36e2731be34d70fd4e4fa082370c452d63
 除了应用服务中的 Web 应用，Azure 还提供可用来托管网站和 Web 应用程序的其他服务。 大多数情况下，Web Apps 是最佳选择。  对于微服务体系结构，请考虑使用 [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)；如果需要更好地控制运行代码的 VM，请考虑使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)。 有关如何在这些 Azure 服务之间做出选择的详细信息，请参阅 [Azure App Service、虚拟机、Service Fabric 和云服务的比较](choose-web-site-cloud-service-vm.md)。
 
 ## <a name="getting-started"></a>入门
-若要首先在应用服务中向新 Web 应用部署示例代码，请遵循 [在 5 分钟内将第一个 Web 应用部署到 Azure](app-service-web-get-started.md) 教程。 你需要一个免费 Azure 帐户。
+若要开始在应用服务中向新 Web 应用部署示例代码，请遵循下拉框中的某篇教程。 你需要一个免费 Azure 帐户。
 
-如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> [!div class="op_single_selector"]
+> * [在 5 分钟内将第一个 HTML 站点部署到 Azure](app-service-web-get-started-html-cli-nodejs.md)
+> * [在 5 分钟内将第一个 ASP.NET Web 应用部署到 Azure](app-service-web-get-started-dotnet-cli-nodejs.md)
+> * [在 5 分钟内将第一个 PHP Web 应用部署到 Azure](app-service-web-get-started-php-cli-nodejs.md)
+> * [在 5 分钟内将第一个 Node.js Web 应用部署到 Azure](app-service-web-get-started-nodejs-cli-nodejs.md)
+> * [在 5 分钟内将第一个 Python Web 应用部署到 Azure](app-service-web-get-started-python-cli-nodejs.md)
+> * [在 5 分钟内将第一个 Java Web 应用部署到 Azure](app-service-web-get-started-java.md)
+> 
+> 
 
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+> [!NOTE]
+> 无需 Azure 帐户即可 [试用应用服务](https://azure.microsoft.com/try/app-service/) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
+> 
+> 
 

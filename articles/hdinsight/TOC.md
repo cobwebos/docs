@@ -6,14 +6,16 @@
 ## [HBase](hdinsight-hbase-overview.md)
 ## [Apache Storm](hdinsight-storm-overview.md)
 ## [已加入域的 HDInsight 预览版](hdinsight-domain-joined-introduction.md)
+## [Kafka 预览版](hdinsight-apache-kafka-introduction.md)
 
 # 入门
 ## [Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [交互式 Hive 预览版入门](hdinsight-hadoop-use-interactive-hive.md)
-## [R Server 预览版入门](hdinsight-hadoop-r-server-get-started.md)
+## [从 R Server 开始](hdinsight-hadoop-r-server-get-started.md)
 ## [Spark 入门](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [HBase 和 NoSQL 入门](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm 入门](hdinsight-apache-storm-tutorial-get-started-linux.md)
+## [交互式 Hive 预览版入门](hdinsight-hadoop-use-interactive-hive.md)
+## [Kafka 预览版入门](hdinsight-apache-kafka-get-started.md)
 ## [Hadoop 沙盒](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake 工具与 Hortonworks 沙盒](hdinsight-hadoop-emulator-visual-studio.md)
 ## [适用于 Visual Studio 的工具](hdinsight-hadoop-visual-studio-tools-get-started.md)
@@ -47,23 +49,29 @@
 ### [将 DataFu 与 Pig 配合使用](hdinsight-hadoop-use-pig-datafu-udf.md)
 ### [按需群集](hdinsight-hadoop-create-linux-clusters-adf.md)
 ### [提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)
-## 使用 R Server 预览版
+## 使用 R Server
 ### [存储选项](hdinsight-hadoop-r-server-storage.md)
 ### [安装 RStudio](hdinsight-hadoop-r-server-install-r-studio.md)
 ### [计算上下文](hdinsight-hadoop-r-server-compute-contexts.md)
+### [ScaleR 和 SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## 使用 Spark 进行内存中处理
+### [使用 Data Lake Store](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [使用 BI 工具](hdinsight-apache-spark-use-bi-tools.md)
-### [独立应用](hdinsight-apache-spark-create-standalone-application.md)
+### [创建独立应用](hdinsight-apache-spark-create-standalone-application.md)
+### [使用 Eclipse 开发应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
+### [使用 IntelliJ 开发应用](hdinsight-apache-spark-intellij-tool-plugin.md)
 ### [处理流事件](hdinsight-apache-spark-eventhub-streaming.md)
 ### [预测 HVAC 性能](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [预测食品检测结果](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 ### [分析网站日志](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+### [使用 Caffe 深入学习](hdinsight-deep-learning-caffe-spark.md)
+### [使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 ### [Jupyter 笔记本内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-### [适用于 Jupyter 笔记本的包](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [通过单元 Magic 将外部包与 Jupyter 配合使用](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [通过脚本操作将外部包与 Jupyter 配合使用](hdinsight-apache-spark-python-package-installation.md)
 ### [使用本地 Jupyter 笔记本](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [远程作业与 Livy](hdinsight-apache-spark-livy-rest-interface.md)
-### [使用 IntelliJ 开发应用](hdinsight-apache-spark-intellij-tool-plugin.md)
-### [使用 IntelliJ 远程调试](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+### [使用 IntelliJ 远程调试作业](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [管理资源](hdinsight-apache-spark-resource-manager.md)
 ### [跟踪和调试作业](hdinsight-apache-spark-job-debugging.md)
 ### [已知问题](hdinsight-apache-spark-known-issues.md)
@@ -71,9 +79,7 @@
 ### [使用 Phoenix 和 SQLLine](hdinsight-hbase-phoenix-squirrel-linux.md)
 ### [分析实时推文](hdinsight-hbase-analyze-twitter-sentiment.md)
 ### [在虚拟网络上创建群集](hdinsight-hbase-provision-vnet.md)
-### [配置 VPN 连接](hdinsight-hbase-geo-replication-configure-vnets.md)
-### [配置 DNS 服务器](hdinsight-hbase-geo-replication-configure-dns.md)
-### [配置 HBase 异地复制](hdinsight-hbase-geo-replication.md)
+### [配置 HBase 复制](hdinsight-hbase-replication.md)
 ### [使用 Java 开发应用](hdinsight-hbase-build-java-maven-linux.md)
 ## 使用 Storm
 ### [部署和管理拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)
@@ -94,6 +100,10 @@
 ### [配置](hdinsight-domain-joined-configure.md)
 ### [管理](hdinsight-domain-joined-manage.md)
 ### [配置 Hive 策略](hdinsight-domain-joined-run-hive.md)
+## 使用 Kafka 预览版
+### [复制 Kafka 数据](hdinsight-apache-kafka-mirroring.md)
+### [与 Spark 配合使用](hdinsight-apache-spark-with-kafka.md)
+### [与 Storm 配合使用](hdinsight-apache-storm-with-kafka.md)
 ## 开发
 ### [开发 Java MapReduce 程序](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [开发 Scalding MapReduce 作业](hdinsight-hadoop-mapreduce-scalding.md)
@@ -149,6 +159,7 @@
 #### [使用 Azure CLI](hdinsight-administer-use-command-line.md)
 ### [使用 Ambari Web UI 管理群集](hdinsight-hadoop-manage-ambari.md)
 #### [使用 Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+### [添加存储帐户](hdinsight-hadoop-add-storage.md)
 ### [上载 Hadoop 作业的数据](hdinsight-upload-data.md)
 ### [使用 Sqoop 导入和导出数据](hdinsight-use-sqoop.md)
 #### [使用 SSH 进行连接](hdinsight-use-sqoop-mac-linux.md)
@@ -174,12 +185,12 @@
 #### [Hive 查询性能](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # 参考
-## [REST API 参考](https://msdn.microsoft.com/library/mt622197.aspx)
-## [适用于远程作业的 Spark REST API](https://msdn.microsoft.com/library/mt613023.aspx)
-## [PowerShell cmdlets](https://msdn.microsoft.com/library/mt438705.aspx)
-## [.NET SDK for Hadoop](https://msdn.microsoft.com/library/mt271028.aspx)
-## [.NET SDK for HBase](https://www.nuget.org/packages/Microsoft.HBase.Client/)
-## [.NET library for Avro](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [PowerShell](/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight)
+## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
+## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
+## [.NET (Avro)](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [REST](/rest/api/hdinsight/)
+## [REST (Spark)](/rest/api/hdinsightspark/)
 
 # 相关内容
 ## Windows 群集
@@ -187,7 +198,6 @@
 ### [Hadoop 入门](hdinsight-hadoop-tutorial-get-started-windows.md)
 ### [Storm 入门](hdinsight-apache-storm-tutorial-get-started.md)
 ### [HBase 入门](hdinsight-hbase-tutorial-get-started.md)
-### [HDInsight 示例库](hdinsight-learn-hadoop-use-sample-gallery.md)
 ### [运行 Hadoop MapReduce 示例](hdinsight-run-samples.md)
 ### [创建 Hadoop 群集](hdinsight-provision-clusters.md)
 #### [使用 Azure 门户](hdinsight-hadoop-create-windows-clusters-portal.md)
@@ -215,8 +225,3 @@
 # 资源
 ## [在论坛上获取帮助](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

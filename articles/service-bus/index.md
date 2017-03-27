@@ -1,13 +1,26 @@
 ---
+title: "Azure 服务总线文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何设置消息传送，用于连接跨本地和云环境的应用程序与服务。  教程、视频、API 参考和其他资源。"
+services: service-bus
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: service-bus
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: bfc1bf3d78099ba04a2621bcec9f870f7f88b122
-ms.openlocfilehash: 3eadd4b9bdb7621965057271f0e1b5e034bdcbf8
+ms.sourcegitcommit: 3e94e98bde67db2e136420ada2a7c625ad5a0307
+ms.openlocfilehash: ac803aaa0cf4cbf69fdca9764923eaaf2d29efc0
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="service-bus-documentation"></a>服务总线文档
 
-通过服务总线，可在云端使用企业消息传递进行通信，也可采用中继进行通信，帮助将本地解决方案与云端连接。 
+了解如何使用服务总线建立跨本地和云环境的连接。 教程、视频、API 参考和其他文档演示了如何在应用程序与服务之间设置云消息传送。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +42,7 @@ ms.openlocfilehash: 3eadd4b9bdb7621965057271f0e1b5e034bdcbf8
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=service-bus">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=service-bus">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -194,27 +207,45 @@ ms.openlocfilehash: 3eadd4b9bdb7621965057271f0e1b5e034bdcbf8
 
 ---
 
-## <a name="reference"></a>参考
+<h2>引用</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/servicebus">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>其他</h3>
+                        <p><a href="/dotnet/api/">托管参考 API</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-### <a name="powershell"></a>PowerShell
-[Azure PowerShell 参考](/powershell/azureps-cmdlets-docs)
-
-### <a name="net"></a>.NET
-[.NET 托管参考 API](/dotnet/api/) 
-
-### <a name="rest"></a>REST 
-[服务总线 REST API 参考](/rest/api/servicebus)  
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-bus.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载服务总线文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

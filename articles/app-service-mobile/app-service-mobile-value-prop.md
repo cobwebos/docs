@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 94c61f4b204b30b16b424fa0716e370a4f4eb51b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 43ad434b21fd358b8d72702445126dea5ce179cb
 
 
 ---
@@ -74,13 +74,13 @@ Azure App Service 是面向专业开发人员的完全托管型 [平台即服务
 有关 Azure 应用服务平台的详细信息，请参阅 [Azure App Service]（Azure 应用服务）。
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://tryappservice.azure.com/?appServiceName=mobile)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/mobile/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
 <!-- URLs. -->
-[将移动服务迁移到应用服务]: app-service-mobile-migrating-from-mobile-services.md
-[Azure 应用服务]: ../app-service/app-service-value-prop-what-is.md
+[Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
+[Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [入门]: app-service-mobile-ios-get-started.md
 [Azure 表存储]: ../storage/storage-getting-started-guide.md
 [DocumentDB]: ../documentdb/documentdb-get-started.md
@@ -90,11 +90,11 @@ Azure App Service 是面向专业开发人员的完全托管型 [平台即服务
 [iOS]: ./app-service-mobile-ios-how-to-use-client-library.md
 [Android]: ./app-service-mobile-android-how-to-use-client-library.md
 [Windows]: ./app-service-mobile-dotnet-how-to-use-client-library.md
-[适用于 iOS 和 Android 的 Xamarin]: ./app-service-mobile-dotnet-how-to-use-client-library.md
-[Xamarin 窗体]: ./app-service-mobile-xamarin-forms-get-started.md
+[用于 iOS 和 Android 的 Xamarin]: ./app-service-mobile-dotnet-how-to-use-client-library.md
+[Xamarin Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[auto scaling]: ../app-service-web/web-sites-scale.md
-[staging environments]: ../app-service-web/web-sites-staged-publishing.md
+[自动缩放]: ../app-service-web/web-sites-scale.md
+[过渡环境]: ../app-service-web/web-sites-staged-publishing.md
 [部署选项]: ../app-service-web/web-sites-deploy.md
 [混合连接]: ../app-service-web/web-sites-hybrid-connection-get-started.md
 [虚拟网络]: ../app-service-web/web-sites-integrate-with-vnet.md
@@ -104,6 +104,6 @@ Azure App Service 是面向专业开发人员的完全托管型 [平台即服务
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

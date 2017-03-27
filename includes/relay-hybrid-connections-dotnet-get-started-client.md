@@ -3,25 +3,29 @@
 
 ### <a name="add-the-relay-nuget-package"></a>添加中继 NuGet 包
 1. 右键单击新创建的项目，然后选择“管理 NuGet 包” 。
-2. 单击“浏览”选项卡，然后搜索“Microsoft Azure 中继”，并选择“Microsoft Azure 中继”项。 单击“安装”以完成安装，然后关闭此对话框。
+2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.Relay”，并选择“Microsoft Azure 中继”项。 单击“安装”以完成安装，然后关闭此对话框。
 
 ### <a name="write-some-code-to-send-messages"></a>编写一些代码来发送消息
-1. 在 Program.cs 文件顶部添加以下 `using` 语句。
+1. 将 Program.cs 文件顶部的现有 `using` 语句替换为以下语句：
    
-    ```cs
+    ```csharp
+    using System;
+    using System.IO;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
 2. 将常量添加到 `Program` 类，用于保存混合连接的连接详细信息。 将括号中的占位符替换为在创建混合连接时获得的相应值。
    
-    ```cs
+    ```csharp
     private const string RelayNamespace = "{RelayNamespace}";
     private const string ConnectionName = "{HybridConnectionName}";
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. 将新方法添加到 `Program` 类，如下所示：
+3. 将以下新方法添加到 `Program` 类：
    
-    ```cs
+    ```csharp
     private static async Task RunAsync()
     {
         Console.WriteLine("Enter lines of text to send to the server with ENTER");
@@ -82,13 +86,13 @@
     ```
 4. 在 `Program` 类的 `Main` 方法中添加以下代码行。
    
-    ```cs
+    ```csharp
     RunAsync().GetAwaiter().GetResult();
     ```
    
     Program.cs 文件的内容如下所示。
    
-    ```cs
+    ```csharp
     using System;
     using System.IO;
     using System.Threading;
@@ -172,6 +176,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

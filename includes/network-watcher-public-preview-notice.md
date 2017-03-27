@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+> 网络观察程序当前以公共预览版提供，并且其可用性和可靠性与正式发布版本中的相应服务可能不在同一级别。 某些功能可能不受支持，能力可能会受约束，并且可能不是在所有 [Azure 位置](https://azure.microsoft.com/regions/)都可用。 有关此服务可用性和状态方面的最新通知，请参阅 [Azure Network Watcher updates](https://azure.microsoft.com/updates/?product=network-watcher)（Azure 网络观察程序更新）页。 若要使用网络观察程序的功能，[需注册该功能](../articles/network-watcher/network-watcher-create.md#register-the-preview-capability)。

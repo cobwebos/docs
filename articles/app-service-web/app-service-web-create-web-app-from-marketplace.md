@@ -4,7 +4,7 @@ description: "了解如何使用 Azure 门户从 Azure 应用商店创建新的 
 services: app-service\web
 documentationcenter: 
 author: rmcmurray
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 972a296d-f927-470b-8534-0f2cb9eac223
 ms.service: app-service-web
@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/20/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73fafeff227061feae1fbc0a1c50e5056116e3ea
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: a04c7129cd2e16c129f3e4b8e8e40f76ff37114d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -40,9 +41,9 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 在本教程中部署的 WordPress 站点使用 MySQL 作为数据库。 如果想要改用 SQL 数据库作为数据库，请参阅 [Project Nami]（Nami 项目），Azure 应用商店中也提供了该项目。
 
 > [!NOTE]
-> 若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益][激活]，或者[注册免费试用版][免费试用版]。
+> 若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益][activate]，或[注册免费试用帐户][free trial]。
 > 
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service]（试用应用服务）。 在那里，可立刻在应用服务中创建短期的入门级 Web 应用 -- 无需信用卡，也无需做出承诺。
+> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [试用应用服务]。 在那里，可立刻在应用服务中创建短期的入门级 Web 应用 -- 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -127,7 +128,7 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 
 有关如何使用应用服务 Web 应用的详细信息，请参阅页面左侧（针对宽屏浏览器窗口）或页面顶部（针对窄屏浏览器窗口）的链接。
 
-有关在 Azure 上开发 WordPress Web 应用的详细信息，请参阅[在 Azure 应用服务上开发 WordPress][WordPressOnAzure]。
+有关在 Azure 上开发 WordPress Web 应用的详细信息，请参阅[在 Azure 应用服务中开发 WordPress][WordPressOnAzure]。
 
 <!-- URL List -->
 
@@ -136,9 +137,9 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 [Node.js]: https://azure.microsoft.com/develop/nodejs/
 [Java]: https://azure.microsoft.com/develop/java/
 [Python]: https://azure.microsoft.com/develop/python/
-[激活]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
+[activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [free trial]: https://azure.microsoft.com/pricing/free-trial/
-[试用应用服务]: http://go.microsoft.com/fwlink/?LinkId=523751
+[试用应用服务]: https://azure.microsoft.com/try/app-service/
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
 [AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
 [ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
@@ -165,9 +166,4 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 [WordPressDashboard1]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard1.png
 [WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
 [WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

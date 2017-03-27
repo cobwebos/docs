@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/16/2016
+ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
+ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
+ms.openlocfilehash: c5049cbe98dbb04deae4a2b9dc098938aa65495a
 
 
 ---
@@ -36,33 +36,41 @@ ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
 本教程演示如何使用 REST API 创建和监视 Azure 数据工厂。 数据工厂中的管道使用复制活动将数据从 Azure Blob 存储复制到 SQL 数据库。
 
 > [!NOTE]
-> 本文不会介绍所有数据工厂 REST API。 有关数据工厂 cmdlet 的综合文档，请参阅 [Data Factory REST API Reference](https://msdn.microsoft.com/library/azure/dn906738.aspx) （数据工厂 REST API 参考）。
+> 本文不会介绍所有数据工厂 REST API。 有关数据工厂 cmdlet 的综合文档，请参阅 [Data Factory REST API Reference](/rest/api/datafactory/) （数据工厂 REST API 参考）。
 > 
-> 
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * 通读 [教程概述](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) ，完成 **先决条件** 步骤。
 * 在计算机上安装 [Curl](https://curl.haxx.se/dlwiz/) 。 配合使用 Curl 工具与 REST 命令来创建数据工厂。 
-* 遵循 [此文](../resource-group-create-service-principal-portal.md) 的说明： 
+* 遵循 [此文](../azure-resource-manager/resource-group-create-service-principal-portal.md) 的说明： 
   1. 在 Azure Active Directory 中创建名为 **ADFCopyTutorialApp** 的 Web 应用程序。
   2. 获取**客户端 ID** 和**机密密钥**。 
   3. 获取 **租户 ID**。 
   4. 将 **ADFCopyTutorialApp** 应用程序分配给**数据工厂参与者**角色。  
-* 安装 [Azure PowerShell](../powershell-install-configure.md)。  
+* 安装 [Azure PowerShell](/powershell/azureps-cmdlets-docs)。  
 * 启动 **PowerShell** 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
   
   1. 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
-     
-          Login-AzureRmAccount   
+    
+    ```PowerShell 
+    Login-AzureRmAccount
+    ```   
   2. 运行以下命令查看此帐户的所有订阅。
-     
-          Get-AzureRmSubscription 
+
+    ```PowerShell     
+    Get-AzureRmSubscription
+    ``` 
   3. 运行以下命令选择要使用的订阅。 将 **&lt;NameOfAzureSubscription**&gt; 替换为 Azure 订阅的名称。 
      
-          Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    ```PowerShell
+    Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    ```
   4. 在 PowerShell 中运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组。  
-     
-          New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+
+    ```PowerShell     
+      New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```
      
       如果资源组已存在，请指定是要更新它 (Y) 还是保留原样 (N)。 
      
@@ -77,26 +85,30 @@ ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
 > 
 > 
 
-    {  
-        "name": "ADFCopyTutorialDF",  
-        "location": "WestUS"
-    }  
+```JSON
+{  
+    "name": "ADFCopyTutorialDF",  
+    "location": "WestUS"
+}  
+```
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)（查看、复制和重新生成存储访问密钥）。
+> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)（查看、复制和重新生成存储访问密钥）。
 > 
 > 
 
-    {
-        "name": "AzureStorageLinkedService",
-        "properties": {
-            "type": "AzureStorage",
-            "typeProperties": {
-                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+```JSON
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
     }
+}
+```
 
 ### <a name="azuersqllinkedservicejson"></a>azuersqllinkedservice.json
 > [!IMPORTANT]
@@ -104,49 +116,53 @@ ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
 > 
 > 
 
-    {
-        "name": "AzureSqlLinkedService",
-        "properties": {
-            "type": "AzureSqlDatabase",
-            "description": "",
-            "typeProperties": {
-                "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>;Password=<password>;Integrated Security=False;Encrypt=True;Connect Timeout=30"
-            }
+```JSON
+{
+    "name": "AzureSqlLinkedService",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "description": "",
+        "typeProperties": {
+            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>;Password=<password>;Integrated Security=False;Encrypt=True;Connect Timeout=30"
         }
     }
-
+}
+```
 
 ### <a name="inputdatasetjson"></a>inputdataset.json
-    {
-      "name": "AzureBlobInput",
-      "properties": {
-        "structure": [
-          {
-            "name": "FirstName",
-            "type": "String"
-          },
-          {
-            "name": "LastName",
-            "type": "String"
-          }
-        ],
-        "type": "AzureBlob",
-        "linkedServiceName": "AzureStorageLinkedService",
-        "typeProperties": {
-          "folderPath": "adftutorial/",
-          "fileName": "emp.txt",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        }
+
+```JSON
+{
+  "name": "AzureBlobInput",
+  "properties": {
+    "structure": [
+      {
+        "name": "FirstName",
+        "type": "String"
+      },
+      {
+        "name": "LastName",
+        "type": "String"
       }
+    ],
+    "type": "AzureBlob",
+    "linkedServiceName": "AzureStorageLinkedService",
+    "typeProperties": {
+      "folderPath": "adftutorial/",
+      "fileName": "emp.txt",
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ","
+      }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
+  }
+}
+```
 
 JSON 定义用于定义名为 **AzureBlobInput**的数据集，表示管道中活动的输入数据。 此外，它还指定要将输入数据放在 Blob 容器 **adftutorial** 中的 **emp.txt** 文件内。 
 
@@ -165,43 +181,46 @@ JSON 定义用于定义名为 **AzureBlobInput**的数据集，表示管道中�
 
 若要根据 **SliceStart** 时间动态设置 **folderPath** 和 **fileName**，请使用 **partitionedBy** 属性。 在以下示例中，folderPath 使用 SliceStart（所处理的切片的开始时间）中的年、月和日，fileName 使用 SliceStart 中的小时。 例如，如果切片生成于 2014-10-20T08:00:00，folderName 将设置为 wikidatagateway/wikisampledataout/2014/10/20，fileName 设置为 08.csv。 
 
-      "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-    "fileName": "{Hour}.csv",
-    "partitionedBy": 
-    [
-        { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
-        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
-        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
-    ],
-
+```JSON
+  "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+"fileName": "{Hour}.csv",
+"partitionedBy": 
+[
+    { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+    { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
+    { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
+    { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
+],
+```
 
 ### <a name="outputdatasetjson"></a>outputdataset.json
-    {
-      "name": "AzureSqlOutput",
-      "properties": {
-        "structure": [
-          {
-            "name": "FirstName",
-            "type": "String"
-          },
-          {
-            "name": "LastName",
-            "type": "String"
-          }
-        ],
-        "type": "AzureSqlTable",
-        "linkedServiceName": "AzureSqlLinkedService",
-        "typeProperties": {
-          "tableName": "emp"
-        },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        }
-      }
-    }
 
+```JSON
+{
+  "name": "AzureSqlOutput",
+  "properties": {
+    "structure": [
+      {
+        "name": "FirstName",
+        "type": "String"
+      },
+      {
+        "name": "LastName",
+        "type": "String"
+      }
+    ],
+    "type": "AzureSqlTable",
+    "linkedServiceName": "AzureSqlLinkedService",
+    "typeProperties": {
+      "tableName": "emp"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    }
+  }
+}
+```
 
 JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中活动的输出数据。 此外，它还指定要将结果存放在 AzureSqlLinkedService 代表的数据库的 **emp** 表中。 **availability** 节指定每小时生成输出数据集一次（frequency：hour；interval：1）。
 
@@ -214,48 +233,50 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 * **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。  数据工厂服务每隔一小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
 
 ### <a name="pipelinejson"></a>pipeline.json
-    {
-      "name": "ADFTutorialPipeline",
-      "properties": {
-        "description": "Copy data from a blob to Azure SQL table",
-        "activities": [
+
+```JSON
+{
+  "name": "ADFTutorialPipeline",
+  "properties": {
+    "description": "Copy data from a blob to Azure SQL table",
+    "activities": [
+      {
+        "name": "CopyFromBlobToSQL",
+        "description": "Push Regional Effectiveness Campaign data to Azure SQL database",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "CopyFromBlobToSQL",
-            "description": "Push Regional Effectiveness Campaign data to Azure SQL database",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "AzureBlobInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureSqlOutput"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource"
-              },
-              "sink": {
-                "type": "SqlSink",
-                "writeBatchSize": 10000,
-                "writeBatchTimeout": "60:00:00"
-              }
-            },
-            "Policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "NewestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "AzureBlobInput"
           }
         ],
-        "start": "2016-08-12T00:00:00Z",
-        "end": "2016-08-13T00:00:00Z"
+        "outputs": [
+          {
+            "name": "AzureSqlOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "SqlSink",
+            "writeBatchSize": 10000,
+            "writeBatchTimeout": "60:00:00"
+          }
+        },
+        "Policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "NewestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
       }
-    }
-
+    ],
+    "start": "2016-08-12T00:00:00Z",
+    "end": "2016-08-13T00:00:00Z"
+  }
+}
+```
 
 注意以下几点：
 
@@ -272,7 +293,7 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 在示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
 
 > [!NOTE]
-> 有关上述示例中使用的 JSON 属性的详细信息，请参阅 [Anatomy of a Pipeline](data-factory-create-pipelines.md#anatomy-of-a-pipeline) （管道剖析）。
+> 有关上述示例中使用的 JSON 属性的详细信息，请参阅 [Anatomy of a Pipeline](data-factory-create-pipelines.md) （管道剖析）。
 > 
 > 
 
@@ -284,22 +305,26 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 > 
 > 
 
-    $client_id = "<client ID of application in AAD>"
-    $client_secret = "<client key of application in AAD>"
-    $tenant = "<Azure tenant ID>";
-    $subscription_id="<Azure subscription ID>";
+```JSON
+$client_id = "<client ID of application in AAD>"
+$client_secret = "<client key of application in AAD>"
+$tenant = "<Azure tenant ID>";
+$subscription_id="<Azure subscription ID>";
 
-    $rg = "ADFTutorialResourceGroup"
-    $adf = "ADFCopyTutorialDF"
+$rg = "ADFTutorialResourceGroup"
+$adf = "ADFCopyTutorialDF"
+```
 
 ## <a name="authenticate-with-aad"></a>在 AAD 中进行身份验证
 运行以下命令，在 Azure Active Directory (AAD) 中进行身份验证。 
 
-    $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
-    $responseToken = Invoke-Command -scriptblock $cmd;
-    $accessToken = (ConvertFrom-Json $responseToken).access_token;
+```PowerShell
+$cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
+$responseToken = Invoke-Command -scriptblock $cmd;
+$accessToken = (ConvertFrom-Json $responseToken).access_token;
 
-    (ConvertFrom-Json $responseToken) 
+(ConvertFrom-Json $responseToken) 
+```
 
 ## <a name="create-data-factory"></a>创建数据工厂
 本步骤创建名为 **ADFCopyTutorialDF**的 Azure 数据工厂。 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，复制活动可将数据从源复制到目标数据存储。 HDInsight Hive 活动运行 Hive 脚本转换输入数据，以生成输出数据。 运行以下命令创建数据工厂： 
@@ -308,13 +333,19 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
    
     确认此处指定的名称 (ADFCopyTutorialDF) 与 **datafactory.json**中指定的名称匹配。 
    
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/ADFCopyTutorialDF?api-version=2015-10-01};
+    ```PowerShell
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/ADFCopyTutorialDF?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
    
-        $results = Invoke-Command -scriptblock $cmd;
+    ```PowerShell
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建数据工厂， **结果**中会显示数据工厂的 JSON；否则，会显示错误消息。  
    
-        Write-Host $results
+    ```
+    Write-Host $results
+    ```
 
 请注意以下几点：
 
@@ -330,12 +361,15 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 * 如果收到错误：“该订阅未注册为使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布： 
   
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。 
+
+    ```PowerShell    
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```
+    可运行以下命令来确认数据工厂提供程序是否已注册。 
     
-          Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
-    
-      可运行以下命令来确认数据工厂提供程序是否已注册。 
-    
-          Get-AzureRmResourceProvider
+    ```PowerShell
+    Get-AzureRmResourceProvider
+    ```
   * 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，然后导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作将自动注册提供程序。
 
 在创建管道之前，需要创建一些数据工厂项。 先创建链接服务，将源和目标数据存储链接到数据存储。 然后，定义输入和输出数据集，表示链接数据存储中的数据。 最后创建管道，其中包含使用这些数据集的活动。
@@ -349,27 +383,38 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 在此步骤中，将 Azure 存储帐户链接到数据工厂。 本教程使用 Azure 存储帐户来存储输入数据。 
 
 1. 将命令分配到名为 **cmd**的变量。 
-   
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@azurestoragelinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
+
+    ```PowerShell   
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@azurestoragelinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
-   
-        $results = Invoke-Command -scriptblock $cmd;
+    ```PowerShell   
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建链接服务， **结果**中会显示该链接服务的 JSON；否则，会显示错误消息。
-   
-        Write-Host $results
+
+    ```PowerShell   
+    Write-Host $results
+    ```
 
 ### <a name="create-azure-sql-linked-service"></a>创建 Azure SQL 链接服务
 在此步骤中，将 Azure SQL 数据库链接到数据工厂。 本教程使用相同的 Azure SQL 数据库来存储输出数据。
 
 1. 将命令分配到名为 **cmd**的变量。 
    
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azuresqllinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureSqlLinkedService?api-version=2015-10-01};
+    ```PowerShell
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azuresqllinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureSqlLinkedService?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
    
-        $results = Invoke-Command -scriptblock $cmd;
+    ```PowerShell
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建链接服务， **结果**中会显示该链接服务的 JSON；否则，会显示错误消息。
    
-        Write-Host $results
+    ```PowerShell
+    Write-Host $results
+    ```
 
 ## <a name="create-datasets"></a>创建数据集
 上一步骤已创建 **AzureStorageLinkedService** 和 **AzureSqlLinkedService** 链接服务，用于将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂：**ADFCopyTutorialDF**。 此步骤将创建数据集，这些数据集在下一步骤所创建的管道中代表复制活动的输入和输出数据。 
@@ -384,23 +429,27 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 * 在 **AzureSqlLinkedService** 指向的 Azure SQL 数据库中，创建名为 **emp** 的表。
 
 1. 启动记事本，粘贴以下文本，将文件命名为 **emp.txt**，然后将其保存到硬盘上的 **C:\ADFGetStartedPSH** 文件夹。 
-   
-        John, Doe
-        Jane, Doe
+
+    ```   
+    John, Doe
+    Jane, Doe
+    ```
 2. 使用 [Azure 存储资源管理器](https://azurestorageexplorer.codeplex.com/)等工具创建 **adftutorial** 容器，将 **emp.txt** 文件上载到该容器。
    
     ![Azure 存储空间资源管理器](media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png)
 3. 使用以下 SQL 脚本在 Azure SQL 数据库中创建 **emp** 表。  
 
-        CREATE TABLE dbo.emp 
-        (
-            ID int IDENTITY(1,1) NOT NULL,
-            FirstName varchar(50),
-            LastName varchar(50),
-        )
-        GO
+    ```SQL
+    CREATE TABLE dbo.emp 
+    (
+        ID int IDENTITY(1,1) NOT NULL,
+        FirstName varchar(50),
+        LastName varchar(50),
+    )
+    GO
 
-        CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID); 
+    CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID); 
+    ```
 
     如果计算机上已安装 SQL Server 2014：请遵循[步骤 2：使用 SQL Server Management Studio 连接到管理 Azure SQL 数据库的 SQL 数据库][sql-management-studio]一文中的说明连接到 Azure SQL Server，然后运行 SQL 脚本。
 
@@ -410,58 +459,83 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 本步骤在 **AzureStorageLinkedService** 链接服务代表的 Azure 存储中，创建指向 Blob 容器的 **AzureBlobInput** 数据集。 此 Blob 容器 (**adftutorial**) 包含 **emp.txt** 文件中的输入数据。 
 
 1. 将命令分配到名为 **cmd**的变量。 
-   
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
+
+    ```PowerSHell   
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
    
-        $results = Invoke-Command -scriptblock $cmd;
+    ```PowerShell
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建数据集， **结果**中会显示该数据集的 JSON；否则，会显示错误消息。
    
-        Write-Host $results
+    ```PowerShell
+    Write-Host $results
+    ```
 
 ### <a name="create-output-dataset"></a>创建输出数据集
 本步骤创建名为 **AzureSqlOutput**的输出表。 此数据集指向 Azure SQL 数据库中 **AzureSqlLinkedService** 所代表的 SQL 表 (**emp**)。 管道将输入 Blob 中的数据复制到 **emp** 表。 
 
 1. 将命令分配到名为 **cmd**的变量。
-   
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureSqlOutput?api-version=2015-10-01};
+
+    ```PowerShell   
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureSqlOutput?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
-   
-        $results = Invoke-Command -scriptblock $cmd;
+    
+    ```PowerShell   
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建数据集， **结果**中会显示该数据集的 JSON；否则，会显示错误消息。
    
-        Write-Host $results 
+    ```PowerShell
+    Write-Host $results
+    ``` 
 
 ## <a name="create-pipeline"></a>创建管道
 本步骤创建管道，其中包含使用 **AzureBlobInput** 作为输入、使用 **AzureSqlOutput** 作为输出的**复制活动**。
 
 1. 将命令分配到名为 **cmd**的变量。
-   
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
-2. 使用 **Invoke-Command**运行命令。
-   
-        $results = Invoke-Command -scriptblock $cmd;
-3. 查看结果。 如果已成功创建数据集， **结果**中会显示该数据集的 JSON；否则，会显示错误消息。  
-   
-        Write-Host $results
 
-**祝贺你！**  现已成功创建 Azure 数据工厂，其中包含可将数据从 Azure Blob 存储复制到 Azure SQL 数据库的管道。
+    ```PowerShell   
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
+    ```
+2. 使用 **Invoke-Command**运行命令。
+
+    ```PowerShell   
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
+3. 查看结果。 如果已成功创建数据集， **结果**中会显示该数据集的 JSON；否则，会显示错误消息。  
+
+    ```PowerShell   
+    Write-Host $results
+    ```
+
+**祝贺你！** 现已成功创建 Azure 数据工厂，其中包含可将数据从 Azure Blob 存储复制到 Azure SQL 数据库的管道。
 
 ## <a name="monitor-pipeline"></a>监视管道
 本步骤使用数据工厂 REST API 来监视管道生成的切片。
 
-    $ds ="AzureSqlOutput"
+```PowerShell
+$ds ="AzureSqlOutput"
+```
 
-    $cmd = {.\curl.exe -X GET -H "Authorization: Bearer $accessToken" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/$ds/slices?start=1970-01-01T00%3a00%3a00.0000000Z"&"end=2016-08-12T00%3a00%3a00.0000000Z"&"api-version=2015-10-01};
+```PowerShell
+$cmd = {.\curl.exe -X GET -H "Authorization: Bearer $accessToken" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/$ds/slices?start=1970-01-01T00%3a00%3a00.0000000Z"&"end=2016-08-12T00%3a00%3a00.0000000Z"&"api-version=2015-10-01};
+```
 
-    $results2 = Invoke-Command -scriptblock $cmd;
+```PowerShell
+$results2 = Invoke-Command -scriptblock $cmd;
+```
 
-
-    IF ((ConvertFrom-Json $results2).value -ne $NULL) {
-        ConvertFrom-Json $results2 | Select-Object -Expand value | Format-Table
-    } else {
-            (convertFrom-Json $results2).RemoteException
-    }
+```PowerShell
+IF ((ConvertFrom-Json $results2).value -ne $NULL) {
+    ConvertFrom-Json $results2 | Select-Object -Expand value | Format-Table
+} else {
+        (convertFrom-Json $results2).RemoteException
+}
+```
 
 运行以下命令，直到切片进入“就绪”状态或“失败”状态。 **emp** 表中检查输出数据。 
 
@@ -490,12 +564,10 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 [troubleshoot]: data-factory-troubleshoot.md
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 
-[cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234.aspx
-[old-cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [azure-portal]: http://portal.azure.com
-[download-azure-powershell]: ../powershell-install-configure.md
+[download-azure-powershell]: /powershell/azureps-cmdlets-docs
 [data-factory-introduction]: data-factory-introduction.md
 
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
@@ -504,6 +576,6 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

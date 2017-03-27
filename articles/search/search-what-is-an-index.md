@@ -10,11 +10,11 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3f2a2b6c82c6c931261036ae1fba733b46a074dc
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
 
 
 ---
@@ -47,7 +47,7 @@ ms.openlocfilehash: 3f2a2b6c82c6c931261036ae1fba733b46a074dc
 | *Edm.DateTimeOffset* |以 OData V4 格式表示的日期时间值（例如 `yyyy-MM-ddTHH:mm:ss.fffZ` 或 `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`。 |
 | *Edm.GeographyPoint* |表示地球上的地理位置的点。 |
 
-有关 Azure 搜索的更多详细信息，请参阅 MSDN 上的 [支持的数据类型](https://msdn.microsoft.com/library/azure/dn798938.aspx)。
+若要深入了解 Azure 搜索支持的数据类型，请参阅[此处](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)。
 
 ### <a name="field-attributes"></a>字段属性
 | 属性 | 说明 |
@@ -59,16 +59,16 @@ ms.openlocfilehash: 3f2a2b6c82c6c931261036ae1fba733b46a074dc
 | *Facetable* |允许在 [分面导航](search-faceted-navigation.md) 结构中使用字段进行用户自主筛选。 通常，包含重复值的字段更适合分面导航，这些重复值可用于将多个文档（例如，同属一个品牌或服务类别的多个文档）组合在一起。 |
 | *Searchable* |将字段标记为可全文搜索。 |
 
-有关 Azure 搜索的更多详细信息，请参阅 MSDN 上的 [索引属性](https://msdn.microsoft.com/library/azure/dn798941.aspx)。
+若要深入了解 Azure 搜索的索引属性，请参阅[此处](https://docs.microsoft.com/rest/api/searchservice/Create-Index)。
 
 ## <a name="guidance-for-defining-an-index-schema"></a>索引架构定义指南
-设计索引时，请循序渐进完成规划阶段，认真思考每个决策。 设计索引时，必须牢记搜索用户体验和业务需求，因为必须为每个字段分配 [适当的属性](https://msdn.microsoft.com/library/azure/dn798941.aspx)。 部署索引后再进行更改会重新生成并重新加载数据。
+设计索引时，请循序渐进完成规划阶段，认真思考每个决策。 设计索引时，必须牢记搜索用户体验和业务需求，因为必须为每个字段分配 [适当的属性](https://docs.microsoft.com/rest/api/searchservice/Create-Index)。 部署索引后再进行更改会重新生成并重新加载数据。
 
 如果数据存储要求随时间的推移而改变，可以通过添加或删除分区增加或减少容量。 有关详细信息，请参阅 [Azure 中管理搜索服务](search-manage.md)或[服务限制](search-limits-quotas-capacity.md)。
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,270 +1,156 @@
-# [概述](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-## [Web 应用概述](app-service-web-overview.md)
-## [什么是应用服务](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-## [应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-## [Linux 上的应用服务](app-service-linux-intro.md)
+# 概述    
+## [关于 Web 应用](app-service-web-overview.md)
+## [比较托管选项](choose-web-site-cloud-service-vm.md)
 
-# 入门
+# 快速入门    
+## [创建静态 HTML 站点](app-service-web-get-started-html.md)
+## [创建 ASP.NET 应用](app-service-web-get-started-dotnet.md)        
+## [创建 PHP 应用](app-service-web-get-started-php.md) 
+## [创建 Node.js 应用](app-service-web-get-started-nodejs.md) 
+## [创建 Java 应用](app-service-web-get-started-java.md)        
+## [创建 Python 应用](app-service-web-get-started-python.md)    
 
-## Web 应用
-### [.NET](web-sites-dotnet-get-started.md)
-### [Node.js](app-service-web-nodejs-get-started.md)
-### [Python](web-sites-python-ptvs-django-mysql.md)
-### [Java](web-sites-java-get-started.md)
-### [应用商店应用](web-sites-php-web-site-gallery.md)
-### [PHP](app-service-web-php-get-started.md)   
+# 示例
+## [Azure CLI](app-service-cli-samples.md) 
+## [PowerShell](app-service-powershell-samples.md) 
 
-## API Apps
-### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
-### [Java](../app-service-api/app-service-api-java-api-app.md)
-### [Node.js](../app-service-api/app-service-api-nodejs-api-app.md)
-### [CORS](../app-service-api/app-service-api-cors-consume-javascript.md)
+# 教程
+## [将功能添加到 Web 应用](app-service-web-get-started-2.md)
+## [将 ASP.NET 应用与 SQL 数据库配合使用](web-sites-dotnet-get-started.md)
+## [将 Laravel 应用与 MySQL 配合使用](app-service-web-php-get-started.md)
+## [将 Sails.js 应用与 NOSQL DB 配合使用](app-service-web-nodejs-sails.md)
+## [将 Java 应用与 Eclipse 配合使用](app-service-web-eclipse-create-hello-world-web-app.md)
+## [将 Java 应用与 IntelliJ 配合使用](app-service-web-intellij-create-hello-world-web-app.md)
+## [将 Django 应用与 MySQL 配合使用](web-sites-python-ptvs-django-mysql.md)
 
-## Mobile Apps
-### [Android](../app-service-mobile/app-service-mobile-android-get-started.md)
-### [Cordova](../app-service-mobile/app-service-mobile-cordova-get-started.md)
-### [iOS](../app-service-mobile/app-service-mobile-ios-get-started.md)
-### [Windows](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started.md)
-### [Xamarin.Android](../app-service-mobile/app-service-mobile-xamarin-android-get-started.md)
-### [Xamarin.Forms](../app-service-mobile/app-service-mobile-xamarin-forms-get-started.md)
-### [Xamarin.iOS](../app-service-mobile/app-service-mobile-xamarin-ios-get-started.md)
+# 概念
+## [应用服务的工作方式](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)    
+## [应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)    
+## [应用服务环境](app-service-app-service-environment-intro.md)
+## [身份验证和授权](../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+## [使用本地 AD 进行身份验证](web-sites-authentication-authorization.md)
 
 
-# 如何
+# 操作指南
+## 开发应用    
+### ASP.NET
 
-## 规划和设计
-### [Azure 应用服务最佳实践](app-service-best-practices.md)
-### [Azure 应用服务和现有的 Azure 服务](app-service-changes-existing-services.md)
-### [本地缓存概述](../app-service/app-service-local-cache.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [应用服务计划深度介绍](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [面向企业的 Web 应用产品](web-sites-enterprise-offerings.md)
-### [比较：应用服务、虚拟机、Service Fabric 和云服务](choose-web-site-cloud-service-vm.md)
-### [在应用服务中开发 WordPress 站点](develop-wordpress-on-app-service-web-apps.md)
-### [Linux 上的应用服务](../app-service/app-service-linux-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### Azure 参考体系结构
-#### [基本 Web 应用程序](../guidance/guidance-web-apps-basic.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [高可用性 Web 应用程序](../guidance/guidance-web-apps-multi-region.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [高密度托管](../app-service/app-service-high-density-hosting.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [改善可缩放性](../guidance/guidance-web-apps-scalability.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [操作系统功能](web-sites-available-operating-system-functionality.md)
-### [有效使用 DevOps 环境](app-service-web-staged-publishing-realworld-scenarios.md)
-### [在 Azure 应用服务中使用 WebJobs](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [应用服务环境](app-service-app-service-environment-intro.md)
-#### [应用服务环境文档](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [使用 VS Code 开发 ASP.NET Core 应用](web-sites-create-web-app-using-vscode.md)
+### PHP
+#### [设置 PHP 项目](web-sites-php-configure.md)
+#### [设置 WordPress Multisite](web-sites-php-convert-wordpress-multisite.md) 
+### Node.js
+#### [使用 io.js](web-sites-nodejs-iojs.md)
+#### [调试 Node.js 应用](web-sites-nodejs-debug.md)
+### Java
 
-## 开发
-### [在第一个 Web 应用中添加功能](app-service-web-get-started-2.md)
-### [在 Linux 上创建 Web 应用](app-service-linux-how-to-create-a-web-app.md)
-### [应用服务引用](app-service-changes-existing-services.md)
-### [Azure 门户](app-service-web-app-azure-portal.md)
-### [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
+#### [使用用于 Java 的 Azure SDK](java-create-azure-website-using-java-sdk.md)
+#### [上载现有应用](web-sites-java-add-app.md)
+#### [远程调试 Eclipse](app-service-web-debug-java-web-app-in-eclipse.md)
+#### [远程调试 IntelliJ](app-service-web-debug-java-web-app-in-intellij.md)
 
-### ASP.NET 应用
-#### [在 5 分钟内将第一个 .NET Web 应用部署到 Azure](app-service-web-get-started-dotnet.md)
-#### [使用 ASP.NET Web API 创建 REST 服务](web-sites-dotnet-rest-service-aspnet-api-sql-database.md)
-#### [在 Visual Studio Code 中创建 ASP.NET 5 Web 应用](web-sites-create-web-app-using-vscode.md)
+### [使用 SendGrid 发送电子邮件](sendgrid-dotnet-how-to-send-email.md)
 
-### Node.js 应用
-#### [创建 Node.js Web 应用](web-sites-nodejs-develop-deploy-mac.md)
-#### [使用 Socket.IO 创建 Node.js 聊天应用程序](web-sites-nodejs-chat-app-socketio.md)
-#### [如何在 Web 应用中使用 io.js](web-sites-nodejs-iojs.md)
-#### [将 Sails.js Web 应用部署到 Azure 应用服务](app-service-web-nodejs-sails.md)
-#### [使用 WebMatrix 进行构建和部署](web-sites-nodejs-use-webmatrix.md)
+### 配置运行时    
+#### [Windows 上的 PHP](web-sites-php-configure.md)
 
-### PHP 应用
-#### [在 5 分钟内将第一个 PHP Web 应用部署到 Azure](app-service-web-get-started-php.md)
-#### [创建 PHP-SQL Web 应用并使用 Git 进行部署](web-sites-php-sql-database-deploy-use-git.md)
-#### [在 Azure 应用服务中创建 WordPress Web 应用](web-sites-php-web-site-gallery.md)
-#### [在 Azure 中创建 MySQL 数据库并连接到该数据库](../store-php-create-mysql-database.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Azure 应用服务上的企业级 WordPress](web-sites-php-enterprise-wordpress.md)
+#### [Java](web-sites-java-add-app.md)
+#### [Linux 上的 Node.js](app-service-linux-using-nodejs-pm2.md)
+#### [Python](web-sites-python-configure.md)
+            
+### 配置应用程序
+#### [使用应用设置](web-sites-configure.md)
+            
+## [部署到 Azure](web-sites-deploy.md)
+### [通过 FTP 部署](app-service-deploy-content-sync.md)
+### [通过云同步部署](web-sites-deploy.md)
+### [持续部署](app-service-continuous-deployment.md)
+### [部署到过渡环境](web-sites-staged-publishing.md)
+### [从本地 Git 部署](app-service-deploy-local-git.md)
+### [使用模板部署](app-service-deploy-complex-application-predictably.md)
+### [敏捷部署](app-service-agile-software-development.md)
+### [Beta 测试](app-service-web-test-in-production-controlled-test-flight.md)
 
-### Java 应用
-#### [在 5 分钟内将第一个 Java Web 应用部署到 Azure](web-sites-java-get-started.md)
-#### 创建 Hello World 应用
-##### [Eclipse](app-service-web-eclipse-create-hello-world-web-app.md)
-##### [IntelliJ](app-service-web-intellij-create-hello-world-web-app.md)
-#### [使用用于 Java 的 Azure SDK 创建 Web 应用](java-create-azure-website-using-java-sdk.md)
-#### [上载现有 Java 应用程序](web-sites-java-add-app.md)
-#### 调试远程 Java 应用 
-##### [Eclipse](app-service-web-debug-java-web-app-in-eclipse.md)
-##### [IntelliJ](app-service-web-debug-java-web-app-in-intellij.md)
+### [设置部署凭据](app-service-deployment-credentials.md)
 
-### Python 应用
-#### [使用 Bottle 创建 Web 应用](web-sites-python-create-deploy-bottle-app.md)
-#### [使用 Django 创建 Web 应用](web-sites-python-create-deploy-django-app.md)
-#### [使用 Flask 创建 Web 应用](web-sites-python-create-deploy-flask-app.md)
-#### [将 Bottle 和表存储与用于 Visual Studio 的 Python 工具 2.2 配合使用](web-sites-python-ptvs-bottle-table-storage.md)
-#### [将 Flask 和表存储与用于 Visual Studio 的 Python 工具 2.2 配合使用](web-sites-python-ptvs-flask-table-storage.md)
-#### [具有 Python Tools 2.2 for Visual Studio 的 Azure 上的 Django 和 MySQL](web-sites-python-ptvs-django-mysql.md)
-#### [具有 Python Tools 2.2 for Visual Studio 的 Azure 上的 Django 和 SQL 数据库](web-sites-python-ptvs-django-sql.md)
+### 映射自定义域
+#### [购买域](custom-dns-web-site-buydomains-web-app.md)
+#### [映射第三方域](web-sites-custom-domain-name.md)
+#### [使用流量管理器映射域](web-sites-traffic-manager-custom-domain-name.md)
+#### [映射 GoDaddy 域](web-sites-godaddy-custom-domain-name.md)
+#### [迁移活动域](app-service-custom-domain-name-migrate.md)
 
-### [在五分钟内将第一个基本 Web 应用部署到 Azure](app-service-web-get-started-html.md)
-### [生产环境中 Web 应用测试入门](app-service-web-test-in-production-get-start.md)
-
-### [Web 作业](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [什么是 Azure WebJobs SDK](websites-dotnet-webjobs-sdk.md)
-#### [创建 .NET WebJob](websites-dotnet-webjobs-sdk-get-started.md)
-#### [如何通过 WebJobs SDK 使用 Azure Blob 存储](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
-#### [如何通过 WebJobs SDK 使用 Azure 队列存储](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
-#### [如何通过 WebJobs SDK 使用 Azure 服务总线](websites-dotnet-webjobs-sdk-service-bus.md)
-#### [如何通过 WebJobs SDK 使用 Azure 表存储](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
-
-### 应用服务环境
-#### [如何创建应用服务环境](app-service-web-how-to-create-an-app-service-environment.md)
-#### [在应用服务环境中创建 Web 应用](app-service-web-how-to-create-a-web-app-in-an-ase.md)
-#### [如何使用 Azure Resource Manager 模板创建 ILB ASE](app-service-app-service-environment-create-ilb-ase-resourcemanager.md)
-#### [使用内部负载均衡器](app-service-environment-with-internal-load-balancer.md)
-
-## [部署](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [部署到应用服务](web-sites-deploy.md)
-### [云同步部署](app-service-deploy-content-sync.md)
-### [连续部署](app-service-continuous-deployment.md)
-### [适合移动的 Web 应用](web-sites-dotnet-deploy-aspnet-mvc-mobile-app.md)
-### [过渡环境](web-sites-staged-publishing.md)
-### [本地 Git 部署](app-service-deploy-local-git.md)
-### 发布 PHP-MySQL 应用
-#### [使用 GIT](web-sites-php-mysql-deploy-use-git.md)
-#### [使用 FTP](web-sites-php-mysql-deploy-use-ftp.md)
-### [自定义 Java Web 应用上载](web-sites-java-custom-upload.md)
 ### [从 IIS 迁移](web-sites-migration-from-iis-server.md)
-### [使用 Visual Studio 部署 WebJobs](websites-dotnet-deploy-webjobs.md)
+### [在生产中测试](app-service-web-test-in-production-get-start.md)
 
-## [缩放](../app-service/app-service-scale-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [扩展应用](web-sites-scale.md)
-### [应用服务环境](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [应用服务环境的异地分布式缩放](app-service-app-service-environment-geo-distributed-scale.md)
-#### [在应用服务环境中缩放应用](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
-#### [在应用服务环境中自动缩放](../app-service/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [Azure CDN](../cdn/cdn-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+## 连接到数据库/资源        
 
-## [管理](web-sites-manage-azure-website.md)
-### [配置](web-sites-configure.md)
-#### [配置 PHP](web-sites-php-configure.md)
-#### [配置 Python](web-sites-python-configure.md)
-#### [在 Linux 上配置 Node.js 启动](app-service-linux-using-nodejs-pm2.md)
+### [连接到本地数据](web-sites-hybrid-connection-get-started.md) 
+### [连接到 Azure VNet](web-sites-integrate-with-vnet.md)
+### [使用 PowerShell 连接到 Azure VNet](app-service-vnet-integration-powershell.md)
+### [连接到 Azure VM 上的 MongoDB](web-sites-dotnet-store-data-mongodb-vm.md)
+            
+##安全应用
+### 对用户进行身份验证        
+#### [使用 Azure AD 进行身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [使用 Facebook 进行身份验证](../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [使用 Google 进行身份验证](../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [使用 Microsoft 帐户进行身份验证](../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [使用 Twitter 进行身份验证](../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [使用本地 AD 进行身份验证](web-sites-authentication-authorization.md)
+#### [将应用与多租户数据库配合使用](web-sites-dotnet-entity-framework-row-level-security.md)
+### 分配自定义 SSL
+#### [购买 SSL 证书](web-sites-purchase-ssl-web-site.md)
+#### [配置第三方 SSL 证书](web-sites-configure-ssl-certificate.md)
+### [实施 HTTPS](web-sites-configure-ssl-certificate.md#enforce-https-on-your-app)
+### [配置 TLS 相互身份验证](app-service-web-configure-tls-mutual-auth.md)
+            
+##缩放应用        
+### [纵向扩展](web-sites-scale.md)
+### [横向扩展](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [使用流量管理器进行负载均衡](web-sites-traffic-manager.md)
+### [应用服务环境的高度缩放](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [使用 Azure CDN 扩大全球覆盖范围](cdn-websites-with-cdn.md)
+### [通过 Memcache 连接到 Redis 缓存](web-sites-connect-to-redis-using-memcache-protocol.md)
+### [创建 Redis 缓存](../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [使用 Azure Redis 缓存管理会话状态](web-sites-dotnet-session-state-caching.md)
 
-### 自定义域
-#### [购买和配置自定义域](custom-dns-web-site-buydomains-web-app.md)
-#### [映射自己的自定义域](web-sites-custom-domain-name.md)
-#### [配置 GoDaddy 域](web-sites-godaddy-custom-domain-name.md)
-#### [在流量管理器中使用自定义域](web-sites-traffic-manager-custom-domain-name.md)
+## 监视 
+### [监视应用](web-sites-monitor.md)
+### [启用日志](web-sites-enable-diagnostic-log.md)
+### [流式传输日志](web-sites-streaming-logs-and-console.md)
 
-### [克隆现有应用](app-service-web-app-cloning-portal.md)
-### [本地连接](web-sites-hybrid-connection-get-started.md)
-### [Azure 虚拟网络](web-sites-integrate-with-vnet.md)
-### [高级配置](web-sites-transform-extend.md)
-### [资源组](app-service-move-resources.md)
-### [将 WordPress 转换为多站点](web-sites-php-convert-wordpress-multisite.md) 
+## 备份内容        
+### [备份应用](web-sites-backup.md)
+### [从备份还原应用](web-sites-restore.md)
+### [使用 REST API 备份](websites-csm-backup.md)
 
-### [Web 作业](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [使用 WebJobs 运行后台任务](web-sites-create-web-jobs.md)
-
-### [应用服务环境](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [配置](app-service-web-configure-an-app-service-environment.md)
-#### [自定义配置设置](app-service-app-service-environment-custom-settings.md)
-#### [如何控制入站流量](app-service-app-service-environment-control-inbound-traffic.md)
-#### [网络体系结构概述](app-service-app-service-environment-network-architecture-overview.md)
-#### [使用 ExpressRoute 时的网络配置详细信息](app-service-app-service-environment-network-configuration-expressroute.md)
-
-## 备份
-### [在 Azure 中备份应用](web-sites-backup.md)
-### [在 Azure 中还原应用](web-sites-restore.md)
-### [使用 REST 备份和还原应用服务应用](websites-csm-backup.md)
-
-## [监视](web-sites-monitor.md)
-### [启用诊断日志记录](web-sites-enable-diagnostic-log.md)
-### [使用 Visual Studio 排除故障](web-sites-dotnet-troubleshoot-visual-studio.md)
-
-## [安全](../app-service/app-service-security-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [在 Azure 应用服务中保护应用安全](web-sites-security.md)
-### [身份验证和授权](../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### 使用标识提供者进行身份验证
-#### [Azure Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Facebook 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Google 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Microsoft 帐户身份验证](../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Twitter 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [使用本地 Active Directory 进行身份验证](web-sites-authentication-authorization.md)
-
-### HTTPS
-#### [配置 TLS 相互身份验证](app-service-web-configure-tls-mutual-auth.md)
-#### [在 Azure 中购买 SSL 证书](web-sites-purchase-ssl-web-site.md)
-#### [使用在其他位置获取的 SSL 证书](web-sites-configure-ssl-certificate.md)
-
-### 安全教程
-#### [使用 ADFS 身份验证创建业务线应用](web-sites-dotnet-lob-application-adfs.md)
-#### [使用 AAD 身份验证创建业务线应用](web-sites-dotnet-lob-application-azure-ad.md)
-#### [使用多租户数据库和 Entity Framework 及行级别安全性的 Web 应用](web-sites-dotnet-entity-framework-row-level-security.md)
-
-### 保护应用服务环境
-#### [配置 Web 应用程序防火墙](app-service-app-service-environment-web-application-firewall.md)
-#### [实施分层的安全体系结构](app-service-app-service-environment-layered-security.md)
-#### [安全连接到后端资源](app-service-app-service-environment-securely-connecting-to-backend-resources.md)
-
-## 分析
-### [试验部署（beta 测试）](app-service-web-test-in-production-controlled-test-flight.md)
-### [测试 Azure Web 应用在低负载下的性能](app-service-web-app-performance-test.md) 
-
-## 自动化
-### [敏捷开发](app-service-agile-software-development.md)
-### [Azure Resource Manager 部署](app-service-deploy-complex-application-predictably.md)
-#### [Web + GitHub](app-service-web-arm-from-github-provision.md)
-#### [Web + SQL ](app-service-web-arm-with-sql-database-provision.md)
-#### [Web + Redis ](../redis-cache/cache-web-app-arm-with-redis-cache-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Redis 缓存](../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [使用自定义主机名和 SSL 证书的 MSDeploy](app-service-web-arm-with-msdeploy-provision.md)
-### Powershell
-#### [自动备份和还原](../app-service/app-service-powershell-backup.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [应用克隆](app-service-web-app-cloning.md)
-#### [SSL 证书绑定](app-service-web-app-powershell-ssl-binding.md)
-#### [将 Azure Resource Manager 与 PowerShell 配合使用](app-service-web-app-azure-resource-manager-powershell.md)
+## 管理应用资源
+### [使用 PowerShell 克隆应用](app-service-web-app-cloning.md)
+### [使用门户克隆应用](app-service-web-app-cloning-portal.md)
+### [移动资源](app-service-move-resources.md)
+### [将 Azure Resource Manager 与 PowerShell 配合使用](app-service-web-app-azure-resource-manager-powershell.md)
 ### [使用 Azure 自动化管理应用](automation-manage-web-app.md)
 
-## 集成
-### [使用混合连接访问本地资源](web-sites-hybrid-connection-get-started.md)
-### [使用混合连接连接到本地 SQL Server](web-sites-hybrid-connection-connect-on-premises-sql-server.md)
-### [使用 PowerShell 将应用程序连接到虚拟网络](app-service-vnet-integration-powershell.md)
-### [使用 Azure 流量管理器控制 Azure Web 应用流量](web-sites-traffic-manager.md)
-### Redis 缓存
-#### [通过 Memcache 协议连接到 Redis 缓存](web-sites-connect-to-redis-using-memcache-protocol.md)
-#### [使用模板创建 Redis 缓存](../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [使用 Azure Redis 缓存管理会话状态](web-sites-dotnet-session-state-caching.md)
-### [在 Azure 中创建连接到虚拟机上运行的 MongoDB 的 Web 应用](web-sites-dotnet-store-data-mongodb-vm.md)
-### [如何使用 SendGrid 发送电子邮件](sendgrid-dotnet-how-to-send-email.md)
-### [将应用与虚拟网络集成](web-sites-integrate-with-vnet.md)
-### [使用 Azure 表服务的 Node.js Web 应用](storage-nodejs-use-table-storage-web-site.md)
-### [在 Azure 应用服务中使用 Azure CDN](cdn-websites-with-cdn.md)
 
 
-## 故障排除
-### [为 Web 应用启用诊断日志记录](web-sites-enable-diagnostic-log.md)
-### [流式传输日志和控制台](web-sites-streaming-logs-and-console.md)
-### [Node 应用程序最佳实践和故障排除指南](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)
-### [如何调试 Node.js Web 应用](web-sites-nodejs-debug.md)
-### [使用 Visual Studio 对 Web 应用进行故障排除](web-sites-dotnet-troubleshoot-visual-studio.md)
+# 引用    
+## [CLI 2.0](/cli/azure/appservice)
+## [PowerShell](/powershell)
+## [REST API](/rest/api/appservice/) 
+        
+# 资源    
+## 故障排除        
+### [使用 Visual Studio 排除故障](web-sites-dotnet-troubleshoot-visual-studio.md)
+### [对 Node.js 应用进行故障排除](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)
 ### [排查 HTTP 502 和 503 错误](app-service-web-troubleshoot-http-502-http-503.md)
-### [排查 Web 应用性能问题](app-service-web-troubleshoot-performance-degradation.md)
-
-# 引用
-## [Azure CLI](/cli/azure/)
-## [Java](/java/api/)
-## [.NET](/dotnet/api)
-## [REST](/rest/api/appservice)
-
-# 相关内容
-## [用于 .NET 的 Azure SDK 发行说明](azure-sdk-dotnet-release-notes.md)
-### [2.9 版](azure-sdk-dotnet-release-notes-2-9.md)
-### [2.8.X 版](azure-sdk-dotnet-release-notes-2-8.md)
-### [2.7.X 版](azure-sdk-dotnet-release-notes-2-7.md)
-### [2.6 版](azure-sdk-dotnet-release-notes-2-6.md)
-### [2.5.1 版](../app-service/app-service-release-notes.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-
-# 资源
+### [排查性能问题](app-service-web-troubleshoot-performance-degradation.md)
+## [定价](https://azure.microsoft.com/pricing/details/app-service/)     
+## [配额信息](../azure-subscription-service-limits.md#app-service-limits)    
+## [服务更新和发行说明](https://azure.microsoft.com/updates/?product=app-service)    
 ## [最佳实践](app-service-best-practices.md)
-## [WebJob 资源列表](websites-webjobs-resources.md)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-
+## [示例](https://azure.microsoft.com/resources/samples/?service=app-service)    
+## [视频](https://azure.microsoft.com/resources/videos/index/?services=app-service)
+## Cookbook    
+### [参考体系结构](../guidance/guidance-ra-app-service.md)    
+### [部署脚本](https://azure.microsoft.com/documentation/scripts/)    

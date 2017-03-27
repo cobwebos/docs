@@ -1,6 +1,6 @@
 # 概述
 ## [关于虚拟机](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-## [磁盘和 VHD](../../virtual-machines-windows-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+## [磁盘和 VHD](../../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [虚拟网络](../../../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [常见问题](../../virtual-machines-windows-classic-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [VM、网站和云服务对比](../../../app-service-web/choose-web-site-cloud-service-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
@@ -9,8 +9,8 @@
 # 入门
 ## [使用门户创建 VM](../../virtual-machines-windows-classic-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [登录到 VM](../../virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-## [安装 Azure PowerShell](../../../powershell-install-configure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-## [安装 Azure CLI](../../../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+## [安装 Azure PowerShell](/powershell/azureps-cmdlets-docs)
+## [安装 Azure CLI](../../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 # 如何
 
@@ -51,8 +51,6 @@
 ### [管理 VM 扩展](../../virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [VM 的自定义脚本扩展](../../virtual-machines-windows-classic-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [将自定义数据注入 Azure VM](../../virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-### [SQL Server 自动备份](../../virtual-machines-windows-classic-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-### [SQL Server 自动修补](../../virtual-machines-windows-classic-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## 计划
 ### [关于映像](../../virtual-machines-windows-classic-about-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
@@ -78,20 +76,7 @@
 ####[有关映像的其他注意事项](../../virtual-machines-windows-classic-oracle-considerations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ####[Oracle VM 映像列表](../../virtual-machines-windows-classic-oracle-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [SAP](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-### [SQL Server](../../virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[SQL Server 商业智能](../../virtual-machines-windows-classic-ps-sql-bi.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[使用 Azure PowerShell 预配 SQL Server VM（经典）](../../virtual-machines-windows-classic-ps-sql-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[使用经典门户配置 Always On 可用性组](../../virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[使用 PowerShell 在 Azure VM 中配置 Always On 可用性组](../../virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[在 Azure 中配置 Always On 可用性组的外部侦听器](../../virtual-machines-windows-classic-ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[在 Azure 中配置 Always On 可用性组的 ILB 侦听器](../../virtual-machines-windows-classic-ps-sql-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[为 Azure VM 上的 SQL Serve 配置 Azure 密钥保管库集成（经典）](../../virtual-machines-windows-classic-ps-sql-keyvault.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[使用 PowerShell 创建运行本机模式报表服务器的 Azure VM](../../virtual-machines-windows-classic-ps-sql-report.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[连接到 Azure 上的 SQL Server 虚拟机（经典部署）](../../virtual-machines-windows-classic-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[将本地 Always On 可用性组扩展到 Azure](../../virtual-machines-windows-classic-sql-onprem-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[适用于 SQL Server VM 的 SQL Server 代理扩展（经典）](../../virtual-machines-windows-classic-sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[将 Azure 高级存储用于虚拟机上的 SQL Server](../../virtual-machines-windows-classic-sql-server-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[在 Azure 中托管的网站中使用 ReportViewer](../../virtual-machines-windows-classic-sql-server-reportviewer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+### [SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 ### [Tomcat](../../virtual-machines-windows-classic-java-run-tomcat-app-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## 故障排除
@@ -100,23 +85,21 @@
 ### [对应用程序的访问权限](../../virtual-machines-windows-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [新建 VM 时遇到的经典部署问题](../../virtual-machines-windows-classic-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [重新启动现有 VM 或调整其大小时遇到的经典部署问题](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+## [重置 RDP 密码](../../virtual-machines-windows-classic-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
-# 参考
+# 引用
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](/cli/azure/vm)
-## [Java](/java/api/)
+## [Java](/java/api)
+## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [创建 Resource Manager 模板](../../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [社区模板](https://azure.microsoft.com/documentation/templates/)
-## [计算 REST](/rest/api/compute/)
-## [网络 REST](/rest/api/)
-## [存储 REST](/rest/api/storageservices/)
+## [社区模板](https://azure.microsoft.com/documentation/templates)
+## [计算 REST](/rest/api/compute)
+## [网络 REST](/rest/api)
+## [存储 REST](/rest/api/storageservices)
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
 ## [区域可用性](https://azure.microsoft.com/regions/services/)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

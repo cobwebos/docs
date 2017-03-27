@@ -7,16 +7,16 @@ author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5e133d92-baaa-44c9-890c-ab2d85c91122
-ms.service: data-lake-store
+ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/19/2016
+ms.date: 02/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cae1eeb70e5358b8c30527a45379d2a0da315974
+ms.sourcegitcommit: 2fea3686b1484406d31c5447c7d3d7e2451b827e
+ms.openlocfilehash: 1898b3d6aa1a9ccbc9f4427cf994c02f9fa35abd
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: cae1eeb70e5358b8c30527a45379d2a0da315974
 ## <a name="authenticate-with-azure-active-directory"></a>使用 Azure Active Directory 进行身份验证
 使用 Azure Active Directory 进行身份验证的方法有两种。
 
-### <a name="enduser-authentication-interactive"></a>最终用户身份验证（交互式）
+### <a name="end-user-authentication-interactive"></a>最终用户身份验证（交互式）
 使用此方法时，应用程序将提示用户登录，所有操作将在用户的上下文中执行。 
 
 遵循以下步骤进行交互式身份验证：
@@ -76,7 +76,7 @@ ms.openlocfilehash: cae1eeb70e5358b8c30527a45379d2a0da315974
 
 有关交互式用户身份验证的详细信息，请参阅 [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx)（授权代码授予流）。
 
-### <a name="servicetoservice-authentication-noninteractive"></a>服务到服务身份验证（非交互式）
+### <a name="service-to-service-authentication-non-interactive"></a>服务到服务身份验证（非交互式）
 使用此方法时，应用程序提供自身的凭据来执行操作。 为此，必须发出 POST 请求，如下所示： 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
@@ -209,7 +209,7 @@ ms.openlocfilehash: cae1eeb70e5358b8c30527a45379d2a0da315974
         ]
     }
 
-## <a name="submit-usql-jobs"></a>提交 U-SQL 作业
+## <a name="submit-u-sql-jobs"></a>提交 U-SQL 作业
 以下 Curl 命令演示如何提交 U-SQL 作业：
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs/<NewGUID>?api-version=2016-03-20-preview -d@"C:\tutorials\adla\SubmitADLAJob.json"
@@ -266,7 +266,7 @@ ms.openlocfilehash: cae1eeb70e5358b8c30527a45379d2a0da315974
     }
 
 
-## <a name="list-usql-jobs"></a>列出 U-SQL 作业
+## <a name="list-u-sql-jobs"></a>列出 U-SQL 作业
 以下 Curl 命令演示如何列出 U-SQL 作业：
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs?api-version=2016-11-01 
@@ -350,6 +350,6 @@ ms.openlocfilehash: cae1eeb70e5358b8c30527a45379d2a0da315974
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

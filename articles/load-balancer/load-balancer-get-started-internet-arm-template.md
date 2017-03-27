@@ -1,11 +1,10 @@
 ---
-title: "使用模板在 Resource Manager 中创建面向 Internet 的负载均衡器 | Microsoft Docs"
-description: "了解如何使用模板在 Resource Manager 中创建面向 Internet 的负载平衡器"
+title: "创建面向 Internet 的负载均衡器 - Azure 模板 | Microsoft 文档"
+description: "了解如何使用模板在 Resource Manager 中创建面向 Internet 的负载均衡器"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
-editor: 
+author: kumudd
+manager: timlt
 tags: azure-resource-manager
 ms.assetid: b24f4729-4559-4458-8527-71009d242647
 ms.service: load-balancer
@@ -13,17 +12,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
-ms.author: sewhee
+ms.date: 01/23/2017
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 540706ec32e3a0fbdfc29edd7e3e7b1784ecc720
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3539d6f6d3741387174e80ecc132db782d7df9f0
+ms.lasthandoff: 03/21/2017
 
 ---
 
-# <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>使用模板创建面向 Internet 的负载平衡器
+# <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>使用模板创建面向 Internet 的负载均衡器
 
-[!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [门户](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
+> * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
+> * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
@@ -41,24 +45,24 @@ ms.openlocfilehash: 540706ec32e3a0fbdfc29edd7e3e7b1784ecc720
 
 若要使用 PowerShell 部署下载的模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](../powershell-install-configure.md) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
 2. 运行 **New-AzureRmResourceGroupDeployment** cmdlet 以使用模板创建资源组。
 
     ```powershell
-        New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
-            -TemplateFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' `
-            -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
+    New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
+        -TemplateFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' `
+        -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
     ```
 
 ## <a name="deploy-the-template-by-using-the-azure-cli"></a>使用 Azure CLI 部署模板
 
 若要使用 Azure CLI 部署模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../xplat-cli-install.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **azure config mode** 命令以切换到资源管理器模式，如下所示。
 
     ```azurecli
-        azure config mode arm
+    azure config mode arm
     ```
 
     下面是上述命令的预期输出：
@@ -69,7 +73,7 @@ ms.openlocfilehash: 540706ec32e3a0fbdfc29edd7e3e7b1784ecc720
 4. 运行 **azure group deployment create** cmdlet 以使用在前面下载并修改的模板和参数文件部署新的负载均衡器。 在输出后显示的列表说明了所用的参数。
 
     ```azurecli
-        azure group create --name TestRG --location westus --template-file 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' --parameters-file 'c:\lb\azuredeploy.parameters.json'
+    azure group create --name TestRG --location westus --template-file 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' --parameters-file 'c:\lb\azuredeploy.parameters.json'
     ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -79,9 +83,4 @@ ms.openlocfilehash: 540706ec32e3a0fbdfc29edd7e3e7b1784ecc720
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

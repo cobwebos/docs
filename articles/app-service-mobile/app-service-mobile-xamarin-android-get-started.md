@@ -4,7 +4,7 @@ description: "按照本教程进行操作，开始使用 Azure 移动应用进�
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e59a87ec6017061078d5cb5df93207c7f93ec00b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 4d34bb29df95ae83952d8f421f3f2a9118ad5e1d
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -39,7 +40,7 @@ ms.openlocfilehash: e59a87ec6017061078d5cb5df93207c7f93ec00b
 * Visual Studio with Xamarin。 有关说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 。
 
 > [!NOTE]
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile)（试用应用服务）。  可以立即在应用服务中创建一个短期的入门级移动应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://azure.microsoft.com/try/app-service/mobile/)（试用应用服务）。  可以立即在应用服务中创建一个短期的入门级移动应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -83,11 +84,6 @@ ms.openlocfilehash: e59a87ec6017061078d5cb5df93207c7f93ec00b
 [10]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-startup-android.png
 
 <!-- URLs. -->
-[Azure 门户]: https://azure.portal.com/
+[Azure Portal]: https://azure.portal.com/
 [Visual Studio]: https://go.microsoft.com/fwLink/p/?LinkID=534203
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

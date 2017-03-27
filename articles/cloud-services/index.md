@@ -1,9 +1,26 @@
 ---
+title: "Azure 云服务文档 - 教程和 API 参考 | Microsoft 文档"
+description: "教程、API 参考和其他文档介绍了如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。"
+services: cloud-services
+author: carolz
+manager: carolz
 layout: LandingPage
----
-#Cloud Services Documentation
+ms.assetid: 
+ms.service: cloud-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
+translationtype: Human Translation
+ms.sourcegitcommit: c8e0cec964b7c72e45564ff776c55be1b06bfbc1
+ms.openlocfilehash: 16bbb9953db91bfe031e5e87e14aac84d32799b3
+ms.lasthandoff: 02/09/2017
 
-Cloud Services is an example of a Platform-as-a-Service (PaaS) implementation. It is designed to support applications that are scalable, reliable, and cost-effective to operate. With Cloud Services, you have the benefit of virtualization, but you also have control over the virtual machine to configure, patch, and install software.  
+---
+# <a name="cloud-services-documentation"></a>云服务文档
+
+了解如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。  教程、API 参考和其他文档介绍了如何管理虚拟机主机以及配置、修补和安装软件。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +34,7 @@ Cloud Services is an example of a Platform-as-a-Service (PaaS) implementation. I
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Cloud Services</h3>
+                        <h3>了解云服务</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +52,7 @@ Cloud Services is an example of a Platform-as-a-Service (PaaS) implementation. I
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Cloud Services Video Library</h3>
+                        <h3>云服务视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +70,7 @@ Cloud Services is an example of a Platform-as-a-Service (PaaS) implementation. I
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create your first .NET app with Cloud Services</h3>
+                        <h3>通过 .NET 开始使用云服务</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +88,7 @@ Cloud Services is an example of a Platform-as-a-Service (PaaS) implementation. I
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Python app </h3>
+                        <h3>通过 Python 开始使用云服务</h3>
                     </div>
                 </div>
             </div>
@@ -82,20 +99,34 @@ Cloud Services is an example of a Platform-as-a-Service (PaaS) implementation. I
 
 ---
 
-##Reference
-
-###REST
-[Cloud Services REST API Reference](https://msdn.microsoft.com/library/azure/ee460812.aspx)
-
-###.Schemas
-[Cloud Services Definition Schema](https://msdn.microsoft.com/en-us/library/azure/ee758711.aspx)
-[Cloud Services Configuration Schema](https://msdn.microsoft.com/en-us/library/azure/ee758710.aspx)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cloud-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-            Download Cloud Services Documentation
+<h2>参考</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/ee758711">.csdef XMLSchema</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/ee758710">.cscfg XMLSchema</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </a>
-</div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/ee460812">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+

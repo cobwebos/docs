@@ -1,38 +1,39 @@
 ---
-title: "Azure 自动化安全性 | Microsoft Docs"
+title: "Azure 自动化中的身份验证简介 | Microsoft 文档"
 description: "本文概述了 Azure 自动化中自动化帐户的自动化安全性以及可供使用的不同身份验证方法。"
 services: automation
 documentationcenter: 
 author: MGoedtel
 manager: jwhit
 editor: tysonn
-keywords: "自动化安全性, 安全的自动化"
+keywords: "自动化安全性, 安全的自动化; 自动化身份验证"
 ms.assetid: 4a6bc2f5-c5a2-4dfb-b10d-7950d750dee8
 ms.service: automation
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/29/2016
+ms.date: 03/01/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5cd87c888a5e3407da2bad1bc3f2ef10aa75312b
+ms.sourcegitcommit: 7224da31e71f3f6c912cd486198135945f90a8a4
+ms.openlocfilehash: aa639886ba3379ef30f9abef8f3dff4acb5b1181
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="azure-automation-security"></a>Azure 自动化安全性
-Azure 自动化让你可以通过其他云提供程序（如 Amazon Web Services (AWS)）针对 Azure、本地中的资源来自动执行任务。  为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。  
+# <a name="introduction-to-authentication-in-azure-automation"></a>Azure 自动化中的身份验证简介  
+Azure 自动化让你可以通过其他云提供程序（如 Amazon Web Services (AWS)）针对 Azure、本地中的资源来自动执行任务。  为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。 
+ 
 本文将介绍 Azure 自动化支持的各种身份验证方案，并介绍如何根据你需要管理的单个或多个环境来入门。  
 
 ## <a name="automation-account-overview"></a>自动化帐户概述
 首次启动 Azure 自动化时，你必须创建至少一个自动化帐户。 使用自动化帐户，可以将你的自动化资源（Runbook、资产、配置）与其他自动化帐户中包含的资源相隔离。 可以使用自动化帐户将资源隔离到独立的逻辑环境中。 例如，你可以在开发环境中使用一个帐户，在生产环境中使用另一个帐户，并在本地环境中使用另一个账户。  Azure 自动化帐户不同于 Microsoft 帐户或在你的 Azure 订阅中创建的帐户。
 
-每个自动化帐户的自动化资源与单个 Azure 区域相关联，但自动化帐户可以管理任何区域中的资源。 在不同区域中创建自动化帐户的主要原因是，你的策略要求数据和资源隔离到特定的区域。
+每个自动化帐户的自动化资源与单个 Azure 区域相关联，但自动化帐户可以管理订阅中的所有资源。 在不同区域中创建自动化帐户的主要原因是，你的策略要求数据和资源隔离到特定的区域。
 
 > [!NOTE]
 > 无法在 Azure 经典门户中访问使用在 Azure 门户创建的自动化帐户及其包含的资源。 如果你想要使用 Windows PowerShell 来管理这些帐户或其资源，必须使用 Azure 资源管理器模块。
-> 
 > 
 
 所有使用 Azure Resource Manager 和 Azure 自动化中的 Azure cmdlet 对资源执行的任务必须使用 Azure Active Directory 组织标识基于凭据的身份验证向 Azure 进行身份验证。  基于证书的身份验证是使用 Azure 服务管理模式的原始身份验证方法，但设置很复杂。  在 2014 年引入了使用 Azure AD 用户向 Azure 进行身份验证，不仅简化了配置身份验证帐户的过程，也支持使用在 Azure Resource Manager 和经典资源模式下均可使用的单个用户帐户向 Azure 进行非交互式身份验证的功能。   
@@ -56,10 +57,5 @@ Azure 自动化让你可以通过其他云提供程序（如 Amazon Web Services
 | Azure 经典运行方式帐户 |Azure 服务管理 |[Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](automation-sec-configure-azure-runas-account.md) |
 | Windows 身份验证 |本地数据中心 |[对混合 Runbook 辅助角色进行 Runbook 身份验证](automation-hybrid-runbook-worker.md) |
 | AWS 凭据 |Amazon Web Services |[Authenticate Runbooks with Amazon Web Services (AWS)（使用 Amazon Web Services (AWS) 进行 Runbook 身份验证）](automation-sec-configure-aws-account.md) |
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

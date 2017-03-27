@@ -1,6 +1,6 @@
 ---
-title: "创建与 Azure 服务绑定的 Azure Function | Microsoft Docs"
-description: "生成 Azure Function，即与其他 Azure 服务交互的无服务应用程序。"
+title: "创建一个连接到 Azure 服务的函数 | Microsoft 文档"
+description: "使用 Azure Functions 可以创建与其他 Azure 服务相连接的无服务器应用程序。"
 services: functions
 documentationcenter: dev-center-name
 author: yochay
@@ -14,175 +14,182 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/25/2016
-ms.author: rachelap@microsoft.com
+ms.date: 03/01/2017
+ms.author: rachelap; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9ffd199c9e3c621a808ade109ed044b6c9b689b7
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 4bea7f73871f8bfc755f30b9ef41a1960893152e
+ms.lasthandoff: 03/06/2017
 
 
 ---
-# <a name="create-an-azure-function-which-binds-to-an-azure-service"></a>创建要与 Azure 服务绑定的 Azure Function
-[!INCLUDE [Getting Started Note](../../includes/functions-getting-started.md)]
+# <a name="use-azure-functions-to-create-a-function-that-connects-to-other-azure-services"></a>使用 Azure Functions 可以创建与其他 Azure 服务相连接的函数。
 
-此短片介绍如何创建在 Azure 队列上侦听消息的 Azure Function 并将消息复制到 Azure Blob。
+本主题说明如何在 Azure Functions 中创建一个函数，用于侦听 Azure 队列中的消息，并将这些消息复制到 Azure 存储表中的行。 一个计时器触发的函数用于将消息载入队列。 另一个函数从队列中读取消息，并将消息写入表中。 该队列和表是 Azure Functions 根据绑定定义创建的。 
 
-## <a name="watch-the-video"></a>观看视频
->[!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player]
->
->
+为了使讲解内容丰富有趣，本主题中的一个函数是用 JavaScript 编写的，另一个函数则是用 C# 脚本编写的， 目的是演示 Function App 如何支持以不同语言编写的函数。 
 
-## <a name="create-an-input-queue-trigger-function"></a>创建输入队列触发器函数
-此函数的目的是每隔 10 秒向队列写入一条消息。 为了实现这个目的，必须先创建函数和消息队列，然后添加代码，以便将消息写入新创建的队列。
+可以在[第 9 频道视频](https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player)上观看此方案的演示。
 
-1. 转到 Azure 门户并找到 Azure Function App。
-2. 单击“新建函数” > “计时器触发器 - Node”。 将函数命名为 **FunctionsBindingsDemo1**
-3. 为计划输入值“0/10     *”。 此值为 cron 表达式形式。 这样会将计时器计划为每 10 秒运行一次。
-4. 单击“创建”按钮创建该函数。
+## <a name="create-a-function-that-writes-to-the-queue"></a>创建一个向队列写入数据的函数
+
+在连接到存储队列之前，需要创建一个函数用于加载消息队列。 此 JavaScript 函数使用计时器触发器每隔 10 秒将消息写入队列。 如果尚未创建 Azure 帐户，请查看 [Try Azure Functions](https://functions.azure.com/try)（试用 Azure Functions）主题，或[免费创建一个 Azure 帐户](https://azure.microsoft.com/free/)。
+
+1. 转到 Azure 门户并找到你的函数应用。
+
+2. 单击“新建函数” > “TimerTrigger - JavaScript”。 
+
+3. 将函数命名为 **FunctionsBindingsDemo1**，为“计划”输入 cron 表达式值 `0/10 * * * * *`，然后单击“创建”。
    
-    ![添加触发器计时器函数](./media/functions-create-an-azure-connected-function/new-trigger-timer-function.png)
-5. 查看日志中的活动，确保函数正常运行。 可能需要单击右上角的“日志”链接才能显示日志窗格。
-   
-   ![查看日志，确保函数正常运行](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-view-log.png)
+    ![添加计时器触发的函数](./media/functions-create-an-azure-connected-function/new-trigger-timer-function.png)
 
-### <a name="add-a-message-queue"></a>添加消息队列
-1. 转到“集成”选项卡。
-2. 选择“新建输出” > “Azure 存储队列” > “选择”。
-3. 在“消息参数名称”文本框中输入“myQueueItem”。
-4. 选择一个存储帐户，如果没有现成的存储帐户，可单击“新建”创建一个。
-5. 在“队列名称”文本框中，输入“functions-bindings”。
-6. 单击“保存” 。  
-   
-   ![添加触发器计时器函数](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab.png)
+    现已创建一个每隔 10 秒运行的计时器触发的函数。
 
-### <a name="write-to-the-message-queue"></a>写入到消息队列
-1. 回到“开发”选项卡，在现有代码后将以下代码添加到该函数：
+5. 在“开发”选项卡上，单击“日志”并查看日志中的活动。 系统每隔 10 秒就会写入一条日志。
+   
+    ![查看日志，确认该函数是否正常运行](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-view-log.png)
+
+## <a name="add-a-message-queue-output-binding"></a>添加消息队列输出绑定
+
+1. 在“集成”选项卡上，选择“新建输出” > “Azure 队列存储” > “选择”。
+
+    ![添加触发器计时器函数](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab.png)
+
+2. 在“消息参数名称”中输入 `myQueueItem`，在“队列名称”中输入 `functions-bindings`，选择现有的**存储帐户连接**或单击“新建”创建一个存储帐户连接，然后单击“保存”。  
+
+    ![创建存储队列的输出绑定](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab2.png)
+
+1. 返回“开发”选项卡，在函数的后面追加以下代码：
    
     ```javascript
    
     function myQueueItem() 
-      {
+    {
         return {
-        msg: "some message goes here",
-        time: "time goes here"
-      }
+            msg: "some message goes here",
+            time: "time goes here"
+        }
     }
    
     ```
-2. 修改现有的函数代码，调用在步骤 1 中添加的代码。 将以下代码插入到函数的第 9 行，*if* 语句的后面。
+2. 在函数第 9 行附近找到 *if* 语句，并将该语句的后面插入以下代码。
    
     ```javascript
    
     var toBeQed = myQueueItem();
     toBeQed.time = timeStamp;
-    context.bindings.myQueue = toBeQed;
+    context.bindings.myQueueItem = toBeQed;
    
-    ```
+    ```  
    
-    此代码创建 **myQueueItem** 并将其 **time** 属性设置为当前的时间戳。 然后，它会将新队列项添加到上下文的 myQueue 绑定。
+    此代码创建 **myQueueItem** 并将其 **time** 属性设置为当前的时间戳。 然后，它会将新队列项添加到上下文的 **myQueueItem** 绑定。
+
 3. 单击“保存并运行”。
-4. 在 Visual Studio 中查看队列，确保代码正常运行。
-   
-   * 打开 Visual Studio，转到“视图” > “Cloud Explorer”。
-   * 找到在创建 myQueue 队列时使用过的存储帐户和 **functions-bindings** 队列。 应该会看到多行日志数据。 用户可能需要通过 Visual Studio 登录到 Azure。  
 
-## <a name="create-an-output-queue-trigger-function"></a>创建输出队列触发器函数
-1. 单击“新建函数” > “队列触发器 - C#”。 将函数命名为 **FunctionsBindingsDemo2**。 请注意，可以在同一函数应用中混合使用多种语言（此示例混合使用了 Node 和 C#）。
-2. 在“队列名称”字段中，输入“functions-bindings”。
-3. 选择要使用的存储帐户，或者新建一个。
-4. 单击“创建” 
-5. 查看函数的日志并查看 Visual Studio 中是否进行了更新，确保新函数正常运行。 函数的日志显示函数正在运行且项目已取消排队。 由于函数以输入触发器的形式绑定到 **functions-bindings** 输出队列，因此在 Visual Studio 中刷新 **functions-bindings** 队列就可以看到相关项目已消失。 这些项目已取消排队。   
-   
-   ![添加输出队列计时器函数](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab.png)   
+## <a name="view-storage-updates-by-using-storage-explorer"></a>使用存储资源管理器查看存储更新
+可以通过查看所创建的队列中的消息来确认函数是否正常运行。  可以使用 Visual Studio 中的 Cloud Explorer 连接到存储队列。 但是，在门户中，可以使用 Microsoft Azure 存储资源管理器轻松连接到存储帐户。
 
-### <a name="modify-the-queue-item-type-from-json-to-object"></a>将队列项目类型从 JSON 修改为对象
-1. 将 **FunctionsBindingsDemo2** 中的代码替换为以下代码：    
+1. 在“集成”选项卡上，单击队列输出绑定，选择“文档”，然后取消隐藏存储帐户的连接字符串并复制该值。 可以使用此值连接到存储帐户。
+
+    ![下载 Azure 存储资源管理器](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab3.png)
+
+
+2. 如果尚未这样做，请下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com)。 
+ 
+3. 在存储资源管理器中，单击“连接到 Azure 存储”图标，在字段中粘贴连接字符串，然后完成向导。
+
+    ![在存储资源管理器中添加连接](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-storage-explorer.png)
+
+4. 在“本地和附加的存储”下面，展开“存储帐户”> 你的存储帐户 >“队列” > “函数绑定”，然后确认消息是否已写入队列。
+
+    ![查看队列中的消息](./media/functions-create-an-azure-connected-function/functionsbindings-azure-storage-explorer.png)
+
+    如果队列不存在或为空，则很可能是函数绑定或代码出现了问题。
+
+## <a name="create-a-function-that-reads-from-the-queue"></a>创建从队列读取数据的函数
+
+现在，消息已开始添加到队列，接下来可以创建另一个函数，用于从队列中读取消息并将其永久写入 Azure 存储表。
+
+1. 单击“新建函数” > “QueueTrigger-CSharp”。 
+ 
+2. 将函数命名为 `FunctionsBindingsDemo2`，在“队列名称”字段中输入 **functions-bindings**，选择现有的存储帐户或新建一个存储帐户，然后单击“创建”。
+
+    ![添加输出队列计时器函数](./media/functions-create-an-azure-connected-function/function-demo2-new-function.png) 
+
+3. （可选）可以像前面一样通过查看存储资源管理器中的新队列来确认新函数是否正常运行。 也可以使用 Visual Studio 中的 Cloud Explorer。  
+
+4. （可选）刷新 **functions-bindings** 排队，然后可以看到项已从队列中删除。 之所以发生删除操作，是因为该函数已作为输入触发器绑定到 **functions-bindings** 队列，而该函数会读取该队列。 
+ 
+## <a name="add-a-table-output-binding"></a>添加表输出绑定
+
+1. 在 FunctionsBindingsDemo2 中，单击“集成” > “建新输出” > “Azure 表存储” > “选择”。
+
+    ![将绑定添加到 Azure 存储表](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab.png) 
+
+2. 在“表名称”中输入 `functionbindings`，在“表参数名称”中输入 `myTable`，选择“存储帐户连接”或创建一个新连接，然后单击“保存”。
+
+    ![配置存储表绑定](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab2.png)
+   
+3. 在“开发”选项卡中，将现有函数代码替换为以下内容：
    
     ```cs
-   
+    
     using System;
-   
-    public static void Run(QItem myQueueItem, ICollector<TableItem> myTable, TraceWriter log)
-    {
-      TableItem myItem = new TableItem
-      {
-        PartitionKey = "key",
-        RowKey = Guid.NewGuid().ToString(),
-        Time = DateTime.Now.ToString("hh.mm.ss.ffffff"),
-        Msg = myQueueItem.Msg,
-        OriginalTime = myQueueItem.Time    
-      };
-      log.Verbose($"C# Queue trigger function processed: {myQueueItem.Msg} | {myQueueItem.Time}");
-    }
-   
-    public class TableItem
-    {
-      public string PartitionKey {get; set;}
-      public string RowKey {get; set;}
-      public string Time {get; set;}
-      public string Msg {get; set;}
-      public string OriginalTime {get; set;}
-    }
-   
-    public class QItem
-    {
-      public string Msg { get; set;}
-      public string Time { get; set;}
-    }
-   
-    ```
-   
-    此代码添加了 **TableItem** 和 **QItem** 这两个类，用于从队列读取数据以及向队列写入数据。 另外还修改了 **Run** 函数，使之接受 **QItem** 和 **TraceWriter** 参数而不是 **string** 和 **TraceWriter** 参数。 
-2. 单击“保存”按钮  。
-3. 检查日志，确保代码正常运行。 请注意，Azure Functions 会自动为用户序列化和反序列化对象，因此可以通过面向对象的方式方便地访问队列，以便传递数据。 
-
-## <a name="store-messages-in-an-azure-table"></a>在 Azure 表中存储消息
-队列可以协同运行以后，即可加入 Azure 表来永久存储队列数据。
-
-1. 转到“集成”选项卡。
-2. 创建用于输出的 Azure 存储表，将其命名为 **myTable**。
-3. 出现“应将数据写入哪个表?”这个问题时，回答 **functionsbindings**。
-4. 将 **PartitionKey** 设置从 **{project-id}** 更改为 **{partition}**。
-5. 选择存储帐户，或者新建一个。
-6. 单击“保存” 。
-7. 转到“开发”选项卡。
-8. 创建用来表示 Azure 表的 **TableItem** 类，并修改 Run 函数，使之接受新建的 TableItem 对象。 请注意，必须使用 **PartitionKey** 和 **RowKey** 属性才能正常运行。
-   
-    ```cs
-   
+    
     public static void Run(QItem myQueueItem, ICollector<TableItem> myTable, TraceWriter log)
     {    
-      TableItem myItem = new TableItem
-      {
-        PartitionKey = "key",
-        RowKey = Guid.NewGuid().ToString(),
-        Time = DateTime.Now.ToString("hh.mm.ss.ffffff"),
-        Msg = myQueueItem.Msg,
-        OriginalTime = myQueueItem.Time    
-      };
-   
-      log.Verbose($"C# Queue trigger function processed: {myQueueItem.RowKey} | {myQueueItem.Msg} | {myQueueItem.Time}");
+        TableItem myItem = new TableItem
+        {
+            PartitionKey = "key",
+            RowKey = Guid.NewGuid().ToString(),
+            Time = DateTime.Now.ToString("hh.mm.ss.ffffff"),
+            Msg = myQueueItem.Msg,
+            OriginalTime = myQueueItem.Time    
+        };
+        
+        // Add the item to the table binding collection.
+        myTable.Add(myItem);
+    
+        log.Verbose($"C# Queue trigger function processed: {myItem.RowKey} | {myItem.Msg} | {myItem.Time}");
     }
-   
+    
     public class TableItem
     {
-      public string PartitionKey {get; set;}
-      public string RowKey {get; set;}
-      public string Time {get; set;}
-      public string Msg {get; set;}
-      public string OriginalTime {get; set;}
+        public string PartitionKey {get; set;}
+        public string RowKey {get; set;}
+        public string Time {get; set;}
+        public string Msg {get; set;}
+        public string OriginalTime {get; set;}
+    }
+    
+    public class QItem
+    {
+        public string Msg { get; set;}
+        public string Time { get; set;}
     }
     ```
-9. 单击“保存” 。
-10. 查看函数的日志并在 Visual Studio 中查看，确保代码正常运行。 若要在 Visual Studio 中进行验证，可使用 **Cloud Explorer** 导航到 **functionbindings** Azure 表，验证其中是否存在行。
+    **TableItem** 类表示存储表中的某行。应该将项添加到 **TableItem** 对象的 `myTable` 集合。 只有设置了 **PartitionKey** 和 **RowKey** 属性才能在表中插入数据。
 
-[!INCLUDE [Getting Started Note](../../includes/functions-bindings-next-steps.md)]
+4. 单击“保存”。  最后，可以通过查看存储资源管理器或 Visual Studio Cloud Explorer 中的表来确认函数是否正常运行。
 
-[!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
+5. （可选）在存储资源管理器中的存储帐户内，展开“表” > “functionsbindings”，然后确认行是否已添加到表中。 在 Visual Studio 的 Cloud Explorer 中也可以执行上述操作。
 
+    ![查看表中的行](./media/functions-create-an-azure-connected-function/functionsbindings-azure-storage-explorer2.png)
 
+    如果表不存在或为空，则很可能是函数绑定或代码出现了问题。 
+ 
+[!INCLUDE [More binding information](../../includes/functions-bindings-next-steps.md)]
 
+## <a name="next-steps"></a>后续步骤
+有关 Azure Functions 的详细信息，请参阅以下主题：
 
-<!--HONumber=Nov16_HO2-->
+* [Azure Functions 开发人员参考](functions-reference.md)  
+  ，用于编码函数和定义触发器及绑定的程序员参考。
+* [测试 Azure Functions](functions-test-a-function.md)  
+  介绍可用于测试函数的各种工具和技巧。
+* [如何缩放 Azure Functions](functions-scale.md)  
+  讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。 
+
+[!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
 
 

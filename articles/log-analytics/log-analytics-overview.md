@@ -1,5 +1,5 @@
 ---
-title: "什么是 Log Analytics？ | Microsoft Docs"
+title: "Operations Management Suite (OMS) 中的 Log Analytics 是什么？ | Microsoft Docs"
 description: "Log Analytics 是 Operations Management Suite (OMS) 中的服务，可帮助收集和分析云和本地环境中资源生成的操作数据。  本文提供了 Log Analytics 不同组件的简要概述和指向详细内容的链接。"
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2016
+ms.date: 12/09/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 09a2b3ccd2048ab2638dd91d1905483f10d6d339
+ms.sourcegitcommit: 4d6ea516717077ffb4b832caa9e8a064905fce09
+ms.openlocfilehash: dcf61991fcbf989c905aa7c18e73df19afa89c36
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -69,10 +70,5 @@ Log Analytics 提供快速检索和整合存储库中的数据的查询语法。
 * [注册免费的 Log Analytics 帐户](log-analytics-get-started.md) 以在自己的环境中进行测试。
 * 查看各种可用的 [数据源](log-analytics-data-sources.md) 以将数据收集到 OMS 存储区中。
 * [浏览解决方案库中的可用解决方案](log-analytics-add-solutions.md) 以向 Log Analytics 中添加功能。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

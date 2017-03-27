@@ -4,6 +4,7 @@
 ## [角色](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
 # 入门
+## [订阅要求](subscription-requirements.md)
 ## [在门户中开始](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [安全向导](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [提供对 PIM 的访问权限](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
@@ -24,8 +25,3 @@
 # 相关内容
 ## [Azure Active Directory](/azure/active-directory/)
 ## [基于角色的访问控制](../role-based-access-control-what-is.md)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

@@ -1,10 +1,10 @@
 ---
-title: "使用 Visual Studio 将 ASP.NET 应用部署到 Azure 应用服务 | Microsoft Docs"
+title: "使用 Visual Studio 将 ASP.NET 应用部署到 Azure | Microsoft 文档"
 description: "了解如何使用 Visual Studio 将 ASP.NET Web 项目部署到 Azure App Service 中的新 Web 应用。"
 services: app-service\web
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 69759e3c-384c-4afb-9278-db6724f6cb74
 ms.service: app-service-web
@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 07/22/2016
+ms.date: 12/16/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
+ms.sourcegitcommit: 9b7e0b429575d080819f25e04d492a2b09d4d63a
+ms.openlocfilehash: 946552d1b268c6e70a9e8fcd4c40bd6e2ab76178
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -45,9 +46,9 @@ ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
 
 ## <a name="prerequisites"></a>先决条件
 * 本教程假设你用过 ASP.NET MVC 和 Visual Studio。 如需简介，请参阅 [Getting Started with ASP.NET MVC 5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)（ASP.NET MVC 5 入门）。
-* 需要一个 Azure 帐户。 可以[建立一个免费 Azure 帐户](/pricing/free-trial/?WT.mc_id=A261C142F)或[激活 Visual Studio 订户权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。 
+* 需要一个 Azure 帐户。 可以[建立一个免费 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)或[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。 
   
-    如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751)（试用应用服务）。 在那里，可以在应用服务中创建短期的入门级应用 - 无需信用卡，也无需做出承诺。
+    如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://azure.microsoft.com/try/app-service/)（试用应用服务）。 在那里，可以在应用服务中创建短期的入门级应用 - 无需信用卡，也无需做出承诺。
 
 ## <a name="a-namesetupdevenvaset-up-the-development-environment"></a><a name="setupdevenv"></a>设置开发环境
 本教程专为配合使用 Visual Studio 2015 和 [用于 .NET 的 Azure SDK](../dotnet-sdk.md) 2.9 或更高版本编写。 
@@ -61,8 +62,8 @@ ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
 
 如果你有 Visual Studio 2013 并想要使用它，可以 [下载最新的 Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?LinkID=324322)。 某些屏幕可能看起来与这些插图不同。
 
-## <a name="configure-a-new-web-project"></a>配置新的 Web 项目
-下一步是在 Visual Studio 中创建一个 Web 项目，并在 Azure App Service 中创建一个 Web 应用。 在本教程部分，你将配置新的 Web 项目。 
+## <a name="create-a-web-application"></a>创建 Web 应用程序
+下一步是在 Visual Studio 中创建一个 Web 应用程序项目，并在 Azure 应用服务中创建一个 Web 应用。 在本教程部分，你将配置新的 Web 项目。 
 
 1. 打开 Visual Studio 2015。
 2. 单击“文件”>“新建”>“项目”。
@@ -89,7 +90,7 @@ ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
     这些设置将指示 Visual Studio 为你的 Web 项目创建 Azure Web 应用。
 10. 单击 **“确定”**
 
-## <a name="configure-azure-resources-for-a-new-web-app"></a>配置新 Web 应用的 Azure 资源
+## <a name="create-the-azure-resources"></a>创建 Azure 资源
 现在告知 Visual Studio 希望其创建的 Azure 资源。
 
 1. 在“创建应用服务”对话框中，单击“添加帐户”，然后使用用于管理 Azure 订阅的帐户 ID 和密码登录到 Azure。
@@ -128,14 +129,14 @@ ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
 8. 在“配置应用服务计划”对话框中，单击“确定”。
 9. 在“创建应用服务”对话框中，单击“创建”。
 
-## <a name="visual-studio-creates-the-project-and-web-app"></a>Visual Studio 创建项目和 Web 应用
+## <a name="inspect-the-azure-resources-in-visual-studio"></a>检查 Visual Studio 中的 Azure 资源
 通常在不到一分钟的时间内，Visual Studio 就能创建 Web 项目和 Web 应用。  
 
 “解决方案资源管理器”窗口将显示新项目中的文件和文件夹。
 
 ![解决方案资源管理器](./media/web-sites-dotnet-get-started/solutionexplorer.png)
 
-“Azure 应用服务活动”窗口将显示已创建的 Web 应用。
+“Azure 应用服务活动”窗口显示已在 Azure 中创建应用服务资源。 可以单击以下链接，立即开始发布新项目。 但在后面，本教程会介绍如何随时发布文件。
 
 ![在“Azure App Service 活动”窗口中创建的 Web 应用](./media/web-sites-dotnet-get-started/GS13sitecreated1.png)
 
@@ -143,8 +144,8 @@ ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
 
 ![在云资源管理器中创建的 Web 应用](./media/web-sites-dotnet-get-started/siteinse.png)
 
-## <a name="deploy-the-web-project-to-the-azure-web-app"></a>将 Web 项目部署到 Azure Web 应用
-在本部分中，将 Web 项目部署到 Web 应用。
+## <a name="deploy-the-web-project-to-azure"></a>将 Web 项目部署到 Azure
+在此部分，用户将 Web 项目部署到在 Azure 应用服务中创建的 Web 应用资源。
 
 1. 在“解决方案资源管理器”中，右键单击该项目并选择“发布”。
    
@@ -152,7 +153,10 @@ ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
    
     几秒钟后，将显示“发布 Web”向导。 此向导将打开某个*发布配置文件*，其中包含可将 Web 项目部署到新 Web 应用的设置。
    
-    发布配置文件包含用于部署的用户名和密码。  这些凭据已事先生成，因此不需要输入。 密码已在 `Properties\PublishProfiles` 文件夹中某个隐藏的用户特定文件内加密。
+    > [!TIP] 
+    > 发布配置文件包含用于部署的用户名和密码。  这些凭据已事先生成，因此不需要输入。 密码已在 `Properties\PublishProfiles` 文件夹中某个隐藏的用户特定文件内加密。
+    >
+    >
 2. 在“发布 Web”向导的“连接”选项卡中，单击“下一步”。
    
     ![在“发布 Web”向导的“连接”选项卡中单击“下一步”](./media/web-sites-dotnet-get-started/GS13ValidateConnection.png)
@@ -213,12 +217,7 @@ ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
   * [为 Azure 网站启用 HTTPS](web-sites-configure-ssl-certificate.md)
 * 当你不再使用 Web 应用和任何相关的 Azure 资源时，请删除包含这些资源的资源组。
   
-    有关如何在 Azure 门户中使用资源组的信息，请参阅 [Deploy resources with Resource Manager templates and Azure portal](../resource-group-template-deploy-portal.md)（使用 Resource Manager 模板和 Azure 门户部署资源）。   
+    有关如何在 Azure 门户中使用资源组的信息，请参阅 [Deploy resources with Resource Manager templates and Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md)（使用 Resource Manager 模板和 Azure 门户部署资源）。   
 * 有关在应用服务中创建 ASP.NET Web 应用的更多示例，请参阅 [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [演示](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)中的[在 Azure 应用服务中创建和部署 ASP.NET Web 应用](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service)和[在 Azure 应用服务中创建和部署移动应用](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-a-mobile-app-in-Azure-App-Service)。 有关 HealthClinic.biz 演示的多个快速入门，请参阅 [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)（Azure 开发人员工具快速入门）。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

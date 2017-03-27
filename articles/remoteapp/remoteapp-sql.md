@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cfd3da08a8c8674e686ae2933db331809fb0e34d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 52edc23e0f677567beeb33c47b14f6ea66989890
 
 
 ---
@@ -44,9 +44,9 @@ ms.openlocfilehash: cfd3da08a8c8674e686ae2933db331809fb0e34d
 ## <a name="app-and-sql-configuration-considerations"></a>应用和 SQL 配置注意事项：
 将 Azure SQL 与 RemoteApp 一起使用时需考虑以下几点：
 
-了解[如何配置 Azure SQL 数据库防火墙](../sql-database/sql-database-firewall-configure.md)。 文章摘要指出，“最初，防火墙会阻止对 Azure SQL 数据库服务器的所有访问。 为了开始使用你的 Azure SQL 数据库服务器，你必须转到经典门户并且指定使你可以访问 Azure SQL 数据库服务器的一个或多个服务器级防火墙规则。 使用防火墙规则可以指定允许的 Internet 上的 IP 地址范围，以及 Azure 应用程序是否可以尝试连接到你的 Azure SQL 数据库服务器。”
+了解[如何配置 Azure SQL 数据库防火墙](../sql-database/sql-database-firewall-configure.md)。 文章摘要指出，“最初，防火墙会阻止对 Azure SQL 数据库服务器的所有访问。 为了开始使用你的 Azure SQL 数据库服务器，你必须转到经典门户并且指定使你可以访问 Azure SQL 数据库服务器的一个或多个服务器级防火墙规则。 使用防火墙规则可以指定允许的 Internet 上的 IP 地址范围，以及 Azure 应用程序是否可以尝试连接到 Azure SQL 数据库服务器。”
 
-此外，在计算机尝试从 Internet 连接到数据库服务器时，防火墙将根据整个服务器级和（如果必需）数据库级防火墙规则检查该请求的发起 IP 地址。 “如果该请求的 IP 地址位于服务器级防火墙规则中指定的某个范围内，则将连接权限授予 Azure SQL 数据库服务器。 ” 因此，可以使用 IP 范围而不只是单个源 IP 地址。
+此外，在计算机尝试从 Internet 连接到数据库服务器时，防火墙将根据整个服务器级和（如果必需）数据库级防火墙规则检查该请求的发起 IP 地址。 如果该请求的 IP 地址位于服务器级防火墙规则中指定的某个范围内，则将连接权限授予 Azure SQL 数据库服务器。 ” 因此，可以使用 IP 范围而不只是单个源 IP 地址。
 
 按照 [如何：使用 Azure 门户在 SQL 数据库上配置防火墙设置](../sql-database/sql-database-configure-firewall-settings.md) 中的分步说明指定 IP 范围。 配置 SQL 防火墙规则时，请提供为 Azure RemoteApp 集合指定的子网 IP 范围。 这应允许 ARA 服务器连接到 SQL 数据库，即使它们具有动态分配的 IP 地址。
 
@@ -60,6 +60,6 @@ ms.openlocfilehash: cfd3da08a8c8674e686ae2933db331809fb0e34d
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

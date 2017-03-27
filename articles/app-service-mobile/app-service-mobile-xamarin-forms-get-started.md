@@ -4,7 +4,7 @@ description: "按照本教程进行操作，开始使用 Azure 移动应用进�
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6a48181c6c22e6042dd8ef39c12415979e384f8b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 6b8c5c2ac2e721c4d6f73c7c17f34eadc041e0c9
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.openlocfilehash: 6a48181c6c22e6042dd8ef39c12415979e384f8b
 * 安装了 Xcode v7.0 版或更高版本以及 Xamarin Studio Community 的 Mac。 请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 以及 [Mac 用户的设置、安装和验证](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN)。
 
 > [!NOTE]
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [试用应用服务](https://tryappservice.azure.com/?appServiceName=mobile)，即可在应用服务中立即创建一个生存期较短的入门级移动应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [试用应用服务](https://azure.microsoft.com/try/app-service/mobile/)，即可在应用服务中立即创建一个生存期较短的入门级移动应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -152,18 +153,18 @@ ms.openlocfilehash: 6a48181c6c22e6042dd8ef39c12415979e384f8b
 
 ## <a name="next-steps"></a>后续步骤
 * [向应用添加身份验证](app-service-mobile-xamarin-forms-get-started-users.md)  
-   了解如何使用标识提供者对应用的用户进行身份验证。
+  了解如何使用标识提供者对应用的用户进行身份验证。
 * [向应用添加推送通知](app-service-mobile-xamarin-forms-get-started-push.md)  
-   了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
+  了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
 * [为应用启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-   了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
+  了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
 * [如何使用 Azure 移动应用的托管客户端](app-service-mobile-dotnet-how-to-use-client-library.md)  
-   了解如何在 Xamarin 应用中使用托管客户端 SDK。 
+  了解如何在 Xamarin 应用中使用托管客户端 SDK。 
 
 <!-- Anchors. -->
-[移动应用后端入门]:#getting-started
-[创建新的移动应用后端]:#create-new-service
-[后续步骤]:#next-steps
+[Getting started with mobile app backends]:#getting-started
+[Create a new mobile app backend]:#create-new-service
+[Next Steps]:#next-steps
 
 
 <!-- Images. -->
@@ -177,12 +178,7 @@ ms.openlocfilehash: 6a48181c6c22e6042dd8ef39c12415979e384f8b
 
 <!-- URLs. -->
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
-[移动应用 SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure 门户]: https://portal.azure.com/
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

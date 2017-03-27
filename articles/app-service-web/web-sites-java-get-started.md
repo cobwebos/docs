@@ -12,23 +12,24 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 3451e6d13119bacc66e9ccd861862edea5a5b4fe
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="create-a-java-web-app-in-azure-app-service"></a>在 Azure App Service 中创建 Java Web 应用
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-本教程演示如何通过使用 [Azure 门户][在 Azure App Service 中创建 Java Web 应用]。 Azure 门户是可用于管理 Azure 资源的 Web 界面。
+本教程演示如何通过使用[Azure 门户]，[在 Azure App Service 中创建 Java Web 应用]。 Azure 门户是可用于管理 Azure 资源的 Web 界面。
 
 > [!NOTE]
 > 若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益]，或者[注册免费试用帐户]。
 > 
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service]（试用应用服务）。 在那里，可以立即在应用服务中创建短期的入门级 Web 应用；无需信用卡，也无需做出承诺。
+> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [试用应用服务]。 在那里，可以立即在应用服务中创建短期的入门级 Web 应用；无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -37,7 +38,7 @@ ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
 
 1. 创建应用，然后配置 **应用程序设置**。
    
-    应用服务提供多个使用默认配置的 Tomcat 和 Jetty 版本。 如果要托管的应用程序可以使用某个内置版本，则这种设置 Web 容器的方法是最简单的，如果你只想将 war 文件上传至 Web 容器，这种方法则是最适合的。 使用这种方法时，先在 Azure 门户中创建一个应用，然后转到应用的“应用程序设置”  边栏选项卡，选择 Java 版本以及所需的 Java Web 容器。 使用此方法时，Java 和 Web 容器均从“程序文件”运行。 其他方法会将 Web 容器和 JVM（可能）放在磁盘空间中。 使用此模型时，用户不具有编辑文件系统中此部分文件的权限。 这意味着无法执行某些操作，如配置 *server.xml* 文件或将库文件放入 */lib* 文件夹。 有关详细信息，请参阅本教程后面的 [创建和配置 Java Web 应用](#appsettings) 部分。
+    应用服务提供多个使用默认配置的 Tomcat 和 Jetty 版本。 如果要托管的应用程序可以使用某个内置版本，则这种设置 Web 容器的方法是最简单的，如果你只想将 war 文件上传至 Web 容器，这种方法则是最适合的。 使用这种方法时，先在 Azure 门户中创建一个应用，然后转到应用的“应用程序设置”  边栏选项卡，选择 Java 版本以及所需的 Java Web 容器。 使用此方法时，Java 和 Web 容器均从“程序文件”运行。 其他方法会将 Web 容器和 JVM（可能）放在磁盘空间中。 使用此模型时，用户不具有编辑文件系统中此部分文件的权限。 这意味着无法执行某些操作，如配置 *server.xml* 文件或将库文件放入 */lib* 文件夹。 有关详细信息，请参阅本教程后面的 [创建和配置 Java Web 应用](#portal) 部分。
 2. 使用 Azure 应用商店中的模板。
    
     Azure 应用商店包括可使用 Tomcat 或 Jetty web 容器自动创建和配置 Java Web 应用的模板。 这些模板创建的 Web 容器可进行配置。 有关详细信息，请参阅本教程中的 [使用 Azure 应用商店的 Java 模板](#marketplace) 部分。
@@ -64,7 +65,7 @@ ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
     该名称在 azurewebsites.net 域中必须是唯一的，因为 Web 应用的 URL 将是 {name}.azurewebsites.net。 如果你输入的名称不是唯一的，则会在文本框中显示一个红色的感叹号。
 4. 选择“资源组”或新建一个。
    
-    有关资源组的详细信息，请参阅 [使用 Azure 门户管理 Azure 资源]。
+    有关资源组的详细信息，请参阅 [Resource Manager 概述]。
 5. 选择“应用服务计划/位置”或新建一个。
    
     有关 App Service 计划的详细信息，请参阅 [Azure App Service 计划概述]。
@@ -111,7 +112,7 @@ ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
     该名称在 azurewebsites.net 域中必须是唯一的，因为 Web 应用的 URL 将是 {name}.azurewebsites.net。 如果你输入的名称不是唯一的，则会在文本框中显示一个红色的感叹号。
 8. 选择“资源组”或新建一个。
    
-    有关资源组的详细信息，请参阅 [使用 Azure 门户管理 Azure 资源]。
+    有关资源组的详细信息，请参阅 [Resource Manager 概述]。
 9. 选择“应用服务计划/位置”或新建一个。
    
     有关 App Service 计划的详细信息，请参阅 [Azure App Service 计划概述]。
@@ -147,10 +148,10 @@ ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
 [Azure 门户]: https://portal.azure.com/
 [激活 Visual Studio 订户权益]: http://go.microsoft.com/fwlink/?LinkId=623901
 [注册免费试用帐户]: http://go.microsoft.com/fwlink/?LinkId=623901
-[试用应用服务]: http://go.microsoft.com/fwlink/?LinkId=523751
-[Azure App Service 中的 Web 应用]: http://go.microsoft.com/fwlink/?LinkId=529714
+[试用应用服务]: https://azure.microsoft.com/try/app-service/
+[在 Azure App Service 中创建 Java Web 应用]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Java 开发中心]: /develop/java/
-[使用 Azure 门户管理 Azure 资源]: ../azure-portal/resource-group-portal.md
+[Resource Manager 概述]: ../azure-resource-manager/resource-group-overview.md
 [将自定义 Java Web 应用上载到 Azure]: ./web-sites-java-custom-upload.md
 
 <!-- IMG List -->
@@ -166,9 +167,4 @@ ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
 [jettyurl]: ./media/web-sites-java-get-started/jettyurl.png
 [tomcat]: ./media/web-sites-java-get-started/tomcat.png
 [jetty]: ./media/web-sites-java-get-started/jetty.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

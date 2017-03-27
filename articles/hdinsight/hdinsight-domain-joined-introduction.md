@@ -1,5 +1,5 @@
 ---
-title: "安全 HDInsight 概述 | Microsoft 文档"
+title: "Hadoop 安全性 - 已加入域的 HDInsight 群集 - Azure | Microsoft 文档"
 description: "学习内容"
 services: hdinsight
 documentationcenter: 
@@ -16,18 +16,19 @@ ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 40b0d0660f4693d5ebedf847734ffe037c4ec7ca
+ms.sourcegitcommit: cd57f3a43142b3af3546eafd9749123fadd333c2
+ms.openlocfilehash: 27cb0cda5d836e042e9eca3c053577db0bd8c148
 
 
 ---
-# <a name="an-introduction-to-domainjoined-hdinsight-clusters-preview"></a>已加入域的 HDInsight 群集（预览版）简介
+# <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters-preview"></a>已加入域的 HDInsight 群集（预览版）的 Hadoop 安全性简介
+
 截止目前，Azure HDInsight 仅支持一个本地管理员用户。 这种情况对于应用程序团队或部门而言比较有利。 随着基于 Hadoop 的工作负荷在企业细分市场中越来越普及，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制等企业级功能需求也变得日益重要。 使用已加入域的 HDInsight 群集，可以创建一个已加入 Active Directory 域的 HDInsight 群集，配置可以通过 Azure Active Directory 进行身份验证并登录到 HDInsight 群集的企业员工列表。 企业外部的任何人都无法登录或访问 HDInsight 群集。 企业管理员可以使用 [Apache Ranger](http://hortonworks.com/apache/ranger/) 配置基于角色的访问控制来实现 Hive 安全性，从而根据最大需求权限来限制数据访问权限。 最后，管理员可以审核员工的数据访问活动以及对访问控制策略所做的任何更改，从而以较大的力度监管其企业资源。
 
 > [!NOTE]
-> 本文所述的预览版新功能仅适用于 Hive 工作负荷中的基于 Linux 的 HDInsight 群集。 其他工作负荷，如 HBase、Spark、 Storm 和 Kafka，将在以后的版本中启用这些功能。 
-> 
-> 
+> 本文所述的预览版新功能仅适用于 Hive 工作负荷中的基于 Linux 的 HDInsight 群集。 其他工作负荷，如 HBase、Spark、 Storm 和 Kafka，将在以后的版本中启用这些功能。
+>
+>
 
 ## <a name="benefits"></a>优点
 企业安全性包含四大支柱 – 外围安全性、身份验证、授权和加密。
@@ -53,11 +54,10 @@ HDInsight 中的外围安全性是使用虚拟网络和网关服务实现的。 
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。
 * 若要管理已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-manage.md)（管理已加入域的 HDInsight 群集）。
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](hdinsight-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。
-* 若要在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-domain-joined-hdinsight-cluster)（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）。
+* 若要在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）。
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

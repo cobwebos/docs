@@ -1,4 +1,5 @@
 ---
+redirect_url: /azure/sql-data-warehouse/sql-data-warehouse-load-with-data-factory
 title: "使用 Azure 数据工厂加载数据 | Microsoft Docs"
 description: "了解如何使用 Azure 数据工厂加载数据"
 services: sql-data-warehouse
@@ -15,9 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
+ms.custom: loading
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 960225117a1c9b0802004455353fb9015a80b07b
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 2f0aa3ab44813529525108758785ea3ceb65311b
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -36,7 +39,7 @@ ms.openlocfilehash: 960225117a1c9b0802004455353fb9015a80b07b
 * 将资源连接到 Azure 数据工厂。
 * 创建管道用于将数据从存储 Blob 移到 SQL 数据仓库。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-Azure-SQL-Data-Warehouse-with-Azure-Data-Factory/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-Azure-SQL-Data-Warehouse-with-Azure-Data-Factory/player]
 > 
 > 
 
@@ -46,9 +49,9 @@ ms.openlocfilehash: 960225117a1c9b0802004455353fb9015a80b07b
 ### <a name="create-or-identify-resources"></a>创建或标识资源
 在开始此教程之前，需要拥有以下资源：
 
-* **Azure 存储 Blob**：此教程使用 Azure 存储 Blob 作为 Azure 数据工厂管道的数据源，因此，你需要拥有一个可用于存储示例数据的 Azure 存储 Blob。 如果还没有，请学习如何[创建存储帐户][Create a storage account]。
-* **SQL 数据仓库**：此教程将 Azure 存储 Blob 的数据移动到 SQL 数据仓库，因此需要一个加载有 AdventureWorksDW 示例数据的联机数据仓库。 如果还没有数据仓库，请学习如何[创建 Azure SQL 数据仓库][Create a SQL Data Warehouse]。 如果拥有数据仓库但未用示例数据进行预配，可以[手动加载示例数据][Load sample data into SQL Data Warehouse]。
-* **Azure 数据工厂**：Azure 数据工厂完成实际的加载工作，因此需要拥有一个可用于构建数据移动管道的数据工厂。 如果还没有 Azure 数据工厂，请学习如何创建，详见 [Azure 数据工厂（数据工厂编辑器）入门][Get started with Azure Data Factory (Data Factory Editor)]中的第 1 步。
+* **Azure 存储 Blob**：此教程使用 Azure 存储 Blob 作为 Azure 数据工厂管道的数据源，因此，你需要拥有一个可用于存储示例数据的 Azure 存储 Blob。 如果没有存储帐户，请学习如何[创建存储帐户][Create a storage account]。
+* **SQL 数据仓库**：此教程将 Azure 存储 Blob 的数据移动到 SQL 数据仓库，因此需要一个加载有 AdventureWorksDW 示例数据的联机数据仓库。 如果没有数据仓库，请学习如何[预配数据仓库][Create a SQL Data Warehouse]。 如果已有数据仓库但未使用示例数据对其进行预配，可以[手动加载数据仓库][Load sample data into SQL Data Warehouse]。
+* **Azure 数据工厂**：Azure 数据工厂完成实际的加载工作，因此需要拥有一个可用于构建数据移动管道的数据工厂。 如果没有 Azure 数据工厂，请参阅 [Azure 数据工厂（数据工厂编辑器）入门][Get started with Azure Data Factory (Data Factory Editor)]中的步骤 1，了解如何创建数据工厂。
 * **AZCopy**：你需要 AZCopy 以便将示例数据从你的本地客户端复制到你的 Azure 存储 Blob。 有关安装说明，请参阅 [AZCopy 文档][AZCopy documentation]。
 
 ## <a name="step-1-copy-sample-data-to-azure-storage-blob"></a>步骤 1：将示例数据复制到 Azure 存储 Blob
@@ -141,7 +144,7 @@ ms.openlocfilehash: 960225117a1c9b0802004455353fb9015a80b07b
     ```
 
 ## <a name="step-3-create-and-run-your-pipeline"></a>步骤 3：创建并运行管道
-最后，在 Azure 数据工厂中设置并运行管道。  此操作完成实际的数据移动。  可在[此处][Move data to and from Azure SQL Data Warehouse using Azure Data Factory]找到可以使用 SQL 数据仓库和 Azure 数据工厂完成的操作的完整视图。
+最后，在 Azure 数据工厂中设置并运行管道。  此操作完成实际的数据移动。  可以在[此处][Move data to and from Azure SQL Data Warehouse using Azure Data Factory]找到可以使用 SQL 数据仓库和 Azure 数据工厂完成的操作的完整视图。
 
 在“创作和部署”部分中，依次单击“更多命令”和“新建管道”。  创建管道后，可以使用以下代码将数据传送到数据仓库：
 
@@ -197,39 +200,34 @@ ms.openlocfilehash: 960225117a1c9b0802004455353fb9015a80b07b
 要了解详细信息，请先查看：
 
 * [Azure 数据工厂学习路径][Azure Data Factory learning path]。
-* [Azure SQL 数据仓库连接器][Azure SQL Data Warehouse Connector]。 这是将 Azure 数据工厂和 Azure SQL 数据仓库配合使用的核心参考主题。
+* [Azure SQL 数据仓库连接器][Azure SQL Data Warehouse Connector] 这是将 Azure 数据工厂和 Azure SQL 数据仓库配合使用的核心参考主题。
 
 这些主题提供有关 Azure 数据工厂的详细信息。 它们讨论 Azure SQL 数据库或 HDInsight，但该信息也适用于 Azure SQL 数据仓库。
 
-* [教程：Azure 数据工厂入门][Tutorial: Get started with Azure Data Factory]这是使用 Azure 数据工厂处理数据的核心教程。 在此教程中，用户将构建第一个管道，以便每月使用 HDInsight 转换和分析 Web 日志。 请注意，在此教程中没有复制活动。
+* [教程：Azure 数据工厂入门][Tutorial: Get started with Azure Data Factory] 这是有关使用 Azure 数据工厂处理数据的核心教程。 在此教程中，用户将构建第一个管道，以便每月使用 HDInsight 转换和分析 Web 日志。 请注意，在此教程中没有复制活动。
 * [教程：将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库][Tutorial: Copy data from Azure Storage Blob to Azure SQL Database]。 在此教程中，用户在 Azure 数据工厂中创建管道，将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库。
 
 <!--Image references-->
 
 <!--Article references-->
-[AZCopy 文档]: ../storage/storage-use-azcopy.md
-[Azure SQL 数据仓库连接器]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
+[AZCopy documentation]: ../storage/storage-use-azcopy.md
+[Azure SQL Data Warehouse Connector]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [BCP]: sql-data-warehouse-load-with-bcp.md
-[创建 SQL 数据仓库]: sql-data-warehouse-get-started-provision.md
-[创建存储帐户]: ../storage/storage-create-storage-account.md#create-a-storage-account
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Create a storage account]: ../storage/storage-create-storage-account.md#create-a-storage-account
 [Data Factory]: sql-data-warehouse-get-started-load-with-azure-data-factory.md
-[Azure 数据工厂入门（数据工厂编辑器）]: ../data-factory/data-factory-build-your-first-pipeline-using-editor.md
-[Azure 数据工厂简介]: ../data-factory/data-factory-introduction.md
-[将示例数据载入 SQL 数据仓库]: sql-data-warehouse-load-sample-databases.md
-[使用 Azure 数据工厂将数据移出或移入 Azure SQL 数据仓库]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
+[Get started with Azure Data Factory (Data Factory Editor)]: ../data-factory/data-factory-build-your-first-pipeline-using-editor.md
+[Introduction to Azure Data Factory]: ../data-factory/data-factory-introduction.md
+[Load sample data into SQL Data Warehouse]: sql-data-warehouse-load-sample-databases.md
+[Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
-[教程：将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库]: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
-[教程：Azure 数据工厂入门]: ../data-factory/data-factory-build-your-first-pipeline.md
+[Tutorial: Copy data from Azure Storage Blob to Azure SQL Database]: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+[Tutorial: Get started with Azure Data Factory]: ../data-factory/data-factory-build-your-first-pipeline.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Azure 数据工厂学习路径]: https://azure.microsoft.com/documentation/learning-paths/data-factory
-[Azure 门户]: https://portal.azure.com
-[下载示例数据]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Azure Data Factory learning path]: https://azure.microsoft.com/documentation/learning-paths/data-factory
+[Azure portal]: https://portal.azure.com
+[Download sample data]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
