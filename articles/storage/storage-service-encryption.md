@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 47398863e01204b840a965767cf2a022242d92fe
-ms.openlocfilehash: ea4d46e2d555c6572d0d741310abc4ee492767df
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: cd727a02716323c54d1c54a23cd4edd8f4940da1
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -42,8 +42,9 @@ SSE 的工作方式是在数据写入到 Azure 存储时对其加密，可用于
 若要参与 SSE 文件预览版，请联系 ssediscussions@microsoft.com。
 
 若要了解详细信息，请参阅“常见问题解答”。
+
 ### <a name="availability-for-file-storage"></a>文件存储的可用性
-目前，在“东亚”、“北欧”和“美国东部 2”区域中提供适用于文件存储的存储服务加密。
+适用于文件存储的存储服务加密目前在以下区域中提供：美国东部、美国东部&2;、美国中部、美国中北部、美国中南部、美国中西部、美国西部、美国西部&2;、亚洲东部、欧洲北部、欧洲西部、澳大利亚东部和澳大利亚东南部。
 
 
 若要启用或禁用存储帐户的存储服务加密，请登录 [Azure 门户](https://azure.portal.com)，然后选择存储帐户。 在“设置”边栏选项卡中，寻找如屏幕截图所示的“Blob 服务”部分，然后单击“加密”。
@@ -174,7 +175,7 @@ Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以�
 
 答：默认情况下不启用 SSE；可以使用 Azure 门户来启用它。 也可以编程方式使用存储资源提供程序 REST API 来启用此功能。
 
-**问：此功能与 Azure 驱动器加密有何不同？**
+**问：此功能与 Azure 磁盘加密有何不同？**
 
 答：此功能用于加密 Azure Blob 存储中的数据。 Azure 磁盘加密用于加密IaaS VM 中的 OS 和数据磁盘。 有关详细信息，请访问我们的[存储安全指南](storage-security-guide.md)。
 

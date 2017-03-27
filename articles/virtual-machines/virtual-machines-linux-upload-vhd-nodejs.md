@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
-ms.openlocfilehash: 60e4ee8ff7e9252e3116d15e19ae378570e37196
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 97b5e4c3bda8d66297a43b4e430fec92d9588686
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/27/2017
 ## <a name="quick-commands"></a>快速命令
 如果需要快速完成任务，请参阅以下部分，其中详细说明了用于将 VM 上载到 Azure 的基本命令。 本文档的余下部分（[从此处开始](#requirements)）提供了每个步骤的更详细信息和上下文。
 
-确保已登录 [Azure CLI 1.0](../xplat-cli-install.md) 并使用 Resource Manager 模式：
+确保已登录 [Azure CLI 1.0](../cli-install-nodejs.md) 并使用 Resource Manager 模式：
 
 ```azurecli
 azure config mode arm
@@ -102,7 +102,7 @@ azure vm create myVM -l "WestUS" --resource-group myResourceGroup \
   * 创建存储帐户和容器，以存放自定义映像以及所创建的 VM
   * 创建所有 VM 之后，可以安全地删除映像
 
-确保已登录 [Azure CLI 1.0](../xplat-cli-install.md) 并使用 Resource Manager 模式：
+确保已登录 [Azure CLI 1.0](../cli-install-nodejs.md) 并使用 Resource Manager 模式：
 
 ```azurecli
 azure config mode arm

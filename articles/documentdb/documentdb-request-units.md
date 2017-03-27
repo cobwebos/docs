@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/08/2017
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 4f8235ae743a63129799972ca1024d672faccbe9
-ms.openlocfilehash: 7c32d69f3d6d2cc60f830db96b6aea47ce8712ca
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b098e3087cb08528c5fbdc2d0d768ce40e7ffe0d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -41,7 +41,7 @@ DocumentDB 支持众多的读取、写入、查询和存储过程执行 API。 �
 * 如果超过集合的请求单位容量会发生什么情况？
 
 ## <a name="request-units-and-request-charges"></a>请求单位和请求费用
-DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应用程序的吞吐量需求。  由于应用程序加载和访问模式会随着时间推移而更改，DocumentDB 使你可以轻松增加或减少保留供你的应用程序使用的吞吐量。
+DocumentDB 和 API for MongoDB 通过*保留*资源来提供快速且可预测的性能，以满足应用程序的吞吐量需求。  由于应用程序加载和访问模式会随着时间推移而更改，DocumentDB 使你可以轻松增加或减少保留供你的应用程序使用的吞吐量。
 
 通过 DocumentDB，可根据每秒处理的请求单位指定保留的吞吐量。  可以将请求单位视为吞吐量货币，因此，可以保留每秒可用于应用程序的定量有保障请求单位。  DocumentDB 中的每个操作（编写文档、执行查询、更新文档）都会消耗 CPU、内存和 IOPS。  也就是说，每个操作都会产生请求费用（用请求单位表示）。  你要了解影响请求单位费用的因素，以及你的应用程序吞吐量要求，才能尽可能有效地运行你的应用程序。 
 
@@ -51,7 +51,7 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 > 
 > 
 
-## <a name="specifying-request-unit-capacity"></a>指定请求单位容量
+## <a name="specifying-request-unit-capacity-in-documentdb"></a>在 DocumentDB 中指定请求单位容量
 创建 DocumentDB 集合时，可以指定要为集合保留的每秒请求单位数（每秒 RU 数）。 DocumentDB 将会根据预配的吞吐量分配物理分区来托管集合，并拆分/重新均衡分区中不断增长的数据。
 
 如果为集合预配的请求单位数大于或等于 1,0000，DocumentDB 要求指定分区键。 以后将集合的吞吐量扩展到 10,000 个请求单位以上时，也需要使用分区键。 因此，强烈建议在创建吞吐量集合时配置[分区键](documentdb-partition-data.md)，不管初始吞吐量有多大。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（几百到几百万个非重复值）的分区键，以便 DocumentDB 能够统一缩放集合与请求。 
@@ -61,7 +61,7 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 
 以下代码片段使用 .NET SDK 创建每秒 3,000 个请求单位的集合：
 
-```C#
+```csharp
 DocumentCollection myCollection = new DocumentCollection();
 myCollection.Id = "coll";
 myCollection.PartitionKey.Paths.Add("/deviceId");
@@ -76,7 +76,7 @@ DocumentDB 运行一个保留模型来预配吞吐量。 也就是说，用户�
 
 每个集合映射到 DocumentDB 中的 `Offer` 资源，该资源包含有关集合预配吞吐量的元数据。 可以通过查找集合的相应服务资源，然后使用新的吞吐量值来对它进行更新，来更改分配的吞吐量。 以下代码片段使用 .NET SDK 将集合的吞吐量更改为每秒 5,000 个请求单位：
 
-```C#
+```csharp
 // Fetch the resource to be updated
 Offer offer = client.CreateOfferQuery()
                 .Where(r => r.ResourceLink == collection.SelfLink)    
@@ -89,6 +89,13 @@ offer = new OfferV2(offer, 5000);
 // Now persist these changes to the database by replacing the original resource
 await client.ReplaceOfferAsync(offer);
 ```
+
+更改吞吐量不会影响集合的可用性。 通常，新的保留吞吐量在几秒内就会在应用程序上生效。
+
+## <a name="specifying-request-unit-capacity-in-api-for-mongodb"></a>在 API for MongoDB 中指定请求单位容量
+使用 API for MongoDB，可以指定要为集合保留的每秒请求单位数（每秒 RU 数）。
+
+API for MongoDB 在基于吞吐量的保留模型中运行，该模型与 DocumentDB 使用的模型相同。 也就是说，用户需要根据为集合*保留的*吞吐量付费，不管实际*使用的*吞吐量是多少。 随着应用程序的负载、数据和使用情况模式的变化，可以通过 [Azure 门户](https://portal.azure.com)轻松扩展和缩减保留的 RU 数量。
 
 更改吞吐量不会影响集合的可用性。 通常，新的保留吞吐量在几秒内就会在应用程序上生效。
 
@@ -125,37 +132,37 @@ await client.ReplaceOfferAsync(offer);
             <td valign="top"><p>1 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>100</p></td>
-            <td valign="top"><p>(500 * 1) + (100 * 5) = 1,000 RU/秒</p></td>
+            <td valign="top"><p>(500 *1) + (100* 5) = 1,000 RU/秒</p></td>
         </tr>
         <tr>
             <td valign="top"><p>1 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>500</p></td>
-            <td valign="top"><p>(500 * 5) + (100 * 5) = 3,000 RU/秒</p></td>
+            <td valign="top"><p>(500 *5) + (100* 5) = 3,000 RU/秒</p></td>
         </tr>
         <tr>
             <td valign="top"><p>4 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>100</p></td>
-            <td valign="top"><p>(500 * 1.3) + (100 * 7) = 1,350 RU/秒</p></td>
+            <td valign="top"><p>(500 *1.3) + (100* 7) = 1,350 RU/秒</p></td>
         </tr>
         <tr>
             <td valign="top"><p>4 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>500</p></td>
-            <td valign="top"><p>(500 * 1.3) + (500 * 7) = 4,150 RU/秒</p></td>
+            <td valign="top"><p>(500 *1.3) + (500* 7) = 4,150 RU/秒</p></td>
         </tr>
         <tr>
             <td valign="top"><p>64 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>100</p></td>
-            <td valign="top"><p>(500 * 10) + (100 * 48) = 9,800 RU/秒</p></td>
+            <td valign="top"><p>(500 *10) + (100* 48) = 9,800 RU/秒</p></td>
         </tr>
         <tr>
             <td valign="top"><p>64 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>500</p></td>
-            <td valign="top"><p>(500 * 10) + (500 * 48) = 29,000 RU/秒</p></td>
+            <td valign="top"><p>(500 *10) + (500* 48) = 29,000 RU/秒</p></td>
         </tr>
     </tbody>
 </table>
@@ -209,10 +216,42 @@ await client.ReplaceOfferAsync(offer);
 5. 记录应用程序使用的任何自定义脚本（存储的过程、触发器、用户自定义函数）的请求单位费用。
 6. 根据给定的预计每秒运行的操作估计数计算所需的请求单位。
 
+### <a id="GetLastRequestStatistics"></a>使用 API for MongoDB 的 GetLastRequestStatistics 命令
+API for MongoDB 支持使用自定义命令 *getLastRequestStatistics* 来检索指定操作的请求费用。
+
+例如，在 Mongo Shell 中，执行所需的操作来验证请求费用。
+```
+> db.sample.find()
+```
+
+接下来，执行命令 *getLastRequestStatistics*。
+```
+> db.runCommand({getLastRequestStatistics: 1})
+{
+    "_t": "GetRequestStatisticsResponse",
+    "ok": 1,
+    "CommandName": "OP_QUERY",
+    "RequestCharge": 2.48,
+    "RequestDurationInMilliSeconds" : 4.0048
+}
+```
+
+基于这一点，有一种方法可以估计应用程序所需的保留的吞吐量：记录与针对应用程序所使用的代表性文档运行典型操作相关联的请求单位费用，然后估计你预计每秒执行的操作数。
+
+> [!NOTE]
+> 如果有多种文档类型，它们的索引属性大小和数目截然不同，则记录与每种类型的典型文档相关联的适用操作请求单位费用。
+> 
+> 
+
+## <a name="use-api-for-mongodbs-portal-metrics"></a>使用 API for MongoDB 的门户指标
+准确估算 API for MongoDB 数据库请求单位费用的最简单方法是使用 [Azure 门户](https://portal.azure.com)指标。 使用“请求数”和“请求费用”图表，可以估算每个操作消耗的请求单位数，以及每个操作相对于其他操作消耗的请求单位数。
+
+![API for MongoDB 门户指标][6]
+
 ## <a name="a-request-unit-estimation-example"></a>请求单位估计示例
 请考虑以下 ~1 KB 文档：
 
-```JSON
+```json
 {
  "id": "08259",
   "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
@@ -301,7 +340,7 @@ await client.ReplaceOfferAsync(offer);
 
 在此示例中，我们认为平均吞吐量需求为 1,275 RU/s。  舍入到最接近的百位数，我们会将此应用程序的集合设置为 1,300 RU/s。
 
-## <a id="RequestRateTooLarge"></a>超过保留的吞吐量限制
+## <a id="RequestRateTooLarge"></a>DocumentDB 中超过保留的吞吐量限制
 前面提到，请求单位消耗以每秒速率进行评估。 对于超过集合设置的请求单位速率的应用程序，将限制对该集合的请求数，直到速率降低到保留级别之下。 被限制时，服务器将抢先结束请求、引发 RequestRateTooLargeException（HTTP 状态代码 429）并返回 x-ms-retry-after-ms 标头，该标头指示重试请求前用户必须等待的时间（以毫秒为单位）。
 
     HTTP Status 429
@@ -311,6 +350,9 @@ await client.ReplaceOfferAsync(offer);
 如果使用的是 .NET 客户端 SDK 和 LINQ 查询，则大多数情况下都不需要处理此异常，因为 .NET 客户端 SDK 的当前版本会隐式捕获此响应，并会遵循服务器指定的 retry-after 标头，然后重试请求。 除非多个客户端同时访问你的帐户，否则下次重试就会成功。
 
 如果存在多个高于请求速率的请求操作，则默认重试行为可能无法满足需要，这时客户端就会向应用程序引发 DocumentClientException，其状态代码为 429。 在这种情况下，你可以考虑处理重试行为和应用程序错误处理例程中的逻辑，或为集合增加保留的吞吐量。
+
+## <a id="RequestRateTooLargeAPIforMongoDB"></a>API for MongoDB 中超过保留的吞吐量限制
+超过为集合预配的请求单位数的应用程序将受到限制，直到比率下降到保留级别以下。 受限制时，后端将提前结束请求并返回 *16500* 错误代码 -“请求过多”。 默认情况下，在返回“请求过多”错误代码之前，API for MongoDB 将自动重试最多 10 次。 如果收到大量的“请求过多”错误代码，可以考虑在应用程序的错误处理例程中添加重试行为，或者[提高集合的保留吞吐量](documentdb-set-throughput.md)。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure DocumentDB 数据库的保留吞吐量的详细信息，请浏览以下资源：
@@ -328,4 +370,5 @@ await client.ReplaceOfferAsync(offer);
 [3]: ./media/documentdb-request-units/RUEstimatorDocuments.png
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
+[6]: ./media/documentdb-request-units/api-for-mongodb-metrics.png
 

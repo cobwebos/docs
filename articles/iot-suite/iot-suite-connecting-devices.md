@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2017
+ms.date: 03/08/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: df9772796796f7383aafc583b01f299a53679d88
-ms.openlocfilehash: 77e05bf2b7a4ab6c6e6d3d82773cc03628f5342c
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 3536777690a9b00ded7c7fdf4d5f39638dad71b0
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -28,13 +28,13 @@ ms.lasthandoff: 02/27/2017
 ## <a name="create-a-c-sample-solution-on-windows"></a>在 Windows 上创建 C 示例解决方案
 以下步骤演示如何创建一个客户端应用程序，用来与远程监视预配置解决方案通信。 此应用程序以 C 编写，在 Windows 上生成和运行。
 
-在 Visual Studio 2015 中创建初学者项目并添加 IoT 中心设备客户端 NuGet 包：
+在 Visual Studio 2015 或 Visual Studio 2017 中创建初学者项目并添加 IoT 中心设备客户端 NuGet 包：
 
-1. 在 Visual Studio 2015 中，使用 Visual C++ **Win32 控制台应用程序**模板创建一个 C 控制台应用程序。 将该项目命名为 **RMDevice**。
-2. 在“**Win32 应用程序向导**”中的“**应用程序设置**”页上，确保选中“**控制台应用程序**”，并取消选中“**预编译头**”和“**安全开发生命周期(SDL)检查**”。
+1. 在 Visual Studio 中，使用 Visual C++ **Win32 控制台应用程序**模板创建一个 C 控制台应用程序。 将该项目命名为 **RMDevice**。
+2. 在“Win32 应用程序向导”中的“应用程序设置”页上，确保选中“控制台应用程序”，并取消选中“预编译头”和“安全开发生命周期(SDL)检查”。
 3. 在“**解决方案资源管理器**”中，删除文件 stdafx.h、targetver.h 和 stdafx.cpp。
 4. 在“**解决方案资源管理器**”中，将文件 RMDevice.cpp 重命名为 RMDevice.c。
-5. 在“**解决方案资源管理器**”中，右键单击e **RMDevice** 项目，然后单击“**管理 NuGet 包**”。 单击“**浏览**”，然后搜索以下 NuGet 包并将它们安装到项目中：
+5. 在“**解决方案资源管理器**”中，右键单击e **RMDevice** 项目，然后单击“**管理 NuGet 包**”。 单击“浏览”，然后搜索并安装以下 NuGet 包：
    
    * Microsoft.Azure.IoTHub.Serializer
    * Microsoft.Azure.IoTHub.IoTHubClient

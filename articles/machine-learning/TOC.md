@@ -159,6 +159,7 @@
 #### [使用 Excel](machine-learning-consuming-from-excel.md)
 #### [使用 Excel 外接程序](machine-learning-excel-add-in-for-web-services.md)
 #### [使用 Web 应用模板](machine-learning-consume-web-service-with-web-app-template.md)
+#### [使用批处理池](machine-learning-dedicated-capacity-for-bes-jobs.md)
 
 ## 示例
 ### [示例试验](machine-learning-sample-experiments.md)
@@ -222,8 +223,3 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-machine-learning)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
 ## [从实时聊天获取帮助](machine-learning-live-chat.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

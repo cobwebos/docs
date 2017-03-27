@@ -4,18 +4,19 @@ description: "Azure Web 应用的应用程序性能监视。 对负载和响应�
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: azure-portal
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: c5869c2f4f593d8ffd1992ec2a7dbc473898f3ad
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 17eadb8e502c0836b38661caf2a275af0e90bdfe
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -50,22 +51,22 @@ ms.openlocfilehash: c5869c2f4f593d8ffd1992ec2a7dbc473898f3ad
 ## <a name="build-the-app-with-application-insights"></a>使用 Application Insights 生成应用
 Application Insights 可以通过将 SDK 安装到应用中来提供更详细的遥测。 具体而言，可以收集跟踪日志，[编写自定义遥测](app-insights-api-custom-events-metrics.md)，以及获取更详细的异常报告。
 
-1. **在 Visual Studio 中**（2013 Update 2 或更高版本），将 Application Insights SDK 添加到项目。
+1. **在 Visual Studio 中**（2013 Update 2 或更高版本），为项目配置 Application Insights。
    
-    ![右键单击 Web 项目，然后选择“添加 Application Insights”](./media/app-insights-azure-web-apps/03-add.png)
+    ![右键单击 Web 项目，然后选择“添加或配置 Application Insights”](./media/app-insights-azure-web-apps/03-add.png)
    
     如果系统提示登录，请使用 Azure 帐户的凭据。
    
     该操作会产生两种效果：
    
    1. 在 Azure 中创建 Application Insights 资源，这是存储、分析和显示遥测数据的位置。
-   2. 将 Application Insights NuGet 包添加到代码，并将该包配置为向 Azure 资源发送遥测数据。
+   2. 将 Application Insights NuGet 包添加到代码（如果该包尚不存在），并将该包配置为向 Azure 资源发送遥测数据。
 2. 可以通过在开发计算机上运行应用来**测试遥测** (F5)。
 3. 以普通的方式**将应用发布**到 Azure。 
 
 *如何改为向不同的 Application Insights 资源发送数据？*
 
-* 在 Visual Studio 中右键单击项目，选择“Application Insights”>“配置”，然后选择所需的资源。 可以使用相应的选项来创建新资源。 重新生成并重新部署。
+* 在 Visual Studio 中右键单击项目，选择“配置 Application Insights”，然后选择所需的资源。 可以使用相应的选项来创建新资源。 重新生成并重新部署。
 
 ## <a name="explore-the-data"></a>浏览数据
 1. 在 Web 应用控制面板上的“Application Insights”边栏选项卡中，可以看到“实时指标”，其中显示一两秒内发生的请求和失败。 重新发布应用时，该边栏选项卡非常有用 - 可以立即发现所有问题。
@@ -96,10 +97,5 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 * 每当操作事件发生或指标超过阈值时[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
 * 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](app-insights-web-track-usage.md)。
 * [设置可用性 Web 测试](app-insights-monitor-web-app-availability.md)，以便在站点关闭时发出警报。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

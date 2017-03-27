@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 03/09/2017
 ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
-ms.openlocfilehash: 609de3ff0fb14aa98b28572dce1eaeb8a4412d93
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 5e3221395082513f842863615d40f7d3ebf2562e
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -31,6 +31,8 @@ ms.lasthandoff: 02/09/2017
 
 * 在 Azure 订阅中预配远程监视预配置解决方案。
 * 创建 SendGrid 帐户，以便发送可触发业务流程的电子邮件。 你可以在 [SendGrid](https://sendgrid.com/) 中单击“**免费试用**”来注册一个免费试用帐户。 注册免费试用帐户后，需要在 SendGrid 中创建一个用于授权发送邮件的 [API 密钥](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html)。 本教程稍后需要此 API 密钥。
+
+若要完成本教程，需要使用 Visual Studio 2015 或 Visual Studio 2017 修改预配置解决方案后端中的操作。
 
 假设已经设置了远程监视预配置解决方案，请在 [Azure 门户][lnk-azureportal]中导航到该解决方案的资源组。 资源组的名称与你在预配远程监视解决方案时选择的解决方案名称相同。 资源组中会显示解决方案的所有预配 Azure 资源，Azure 经典门户中提供的 Azure Active Directory 应用程序除外。 以下屏幕截图显示了远程监视预配置解决方案的“**资源组**”边栏选项卡示例：
 
@@ -117,8 +119,8 @@ ms.lasthandoff: 02/09/2017
     ```
     private Dictionary<string,string> actionIds = new Dictionary<string, string>()
     {
-        { "Send Message", "<Http Post to this UR>" },
-        { "Raise Alarm", "<Http Post to this UR> }
+        { "Send Message", "<Http Post to this URL>" },
+        { "Raise Alarm", "<Http Post to this URL>" }
     };
     ```
 5. 在解决方案中保存所做的更改并退出 Visual Studio。

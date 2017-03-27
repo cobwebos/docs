@@ -2,7 +2,6 @@
 title: "解决数据管理网关问题 | Microsoft Docs"
 description: "提供解决数据管理网关相关问题的提示。"
 services: data-factory
-documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
@@ -14,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2017
 ms.author: jingwang
+published: true
 translationtype: Human Translation
-ms.sourcegitcommit: 03e15660e04e192d9035c25f1a8030310413c118
-ms.openlocfilehash: 738fcd1e2b33bf072f004eb95265ed87e6e931c0
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4bc78bdf71c6de0c35197e84f4bb800d13bda6c0
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
@@ -91,10 +91,12 @@ ms.openlocfilehash: 738fcd1e2b33bf072f004eb95265ed87e6e931c0
 ![网关密钥无效或为空](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>原因
-网关密钥已重新生成或已在门户中删除了网关。
+网关密钥已重新生成或已在 Azure 门户中删除了网关。 如果数据管理网关安装程序不是最新版本，也可能会发生此问题。
 
 #### <a name="resolution"></a>解决方法
-如果网关仍然存在，则可在门户中重新生成网关密钥，并使用复制按钮复制整个密钥。 将其粘贴在窗口中，以便注册网关。 否则，重新创建网关，然后重新开始。
+检查数据管理网关安装程序是否是最新版本，可以在 Microsoft [下载中心](https://go.microsoft.com/fwlink/p/?LinkId=271260)找到最新版本。
+
+如果安装程序是最新的且门户上的网关仍然存在，请在 Azure 门户中重新生成网关密钥，并使用复制按钮复制整个密钥，然后将其粘贴到此窗口中以注册网关。 否则，重新创建网关，然后重新开始。
 
 ### <a name="6-problem"></a>6.问题
 注册网关时，可能会出现下面的错误消息。
@@ -250,7 +252,7 @@ ms.openlocfilehash: 738fcd1e2b33bf072f004eb95265ed87e6e931c0
     ![数据管理网关 - 发送日志](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
 3. （可选）单击“查看日志”在事件查看器中查看日志。
 4. （可选）单击“隐私”查看 Microsoft Web 服务隐私声明。
-5. 如若对要上传的内容感到满意，便可单击“发送日志”将过去 7 天内的日志发送给 Microsoft，以便进行故障排除。 应该会看到“发送日志”操作的状态如以下屏幕快照所示。
+5. 如若对要上传的内容感到满意，便可单击“发送日志”将过去&7; 天内的日志发送给 Microsoft，以便进行故障排除。 应该会看到“发送日志”操作的状态如以下屏幕快照所示。
 
     ![数据管理网关 - 发送日志状态](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. 操作完成后，会看到如以下屏幕快照所示的对话框。
@@ -284,9 +286,4 @@ ms.openlocfilehash: 738fcd1e2b33bf072f004eb95265ed87e6e931c0
  解决网关相关问题时，在事件查看器中查找错误级别事件。
 
 ![数据管理网关 - 事件查看器中的日志](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

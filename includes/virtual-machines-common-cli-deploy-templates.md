@@ -12,7 +12,7 @@
 * [附加数据磁盘](#attach-a-data-disk)
 
 ## <a name="getting-ready"></a>做好准备
-必须拥有正确的 Azure CLI 版本和 Azure 帐户，才能将 Azure CLI 与 Azure 资源组配合使用。 如果没有 Azure CLI，[请安装](../articles/xplat-cli-install.md)。
+必须拥有正确的 Azure CLI 版本和 Azure 帐户，才能将 Azure CLI 与 Azure 资源组配合使用。 如果没有 Azure CLI，[请安装](../articles/cli-install-nodejs.md)。
 
 ### <a name="update-your-azure-cli-version-to-090-or-later"></a>将 Azure CLI 版本更新到 0.9.0 或更高
 键入 `azure --version` 即可查看安装的是否为版本 0.9.0 或更高版本。
@@ -80,7 +80,7 @@ azure config mode arm
 
 可在 [Azure Resource Manager 概述](../articles/azure-resource-manager/resource-group-overview.md)中了解有关 Azure 资源组及其功能的详细信息。 若要了解如何创作模板，请参阅[创作 Azure Resource Manager 模板](../articles/resource-group-authoring-templates.md)。
 
-## <a name="a-idquick-create-a-vm-in-azureatask-quick-create-a-vm-in-azure"></a><a id="quick-create-a-vm-in-azure"></a>任务：在 Azure 中快速创建 VM
+## <a id="quick-create-a-vm-in-azure"></a>任务：在 Azure 中快速创建 VM
 有时候你知道需要何种映像，而且你现在需要该映像的 VM，并且不太在意基础结构 - 也许你必须在全新的 VM 上进行某些测试。 此时，你可以使用 `azure vm quick-create` 命令并传递必要的参数来创建 VM 及其基础结构。
 
 首先，创建资源组。
@@ -214,7 +214,7 @@ info:    vm quick-create command OK
 
 无论身在何处，新的 VM 就在你的身边。
 
-## <a name="a-iddeploy-a-vm-in-azure-from-a-templateatask-deploy-a-vm-in-azure-from-a-template"></a><a id="deploy-a-vm-in-azure-from-a-template"></a>任务：在 Azure 中从模板部署 VM
+## <a id="deploy-a-vm-in-azure-from-a-template"></a>任务：在 Azure 中从模板部署 VM
 请参考以下各部分中所述的说明，使用 Azure CLI 从模板部署新的 Azure VM。 此模板会在只有单个子网的新虚拟网络中创建单个虚拟机，而不同于 `azure vm quick-create`，它可以让你确切描述想要的内容，而且重复使用时也不会发生任何错误。 以下是此模板创建的内容：
 
 ![](./media/virtual-machines-common-cli-deploy-templates/new-vm.png)
@@ -483,7 +483,7 @@ info:    group deployment create command OK
 ```
 
 
-## <a name="a-idcreate-a-custom-vm-imageatask-create-a-custom-vm-image"></a><a id="create-a-custom-vm-image"></a>任务：创建自定义 VM 映像
+## <a id="create-a-custom-vm-image"></a>任务：创建自定义 VM 映像
 你已基本了解上述模板的用法，那么现在我们可以使用类似的说明，通过 Azure CLI 使用模板从 Azure 的特定 .vhd 文件创建自定义 VM 映像。 其中的差别就是此模板会从指定的虚拟硬盘 (VHD) 创建单个虚拟机。
 
 ### <a name="step-1-examine-the-json-file-for-the-template"></a>步骤 1：检查 JSON 文件中的模板
@@ -751,7 +751,7 @@ data:    nicName                        String        myNIC
 info:    group deployment create command OK
 ```
 
-## <a name="a-iddeploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balanceratask-deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a><a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer">
+## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer">
             </a>任务：部署使用虚拟网络和外部负载均衡器的多 VM 应用程序
 你可以使用此模板在一个负载均衡器上创建两个虚拟机，然后在端口 80 上配置负载平衡规则。 此模板还会部署存储帐户、虚拟网络、公共 IP 地址、可用性集和网络接口。
 
@@ -1164,7 +1164,7 @@ info:    group deployment create command OK
 
 请注意，此模板部署的是 Windows Server 映像；但是，它可以轻松地替换为任何 Linux 映像。 想要使用多个 Swarm 管理器创建一个 Docker 群集吗？ [你可以做到](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)。
 
-## <a name="a-idremove-a-resource-groupatask-remove-a-resource-group"></a><a id="remove-a-resource-group"></a>任务：删除资源组
+## <a id="remove-a-resource-group"></a>任务：删除资源组
 请记住，你可以重新部署到资源组，但是如果其中一个不想使用了，可以使用 `azure group delete <group name>` 删除它。
 
 ```azurecli
@@ -1175,7 +1175,7 @@ Delete resource group myResourceGroup? [y/n] y
 info:    group delete command OK
 ```
 
-## <a name="a-idshow-the-log-for-a-resource-group-deploymentatask-show-the-log-for-a-resource-group-deployment"></a><a id="show-the-log-for-a-resource-group-deployment"></a>任务：显示资源组部署日志
+## <a id="show-the-log-for-a-resource-group-deployment"></a>任务：显示资源组部署日志
 创建或使用模板时，这种情况很常见。 可以使用 `azure group log show <groupname>` 调用来显示组的部署日志，它会显示相当多的有用信息，帮助你了解为何发生某些状况，或者为何未发生某些状况。 （有关排查部署问题的详细信息以及有关问题的其他信息，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../articles/azure-resource-manager/resource-manager-common-deployment-errors.md)。）
 
 为了查明特定的失败，可以使用 **jq** 等工具来更清楚地查明前因后果，例如，需要更正的单个失败。 以下示例使用 **jq** 分析 **lbgroup** 的部署日志，以找出失败的原因。
@@ -1192,7 +1192,7 @@ azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Fail
 }
 ```
 
-## <a name="a-iddisplay-information-about-a-virtual-machineatask-display-information-about-a-virtual-machine"></a><a id="display-information-about-a-virtual-machine"></a>任务：显示有关虚拟机的信息
+## <a id="display-information-about-a-virtual-machine"></a>任务：显示有关虚拟机的信息
 可以使用 `azure vm show <groupname> <vmname>` 命令查看资源组中特定 VM 的相关信息。 如果你组中的 VM 超过一个，可能首先需要使用 `azure vm list <groupname>` 列出组中的 VM。
 
 ```azurecli
@@ -1264,10 +1264,10 @@ info:    vm show command OK
 >
 >
 
-## <a name="a-idlog-on-to-a-linux-based-virtual-machineatask-log-on-to-a-linux-based-virtual-machine"></a><a id="log-on-to-a-linux-based-virtual-machine"></a>任务：登录到基于 Linux 的虚拟机
+## <a id="log-on-to-a-linux-based-virtual-machine"></a>任务：登录到基于 Linux 的虚拟机
 通常，Linux 计算机是通过 SSH 连接的。 有关详细信息，请参阅[如何在 Azure 中将 SSH 用于 Linux](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-## <a name="a-idstop-a-virtual-machineatask-stop-a-vm"></a><a id="stop-a-virtual-machine"></a>任务：停止 VM
+## <a id="stop-a-virtual-machine"></a>任务：停止 VM
 运行以下命令：
 
 ```azurecli
@@ -1279,14 +1279,14 @@ azure vm stop <group name> <virtual machine name>
 >
 >
 
-## <a name="a-idstart-a-virtual-machineatask-start-a-vm"></a><a id="start-a-virtual-machine"></a>任务：启动 VM
+## <a id="start-a-virtual-machine"></a>任务：启动 VM
 运行以下命令：
 
 ```azurecli
 azure vm start <group name> <virtual machine name>
 ```
 
-## <a name="a-idattach-a-data-diskatask-attach-a-data-disk"></a><a id="attach-a-data-disk"></a>任务：附加数据磁盘
+## <a id="attach-a-data-disk"></a>任务：附加数据磁盘
 你还需要确定是要附加新的磁盘还是附加包含数据的磁盘。 对于新磁盘，此命令将创建 .vhd 文件，然后将它附加在同一个命令中。
 
 若要附加新磁盘，请运行以下命令：
@@ -1307,8 +1307,3 @@ azure vm disk attach <resource-group> <vm-name> [vhd-url]
 有关 Azure CLI 用法和 **arm** 模式的更多示例，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 用于 Azure Resource Manager](../articles/xplat-cli-azure-resource-manager.md)。 若要了解有关 Azure 资源及其概念的详细信息，请参阅 [Azure Resource Manager 概述](../articles/azure-resource-manager/resource-group-overview.md)。
 
 有关可用的其他模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)和[使用模板的应用程序框架](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
-
-<!--HONumber=Jan17_HO4-->
-
-

@@ -1,7 +1,7 @@
 ---
-title: "What is an Azure elastic pool?（什么是 Azure 弹性池？） | Microsoft Docs"
-description: "可通过使用池管理成百上千个数据库 可通过池分发一组性能单位的一个价格。 可随心所欲地移入或移出数据。"
-keywords: "弹性池,sql 数据库"
+title: "什么是弹性池？ 管理多个 SQL 数据库 - Azure | Microsoft 文档"
+description: "使用弹性池管理和缩放多个 SQL 数据库（成千上万的）。 可以按一个价格将资源分布到你需要的任何位置。"
+keywords: "多个数据库, 数据库资源, 数据库性能"
 services: sql-database
 documentationcenter: 
 author: ddove
@@ -11,35 +11,42 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 02/24/2017
+ms.date: 03/06/2017
 ms.author: ddove
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 1cac55acd88babc4ca4b04d2cafc6fa25f1393f0
-ms.openlocfilehash: 59f09d9529e8a97d8a0a4c7d9984a6fed850a57d
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 53c54c490e7888edef0dc83d1657adbb3db0b745
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="what-is-an-azure-sql-elastic-pool"></a>什么是 Azure SQL 弹性池？
-SQL 弹性池是一组数目固定的 eDTU，价格固定，位于 Azure 逻辑服务器上，在该服务器上的数据库池中共享。 SQL DB 弹性池是一种简单的低成本高效益的解决方案，用于管理使用模式变化很大且不可预测的多个数据库的性能目标。 可以使用 [Azure 门户](sql-database-elastic-pool-manage-portal.md)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md)、[C#](sql-database-elastic-pool-manage-csharp.md) 和 REST API 创建和管理弹性池。
+
+# <a name="how-elastic-pools-help-you-manage-and-scale-multiple-sql-databases"></a>弹性池如何帮助你管理和缩放多个 SQL 数据库
+
+SQL 数据库弹性池是一种简单且经济高效的解决方案，用于管理和缩放具有不断变化且不可预测的使用需求的多个数据库。 同一弹性池中的所有数据库位于单个 Azure SQL 数据库服务器上，并以固定价格共享固定数量的资源。
+
+可以使用 [Azure 门户](sql-database-elastic-pool-manage-portal.md)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md)、[C#](sql-database-elastic-pool-manage-csharp.md) 和 REST API 创建和管理弹性池。 弹性池资源是按 [eDTU](sql-database-what-is-a-dtu.md) 度量的。
+
 
 > [!NOTE]
 > 弹性池在所有 Azure 区域中均已正式发布 (GA)，但印度西部除外，这些区域当前仅发布了预览版。  将尽快在此区域中正式发布弹性池。
 >
 >
 
-## <a name="how-it-works"></a>工作原理
-常见的 SaaS 应用程序模式是单租户数据库模型：每个客户都有其自己的数据库。 每个客户（数据库）对内存、IO 和 CPU 具有不可预知的资源要求。 由于需求有高峰和低谷，如何有效地分配资源和节省成本？ 通常有两个选项：(1) 基于高峰使用情况过度设置资源，因此需要支付额外的费用，或者 (2) 为了节省成本而采用低配，但在高峰期间会出现性能下降而导致客户满意度降低。 弹性池通过确保数据库获取其所需的性能资源以及其需要的时机来解决这个问题。 它们提供了一个可预测预算内的简单的资源分配机制。 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅 [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
+
+## <a name="how-do-elastic-pools-help-manage-database-resources"></a>弹性池如何帮助管理数据库资源？
+
+常见的 SaaS 应用程序模式是单租户数据库模型：每个客户（数据库）都有其自己的数据库。 每个客户对内存、IO 和 CPU 具有不可预测的资源要求。 由于需求有高峰和低谷，如何有效地分配资源和节省成本？ 通常有两个选项：(1) 基于高峰使用情况过度设置资源，因此需要支付额外的费用，或者 (2) 为了节省成本而采用低配，但在高峰期间会出现性能下降而导致客户满意度降低。 弹性池通过确保数据库获取其所需的性能资源以及其需要的时机来解决这个问题。 它们提供了一个可预测预算内的简单的资源分配机制。 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅 [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-在 SQL 数据库中，单一数据库处理资源需求的能力的相对度量值以数据库事务单位 (DTU) 表示，而弹性池中数据库的该能力则以弹性 DTU (eDTU) 表示。 请参阅 [SQL 数据库简介](sql-database-technical-overview.md)，了解有关 DTU 和 eDTU 的详细信息。
+在 SQL 数据库中，单一数据库处理资源需求的能力的相对度量值以数据库事务单位 (DTU) 表示，而弹性池中数据库的该能力则以弹性数据库事务单位 (eDTU) 表示。 请参阅 [SQL 数据库简介](sql-database-technical-overview.md)，了解有关 DTU 和 eDTU 的详细信息。
 
-对池提供了固定数量的 eDTU，以获得固定价格。 在池中，单独的数据库都被赋予了在固定参数内自动缩放的灵活性。 高负荷下的数据库可能会消耗更多的 eDTU 以满足需求。 低负荷下的数据库消耗较少的 eDTU，没有任何负荷的数据库不会消耗任何 eDTU。 设置整个池（而非单个数据库）的资源简化了管理任务。 此外，必须具有该池的可预测预算。
+以固定价格为池提供了固定数量的 eDTU。 在池中，单独的数据库都被赋予了在固定参数内自动缩放的灵活性。 高负荷下的数据库可能会消耗更多的 eDTU 以满足需求。 低负荷下的数据库消耗较少的 eDTU，没有任何负荷的数据库不会消耗任何 eDTU。 设置整个池（而非单个数据库）的资源简化了管理任务。 此外，必须具有该池的可预测预算。
 
 可将更多 eDTU 添加现有池而不会造成数据库关闭，除非需要移动数据库以便提供更多计算资源来预留新 eDTU。 同样，你随时可以从现有池中删除不再需要的额外 eDTU。
 
@@ -74,6 +81,7 @@ SQL 弹性池是一组数目固定的 eDTU，价格固定，位于 Azure 逻辑�
 | 每个池的最大并发工作线程数 |池中可用于所有数据库的最大并发工作线程（请求）数。 |
 | 每个池的最大并发登录数 |池中所有数据库的最大并发登录数。 |
 | 每个池的最大并发会话数 |池中可用于所有数据库的最大会话数。 |
+|||
 
 ### <a name="limits-for-pooled-databases"></a>入池数据库的限制
 | 属性 | 说明 |
@@ -81,6 +89,7 @@ SQL 弹性池是一组数目固定的 eDTU，价格固定，位于 Azure 逻辑�
 | 每个数据库的最大 eDTU 数 |根据池中其他数据库的 eDTU 使用率，池中任何数据库可以使用的 eDTU 的最大数目。  每个数据库的 eDTU 上限并不是数据库的资源保障。  此设置是应用于池中所有数据库的全局设置。 将每个数据库的最大 eDTU 数设置得足够高，以处理数据库使用高峰情况。 因为池通常会假定数据库存在热使用模式和冷使用模式，在这些模式中并非所有数据库同时处于高峰使用状态，所以预期会存在某种程度的过量使用情况。 例如，假设每个数据库的高峰使用量为 20 个 eDTU，并且池中 100 个数据库仅有 20% 同时处于高峰使用中。  如果将每个数据库的 eDTU 最大值设为 20 个 eDTU，则可以认为超量 5 倍使用该池是合理的，并且将每个池的 eDTU 数设为 400。 |
 | 每个数据库的最小 eDTU 数 |池中任何数据库可以保证的 eDTU 最小数目。  此设置是应用于池中所有数据库的全局设置。 每个数据库的最小 eDTU 可能设为 0，这也是默认值。 该属性值可以设置为介于 0 和每个数据库的平均 eDTU 使用量之间的任意值。 池中数据库数目和每个数据库的 eDTU 下限的积不能超过每个池的 eDTU 数。  例如，如果一个池有 20 个数据库，每个数据库的 eDTU 最小值设为 10 个 eDTU，则池的 eDTU 数目必须大于或等于 200 个 eDTU。 |
 | 每个数据库的最大存储空间 (GB) |池中一个数据库的最大存储空间。 入池数据库共享池的存储空间，因此数据库存储空间限制为小于池的剩余存储空间和每个数据库的最大存储空间。 每个数据库的最大存储是指数据文件的最大存储，不包括日志文件使用的空间。 |
+|||
 
 ## <a name="elastic-jobs"></a>弹性作业
 借助池，可以通过在**[弹性作业](sql-database-elastic-jobs-overview.md)**中运行脚本来简化管理任务。 弹性作业可消除与大量数据库有关的大部分麻烦。 若要开始使用该作业，请参阅[弹性作业入门](sql-database-elastic-jobs-getting-started.md)。
@@ -101,7 +110,7 @@ SQL 弹性池是一组数目固定的 eDTU，价格固定，位于 Azure 逻辑�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 可以使用 [Azure 门户](sql-database-elastic-pool-manage-portal.md)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md)、[C#](sql-database-elastic-pool-manage-csharp.md) 和 REST API 创建和管理弹性池。 
+* 可以使用 [Azure 门户](sql-database-elastic-pool-manage-portal.md)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md)、[C#](sql-database-elastic-pool-manage-csharp.md) 和 REST API 创建和管理弹性池。
 * 有关何时使用弹性池的指导，请参阅[弹性池指导](sql-database-elastic-pool-guidance.md)。
 * 有关视频，请参阅[有关 Azure SQL 数据库弹性功能的 Microsoft 虚拟大学视频课程](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 

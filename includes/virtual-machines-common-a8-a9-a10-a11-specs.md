@@ -9,9 +9,9 @@
     此接口允许支持 RDMA 的实例在 InfiniBand 网络上相互通信，对 H16r 和 H16mr 虚拟机以 FDR 速率运行，对 A8 和 A9 虚拟机以 QDR 速率运行。 这些虚拟机中公开的 RDMA 功能可提高某些 Linux 和 Windows 消息传递接口 (MPI) 应用程序的可伸缩性和性能。 有关要求，请参阅本文中的 [RDMA 网络访问权限](#access-to-the-rdma-network)。
 
 ## <a name="deployment-considerations"></a>部署注意事项
-* **Azure 订阅** – 如果要部署非少量的计算密集型实例，请考虑使用即用即付订阅或其他购买选项。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
+* **Azure 订阅** - 若要部署不止一些计算密集型实例，请考虑使用即用即付订阅或其他购买选项。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
 * **定价和可用性** - 只在标准定价层提供计算密集型 VM 大小。 有关各 Azure 区域推出的产品，请查看 [Products available by region](https://azure.microsoft.com/regions/services/)（按区域提供的产品）。 
-* **核心数配额** – 用户可能需要增大 Azure 订阅的核心数配额，而不再使用默认值每个订阅 20 个核心（如果使用的是经典部署模型）或每个区域 20 个核心（如果使用的是 Resource Manager 部署模型）。 订阅可能也会限制可在特定 VM 大小系列（包括 H 系列）中部署的核心数目。 若要请求提高配额，可免费[提出在线客户支持请求](../articles/azure-supportability/how-to-create-azure-support-request.md)。 （默认限制可能因你订阅的类别。）
+* **核心配额** - 可能需要在 Azure 订阅中在默认值的基础上增加核心配额。 订阅可能也会限制可在特定 VM 大小系列（包括 H 系列）中部署的核心数目。 若要请求提高配额，可免费[提出在线客户支持请求](../articles/azure-supportability/how-to-create-azure-support-request.md)。 （默认限制可能因你订阅的类别。）
   
   > [!NOTE]
   > 如果你有大规模容量需求，请联系 Azure 支持。 Azure 配额为信用额度，而不是容量保障。 不管配额是什么，都只根据所用的核心数计费。
@@ -21,9 +21,4 @@
 * **云服务或可用性集** – 若要使用 Azure RDMA 网络，可在同一个云服务（如果使用的是经典部署模型）或同一个可用性集（如果使用的是 Azure Resource Manager 部署模型）中部署支持 RDMA 的 VM。 如果使用 Azure Batch，则支持 RDMA 的VM 必须位于同一池中。
 * **调整大小** - 由于在计算密集型实例中使用了专用硬件，所以可以只对同一大小系列（H 系列或计算密集型 A 系列）内的计算密集型实例进行大小调整。 例如，可仅将 H 系列 VM 的大小从一个 H 系列大小调整为另一个。 此外，不支持从非计算密集型大小调整为计算密集型大小。  
 * **RDMA 网络地址空间** - Azure 中的 RDMA 网络保留地址空间 172.16.0.0/16。 若要在 Azure 虚拟网络中部署的实例上运行 MPI 应用程序，请确保虚拟网络地址空间不与 RDMA 网络重叠。
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

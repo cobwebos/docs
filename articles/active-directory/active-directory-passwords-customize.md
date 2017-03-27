@@ -15,36 +15,40 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
-ms.openlocfilehash: 88a1d39337a8aebf58b6b35841acc4348e1baeae
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: b6794425e233508ae72cb3b541738e56044453c1
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="customizing-password-management-to-fit-your-organizations-needs"></a>自定义密码管理以满足组织的需求
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 >
 >
 
-为了尽可能地向用户提供最佳体验，我们建议你了解并试用你可以使用的所有密码管理配置选项。 事实上，可以转到 [Azure 经典门户](https://manage.windowsazure.com)的“Active Directory 扩展”中的配置选项卡，立即开始探索。 本主题将引导你从 [Azure 经典门户](https://manage.windowsazure.com)中目录的“配置”选项卡，完成管理员可以进行的不同密码管理自定义，包括：
+为了尽可能地向用户提供最佳体验，我们建议你了解并试用你可以使用的所有密码管理配置选项。 事实上，可以转到 [Azure 经典门户](https://manage.windowsazure.com)的“Active Directory 扩展”中的配置选项卡，立即开始探索。 本主题将引导你从 [Azure 经典门户](https://manage.windowsazure.com)中目录的“配置”选项卡，完成管理员可以进行的不同密码管理自定义。
 
-| 主题 |  |
-| --- | --- |
-| 如何启用或禁用密码重置？ |[设置：为用户启用了密码重置](#users-enabled-for-password-reset) |
-| 如何将密码重置的范围限定为一组特定的用户？ |[将密码重置限定为特定用户](#restrict-access-to-password-reset) |
-| 如何更改支持的身份验证方法？ |[设置：用户可用的身份验证方法](#authentication-methods-available-to-users) |
-| 如何更改所需身份验证方法的数量？ |[设置：所需身份验证方法的数量](#number-of-authentication-methods-required) |
-| 如何设置自定义安全提问？ |[设置：自定义安全性问题](#custom-security-questions) |
-| 如何设置预先编写的本地化安全提问？ |[设置：基于知识的安全性问题](#knowledge-based-security-questions) |
-| 如何更改所需的安全提问数？ |[设置：注册或重置的安全性问题数](#number-of-questions-required-to-register) |
-| 如何强制用户在登录时注册？ |[基于强制注册的密码重置推广](#require-users-to-register-when-signing-in) |
-| 如何强制用户定期重新确认注册？ |[设置：用户必须在几天后重新确认其身份验证数据](#number-of-days-before-users-must-confirm-their-contact-data) |
-| 如何自定义用户联系管理员的方式？ |[设置：自定义“联系管理员”链接](#customize-the-contact-your-administrator-link) |
-| 如何让用户直接解锁本地 AD 帐户而不必重置密码？ |[设置：让用户直接解锁 AD 帐户而不必重置密码](#allow-users-to-unlock-accounts-without-resetting-their-password) |
-| 如何为用户启用密码重置通知？ |[设置：在用户的密码重置时通知用户](#notify-users-and-admins-when-their-own-password-has-been-reset) |
-| 如何为管理员启用密码重置通知？ |[设置：在管理员重置自己的密码时通知其他管理员](#notify-admins-when-other-admins-reset-their-own-passwords) |
-| 如何自定义密码重置的外观？ |[设置：公司名称、品牌和徽标](#password-management-look-and-feel) |
+## <a name="what-customization-options-are-available"></a>可以使用哪些自定义选项？
+下表概述了可以配合 Azure Active Directory 密码重置使用的所有自定义选项。
+
+| 主题 | 设置 | 所需的许可证 |
+| --- | --- | --- |
+| 如何启用或禁用密码重置？ |[设置：为用户启用了密码重置](#users-enabled-for-password-reset) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何将密码重置的范围限定为一组特定的用户？ |[将密码重置限定为特定用户](#restrict-access-to-password-reset) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何更改支持的身份验证方法？ |[设置：用户可用的身份验证方法](#authentication-methods-available-to-users) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何更改所需身份验证方法的数量？ |[设置：所需身份验证方法的数量](#number-of-authentication-methods-required) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何设置自定义安全提问？ |[设置：自定义安全性问题](#custom-security-questions) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何设置预先编写的本地化安全提问？ |[设置：基于知识的安全性问题](#knowledge-based-security-questions) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何更改所需的安全提问数？ |[设置：注册或重置的安全性问题数](#number-of-questions-required-to-register) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何强制用户在登录时注册？ |[基于强制注册的密码重置推广](#require-users-to-register-when-signing-in) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何强制用户定期重新确认注册？ |[设置：用户必须在几天后重新确认其身份验证数据](#number-of-days-before-users-must-confirm-their-contact-data) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何自定义用户联系管理员的方式？ |[设置：自定义“联系管理员”链接](#customize-the-contact-your-administrator-link) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何通过云管理体验启用或禁用密码写回？ |[设置：启用或禁用密码写回](#write-back-passwords-to-on-premises-directory) | <ul><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何让用户直接解锁本地 AD 帐户而不必重置密码？ |[设置：让用户直接解锁 AD 帐户而不必重置密码](#allow-users-to-unlock-accounts-without-resetting-their-password) | <ul><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何为用户启用密码重置通知？ |[设置：在用户的密码重置时通知用户](#notify-users-and-admins-when-their-own-password-has-been-reset) |  <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何为管理员启用密码重置通知？ |[设置：在管理员重置自己的密码时通知其他管理员](#notify-admins-when-other-admins-reset-their-own-passwords) | <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
+| 如何自定义密码重置的外观？ |[设置：公司名称、品牌和徽标](#password-management-look-and-feel) |  <ul><li>O365（任何付费 SKU）[仅限云用户]</li><li>Azure AD Basic [仅限云用户]</li><li>Azure AD Premium P1 或 P2 [云用户或本地用户]</li><li>Enterprise Mobility Suite [云用户或本地用户]</li><li>Enterprise Cloud Suite [云用户或本地用户]</li></ul> |
 
 ## <a name="password-management-look-and-feel"></a>密码管理外观
 下表说明了每个控件对注册密码重置并重置密码的用户体验有何影响。  可以在 [Azure 管理门户](https://manage.windowsazure.com)中目录的“配置”选项卡的“目录属性”部分下配置这些选项。
@@ -75,6 +79,15 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>确定用户或管理员可以在密码重置电子邮件通信中看到的组织名称</p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -103,10 +116,16 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>确定访问密码重置页面的用户是否能看到 Microsoft 徽标或你自己的自定义徽标。  此配置项还会将你的品牌添加到访问面板和登录页中。</p>
-                <p>
-
-                </p>
                 <p>如需了解有关租户品牌和自定义功能的详细信息，请参阅<a href="https://technet.microsoft.com/library/dn532270.aspx">向“登录”和“访问面板”页添加公司品牌</a>。</p>
+                                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -114,9 +133,10 @@ ms.lasthandoff: 02/24/2017
                 </p>
                 <ul>
                   <li class="unordered">
-确定你的徽标（而非默认 Microsoft 徽标）是否显示在密码重置门户顶部。<br><br></li>
-                  <li class="unordered">
-                    <strong>注意：</strong>如果直接转到密码重置页，则在密码重置门户的第一页可能看不到你的徽标。  用户输入其用户 ID 并单击“下一步”后，你的徽标将显示出来。  可以通过将 whr 参数传递到密码重置页，在页面加载时强制显示徽标，如下所示：<a href="https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com">https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com</a><br><br></li>
+确定你的徽标（而非默认 Microsoft 徽标）是否显示在密码重置门户顶部。<br><br>
+                    <strong>注意：</strong>如果直接转到密码重置页，则在密码重置门户的第一页可能看不到你的徽标。 用户输入其用户名并单击“下一步”后，你的徽标将会显示。<br><br>
+将 <code>whr</code> 参数传递到密码重置页面可以强制在加载页面时显示你的徽标，例如：<code><a href="https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com">https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com</a></code><br><br>
+可以通过传递 <code>username</code> 参数，生成一个可以预先填充用户名字段的链接。 这也会加载你的组织徽标（如果已配置）：<code><a href="https://passwordreset.microsoftonline.com?username=user%40wingtiptoysonline.com">https://passwordreset.microsoftonline.com?username=user%40wingtiptoysonline.com</a></code></li>
                 </ul>
                 <p>
                   <strong>“联系管理员”电子邮件：</strong>
@@ -170,6 +190,15 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>确定用户是否可在此目录中进行密码重置。 </p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -204,6 +233,15 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>确定是否只允许一组特定用户使用密码重置。 （仅当“可进行密码重置的用户”设置为“是”时可见）。<strong></strong><strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -233,10 +271,16 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>确定允许哪些最终用户组使用密码重置。 </p>
-                <p>
-
-                </p>
                 <p>（仅当“限制对密码重置的访问”设置为“是”时可见）。<strong></strong><strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -273,10 +317,16 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>确定允许用户用于重置其密码的质询。</p>
-                <p>
-
-                </p>
                 <p>（仅当“可进行密码重置的用户”设置为“是”时可见）。<strong></strong><strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -333,10 +383,16 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>确定为重置他或她的密码用户必须通过的可用身份验证方法数量的下限。</p>
-                <p>
-
-                </p>
                 <p>（仅当“可进行密码重置的用户”设置为“是”时可见）。<strong></strong><strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -373,6 +429,15 @@ ms.lasthandoff: 02/24/2017
               <td>
                 <p>确定用户在注册安全问题选项时必须回答的问题数量的下限。</p>
                 <p>（仅当启用了“安全问题”复选框时可见）。<strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -403,10 +468,16 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>确定用户在重置密码时必须回答的问题数量下限。</p>
-                <p>
-
-                </p>
                 <p>（仅当启用了“安全问题”复选框时可见）。<strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -437,10 +508,16 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>定义用户在注册密码重置以及重置他们的密码时可以选择的预先编写的安全问题。</p>
-                <p>
-
-                </p>
                 <p>（仅当启用了“安全问题”复选框时可见）。<strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -488,10 +565,16 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>定义用户在注册密码重置以及重置他们的密码时可以选择的安全问题。</p>
-                <p>
-
-                </p>
                 <p>（仅当启用了“安全问题”复选框时可见）。<strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -538,31 +621,25 @@ ms.lasthandoff: 02/24/2017
                 <div id="require-users-to-register-when-signing-in">
                   <p>要求用户登录时注册？</p>
                 </div>
-                <p>
-
-                </p>
               </td>
               <td>
                 <p>确定在下次登录时是否要求用户注册联系人数据以进行密码重置。  
                 </p>
                 <p>此功能适用于使用工作或学校帐户的任何登录页面。  此类页面包括所有 Office 365、Azure 管理门户、访问面板和任何使用 Azure AD 登录的联合或自定义开发应用程序。
                 </p>
-                <p>
-
-                </p>
                 <p>强制注册只适用于启用了密码重置的用户，因此，如果你已使用“限制访问密码重置”功能并将密码重置的范围限定为一组特定的用户，则只有该组中的用户需要在登录时注册密码重置。</p>
-                <p>
-
-                </p>
                 <p>（仅当“可进行密码重置的用户”设置为“是”时可见）。<strong></strong><strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
-                <p>
-
-                </p>
-                <p>
-
-                </p>
                 <p>
                   <strong>注意：</strong>
                 </p>
@@ -591,18 +668,18 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>启用“要求用户注册”时，此设置将确定用户必须再次确认其数据前可经过的时间段。<strong></strong> </p>
-                <p>
-
-                </p>
                 <p>（仅当“登录到访问面板时要求用户注册”设置为“是”时可见）。<strong></strong><strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
-                <p>
-
-                </p>
-                <p>
-
-                </p>
                 <p>
                   <strong>注意：</strong>
                 </p>
@@ -627,10 +704,16 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>控制发生错误时或用户对指向自定义 URL 或电子邮件地址的操作等待太长时间时是否在密码重置门户上显示“联系你的管理员”链接（显示在左边）。</p>
-                <p>
-
-                </p>
                 <p>（仅当“可进行密码重置的用户”设置为“是”时可见）。<strong></strong><strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -673,10 +756,16 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>控制“联系管理员”链接所指向的电子邮件地址或 URL。<strong></strong> </p>
-                <p>
-
-                </p>
                 <p>（仅当“自定义联系管理员链接”设置为“是”时可见）。<strong></strong><strong></strong></p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -707,15 +796,16 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>控制是否为此目录启用密码写回功能，如果启用写回，该项将指示本地写回服务的状态。</p>
-                <p>
-
-                </p>
                 <p>如果你想要暂时禁用服务而不重新配置 Azure AD Connect，此设置将很有用。</p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
-                <p>
-
-                </p>
                 <p>
                   <strong>注意：</strong>
                 </p>
@@ -754,13 +844,16 @@ ms.lasthandoff: 02/24/2017
                 </div>
               </td>
               <td>
-
               <p>指定是否应为浏览密码重置门户的用户提供选项，让他们在不重置密码的情况下解锁本地 Active Directory 帐户。 默认情况下，Azure AD 在执行密码重置时始终会解锁帐户，此设置可让你区分这两项操作。</p>
-
               <p>如果设置为“是”，将提供用户重置其密码以解锁帐户的选项，或者在不重置密码的情况下解锁的选项。 </p>
-
               <p>如果设置为“否”，用户只能同时执行密码重置和帐户解锁的操作。</p>
-
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -769,7 +862,6 @@ ms.lasthandoff: 02/24/2017
                 <ul>
                   <li class="unordered">
 若要使用此功能，必须安装 2015 年 8 月或更高版本的 Azure AD Connect（v. 1.0.8667.0 或更高版本）。<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">单击此处下载最新版本的 Azure AD Connect</a>。</li>
-
                   <li class="unordered">
                     <strong>注意：</strong>若要测试此功能，需要启用密码写回，并使用源自本地（例如联合或密码同步的用户）的帐户，并且有一个已锁定的帐户。  非本地并且没有锁定帐户的用户将看不到解锁其帐户的选项。</li>
                 </ul>
@@ -813,6 +905,15 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>确定当其他任何类型的管理员重置他或她自己的密码时，是否通过向所有全球管理员的主电子邮件地址发送电子邮件来通知他们。</p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -843,6 +944,15 @@ ms.lasthandoff: 02/24/2017
               </td>
               <td>
                 <p>确定其密码被重置的最终用户或管理员是否将收到通知其密码已被重置的电子邮件通知。</p>
+                <br>
+                <p><b><u>需要以下许可证之一<a href="https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability">了解详细信息</a></u></b></p>
+                 <ul>
+                   <li>O365（任何付费 SKU）[仅限云用户]</li>
+                   <li>Azure AD Basic [仅限云用户]</li>
+                   <li>Azure AD Premium P1 或 P2 [云用户和本地用户]</li>
+                   <li>Enterprise Mobility Suite [云用户和本地用户]</li>
+                   <li>Enterprise Cloud Suite [云用户和本地用户]</li>
+                 </ul>
               </td>
               <td>
                 <p>
@@ -868,7 +978,7 @@ ms.lasthandoff: 02/24/2017
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置和更改云密码或本地密码
 * [**最佳做法**](active-directory-passwords-best-practices.md) - 了解如何快速部署且有效管理组织的密码

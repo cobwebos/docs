@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: fff43da07603be1e54cb9948dfd442491bb8f35a
-ms.openlocfilehash: 8103c85cf27c46acf2a46d87d73ecc7227723479
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: f941f87019a667deba5ec3e5cd054d04318689db
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: 8103c85cf27c46acf2a46d87d73ecc7227723479
 
 * **主机名** 需要主机名属性。
 * **基路径** 需要基路径属性。
-* **方案** 需要方案数组。
+* **方案** 需要方案数组。 
 
 ## <a name="wsdl"></a>WSDL
 WSDL 文件用于生成 SOAP 直通 API，或用作 SOAP 到 REST API 的后端。
@@ -38,6 +39,7 @@ WSDL 文件用于生成 SOAP 直通 API，或用作 SOAP 到 REST API 的后端�
 * 目前不支持**包含多个部分的消息**。
 * **WCF wsHttpBinding** 使用 Windows Communication Foundation 创建的 SOAP 服务应使用 basicHttpBinding - wsHttpBinding。
 * **MTOM** 使用 MTOM 的服务<em>可能</em>工作。 目前暂未提供官方支持。
+* 不支持以递归方式定义**递归**类型（例如，引用这些类型本身的数组）。
 
 ## <a name="wadl"></a>WADL
 目前没有已知的 WADL 导入问题。
@@ -79,9 +81,4 @@ WSDL 文件用于生成 SOAP 直通 API，或用作 SOAP 到 REST API 的后端�
 [How to add operations to an API]: api-management-howto-add-operations.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to cache operation results in Azure API Management]: api-management-howto-cache.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

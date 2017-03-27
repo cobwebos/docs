@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 56b913ee-0f9a-4e9f-9eaf-c571f8603dd6
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,8 +17,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
-ms.openlocfilehash: 6e6f7793e03930cc002183172ccfbed6305378bd
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 74fe2d241dfcd6e572f0f20714f91c6aff970f34
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -58,12 +60,12 @@ Microsoft 提供了以下实用程序让你使用 Azure Blob 存储：
 >
 >
 
-### <a name="a-idxplatcliaazure-cli"></a><a id="xplatcli"></a>Azure CLI
+### <a id="xplatcli"></a>Azure CLI
 Azure CLI 是一个跨平台工具，可用于管理 Azure 服务。 使用以下步骤将数据上载到 Azure Blob 存储：
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-1. [安装和配置适用于 Mac、Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md)。
+1. [安装和配置适用于 Mac、Linux 和 Windows 的 Azure CLI](../cli-install-nodejs.md)。
 2. 打开命令提示符、bash 或其他 shell，然后使用以下方法对 Azure 订阅进行身份验证。
 
         azure login
@@ -97,7 +99,7 @@ Azure CLI 是一个跨平台工具，可用于管理 Azure 服务。 使用以�
 >
 >
 
-### <a name="a-idpowershellaazure-powershell"></a><a id="powershell"></a>Azure PowerShell
+### <a id="powershell"></a>Azure PowerShell
 Azure PowerShell 是一个脚本编写环境，可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 有关配置工作站以运行 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
@@ -125,7 +127,7 @@ Azure PowerShell 是一个脚本编写环境，可用于在 Azure 中控制和�
 
 有关创建用来使用 HDInsight 的 PowerShell 脚本示例，请参阅 [HDInsight 工具](https://github.com/blackmist/hdinsight-tools)。
 
-### <a name="a-idazcopyaazcopy"></a><a id="azcopy"></a>AzCopy
+### <a id="azcopy"></a>AzCopy
 AzCopy 是一个命令行工具，用于简化将数据传入和传出 Azure 存储帐户的任务。 你可以将它用作独立的工具，也可以将此工具融入到现有应用程序中。 [下载 AzCopy][azure-azcopy-download]。
 
 AzCopy 语法为：
@@ -134,7 +136,7 @@ AzCopy 语法为：
 
 有关详细信息，请参阅 [AzCopy - 上传/下载 Azure Blob 的文件][azure-azcopy]。
 
-### <a name="a-idcommandlineahadoop-command-line"></a><a id="commandline"></a>Hadoop 命令行
+### <a id="commandline"></a>Hadoop 命令行
 仅当数据已存在于群集头节点中时，才可以使用 Hadoop 命令行将数据存储到 Blob 存储。
 
 若要使用 Hadoop 命令，必须先使用以下方法之一连接到头节点：
@@ -178,7 +180,7 @@ AzCopy 语法为：
 ### <a name="visual-studio-tools-for-hdinsight"></a>用于 HDInsight 的 Visual Studio 工具
 有关详细信息，请参阅[导航链接的资源](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources)。
 
-### <a name="a-idstorageexploreraazure-storage-explorer"></a><a id="storageexplorer"></a>Azure 存储空间资源管理器
+### <a id="storageexplorer"></a>Azure 存储空间资源管理器
 *Azure 存储资源管理器*是用于在 Blob 中检查和更改数据的工具。 它是免费的开源工具，可从 [http://storageexplorer.com/](http://storageexplorer.com/) 下载。 也可以从此链接获取源代码。
 
 使用该工具之前，你必须知道你的 Azure 存储帐户名和帐户密钥。 有关如何获取此信息的说明，请参阅[创建、管理或删除存储帐户][azure-create-storage-account]中的“如何：查看、复制和重新生成存储访问密钥”部分。
@@ -209,7 +211,7 @@ Azure 数据工厂可用于将数据移到 Azure Blob 存储，或创建数据�
 
 有关详细信息，请参阅 [Azure 数据工厂文档](https://azure.microsoft.com/documentation/services/data-factory/)。
 
-### <a name="a-idsqoopaapache-sqoop"></a><a id="sqoop"></a>Apache Sqoop
+### <a id="sqoop"></a>Apache Sqoop
 Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工具。 可以使用此工具将数据从关系数据库管理系统 (RDBMS)（如 SQL Server、MySQL 或 Oracle）中导入到 Hadoop 分布式文件系统 (HDFS)，在 Hadoop 中使用 MapReduce 或 Hive 转换数据，然后回过来将数据导出到 RDBMS。
 
 有关详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]。
@@ -227,7 +229,7 @@ Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工
 有关安装 Azure SDK 的详细信息，请参阅 [Azure 下载](https://azure.microsoft.com/downloads/)
 
 ## <a name="troubleshooting"></a>故障排除
-### <a name="a-idstorageexceptionastorage-exception-for-write-on-blob"></a><a id="storageexception"></a>在 blob 上编写时的存储异常
+### <a id="storageexception"></a>在 blob 上编写时的存储异常
 **症状**：使用 `hadoop` 或 `hdfs dfs` 命令在 HBase 群集上编写大于或等于 ~12GB 的文件时，可能会遇到以下错误：
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
@@ -301,15 +303,10 @@ Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
-[azurecli]: ../xplat-cli-install.md
+[azurecli]: ../cli-install-nodejs.md
 
 
 [image-azure-storage-explorer]: ./media/hdinsight-upload-data/HDI.AzureStorageExplorer.png
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

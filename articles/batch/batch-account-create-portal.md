@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: bdd7f1410906a46c66c1fd33949b30cc669e5a6b
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 09be891b5385871554f45bc1f824b4351ffd3bc2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -60,7 +60,7 @@ ms.lasthandoff: 02/28/2017
 
 ![Azure 门户中的 Batch 帐户边栏选项卡][account_blade]
 
-* **批处理帐户 URL**：通过[批处理 API](batch-technical-overview.md#batch-development-apis) 开发应用程序时，需要帐户 URL 才能访问批处理资源。 Batch 帐户 URL 采用以下格式：
+* **批处理帐户 URL**：通过[批处理 API](batch-apis-tools.md#batch-development-apis) 开发应用程序时，需要帐户 URL 才能访问批处理资源。 Batch 帐户 URL 采用以下格式：
   
     `https://<account_name>.<region>.batch.azure.com`
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 02/28/2017
 除了使用 Azure 门户外，还可使用以下各项创建和管理 Batch 帐户：
 
 * [Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md)
-* [Azure CLI](../xplat-cli-install.md)
+* [Azure CLI](../cli-install-nodejs.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 
 ## <a name="next-steps"></a>后续步骤

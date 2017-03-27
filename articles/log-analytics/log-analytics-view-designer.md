@@ -82,10 +82,10 @@ ms.lasthandoff: 03/09/2017
 ![视图设计器](media/log-analytics-view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-view-tile"></a>配置视图磁贴
-一个自定义视图只能有一个磁贴。  在“控件”窗格中选择“磁贴”选项卡，以查看当前磁贴或选择另一个磁贴。  “属性”窗格会显示当前磁贴的属性。  根据“磁贴引用”[](log-analytics-view-designer-tiles.md)中的详细信息配置磁贴属性，然后单击“应用”保存更改。
+一个自定义视图只能有一个磁贴。  在“控件”窗格中选择“磁贴”选项卡，以查看当前磁贴或选择另一个磁贴。  “属性”窗格会显示当前磁贴的属性。  根据 [磁贴引用](log-analytics-view-designer-tiles.md) 中的详细信息配置磁贴属性，然后单击 **应用** 保存更改。
 
 ### <a name="configure-visualization-parts"></a>配置可视化部件
-视图中可以包含任何数量的可视化部件。  选择“视图”选项卡，然后选择要添加到该视图中的可视化部件。  “属性”窗格会显示所选部件的属性。  根据“可视化部件引用”[](log-analytics-view-designer-parts.md)中的详细信息配置视图属性，然后单击“应用”保存更改。
+视图中可以包含任何数量的可视化部件。  选择“视图”选项卡，然后选择要添加到该视图中的可视化部件。  “属性”窗格会显示所选部件的属性。  根据 [可视化部件引用](log-analytics-view-designer-parts.md) 中的详细信息配置视图属性，然后单击“应用”保存更改。
 
 ### <a name="delete-a-visualization-part"></a>删除可视化部件
 可以通过以下方式从视图中删除可视化部件：单击该部件右上角的“X”按钮。
@@ -94,7 +94,7 @@ ms.lasthandoff: 03/09/2017
 视图只有一行可视化部件。  通过以下方式重新排列视图中的现有部件：单击这些部件并将其拖动到新位置。
 
 ## <a name="next-steps"></a>后续步骤
-* 将“磁贴”[](log-analytics-view-designer-tiles.md)添加到自定义视图。
-* 将“可视化部件”[](log-analytics-view-designer-parts.md)添加到自定义视图。
+* 将 [磁贴](log-analytics-view-designer-tiles.md) 添加到自定义视图。
+* 将 [可视化部件](log-analytics-view-designer-parts.md) 添加到自定义视图。
 
 

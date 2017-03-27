@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2017
+ms.date: 03/09/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 802086b95b949cf4aa14af044f69e500b31def44
-ms.openlocfilehash: 5241a36fbc7008baad5369452d3332d84335a661
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 651918ba5d1bad4fcec78123a0b09a48b1223906
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -32,9 +32,9 @@ ms.lasthandoff: 02/21/2017
  
 
 ## <a name="index"></a>索引
-**Let** [let](#let-clause)
+**Let** [let](#let-clause) | [materialize](#materialize) 
 
-**查询和运算符** [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
+**查询和运算符** [as](#as-operator) | [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [getschema](#getschema-operator) | [join](#join-operator) | [limit](#limit-operator) | [make-series](#make-series-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render 指令](#render-directive) | [restrict 子句](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [table](#table-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
 
 **聚合** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -108,17 +108,74 @@ requests
 | summarize count() by client_City;
 ```
 
-自联接：
+### <a name="materialize"></a>materialize
 
-    let Recent = events | where timestamp > ago(7d);
-    Recent | where name contains "session_started" 
-    | project start = timestamp, session_id
-    | join (Recent 
-        | where name contains "session_ended" 
-        | project stop = timestamp, session_id)
-      on session_id
-    | extend duration = stop - start 
+如果在下游多次使用了 let 子句的结果，则使用 materialize() 可以提高性能。 在执行查询时，Materialize() 将计算并缓存表格 let 子句的结果，确保不会多次执行该查询。
 
+**语法**
+
+    materialize(expression)
+
+**参数**
+
+* `expresion`：在执行查询期间要计算和缓存的表格表达式。
+
+**提示**
+
+* 如果 join/union 中的操作数包含可执行一次的通用子查询，请使用 materialize（参阅下面的示例）。
+* 如果需要联接/联合分支，materialize 也很有用。
+* Materialize 可为缓存的结果命名，只允许在 let 语句中使用。
+* Materialze 的缓存大小限制为 5 GB。 这种限制是针对每个群集节点实施的，对所有查询通用。
+
+**示例：self-join**
+
+
+```AIQL
+let totalPagesPerDay = pageViews
+| summarize by name, Day = startofday(timestamp)
+| summarize count() by Day;
+let materializedScope = pageViews
+| summarize by name, Day = startofday(timestamp);
+let cachedResult = materialize(materializedScope);
+cachedResult
+| project name, Day1 = Day
+| join kind = inner
+(
+    cachedResult
+    | project name, Day2 = Day
+)
+on name
+| where Day2 > Day1
+| summarize count() by Day1, Day2
+| join kind = inner
+    totalPagesPerDay
+on $left.Day1 == $right.Day
+| project Day1, Day2, Percentage = count_*100.0/count_1
+```
+
+未缓存的版本使用结果 `scope` 两次：
+
+```AIQL
+let totalPagesPerDay = pageViews
+| summarize by name, Day = startofday(timestamp)
+| summarize count() by Day;
+let scope = pageViews
+| summarize by name, Day = startofday(timestamp);
+scope      // First use of this table.
+| project name, Day1 = Day
+| join kind = inner
+(
+    scope  // Second use can cause evaluation twice.
+    | project name, Day2 = Day
+)
+on name
+| where Day2 > Day1
+| summarize count() by Day1, Day2
+| join kind = inner
+    totalPagesPerDay
+on $left.Day1 == $right.Day
+| project Day1, Day2, Percentage = count_*100.0/count_1
+```
 
 ## <a name="queries-and-operators"></a>查询和运算符
 针对遥测的查询由对源流的引用组成，后跟筛选器管道。 例如：
@@ -149,6 +206,30 @@ requests // The request table starts this pipeline.
 > 以下查询示例使用 `T` 表示前一管道或源表。
 > 
 > 
+
+### <a name="as-operator"></a>as 运算符
+
+临时将名称绑定到输入表格表达式。
+
+**语法**
+
+    T | as name
+
+**参数**
+
+* *name：*表的临时名称
+
+**说明**
+
+* 如果想要在后面的子表达式中使用名称，请使用 [let](#let-clause) 而不是 *as*。
+* 使用 *as* 可以指定表在 [union](#union-operator)、[find](#find-operator) 或 [search](#search-operator) 结果中显示的名称。
+
+**示例**
+
+```AIQL
+range x from 1 to 10 step 1 | as T1
+| union withsource=TableName (requests | take 10 | as T2)
+```
 
 ### <a name="count-operator"></a>count 运算符
 `count` 运算符返回输入记录集中的记录数（行数）。
@@ -464,7 +545,7 @@ traces
 
 默认情况下，输出表包含：
 
-* `source_` - 每行的源表标记。
+* `source_` - 每行的源表标记。 如果想要指定显示在此列中的名称，请在每个 table 表达式的末尾使用 [as](#as-operator)。
 * 谓词中显式提及的列
 * 所有输入表共有的非空列。
 * `pack_` - 包含其他列中的数据的属性包。
@@ -505,7 +586,19 @@ traces
 * 向 `where` 谓词添加基于时间的术语。
 * 使用 `let` 子句，而不是编写内联查询。
 
+### <a name="getschema-operator"></a>getschema 运算符
 
+   T | getschema
+   
+生成显示输入表的列名和类型的表。
+
+```AIQL
+requests
+| project appId, appName, customDimensions, duration, iKey, itemCount, success, timestamp 
+| getschema 
+```
+
+![getschema 的结果](./media/app-insights-analytics-reference/getschema.png)
 
 ### <a name="join-operator"></a>join 运算符
     Table1 | join (Table2) on CommonColumn
@@ -593,6 +686,37 @@ traces
 `Take` 是以交互方式工作时查看结果示例的简单和有效方法。 请注意，它不保证生成任何特定的行，或按任何特定顺序生成。
 
 返回到客户端的行数有隐式限制（即使不使用 `take`）。 若要提升此限制，请使用 `notruncation` 客户端请求选项。
+
+### <a name="make-series-operator"></a>make-series 运算符
+
+执行聚合。 与 [summarize](#summarize-operator) 不同，每个组只有一个输出行。 在结果列中，每个组中的值打包为数组。 
+
+**语法**
+
+    T | 
+    make-series [Column =] Aggregation default = DefaultValue [, ...] 
+    on AxisColumn in range(start, stop, step) 
+    by [Column =] GroupExpression [, ...]
+
+
+**参数**
+
+* *Column*：结果列的可选名称。 默认为派生自表达式的名称。
+* *DefaultValue：*如果没有任何行包含特定的 AxisColumn 和 GroupExpression 值，则在结果中，将为数组的相应元素分配 DefaultValue。 
+* *Aggregation：*使用 [aggregation 函数](#aggregations)的数字表达式。 
+* *AxisColumn：*用作序列排序依据的列。 可将其视为时间线，但接受任何数字类型。
+*start、stop、step：*定义每个行的 AxisColumn 值列表。 其他每个结果聚合列包含相同长度的数组。 
+* *GroupExpression*：各列的表达式，提供一组非重复值。 每个 GroupExpression 值的输出中包含一行。 通常，它是已提供一组受限值的列名。 
+
+**提示**
+
+结果数组呈现在分析图表中，呈现方式与相应的 summarize 操作相同。
+
+**示例**
+
+requests | make-series sum(itemCount) default=0, avg(duration) default=0 on timestamp in range (ago(7d), now(), 1d) by client_City
+
+![make-series 的结果](./media/app-insights-analytics-reference/make-series.png)
 
 ### <a name="mvexpand-operator"></a>mvexpand 运算符
     T | mvexpand listColumn 
@@ -839,7 +963,7 @@ T
 * *Stop*：输出中正生成的最大值（如果 *step* 跳过此值，则为最大值边界）。
 * *Step*：两个连续值之间的差异。 
 
-参数必须为数字、日期或时间跨度值。 它们不能引用任何表的列。 （如需基于输入表计算范围，请使用 [range* 函数*](#range)，可能需配合使用 [mvexpand 运算符](#mvexpand-operator)。） 
+参数必须为数字、日期或时间跨度值。 它们不能引用任何表的列。 （如需基于输入表计算范围，请使用 [range*函数*](#range)，可能需配合使用 [mvexpand 运算符](#mvexpand-operator)。） 
 
 **返回**
 
@@ -888,7 +1012,8 @@ range timestamp from ago(4h) to now() step 1m
 **参数**
 
 * *ColumnName*：待检查的列。 它必须是字符串类型。
-* *Threshold*：范围 {0..1} 内的值。 默认值为 0.001。 对于大型输入，阈值应较小。 
+* <seg>
+  *Threshold*：范围 {0..1} 内的值。</seg> 默认值为 0.001。 对于大型输入，阈值应较小。 
 
 **返回**
 
@@ -961,6 +1086,45 @@ render 指示表示层如何显示表。 它应是管道的最后一个元素。
 let sampleops = toscalar(requests | sample-distinct 10 of OperationName);
 requests | where OperationName in (sampleops) | summarize total=count() by OperationName
 ```
+### <a name="search-operator"></a>search 运算符
+
+搜索多个表和列中的字符串。
+
+**语法**
+
+    search [kind=case_sensitive] [in (TableName, ...)] SearchToken
+
+    T | search [kind=case_sensitive] SearchToken
+
+    search [kind=case_sensitive] [in (TableName, ...)] SearchPredicate
+
+    T | search [kind=case_sensitive] SearchPredicate
+
+在任何表的任何列中查找给定标记字符串的匹配项。
+ 
+* *TableName*：全局定义的（requests、exceptions 等）或者由 [let 子句](#let-clause)定义的表名。 可以使用通配符，例如 r*。
+* *SearchToken：*一个标记字符串，必须全字匹配。 可以使用尾随通配符。 “Amster*”匹配“Amsterdam”，但是“Amster”不匹配。
+* *SearchPredicate：*基于表中的列的布尔表达式。 可以使用“*”作为列名中的通配符。
+
+**示例**
+
+```AIQL
+search "Amster*"  //All columns, all tables
+
+search name has "home"  // one column
+
+search * has "home"     // all columns
+
+search in (requests, exceptions) "Amster*"  // two tables
+
+requests | search "Amster*"
+
+requests | search name has "home"
+
+```
+
+
+
 
 ### <a name="sort-operator"></a>sort 运算符
     T | sort by country asc, price desc
@@ -1027,6 +1191,32 @@ Traces
 > [!NOTE]
 > 尽管可为聚合和分组表达式提供任意表达式，但使用简单列名称或将 `bin()` 应用于数值列会更加高效。
 
+### <a name="table-operator"></a>table 操作
+
+    table('pageViews')
+
+在参数字符串中命名的表。
+
+**语法**
+
+    table(tableName)
+
+**参数**
+
+* *tableName：*一个字符串。 表的名称，可以是静态的，也可以是 let 子句的结果。
+
+**示例**
+
+    table('requests');
+
+
+    let size = (tableName: string) {
+        table(tableName) | summarize sum(itemCount)
+    };
+    size('pageViews');
+
+
+
 ### <a name="take-operator"></a>take 运算符
 [limit](#limit-operator) 的别名
 
@@ -1089,7 +1279,7 @@ Traces
 * `kind`： 
   * `inner` - 此结果包含所有输入表所共有列的子集。
   * `outer` - 此结果包含任何输入中出现的行。 未由输入行定义的单元格设置为 `null`。
-* `withsource=`*ColumnName*：如果指定，输出将包含名为 *ColumnName* 的列，该列的值指示哪个源表提供了哪一行。
+* `withsource=`*ColumnName*：如果指定，输出将包含名为 *ColumnName* 的列，该列的值指示哪个源表提供了哪一行。 如果想要指定显示在此列中的名称，请在每个 table 表达式的末尾使用 [as](#as-operator)。
 
 **返回**
 
@@ -1097,38 +1287,28 @@ Traces
 
 无法保证行中的顺序。
 
-**示例**
-
-名称以“tt”开头的所有表的联合：
-
-```AIQL
-
-    let ttrr = requests | where timestamp > ago(1h);
-    let ttee = exceptions | where timestamp > ago(1h);
-    union tt* | count
-```
 
 **示例**
 
-过去一天已生成 `exceptions` 事件或 `traces` 事件的不同用户数。 在结果中，“SourceTable”列指示“Query”或“Command”：
+在过去 12 小时内生成了 `exceptions` 事件或 `traces` 事件的不同用户数。 在结果中，“SourceTable”列指示“exceptions”或“traces”：
 
 ```AIQL
-
-    union withsource=SourceTable kind=outer Query, Command
-    | where Timestamp > ago(1d)
-    | summarize dcount(UserId)
+    
+    union withsource=SourceTable kind=outer exceptions, traces
+    | where timestamp > ago(12h)
+    | summarize dcount(user_Id) by SourceTable
 ```
 
 此效率更高的版本可生成相同结果。 它可在创建联合之前筛选每个表：
 
 ```AIQL
-
     exceptions
-    | where Timestamp > ago(12h)
-    | union withsource=SourceTable kind=outer 
-       (Command | where Timestamp > ago(12h))
-    | summarize dcount(UserId)
+    | where timestamp > ago(24h) | as exceptions
+    | union withsource=SourceTable kind=outer (requests | where timestamp > ago(12h) | as traces)
+    | summarize dcount(user_Id) by SourceTable 
 ```
+
+使用 [as](#as-operator) 指定显示在源列中的名称。
 
 #### <a name="forcing-an-order-of-results"></a>强制形成结果顺序
 

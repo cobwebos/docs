@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 27bf5b15ebeed13733df2ddd9dbda5d5cfe4e49d
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 6a000e84f38e7e2b56f1d79d5c88f1704b6789a0
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="a-namewhatisdiagaweb-server-diagnostics-and-application-diagnostics"></a><a name="whatisdiag"></a>Web 服务器诊断和应用程序诊断
+## <a name="whatisdiag"></a>Web 服务器诊断和应用程序诊断
 应用服务 Web 应用为 Web 服务器和 Web 应用程序中的日志记录信息提供诊断功能。 这些诊断功能按逻辑分为 **Web 服务器诊断**和**应用程序诊断**。
 
 ### <a name="web-server-diagnostics"></a>Web 服务器诊断
@@ -48,7 +48,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 
 将内容发布到某个 Web 应用时，应用服务 Web 应用还记录部署信息。 此操作自动执行，不会对部署日志记录进行配置设置。 部署日志记录允许你确定部署失败的原因。 例如，如果使用自定义部署脚本，可能会使用部署日志记录确定该脚本失败的原因。
 
-## <a name="a-nameenablediagahow-to-enable-diagnostics"></a><a name="enablediag"></a>如何启用诊断
+## <a name="enablediag"></a>如何启用诊断
 若要在 [Azure 门户](https://portal.azure.com)中启用诊断，请转到 Web 应用的边栏选项卡，然后依次单击“设置”>“诊断日志”。
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
@@ -90,7 +90,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 >
 >
 
-## <a name="a-namedownloada-how-to-download-logs"></a><a name="download"></a> 如何：下载日志
+## <a name="download"></a> 如何：下载日志
 可使用 FTP 直接访问存储到 Web 应用文件系统的诊断信息。 还可使用 Azure PowerShell 或 Azure 命令行接口将这些信息作为 Zip 存档下载。
 
 存储日志采用的目录结构如下：
@@ -129,7 +129,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 这会将名为“webappname”的 Web 应用的日志保存到当前目录中名为 **diagnostics.zip** 的文件。
 
 > [!NOTE]
-> 如果尚未安装 Azure 命令行接口 (Azure CLI)，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure CLI](../xplat-cli-install.md)。
+> 如果尚未安装 Azure 命令行接口 (Azure CLI)，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure CLI](../cli-install-nodejs.md)。
 >
 >
 
@@ -145,7 +145,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 
 [了解有关使用 Application Insights 跟踪性能的详细信息](../application-insights/app-insights-azure-web-apps.md)
 
-## <a name="a-namestreamlogsa-how-to-stream-logs"></a><a name="streamlogs"></a>如何：流式传输日志
+## <a name="streamlogs"></a>如何：流式传输日志
 开发应用程序时，以近乎实时的方式查看日志记录信息通常很有用。 通过使用 Azure PowerShell 或 Azure 命令行接口将日志记录信息流式传输到开发环境，可以实现此目的。
 
 > [!NOTE]
@@ -194,11 +194,11 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
     azure site log tail webappname --path http
 
 > [!NOTE]
-> 如果尚未安装 Azure 命令行接口，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure 命令行接口](../xplat-cli-install.md)。
+> 如果尚未安装 Azure 命令行接口，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure 命令行接口](../cli-install-nodejs.md)。
 >
 >
 
-## <a name="a-nameunderstandlogsa-how-to-understand-diagnostics-logs"></a><a name="understandlogs"></a> 如何：了解诊断日志
+## <a name="understandlogs"></a> 如何：了解诊断日志
 ### <a name="application-diagnostics-logs"></a>应用程序诊断日志
 应用程序诊断将信息以特定格式存储在 .NET 应用程序中，具体取决于是将日志存储到文件系统、表存储还是 Blob 存储。 三种存储类型存储的基本数据信息相同 — 事件发生的日期和时间，生成事件的进程 ID，事件类型（信息、警告、错误）以及事件消息。
 
@@ -274,7 +274,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 >
 >
 
-## <a name="a-namenextstepsa-next-steps"></a><a name="nextsteps"></a>后续步骤
+## <a name="nextsteps"></a>后续步骤
 * [如何监视 Web 应用](/manage/services/web-sites/how-to-monitor-websites/)
 * [在 Visual Studio 中对 Azure Web 应用进行故障排除](web-sites-dotnet-troubleshoot-visual-studio.md)
 * [在 HDInsight 中分析 Web 应用日志](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

@@ -25,8 +25,4 @@
 ## [上市区域](https://azure.microsoft.com/regions/services/)
 ## [定价](https://azure.microsoft.com/pricing/details/container-registry/)
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
-
-
-<!--HONumber=Feb17_HO4-->
-
-
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-container-registry)

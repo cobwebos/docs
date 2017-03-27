@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/14/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 1f5f0b1aca581900b94f0f87563c5c7e720f46c8
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 67d817c04672979ec8af8a540c5a63eb4df9bf6a
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -52,6 +52,10 @@ DocumentDB 将根据存储大小和预配的吞吐量在每个集合后创建少
 
 例如，假设你创建了一个吞吐量为每秒 25,000 个请求的集合并且 DocumentDB 对于单个物理分区可以支持每秒 10,000 个请求。 DocumentDB 将为你的集合创建 3 个物理分区：P1、P2 和 P3。 在插入或读取文档期间，DocumentDB 服务会对相应的 `Department` 值进行哈希处理，以将数据映射到三个分区：P1、P2 和 P3。 因此，假设“Marketing”和“Sales”被哈希处理到 1，则它们都存储在 P1 中。 并且如果 P1 已满，则 DocumentDB 会将 P1 拆分为两个新分区：P4 和 P5。 然后，在拆分后，该服务可以将“Marketing”移动到 P4，将“Sales”移动到 P5，然后丢弃 P1。 分区键在分区间的这些移动对你的应用程序是透明的，不会影响你的集合的可用性。
 
+## <a name="sharding-in-api-for-mongodb"></a>MongoDB 的 API 中的分片
+MongoDB 的 API 中的分片集合使用相同的基础结构作为 DocumentDB 的分区集合。 像分区集合一样，分片集合可以具有任意数量的分片，每个分片都具有固定数量的支持 SSD 的存储与之关联。 分片集合在存储和吞吐量方面几乎无限制。 MongoDB 的 API 的分片键等效于 DocumentDB 的分区键，决定分片键时，请务必阅读[分区键](#partition-keys)和[设计分区](#designing-for-partitioning)部分。
+
+<a name="partition-keys"></a>
 ## <a name="partition-keys"></a>分区键
 选择分区键是设计时需要做的一项重要决定。 选择的 JSON 属性名必须具有一系列的值，且有望均匀地分布访问模式。 
 
@@ -160,7 +164,7 @@ DocumentDB 支持创建单个分区和已分区的集合。
     </tbody>
 </table>
 
-## <a name="working-with-the-sdks"></a>使用 SDK
+## <a name="working-with-the-documentdb-sdks"></a>使用 DocumentDB SDK
 Azure DocumentDB 增加了对 [REST API 版本 2015-12-16](https://msdn.microsoft.com/library/azure/dn781481.aspx) 的自动分区支持。 为了创建已分区集合，必须在支持的 SDK 平台之一（.NET、Node.js、Java、Python）下载 SDK 版本 1.6.0 或更高版本。 
 
 ### <a name="creating-partitioned-collections"></a>创建已分区集合
@@ -276,7 +280,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-从 SDK 1.12.0 及更高版本开始，DocumentDB 支持 [聚合函数]（使用 SQL 对已分区的集合执行[聚合函数](documentdb-sql-query.md#Aggregates) `COUNT`、`MIN`、`MAX`、`SUM` 和 `AVG`）。 查询必须包括单个聚合运算符，并且必须在投影中包括单个值。
+从 SDK 1.12.0 及更高版本开始，DocumentDB 支持使用 SQL 对已分区的集合执行[聚合函数](documentdb-sql-query.md#Aggregates) `COUNT`、`MIN`、`MAX`、`SUM` 和 `AVG`。 查询必须包括单个聚合运算符，并且必须在投影中包括单个值。
 
 ### <a name="parallel-query-execution"></a>并行查询执行
 DocumentDB SDK 1.9.0 及更高版本支持并行查询执行选项，这些选项可用于对已分区集合执行低延迟查询，即使在这些查询需要处理大量分区时，也是如此。 例如，以下查询配置为跨分区并行运行。
@@ -309,9 +313,34 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
     
 在下一节，我们将介绍如何从单个分区集合移动到已分区集合。
 
+## <a name="creating-an-api-for-mongodb-sharded-collection"></a>创建 MongoDB 的 API 分片集合
+创建 MongoDB 的 API 分片集合的最简单方法是通过常用工具、驱动程序或 SDK。 在此示例中，我们将使用 Mongo Shell 创建集合。
+
+在 Mongo Shell 中：
+
+```
+db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
+```
+    
+结果：
+
+```JSON
+{
+    "_t" : "ShardCollectionResponse",
+    "ok" : 1,
+    "collectionsharded" : "admin.people"
+}
+```
+
 <a name="migrating-from-single-partition"></a>
 
-## <a name="migrating-from-single-partition-to-partitioned-collections"></a>从单个分区集合迁移到已分区集合
+## <a name="migrating-from-single-partition-to-partitioned-collections-in-documentdb"></a>从单个分区迁移到 DocumentDB 中的分区集合
+
+> [!IMPORTANT]
+> 如果要导入到 MongoDB 的 API，请按照这些[说明](documentdb-mongodb-migrate.md)操作。
+> 
+> 
+
 当使用单个分区集合的应用程序需要更高的吞吐量 (>10,000 RU/s) 或更大的数据存储 (>10GB) 时，可以使用 [DocumentDB 数据迁移工具](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)将单个分区集合中的数据迁移到已分区集合。 
 
 从单个分区集合迁移到已分区集合
@@ -328,6 +357,7 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
 
 现在我们已经学完了基础知识，让我们看看当在 DocumentDB 中使用分区键时几个重要的设计注意事项。
 
+<a name="designing-for-partitioning"></a>
 ## <a name="designing-for-partitioning"></a>设计分区
 选择分区键是设计时需要做的一项重要决定。 本节将介绍在为集合选择分区键时所涉及的一些利弊。
 

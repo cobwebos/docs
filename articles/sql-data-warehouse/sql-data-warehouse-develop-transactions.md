@@ -15,8 +15,9 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dde5397405b64d394cdff9c69c05a565c5427f56
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: a0582c71e786ae5365e39a5f161b63e946435b2e
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -51,7 +52,7 @@ SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离仅限于 `R
 
 事务大小限制按每个事务或操作进行应用。 不会跨所有当前事务进行应用。 因此，允许每个事务向日志写入此数量的数据。 
 
-为优化和最大程度减少写入到日志中的数据量，请参阅[事务最佳实践][事务最佳实践]一文。
+为优化和最大程度减少写入到日志中的数据量，请参阅[事务最佳做法][Transactions best practices]一文。
 
 > [!WARNING]
 > 最大事务大小仅可在哈希或者 ROUND_ROBIN 分布式表（其中数据均匀分布）中实现。 如果事务以偏斜方式向分布写入数据，那么更有可能在达到最大事务大小之前达到该限制。
@@ -153,7 +154,7 @@ SELECT @xact_state AS TransactionState;
 所做的一切改变是事务的 `ROLLBACK` 必须发生于在 `CATCH` 块中读取错误信息之前。
 
 ## <a name="errorline-function"></a>Error_Line() 函数
-另外值得注意的是，SQL 数据仓库不实现或支持 ERROR_LINE() 函数。 如果你的代码中包含此函数，需要将它删除才能符合 SQL 数据仓库的要求。 请在代码中使用查询标签，而不是实现等效的功能。 有关此功能的详细信息，请参阅 [标签][标签] 一文。
+另外值得注意的是，SQL 数据仓库不实现或支持 ERROR_LINE() 函数。 如果你的代码中包含此函数，需要将它删除才能符合 SQL 数据仓库的要求。 请在代码中使用查询标签，而不是实现等效的功能。 有关此功能的详细信息，请参阅 [LABEL][LABEL] 一文。
 
 ## <a name="using-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
 THROW 是在 SQL 数据仓库中引发异常的新式做法，但也支持 RAISERROR。 不过，有些值得注意的差异。
@@ -175,23 +176,18 @@ SQL 数据仓库有一些与事务相关的其他限制。
 * 不支持 DDL，如用户定义的事务内的 `CREATE TABLE`
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关优化事务的详细信息，请参阅[事务最佳实践][事务最佳实践]。  若要了解有关其他 SQL 数据仓库最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL 数据仓库最佳实践]。
+若要了解有关优化事务的详细信息，请参阅[事务最佳做法][Transactions best practices]。  若要了解有关其他 SQL 数据仓库最佳做法的信息，请参阅 [SQL 数据仓库最佳做法][SQL Data Warehouse best practices]。
 
 <!--Image references-->
 
 <!--Article references-->
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
-[部署概述]: ./sql-data-warehouse-overview-develop.md
-[事务最佳实践]: ./sql-data-warehouse-develop-best-practices-transactions.md
-[SQL 数据仓库最佳实践]: ./sql-data-warehouse-best-practices.md
-[标签]: ./sql-data-warehouse-develop-label.md
+[DWU]: ./sql-data-warehouse-overview-what-is.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
+[Transactions best practices]: ./sql-data-warehouse-develop-best-practices-transactions.md
+[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
+[LABEL]: ./sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

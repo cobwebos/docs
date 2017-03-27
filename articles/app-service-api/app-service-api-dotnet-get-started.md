@@ -3,7 +3,7 @@ title: "应用服务中的 API 应用和 ASP.NET 入门 | Microsoft Docs"
 description: "了解如何使用 Visual Studio 2015 在 Azure 应用服务中创建、部署和使用 ASP.NET API 应用。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: ddc028b2-cde0-4567-a6ee-32cb264a830a
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/20/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c7b4e39e01ae335c3e6a5cf9cb1efe8a64490e35
@@ -199,7 +199,7 @@ Swashbuckle 可用于任何 ASP.NET Web API 项目。 如果要将 Swagger 元�
 > 
 > 
 
-## <a name="a-idcreateapiappa-create-an-api-app-in-azure-and-deploy-code-to-it"></a><a id="createapiapp"></a> 在 Azure 中创建 API 应用并向其部署代码
+## <a id="createapiapp"></a> 在 Azure 中创建 API 应用并向其部署代码
 本部分使用已集成到 Visual Studio 的“发布 Web”向导中的 Azure 工具，在 Azure 中创建新的 API 应用。 然后，将 ToDoListDataAPI 项目部署到新的 API 应用，并通过运行 Swagger UI 来调用 API。
 
 1. 在“解决方案资源管理器”中，右键单击 ToDoListDataAPI 项目，然后单击“发布”。
@@ -303,7 +303,7 @@ Swashbuckle 可用于任何 ASP.NET Web API 项目。 如果要将 Swagger 元�
     
     选择要为其生成客户端代码的 API 应用时，Visual Studio 将从此 URL 检索元数据。
 
-## <a name="a-idcodegena-generate-client-code-for-the-data-tier"></a><a id="codegen"></a> 生成数据层的客户端代码
+## <a id="codegen"></a> 生成数据层的客户端代码
 将 Swagger 集成到 Azure API 应用的优势之一是自动生成代码。 使用生成的客户端类可以更轻松地编写调用 API 应用的代码。
 
 ToDoListAPI 项目已有生成的客户端代码，但在以下步骤中，要先将这些代码删除再重新生成，才能了解如何生成代码。

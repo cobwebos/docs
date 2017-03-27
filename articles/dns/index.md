@@ -13,9 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: f415cc458e91085ce315ef7ee5755b96bbcfa170
-ms.openlocfilehash: b9608dc3bafeea5faec8e379c67810113b00ffd9
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 659e0989e3a1f7114796c2211606e5d629cf68fd
+ms.lasthandoff: 03/22/2017
 
 ---
 # <a name="dns-documentation"></a>DNS 文档
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/09/2017
         </a>
     </li>
     <li>
-        <a href="/azure/dns/dns-getstarted-create-dnszone-portal">
+        <a href="/azure/dns/dns-getstarted-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -60,7 +60,7 @@ ms.lasthandoff: 02/09/2017
         </a>
     </li>
     <li>
-        <a href="/azure/dns/dns-getstarted-create-dnszone">
+        <a href="/azure/dns/dns-getstarted-powershell">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -78,7 +78,7 @@ ms.lasthandoff: 02/09/2017
         </a>
     </li>
      <li>
-        <a href="/azure/dns/dns-getstarted-create-recordset">
+        <a href="/azure/dns/dns-getstarted-cli">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -88,7 +88,7 @@ ms.lasthandoff: 02/09/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>通过 Azure PowerShell 开始使用 DNS 记录集</h3>
+                        <h3>通过 Azure CLI 开始使用 Azure DNS</h3>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@ ms.lasthandoff: 02/09/2017
 
 ---
 
-<h2>参考</h2>
+<h2>引用</h2>
 <ul class="panelContent cardsW">
 <li>
     <div class="cardSize">

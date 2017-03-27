@@ -12,38 +12,68 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/06/2017
+ms.date: 03/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 4547a805c1827a703bf0ef118387882e45c3f241
-ms.openlocfilehash: 4b117f03a8f769cbd2ecf1fca2653e8c343b6aa0
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: d0e35237b412d4c3bcc26c77d124f3ed2fef6403
+ms.lasthandoff: 03/16/2017
 
 
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器
-在许多情况下，远程桌面网关使用本地 NPS 对用户进行身份验证。 本文档介绍如何将来自远程桌面网关（通过本地 NPS）的 RADIUS 请求路由到 Multi-Factor Authentication 服务器。
+通常情况下，远程桌面 (RD) 网关使用本地网络策略服务 (NPS) 进行身份验证。 本文介绍如何将来自远程桌面网关（通过本地 NPS）的 RADIUS 请求路由到多重身份验证服务器。 将 Azure MFA 与 RD 网关结合使用意味着，你的用户可以从任何地方访问其工作环境，同时，你可以要求用户进行强身份验证，从而控制公司资产。 
 
-Multi-Factor Authentication 服务器应安装在独立的服务器上，它随后会将 RADIUS 请求通过代理路由回远程桌面网关服务器上的 NPS。 NPS 验证用户名和密码后，将向Multi-Factor Authentication 服务器返回响应，Multi-Factor Authentication 服务器执行第二重身份验证后，将结果返回到网关。
+由于 Server 2012 R2 不支持对终端服务使用 Windows 身份验证，请通过 RD 网关和 RADIUS 与 MFA 服务器集成。 
 
-## <a name="configure-the-rd-gateway"></a>配置 RD 网关
-必须将 RD 网关配置为将 RADIUS 身份验证发送到 Azure Multi-Factor Authentication 服务器。 在 RD 网关安装、配置完毕并正常工作后，转到 RD 网关属性。 转到“RD CAP 存储”选项卡，将其更改为使用运行 NPS 的中央服务器，而不是使用运行 NPS 的本地服务器。 添加一个或多个 Azure Multi-Factor Authentication 服务器作为 RADIUS 服务器，并为每个服务器指定共享机密。
+多重身份验证服务器应安装在独立的服务器上，它随后会将 RADIUS 请求通过代理路由回远程桌面网关服务器上的 NPS。 NPS 验证用户名和密码后，将向多重身份验证服务器返回响应，多重身份验证服务器执行第二重身份验证后，将结果返回到网关。
+
+## <a name="prerequisites"></a>先决条件
+
+- 已加入域的 Azure MFA 服务器。 如果尚未安装该服务器，请执行 [Azure 多重身份验证服务器入门](multi-factor-authentication-get-started-server.md)中的步骤。
+- 一个远程桌面网关，用于通过网络策略服务进行身份验证。
+
+## <a name="configure-the-remote-desktop-gateway"></a>配置远程桌面网关
+将 RD 网关配置为将 RADIUS 身份验证发送到 Azure 多重身份验证服务器。 
+
+1. 在 RD 网关管理器中，右键单击服务器名称，然后选择“属性”。
+2. 转到“RD CAP 存储”选项卡并选择“运行 NPS 的中央服务器”。 
+3. 添加一个或多个 Azure 多重身份验证服务器作为 RADIUS 服务器，方法是：输入每个服务器的名称或 IP 地址。 
+4. 为每个服务器创建共享机密。
 
 ## <a name="configure-nps"></a>配置 NPS
-RD 网关使用 NPS 将 RADIUS 请求发送到 Azure Multi-Factor Authentication。 必须更改超时以防止在完成Multi-Factor Authentication之前 RD 网关超时。 使用以下过程可配置 NPS。
+RD 网关使用 NPS 将 RADIUS 请求发送到 Azure Multi-Factor Authentication。 若要配置 NPS，请首先更改超时设置，防止 RD 网关在完成双重验证之前超时。 然后对 NPS 进行更新，以便从 MFA 服务器接收 RADIUS 身份验证。 使用以下过程可配置 NPS：
 
-1. 在 NPS 中，展开左侧列中的“RADIUS 客户端和服务器”菜单，单击“远程 RADIUS 服务器组”。 进入 TS 网关服务器组的属性。 编辑显示的 RADIUS 服务器，然后转到“负载平衡”选项卡。 将“在这些秒数后没有反应，就认为请求被放弃”和“当服务器被识别为不可用时，请求之间的间隔秒数”更改为 30-60 秒。 单击“身份验证/帐户”选项卡，确保指定的 RADIUS 端口与 Multi-Factor Authentication 服务器将侦听的端口匹配。
-2. 还必须将 NPS 配置为从 Azure Multi-Factor Authentication 服务器接收返回的 RADIUS 身份验证。 单击左侧菜单中的“RADIUS 客户端”。 将 Azure Multi-Factor Authentication 服务器添加为 RADIUS 客户端。 选择友好名称，并指定共享机密。
-3. 展开左侧导航区域中的“策略”部分，然后单击“连接请求策略”。 它应包含配置 RD 网关时创建的名为“TS 网关授权策略”的连接请求策略。 此策略将 RADIUS 请求转发到Multi-Factor Authentication 服务器。
-4. 复制此策略以创建一个新策略。 在新策略中添加一个条件，使客户端友好名称与上面的步骤 2 中为 Azure Multi-Factor Authentication 服务器 RADIUS 客户端设置的友好名称匹配。 将“身份验证提供程序”更改为“本地计算机”。 此策略可确保从 Azure Multi-Factor Authentication 服务器接收 RADIUS 请求时，身份验证在本地进行，而不是将 RADIUS 请求发送回 Azure Multi-Factor Authentication 服务器，后者会导致循环情况。 为了防止循环情况，必须将此新策略的顺序排列在转发到 Multi-Factor Authentication 服务器的原始策略之前。
+### <a name="modify-the-timeout-policy"></a>修改超时策略
+
+1. 在 NPS 中，打开左侧列中的“RADIUS 客户端和服务器”菜单，然后选择“远程 RADIUS 服务器组”。 
+2. 选择“TS 网关服务器组”。 
+3. 转到“负载均衡”选项卡。 
+4. 将“在这些秒数后没有反应，就认为请求被放弃”和“当服务器被识别为不可用时，请求之间的间隔秒数”更改为 30 到 60 秒。 （如果发现服务器仍在身份验证过程中超时，则可回到此处提高秒数。）
+5. 转到“身份验证/帐户”选项卡，检查指定的 RADIUS 端口与多重身份验证服务器将侦听的端口是否匹配。
+
+### <a name="prepare-nps-to-receive-authentications-from-the-mfa-server"></a>准备 NPS，以便接收来自 MFA 服务器的身份验证
+
+1. 右键单击左侧栏中“RADIUS 客户端和服务器”下的“RADIUS 客户端”，然后选择“新建”。
+2. 将 Azure Multi-Factor Authentication 服务器添加为 RADIUS 客户端。 选择友好名称，并指定共享机密。
+3. 打开左侧栏中的“策略”菜单，然后选择“连接请求策略”。 此是会看到一个名为“TS 网关授权策略”的策略，该策略是在配置 RD 网关时创建的。 此策略将 RADIUS 请求转发到Multi-Factor Authentication 服务器。
+4. 右键单击“TS 网关授权策略”，然后选择“重复策略”。 
+5. 打开新的策略，转到“条件”选项卡。
+6. 添加一个条件，使客户端友好名称与步骤 2 中为 Azure 多重身份验证服务器 RADIUS 客户端设置的友好名称匹配。 
+7. 转到“设置”选项卡并选择“身份验证”。
+8. 将身份验证提供程序更改为“在此服务器上对请求进行身份验证”。 此策略可确保当 NPS 从 Azure MFA 服务器接收 RADIUS 请求时，身份验证在本地进行，而不是将 RADIUS 请求发送回 Azure 多重身份验证服务器，后者会导致循环情况。 
+9. 若要防止循环情况，请确保新策略的排序级别高于“连接请求策略”窗格中的原始策略。
 
 ## <a name="configure-azure-multi-factor-authentication"></a>配置 Azure Multi-Factor Authentication
 
 将 Azure Multi-Factor Authentication 服务器配置为 RD 网关与 NPS 之间的 RADIUS 代理。  应将 Azure Multi-Factor Authentication 服务器安装在不同于 RD 网关服务器的已加入域的服务器上。 使用以下过程可配置 Azure Multi-Factor Authentication 服务器。
 
-1. 打开 Azure Multi-Factor Authentication 服务器，并单击“RADIUS 身份验证”图标。 选中“启用 RADIUS 身份验证”复选框。
-2. 在“客户端”选项卡上，确保端口与 NPS 中配置的内容匹配，然后单击“添加...” 按钮。 添加 RD 网关服务器 IP 地址、应用程序名称（可选）和共享机密。 Azure 多重身份验证服务器和 RD 网关上的共享机密将需要相同。
-3. 单击“目标”选项卡，然后选择“RADIUS 服务器”单选按钮。
-4. 单击“添加...” 按钮。 输入 NPS 服务器的 IP 地址、共享机密和端口。 除非使用中央 NPS，否则 RADIUS 客户端和 RADIUS 目标将是相同的。 共享机密必须与 NPS 服务器的“RADIUS 客户端”部分中设置的共享机密相匹配。
+1. 打开 Azure 多重身份验证服务器，并选择“RADIUS 身份验证”图标。 
+2. 选中“启用 RADIUS 身份验证”复选框。
+3. 在“客户端”选项卡上，确保端口与 NPS 中配置的内容匹配，然后选择“添加”。
+4. 添加 RD 网关服务器 IP 地址、应用程序名称（可选）和共享机密。 Azure 多重身份验证服务器和 RD 网关上的共享机密必须相同。
+3. 转到“目标”选项卡，然后选择“RADIUS 服务器”单选按钮。
+4. 选择“添加”，然后输入 NPS 服务器的 IP 地址、共享机密和端口。 除非使用中央 NPS，否则 RADIUS 客户端和 RADIUS 目标是相同的。 共享机密必须与 NPS 服务器的“RADIUS 客户端”部分中设置的共享机密相匹配。
 
 ![Radius 身份验证](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
@@ -52,9 +82,4 @@ RD 网关使用 NPS 将 RADIUS 请求发送到 Azure Multi-Factor Authentication
 - 集成 Azure MFA 和 [IIS Web 应用](multi-factor-authentication-get-started-server-iis.md)
 
 - 在 [Azure 多重身份验证常见问题](multi-factor-authentication-faq.md)中获取答案
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

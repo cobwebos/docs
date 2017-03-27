@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 23a01938-3fe5-4e2e-8e8b-3368e1bbe2ca
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: aaff4a7aa717f42dedb96eceeb4315b31a6e7b17
-ms.openlocfilehash: 1ea77289ead60af067a0d07bac6c2e40a1684a04
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 31821203c18f1310c6a781bd28022efd3da7f03d
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -156,29 +157,29 @@ Azure HDInsight 提供了两个类别的大数据云产品/服务：标准和[�
   >
 
 ### <a name="data-source"></a>数据源
-原始 Hadoop 分布式文件系统 (HDFS) 在群集上使用许多本地磁盘。 HDInsight 将 Azure Blob 存储用于数据存储。 Azure Blob 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无缝集成。 通过 HDFS 界面，可以针对 Blob 存储中的结构化或非结构化数据直接运行 HDInsight 中的整套组件。 将数据存储在 Blob 存储中有助于安全删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
-在配置期间，你必须指定 Azure 存储帐户，并在该 Azure 存储帐户中指定 Azure Blob 存储容器。 某些创建过程要求事先创建 Azure 存储帐户和 Blob 存储容器。 群集使用该 Blob 存储容器作为默认存储位置。 也可以选择指定群集可访问的其他 Azure 存储帐户（链接的存储）。 群集还可以访问任何配置有完全公共读取权限或仅限对 Blob 的公共读取权限的 Blob 存储容器。  有关详细信息，请参阅[管理对 Azure 存储资源的访问](../storage/storage-manage-access-to-resources.md)。
+原始 Hadoop 分布式文件系统 (HDFS) 在群集上使用许多本地磁盘。 HDInsight 使用 Azure 存储中的 blob。 Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无缝集成。 HDInsight 中的整套组件可以通过 HDFS 界面直接操作 blob 中存储的结构化或非结构化数据。 将数据存储在 Azure 存储中有助于安全删除用于计算的 HDInsight 群集，而不会丢失用户数据。
+
+> [!WARNING]
+> HDInsight 仅支持__通用__ Azure 存储帐户。 它当前不支持 __Blob 存储__帐户类型。
+
+在配置期间，你必须指定一个 Azure 存储帐户和该 Azure 存储帐户中的一个 blob 容器。 某些创建过程要求事先创建 Azure 存储帐户和 blob 容器。 群集使用该 blob 存储容器作为默认存储位置。 也可以指定群集可访问的其他 Azure 存储帐户（链接的存储）。 群集还可以访问任何配置有完全公共读取权限或仅限对 blob 的公共读取权限的 blob 容器。  有关详细信息，请参阅[管理对 Azure 存储资源的访问](../storage/storage-manage-access-to-resources.md)。
 
 ![HDInsight 存储](./media/hdinsight-provision-clusters/HDInsight.storage.png)
 
 > [!NOTE]
-> Blob 存储容器提供一组 Blob 集，如下图所示。
->
->
+> Blob 存储容器提供一组 blob 集，如下图所示。
 
-![Azure Blob 存储](./media/hdinsight-provision-clusters/Azure.blob.storage.jpg)
+![Azure blob](./media/hdinsight-provision-clusters/Azure.blob.storage.jpg)
 
-建议不要使用默认 Blob 存储容器来存储业务数据。 良好的做法是每次使用之后删除默认 Blob 存储容器以降低存储成本。 请注意，默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
+建议不要使用默认 blob 容器来存储业务数据。 良好的做法是每次使用之后删除默认 blob 容器以降低存储成本。 请注意，默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 
 > [!WARNING]
-> 不支持对多个群集共享一个 Blob 存储容器。
->
->
+> 不支持多个群集共享一个 blob 容器。
 
-有关使用辅助 Blob 存储的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。
+有关使用辅助 Azure 存储帐户的详细信息，请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。
 
-除了 Azure Blob 存储之外，还可以使用 [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) 作为 HDInsight 中的 HBase 群集的默认存储帐户以及所有四种 HDInsight 群集类型的链接存储。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
+除了 Azure 存储之外，还可以使用 [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) 作为 HDInsight 中的 HBase 群集的默认存储帐户以及所有四种 HDInsight 群集类型的链接存储。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
 
 ### <a name="location-region"></a>位置（区域）
 HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
@@ -250,7 +251,7 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 
 创建 HDInsight 群集时或创建群集后，可以添加存储帐户。  请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-有关辅助 Blob 存储的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。 有关辅助 Data Lake Storage 的详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
+有关辅助 Azure 存储帐户的详细信息，请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。 有关辅助 Data Lake Storage 的详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
 
 ## <a name="use-hiveoozie-metastore"></a>使用 Hive/Oozie 元存储
 如果想要在删除 HDInsight 群集后保留 Hive 表，建议使用自定义元存储。 这样，便可以将该元存储附加到另HDInsight 群集。
@@ -314,7 +315,7 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 ## <a name="customize-clusters-using-script-action"></a>使用脚本操作自定义群集
 你可以在创建期间通过使用脚本安装其他组件或自定义群集配置。 此类脚本可通过**脚本操作**调用，脚本操作是一种配置选项，可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-某些本机 Java 组件（如 Mahout 和 Cascading）可以在群集上作为 Java 存档 (JAR) 文件运行。 可以通过 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure Blob 存储，然后提交到 HDInsight 群集。 有关详细信息，请参阅[以编程方式提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)。
+某些本机 Java 组件（如 Mahout 和 Cascading）可以在群集上作为 Java 存档 (JAR) 文件运行。 可以通过 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure 存储，然后提交到 HDInsight 群集。 有关详细信息，请参阅[以编程方式提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)。
 
 > [!NOTE]
 > 如果在将 JAR 文件部署到 HDInsight 群集或调用 HDInsight 群集上的 JAR 文件时遇到问题，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。

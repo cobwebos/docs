@@ -13,12 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 3/10/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: f517a649a6c6aa65b350767bc66cf4d60c7988b5
-ms.openlocfilehash: 9a114e954d59dcecaf3310e024428770bc4a2349
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 9d9c56697a022fac2ad84b7688445cad3e489658
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -57,40 +57,20 @@ ms.lasthandoff: 02/24/2017
 * 只有特定的操作系统版本才支持使用 Azure 备份服务备份虚拟机。
 * 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 (DC) VM。 阅读有关[还原多 DC 域控制器](backup-azure-restore-vms.md#restoring-domain-controller-vms)的详细信息。
 * 仅支持通过 PowerShell 还原采用以下特殊网络配置的虚拟机。 还原操作完成后，在 UI 中使用还原工作流创建的虚拟机将不采用这些网络配置。 若要了解详细信息，请参阅[还原采用特殊网络配置的 VM](backup-azure-restore-vms.md#restoring-vms-with-special-network-configurations)。
-  * 采用负载平衡器配置的虚拟机（内部和外部）
+  * 采用负载均衡器配置的虚拟机（内部和外部）
   * 使用多个保留 IP 地址的虚拟机
   * 使用多个网络适配器的虚拟机
 
 ## <a name="create-a-backup-vault-for-a-vm"></a>为 VM 创建备份保管库
 备份保管库是存储所有按时间创建的备份和恢复点的实体。 备份保管库还包含将应用到要备份的虚拟机的备份策略。
 
+> [!IMPORTANT]
+> 从 2017 年 3 月开始，无法再使用经典门户来创建备份保管库。 仍支持现有备份保管库，并且可以[使用 Azure PowerShell 创建备份保管库](./backup-client-automation-classic.md#create-a-backup-vault)。 不过，Microsoft 建议你为所有部署创建恢复服务保管库，因为将来只会对恢复服务保管库进行增强。
+
+
 下图显示了各种 Azure 备份实体之间的关系：    ![Azure 备份实体和关系](./media/backup-azure-vms-prepare/vault-policy-vm.png)
 
-创建备份保管库的步骤：
 
-1. 登录到 [Azure 门户](http://manage.windowsazure.com/)。
-2. 在 Azure 门户中，单击“**新建** > **混合集成** > **备份**”。 单击“**备份**”时，会自动切换到经典门户（在“注释”之后显示）。
-
-    ![Ibiza 门户](./media/backup-azure-vms-prepare/Ibiza-portal-backup01.png)
-
-   > [!NOTE]
-   > 如果上次在经典门户中使用订阅，你的订阅可能会在经典门户中打开。 在此情况下，若要创建备份保管库，请单击“**新建**”“ > **数据服务** > ”“**恢复服务**”“ > **备份保管库** > ”“**快速创建**”（请参见下图）。
-   >
-   >
-
-    ![创建备份保管库](./media/backup-azure-vms-prepare/backup_vaultcreate.png)
-3. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。
-4. 在“区域” 中，为保管库选择地理区域。 保管库必须与你要保护的虚拟机位于同一区域中。 如果你在多个区域中具有虚拟机，则必须在每个区域中创建备份保管库。 无需指定存储帐户即可存储备份数据 — 备份保管库和 Azure 备份服务会自动处理这种情况。
-5. 在“**订阅**”中，选择要与备份保管库关联的订阅。 仅当组织帐户与多个 Azure 订阅关联时，才会有多个选项。
-6. 单击“**创建保管库**”。 创建备份保管库可能需要一段时间。 可以在门户底部监视状态通知。
-
-    ![创建保管库 toast 通知](./media/backup-azure-vms-prepare/creating-vault.png)
-7. 一条消息将确认已成功创建保管库。 该保管库将在“**恢复服务**”页中以“**活动**”状态列出。 确保在创建保管库后立即选择适当的存储冗余选项。 阅读有关[在备份保管库中设置存储冗余选项](backup-configure-vault.md#create-a-recovery-services-vault)的更多内容。
-
-    ![备份保管库列表](./media/backup-azure-vms-prepare/backup_vaultslist.png)
-8. 单击备份保管库将转到“**快速启动**”页，其中会显示 Azure 虚拟机的备份说明。
-
-    ![“仪表板”页中的虚拟机备份说明](./media/backup-azure-vms-prepare/vmbackup-instructions.png)
 
 ## <a name="network-connectivity"></a>网络连接
 为了管理 VM 快照，备份扩展需要连接 Azure 公共 IP 地址。 如果未建立适当的 Internet 连接，虚拟机的 HTTP 请求将会超时，并且备份操作将会失败。 如果你的部署中配置了访问限制（如通过网络安全组 (NSG)），请选择其中一个选项来提供备份流量的明确路径：

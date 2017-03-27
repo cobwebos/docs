@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 69b94c93ad3e9c9745af8485766b4237cac0062c
-ms.openlocfilehash: 680c3dd7bbc5ac86d021e119b31352cbfb3451f7
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f686685138625a53971f1fc5fc754fd22c9d67b2
+ms.lasthandoff: 03/18/2017
 
 ---
 
@@ -26,13 +27,13 @@ ms.openlocfilehash: 680c3dd7bbc5ac86d021e119b31352cbfb3451f7
 
 你在美国西部和东亚区域分别创建了网站的实例。 其中一个实例未通过流量管理器探测的运行状况检查。 应用程序流量定向到正常的区域。 这种故障转移是意料之中的，但由于流量现在要传送到远方区域，这种延迟会给性能造成问题。
 
-## <a name="how-traffic-manager-works"></a>流量管理器的工作方式
+## <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
 流量管理器对网站产生的唯一性能影响是初始 DNS 查找。 针对流量管理器配置文件名称发出的 DNS 请求由托管 trafficmanager.net 区域的 Microsoft DNS 根服务器处理。 流量管理器根据流量管理器策略和探测结果填充并定期更新 Microsoft DNS 根服务器。 因此，即使在初始 DNS 查找期间，也不会将 DNS 查询发送到流量管理器。
 
 流量管理器由多个组件构成：DNS 名称服务器、API 服务、存储层和终结点监视服务。 如果流量管理器服务组件发生故障，与流量管理器配置文件关联的 DNS 名称不会受到影响。 Microsoft DNS 服务器中的记录将保留不变。 但是，终结点监视和 DNS 更新不会发生。 因此，当主站点关闭时，流量管理器无法将 DNS 更新为指向故障转移站点。
 
-DNS 名称解析速度将会加快，结果将被缓存。 初始 DNS 查找速度取决于客户端用于名称解析的 DNS 服务器。 通常，客户端可在大约 50 毫秒内完成一个 DNS 查找。 查找结果按照 DNS 生存时间 (TTL) 的持续时间缓存。 流量管理器的默认 TTL 为 300 秒。
+DNS 名称解析速度将会加快，结果将被缓存。 初始 DNS 查找速度取决于客户端用于名称解析的 DNS 服务器。 通常，客户端可在大约&50; 毫秒内完成一个 DNS 查找。 查找结果按照 DNS 生存时间 (TTL) 的持续时间缓存。 流量管理器的默认 TTL 为 300 秒。
 
 流量不会通过流量管理器。 完成 DNS 查找后，客户端便获得了网站实例的 IP 地址。 客户端直接连接到该地址，而不通过流量管理器。 选择的流量管理器策略对 DNS 性能没有影响。 但是，“性能”路由方法可能会对应用程序体验产生负面影响。 例如，如果策略将来自北美的流量重定向到亚洲托管的实例，与这些会话之间的网络延迟可能会造成性能问题。
 
@@ -85,10 +86,5 @@ DNS 名称解析速度将会加快，结果将被缓存。 初始 DNS 查找速�
 [流量管理器上的操作（REST API 参考）](http://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Azure 流量管理器 cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=400769)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

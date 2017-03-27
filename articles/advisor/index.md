@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 5ce8f9d30ef45c2afcae315e977cc508e6bc4e8c
-ms.openlocfilehash: 790a19516b9494b39d61b7a5fd841e9632666123
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 697bedb4f6ca8ee609247c8d869d7872333e5a62
+ms.lasthandoff: 03/16/2017
 
 ---
 # <a name="azure-advisor-documentation"></a>Azure 顾问文档
@@ -60,8 +61,20 @@ Azure 顾问是一种个性化的云顾问，可帮助遵循最佳做法来优�
     </li>
 </ul>
 
+---
 
-
-<!--HONumber=Feb17_HO2-->
-
+<h2>引用</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/advisor">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
 

@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: e1d2a0b9-1659-4fab-921e-4a8990cbb30a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,6 +19,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: b3c56871ec23c7595d18006943be19c38d2fb5c9
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -226,9 +228,4 @@ GraySort 是一个基准排序，其指标为在给巨量数据（通常至少 1
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

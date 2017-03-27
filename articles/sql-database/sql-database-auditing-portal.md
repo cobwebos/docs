@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/25/2017
-ms.author: ronitr; giladm
+ms.author: ronitr;giladm
 translationtype: Human Translation
-ms.sourcegitcommit: fb56545df42e997e5960eec73ae59e9334731392
-ms.openlocfilehash: 8c6fa92764cb720a0c71a24d839d3e73ce3ba447
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: d1350081aa4f70660802c61a77250496e1e7fc2a
+ms.lasthandoff: 03/10/2017
 
 
 ---
 
 # <a name="configure-and-manage-sql-database-auditing-in-the-azure-portal"></a>在 Azure 门户中配置和管理 SQL 数据库审核
 
-以下部分介绍如何使用 Azure 门户配置和管理审核。 若要使用 PowerShell 配置和管理审核，请参阅[在 PowerShell 中配置审核](sql-database-auditing-powershell.md)。 若要使用 REST API 配置和管理审核，请参阅[使用 REST API 配置审核](sql-database-auditing-rest.md)。
+以下部分介绍了如何使用 Azure 门户配置和管理审核。 若要使用 PowerShell 配置和管理审核，请参阅[在 PowerShell 中配置审核](sql-database-auditing-powershell.md)。 
 
 有关审核的概述，请参阅 [SQL 数据库审核](sql-database-auditing.md)。
 
 ## <a name="configure-blob-auditing"></a>配置 blob 审核
 
-1. 启动 [Azure 门户](https://portal.azure.com)（https://portal.azure.com）。
+1. 启动 Azure 门户 [https://portal.azure.com](https://portal.azure.com)。
 2. 导航到要审核的 SQL 数据库/SQL Server 的“设置”边栏选项卡。 在“设置”边栏选项卡中，选择“审核和威胁检测”。
 
     ![导航窗格](./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png)
-3. 在“数据库审核配置”边栏选项卡中，可以选中“从服务器继承设置”复选框，指定根据数据库服务器的设置对数据库进行审核。 如果选中此选项，将会看到“查看服务器审核设置”链接，可以使用该链接在此上下文中查看或修改服务器审核设置。
+3. 在“数据库审核配置”边栏选项卡中，可以选中“从服务器继承设置”复选框，指定根据服务器的设置对数据库进行审核。 如果选中此选项，你会看到“查看服务器审核设置”链接，可以使用该链接在此上下文中查看或修改服务器审核设置。
 
     ![导航窗格][2]
 4. 若要在数据库级别启用 blob 审核（结合服务器级审核，或者取代服务器级审核），请**取消选中**“从服务器继承审核设置”选项，将审核设置为“打开”，然后选择“Blob”审核类型。
@@ -45,7 +45,7 @@ ms.lasthandoff: 03/02/2017
 
     <a id="storage-screenshot"></a>
     ![导航窗格][4]
-6. 若要自定义已审核的事件，可通过 [PowerShell](sql-database-auditing-powershell.md) 或 [REST API](sql-database-auditing-rest.md) 执行此操作。
+6. 若要自定义已审核的事件，可通过 PowerShell 或 REST API 执行此操作。
 7. 配置审核设置后，可以打开新的“威胁检测(预览版)”功能，并配置电子邮件，以接收安全警报。 使用威胁检测可以接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关更多详细信息，请参阅[威胁检测](sql-database-threat-detection.md)。
 8. 单击“保存” 。
 
@@ -56,9 +56,9 @@ ms.lasthandoff: 03/02/2017
 > 在设置**表审核**之前，请检查使用的是否为[“下层客户端”](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)。 此外，如果有严格的防火墙设置，请注意，在启用表审核时[会更改数据库的 IP 终结点](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)。
 >
 
-1. 启动 [Azure 门户](https://portal.azure.com)（https://portal.azure.com）。
+1. 启动 Azure 门户 [https://portal.azure.com](https://portal.azure.com)。
 2. 导航到要审核的 SQL 数据库/SQL Server 的“设置”边栏选项卡。 在“设置”边栏选项卡中，选择“审核和威胁检测”（[请参阅“Blob 审核”部分中的屏幕截图](#auditing-screenshot)）。
-3. 在“数据库审核配置”边栏选项卡中，可以选中“从服务器继承设置”复选框，指定根据数据库服务器的设置对数据库进行审核。 如果选中此选项，将会看到“查看服务器审核设置”链接，可以使用该链接在此上下文中查看或修改服务器审核设置。
+3. 在“数据库审核配置”边栏选项卡中，可以选中“从服务器继承设置”复选框，指定根据服务器的设置对数据库进行审核。 如果选中此选项，你会看到“查看服务器审核设置”链接，可以使用该链接在此上下文中查看或修改服务器审核设置。
 
     ![导航窗格][2]
 4. 如果不想要从服务器继承审核设置，请**取消选中**“从服务器继承审核设置”选项，将审核设置为“打开”，然后选择“表”审核类型。
@@ -189,7 +189,6 @@ Blob 审核日志以 blob 文件集合的形式保存在名为“**sqldbauditlog
 ## <a name="next-steps"></a>后续步骤
 
 * 若要使用 PowerShell 配置和管理审核，请参阅[使用 PowerShell 配置数据库审核](sql-database-auditing-powershell.md)。
-* 若要使用 REST API 配置和管理审核，请参阅[使用 REST API 配置数据库审核](sql-database-auditing-rest.md)。
 * 有关审核的概述，请参阅[数据库审核](sql-database-auditing.md)。
 
 

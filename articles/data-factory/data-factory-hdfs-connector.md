@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 03/13/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: d49d7e6b4a9485c2371eb02ac8068adfde9bad6b
-ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 8a6050fc52407ab6b974a9698d970248062665c1
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,6 +28,10 @@ ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
 
 ## <a name="enabling-connectivity"></a>启用连接
 数据工厂服务支持通过数据管理网关连接到本地 HDFS。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。 使用网关连接到 HDFS，即使它托管于 Azure IaaS VM 中也是如此。
+
+> [!NOTE]
+> 请确保数据管理网关可以访问**所有**[名称节点服务器]:[名称节点端口]和 Hadoop 群集的[数据节点服务器]:[数据节点端口]。 默认[名称节点端口]为 50070，默认[数据节点端口]为 50075。
+>
 
 虽然可在同一台本地计算机或 Azure VM 上将网关安装为 HDFS，但是我们建议在单独的计算机/Azure IaaS VM 上安装网关。 在单独的计算机上安装网关可减少资源争用和提高性能。 在单独的计算机上安装网关时，该计算机应能访问具有 HDFS 的计算机。
 
@@ -267,7 +272,7 @@ ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
 * 选项 1：[使网关计算机加入 Kerberos 领域](#kerberos-join-realm)
 * 选项 2：[启用 Windows 域和 Kerberos 领域之间的相互信任](#kerberos-mutual-trust)
 
-### <a name="a-namekerberos-join-realmaoption-1-make-gateway-machine-join-kerberos-realm"></a><a name="kerberos-join-realm"></a>选项 1：使网关计算机加入 Kerberos 领域
+### <a name="kerberos-join-realm"></a>选项 1：使网关计算机加入 Kerberos 领域
 
 #### <a name="requirement"></a>要求：
 
@@ -277,7 +282,7 @@ ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
 
 **在网关计算机上：**
 
-1.  运行 **Ksetup** 实用工具以配置 Kerberos KDC 服务器和领域。
+1.    运行 **Ksetup** 实用工具以配置 Kerberos KDC 服务器和领域。
 
     由于 Kerberos 领域不同于 Windows 域，计算机必须配置为工作组的成员。 这可以通过按如下所示设置 Kerberos 领域和添加 KDC 服务器来实现。 根据需要将 *REALM.COM* 替换为自己的领域。
 
@@ -286,7 +291,7 @@ ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
 
     执行这 2 个命令后，**重启**计算机。
 
-2.  使用 **Ksetup** 命令验证配置。 输出应如下所示：
+2.    使用 **Ksetup** 命令验证配置。 输出应如下所示：
 
             C:> Ksetup
             default realm = REALM.COM (external)
@@ -297,11 +302,11 @@ ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
 
 * 使用 **Windows 身份验证**配置 HDFS 连接器，以及用于连接到 HDFS 数据源的 Kerberos 主体名称和密码。 查看配置详细信息中的 [HDFS 链接服务属性](#hdfs-linked-service-properties)部分。
 
-### <a name="a-namekerberos-mutual-trustaoption-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>选项 2：启用 Windows 域和 Kerberos 领域之间的相互信任
+### <a name="kerberos-mutual-trust"></a>选项 2：启用 Windows 域和 Kerberos 领域之间的相互信任
 
 #### <a name="requirement"></a>要求：
-*   网关计算机必须加入 Windows 域。
-*   需要可更新域控制器的设置的权限。
+*    网关计算机必须加入 Windows 域。
+*    需要可更新域控制器的设置的权限。
 
 #### <a name="how-to-configure"></a>如何配置：
 
@@ -310,7 +315,7 @@ ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
 
 **在 KDC 服务器上：**
 
-1.  编辑 **krb5.conf** 文件中的 KDC 配置，以便让 KDC 信任引用以下配置模板的 Windows 域。 默认情况下，该配置位于 **/etc/krb5.conf**。
+1.    编辑 **krb5.conf** 文件中的 KDC 配置，以便让 KDC 信任引用以下配置模板的 Windows 域。 默认情况下，该配置位于 **/etc/krb5.conf**。
 
             [logging]
              default = FILE:/var/log/krb5libs.log
@@ -346,26 +351,26 @@ ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
               REALM.COM = .
              }
 
-        **Restart** the KDC service after configuration.
+        配置后**重新启动** KDC 服务。
 
-2.  使用以下命令准备 KDC 服务器中名为 **krbtgt/REALM.COM@AD.COM** 的主体：
+2.    使用以下命令准备 KDC 服务器中名为 **krbtgt/REALM.COM@AD.COM** 的主体：
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3.  在 **hadoop.security.auth_to_local** HDFS 服务配置文件中，添加 `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`。
+3.    在 **hadoop.security.auth_to_local** HDFS 服务配置文件中，添加 `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`。
 
 **在域控制器上：**
 
-1.  运行以下 **Ksetup** 命令添加一个领域条目：
+1.    运行以下 **Ksetup** 命令添加一个领域条目：
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  建立从 Windows 域到 Kerberos 领域的信任关系。 [password] 是主体 **krbtgt/REALM.COM@AD.COM** 的密码。
+2.    建立从 Windows 域到 Kerberos 领域的信任关系。 [password] 是主体 **krbtgt/REALM.COM@AD.COM** 的密码。
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.  选择在 Kerberos 中使用的加密算法。
+3.    选择在 Kerberos 中使用的加密算法。
 
     1. 转到“服务器管理器”>“组策略管理”>“域”>“组策略对象”>“默认或活动的域策略”，单击“编辑”。
 
@@ -379,7 +384,7 @@ ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  在域帐户和 Kerberos 主体之间创建映射，以便在 Windows 域中使用 Kerberos 主体。
+4.    在域帐户和 Kerberos 主体之间创建映射，以便在 Windows 域中使用 Kerberos 主体。
 
     1. 启动管理工具 >“Active Directory 用户和计算机”。
 
@@ -411,7 +416,7 @@ ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | folderPath |文件夹路径。 示例：`myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
-| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称将采用以下格式： <br/><br/>Data.<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
+| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称将采用以下格式： <br/><br/>Data<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 示例：folderPath 可针对每小时的数据参数化。 |否 |
 | 格式 | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](#specifying-textformat)、[Json 格式](#specifying-jsonformat)、[Avro 格式](#specifying-avroformat)、[Orc 格式](#specifying-orcformat)和 [Parquet 格式](#specifying-parquetformat)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**；支持的级别为：**Optimal** 和 **Fastest**。 有关详细信息，请参阅[指定压缩](#specifying-compression)部分。 |否 |
@@ -475,9 +480,4 @@ ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 03/12/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 9cd4fa1c5927fb85a406a99bf5d2dacbb0fcbb2f
-ms.openlocfilehash: 0cdc48927c22292a4637a4e40b4ecd5be5e4478e
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 08dfdb54db0655bc025f8c268988804b069f70c6
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -38,7 +39,7 @@ ms.openlocfilehash: 0cdc48927c22292a4637a4e40b4ecd5be5e4478e
 > * 生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
 > * 名称长度不应超过 260 个字符。
 > * 支持在媒体服务中处理的最大文件大小存在限制。 有关文件大小限制的详细信息，请参阅[此主题](media-services-quotas-and-limitations.md)。
->
+> * 不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 > 
 
 在创建资产时，可以指定以下加密选项。 
@@ -60,13 +61,8 @@ ms.openlocfilehash: 0cdc48927c22292a4637a4e40b4ecd5be5e4478e
 本主题说明如何使用媒体服务.NET SDK 以及媒体服务.NET SDK 扩展将文件上传到媒体服务资产中。
 
 ## <a name="upload-a-single-file-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 上传单个文件
-以下示例代码使用 .NET SDK 执行以下任务： 
+以下示例代码使用 .NET SDK 上载单个文件。 AccessPolicy 和 Locator 由 Upload 函数创建和销毁。 
 
-* 创建空资产。
-* 创建要与资产关联的 AssetFile 实例。
-* 创建用于定义权限以及资产访问持续时间的 AccessPolicy 实例。
-* 创建用于提供资产访问权限的 Locator 实例。
-* 将单个媒体文件上传到媒体服务。 
 
         static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
         {
@@ -77,29 +73,18 @@ ms.openlocfilehash: 0cdc48927c22292a4637a4e40b4ecd5be5e4478e
             }
 
             var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
-            IAsset inputAsset = _context.Assets.Create(assetName, assetCreationOptions); 
+            IAsset inputAsset = _context.Assets.Create(assetName, assetCreationOptions);
 
             var assetFile = inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));
-
-            Console.WriteLine("Created assetFile {0}", assetFile.Name);
-
-            var policy = _context.AccessPolicies.Create(
-                                    assetName,
-                                    TimeSpan.FromDays(30),
-                                    AccessPermissions.Write | AccessPermissions.List);
-
-            var locator = _context.Locators.CreateLocator(LocatorType.Sas, inputAsset, policy);
 
             Console.WriteLine("Upload {0}", assetFile.Name);
 
             assetFile.Upload(singleFilePath);
             Console.WriteLine("Done uploading {0}", assetFile.Name);
 
-            locator.Delete();
-            policy.Delete();
-
             return inputAsset;
         }
+
 
 ## <a name="upload-multiple-files-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 上传多个文件
 以下代码演示如何创建资产及上传多个文件。
@@ -182,7 +167,7 @@ ms.openlocfilehash: 0cdc48927c22292a4637a4e40b4ecd5be5e4478e
 * 将 NumberOfConcurrentTransfers 从默认值 2 增加到更高的值（如 5）。 设置此属性将影响 **CloudMediaContext** 的所有实例。 
 * 将 ParallelTransferThreadCount 保留为默认值 10。
 
-## <a name="a-idingestinbulkaingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>使用媒体服务 .NET SDK 批量引入资产
+## <a id="ingest_in_bulk"></a>使用媒体服务 .NET SDK 批量引入资产
 上传大型资产文件可能在资产创建过程中形成瓶颈。 批量引入资产（简称“批量引入”）涉及到将资产创建过程与上传过程分离。 若要使用批量引入方法，请创建一个描述资产及其关联文件的清单 (IngestManifest)。 然后，你可以使用所选上传方法将关联的文件上传到该清单的 Blob 容器。 Microsoft Azure 媒体服务将会监视与清单关联的 Blob 容器。 文件上传到 Blob 容器后，Microsoft Azure 媒体服务将基于清单 (IngestManifestAsset) 中资产的配置完成资产创建过程。
 
 若要创建新的 IngestManifest，请调用通过 CloudMediaContext 中的 IngestManifests 集合公开的 Create 方法。 此方法将使用你提供的清单名称创建一个新的 IngestManifest。
@@ -314,10 +299,5 @@ ms.openlocfilehash: 0cdc48927c22292a4637a4e40b4ecd5be5e4478e
 将资产上传到媒体服务后，请转到[如何获取媒体处理器][How to Get a Media Processor]主题。
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

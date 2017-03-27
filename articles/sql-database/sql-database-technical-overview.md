@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 12/20/2016
+ms.date: 03/17/2017
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: ae493fbb3690e80eef4b37e0315d1715a924e568
-ms.openlocfilehash: 7c70c737fb41e8c1c5a339462fa77a8bc7318f7e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: c505844cc2b7c745a1106b3c446833fb206ca98a
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>什么是 SQL 数据库？ SQL 数据库简介
 SQL 数据库是 Microsoft 云中的关系数据库服务，它基于行业领先的 Microsoft SQL Server 引擎，能够处理任务关键型工作负荷。 SQL 数据库在多个服务级别提供可预测的性能，可在不停机的情况下进行动态伸缩，提供业务连续性和数据保护以及近乎实时的管理功能。 借助这些功能，用户可将注意力集中在如何快速进行应用开发、加快推向市场，而不需要投入宝贵的时间和资源来管理虚拟机与基础结构。 SQL 数据库基于 [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) 引擎，因此支持现有的 SQL Server 工具、库和 API。 因此，无需学习新的技能，就能轻松开发新解决方案，迁移现有 SQL Server 解决方案，将现有 SQL Server 解决方案扩展到 Microsoft 云中。
 
-本文将介绍 SQL 数据库在性能、缩放性和易管理性方面的核心概念与功能，并提供链接让你进一步了解详细信息。 如果已准备好学习实践教程，请转到[创建第一个 SQL 数据库](sql-database-get-started.md)或[创建弹性池](sql-database-elastic-pool-manage-portal.md)。 此视频提供了简短演示。
+本文将介绍 SQL 数据库在性能、缩放性和易管理性方面的核心概念与功能，并提供链接让你进一步了解详细信息。 请参阅这些快速入门，以便尽快入门：
+ - [在 Azure 门户中创建 SQL 数据库](sql-database-get-started-portal.md)  
+ - [使用 Azure CLI 创建 SQL 数据库](sql-database-get-started-cli.md)
+ - [使用 PowerShell 创建 SQL 数据库](sql-database-get-started-powershell.md)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-create-DBs-in-seconds/player]
-> 
-> 
+如需一组 Azure CLI 和 PowerShell 的示例，请参阅：
+ - [适用于 Azure SQL 数据库的 Azure CLI 示例](sql-database-cli-samples.md)
+ - [适用于 Azure SQL 数据库的 Azure PowerShell 示例](sql-database-powershell-samples.md)
 
 ## <a name="adjust-performance-and-scale-without-downtime"></a>无需停机即可调整性能和规模
 Azure SQL 数据库服务提供三个服务层：基本、标准和高级。 每个服务层提供[不同级别的性能和功能](sql-database-service-tiers.md)，以支持从轻型到重型的数据库工作负荷。 可以在小型数据库中构建第一个应用，每个月只需花费少量的资金。然后可以根据解决方案的需要，随时手动或以编程方式[更改服务层](sql-database-service-tiers.md)。 这不会给应用或客户造成任何停机。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。

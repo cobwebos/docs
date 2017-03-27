@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: f812ff8fb2b32f89e24d640e0eae8f2da9858a18
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 97ae17912eaa7508e3ae1315800408664a340837
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/28/2017
 
 使用以下信息安装和配置解决方案。
 
- - 在 OMS 中使用评估解决方案之前，必须先安装该解决方案。 若要了解有关安装解决方案的详细信息，请参阅[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)。
+ - 在 OMS 中使用评估解决方案之前，必须先安装该解决方案。 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview)或按照[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中的说明，安装解决方案。
 
  - 将解决方案添加到工作区以后，仪表板上的“System Center Operations Manager 评估”磁贴会显示“需要更多的配置”这样一条消息。 单击该磁贴，然后按照页面中所述的配置步骤操作
 
@@ -63,7 +63,7 @@ System Center Operations Manager 评估使用启用的服务器，通过 Windows
 
 下表显示了 System Center Operations Manager 评估的数据收集方法，以及代理收集数据的频率。
 
-| 平台 | 直接代理 | SCOM 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |  ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png) | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  |  ![是](./media/log-analytics-scom-assessment/oms-bullet-green.png) | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | 七天 |
 

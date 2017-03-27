@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: da949459f734ea08527fe2380ab2a6a06e6976e7
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: aebe0b74c952045375e264bed88d33d936e34b92
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -146,6 +147,11 @@ ServerName/DirectoryName 格式是此属性的首选格式，因为它可在连�
 “Domino 服务器时区”参数定义 Domino 服务器的位置。
 
 必须要有此配置选项才能支持增量导入操作，因为它可让同步服务判断最后两次导入之间的更改。
+
+>[!Note]
+从 2017 年 3 月更新开始，“全局参数”屏幕提供在删除用户的过程中删除用户的邮件数据库的选项。
+
+![删除用户的邮箱](./media/active-directory-aadconnectsync-connector-domino/AdminP.png)
 
 #### <a name="import-settings-method"></a>导入设置和方法
 “完整导入执行方法”具有以下选项：
@@ -320,7 +326,7 @@ Lotus Domino 连接器在资源保留数据库中执行创建、更新和删除�
 ### <a name="mail-in-databases"></a>邮件数据库
 邮件数据库是旨在接收邮件的数据库。 此数据库是未与任何特定 Lotus Domino 用户帐户相关联（也就是没有自己的 ID 文件和密码）的 Lotus Domino 邮箱。 邮件数据库具有关联的唯一 UserID（“短名称”），并有自己的电子邮件地址。
 
-如果需要可让不同用户共享的单个邮箱，且此邮箱拥有自己的电子邮件地址（例如：group@contoso.com),，则创建邮件数据库。 此邮箱通过其访问控制列表 (ACL) 来控制访问，此列表中包含允许其打开邮箱的 Notes 用户的名称。
+如果需要可让不同用户共享的单个邮箱，且此邮箱拥有自己的电子邮件地址（例如：group@contoso.com），则创建邮件数据库。 此邮箱通过其访问控制列表 (ACL) 来控制访问，此列表中包含允许其打开邮箱的 Notes 用户的名称。
 
 有关必需属性的列表，请参阅本文后面的[必需的属性](#mandatory-attributes)部分。
 
@@ -489,9 +495,4 @@ Domino 连接器依赖**目录助手**功能来查找辅助通讯簿。 如果�
 
 ## <a name="troubleshooting"></a>故障排除
 * 有关如何启用记录来排查连接器问题的信息，请参阅[如何启用连接器的 ETW 跟踪](http://go.microsoft.com/fwlink/?LinkId=335731)。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

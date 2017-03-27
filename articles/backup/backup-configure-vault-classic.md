@@ -1,6 +1,6 @@
 ---
-title: "使用经典部署模型将 Windows Server 或客户端备份到 Azure | Microsoft Docs"
-description: "通过创建备份保管库、下载凭据、安装备份代理并完成文件和文件夹的初始备份，将 Windows 服务器或客户端备份到 Azure。"
+title: "将 Windows 服务器或工作站备份到 Azure（经典模型）| Microsoft 文档"
+description: "将 Windows 服务器或客户端备份到 Azure 中的备份保管库。 了解有关使用 Azure 备份代理将文件和文件夹保护到备份保管库的基础知识。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,24 +13,24 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 3/10/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: a7b55e3949cf8406f7c62e9dfd6cc1567d3a5996
+ms.lasthandoff: 03/14/2017
 
 
 ---
-# <a name="back-up-a-windows-server-or-client-to-azure-using-the-classic-deployment-model"></a>使用经典部署模型将 Windows Server 或客户端备份到 Azure
+# <a name="back-up-a-windows-server-or-workstation-to-azure-using-the-classic-portal"></a>使用经典门户将 Windows 服务器或工作站备份到 Azure
 > [!div class="op_single_selector"]
 > * [经典门户](backup-configure-vault-classic.md)
 > * [Azure 门户](backup-configure-vault.md)
 >
 >
 
-本文介绍你需要遵循哪些过程来准备你的环境，以及将 Windows Server（或客户端）备份到 Azure。 此外，还说明了部署备份解决方案的注意事项。 如果你对 Azure 备份感兴趣，本文可引导你快速完成相关过程。
+本文介绍了在准备你的环境以及将 Windows 服务器（或工作站）备份到 Azure 时要遵循的步骤。 此外，还说明了部署备份解决方案的注意事项。 如果你对 Azure 备份感兴趣，本文可引导你快速完成相关过程。
 
-![创建保管库](./media/backup-configure-vault-classic/initial-backup-process.png)
 
 > [!IMPORTANT]
 > Azure 具有用于创建和处理资源的两个不同的部署模型：Resource Manager 模型和经典模型。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
@@ -40,49 +40,14 @@ ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
 ## <a name="before-you-start"></a>开始之前
 若要将服务器或客户端备份到 Azure，你需要一个 Azure 帐户。 如果你没有帐户，只需几分钟的时间就能创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="step-1-create-a-backup-vault"></a>步骤 1：创建备份保管库
+## <a name="create-a-backup-vault"></a>创建备份保管库
 若要从服务器或客户端备份文件和文件夹，你需要在要存储数据的地理区域内创建一个备份保管库。
 
-### <a name="to-create-a-backup-vault"></a>创建备份保管库的步骤
-1. 登录到[经典门户](https://manage.windowsazure.com/)。
-2. 单击“**新建**”“ > **数据服务** > ”“**恢复服务**”“ > **备份保管库**”，然后选择“**快速创建**”。
-3. 对于“**名称**”参数，请输入备份保管库的友好名称。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。 此名称必须是每个订阅的唯一名称。
-4. 对于“**区域**”参数，请选择备份保管库的地理区域。 此选项决定了备份数据要发送到的地理区域。 选择靠近你所在位置的地理区域可以减少备份到 Azure 时的网络延迟。
-5. 单击“**创建保管库**”。
+> [!IMPORTANT]
+> 从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。 现有备份保管库仍然受支持，并且可以[使用 Azure PowerShell 创建备份保管库](./backup-client-automation-classic.md#create-a-backup-vault)。 不过，Microsoft 建议你为所有部署创建恢复服务保管库，因为将来只会对恢复服务保管库进行增强。
 
-    ![创建备份保管库](./media/backup-configure-vault-classic/demo-vault-name.png)
 
-    创建备份保管库可能需要一段时间。 若要检查状态，可以监视经典门户底部的通知。
-
-    在创建备份保管库后，将显示一条消息通知你已成功创建保管库。 它还会在“**恢复服务**”资源列表中显示为“**活动**”。
-
-    ![创建保管库状态](./media/backup-configure-vault-classic/recovery-services-select-vault.png)
-6. 遵循此处所述的步骤选择存储冗余选项。
-
-   > [!IMPORTANT]
-   > 确定存储冗余选项的最佳时机是在创建保管库之后，并且是在将任何计算机注册到保管库之前。 将某个项注册到保管库后，存储冗余选项将会锁定且不能修改。
-   >
-   >
-
-    若要使用 Azure 作为主要备份存储终结点（例如，从 Windows Server 备份到 Azure），请考虑选择（默认的）[异地冗余存储](../storage/storage-redundancy.md#geo-redundant-storage)选项。
-
-    如果使用 Azure 作为第三级备份存储终结点（例如，你正在使用 System Center Data Protection Manager 在本地创建本地备份复制，使用 Azure 满足长期数据保留需求），应考虑选择[本地冗余存储](../storage/storage-redundancy.md#locally-redundant-storage)。 这可以降低在 Azure 中存储数据的成本，但提供的数据持久性更低，不过，对于第三级副本是可接受的。
-
-    **选择存储冗余选项：**
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击刚刚创建的保管库。
-
-    b. 在“快速启动”页面上，选择“**配置**”。
-
-    ![配置保管库状态](./media/backup-configure-vault-classic/configure-vault.png)
-
-    c. 选择适当的存储冗余选项。
-
-    如果选择了“**本地冗余**”，则需要单击“**保存**”（因为“**异地冗余**”是默认选项）。
-
-    d.单击“下一步”。 在左侧导航窗格中单击“**恢复服务**”，以返回到恢复服务的资源列表。
-
-## <a name="step-2-download-the-vault-credential-file"></a>步骤 2：下载保管库凭据文件
+## <a name="download-the-vault-credential-file"></a>下载保管库凭据文件
 本地计算机需要先在备份保存库中通过身份验证才能将数据备份到 Azure。 身份验证是通过*保管库凭据*实现的。 从经典门户通过安全通道下载保管库凭据文件。 证书私钥不会在门户或服务中持久保存。
 
 详细了解[如何使用保管库凭据向备份服务进行身份验证](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file)。
@@ -103,7 +68,7 @@ ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
    >
    >
 
-## <a name="step-3-download-install-and-register-the-backup-agent"></a>步骤 3：下载、安装和注册备份代理
+## <a name="download-install-and-register-the-backup-agent"></a>下载、安装和注册备份代理
 创建备份保管库并下载保管库凭据文件之后，必须在每台 Windows 计算机上安装一个代理。
 
 ### <a name="to-download-install-and-register-the-agent"></a>下载、安装和注册代理
@@ -130,9 +95,10 @@ ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
     > 如果你丢失或忘记了通行短语，Microsoft 无法帮助你恢复备份数据。 加密通行短语由你拥有，Microsoft 看不到你使用的通行短语。 请将该文件保存在安全位置，因为在恢复操作期间需要用到它。
     >
     >
+
 11. 设置加密密钥后，请将“**启动 Microsoft Azure 恢复服务代理**”复选框保持选中状态，然后单击“**关闭**”。
 
-## <a name="step-4-complete-the-initial-backup"></a>步骤 4：完成初始备份
+## <a name="complete-the-initial-backup"></a>完成初始备份
 初始备份包括两个关键任务：
 
 * 创建备份计划
@@ -161,6 +127,7 @@ ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
    > 有关如何指定备份计划的详细信息，请参阅 [使用 Azure 备份来取代磁带基础结构](backup-azure-backup-cloud-as-tape.md)一文。
    >
    >
+
 8. 在“**选择保留策略**”页上，为备份复制选择“**保留策略**”。
 
     保留策略指定备份可以存储的时间长短。 你可以根据备份的创建时间指定不同的保留策略，而不只是为所有备份点指定一个“通用的策略”。 你可以根据需要修改每日、每周、每月和每年保留策略。
@@ -205,9 +172,4 @@ ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
 * [备份 IaaS VM](backup-azure-vms-prepare.md)
 * [使用 Microsoft Azure 备份服务器将工作负荷备份到 Azure](backup-azure-microsoft-azure-backup.md)
 * [使用 DPM 将工作负荷备份到 Azure](backup-azure-dpm-introduction.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

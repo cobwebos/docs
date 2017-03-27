@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 310051e5-5e2f-4be2-9780-2e8c0430e52d
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -18,6 +19,7 @@ ms.author: rashimg;jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 35e11e1f48abd9b8ed8dbc9a00c2d752533cdd75
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -37,10 +39,5 @@ ms.openlocfilehash: 35e11e1f48abd9b8ed8dbc9a00c2d752533cdd75
 * [在 HDInsight 上基于 Linux 的 Hadoop 中访问 YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [在基于 Linux 的 HDInsight 上为 Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Azure HDInsight 上的 Hadoop 组件发行说明](hdinsight-release-notes.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

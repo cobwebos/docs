@@ -17,20 +17,20 @@ ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 0aa12ea5fd7df7bee57aa7bcacd4c1fe4d6542b8
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 1bb49c0c03a3103194d068b511fa92ecb996caf3
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建具有静态公共 IP 地址的 VM
 
 > [!div class="op_single_selector"]
-- [Azure 门户](virtual-network-deploy-static-pip-arm-portal.md)
-- [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-- [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
-- [模板](virtual-network-deploy-static-pip-arm-template.md)
-- [PowerShell（经典）](virtual-networks-reserved-public-ip.md)
+> * [Azure 门户](virtual-network-deploy-static-pip-arm-portal.md)
+> * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
+> * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
+> * [模板](virtual-network-deploy-static-pip-arm-template.md)
+> * [PowerShell（经典）](virtual-networks-reserved-public-ip.md)
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/28/2017
 ## <a name="deploy-the-template-by-using-the-azure-cli"></a>使用 Azure CLI 部署模板
 若要使用 Azure CLI 部署该模板，请完成以下步骤：
 
-1. 如果从未用过 Azure CLI，请遵循[如何安装和配置 Azure PowerShell](../xplat-cli-install.md) 一文中的步骤安装并配置该程序。
+1. 如果从未用过 Azure CLI，请遵循[如何安装和配置 Azure PowerShell](../cli-install-nodejs.md) 一文中的步骤安装并配置该程序。
 2. 运行 `azure config mode` 命令切换到 Resource Manager 模式，如下所示。
 
     ```azurecli

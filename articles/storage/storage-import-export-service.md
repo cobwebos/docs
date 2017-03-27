@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 787f54ca2c19d87866ede452ea1cce0b1c37f263
-ms.openlocfilehash: 50f66d229b80489e429b5db3f2c6cc5787b6884c
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: c30203120a155fd3fc431009baa3e8b318e1330f
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -249,8 +250,8 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 1. 确定要导入的数据。 导入的数据可以是本地服务器或网络共享中的目录和独立文件。  
 2. 根据数据总大小确定所需驱动器数目。 采购所需数目的 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II 或 III 硬盘驱动器。
 3. 确定目标存储帐户、容器、虚拟目录和 Blob。
-4.  确定要复制到每个磁盘驱动器的目录和/或独立文件。
-5.  为数据集和驱动器集创建 CSV 文件。
+4.    确定要复制到每个磁盘驱动器的目录和/或独立文件。
+5.    为数据集和驱动器集创建 CSV 文件。
     
     **数据集 CSV 文件**
     
@@ -270,7 +271,7 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 
     **驱动器集 CSV 文件**
 
-    驱动器集标志的值是一个 CSV 文件，其中包含要将驱动器号映射到的磁盘的列表，以便工具可以正确选择要准备的磁盘列表。 
+    驱动器集标志的值是一个 CSV 文件，其中包含要使工具可以正确选择要准备的磁盘列表，要将驱动器号映射到的磁盘的列表。 
 
     下面是驱动器集 CSV 文件的示例：
     
@@ -284,8 +285,8 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 
     详细了解如何[准备驱动器集 CSV 文件](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file)。
 
-6.  使用 [WAImportExport 工具](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip)将数据复制到一个或多个硬盘驱动器。
-7.  可以通过在驱动器集 CSV 中的 Encryption 字段内指定“Encrypt”，在硬盘驱动器上启用 BitLocker 加密。 也可以手动在硬盘驱动器上启用 BitLocker 加密，然后在运行工具时，在驱动器集 CSV 文件中指定“AlreadyEncrypted”并提供密钥。
+6.    使用 [WAImportExport 工具](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip)将数据复制到一个或多个硬盘驱动器。
+7.    可以通过在驱动器集 CSV 中的 Encryption 字段内指定“Encrypt”，在硬盘驱动器上启用 BitLocker 加密。 也可以手动在硬盘驱动器上启用 BitLocker 加密，然后在运行工具时，在驱动器集 CSV 文件中指定“AlreadyEncrypted”并提供密钥。
 
 8. 完成磁盘准备操作以后，请勿修改硬盘驱动器上的数据，也勿修改日志文件。
 
@@ -422,7 +423,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 **Azure 导入/导出服务是否适用于 CSP 订阅？**
 
-否。Azure 导入/导出服务不支持 CSP 订阅。 将来会增加此方面的支持。
+Azure 导入/导出服务支持 CSP 订阅。
 
 **能否跳过导入作业的驱动器准备步骤？能否在不复制的情况下准备驱动器？**
 
@@ -499,10 +500,5 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 * [设置 WAImportExport 工具](storage-import-export-tool-how-to.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
 * [Azure 导入/导出 REST API 示例](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 10f07b5eb649739ff1288ebb2703186fd75930cc
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 534397378a4d83414bfe62f2dd2c57678f09c429
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -50,7 +50,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 
 若要在应用程序中安装 SendGrid NuGet 包，请执行以下操作：
 
-1. 创建**新项目**，然后选择“模板”。 
+1. 单击“新建项目”，然后选择“模板”。 
 
    ![创建新项目][create-new-project]
 2. 在“解决方案资源管理器”中，右键单击“引用”，然后单击“管理 NuGet 包”。
@@ -83,9 +83,9 @@ SendGrid 的 .NET 类库名为 **SendGrid**。 其中包含以下命名空间：
 
     var recipients = new List<EmailAddress>
     {
-        new EmailAddress(){ "jeff@example.com", "Jeff Smith" },
-        new EmailAddress(){ "anna@example.com", "Anna Lidman" },
-        new EmailAddress(){ "peter@example.com", "Peter Saddow" }
+        new EmailAddress("jeff@example.com", "Jeff Smith"),
+        new EmailAddress("anna@example.com", "Anna Lidman"),
+        new EmailAddress("peter@example.com", "Peter Saddow")
     };
     msg.AddTos(recipients);
 

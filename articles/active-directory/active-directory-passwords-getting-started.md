@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 441caf3cc9a3b9074bd263f4a4c45763967fa580
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: ee46da891ab50a64c649b0370cb9231dd3448ea1
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/15/2017
 * [**我们的客户提供的供你在开始之前阅读的重要提示**](#top-tips-from-our-customers-to-read-before-you-begin)
  * [**重要提示：文档导航** - 请使用目录和浏览器的查找功能来查找答案](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
  * [**提示 1：许可** - 请务必了解许可要求](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
- * [**提示 2：测试** - 请使用最终用户而非管理员进行测试，试点时请使用一小组用户](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+ * [**提示 2：测试** - 请使用最终用户而非管理员进行测试，试点时请使用一小组用户](#tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
  * [**提示 3：部署** - 请为用户预填充数据，这样用户就不需注册](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
  * [**提示 4：部署** - 请使用密码重置，这样就不需向用户发送临时密码](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
  * [**提示 5：写回** - 请查看 AAD Connect 计算机上的应用程序事件日志，排查密码写回问题](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/15/2017
 
 * [**重要提示：文档导航** - 请使用目录和浏览器的查找功能来查找答案](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
 * [**提示 1：许可** - 请务必了解许可要求](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
-* [**提示 2：测试** - 请使用最终用户而非管理员进行测试，试点时请使用一小组用户](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+* [**提示 2：测试** - 请使用最终用户而非管理员进行测试，试点时请使用一小组用户](#tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
 * [**提示 3：部署** - 请为用户预填充数据，这样用户就不需注册](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
 * [**提示 4：部署** - 请使用密码重置，这样就不需向用户发送临时密码](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
 * [**提示 5：写回** - 请查看 AAD Connect 计算机上的应用程序事件日志，排查密码写回问题](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
@@ -78,9 +78,9 @@ ms.lasthandoff: 03/15/2017
 为了启用 Azure AD 密码重置，必须在组织中至少分配一次许可证。 我们不强制要求就密码重置体验本身进行单个用户的许可，但是，如果你在使用此功能时没有向用户分配许可证，则会被视为不符合 Microsoft 许可协议，因此仍需向相关用户分配许可证。
 
 你可以阅读下面这些文档，了解进行密码重置时需要哪些许可证。
-* [常规密码重置许可信息]()
-* [按功能密码重置许可信息]()
-* [密码写回支持的方案]()
+* [常规密码重置许可信息](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-customize#what-customization-options-are-available)
+* [按功能密码重置许可信息](https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability)
+* [密码写回支持的方案](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#scenarios-supported-for-password-writeback)
 
 ### <a name="tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users"></a>提示 2：测试 - 请使用最终用户而非管理员进行测试，试点时请使用一小组用户
 使用管理员进行测试时，我们会强制实施管理员密码重置策略，该策略定义如下。  这意味着，你不会看到我们为你的最终用户配置的策略的预期结果。
@@ -310,6 +310,7 @@ Azure AD Connect 应用程序事件日志包含大量的日志记录信息，这
 在能够启用和使用密码写回之前，你必须确保满足以下先决条件：
 
 * 必须拥有已启用 Azure AD Premium 的 Azure AD 租户。  有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
+* 必须将 Azure AD Connect 连接到主域控制器模拟器，以便密码写回能够工作。  可以根据需要通过右键单击 Active Directory 同步连接器的“属性”，然后选择“配置目录分区”将 Azure AD Connect 配置为使用主域控制器。 在这里，请查找“域控制器连接设置”部分，并检查标题为“仅使用首选的域控制器”的框。  注意：如果首选的 DC 不是 PDC 模拟器，Azure AD Connect 将仍访问 PDC 以用于密码写回。
 * 已在你的租户中配置和启用了密码重置。  有关详细信息，请参阅 [让用户重置其 Azure AD 密码](#enable-users-to-reset-their-azure-ad-passwords)
 * 你拥有至少一个管理员帐户和一个测试用户帐户，还有一个可用于测试此功能的 Azure AD Premium 许可证。  有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
 

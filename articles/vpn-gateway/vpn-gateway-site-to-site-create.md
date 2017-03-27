@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
-ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 9df9d10d436ac56c881c9547f3095b630d4cb97f
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -25,9 +26,10 @@ ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [经典 - Azure 门户](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [经典 - 经典门户](vpn-gateway-site-to-site-create.md)
-> 
-> 
+>
+>
 
 本文介绍了如何使用经典部署模型和经典门户创建虚拟网络和到本地网络的站点到站点 VPN 网关连接。 站点到站点连接可以用于跨界和混合配置。
 
@@ -50,25 +52,25 @@ ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
 * 一个用于 VPN 设备的面向外部的公共 IP 地址。 此 IP 地址不得位于 NAT 之后。
 * Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 
-## <a name="a-namecreatevnetacreate-your-virtual-network"></a><a name="CreateVNet"></a>创建虚拟网络
+## <a name="CreateVNet"></a>创建虚拟网络
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com/)。
 2. 在屏幕左下角，单击“新建”。 在导航窗格中，单击“网络服务”，然后单击“虚拟网络”。 单击“自定义创建”以启动配置向导  。
 3. 若要创建 VNet，请在以下页面上输入配置设置：
 
-## <a name="a-namedetailsavirtual-network-details-page"></a><a name="Details"></a>虚拟网络详细信息页
+## <a name="Details"></a>虚拟网络详细信息页
 输入以下信息：
 
 * **名称**- 为虚拟网络命名。 例如 *EastUSVNet*。 在部署你的 VM 和 PaaS 实例时，将使用此虚拟网络名称，因此最好不要让此名称太复杂。
 * **位置**：位置直接与你想让资源 (VM) 驻留在的物理位置（区域）有关。 例如，如果你希望部署到此虚拟网络的 VM 的物理位置位于 *美国东部*，请选择该位置。 创建虚拟网络后，将无法更改与虚拟网络关联的区域。
 
-## <a name="a-namednsadns-servers-and-vpn-connectivity-page"></a><a name="DNS"></a>DNS 服务器和 VPN 连接页
+## <a name="DNS"></a>DNS 服务器和 VPN 连接页
 请输入以下信息，然后单击右下的“下一步”箭头。
 
 * **DNS 服务器**：输入 DNS 服务器名称和 IP 地址，或从快捷菜单中选择一个以前注册的 DNS 服务器。 此设置不创建 DNS 服务器。 此设置允许指定要用于对此虚拟网络进行名称解析的 DNS 服务器。
 * **配置站点到站点 VPN**：选中“配置站点到站点 VPN”复选框。
 * **本地网络**：本地网络代表你的物理本地位置。 你可以选择以前创建的本地网络，也可以创建一个新的本地网络。 但是，如果选择使用之前创建的本地网络，请转到“本地网络”  配置页面，并验证 VPN 设备的 VPN 设备 IP 地址（面向公众的 IPv4 地址）是否正确。
 
-## <a name="a-nameconnectivityasite-to-site-connectivity-page"></a><a name="Connectivity"></a>站点到站点连接页
+## <a name="Connectivity"></a>站点到站点连接页
 如果要创建新的本地网络，则会看到“站点到站点连接”页。 如果你要使用此前创建的本地网络，则此页不会显示在向导中，你可以转到下一部分。
 
 请输入以下信息，然后单击“下一步”箭头。
@@ -78,7 +80,7 @@ ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
 * **地址空间**：包括“起始 IP”和 CIDR（地址计数）。 指定要通过虚拟网络网关发送到本地内部位置的地址范围。 如果目标 IP 地址处于你在此处指定的范围之内，将通过虚拟网络网关路由它。
 * **添加地址空间**：如果拥有多个要通过虚拟网络网关发送的地址范围，请指定每个额外的地址范围。 可以稍后在“本地网络”页中添加或删除范围。
 
-## <a name="a-nameaddressavirtual-network-address-spaces-page"></a><a name="Address"></a>虚拟网络地址空间页
+## <a name="Address"></a>虚拟网络地址空间页
 指定要用于虚拟网络的地址范围。 这些都是动态 IP 地址 (DIPS)，将分配给你部署到此虚拟网络的 VM 和其他角色实例。
 
 所选范围不要与本地网络所用范围重叠，这一点尤其重要。 需要与网络管理员协调。 网络管理员可能需要从本地网络地址空间为你划分一个 IP 地址范围，以供你的虚拟网络使用。
@@ -93,15 +95,10 @@ ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="a-namevnetgatewayaconfigure-your-virtual-network-gateway"></a><a name="VNetGateway"></a>配置虚拟网络网关
+## <a name="VNetGateway"></a>配置虚拟网络网关
 配置虚拟网络网关，创建安全的站点到站点连接。 请参阅 [在 Azure 经典门户中配置虚拟网络网关](vpn-gateway-configure-vpn-gateway-mp.md)。
 
 ## <a name="next-steps"></a>后续步骤
  连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

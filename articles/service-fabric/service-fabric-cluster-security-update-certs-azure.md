@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 03/09/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 45225c4250539dfeb9f3b4654615acbdd162191b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: c433e8683755e454f9561f094269c3daccf78a62
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -54,19 +54,19 @@ ms.lasthandoff: 03/07/2017
 执行以下步骤的前提是，你熟悉 Resource Manager 的工作原理，并已使用 Resource Manager 模板至少部署了一个 Service Fabric 群集，同时已准备好你在设置此群集时使用的模板。 此外，还有一个前提就是，你可以熟练使用 JSON。
 
 > [!NOTE]
-> 如需可参考或入手的示例模板和参数，请从此 [git-repo.](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) 下载。 
+> 如需可参考或入手的示例模板和参数，请从此 [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) 下载。 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>编辑 Resource Manager 模板
 
-为了便于参考，示例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我们将进行的所有编辑。 该示例位于 [git-repo.](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)。
+为了便于参考，示例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我们将进行的所有编辑。 该示例位于 [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)。
 
 **请确保执行所有步骤**
 
-**步骤 1：**打开用于部署群集的 Resource Manager 模板。  （如果已从上述存储库下载此示例，则使用 5-VM-1-NodeTypes-Secure_Step1.JSON 部署安全的群集，然后打开该模板）。
+**步骤 1：**打开用于部署群集的 Resource Manager 模板。 （如果已从上述存储库下载此示例，则使用 5-VM-1-NodeTypes-Secure_Step1.JSON 部署安全的群集，然后打开该模板）。
 
-**步骤 2：**向模板的参数部分添加**两个新参数**“secCertificateThumbprint”和“secCertificateUrlValue”，类型为“string”。 可复制以下代码片段，并添加到该模板。 根据具体的模板源，可能已经存在这些定义，如果是这样，请转至下一步。 
+**步骤 2：**向模板的参数部分添加**两个新参数**“secCertificateThumbprint”和“secCertificateUrlValue”，类型为“string”。 可复制以下代码片段，并将其添加到该模板。 根据具体的模板源，可能已经存在这些定义，如果是这样，请转至下一步。 
  
 ```JSON
    "secCertificateThumbprint": {
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/07/2017
 
 ```
 
-**步骤 3：**对 **Microsoft.ServiceFabric/clusters** 资源进行更改 - 在模板中找到 "Microsoft.ServiceFabric/clusters" 资源定义。 在该定义的属性下，找到 "Certificate" JSON 标记，如以下 JSON 代码片段所示。
+**步骤 3：**对 **Microsoft.ServiceFabric/clusters** 资源进行更改 - 在模板中找到 "Microsoft.ServiceFabric/clusters" 资源定义。 在该定义的属性下，找到“Certificate”JSON 标记，如以下 JSON 代码片段所示：
 
    
 ```JSON
@@ -108,7 +108,7 @@ ms.lasthandoff: 03/07/2017
      }
 ``` 
 
-如果要**滚动更新证书**，请将新证书指定为主要证书，并将当前的主要证书移为辅助证书。  这样就可以通过一个部署步骤，将当前主要证书滚动更新为新证书。
+如果要**滚动更新证书**，请将新证书指定为主要证书，并将当前的主要证书移为辅助证书。 这样就可以通过一个部署步骤，将当前主要证书滚动更新为新证书。
 
 ```JSON
       "properties": {

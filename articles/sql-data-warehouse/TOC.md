@@ -102,7 +102,7 @@
 ### [迁移数据](sql-data-warehouse-migrate-data.md)
 ### [迁移到高级存储](sql-data-warehouse-migrate-to-premium-storage.md)
 
-## 暂停和缩放
+## 管理计算
 
 ### [概述](sql-data-warehouse-manage-compute-overview.md)
 ### [Azure 门户](sql-data-warehouse-manage-compute-portal.md)

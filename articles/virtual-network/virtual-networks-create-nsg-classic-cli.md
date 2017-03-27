@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d3ea05a1f98dbec4adc9ceea17ece00b19200107
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 115a1937a4c88ba2b986a40c84b1b759ed5e03b5
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.openlocfilehash: d3ea05a1f98dbec4adc9ceea17ece00b19200107
 ## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>如何为前端子网创建 NSG
 若要基于上述方案创建名为 **NSG-FrontEnd** 的 NSG，请执行下面的步骤。
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../xplat-cli-install.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **`azure config mode`** 命令以切换到经典模式，如下所示。
    
         azure config mode asm
@@ -102,7 +103,7 @@ ms.openlocfilehash: d3ea05a1f98dbec4adc9ceea17ece00b19200107
    
     参数：
    
-   * **-a（或 --nsg-name）**。 将在其中创建规则的 NSG 的名称。 对于我们的方案，即 *NSG-FrontEnd*。
+   * **-a（或 --nsg-name）**。 将在其中创建规则的 NSG 的名称。 对于我们的方案，为 *NSG-FrontEnd*。
    * **-n（或 --name）**。 新规则的名称。 对于我们的方案，为 *rdp-rule*。
    * **-c（或 --action）**。 规则的访问级别（拒绝或允许）。
    * **-p（或 --protocol）**。 规则的协议（Tcp、Udp 或 *）。
@@ -234,10 +235,5 @@ ms.openlocfilehash: d3ea05a1f98dbec4adc9ceea17ece00b19200107
         info:    Looking up network configuration
         info:    Creating a network security group "NSG-BackEndX"
         info:    network nsg subnet add command OK
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

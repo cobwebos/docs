@@ -1,5 +1,5 @@
 ---
-title: "连接 Azure 部署相关的模板 | Microsoft Docs"
+title: "链接 Azure 部署的模板 | Microsoft 文档"
 description: "介绍如何使用 Azure 资源管理器模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。"
 services: azure-resource-manager
 documentationcenter: na
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 03/14/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 7bc5e1102b60db0bdf7a8310d0816f65bcfec3a1
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: a6c3e0150a60777d9f824cb1e0768bd44a8c981e
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 7bc5e1102b60db0bdf7a8310d0816f65bcfec3a1
 可以将参数从主模板传递到链接的模板，并可以直接将这些参数映射到由调用模板公开提供的参数或变量。 链接模板还可以将输出变量传递回源模板中，启用模板之间的双向数据交换。
 
 ## <a name="linking-to-a-template"></a>链接到模板
-通过在主模板内添加部署源，从而在两个模板间创建指向链接模板的链接。 将 **templateLink** 属性设置为链接模板的 URI。 您可以通过直接在您的模板中指定值或通过链接到参数文件，为链接模板提供参数值。 以下示例使用 **parameters** 属性直接指定参数值。
+通过在主模板内添加部署源，从而在两个模板间创建指向链接模板的链接。 将 **templateLink** 属性设置为链接模板的 URI。 可以直接在模板或参数文件中为链接模板提供参数值。 以下示例使用 **parameters** 属性直接指定参数值。
 
 ```json
 "resources": [ 
@@ -87,7 +88,7 @@ Resource Manager 服务必须能够访问链接的模板。 无法为链接的�
 ],
 ```
 
-即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也将记录在该资源组的部署操作中。 若要限制公开，请设置令牌的到期时间。
+即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也将记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
 
 Resource Manager 会将每个链接的模板作处理为单独的部署。 在资源组的部署历史记录中，你会看到针对父模板和嵌套模板的独立部署。
 
@@ -308,26 +309,36 @@ URI 将解析成名为 **existingStorageAccount.json** 或 **newStorageAccount.j
 ```powershell
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ("https://storagecontosotemplates.blob.core.windows.net/templates/parent.json" + $token) -containerSasToken $token
+$url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
+New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-在 Azure CLI 中，你使用以下代码获取容器的令牌并部署模板。 目前，使用包括 SAS 令牌的模板 URI 时必须提供部署的名称。  
+在 Azure CLI 2.0 中，使用以下代码获取容器的令牌并部署模板：
 
+```azurecli
+seconds='@'$(( $(date +%s) + 1800 ))
+expiretime=$(date +%Y-%m-%dT%H:%MZ --date=$seconds)
+connection=$(az storage account show-connection-string \
+    --resource-group ManageGroup \
+    --name storagecontosotemplates \
+    --query connectionString)
+token=$(az storage container generate-sas \
+    --name templates \
+    --expiry $expiretime \
+    --permissions r \
+    --output tsv \
+    --connection-string $connection)
+url=$(az storage blob url \
+    --container-name templates \
+    --name parent.json \
+    --output tsv \
+    --connection-string $connection)
+parameter='{"containerSasToken":{"value":"?'$token'"}}'
+az group deployment create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
 ```
-expiretime=$(date -I'minutes' --date "+30 minutes")  
-azure storage container sas create --container templates --permissions r --expiry $expiretime --json | jq ".sas" -r
-azure group deployment create -g ExampleGroup --template-uri "https://storagecontosotemplates.blob.core.windows.net/templates/parent.json?{token}" -n tokendeploy  
-```
-
-系统将提示用户提供 SAS 令牌作为参数。 需要在令牌的前面加上 **?**。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何为资源定义部署顺序，请参阅 [Defining dependencies in Azure Resource Manager templates](resource-group-define-dependencies.md)（在 Azure Resource Manager 模板中定义依赖关系）
 * 若要了解如何定义一个资源而创建多个实例，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

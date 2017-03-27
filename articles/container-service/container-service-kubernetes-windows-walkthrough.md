@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/20/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: ef1e790edc4cd329245331bf1178ed1f610e914c
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: c43648dae95d90d0ee9f3d6b5bedfad7ab4889ca
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -32,6 +32,7 @@ ms.lasthandoff: 03/06/2017
 
 > [!NOTE]
 > 对 Azure 容器服务中 Kubernetes 的 Windows 容器的支持处于预览状态。 使用 Azure 门户或 Resource Manager 模板来创建包含 Windows 节点的 Kubernetes 群集。 Azure CLI 2.0 当前不支持此功能。
+>
 
 
 
@@ -81,13 +82,13 @@ ms.lasthandoff: 03/06/2017
 
 1. 若要查看节点列表，请键入 `kubectl get nodes`。 若要获得节点的完整详细信息，请键入：  
 
-  ```
-  kubectl get nodes -o yaml
-  ```
+    ```
+    kubectl get nodes -o yaml
+    ```
 
 2. 创建名为 `simpleweb.yaml` 的文件，并复制以下内容。 此文件使用 [Docker 中心](https://hub.docker.com/r/microsoft/windowsservercore/)的 Windows Server 2016 Server 核心基础 OS 映像来设置 Web 应用。  
 
-  ```yaml
+```yaml
   apiVersion: v1
   kind: Service
   metadata:
@@ -123,40 +124,44 @@ ms.lasthandoff: 03/06/2017
           command:
           - powershell.exe
           - -command
-          - "<#code used from https://gist.github.com/wagnerandrade/5424431#> ; $$ip = (Get-NetIPAddress | where {$$_.IPAddress -Like '*.*.*.*'})[0].IPAddress ; $$url = 'http://'+$$ip+':80/' ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add($$url) ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at {0}...' -f $$url) ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$_,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
+          - "<#code used from https://gist.github.com/wagnerandrade/5424431#> ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add('http://*:80/') ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at http://*:80/') ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$_,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
         nodeSelector:
           beta.kubernetes.io/os: windows
   ```
 
-3. 若要启动该应用程序，请键入：
+      
+> [!NOTE] 
+> 该配置包括 `type: LoadBalancer`。 此设置会让服务通过 Azure 负载均衡器在 Internet 上公开。 有关详细信息，请参阅[对 Azure 容器服务中 Kubernetes 群集内的容器进行负载均衡](container-service-kubernetes-load-balancing.md)。
+>
 
-  ```
-  kubectl apply -f simpleweb.yaml
-  ```
+## <a name="start-the-application"></a>启动应用程序
+
+1. 若要启动该应用程序，请键入：  
+
+    ```
+    kubectl apply -f simpleweb.yaml
+    ```  
   
-  > [!NOTE] 
-  > 该配置包括 `type: LoadBalancer`。 此设置会让服务通过 Azure 负载均衡器在 Internet 上公开。 有关详细信息，请参阅[对 Azure 容器服务中 Kubernetes 群集内的容器进行负载均衡](container-service-kubernetes-load-balancing.md)。
   
-4. 若要验证服务部署（需要大约 30 秒），请键入：
+2. 若要验证服务部署（需要大约 30 秒），请键入：  
 
-  ```
-  kubectl get pods
-  ```
+    ```
+    kubectl get pods
+    ```
 
-5. 该服务运行后，若要查看该服务的内部和外部 IP 地址，键入：
+3. 该服务运行后，若要查看该服务的内部和外部 IP 地址，键入：
 
-  ```
-  kubectl get svc
-  ``` 
+    ```
+    kubectl get svc
+    ``` 
+  
+    ![Windows 服务的 IP 地址](media/container-service-kubernetes-windows-walkthrough/externalipa.png)
 
-  ![Windows 服务的 IP 地址](media/container-service-kubernetes-windows-walkthrough/externalipa.png)
+    外部 IP 地址的添加需要几分钟时间。 负载均衡器配置外部地址之前，会显示为 `<pending>`。
 
-  外部 IP 地址的添加需要几分钟时间。 负载均衡器配置外部地址之前，会显示为 `<pending>`。
+4. 外部 IP 地址可用后，可以在 Web 浏览器中访问该服务。
 
-
-6. 外部 IP 地址可用后，可以在 Web 浏览器中访问该服务。
-
-  ![浏览器中的 Windows Server 应用](media/container-service-kubernetes-windows-walkthrough/wincontainerwebserver.png)
+    ![浏览器中的 Windows Server 应用](media/container-service-kubernetes-windows-walkthrough/wincontainerwebserver.png)
 
 
 ## <a name="access-the-windows-nodes"></a>访问 Windows 节点
@@ -170,37 +175,31 @@ ms.lasthandoff: 03/06/2017
 
 3. 输入主机名 - 由群集管理员用户名和群集中第一个主机的公用 DNS 名组成。 “主机名”类似于 `adminuser@PublicDNSName`。 输入 22 作为“端口”。
 
-    ![PuTTY 配置 1](media/container-service-kubernetes-windows-walkthrough/putty1.png)
+  ![PuTTY 配置 1](media/container-service-kubernetes-windows-walkthrough/putty1.png)
 
 4. 选择“SSH”>“身份验证”。 添加用于身份验证的专用密钥文件（.ppk 格式）的路径。 可以使用 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 等工具，通过用于创建群集的 SSH 密钥生成此文件。
 
-    ![PuTTY 配置 2](media/container-service-kubernetes-windows-walkthrough/putty2.png)
+  ![PuTTY 配置 2](media/container-service-kubernetes-windows-walkthrough/putty2.png)
 
 5. 选择“SSH”>“隧道”并配置转发端口。 由于本地 Windows 计算机已使用端口 3389，因此建议使用以下设置来访问 Windows 节点 0 和 Windows 节点 1。 （其他 Windows 节点沿用此模式。）
 
-  **Windows 节点 0**
+    **Windows 节点 0**
 
-  * **源端口：**3390
-  * **目标：**10.240.245.5:3389
+    * **源端口：**3390
+    * **目标：**10.240.245.5:3389
 
-  **Windows 节点 1**
+    **Windows 节点 1**
 
-  * **源端口：**3391
-  * **目标：**10.240.245.6:3389
+    * **源端口：**3391
+    * **目标：**10.240.245.6:3389
 
-  ![Windows RDP 隧道的图像](media/container-service-kubernetes-windows-walkthrough/rdptunnels.png)
+    ![Windows RDP 隧道的图像](media/container-service-kubernetes-windows-walkthrough/rdptunnels.png)
 
 6. 完成后，单击“会话”>“保存”保存连接配置。
 
 7. 若要连接到 PuTTY 会话，请单击“打开”。 完成主节点连接。
 
 8. 启动远程桌面连接。 若要连接到第一个 Windows 节点，对于“计算机”，请指定 `localhost:3390`，然后单击“连接”。 （若要连接到第二个 Windows 节点，指定 `localhost:3390`，依次类推。）若要完成连接，需提供在部署过程中配置的本地 Windows 管理员密码。
-
-
-
-
-
-
 
 
 ## <a name="next-steps"></a>后续步骤

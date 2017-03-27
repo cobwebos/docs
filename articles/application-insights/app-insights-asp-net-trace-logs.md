@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 07/21/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: f2de2b3f4deb702f6cdc4e36b988ef6ea2697787
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f803b44172b068b7ba65047c769421e39445ce10
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -137,9 +138,9 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 ### <a name="no-log-adapter-option-in-the-configuration-tool"></a>配置工具中没有日志适配器选项
 * 需要先安装记录框架。
 * 如果你使用的是 System.Diagnostics.Trace，请确保[已在 `web.config` 中配置它](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)。
-* 已获得最新版本的 Application Insights 工具？ 在 Visual Studio“工具”菜单中，选择“扩展和更新”，然后打开“更新”选项卡。 如果 Application Insights 工具在此处，单击以更新它。
+* 是否已获得最新版本的 Application Insights？ 在 Visual Studio“工具”菜单中，选择“扩展和更新”，然后打开“更新”选项卡。 如果开发人员分析工具在此处，请单击以更新它。
 
-### <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>我得到错误“检测密钥不能为空”
+### <a name="emptykey"></a>我得到错误“检测密钥不能为空”
 看起来你在未安装 Application Insights 的情况下安装了日志记录适配器 Nuget 包。
 
 在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 你将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。 这应当解决此问题。
@@ -147,13 +148,13 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 ### <a name="i-can-see-traces-in-diagnostic-search-but-not-the-other-events"></a>我可以看到诊断搜索中的跟踪，但看不到其他事件。
 有时，所有事件和请求都通过管道可能需要一些时间。
 
-### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>保留多少数据？
+### <a name="limits"></a>保留多少数据？
 每个应用程序每秒最多保留 500 个事件。 事件保留七天。
 
 ### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>我没有看到预期的某些日志条目
 如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](app-insights-sampling.md)
 
-## <a name="a-nameaddanext-steps"></a><a name="add"></a>后续步骤
+## <a name="add"></a>后续步骤
 * [设置可用性和响应能力测试][availability]
 * [故障排除][qna]
 
@@ -165,9 +166,4 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 [portal]: https://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

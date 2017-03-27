@@ -13,18 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/24/2017
+ms.date: 03/14/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 41b75cf3059cd3758f1bce149ad8fcad4e5644ac
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: cc393967fec1a98a4dd596a156c7a12e88959b04
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="how-to-perform-documentdb-global-database-replication-using-the-azure-portal"></a>如何使用 Azure 门户执行 DocumentDB 全局数据库复制
+# <a name="how-to-perform-global-database-replication-using-the-azure-portal"></a>如何使用 Azure 门户执行全局数据库复制
 
-了解如何使用 Azure 门户复制多个区域中的数据，使 Azure DocumentDB 中的数据具有全局可用性。
+了解如何使用 Azure 门户复制多个区域中的数据，使 Azure DocumentDB 和 MongoDB 的 API 中的数据具有全局可用性。
 
 有关 DocumentDB 中全局数据库复制工作原理的信息，请参阅[使用 DocumentDB 全局分发数据](documentdb-distribute-data-globally.md)。 有关以编程方式执行全局数据库复制的信息，请参阅[使用多区域 DocumentDB 帐户进行开发](documentdb-developing-with-multiple-regions.md)。
 
@@ -60,6 +60,41 @@ While all regions associated with your DocumentDB database account can serve rea
 4. Click and drag regions to order the list of regions. The first region in the list of regions is the active write region.
     ![Change the write region by reordering the region list under DocumentDB Account > Settings > Change Write Regions][3]
 -->
+
+### <a name="verifying-your-regional-setup-in-api-for-mongodb"></a>在 MongoDB 的 API 中验证区域设置
+仔细检查 MongoDB 的 API 中的全局配置的最简单方法是从 Mongo Shell 运行 *isMaster()* 命令。
+
+从 Mongo Shell：
+
+   ```
+      db.isMaster()
+   ```
+   
+示例结果：
+
+   ```JSON
+      {
+         "_t": "IsMasterResponse",
+         "ok": 1,
+         "ismaster": true,
+         "maxMessageSizeBytes": 4194304,
+         "maxWriteBatchSize": 1000,
+         "minWireVersion": 0,
+         "maxWireVersion": 2,
+         "tags": {
+            "region": "South India"
+         },
+         "hosts": [
+            "vishi-api-for-mongodb-southcentralus.documents.azure.com:10250",
+            "vishi-api-for-mongodb-westeurope.documents.azure.com:10250",
+            "vishi-api-for-mongodb-southindia.documents.azure.com:10250"
+         ],
+         "setName": "globaldb",
+         "setVersion": 1,
+         "primary": "vishi-api-for-mongodb-southindia.documents.azure.com:10250",
+         "me": "vishi-api-for-mongodb-southindia.documents.azure.com:10250"
+      }
+   ```
 
 ## <a id="next"></a>后续步骤
 阅读 [DocumentDB 中的一致性级别](documentdb-consistency-levels.md)，了解如何管理全局复制帐户的一致性。

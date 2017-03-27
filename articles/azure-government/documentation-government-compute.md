@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 11/18/2016
+ms.date: 3/13/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: ca01baebd755e92aff1ef080af1fcd4606b9a2ec
-ms.openlocfilehash: 200caac4b480495b0bbb8f10cc89fdd73c42dbe2
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 146fcd9788bab55e4abd9e70dcfe25741f041d34
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,16 +28,18 @@ ms.openlocfilehash: 200caac4b480495b0bbb8f10cc89fdd73c42dbe2
 ### <a name="variations"></a>变体
 Azure 政府版中提供以下产品 (VM)：
 
-| 产品 (VM) | 美国政府弗吉尼亚州 | 美国政府艾奥瓦州 |
-| --- | --- | --- |
-| A0-A7 |Y |Y |
-| D 系列 |Y |N |
-| Dv2 系列 |Y |Y |
-| DS 系列 |Y |N |
-| F 系列 |Y |Y |
-| FS 系列 |N |N |
-| G 系列 |Y |N |
-| GS 系列 |Y |N |
+| 产品 (VM) | 美国政府弗吉尼亚州 | 美国政府艾奥瓦州 | 美国国防部东部 | 美国国防部西部
+| --- | --- | --- |--- |--- |
+| A0-A7 |Y |Y |Y |Y |Y |
+| Av2 |Y |Y |Y |Y |Y |
+| D 系列 |Y |N |N |N |
+| Dv2 系列 |Y |Y |Y |Y |
+| DS 系列 |Y |N |N |N |
+| DSv2-series |Y |N |Y |Y |
+| F 系列 |Y |Y |Y |Y |
+| FS 系列 |Y |N |Y |Y |
+| G 系列 |Y |N |N |N |
+| GS 系列 |Y |N |N |N |
 
 ### <a name="data-considerations"></a>数据注意事项
 以下信息标识 Azure 虚拟机的 Azure 政府版边界：
@@ -47,10 +50,5 @@ Azure 政府版中提供以下产品 (VM)：
 
 ## <a name="next-steps"></a>后续步骤
 有关补充信息和更新，请订阅 <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure 政府博客</a>。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

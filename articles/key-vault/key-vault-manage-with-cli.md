@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: bruceper
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c52d41bbac22c6a20b1632b529b061ed7e640ea1
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: eec68b1cbfbddf0b72b55376ee11451b25898b68
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/17/2016
 若要完成本教程，你必须准备好以下各项：
 
 * Microsoft Azure 订阅。 如果你没有订阅，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial)。
-* 命令行接口版本 0.9.1 或更高版本。 若要安装最新版本并连接到 Azure 订阅，请参阅[安装和配置 Azure 跨平台命令行接口](../xplat-cli-install.md)。
+* 命令行接口版本 0.9.1 或更高版本。 若要安装最新版本并连接到 Azure 订阅，请参阅[安装和配置 Azure 跨平台命令行接口](../cli-install-nodejs.md)。
 * 配置为使用你在本教程中所创建的密钥或密码的应用程序。 可以从 [Microsoft 下载中心](http://www.microsoft.com/download/details.aspx?id=45343)获取示例应用程序。 有关说明，请参阅随附的自述文件。
 
 ## <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>获得 Azure 跨平台命令行接口帮助
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/17/2016
 
 还可阅读以下教程以熟悉如何在 Azure 跨平台命令行接口中使用 Azure 资源管理器：
 
-* [如何安装和配置 Azure 跨平台命令行接口](../xplat-cli-install.md)
+* [如何安装和配置 Azure 跨平台命令行接口](../cli-install-nodejs.md)
 * [将 Azure 跨平台命令行接口用于 Azure Resource Manager](../xplat-cli-azure-resource-manager.md)
 
 ## <a name="connect-to-your-subscriptions"></a>连接到订阅
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/17/2016
 
     azure account set <subscription name>
 
-有关配置 Azure 跨平台命令行接口的详细信息，请参阅[如何安装和配置 Azure 跨平台命令行接口](../xplat-cli-install.md)。
+有关配置 Azure 跨平台命令行接口的详细信息，请参阅[如何安装和配置 Azure 跨平台命令行接口](../cli-install-nodejs.md)。
 
 ## <a name="switch-to-using-azure-resource-manager"></a>切换到使用 Azure 资源管理器
 密钥保管库需要 Azure 资源管理器，因此请键入以下内容以切换到 Azure 资源管理器模式：

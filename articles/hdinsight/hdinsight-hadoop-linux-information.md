@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/02/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 1d2d3d9d6c8dee02f2eb96ba20894e1d52541102
-ms.openlocfilehash: 584af73f3f2d428f7551de0b12b498b1a118e5dc
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 207eb60a359be1d9d9b68a92ac0c8255e7217a97
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -51,13 +51,13 @@ Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运�
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-将 **PASSWORD** 替换为管理员帐户的密码，并将 **CLUSTERNAME** 替换为你的群集名称。 这将返回包含群集中主机列表的 JSON 文档，然后 jq 将拉取群集中每个主机的 `host_name` 元素值。
+将 **PASSWORD** 替换为管理员帐户的密码，并将 **CLUSTERNAME** 替换为你的群集名称。 此命令返回包含群集中主机列表的 JSON 文档，然后 jq 将拉取群集中每个主机的 `host_name` 元素值。
 
-如果要查找某个特定服务的节点名称，可以查询该组件的 Ambari。 例如，若要查找 HDFS 名称节点的主机，请使用以下方法。
+如果要查找某个特定服务的节点名称，可以查询该组件的 Ambari。 例如，若要查找 HDFS 名称节点的主机，请使用以下命令：
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-该请求将返回一个描述该服务的 JSON 文档，然后 jq 将只拉取主机的 `host_name` 值。
+此命令返回一个描述该服务的 JSON 文档，然后 jq 将只拉取主机的 `host_name` 值。
 
 ## <a name="remote-access-to-services"></a>对服务的远程访问
 
@@ -68,7 +68,7 @@ Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运�
     身份验证是纯文本身份验证 - 始终使用 HTTPS 来帮助确保连接是安全的。
 
     > [!IMPORTANT]
-    > 虽然可以直接通过 Internet 访问群集的 Ambari，但若要使用某些功能，则需要根据访问群集所用的内部域名的节点来达到目的。 由于这是内部域名且未公开，因此，在尝试通过 Internet 访问某些功能时，你可能会收到“找不到服务器”的错误。
+    > 虽然可以直接通过 Internet 访问群集的 Ambari，但若要使用某些功能，则需要根据访问群集所用的内部域名的节点来达到目的。 由于内部域名不可公开访问，因此，在尝试通过 Internet 访问某些功能时，可能会出现“找不到服务器”错误。
     >
     > 若要使用 Ambari web UI 的全部功能，请使用 SSH 隧道通过代理将 Web 流量传送到群集头节点。 请参阅[使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md)
 
@@ -96,25 +96,25 @@ Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运�
 Hadoop 相关文件可在群集节点上的 `/usr/hdp` 中找到。 此目录包含以下子目录：
 
 * **2.2.4.9-1**：此目录是根据 HDInsight 使用的 Hortonworks 数据平台版本命名的，因此群集上的编号可能不同于此处列出的编号。
-* **current**：此目录包含 **2.2.4.9-1** 目录下的目录的链接，有了此目录，每次访问某个文件时，便不需要键入版本号（可能会变化）。
+* **current**：此目录包含 **2.2.4.9-1** 目录下的子目录的链接。 有了此目录，每次访问某个文件时，便不需要键入版本号（可能会变化）。
 
-示例数据和 JAR 文件可以在 Hadoop 分布式文件系统 (HDFS) 或 Azure Blob 存储上的 `/example` 和 `/HdiSamples` 处找到
+示例数据和 JAR 文件可以在 Hadoop 分布式文件系统上的 `/example` 和 `/HdiSamples` 处找到
 
-## <a name="hdfs-blob-storage-and-data-lake-store"></a>HDFS、Blob 存储和 Data Lake Store
+## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS、Azure 存储和 Data Lake Store
 
-在大部分的 Hadoop 分发中，HDFS 受群集中计算机上的本地存储的支持。 尽管这种方式很有效率，但用于基于云的解决方案时可能费用高昂，因为计算资源以小时或分钟为单位来计费。
+在大部分的 Hadoop 分发中，HDFS 受群集中计算机上的本地存储的支持。 尽管使用本地存储是有效的做法，但用于基于云的解决方案时可能费用高昂，因为计算资源以小时或分钟为单位来计费。
 
-HDInsight 使用 Azure Blob 存储或 Azure Data Lake Store 作为默认存储。 这可以提供以下优点：
+HDInsight 使用 Azure 存储中的 Blob 或 Azure Data Lake Store 作为默认存储。 这些服务提供以下优势：
 
 * 成本低廉的长期存储
 * 可从外部服务访问，例如网站、文件上载/下载实用程序、各种语言 SDK 和 Web 浏览器
 
-> [!IMPORTANT]
-> Blob 存储最多可容纳 4.75 TB，但单个 blob（或 HDInsight 透视图中的文件）容量最多仅可达 195 GB。 Azure Data Lake Store 可以动态增长以保存数万亿个文件，并且单个文件大于&1; PB。
->
-> 有关详细信息，请参阅[了解 blob](https://docs.microsoft.com/rest/api/storageservices/fileservices/understanding-block-blobs--append-blobs--and-page-blobs) 和 [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。
+> [!WARNING]
+> HDInsight 仅支持__通用__ Azure 存储帐户。 它目前不支持 __Blob 存储__帐户类型。
 
-使用 Azure 存储或 Data Lake Store 时，通常不需要从 HDInsight 进行任何特殊操作即可访问数据。 例如，以下命令将列出 `/example/data` 文件夹中的文件，无论它是存储在 Azure Blob 存储还是 Data Lake Store 上：
+一个 Azure 存储帐户容量最多为 4.75 TB，而单个 Blob（从 HDInsight 角度来说是文件）大小最多为 195 GB。 Azure Data Lake Store 可以动态增长以保存数万亿个文件，并且单个文件大于&1; PB。 有关详细信息，请参阅[了解 blob](https://docs.microsoft.com/rest/api/storageservices/fileservices/understanding-block-blobs--append-blobs--and-page-blobs) 和 [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。
+
+使用 Azure 存储或 Data Lake Store 时，不需要从 HDInsight 进行任何特殊操作即可访问数据。 例如，以下命令将列出 `/example/data` 文件夹中的文件，无论它是存储在 Azure 存储还是 Data Lake Store 上：
 
     hdfs dfs -ls /example/data
 
@@ -122,7 +122,7 @@ HDInsight 使用 Azure Blob 存储或 Azure Data Lake Store 作为默认存储�
 
 某些命令可能需要你在访问文件时将方案指定为 URI 的一部分。 例如，Storm-HDFS 组件就需要指定方案。 使用非默认存储（作为“附加”存储添加到群集的存储）时，必须始终将方案作为 URI 的一部分来使用。
 
-使用 __Blob 存储__时，方案可以是以下之一：
+使用 __Azure 存储__时，可以使用以下 URI 方案之一：
 
 * `wasb:///`：使用未加密通信访问默认存储。
 
@@ -130,7 +130,7 @@ HDInsight 使用 Azure Blob 存储或 Azure Data Lake Store 作为默认存储�
 
 * `wasbs://<container-name>@<account-name>.blob.core.windows.net/`：与非默认存储帐户通信时使用。 例如，有额外的存储帐户时，或访问存储在可公开访问的存储帐户中的数据时。
 
-使用 __Data Lake Store__ 时，方案可以是以下之一：
+使用 __Data Lake Store__ 时，可以使用以下 URI 方案之一：
 
 * `adl:///`：访问群集的默认 Data Lake Store。
 
@@ -150,7 +150,7 @@ HDInsight 使用 Azure Blob 存储或 Azure Data Lake Store 作为默认存储�
 > [!NOTE]
 > 这将返回应用到服务器的第一个配置 (`service_config_version=1`)，其中包含此信息。 如果要检索创建群集后修改的值，可能需要列出配置版本并检索最新版本。
 
-这会返回类似于以下形式的值：
+此命令返回如下所示的值：
 
 * `wasbs://<container-name>@<account-name>.blob.core.windows.net`（如果使用 Azure 存储帐户）。
 
@@ -160,23 +160,23 @@ HDInsight 使用 Azure Blob 存储或 Azure Data Lake Store 作为默认存储�
 
     ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
 
-    这将返回以下主机名：`<data-lake-store-account-name>.azuredatalakestore.net`。
+    此命令返回以下主机名：`<data-lake-store-account-name>.azuredatalakestore.net`。
 
     要获取作为 HDInsight 根目录的存储中的目录，请使用以下 REST 调用：
 
     ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
 
-    这会返回类似于以下内容的路径：`/clusters/<hdinsight-cluster-name>/`。
+    此命令返回如下所示的路径：`/clusters/<hdinsight-cluster-name>/`。
 
-也可通过 Azure 门户按以下步骤查找存储信息：
+也可以在 Azure 门户中使用以下步骤查找存储信息：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择 HDInsight 群集。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的 HDInsight 群集。
 
 2. 在“属性”部分中，选择“存储帐户”。 将显示群集的存储信息。
 
 ### <a name="how-do-i-access-files-from-outside-hdinsight"></a>如何从外部 HDInsight 访问文件
 
-从 HDInsight 群集外部访问数据有多种方法。 以下是可用于处理数据的实用程序和 SDK 的几个链接：
+可通过多种方法从 HDInsight 群集外部访问数据。 以下是可用于处理数据的实用程序和 SDK 的几个链接：
 
 如果使用 __Azure 存储__，请参阅以下链接，了解访问数据的方法：
 
@@ -203,7 +203,7 @@ HDInsight 使用 Azure Blob 存储或 Azure Data Lake Store 作为默认存储�
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)
 
-## <a name="a-namescalingascaling-your-cluster"></a><a name="scaling"></a>缩放你的群集
+## <a name="scaling"></a>缩放你的群集
 
 使用群集缩放功能可更改群集使用的数据节点数，而无需删除然后再重新创建群集。 你可以在其他作业或进程正在群集上运行时执行缩放操作。
 
@@ -241,14 +241,14 @@ HDInsight 使用 Azure Blob 存储或 Azure Data Lake Store 作为默认存储�
 有关缩放 HDInsight 群集的特定信息，请参阅：
 
 * [使用 Azure 门户管理 HDInsight 中的 Hadoop 群集](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [使用 Azure PowerShell 管理 HDinsight 中的 Hadoop 群集](hdinsight-administer-use-command-line.md#scale-clusters)
+* [使用 Azure PowerShell 管理 HDInsight 中的 Hadoop 群集](hdinsight-administer-use-command-line.md#scale-clusters)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>如何安装 Hue（或其他 Hadoop 组件）？
 
-HDInsight 是一项托管服务，这意味着如果检测到问题，Azure 可能会自动破坏并重新预配群集中的节点。 因此，不建议直接在群集节点上手动安装组件。 需要安装以下内容时，请改用 [HDInsight 脚本操作](hdinsight-hadoop-customize-cluster.md)：
+HDInsight 是一个托管服务。 如果 Azure 检测到群集问题，可以删除有故障的节点，然后创建一个节点来取代它。 如果在群集节点上手动安装组件，则发生此操作时，这些组件不会保留。 应该改用 [HDInsight 脚本操作](hdinsight-hadoop-customize-cluster.md)。 脚本操作可用于进行以下更改：
 
-* 服务或网站，如 Spark 或 Hue。
-* 需要更改群集中多个节点上的配置的组件。 例如，必需的环境变量，创建日志目录，或创建配置文件。
+* 安装并配置服务或网站，如 Spark 或 Hue。
+* 安装并配置需要在群集中多个节点上更改配置的组件。 例如，必需的环境变量，创建日志目录，或创建配置文件。
 
 脚本操作是在群集预配期间运行的 Bash 脚本，可用于在群集上安装并预配其他组件。 提供了用于安装以下组件的示例脚本：
 
@@ -269,9 +269,9 @@ HDInsight 是一项托管服务，这意味着如果检测到问题，Azure 可�
 >
 > ```find / -name *componentname*.jar 2>/dev/null```
 >
-> 这将返回任何匹配的 jar 文件的路径。
+> 此命令返回任何匹配的 jar 文件的路径。
 
-如果群集已提供作为独立 jar 文件的组件的版本，但是你希望使用不同的版本，则可以将新版本组件上传到群集，然后尝试在你的作业中使用它。
+如果想要使用不同的版本而不是群集中附带的版本，可将新版本的组件上载到群集，然后尝试在作业中使用该版本。
 
 > [!WARNING]
 > 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助找出并解决与这些组件相关的问题。

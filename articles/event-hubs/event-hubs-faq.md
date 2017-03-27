@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/16/2017
+ms.date: 03/13/2017
 ms.author: sethm;jotaub;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 59622f283daeca59464dfb7a13ca76c7a0148a21
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 7bae4ae6d41e6dc6515a3fcdf574ffd193ae1aa3
+ms.lasthandoff: 03/14/2017
 
 ---
 
@@ -26,7 +26,13 @@ ms.lasthandoff: 03/03/2017
 ## <a name="general"></a>常规
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>事件中心基本和标准这两种服务层有什么不同？
-事件中心标准层提供的功能要超出事件中心基本层以及某些竞争对手系统的功能。 这些功能包括：超过 24 小时的保留期，能够使用一个 AMQP 连接将命令发送到大量设备而延迟为次秒级，并且能够从那些设备将遥测发送到事件中心。 标准还提供事件中心[存档](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)功能。有关功能的列表，请参阅[事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)。
+Azure 事件中心标准层提供的功能超出了基本层中提供的功能。 以下功能是标准层附带的：
+* 更长的事件保留期
+* 其他中转连接，对于超出包含的数量的部分收取超额费用
+* 多于单个使用者组
+* [存档](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)
+
+有关定价层的更多详细信息（包括专用事件中心），请参阅[事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 ### <a name="what-are-event-hubs-throughput-units"></a>什么是事件中心吞吐量单元？
 通过 Azure 门户或事件中心 Resource Manager 模板明确选择事件中心吞吐量单位。 吞吐量单位适用于事件中心命名空间中的所有事件中心，每个吞吐量单位为命名空间赋予以下功能：

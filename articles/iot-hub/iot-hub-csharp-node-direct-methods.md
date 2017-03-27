@@ -12,30 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 03/10/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: bd2ae99b4e66085590230028ae649502327db50a
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: e7d7065513f69bac5f759bfd5f4b3965b26bab5d
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="use-direct-methods-netnode"></a>使用直接方法(.NET/Node)
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
 
-在本教程结束时，你将拥有一个 .NET 控制台应用和一个 Node.js 控制台应用：
+在本教程中，我们将开发 .NET 和 Node.js 控制台应用：
 
 * **CallMethodOnDevice.sln**：一个 .NET 后端应用，可调用模拟设备应用上的方法并显示响应。
-* **SimulatedDevice.js**，一个 Node.js 应用，可模拟使用早先创建的设备标识连接到 IoT 中心的设备，并响应通过云调用的方法。
+* **SimulatedDevice.js**：一个 Node.js 应用，可模拟使用早先创建的设备标识连接到 IoT 中心的设备，并响应通过云调用的方法。
 
 > [!NOTE]
 > [Azure IoT SDK][lnk-hub-sdks] 一文提供了各种 Azure IoT SDK 的相关信息，用户可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序。
 > 
 > 
 
-若要完成本教程，需要满足以下条件：
+若要完成本教程，你需要：
 
-* Microsoft Visual Studio 2015。
+* Visual Studio 2015 或 Visual Studio 2017。
 * Node.js 版本 0.10.x 或更高版本。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
@@ -56,7 +57,7 @@ ms.openlocfilehash: bd2ae99b4e66085590230028ae649502327db50a
     ```
         npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. 在 **SimulatedDevice.js** 文件夹中，利用文本编辑器创建新的 **simulateddevice** 文件。
+3. 使用文本编辑器在 **simulateddevice** 文件夹中创建一个文件，并将其命名为 **SimulatedDevice.js**。
 4. 在 **SimulatedDevice.js** 文件的开头添加以下 `require` 语句：
    
     ```
@@ -111,7 +112,7 @@ ms.openlocfilehash: bd2ae99b4e66085590230028ae649502327db50a
 1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **CallMethodOnDevice**。
    
     ![新的 Visual C# Windows 经典桌面项目][10]
-2. 在“解决方案资源管理器”中，右键单击“CallMethodOnDevice”项目，然后单击“管理 NuGet 包”。
+2. 在“解决方案资源管理器”中，右键单击“CallMethodOnDevice”项目，然后单击“管理 NuGet 包...”。
 3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
    
     ![“NuGet 包管理器”窗口][11]
@@ -148,17 +149,18 @@ ms.openlocfilehash: bd2ae99b4e66085590230028ae649502327db50a
 ## <a name="run-the-applications"></a>运行应用程序
 现在，你已准备就绪，可以运行应用程序了。
 
-1. 在 **simulateddevice** 文件夹的命令提示符处运行以下命令，开始侦听向从 IoT 中心发出的方法调用：
+1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，然后单击“设置启动项目...”。 选择“单个启动项目”，然后在下拉菜单中选择“CallMethodOnDevice”项目。
+
+2. 在 **simulateddevice** 文件夹的命令提示符处运行以下命令，开始侦听向从 IoT 中心发出的方法调用：
    
     ```
     node SimulatedDevice.js
     ```
-   
-    ![][7]
-2. 设备已连接，正在等待方法调用，此时可运行 .NET **CallMethodOnDevice** 应用，调用模拟设备应用中的方法。 此时会看到写入控制台的设备响应。
+   等待模拟设备打开： ![][7]
+3. 设备已连接，正在等待方法调用，此时可运行 .NET **CallMethodOnDevice** 应用，调用模拟设备应用中的方法。 此时会看到写入控制台的设备响应。
    
     ![][8]
-3. 此时会看到设备通过输出消息对方法进行响应，而调用该方法的应用程序则会显示来自设备的响应：
+4. 然后，该设备通过输出此消息来响应该方法：
    
     ![][9]
 
@@ -177,8 +179,8 @@ ms.openlocfilehash: bd2ae99b4e66085590230028ae649502327db50a
 [8]: ./media/iot-hub-csharp-node-direct-methods/netserviceapp.png
 [9]: ./media/iot-hub-csharp-node-direct-methods/methods-output.png
 
-[10]: ./media/iot-hub-csharp-node-direct-methods/create-identity-csharp1.png
-[11]: ./media/iot-hub-csharp-node-direct-methods/create-identity-csharp2.png
+[10]: ./media/iot-hub-csharp-node-direct-methods/direct-methods-csharp1.png
+[11]: ./media/iot-hub-csharp-node-direct-methods/direct-methods-csharp2.png
 
 <!-- Links -->
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
@@ -198,9 +200,4 @@ ms.openlocfilehash: bd2ae99b4e66085590230028ae649502327db50a
 [Send Cloud-to-Device messages with IoT Hub]: iot-hub-csharp-csharp-c2d.md
 [Process Device-to-Cloud messages]: iot-hub-csharp-csharp-process-d2c.md
 [IoT 中心入门]: iot-hub-node-node-getstarted.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

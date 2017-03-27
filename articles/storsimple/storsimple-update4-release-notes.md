@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/03/2017
+ms.date: 03/08/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: c682f9eac1a6ff5e3771aa9e4dfa5b5ffefc1223
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: ec49b8784eb9b18135c5f7ec7242a2468ac87e50
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -39,7 +39,7 @@ Update 4 可应用于任何运行 Release (GA)、Update 0.1 到 Update 3.1 的 S
 
 Update 4 中进行了以下重大改进和 bug 修复。
 
-* **更智能的自动空间回收算法** - Update 4 增强了自动空间回收算法，以基于云中可用的预期回收空间调整空间回收周期。 
+* **更智能的自动空间回收算法** - 在 Update 4 中，自动空间回收算法已得到增强，以根据云中可用的预期回收空间调整空间回收周期。 
 
 * **本地固定卷的性能增强** - 针对具有高数据引入的场景（数据与卷大小相当），Update 4 提升了本地固定卷的性能。
 
@@ -57,9 +57,9 @@ Update 4 中进行了以下重大改进和 bug 修复。
 
 * **与 FIPS 相关的更改** - 自此版本起，对于 Microsoft Azure 政府和 Azure 公有云帐户，将在所有 StorSimple 8000 系列设备上默认启用 FIPS。
 
-* **更新更改** - 自此版本起，对于 Microsoft Azure 政府和 Azure 公有云帐户，将在所有 StorSimple 8000 系列设备上默认启用 FIPS。
+* **更新更改** - 此版本修复了与更新失败相关的 bug。
 
-* **磁盘故障警报** - 此版本中添加了一种新警报，用于警告用户即将发生的磁盘故障。
+* **磁盘故障警报** - 此版本中添加了一种新警报，用于警告用户即将发生的磁盘故障。 如果你遇到此警报，请联系 Microsoft 支持，让其发送更换磁盘。
 
 * **控制器替换更改** - 此版本中添加了一个 cmdlet，它允许用户查询控制器替换过程的状态。 有关详细信息，请转到[可查询控制器替换状态的 cmdlet](https://technet.microsoft.com/library/dn688168.aspx)。
 

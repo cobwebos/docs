@@ -1,9 +1,9 @@
 ---
 title: "使用 PowerShell 迁移到 Resource Manager | Microsoft Docs"
-description: "本文详述了如何在支持的平台上使用 Azure PowerShell 命令将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型"
+description: "本文介绍如何在支持的平台上使用 Azure PowerShell 命令将 IaaS 资源（例如虚拟机 (VM)、虚拟网络 (VNET) 和存储帐户）从经典部署模型迁移到 Azure Resource Manager (ARM) 部署模型"
 services: virtual-machines-windows
 documentationcenter: 
-author: cynthn
+author: singhkays
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
-ms.author: cynthn
+ms.date: 03/14/2017
+ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: bd67cb868e57be0d6cb9c3ea37f67de6dca4e307
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: f5ef5242a565358fb4af90cf10bb332b9c942fce
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -211,7 +211,9 @@ Get-AzureRmVMUsage -Location "West US"
 ```
 
 ### <a name="migrate-virtual-machines-in-a-virtual-network"></a>迁移虚拟网络中的虚拟机
-迁移虚拟网络即可迁移其中的虚拟机。 虚拟机随网络自动迁移。 选取要迁移的虚拟网络。 
+若要迁移虚拟网络中的虚拟机，可迁移虚拟网络。 虚拟机随虚拟网络自动迁移。 选取要迁移的虚拟网络。 
+> [!NOTE]
+> 通过使用虚拟机的 VHD（OS 和数据）文件创建新的使用托管磁盘的 Resource Manager 虚拟机来[迁移单个经典虚拟机](./virtual-machines-windows-migrate-single-classic-to-resource-manager.md)。 
 
 此示例将虚拟网络名称设置为 **myVnet**。 将示例虚拟网络名称替换为你自己的名称。 
 
@@ -253,18 +255,17 @@ Get-AzureRmVMUsage -Location "West US"
 
 在迁移存储帐户之前，请执行以下先决条件检查：
 
-* **检查经典 VM 磁盘是否存储在存储帐户中**
+* **迁移其磁盘存储在存储帐户中的经典虚拟机**
 
-    使用以下命令查找已附加到存储帐户中 VM 的 VM 磁盘： 
-
+    上述命令返回存储帐户中所有经典 VM 磁盘的 RoleName 和 DiskName 属性。 RoleName 是磁盘附加到的虚拟机的名称。 如果上述命令返回了磁盘，请确保先迁移这些磁盘所附加到的虚拟机，然后再迁移存储帐户。
     ```powershell
      $storageAccountName = 'yourStorageAccountName'
       Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
       DiskName | Format-List -Property RoleName, DiskName 
 
     ```
-    上述命令返回存储帐户中所有经典 VM 磁盘的 RoleName 和 DiskName 属性。 RoleName 是磁盘附加到的虚拟机的名称。 如果上述命令返回了磁盘，请确保先迁移这些磁盘附加到虚拟机，然后再迁移存储帐户。
-
+* **删除存储帐户中存储的未附加经典 VM 磁盘**
+ 
     使用以下命令查找存储帐户中未附加的经典 VM 磁盘： 
 
     ```powershell
@@ -277,8 +278,25 @@ Get-AzureRmVMUsage -Location "West US"
     ```powershell
        Remove-AzureDisk -DiskName 'yourDiskName'
     ```
-     
+* **删除存储帐户中存储的 VM 映像**
 
+    上述命令返回 OS 磁盘存储在该存储帐户中的所有 VM 映像。
+     ```powershell
+        Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
+                                } | Select-Object -Property ImageName, ImageLabel
+     ```
+     上述命令返回数据磁盘存储在该存储帐户中的所有 VM 映像。
+     ```powershell
+
+        Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
+                                         -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
+                                        } | Select-Object -Property ImageName, ImageLabel
+     ```
+    使用前面的命令删除上述命令返回的所有 VM 映像：
+    ```powershell
+    Remove-AzureVMImage -ImageName 'yourImageName'
+    ```
+    
 使用以下命令准备要迁移的每个存储帐户。 在此示例中，存储帐户名称是 **myStorageAccount**。 将该示例名称替换为你自己的存储帐户名称。 
 
 ```powershell

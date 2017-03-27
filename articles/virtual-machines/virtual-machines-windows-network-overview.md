@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 03/01/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 9841096da2d16e35878a1c0013a33e9f051e5932
-ms.openlocfilehash: 71b75afc7a31c875672b53c2b2b106220b8c36dd
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 6a31b039825acf3033fa58820bb800f53a355ffb
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/02/2017
 
 ## <a name="network-interfaces"></a>网络接口
 
-[网络接口 (NIC)](../virtual-network/virtual-network-network-interface-overview.md) 是 VM 与虚拟网络 (VNet) 之间互相连接的桥梁。 VM 必须至少有一个 NIC，但可以根据所创建 VM 的大小包含多个 NIC。 请在 [Azure 中虚拟机的大小](virtual-machines-windows-sizes.md)中了解每种 VM 大小支持的 NIC 数目。 
+[网络接口 (NIC)](../virtual-network/virtual-network-network-interface.md) 是 VM 与虚拟网络 (VNet) 之间互相连接的桥梁。 VM 必须至少有一个 NIC，但可以根据所创建 VM 的大小包含多个 NIC。 请在 [Azure 中虚拟机的大小](virtual-machines-windows-sizes.md)中了解每种 VM 大小支持的 NIC 数目。 
 
 如果想要创建包含多个 NIC 的 VM，必须创建至少包含两个 NIC 的 VM。  创建 VM 后，可以添加更多的 NIC（不超过 VM 大小支持的数目上限），但是，无法将更多 NIC 添加到只包含一个 NIC 的 VM，不管该 VM 大小支持的数目如何。 
 
@@ -180,3 +180,4 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 - 了解如何配置[用户定义的路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)。 
 - 了解如何配置 [VNet 到 VNet 连接](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
 - 了解如何[排查路由问题](../virtual-network/virtual-network-routes-troubleshoot-portal.md)。
+

@@ -1,6 +1,6 @@
 ---
-title: "使用 IPv6 - Azure 模板部署面向 Internet 的负载均衡 | Microsoft Docs"
-description: "如何为 Azure Load Balancer 和负载均衡的 VM 部署 IPv6 支持。"
+title: "使用 IPv6 部署面向 Internet 的负载均衡器 - Azure 模板 | Microsoft 文档"
+description: "如何为 Azure 负载均衡器和负载均衡的 VM 部署 IPv6 支持。"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -17,8 +17,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 752793ed481b0b69203fa13b214add32e9129dfd
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 95962833f853886476630d703c8959bad1852e50
+ms.lasthandoff: 03/15/2017
 
 ---
 
@@ -29,13 +30,13 @@ ms.openlocfilehash: 752793ed481b0b69203fa13b214add32e9129dfd
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [模板](load-balancer-ipv6-internet-template.md)
 
-Azure load balancer 是位于第&4; 层 (TCP, UDP) 的负载平衡器。 该负载平衡器可以在云服务或负载平衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure 负载均衡器是位于第&4; 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 ## <a name="example-deployment-scenario"></a>示例部署方案
 
 下图演示了使用本文所述示例模板部署的负载均衡解决方案。
 
-![负载平衡器方案](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
+![负载均衡器方案](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
 在此方案中，将创建以下 Azure 资源：
 
@@ -132,9 +133,4 @@ Azure Resource Manager 模板包含可根据需要自定义的多个变量和参
 | lbName |指定负载均衡器的名称。 此名称将显示在门户中，或者通过 CLI 或 PowerShell 命令引用它时会用到它。 |
 
 模板中的其余变量是 Azure 创建资源时分配的派生值。 请不要更改这些变量。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

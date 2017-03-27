@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: f5f21fa9a0265258b065a844ffd002749c4dee03
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 9d3029817cae6570ff8871fbcb068250544595d7
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -127,7 +127,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 
 - SQL 数据仓库使用预定义的数据库角色（称为资源类）将不同的内存量、CPU 资源量和并发槽数量分配给用户。 每个用户可以属于一个小型、中型、大型或超大型资源类。 用户的资源类决定了该用户在运行查询与加载操作时可以使用的资源。
 
-- 为了优化数据压缩，用户通常需要使用大量或特大量的资源分配加载数据。 在[此处](./sql-data-warehouse-develop-concurrency.md#resource-classes)阅读有关资源类的详细信息：
+- 为了优化数据压缩，用户可能需要使用大量或特大量的资源分配来加载数据。 在[此处](./sql-data-warehouse-develop-concurrency.md#resource-classes)阅读有关资源类的详细信息：
 
 ### <a name="create-an-account-that-can-control-a-database"></a>创建可控制数据库的帐户
 

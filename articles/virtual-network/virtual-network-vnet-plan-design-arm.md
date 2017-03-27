@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ac0d7d9aaf1208c97e0ae797ac7c2b0ffecb88ae
-ms.openlocfilehash: daa0d0a7a0816f16f62904dc0e407105eb25c4ec
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: fef61e6155471a0459957ea0c510698cfa787fdc
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: daa0d0a7a0816f16f62904dc0e407105eb25c4ec
 * 你在 Azure 中创建的所有内容都由一个或多个资源组成。 虚拟机 (VM) 是一种资源，VM 所用的网络适配器接口 (NIC) 是一个资源，NIC 所用的公共 IP 地址是一种资源，NIC 所连接到的 VNet 也是一种资源。
 * 在 [Azure 区域](https://azure.microsoft.com/regions/#services)和订阅中创建资源。 资源只能连接位于相同区域和订阅中的 VNet。
 * 可以使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)将 VNet 互联。 还可以按这种方式跨区域和订阅连接 VNet。
-* 可以使用 Azure 中提供的一种[连接选项](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections)，将 VNet 连接到本地网络。
+* 可以使用 Azure 中提供的一种[连接选项](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)，将 VNet 连接到本地网络。
 * 不同的资源可以集中归入[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，这样可便于将资源作为一个单元来管理。 资源组可以包含多个区域中的资源，只要资源属于同一订阅即可。
 
 ### <a name="define-requirements"></a>定义要求
@@ -120,7 +121,7 @@ VNet 包含以下属性。
 
 * **用于子网中的所有 NIC 的专用 IP 地址不足**。 如果你的子网地址空间未包含子网中的 NIC 数所对应的足够 IP 地址，则需要创建多个子网。 请记住，Azure 保留每个子网中的 5 个专用 IP 地址，这些 IP 地址不能使用：地址空间的第一个和最后一个地址（用于子网地址和多播）和 3 个要内部使用的地址（用于 DHCP 和 DNS 目的）。
 * **安全性**。 可以使用子网将 VM 组彼此分离，以用于具有多层结构的工作负荷，并对这些子网应用不同的[网络安全组 (NSG)](virtual-networks-nsg.md#subnets)。
-* **混合连接**。 可以使用 VPN 网关和 ExpressRoute 线路将 VNet 彼此[连接](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections)，并连接到本地数据中心。 VPN 网关和 ExpressRoute 线路需要创建其自己的子网。
+* **混合连接**。 可以使用 VPN 网关和 ExpressRoute 线路将 VNet 彼此[连接](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)，并连接到本地数据中心。 VPN 网关和 ExpressRoute 线路需要创建其自己的子网。
 * **虚拟设备**。 可以在 Azure VNet 中使用虚拟设备，如防火墙、WAN 加速器或 VPN 网关。 这样做时，需要[将流量路由](virtual-networks-udr-overview.md)到这些设备，并将其隔离在它们自己的子网中。
 
 ### <a name="subnet-and-nsg-design-patterns"></a>子网和 NSG 设计模式
@@ -249,10 +250,5 @@ VNet 包含以下属性。
 * 根据方案[部署虚拟网络](virtual-networks-create-vnet-arm-template-click.md)。
 * 了解如何对 IaaS VM 进行[负载平衡](../load-balancer/load-balancer-overview.md)，以及如何[管理通过多个 Azure 区域的路由](../traffic-manager/traffic-manager-overview.md)。
 * 详细了解 [NSG 以及如何规划和设计 NSG 解决方案](virtual-networks-nsg.md)。
-* 详细了解[跨界连接和 VNet 连接选项](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections)。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+* 详细了解[跨界连接和 VNet 连接选项](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)。
 

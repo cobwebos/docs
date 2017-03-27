@@ -17,9 +17,9 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 67d4fee2fc59651903d4c02d1fce84c7b81e5da1
-ms.openlocfilehash: 03356c0499c595f73221d05d941233de5f01f357
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e8ee93cacba552bc7a6ec559dd8aa1fb773fadc2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -31,12 +31,12 @@ ms.lasthandoff: 02/27/2017
 该环境包含：
 
 * 两个位于可用性集中的 VM。
-* 端口 80 上有一个带负载平衡规则的负载平衡器。
+* 端口 80 上有一个带负载平衡规则的负载均衡器。
 * 网络安全组 (NSG) 规则，阻止 VM 接受不需要的流量。
 
 ![基本环境概述](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
-若要创建此自定义环境，需要在 Resource Manager 模式 (`azure config mode arm`) 下安装最新的 [Azure CLI 1.0](../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 此外，还需要一个 JSON 分析工具。 本示例使用 [jq](https://stedolan.github.io/jq/)。
+若要创建此自定义环境，需要在 Resource Manager 模式 (`azure config mode arm`) 下安装最新的 [Azure CLI 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 此外，还需要一个 JSON 分析工具。 本示例使用 [jq](https://stedolan.github.io/jq/)。
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/27/2017
 ## <a name="quick-commands"></a>快速命令
 如果需要快速完成任务，请参阅以下部分，其中详细说明了用于将 VM 上载到 Azure 的基本命令。 本文档的余下部分（从[此处](#detailed-walkthrough)开始）提供了每个步骤的更详细信息和上下文。
 
-确保已登录 [Azure CLI 1.0](../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 并使用 Resource Manager 模式：
+确保已登录 [Azure CLI 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 并使用 Resource Manager 模式：
 
 ```azurecli
 azure config mode arm
@@ -153,7 +153,7 @@ azure network lb probe create -g myResourceGroup -l myLoadBalancer \
   -n myHealthProbe -p "tcp" -i 15 -c 4
 ```
 
-使用 JSON 分析器验证负载平衡器、IP 池和 NAT 规则：
+使用 JSON 分析器验证负载均衡器、IP 池和 NAT 规则：
 
 ```azurecli
 azure network lb show -g myResourceGroup -n myLoadBalancer --json | jq '.'
@@ -273,7 +273,7 @@ azure group export myResourceGroup
 ## <a name="detailed-walkthrough"></a>详细演练
 下面的详细步骤说明构建环境时每条命令的作用。 了解这些概念有助于构建自己的自定义开发或生产环境。
 
-确保已登录 [Azure CLI 1.0](../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 并使用 Resource Manager 模式：
+确保已登录 [Azure CLI 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 并使用 Resource Manager 模式：
 
 ```azurecli
 azure config mode arm
@@ -620,8 +620,8 @@ azure network public-ip show myResourceGroup myPublicIP --json | jq '.'
 }
 ```
 
-## <a name="create-a-load-balancer-and-ip-pools"></a>创建负载平衡器和 IP 池
-创建负载平衡器时，可以将流量分散到多个 VM。 负载平衡器还可以在执行维护或承受重负载时运行多个 VM 来响应用户请求，为应用程序提供冗余。 以下示例创建一个名为 `myLoadBalancer` 的负载均衡器：
+## <a name="create-a-load-balancer-and-ip-pools"></a>创建负载均衡器和 IP 池
+创建负载均衡器时，可以将流量分散到多个 VM。 负载平衡器还可以在执行维护或承受重负载时运行多个 VM 来响应用户请求，为应用程序提供冗余。 以下示例创建一个名为 `myLoadBalancer` 的负载均衡器：
 
 ```azurecli
 azure network lb create --resource-group myResourceGroup --location westeurope \
@@ -642,7 +642,7 @@ data:    Provisioning state              : Succeeded
 info:    network lb create command OK
 ```
 
-我们的负载平衡器很空，因此让我们创建一些 IP 池。 我们想要为负载均衡器创建两个 IP 池：一个用于前端，一个用于后端。 前端 IP 池将公开显示。 它也是我们将前面创建的 PIP 分配到的位置。 然后我们使用后端池作为 VM 要连接到的位置。 这样，流量便可以通过负载平衡器流向 VM。
+我们的负载均衡器很空，因此让我们创建一些 IP 池。 我们想要为负载均衡器创建两个 IP 池：一个用于前端，一个用于后端。 前端 IP 池将公开显示。 它也是我们将前面创建的 PIP 分配到的位置。 然后我们使用后端池作为 VM 要连接到的位置。 这样，流量便可以通过负载均衡器流向 VM。
 
 首先，让我们创建前端 IP 池。 以下示例创建一个名为 `myFrontEndPool` 的前端池：
 
@@ -686,7 +686,7 @@ data:    Provisioning state              : Succeeded
 info:    network lb address-pool create command OK
 ```
 
-可以通过查看 `azure network lb show` 和 JSON 输出来了解负载平衡器的工作情况：
+可以通过查看 `azure network lb show` 和 JSON 输出来了解负载均衡器的工作情况：
 
 ```azurecli
 azure network lb show myResourceGroup myLoadBalancer --json | jq '.'
@@ -731,8 +731,8 @@ azure network lb show myResourceGroup myLoadBalancer --json | jq '.'
 }
 ```
 
-## <a name="create-load-balancer-nat-rules"></a>创建负载平衡器 NAT 规则
-若要获取流经负载均衡器的流量，需要创建网络地址转换 (NAT) 规则来指定入站或出站操作。 可以指定要使用的协议，然后根据需要将外部端口映射到内部端口。 针对我们的环境，让我们创建一些规则，以允许通过负载平衡器对 VM 进行 SSH 访问。 将 TCP 端口 4222 和 4223 设置为定向到 VM 上的 TCP 端口 22（稍后将会创建）。 以下示例创建一个名为 `myLoadBalancerRuleSSH1` 的规则，将 TCP 端口 4222 映射到端口 22：
+## <a name="create-load-balancer-nat-rules"></a>创建负载均衡器 NAT 规则
+若要获取流经负载均衡器的流量，需要创建网络地址转换 (NAT) 规则来指定入站或出站操作。 可以指定要使用的协议，然后根据需要将外部端口映射到内部端口。 针对我们的环境，让我们创建一些规则，以允许通过负载均衡器对 VM 进行 SSH 访问。 将 TCP 端口 4222 和 4223 设置为定向到 VM 上的 TCP 端口 22（稍后将会创建）。 以下示例创建一个名为 `myLoadBalancerRuleSSH1` 的规则，将 TCP 端口 4222 映射到端口 22：
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -799,8 +799,8 @@ data:    Backend address pool id         : /subscriptions/guid/resourceGroups/my
 info:    network lb rule create command OK
 ```
 
-## <a name="create-a-load-balancer-health-probe"></a>创建负载平衡器运行状况探测
-运行状况探测定期检查受负载平衡器后面的 VM，以确保它们可以根据定义操作和响应请求。 否则，这些 VM 将从操作中删除，以确保不会将用户定向到这些 VM。 你可以针对运行状况探测定义自定义检查，以及间隔和超时值。 有关运行状况探测的详细信息，请参阅 [Load Balancer probes](../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（负载均衡器探测）。 以下示例创建一个名为 `myHealthProbe` 的 TCP 运行状况探测：
+## <a name="create-a-load-balancer-health-probe"></a>创建负载均衡器运行状况探测
+运行状况探测定期检查受负载均衡器后面的 VM，以确保它们可以根据定义操作和响应请求。 否则，这些 VM 将从操作中删除，以确保不会将用户定向到这些 VM。 你可以针对运行状况探测定义自定义检查，以及间隔和超时值。 有关运行状况探测的详细信息，请参阅 [Load Balancer probes](../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（负载均衡器探测）。 以下示例创建一个名为 `myHealthProbe` 的 TCP 运行状况探测：
 
 ```azurecli
 azure network lb probe create --resource-group myResourceGroup \
@@ -826,8 +826,8 @@ info:    network lb probe create command OK
 
 此处我们指定了 15 秒的运行状况检查间隔。 在负载均衡器将该主机视为不再正常运行之前，我们最多可能会错过四个探测（1 分钟）。
 
-## <a name="verify-the-load-balancer"></a>验证负载平衡器
-现已完成负载平衡器配置。 下面是已执行的步骤：
+## <a name="verify-the-load-balancer"></a>验证负载均衡器
+现已完成负载均衡器配置。 下面是已执行的步骤：
 
 1. 创建了负载均衡器。
 2. 创建了前端 IP 池并为其分配了公共 IP。
@@ -835,7 +835,7 @@ info:    network lb probe create command OK
 4. 创建了允许通过 SSH 连接到 VM 以进行管理的 NAT 规则，以及允许对 Web 应用使用 TCP 端口 80 的规则。
 5. 添加了一个运行状况探测来定期检查 VM。 此运行状况探测可以确保用户不会尝试访问不再正常运行和不再提供内容的 VM。
 
-让我们查看负载平衡器现在的情形：
+让我们查看负载均衡器现在的情形：
 
 ```azurecli
 azure network lb show --resource-group myResourceGroup \
@@ -1163,7 +1163,7 @@ info:    The storage URI 'https://mystorageaccount.blob.core.windows.net/' will 
 info:    vm create command OK
 ```
 
-可以使用默认的 SSH 密钥立即连接到 VM。 请确保指定适当的端口，因为我们要通过负载平衡器传递流量。 （对于第一个 VM，设置 NAT 规则以将端口 4222 转发到 VM。）
+可以使用默认的 SSH 密钥立即连接到 VM。 请确保指定适当的端口，因为我们要通过负载均衡器传递流量。 （对于第一个 VM，设置 NAT 规则以将端口 4222 转发到 VM。）
 
 ```bash
 ssh ops@mypublicdns.westeurope.cloudapp.azure.com -p 4222
@@ -1209,7 +1209,7 @@ azure vm create \
   --admin-username azureuser
 ```
 
-现在，可以使用 `azure vm show myResourceGroup myVM1` 命令来检查创建的内容。 此时，已在 Azure 中运行了一个位于负载平衡器后面的 Ubuntu VM，只能使用 SSH 密钥对登录到该 VM（因为密码已禁用）。 可以安装 nginx 或 httpd、部署 Web 应用，以及查看流量是否通过负载平衡器流向两个 VM。
+现在，可以使用 `azure vm show myResourceGroup myVM1` 命令来检查创建的内容。 此时，已在 Azure 中运行了一个位于负载均衡器后面的 Ubuntu VM，只能使用 SSH 密钥对登录到该 VM（因为密码已禁用）。 可以安装 nginx 或 httpd、部署 Web 应用，以及查看流量是否通过负载均衡器流向两个 VM。
 
 ```azurecli
 azure vm show --resource-group myResourceGroup --name myVM1

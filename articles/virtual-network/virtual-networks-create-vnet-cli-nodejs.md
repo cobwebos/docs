@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: b171f51d2bdaa9056429fd214809cf7123ba6326
-ms.openlocfilehash: 50a0dfdd9c71dcf54bed7a72f7fdf5a7db532572
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: acfb9345b789df7664075ef0fb6280beedf0dfb9
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -40,7 +40,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
 若要使用 Azure CLI 创建虚拟网络，请完成以下步骤：
 
-1. 请按照[安装和配置 Azure CLI](../xplat-cli-install.md) 文章中的步骤安装和配置 Azure CLI。
+1. 请按照[安装和配置 Azure CLI](../cli-install-nodejs.md) 文章中的步骤安装和配置 Azure CLI。
 
 2. 创建 VNet 和子网：
 

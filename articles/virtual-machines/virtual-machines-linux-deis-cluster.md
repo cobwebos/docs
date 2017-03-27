@@ -17,9 +17,9 @@ ms.date: 06/24/2015
 ms.author: hbai
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
-ms.openlocfilehash: a972ab1671e55a94fa1dc2060f220d2e85787e35
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: cb631a1bcbe73c18b06e247b29056a83cfa61a46
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/01/2017
 
 * 一个有效的 Azure 订阅。 如果没有帐户，可以在 [azure.com](https://azure.microsoft.com/) 上获取免费试用帐户。
 * 用来使用 Azure 资源组的工作或学校 ID。 如果有个人帐户并使用 Microsoft ID 登录，则需要[基于个人 ID 创建工作 ID](virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-* 以下组件之一（取决于客户端操作系统）：[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[适用于 Mac、Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md)。
+* 以下组件之一（取决于客户端操作系统）：[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[适用于 Mac、Linux 和 Windows 的 Azure CLI](../cli-install-nodejs.md)。
 * [OpenSSL](https://www.openssl.org/)。 OpenSSL 用于生成必要的证书。
 * Git 客户端，如 [Git Bash](https://git-scm.com/)。
 * 若要测试示例应用程序，你还需要一个 DNS 服务器。 可以使用任何 DNS 服务器或支持通配符 A 记录的服务。
@@ -244,13 +244,13 @@ ms.lasthandoff: 03/01/2017
         No domains
 
 ## <a name="next-steps"></a>后续步骤
-本文已指导你完成使用 Azure 资源管理器模板在 Azure 上设置新 Deis 群集的步骤。 该模板支持工具连接冗余，以及对已部署应用程序的负载平衡。 该模板还避免使用成员节点上的公共 IP，因此可以节省宝贵的公共 IP 资源，并为宿主应用程序提供更安全的环境。 若要了解更多信息，请参阅下列文章：
+本文已指导你完成使用 Azure 资源管理器模板在 Azure 上设置新 Deis 群集的步骤。 该模板支持工具连接冗余，以及对已部署应用程序的负载均衡。 该模板还避免使用成员节点上的公共 IP，因此可以节省宝贵的公共 IP 资源，并为宿主应用程序提供更安全的环境。 若要了解更多信息，请参阅下列文章：
 
 [Azure Resource Manager 概述][resource-group-overview]  
 [如何使用 Azure CLI][azure-command-line-tools]  
 [将 Azure PowerShell 与 Azure Resource Manager 配合使用][powershell-azure-resource-manager]  
 
-[azure-command-line-tools]: ../xplat-cli-install.md
+[azure-command-line-tools]: ../cli-install-nodejs.md
 [resource-group-overview]: ../azure-resource-manager/resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 

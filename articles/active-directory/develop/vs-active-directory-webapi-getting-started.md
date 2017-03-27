@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 03/19/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
-ms.openlocfilehash: b42bd57c8a7dde854208c65f4477327fbf1108a4
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 333db54fe01aad42cfcd050995b64f3725b31ae9
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -27,14 +28,10 @@ ms.openlocfilehash: b42bd57c8a7dde854208c65f4477327fbf1108a4
 > 
 > 
 
-### <a name="requiring-authentication-to-access-controllers"></a>访问控制器需要身份验证
+## <a name="requiring-authentication-to-access-controllers"></a>访问控制器需要身份验证
 你项目中的所有控制器均带有 **Authorize** 属性。 此属性要求用户先进行身份验证，然后才能访问由这些控制器定义的 API。 若要允许匿名访问控制器，请从控制器删除此属性。 如果您想要更详细地设置这些权限，请将该属性应用到需要身份验证的每个方法，而不是将它应用到控制器类。
 
+## <a name="next-steps"></a>后续步骤
 [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

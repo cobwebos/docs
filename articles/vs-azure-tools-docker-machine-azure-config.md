@@ -15,8 +15,9 @@ ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: c327fc0f8175f3fe62f9a0975b7fbad1437bbbe0
-ms.openlocfilehash: 4309d2dffacb9baf2563c8a4fcd1984beabdeef0
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a5b845a93f318b991e14705f0fadea3acd802ced
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: 4309d2dffacb9baf2563c8a4fcd1984beabdeef0
 ## <a name="create-vms-with-docker-machine"></a>使用 Docker Machine 创建 VM
 通过 `azure` 驱动程序，使用 `docker-machine create` 命令在 Azure 中创建 Docker 主机 VM。 
 
-Azure 驱动程序将需要使用订阅 ID。 可以使用 [Azure CLI](xplat-cli-install.md) 或 [Azure 门户](https://portal.azure.com)来检索 Azure 订阅。 
+Azure 驱动程序将需要使用订阅 ID。 可以使用 [Azure CLI](cli-install-nodejs.md) 或 [Azure 门户](https://portal.azure.com)来检索 Azure 订阅。 
 
 **使用 Azure 门户**
 
@@ -120,10 +121,5 @@ PS C:\> docker-machine ip MyDockerHost
 有关容器的生产托管，请参阅 [Azure 容器服务](http://aka.ms/AzureContainerService)
 
 若要使用 Visual Studio 开发 .NET Core 应用程序，请参阅 [Docker Tools for Visual Studio](http://aka.ms/DockerToolsForVS)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

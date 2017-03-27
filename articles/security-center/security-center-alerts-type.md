@@ -1,6 +1,6 @@
 ---
 title: "Azure 安全中心按类型划分的安全警报 | Microsoft Docs"
-description: "本文档介绍 Azure 安全中心提供的安全警报类型。"
+description: "本文讨论可以在 Azure 安全中心使用的不同类型的安全警报。"
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 03/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: b66128a2bb0c3237541ae991a98daa09deeff5d5
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 5da00d1d64b258773fa485baa804b283fde731c3
+ms.lasthandoff: 03/17/2017
 
 
 ---
 # <a name="security-alerts-by-type-in-azure-security-center"></a>Azure 安全中心按类型划分的安全警报
-本文档有助于用户了解 Azure 安全中心提供的各类安全警报。 阅读 [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) （管理和响应 Azure 安全中心的安全警报），详细了解如何管理警报。
+本文有助于你了解 Azure 安全中心提供的各类安全警报。 有关如何管理警报的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
 
 > [!NOTE]
-> 若要启用高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 要升级，请选择 [安全策略](security-center-policies.md)中的“定价层”。 若要了解详细信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/security-center/) 。
+> 若要设置高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 若要升级，请选择“安全策略”中的“定价层”。[](security-center-policies.md) 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 >
 >
 
 ## <a name="what-type-of-alerts-are-available"></a>提供了哪类警报？
-Azure 安全中心按网络攻击链的不同阶段提供多种警报。 下图提供了与部分阶段相关的各种警报的一些示例。
+Azure 安全中心按网络攻击链的不同阶段提供多种警报。 下图显示与部分阶段相关的各种警报。
 
 ![攻击链](./media/security-center-alerts-type/security-center-alerts-type-fig1.png)
 
@@ -40,7 +40,7 @@ Azure 安全中心按网络攻击链的不同阶段提供多种警报。 下图�
 * 应用程序和 DDoS 攻击（WAF 合作伙伴）
 * 入侵检测（NG 防火墙合作伙伴）
 
-**安装和利用漏洞攻击**
+**安装和攻击**
 
 * 已知的恶意软件特征（AM 合作伙伴）
 * 内存中的恶意软件和利用漏洞攻击尝试
@@ -62,10 +62,10 @@ Azure 安全中心按网络攻击链的不同阶段提供多种警报。 下图�
 * 资源分析
 
 ## <a name="virtual-machine-behavioral-analysis"></a>虚拟机行为分析
-Azure 安全中心可以使用行为分析，根据对虚拟机事件日志（例如进程创建事件、登录事件等）的分析确定受攻击的资源。 此外，还可以通过与其他信号的关联性，查看是否存在某个广泛传播活动的支持证据。
+Azure 安全中心可以使用行为分析，根据对虚拟机事件日志的分析确定受攻击的资源。 例如进程创建事件和登录事件。 此外，还可以通过与其他信号的关联性，查看是否存在某个广泛传播活动的支持证据。
 
 > [!NOTE]
-> 有关安全中心检测功能工作原理的详细信息，请参阅 [Azure Security Center Detection Capabilities](security-center-detection-capabilities.md)（Azure 安全中心检测功能）。
+> 有关安全中心检测功能工作原理的详细信息，请参阅 [Azure 安全中心检测功能](security-center-detection-capabilities.md)。
 >
 >
 
@@ -74,47 +74,47 @@ Azure 安全中心可以使用行为分析，根据对虚拟机事件日志（�
 
 当软件故障时，故障转储可捕获故障时的部分内存。 故障可能由恶意软件、常规应用程序问题或系统问题引发。 通过分析故障转储中的内存，安全中心可以检测到用于利用软件漏洞、访问机密数据以及偷偷存留在受攻击计算机中的技术。 此类操作对主机的性能影响很小，因为分析是由安全中心后端执行的。
 
-以下字段是下面列出的故障转储分析警报的常用字段：
+以下字段常见于本文后面出现的故障转储警报示例：
 
-* DUMPFILE：故障转储文件的名称
-* PROCESSNAME：故障进程的名称
-* PROCESSVERSION：故障进程的版本
+* DUMPFILE：故障转储文件的名称。
+* PROCESSNAME：故障进程的名称。
+* PROCESSVERSION：故障进程的版本。
 
 ### <a name="shellcode-discovered"></a>发现 Shellcode
 Shellcode 是在恶意软件利用软件漏洞之后运行的有效负载。 此警报指示故障转储分析检测到可执行代码表现出通常由恶意有效负载表现出的行为。 虽然非恶意软件可能会表现出此行为，但这在正常的软件开发实践中并不常见。
 
-此警报提供以下其他字段：
+Shellcode 警报示例提供以下其他字段：
 
-* ADDRESS：在 Shellcode 内存中的位置
+* ADDRESS：在 Shellcode 内存中的位置。
 
 下面是此类警报的示例：
 
 ![Shellcode 警报](./media/security-center-alerts-type/security-center-alerts-type-fig2.png)
 
 ### <a name="module-hijacking-discovered"></a>发现模块劫持
-Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系统功能。 DLL 劫持发生在恶意软件通过更改 DLL 加载顺序将恶意的有效负载加载到内存中时，可以在内存中执行任意代码。 此警报指示故障转储分析检测到从两个不同路径加载了一个类似名称的模块，其中一个加载路径来自常用的 Windows 系统二进制文件位置。
+Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系统功能。 DLL 劫持发生在恶意软件通过更改 DLL 加载顺序将恶意的有效负载加载到内存中时，可以在内存中执行任意代码。 此警报指示故障转储分析检测到一个名称类似的模块，该模块从两个不同的路径加载。 其中一个加载路径源自常见的 Windows 系统二进制文件位置。
 
-合法的软件开发人员偶尔会因为非恶意的原因（例如进行检测、扩展 Windows OS 或 Windows 应用程序）而更改 DLL 加载顺序。 为了区分对 DLL 加载顺序的恶意更改和可能是善意的更改，Azure 安全中心会检查加载的模块是否跟可疑的配置文件相符。 该检查的结果由警报的“SIGNATURE”字段指示，并反映在警报严重性、警报描述和警报补救步骤中。 对劫持模块在磁盘上的副本进行分析（例如验证文件数字签名或运行防病毒扫描）也许可以更详细地了解劫持模块的性质，即到底是合法的还是恶意的。
+合法的软件开发人员偶尔会因为非恶意的原因（例如进行检测、扩展 Windows OS 或 Windows 应用程序）而更改 DLL 加载顺序。 为了区分对 DLL 加载顺序的恶意更改和可能是善意的更改，Azure 安全中心会检查加载的模块是否跟可疑的配置文件相符。 该检查的结果由警报的“SIGNATURE”字段指示，并反映在警报严重性、警报描述和警报补救步骤中。 若要调查该模块是合法模块还是恶意模块，可分析劫持模块在磁盘上的副本。 例如，可以验证文件的数字签名，也可以运行防病毒扫描。
 
-除了在上面的“发现 Shellcode”部分描述的常见字段，该警报还提供以下字段：
+除了在前面的“发现 Shellcode”部分描述的常见字段，该警报还提供以下字段：
 
-* SIGNATURE：指示劫持模块是否符合描述可疑行为的配置文件
-* HIJACKEDMODULE：被劫持的 Windows 系统模块的名称
-* HIJACKEDMODULEPATH：被劫持的 Windows 系统模块的路径
-* HIJACKINGMODULEPATH: 劫持模块的路径
+* SIGNATURE：指示劫持模块是否符合描述可疑行为配置文件。
+* HIJACKEDMODULE：被劫持的 Windows 系统模块的名称。
+* HIJACKEDMODULEPATH：被劫持的 Windows 系统模块的路径。
+* HIJACKINGMODULEPATH：劫持模块的路径。
 
 下面是此类警报的示例：
 
 ![模块劫持警报](./media/security-center-alerts-type/security-center-alerts-type-fig3.png)
 
 ### <a name="masquerading-windows-module-detected"></a>检测到伪装 Windows 模块
-恶意软件可能会使用 Windows 系统二进制文件（例如 SVCHOST.EXE）或模块（例如 NTDLL.DLL）的常用名，目的是在系统管理员面前“蒙混过关”，避免暴露恶意软件的性质。 此警报指示故障转储分析检测到故障转储文件包含的模块使用 Windows 系统模块名称，但不满足Windows 模块通常会有的其他标准。 分析伪装模块在磁盘上的副本也许可以进一步揭示该模块的性质，即到底是合法模块还是恶意模块。 分析可能包括：
+恶意软件可能会使用 Windows 系统二进制文件（例如 SVCHOST.EXE）或模块（例如 NTDLL.DLL）的常用名，目的是在系统管理员面前“蒙混过关”，避免暴露恶意软件的性质。 此警报指示故障转储分析检测到故障转储文件包含的模块使用 Windows 系统模块名称，但不满足 Windows 模块通常会有的其他标准。 分析伪装模块在磁盘上的副本也许可以进一步揭示该模块的性质，即到底是合法模块还是恶意模块。 分析可能包括：
 
-* 确认相关文件是否为合法软件包随附的文件
-* 验证文件的数字签名
-* 在文件上运行防病毒扫描
+* 确认相关文件是否为合法软件包随附的文件。
+* 验证文件的数字签名。
+* 在文件上运行防病毒扫描。
 
-除了在上面的“发现 Shellcode”部分描述的常见字段，该警报还提供以下其他字段：
+除了在前面的“发现 Shellcode”部分描述的常见字段，该警报还提供以下其他字段：
 
 * DETAILS：描述模块元数据是否有效，以及模块是否是从系统路径加载的。
 * NAME：伪装 Windows 模块的名称。
@@ -128,26 +128,27 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 
 ### <a name="modified-system-binary-discovered"></a>发现修改的系统二进制文件
 恶意软件可能会修改核心的系统二进制文件，目的是偷偷访问数据或秘密存留在受攻击系统中。 此警报指示故障转储分析检测到核心的 Windows OS 二进制文件已在内存中或磁盘上被修改。
+
 合法软件开发人员偶尔会出于非恶意原因（例如 Detour）或出于应用程序兼容性考虑而修改内存中的系统模块。 为了区分恶意模块和可能是合法的模块，Azure 安全中心会检查修改的模块是否跟可疑的配置文件相符。 该检查的结果表现在警报严重性、警报描述和警报补救步骤中。
 
-除了在上面的“发现 Shellcode”部分描述的常见字段，该警报还提供以下其他字段：
+除了在前面的“发现 Shellcode”部分描述的常见字段，该警报还提供以下其他字段：
 
-* MODULENAME：已修改的系统二进制文件的名称
-* MODULEVERSION：已修改的系统二进制文件的版本
+* MODULENAME：已修改的系统二进制文件的名称。
+* MODULEVERSION：已修改的系统二进制文件的版本。
 
 下面是此类警报的示例：
 
 ![系统二进制警报](./media/security-center-alerts-type/security-center-alerts-type-fig5.png)
 
 ### <a name="suspicious-process-executed"></a>执行了可疑进程
-安全中心在目标虚拟机中确定正在执行的可疑进程后，就会触发警报。 检测时查找的不是具体的名称，而是参数，因此即使攻击者重命名可执行文件，安全中心也可以检测到。
+安全中心在目标虚拟机中确定运行的可疑进程后，就会触发警报。 检测时，不会查找特定的名称，但会查找可执行文件的参数。 因此，即使攻击者重命名可执行文件，安全中心也能检测到可疑的进程。
 
 下面是此类警报的示例：
 
 ![可疑进程警报](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
 ### <a name="multiple-domain-accounts-queried"></a>已查询多个域帐户
-安全中心可以检测到查询域帐户的多次尝试，此类尝试通常由攻击者在网络侦测期间完成。 攻击者可以利用此技术来查询域，确定谁是用户、域管理员帐户是什么、哪些计算机是域控制器，以及与其他域之间存在的可能的域信任关系。
+安全中心可以检测到查询域帐户的多次尝试，此类尝试通常由攻击者在网络侦测期间完成。 攻击者可以利用此技术来查询域，确定用户、域管理员帐户、属于域控制器的计算机，以及与其他域之间存在的可能的域信任关系。
 
 下面是此类警报的示例：
 
@@ -157,18 +158,18 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 安全中心进行网络威胁检测的机制是自动收集 Azure IPFIX (Internet Protocol Flow Information Export) 流量中的安全信息。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。
 
 ### <a name="suspicious-outgoing-traffic-detected"></a>检测到可疑的传出流量
-网络设备的发现和分析方式大致与其他类型的系统相同。 攻击者一开始通常会进行端口扫描。 下面的示例显示了来自 VM 的可疑 SSH 流量，该流量可能在对外部资源执行 SSH 暴力破解或端口扫描攻击。
+网络设备的发现和分析方式大致与其他类型的系统相同。 攻击者一开始通常会进行端口扫描。 在下一示例中，你检测到来自 VM 的可疑的安全外壳 (SSH) 流量。 在这种情况下，可能会发生对外部资源的暴力破解攻击或端口扫描攻击。
 
 ![可疑传出流量警报](./media/security-center-alerts-type/security-center-alerts-type-fig8.png)
 
-利用此警报提供的信息，用户可以确定用于发起该攻击的资源、受攻击的计算机、检测时间、所使用的协议和端口。 此边栏选项卡还提供了一个列表，其中包含的补救步骤可以用来缓解此问题。
+此警报提供的信息可以用来确定攻击者发起该攻击时所使用的资源。 此警报提供的信息还可以用来确定受攻击的计算机、检测时间，以及所使用的协议和端口。 此边栏选项卡还提供了一个列表，其中包含的补救步骤可以用来缓解此问题。
 
 ### <a name="network-communication-with-a-malicious-machine"></a>与恶意计算机进行网络通信
-利用 Microsoft 威胁情报馈送，Azure 安全中心可以检测与恶意 IP 地址通信的受攻击计算机（在许多情况下为命令和控制中心）。 在本示例中，Azure 安全中心检测到通信是使用 Pony Loader 恶意软件（也称 [Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF)）完成的。
+利用 Microsoft 威胁情报馈送，Azure 安全中心可以检测与恶意 IP 地址通信的受攻击计算机。 在许多情况下，恶意地址为命令和控制中心。 在本示例中，安全中心检测到通信是使用 Pony Loader 恶意软件（也称 [Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF)）完成的。
 
 ![网络通信警报](./media/security-center-alerts-type/security-center-alerts-type-fig9.png)
 
-利用此警报提供的信息，用户可以确定用于发起该攻击的资源、受攻击的资源、受害 IP、攻击者 IP 以及检测时间。
+利用此警报提供的信息，你可以确定用于发起该攻击的资源、受攻击的资源、受害 IP、攻击者 IP 以及检测时间。
 
 > [!NOTE]
 > 出于隐私考虑，此屏幕截图删除了实时 IP 地址。
@@ -183,10 +184,10 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 ![传出 DOS](./media/security-center-alerts-type/security-center-alerts-type-fig10-new.png)
 
 ## <a name="resource-analysis"></a>资源分析
-安全中心资源分析专注于 PaaS 服务，例如集成 [Azure SQL 数据库威胁检测](../sql-database/sql-database-threat-detection.md)的功能。 安全中心根据这些方面的分析结果触发资源相关警报。
+安全中心资源分析专注于平台即服务 (PaaS) 服务，例如集成 [Azure SQL 数据库威胁检测](../sql-database/sql-database-threat-detection.md)的功能。 安全中心根据这些方面的分析结果触发资源相关警报。
 
 ### <a name="potential-sql-injection"></a>潜在 SQL 注入
-SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传递给 SQL Server 实例进行分析和执行。 应该对构建 SQL 语句的任何过程进行检查，检查其中是否存在注入漏洞，因为 SQL Server 会执行其接收的所有在语法上有效的查询。 SQL 威胁检测通过机器学习、行为分析和异常检测确定可能在 Azure SQL 数据库中发生的可疑事件。 例如：
+SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传递给 SQL Server 实例来完成分析和执行操作。 应该对构建 SQL 语句的任何过程进行检查，检查其中是否存在注入漏洞，因为 SQL Server 会执行其接收的所有在语法上有效的查询。 SQL 威胁检测通过机器学习、行为分析和异常检测确定可能在 Azure SQL 数据库中发生的可疑事件。 例如：
 
 * 前员工尝试进行数据库访问
 * SQL 注入攻击
@@ -194,10 +195,10 @@ SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传�
 
 ![潜在 SQL 注入警报](./media/security-center-alerts-type/security-center-alerts-type-fig11.png)
 
-此警报提供的信息用于确定受攻击的资源、检测时间、攻击状态，另外，其提供的链接用于执行进一步的调查步骤。
+此警报中的信息可以用来确定受攻击的资源、检测时间以及攻击状态。 此警报还提供一个链接，方便你执行进一步的调查步骤。
 
 ### <a name="vulnerability-to-sql-injection"></a>存在易受 SQL 注入攻击的漏洞
-在数据库上检测到应用程序错误，且该错误指示系统可能存在易受 SQL 注入攻击的漏洞时，会触发此警报。
+在数据库中检测到应用程序错误时，将会触发此警报。 此警报会指示可能存在易受 SQL 注入攻击的漏洞。
 
 ![潜在 SQL 注入警报](./media/security-center-alerts-type/security-center-alerts-type-fig12-new.png)
 
@@ -207,11 +208,11 @@ SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传�
 ![异常访问警报](./media/security-center-alerts-type/security-center-alerts-type-fig13-new.png)
 
 ## <a name="see-also"></a>另请参阅
-本文档介绍了安全中心的各类安全警报。 若要了解有关安全中心的详细信息，请参阅以下文章：
+本文介绍了安全中心的各类安全警报。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [处理 Azure 安全中心的安全事件](security-center-incident.md)
 * [Azure 安全中心检测功能](security-center-detection-capabilities.md)
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
-* [Azure 安全中心常见问题解答](security-center-faq.md) — 查找有关使用该服务的常见问题解答。
-* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
+* [Azure 安全中心常见问题](security-center-faq.md)：查找有关使用服务的常见问题。
+* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及符合性的博客文章。
 

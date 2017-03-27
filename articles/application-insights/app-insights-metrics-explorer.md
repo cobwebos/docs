@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
-ms.openlocfilehash: 1f8083e095ee3c207d3d6d9178017e2dc1670fde
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: ee759149df038ac08f0d5987c3577454a81999db
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/08/2017
 
 ![](./media/app-insights-metrics-explorer/01-overview.png)
 
-可在 Application Insights 门户中的任何位置找到指标图表。 在大多数情况下，它们可以进行自定义，你可以向边栏选项卡添加更多图表。 在概览边栏选项卡中，单击浏览更详细的图表（它们具有诸如“服务器响应”这类的标题），或单击“指标资源管理器”以打开新边栏，可以在其中创建自定义图表。
+可在 Application Insights 门户中的任何位置找到指标图表。 在大多数情况下，它们可以进行自定义，你可以向边栏选项卡添加更多图表。 在“概览”边栏选项卡中，单击“浏览更详细的图表”（它们具有诸如“服务器”这类的标题），或单击“指标资源管理器”以打开新边栏选项卡，可以在其中创建自定义图表。
 
 ## <a name="time-range"></a>时间范围
 可以在任何边栏选项卡上更改图表或网格覆盖的时间范围。
@@ -141,7 +141,7 @@ ms.lasthandoff: 02/08/2017
 ### <a name="to-add-properties-to-the-filter-list"></a>将属性添加到筛选列表
 想要根据自己选择的类别筛选遥测数据？ 例如，要将用户划分到不同的类别，并根据这些类别将数据分段。
 
-[创建自己的属性](app-insights-api-custom-events-metrics.md#properties)。 在“遥测初始值设定项”中设置，使其显示在所有遥测中 - 包括不同 SDK 模块发送的标准遥测。[](app-insights-api-custom-events-metrics.md#defaults)
+[创建自己的属性](app-insights-api-custom-events-metrics.md#properties)。 在[遥测初始值设定项](app-insights-api-custom-events-metrics.md#defaults)中设置，使其显示在所有遥测中 - 包括不同 SDK 模块发送的标准遥测。
 
 ## <a name="edit-the-chart-type"></a>编辑图表类型
 请注意，可以在网格与图形之间切换：
@@ -175,16 +175,6 @@ ms.lasthandoff: 02/08/2017
 
 [详细了解警报][alerts]。
 
-## <a name="export-to-excel"></a>导出到 Excel
-可将指标资源管理器中显示的指标数据导出到 Excel 文件。 导出的数据包括门户中所示的所有图表和表的数据。
-
-![在指标资源管理器中选择“警报规则”，然后选择“添加警报”](./media/app-insights-metrics-explorer/31-export.png)
-
-每个图表或表的数据将导出到 Excel 文件中的独立工作表。
-
-看到的内容即为导出的内容。 如果想要更改所导出数据的范围，请更改时间范围或筛选器。 对于表，如果显示了“加载更多”命令，可以单击该命令，然后单击“导出”来导出更多数据。
-
-*导出目前仅适用于  Internet  Explorer 和 Chrome。我们正在努力添加对其他浏览器的支持。*
 
 ## <a name="continuous-export"></a>连续导出
 如果想要连续导出数据以便在外部进行处理，请考虑使用[连续导出](app-insights-export-telemetry.md)。
@@ -193,7 +183,9 @@ ms.lasthandoff: 02/08/2017
 如果想要获得数据的更丰富视图，可以[导出到 Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)。
 
 ## <a name="analytics"></a>分析
-[Analytics](app-insights-analytics.md) 是使用强大查询语言来分析遥测数据的更灵活方式。 如果想要合并或计算指标的结果或执行应用程序近期性能的深入分析，可以使用该功能。 另一方面，如果想要自动刷新仪表板上的图表和警报，可以使用指标资源管理器。
+[Analytics](app-insights-analytics.md) 是使用强大查询语言来分析遥测数据的更灵活方式。 如果想要合并或计算指标的结果或执行应用程序近期性能的深入分析，可以使用该功能。 
+
+在指标图表中，可以单击“分析”图标，直接访问等效的分析查询。
 
 ## <a name="troubleshooting"></a>故障排除
 *图表中未显示任何数据。*

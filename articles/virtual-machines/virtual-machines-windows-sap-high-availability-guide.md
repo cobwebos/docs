@@ -18,9 +18,9 @@ ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
-ms.openlocfilehash: bcad35fe1df9da06e02eceae6a221c40a9d10bac
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 69bce31b59ba3a70b69ab17f91272b45a4f05afc
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -74,7 +74,7 @@ ms.lasthandoff: 03/01/2017
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-cli]:../xplat-cli-install.md
+[azure-cli]:../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
 [azure-ps]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -441,7 +441,7 @@ ms.lasthandoff: 03/01/2017
 [vpn-gateway-cross-premises-options]:../vpn-gateway/vpn-gateway-plan-design.md
 [vpn-gateway-site-to-site-create]:../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md
 [vpn-gateway-vpn-faq]:../vpn-gateway/vpn-gateway-vpn-faq.md
-[xplat-cli]:../xplat-cli-install.md
+[xplat-cli]:../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../xplat-cli-azure-resource-manager.md
 
 
@@ -504,7 +504,7 @@ Azure Resource Manager 和 Azure 经典部署模型在以下方面有所不同�
 
 在 Azure 经典部署模型中，Azure 内部负载均衡器（Azure Load Balancer 服务）与云服务组之间存在依赖关系。 每个内部负载均衡器都需要一个云服务组。
 
-在 Azure Resource Manager 模型中，无需 Azure 资源组即可使用 Azure Load Balancer。 环境更加简单灵活。
+在 Azure Resource Manager 模型中，无需 Azure 资源组即可使用 Azure 负载均衡器。 环境更加简单灵活。
 
 ### <a name="support-for-sap-multi-sid-scenarios"></a>对 SAP 多 SID 方案的支持
 
@@ -560,7 +560,7 @@ _**图 1：**Azure 中 SAP ASCS/SCS 的 Windows Server 故障转移群集配置�
 ## <a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a> Azure 中的 Windows Server 故障转移群集
 相比于裸机或私有云部署，Azure 虚拟机要求执行额外的步骤来配置 Windows Server 故障转移群集。 构建共享群集磁盘时，需要为 SAP ASCS/SCS 实例设置多个 IP 地址和虚拟主机名。
 
-本文介绍在 Azure 中构建 SAP 高可用性中心服务群集时所要了解的重要概念与其他步骤。 我们介绍如何设置第三方工具 SIOS DataKeeper，以及如何配置 Azure 内部负载平衡器。 可通过这些工具使用文件共享见证在 Azure 中创建 Windows 故障转移群集。
+本文介绍在 Azure 中构建 SAP 高可用性中心服务群集时所要了解的重要概念与其他步骤。 我们介绍如何设置第三方工具 SIOS DataKeeper，以及如何配置 Azure 内部负载均衡器。 可通过这些工具使用文件共享见证在 Azure 中创建 Windows 故障转移群集。
 
 ![图 2：Azure 中没有共享磁盘的 Windows Server 故障转移群集配置][sap-ha-guide-figure-1001]
 
@@ -586,9 +586,9 @@ _**图 3：**Azure 中使用 SIOS DataKeeper 的 Windows Server 故障转移群�
 
 ### <a name="44641e18-a94e-431f-95ff-303ab65e0bcb"></a> Azure 中的名称解析
 Azure 云平台不提供配置虚拟 IP 地址（如浮动 IP 地址）的选项。 需要一个替代解决方案来设置虚拟 IP，以便连接到云中的群集资源。
-Azure 在 Azure Load Balancer 服务中具有内部负载平衡器。 借助内部负载平衡器，客户端通过群集虚拟 IP 地址访问群集。
-需要在包含群集节点的资源组中部署内部负载平衡器。 然后，使用内部负载平衡器的探测端口配置所有必要的端口转发规则。
-客户端可以通过虚拟主机名连接。 DNS 服务器解析群集 IP 地址，内部负载平衡器处理向活动群集节点的端口转发。
+Azure 在 Azure 负载均衡器服务中具有内部负载均衡器。 借助内部负载均衡器，客户端通过群集虚拟 IP 地址访问群集。
+需要在包含群集节点的资源组中部署内部负载均衡器。 然后，使用内部负载均衡器的探测端口配置所有必要的端口转发规则。
+客户端可以通过虚拟主机名连接。 DNS 服务器解析群集 IP 地址，内部负载均衡器处理向活动群集节点的端口转发。
 
 ## <a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a>Azure 基础结构即服务 (IaaS) 中的 SAP NetWeaver 高可用性
 若要实现 SAP 应用程序高可用性（例如为 SAP 软件组件），需要保护以下组件：
@@ -623,7 +623,7 @@ _**图 4：**高可用性 SAP 应用程序服务器_
 _**图 5：** 高可用性 SAP ASCS/SCS 实例_
 
 #### <a name="b5b1fd0b-1db4-4d49-9162-de07a0132a51"></a>在 Azure 中使用 Windows Server 故障转移群集实现 SAP ASCS/SCS 实例高可用性
-相比于裸机或私有云部署，Azure 虚拟机要求执行额外的步骤来配置 Windows Server 故障转移群集。 若要生成 Windows 故障转移群集，需要一个共享群集磁盘、多个 IP 地址、多个虚拟主机名和一个用于群集化 SAP ASCS/SCS 实例的 Azure 内部负载平衡器。 我们将在文章后面部分详细讨论这一点。
+相比于裸机或私有云部署，Azure 虚拟机要求执行额外的步骤来配置 Windows Server 故障转移群集。 若要生成 Windows 故障转移群集，需要一个共享群集磁盘、多个 IP 地址、多个虚拟主机名和一个用于群集化 SAP ASCS/SCS 实例的 Azure 内部负载均衡器。 我们将在文章后面部分详细讨论这一点。
 
 ![图 6：Azure 中使用 SIOS DataKeeper 的 SAP ASCS/SCS 配置的 Windows Server 故障转移群集配置][sap-ha-guide-figure-1002]
 
@@ -719,7 +719,7 @@ _**图 11：**设置 SAP 高可用性 Azure Resource Manager 参数_
     * SAP ASCS/SCS 群集虚拟机：<*SAPSystemSID*>-avset-ascs
     * DBMS 群集虚拟机：<*SAPSystemSID*>-avset-db
 
-  * **Azure 内部负载平衡器**：
+  * **Azure 内部负载均衡器**：
     * 带有 ASCS/SCS instance 的所有端口和 IP 地址 <*SAPSystemSID*>-lb-ascs
     * 带有 SQL Server DBMS 的所有端口和 IP 地址 <*SAPSystemSID*>-lb-db
 
@@ -727,7 +727,7 @@ _**图 11：**设置 SAP 高可用性 Azure Resource Manager 参数_
     * 带有 <*SAPSystemSID*>-ascs-0 虚拟机的开放外部远程桌面协议 (RDP) 端口
 
 > [!NOTE]
-> 默认情况下，网卡和 Azure 内部负载平衡器的所有 IP 地址均为“动态”。 将它们更改为“静态”IP 地址。 本文稍后将介绍操作方法。
+> 默认情况下，网卡和 Azure 内部负载均衡器的所有 IP 地址均为“动态”。 将它们更改为“静态”IP 地址。 本文稍后将介绍操作方法。
 >
 >
 
@@ -803,7 +803,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 若要设置 ASCS/SCS 多 SID 模板，请在 [ASCS/SCS 多 SID 模板][sap-templates-3-tier-multisid-xscs-marketplace-image]中输入以下参数的值：
 
   - **资源前缀**。  设置资源前缀，用于给部署期间创建的所有资源添加前缀。 由于资源不只属于一个 SAP 系统，因此资源的前缀并不是某个 SAP 系统的 SID。  前缀的长度必须为 **3 到&6; 个字符**。
-  - **堆栈类型**。 选择 SAP 系统的堆栈类型。 根据堆栈类型，Azure Load Balancer 将为每个 SAP 系统提供一个（ABAP 或仅限 Java）或两个 (ABAP + Java) 专用 IP 地址。
+  - **堆栈类型**。 选择 SAP 系统的堆栈类型。 根据堆栈类型，Azure 负载均衡器将为每个 SAP 系统提供一个（ABAP 或仅限 Java）或两个 (ABAP + Java) 专用 IP 地址。
   -  **OS 类型**。 选择虚拟机的操作系统。
   -  **SAP 系统计数**。 选择要在此群集中安装的 SAP 系统数目。
   -  **系统可用性**。 选择“HA”。
@@ -813,7 +813,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
    /subscriptions/<*订阅 ID*>/resourceGroups/<*资源组名称*>/providers/Microsoft.Network/virtualNetworks/<*虚拟网络名称*>/subnets/<*子网名称*>
 
-模板将部署一个支持多个 SAP 系统的 Azure Load Balancer 实例。
+模板将部署一个支持多个 SAP 系统的 Azure 负载均衡器实例。
 
 - ASCS 实例的实例编号配置为 00、10、20...
 - SCS 实例的实例编号配置为 01、11、21...
@@ -865,7 +865,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 
 ### <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Azure 虚拟网络
-在本例中，Azure 虚拟网络的地址空间是 10.0.0.0/16。 有一个名为 **Subnet**、地址范围为 10.0.0.0/24 的子网。 所有虚拟机和内部负载平衡器都部署在此虚拟网络中。
+在本例中，Azure 虚拟网络的地址空间是 10.0.0.0/16。 有一个名为 **Subnet**、地址范围为 10.0.0.0/24 的子网。 所有虚拟机和内部负载均衡器都部署在此虚拟网络中。
 
 > [!IMPORTANT]
 > 不要在来宾操作系统内对网络设置进行任何更改。 这包括 IP 地址、DNS 服务器和子网。 在 Azure 中配置所有网络设置。 动态主机配置协议 (DHCP) 服务将传播设置。
@@ -944,7 +944,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 ### <a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>为 Azure 内部负载均衡器设置静态 IP 地址
 
-SAP Azure Resource Manager 模板创建用于 SAP ASCS/SCS 实例群集和 DBMS 群集的 Azure 内部负载平衡器。
+SAP Azure Resource Manager 模板创建用于 SAP ASCS/SCS 实例群集和 DBMS 群集的 Azure 内部负载均衡器。
 
 > [!IMPORTANT]
 > SAP ASCS/SCS 的虚拟主机名的 IP 地址与 SAP ASCS/SCS 内部负载均衡器 **pr1-lb-ascs** 的 IP 地址相同。
@@ -954,7 +954,7 @@ SAP Azure Resource Manager 模板创建用于 SAP ASCS/SCS 实例群集和 DBMS 
 
 为 Azure 内部负载均衡器设置静态 IP 地址：
 
-1.  初始部署将内部负载平衡器 IP 地址设置为“动态”。 在 Azure 门户的“IP 地址”边栏选项卡中的“分配”下面，选择“静态”。
+1.  初始部署将内部负载均衡器 IP 地址设置为“动态”。 在 Azure 门户的“IP 地址”边栏选项卡中的“分配”下面，选择“静态”。
 2.  将内部负载均衡器 **pr1-lb-ascs** 的 IP 地址设置为 SAP ASCS/SCS 实例的虚拟主机名 IP 地址。
 3.  将内部负载均衡器 **pr1-lb-dbms** 的 IP 地址设置为 DBMS 实例的虚拟主机名 IP 地址。
 
@@ -962,12 +962,12 @@ SAP Azure Resource Manager 模板创建用于 SAP ASCS/SCS 实例群集和 DBMS 
 
   _**图 14：**为 SAP ASCS/SCS 实例的内部负载均衡器设置静态 IP 地址_
 
-在本例中，有两个具有以下静态 IP 地址的 Azure 内部负载平衡器：
+在本例中，有两个具有以下静态 IP 地址的 Azure 内部负载均衡器：
 
-| Azure 内部负载平衡器角色 | Azure 内部负载平衡器名称 | 静态 IP 地址 |
+| Azure 内部负载均衡器角色 | Azure 内部负载均衡器名称 | 静态 IP 地址 |
 | --- | --- | --- |
-| SAP ASCS/SCS 实例内部负载平衡器 |pr1-lb-ascs |10.0.0.43 |
-| SAP DBMS 内部负载平衡器 |pr1-lb-dbms |10.0.0.33 |
+| SAP ASCS/SCS 实例内部负载均衡器 |pr1-lb-ascs |10.0.0.43 |
+| SAP DBMS 内部负载均衡器 |pr1-lb-dbms |10.0.0.33 |
 
 
 ### <a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a> Azure 内部负载平衡器的默认 ASCS/SCS 负载平衡规则
@@ -982,7 +982,7 @@ SAP Azure Resource Manager 模板创建所需的端口：
 
 若要创建所需的内部负载均衡终结点，请先为 SAP NetWeaver ABAP ASCS 端口创建这些负载均衡终结点：
 
-| 服务/负载平衡规则名称 | 默认端口号 | （实例编号为 00 的 ASCS 实例）（ERS 为 10）的具体端口 |
+| 服务/负载均衡规则名称 | 默认端口号 | （实例编号为 00 的 ASCS 实例）（ERS 为 10）的具体端口 |
 | --- | --- | --- |
 | 排队服务器 / *lbrule3200* |32<*InstanceNumber*> |3200 |
 | ABAP 消息服务器 / *lbrule3600* |36<*InstanceNumber*> |3600 |
@@ -1000,7 +1000,7 @@ _**表 1：**SAP NetWeaver ABAP ASCS 实例的端口号_
 
 然后，为 SAP NetWeaver Java SCS 端口创建这些负载均衡终结点：
 
-| 服务/负载平衡规则名称 | 默认端口号 | （实例编号为 01 的 SCS 实例）（ERS 为 11）的具体端口 |
+| 服务/负载均衡规则名称 | 默认端口号 | （实例编号为 01 的 SCS 实例）（ERS 为 11）的具体端口 |
 | --- | --- | --- |
 | 排队服务器 / *lbrule3201* |32<*InstanceNumber*> |3201 |
 | 网关服务器 / *lbrule3301* |33<*InstanceNumber*> |3301 |
@@ -1027,7 +1027,7 @@ _**图 15：**Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则_
 如果想要将其他编号用于 SAP ASCS 或 SCS 实例，必须更改这些实例的名称和默认值。
 
 1.  在 Azure 门户中，转到“**<*SID*>-lb-ascs 负载均衡器”** > **“负载均衡规则**”。
-2.  对于属于 SAP ASCS 或 SCS 实例的所有负载平衡规则，请更改以下值：
+2.  对于属于 SAP ASCS 或 SCS 实例的所有负载均衡规则，请更改以下值：
 
   * Name
   * 端口
@@ -1051,7 +1051,7 @@ _**图 17：**将虚拟机添加到域_
 
 ### <a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a> 在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项
 
-Azure Load Balancer 具有内部负载平衡器，可在连接在一段固定时间内处于空闲状态时（空闲超时）关闭连接。 对话实例中的 SAP 工作进程在需要发送第一个排队/取消排队请求时立即打开与 SAP 排队进程的连接。 这些连接通常持续保持已建立状态，直到工作进程或排队进程重新启动为止。 但是，如果连接空闲了设置的一段时间，Azure 内部负载均衡器将会关闭连接。 这不是问题，因为如果连接不再存在，SAP 工作进程会重新建立与排队进程的连接。 这些活动记录在 SAP 进程的开发人员跟踪中，但它们会在这些跟踪中创建大量额外内容。 在两个群集节点上更改 TCP/IP `KeepAliveTime` 和 `KeepAliveInterval` 是一个好办法。 将 TCP/IP 参数中的这些更改与 SAP 配置文件参数组合起来，文章后面部分有介绍。
+Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定时间内处于空闲状态时（空闲超时）关闭连接。 对话实例中的 SAP 工作进程在需要发送第一个排队/取消排队请求时立即打开与 SAP 排队进程的连接。 这些连接通常持续保持已建立状态，直到工作进程或排队进程重新启动为止。 但是，如果连接空闲了设置的一段时间，Azure 内部负载均衡器将会关闭连接。 这不是问题，因为如果连接不再存在，SAP 工作进程会重新建立与排队进程的连接。 这些活动记录在 SAP 进程的开发人员跟踪中，但它们会在这些跟踪中创建大量额外内容。 在两个群集节点上更改 TCP/IP `KeepAliveTime` 和 `KeepAliveInterval` 是一个好办法。 将 TCP/IP 参数中的这些更改与 SAP 配置文件参数组合起来，文章后面部分有介绍。
 
 若要在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项，请先在 SAP ASCS/SCS 的两个 Windows 群集节点上添加以下 Windows 注册表项：
 
@@ -1241,6 +1241,12 @@ _**表 4：**更改第二个 TCP/IP 参数_
 
   _**图 38：**确认已重新配置群集_
 
+成功安装 Windows 故障转移群集后，需要更改某些阈值，以使故障转移检测适合于 Azure 中的情况。 此博客记录了要更改的参数：https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/。 假定用于生成 ASCS/SCS 的 Windows 群集配置的两个 VM 位于同一子网中，需要将以下参数更改为这些值：
+- SameSubNetDelay = 2
+- SameSubNetThreshold = 15
+
+一方面，这些设置已经过客户测试，并且为具有足够弹性提供了良好的折中办法。 另一方面，在发生 SAP 软件或节点/VM 故障时的实际出错情况下，这些设置提供了足够快速的故障转移。 
+
 ### <a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a> 为 SAP ASCS/SCS 群集共享磁盘安装 SIOS DataKeeper Cluster Edition
 
 现在，已在 Azure 中创建有效的 Windows Server 故障转移群集配置。 但是，若要安装 SAP ASCS/SCS，需要一个共享磁盘资源。 无法在 Azure 中创建所需的共享磁盘资源。 SIOS DataKeeper Cluster Edition 是可用于创建共享磁盘资源的第三方解决方案。
@@ -1415,11 +1421,11 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 1.  在 Windows DNS 管理器中为 ASCS/SCS 实例的虚拟主机名创建 DNS 条目。
 
   > [!IMPORTANT]
-  > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure Load Balancer (**<*SID*>-lb-ascs**) 的 IP 地址相同。  
+  > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (**<*SID*>-lb-ascs**) 的 IP 地址相同。  
   >
   >
 
-  虚拟 SAP ASCS/SCS 主机名 (**pr1-ascs-sap**) 的 IP 地址与 Azure Load Balancer (**pr1-lb-ascs**) 的 IP 地址相同。
+  虚拟 SAP ASCS/SCS 主机名 (**pr1-ascs-sap**) 的 IP 地址与 Azure 负载均衡器 (**pr1-lb-ascs**) 的 IP 地址相同。
 
   ![图 56：为 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址定义 DNS 条目][sap-ha-guide-figure-3046]
 
@@ -1472,7 +1478,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
 #### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> 添加探测端口
 
-使用内部负载均衡器探测功能，让整个群集配置使用 Azure Load Balancer。 Azure 内部负载平衡器通常在参与的虚拟机之间平均分配传入的工作负荷。 但是，这在某些群集配置中由于只有一个实例处于活动状态而不起作用。 其他实例处于被动状态，并且无法接受任何工作负荷。 当 Azure 内部负载平衡器将工作仅分配给活动实例时，探测功能很有帮助。 通过探测功能，内部负载平衡器可检测到哪些实例处于活动状态，然后仅定位带有工作负荷的实例。
+使用内部负载均衡器探测功能，让整个群集配置使用 Azure Load Balancer。 Azure 内部负载均衡器通常在参与的虚拟机之间平均分配传入的工作负荷。 但是，这在某些群集配置中由于只有一个实例处于活动状态而不起作用。 其他实例处于被动状态，并且无法接受任何工作负荷。 当 Azure 内部负载均衡器将工作仅分配给活动实例时，探测功能很有帮助。 通过探测功能，内部负载均衡器可检测到哪些实例处于活动状态，然后仅定位带有工作负荷的实例。
 
 添加探测端口：
 
@@ -1551,7 +1557,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
   }
   ```
 
-  将 **SAP <*SID*>** 群集角色联机之后，验证 **ProbePort** 是否已设置为新值。
+  将 **SAP <*SID*>**群集角色联机之后，验证**ProbePort** 是否已设置为新值。
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>
@@ -1651,3 +1657,4 @@ _**图 62：**在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到�
   ![图 64：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A][sap-ha-guide-figure-5003]
 
   _**图 64：**SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A_
+

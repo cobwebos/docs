@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: b829f21dbc212cd951f5e417ad56f7eb724a9d56
-ms.openlocfilehash: 51a9ebdee38c14eb3dc1148070004e6792369b39
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: e7a2fef8860984c2e4e3749202868940b836ca9f
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -32,7 +34,7 @@ ms.openlocfilehash: 51a9ebdee38c14eb3dc1148070004e6792369b39
 ## <a name="requirements"></a>要求
 * [Java 平台 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 或更高版本
 * [Maven](http://maven.apache.org/)
-* [装有 HBase 的基于 Windows 的 HDInsight 群集](hdinsight-hbase-tutorial-get-started.md#create-hbase-cluster)
+* 装有 HBase 的基于 Windows 的 HDInsight 群集
 
     > [!NOTE] 
     > 本文档中的步骤已在 HDInsight 群集版本 3.2 和 3.3 中测试。 示例中提供的默认值适用于 HDInsight 3.3 群集。
@@ -616,10 +618,5 @@ ms.openlocfilehash: 51a9ebdee38c14eb3dc1148070004e6792369b39
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>使用 Start-HBaseExample 时无结果或意外结果
 使用 `-showErr` 参数可查看运行作业时生成的标准错误 (STDERR)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

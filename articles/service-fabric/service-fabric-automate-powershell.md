@@ -1,5 +1,5 @@
 ---
-title: "使用 PowerShell 自动管理 Service Fabric 应用程序 | Microsoft 文档"
+title: "自动管理 Azure Service Fabric 应用程序 | Microsoft 文档"
 description: "使用 PowerShell 部署、升级、测试和删除 Service Fabric 应用程序。"
 services: service-fabric
 documentationcenter: .net
@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 03/14/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: d4a08f7eec5f57b06d87d13abe46942ddc24b482
-ms.openlocfilehash: d1909225a950b961491d3fe426f1e0d6aa5bdd53
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 59133d11d2d66daa44f28ef5b9aa3aae92e56a1e
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -113,7 +113,7 @@ Get-ServiceFabricApplicationUpgrade fabric:/WordCount
 几分钟后，[Get-ServiceFabricApplicationUpgrade](/powershell/servicefabric/vlatest/get-servicefabricapplicationupgrade) cmdlet 会显示已升级所有升级域（已完成）。
 
 ## <a name="task-test-a-service-fabric-application"></a>任务：测试 Service Fabric 应用程序
-若要编写高质量的服务，开发人员需要能够引入不可靠的基础结构故障来测试其服务的稳定性。 Service Fabric 使开发人员能够引入故障操作，并使用混沌和故障转移测试方案来测试故障情况下服务的运行情况。  请参阅[可测试性概述](service-fabric-testability-overview.md)获取详细信息。
+若要编写高质量的服务，开发人员需要能够引入不可靠的基础结构故障来测试其服务的稳定性。 Service Fabric 使开发人员能够引入故障操作，并使用混沌和故障转移测试方案来测试故障情况下服务的运行情况。  有关其他信息，请通读[故障分析服务简介](service-fabric-testability-overview.md)。
 
 ### <a name="step-1-run-the-chaos-test-scenario"></a>步骤 1：运行混沌测试方案
 混沌测试方案跨整个 Service Fabric 群集生成故障。 一般而言，该方案将几个月或几年经历的故障压缩到几小时。 各种交叉故障的组合并具有高故障率，能够找出很有可能被忽视的极端状况。 以下示例运行了 60 分钟的混沌测试方案。

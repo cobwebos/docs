@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: d5caa7a6c1b1a36a4ad08e1b28c7f9157a2c6349
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: d50d25e4ea594b5231d29a862f3a98f07de70324
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -43,7 +43,7 @@ ms.lasthandoff: 02/28/2017
 
 * 代理必须安装在属于要评估的域成员的域控制器上。
 * Active Directory 评估解决方案要求在每台具有 OMS 代理的计算机上安装受支持版本的 .NET Framework 4（4.5.2 或更高版本）。
-* 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Active Directory 评估解决方案添加到 OMS 工作区。  无需进一步的配置。
+* 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ADAssessmentOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Active Directory 评估解决方案添加到 OMS 工作区。  无需进一步的配置。
 
   > [!NOTE]
   > 添加该解决方案后，AdvisorAssessment.exe 文件将会随代理添加到服务器中。 读取配置数据，然后将其发送到云中的 OMS 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。
@@ -55,7 +55,7 @@ Active Directory 评估使用已启用的代理收集 WMI 数据、注册表数�
 
 下表显示代理的数据收集方法，是否需要 Operations Manager (SCOM)，以及代理收集数据的频率。
 
-| 平台 | 直接代理 | SCOM 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |![是](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![是](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![否](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![否](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![是](./media/log-analytics-ad-assessment/oms-bullet-green.png) |7 天 |
 

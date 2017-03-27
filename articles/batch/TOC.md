@@ -11,6 +11,7 @@
 ## 开发
 ### [应用程序包](batch-application-packages.md)
 ### [自动缩放计算节点](batch-automatic-scaling.md)
+### [Azure AD 身份验证](batch-aad-auth.md)
 ### [并发节点任务](batch-parallel-node-tasks.md)
 ### [高效列表查询](batch-efficient-list-queries.md)
 ### [作业准备与作业完成任务](batch-job-prep-release.md)
@@ -47,4 +48,5 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [博客](https://blogs.technet.microsoft.com/windowshpc/)
 

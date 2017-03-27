@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 70b0aef629ceb0fe0021f633183d2a6f09145d85
-ms.openlocfilehash: b164865aaef16799ccdec24d163d4723acb88530
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 754e07e1942a809e415a1da6d1eab6307c65a47a
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -93,13 +94,8 @@ ms.openlocfilehash: b164865aaef16799ccdec24d163d4723acb88530
 
 有关详细信息，请参阅 [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)。
 
-[如何使用针对 Mac 和 Linux 的 Azure 命令行工具]: xplat-cli-install.md
-[Azure 命令行工具]: xplat-cli-install.md
+[如何使用针对 Mac 和 Linux 的 Azure 命令行工具]:cli-install-nodejs.md
+[Azure 命令行工具]:cli-install-nodejs.md
 [如何使用模块]: nodejs-use-node-modules-azure-apps.md
 [build and deploy a Node.js Web Site]: web-sites-nodejs-develop-deploy-mac.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

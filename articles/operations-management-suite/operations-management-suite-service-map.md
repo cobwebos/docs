@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 48a0060edf30b53f685f25efebcb896af2c6122b
-ms.openlocfilehash: ee69cc8402cd9321d1f47ceb4be045274376f440
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: d616a8574d2087be66bc10dfdf3bf6f5a14c11fd
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -55,10 +55,26 @@ ms.lasthandoff: 02/24/2017
 
 默认情况下，“服务映射”映射显示过去 10 分钟的依赖关系信息。  使用左上角的时间控件，可以在映射中查询历史时间范围（最多一小时），显示依赖关系在过去（例如发生事件期间或发生更改之前）的出现形式。    服务映射数据在付费工作区中存储 30 天，在免费工作区中存储 7 天。
 
-## <a name="status-badges"></a>状态徽章
+## <a name="status-badges-and-border-coloring"></a>状态徽章和边框着色
 映射中每个服务器的底部可以是状态徽章的列表，用于表示有关服务器的状态信息。  徽章指示其中一个 OMS 解决方案集成中有服务器的一些相关信息。  单击徽章将直接在右侧面板中转到状态的详细信息。  当前可用性状态徽章包括警报、更改、安全性和更新。
 
-![失败的连接](media/oms-service-map/status-badges.png)
+根据状态徽章的严重性，计算机节点边框的颜色可以是红色（严重）、黄色（警告）或蓝色（信息）。  该颜色表示任何状态徽章的最严重状态。  灰色边框指示没有当前状态指示器的节点。
+
+![状态徽章](media/oms-service-map/status-badges.png)
+
+## <a name="role-icons"></a>角色图标
+某些进程在计算机上充当特定角色：Web 服务器、应用程序服务器、数据库等。服务映射可批注进程和计算机设备，包含的角色图标可帮助以显眼的方式标识进程或服务器扮演的角色。
+
+| 角色图标 | 说明 |
+|:--|:--|
+| ![Web 服务器](media/oms-service-map/role-web-server.png) | Web 服务器 |
+| ![应用服务器](media/oms-service-map/role-application-server.png) | 应用程序服务器 |
+| ![数据库服务器](media/oms-service-map/role-database.png) | 数据库服务器 |
+| ![LDAP 服务器](media/oms-service-map/role-ldap.png) | LDAP 服务器 |
+| ![SMB 服务器](media/oms-service-map/role-smb.png) | SMB 服务器 |
+
+![角色图标](media/oms-service-map/role-icons.png)
+
 
 ## <a name="failed-connections"></a>失败的连接
 对于进程和计算机，失败的连接显示在“服务映射”映射中，如果客户端系统无法访问进程或端口，会显示一条红色虚线。  如果已部署服务映射代理的任何系统正尝试失败的连接，将从该系统报告失败的连接。  服务映射通过观察无法建立连接的 TCP 套接字测量失败的连接。  这可能是因为防火墙、客户端或服务器中的配置错误或远程服务不可用。

@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 59af05a7-2bd9-44b0-b55f-2438d294198b
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,6 +19,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
 ms.openlocfilehash: d6d7c0d112778172633fa068a119ba075c0fd900
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -105,7 +107,7 @@ ms.openlocfilehash: d6d7c0d112778172633fa068a119ba075c0fd900
    
     ![启动 Spark History Server](./media/hdinsight-apache-spark-job-debugging/view-completed-applications.png)
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>另请参阅
+## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案
@@ -129,10 +131,5 @@ ms.openlocfilehash: d6d7c0d112778172633fa068a119ba075c0fd900
 
 ### <a name="manage-resources"></a>管理资源
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](hdinsight-apache-spark-resource-manager.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

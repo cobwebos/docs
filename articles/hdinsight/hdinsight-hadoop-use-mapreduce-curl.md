@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: bc6daf37-fcdc-467a-a8a8-6fb2f0f773d1
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
-ms.openlocfilehash: ae39e06022a8bf53832283173dc97ef8c0e0b9ef
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 41733f76e5f0c82c5321158d6a919f35f6faee3a
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,14 +34,14 @@ ms.lasthandoff: 01/18/2017
 > 如果你已熟悉如何使用基于 Linux 的 Hadoop 服务器，但刚接触 HDInsight，请参阅[基于 Linux 的 HDInsight 上的 Hadoop 须知信息](hdinsight-hadoop-linux-information.md)。
 
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
+## <a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
 
 * HDInsight 群集上的 Hadoop
 * [Curl](http://curl.haxx.se/)
 * [jq](http://stedolan.github.io/jq/)
 
-## <a name="a-idcurlarun-mapreduce-jobs-using-curl"></a><a id="curl"></a>使用 Curl 运行 MapReduce 作业
+## <a id="curl"></a>使用 Curl 运行 MapReduce 作业
 > [!NOTE]
 > 使用 Curl 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须通过提供 HDInsight 群集管理员用户名和密码对请求进行身份验证。 此外，还必须使用群集名称作为用来向服务器发送请求的 URI 的一部分。
 > 
@@ -92,7 +93,7 @@ ms.lasthandoff: 01/18/2017
    > 
 4. 在作业的状态更改为“SUCCEEDED”后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在此示例中为 **wasbs:///example/curl**。 此地址会将作业的输出存储在 HDInsight 群集所用的默认存储容器中的 **example/curl** 目录中。
 
-可以使用 [Azure CLI](../xplat-cli-install.md) 列出并下载这些文件。 例如，若要列出 **example/curl** 中的文件，请使用以下命令：
+可以使用 [Azure CLI](../cli-install-nodejs.md) 列出并下载这些文件。 例如，若要列出 **example/curl** 中的文件，请使用以下命令：
 
     azure storage blob list <container-name> example/curl
 
@@ -105,12 +106,12 @@ ms.lasthandoff: 01/18/2017
 > 
 > 
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>摘要
+## <a id="summary"></a>摘要
 如本文档中所示，你可以使用原始 HTTP 请求来运行、监视和查看 HDInsight 群集上的 Hive 作业的结果。
 
 有关本文中使用的 REST 接口的详细信息，请参阅 [WebHCat Reference](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)（WebHCat 参考）。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 MapReduce 作业的一般信息：
 
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)

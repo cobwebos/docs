@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
-ms.openlocfilehash: 2714bfbf2bf35b11ca1ba6ab8b7e4e6bf5431f45
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 36c245b98868682c24a87bba6628de492e620012
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -51,10 +52,11 @@ ms.openlocfilehash: 2714bfbf2bf35b11ca1ba6ab8b7e4e6bf5431f45
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce 活动
 数据工厂管道中的 HDInsight MapReduce 活动将在你自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 MapReduce 程序。 有关此活动的详细信息，请参阅 [MapReduce 活动](data-factory-map-reduce.md)文章。
 
-可在 HDInsight Spark 群集上通过 MapReduce 活动运行 Spark 程序。 有关详细信息，请参阅[从 Azure 数据工厂调用 Spark 程序](data-factory-spark.md)。
-
 ## <a name="hdinsight-streaming-activity"></a>HDInsight Streaming 活动
 数据工厂管道中的 HDInsight Streaming 活动将在你自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 HDInsight Streaming 程序。 有关此活动的详细信息，请参阅 [HDInsight Streaming 活动](data-factory-hadoop-streaming-activity.md)。
+
+## <a name="hdinsight-spark-activity"></a>HDInsight Spark 活动
+数据工厂管道中的 HDInsight Spark 活动在你自己的 HDInsight 群集上执行 Spark 程序。 有关详细信息，请参阅[从 Azure 数据工厂调用 Spark 程序](data-factory-spark.md)。 
 
 ## <a name="machine-learning-activities"></a>机器学习活动
 借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 Azure 机器学习 Web 服务进行预测分析。 借助 Azure 数据工厂管道中的[批处理执行活动](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity)，可调用 Azure 机器学习 Web 服务预测批处理中的数据。
@@ -95,10 +97,5 @@ Azure 数据工厂支持以下数据转换活动和活动的计算环境。 这�
 | [存储过程](data-factory-stored-proc-activity.md) |Azure SQL、Azure SQL 数据仓库或 SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] 或 Azure 批处理 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

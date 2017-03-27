@@ -12,47 +12,61 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/2/2017
+ms.date: 03/02/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 97edd5eaa3cfa4a122556583dff28c4a9b6f5adc
-ms.openlocfilehash: 18035fe2a30707f701098cef4b1391b1d5ab2012
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 4ec026a5b95170d0eba244123c37cd3c8fab150a
+ms.lasthandoff: 03/09/2017
 
 
 ---
 # <a name="overview-of-the-azure-activity-log"></a>Azure 活动日志概述
-**Azure 活动日志**是一种日志，方便用户了解对订阅中的资源执行的操作。 活动日志此前称为“审核日志”或“操作日志”，因为它报告订阅的控制平面事件。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。 还可以了解该操作和其他相关属性的状态。 活动日志不包括读取 (GET) 操作，或者针对使用经典/RDFE 模型的资源执行的操作。
+**Azure 活动日志**是一种日志，方便用户了解对订阅中的资源执行的操作。 活动日志此前称为“审核日志”或“操作日志”，因为它报告订阅的控制平面事件。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。 还可以了解该操作和其他相关属性的状态。 活动日志未包括读取 (GET) 操作或针对使用经典/“RDFE”模型的资源的操作。
 
-活动日志不同于[诊断日志](monitoring-overview-of-diagnostic-logs.md)，后者全都是资源发出的日志。 这些日志记录对该资源执行的操作，而不是在该资源上执行的操作。
+![活动日志与其他类型的日志 ](./media/monitoring-overview-activity-logs/Activity_Log_vs_other_logs_v5.png)
+
+图 1：活动日志与其他类型的日志
+
+活动日志不同于[诊断日志](monitoring-overview-of-diagnostic-logs.md)。 活动日志提供有关从外部对资源执行的操作的数据。 诊断日志由资源发出，并提供有关该资源的操作的信息。
 
 可以通过 Azure 门户、CLI、PowerShell cmdlet 和 Azure 监视器 REST API 从活动日志检索事件。
 
-查看此[介绍活动日志的视频](https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz)。  
 
 > [!WARNING]
-> Azure 活动日志主要针对 Azure Resource Manager 中发生的活动，而不是使用经典/RDFE 模型执行的活动。 请注意，某些经典资源类型在 Azure Resource Manager 中具有代理资源提供程序（例如 Microsoft.ClassicCompute）。 如果用户使用这些代理资源提供程序通过 Azure Resource Manager 来与经典资源类型交互，操作将显示在活动日志中。 如果用户在经典门户或者在 Azure Resource Manager 代理外部与经典资源类型交互，用户操作只会记录到操作日志中，该日志只能在经典门户中访问。
+> Azure 活动日志主要用于在 Azure Resource Manager 中发生的活动。 它不跟踪使用经典/RDFE 模型的资源。 某些经典资源类型在 Azure Resource Manager 中具有代理资源提供程序（例如 Microsoft.ClassicCompute）。 如果你通过 Azure Resource Manager 使用这些代理资源提供程序与经典资源类型进行交互，则操作将显示在活动日志中。 如果你在经典门户中或者以其他方式在 Azure Resource Manager 代理外部与经典资源类型进行交互，则你的操作只会记录在操作日志中。 只能在经典门户中访问操作日志。
 >
 >
+
+请观看介绍了活动日志的以下视频。
+[!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>可以对活动日志执行的操作
 可以对活动日志执行的部分操作如下：
 
-* 在 **Azure 门户**中查询和查看活动日志。
-* 通过 REST API、PowerShell Cmdlet 或 CLI 查询活动日志。
-* [创建触发活动日志事件的电子邮件或 webhook 警报。](insights-auditlog-to-webhook-email.md)
-* [将活动日志保存到**存储帐户**进行存档或手动检查](monitoring-archive-activity-log.md)。 可以使用**日志配置文件**指定保留时间（天）。
-* 在 PowerBI 中使用 [**PowerBI 内容包**](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
-* [将活动日志流式传输到**事件中心**](monitoring-stream-activity-logs-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
+![Azure 活动日志](./media/monitoring-overview-activity-logs/Activity_Log_Overview_v3.png)
 
-只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户或事件中心命名空间就不必与订阅发出日志位于同一订阅中。
+
+* [创建触发活动日志事件的电子邮件或 webhook 警报。](insights-auditlog-to-webhook-email.md)
+* [将活动日志流式传输到**事件中心**](monitoring-stream-activity-logs-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
+* 在 PowerBI 中使用 [**PowerBI 内容包**](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
+* [将活动日志保存到**存储帐户**进行存档或手动检查](monitoring-archive-activity-log.md)。 可以使用**日志配置文件**指定保留时间（天）。
+* 在 **Azure 门户**中查询和查看活动日志。
+* 通过 PowerShell Cmdlet、CLI 或 REST API 查询活动日志。
+
+
+你可以使用与发出日志的订阅不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有合适的 RBAC 访问权限。
 
 ## <a name="export-the-activity-log-with-log-profiles"></a>使用日志配置文件导出活动日志
 **日志配置文件**控制如何导出活动日志。 可以使用日志配置文件配置：
 
 * 应将活动日志发送到何处：存储帐户或事件中心
-* 应发送哪些事件类别（写入、删除、操作）。 *请注意，日志配置文件上下文中“类别”的含义不同于活动日志事件中“类别”属性的含义。日志配置文件中的“类别”表示操作类型（写入、删除、操作），而活动日志事件中的“类别”属性则表示事件的源或类型（管理、ServiceHealth 和警报等）。*
+* 应发送哪些事件类别（写入、删除、操作）。 *日志配置文件中“类别”的含义与活动日志事件中不同。在日志配置文件中，“类别”表示操作类型（写入、删除、操作）。在活动日志事件中，“类别”属性表示事件的来源或类型（例如，管理、服务运行状况、警报，等等）。*
 * 应该导出哪些区域（位置）
-* 应该将活动日志保留在存储帐户中多长时间 – 保留期为&0; 天表示永久保留日志。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择事件中心或 OMS 选项），则保留策略无效。 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，将会删除前天的日志。
+* 活动日志应当在存储帐户中保留多长时间。
+    - 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
+    - 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择事件中心或 OMS 选项），则保留策略无效。
+    - 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，将会删除前天的日志。
 
 这些设置可以通过门户中活动日志边栏选项卡上的“导出”选项进行配置。 也可以[使用 Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell cmdlet 或 CLI 以编程方式对其进行配置。 一个订阅只能有一个日志配置文件。
 
@@ -60,18 +74,18 @@ ms.openlocfilehash: 18035fe2a30707f701098cef4b1391b1d5ab2012
 可以在 Azure 门户中使用“导出”选项将活动日志流式传输到事件中心，或者将其存储在存储帐户中。
 
 1. 使用门户左侧的菜单导航到“活动日志”边栏选项卡。
-   
+
     ![在门户中导航到“活动日志”](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
 2. 单击边栏选项卡顶部的“导出”按钮。
-   
+
     ![门户中的“导出”按钮](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
 3. 在显示的边栏选项卡中，可以选择：  
-   
+
    * 要导出事件的区域
    * 要保存事件的存储帐户
    * 要在存储中保留这些事件的天数。 设置为 0 天将永久保留日志。
    * 需要在其中创建事件中心，以便流式传输这些事件的服务总线命名空间。
-     
+
      ![“导出活动日志”边栏选项卡](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
 4. 单击“保存”保存这些设置。 这些设置会即时应用到订阅。
 
@@ -240,10 +254,4 @@ azure insights logprofile delete --name my_log_profile
 ## <a name="next-steps"></a>后续步骤
 * [详细了解活动日志（以前称为审核日志）](../azure-resource-manager/resource-group-audit.md)
 * [将 Azure 活动日志流式传输到事件中心](monitoring-stream-activity-logs-event-hubs.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

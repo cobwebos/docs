@@ -10,15 +10,15 @@ tags: azure-portal
 ms.assetid: 3fade1e5-c2e1-4ad5-b371-f95caea23f6d
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 20ae053057e74e0bc874391dd8a9cd19e0a293e7
-ms.openlocfilehash: 2d244187585f716af8c4e6d65a445e0ab8217890
-ms.lasthandoff: 12/07/2016
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 9ddeaea93af8d5a4356d49da76cb64f5e43657db
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -91,7 +91,7 @@ ms.lasthandoff: 12/07/2016
     Hive 服务器类型|选择“Hive Server 2”<strong></strong>
     机制|选择“Azure HDInsight 服务”<strong></strong>
     HTTP 路径|将此字段留空。
-    用户名|输入 hiveuser1@contoso158.onmicrosoft.com. 如果域名不同，请更新域名。
+    用户名|输入 hiveuser1@contoso158.onmicrosoft.com。 如果域名不同，请更新域名。
     密码|输入 hiveuser1 的密码。
     </table>
 

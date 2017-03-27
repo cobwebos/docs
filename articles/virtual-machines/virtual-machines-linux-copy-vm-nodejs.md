@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
+ms.date: 03/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
-ms.openlocfilehash: e85094fbb63b5cf0c5f3b080e047dbc3b8561a26
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e1fa4ab140c553cab4dc535f750398d633bbb8d2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/27/2017
 ## <a name="before-you-begin"></a>开始之前
 在开始执行相关步骤前，请先确保符合以下先决条件：
 
-* 已在计算机上下载并安装 [Azure CLI](../xplat-cli-install.md)。 
+* 已在计算机上下载并安装 [Azure CLI](../cli-install-nodejs.md)。 
 * 还需要准备好有关现有 Azure Linux VM 的一些信息：
 
 | 源 VM 信息 | 从何处获取 |

@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: bd1f5e497bcf39a0d8848cc63c718e693f775d63
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 128b91c685b5f7e494a69ca5b04165a0ee7cbb78
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -39,7 +40,7 @@ ms.openlocfilehash: bd1f5e497bcf39a0d8848cc63c718e693f775d63
 
 以下步骤说明如何使用 Azure Resource Manager 和 CLI 创建面向 Internet 的负载均衡器。 借助 Azure Resource Manager，可单独创建和配置每个资源，再将其合成一个新资源。
 
-需要创建和配置以下对象以部署负载平衡器：
+需要创建和配置以下对象以部署负载均衡器：
 
 * **前端 IP 配置**：包含传入网络流量的公共 IP 地址
 * **后端地址池**：包含使虚拟机可以从负载均衡器接收网络流量的网络接口 (NIC)
@@ -51,7 +52,7 @@ ms.openlocfilehash: bd1f5e497bcf39a0d8848cc63c718e693f775d63
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>将 CLI 设置为使用 Resource Manager
 
-1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../xplat-cli-install.md)。 按照说明执行，直到选择 Azure 帐户和订阅。
+1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)。 按照说明执行，直到选择 Azure 帐户和订阅。
 2. 运行 **azure config mode** 命令以切换到 Resource Manager 模式，如下所示：
 
     ```azurecli
@@ -86,9 +87,9 @@ Azure Resource Manager 中的所有资源将与资源组关联。 创建资源�
 azure group create <resource group name> <location>
 ```
 
-## <a name="create-an-internal-load-balancer-set"></a>创建内部负载平衡器集
+## <a name="create-an-internal-load-balancer-set"></a>创建内部负载均衡器集
 
-1. 创建内部负载平衡器
+1. 创建内部负载均衡器
 
     在以下方案中，将在美国东部区域中创建一个名为 nrprg 的资源组。
 
@@ -125,7 +126,7 @@ azure group create <resource group name> <location>
 
 5. 创建入站 NAT 规则。
 
-    入站 NAT 规则用于在负载平衡器中创建要转到特定虚拟机实例的终结点。 前面的步骤为远程桌面创建了两个 NAT 规则。
+    入站 NAT 规则用于在负载均衡器中创建要转到特定虚拟机实例的终结点。 前面的步骤为远程桌面创建了两个 NAT 规则。
 
     ```azurecli
     azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule1 --protocol TCP --frontend-port 5432 --backend-port 3389
@@ -133,7 +134,7 @@ azure group create <resource group name> <location>
     azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule2 --protocol TCP --frontend-port 5433 --backend-port 3389
     ```
 
-6. 为负载平衡器创建运行状况探测器。
+6. 为负载均衡器创建运行状况探测器。
 
     运行状况探测器将检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。
 
@@ -143,11 +144,11 @@ azure group create <resource group name> <location>
 
     > [!NOTE]
     > Microsoft Azure Platform 对各种管理方案使用一个公开可路由的静态 IPv4 地址。 该 IP 地址为 168.63.129.16。 此 IP 地址不应被任何防火墙阻止，因为这可能会导致意外行为。
-    > 对于 Azure 内部负载平衡，此 IP 地址用于监视负载均衡器中的探测器，以确定负载平衡集中虚拟机的运行状况状态。 如果网络安全组用于将流量限制到内部负载平衡集中的 Azure 虚拟机或应用于虚拟网络子网，请确保添加网络安全规则以允许来自 168.63.129.16 的流量。
+    > 对于 Azure 内部负载平衡，此 IP 地址用于监视负载均衡器中的探测器，以确定负载平衡集中虚拟机的运行状况状态。 如果网络安全组用于将流量限制到内部负载均衡集中的 Azure 虚拟机或应用于虚拟网络子网，请确保添加网络安全规则以允许来自 168.63.129.16 的流量。
 
 ## <a name="create-nics"></a>创建 NIC
 
-你需要创建 NIC（或修改现有 NIC），并将其关联到 NAT 规则、负载平衡器规则和探测器。
+你需要创建 NIC（或修改现有 NIC），并将其关联到 NAT 规则、负载均衡器规则和探测器。
 
 1. 创建名为 *lb-nic1-be* 的 NIC，然后将其与 *rdp1* NAT 规则和 *beilb* 后端地址池相关联。
 
@@ -193,7 +194,7 @@ azure group create <resource group name> <location>
     azure vm create --resource--resource-grouproup nrprg --name DB1 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
     ```
     > [!IMPORTANT]
-    > 负载平衡器中的 VM 需要在同一可用性集中。 使用 `azure availset create` 创建可用性集。
+    > 负载均衡器中的 VM 需要在同一可用性集中。 使用 `azure availset create` 创建可用性集。
 
 4. 创建名为 *DB2* 的虚拟机 (VM)，然后将其与名为 *lb-nic2-be* 的 NIC 相关联。 名为 *web1nrp* 的存储帐户在运行以下命令之前已创建。
 
@@ -201,7 +202,7 @@ azure group create <resource group name> <location>
     azure vm create --resource--resource-grouproup nrprg --name DB2 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic2-be --availset-name nrp-avset --storage-account-name web2nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
     ```
 
-## <a name="delete-a-load-balancer"></a>删除负载平衡器
+## <a name="delete-a-load-balancer"></a>删除负载均衡器
 
 若要删除负载均衡器，请使用以下命令：
 
@@ -214,10 +215,5 @@ azure network lb delete --resource-group nrprg --name ilbset
 [使用源 IP 关联配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

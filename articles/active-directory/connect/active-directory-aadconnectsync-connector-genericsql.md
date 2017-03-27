@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: da12e642dc4d41fc74fe7b0f3722090da7818405
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 7185ab62ee0e4383a7128fe731bd68da0ae87e66
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -144,10 +145,25 @@ ms.openlocfilehash: da12e642dc4d41fc74fe7b0f3722090da7818405
 
 如果使用“DN 是定位点”，则必须使用相同的对象类型作为引用的源对象类型。 不能引用其他对象类型。
 
+>[!NOTE]
+从 2017 年 3 月更新开始，现在提供一个“*”的选项，如果选中此选项，则将导入所有可能的成员类型。
+
+![globalparameters3](./media/active-directory-aadconnectsync-connector-genericsql/any-option.png)
+
+
+导入后，将看到类似于下图所示的内容：
+
+  ![globalparameters3](./media/active-directory-aadconnectsync-connector-genericsql/after-import.png)
+
+
+
 ### <a name="global-parameters"></a>全局参数
 “全局参数”页面用于设置增量导入、日期/时间格式，以及密码方法。
 
 ![globalparameters1](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters1.png)
+
+>[!IMPORTANT]
+ 导出/删除操作期间不能使用“*”（也称为“任何选项”**）。
 
 泛型 SQL 连接器支持使用以下增量导入方法：
 
@@ -284,9 +300,4 @@ ms.openlocfilehash: da12e642dc4d41fc74fe7b0f3722090da7818405
 
 ## <a name="troubleshooting"></a>故障排除
 * 有关如何启用记录来排查连接器问题的信息，请参阅[如何启用连接器的 ETW 跟踪](http://go.microsoft.com/fwlink/?LinkId=335731)。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

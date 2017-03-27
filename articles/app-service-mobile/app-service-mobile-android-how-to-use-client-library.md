@@ -4,7 +4,7 @@ description: "如何使用 Azure 移动应用的 Android 客户端 SDK。"
 services: app-service\mobile
 documentationcenter: android
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.service: app-service-mobile
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: b22c7904be77ba06764f0922c77ba5f7c7b3fe4d
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 277df83870c9cbfcb2407999ca9bc6a799284abe
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/17/2016
 
 此外，还深入探讨了大多数移动应用中使用的常见客户端代码。
 
-本指南侧重于客户端 Android SDK。  有关用于移动应用的服务器端 SDK 的详细信息，请参阅 [使用 .NET 后端 SDK][10]或[如何使用 Node.js 后端 SDK][11]。
+本指南侧重于客户端 Android SDK。  若要详细了解移动应用的服务器端 SDK，请参阅 [Work with .NET backend SDK][10]（使用 .NET 后端）或 [How to use the Node.js backend SDK][11]（如何使用 Node.js 后端 SDK）。
 
 ## <a name="reference-documentation"></a>参考文档
 可以在 GitHub 上找到有关 Android 客户端库的 [Javadocs API 参考][12]。
@@ -48,7 +48,7 @@ Azure 移动应用 Android SDK 支持 API 级别 19 到 24（KitKat 到 Nougat�
 
 如果决定不完成快速入门教程，请完成以下任务：
 
-* [创建移动应用后端][13]，以与 Android 应用一起使用。
+* [创建移动应用后端][13]，以与 Android 应用配合使用。
 * 在 Android Studio 中，[更新 Gradle 生成文件](#gradle-build)。
 * [启用 Internet 权限](#enable-internet)。
 
@@ -435,7 +435,7 @@ select 函数的参数是要返回的表列的字符串名称。
 创建 **MobileServiceJsonTable** 的实例后，它几乎具有与类型化编程模型相同的可用 API。 在某些情况下，这些方法采用非类型化参数而不是类型化参数。
 
 ### <a name="json_insert"></a>如何插入到非类型化表中
-以下代码演示了如何执行插入。 第一步是创建属于 [gson][3] 库一部分的 [JsonObject][1]。
+以下代码演示了如何执行插入。 第一步是创建属于 [gson][3] 库的 [JsonObject][1]。
 
     JsonObject jsonItem = new JsonObject();
     jsonItem.addProperty("text", "Wake up");
@@ -548,7 +548,7 @@ select 函数的参数是要返回的表列的字符串名称。
 ### <a name="caching"></a>如何缓存身份验证令牌
 缓存身份验证令牌需要将用户 ID 和身份验证令牌存储在设备本地。 下一次启动应用程序时，只需检查缓存，如果这些值存在，则可以跳过登录过程，并使用这些数据重新进入客户端。 但是，这些数据是敏感的，为安全起见，应该以加密形式存储，以防手机失窃。
 
-可以在[缓存身份验证令牌][7]部分中了解有关缓存身份验证令牌的完整示例。
+可以在[缓存身份验证令牌][7]部分中了解有关如何缓存身份验证令牌的完整示例。
 
 尝试使用过期的令牌时，将收到“401 未授权”响应。 可以使用筛选器处理身份验证错误。  筛选器可截获到应用服务后端的请求。 此时，筛选器代码将测试 401 响应，根据需要触发登录进程，然后恢复生成 401 响应的请求。
 
@@ -650,7 +650,7 @@ dependencies {
         }
 
 ## <a name="how-to-add-push-notification-to-your-app"></a>如何将推送通知添加到应用
-可以[阅读概述][6]，其中介绍了 Microsoft Azure 通知中心如何支持各种推送通知。  根据[此教程][5]所述，每次插入一条记录，都会向所有设备发送一条推送通知。
+可以[阅读概述][6]，其中介绍了 Microsoft Azure 通知中心如何支持各种推送通知。  在[本教程][5]中，每次插入一条记录，都会向所有设备发送一条推送通知。
 
 ## <a name="how-to-add-offline-sync-to-your-app"></a>如何将脱机同步添加到应用
 快速入门教程包含可实现脱机同步的代码。 查找带有如下注释的代码：
@@ -704,7 +704,7 @@ dependencies {
 * mComplete
 * mDuration
 
-将客户端名称序列化为与服务器上 **ToDoItem** 表的列名称匹配的 JSON 名称。 下面的代码使用 [gson][3] 库批注属性：
+将客户端名称序列化为与服务器上 **ToDoItem** 表的列名称匹配的 JSON 名称。 以下代码使用 [gson][3] 库批注属性：
 
     @com.google.gson.annotations.SerializedName("text")
     private String mText;
@@ -719,12 +719,12 @@ dependencies {
     private String mDuration;
 
 ### <a name="table"></a>如何在客户端与后端之间映射不同的表名称
-使用替代 [getTable()][4] 方法将客户端表名称映射到其他移动服务表名称中：
+使用 [getTable()][4] 方法的替代，将客户端表名称映射到其他移动服务表名称：
 
     mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 
 ### <a name="conversions"></a>如何自动执行列名称映射
-可以使用 [gson][3] API 指定应用到每列的转换策略。 Android 客户端库在幕后使用 [gson][3] 将 Java 对象序列化为发送到 Azure App Service 前的 JSON 数据。  下面的代码使用 **setFieldNamingStrategy()** 方法设置策略。 此示例删除初始字符（“m”），然后将每个字段名称的下一个字符小写。 例如，它将“mId”变为“id”。
+可以使用 [gson][3] API，指定适用于每个列的转换策略。 在将数据发送到 Azure 应用服务之前，Android 客户端库会在后台使用 [gson][3] 将 Java 对象序列化为 JSON 数据。  下面的代码使用 **setFieldNamingStrategy()** 方法设置策略。 此示例删除初始字符（“m”），然后将每个字段名称的下一个字符小写。 例如，它将“mId”变为“id”。
 
     client.setGsonBuilder(
         MobileServiceClient
@@ -744,43 +744,43 @@ dependencies {
 
 <!-- Anchors. -->
 
-[什么是移动服务]: #what-is
-[概念]: #concepts
-[如何创建移动服务客户端]: #create-client
-[如何创建表引用]: #instantiating
-[API 结构]: #api
-[如何从移动服务查询数据]: #querying
+[What is Mobile Services]: #what-is
+[Concepts]: #concepts
+[How to: Create the Mobile Services client]: #create-client
+[How to: Create a table reference]: #instantiating
+[The API structure]: #api
+[How to: Query data from a mobile service]: #querying
 [返回所有项]: #showAll
 [筛选返回的数据]: #filtering
 [对返回的数据进行排序]: #sorting
 [在页中返回数据]: #paging
 [选择特定列]: #selecting
-[如何连接查询方法]: #chaining
-[如何将数据绑定到用户界面]: #binding
-[如何定义布局]: #layout
-[如何定义适配器]: #adapter
-[如何使用适配器]: #use-adapter
-[如何将数据插入移动服务]: #inserting
-[如何在移动服务中更新数据]: #updating
-[如何在移动服务中删除数据]: #deleting
-[如何查找特定的项]: #lookup
-[如何处理非类型化数据]: #untyped
-[如何对用户进行身份验证]: #authentication
-[缓存身份验证令牌]: #caching
-[如何处理错误]: #errors
-[如何设计单元测试]: #tests
-[如何自定义客户端]: #customizing
-[自定义请求标头]: #headers
-[自定义序列化]: #serialization
-[后续步骤]: #next-steps
-[安装与先决条件]: #setup
+[How to: Concatenate query methods]: #chaining
+[How to: Bind data to the user interface]: #binding
+[How to: Define the layout]: #layout
+[How to: Define the adapter]: #adapter
+[How to: Use the adapter]: #use-adapter
+[How to: Insert data into a mobile service]: #inserting
+[How to: update data in a mobile service]: #updating
+[How to: Delete data in a mobile service]: #deleting
+[How to: Look up a specific item]: #lookup
+[How to: Work with untyped data]: #untyped
+[How to: Authenticate users]: #authentication
+[Cache authentication tokens]: #caching
+[How to: Handle errors]: #errors
+[How to: Design unit tests]: #tests
+[How to: Customize the client]: #customizing
+[Customize request headers]: #headers
+[Customize serialization]: #serialization
+[Next Steps]: #next-steps
+[Setup and Prerequisites]: #setup
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[Azure 移动应用入门]: app-service-mobile-android-get-started.md
+[Get started with Azure Mobile Apps]: app-service-mobile-android-get-started.md
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[Android 的移动服务 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=717033
+[Mobile Services SDK for Android]: http://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure 门户]: https://portal.azure.com
 [身份验证入门]: app-service-mobile-android-get-started-users.md
 [1]: http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonObject.html

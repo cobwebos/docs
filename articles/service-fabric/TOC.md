@@ -109,11 +109,11 @@
 #### [群集网络模式](service-fabric-patterns-networking.md)
 #### [节点类型和 VM 规模集](service-fabric-cluster-nodetypes.md)
 #### [缩放群集](service-fabric-cluster-scale-up-down.md)
+#### [以编程方式缩放群集](service-fabric-cluster-programmatic-scaling.md)
 #### [升级群集](service-fabric-cluster-upgrade.md)
 #### [删除群集](service-fabric-cluster-delete.md)
 #### [访问控制](service-fabric-cluster-security-roles.md)
 #### [配置群集](service-fabric-cluster-fabric-settings.md)
-#### [使用证书保护群集](service-fabric-windows-cluster-x509-security.md)
 #### [添加或滚动更新群集证书](service-fabric-cluster-security-update-certs-azure.md) 
 #### [免费试用 Party 群集](http://aka.ms/tryservicefabric)
 
@@ -131,7 +131,8 @@
 
 ## 管理应用程序生命周期
 ### [概述](service-fabric-application-lifecycle.md)
-### [设置持续集成](service-fabric-set-up-continuous-integration.md)
+### [使用 VSTS 设置持续集成](service-fabric-set-up-continuous-integration.md)
+### [使用 Jenkins 部署 Linux Java 应用](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 ### [了解 ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)
 ### 部署或删除应用程序
 #### [PowerShell](service-fabric-deploy-remove-applications.md)

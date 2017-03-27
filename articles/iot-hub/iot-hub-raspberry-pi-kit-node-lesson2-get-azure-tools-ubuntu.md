@@ -1,5 +1,5 @@
 ---
-title: "将 Raspberry Pi（节点）连接到 Azure IoT - 第 1 课：获取工具 (Ubuntu) | Microsoft Docs"
+title: "将 Raspberry Pi（节点）连接到 Azure IoT - 第 2 课：获取工具 (Ubuntu) | Microsoft 文档"
 description: "在 Ubuntu 上安装 Python 和 Azure 命令行界面 (Azure CLI)。"
 services: iot-hub
 documentationcenter: 
@@ -13,11 +13,12 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: 9cdf4331b136abc7804460fd99a4defcbbc94e7b
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: b9557037bcaec02b4cc8e61418bd194b7a869033
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -70,10 +71,5 @@ Azure CLI 提供适用于 Azure 的多平台命令行体验，让用户能够直
 
 ## <a name="next-steps"></a>后续步骤
 [创建 IoT 中心并注册 Raspberry Pi 3](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

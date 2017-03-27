@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: cc93ed5c-a358-456a-91a4-f179185c0e98
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,6 +19,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
 ms.openlocfilehash: e270f3dfdaf248ed40d539fa1d2e69a3930d03c6
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -29,7 +31,7 @@ ms.openlocfilehash: e270f3dfdaf248ed40d539fa1d2e69a3930d03c6
 
 本主题中使用的示例脚本将使用特定配置创建 Solr 群集。 如果要使用不同集合、分片、架构、副本等配置 Solr 群集，则必须相应地修改脚本和 Solr 二进制文件。
 
-## <a name="a-namewhatisawhat-is-solr"></a><a name="whatis"></a>什么是 Solr？
+## <a name="whatis"></a>什么是 Solr？
 [Apache Solr](http://lucene.apache.org/solr/features.html) 是一种企业搜索平台，用于对数据实现功能强大的全文搜索。 虽然 Hadoop 可用于存储和管理大量数据，但是，Apache Solr 提供了快速检索数据的搜索功能。 本主题提供有关如何自定义 HDInsight 群集以安装 Solr 的说明。
 
 > [!WARNING]
@@ -47,7 +49,7 @@ ms.openlocfilehash: e270f3dfdaf248ed40d539fa1d2e69a3930d03c6
 * 将 **solruser** 设置为 `/usr/hdp/current/solr` 的所有者
 * 添加 [Upstart](http://upstart.ubuntu.com/) 配置，用于在重新启动群集节点时启动 Solr。 Solr 在安装后也会在群集节点上自动启动
 
-## <a name="a-nameinstallainstall-solr-using-script-actions"></a><a name="install"></a>使用脚本操作安装 Solr
+## <a name="install"></a>使用脚本操作安装 Solr
 在 HDInsight 群集上安装 Solr 的示例脚本位于以下位置。
 
     https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
@@ -71,7 +73,7 @@ ms.openlocfilehash: e270f3dfdaf248ed40d539fa1d2e69a3930d03c6
 3. 在“脚本操作”的底部，使用“选择”按钮保存配置。 最后，使用“可选配置”边栏选项卡底部的“选择”按钮保存可选配置信息。
 4. 根据[预配基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中所述继续预配群集。
 
-## <a name="a-nameusesolrahow-do-i-use-solr-in-hdinsight"></a><a name="usesolr"></a>如何在 HDInsight 中使用 Solr？
+## <a name="usesolr"></a>如何在 HDInsight 中使用 Solr？
 ### <a name="indexing-data"></a>为数据编制索引
 必须从使用一些数据文件为 Solr 编制索引开始。 然后，可以使用 Solr 对索引数据运行搜索查询。 使用以下步骤将一些示例数据添加到 Solr，然后查询这些数据：
 
@@ -307,9 +309,4 @@ Solr 仪表板是一个 Web UI，可让你通过 Web 浏览器使用 Solr。 Sol
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

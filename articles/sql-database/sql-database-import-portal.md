@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
-ms.openlocfilehash: e77a3ba82e7620e23441d9296ebed46d41cb525c
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: ca15248d7ac5232e6308d8188332975f1d21c09b
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: e77a3ba82e7620e23441d9296ebed46d41cb525c
 
 ## <a name="prerequisites"></a>先决条件
 
-若要从 BACPAC 导入 SQL 数据库，需要以下各项：
+若要从 BACPAC 导入 SQL 数据库，需要以下项：
 
 * Azure 订阅。 
 * Azure SQL 数据库 V12 服务器。 如果你没有 V12 服务器，可以遵循本文中的以下步骤创建一个：[创建你的第一个 Azure SQL 数据库](sql-database-get-started.md)。
@@ -83,9 +84,4 @@ ms.openlocfilehash: e77a3ba82e7620e23441d9296ebed46d41cb525c
 [4]: ./media/sql-database-import/create.png
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

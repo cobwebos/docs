@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 5304ddd84bebb19f5f082acb6442faa34b8d84bb
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3f0183c2c88819dfc67886676fd8c69b246537b6
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -398,7 +399,7 @@ ms.openlocfilehash: 5304ddd84bebb19f5f082acb6442faa34b8d84bb
         block content
 
 ### <a name="create-a-config-file"></a>创建 config 文件
-若要在本地运行应用，我们将 Azure 存储凭据放入 config 文件中。 使用以下 JSON 创建名为 *config.json * 的文件：
+若要在本地运行应用，我们将 Azure 存储凭据放入 config 文件中。 使用以下 JSON 创建名为 *config.json* 的文件：
 
     {
         "STORAGE_NAME": "<storage account name>",
@@ -567,7 +568,7 @@ ms.openlocfilehash: 5304ddd84bebb19f5f082acb6442faa34b8d84bb
 [for free]: http://windowsazure.com
 [Git 远程]: http://git-scm.com/docs/git-remote
 
-[Azure CLI]: ../xplat-cli-install.md
+[Azure CLI]:../cli-install-nodejs.md
 
 [Azure]: https://github.com/Azure/azure-sdk-for-node
 [node-uuid]: https://www.npmjs.com/package/node-uuid
@@ -591,9 +592,4 @@ ms.openlocfilehash: 5304ddd84bebb19f5f082acb6442faa34b8d84bb
 [web-configure]: ./media/storage-nodejs-use-table-storage-web-site/sql-task-configure.png
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

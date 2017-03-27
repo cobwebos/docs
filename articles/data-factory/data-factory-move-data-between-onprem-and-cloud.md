@@ -18,6 +18,7 @@ ms.author: abnarain
 translationtype: Human Translation
 ms.sourcegitcommit: e1d44f85b36d08944351a79d7a4b39cc8de61201
 ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -57,7 +58,7 @@ ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
 6. 在“新建数据工厂”边栏选项卡中单击“创建”。
 
    > [!IMPORTANT]
-   > 只有订阅/资源组级别的“数据工厂参与者”角色成员才能创建数据工厂实例。[](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor)
+   > 只有订阅/资源组级别的 [数据工厂参与者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。
    >
    >
 7. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：
@@ -396,9 +397,4 @@ ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
 ## <a name="next-steps"></a>后续步骤
 * 有关数据管理网关的所有详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
 * 若要深入了解如何使用“复制活动”将数据从源数据存储移动到接收器数据存储，请参阅[将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

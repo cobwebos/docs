@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
+ms.custom: loading
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f3a4ad30d1aa0ec273b6b875b0d2d037005ac159
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 21b4cc704e271ac220fd606305f8f97c9b2593bb
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -31,7 +33,7 @@ ms.openlocfilehash: f3a4ad30d1aa0ec273b6b875b0d2d037005ac159
 * 已安装 SQLCMD 命令行实用工具
 
 > [!NOTE]
-> 可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用程序。
+> 可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用工具。
 > 
 > 
 
@@ -58,7 +60,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> 有关在 SQL 数据仓库中创建表以及 WITH 子句中可用选项的详细信息，请参阅[表概述][Table Overview]或[创建表语法][CREATE TABLE syntax]。
+> 有关在 SQL 数据仓库中创建表和 WITH 子句中可用选项的详细信息，请参阅 [Table Overview][Table Overview]（表概述）或 [CREATE TABLE syntax][CREATE TABLE syntax]（CREATE TABLE 语法）。
 > 
 > 
 
@@ -116,7 +118,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151201 |4 |2 |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>步骤 4：基于新加载的数据创建统计信息
-Azure SQL 数据仓库尚不支持自动创建或自动更新统计信息。 为了获得查询的最佳性能，在首次加载数据或者在数据发生重大更改之后，创建所有表的所有列统计信息非常重要。 有关统计信息的详细说明，请参阅开发组主题中的[统计信息][Statistics]主题。 以下快速示例说明如何基于此示例中加载的表创建统计信息
+Azure SQL 数据仓库尚不支持自动创建或自动更新统计信息。 为了获得查询的最佳性能，在首次加载数据或者在数据发生重大更改之后，创建所有表的所有列统计信息非常重要。 有关统计信息的详细说明，请参阅开发主题组中的[统计信息][Statistics]主题。 以下快速示例说明如何基于此示例中加载的表创建统计信息
 
 在 sqlcmd 提示符下执行以下 CREATE STATISTICS 语句：
 
@@ -161,26 +163,21 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 
 ## <a name="next-steps"></a>后续步骤
 有关加载数据的概述，请参阅[将数据载入 SQL 数据仓库][Load data into SQL Data Warehouse]。
-有关更多开发技巧，请参阅 [SQL 数据仓库开发概述][SQL Data Warehouse development overview]
+有关更多开发技巧，请参阅 [SQL 数据仓库开发概述][SQL Data Warehouse development overview]。
 
 <!--Image references-->
 
 <!--Article references-->
 
-[将数据载入 SQL 数据仓库]: ./sql-data-warehouse-overview-load.md
-[SQL 数据仓库开发概述]: ./sql-data-warehouse-overview-develop.md
-[表概述]: ./sql-data-warehouse-tables-overview.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
+[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
+[Table Overview]: ./sql-data-warehouse-tables-overview.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE 语法]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft 下载中心]: https://www.microsoft.com/download/details.aspx?id=36433
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 

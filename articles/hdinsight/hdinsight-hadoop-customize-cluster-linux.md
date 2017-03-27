@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
-ms.openlocfilehash: 49bec6125bcd76c3bb52f1237b0f0e0ceff85ffb
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b615f97484033bb406022e84fbcf50f88458de3c
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -44,7 +45,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 ## <a name="access-control"></a>访问控制
 
-如果你不是所用 Azure 订阅的管理员/所有者（如公司拥有的订阅），则必须确保你的 Azure 登录帐户至少对包含 HDInsight 群集的 Azure 资源组具有**参与者**访问权限。
+如果你不是所用 Azure 订阅的管理员/所有者（如公司拥有的订阅），则必须确保你的 Azure 帐户至少对包含 HDInsight 群集的 Azure 资源组具有**参与者**访问权限。
 
 此外，如果创建的是 HDInsight 群集，至少对 Azure 订阅具有**参与者**访问权限的用户必须之前已注册 HDInsight 的提供程序。 对订阅具有参与者访问权限的用户首次在订阅上创建资源时，会进行提供程序注册。 不[使用 REST 注册提供程序](https://msdn.microsoft.com/library/azure/dn790548.aspx)创建资源也可完成该操作。
 
@@ -55,7 +56,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 ## <a name="understanding-script-actions"></a>了解脚本操作
 
-脚本操作只是一个提供 URI 和参数的 Bash 脚本，该脚本在 HDInsight 群集节点上运行。 下面是脚本操作的特征和功能。
+脚本操作只是一个 Bash 脚本，你为其提供 URI 和参数。 该脚本在 HDInsight 群集节点上运行。 下面是脚本操作的特征和功能。
 
 * 必须存储在可从 HDInsight 群集访问的 URI 上。 下面是可能的存储位置：
 
@@ -66,12 +67,14 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
         > [!NOTE]
         > 用于访问 Data Lake Store 的服务主体 HDInsight 必须具有对脚本的读取访问权限。
 
-    * 本身是 HDInsight 群集的主要存储帐户或其他存储帐户的 **Blob 存储帐户**。 由于在创建群集期间，已将这两种存储帐户的访问权限都授予 HDInsight，因此这些存储帐户提供一个使用非公共脚本操作的方式。
+    * **Azure 存储帐户**中的一个 blob，该存储帐户可以是 HDInsight 群集的主存储帐户，也可以是其附加存储帐户。 由于在创建群集期间，已将这两种存储帐户的访问权限都授予 HDInsight，因此这些存储帐户提供一个使用非公共脚本操作的方式。
 
-    * A https://docs.microsoft.com/en-us/azure/service-bus/，如 Azure Blob、GitHub、OneDrive、Dropbox 等。
+    * 一项公共文件共享服务，例如 Azure Blob、GitHub、OneDrive、Dropbox，等等。
 
         有关存储在 Blob 容器（可公开读取）中的脚本的 URI 示例，请参阅[示例脚本操作脚本](#example-script-action-scripts)部分。
 
+        > [!WARNING]
+        > HDInsight 仅支持__通用__ Azure 存储帐户。 它当前不支持 __Blob 存储__帐户类型。
 
 * 可限制为**只对特定的节点类型运行**，例如头节点或辅助角色节点。
 
@@ -115,10 +118,10 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 ![群集创建过程中的 HDInsight 群集自定义和阶段][img-hdi-cluster-states]
 
-在配置 HDInsight 时运行脚本。 在此阶段，脚本在群集中的所有指定节点上并行运行，并且在节点上使用 root 权限运行。
+脚本在配置 HDInsight 时运行。 在此阶段，脚本在群集中的所有指定节点上并行运行，并且在节点上使用 root 权限运行。
 
 > [!NOTE]
-> 由于脚本是以 root 级权限在群集节点上运行的，因此你可以执行停止和启动服务（包括与 Hadoop 相关的服务）等操作。 如果你停止服务，则必须在脚本完成运行之前，确保 Ambari 服务及其他与 Hadoop 相关的服务都已启动且正在运行。 这些服务必须在群集创建时，成功地确定群集的运行状况和状态。
+> 由于脚本是以 root 级权限在群集节点上运行的，因此你可以执行诸如停止和启动服务（包括与 Hadoop 相关的服务）等操作。 如果你停止服务，则必须在脚本完成运行之前，确保 Ambari 服务及其他与 Hadoop 相关的服务都已启动且正在运行。 这些服务必须在群集创建时，成功地确定群集的运行状况和状态。
 
 
 在群集创建期间，你可以指定多个脚本操作，这些脚本操作将按其指定顺序调用。
@@ -126,7 +129,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 > [!IMPORTANT]
 > 脚本操作必须在 60 分钟内完成，否则将会超时。 在群集预配期间，脚本将与其他安装和配置进程一同运行。 争用 CPU 时间和网络带宽等资源可能导致完成脚本所需的时间要长于在开发环境中所需的时间。
 >
-> 若要让运行脚本所花费的时间降到最低，请避免从源下载和编译应用程序等任务。 应预先编译应用程序，并将二进制文件存储在 Azure Blob 存储中，这样可将其快速下载到群集。
+> 若要让运行脚本所花费的时间降到最低，请避免从源下载和编译应用程序等任务。 应预先编译应用程序，并将二进制文件存储在 Azure 存储中，这样可将其快速下载到群集。
 
 
 ### <a name="script-action-on-a-running-cluster"></a>正在运行的群集上的脚本操作
@@ -540,7 +543,7 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>从 Azure CLI 将脚本操作应用到正在运行的群集
 
-在继续前，确保你已安装并配置 Azure CLI。 有关详细信息，请参阅[安装 Azure CLI](../xplat-cli-install.md)。
+在继续前，确保你已安装并配置 Azure CLI。 有关详细信息，请参阅[安装 Azure CLI](../cli-install-nodejs.md)。
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
@@ -697,7 +700,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
     ![操作的屏幕截图](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
 
-    选择此条目，并通过链接向下钻取以查看在群集上运行该脚本时生成的 STDOUT 和 STDERR 输出。
+    选择此 run\customscriptaction 条目，并通过链接向下钻取以查看 STDOUT 和 STDERR 输出。 此输出是在脚本运行时生成的，可能包含有用的信息。
 
 ### <a name="access-logs-from-the-default-storage-account"></a>从默认的存储帐户访问日志
 
@@ -727,7 +730,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 * 如果在同一天创建同名的脚本操作群集，可以使用唯一的前缀来标识相关日志。
 
-* 如果在当天结束时创建群集，则日志可能跨越两天。 在这种情况下，可看到同一群集有两个不同的日期文件夹。
+* 如果在当天结束时创建群集，则日志可能跨越两天。 在这种情况下，你会看到同一群集有两个不同的日期文件夹。
 
 * 将日志上载到默认容器可能需要 5 分钟，特别是对于大型群集。 因此，如果你想要访问日志，则不应在脚本操作失败时立即删除群集。
 
@@ -738,7 +741,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 ### <a name="cannot-import-name-blobservice"></a>无法导入名称 BlobService
 
-__Symtoms__：脚本操作失败，在 Ambari 中查看该操作时，会显示类似于以下的错误：
+__症状__：脚本操作失败，在 Ambari 中查看该操作时，会显示类似于以下内容的错误：
 
 ```
 Traceback (most recent call list):
@@ -783,9 +786,4 @@ sudo pip install azure-storage==0.20.0
 * [将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "群集创建期间的阶段"
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -161,6 +161,7 @@
 
 ### 故障排除
 #### [部署问题](storsimple-troubleshoot-deployment.md)
+#### [使用诊断工具](storsimple-8000-diagnostics.md)
 #### [操作问题](storsimple-troubleshoot-operational-device.md)
 #### [硬件更换](storsimple-hardware-component-replacement.md)
 ##### [更换设备控制器](storsimple-controller-replacement.md)
@@ -208,7 +209,9 @@
 ### [使用 StorSimple Data Manager](storsimple-data-manager-ui.md)
 
 ## 如何
-### [使用 .NET 转换数据](storsimple-data-manager-dotnet-jobs.md)
+### [使用 .NET 启动作业](storsimple-data-manager-dotnet-jobs.md)
+### [使用自动化启动作业](storsimple-data-manager-job-using-automation.md)
+### [更改默认 Blob 路径](storsimple-data-manager-change-default-blob-path.md)
 
 # StorSimple 合作伙伴版
 ## 概述

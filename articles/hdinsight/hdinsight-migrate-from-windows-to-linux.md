@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: a4d30ffc0a5c5ef9fe7bb892d17f0859ff27f569
-ms.openlocfilehash: bf6ef38ba28d11d7894a30115174582903f84580
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 1a2a08a844f1502d970cb7686d512387263d1d13
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -86,7 +87,7 @@ ms.lasthandoff: 03/02/2017
 或者，你可能想要使用 `Start-AzureStorageBlobCopy` Azure PowerShell cmdlet 在 HDInsight 以外的存储帐户之间复制 Blob。 有关详细信息，请参阅“Using Azure PowerShell with Azure Storage”（在 Azure 存储空间中使用 Azure PowerShell）一文中的“How to manage Azure Blobs”（如何管理 Azure Blob）部分。
 
 ## <a name="client-side-technologies"></a>客户端技术
-一般而言，客户端技术（例如 [Azure PowerShell cmdlet](/powershell/azureps-cmdlets-docs)、[Azure CLI](../xplat-cli-install.md) 或 [.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/)）在基于 Linux 的群集上都将以相同的方式运行，因为在这两个群集 OS 类型中，它们依赖的 REST API 相同。
+一般而言，客户端技术（例如 [Azure PowerShell cmdlet](/powershell/azureps-cmdlets-docs)、[Azure CLI](../cli-install-nodejs.md) 或 [.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/)）在基于 Linux 的群集上都将以相同的方式运行，因为在这两个群集 OS 类型中，它们依赖的 REST API 相同。
 
 ## <a name="server-side-technologies"></a>服务器端技术
 以下表提供了迁移 Windows 特定的服务器端组件的指导。
@@ -94,7 +95,7 @@ ms.lasthandoff: 03/02/2017
 | 如果你使用此技术... | 请执行此操作... |
 | --- | --- |
 | **PowerShell**（服务器端脚本，包含群集创建期间使用的脚本操作） |重新编写为 Bash 脚本。 有关脚本操作的信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)和[针对基于 Linux 的 HDInsight 的脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。 |
-| **Azure CLI**（服务器端脚本） |尽管 Azure CLI 可在 Linux 上使用，但它并没有预先安装在 HDInsight 群集头节点上。 如果需要使用它来编写服务器端脚本，请参阅[安装 Azure CLI](../xplat-cli-install.md)，了解如何在基于 Linux 的平台上进行安装。 |
+| **Azure CLI**（服务器端脚本） |尽管 Azure CLI 可在 Linux 上使用，但它并没有预先安装在 HDInsight 群集头节点上。 如果需要使用它来编写服务器端脚本，请参阅[安装 Azure CLI](../cli-install-nodejs.md)，了解如何在基于 Linux 的平台上进行安装。 |
 | **.NET 组件** |对于所有基于 Linux 的 HDInsight 群集类型，.NET 不完全受支持。 2016/10/28 后创建的基于 Linux 的 Storm on HDInsight 群集支持使用 SCP.NET 框架的 C# Storm 拓扑。 在未来更新中将添加对 .NET 的更多支持。 |
 | **Win32 组件或其他仅限 Windows 的技术** |指南因组件或技术而异。 你可以找到与 Linux 兼容的版本，或者你可能需要查找替代解决方案或重新编写此组件。 |
 

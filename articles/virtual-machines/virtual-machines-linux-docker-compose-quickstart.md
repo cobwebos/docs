@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/13/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 0240ecede4afc937972f81ca8536b3b05e905deb
-ms.openlocfilehash: 8389b743dec50e3de0e13e023ef43e4f706eb477
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ad6401c1d18d44f56e0db9e7277f7ded995386bc
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -65,7 +65,7 @@ az vm show --resource-group myResourceGroup --name myDockerVM \
 当此命令返回 `Succeeded` 时，表示部署已完成，可以使用以下步骤将 SSH 移到 VM。
 
 ### <a name="azure-cli-10"></a>Azure CLI 1.0
-安装最新的 [Azure CLI 1.0](../xplat-cli-install.md) 并登录到 Azure 帐户。 确保处于 Resource Manager 模式以创建 VM (`azure config mode arm`)。
+安装最新的 [Azure CLI 1.0](../cli-install-nodejs.md) 并登录到 Azure 帐户。 确保处于 Resource Manager 模式以创建 VM (`azure config mode arm`)。
 
 以下示例在 `West US` 位置中创建名为 `myResourceGroup` 的资源组，并使用 Azure Docker VM 扩展部署 VM。 [Github 中的 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)用于部署环境：
 

@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 12/02/2016
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 40dd75832302d7d88e852e2ea93821750675607e
-ms.openlocfilehash: 4deb60c25bf13d1f31b58f002a7edea0672eca25
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a773e43b28b144dd8341b276eee3fa504d4f1080
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.openlocfilehash: 4deb60c25bf13d1f31b58f002a7edea0672eca25
 下面是应用服务的某些主要特性和功能：
 
 * **多种语言和框架** - 应用服务为 ASP.NET、Node.js、Java、PHP 和 Python 提供一流支持。 也可以在应用服务 VM 上运行 [Windows PowerShell 和其他脚本或可执行文件](../app-service-web/web-sites-create-web-jobs.md) 。
-* **开发运营优化** - 使用 Visual Studio Team Services、GitHub 或 BitBucket 设置 [持续集成和部署](../app-service-web/app-service-continuous-deployment.md) 。 通过 [测试和过渡环境](../app-service-web/web-sites-staged-publishing.md)提升更新。 执行 [A/B 测试](../app-service-web/app-service-web-test-in-production-get-start.md)。 在应用服务中，利用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[跨平台命令行接口 (CLI)](../xplat-cli-install.md) 来管理应用。
+* **开发运营优化** - 使用 Visual Studio Team Services、GitHub 或 BitBucket 设置 [持续集成和部署](../app-service-web/app-service-continuous-deployment.md) 。 通过 [测试和过渡环境](../app-service-web/web-sites-staged-publishing.md)提升更新。 执行 [A/B 测试](../app-service-web/app-service-web-test-in-production-get-start.md)。 在应用服务中，利用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[跨平台命令行接口 (CLI)](../cli-install-nodejs.md) 来管理应用。
 * **具有高可用性的全局缩放** - 以手动或自动方式进行[增大](../app-service-web/web-sites-scale.md)或[扩大](../monitoring-and-diagnostics/insights-how-to-scale.md)。 在 Microsoft 全球数据中心基础结构中的任意位置托管应用，并且应用服务 [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) 承诺高可用性。
 * **到 SaaS 平台和本地数据的连接** - 从适用于企业系统（例如 SAP、Siebel 和 Oracle）的 50 多个 [连接器](../connectors/apis-list.md) 、SaaS 服务（例如 Salesforce 和 Office 365）以及 Internet 服务（例如 Facebook 和 Twitter）中进行选择。 使用[混合连接](../biztalk-services/integration-hybrid-connection-overview.md)和 [Azure 虚拟网络](../app-service-web/web-sites-integrate-with-vnet.md)访问本地数据。
 * **安全性和合规性** - 应用服务符合 [ISO、SOC 和 PCI](https://www.microsoft.com/TrustCenter/)的要求。
@@ -90,10 +91,5 @@ ms.openlocfilehash: 4deb60c25bf13d1f31b58f002a7edea0672eca25
 * [教程：创建移动应用](../app-service-mobile/app-service-mobile-android-get-started.md)
 * [教程：创建 API 应用](../app-service-api/app-service-api-dotnet-get-started.md)
 * [教程：创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

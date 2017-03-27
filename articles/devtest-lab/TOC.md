@@ -26,6 +26,7 @@
 ### [管理项目](devtest-lab-add-vm-with-artifacts.md)
 
 ## 管理 VM 基项和模板
+### [创建可声明的 VM](devtest-lab-add-claimable-vm.md)
 ### [使用 Azure Resource Manager 模板创建多 VM 环境](devtest-lab-create-environment-from-arm.md)
 ### [配置应用商店映像](devtest-lab-configure-marketplace-images.md)
 ### [映像与公式的比较](devtest-lab-comparing-vm-base-image-types.md)

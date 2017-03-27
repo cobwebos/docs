@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 03/02/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 3693b90509646fd7292861979cd7c2d1c0100d68
-ms.openlocfilehash: 30e92d17a99a0c751397e448108d488aefdd557a
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: ca55f1c295d99ff92abaef1a919d4c90d3c33b8a
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -32,13 +32,13 @@ Azure Monitor 的视频演练位于
 
 下图从概念方面介绍了 Azure 监视，包括可以收集的日志类型，以及可以对该数据执行的操作。   
 
-![非计算资源的监视和诊断逻辑模型](./media/monitoring-overview/MonitoringAzureResources-non-compute_v3.png)
+![非计算资源的监视和诊断模型](./media/monitoring-overview/Monitoring_Azure_Resources-compute_v4.png)
 
 图 1：非计算资源的监视和诊断概念模型
 
 <br/>
 
-![计算资源的监视和诊断逻辑模型](./media/monitoring-overview/MonitoringAzureResources-compute_v3.png)
+![计算资源的监视和诊断模型](./media/monitoring-overview/Monitoring_Azure_Resources-non-compute_v4.png)
 
 图 2：计算资源的监视和诊断概念模型
 
@@ -114,7 +114,8 @@ Azure Monitor 的视频演练位于
 * 发送到事件中心，以便将其路由到第三方工具进行实时分析。
 
 ### <a name="automate"></a>自动化
-可以使用监视数据触发警报甚至整个过程。 示例包括：
+可以使用监视数据触发警报甚至整个过程。
+示例包括：
 
 * 使用数据根据应用程序负载自动缩放计算实例数。
 * 当某个指标超出预定阈值时发送电子邮件。

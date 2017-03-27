@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 逻辑应用中为 EDIFACT 消息解码 | Microsoft 文档"
-description: "如何对逻辑应用使用 Enterprise Integration Pack 中的 EDIFACT 解码器"
+title: "为 EDIFACT 消息解码 - Azure 逻辑应用 | Microsoft 文档"
+description: "使用 Enterprise Integration Pack 中的 EDIFACT 消息解码器为 Azure 逻辑应用验证 EDI 并为事务集生成 XML"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -15,47 +15,62 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
-ms.openlocfilehash: 430a3add46053b5969597aa625df899f4d2e83f6
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 176963837f4f3fc8b89e31000ef8722ef3258b11
+ms.lasthandoff: 03/10/2017
 
 
 ---
 
-# <a name="get-started-with-decode-edifact-message"></a>解码 EDIFACT 消息入门
-解码 EDIFACT 连接器验证 EDI 和特定于合作伙伴的属性，为每个事务集生成 XML 文档并为处理的事务生成确认。
+# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 EDIFACT 消息
 
-## <a name="prereqs"></a>先决条件
+使用解码 EDIFACT 消息连接器，可以验证 EDI 和特定于合作伙伴的属性，为每个事务集生成 XML 文档并为处理的事务生成确认。 若要使用此连接器，必须将此连接器添加到你的逻辑应用中的现有触发器。
+
+## <a name="before-you-start"></a>开始之前
+
+需要具有以下各项：
+
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 使用解码 EDIFACT 消息连接器需要集成帐户。 请参阅有关如何创建[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)、[合作伙伴](logic-apps-enterprise-integration-partners.md)和 [EDIFACT 协议](logic-apps-enterprise-integration-edifact.md)的详细信息
+* 已定义的、与你的 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 EDIFACT 消息连接器。 
+* 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
+* 已在集成帐户中定义了 [EDIFACT 协议](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="decode-edifact-messages"></a>为 EDIFACT 消息解码
+
 1. [创建逻辑应用](logic-apps-create-a-logic-app.md)。
-2. 此连接器没有任何触发器。 使用其他触发器启动逻辑应用（如请求触发器）。  在逻辑应用设计器中，添加触发器和操作。  在下拉列表中选择“显示 Microsoft 托管的 API”，然后在搜索框中输入“EDIFACT”。  选择“解码 EDIFACT 消息”：
+
+2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加一个触发器，然后向逻辑应用中添加一个操作。
+
+3.    在搜索框中，输入“EDIFACT”作为筛选器。 选择“解码 EDIFACT 消息”。
    
     ![搜索 EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
-3. 如果事先未与集成帐户建立任何连接，系统会提示输入连接详细信息：
+
+3. 如果以前未创建与集成帐户的任何连接，系统会提示你现在创建该连接。 为你的连接命名，并选择要连接的集成帐户。
    
-    ![创建集成帐户](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)  
-4. 输入集成帐户详细信息。  带星号的属性是必填的：
-   
-   | 属性 | 详细信息 |
-   | --- | --- |
-   | 连接名称 * |为连接输入任何名称 |
-   | 集成帐户 * |输入集成帐户名称。 确保集成帐户和逻辑应用处于相同 Azure 位置 |
-   
-    完成之后，连接详细信息会类似于下面这样：
-   
-    ![集成帐户已创建](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
-5. 选择“创建” 。
-6. 可以看到，已创建连接：
-   
-    ![集成帐户连接详细信息](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
-7. 选择要解码的 EDIFACT 平面文件消息：
-   
-    ![提供必填字段](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
+    ![创建集成帐户](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
+
+    带有星号的属性必填。
+
+    | 属性 | 详细信息 |
+    | --- | --- |
+    | 连接名称 * |为连接输入任何名称。 |
+    | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
+
+4.    在完成连接创建时，选择“创建”。 连接详细信息应如此示例所示：
+
+    ![集成帐户详细信息](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
+
+5. 在创建连接后，选择要解码的 EDIFACT 平面文件消息，如此示例中所示。
+
+    ![集成帐户连接已创建](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
+
+    例如：
+
+    ![选择要解码的 EDIFACT 平面文件消息](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
 ## <a name="edifact-decoder-details"></a>EDIFACT 解码器详细信息
-解码 EDIFACT 连接器执行以下操作： 
+
+解码 EDIFACT 连接器执行以下任务： 
 
 * 通过将发送方限定符和标识符与接收方限定符和标识符进行匹配来解析协议
 * 将单个消息中的多个交换拆分为单独对象。
@@ -82,10 +97,5 @@ ms.openlocfilehash: 430a3add46053b5969597aa625df899f4d2e83f6
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

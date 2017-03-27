@@ -1,5 +1,5 @@
 ---
-title: "将 Raspberry Pi (C) 连接到 Azure IoT - 第 2 课：Azure 工具 (Windows) | Microsoft Docs"
+title: "将 Arduino 连接到 Azure IoT - 第 2 课：Azure 工具 (Windows) | Microsoft 文档"
 description: "在 Windows 7 及更高版本上安装 Python 和 Azure 命令行界面 (Azure CLI)"
 services: iot-hub
 documentationcenter: 
@@ -13,11 +13,12 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/13/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: 8c87408538cd4c2088cc1a546458c6a76291730c
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 74f4448cbd5348988c185c86cadad5337da3a0da
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -82,8 +83,3 @@ Azure CLI 为 Azure 提供了多平台命令行体验。 可以直接从命令�
 [macos]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-mac.md
 [output]: media/iot-hub-adafruit-feather-m0-wifi-lessons/lesson2/az_iot_help_win.png
 [create-your-iot-hub-and-register-your-arduino-board]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 03/14/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 456ff5cd0c91232ace87e02363f812a36cc38297
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 0c62fc01947e0f2e4b0e45d176d5af04c6250fa8
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -161,7 +161,7 @@ DocumentDB 数据库是一个或多个集合和用户的逻辑容器，如下面
 ![数据库帐户和集合分层模型][2]  
 **数据库是用户和集合的逻辑容器**
 
-数据库几乎可以包含由集合分区的无限文档存储，从而形成其中所包含的文档的事务域。 
+数据库可以包含集合中分布的几乎无限的文档存储。
 
 ### <a name="elastic-scale-of-a-documentdb-database"></a>DocumentDB 数据库的弹性缩放
 DocumentDB 数据库默认情况下是弹性的 – 范围可以从几个 GB 到数千兆字节的 SSD 支持的文档存储和设置的吞吐量。 
@@ -175,7 +175,7 @@ DocumentDB 数据库也是用户的容器。 反过来，用户是一组权限�
 与 DocumentDB 资源模型中的其他资源一样，可以使用 [Azure DocumentDB REST APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) 或任一[客户端 SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) 轻松创建、替换、删除、读取或枚举数据库。 DocumentDB 确保读取或查询数据库资源的元数据操作的高度一致性。 自动删除数据库，确保你不能访问任何集合或它所包含的用户。   
 
 ## <a name="collections"></a>集合
-DocumentDB 集合是 JSON 文档的一个容器。 集合也是一组用于事务和查询的规模单位。 
+DocumentDB 集合是 JSON 文档的一个容器。 
 
 ### <a name="elastic-ssd-backed-document-storage"></a>SSD 支持的弹性文档存储
 集合本质上是弹性的 - 当你添加或删除文档时，它会自动扩展或收缩。 集合是逻辑资源，并且可以跨一个或多个物理分区或服务器。 DocumentDB 基于存储大小和你的集合设置的吞吐量确定集合中的分区数。 DocumentDB 中的每个分区都具有固定大小的与之关联的 SSD 支持的存储，并且会复制分区以实现高可用性。 分区完全由 Azure DocumentDB 进行管理，因此，你无需编写复杂的代码或亲自管理分区。 DocumentDB 集合在存储和吞吐量方面是**几乎无限制**。 
@@ -206,7 +206,7 @@ DocumentDB 查询模型尝试在功能、效率和简单性之间取得平衡。
 > 
 > 
 
-### <a name="multi-document-transactions"></a>多文档事务
+## <a name="multi-document-transactions"></a>多文档事务
 数据库事务提供了一种安全且可预测的编程模型来处理数据的并发更改。 在 RDBMS 中，编写业务逻辑的传统方法是编写**存储过程**和/或**触发器**，然后将它运到用于事务性执行的数据库服务器。 在 RDBMS 中，需要应用程序编程人员来处理这两种不同的编程语言： 
 
 * （非事务性）应用程序编程语言（例如 JavaScript、Python、C#、Java 等。）

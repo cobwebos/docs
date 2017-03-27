@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: 26085360a1f2a2ffda3789c654bc7212f2e652f3
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7c6ca3789e9a5dcde799d9ef40b58bd2f3c8966c
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -98,7 +99,7 @@ class Program
 > 
 
 ## <a name="other-methods"></a>其他方法
-* [Azure 命令行接口](../xplat-cli-install.md)
+* [Azure 命令行接口](../cli-install-nodejs.md)
   
     上载 blob 时，使用 `-p` 开关来设置 *cacheControl* 属性。  此示例将 TTL 设置为&1; 小时（3600 秒）。
   
@@ -118,10 +119,5 @@ class Program
 ## <a name="next-steps"></a>后续步骤
 * [阅读以了解 *Cache-Control* 标头](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
 * [了解如何管理 Azure CDN 中云服务内容的过期问题](cdn-manage-expiration-of-cloud-service-content.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

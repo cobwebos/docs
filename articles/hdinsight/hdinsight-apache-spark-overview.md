@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 82334b9e-4629-4005-8147-19f875c8774e
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: get-started-article
 ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 858d6115ed3a96e3b6a3362ff8f5c1fc4c279bd2
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: edfdba3105aba1079d3c707e7320770c4a999a32
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -33,7 +34,7 @@ ms.lasthandoff: 03/11/2017
 **想要开始在 Azure HDInsight 上使用 Apache Spark 吗？** 请参阅[快速入门：使用 Jupyter 在 HDInsight 上创建 Spark 群集并运行示例应用程序](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
 > [!NOTE]
-> 有关当前版本的已知问题和限制列表，请参阅 [Azure HDInsight 中 Apache Spark 的已知问题](hdinsight-apache-spark-jupyter-spark-sql.md)。
+> 有关当前版本的已知问题和限制列表，请参阅 [Azure HDInsight 中 Apache Spark 的已知问题](hdinsight-apache-spark-known-issues.md)。
 > 
 > 
 

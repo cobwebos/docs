@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 68786e2c2f92f8d716c7aa2b3584342ea96c073d
-ms.lasthandoff: 12/02/2016
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ccd4dda3d7077c9884331c7bfa8021ade398ea42
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 12/02/2016
 ## <a name="prerequisites"></a>先决条件
 你需要执行以下操作：
 
-* 需要[安装 Azure CLI](../xplat-cli-install.md) 并[连接到订阅](../xplat-cli-connect.md)才能使用你帐户关联的 Azure 资源。
+* 需要[安装 Azure CLI](../cli-install-nodejs.md) 并[连接到订阅](../xplat-cli-connect.md)才能使用你帐户关联的 Azure 资源。
 * 在命令提示符下键入以下命令，为经典部署模型设置正确的模式：
     ``` 
         azure config mode asm

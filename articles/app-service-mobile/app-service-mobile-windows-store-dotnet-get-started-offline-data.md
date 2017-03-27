@@ -3,7 +3,7 @@ title: "使用移动应用为通用 Windows 平台 (UWP) 应用启用脱机同�
 description: "了解如何在通用 Windows 平台 (UWP) 应用中使用 Azure 移动应用缓存和同步脱机数据。"
 documentationcenter: windows
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c24e9940f8ce9e2a97a9ef88b1ecb09cd6b07c39
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 7da4d87c6225754fe878a1812701c4dbafaea07a
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -50,7 +51,7 @@ ms.openlocfilehash: c24e9940f8ce9e2a97a9ef88b1ecb09cd6b07c39
 4. 打开 MainPage.xaml.cs 文件并取消注释 `#define OFFLINE_SYNC_ENABLED` 定义。
 5. 在 Visual Studio 中，按 **F5** 键重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。 但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
 
-## <a name="a-nameupdate-syncaupdate-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>更新应用以与后端断开连接
+## <a name="update-sync"></a>更新应用以与后端断开连接
 在本部分中，将断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序将指示该应用处于脱机模式。 在此状态下，新项将添加到本地存储，下次以连接状态运行推送时，这些新项将同步到移动应用后端。
 
 1. 编辑共享项目中的 App.xaml.cs。 注释掉 **MobileServiceClient** 的初始化并添加使用无效移动应用 URL 的以下行：
@@ -64,7 +65,7 @@ ms.openlocfilehash: c24e9940f8ce9e2a97a9ef88b1ecb09cd6b07c39
 5. （可选）在 Visual Studio 中，打开“服务器资源管理器”。 导航到“Azure”->“SQL 数据库”中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”。 现在便可以浏览 SQL 数据库表及其内容。 验证后端数据库中的数据是否未更改。
 6. （可选）通过 Fiddler 或 Postman 之类的 REST 工具使用 `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` 格式的 GET 查询，查询移动后端。
 
-## <a name="a-nameupdate-online-appaupdate-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>更新应用以重新连接移动应用后端
+## <a name="update-online-app"></a>更新应用以重新连接移动应用后端
 在本部分中，会将应用重新连接到移动应用后端。 这些更改可模拟应用上的网络重新连接。
 
 首次运行该应用程序时，`OnNavigatedTo` 事件处理程序将调用 `InitLocalStoreAsync`。 而此方法又将调用 `SyncAsync`，将本地存储与后端数据库同步。 应用会尝试在启动时同步。
@@ -91,13 +92,13 @@ ms.openlocfilehash: c24e9940f8ce9e2a97a9ef88b1ecb09cd6b07c39
 以下主题提供有关移动应用的脱机同步功能的更多背景信息：
 
 * [Azure 移动应用中的脱机数据同步]
-* [Azure 移动应用 .NET SDK 操作指南][8]
+* [Azure 移动应用：.NET SDK 操作方法][8]
 
 <!-- Anchors. -->
-[更新应用以支持脱机功能]: #enable-offline-app
-[更新应用的同步行为]: #update-sync
-[更新应用以重新连接移动应用后端]: #update-online-app
-[后续步骤]:#next-steps
+[Update the app to support offline features]: #enable-offline-app
+[Update the sync behavior of the app]: #update-sync
+[Update the app to reconnect your Mobile Apps backend]: #update-online-app
+[Next Steps]:#next-steps
 
 <!-- Images -->
 [1]: ./media/app-service-mobile-windows-store-dotnet-get-started-offline-data/app-service-mobile-add-reference-sqlite-dialog.png
@@ -123,9 +124,4 @@ ms.openlocfilehash: c24e9940f8ce9e2a97a9ef88b1ecb09cd6b07c39
 [PushAsync]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileservicesynccontextextensions.pushasync(v=azure.10).aspx
 [PurgeAsync]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.sync.imobileservicesynctable.purgeasync(v=azure.10).aspx
 [8]: app-service-mobile-dotnet-how-to-use-client-library.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -1,7 +1,6 @@
 # 概述
 ## [什么是 Operations Management Suite？](operations-management-suite-overview.md)
 ## [OMS 体系结构](operations-management-suite-architecture.md)
-## [管理解决方案](operations-management-suite-solutions.md)
 
 # 入门
 ## 见解与分析
@@ -15,15 +14,18 @@
 ### [数据安全](oms-security-data-security.md)
 
 # 如何
+
 ## 分析
 ### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [监视产品比较](operations-management-suite-monitoring-product-comparison.md)
 ### [管理警报](operations-management-suite-monitoring-alerts.md)
 ## 自动化
 ### [Azure 自动化概述](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+
 ## 备份
 ### [备份概述](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Site Recovery 概述](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+
 ## 安全
 ### [监视资源](oms-security-monitoring-resources.md)
 ### [响应安全警报](oms-security-responding-alerts.md)
@@ -31,17 +33,9 @@
 ### [恶意软件评估](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [系统更新评估](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [连接安全产品](oms-security-connect-products.md)
-## 创建解决方案
-### [管理解决方案](operations-management-suite-solutions-creating.md)
-### [自动化资源](operations-management-suite-solutions-resources-automation.md)
-### [日志搜索和警报](operations-management-suite-solutions-resources-searches-alerts.md)
-### [视图](operations-management-suite-solutions-resources-views.md)
-## [与 OMS 集成](operations-management-suite-integration.md)
 
-
-# 引用
-## [SDK](operations-management-suite-sdk.md)
-## 解决方案
+## 使用解决方案
+### [管理解决方案](operations-management-suite-solutions.md)
 ### 见解与分析
 #### [AD 评估](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD 复制状态](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -64,8 +58,15 @@
 ### 安全性和遵从性
 #### [反恶意软件评估](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
+## 创建解决方案
+### [设计和生成](operations-management-suite-solutions-creating.md)
+### [解决方案文件](operations-management-suite-solutions-solution-file.md)
+### [自动化资源](operations-management-suite-solutions-resources-automation.md)
+### [日志搜索和警报](operations-management-suite-solutions-resources-searches-alerts.md)
+### [视图](operations-management-suite-solutions-resources-views.md)
 
+## [与 OMS 集成](operations-management-suite-integration.md)
 
-<!--HONumber=Feb17_HO1-->
-
+# 引用
+## [SDK](operations-management-suite-sdk.md)
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 33521eca953c0e14a7fdaa99edef2997397286eb
-ms.openlocfilehash: cd79a485feddc68924f9b7f5e7d8d614b4e28d28
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 7ad7dce6fc7025a6a6e7935d74b3b71a7bfee097
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -131,7 +131,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 2. 单击“配置文件编辑策略”。
 3. 单击边栏选项卡顶部的“ **+添加** ”。
 4. “名称”确定应用程序使用的配置文件编辑策略名称。 例如，输入“SiPe”。
-5. 单击“标识提供者”，然后选择“电子邮件地址”。 或者，也可以选择社交标识提供者（如果已配置）。 单击 **“确定”**。
+5. 单击“标识提供者”，然后选择“本地帐户登录”。 或者，也可以选择社交标识提供者（如果已配置）。 单击 **“确定”**。
 6. 单击“配置文件属性”。 在这里，可以选择使用者可以查看和编辑的属性。 例如，选择“国家/地区”、“显示名称”和“邮政编码”。 单击 **“确定”**。
 7. 单击“应用程序声明”。 在这里，可以选择希望在成功配置文件编辑体验后发回到应用程序的令牌中返回的声明。 例如，选择“显示名称”和“邮政编码”。
 8. 单击“创建” 。 请注意，刚刚创建的策略在“配置文件编辑策略”边栏选项卡中显示为“**B2C_1_SiPe**”（自动添加 **B2C\_1\_**片段）。

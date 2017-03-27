@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c232e334e60f9205076ba09d9f561c9fb1b42a4c
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: c7576ce3e802e66ebea6ba83927609ed81fe0869
+ms.lasthandoff: 03/09/2017
 
 ---
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/06/2017
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>使用 Azure 网络观察程序进行故障排除
 
-若要诊断连接，请连接到 Azure PowerShell 并启动 `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet。 可以在“Troubleshoot Virtual Network Gateway and connections - PowerShell”（排查虚拟网络网关和连接问题 - PowerShell）中找到有关使用此 cmdlet 的详细信息。 此 cmdlet 最长可能需要几分钟时间才能完成。 
+若要诊断连接，请连接到 Azure PowerShell 并启动 `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet。 可以在 [Troubleshoot Virtual Network Gateway and connections - PowerShell](network-watcher-troubleshoot-manage-powershell.md)（排查虚拟网络网关和连接问题 - PowerShell）中找到有关使用此 cmdlet 的详细信息。 此 cmdlet 最长可能需要几分钟时间才能完成。 
 
 完成该 cmdlet 后，可以导航到该 cmdlet 中指定的存储位置，获取有关问题和日志的详细信息。 Azure 网络观察程序创建包含以下日志文件的 zip 文件夹：
 
@@ -116,3 +116,4 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 访问 [Monitor VPN gateways with Azure Network Watcher troubleshooting](network-watcher-monitor-with-azure-automation.md)（使用 Azure 网络观察程序故障排除监视 VPN 网关），了解如何使用 PowerShell 和 Azure 自动化检查 VPN 网关连接
 
 [1]: ./media/network-watcher-diagnose-on-premises-connectivity/figure1.png
+

@@ -3,7 +3,7 @@ title: "Azure 中 Linux VM 的概述 | Microsoft Docs"
 description: "介绍 Linux 虚拟机上的 Azure 计算、存储和网络服务。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
-author: vlivech
+author: rickstercdn
 manager: timlt
 editor: 
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
-ms.author: squillace
+ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 652c4c51d67b8914885406e631e7233694a8a1d8
-ms.openlocfilehash: e46490a75b0b759e94ba8b090f394d0ba3366dc4
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: dbafa7ab292d634d7bd2427803e5a7f78963d7ff
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
@@ -27,12 +27,12 @@ Microsoft Azure 正在不断集结各种集成的公有云服务，包括分析�
 如果熟悉 Amazon AWS 各项功能的话，可以查看 Azure 与 AWS 的[定义映射文档](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)。
 
 ## <a name="regions"></a>区域
-Microsoft Azure 资源分布在世界各地的多个地理区域。  一个“区域”代表位于单个地理区域的多个数据中心。  截至 2016 年 1 月 1 日，这些区域包括：美洲 8 个，欧洲 2 个，亚太地区 6 个，中国大陆 2 个，印度 3 个。  如需要所有 Azure 区域的完整列表，请参阅我们维护的现有和新宣布的区域列表。
+Microsoft Azure 资源分布在世界各地的多个地理区域。  一个“区域”代表位于单个地理区域的多个数据中心。  我们在全球已有 34 个区域可用，另外还有 4 个区域已宣布即将可用。 因为我们将继续扩大全球覆盖率 - 我们维护着现有和新宣布推出的区域的更新列表。
 
 * [Azure 区域](https://azure.microsoft.com/regions/)
 
 ## <a name="availability"></a>可用性
-为了使部署符合 99.95 的 VM 服务级别协议，必须部署两个或更多个在可用性集中运行工作负荷的 VM。 这可确保 VM 分布在我们数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) 说明了 Azure 作为整体的保证可用性。 
+我们宣布了行业领先的单实例虚拟机服务级别协议：可用性达到 99.9%（前提是为所有磁盘使用高级存储部署 VM）。  为了使部署符合标准 99.95% 的 VM 服务级别协议，仍需要在可用性集中部署两个或更多个运行工作负荷的 VM。 这可确保 VM 分布在我们数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) 说明了 Azure 作为整体的保证可用性。 
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -73,7 +73,7 @@ Azure 正在支持它的大多数 Linux 发行版中推出 [cloud-init](http://c
 * [在 Azure Linux VM 上使用 cloud-init](virtual-machines-linux-using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quotas"></a>配额
-每个 Azure 订阅都有默认的配额限制，此限制会在为项目部署大量 VM 时造成影响。 每个订阅的当前限制是每区域 20 个 VM。  若要提高配额限制，可以开具支持票证来请求提高限制。  有关配额限制的更多详细信息，请参阅：
+每个 Azure 订阅都有默认的配额限制，此限制会在为项目部署大量 VM 时造成影响。 每个订阅的当前限制是每区域 20 个 VM。  若要快速轻松地提高配额限制，可以开具支持票证来请求提高限制。  有关配额限制的更多详细信息，请参阅：
 
 * [Azure 订阅服务限制](../azure-subscription-service-limits.md)
 
@@ -104,7 +104,6 @@ Microsoft 与合作伙伴紧密合作，以确保可用映像进行更新并针�
 
 ### <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
 现在已有 Azure 帐户、Azure Web 门户和 Azure CLI。  下一步是创建 SSH 密钥对，使用它可以通过 SSH 连接到 Linux 而无需使用密码。  [在 Linux 和 Mac 上创建 SSH 密钥](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)可启用无密码登录和更高的安全性。
-
 
 ### <a name="create-a-vm-using-the-cli"></a>使用 CLI 创建 VM
 使用 CLI 创建 Linux VM 是部署 VM 的一种快速方法，无需离开正在使用的终端。  通过命令行标志或开关提供可以在 Web 门户上指定的所有内容。  
@@ -141,6 +140,5 @@ VM 现在正在 Azure 上运行，用户可以登录。  使用密码通过 SSH 
 ## <a name="next-steps"></a>后续步骤
 现在已概要了解 Azure 上的 Linux。  下一步是进一步的研究，并创建一些 VM 组件！
 
-* [使用门户在 Azure 上创建 Linux VM](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用 CLI 在 Azure 上创建 Linux VM](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [通过 Azure CLI 浏览不断增多的常见任务的示例脚本列表](virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

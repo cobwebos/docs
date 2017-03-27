@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 5c798ad3-a20d-4385-a463-f4f7705f9566
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,9 +16,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 8f8b84d600082336fe3659cefa6598210861ce86
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 5fa91c0fb1858a46745ff50991b843530f0a5d23
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,11 +35,11 @@ ms.lasthandoff: 03/04/2017
   * 评估这些推文的观点
   * 使用 Microsoft HBase SDK 将观点信息存储在 HBase 中
 * Azure 网站应用程序
-  
+
   * 使用 ASP.NET Web 应用程序将实时统计结果绘制在必应地图上。 推文的视觉效果如下所示：
-    
+
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
-    
+
     你可以利用某些关键字来查询推文，以此感知推文中表达的观点是肯定的、否定的还是中立的。
 
 有关完整的 Visual Studio 解决方案示例，请访问 GitHub：[实时社交情绪分析应用](https://github.com/maxluk/tweet-sentiment)。
@@ -64,14 +65,14 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 
 1. 登录到 [Twitter 应用](https://apps.twitter.com/)。 单击“立即注册”链接（如果没有 Twitter 帐户）。
 2. 单击“创建新应用”。
-3. 输入“名称”、“说明”和“网站”。 Twitter 应用程序名称必须是唯一的名称。 我们实际上不会用到“网站”字段。 因此不必输入有效的 URL。 
+3. 输入“名称”、“说明”和“网站”。 Twitter 应用程序名称必须是唯一的名称。 我们实际上不会用到“网站”字段。 因此不必输入有效的 URL。
 4. 选中“是，我同意”，然后单击“创建 Twitter 应用程序”。
-5. 单击“权限”选项卡。 默认权限为“只读”。 这对于本教程来说已足够。 
+5. 单击“权限”选项卡。 默认权限为“只读”。 这对于本教程来说已足够。
 6. 单击“密钥和访问令牌”选项卡。
 7. 单击“创建我的访问令牌”。
 8. 在页面右上角单击“测试 OAuth”。
 9. 复制“使用者密钥”、“使用者机密”、“访问令牌”和“访问令牌机密”值。 本教程后面的步骤中将会用到这些值。
-   
+
     ![hdi.hbase.twitter.sentiment.twitter.app][img-twitter-app]
 
 ## <a name="create-twitter-streaming-service"></a>创建 Twitter 流式处理服务
@@ -79,21 +80,21 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 
 **创建流式处理应用程序**
 
-1. 打开 **Visual Studio**，创建名为 **TweetSentimentStreaming** 的 Visual C# 控制台应用程序。 
+1. 打开 **Visual Studio**，创建名为 **TweetSentimentStreaming** 的 Visual C# 控制台应用程序。
 2. 在“包管理器控制台”中运行以下命令：
-   
+
         Install-Package Microsoft.HBase.Client -version 0.4.2.0
         Install-Package TweetinviAPI -version 1.0.0.0
-   
+
     这些命令将安装 [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) 包（用于访问 HBase 群集的客户端库）和 [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) 包（用于访问 Twitter API）。
-   
+
    > [!NOTE]
    > 本文中使用的示例已使用上面指定的版本进行测试。  可以删除 -version 开关来安装最新版本。
-   > 
-   > 
+   >
+   >
 3. 从“解决方案资源管理器”中，将 **System.Configuration** 添加到引用中。
 4. 将新的类文件添加到名为 **HBaseWriter.cs** 的项目中，然后将代码替换为以下内容：
-   
+
         using System;
         using System.Collections.Generic;
         using System.IO;
@@ -104,7 +105,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
         using org.apache.hadoop.hbase.rest.protobuf.generated;
         using Microsoft.HBase.Client;
         using Tweetinvi.Models;
-   
+
         namespace TweetSentimentStreaming
         {
             class HBaseWriter
@@ -113,36 +114,36 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                 const string CLUSTERNAME = "https://<Enter Your Cluster Name>.azurehdinsight.net/";
                 const string HADOOPUSERNAME = "admin"; //the default name is "admin"
                 const string HADOOPUSERPASSWORD = "<Enter the Hadoop User Password>";
-   
+
                 const string HBASETABLENAME = "tweets_by_words";
                 const string COUNT_ROW_KEY = "~ROWCOUNT";
                 const string COUNT_COLUMN_NAME = "d:COUNT";
-   
+
                 long rowCount = 0;
-   
+
                 // Sentiment dictionary file and the punctuation characters
                 const string DICTIONARYFILENAME = @"..\..\dictionary.tsv";
                 private static char[] _punctuationChars = new[] {
             ' ', '!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/',   //ascii 23--47
             ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~' };   //ascii 58--64 + misc.
-   
+
                 // For writting to HBase
                 HBaseClient client;
-   
+
                 // a sentiment dictionary for estimate sentiment. It is loaded from a physical file.
                 Dictionary<string, DictionaryItem> dictionary;
-   
+
                 // use multithread write
                 Thread writerThread;
                 Queue<ITweet> queue = new Queue<ITweet>();
                 bool threadRunning = true;
-   
+
                 // This function connects to HBase, loads the sentiment dictionary, and starts the thread for writting.
                 public HBaseWriter()
                 {
                     ClusterCredentials credentials = new ClusterCredentials(new Uri(CLUSTERNAME), HADOOPUSERNAME, HADOOPUSERPASSWORD);
                     client = new HBaseClient(credentials);
-   
+
                     // create the HBase table if it doesn't exist
                     if (!client.ListTablesAsync().Result.name.Contains(HBASETABLENAME))
                     {
@@ -152,23 +153,23 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                         client.CreateTableAsync(tableSchema).Wait();
                         Console.WriteLine("Table \"{0}\" is created.", HBASETABLENAME);
                     }
-   
+
                     // Read current row count cell
                     rowCount = GetRowCount();
-   
+
                     // Load sentiment dictionary from a file
                     LoadDictionary();
-   
+
                     // Start a thread for writting to HBase
                     writerThread = new Thread(new ThreadStart(WriterThreadFunction));
                     writerThread.Start();
                 }
-   
+
                 ~HBaseWriter()
                 {
                     threadRunning = false;
                 }
-   
+
                 private long GetRowCount()
                 {
                     try
@@ -195,12 +196,12 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                         {
                             throw ex;
                         }
-   
+
                     }
-   
+
                     return 0;
                 }
-   
+
                 // Enqueue the Tweets received
                 public void WriteTweet(ITweet tweet)
                 {
@@ -209,7 +210,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                         queue.Enqueue(tweet);
                     }
                 }
-   
+
                 // Load sentiment dictionary from a file
                 private void LoadDictionary()
                 {
@@ -228,7 +229,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                             Polarity = fields[pos++]
                         };
                     });
-   
+
                     dictionary = new Dictionary<string, DictionaryItem>();
                     foreach (var item in items)
                     {
@@ -238,7 +239,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                         }
                     }
                 }
-   
+
                 // Calculate sentiment score
                 private int CalcSentimentScore(string[] words)
                 {
@@ -267,49 +268,49 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                         return 0;
                     }
                 }
-   
+
                 // Popular a CellSet object to be written into HBase
                 private void CreateTweetByWordsCells(CellSet set, ITweet tweet)
                 {
                     // Split the Tweet into words
                     string[] words = tweet.Text.ToLower().Split(_punctuationChars);
-   
+
                     // Calculate sentiment score base on the words
                     int sentimentScore = CalcSentimentScore(words);
                     var word_pairs = words.Take(words.Length - 1)
                                         .Select((word, idx) => string.Format("{0} {1}", word, words[idx + 1]));
                     var all_words = words.Concat(word_pairs).ToList();
-   
+
                     // For each word in the Tweet add a row to the HBase table
                     foreach (string word in all_words)
                     {
                         string time_index = (ulong.MaxValue - (ulong)tweet.CreatedAt.ToBinary()).ToString().PadLeft(20) + tweet.IdStr;
                         string key = word + "_" + time_index;
-   
+
                         // Create a row
                         var row = new CellSet.Row { key = Encoding.UTF8.GetBytes(key) };
-   
-                        // Add columns to the row, including Tweet identifier, language, coordinator(if available), and sentiment 
+
+                        // Add columns to the row, including Tweet identifier, language, coordinator(if available), and sentiment
                         var value = new Cell { column = Encoding.UTF8.GetBytes("d:id_str"), data = Encoding.UTF8.GetBytes(tweet.IdStr) };
                         row.values.Add(value);
-   
+
                         value = new Cell { column = Encoding.UTF8.GetBytes("d:lang"), data = Encoding.UTF8.GetBytes(tweet.Language.ToString()) };
                         row.values.Add(value);
-   
+
                         if (tweet.Coordinates != null)
                         {
                             var str = tweet.Coordinates.Longitude.ToString() + "," + tweet.Coordinates.Latitude.ToString();
                             value = new Cell { column = Encoding.UTF8.GetBytes("d:coor"), data = Encoding.UTF8.GetBytes(str) };
                             row.values.Add(value);
                         }
-   
+
                         value = new Cell { column = Encoding.UTF8.GetBytes("d:sentiment"), data = Encoding.UTF8.GetBytes(sentimentScore.ToString()) };
                         row.values.Add(value);
-   
+
                         set.rows.Add(row);
                     }
                 }
-   
+
                 // Write a Tweet (CellSet) to HBase
                 public void WriterThreadFunction()
                 {
@@ -328,7 +329,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                                         CreateTweetByWordsCells(set, tweet);
                                     } while (queue.Count > 0);
                                 }
-   
+
                                 // Write the Tweet by words cell set to the HBase table
                                 client.StoreCellsAsync(HBASETABLENAME, set).Wait();
                                 Console.WriteLine("\tRows written: {0}", set.rows.Count);
@@ -354,12 +355,12 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
         }
 5. 设置上述代码中的常量，包括 **CLUSTERNAME**、**HADOOPUSERNAME**、**HADOOPUSERPASSWORD** 和 DICTIONARYFILENAME。 DICTIONARYFILENAME 是 direction.tsv 的文件名和位置。  可从 **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** 下载该文件。 如果你想要更改 HBase 表名称，则必须相应地更改 Web 应用程序中的表名称。
 6. 打开 **Program.cs**，将代码替换为以下内容：
-   
+
         using System;
         using System.Diagnostics;
         using Tweetinvi;
         using Tweetinvi.Models;
-   
+
         namespace TweetSentimentStreaming
         {
             class Program
@@ -368,14 +369,14 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                 const string TWITTERAPPACCESSTOKENSECRET = "<Enter Twitter Access Token Secret>";
                 const string TWITTERAPPAPIKEY = "<Enter Twitter App API Key>";
                 const string TWITTERAPPAPISECRET = "<Enter Twitter App API Secret>";
-   
+
                 static void Main(string[] args)
                 {
                     Auth.SetUserCredentials(TWITTERAPPAPIKEY, TWITTERAPPAPISECRET, TWITTERAPPACCESSTOKEN, TWITTERAPPACCESSTOKENSECRET);
-   
+
                     Stream_FilteredStreamExample();
                 }
-   
+
                 private static void Stream_FilteredStreamExample()
                 {
                     for (;;)
@@ -384,19 +385,19 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                         {
                             HBaseWriter hbase = new HBaseWriter();
                             var stream = Stream.CreateFilteredStream();
-                            stream.AddLocation(new Coordinates(-180, -90), new Coordinates(180, 90)); 
-   
+                            stream.AddLocation(new Coordinates(-180, -90), new Coordinates(180, 90));
+
                             var tweetCount = 0;
                             var timer = Stopwatch.StartNew();
-   
+
                             stream.MatchingTweetReceived += (sender, args) =>
                             {
                                 tweetCount++;
                                 var tweet = args.Tweet;
-   
+
                                 // Write Tweets to HBase
                                 hbase.WriteTweet(tweet);
-   
+
                                 if (timer.ElapsedMilliseconds > 1000)
                                 {
                                     if (tweet.Coordinates != null)
@@ -406,13 +407,13 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                                         Console.ForegroundColor = ConsoleColor.White;
                                         Console.WriteLine("\tLocation: {0}, {1}", tweet.Coordinates.Longitude, tweet.Coordinates.Latitude);
                                     }
-   
+
                                     timer.Restart();
                                     Console.WriteLine("\tTweets/sec: {0}", tweetCount);
                                     tweetCount = 0;
                                 }
                             };
-   
+
                             stream.StartStreamMatchingAllConditions();
                         }
                         catch (Exception ex)
@@ -421,16 +422,16 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                         }
                     }
                 }
-   
+
             }
         }
-7. 设置常量，包括 **TWITTERAPPACCESSTOKEN**、**TWITTERAPPACCESSTOKENSECRET**、**TWITTERAPPAPIKEY** 和 **TWITTERAPPAPISECRET**。 
+7. 设置常量，包括 **TWITTERAPPACCESSTOKEN**、**TWITTERAPPACCESSTOKENSECRET**、**TWITTERAPPAPIKEY** 和 **TWITTERAPPAPISECRET**。
 
 若要运行流式处理服务，请按 **F5**。 下面是该控制台应用程序的屏幕截图：
 
 ![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
 
-开发 Web 应用程序时，请保持流式处理控制台应用程序的运行状态，以便有更多的数据可用。 若要检查数据是否已插入表中，可以使用 HBase Shell。 请参阅 [HDInsight 中的 HBase 入门](hdinsight-hbase-tutorial-get-started.md#create-tables-and-insert-data)。
+开发 Web 应用程序时，请保持流式处理控制台应用程序的运行状态，以便有更多的数据可用。 若要检查数据是否已插入表中，可以使用 HBase Shell。 请参阅 [HDInsight 中的 HBase 入门](hdinsight-hbase-tutorial-get-started-linux.md#create-tables-and-insert-data)。
 
 ## <a name="visualize-real-time-sentiment"></a>可视化实时观点
 在本部分中，你将创建一个 ASP.NET MVC Web 应用程序，以便从 HBase 读取实时观点数据，并将数据绘制在必应地图上。
@@ -440,27 +441,27 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 1. 打开 Visual Studio。
 2. 依次单击“文件”、“新建”和“项目”。
 3. 输入以下信息：
-   
+
    * 模板类别：**Visual C#/Web**
    * 模板：**ASP.NET Web 应用程序**
    * 名称：**TweetSentimentWeb**
-   * 位置：**C:\Tutorials** 
+   * 位置：**C:\Tutorials**
 4. 单击 **“确定”**。
-5. 在“选择模板”中单击“MVC”。 
+5. 在“选择模板”中单击“MVC”。
 6. 在“Microsoft Azure”中，单击“管理订阅”。
 7. 在“管理 Microsoft Azure 订阅”中单击“登录”。
 8. 输入你的 Azure 凭据。 Azure 订阅信息将显示在“帐户”选项卡中。
 9. 单击“关闭”，关闭“管理 Microsoft Azure 订阅”窗口。
 10. 在“新建 ASP.NET 项目 - TweetSentimentWeb”中单击“确定”。
-11. 在“配置 Microsoft Azure 站点设置”中，选择与你最靠近的“区域”。 你不需要指定数据库服务器。 
+11. 在“配置 Microsoft Azure 站点设置”中，选择与你最靠近的“区域”。 你不需要指定数据库服务器。
 12. 单击 **“确定”**。
 
 **安装 NuGet 包**
 
 1. 在“工具”菜单中，单击“Nuget 程序包管理器”，然后单击“程序包管理器控制台”。 控制台面板将在页面底部打开。
 2. 使用以下命令安装 [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) 包（访问 HBase 群集的客户端库）：
-   
-        Install-Package Microsoft.HBase.Client 
+
+        Install-Package Microsoft.HBase.Client
 
 **添加 HBaseReader 类**
 
@@ -468,31 +469,31 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 2. 右键单击“模型”，然后依次单击“添加”和“类”。
 3. 在“名称”字段中键入 **HBaseReader.cs**，然后单击“添加”。
 4. 将此代码替换为以下代码：
-   
+
         using System;
         using System.Collections.Generic;
         using System.Linq;
         using System.Web;
-   
+
         using System.Configuration;
         using System.Threading.Tasks;
         using System.Text;
         using Microsoft.HBase.Client;
         using org.apache.hadoop.hbase.rest.protobuf.generated;
-   
+
         namespace TweetSentimentWeb.Models
         {
             public class HBaseReader
             {
                 // For reading Tweet sentiment data from HDInsight HBase
                 HBaseClient client;
-   
+
                 // HDinsight HBase cluster and HBase table information
                 const string CLUSTERNAME = "<HBaseClusterName>";
                 const string HADOOPUSERNAME = "<HBaseClusterHadoopUserName>"
                 const string HADOOPUSERPASSWORD = "<HBaseCluserUserPassword>";
                 const string HBASETABLENAME = "tweets_by_words";
-   
+
                 // The constructor
                 public HBaseReader()
                 {
@@ -502,12 +503,12 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                                     HADOOPUSERPASSWORD);
                     client = new HBaseClient(creds);
                 }
-   
-                // Query Tweets sentiment data from the HBase table asynchronously 
+
+                // Query Tweets sentiment data from the HBase table asynchronously
                 public async Task<IEnumerable<Tweet>> QueryTweetsByKeywordAsync(string keyword)
                 {
                     List<Tweet> list = new List<Tweet>();
-   
+
                     // Demonstrate Filtering the data from the past 6 hours the row key
                     string timeIndex = (ulong.MaxValue -
                         (ulong)DateTime.UtcNow.Subtract(new TimeSpan(6, 0, 0)).ToBinary()).ToString().PadLeft(20);
@@ -519,25 +520,25 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                         startRow = Encoding.UTF8.GetBytes(startRow),
                         endRow = Encoding.UTF8.GetBytes(endRow)
                     };
-   
+
                     // Make async scan call
                     ScannerInformation scannerInfo =
                         await client.CreateScannerAsync(HBASETABLENAME, scanSettings);
-   
+
                     CellSet next;
-   
+
                     while ((next = await client.ScannerGetNextAsync(scannerInfo)) != null)
                     {
                         foreach (CellSet.Row row in next.rows)
                         {
-                            // find the cell with string pattern "d:coor" 
+                            // find the cell with string pattern "d:coor"
                             var coordinates =
                                 row.values.Find(c => Encoding.UTF8.GetString(c.column) == "d:coor");
-   
+
                             if (coordinates != null)
                             {
                                 string[] lonlat = Encoding.UTF8.GetString(coordinates.data).Split(',');
-   
+
                                 var sentimentField =
                                     row.values.Find(c => Encoding.UTF8.GetString(c.column) == "d:sentiment");
                                 Int32 sentiment = 0;
@@ -545,7 +546,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                                 {
                                     sentiment = Convert.ToInt32(Encoding.UTF8.GetString(sentimentField.data));
                                 }
-   
+
                                 list.Add(new Tweet
                                 {
                                     Longtitude = Convert.ToDouble(lonlat[0]),
@@ -553,18 +554,18 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                                     Sentiment = sentiment
                                 });
                             }
-   
+
                             if (coordinates != null)
                             {
                                 string[] lonlat = Encoding.UTF8.GetString(coordinates.data).Split(',');
                             }
                         }
                     }
-   
+
                     return list;
                 }
             }
-   
+
             public class Tweet
             {
                 public string IdStr { get; set; }
@@ -576,12 +577,12 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
             }
         }
 5. 在 **HBaseReader** 类中更改常量值，如下所示：
-   
-   * **CLUSTERNAME**：HBase 群集名称，例如 <HBaseClusterName>https://*.azurehdinsight.net/*。 
+
+   * **CLUSTERNAME**：HBase 群集名称，例如 <HBaseClusterName>https://*.azurehdinsight.net/*。
    * **HADOOPUSERNAME**：HBase 群集 Hadoop 用户的用户名。 默认名称为 *admin*。
    * **HADOOPUSERPASSWORD**：HBase 群集 Hadoop 用户密码。
    * **HBASETABLENAME** = "tweets_by_words";
-     
+
      The HBase 表名称为 **"tweets_by_words";**。 这些值必须与在流式处理服务中发送的值匹配，以便 Web 应用程序能够从相同的 HBase 表中读取数据。
 
 **添加 TweetsController 控制器**
@@ -592,23 +593,23 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 4. 在“控制器名称”字段中键入 **TweetsController**，然后单击“添加”。
 5. 在“解决方案资源管理器”中，双击 TweetsController.cs 打开该文件。
 6. 修改该文件，使其类似于：
-   
+
         using System;
         using System.Collections.Generic;
         using System.Linq;
         using System.Net;
         using System.Net.Http;
         using System.Web.Http;
-   
+
         using System.Threading.Tasks;
         using TweetSentimentWeb.Models;
-   
+
         namespace TweetSentimentWeb.Controllers
         {
             public class TweetsController : ApiController
             {
                 HBaseReader hbase = new HBaseReader();
-   
+
                 public async Task<IEnumerable<Tweet>> GetTweetsByQuery(string query)
                 {
                     return await hbase.QueryTweetsByKeywordAsync(query);
@@ -622,13 +623,13 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 2. 右键单击“脚本”，然后依次单击“添加”和“JavaScript 文件”。
 3. 在“项名称”字段中键入 **heatmap.js**。
 4. 将以下代码粘贴到文件中。 该代码由 Alastair Aitchison 编写。 有关详细信息，请参阅[必应地图 AJAX v7 HeatMap 库](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/)。
-   
+
         /*******************************************************************************
         * Author: Alastair Aitchison
         * Website: http://alastaira.wordpress.com
         * Date: 15th April 2011
-        * 
-        * Description: 
+        *
+        * Description:
         * This JavaScript file provides an algorithm that can be used to add a heatmap
         * overlay on a Bing Maps v7 control. The intensity and temperature palette
         * of the heatmap are designed to be easily customisable.
@@ -636,7 +637,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
         * Requirements:
         * The heatmap layer itself is created dynamically on the client-side using
         * the HTML5 &lt;canvas> element, and therefore requires a browser that supports
-        * this element. It has been tested on IE9, Firefox 3.6/4 and 
+        * this element. It has been tested on IE9, Firefox 3.6/4 and
         * Chrome 10 browsers. If you can confirm whether it works on other browsers or
         * not, I'd love to hear from you!
         *
@@ -678,7 +679,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                     "1.00": 'rgba(255,0,0,150)'    // Red
                 },
 
-                // Callback function to be fired after heatmap layer has been redrawn 
+                // Callback function to be fired after heatmap layer has been redrawn
                 callback: null
             };
 
@@ -876,7 +877,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 2. 右键单击“脚本”，然后依次单击“添加”和“JavaScript 文件”。
 3. 在“项名称”字段中键入 **twitterStream.js**。
 4. 将以下代码复制并粘贴到文件中：
-   
+
         var liveTweetsPos = [];
         var liveTweets = [];
         var liveTweetsNeg = [];
@@ -884,7 +885,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
         var heatmap;
         var heatmapNeg;
         var heatmapPos;
-   
+
         function initialize() {
             // Initialize the map
             var options = {
@@ -895,30 +896,30 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                 zoom: 2.5
             };
             var map = new Microsoft.Maps.Map(document.getElementById('map_canvas'), options);
-   
+
             // Heatmap options for positive, neutral and negative layers
-   
+
             var heatmapOptions = {
                 // Opacity at the centre of each heat point
                 intensity: 0.5,
-   
+
                 // Affected radius of each heat point
                 radius: 15,
-   
+
                 // Whether the radius is an absolute pixel value or meters
                 unit: 'pixels'
             };
-   
+
             var heatmapPosOptions = {
                 // Opacity at the centre of each heat point
                 intensity: 0.5,
-   
+
                 // Affected radius of each heat point
                 radius: 15,
-   
+
                 // Whether the radius is an absolute pixel value or meters
                 unit: 'pixels',
-   
+
                 colourgradient: {
                     0.0: 'rgba(0, 255, 255, 0)',
                     0.1: 'rgba(0, 255, 255, 1)',
@@ -932,17 +933,17 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                     1.0: 'rgba(0, 255, 0, 1)'
                 }
             };
-   
+
             var heatmapNegOptions = {
                 // Opacity at the centre of each heat point
                 intensity: 0.5,
-   
+
                 // Affected radius of each heat point
                 radius: 15,
-   
+
                 // Whether the radius is an absolute pixel value or meters
                 unit: 'pixels',
-   
+
                 colourgradient: {
                     0.0: 'rgba(0, 255, 255, 0)',
                     0.1: 'rgba(0, 255, 255, 1)',
@@ -956,7 +957,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                     1.0: 'rgba(0, 0, 255, 1)'
                 }
             };
-   
+
             // Register and load the Client Side HeatMap Module
             Microsoft.Maps.registerModule("HeatMapModule", "scripts/heatmap.js");
             Microsoft.Maps.loadModule("HeatMapModule", {
@@ -967,7 +968,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                     heatmapNeg = new HeatMapLayer(map, liveTweetsNeg, heatmapNegOptions);
                 }
             });
-   
+
             $("#searchbox").val("xbox");
             $("#searchBtn").click(onsearch);
             $("#positiveBtn").click(onPositiveBtn);
@@ -975,7 +976,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
             $("#neutralBtn").click(onNeutralBtn);
             $("#neutralBtn").button("toggle");
         }
-   
+
         function onsearch() {
             var uri = 'api/tweets?query=';
             var query = $('#searchbox').val();
@@ -984,12 +985,12 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                     liveTweetsPos = [];
                     liveTweets = [];
                     liveTweetsNeg = [];
-   
+
                     // On success, 'data' contains a list of tweets.
                     $.each(data, function (key, item) {
                         addTweet(item);
                     });
-   
+
                     if (!$("#neutralBtn").hasClass('active')) {
                         $("#neutralBtn").button("toggle");
                     }
@@ -999,7 +1000,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                     $('#statustext').text('Error: ' + err);
                 });
         }
-   
+
         function addTweet(item) {
             //Add tweet to the heat map arrays.
             var tweetLocation = new Microsoft.Maps.Location(item.Latitude, item.Longtitude);
@@ -1011,7 +1012,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                 liveTweets.push(tweetLocation);
             }
         }
-   
+
         function onPositiveBtn() {
             if ($("#neutralBtn").hasClass('active')) {
                 $("#neutralBtn").button("toggle");
@@ -1019,15 +1020,15 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
             if ($("#negativeBtn").hasClass('active')) {
                 $("#negativeBtn").button("toggle");
             }
-   
+
             heatmapPos.SetPoints(liveTweetsPos);
             heatmapPos.Show();
             heatmapNeg.Hide();
             heatmap.Hide();
-   
+
             $('#statustext').text('Tweets: ' + liveTweetsPos.length + "   " + getPosNegRatio());
         }
-   
+
         function onNeutralBtn() {
             if ($("#positiveBtn").hasClass('active')) {
                 $("#positiveBtn").button("toggle");
@@ -1035,15 +1036,15 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
             if ($("#negativeBtn").hasClass('active')) {
                 $("#negativeBtn").button("toggle");
             }
-   
+
             heatmap.SetPoints(liveTweets);
             heatmap.Show();
             heatmapNeg.Hide();
             heatmapPos.Hide();
-   
+
             $('#statustext').text('Tweets: ' + liveTweets.length + "   " + getPosNegRatio());
         }
-   
+
         function onNegativeBtn() {
             if ($("#positiveBtn").hasClass('active')) {
                 $("#positiveBtn").button("toggle");
@@ -1051,15 +1052,15 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
             if ($("#neutralBtn").hasClass('active')) {
                 $("#neutralBtn").button("toggle");
             }
-   
+
             heatmapNeg.SetPoints(liveTweetsNeg);
             heatmapNeg.Show();
             heatmap.Hide();;
             heatmapPos.Hide();;
-   
+
             $('#statustext').text('Tweets: ' + liveTweetsNeg.length + "\t" + getPosNegRatio());
         }
-   
+
         function getPosNegRatio() {
             if (liveTweetsNeg.length == 0) {
                 return "";
@@ -1075,7 +1076,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 
 1. 在“解决方案资源管理器”中，依次展开“TweetSentimentWeb”、“视图”和“共享”，然后双击“_Layout.cshtml”。
 2. 将文件中的内容替换为以下内容：
-   
+
         <!DOCTYPE html>
         <html>
         <head>
@@ -1138,7 +1139,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 
 1. 在“解决方案资源管理器”中，依次展开“TweetSentimentWeb”、“视图”和“主页”，然后双击“Index.cshtml”。
 2. 将文件中的内容替换为以下内容：
-   
+
         @{
             ViewBag.Title = "Tweet Sentiment";
         }
@@ -1151,17 +1152,17 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 
 1. 在“解决方案资源管理器”中，依次展开“TweetSentimentWeb”和“内容”，然后双击“Site.css”。
 2. 将以下代码附加到文件中：
-   
+
         /* make container, and thus map, 100% width */
         .map_container {
             width: 100%;
             height: 100%;
         }
-   
+
         #map_canvas{
           height:100%;
         }
-   
+
         #tweets{
           position: absolute;
           top: 60px;
@@ -1174,22 +1175,22 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 
 1. 在“解决方案资源管理器”中，展开“TweetSentimentWeb”，然后双击“Global.asax”。
 2. 添加以下 **using** 语句：
-   
+
         using System.Web.Http;
 3. 将以下行添加到 **Application_Start()** 函数中：
-   
+
         // Register API routes
         GlobalConfiguration.Configure(WebApiConfig.Register);
-   
+
     修改 API 路由的注册，使 Web API 控制器能在 MVC 应用程序中运行。
 
 **运行 Web 应用程序**
 
 1. 验证流式处理服务控制台应用程序是否仍在运行，以便可以查看实时更改。
 2. 按 **F5** 运行 Web 应用程序：
-   
+
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
-3. 在文本框中输入一个关键字，然后单击“搜索”。  根据在 HBase 表中收集的数据，可能找不到某些关键字。 请尝试搜索一些常见的关键字，例如“love”、“xbox”和“playstation”。 
+3. 在文本框中输入一个关键字，然后单击“搜索”。  根据在 HBase 表中收集的数据，可能找不到某些关键字。 请尝试搜索一些常见的关键字，例如“love”、“xbox”和“playstation”。
 4. 在“肯定”、“否定”和“中立”之间切换，以比较用户对主题的观点。
 5. 让流式处理服务再多运行一小时，然后搜索相同的关键字并比较结果。
 
@@ -1199,7 +1200,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 在本教程中，你已学习如何获取推文、分析推文的观点、将观点数据保存到 HBase，以及在必应地图上呈现实时的 Twitter 观点数据。 若要了解更多信息，请参阅以下文章：
 
 * [HDInsight 入门][hdinsight-get-started]
-* [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-replication.md) 
+* [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-replication.md)
 * [使用 HDInsight 中的 Hadoop 分析 Twitter 数据][hdinsight-analyze-twitter-data]
 * [使用 HDInsight 分析航班延误数据][hdinsight-analyze-flight-delay-data]
 * [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
@@ -1242,5 +1243,4 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
-
 

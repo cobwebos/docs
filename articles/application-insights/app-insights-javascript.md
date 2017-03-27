@@ -1,22 +1,22 @@
 ---
-title: "适用于 JavaScript Web 应用的 Application Insights | Microsoft Docs"
+title: "适用于 JavaScript Web 应用的 Azure Application Insights | Microsoft Docs"
 description: "获取页面视图、会话计数和 Web 客户端数据，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 601045a6048266cbd317f3a8ff328caa7edf877f
-ms.openlocfilehash: a7b17961ea23c109dc840192fa3f7cea1d88326e
-ms.lasthandoff: 01/23/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: c4e1ecc824b09fd7523cdc7a29559adca19488f3
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -168,6 +168,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 ![](./media/app-insights-javascript/37.png)
 
+
 单击 `...` 获取 Ajax 调用的完整遥测数据。
 
 ### <a name="no-ajax-calls-reported"></a>未报告任何 Ajax 调用？
@@ -181,6 +182,7 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 如果未看到有报告浏览器异常，请检查代码片段中是否未设置 `disableExceptionTracking` [参数](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)。
 
 ## <a name="inspect-individual-page-view-events"></a>检查各个页面视图事件
+
 页面视图遥测数据通常由 Application Insights 分析，我们只会看到累积报告，其中的数据是基于所有用户的平均值。 但在调试时，也可以查看各个页面视图事件。
 
 在“诊断搜索”边栏选项卡中，将“筛选器”设置为“页面视图”。
@@ -218,10 +220,12 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 * [了解使用情况跟踪](app-insights-web-track-usage.md)
 * [了解自定义事件和指标 API。](app-insights-api-custom-events-metrics.md)
 
-#### <a name="video"></a> 视频：跟踪使用情况
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Tracking-Usage-with-Application-Insights/player]
-> 
-> 
+## <a name="video"></a> 视频
+
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+
 
 ## <a name="next"></a>后续步骤
 * [跟踪使用情况](app-insights-web-track-usage.md)

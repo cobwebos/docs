@@ -15,6 +15,7 @@
 ### [启用 DC/OS 公共访问](container-service-enable-public-access.md)
 ### [对 DC/OS 容器进行负载均衡](container-service-load-balancing.md)
 ### [DC/OS 中应用/用户特定的 Orchestrator](container-service-application-specific-marathon.md)
+### [添加文件共享](container-service-dcos-fileshare.md)
 ### 监视 DC/OS
 #### [使用 ELK 进行监视](container-service-monitoring-elk.md)
 #### [使用 OMS 进行监视](container-service-monitoring-oms.md)

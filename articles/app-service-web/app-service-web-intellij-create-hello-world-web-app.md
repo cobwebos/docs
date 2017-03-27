@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm;asirveda
 translationtype: Human Translation
-ms.sourcegitcommit: 2687011c449715d2ce5f491c3da501f38035d631
-ms.openlocfilehash: 9c7b708c2bd923733cd034116453fcca2ada949b
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 756c9fa079782f8f0cb194ca07c637d083f9ebd7
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -69,7 +70,7 @@ ms.openlocfilehash: 9c7b708c2bd923733cd034116453fcca2ada949b
 2. “项目结构”对话框出现后：
 
    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“项目设置”列表中的“项目”。
-   b.保留“数据库类型”设置，即设置为“共享”。 更改“名称”框中的项目名称，使其包含空格或特殊字符。这是必要步骤，因为该名称将在统一资源标识符 (URI) 中使用。
+   b.保留“数据库类型”设置，即设置为“共享”。 更改“名称”框中的项目名称，使其不包含空格或特殊字符；这是必要步骤，因为该名称将在统一资源标识符 (URI) 中使用。
    c. 将“类型”更改为“Web 应用程序: 存档”。
    d.单击“下一步”。 单击“确定”关闭“项目结构”对话框。
 
@@ -254,9 +255,4 @@ ms.openlocfilehash: 9c7b708c2bd923733cd034116453fcca2ada949b
 [16]: ./media/app-service-web-intellij-create-hello-world-web-app/16-Progress-Indicator.png
 [17]: ./media/app-service-web-intellij-create-hello-world-web-app/17-Browse-Web-App.png
 [18]: ./media/app-service-web-intellij-create-hello-world-web-app/18-Stop-Web-App.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

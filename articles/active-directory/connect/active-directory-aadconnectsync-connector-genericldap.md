@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: 5eacb832ba2a20eae35c58704296c9d03e94ef0e
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 9245a2ce63746f039a3015a5a0cda2ff05cf950e
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -228,10 +229,18 @@ True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出
 
 此外，也可以选择连接器应导入和导出的容器与 OU。
 
+执行搜索时，将对分区中的所有容器执行此操作。 在存在大量容器的情况下，此行为会导致性能下降。
+
+>[!NOTE]
+从通用 LDAP 连接器的 2017 年 3 月更新开始，可以将搜索的范围仅限为所选容器。 可以通过选中下图中所示的“仅在所选容器中搜索”复选框来完成此操作。
+
+![仅搜索所选容器](./media/active-directory-aadconnectsync-connector-genericldap/partitions-only-selected-containers.png)
+
 ### <a name="configure-anchors"></a>配置定位点
 此页面始终有一个预配置值，并且无法更改。 如果已识别服务器供应商，可以使用不可变的属性（例如对象的 GUID）填充定位点。 如果供应商尚未检测到或者已知没有不可变属性，连接器将使用 dn（可分辨名称）作为定位点。
 
 ![anchors](./media/active-directory-aadconnectsync-connector-genericldap/anchors.png)
+
 
 以下是 LDAP 服务器列表和使用的定位点：
 
@@ -261,9 +270,4 @@ Open LDAP 中的增量水印是 UTC 日期/时间。 出于此原因，FIM 同�
 
 ## <a name="troubleshooting"></a>故障排除
 * 有关如何启用记录来排查连接器问题的信息，请参阅[如何启用连接器的 ETW 跟踪](http://go.microsoft.com/fwlink/?LinkId=335731)。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

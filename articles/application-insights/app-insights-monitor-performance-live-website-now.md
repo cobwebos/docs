@@ -14,16 +14,16 @@ ms.topic: get-started-article
 ms.date: 02/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 917f54248f4c9277caa3cf09d92f78593a901e89
-ms.openlocfilehash: fd76f40f5a34b6adf9c6ec3bded604d59b6baa72
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: a0340359dff470551a08a8213f3a704f15f78794
+ms.lasthandoff: 03/16/2017
 
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>在运行时使用 Application Insights 检测 Web 应用
 
 
-无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 如果应用由本地 IIS 服务器托管，请安装“状态监视器”；如果应用是 Azure Web 应用或者在 Azure VM 中运行，可以安装 Application Insights 扩展。 （我们还单独提供了有关检测[实时 J2EE Web 应用](app-insights-java-live.md)和 [Azure 云服务](app-insights-cloudservices.md)的文章。）需要 [Microsoft Azure](http://azure.com) 订阅。
+无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 如果应用由本地 IIS 服务器托管，请安装状态监视器。 如果这些应用是 Azure Web 应用或者在 Azure VM 中运行，则可通过 Azure 控制面板打开 Application Insights 监视。 （我们还单独提供了有关检测[实时 J2EE Web 应用](app-insights-java-live.md)和 [Azure 云服务](app-insights-cloudservices.md)的文章。）需要 [Microsoft Azure](http://azure.com) 订阅。
 
 ![示例图表](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 02/09/2017
 如果应用托管在 IIS 服务器上，请使用状态监视器启用 Application Insights。
 
 1. 在 IIS Web 服务器上，使用管理员凭据登录。
-2. 如果 Application Insights 状态监视器尚未安装，请下载并运行[状态监视器安装程序](http://go.microsoft.com/fwlink/?LinkId=506648)。
+2. 如果尚未安装 Application Insights 状态监视器，则请下载并运行[状态监视器安装程序](http://go.microsoft.com/fwlink/?LinkId=506648)（或者运行 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)，然后在其中搜索 Application Insights 状态监视器）。
 3. 在状态监视器中，选择已安装的 Web 应用程序或者要监视的网站。 使用 Azure 凭据登录。
 
     配置资源，以便在其中通过 Application Insights 门户查看结果。 （通常情况下，最好是创建新的资源。 如果已针对此应用进行了 [Web 测试][availability]或[客户端监视][client]，请选择现有资源。） 
@@ -76,7 +76,7 @@ ms.lasthandoff: 02/09/2017
 
     ![选择对话框顶部的“重新启动”。](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
 
-    Web 服务将中断片刻时间。
+    Web 服务会中断片刻时间。
 
 ## <a name="customize-monitoring-options"></a>自定义监视选项
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 02/09/2017
 
 ### <a name="cant-connect-no-telemetry"></a>无法连接？ 没有遥测数据？
 
-* 需要在服务器防火墙中打开 [一些传出端口](app-insights-ip-addresses.md#outgoing-ports) 才能让状态监视器正常工作。
+* 在服务器防火墙中打开[必需的传出端口](app-insights-ip-addresses.md#outgoing-ports)，以便让状态监视器正常工作。
 
 * 打开状态监视器，然后在左窗格中选择应用程序。 检查“配置通知”部分中是否有任何关于此应用程序的诊断消息：
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 02/09/2017
 * 如果在服务器上看到有关“权限不足”的消息，请尝试以下操作：
   * 在 IIS 管理器中选择应用程序池，打开“高级设置”，并记下“进程模型”下的标识。
   * 在计算机管理控制面板中，将此标识添加到性能监试器用户组。
-* 如果在服务器上安装了 MMA/SCOM，某些版本可能会发生冲突。 请卸载 SCOM 和状态监视器，然后重新安装最新版本。
+* 如果在服务器上安装了 MMA/SCOM (Systems Center Operations Manager)，某些版本可能会发生冲突。 请卸载 SCOM 和状态监视器，然后重新安装最新版本。
 * 请参阅[故障排除][qna]。
 
 ## <a name="system-requirements"></a>系统要求
@@ -120,7 +120,7 @@ ms.lasthandoff: 02/09/2017
 
 （装有最新 SP 及 .NET Framework 4.5）
 
-在客户端 Windows 7、8、8.1 和 10 上，同样需要安装 .NET Framework 4.5
+在客户端：Windows 7、8、8.1 和 10 上，同样需要安装 .NET Framework 4.5
 
 IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 
@@ -151,7 +151,7 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 * `-InstrumentationKey` 要在其中显示结果的 Application Insights 资源的 ikey。
 * 此 cmdlet 只影响尚未检测的应用，即 SdkState==NotInstrumented。
 
-    此 cmdlet 不会影响构建时通过将 SDK 添加到代码，或者在运行时预先使用此 cmdlet 检测的应用。
+    该 cmdlet 不会影响已检测的应用。 不管是构建时通过将 SDK 添加到代码来检测该应用，还是之前在运行时使用此 cmdlet 进行检测，都无关紧要。
 
     用于检测应用的 SDK 版本是最近下载到此服务器的版本。
 
@@ -184,7 +184,11 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 
 * 将最新的 Application Insights SDK 下载到服务器。
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+## <a name="next"></a>后续步骤
 
 查看遥测：
 

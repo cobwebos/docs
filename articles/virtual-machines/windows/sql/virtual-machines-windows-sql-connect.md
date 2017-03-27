@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/15/2016
+ms.date: 02/28/2017
 ms.author: jroth
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: 699d0c37adb9618827b6b39d74d09c2f9ba92913
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -112,10 +113,5 @@ ms.openlocfilehash: 699d0c37adb9618827b6b39d74d09c2f9ba92913
 [探索学习路径](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) ：Azure 虚拟机上的 SQL Server。
 
 有关其他与在 Azure VM 中运行 SQL Server 相关的主题，请参阅 [SQL Server on Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md)（Azure 虚拟机上的 SQL Server）。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

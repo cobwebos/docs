@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 01/25/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 511e61552ec0a2c862ebd99fd881f87b56b69398
-ms.openlocfilehash: 84eabb9c898d32efeb6e1c4b1f17b683940b4c04
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: da63e54b3f4e27ed3c4a1fd909c6c28295c6730d
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/22/2017
 **Hyper-V（具有 Virtual Machine Manager）** | System Center Virtual Machine Manager 2016 和 System Center Virtual Machine Manager 2012 R2
 
   >[!Note]
-  > 目前不支持混合使用 Windows Server 2016 和 2012 R2 主机的 System Center Virtual Machine Manager 2016 云。
+  > 目前不支持混合使用 Windows Server 2016 和 2012 R2 主机的 System Center Virtual Machine Manager 2016 云。 
 
 ### <a name="host-servers"></a>主机服务器
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 02/22/2017
 **Hyper-V（具有 Virtual Machine Manager）** | Windows Server 2016、带有最新更新的 Windows Server 2012 R2。<br/><br/> 应通过 System Center Virtual Machine Manager 2016 管理 Windows Server 2016 主机。
 
   >[!Note]
-  >当前不支持混合使用主机（运行 Windows Server 2016 和 2012 R2）的 Hyper-V 站点。
+  >当前不支持混合使用主机（运行 Windows Server 2016 和 2012 R2）的 Hyper-V 站点。 当前不支持恢复到 Windows Server 2016 主机上 VM 的备用位置。
 
 ## <a name="support-for-replicated-machine-os-versions"></a>已复制的计算机操作系统版本支持
 

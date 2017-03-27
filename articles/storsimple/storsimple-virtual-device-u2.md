@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 03/20/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: c081f31acb7d8767343f41be59d75616fa14b2da
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 8b07ac76ebf40cd9bcf428711c2c0f3f3d917388
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -32,34 +33,13 @@ StorSimple 虚拟设备可以在两种模型中使用：标准 8010（前身为 
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3（4 核，7 GB 内存） |Standard_DS3（4 核，14 GB 内存） |
 | **版本兼容性** |运行 pre-Update 2 或更高版本的设备版本 |运行 Update 2 或更高版本的设备版本 |
-| **上市区域** |所有 Azure 区域 |支持高级存储的 Azure 区域<br></br>有关区域列表，请参阅 [支持 8020 的区域](#supported-regions-for-8020) |
+| **上市区域** |所有 Azure 区域 |支持高级存储的所有 Azure 区域<br></br>可以在“Azure 服务(按区域)”列表中找到高级存储区域。[](https://azure.microsoft.com/en-us/regions/services) 确定支持 VM 的 DS、DSV2、Fs 和 GS 系列的区域。 |
 | **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br>了解如何[创建高级存储帐户](../storage/storage-premium-storage.md) |
 | **工作负荷指导** |在级别从备份中检索文件 |云开发和测试方案、低延迟、高性能工作负荷 <br></br>用于灾难恢复的辅助设备 |
 
 <sup>1</sup>*前身为 1100*。
 
 <sup>2</sup> *8010 和 8020 为云层使用 Azure 标准存储。只有设备中的本地层存在差异*。
-
-#### <a name="supported-regions-for-8020"></a>支持 8020 的区域
-下表显示目前支持 8020 的高级存储区域。 随着高级存储在更多区域上市，此列表会不断更新。
-
-| 序列 编号 | 目前支持的区域 |
-| --- | --- |
-| 1 |美国中部 |
-| 2 |美国东部 |
-| 3 |美国东部 2 |
-| 4 |美国西部 |
-| 5 |欧洲北部 |
-| 6 |欧洲西部 |
-| 7 |亚洲东南部 |
-| 8 |日本东部 |
-| 9 |日本西部 |
-| 10 |澳大利亚东部 |
-| 11 |澳大利亚东南部* |
-| 12 |东亚* |
-| 13 |美国中南部* |
-
-*高级存储最近已在这些地区推出。
 
 本文介绍在 Azure 中部署 StorSimple 虚拟设备的逐步过程。 阅读本文后，将会：
 
@@ -89,7 +69,7 @@ StorSimple 虚拟设备是软件形式的 StorSimple，在 Microsoft Azure 虚�
 #### <a name="azure-requirements"></a>Azure 要求
 预配虚拟设备之前，需要在 Azure 环境中做好以下准备：
 
-* 对于虚拟设备，需 [在 Azure 中配置虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-portal.md)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 有关详细信息，请参阅 [目前支持 8020 的区域](#supported-regions-for-8020)。
+* 对于虚拟设备，需 [在 Azure 中配置虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-portal.md)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 可以在“Azure 服务(按区域)”列表中找到高级存储区域。[](https://azure.microsoft.com/en-us/regions/services) 确定支持 VM 的 DS、DSV2、Fs 和 GS 系列的区域。
 * 建议使用 Azure 提供的默认 DNS 服务器，而不要指定自己的 DNS 服务器名称。 如果 DNS 服务器名称无效，或者 DNS 服务器无法正确解析 IP 地址，则创建虚拟设备将会失败。
 * 点到站点和站点到站点连接是可选的，而不是必需的。 如果需要，可以针对更高级方案配置这些选项。
 * 可以在可使用虚拟设备公开的卷的虚拟网络中创建 [Azure 虚拟机](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) （主机服务器）。 这些服务器必须满足以下要求：                             
@@ -256,9 +236,4 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [使用 StorSimple Manager 服务管理虚拟设备](storsimple-manager-service-administration.md)。
 * 了解如何 [从备份集还原 StorSimple 卷](storsimple-restore-from-backup-set.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

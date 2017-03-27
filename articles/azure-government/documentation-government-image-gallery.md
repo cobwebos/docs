@@ -15,14 +15,18 @@ ms.workload: azure-government
 ms.date: 10/20/2016
 ms.author: brendal
 translationtype: Human Translation
-ms.sourcegitcommit: f245bf964664a0817ba26580aea9990b1767da82
-ms.openlocfilehash: 9b2fee2e98c11ef0468cef3f2bdc81e15698a6fe
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: e2d82497c2ceaa9a6c0a1592b5785449f095f85c
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="azure-government-marketplace-images"></a>Azure 政府版应用商店映像
 ## <a name="overview"></a>概述
 Microsoft Azure 政府版应用商店与公共 Azure 门户有着相似体验。  客户可以选择从 Microsoft 和我们的合作伙伴部署预构建的映像或上载自己的 VHD。  这为按需要部署自己的标准化映像提供了灵活性。
+
+## <a name="variations"></a>变体
+* DoD 当前不支持应用商店映像
 
 以下是 Azure 政府版应用商店内的可用映像列表。  一些预构建映像包含特定软件的即付即授权。  请认真阅读<a href="http://azure.microsoft.com/pricing/details/virtual-machines/">虚拟机定价</a>页面获得更多指南，并和您的 Microsoft 帐户团队或分销商共同合作，对 Azure Government 进行具体定价。
 
@@ -251,9 +255,4 @@ Microsoft Azure 政府版应用商店与公共 Azure 门户有着相似体验。
 [Link 1 to another azure.microsoft.com documentation topic]: virtual-machines/virtual-machines-windows-hero-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

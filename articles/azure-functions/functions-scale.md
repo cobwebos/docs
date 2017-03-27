@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 03/14/2017
 ms.author: dariagrigoriu, glenga
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: f4d589382fe337549f117e7c03af6fd5e237491f
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 9b5dabe5e27e68a4a9f140d4f07131caf7306e32
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -58,7 +58,7 @@ Azure Functions 有两个不同的服务计划：消耗量计划和应用服务�
 
 ### <a name="runtime-scaling"></a>运行时缩放
 
-函数使用中央侦听器，基于配置的触发器来评估计算需求，并决定何时扩大或缩小。 中央侦听器持续处理内存需求的提示和特定于触发器的数据点。 例如，在使用 Azure 队列存储触发器时，数据点包括队列长度和最早项的排队时间。
+Functions 使用缩放控制器，基于配置的触发器来评估计算需求，并决定何时扩大或缩小。 缩放控制器持续处理内存需求的提示和特定于触发器的数据点。 例如，在使用 Azure 队列存储触发器时，数据点包括队列长度和最早项的排队时间。
 
 ![](./media/functions-scale/central-listener.png)
 

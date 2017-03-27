@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 503cf4afba4575492984891a681c187a8683a553
-ms.openlocfilehash: 9d8fd7ec594671e1ea7bf06459494f1c3a1adbdf
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 0184e95ca56e4bc4ffbe860da2b7a5cae9b5a043
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -33,7 +33,7 @@ Azure Log Analytics 中的 Azure SQL Monitoring 解决方案收集和可视化�
 
 ## <a name="connected-sources"></a>连接的源
 
-与大多数其他 Log Analytics 解决方案不同，Azure SQL Monitoring 解决方案不使用代理连接到 Log Analytics 服务。
+Azure SQL Monitoring 解决方案不使用代理连接 Log Analytics 服务。
 
 下表介绍了该解决方案支持的连接的源。
 
@@ -42,7 +42,8 @@ Azure Log Analytics 中的 Azure SQL Monitoring 解决方案收集和可视化�
 | [Windows 代理](log-analytics-windows-agents.md) | 否 | 该解决方案不使用直接 Windows 代理。 |
 | [Linux 代理](log-analytics-linux-agents.md) | 否 | 该解决方案不使用直接 Linux 代理。 |
 | [SCOM 管理组](log-analytics-om-agents.md) | 否 | 该解决方案不使用从 SCOM 代理到 Log Analytics 的直接连接。 |
-| [Azure 存储帐户](log-analytics-azure-storage.md) | 是 | Azure 指标数据是使用存储帐户发送到 Log Analytics 的。 |
+| [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | Log Analytics 不会从存储帐户中读取数据。 |
+| [Azure 诊断](log-analytics-azure-storage.md) | 是 | Azure 指标数据由 Azure 直接发送到 Log Analytics。 |
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +55,7 @@ Azure Log Analytics 中的 Azure SQL Monitoring 解决方案收集和可视化�
 
 执行以下步骤，将 Azure SQL Monitoring 解决方案添加到工作区。
 
-1. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Azure SQL Monitoring 解决方案添加到工作区。
+1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Azure SQL Analytics 解决方案添加到工作区。
 2. 在 Azure 门户中，单击“新建”（+ 符号），然后在资源列表中，选择“监视 + 管理”。  
     ![监视 + 管理](./media/log-analytics-azure-sql/monitoring-management.png)
 3. 在“监视 + 管理”列表中，单击“全部查看”。

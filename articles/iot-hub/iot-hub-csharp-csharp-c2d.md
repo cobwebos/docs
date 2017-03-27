@@ -12,15 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 03/08/2017
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 6af64c0f4049e2597b7a101a0e0f735623fc18a0
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 150e7a1b2f86594d91b044b1b697f035ed1d270b
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-net"></a>使用 IoT 中心发送云到设备消息 (.NET)
+# <a name="send-messages-from-the-cloud-to-your-simulated-device-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将消息从云发送到模拟设备
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>介绍
@@ -34,19 +35,19 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 可以在 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]中找到有关云到设备消息的详细信息。
 
-在本教程结束时，会运行 2 个 .NET 控制台应用：
+在本教程结束时，会运行&2; 个 .NET 控制台应用：
 
 * **SimulatedDevice**，[IoT 中心入门]中创建的应用程序的修改版本，它连接到 IoT 中心并接收云到设备的消息。
 * **SendCloudToDevice**，它通过 IoT 中心将云到设备的消息发送到模拟设备应用，然后接收中心的传送确认。
 
 > [!NOTE]
-> IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码和通常连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心]。
+> IoT 中心通过 [Azure IoT 设备 SDK] 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的分步说明，请参阅 [IoT 中心开发人员指南]。
 > 
 > 
 
 若要完成本教程，您需要以下各项：
 
-* Microsoft Visual Studio 2015。
+* Visual Studio 2015 或 Visual Studio 2017
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息
@@ -70,9 +71,9 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
             }
         }
    
-    在设备收到消息时，`ReceiveAsync` 方法以异步方式返回收到的消息。 它在可指定的超时期限过后返回 *null*（在本例中，使用的是默认值一分钟）。 当应用收到 null 时，它应继续等待新消息。 此要求是使用 `if (receivedMessage == null) continue` 行的原因。
+    在设备收到消息时，`ReceiveAsync` 方法以异步方式返回收到的消息。 它在可指定的超时期限过后返回 *null*（在本例中，使用的是默认值一分钟）。 当应用收到 *null* 时，它应继续等待新消息。 此要求是使用 `if (receivedMessage == null) continue` 行的原因。
    
-    对 `CompleteAsync()` 的调用将通知 IoT 中心，指出已成功处理消息。 可以安全地从设备队列中删除该消息。 如果因故导致设备应用无法完成消息处理作业，IoT 中心将再传递一次。 因此设备应用中的消息处理逻辑必须是*幂等的*，以便多次接收相同的消息会生成相同的结果。 应用程序也可以暂时放弃消息，让 IoT 中心将消息保留在队列中以供将来使用。 或者，应用程序可以拒绝消息，以永久性从队列中删除该消息。 有关云到设备消息生命周期的详细信息，请参阅 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]。
+    对 `CompleteAsync()` 的调用将通知 IoT 中心，指出已成功处理消息。 可以安全地从设备队列中删除该消息。 如果因故导致设备应用无法完成消息处理作业，IoT 中心将再传递一次。 因此设备应用中的消息处理逻辑必须是幂等的，以便多次接收同一消息会生成相同的结果。 应用程序也可以暂时放弃消息，让 IoT 中心将消息保留在队列中以供将来使用。 或者，应用程序可以拒绝消息，以永久性从队列中删除该消息。 有关云到设备消息生命周期的详细信息，请参阅 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]。
    
    > [!NOTE]
    > 使用 HTTP 而不使用 MQTT 或 AMQP 作为传输时，`ReceiveAsync` 方法将立即返回。 使用 HTTP 的云到设备消息，其支持模式是间歇连接到设备，且不常检查消息（时间间隔小于 25 分钟）。 发出更多 HTTP 接收会导致 IoT 中心限制请求。 有关 MQTT、AMQP 和 HTTP 支持之间的差异，以及 IoT 中心限制的详细信息，请参阅 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]。
@@ -96,7 +97,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 2. 在解决方案资源管理器中，右键单击该解决方案，然后单击“**为解决方案管理 NuGet 包**”。 
    
     此操作将打开“管理 NuGet 包”窗口。
-3. 搜索 `Microsoft Azure Devices`，单击“**安装**”，并接受使用条款。 
+3. 搜索“Microsoft.Azure.Devices”，然后单击“安装”并接受使用条款。 
    
     这将下载、安装 [Azure IoT 服务 SDK NuGet 包]并添加对它的引用。
 
@@ -115,7 +116,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
             await serviceClient.SendAsync("myFirstDevice", commandMessage);
         }
    
-    此方法会将新的云到设备消息发送到 ID 为 `myFirstDevice` 的设备。 如果你对 [IoT 中心入门]中使用的参数做了修改，请相应地更改此参数。
+    此方法会将新的云到设备消息发送到 ID 为 `myFirstDevice` 的设备。 仅当修改了 [IoT 中心入门]中使用的参数，才更改此参数。
 7. 最后，在 **Main** 方法中添加以下行：
    
         Console.WriteLine("Send Cloud-to-Device message\n");
@@ -125,7 +126,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
         Console.ReadLine();
         SendCloudToDeviceMessageAsync().Wait();
         Console.ReadLine();
-8. 在 Visual Studio 中，右键单击你的解决方案并选择“**设置启动项目...**”。 选择“**多个启动项目**”，然后同时针对 **ProcessDeviceToCloudMessages**、**SimulatedDevice** 和 **SendCloudToDevice** 选择“**启动**”操作。
+8. 在 Visual Studio 中，右键单击你的解决方案并选择“**设置启动项目...**”。 选择“多个启动项目”，然后同时针对 **ReadDeviceToCloudMessages**、**SimulatedDevice** 和 **SendCloudToDevice** 选择“启动”操作。
 9. 按 **F5**。 这三个应用程序应该都会启动。 选择“**SendCloudToDevice**”窗口并按 **Enter**。 你应会看到模拟设备应用正在接收的消息。
    
    ![应用接收消息][21]
@@ -155,7 +156,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
             }
         }
    
-    请注意，此处的接收模式与用于从设备应用程序接收云到设备消息的模式相同。
+    请注意，此接收模式与用于从设备应用接收云到设备消息的模式相同。
 2. 将以下方法添加到 **Main** 方法中紧接在 `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` 行的后面：
    
         ReceiveFeedbackAsync();
@@ -192,12 +193,6 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 [IoT 中心开发人员指南]: iot-hub-devguide.md
 [IoT 中心入门]: iot-hub-csharp-csharp-getstarted.md
-[Azure IoT 开发人员中心]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[Azure IoT 套件]: https://azure.microsoft.com/documentation/suites/iot-suite/
-
-
-
-<!--HONumber=Dec16_HO1-->
-
-
+[Azure IoT 套件]: https://docs.microsoft.com/en-us/azure/iot-suite/
+[Azure IoT 设备 SDK]: iot-hub-devguide-sdks.md

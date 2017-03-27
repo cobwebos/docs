@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: cda0f33b-a2e8-494c-972f-ae0bb482b818
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: b829f21dbc212cd951f5e417ad56f7eb724a9d56
 ms.openlocfilehash: 42d64d58fab19fc564fbcbf19f464bce8cf46eb7
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -91,9 +93,4 @@ ms.openlocfilehash: 42d64d58fab19fc564fbcbf19f464bce8cf46eb7
 [img-squirrel-alias]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-alias.png
 [img-squirrel]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel.png
 [img-squirrel-sql]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-sql.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

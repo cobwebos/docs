@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 59be15f2d17bbcbc4db6dd9d291cb1ea5991db2e
-ms.openlocfilehash: a753ac16e3329c85656682314824eb14ad8a4e52
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 86ba122b406d8a3d633184982fbacab078d7c0d1
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/01/2017
 
 用户访问此页面可能是因为在使用 MyApps 门户时遇到了问题。 虽然有些情况需要用户联系支持人员或管理员才能解决问题，但大部分情况下，用户可以先自行尝试一下我们在本主题中提供的针对常见问题的步骤。 
 
-如果需要与密码管理相关的帮助，可尝试阅读[此文](active-directory-passwords-update-your-own-password.md)。
+如果需要与密码管理相关的帮助，可尝试阅读[此文](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)(#how-to-reset-your-password)。
   
 
 ## <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
@@ -49,7 +49,7 @@ MyApps 是一个 Web 门户，用于：
 3.    键入旧密码，然后键入新密码并确认。
 4.    单击“提交”。
 
-有关详细信息，请参阅[如何更新自己的密码](active-directory-passwords-update-your-own-password.md)。
+有关详细信息，请参阅[如何更新自己的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 
 
 ## <a name="how-do-i-setup-password-reset"></a>如何设置密码重置？

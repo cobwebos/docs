@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 3adfb1ba-8924-4a13-98db-10a67ab24fca
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -30,7 +31,7 @@ ms.lasthandoff: 01/18/2017
 > [!NOTE]
 > Beeline 使用 JDBC 连接到 Hive。 有关将 JDBC 与 Hive 配合使用的详细信息，请参阅[使用 Hive JDBC 驱动程序连接到 Hive on Azure HDInsight](hdinsight-connect-hive-jdbc-driver.md)。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
+## <a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
 
 * 基于 Linux 的 HDInsight 上的 Hadoop 群集。
@@ -40,7 +41,7 @@ ms.lasthandoff: 01/18/2017
 
 * SSH 客户端。 SSH 客户端上应该装有 Linux、Unix 和 Mac OS。 Windows 用户必须下载 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 之类的客户端。
 
-## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>使用 SSH 进行连接
+## <a id="ssh"></a>使用 SSH 进行连接
 使用 SSH 命令连接到 HDInsight 群集的完全限定域名 (FQDN)。 FQDN 是你为群集指定的名称，后接 **.azurehdinsight.net**。 例如，以下命令将连接到名为 **myhdinsight** 的群集：
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
@@ -58,7 +59,7 @@ Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiar
 
 有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)。
 
-## <a name="a-idbeelineause-the-beeline-command"></a><a id="beeline"></a>使用 Beeline 命令
+## <a id="beeline"></a>使用 Beeline 命令
 1. 连接后，使用以下命令来启动 Beeline：
    
         beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
@@ -148,7 +149,7 @@ Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiar
      ```
 5. 若要退出 Beeline，请使用 `!quit`。
 
-## <a name="a-idfilearun-a-hiveql-file"></a><a id="file"></a>运行 HiveQL 文件
+## <a id="file"></a>运行 HiveQL 文件
 Beeline 还可用于运行包含 HiveQL 语句的文件。 使用以下步骤创建文件，然后使用 Beeline 运行该文件。
 
 1. 使用以下命令创建一个名为 **query.hql** 的新文件：
@@ -204,7 +205,7 @@ Beeline 还可用于运行包含 HiveQL 语句的文件。 使用以下步骤创
 
 请注意，参数/URI 与直接在头节点上运行或在群集内的边缘节点中运行时不同。 这是因为从 Internet 连接到群集使用的是通过端口 443 路由流量的公用网关。 此外，还有其他一些服务也在端口 443 上通过公用网关进行公开，因此 URI 与直接连接时的不同。 从 Internet 连接时，必须通过密码验证会话。
 
-## <a name="a-idsummaryaa-idnextstepsanext-steps"></a><a id="summary"></a><a id="nextsteps"></a>后续步骤
+## <a id="summary"></a><a id="nextsteps"></a>后续步骤
 如你所见，Beeline 命令提供了简单的方法让你以交互方式在 HDInsight 群集上运行 Hive 查询。
 
 有关 HDInsight 中的 Hive 的一般信息：

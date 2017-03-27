@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/13/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: 3953a83b20ee2d1ca0035b31824ca167e92f4864
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: becb179da6bc6b6df629a07d3ddb5d50edbaa577
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/28/2017
 使用以下信息安装和配置解决方案。
 
 * 在想要监视更改的每台计算机上，都必须装有 [Windows](log-analytics-windows-agents.md)、[Operations Manager](log-analytics-om-agents.md) 或 [Linux](log-analytics-linux-agents.md) 代理。
-* 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将“更改跟踪”解决方案添加到 OMS 工作区。  无需进一步配置。
+* 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将更改跟踪解决方案添加到 OMS 工作区。  无需进一步的配置。
 
 ### <a name="configure-windows-files-to-track"></a>配置要跟踪的 Windows 文件
 使用以下步骤，配置要在 Windows 计算机上跟踪的文件。
@@ -66,7 +66,21 @@ ms.lasthandoff: 02/28/2017
 
 | 平台 | 直接代理 | SCOM 代理 | Linux 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows 和 Linux |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![否](./media/log-analytics-change-tracking/oms-bullet-red.png) |![否](./media/log-analytics-change-tracking/oms-bullet-red.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) | 耗时 15 分钟至 1 小时，具体取决于更改类型 |
+| Windows 和 Linux |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![否](./media/log-analytics-change-tracking/oms-bullet-red.png) |![否](./media/log-analytics-change-tracking/oms-bullet-red.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) | 耗时 5 分钟到 50 分钟，具体取决于更改类型。 有关详细信息，请参阅下文。 |
+
+
+下表显示了各种更改类型的数据收集频率。
+
+| **更改类型** | **频率** | **代理在****发现****差异时是否发送差异？** |
+| --- | --- | --- |
+| Windows 注册表 | 50 分钟 | 否 |
+| Windows 文件 | 30 分钟 | 是的。 如果 24 小时内没有更改，则会发送快照。 |
+| Linux 文件 | 15 分钟 | 是的。 如果 24 小时内没有更改，则会发送快照。 |
+| Windows 服务 | 30 分钟 | 是的，当发现更改时，每 30 分钟发送一次。 每 24 小时发送一次快照，无论是否有更改。 因此，即使没有更改，也会发送快照。 |
+| Linux 守护程序 | 5 分钟 | 是的。 如果 24 小时内没有更改，则会发送快照。 |
+| Windows 软件 | 30 分钟 | 是的，当发现更改时，每 30 分钟发送一次。 每 24 小时发送一次快照，无论是否有更改。 因此，即使没有更改，也会发送快照。 |
+| Linux 软件 | 5 分钟 | 是的。 如果 24 小时内没有更改，则会发送快照。 |
+
 
 ## <a name="use-change-tracking"></a>使用“更改跟踪”
 安装解决方案后，你可以通过使用 OMS 中“**概述**”页上的“**更改跟踪**”磁贴，查看受监视服务器的更改摘要。

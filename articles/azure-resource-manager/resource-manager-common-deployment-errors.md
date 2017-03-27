@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2017
+ms.date: 03/15/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5aa0677e6028c58b7a639f0aee87b04e7bd233a0
-ms.openlocfilehash: 2093c6220ea01a83b7e43b3084d13b719feca3ca
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b31ecb83665208151e48f81e6148928bbf21d1b5
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -48,6 +49,7 @@ ms.openlocfilehash: 2093c6220ea01a83b7e43b3084d13b719feca3ca
 * [授权失败](#authorization-failed)
 * [BadRequest](#badrequest)
 * [DeploymentFailed](#deploymentfailed)
+* [DisallowedOperation](#disallowedoperation)
 * [InvalidContentLink](#invalidcontentlink)
 * [InvalidTemplate](#invalidtemplate)
 * [MissingSubscriptionRegistration](#noregisteredproviderfound)
@@ -122,6 +124,40 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
   ```
 
 如果在该区域或满足业务需求的备用区域中找不到合适的 SKU，请与 [Azure 支持](https://portal.azure.com/#create/Microsoft.Support)联系。
+
+### <a name="disallowedoperation"></a>DisallowedOperation
+
+```
+Code: DisallowedOperation
+Message: The current subscription type is not permitted to perform operations on any provider 
+namespace. Please use a different subscription.
+```
+
+如果收到此错误，则说明你在使用的订阅不允许访问除 Azure Active Directory 之外的任何 Azure 服务。 当你需要访问经典门户但不允许你部署资源时，你可能具有此类型的订阅。 若要解决此问题，必须使用有权部署资源的订阅。  
+
+若要使用 PowerShell 查看你的可用订阅，请使用以下命令：
+
+```powershell
+Get-AzureRmSubscription
+```
+
+另外，若要设置当前订阅，请使用以下命令：
+
+```powershell
+Set-AzureRmContext -SubscriptionName {subscription-name}
+```
+
+若要使用 Azure CLI 2.0 查看你的可用订阅，请使用以下命令：
+
+```azurecli
+az account list
+```
+
+另外，若要设置当前订阅，请使用以下命令：
+
+```azurecli
+az account set --subscription {subscription-name}
+```
 
 ### <a name="invalidtemplate"></a>InvalidTemplate
 此错误可能由几种不同类型的错误导致。
@@ -387,19 +423,19 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 若要查看是否已注册提供程序，请使用 `azure provider list` 命令。
 
 ```azurecli
-azure provider list
+az provider list
 ```
 
 若要注册资源提供程序，请使用 `azure provider register` 命令，并指定要注册的*命名空间*。
 
 ```azurecli
-azure provider register Microsoft.Cdn
+az provider register --namespace Microsoft.Cdn
 ```
 
-若要查看资源提供程序支持的位置和 API 版本，请使用：
+若要查看支持用于某个资源类型的位置和 API 版本，请使用：
 
 ```azurecli
-azure provider show -n Microsoft.Compute --json > compute.json
+az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
 <a id="quotaexceeded" />
@@ -410,18 +446,23 @@ azure provider show -n Microsoft.Compute --json > compute.json
 若要检查订阅的核心配额，可以使用 Azure CLI 中的 `azure vm list-usage` 命令。 以下示例演示了核心配额为 4 的免费试用帐户：
 
 ```azurecli
-azure vm list-usage
+az vm list-usage --location "South Central US"
 ```
 
 将返回：
 
 ```azurecli
-info:    Executing command vm list-usage
-Location: westus
-data:    Name   Unit   CurrentValue  Limit
-data:    -----  -----  ------------  -----
-data:    Cores  Count  0             4
-info:    vm list-usage command OK
+[
+  {
+    "currentValue": 0,
+    "limit": 2000,
+    "name": {
+      "localizedValue": "Availability Sets",
+      "value": "availabilitySets"
+    }
+  },
+  ...
+]
 ```
 
 如果部署一个模板，该模板在美国西部区域创建超过四个核心，则会收到如下所示的部署错误消息：
@@ -476,16 +517,16 @@ Message=Unable to download deployment content from ...
 Policy identifier(s): '/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition'
 ```
 
-在 **PowerShell ** 中，提供该策略标识符作为 **Id** 参数，检索阻止部署的策略的详细信息。
+在 **PowerShell** 中，提供该策略标识符作为 **Id** 参数，检索阻止部署的策略的详细信息。
 
 ```powershell
-(Get-AzureRmPolicyAssignment -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
+(Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-在 **Azure CLI** 中，提供策略定义的名称：
+在 **Azure CLI 2.0** 中，提供策略定义的名称：
 
 ```azurecli
-azure policy definition show regionPolicyDefinition --json
+az policy definition show --name regionPolicyAssignment
 ```
 
 有关策略的详细信息，请参阅[使用策略来管理资源和控制访问](resource-manager-policy.md)。
@@ -520,23 +561,15 @@ azure policy definition show regionPolicyDefinition --json
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.response | ConvertTo-Json
   ```
 
-   此信息可帮助确定模板中的值是否设置不正确。
-
-- Azure CLI
-
-   在 Azure CLI 中，将 **- debug-setting** 参数设置为All、ResponseContent 或 RequestContent。
-
-  ```azurecli
-  azure group deployment create --debug-setting All -f c:\Azure\Templates\storage.json -g examplegroup -n ExampleDeployment
-  ```
-
-   使用以下命令检查记录的请求和响应内容：
-
-  ```azurecli
-  azure group deployment operation list --resource-group examplegroup --name ExampleDeployment --json
-  ```
-
    此信息可帮助确定模板中某个值的设置是否错误。
+
+- Azure CLI 2.0
+
+   使用以下命令查看部署操作：
+
+  ```azurecli
+  az group deployment operation list --resource-group ExampleGroup --name vmlinux
+  ```
 
 - 嵌套模板
 
@@ -662,8 +695,8 @@ Resource Manager 可在模板验证过程中确定循环依赖项。 它会返�
 | 自动化 |[Azure 自动化中常见错误的疑难解答提示](../automation/automation-troubleshooting-automation-errors.md) |
 | Azure Stack |[Microsoft Azure Stack 故障排除](../azure-stack/azure-stack-troubleshooting.md) |
 | 数据工厂 |[排查数据工厂问题](../data-factory/data-factory-troubleshoot.md) |
-| Service Fabric |[排查在 Azure Service Fabric 上部署服务时遇到的常见问题](../service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
-| 站点恢复 |[监视虚拟机和物理服务器的保护及其故障排除](../site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
+| Service Fabric |[监视和诊断 Azure Service Fabric 应用程序](../service-fabric/service-fabric-diagnostics-overview.md) |
+| Site Recovery |[监视虚拟机和物理服务器的保护及其故障排除](../site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
 | 存储 |[监视、诊断和排查 Microsoft Azure 存储问题](../storage/storage-monitoring-diagnosing-troubleshooting.md) |
 | StorSimple |[排查 StorSimple 设备部署问题](../storsimple/storsimple-troubleshoot-deployment.md) |
 | SQL 数据库 |[排查 Azure SQL 数据库的连接问题](../sql-database/sql-database-troubleshoot-common-connection-issues.md) |
@@ -672,9 +705,4 @@ Resource Manager 可在模板验证过程中确定循环依赖项。 它会返�
 ## <a name="next-steps"></a>后续步骤
 * 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](resource-group-audit.md)。
 * 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](resource-manager-deployment-operations.md)。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "将 VMware VM 从 Azure 故障回复到本地 | Microsoft Docs"
+title: "将 VMware VM 从 Azure 故障回复到本地 | Microsoft 文档"
 description: "了解在将 VMware VM 和物理服务器故障转移到 Azure 后，如何故障回复到本地站点。"
 services: site-recovery
 documentationcenter: 
@@ -15,19 +15,21 @@ ms.workload: required
 ms.date: 10/05/2016
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 7688df2aac74d10de7c188ad46f8ab2ec38bbe86
-ms.openlocfilehash: 34c335d17641e9df9b64a7882448afc268e4da7c
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: ba801c69cf2d0d542bebf54e99ef981854284ab0
+ms.lasthandoff: 03/09/2017
 
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>将 VMware 虚拟机和物理服务器故障回复到本地站点
 > [!div class="op_single_selector"]
-> * [Azure 门户](site-recovery-failback-azure-to-vmware.md)
-> * [Azure 经典门户](site-recovery-failback-azure-to-vmware-classic.md)
-> * [Azure 经典门户（旧版）](site-recovery-failback-azure-to-vmware-classic-legacy.md)
+> * [来自 Azure 的 VMware 虚拟机/物理计算机](site-recovery-failback-azure-to-vmware.md)
+> * [来自 Azure 的 Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
 
-本文介绍如何将 Azure 虚拟机从 Azure 故障回复到本地站点。 根据此[教程](site-recovery-vmware-to-azure-classic.md)将 VMware 虚拟机或 Windows/Linux 物理服务器从本地站点故障转移到 Azure 以后，请按本文中的说明进行故障回复。
+本文介绍如何将 Azure 虚拟机从 Azure 故障回复到本地站点。 使用此[参考](site-recovery-how-to-reprotect.md)重新保护计算机后，可以故障回复 VMware 虚拟机或 Windows/Linux 物理服务器时，请按照此处的说明进行故障回复。
+
+>[!NOTE]
+>如果使用的是经典 Azure 门户，请参阅[此处](site-recovery-failback-azure-to-vmware-classic.md)提到的说明了解增强的“VMware 到 Azure”体系结构，并参阅[此处](site-recovery-failback-azure-to-vmware-classic-legacy.md)了解旧体系结构
 
 ## <a name="overview"></a>概述
 本节中图片显示了这种情况下的故障回复体系结构。

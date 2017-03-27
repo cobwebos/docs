@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
-ms.openlocfilehash: 33c658bc15ee266d519a2ca403d2fc0d057b36fd
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 96d34c176e028b89617c1f09d7baba7b31eb1601
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/27/2017
 
 
 ## <a name="quick-commands"></a>快速命令
-若要创建网络安全组和规则，需要安装 [Azure CLI 1.0](../xplat-cli-install.md) 并使用 Resource Manager 模式：
+若要创建网络安全组和规则，需要安装 [Azure CLI 1.0](../cli-install-nodejs.md) 并使用 Resource Manager 模式：
 
 ```azurecli
 azure config mode arm
@@ -76,13 +76,13 @@ azure network vnet subnet set --resource-group myResourceGroup \
 
 可以将网络安全组和 ACL 规则定义为 Azure Resource Manager 模板的一部分。 详细了解如何[使用模板创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-template.md)。
 
-如果需要使用端口转发将唯一的外部端口映射至 VM 上的内部端口，则需要使用负载均衡器和网络地址转换 (NAT) 规则。 例如，你可能想对外公开 TCP 端口 8080，然后让流量定向到 VM 上的 TCP 端口 80。 可以了解如何[创建面向 Internet 的负载平衡器](../load-balancer/load-balancer-get-started-internet-arm-cli.md)。
+如果需要使用端口转发将唯一的外部端口映射至 VM 上的内部端口，则需要使用负载均衡器和网络地址转换 (NAT) 规则。 例如，你可能想对外公开 TCP 端口 8080，然后让流量定向到 VM 上的 TCP 端口 80。 可以了解如何[创建面向 Internet 的负载均衡器](../load-balancer/load-balancer-get-started-internet-arm-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 在本示例中，你创建了简单的规则来允许 HTTP 流量。 你可以从下列文章中，找到有关创建更详细环境的信息：
 
 * [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)
 * [什么是网络安全组 (NSG)？](../virtual-network/virtual-networks-nsg.md)
-* [Azure Resource Manager 中负载平衡器的概述](../load-balancer/load-balancer-arm.md)
+* [Azure Resource Manager 中负载均衡器的概述](../load-balancer/load-balancer-arm.md)
 
 

@@ -18,9 +18,9 @@ ms.date: 03/03/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c11adbe77131d4e0337ccd926da03041042c3703
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 682ebb212f9056f3704a6de5dde8d3a35681108f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -105,7 +105,7 @@ DNSnamePrefix.AzureRegion.cloudapp.azure.net
 
 3. 在“部署历史记录”边栏选项卡中，单击其名称以 **microsoft-acs** 开头（后跟部署日期）的部署。 示例：microsoft-acs-201701310000。  
 
-4. 在“摘要”页的“输出”下有多个群集链接<provided></provided>。 **SSHMaster0** 提供的 SSH 连接字符串用于连接到容器服务群集中的第一个主机。 
+4. 在“摘要”页的“输出”下通过了多个群集链接。 **SSHMaster0** 提供的 SSH 连接字符串用于连接到容器服务群集中的第一个主机。 
 
 如上文所述，也可使用 Azure 工具查找主机的 FQDN。 使用主机的 FQDN 以及在创建群集时指定的用户名建立到主机的 SSH 连接。 例如：
 
@@ -122,3 +122,4 @@ ssh userName@masterFQDN –A –p 22
 
 * [详细了解](container-service-intro.md) Azure 容器服务。
 * 使用[门户](container-service-deployment.md)或 [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) 部署容器服务群集。
+

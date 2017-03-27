@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2016
+ms.date: 03/16/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1821aa2a3d6428ca98cad14b0bf5e8b37ec6cb9c
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 8c5ce9570541def245ca33f5841a8392e73569b4
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -39,25 +40,27 @@ ms.openlocfilehash: 1821aa2a3d6428ca98cad14b0bf5e8b37ec6cb9c
    
     ![选择现有虚拟网络](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
 9. 在“选择虚拟网络”边栏选项卡上，选择所需虚拟网络。 边栏选项卡将显示订阅中所有与实验室在同一区域的虚拟网络。  
-10. 选择虚拟网络后，将返回到“虚拟网络”边栏选项卡且启用多个字段。  
+10. 选择虚拟网络之后，可返回到“虚拟网络”，单击边栏选项卡底部列表中的子网。
+
+    ![子网列表](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
     
-     ![选择现有虚拟网络](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
-11. 指定虚拟网络/实验室组合的说明。
+    此时将显示“实验室子网”边栏选项卡。
+
+    ![“实验室子网”边栏选项卡](./media/devtest-lab-configure-vnet/lab-subnet.png)
+
+11. 指定**实验室子网名称**。
 12. 若要允许在实验室 VM 创建中使用子网，请选择“在虚拟机创建中使用”。
-13. 若要在子网中允许公共 IP 地址，请选择“允许公共 IP”。
-14. 在“每个用户的最大虚拟机数量”字段中，指定每个子网中每个用户的最大 VM 数量。 如果不希望限制的 VM 的数目，请将此字段留空。
-15. 选择“保存”。
-16. 既然已配置虚拟网络，则可在创建 VM 时选择它。 
+13. 若要启用“共享公共 IP 地址”[](devtest-lab-shared-ip.md)，请选择“启用共享公共 IP”。
+14. 若要在子网中允许公共 IP 地址，请选择“允许公共 IP 创建”。
+15. 在“每个用户的最大虚拟机数量”字段中，指定每个子网中每个用户的最大 VM 数量。 如果不希望限制的 VM 的数目，请将此字段留空。
+16. 选择“确定”关闭“实验室子网”边栏选项卡。
+17. 选择“保存”关闭“虚拟网络”边栏选项卡。
+18. 既然已配置虚拟网络，则可在创建 VM 时选择它。 
     若要了解如何创建 VM 和指定虚拟网络，请参阅文章[将含有项目的 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>后续步骤
 将所需虚拟网络添加到实验室后，下一步为[将 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

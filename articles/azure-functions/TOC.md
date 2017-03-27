@@ -22,13 +22,15 @@
 #### [移动应用绑定](functions-bindings-mobile-apps.md)
 #### [通知中心输出绑定](functions-bindings-notification-hubs.md)
 #### [用于队列和主题的服务总线触发器与绑定](functions-bindings-service-bus.md)
+#### [Sendgrid 绑定](functions-bindings-sendgrid.md)
 #### 存储绑定
 ##### [Blob 绑定](functions-bindings-storage-blob.md)
 ##### [队列绑定](functions-bindings-storage-queue.md)
 ##### [表绑定](functions-bindings-storage-table.md)
+##### [SendGrid 绑定](functions-bindings-sendgrid.md)
 #### [计时器触发器](functions-bindings-timer.md)
 #### [Twilio 输出绑定](functions-bindings-twilio.md)
-### [通过 Azure 门户创建函数](functions-create-first-azure-function-azure-portal.md) 
+### [通过 Azure 门户创建 Function App](functions-create-function-app-portal.md) 
 ### [测试 Azure Functions](functions-test-a-function.md)
 ### [进行本地开发和调试](functions-run-local.md)
 ### [Azure Functions 最佳实践](functions-best-practices.md)
@@ -50,8 +52,3 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-functions)
 ## [Azure Functions GitHub 存储库](https://github.com/Azure/Azure-Functions/) 
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: 72aed50d3dd86c5875d3b741a6fff16cb8f17a2d
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: bcb4fa81971ee1276cb8e7b0b249e970423bd630
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -39,13 +39,13 @@ ms.lasthandoff: 01/31/2017
 - 创建一个三节点群集。
 - 将数据磁盘与 OS 磁盘隔离开来。
 - 在 RAID-0/条带化设置下创建数据磁盘，以提高 IOPS。
-- 使用 Azure Load Balancer，使&3; 个节点的负载保持均衡。
+- 使用 Azure 负载均衡器，使&3; 个节点的负载保持均衡。
 - 为了最大程度地减少重复工作，可创建一个包含 MariaDB + Galera 的 VM 映像，并将其用于创建其他群集 VM。
 
 ![系统体系结构](media/virtual-machines-linux-classic-mariadb-mysql-cluster/Setup.png)
 
 > [!NOTE]
-> 本主题使用 [Azure CLI](../xplat-cli-install.md) 工具，因此请务必根据说明下载这些工具并其连接到 Azure 订阅。 如果需要有关 Azure CLI 中可用命令的参考，请参阅 [Azure CLI 命令参考](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。 还需要[创建用于身份验证的 SSH 密钥]，并记下 .pem 文件的位置。
+> 本主题使用 [Azure CLI](../cli-install-nodejs.md) 工具，因此请务必根据说明下载这些工具并其连接到 Azure 订阅。 如果需要有关 Azure CLI 中可用命令的参考，请参阅 [Azure CLI 命令参考](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。 还需要[创建用于身份验证的 SSH 密钥]，并记下 .pem 文件的位置。
 >
 >
 
@@ -296,7 +296,7 @@ ms.lasthandoff: 01/31/2017
 ## <a name="load-balance-the-cluster"></a>对群集进行负载均衡
 创建群集 VM 时，已将其添加到了名为 clusteravset 的可用性集中，确保其放置在不同的容错域和更新域上，且 Azure 不会同时在所有虚拟机上执行维护。 此配置符合 Azure 服务级别协议 (SLA) 将支持的要求。
 
-现在，使用 Azure Load Balancer 在&3; 个节点之间均衡请求。
+现在，使用 Azure 负载均衡器在&3; 个节点之间均衡请求。
 
 使用 Azure CLI 在计算机上运行以下命令。
 
@@ -346,7 +346,7 @@ CLI 将负载均衡器探测间隔设置为 15 秒，这可能有点太长。 �
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
-在本文中，你在运行 CentOS 7 的 Azure 虚拟机上创建了包含三个节点的 MariaDB + Galera 高度可用群集。 这些 VM 通过 Azure Load Balancer 实现了负载均衡。
+在本文中，你在运行 CentOS 7 的 Azure 虚拟机上创建了包含三个节点的 MariaDB + Galera 高度可用群集。 这些 VM 通过 Azure 负载均衡器实现了负载均衡。
 
 你可能希望了解[在 Linux 上对 MySQL 进行群集的其他方式](virtual-machines-linux-classic-mysql-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)并探究如何[优化和测试 Azure Linux VM 上的 MySQL 性能](virtual-machines-linux-classic-optimize-mysql.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
 
