@@ -1,6 +1,6 @@
 
 
-若要通过 Apple Push Notification 服务 (APNS) 为应用注册推送通知，必须在 Apple 开发人员门户上为项目创建新的推送证书、应用 ID 和预配配置文件。 你的应用可以使用应用 ID 中包含的配置设置来发送和接收推送通知。 这些设置包括发送和接收推送通知时，在 Apple Push Notification 服务 (APNS) 上进行身份验证所需的推送通知证书。 有关这些概念的详细信息，请参阅 [Apple Push Notification 服务](http://go.microsoft.com/fwlink/p/?LinkId=272584) 文档。
+若要通过 Apple Push Notification 服务 (APNS) 为应用注册推送通知，必须在 Apple 开发人员门户上为项目创建新的推送证书、应用 ID 和预配配置文件。 应用可以使用应用 ID 中包含的配置设置来发送和接收推送通知。 这些设置包括发送和接收推送通知时，在 Apple Push Notification 服务 (APNS) 上进行身份验证所需的推送通知证书。 有关这些概念的详细信息，请参阅 [Apple Push Notification 服务](http://go.microsoft.com/fwlink/p/?LinkId=272584) 文档。
 
 #### <a name="generate-the-certificate-signing-request-file-for-the-push-certificate"></a>为推送证书生成证书签名请求文件
 这些步骤将引导你创建证书签名请求。 此请求可让你生成用于 APNS 的推送证书。
@@ -28,17 +28,17 @@
    
    * **Name（名称）**：在“App ID Description”（应用 ID 说明）部分的“Name”（名称）字段中为应用键入一个描述性名称。
    * **Bundle Identifier**（捆绑标识符）：在“Explicit App ID”（显式应用 ID）部分下，使用[应用分发指南](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)中所述的 `<Organization Identifier>.<Product Name>` 格式输入“Bundle Identifier”（捆绑标识符）。 此标识符必须与应用的 XCode、Xamarin 或 Cordova 项目中使用的标识符匹配。
-   * **Push Notifications（推送通知）**：在“App Services”（应用服务）部分选中“Push Notifications”（推送通知）选项。
+   * **推送通知**：在“应用服务”部分选中“推送通知”选项。
      
      ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
-3. 在“Confirm your App ID”（确认应用 ID）屏幕上检查设置，确认后，请单击“Submit”（提交）
-4. 提交新应用 ID 后，将会看到“Registration complete”（注册完成）屏幕。 单击“Done”（完成） 。
+3. 在“确认应用 ID”屏幕上检查设置，确认后，请单击“注册”
+4. 提交新应用 ID 后，将会看到“注册完成”屏幕。 单击“Done”（完成） 。
 5. 在开发人员中心的“App IDs”（应用 ID）下，找到你刚刚创建的应用 ID，然后单击其所在行。 单击应用 ID 行会显示应用详细信息。 单击底部的“Edit”（编辑）按钮。
 6. 滚动到屏幕底部并单击“Development Push SSL Certificate”（开发推送 SSL 证书 ）部分下的“Create Certificate...”（创建证书...）按钮。
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
    
-       This will display the "Add iOS Certificate" assistant.
+       This displays the "Add iOS Certificate" assistant.
    
    > [!NOTE]
    > 本教程使用开发证书。 注册生产证书时使用相同的过程。 你只需确保在发送通知时使用相同的证书类型。
@@ -64,33 +64,29 @@
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
    
    > [!NOTE]
-   > 证书中的名称可能不同，但将以 **Apple Development iOS Push Services:**作为前缀。
+   > 证书中的名称可能不同，但将以 **Apple Development iOS Push Services:** 作为前缀。
    > 
    > 
 10. 在 Keychain Access 中，按住 Ctrl 并单击在“Certificates”（证书）类别中创建的新推送证书。 单击“导出”，为文件命名，选择“.p12”格式，然后单击“保存”。
     
-    记住导出的 .p12 推送证书的文件名和位置。 稍后你要在 Azure 经典门户中将它上载，以使用它来启用 APNS 身份验证。
+    记住导出的 .p12 推送证书的文件名和位置。 稍后你要在 Azure 经典门户中将它上载，以使用它来启用 APNS 身份验证。 如果 **.p12** 格式选项不可用，可能需重新启动 Keychain Access。
 
 #### <a name="create-a-provisioning-profile-for-the-app"></a>为应用程序创建配置文件
-1. 返回 <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 预配门户</a>，选择“Provisioning Profiles”（预配配置文件），选择“All”（全部），然后单击 **+** 按钮创建一个新的配置文件。 此时会启动“Add iOS Provisiong Profile”（添加 iOS 设置配置文件）向导 
+1. 返回 <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 预配门户</a>，选择“Provisioning Profiles”（预配配置文件），选择“All”（全部），然后单击 **+** 按钮创建一个新的配置文件。 此时会启动“添加 iOS 预配配置文件”向导。
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
-2. 选择“Development”（开发）下的“iOS App Development”（iOS 应用程序开发）作为设置配置文件类型，然后单击“Continue”（继续）。
-3. 接下来，从“App ID”（应用 ID）下拉列表中选择刚创建的应用 ID，然后单击“Continue”（继续）
+2. 选择“开发”下的“iOS 应用程序开发”作为预配配置文件类型，然后单击“继续”。
+3. 接下来，从“应用 ID”下拉列表中选择刚创建的应用 ID，然后单击“继续”。
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
 4. 在“Select certificates”（选择证书）屏幕中，选择用于代码签名的开发证书，然后单击“Continue”（继续）。 这是一个签名证书，而不是你刚刚创建的推送证书。
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-provisioning-select-cert.png)
+       
 5. 接下来，选择要用于测试的“Devices”（设备），然后单击“Continue”（继续）。
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-provisioning-select-devices.png)
 6. 最后，在“Profile Name”（配置文件名称）中为配置文件选取一个名称，并单击“Generate”（生成）。
    
        ![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -13,21 +13,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/10/2017
+ms.date: 03/15/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 15cbf897f3f67b9d1bee0845b4d287fdabe63ba8
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 6f2a3880c6cd307282020a689ddd4e22a95c17b0
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="authenticate-runbooks-with-azure-run-as-account"></a>使用 Azure 运行方式帐户进行 Runbook 身份验证
 本主题说明如何从 Azure 门户使用运行方式帐户功能配置自动化帐户，对在 Azure Resource Manager 或 Azure 服务管理中管理资源的 Runbook 进行身份验证。
 
-在 Azure 门户中创建自动化帐户时，还会自动创建以下帐户：
+在 Azure 门户中创建新的自动化帐户时，还会自动创建以下帐户：
 
-* 运行方式帐户，用于在 Azure Active Directory 中创建服务主体、证书以及分配基于参与者角色的访问控制 (RBAC)（用于使用 Runbook 管理 Resource Manager 资源）。   
+* 运行方式帐户，用于在 Azure Active Directory 中创建新的服务主体、证书以及分配基于参与者角色的访问控制 (RBAC)（用于使用 Runbook 管理 Resource Manager 资源）。   
 * 经典运行方式帐户（通过上载管理证书），用于使用 Runbook 管理 Azure 服务管理或经典资源。  
 
 这样可以简化操作过程，并帮助你快速开始构建和部署 Runbook 来支持自动化需求。      
@@ -41,17 +41,14 @@ ms.lasthandoff: 03/11/2017
 > 使用自动化全局 Runbook 的 Azure [警报集成功能](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)需要已配置了运行方式帐户和经典运行方式帐户的自动化帐户。 可以选择已定义运行方式帐户和经典运行方式帐户的自动化帐户，也可以创建新的自动化帐户。
 >  
 
-我们介绍了如何从 Azure 门户创建自动化帐户、如何使用 PowerShell 更新自动化帐户、如何管理帐户配置，并演示了如何在 Runbook 中进行身份验证。
+我们将说明如何从 Azure 门户创建自动化帐户、如何使用 PowerShell 更新自动化帐户、如何管理帐户配置，以及演示如何在 Runbook 中进行身份验证。
 
 在此之前，应该先了解并考虑一些事项，然后再继续。
 
 1. 这不会影响经典或 Resource Manager 部署模型中已创建的现有自动化帐户。  
 2. 这只适用于通过 Azure 门户创建的自动化帐户。  如果尝试从经典门户创建帐户，将不会复制运行方式帐户配置。
 3. 如果目前使用之前创建的 Runbook 和资产（即计划、变量等）来管理经典资源，并希望这些 Runbook 使用新的经典运行方式帐户进行身份验证，则需要通过管理运行方式帐户来创建经典运行方式帐户，或使用以下 PowerShell 脚本更新现有帐户。  
-4. 若要使用新的运行方式帐户和经典运行方式自动化帐户进行身份验证，需要使用在[身份验证代码示例](#authentication-code-examples)部分提供的示例代码修改现有的 Runbook。  
-   
-    >[!NOTE] 
-    >运行方式帐户使用基于证书的服务主体针对 Resource Manager 资源进行身份验证，而经典运行方式帐户则使用管理证书针对服务管理资源进行身份验证。     
+4. 若要使用新的运行方式帐户和经典运行方式自动化帐户进行身份验证，需要使用下面的示例代码修改现有的 Runbook。  **请注意** ，运行方式帐户使用基于证书的服务主体针对 Resource Manager 资源进行身份验证，而经典运行方式帐户则使用管理证书针对服务管理资源进行身份验证。     
 
 ## <a name="create-a-new-automation-account-from-the-azure-portal"></a>从 Azure 门户创建新的自动化帐户
 在本部分中，将执行以下步骤从 Azure 门户创建一个新的 Azure 自动化帐户。  这会同时创建运行方式帐户和经典运行方式帐户。  
@@ -148,7 +145,7 @@ ms.lasthandoff: 03/11/2017
 1. 在 Azure 门户中，打开自动化帐户。  
 2. 在“自动化帐户”边栏选项卡上“帐户属性”窗格的“帐户设置”部分下，选择“运行方式帐户”。
 3. 在“运行方式帐户”属性边栏选项卡上，选择要删除的“运行方式帐户”或“经典运行方式帐户”，并在属性边栏选项卡上，为所选帐户单击“删除”。<br><br> ![删除运行方式帐户](media/automation-sec-configure-azure-runas-account/automation-account-delete-runas.png)<br><br>  系统会提示用户确认是否要继续。
-4. 帐户删除过程中，可以在菜单的“通知”下面跟踪进度。  删除完成后，可在“运行方式帐户”属性边栏选项卡中选择创建选项“Azure 运行方式帐户”，重新创建该帐户。<br><br> ![重新创建自动化运行方式帐户](media/automation-sec-configure-azure-runas-account/automation-account-create-runas.png)<br> 
+4. 帐户删除过程中，可以在菜单的“通知”下面跟踪进度。  删除完成后，可在“运行方式帐户”属性边栏选项卡中选择创建“Azure 运行方式帐户”，重新创建该帐户。<br><br> ![重新创建自动化运行方式帐户](media/automation-sec-configure-azure-runas-account/automation-account-create-runas.png)<br> 
 
 ### <a name="misconfiguration"></a>配置错误
 如果运行方式帐户或经典运行方式帐户正常运行所需的任意配置项被删除或在初始设置期间未正确创建，如：
@@ -392,15 +389,9 @@ ms.lasthandoff: 03/11/2017
     > 
     > 
 
-在脚本成功完成以后，如果创建了经典运行方式帐户，则请执行相关步骤，[上载管理 API 证书](../azure-api-management-certs.md)到 Azure 经典门户。  如果使用自签名公共证书（.cer 格式）创建了经典运行方式帐户，则可在计算机上用于执行 PowerShell 会话的用户配置文件下方的临时文件文件夹（*%USERPROFILE%\AppData\Local\Temp*）中找到所创建证书的副本。  否则，如果将经典运行方式帐户配置为使用企业 CA 所生成的证书（.cer 格式），则需使用该证书。  上载证书以后，请参阅[示例代码](#sample-code-to-authenticate-with-service-management-resources)，使用服务管理资源对凭据配置进行验证。  
+在脚本成功完成以后，如果你使用自签名公共证书（.cer 格式）创建了经典运行方式帐户，脚本会创建该帐户并将其保存到计算机的临时文件夹中，采用的用户配置文件用于执行 PowerShell 会话 - *%USERPROFILE%\AppData\Local\Temp*；或者，如果你使用企业公共证书（.cer 格式）创建了经典运行方式帐户，则需使用该证书。  遵循将[管理 API 证书上载](../azure-api-management-certs.md)到 Azure 经典门户的步骤，然后参考[示例代码](#sample-code-to-authenticate-with-service-management-resources)使用服务管理资源来验证凭据配置。  如果未创建经典运行方式帐户，请参考以下[示例代码](#sample-code-to-authenticate-with-resource-manager-resources)，使用 Resource Manager 资源进行身份验证并验证凭据配置。
 
-如果未创建经典运行方式帐户，请参考以下[示例代码](#sample-code-to-authenticate-with-resource-manager-resources)，使用 Resource Manager 资源进行身份验证并验证凭据配置。   
-
-##  <a name="authentication-code-examples"></a>身份验证代码示例
-
-以下示例演示了如何通过运行方式帐户针对 Resource Manager 资源或经典资源进行 Runbook 的身份验证。
-
-### <a name="authenticate-with-resource-manager-resources"></a>使用 Resource Manager 资源进行身份验证
+## <a name="sample-code-to-authenticate-with-resource-manager-resources"></a>用于使用 Resource Manager 资源进行身份验证的示例代码
 可以使用以下已更新的示例代码（取自 **AzureAutomationTutorialScript** 示例 Runbook），以运行方式帐户进行身份验证来使用 Runbook 管理 Resource Manager 资源。   
 
     $connectionName = "AzureRunAsConnection"
@@ -435,7 +426,7 @@ ms.lasthandoff: 03/11/2017
 
 请注意，Runbook 中用于身份验证的 cmdlet **Add-AzureRmAccount**使用 *ServicePrincipalCertificate* 参数集。  它使用服务主体证书（而不是凭据）进行身份验证。  
 
-### <a name="authenticate-with-service-management-resources"></a>使用服务管理资源进行身份验证
+## <a name="sample-code-to-authenticate-with-service-management-resources"></a>用于使用服务管理资源进行身份验证的示例代码
 可以使用以下已更新的示例代码（取自 **AzureClassicAutomationTutorialScript** 示例 Runbook），以经典运行方式帐户进行身份验证来使用 Runbook 管理经典资源。
 
     $ConnectionAssetName = "AzureClassicRunAsConnection"

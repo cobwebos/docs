@@ -10,21 +10,21 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/10/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3ad45837a8c3f0e37e8571fb9b894df53ecb5f56
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: c1d7cfe614ab4e677e7fff989e79eb09acb3feed
+ms.lasthandoff: 03/22/2017
 
 ---
 
-# <a name="create-a-linux-virtual-machine-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Linux 虚拟机
+# <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建 Linux 虚拟机
 
-Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本指南详细介绍了如何使用 Azure CLI 部署运行 Ubuntu 14.04 LTS 的虚拟机。
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详细介绍了如何使用 Azure CLI 部署运行 Ubuntu 16.04 LTS 的虚拟机。
 
 在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 
@@ -81,7 +81,7 @@ ssh <Public IP Address>
 
 ## <a name="delete-virtual-machine"></a>删除虚拟机
 
-当不再需要时，可以使用以下命令删除资源组、VM 以及所有相关资源。
+如果不再需要资源组、VM 和所有相关的资源，可以使用以下命令将其删除。
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -89,6 +89,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-[创建具有高可用性的虚拟机教程](./virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[创建高可用性虚拟机教程](./virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [浏览 VM 部署 CLI 示例](./virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+

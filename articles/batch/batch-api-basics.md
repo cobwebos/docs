@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 03/08/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 0682a048429d8e980da529975a24dde28a9812fe
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 1ebe72255697af16fc28191a102a7c0487968eda
 ms.lasthandoff: 03/15/2017
 
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/15/2017
 
 这篇 Azure Batch 服务核心组件的概述将介绍 Batch 开发人员可用来构建大规模并发计算解决方案的主要服务功能和资源。
 
-不管是在开发可发出直接 [REST API][batch_rest_api] 调用的分布式计算应用程序或服务，还是使用某个 [Batch SDK](batch-technical-overview.md#batch-development-apis)，都可以使用本文中介绍的多种资源和功能。
+不管是在开发可发出直接 [REST API][batch_rest_api] 调用的分布式计算应用程序或服务，还是使用某个 [Batch SDK](batch-apis-tools.md#batch-development-apis)，都可以使用本文中介绍的多种资源和功能。
 
 > [!TIP]
 > 有关 Batch 服务的更全面介绍，请参阅 [Basics of Azure Batch](batch-technical-overview.md)（Azure Batch 基础知识）。
@@ -427,6 +427,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 >
 
 ## <a name="next-steps"></a>后续步骤
+* 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
 * 在 [Get started with the Azure Batch Library for .NET](batch-dotnet-get-started.md)（适用于 .NET 的 Azure Batch 库入门）中逐步演练一个示例 Batch 应用程序。 另请参阅该教程的 [Python 版本](batch-python-tutorial.md) ，其中介绍了如何在 Linux 计算节点上运行工作负荷。
 * 下载并构建 [Batch 资源管理器][github_batchexplorer]示例项目，以便在开发 Batch 解决方案时使用。 使用 Batch 资源管理器可以执行以下和其他操作：
 

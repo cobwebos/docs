@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/13/2017
+ms.date: 03/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 278caf2afa889466736f3d98ff4ad292f72e5098
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 9e89f7d362a61f39af2a6e2a94241f99b95806a4
+ms.lasthandoff: 03/22/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
@@ -69,15 +69,15 @@ ms.lasthandoff: 03/03/2017
 ### <a name="production-azure"></a>生产 Azure
 | **位置** | **服务提供商** |
 | --- | --- |
-| **阿姆斯特丹** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Internet Solutions - Cloud Connect、Interxion、KPN、Level 3 Communications、Orange、Tata Communications、TeleCity Group、Telenor、Verizon |
+| **阿姆斯特丹** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Internet Solutions - Cloud Connect、Interxion、KPN、Level 3 Communications、Orange、Tata Communications、TeleCity Group、Telefonica+、Telenor、Verizon |
 | **亚特兰大** |Equinix |
-| **釜山** |LG CNS+、Sejong Telecom |
+| **釜山** |LG CNS+ |
 | **金奈** |Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **芝加哥** |AT&T NetBond、Comcast、Equinix、Level 3 Communications、Verizon、Zayo Group |
 | **达拉斯** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon |
 | **都柏林** |Colt、Telecity Group |
 | **香港** |British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
-| **伦敦** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telenor、Verizon、Vodafone |
+| **伦敦** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone |
 | **拉斯维加斯** |Level 3 Communications+、Megaport |
 | **洛杉矶** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
 | **墨尔本** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |

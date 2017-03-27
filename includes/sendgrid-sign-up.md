@@ -59,7 +59,7 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
     ![key][key]
 2. 密码是用户设置时选择的密码。 若需进行任何更改，可选择“更改密码”或“重置密码”。
 
-若要管理电子邮件传递设置，请单击“管理”按钮。 此操作将重定向到 [SendGrid 仪表板][SendGrid dashboard]
+若要管理电子邮件传递设置，请单击“管理”按钮。 此操作将重定向到 SendGrid 仪表板。
 
     ![manage][manage]
 
@@ -78,7 +78,6 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 [general-api-key]: ./media/sendgrid-sign-up/general-api-key.png
 [access]: ./media/sendgrid-sign-up/access.png
 [key]: ./media/sendgrid-sign-up/key.png
-[SendGrid dashboard]: ./media/sendgrid-sign-up/dashboard.png
 
 <!--Links-->
 
@@ -88,4 +87,3 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 [SendGrid Provisioning Process]: https://support.sendgrid.com/hc/articles/200181628-Why-is-my-account-being-provisioned-
 [all APIs]: https://sendgrid.com/docs/API_Reference/index.html
 [Email API Overview]: https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html
-

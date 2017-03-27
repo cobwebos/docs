@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2017
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 05b642949205d7698fbcf791a5d2f06528ff239e
-ms.openlocfilehash: e827bddfa0bcc1c1e46d06c6856033e77859c7fb
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: ae869be6ed9f304629498f416ffdda96252bdf9c
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/01/2017
 * [在运行时检测 Web 应用](app-insights-monitor-performance-live-website-now.md)
 * [Azure 云服务](app-insights-cloudservices.md)
 
-## <a name="a-nameidea-step-1-add-the-application-insights-sdk"></a><a name="ide"></a>步骤 1：添加 Application Insights SDK
+## <a name="ide"></a>步骤 1：添加 Application Insights SDK
 
 在解决方案资源管理器中右键单击你的 Web 应用，然后选择“添加”、“Application Insights 遥测...”或“配置 Application Insights”。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 03/01/2017
 5. 此外，也可以将 Application Insights SDK 添加到应用。 这样，在调试时便可以在 Visual Studio 中查看遥测数据。 稍后可以返回此配置页，或者等到部署应用后，启用[在运行时打开遥测](app-insights-monitor-performance-live-website-now.md)。
 
 
-## <a name="a-nameruna-step-2-run-your-app"></a><a name="run"></a>步骤 2：运行应用
+## <a name="run"></a>步骤 2：运行应用
 使用 F5 运行应用。 打开不同的页以生成一些遥测数据。
 
 在 Visual Studio 中，将看到已记录事件的计数。
@@ -124,7 +124,7 @@ ms.lasthandoff: 03/01/2017
 >
 >
 
-## <a name="a-namelanda-what-does-the-add-application-insights-command-do"></a><a name="land"></a>“添加 Application Insights”命令有什么作用？
+## <a name="land"></a>“添加 Application Insights”命令有什么作用？
 Application Insights 将遥测数据从应用发送到 Application Insights 门户（在 Azure 中托管）。
 
 ![遥测数据移动示意图](./media/app-insights-asp-net/01-scheme.png)
@@ -197,6 +197,10 @@ Application Insights 将遥测数据从应用发送到 Application Insights 门�
 如果使用 Visual Studio Team Services，则可以在每次发布新版本时将[批注标记](app-insights-annotations.md)添加到图表中。 下图显示了此标记的形式。
 
 ![图表中示例版本批注的屏幕截图](./media/app-insights-asp-net/release-annotation.png)
+
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>后续步骤
 **[在 Visual Studio 中使用 Application Insights](app-insights-visual-studio.md)**<br/>包含有关使用遥测数据进行调试、诊断搜索和钻取代码的信息。

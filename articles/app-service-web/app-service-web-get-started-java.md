@@ -12,12 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/08/2017
+ms.date: 03/17/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: e48e03e86a325b8f39809a49cdd19820dfa78bdc
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: ab9b49cd86f37499ebf8fd8162779be305019f36
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -26,48 +26,52 @@ ms.lasthandoff: 03/10/2017
 
 本快速入门帮助你在数分钟内将你的第一个 Java Web 应用部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。
 
-在开始本快速入门之前，请确保 [Azure CLI 已安装](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)在计算机上。
+在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-## <a name="create-a-java-web-app-in-azure"></a>在 Azure 中创建 Java Web 应用
-2. 运行 `az login` 并按屏幕说明进行操作，以便登录到 Azure。
+## <a name="log-in-to-azure"></a>登录 Azure
+运行 `az login` 并按屏幕说明进行操作，以便登录到 Azure。
    
-    ```azurecli
-    az login
-    ```
+```azurecli
+az login
+```
    
-3. 创建[资源组](../azure-resource-manager/resource-group-overview.md)。 这是放置所有 Azure 资源（例如 Web 应用及其 SQL 数据库后端）的地方，这些资源需要集中进行管理。
+## <a name="create-a-resource-group"></a>创建资源组   
+创建[资源组](../azure-resource-manager/resource-group-overview.md)。 这是放置所有 Azure 资源（例如 Web 应用及其 SQL 数据库后端）的地方，这些资源需要集中进行管理。
 
-    ```azurecli
-    az group create --location "West Europe" --name myResourceGroup
-    ```
+```azurecli
+az group create --location "West Europe" --name myResourceGroup
+```
 
-    若要查看适用于 `---location` 的可能值，请使用 `az appservice list-locations` Azure CLI 命令。
+若要查看适用于 `---location` 的可能值，请使用 `az appservice list-locations` Azure CLI 命令。
 
-3. 创建“免费”[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
+## <a name="create-an-app-service-plan"></a>创建应用服务计划
+创建“免费”[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
 
-    ```azurecli
-    az appservice plan create --name my-free-appservice-plan --resource-group myResourceGroup --sku FREE
-    ```
+```azurecli
+az appservice plan create --name my-free-appservice-plan --resource-group myResourceGroup --sku FREE
+```
 
-4. 使用 `<app_name>` 中的唯一名称创建新的 Web 应用。
+## <a name="create-a-web-app"></a>创建 Web 应用
+使用 `<app_name>` 中的唯一名称创建 Web 应用。
 
-    ```azurecli
-    az appservice web create --name <app_name> --resource-group myResourceGroup --plan my-free-appservice-plan
-    ```
+```azurecli
+az appservice web create --name <app_name> --resource-group myResourceGroup --plan my-free-appservice-plan
+```
 
-4. 从 GitHub 部署示例 Java 应用。
+## <a name="deploy-sample-application"></a>部署示例应用程序
+从 GitHub 部署示例 Java 应用。
 
-    ```azurecli
-    az appservice web source-control config --name <app_name> --resource-group myResourceGroup \
-    --repo-url "https://github.com/azure-appservice-samples/JavaCoffeeShopTemplate.git" --branch master --manual-integration 
-    ```
+```azurecli
+az appservice web source-control config --name <app_name> --resource-group myResourceGroup \
+--repo-url "https://github.com/azure-appservice-samples/JavaCoffeeShopTemplate.git" --branch master --manual-integration 
+```
 
+## <a name="browse-to-web-app"></a>浏览到 Web 应用
+若要查看应用在 Azure 中的实时运行情况，请运行此命令。
 
-5. 若要查看应用在 Azure 中的实时运行情况，请运行此命令。
-
-    ```azurecli
-    az appservice web browse --name <app_name> --resource-group myResourceGroup
-    ```
+```azurecli
+az appservice web browse --name <app_name> --resource-group myResourceGroup
+```
 
 恭喜，你的第一个 Java Web 应用已在 Azure 应用服务中实时运行！
 

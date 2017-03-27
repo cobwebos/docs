@@ -1,6 +1,6 @@
 ---
-title: "连接到 SQL 数据库 - SQL Server Management Studio | Microsoft Docs"
-description: "了解如何通过使用 SQL Server Management Studio (SSMS) 连接到在 Azure 上的 SQL 数据库。 然后，使用 Transact-SQL (T-SQL) 运行示例查询。"
+title: "SSMS：在 Azure SQL 数据库中进行连接和数据查询 | Microsoft Docs"
+description: "了解如何通过使用 SQL Server Management Studio (SSMS) 连接到在 Azure 上的 SQL 数据库。 然后，通过运行 Transact-SQL (T-SQL) 语句来查询和编辑数据。"
 metacanonical: 
 keywords: "连接到 sql 数据库, sql server management studio"
 services: sql-database
@@ -14,57 +14,143 @@ ms.custom: development
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/01/2017
-ms.author: sstein;carlrab
+ms.topic: hero-article
+ms.date: 03/15/2017
+ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: a5eaf43aa01e5d30171ea038db7ba985c9684fb7
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 9f149c3959f1b249a15f2c2714d12c7c9be94bbb
+ms.lasthandoff: 03/21/2017
 
 
 ---
-# <a name="connect-to-sql-database-with-sql-server-management-studio-and-execute-a-sample-t-sql-query"></a>使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例 T-SQL 查询
+# <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL 数据库：使用 SQL Server Management Studio 进行连接和数据查询
 
-本文将介绍如何使用 SQL Server Management Studio (SSMS) 连接到 Azure SQL 数据库。 成功连接后，我们将运行一个简单的 Transact-SQL (T-SQL) 查询，验证与数据库的通信。
+使用 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) 通过用户界面或脚本创建和管理 SQL Server 资源。 本指南详述了如何使用 SSMS 连接到 Azure SQL 数据库，然后执行查询、插入、更新和删除语句。
 
-[!INCLUDE [SSMS Install](../../includes/sql-server-management-studio-install.md)]
+此快速入门使用以下某个快速入门中创建的资源作为其起点：
 
-1. 使用“下载 SQL Server Management Studio”下载并安装最新版本的 SSMS（如果尚未这样做）。[](https://msdn.microsoft.com/library/mt238290.aspx) 为保持最新状态，最新版本的 SSMS 会提示你有新版本可供下载。
+- [创建 DB - 门户](sql-database-get-started-portal.md)
+- [创建 DB - CLI](sql-database-get-started-cli.md)
+- [创建 DB - PowerShell](sql-database-get-started-powershell.md) 
 
-2. 安装后，在 Windows 搜索框中键入 **Microsoft SQL Server Management Studio**，然后单击 **Enter** 打开 SSMS：
+在开始之前，请确保已安装最新版本的 [SSMS](https://msdn.microsoft.com/library/mt238290.aspx)。 
 
-    ![SQL Server Management Studio](./media/sql-database-get-started/ssms.png)
-3. 在“连接到服务器”对话框中输入所需的信息，以便使用 SQL Server 身份验证连接到 SQL 服务器。
+## <a name="get-connection-information"></a>获取连接信息
 
-    ![连接到服务器](./media/sql-database-get-started/connect-to-server.png)
-4. 单击“连接”。
+请在 Azure 门户中获取 Azure SQL 数据库服务器的完全限定服务器名称。 请使用 SQL Server Management Studio 通过完全限定的服务器名称连接到服务器。
 
-    ![已连接到服务器](./media/sql-database-get-started/connected-to-server.png)
-5. 在“对象资源管理器”中，展开“数据库”，展开任何数据库以查看该数据库中的对象。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
+3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。
 
-    ![使用 SSMS 查看新示例数据库对象](./media/sql-database-get-started/new-sample-db-objects-ssms.png)
-6. 右键单击此数据库，然后单击“新建查询”。
+    <img src="./media/sql-database-connect-query-ssms/connection-information.png" alt="connection information" style="width: 780px;" />
 
-    ![使用 SSMS 新建示例数据库查询](./media/sql-database-get-started/new-sample-db-query-ssms.png)
-7. 在查询窗口中键入以下查询：
+## <a name="connect-to-the-server"></a>连接到服务器
 
-   ```select * from sys.objects```
-   
-8.  在工具栏上单击“执行”，返回示例数据库中所有系统对象的列表。
+使用 SQL Server Management Studio 建立到 Azure SQL 数据库服务器的连接。
 
-    ![使用 SSMS 查询新示例数据库的系统对象](./media/sql-database-get-started/new-sample-db-query-objects-ssms.png)
+1. 在 Windows 搜索框中键入 **SSMS**， 然后单击 **Enter** 打开 SSMS。
 
-> [!Tip]
-> 有关教程，请参阅[教程：使用 Azure 门户与 SQL Server Management Studio 预配和访问 Azure SQL 数据库](sql-database-get-started.md)。    
->
+2. 在“连接到服务器”对话框中，输入以下信息：
+   - **服务器类型**：指定数据库引擎
+   - **服务器名称**：输入完全限定的服务器名称，例如 **mynewserver20170313.database.windows.net**
+   - **身份验证**：指定 SQL Server 身份验证
+   - **登录名**：输入服务器管理员帐户
+   - **密码**：输入服务器管理员帐户的密码
+ 
+    <img src="./media/sql-database-connect-query-ssms/connect.png" alt="connect to server" style="width: 780px;" />
+
+3. 单击“连接”。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
+
+    <img src="./media/sql-database-connect-query-ssms/connected.png" alt="connected to server" style="width: 780px;" />
+
+4. 在对象资源管理器中展开“数据库”，然后展开 **mySampleDatabase**，查看示例数据库中的对象。
+
+## <a name="query-data"></a>查询数据
+
+使用 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句查询 Azure SQL 数据库中的数据。
+
+1. 在“对象资源管理器”中，右键单击“mySampleDatabase”，然后单击“新建查询”。 此时会打开一个空白查询窗口，该窗口连接到数据库。
+2. 在查询窗口中，输入以下查询：
+
+   ```sql
+   SELECT pc.Name as CategoryName, p.name as ProductName
+   FROM [SalesLT].[ProductCategory] pc
+   JOIN [SalesLT].[Product] p
+   ON pc.productcategoryid = p.productcategoryid;
+   ```
+
+3. 在工具栏中，单击“执行”从 Product 表和 ProductCategory 表检索数据。
+
+    <img src="./media/sql-database-connect-query-ssms/query.png" alt="query" style="width: 780px;" />
+
+## <a name="insert-data"></a>插入数据
+
+使用 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句将数据插入 Azure SQL 数据库。
+
+1. 在工具栏上，单击“新建查询”。 此时会打开一个连接到数据库的空查询窗口。
+2. 在查询窗口中，输入以下查询：
+
+   ```sql
+   INSERT INTO [SalesLT].[Product]
+           ( [Name]
+           , [ProductNumber]
+           , [Color]
+           , [ProductCategoryID]
+           , [StandardCost]
+           , [ListPrice]
+           , [SellStartDate]
+           )
+     VALUES
+           ('myNewProduct'
+           ,123456789
+           ,'NewColor'
+           ,1
+           ,100
+           ,100
+           ,GETDATE() );
+   ```
+
+3. 在工具栏上单击“执行”，将新行插入 Product 表。
+
+    <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
+
+## <a name="update-data"></a>更新数据
+
+使用 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句更新 Azure SQL 数据库中的数据。
+
+1. 在工具栏上，单击“新建查询”。 此时会打开一个连接到数据库的空查询窗口。
+2. 在查询窗口中，输入以下查询：
+
+   ```sql
+   UPDATE [SalesLT].[Product]
+   SET [ListPrice] = 125
+   WHERE Name = 'myNewProduct';
+   ```
+
+3. 在工具栏上单击“执行”，更新 Product 表中的指定行。
+
+    <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
+
+## <a name="delete-data"></a>删除数据
+
+使用 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句删除 Azure SQL 数据库中的数据。
+
+1. 在工具栏上，单击“新建查询”。 此时会打开一个连接到数据库的空查询窗口。
+2. 在查询窗口中，输入以下查询：
+
+   ```sql
+   DELETE FROM [SalesLT].[Product]
+   WHERE Name = 'myNewProduct';
+   ```
+
+3. 在工具栏上单击“执行”，删除 Product 表中的指定行。
+
+    <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
 
 ## <a name="next-steps"></a>后续步骤
 
-- 可以按照与 SQL Server 基本相同的方法，使用 T-SQL 语句来创建和管理 Azure 中的数据库。 如果熟悉 T-SQL 与 SQL Server 的用法，请参阅 [Azure SQL 数据库 Transact-SQL 信息）](sql-database-transact-sql-information.md) ，大致了解它们之间的差异。
-- 如果不熟悉 T-SQL，请参阅[教程：编写 Transact-SQL 语句](https://msdn.microsoft.com/library/ms365303.aspx)和 [Transact-SQL 参考（数据库引擎）](https://msdn.microsoft.com/library/bb510741.aspx)。
-- 有关 SQL Server 身份验证的入门教程，请参阅 [SQL 身份验证和授权](sql-database-control-access-sql-authentication-get-started.md)
-- 有关 Azure Active Directory 身份验证的入门教程，请参阅 [Azure AD 身份验证和授权](sql-database-control-access-aad-authentication-get-started.md)
-- 有关 SSMS 的详细信息，请参阅 [使用 SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)。
-
+- 有关 SSMS 的信息，请参阅[使用 SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)。
+- 有关使用 Visual Studio Code 查询和编辑数据的信息，请参阅 [Visual Studio Code](https://code.visualstudio.com/docs)
 

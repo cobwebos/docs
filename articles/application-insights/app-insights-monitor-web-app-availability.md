@@ -4,19 +4,19 @@ description: "在 Application Insights 中设置 Web 测试。 当网站不可�
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2017
+ms.date: 03/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
-ms.openlocfilehash: af4343dbe23f314a85c98d7337f42c4b60b03c6a
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 153a97154faf65598141f321bcd33c4503fa30b0
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +34,7 @@ Web 测试有两种类型：
 
 对于每个应用程序资源，最多可以创建 10 个 Web 测试。
 
-## <a name="a-namecreatea1-create-a-resource-for-your-test-reports"></a><a name="create"></a>1.为测试报告创建资源
+## <a name="create"></a>1.为测试报告创建资源
 如果已经为此应用程序[设置 Application Insights 资源][start]，并且想要在同一位置查看可用性报告，请跳过本步骤。
 
 注册 [Microsoft Azure](http://azure.com)，转到 [Azure 门户](https://portal.azure.com)，然后创建 Application Insights 资源。
@@ -43,7 +43,7 @@ Web 测试有两种类型：
 
 单击“所有资源”，打开新资源的“概述”边栏选项卡。
 
-## <a name="a-namesetupa2-create-a-url-ping-test"></a><a name="setup"></a>2.创建 URL ping 测试
+## <a name="setup"></a>2.创建 URL ping 测试
 在 Application Insights 资源中，找到“可用性”磁贴。 单击它，打开应用程序的“Web 测试”边栏选项卡，然后添加 Web 测试。
 
 ![至少填写网站的 URL](./media/app-insights-monitor-web-app-availability/13-availability.png)
@@ -67,7 +67,7 @@ Web 测试有两种类型：
 ### <a name="test-more-urls"></a>测试其他 URL
 添加更多测试。 例如，除了测试主页，还可以测试搜索 URL 来确保数据库正在运行。
 
-## <a name="a-namemonitora3-see-your-web-test-results"></a><a name="monitor"></a>3.查看 Web 测试结果
+## <a name="monitor"></a>3.查看 Web 测试结果
 1-2 分钟后，结果将出现在“Web 测试”边栏选项卡中。
 
 ![主页边栏选项卡中的摘要结果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
@@ -76,7 +76,7 @@ Web 测试有两种类型：
 
 这些图表合并了此应用程序的所有 Web 测试结果。
 
-## <a name="a-namefailuresaif-you-see-failures"></a><a name="failures"></a>如果看到失败
+## <a name="failures"></a>如果看到失败
 单击红点。
 
 ![单击红点](./media/app-insights-monitor-web-app-availability/open-instance.png)
@@ -101,7 +101,7 @@ Web 测试有两种类型：
 > 对多步骤 Web 测试要收取费用。 [定价方案](http://azure.microsoft.com/pricing/details/application-insights/)。
 > 
 
-若要创建多步骤测试，可以使用 Visual Studio 来录制方案，然后将录制内容上载到 Application Insights。 Application Insights 将按特定间隔重放该方案，并验证响应。
+若要创建多步骤测试，可以使用 Visual Studio Enterprise 来录制方案，然后将录制内容上载到 Application Insights。 Application Insights 将按特定间隔重放该方案，并验证响应。
 
 请注意，无法在测试中使用编码的函数：方案步骤必须作为脚本包含在 .webtest 文件中。
 
@@ -110,7 +110,10 @@ Web 测试有两种类型：
 
 1. 创建 Web 性能测试项目。
 
-    ![在 Visual Studio 中，基于“Web 性能测试和负载测试”模板创建项目。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+    ![在 Visual Studio Enterprise 版中，基于“Web 性能测试和负载测试”模板创建项目。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+
+ * *看不到 Web 性能与负载测试模板？* - 关闭 Visual Studio Enterprise。 打开 **Visual Studio 安装程序**，修改 Visual Studio Enterprise 安装。 在“各个组件”下，选择“Web 性能和负载测试工具”。
+
 2. 打开 .webtest 文件并开始录制。
 
     ![打开 .webtest 文件并单击“录制”。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
@@ -208,7 +211,7 @@ Web 测试插件提供时间参数化方式。
 * 参数化令牌，设置参数来指定从验证器返回令牌的时间，并在站点查询中使用该参数。
   （Visual Studio 会尝试参数化测试，但无法正确参数化令牌。）
 
-## <a name="a-nameedita-edit-or-disable-a-test"></a><a name="edit"></a> 编辑或禁用测试
+## <a name="edit"></a> 编辑或禁用测试
 打开单个测试进行编辑或将其禁用。
 
 ![编辑或禁用 Web 测试](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
@@ -257,12 +260,12 @@ Web 测试插件提供时间参数化方式。
 
     抱歉，不支持这种测试。
 
-## <a name="a-namevideoavideo"></a><a name="video"></a>视频
+## <a name="video"></a>视频
 > [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Monitoring-Availability-with-Application-Insights/player]
 >
 >
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
+## <a name="next"></a>后续步骤
 [搜索诊断日志][diagnostic]
 
 [故障排除][qna]

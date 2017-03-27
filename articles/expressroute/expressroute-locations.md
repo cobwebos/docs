@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2017
+ms.date: 03/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 38fb1cd513823c39184508cc61e4928e2b8a76a3
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 02c21da310875b5ceff418269da919311ccce043
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -103,13 +103,14 @@ ms.lasthandoff: 03/03/2017
 | **[NTT Communications](http://www.ntt.com/en/services/network/virtual-private-network.html)** |支持 |支持 |伦敦、洛杉矶、大阪、新加坡、东京、华盛顿特区 |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |支持 |支持 |阿姆斯特丹、中国香港特别行政区、伦敦、硅谷、新加坡、悉尼、华盛顿特区 |
 | **PCCW Global Limited** |支持 |支持 |香港 |
-| **Sejong Telecom** |支持 |支持 |釜山、首尔 |
+| **Sejong Telecom** |支持 |支持 |首尔 |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |支持 |支持 |金奈 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |支持 |支持 |新加坡 |
 | **[Softbank](http://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |支持 |支持 |大坂、东京 |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |支持 |支持 |阿姆斯特丹、金奈、中国香港特别行政区、伦敦、孟买、硅谷、新加坡、华盛顿特区 |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** |支持 |支持 |阿姆斯特丹、都柏林、伦敦 |
-| **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |支持 |支持 |圣保罗 |
+| **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |支持 |支持 |阿姆斯特丹+、圣保罗 |
+| **[Telehouse - KDDI](http://www.telehouse.net/solutions/cloud-services/cloud-link)** |支持 |支持 |伦敦 |
 | **Telenor** |支持 |支持 |阿姆斯特丹、伦敦 |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |支持 |支持 |墨尔本、悉尼 |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、中国香港特别行政区、伦敦、硅谷、新加坡、悉尼、东京、华盛顿特区 |

@@ -11,23 +11,25 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
+ms.date: 03/17/2017
 ms.author: daviste
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 00c697b47ef17c9c575378c7d433b9bf19602749
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: c0c1eb80685d18794bcae7acaa16b777ff21b3e6
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趋势
-Application Insights 趋势工具以可视化方式呈现应用程序在各时间段的重要遥测事件变化，帮助快速识别问题和异常。 “趋势”提供更详细诊断信息的链接，可帮助改进应用程序性能、跟踪异常的原因，以及从自定义事件中找到见解。
+Application Insights 趋势工具以可视化方式呈现 Web 应用程序在各时间段的重要遥测事件变化，帮助快速识别问题和异常。 “趋势”提供更详细诊断信息的链接，可帮助改进应用程序性能、跟踪异常的原因，以及从自定义事件中找到见解。
 
 ![示例趋势窗口](./media/app-insights-visual-studio-trends/app-insights-trends-hero-750.png)
 
-> [!NOTE]
-> Application Insights 趋势在 Visual Studio 2015 Update 3 和更高版本中提供，或者在 [开发人员分析工具扩展](https://visualstudiogallery.msdn.microsoft.com/82367b81-3f97-4de1-bbf1-eaf52ddc635a) 5.209 和更高版本中提供。
-> 
-> 
+## <a name="configure-your-web-app-for-application-insights"></a>为 Application Insights 配置 Web 应用
+
+如果没有完成此操作，请[为 Application Insights 配置 Web 应用](app-insights-overview.md)。 这样即可将遥测数据发送到 Application Insights 门户。 趋势工具从该处读取遥测数据。
+
+Application Insights 趋势在 Visual Studio 2015 Update 3 及更高版本中提供。
 
 ## <a name="open-application-insights-trends"></a>打开 Application Insights 趋势
 若要打开“Application Insights 趋势”窗口，请执行以下操作：
@@ -99,16 +101,11 @@ Application Insights 趋势基于应用的遥测数据创建时序视觉效果�
 > 
 > 
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
+## <a name="next"></a>后续步骤
 |  |  |
 | --- | --- |
 | **[在 Visual Studio 中使用 Application Insights](app-insights-visual-studio.md)**<br/>搜索遥测、查看 CodeLens 中的数据以及配置 Application Insights。 一切尽在 Visual Studio 中。 |![右键单击项目，然后依次选择“Application Insights”、“搜索”](./media/app-insights-visual-studio-trends/34.png) |
 | **[添加更多数据](app-insights-asp-net-more.md)**<br/>监视使用情况、可用性、依赖项、异常。 集成来自记录框架的跟踪。 编写自定义遥测。 |![Visual Studio](./media/app-insights-visual-studio-trends/64.png) |
 | **[使用 Application Insights 门户](app-insights-dashboards.md)**<br/>仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和遥测导出。 |![Visual Studio](./media/app-insights-visual-studio-trends/62.png) |
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 
