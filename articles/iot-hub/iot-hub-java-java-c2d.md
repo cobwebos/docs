@@ -97,7 +97,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.1.15</version>
+      <version>1.2.16</version>
     </dependency>
     ```
 

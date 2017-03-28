@@ -65,7 +65,7 @@ ms.lasthandoff: 02/17/2017
    作为安全功能的一部分，在 Azure 备份中执行关键操作时，必须输入在 Azure 门户上可用的安全 PIN。 启用 Azure 多重身份验证会添加一个安全层，确保只有具有有效 Azure 凭据以及已从另一设备经身份验证的已授权用户可访问 Azure 门户并执行此类关键操作。
 6. 如下图所示，使用切换按钮进行“启用”，单击顶部的“保存”按钮保存安全设置。 只有从“是否已配置 Azure 多重身份验证?”下拉框选择值后，才可选择“启用” 。
 
-    ![启用安全设置](./media/backup-azure-security-feature/enable-security-settings.png)
+    ![启用安全设置](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recovering-deleted-backup-data"></a>恢复已删除的备份数据
 如果通过删除备份数据操作执行停止备份，作为一种安全措施，Azure 备份会将已删除的备份数据另外再保留 14 天，不会立即删除数据。 若要在 14 天内还原此数据，请使用以下步骤：
