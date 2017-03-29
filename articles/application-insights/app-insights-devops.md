@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 9f837ea815fdd3ea47608dc36029c35e92eda0ae
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: f6c8c895f406187f2bc525a60ca7e53f12e99d77
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -106,7 +106,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 客户 Samtec 说：“在最近的功能过渡期间，我们发现一个小型数据库已到达它的资源限制并导致超时。 当我们分类问题时，主动检测警报立即显现，其速度就像宣传的那样接近实时。 这种与 Azure 平台结合的警报几乎帮助我们瞬间解决了问题。 总停机时间不到 10 分钟。”
 
 ## <a name="live-metrics-stream"></a>实时指标流
-部署最新版本是令人焦虑的体验。 如果出现任何问题，我们希望立即了解情况，以便在必要时取消部署。 实时指标流以大约&1; 秒的延迟提供关键指标。
+部署最新版本是令人焦虑的体验。 如果出现任何问题，我们希望立即了解情况，以便在必要时取消部署。 实时指标流以大约 1 秒的延迟提供关键指标。
 
 ![实时指标](./media/app-insights-devops/040.png)
 
@@ -164,6 +164,10 @@ Visual Studio 和 Eclipse 提供相应的工具来为开发中的项目配置正
 * 性能 - 影响很小。 遥测数据将经过批处理。
 * [支持](app-insights-get-dev-support.md) - 可以使用 Azure 支持程序。 可以在活跃的论坛中获取开发人员提供的解答。 在别无他法的情况下，我们还可以提供一对一的个人帮助。
 * [价格](app-insights-pricing.md) - 可以从免费版着手，如果用量不大，可以一直使用免费版。
+
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>后续步骤
 Application Insights 入门非常简单。 主要选项包括：

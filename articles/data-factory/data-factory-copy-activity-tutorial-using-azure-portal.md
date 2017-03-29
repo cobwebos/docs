@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/14/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: 299a55865c1c91e664d67095de76708f444d30b9
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: a4658f1eee3cdd24b3da47b4c7319c61ea39cb34
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -126,7 +126,7 @@ ms.lasthandoff: 02/03/2017
 4. 确认树视图中已显示 **AzureSqlLinkedService**。 
 
 > [!NOTE]
-> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure SQL Database](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)（将数据移出/移入 Azure SQL 数据库）。
+> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure SQL Database](data-factory-azure-sql-connector.md#linked-service-properties)（将数据移出/移入 Azure SQL 数据库）。
 > 
 > 
 
@@ -202,7 +202,7 @@ ms.lasthandoff: 02/03/2017
 3. 单击工具栏上的“部署”，创建并部署 **InputDataset** 数据集。 确认树视图中显示了 **InputDataset**。
 
 > [!NOTE]
-> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure Blob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)（将数据移出/移入 Azure Blob）。
+> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure Blob](data-factory-azure-blob-connector.md#dataset-properties)（将数据移出/移入 Azure Blob）。
 > 
 > 
 
@@ -248,7 +248,7 @@ ms.lasthandoff: 02/03/2017
 3. 单击工具栏上的“部署”，创建并部署 **OutputDataset** 数据集。 确认树视图中显示了 **OutputDataset**。 
 
 > [!NOTE]
-> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure SQL Database](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)（将数据移出/移入 Azure SQL 数据库）。
+> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure SQL Database](data-factory-azure-sql-connector.md#linked-service-properties)（将数据移出/移入 Azure SQL 数据库）。
 > 
 > 
 

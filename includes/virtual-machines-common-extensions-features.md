@@ -2,7 +2,7 @@
 
 
 
-有关 VM 代理及其如何支持 VM 扩展的详细信息，请参阅 [VM 代理和 VM 扩展概述](../articles/virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+有关 VM 代理及其如何支持 VM 扩展的详细信息，请参阅 [VM 代理和 VM 扩展概述](../articles/virtual-machines/windows/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="azure-vm-extensions"></a>Azure VM 扩展
 VM 扩展实现了要用于 VM 的大多数关键功能，包括重置密码、配置 RDP 等基本功能以及其他许多功能。 由于始终可添加新扩展，VM 在 Azure 中支持的可能功能的数量将不断增加。 默认情况下，从映像库创建 VM 时，将安装几个基本 VM 扩展，包括 **IaaSDiagnostics**（当前仅限 Windows VM）、**VMAccess** 和 **BGInfo**（当前也仅限 Windows）。 但是，由于功能更新和新扩展的不断流动，在任一特定时间并非所有扩展都可同时在 Windows 和 Linux 上实现。
@@ -12,7 +12,7 @@ VM 扩展实现了要用于 VM 的大多数关键功能，包括重置密码、�
 
 | VM 扩展名称 | 功能说明 | 更多信息 |
 | --- | --- | --- |
-| VMAccessAgent (Windows) |创建、更新和重置用户信息以及 RDP 连接配置。 |[Windows](../articles/virtual-machines/virtual-machines-windows-classic-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
+| VMAccessAgent (Windows) |创建、更新和重置用户信息以及 RDP 连接配置。 |[Windows](../articles/virtual-machines/windows/classic/extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
 | VMAccessForLinux (Linux) |创建、更新和重置用户信息以及 SSH 连接配置。 |[Linux](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 
 ## <a name="deployment-and-configuration-management"></a>部署和配置管理
@@ -29,7 +29,7 @@ VM 扩展实现了要用于 VM 的大多数关键功能，包括重置密码、�
 | **DockerExtension** |安装 Docker 后台程序以支持远程 Docker 命令。 |有关[如何使用 Docker 虚拟机扩展](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)更广泛的信息，请参阅 [Docker VM 扩展用户指南](https://github.com/Azure/azure-docker-extension/blob/master/README.md) |
 | **DSC** |PowerShell DSC (Desired State Configuration) 扩展。 |[Azure PowerShell DSC (Desired State Configuration) 扩展](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx) |
 | **PuppetEnterpriseAgent** |实现 Puppet Enterprise 的功能。 |[Azure 上的 Puppet](http://puppetlabs.com/solutions/microsoft) |
-| **CustomScriptExtension** (Windows)**CustomScriptForLinux** (Linux) |在任何时候调用 VM 上的自定义脚本：启动时或在生存期内。 |[自定义脚本扩展](../articles/virtual-machines/virtual-machines-windows-classic-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
+| **CustomScriptExtension** (Windows)**CustomScriptForLinux** (Linux) |在任何时候调用 VM 上的自定义脚本：启动时或在生存期内。 |[自定义脚本扩展](../articles/virtual-machines/windows/classic/extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
 | **AzureCATExtensionHandler** |使用 **IaaSDiagnostics** 和少数其他数据源（如 [Azure 存储分析指标](https://msdn.microsoft.com/library/azure/hh343270.aspx)）收集的诊断数据，并将这些数据转换为适合 SAP 主机控制进程使用的聚合数据集 |[适用于 SAP 的 Azure 增强型监视](https://azure.microsoft.com/blog/2014/06/04/azure-enhanced-monitoring-for-sap/) |
 
 ## <a name="security-and-protection"></a>安全和保护
@@ -39,10 +39,10 @@ VM 扩展实现了要用于 VM 的大多数关键功能，包括重置密码、�
 | --- | --- | --- |
 | **CloudLinkSecureVMWindowsAgent** |为 Microsoft Azure 客户提供在多租户共享的基础结构上加密其虚拟机数据的功能，并完全控制 Azure 存储基础结构上其加密数据的加密密钥。 |[利用 BitLocker 和本机 OS 加密保护 Microsoft Azure 虚拟机](http://www.cloudlinktech.com/azure) |
 | **McAfeeEndpointSecurity** |保护 VM 免受恶意软件的威胁。 |[McAfee](https://www.mcafeeasap.com/MarketingContent/default.aspx) |
-| **TrendMicroDSA** |启用 TrendMicro 的 Deep Security 平台支持可提供入侵检测和防护、防火墙、防恶意软件、Web 信誉评估、日志检查和完整性监视。 |[如何在 Azure VM 上安装和配置 Trend Micro Deep Security 即服务](../articles/virtual-machines/virtual-machines-windows-classic-install-trend.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
+| **TrendMicroDSA** |启用 TrendMicro 的 Deep Security 平台支持可提供入侵检测和防护、防火墙、防恶意软件、Web 信誉评估、日志检查和完整性监视。 |[如何在 Azure VM 上安装和配置 Trend Micro Deep Security 即服务](../articles/virtual-machines/windows/classic/install-trend.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
 | **PortalProtectExtension** |保护 Microsoft SharePoint 环境免受威胁。 |[保护 Azure 上的 SharePoint 部署](http://blog.trendmicro.com/securing-sharepoint-deployment-azure/) |
 | **IaaSAntimalware** |用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件是一种实时保护功能，当已知的恶意软件或不需要的软件试图在系统上安装自身或运行时，它使用可配置的警报帮助识别和删除病毒、间谍软件和其他恶意软件。 |[适用于 Azure 云服务和虚拟机的反恶意软件](../articles/security/azure-security-antimalware.md) |
-| **SymantecEndpointProtection** |Symantec Endpoint Protection 12.1.4 实现了跨多个物理和虚拟系统的安全性和性能。 |[如何在 Azure VM 上安装和配置 Symantec Endpoint Protection](../articles/virtual-machines/virtual-machines-windows-classic-install-symantec.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
+| **SymantecEndpointProtection** |Symantec Endpoint Protection 12.1.4 实现了跨多个物理和虚拟系统的安全性和性能。 |[如何在 Azure VM 上安装和配置 Symantec Endpoint Protection](../articles/virtual-machines/windows/classic/install-symantec.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
 
 ## <a name="vm-operations-and-management"></a>VM 操作和管理
 支持常见的操作管理功能和行为。 另请参阅上面有关部署和配置管理的部分。
@@ -73,9 +73,4 @@ VM 扩展实现了要用于 VM 的大多数关键功能，包括重置密码、�
 | --- | --- | --- |
 | **BGInfo** |使用 RDP 时在桌面上显示有用服务器信息的合并图片。 |[BGInfo 扩展](https://msdn.microsoft.com/library/mt589195.aspx) |
 | **HpcVmDrivers** |在运行 Windows Server 2012 R2 或 Windows Server 2012 的 A8 或 A9 VM 上，安装、配置和维护远程直接内存访问 (RDMA) 网络设备驱动程序。 运行并行 MPI 应用程序时，支持群集 A8 或 A9 VM 使用 RDMA 网络。 |[关于 A8、A9、A10 和 A11 计算密集型实例](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 03/17/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: aada5b96eb9ee999c5b1f60b6e7b9840fd650fbe
-ms.openlocfilehash: 2831416bbb290905835396835db2eb6cb5e7b46f
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: e7d2d0063b1555e098c43b95272c78eaf4678af9
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -32,10 +32,9 @@ ms.lasthandoff: 02/24/2017
 若要创建从/向 Azure SQL 数据仓库复制数据的管道，最简单的方法是使用复制数据向导。 有关使用“复制数据”向导创建管道的快速演练，请参阅[教程：使用数据工厂将数据加载到 SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)。
 
 > [!TIP]
-> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure SQL 数据仓库时，如果目标存储中不存在该表，数据工厂支持使用源架构自动创建表。 尝试使用复制向导实现该操作并从[自动表创建](#auto-table-creation)了解详细信息。
->
+> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure SQL 数据仓库时，如果目标存储中不存在该表，数据工厂可以通过使用源数据存储中的表架构自动在 SQL 数据仓库中创建该表。 有关详细信息，请参阅[自动表创建](#auto-table-creation)。 
 
-以下示例提供示例 JSON 定义，该定义可用于通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)或 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何从/向 Azure SQL 数据仓库和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何从/向 Azure SQL 数据仓库和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 ## <a name="sample-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>示例：将数据从 Azure SQL 数据仓库复制到 Azure Blob
 此示例定义以下数据工厂实体：
@@ -417,7 +416,7 @@ ms.lasthandoff: 02/24/2017
 ## <a name="dataset-type-properties"></a>数据集类型属性
 有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 结构、可用性和数据集 JSON 的策略等部分与所有数据集类型（Azure SQL、Azure blob、Azure 表等）类似。
 
-每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureSqlDWTable** 类型数据集的 **typeProperties** 节具有以下属性。
+每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureSqlDWTable** 类型数据集的 **typeProperties** 节具有以下属性：
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
@@ -507,7 +506,7 @@ GO
 使用 **PolyBase** 是将大量数据加载到高吞吐量 Azure SQL 数据仓库的有效方法。 可通过使用 PolyBase 而非默认 BULKINSERT 机制实现吞吐量的巨大增加。 请参阅[复制性能参考数量](data-factory-copy-activity-performance.md#performance-reference)了解详细比较。
 
 * 如果源数据格式与 PolyBase 兼容，则可使用 PolyBase 从源数据存储直接复制到 Azure SQL 数据仓库。 有关详细信息，请参阅**[使用 PolyBase 直接复制](#direct-copy-using-polybase)**。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
-* 如果 PolyBase 原本不支持源数据格式，可改用**[使用 PolyBase 的暂存复制](#staged-copy-using-polybase)**，这也将提供更好的吞吐量，方法为：首先将数据自动转换为 PolyBase 兼容的格式并存储在 Azure Blob 存储中，然后加载到 SQL 数据仓库。
+* 如果 PolyBase 最初不支持源数据格式，则可改用**[使用 PolyBase 的暂存复制](#staged-copy-using-polybase)**功能。 通过自动将数据转换为 PolyBase 兼容的格式并将数据存储在 Azure Blob 存储中，它还可提供更高的吞吐量。 然后，它会将数据载入 SQL 数据仓库。
 
 如以下示例所示，将 `allowPolyBase` 属性设置为“true”，以便 Azure 数据工厂使用 PolyBase 将数据复制到 Azure SQL 数据仓库。 将 allowPolyBase 设置为“true”时，可使用 `polyBaseSettings` 属性组指定特定于 PolyBase 的属性。 有关可与 polyBaseSettings 配合使用的属性的详细信息，请参阅 [SqlDWSink](#SqlDWSink) 部分。
 
@@ -598,9 +597,9 @@ GO
 若要使用 PolyBase，要求将数据加载到 SQL 数据仓库的用户具有目标数据库上的[“CONTROL”权限](https://msdn.microsoft.com/library/ms191291.aspx)。 一种实现方法是将该用户添加为“db_owner”角色的成员。 参阅[本节](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)了解如何进行此操作。
 
 ### <a name="row-size-and-data-type-limitation"></a>行大小和数据类型限制
-Polybase 加载限制为加载小于 **1MB** 的行，并且无法加载到 VARCHR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。 请参阅[此处](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)。
+Polybase 加载限制为加载小于 **1 MB** 的行，并且无法加载到 VARCHR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。 请参阅[此处](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)。
 
-如果源数据的行大小大于 1MB，则需要将源表垂直拆分为几个小的源表，其中每个源表的最大行大小不超过限制。 然后可以使用 PolyBase 加载这些较小的表，并在 Azure SQL 数据仓库中将它们合并在一起。
+如果源数据的行大小大于 1 MB，则需要将源表垂直拆分为几个小的源表，其中每个源表的最大行大小不超过限制。 然后可以使用 PolyBase 加载这些较小的表，并在 Azure SQL 数据仓库中将它们合并在一起。
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL 数据仓库资源类
 若要实现最佳吞吐量，请考虑向通过 PolyBase 将数据加载到 SQL 数据仓库的用户分配更大的资源类。 请参阅[更改用户资源类示例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)，了解如何执行该操作。
@@ -630,9 +629,9 @@ All columns of the table must be specified in the INSERT BULK statement.
 NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入数据（以 blob 为单位）可以为空（输入数据集中不能缺失数据）。 PolyBase 在 Azure SQL 数据仓库中插入 NULL 来表示它们。  
 
 ## <a name="auto-table-creation"></a>自动表创建
-将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure SQL 数据仓库时，如果目标存储中不存在该表，在使用复制向导创作时，数据工厂支持使用源架构自动创建表。
+如果使用“复制向导”将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure SQL 数据仓库，并且目标存储中不存在对应于源表的表，则数据工厂可以通过使用源表架构自动在数据仓库中创建该表。 
 
-数据工厂会使用与源相同的名称在目标中创建表，使用以下映射创建列数据类型，并使用轮循机制表分布。 请注意，当需要修复源和目标存储间的不兼容时，可能会发生适当的数据类型转换。
+数据工厂在目标存储中创建与源数据存储中具有相同表名称的表。 根据以下类型映射选择列的数据类型。 如果需要，它会执行类型转换，从而修复源存储和目标存储之间的任何不兼容问题。 它还使用轮循机制表分布。 
 
 | 源 SQL 数据库列类型 | 目标 SQL DW 列类型（大小限制） |
 | --- | --- |

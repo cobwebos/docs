@@ -1,5 +1,5 @@
 ---
-title: "使用模板控制路由和虚拟设备 | Microsoft 文档"
+title: "在 Azure 中控制路由和虚拟设备 - 模板 | Microsoft Docs"
 description: "了解如何使用 Azure Resource Manager 模板控制路由和虚拟设备。"
 services: virtual-network
 documentationcenter: na
@@ -16,19 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: 6e6afd1088ef02fcad6126dfe6b6e3f0b4dff31d
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 344391589a926cad5d06bf8dff095a97565ca123
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>使用模板创建用户定义的路由 (UDR)
 
 > [!div class="op_single_selector"]
-- [PowerShell](virtual-network-create-udr-arm-ps.md)
-- [Azure CLI](virtual-network-create-udr-arm-cli.md)
-- [模板](virtual-network-create-udr-arm-template.md)
-- [PowerShell（经典）](virtual-network-create-udr-classic-ps.md)
-- [CLI（经典）](virtual-network-create-udr-classic-cli.md)
+> * [PowerShell](virtual-network-create-udr-arm-ps.md)
+> * [Azure CLI](virtual-network-create-udr-arm-cli.md)
+> * [模板](virtual-network-create-udr-arm-template.md)
+> * [PowerShell（经典）](virtual-network-create-udr-classic-ps.md)
+> * [CLI（经典）](virtual-network-create-udr-classic-cli.md)
 
 > [!IMPORTANT]
 > 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/resource-manager-deployment-model.md) 。 可以通过单击本文顶部的选项卡来查看不同工具的文档。 本文介绍资源管理器部署模型。 
@@ -45,7 +46,7 @@ ms.openlocfilehash: 6e6afd1088ef02fcad6126dfe6b6e3f0b4dff31d
     "name": "[parameters('frontEndRouteTableName')]",
     "location": "[resourceGroup().location]",
     "tags": {
-      "displayName": "UDR - FrontEnd"   
+      "displayName": "UDR - FrontEnd"    
     },
     "properties": {
       "routes": [
@@ -175,7 +176,7 @@ ms.openlocfilehash: 6e6afd1088ef02fcad6126dfe6b6e3f0b4dff31d
 
 若要使用 Azure CLI 部署 ARM 模板，请完成以下步骤：
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../xplat-cli-install.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行以下命令切换到 Resource Manager 模式：
 
     ```azurecli
@@ -406,9 +407,4 @@ ms.openlocfilehash: 6e6afd1088ef02fcad6126dfe6b6e3f0b4dff31d
 > [!TIP]
 > 如果看不到所有资源，可运行 `azure group deployment show` 命令以确保部署的预配状态为“*成功*”。
 > 
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

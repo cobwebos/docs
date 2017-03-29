@@ -14,12 +14,12 @@ ms.devlang: CLI
 ms.topic: article
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 03/14/2017
+ms.date: 03/16/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 4cfc4ab09f7adead289cb949373730bffcfa13ec
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: e022c24b84b0ce10c30ca479c67018b6f60e606a
+ms.lasthandoff: 03/17/2017
 
 ---
 
@@ -27,14 +27,14 @@ ms.lasthandoff: 03/10/2017
 
 此示例 CLI 脚本在查询数据库的大小信息后，将单个 Azure SQL 数据库缩放为不同的性能级别。 
 
-在运行此脚本前，请确保已使用 `az login` 命令创建与 Azure 的连接。 
+必要时，请使用 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中的说明安装 Azure CLI，然后运行 `az login` 创建与 Azure 的连接。
 
 此示例在 Bash shell 中正常工作。 有关在 Windows 上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../../virtual-machines/virtual-machines-windows-cli-options.md)。
 
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[主要](../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "监视和缩放单个 SQL 数据库")]
+[!code-azurecli[main](../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "监视和缩放单个 SQL 数据库")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

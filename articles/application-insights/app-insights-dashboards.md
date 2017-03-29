@@ -1,21 +1,22 @@
 ---
-title: "Application Insights 门户中的仪表板和导航 | Microsoft 文档"
+title: "Azure Application Insights 中的仪表板和导航 | Microsoft Docs"
 description: "创建关键 APM 图表和查询的视图。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 39b0701b-2fec-4683-842a-8a19424f67bd
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
-ms.openlocfilehash: aa4c6400bcd16c90654c40e14b7a8ed239a4d8aa
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 097a8aeecc783199b25d95dbc470dcabefa37ced
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -148,15 +149,15 @@ ms.openlocfilehash: aa4c6400bcd16c90654c40e14b7a8ed239a4d8aa
 
 * **支持请求** - 需要付费版订阅。 另请参阅[获取帮助](app-insights-get-dev-support.md)。
 
-## <a name="whats-next"></a>后续步骤
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
+## <a name="next-steps"></a>后续步骤
+
 |  |  |
 | --- | --- |
 | [指标资源管理器](app-insights-metrics-explorer.md)<br/>筛选器和分段指标 |![搜索示例](./media/app-insights-dashboards/64.png) |
 | [诊断搜索](app-insights-diagnostic-search.md)<br/>查找和检查事件及其相关事件，以及创建 Bug |![搜索示例](./media/app-insights-dashboards/61.png) |
 | [分析](app-insights-analytics.md)<br/>功能强大的查询语言 |![搜索示例](./media/app-insights-dashboards/63.png) |
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

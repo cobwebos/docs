@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/21/2016
+ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 58e8474a9cafdad06c2968a7317e0c30474b5069
-ms.openlocfilehash: 5021a0aa554978fbb5543024400986715227de0b
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 32045a9b6be130dca4680b1990808d2b22be4432
+ms.lasthandoff: 03/16/2017
 
 
 ---
 # <a name="about-h-series-and-compute-intensive-a-series-vms-for-windows"></a>关于适用于 Windows 的 H 系列和计算密集型 A 系列 VM
-本文提供有关使用较新的 Azure H 系列和较早的 A8、A9、A10 和 A11 实例（也称为*计算密集型*实例）的背景信息和一些注意事项。 本文重点介绍如何对 Windows VM 使用这些实例。 本文同样适用于 [Linux VM](virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+本文提供有关使用较新的 Azure H 系列和较早的 A8、A9、A10 和 A11 实例（也称为*计算密集型*实例）的背景信息和一些注意事项。 本文重点介绍如何对 Windows VM 使用这些实例。 还可将其用于 [Linux VM](virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 有关基本规范、存储容量和磁盘详细信息，请参阅[虚拟机的大小](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
@@ -37,22 +37,23 @@ ms.lasthandoff: 03/01/2017
   
   * **虚拟机**：Windows Server 2012 R2、Windows Server 2012
   * **云服务**：Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 来宾 OS 系列
+
+    > [!NOTE]
+    > 目前，Windows Server 2016 在 Azure 中不支持 RDMA 连接。
+    >
+    
 * **MPI**：Microsoft MPI (MS-MPI) 2012 R2 或更高版本、Intel MPI Library 5.x
 
   支持的 MPI 实现使用 Microsoft Network Direct 接口在实例之间通信。 
-* **HpcVmDrivers VM 扩展** - 在具有 RDMA 功能的 VM 上，必须添加 HpcVmDrivers 扩展才能安装 RDMA 连接所需的 Windows 网络设备驱动程序。 （在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。）可使用用于 Azure Resource Manager 的 [Azure PowerShell](/powershell/azureps-cmdlets-docs) cmdlet 将 VM 扩展添加到 VM。
+* **HpcVmDrivers VM 扩展** - 在具有 RDMA 功能的 VM 上，必须添加 HpcVmDrivers 扩展才能安装 RDMA 连接所需的 Windows 网络设备驱动程序。 （在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。）如果需要将 VM 扩展添加到 VM，可使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) cmdlet。 
 
-  获取有关最新 HpcVmDrivers 扩展的信息：
+  
+  例如，若要在 Resource Manager 部署模型中部署的、支持 RDMA 的现有 VM（名为 myVM）上安装最新版本 1.1 HpcVMDrivers 扩展：
 
-  ```PowerShell
-  Get-AzureVMAvailableExtension -ExtensionName  "HpcVmDrivers"
-  ```
-
-  若要在现有的支持 RDMA 的 VM（名为 myVM）上安装最新版本 1.1 HpcVMDrivers 扩展：
   ```PowerShell
   Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  有关详细信息，请参阅[管理 VM 扩展](virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 还可在[经典部署模型](virtual-machines-windows-classic-manage-extensions.md)下使用 VM 的扩展。
+  有关详细信息，请参阅[虚拟机扩展和功能](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 还可使用[经典部署模型](virtual-machines-windows-classic-manage-extensions.md)中部署的 VM 扩展。
 
 
 ## <a name="considerations-for-hpc-pack-and-windows"></a>HPC Pack 和 Windows 的注意事项

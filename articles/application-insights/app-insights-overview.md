@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9755319296f960cf85eac13f98d139d086664de2
-ms.openlocfilehash: 6fea13d0c7e00032183b3b3ea4ea0f6e401d1e93
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 3b029b67e52b212d604e3d645fe7a451b5a60b3e
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -140,15 +141,10 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
   * [Application Insights blog](https://azure.microsoft.com/blog/tag/application-insights)（Application Insights 博客）
 
 ## <a name="videos"></a>视频
+
 [![动画简介](./media/app-insights-overview/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 
-> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/218/player]
->
-> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/231/player]
->
-> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/222/player]
->
->
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
 
 <!--Link references-->
 
@@ -165,9 +161,4 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

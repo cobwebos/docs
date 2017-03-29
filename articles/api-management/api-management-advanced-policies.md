@@ -15,20 +15,23 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: bfadac7b34eca2ef1f9bcabc6e267ca9572990b8
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
   
-##  <a name="a-nameadvancedpoliciesa-advanced-policies"></a><a name="AdvancedPolicies"></a> 高级策略  
+##  <a name="AdvancedPolicies"></a> 高级策略  
   
 -   [控制流](api-management-advanced-policies.md#choose) - 根据布尔[表达式](api-management-policy-expressions.md)的求值结果，有条件地应用策略语句。  
   
 -   [转发请求](#ForwardRequest) - 将请求转发到后端服务。  
   
--   [记录到事件中心](#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的事件中心。  
+-   [记录到事件中心](#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的事件中心。 
+
+-   [模拟响应](#mock-response) - 中止管道执行，将模拟的响应直接返回给调用方。
   
 -   [重试](#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统将根据指定的时间间隔重复，直到执行指定的重试计数为止。  
   
@@ -48,10 +51,10 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   [等待](#Wait) - 在继续下一步之前，等待括住的[发送请求](api-management-advanced-policies.md#SendRequest)、[从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey)或[控制流](api-management-advanced-policies.md#choose)策略完成。  
   
-##  <a name="a-namechoosea-control-flow"></a><a name="choose"></a> 控制流  
+##  <a name="choose"></a> 控制流  
  `choose` 策略根据布尔表达式的求值结果应用括住的策略语句，类似于编程语言中的 if-then-else 或开关构造。  
   
-###  <a name="a-namechoosepolicystatementa-policy-statement"></a><a name="ChoosePolicyStatement"></a> 策略语句  
+###  <a name="ChoosePolicyStatement"></a> 策略语句  
   
 ```xml  
 <choose>   
@@ -71,7 +74,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 ### <a name="examples"></a>示例  
   
-####  <a name="a-namechooseexamplea-example"></a><a name="ChooseExample"></a> 示例  
+####  <a name="ChooseExample"></a> 示例  
  以下示例演示 [set-variable](api-management-advanced-policies.md#set-variable) 策略和两项控制流策略。  
   
  此 set-variable 策略位于入站节，用于创建 `isMobile` 布尔[上下文](api-management-policy-expressions.md#ContextVariables)变量，该变量在 `User-Agent` 请求标头包含文本 `iPad` 或 `iPhone` 的情况下设置为 true。  
@@ -142,14 +145,14 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 |---------------|-----------------|--------------|  
 |condition="布尔表达式 &#124; 布尔常量"|对包含 `when` 的策略语句求值时需求值的布尔表达式或常量。|是|  
   
-###  <a name="a-namechooseusagea-usage"></a><a name="ChooseUsage"></a> 用法  
+###  <a name="ChooseUsage"></a> 用法  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、后端、错误时  
   
 -   **策略范围：**所有范围  
   
-##  <a name="a-nameforwardrequesta-forward-request"></a><a name="ForwardRequest"></a> 转发请求  
+##  <a name="ForwardRequest"></a> 转发请求  
  `forward-request` 策略将传入请求转发到请求[上下文](api-management-policy-expressions.md#ContextVariables)中指定的后端服务。 后端服务 URL 在 API [设置](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)中指定，可以使用[设置后端服务](api-management-transformation-policies.md)策略进行更改。  
   
 > [!NOTE]
@@ -260,7 +263,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **策略范围：**所有范围  
   
-##  <a name="a-namelog-to-eventhuba-log-to-event-hub"></a><a name="log-to-eventhub"></a> 记录到事件中心  
+##  <a name="log-to-eventhub"></a> 记录到事件中心  
  `log-to-eventhub` 策略将指定格式的消息发送到记录器实体定义的事件中心。 从名称可以看出，此策略用于保存所选请求或响应上下文信息，以便进行联机或脱机分析。  
   
 > [!NOTE]
@@ -310,8 +313,50 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 -   **策略节：**入站、出站、后端、错误时  
   
 -   **策略范围：**所有范围  
+
+##  <a name="mock-response"></a>模拟响应  
+正如其名所示，`mock-response` 用于模拟 API 和操作。 它会中止正常的管道执行，并将模拟的响应返回给调用方。 该策略始终尝试返回保真度最高的响应。 它首选响应内容示例（若可用）。 若提供架构而不提供示例，它将从架构生成示例响应。 如果既找不到示例又找不到架构，则返回无内容的响应。
   
-##  <a name="a-nameretrya-retry"></a><a name="Retry"></a> 重试  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<mock-response status-code="code" content-type="media type"/>  
+  
+```  
+  
+### <a name="examples"></a>示例  
+  
+```xml  
+<!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
+status code. First found content type is used. If no example or schema is found, the content is empty. -->
+<mock-response/>
+
+<!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
+status code and media type. If no example or schema found, the content is empty. -->
+<mock-response status-code='200' content-type='application/json'/>  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|元素|说明|必选|  
+|-------------|-----------------|--------------|  
+|mock-response|根元素。|是|  
+  
+### <a name="attributes"></a>属性  
+  
+|属性|说明|必选|默认|  
+|---------------|-----------------|--------------|--------------|  
+|status-code|指定响应状态代码并用于选择相应的示例或架构。|否|200|  
+|content-type|指定 `Content-Type` 响应标头值，并用于选择相应的示例或架构。|否|无|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、出站、错误时  
+  
+-   **策略范围：**所有范围
+
+##  <a name="Retry"></a> 重试  
  `retry` 策略会执行其子策略一次，然后重新尝试执行，直至重试 `condition` 变为 `false`，或者重试 `count` 为零。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -331,7 +376,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 ```  
   
 ### <a name="example"></a>示例  
- 在以下示例中，请求转发最高可使用指数重试算法重试&10; 次。 由于 `first-fast-retry` 设置为 false，所有重试都必须遵循指数重试算法。  
+ 在以下示例中，请求转发最高可使用指数重试算法重试 10 次。 由于 `first-fast-retry` 设置为 false，所有重试都必须遵循指数重试算法。  
   
 ```xml  
   
@@ -376,7 +421,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **策略范围：**所有范围  
   
-##  <a name="a-namereturnresponsea-return-response"></a><a name="ReturnResponse"></a> 返回响应  
+##  <a name="ReturnResponse"></a> 返回响应  
  `return-response` 策略会中止管道执行，为调用方返回默认响应或自定义响应。 默认响应为`200 OK`，无正文。 可以通过上下文变量或策略语句指定自定义响应。 二者都提供时，将会通过策略语句对上下文变量中包含的响应进行修改，然后再将其返回给调用方。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -424,7 +469,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **策略范围：**所有范围  
   
-##  <a name="a-namesendonewayrequesta-send-one-way-request"></a><a name="SendOneWayRequest"></a> 发送单向请求  
+##  <a name="SendOneWayRequest"></a> 发送单向请求  
  `send-one-way-request` 策略将提供的请求发送到指定的 URL，无需等待响应。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -493,7 +538,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **策略范围：**所有范围  
   
-##  <a name="a-namesendrequesta-send-request"></a><a name="SendRequest"></a> 发送请求  
+##  <a name="SendRequest"></a> 发送请求  
  `send-request` 策略将提供的请求发送至指定 URL，等待时间不超过设置的超时值。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -575,16 +620,16 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **策略范围：**所有范围  
   
-##  <a name="a-nameset-variablea-set-variable"></a><a name="set-variable"></a> 设置变量  
+##  <a name="set-variable"></a> 设置变量  
  `set-variable` 策略声明[上下文](api-management-policy-expressions.md#ContextVariables)变量，并为其分配通过[表达式](api-management-policy-expressions.md)或字符串文本指定的值。 如果表达式包含文本，则会将其转换为字符串，值的类型将为 `System.String`。  
   
-###  <a name="a-nameset-variablepolicystatementa-policy-statement"></a><a name="set-variablePolicyStatement"></a> 策略语句  
+###  <a name="set-variablePolicyStatement"></a> 策略语句  
   
 ```xml  
 <set-variable name="variable name" value="Expression | String literal" />  
 ```  
   
-###  <a name="a-nameset-variableexamplea-example"></a><a name="set-variableExample"></a> 示例  
+###  <a name="set-variableExample"></a> 示例  
  以下示例演示入站节中的 set-variable 策略。 此 set-variable 策略用于创建 `isMobile` 布尔[上下文](api-management-policy-expressions.md#ContextVariables)变量，该变量在 `User-Agent` 请求标头包含文本 `iPad` 或 `iPhone` 的情况下设置为 true。  
   
 ```xml  
@@ -611,7 +656,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **策略范围：**所有范围  
   
-###  <a name="a-nameset-variableallowedtypesa-allowed-types"></a><a name="set-variableAllowedTypes"></a> 允许的类型  
+###  <a name="set-variableAllowedTypes"></a> 允许的类型  
  在 `set-variable` 策略中使用的表达式必须返回以下基本类型之一。  
   
 -   System.Boolean  
@@ -676,7 +721,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   System.DateTime?  
   
-##  <a name="a-namesetrequestmethoda-set-request-method"></a><a name="SetRequestMethod"></a> 设置请求方法  
+##  <a name="SetRequestMethod"></a> 设置请求方法  
  `set-method` 策略用于更改请求的 HTTP 请求方法。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -728,7 +773,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **策略范围：**所有范围  
   
-##  <a name="a-namesetstatusa-set-status-code"></a><a name="SetStatus"></a> 设置状态代码  
+##  <a name="SetStatus"></a> 设置状态代码  
  `set-status` 策略将 HTTP 状态代码设置为指定的值。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -775,7 +820,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **策略范围：**所有范围  
   
-##  <a name="a-nametracea-trace"></a><a name="Trace"></a> 跟踪  
+##  <a name="Trace"></a> 跟踪  
  `trace` 策略将字符串添加到 [API 检查器](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/)输出中。 此策略会执行的前提是触发跟踪，即 `Ocp-Apim-Trace` 请求标头存在且设置为 `true`，同时 `Ocp-Apim-Subscription-Key` 请求标头存在且包含与管理员帐户关联的有效密钥。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -807,7 +852,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **策略范围：**所有范围  
   
-##  <a name="a-namewaita-wait"></a><a name="Wait"></a> 等待  
+##  <a name="Wait"></a> 等待  
  `wait` 策略以并行方式执行其直接子策略，在完成之前会等待其直接子策略全部完成或其中一个完成。 等待策略可以将[发送请求](api-management-advanced-policies.md#SendRequest)、[从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey)和[控制流](api-management-advanced-policies.md#choose)策略设置为其直接子策略。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -878,9 +923,4 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 有关如何使用策略的详细信息，请参阅：
 -    [API 管理中的策略](api-management-howto-policies.md) 
 -    [Policy expressions](api-management-policy-expressions.md)（策略表达式）
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

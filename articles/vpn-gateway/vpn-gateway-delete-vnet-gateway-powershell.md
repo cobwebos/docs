@@ -1,5 +1,5 @@
 ---
-title: "如何删除虚拟网络网关：PowerShell：Azure Resource Manager | Microsoft 文档"
+title: "删除虚拟网络网关：PowerShell：Azure Resource Manager | Microsoft Docs"
 description: "在 Resource Manager 部署模型中使用 PowerShell 删除虚拟网络网关。"
 services: vpn-gateway
 documentationcenter: na
@@ -13,16 +13,21 @@ ms.devlang: na
 ms.topic: 
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2017
+ms.date: 03/20/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 523166a2dc509f13f62aef0e83799849a04d7efb
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3032b09d06a103f9cd915e3803355199243488f9
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>使用 PowerShell 删除虚拟网络网关
+> [!div class="op_single_selector"]
+> * [Resource Manager - PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+> * [经典 - PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+>
+>
 
 可以使用多种不同的方法来删除 VPN 网关配置中的虚拟网络网关。
 
@@ -48,8 +53,6 @@ ms.lasthandoff: 03/14/2017
 
     Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-
-
 ##<a name="S2S"></a>删除站点到站点 VPN 网关
 
 若要删除 S2S 配置中的虚拟网络网关，必须先删除与该网关相关的每个资源。 由于存在依赖关系，必须按特定的顺序删除资源。 在以下示例中，必须专门为某些值命名，其他值是输出结果。 为方便演示，我们在示例中使用了以下特定值：
@@ -58,6 +61,7 @@ VNet 名称：VNet1<br>
 资源组名称：RG1<br>
 虚拟网络网关名称：GW1<br>
 
+以下步骤适用于 Resource Manager 部署模型。
 
 ###<a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1.单击要删除的虚拟网络网关。
 
@@ -85,6 +89,11 @@ VNet 名称：VNet1<br>
 ###<a name="6-delete-the-virtual-network-gateway"></a>6.删除虚拟网络网关。
 系统可能会提示你确认是否要删除该网关。
 
+>[!NOTE]
+> 除了 S2S 配置，如果你还有此 VNet 的 P2S 配置，则删除虚拟网络网关将自动断开所有 P2S 客户端且不发出警告。
+>
+>
+
     Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 
 ###<a name="7-get-the-ip-configurations-of-the-virtual-network-gateway"></a>7.获取虚拟网络网关的 IP 配置。
@@ -100,7 +109,7 @@ VNet 名称：VNet1<br>
 
     $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "RG1"}
 
-###<a name="10-delete-the-gateway-subnet"></a>10.删除网关子网。
+###<a name="10-delete-the-gateway-subnet-and-set-the-configuration"></a>10.删除网关子网并设置配置。
 
     $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
     Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
@@ -113,6 +122,7 @@ VNet 名称：VNet1<br>
 资源组名称：RG1<br>
 虚拟网络网关名称：GW1<br>
 
+以下步骤适用于 Resource Manager 部署模型。
 
 ###<a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1.单击要删除的虚拟网络网关。
 
@@ -141,15 +151,19 @@ VNet 名称：VNet1<br>
     $ConnsL | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
     $ConnsR | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
 
-
 ###<a name="5-delete-the-virtual-network-gateway"></a>5.删除虚拟网络网关。
 系统可能会提示你确认是否要删除该虚拟网络网关。
+
+>[!NOTE]
+> 除了 V2V 配置，如果你还有此 VNet 的 P2S 配置，则删除虚拟网络网关将自动断开所有 P2S 客户端且不发出警告。
+>
+>
 
     Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 
 ###<a name="6-get-the-ip-configurations-of-the-virtual-network-gateway"></a>6.获取虚拟网络网关的 IP 配置。
 
-    $GWIpConfigs = $GW.IpConfigurations
+    $GWIpConfigs = $Gateway.IpConfigurations
 
 ###<a name="7-get-the-list-of-public-ip-addresses-used-for-this-virtual-network-gateway"></a>7.获取此虚拟网络网关使用的公共 IP 地址列表。 
 如果虚拟网络网关采用主动-主动配置，将显示两个公共 IP 地址。
@@ -161,16 +175,60 @@ VNet 名称：VNet1<br>
 
     $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 
-###<a name="9-delete-the-gateway-subnet"></a>9.删除网关子网。
+###<a name="9-delete-the-gateway-subnet-and-set-the-configuration"></a>9.删除网关子网并设置配置。
  
     $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
     Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
 
+##<a name="deletep2s"></a>删除点到站点 VPN 网关
+
+若要删除 P2S 配置中的虚拟网络网关，必须先删除与该网关相关的每个资源。 由于存在依赖关系，必须按特定的顺序删除资源。 在以下示例中，必须专门为某些值命名，其他值是输出结果。 为方便演示，我们在示例中使用了以下特定值：
+
+VNet 名称：VNet1<br>
+资源组名称：RG1<br>
+虚拟网络网关名称：GW1<br>
+
+以下步骤适用于 Resource Manager 部署模型。
+
+
+>[!NOTE]
+> 删除 VPN 网关时，所有连接的客户端将与 VNet 断开连接且不发出警告。
+>
+>
+
+###<a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1.单击要删除的虚拟网络网关。
+
+    $Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+
+###<a name="2-delete-the-virtual-network-gateway"></a>2.删除虚拟网络网关。
+系统可能会提示你确认是否要删除该虚拟网络网关。
+
+    Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
+
+###<a name="3-get-the-ip-configurations-of-the-virtual-network-gateway"></a>3.获取虚拟网络网关的 IP 配置。
+
+    $GWIpConfigs = $Gateway.IpConfigurations
+
+###<a name="4-get-the-list-of-public-ip-addresses-used-for-this-virtual-network-gateway"></a>4.获取此虚拟网络网关使用的公共 IP 地址列表。 
+如果虚拟网络网关采用主动-主动配置，将显示两个公共 IP 地址。
+
+    $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
+
+###<a name="5-delete-the-public-ips"></a>5.删除公共 IP。
+系统可能会提示你确认是否要删除该公开 IP。
+
+    $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
+
+###<a name="6-delete-the-gateway-subnet-and-set-the-configuration"></a>6.删除网关子网并设置配置。
+ 
+    $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
+    Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
 
 ##<a name="delete"></a>通过删除资源组来删除 VPN 网关
 
 如果你不关心是否要保留任何资源，而只是想要从头开始配置，则可以删除整个资源组。 这种方法可以快速删除所有信息。 删除整个资源组时，无法做到有选择性地删除资源。 因此，在运行本示例之前，请确定这是你想要执行的操作。
 
+以下步骤适用于 Resource Manager 部署模型。
 
 ### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1.获取订阅中所有资源组的列表。
 
@@ -182,7 +240,6 @@ VNet 名称：VNet1<br>
 
 ### <a name="3-verify-the-resources-in-the-list"></a>3.检查列表中的资源。
 返回列表后，请检查该列表，确认你要删除该资源组中的所有资源以及资源组本身。 
-
 
 ### <a name="4-delete-the-resource-group-and-resources"></a>4.删除资源组和资源。
 若要删除资源组及其包含的所有资源，请修改本示例，然后运行。

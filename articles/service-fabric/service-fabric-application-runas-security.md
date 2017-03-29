@@ -17,6 +17,7 @@ ms.author: mfussell
 translationtype: Human Translation
 ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
 ms.openlocfilehash: 469f37362fa0ebe39367a66df8a27e71e762a9d5
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -172,7 +173,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
 ## <a name="use-console-redirection-for-local-debugging"></a>对本地调试使用控制台重定向
 有时，需要查看运行脚本的控制台输出以便进行调试。 为此，可以设置控制台重定向策略以将输出写入到文件。 文件输出写入到部署和运行应用程序的节点上的应用程序文件夹 **log** 中。 （上面的示例说明了在何处找到此文件夹）。
 
-> [!NOTE]
+> [!WARNING]
 > 永远不要在生产中部署的应用程序中使用控制台重定向策略，因为这可能会影响应用程序故障转移。 *仅*将其用于本地开发和调试目的。  
 > 
 > 
@@ -379,9 +380,4 @@ Echo "Test console redirection which writes to the application log folder on the
 * [部署应用程序](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

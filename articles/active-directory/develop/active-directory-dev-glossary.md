@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/15/2016
+ms.date: 03/20/2017
 ms.author: bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 186541bee40ada7fc9e6be31d6b989e9bd34e0d1
-ms.openlocfilehash: acc585d139e91b4954658fb061587a69e701bbe2
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 1d65d5292d51c58b92f68dd469bf1eb0ccdc47ca
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -86,7 +87,7 @@ ms.openlocfilehash: acc585d139e91b4954658fb061587a69e701bbe2
 客户端应用程序向资源所有者请求[授权](#authorization)，以参与 [OAuth2 授权](#authorization-grant)流程，并可代表资源所有者访问 API/数据。 OAuth2 授权框架根据客户端是否能够维护其凭据的机密性[定义两种类型的客户端][OAuth2-Client-Types]：“机密”和“公共”。 应用程序可实现在 Web 服务器上运行的 [Web 客户端（机密）](#web-client)、安装在设备上的[本机客户端（公共）](#native-client)，或者在设备浏览器中运行的[基于用户代理的客户端（公共）](#user-agent-based-client)。
 
 ## <a name="consent"></a>同意
-[资源所有者](#resource-owner)授权给[客户端应用程序](#client-application)，让它获得特定[权限](#permissions)来代表资源所有者访问受保护资源的过程。 根据客户端请求的权限，要求管理员或用户同意分别允许其组织/个人数据的访问权限。 请注意，在[多租户](#multi-tenant-application)方案中，应用程序的[服务主体](#service-principal-object)也会记录在同意方用户的租户中。
+[资源所有者](#resource-owner)授权给[客户端应用程序](#client-application)，让其通过特定[权限](#permissions)代表资源所有者访问受保护资源的过程。 根据客户端请求的权限，要求管理员或用户同意分别允许其组织/个人数据的访问权限。 请注意，在[多租户](#multi-tenant-application)方案中，应用程序的[服务主体](#service-principal-object)也会记录在同意方用户的租户中。
 
 ## <a name="id-token"></a>ID 令牌
 [授权服务器](#authorization-server)的[授权终结点](#authorization-endpoint)提供的 [OpenID Connect][OpenIDConnect-ID-Token] [安全令牌](#security-token)，其中包含与最终用户[资源所有者](#resource-owner)的身份验证相关的[声明](#claim)。 与访问令牌一样，ID 令牌也以数字签名的 [JSON Web 令牌 (JWT)][JWT] 来表示。 不过，与访问令牌不同的是，ID 令牌的声明并不用于与资源访问相关的用途（具体地说，是访问控制）。
@@ -94,7 +95,7 @@ ms.openlocfilehash: acc585d139e91b4954658fb061587a69e701bbe2
 如需更多详细信息，请参阅 [Azure AD 令牌参考][AAD-Tokens-Claims]。
 
 ## <a name="multi-tenant-application"></a>多租户应用程序
-一类[客户端应用程序](#client-application)，允许在任何 Azure AD [租户](#tenant)（包括在其中注册了客户端的租户以外的租户）中预配的用户进行登录和[同意](#consent)操作。 相反，注册为单租户的应用程序只允许来自应用程序注册所在相同租户中预配的用户帐户的登录。 [本机客户端](#native-client)应用程序默认为多租户，而 [Web 客户端](#web-client)应用程序则可以在单租户和多租户之间做出选择。
+一类应用程序，允许在任何 Azure AD [租户](#tenant)（包括在其中注册了客户端的租户以外的租户）中预配的用户进行登录和[同意](#consent)操作。 [本机客户端](#native-client)应用程序默认为多租户，而 [Web 客户端](#web-client)和 [Web 资源/API](#resource-server) 应用程序则可在单租户和多租户之间做出选择。 相反，注册为单租户的 Web 应用程序只允许来自应用程序注册所在相同租户中预配的用户帐户的登录。
 
 如需更多详细信息，请参阅[如何使用多租户应用程序模式将任何 Azure AD 用户登录][AAD-Multi-Tenant-Overview]。
 
@@ -104,12 +105,12 @@ ms.openlocfilehash: acc585d139e91b4954658fb061587a69e701bbe2
 ## <a name="permissions"></a>权限
 [客户端应用程序](#client-application)通过声明权限请求来获取[资源服务器](#resource-server)访问权限。 有两种权限类型：
 
-* “委托的”权限，可根据登录的[资源所有者](#resource-owner)的委托授权请求[基于范围](#scopes)的访问，在运行时提供给资源作为客户端[访问令牌](#access-token)中的 ["scp" 声明](#claim)。
-* “应用程序”权限，可根据客户端应用程序的凭据/标识请求[基于角色](#roles)的访问，在运行时提供给资源作为客户端访问令牌中的[角色声明](#claim)。
+* “委托的”权限，可使用登录的[资源所有者](#resource-owner)的委托授权指定[基于范围](#scopes)的访问，在运行时提供给资源作为客户端[访问令牌](#access-token)中的[“scp”声明](#claim)。
+* “应用程序”权限，可使用客户端应用程序的凭据/标识指定[基于角色](#roles)的访问，在运行时提供给资源作为客户端访问令牌中的[“角色”声明](#claim)。
 
 权限也会在[同意](#consent)过程中出现，让管理员或资源所有者有机会允许/拒绝客户端对其租户中的资源进行访问。
 
-在 [Azure 门户][AZURE-portal]的“应用程序”/“配置”选项卡的“必需权限”下，选择所需的“委托的权限”和“应用程序权限”来配置权限请求（后者需要全局管理员角色中的成员资格）。 [公共客户端](#client-application)无法维护凭据，因此它只能请求委托的权限，而[机密客户端](#client-application)则可以请求委托的权限和应用程序权限。 客户端的[应用程序对象](#application-object)将声明的权限存储在其 [requiredResourceAccess 属性][AAD-Graph-App-Entity]中。
+在 [Azure 门户][AZURE-portal]的“应用程序”/“配置”选项卡的“必需权限”下，选择所需的“委托的权限”和“应用程序权限”来配置权限请求（后者需要全局管理员角色中的成员资格）。 [公共客户端](#client-application)无法安全地维护凭据，因此它只能请求委托的权限，而[机密客户端](#client-application)则可以请求委托的权限和应用程序权限。 客户端的[应用程序对象](#application-object)将声明的权限存储在其 [requiredResourceAccess 属性][AAD-Graph-App-Entity]中。
 
 ## <a name="resource-owner"></a>资源所有者
 根据 [OAuth2 授权框架][OAuth2-Role-Def]的定义，这是能够授予受保护资源访问权限的实体。 如果资源所有者是个人，则称为最终用户。 例如，当[客户端应用程序](#client-application)想要通过 [Microsoft 图形 API][Microsoft-Graph] 访问用户的邮箱时，需要从邮箱的资源所有者获取权限。
@@ -175,7 +176,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 所提供的功能包括：
 ## <a name="next-steps"></a>后续步骤
 [Azure AD 开发人员指南][AAD-Dev-Guide]是用于所有 Azure AD 开发相关主题的门户，包括[应用程序集成][AAD-How-To-Integrate]的概述和 [Azure AD 身份验证与支持的身份验证方案][AAD-Auth-Scenarios]基本知识。
 
-欢迎使用以下 Disqus 意见部分提供反馈，帮助我们改进内容。
+请使用以下评论部分提供反馈，帮助我们改进和编写内容，包括有关新定义或更新现有定义的要求！
 
 <!--Image references-->
 
@@ -208,9 +209,4 @@ Azure AD 目录的实例称为 Azure AD 租户。 所提供的功能包括：
 [OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
 [OpenIDConnect-AuthZ-Endpoint]: http://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
 [OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

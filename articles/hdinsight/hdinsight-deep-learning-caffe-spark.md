@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
 translationtype: Human Translation
-ms.sourcegitcommit: 4860c818c5eba800ea9eaedc4c109ebd459a8c16
-ms.openlocfilehash: 2fa745672fe1b6aec9a2144774eb32fa029073e1
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: d3ac737604e9483c313b4c1fcb522cb449dd84d8
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -297,7 +297,7 @@ SampleID 表示 MNIST 数据集中的 ID，标签是模型的标识数字。
 在本文档中，用户尝试安装 CaffeOnSpark 并运行一个简单的示例。 HDInsight 是完全托管的云分布式计算平台，尤其适合在大型数据集上运行机器学习和高级分析工作负荷，而对于分布式深度学习，用户可以使用 Caffe on HDInsight Spark 执行深度学习任务。
 
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>另请参阅
+## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案

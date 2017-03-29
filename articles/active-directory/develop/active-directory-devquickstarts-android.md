@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: f9809095128d0069d076d18486cae05b65498fa8
-ms.openlocfilehash: bde8ef9c4f51c38f8e5b41857be02ade43260824
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9ae8852c02361ff11c302f86cb5c53e01a48068a
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -62,8 +63,9 @@ Active Directory 支持添加两种类型的应用程序：
 4. 单击“应用注册”，然后选择“添加”。
 5. 为应用程序输入一个友好的名称（例如“TodoListService”），选择“Web 应用程序和/或 Web API”，然后单击“下一步”。
 6. 对于登录 URL，输入示例的基 URL。 默认情况下，它是 `https://localhost:8080`。
-7. 对于应用 ID URI，输入 `https://<your_tenant_name>/TodoListService`。 将 `<your_tenant_name>` 替换为你的 Azure AD 租户的名称。 单击“确定”完成注册。
+7. 单击“确定”完成注册。
 8. 仍然在 Azure 门户中，转到你的应用程序页面，找到应用程序 ID 值并复制它。 稍后在配置应用程序时需要此值。
+9. 从“设置” -> “属性”页中，更新应用 ID URI - 输入 `https://<your_tenant_name>/TodoListService`。 将 `<your_tenant_name>` 替换为你的 Azure AD 租户的名称。
 
 ## <a name="step-3-register-the-sample-android-native-client-application"></a>步骤 3：注册示例 Android 本机客户端应用程序
 在此示例中，必须注册你的 Web 应用程序。 这将允许你的应用程序与刚才注册的 Web API 进行通信。 除非注册了应用程序，否则 Azure AD 甚至可能会拒绝应用程序要求进行登录。 这是模型的安全功能的一部分。
@@ -384,9 +386,4 @@ ADAL 版本 1.1.0 支持通过 WebViewClient 中的 onReceivedHttpAuthRequest �
 了解[如何使用 ADAL 在 Android 上启用跨应用 SSO](active-directory-sso-android.md)。  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

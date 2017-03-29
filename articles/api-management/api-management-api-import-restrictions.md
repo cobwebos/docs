@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: f941f87019a667deba5ec3e5cd054d04318689db
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: ac799d66b5038c207413086b0fa71239ff2a332f
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -37,7 +37,7 @@ WSDL 文件用于生成 SOAP 直通 API，或用作 SOAP 到 REST API 的后端�
 
 * **WSDL:Import** 目前不支持使用该属性的 API。 客户应将导入的元素合并到一个文档中。
 * 目前不支持**包含多个部分的消息**。
-* **WCF wsHttpBinding** 使用 Windows Communication Foundation 创建的 SOAP 服务应使用 basicHttpBinding - wsHttpBinding。
+* **WCF wsHttpBinding** 使用 Windows Communication Foundation 创建的 SOAP 服务应使用 basicHttpBinding - 不支持 wsHttpBinding。
 * **MTOM** 使用 MTOM 的服务<em>可能</em>工作。 目前暂未提供官方支持。
 * 不支持以递归方式定义**递归**类型（例如，引用这些类型本身的数组）。
 

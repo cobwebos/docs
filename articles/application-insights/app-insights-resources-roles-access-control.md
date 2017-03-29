@@ -1,22 +1,22 @@
 ---
-title: "Application Insights 中的资源、角色和访问控制"
+title: "Azure Application Insights 中的资源、角色和访问控制 | Microsoft Docs"
 description: "组织的见解的所有者、参与者和读者。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2016
+ms.date: 03/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 89e3cb3a7e9185d4a2944c1aa9aaf5aee4bd2b24
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 50a3cb726646c46d1f46767b51428eb751e6d3fe
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,9 +33,9 @@ ms.lasthandoff: 03/15/2017
 
 * **资源** - Microsoft Azure 服务的实例。 Application Insights 资源会收集、分析并显示从应用程序发送的遥测数据。  其他类型的 Azure 资源包括 Web 应用、数据库和 VM。
   
-    若要查看所有资源，请转到 [Azure 门户][portal]，登录并单击“浏览”。
+    若要查看你的资源，请打开 [Azure 门户][portal]并登录，然后单击“所有资源”。 为找到资源，请在筛选器字段中键入部分名称。
   
-    ![选择“浏览”，然后选择“一切内容”或“按 Application Insights 筛选”](./media/app-insights-resources-roles-access-control/10-browse.png)
+    ![Azure 资源的列表](./media/app-insights-resources-roles-access-control/10-browse.png)
 
 <a name="resource-group"></a>
 
@@ -86,12 +86,12 @@ ms.lasthandoff: 03/15/2017
 * 连续导出
 
 #### <a name="select-the-user"></a>选择用户
-![键入新用户的电子邮件地址。 选择用户](./media/app-insights-resources-roles-access-control/04-user.png)
 
 如果你希望的用户不在目录中，可以邀请具有 Microsoft 帐户的任何人。
 （如果他们使用诸如 Outlook.com、OneDrive、Windows Phone 或 XBox Live 等服务，他们就会有 Microsoft 帐户。）
 
-## <a name="users-and-roles"></a>用户和角色
+## <a name="related-content"></a>相关内容
+
 * [Azure 中基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
 
 <!--Link references-->

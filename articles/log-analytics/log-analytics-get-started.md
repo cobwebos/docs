@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/08/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: f75386f970aeb5694d226cfcd569b8c04a253191
-ms.openlocfilehash: 0f418af5728b6a156ebc72fb99a3d16d559654ed
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 634b4c99b746ad0b8b3238e11b3c305d2cf7082f
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/10/2017
 本文为 Log Analytics 简介，以简易教程的方式指导用户在开始使用服务之前完成 Azure 中的最小型部署。 用于存储 Azure 中的管理数据的逻辑容器称为工作区。 用户在查看此信息并完成自己的评估以后，可以删除评估工作区。 本文为教程，因此不讨论业务需求、规划或体系结构指南方面的问题。
 
 >[!NOTE]
->如果你使用 Microsoft Azure 政府版云，可改用 [Azure 政府版监视 + 管理文档](https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics)。
+>如果你使用 Microsoft Azure 政府版云，可改用 [Azure 政府版监视 + 管理文档](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics)。
 
 下面快速介绍入门过程：
 

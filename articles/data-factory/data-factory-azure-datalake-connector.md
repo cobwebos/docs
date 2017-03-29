@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: ee0cee5e653cb8900936e12e87c56cfee5639bc5
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 582cb9dee06c6ec4b030ded866a0f92a575b93ed
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -417,18 +417,17 @@ Azure Data Lake Store 连接器支持**服务主体**身份验证和**用户凭�
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureDataLakeStore** | 是 |
-| dataLakeStoreUri | 指定 Azure Data Lake Store 帐户相关信息。 它采用以下格式：**https://[accountname].azuredatalakestore.net/webhdfs/v1** 或 **adl://[accountname].azuredatalakestore.net/**。 | 是 |
+| dataLakeStoreUri | 指定 Azure Data Lake Store 帐户相关信息。 其格式如下：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
 | subscriptionId | Data Lake Store 所属的 Azure 订阅 ID。 | 接收器所需 |
 | resourceGroupName | Data Lake Store 所属的 Azure 资源组名称。 | 接收器所需 |
 
 ### <a name="using-service-principal-authentication-recommended"></a>使用服务主体身份验证（推荐）
-若要使用服务主体身份验证，首选需要在 Azure Active Directory (AAD) 中注册应用程序实体并在 Data Lake Store 中对其授予访问权限。 之后，可在 Azure 数据工厂中对相应的应用程序 ID、应用程序密钥和租户信息指定以下属性，以将数据复制出/到 Data Lake Store。 有关如何设置和检索所需信息，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
+若要使用服务主体身份验证，请在 Azure Active Directory (AAD) 中注册应用程序实体并授予其访问 Data Lake Store 的权限。 有关详细步骤，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 请记下以下值：**应用程序 ID**、**应用程序密钥**和**租户 ID**。 定义链接的服务时需使用此信息。 
 
 > [!IMPORTANT]
-> 使用复制向导创作时，请确保在访问控制 (IAM) 中向服务主体至少授予对 ADLS 帐户的“读取者”角色以及对 ADLS 根 ("/") 及其子级的“读取+执行”权限，这样才能在文件夹之间成功导航。 否则，可能会看到“提供的凭据无效”错误。
+> 如果使用“复制向导”创作数据管道，请确保在访问控制 (IAM) 中向服务主体至少授予对 Data Lake Store 帐户的“读取者”角色以及对 Data Lake Store 根 ("/") 及其子级的“读取+执行”权限。 否则，可能会看到“提供的凭据无效”错误。
 >
-> 如果从 AAD 新建/更新服务主体，可能需要几分钟才能生效。 首先请反复检查服务主体和 ADLS ACL 配置，如果仍有错误指出“提供的凭据无效”，请等待一段时间，然后重试。
->
+> 在 AAD 中创建/更新服务主体后，所作更改可能需要几分钟才能生效。 首先，仔细检查服务主体和 Data Lake Store ACL 配置。 如果仍看到错误：“提供的凭据无效”，请稍等一会儿，然后重试。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -455,7 +454,7 @@ Azure Data Lake Store 连接器支持**服务主体**身份验证和**用户凭�
 ```
 
 ### <a name="using-user-credential-authentication"></a>使用用户凭据身份验证
-或者，通过指定以下属性，可使用用户凭据身份验证将将数据复制出/到 Data Lake Store。
+或者，通过指定以下属性，可使用用户凭据身份验证复制出/到 Data Lake Store。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -480,12 +479,16 @@ Azure Data Lake Store 连接器支持**服务主体**身份验证和**用户凭�
 ```
 
 #### <a name="token-expiration"></a>令牌过期
-通过使用“授权”按钮生成的授权代码在一段时间后过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时可能会看到以下错误消息：“凭据操作错误：invalid_grant-AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID：d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳：2015-12-15 21-09-31Z”。
+通过使用“授权”按钮生成的授权代码在一段时间后过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时，可能会看到以下错误消息：
+ 
+```
+"Credential operation error: invalid_grant - AADSTS70002: Error validating credentials. AADSTS70008: The provided access grant is expired or revoked. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21-09-31Z".
+```
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
 | 不由 Azure Active Directory 管理的用户帐户（@hotmail.com、@live.com，等等）。 |12 小时 |
-| 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的&14; 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
+| 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的 14 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
 如果在此令牌的过期时间之前更改密码，则该令牌将立即过期，并且你将看到此部分中所提到的错误。
 
@@ -530,7 +533,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | fileName |Azure Data Lake Sore 中文件的名称。 fileName 可选，并且区分大小写。 <br/><br/>如果指定 filename，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称将采用以下格式：Data<Guid>.txt (for example: : Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 是一个可选属性。 它可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 请参阅[使用 partitionedBy 属性](#using-partitionedby-property)部分了解详细信息和示例。 |否 |
 | 格式 | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](#specifying-textformat)、[Json 格式](#specifying-jsonformat)、[Avro 格式](#specifying-avroformat)、[Orc 格式](#specifying-orcformat)和 [Parquet 格式](#specifying-parquetformat)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**；支持的级别为：**Optimal** 和 **Fastest**。 有关详细信息，请参阅[指定压缩](#specifying-compression)部分。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：**最佳**和**最快**。 有关详细信息，请参阅[指定压缩](#specifying-compression)部分。 |否 |
 
 ### <a name="using-partitionedby-property"></a>使用 partitionedBy 属性
 可以通过 **partitionedBy** 部分、数据工厂宏和系统变量（SliceStart 和 SliceEnd，它们指示给定数据切片的开始和结束时间），指定时序数据的动态 folderPath 和 filename。
@@ -569,7 +572,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ## <a name="azure-data-lake-copy-activity-type-properties"></a>Azure Data Lake 复制活动类型属性
 有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
-另一方面，可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异
+而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异
 
 **AzureDataLakeStoreSource** 支持以下属性 **typeProperties** 部分：
 
@@ -581,7 +584,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| copyBehavior |指定复制行为。 |**PreserveHierarchy：**保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/>**FlattenHierarchy：**源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/>**MergeFiles：**将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，将会自动生成文件名。 |否 |
+| copyBehavior |指定复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy</b>：源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，将会自动生成文件名。 |否 |
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -590,8 +593,5 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 [!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## <a name="performance-and-tuning"></a>性能和优化
-
-Azure 数据工厂具有用于改进这些任务的性能的选项，具体取决于初始数据移动是否通过大量的历史数据或增量生产数据负载进行计划。 并发参数属于“复制活动”，此参数定义将并行处理的不同活动窗口的数量。 **parallelCopies** 参数定义单个活动运行的并行度。 在使用 Azure 数据工厂设计数据移动管道来实现最佳吞吐量时，请务必考虑使用这些参数。
-
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 

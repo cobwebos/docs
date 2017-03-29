@@ -1,5 +1,5 @@
 ---
-title: "流量管理器的 Azure Resource Manager 支持 | Microsoft 文档"
+title: "使用 PowerShell 管理 Azure 中的流量管理器 | Microsoft Docs"
 description: "使用包含 Azure Resource Manager 的流量管理器 PowerShell"
 services: traffic-manager
 documentationcenter: na
@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: f97ba8ebc940d4b3eec5d2610503f8a86af8dbe2
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: c2fb44817f168eee8303d0c07473f043ae30d350
+ms.lasthandoff: 03/18/2017
 
 ---
 
-# <a name="azure-resource-manager-support-for-azure-traffic-manager"></a>Azure 流量管理器对 Azure Resource Manager 的支持
+# <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
 
 Azure Resource Manager 是 Azure 中的首选服务管理接口。 你可以使用基于 Azure Resource Manager 的 API 和工具来管理 Azure 流量管理器配置文件。
 
@@ -30,23 +31,6 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 每个流量管理器配置文件由“TrafficManagerProfiles”类型的资源表示。 在 REST API 级别，每个配置文件的 URI 如下：
 
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
-
-## <a name="comparison-with-the-azure-traffic-manager-classic-api"></a>与 Azure 流量管理器经典 API 的比较
-
-对流量管理器的 Azure Resource Manager 支持使用的术语不同于经典部署模型。 下表显示了资源管理器和经典数据之间的区别：
-
-| 资源管理器术语 | 经典术语 |
-| --- | --- |
-| 流量路由方法 |负载平衡方法 |
-| 优先级方法 |故障转移方法 |
-| 加权方法 |循环方法 |
-| 性能方法 |性能方法 |
-
-基于客户的反馈，我们对术语进行了更改，让术语更加明确，并减少常见的误解。 功能没有区别。
-
-## <a name="limitations"></a>限制
-
-引用 Web 应用的“AzureEndpoints”类型的终结点时，流量管理器终结点只能引用默认（生产）[Web 应用槽](../app-service-web/web-sites-staged-publishing.md)。 不支持自定义槽。 一种解决方法是，可以使用“ExternalEndpoints”类型配置自定义槽。
 
 ## <a name="setting-up-azure-powershell"></a>设置 Azure PowerShell
 
@@ -127,11 +111,10 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 
 ## <a name="adding-azure-endpoints"></a>添加 Azure 终结点
 
-Azure 终结点会引用托管在 Azure 中的服务。 支持 3 种类型的 Azure 终结点：
+Azure 终结点会引用托管在 Azure 中的服务。 支持 2 种类型的 Azure 终结点：
 
 1. Azure Web 应用
-2. “经典”云服务（可能包含 PaaS 服务或 IaaS 虚拟机）
-3. Azure PublicIpAddress 资源（可以附加到负载均衡器或虚拟机 NIC）。 必须为 publicIpAddress 指定 DNS 名称，然后才能在流量管理器中使用它。
+2. Azure PublicIpAddress 资源（可以附加到负载均衡器或虚拟机 NIC）。 必须为 publicIpAddress 指定 DNS 名称，然后才能在流量管理器中使用它。
 
 在每种情况下：
 
@@ -152,19 +135,9 @@ $webapp2 = Get-AzureRMWebApp -Name webapp2
 Add-AzureRmTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>示例 2：使用 `New-AzureRmTrafficManagerEndpoint` 添加 publicIpAddress 终结点
 
-### <a name="example-2-adding-a-classic-cloud-service-endpoint-using-new-azurermtrafficmanagerendpoint"></a>示例 2：使用 `New-AzureRmTrafficManagerEndpoint` 添加“经典”云服务终结点
-
-在此示例中，“经典”云服务终结点添加到了流量管理器配置文件中。 在此示例中，我们使用配置文件和资源组名称指定了配置文件，而未传递配置文件对象。 同时支持这两种方法。
-
-```powershell
-$cloudService = Get-AzureRmResource -ResourceName MyCloudService -ResourceType "Microsoft.ClassicCompute/domainNames" -ResourceGroupName MyCloudService
-New-AzureRmTrafficManagerEndpoint -Name MyCloudServiceEndpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type AzureEndpoints -TargetResourceId $cloudService.Id -EndpointStatus Enabled
-```
-
-### <a name="example-3-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>示例 3：使用 `New-AzureRmTrafficManagerEndpoint` 添加 publicIpAddress 终结点
-
-在此示例中，公共 IP 地址资源添加到了流量管理器配置文件中。 公共 IP 地址必须配置了 DNS 名称，并且可以绑定到 VM 的 NIC 或者绑定到负载平衡器。
+在此示例中，公共 IP 地址资源添加到了流量管理器配置文件中。 公共 IP 地址必须配置了 DNS 名称，并且可以绑定到 VM 的 NIC 或者绑定到负载均衡器。
 
 ```powershell
 $ip = Get-AzureRmPublicIpAddress -Name MyPublicIP -ResourceGroupName MyRG
@@ -339,9 +312,4 @@ Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remov
 [流量管理器监视](traffic-manager-monitoring.md)
 
 [流量管理器性能注意事项](traffic-manager-performance-considerations.md)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

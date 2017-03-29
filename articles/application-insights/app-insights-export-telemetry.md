@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 14627391a5df562a70737a71f41fe7cb934c9062
-ms.openlocfilehash: 54f579e5806a2fa5bd4ceace8a8ab46509b4be1e
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a06d97216373ddc6a35160e6226b8eee8df52d27
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -27,22 +27,22 @@ ms.lasthandoff: 02/27/2017
 
 在设置连续导出之前，请考虑一些备选方法：
 
-* 使用指标或搜索边栏选项卡顶部的[“导出”按钮](app-insights-metrics-explorer.md#export-to-excel)可将表和图表发送到 Excel 电子表格。 
+* 通过指标或搜索边栏选项卡顶部的“导出”按钮，可将表格和图表发送到 Excel 电子表格。
 
 * [Analytics](app-insights-analytics.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
 * 如果想要[在 Power BI 中浏览数据](app-insights-export-power-bi.md)，无需使用连续导出也可以做到。
-* 使用[数据访问 REST API](https://dev.applicationinsights.io/) 能够以编程方式访问遥测数据。 
+* 使用[数据访问 REST API](https://dev.applicationinsights.io/) 能够以编程方式访问遥测数据。
 
-连续导出将数据复制到存储后（数据可在其中保存任意长的时间），在正常[保留期](app-insights-data-retention-privacy.md)内，这些数据仍可在 Application Insights 中使用。 
+连续导出将数据复制到存储后（数据可在其中保存任意长的时间），在正常[保留期](app-insights-data-retention-privacy.md)内，这些数据仍可在 Application Insights 中使用。
 
 ## <a name="setup"></a> 创建连续导出
-1. 在应用的 Application Insights 资源中，打开“连续导出”，然后选择“添加”： 
+1. 在应用的 Application Insights 资源中，打开“连续导出”，然后选择“添加”：
 
     ![向下滚动并单击“连续导出”](./media/app-insights-export-telemetry/01-export.png)
 
 2. 选择要导出的遥测数据类型。
 
-3. 创建或选择要用于存储数据的 [Azure 存储帐户](../storage/storage-introduction.md)。 
+3. 创建或选择要用于存储数据的 [Azure 存储帐户](../storage/storage-introduction.md)。
 
     > [!Warning]
     > 默认情况下，存储位置将设置为与 Application Insights 资源相同的地理区域。 如果存储在不同的区域中，则可能会产生传输费用。
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/27/2017
 
     ![单击“选择事件类型”](./media/app-insights-export-telemetry/create-container.png)
 
-创建导出之后，将开始导出数据。 只能获取创建导出后到达的数据。 
+创建导出之后，将开始导出数据。 只能获取创建导出后到达的数据。
 
 数据出现在存储中之前可能有大约一小时的延迟。
 
@@ -73,18 +73,18 @@ ms.lasthandoff: 02/27/2017
 * 若要添加或更改导出，需要“所有者”、“参与者”或“Application Insights 参与者”访问权限。 [了解角色][roles]。
 
 ## <a name="analyze"></a>获取哪些事件？
-导出的数据是从应用程序接收的原始遥测数据，只不过我们添加了从客户端 IP 地址计算的位置数据。 
+导出的数据是从应用程序接收的原始遥测数据，只不过我们添加了从客户端 IP 地址计算的位置数据。
 
 被[采样](app-insights-sampling.md)丢弃的数据不会包含在导出的数据中。
 
 不包含其他计算的指标。 例如，不会导出平均 CPU 使用率，但会导出用来计算平均值的原始遥测数据。
 
-该数据还包含已设置的任何[可用性 Web 测试](app-insights-monitor-web-app-availability.md)的结果。 
+该数据还包含已设置的任何[可用性 Web 测试](app-insights-monitor-web-app-availability.md)的结果。
 
 > [!NOTE]
 > **采样。** 如果应用程序发送大量数据，采样功能可能会运行，并只发送一小部分生成的遥测数据。 [了解有关采样的详细信息。](app-insights-sampling.md)
-> 
-> 
+>
+>
 
 ## <a name="get"></a>检查数据
 可以直接在门户中检查存储。 单击“浏览”、选择你的存储帐户，然后打开“容器”。
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/27/2017
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
-其中 
+其中
 
 * `blobCreationTimeUtc` 是在内部暂存存储中创建 Blob 的时间
 * `blobDeliveryTimeUtc` 是将 Blob 复制到导出目标存储的时间
@@ -144,10 +144,10 @@ ms.lasthandoff: 02/27/2017
 如需更详细的代码示例，请参阅[使用辅助角色][exportasa]。
 
 ## <a name="delete"></a>删除旧数据
-请注意，你要负责管理存储容量，以及在必要时删除旧数据。 
+请注意，你要负责管理存储容量，以及在必要时删除旧数据。
 
 ## <a name="if-you-regenerate-your-storage-key"></a>如果重新生成存储密钥...
-如果更改存储密钥，连续导出将停止运行。 Azure 帐户中会显示通知。 
+如果更改存储密钥，连续导出将停止运行。 Azure 帐户中会显示通知。
 
 打开“连续导出”边栏选项卡并编辑导出。 编辑“导出目标”，只保留选定的同一存储。 单击“确定”以确认。
 
@@ -164,29 +164,29 @@ ms.lasthandoff: 02/27/2017
 
 ## <a name="q--a"></a>问题解答
 * *我想要一次性下载某个图表。*  
-  
-    没问题，可以这样做。 请在边栏选项卡顶部单击“导出数据”。[](app-insights-metrics-explorer.md#export-to-excel)
+
+    没问题，可以这样做。 请在边栏选项卡顶部单击“导出数据”。
 * *我设置了导出，但存储中没有数据。*
-  
+
     自设置导出之后，Application Insights 是否从应用程序收到了任何遥测数据？ 你只会收到新数据。
 * *尝试设置导出时出现拒绝访问错误*
-  
+
     如果帐户由组织拥有，则你必须是所有者或参与者组的成员。
-* *是否可以直接导出到我自己的本地存储？* 
-  
+* *是否可以直接导出到我自己的本地存储？*
+
     很抱歉，不可以。 我们的导出引擎目前仅适用于 Azure 存储。  
-* *放置在存储中的数据量是否有任何限制？* 
-  
+* *放置在存储中的数据量是否有任何限制？*
+
     否。 我们将持续推送数据，直到你删除了导出。 如果达到 Blob 存储的外在限制，推送将会停止，但那个限制极大。 你可以自行控制使用的存储量。  
 * *存储中应会出现多少个 Blob？*
-  
-  * 对于选择要导出的每种数据类型，将每隔分钟创建一个新 Blob（如果有可用的数据）。 
+
+  * 对于选择要导出的每种数据类型，将每隔分钟创建一个新 Blob（如果有可用的数据）。
   * 此外，对于高流量应用程序，将分配额外的分区单元。 在此情况下，每个单元每隔一分钟创建一个 Blob。
 * *我为存储重新生成了密钥或更改了容器的名称，但现在导出不能正常进行。*
-  
+
     请编辑导出并打开导出目标边栏选项卡。 像以前一样保留选择相同的存储，然后单击“确定”以确认。 导出将重新开始。 如果更改是在最近几天内做出的，则不会丢失数据。
 * *是否可以暂停导出？*
-  
+
     是的。 单击“禁用”即可。
 
 ## <a name="code-samples"></a>代码示例
@@ -200,6 +200,4 @@ ms.lasthandoff: 02/27/2017
 [exportcode]: app-insights-code-sample-export-telemetry-sql-database.md
 [exportasa]: app-insights-code-sample-export-sql-stream-analytics.md
 [roles]: app-insights-resources-roles-access-control.md
-
-
 

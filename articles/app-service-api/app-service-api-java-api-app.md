@@ -17,6 +17,7 @@ ms.author: rachelap;robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -27,8 +28,8 @@ ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
 
 ## <a name="prerequisites"></a>先决条件
 1. [Java 开发人员工具包 8] \(（或更高版本）
-2. [Maven] 
-3. [Git] 
+2. 已在开发计算机上安装 [Maven]
+3. 已在开发计算机上安装 [Git]
 4. [Microsoft Azure] 的付费或[免费试用版]订阅
 5. HTTP 测试应用程序，如 [Postman]
 
@@ -314,9 +315,4 @@ ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
 [select-git-repo]: ./media/app-service-api-java-api-app/select-git-repo.png
 [copy-git-repo-url]: ./media/app-service-api-java-api-app/copy-git-repo-url.png
 [postman-calling-azure-contacts]: ./media/app-service-api-java-api-app/postman-calling-azure-contacts.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

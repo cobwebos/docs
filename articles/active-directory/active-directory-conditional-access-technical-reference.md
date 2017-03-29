@@ -1,7 +1,7 @@
 ---
 title: "Azure Active Directory 条件性访问技术参考 | Microsoft 文档"
 description: "借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查你选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。"
-services: active-directory
+services: active-directory.
 documentationcenter: 
 author: MarkusVi
 manager: femila
@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 4296bbc7123f6571ad564351612864a6315d8abf
@@ -21,7 +21,9 @@ ms.lasthandoff: 03/02/2017
 
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory 条件性访问技术参考
+
 ## <a name="services-enabled-with-conditional-access"></a>通过条件性访问启用的服务
+
 各种 Azure AD 应用程序类型支持条件性访问规则。 这些应用程序包括：
 
 
@@ -36,6 +38,13 @@ ms.lasthandoff: 03/02/2017
 * Microsoft Power BI 
 * Azure AD 应用程序库中的密码 SSO 应用程序
 * Visual Studio Online
+
+
+
+
+
+
+
 
 
 ## <a name="enable-access-rules"></a>启用访问规则

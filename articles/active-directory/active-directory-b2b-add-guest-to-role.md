@@ -14,20 +14,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
-ms.openlocfilehash: f0d8eaef0933a43d5eefb06b1444e74fa5f5b3eb
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: e816349ea971c997f655b4d51672dba666bc3e89
+ms.lasthandoff: 03/17/2017
 
 
 ---
 
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>在你的 Azure Active Directory 租户中向来自合作伙伴组织的用户授予权限
 
-虽然 Azure Active Directory (Azure AD) B2B 协作用户已作为来宾用户添加到目录，但默认情况下目录中的来宾权限受到限制，你的企业可能需要某些来宾用户填充你的组织中的更多权限角色。 若要支持此功能，可以根据组织需要将来宾用户添加到所需的任何角色。
+Azure Active Directory (Azure AD) B2B 协作用户已作为来宾用户添加到目录，默认情况下目录中的来宾权限会受到限制。 企业可能需要某些来宾用户来填充组织中的较高特权角色。 若要支持定义较高特权角色，可根据组织需要将来宾用户添加到所需的任何角色。
 
 ## <a name="default-role"></a>默认角色
 

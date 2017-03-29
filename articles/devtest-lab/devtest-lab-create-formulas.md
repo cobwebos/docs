@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: c18b0eefb2d8bb43416e15c5b91cf10827f90089
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 4f9f86c2cc106aa96f27293a43cd784e2fb6fe76
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -68,7 +68,7 @@ ms.lasthandoff: 03/15/2017
     * “高级设置” - 选择此项将打开“高级”边栏选项卡，可以在其中配置以下设置：
         * “虚拟网络” - 指定所需的虚拟网络。
         * “子网” - 指定所需的子网。    
-        * “IP 地址配置” - 指定希望使用公共、私有还是共享 IP 地址。 有关共享 IP 地址的信息，请参阅“了解 Azure 开发测试实验室中的共享 IP 地址”。
+        * “IP 地址配置” - 指定希望使用公共、私有还是共享 IP 地址。 有关共享 IP 地址的详细信息，请参阅[了解 Azure 开发测试实验室中的共享 IP 地址](./devtest-lab-shared-ip.md)。
         * “使此计算机可索取” - 使计算机可“索取”的意思是在创建时不会为其分配所有权。 相反，实验室用户将能够在实验室的边栏选项卡上取得（“索取”）计算机的所有权。     
     * “映像” - 此字段显示在上一个边栏选项卡上选择的基本映像的名称。 
      
