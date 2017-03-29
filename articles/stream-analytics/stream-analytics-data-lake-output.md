@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/24/2017
+ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
 ms.openlocfilehash: 5d0a86742e4b238b94855464b2528db32b80526b
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -87,10 +88,5 @@ Data Lake Store 帐户身份验证完成后，你可以为自己的 Data Lake St
 要解决此问题，请停止正在运行的作业并转到 Data Lake Store 输出。 单击“续订授权”链接，在很短的时间内将会弹出一个页面，指示“正在重定向到授权...”。 该页会自动关闭，如果成功，将指示“授权已成功续订”。 然后需要单击该页底部的“保存”，并通过从上次停止的时间重新启动作业来继续，以避免数据丢失。
 
 ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.png)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
