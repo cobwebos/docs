@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 37b9b600-d7f8-4cb1-a04a-0b3a827c6dcc
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: a4d30ffc0a5c5ef9fe7bb892d17f0859ff27f569
-ms.openlocfilehash: 85fd87c1523eb2beb59e2ef36e604063a3f373aa
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: afd43fb536278d6aa76acaf7c9d18714bc5acd2b
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -154,6 +155,12 @@ __所有其他区域__:
 > 如果具有广泛阻止入站流量的自定义规则（例如**全部拒绝**规则），则可能需要调整这些示例中的优先级值。 该示例中的规则需要在阻止访问的规则出现之前发生。 否则，将先测试**全部拒绝**规则，而不会再应用此示例中的规则。 切勿阻止 Azure 虚拟网络的默认规则。 例如，不应创建应用于默认的**允许 VNET 入站**规则（其优先级为 65000）前的**全部拒绝**规则。
 > 
 > 有关网络安全组规则的详细信息，请参阅[什么是网络安全组？](../virtual-network/virtual-networks-nsg.md)。
+
+**使用 Azure 资源管理模板**
+
+使用 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)中的以下资源管理模板在 VNet 中创建具备安全网络配置的 HDInsight 群集：
+
+[在 VNet 中部署安全的 Azure VNet 和 HDInsight Hadoop 群集](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
 
 **使用 Azure PowerShell**
 

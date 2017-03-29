@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: e5362b32a0f93433c77c27a6fc116960c45404f9
-ms.openlocfilehash: 73bd1f9b018e49ad8a536b80275cbf0faa030b74
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: cdd0a11e872d81dfbb35c7a0cbfa2e1f7234dc08
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/01/2017
 
 此脚本将失败或有问题的虚拟机的操作系统磁盘作为数据磁盘装载到第二个虚拟机。 排查磁盘问题或恢复数据时，此脚本会很有用。 
 
-在运行此脚本前，请确保已使用 `az login` 命令创建与 Azure 的连接。 此外，还需要现有虚拟机。 更新此脚本示例中现有 VM 的名称和资源组。
+必要时，请使用 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中的说明安装 Azure CLI，然后运行 `az login` 创建与 Azure 的连接。 此外，还需一台现有的虚拟机。 更新此脚本示例中现有虚拟机的名称和资源组。
 
 此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../virtual-machines-windows-cli-options.md)。
 

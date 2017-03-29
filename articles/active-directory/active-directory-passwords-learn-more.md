@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: e9ee2dba57b153d28c80c2d123d41c3048157ba1
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 0de0590c1cf5c71a7174fdcca84847b378aa40f8
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -81,7 +81,7 @@ ms.lasthandoff: 03/10/2017
 * **支持从访问面板和 Office 365 更改密码。**  当联合或密码同步用户更改其过期或未过期的密码时，我们将这些密码写回到你的本地 AD 环境。
 * **支持管理员从** [**Azure 管理门户**](https://manage.windowsazure.com)重置密码时写回密码。  无论何时管理员在 [Azure 管理门户](https://manage.windowsazure.com)中重置用户的密码，只要该用户已联合或密码已同步，我们便还会设置管理员在本地 AD 上选择的密码。  Office 管理门户当前不支持此功能。
 * **实施本地 AD 密码策略。**  当用户重置其密码时，在将重置提交到该目录之前，我们要确保它符合你的本地 AD 策略。  这包括历史记录、复杂性、年龄、密码筛选器以及你在本地 AD 中定义的所有其他密码限制。
-* **不需要任何入站防火墙规则。**  密码写回功能使用 Azure 服务总线中继作为底层通信通道，这意味着你无需打开防火墙上的任何入站端口即可使用此功能（仅限&443; 出站）。
+* **不需要任何入站防火墙规则。**  密码写回功能使用 Azure 服务总线中继作为底层通信通道，这意味着你无需打开防火墙上的任何入站端口即可使用此功能（仅限 443 出站）。
 * **本地 Active Directory 的受保护组中存在的用户帐户不支持。** 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://technet.microsoft.com/library/dn535499.aspx)。
 
 ### <a name="how-password-writeback-works"></a>密码写回的工作原理
@@ -103,7 +103,7 @@ ms.lasthandoff: 03/10/2017
 4. 单击提交时，我们使用写回设置过程中创建的公钥来加密纯文本密码。
 5. 加密密码后，我们将其包括在一个负载中，该负载通过 HTTPS 通道发送到租户特定的服务总线中继（我们在写回设置过程中也为你设置了此项）。  此中继受随机生成的密码保护，只有你的本地安装知道该密码。
 6. 一旦消息到达服务总线，密码重置终结点便自动唤醒并看到有重置请求挂起。
-7. 然后，该服务使用云定位点属性查找相关用户。  要使查找成功，该用户对象必须存在于 AD 连接器空间中、必须链接到相应的 MV 对象，而且必须链接到相应的 AAD 连接器对象。 最后，为使同步查找此用户帐户，AD 连接器对象到 MV 的链接必须具有同步规则 `Microsoft.InfromADUserAccountEnabled.xxx`。  如此要求的原因是：从云中进行调用时，同步引擎使用 cloudAnchor 属性查找 AAD 连接器空间对象，然后遵循该链接依次回到 MV 对象和 AD 对象。 由于同一用户可能有多个 AD 对象（多林），因此，同步引擎将依赖 `Microsoft.InfromADUserAccountEnabled.xxx` 链接选取正确的对象。
+7. 然后，该服务使用云定位点属性查找相关用户。  要使查找成功，该用户对象必须存在于 AD 连接器空间中、必须链接到相应的 MV 对象，而且必须链接到相应的 AAD 连接器对象。 最后，为使同步查找此用户帐户，AD 连接器对象到 MV 的链接必须具有同步规则 `Microsoft.InfromADUserAccountEnabled.xxx`。  如此要求的原因是：从云中进行调用时，同步引擎使用 cloudAnchor 属性查找 AAD 连接器空间对象，然后遵循该链接依次回到 MV 对象和 AD 对象。 由于同一用户可能有多个 AD 对象（多林），因此，同步引擎将依赖 `Microsoft.InfromADUserAccountEnabled.xxx` 链接选取正确的对象。 请注意，由于此逻辑，必须将 Azure AD Connect 连接到主域控制器才可使用密码写回功能。  若需执行此操作，可右键单击 Active Directory 同步连接器的“属性”，然后选择“配置目录分区”将 Azure AD Connect 配置为使用主域控制器仿真器。 在此处查找“域控制器连接设置”部分，并勾选标题为“仅使用首选的域控制器”的框。 请注意：如果首选的 DC 不是 PDC 仿真器，Azure AD Connect 仍将访问 PDC 进行密码写回。
 8. 一旦找到用户帐户，我们将尝试直接在相应的 AD 林中重置密码。
 9. 如果密码设置操作成功，我们将告诉用户其密码已被修改，他们可以继续操作。
 10. 如果密码设置操作失败，我们会将错误返回给用户，让他们再试一次。  操作失败的可能原因是服务已关闭、用户选择的密码不符合组织策略、我们在本地 AD 中找不到该用户等。  我们对于许多这类情况都有一个特定消息，并告知用户他们可以执行哪些操作来解决问题。

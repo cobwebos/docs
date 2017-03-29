@@ -1,7 +1,7 @@
 ---
 
 title: "向 Azure Active Directory 添加 B2B 协作用户（无邀请）| Microsoft Docs"
-description: "通过 Azure Active Directory B2B 协作，信息工作者可将组织中的用户添加到 Azure AD，以便其访问你的公司应用程序"
+description: "可允许来宾用户将其他来宾用户添加到 Azure AD，而无需在 Azure Active Directory B2B 协作中兑换邀请。"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -14,24 +14,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/10/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0eef684115f9c21ea61502a10576f74cac0ace8e
-ms.openlocfilehash: 8fa8ba169ca85c33e52eee4a7cd5b84aa4012673
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 91b9477cdb679851e7d8d2942c06999a05f64e46
+ms.lasthandoff: 03/17/2017
 
 
 ---
 
-# <a name="add-b2b-collaboration-users-without-an-invitation"></a>在没有邀请的情况下添加 B2B 协作用户
+# <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>在没有邀请的情况下添加 B2B 协作来宾用户
 
-如果邀请方所属的角色在要从中添加用户的合作伙伴组织的目录中具有枚举权限，则受邀用户无需邀请即可添加到邀请方组织。
+可允许用户（例如合作伙伴代表）将用户从合作伙伴添加到你的组织，而无需兑换邀请。 而你要做的是在用于合作伙伴组织的目录中授予该用户枚举特权。 
 
-下面是其最有用的情况：
+在以下情况下授予这些特权：
 
-1. 主办组织（如 WoodGrove）中的用户邀请合作伙伴组织中的一名用户（如 Sam@litware.com)）作为来宾。
+1. 主办组织（如 WoodGrove）中的用户邀请合作伙伴组织中的一名用户（如 Sam@litware.com）作为来宾。
 2. 主办组织的管理员设置相关策略，允许 Sam 标识和添加合作伙伴组织 (Litware) 中的其他用户。
-3. 现在，Sam 可将 Litware 中的其他用户添加到 WoodGrove 目录、组或应用程序而无需兑换邀请。 如果 Sam 在 Litware 中具有相应的枚举权限，则会自动执行此操作。
+3. 现在，Sam 可将 Litware 中的其他用户添加到 WoodGrove 目录、组或应用程序而无需兑换邀请。 如果 Sam 在 Litware 中具有相应的枚举特权，则会自动执行此操作。
 
 ### <a name="next-steps"></a>后续步骤
 
@@ -44,13 +45,7 @@ ms.openlocfilehash: 8fa8ba169ca85c33e52eee4a7cd5b84aa4012673
 * [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)
 * [Azure AD B2B 协作授权](active-directory-b2b-licensing.md)
 * [Azure Active Directory B2B 协作疑难解答](active-directory-b2b-troubleshooting.md)
-* [Azure Active Directory B2B 协作常见问题解答 (FAQ)](active-directory-b2b-faq.md)
+* [Azure Active Directory B2B 协作常见问题 (FAQ)](active-directory-b2b-faq.md)
 * [Azure Active Directory B2B 协作 API 和自定义](active-directory-b2b-api.md)
 * [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-

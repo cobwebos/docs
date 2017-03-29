@@ -1,5 +1,5 @@
 ---
-title: "Application Insights 中的智能检测 | Microsoft 文档"
+title: "Azure Application Insights 中的智能检测 | Microsoft Docs"
 description: "Application Insights 执行应用遥测的自动深入分析，并在有潜在问题时发出警告。"
 services: application-insights
 documentationcenter: windows
@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
-ms.openlocfilehash: 30124e697af5f7560e8070ce43c5a985bd2c403b
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: fe2596a7fed52118425c612ebf50c01134928bf6
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -47,6 +48,10 @@ ms.openlocfilehash: 30124e697af5f7560e8070ce43c5a985bd2c403b
 
 （每个通知中的帮助链接可转到相关文章。）
 
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助你检查应用中的遥测：
 
@@ -58,10 +63,5 @@ ms.openlocfilehash: 30124e697af5f7560e8070ce43c5a985bd2c403b
 
 * [手动配置的指标警报](app-insights-alerts.md)
 * [可用性 Web 测试](app-insights-monitor-web-app-availability.md) 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

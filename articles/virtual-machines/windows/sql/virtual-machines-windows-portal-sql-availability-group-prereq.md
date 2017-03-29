@@ -14,11 +14,12 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/10/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 4326cc342088ff16a72b8c460245bda1f2cd17c9
-ms.openlocfilehash: 3e0c58af3566ea443efaa012495e5b736fafb46d
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 96f42929c3f4d0ccf4f2f1fbc206dddd90d6d3d1
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -296,7 +297,7 @@ Azure 将创建虚拟机。
 
 服务器完成配置更改后，请重新启动服务器。 
 
-### <a name="a-namedomainaccountsa-configure-domain-accounts"></a><a name=DomainAccounts></a>配置域帐户
+### <a name=DomainAccounts></a>配置域帐户
 
 接下来的步骤将配置 Active Directory (AD) 帐户。 下表显示了帐户：
 
@@ -337,7 +338,7 @@ Azure 将创建虚拟机。
 
 ## <a name="create-sql-servers"></a>创建 SQL Server
 ### <a name="create-and-configure-the-sql-server-vms"></a>创建并配置 SQL Server VM
-接下来，请创建三个 VM，包括两个 SQL Server VM 和一个 WSFC 群集节点。 若要创建每个 VM，请返回到 **SQL-HA-RG** 资源组，单击“添加”，搜索相应的库项，然后依次选择“虚拟机”和“从库中”。 参考下表中的信息创建 VM：
+接下来，请创建三个 VM，包括两个 SQL Server VM 和一个其他群集节点的 VM。 若要创建每个 VM，请返回到 **SQL-HA-RG** 资源组，单击“添加”，搜索相应的库项，然后依次选择“虚拟机”和“从库中”。 参考下表中的信息创建 VM：
 
 | Page | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
@@ -377,7 +378,7 @@ Azure 将创建虚拟机。
 
 针对所有服务器重复上述步骤。
 
-### <a name="a-namejoindomainajoin-the-servers-to-the-domain"></a><a name="joinDomain"></a>将服务器加入域。
+### <a name="joinDomain"></a>将服务器加入域。
 
 现在可将该 VM 加入 **corp.contoso.com**。 针对 SQL Server 和文件共享见证服务器执行以下操作： 
 
@@ -408,7 +409,7 @@ Azure 将创建虚拟机。
 7. 单击“确定”以关闭“管理员属性”对话框。
 8. 在 **sqlserver-1** 和 **cluster-fsw** 上重复上述步骤。
 
-### <a name="a-namesetserviceaccountaset-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>设置 SQL Server 服务帐户
+### <a name="setServiceAccount"></a>设置 SQL Server 服务帐户
 
 在每个 SQL Server 上设置 SQL Server 服务帐户。 使用[配置域帐户](#DomainAccounts)时创建的帐户。
 
@@ -470,7 +471,7 @@ Azure 将创建虚拟机。
 
 - **SQL Server**<br/>
    端口 1433，用于 SQL Server 的默认实例。 
-- **Azure Load Balancer 探测**<br/>
+- **Azure 负载均衡器探测**<br/>
    任何可用端口。 示例中经常使用 59999。
 - **数据库镜像终结点** <br/>
    任何可用端口。 示例中经常使用 5022。 
@@ -506,9 +507,4 @@ Azure 将创建虚拟机。
 ## <a name="next-steps"></a>后续步骤
 
 * [在 Azure 虚拟机上创建 SQL Server Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

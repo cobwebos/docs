@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/08/2017
+ms.date: 03/21/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: ec49b8784eb9b18135c5f7ec7242a2468ac87e50
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: a545925bdade693f4db7db45228188dae7e5ff38
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -32,7 +32,7 @@ Update 4 可应用于任何运行 Release (GA)、Update 0.1 到 Update 3.1 的 S
 在 StorSimple 解决方案中部署更新之前，请查看发行说明中所包含的信息。
 
 > [!IMPORTANT]
-> * Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、磁盘固件、Storport 和 Spaceport、安全更新以及其他 OS 更新。 安装此更新大约需要 4 小时。 我们建议你应用此更新，以使设备保持最新状态。 
+> * Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、磁盘固件、Storport 和 Spaceport、安全更新以及其他 OS 更新。 安装此更新大约需要 4 小时。 磁盘固件更新是中断性更新，并且会导致设备出现故障时间。 建议应用 Update 4，使设备保持最新状态。 
 > * 对于新版本，由于我们分阶段推出更新，你可能不能立即看到更新。 我们会尽快提供更新，请耐心等待几日，然后再次检查更新。
 
 ## <a name="whats-new-in-update-4"></a>Update 4 中的新增功能
@@ -49,7 +49,7 @@ Update 4 中进行了以下重大改进和 bug 修复。
 
     所有还原现在都是基于热度地图的还原。 有关如何查询和取消基于热度地图的还原和解冻作业的详细信息，请转到 [Windows PowerShell for StorSimple cmdlet 参考](https://technet.microsoft.com/library/dn688168.aspx)。
 
-* **StorSimple 诊断工具** - Update 4 发布了一款 StorSimple 诊断工具，以便可以轻松诊断和排查与系统、网络、性能和硬件组件运行状况相关的问题。 此工具通过 Windows PowerShell for StorSimple 运行。 
+* **StorSimple 诊断工具** - Update 4 发布了一款 StorSimple 诊断工具，以便可以轻松诊断和排查与系统、网络、性能和硬件组件运行状况相关的问题。 此工具通过 Windows PowerShell for StorSimple 运行。 有关详细信息，请转到[使用 StorSimple 诊断工具进行故障排除](storsimple-8000-diagnostics.md)。
 
 * **基于 UI 的 StorSimple 迁移工具** - 在此版本之前，从 5000-7000 系列迁移数据要求用户使用 Azure PowerShell 接口执行一部分迁移工作流。 在此版本中，则提供了易于使用的基于 UI 的 StorSimple 迁移工具，使执行相同的迁移工作流变得更加便利。 此工具还支持合并恢复存储桶。 
 
@@ -59,7 +59,7 @@ Update 4 中进行了以下重大改进和 bug 修复。
 
 * **更新更改** - 此版本修复了与更新失败相关的 bug。
 
-* **磁盘故障警报** - 此版本中添加了一种新警报，用于警告用户即将发生的磁盘故障。 如果你遇到此警报，请联系 Microsoft 支持，让其发送更换磁盘。
+* **磁盘故障警报** - 此版本中添加了一种新警报，用于警告用户即将发生的磁盘故障。 如果你遇到此警报，请联系 Microsoft 支持，让其发送更换磁盘。 有关详细信息，请转到 [StorSimple 设备上的硬件警报](storsimple-manage-alerts.md#hardware-alerts)。
 
 * **控制器替换更改** - 此版本中添加了一个 cmdlet，它允许用户查询控制器替换过程的状态。 有关详细信息，请转到[可查询控制器替换状态的 cmdlet](https://technet.microsoft.com/library/dn688168.aspx)。
 

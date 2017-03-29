@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: ramankum
 translationtype: Human Translation
-ms.sourcegitcommit: 3a353bc874c1827f8a0fc85352894ad96cff16b5
-ms.openlocfilehash: c9e43df37784999036c6cf250f27a808f79ebe2f
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 26e78f559fa9a82183a26034580148e39331a214
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -59,7 +59,7 @@ Azure VM 支持附加多个高级存储磁盘，使应用程序可以具有每�
 
 **高级存储帐户**：若要开始使用高级存储，请为非托管磁盘创建一个高级存储帐户。 如果你想要使用 [Azure 门户](https://portal.azure.com)，可以通过将“高级”性能层和“本地冗余存储(LRS)”指定为复制选项来创建高级存储帐户。 还可以通过指定“Premium_LRS”作为类型来创建高级存储帐户，为此，可以使用：[存储 REST API](/rest/api/storageservices/fileservices/Azure-Storage-Services-REST-API-Reference) 版本 2014-02-14 或更高版本；[服务管理 REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) 版本 2014-10-01 或更高版本（经典部署）；[Azure Storage Resource Provider REST API Reference](/rest/api/storagerp)（Azure 存储资源提供程序 REST API 参考）（Resource Manager 部署）；[Azure PowerShell](../powershell-install-configure.md) 版本 0.8.10 或更高版本。 在以下有关[高级存储的可缩放性和性能目标](#premium-storage-scalability-and-performance-targets.md)的部分中了解高级存储帐户限制。
 
-**高级本地冗余存储**：高级存储帐户仅支持使用本地冗余存储 (LRS) 作为复制选项；这意味着它在单个区域中保留三个数据副本。 有关使用高级存储时的异地复制注意事项，请参阅本文中的[快照与复制 Blob](#snapshots-and-copy-blob) 部分。
+**高级本地冗余存储**：高级存储帐户仅支持使用本地冗余存储 (LRS) 作为复制选项；这意味着它在单个区域中保留三个数据副本。 对于区域性灾难恢复，必须使用 [Azure 备份服务](../backup/backup-introduction-to-azure-backup.md)和作为备份保管库的 GRS 存储帐户来备份不同区域中的 VM 磁盘。 
 
 Azure 使用存储帐户作为未托管磁盘的容器。 如果使用未托管磁盘创建 Azure DS、DSv2、GS 或 Fs VM 并选择高级存储帐户，操作系统和数据磁盘会存储在该存储帐户中。
 
@@ -140,9 +140,9 @@ Azure 使用存储帐户作为未托管磁盘的容器。 如果使用未托管�
 
 | 每个 P10 磁盘的吞吐量上限 | 从磁盘的非缓存读取 | 对磁盘的非缓存写入 |
 | --- | --- | --- |
-| 每秒&100; MB | 每秒&100; MB | 0 |
-| 每秒&100; MB | 0 | 每秒&100; MB |
-| 每秒&100; MB | 每秒&60; MB | 每秒&40; MB |
+| 每秒 100 MB | 每秒 100 MB | 0 |
+| 每秒 100 MB | 0 | 每秒 100 MB |
+| 每秒 100 MB | 每秒 60 MB | 每秒 40 MB |
 
 * **缓存命中数**：缓存命中数不受磁盘已分配 IOPS 或吞吐量的限制。 例如，在高级存储支持的 VM 上使用具有 ReadOnly 缓存设置的数据磁盘时，缓存提供的读取数不受磁盘的 IOPS 和吞吐量上限的约束。 因此，如果工作负荷以读取为主，可以从磁盘获得很高的吞吐量。 请注意，缓存根据 VM 大小在 VM 级别受到不同 IOPS 和吞吐量的限制。 DS 系列 VM 大约有 4000 IOPS，缓存与本地 SSD IO 是每个核心 33 MB/秒。 GS 系列 VM 的限制为 5000 IOPS，而缓存与本地 SSD IO 为每核心 50 MB/秒。 
 
@@ -170,7 +170,7 @@ Azure 使用存储帐户作为未托管磁盘的容器。 如果使用未托管�
 
 ## <a name="snapshots-and-copy-blob"></a>快照和复制 blob
 
-对于存储服务而言，VHD 文件是页 blob。 可以创建页 blob 的快照，然后将其复制到其他位置，如不同的存储帐户。
+对于存储服务而言，VHD 文件是页 blob。 可以拍摄页 blob 的快照，然后将其复制到其他位置，例如其他存储帐户。
 
 ### <a name="unmanaged-disks"></a>非托管磁盘
 
@@ -194,7 +194,7 @@ Azure 使用存储帐户作为未托管磁盘的容器。 如果使用未托管�
 
 托管磁盘的快照是托管磁盘的只读副本，它作为标准托管磁盘进行存储。 托管磁盘当前不支持[增量快照](storage-incremental-snapshots.md)，但以后将支持。 若要了解如何创建托管磁盘的快照，请参阅[在 Windows 中使用托管快照创建作为 Azure 托管磁盘存储的 VHD 的副本](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)或[在 Linux 中使用托管快照创建作为 Azure 托管磁盘存储的 VHD 的副本](../virtual-machines/linux/virtual-machines-linux-snapshot-copy-managed-disk.md)
 
-如果托管磁盘已附加到 VM，则磁盘上将不允许某些 API 操作。 例如，在磁盘附加到 VM 上时，你无法通过生成共享访问签名 (SAS) 来执行复制操作。 而是，请先创建磁盘快照，然后再对该快照执行复制操作。 或者，可以分离磁盘，然后生成共享访问签名 (SAS)以执行复制操作。
+如果托管磁盘已附加到 VM，则磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 时，无法通过生成共享访问签名 (SAS) 来执行复制操作。 请先创建磁盘快照，然后对该快照执行复制操作。 或者，可以分离磁盘，然后生成共享访问签名 (SAS)以执行复制操作。
 
 
 ## <a name="using-linux-vms-with-premium-storage"></a>在高级存储中使用 Linux VM
@@ -261,9 +261,9 @@ sudo yum install microsoft-hyper-v
 
 ## <a name="azure-backup-service-support"></a>Azure 备份服务支持 
 
-可以使用 Azure 备份来备份具有非托管磁盘的虚拟机。 [更多详细信息](../backup/backup-azure-vms-first-look-arm.md)。
+对于区域性灾难恢复，必须使用 [Azure 备份服务](../backup/backup-introduction-to-azure-backup.md)和作为备份保管库的 GRS 存储帐户来备份不同区域中的 VM 磁盘。
 
-还可将 Azure 备份服务与托管磁盘配合使用，以创建具有基于时间备份的备份作业、轻松 VM 还原和备份保留策略。 可以在[对具有托管磁盘的 VM 使用 Azure 备份服务](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)中阅读详细内容。 
+将 Azure 备份服务与非托管和托管磁盘配合使用，以创建具有基于时间的备份、轻松 VM 还原和备份保留策略的备份作业。 有关详细信息，请阅读[对具有托管磁盘的 VM 使用 Azure 备份服务](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)和[对具有非托管磁盘的 VM 使用 Azure 备份服务](../backup/backup-azure-vms-first-look-arm.md) 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 高级存储的详细信息，请参阅以下文章。
@@ -278,3 +278,4 @@ sudo yum install microsoft-hyper-v
 ### <a name="blog-posts"></a>博客文章
 * [Azure Premium Storage Generally Available](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)（正式推出 Azure 高级存储）
 * [Announcing the GS-Series: Adding Premium Storage Support to the Largest VMs in the Public Cloud](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)（GS 系列公告：将高级存储支持添加到公有云中的最大 VM）
+

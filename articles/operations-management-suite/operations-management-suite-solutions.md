@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 03/01/2017
 ms.author: bwren
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: d6bf108a4d03855171d2b9c5552c57f8ee6f1f9b
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 2443dd73fdf441721bd6f6f340da515d9f5a22a2
+ms.lasthandoff: 03/22/2017
 
 
 ---
-# <a name="management-solutions-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) 中的管理解决方案（预览版）
+# <a name="working-with-management-solutions-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS) 中使用管理解决方案（预览版）
 > [!NOTE]
 > 这是在 OMS 中管理解决方案的初步文档，当前仅提供预览版。    
 > 
@@ -112,10 +114,5 @@ ms.openlocfilehash: d6bf108a4d03855171d2b9c5552c57f8ee6f1f9b
 ## <a name="next-steps"></a>后续步骤
 * 在 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates)中搜索不同 Resource Manager 模板的示例。
 * 创建自己的[管理解决方案](operations-management-suite-solutions-creating.md)。
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

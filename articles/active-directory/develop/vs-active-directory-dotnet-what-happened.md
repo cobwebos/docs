@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 03/01/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
-ms.openlocfilehash: 298efeeedb6766952b16cc18f59d7e11a4dc440a
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 72cd94ba16cb4fe234c898b093c7de6a08f71239
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -122,7 +123,7 @@ NuGet 包引用已删除，文件已删除和备份。 根据你的项目的状�
 添加了两个支持令牌缓存的文件：**Models\ADALTokenCache.cs** 和 **Models\ApplicationDbContext.cs**。  额外添加了一个控制器和视图，以演示如何使用 Azure 图形 API 访问用户配置文件信息。  这些文件是 **Controllers\UserProfileController.cs** 和 **Views\UserProfile\Index.cshtml**。
 
 ### <a name="additional-startup-code-was-added-to-your-project"></a>其他启动代码已添加到你的项目
-在 **startup.auth.cs** 文件中，新的 **OpenIdConnectAuthenticationNotifications** 对象已添加到 **OpenIdConnectAuthenticationOptions** 的 **Notifications** 成员中。  这是为了能够接收 OAuth 代码，并使用该对象来交换访问令牌。
+在 **startup.auth.cs** 文件中，新的 **OpenIdConnectAuthenticationNotifications** 对象已添加到 **OpenIdConnectAuthenticationOptions** 的 **Notifications** 成员中。  这是为了能够接收 OAuth 代码，并用其交换访问令牌。
 
 ### <a name="additional-changes-were-made-to-your-appconfig-or-webconfig"></a>对 app.config 或 web.config 做出的其他更改
 添加了以下附加配置条目。
@@ -155,11 +156,7 @@ NuGet 包引用已删除，文件已删除和备份。 根据你的项目的状�
 ### <a name="your-azure-active-directory-app-was-updated"></a>你的 Azure Active Directory 应用已更新
 你的 Azure Active Directory 应用已更新为包括*读取目录数据*权限，并已创建一个附加密钥，该密钥随后已用作 *ida:ClientSecret* 文件中的 **web.config**。
 
-[详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
+## <a name="next-steps"></a>后续步骤
+- [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 
 

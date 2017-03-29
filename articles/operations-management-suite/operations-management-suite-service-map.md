@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: d616a8574d2087be66bc10dfdf3bf6f5a14c11fd
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: aca6cd69647406d0140d8b0d0cba8e4690b04ae1
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -271,7 +271,7 @@ Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct Com
 
 
 ## <a name="rest-api"></a>REST API
-服务映射中所有服务器、进程和依赖项数据可通过[服务映射 REST API](https://docs.microsoft.com/en-us/rest/api/servicemap/) 获取。
+服务映射中所有服务器、进程和依赖项数据可通过[服务映射 REST API](https://docs.microsoft.com/rest/api/servicemap/) 获取。
 
 
 ## <a name="diagnostic-and-usage-data"></a>诊断和使用情况数据
@@ -282,6 +282,10 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 ## <a name="next-steps"></a>后续步骤
 - 了解有关 Log Analytics 中的[日志搜索](../log-analytics/log-analytics-log-searches.md)的详细信息，以检索服务映射收集的数据。
+
+
+## <a name="troubleshooting"></a>故障排除
+- 请参阅[“配置服务映射”文档的“疑难解答”部分](operations-management-suite-service-map-configure.md#troubleshooting)。
 
 
 ## <a name="feedback"></a>反馈

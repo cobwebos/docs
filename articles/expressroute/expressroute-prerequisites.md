@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 1/6/2017
+ms.date: 03/22/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
-ms.openlocfilehash: 304acc7d2bfdefffde700ecd469b6335b08b85e6
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: a56749a5ac1098db3970140a76b71c77c1f74c07
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -31,11 +31,12 @@ ms.lasthandoff: 02/22/2017
 * 激活 Office 365 订阅（如果要使用 Office 365 服务）。 有关详细信息，请参阅本文中的 [Office 365 的具体要求](#office-365-specific-requirements)部分。
 
 ## <a name="connectivity-provider"></a>连接服务提供商
+
 * 可使用 [ExpressRoute 连接合作伙伴](expressroute-locations.md#partners) 连接到 Microsoft 云。 有 [三种方法](expressroute-introduction.md)可以在本地网络与 Microsoft 之间建立连接。 
-* 即使你的提供商不是 ExpressRoute 连接合作伙伴，你也可以通过 [云交换提供商](expressroute-locations.md#nonpartners)连接到 Microsoft 云。
+* 即使你的提供商不是 ExpressRoute 连接合作伙伴，你也可以通过 [云交换提供商](expressroute-locations.md#c1partners)连接到 Microsoft 云。
 
 ## <a name="network-requirements"></a>网络要求
-* **冗余连接**：对于你和提供商之间的物理连接，没有冗余方面的要求。 即使你只有 [一个到云交换的物理连接](expressroute-faqs.md#onep2plink)，Microsoft 也会要求在 Microsoft 的路由器和对等互连路由器之间建立冗余性的 BGP 会话。 
+* **冗余连接**：对于你和提供商之间的物理连接，没有冗余方面的要求。 即使你只有 [一个到云交换的物理连接](expressroute-faqs.md#onep2plink)，Microsoft 也会要求在 Microsoft 的路由器和对等互连路由器之间建立冗余性的 BGP 会话。
 * **路由**：你或你的提供商需设置和管理针对 [路由域](expressroute-circuit-peerings.md)的 BGP 会话，具体取决于连接到 Microsoft 云的方式。 某些以太网连接服务提供商或云交换服务提供商可能会以增值服务的形式提供 BGP 管理。
 * **NAT**：Microsoft 只能通过 Microsoft 对等互连方式接受公共 IP 地址。 如果使用的是本地网络中的专用 IP 地址，你或你的提供商需 [使用 NAT](expressroute-nat.md)将专用 IP 地址转换为公共 IP 地址。
 * **QoS**：Skype for Business 的各种服务（例如语音、视频、文本）所要求的 QoS 处理方式各有差异。 你和你的提供商应遵循 [QoS 要求](expressroute-qos.md)。
@@ -65,5 +66,4 @@ ms.lasthandoff: 02/22/2017
   * [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)
   * [配置路由](expressroute-howto-routing-classic.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)
-
 

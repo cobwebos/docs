@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 4094759caba015b9d609b616d5099a6e109bf1d4
-ms.openlocfilehash: 6ac0c3b2893b96f93bf2aeadd61b263654957477
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 43ba592b6294a9a75a20dacd81953a77c241b89f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -34,20 +34,20 @@ ms.lasthandoff: 02/17/2017
 * 下载[应用框架](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)或下载[已完成的示例](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip)。
 * 你还需要一个用于注册应用的 Azure AD 租户。 如果你还没有 Azure AD 租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
-准备好后，请按照以下&4; 个部分中的步骤操作。
+准备好后，请按照以下 4 个部分中的步骤操作。
 
 ## <a name="step-1-register-the-new-app-with-azure-ad"></a>步骤 1：向 Azure AD 注册新的应用
-若要设置应用对用户进行身份验证，请首先通过执行以下操作在你的租户中对其进行注册：
+若要设置应用对用户进行身份验证，请先执行以下操作，在租户中注册用户：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶部栏上，单击你的帐户名称。 在“目录”列表下选择要注册应用的 Active Directory 租户。
+2. 在顶部栏中，单击你的帐户名。 在“目录”列表下选择要注册应用的 Active Directory 租户。
 3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
 4. 单击“应用注册”，然后选择“添加”。
 5. 根据提示创建一个新 **Web 应用程序和/或 WebAPI**。
   * **名称** - 向用户描述应用。
   * **登录 URL** 是应用的基本 URL。 框架的默认 URL 是 https://localhost:44320/。
-  * **应用 ID URI** 是应用的唯一标识符。 命名约定为 `https://<tenant-domain>/<app-name>`（例如，`https://contoso.onmicrosoft.com/my-first-aad-app`）。
-6. 完成注册后，Azure AD 将向应用分配唯一应用程序 ID。 复制应用页面中的值，以便在接下来的部分中使用。
+6. 完成注册后，Azure AD 将为应用分配唯一的应用程序 ID。 请复制应用页中的值，以便在后续部分中使用。
+7. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 **应用 ID URI** 是应用的唯一标识符。 命名约定为 `https://<tenant-domain>/<app-name>`（例如 `https://contoso.onmicrosoft.com/my-first-aad-app`）。
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>步骤 2：将应用设置为使用 OWIN 身份验证管道
 在此步骤中，将 OWIN 中间件配置为使用 OpenID Connect 身份验证协议。 使用 OWIN 发出登录和注销请求、管理用户会话以及获取用户信息等。

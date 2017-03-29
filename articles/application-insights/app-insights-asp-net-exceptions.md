@@ -1,22 +1,22 @@
 ---
-title: "使用 Azure Application Insights 诊断 Web 应用中的故障和异常 | Microsoft Docs | Microsoft Docs"
+title: "使用 Azure Application Insights 诊断 Web 应用中的故障和异常 | Microsoft Docs"
 description: "从 ASP.NET 应用中捕获异常以及请求遥测。"
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: c4a20fe310d9a70bb3a954bd936daf6f3d432db9
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 2f046ff687985a5c4f83ca7236ce832b4c81ea6e
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -50,31 +50,25 @@ ms.lasthandoff: 02/02/2017
 *没有显示异常？请参阅[捕获异常](#exceptions)。*
 
 单击异常报告，显示器堆栈跟踪。
+单击堆栈跟踪中的行引用，打开相关代码文件。  
 
-![单击异常。](./media/app-insights-asp-net-exceptions/35.png)
+请注意，CodeLens 将在代码中显示有关异常的数据：
 
-单击堆栈跟踪中的行引用，打开相关文件。  
+![有关异常的 CodeLens 通知。](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>使用 Azure 门户诊断故障
 在你的应用的 Application Insights 概述中，故障磁贴显示了异常和失败的 HTTP 请求图表，以及导致最常见故障的请求 URL 的列表。
 
 ![依次选择“设置”、“故障”](./media/app-insights-asp-net-exceptions/012-start.png)
 
-单击列表中失败的请求类型之一，访问该故障的单独事件。 在此处，单击与之关联的异常或任何跟踪数据：
+单击浏览列表中某个失败的异常类型，以获取该异常的单次出现情况（可在此处查看详细信息和堆栈跟踪）：
 
 ![选择失败请求的实例，然后在异常详细信息下，访问异常实例。](./media/app-insights-asp-net-exceptions/030-req-drill.png)
 
-**或者，**可以从在“故障”边栏选项卡下进一步查找的异常列表开始。 保持单击，直到访问单独的异常。
-
-![深入了解](./media/app-insights-asp-net-exceptions/040-exception-drill.png)
+**或者，**可先使用请求列表并查找与其相关的异常。
 
 *没有显示异常？请参阅[捕获异常](#exceptions)。*
 
-可在此处查看每个异常的堆栈跟踪和详细属性，并找到相关的日志跟踪或其他事件。
-
-![深入了解](./media/app-insights-asp-net-exceptions/050-exception-properties.png)
-
-[详细了解诊断搜索](app-insights-diagnostic-search.md)。
 
 ## <a name="custom-tracing-and-log-data"></a>自定义跟踪和日志数据
 若要获取特定于你的应用的诊断数据，可在插入代码后发送你自己的遥测数据。 该数据与请求、页面视图和其他自动收集的数据一起显示在诊断搜索中。
@@ -437,6 +431,10 @@ VB
 .NET Framework 通过对间隔中的异常数进行计数并除以间隔长度计算异常率。
 
 请注意，它与 Application Insights 通过计数 TrackException 报告计算得出的“异常”计数不同。 采样间隔不同，SDK 不会为所有经处理和未经处理的异常发送 TrackException 报告。
+
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="next-steps"></a>后续步骤
 * [监视 REST、SQL 以及对其他依赖项的调用](app-insights-asp-net-dependencies.md)

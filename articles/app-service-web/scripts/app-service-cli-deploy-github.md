@@ -12,33 +12,23 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: ab4be9d9a03001789bed90e58d62fe1891608823
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 8d9e90cc43df74968c7b9dc30d268f3e6228adcc
+ms.lasthandoff: 03/21/2017
 
 ---
 
 
 # <a name="create-a-web-app-with-deployment-from-github"></a>从 GitHub 使用部署创建 Web 应用
 
-此示例脚本使用 Azure CLI 2.0 执行以下操作：
+此示例脚本使用其相关资源，在应用服务中创建 Web 应用，然后从公共 GitHub 存储库部署 Web 应用代码（不进行连续部署）。 有关不进行连续部署的 GitHub 部署，请参阅[从 GitHub 使用连续部署创建 Web 应用](app-service-cli-continuous-deployment-github.md)。
 
-* 在欧洲西部 Azure 区域的 Azure 应用服务中创建 Web 应用。
-* 从 GitHub 部署 Web 应用代码。
-* 在浏览器中显示已部署的 Azure Web 应用。
+必要时，请使用 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中的说明安装 Azure CLI，然后运行 `az login` 创建与 Azure 的连接。 此外，还需要指向含 web 应用代码的 GitHub 存储库的链接。
 
-## <a name="prerequisites"></a>先决条件
-
-* 运行 `az login` 登录到 Azure。
-* 将 Web 应用代码放入 GitHub 存储库中。
-
-> [!NOTE]
-> 如果使用的是你未拥有的公共 GitHub 存储库，应用服务将从该 GitHub 存储库部署代码，但无法设置 SSH 密钥和连续部署所需的 webhook。
->
->
+此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../../virtual-machines/virtual-machines-windows-cli-options.md)。
 
 ## <a name="create-app-sample"></a>创建应用示例
 

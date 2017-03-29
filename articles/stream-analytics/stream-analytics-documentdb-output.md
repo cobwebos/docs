@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 20880eccbf28cabfb594bb8129cb0a5a3beeb224
-ms.openlocfilehash: e62e4f6c208f5506108b2ef5f6c1aabe43f086a2
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ed5589600f536b92312317e97a8fb375869e35ef
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,18 +35,15 @@ ms.openlocfilehash: e62e4f6c208f5506108b2ef5f6c1aabe43f086a2
 ## <a name="tune-consistency-availability-and-latency"></a>调整一致性、可用性和延迟
 为了满足应用程序的要求，DocumentDB 允许你微调数据库和集合并在一致性、可用性和延迟之间进行权衡。 根据你的方案针对读写延迟需要什么级别的读取一致性，你可以在数据库帐户上选择一致性级别。 另外，默认情况下，DocumentDB 对集合的每个 CRUD 操作启用了同步索引。 这是另一个有用选项，可以控制 DocumentDB 中的读/写性能。 有关本主题的更多信息，请参阅[更改数据库和查询的一致性级别](../documentdb/documentdb-consistency-levels.md)文章。
 
-## <a name="choose-a-performance-level"></a>选择性能级别
-可以以 3 种不同性能级别（S1、S2 或 S3）创建 DocumentDB 集合，这可确定可用于该集合的 CRUD 的吞吐量。 此外，性能会受到集合的索引/一致性级别的影响。 请参考[此文](../documentdb/documentdb-performance-levels.md)，详细了解这些性能级别。
-
 ## <a name="upserts-from-stream-analytics"></a>从流分析进行 Upsert 操作
 由于流分析与 DocumentDB 集成，因此可以在 DocumentDB 集合中基于给定的文档 ID 列插入或更新记录。 这也称为 *Upsert*。
 
 流分析利用了乐观 Upsert 方法，即仅当由于文档 ID 冲突而插入失败时才进行更新。 此更新由流分析以修补程序的形式执行，因此它使得对文档的部分更新（即添加新属性或替换现有属性）以增量方式执行。 请注意，JSON 文档中数组属性的值的更改会导致整个数组被覆盖，即不会合并数组。
 
 ## <a name="data-partitioning-in-documentdb"></a>DocumentDB 中的数据分区
-现在支持 DocumentDB 分区集合，建议用它进行数据分区。 
+建议使用 DocumentDB [分区集合](../documentdb/documentdb-partition-data.md#single-partition-and-partitioned-collections)进行数据分区。 
 
-对于单一 DocumentDB 集合，流分析仍允许用户根据应用程序的查询模式和性能需求对数据进行分区。 每个集合最多可包含 10GB 的数据（最大值），并且当前无法向上扩展（或溢出）集合。 若要向外扩展，流分析允许你写入到具有给定前缀的多个集合（请参见下面的用法详细信息）。 流分析根据用户提供的 PartitionKey 列，使用一致的[哈希分区解析程序](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)对其输出记录进行分区。 流式处理作业开始时具有给定前缀的集合数将用作输出分区计数，作业将并行写入到这些集合（DocumentDB 集合数 = 输出分区数）。 对于延迟索引仅执行插入的单个 S3 集合，可以预期大约 0.4 MB/秒写吞吐量。 使用多个集合，可以允许你实现更高的吞吐量和更大的容量。
+对于单一 DocumentDB 集合，流分析仍允许用户根据应用程序的查询模式和性能需求对数据进行分区。 每个集合最多可包含 10GB 的数据（最大值），并且当前无法向上扩展（或溢出）集合。 若要向外扩展，流分析允许你写入到具有给定前缀的多个集合（请参见下面的用法详细信息）。 流分析根据用户提供的 PartitionKey 列，使用一致的[哈希分区解析程序](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)对其输出记录进行分区。 流式处理作业开始时具有给定前缀的集合数将用作输出分区计数，作业将并行写入到这些集合（DocumentDB 集合数 = 输出分区数）。 对于延迟索引仅执行插入的单个集合，可以预期大约 0.4 MB/秒的写入吞吐量。 使用多个集合，可以允许你实现更高的吞吐量和更大的容量。
 
 如果你想要在将来增加分区计数，则可能需要停止作业，将现有集合中的数据重新划分为新的集合，然后重新启动流分析作业。 有关使用 PartitionResolver 和重新分区的更多详细信息以及示例代码将在后续帖子中提供。 [DocumentDB 中的分区和缩放](../documentdb/documentdb-partition-data.md)一文中也提供了有关此内容的详细信息。
 
@@ -70,9 +68,4 @@ ms.openlocfilehash: e62e4f6c208f5506108b2ef5f6c1aabe43f086a2
   2\) MyCollection{partition} – 此类集合必须存在 –“MyCollection0”、“MyCollection1”、“MyCollection2”等。  
 * **分区键** - 可选。 仅当用户在集合名称模式中使用 {parition} 令牌时，才需要此项。 输出事件中的字段的名称，该字段用于指定跨集合分区输出的键。 对于单个集合输出，可使用任何任意输出列（例如 PartitionId）。  
 * **文档 ID** - 可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。  
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

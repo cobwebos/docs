@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 7/3/2017
 ms.author: giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 6b5b357c996f5c4642e61b09c5a7e5e0ec6a93c7
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: fdb80e3379adfa9d65d6e5891cb701cee86eb1b9
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -42,8 +42,8 @@ SQL 数据库审核可让你：
 
 有两种**审核方法**：
 
-* **Blob 审核** - 将日志写入 Azure Blob 存储。 这是一种较新的审核方法，可提供**更高的性能**，支持**更高粒度的对象级审核**，且**更具成本效益**。
-* **表审核** - 将日志写入 Azure 表存储。
+* **Blob 审核** - 将日志写入 Azure Blob 存储。 这是一种较新的审核方法，可提供**更高的性能**，支持**更高粒度的对象级审核**，且**更具成本效益**。 Blob 审核将取代表审核。
+* **表审核（已弃用）**- 将日志写入 Azure 表存储。
 
 > [!IMPORTANT]
 > 引入新的 Blob 审核为数据库继承服务器审核策略的方式带来了重要更改。 有关其他详细信息，请参阅 [Blob/表在服务器审核策略继承中的差异](#subheading-8)部分。
@@ -79,7 +79,7 @@ SQL 数据库审核可让你：
 7. 配置审核设置后，可以打开新的**威胁检测**（预览版）功能，并配置电子邮件用于接收安全警报。 使用威胁检测可以接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关更多详细信息，请参阅[威胁检测入门](sql-database-threat-detection-get-started.md)。
 8. 单击“保存” 。
 
-### <a id="subheading-2-2">表审核</a>
+### <a id="subheading-2-2">表审核</a>（已弃用）
 
 > 在设置**表审核**之前，请检查使用的是否为[“下层客户端”](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)。 此外，如果有严格的防火墙设置，请注意，在启用表审核时[会更改数据库的 IP 终结点](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)。
 
@@ -119,7 +119,7 @@ SQL 数据库审核可让你：
     > <br><br>
     > 否则，**建议仅启用服务器级 Blob 审核**，并将所有数据库的数据库级审核保留为禁用。
 
-###<a name="atable-auditinga"></a><a>表审核</a>
+###<a name="atable-auditinga-deprecated"></a><a>表审核</a>（已弃用）
 
 如果**启用了服务器级表审核**，则仅当在数据库边栏选项卡中选中了“从服务器继承设置”复选框（默认情况下，将对所有现有数据库和新创建的数据库进行此检查）时，它才应用于数据库。
 
@@ -169,7 +169,7 @@ Blob 审核日志以 Blob 文件集合的形式保存在名为“**sqldbauditlog
 
 3. 我们已创建一个**示例应用程序**，它在 Azure 中运行，并利用 OMS 公共 API 将 SQL 审核日志推送到 OMS，以便于通过 OMS 仪表板使用（[此处提供详细信息](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration)）。
 
-### <a id="subheading-3-2">表审核</a>
+### <a id="subheading-3-2">表审核</a>（已弃用）
 表审核日志以 Azure 存储表集合的形式保存，具有 **SQLDBAuditLogs** 前缀。
 
 有关表审核日志格式的更多详细信息，请参阅 [Table Audit Log Format Reference（文档下载）](http://go.microsoft.com/fwlink/?LinkId=506733)（表审核日志格式参考）。
@@ -245,7 +245,7 @@ Blob 审核日志以 Blob 文件集合的形式保存在名为“**sqldbauditlog
    * [获取数据库 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt695938.aspx)
    * [获取服务器 Blob 审核策略](https://msdn.microsoft.com/library/azure/mt771860.aspx)
    * [获取服务器 Blob 审核操作结果](https://msdn.microsoft.com/library/azure/mt771862.aspx)
-3. **REST API - 表审核**
+3. **REST API - 表审核（已弃用）**
 
    * [创建或更新数据库审核策略](https://msdn.microsoft.com/library/azure/mt604471.aspx)
    * [创建或更新服务器审核策略](https://msdn.microsoft.com/library/azure/mt604383.aspx)

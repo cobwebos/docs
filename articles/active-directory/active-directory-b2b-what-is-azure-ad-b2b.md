@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 03/18/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 1f6ce516629fd32b5efabce8682b45a3e575eaab
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4bfd76a00ba694096ef0b045b14beb757ba0809f
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -89,6 +89,12 @@ B2B 协作用户通常是通过邀请与兑换过程添加的。 工作原理如
 * 为 B2B 协作提供 PowerShell 支持。
 
 * 提供审核和报告功能。
+
+## <a name="help-us-shape-your-features"></a>帮助塑造你的功能
+ 
+我们将在改进 B2B 协作的过程中不断听取你的反馈。 诚邀你在 [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)加入讨论、分享用户方案和最佳实践并分享 Azure AD B2B 协作中让你钟意的方面
+ 
+还力邀你在 [B2B 协作意见](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas)网站提交意见并为未来的功能投票。
 
 ## <a name="next-steps"></a>后续步骤
 

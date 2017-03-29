@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 52fe8e3ce0c9c94c918818784fd735b5a6486ed8
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: a75863878a97c1202e9b9946b0bff19261952c21
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -55,7 +56,7 @@ ms.openlocfilehash: 52fe8e3ce0c9c94c918818784fd735b5a6486ed8
 本主题稍后将更详细地介绍模板的各个节。
 
 ## <a name="expressions-and-functions"></a>表达式和函数
-模板的基本语法为 JSON。 但是，表达式和函数将扩展模板中可用的 JSON。 使用表达式，可以创建不是严格文本值的值。 表达式括在方括号（`[` 和 `]`）中，并在部署模板时求值。 表达式可以出现在 JSON 字符串值中的任何位置，并始终返回另一个 JSON 值。 如果需要使用以方括号 `[` 开头的文本字符串，则必须使用两个方括号 (`[[`)。
+模板的基本语法为 JSON。 但是，表达式和函数扩展了模板中可用的 JSON 值。  表达式在 JSON 字符串文本中编写，其中第一个和最后一个字符分别是 `[` 和 `]` 括号。 部署模板时会计算表达式的值。   尽管编写为字符串文本，但表达式的计算结果可以是不同的 JSON 类型，例如数组或整数，具体取决于实际的表达式。  请注意，若要使用一个大括号 `[` 在开头括住文本字符串但不将其解释为表达式，请额外添加一个大括号，使字符串以 `[[` 开头。
 
 通常，你会将表达式与函数一起使用，以执行用于配置部署的操作。 如同在 JavaScript 中一样，函数调用的格式为 **functionName(arg1,arg2,arg3)**。 使用点和 [index] 运算符引用属性。
 
@@ -431,9 +432,4 @@ resources 节包含要部署的资源数组。 在每个资源内，还可以定
 * 你可能需要使用不同资源组中的资源。 使用跨多个资源组共享的存储帐户或虚拟网络时，此方案很常见。 有关详细信息，请参阅 [resourceId 函数](resource-group-template-functions.md#resourceid)。
 
 [deployment2cmdlet]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/new-azurermresourcegroupdeployment
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

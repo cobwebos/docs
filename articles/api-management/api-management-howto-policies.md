@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 3d78af41bbe13bcec9336452110a857d114ad006
-ms.lasthandoff: 12/20/2016
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 7c1f235343074ec11c635097f2b094a10f3fe781
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -119,7 +119,7 @@ ms.lasthandoff: 12/20/2016
 3. API 范围
 4. 操作范围
 
-范围内的语句按 `base` 元素（如果存在）的位置计算。
+范围内的语句按 `base` 元素（如果存在）的位置计算。 全局策略没有父策略，因此在其中使用 `<base>` 元素无效。
 
 例如，如果在全局级别有一个策略并且为 API 配置了一个策略，则只要使用该特定 API，这两种策略都将被应用。 API 管理允许通过基础元素实现组合策略声明的确定性排序。 
 
@@ -133,11 +133,9 @@ ms.lasthandoff: 12/20/2016
 </policies>
 ```
 
-在上述示例策略定义中，`cross-domain` 语句将在执行任何更高版本的策略前执行，之后是 `find-and-replace` 策略。
+在上述示例策略定义中，`cross-domain` 语句将在执行任何更高版本的策略前执行，之后是 `find-and-replace` 策略。 
 
-如果同一策略在策略语句中出现两次，则会应用最近计算的策略。 可以使用此功能重写在层级较高的范围定义的策略。 若要在策略编辑器中查看当前范围的策略，请单击“重新计算所选范围的有效策略”。
-
-请注意，全局策略没有父策略，因此在其中使用 `<base>` 元素无效。 
+若要在策略编辑器中查看当前范围的策略，请单击“重新计算所选范围的有效策略”。
 
 ## <a name="next-steps"></a>后续步骤
 观看以下有关策略表达式的视频。

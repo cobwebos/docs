@@ -13,19 +13,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2016
+ms.date: 03/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 6b80fa78fea505cd22bae2925ce1affbc1e48ab9
-ms.openlocfilehash: cccbddd6993e3011e3e76bc84ffc212f3f8b1d55
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 2aaf9bfaade060817fa7e42299ad20a2e8f78eaf
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>将 Windows VM 移到其他 Azure 订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动 Windows VM。 如果最初在个人订阅中创建了 VM，现在想要将其移到公司的订阅以继续工作，则在订阅之间移动 VM 可能很方便。
 
-> [!NOTE]
-> 在移动过程中将创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。 
+> [!IMPORTANT]
+>不可在此时移动托管磁盘。 
+>
+>在移动过程中将创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。 
 > 
 > 
 
@@ -62,10 +65,5 @@ ms.openlocfilehash: cccbddd6993e3011e3e76bc84ffc212f3f8b1d55
 
 ## <a name="next-steps"></a>后续步骤
 可以在资源组和订阅之间移动许多不同类型的资源。 有关详细信息，请参阅[将资源移到新资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。    
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

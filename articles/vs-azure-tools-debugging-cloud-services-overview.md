@@ -1,5 +1,5 @@
 ---
-title: "调试 Azure 云服务 | Microsoft Docs"
+title: "调试 Azure 云服务的选项 | Microsoft Docs"
 description: "调试 Azure 云服务"
 services: visual-studio-online
 documentationcenter: n/a
@@ -12,25 +12,29 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/11/2016
+ms.date: 03/18/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f10ede0a6c30c5a8ae593a5dba0f3db77134d50b
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: e79aa1db6c89ad1e382c7a70017f868fe186aa74
+ms.lasthandoff: 03/22/2017
 
 
 ---
-# <a name="debugging-cloud-services"></a>调试云服务
-可以使用 Azure Tools for Microsoft Visual Studio 和 Azure SDK，以不同的方法调试 Azure 应用程序：
+# <a name="learn-the-various-ways-to-debug-an-azure-cloud-service"></a>了解调试 Azure 云服务的各种方法
+本文提供了调试 Azure 云服务的各种方法的链接。 
 
-* 在开发 Azure 应用程序时，可以从 Visual Studio 对其进行调试，就像调试任何 Visual C# 或 Visual Basic 应用程序一样。 有关详细信息，请参阅 [Debug your cloud service on your local computer](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-your-cloud-service-on-your-local-computer)（在本地计算机上调试云服务）。
-* 可使用 Azure 诊断以记录在角色内运行的代码的详细信息，角色是否在开发环境或 Azure 中运行。 有关详细信息，请参阅[使用 Azure 诊断收集日志记录数据](http://go.microsoft.com/fwlink/p/?LinkId=400450)。
-* 如果使用 Visual Studio Enterprise 来编写以 .NET Framework 4 或.NET Framework 4.5 为目标的角色，则从 Visual Studio 部署 Azure 云服务时，可以启用 IntelliTrace。 IntelliTrace 提供一个日志，可将该日志与 Visual Studio 一起使用以调试应用程序，就如同应用程序在 Azure 中运行一样。 有关详细信息，请参阅 [Debugging a published cloud service with IntelliTrace and Visual Studio](http://go.microsoft.com/fwlink/p/?LinkId=623016)（使用 IntelliTrace 和 Visual Studio 调试已发布的云服务）。
-* 从 Visual Studio 部署云服务时，可以在云服务上启用远程调试。 如果选择为部署的项目启用远程调试，将在运行每个角色实例的虚拟机上安装远程调试服务。 这些服务（如 msvsmon.exe）不影响性能，也不额外收费。 有关详细信息，请参阅 [Debug a cloud service in Azure](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-a-cloud-service-in-azure)（调试 Azure 中的云服务）。
+## <a name="debugging-an-azure-cloud-service-in-visual-studio"></a>在 Visual Studio 中调试 Azure 云服务
+使用 Azure 计算模拟器在本地计算机上调试云服务可以节省时间和金钱。 部署某个服务之前在本地对其进行调试可以提高可靠性和性能，且不会产生计算时间的相关费用。 但是，仅当你在 Azure 中运行云服务时，某些错误才可能会出现。 仅在 Azure 中运行云服务时才会发生的错误可以通过在发布服务时启用远程调试，然后将调试器附加到角色实例来进行调试。 有关详细信息，请参阅 [Debug your cloud service on your local computer](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-your-cloud-service-on-your-local-computer)（在本地计算机上调试云服务）。
 
+## <a name="using-azure-diagnostics"></a>使用 Azure 诊断 
+可使用 Azure 诊断以记录在角色内运行的代码的详细信息，角色是否在开发环境或 Azure 中运行。 有关详细信息，请参阅[在 Azure 云服务中启用 Azure 诊断](http://go.microsoft.com/fwlink/p/?LinkId=400450)。
 
+## <a name="using-intellitrace"></a>使用 IntelliTrace 
+如果使用 Visual Studio Enterprise 来编写以 .NET Framework 4.5 为目标的角色，从 Visual Studio 部署 Azure 云服务时，可以启用 IntelliTrace。 IntelliTrace 提供一个日志，可将该日志与 Visual Studio 一起使用以调试应用程序，就如同应用程序在 Azure 中运行一样。 有关详细信息，请参阅 [Debugging a published cloud service with IntelliTrace and Visual Studio](http://go.microsoft.com/fwlink/p/?LinkId=623016)（使用 IntelliTrace 和 Visual Studio 调试已发布的云服务）。
 
+## <a name="remote-debugging"></a>远程调试 
+从 Visual Studio 部署云服务时，可以在云服务上启用远程调试。 如果选择为部署的项目启用远程调试，将在运行每个角色实例的虚拟机上安装远程调试服务。 这些服务（如 `msvsmon.exe`）不影响性能，也不额外收费。 有关详细信息，请参阅 [Debug a cloud service in Azure](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-a-cloud-service-in-azure)（调试 Azure 中的云服务）。
 
-<!--HONumber=Nov16_HO3-->
-
-
+## <a name="next-steps"></a>后续步骤
+- [在 Visual Studio 中调试 Azure 云服务或 VM](./vs-azure-tools-debug-cloud-services-virtual-machines.md) - 了解如何调试 Azure 云服务的详细信息。

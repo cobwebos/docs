@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/07/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: e43906fda1f5abc38c138b55c991c4ef8c550aa0
-ms.openlocfilehash: 93696222ca82573194541bfa95263f23fe3e2c39
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: eabba7daa746a836592f775858782aa77fcebd9b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -44,19 +45,20 @@ Azure 支持的 SQL Server HADR 技术包括：
 可将多种技术配合使用，以实现具有高可用性和灾难恢复功能的 SQL Server 解决方案。 根据所用技术的不同，混合部署可能需要使用 VPN 隧道连接 Azure 虚拟网络。 以下部分显示了某些部署体系结构的示例。
 
 ## <a name="azure-only-high-availability-solutions"></a>仅限 Azure：高可用性解决方案
-可使用 AlwaysOn 功能（包括可用性组和故障转移群集实例）为 Azure 中的 SQL Server 数据库提供高可用性解决方案。
+
+可针对在数据库级别具有 AlwaysOn 可用性组，或在实例级别具有 AlwaysOn 故障转移群集实例的 SQL Server，拥有高可用性解决方案。 还可以通过在 SQL Server 故障转移群集实例上创建 AlwaysOn 可用性组，在两个级别上创建冗余。 
 
 | 技术 | 示例体系结构 |
 | --- | --- |
-| **Always On 可用性组** |在同一区域的 Azure VM 中运行的可用性副本提供高可用性。 需要配置域控制器 VM，因为 Windows Server 故障转移群集 (WSFC) 需要 Active Directory 域。<br/> ![Always On 可用性组](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_ha_always_on.gif)<br/>有关详细信息，请参阅[在 Azure 中配置 Always On 可用性组 (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)。 |
-| **Always On 故障转移群集实例** |可通过 3 种不同的方式创建需要共享存储的故障转移群集实例 (FCI)。<br/><br/>1.通过 [Windows Server 2016 存储空间直通 \(S2D\)](virtual-machines-windows-portal-sql-create-failover-cluster.md) 在具有附加存储的 Azure VM 中运行的双节点 WSFC，用于提供基于软件的虚拟 SAN。<br/><br/>2.在其存储由第三方群集解决方案支持的 Azure VM 中运行的双节点 WSFC。 有关使用 SIOS DataKeeper 的具体示例，请参阅[使用 WSFC 和第三方软件 SIOS Datakeeper 的文件共享的高可用性](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>3.通过 ExpressRoute 在具有远程 iSCSI 目标共享块存储中运行的双节点 WSFC。 例如，NetApp 专用存储 (NPS) 使用 Equinix 通过 ExpressRoute 向 Azuer VM 公开 iSCSI 目标。<br/><br/>对于第三方共享存储和数据复制解决方案，如有任何关于在故障转移时访问数据的问题，请联系供应商。<br/><br/>请注意，目前尚不支持在 [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)外部使用 FCI，因为此解决方案不使用高级存储。 我们正在努力很快支持此功能。 |
+| **Always On 可用性组** |在同一区域的 Azure VM 中运行的可用性副本提供高可用性。 需要配置域控制器 VM，因为 Windows 故障转移群集需要 Active Directory 域。<br/> ![Always On 可用性组](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_ha_always_on.gif)<br/>有关详细信息，请参阅[在 Azure 中配置 Always On 可用性组 (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)。 |
+| **Always On 故障转移群集实例** |可通过 3 种不同的方式创建需要共享存储的故障转移群集实例 (FCI)。<br/><br/>1.通过 [Windows Server 2016 存储空间直通 \(S2D\)](virtual-machines-windows-portal-sql-create-failover-cluster.md) 在具有附加存储的 Azure VM 中运行的双节点故障转移群集，用于提供基于软件的虚拟 SAN。<br/><br/>2.在其存储由第三方群集解决方案支持的 Azure VM 中运行的双节点故障转移群集。 有关使用 SIOS DataKeeper 的具体示例，请参阅[使用故障转移群集和第三方软件 SIOS Datakeeper 的文件共享的高可用性](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>3.通过 ExpressRoute 在具有远程 iSCSI 目标共享块存储中运行的双节点故障转移群集。 例如，NetApp 专用存储 (NPS) 使用 Equinix 通过 ExpressRoute 向 Azuer VM 公开 iSCSI 目标。<br/><br/>对于第三方共享存储和数据复制解决方案，如有任何关于在故障转移时访问数据的问题，请联系供应商。<br/><br/>请注意，目前尚不支持在 [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)外部使用 FCI，因为此解决方案不使用高级存储。 我们正在努力很快支持此功能。 |
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>仅限 Azure：灾难恢复解决方案
 可将 Always On 可用性组、数据库镜像或备份和还原与存储 Blob 配合使用，为 Azure 中的 SQL Server 数据库提供灾难恢复解决方案。
 
 | 技术 | 示例体系结构 |
 | --- | --- |
-| **Always On 可用性组** |可用性副本在 Azure VM 中跨越多个数据中心运行以实现灾难恢复。 这种跨区域解决方案可以防止站点完全中断。 <br/> ![Always On 可用性组](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_alwayson.png)<br/>在某个区域内，所有副本应该位于同一云服务和同一 VNet 中。 由于每个区域将有单独的 VNet，因此这些解决方案需要 VNet 到 VNet 连接。 有关详细信息，请参阅[在 Azure 经典门户中配置站点到站点 VPN](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)。 有关详细说明，请参阅[在不同区域的 Azure 虚拟机上配置 SQL Server AlwaysOn 可用性组](virtual-machines-windows-portal-sql-availability-group-dr.md)。|
+| **Always On 可用性组** |可用性副本在 Azure VM 中跨越多个数据中心运行以实现灾难恢复。 这种跨区域解决方案可以防止站点完全中断。 <br/> ![Always On 可用性组](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_alwayson.png)<br/>在某个区域内，所有副本应该位于同一云服务和同一 VNet 中。 由于每个区域将有单独的 VNet，因此这些解决方案需要 VNet 到 VNet 连接。 有关详细信息，请参阅[使用 Azure 门户配置 VNet 到 VNet 连接](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。 有关详细说明，请参阅[在不同区域的 Azure 虚拟机上配置 SQL Server AlwaysOn 可用性组](virtual-machines-windows-portal-sql-availability-group-dr.md)。|
 | **数据库镜像** |主体和镜像以及服务器在不同数据库中运行以实现灾难恢复。 必须使用服务器证书进行部署，因为 Active Directory 域不能跨越多个数据中心。<br/>![数据库镜像](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
 | **使用 Azure Blob 存储服务进行备份和还原** |生产数据库直接备份到不同数据中心内的 Blob 存储以实现灾难恢复。<br/>![备份和还原](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_backup_restore.gif)<br/>有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的备份和还原](virtual-machines-windows-sql-backup-recovery.md)。 |
 
@@ -65,7 +67,7 @@ Azure 支持的 SQL Server HADR 技术包括：
 
 | 技术 | 示例体系结构 |
 | --- | --- |
-| **Always On 可用性组** |某些可用性副本运行在 Azure VM 中，另一些则在本地运行，以实现跨站点灾难恢复。 生产站点可位于本地，也可以位于 Azure 数据中心。<br/>![Always On 可用性组](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>由于所有可用性副本必须在同一 WSFC 群集中，因此 WSFC 群集必须同时跨越这两个网络（多子网 WSFC 群集）。 此配置需要在 Azure 与本地网络之间使用 VPN 连接。<br/><br/>为了成功地对数据库进行灾难恢复，还应在灾难恢复站点上安装副本域控制器。<br/><br/>可以使用 SSMS 中的“添加副本向导”将 Azure 副本添加到现有的 Always On 可用性组。 有关详细信息，请参阅教程“将 Always On 可用性组扩展到 Azure 中”。 |
+| **Always On 可用性组** |某些可用性副本运行在 Azure VM 中，另一些则在本地运行，以实现跨站点灾难恢复。 生产站点可位于本地，也可以位于 Azure 数据中心。<br/>![Always On 可用性组](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>由于所有可用性副本必须在同一故障转移群集中，因此该群集必须同时跨越这两个网络（多子网故障转移群集）。 此配置需要在 Azure 与本地网络之间使用 VPN 连接。<br/><br/>为了成功地对数据库进行灾难恢复，还应在灾难恢复站点上安装副本域控制器。<br/><br/>可以使用 SSMS 中的“添加副本向导”将 Azure 副本添加到现有的 Always On 可用性组。 有关详细信息，请参阅教程“将 Always On 可用性组扩展到 Azure 中”。 |
 | **数据库镜像** |一个伙伴在 Azure VM 中运行，另一个则在本地运行，以实现使用服务器证书进行跨站点灾难恢复。 合作伙伴不必在同一 Active Directory 域中，并且不需要 VPN 连接。<br/>![数据库镜像](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>另一种数据库镜像方案是一个合作伙伴在 Azure VM 中运行，另一个则在同一 Active Directory 域中本地运行，以实现跨站点灾难恢复。 需要[在 Azure 虚拟网络与本地网络之间使用 VPN 连接](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)。<br/><br/>为了成功地对数据库进行灾难恢复，还应在灾难恢复站点上安装副本域控制器。 |
 | **日志传送** |一个服务器在 Azure VM 中运行，另一个则在本地运行，以实现跨站点灾难恢复。 日志传送依赖于 Windows 文件共享，因此需要在 Azure 虚拟网络与本地网络之间使用 VPN 连接。<br/>![日志传送](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_log_shipping.gif)<br/>为了成功地对数据库进行灾难恢复，还应在灾难恢复站点上安装副本域控制器。 |
 | **使用 Azure Blob 存储服务进行备份和还原** |本地生产数据库直接备份到 Azure Blob 存储以实现灾难恢复。<br/>![备份和还原](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_backup_restore.gif)<br/>有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的备份和还原](virtual-machines-windows-sql-backup-recovery.md)。 |
@@ -76,14 +78,14 @@ Azure VM、存储和网络的运行特征与本地非虚拟化的 IT 基础结�
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性集中的高可用性节点
 使用 Azure 中的高可用性集，你可将高可用性节点放置在单独的容错域 (FD) 和更新域 (UD) 中。 若要将 Azure VM 放入同一可用性集，必须将这些 VM 部署到同一云服务中。 只有同一云服务中的节点可加入同一可用性集。 有关详细信息，请参阅 [管理虚拟机的可用性](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-### <a name="wsfc-cluster-behavior-in-azure-networking"></a>WSFC 群集在 Azure 网络中的行为
-Azure 中的 DHCP 服务不符合 RFC 标准，可能会导致创建某些 WSFC 群集配置失败，因为向群集网络名称分配重复的 IP 地址（例如 IP 地址与某个群集节点相同）。 实现 Always On 可用性组时，这种情况会产生一个问题，因为它依赖于 WSFC 功能。
+### <a name="failover-cluster-behavior-in-azure-networking"></a>故障转移群集在 Azure 网络中的行为
+Azure 中的 DHCP 服务不符合 RFC 标准，可能会导致创建某些故障转移群集配置失败，因为向群集网络名称分配了重复的 IP 地址（例如 IP 地址与某个群集节点相同）。 实现 AlwaysOn 可用性组时，这种情况会产生一个问题，因为它依赖于 Windows 故障转移群集功能。
 
 创建两节点群集并使其联机时，请考虑此应用场景：
 
 1. 群集联机，然后 NODE1 为群集网络名称请求一个动态分配的 IP 地址。
 2. DHCP 服务除了 NODE1 自身的 IP 地址以外不提供任何 IP 地址，因为 DHCP 服务识别出请求来自 NODE1 自身。
-3. Windows 检测到同时向 NODE1 和群集网络名称分配了一个重复的地址，并且默认群集组未能联机。
+3. Windows 检测到同时向 NODE1 和故障转移群集网络名称分配了一个重复的地址，并且默认群集组未能联机。
 4. 默认群集组移至 NODE2，后者将 NODE1 的 IP 地址视为群集 IP 地址，并使默认群集组联机。
 5. 当 NODE2 尝试与 NODE1 建立连接时，在 NODE1 上定向的数据包从不离开 NODE2，因为后者将 NODE1 的 IP 地址解析为其自身。 NODE2 无法与 NODE1 建立连接，然后丢失仲裁并关闭群集。
 6. 同时，NODE1 可向 NODE2 发送数据包，但 NODE2 无法回复。 NODE1 丢失仲裁并关闭群集。
@@ -93,9 +95,9 @@ Azure 中的 DHCP 服务不符合 RFC 标准，可能会导致创建某些 WSFC 
 有关详细信息，请参阅[在 Azure 中配置 Always On 可用性组 (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)。
 
 ### <a name="availability-group-listener-support"></a>可用性组侦听器支持
-运行 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 的 Azure VM 支持可用性组侦听器。 这种支持的实现，是借助于在 Azure VM 上启用的负载平衡终结点，它们都是可用性组节点。 你必须执行特殊的配置步骤，才能让这些侦听器对在 Azure 中运行和本地运行的客户端应用程序都有效。
+运行 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 的 Azure VM 支持可用性组侦听器。 这种支持的实现，是借助于在 Azure VM 上启用的负载均衡终结点，它们都是可用性组节点。 你必须执行特殊的配置步骤，才能让这些侦听器对在 Azure 中运行和本地运行的客户端应用程序都有效。
 
-有两个主要选项用于设置侦听器：“外部(公共)”或“内部”。 外部（公共）侦听器使用面向 Internet 的负载平衡器并与可通过 Internet 访问的公共虚拟 IP (VIP) 相关联。 内部侦听器使用内部负载均衡器，且仅支持同一虚拟网络中的客户端。 对于任一负载平衡器类型，都必须启用直接服务器返回。 
+有两个主要选项用于设置侦听器：“外部(公共)”或“内部”。 外部（公共）侦听器使用面向 Internet 的负载均衡器并与可通过 Internet 访问的公共虚拟 IP (VIP) 相关联。 内部侦听器使用内部负载均衡器，且仅支持同一虚拟网络中的客户端。 对于任一负载均衡器类型，都必须启用直接服务器返回。 
 
 如果可用性组跨多个 Azure 子网（例如，跨 Azure 区域的部署），则客户端连接字符串必须包含“**MultisubnetFailover=True**”。 这会导致与不同子网中的副本建立并行连接。 有关设置侦听器的说明，请参阅
 
@@ -134,11 +136,6 @@ Azure 磁盘中的异地复制不支持将同一数据库的数据文件和日�
 
 ### <a name="other-resources"></a>其他资源
 * [在 Azure 中安装新的 Active Directory 林](../../../active-directory/active-directory-new-forest-virtual-machine.md)
-* [在 Azure VM 中创建用于 Always On 可用性组的 WSFC 群集](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
+* [在 Azure VM 中创建用于 AlwaysOn 可用性组的故障转移群集](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 
 

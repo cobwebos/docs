@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 710307b01fe64852771c071c070f5fcee59c9579
-ms.openlocfilehash: 494dbaf23de22efa79cfe65aa22bb7c948b3da80
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 1ada403a502972ee0d8cd96af2d62d923d43f6cf
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -30,13 +30,13 @@ Azure 存储是依赖于持续性、可用性和可缩放性来满足客户需�
 
 - 自动可伸缩性支持。 Azure 创建磁盘并管理基础存储，每个订阅最多可支持 10,000 个磁盘。
 - 可用性集带来更高的可靠性。 Azure 可确保 VM 磁盘在可用集内自动彼此隔离。
-- 增强的访问控制。 托管磁盘公开由 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 所控制的各种操作。 
+- 增强的访问控制。 托管磁盘公开由 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 所控制的各种操作。
 
-托管磁盘与非托管磁盘的定价不同。 有关这方面的信息，请参阅[托管磁盘的定价和计费](../storage/storage-managed-disks-overview.md#pricing-and-billing)。 
+托管磁盘与非托管磁盘的定价不同。 有关这方面的信息，请参阅[托管磁盘的定价和计费](../storage/storage-managed-disks-overview.md#pricing-and-billing)。
 
 可以通过 [az vm convert](/cli/azure/vm#convert)，将使用非托管磁盘的现有 VM 转换为使用托管磁盘。 有关详细信息，请参阅[如何将 Linux VM 从非托管磁盘转换为 Azure 托管磁盘](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果非托管磁盘所在的存储帐户已使用或曾使用 [Azure 存储服务加密 (SSE)](../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 加密，则无法将其转换为托管磁盘。 下列步骤详细说明如何转换位于（或曾位于）已加密存储帐户的非托管磁盘：
 
-- 使用 [az storage blob copy start](/cli/azure/storage/blob/copy#start) 将[虚拟硬盘 (VHD) 复制](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unmanaged-disks)到从未启用 Azure 存储服务加密的存储帐户。
+- 使用 [az storage blob copy start](/cli/azure/storage/blob/copy#start) 将虚拟硬盘 (VHD) 复制到从未启用 Azure 存储服务加密的存储帐户。
 - 使用 [az vm create](/cli/azure/vm#create) 创建使用托管磁盘的 VM 并指定创建期间的 VHD 文件，或
 - 使用 [az vm disk attach](/cli/azure/vm/disk#attach) 将复制的 VHD 附加到具有托管磁盘的正在运行中的 VM。
 
@@ -62,7 +62,7 @@ az group create --location westus --name myResourceGroup
 az vm create \
 --image credativ:Debian:8:latest \
 --admin-username azureuser \
---ssh-key-value ~/.ssh/id_rsa.pub 
+--ssh-key-value ~/.ssh/id_rsa.pub
 --public-ip-address-dns-name manageddisks \
 --resource-group myResourceGroup \
 --location westus \
@@ -76,7 +76,7 @@ az vm create \
 --storage-sku Premium_LRS
 --image credativ:Debian:8:latest \
 --admin-username azureuser \
---ssh-key-value ~/.ssh/id_rsa.pub 
+--ssh-key-value ~/.ssh/id_rsa.pub
 --public-ip-address-dns-name manageddisks \
 --resource-group myResourceGroup \
 --location westus \
@@ -246,5 +246,4 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 
 ## <a name="storage-limits"></a>存储限制
 * [存储服务限制](../azure-subscription-service-limits.md#storage-limits)
-
 

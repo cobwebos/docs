@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/14/2017
+ms.date: 03/18/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 4b7ed095729e810f7f1112d3b6becfaf186bf508
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 995f185f99c80809a5c4c2925b8d594b1d5568ff
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -97,6 +97,13 @@ Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样�
 ### <a name="applications-want-to-differentiate-their-experience-between-a-tenant-user-and-a-guest-user-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-right-model-for-this"></a>应用程序希望在其租户用户与来宾用户之间提供有差别的体验。 是否有针对此事项的标准指南？ 标识提供者声明是否是适用于此事项的确切模型？
  
 如我们在 [B2B 协作用户的属性](active-directory-b2b-user-properties.md)中所讨论，来宾用户可以使用任何标识提供者进行身份验证。 因此，UserType 是决定此事项的确切属性。 令牌中当前未包括 UserType 声明。 应用程序应当使用 Graph API 从目录中查询用户并获取其 UserType。
+
+### <a name="where-can-find-a-b2b-collaboration-community-to-share-solutions-and-submit-ideas"></a>可在何处找到 B2B 协作社区以共享解决方案和提交意见？
+
+我们将在改进 B2B 协作的过程中不断听取你的反馈。 诚邀你在 [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)加入讨论、分享用户方案和最佳实践并分享 Azure AD B2B 协作中让你钟意的方面
+ 
+还力邀你在 [B2B 协作意见](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas)网站提交意见并为未来的功能投票。
+
 
 ### <a name="next-steps"></a>后续步骤
 

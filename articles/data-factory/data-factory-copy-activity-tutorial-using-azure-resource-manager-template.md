@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: cc25d521b4de64643c8920d45ec9aa6c07b94302
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 977fcf74c86e2ab312d99b3f1821cfb7efbe9745
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -313,7 +314,7 @@ ms.openlocfilehash: cc25d521b4de64643c8920d45ec9aa6c07b94302
 1. 启动 **Azure PowerShell** 并运行以下命令：
    * 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
     ```PowerShell
-    Login-AzureRmAccount    
+    Login-AzureRmAccount       
     ```  
    * 运行以下命令查看此帐户的所有订阅。
     ```PowerShell
@@ -408,7 +409,7 @@ JSON 模板中定义了以下数据工厂实体：
 connectionString 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStroageLinkedService 和 dataFactoryName。 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL 数据库链接服务
-在本部分中指定 Azure SQL 服务器名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)（Azure SQL 链接服务）。  
+在本部分中指定 Azure SQL 服务器名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#linked-service-properties)（Azure SQL 链接服务）。  
 
 ```json
 {
@@ -431,7 +432,7 @@ connectionString 使用 storageAccountName 和 storageAccountKey 参数。 可�
 connectionString 使用 sqlServerName、databaseName、sqlServerUserName 和 sqlServerPassword 参数，这些参数的值是使用配置文件传递的。 该定义还使用模板中的以下变量：azureSqlLinkedServiceName、dataFactoryName。
 
 #### <a name="azure-blob-dataset"></a>Azure Blob 数据集
-指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)（Azure Blob 数据集属性）。 
+指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。 
 
 ```json
 {
@@ -473,7 +474,7 @@ connectionString 使用 sqlServerName、databaseName、sqlServerUserName 和 sql
 ```
 
 #### <a name="azure-sql-dataset"></a>Azure SQL 数据集
-指定 Azure SQL 数据库中用于保存从 Azure Blob 存储复制的数据的表的名称。 有关用于定义 Azure SQL 数据集的 JSON 属性的详细信息，请参阅 [Azure SQL dataset properties](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties)（Azure SQL 数据集属性）。 
+指定 Azure SQL 数据库中用于保存从 Azure Blob 存储复制的数据的表的名称。 有关用于定义 Azure SQL 数据集的 JSON 属性的详细信息，请参阅 [Azure SQL dataset properties](data-factory-azure-sql-connector.md#dataset-properties)（Azure SQL 数据集属性）。 
 
 ```json
 {
@@ -591,8 +592,3 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 | [管道](data-factory-create-pipelines.md) |帮助了解 Azure 数据工厂中的管道和活动 |
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
 | [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
-
-
-<!--HONumber=Feb17_HO1-->
-
-

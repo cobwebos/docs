@@ -12,12 +12,12 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 6ba7dacb9a8828495c9ec15b46020a493d406096
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ade2f6e4c5d151dbe0da8578cce03d6f754b8926
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/11/2017
 
 此示例脚本使用其相关资源，在应用服务中创建 Web 应用，然后在 Git 存储库中设置连续部署。 有关不进行连续部署的 GitHub 部署，请参阅[从 GitHub 创建 Web 应用并部署代码](app-service-cli-deploy-github.md)。
 
-在运行此脚本之前，请确保以下项：
+必要时，请使用 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中的指令安装 Azure CLI。 同时，请确保：
 
 - 已使用 `az login` 命令创建与 Azure 的连接。
 - 应用程序代码在你拥有的公共或专用 GitHub 存储库中。

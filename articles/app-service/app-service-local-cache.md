@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 385eb87ec32f5f605b28cc8c76b1c89c7e90bfec
-ms.openlocfilehash: 09ec6d1aae5dc893e92b7c4ca1c30a251d02443d
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: e00d453e9ae34cafb5ce753f63c253e954d6b09a
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -64,6 +65,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 <a name="Configure-Local-Cache-ARM"></a>
 
 ```
+
 ...
 
 {
@@ -73,7 +75,8 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
     "dependsOn": [
         "[resourceId('Microsoft.Web/sites/', variables('siteName'))]"
     ],
-    "properties": {
+
+"properties": {
         "WEBSITE_LOCAL_CACHE_OPTION": "Always",
         "WEBSITE_LOCAL_CACHE_SIZEINMB": "300"
     }
@@ -110,8 +113,6 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 ### <a name="i-have-local-cache-enabled-but-my-web-app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>本地缓存已启用，但 Web 应用仍重新启动。 为什么会这样？ 本以为本地缓存可以缓解应用频繁重启的情况。
 本地缓存确实可以防止与存储相关的 Web 应用重启情况。 但是，在对 VM 进行计划内基础结构升级时，Web 应用仍可能重新启动。 启用本地缓存以后，总体说来应用重启的次数应该会少一些。
 
-
-
-<!--HONumber=Feb17_HO2-->
-
+### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>本地缓存是否会阻止某些目录被复制到更快的本地驱动器？
+在复制存储内容过程中，将排除任何名为存储库的文件夹。 如果网站内容包含 Web 应用日常操作中可能不必要的源控件存储库，则此方法非常有用。 
 

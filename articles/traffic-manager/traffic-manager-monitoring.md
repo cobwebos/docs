@@ -1,5 +1,5 @@
 ---
-title: "流量管理器终结点监视和故障转移 |Microsoft 文档"
+title: "Azure 流量管理器终结点监视 | Microsoft Docs"
 description: "本文有助于你了解，流量管理器如何通过终结点监视和终结点自动故障转移来帮助 Azure 客户部署高可用性应用程序。"
 services: traffic-manager
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 69b94c93ad3e9c9745af8485766b4237cac0062c
-ms.openlocfilehash: 4df9f744c7dde9224157eca1f869c0c420036d76
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: cec4f541ebac6202a3880ec7338a9f0a0ac645b5
+ms.lasthandoff: 03/18/2017
 
 ---
 
-# <a name="traffic-manager-endpoint-monitoring-and-failover"></a>流量管理器终结点监视和故障转移
+# <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
 
 Azure 流量管理器包括内置的终结点监视和终结点自动故障转移功能。 此功能可以让你更好地交付高可用性应用程序，以便应对终结点故障（包括 Azure 区域故障）。
 
@@ -131,71 +132,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 
 有关针对失败的运行状况检查进行故障排除的详细信息，请参阅 [Azure 流量管理器上的降级状态故障排除](traffic-manager-troubleshooting-degraded.md)。
 
-## <a name="faq"></a>常见问题
 
-### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>流量管理器能否灵活应对 Azure 区域故障？
-
-流量管理器是在 Azure 中提供高可用性应用程序的关键组件。
-若要提供高可用性，流量管理器必须具有超高的可用性，并且能够灵活应对区域故障。
-
-在设计上，流量管理器组件能够灵活应对任何 Azure 区域的全面故障。 这样的应对能力见于所有流量管理器组件：DNS 名称服务器、API、存储层、终结点监视服务。
-
-在整个 Azure 区域发生服务中断的情况下（这种情况很少见），流量管理器仍可继续正常运行。 在多个 Azure 区域中部署的应用程序可以依赖流量管理器将流量定向到这些区域中的可用应用程序实例。
-
-### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager"></a>选择资源组位置会如何影响流量管理器？
-
-流量管理器属于单一的全局性服务， 而不是区域性服务。 选择资源组位置对部署在该资源组中的流量管理器配置文件没有影响。
-
-Azure Resource Manager 要求所有资源组指定一个位置，这决定了部署在该资源组中的资源的默认位置。 创建流量管理器配置文件时，将在资源组中创建该配置文件。 所有流量管理器配置文件使用“**全局**”作为位置，覆盖资源组的默认值。
-
-### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>如何确定每个终结点的当前运行状况？
-
-除了总体配置文件，每个终结点的当前监视状态也显示在 Azure 门户中。 此信息也可通过流量监视器 [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell cmdlet](https://msdn.microsoft.com/library/mt125941.aspx) 和[跨平台 Azure CLI](../xplat-cli-install.md) 获取。
-
-Azure 不提供有关过去终结点运行状况的历史信息，也不提供在终结点运行状况发生变化时引发警报的功能。
-
-### <a name="can-i-monitor-https-endpoints"></a>能否监视 HTTPS 终结点？
-
-是的。 流量管理器支持通过 HTTPS 进行探测。 在监视配置中将 **HTTPS** 配置为协议。
-
-流量管理器无法提供任何证书验证，包括：
-
-* 不验证服务器端证书
-* 不支持 SNI 服务器端证书
-* 不支持客户端证书
-
-### <a name="what-host-header-do-endpoint-health-checks-use"></a>终结点运行状况检查使用什么主机头？
-
-流量管理器在 HTTP 和 HTTPS 运行状况检查中使用 host 标头。 流量管理器使用的 host 标头是在配置文件中配置的终结点目标名称。 在主机头中使用的值不能通过目标属性单独指定。
-
-### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>运行状况检查从哪些 IP 地址发起？
-
-以下列表包含流量管理器可从中发起运行状况检查的 IP 地址。 可以使用此列表确保终结点上允许来自这些 IP 地址的传入连接，以便能够检查这些终结点的运行状况。
-
-* 40.68.30.66
-* 40.68.31.178
-* 137.135.80.149
-* 137.135.82.249
-* 23.96.236.252
-* 65.52.217.19
-* 40.87.147.10
-* 40.87.151.34
-* 13.75.124.254
-* 13.75.127.63
-* 52.172.155.168
-* 52.172.158.37
-* 104.215.91.84
-* 13.75.153.124
-* 13.84.222.37
-* 23.101.191.199
-* 23.96.213.12
-* 137.135.46.163
-* 137.135.47.215
-* 191.232.208.52
-* 191.232.214.62
-* 13.75.152.253
-* 104.41.187.209
-* 104.41.190.203
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -206,9 +143,4 @@ Azure 不提供有关过去终结点运行状况的历史信息，也不提供�
 了解如何[创建流量管理器配置文件](traffic-manager-manage-profiles.md)
 
 流量管理器终结点上的[降级状态故障排除](traffic-manager-troubleshooting-degraded.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,12 +12,12 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 9b6429027a0d9f95ddced8b6616693ac2959a014
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b6b82aa6f129a008091e4abc1798b9b5d402c28e
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -25,9 +25,9 @@ ms.lasthandoff: 03/10/2017
 
 此示例脚本使用其相关资源，在应用服务中创建 Web 应用，然后在 Git 存储库中设置连续部署。 有关不进行连续部署的 GitHub 部署，请参阅[从 GitHub 创建 Web 应用并部署代码](app-service-powershell-deploy-github.md)。
 
-在运行此脚本之前，请确保以下项：
+必要时，请使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)中的说明安装 Azure PowerShell。 同时，请确保：
 
-- 已使用 `Login-AzureRmAccount` cmdlet 创建与 Azure 的连接。
+- 已使用 `az login` 命令创建与 Azure 的连接。
 - 应用程序代码在你拥有的公共或专用 GitHub 存储库中。
 - 已[在 GitHub 帐户中创建访问令牌](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)。
 

@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 58a583a761a400d8fa0488fbc4fbfec35ec62c41
-ms.openlocfilehash: ebdf73ad8a7a2f2690a404676e0c81ee01e77357
-ms.lasthandoff: 01/10/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 5d6b0869d2cf0e90b7b81b2304d95e01d1937925
+ms.lasthandoff: 03/18/2017
 
 
 ---
 #<a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
-本主题提供有关如何排查和诊断企业状态漫游问题的信息，并提供已知问题的列表。
+本主题介绍了如何排查和诊断企业状态漫游问题，并提供已知问题的列表。
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>故障排除预备步骤 
 在开始故障排除之前，请确认已正确配置用户和设备，并且设备和用户满足企业状态漫游的所有要求。 
@@ -40,10 +40,10 @@ ms.lasthandoff: 01/10/2017
 
 - **错误的一般说明** – 用户是否可看到错误消息？ 如果没有任何错误消息，请详细描述你所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
 - **受影响的用户** – 同步的成功/失败是针对一个用户还是多个用户？ 每个用户涉及到多少台设备？ 这些设备是否全都不能同步，或者只是同步其中的一部分？
-- **有关用户的信息** – 用户登录到设备时使用哪个标识？ 用户如何登录到设备？ 他们是否属于可同步的选定安全组？ 
+- **用户相关信息** - 用户登录到设备时使用的是哪个标识？ 用户如何登录到设备？ 他们是否属于可同步的选定安全组？ 
 - **有关设备的信息** – 此设备是否已加入 Azure AD 或已加入域？ 设备位于哪个内部版本中？ 有哪些最新的更新？
 - **日期/时间/时区** – 看到错误时的准确日期和时间（包括时区）是什么？
-- 包含这些信息将有助于我们尽快为你解决问题。
+- 包含这些信息有助于我们尽快解决问题。
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>排查和诊断问题
 本部分提供有关如何排查和诊断企业状态漫游相关问题的建议。
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/10/2017
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>验证同步；“同步设置”设置页 
 
 1. 将 Windows 10 电脑加入到配置为允许企业状态漫游的域之后，请使用工作帐户登录。 转到“设置” > “帐户” > “同步设置”，确认同步和各项设置已打开，并且设置页的顶部指示将与工作帐户同步。 在“设置” > “帐户” > “你的信息”中确认同一个帐户也用作登录帐户。 
-2. 在原始计算机上进行一些更改（例如，将任务栏移到屏幕右侧或顶部），验证同步是否能够跨多台计算机正常工作。 观察更改是否能够在 5 分钟内传播到第二台计算机。 
+2. 在原始计算机上进行一些更改（例如，将任务栏移到屏幕右侧或顶部），验证同步是否能够跨多台计算机正常工作。 观察更改能否在 5 分钟内传播到第二台计算机。 
  - 可以借助锁定和解锁屏幕 (Win + L) 来触发同步。
  - 必须在这两台 PC 上使用相同的登录帐户，同步才能运行 - 因为企业状态漫游绑定到用户帐户，而不是计算机帐户。
 
@@ -60,14 +60,14 @@ ms.lasthandoff: 01/10/2017
 ### <a name="verify-the-device-registration-status"></a>验证设备注册状态
 企业状态漫游要求将设备注册到 Azure AD。 以下说明尽管不专门针对企业状态漫游，但可帮助确认 Windows 10 客户端是否已注册，并确认指纹、Azure AD 设置 URL、NGC 状态和其他信息。
 
-1.    使用未提升的权限打开命令提示符。 若要在 Windows 中执行此操作，请打开“运行”启动器 (Win + R) 并键入“cmd”。
+1.    打开未提升权限的命令提示符。 若要在 Windows 中执行此操作，请打开“运行”启动器 (Win + R) 并键入“cmd”。
 2.    打开命令提示符后，键入“*dsregcmd.exe /status*”。
 3.    在预期的输出中，**AzureAdJoined** 字段值应为“YES”，**WamDefaultSet** 字段值应为“YES”，**WamDefaultGUID** 字段值应是末尾为“(AzureAd)”的 GUID。
 
 **潜在问题**：**WamDefaultSet** 和 **AzureAdJoined** 的字段值中均包含“NO”，设备已加入域并已注册到 Azure AD，但设备不同步。 如果显示这样的信息，则表示设备可能需要等待应用策略，或者在连接到 Azure AD 时设备身份验证失败。 用户可能需要等待几个小时来应用策略。 其他故障排除步骤可能包括通过注销再重新登录，或者在任务计划程序中启动任务，来重试自动注册。 某些情况下，在权限提升的命令提示窗口中运行“*dsregcmd.exe /leave*”，重新启动，然后重试注册，可能有助于解决此问题。
 
 
-**潜在问题**：**AzureAdSettingsUrl** 的字段为空，设备不同步。 在 Azure Active Directory 门户中启用企业状态漫游之前，用户可能已登录到设备。 在门户中，尝试让 IT 管理员禁用再重新启用“用户可以同步设置”和“企业应用数据”。 重新启用后，重新启动设备并让用户登录。 
+**潜在问题**：**AzureAdSettingsUrl** 的字段为空，设备不同步。 在 Azure Active Directory 门户中启用企业状态漫游之前，用户可能已登录到设备。 重启设备并让用户登录。 （可选）在门户中，尝试让 IT 管理员先禁用再重启“用户可同步设置”和“企业应用数据”。 重新启用后，重新启动设备并让用户登录。 如果这未解决该问题，则在设备证书错误的情况下，**AzureAdSettingsUrl** 可能为空。 此情况下，在权限提升的命令提示符窗口中运行“*dsregcmd.exe /leave*”，重启然后重试注册，可能有助于解决此问题。
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>企业状态漫游和多重身份验证 
 在某些情况下，如果未配置 Azure 多重身份验证，企业状态漫游可能无法同步数据。 有关这些症状的详细信息，请参阅支持文档 [KB3193683](https://support.microsoft.com/kb/3193683)。 
@@ -102,7 +102,7 @@ ms.lasthandoff: 01/10/2017
 
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>主题不同步，受 Windows 信息保护功能保护的数据也不同步 
 
-在使用 Windows 10 周年更新的设备上，为了防止数据泄漏，无法通过企业状态漫游来同步受 [Windows 信息保护](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip)功能保护的数据。
+在使用 Windows 10 周年更新的设备上，为防止数据泄漏，将不会通过企业状态漫游同步受 [Windows 信息保护](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip)功能保护的数据。
 
 
 
@@ -145,11 +145,23 @@ ms.lasthandoff: 01/10/2017
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>事件 ID 6065: 80070533 此用户无法登录，因为此帐户当前已禁用    
-如果租户未自动预配 AzureRMS，事件查看器中的 SettingSync/Debug 日志下面可能会出现此错误。 
+ ### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>已加入 Azure AD 的设备不同步，且用户具有混合大小写的用户主体名称。
+ 如果用户的 UPN 混用大小写（例如 UserName 而非 username），并且该用户位于已从 Windows 10 内部版本 10586 升级到 14393 的 Azure AD 联接设备上，则用户的设备可能无法同步。 
 
 **建议的操作**  
-执行 [KB3193791](https://support.microsoft.com/kb/3193791) 中所列的步骤。 
+用户将需要断开联接并将设备重新加入到云中。 为此，请以本地管理员用户身份登录，并通过转到“设置” > “系统” > “关于”使设备脱离，然后选择“从工作或学校管理或断开”。 清理以下文件，然后 Azure AD 将通过以下方式再次联接设备：转到“设置” > “系统” > “关于”，并选择“连接到工作或学校”。 继续将设备加入到 Azure Active Directory 并完成该流。
+
+在清理步骤中，清除以下文件：
+- `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\` 中的 settings.dat
+- `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account` 文件夹下的所有文件
+
+---
+
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>事件 ID 6065: 80070533 此用户无法登录，因为此帐户当前已禁用    
+如果用户凭据过期，则事件查看器的 SettingSync/Debug 日志下可能会出现此错误。 此外，如果租户未自动预配 AzureRMS，也可能会出现此错误。 
+
+**建议的操作**  
+在第一种情况下，让用户更新其凭据并使用新凭据登录到设备。 若要解决 AzureRMS 问题，请继续执行 [KB3193791](https://support.microsoft.com/kb/3193791) 中列出的步骤。 
 
 ---
 

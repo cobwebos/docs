@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 12/12/2016
+ms.date: 03/14/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 265bb284d23e42c16c84a718c402b1bc6f6a30f9
-ms.openlocfilehash: c5521c3a02e36fa388e4da90faf4d8b9fa219356
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 720822c4a6a2b236ca772016c647827050e27d44
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: c5521c3a02e36fa388e4da90faf4d8b9fa219356
 
 此备忘单有非常特定的受众：使用本科级机器学习的初级数据科学家，试图在 Azure 机器学习工作室中选择一种算法开始操作。 这意味着它会导致出现一些泛化和过度简化，但会指向一个安全的方向。 这也意味着有很多算法并未列在此处。 随着 Azure 机器学习的发展，它将包含更完整的可用方法集，我们将及时添加它们。
 
-这些建议是大量数据科学家和机器学习专家给出的已编译的反馈和提示。 我们不一致的一切内容，但我试着插入粗略达成一致意见协调各自观点。我们并不同意一切观点，但试图协调各方意见，达成粗略共识。 大多数争议性语句都以“这取决于···”开头
+这些建议是许多数据科学家和机器学习专家给出的已编译的反馈和提示。 我们不一致的一切内容，但我试着插入粗略达成一致意见协调各自观点。我们并不同意一切观点，但试图协调各方意见，达成粗略共识。 大多数争议性语句都以“这取决于···”开头
 
 ### <a name="how-to-use-the-cheat-sheet"></a>如何使用备忘单
 读取图表上的路径和算法标签为“为&lt;路径标签&gt;使用&lt;算法&gt;。” 例如，“为速度使用双类逻辑回归。” 有时会应用多个分支。
@@ -53,7 +54,7 @@ ms.openlocfilehash: c5521c3a02e36fa388e4da90faf4d8b9fa219356
 ### <a name="supervised"></a>监督式
 监督式学习算法基于一组示例进行预测。 例如，历史股票价格可用于对未来价格进行危险猜测。 用于定型的每个示例都标有相关的值 — 本例中是股票价格。 监督式学习算法查找这些值标签中的模式。 它可以使用任何可能相关的信息，包括星期几，季节，公司的财务数据，行业类型，存在的破坏性地缘政治事件，并且每种算法查找不同类型的模式。 算法找到可能的最佳模式之后，使用该模式对未标记的测试数据（明天的价格）进行预测。
 
-这是一种常用且有用的机器学习类型。 除了一个例外， Azure 机器学习中的所有模块都是监督式学习算法。 Azure 机器学习中有几种特定类型的监督式学习：分类、回归和异常情况检测。
+监督式学习是一种常用且有用的机器学习类型。 Azure 机器学习中的所有模块都是监督式学习算法，只有一个例外。 Azure 机器学习中有几种特定类型的监督式学习：分类、回归和异常情况检测。
 
 * **分类**。 在数据用于预测类别时，监督式学习也称为分类。 将图像分配为“猫”或“狗”的图片时，就是这种情况。 如果只有两个选项，这就称为**双类**或**二元分类**。 如果有多个类别，如预测 NCAA 疯狂三月锦标赛的冠军时，则称为**多类分类**。
 * **回归**。 在预测一个值时，如股票价格，监督式学习称为回归。
@@ -131,7 +132,7 @@ ms.openlocfilehash: c5521c3a02e36fa388e4da90faf4d8b9fa219356
 | [序号](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |用于预测排序 |
 | **异常情况检测** | | | | | |
 | [支持向量机](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |尤其适用于大型特征集 |
-| [基于 PCA 的异常情况检测](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |
+| [PCA-based anomaly detection](https://msdn.microsoft.com/library/azure/dn913102.aspx)（基于 PCA 的异常情况检测） | |○ |● |3 | |
 | [K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |聚类算法 |
 
 **算法属性：**
@@ -163,7 +164,7 @@ ms.openlocfilehash: c5521c3a02e36fa388e4da90faf4d8b9fa219356
 
 ***决策树将特征空间细分为具有大致统一值的区域***
 
-因为特征空间可以细分为任意的较小区域，所以可以想象将它细分为每个区域仅有一个数据点，这是过度拟合的极端示例。 为避免出现这种情况，一大组树采用特殊的数学方法进行构建，以确保树之间互不关联。 此“决策林”的平均值是一个避免过度拟合的树。 决策林可以使用大量的内存。 决策森林是一个变体，其使用的内存较少，但是定型时间稍长。
+因为特征空间可以细分为任意的较小区域，所以可以想象将它细分为每个区域仅有一个数据点。 这是过度拟合的极端示例。 为避免出现这种情况，一大组树采用特殊的数学方法进行构建，以确保树之间互不关联。 此“决策林”的平均值是一个避免过度拟合的树。 决策林可以使用大量的内存。 决策森林是一个变体，其使用的内存较少，但是定型时间稍长。
 
 提升决策树通过限制其细分次数及每个区域中允许的较少数据点数量，可避免过度拟合。 该算法构造树的序列，序列中的每个树都要弥补之前的树留下的错误。 结果是一个倾向于使用大量内存、非常精确的学习者。 了解完整的技术说明，请参阅 [Friedman 的原作](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf)。
 
@@ -198,8 +199,12 @@ Microsoft Research 的另一个产品[双类局部深层 SVM](https://msdn.micro
 在历史上，贝叶斯点机是由 Microsoft Research 开发的。 它们背后具有极其出色的理论工作。 感兴趣的学习者可以直接转到阅读 [JMLR 中的原始文章](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf)和 [Chris Bishop 撰写的充满见地的博客](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx)。
 
 ### <a name="specialized-algorithms"></a>专用算法
-如果有一个非常具体的目标，可能非常幸运。 在 Azure 机器学习集合中有专门用于排名预测（[顺序回归](https://msdn.microsoft.com/library/azure/dn906029.aspx)）、计数预测（[泊松回归](https://msdn.microsoft.com/library/azure/dn905988.aspx)）和异常情况检测（一个基于[主成分分析](https://msdn.microsoft.com/library/azure/dn913102.aspx)，一个基于[支持向量机](https://msdn.microsoft.com/library/azure/dn913103.aspx)）的方法。
-而且还有单独的聚类分析算法 ([K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/))。
+如果有一个非常具体的目标，可能非常幸运。 在 Azure 机器学习集合中，有一些专门用于以下方面的算法：
+
+- 排名预测（[有序回归](https://msdn.microsoft.com/library/azure/dn906029.aspx)）
+- 计数预测（[泊松回归](https://msdn.microsoft.com/library/azure/dn905988.aspx)）
+- 异常检测（一个基于[主体组件分析](https://msdn.microsoft.com/library/azure/dn913102.aspx)，另一个基于[支持向量机](https://msdn.microsoft.com/library/azure/dn913103.aspx)）
+- 聚类分析（[K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)）
 
 ![基于 PCA 的异常情况检测][8]
 
@@ -207,7 +212,7 @@ Microsoft Research 的另一个产品[双类局部深层 SVM](https://msdn.micro
 
 ![使用 K-means 分组的数据集][9]
 
-***使用 K-means 将数据集分为 5 个群集***
+使用 K-means 将数据集分为 5 个群集
 
 还有一个组[一对多多类分类器](https://msdn.microsoft.com/library/azure/dn905887.aspx)，它将 N 类分类问题分解成 N-1 个双类类分类问题。 所使用的双类分类器决定了准确度、定型时间和线性属性。
 
@@ -220,7 +225,7 @@ VW 在这里分类，因为可以学习分类和回归问题，甚至可以从�
 VW 由 Microsoft Research 的 John Langford 发起并领导，是改装车算法领域的一级方程式赛车。 不是每个问题都适用于 VW，但如果问题适合，则可能值得继续深入学习。 它也有多种语言的[独立开放源代码](https://github.com/JohnLangford/vowpal_wabbit)。
 
 ## <a name="more-help-with-algorithms"></a>有关算法的跟多帮助
-* 有关说明算法并提供示例的可下载信息图，请参阅[可下载的信息图：具有算法示例的机器学习基础知识](machine-learning-basics-infographic-with-algorithm-examples.md)。
+* 有关说明算法并提供示例的可下载信息图，请参阅[可下载的信息图：包含算法示例的机器学习基础知识](machine-learning-basics-infographic-with-algorithm-examples.md)。
 * 有关 Azure 机器学习工作室中所有可用的机器学习算法的种类列表，请参阅“机器学习工作室算法和模块帮助”中的[初始化模型][initialize-model]。
 * 有关 Azure 机器学习工作室中算法和模块的完整列表（按字母顺序排列），请参阅“机器学习工作室算法和模块帮助”中的[机器学习工作室模块 A-Z 列表][a-z-list]。
 * 若要下载和打印 Azure 机器学习工作室功能概述示意图，请参阅 [Azure 机器学习工作室功能的概要示意图](machine-learning-studio-overview-diagram.md)。
@@ -238,9 +243,4 @@ VW 由 Microsoft Research 的 John Langford 发起并领导，是改装车算法
 [8]: ./media/machine-learning-algorithm-choice/image8.png
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

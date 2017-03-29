@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/20/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: f2586eae5ef0437b7665f9e229b0cc2749bff659
-ms.openlocfilehash: 894856c6386b26610ca5078238a88adcdd2d9a03
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 5ad5c688bae7b20ce6e5830e8c7b8dfa9c6df701
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -66,9 +67,9 @@ DocumentDB 的更改源默认已针对所有帐户启用，不会在帐户中产
 
 ![DocumentDB 更改源的分布式处理](./media/documentdb-change-feed/changefeedvisual.png)
 
-以下部分将介绍如何使用 DocumentDB REST API 和 SDK 访问更改源。
+以下部分将介绍如何使用 DocumentDB REST API 和 SDK 访问更改源。 对于 .NET 应用程序，建议使用[更改源处理器库]()处理来自更改源的事件。
 
-## <a name="working-with-the-rest-api-and-sdk"></a>使用 REST API 和 SDK
+## <a id="rest-apis"></a>使用 REST API 和 SDK
 DocumentDB 提供名为**集合**的弹性存储和吞吐量容器。 集合中的数据已使用[分区键](documentdb-partition-data.md)进行逻辑分组，以提高可伸缩性与性能。 DocumentDB 提供各种 API 来访问这些数据，包括按 ID（读取/获取）、查询和读取源（扫描）进行查找。 可以通过在 DocumentDB 的 `ReadDocumentFeed` API 中填充两个新请求标头来获取更改源，然后跨多个分区键范围并行处理更改源。
 
 ### <a name="readdocumentfeed-api"></a>ReadDocumentFeed API
@@ -88,8 +89,6 @@ DocumentDB 提供名为**集合**的弹性存储和吞吐量容器。 集合中�
 
 **串行读取文档源**
 
-![DocumentDB ReadDocumentFeed 串行执行](./media/documentdb-change-feed/readfeedserial.png)
-
 用户还可以使用某个支持的 [DocumentDB SDK](documentdb-sdk-dotnet.md) 检索文档源。 例如，下面的代码片段演示如何在 .NET 中执行 ReadDocumentFeed。
 
     FeedResponse<dynamic> feedResponse = null;
@@ -99,15 +98,10 @@ DocumentDB 提供名为**集合**的弹性存储和吞吐量容器。 集合中�
     }
     while (feedResponse.ResponseContinuation != null);
 
-> [!NOTE]
-> 更改源需要 SDK 1.11.0 和更高版本（目前以个人预览版提供）
-
 ### <a name="distributed-execution-of-readdocumentfeed"></a>ReadDocumentFeed 的分布式执行
 对于包含 TB 量级数据的集合，或者在引入大量更新的情况下，从一台客户端计算机以串行方式执行源读取可能不可行。 为了支持这些大数据方案，DocumentDB 提供了相应的 API，以透明方式在多个客户端读取者/使用者之间分布 `ReadDocumentFeed` 调用。 
 
 **分布式读取文档源**
-
-![DocumentDB ReadDocumentFeed 分布式执行](./media/documentdb-change-feed/readfeedparallel.png)
 
 为了针对增量更改提供可缩放的处理，DocumentDB 根据分区键的范围提供更改源 API 的扩展模型支持。
 
@@ -337,15 +331,27 @@ ReadDocumentFeed 支持使用以下方案/任务对 DocumentDB 集合中的更�
         // trigger an action, like call an API
     }
 
+## <a id="change-feed-processor"></a>更改源处理器库
+[DocumentDB 更改源处理器库](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/ChangeFeedProcessor)可用于从多个使用者的更改源分发事件处理。 在 .NET 平台上生成更改源读取器时，应使用此实现。 `ChangeFeedProcessorHost` 类为事件处理器实现提供线程安全、多进程安全的运行时环境，该环境还能提供检查点和分区租用管理。
+
+若要使用 [`ChangeFeedProcessorHost`](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/ChangeFeedProcessor/DocumentDB.ChangeFeedProcessor/ChangeFeedEventHost.cs) 类，可实现 [`IChangeFeedObserver`](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/ChangeFeedProcessor/DocumentDB.ChangeFeedProcessor/IChangeFeedObserver.cs)。 此接口包含三个方法：
+
+* OpenAsync
+* CloseAsync
+* ProcessEventsAsync
+
+若要开始处理事件，请实例化 ChangeFeedProcessorHost，并为 DocumentDB 集合提供适当的参数。 然后，调用 `RegisterObserverAsync` 在运行时注册 `IChangeFeedObserver` 实现。 此时，主机将尝试使用“贪婪”算法获取 DocumentDB 集合内每个分区键范围上的租约。 这些租约将持续指定的时限，然后你必须续订。 当新节点（本例中的工作线程实例）进入联机状态时，它们将保留租约，以后每次尝试获取更多租约时，负载将在节点之间转移。
+
+![使用 DocumentDB 更改源处理器主机](./media/documentdb-change-feed/changefeedprocessor.png)
+
+经过一段时间后，就会建立平衡。 通过这种动态功能，可以向使用者应用基于 CPU 的自动缩放，以实现向上扩展和向下缩减。 如果 DocumentDB 中的更改提供速率超过了使用者可以处理的速率，则可使用使用者的 CPU 增大功能来实现辅助角色实例数的自动缩放。
+
+ChangeFeedProcessorHost 类还使用单独的 DocumentDB 租约集合实现了检查点机制。 此机制按分区存储偏移量，使每个使用者都能确定前一个使用者的最后一个检查点是什么。 当分区通过租约在节点之间转移时，正是这个同步机制在促进负载转移。
+
 本文逐步讲解了 DocumentDB 的更改源支持，以及如何使用 DocumentDB REST API 和/或 SDK 跟踪对 DocumentDB 数据所做的更改。 
 
 ## <a name="next-steps"></a>后续步骤
 * 尝试 [Github 上的 DocumentDB 更改源代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)
 * 详细了解 [DocumentDB 的资源模型和层次结构](documentdb-resources.md)
 * 使用 [DocumentDB SDK](documentdb-sdk-dotnet.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 开始编写代码
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "使用 PowerShell 控制路由和虚拟设备 | Microsoft 文档"
+title: "在 Azure 中控制路由和虚拟设备 - PowerShell | Microsoft Docs"
 description: "了解如何使用 PowerShell 控制路由和虚拟设备。"
 services: virtual-network
 documentationcenter: na
@@ -16,19 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: 634e303d7052b35b478b15ff1a27220853bed5de
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 3ab24f193c74449ae7414b4ea0675c0aae0211f4
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="create-user-defined-routes-udr-using-powershell"></a>使用 PowerShell 创建用户定义的路由 (UDR)
 
 > [!div class="op_single_selector"]
-- [PowerShell](virtual-network-create-udr-arm-ps.md)
-- [Azure CLI](virtual-network-create-udr-arm-cli.md)
-- [模板](virtual-network-create-udr-arm-template.md)
-- [PowerShell（经典）](virtual-network-create-udr-classic-ps.md)
-- [CLI（经典）](virtual-network-create-udr-classic-cli.md)
+> * [PowerShell](virtual-network-create-udr-arm-ps.md)
+> * [Azure CLI](virtual-network-create-udr-arm-cli.md)
+> * [模板](virtual-network-create-udr-arm-template.md)
+> * [PowerShell（经典）](virtual-network-create-udr-classic-ps.md)
+> * [CLI（经典）](virtual-network-create-udr-classic-cli.md)
 
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
@@ -272,10 +273,5 @@ ms.openlocfilehash: 634e303d7052b35b478b15ff1a27220853bed5de
         EnableIPForwarding   : True
         NetworkSecurityGroup : null
         Primary              : True
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 4e5d915d474d7ea161f467def931e3013255f843
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 202684a1ae1106d79b9cee4e4ebf20ffa283f41b
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -45,6 +45,13 @@ Microsoft Azure DocumentDB 服务的客户端管理查看器/资源管理器。
 DoQmentDB 是一个以 Node.js Promise 为基础的客户端，可在 DocumentDB 之上提供类似 MongoDB 的层。
 
 在 [Github](https://github.com/a8m/doqmentdb) 和 [npm](https://www.npmjs.com/package/doqmentdb) 上了解相关信息。
+
+### <a name="typescript-api"></a>TypeScript API
+作者：Jelmer Cormont
+
+使用 TypeScript 编写（也可使用普通 JavaScript 编写）的围绕 Node.js 客户端的包装器。 支持 `async/await` 和简化的 API。
+
+在 [Github](https://github.com/jcormont/documentdb-typescript) 和 [npm](https://www.npmjs.com/package/documentdb-typescript) 上了解相关信息。
 
 ### <a name="swagger-rest-api-for-documentdb"></a>DocumentDB 的 Swagger REST API
 作者：Howard Edidin

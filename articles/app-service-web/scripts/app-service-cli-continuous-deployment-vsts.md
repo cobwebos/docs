@@ -12,28 +12,26 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 03/20/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 5fce9171dc249445d78cee248fb2a7ec62a3dabb
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a2009cb07ae2ae7cf716d77a7d9eac7482138ab1
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-web-app-with-continuous-deployment-from-visual-studio-team-services"></a>从 Visual Studio Team Services 使用连续部署创建 Web 应用
 
-此示例脚本使用 Azure CLI 2.0 执行以下操作： 
+此示例脚本使用其相关资源在应用服务中创建 Web 应用，然后在 Visual Studio Team Services 存储库中设置连续部署。 
 
-* 在欧洲西部 Azure 区域的 Azure 应用服务中创建 Web 应用。 
-* 从 Visual Studio Team Services 部署 Web 应用代码。
-* 在浏览器中显示已部署的 Azure Web 应用。
+必要时，请使用 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中的指令安装 Azure CLI。 同时，请确保：
 
-## <a name="prerequisites"></a>先决条件
+- 已使用 `az login` 命令创建与 Azure 的连接。
+- 应用程序代码位于你拥有的 Visual Studio Team Services 存储库中。
+- 你已在 [Visual Studio Team Services 帐户中创建访问令牌](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate)。
 
-* 运行 `az login` 登录到 Azure。
-* 将 Web 应用代码放入 Visual Studio Team Services 存储库中。
-* 为你拥有的 Visual Studio Team Services 存储库[创建访问令牌](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate)。
+此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../../virtual-machines/virtual-machines-windows-cli-options.md)。
 
 ## <a name="create-app-sample"></a>创建应用示例
 

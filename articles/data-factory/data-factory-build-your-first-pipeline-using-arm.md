@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 1820b25f1cf426d0a81588a00dc5f26073ebb9f8
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 38e8320c09c5aa870018081a29911611f09a3e3a
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -390,15 +391,15 @@ JSON 模板中定义了以下数据工厂实体：
     "type": "linkedservices",
     "name": "[variables('azureStorageLinkedServiceName')]",
     "dependsOn": [
-        "[variables('dataFactoryName')]"
+          "[variables('dataFactoryName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-        "type": "AzureStorage",
-        "description": "Azure Storage linked service",
-        "typeProperties": {
+          "type": "AzureStorage",
+          "description": "Azure Storage linked service",
+          "typeProperties": {
             "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
-        }
+          }
     }
 }
 ```
@@ -412,18 +413,18 @@ JSON 模板中定义了以下数据工厂实体：
     "type": "linkedservices",
     "name": "[variables('hdInsightOnDemandLinkedServiceName')]",
     "dependsOn": [
-        "[variables('dataFactoryName')]"
+          "[variables('dataFactoryName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-        "type": "HDInsightOnDemand",
-        "typeProperties": {
+          "type": "HDInsightOnDemand",
+          "typeProperties": {
             "clusterSize": 1,
             "version": "3.2",
             "timeToLive": "00:05:00",
             "osType": "windows",
             "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
-        }
+          }
     }
 }
 ```
@@ -438,64 +439,64 @@ JSON 模板中定义了以下数据工厂实体：
 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 
 #### <a name="azure-blob-input-dataset"></a>Azure Blob 输入数据集
-指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)（Azure Blob 数据集属性）。 
+指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。 
 
 ```json
 {
     "type": "datasets",
     "name": "[variables('blobInputDatasetName')]",
     "dependsOn": [
-        "[variables('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]"
+          "[variables('dataFactoryName')]",
+          "[variables('azureStorageLinkedServiceName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
-        "typeProperties": {
+          "type": "AzureBlob",
+          "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
+          "typeProperties": {
             "fileName": "[parameters('inputBlobName')]",
             "folderPath": "[concat(parameters('blobContainer'), '/', parameters('inputBlobFolder'))]",
             "format": {
-                "type": "TextFormat",
-                "columnDelimiter": ","
+                  "type": "TextFormat",
+                  "columnDelimiter": ","
             }
-        },
-        "availability": {
+          },
+          "availability": {
             "frequency": "Month",
             "interval": 1
-        },
-        "external": true
+          },
+          "external": true
     }
 }
 ```
 此定义使用参数模板中定义的以下参数：blobContainer、inputBlobFolder 和 inputBlobName。 
 
 #### <a name="azure-blob-output-dataset"></a>Azure Blob 输出数据集
-指定用于保存输出数据的 Blob 容器和文件夹的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)（Azure Blob 数据集属性）。  
+指定用于保存输出数据的 Blob 容器和文件夹的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。  
 
 ```json
 {
     "type": "datasets",
     "name": "[variables('blobOutputDatasetName')]",
     "dependsOn": [
-        "[variables('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]"
+          "[variables('dataFactoryName')]",
+          "[variables('azureStorageLinkedServiceName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
-        "typeProperties": {
+          "type": "AzureBlob",
+          "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
+          "typeProperties": {
             "folderPath": "[concat(parameters('blobContainer'), '/', parameters('outputBlobFolder'))]",
             "format": {
-                "type": "TextFormat",
-                "columnDelimiter": ","
+                  "type": "TextFormat",
+                  "columnDelimiter": ","
             }
-        },
-        "availability": {
+          },
+          "availability": {
             "frequency": "Month",
             "interval": 1
-        }
+          }
     }
 }
 ```
@@ -510,51 +511,51 @@ JSON 模板中定义了以下数据工厂实体：
     "type": "datapipelines",
     "name": "[variables('pipelineName')]",
     "dependsOn": [
-        "[variables('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]",
-        "[variables('hdInsightOnDemandLinkedServiceName')]",
-        "[variables('blobInputDatasetName')]",
-        "[variables('blobOutputDatasetName')]"
+          "[variables('dataFactoryName')]",
+          "[variables('azureStorageLinkedServiceName')]",
+          "[variables('hdInsightOnDemandLinkedServiceName')]",
+          "[variables('blobInputDatasetName')]",
+          "[variables('blobOutputDatasetName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-        "description": "Pipeline that transforms data using Hive script.",
-        "activities": [
+          "description": "Pipeline that transforms data using Hive script.",
+          "activities": [
         {
-            "type": "HDInsightHive",
-            "typeProperties": {
+              "type": "HDInsightHive",
+              "typeProperties": {
                 "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
                 "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
                 "defines": {
-                    "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
-                    "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
+                      "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
+                      "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
                 }
-            },
-            "inputs": [
+              },
+              "inputs": [
             {
-                "name": "[variables('blobInputDatasetName')]"
+                  "name": "[variables('blobInputDatasetName')]"
             }
-            ],
-            "outputs": [
+              ],
+              "outputs": [
             {
-                "name": "[variables('blobOutputDatasetName')]"
+                  "name": "[variables('blobOutputDatasetName')]"
             }
-            ],
-            "policy": {
+              ],
+              "policy": {
                 "concurrency": 1,
                 "retry": 3
-            },
-            "scheduler": {
+              },
+              "scheduler": {
                 "frequency": "Month",
                 "interval": 1
-            },
-            "name": "RunSampleHiveActivity",
-            "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
+              },
+              "name": "RunSampleHiveActivity",
+              "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
         }
-        ],
-        "start": "2016-10-01T00:00:00Z",
-        "end": "2016-10-02T00:00:00Z",
-        "isPaused": false
+          ],
+          "start": "2016-10-01T00:00:00Z",
+          "end": "2016-10-02T00:00:00Z",
+          "isPaused": false
     }
 }
 ```
@@ -619,10 +620,5 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
 | [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 | [使用监视应用监视和管理管道](data-factory-monitor-manage-app.md) |本文介绍如何使用监视和管理应用来监视、管理和调试管道。 |
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

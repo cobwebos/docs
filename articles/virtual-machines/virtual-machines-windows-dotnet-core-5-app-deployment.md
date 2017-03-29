@@ -17,9 +17,9 @@ ms.date: 11/21/2016
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 495ee4a14e779099f828db0c08068bc3772cd7d4
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 2d60af167b8d7805e6f01264de84fb1351d85f98
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -120,6 +120,46 @@ New-Website -Name "MusicStore" -Port 80 -PhysicalPath C:\music\ -ApplicationPool
   }
 }
 ```
+
+如上所述，还可将自定义脚本存储在 Azure Blob 存储中。 可通过两种方式将脚本资源存储在 blob 存储中：公开容器/脚本并遵循上述方法，或将其保存在专用 blob 存储中；后者需要向 CustomScriptExtension 资源定义提供 storageAccountName 和 storageAccountKey。
+
+在下例中，进一步执行了操作。 虽然可在部署期间将存储帐户名称和密钥提供为参数或变量，但 Resource Manager 模板提供了 `listKeys` 函数；该函数可按编程方式获取存储帐户密钥并在部署时将其插入到模板中。
+
+在下面的 CustomScriptExtension 资源定义示例中，自定义脚本已上传到另一个 `mysa999rgname` 资源组中名为 `mystorageaccount9999` 的 Azure 存储帐户。 在部署包含此资源的模板时，`listKeys` 函数会按编程方式获取资源组 `mysa999rgname` 中的存储帐户 `mystorageaccount9999` 的存储帐户密钥，并将其代为插入到模板中。
+
+```json
+{
+  "apiVersion": "2015-06-15",
+  "type": "extensions",
+  "name": "config-app",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
+    "[variables('musicstoresqlName')]"
+  ],
+  "tags": {
+    "displayName": "config-app"
+  },
+  "properties": {
+    "publisher": "Microsoft.Compute",
+    "type": "CustomScriptExtension",
+    "typeHandlerVersion": "1.7",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+      "fileUris": [
+        "https://mystorageaccount9999.blob.core.windows.net/container/configure-music-app.ps1"
+      ]
+    },
+    "protectedSettings": {
+      "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 -user ',parameters('adminUsername'),' -password ',parameters('adminPassword'),' -sqlserver ',variables('musicstoresqlName'),'.database.windows.net')]",
+      "storageAccountName": "mystorageaccount9999",
+      "storageAccountKey": "[listKeys(resourceId('mysa999rgname','Microsoft.Storage/storageAccounts', mystorageaccount9999), '2015-06-15').key1]"
+    }
+  }
+}
+```
+
+此方法的主要优点是，在存储帐户密钥更改的情况下，无需更改模板和部署参数。
 
 有关使用自定义脚本扩展的详细信息，请参阅 [Custom script extensions with Resource Manager templates](virtual-machines-windows-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（使用 Resource Manager 模板自定义脚本扩展）。
 

@@ -41,4 +41,4 @@ Azure 虚拟机代理（VM 代理）是一个安全的轻型进程，用于在 A
 >
 
 ## <a name="find-add-update-and-remove-vm-extensions"></a>查找、添加、更新和删除 VM 扩展
-有关这些任务的详细信息，请参阅[添加、查找、更新和删除 Azure VM 扩展](../articles/virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+有关这些任务的详细信息，请参阅[添加、查找、更新和删除 Azure VM 扩展](../articles/virtual-machines/windows/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。

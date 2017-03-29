@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d2a65104743d9497debdc85c134fd1a06114c514
-ms.openlocfilehash: 18227576b14fdf4bb8aa11a673f33075c3a380a8
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: d716f11818bc0ad6dd9e5f93951b011dd6774c7b
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -66,7 +66,7 @@ ms.lasthandoff: 02/23/2017
 
 ### <a name="step-1"></a>步骤 1
 
-若要下载流日志，请单击“从配置的存储帐户下载流日志”。  这会将你转到存储帐户视图，你可以在其中导航到要下载的日志。
+若要下载流日志，请单击“可从配置的存储帐户下载流日志”。  这会将你转到存储帐户视图，你可以在其中导航到要下载的日志。
 
 ![流日志设置][4]
 
@@ -95,3 +95,4 @@ ms.lasthandoff: 02/23/2017
 [4]: ./media/network-watcher-nsg-flow-logging-portal/figure4.png
 [5]: ./media/network-watcher-nsg-flow-logging-portal/figure5.png
 [6]: ./media/network-watcher-nsg-flow-logging-portal/figure6.png
+

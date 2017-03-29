@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: efd7aab21a9899ed0f56ffeeda362a61d69ffdc9
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 1345af54729f278229c98e596d0d213331c2faaf
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -221,7 +221,7 @@ IoT 中心还允许设备使用 [X.509 证书][lnk-x509]向 IoT 中心进行身�
 
     var token = generateSasToken(endpoint, deviceKey, null, 60);
 
-授权访问设备&1; 的所有功能的安全令牌是：
+授权访问设备 1 的所有功能的安全令牌是：
 
     SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697
 
@@ -255,7 +255,7 @@ IoT 中心还允许设备使用 [X.509 证书][lnk-x509]向 IoT 中心进行身�
 
     var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
-授权访问设备&1; 的所有功能的安全令牌是：
+授权访问设备 1 的所有功能的安全令牌是：
 
     SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697&skn=device
 
@@ -293,7 +293,7 @@ IoT 中心还允许设备使用 [X.509 证书][lnk-x509]向 IoT 中心进行身�
 
 * **现有的 X.509 证书**。 设备可能已有与之关联的 X.509 证书。 设备可以使用此证书向 IoT 中心进行身份验证。
 * **自行生成和自签名的 X-509 证书**。 设备制造商或内部部署人员可以生成这些证书，并将相应的私钥（和证书）存储在设备上。 可以将工具（如 [OpenSSL][lnk-openssl] 和 [Windows SelfSignedCertificate][lnk-selfsigned] 实用程序）用于此目的。
-* **CA 签名的 X.509 证书**。 还可以使用证书颁发机构 (CA) 生成和签名的的 X.509 证书来识别设备并通过 IoT 中心对设备进行身份验证。
+* **CA 签名的 X.509 证书**。 还可以使用证书颁发机构 (CA) 生成和签名的的 X.509 证书来识别设备并通过 IoT 中心对设备进行身份验证。 IoTHub 仅验证提供的指纹是否与配置的指纹匹配。 IotHub 不会验证证书链。
 
 设备可以使用 X.509 证书或安全令牌进行身份验证，但不能同时使用这两者。
 

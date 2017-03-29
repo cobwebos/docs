@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: c81b83143afaab3acf625dc98269b35973185d77
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 236d38fcda90643992f66c9b2f4d92180e4463f5
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -38,9 +38,14 @@ ms.lasthandoff: 03/08/2017
 实验室是包含一组资源（例如，虚拟机 (VM)）的基础结构，通过指定限制和配额可以更好地管理这些资源。
 
 ## <a name="virtual-machine"></a>虚拟机
-Azure VM 是 Azure 提供的多种[可缩放按需分配计算资源](https://docs.microsoft.com/en-us/azure/app-service-web/choose-web-site-cloud-service-vm)之一。 无需购买和维护运行 Azure VM 的物理硬件，Azure VM 即可为你提供虚拟化灵活性，尽管你仍需要执行某些任务（如配置、修补和安装在 Azure VM 上运行的软件）来维护 VM。
+Azure VM 是 Azure 提供的多种[可缩放按需分配计算资源](https://docs.microsoft.com/azure/app-service-web/choose-web-site-cloud-service-vm)之一。 无需购买和维护运行 Azure VM 的物理硬件，Azure VM 即可为你提供虚拟化灵活性，尽管你仍需要执行某些任务（如配置、修补和安装在 Azure VM 上运行的软件）来维护 VM。
 
-[Azure 中的 Windows 虚拟机概述](https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-overview)提供有关在创建 VM 之前应考虑的信息、如何创建 VM 以及如何管理 VM。
+[Azure 中的 Windows 虚拟机概述](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview)提供有关在创建 VM 之前应考虑的信息、如何创建 VM 以及如何管理 VM。
+
+## <a name="claimable-vm"></a>可声明 VM
+Azure 可声明 VM 是一种可供具备权限的任何实验室用户使用的虚拟机。 实验室管理员可准备具有特定基本映像和项目的 VM，并将其保存到共享池。 然后，当实验室用户需要具备该特定配置的 VM 时，可从池中声明一个正在运行的 VM。
+
+可声明 VM 最初并未分配给任何特定用户，但会显示在“可声明虚拟机”下每个用户的列表中。 用户声明 VM 后，该 VM 会移动到“我的虚拟机”区域，并且任何其他用户都无法再对其进行声明。
 
 ## <a name="environment"></a>环境
 在开发测试实验室中，环境是指实验室中 Azure 资源的集合。 [此博客文章](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/)讨论如何基于 Azure Resource Manager 模板创建多 VM 环境。
@@ -89,7 +94,7 @@ Azure VM 是 Azure 提供的多种[可缩放按需分配计算资源](https://do
 ## <a name="arm-templates"></a>ARM 模板
 本文中所述的所有概念均可使用 Azure Resource Manager (ARM) 模板配置。 使用 ARM 模板，可以定义 Azure 解决方案的基础结构/配置，并以一致状态重复部署它。
 
-[ARM 模板](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates#template-format)描述 Azure Resource Manager 模板的结构，以及模板的不同节中提供的属性。
+[ARM 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format)描述 Azure Resource Manager 模板的结构，以及模板的不同节中提供的属性。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

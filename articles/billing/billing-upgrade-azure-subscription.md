@@ -18,13 +18,13 @@ ms.date: 03/01/2017
 ms.author: jlian
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 3ffb5d9828c167953c6553ff34e2d0dcdfe701b0
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 55c195754f18cd52fc098061f0e16607292a1948
+ms.lasthandoff: 03/17/2017
 
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付
-在 Azure 帐户门户中将[免费试用版](https://azure.microsoft.com/free/)或 [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) 订阅升级为[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)。 
+在 Azure 帐户门户中将[免费试用版](https://azure.microsoft.com/free/)或 [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) 订阅升级为[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)。 升级本身不会产生任何费用，且只会对你所使用的服务收费。
 
 1. 登录到 [Azure 帐户门户](https://account.windowsazure.com/subscriptions)并导航到“订阅”选项卡。
 2. 在订阅状态分区中，选择“立即升级”横幅。

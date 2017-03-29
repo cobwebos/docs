@@ -4,7 +4,7 @@
 本文讨论了通过经典部署模型创建的 Azure 虚拟机的一些用户常见问题。
 
 ## <a name="can-i-migrate-my-vm-created-in-the-classic-deployment-model-to-the-new-resource-manager-model"></a>是否可以将经典部署模型中创建的 VM 迁移到新的 Resource Manager 模型？
- 是的。 有关如何迁移的说明，请参阅：
+是的。 有关如何迁移的说明，请参阅：
 
 * [使用 Azure PowerShell 从经典部署迁移到 Azure Resource Manager 部署](../articles/virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)。
 * [使用 Azure CLI 从经典部署迁移到 Azure Resource Manager 部署](../articles/virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)。
@@ -33,8 +33,8 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>可以使用哪些虚拟硬盘类型？
 Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHDX，需先使用 Hyper-V 管理器或 [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) cmdlet 对其进行转换。 然后，使用 [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) cmdlet（在“服务管理”模式下）将 VHD 上载到 Azure 的存储帐户，用于虚拟机。
 
-* 有关 Linux 说明，请参阅[创建并上载包含 Linux 操作系统的虚拟硬盘](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
-* 有关 Windows 说明，请参阅[创建 Windows Server VHD 并将其上载到 Azure](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+* 有关 Linux 说明，请参阅[创建并上载包含 Linux 操作系统的虚拟硬盘](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
+* 有关 Windows 说明，请参阅[创建 Windows Server VHD 并将其上载到 Azure](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="are-these-virtual-machines-the-same-as-hyper-v-virtual-machines"></a>这些虚拟机是否与 Hyper-V 虚拟机相同？
 在许多方面，它们与“第 1 代”Hyper-V VM 类似，但并非完全相同。 两种类型的虚拟机都提供虚拟化硬件，并且兼容 VHD 格式虚拟硬盘。 这意味着可以在 Hyper-V 与 Azure 之间交换使用它们。 同时存在以下三大区别，有时也会使 Hyper-V 用户感到惊讶：
@@ -51,7 +51,7 @@ Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHD
 ## <a name="how-can-i-access--my-virtual-machine"></a>如何访问虚拟机？
 你需要通过适用于 Windows VM 的远程桌面连接或适用于 Linux VM 的安全外壳 (SSH) 建立登录虚拟机所需的远程连接。 有关说明，请参阅：
 
-* [如何登录到运行 Windows Server 的虚拟机](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 除非将服务器配置为远程桌面服务会话主机，否则最多支持 2 个并发连接。  
+* [如何登录到运行 Windows Server 的虚拟机](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 除非将服务器配置为远程桌面服务会话主机，否则最多支持 2 个并发连接。  
 * [如何登录到运行 Linux 的虚拟机](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增大此数目。
 
 如果在使用远程桌面或 SSH 时遇到问题，请安装和使用 [VMAccess](../articles/virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 扩展帮助解决问题。
@@ -60,7 +60,7 @@ Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHD
 
 * 在 Azure 经典门户中找到 VM，然后单击命令栏中的“重置远程访问”。
 * 查看[解决远程桌面连接到基于 Windows 的 Azure 虚拟机的问题](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-* 使用 Windows PowerShell 远程连接到 VM，或创建其他终结点以方便其他资源连接到 VM。 有关详细信息，请参阅 [How to Set Up Endpoints to a Virtual Machine](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（如何设置虚拟机的终结点）。
+* 使用 Windows PowerShell 远程连接到 VM，或创建其他终结点以方便其他资源连接到 VM。 有关详细信息，请参阅 [How to Set Up Endpoints to a Virtual Machine](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（如何设置虚拟机的终结点）。
 
 如果熟悉 Hyper-V，可以寻找类似于 VMConnect 的工具。 Azure 不提供类似的工具，因为不支持通过控制台来访问虚拟机。
 
@@ -68,7 +68,7 @@ Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHD
 不得使用临时磁盘（Windows 默认的 D: 盘或 Linux 的 /dev/sdb1）存储数据。 这些磁盘只是临时存储空间，因此存在丢失数据且无法恢复数据的风险。 将虚拟机迁移到其他主机时，可能会发生这种情况。 调整虚拟机大小，更新主机和主机硬件故障都是需要迁移动虚拟机的原因。
 
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>如何更改临时磁盘的驱动器号？
-在 Windows 虚拟机中，可以通过移动页面文件和重新分配驱动器号更改驱动器号，但需要确保按特定顺序执行这些步骤。 有关说明，请参阅[更改 Windows 临时磁盘的驱动器号](../articles/virtual-machines/virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+在 Windows 虚拟机中，可以通过移动页面文件和重新分配驱动器号更改驱动器号，但需要确保按特定顺序执行这些步骤。 有关说明，请参阅[更改 Windows 临时磁盘的驱动器号](../articles/virtual-machines/virtual-machines-windows-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="how-can-i-upgrade-the-guest-operating-system"></a>如何升级来宾操作系统？
 术语“升级”通常是指迁移到更新的操作系统版本，同时保留原有硬件。 对于 Azure VM，迁移到更新的 Linux 版本和 Windows 版本是不同过程：
@@ -128,9 +128,4 @@ Azure 根据 VM 的大小和操作系统按小时价格计费。 对于不足一
 [创建 Linux 虚拟机的不同方式](../articles/virtual-machines/virtual-machines-linux-creation-choices.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [创建 Windows 虚拟机的不同方式](../articles/virtual-machines/virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
