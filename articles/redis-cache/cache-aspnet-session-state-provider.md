@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/14/2017
+ms.date: 03/22/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 70341f4a14ee807a085931c3480a19727683e958
-ms.openlocfilehash: 34e54378a8626e36fd56ef3fe52f0748a3fec2a2
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 56a55bc10c9cf16751c713da302dcd59362ab80f
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -27,18 +27,18 @@ Azure Redis Cache 提供一个会话状态提供程序，可用于在缓存而�
 在实际云应用中避免存储某种形式的用户会话状态通常是不现实的，但某些方法相比其他方法而言，对性能和可伸缩性的影响更大。 如果你需要存储状态，最佳解决方案是使状态量保持较小并将其存储在 Cookie 中。 如果这不可行，下一个最佳解决方案是将 ASP.NET 会话状态与提供程序配合使用以实现分布式内存中缓存。 从性能和可伸缩性的角度来看，最差的解决方案是使用数据库支持的会话状态提供程序。 本主题提供有关使用 Azure Redis 缓存的 ASP.NET 会话状态提供程序的指南。 有关其他会话状态选项的信息，请参阅 [ASP.NET 会话状态选项](#aspnet-session-state-options)。
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>在缓存中存储 ASP.NET 会话状态
-若要使用 Redis 缓存会话状态 NuGet 包配置客户端应用程序，请在“解决方案资源管理器”中右键单击项目，然后选择“管理 NuGet 包”。
+若要使用 Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”。
 
-![Azure Redis 缓存管理 NuGet 包](./media/cache-aspnet-session-state-provider/redis-cache-manage-nuget-menu.png)
-
-在搜索文本框中键入 **RedisSessionStateProvider**，从结果中选择它，然后单击“安装”。
+从 `Package Manager Console` 窗口运行以下命令。
+    
+```
+Install-Package Microsoft.Web.RedisSessionStateProvider
+```
 
 > [!IMPORTANT]
-> 如果使用高级层的聚类分析功能，则必须使用 [RedisSessionStateProvider 2.0.1](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 或更高版本，否则会引发异常。 移到 2.0.1 或更高版本是一项重大更改；有关详细信息，请参阅 [v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)（2.0.0 版重大更改详细信息）。
+> 如果使用高级层的聚类分析功能，则必须使用 [RedisSessionStateProvider 2.0.1](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 或更高版本，否则会引发异常。 移到 2.0.1 或更高版本是一项重大更改；有关详细信息，请参阅 [v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)（2.0.0 版重大更改详细信息）。 本文更新时，此包的当前版本是 2.2.3。
 > 
 > 
-
-![Azure Redis 缓存会话状态提供程序](./media/cache-aspnet-session-state-provider/redis-cache-session-state-provider.png)
 
 Redis 会话状态提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName 包。 如果项目中没有 StackExchange.Redis.StrongName 包，则会安装它。
 

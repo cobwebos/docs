@@ -15,14 +15,17 @@ ms.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: d31d4c390d5e03c8b206284c3ae75defed2a38af
-ms.openlocfilehash: 83bedb42e8e685f5ea65e160ab7bfe128236ef82
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 2d5201a335e96cc8595de834858750f6aac884a3
+ms.lasthandoff: 03/17/2017
 
 
 ---
 # <a name="azure-log-integration-frequently-asked-questions-faq"></a>Azure 日志集成常见问题 (FAQ)
 此常见问题回答有关 Azure 日志集成的问题，这项服务使你能够将来自 Azure 资源原始日志集成到本地安全信息和事件管理 (SIEM) 系统中。 此集成为本地或云中的所有资产提供统一的仪表板，以便聚合、相互关联、分析和警示与应用程序相关的安全事件。
+
+## <a name="is-the-azure-log-integration-software-free"></a>Azure 日志集成软件是否免费？
+是的。 Azure 日志集成软件不产生任何费用。 
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs-from"></a>如何查看 Azure 日志集成从中提取 Azure VM 日志的存储帐户？
 运行 **azlog source list** 命令。

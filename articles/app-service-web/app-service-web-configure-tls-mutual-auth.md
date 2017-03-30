@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: db2f48b248e2232f913a99b4ffbc0d18b77407e8
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: db69852cffd1ff331ac4a640b04ea4360d00bf75
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -40,13 +40,16 @@ ms.lasthandoff: 11/17/2016
 
 将 {} 中的所有内容替换为 Web 应用的信息，并创建包含以下 JSON 内容的 enableclientcert.json 文件：
 
-> { "location": "Web 应用位置",   
-> "properties": {  
-> "clientCertEnabled": true } }  
-> 
-> 
+    {
+        "location": "My Web App Location",
+        "properties": {
+            "clientCertEnabled": true
+        }
+    }
 
 确保将“location”的值更改为 Web 应用所在的位置，例如美国中北部、美国西部等。
+
+也可使用 https://resources.azure.com 将 `clientCertEnabled` 属性切换为 `true`。
 
 > **注意：**如果从 Powershell 运行 ARMClient，必须使用重音符 ` 为 JSON 文件转义 @ 符号。
 > 

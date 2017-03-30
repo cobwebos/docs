@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: a7cf17e7c84ca6ec69b8a88b78bb0bbc91db0b5b
-ms.openlocfilehash: 30248b5f00aaf2d81db79b5a690760f816384723
-ms.lasthandoff: 12/29/2016
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: d6695b0c40f56093e8701dfe6394143268114453
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -129,7 +129,7 @@ if ($sp -ne $null)
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>用户无法登录 Azure AD 域服务托管域
 如果 Azure AD 租户中有一个或多个用户无法登录到新建的托管域，请执行以下故障排除步骤：
 
-* **使用 UPN 格式登录：**尝试使用 UPN 格式（例如 'joeuser@contoso.com') 登录，而不要使用 SAMAccountName 格式（例如“CONTOSO\joeuser”）。 对于 UPN 前缀过长或与托管域上另一用户相同的用户，系统可能会自动生成 SAMAccountName。 UPN 格式可保证在 Azure AD 租户中唯一。
+* **使用 UPN 格式登录：**尝试使用 UPN 格式（例如“joeuser@contoso.com”）而非 SAMAccountName 格式（例如“CONTOSO\joeuser”）登录。 对于 UPN 前缀过长或与托管域上另一用户相同的用户，系统可能会自动生成 SAMAccountName。 UPN 格式可保证在 Azure AD 租户中唯一。
 
 > [!NOTE]
 > 建议使用 UPN 格式登录到 Azure AD 域服务托管域。
@@ -137,7 +137,7 @@ if ($sp -ne $null)
 >
 
 * 确保根据《入门指南》中所述的步骤[启用密码同步](active-directory-ds-getting-started-password-sync.md)。
-* **外部帐户：**确保受影响的用户帐户不是 Azure AD 租户中的外部帐户。 外部帐户的示例包括 Microsoft 帐户（例如 'joe@live.com')，或来自外部 Azure AD 目录的用户帐户。 由于 Azure AD 域服务没有此类用户帐户的凭据，因此这些用户无法登录到托管域。
+* **外部帐户：**确保受影响的用户帐户不是 Azure AD 租户中的外部帐户。 外部帐户的示例包括 Microsoft 帐户（例如“joe@live.com”），或来自外部 Azure AD 目录的用户帐户。 由于 Azure AD 域服务没有此类用户帐户的凭据，因此这些用户无法登录到托管域。
 * **已同步的帐户：**如果受影响的用户帐户已从本地目录同步，请确认：
 
   * 已部署或更新到[最新版本的 Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594)。
@@ -151,6 +151,8 @@ if ($sp -ne $null)
 
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>从 Azure AD 租户中删除的用户不会从托管域中删除
 Azure AD 会防止意外删除用户对象。 如果从 Azure AD 租户中删除某个用户帐户，相应的用户对象将移到回收站。 将此删除操作同步到托管域时，会导致相应的用户帐户标记为已禁用。 今后可以借助此功能来恢复或取消删除用户帐户。
+
+即使在 Azure AD 目录中重新创建带相同 UPN 的用户帐户，托管域中的用户帐户仍处于禁用状态。 若要从托管域中删除用户帐户，需要从 Azure AD 租户中强制删除该帐户。
 
 若要从托管域中完全删除用户帐户，可以从 Azure AD 租户中永久删除该用户。 如此 [MSDN 文章](https://msdn.microsoft.com/library/azure/dn194132.aspx)中所述，结合 '-RemoveFromRecycleBin' 选项使用 Remove-MsolUser PowerShell cmdlet 即可。
 

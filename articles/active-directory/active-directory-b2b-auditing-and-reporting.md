@@ -1,6 +1,6 @@
 ---
 title: "审核和报告 Azure Active Directory B2B 协作用户 | Microsoft 文档"
-description: "Azure Active Directory B2B 协作用户属性是可配置的"
+description: "可在 Azure Active Directory B2B 协作中配置来宾用户属性"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -13,19 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e25c0dab34f0977b4511046ad53f4c0b409990
-ms.openlocfilehash: fd2fe0046d0709bc4527cb680795610daae01a87
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 867a1c8dda37815663fa3fb095351fa3854a52cc
+ms.lasthandoff: 03/17/2017
 
 
 ---
 
 
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>审核和报告 B2B 协作用户
-对于来宾用户，在此预览版中，你现在具有与成员用户同等的审核功能。 下面是刚受邀的 Sam Oogle 的邀请和兑换历史记录的示例：
+对于来宾用户，你在此预览版中具有与成员用户类似的审核功能。 下面是受邀人 Sam Oogle 的邀请和兑换历史记录的示例：
 
 ![审核日志](./media/active-directory-b2b-auditing-and-reporting/audit-log.png)
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/23/2017
 
 ![活动详细信息](./media/active-directory-b2b-auditing-and-reporting/activity-details.png)
 
-还可以从 Azure AD 导出这些日志，并使用所选报表工具以获取自定义报表。
+还可以从 Azure AD 导出这些日志，并使用所选报表工具获取自定义报表。
 
 ### <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: " 在 Azure Site Recovery 中管理配置服务器 | Microsoft 文档s"
+title: " 在 Azure Site Recovery 中管理配置服务器 | Microsoft Docs"
 description: "本文介绍如何设置和管理配置服务器。"
 services: site-recovery
 documentationcenter: 
@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/14/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 73d5f91f31780350c68b3475c2cbbb597f9b438e
-ms.openlocfilehash: 0c8f37055a6c64a54009ecafd883426824dcd901
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 3a02171d52b6d963a93a654d2506269e29f1be8e
+ms.lasthandoff: 03/18/2017
 
 ---
 
@@ -128,7 +128,7 @@ ProxyPassword="Password"
 
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>将配置服务器注册到不同的恢复服务保管库。
 1. 登录到配置服务器。
-2. 在管理员命令提示窗口中，运行命令
+2. 在管理员命令提示符中，运行命令
 
 ```
 reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration

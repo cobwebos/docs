@@ -13,29 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 03/20/2017
 ms.author: jlian
 translationtype: Human Translation
-ms.sourcegitcommit: 1b738d952685fe71e5a1eecd809afae1c9904267
-ms.openlocfilehash: 8f32c2c85d2f6c2265048e58d5c2b0256fa020bd
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: af53cea83d2e348b2c73e56cf4b6ce5a875bce18
+ms.lasthandoff: 03/22/2017
 
 
 ---
-# <a name="getting-started-with-azure-billing-and-cost-management"></a>Azure 计费和成本管理入门
+# <a name="prevent-unexpected-costs-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外成本
 
-注册 Azure 时，需要做几件事情，以便更好地了解费用。 在 Azure 门户中可查看当前成本明细和消耗率。 还可以下载过去的发票和详细的使用情况文件。 如果要对不同项目或团队使用的资源的成本进行分组，请查看资源标记。 如果组织有你希望使用的报告系统，请查看计费 API。 
+注册 Azure 时，可以做几件事情，以便更好地了解费用。 在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择订阅时，可查看当前成本明细和消耗率。 还可以[下载过去的发票和详细的使用情况文件](billing-download-azure-invoice-daily-usage-date.md)。 如果要对不同项目或团队使用的资源的成本进行分组，请查看[资源标记](../azure-resource-manager/resource-group-using-tags.md)。 如果组织有你希望使用的报告系统，请查看[计费 API](billing-usage-rate-card-overview.md)。 
 
-如果是企业协议 (EA)、云解决方案提供商 (CSP) 或 Azure 赞助客户，则本文中的许多功能不适用。 但我们有另外一组工具可用于成本管理，请参阅[针对 EA、CSP 和赞助的其他资源](#other-offers)。
+有关每日使用情况的详细信息，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。
 
-如果是免费试用版、[Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)、Azure 开放许可 (AIO) 或 BizSpark 客户，请了解[支出限制](#spending-limit)，以避免被禁用。 
+如果是通过企业协议 (EA)、云解决方案提供商 (CSP) 或 Azure 赞助订阅的，则本文中的许多功能不适用。 但是，我们另一组可用于成本管理的工具。 请参阅[适用于 EA、CSP 和赞助的其他资源](#other-offers)。
 
-## <a name="before-you-add-azure-services"></a>添加 Azure 服务之前
+如果你的订阅是免费试用版、[Visual Studio ](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)、Azure 开放许可 (AIO) 或 BizSpark，请了解[支出限制](#spending-limit)以避免订阅被意外禁用。 
+
+## <a name="day-0-before-you-add-azure-services"></a>第 0 天：添加 Azure 服务之前
 
 ### <a name="estimate-cost-online-using-the-pricing-calculator"></a>使用定价计算器在线估计成本
 
-查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)和[总拥有成本计算器](https://aka.ms/azure-tco-calculator)，以估算感兴趣的服务的每月成本。 例如，如果 A1 Windows 虚拟机 (VM) 保持一直运行，则其计算小时数预计花费&66;.96 美元/月：
+查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)和[总拥有成本计算器](https://aka.ms/azure-tco-calculator)，以估算感兴趣的服务的每月成本。 例如，如果 A1 Windows 虚拟机 (VM) 保持一直运行，则其计算小时数预计花费 66.96 美元/月：
 
-![定价计算器的屏幕截图，图中 A1 Windows VM 预计每月花费&66;.96 美元](./media/billing-getting-started/pricing-calc.PNG)
+![定价计算器的屏幕截图，图中 A1 Windows VM 预计每月花费 66.96 美元](./media/billing-getting-started/pricing-calc.PNG)
 
 有关详细信息，请参阅[定价常见问题解答](https://azure.microsoft.com/pricing/faq/)。 如果想咨询具体人员，请拨打 1-800-867-1389。
 
@@ -51,7 +54,7 @@ ms.openlocfilehash: 8f32c2c85d2f6c2265048e58d5c2b0256fa020bd
 
 当帐户管理员不再属于组织，并且需要管理帐单时，请[与支持人员联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 
-### <a name="a-namespending-limita-check-if-you-have-a-spending-limit-on"></a><a name="spending-limit"></a>检查支出限制是否为开启状态
+### <a name="spending-limit"></a>检查支出限制是否为开启状态
 
 如果有使用信用额度的订阅，则将默认开启支出限制。 这样一来，当信用额度花完时，将不再对信用卡计费。 请参阅 [Azure 产品/服务以及支出限制可用性的完整列表](https://azure.microsoft.com/support/legal/offer-details/)。
 
@@ -76,17 +79,17 @@ ms.openlocfilehash: 8f32c2c85d2f6c2265048e58d5c2b0256fa020bd
 
 ### <a name="understand-limits-and-quotas-for-your-subscription"></a>了解订阅的限制和配额
 
-每个订阅的 CPU 内核数、IP 地址等内容有默认限制。请注意这些限制。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。 可以通过[与支持人员联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来请求增加限制或配额。
+每个订阅的 CPU 内核数、IP 地址等内容有默认限制。 请注意这些限制。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。 可以通过[与支持人员联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来请求增加限制或配额。
 
-## <a name="as-you-add-services"></a>添加服务时注意事项
+## <a name="day-1-as-you-add-services"></a>第 1 天：添加服务时
 
 ### <a name="review-the-estimated-cost-in-the-portal"></a>在门户中查看预计成本
 
 通常情况下，在 Azure 门户中添加服务时，会出现一个视图显示大概的每月预计成本。 例如，选择 Windows VM 的大小时，将看到计算小时数的每月预计成本：
 
-![示例：一台 A1 Windows VM 预计每月花费&66;.96 美元](./media/billing-getting-started/vm-size-cost.PNG)
+![示例：一台 A1 Windows VM 预计每月花费 66.96 美元](./media/billing-getting-started/vm-size-cost.PNG)
 
-### <a name="a-nametagsa-add-tags-to-your-resources-to-group-your-billing-data"></a><a name="tags"></a>对资源添加标记以便对计费数据进行分组
+### <a name="tags"></a>对资源添加标记以便对计费数据进行分组
 
 可以使用标记来对受支持服务的计费数据进行分组。 例如，当运行不同团队的多个 VM 时，则可以使用标记按成本中心（人力资源、市场营销、财务）或环境（生产，预生产、测试）对成本进行分类。 
 
@@ -104,11 +107,11 @@ ms.openlocfilehash: 8f32c2c85d2f6c2265048e58d5c2b0256fa020bd
 
 自动关闭与使用电源选项在 VM 中进行关闭不同。 自动关闭会停止并解除分配 VM，以便停止额外使用费。 有关详细信息，请参阅 [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 有关 VM 状态的定价常见问题解答。
 
-有关开发测试环境的更多降低成本功能，请参阅 [Azure 开发测试实验室](https://azure.microsoft.com/services/devtest-lab/)。
+有关开发和测试环境的更多降低成本功能，请参阅 [Azure 开发测试实验室](https://azure.microsoft.com/services/devtest-lab/)。
 
-## <a name="a-namecost-reportinga-after-using-services-view-usage"></a><a name="cost-reporting"></a>使用服务后，请查看使用情况
+## <a name="cost-reporting"></a> 两天及以上：使用服务后，查看使用情况
 
-### <a name="a-namecostsa-regularly-check-the-portal-for-cost-breakdown-and-burn-rate"></a><a name="costs"></a>定期查看门户中的成本明细和消耗率
+### <a name="costs"></a>定期查看门户中的成本明细和消耗率
 
 服务开始运行后，请定期查看其费用。 可在 Azure 门户中查看当前费用和消耗率。 
 
@@ -154,7 +157,7 @@ ms.openlocfilehash: 8f32c2c85d2f6c2265048e58d5c2b0256fa020bd
 
 有关详细信息，请参阅[顾问成本建议](../advisor/advisor-cost-recommendations.md)。
 
-### <a name="a-nameinvoice-and-usagea-get-your-invoice-and-detail-usage-after-your-first-billing-period"></a><a name="invoice-and-usage"></a>第一个计费期之后获取发票和详细使用情况
+### <a name="invoice-and-usage"></a>第一个计费期之后获取发票和详细使用情况
 
 第一个计费期之后，可下载可移植文档格式 (.pdf) 的发票和逗号分隔值 (.csv) 的使用情况详细信息。 也可以选择使用电子邮件发送发票。 这些文件有助于了解纳税、折扣和信用额度后最终向你收费的项目。 如果订阅未附有付款方式，则可能无法使用这些文件。 有关详细信息，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)和[了解你的 Microsoft Azure 帐单](billing-understand-your-bill.md)。
 
@@ -168,7 +171,7 @@ ms.openlocfilehash: 8f32c2c85d2f6c2265048e58d5c2b0256fa020bd
 
 使用计费 API 以编程方式获取使用情况数据。 同时使用 RateCard API 和使用情况 API 获取计费使用情况。 有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](billing-usage-rate-card-overview.md)。
 
-## <a name="a-nameother-offersa-additional-resources-for-ea-csp-and-sponsorship"></a><a name="other-offers"></a>EA、CSP 和赞助的其他资源
+## <a name="other-offers"></a>EA、CSP 和赞助的其他资源
 
 请咨询帐户管理员或 Azure 合作伙伴以开始使用。
 
@@ -180,8 +183,6 @@ ms.openlocfilehash: 8f32c2c85d2f6c2265048e58d5c2b0256fa020bd
 
 如果你管理大型组织的 IT，建议阅读 [Azure 企业基架](../azure-resource-manager/resource-manager-subscription-governance.md)和[企业 IT 白皮书](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf)（.pdf 下载，仅英文版）。
 
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
-
-<!--HONumber=Feb17_HO2-->
-
-
+如果需要帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

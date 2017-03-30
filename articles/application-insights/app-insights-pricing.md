@@ -1,22 +1,22 @@
 ---
-title: "管理 Application Insights 的定价和数据量 | Microsoft 文档"
+title: "管理 Azure Application Insights 的定价和数据量 | Microsoft Docs"
 description: "在 Application Insights 中管理遥测量并监视成本。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 03/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4ccd8cbfd0f3742c14a7effd7484d65be21abb63
-ms.openlocfilehash: d4db3d7a0c860c23a3a3ddecab6f79cb6b297a02
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 3f0c890056c2ee00151ebc4cc74106368a56ba2f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/18/2017
 
 如果对 Application Insights 的定价方式存在疑问，欢迎在我们的[论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights)提出问题。 
 
-## <a name="the-pricing-plans"></a>定价计划
+## <a name="the-price-plans"></a>价格计划
 
 如需当前价格（你所使用的货币），请参阅 [Application Insights 定价页][pricing]。
 
@@ -157,10 +157,9 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 在每个保留的记录中，`itemCount` 指示它表示的原始记录数，其等于 1 +（即以前已放弃的记录数）。 
 
 
-## <a name="transition-from-the-old-pricing-tiers"></a>从旧的定价层转换
+## <a name="automation"></a>自动化
 
-在 2017 年 2 月以前，现有应用程序可以继续使用旧的定价层。 到那时，大多数应用程序将自动转为基本计划。 使用连续导出的应用程序或 OMS Log Analytics 的连接器将移到企业计划。
-
+可使用 Azure 资源管理编写脚本进行价格计划设置。 [了解操作方法](app-insights-powershell.md#price)。
 
 ## <a name="limits-summary"></a>限制摘要
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]

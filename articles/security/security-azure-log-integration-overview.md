@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/03/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 6859f2f0c627c9c23703875d04b4893b58775a26
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 434961f7d25195eee3310461a3a97e03ffdd8917
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/04/2017
 ## <a name="overview"></a>概述
 Azure 中托管的平台即服务 (PaaS) 和基础结构即服务 (IaaS) 在安全日志中生成大量数据。 这些日志包含可以提供网络、主机和用户活动中的情报和深入了解其中的策略违规、内部和外部威胁、法规合规性问题和异常情况的重要信息。
 
-Azure 日志集成使你能够将原始日志从你的 Azure 资源集成到你的本地安全信息和事件管理 (SIEM) 系统。 Azure 日志集成从 Windows *(WAD)* 虚拟机、Azure 活动日志、Azure 安全中心警报和 Azure 资源提供程序日志收集 Azure 诊断。 此集成为本地或云中的所有资产提供统一的仪表板，以便你可以针对安全事件进行聚合、关联、分析和发出警报。
+Azure 日志集成是一种免费的解决方案，可用于将原始日志从 Azure 资源集成到本地安全信息和事件管理 (SIEM) 系统。 Azure 日志集成从 Windows *(WAD)* 虚拟机、Azure 活动日志、Azure 安全中心警报和 Azure 资源提供程序日志收集 Azure 诊断。 此集成为本地或云中的所有资产提供统一的仪表板，以便你可以针对安全事件进行聚合、关联、分析和发出警报。
 
 ![Azure 日志集成][1]
 
@@ -50,6 +50,7 @@ Azure 日志集成目前支持集成 Azure 活动日志、Azure 订阅中 Window
 | 诊断日志（资源日志） | 是 | 需要最终用户创建 FlexConnector JSON 分析文件。 相关操作请参见 ArcSight 文档。 | 必须创建日志源扩展。 有关详细信息，请参阅 QRadar 文档 |
 | VM 日志 | 通过 Forwarded 事件，则为是；通过 JSON，则为否 | 通过 Forwarded 事件，则为是 | 通过 Forwarded 事件，则为是 |
 
+Azure 日志集成是一种免费的解决方案 - 无需为 Azure 日志集成二进制文件付费。 但是，对于日志文件信息所需的 Azure 存储，会产生相关费用。
 
 如果存在关于 Azure 日志集成的问题，请发送电子邮件至 [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
 

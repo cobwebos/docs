@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 62d2cd990bff4ffc982eef507ad69c68c00a65ab
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 7f719fb38709f4bb7083b7f21a5979f7e0588d0f
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/14/2017
 * [间歇性 IO 错误 - 现有文件共享上出现“主机已关闭（错误 112）”或在装入点上执行列表命令时外壳挂起](#errorhold)
 * [尝试在 Linux VM 上装载 Azure 文件时，出现装载错误 115](#error15)
 * [装载在 Linux VM 上的 Azure 文件共享目前性能缓慢](#delayproblem)
-
+* [装载错误(11)：装载到 Ubuntu 4.8+ 内核时资源暂时不可用](#ubuntumounterror)
 
 <a id="quotaerror"></a>
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 03/14/2017
 以下情况可能引起此问题：
 
 ### <a name="cause-1"></a>原因 1
-“发生系统错误 53。 访问被拒绝。” 出于安全原因，如果通信通道未加密，并且连接尝试并非来自 Azure 文件共享驻留的同一数据中心，则将阻止连接到 Azure 文件共享。 如果用户的客户端 OS 不支持 SMB 加密，则不提供通信通道加密。 如果用户尝试从本地或不同的数据中心装载文件共享， 这将表示为“发生系统错误&53;。访问被拒绝”错误消息。 Windows 8、Windows Server 2012 及更高版本的每个协商请求包括支持加密的 SMB 3.0。
+“发生系统错误 53。 访问被拒绝。” 出于安全原因，如果通信通道未加密，并且连接尝试并非来自 Azure 文件共享驻留的同一数据中心，则将阻止连接到 Azure 文件共享。 如果用户的客户端 OS 不支持 SMB 加密，则不提供通信通道加密。 如果用户尝试从本地或不同的数据中心装载文件共享， 这将表示为“发生系统错误 53。访问被拒绝”错误消息。 Windows 8、Windows Server 2012 及更高版本的每个协商请求包括支持加密的 SMB 3.0。
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 使用符合 Windows 8、Windows Server 2012 或更高版本要求的客户端进行连接，或者连接使用的虚拟机要位于 Azure 文件共享时所用的 Azure 存储帐户所在的同一数据中心。
@@ -191,7 +191,7 @@ Azure 文件仅支持 NTLMv2 身份验证。 请确保客户端应用了组策�
 
 **net use** 还可用于传递 **net use** 命令的用户名和密码参数中的存储帐户名和密钥。
 
-按照这些说明操作后， 如果为系统/网络服务帐户运行 **net use**可能会收到以下错误消息：“发生系统错误&1312;。指定的登录会话不存在。可能已终止。” 若发生此情况，请确保传递到 **net use** 的用户名包括域信息，例如“[storage account name].file.core.windows.net”。
+按照这些说明操作后， 如果为系统/网络服务帐户运行 **net use**可能会收到以下错误消息：“发生系统错误 1312。指定的登录会话不存在。可能已终止。” 若发生此情况，请确保传递到 **net use** 的用户名包括域信息，例如“[storage account name].file.core.windows.net”。
 
 <a id="encryption"></a>
 
@@ -271,6 +271,14 @@ dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=10
 
 如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)中的装载命令卸载并再次装载 Azure 文件，然后重新检查“/etc/fstab”条目是否具有正确选项。
 
+<a id="ubuntumounterror"></a>
+## <a name="mount-error11-resource-temporarily-unavailable-when-mounting-to-ubuntu-48-kernel"></a>装载错误(11)：装载到 Ubuntu 4.8+ 内核时资源暂时不可用
+
+### <a name="cause"></a>原因
+Ubuntu 16.10 内核 (v.4.8) 中的已知问题 - 客户端声称支持加密，但实际上并不支持。 
+
+### <a name="solution"></a>解决方案
+解决 Ubuntu 16.10 问题前，请指定“vers=2.1”装载选项或使用 Ubuntu 16.04。
 ## <a name="learn-more"></a>了解详细信息
 * [在 Windows 上开始使用 Azure 文件存储](storage-dotnet-how-to-use-files.md)
 * [在 Linux 上实现 Azure 文件存储入门](storage-how-to-use-files-linux.md)

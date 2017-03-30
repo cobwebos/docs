@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d2a65104743d9497debdc85c134fd1a06114c514
-ms.openlocfilehash: f7739d38822d9cb57bc47f1c33f48045e5e97406
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 590d2c39e295e2f855910b00e0302f01d96de8dc
+ms.lasthandoff: 03/18/2017
 
 ---
 
@@ -29,11 +29,11 @@ ms.lasthandoff: 02/23/2017
 > - [CLI](network-watcher-packet-capture-manage-cli.md)
 > - [REST API](network-watcher-packet-capture-manage-rest.md)
 
-使用网络观察程序数据包捕获可以创建捕获会话来跟踪传出和传出虚拟机的流量。 我们为捕获会话提供了筛选器，确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息、获取网络入侵信息、调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻手动运行数据包捕获的负担，并可在所需计算机上运行，从而可节省宝贵的时间。
+使用网络观察程序数据包捕获功能，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻手动运行数据包捕获的负担，并可在所需计算机上运行，从而可节省宝贵的时间。
 
 [!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
-本文逐步说明完成当前可用于数据包捕获的不同管理任务。
+本文将引导你完成当前可用于数据包捕获的不同管理任务。
 
 - [**启动数据包捕获**](#start-a-packet-capture)
 - [**停止数据包捕获**](#stop-a-packet-capture)
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/23/2017
 - **存储帐户** - 用于保存数据包捕获的选定存储帐户。 默认位置为 https://{storage account name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription id}/resourcegroups/{resource group name}/providers/microsoft.compute/virtualmachines/{virtual machine name}/{YY}/{MM}/{DD}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap。 （仅当选择了“存储”时才启用此选项）
 - **本地文件路径** - 虚拟机上保存数据包捕获的本地路径。 （仅当选择了“文件”时才启用此选项）。 必须提供有效的路径
 - **每个数据包的最大字节数** - 从每个数据包捕获的字节数，如果留空，将捕获所有字节。
-- **每个会话的最大字节数** - 捕获的字节总数，指停止数据包捕获后的值。
+- **每个会话的最大字节数** - 捕获的字节总数，一旦达到此值，就会停止数据包捕获。
 - **时间限制(秒)** - 设置停止数据包捕获的时间限制。 默认值为 1800 秒。
 
 > [!NOTE]

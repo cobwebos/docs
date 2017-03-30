@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 03/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c7ef2a9535362a3dc352b92732abcdf6cd4836c2
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 9da7a59ca5d544121dc9c540a25a3b975988e9a1
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/06/2017
 >
 >
 
-本文介绍如何在 Azure 门户中使用 [Azure Site Recovery[](site-recovery-overview.md) 将本地 Hyper-V 虚拟机复制到 Azure。
+本文介绍如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 将本地 Hyper-V 虚拟机复制到 Azure。
 
 将 Hyper-V VM 复制到 Azure 存储，如果主站点变为不可用，将 VM 故障转移到 Azure。 可以访问 Azure 中的工作负荷，并在其返回到正常操作时故障回复到本地。 也可以使用本文中的说明将 VM 迁移到 Azure。 在迁移方案中，要复制并故障转移 VM，但不再次对其进行故障回复。
 

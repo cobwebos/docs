@@ -9,6 +9,7 @@ author: nitinme
 tags: azure-portal
 ms.assetid: a363e5f6-dd75-476a-87fa-46beb480c1fe
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 2/28/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: de252e1d2945f236a4192c5737ed8ec88a6f7444
-ms.openlocfilehash: da5929df1e5db0acae41d757a7e7272014bf9dee
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7a9e23e8d06bc73855058242cdebd315c9d4d243
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -75,7 +76,7 @@ Spark 2.0.1 现已在 Spark 群集（HDInsight 版本 3.5）上发行。
 * R Server 8.0.5 – 主要为 Bug 修复版本。 有关详细信息，请参阅 [R Server 发行说明](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes)。
 * 边缘节点上的 AzureML 包 – [该 R 包](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)使 R 模型能够被发布并用作 Azure ML Web 服务。  有关详细信息，请参阅[“R Server on HDInsight 概述”](hdinsight-hadoop-r-server-overview.md)文章中的[“操作模型”](hdinsight-hadoop-r-server-overview.md#operationalize-a-model)部分。
 * [前 100 个最受欢迎的 R 包](https://github.com/metacran/cranlogs)的 Linux 依赖项 – 现在都预安装了这些 Linux 包依赖项。
-* 将 R 包添加到数据节点时使用 CRAN 存储库的选项。 有关详细信息，请参阅[“开始使用 R Server on HDInsight”](hdinsight-hadoop-r-server-get-started.md#install-r-packages)文章中的[“安装 R 包”](hdinsight-hadoop-r-server-get-started.md)部分。
+* 将 R 包添加到数据节点时使用 CRAN 存储库的选项。 有关详细信息，请参阅[开始使用 HDInsight 上的 R Server](hdinsight-hadoop-r-server-get-started.md)。
 * 创建群集时提高了 R Server 设置的可靠性。
 
 ## <a name="notes-for-08012016-release-of-hdinsight"></a>HDInsight 2016/08/01 版发行说明
@@ -1156,7 +1157,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 </tr>
 <tr>
 <td>在 IHdInsightClient.DeleteCluster 中指定地区名称的能力 </td>
-<td>Azure HDInsight SDK 现在提供在使用 **DeleteCluster** 时指定区域名称的功能。 这有助于解除封锁在不同的地区拥有&2; 个同名资源，而且已无法删除任一资源的客户。</td>
+<td>Azure HDInsight SDK 现在提供在使用 **DeleteCluster** 时指定区域名称的功能。 这有助于解除封锁在不同的地区拥有 2 个同名资源，而且已无法删除任一资源的客户。</td>
 <td>SDK 中 IsInRole 中的声明</td>
 <td>全部</td>
 <td>不适用</td>

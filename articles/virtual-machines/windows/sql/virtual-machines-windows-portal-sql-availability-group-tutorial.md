@@ -14,11 +14,12 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/10/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 5e41a20f563eab6b236eaa6eaf0ce1d20ebfa493
-ms.openlocfilehash: d8982dda38df92c94e7dac4b5a1cf451bab3a5ce
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 81de52ac95aaf1b6d02572a70a4c1a84fb541401
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -90,7 +91,7 @@ ms.openlocfilehash: d8982dda38df92c94e7dac4b5a1cf451bab3a5ce
 3. 选择“静态 IP 地址”，并在“地址”文本框中指定 SQL Server 所在子网中可用的地址。 然后单击“确定”。
 4. 在“群集核心资源”部分中，右键单击群集名称，然后单击“联机”。 然后等待两个资源都已联机。 当该群集名称资源联机时，它会用新的 AD 计算机帐户更新 DC 服务器。 稍后需使用此 AD 帐户运行可用性组群集服务。
 
-### <a name="a-nameaddnodeaadd-the-other-sql-server-to-cluster"></a><a name="addNode"></a>将另一个 SQL Server 添加到群集
+### <a name="addNode"></a>将另一个 SQL Server 添加到群集
 
 将另一个 SQL Server 添加到群集。
 
@@ -223,7 +224,7 @@ Repeat these steps on the second SQL Server.
 7. 在“对象资源管理器”中，右键单击“数据库”，然后单击“新建数据库”。
 8. 在“数据库名称”中，键入 **MyDB1**，然后单击“确定”。
 
-### <a name="a-namebackupsharea-create-a-backup-share"></a><a name="backupshare"></a>创建备份共享
+### <a name="backupshare"></a>创建备份共享
 
 1. 在“服务器管理器”中的第一个 SQL Server 上，单击“工具”。 打开“计算机管理”。
 
@@ -332,7 +333,7 @@ Repeat these steps on the second SQL Server.
    ![故障转移群集管理器中的可用性组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/80-clustermanager.png)
 
    > [!WARNING]
-   > 请勿尝试从故障转移群集管理器对可用性组进行故障转移。 所有故障转移操作都应在 SSMS 中的 **AlwaysOn 仪表板**内进行。 有关详细信息，请参阅[将 WSFC 故障转移群集管理器用于可用性组的限制](https://msdn.microsoft.com/library/ff929171.aspx)。
+   > 请勿尝试从故障转移群集管理器对可用性组进行故障转移。 所有故障转移操作都应在 SSMS 中的 **AlwaysOn 仪表板**内进行。 有关详细信息，请参阅[将故障转移群集管理器用于可用性组的限制](https://msdn.microsoft.com/library/ff929171.aspx)。
     >
 
 此时可用性组的副本已存在于 SQL Server 的两个实例上。 可以在实例之间移动可用性组。 但无法连接到可用性组，因为不具有侦听器。 在 Azure 虚拟机中，侦听器需要负载均衡器。 下一步是在 Azure 中创建负载均衡器。
@@ -349,7 +350,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
    ![故障转移群集管理器中的可用性组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
 1.  单击“创建” 。
-3. 配置负载平衡器的以下参数。
+3. 配置负载均衡器的以下参数。
 
    | 设置 | 字段 |
    | --- | --- |
@@ -412,7 +413,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
 
 1. 单击“确定”以设置运行状况探测。
 
-### <a name="set-the-load-balancing-rules"></a>设置负载平衡规则
+### <a name="set-the-load-balancing-rules"></a>设置负载均衡规则
 
 1. 单击负载均衡器，单击“负载均衡规则”，然后单击“+添加”。
 
@@ -434,7 +435,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
 
 1. 单击“确定”以设置负载均衡规则。
 
-## <a name="a-nameconfigure-listenera-configure-the-listener"></a><a name="configure-listener"></a>配置侦听器
+## <a name="configure-listener"></a>配置侦听器
 
 下一步是在故障转移群集上配置可用性组侦听器。
 
@@ -455,7 +456,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
 
 1. 你现在应看到在故障转移群集管理器中创建的侦听器名称。 右键单击侦听器名称，然后单击“属性”。
 
-1. 在“端口”框中，通过使用先前使用过的 $EndpointPort 为可用性组侦听器指定端口号（默认值为&1433;），然后单击“确定”。
+1. 在“端口”框中，通过使用先前使用过的 $EndpointPort 为可用性组侦听器指定端口号（默认值为 1433），然后单击“确定”。
 
 现在，在 Resource Manager 模式下运行的 Azure 虚拟机中有了一个 SQL Server 可用性组。
 
@@ -503,9 +504,4 @@ SQLCMD 连接将自动连接到托管主副本的 SQL Server 实例。
 ## <a name="next-steps"></a>后续步骤
 
 - [将 IP 地址添加到第二个可用性组的负载均衡器](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md#Add-IP)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

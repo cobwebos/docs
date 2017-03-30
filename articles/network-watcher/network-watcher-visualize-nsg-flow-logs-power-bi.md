@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: dfb33a30cac74875281645e74339be152d8ef476
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 7cac733717b4af048e58cf3d574c5743889100c1
+ms.lasthandoff: 03/22/2017
 
 ---
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 03/14/2017
 
 ## <a name="understanding-the-visuals"></a>了解视觉对象
 
-模板中提供了视觉对象集，它们有助于发挥 NSG 流日志数据的作用。 下图显示了已填充数据的仪表板的外观示例。 下面更详细介绍了每个视觉对象 
+模板中提供的视觉对象集有助于发挥 NSG 流日志数据的作用。 下图显示了已填充数据的仪表板的外观示例。 下面更详细介绍了每个视觉对象 
 
 ![powerbi][5]
  
@@ -78,7 +78,7 @@ ms.lasthandoff: 03/14/2017
 
 ![toptalkers][6]
 
-以下时序图显示该时间段内的流数。 图表的上半部分已根据流的方向分段，下半部分已根据所做的决策（允许或拒绝）分段。 使用此视觉对象可以检查各个时间的流量趋势，以及探查流量或流量分段的任何异常高峰或下落。
+以下时序图显示该时间段内的流数。 图表的上半部分已根据流的方向分段，下半部分已根据所做的决策（允许或拒绝）分段。 使用此视觉对象可检查各个时间的流量趋势，以及探查流量或流量分段的任何异常高峰或下落。
 
 ![flowsoverperiod][7]
 

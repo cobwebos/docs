@@ -15,116 +15,174 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c18ef38661e31e16114b88bdfad36320776ef12b
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 5c30f459d9fed71fede2da71306a9b48892566f3
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
-可以在目录中配置统一组的以下设置：
 
-1. 分类：用户可以对组进行设置的分类的逗号分隔列表。 例如，“已分类”、“机密”和“最高机密”。
-2. 使用准则 URL：此 URL 指导用户在使用统一组时遵守组织定义的使用条款。 此 URL 会显示在方便用户使用组的用户界面中。
-3. 允许创建组：是允许所有用户、部分用户还是不允许用户创建统一组。 设置为 on 时，所有用户都可以创建组。 设置为 off 时，没有用户可以创建组。 设置为 off 时，也可指定一个安全组，允许其用户创建组。
+注意：此内容仅适用于统一组（也称为 Office365 组）。
 
-这些设置使用 Settings 和 SettingsTemplate 对象配置。 一开始不会在目录中看到任何 Settings 对象。 这意味着目录配置了默认设置。 若要更改默认设置，需使用设置模板创建新的设置对象。 设置模板由 Microsoft 定义。
+Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 一开始不会在目录中看到任何 Settings 对象。 这意味着目录配置了默认设置。 若要更改默认设置，需要使用设置模板创建新的 Settings 对象。 设置模板由 Microsoft 定义。 有几个不同的设置模板。 若要配置目录的组设置，将使用名为“Group.Unified”的模板。 若要针对单个组配置组设置，将使用名为“Group.Unified.Guest”的模板。 此模板用于管理对组的来宾访问权限。 
 
-可以从 [Microsoft Connect 站点](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)下载模块，其中包含用于这些操作的 cmdlet。
+这些 Cmdlet 属于 Azure Active Directory PowerShell V2 模块。 有关此模块的详细信息以及有关如何在计算机上下载和安装此模块的说明，请参阅 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/en-us/powershell/azuread/)。
 
 ## <a name="create-settings-at-the-directory-level"></a>在目录级别创建设置
-这些步骤在目录级别创建设置，这些设置适用于目录中的所有 Office 组。
+这些步骤在目录级别创建设置，这些设置适用于目录中的所有统一组。
 
-1. 如果不知道使用哪个 SettingTemplate，可通过以下 cmdlet 返回设置模板列表：
+1. 在 DirectorySettings cmdlet 中，需要指定要使用的 SettingsTemplate 的 Id。 如果不知道此 ID，此 cmdlet 将返回所有设置模板的列表：
 
-    `Get-MsolAllSettingTemplate`
+    PS C:> Get-AzureADDirectorySettingTemplate
 
-    ![设置模板列表](./media/active-directory-accessmanagement-groups-settings-cmdlets/list-of-templates.png)
+此 cmdlet 调用将返回可用的所有模板：
+
+```
+Id                                   DisplayName         Description
+--                                   -----------         -----------
+62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
+08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Unified Group
+16933506-8a8d-4f0d-ad58-e1db05a5b929 Company.BuiltIn     Setting templates define the different settings that can be used for the associ...
+4bc7f740-180e-4586-adb6-38b2e9024e6b Application...
+898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy       Settings ...
+5cf42378-d67d-4f36-ba46-e8b86229381d Password Rule       Settings ...
+```
 2. 若要添加使用准则 URL，首先需获取定义使用准则 URL 值的 SettingsTemplate 对象，即 Group.Unified 模板：
 
-    `$template = Get-MsolSettingTemplate –TemplateId 62375ab9-6b52-47ed-826b-58e47e0e304b`
+    $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+
 3. 接下来，创建基于该模板的新设置对象：
 
-    `$setting = $template.CreateSettingsObject()`
+    $Setting = $template.CreateDirectorySetting()
+    
 4. 然后更新使用准则值：
 
-    `$setting["UsageGuidelinesUrl"] = "<https://guideline.com>"`
+    $setting["UsageGuidelinesUrl"] = "<https://guideline.com>"
+    
 5. 最后，应用设置：
 
-    `New-MsolSettings –SettingsObject $setting`
+    New-AzureADDirectorySetting -DirectorySetting $settings
 
-    ![添加使用准则 URL](./media/active-directory-accessmanagement-groups-settings-cmdlets/add-usage-guideline-url.png)
+成功完成后，该 cmdlet 返回新设置对象的 Id：
+
+
+    Id                                   DisplayName TemplateId                           Values
+    --                                   ----------- ----------                           ------
+    c391b57d-5783-4c53-9236-cefb5c6ef323             62375ab9-6b52-47ed-826b-58e47e0e304b {class SettingValue {...
+
 
 以下是 Group.Unified SettingsTemplate 中定义的设置。
 
 | **设置** | **说明** |
 | --- | --- |
-|  <ul><li>ClassificationList<li>类型：字符串<li>默认值：“” |一个逗号分隔列表，其中包含的有效分类值可以应用到统一组。 |
 |  <ul><li>EnableGroupCreation<li>类型：布尔值<li>默认值：True |一个标志，指示是否允许在目录中创建统一组。 |
-|  <ul><li>GroupCreationAllowedGroupId<li>类型：字符串<li>默认值：“” |安全组的 GUID，该安全组可以创建统一组，即使 EnableGroupCreation == false。 |
+|  <ul><li>GroupCreationAllowedGroupId<li>类型：字符串<li>默认值：“” |安全组的 GUID，允许该组的成员创建统一组，即使 EnableGroupCreation == false。 |
 |  <ul><li>UsageGuidelinesUrl<li>类型：字符串<li>默认值：“” |组使用准则链接。 |
+|  <ul><li>ClassificationDescriptions<li>类型：字符串<li>默认值：“” | 以逗号分隔的分类说明列表。 |
+|  <ul><li>DefaultClassification<li>类型：字符串<li>默认值：“” | 如果未指定，则为要用作组的默认分类的分类。|
+|  <ul><li>PrefixSuffixNamingRequirement<li>类型：字符串<li>默认值：“” |尚未实现
+|  <ul><li>AllowGuestsToBeGroupOwner<li>类型：布尔值<li>默认值：False | 一个布尔值，该值指示来宾用户是否可以作为组的所有者。 |
+|  <ul><li>AllowGuestsToAccessGroups<li>类型：布尔值<li>默认值：True | 一个布尔值，该值指示来宾用户是否可以访问统一组的内容。 |
+|  <ul><li>GuestUsageGuidelinesUrl<li>类型：字符串<li>默认值：“” | 指向来宾使用指南的链接的 URL。 |
+|  <ul><li>AllowToAddGuests<li>类型：布尔值<li>默认值：True | 一个布尔值，该值指示是否允许将来宾添加到此目录。|
+|  <ul><li>ClassificationList<li>类型：字符串<li>默认值：“” |一个逗号分隔列表，其中包含的有效分类值可以应用到统一组。 |
+|  <ul><li>EnableGroupCreation<li>类型：布尔值<li>默认值：True | 一个布尔值，该值指示非管理员用户是否可以创建新的统一组。 |
+'
 
 ## <a name="read-settings-at-the-directory-level"></a>在目录级别读取设置
 这些步骤在目录级别读取设置，这些设置适用于目录中的所有 Office 组。
 
 1. 读取所有现有的目录设置：
 
-    `Get-MsolAllSettings`
+    `Get-AzureADDirectorySetting -All $True'
+
+此 cmdlet 将返回所有目录设置的列表：' Id                                   DisplayName   TemplateId                           Values
+--                                   -----------   ----------                           ------
+c391b57d-5783-4c53-9236-cefb5c6ef323 Group.Unified 62375ab9-6b52-47ed-826b-58e47e0e304b {class SettingValue {...`
+
+
 2. 读取特定组的所有设置：
 
-    `Get-MsolAllSettings -TargetType Groups -TargetObjectId <groupObjectId>`
-3. 使用 SettingId GUID 读取特定目录设置：
+    `Get-AzureADObjectSetting -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -TargetType Groups`
 
-    `Get-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c`
+3. 使用设置 ID GUID 读取特定目录设置对象的所有目录设置值：
 
-    ![设置 ID GUID](./media/active-directory-accessmanagement-groups-settings-cmdlets/settings-id-guid.png)
+    `(Get-AzureADDirectorySetting -Id c391b57d-5783-4c53-9236-cefb5c6ef323).values'
+
+此 cmdlet 返回此特定组的此设置对象中的名称和值：' Name                          Value
+----                          -----
+ClassificationDescriptions DefaultClassification PrefixSuffixNamingRequirement AllowGuestsToBeGroupOwner     False AllowGuestsToAccessGroups     True GuestUsageGuidelinesUrl GroupCreationAllowedGroupId AllowToAddGuests              True UsageGuidelinesUrl            <https://guideline.com> ClassificationList EnableGroupCreation           True` '
+
+## <a name="update-settings-for-a-specific-group"></a>更新特定组的设置
+
+1. 搜索名为“Groups.Unified.Guest”的设置模板
+
+    Get-AzureADDirectorySettingTemplate
+
+    Id                                   DisplayName            Description
+    --                                   -----------            -----------
+    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified          ...08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    特定统一组的设置  4bc7f740-180e-4586-adb6-38b2e9024e6b 应用程序            ...898f1161-d651-43d1-805c-3b0b388a9fc2 自定义策略设置 ...5cf42378-d67d-4f36-ba46-e8b86229381d 密码规则设置 ...
+
+2. 检索 Groups.Unified.Guest 模板的模板对象：
+
+    $Template = Get-AzureADDirectorySettingTemplate -Id 08d542b9-071f-4e16-94b0-74abb372e3d9
+
+3. 从模板创建新的设置对象：
+
+
+    $Setting = $Template.CreateDirectorySetting()
+
+
+4. 将设置设为所需的值：
+
+
+    $Setting["AllowToAddGuests"]=$False
+
+
+6. 在目录中为所需组创建新设置：
+
+
+    New-AzureADObjectSetting -TargetType Groups -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -DirectorySetting $Setting
+
+
+    Id                                   DisplayName TemplateId                           Values
+    --                                   ----------- ----------                           ------
+    25651479-a26e-4181-afce-ce24111b2cb5             08d542b9-071f-4e16-94b0-74abb372e3d9 {class SettingValue {...
+
 
 ## <a name="update-settings-at-the-directory-level"></a>在目录级别更新设置
-这些步骤在目录级别更新设置，这些设置适用于目录中的所有 Office 组。
 
-1. 获取现有 Settings 对象：
+这些步骤在目录级别更新设置，这些设置适用于目录中的所有统一组。 这些示例假定目录中已有 Settings 对象。
 
-    `$setting = Get-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c`
-2. 获取要更新的值：
+1. 查找现有 Settings 对象：
 
-    `$value = $Setting.GetSettingsValue()`
+    Get-AzureADDirectorySetting | Where-object -Property Displayname -Value "Group.Unified" -EQ`
+
+    Id                                   DisplayName   TemplateId                           Values
+    --                                   -----------   ----------                           ------
+    c391b57d-5783-4c53-9236-cefb5c6ef323 Group.Unified 62375ab9-6b52-47ed-826b-58e47e0e304b {class SettingValue {...
+
+    $setting = Get-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323`
+
 3. 更新值：
 
-    `$value["AllowToAddGuests"] = "false"`
+    $Setting["AllowToAddGuests"] = "false"`
+
 4. 更新设置：
 
-    `Set-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c –SettingsValue $value`
+    Set-AzureADDirectorySetting -Id c391b57d-5783-4c53-9236-cefb5c6ef323 -DirectorySetting $Setting`
 
 ## <a name="remove-settings-at-the-directory-level"></a>在目录级别删除设置
 这些步骤在目录级别删除设置，这些设置适用于目录中的所有 Office 组。
 
-    `Remove-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c`
+    Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c`
 
 ## <a name="cmdlet-syntax-reference"></a>Cmdlet 语法参考
-如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=808260)。
+如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](https://docs.microsoft.com/en-us/powershell/azuread/)。
 
-## <a name="settingstemplate-object-reference-groupunified-settingstemplate-object"></a>SettingsTemplate 对象引用（Group.Unified SettingsTemplate 对象）
-* "name": "EnableGroupCreation", "type": "System.Boolean", "defaultValue": "true", "description": "一个布尔标志，指示是否启用了统一组创建功能。"
-* "name": "GroupCreationAllowedGroupId", "type": "System.Guid", "defaultValue": "", "description": "安全组的 GUID，该安全组可以创建统一组。"
-* "name": "ClassificationList", "type": "System.String", "defaultValue": "", "description": "一个逗号分隔列表，其中包含的有效分类值可以应用到统一组。"
-* "name": "UsageGuidelinesUrl", "type": "System.String", "defaultValue": "", "description": "组使用准则链接。"
-
-| name | type | defaultValue | description |
-| --- | --- | --- | --- |
-| "EnableGroupCreation" |"System.Boolean" |"true" |"一个布尔标志，指示是否启用了统一组创建功能。" |
-| "GroupCreationAllowedGroupId" |"System.Guid" |"" |"安全组的 GUID，该安全组可以创建统一组。" |
-| "ClassificationList" |"System.String" |"" |"一个逗号分隔列表，其中包含的有效分类值可以应用到统一组。" |
-| "UsageGuidelinesUrl" |"System.String" |"" |"组使用准则链接。" |
-
-## <a name="next-steps"></a>后续步骤
-如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=808260)。
-
-如需 Microsoft 项目经理 Rob de Jong 的更多指导性文章，请访问 [Rob's Groups Blog](http://robsgroupsblog.com/blog/configuring-settings-for-office-365-groups-in-azure-ad)（Rob 的组博客）。
+## <a name="additional-reading"></a>其他阅读材料
 
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

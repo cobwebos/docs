@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: ca96cd4ddf1be5ab70475d40fa65e73d248fd67b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 132576ca394fe475000449ea58871726c36d078f
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -245,7 +245,7 @@ ms.lasthandoff: 03/07/2017
 请注意，可在聚合表达式或 by 子句中使用 `name=` 设置结果列的名称。
 
 ## <a name="counting-sampled-data"></a>采样数据计数
-建议使用 `sum(itemCount)` 聚合来对事件计数。 许多情况下，itemCount = =&1;，此函数只计算组中的行数。 但运算中采用[采样](app-insights-sampling.md)时，Application Insights 中只会将部分原始事件保留为数据点，因此每个可见的数据点有 `itemCount` 个事件。
+建议使用 `sum(itemCount)` 聚合来对事件计数。 许多情况下，itemCount = = 1，此函数只计算组中的行数。 但运算中采用[采样](app-insights-sampling.md)时，Application Insights 中只会将部分原始事件保留为数据点，因此每个可见的数据点有 `itemCount` 个事件。
 
 例如，如果采样放弃了 75% 的原始事件，则在保留的记录中 itemCount==4，即每个保留的记录有 4 个原始记录。
 
@@ -394,7 +394,7 @@ ms.lasthandoff: 03/07/2017
 
 需将最后一行转换为日期时间。 目前只有表的 x 轴为日期时间时，才显示为标量。
 
-`where` 子句排除单次会话 (sessionDuration = =&0;)，并设置 x 轴的长度。
+`where` 子句排除单次会话 (sessionDuration = = 0)，并设置 x 轴的长度。
 
 ![](./media/app-insights-analytics-tour/290.png)
 
@@ -689,7 +689,9 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 ### <a name="traces-table"></a>跟踪表
 包含应用使用 TrackTrace() 或[其他记录框架](app-insights-asp-net-trace-logs.md)发送的遥测。
 
-
+## <a name="video"></a>视频 
+ 
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="next-steps"></a>后续步骤
 * [Analytics 语言参考](app-insights-analytics-reference.md)

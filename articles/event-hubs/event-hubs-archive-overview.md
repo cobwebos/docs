@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/22/2017
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: 7f5652aa39d6681b4a96cac00daac904dce2e537
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 95a927d8c2fbfbcb6aa663985d078d5146c489aa
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="azure-event-hubs-archive"></a>Azure 事件中心存档
-使用 Azure 事件中心存档，可以更灵活地将事件中心中的流数据自动传送到所选的 Blob 存储帐户，可以指定所选的时间或大小间隔。 设置存档是快速操作，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-what-is-event-hubs.md#capacity)自动对其进行缩放。 事件中心存档是在 Azure 中加载流数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
+使用 Azure 事件中心存档，可以更灵活地将事件中心中的流数据自动传送到所选的 Blob 存储帐户，可以指定所选的时间或大小间隔。 设置存档非常快速，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-what-is-event-hubs.md#capacity)自动进行缩放。 事件中心存档是在 Azure 中加载流数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
 
-Azure 事件中心存档可让用户处理同一个流中的实时和基于 Batch 的管道。 这使用户能够构建随着时间的推移随用户的需要增长的解决方案。 无论用户现在正在构建基于 Batch 的系统并着眼于将来进行实时处理，还是要将高效的冷路径添加到现有的实时解决方案，事件中心存档都可以使流数据处理更加简单。
+事件中心存档可让用户在同一个流上处理实时和基于批处理的管道。 这使用户能够构建随着时间的推移随用户的需要增长的解决方案。 无论用户现在正在构建基于 Batch 的系统并着眼于将来进行实时处理，还是要将高效的冷路径添加到现有的实时解决方案，事件中心存档都可以使流数据处理更加简单。
 
 ## <a name="how-event-hubs-archive-works"></a>事件中心存档的工作原理
 事件中心是遥测数据入口的时间保留持久缓冲区，类似于分布式日志。 缩小事件中心的关键在于[分区使用者模式](event-hubs-what-is-event-hubs.md#partitions)。 每个分区是独立的数据段，并单独使用。 根据可配置的保留期，随着时间的推移此数据会过时。 因此，给定的事件中心永远不会装得“太满”。
@@ -33,7 +34,7 @@ Azure 事件中心存档可让用户处理同一个流中的实时和基于 Batc
 已存档数据以 [Apache Avro][Apache Avro] 格式写入；该格式是紧凑、便捷的二进制格式，并使用内联架构提供丰富的数据结构。 这种格式广泛用于 Hadoop 生态系统，以及由流分析和 Azure 数据工厂使用。 在本文后面提供了有关如何使用 Avro 的详细信息。
 
 ### <a name="archive-windowing"></a>存档窗口化
-事件中心存档可让用户设置用于控制存档的窗口。 此窗口最小并具有使用“第一个获胜”策略的时间配置，意味着遇到的第一个触发器将触发存档操作。 如果使用 15 分钟/100 MB 的存档窗口，且发送速度为 1 MB/秒，则大小窗口将在时间窗口之前触发。 每个分区独立存档，并在存档时写入已完成的块 blob，在遇到存档间隔时针对时间进行命名。 命名约定如下所示：
+事件中心存档可让用户设置用于控制存档的“窗口”。 此窗口使用最小大小并具有使用“第一个获胜”策略的时间配置，意味着遇到的第一个触发器将触发存档操作。 如果使用 15 分钟，100 MB 的存档窗口，且发送速度为每秒 1 MB，则大小窗口将在时间窗口之前触发。 每个分区独立存档，并在存档时写入已完成的块 blob，在遇到存档间隔时针对时间进行命名。 命名约定如下所示：
 
 ```
 [Namespace]/[EventHub]/[Partition]/[YYYY]/[MM]/[DD]/[HH]/[mm]/[ss]
@@ -45,7 +46,7 @@ Azure 事件中心存档可让用户处理同一个流中的实时和基于 Batc
 事件中心存档配置后，在用户发送第一个事件时，就立即自动运行。 它始终继续运行。 为了让下游处理更便于了解该进程正在运行，事件中心在没有数据时写入空文件。 这提供了可预测的频率以及可以供给 Batch 处理器的标记。
 
 ## <a name="setting-up-event-hubs-archive"></a>设置事件中心存档
-可以通过门户或 Azure Resource Manager 在创建事件中心时配置事件中心存档。 只需单击“启用”按钮即可启用存档。 单击边栏选项卡的“容器”部分可配置存储帐户和容器。 由于事件中心存档对存储使用服务到服务身份验证，因此无需指定存储连接字符串。 资源选取器自动为存储帐户选择资源 URI。 如果使用 Azure Resource Manager，必须以字符串形式显式提供此 URI。
+可以通过门户或 Azure Resource Manager 在创建事件中心时配置存档。 只需单击“启用”按钮即可启用存档。 单击边栏选项卡的“容器”部分可配置存储帐户和容器。 由于事件中心存档对存储使用服务到服务身份验证，因此无需指定存储连接字符串。 资源选取器自动为存储帐户选择资源 URI。 如果使用 Azure Resource Manager，必须以字符串形式显式提供此 URI。
 
 默认时间段为 5 分钟。 最小值为 1，最大值为 15。 **大小**窗口的范围为 10-500 MB。
 
@@ -97,7 +98,7 @@ java -jar avro-tools-1.8.1.jar getschema \<name of archive file\>
 Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入门指南。 还可以阅读[事件中心存档入门](event-hubs-archive-python.md)一文。
 
 ## <a name="how-event-hubs-archive-is-charged"></a>事件中心存档如何收费
-事件中心存档的计量方式与吞吐量单位类似，并按小时付费。 费用直接与为命名空间购买的吞吐量单位数成正比。 随着吞吐量单位增加和减少，事件中心存档也相应地增加和减少以提供匹配的性能。 计量器一前一后地发生。 事件中心存档的费用为每小时每个吞吐量单位 0.10 美元，在预览期间以 50%的折扣提供。
+事件中心存档的计量方式与吞吐量单位类似，并按小时付费。 费用直接与为命名空间购买的吞吐量单位数成正比。 随着吞吐量单位增加和减少，事件中心存档也相应地增加和减少以提供匹配的性能。 相继进行计量。 事件中心存档的费用为每小时每个吞吐量单位 0.10 美元，在预览期间以 50%的折扣提供。
 
 事件中心存档是将数据导入 Azure 的最简单方法。 使用 Azure Data Lake、Azure 数据工厂和 Azure HDInsight，可以执行 Batch 操作和其他所选的分析，请使用熟悉的工具和平台，以所需的任何规模执行。
 
@@ -120,9 +121,4 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

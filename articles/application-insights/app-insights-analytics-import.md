@@ -10,12 +10,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 03/20/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 938f325e2cd4dfc1a192256e033aabfc39b85dac
-ms.openlocfilehash: 6bb1f31407f9af67e699bd110ee528dddee1a70f
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4f10e5a8200af870e0adb8977b9c68b9998a6de7
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -41,7 +41,7 @@ ms.lasthandoff: 02/14/2017
 上载的频率由用户以及用户希望数据可用于查询的速度决定。 将数据以较大块（但不要超过 1GB）的形式上载更高效。
 
 > [!NOTE]
-> *有大量要分析的数据源？* [*请考虑使用 *logstash* 将数据传送到 Application Insights。*](https://github.com/Microsoft/logstash-output-application-insights)
+> *有大量要分析的数据源？* [*请考虑使用*logstash*将数据传送到 Application Insights。*](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>开始之前
@@ -68,24 +68,34 @@ ms.lasthandoff: 02/14/2017
 ## <a name="define-your-schema"></a>定义架构
 
 导入数据之前，必须定义*数据源*，它指定数据的架构。
+单个 Application Insights 资源中最多可具有 50 个数据源
 
-1. 启动数据源向导
+1. 启动数据源向导。
 
     ![添加新数据源](./media/app-insights-analytics-import/add-new-data-source.png)
 
-2. 上传示例数据文件。 （如果上传架构定义，则为可选。）
+    提供新数据源的名称。
 
-    此示例的第一行可以是列标题。 （可以在下一步中更改字段名称。）
+2. 定义将上传的文件的格式。
 
-    该示例应至少包含 10 行的数据。
+    可手动定义格式，也可上传示例文件。
 
-3. 查看向导所获取的架构。 如果它从样本中推断出类型，则很可能需要调整推断的列类型。
+    如果数据采用 CSV 格式，则此示例的第一行可为列标题。 可在下一步中更改字段名称。
 
-   （可选。）上传架构定义。 请参阅下面的格式。
+    该示例至少需包含 10 行或记录的数据。
 
-4. 选择时间戳。 Analytics 中的所有数据都必须有时间戳字段。 它必须具有类型 `datetime`，但它无需命名为“timestamp”。 如果数据的一列包含 ISO 格式的日期和时间，请选择此列作为时间戳列。 否则，请选择“按到达的数据”，然后导入进程将添加时间戳字段。
+    列或字段名称应采用字母数字名称（没有空格或标点）。
 
-    ![查看架构](./media/app-insights-analytics-import/data-source-review-schema.png)
+    ![上传示例文件](./media/app-insights-analytics-import/sample-data-file.png)
+
+
+3. 查看向导所获取的架构。 如果它从示例中推断出类型，则可能需要调整推断的列类型。
+
+    ![查看推断出的架构](./media/app-insights-analytics-import/data-source-review-schema.png)
+
+ * （可选。）上传架构定义。 请参阅下面的格式。
+
+ * 选择时间戳。 Analytics 中的所有数据都必须有时间戳字段。 它必须具有类型 `datetime`，但它无需命名为“timestamp”。 如果数据的一列包含 ISO 格式的日期和时间，请选择此列作为时间戳列。 否则，请选择“按到达的数据”，然后导入进程将添加时间戳字段。
 
 5. 创建数据源。
 
@@ -133,6 +143,9 @@ JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射
 
  * Blob 可以是任何小于等于 1 GB 的大小（未压缩）。 从性能角度来看，数百 MB 大小的大型 Blob 十分理想。
  * 可以使用 Gzip 进行压缩，缩短上载时间和数据可供查询的延迟。 使用 `.gz` 文件扩展名。
+ * 最好使用单独的存储帐户执行此操作，避免不同服务中的调用降低性能。
+ * 以高频率（每几秒钟）发送数据时，出于性能原因，建议使用多个存储帐户。
+
  
 2. [为 Blob 创建共享访问签名密钥](../storage/storage-dotnet-shared-access-signature-part-2.md)。 密钥应具有一天的有效期并提供读取访问权限。
 3. 执行 REST 调用以向 Application Insights 通知数据正在等待。
@@ -181,6 +194,7 @@ JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射
  * 数据源名称错误。
 
 响应错误消息中提供了更多详细信息。
+
 
 ## <a name="sample-code"></a>代码示例
 

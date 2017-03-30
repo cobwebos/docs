@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: e5362b32a0f93433c77c27a6fc116960c45404f9
-ms.openlocfilehash: 3693e6f78541caeca8fd1c276028c0f64ca71ddc
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a82b96bd0a669d9798467c837bf34133b3f9cd0c
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-vm-with-docker"></a>使用 Docker 创建 VM
 
-此示例脚本创建一个虚拟机，然后使用 Azure Docker VM 扩展配置 Docker 主机。 然后，Docker VM 扩展创建一个运行 NGINX 的容器。 最后，该脚本针对端口 80 上的所有入站流量配置 Azure 网络安全组。 成功运行该脚本后，便可通过 Azure 虚拟机的 FQDN 访问 NGINX Web 服务器。 
+此脚本创建启用了 Docker 的虚拟机，并启动运行 NGINX 的 Docker 容器。 运行脚本后，可通过 Azure 虚拟机的 FQDN 访问 NGINX Web 服务器。 
 
-在运行此脚本前，请确保已使用 `az login` 命令创建与 Azure 的连接。
+必要时，请使用 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中的说明安装 Azure CLI，然后运行 `az login` 创建与 Azure 的连接。
 
 此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../virtual-machines-windows-cli-options.md)。
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
-运行脚本示例后，可以使用以下命令删除资源组、VM 以及所有相关资源。
+运行以下命令来删除资源组、VM 和所有相关资源。
 
 ```azurecli
 az group delete --name myResourceGroup

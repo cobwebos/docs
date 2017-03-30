@@ -11,15 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2017
+ms.date: 03/20/2017
 ms.author: bwren
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: aaf5c442ef85edbc498aa2fd7815171f4701f960
-ms.openlocfilehash: 262beba30c760335aafdf903d9f5cac6b0dd9669
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: e47aacd1a188649a3b424981c20a6c2b736b2d89
+ms.lasthandoff: 03/22/2017
+
 
 ---
 
-# <a name="log-analytics-saved-searches-and-alerts-in-oms-solutions-preview"></a>OMS 解决方案中的 Log Analytics 保存的搜索和警报（预览）
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到 OMS 管理解决方案（预览版）
 
 > [!NOTE]
 > 这是在 OMS 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。   
@@ -35,7 +38,7 @@ ms.openlocfilehash: 262beba30c760335aafdf903d9f5cac6b0dd9669
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
-Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions-creating.md#oms-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装将失败。
+Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装将失败。
 
 工作区的名称包含在每个 Log Analytics 资源的名称中。  这是在具有 **workspace** 参数的解决方案中完成的，如以下 savedsearch 资源示例所示。
 
@@ -90,7 +93,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 保存的搜索可以拥有一个或多个计划，每个计划代表一个单独的警报规则。 计划定义搜索的运行频率和检索数据的时间间隔。  计划资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` 且具有以下结构。 
 
     {
-      "name": "<name-of-schedule>",
+      "name": "<name-of-schedule-resource>",
       "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
       "apiVersion": "<api-version-of-resource>",
       "dependsOn": [
@@ -100,7 +103,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
         "etag": "*",               
         "interval": <schedule-interval-in-minutes>,
         "queryTimeSpan": <query-timespan-in-minutes>,
-        "enabled": <schedule-interval-in-minutes>       
+        "enabled": <schedule-enabled>       
       }
     }
 
@@ -257,7 +260,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 
 
 
-### <a name="sample"></a>示例
+## <a name="sample"></a>示例
 
 以下是包含下列资源的解决方案示例：
 
@@ -266,7 +269,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 - 警报操作
 - Webhook 操作
 
-此示例使用的是解决方案中常用的[标准解决方案参数](operations-management-suite-solutions-creating.md#parameters)变量，不同于资源定义中使用的硬编码值。
+此示例使用的是解决方案中常用的[标准解决方案参数](operations-management-suite-solutions-solution-file.md#parameters)变量，不同于资源定义中使用的硬编码值。
 
     {
         "$schema": "http://schemas.microsoft.org/azure/deploymentTemplate?api-version=2015-01-01#",
@@ -504,10 +507,5 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 ## <a name="next-steps"></a>后续步骤
 * [将视图](operations-management-suite-solutions-resources-views.md)添加到管理解决方案。
 * [将自动化 runbook 和其他资源添加](operations-management-suite-solutions-resources-automation.md)到管理解决方案。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

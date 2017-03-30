@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 03/21/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 73b5a52b143d17283f677ce3181d8381db41d3c4
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 60f1ec092635910ae8c98cc0197fdfbf358f01be
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -55,7 +56,7 @@ ms.openlocfilehash: 73b5a52b143d17283f677ce3181d8381db41d3c4
 * 此集成目前已投入使用，还是在试运行期？
 
 > [!NOTE]
-> 如果无法正确映射所有应用与云服务，可以使用 Cloud App Discovery 工具。 IT 部门可以使用此工具深入了解组织的所有业务云应用与使用者云应用。 发现组织中的影子 IT 将变得前所未有的轻松，就连使用模式的详细信息，以及正在访问云应用程序的用户都能发现。 若要访问此工具，请转到 [https://appdiscovery.azure.com](https://appdiscovery.azure.com/)
+> 如果无法正确映射所有应用与云服务，可以使用 Cloud App Discovery 工具。 IT 部门可以使用此工具深入了解组织的所有业务云应用与使用者云应用。 发现组织中的影子 IT 将变得前所未有的轻松，就连使用模式的详细信息，以及正在访问云应用程序的用户都能发现。 若要开始，请参阅 [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)。
 > 
 > 
 
@@ -108,10 +109,5 @@ ms.openlocfilehash: 73b5a52b143d17283f677ce3181d8381db41d3c4
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

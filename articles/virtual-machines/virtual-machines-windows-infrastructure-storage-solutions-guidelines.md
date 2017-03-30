@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 5c1e2a2170e5373b856caf6da4b9abaea00dc09a
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f692f98beaee16bef24bb7fbf716a9b4b8edeb6c
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -32,6 +32,7 @@ ms.lasthandoff: 03/03/2017
 ## <a name="implementation-guidelines-for-storage"></a>存储的实施准则
 决策：
 
+* 要使用 Azure 托管磁盘还是非托管磁盘？
 * 需要为工作负荷使用标准存储还是高级存储？
 * 是否需要进行磁盘条带化以创建大于 1023 GB 的磁盘？
 * 是否需要进行磁盘条带化以获得工作负荷的最佳 I/O 性能？
@@ -44,6 +45,8 @@ ms.lasthandoff: 03/03/2017
 
 ## <a name="storage"></a>存储
 Azure 存储空间是部署与管理虚拟机 (VM) 和应用程序的重要部分。 Azure 存储空间提供的服务可用于存储文件数据、非结构化数据和消息，该存储空间也是为 VM 提供支持的基础结构的一部分。
+
+[Azure 托管磁盘](../storage/storage-managed-disks-overview.md)在幕后为你处理存储。 使用非托管磁盘时，需创建存储帐户来存储你的 Azure VM 的磁盘（VHD 文件）。 进行扩展时，必须确保创建了额外的存储帐户，以便任何磁盘都不会超出对存储的 IOPS 限制。 使用托管磁盘处理存储时，不再受限于存储帐户限制（例如 20,000 IOPS / 帐户）。 也不再需要将自定义映像（VHD 文件）复制到多个存储帐户。 可以在一个中心位置管理自定义映像（每个 Azure 区域一个存储帐户），并使用它们在一个订阅中创建数百台 VM。 我们建议你使用托管磁盘进行新部署。
 
 有两种可为 VM 提供支持的存储帐户：
 
@@ -81,7 +84,9 @@ Azure 将对可用的数据磁盘数和带宽加以限制，具体取决于 VM �
 有关详细信息，请参阅[存储空间 - 专为提高性能设计](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx)。
 
 ## <a name="multiple-storage-accounts"></a>多个存储帐户
-设计 Azure 存储环境时，随着部署的 VM 数目增加，可以使用多个存储帐户。 此方法有助于将 I/O 分散到底层 Azure 存储基础结构上，以维持 VM 和应用程序的最佳性能。 设计要部署的应用程序时，请考虑每个 VM 的 I/O 需求，并使这些 VM 在 Azure 存储帐户之间取得均衡。 尽量避免将所有高 I/O 需求的 VM 分组在仅仅一个或两个存储帐户中。
+本节不适用于 [Azure 托管磁盘](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，因为无需创建单独的存储帐户。 
+
+为非托管磁盘设计 Azure 存储环境时，随着部署的 VM 数目增加，可以使用多个存储帐户。 此方法有助于将 I/O 分散到底层 Azure 存储基础结构上，以维持 VM 和应用程序的最佳性能。 设计要部署的应用程序时，请考虑每个 VM 的 I/O 需求，并使这些 VM 在 Azure 存储帐户之间取得均衡。 尽量避免将所有高 I/O 需求的 VM 分组在仅仅一个或两个存储帐户中。
 
 有关不同 Azure 存储选项的 I/O 功能及一些建议最大值的详细信息，请参阅 [Azure 存储可缩放性和性能目标](../storage/storage-scalability-targets.md)。
 

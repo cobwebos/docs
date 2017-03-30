@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: d64ca980b82e279e446d2ea279124ae3f54b0f49
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f8cb0030290d200ab79e340b9b0fe8f5765d49f0
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -95,7 +96,7 @@ ms.openlocfilehash: d64ca980b82e279e446d2ea279124ae3f54b0f49
    * 停止保护虚拟机 <br\>
    * 恢复对虚拟机的保护 <br\>
    * 删除备份数据（或恢复点）<br\>
-   * [删除备份（或恢复点）](backup-azure-arm-restore-vms.md#restore-a-recovery-point)  <br\>
+   * [还原备份磁盘](backup-azure-arm-restore-vms.md#restore-backed-up-disks)  <br\>
 
 以下过程的起点是保管库项仪表板。
 
@@ -220,9 +221,4 @@ ms.openlocfilehash: d64ca980b82e279e446d2ea279124ae3f54b0f49
 
 ## <a name="next-steps"></a>后续步骤
 有关如何从恢复点重新创建虚拟机的信息，请查看 [Restore Azure VMs](backup-azure-restore-vms.md)（还原 Azure VM）。 如果你需要有关如何保护虚拟机的信息，请参阅 [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)（初步了解：将 VM 备份到恢复服务保管库）。 有关监视事件的信息，请参阅[监视 Azure 虚拟机备份的警报](backup-azure-monitor-vms.md)。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

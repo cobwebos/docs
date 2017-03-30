@@ -14,9 +14,9 @@ ms.workload: integration
 ms.date: 03/07/2017
 ms.author: juliako;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: a3780d296548f4e00841563c65a99fb88ce047fe
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: dea4a174aaf3727d66e9d69d32d433ff24e0d06d
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/08/2017
 
 发布日期：2017/03/07
  
-此版本中未引入任何对 Azure SDK 3.0 的重大更改。 此外，将此 SDK 用于现有云服务项目也无需任何升级过程。
+此版本中未引入任何对 Azure SDK 3.0 的重大更改。 此外，将此 SDK 用于现有云服务项目也无需任何升级过程。 若要在无需升级过程的情况下允许使用 Azure SDK 3.0，则需将 Azure SDK 3.0 安装到与 Azure SDK 2.9 相同的目录中。 大多数组件没有更改主版本 2.9，而只是更新了内部版本号。
 
 ## <a name="visual-studio-2017-rtw"></a>Visual Studio 2017 RTW
 

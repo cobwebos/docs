@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/02/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 7196b4eddc8a00cf2c15e8d8447ef8381db738a3
-ms.openlocfilehash: a1ef4ccb6546f011c405a98cab3cae514de813ea
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 39824fa66dee9f1bd57687e59ece97f4f4636b7d
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -97,7 +97,7 @@ ms.lasthandoff: 03/02/2017
 4. 保存 **AzureSqlLinkedService1.json** 文件。 
 
 > [!NOTE]
-> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure SQL Database](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)（将数据移出/移入 Azure SQL 数据库）。
+> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure SQL Database](data-factory-azure-sql-connector.md#linked-service-properties)（将数据移出/移入 Azure SQL 数据库）。
 > 
 > 
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 03/02/2017
     ```
             
 > [!NOTE]
-> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure Blob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)（将数据移出/移入 Azure Blob）。
+> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure Blob](data-factory-azure-blob-connector.md#dataset-properties)（将数据移出/移入 Azure Blob）。
 > 
 > 
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 03/02/2017
    * **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。  数据工厂服务每隔一小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
 
 > [!NOTE]
-> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure SQL Database](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)（将数据移出/移入 Azure SQL 数据库）。
+> 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure SQL Database](data-factory-azure-sql-connector.md#linked-service-properties)（将数据移出/移入 Azure SQL 数据库）。
 > 
 > 
 

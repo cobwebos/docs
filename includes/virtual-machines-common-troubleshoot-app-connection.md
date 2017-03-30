@@ -62,7 +62,7 @@
 
 在基于 Windows 和基于 Linux 的虚拟机上，使用 **netstat -a** 命令显示活动的侦听端口。 检查应用程序应侦听的预期端口的输出。 重新启动应用程序，或根据需要将其配置为使用预期的端口，然后尝试在本地重新访问应用程序。
 
-## <a name="a-idstep2astep-2-access-application-from-another-vm-in-the-same-virtual-network"></a><a id="step2"></a>步骤 2：从同一虚拟网络中的另一个 VM 访问应用程序
+## <a id="step2"></a>步骤 2：从同一虚拟网络中的另一个 VM 访问应用程序
 使用 VM 的主机名或其 Azure 分配的公共、专用或提供程序 IP 地址尝试访问位于不同 VM 但相同虚拟网络中的应用程序。 对于使用经典部署模型创建的虚拟机，请不要使用云服务的公共 IP 地址。
 
 ![从不同的 VM 启动应用程序](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
@@ -82,7 +82,7 @@
 
 在基于 Windows 的虚拟机上，使用具有高级安全性的 Windows 防火墙确定防火墙规则是否排除应用程序的入站和出站流量。
 
-## <a name="a-idstep3astep-3-access-application-from-outside-the-virtual-network"></a><a id="step3"></a>步骤 3：从虚拟网络外部访问应用程序
+## <a id="step3"></a>步骤 3：从虚拟网络外部访问应用程序
 尝试通过虚拟网络之外的计算机访问应用程序，作为应用程序运行的 VM。 使用其他网络作为原始客户端计算机。
 
 ![从虚拟网络外部的计算机启动应用程序。](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
@@ -95,17 +95,17 @@
   
   * 确保 VM 的终结点配置允许传入流量，尤其是协议（TCP 或 UDP）及公用和专用端口号。
   * 确保终结点上的访问控制列表 (ACL) 不会阻止来自 Internet 的传入流量。
-  * 有关详细信息，请参阅[如何对虚拟机设置终结点](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+  * 有关详细信息，请参阅[如何对虚拟机设置终结点](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 * 对于使用 Resource Manager 部署模型创建的 VM：
   
   * 确保 VM 的入站 NAT 规则配置允许传入流量，尤其是协议（TCP 或 UDP）及公用和专用端口号。
   * 确保网络安全组允许入站请求和出站响应流量。
   * 有关详细信息，请参阅 [什么是网络安全组 (NSG)？](../articles/virtual-network/virtual-networks-nsg.md)
 
-如果虚拟机或终结点是负载平衡集的成员，则：
+如果虚拟机或终结点是负载均衡集的成员，则：
 
 * 验证探测协议（TCP 或 UDP）和端口号是否正确。
-* 如果探测协议和端口与负载平衡集协议和端口不同，则：
+* 如果探测协议和端口与负载均衡集协议和端口不同，则：
   * 验证应用程序是否在探测协议（TCP 或 UDP）和端口号（在目标 VM 上使用 **netstat –a**）上侦听。
   * 确保目标 VM 上的主机防火墙允许入站探测请求和出站探测响应流量。
 
@@ -118,9 +118,4 @@
 [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

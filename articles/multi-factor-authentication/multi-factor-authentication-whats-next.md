@@ -15,16 +15,25 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 042b99a77fae0de2fe65113d9d909a443f5487d4
-ms.openlocfilehash: 3a6020b2c189b4ce9a930a18d78140b7bd8ff8ff
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: df4340ce5185405334f08f6098590f84b067dafd
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 在启动并运行 Azure 多重身份验证后，可以参考本文进行管理。  本文涵盖了各种主题，可帮助你充分利用 Azure 多重身份验证。  并非所有版本的 Azure 多重身份验证都提供了这些功能。
 
-| 功能 | 描述 | |:--- |:--- || | [欺诈警报](#fraud-alert) |管理员可以配置和设置欺诈警报，以便用户针对访问其资源的欺诈性企图进行举报。 | | [免验证一次](#one-time-bypass) |免验证一次可让用户通过“免除”多重身份验证的方式进行身份验证，不过只会免验证一次。 | | [自定义语音消息](#custom-voice-messages) |自定义语音消息可让你将自己的录音或问候语用于多重身份验证。 | | [缓存](#caching-in-azure-multi-factor-authentication) |使用缓存可以设置一段特定的时间，使后续的身份验证尝试自动成功。 | | [受信任的 IP](#trusted-ips) |托管或联合租户的管理员可以使用“受信任的 IP”对从公司本地 Intranet 登录的用户免除双重验证。 | | [应用密码](#app-passwords) |应用密码允许非 MFA 感知应用程序免于进行多重身份验证并继续工作。 | | [为记住的设备和浏览器记住多重身份验证](#remember-multi-factor-authentication-for-devices-that-users-trust) |允许在用户使用 MFA 成功登录后将设备记住设定的天数。 | | [可选择的验证方法](#selectable-verification-methods) |允许你选择可供用户使用的身份验证方法。 |
+| 功能 | 说明 | 
+|:--- |:--- |
+| [欺诈警报](#fraud-alert) |管理员可以配置和设置欺诈警报，以便用户针对访问其资源的欺诈性企图进行举报。 |
+| [免验证一次](#one-time-bypass) |“一次性跳过”可让用户通过“跳过”Multi-Factor Authentication 来进行身份验证，不过只能跳过一次。 |
+| [自定义语音消息](#custom-voice-messages) |自定义语音消息可让你将自己的录音或问候语用于 Multi-Factor Authentication。 |
+| [缓存](#caching-in-azure-multi-factor-authentication) |使用缓存可以设置一段特定的时间，使后续的身份验证尝试自动成功。 |
+| [受信任的 IP](#trusted-ips) |托管或联合租户的管理员可以使用“受信任的 IP”对从公司本地 Intranet 登录的用户免除双重验证。 |
+| [应用密码](#app-passwords) |应用密码允许非 MFA 感知应用程序免于进行多重身份验证并继续工作。 |
+| [为已记住设备和浏览器记住多重身份验证](#remember-multi-factor-authentication-for-devices-that-users-trust) |允许在用户使用 MFA 成功登录后的指定天数内记住设备。 |
+| [可选择验证方法](#selectable-verification-methods) |允许你选择可供用户使用的身份验证方法。 |
 
 ## <a name="access-the-azure-mfa-management-portal"></a>访问 Azure MFA 管理门户
 

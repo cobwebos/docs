@@ -1,21 +1,22 @@
 ---
-title: "使用 Analytics - Application Insights 的强大搜索工具 | Microsoft 文档"
+title: "使用 Analytics - Azure Application Insights 的强大搜索工具 | Microsoft Docs"
 description: "使用 Analytics - Application Insights 的强大诊断搜索工具。 "
 services: application-insights
 documentationcenter: 
 author: danhadari
-manager: douge
+manager: carmonm
 ms.assetid: c3b34430-f592-4c32-b900-e9f50ca096b3
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2389f1d785abc750dd165303f737a883b3f788d0
-ms.openlocfilehash: 6232a80417cf4581f6c6cbe6c11418dc8d0c3407
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: d7f6f9582a3d15563c19d69845836a92a35ee95e
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -195,7 +196,7 @@ curl "https://api.applicationinsights.io/beta/apps/DEMO_APP/query?query=requests
 ### <a name="define-your-data-schema"></a>定义数据架构
 
 1. 单击“设置”（左上角），然后单击“数据源”。 
-2. 遵照说明添加数据源。 系统会要求提供数据样本，其中应至少包含&10; 行。 然后请更正架构。
+2. 遵照说明添加数据源。 系统会要求提供数据样本，其中应至少包含 10 行。 然后请更正架构。
 
 这样就会定义数据源，稍后可以用它来导入单个表。
 
@@ -222,13 +223,10 @@ curl "https://api.applicationinsights.io/beta/apps/DEMO_APP/query?query=requests
 
 如果使用 [LogStash](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html)，可以通过 Analytics 来查询日志。 使用[可通过管道将数据传送到 Analytics 的插件](https://github.com/Microsoft/logstash-output-application-insights)。 
 
+## <a name="video"></a>视频
 
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

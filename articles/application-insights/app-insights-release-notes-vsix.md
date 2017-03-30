@@ -4,23 +4,121 @@ description: "用于开发人员分析的 Visual Studio 工具的最新更新。
 services: application-insights
 documentationcenter: 
 author: acearun
-manager: douge
+manager: carmonm
 ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 06/09/2016
+ms.date: 03/20/2017
 ms.author: aruna
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 73e9c2bdc8e7851f8de8bcddb0babeb732d8ce15
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 5edd37a3a042f710e7d1b9e148c24d9a548a4fea
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>开发人员分析工具发行说明
-新增功能：Visual Studio 中的 Application Insights 和 HockeyApp 分析。
+
+## <a name="version-718-visual-studio-2015"></a>版本 7.18 (Visual Studio 2015)
+
+* 重新设计了 Toast 通知。
+* 在 Application Insights 搜索中，“不”筛选事件的详细信息视图。
+* Bug 修复
+
+## <a name="version-86-visual-studio-2017-rtw-and-rc4-and-version-717-visual-studio-2015"></a>版本 8.6（Visual Studio 2017 RTW 和 RC4）及版本 7.17 (Visual Studio 2015)
+
+* 通过 Visual Studio 发布应用时，现可在 Azure 门户的指标资源浏览器中对数据进行注释标记
+* 现可将标记添加到代码文件的滚动条中，对应于 Application Insights 中的红色和黄色 CodeLens 警告
+* 更新了“配置”窗口中的定价信息
+* Bug 修复
+
+[请参阅此处的详细说明](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes#devanalytics)
+
+## <a name="version-716-visual-studio-2015"></a>版本 7.16 (Visual Studio 2015)
+
+* Bug 修复
+
+## <a name="version-85-visual-studio-2017-rc3-and-version-715-visual-studio-2015"></a>版本 8.5 (Visual Studio 2017 RC3) 及版本 7.15 (Visual Studio 2015)
+
+* CodeLens 现显示发送数据到 Application Insights 资源的项目中的调试和实时遥测数据
+* “配置”窗口中现显示 Application Insights 定价信息
+* 针对请求和异常的 CodeLens 现支持用 Visual Basic 编写的 ASP.NET 项目
+* Application Insights 搜索现显示已采样事件的未采样事件计数
+* Bug 修复
+
+## <a name="version-714-visual-studio-2015"></a>版本 7.14 (Visual Studio 2015)
+
+* 针对可用性（Web 测试）和页面视图事件的搜索支持
+* 针对可用性（Web 测试）和页面视图事件的趋势支持
+* 针对 SDK 自适应采样的诊断工具和事件详细信息标签
+* Bug 修复
+
+## <a name="version-712-visual-studio-2015"></a>版本 7.12 (Visual Studio 2015)
+
+* 新的发布通知格式
+* Bug 修复
+
+## <a name="version-84-visual-studio-2017-rc2-and-version-711-visual-studio-2015"></a>版本 8.4 (Visual Studio 2017 RC2) 及版本 7.11 (Visual Studio 2015)
+
+* CodeLens 显示项目利用 Application Insights SDK 进行本地调试会话的请求
+* CodeLens 可直接转到应用程序分析查看用户影响
+* 可插入 JavaScript 收集页面视图
+* Bug 修复
+
+## <a name="version-710-visual-studio-2015"></a>版本 7.10 (Visual Studio 2015)
+
+* Application Insights“配置”窗口的新设计
+* Bug 修复
+
+## <a name="version-79-visual-studio-2015"></a>版本 7.9 (Visual Studio 2015)
+
+* CodeLens 显示在项目利用 Application Insights SDK 进行本地调试会话期间发生的异常
+* Bug 修复
+
+## <a name="version-83-visual-studio-2017-rc-and-version-78-visual-studio-2015"></a>版本 8.3 (Visual Studio 2017 RC) 及版本 7.8 (Visual Studio 2015)
+
+* 在“配置”窗口添加 Application Insights 的新体验
+* Bug 修复
+
+## <a name="version-77-visual-studio-2015"></a>版本 7.7 (Visual Studio 2015)
+
+* 利用自定义 ASP.NET 路由从遥测事件更准确地映射到方法
+* Bug 修复
+
+## <a name="version-76-visual-studio-2015"></a>版本 7.6 (Visual Studio 2015)
+
+* 分析新“跟踪操作”选项卡上的操作所涉及的事件，该选项卡针对搜索工具中的事件
+* Bug 修复
+
+## <a name="version-75-visual-studio-2015"></a>版本 7.5 (Visual Studio 2015)
+
+* 在诊断工具中显示请求的生产遥测信息
+* 通过搜索工具中的相关项创建工作项
+* Bug 修复
+
+## <a name="version-74-visual-studio-2015"></a>版本 7.4 (Visual Studio 2015)
+
+* “趋势”中的筛选器窗格现可调整大小
+* Bug 修复
+
+## <a name="version-73-visual-studio-2015"></a>版本 7.3 (Visual Studio 2015)
+
+* CodeLens 中的请求
+* “配置”窗口
+* HockeyApp SDK 更新为 v4.2.2
+* Bug 修复
+
+## <a name="version-72-visual-studio-2015"></a>版本 7.2 (Visual Studio 2015)
+
+* Bug 修复
+
+## <a name="version-71-visual-studio-2015"></a>版本 7.1 (Visual Studio 2015)
+
+* Application Insights 趋势中的遥测就绪状态指示器
+* Bug 修复
 
 ## <a name="version-70"></a>版本 7.0
 ### <a name="azure-application-insights-trends"></a>Azure Application Insights 趋势
@@ -116,7 +214,7 @@ Windows 窗体项目节点的上下文菜单现在包含一个选项，可以将
 ![上载完成](./media/app-insights-release-notes-vsix/LocalSearch.png)
 
 ## <a name="version-42"></a>版本 4.2
-在此版本中，我们添加了相关功能，使得在事件上下文中搜索数据变得更容易，能够从更多数据事件跳转到代码，以及实现将日志记录数据发送到 Application Insights 的轻松体验。 此扩展每月更新一次。 如果有反馈或功能请求，请将其发送到 aidevtools@microsoft.com。
+在此版本中，我们添加了相关功能，使得在事件上下文中搜索数据变得更容易，能够从更多数据事件跳转到代码，以及实现将日志记录数据发送到 Application Insights 的轻松体验。 此扩展每月更新一次。 若有反馈或功能请求，请将其发送到 aidevtools@microsoft.com。
 
 ### <a name="no-click-logging-experience"></a>无单击日志记录体验
 如果已经在使用 NLog、log4net 或 System.Diagnostics.Tracing，则不必对将所有跟踪记录移动到 Application Insights 而担心。 在此版本中，我们集成了 Application Insights 日志记录适配器与常规配置体验。
@@ -197,10 +295,4 @@ Windows 窗体项目节点的上下文菜单现在包含一个选项，可以将
 在选择用来生成应用的任何一个平台（无论是 iOS、Android、Windows 还是 Xamarin、Cordova 或 Unity 之类的跨平台解决方案）上，HockeyApp 都支持该应用。
 
 在将来版本的 Application Insights 扩展中，我们将在 HockeyApp 和 Visual Studio 之间引入更加集成的体验。 现在，你可以通过简单地添加 NuGet 引用来开始操作。 有关详细信息，请参阅[文档](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

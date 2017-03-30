@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/30/2016
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: bf1b8783ccbc3b3e3185eb10c7f772b58352aab7
-ms.openlocfilehash: 073940bb607b953af324d784a45958977e1af3a2
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 006ebbbc3f6f745f60c5fc6646649097e144beaf
+ms.lasthandoff: 03/17/2017
 
 ---
 
@@ -35,7 +36,7 @@ ms.openlocfilehash: 073940bb607b953af324d784a45958977e1af3a2
 
 ## <a name="update-application-settings-from-the-azure-portal"></a>在 Azure 门户中更新应用程序设置
 
-可使用 Azure 门户轻松修改现有应用程序的设置。 例如，可配置答复 URL，它是 Azure AD 颁发令牌响应的位置。 还可为其他应用程序配置权限，例如，允许应用程序访问 MS 图形 API。 通过应用程序设置页面，可执行所有这些操作。
+可使用 Azure 门户轻松修改现有应用程序的设置。 例如，可配置答复 URL，它是 Azure AD 颁发令牌响应的位置。 还可为其他应用程序配置权限，例如，允许应用程序访问 Microsoft 图形 API。 通过应用程序设置页面，可执行所有这些操作。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在页面右上角选择帐户，选择你的 Azure AD 租户。
@@ -44,7 +45,7 @@ ms.openlocfilehash: 073940bb607b953af324d784a45958977e1af3a2
   * 在“属性”页中，可以修改应用程序的常规信息。 这包括应用程序名称、登录 URL 和注销 URL。
   * 在“回复 URL”页中，可以添加回复 URL，即 Azure AD 发送令牌响应的位置。
   * 在“所有者”页中，可以添加应用程序所有者。
-  * 在“权限”面中，可为应用配置权限。 例如，若要访问 MS 图形 API，请单击“添加”，在 API 选择器中选择“Microsoft Graph”，然后选择所需的权限（如“读取目录数据”）。
+  * 在“权限”面中，可为应用配置权限。 例如，若要访问 Microsoft 图形 API，请单击“添加”，在 API 选择器中选择“Microsoft Graph”，然后选择所需的权限（如“读取目录数据”）。
   * 在“密钥”页中，可以添加应用程序机密。 密码会在创建后立即显示，并且只显示一次，因此请复制密码，以便今后使用。
 
 ## <a name="use-the-inline-manifest-editor"></a>使用内联清单编辑器
@@ -61,9 +62,4 @@ ms.openlocfilehash: 073940bb607b953af324d784a45958977e1af3a2
 
 1. 若要深入了解应用程序如何使用 Azure AD 执行身份验证，请查看[快速入门](active-directory-developers-guide.md)。
 2. 在 [Github](https://github.com/azure-samples) 中查看代码示例的完整列表。
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

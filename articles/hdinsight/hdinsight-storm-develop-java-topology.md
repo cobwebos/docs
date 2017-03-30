@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/13/2017
+ms.date: 03/21/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
-ms.openlocfilehash: 3b9dfffe17272296ef10a78b3cf25570109679c7
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 183425e296f91bba47094c9b35be67fb6299c569
+ms.lasthandoff: 03/22/2017
 
 ---
 # <a name="use-maven-to-develop-a-java-based-word-count-topology-for-storm-on-hdinsight"></a>使用 Maven 开发基于 Java 且适用于 Storm on HDInsight 的单词计数拓扑
@@ -163,7 +163,7 @@ Maven 插件可让你自定义项目的生成阶段，例如，如何编译项�
 
 另一个有用的插件是用于更改编译选项的 [Apache Maven Compiler 插件](http://maven.apache.org/plugins/maven-compiler-plugin/)。 这会更改 Maven 用作应用程序源和目标的 Java 版本。
 
-* 对于 __HDInsight&3;.4 或更早的版本__，请将源和目标 Java 版本设置为 __1.7__。
+* 对于 __HDInsight 3.4 或更早的版本__，请将源和目标 Java 版本设置为 __1.7__。
 
 * 对于 HDInsight __3.5__，请将源和目标 Java 版本设置为 __1.8__。
 
@@ -557,7 +557,7 @@ Storm 使用 Apache Log4j 来记录信息。 如果未配置日志记录，拓�
 
 从 WordCount Bolt 发出的日志中可以看到，“and”已发出 113 次。 只要拓扑运行，计数就会持续增加，因为 Spout 会连续发出相同的句子。
 
-每两次发出单词和句子的间隔为 5 秒。 **WordCount** 组件配置为仅当计时周期元组到达时才发出信息，并且要求默认情况下只能每隔&5; 秒传送一次此类元组。
+每两次发出单词和句子的间隔为 5 秒。 **WordCount** 组件配置为仅当计时周期元组到达时才发出信息，并且要求默认情况下只能每隔 5 秒传送一次此类元组。
 
 ## <a name="convert-the-topology-to-flux"></a>将拓扑转换为 Flux
 
@@ -565,63 +565,47 @@ Flux 是 Storm 0.10.0 及更高版本随附的一个新框架，可以将配置�
 
 YAML 文件定义要用于拓扑的组件、如何在组件之间流送数据，以及在初始化组件时要使用哪些值。 可以包括一个 YAML 文件（作为 jar 文件的一部分），也可以使用外部 YAML 文件。
 
+> [!WARNING]
+> 由于 Storm 1.0.1 的 [bug (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055)，可能需要安装 [Storm 开发环境](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html)，在本地运行 Flux 拓扑。
+
 1. 将 `WordCountTopology.java` 文件移出项目。 以前由该文件定义拓扑，但使用 Flux 时无需这么做。
 
 2. 在 `resources` 目录中，创建名为 `topology.yaml` 的文件。 将以下文本用作此文件的内容。
-    
-    ```yaml
-    # topology definition
 
-    # name to be used when submitting. This is what shows up...
-    # in the Storm UI/storm command line tool as the topology name
-    # when submitted to Storm
-    name: "wordcount"
-
-    # Topology configuration
-    config:
-    # Hint for the number of workers to create
-    topology.workers: 1
-
-    # Spout definitions
-    spouts:
-    - id: "sentence-spout"
-        className: "com.microsoft.example.RandomSentenceSpout"
-        # parallelism hint
-        parallelism: 1
-
-    # Bolt definitions
-    bolts:
-    - id: "splitter-bolt"
-        className: "com.microsoft.example.SplitSentence"
-        parallelism: 1
-
-    - id: "counter-bolt"
-        className: "com.microsoft.example.WordCount"
-        constructorArgs:
-        - 10
-        parallelism: 1
-
-    # Stream definitions
-    streams:
-    - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
-        # The stream emitter
-        from: "sentence-spout"
-        # The stream consumer
-        to: "splitter-bolt"
-        # Grouping type
-        grouping:
-        type: SHUFFLE
-
-    - name: "Splitter -> Counter"
-        from: "splitter-bolt"
-        to: "counter-bolt"
-        grouping:
-        type: FIELDS
-        # field(s) to group on
-        args: ["word"]
-    ```
-
-    请花费片刻时间通读并了解每个节的作用，以及它与 **WordCountTopology.java** 文件中基于 Java 的定义存在怎样的关联。
+        name: "wordcount"       # friendly name for the topology
+        
+        config:                 # Topology configuration
+        topology.workers: 1     # Hint for the number of workers to create
+        
+        spouts:                 # Spout definitions
+        - id: "sentence-spout"
+            className: "com.microsoft.example.RandomSentenceSpout"
+            parallelism: 1      # parallelism hint
+        
+        bolts:                  # Bolt definitions
+        - id: "splitter-bolt"
+            className: "com.microsoft.example.SplitSentence"
+            parallelism: 1
+         
+        - id: "counter-bolt"
+            className: "com.microsoft.example.WordCount"
+            constructorArgs:
+                - 10
+            parallelism: 1
+        
+        streams:                # Stream definitions
+            - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
+            from: "sentence-spout"       # The stream emitter
+            to: "splitter-bolt"          # The stream consumer
+            grouping:                    # Grouping type
+                type: SHUFFLE
+          
+            - name: "Splitter -> Counter"
+            from: "splitter-bolt"
+            to: "counter-bolt"
+            grouping:
+            type: FIELDS
+                args: ["word"]           # field(s) to group on
 
 3. 对 `pom.xml` 文件进行以下更改。
    
@@ -693,8 +677,11 @@ YAML 文件定义要用于拓扑的组件、如何在组件之间流送数据，
     如果使用的是 PowerShell，请使用以下命令：
    
         mvn compile exec:java "-Dexec.args=--local -R /topology.yaml"
+
+    > [!WARNING]
+    > 如果拓扑使用 Storm 1.0.1 位，此命令将失败。 这是由 [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055) 引起的。 [在开发环境中安装 Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)，并使用以下信息。
    
-    如果使用的是 Linux/Unix/OS X 系统，并且已[在开发环境中安装了 Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)，则可以改用以下命令：
+    如果已[在开发环境中安装 Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)，则可以改用以下命令：
    
         mvn compile package
         storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
@@ -724,7 +711,7 @@ YAML 文件定义要用于拓扑的组件、如何在组件之间流送数据，
    
         mvn exec:java -Dexec.args="--local /path/to/newtopology.yaml"
    
-    或者，如果 Linux/Unix/OS X 开发环境中具有 Storm，则运行以下命令：
+    或者，如果开发环境中有 Storm，则执行以下操作：
    
         storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local /path/to/newtopology.yaml
    

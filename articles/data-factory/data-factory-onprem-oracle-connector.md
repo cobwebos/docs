@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2017
+ms.date: 03/17/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: a4b067e732bccb01faa96f23dbfd2ed65b7711a0
-ms.openlocfilehash: 62326da2e801a7c6e01d29e2298bd3552f331647
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a27ec9e1ebfde3493e41c493b85c0dc7f0ada2a0
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -33,17 +33,13 @@ ms.lasthandoff: 02/03/2017
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
 Oracle 连接器支持两个版本的驱动程序：
 
-- **适用于 Oracle 的 Microsoft 驱动程序**与数据管理网关（2.7 版及更高版本）绑定。 **建议**使用此驱动程序。 使用它，除要连接到 Oracle 的网关外无需安装任何程序，还可以体验更好的复制性能。 支持 Oracle 数据库版本 10g 发布 2 或更高版本。
+- **适用于 Oracle 的 Microsoft 驱动程序**与数据管理网关（2.7 版及更高版本）绑定。 **建议**使用此驱动程序。 除要连接到 Oracle 的网关外无需安装任何程序，还可以体验更好的复制性能。 支持 Oracle 数据库版本 10g 发布 2 或更高版本。
 
     > [!NOTE]
     > 目前，适用于 Oracle 的 Microsoft 驱动程序仅支持从 Oracle 复制数据，不支持将数据写入 Oracle。 请注意，数据管理网关“诊断”选项卡中的测试连接功能不支持此驱动程序。 或者，可以使用复制向导验证连接。
     >
 
-- **用于 .NET 的 Oracle 数据提供程序：**还可以选择使用 Oracle 数据提供程序在 Oracle 中复制/粘贴数据。 该组件包含在[适用于 Windows 的 Oracle 数据访问组件](http://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在安装有网关的计算机上安装合适的版本（32/64 位）。 [Oracle 数据提供程序 .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可访问 Oracle 数据库 10g 版本 2 或更高版本。
-
-    如果选择“XCopy 安装”，请遵循 readme.htm 中的步骤。 推荐选择带 UI 的安装程序（非 XCopy）。
-
-    安装提供程序后，使用服务小程序（或）数据管理网关配置管理器在计算机上**重启**数据管理网关主机服务。  
+- **用于 .NET 的 Oracle 数据提供程序：**数据管理网关 2.7 版或更高版本包括此组件，因此无需单独安装。 如果使用的网关版本低于 2.7，建议从[此处](https://www.microsoft.com/download/details.aspx?id=39717)安装最新版本的网关。 可在数据管理网关配置管理器的“帮助”页上找到此网关版本（搜索“数据管理网关”）。
 
 ## <a name="copy-data-wizard"></a>复制数据向导
 若要创建向 Oracle 数据库复制数据或将数据从 Oracle 数据库复制到任何支持的接收数据存储的管道，最简单的方法是使用复制数据向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
@@ -416,7 +412,7 @@ Oracle 连接器支持两个版本的驱动程序：
 | --- | --- | --- |
 | type |类型属性必须设置为：**OnPremisesOracle** |是 |
 | driverType | 指定在 Oracle 数据库复制/粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 或 **ODP**（默认值）。 请参阅驱动程序详细信息上的[支持版本和安装](#supported-versions-and-installation)部分。 | 否 |
-| connectionString | 为 connectionString 属性指定连接到 Oracle 数据库实例所需的信息。 请参阅以下示例。 | 是 |
+| connectionString | 为 connectionString 属性指定连接到 Oracle 数据库实例所需的信息。 | 是 |
 | gatewayName | 用于连接到本地 Oracle 服务器的网关的名称 |是 |
 
 请参阅[使用数据管理网关在本地源和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)，了解有关设置本地 Oracle 数据源凭据的详细信息。
@@ -470,14 +466,14 @@ User Id=<username>;Password=<password>;",
 >
 >
 
-另一方面，可用于此活动 typeProperties 部分的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
+而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
 ### <a name="oraclesource"></a>OracleSource
 在复制活动中，如果源的类型为 **OracleSource**，则可以在 **typeProperties** 部分中使用以下属性：
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：如未指定，则为 select * from MyTable <br/><br/>，则执行的 SQL 语句是：select * from MyTable |否（如果指定了**数据集**的 **tableName**） |
+| oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：如未指定，则为 select *from MyTable <br/><br/>，则执行的 SQL 语句是：select* from MyTable |否（如果指定了**数据集**的 **tableName**） |
 
 ### <a name="oraclesink"></a>OracleSink
 **OracleSink** 支持以下属性：
