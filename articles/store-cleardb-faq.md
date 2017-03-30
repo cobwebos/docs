@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 44bb69c53eb5fea6d3e27f17eb6c690df7684bda
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 5bff7fa34fd8ce14a35018dfd3c13b9ca2019f2e
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 44bb69c53eb5fea6d3e27f17eb6c690df7684bda
 * [ClearDB 共享 MySQL 数据库](/marketplace/partners/cleardb/databases/)
 * [ClearDB MySQL Premium 群集](/marketplace/partners/cleardb-clusters/cluster/)
 * [Azure VM 上运行的 MySQL 群集](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
-* [Azure VM 上运行的单个 MySQL 实例](virtual-machines/virtual-machines-windows-classic-mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure VM 上运行的单个 MySQL 实例](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ClearDB 是一种 MySQL 托管服务，可为你管理 MySQL 基础结构。 在 Azure 虚拟机上运行自己的 MySQL 群集或数据库时，必须设置 MySQL 服务器，并使用补丁使其保持更新。
 
@@ -47,7 +48,7 @@ ClearDB 是一种 MySQL 托管服务，可为你管理 MySQL 基础结构。 在
 默认数据库选项是 Titan，需 3.50 美元。 创建数据库时我们不会显示成本，你可能会错误地购买不想要的数据库。 我们正在设法改善此体验，但在那之前，你需要先检查为 Web 应用和数据库选择的定价层，然后再单击“创建”并开始部署资源。
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>我在自己的 Azure 虚拟机上运行 MySQL。 我是否可以将 Azure Web 应用连接到数据库？
-是的。 只要 Azure VM 已向 Web 应用授予远程访问权限，Web 应用就能连接到数据库。 有关详细信息，请参阅[在虚拟机上安装 MySQL](virtual-machines/virtual-machines-windows-classic-mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+是的。 只要 Azure VM 已向 Web 应用授予远程访问权限，Web 应用就能连接到数据库。 有关详细信息，请参阅[在虚拟机上安装 MySQL](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="in-which-countries-are-cleardb-premium-mysql-clusters-supported"></a>支持 ClearDB Premium MySQL 群集的国家/地区有哪些？
 除印度、澳大利亚、巴西南部和中国之外的所有 Azure 区域都可以使用 [ClearDB Premium MySQL 群集](/marketplace/partners/cleardb-clusters/cluster/)。
@@ -104,10 +105,5 @@ EA Azure 注册管理员可以管理 Azure 应用商店第三方服务的访问�
 
 ## <a name="more-information"></a>详细信息
 [Azure 应用商店常见问题解答](/marketplace/faq/)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

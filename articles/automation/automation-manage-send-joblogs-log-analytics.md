@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 3e166b82e547975a5d44465231da057a9465f81c
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 5cfbd39d2f66fb6632495eb7cd789ed39b0cc309
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/03/2017
 要开始将自动化日志发送到 Log Analytics，需要准备：
 
 1. 2016 年 11 月或之后发布的 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0) 版本。
-2. Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)。 
+2. Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)。
 3. Azure 自动化帐户的 ResourceId
 
 要查找 Azure 自动化帐户和 Log Analytics 工作区的 ResourceId，请运行以下 PowerShell：
@@ -68,13 +68,13 @@ Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 Switch ($Environment)
    {
        "AzureCloud" {Login-AzureRmAccount}
-       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
+       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment}
    }
 
 # if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO"
 
 Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
 
@@ -100,12 +100,12 @@ Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $work
 Switch ($Environment)
    {
        "AzureCloud" {Login-AzureRmAccount}
-       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
+       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment}
    }
 # if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO"
 
 Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
@@ -116,7 +116,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
-来自 Azure 自动化的诊断将在 Log Analytics 中创建两种类型的记录。 
+来自 Azure 自动化的诊断将在 Log Analytics 中创建两种类型的记录。
 
 ### <a name="job-logs"></a>作业日志
 | 属性 | 说明 |
@@ -176,7 +176,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 2. 通过在查询字段中键入以下搜索，为警报创建日志搜索查询：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended)`  还可以使用以下命令按 RunbookName 分组：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended) | measure Count() by RunbookName_s`   
 
    如果已设置在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。  自动化帐户名称可能派生自 JobLogs 搜索中的 Resource 字段。  
-3. 若要打开“添加警报规则”屏幕，请单击页面顶部的“警报”。 若要详细了解用于配置警报的选项，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md#creating-alert-rules)。
+3. 若要打开“添加警报规则”屏幕，请单击页面顶部的“警报”。 若要详细了解用于配置警报的选项，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md#alert-rules)。
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>查找已完成但出错的所有作业
 除了在失败时发出警报外，还可以发现 Runbook 作业何时发生非终止错误。 在这些情况下，PowerShell 会生成错误流，但非终止错误不会导致作业暂停或失败。    

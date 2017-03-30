@@ -10,16 +10,16 @@ tags: azure-service-management
 ms.assetid: 
 ms.service: sql-database
 ms.custom: sample
-ms.devlang: CLI
+ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 03/16/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: a9ee545280d21744a2e91399c80ad1945bac5995
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 2e65b7a5c44c240c1bc7dea8119c821a7bca2120
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -27,13 +27,11 @@ ms.lasthandoff: 03/17/2017
 
 此示例 CLI 脚本创建 Azure SQL 数据库，并配置服务器级防火墙规则。 成功运行该脚本后，可以通过所有 Azure 服务和配置的 IP 地址访问 SQL 数据库。 
 
-必要时，请使用 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中的说明安装 Azure CLI，然后运行 `az login` 创建与 Azure 的连接。
-
-此示例在 Bash shell 中正常工作。 有关在 Windows 上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../../virtual-machines/virtual-machines-windows-cli-options.md)。
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[主要](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh "创建 SQL 数据库")]
+[!code-azurecli[主要](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh?highlight=9-10 "创建 SQL 数据库")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

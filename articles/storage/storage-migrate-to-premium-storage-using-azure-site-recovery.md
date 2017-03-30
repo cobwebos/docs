@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 3/1/2016
 ms.author: luywang
 translationtype: Human Translation
-ms.sourcegitcommit: 106e03a5a99134eb6e5744cbf29ba32efc31f0ba
-ms.openlocfilehash: d76aa3e62c691c4537684bc70d3a91a3dbb8b446
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 41e3db2762998bd042c0a23fccd03e599bd237a5
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -140,7 +140,7 @@ Site Recovery 是一个 Azure 服务，可通过协调从本地物理服务器�
 ## <a name="post-migration-steps"></a>迁移后的步骤
 
 1. **将复制的 VM 配置到可用性集（如果适用）**。 Site Recovery 不支持连同可用性集一起迁移 VM。 根据复制的 VM 的部署，执行以下操作之一：
-  * 对于使用经典部署模型创建的 VM：在 Azure 门户中将 VM 添加到可用性集。 有关详细步骤，请参阅[将现有虚拟机添加到可用性集](../virtual-machines/virtual-machines-windows-classic-configure-availability.md#a-idaddmachine-aoption-2-add-an-existing-virtual-machine-to-an-availability-set)。
+  * 对于使用经典部署模型创建的 VM：在 Azure 门户中将 VM 添加到可用性集。 有关详细步骤，请参阅[将现有虚拟机添加到可用性集](../virtual-machines/windows/classic/configure-availability.md#a-idaddmachine-aoption-2-add-an-existing-virtual-machine-to-an-availability-set)。
   * 对于 Resource Manager 部署模型：保存 VM 的配置，然后在可用性集中删除再重新创建 VM。 为此，请使用 [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)（设置 Azure Resource Manager VM 可用性集）中所述的脚本。 运行此脚本之前，请检查此脚本的限制并规划好停机时间。
 
 2. **删除旧 VM 和磁盘**。 在删除之前，请确保高级磁盘与源磁盘一致，并且新 VM 执行的功能与源 VM 相同。 在 Resource Manager (RM) 部署模型中，通过 Azure 门户删除源存储帐户中的 VM 和磁盘。 在经典部署模型中，可通过经典门户或 Azure 门户删除 VM 和磁盘。 如果出现了即使删除 VM 也无法删除磁盘的问题，请参阅 [Troubleshoot errors when you delete VHDs in an RM deployment](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)（排查在 RM 部署中删除 VHD 时遇到的错误）或 [Troubleshoot deleting VHDs in a classic deployment](storage-cannot-delete-storage-account-container-vhd.md)（排查在经典部署中删除 VHD 时遇到的错误）。
@@ -157,8 +157,8 @@ Site Recovery 是一个 Azure 服务，可通过协调从本地物理服务器�
 有关虚拟机迁移的特定方案，请参阅以下资源：
 
 * [Migrate Azure Virtual Machines between Storage Accounts](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)（在存储帐户之间迁移 Azure 虚拟机）
-* [创建 Windows Server VHD 并将其上传到 Azure。](../virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [创建并上传包含 Linux 操作系统的虚拟硬盘](../virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [创建 Windows Server VHD 并将其上传到 Azure。](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [创建并上传包含 Linux 操作系统的虚拟硬盘](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [将虚拟机从 Amazon AWS 迁移到 Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 另请参阅以下资源，以了解有关 Azure 存储和 Azure 虚拟机的详细信息：

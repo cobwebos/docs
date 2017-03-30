@@ -17,9 +17,9 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: abcccabbfc56102c97ef2408fb812755e21b467c
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 8057747aea2725abf3b37481858c7902ff8fe4da
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -30,19 +30,19 @@ ms.lasthandoff: 03/22/2017
 | |  |
 |---|---|
 |**创建单一数据库和弹性池**||
-| [创建单一数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md) | 创建单个 Azure SQL 数据库并配置服务器级防火墙规则。 |
-| [创建弹性池并移动入池数据库](scripts/sql-database-move-database-between-pools-powershell.md) | 创建弹性池，移动入池数据库，并更改性能级别。|
+| [创建单一数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2ftoc.json) | 创建单个 Azure SQL 数据库并配置服务器级防火墙规则。 |
+| [创建弹性池并移动入池数据库](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2ftoc.json) | 创建弹性池，移动入池数据库，并更改性能级别。|
 |**配置异地复制和故障转移**||
-| [配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)| 为单个 Azure SQL 数据库配置活动异地复制，并将其故障转移到辅助副本。 |
-| [配置入池数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)| 为弹性池中的 Azure SQL 数据库配置活动异地复制，并将其故障转移到辅助副本。 |
+| [配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2ftoc.json)| 为单个 Azure SQL 数据库配置活动异地复制，并将其故障转移到辅助副本。 |
+| [配置入池数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2ftoc.json)| 为弹性池中的 Azure SQL 数据库配置活动异地复制，并将其故障转移到辅助副本。 |
 |**缩放单一数据库和弹性池**||
-| [缩放单一数据库](scripts/sql-database-monitor-and-scale-database-powershell.md) | 监视一个 Azure SQL 数据库的性能指标，将其缩放为更高的性能级别，并基于性能指标之一创建警报规则。 |
-| [缩放弹性池](scripts/sql-database-monitor-and-scale-pool-powershell.md) | 监视一个弹性池的性能指标，将其缩放为更高的性能级别，并基于性能指标之一创建警报规则。  |
+| [缩放单一数据库](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2ftoc.json) | 监视一个 Azure SQL 数据库的性能指标，将其缩放为更高的性能级别，并基于性能指标之一创建警报规则。 |
+| [缩放弹性池](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2ftoc.json) | 监视一个弹性池的性能指标，将其缩放为更高的性能级别，并基于性能指标之一创建警报规则。  |
 | **审核和威胁检测** |
-| [配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)| 为 Azure SQL 数据库配置审核和威胁检测策略。 |
+| [配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md?toc=%2fpowershell%2ftoc.json)| 为 Azure SQL 数据库配置审核和威胁检测策略。 |
 | **还原、复制和导入数据库**||
-| [还原数据库](scripts/sql-database-restore-database-powershell.md)| 从异地冗余备份中还原 Azure SQL 数据库以及将已删除的 Azure SQL 数据库还原到最新备份。 |
-| [将数据库复制到新服务器](scripts/sql-database-copy-database-to-new-server-powershell.md)| 在新的 Azure SQL 服务器中创建现有 Azure SQL 数据库的副本。 |
-| [从 bacpac 文件导入数据库](scripts/sql-database-import-from-bacpac-powershell.md)| 从 bacpac 文件将数据库导入到 Azure SQL 服务器。 |
+| [还原数据库](scripts/sql-database-restore-database-powershell.md?toc=%2fpowershell%2ftoc.json)| 从异地冗余备份中还原 Azure SQL 数据库以及将已删除的 Azure SQL 数据库还原到最新备份。 |
+| [将数据库复制到新服务器](scripts/sql-database-copy-database-to-new-server-powershell.md?toc=%2fpowershell%2ftoc.json)| 在新的 Azure SQL 服务器中创建现有 Azure SQL 数据库的副本。 |
+| [从 bacpac 文件导入数据库](scripts/sql-database-import-from-bacpac-powershell.md?toc=%2fpowershell%2ftoc.json)| 从 bacpac 文件将数据库导入到 Azure SQL 服务器。 |
 |||
 

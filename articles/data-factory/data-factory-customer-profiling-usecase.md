@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: abc3fa751b3926dbbb9dc040abc40632e316e2a0
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: a03f097d0106ac153ef45e0c10b677597c76207a
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -31,7 +32,7 @@ Contoso 的目标是基于其玩家的游戏历史记录确定向上销售/交�
 在此解决方案中，Contoso 需要评估其最近启动的市场营销活动的成效。 我们从原始游戏日志着手，对其进行处理并使用地理位置数据将其扩充，加入广告引用数据，最后将其复制到 Azure SQL 数据库，进而分析市场活动的影响。
 
 ## <a name="deploy-solution"></a>部署解决方案
-访问和试用此简单用例所需要的是 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob 存储帐户](https://docs.microsoft.com/en-us/azure/storage/storage-create-storage-account#create-a-storage-account)和 [Azure SQL 数据库](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started)。 在数据工厂主页上的“示例管道”磁贴上，部署客户分析管道。
+访问和试用此简单用例所需要的是 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)和 [Azure SQL 数据库](../sql-database/sql-database-get-started.md)。 在数据工厂主页上的“示例管道”磁贴上，部署客户分析管道。
 
 1. 创建数据工厂或打开现有数据工厂。 有关创建数据工厂的步骤，请参阅 [使用数据工厂将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 2. 在数据工厂的“数据工厂”边栏选项卡中，单击“示例管道”磁贴。
@@ -67,10 +68,5 @@ Contoso 的目标是基于其玩家的游戏历史记录确定向上销售/交�
 
 ## <a name="benefits"></a>优点
 通过优化其用户配置文件分析并将其与业务目标匹配，游戏公司可快速收集使用模式并分析其营销活动的效果。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

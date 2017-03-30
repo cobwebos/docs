@@ -7,8 +7,7 @@ author: iainfoulds
 manager: timlt
 editor: 
 tags: top-support-issue,azure-service-management,azure-resource-manager
-keywords: >
-  cannot connect to remote desktop, troubleshoot remote desktop, remote desktop cannot connect, remote desktop errors, remote desktop troubleshooting, remote desktop problems
+keywords: "无法连接到远程桌面, 远程桌面故障排除, 远程桌面无法连接, 远程桌面错误, 远程桌面故障排除, 远程桌面问题"
 ms.assetid: 9da36f3d-30dd-44af-824b-8ce5ef07e5e0
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -18,8 +17,9 @@ ms.topic: support-article
 ms.date: 12/20/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 8835427415e8e01e851796eaf323bce7d1918c8c
-ms.openlocfilehash: 5c9d51d633b07497c230be9da2646bf49b6e8c0e
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 35dbfaa1cdc274fb2c1fcb3afc68547ffefe80ab
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -108,7 +108,7 @@ RDP 连接涉及以下组件：
 * 目标 VM 上远程桌面通信的终结点配置：终结点的专用 TCP 端口必须与 VM 的远程桌面服务正在侦听的 TCP 端口（默认值为 3389）匹配。
 * 目标 VM 上远程桌面通信终结点的 ACL：ACL 允许你指定基于源 IP 地址允许或拒绝从 Internet 传入的流量。 错误配置 ACL 可能会阻止传入远程桌面流量到达终结点。 检查你的 ACL 以确保允许从你的代理服务器或其他边缘服务器的公共 IP 地址传入的流量。 有关详细信息，请参阅[什么是网络访问控制列表 (ACL)？](../virtual-network/virtual-networks-acl.md)
 
-若要检查终结点是否是问题的源，请删除当前终结点，然后创建一个新终结点，并选择范围 49152-65535 中的随机端口作为外部端口号。 有关详细信息，请参阅[如何对虚拟机设置终结点](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+若要检查终结点是否是问题的源，请删除当前终结点，然后创建一个新终结点，并选择范围 49152-65535 中的随机端口作为外部端口号。 有关详细信息，请参阅[如何对虚拟机设置终结点](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="source-4-network-security-groups"></a>来源 4：网络安全组
 使用网络安全组可以对允许的入站和出站流量进行更精细的控制。 你可以创建跨 Azure 虚拟网络中的子网和云服务的规则。 检查你的网络安全组规则，以确保允许来自 Internet 的远程桌面流量：
@@ -125,7 +125,7 @@ RDP 连接涉及以下组件：
 ## <a name="source-5-windows-based-azure-vm"></a>来源 5：基于 Windows 的 Azure VM
 ![](./media/virtual-machines-windows-detailed-troubleshoot-rdp/tshootrdp_5.png)
 
-使用 [Azure IaaS (Windows) 诊断程序包](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)查看失败是否是由于 Azure 虚拟机本身导致的。 如果此诊断程序包无法解决**与 Azure VM 的 RDP 连接（需要重启）**问题，请按照[此文](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的说明。 此文介绍如何在虚拟机上重置远程桌面服务：
+请按[此文](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)说明执行操作。 此文介绍如何在虚拟机上重置远程桌面服务：
 
 * 启用“远程桌面”Windows 防火墙默认规则（TCP 端口 3389）。
 * 通过将 HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections 注册表值设置为 0，启用远程桌面连接。
@@ -167,7 +167,7 @@ RDP 连接涉及以下组件：
 此提示的第一部分是云服务名称（其中包含目标 VM），这可能不同于“cloudservice4testing.cloudapp.net”。 现在，可以对此云服务发出 Azure PowerShell 命令，调查上述问题，并更正配置。
 
 ### <a name="to-manually-correct-the-remote-desktop-services-listening-tcp-port"></a>手动更正远程桌面服务侦听 TCP 端口
-如果无法针对“与 Azure VM 的 RDP 连接(需要重启)”问题运行 [Azure IaaS (Windows) 诊断程序包](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)，请在远程 Azure PowerShell 会话提示符下，运行此命令。
+出现远程 Azure PowerShell 会话提示时，运行此命令。
 
     Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber"
 
@@ -186,8 +186,6 @@ PortNumber 属性显示当前端口号。 如果需要，可使用此命令将�
 验证 Azure VM 的远程桌面终结点是否也使用 TCP 端口 3398 作为其内部端口。 重启 Azure VM，并重新尝试远程桌面连接。
 
 ## <a name="additional-resources"></a>其他资源
-[Azure IaaS (Windows) 诊断程序包](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)
-
 [如何为 Windows 虚拟机重置密码或远程桌面服务](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)
@@ -195,10 +193,5 @@ PortNumber 属性显示当前端口号。 如果需要，可使用此命令将�
 [对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [对在 Azure 虚拟机上运行的应用程序的访问进行故障排除](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

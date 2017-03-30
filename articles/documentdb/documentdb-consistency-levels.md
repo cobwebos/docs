@@ -17,9 +17,9 @@ ms.date: 11/16/2016
 ms.author: syamk
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 839f8c8669c06e22635b68018d816a669aec895b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: af8e53d7cc074bf669b967014223ee88476d1686
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -77,7 +77,7 @@ Azure DocumentDB 是从无到有开发出来的，其设计考虑到了全局分
 | **一致前缀保证** |是 |是 |是 |是 |
 | **单调读取** |是 |是，在停滞窗口外部的区域之间以及区域内部，始终都可保证。 |是，针对给定的会话 |否 |
 | **单调写入** |是 |是 |是 |是 |
-| **读取自己的写入** |是 |是 |是（在写入区域中） |否 |
+| **读取自己的写入** |是 |是（在写入区域中） | 是 |否 |
 
 ## <a name="configuring-the-default-consistency-level"></a>配置默认的一致性级别
 1. 在 [Azure 门户](https://portal.azure.com/)的跳转栏中，单击“DocumentDB (NoSQL)”。

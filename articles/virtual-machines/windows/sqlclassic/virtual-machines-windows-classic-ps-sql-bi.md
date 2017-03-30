@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 4f7527119f0e0955303858a52b638f6dbf483267
-ms.openlocfilehash: 60bd5469b4d22bac87e8794bcb6e1d3713645415
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 90e443fe69afdda8786dd00ffb32e9680a476cd4
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -97,7 +98,7 @@ Microsoft Azure 虚拟机库包括若干含有 Microsoft SQL Server 的映像。
   * 默认驱动器 **C**: 的驱动器缓存策略未针对处理数据进行优化。
   * **D**: 驱动器是主要用于页面文件的临时驱动器。 **D**: 驱动器不会持久保留且不保存在 Blob 存储中。 诸如更改虚拟机大小之类的管理任务会重置 **D**: 驱动器。 建议**不**要将 **D**: 驱动器用于数据库文件（包括 tempdb）。
     
-    有关创建和附加磁盘的详细信息，请参阅[如何将数据磁盘附加到虚拟机](../../virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+    有关创建和附加磁盘的详细信息，请参阅[如何将数据磁盘附加到虚拟机](../classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 * 停止或卸载计划不使用的服务。 例如，如果虚拟机仅用于 Reporting Services，停止或卸载 Analysis Services 和 SQL Server Integration Services。 下图是默认情况下启动的服务的示例。
   
     ![SQL Server 服务](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
@@ -138,7 +139,7 @@ Analysis Services、Reporting Services、SQL Server 数据库引擎和数据源�
 SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式，但未配置报表服务器。 本部分中的步骤配置 Reporting Services 报表服务器。 有关配置 Reporting Services 本机模式的更多详细信息，请参阅[安装 Reporting Services 本机模式报表服务器 (SSRS)](https://msdn.microsoft.com/library/ms143711.aspx)。
 
 > [!NOTE]
-> 有关使用 Windows PowerShell 脚本配置报表服务器的类似内容，请参阅[使用 PowerShell 创建运行本机模式报表服务器的 Azure VM](virtual-machines-windows-classic-ps-sql-report.md)。
+> 有关使用 Windows PowerShell 脚本配置报表服务器的类似内容，请参阅[使用 PowerShell 创建运行本机模式报表服务器的 Azure VM](../classic/ps-sql-report.md)。
 
 ### <a name="connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager"></a>连接到虚拟机并启动 Reporting Services 配置管理器
 连接到 Azure 虚拟机有两个常见工作流：
@@ -242,7 +243,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
   
   1. 在本地计算机上创建一个包含您的报表的 .VHD 硬盘驱动器。
   2. 创建并安装管理证书。
-  3. 使用 Add-AzureVHD cmdlet 将 VHD 文件上传到 Azure [创建 Windows Server VHD 并将其上传到 Azure](../../virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+  3. 使用 Add-AzureVHD cmdlet 将 VHD 文件上传到 Azure [创建 Windows Server VHD 并将其上传到 Azure](../classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
   4. 将磁盘附加到虚拟机。
 
 ## <a name="install-other-sql-server-services-and-features"></a>安装其他 SQL Server 服务和功能
@@ -322,7 +323,7 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
 
 有关创建终结点的详细信息，请参阅以下资源：
 
-* 创建终结点：[如何设置虚拟机的终结点](../../virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+* 创建终结点：[如何设置虚拟机的终结点](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 * SQL Server：请参阅[在 Azure 上预配 SQL Server 虚拟机](../sql/virtual-machines-windows-portal-sql-server-provision.md)的“完成配置步骤以使用 SQL Server Management Studio 连接到虚拟机”部分。
 
 下图说明了要允许远程访问 VM 上的功能和组件，需要在 VM 防火墙上打开的端口。
@@ -330,11 +331,11 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
 ![要为 Azure VM 中的 bi 应用程序打开的端口](./media/virtual-machines-windows-classic-ps-sql-bi/IC654385.gif)
 
 ## <a name="resources"></a>资源
-* 查看在 Azure 虚拟机环境中使用的 Microsoft 服务器软件的支持策略。 以下主题总结了对 BitLocker、故障转移群集和网络负载平衡等功能的支持。 [Microsoft 服务器软件对 Azure 虚拟机的支持](http://support.microsoft.com/kb/2721672)。
+* 查看在 Azure 虚拟机环境中使用的 Microsoft 服务器软件的支持策略。 以下主题总结了对 BitLocker、故障转移群集和网络负载均衡等功能的支持。 [Microsoft 服务器软件对 Azure 虚拟机的支持](http://support.microsoft.com/kb/2721672)。
 * [Azure 虚拟机上的 SQL Server 概述](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [在 Azure 上预配 SQL Server 虚拟机](../sql/virtual-machines-windows-portal-sql-server-provision.md)
-* [如何将数据磁盘附加到虚拟机](../../virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [如何将数据磁盘附加到虚拟机](../classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [将数据库迁移到 Azure VM 上的 SQL Server](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 * [确定 Analysis Services 实例的服务器模式](https://msdn.microsoft.com/library/gg471594.aspx)
 * [多维建模（Adventure Works 教程）](https://technet.microsoft.com/library/ms170208.aspx)
@@ -346,10 +347,5 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
 
 ### <a name="community-content"></a>社区内容
 * [使用 PowerShell 管理 Azure SQL 数据库](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

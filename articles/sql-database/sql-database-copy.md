@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 0356f3bdbb691b9bde4e906ed30b3b235180f8ba
-ms.openlocfilehash: 9851ec0771c4fec4719aec8c8f43f2e3dd2604f0
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: e64abfd5581c02b609707f7fa712962c024b293b
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/27/2017
 
 将数据库复制到不同的逻辑服务器时，新服务器上的安全主体将成为新数据库上的数据库所有者。 如果你使用[包含的数据库用户](sql-database-manage-logins.md)进行数据访问，请确保主数据库和辅助数据库始终具有相同的用户凭据，这样在复制完成后，你便可以使用相同的凭据立即访问。 如果使用 [Azure Active Directory](../active-directory/active-directory-whatis.md)，则完全无需管理副本中的凭据。 但是，将数据库复制到新服务器时，基于登录名的访问可能不起作用，因为登录名在新服务器上不存在。 若要了解如何在将数据库复制到其他逻辑服务器时管理登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。 
 
-可以使用 [Azure 门户](sql-database-copy-portal.md)、[PowerShell](sql-database-copy-powershell.md)  或 [T-SQL](sql-database-copy-transact-sql.md) 复制 SQL 数据库。 
+可以使用 [Azure 门户](sql-database-copy-portal.md)、[PowerShell](scripts/sql-database-copy-database-to-new-server-powershell.md)  或 [T-SQL](sql-database-copy-transact-sql.md) 复制 SQL 数据库。 
 
 ## <a name="next-steps"></a>后续步骤
 

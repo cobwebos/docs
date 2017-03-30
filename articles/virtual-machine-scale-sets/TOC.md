@@ -3,22 +3,21 @@
 
 # 入门
 ## [在门户中部署规模集](virtual-machine-scale-sets-portal-create.md)
-## [使用 Azure CLI 部署规模集](virtual-machine-scale-sets-linux-create-cli.md)
-## [使用 Resource Manager 模板部署简单规模集](virtual-machine-scale-sets-mvss-start.md)
+## [使用 PowerShell 或 Azure CLI 部署规模集](virtual-machine-scale-sets-create.md)
 
 # 如何
 ## 规划和设计
 ### [设计注意事项](virtual-machine-scale-sets-design-overview.md)
-## 编写 VM 规模集模板以
-### [部署简单规模集](virtual-machine-scale-sets-mvss-start.md)
-### [将规模集部署到现有虚拟网络](virtual-machine-scale-sets-mvss-existing-vnet.md)
+
+## 创建模板
+### [了解规模集模板](virtual-machine-scale-sets-mvss-start.md)
+### [添加虚拟网络](virtual-machine-scale-sets-mvss-existing-vnet.md)
 
 ## 部署
-### [使用门户部署规模集](virtual-machine-scale-sets-portal-create.md)
+### [使用门户进行创建](virtual-machine-scale-sets-portal-create.md)
+### [使用 Visual Studio 进行创建](virtual-machine-scale-sets-vs-create.md)
+### [使用 PowerShell 或 Azure CLI 进行创建](virtual-machine-scale-sets-create.md)
 ### [带有托管磁盘的规模集](virtual-machine-scale-sets-managed-disks.md)
-### [使用 Visual Studio 部署规模集](virtual-machine-scale-sets-vs-create.md)
-### [使用 PowerShell 部署规模集](virtual-machine-scale-sets-windows-create.md)
-### [使用 Azure CLI 部署规模集](virtual-machine-scale-sets-linux-create-cli.md)
 ### [具有自动缩放功能的 Linux 规模集](virtual-machine-scale-sets-linux-autoscale.md)
 ### [具有自动缩放功能的 Windows 规模集](virtual-machine-scale-sets-windows-autoscale.md)
 ### [规模集中的应用程序](virtual-machine-scale-sets-deploy-app.md)

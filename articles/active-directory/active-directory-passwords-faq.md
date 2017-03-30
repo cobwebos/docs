@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: cdf233c2b141f4c73abcabc199b5fc583f14962c
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 636e76e6732287ac78b6c025cc936602a38f49af
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 >
 >
 
@@ -181,7 +181,7 @@ ms.lasthandoff: 03/10/2017
   > **答：**如果你根据[使用 ADFS 发送密码策略声明](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)中的说明使用 ADFS，则目前这是可以的。 如果你使用密码哈希同步，则目前这不可以。 这是因为我们不从本地同步密码策略，因此我们无法将过期通知发布到云体验。 在任一情况下，都还可以[使用 PowerShell 向其密码即将过期的用户发送通知](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)。
   >
   >
-  
+
 ## <a name="password-management-reports"></a>密码管理报告
 * **问：需要多长时间才能在密码管理报告上看到数据？**
 
@@ -246,7 +246,7 @@ ms.lasthandoff: 03/10/2017
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置和更改云密码或本地密码
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为

@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 11/15/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 12df603e22c8c735bf5c3f892575e79725f7313e
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9fc96d70592bd55685ebbf1b80f6017b74f58925
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -45,7 +46,7 @@ Azure 遵守多个行业法规和标准，使你能够使用在虚拟机中运�
 ## <a name="considerations-for-securing-connections-to-azure-virtual-machine"></a>有关保护与 Azure 虚拟机的连接的注意事项：
 * 请考虑使用 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)（而不是公共 RDP 端口）来管理虚拟机。
 * 使用[网络安全组](../../../virtual-network/virtual-networks-nsg.md) (NSG) 允许或拒绝向虚拟机发送网络流量。 如果你想要使用 NSG，但已有了终结点 ACL，则请先删除该终结点 ACL。 有关如何执行此操作的信息，请参阅[使用 PowerShell 管理终结点的访问控制列表 (ACL)](../../../virtual-network/virtual-networks-acl-powershell.md)。
-* 如果你在使用终结点，当你不使用它们时，请删除虚拟机上的任何终结点。 有关在终结点上使用 ACL 的说明，请参阅[管理终结点上的 ACL](../../virtual-machines-windows-classic-setup-endpoints.md#manage-the-acl-on-an-endpoint)。
+* 如果你在使用终结点，当你不使用它们时，请删除虚拟机上的任何终结点。 有关在终结点上使用 ACL 的说明，请参阅[管理终结点上的 ACL](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)。
 * 为 Azure 虚拟机中的 SQL Server 数据库引擎实例启用加密连接选项。 使用签名证书配置 SQL Server 实例。 有关详细信息，请参阅[为数据库引擎启用加密连接](https://msdn.microsoft.com/library/ms191192.aspx)和[连接字符串语法](https://msdn.microsoft.com/library/ms254500.aspx)。
 * 如果只应从特定网络访问虚拟机，请使用 Windows 防火墙将访问限制为特定 IP 地址或网络子网。
 
@@ -53,10 +54,5 @@ Azure 遵守多个行业法规和标准，使你能够使用在虚拟机中运�
 如果还对性能最佳实践感兴趣，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳实践](virtual-machines-windows-sql-performance.md)。
 
 有关其他与在 Azure VM 中运行 SQL Server 相关的主题，请参阅 [Azure 虚拟机上的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

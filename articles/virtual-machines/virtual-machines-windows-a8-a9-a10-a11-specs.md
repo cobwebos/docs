@@ -17,9 +17,9 @@ ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 32045a9b6be130dca4680b1990808d2b22be4432
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 1ab628ff6e7e8ed23c2c3b733907500dc6d4dde7
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -53,18 +53,18 @@ ms.lasthandoff: 03/16/2017
   ```PowerShell
   Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  有关详细信息，请参阅[虚拟机扩展和功能](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 还可使用[经典部署模型](virtual-machines-windows-classic-manage-extensions.md)中部署的 VM 扩展。
+  有关详细信息，请参阅[虚拟机扩展和功能](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 还可使用[经典部署模型](windows/classic/manage-extensions.md)中部署的 VM 扩展。
 
 
 ## <a name="considerations-for-hpc-pack-and-windows"></a>HPC Pack 和 Windows 的注意事项
 [Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx)：Microsoft 的免费 HPC 群集和作业管理解决方案，将计算密集型实例与 Windows Server. 配合使用时不需要。 但是，它提供了一个选项，方便在 Azure 中创建计算群集来运行基于 Windows 的 MPI 应用程序和其他 HPC 工作负荷。 HPC Pack 2012 R2 和更高版本包括用于 MS-MPI 的运行时环境，在具有 RDMA 功能的 VM 上部署时可以使用 Azure RDMA 网络。
 
-有关在 Windows Server 上配合使用计算密集型实例和 HPC Pack 的详细信息和清单，请参阅[使用 HPC Pack 设置一个用于运行 MPI 应用程序的 Windows RDMA 群集](virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+有关在 Windows Server 上配合使用计算密集型实例和 HPC Pack 的详细信息和清单，请参阅[使用 HPC Pack 设置一个用于运行 MPI 应用程序的 Windows RDMA 群集](windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关计算密集型大小的可用性和定价的详细信息，请参阅[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)和[云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)。
 * 有关 VM 存储容量和磁盘详细信息，请参阅 [Sizes for virtual machines](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（虚拟机大小）。
-* 若要开始在 Windows 上通过 HPC Pack 部署和使用计算密集型实例，请参阅[使用 HPC Pack 设置一个用于运行 MPI 应用程序的 Windows RDMA 群集](virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+* 若要开始在 Windows 上通过 HPC Pack 部署和使用计算密集型实例，请参阅[使用 HPC Pack 设置一个用于运行 MPI 应用程序的 Windows RDMA 群集](windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 * 有关使用计算密集型实例在 Azure Batch 中运行 MPI 应用程序的信息，请参阅[在 Azure Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序](../batch/batch-mpi.md)。
 
 

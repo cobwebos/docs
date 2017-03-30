@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
-ms.openlocfilehash: 37063d35e76d03a84f6e4451c2f6c363704607f2
-ms.lasthandoff: 01/12/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 46b62b0ebc5b81241815e3b5b4fa3fe275b88af1
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/12/2017
 
 若要在创建群集期间将诊断扩展部署到群集中的 VM，请将“**诊断**”设置为“**打开**”。 创建群集后，无法使用门户更改此设置。
 
-然后，配置 Linux Azure 诊断 (LAD) 来收集文件并将其放入你的存储帐户。 [使用 LAD 监视和诊断 Linux VM](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) 一文中的方案 3（“上载自己的日志文件”）说明了此过程。 遵循此过程即可访问跟踪。 可以将跟踪上载到所选的可视化程序。
+然后，配置 Linux Azure 诊断 (LAD) 来收集文件并将其放入你的存储帐户。 [使用 LAD 监视和诊断 Linux VM](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) 一文中的方案 3（“上载自己的日志文件”）说明了此过程。 遵循此过程即可访问跟踪。 可以将跟踪上载到所选的可视化程序。
 
 也可以使用 Azure Resource Manager 部署诊断扩展。 Windows 和 Linux 的此过程类似，并将 Windows 群集记录在[如何使用 Azure 诊断收集日志](service-fabric-diagnostics-how-to-setup-wad.md)中。
 
@@ -48,6 +48,6 @@ ms.lasthandoff: 01/12/2017
 完成此配置后，LAD 代理将监视指定的日志文件。 每当在文件中追加新行时，该代理将创建一个 syslog 条目并将其发送到指定的存储。
 
 ## <a name="next-steps"></a>后续步骤
-若要更详细了解在排查问题时应检查哪些事件，请参阅 [LTTng 文档](http://lttng.org/docs)和[使用 LAD](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
+若要更详细了解在排查问题时应检查哪些事件，请参阅 [LTTng 文档](http://lttng.org/docs)和[使用 LAD](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
 
 

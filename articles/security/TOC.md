@@ -1,40 +1,55 @@
 # [概述](security-get-started-overview.md)
-## [工作原理](azure-security-getting-started.md)
-## [安全服务与技术](azure-security-services-technologies.md)
 ## [网络安全](security-network-overview.md)
+## [存储安全](security-storage-overview.md)
+## [计算安全](security-virtual-machines-overview.md)
+## [安全管理和监视](security-management-and-monitoring-overview.md)
+## [标识管理](security-identity-management-overview.md)
+## [IoT 安全性](../iot-suite/iot-security-architecture.md#security-in-iot)
+## [安全体系结构](azure-security-architecture-overview.md)
+
+# 入门
+## [Azure 安全入门](azure-security-getting-started.md)
+## [安全最佳实践和模式](security-best-practices-and-patterns.md)
+## [安全服务与技术](azure-security-services-technologies.md)
+
+## 网络安全
 ### [网络安全最佳实践](azure-security-network-security-best-practices.md)
 ### [边界安全](../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [保护混合网络体系结构](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md?toc=%2fazure%2fsecurity%2ftoc.json)
-## [存储安全](security-storage-overview.md)
+
+## 存储安全
 ### [数据安全与加密最佳实践](azure-security-data-encryption-best-practices.md)
 ### [存储安全指南](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
-## [计算安全](security-virtual-machines-overview.md)
+
+## 计算安全
 ### [Azure VM 最佳做法](azure-security-best-practices-vms.md)
 ### [IaaS 工作负荷最佳实践](azure-security-iaas.md)
 ### [Microsoft 反恶意软件](azure-security-antimalware.md)
-### [磁盘加密](azure-security-disk-encryption.md)
+### [IaaS VM 的磁盘加密](azure-security-disk-encryption.md)
 ### [加密 Azure VM](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
-## [安全管理和监视](security-management-and-monitoring-overview.md)
+
+## 安全管理和监视
 ### [安全管理](azure-security-management.md)
 ### [Azure 安全中心](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
-### [Azure 日志集成](security-azure-log-integration-overview.md)
-#### [入门](security-azure-log-integration-get-started.md)
+### [Azure 日志集成简介](security-azure-log-integration-overview.md)
+#### [Azure 日志集成入门](security-azure-log-integration-get-started.md)
 #### [常见问题](security-azure-log-integration-faq.md)
-## [标识管理](security-identity-management-overview.md)
+
+## 身份管理
 ### [标识管理安全最佳实践](azure-security-identity-management-best-practices.md)
+
 ## PaaS 服务
 ### [保护 PaaS 部署](security-paas-deployments.md)
-#### [使用 SQL 保护 PaaS 应用程序](security-paas-applications-using-sql.md)
-#### [使用应用服务保护 PaaS 应用程序](security-paas-applications-using-app-services.md)
-### [IoT 安全概述](security-internet-of-things-overview.md)
-### [IoT 安全最佳实践](azure-security-iot-best-practices.md)
-## 垂直行业
-### [设计安全的运行状况解决方案](security-health-care-solution.md)
-## [安全体系结构](azure-security-architecture-overview.md)
-### [云数据分类准备就绪](azure-security-data-classification.md)
-### [Azure 上的应用程序体系结构](security-application-architecture-on-azure.md)
-### [安全最佳实践和模式](security-best-practices-and-patterns.md)
-### [构建可复原应用程序](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
+#### [使用 SQL 保护 PaaS Web 和移动应用程序](security-paas-applications-using-sql.md)
+#### [使用应用服务保护 PaaS Web 和移动应用程序](security-paas-applications-using-app-services.md)
+
+## 物联网
+### [保护 IoT 部署](../iot-suite/iot-suite-security-deployment.md)
+### [IoT 安全最佳实践](../iot-suite/iot-security-best-practices.md)
+
+## 安全体系结构
+### [数据分类](azure-security-data-classification.md)
+### [构建在 Azure 基础之上的应用程序灾难恢复和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 # 相关内容
 ## [信任中心](security-microsoft-trust-center.md)
@@ -45,6 +60,7 @@
 ## [Log Analytics](../log-analytics/log-analytics-overview.md)
 ## [多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
+## [Operations Management Suite](../operations-management-suite/oms-security-getting-started.md)
 
 # 资源
 ## [安全与合规性博客](http://blogs.msdn.com/b/azuresecurity/)

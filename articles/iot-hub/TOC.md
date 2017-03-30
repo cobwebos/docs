@@ -98,6 +98,11 @@
 ## 使用 Arduino
 
 ### [Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
+#### [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
+#### [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
+### [Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
+#### [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
+#### [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
 
 ### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### 第 1 课：配置设备
@@ -233,7 +238,9 @@
 #### [使用 REST API](iot-hub-rm-rest.md)
 #### [通过 PowerShell 使用模板](iot-hub-rm-template-powershell.md)
 #### [通过 .NET 使用模板](iot-hub-rm-template.md)
-### [配置文件上载](iot-hub-configure-file-upload.md)
+### 配置文件上载
+#### [使用门户](iot-hub-configure-file-upload.md)
+#### [使用 PowerShell](iot-hub-configure-file-upload-powershell.md)
 ### [批量管理 IoT 设备](iot-hub-bulk-identity-mgmt.md)
 ### [使用指标](iot-hub-metrics.md)
 ### [操作监视](iot-hub-operations-monitoring.md)

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 6c711fd3a843604d62d6589d0a742f03a049bc5c
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 629fa1cc52963a844ee3bd7f8031ef2e5c340ae5
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="deploying-password-management-and-training-users-to-use-it"></a>部署密码管理并向用户培训其用法
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 >
 >
 
@@ -144,7 +144,7 @@ ms.lasthandoff: 03/10/2017
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置和更改云密码或本地密码
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为

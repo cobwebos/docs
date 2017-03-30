@@ -28,6 +28,7 @@
 ### [配置服务主体](container-service-kubernetes-service-principal.md)
 ### [容器管理 - Kubernetes UI](container-service-kubernetes-ui.md)
 ### [对 Kubernetes 容器进行负载均衡](container-service-kubernetes-load-balancing.md)
+### [Jenkins 与 ACS Kubernetes 集成](container-service-kubernetes-jenkins.md)
 ### 监视 Kubernetes
 #### [使用 OMS 进行监视](container-service-kubernetes-oms.md)
 #### [使用 Datadog 进行监视](container-service-kubernetes-datadog.md)

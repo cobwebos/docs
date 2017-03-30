@@ -16,15 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: b092b8a746f4f94add9727dc17c6b8fc198b6404
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c48e23c1904d824ce2360f83c9df9c8e17d6200a
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-automated-patching.md)
-> * [经典](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
+> * [经典](../classic/sql-automated-patching.md)
 > 
 > 
 
@@ -32,7 +33,7 @@ ms.openlocfilehash: b092b8a746f4f94add9727dc17c6b8fc198b6404
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-若要查看本文的经典版本，请参阅 [Automated Patching for SQL Server in Azure Virtual Machines Classic](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)（在 Azure 虚拟机（经典）中对 SQL Server 进行自动修补）。
+若要查看本文的经典版本，请参阅 [Automated Patching for SQL Server in Azure Virtual Machines Classic](../classic/sql-automated-patching.md)（在 Azure 虚拟机（经典）中对 SQL Server 进行自动修补）。
 
 ## <a name="prerequisites"></a>先决条件
 若要使用自动修补，请考虑以下先决条件：
@@ -126,10 +127,5 @@ ms.openlocfilehash: b092b8a746f4f94add9727dc17c6b8fc198b6404
 有关其他可用自动化任务的信息，请参阅 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
 
 有关在 Azure VM 中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
