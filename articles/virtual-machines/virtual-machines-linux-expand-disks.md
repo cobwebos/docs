@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中扩展 Linux VM 上的 OS 磁盘 | Microsoft Docs"
-description: "了解如何使用 Azure CLI 和 Resource Manager 部署模型扩展 Linux VM 上的操作系统 (OS) 虚拟磁盘。"
+title: "在 Azure 中扩展 Linux VM 上的虚拟硬盘 | Microsoft Docs"
+description: "了解如何使用 Azure CLI 2.0 在 Linux VM 上扩展虚拟硬盘"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -12,66 +12,62 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/10/2017
+ms.date: 02/22/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2826f825b2d34005ce6e7142dd4371285a452ca8
-ms.openlocfilehash: bd1952281dde6f262848d1520995efdb131a3b38
-
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: e8eab5aae3160c017d4b6b18aa21c66f728a6a7a
+ms.lasthandoff: 03/16/2017
 
 ---
 
-# <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli"></a>使用 Azure CLI 扩展 Linux VM 上的 OS 磁盘
-在 Azure 的 Linux 虚拟机 (VM) 上，操作系统 (OS) 的默认虚拟硬盘大小通常为 30 GB。 可以通过[添加数据磁盘](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来扩充存储空间，也可扩展 OS 磁盘。 本文详述如何使用 Azure CLI 扩展使用非托管磁盘的 Linux VM 的 OS 磁盘。
+# <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli-20"></a>如何使用 Azure CLI 2.0 在 Linux VM 上扩展虚拟硬盘
+在 Azure 的 Linux 虚拟机 (VM) 上，操作系统 (OS) 的默认虚拟硬盘大小通常为 30 GB。 可通过[添加数据磁盘](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来扩充存储空间，也可扩展 OS 磁盘或现有的数据磁盘。 本文详述如何使用 Azure CLI 2.0 扩展 Linux VM 的托管磁盘。 也可使用 [Azure CLI 1.0](virtual-machines-linux-expand-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 扩展非托管 OS 磁盘。
 
-
-## <a name="prerequisites"></a>先决条件
-需要安装[最新的 Azure CLI](../xplat-cli-install.md)，然后按如下所示，使用 Resource Manager 模式登录 [Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)：
-
-```azurecli
-azure config mode arm
-```
+## <a name="expand-managed-disk"></a>扩展托管磁盘
+确保已安装了最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
 
 在以下示例中，请将示例参数名称替换为你自己的值。 示例参数名称包括 `myResourceGroup` 和 `myVM`。
 
-
-## <a name="expand-os-disk"></a>扩展 OS 磁盘
-
-1. 当 VM 正在运行时，无法执行虚拟硬盘上的操作。 以下示例在名为 `myResourceGroup` 的资源组中停止和释放名为 `myVM` 的 VM：
+1. 当 VM 正在运行时，无法执行虚拟硬盘上的操作。 使用 [az vm deallocate](/cli/azure/vm#deallocate) 解除分配 VM。 以下示例在名为 `myResourceGroup` 的资源组中解除分配名为 `myVM` 的 VM：
 
     ```azurecli
-    azure vm deallocate --resource-group myResourceGroup --name myVM
+    az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
     > [!NOTE]
-    > `azure vm stop` 不释放计算资源。 若要释放计算资源，请使用 `azure vm deallocate`。 只有释放 VM 才能扩展虚拟硬盘。
+    > `az vm stop` 不释放计算资源。 若要释放计算资源，请使用 `az vm deallocate`。 只有释放 VM 才能扩展虚拟硬盘。
 
-2. 使用 `azure vm set` 命令更新 OS 非托管磁盘的大小。 以下示例将名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 更新为 `50` GB：
-
-    ```azurecli
-    azure vm set --resource-group myResourceGroup --name myVM --new-os-disk-size 50
-    ```
-
-3. 启动 VM，如下所示：
+2. 使用 [az disk list](/cli/azure/disk#list) 查看资源组中的托管磁盘列表。 以下示例显示名为 `myResourceGroup` 的资源组中的托管磁盘列表：
 
     ```azurecli
-    azure vm start --resource-group myResourceGroup --name myVM
+    az disk list -g myResourceGroup \
+        --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' \
+        --output table
     ```
 
-4. 使用适当的凭据，通过 SSH 登录到 VM。 若要验证是否已调整 OS 磁盘的大小，请使用 `df -h`。 以下示例输出显示主分区 (`/dev/sda1`) 现在为 50 GB：
+    使用 [az disk update](/cli/azure/disk#update) 扩展所需磁盘。 以下示例将名为 `myDataDisk` 的托管磁盘的大小扩展为 `200` GB：
+
+    ```azurecli
+    az disk update --resource-group myResourceGroup --name myDataDisk --size-gb 200
+    ```
+
+    > [!NOTE]
+    > 扩展托管磁盘时，更新的大小会映射到最近的托管磁盘大小。 有关可用托管磁盘大小和层的表，请参阅 [Azure 托管磁盘概述 - 定价和计费](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#pricing-and-billing)。
+
+3. 使用 [az vm start](/cli/azure/vm#start) 启动 VM。 以下示例在名为 `myResourceGroup` 的资源组中启动名为 `myVM` 的 VM：
+
+    ```azurecli
+    az vm start --resource-group myResourceGroup --name myVM
+    ```
+
+4. 使用适当的凭据，通过 SSH 登录到 VM。 若要验证是否已调整 OS 磁盘的大小，请使用 `df -h`。 以下示例输出显示主分区 (`/dev/sda1`) 现在为 200 GB：
 
     ```bash
-    Filesystem      Size  Used Avail Use% Mounted on
-    udev            1.7G     0  1.7G   0% /dev
-    tmpfs           344M  5.0M  340M   2% /run
-    /dev/sda1        49G  1.3G   48G   3% /
+    Filesystem      Size   Used  Avail Use% Mounted on
+    /dev/sdc1        194G   52M   193G   1% /datadrive
     ```
 
 ## <a name="next-steps"></a>后续步骤
 如需更多存储，也可[向 Linux VM 添加数据磁盘](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 有关磁盘加密的详细信息，请参阅[使用 Azure CLI 加密 Linux VM 上的磁盘](virtual-machines-linux-encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

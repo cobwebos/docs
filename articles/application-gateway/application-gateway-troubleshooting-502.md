@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: ce40a93372205a4b7c6b0c753ebf30c2b3d51d7a
-ms.openlocfilehash: 86cd149d351cc957577d213d77db732bd5e16658
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: cacc20da7945421f31ce69a9c0b34056c009d9e7
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -29,10 +30,13 @@ ms.openlocfilehash: 86cd149d351cc957577d213d77db732bd5e16658
 配置 Azure 应用程序网关之后，用户可能遇到的一个错误是“服务器错误: 502 - Web 服务器在作为网关或代理服务器时收到了无效响应”。 此错误可能是以下主要原因造成的：
 
 * Azure 应用程序网关的后端池未配置或为空。
-* VM 缩放集中没有正常运行的 VM 或实例。
-* VM 缩放集的后端 VM 或实例未响应默认的运行状况探测。
+* VM 规模集中没有正常运行的 VM 或实例。
+* VM 规模集的后端 VM 或实例未响应默认的运行状况探测。
 * 自定义运行状况探测的配置无效或不正确。
 * 请求超时，或用户请求出现连接问题。
+
+> [!note]
+> 应用程序网关会保留传入主机头，并将同一标头发送到后端。 如果后端需要不同的标头，则这将无法正常工作。 同样，如果后端是多租户且已启用端到端 SSL，则后端会预期在 SNI 扩展名中出现服务器名称。 在端到端 SSL 方案中，应用程序网关当前不支持在后端请求中发送 SNI 标头，这会导致探测和数据路径问题。
 
 ## <a name="empty-backendaddresspool"></a>BackendAddressPool 为空
 
@@ -90,7 +94,7 @@ BackendAddressPoolsText：
 
 ### <a name="cause"></a>原因
 
-此外，出现 502 错误经常意味着默认的运行状况探测无法访问后端 VM。 预配某个应用程序网关实例时，该实例会使用 BackendHttpSetting 的属性自动将默认的运行状况探测配置到每个 BackendAddressPool。 无需用户输入即可设置此探测。 具体而言，在配置负载平衡规则时，将在 BackendHttpSetting 与 BackendAddressPool 之间建立关联。 默认探测是针对其中每个关联配置的，而应用程序网关将在 BackendHttpSetting 元素中指定的端口上，与 BackendAddressPool 中每个实例发起周期性运行状况检查连接。 下表列出了与默认运行状况探测关联的值。
+此外，出现 502 错误经常意味着默认的运行状况探测无法访问后端 VM。 预配某个应用程序网关实例时，该实例会使用 BackendHttpSetting 的属性自动将默认的运行状况探测配置到每个 BackendAddressPool。 无需用户输入即可设置此探测。 具体而言，在配置负载均衡规则时，将在 BackendHttpSetting 与 BackendAddressPool 之间建立关联。 默认探测是针对其中每个关联配置的，而应用程序网关将在 BackendHttpSetting 元素中指定的端口上，与 BackendAddressPool 中每个实例发起周期性运行状况检查连接。 下表列出了与默认运行状况探测关联的值。
 
 | 探测属性 | 值 | 说明 |
 | --- | --- | --- |
@@ -150,10 +154,5 @@ BackendAddressPoolsText：
 ## <a name="next-steps"></a>后续步骤
 
 如果上述步骤无法解决问题，请开具[支持票证](https://azure.microsoft.com/support/options/)。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

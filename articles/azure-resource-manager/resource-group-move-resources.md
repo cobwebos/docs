@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: c8e130f8adbad040fd06fde89156ca6201d18ea6
-ms.openlocfilehash: 5d85602de4eb4cd4ddadc31a83dac34d3487f54d
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: cd4de75743ee46bb07aec2cf23fa7687f4f20f43
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -84,7 +84,7 @@ ms.lasthandoff: 02/27/2017
 * 内容审查器
 * 数据目录
 * Data Factory
-* Data Lake Analytics
+* 数据湖分析
 * Data Lake Store
 * DNS
 * DocumentDB
@@ -119,6 +119,8 @@ ms.lasthandoff: 02/27/2017
 > [!NOTE] 
 > 目前不能移动包含 VPN 网关的虚拟网络，除非已临时删除网关。 删除后，即可成功移动虚拟网络，并可创建网关。
 >
+> 当前无法移动对等虚拟网络，直到禁用了 VNet 对等互连为止。 禁用后，即可成功移动虚拟网络，然后可启用 VNet 对等互连。
+>
  
 ## <a name="services-that-do-not-enable-move"></a>不支持移动的服务
 目前不可移动资源的服务包括：
@@ -134,6 +136,7 @@ ms.lasthandoff: 02/27/2017
 * 恢复服务保管库 - 此外，也不可以移动与恢复服务保管库关联的计算、网络和存储资源，请参阅[恢复服务限制](#recovery-services-limitations)。
 * 安全
 * 证书存储在密钥保管库中的虚拟机
+* 带托管磁盘的虚拟机
 * 虚拟机规模集
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * VPN 网关

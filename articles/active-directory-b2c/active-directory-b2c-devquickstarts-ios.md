@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: saeeda
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 84f5ba5b3836f8524aafd9ca5e30978cc2702c1f
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 992bbf513ac87b0d955f9dc4b27984ef03050b83
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -40,18 +40,18 @@ B2C 平台不一定支持所有 Azure Active Directory 方案和功能。  若�
 ## <a name="create-an-application"></a>创建应用程序
 接下来，需要在 B2C 目录中创建应用。 应用注册为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。 若要创建移动应用，请遵循[这些说明](active-directory-b2c-app-registration.md)。 请务必：
 
-* 在应用程序中包含 **移动设备** 。
+* 在应用程序中包含**本机客户端**。
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要用到此 GUID。
 * 使用自定义方案（例如 com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect）设置“重定向 URI”。 稍后需要用到此 URI。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>创建策略
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含一个标识体验：合并的登录和注册。 需要根据[策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述创建此策略。 创建策略时，请务必：
+在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含一个标识体验：合并的登录和注册。 根据[策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述创建此策略。 创建策略时，请务必：
 
-* 在策略中选择“显示名称”和注册属性。
-* 在每个策略中，选择“显示名称”和“对象 ID”应用程序声明。 也可以选择其他声明。
-* 创建每个策略后，请复制策略的 **名称** 。 其前缀应为 `b2c_1_`。  稍后需要用到该策略名称。
+* 在“注册属性”下，选择“显示名称”属性。  还可选择其他属性。
+* 在“应用程序声明”下，选择“显示名称”和“用户的对象 ID”声明。 也可选择其他声明。
+* 创建每个策略后，请复制策略的 **名称** 。 保存策略时，策略名称带有前缀 `b2c_1_`。  稍后需要用到该策略名称。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -128,12 +128,13 @@ appDelegate.currentAuthorizationFlow =
 
 若要将应用程序设置为处理重定向到使用自定义方案的 URI，需要在 Info.pList 中更新“URL 方案”列表：
 * 打开 Info.pList。
-* 将鼠标悬停在带有“Bundle creator OS Type Code”字样的行上，然后单击 \+ 符号。
-* 将新行重命名为“URL types”。
-* 单击“URL types”左侧的箭头。
-* 将 Item 0 中的值重命名为“URL Schemes”。
-* 编辑“URL Schemes”下面的“Item 0”的值，将该值设置为应用程序的唯一方案。  创建 OIDAuthorizationRequest 对象时，该值必须与 redirectURL 中的方案匹配。
-* 本示例使用了方案“com.onmicrosoft.fabrikamb2c.exampleapp”。
+* 将鼠标悬停在带有“BBundle OS 类型代码”字样的行上，然后单击 \+ 符号。
+* 将新行重命名为“URL 类型”。
+* 单击“URL 类型”左侧的箭头打开该树。
+* 单击“项目 0”左侧的箭头打开该树。
+* 将项目 0 下面的第一项重命名为“URL 方案”。
+* 单击“URL 方案”左侧的箭头打开该树。
+* 在“值”列中，“URL 方案”下面“项目 0”左侧具有空白字段。  将值设置为应用程序的唯一方案。  创建 OIDAuthorizationRequest 对象时，该值必须与 redirectURL 中使用的方案匹配。  本示例使用了方案“com.onmicrosoft.fabrikamb2c.exampleapp”。
 
 有关如何完成余下的过程，请参阅 [AppAuth 指南](https://openid.github.io/AppAuth-iOS/)。 如果需要快速开始创建一个正常运行的应用，请查看[我们的示例](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c)。 遵循 [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) 中的步骤输入你自己的 Azure AD B2C 配置。
 

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 0a711ee4118973b21d47f1c3e63301f0dfac879d
-ms.openlocfilehash: b746462e382cb5c065417940a80b00c31f440e9b
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 1dd817c9b3160c47463a3a88380d550d127d898e
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -34,11 +35,8 @@ ms.openlocfilehash: b746462e382cb5c065417940a80b00c31f440e9b
 ## <a name="dont-see-the-live-chat-icon"></a>看不到实时聊天图标？
 实时聊天由机器学习团队的成员提供服务。 如果看不到实时聊天图标，这是因为团队当前不可用。 例如，可能是在正常工作时间之外。 
 
+可随时在[机器学习论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)上发布问题，机器学习团队成员以及其他知识渊博的数据科学家和开发人员会查看这些问题。
+
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

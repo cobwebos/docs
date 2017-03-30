@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 17eadb8e502c0836b38661caf2a275af0e90bdfe
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: d7a8d669e75991f6707641e4ce53c9b63d04853c
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -90,6 +90,10 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
     可以[自定义搜索](app-insights-diagnostic-search.md)。
 
 若要针对遥测数据执行更强大的搜索，请使用[分析查询语言](app-insights-analytics-tour.md)。
+
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>后续步骤
 * [将 Azure 诊断配置为](app-insights-azure-diagnostics.md)向 Application Insights 发送数据。

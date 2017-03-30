@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/23/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 2289c99ddd08c1e7ba356e233180cf59d99de182
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 121be952ea49a8ff47f7e2528adbc87e05359a15
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -81,7 +81,7 @@ adfgetstarted/partitioneddata/year=2014/month=3/000000_0
 - 输入数据的存储帐户
 - 输出数据的存储帐户
 
-为了简化本教程，使用一个存储帐户来实现&3; 个目的。 本部分提供的 Azure PowerShell 示例脚本执行以下任务：
+为了简化本教程，使用一个存储帐户来实现 3 个目的。 本部分提供的 Azure PowerShell 示例脚本执行以下任务：
 
 1. 登录 Azure。
 2. 创建 Azure 资源组。
@@ -221,7 +221,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     ![Azure 数据工厂 HDInsight 按需 Hive 活动管道输出](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-year.png)
 
-    如果向下钻取列表，可看到&3; 个文件夹，分别为“1月”、“2 月”和“3 月”。 并且每个月均有日志。
+    如果向下钻取列表，可看到 3 个文件夹，分别为“1月”、“2 月”和“3 月”。 并且每个月均有日志。
 
     ![Azure 数据工厂 HDInsight 按需 Hive 活动管道输出](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-month.png)
 

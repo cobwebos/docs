@@ -13,19 +13,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2016
+ms.date: 03/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 0a4ac164a3896d47613e4491a5e4c81c1b660dea
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 86ae353e3bad83ec25060bab8b3df25d3a0ad881
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>将 Linux VM 移到其他订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动 Linux VM。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
 
-> [!NOTE]
-> 在移动过程中将创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。 
+> [!IMPORTANT]
+>不可在此时移动托管磁盘。 
+>
+>在移动过程中将创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。 
 > 
 > 
 
@@ -56,10 +59,5 @@ ms.openlocfilehash: 0a4ac164a3896d47613e4491a5e4c81c1b660dea
 
 ## <a name="next-steps"></a>后续步骤
 可以在资源组和订阅之间移动许多不同类型的资源。 有关详细信息，请参阅[将资源移到新资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。    
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

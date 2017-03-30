@@ -18,9 +18,9 @@ ms.date: 02/28/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9c181935e7ba897087d286bea22ebf500ef36e52
-ms.openlocfilehash: 307bfae0e7161782a9ddb97f4ca0d510fc772ab7
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: c920627e11e801bde88b47fc7c7e128e06f59ea8
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -62,7 +62,7 @@ ms.lasthandoff: 03/02/2017
 
 5. 单击计费周期即可查看每日使用情况。 
 
-有关发票的详细信息，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。
+有关发票的详细信息，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。 有关帮助管理成本的信息，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing-getting-started.md)。
 
 ## <a name="download-usage-from-the-account-center-csv"></a>从帐户中心下载使用情况 (.csv)
 1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)。
@@ -85,7 +85,7 @@ ms.lasthandoff: 03/02/2017
 
     ![屏幕快照，显示“下载使用情况”选项](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
-有关每日使用情况的详细信息，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。
+有关每日使用情况的详细信息，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。 有关帮助管理成本的信息，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing-getting-started.md)。
 
 ## <a name="noinvoice"></a> 为何看不到最后一个计费周期的发票。
 看不到发票的几个可能原因：

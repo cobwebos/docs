@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: d315c5ed186c24236c860df1ad1b79d55c9a4d57
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: e2e09cdabd323575c0da6797c9eb2564572629f1
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -274,7 +274,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
     ![验证虚拟机](./media/site-recovery-vmm-to-azure-classic/vm-properties.png)
 2. 在虚拟机属性的“ **配置** ”选项卡上可以修改以下网络属性。
 
-* **目标虚拟机的网络适配器数目** - 网络适配器数目根据你为目标虚拟机指定的大小来确定。 查看 [虚拟机大小规格](../virtual-machines/virtual-machines-linux-sizes.md#size-tables) ，了解虚拟机大小所支持的适配器数目。 修改虚拟机的大小并保存设置后，下一次打开“配置”页时，网络适配器的数量将会改变。 目标虚拟机的网络适配器数目是源虚拟机上网络适配器的最小数目和所选虚拟机大小支持的网络适配器的最大数目，如下所示：
+* **目标虚拟机的网络适配器数目** - 网络适配器数目根据你为目标虚拟机指定的大小来确定。 查看 [虚拟机大小规格](../virtual-machines/virtual-machines-linux-sizes.md) ，了解虚拟机大小所支持的适配器数目。 修改虚拟机的大小并保存设置后，下一次打开“配置”页时，网络适配器的数量将会改变。 目标虚拟机的网络适配器数目是源虚拟机上网络适配器的最小数目和所选虚拟机大小支持的网络适配器的最大数目，如下所示：
 
   * 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
   * 如果源虚拟机的适配器数大于目标大小允许的数目，则使用目标大小允许的最大数目。

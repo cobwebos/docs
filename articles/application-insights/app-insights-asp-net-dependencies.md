@@ -1,21 +1,22 @@
 ---
-title: "Application Insights 中的依赖项跟踪"
+title: "在 Azure Application Insights 中跟踪依赖项 | Microsoft Docs"
 description: "通过 Application Insights 分析本地或 Microsoft Azure Web 应用程序的使用情况、可用性和性能。"
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: d15c4ca8-4c1a-47ab-a03d-c322b4bb2a9e
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: f0cbb7f78d73c6f39dc4e8a2227b144e8a49c83a
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 35817adde713995ec82eead033f058ee109bf900
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -33,6 +34,8 @@ ms.openlocfilehash: f0cbb7f78d73c6f39dc4e8a2227b144e8a49c83a
   * Azure DocumentDb、表、Blob 存储和队列
 * 网页
   * AJAX 调用
+
+通过围绕所选方法使用[字节代码检测](https://msdn.microsoft.com/library/z9z62c29.aspx)监视工作。 性能开销最低。
 
 你还可以编写自己的 SDK 调用，以便使用 [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) 监视客户端和服务器代码中的其他依赖项。
 
@@ -81,7 +84,7 @@ ms.openlocfilehash: f0cbb7f78d73c6f39dc4e8a2227b144e8a49c83a
 ## <a name="ajax-calls"></a>AJAX 调用
 “浏览器”边栏选项卡显示[网页中的 JavaScript](app-insights-javascript.md) 发出的 AJAX 调用的持续时间和失败率。 这些信息显示为依赖项。
 
-## <a name="a-namediagnosisa-diagnose-slow-requests"></a><a name="diagnosis"></a>诊断慢速请求
+## <a name="diagnosis"></a>诊断慢速请求
 每个请求事件是应用处理请求时跟踪到的依赖项调用、异常和其他事件相关联。 因此，如果某些请求的性能不佳，你可以判断其原因是否为某个依赖项的响应速度缓慢。
 
 让我们演练一个相关的示例。
@@ -202,13 +205,12 @@ ms.openlocfilehash: f0cbb7f78d73c6f39dc4e8a2227b144e8a49c83a
   * IIS 主机：在主机服务器上安装 [Application Insights 代理](app-insights-monitor-performance-live-website-now.md)。
   * Azure Web 应用：在 Web 应用控制面板中打开“Application Insights”选项卡，然后安装 Application Insights。
 
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
 ## <a name="next-steps"></a>后续步骤
 * [异常](app-insights-asp-net-exceptions.md)
 * [用户和页面数据](app-insights-javascript.md)
 * [可用性](app-insights-monitor-web-app-availability.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

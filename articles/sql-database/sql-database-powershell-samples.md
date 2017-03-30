@@ -1,6 +1,6 @@
 ---
 title: "适用于 SQL 数据库的 Azure PowerShell 示例 | Microsoft 文档"
-description: "Azure CLI 示例 - 创建和管理 Azure SQL 数据库服务器、弹性池、数据库和防火墙。"
+description: "Azure PowerShell 示例 - 有助于创建和管理 Azure SQL 数据库服务器、弹性池、数据库和防火墙的脚本。"
 services: sql-database
 documentationcenter: sql-database
 author: CarlRabeler
@@ -17,9 +17,9 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: f8e11c348da1d783b691a60c68055f2d394e6a94
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: abcccabbfc56102c97ef2408fb812755e21b467c
+ms.lasthandoff: 03/22/2017
 
 ---
 

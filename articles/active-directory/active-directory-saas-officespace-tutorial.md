@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 03/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: b8f354b34e1a3a581dd2e41df4b80cbdbcd9a705
-ms.openlocfilehash: 3033df7c69a1c4211c906c6f3bdcd7868dedde13
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: fb61a2d622b0d829a134b6ce5dfef6e9fb44fa1e
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -148,43 +148,31 @@ ms.lasthandoff: 02/15/2017
     
     d.单击“下一步”。 单击“确定”
 
-6. 在“SAML 签名证书”部分中，单击“创建新证书”。
-
-    ![配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_06.png)     
-
-7. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
-
-    ![配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_general_300.png)
-
-8. 在“SAML 签名证书”部分中，选择“激活新证书”，然后单击“保存”按钮。
-
-    ![配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_07.png)
-
-9. 在弹出的“滚动更新证书”窗口中，单击“确定”。
-
-    ![配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_general_400.png)
-
-10. 在“SAML 签名证书”部分中，单击“证书(base64)”，然后在计算机上保存证书文件。
+6. 在“SAML 签名证书”部分中，单击“证书(base64)”，然后在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_08.png) 
 
-11. 在“OfficeSpace Software 配置”部分中，单击“配置 OfficeSpace Software”以打开“配置登录”窗口。
+7. 单击“保存” 。
+
+    ![配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_general_400.png)
+
+8. 在“OfficeSpace Software 配置”部分中，单击“配置 OfficeSpace Software”以打开“配置登录”窗口。
 
     ![配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_09.png) 
 
     ![配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_10.png)
 
-12. 在另一 Web 浏览器窗口中，以管理员身份登录到 OfficeSpace Software 租户。
+9. 在另一 Web 浏览器窗口中，以管理员身份登录到 OfficeSpace Software 租户。
 
-13. 转到“设置”，然后单击“连接器”。
+10. 转到“设置”，然后单击“连接器”。
 
     ![在应用端配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_002.png)
 
-14. 单击“SAML 授权”。
+11. 单击“SAML 身份验证”。
 
     ![在应用端配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_003.png)
 
-15. 在“SAML 授权”部分执行以下步骤：
+12. 在“SAML 身份验证”部分中，执行以下步骤：
 
     ![在应用端配置单一登录](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_004.png)
 

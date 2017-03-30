@@ -26,11 +26,11 @@
 ## 连接
 
 ### [概述](sql-data-warehouse-connect-overview.md)
-### [连接字符串](sql-data-warehouse-connection-strings.md)
-### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 ### [SSMS](sql-data-warehouse-query-ssms.md)
 ### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [安装 Visual Studio](sql-data-warehouse-install-visual-studio.md)
+### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+### [连接字符串](sql-data-warehouse-connection-strings.md)
 
 ## 创建
 ### [Azure 门户](sql-data-warehouse-get-started-provision.md)

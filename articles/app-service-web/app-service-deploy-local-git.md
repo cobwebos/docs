@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 5842188b5d0a66436db7ab0f6b85bf14b4759c50
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 657554ee3929572632dc007d1a6500e59e2a6b97
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/16/2017
 > 
 > 
 
-## <a name="a-namestep1astep-1-create-a-local-repository"></a><a name="Step1"></a>步骤 1：创建本地存储库
+## <a name="Step1"></a>步骤 1：创建本地存储库
 执行下列任务可创建新的 Git 存储库。
 
 1. 启动一个命令行工具，例如 **GitBash** (Windows) 或 **Bash** (Unix Shell)。 在 OS X 系统上，可以通过 **Terminal** 应用程序访问命令行。
@@ -46,7 +46,7 @@ ms.lasthandoff: 02/16/2017
    
         git init
 
-## <a name="a-namestep2astep-2-commit-your-content"></a><a name="Step2"></a>步骤 2：提交内容
+## <a name="Step2"></a>步骤 2：提交内容
 应用服务支持用各种编程语言创建的应用程序。 
 
 1. 如果存储库已包含内容，请跳过这一项，并转到下面的第 2 项。 如果存储库尚不包含内容，请只填充静态 .html 文件，如下所示： 
@@ -60,7 +60,7 @@ ms.lasthandoff: 02/16/2017
    
         git commit -m "Hello Azure App Service"
 
-## <a name="a-namestep3astep-3-enable-the-app-service-app-repository"></a><a name="Step3"></a>步骤 3：启用应用服务应用存储库
+## <a name="Step3"></a>步骤 3：启用应用服务应用存储库
 执行以下步骤为应用服务应用启用 Git 存储库。
 
 1. 登录到 [Azure 门户]。
@@ -71,7 +71,7 @@ ms.lasthandoff: 02/16/2017
    
     ![](./media/app-service-deploy-local-git/deployment_credentials.png)
 
-## <a name="a-namestep4astep-4-deploy-your-project"></a><a name="Step4"></a>步骤 4：部署项目
+## <a name="Step4"></a>步骤 4：部署项目
 使用以下步骤通过本地 Git 将应用发布到应用服务。
 
 1. 在 Azure 门户的应用边栏选项卡中，单击“Git URL”的“设置”>“属性”。
@@ -97,7 +97,7 @@ ms.lasthandoff: 02/16/2017
     ![](./media/app-service-deploy-local-git/deployment_history.png)
 6. 单击应用边栏选项卡顶部的“浏览”按钮来验证是否已部署内容。 
 
-## <a name="a-namestep5atroubleshooting"></a><a name="Step5"></a>故障排除
+## <a name="Step5"></a>故障排除
 以下是使用 Git 发布到 Azure 中的应用服务应用时遇到的常见错误或问题：
 
 - - -
@@ -133,6 +133,15 @@ ms.lasthandoff: 02/16/2017
     git push azure master
 
 - - -
+**症状**：RPC 失败；结果 = 22，HTTP 代码 = 502。
+
+**原因**：如果尝试通过 HTTPS 推送大型 Git 存储库，则可能出现此错误。
+
+**解决方法**：在本地计算机上更改 Git 配置，以增大 postBuffer
+
+    git config --global http.postBuffer 524288000
+
+- - -
 **症状**：错误 - 已将更改提交到远程存储库，但未更新 Web 应用。
 
 **原因**：如果部署的是 Node.js 应用，其中包含用于指定其他必需模块的 package.json 文件，则会发生该错误。
@@ -152,7 +161,7 @@ ms.lasthandoff: 02/16/2017
 * [项目 Kudu 文档](https://github.com/projectkudu/kudu/wiki)
 * [Continous Deployment to Azure App Service](app-service-continuous-deployment.md)（连续部署到 Azure 应用服务）
 * [如何使用适用于 Azure 的 PowerShell](/powershell/azureps-cmdlets-docs)
-* [如何使用 Azure 命令行接口](../xplat-cli-install.md)
+* [如何使用 Azure 命令行接口](../cli-install-nodejs.md)
 
 [Azure 应用服务]: https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/
 [Azure Developer Center]: http://www.windowsazure.com/en-us/develop/overview/

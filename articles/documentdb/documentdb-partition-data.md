@@ -16,9 +16,9 @@ ms.date: 03/14/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 67d817c04672979ec8af8a540c5a63eb4df9bf6a
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: ed0910e4843ab8ab80dae1c16b15487d92017e24
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -60,7 +60,7 @@ MongoDB 的 API 中的分片集合使用相同的基础结构作为 DocumentDB �
 选择分区键是设计时需要做的一项重要决定。 选择的 JSON 属性名必须具有一系列的值，且有望均匀地分布访问模式。 
 
 > [!NOTE]
-> 采用具有大量不同值（最少&100; -&1000; 个）的分区键是最佳做法。 许多客户高效地将 DocumentDB 用作键值存储，其中唯一“id”是数百万-数十亿分区键的分区键。
+> 采用具有大量不同值（最少 100 - 1000 个）的分区键是最佳做法。 许多客户高效地将 DocumentDB 用作键值存储，其中唯一“id”是数百万-数十亿分区键的分区键。
 >
 
 下表显示分区键定义和与每个对应的 JSON 值的示例。 分区键指定为 JSON 路径，例如 `/department` 表示属性部门。 

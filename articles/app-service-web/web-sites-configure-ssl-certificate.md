@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 46ffa25ff6f90c898b958ee6c5b2c47219c468ab
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: f7a2066f43219e8748b5c5356ff6c81535b7842a
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/20/2017
 
 本文将演示如何为 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)中使用自定义域名的 Web 应用、移动应用后端或 API 应用启用 HTTPS。 仅限服务器的身份验证。 若需相互身份验证（包括客户端身份验证），请参阅[如何为应用服务配置 TLS 相互身份验证](app-service-web-configure-tls-mutual-auth.md)。
 
-若要使用 HTTPS 保护拥有自定义域名的应用，可为该域名添加证书。 默认情况下，Azure 使用单个 SSL 证书保护 **\*.azurewebsites.net** 通配符域的安全，因此客户端可能已在 **https://*&lt;appname>*.azurewebsites.net** 处访问了应用。但若想使用 **contoso.com**、**www.contoso.com** 和 **\*.contoso.com** 等自定义域，则默认证书不能提供保护。 此外，与所有[通配符证书](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)一样，默认证书不如使用定义域和该自定义域的证书安全。   
+若要使用 HTTPS 保护拥有自定义域名的应用，可为该域名添加证书。 默认情况下，Azure 使用单个 SSL 证书保护 **\*.azurewebsites.net** 通配符域的安全，因此客户端可能已在 **https://*&lt;appname>*.azurewebsites.net**处访问了应用。但若想使用**contoso.com**、**www.contoso.com**和**\*.contoso.com** 等自定义域，则默认证书不能提供保护。 此外，与所有[通配符证书](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)一样，默认证书不如使用定义域和该自定义域的证书安全。   
 
 > [!NOTE]
 > 可随时在 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的帮助。 有关更加个性化的支持，请转到 [Azure 支持](https://azure.microsoft.com/support/options/)，然后单击“获取支持”。
@@ -439,8 +439,12 @@ ms.lasthandoff: 01/20/2017
    
     ![插入 SSL 绑定的图像](./media/web-sites-configure-ssl-certificate/sslbindings.png)
    
-       •    IP based SSL associates a certificate with a domain name by mapping the dedicated public IP address of the server to the domain name. This requires each domain name (contoso.com, fabricam.com, etc.) associated with your service to have a dedicated IP address. This is the traditional          method of associating SSL certificates with a web server.
-       •    SNI based SSL is an extension to SSL and **[Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) that allows multiple domains to share the same IP address, with separate security certificates for each domain. Most modern browsers (including Internet Explorer, Chrome, Firefox and Opera) support SNI, however older browsers may not support SNI. For more information on SNI, see the **[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** article on Wikipedia.
+    > [!NOTE] 
+    > **基于 IP 的 SSL** 通过将服务器的专用公共 IP 地址映射到域名，将证书与域名相关联。 这要求与你的服务相关联的每个域名（contoso.com、fabricam.com 等）都具有专用 IP 地址。 这是将 SSL 证书与某一 Web 服务器相关联的传统方法。  
+    >
+    > **基于 SNI 的 SSL** 是对 SSL 和**[传输层安全性](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) 的扩展，它允许多个域共享同一 IP 地址，并向每个域提供单独的安全证书。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI，但是较旧的浏览器可能不支持 SNI。 有关 SNI 的详细信息，请参阅维基百科上的文章 - **[服务器名称指示](http://en.wikipedia.org/wiki/Server_Name_Indication)**。
+    > 
+
 9. 单击“添加绑定”以保存更改并启用 SSL。
 
 ## <a name="step-3-change-your-domain-name-mapping-ip-based-ssl-only"></a>步骤 3. 更改域名映射（仅限基于 IP 的 SSL）

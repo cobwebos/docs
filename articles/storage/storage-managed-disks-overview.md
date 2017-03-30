@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 339df6e5ff05c66e898254f2cd4bb5b596d0c537
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 6ec77968a0f264b8bf1fa56a23e4cc7faef614da
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -48,6 +48,9 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 ### <a name="granular-access-control"></a>粒度访问控制
 
 可以使用 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 将对托管磁盘的特定权限分配给一个或多个用户。 托管磁盘公开了各种操作，包括读取、写入（创建/更新）、删除，以及检索磁盘的[共享访问签名 (SAS) URI](storage-dotnet-shared-access-signature-part-1.md)。 可以仅将某人员执行其工作所需的操作的访问权限授予该人员。 例如，如果不希望某人员将某个托管磁盘复制到存储帐户，则可以选择不授予对该托管磁盘的导出操作的访问权限。 类似地，如果不希望某人员使用 SAS URI 复制某个托管磁盘，则可以选择不授予对该托管磁盘的该权限。
+
+### <a name="azure-backup-service-support"></a>Azure 备份服务支持 
+将 Azure 备份服务与托管磁盘配合使用，创建具有基于时间的备份、轻松 VM 还原和备份保留策略的备份作业。 托管磁盘仅支持使用本地冗余存储 (LRS) 作为复制选项；这意味着它在单个区域中保留三个数据副本。 对于区域性灾难恢复，必须使用 [Azure 备份服务](../backup/backup-introduction-to-azure-backup.md)和作为备份保管库的 GRS 存储帐户来备份不同区域中的 VM 磁盘。 有关详细信息，请参阅[为具有托管磁盘的 VM 使用 Azure 备份服务](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。 
 
 ## <a name="pricing-and-billing"></a>定价和计费 
 
@@ -114,19 +117,21 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 
 如果 VM 具有五个磁盘且这些磁盘是条带化的，将会怎样？ 你可以创建每个磁盘的快照，但是系统对于 VM 中的磁盘状况没有意识 – 快照只知道那一个磁盘的状况。 在这种情况下，快照彼此之间需要相互协调，目前不支持此功能。
 
-## <a name="azure-backup-service-support"></a>Azure 备份服务支持 
+## <a name="managed-disks-and-encryption"></a>托管磁盘和加密
 
-可以使用 Azure 备份来备份具有非托管磁盘的虚拟机。 [更多详细信息](../backup/backup-azure-vms-first-look-arm.md)。
+以下介绍托管磁盘的两种加密方式。 第一种是存储服务加密 (SSE)，由存储服务执行。 第二种是 Azure 磁盘加密，可以在 VM 的 OS 和数据磁盘上启用。 
 
-还可将 Azure 备份服务与托管磁盘配合使用，以创建具有基于时间的备份、轻松 VM 还原和备份保留策略的备份作业。 可以在[对具有托管磁盘的 VM 使用 Azure 备份服务](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)中阅读这方面的详细内容。 
+### <a name="storage-service-encryption-sse"></a>存储服务加密 (SSE)
 
-## <a name="managed-disks-and-storage-service-encryption-sse"></a>托管磁盘和存储服务加密 (SSE)
-
-Azure 存储支持自动对写入到存储帐户中的数据进行加密。 有关更多详细信息，请参考[静态数据的 Azure 存储服务加密](storage-service-encryption.md)。 托管磁盘上的数据是怎样的情况？ 当前，无法为托管磁盘启用存储服务加密，但将来会发布此功能。 在此期间，你需要知道如何使用位于加密的存储帐户中且已将其自身加密的 VHD 文件。 
+Azure 存储支持自动对写入到存储帐户中的数据进行加密。 有关更多详细信息，请参考[静态数据的 Azure 存储服务加密](storage-service-encryption.md)。 托管磁盘上的数据是怎样的情况？ 当前，无法为托管磁盘启用存储服务加密。 但以后会发布此功能。 在此期间，你需要知道如何使用位于加密的存储帐户中且已将其自身加密的 VHD 文件。 
 
 SSE 在数据写入到存储帐户时会对数据进行加密。 如果你有曾经使用 SSE 进行了加密的 VHD 文件，则无法使用该 VHD 文件来创建使用托管磁盘的 VM。 也无法将加密的非托管磁盘转换为托管磁盘。 最后，如果在该存储帐户上禁用加密，它不会反过来对 VHD 文件进行解密。 
 
 若要使用已加密的磁盘，必须首先将 VHD 文件复制到一个从未加密过的存储帐户。 然后，你可以创建具有托管磁盘的 VM 并在创建期间指定该 VHD 文件，或者将复制的 VHD 文件附加到某个具有托管磁盘且正在运行的 VM。 
+
+### <a name="azure-disk-encryption-ade"></a>Azure 磁盘加密 (ADE)
+
+Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 这包括托管磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这将与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。 有关详细信息，请参阅[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](../security/azure-security-disk-encryption.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

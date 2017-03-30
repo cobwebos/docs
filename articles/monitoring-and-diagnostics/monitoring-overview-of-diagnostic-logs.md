@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2017
+ms.date: 03/17/2017
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 5675a65e3b48e39f44dc320b7b87910ab759b764
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: be27a3541caa1620af432dcff438f70cb9b1074b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -52,7 +52,7 @@ ms.lasthandoff: 03/14/2017
 * 将诊断日志发送到何处：存储帐户、事件中心和/或 OMS Log Analytics。
 * 发送哪些日志类别。
 * 应该将每个日志类别保留在存储帐户中多长时间
-    - 保留期为&0; 天表示永久保留日志。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
+    - 保留期为 0 天表示永久保留日志。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
     - 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择事件中心或 OMS 选项），则保留策略无效。
     - 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，将会删除前天的日志。
 
@@ -199,8 +199,10 @@ ms.lasthandoff: 03/14/2017
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
 |资源类型|类别|类别显示名称|
 |---|---|---|
+|Microsoft.ApiManagement/service|GatewayLogs|ApiManagement 网关的相关日志|
 |Microsoft.Automation/automationAccounts|JobLogs|作业日志|
 |Microsoft.Automation/automationAccounts|JobStreams|作业流|
+|Microsoft.Automation/automationAccounts|DscNodeStatus|Dsc 节点状态|
 |Microsoft.Batch/batchAccounts|ServiceLog|服务日志|
 |Microsoft.DataLakeAnalytics/accounts|审核|审核日志|
 |Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
@@ -208,16 +210,19 @@ ms.lasthandoff: 03/14/2017
 |Microsoft.DataLakeStore/accounts|请求|请求日志|
 |Microsoft.EventHub/namespaces|ArchiveLogs|存档日志|
 |Microsoft.EventHub/namespaces|OperationalLogs|运行日志|
+|Microsoft.EventHub/namespaces|AutoScaleLogs|自动缩放日志|
 |Microsoft.KeyVault/vaults|AuditEvent|审核日志|
 |Microsoft.Logic/workflows|WorkflowRuntime|工作流运行时诊断事件|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|集成帐户跟踪事件|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|网络安全组事件|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|网络安全组规则计数器|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|网络安全组规则流事件|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|负载均衡器警报事件|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|负载均衡器探测运行状况|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|应用程序网关访问日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|应用程序网关性能日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|应用程序网关防火墙日志|
+|Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM 计数器表|
 |Microsoft.Search/searchServices|OperationLogs|操作日志|
 |Microsoft.ServerManagement/nodes|RequestLogs|请求日志|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|运行日志|

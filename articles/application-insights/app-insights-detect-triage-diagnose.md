@@ -4,18 +4,19 @@ description: "分析崩溃，并检测和诊断应用程序中的性能问题"
 author: alancameronwills
 services: application-insights
 documentationcenter: 
-manager: douge
+manager: carmonm
 ms.assetid: 6ccab5d4-34c4-4303-9d3b-a0f1b11e6651
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: 1af63c31a8cb7995f64813c12d32b283745c04ed
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 05fe4996a8a9c886f2f1b61471dc80550633ecf6
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -60,16 +61,16 @@ Marcela Markova 是 OBS 团队的高级开发人员，负责监视联机性能�
 
 ![显示在前一段时间运行的 Web 测试](./media/app-insights-detect-triage-diagnose/04-webtests.png)
 
-但更重要的是，有关任何失败的警报将以电子邮件的形式发送到开发团队。 如此一来，他们赶在几乎所有客户之前了解有关事项。
+但更重要的是，有关任何失败的警报将以电子邮件的形式发送到开发团队。 如此一来，他们几乎可在所有客户之前了解相关事项。
 
 ## <a name="monitor-performance-metrics"></a>监视性能指标
 在 Application Insights 的“概述”页上，有一张表格显示各种[关键指标](app-insights-web-monitor-performance.md)。
 
 ![各种指标](./media/app-insights-detect-triage-diagnose/05-perfMetrics.png)
 
-浏览器页面加载时间派生自直接从网页发送的遥测。 服务器响应时间、服务器请求计数和失败的请求计数均在 Web 服务器中测量，并从该处发送到 Application Insights。
+浏览器页面加载时间派生自直接从网页发送的遥测。 服务器响应时间、服务器请求计数和失败的请求计数均在 Web 服务器中测量，并从此处发送到 Application Insights。
 
-Marcela 有点担心服务器响应图，该图显示服务器从用户浏览器接收 HTTP 请求到它返回响应的平均时间。 在此图表中可经常看到变体，因为系统负载各不相同。 但在这种情况下，请求计数小幅提升和响应时间大幅提升之间看起来有关联。 这可能指示系统运行已达上限。
+Marcela 有点担忧服务器响应图表。 该图显示服务器从用户浏览器接收 HTTP 请求到其返回响应之间的平均时间。 在此图表中可经常看到变体，因为系统负载各不相同。 但在这种情况下，请求计数小幅提升和响应时间大幅提升之间看起来有关联。 这可能指示系统运行已达上限。
 
 她打开“服务器”表格：
 
@@ -89,7 +90,7 @@ Marcela 有点担心服务器响应图，该图显示服务器从用户浏览器
 ## <a name="smart-detection-alerts"></a>智能检测警报
 第二天确实收到了 Application Insights 的警报电子邮件。 但当她打开时，她发现那不是之前设置的响应时间警报。 相反，该邮件告知她，失败的请求数猛增，换句话说就是，返回失败代码的请求数有 500 或更多。
 
-失败的请求是指用户看到了错误，通常是在代码引发异常后出现。 他们可能会在屏幕上看到一条消息，显示“抱歉，我们目前无法更新详细信息”，或者在绝对尴尬也最糟糕的情况下会看到堆栈转储，这还是 Web 服务器出于好意才这样做。
+失败的请求是指用户看到了错误，通常是在代码引发异常后出现。 可能会显示一条消息，指出“很抱歉，当前无法更新你的详细信息。” 或者，最糟糕的情况是，堆栈转储将在用户屏幕（经由 Web 服务器）上显示。
 
 这条警报令她大为惊讶 ，因为上一次看到时，失败的请求计数还比较低，让人不用担心。 忙碌的服务器是会有少数失败。
 
@@ -97,7 +98,7 @@ Marcela 有点担心服务器响应图，该图显示服务器从用户浏览器
 
 ![主动诊断电子邮件](./media/app-insights-detect-triage-diagnose/21.png)
 
-这是一种非常有用的电子邮件。 它不仅会引发警报，还会执行许多会审和诊断工作。
+这是一种非常有用的电子邮件。 它不仅会引发警报。 还会执行许多会审和诊断工作。
 
 它显示受影响的客户数以及相应网页和操作。 Marcela 可以决定是否要让整个团队处理这项事务，以作为一次演练，或者是否在下周前都可以忽略它。
 
@@ -145,22 +146,22 @@ Fabrikam Bank 团队已经改进了始终发送异常遥测的做法，除非有
        telemetry.TrackEvent("transfer failed", properties, measurements);
     }
 
-TrackException 用于报告异常，因为它发送堆栈副本；TrackEvent 用于报告其他事件。 可附加任何可能在诊断中有用的属性。
+TrackException 用于报告异常，因为它发送堆栈副本。 TrackEvent 用于报告其他事件。 可附加任何可能在诊断中有用的属性。
 
 在“诊断搜索”边栏选项卡中显示的异常和事件。[](app-insights-diagnostic-search.md) 可深入研究它们，了解其他属性和堆栈跟踪。
 
 ![在“诊断搜索”中，使用筛选器显示特定类型的数据](./media/app-insights-detect-triage-diagnose/appinsights-333facets.png)
 
 ## <a name="monitoring-user-activity"></a>监视用户活动
-当响应时间持续良好，并且异常很少时，开发人员团队可以考虑如何提升用户体验和如何鼓励更多用户达到所需目标。
+如果响应时间始终良好且极少出现异常，则开发团队可转为处理可用性。 他们就可考虑如何提升用户体验，以及如何鼓励更多用户实现所需目标。
 
-例如，典型的用户网站之旅呈清晰的“漏斗状”：许可客户查看不同贷款类型的利率、一些客户填写报价单，在获得报价的客户中，一些人直接提取贷款。
+例如，用户的典型网站浏览过程反映在清晰的“漏斗图”上。 很多客户要查找不同类型贷款的费率。 其中部分客户要填写报价单。 在获得报价的客户当中，少部分人要进行贷款。
 
 ![页面视图计数](./media/app-insights-detect-triage-diagnose/12-funnel.png)
 
 通过思考在哪里失去了最多客户，企业可以了解如何使更多用户继续前进到漏斗底部。 在某些情况下可能会出现用户体验 (UX) 失败，例如“下一步”按钮很难找到或说明不明显。 更有可能的是，客户减少是有更重要的业务原因：可能是贷款利率过高。
 
-无论原因是什么，数据可帮助团队了解用户情况。 可插入更多跟踪调用，了解更多详细信息。 TrackEvent() 可用于计算任何用户操作，从有关个别按钮单击量的具体细节到还清贷款等重要成就。
+无论原因是什么，数据可帮助团队了解用户情况。 可插入更多跟踪调用，了解更多详细信息。 TrackEvent() 可用于计算任何用户操作，涵盖有关个别按钮单击量的具体细节到还清贷款等重要成就。
 
 该团队已习惯掌握关于用户活动的信息。 如今，他们无论什么时候设计一项新功能，都能知道如何获取关于使用情况的反馈。 他们从开始就设计将跟踪调用插入功能。 在每个开发循环中都使用反馈改进功能。
 
@@ -219,6 +220,10 @@ Application Insights 还可用于了解用户对应用执行了什么操作。 �
 ## <a name="your-applications"></a>应用程序
 这就是一个团队使用 Application Insights 解决个别问题和改进开发周期的方式。 希望本文能够给读者带来一些启发，知道如何借助 Application Insights 在自己的应用程序中进行性能管理。
 
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
 ## <a name="next-steps"></a>后续步骤
 可以根据应用程序的特征开始运用不同的方法。 选择最适合自己的方法：
 
@@ -228,9 +233,4 @@ Application Insights 还可用于了解用户对应用执行了什么操作。 �
 * 在 [IIS](app-insights-monitor-web-app-availability.md)、[J2EE](app-insights-java-live.md) 或 [Azure](app-insights-azure.md) 上托管的已部署的应用。
 * [网页](app-insights-javascript.md) - 单页应用或普通网页 - 单独使用此方法，或者将它与任何服务器选项结合使用。
 * [可用性测试](app-insights-monitor-web-app-availability.md)：通过公共 Internet 测试应用。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

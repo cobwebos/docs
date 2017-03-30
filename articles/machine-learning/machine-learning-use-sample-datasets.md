@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 4ebd5dc2da50db93061e92660c97dcca3866c713
-ms.openlocfilehash: c4adae8125a6780ddb4c7c64baf4df6aae139104
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: dd4a672d419a0f5140ffc006bcf58a9bf1e752f4
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -43,7 +44,7 @@ ms.openlocfilehash: c4adae8125a6780ddb4c7c64baf4df6aae139104
 <tr>
   <td valign=top>成年人口收入二元分类数据集</td>
   <td valign=top>
-1994 年人口普查数据库的子集（其中在职人士年龄大于 16，调整后的收入指数大于 100）。<p> </p><b>用途：</b>使用人口统计信息对国民进行分类，预测是否有国民的年收入超过 50K。<p> </p><b>相关研究：</b>Kohavi, R.、Becker, B.（1996 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+1994 年人口普查数据库的子集（其中在职人士年龄大于 16，调整后的收入指数大于 100）。<p> </p><b>用途</b>：使用人口统计信息对国民进行分类，预测是否有国民的年收入超过 50K。<p> </p><b>相关研究：</b>Kohavi, R.、Becker, B.（1996 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr ID=airport-codes-dataset>
@@ -77,7 +78,7 @@ UCI 自行车租赁数据集基于 Capital Bikeshare 公司的实际数据，该
 <tr>
   <td valign=top>献血数据</td>
   <td valign=top>
-来自台湾新竹市输血服务中心献血数据库的数据子集。<p> </p>捐献者数据包括自上次捐献的时隔月数和频率，或捐献总数、自上次捐献的时隔时间和献血量。<p> </p><b>用途：</b>目标是通过分类预测 2007 年 3 月是否会有献血者，其中 1 表示目标期间有献血者，0 表示没有献血者。 <p> </p><b>相关研究：</b> Yeh, I.C.（2008 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 <p> </p>Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM model using Bernoulli sequence”, 专家系统及其应用, 2008 年, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
+来自台湾新竹市输血服务中心献血数据库的数据子集。<p> </p>捐献者数据包括自上次捐献的时隔月数和频率，或捐献总数、自上次捐献的时隔时间和献血量。<p> </p><b>用途：</b>目标是通过分类预测 2007 年 3 月是否会有献血者，其中 1 表示目标期间有献血者，0 表示没有献血者。 <p> </p><b>相关研究：</b>Yeh, I.C.（2008 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 <p> </p>Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM model using Bernoulli sequence”, 专家系统及其应用, 2008 年, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
 </tr>
 
@@ -305,9 +306,4 @@ RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配�
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

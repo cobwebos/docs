@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/01/2016
+ms.date: 03/20/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a575929f2c42a00b6e6cacd86318253d20b6b51e
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b58a8f7f87a231bd44c9224e3c889c31336ee0b1
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -30,17 +31,22 @@ ms.openlocfilehash: a575929f2c42a00b6e6cacd86318253d20b6b51e
 
 对于每种网关类型，每个虚拟网络只能有一个虚拟网络网关。 例如，一个虚拟网络网关使用 -GatewayType Vpn，另一个使用 -GatewayType ExpressRoute。 本文重点介绍 ExpressRoute 虚拟网络网关。
 
-## <a name="a-namegwskuagateway-skus"></a><a name="gwsku"></a>网关 SKU
+## <a name="gwsku"></a>网关 SKU
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
 如果想要将网关升级为功能更强大的网关 SKU，在大多数情况下，可以使用“Resize-AzureRmVirtualNetworkGateway”PowerShell cmdlet。 此方法适用于升级到 Standard 和 HighPerformance SKU。 但是，若要升级到 UltraPerformance SKU，需要重新创建网关。
 
-### <a name="a-nameaggthroughputaestimated-aggregate-throughput-by-gateway-sku"></a><a name="aggthroughput"></a>按网关 SKU 列出的估计聚合吞吐量
+### <a name="aggthroughput"></a>按网关 SKU 列出的估计聚合吞吐量
 下表显示网关类型和估计的聚合吞吐量。 此表适用于 Resource Manager 与经典部署模型。
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
-## <a name="a-nameresourcesarest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST API 和 PowerShell cmdlet
+> [!IMPORTANT]
+> 应用程序吞吐量取决于多种因素，例如端到端延迟和应用程序打开的流量数。 表中的数字表示应用程序在理想环境下理论上可达到的上限。 
+> 
+>
+
+## <a name="resources"></a>REST API 和 PowerShell cmdlet
 有关将 REST API 和 PowerShell cmdlet 用于虚拟网络网关配置的其他技术资源和特定语法要求，请参阅以下页面：
 
 | **经典** | **资源管理器** |
@@ -50,10 +56,5 @@ ms.openlocfilehash: a575929f2c42a00b6e6cacd86318253d20b6b51e
 
 ## <a name="next-steps"></a>后续步骤
 有关可用连接配置的详细信息，请参阅 [ExpressRoute 概述](expressroute-introduction.md)。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

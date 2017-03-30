@@ -35,7 +35,7 @@
 14. 如果希望虚拟机属于一个可用性集，请在“可用性集”中，选择“创建可用性集”或将虚拟机添加到现有可用性集。
     
     **注意**：可用性集中的虚拟机将部署到不同的容错域。 在一个可用性集中放置多台虚拟机将帮助确保您的应用程序在出现网络故障、本地磁盘硬件故障以及任何计划内停机时仍然可用。
-15. 在“终结点”下，查看为了允许通过远程桌面或安全 Shell (SSH) 客户端等连接到虚拟机而要创建的新终结点。 您还可现在添加终结点，或者稍后创建终结点。 有关稍后创建终结点的说明，请参阅[如何设置虚拟机的终结点](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+15. 在“终结点”下，查看为了允许通过远程桌面或安全 Shell (SSH) 客户端等连接到虚拟机而要创建的新终结点。 您还可现在添加终结点，或者稍后创建终结点。 有关稍后创建终结点的说明，请参阅[如何设置虚拟机的终结点](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 16. 在“VM 代理”下，确定是否要安装 VM 代理。 此代理为您提供安装扩展的环境，可帮助您与虚拟机交互。 有关详细信息，请参阅[管理扩展](http://go.microsoft.com/FWLink/p/?LinkID=390493)。
 17. 单击箭头以创建虚拟机。
     
@@ -45,10 +45,5 @@
 创建虚拟机后，将自动启动它。 当门户显示状态为正在运行时，您可以登录到该虚拟机。 有关说明，请参阅以下文章之一：
 
 * [如何登录到运行 Linux 的虚拟机](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [如何登录到运行 Windows Server 的虚拟机](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+* [如何登录到运行 Windows Server 的虚拟机](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 

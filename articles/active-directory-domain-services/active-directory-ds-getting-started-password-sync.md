@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: e4b1907b95576468654703c843a5f6e06846814b
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: f994edd71c6d8ca8a2c3f5de370115747f87da57
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -68,7 +68,7 @@ Azure AD 域服务需要凭据哈希的格式适用于 NTLM 和 Kerberos 身份�
 <br>
 
 ## <a name="related-content"></a>相关内容
-* [如何更新自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+* [如何更新自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md#reset-your-password)。
 * [Azure AD 中的密码管理入门](../active-directory/active-directory-passwords-getting-started.md)。
 * [对已同步的 Azure AD 租户启用 AAD 域服务密码同步](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [管理 Azure AD 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)

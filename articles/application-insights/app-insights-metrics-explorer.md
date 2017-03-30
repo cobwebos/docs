@@ -1,5 +1,5 @@
 ---
-title: "在 Application Insights 中浏览指标 | Microsoft 文档"
+title: "在 Azure Application Insights 中浏览指标 | Microsoft Docs"
 description: "如何解释指标资源管理器上的图表，以及如何自定义指标资源管理器边栏选项卡。"
 services: application-insights
 documentationcenter: 
@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: ee759149df038ac08f0d5987c3577454a81999db
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 8005e1c485b9ce2e19e134a12206058ef54a5a8b
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -195,6 +195,10 @@ ms.lasthandoff: 03/10/2017
     如果想要在不同的图表上设置不同的筛选器，请在不同的边栏选项卡中创建图表，将它们保存为独立的收藏项。 如果需要，可将这些图表固定到仪表板，以便并排查看这些图表。
 * 如果根据指标上未定义的属性将图表分组，则图表中不会显示任何数据。 请尝试清除“分组依据”，或选择不同的分组属性。
 * 性能数据（CPU、IO 速率等）适用于 Java Web 服务、Windows 桌面应用、[IIS Web 应用和服务（如果安装了状态监视器）](app-insights-monitor-performance-live-website-now.md)以及 [Azure 云服务](app-insights-azure.md)。 这些数据不适用于 Azure 网站。
+
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Application Insights 监视使用情况](app-insights-overview-usage.md)

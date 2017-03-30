@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 03/21/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 705e64d52d796ae861465f71de397d11bf14086e
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: afdbd737be96acbcf2883c644bfbbb741fe94179
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -134,7 +134,7 @@ Azure Redis 缓存基于流行的开放源代码 [Redis 缓存](http://redis.io)
 * 启用 Redis 群集功能时，增加群集中分片（节点）的数量会导致吞吐量线性提高。 如果创建了一个包含 10 个分片的 P4 群集，则可用吞吐量为 250K*10 = 每秒 250 万个请求。
 * 如果增加密钥大小，则高级层的吞吐量要高于标准层。
 
-| 定价层 | 大小 | CPU 核心数 | 可用带宽 | 1 KB 密钥大小 |
+| 定价层 | 大小 | CPU 核心数 | 可用带宽 | 1 KB 值大小 |
 | --- | --- | --- | --- | --- |
 | **标准缓存大小** | | |**兆位/秒（Mb/秒）/兆字节/秒（MB/秒）** |**请求数/秒 (RPS)** |
 | C0 |250 MB |共享 |5/0.625 |600 |

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3893c98ed72ee7b4ed5aa879047293285e9af071
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: b4b0a8139b69a31e4af40e1f8231d4d7772fee0b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -498,7 +498,7 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-   稍后在本演练中创建管道，开始时间：2016-11-16T00:00:00Z，结束时间：2016-11-16T05:00:00Z。 计划按小时生成数据，因此存在&5; 个输入/输出切片 (**00**:00:00 -> **05**:00:00)。
+   稍后在本演练中创建管道，开始时间：2016-11-16T00:00:00Z，结束时间：2016-11-16T05:00:00Z。 计划按小时生成数据，因此存在 5 个输入/输出切片 (**00**:00:00 -> **05**:00:00)。
 
    输入数据集的**频率**和**间隔**设置为**小时**和 **1**，这意味着每小时皆可使用输入切片。 在此示例中，它是 intputfolder 中的相同文件 (file.txt)。
 
@@ -622,7 +622,7 @@ test custom activity Microsoft test custom activity Microsoft
 2. 现在在“图示”视图中，单击“OutputDataset”。
 
     ![图示视图](./media/data-factory-use-custom-activities/diagram.png)
-3. 应会看到&5; 个输出切片处于“就绪”状态。 如果它们不处于“就绪”状态，则表示它们尚未生成。 
+3. 应会看到 5 个输出切片处于“就绪”状态。 如果它们不处于“就绪”状态，则表示它们尚未生成。 
 
    ![输出切片](./media/data-factory-use-custom-activities/OutputSlices.png)
 4. 验证输出文件是否在 **adftutorial** 容器的 blob 存储中生成。
@@ -644,7 +644,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 ![Azure 数据工厂 - Batch 作业](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
 
-为切片的每个活动运行创建任务。 如果有&5; 个切片已准备好进行处理，此作业中将创建&5; 个任务。 如果批处理池中有多个计算节点，可以并行运行两个或更多个切片。 如果每个计算节点的最大任务数设置为 > 1，则还可在同一计算上运行多个切片。
+为切片的每个活动运行创建任务。 如果有 5 个切片已准备好进行处理，此作业中将创建 5 个任务。 如果批处理池中有多个计算节点，可以并行运行两个或更多个切片。 如果每个计算节点的最大任务数设置为 > 1，则还可在同一计算上运行多个切片。
 
 ![Azure 数据工厂 - Batch 作业任务](media/data-factory-use-custom-activities/data-factory-batch-job-tasks.png)
 
@@ -742,7 +742,7 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ## <a name="auto-scaling-of-azure-batch"></a>Azure 批处理的自动缩放
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量通过 0 专用的 VM 和自动缩放公式创建 Azure Batch 池：
 
-一次为每个挂起的任务分配一个 VM（例如：5 个挂起任务->&5; 个 VM）：
+一次为每个挂起的任务分配一个 VM（例如：5 个挂起任务-> 5 个 VM）：
 
 ```
 pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);

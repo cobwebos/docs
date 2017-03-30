@@ -16,19 +16,24 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
-ms.openlocfilehash: 92211cc98b6d8394ff04bc7c2fe33f7bd710713b
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 5152367ec4a2ef225f08f2b8d4cb2e92eea8ce26
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型
-以下步骤演示如何使用 Azure 命令行接口 (CLI) 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure Resource Manager 部署模型。 本文中的操作需要 [Azure CLI](../xplat-cli-install.md)。
+以下步骤演示如何使用 Azure 命令行接口 (CLI) 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure Resource Manager 部署模型。 本文中的操作需要 [Azure CLI](../cli-install-nodejs.md)。
 
 > [!NOTE]
 > 此处描述的所有操作都是幂等的。 如果你遇到功能不受支持或配置错误以外的问题，建议你重试准备、中止或提交操作。 然后平台将重试操作。
 > 
 > 
+
+<br>
+下面是一个流程图，用于确定在迁移过程中需要执行步骤的顺序
+
+![显示迁移步骤的屏幕截图](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-prepare-for-migration"></a>步骤 1：准备迁移
 下面是建议你在将 IaaS 资源从经典部署模型迁移到 Resource Manager 部署模型时遵循的一些最佳实践：
@@ -37,7 +42,7 @@ ms.lasthandoff: 01/26/2017
 * 如果你通过自动化脚本来部署目前的基础结构和应用程序，则可尝试使用这些脚本进行迁移，以便创建类似的测试性设置。 也可以使用 Azure 门户设置示例环境。
 
 ## <a name="step-2-set-your-subscription-and-register-the-provider"></a>步骤 2：设置订阅并注册提供程序
-对于迁移方案，需要针对经典部署模型和 Resource Manager 部署模型设置环境。 [安装 Azure CLI](../xplat-cli-install.md) 并[选择订阅](../xplat-cli-connect.md)。
+对于迁移方案，需要针对经典部署模型和 Resource Manager 部署模型设置环境。 [安装 Azure CLI](../cli-install-nodejs.md) 并[选择订阅](../xplat-cli-connect.md)。
 
 登录到帐户。
 

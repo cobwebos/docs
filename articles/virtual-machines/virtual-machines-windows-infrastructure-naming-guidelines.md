@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: a59b8178fb011b837a402207ca86dd2db4505f74
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: e335ecafdd6347bf8b839f50bf36e3d5e2cd42fa
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 03/03/2017
 
 可以选择遵循一组为整个组织或特定 Azure 订阅或帐户定义的特定命名约定。 虽然组织内的个人在使用 Azure 资源时，在团队需要在 Azure 上处理项目时很容易建立隐式规则，但该模型可伸缩性差。
 
-应事先就命名约定集达成一致意见。 关于超越这几组规则的命名约定，有一些注意事项。
+应事先就命名约定集达成一致意见。 关于超越这组规则的命名约定，有一些注意事项。
 
 ## <a name="affixes"></a>词缀
 要定义命名约定时，应决定词缀位于以下哪一个位置：
@@ -98,7 +98,7 @@ ms.lasthandoff: 03/03/2017
 建议 Azure VM 名称应该与基础操作系统计算机名称相同。
 
 ## <a name="storage-account-names"></a>存储帐户名称
-存储帐户具有适用于其名称的特殊规则。 你只能使用小写字母和数字。 有关详细信息，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。 此外，存储帐户名称与 core.windows.net 组合在一起应该是一个全局有效的唯一 DNS 名称。 例如，如果存储帐户名为 mystorageaccount，则下面生成的 DNS 名称应该是唯一的：
+本节不适用于 [Azure 托管磁盘](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，因为无需创建单独的存储帐户。 对于非托管磁盘，存储帐户具有适用于其名称的特殊规则。 你只能使用小写字母和数字。 有关详细信息，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。 此外，存储帐户名称与 core.windows.net 组合在一起应该是一个全局有效的唯一 DNS 名称。 例如，如果存储帐户名为 mystorageaccount，则下面生成的 DNS 名称应该是唯一的：
 
 * mystorageaccount.blob.core.windows.net
 * mystorageaccount.table.core.windows.net

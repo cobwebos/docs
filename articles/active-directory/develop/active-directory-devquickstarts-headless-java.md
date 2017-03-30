@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
-ms.openlocfilehash: 51913b5e0d43514f50f2d51500f2149438d87045
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 4e6d859ee621a730e0d2c1062d3a31e7c053e798
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -50,8 +51,8 @@ ms.openlocfilehash: 51913b5e0d43514f50f2d51500f2149438d87045
 5. 根据提示创建一个新的 **Web 应用程序和/或 WebAPI**。
   * 应用程序的“名称”向最终用户描述你的应用程序
   * “登录 URL”是应用的基本 URL。  框架的默认值为 `http://localhost:8080/adal4jsample/`。
-  * “应用程序 ID URI”是应用程序的唯一标识符。  约定是使用 `https://<tenant-domain>/<app-name>`，例如 `http://localhost:8080/adal4jsample/`
-6. 完成注册后，AAD 将为应用分配唯一的应用程序 ID。  在后面的部分中将会用到此值，因此，请从应用程序选项卡中复制此值。
+6. 完成注册后，AAD 将为应用分配唯一的应用程序 ID。  在后面的部分中将会用到此值，因此，请从“应用程序”选项卡中复制此值。
+7. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 “应用程序 ID URI”是应用程序的唯一标识符。  约定使用 `https://<tenant-domain>/<app-name>`，例如 `http://localhost:8080/adal4jsample/`。
 
 进入门户后，从“设置”页为应用创建“密钥”，并复制该密钥。  稍后您将需要它。
 
@@ -267,10 +268,5 @@ public class PublicClient {
 [此处以 .zip 格式提供了](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip)完整示例（不包括配置值）以供参考，也可以从 GitHub 克隆该示例：
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

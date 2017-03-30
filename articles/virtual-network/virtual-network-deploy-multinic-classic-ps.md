@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: cd3e6c548fd1f7dccaf478d3324efc8d768e3064
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 6e2bb0e228aa28c79969cba07352061abbb47951
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -187,14 +187,13 @@ ms.lasthandoff: 02/28/2017
 1. 保存脚本并从 **PowerShell** 命令提示符或 **PowerShell ISE** 运行它。 将看到最初的输出，如下所示。
 
         OperationDescription    OperationId                          OperationStatus
-        --------------------    -----------                          ---------------
-        New-AzureService        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
-        New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
 
+        New-AzureService        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
+        New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
+        
         WARNING: No deployment found in service: 'IaaSStory-Backend'.
-2. 在凭据提示中填写所需信息，然后单击“**确定**”。 此时将显示以下输出。
+2. 在凭据提示中填写所需信息，然后单击“**确定**”。 返回以下输出。
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
-
 

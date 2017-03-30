@@ -15,14 +15,19 @@ ms.topic: article
 ms.date: 02/24/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: d4618e70ed3a940c686f9ed539ce207fd59306e8
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 052785aa225086e55a40c061765770b9eebaa154
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM
 通过*基本映像*向实验室中添加 VM，该基本映像是[自定义映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或[应用商店映像](devtest-lab-configure-marketplace-images.md)。 本教程将引导你完成使用 Azure 门户向开发测试实验室中的实验室添加 VM 的过程。
+
+> [!NOTE]
+> [添加可声明的 VM](devtest-lab-add-claimable-vm.md) 演示了如何使 VM 可声明以使其供实验室中的任意用户使用。
+>
+>
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM 的步骤
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
@@ -34,14 +39,14 @@ ms.lasthandoff: 03/15/2017
 
 1. 在“选择基本映像”边栏选项卡上为 VM 选择基本映像c。
 1. 在“虚拟机”边栏选项卡的“虚拟机名称”文本框中输入新虚拟机的名称。
-   
+
     ![实验室 VM 边栏选项卡](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
 
 1. 输入在虚拟机上被授予了管理员权限的**用户名**。  
-1. 如果想要使用在[密码存储](https://azure.microsoft.com/en-us/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)中存储的密码，请选择“使用保存的密码”，然后指定与密码对应的密钥值。 否则，在标签为“键入值”的文本字段输入一个密码。
+1. 如果想要使用在[密码存储](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)中存储的密码，请选择“使用保存的密码”，然后指定与密码对应的密钥值。 否则，在标签为“键入值”的文本字段输入一个密码。
 1. **虚拟机磁盘类型**决定了允许将哪种存储磁盘类型用于实验室中的虚拟机。
 1. 选择“虚拟机大小”，并选择指定待创建 VM 的处理器内核、RAM 大小和硬盘驱动器大小的预定义项之一。
-1. 选择“项目”，然后从项目列表中选择并配置要添加到基础映像的项目。 
+1. 选择“项目”，然后从项目列表中选择并配置要添加到基础映像的项目。
     **注意：**如果对开发测试实验室或配置项目不熟悉，请参阅[向 VM 中添加现有项目](./devtest-lab-add-vm-with-artifacts.md#add-an-existing-artifact-to-a-vm)部分，然后在完成后返回此处。
 1. 选择“高级设置”来配置 VM 的网络选项和到期选项。
 1. 如果想要查看或复制 Azure Resource Manager 模板，请参阅[保存 Azure Resource Manager 模板](./devtest-lab-add-vm-with-artifacts.md#save-azure-resource-manager-template)部分，然后在完成后返回此处。
@@ -51,6 +56,4 @@ ms.lasthandoff: 03/15/2017
 ## <a name="next-steps"></a>后续步骤
 * 创建 VM 后，可通过选择 VM 边栏选项卡上的“连接”来连接 VM。
 * 浏览[开发测试实验室 Azure Resource Manager 快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)
-
-
 

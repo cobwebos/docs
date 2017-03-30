@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9192ed7b69e52c59efe33981e1e557b634679196
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 86471fe29bbc9076624d96b83f7001d8755363bc
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -32,7 +32,6 @@ ms.lasthandoff: 03/21/2017
 
 - [创建 DB - 门户](sql-database-get-started-portal.md)
 - [创建 DB - CLI](sql-database-get-started-cli.md)
-- [创建 DB - PowerShell](sql-database-get-started-powershell.md) 
 
 在开始之前，请确保已安装最新版 [Visual Studio Code](https://code.visualstudio.com/Download) 并加载 [mssql 扩展](https://aka.ms/mssql-marketplace)。 有关 mssql 扩展的安装指南，请参阅 [Install VS Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code)（安装 VS Code）。 
 
@@ -164,3 +163,4 @@ ms.lasthandoff: 03/21/2017
 
 - 有关 Visual Studio Code 的信息，请参阅 [Visual Studio Code](https://code.visualstudio.com/docs)
 - 若要了解如何使用 SQL Server Management Studio 查询和编辑数据，请参阅 [SSMS](https://msdn.microsoft.com/library/ms174173.aspx)。
+

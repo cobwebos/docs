@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 03/17/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6bab265b2b6eabd1a878492588c4eb39d1b332
-ms.openlocfilehash: 89dfabb8feafffee2ed8143c372b53d02033d582
-ms.lasthandoff: 01/14/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7f3212350b1158cd51a34ee1b20a456a73d41672
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,6 +33,9 @@ ms.lasthandoff: 01/14/2017
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>是否可以在 Azure Resource Manager 虚拟网络中启用 Azure AD 域服务？
 不会。 只能在经典 Azure 虚拟网络中启用 Azure AD 域服务。 可以使用虚拟网络对等互连将经典虚拟网络连接到 Resource Manager 虚拟网络，然后便可以在 Resource Manager 虚拟网络中使用托管域。
+
+#### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-can-i-enable-azure-ad-domain-services-for-this-directory"></a>能否启用联合 Azure AD 目录中的 Azure AD 域服务？ 使用 ADFS 验证用户能否访问 Office 365。 能否为此目录启用 Azure AD 域服务？
+否。 Azure AD 域服务需要访问用户帐户的密码哈希，以便通过 NTLM 或 Kerberos 验证用户身份。 在联合目录中，密码哈希未存储于 Azure AD 目录中。 因此，Azure AD 域服务不适用于此类 Azure AD 目录。
 
 #### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>是否可以在订阅中的多个虚拟网络内使用 Azure AD 域服务？
 域服务本身无法直接支持这种方案。 Azure AD 域服务每次只能在一个虚拟网络中使用。 但是，可以在多个虚拟网络之间配置连接，将 Azure AD 域服务公开到其他虚拟网络。 有关操作方法，请参阅 [connect virtual networks in Azure](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)（在 Azure 中连接虚拟网络）一文。
@@ -51,22 +54,22 @@ ms.lasthandoff: 01/14/2017
 不会。 你没有权限通过远程桌面连接到托管域的域控制器。 “AAD DC 管理员”组的成员可以使用 AD 管理工具，例如 Active Directory 管理中心 (ADAC) 或 AD PowerShell 来管理托管域。 可使用“远程服务器管理工具”功能在加入托管域的 Windows 服务器上安装这些工具。
 
 #### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>我已启用 Azure AD 域服务。 应使用哪个用户帐户将计算机加入此域？
-已添加到管理组（例如“AAD DC 管理员”）的用户都可以将计算机加入域。 此外，此组中的用户有权通过远程桌面访问已加入域的计算机。
+“AAD DC 管理员”管理组的成员均可将计算机加入域。 此外，此组中的成员有权通过远程桌面访问已加入域的计算机。
 
-#### <a name="can-i-wield-domain-administrator-privileges-for-the-domain-provided-by-azure-ad-domain-services"></a>是否可以针对 Azure AD 域服务提供的域行使管理员权限？
-不会。 你在托管域上没有管理权限。 你不可以在该域中使用“域管理员”和“企业管理员”权限。 Azure AD 目录中现有的域管理员或企业管理员组在该域上也没有域/企业管理员权限。
+#### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>我是否具有 Azure AD 域服务提供的托管域的域管理员特权？
+否。 你在托管域上没有管理权限。 你不可以在该域中使用“域管理员”和“企业管理员”权限。 Azure AD 目录中现有的域管理员或企业管理员组在该域上也没有域/企业管理员权限。
 
-#### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-domains-provided-by-azure-ad-domain-services"></a>是否可以在 Azure AD 域服务提供的域上使用 LDAP 或其他 AD 管理工具来修改组成员身份？
-不会。 无法在 Azure AD 域服务服务的域上修改组成员身份。 这同样适用于用户属性。 但是，可以在 Azure AD 中或本地域上更改组成员身份或用户属性。 此类更改会自动同步到 Azure AD 域服务。
+#### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>能否在托管域上使用 LDAP 或其他 AD 管理工具修改组成员身份？
+否。 无法在 Azure AD 域服务服务的域上修改组成员身份。 这同样适用于用户属性。 但是，可以在 Azure AD 中或本地域上更改组成员身份或用户属性。 此类更改会自动同步到 Azure AD 域服务。
 
 #### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>对 Azure AD 目录的更改需要多长时间才可在托管域中显示？
 在 Azure AD 目录中使用 Azure AD UI 或 PowerShell 进行的更改将同步到托管域中。 此同步过程在后台运行。 目录的一次性初始同步完成后，Azure AD 中的更改通常需要约 20 分钟才会在托管域中反映。
 
-#### <a name="can-i-extend-the-schema-of-the-domain-provided-by-azure-ad-domain-services"></a>是否可以扩展 Azure AD 域服务提供的域的架构？
-不会。 托管域的架构由 Microsoft 管理。 Azure AD 域服务不支持架构扩展。
+#### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>能否扩展 Azure AD 域服务提供的托管域的架构？
+否。 托管域的架构由 Microsoft 管理。 Azure AD 域服务不支持架构扩展。
 
 #### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>是否可以在托管域中修改或添加 DNS 记录？
-是的。 属于“AAD DC 管理员”组的用户已被授予“DNS 管理”权限，可在托管域中修改 DNS 记录。 这些用户可以在已加入托管域且运行 Windows Server 的计算机上，使用 DNS 管理器控制台来管理 DNS。 若要使用 DNS 管理器控制台，请在服务器上安装“远程服务器管理工具”可选功能中包含的“DNS 服务器工具”。 TechNet 上提供了有关[用于管理、监视 DNS 以及对其进行故障排除的实用工具](https://technet.microsoft.com/library/cc753579.aspx)的详细信息。
+是的。 “AAD DC 管理员”组的成员具有“DNS 管理员”权限，可在托管域中修改 DNS 记录。 他们可在已加入托管域且运行 Windows Server 的计算机上使用 DNS 管理器控制台管理 DNS。 若要使用 DNS 管理器控制台，请在服务器上安装“远程服务器管理工具”可选功能中包含的“DNS 服务器工具”。 TechNet 上提供了有关[用于管理、监视 DNS 以及对其进行故障排除的实用工具](https://technet.microsoft.com/library/cc753579.aspx)的详细信息。
 
 ### <a name="billing-and-availability"></a>计费和可用性
 #### <a name="is-azure-ad-domain-services-a-paid-service"></a>Azure AD 域服务是付费服务吗？

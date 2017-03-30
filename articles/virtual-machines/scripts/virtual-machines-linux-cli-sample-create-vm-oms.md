@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 07d91dfa905d22334bd051f9d5f3d936d38efc88
-ms.openlocfilehash: 6eae6db78e85bd4d02678c0875e9bf9163af5276
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f7298fbe6080c2de1440dd275c8fcf06ffc39409
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/28/2017
 
 此脚本创建一个 Azure 虚拟机，安装 Operations Management Suite (OMS) 代理，并将系统注册到 OMS 工作区。 运行脚本后，该虚拟机将显示在 OMS 控制台中。
 
-在运行此脚本前，请确保已使用 `az login` 命令创建与 Azure 的连接。 此外，需要在脚本中更新 OMS 工作区 ID 和工作区密钥。
+必要时，请使用 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中的说明安装 Azure CLI，然后运行 `az login` 创建与 Azure 的连接。 此外，需更新 OMS 工作区 ID 和工作区密钥。
 
 此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../virtual-machines-windows-cli-options.md)。
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/28/2017
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
-运行脚本示例后，可以使用以下命令删除资源组、VM 以及所有相关资源。
+运行以下命令来删除资源组、VM 和所有相关资源。
 
 ```azurecli
 az group delete --name myResourceGroup

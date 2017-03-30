@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: c226d1eecbda09f4538f37d830ce68064e8ce77b
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 65fc37a1fd1d1d0149b98767117f8faafb5dcd2b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -288,6 +288,7 @@ VSTS 发布管道默认设置三个环境：开发、测试，和生产。 目�
     ```
 
     * 对于标签的值，可指定 ACS 代理的完全限定域名 (FQDN) 的 URL，或指定自定义域（例如，app.contoso.com）的 URL。 若要查找 ACS 代理的 FQDN，请运行命令 `az acs list`，并检查 `agentPoolProfiles.fqdn` 的属性。 例如，`myacsagents.westus.cloudapp.azure.com`。
+    * 示例应用默认侦听端口 80，对于那些让其 Docker 应用程序侦听其他端口（例如 `port 8080` 或 `443`）的用户，需将端口号附加到 FQDN。 例如，`myacsagents.westus.cloudapp.azure.com:8080`。 但是，尝试从外部访问应用程序时，需要在端口 80 处查询它。
     * 按照文件名的约定 docker-compose.env.*environment-name*.yml，这些设置只会影响命名的环境（在此案例中，环境名为“生产”）。 检查 VSTS 中的发布定义、将每个环境的部署任务设置为从根据此约定命名的 docker-compose 文件进行读取。
 
 1. 提交该文件并将其推送到主源存储库，以启动另一个生成。

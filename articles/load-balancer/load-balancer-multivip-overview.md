@@ -1,6 +1,6 @@
 ---
-title: "Azure Load Balancer 的多个 VIP | Microsoft Docs"
-description: "Azure Load Balancer 上的多个 VIP 概述"
+title: "Azure 负载均衡器的多个 VIP | Microsoft Docs"
+description: "Azure 负载均衡器上的多个 VIP 概述"
 services: load-balancer
 documentationcenter: na
 author: chkuhtz
@@ -15,18 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 08/11/2016
 ms.author: chkuhtz
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: e9ffa674363b250a5e286c6e34200fa2b3323173
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: d9e88b859020be2a96a57a01e5624052ed134b64
+ms.lasthandoff: 03/21/2017
 
 ---
 
-# <a name="multiple-vips-for-azure-load-balancer"></a>Azure Load Balancer 的多个 VIP
+# <a name="multiple-vips-for-azure-load-balancer"></a>Azure 负载均衡器的多个 VIP
 
-使用 Azure Load Balancer 可对多个端口和/或多个 IP 地址上的服务进行负载均衡。 可以使用公共和内部负载均衡器定义来对一组 VM 之间的流量进行负载均衡。
+使用 Azure 负载均衡器可对多个端口和/或多个 IP 地址上的服务进行负载均衡。 可以使用公共和内部负载均衡器定义来对一组 VM 之间的流量进行负载均衡。
 
-本文介绍此功能的基础知识、重要概念和约束。 如果只想要公开一个 IP 地址上的服务，可以查看[公共](load-balancer-get-started-internet-portal.md)或[内部](load-balancer-get-started-ilb-arm-portal.md)负载平衡器配置的简要说明。 添加多个 VIP 是对单个 VIP 配置的递增。 使用本文中的概念，随时可以扩展简化的配置。
+本文介绍此功能的基础知识、重要概念和约束。 如果只想要公开一个 IP 地址上的服务，可以查看[公共](load-balancer-get-started-internet-portal.md)或[内部](load-balancer-get-started-ilb-arm-portal.md)负载均衡器配置的简要说明。 添加多个 VIP 是对单个 VIP 配置的递增。 使用本文中的概念，随时可以扩展简化的配置。
 
-定义 Azure Load Balancer 时，前端和后端配置与规则相连接。 规则引用的运行状况探测用于确定如何将新流量发送到后端池中的节点。 前端由虚拟 IP (VIP) 定义，VIP 是由 IP 地址（公共或内部）、传输协议（UDP 或 TCP）和端口号组成的 3 元组。 DIP 是附加到后端池中 VM 的 Azure 虚拟 NIC 上的 IP 地址。
+定义 Azure 负载均衡器时，前端和后端配置与规则相连接。 规则引用的运行状况探测用于确定如何将新流量发送到后端池中的节点。 前端由虚拟 IP (VIP) 定义，VIP 是由 IP 地址（公共或内部）、传输协议（UDP 或 TCP）和端口号组成的 3 元组。 DIP 是附加到后端池中 VM 的 Azure 虚拟 NIC 上的 IP 地址。
 
 下表包含一些示例前端配置：
 
@@ -39,7 +40,7 @@ ms.openlocfilehash: e9ffa674363b250a5e286c6e34200fa2b3323173
 
 该表显示了四个不同的前端。 前端 #1、#2 和 #3 是具有多个规则的单一 VIP。 每个前端使用相同的 IP 地址，但端口或协议不同。 前端 #1 和 #4 是多个 VIP 的示例，在多个 VIP 中重复使用相同的前端协议和端口。
 
-在 Azure Load Balancer 中可以灵活定义负载均衡规则。 规则声明如何将前端上的地址和端口映射到后端上的目标地址和端口。 是否在不同的规则中重复使用后端端口取决于规则的类型。 每种类型的规则有特定的要求，可能会影响主机配置和探测设计。 有两种类型的规则：
+在 Azure 负载均衡器中可以灵活定义负载均衡规则。 规则声明如何将前端上的地址和端口映射到后端上的目标地址和端口。 是否在不同的规则中重复使用后端端口取决于规则的类型。 每种类型的规则有特定的要求，可能会影响主机配置和探测设计。 有两种类型的规则：
 
 1. 默认规则，不重复使用后端端口
 2. 浮动 IP 规则，重复使用后端端口
@@ -68,7 +69,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 | 1 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
 | 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
-现在，Azure Load Balancer 的完整映射如下：
+现在，Azure 负载均衡器的完整映射如下：
 
 | 规则 | VIP IP 地址 | 协议 | 端口 | 目标 | 端口 |
 | --- | --- | --- | --- | --- | --- |
@@ -81,11 +82,11 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 ## <a name="rule-type-2-backend-port-reuse-by-using-floating-ip"></a>规则类型 #2：使用浮动 IP 来重复使用后端端口
 
-使用 Azure Load Balancer 可以灵活地在多个 VIP 中重复使用前端端口，无论使用哪种规则类型。 此外，在某些应用程序方案中，后端池中单个 VM 上的多个应用程序实例偏好或必须使用相同端口。 重复使用端口的常见示例包括提供高可用性群集、网络虚拟设备，以及公开多个不重新加密的 TLS 终结点。
+使用 Azure 负载均衡器可以灵活地在多个 VIP 中重复使用前端端口，无论使用哪种规则类型。 此外，在某些应用程序方案中，后端池中单个 VM 上的多个应用程序实例偏好或必须使用相同端口。 重复使用端口的常见示例包括提供高可用性群集、网络虚拟设备，以及公开多个不重新加密的 TLS 终结点。
 
 如果想要在多个规则中重复使用后端端口，必须在规则定义中启用浮动 IP。
 
-浮动 IP 是所谓的直接服务器返回 (DSR) 的一部分。 DSR 包括两个组成部分：流拓扑和 IP 地址映射方案。 在平台级别，Azure Load Balancer 始终在 DSR 流拓扑中运行，无论是否已启用浮动 IP。 这意味着，流的出站部分始终正确重写为直接流回到来源。
+浮动 IP 是所谓的直接服务器返回 (DSR) 的一部分。 DSR 包括两个组成部分：流拓扑和 IP 地址映射方案。 在平台级别，Azure 负载均衡器始终在 DSR 流拓扑中运行，无论是否已启用浮动 IP。 这意味着，流的出站部分始终正确重写为直接流回到来源。
 
 使用默认规则类型时，Azure 将公开传统的负载均衡 IP 地址映射方案以便于使用。 启用浮动 IP 会更改 IP 地址映射方案，提供更大的灵活性，请参阅下面的说明。
 
@@ -95,7 +96,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 此方案中，后端池中的每个 VM 有三个网络接口：
 
-* DIP：与 VM 关联的虚拟 NIC（Azure 的 NIC 资源）
+* DIP：与 VM 关联的虚拟 NIC（Azure NIC 资源的 IP 配置）
 * VIP1：来宾 OS 中的环回接口，该接口上已配置 VIP1 的 IP 地址
 * VIP2：来宾 OS 中的环回接口，该接口上已配置 VIP2 的 IP 地址
 
@@ -125,7 +126,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 入站流量的目标是 VM 中环回接口上的 VIP 地址。 每个规则必须生成具有目标 IP 地址和目标端口唯一组合的流量。 通过改变流量的目标 IP 地址，可以在同一 VM 上重复使用端口。 通过将服务绑定到 VIP 的 IP 地址和相应环回接口的端口，可以向负载均衡器公开服务。
 
-请注意，本示例未更改目标端口。 这是一个浮动 IP 方案，不过 Azure Load Balancer 也支持定义规则来重写后端的目标端口，使其与前端的目标端口不同。
+请注意，本示例未更改目标端口。 这是一个浮动 IP 方案，不过 Azure 负载均衡器也支持定义规则来重写后端的目标端口，使其与前端的目标端口不同。
 
 浮动 IP 规则类型是多种负载均衡器配置模式的基础。 [具有多个侦听器的 SQL AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) 配置是目前提供的示例之一。 一段时间后，我们会介绍更多此类方案。
 
@@ -135,9 +136,4 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 * 使用浮点 IP 规则时，应用程序必须为出站流量使用 DIP。 如果应用程序绑定到来宾 OS 中环回接口上配置的 VIP 地址，则无法使用 SNAT 来重写出站流量，此时流量处理将会失败。
 * 公共 IP 地址会影响计费。 有关详细信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * 订阅有所限制。 有关详细信息，请参阅[服务限制](../azure-subscription-service-limits.md#networking-limits)。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

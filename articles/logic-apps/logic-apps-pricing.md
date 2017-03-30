@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: klam
 translationtype: Human Translation
-ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
-ms.openlocfilehash: e14d55ad96187dc8ec6e6aac04463b58280783aa
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 10a2c7771d9d2ec57f3e57e1d6bb4f82c55aa7f1
+ms.lasthandoff: 03/17/2017
 
 ---
 # <a name="logic-apps-pricing-model"></a>逻辑应用定价模型
@@ -57,7 +57,11 @@ Azure 逻辑应用使你可以在云中扩展和执行集成工作流。  下面
 有关定价详细信息，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 ## <a name="next-steps"></a>后续步骤
-* [逻辑应用概述][定义]
-* [创建你的第一个逻辑应用][创建] [定价]：https://azure.microsoft.com/pricing/details/logic-apps/ [whatis]：logic-apps-what-are-logic-apps.md [创建]：logic-apps-create-a-logic-app.md
+* [逻辑应用概述][whatis]
+* [创建第一个逻辑应用][create]
+
+[pricing]: https://azure.microsoft.com/pricing/details/logic-apps/
+[whatis]: logic-apps-what-are-logic-apps.md
+[create]: logic-apps-create-a-logic-app.md
 
 

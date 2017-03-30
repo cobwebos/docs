@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2016
+ms.date: 03/14/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 33e6b9ba880f56d967b49d0b89e61d1b531e8376
-ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 1ed23fc5a69cea70636de8b18911c1b11119d3a3
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -51,27 +51,29 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将添加两个参数。
 
-    "parameters": {
-      "first": {
-        "type": "int",
-        "metadata": {
-          "description": "First integer to add"
-        }
-      },
-      "second": {
-        "type": "int",
-        "metadata": {
-          "description": "Second integer to add"
-        }
-      }
-    },
-    ...
-    "outputs": {
-      "addResult": {
-        "type": "int",
-        "value": "[add(parameters('first'), parameters('second'))]"
-      }
+```json
+"parameters": {
+  "first": {
+    "type": "int",
+    "metadata": {
+      "description": "First integer to add"
     }
+  },
+  "second": {
+    "type": "int",
+    "metadata": {
+      "description": "Second integer to add"
+    }
+  }
+},
+...
+"outputs": {
+  "addResult": {
+    "type": "int",
+    "value": "[add(parameters('first'), parameters('second'))]"
+  }
+}
+```
 
 <a id="copyindex" />
 
@@ -88,18 +90,19 @@ ms.lasthandoff: 02/16/2017
 
 以下示例显示名称中包含 copy 循环和索引值。 
 
-    "resources": [ 
-      { 
-        "name": "[concat('examplecopy-', copyIndex())]", 
-        "type": "Microsoft.Web/sites", 
-        "copy": { 
-          "name": "websitescopy", 
-          "count": "[parameters('count')]" 
-        }, 
-        ...
-      }
-    ]
-
+```json
+"resources": [ 
+  { 
+    "name": "[concat('examplecopy-', copyIndex())]", 
+    "type": "Microsoft.Web/sites", 
+    "copy": { 
+      "name": "websitescopy", 
+      "count": "[parameters('count')]" 
+    }, 
+    ...
+  }
+]
+```
 
 <a id="div" />
 
@@ -115,27 +118,29 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将一个参数除以另一个参数。
 
-    "parameters": {
-      "first": {
-        "type": "int",
-        "metadata": {
-          "description": "Integer being divided"
-        }
-      },
-      "second": {
-        "type": "int",
-        "metadata": {
-          "description": "Integer used to divide"
-        }
-      }
-    },
-    ...
-    "outputs": {
-      "divResult": {
-        "type": "int",
-        "value": "[div(parameters('first'), parameters('second'))]"
-      }
+```json
+"parameters": {
+  "first": {
+    "type": "int",
+    "metadata": {
+      "description": "Integer being divided"
     }
+  },
+  "second": {
+    "type": "int",
+    "metadata": {
+      "description": "Integer used to divide"
+    }
+  }
+},
+...
+"outputs": {
+  "divResult": {
+    "type": "int",
+    "value": "[div(parameters('first'), parameters('second'))]"
+  }
+}
+```
 
 <a id="int" />
 
@@ -150,13 +155,14 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将用户提供的参数值转换为整数。
 
-    "parameters": {
-        "appId": { "type": "string" }
-    },
-    "variables": { 
-        "intValue": "[int(parameters('appId'))]"
-    }
-
+```json
+"parameters": {
+    "appId": { "type": "string" }
+},
+"variables": { 
+    "intValue": "[int(parameters('appId'))]"
+}
+```
 
 <a id="mod" />
 
@@ -172,27 +178,29 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将返回一个参数除以另一个参数后所得的余数。
 
-    "parameters": {
-      "first": {
-        "type": "int",
-        "metadata": {
-          "description": "Integer being divided"
-        }
-      },
-      "second": {
-        "type": "int",
-        "metadata": {
-          "description": "Integer used to divide"
-        }
-      }
-    },
-    ...
-    "outputs": {
-      "modResult": {
-        "type": "int",
-        "value": "[mod(parameters('first'), parameters('second'))]"
-      }
+```json
+"parameters": {
+  "first": {
+    "type": "int",
+    "metadata": {
+      "description": "Integer being divided"
     }
+  },
+  "second": {
+    "type": "int",
+    "metadata": {
+      "description": "Integer used to divide"
+    }
+  }
+},
+...
+"outputs": {
+  "modResult": {
+    "type": "int",
+    "value": "[mod(parameters('first'), parameters('second'))]"
+  }
+}
+```
 
 <a id="mul" />
 
@@ -208,27 +216,29 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将一个参数乘以另一个参数。
 
-    "parameters": {
-      "first": {
-        "type": "int",
-        "metadata": {
-          "description": "First integer to multiply"
-        }
-      },
-      "second": {
-        "type": "int",
-        "metadata": {
-          "description": "Second integer to multiply"
-        }
-      }
-    },
-    ...
-    "outputs": {
-      "mulResult": {
-        "type": "int",
-        "value": "[mul(parameters('first'), parameters('second'))]"
-      }
+```json
+"parameters": {
+  "first": {
+    "type": "int",
+    "metadata": {
+      "description": "First integer to multiply"
     }
+  },
+  "second": {
+    "type": "int",
+    "metadata": {
+      "description": "Second integer to multiply"
+    }
+  }
+},
+...
+"outputs": {
+  "mulResult": {
+    "type": "int",
+    "value": "[mul(parameters('first'), parameters('second'))]"
+  }
+}
+```
 
 <a id="sub" />
 
@@ -244,27 +254,29 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将一个参数减另一个参数。
 
-    "parameters": {
-      "first": {
-        "type": "int",
-        "metadata": {
-          "description": "Integer subtracted from"
-        }
-      },
-      "second": {
-        "type": "int",
-        "metadata": {
-          "description": "Integer to subtract"
-        }
-      }
-    },
-    ...
-    "outputs": {
-      "subResult": {
-        "type": "int",
-        "value": "[sub(parameters('first'), parameters('second'))]"
-      }
+```json
+"parameters": {
+  "first": {
+    "type": "int",
+    "metadata": {
+      "description": "Integer subtracted from"
     }
+  },
+  "second": {
+    "type": "int",
+    "metadata": {
+      "description": "Integer to subtract"
+    }
+  }
+},
+...
+"outputs": {
+  "subResult": {
+    "type": "int",
+    "value": "[sub(parameters('first'), parameters('second'))]"
+  }
+}
+```
 
 ## <a name="string-functions"></a>字符串函数
 资源管理器提供以下用于处理字符串的函数：
@@ -298,10 +310,12 @@ ms.lasthandoff: 02/16/2017
 
 以下示例演示如何使用 base64 函数。
 
-    "variables": {
-      "usernameAndPassword": "[concat(parameters('username'), ':', parameters('password'))]",
-      "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
-    }
+```json
+"variables": {
+  "usernameAndPassword": "[concat(parameters('username'), ':', parameters('password'))]",
+  "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
+}
+```
 
 <a id="concat" />
 
@@ -319,13 +333,14 @@ ms.lasthandoff: 02/16/2017
 
 以下示例演示了如何组合多个字符串值以返回串联的字符串。
 
-    "outputs": {
-        "siteUri": {
-          "type": "string",
-          "value": "[concat('http://', reference(resourceId('Microsoft.Web/sites', parameters('siteName'))).hostNames[0])]"
-        }
+```json
+"outputs": {
+    "siteUri": {
+      "type": "string",
+      "value": "[concat('http://', reference(resourceId('Microsoft.Web/sites', parameters('siteName'))).hostNames[0])]"
     }
-
+}
+```
 
 <a id="lengthstring" />
 
@@ -342,13 +357,14 @@ ms.lasthandoff: 02/16/2017
 
 以下示例返回字符串中的字符数。 
 
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "nameLength": "[length(parameters('appName'))]"
-    }
-
+```json
+"parameters": {
+    "appName": { "type": "string" }
+},
+"variables": { 
+    "nameLength": "[length(parameters('appName'))]"
+}
+```
 
 <a id="padleft" />
 
@@ -365,12 +381,14 @@ ms.lasthandoff: 02/16/2017
 
 以下示例演示如何通过添加零字符直到字符串达到 10 个字符进而填充该用户提供的参数值。 如果原始的参数值超过 10 个字符，将不会添加任何字符。
 
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "paddedAppName": "[padLeft(parameters('appName'),10,'0')]"
-    }
+```json
+"parameters": {
+    "appName": { "type": "string" }
+},
+"variables": { 
+    "paddedAppName": "[padLeft(parameters('appName'),10,'0')]"
+}
+```
 
 <a id="replace" />
 
@@ -387,12 +405,14 @@ ms.lasthandoff: 02/16/2017
 
 以下示例演示如何从用户提供的字符串中删除所有的短划线。
 
-    "parameters": {
-        "identifier": { "type": "string" }
-    },
-    "variables": { 
-        "newidentifier": "[replace(parameters('identifier'),'-','')]"
-    }
+```json
+"parameters": {
+    "identifier": { "type": "string" }
+},
+"variables": { 
+    "newidentifier": "[replace(parameters('identifier'),'-','')]"
+}
+```
 
 <a id="skipstring" />
 
@@ -410,29 +430,30 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将跳过字符串中指定数目的字符。
 
-    "parameters": {
-      "first": {
-        "type": "string",
-        "metadata": {
-          "description": "Value to use for skipping"
-        }
-      },
-      "second": {
-        "type": "int",
-        "metadata": {
-          "description": "Number of characters to skip"
-        }
-      }
-    },
-    "resources": [
-    ],
-    "outputs": {
-      "return": {
-        "type": "string",
-        "value": "[skip(parameters('first'),parameters('second'))]"
-      }
+```json
+"parameters": {
+  "first": {
+    "type": "string",
+    "metadata": {
+      "description": "Value to use for skipping"
     }
-
+  },
+  "second": {
+    "type": "int",
+    "metadata": {
+      "description": "Number of characters to skip"
+    }
+  }
+},
+"resources": [
+],
+"outputs": {
+  "return": {
+    "type": "string",
+    "value": "[skip(parameters('first'),parameters('second'))]"
+  }
+}
+```
 
 <a id="split" />
 
@@ -450,26 +471,30 @@ ms.lasthandoff: 02/16/2017
 
 以下示例使用逗号拆分输入字符串。
 
-    "parameters": {
-        "inputString": { "type": "string" }
-    },
-    "variables": { 
-        "stringPieces": "[split(parameters('inputString'), ',')]"
-    }
+```json
+"parameters": {
+    "inputString": { "type": "string" }
+},
+"variables": { 
+    "stringPieces": "[split(parameters('inputString'), ',')]"
+}
+```
 
 以下示例使用逗号或分号拆分输入字符串。
 
-    "variables": {
-      "stringToSplit": "test1,test2;test3",
-      "delimiters": [ ",", ";" ]
-    },
-    "resources": [ ],
-    "outputs": {
-      "exampleOutput": {
-        "value": "[split(variables('stringToSplit'), variables('delimiters'))]",
-        "type": "array"
-      }
-    }
+```json
+"variables": {
+  "stringToSplit": "test1,test2;test3",
+  "delimiters": [ ",", ";" ]
+},
+"resources": [ ],
+"outputs": {
+  "exampleOutput": {
+    "value": "[split(variables('stringToSplit'), variables('delimiters'))]",
+    "type": "array"
+  }
+}
+```
 
 <a id="string" />
 
@@ -484,28 +509,30 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将用户提供的参数值转换为字符串。
 
-    "parameters": {
-      "jsonObject": {
-        "type": "object",
-        "defaultValue": {
-          "valueA": 10,
-          "valueB": "Example Text"
-        }
-      },
-      "jsonArray": {
-        "type": "array",
-        "defaultValue": [ "a", "b", "c" ]
-      },
-      "jsonInt": {
-        "type": "int",
-        "defaultValue": 5
-      }
-    },
-    "variables": { 
-      "objectString": "[string(parameters('jsonObject'))]",
-      "arrayString": "[string(parameters('jsonArray'))]",
-      "intString": "[string(parameters('jsonInt'))]"
+```json
+"parameters": {
+  "jsonObject": {
+    "type": "object",
+    "defaultValue": {
+      "valueA": 10,
+      "valueB": "Example Text"
     }
+  },
+  "jsonArray": {
+    "type": "array",
+    "defaultValue": [ "a", "b", "c" ]
+  },
+  "jsonInt": {
+    "type": "int",
+    "defaultValue": 5
+  }
+},
+"variables": { 
+  "objectString": "[string(parameters('jsonObject'))]",
+  "arrayString": "[string(parameters('jsonArray'))]",
+  "intString": "[string(parameters('jsonInt'))]"
+}
+```
 
 <a id="substring" />
 
@@ -518,16 +545,29 @@ ms.lasthandoff: 02/16/2017
 |:--- |:--- |:--- |:--- |
 | stringToParse |是 |String |从中提取子字符串的原始字符串。 |
 | startIndex |否 |Integer |子字符串的从零开始的字符位置。 |
-| length |否 |Integer |子字符串的字符数。 |
+| length |否 |Integer |子字符串的字符数。 必须引用该字符串内的一个位置。 |
 
 以下示例提取参数中的前三个字符。
 
-    "parameters": {
-        "inputString": { "type": "string" }
-    },
-    "variables": { 
-        "prefix": "[substring(parameters('inputString'), 0, 3)]"
-    }
+```json
+"parameters": {
+    "inputString": { "type": "string" }
+},
+"variables": { 
+    "prefix": "[substring(parameters('inputString'), 0, 3)]"
+}
+```
+
+以下示例失败，并出现错误“索引和长度参数必须引用字符串内的一个位置。 索引参数“0”，长度参数“11”，字符串参数长度“10”。”。
+
+```json
+"parameters": {
+    "inputString": { "type": "string", "value": "1234567890" }
+},
+"variables": { 
+    "prefix": "[substring(parameters('inputString'), 0, 11)]"
+}
+```
 
 <a id="takestring" />
 
@@ -545,28 +585,30 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将从字符串中提取指定数目的字符。
 
-    "parameters": {
-      "first": {
-        "type": "string",
-        "metadata": {
-          "description": "Value to use for taking"
-        }
-      },
-      "second": {
-        "type": "int",
-        "metadata": {
-          "description": "Number of characters to take"
-        }
-      }
-    },
-    "resources": [
-    ],
-    "outputs": {
-      "return": {
-        "type": "string",
-        "value": "[take(parameters('first'), parameters('second'))]"
-      }
+```json
+"parameters": {
+  "first": {
+    "type": "string",
+    "metadata": {
+      "description": "Value to use for taking"
     }
+  },
+  "second": {
+    "type": "int",
+    "metadata": {
+      "description": "Number of characters to take"
+    }
+  }
+},
+"resources": [
+],
+"outputs": {
+  "return": {
+    "type": "string",
+    "value": "[take(parameters('first'), parameters('second'))]"
+  }
+}
+```
 
 <a id="tolower" />
 
@@ -581,12 +623,14 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将用户提供的参数值转换为小写。
 
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "lowerCaseAppName": "[toLower(parameters('appName'))]"
-    }
+```json
+"parameters": {
+    "appName": { "type": "string" }
+},
+"variables": { 
+    "lowerCaseAppName": "[toLower(parameters('appName'))]"
+}
+```
 
 <a id="toupper" />
 
@@ -601,12 +645,14 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将用户提供的参数值转换为大写。
 
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "upperCaseAppName": "[toUpper(parameters('appName'))]"
-    }
+```json
+"parameters": {
+    "appName": { "type": "string" }
+},
+"variables": { 
+    "upperCaseAppName": "[toUpper(parameters('appName'))]"
+}
+```
 
 <a id="trim" />
 
@@ -621,12 +667,14 @@ ms.lasthandoff: 02/16/2017
 
 以下示例将裁剪掉用户提供的参数值中的空白字符。
 
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "trimAppName": "[trim(parameters('appName'))]"
-    }
+```json
+"parameters": {
+    "appName": { "type": "string" }
+},
+"variables": { 
+    "trimAppName": "[trim(parameters('appName'))]"
+}
+```
 
 <a id="uniquestring" />
 
@@ -650,23 +698,30 @@ ms.lasthandoff: 02/16/2017
 
 仅对订阅唯一
 
-    "[uniqueString(subscription().subscriptionId)]"
+```json
+"[uniqueString(subscription().subscriptionId)]"
+```
 
 仅对资源组唯一
 
-    "[uniqueString(resourceGroup().id)]"
+```json
+"[uniqueString(resourceGroup().id)]"
+```
 
 仅对资源组的部署唯一
 
-    "[uniqueString(resourceGroup().id, deployment().name)]"
+```json
+"[uniqueString(resourceGroup().id, deployment().name)]"
+```
 
 以下示例演示显示如何根据资源组创建存储帐户的唯一名称。 在资源组中，如果以相同的方式构造，则名称不是唯一的。
 
-    "resources": [{ 
-        "name": "[concat('storage', uniqueString(resourceGroup().id))]", 
-        "type": "Microsoft.Storage/storageAccounts", 
-        ...
-
+```json
+"resources": [{ 
+    "name": "[concat('storage', uniqueString(resourceGroup().id))]", 
+    "type": "Microsoft.Storage/storageAccounts", 
+    ...
+```
 
 
 <a id="uri" />
@@ -685,7 +740,9 @@ ms.lasthandoff: 02/16/2017
 
 以下示例演示如何根据父模板的值构造嵌套模板的链接。
 
-    "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
+```json
+"templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
+```
 
 ## <a name="array-functions"></a>数组函数
 资源管理器提供以下用于处理数组值的函数。
@@ -713,18 +770,19 @@ ms.lasthandoff: 02/16/2017
 
 以下示例演示如何组合两个数组。
 
-    "parameters": {
-        "firstarray": {
-            type: "array"
-        }
-        "secondarray": {
-            type: "array"
-        }
-     },
-     "variables": {
-         "combinedarray": "[concat(parameters('firstarray'), parameters('secondarray'))]"
-     }
-
+```json
+"parameters": {
+    "firstarray": {
+      "type": "array"
+    }
+    "secondarray": {
+      "type": "array"
+    }
+},
+"variables": {
+    "combinedarray": "[concat(parameters('firstarray'), parameters('secondarray'))]"
+}
+```
 
 <a id="length" />
 
@@ -739,10 +797,12 @@ ms.lasthandoff: 02/16/2017
 
 创建资源时，可在数组中使用此函数指定迭代数。 在以下示例中，参数 **siteNames** 引用创建网站时要使用的名称数组。
 
-    "copy": {
-        "name": "websitescopy",
-        "count": "[length(parameters('siteNames'))]"
-    }
+```json
+"copy": {
+    "name": "websitescopy",
+    "count": "[length(parameters('siteNames'))]"
+}
+```
 
 有关在数组中使用此函数的详细信息，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。 
 
@@ -764,29 +824,31 @@ ms.lasthandoff: 02/16/2017
 
 下面的示例将跳过数组中指定数目的元素。
 
-    "parameters": {
-      "first": {
-        "type": "array",
-        "metadata": {
-          "description": "Values to use for skipping"
-        },
-        "defaultValue": [ "one", "two", "three" ]
-      },
-      "second": {
-        "type": "int",
-        "metadata": {
-          "description": "Number of elements to skip"
-        }
-      }
+```json
+"parameters": {
+  "first": {
+    "type": "array",
+    "metadata": {
+      "description": "Values to use for skipping"
     },
-    "resources": [
-    ],
-    "outputs": {
-      "return": {
-        "type": "array",
-        "value": "[skip(parameters('first'), parameters('second'))]"
-      }
+    "defaultValue": [ "one", "two", "three" ]
+  },
+  "second": {
+    "type": "int",
+    "metadata": {
+      "description": "Number of elements to skip"
     }
+  }
+},
+"resources": [
+],
+"outputs": {
+  "return": {
+    "type": "array",
+    "value": "[skip(parameters('first'), parameters('second'))]"
+  }
+}
+```
 
 <a id="take" />
 
@@ -804,29 +866,31 @@ ms.lasthandoff: 02/16/2017
 
 下面的示例将从数组中获取指定个数的元素。
 
-    "parameters": {
-      "first": {
-        "type": "array",
-        "metadata": {
-          "description": "Values to use for taking"
-        },
-        "defaultValue": [ "one", "two", "three" ]
-      },
-      "second": {
-        "type": "int",
-        "metadata": {
-          "description": "Number of elements to take"
-        }
-      }
+```json
+"parameters": {
+  "first": {
+    "type": "array",
+    "metadata": {
+      "description": "Values to use for taking"
     },
-    "resources": [
-    ],
-    "outputs": {
-      "return": {
-        "type": "array",
-        "value": "[take(parameters('first'),parameters('second'))]"
-      }
+    "defaultValue": [ "one", "two", "three" ]
+  },
+  "second": {
+    "type": "int",
+    "metadata": {
+      "description": "Number of elements to take"
     }
+  }
+},
+"resources": [
+],
+"outputs": {
+  "return": {
+    "type": "array",
+    "value": "[take(parameters('first'),parameters('second'))]"
+  }
+}
+```
 
 ## <a name="deployment-value-functions"></a>部署值函数
 资源管理器提供以下函数，用于从与部署相关的模板和值部分获取值：
@@ -848,51 +912,57 @@ ms.lasthandoff: 02/16/2017
 
 如果部署对象是以内联形式传递的（例如使用 Azure PowerShell 中的 **-TemplateFile** 参数指向本地文件时），所返回的对象采用以下格式：
 
-    {
-        "name": "",
-        "properties": {
-            "template": {
-                "$schema": "",
-                "contentVersion": "",
-                "parameters": {},
-                "variables": {},
-                "resources": [
-                ],
-                "outputs": {}
-            },
+```json
+{
+    "name": "",
+    "properties": {
+        "template": {
+            "$schema": "",
+            "contentVersion": "",
             "parameters": {},
-            "mode": "",
-            "provisioningState": ""
-        }
+            "variables": {},
+            "resources": [
+            ],
+            "outputs": {}
+        },
+        "parameters": {},
+        "mode": "",
+        "provisioningState": ""
     }
+}
+```
 
 如果对象是以链接形式传递的（例如使用 **-TemplateUri** 参数指向远程对象时），所返回的对象采用以下格式： 
 
-    {
-        "name": "",
-        "properties": {
-            "templateLink": {
-                "uri": ""
-            },
-            "template": {
-                "$schema": "",
-                "contentVersion": "",
-                "parameters": {},
-                "variables": {},
-                "resources": [],
-                "outputs": {}
-            },
+```json
+{
+    "name": "",
+    "properties": {
+        "templateLink": {
+            "uri": ""
+        },
+        "template": {
+            "$schema": "",
+            "contentVersion": "",
             "parameters": {},
-            "mode": "",
-            "provisioningState": ""
-        }
+            "variables": {},
+            "resources": [],
+            "outputs": {}
+        },
+        "parameters": {},
+        "mode": "",
+        "provisioningState": ""
     }
+}
+```
 
 以下示例演示如何根据父模板的 URI，使用 deployment() 链接到另一个模板。
 
-    "variables": {  
-        "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
-    }  
+```json
+"variables": {  
+    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
+}
+```  
 
 <a id="parameters" />
 
@@ -907,19 +977,21 @@ ms.lasthandoff: 02/16/2017
 
 以下示例演示了 parameters 函数的简化用法。
 
-    "parameters": { 
-      "siteName": {
-          "type": "string"
-      }
-    },
-    "resources": [
-       {
-          "apiVersion": "2014-06-01",
-          "name": "[parameters('siteName')]",
-          "type": "Microsoft.Web/Sites",
-          ...
-       }
-    ]
+```json
+"parameters": { 
+  "siteName": {
+      "type": "string"
+  }
+},
+"resources": [
+   {
+      "apiVersion": "2014-06-01",
+      "name": "[parameters('siteName')]",
+      "type": "Microsoft.Web/Sites",
+      ...
+   }
+]
+```
 
 <a id="variables" />
 
@@ -934,16 +1006,18 @@ ms.lasthandoff: 02/16/2017
 
 以下示例使用变量值。
 
-    "variables": {
-      "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
-    },
-    "resources": [
-      {
-        "type": "Microsoft.Storage/storageAccounts",
-        "name": "[variables('storageName')]",
-        ...
-      }
-    ],
+```json
+"variables": {
+  "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
+},
+"resources": [
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageName')]",
+    ...
+  }
+],
+```
 
 ## <a name="resource-functions"></a>资源函数
 资源管理器提供以下用于获取资源值的函数：
@@ -972,41 +1046,51 @@ ms.lasthandoff: 02/16/2017
 | resourceName 或 resourceIdentifier |是 |String |资源的唯一标识符。 |
 | apiVersion |是 |String |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
 
-以 **list** 开头的任何操作都可用作模板中的函数。 可用操作不仅包括 **listKeys**，也包括 **list**、**listAdminKeys** 和 **listStatus** 等操作。 若要确定哪些资源类型具有列表操作，请使用以下 PowerShell 命令：
+以 **list** 开头的任何操作都可用作模板中的函数。 可用操作不仅包括 **listKeys**，也包括 **list**、**listAdminKeys** 和 **listStatus** 等操作。 若要确定存在列表操作的资源类型，请参阅资源提供程序的 [REST API 操作](/rest/api/)。
 
-    Get-AzureRmProviderOperation -OperationSearchString *  | where {$_.Operation -like "*list*"} | FT Operation
+若要查找资源提供程序的列表操作，请使用以下 PowerShell cmdlet：
 
-或者，使用 Azure CLI 来检索列表。 以下示例将检索 **apiapps** 的所有操作，并使用 JSON 实用工具 [jq](http://stedolan.github.io/jq/download/) 来只筛选出 list 操作。
+```powershell
+Get-AzureRmProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
+```
 
-    azure provider operations show --operationSearchString */apiapps/* --json | jq ".[] | select (.operation | contains(\"list\"))"
+若要查找资源提供程序的列表操作，请使用以下 Azure CLI 命令和 JSON 实用工具 [jq](http://stedolan.github.io/jq/download/) 来仅筛选列表操作：
+
+```azurecli
+azure provider operations show --operationSearchString */apiapps/* --json | jq ".[] | select (.operation | contains(\"list\"))"
+```
 
 可以使用 [resourceId 函数](#resourceid)或使用格式 **{providerNamespace}/{resourceType}/{resourceName}** 指定 resourceId。
 
 以下示例演示如何从 outputs 节中的存储帐户返回主密钥和辅助密钥。
 
-    "outputs": { 
-      "listKeysOutput": { 
-        "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2016-01-01')]", 
-        "type" : "object" 
-      } 
-    } 
+```json
+"outputs": { 
+  "listKeysOutput": { 
+    "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2016-01-01')]", 
+    "type" : "object" 
+  } 
+}
+``` 
 
 ListKeys 返回的对象采用以下格式：
 
+```json
+{
+  "keys": [
     {
-      "keys": [
-        {
-          "keyName": "key1",
-          "permissions": "Full",
-          "value": "{value}"
-        },
-        {
-          "keyName": "key2",
-          "permissions": "Full",
-          "value": "{value}"
-        }
-      ]
+      "keyName": "key1",
+      "permissions": "Full",
+      "value": "{value}"
+    },
+    {
+      "keyName": "key2",
+      "permissions": "Full",
+      "value": "{value}"
     }
+  ]
+}
+```
 
 <a id="providers" />
 
@@ -1022,20 +1106,24 @@ ListKeys 返回的对象采用以下格式：
 
 将使用以下格式返回支持的每个类型。 不保证数组按顺序排列。
 
-    {
-        "resourceType": "",
-        "locations": [ ],
-        "apiVersions": [ ]
-    }
+```json
+{
+    "resourceType": "",
+    "locations": [ ],
+    "apiVersions": [ ]
+}
+```
 
 以下示例演示了如何使用 provider 函数：
 
-    "outputs": {
-        "exampleOutput": {
-            "value": "[providers('Microsoft.Storage', 'storageAccounts')]",
-            "type" : "object"
-        }
+```json
+"outputs": {
+    "exampleOutput": {
+        "value": "[providers('Microsoft.Storage', 'storageAccounts')]",
+        "type" : "object"
     }
+}
+```
 
 <a id="reference" />
 
@@ -1055,39 +1143,47 @@ ListKeys 返回的对象采用以下格式：
 
 以下示例引用同一模板中部署的存储帐户。
 
-    "outputs": {
-        "NewStorage": {
-            "value": "[reference(parameters('storageAccountName'))]",
-            "type" : "object"
-        }
+```json
+"outputs": {
+    "NewStorage": {
+        "value": "[reference(parameters('storageAccountName'))]",
+        "type" : "object"
     }
+}
+```
 
 以下示例引用未部署在此模板中，但是当部署资源时存在于同一资源组内的存储帐户。
 
-    "outputs": {
-        "ExistingStorage": {
-            "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01')]",
-            "type" : "object"
-        }
+```json
+"outputs": {
+    "ExistingStorage": {
+        "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01')]",
+        "type" : "object"
     }
+}
+```
 
 可以从返回的对象（例如 Blob 终结点 URI）检索特定的值，如以下示例所示：
 
-    "outputs": {
-        "BlobUri": {
-            "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
-            "type" : "string"
-        }
+```json
+"outputs": {
+    "BlobUri": {
+        "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+        "type" : "string"
     }
+}
+```
 
 以下示例引用不同资源组中的存储帐户。
 
-    "outputs": {
-        "BlobUri": {
-            "value": "[reference(resourceId(parameters('relatedGroup'), 'Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
-            "type" : "string"
-        }
+```json
+"outputs": {
+    "BlobUri": {
+        "value": "[reference(resourceId(parameters('relatedGroup'), 'Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+        "type" : "string"
     }
+}
+```
 
 从 **reference** 函数中返回的对象上的属性因资源类型而异。 若要查看资源类型的属性名称和值，请创建一个简单模板，该模板返回 **outputs** 部分中的对象。 如果有现有的该类型的资源，则模板只返回对象而不部署任何新资源。 如果没有现有的该类型的资源，则模板只部署该类型并返回对象。 然后，将这些属性添加到需要在部署期间动态检索值的其他模板。 
 
@@ -1100,28 +1196,32 @@ ListKeys 返回的对象采用以下格式：
 
 返回的对象采用以下格式：
 
-    {
-      "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
-      "name": "{resourceGroupName}",
-      "location": "{resourceGroupLocation}",
-      "tags": {
-      },
-      "properties": {
-        "provisioningState": "{status}"
-      }
-    }
+```json
+{
+  "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
+  "name": "{resourceGroupName}",
+  "location": "{resourceGroupLocation}",
+  "tags": {
+  },
+  "properties": {
+    "provisioningState": "{status}"
+  }
+}
+```
 
 以下示例使用资源组位置来分配网站的位置。
 
-    "resources": [
-       {
-          "apiVersion": "2014-06-01",
-          "type": "Microsoft.Web/sites",
-          "name": "[parameters('siteName')]",
-          "location": "[resourceGroup().location]",
-          ...
-       }
-    ]
+```json
+"resources": [
+   {
+      "apiVersion": "2014-06-01",
+      "type": "Microsoft.Web/sites",
+      "name": "[parameters('siteName')]",
+      "location": "[resourceGroup().location]",
+      ...
+   }
+]
+```
 
 <a id="resourceid" />
 
@@ -1144,51 +1244,55 @@ ListKeys 返回的对象采用以下格式：
 
 以下示例演示了如何检索网站和数据库的资源 ID。 网站在名为 **myWebsitesGroup** 的资源组中，数据库在此模板的当前资源组中。
 
-    [resourceId('myWebsitesGroup', 'Microsoft.Web/sites', parameters('siteName'))]
-    [resourceId('Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]
+```json
+[resourceId('myWebsitesGroup', 'Microsoft.Web/sites', parameters('siteName'))]
+[resourceId('Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]
+```
 
 通常，在替代资源组中使用存储帐户或虚拟网络时，需要使用此函数。 存储帐户或虚拟网络可能用于多个资源组中；因此，你不想要在删除单个资源组时删除它们。 以下示例演示了如何轻松使用外部资源组中的资源：
 
-    {
-      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-          "virtualNetworkName": {
-              "type": "string"
-          },
-          "virtualNetworkResourceGroup": {
-              "type": "string"
-          },
-          "subnet1Name": {
-              "type": "string"
-          },
-          "nicName": {
-              "type": "string"
-          }
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "virtualNetworkName": {
+          "type": "string"
       },
-      "variables": {
-          "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-          "subnet1Ref": "[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]"
+      "virtualNetworkResourceGroup": {
+          "type": "string"
       },
-      "resources": [
-      {
-          "apiVersion": "2015-05-01-preview",
-          "type": "Microsoft.Network/networkInterfaces",
-          "name": "[parameters('nicName')]",
-          "location": "[parameters('location')]",
-          "properties": {
-              "ipConfigurations": [{
-                  "name": "ipconfig1",
-                  "properties": {
-                      "privateIPAllocationMethod": "Dynamic",
-                      "subnet": {
-                          "id": "[variables('subnet1Ref')]"
-                      }
+      "subnet1Name": {
+          "type": "string"
+      },
+      "nicName": {
+          "type": "string"
+      }
+  },
+  "variables": {
+      "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+      "subnet1Ref": "[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]"
+  },
+  "resources": [
+  {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[parameters('nicName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+          "ipConfigurations": [{
+              "name": "ipconfig1",
+              "properties": {
+                  "privateIPAllocationMethod": "Dynamic",
+                  "subnet": {
+                      "id": "[variables('subnet1Ref')]"
                   }
-              }]
-           }
-      }]
-    }
+              }
+          }]
+       }
+  }]
+}
+```
 
 <a id="subscription" />
 
@@ -1197,21 +1301,24 @@ ListKeys 返回的对象采用以下格式：
 
 使用以下格式返回有关订阅的详细信息：
 
-    {
-        "id": "/subscriptions/#####",
-        "subscriptionId": "#####",
-        "tenantId": "#####"
-    }
+```json
+{
+    "id": "/subscriptions/#####",
+    "subscriptionId": "#####",
+    "tenantId": "#####"
+}
+```
 
 以下示例显示了在 outputs 节中调用的 subscription 函数。 
 
-    "outputs": { 
-      "exampleOutput": { 
-          "value": "[subscription()]", 
-          "type" : "object" 
-      } 
-    } 
-
+```json
+"outputs": { 
+  "exampleOutput": { 
+      "value": "[subscription()]", 
+      "type" : "object" 
+  } 
+} 
+```
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）

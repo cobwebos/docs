@@ -13,28 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/22/2016
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: c1a1c7d2fd56e20d30cf0468de2d7d6c2935ef3e
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 1390a0caf4e9cfe2af8bd6171a4d07f58da4bc43
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-classic"></a>在 Azure VM 中配置 AlwaysOn 可用性组（经典）
 > [!div class="op_single_selector"]
-> * [Resource Manager：模板](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-> * [Resource Manager：手动](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 > * [经典：UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 > * [经典：PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
-> 
-> 
-
 <br/>
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Microsoft 建议大多数新部署使用资源管理器模型。 Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 
+
+若要使用 Azure Resource Manager 模型完成此任务，请参阅 [Azure 虚拟机上的 SQL Server AlwaysOn 可用性组](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)。
 
 本端到端教程介绍如何使用 Azure 虚拟机上运行的 SQL Server AlwaysOn 实施可用性组。
 
@@ -43,14 +40,14 @@ ms.lasthandoff: 03/07/2017
 * 一个包含多个子网（包括前端子网和后端子网）的虚拟网络
 * 包含 Active Directory (AD) 域的域控制器
 * 部署到后端子网并加入 AD 域的两个 SQL Server VM
-* 具有节点多数仲裁模型的 3 节点 WSFC 群集
+* 具有节点多数仲裁模型的三节点故障转移群集
 * 具有可用性数据库的两个同步提交副本的可用性组
 
 下图显示了该解决方案的示意图。
 
 ![zure 中可用性组的测试实验体系结构](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC791912.png)
 
-请注意，这是一个可能的配置。 例如，你可最大程度减少 2 副本可用性组的 VM 数目，以便通过将域控制器作为 2 节点 WSFC 群集中的仲裁文件共享见证服务器来节省 Azure 中的计算时间。 通过此方法，上述配置中的 VM 数目可以减少一个。
+请注意，这是一个可能的配置。 例如，可最大程度减少双副本可用性组的虚拟机数目，通过将域控制器作为双节点故障转移群集中的仲裁文件共享见证服务器来节省 Azure 中的计算时间。 通过此方法，上述配置中的 VM 数目可以减少一个。
 
 本教程的假设条件如下：
 
@@ -151,7 +148,7 @@ ms.lasthandoff: 03/07/2017
    | **其他密码选项** |选定 |
    | **密码永不过期** |已选中 |
 5. 单击“确定”创建 **Install** 用户。 此帐户将用于配置故障转移群集和可用性组。
-6. 使用相同的步骤创建另外两个用户：**CORP\SQLSvc1** 和 **CORP\SQLSvc2**。 这些帐户将用于 SQL Server 实例。接下来，需要为 **CORP\Install** 分配所需权限以便配置 Windows Server 故障转移群集 (WSFC)。
+6. 使用相同的步骤创建另外两个用户：**CORP\SQLSvc1** 和 **CORP\SQLSvc2**。 这些帐户将用于 SQL Server 实例。接下来，需要为 **CORP\Install** 分配所需权限以配置 Windows 故障转移群集。
 7. 在“Active Directory 管理中心”的左窗格中，选择“corp (本地)”。 然后，在右侧的“任务”窗格中，单击“属性”。
    
     ![CORP 用户属性](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784627.png)
@@ -166,7 +163,7 @@ ms.lasthandoff: 03/07/2017
 现在你已完成 Active Directory 和用户对象的配置，接下来，你将创建三个 SQL Server VM 并将其加入到此域中。
 
 ## <a name="create-the-sql-server-vms"></a>创建 SQL Server VM
-接下来，创建三个 VM，包括 WSFC 群集节点和两个 SQL Server VM。 若要创建每个 VM，请返回到 Azure 经典门户，然后依次单击“新建”、“计算”、“虚拟机”和“从库中”。 然后，使用下表中的模板来帮助创建 VM。
+接下来，创建三个 VM，包括一个群集节点和两个 SQL Server VM。 若要创建每个 VM，请返回到 Azure 经典门户，然后依次单击“新建”、“计算”、“虚拟机”和“从库中”。 然后，使用下表中的模板来帮助创建 VM。
 
 | Page | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
@@ -231,15 +228,15 @@ ms.lasthandoff: 03/07/2017
 
 这些 SQL Server VM 现在已预配并正在运行，但它们是使用默认选项与 SQL Server 一同安装的。
 
-## <a name="create-the-wsfc-cluster"></a>创建 WSFC 群集
-在本部分中，你将创建托管要在以后创建的可用性组的 WSFC 群集。 至此，你应该已针对将在 WSFC 群集中使用的三个 VM 中的每个 VM 完成了以下操作：
+## <a name="create-the-failover-cluster"></a>创建故障转移群集
+在本部分中，将创建用于托管稍后要创建的可用性组的故障转移群集。 至此，应已针对要在故障转移群集中使用的全部三个 VM 分别完成以下操作：
 
 * 在 Azure 中进行了完全预配
 * 已将 VM 加入到域中
 * 已将 **CORP\Install** 添加到本地管理员组
 * 添加了故障转移群集功能
 
-必须在每个 VM 上执行所有这些操作，才能将该 VM 加入到 WSFC 群集中。
+必须在每个 VM 上执行所有上述操作，才能将相应 VM 加入到故障转移群集中。
 
 另请注意，Azure 虚拟网络的行为与本地网络不同。 你需要按以下顺序来创建群集：
 
@@ -342,7 +339,7 @@ ms.lasthandoff: 03/07/2017
 ### <a name="create-the-mydb1-database-on-contososql1"></a>在 ContosoSQL1 上创建 MyDB1 数据库：
 1. 如果尚未从 **ContosoSQL1** 和 **ContosoSQL2** 的远程桌面会话注销，请立即注销。
 2. 启动 **ContosoSQL1** 的 RDP 文件，然后以 **CORP\Install** 身份登录。
-3. 在“文件资源管理器”中的 **C:\** 之下，创建名为 **backup** 的目录。 你将使用此目录来备份并还原数据库。
+3. 在“文件资源管理器”中的 **C:\** 之下，创建名为**backup** 的目录。 你将使用此目录来备份并还原数据库。
 4. 右键单击新目录，指向“共享”，然后单击“特定用户”，如下所示。
    
     ![创建备份文件夹](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665521.gif)
@@ -408,7 +405,7 @@ ms.lasthandoff: 03/07/2017
      ![故障转移群集管理器中的可用性组](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665534.gif)
 
 > [!WARNING]
-> 请勿尝试从故障转移群集管理器对可用性组进行故障转移。 所有故障转移操作都应在 SSMS 中的 **AlwaysOn 仪表板**内执行。 有关详细信息，请参阅[将 WSFC 故障转移群集管理器用于可用性组的限制](https://msdn.microsoft.com/library/ff929171.aspx)。
+> 请勿尝试从故障转移群集管理器对可用性组进行故障转移。 所有故障转移操作都应在 SSMS 中的 **AlwaysOn 仪表板**内执行。 有关详细信息，请参阅[将故障转移群集管理器用于可用性组的限制](https://msdn.microsoft.com/library/ff929171.aspx)。
 > 
 > 
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: e2e1c68b83e9b9ec5a3865e89a98b80cf59cdfad
-ms.openlocfilehash: 038b862a355310d264dacb4c619fb6558a0edffc
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: b028a75836f7c762431bfb9e3fc30822b7dee885
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -54,9 +54,10 @@ ms.lasthandoff: 02/17/2017
 5. 根据提示创建一个新的 **Web 应用程序和/或 Web API**。
   * **名称**向用户描述应用程序。 输入**待办事项列表服务**。
   * **重定向 URI** 是 Azure AD 用来返回应用程序请求的任何令牌的方案与字符串组合。 为此值输入 `https://localhost:44321/`。
-  * 在 **AppID URI** 中，输入租户特定的标识符。 例如，输入 `https://contoso.onmicrosoft.com/TodoListService`。
-  
-6. 保存配置。 让门户保持打开状态，因为稍后你还需要注册客户端应用程序。
+
+6. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 输入租户特定的标识符。 例如，输入 `https://contoso.onmicrosoft.com/TodoListService`。
+
+7. 保存配置。 让门户保持打开状态，因为稍后你还需要注册客户端应用程序。
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>步骤 2：将应用设置为使用 OWIN 身份验证管道
 若要验证传入的请求和令牌，需要将应用程序设置为与 Azure AD 通信。

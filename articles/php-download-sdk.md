@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7bd6eddcdb20e3ea49cd29d46bb4f98d73ee9cc8
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: fd3d28b133ef8e646f5c2f1c1127f654daa61b95
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -68,7 +69,7 @@ Azure PowerShell 是一组用于部署和管理 Azure 服务（例如，云服�
 有关如何使用 Azure PowerShell 的信息，请参阅[如何使用 Azure PowerShell][powershell-tools]。
 
 ## <a name="azure-cli"></a>Azure CLI
-Azure CLI 是一组用于部署和管理 Azure 服务（例如 Azure 网站和 Azure 虚拟机）的命令。 有关安装 Azure CLI 的信息，请参阅[安装 Azure CLI](xplat-cli-install.md)。
+Azure CLI 是一组用于部署和管理 Azure 服务（例如 Azure 网站和 Azure 虚拟机）的命令。 有关安装 Azure CLI 的信息，请参阅[安装 Azure CLI](cli-install-nodejs.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [PHP 开发人员中心](/develop/php/)。
@@ -87,9 +88,4 @@ Azure CLI 是一组用于部署和管理 Azure 服务（例如 Azure 网站和 A
 [powershell-tools]: http://go.microsoft.com/fwlink/?LinkId=252718
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

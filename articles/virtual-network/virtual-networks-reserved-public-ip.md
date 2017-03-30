@@ -1,5 +1,5 @@
 ---
-title: "使用 PowerShell 管理保留 IP 地址（经典）| Microsoft 文档"
+title: "使用 PowerShell 管理 Azure 保留 IP 地址（经典）| Microsoft Docs"
 description: "了解保留 IP 地址（经典），以及如何使用 PowerShell 管理这些 IP 地址。"
 services: virtual-network
 documentationcenter: na
@@ -15,19 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: c934f78e514230958fad8b2aa9be4d2e56a3a835
-ms.openlocfilehash: 55071ffe1bcc17b2181b4c52f51d28571a2f0eff
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 276b1bcebbe3c32d6fead8ee240dd1ddfb01c872
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="reserved-ip-addresses-classic"></a>保留 IP 地址（经典）
 
 > [!div class="op_single_selector"]
-- [Azure 门户](virtual-network-deploy-static-pip-arm-portal.md)
-- [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-- [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
-- [模板](virtual-network-deploy-static-pip-arm-template.md)
-- [PowerShell（经典）](virtual-networks-reserved-public-ip.md)
+> * [Azure 门户](virtual-network-deploy-static-pip-arm-portal.md)
+> * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
+> * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
+> * [模板](virtual-network-deploy-static-pip-arm-template.md)
+> * [PowerShell（经典）](virtual-networks-reserved-public-ip.md)
 
 Azure 中的 IP 地址分为两类：动态 IP 地址和保留 IP 地址。 由 Azure 管理的公共 IP 地址默认为动态 IP 地址。 这意味着，用于给定云服务的 IP 地址 (VIP) 或用于直接访问 VM 或角色实例的 IP 地址 (ILPIP) 可能会在关闭资源或释放资源的情况下不时进行更改。
 
@@ -164,10 +165,5 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
 * 了解 [IP 寻址](virtual-network-ip-addresses-overview-classic.md)在经典部署模型中的工作原理。
 * 了解[保留专用 IP 地址](virtual-networks-reserved-private-ip.md)。
 * 了解[实例层级公共 IP (ILPIP) 地址](virtual-networks-instance-level-public-ip.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
