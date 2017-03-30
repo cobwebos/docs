@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2017
+ms.date: 03/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: b9605eb10f87f107dffd9f631d043bf550cf030b
-ms.openlocfilehash: 5e293d7d3fa6b0a763663a5428878944660fc03e
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 6dea1af021599eb530a4feb3257238e088191d5f
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -45,9 +46,9 @@ ms.openlocfilehash: 5e293d7d3fa6b0a763663a5428878944660fc03e
 | Office 365 SharePoint Online |Windows 8.1、Windows 7 |Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)） |
 | Office 365 SharePoint Online |iOS、Android |Office 移动应用 |
 | Office 365 SharePoint Online |Mac OS X |仅限多重身份验证和位置的 Office 2016 应用；计划将来提供的基于设备的策略支持 |
-| Office 365 Yammer |Windows 10、iOS 和 Android |Office Yammer 应用 |
+| Office 365 Yammer |Windows 10、iOS；计划将来提供 Android 支持 |Office Yammer 应用 |
 | Dynamics CRM |Windows 10、Windows 8.1、Windows 7、iOS 和 Android |Dynamics CRM 应用 |
-| PowerBI 服务 |Windows 10、Windows 8.1、Windows 7、iOS 和 Android |PowerBI 应用 |
+| PowerBI 服务 |Windows 10、Windows 8.1、Windows 7 和 iOS|PowerBI 应用（不支持 Andoird 应用） |
 | Azure 远程应用服务 |Windows 10、Windows 8.1、Windows 7、iOS、Android 和 Mac OS X |Azure 远程应用 |
 | 任何“我的应用”应用服务 |Android 和 iOS |任何“我的应用”应用服务 |
 
@@ -108,9 +109,4 @@ Exchange 提供两种主要类型的协议。 查看以下选项，然后选择�
     c1:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork", Value == "false"] &&
     c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

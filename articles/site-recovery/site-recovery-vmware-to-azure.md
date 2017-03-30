@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 03/12/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: d811cdabe35f28ab8f2496b08c959107c10ef1be
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: c2e21eefff3ce501ee5fc4003f60df25c4d7665d
+ms.lasthandoff: 03/22/2017
 
 
 ---
-# <a name="replicate-vmware-virtual-machines-to-azure-with--site-recovery"></a>通过 Site Recovery 将 VMware 虚拟机复制到 Azure
+# <a name="replicate-vmware-virtual-machines-to-azure-with-site-recovery"></a>通过 Site Recovery 将 VMware 虚拟机复制到 Azure
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](site-recovery-vmware-to-azure.md)
@@ -129,7 +129,7 @@ ms.lasthandoff: 03/14/2017
     ![设置源](./media/site-recovery-vmware-to-azure/set-source1.png)
 3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中。
 4. 下载站点恢复统一安装程序安装文件。
-5. 下载保管库注册密钥。 运行统一安装程序时需要用到此密钥。 生成的密钥有效期为&5; 天。
+5. 下载保管库注册密钥。 运行统一安装程序时需要用到此密钥。 生成的密钥有效期为 5 天。
 
    ![设置源](./media/site-recovery-vmware-to-azure/set-source2.png)
 

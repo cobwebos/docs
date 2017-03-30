@@ -1,33 +1,34 @@
 ---
-title: "在 Application Insights 中设置警报 | Microsoft 文档"
+title: "在 Azure Application Insights 中设置警报 | Microsoft Docs"
 description: "响应速度变慢、发生异常以及 Web 应用中出现其他性能或用法变化时接收通知。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 2146030449c691af166d6a9b134d22d4504d7641
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 04965375fc94fc1aa8b1c48deb743bb1d0cf1c26
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="set-alerts-in-application-insights"></a>在 Application Insights 中设置警报
-当 Web 应用中的性能或用法指标发生变化时，[Azure Application Insights][启动] 可发出警报。 
+当 Web 应用中的性能或用法指标发生变化时，[Azure Application Insights][start] 可发出警报。 
 
-Application Insights 在[各种平台][平台]上监视实时应用，帮助诊断性能问题以及了解使用模式。
+Application Insights 在[各种平台][platforms]上监视实时应用，帮助诊断性能问题和了解使用模式。
 
 有三种类型的警报：
 
-* **指标警报**：任一指标（例如响应时间、异常计数、CPU 使用率或页面视图）超过某个阈值有一些时间时，此类警报会发出通知。 
-* [**Web 测试**][可用性]：当站点在 Internet 上不可用或响应缓慢时，此类警报会发出通知。 [了解详细信息][可用性]。
+* **指标警报**：某一指标（例如响应时间、异常计数、CPU 使用率或页面视图）超过某个阈值有一些时间时，此类警报会发出通知。 
+* [**Web 测试**][availability]：当站点在 Internet 上不可用或响应缓慢时，它会向用户发送通知。 [了解详细信息][availability]。
 * [**主动诊断**](app-insights-proactive-diagnostics.md)：由系统自动配置，通知出现了异常的性能模式。
 
 本文重点介绍指标警报。
@@ -47,7 +48,7 @@ Application Insights 在[各种平台][平台]上监视实时应用，帮助诊�
 
 *我看不到“添加警报”按钮。* 
 
-* 使用的是组织帐户？ 如果对此应用程序资源拥有所有者或参与者访问权限，则可以设置警报。 请查看“访问控制”边栏选项卡。 [了解访问控制][角色]。
+* 使用的是组织帐户？ 如果对此应用程序资源拥有所有者或参与者访问权限，则可以设置警报。 请查看“访问控制”边栏选项卡。 [了解访问控制][roles]。
 
 > [!NOTE]
 > 在“警报”边栏选项卡中，可以看到已设置了一个警报：“主动诊断”。[](app-insights-proactive-failure-diagnostics.md) 这是一个自动警报，可监视一个特定的指标：请求失败率。 除非决定禁用主动警报，否则无需针对请求失败率设置自己的警报。 
@@ -84,7 +85,7 @@ Application Insights 在[各种平台][平台]上监视实时应用，帮助诊�
 
 常用的警报包括：
 
-* [浏览器指标][客户端]（尤其是浏览器**页面加载时间**）非常适合用于 Web 应用程序。 如果页面包含大量脚本，应该留意**浏览器异常**。 若要获取这些指标和警报，必须设置[网页监视][客户端]。
+* [浏览器指标][client]（尤其是浏览器**页面加载时间**）非常适合用于 web 应用程序。 如果页面包含大量脚本，应该留意**浏览器异常**。 若要获取这些指标和警报，必须设置[网页监视][client]。
 * **服务器响应时间**适合用于 Web 应用程序的服务器端。 还可以设置警报来注意此指标，确定高请求率是否不按比例变化：这可能表示应用资源不足。 
 * **服务器异常** - 若要查看这些异常，必须执行一些[附加设置](app-insights-asp-net-exceptions.md)。
 
@@ -94,6 +95,10 @@ Application Insights 在[各种平台][平台]上监视实时应用，帮助诊�
 * [使用 PowerShell 自动设置警报](app-insights-powershell-alerts.md)
 * [使用 Webhook 自动响应警报](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
 
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
 ## <a name="see-also"></a>另请参阅
 * [可用性 Web 测试](app-insights-monitor-web-app-availability.md)
 * [自动设置警报](app-insights-powershell-alerts.md)
@@ -101,15 +106,10 @@ Application Insights 在[各种平台][平台]上监视实时应用，帮助诊�
 
 <!--Link references-->
 
-[可用性]: app-insights-monitor-web-app-availability.md
-[客户端]: app-insights-javascript.md
-[平台]: app-insights-platforms.md
-[角色]: app-insights-resources-roles-access-control.md
-[启动]: app-insights-overview.md
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+[availability]: app-insights-monitor-web-app-availability.md
+[client]: app-insights-javascript.md
+[platforms]: app-insights-platforms.md
+[roles]: app-insights-resources-roles-access-control.md
+[start]: app-insights-overview.md
 
 

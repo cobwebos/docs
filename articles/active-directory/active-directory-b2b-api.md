@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 235b551a716b68c40cc4fe346cc5903d47e6ea74
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 6f487e2e8f368240339ef5e0015c85591522e49a
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -62,7 +63,7 @@ ms.openlocfilehash: 235b551a716b68c40cc4fe346cc5903d47e6ea74
     "sendInvitationMessage": false
     ```
 
-  在这种情况下，你将通过嵌入电子邮件模板的 API、即时消息或所选择的其他分发方法收到兑换 URL。
+  在这种情况下，将通过可嵌入电子邮件模板的 API、即时消息或所选择的其他分发方法收到兑换 URL。
 
 6. 最后，如果你是管理员，可以选择以成员身份邀请用户。
 
@@ -75,28 +76,29 @@ ms.openlocfilehash: 235b551a716b68c40cc4fe346cc5903d47e6ea74
 可以在以下授权模式下运行 API：
 
 ### <a name="app--user-mode"></a>“应用 + 用户”模式
-在此模式下，使用 API 的用户需要有权创建 B2B 邀请。
+在此模式下，任何使用 API 的用户都需要有创建 B2B 邀请的权限。
 
 ### <a name="app-only-mode"></a>“仅应用”模式
 在仅应用上下文中，应用需要 User.ReadWrite.All 或 Directory.ReadWrite.All 作用域才能使邀请成功。
-有关更多详细信息，请参阅：https://graph.microsoft.io/zh-cn/docs/authorization/permission_scopes
+
+有关详细信息，请参阅：https://graph.microsoft.io/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
-现在可以使用 PowerShell 轻松地将外部用户添加并邀请到组织。 只需使用 cmdlet 创建一个新邀请
+现在可以使用 PowerShell 轻松地将外部用户添加并邀请到组织。 使用 cmdlet 创建邀请：
 
 ```
 New-AzureADMSInvitation
 ```
 
-cmdlet 可以包含以下选项
+可以使用以下选项：
 
 * -InvitedUserDisplayName
 * -InvitedUserEmailAddress
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
-其说明可参照邀请 API 参考（在 [https://graph.microsoft.io/zh-cn/docs/api-reference/beta/resources/invitation](https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation) 中）
+还可在 [https://graph.microsoft.io/zh-cn/docs/api-reference/beta/resources/invitation](https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation) 中查看邀请 API 参考
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -108,14 +110,9 @@ cmdlet 可以包含以下选项
 * [B2B 协作邀请电子邮件的元素](active-directory-b2b-invitation-email.md)
 * [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)
 * [Azure AD B2B 协作授权](active-directory-b2b-licensing.md)
-* [Azure Active Directory B2B 协作故障排除](active-directory-b2b-troubleshooting.md)
+* [Azure Active Directory B2B 协作疑难解答](active-directory-b2b-troubleshooting.md)
 * [Azure Active Directory B2B 协作常见问题 (FAQ)](active-directory-b2b-faq.md)
 * [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
 * [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

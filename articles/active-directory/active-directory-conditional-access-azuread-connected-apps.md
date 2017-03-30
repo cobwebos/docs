@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 4720d168f5ecd3a5e39cdcad812efb52755fb59a
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -85,10 +86,5 @@ ms.openlocfilehash: 4720d168f5ecd3a5e39cdcad812efb52755fb59a
 ## <a name="related-articles"></a>相关文章
 * [保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](active-directory-conditional-access.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

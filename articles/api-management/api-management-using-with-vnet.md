@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: a74872f308624028016ffb30ead3c056b1fa69ce
-ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 43618268aa0b234d271dcee7f95dfad2f2a1bb2b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -27,8 +28,8 @@ ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
 
 > [!NOTE]
 > Azure API 管理同时支持经典 VNet 和 Azure Resource Manager VNet。
-> 
-> 
+>
+>
 
 ## <a name="enable-vpn"></a>启用 VNET 连接
 > [!NOTE]
@@ -58,20 +59,20 @@ ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
 
 > [!IMPORTANT]
 > 将 Azure API 管理实例部署到 Resource Manager VNET 时，该服务必须位于除了 Azure API 管理实例之外不包含其他资源的专用子网中。 如果尝试将 Azure API 管理实例部署到包含其他资源的 Resource Manager VNET 子网，则部署将失败。
-> 
-> 
+>
+>
 
 ![选择 VPN][api-management-setup-vpn-select]
 
-单击屏幕顶部的“保存”。 
+单击屏幕顶部的“保存”。
 
 > [!NOTE]
 > 每次启用或禁用 VNET 时，API 管理实例的 VIP 地址都会更改。  
 > 当 API 管理从**外部**移动到**内部**时或者反向移动时，VIP 地址也会更改。
-> 
+>
 
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 如果从 VNET 中删除 API 管理或更改在其中部署的 API 管理，则之前使用的 VNET 可最多 4 小时保持锁定状态。 在此期间，无法删除该 VNET 或向其部署新资源。
 
 ## <a name="enable-vnet-powershell"> </a>使用 PowerShell cmdlet 启用 VNET 连接
@@ -93,7 +94,7 @@ ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
 
 > [!IMPORTANT]
 > 如果对 VNET 使用自定义 DNS 服务器，建议在向其部署 API 管理服务**之前**完成该设置。 否则需要重启托管该服务的 CloudService，供其选取新的 DNS 服务器设置。
-> 
+>
 
 * **API 管理所需的端口**：可以使用[网络安全组][Network Security Group]控制其中部署了 API 管理的子网的入站和出站流量。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。 在 VNET 中使用 API 管理时，另一个常见的错误配置问题是阻止了这些端口中的一个或多个。
 
@@ -133,7 +134,7 @@ ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
 
 
 ## <a name="related-content"></a>相关内容
-* [使用 Vpn 网关将虚拟网络连接到后端][Different topologies to connect to Vpn Gateway]
+* [使用 Vpn 网关将虚拟网络连接到后端](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)
 * [通过不同的部署模型连接虚拟网络](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [如何使用 API 检查器跟踪 Azure API 管理中的调用](api-management-howto-api-inspector.md)
 
@@ -148,12 +149,6 @@ ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
 [Connect to a web service behind VPN]: #connect-vpn
 [Related content]: #related-content
 
-[Different topologies to connect to Vpn Gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
 [Network Security Group]: ../virtual-network/virtual-networks-nsg.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 03/20/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 492444304c42a270e638050506e04297c8b17e51
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 43a09fc208bee29c41776df402c5be664bb38e18
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -57,6 +57,11 @@ DocumentDB .NET Core SDK 具有与最新版 [DocumentDB.NET SDK](documentdb-sdk-
 > [!NOTE] 
 > DocumentDB .NET Core SDK 与通用 Windows 平台 (UWP) 应用尚不兼容。 如果不支持 UWP 应用的 .NET Core SDK 感兴趣，请向 [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) 发送电子邮件。
 
+### <a name="a-name112112httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore112"></a><a name="1.1.2"/>[1.1.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.2)
+
+* 修复偶尔导致 WebException 的问题：无法解析远程名称。
+* 通过向 ReadDocumentAsync API 添加新重载，添加了对直接读取类型化文档的支持。
+
 ### <a name="a-name111111httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore111"></a><a name="1.1.1"/>[1.1.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.1)
 
 * 添加了对聚合查询（COUNT、MIN、MAX、SUM 和 AVG）的 LINQ 支持。
@@ -89,6 +94,7 @@ DocumentDB .NET Core 预览版 SDK 与最新版 [DocumentDB.NET SDK](documentdb-
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.1.2](#1.1.2) |2017 年 3 月 20 日 |--- |
 | [1.1.1](#1.1.1) |2017 年 3 月 14 日 |--- |
 | [1.1.0](#1.1.0) |2017 年 2 月 16 日 |--- |
 | [1.0.0](#1.0.0) |2016 年 12 月 21 日 |--- |

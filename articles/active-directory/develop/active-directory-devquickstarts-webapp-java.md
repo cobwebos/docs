@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: ade6b7d9fa195ebea8f8587b01e4cc0ba71a0a83
-ms.openlocfilehash: fa5c367d7b8f46349b4bdc1de2af35050329a650
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a20017a63ebed745e2d101d556e93594325533dc
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/17/2017
 * 下载[应用框架](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip)或下载[已完成的示例](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip)。
 * 还需要一个用于注册应用的 Azure AD 租户。 如果没有 Azure AD 租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
-做好准备后，请遵照以下&9; 个部分中的步骤操作。
+做好准备后，请遵照以下 9 个部分中的步骤操作。
 
 ## <a name="step-1-register-the-new-app-with-azure-ad"></a>步骤 1：向 Azure AD 注册新的应用
 若要设置应用对用户进行身份验证，请先执行以下操作，在租户中注册用户：
@@ -49,8 +49,8 @@ ms.lasthandoff: 02/17/2017
 5. 根据提示创建一个 **Web 应用程序和/或 WebAPI**。
   * “名称”向用户描述应用。
   * “登录 URL”是应用的基 URL。 框架的默认 URL 为 http://localhost:8080/adal4jsample/。
-  * “应用 ID URI”是应用的唯一标识符。 命名约定为 `https://<tenant-domain>/<app-name>`（例如 `http://localhost:8080/adal4jsample/`）。
 6. 完成注册后，Azure AD 将为应用分配唯一的应用程序 ID。 请复制应用页中的值，以便在后续部分中使用。
+7. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 **应用 ID URI** 是应用的唯一标识符。 命名约定为 `https://<tenant-domain>/<app-name>`（例如 `http://localhost:8080/adal4jsample/`）。
 
 进入应用的门户后，请在“设置”页上创建并复制应用的密钥。 稍后需要用到该密钥。
 

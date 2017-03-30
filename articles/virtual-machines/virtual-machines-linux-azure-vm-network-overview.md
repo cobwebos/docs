@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 10/25/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 9cc4fcb68148ef64829fff6135449a3c0efb75d0
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: f5f611ce6944d37e0afcc9a14fa79d0356d55347
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -47,10 +48,10 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 
 * [在 Azure 门户中创建完全限定的域名](virtual-machines-linux-portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="virtual-nics"></a>虚拟 NIC
+## <a name="network-interfaces"></a>网络接口
 网络接口 (NIC) 是虚拟机 (VM) 与基础软件网络之间互相连接的桥梁。 本文解释什么是网络接口，以及在 Azure Resource Manager 部署模型中如何使用它。
 
-* [虚拟网络接口概述](../virtual-network/virtual-network-network-interface-overview.md)
+* [虚拟网络接口](../virtual-network/virtual-network-network-interface.md)
 
 ## <a name="virtual-nics-and-dns-labeling"></a>虚拟 NIC 和 DNS 标签
 如果你有一个需要持久保留的服务器，但该服务器负载过重，经常拆卸和部署，你想要在 NIC 上使用 DNS 标签保留 VNET 上的名称。  使用以下演练，你将使用静态 IP 设置永久命名的 NIC。
@@ -62,14 +63,9 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 
 * [关于 VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-## <a name="internal-load-balancing"></a>内部负载平衡
-Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负载平衡器可以在云服务或负载平衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
+## <a name="internal-load-balancing"></a>内部负载均衡
+Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 * [使用 Azure CLI 创建内部负载均衡器](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

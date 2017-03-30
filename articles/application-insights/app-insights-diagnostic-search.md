@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
-ms.openlocfilehash: 1ef09170f9d5dd28005f70913df2c945f8e4ac12
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 5e3cf1407079a166fbe5e24abae2248ef467ebbb
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -167,15 +167,19 @@ ms.lasthandoff: 02/15/2017
 
 [了解如何向 Application Insights 发送日志和自定义的遥测数据](app-insights-search-diagnostic-logs.md)。
 
-## <a name="a-namequestionsaq--a"></a><a name="questions"></a>问题解答
-### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>保留多少数据？
+## <a name="questions"></a>问题解答
+### <a name="limits"></a>保留多少数据？
 
 请参阅[限制摘要](app-insights-pricing.md#limits-summary)。
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>如何查看服务器请求中的 POST 数据？
 我们不自动记录 POST 数据，但你可以使用 [TrackTrace 或日志调用](app-insights-search-diagnostic-logs.md)。 POST 数据放在消息参数中。 无法像筛选属性一样筛选消息，但消息的大小限制更大。
 
-## <a name="a-nameaddanext-steps"></a><a name="add"></a>后续步骤
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
+## <a name="add"></a>后续步骤
 * [在 Analytics 中编写复杂查询](app-insights-analytics-tour.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](app-insights-search-diagnostic-logs.md)
 * [设置可用性和响应能力测试](app-insights-monitor-web-app-availability.md)

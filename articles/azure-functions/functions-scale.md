@@ -18,9 +18,9 @@ ms.date: 03/14/2017
 ms.author: dariagrigoriu, glenga
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 9b5dabe5e27e68a4a9f140d4f07131caf7306e32
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 4eb138348686e9d7befe4d5433d174374977c2a1
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -38,7 +38,7 @@ Azure Functions 有两个不同的服务计划：消耗量计划和应用服务�
 
 ### <a name="consumption-plan"></a>消耗量计划
 
-在“消耗量计划”中，将 Function App 分配给计算处理实例。 需要时，会动态添加或删除更多实例。 此外，函数并行运行，以最大程度地减少处理请求所需的总时间。 每个函数的执行时间由包含 Function App 汇总。 成本由内存大小和 Function App 中所有函数的总执行时间产生（以 GB-秒进行衡量）。 如果你的计算需求是间歇性的或作业时间往往很短，这会是很好的选择，因为它允许你仅在实际使用计算资源时为其付费。 下一部分详细介绍如何使用消耗量计划。
+在“消耗量计划”中，将 Function App 分配给计算处理实例。 需要时，会动态添加或删除更多实例。 此外，函数并行运行，以最大程度地减少处理请求所需的总时间。 每个函数的执行时间由包含 Function App 汇总。 成本由内存大小和 Function App 中所有函数的总执行时间决定。 如果计算需求不连续或作业执行时间很短，请使用消耗计划。 通过此计划，只需为正在使用的计算资源付费。 下一部分详细介绍如何使用消耗量计划。
 
 ### <a name="app-service-plan"></a>App Service 计划
 
@@ -46,23 +46,23 @@ Azure Functions 有两个不同的服务计划：消耗量计划和应用服务�
 
 ## <a name="how-the-consumption-plan-works"></a>如何使用消耗量计划
 
-消耗量计划会根据 Function App 中函数的运行时需求添加额外的处理实例，自动缩放 CPU 和内存资源。 会为每个 Function App 处理实例分配最多 1.5 GB 的内存资源。
+通过根据 Function App 中函数运行的需求添加额外的处理实例，消耗计划会自动扩展 CPU 和内存资源。 会为每个 Function App 处理实例分配最多 1.5 GB 的内存资源。
 
 基于消耗量计划运行时，如果 Function App 处于空闲状态，则在处理新 Blob 时，可能会出现某天耗时长达 10 分钟的情况。 Function App 运行以后，Blob 处理速度会加快。 若要避免这种初始延迟，可以使用常规的应用服务计划并启用“始终可用”，或者使用其他机制来触发 Blob 处理，例如使用包含 Blob 名称的队列消息。 
 
-创建 Function App 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 Azure Functions 内部使用 Azure 存储以进行操作（如管理触发器和记录函数执行）。 某些存储帐户不支持队列和表，例如仅限 blob 的存储帐户（包括高级存储）和使用 ZRS 复制的常规用途的存储帐户。 创建新的 Function App 时，将从“存储帐户”边栏选项卡对这些帐户进行筛选。
+创建 Function App 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 Azure Functions 内部使用 Azure 存储以进行操作（如管理触发器和记录函数执行）。 某些存储帐户不支持队列和表，例如仅限 blob 的存储帐户（包括高级存储）和使用 ZRS 复制的常规用途存储帐户。 创建 Function App 时，将在“存储帐户”边栏选项卡中筛选这些帐户。
 
-使用消耗托管计划时，Function App 内容（如函数代码文件和绑定配置）存储在主存储帐户的 Azure 文件共享上。 如果删除主存储帐户，将删除此内容，并且无法恢复。
+使用消耗托管计划时，Function App 内容（如函数代码文件和绑定配置）存储在主存储帐户的 Azure 文件共享上。 删除主存储帐户时，此内容将随之删除且无法恢复。
 
 若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介] (.../ storage/storage-introduction.md#introducing-the-azure-storage-services)。
 
 ### <a name="runtime-scaling"></a>运行时缩放
 
-Functions 使用缩放控制器，基于配置的触发器来评估计算需求，并决定何时扩大或缩小。 缩放控制器持续处理内存需求的提示和特定于触发器的数据点。 例如，在使用 Azure 队列存储触发器时，数据点包括队列长度和最早项的排队时间。
+Functions 使用缩放控制器，基于配置的触发器来评估计算需求，并决定何时扩大或缩小。 缩放控制器持续处理内存需求的提示和特定于触发器的数据点。 例如，使用 Azure 队列存储触发器时，数据点包括队列长度和最早项的排队时间。
 
 ![](./media/functions-scale/central-listener.png)
 
-缩放单位是 Function App。 在这种情况下扩大意味着添加 Function App 的更多实例。 相反，当计算需求下降时，将删除 Function App 实例。 实例数最终会降到零，此时没有任何实例运行。 
+缩放单位是 Function App。 在这种情况下扩大意味着添加 Function App 的更多实例。 相反，当计算需求下降时，将删除 Function App 实例。 实例数最终会缩减为零，此时没有任何函数运行。 
 
 ### <a name="billing-model"></a>计费模式
 

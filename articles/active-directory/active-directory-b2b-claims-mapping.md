@@ -13,28 +13,29 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/06/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: d3f68340592d9032999ecb5cc16ac1fedcce4c33
-ms.openlocfilehash: 7fa5fc5e85268c908eb8b8c055837f41b36c4260
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 5f8559450b24effd40a38879aeae3a8dd03944a3
+ms.lasthandoff: 03/17/2017
 
 
 ---
 
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory 中的 B2B 协作用户声明映射
 
-Azure AD 支持自定义 B2B 协作用户的 SAML 令牌中颁发的声明。 当用户向应用程序进行身份验证时，Azure AD 会将一个 SAML 令牌颁发给应用，其中包含用于唯一标识用户的用户相关信息（或声明）。 默认情况下，这些信息包括用户的用户名、电子邮件地址、名字和姓氏。 可以在“属性”选项卡下查看或编辑通过 SAML 令牌发送到应用程序的声明。
+Azure Active Directory (Azure AD) 支持自定义 B2B 协作用户的 SAML 令牌中颁发的声明。 当用户向应用程序进行身份验证时，Azure AD 会将一个 SAML 令牌颁发给应用，其中包含用于唯一标识用户的用户相关信息（或声明）。 默认情况下，这些信息包括用户的用户名、电子邮件地址、名字和姓氏。 可以在“属性”选项卡下查看或编辑通过 SAML 令牌发送到应用程序的声明。
 
 有两个可能的原因使你可能需要编辑 SAML 令牌中颁发的声明。
 
 1. 应用程序已编写为需要一组不同的声明 URI 或声明值
 
-2. 应用程序的部署方式需要 NameIdentifier 声明为存储在 Azure Active Directory 中的用户名（用户主体名称）以外的其他内容。
+2. 应用程序要求 NameIdentifier 声明为存储在 Azure Active Directory 中的用户主体名称以外的其他内容。
 
   ![查看 SAML 令牌中的声明](media/active-directory-b2b-claims-mapping/view-claims-in-saml-token.png)
 
-有关如何添加和编辑这些方案的声明的信息，请参阅有关声明自定义设置的此文章 [Customizing claims issued in the SAML token for pre-integrated apps in Azure Active Directory](develop/active-directory-saml-claims-customization.md)（在 Azure Active Directory 中为预先集成的应用自定义 SAML 令牌中颁发的声明）。 对于 B2B 用户，由于安全原因，将阻止跨租户映射 NameID 和 UPN。
+有关如何添加和编辑声明的信息，请参阅[在 Azure Active Directory 中为预先集成的应用自定义 SAML 令牌中颁发的声明](develop/active-directory-saml-claims-customization.md)一文中声明自定义的相关内容。 对于 B2B 协作用户，由于安全原因，将阻止跨租户映射 NameID 和 UPN。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -44,16 +45,11 @@ Azure AD 支持自定义 B2B 协作用户的 SAML 令牌中颁发的声明。 �
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [B2B 协作用户属性](active-directory-b2b-user-properties.md)
 * [向角色添加 B2B 协作用户](active-directory-b2b-add-guest-to-role.md)
-* [委托 B2bB 协作邀请](active-directory-b2b-delegate-invitations.md)
+* [委派 B2bB 协作邀请](active-directory-b2b-delegate-invitations.md)
 * [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
 * [B2B 协作代码和 PowerShell 示例](active-directory-b2b-code-samples.md)
 * [为 B2B 协作配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
 * [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
 * [B2B 协作用户令牌](active-directory-b2b-user-token.md)
 * [B2B 协作当前限制](active-directory-b2b-current-limitations.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

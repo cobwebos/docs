@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 1330d8be444f596b0d1ed2038eaeb1200e8b9285
-ms.openlocfilehash: 04a34eb24df356018590b1791ecc7719a550ab51
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 9fc7a41dcca3d9e51b8c67b86ef61443945b6bad
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -100,11 +100,15 @@ ms.lasthandoff: 02/23/2017
 > [!NOTE] 
 > 端到端系统应用映射处于预览状态。 需要通过特殊版本的 SDK 检测组件，并需使用特殊 URL 查看应用映射。 [了解如何设置端到端系统应用映射](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-app-map-preview.md)。
 
+## <a name="video"></a>视频
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="feedback"></a>反馈
 请[通过门户反馈选项提供反馈](app-insights-get-dev-support.md)。
 
 ![MapLink-1 图](./media/app-insights-app-map/13.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 

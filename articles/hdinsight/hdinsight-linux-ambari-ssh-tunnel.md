@@ -126,7 +126,7 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
 建立群集后，请通过以下步骤验证是否可以从 Ambari Web 访问服务 Web UI：
 
-1. 在浏览器中，转到 http://headnodehost:8080。 `headnodehost` 地址通过隧道发送到群集，并解析为运行 Ambari 的头节点。 出现提示时，请输入群集的管理员用户名 (admin) 和密码。 Ambari Web UI 可能会再次出现提示。 如果出现，请重新输入信息。
+1. 在浏览器中，转到 http://headnodehost:8080 。 `headnodehost` 地址通过隧道发送到群集，并解析为运行 Ambari 的头节点。 出现提示时，请输入群集的管理员用户名 (admin) 和密码。 Ambari Web UI 可能会再次出现提示。 如果出现，请重新输入信息。
    
    > [!NOTE]
    > 使用 http://headnodehost:8080 地址连接到群集时，将使用 HTTP 通过隧道直接连接到运行 Ambari 的头节点，并使用 SSH 隧道来保护通信安全。 如果在不使用隧道的情况下通过 Internet 进行连接，则使用 HTTPS 来保护通信安全。 若要使用 HTTPS 通过 Internet 进行连接，请使用 https://CLUSTERNAME.azurehdinsight.net，其中 **CLUSTERNAME** 是群集的名称。

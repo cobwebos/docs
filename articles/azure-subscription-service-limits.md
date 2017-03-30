@@ -13,19 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 03/20/2017
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 4e37d976ab7616674ff4b41111bfe7000444ca54
-ms.openlocfilehash: 2ff41f4a93b0cc7f104fe4703f5b031cfb3252e1
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 8b4818ccea1ac5025e93fa0939735b3ed606f47c
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
 
-若要了解有关 Azure 定价的详细信息，请访问 [Azure 定价概述](https://azure.microsoft.com/pricing/)。 在那里，你可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)或访问某服务（例如，[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)）的详情页面预估所需的成本。
+若要了解有关 Azure 定价的详细信息，请访问 [Azure 定价概述](https://azure.microsoft.com/pricing/)。 在那里，你可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)或访问某服务（例如，[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)）的详情页面预估所需的成本。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing/billing-getting-started.md)。
 
 > [!NOTE]
 > 如果想要提高限制或配额，使其超出**默认限制**，可以[打开免费的联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 无法将限制提高到超过下表中显示的**最大限制值**。 如果没有**最大限制**列，则资源没有可调整的限制。 
@@ -184,7 +184,7 @@ DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行
 定价层决定了搜索服务的容量和限制。 层包括：
 
 * 免费层为多租户服务，可与其他 Azure 订阅用户共享，仅用于评估和小型开发项目。
-* 基本层为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多&3; 个副本。
+* 基本层为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
 * 标准层（S1、S2、S3、S3 高密度）适用于较大型生产工作负荷。 标准层内有多个级别，以便可以选择与工作负荷配置文件最匹配的资源配置。
 
 **基于订阅的限制**

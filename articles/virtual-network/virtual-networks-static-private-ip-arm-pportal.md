@@ -17,21 +17,21 @@ ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 251a2977d821b710807e00b2aae71992630feb77
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 672462fad715758e50680fa5bade4b1f9d50e6e5
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>使用 Azure 门户为虚拟机配置专用 IP 地址
 
 > [!div class="op_single_selector"]
-- [Azure 门户](virtual-networks-static-private-ip-arm-pportal.md)
-- [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
-- [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
-- [Azure 门户（经典）](virtual-networks-static-private-ip-classic-pportal.md)
-- [PowerShell（经典）](virtual-networks-static-private-ip-classic-ps.md)
-- [Azure CLI（经典）](virtual-networks-static-private-ip-classic-cli.md)
+> * [Azure 门户](virtual-networks-static-private-ip-arm-pportal.md)
+> * [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
+> * [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
+> * [Azure 门户（经典）](virtual-networks-static-private-ip-classic-pportal.md)
+> * [PowerShell（经典）](virtual-networks-static-private-ip-classic-ps.md)
+> * [Azure CLI（经典）](virtual-networks-static-private-ip-classic-cli.md)
 
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -98,9 +98,9 @@ ms.lasthandoff: 02/28/2017
 > 
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>如何从 VM 中删除静态专用 IP 地址
-若要从上面创建的 VM 中删除静态专用 IP 地址，请按照以下步骤操作。
+若要从上面创建的 VM 中删除静态专用 IP 地址，请完成以下步骤：
 
-1. 从上面所示的“**IP 地址**”边栏选项卡中，单击“**分配**”下面的“**动态**”，然后单击“**保存**”。
+从上面所示的“**IP 地址**”边栏选项卡中，单击“**分配**”下面的“**动态**”，然后单击“**保存**”。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[保留公共 IP](virtual-networks-reserved-public-ip.md) 地址。

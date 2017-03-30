@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/21/2016
+ms.date: 03/14/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 17de66693661e56e9b456581c97a47cfb91cd886
-ms.openlocfilehash: bf08cc7ebb56aaf77c1718545ed4374f47933975
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 2dc56240894666b2fa24baf4902c3097e97d656e
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: bf08cc7ebb56aaf77c1718545ed4374f47933975
 ## <a name="cluster-deployment-options"></a>群集部署选项
 以下是可用于创建 Linux RDMA 群集的方法（使用或不使用作业计划程序）。
 
-* **Azure CLI 脚本**：如本文后面所示，使用 [Azure 命令行接口](../xplat-cli-install.md) (CLI) 为支持 RDMA 的 VM 群集部署编写脚本。 服务管理模式下的 CLI 将在经典部署模型中连续创建群集节点，因此，如果要部署许多计算节点，可能需要几分钟。 使用经典部署模型时，若要启用 RDMA 网络连接，请将 VM 部署在相同的云服务中。
+* **Azure CLI 脚本**：如本文后面所示，使用 [Azure 命令行接口](../cli-install-nodejs.md) (CLI) 为支持 RDMA 的 VM 群集部署编写脚本。 服务管理模式下的 CLI 将在经典部署模型中连续创建群集节点，因此，如果要部署许多计算节点，可能需要几分钟。 使用经典部署模型时，若要启用 RDMA 网络连接，请将 VM 部署在相同的云服务中。
 * **Azure Resource Manager 模板**：也可以使用 Resource Manager 部署模型部署连接到 RDMA 网络且支持 RDMA 的 VM 群集。 可以[创建自己的模板](../resource-group-authoring-templates.md)，或查看 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)，获取 Microsoft 或社区贡献的模板来部署所需的解决方案。 Resource Manager 模板可以提供快速可靠的方式来部署 Linux 群集。 使用 Resource Manager 部署模型时，若要启用 RDMA 网络连接，请将 VM 部署在相同的可用性集中。
 * **HPC Pack**：在 Azure 中创建 Microsoft HPC Pack 群集，然后添加运行受支持 Linux 分发版且支持 RDMA 的计算节点，以便访问 RDMA 网络。 有关详细信息，请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](virtual-machines-linux-classic-hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
 
@@ -38,7 +39,7 @@ ms.openlocfilehash: bf08cc7ebb56aaf77c1718545ed4374f47933975
 下列步骤显示如何使用 Azure CLI 从 Azure 应用商店部署 SUSE Linux Enterprise Server (SLES) 12 SP1 HPC VM、将它自定义，并创建自定义 VM 映像。 然后，可以使用该映像为支持 RDMA 的 VM 群集部署编写脚本。
 
 > [!TIP]
-> 使用类似的步骤，根据 Azure 应用商店中其他受支持 HPC 映像来部署支持 RDMA 的 VM 群集。 如前所述，某些步骤可能稍有不同。 例如，其中只有某些映像包含并配置了 Intel MPI。 此外，如果部署的是 SLES 12 HPC VM 而不是 SLES 12 SP1 HPC VM，则必须更新 RDMA 驱动程序。 有关详细信息，请参阅[关于 A8、A9、A10 和 A11 计算密集型实例](virtual-machines-linux-a8-a9-a10-a11-specs.md#rdma-driver-updates-for-sles-12)。
+> 使用类似的步骤，根据 Azure 应用商店中基于 CentOS 的 HPC 映像来部署支持 RDMA 的 VM 群集。 如前所述，某些步骤稍有不同。 
 >
 >
 
@@ -47,7 +48,7 @@ ms.openlocfilehash: bf08cc7ebb56aaf77c1718545ed4374f47933975
 * **Azure 订阅**：如果没有订阅，只需要花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。 对于较大的群集，请考虑即用即付订阅或其他购买选项。
 * **VM 大小可用性**：以下实例大小支持 RDMA：H16r、H16mr、A8 和 A9。 有关各 Azure 区域推出的产品，请查看 [Products available by region](https://azure.microsoft.com/regions/services/)（按区域提供的产品）。
 * **核心配额**：可能需要提高核心配额才能部署计算密集型 VM 群集。 例如，如果要按本文所示部署 8 个 A9 VM，则至少需要 128 个核心。 订阅可能也会限制可在特定 VM 大小系列（包括 H 系列）中部署的核心数目。 若要请求提高配额，可免费[提出在线客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。
-* **Azure CLI**：[安装](../xplat-cli-install.md) Azure CLI 并从客户端计算机[连接到 Azure 订阅](../xplat-cli-connect.md)。
+* **Azure CLI**：[安装](../cli-install-nodejs.md) Azure CLI 并从客户端计算机[连接到 Azure 订阅](../xplat-cli-connect.md)。
 
 ### <a name="provision-an-sles-12-sp1-hpc-vm"></a>预配 SLES 12 SP1 HPC VM
 使用 Azure CLI 登录到 Azure 后，运行 `azure config list` 确认输出显示服务管理模式。 如果未显示，请通过运行以下命令设置模式：
@@ -74,7 +75,7 @@ ms.openlocfilehash: bf08cc7ebb56aaf77c1718545ed4374f47933975
 其中：
 
 * 大小（本示例中为 A9）是支持 RDMA 的 VM 大小之一。
-* 外部 SSH 端口号（在此示例中为 SSH 默认值&22;）是任何有效的端口号。 内部 SSH 端口号设置为 22。
+* 外部 SSH 端口号（在此示例中为 SSH 默认值 22）是任何有效的端口号。 内部 SSH 端口号设置为 22。
 * 在按位置指定的 Azure 区域中创建新的云服务。 指定支持所选 VM 大小的位置。
 * 如需 SUSE 优先支持（会产生附加费用），SLES 12 SP1 映像名称当前可以是以下两个选项之一： 
 
@@ -122,7 +123,7 @@ ms.openlocfilehash: bf08cc7ebb56aaf77c1718545ed4374f47933975
 
         cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-    在 ~/.ssh 目录中编辑或创建 config 文件。 提供计划在 Azure 中使用的专用网络的 IP 地址范围（本例中为&10;.32.0.0/16）：
+    在 ~/.ssh 目录中编辑或创建 config 文件。 提供计划在 Azure 中使用的专用网络的 IP 地址范围（本例中为 10.32.0.0/16）：
 
         host 10.32.0.*
         StrictHostKeyChecking no
@@ -199,10 +200,10 @@ done
 ```
 
 ## <a name="considerations-for-a-centos-hpc-cluster"></a>CentOS HPC 群集注意事项
-如果想要根据 Azure 应用商店中基于 CentOS 的 HPC 映像之一（而不是 SLES 12 for HPC）来设置群集，请根据上一部分中的常规步骤操作。 预配和配置 VM 时，请注意以下差异：
+如果想要根据 Azure 应用商店中基于 CentOS 的 HPC 映像之一（而不是 SLES 12 for HPC）来设置群集，请根据上一部分中的大致步骤操作。 预配和配置 VM 时，请注意以下差异：
 
-- 已在从基于 CentOS 的 HPC 映像预配的 VM 上安装 Intel MPI。
-- 已在 VM 的 /etc/security/limits.conf 文件中添加锁定内存设置。
+- Intel MPI 已在从基于 CentOS 的 HPC 映像预配的 VM 上安装。
+- 锁定内存设置已在 VM 的 /etc/security/limits.conf 文件中添加。
 - 不要在针对捕获预配的 VM 上生成 SSH 密钥。 而是建议在部署群集后设置基于用户的身份验证。 有关详细信息，请参阅以下部分。  
 
 ### <a name="set-up-passwordless-ssh-trust-on-the-cluster"></a>在群集上设置无密码 SSH 信任
@@ -379,9 +380,4 @@ mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAP
 * 在 Linux 群集上部署和运行 Linux MPI 应用程序。
 * 有关 Intel MPI 的指南，请参阅 [Intel MPI 库文档](https://software.intel.com/en-us/articles/intel-mpi-library-documentation/)。
 * 尝试使用基于 CentOS 的 HPC 映像通过[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos)创建 Intel Lustre 群集。 有关详细信息，请参阅[在 Microsoft Azure 上部署用于 Lustre 的 Intel 云版本](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/)。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

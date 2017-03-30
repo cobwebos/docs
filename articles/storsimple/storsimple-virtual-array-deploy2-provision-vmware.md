@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f0ccf2706b5ce514613712fb866dc2d0120b0ad3
-ms.openlocfilehash: fe420fc0d4e5e2b7c625bf3a3d87005fdbcff200
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
+ms.lasthandoff: 03/16/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple 虚拟阵列 - 在 VMware 中预配
@@ -166,7 +166,7 @@ ms.lasthandoff: 03/01/2017
 30. 在“选择磁盘”页上，选择“创建新的虚拟磁盘”。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. 在“创建磁盘”页上，将“磁盘大小”更改为 500 GB（或 500 GB 以上）。 在“磁盘预配”下，选择“精简预配”。 单击“资源组名称” 的 Azure 数据工厂。
+31. 在“创建磁盘”页上，将“磁盘大小”更改为 500 GB（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 在“磁盘预配”下，选择“精简预配”。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. 在“高级选项”页上，接受默认值。

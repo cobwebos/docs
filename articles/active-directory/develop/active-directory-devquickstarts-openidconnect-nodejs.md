@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 7950cc1df19ddf0a5d12ff8cba8615bb920e58ba
-ms.openlocfilehash: 37666c8c2e1214f8754375efab1f8e6020dbb2e8
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 27f9c5a18b85c0cc2f918ccefeb063f58cc967c6
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -56,9 +57,8 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
 
   * “登录 URL”是应用的基本 URL。  框架的默认值是 `http://localhost:3000/auth/openid/return``。
 
-  * “应用程序 ID URI”是应用程序的唯一标识符。 约定使用的格式是 `https://<tenant-domain>/<app-name>`，例如：`https://contoso.onmicrosoft.com/my-first-aad-app`。
-
 6. 注册后，Azure AD 会为应用分配唯一的应用程序 ID。 在后续部分中需用到此值，因此，请从应用程序页复制此值。
+7. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 “应用程序 ID URI”是应用程序的唯一标识符。 约定使用的格式是 `https://<tenant-domain>/<app-name>`，例如：`https://contoso.onmicrosoft.com/my-first-aad-app`。
 
 ## <a name="step-2-add-prerequisites-to-your-directory"></a>步骤 2：向目录添加先决条件
 1. 在命令行中，将目录更改为根文件夹（如果尚未这样做），然后运行以下命令：
@@ -417,9 +417,4 @@ Your app is now properly configured to communicate with the endpoint by using th
 [使用 Azure AD 保护 Web API](active-directory-devquickstarts-webapi-nodejs.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

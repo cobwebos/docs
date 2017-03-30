@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: ffa31e7eee7642c29a846658b999828434347316
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7e8aed4f56471bb2946c610ca63b0ec50ee1b57e
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -81,13 +81,35 @@ Data Lake 工具安装程序创建要用作默认数据根文件夹的 C:\LocalR
 
     ![用于 Visual Studio 的 Data Lake 工具本地运行提交作业](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-submit-job.png)
 
+### <a name="debug-scripts-and-c-assemblies-locally"></a>在本地调试脚本和 C# 程序集
+
+无需将 C# 程序集提交并注册到 Azure Data Lake Analytics 服务即可对其进行调试。 可以在两个代码隐藏文件和引用的 C# 项目中设置断点。
+
+#### <a name="to-debug-local-code-in-code-behind-file"></a>在代码隐藏文件中调试本地代码
+
+1. 在代码隐藏文件中设置断点。
+2. 按 F5 在本地调试脚本。
+
+> [!NOTE]
+   > 以下过程仅适用于 Visual Studio 2015。 在旧版 Visual Studio 中，可能需要手动添加 pdb 文件。  
+   >
+   >
+
+#### <a name="to-debug-local-code-in-a-referenced-c-project"></a>在引用的 C# 项目中调试本地代码
+
+1. 创建 C# 程序集项目，生成该项目以生成输出 dll。
+2. 使用 U-SQL 语句注册该 dll：
+
+        CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+        
+3. 在 C# 代码中设置断点。
+4. 按 F5，在本地调试引用 C# dll 的脚本。
+
 ## <a name="use-local-run-from-the-data-lake-u-sql-sdk"></a>从 Data Lake U-SQL SDK 使用本地运行
 
 除使用 Visual Studio 本地运行 U-SQL 脚本外，还可使用 Azure Data Lake U-SQL SDK 通过命令行及编程接口本地运行 U-SQL 脚本。 使用这些方法还可以缩放 U-SQL 本地测试。
 
 深入了解 [Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md)。
-
-
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,7 +1,7 @@
 ---
 
 title: "Azure Active Directory 管理员如何添加 B2B 协作用户？ | Microsoft 文档"
-description: "Azure Active Directory B2B 协作允许管理员将合作伙伴组织的用户添加到 Azure AD，以便其访问你的公司应用程序"
+description: "管理员可使用 Azure Active Directory B2B 协作将来宾用户从合作伙伴组织添加到你的 Azure AD。"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -14,12 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e25c0dab34f0977b4511046ad53f4c0b409990
-ms.openlocfilehash: 830cc28cdd5ca523c43cf1fa9cdff5131727d71f
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 7f33165141f31c1b495313f2da0d6e4681bdf8f2
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -48,11 +48,11 @@ ms.lasthandoff: 02/23/2017
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps/Player]
 
 ## <a name="admins-resending-invitations-to-guest-users"></a>管理员向来宾用户重新发送邀请
-你可以转到 B2B 协作用户的配置文件页，向尚未兑换的来宾用户重新发送邀请：
+可以转到 B2B 协作用户的配置文件页，向任何尚未兑换的来宾用户重新发送邀请：
 
 ![重新发送邀请](./media/active-directory-b2b-admin-add-users/resend-invitation.png)
 
-> ![注意] 这将从已登录用户重新发送邀请并邀请用户加入目录，即使原始邀请是发到特定应用或组，也是如此。
+> ![注意] 即使原始邀请是发送给特定应用或组，但是如果重新发送邀请，该邀请也会由登录用户发送给各个用户。
 
 
 ## <a name="related-articles"></a>相关文章

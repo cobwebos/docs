@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: b01825022189722c9c0d396984a1a369a5d57584
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 7471fa4c73c8aef11bf81cb652cd2bce77ac5420
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -48,7 +48,7 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
 
 * Azure 订阅和帐户
 * 单个资源组
-* 存储帐户
+* Azure 托管磁盘
 * 包含两个子网的虚拟网络
 * 具有类似角色的 VM 的可用性集
 * 虚拟机
@@ -57,8 +57,6 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
 
 * Adventure Works Cycles 使用 **[IT 工作负荷]-[位置]-[Azure 资源]** 作为前缀
   * 在本示例中，IT 工作负荷名为 **azos** (Azure On-line Store)，位置为 **use**（美国东部 2）
-* 存储帐户使用 adventureazosusesa**[描述]**
-  * “adventure”已添加到前缀以提供唯一性，并且存储帐户名称不支持使用连字符。
 * 虚拟网络使用 AZOS-USE-VN**[数字]**
 * 可用性集使用 use azos-use-as-**[角色]**
 * 虚拟机名称使用 azos-use-vm-**[VM 名称]**
@@ -66,11 +64,11 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
 ## <a name="azure-subscriptions-and-accounts"></a>Azure 订阅和帐户
 Adventure Works Cycles 使用名为 Adventure Works 企业订阅的企业订阅为此 IT 工作负荷提供计费。
 
-## <a name="storage-accounts"></a>存储帐户
-Adventure Works Cycles 确定他们需要以下两个存储帐户：
+## <a name="storage"></a>存储
+Adventure Works Cycles 确定其应使用 Azure 托管磁盘。 创建 VM 时，会使用两种存储可用的存储层：
 
-* **adventureazosusesawebapp** 用于 Web 服务器、应用程序服务器和域控制器及其数据磁盘的标准存储。
-* **adventureazosusesasql** 用于 SQL Server VM 及其数据磁盘的高级存储。
+* **标准存储**用于 Web 服务器、应用程序服务器和域控制器及其数据磁盘。
+* **高级存储**用于 SQL Server VM 及其数据磁盘。
 
 ## <a name="virtual-network-and-subnets"></a>虚拟网络和子网
 由于虚拟网络不需要持续连接到 Adventure Work Cycles 本地网络，因此，他们决定选择仅限云的虚拟网络。
@@ -114,7 +112,7 @@ Adventure Works Cycles 决定为其 Azure VM 使用以下名称：
 此配置引入以下项：
 
 * 包含两个子网（FrontEnd 和 BackEnd）的仅限云虚拟网络
-* 两个存储帐户
+* 同时具有标准磁盘和高级磁盘的 Azure 托管磁盘
 * 四个可用性集，每个在线商店层一个
 * 四个层中的虚拟机
 * 用于从 Internet 到 Web 服务器的基于 HTTPS 的 Web 流量的外部负载平衡集

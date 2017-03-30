@@ -1,6 +1,7 @@
 # 概述
 ## [什么是服务总线消息传送？](service-bus-messaging-overview.md)
 ## [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
+## [服务总线体系结构](service-bus-architecture.md)
 ## [常见问题](service-bus-faq.md)
 
 # 入门

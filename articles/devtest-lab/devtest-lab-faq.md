@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: fee6c375f93e1e669c031d8ca63470f7f48fadf2
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 4fc454a8c7974b8f53cd6621639dd5b575cc66f7
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -65,16 +65,17 @@ ms.lasthandoff: 03/08/2017
 * [ 创建过程中项目失败。如何解决它？](#my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it)
 * [为什么我的虚拟网络没有正确保存？](#why-isnt-my-existing-virtual-network-saving-properly)
 * [从 PowerShell 预配时，为什么会收到“找不到父资源”错误？](#why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell)  
+* [VM 部署失败时，可在何处查找错误详细信息](#where-can-i-find-more-error-information-when-vm-deployment-is-failed)  
 
 ### <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
-如果未在此处找到相关问题，请联系我们获取帮助。
+如果此处未列出你的问题，请联系我们寻求答案。
 
 * 在此常见问题解答末尾的 [Disqus 线程](#comments)处发布问题，并与 Azure 缓存团队和其他社区成员就本文进行讨论。
 * 若希望更多的人看到你的问题，可以将问题发布在 [Azure 开发测试实验室 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)并与 Azure 开发测试实验室团队和社区的其他成员讨论。
 * 若要提出功能请求，请将请求和想法提交到 [Azure 开发测试实验室用户之声](https://feedback.azure.com/forums/320373-azure-devtest-labs)。
 
 ### <a name="why-should-i-use-azure-devtest-labs"></a>为什么要使用 Azure 开发测试实验室？
-Azure 开发测试实验室可为你的团队节省时间和金钱。 开发人员可使用几个不同的基项创建自己的环境，并使用项目快速部署和配置应用程序。 使用自定义映像和公式，可将虚拟机保存为模板，并轻松重现。 此外，实验室会提供多个可配置策略，允许实验室管理员减少浪费和管理团队的环境。 这些策略包括自动关机、成本阈值、每个用户的最大 VM 数量和最大 VM 大小。 有关 Azure 开发测试实验室更深入的说明，请参阅[概述](devtest-lab-overview.md)或查看[介绍视频](/documentation/videos/videos/what-is-azure-devtest-labs)。
+Azure 开发测试实验室可为你的团队节省时间和金钱。 开发人员可使用几个不同的基项创建自己的环境，并使用项目快速部署和配置应用程序。 使用自定义映像和公式，可将虚拟机保存为模板，并轻松重现。 此外，实验室会提供多个可配置策略，允许实验室管理员减少浪费和管理团队的环境。 这些策略包括自动关机、成本阈值、每个用户的最大 VM 数量和最大 VM 大小。 若要更深入了解 Azure 开发测试实验室，请参阅[概述](devtest-lab-overview.md)或观看[介绍视频](/documentation/videos/videos/what-is-azure-devtest-labs)。
 
 ### <a name="what-does-worry-free-self-service-mean"></a>“无忧的自助服务”是什么意思？
 “无忧的自助服务”意味着开发人员和测试人员按需创建自己的环境，管理员可获得一种安全感，因为知道 Azure 开发测试实验室可帮助尽量减少浪费和控制成本。 管理员可以指定允许的 VM 大小、最大 VM 数量以及 VM 的启动和关机时间。 Azure 开发测试实验室还可帮助你轻松监视成本和设置警报以注意实验室中的资源是怎样使用的。
@@ -157,7 +158,12 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 支持将多个磁盘附加到 VM。  
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果要将 Windows OS 映像用于我的测试，是否需要购买 MSDN 订阅？
-是，如果需要将客户端 OS 映像（Windows 7 及更高版本）用于我的测试，必须[购买 MSDN 订阅](https://www.visualstudio.com/products/how-to-buy-vs)。 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/)显示每个 MSDN 产品/服务的 Azure 信用额度，并提供更多详细信息。
+如果需要在 Azure 中使用 Windows 客户端 OS 映像（Windows 7 或更高版本）进行开发或测试，必须：
+
+- [购买 MSDN 订阅](https://www.visualstudio.com/products/how-to-buy-vs)。 
+- 如果你具有企业协议，请通过 [Enterprise 开发/测试优惠](https://azure.microsoft.com/en-us/offers/ms-azr-0148p)创建 Azure 订阅。
+
+若要深入了解每个 MSDN 产品/服务的 Azure 信用额度，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/)。
 
 ### <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>如何自动上传 VHD 文件以创建自定义映像？
 有两个选项：
@@ -176,7 +182,7 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 7. 将该 **URL** 用作 AzCopy 命令中的目标。
 
 ### <a name="how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>如何自动删除实验室中的所有 VM？
-除了通过 Azure 门户删除实验室中的 VM，还可使用 PowerShell script 删除实验室中的所有 VM。 在下面的示例中，只需修改“要更改的值”注释下的参数值便可。 可以从 Azure 门户的实验室边栏选项卡中检索 `subscriptionId`、`labResourceGroup` 和 `labName` 值。
+除了通过 Azure 门户删除实验室中的 VM，还可使用 PowerShell 脚本删除实验室中的所有 VM。 在下例中，修改“要更改的值”注释下的参数值。 可以从 Azure 门户的实验室边栏选项卡中检索 `subscriptionId`、`labResourceGroup` 和 `labName` 值。
 
     # Delete all the VMs in a lab
 
@@ -225,18 +231,18 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 没有对每个实验室可创建的 VM 数量进行限定。 但是，目前实验室仅支持大约 40 个 VM 同时在标准存储中运行，25 个 VM 同时在高级存储中运行。 我们目前正努力提高这些限制。
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>如何向我的实验室共享直接链接？
-若要将直接链接共享给实验室用户，则可执行以下步骤。
+若要将直接链接共享给实验室用户，可执行以下步骤：
 
 1. 浏览到 Azure 门户中的实验室。
 2. 从浏览器复制实验室 URL 并与实验室的用户进行共享。
 
 > [!NOTE]
-> 如果实验室用户是具有 [MSA 帐户](#what-is-a-microsoft-account)的外部用户且不属于公司的 Active Directory，则他们可能在导航到所提供链接时收到错误。 若用户收到错误，请指导他们在 Azure 门户的右上角单击其名称，然后在菜单的“目录”部分选择实验室所在的目录。
+> 如果实验室用户是具有 [Microsoft 帐户](#what-is-a-microsoft-account)的外部用户且不属于公司的 Active Directory，则其在导航到所提供的链接时可能会收到错误。 若用户收到错误，请指导他们在 Azure 门户的右上角单击其名称，然后在菜单的“目录”部分选择实验室所在的目录。
 >
 >
 
 ### <a name="what-is-a-microsoft-account"></a>什么是 Microsoft 帐户？
-Microsoft 帐户会用于 Microsoft 设备和服务中几乎所有的操作。 这是你用于登录到 Skype、Outlook.com、OneDrive、Windows Phone 和 Xbox LIVE 的电子邮件地址和密码 – 意味着你的文件、照片、联系人和设置可跟随你移动到其他任何设备。
+Microsoft 帐户会用于 Microsoft 设备和服务中几乎所有的操作。 这是登录到 Skype、Outlook.com、OneDrive、Windows Phone 和 Xbox LIVE 时所用的电子邮件地址和密码 - 意味着你的文件、照片、联系人和设置可跟随你移动到任何设备。
 
 > [!NOTE]
 > Microsoft 帐户以前称为“Windows Live ID”。
@@ -244,7 +250,7 @@ Microsoft 帐户会用于 Microsoft 设备和服务中几乎所有的操作。 �
 >
 
 ### <a name="my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it"></a>VM 创建过程中项目失败。 如何解决它？
-请参阅由我们的 MVP 之一编写的博客文章[如何对 AzureDevTestLabs 中的失败项目进行故障排除](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)，了解如何获取关于失败项目的日志。
+请参阅由我们的某位 MVP 撰写的博客文章 [How to troubleshoot failing Artifacts in AzureDevTestLabs](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)（如何排查 AzureDevTestLabs 中的失败项目），了解如何获取失败项目的相关日志。
 
 ### <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>为什么我的虚拟网络没有正确保存？
 一种可能是虚拟网络名称包含具句号。 如果包含，请尝试删除句号或将它们替换为连字符，然后再重新保存虚拟网络。
@@ -252,5 +258,10 @@ Microsoft 帐户会用于 Microsoft 设备和服务中几乎所有的操作。 �
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell"></a>从 PowerShell 预配 VM 时，为什么会收到“找不到父资源”错误？
 若一个资源是另一个资源的父级，则在创建子资源之前，父资源必须存在。 如果不存在，则会收到 **ParentResourceNotFound** 错误。 如果未指定父资源上的依赖项，子资源可能会在父资源之前部署。
 
-VM 是资源组中实验室下的子资源。 使用 ARM 模板通过 PowerShell 部署时，PowerShell 脚本中提供的资源组名称应为实验室的资源组名称。 有关详细信息，请参阅[排查常见的 Azure 部署错误](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)。
+VM 是资源组中实验室下的子资源。 使用 Azure 资源模板通过 PowerShell 部署时，PowerShell 脚本中提供的资源组名称应为实验室的资源组名称。 有关详细信息，请参阅[排查常见的 Azure 部署错误](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)。
+
+### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM 部署失败时，可在何处查找错误详细信息？
+VM 部署错误将在活动日志中捕获。 在实验室的 VM 边栏选项卡（在“我的虚拟机”列表中选择 VM 后，将显示该选项卡）中的资源菜单上，可通过“审核日志”或“虚拟机诊断”找到实验室 VM 活动日志。 
+
+有时，在开始部署 VM 前（例如在超过与 VM 一起创建的资源的订阅限制时）将发生部署错误。 此情况下，将在实验室级别“活动日志”中捕获错误详细信息，该日志位于“配置和策略”设置的底部。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-audit)。
 

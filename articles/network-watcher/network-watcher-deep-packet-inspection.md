@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 78f367de862e4fa9203cc794549abb935f117848
-ms.openlocfilehash: f7e4f1832a8edd029fcef08e295b6c79c033b664
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 62fa6a6d0cccc5545b94d4ae167f2fcc7e4cd0de
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 02/22/2017
 
 ### <a name="step-3"></a>步骤 3
 
-若要查看 TCP 对话中的初始往返时间 (RTT)，只需检查 TCP 握手中涉及的前两个数据包。 我们将使用三次握手中的前两个数据包，即 [SYN]、和 [SYN, ACK] 数据包。 这两个数据包是根据 TCP 标头中的标志命名的。 本方案不使用握手中的最后一个数据包，即 [ACK] 数据包。 [SYN] 数据包由客户端发送。 收到该数据包后，服务器将发送 [ACK] 数据包，表示确认收到客户端发来的 SYN。 利用服务器响应所需的开销极少这一事实，我们可以通过对客户端收到 [SYN, ACK] 数据包的时间与客户端发送 [SYN] 数据包的时间进行加减运算，来计算 RTT。
+若要查看 TCP 对话中的初始往返时间 (RTT)，只需检查 TCP 握手中涉及的前两个数据包。 我们将使用三次握手中的前两个数据包，即 [SYN]、和 [SYN, ACK] 数据包。 这两个数据包是根据 TCP 标头中的标志命名的。 本方案不使用握手中的最后一个数据包，即 [ACK] 数据包。 [SYN] 数据包由客户端发送。 收到该数据包后，服务器将发送 [ACK] 数据包，表示确认收到客户端发来的 SYN。 利用服务器响应所需的开销极少这一事实，可通过对客户端收到 [SYN, ACK] 数据包的时间与客户端发送 [SYN] 数据包的时间进行减法运算，来计算 RTT。
 
 使用 WireShark 可以计算此值。
 

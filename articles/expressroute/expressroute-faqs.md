@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2017
+ms.date: 03/17/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 0df7bba472daf2c499f3ccff1296b8a9ee8ab89d
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 31a267963199518ed6db4610830062099ed0dde4
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -52,27 +52,25 @@ ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接
 ## <a name="supported-services"></a>支持的服务
 ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-peerings.md)。
 
-专用对等互连
+### <a name="private-peering"></a>专用对等互连
 * 虚拟网络，包括所有虚拟机和云服务
 
-公共对等互连
-* 大多数 Azure 服务具有以下少数例外情况
+### <a name="public-peering"></a>公共对等互连
 * Power BI
 * Dynamics 365 for Operations（以前称为 Dynamics AX Online）
+* 大多数 Azure 服务具有以下少数例外情况
+  * CDN
+  * Visual Studio Team Services 负载测试
+  * 多重身份验证
+  * 流量管理器
 
-Microsoft 对等互连
+### <a name="microsoft-peering"></a>Microsoft 对等互连
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
 * 大多数 Dynamics 365 服务（以前称为 CRM Online）
   * Dynamics 365 for Sales
   * Dynamics 365 for Customer Service
   * Dynamics 365 for Field Service
   * Dynamics 365 for Project Service
-
-ExpressRoute 不支持以下 Azure 服务
-* CDN
-* Visual Studio Team Services 负载测试
-* 多重身份验证
-* 流量管理器
 
 ## <a name="data-and-connections"></a>数据和连接
 ### <a name="are-there-limits-on-the-amount-of-data-that-i-can-transfer-using-expressroute"></a>对于使用 ExpressRoute 可以传输的数据量是否有限制？
@@ -177,9 +175,10 @@ BGP 会话将被删除。 当前缀计数低于限制后，将重置这些会话
 
 1. 为 ExpressRoute 线路建立公共对等互连。
 2. 执行 DNS 查找，找到 **kms.core.windows.net** 的 IP 地址
-3. 然后执行以下两项操作之一，使密钥管理服务能够识别来自 Azure 的激活请求并遵照该请求。
+3. 然后执行以下 3 项操作之一，使密钥管理服务能够识别来自 Azure 的激活请求并遵循该请求。
    * 在你的本地网络上，通过公共对等互连将发往 IP 地址（在步骤 2 中获得）的流量路由回到 Azure。
    * 让你的 NSP 提供商通过公共对等互连将流量路由回到 Azure。
+   * 创建用户定义的路由，该路由指明具有 Internet 的 IP 作为下一跃点，然后将其应用于这些虚拟机所在的子网。
 
 ### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>是否可以更改 ExpressRoute 线路的带宽？
 是的，你可以尝试在 Azure 门户中或者使用 PowerShell.mpt 来增加 ExpressRoute 线路的带宽。 如果在创建线路的物理端口上有容量可用，则更改将会成功。 如果更改失败，这意味着当前端口上没有剩余足够的容量，你需要创建具有更高带宽的新 ExpressRoute 线路；或者意味着在该位置没有额外的容量，在这种情况下将无法增加带宽。 还必须跟进你的连接服务提供商，确保他们更新其网络中的限制以支持带宽增加。 不过，你无法减小 ExpressRoute 线路的带宽。 你必须创建具有更低带宽的新 ExpressRoute 线路并删除旧线路。

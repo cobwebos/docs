@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: b7ea1e3a72a9dc6f4f9ca9d2d9d6f8c9b1564972
-ms.openlocfilehash: 947f1f5e6d9bebe6708e6d29d3b71efc09573537
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: a56d71d437814ed08b2e0a05d9acc8448f6b9ae5
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: 947f1f5e6d9bebe6708e6d29d3b71efc09573537
 | --- | --- | --- | --- |  
 | [HTTP/Webhook](functions-bindings-http-webhook.md) | [计时器](functions-bindings-timer.md) | [移动应用](functions-bindings-mobile-apps.md) | [服务总线](functions-bindings-service-bus.md)  |  
 | [DocumentDB](functions-bindings-documentdb.md) |  [存储 Blob](functions-bindings-storage-blob.md) | [存储队列](functions-bindings-storage-queue.md) |  [存储表](functions-bindings-storage-table.md) |  
-| [事件中心](functions-bindings-event-hubs.md) | [通知中心](functions-bindings-notification-hubs.md) | [Twilio](functions-bindings-twilio.md) |   
+| [事件中心](functions-bindings-event-hubs.md) | [通知中心](functions-bindings-notification-hubs.md) | [SendGrid](functions-bindings-sendgrid.md) | [Twilio](functions-bindings-twilio.md) |   
 | | | | |  
 
 这些文章假定用户已阅读了 [Azure Functions 开发人员参考](functions-reference.md)、[C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md) 或 [Node.js](functions-reference-node.md) 开发人员参考文章。
@@ -385,10 +386,5 @@ public static async Task Run(string input, Binder binder)
 
 * [测试函数](functions-test-a-function.md)
 * [扩展函数](functions-scale.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

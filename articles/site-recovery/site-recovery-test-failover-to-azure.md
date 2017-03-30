@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: e2d464c1c70be0bd7d5551c7f76f02b10c20b9ed
-ms.openlocfilehash: e5c42a574b22278586500048efd5b813d64dd4b7
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: dcb259f04f2b0b1aeec10699b4e7b739ac0926ba
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -58,7 +58,7 @@ ms.lasthandoff: 02/23/2017
 
 
 > [!TIP]
-> Site Recovery 尝试在名称相同的子网中创建测试虚拟机，并使用虚拟机的“计算与网络”设置中提供的同一 IP。 如果为测试故障转移提供的 Azure 虚拟网络中没有同名的子网，则会按字母顺序在第一个子网中创建测试虚拟机。 如果子网中没有相同 IP，则虚拟机将获取子网中可用的其他 IP 地址。 
+> Site Recovery 尝试在名称相同的子网中创建测试虚拟机，并使用虚拟机的“计算与网络”设置中提供的同一 IP。 如果为测试故障转移提供的 Azure 虚拟网络中没有同名的子网，则会按字母顺序在第一个子网中创建测试虚拟机。 如果目标 IP 附属于所选子网，则 Site Recovery 会尝试使用该目标 IP 创建测试故障转移虚拟机。 如果目标 IP 不属于所选子网，则将使用所选子网中任一可用 IP 创建测试故障转移虚拟机。 
 >
 >
 

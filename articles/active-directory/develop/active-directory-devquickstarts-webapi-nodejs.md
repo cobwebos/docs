@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 682f6d0919df20cd3643abf04e1d5192be116399
-ms.openlocfilehash: f20c2c2c37692d439ca8e023cf9d5a48cd42c973
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 707bb2b7cd9796e0e05234aa08002bbc1820f871
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -70,11 +70,11 @@ ms.lasthandoff: 02/24/2017
 
       * “登录 URL”是应用的基本 URL。  示例代码的默认 URL 为 `https://localhost:8080`。
 
-      * “应用程序 ID URI”是应用程序的唯一标识符。 约定是使用 `https://<tenant-domain>/<app-name>`，例如：`https://contoso.onmicrosoft.com/my-first-aad-app`。
-
 6. 注册后，Azure AD 会为应用分配唯一的应用程序 ID。 在后面的部分中将会用到此值，因此，请从应用程序页复制此值。
 
-7. 通过“设置”页为应用程序创建**密钥**，然后将该密钥复制到某个位置， 稍后需要用到它。
+7. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 “应用程序 ID URI”是应用程序的唯一标识符。 约定使用 `https://<tenant-domain>/<app-name>`，例如：`https://contoso.onmicrosoft.com/my-first-aad-app`。
+
+8. 通过“设置”页为应用程序创建**密钥**，然后将该密钥复制到某个位置， 稍后需要用到它。
 
 ## <a name="step-3-download-nodejs-for-your-platform"></a>步骤 3：下载平台的 Node.js
 若要成功使用本示例，你必须正确安装 Node.js。

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 2/7/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: d7a2b9c13b2c3372ba2e83f726c7bf5cc7e98c02
-ms.openlocfilehash: 5d68b7f1f57da07685c27d592620c1785269f9d8
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 27d8da9df87dc5e93272be0bb6584e90971fb461
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -44,6 +44,7 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 * 选择方案、定义备份策略并定义要保护的项。
 * 检查虚拟机上的 VM 代理安装。
 * 检查网络连接
+* 对于 Linux VM，如果要自定义备份环境以进行应用程序一致的备份，请按照[配置快照前和快照后脚本的步骤](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)进行操作
 
 如果确定环境满足这些条件，请转到[备份 VM 的文章](backup-azure-vms.md)。 如果需要设置或检查上述任何先决条件，本文将引导你逐步完成先决条件的准备步骤。
 
@@ -64,7 +65,7 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 * 可以在 Azure 的所有公共区域中备份虚拟机（请参阅支持区域的[清单](https://azure.microsoft.com/regions/#services)）。 在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
 * 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 (DC) VM。 阅读有关[还原多 DC 域控制器](backup-azure-restore-vms.md#restoring-domain-controller-vms)的详细信息。
 * 仅支持通过 PowerShell 还原采用以下特殊网络配置的虚拟机。 还原操作完成后，在 UI 中使用还原工作流创建的 VM 将不采用这些网络配置。 若要了解详细信息，请参阅[还原采用特殊网络配置的 VM](backup-azure-restore-vms.md#restoring-vms-with-special-network-configurations)。
-  * 采用负载平衡器配置的虚拟机（内部和外部）
+  * 采用负载均衡器配置的虚拟机（内部和外部）
   * 使用多个保留 IP 地址的虚拟机
   * 使用多个网络适配器的虚拟机
 

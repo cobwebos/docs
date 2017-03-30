@@ -104,7 +104,7 @@ ms.lasthandoff: 02/03/2017
 9. 获取应用程序 ID。
 
     ```PowerShell
-    $azureAdApplication 
+    $azureAdApplication    
     ```
     记下应用程序 ID（输出中的**applicationID** ）。
 
@@ -135,9 +135,6 @@ ms.lasthandoff: 02/03/2017
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
     <configuration>
-        <startup>
-            <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
-        </startup>
         <appSettings>
             <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
             <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
@@ -154,16 +151,18 @@ ms.lasthandoff: 02/03/2017
 5. 将以下 **using** 语句添加到项目中的源文件 (Program.cs)。
 
     ```csharp
-    using System.Threading;
     using System.Configuration;
     using System.Collections.ObjectModel;
+    using System.Threading;
+    using System.Threading.Tasks;
 
+    using Microsoft.Azure;
     using Microsoft.Azure.Management.DataFactories;
     using Microsoft.Azure.Management.DataFactories.Models;
     using Microsoft.Azure.Management.DataFactories.Common.Models;
 
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
-    using Microsoft.Azure;
+
     ```
 
 6. 将以下用于创建 **DataPipelineManagementClient** 类实例的代码添加到 **Main** 方法。 将使用此对象创建数据工厂、链接服务、输入和输出数据集以及管道。 此外，在运行时将使用此对象监视数据集切片。
@@ -173,10 +172,9 @@ ms.lasthandoff: 02/03/2017
     string resourceGroupName = "ADFTutorialResourceGroup";
     string dataFactoryName = "APITutorialFactory";
 
-    TokenCloudCredentials aadTokenCredentials =
-        new TokenCloudCredentials(
+    TokenCloudCredentials aadTokenCredentials = new TokenCloudCredentials(
             ConfigurationManager.AppSettings["SubscriptionId"],
-            GetAuthorizationHeader());
+            GetAuthorizationHeader().Result);
 
     Uri resourceManagerUri = new Uri(ConfigurationManager.AppSettings["ResourceManagerEndpoint"]);
 
@@ -200,7 +198,7 @@ ms.lasthandoff: 02/03/2017
             {
                 Name = dataFactoryName,
                 Location = "westus",
-                Properties = new DataFactoryProperties() { }
+                Properties = new DataFactoryProperties()
             }
         }
     );
@@ -318,7 +316,6 @@ ms.lasthandoff: 02/03/2017
                     {
                         TableName = "emp"
                     },
-
                     Availability = new Availability()
                     {
                         Frequency = SchedulePeriod.Hour,
@@ -348,8 +345,8 @@ ms.lasthandoff: 02/03/2017
                 {
                     Description = "Demo Pipeline for data transfer between blobs",
 
-            // Initial value for pipeline's active period. With this, you won't need to set slice status
-            Start = PipelineActivePeriodStartTime,
+                    // Initial value for pipeline's active period. With this, you won't need to set slice status
+                    Start = PipelineActivePeriodStartTime,
                     End = PipelineActivePeriodEndTime,
 
                     Activities = new List<Activity>()
@@ -380,7 +377,7 @@ ms.lasthandoff: 02/03/2017
                                 }
                             }
                         }
-                    },
+                    }
                 }
             }
         });
@@ -395,7 +392,7 @@ ms.lasthandoff: 02/03/2017
 
     while (DateTime.Now - start < TimeSpan.FromMinutes(5) && !done)
     {
-        Console.WriteLine("Pulling the slice status");
+        Console.WriteLine("Pulling the slice status");        
         // wait before the next status check
         Thread.Sleep(1000 * 12);
 
@@ -459,33 +456,18 @@ ms.lasthandoff: 02/03/2017
 14. 将 **Main** 方法使用的以下帮助器方法添加到 **Program** 类。
 
     ```csharp
-    public static string GetAuthorizationHeader()
+    public static async Task<string> GetAuthorizationHeader()
     {
-        AuthenticationResult result = null;
-        var thread = new Thread(() =>
-        {
-            try
-            {
-                var context = new AuthenticationContext(ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] + ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
-
-                ClientCredential credential = new ClientCredential(ConfigurationManager.AppSettings["ApplicationId"], ConfigurationManager.AppSettings["Password"]);
-                result = context.AcquireToken(resource: ConfigurationManager.AppSettings["WindowsManagementUri"], clientCredential: credential);
-            }
-            catch (Exception threadEx)
-            {
-                Console.WriteLine(threadEx.Message);
-            }
-        });
-
-        thread.SetApartmentState(ApartmentState.STA);
-        thread.Name = "AcquireTokenThread";
-        thread.Start();
-        thread.Join();
+        AuthenticationContext context = new AuthenticationContext(ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] + ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+        ClientCredential credential = new ClientCredential(
+            ConfigurationManager.AppSettings["ApplicationId"],
+            ConfigurationManager.AppSettings["Password"]);
+        AuthenticationResult result = await context.AcquireTokenAsync(
+            resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+            clientCredential: credential);
 
         if (result != null)
-        {
             return result.AccessToken;
-        }
 
         throw new InvalidOperationException("Failed to acquire token");
     }
@@ -512,8 +494,5 @@ ms.lasthandoff: 02/03/2017
 | [管道](data-factory-create-pipelines.md) |帮助了解 Azure 数据工厂中的管道和活动 |
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
 | [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
-[数据工厂 .NET API 参考](/dotnet/api/) | 详细介绍了数据工厂 .NET SDK（查找树视图中的 Microsoft.Azure.Management.DataFactories.Models）。 
-
-
-
+[数据工厂 .NET API 参考](/dotnet/api/) | 详细介绍了数据工厂 .NET SDK（查找树视图中的 Microsoft.Azure.Management.DataFactories.Models）。
 

@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
-ms.openlocfilehash: 4ed2bfcad36059000b5a8e4bfa5f06bceb56843b
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 26eac30a08db2e224f9e9018817a18c3a4405b7f
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -88,7 +88,7 @@ ms.lasthandoff: 02/16/2017
 * **Azure Resource Manager API 和基于角色的安全性**：活动异地复制包括一组用于管理的 [Azure Resource Manager API](https://msdn.microsoft.com/library/azure/mt163571.aspx)，其中包括[基于 Azure Resource Manager 的 PowerShell cmdlet](sql-database-geo-replication-powershell.md)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
 
 > [!NOTE]
-> 只有使用基于 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 的 [Azure SQL REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) 和 [Azure SQL 数据库 PowerShell cmdlet](https://msdn.microsoft.com/library/azure/mt574084.aspx) 才支持活动异地复制的许多新功能。 支持（经典）REST API (https://msdn.microsoft.com/library/azure/dn505719.aspx) 和 [Azure SQL 数据库（经典）cmdlet](https://msdn.microsoft.com/library/azure/dn546723.aspx) 只是为了实现向后兼容性，因此建议使用基于 Azure Resource Manager 的 API。 
+> 只有使用基于 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 的 [Azure SQL REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) 和 [Azure SQL 数据库 PowerShell cmdlet](https://msdn.microsoft.com/library/azure/mt574084.aspx) 才支持活动异地复制的许多新功能。 后向兼容性支持[（经典）REST API](https://msdn.microsoft.com/library/azure/dn505719.aspx) 和 [Azure SQL 数据库（经典）cmdlet](https://msdn.microsoft.com/library/azure/dn546723.aspx)，因此建议使用基于 Azure Resource Manager 的 API。 
 > 
 > 
 

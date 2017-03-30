@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 03/21/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 452b6a541309736ee4bd7e1dbbf5288289e70922
-ms.openlocfilehash: 6a48bae7cd5c394f7b400f6870dba4da7f0d19f2
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 9acb23c679e4a8279c944a384d142b1cccf0f4d2
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -51,7 +51,7 @@ Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618
 如果想要检查这两个元数据文件中的任意一个，可以创建 SAS 定位器并将文件下载到本地计算机。 你可以就如何创建 SAS 定位器并下载使用媒体服务 .NET SDK 扩展的文件找到相关示例。
 
 ## <a name="download-sample"></a>下载示例
-从 [此处](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)获取并运行示例。
+可从[此处](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)获取并运行说明如何使用 MES 进行编码的示例。
 
 ## <a name="example"></a>示例
 以下代码示例使用媒体服务 .NET SDK 执行下列任务：

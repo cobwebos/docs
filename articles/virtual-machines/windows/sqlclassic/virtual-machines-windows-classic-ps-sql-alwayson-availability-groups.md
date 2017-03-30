@@ -13,36 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/22/2016
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 4d14b4f54957ae31e736211671cba816f8dea629
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 50167d167a1e0dda93d389997d67904e18f248bc
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-with-powershell"></a>使用 PowerShell 在 Azure VM 中配置 Always On 可用性组
 > [!div class="op_single_selector"]
-> * [Resource Manager：模板](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-> * [Resource Manager：手动](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 > * [经典：UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 > * [经典：PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
-> 
-> 
+<br/>
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Microsoft 建议大多数新部署使用资源管理器模型。 Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 
+
+若要使用 Azure Resource Manager 模型完成此任务，请参阅 [Azure 虚拟机上的 SQL Server AlwaysOn 可用性组](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)。
 
 Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server 系统的成本。 本教程介绍如何在 Azure 环境中使用端到端 SQL Server Always On 实现可用性组。 在本教程结束时，Azure 中的 SQL Server Always On 解决方案将包括以下要素：
 
 * 一个包含多个子网（包括前端子网和后端子网）的虚拟网络
 * 包含 Active Directory (AD) 域的域控制器
 * 部署到后端子网并加入 AD 域的两个 SQL Server VM
-* 具有节点多数仲裁模型的 3 节点 WSFC 群集
+* 具有节点多数仲裁模型的 3 节点 Windows 故障转移群集
 * 具有可用性数据库的两个同步提交副本的可用性组
 
-之所以选择此方案是因为其简易性，而非其成本效益或 Azure 上的其他功能。 例如，你可最大程度减少 2 副本可用性组的虚拟机数目，以便通过将域控制器作为 2 节点 WSFC 群集中的仲裁文件共享见证服务器来节省 Azure 中的计算时间。 通过此方法，上述配置中的 VM 数目可以减少一个。
+之所以选择此方案是因为其简易性，而非其成本效益或 Azure 上的其他功能。 例如，你可最大程度减少 2 副本可用性组的虚拟机数目，以便通过将域控制器作为 2 节点故障转移群集中的仲裁文件共享见证服务器来节省 Azure 中的计算时间。 通过此方法，上述配置中的 VM 数目可以减少一个。
 
 本教程介绍设置上述解决方案所需的步骤，但不详细阐述每一步的细节。 因此，我们没有列出 GUI 配置步骤，而是借助 PowerShell 脚本带你迅速完成每个步骤。 假设如下：
 
@@ -222,7 +221,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
             -ChangePasswordAtLogon $false `
             -Enabled $true
    
-    **CORP\Install** 用于配置与 SQL Server 服务实例、WSFC 群集和可用性组有关的一切。 **CORP\SQLSvc1** 和 **CORP\SQLSvc2** 用作两个 SQL Server VM 的 SQL Server 服务帐户。
+    **CORP\Install** 用于配置与 SQL Server 服务实例、故障转移群集和可用性组有关的一切。 **CORP\SQLSvc1** 和 **CORP\SQLSvc2** 用作两个 SQL Server VM 的 SQL Server 服务帐户。
 7. 接下来，运行以下命令为 **CORP\Install** 提供在域中创建计算机对象的权限。
    
         Cd ad:
@@ -234,7 +233,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
    
-    上面指定的 GUID 是计算机对象类型的 GUID。 **CORP\Install** 帐户需要“读取所有属性”和“创建计算对象”权限才能为 WSFC 群集创建 Active Direct 对象。 默认情况下，已经将“读取所有属性”权限授予 CORP\Install，因此无需显式授予该权限。 有关创建 WSFC 群集所需权限的详细信息，请参阅[故障转移群集循序渐进指南：在 Active Directory 中配置帐户](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)。
+    上面指定的 GUID 是计算机对象类型的 GUID。 **CORP\Install** 帐户需要“读取所有属性”和“创建计算对象”权限才能为故障转移群集创建 Active Direct 对象。 默认情况下，已经将“读取所有属性”权限授予 CORP\Install，因此无需显式授予该权限。 有关创建故障转移群集所需权限的详细信息，请参阅[故障转移群集循序渐进指南：在 Active Directory 中配置帐户](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)。
    
     现在你已完成 Active Directory 和用户对象的配置，接下来，你将创建两个 SQL Server VM 并将其加入到此域中。
 
@@ -253,7 +252,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
         $dnsSettings = New-AzureDns -Name "ContosoBackDNS" -IPAddress "10.10.0.4"
    
     通常将 IP 地址 **10.10.0.4** 分配给在 Azure 虚拟网络的 **10.10.0.0/16** 子网中创建的第一个 VM。 应通过运行 **IPCONFIG** 验证这是否是 DC 服务器的地址。
-2. 运行以下管接命令在 WSFC 群集中创建名为 **ContosoQuorum** 的第一个 VM：
+2. 运行以下管接命令在故障转移群集中创建名为 **ContosoQuorum** 的第一个 VM：
    
         New-AzureVMConfig `
             -Name $quorumServerName `
@@ -372,8 +371,8 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
    
     这些 SQL Server VM 现在已预配并正在运行，但它们是使用默认选项与 SQL Server 一同安装的。
 
-## <a name="initialize-the-wsfc-cluster-vms"></a>初始化 WSFC 群集 VM
-在本部分中，需要修改将在 WSFC 群集和 SQL Server 安装中使用的三个服务器。 具体而言：
+## <a name="initialize-the-failover-cluster-vms"></a>初始化故障转移群集 VM
+在本部分中，需要修改将在故障转移群集和 SQL Server 安装中使用的 3 个服务器。 具体而言：
 
 * （所有服务器）需要安装**故障转移群集**功能。
 * （所有服务器）需要添加 **CORP\Install** 作为计算机**管理员**。
@@ -477,8 +476,8 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. 从[为 Azure VM 中的 Always On 可用性组创建 WSFC 群集](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)，将 **CreateAzureFailoverCluster.ps1** 下载到本地工作目录中。 该脚本将帮助你创建一个正常运行的 WSFC 群集。 有关 WSFC 如何与 Azure 网络交互的重要信息，请参阅 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)。
-8. 切换至工作目录并使用下载的脚本创建 WSFC 群集。
+7. 从[为 Azure VM 中的 AlwaysOn 可用性组创建故障转移群集](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)，将 **CreateAzureFailoverCluster.ps1** 下载到本地工作目录中。 该脚本将帮助你创建一个正常运行的故障转移群集。 有关 Windows 群集如何与 Azure 网络交互的重要信息，请参阅 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)。
+8. 切换至工作目录并使用下载的脚本创建故障转移群集。
    
         Set-ExecutionPolicy Unrestricted -Force
         .\CreateAzureFailoverCluster.ps1 -ClusterName "$clusterName" -ClusterNode "$server1","$server2","$serverQuorum"

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2fb6f4d8330eb62e01af318277bc0e90aee039e0
-ms.openlocfilehash: d3c4d1a91615957764552a985e0dfeba7c10a927
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: e9e1649e4329d10ca8b87c730ad8c6beb3be818f
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -49,7 +49,7 @@ IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与
 
 这种实现具有以下含义：
 
-* 与事件中心事件类似，设备到云的消息可持久保留在 IoT 中心的默认 **messages/events** 终结点多达&7; 天。
+* 与事件中心事件类似，设备到云的消息可持久保留在 IoT 中心的默认 **messages/events** 终结点多达 7 天。
 * 如同事件中心的事件，设备到云的消息最大可为 256 KB，而且可分成多个批以优化发送。 Batch 最大可为 256 KB。
 
 不过，IoT 中心的设备到云的消息传递与事件中心之间还有一些重要差异：
@@ -292,7 +292,7 @@ IoT 中心消息包含：
 | 序列号 |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 |
 | 如果 |[从云到设备][lnk-c2d]的消息中指定的目标。 |
 | ExpiryTimeUtc |消息过期的日期和时间。 |
-| EnqueuedTime |IoT 中心收到消息的日期和时间。 |
+| EnqueuedTime |IoT 中心收到[云到设备][lnk-c2d]消息的日期和时间。 |
 | CorrelationId |响应消息中的字符串属性，通常包含采用“请求-答复”模式的请求的 MessageId。 |
 | UserId |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 |
 | Ack |反馈消息生成器。 此属性在云到设备的消息中用于请求 IoT 中心因为设备使用消息而生成反馈消息。 可能的值：**none**（默认值）：不生成任何反馈消息；**positive**：如果消息已完成，则接收反馈消息；**negative**：如果消息未由设备完成就过期（或已达到最大传送计数），则收到反馈消息；**full**：positive 和 negative。 有关详细信息，请参阅[消息反馈][lnk-feedback]。 |
@@ -436,3 +436,4 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-event-hub-partitions]: ../event-hubs/event-hubs-what-is-event-hubs.md#partitions
+

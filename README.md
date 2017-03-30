@@ -1,3 +1,8 @@
+## <a name="microsoft-open-source-code-of-conduct"></a>Microsoft 开放源代码行为准则
+
+本项目采用 [Microsoft 开源行为准则](https://opensource.microsoft.com/codeofconduct/)。
+有关详细信息，请参阅[行为准则常见问题](https://opensource.microsoft.com/codeofconduct/faq/)；若要其他任何问题或意见，请联系 [opencode@microsoft.com](mailto:opencode@microsoft.com)。
+
 # <a name="azure-technical-documentation-contributor-guide"></a>Azure 技术文档供稿人指南
 GitHub 存储库中存储了 [https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) 上发布的 Azure 技术文档的源文件。
 
@@ -20,9 +25,6 @@ GitHub 存储库中存储了 [https://docs.microsoft.com/azure](https://docs.mic
 
 * 在 GitHub 用户界面中可以轻松为技术文章供稿。 在此存储库中找到相应的文章，或者在 [https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) 上访问该文章，然后单击文章中的链接转到该文章的 GitHub 源。
 * 如果要对现有文章进行重大更改、添加或更改图像，或者要补充新文章，则需要派生此存储库，安装 Git Bash、Markdown Pad，并了解一些 git 命令。
-
-## <a name="code-of-conduct"></a>行为准则
-本项目采用 [Microsoft 开源行为准则](https://opensource.microsoft.com/codeofconduct/)。 有关详细信息，请参阅[行为准则常见问题](https://opensource.microsoft.com/codeofconduct/faq/)；若要其他任何问题或意见，请联系 [opencode@microsoft.com](mailto:opencode@microsoft.com)。
 
 ## <a name="about-your-contributions-to-azure-content"></a>有关在 Azure 中供稿
 ### <a name="minor-corrections"></a>轻微更正
@@ -83,9 +85,4 @@ azure-docs 存储库中的内容遵循 https://docs.microsoft.com/azure 上的�
 
 ## <a name="more-resources"></a>更多资源
 有关指南主题，请参阅[供稿人指南索引](contributor-guide/contributor-guide-index.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

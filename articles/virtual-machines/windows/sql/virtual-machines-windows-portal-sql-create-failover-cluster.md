@@ -14,11 +14,12 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/11/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: 4d078c3307c5f1a567f580ae5baaa21fa915e90a
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 6f0fe474787efc15db5c75266cde369725832aab
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -33,10 +34,10 @@ ms.openlocfilehash: 4d078c3307c5f1a567f580ae5baaa21fa915e90a
 
 上图显示了：
 
-- Windows Server 故障转移群集 (WSFC) 中的两个 Azure 虚拟机。 位于 WSFC 中的虚拟机也称为*群集节点*或*节点*。
+- Windows 故障转移群集中的两个 Azure 虚拟机。 位于故障转移群集中的虚拟机也称为*群集节点*或*节点*。
 - 每个虚拟机包含两个或更多个数据磁盘。
 - S2D 同步数据磁盘上的数据，并以存储池的形式提供同步的存储。 
-- 存储池向 WSFC 提供群集共享卷 (CSV)。
+- 存储池向故障转移群集提供群集共享卷 (CSV)。
 - SQL Server FCI 群集角色为数据驱动器使用 CSV。 
 - 用于保存 SQL Server FCI IP 地址的 Azure 负载均衡器。
 - Azure 可用性集保存所有资源。
@@ -76,11 +77,11 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 - 有权在 Azure 虚拟机中创建对象的帐户。
 - 能够为以下组件提供足够 IP 地址空间的 Azure 虚拟网络和子网：
    - 两台虚拟机。
-   - WSFC IP 地址。
+   - 故障转移群集的 IP 地址。
    - 每个 FCI 的 IP 地址。
 - 在 Azure 网络中配置的、指向域控制器的 DNS。 
 
-满足这些先决条件后，可以继续构建 WSFC。 第一步是创建虚拟机。 
+满足这些先决条件后，可继续构建故障转移群集。 第一步是创建虚拟机。 
 
 ## <a name="step-1-create-virtual-machines"></a>步骤 1：创建虚拟机
 
@@ -135,9 +136,9 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
       - **{BYOL} Windows Server Datacenter 2016 上的 SQL Server 2016 Standard** 
    
    >[!IMPORTANT]
-   >创建虚拟机后，删除预装的独立 SQL Server 实例。 配置 WSFC 和 S2D 之后，将要使用预装的 SQL Server 媒体来创建 SQL Server FCI。 
+   >创建虚拟机后，删除预装的独立 SQL Server 实例。 配置故障转移群集和 S2D 之后，将使用预装的 SQL Server 媒体创建 SQL Server FCI。 
 
-   或者，可以使用只包含操作系统的 Azure 应用商店映像。 选择一个 **Windows Server 2016 Datacenter** 映像，并在配置 WSFC 和 S2D 后安装 SQL Server FCI。 此映像不包含 SQL Server 安装媒体。 将安装媒体放在可以针对每个服务器运行 SQL Server 安装的位置。
+   或者，可以使用只包含操作系统的 Azure 应用商店映像。 选择一个 **Windows Server 2016 Datacenter** 映像，并在配置故障转移群集和 S2D 后安装 SQL Server FCI。 此映像不包含 SQL Server 安装媒体。 将安装媒体放在可以针对每个服务器运行 SQL Server 安装的位置。
 
 1. Azure 在创建虚拟机之后，将使用 RDP 连接到每个虚拟机。 
 
@@ -179,15 +180,15 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 1. [将虚拟机添加到现有的域](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain)。
 
-创建并配置虚拟机后，可以配置 WSFC。
+创建并配置虚拟机后，可配置故障转移群集。
 
-## <a name="step-2-configure-the-windows-server-failover-cluster-wsfc-with-s2d"></a>步骤 2：使用 S2D 配置 Windows Server 故障转移群集 (WSFC)
+## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>步骤 2：使用 S2D 配置 Windows 故障转移群集
 
-下一步是使用 S2D 配置 WSFC。 此步骤包括以下子步骤：
+下一步是使用 S2D 配置故障转移群集。 此步骤包括以下子步骤：
 
 1. 添加 Windows 故障转移群集功能
 1. 验证群集
-1. 创建 WSFC
+1. 创建故障转移群集
 1. 创建云见证
 1. 添加存储
 
@@ -240,34 +241,34 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
-验证群集后，创建 WSFC。
+验证群集后，创建故障转移群集。
 
-### <a name="create-the-wsfc"></a>创建 WSFC
+### <a name="create-the-failover-cluster"></a>创建故障转移群集
 
-本指南参考了[创建 WSFC](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster)。
+本指南参考了[创建故障转移群集](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster)。
 
-若要创建 WSFC，需要提供： 
+若要创建故障转移群集，需要： 
 - 成为群集节点的虚拟机的名称。 
-- WSFC 的名称。 使用有效值 
-- WSFC 的 IP 地址。 可以使用群集节点所在的同一 Azure 虚拟网络和子网中未使用的 IP 地址。 
+- 故障转移群集的名称
+- 故障转移群集的 IP 地址。 可以使用群集节点所在的同一 Azure 虚拟网络和子网中未使用的 IP 地址。 
 
-以下 PowerShell 可创建 WSFC。 使用节点的名称（虚拟机名称）以及 Azure VNET 中可用的 IP 地址更新脚本： 
+以下 PowerShell 可创建故障转移群集。 使用节点的名称（虚拟机名称）以及 Azure VNET 中可用的 IP 地址更新脚本： 
 
 ```PowerShell
-New-Cluster -Name <WSFC-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
 ### <a name="create-a-cloud-witness"></a>创建云见证
 
 云见证是 Azure 存储 Blob 中存储的新型群集仲裁见证。 使用云见证就无需单独使用一个 VM 来托管见证共享。
 
-1. [为 WSFC 创建云见证](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness) 
+1. [为故障转移群集创建云见证](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)。 
 
 1. 创建 Blob 容器。 
 
 1. 保存访问密钥和容器 URL。
 
-1. 配置 WSFC 群集仲裁见证。 请参阅 [在用户界面中配置仲裁见证]。(http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)。
+1. 配置故障转移群集仲裁见证。 请参阅 [在用户界面中配置仲裁见证]。(http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)。
 
 ### <a name="add-storage"></a>添加存储
 
@@ -297,13 +298,13 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
    ![ClusterSharedVolume](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
 
-## <a name="step-3-test-wsfc-failover"></a>步骤 3：测试 WSFC 故障转移
+## <a name="step-3-test-failover-cluster-failover"></a>步骤 3：测试故障转移群集故障转移
 
-在故障转移群集管理器中，验证是否可将存储资源移到另一个群集节点。 如果可以使用“故障转移群集管理器”连接到 WSFC 并且可在两个不同的节点之间移动存储，则可以配置 FCI。 
+在故障转移群集管理器中，验证是否可将存储资源移到另一个群集节点。 如果可使用**故障转移群集管理器**连接到故障转移群集并可在两个不同的节点之间移动存储，则可以配置 FCI。 
 
 ## <a name="step-4-create-sql-server-fci"></a>步骤 4：创建 SQL Server FCI
 
-配置 WSFC 和所有群集组件（包括存储）后，可以创建 SQL Server FCI。 
+配置故障转移群集和所有群集组件（包括存储）后，可创建 SQL Server FCI。 
 
 1. 使用 RDP 连接到第一个虚拟机。 
 
@@ -473,10 +474,5 @@ Azure 虚拟机上的 FCI 不支持 Microsoft 分布式事务处理协调器 (DT
 [Storage Space Direct Overview](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)（存储空间直通概述）
 
 [SQL Server support for S2D](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)（S2D 的 SQL Server 支持）
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

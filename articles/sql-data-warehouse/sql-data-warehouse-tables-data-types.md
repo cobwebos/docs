@@ -15,24 +15,25 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 616bb450217573ebd45060234313af418f525f89
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 7757de96601c426ff07e94cfa0c12d4dec8f06f5
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="data-types-for-tables-in-sql-data-warehouse"></a>SQL 数据仓库中表的数据类型
 > [!div class="op_single_selector"]
-> * [概述][概述]
-> * [数据类型][数据类型]
-> * [分布][分布]
-> * [索引][索引]
-> * [分区][分区]
-> * [统计信息][统计信息]
-> * [临时][临时]
+> * [概述][Overview]
+> * [数据类型][Data Types]
+> * [分布][Distribute]
+> * [索引][Index]
+> * [分区][Partition]
+> * [统计信息][Statistics]
+> * [临时][Temporary]
 > 
 > 
 
-SQL 数据仓库支持最常用的数据类型。  下面是 SQL 数据仓库支持的数据类型列表。  有关支持的数据类型的其他详细信息，请参阅[CREATE TABLE][CREATE TABLE]。
+SQL 数据仓库支持最常用的数据类型。  下面是 SQL 数据仓库支持的数据类型列表。  有关支持的数据类型的其他详细信息，请参阅[创建表][create table]。
 
 | **支持的数据类型** |  |  |
 | --- | --- | --- |
@@ -49,7 +50,7 @@ SQL 数据仓库支持最常用的数据类型。  下面是 SQL 数据仓库支
  在定义列类型时，使用可支持数据的最小数据类型，将能够改善查询性能。 这对 CHAR 和 VARCHAR 列尤其重要。 如果列中最长的值是 25 个字符，请将列定义为 VARCHAR(25)。 避免将所有字符列定义为较大的默认长度。 此外，将列定义为 VARCHAR（当它只需要这样的大小时）而非 [NVARCHAR][NVARCHAR]。  尽可能使用 NVARCHAR(4000) 或 VARCHAR(8000)，而非 NVARCHAR(MAX) 或 VARCHAR(MAX)。
 
 ## <a name="polybase-limitation"></a>Polybase 限制
-如果你是使用 Polybase 来加载表，则可对表进行定义，使可能的最大行大小（包括可变长度列的完整长度）不超过 32,767 字节。  虽然你在定义行时可以使用超出此宽度的可变长度数据，并通过 BCP 来加载行，但无法使用 Polybase 来加载此数据。  很快会增加针对宽行的 Polybase 支持。
+如果使用 Polybase 加载表，请确保数据的长度不超过 1 MB。  虽然你在定义行时可以使用超出此宽度的可变长度数据，并通过 BCP 来加载行，但无法使用 Polybase 来加载此数据。  
 
 ## <a name="unsupported-data-types"></a>不支持的数据类型
 如果从另一个 SQL 平台（例如 Azure SQL 数据库）迁移数据库，在迁移时，你可能会遇到 SQL 数据仓库不支持的某些数据类型。  下面是不支持的数据类型，以及一些可用于取代不支持的数据类型的备选项。
@@ -66,7 +67,7 @@ SQL 数据仓库支持最常用的数据类型。  下面是 SQL 数据仓库支
 | [table][table] |转换成暂时表。 |
 | [timestamp][timestamp] |修改代码以使用 [datetime2][datetime2] 和 `CURRENT_TIMESTAMP` 函数。  仅支持常量作为默认值，因此，不能将 current_timestamp 定义为默认约束。 如果需要从 timestamp 类型化列迁移行版本值，请对 NOT NULL 或 NULL 行版本值使用 [BINARY][BINARY](8) 或 [VARBINARY][BINARY](8)。 |
 | [xml][xml] |[varchar][varchar] |
-| [用户定义的类型][用户定义的类型] |尽可能转换回本机类型 |
+| [用户定义的类型][user defined types] |尽可能转换回本机类型 |
 | 默认值 |默认值仅支持文本和常量。  不支持非确定性表达式或函数，例如 `GETDATE()` 或 `CURRENT_TIMESTAMP`。 |
 
 可以在当前 SQL 数据库上运行以下 SQL 来识别 Azure SQL 数据仓库不支持的列：
@@ -81,24 +82,24 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要了解详细信息，请参阅有关[表概述][概述]、[分布表][分布][为表编制索引][索引][将表分区][分区][维护表统计信息][统计信息]和[临时表][临时]的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL 数据仓库最佳实践]。
+有关详细信息，请参阅有关[表概述][Overview]、[分布表][Distribute]、[为表编制索引][Index]、[将表分区][Partition]、维[护表统计信息][Statistics]和[临时表][Temporary]的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。
 
 <!--Image references-->
 
 <!--Article references-->
-[概述]: ./sql-data-warehouse-tables-overview.md
-[数据类型]: ./sql-data-warehouse-tables-data-types.md
-[分布]: ./sql-data-warehouse-tables-distribute.md
-[索引]: ./sql-data-warehouse-tables-index.md
-[分区]: ./sql-data-warehouse-tables-partition.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
-[临时]: ./sql-data-warehouse-tables-temporary.md
-[SQL 数据仓库最佳实践]: ./sql-data-warehouse-best-practices.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[Index]: ./sql-data-warehouse-tables-index.md
+[Partition]: ./sql-data-warehouse-tables-partition.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-[CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
+[create table]: https://msdn.microsoft.com/library/mt203953.aspx
 [bigint]: https://msdn.microsoft.com/library/ms187745.aspx
 [binary]: https://msdn.microsoft.com/library/ms188362.aspx
 [bit]: https://msdn.microsoft.com/library/ms177603.aspx
@@ -131,10 +132,5 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 [varbinary]: https://msdn.microsoft.com/library/ms188362.aspx
 [varchar]: https://msdn.microsoft.com/library/ms186939.aspx
 [xml]: https://msdn.microsoft.com/library/ms187339.aspx
-[用户定义的类型]: https://msdn.microsoft.com/library/ms131694.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[user defined types]: https://msdn.microsoft.com/library/ms131694.aspx
 

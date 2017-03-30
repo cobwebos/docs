@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: e5bacb7ce32845b97e06cb0d35cc62935a3c86f6
-ms.openlocfilehash: 79b597fb1d76ec0dd7bdfca701a16f885d245b94
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 9fa8835003b1d8a0dbc56bf9ff8996e48fc41acf
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -48,7 +49,7 @@ Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(
 可以使用 Azure 门户或 Azure PowerShell 获取 URL：
 
 * **门户**：单击“更多服务” > “存储帐户” > <storage account>“Blob”，源 VHD 文件可能在 **vhd** 容器中。 单击容器的“属性”并复制标记为 **URL** 的文本。 你将需要用到源和目标容器的 URL。 
-* **Powershell**：使用 `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` 可获取资源组 **myResourceGroup** 中名为 **myVM** 的 VM 的信息。 在结果中，查看 **Vhd Uri** 的 **Storage profile** 节。 URI 的第一部分是容器的 URL，最后一部分是 VM 的 OS VHD 名称。
+* **Powershell**：使用 `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` 可获取资源组 **myResourceGroup** 中名为 **myVM** 的 VM 的信息。 在结果中，查看 **Vhd Uri** 的 **Storage profile** 部分。 URI 的第一部分是容器的 URL，最后一部分是 VM 的 OS VHD 名称。
 
 ## <a name="get-the-storage-access-keys"></a>获取存储访问密钥
 查找源和目标存储帐户的访问密钥。 有关访问密钥的详细信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
@@ -59,7 +60,7 @@ Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(
 ## <a name="copy-the-vhd"></a>复制 VHD
 可以使用 AzCopy 在存储帐户之间复制文件。 对于目标容器，如果指定的容器不存在，系统会自动创建该容器。 
 
-若要使用 AzCopy，请在本地计算机上打开命令符，然后导航到安装 AzCopy 的文件夹。 路径类似于 *C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy*。 
+若要使用 AzCopy，请在本地计算机上打开命令提示符，然后导航到安装 AzCopy 的文件夹。 路径类似于 *C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy*。 
 
 若要复制容器中的所有文件，请使用 **/S** 开关。 此开关可用于复制 OS VHD 和所有数据磁盘（如果它们在同一个容器中）。 本示例演示如何将存储帐户 **mysourcestorageaccount** 中容器 **mysourcecontainer** 内的所有文件复制到存储帐户 **mydestinationstorageaccount** 中的容器 **mydestinationcontainer**。 将存储帐户和容器的名称替换为自己的名称。 将 `<sourceStorageAccountKey1>` 和 `<destinationStorageAccountKey1>` 替换为自己的密钥。
 
@@ -69,7 +70,7 @@ AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecont
     /SourceKey:<sourceStorageAccountKey1> /DestKey:<destinationStorageAccountKey1> /S
 ```
 
-如果只想要复制某个容器中包含多个文件的特定 VHD，则还可以使用 /Pattern 开关指定文件名。 在本示例中，将复制名为 **myFileName.vhd** 的文件。
+如果只想要复制包含多个文件的容器中的特定 VHD，则还可以使用 /Pattern 开关指定文件名。 在本示例中，仅复制名为 **myFileName.vhd** 的文件。
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -93,14 +94,9 @@ Elapsed time:            00.00:13:07
 ```
 
 ## <a name="troubleshooting"></a>故障排除
-* 使用 AZCopy 时，如果看到错误服务器无法对请求进行身份验证，请确保授权标头的值构成正确，且包括签名，并且使用了密钥 2 或辅助存储密钥，同时尝试使用主密钥或第一个存储密钥。
+* 使用 AZCopy 时，如果看到错误“服务器无法对请求进行身份验证”，请确保授权标头的值构成正确（包括签名）。 如果使用的是密钥 2 或辅助存储密钥，则请尝试使用主密钥或第一个存储密钥。
 
 ## <a name="next-steps"></a>后续步骤
 * 可通过[将 VHD 的副本作为 OS 磁盘附加到 VM](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 创建新 VM。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

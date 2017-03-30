@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
 ms.openlocfilehash: bf7dd55be2b0e6ae43fc148ff36d8d2141a2f12b
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -45,7 +46,7 @@ ms.openlocfilehash: bf7dd55be2b0e6ae43fc148ff36d8d2141a2f12b
 1. 从已安装 Azure AD Connect 的计算机上，以权限提升模式启动 PowerShell。
 2. 如果尚未安装 Active Directory PowerShell 模块，请使用以下命令安装该模块：
    
-   `Install-WindowsFeature –Name AD-Domain-Services –IncludeManagementTools`
+   `Add-WindowsFeature RSAT-AD-PowerShell`
 3. 如果尚未安装 Azure Active Directory PowerShell 模块，请从 [用于 Windows PowerShell 的 Azure Active Directory 模块（64 位版本）](http://go.microsoft.com/fwlink/p/?linkid=236297)下载并安装该模块。 此组件依赖于随 Azure AD Connect 一起安装的登录助手。
 4. 使用企业管理员凭据运行以下命令，然后退出 PowerShell。
    
@@ -138,10 +139,5 @@ ms.openlocfilehash: bf7dd55be2b0e6ae43fc148ff36d8d2141a2f12b
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

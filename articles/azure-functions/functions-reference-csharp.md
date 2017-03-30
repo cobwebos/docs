@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/13/2016
+ms.date: 03/20/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: d405c58bf658222ceb72cc2b73e71f2ae1e1ed8d
-ms.openlocfilehash: 6b2473ef6336aea5c9a79aad78e02bcfc38b9018
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 38546a1cc3ae1696dbb37d4dd47d2d540ecd08fa
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -172,6 +172,8 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 只支持.NET Framework 4.6，因此请确保 *project.json* 文件指定 `net46`如下所示。
 
 上载 *project.json* 文件时，运行时获取包，并自动将引用添加到包程序集。 无需添加 `#r "AssemblyName"` 指令。 只需添加所需的 `using` 语句到 *run.csx* 文件，以便使用 NuGet 包中定义的类型。
+
+在 Functions 运行时，通过比较 `project.json` 和 `project.lock.json` 运行 NuGet 还原。 如果各文件的日期和时间戳不匹配，则会运行 NuGet 还原且 NuGet 会下载更新包。 但是，如果各文件的日期和时间戳匹配，则 NuGet 不执行还原。 因此不得部署 `project.lock.json`，因为这会导致 NuGet 跳过还原且该函数将不具备所需包。 若要避免部署锁定文件，请将 `project.lock.json` 添加到 `.gitignore` 文件。
 
 ### <a name="how-to-upload-a-projectjson-file"></a>如何上传 project.json 文件
 1. 首先，确保函数应用程序正在运行，可以通过在 Azure 门户中打开函数来执行此操作。 

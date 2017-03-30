@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/07/2017
+ms.date: 03/17/2017
 ms.author: v-shysun
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 6df28527f502fe2191ee0127a3f9d467ca53c5b5
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 498291fbf49e8bc119d93bb2dd4118e62ebdc71c
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server 常见问题
@@ -46,13 +46,13 @@ ms.lasthandoff: 03/07/2017
 6. **如何在 Azure VM 上安装 SQL Server 的许可版本？**
    
     可通过两种方式来执行此操作。 可以预配[支持许可证的虚拟机映像](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)之一。 另一个选项是将 SQL Server 安装介质复制到 Windows Server VM 上，然后在 VM 上安装 SQL Server。 出于许可原因，必须提供 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)。
-7. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？ **
+7. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
     否。 无法将按分钟付费许可切换为使用自己的许可证。 请使用 [BYOL 映像](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)之一创建新的 Azure 虚拟机，然后使用标准[数据迁移技术](virtual-machines-windows-migrate-sql.md)将数据库迁移到新的服务器。
 
 7. **Azure VM 是否支持 SQL Server 故障转移群集实例 (FCI)？**
 
-   是的。 可在 [Windows Server 2016 上创建 Windows Server 故障转移群集 \(WSFC\)](virtual-machines-windows-portal-sql-create-failover-cluster.md)，并将存储空间直通 (S2D) 用于群集存储。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
+   是的。 可在 [Windows Server 2016 上创建 Windows 故障转移群集 ](virtual-machines-windows-portal-sql-create-failover-cluster.md)，并将存储空间直通 (S2D) 用于群集存储。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
 
 7. **如果 SQL Server 仅用于待机/故障转移，是否必须付费才能在 Azure VM 上为 SQL Server 授予许可？**
    

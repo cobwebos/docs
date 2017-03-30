@@ -1,6 +1,6 @@
 ---
-title: "从 Azure VM 创建 VM 映像 | Microsoft Docs"
-description: "了解如何基于 Resource Manager 部署模型中创建的现有 Azure VM 创建通用化 VM 映像"
+title: "下载 Azure VM 模板 | Microsoft Docs"
+description: "下载 VM 模板，帮助在 Resource Manager 部署模型中自动部署"
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 349b8dc78ace79efca771efb78e453a47e51023e
-ms.openlocfilehash: 6e80064adadcc542523acb1d2478e6b8f0163acb
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 63d9d9ea257ece3af710e25dcf7cfa3c6e2fb8d5
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -50,10 +51,5 @@ template.json 文件是模板。
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解如何使用模板部署资源，请参阅 [Resource Manager 模板演练](../resource-manager-template-walkthrough.md)。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8209eb8df45d8c7c42e303ab3377dbde3255154a
-ms.openlocfilehash: 924b3621e03b678e158cd1240864a903db6c8510
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: bad431c8958f7d381bb9c0410caa3a57c6e75c19
+ms.lasthandoff: 03/16/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
@@ -139,7 +139,7 @@ ms.lasthandoff: 03/01/2017
 18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或&500; GB 以上）。 单击“下一步”。
+19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. 在“摘要”页上查看虚拟数据磁盘的详细信息，如果一切符合要求，则请单击“完成”创建该磁盘。 此时会关闭向导并向虚拟机添加虚拟硬盘。

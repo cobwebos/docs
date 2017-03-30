@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/17/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: 238c74c020625006384a1b31aef320e1346d9ac4
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: a49021d7887ee91da902e5c3dea8cbc6cb3de29d
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/23/2017
 
 请不要误会我的意思，我的一生都在与 SQL 数据库打交道，它们的确很不错，但就像每一种模式、每一次实践以及每一个软件平台一样，并非对每一种方案都适用。
 
-为什么在此方案中 SQL 不是最佳选择？ 让我们看一下单个 post 结构，如果想要在网站或应用程序中显示文章，可能不得不执行查询... 只加入&8; 个表以显示单个 post。现在请想象一下：动态地上传一系列贴子并将其显示在屏幕上。你可能明白我的意思了。
+为什么在此方案中 SQL 不是最佳选择？ 让我们看一下单个 post 结构，如果想要在网站或应用程序中显示文章，可能不得不执行查询... 只加入 8 个表以显示单个 post。现在请想象一下：动态地上传一系列贴子并将其显示在屏幕上。你可能明白我的意思了。
 
 当然，我们也可以使用一个功能足够强大的超大 SQL 实例来解决数以千计的查询，其中可以使用许多这些连接来为我们提供内容，但当已经有一个更简单的解决方案存在时，我们为什么还要选择这种呢？
 
@@ -219,6 +219,27 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 为了实现上述任何一种机器学习方案，我们可以使用 [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) 引入不同源的信息，并使用 [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) 来处理信息，并生成可由 Azure 机器学习处理的输出。
 
 另一个可用的选项是使用 [Microsoft 认知服务](https://www.microsoft.com/cognitive-services) 分析用户内容：不仅可以更好地理解它们（通过分析使用 [文本分析 API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)编写的内容），而且还可以检测不需要或不成熟的内容，然后使用[计算机构想 API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api)解决相关问题。 认知服务包括大量不需要使用任何一种机器学习知识的现成的可用解决方案。
+
+## <a name="a-planet-scale-social-experience"></a>全球范围内的社交体验
+最后，还必须说明一个非常重要的主题：**可伸缩性**。 在设计体系结构时，因为需要处理更多的数据和/或希望拥有更大的地理覆盖范围，所以每个组件的自行可伸缩性至关重要。 幸运的是，通过使用 DocumentDB 完成此类复杂任务是一种**统包体验**。
+
+DocumentDB 根据给定的**分区键**（定义为文档中的一个属性）自动创建分区，从而支持现成可用的[动态分区](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)。 必须在设计时定义正确的分区键，并记住可用的[最佳做法](documentdb-partition-data.md#designing-for-partitioning)；对于社交体验，分区策略必须与查询（需要在同一分区内进行读取）和写入（通过在多个分区上分散写入来避免“热点”）方式保持一致。 一些相关选项是：基于临时键（日/月/周）的分区，按内容类别、地理区域和用户进行划分；这一切都取决于查询数据并将其显示在社交体验中的方式。 
+
+值得一提的有趣的一点是，DocumentDB 将以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），无需在数据增长过程中添加任何逻辑。
+
+一段时间后，最终流量会增加，资源消耗（通过 [RU](documentdb-request-units.md) 即“请求单位”进行度量）也会增加。 随着用户群的增长，读取和写入操作会更加频繁，用户将开始创建和读取更多内容；**缩放吞吐量**的能力至关重要。 增加 RU 非常容易，可以通过在 Azure 门户中单击几次或[通过 API 发出命令](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer)来实现。
+
+![扩展和定义分区键](./media/documentdb-social-media-apps/social-media-apps-scaling.png)
+
+如果平台的发展越来越好，来自其他国家/地区或洲的用户注意到你的平台并开始使用它，这是一件多么让人惊喜的事！
+
+但是你很快会意识到他们在平台的体验并不理想；他们与运营区域相距太远，延迟问题非常严重，你显然不希望他们因此退出平台。 如果有一种简单的方法可以**扩展全球覆盖范围**就好了······确实有！
+
+通过 DocumentDB，只需单击数次即可通过透明方式[全局复制数据](documentdb-portal-global-replication.md)，并从[客户端代码](documentdb-developing-with-multiple-regions.md)中自动选择可用区域。 这也意味着可以拥有[多个故障转移区域](documentdb-regional-failovers.md)。 
+
+全局复制数据时，需确保客户端可以利用该数据。 如果要使用 Web 前端或从移动客户端访问 API，则可以部署 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)并在所有所需区域克隆 Azure 应用服务（方法是通过使用[性能配置](../app-service-web/web-sites-traffic-manager.md)支持扩展的全球覆盖范围）。 客户端访问前端或 API 时，将被路由到最近的应用服务，而该应用服务将连接到本地的 DocumentDB 副本。
+
+![将全球覆盖范围添加到社交平台](./media/documentdb-social-media-apps/social-media-apps-global-replicate.png)
 
 ## <a name="conclusion"></a>结束语
 本文尝试说明一种完全在 Azure 上创建具有低成本服务社交网络，并可通过鼓励使用多层存储解决方案和称为“阶梯”的数据分布得到良好结果的替代方法。

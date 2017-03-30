@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 91b5b68152627bd4c31b87c317a4f7b1d97c9e76
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 399f69255c729b9d004d617ed195a172ffe481b9
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/10/2017
 
 此脚本创建一个 Azure 虚拟机，安装 Operations Management Suite (OMS) 代理，并将系统注册到 OMS 工作区。 运行脚本后，该虚拟机将显示在 OMS 控制台中。
 
-在运行此脚本前，请确保已使用 `Login-AzureRmAccount` 命令创建与 Azure 的连接。 此外，名为 `id_rsa.pub` 的 SSH 公钥必须存储在用户配置文件的 .ssh 目录中。 最后，需要在脚本中更新 OMS 工作区 ID 和工作区密钥。
+必要时，请使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)中的说明安装 Azure PowerShell，然后运行 `Login-AzureRmAccount` 创建与 Azure 的连接。 此外，用户配置文件的 .ssh 目录中需具备名为 `id_rsa.pub` 的 SSH 公钥。 最后，需更新 OMS 工作区 ID 和工作区密钥。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/10/2017
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
-运行脚本示例后，可以使用以下命令删除资源组、VM 以及所有相关资源。
+运行以下命令来删除资源组、VM 和所有相关资源。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup

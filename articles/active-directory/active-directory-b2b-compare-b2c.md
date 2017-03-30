@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 72e7e57185d882a5f3243e2705aed54ee8347798
-ms.openlocfilehash: 5d157a936317bbf66cfc3634d4d08ea3483d137b
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 44cbbc149787a2d6cf2e0e8750b98d33b52f6136
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -30,10 +31,10 @@ Azure Active Directory (Azure AD) B2B 协作和 Azure AD B2C 都允许在 Azure 
 
 B2B 协作功能 |     Azure AD B2C 独立产品/服务
 -------- | --------
-适用于：希望使用任何所选标识向其他任何组织的用户提供公司数据、资源和应用程序访问权限的组织。 | 适用于：使用任何所选标识面向客户的客户版移动和 Web 应用，其中这些客户包括个人、公民以及机构/组织客户（非员工或外部协作者）。
+适用于：希望在不考虑标识提供者的情况下验证合作伙伴组织中用户的身份的组织。 | 适用于：邀请移动和 Web 应用的客户（无论是个人、机构还是组织客户）加入到 Azure AD。
 支持的标识：使用工作或学校帐户的员工、使用工作或学校帐户的合作伙伴或者任何电子邮件地址。 即将支持直接联合身份验证。  | 支持的标识：具有本地应用程序帐户的客户用户（任何电子邮件地址或用户名），或者任何使用直接联合身份验证的受支持社交标识。
-合作伙伴用户所在的目录：来自外部组织的合作伙伴用户在员工所在的目录中进行托管（特别备注的除外）。 可采用与员工相同的方式管理这些外部用户，还可将其添加到相同组等  | 客户用户实体所在的目录：位于应用程序目录中。 与组织的员工和合作伙伴目录分开管理（若有）。
-支持单一登录 (SSO) 到 Office 365 等所有连接了 Azure AD 的应用（包括本地应用），以及Salesforce、Box 和 Workday 等其他 Microsoft 和非 Microsoft SaaS 应用。  |  支持在 Azure AD B2C 租户中单一登录到客户自有应用。 不可单一登录到 Office 365 或其他 Microsoft 和非 Microsoft SaaS 应用。
+合作伙伴用户所在的目录：来自外部组织的合作伙伴用户在员工所在的目录中进行托管（特别备注的除外）。 可采用与员工相同的方式进行管理，还可将其添加到相同组等  | 客户用户实体所在的目录：位于应用程序目录中。 与组织的员工和合作伙伴目录（若有）分开管理。
+支持单一登录 (SSO) 到所有 Azure AD 连接的应用。 例如，可允许访问 Office 365 或本地应用以及其他 SaaS 应用（例如 Salesforce 或 Workday）。  |  支持在 Azure AD B2C 租户中单一登录到客户自有应用。 不可单一登录到 Office 365 或其他 Microsoft 和非 Microsoft SaaS 应用。
 合作伙伴生命周期：由主办/邀请组织管理。  | 客户生命周期：自助服务或由应用程序管理。
 安全策略和符合性：由主办/邀请组织管理。  | 安全策略和符合性：由应用程序管理。
 品牌：使用主办/邀请组织的品牌。  |    品牌：由应用程序管理。 通常是带品牌的产品，组织退居幕后。
@@ -55,9 +56,4 @@ B2B 协作功能 |     Azure AD B2C 独立产品/服务
 * [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
 * [B2B 协作当前限制](active-directory-b2b-current-limitations.md)
 * [获取对 B2B 协作的支持](active-directory-b2b-support.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

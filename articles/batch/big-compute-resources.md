@@ -1,5 +1,5 @@
 ---
-title: "批处理和 HPC 工作负荷在云中的资源 | Microsoft Docs"
+title: "Azure 云中的 Batch 和 HPC 的资源 | Microsoft Docs"
 description: "列出了旨在帮助你在 Azure 中运行大规模并行批处理和高性能计算 (HPC) 工作负荷的技术资源。"
 services: batch, cloud-services, virtual-machines
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 03/17/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
-ms.openlocfilehash: edcf34610e7517f9ca16f8c239e4080c475933f4
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 5e605c8c509c93feb822781257ad979a0dea00aa
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -58,7 +59,15 @@ HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 M
 
 * [运转 SLURM 群集](https://azure.microsoft.com/documentation/templates/slurm/)和[博客文章](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
 * [运转 Torque 群集](https://azure.microsoft.com/documentation/templates/torque-cluster/)
+* [使用 PBS Professional 计算网格模板](https://github.com/xpillons/azure-hpc/tree/master/Compute-Grid-Infra)
+
+## <a name="hpc-storage"></a>HPC 存储
+* [Azure 上用于 HPC 存储的并行文件系统](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
 * [用于 Lustre 软件的 Intel 云版本 - 评估](https://azure.microsoft.com/marketplace/partners/intel/lustre-cloud-edition-evaleval-lustre-2-7/)
+* [CentOS 7.2 上的 BeeGFS 模板](https://github.com/smith1511/hpc/tree/master/beegfs-shared-on-centos7.2)
+
+
+
 
 ## <a name="microsoft-mpi"></a>Microsoft MPI
 [Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) (MS-MPI) 是 Microsoft 实现的消息传递接口标准，用于在 Windows 平台上开发和运行并行应用程序。
@@ -68,14 +77,17 @@ HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 M
 * [MPI 论坛](https://social.microsoft.com/Forums/en-us/home?forum=windowshpcmpi)
 
 ## <a name="compute-intensive-instances"></a>计算密集型实例
-Azure 提供了[一系列 VM 大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，包括能够连接到后端 RDMA 网络的[计算密集型 H 系列](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)实例，以运行 Linux 和 Windows HPC 工作负荷。
+Azure 提供了[一系列 VM 大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，包括能够连接到后端 RDMA 网络的[计算密集型 H 系列](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)实例，以运行 Linux 和 Windows HPC 工作负荷。 
 
 * [设置 Linux RDMA 群集以运行 MPI 应用程序](../virtual-machines/virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [通过 Microsoft HPC Pack 设置 Windows RDMA 群集以运行 MPI 应用程序](../virtual-machines/virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
+有关 GPU 密集型工作负载，请查看 [NC 和NV 大小](https://azure.microsoft.com/blog/azure-n-series-general-availability-on-december-1/)。
+
 ## <a name="samples-and-demos"></a>示例和演示
 * [Azure Batch C# 和 Python 代码示例](https://github.com/Azure/azure-batch-samples)
 * [ Shipyard](https://azure.github.io/batch-shipyard/) 工具包，可以轻松地将批处理样式的 Dockerized 工作负荷部署到 Azure Batch
+* 基于 Azure Batch 构建的 [doAzureParallel](http://www.github.com/Azure/doAzureParallel) R 包
 * [Test drive SUSE Linux Enterprise Server for HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)（试用 SUSE Linux Enterprise Server for HPC）
 
 ## <a name="related-azure-services"></a>相关的 Azure 服务
@@ -110,10 +122,5 @@ Azure 提供了[一系列 VM 大小](../virtual-machines/virtual-machines-window
 ## <a name="next-steps"></a>后续步骤
 * 有关最新通告，请参阅 [Microsoft HPC 和批处理团队博客](http://blogs.technet.com/b/windowshpc/)与 [Azure 博客](https://azure.microsoft.com/blog/tag/hpc/)。
 * 另请参阅 [Batch 中的新增功能](https://azure.microsoft.com/updates/?service=batch)或订阅 [RSS 源](https://azure.microsoft.com/updates/feed/?service=batch)。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

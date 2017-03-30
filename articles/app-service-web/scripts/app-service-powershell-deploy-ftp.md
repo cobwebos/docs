@@ -12,26 +12,20 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 5f3bf8087fa6601ae410d6db907471fd6faa2742
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f4729e9daf788220358e7cca2508c820a1f2006a
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="upload-files-to-a-web-app-using-ftp"></a>使用 FTP 将文件上载到 Web 应用
 
-此示例脚本使用 Azure PowerShell 执行以下操作： 
+此示例脚本使用其相关资源，在应用服务中创建 Web 应用，然后使用 FTP（通过 [WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx)）部署 Web 应用代码。
 
-* 在欧洲西部 Azure 区域的 Azure 应用服务中创建 Web 应用。
-* 从 Web 应用获取 FTP 连接信息
-* 使用 FTP 部署 Web 应用代码（通过 [WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx)）。
-
-## <a name="prerequisites"></a>先决条件
-
-* 运行 `Login-AzureRmAccount` 登录到 Azure。
+必要时，请使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)中的说明安装 Azure PowerShell，然后运行 `Login-AzureRmAccount` 创建与 Azure 的连接。
 
 ## <a name="sample-script"></a>示例脚本
 

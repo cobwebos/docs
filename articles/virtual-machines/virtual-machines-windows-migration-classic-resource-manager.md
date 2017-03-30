@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 2c96a3ca5fd72a4a3c992206aeb93f201342dd6a
-ms.openlocfilehash: aafaacea59c2c7fc463fb84207417d2c4e1d81ff
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 23f4813b3ba587784f5b31cfa633cdf27373843d
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -89,9 +90,8 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 | 计算 |不关联的虚拟机磁盘。 |
 | 计算 |虚拟机映像。 |
 | 网络 |终结点 ACL。 |
-| 网络 |虚拟网络网关（Azure ExpressRoute 网关、应用程序网关）。 |
+| 网络 |ExpressRoute 网关、应用程序网关（支持 VPN 网关）。 |
 | 网络 |使用 VNet 对等互连的虚拟网络。 （将 VNet 迁移到 ARM，然后进行对等互连）详细了解 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。 |
-| 网络 |流量管理器配置文件。 |
 
 ### <a name="unsupported-configurations"></a>不支持的配置
 目前不支持以下配置。
@@ -110,6 +110,8 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 | Azure HDInsight |包含 HDInsight 服务的虚拟网络 |目前不支持。 |
 | Microsoft Dynamics Lifecycle Services |包含由 Dynamics Lifecycle Services 管理的虚拟机的虚拟网络 |目前不支持。 |
 | Azure AD 域服务 |包含 Azure AD 域服务的虚拟网络 |目前不支持。 |
+| Azure RemoteApp |包含 Azure RemoteApp 部署的虚拟网络 |目前不支持。 |
+| Azure API 管理 |包含 Azure API 管理部署的虚拟网络 |目前不支持。 若要迁移 IaaS VNET，请更改 API 管理部署的 VNET（该部署不会造成停机）。 |
 | 计算 |Azure 安全中心扩展，其中包含的 VNET 在本地 DNS 服务器上设有支持传输连接的 VPN 网关或 ExpressRoute 网关 |Azure 安全中心在虚拟机上自动安装扩展，用于监视其安全性并引发警报。 如果在订阅上启用了 Azure 安全中心策略，通常会自动安装这些扩展。 当前不支持 ExpressRoute 网关迁移，也无法本地访问支持传输连接的 VPN 网关。 如果删除 ExpressRoute 网关或迁移支持传输连接的 VPN 网关，在继续提交迁移时，对 VM 存储帐户的本地访问将丢失。 发生这种情况时无法进行迁移，因为来宾代理状态 blob 无法填充。 建议在进行迁移时提前 3 小时禁用订阅的 Azure 安全中心策略。 |
 
 ## <a name="the-migration-experience"></a>迁移体验
@@ -150,7 +152,16 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 
 然后，Azure 平台就会开始将迁移中资源的元数据从经典模型迁移到 Resource Manager 模型。
 
-准备操作完成之后，可以选择在经典模型和 Resource Manager 模型中将资源可视化。 对于经典部署模型中的每项云服务，Azure 平台都会创建模式为 `cloud-service-name>-migrated` 的资源组名称。
+准备操作完成之后，可以选择在经典模型和 Resource Manager 模型中将资源可视化。 对于经典部署模型中的每项云服务，Azure 平台都会创建模式为 `cloud-service-name>-Migrated` 的资源组名称。
+
+> [!NOTE]
+> 不可选择为已迁移资源创建的资源组名称（即“-Migrated”），但迁移完成后，可使用 Azure Resource Manager 移动功能将资源移动到所需的任何资源组。 若要了解详细信息，请参阅[将资源移动到新的资源组或订阅](../resource-group-move-resources.md)
+
+下面两个屏幕显示了“准备”操作成功后的结果。 第一个屏幕显示包含原始云服务的资源组。 第二个屏幕显示包含 Azure Resource Manager 等效资源的新“-Migrated”资源组。
+
+![显示门户经典云服务的屏幕截图](./media/virtual-machines-windows-migration-classic-resource-manager/portal-classic.png)
+
+![显示准备中的门户 ARM 资源的屏幕截图](./media/virtual-machines-windows-migration-classic-resource-manager/portal-arm.png)
 
 > [!NOTE]
 > 不属于经典虚拟网络的虚拟机将在此迁移阶段中停止（解除分配）。
@@ -183,6 +194,11 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 > 这是幂等操作。 如果该操作失败，建议重试该操作。 如果一直失败，请创建支持票证，或在 [VM 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WAVirtualMachinesforWindows)上创建标记为 ClassicIaaSMigration 的论坛帖子。
 >
 >
+<br>
+以下是迁移过程中的步骤流程图
+
+![显示迁移步骤的屏幕截图](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
+
 
 ## <a name="frequently-asked-questions"></a>常见问题
 **此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？**
@@ -249,9 +265,4 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 * [使用 CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager](virtual-machines-linux-cli-migration-classic-resource-manager.md)
 * [使用社区 PowerShell 脚本将经典虚拟机克隆到 Azure Resource Manager](virtual-machines-windows-migration-scripts.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [查看最常见的迁移错误](virtual-machines-migration-errors.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

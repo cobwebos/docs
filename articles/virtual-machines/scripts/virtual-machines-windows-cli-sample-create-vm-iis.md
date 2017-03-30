@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 02/28/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 82d40c30c92f5da090e7ec4e2f25ead3908cc603
-ms.openlocfilehash: ecf51ea9bf7e74c7847b4394803c2b95a3774446
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7ba43d1ab626331b9663bb7fef9af986810533c2
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 快速创建虚拟机
 
-此脚本使用 Windows Server 2016 创建一个 Azure 虚拟机，然后使用 Azure 虚拟机自定义脚本扩展安装 IIS。 运行此脚本后，可通过虚拟机的公共 IP 地址访问默认 IIS 网站。
+此脚本创建一个运行 Windows Server 2016 的 Azure 虚拟机，然后使用 Azure 虚拟机自定义脚本扩展安装 IIS。 运行此脚本后，可通过虚拟机的公共 IP 地址访问默认 IIS 网站。
 
-在运行此脚本前，请确保已使用 `az login` 命令创建与 Azure 的连接。 此外，应将该脚本开头的 $AdminPassword 变量更改为唯一和满足密码复杂性要求。
+必要时，请使用 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中的说明安装 Azure CLI，然后运行 `az login` 创建与 Azure 的连接。
 
 此示例在 Bash Shell 中正常工作。 有关在 Windows 上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../virtual-machines-windows-cli-options.md)。
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/02/2017
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
-运行脚本示例后，可以使用以下命令删除资源组、VM 以及所有相关资源。
+运行以下命令来删除资源组、VM 和所有相关资源。
 
 ```azurecli
 az group delete --name myResourceGroup --yes

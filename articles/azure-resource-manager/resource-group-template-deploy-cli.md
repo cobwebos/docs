@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/10/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: b084c722b75152b8a2b867f21d546abd04a96f04
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 71b73c6a7b86c4ba3a890d15811958d35ac9a359
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/15/2017
       --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
   ```
 
-  部署可能需要几分钟才能完成。 完成之后，将看到如下消息：
+  部署可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息：
 
   ```azurecli
   "provisioningState": "Succeeded",
@@ -120,7 +120,7 @@ az group deployment create \
 > 
 
 ### <a name="add-private-template-to-storage-account"></a>将专用模板添加到存储帐户
-以下命令设置一个专用存储帐户容器并上载一个模板：
+以下示例设置一个专用存储帐户容器并上传一个模板：
    
 ```azurecli
 az group create --name "ManageGroup" --location "South Central US"
@@ -181,6 +181,130 @@ az group deployment operation list --resource-group ExampleGroup --name vmlinux 
 ```
 
 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
+
+## <a name="complete-deployment-script"></a>完整部署脚本
+
+以下示例显示了用于部署由[导出模板](resource-manager-export-template.md)功能所生成模板的 Azure CLI 2.0 脚本：
+
+```azurecli
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# -e: immediately exit if any command has a non-zero exit status
+# -o: prevents errors in a pipeline from being masked
+# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
+
+usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
+
+declare subscriptionId=""
+declare resourceGroupName=""
+declare deploymentName=""
+declare resourceGroupLocation=""
+
+# Initialize parameters specified from command line
+while getopts ":i:g:n:l:" arg; do
+    case "${arg}" in
+        i)
+            subscriptionId=${OPTARG}
+            ;;
+        g)
+            resourceGroupName=${OPTARG}
+            ;;
+        n)
+            deploymentName=${OPTARG}
+            ;;
+        l)
+            resourceGroupLocation=${OPTARG}
+            ;;
+        esac
+done
+shift $((OPTIND-1))
+
+#Prompt for parameters is some required parameters are missing
+if [[ -z "$subscriptionId" ]]; then
+    echo "Subscription Id:"
+    read subscriptionId
+    [[ "${subscriptionId:?}" ]]
+fi
+
+if [[ -z "$resourceGroupName" ]]; then
+    echo "ResourceGroupName:"
+    read resourceGroupName
+    [[ "${resourceGroupName:?}" ]]
+fi
+
+if [[ -z "$deploymentName" ]]; then
+    echo "DeploymentName:"
+    read deploymentName
+fi
+
+if [[ -z "$resourceGroupLocation" ]]; then
+    echo "Enter a location below to create a new resource group else skip this"
+    echo "ResourceGroupLocation:"
+    read resourceGroupLocation
+fi
+
+#templateFile Path - template file to be used
+templateFilePath="template.json"
+
+if [ ! -f "$templateFilePath" ]; then
+    echo "$templateFilePath not found"
+    exit 1
+fi
+
+#parameter file path
+parametersFilePath="parameters.json"
+
+if [ ! -f "$parametersFilePath" ]; then
+    echo "$parametersFilePath not found"
+    exit 1
+fi
+
+if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentName" ]; then
+    echo "Either one of subscriptionId, resourceGroupName, deploymentName is empty"
+    usage
+fi
+
+#login to azure using your credentials
+az account show 1> /dev/null
+
+if [ $? != 0 ];
+then
+    az login
+fi
+
+#set the default subscription id
+az account set --name $subscriptionId
+
+set +e
+
+#Check for existing RG
+az group show $resourceGroupName 1> /dev/null
+
+if [ $? != 0 ]; then
+    echo "Resource group with name" $resourceGroupName "could not be found. Creating new resource group.."
+    set -e
+    (
+        set -x
+        az resource group create --name $resourceGroupName --location $resourceGroupLocation 1> /dev/null
+    )
+    else
+    echo "Using existing resource group..."
+fi
+
+#Start deployment
+echo "Starting deployment..."
+(
+    set -x
+    az resource group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath
+)
+
+if [ $?  == 0 ];
+ then
+    echo "Template has been successfully deployed"
+fi
+```
 
 ## <a name="next-steps"></a>后续步骤
 * 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](../virtual-machines/virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
