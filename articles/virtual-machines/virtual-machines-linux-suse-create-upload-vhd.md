@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: a49eb5e27f5b8d2da1f8de95a46f43106b045fe2
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: bf6e3aa1c0a8a092f18cd59200b815117a80c6cf
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -159,11 +160,6 @@ ms.openlocfilehash: a49eb5e27f5b8d2da1f8de95a46f43106b045fe2
 13. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上载到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
-现在，你可以使用 SUSE Linux 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机了。 如果这是第一次将 .vhd 文件上载到 Azure，请参阅[创建和上载包含 Linux 操作系统的虚拟硬盘](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)中的步骤 2 和步骤 3。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+现在，你可以使用 SUSE Linux 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机了。 如果这是第一次将 .vhd 文件上载到 Azure，请参阅[创建和上载包含 Linux 操作系统的虚拟硬盘](linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)中的步骤 2 和步骤 3。
 
 

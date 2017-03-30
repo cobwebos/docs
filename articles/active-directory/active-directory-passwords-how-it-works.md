@@ -16,15 +16,15 @@ ms.date: 02/28/2017
 ms.author: joflore
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: fe83b1df8cc539e94e9541304584640a00551504
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 24c94f80afdb3d3330a835fae2f77ecb213a9ae5
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="how-password-management-works-in-azure-active-directory"></a>Azure Active Directory 中的密码管理的工作原理
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 
 Azure Active Directory (Azure AD) 中的密码管理包括以下逻辑组件：
 
@@ -116,7 +116,7 @@ Azure Active Directory (Azure AD) 中的密码管理包括以下逻辑组件：
 
 若要了解详细信息，请参阅以下 Azure AD 密码重置页：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样，请了解如何[更改和重置自己的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样，请了解如何[更改和重置自己的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 * [**入门**](active-directory-passwords-getting-started.md)：了解如何让用户重置和更改云密码或本地密码。
 * [**自定义**](active-directory-passwords-customize.md)：了解如何根据组织的需求自定义服务的外观和行为。
 * [**最佳做法**](active-directory-passwords-best-practices.md)：了解如何快速部署且有效管理组织的密码。

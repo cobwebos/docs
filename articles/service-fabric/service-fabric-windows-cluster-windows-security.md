@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 01/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 6294a6fac8748f70c807df76feb425cb627bf4c3
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: b8842047351da6fdb547e0b09492b89fad962bee
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -29,8 +29,56 @@ ms.lasthandoff: 03/15/2017
 >
 >
 
-## <a name="configure-windows-security"></a>配置 Windows 安全性  
-随 [Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) 独立群集包一起下载的 *ClusterConfig.Windows.JSON* 示例配置文件包含用于配置 Windows 安全性的模板。 在“属性”部分配置 Windows 安全性：
+## <a name="configure-windows-security-using-gmsa"></a>使用 gMSA 配置 Windows 安全性  
+随 [Microsoft.Azure.ServiceFabric.WindowsServer<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) 独立群集包下载的 *ClusterConfig.gMSA.Windows.MultiMachine.JSON* 示例配置文件包含一个使用[组托管服务帐户 (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) 配置 Windows 安全性的模板：  
+
+```  
+"security": {  
+            "ServerCredentialType": "Windows",  
+            "WindowsIdentities": {  
+                "ClustergMSAIdentity": "accountname@fqdn"  
+                "ClusterSPN": "fqdn"  
+                "ClientIdentities": [  
+                    {  
+                        "Identity": "domain\\username",  
+                        "IsAdmin": true  
+                    }  
+                ]  
+            }  
+        }  
+```  
+  
+| **配置设置** | **说明** |  
+| --- | --- |  
+| WindowsIdentities |包含群集和客户端标识。 |  
+| ClustergMSAIdentity |配置节点到节点安全性。 组托管服务帐户。 |  
+| ClusterSPN |gMSA 帐户的完全限定的域 SPN|  
+| ClientIdentities |配置客户端到节点安全性。 客户端用户帐户的数组。 |  
+| 标识 |客户端标识或域用户。 |  
+| IsAdmin |如果为 true，则指定域用户具有管理员客户端访问权限；如果为 false，则指定域用户具有用户客户端访问权限。 |  
+  
+若需要在 gMSA 下运行 Service Fabric，可通过设置“ClustergMSAIdentity”来配置[节点到节点安全性](service-fabric-cluster-security.md#node-to-node-security)。 若要在节点之间建立信任关系，这些节点必须能够相互识别。 可通过两种方式完成此操作：指定包含集群中所有节点的组托管服务帐户，或者指定包含集群中所有节点的域计算机组。 强烈建议使用[组托管服务帐户 (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) 方法，尤其针对拥有 10 个以上节点的较大群集或可能会增大或收缩的群集。  
+此方法不需要创建群集管理员对其有访问权限、可在其中添加和删除成员的域组。 这些帐户对于自动密码管理也同样有用。 有关详细信息，请参阅[组托管服务帐户入门](http://technet.microsoft.com/library/jj128431.aspx)。  
+ 
+使用 **ClientIdentities** 配置[客户端到节点安全性](service-fabric-cluster-security.md#client-to-node-security)。 若要在客户端与群集之间建立信任关系，必须对群集进行配置，使其知道可以信任哪些客户端标识。 这可以通过两种不同的方法来实现：指定可以连接的域组用户，或者指定可以连接的域节点用户。 Service Fabric 针对连接到 Service Fabric 群集的客户端支持两种不同的访问控制类型：管理员和用户。 访问控制可让群集管理员针对不同的用户组限制某些类型的特定群集操作的访问权限，使群集更加安全。  管理员对管理功能（包括读取/写入功能）拥有完全访问权限。 默认情况下，用户只有管理功能的读取访问权限（例如查询功能），以及解析应用程序和服务的能力。 有关访问控制的详细信息，请参阅 [Service Fabric 客户端的基于角色的访问控制](service-fabric-cluster-security-roles.md)。  
+ 
+以下示例**安全性**部分使用 gMSA 配置 Windows 安全性，并指定 *ServiceFabric.clusterA.contoso.com* gMSA 中的计算机位于群集中，同时还指定 *CONTOSO\usera* 拥有管理客户端访问权限：  
+  
+```  
+"security": {  
+    "WindowsIdentities": {  
+        "ClustergMSAIdentity" : "ServiceFabric.clusterA.contoso.com",  
+        "ClusterSPN" : "clusterA.contoso.com",  
+        "ClientIdentities": [{  
+            "Identity": "CONTOSO\\usera",  
+            "IsAdmin": true  
+        }]  
+    }  
+}  
+```  
+  
+## <a name="configure-windows-security-using-a-machine-group"></a>使用计算机组配置 Windows 安全性  
+随 [Microsoft.Azure.ServiceFabric.WindowsServer<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) 独立群集包下载的 *ClusterConfig.Windows.MultiMachine.JSON* 示例配置文件包含用于配置 Windows 安全性的模板。  在“属性”部分配置 Windows 安全性： 
 
 ```
 "security": {
@@ -48,7 +96,7 @@ ms.lasthandoff: 03/15/2017
 
 | **配置设置** | **说明** |
 | --- | --- |
-| ClusterCredentialType |设置为“Windows”可启用 Windows 安全性。 |
+| ClusterCredentialType |如果 ClusterIdentity 指定了 Active Directory 计算机组名称，则“ClusterCredentialType”设置为“Windows”。 |  
 | ServerCredentialType |设置为“Windows”可为客户端启用 Windows 安全性。<br /><br />这表示群集的客户端和群集本身在 Active Directory 域中运行。 |  
 | WindowsIdentities |包含群集和客户端标识。 |  
 | ClusterIdentity |使用计算机组名 domain\machinegroup 配置节点到节点安全性。 |  
@@ -56,7 +104,7 @@ ms.lasthandoff: 03/15/2017
 | 标识 |为客户端标识添加域用户 domain\username。 |  
 | IsAdmin |设置为 true 可指定域用户具有管理员客户端访问权限，设置为 false 可指定域用户具有用户客户端访问权限。 |  
 
-使用 **ClusterIdentity** 配置[节点到节点安全性](service-fabric-cluster-security.md#node-to-node-security)。 若要在节点之间建立信任关系，这些节点必须能够相互识别。 为此，可创建一个域组，将所有节点包含在群集中。 该组名应在 **ClusterIdentity** 中指定。 有关详细信息，请参阅[在 Active Directory 中创建组](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx)。  
+如果希望在 Active Directory 域内使用计算机组，可通过设置“ClusterIdentity”来配置[节点到节点安全性](service-fabric-cluster-security.md#node-to-node-security)。 有关详细信息，请参阅在 [Active Directory 中创建计算机组](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx)。
 
 使用 **ClientIdentities** 配置[客户端到节点安全性](service-fabric-cluster-security.md#client-to-node-security)。 若要在客户端与群集之间建立信任关系，必须对群集进行配置，使群集知道可以信任哪些客户端标识。 可通过两种不同的方式建立信任：
 

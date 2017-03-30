@@ -17,9 +17,9 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: ce4cbe6ee01fcd56d2a3c311a45e47a6f06593fd
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 1d815620192af9b3364f2dfda71749caf314abc4
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/10/2017
 
 此示例 PowerShell 脚本监视一个数据库的性能指标，将其缩放为更高的性能级别，并基于性能指标之一创建警报规则。 
 
-在运行此脚本前，请确保已使用 `Add-AzureRmAccount` cmdlet 创建了到 Azure 的连接。
+[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>示例脚本
 

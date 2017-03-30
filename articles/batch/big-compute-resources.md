@@ -15,9 +15,9 @@ ms.workload: big-compute
 ms.date: 03/17/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5e605c8c509c93feb822781257ad979a0dea00aa
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 671d5c3e88585d7874dbfb0b03adc3cd9374ceca
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -79,8 +79,8 @@ HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 M
 ## <a name="compute-intensive-instances"></a>计算密集型实例
 Azure 提供了[一系列 VM 大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，包括能够连接到后端 RDMA 网络的[计算密集型 H 系列](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)实例，以运行 Linux 和 Windows HPC 工作负荷。 
 
-* [设置 Linux RDMA 群集以运行 MPI 应用程序](../virtual-machines/virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [通过 Microsoft HPC Pack 设置 Windows RDMA 群集以运行 MPI 应用程序](../virtual-machines/virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [设置 Linux RDMA 群集以运行 MPI 应用程序](../virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [通过 Microsoft HPC Pack 设置 Windows RDMA 群集以运行 MPI 应用程序](../virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 有关 GPU 密集型工作负载，请查看 [NC 和NV 大小](https://azure.microsoft.com/blog/azure-n-series-general-availability-on-december-1/)。
 

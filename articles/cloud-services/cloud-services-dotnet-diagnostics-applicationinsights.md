@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 12/15/2015
 ms.author: saurabh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d6e668f5ceffc6e78ac19f83b6022118d5abbb55
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 78d8908a144dadb5fe9d4c48491abf153defe118
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -42,9 +43,9 @@ ms.openlocfilehash: d6e668f5ceffc6e78ac19f83b6022118d5abbb55
 
 ![选择服务配置][4]
 
-在发布期间，Visual Studio 将使用 **APPINSIGHTS_INSTRUMENTATIONKEY** 配置设置来配置诊断扩展模块及相应的 Application Insights 资源信息。 配置设置是为不同服务配置定义不同检测键的便利方式。 发布时，Visual Studio 将转换该设置，并将它插入诊断扩展模块公共配置。 为了简化使用 PowerShell 配置诊断扩展的过程，Visual Studio 的程序包输出还包含公共配置 XML 以及相应的 Application Insights 检测键。 公共配置文件在“扩展”文件夹中创建，并遵循模式 PaaSDiagnostics.<RoleName>.PubConfig.xml。 任何基于 PowerShell 的部署都可以使用此模式将每个配置映射到角色。
+在发布期间，Visual Studio 将使用 **APPINSIGHTS_INSTRUMENTATIONKEY** 配置设置来配置诊断扩展模块及相应的 Application Insights 资源信息。 配置设置是为不同服务配置定义不同检测键的便利方式。 发布时，Visual Studio 将转换该设置，并将它插入诊断扩展模块公共配置。 为了简化使用 PowerShell 配置诊断扩展的过程，Visual Studio 的程序包输出还包含公共配置 XML 以及相应的 Application Insights 检测键。 公共配置文件在“扩展”文件夹中创建，并遵循模式 PaaSDiagnostics<RoleName>.PubConfig.xml。 任何基于 PowerShell 的部署都可以使用此模式将每个配置映射到角色。
 
-5) 启用“**将诊断数据发送到 Application Insights**”会自动将 Azure 诊断配置为向 Application Insights 发送 Azure 诊断代理程序收集的所有性能计数器和错误级别日志。 如果你想进一步配置要将哪些数据发送到 Application Insights，必须手动编辑每个角色的 *diagnostics.wadcfgx* 文件。 若要了解有关手动更新配置的详细信息，请参阅[配置 Azure 诊断以将数据发送到 Application Insights](../azure-diagnostics-configure-applicationinsights.md)。
+5) 启用“**将诊断数据发送到 Application Insights**”会自动将 Azure 诊断配置为向 Application Insights 发送 Azure 诊断代理程序收集的所有性能计数器和错误级别日志。 如果你想进一步配置要将哪些数据发送到 Application Insights，必须手动编辑每个角色的 *diagnostics.wadcfgx* 文件。 若要了解有关手动更新配置的详细信息，请参阅[配置 Azure 诊断以将数据发送到 Application Insights](#configure-azure-diagnostics-to-send-data-to-application-insights)。
 
 将云服务配置为向 Application Insights 发送 Azure 诊断数据后，可以像平时一样将云服务部署到 Azure，并确保 Azure 诊断扩展已启用。 请参阅[使用 Visual Studio 发布云服务](../vs-azure-tools-publishing-a-cloud-service.md)。  
 
@@ -77,9 +78,4 @@ Azure 诊断遥测数据会显示在为云服务配置的 Application Insights �
 [4]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/role-designer-appinsights-serviceconfig.png
 [5]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/metrics-explorer-custom-metrics.png
 [6]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/search-windowseventlog-error.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

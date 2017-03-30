@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 3aa3a2fce46f37b06b60472d296e21fd10e070dc
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: dd1e0528a508f44daf03b58931925003bc565e41
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="how-to-troubleshoot-password-management"></a>如何排查密码管理问题
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 >
 >
 
@@ -727,7 +727,7 @@ ms.lasthandoff: 03/10/2017
               <p>HR 8023042</p>
             </td>
             <td>
-              <p>同步引擎返回了错误：hr =&80230;402，消息 = 由于存在使用相同定位点的重复条目，尝试获取对象失败</p>
+              <p>同步引擎返回了错误：hr = 80230402，消息 = 由于存在使用相同定位点的重复条目，尝试获取对象失败</p>
             </td>
             <td>
               <p>ADSync</p>
@@ -1502,7 +1502,7 @@ MA 服务帐户没有合适的权限在相关的用户帐户上设置新密码�
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置和更改云密码或本地密码
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为

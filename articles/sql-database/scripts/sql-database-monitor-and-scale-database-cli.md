@@ -10,16 +10,16 @@ tags: azure-service-management
 ms.assetid: 
 ms.service: sql-database
 ms.custom: sample
-ms.devlang: CLI
+ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 03/16/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: e022c24b84b0ce10c30ca479c67018b6f60e606a
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: f29da889f90968a82dccaeb1fa7e3c20e6b44458
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -27,10 +27,7 @@ ms.lasthandoff: 03/17/2017
 
 此示例 CLI 脚本在查询数据库的大小信息后，将单个 Azure SQL 数据库缩放为不同的性能级别。 
 
-必要时，请使用 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中的说明安装 Azure CLI，然后运行 `az login` 创建与 Azure 的连接。
-
-此示例在 Bash shell 中正常工作。 有关在 Windows 上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../../virtual-machines/virtual-machines-windows-cli-options.md)。
-
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 ## <a name="sample-script"></a>示例脚本
 

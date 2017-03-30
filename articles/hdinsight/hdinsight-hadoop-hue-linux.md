@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 9e57fcca-e26c-479d-a745-7b80a9290447
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,9 +16,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 7af856e32064f16e7cb1083432d4d5715cef6e3a
-ms.openlocfilehash: dbffb88020cf53eb59b98eb80e12a47bc17c5708
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: a5fbd7cd4b57b1bd54c5483fc39733cfd3a8dcca
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -88,10 +89,8 @@ Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。 你可以使�
 
 2. 在创建 SSH 隧道并将浏览器配置为通过它代理发送流量后，必须查找主头节点的主机名。 为此，可以在端口 22 上使用 SSH 连接到群集。 例如 `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`，其中 **USERNAME** 是 SSH 用户名，**CLUSTERNAME** 是群集的名称。
 
-    有关使用 SSH 的详细信息，请参阅以下文档：
+    有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-   * [在 Linux、Unix 或 Mac OS X 客户端中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [在 Windows 客户端中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
 3. 连接后，使用以下命令获取主头节点的完全限定域名：
 
         hostname -f

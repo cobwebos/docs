@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/23/2017
+ms.date: 03/23/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
-ms.openlocfilehash: 9f29b451ef76a318a7778a8d20e292e311191298
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 01294f8f8fdaa65a5f33dbf6d35c0baa342cacc8
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -99,7 +99,6 @@ Azure Active Directory 身份验证支持使用 Azure AD 标识连接到数据�
 * SQL Server Data Tools for Visual Studio 2015 至少需要 2016 年 4 月版的 Data Tools（版本 14.0.60311.1）。 目前，Azure AD 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) 中查看这些用户。   
 * [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) 支持 Azure AD 身份验证。 另外，请参阅[设置连接属性](https://msdn.microsoft.com/library/ms378988.aspx)。   
 * PolyBase 无法使用 Azure AD 身份验证进行身份验证。   
-* 不支持 BI 和 Excel 这样的工具。   
 * Azure 门户的“导入数据库”和“导出数据库”边栏选项卡支持 SQL 数据库的 Azure AD 身份验证。 PowerShell 命令也支持使用 Azure AD 身份验证的导入和导出。   
 
 ## <a name="next-steps"></a>后续步骤

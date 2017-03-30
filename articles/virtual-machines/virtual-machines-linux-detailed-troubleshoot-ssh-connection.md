@@ -17,9 +17,9 @@ ms.topic: support-article
 ms.date: 03/07/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2df9b83132711e199b58fa92841a3dca74c7282a
-ms.openlocfilehash: 0164ad801b11a6c6124df8106bd7b71b737f81f1
-ms.lasthandoff: 11/30/2016
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 81f73e6c1c4fa48c0235cb497fa9e15b0c92a668
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -120,7 +120,7 @@ ms.lasthandoff: 11/30/2016
 * **目标 VM 上 SSH 流量的终结点配置。** 终结点的专用 TCP 端口应该与 VM 上的 SSH 服务正在侦听的 TCP 端口匹配。 （默认端口为 22）。 对于使用 Resource Manager 部署模型创建的 VM，请在 Azure 门户中选择“虚拟机” >  VM 名称  > “设置” > “终结点”来验证 SSH TCP 端口号。
 * **目标虚拟机上的 SSH 流量终结点的 ACL。** ACL 允许你指定基于源 IP 地址允许或拒绝的从 Internet 传入的流量。 错误配置的 ACL 可能会阻止 SSH 流量传入终结点。 检查你的 ACL 以确保允许从你的代理服务器或其他边缘服务器的公共 IP 地址传入的流量。 有关详细信息，请参阅[关于网络访问控制列表 (ACL)](../virtual-network/virtual-networks-acl.md)。
 
-若要将终结点从问题原因中排除，请删除当前终结点，创建另一个终结点，然后指定 SSH 名称（公共和专用端口号为 TCP 端口 22）。 有关详细信息，请参阅[在 Azure 中的虚拟机上设置终结点](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+若要将终结点从问题原因中排除，请删除当前终结点，创建另一个终结点，然后指定 SSH 名称（公共和专用端口号为 TCP 端口 22）。 有关详细信息，请参阅[在 Azure 中的虚拟机上设置终结点](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 <a id="nsg"></a>
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/30/2016
 
 ![突出显示基于 Linux 的 Azure 虚拟机的图表](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-如果尚未这样做，请遵循[如何为基于 Linux 的虚拟机重置密码或 SSH](virtual-machines-linux-classic-reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) 中的说明。
+如果尚未这样做，请遵循[如何为基于 Linux 的虚拟机重置密码或 SSH](linux/classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) 中的说明。
 
 再次尝试从你的计算机建立连接。 如果仍然失败，则可能存在以下问题：
 

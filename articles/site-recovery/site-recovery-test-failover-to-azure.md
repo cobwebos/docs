@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: dcb259f04f2b0b1aeec10699b4e7b739ac0926ba
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 2aed07ff82c33111ef1abc9c9cc6b0ba2a9d3718
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -53,7 +53,7 @@ ms.lasthandoff: 03/18/2017
 1. 选择“Azure 虚拟网络”：提供将在其中创建测试虚拟机的 Azure 虚拟网络。 Site Recovery 尝试在名称相同的子网中创建测试虚拟机，并使用虚拟机的“计算与网络”设置中提供的同一 IP。 如果为测试故障转移提供的 Azure 虚拟网络中没有同名的子网，则会按字母顺序在第一个子网中创建测试虚拟机。 如果子网中没有相同 IP，则虚拟机将获取子网中可用的其他 IP 地址。 请阅读此部分以了解[详细信息](#creating-a-network-for-test-failover)
 1. 如果要故障转移到 Azure 并且启用了数据加密，请在“加密密钥”中，选择在安装提供程序期间启用数据加密时颁发的证书。 如果尚未在虚拟机上启用加密，则可以忽略此步骤。
 1. 在“**作业**”选项卡上跟踪故障转移进度。 在 Azure 门户中，你应当能够看到测试副本计算机。
-1. 若要在虚拟机上启动 RDP 连接，需要在故障转移的虚拟机的网络接口上[添加公用 IP ](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)。 如果要故障转移到经典虚拟机，则需要在端口 3389 上[添加终结点](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)
+1. 若要在虚拟机上启动 RDP 连接，需要在故障转移的虚拟机的网络接口上[添加公用 IP ](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)。 如果要故障转移到经典虚拟机，则需要在端口 3389 上[添加终结点](../virtual-machines/windows/classic/setup-endpoints.md)
 1. 完成后，在恢复计划上单击“清理测试故障转移”。 在“**说明**”中，记录并保存与测试性故障转移相关联的任何观测结果。 这将删除在执行测试故障转移期间创建的虚拟机。
 
 
@@ -100,9 +100,9 @@ ms.lasthandoff: 03/18/2017
 **故障转移** | **位置** | **操作**
 --- | --- | ---
 **运行 Windows 的 Azure VM** | 故障转移之前在本地计算机上 | 若要通过 Internet 访问 Azure VM，请启用 RDP，并确保已针对“公共”添加 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP。<br/><br/> 若要通过站点到站点连接进行访问，请在计算机上启用 RDP，并确保在“Windows 防火墙” -> “允许的应用和功能”中针对“域和专用”网络允许 RDP。<br/><br/>  确保操作系统的 SAN 策略已设置为 **OnlineAll**。 [了解详细信息](https://support.microsoft.com/kb/3031135)。<br/><br/> 在触发故障转移时，请确保虚拟机上没有待处理的 Windows 更新。 Windows 更新可能会在你进行故障转移时启动，并且在更新完成之前你将无法登录到虚拟机。 <br/><br/>
-**运行 Windows 的 Azure VM** | 故障转移后在 Azure VM 上 | 对于经典虚拟机，请为 RDP 协议（端口 3389）[添加公共终结点](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)<br/><br/>  对于 Resource Manager 虚拟机，请在其上[添加公共 IP](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)。<br/><br/> 已故障转移的 VM 及其连接到的 Azure 子网上的网络安全组规则需要允许与 RDP 端口建立传入连接。<br/><br/> 对于 Resource Manager 虚拟机，可以检查**引导诊断**来查看虚拟机的屏幕截图<br/><br/> 如果无法连接，请检查 VM 是否正在运行，然后查看这些[故障排除技巧](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。<br/><br/>
+**运行 Windows 的 Azure VM** | 故障转移后在 Azure VM 上 | 对于经典虚拟机，请为 RDP 协议（端口 3389）[添加公共终结点](../virtual-machines/windows/classic/setup-endpoints.md)<br/><br/>  对于 Resource Manager 虚拟机，请在其上[添加公共 IP](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)。<br/><br/> 已故障转移的 VM 及其连接到的 Azure 子网上的网络安全组规则需要允许与 RDP 端口建立传入连接。<br/><br/> 对于 Resource Manager 虚拟机，可以检查**引导诊断**来查看虚拟机的屏幕截图<br/><br/> 如果无法连接，请检查 VM 是否正在运行，然后查看这些[故障排除技巧](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。<br/><br/>
 **运行 Linux 的 Azure VM** | 故障转移之前在本地计算机上 | 确保 Azure VM 上的安全外壳服务已设置为在系统引导时自动启动。<br/><br/> 确保防火墙规则允许 SSH 连接。
-**运行 Linux 的 Azure VM** | 故障转移后的 Azure VM | 已故障转移的 VM 及其连接到的 Azure 子网上的网络安全组规则需要允许与 SSH 端口建立传入连接。<br/><br/> 对于经典虚拟机，应创建[公共终结点](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)，以允许 SSH 端口（默认为 TCP 端口 22）上的传入连接。<br/><br/> 对于 Resource Manager 虚拟机，请在其上[添加公共 IP](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)。<br/><br/> 对于 Resource Manager 虚拟机，可以检查**引导诊断**来查看虚拟机的屏幕截图<br/><br/>
+**运行 Linux 的 Azure VM** | 故障转移后的 Azure VM | 已故障转移的 VM 及其连接到的 Azure 子网上的网络安全组规则需要允许与 SSH 端口建立传入连接。<br/><br/> 对于经典虚拟机，应创建[公共终结点](../virtual-machines/windows/classic/setup-endpoints.md)，以允许 SSH 端口（默认为 TCP 端口 22）上的传入连接。<br/><br/> 对于 Resource Manager 虚拟机，请在其上[添加公共 IP](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)。<br/><br/> 对于 Resource Manager 虚拟机，可以检查**引导诊断**来查看虚拟机的屏幕截图<br/><br/>
 
 
 

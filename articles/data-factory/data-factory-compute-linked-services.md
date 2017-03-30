@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 5b3ff989c31f45f3344d406f9f419510dd380f8b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 5e113af94c1ac27d759a75ff35bb9eb29fa08bf6
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -165,7 +165,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | zookeeperNodeSize |指定 ZooKeeper 节点的大小。 默认值为：Standard_D3。 |否 |
 
 #### <a name="specifying-node-sizes"></a>指定节点大小
-若要了解需要为以上属性指定的字符串值，请参阅[虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fdata-factory%2ftoc.json#size-tables)。 这些值需要符合文章中所引用的 **CMDLET 和 API**。 如文章中所示，大尺寸（默认）的数据节点拥有 7 GB 的内存，这可能无法满足具体方案的需求。 
+若要了解需要为以上属性指定的字符串值，请参阅[虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md)。 这些值需要符合文章中所引用的 **CMDLET 和 API**。 如文章中所示，大尺寸（默认）的数据节点拥有 7 GB 的内存，这可能无法满足具体方案的需求。 
 
 如果想要创建 D4 大小的头节点和辅助进程节点，需要将 **Standard_D4** 指定为 headNodeSize 和 dataNodeSize 属性的值。 
 
@@ -328,7 +328,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
 | 不由 Azure Active Directory 管理的用户帐户（例如 @hotmail.com、@live.com、@outlook.com） |12 小时 |
-| 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的&14; 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
+| 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的 14 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
 若要避免/解决此错误，需要在**令牌过期**时使用“授权”按钮重新授权，并重新部署链接服务。 还可使用以下部分中的代码以编程方式生成 sessionId 和 authorization 属性的值。 
 
@@ -364,12 +364,12 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 需要为 WindowsFormsWebAuthenticationDialog 类添加对 Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll 的引用。 
 
 ## <a name="azure-sql-linked-service"></a>Azure SQL 链接服务
-创建 Azure SQL 链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [Azure SQL 连接器](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)一文，以了解此链接服务的详细信息。
+创建 Azure SQL 链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [Azure SQL 连接器](data-factory-azure-sql-connector.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 ## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL 数据仓库链接服务
 创建 Azure SQL 数据仓库链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 请参阅[Azure SQL 数据仓库连接器](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 ## <a name="sql-server-linked-service"></a>SQL Server 链接服务
-创建 SQL Server 链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [SQL Server 连接器](data-factory-sqlserver-connector.md#sql-server-linked-service-properties)一文，以了解此链接服务的详细信息。
+创建 SQL Server 链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [SQL Server 连接器](data-factory-sqlserver-connector.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 

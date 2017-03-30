@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
-ms.openlocfilehash: e6a3e91e5821e761af0ff710da2a817eb7c185bb
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 32e86b0c3e7c0091b1a0510aa682419d2d030dd8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -40,10 +40,8 @@ ms.lasthandoff: 02/17/2017
 ## <a name="install-freetds"></a>安装 FreeTDS
 1. 使用 SSH 连接到基于 Linux 的 HDInsight 群集。 连接时要使用的地址为 `CLUSTERNAME-ssh.azurehdinsight.net`，端口为 `22`。
 
-    有关如何使用 SSH 连接到 HDInsight 的详细信息，请参阅以下文档：
+    有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-   * **Linux、Unix 或 OS X 客户端**：请参阅[从 Linux、OS X 或 Unix 连接到基于 Linux 的 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * **Windows 客户端**：请参阅[从 Windows 连接到基于 Linux 的 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-windows.md)
 2. 使用以下命令安装 FreeTDS：
 
         sudo apt-get --assume-yes install freetds-dev freetds-bin

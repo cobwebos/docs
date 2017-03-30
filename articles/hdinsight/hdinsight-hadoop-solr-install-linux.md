@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
-ms.openlocfilehash: e270f3dfdaf248ed40d539fa1d2e69a3930d03c6
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 2214315f084aec80986fe30ebcaff6813162c5f8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -81,10 +81,7 @@ ms.lasthandoff: 01/18/2017
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    有关如何在 HDInsight 中使用 SSH 的详细信息，请参阅以下文档：
-   
-   * [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+    有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
      
      > [!IMPORTANT]
      > 本文档中的后续步骤将使用 SSL 隧道连接到 Solr Web UI。 若要使用这些步骤，必须建立 SSL 隧道，然后将浏览器配置为使用该隧道。
@@ -173,10 +170,8 @@ Solr 仪表板是一个 Web UI，可让你通过 Web 浏览器使用 Solr。 Sol
    
    1. 在端口 22 上使用 SSH 连接到群集。 例如 `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`，其中 **USERNAME** 是 SSH 用户名，**CLUSTERNAME** 是群集的名称。
       
-       有关使用 SSH 的详细信息，请参阅以下文档：
-      
-      * [从 Linux、Unix 或 Mac OS X 客户端将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-      * [在 Windows 客户端中将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+       有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+
    2. 使用以下命令获取完全限定的主机名：
       
            hostname -f
