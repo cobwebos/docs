@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
-ms.openlocfilehash: b2dcf4e0e5cc8e2c594357495635889a2e3645bd
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: dae5491962b22453c517da35539ce09463d8802d
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -53,7 +54,7 @@ ms.openlocfilehash: b2dcf4e0e5cc8e2c594357495635889a2e3645bd
 1. 购买满足用于 Auzre 导入/导出服务要求的硬盘。
 2. 数据发送到 Azure 数据中心后，确认数据要复制到的 Azure 存储帐户。
 3. 使用命令行实用程序 [Azure 导入/导出工具](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)。 下面是有关如何使用该工具的示例代码段。
-   
+
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
@@ -187,7 +188,7 @@ ms.openlocfilehash: b2dcf4e0e5cc8e2c594357495635889a2e3645bd
     }
 }
 ````
-有关详细信息，请参阅[使用 Azure 数据工厂将数据从从 Azure 存储 Blob 移动到 Data Lake Store](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store)。
+有关详细信息，请参阅[使用 Azure 数据工厂将数据从从 Azure 存储 Blob 移动到 Data Lake Store](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store)。
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>重新构造 Azure Data Lake Store 中的数据文件
 以 319GB 大小的文件开始，将其拆分为多个更小的文件，以便可使用 Azure 导入/导出服务进行传输。 此数据已在 Azure Data Lake Store 中，因此现在可将文件重构为其原始大小。 为此，可使用以下 Azure PowerShell cmldt。
@@ -211,10 +212,4 @@ Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importe
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

@@ -16,8 +16,9 @@ ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 3d8300bbb54bd88e6ff3844208ec5d5fa25c5e8d
-ms.openlocfilehash: d935f45f87558dd7f9838ad3b370de0d9a7870a1
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 84d909b3eaa17cb4a1b8a4465615001896000dca
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: d935f45f87558dd7f9838ad3b370de0d9a7870a1
 使用 Azure 应用商店和 Azure 门户中的 [Microsoft HPC Pack 2012 R2 虚拟机映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)创建 HPC 群集的头节点。 此 HPC Pack VM 映像基于预安装了 HPC Pack 2012 R2 Update 3 的 Windows Server 2012 R2 Datacenter。 使用此头节点在 Azure 中进行 HPC Pack 的概念证明部署。 然后，可以向该群集添加计算节点，以运行 HPC 工作负荷。
 
 > [!TIP]
-> 若要在 Azure 中部署完整的 HPC Pack 2012 R2 群集（包括头节点和计算节点），建议使用自动化方法。 选项包括 [HPC Pack IaaS 部署脚本](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)和 Resource Manager 模板，如[适用于 Windows 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)。 Resource Manager 模板也可用于 [Microsoft HPC Pack 2016 群集](https://github.com/MsHpcPack/HPCPack2016/tree/master/newcluster-templates)。 
+> 若要在 Azure 中部署完整的 HPC Pack 2012 R2 群集（包括头节点和计算节点），建议使用自动化方法。 选项包括 [HPC Pack IaaS 部署脚本](windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)和 Resource Manager 模板，如[适用于 Windows 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)。 Resource Manager 模板也可用于 [Microsoft HPC Pack 2016 群集](https://github.com/MsHpcPack/HPCPack2016/tree/master/newcluster-templates)。 
 > 
 > 
 
@@ -75,15 +76,10 @@ ms.openlocfilehash: d935f45f87558dd7f9838ad3b370de0d9a7870a1
 
 ## <a name="next-steps"></a>后续步骤
 * 现在即可使用 HPC Pack 群集的头节点。 例如，启动 HPC 群集管理器，并完成[部署待办事项列表](https://technet.microsoft.com/library/jj884141.aspx)。
-* 若要按需提高群集计算容量，可在云服务中添加 [Azure 迸发节点](virtual-machines-windows-classic-hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 
+* 若要按需提高群集计算容量，可在云服务中添加 [Azure 迸发节点](windows/classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 
 * 尝试在群集上运行测试工作负荷。 例如，请参阅 HPC Pack [入门指南](https://technet.microsoft.com/library/jj884144)。
 
 <!--Image references-->
 [headnode]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/headnode.png
 [marketplace]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/marketplace.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 02/02/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 38fd2e8fce99762cb7c6b6fb160f23a786fb0532
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 4d2799b8eecc6f4d733f0e29129df4fed0507959
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -102,7 +103,7 @@ ms.openlocfilehash: 38fd2e8fce99762cb7c6b6fb160f23a786fb0532
         New-AzureVM –ServiceName $svcname -VMs $vm1
 
 > [!NOTE]
-> 有关更多说明和配置选项，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../../virtual-machines-windows-classic-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)中的**生成你的命令集**部分。
+> 有关更多说明和配置选项，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)中的**生成你的命令集**部分。
 > 
 > 
 
@@ -155,17 +156,12 @@ ms.openlocfilehash: 38fd2e8fce99762cb7c6b6fb160f23a786fb0532
 通过远程桌面登录计算机之后，根据[在 Azure VM 中配置 SQL Server 连接的步骤](virtual-machines-windows-classic-sql-connect.md#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)中的说明配置 SQL Server。
 
 ## <a name="next-steps"></a>后续步骤
-你可以在[虚拟机文档](../../virtual-machines-windows-classic-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)中找到有关使用 PowerShell 预配虚拟机的其他说明。 有关与 SQL Server 和高级存储相关的其他脚本，请参阅[将 Azure 高级存储用于虚拟机上的 SQL Server](virtual-machines-windows-classic-sql-server-premium-storage.md)。
+你可以在[虚拟机文档](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)中找到有关使用 PowerShell 预配虚拟机的其他说明。 有关与 SQL Server 和高级存储相关的其他脚本，请参阅[将 Azure 高级存储用于虚拟机上的 SQL Server](../classic/sql-server-premium-storage.md)。
 
 在许多情况下，下一步是将数据库迁移到此新的 SQL Server VM。 有关数据库迁移指南，请参阅[将数据库迁移到 Azure VM 上的 SQL Server](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)。
 
 如果还希望使用 Azure 门户创建 SQL 虚拟机，请参阅[在 Azure 上预配 SQL Server 虚拟机](../sql/virtual-machines-windows-portal-sql-server-provision.md)。 请注意，本教程演示了如何在门户中使用推荐的 Resource Manager 模型创建 VM（而非使用此 PowerShell 主题中所用的经典模型）。
 
 除了这些资源外，我们还建议你查看[与在 Azure 虚拟机中运行 SQL Server 相关的其他主题](../sql/virtual-machines-windows-sql-server-iaas-overview.md)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

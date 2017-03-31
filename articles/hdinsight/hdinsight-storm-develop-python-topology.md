@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: f6bc08230384b637f6b7b83fe32915ab09647d37
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8b32aa77e1dbe18076d73e10914b59be107c3588
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -157,10 +157,8 @@ Java 在此处调用 Python 并运行包含实际 bolt 逻辑的脚本。 Java s
              scp wordcount-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:wordcount-1.0-SNAPSHOT.jar
         
          将 USERNAME 替换为群集的 SSH 用户，并将 CLUSTERNAME 替换为 HDInsight 群集的名称。
-     2. 将文件复制到群集中后，使用 SSH 连接到群集并提交作业。 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档之一：
-        
-        * [从 Linux、Unix 或 OS X 配合使用 SSH 与基于 Linux 的 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
-        * [从 Windows 配合使用 SSH 与基于 Linux 的 HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md)
+     2. 将文件复制到群集中后，使用 SSH 连接到群集并提交作业。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+     
      3. 连接后，使用以下命令启动拓扑：
         
              storm jar wordcount-1.0-SNAPSHOT.jar wordcount.core wordcount

@@ -53,7 +53,7 @@ ms.lasthandoff: 03/03/2017
 ### <a name="cloud-only-virtual-networks"></a>仅限云的虚拟网络
 如果本地用户和计算机无需持续连接到 Azure 虚拟网络中的 VM，则虚拟网络设计将相当直观：
 
-![仅限云的基本虚拟网络关系图](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
+![仅限云的基本虚拟网络关系图](windows/media/infrastructure-networking-guidelines/vnet01.png)
 
 此方法通常用于面向 Internet 的工作负荷，如基于 Internet 的 Web 服务器。 你可以使用 SSH 或点到站点 VPN 连接来管理这些 VM。
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 03/03/2017
 ### <a name="cross-premises-virtual-networks"></a>跨界虚拟网络
 如果本地用户和计算机需要持续连接到 Azure 虚拟网络中的 VM，则可创建跨界虚拟网络。 使用 ExpressRoute 或站点到站点 VPN 连接将虚拟网络连接到本地网络。
 
-![跨界虚拟网络关系图](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
+![跨界虚拟网络关系图](windows/media/infrastructure-networking-guidelines/vnet02.png)
 
 在此配置中，Azure 虚拟网络实质上是你的本地网络基于云的扩展。
 

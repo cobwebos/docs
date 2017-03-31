@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 51aabf4938714c597ae0cfb2ec524f326b6e355a
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 8ec4e8699eb2f2e060db264634b04abfacf40e34
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/21/2017
 将 Web 应用、移动后端和 API 应用部署到[应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)时，如果应用在“标准”或“高级”应用服务计划模式下运行，则可以部署到单独的部署槽而不是默认的生产槽。 部署槽实际上是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 将应用程序部署到部署槽具有以下优点：
 
 * 可以在分阶段部署槽中验证应用更改，然后将其与生产槽交换。
-* 首先将应用部署到槽，然后将其交换到生产，这确保槽的所有实例都已准备好，然后交换到生产。 部署应用时，这样可避免停机。 流量重定向是无缝的，且不会因交换操作而删除任何请求。 当不需要预交换验证时，可以通过配置[自动交换](#configure-auto-swap-for-your-web-app)来自动化这整个工作流。
+* 首先将应用部署到槽，然后将其交换到生产，这确保槽的所有实例都已准备好，然后交换到生产。 部署应用时，这样可避免停机。 流量重定向是无缝的，且不会因交换操作而删除任何请求。 当不需要预交换验证时，可以通过配置[自动交换](#Auto-Swap)来自动化这整个工作流。
 * 交换后，具有以前分阶段应用的槽现在具有以前的生产应用。 如果交换到生产槽的更改与你的预期不同，可以立即执行同一交换来收回“上一已知的良好站点”。
 
 每种应用服务计划模式支持不同数量的部署槽。 若要了解应用模式支持的槽数，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
@@ -130,6 +130,8 @@ ms.lasthandoff: 03/21/2017
 可预览应用具体如何使用目标槽配置。 完成验证后，可通过单独的步骤完成交换。 此步骤具有额外优势，源槽已通过所需的配置提前准备好，因此客户端不会遇到停机的情况。  
 
 “适用于部署槽的 Azure PowerShell cmdlet”部分中提供了可用于多阶段交换的 Azure PowerShell cmdlet 示例。
+
+<a name="Auto-Swap"></a>
 
 ## <a name="configure-auto-swap"></a>配置自动交换
 自动交换简化了 DevOps 方案，在此方案中，可连续部署应用，无需冷启动且不会给应用的最终客户造成停机。 将部署槽配置为自动交换到生产槽后，每次将代码更新推送到该槽时，应用服务会在其已在该槽上做好准备之后，自动将该应用交换到生产槽。

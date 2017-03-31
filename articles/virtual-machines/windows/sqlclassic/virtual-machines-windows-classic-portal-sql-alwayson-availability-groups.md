@@ -16,16 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 1390a0caf4e9cfe2af8bd6171a4d07f58da4bc43
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 0d58355bf4d9cef0a84a6a192dbf019ee5238904
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-classic"></a>在 Azure VM 中配置 AlwaysOn 可用性组（经典）
 > [!div class="op_single_selector"]
-> * [经典：UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
-> * [经典：PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
+> * [经典：UI](../classic/portal-sql-alwayson-availability-groups.md)
+> * [经典：PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 > [!IMPORTANT] 
@@ -387,7 +387,7 @@ ms.lasthandoff: 03/22/2017
 7. 在“选择初始数据同步”页上，选择“仅联接”，然后单击“下一步”。 在对 **ContosoSQL1** 进行完整备份和事务备份并在 **ContosoSQL2** 上还原这些备份时，你已手动执行了数据同步。 也可以选择不对数据库执行备份和还原操作，并选择“完整”以便让“新建可用性组向导”为执行数据同步。 不过，对于某些企业中存在的超大型数据库，不建议这样做。
    
     ![新建可用性组向导，选择初始数据同步](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665529.gif)
-8. 在“验证”页中，单击“下一步”。 此页应与以下页类似。 因为你尚未配置可用性组侦听器，会出现一个侦听器配置警告。 你可以忽略此警告，因为本教程不会配置侦听器。 若要在完成本教程后配置侦听器，请参阅[在 Azure 中配置 AlwaysOn 可用性组的 ILB 侦听器](virtual-machines-windows-classic-ps-sql-int-listener.md)。
+8. 在“验证”页中，单击“下一步”。 此页应与以下页类似。 因为你尚未配置可用性组侦听器，会出现一个侦听器配置警告。 你可以忽略此警告，因为本教程不会配置侦听器。 若要在完成本教程后配置侦听器，请参阅[在 Azure 中配置 AlwaysOn 可用性组的 ILB 侦听器](../classic/ps-sql-int-listener.md)。
    
     ![新建可用性组向导，验证](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665530.gif)
 9. 在“摘要”页上，单击“完成”，然后等待向导配置完新的可用性组。 在“进度”页上，可单击“更多详细信息”以查看详细进度。 向导运行完成后，检查“结果”页以验证是否已成功创建可用性组（如下所示），然后单击“关闭”退出向导。
@@ -410,7 +410,7 @@ ms.lasthandoff: 03/22/2017
 > 
 
 ## <a name="next-steps"></a>后续步骤
-现在，你已通过在 Azure 中创建可用性组成功实现了 SQL Server Always On。 若要为此可用性组配置侦听器，请参阅[在 Azure 中配置 Always On 可用性组的 ILB 侦听器](virtual-machines-windows-classic-ps-sql-int-listener.md)。
+现在，你已通过在 Azure 中创建可用性组成功实现了 SQL Server Always On。 若要为此可用性组配置侦听器，请参阅[在 Azure 中配置 Always On 可用性组的 ILB 侦听器](../classic/ps-sql-int-listener.md)。
 
 有关在 Azure 中使用 SQL Server 的其他信息，请参阅 [SQL Server on Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)（Azure 虚拟机上的 SQL Server）。
 

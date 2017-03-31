@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 51338924f5c8eff4234c7d57f7efc0619316bb38
-ms.openlocfilehash: 157a5130755f2092d044f3361e4fb5bc3a7a1053
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 7891fbd326340ed102f885e84993ef987e044023
+ms.lasthandoff: 03/25/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/28/2017
 针对云服务辅助角色设置条件，以触发缩减或扩展操作。 针对角色的条件可以基于 CPU、磁盘或角色的网络负载。 也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置条件。
 
 > [!NOTE]
-> 本文着重于云服务 Web 和辅助角色。 如果直接创建虚拟机（经典），该虚拟机将托管在云服务中。 可以通过将标准虚拟机与[可用性集](../virtual-machines/virtual-machines-windows-classic-configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)相关联来缩放标准虚拟机，并手动将其打开或关闭。
+> 本文着重于云服务 Web 和辅助角色。 如果直接创建虚拟机（经典），该虚拟机将托管在云服务中。 可以通过将标准虚拟机与[可用性集](../virtual-machines/windows/classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)相关联来缩放标准虚拟机，并手动将其打开或关闭。
 
 ## <a name="considerations"></a>注意事项
 在配置应用程序的缩放之前，应考虑以下信息：

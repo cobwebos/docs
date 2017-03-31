@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: d96140483edffb1f94add16598bf0dc0a85dd6da
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 38728a20527be060e63d2dbdea923263b3d6c7fa
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -84,16 +85,11 @@ AlwaysOn 可用性组通过添加辅助副本为数据库组提供高可用性�
 > 
 
 ## <a name="create-an-availability-group-listener"></a>创建可用性组侦听器
-创建可用性组之后，你应该为客户端创建侦听器，以便连接到副本。 侦听器将传入连接定向至主副本或只读辅助副本。 有关侦听器的详细信息，请参阅[在 Azure 中配置 AlwaysOn 可用性组的 ILB 侦听器](virtual-machines-windows-classic-ps-sql-int-listener.md)。
+创建可用性组之后，你应该为客户端创建侦听器，以便连接到副本。 侦听器将传入连接定向至主副本或只读辅助副本。 有关侦听器的详细信息，请参阅[在 Azure 中配置 AlwaysOn 可用性组的 ILB 侦听器](../classic/ps-sql-int-listener.md)。
 
 ## <a name="next-steps"></a>后续步骤
 除了使用“添加 Azure 副本向导”将 AlwaysOn 可用性组扩展到 Azure 外，还可以将某些 SQL Server 工作负荷完全移动到 Azure。 若要开始，请参阅[在 Azure 上预配 SQL Server 虚拟机](../sql/virtual-machines-windows-portal-sql-server-provision.md)。
 
 有关其他与在 Azure VM 中运行 SQL Server 相关的主题，请参阅 [SQL Server on Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)（Azure 虚拟机上的 SQL Server）。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

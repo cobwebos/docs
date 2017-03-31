@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: b036296a4b4ce8ba3e6707226642a928381bcf31
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8f62547316e4ecc02da0341aab94010d880115f8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -77,7 +78,7 @@ ms.openlocfilehash: b036296a4b4ce8ba3e6707226642a928381bcf31
    * **终结点**：保留**远程桌面**和 **PowerShell** 终结点，然后添加一个 HTTP 或 HTTPS 终结点，具体取决于你的环境。
      
      * **HTTP**：默认公共和专用端口均为 **80**。 请注意，如果使用 80 之外的专用端口，请修改 http 脚本中的 **$HTTPport = 80**。
-     * **HTTPS**：默认公共和专用端口均为 **443**。 最佳安全方案是更改私有端口并配置你的防火墙和报表服务器以使用私有端口。 有关终结点的详细信息，请参阅[如何设置与虚拟机的通信](../../virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，如果使用 443 之外的端口，请更改 HTTPS 脚本中的参数 **$HTTPsport = 443**。
+     * **HTTPS**：默认公共和专用端口均为 **443**。 最佳安全方案是更改私有端口并配置你的防火墙和报表服务器以使用私有端口。 有关终结点的详细信息，请参阅[如何设置与虚拟机的通信](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，如果使用 443 之外的端口，请更改 HTTPS 脚本中的参数 **$HTTPsport = 443**。
    * 单击“下一步”。 ![下一步](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. 在向导的最后一页上，保持选中默认的“安装 VM 代理”。 本主题中的步骤不使用 VM 代理，但如果你计划保留此 VM，VM 代理和扩展将允许增强 CM。  有关 VM 代理的详细信息，请参阅 [VM 代理和扩展 – 第 1 部分](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/)。 安装并运行的一个默认扩展是“BGINFO”扩展，它在 VM 桌面上显示系统信息，如内部 IP 和驱动器可用空间。
 9. 单击“完成”。 ![确定](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
@@ -607,10 +608,5 @@ ms.openlocfilehash: b036296a4b4ce8ba3e6707226642a928381bcf31
 
 ### <a name="links-to-other-resources-for-sql-server-in-azure-vms"></a>指向 Azure VM 中 SQL Server 的其他资源的链接
 [Azure 虚拟机上的 SQL Server 概述](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

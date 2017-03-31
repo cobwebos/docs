@@ -16,14 +16,15 @@ ms.tgt_pltfrm: NA
 ms.date: 02/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 38c53d6f1a2635afbba199e6f0a2adb23abb6a3a
-ms.openlocfilehash: fcf8326edc2ff84d274f7c4dadeae1fbe2595349
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 951c88124219a6962f655b91275aec64c716b1cd
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="create-and-manage-single-azure-sql-databases-with-transact-sql"></a>使用 Transact-SQL 创建和管理单一 Azure SQL 数据库
 
-可以使用 [Azure 门户](https://portal.azure.com/)、PowerShell、Transact-SQL、REST API 或 C# 创建和管理单一 Azure SQL 数据库。 本主题说明如何使用 Azure 门户。 有关 PowerShell，请参阅[使用 Powershell 创建和管理单一数据库](sql-database-manage-single-databases-powershell.md)。 有关 Transact-SQL，请参阅[使用 Transact-SQL 创建和管理单一数据库](sql-database-manage-single-databases-tsql.md)。 
+可以使用 [Azure 门户](https://portal.azure.com/)、PowerShell、Transact-SQL、REST API 或 C# 创建和管理单一 Azure SQL 数据库。 本主题说明如何使用 Azure 门户。 有关 PowerShell，请参阅[使用 Powershell 创建和管理单一数据库](scripts/sql-database-create-and-configure-database-powershell.md)。 有关 Transact-SQL，请参阅[使用 Transact-SQL 创建和管理单一数据库](sql-database-manage-single-databases-tsql.md)。 
 
 ## <a name="create-an-azure-sql-database-using-transact-sql-in-sql-server-management-studio"></a>在 SQL Server Management Studio 中使用 Transact-SQL 创建 Azure SQL 数据库
 
@@ -53,9 +54,4 @@ ms.openlocfilehash: fcf8326edc2ff84d274f7c4dadeae1fbe2595349
 * 若要了解如何使用 SQL Server Management Studio 执行管理任务，请参阅 [SQL Server Management Studio](sql-database-manage-azure-ssms.md)。
 * 有关 SQL 数据库服务的信息，请参阅[什么是 SQL 数据库](sql-database-technical-overview.md)。 
 * 有关 Azure 数据库服务器和数据库功能的信息，请参阅[功能](sql-database-features.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

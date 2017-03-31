@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 0de0590c1cf5c71a7174fdcca84847b378aa40f8
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: dca6f5189693fc98cec4f92eac81b6985e691889
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="learn-more-about-password-management"></a>了解有关密码管理的详细信息
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 >
 >
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 03/15/2017
 ### <a name="supported-clients"></a>支持的客户端
 如果你要使用密码写回，我们始终建议使用 Azure AD Connect 的自动更新功能，或安装最新版本的 [Azure AD Connect](connect/active-directory-aadconnect.md#install-azure-ad-connect)。
 
-* **DirSync（任何高于 1.0.6862 的版本）** - _不支持_ - 仅支持基本写回功能，不再受产品组的支持 
+* **DirSync（任何高于 1.0.6862 的版本）** - _不支持_ - 仅支持基本写回功能，不再受产品组的支持
 * **Azure AD Sync** - _已弃用_ - 仅支持基本写回功能，缺少 Azure AD Connect 中提供的帐户解锁功能、丰富日志记录和可靠性方面的改进。 因此我们**强烈**建议升级。
 * **Azure AD Connect** - _完全支持_ - 支持所有写回功能 - 请升级到最新版本，尽可能获得新增功能和最高的稳定性/可靠性
 
@@ -132,7 +132,7 @@ ms.lasthandoff: 03/15/2017
 * **Enterprise Moblity Suite** - 对密码写回的使用不实施限制
 * **Enterprise Cloud Suite** - 对密码写回的使用不实施限制
 
-无法配合任何 Office 365 许可计划（不管是试用版还是付费版）使用密码写回。 必须升级到上述计划之一才能使用此功能。 
+无法配合任何 Office 365 许可计划（不管是试用版还是付费版）使用密码写回。 必须升级到上述计划之一才能使用此功能。
 
 我们尚未计划为任何 Office 365 SKU 启用密码写回。
 
@@ -166,7 +166,7 @@ ms.lasthandoff: 03/15/2017
 * **不支持的管理员操作**
  * 管理员通过 [Office 管理门户](https://portal.office.com)发起的任何最终用户密码重置操作
  * 管理员通过 PowerShell v1、v2 或 Azure AD 图形 API 发起的任何最终用户密码重置操作
- 
+
 尽管我们正在努力消除这些限制，但对于何时能够分享解决方法，我们还无法提供具体的时间表。
 
 ## <a name="password-writeback-security-model"></a>密码写回安全模型
@@ -180,9 +180,9 @@ ms.lasthandoff: 03/15/2017
 ### <a name="password-writeback-encryption-details"></a>密码写回加密详细信息
 下面介绍了在用户提交密码重置请求之后、但该请求到达本地环境之前，为了确保最高的服务可靠性和安全性，该请求所要经历的加密步骤。
 
-* **步骤 1 - 使用 2048 位 RSA 密钥进行密码加密** - 用户提交要写回本地的密码之后，首先会使用 2048 位 RSA 密钥来加密提交的密码本身。 
+* **步骤 1 - 使用 2048 位 RSA 密钥进行密码加密** - 用户提交要写回本地的密码之后，首先会使用 2048 位 RSA 密钥来加密提交的密码本身。
 
-* **步骤 2 - 使用 AES-GCM 进行包级别的加密** - 然后，使用 AES-GCM 加密整个包（密码 + 所需的元数据）。 这可以防止任何人通过查看/篡改内容来直接访问底层服务总线通道。 
+* **步骤 2 - 使用 AES-GCM 进行包级别的加密** - 然后，使用 AES-GCM 加密整个包（密码 + 所需的元数据）。 这可以防止任何人通过查看/篡改内容来直接访问底层服务总线通道。
 
 * **步骤 3 - 所有通信通过 TLS/SSL 发生** - 此外，与服务总线的所有通信都在 SSL/TLS 通道中发生。 这可以保护未经授权的第三方发送的内容。
 
@@ -623,13 +623,13 @@ Not possible in PowerShell V2
 1. **已有 Azure AD 租户的合作伙伴组织中的用户** - 如果与你合作的组织已有 Azure AD 租户，我们将**遵守该租户中已启用的任何密码重置策略**。 要使密码重置正常工作，合作伙伴组织只需确保启用 Azure AD SSPR（这不会给 O365 客户造成额外的费用）。可以遵照[密码管理入门](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)指南中的步骤启用 SSPR。
 2. **已注册使用[自助注册](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)的用户** - 如果与你合作的组织使用[自助注册](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)功能来访问租户，我们将允许他们使用已注册的电子邮件来直接重置密码。
 3. **B2B 用户** - 使用新的 [Azure AD B2B 功能](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)创建的任何新 B2B 用户也可以使用他们在邀请过程中注册的电子邮件来直接重置其密码。
- 
+
 若要测试上述任一功能，只需让上述合作伙伴用户之一转到 http://passwordreset.microsoftonline.com。  只要他们定义了备用电子邮件或身份验证电子邮件，密码重置就能按预期方式工作。  可在[密码重置使用哪些数据](https://azure.microsoft.com/en-us/documentation/articles/active-directory-passwords-learn-more/#what-data-is-used-by-password-reset)概述中找到有关此处所述 SSPR 使用的数据的信息。
 
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置和更改云密码或本地密码
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为

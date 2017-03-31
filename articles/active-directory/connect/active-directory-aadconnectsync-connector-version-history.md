@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/08/2017
+ms.date: 03/28/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3051ed0385b81892b8495e83817ed8255dbce8cd
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 244ca634cfd47ee37e3845380ac05dc68d406621
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -70,7 +70,6 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
       ``'C:\Users\cstpopovaz\AppData\Local\Temp\2\e2c9d9b0-0d8a-4409-b059-dceeb900a2b3\b9bedcc0-88ac-454c-8c69-7d6ea1c41d17\cfg.config\cloneconfig.xml'. ``
 
 * 泛型 LDAP：
- * 对无法导入泛型 SQL 水印增量导入多值属性的 Bug 的修复
  * GLDAP 连接器检测不到 AD LDS 中的所有属性
  * 在 LDAP 目录架构中检测不到 UPN 属性时向导中断
  * 未选择“objectclass”属性时，增量导入失败，但完全导入期间并未出现发现错误
@@ -79,6 +78,7 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 
 
 * 泛型 SQL：
+ * 对无法导入泛型 SQL 水印增量导入多值属性的 Bug 的修复
  * 导出多值属性的已删除/已添加值时，这些值未在数据源中删除/添加。  
 
 

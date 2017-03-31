@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
-ms.openlocfilehash: 3ad511b55e33653ea0cf7df2c885d27c1c07441d
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: eb53ed852b6175fbc7faea44a243e8c7d5ce1753
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -102,7 +103,7 @@ Azure 结构控制器负责将基础结构资源分配到租户工作负荷，�
 
 * 每个 Azure AD 租户都通过安全边界进行逻辑隔离。
 * Azure 存储帐户对于每个订阅是唯一的，必须使用存储帐户密钥对访问进行身份验证。
-* 通过将唯一的专用 IP 地址、防火墙和 IP ACL 组合起来，可以对虚拟网络进行逻辑隔离。 负载平衡器根据终结点定义将流量路由到相应的租户。
+* 通过将唯一的专用 IP 地址、防火墙和 IP ACL 组合起来，可以对虚拟网络进行逻辑隔离。 负载均衡器根据终结点定义将流量路由到相应的租户。
 
 ## <a name="virtual-networks-and-firewalls"></a>虚拟网络和防火墙
 Azure 中的[分布式网络和虚拟网络](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx)有助于确保将你的专用网络流量与其他 Azure 虚拟网络上的流量进行逻辑隔离。
@@ -111,7 +112,7 @@ Azure 中的[分布式网络和虚拟网络](http://download.microsoft.com/downl
 
 订阅可以包含多个独立的专用网络（包括防火墙、负载均衡和网络地址转换）。
 
-Azure 在每个 Azure 群集中提供三种主要级别的网络隔离，可通过逻辑方式来隔离流量。 [虚拟局域网](https://azure.microsoft.com/services/virtual-network/) (VLAN) 用于将客户流量与 Azure 网络的其余部分分开。 可以通过负载平衡器对从群集外部访问 Azure 网络进行限制。
+Azure 在每个 Azure 群集中提供三种主要级别的网络隔离，可通过逻辑方式来隔离流量。 [虚拟局域网](https://azure.microsoft.com/services/virtual-network/) (VLAN) 用于将客户流量与 Azure 网络的其余部分分开。 可以通过负载均衡器对从群集外部访问 Azure 网络进行限制。
 
 流入和流出虚拟机的网络流量必须经过虚拟机监控程序虚拟交换机。 根 OS 中的 IP 筛选器组件将根虚拟机与来宾虚拟机隔离，以及将来宾虚拟机相互隔离。 它对流量进行筛选，将流量限制在租户的节点与公共 Internet 之间（基于客户的服务配置），将这些节点与其他租户隔离开。
 
@@ -130,7 +131,7 @@ IP 筛选器可以防止来宾虚拟机执行以下操作：
 * [**用户定义的路由**](../virtual-network/virtual-networks-udr-overview.md)。 可以创建用户定义的路由来指定下一跃点，方便数据包流向特定的子网并转到你的虚拟网络安全设备，从而控制数据包通过虚拟设备进行的路由。
 * [**IP 转发**](../virtual-network/virtual-networks-udr-overview.md)。 虚拟网络安全设备必须能够接收不发送给自身的传入流量。 若要允许虚拟机接收发送到其他目标的流量，可为该虚拟机启用 IP 转发。
 * [**强制隧道**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)。 借助强制隧道，可以通过站点到站点 VPN 隧道，将虚拟网络中的虚拟机所生成的全部 Internet 绑定流量重定向或“强制”返回到本地位置，以便进行检查和审核
-* [**终结点 ACL**](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 可以通过定义终结点 ACL 来控制哪些计算机允许从 Internet 到虚拟网络上的虚拟机的入站连接。
+* [**终结点 ACL**](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 可以通过定义终结点 ACL 来控制哪些计算机允许从 Internet 到虚拟网络上的虚拟机的入站连接。
 * [**合作伙伴网络安全解决方案**](https://azure.microsoft.com/marketplace/)。 可以通过 Azure 应用商店访问大量的合作伙伴网络安全解决方案。
 
 ### <a name="how-azure-implements-virtual-networks-and-firewalls"></a>Azure 如何实施虚拟网络和防火墙
@@ -147,7 +148,7 @@ IP 筛选器可以防止来宾虚拟机执行以下操作：
 ## <a name="secure-remote-access"></a>安全远程访问
 存储在云中的数据必须具有足够的安全措施来防止遭到攻击，并且需要在传输过程中保持机密性和完整性。 这其中包括网络控制，同时结合使用组织的基于策略的、可审核的身份和访问管理机制。
 
-内置加密技术使你能够在部署内部和部署之间、Azure 区域之间以及从 Azure 到本地数据中心之间对通信进行加密。 管理员通过[远程桌面会话](../virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)、[远程 Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx) 和 Azure 门户对虚拟机进行的访问始终加密。
+内置加密技术使你能够在部署内部和部署之间、Azure 区域之间以及从 Azure 到本地数据中心之间对通信进行加密。 管理员通过[远程桌面会话](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)、[远程 Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx) 和 Azure 门户对虚拟机进行的访问始终加密。
 
 为了安全地将本地数据中心扩展到云，Azure 提供了[站点到站点 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) 和[点到站点 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) 以及通过 [ExpressRoute](../expressroute/expressroute-introduction.md) 进行的专用链接（通过 VPN 到 Azure 虚拟网络的连接会进行加密）。
 
@@ -194,9 +195,4 @@ Azure 建立安全控制的目的是实施威胁缓解措施，同时帮助客�
 [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)
 
 [Active Directory 博客](http://blogs.technet.com/b/ad/)
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

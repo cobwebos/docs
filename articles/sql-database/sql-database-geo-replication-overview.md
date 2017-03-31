@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 26eac30a08db2e224f9e9018817a18c3a4405b7f
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: bd3aea04266baebbba1b953d5a2b7c4b2fb41a87
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/16/2017
 
 如果主数据库因某种原因而出现故障，或者只是需要脱机，则可以*故障转移*到任何辅助数据库。 当将故障转移激活到辅助数据库之一时，所有其他辅助数据库会自动链接到新的主数据库。
 
-可以使用 [Azure 门户](sql-database-geo-replication-failover-portal.md)、[PowerShell](sql-database-geo-replication-failover-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 计划的故障转移](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)或 [REST API - 未计划的故障转移](https://msdn.microsoft.com/library/azure/mt582027.aspx)故障转移到辅助数据库。
+可以使用 [Azure 门户](sql-database-geo-replication-failover-portal.md)、[PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 计划的故障转移](https://msdn.microsoft.com/library/mt575007.aspx)或 [REST API - 未计划的故障转移](https://msdn.microsoft.com/library/mt582027.aspx)故障转移到辅助数据库。
 
 故障转移后，请确保在新的主机上配置服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
 
@@ -107,10 +107,10 @@ ms.lasthandoff: 03/16/2017
 ### <a name="powershell"></a>PowerShell
 | Cmdlet | 说明 |
 | --- | --- |
-| [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/en-us/library/azure/mt603648.aspx) |获取一个或多个数据库。 |
+| [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) |获取一个或多个数据库。 |
 | [New-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689.aspx) |为现有数据库创建辅助数据库，并开始数据复制。 |
-| [Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/en-us/library/mt619393.aspx) |将辅助数据库切换为主数据库，启动故障转移。 |
-| [Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/en-us/library/mt603457.aspx) |终止 SQL 数据库和指定的辅助数据库之间的数据复制。 |
+| [Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx) |将辅助数据库切换为主数据库，启动故障转移。 |
+| [Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603457.aspx) |终止 SQL 数据库和指定的辅助数据库之间的数据复制。 |
 | [Get-AzureRmSqlDatabaseReplicationLink](https://msdn.microsoft.com/library/mt619330.aspx) |获取 Azure SQL 数据库和资源组或 SQL Server 之间的异地复制链路。 |
 |  | |
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 03/16/2017
 | --- | --- |
 | [创建或更新数据库 (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) |创建、更新或还原主数据库或辅助数据库。 |
 | [获取创建或更新数据库状态](https://msdn.microsoft.com/library/azure/mt643934.aspx) |返回创建操作过程中的状态。 |
-| [将辅助数据库设为主数据库（计划的故障转移）](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx) |提升异地复制合作关系中的辅助数据库，使其成为新的主数据库。 |
+| [将辅助数据库设为主数据库（计划的故障转移）](https://msdn.microsoft.com/library/azure/mt575007.aspx) |提升异地复制合作关系中的辅助数据库，使其成为新的主数据库。 |
 | [将辅助数据库设为主数据库（未计划的故障转移）](https://msdn.microsoft.com/library/azure/mt582027.aspx) |强制故障转移到辅助数据库，并将辅助数据库设为主数据库。 |
 | [获取复制链路](https://msdn.microsoft.com/library/azure/mt600929.aspx) |获取异地复制合作关系中给定 SQL 数据库的所有复制链路。 它检索 sys.geo_replication_links 目录视图中可见的信息。 |
 | [获取复制链路](https://msdn.microsoft.com/library/azure/mt600778.aspx) |获取异地复制合作关系中给定 SQL 数据库的特定复制链路。 它检索 sys.geo_replication_links 目录视图中可见的信息。 |

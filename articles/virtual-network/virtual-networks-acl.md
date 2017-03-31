@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 891d950c7d4984b39f2e03af3d0f66af5594a348
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 66ddcea180395b830cdb5310446e1dbc02e7d784
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 891d950c7d4984b39f2e03af3d0f66af5594a348
 > 
 > 
 
-可以使用 PowerShell 或在管理门户中配置 ACL。 若要使用 PowerShell 配置网络 ACL，请参阅[使用 PowerShell 管理终结点的访问控制列表 (ACL)](virtual-networks-acl-powershell.md)。 若要使用管理门户配置网络 ACL，请参阅[如何设置虚拟机的终结点](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+可以使用 PowerShell 或在管理门户中配置 ACL。 若要使用 PowerShell 配置网络 ACL，请参阅[使用 PowerShell 管理终结点的访问控制列表 (ACL)](virtual-networks-acl-powershell.md)。 若要使用管理门户配置网络 ACL，请参阅[如何设置虚拟机的终结点](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 使用网络 ACL 可以实现以下目的：
 
@@ -83,17 +84,12 @@ ACL 是包含规则列表的对象。 当你创建 ACL 并将其应用于虚拟�
 | 100 |175.1.0.1/24 |80 |拒绝 |
 | 200 |175.0.0.0/8 |80 |允许 |
 
-## <a name="network-acls-and-load-balanced-sets"></a>网络 ACL 和负载平衡的集
-网络 ACL 可在负载平衡集（LB 集）终结点上指定。 如果为 LB 集指定了 ACL，则网络 ACL 将应用于该 LB 集中的所有虚拟机。 例如，如果使用“端口 80”创建了 LB 集，并且 LB 集包含 3 个 VM，则在一台 VM 的终结点“端口 80”上创建的网络 ACL 将自动应用于其他 VM。
+## <a name="network-acls-and-load-balanced-sets"></a>网络 ACL 和负载均衡的集
+网络 ACL 可在负载均衡集（LB 集）终结点上指定。 如果为 LB 集指定了 ACL，则网络 ACL 将应用于该 LB 集中的所有虚拟机。 例如，如果使用“端口 80”创建了 LB 集，并且 LB 集包含 3 个 VM，则在一台 VM 的终结点“端口 80”上创建的网络 ACL 将自动应用于其他 VM。
 
-![网络 ACL 和负载平衡的集](./media/virtual-networks-acl/IC674733.png)
+![网络 ACL 和负载均衡的集](./media/virtual-networks-acl/IC674733.png)
 
 ## <a name="next-steps"></a>后续步骤
 [如何使用 PowerShell 管理终结点的访问控制列表 (ACL)](virtual-networks-acl-powershell.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

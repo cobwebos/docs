@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: carlasab
 translationtype: Human Translation
-ms.sourcegitcommit: b828859cb059e626878b5cb2a2839a76f10de9c9
-ms.openlocfilehash: c40b9cbccba1789e5ee9045d83c39169bb5d2663
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 789e1eabcd284c17c5728156cf185d2ca168f0eb
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/23/2017
 * 拆离后，将数据和日志文件复制到 Azure blob 存储，然后从 URL 附加到 Azure VM 中的 SQL Server
 * 将本地物理计算机转换为 Hyper-V VHD，上载到 Azure Blob 存储，然后使用上载的 VHD 部署为新 VM
 * 使用 Windows 导入/导出服务运送硬盘驱动器
-* 如果在本地有 AlwaysOn 部署，请使用[添加 Azure 副本向导](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md)在 Azure 中创建副本，然后进行故障转移，并将用户指向 Azure 数据库实例
+* 如果在本地有 AlwaysOn 部署，请使用[添加 Azure 副本向导](../classic/sql-onprem-availability.md)在 Azure 中创建副本，然后进行故障转移，并将用户指向 Azure 数据库实例
 * 使用 SQL Server [事务复制](https://msdn.microsoft.com/library/ms151176.aspx)将 Azure SQL Server 实例配置为订阅服务器，然后禁用复制，并将用户指向 Azure 数据库实例
 
 > [!TIP]
@@ -61,7 +61,7 @@ ms.lasthandoff: 02/23/2017
 | [分离后，将数据和日志文件复制到 Azure blob 存储，然后从 URL 附加到 Azure 虚拟机中的 SQL Server](#detach-and-copy-to-url-and-attach-from-url) |SQL Server 2005 或更高版本 |SQL Server 2014 或更高版本 |[Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |如果计划[使用 Azure Blob 存储服务存储这些文件](https://msdn.microsoft.com/library/dn385720.aspx)并将它们附加到 Azure VM 中运行的 SQL Server，尤其是对于非常大的数据库，可以使用此方法。 |
 | [将本地计算机转换为 Hyper-V VHD，上载到 Azure Blob 存储，然后使用上载的 VHD 部署为新虚拟机](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) |SQL Server 2005 或更高版本 |SQL Server 2005 或更高版本 |[Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |在以下场合使用：[使用自己的 SQL Server 许可证](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)时；迁移的数据库将在较旧版本的 SQL Server 上运行时；或者将系统数据库和用户数据库一起作为依赖于其他用户数据库和/或系统数据库的数据库的一部分进行迁移时。 |
 | [使用 Windows 导入/导出服务运送硬盘驱动器](#ship-hard-drive) |SQL Server 2005 或更高版本 |SQL Server 2005 或更高版本 |[Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |当手动复制方法速度太慢时使用 [Windows 导入/导出服务](../../../storage/storage-import-export-service.md)，比如复制非常大的数据库 |
-| [使用“添加 Azure 副本”向导](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) |SQL Server 2012 或更高版本 |SQL Server 2012 或更高版本 |[Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |最大限度地减少停机时间，在你有 AlwaysOn 本地部署时使用 |
+| [使用“添加 Azure 副本”向导](../classic/sql-onprem-availability.md) |SQL Server 2012 或更高版本 |SQL Server 2012 或更高版本 |[Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |最大限度地减少停机时间，在你有 AlwaysOn 本地部署时使用 |
 | [使用 SQL Server 事务复制](https://msdn.microsoft.com/library/ms151176.aspx) |SQL Server 2005 或更高版本 |SQL Server 2005 或更高版本 |[Azure VM 存储限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |在需要最大限度地减少停机时间，但没有 AlwaysOn 本地部署时使用 |
 
 ## <a name="backup-and-restore"></a>备份和还原

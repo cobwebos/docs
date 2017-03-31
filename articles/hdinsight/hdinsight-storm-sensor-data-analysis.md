@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 34445eff89ff7ff513893d5b36b937075b09f599
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 138c90a1a9cbf3b85856f372beeb4472edb9e2e8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -49,10 +49,7 @@ ms.lasthandoff: 03/22/2017
 * [Java 和 JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)：用于开发 Storm 拓扑。
 * [Maven](http://maven.apache.org/what-is-maven.html)：用于生成和编译项目。
 * [Git](http://git-scm.com/)：用于从 GitHub 中下载项目。
-* **SSH** 客户端：用于连接到基于 Linux 的 HDInsight 群集。 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档：
-  
-  * [在 Windows 客户端中将 SSH (PuTTY) 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
-  * [在 Linux、Unix、OS X 或 Windows 10 上的 Bash 中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+* **SSH** 客户端：用于连接到基于 Linux 的 HDInsight 群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
     
     > [!NOTE]
     > 另外，用户还必须有权限访问 `scp` 命令，该命令用于在本地开发环境与使用 SSH 的 HDInsight 群集之间复制文件。

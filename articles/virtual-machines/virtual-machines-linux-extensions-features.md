@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: c6c92f0d357909921a9f3ee2f484ff355ddde0be
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: ef28ca0a43d7e07fa87d5afdd3f0428f28a310f0
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -49,7 +49,7 @@ Azure 虚拟机扩展是小型应用程序，可在Azure 虚拟机上提供部�
 
 Azure VM 代理可管理 Azure 虚拟机与 Azure 结构控制器之间的交互。 VM 代理负责部署和管理 Azure 虚拟机的许多功能层面，包括运行 VM 扩展。 Azure VM 代理预先安装在 Azure 应用商店映像上，并可手动安装在受支持的操作系统上。
 
-有关受支持的操作系统以及安装说明的信息，请参阅 [Azure virtual machine agent](virtual-machines-linux-classic-agents-and-extensions.md)（Azure 虚拟机代理）。
+有关受支持的操作系统以及安装说明的信息，请参阅 [Azure virtual machine agent](linux/classic/agents-and-extensions.md)（Azure 虚拟机代理）。
 
 ## <a name="discover-vm-extensions"></a>发现 VM 扩展
 

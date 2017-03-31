@@ -16,15 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 01/30/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 253c504fa433c7ca37c0065ebf01d13dafc76231
-ms.openlocfilehash: c4cf6ab29ebf5b3397017cf754ee04bf57ab1555
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 1b9401d7c2f756081d585b9432ceef412ab1f807
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 虚拟机 (Resource Manager) 的自动备份
 > [!div class="op_single_selector"]
 > * [资源管理器](virtual-machines-windows-sql-automated-backup.md)
-> * [经典](../sqlclassic/virtual-machines-windows-classic-sql-automated-backup.md)
+> * [经典](../classic/sql-automated-backup.md)
 > 
 > 
 
@@ -32,7 +33,7 @@ ms.openlocfilehash: c4cf6ab29ebf5b3397017cf754ee04bf57ab1555
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-若要查看本文的经典版本，请参阅[在 Azure 虚拟机（经典）中对 SQL Server 进行自动备份](../sqlclassic/virtual-machines-windows-classic-sql-automated-backup.md)。
+若要查看本文的经典版本，请参阅[在 Azure 虚拟机（经典）中对 SQL Server 进行自动备份](../classic/sql-automated-backup.md)。
 
 ## <a name="prerequisites"></a>先决条件
 若要使用自动备份，请考虑以下先决条件：
@@ -149,10 +150,5 @@ ms.openlocfilehash: c4cf6ab29ebf5b3397017cf754ee04bf57ab1555
 有关其他可用自动化任务的信息，请参阅 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
 
 有关在 Azure VM 中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

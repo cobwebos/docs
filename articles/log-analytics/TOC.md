@@ -70,6 +70,9 @@
 ### [Surface Hub](log-analytics-surface-hubs.md)
 ### [更新管理](../operations-management-suite/oms-solution-update-management.md)
 ### [VMware](log-analytics-vmware.md)
+### Windows 分析
+#### [更新符合性](https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started)
+#### [升级准备情况](https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started)
 ### [传输数据](log-analytics-wire-data.md)
 ## 开发
 ### [数据收集器 API](log-analytics-data-collector-api.md)
@@ -83,6 +86,6 @@
 ## [REST](/rest/api/loganalytics)
 
 # 资源
-## [升级分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
+## [Windows 分析](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)
 ## [定价](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=log-analytics)

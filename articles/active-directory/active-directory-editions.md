@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: b875c83ba7d87a572e78625e4038840aadcf9c85
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: e5a33f58dfb07b82d4acab533d68135d8ed6a446
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -125,7 +125,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-| 每个用户&10; 个应用 (1) |每个用户&10; 个应用 (1) |无限制 (2) |每个用户&10; 个应用 (1) |
+| 每个用户 10 个应用 (1) |每个用户 10 个应用 (1) |无限制 (2) |每个用户 10 个应用 (1) |
 
 1. 使用 Azure AD 免费版和 Azure AD 基本版，最终用户可以通过单一登录访问多达 10 个应用程序。
 2. 使用应用程序库菜单中提供的模板，自助集成支持 SAML、SCIM 或基于窗体的身份验证的任何应用程序。 有关更多详细信息，请参阅[针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](active-directory-saas-custom-apps.md)。
@@ -145,7 +145,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 **更多详细信息：**
 
-* [如何更新自己的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)
+* [如何更新自己的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)
 
 #### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>Connect（将本地目录扩展到 Azure Active Directory 的同步引擎）
 **类型：**常用功能

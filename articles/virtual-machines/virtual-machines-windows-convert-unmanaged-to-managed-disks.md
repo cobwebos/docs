@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 59798ae9412a7550c94f8fa67c39f504aad8d00c
-ms.openlocfilehash: 3867c57d40a218c80403578d30cb999bf9f6cd38
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 96137d49d3caa0444400edcfcfaa097dc71ba8e3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -76,7 +76,7 @@ foreach($vmInfo in $avSet.VirtualMachinesReferences)
 ## <a name="convert-existing-azure-vms-to-managed-disks-of-the-same-storage-type"></a>将现有 Azure VM 转换为同一存储类型的托管磁盘
 
 > [!IMPORTANT]
-> 执行下列过程后，默认 /vhds 容器中将保留一个 blob。 文件的名称是“VMName.xxxxxxx.status”。 只有在 VM 上安装了 [VM 扩展](virtual-machines-windows-classic-agents-and-extensions.md)，Azure 才会创建此文件。 请勿删除此剩余的状态对象。 将来应能解决此问题。
+> 执行下列过程后，默认 /vhds 容器中将保留一个 blob。 文件的名称是“VMName.xxxxxxx.status”。 只有在 VM 上安装了 [VM 扩展](windows/classic/agents-and-extensions.md)，Azure 才会创建此文件。 请勿删除此剩余的状态对象。 将来应能解决此问题。
 
 本部分介绍如何在使用相同存储类型时，将现有 Azure VM 从存储帐户中的非托管磁盘转换为托管磁盘。 可以通过此过程，将高级 (SDD) 非托管磁盘转换为高级托管磁盘，或将标准 (HDD) 非托管磁盘转换为标准托管磁盘。 
 
