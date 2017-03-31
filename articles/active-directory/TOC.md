@@ -160,6 +160,8 @@
 #### 发布应用
 ##### [Azure 门户](application-proxy-publish-azure-portal.md)
 ##### [经典门户](active-directory-application-proxy-publish.md)
+
+#### [用于 Azure AD 的 PingAccess](application-proxy-ping-access.md)
 #### [安全性](application-proxy-security-considerations.md)
 #### [网络](application-proxy-network-topology-considerations.md)
 #### [远程桌面](application-proxy-publish-remote-desktop.md)

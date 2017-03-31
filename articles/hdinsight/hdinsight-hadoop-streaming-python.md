@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cf233279c0a26c3d2970596b1bb515508da20b89
-ms.openlocfilehash: ad696f14d48452840805bc413d890309e523ce34
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 6ce490fb903d4ed2177b95145bb98fb3eeb0654f
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -43,11 +43,7 @@ Hadoop 为 MapReduce 提供了一个流式处理 API，使你能够以 Java 之�
   > [!IMPORTANT]
   > 文本编辑器必须使用 LF 作为行尾。 如果它使用 CRLF，则在基于 Linux 的 HDInsight 群集上运行 MapReduce 作业时会导致出错。 如果不确定它使用哪种行尾，请使用[运行 MapReduce](#run-mapreduce) 部分中的可选步骤，将所有 CRLF 转换为 LF。
 
-* **熟悉 SSH 和 SCP**。 有关如何在 HDInsight 中使用 SSH 和 SCP 的详细信息，请参阅以下文档：
-  
-  * **Linux、Unix 或 OS X 客户端**：请参阅 [在 Linux、OS X 或 Unix 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-  * **Windows 客户端**：请参阅 [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+* **熟悉 SSH 和 SCP**。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 ## <a name="word-count"></a>字数统计
 

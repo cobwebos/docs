@@ -17,8 +17,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: acomet
 translationtype: Human Translation
-ms.sourcegitcommit: faf363eb5848752b27faacd971867391b6393337
-ms.openlocfilehash: 1a693477a51a05fb28e7c4772aeee77fd0c4e1dd
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 4d6ea897ec24ab9cbf5c131cd4629f45447f1460
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -30,7 +31,7 @@ Azure DocumentDB 是完全托管的全球分布式 NoSQL 数据库服务，用�
 
 ## <a name="why-we-use-request-units-rus"></a>为何使用请求单位 (RU)
 
-DocumentDB 的性能基于分区的预配[请求单位](documentdb-programming.md) (RU) 数量。 预配属于另一种粒度，根据每秒 RU 数（[请不要与每小时计费相混淆](https://azure.microsoft.com/pricing/details/documentdb/)）购买。 应将 RU 视为一种货币，用于简化应用程序所需吞吐量的预配过程。 客户无需考虑读取和写入容量单位之间的差异。 RU 的单一货币模型能够有效地在读取和写入之间分享预配的容量。 这种预配的容量模型使服务能够提供可预测且一致的吞吐量，保证低延迟、高可用性。 最后，我们使用 RU 来为吞吐量建模，但每个预配的 RU 还具有定义数量的资源（内存、核心）。 每秒 RU 数不仅仅是 IOPS。
+DocumentDB 的性能基于分区的预配[请求单位](documentdb-request-units.md) (RU) 数量。 预配属于另一种粒度，根据每秒 RU 数（[请不要与每小时计费相混淆](https://azure.microsoft.com/pricing/details/documentdb/)）购买。 应将 RU 视为一种货币，用于简化应用程序所需吞吐量的预配过程。 客户无需考虑读取和写入容量单位之间的差异。 RU 的单一货币模型能够有效地在读取和写入之间分享预配的容量。 这种预配的容量模型使服务能够提供可预测且一致的吞吐量，保证低延迟、高可用性。 最后，我们使用 RU 来为吞吐量建模，但每个预配的 RU 还具有定义数量的资源（内存、核心）。 每秒 RU 数不仅仅是 IOPS。
 
 作为一种全球分布式数据库系统，DocumentDB 是仅限 Azure 的服务，除了高可用性以外，还在延迟、吞吐量和一致性方面提供 SLA。 预配的吞吐量将应用到与 DocumentDB 数据库帐户关联的每个区域。 对于读取，DocumentDB 提供多个妥善定义的[一致性级别](documentdb-consistency-levels.md)供用户选择。 
 
@@ -55,9 +56,4 @@ DocumentDB 的性能基于分区的预配[请求单位](documentdb-programming.m
 ## <a name="next-steps"></a>后续步骤
 
 请持续关注有关优化 DocumentDB 资源预配的新文章。 同时，欢迎使用我们的 [RU 计算器](https://www.documentdb.com/capacityplanner)。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

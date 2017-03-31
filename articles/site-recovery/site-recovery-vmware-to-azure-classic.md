@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 37291b16a966c17b684a4622f15d0393a5a5ce6d
-ms.openlocfilehash: 0984ccc8163c94f56517e65919f8ea089a3e8b5f
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 03178e1b933f5681caf6efbeb5a89d56727ae743
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -66,12 +66,12 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 * 可以配置恢复计划，将分布到多个计算机中的应用程序工作负荷组合到一起。 可以对这些计划进行故障转移，而 Site Recovery 提供多 VM 一致性，因此可以将运行相同工作负荷的计算机一起恢复到某个一致的数据点。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
-### <a name="windows-64-bit-only"></a>Windows（仅限&64; 位）
+### <a name="windows-64-bit-only"></a>Windows（仅限 64 位）
 * Windows Server 2008 R2 SP1+
 * Windows Server 2012
 * Windows Server 2012 R2
 
-### <a name="linux-64-bit-only"></a>Linux（仅限&64; 位）
+### <a name="linux-64-bit-only"></a>Linux（仅限 64 位）
 * Red Hat Enterprise Linux 6.7、7.1 和 7.2
 * CentOS 6.5、6.6、6.7、7.0、7.1 和 7.2
 * 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3) 的 Oracle Enterprise Linux 6.4 和 6.5
@@ -194,7 +194,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 | --- | --- |
 | **管理服务器** |你需要一个运行在虚拟机或物理服务器上的本地 Windows 2012 R2 服务器。 已在此管理服务器上安装所有本地 Site Recovery 组件。<br/><br/> 我们建议你将服务器部署为高度可用的 VMware VM。 从 Azure 故障回复到本地站点时，将始终故障回复到 VMware VM，不管你是对 VM 还是物理服务器进行了故障转移。 如果未将管理服务器配置为 VMware VM，则需要将单独的主目标服务器设置为 VMware VM 来接收故障回复流量。<br/><br/>服务器不应为域控制器。<br/><br/>服务器应拥有一个静态 IP 地址。<br/><br/>服务器的主机名应为 15 个字符或更少。<br/><br/>操作系统的区域设置应仅为英语。<br/><br/>管理服务器需要访问 Internet。<br/><br/>需要服务器的出站访问，如下所述：设置 Site Recovery（以下载 MySQL）期间在 HTTP 80 上的临时访问；在 HTTPS 443 上的正在进行的出站访问用于复制管理；在 HTTPS 9443 上的正在进行的出站访问用于复制流量（此端口可以修改）。<br/><br/> 确保可通过管理服务器访问以下 URL： <br/>- \*.hypervrecoverymanager.windowsazure.com<br/>- \*.accesscontrol.windows.net<br/>- \*.backup.windowsazure.com<br/>- \*.blob.core.windows.net<br/>- \*.store.core.windows.net<br/>- https://www.msftncsi.com/ncsi.txt<br/>- [ https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi](https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi " https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi")<br/><br/>如果在服务器上设置了基于 IP 地址的防火墙规则，请确保这些规则允许与 Azure 通信。 你需要允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)和 HTTPS (443) 端口。 还需要将所订阅的 Azure 区域（以及美国西部）的 IP 地址范围加入允许列表。 URL [https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi](https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi " https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi") 用于下载 MySQL。 |
 | **VMware vCenter/ESXi 主机** |需要一个或多个 VMware vSphere ESX/ESXi 虚拟机监控程序，该程序管理运行 ESX/ESXi 6.0、5.5 或 5.1 版并装有最新更新的 VMware 虚拟机。<br/><br/> 建议部署 VMware vCenter 服务器来管理 ESXi 主机。 它应该运行的是装有最新更新的 vCenter 6.0 或 5.5 版。<br/><br/>请注意，Site Recovery 不支持新的 vCenter 和 vSphere 6.0 功能，例如跨 vCenter vMotion、虚拟卷和存储 DRS。 Site Recovery 支持仅限也可在 5.5 版中使用的功能。 |
-| **受保护的计算机** |**Azure**<br/><br/>要保护的计算机应符合创建 Azure VM 的 [Azure 先决条件](site-recovery-prereq.md)。<br><br/>如果想要在故障转移后连接到 Azure VM，需要在本地防火墙上启用远程桌面连接。<br/><br/>受保护计算机上单个磁盘的容量不应超过 1023 GB。 一台 VM 最多可以有 64 个磁盘（因此最大容量为 64 TB）。 如果磁盘超出 1 TB，可以考虑使用数据库复制（例如 SQL Server Always On 或 Oracle 数据防护）。<br/><br/>安装驱动器上至少需要 2 GB 的可用空间才能安装组件。<br/><br/>不支持共享的磁盘来宾群集。 如果有聚集部署，可以考虑使用数据库复制（例如 SQL Server Always On 或 Oracle 数据防护）。<br/><br/>不支持统一可扩展固件接口 (UEFI)/可扩展固件接口 (EFI)。<br/><br/>计算机名称应包含 1 到 63 个字符（字母、数字和连字符）。 名称必须以字母或数字开头，并以字母或数字结尾。 计算机受保护后，可以修改 Azure 名称。<br/><br/>**VMware VM**<br/><br>需要安装 VMware vSphere PowerCLI 6.0。 安装 VMware vSphere PowerCLI&6;.0。<br/><br/>要保护的 VMware VM 上应已安装并正在运行 VMware 工具。<br/><br/>如果源 VM 具有 NIC 组合，在故障转移到 Azure 后，它将转换为单个 NIC。<br/><br/>如果受保护的 VM 有 iSCSI 磁盘，则 Site Recovery 会在 VM 故障转移到 Azure 时将受保护的 VM iSCSI 磁盘转换为 VHD 文件。 如果 iSCSI 目标可供 Azure VM 访问，后者会连接到 iSCSI 目标且实际上会看到两个磁盘：Azure VM 上的 VHD 磁盘，以及源 iSCSI 磁盘。 在这种情况下，需要断开连接故障转移的 Azure VM 上显示的 iSCSI 目标。<br/><br/>有关 Site Recovery 所需的 VMware 用户权限的详细信息，请参阅 [VMware 进行 vCenter 访问所需的权限](#vmware-permissions-for-vcenter-access)。<br/><br/> **Windows Server 计算机（位于 VMware VM 或物理服务器上）**<br/><br/>服务器应运行受支持的 64 位操作系统：Windows Server 2012 R2、Windows Server 2012 或 Windows Server 2008 R2 SP1 及更高版本。<br/><br/>操作系统应安装在驱动器 C 上，OS 磁盘应为 Windows 基本磁盘。 （不应在 Windows 动态磁盘上安装 OS。）<br/><br/>对于 Windows Server 2008 R2 计算机，需要安装 .NET Framework 3.5.1。<br/><br/>需要提供管理员帐户（必须是 Windows 计算机上的本地管理员）才能在 Windows 服务器上推送安装移动服务。 如果提供的帐户不是域帐户，则需要在本地计算机上禁用远程用户访问控制。 有关详细信息，请参阅[使用推送安装安装移动服务](#install-the-mobility-service-with-push-installation)。<br/><br/>Site Recovery 支持包含 RDM 磁盘的 VM。 在故障回复期间，如果原始的源 VM 和 RDM 磁盘可用，Site Recovery 会重复使用 RDM 磁盘。 如果这些磁盘不可用，则 Site Recovery 将在故障回复期间为每个磁盘创建一个新的 VMDK 文件。<br/><br/>**Linux 计算机**<br/><br/>需要支持的 64 位操作系统：Red Hat Enterprise Linux 6.7；Centos 6.5、6.6 或 6.7；运行 Red Hat 兼容内核或 Unbreakable Enterprise Kern Release 3 (UEK3) 的 Oracle Enterprise Linux 6.4 或 6.5；SUSE Linux Enterprise Server 11 SP3。<br/><br/>受保护计算机上的 /etc/hosts 文件包含的条目应将本地主机名映射到与所有网络适配器相关联的 IP 地址。 <br/><br/>如果要在故障转移后使用安全外壳客户端 (SSH) 连接运行 Linux 的 Azure 虚拟机，请确保将受保护的计算机上的安全外壳服务设置为在系统启动时自动启动，并且防火墙规则允许与其建立 SSH 连接。<br/><br/>只能在具有以下存储的 Linux 计算机上启用保护：文件系统（EXT3、ETX4、ReiserFS、XFS）；多路径软件设备映射器（多路径）；卷管理器 (LVM2)。 不支持使用 HP CCISS 控制器存储的物理服务器。 ReiserFS 文件系统仅在 SUSE Linux Enterprise Server 11 SP3 上受支持。<br/><br/>Site Recovery 支持包含 RDM 磁盘的 VM。 在针对 Linux 进行故障回复期间，Site Recovery 不重复使用 RDM 磁盘。 它将为每个相应的 RDM 磁盘创建新的 VMDK 文件。 |
+| **受保护的计算机** |**Azure**<br/><br/>要保护的计算机应符合创建 Azure VM 的 [Azure 先决条件](site-recovery-prereq.md)。<br><br/>如果想要在故障转移后连接到 Azure VM，需要在本地防火墙上启用远程桌面连接。<br/><br/>受保护计算机上单个磁盘的容量不应超过 1023 GB。 一台 VM 最多可以有 64 个磁盘（因此最大容量为 64 TB）。 如果磁盘超出 1 TB，可以考虑使用数据库复制（例如 SQL Server Always On 或 Oracle 数据防护）。<br/><br/>安装驱动器上至少需要 2 GB 的可用空间才能安装组件。<br/><br/>不支持共享的磁盘来宾群集。 如果有聚集部署，可以考虑使用数据库复制（例如 SQL Server Always On 或 Oracle 数据防护）。<br/><br/>不支持统一可扩展固件接口 (UEFI)/可扩展固件接口 (EFI)。<br/><br/>计算机名称应包含 1 到 63 个字符（字母、数字和连字符）。 名称必须以字母或数字开头，并以字母或数字结尾。 计算机受保护后，可以修改 Azure 名称。<br/><br/>**VMware VM**<br/><br>需要安装 VMware vSphere PowerCLI 6.0。 安装 VMware vSphere PowerCLI 6.0。<br/><br/>要保护的 VMware VM 上应已安装并正在运行 VMware 工具。<br/><br/>如果源 VM 具有 NIC 组合，在故障转移到 Azure 后，它将转换为单个 NIC。<br/><br/>如果受保护的 VM 有 iSCSI 磁盘，则 Site Recovery 会在 VM 故障转移到 Azure 时将受保护的 VM iSCSI 磁盘转换为 VHD 文件。 如果 iSCSI 目标可供 Azure VM 访问，后者会连接到 iSCSI 目标且实际上会看到两个磁盘：Azure VM 上的 VHD 磁盘，以及源 iSCSI 磁盘。 在这种情况下，需要断开连接故障转移的 Azure VM 上显示的 iSCSI 目标。<br/><br/>有关 Site Recovery 所需的 VMware 用户权限的详细信息，请参阅 [VMware 进行 vCenter 访问所需的权限](#vmware-permissions-for-vcenter-access)。<br/><br/> **Windows Server 计算机（位于 VMware VM 或物理服务器上）**<br/><br/>服务器应运行受支持的 64 位操作系统：Windows Server 2012 R2、Windows Server 2012 或 Windows Server 2008 R2 SP1 及更高版本。<br/><br/>操作系统应安装在驱动器 C 上，OS 磁盘应为 Windows 基本磁盘。 （不应在 Windows 动态磁盘上安装 OS。）<br/><br/>对于 Windows Server 2008 R2 计算机，需要安装 .NET Framework 3.5.1。<br/><br/>需要提供管理员帐户（必须是 Windows 计算机上的本地管理员）才能在 Windows 服务器上推送安装移动服务。 如果提供的帐户不是域帐户，则需要在本地计算机上禁用远程用户访问控制。 有关详细信息，请参阅[使用推送安装安装移动服务](#install-the-mobility-service-with-push-installation)。<br/><br/>Site Recovery 支持包含 RDM 磁盘的 VM。 在故障回复期间，如果原始的源 VM 和 RDM 磁盘可用，Site Recovery 会重复使用 RDM 磁盘。 如果这些磁盘不可用，则 Site Recovery 将在故障回复期间为每个磁盘创建一个新的 VMDK 文件。<br/><br/>**Linux 计算机**<br/><br/>需要支持的 64 位操作系统：Red Hat Enterprise Linux 6.7；Centos 6.5、6.6 或 6.7；运行 Red Hat 兼容内核或 Unbreakable Enterprise Kern Release 3 (UEK3) 的 Oracle Enterprise Linux 6.4 或 6.5；SUSE Linux Enterprise Server 11 SP3。<br/><br/>受保护计算机上的 /etc/hosts 文件包含的条目应将本地主机名映射到与所有网络适配器相关联的 IP 地址。 <br/><br/>如果要在故障转移后使用安全外壳客户端 (SSH) 连接运行 Linux 的 Azure 虚拟机，请确保将受保护的计算机上的安全外壳服务设置为在系统启动时自动启动，并且防火墙规则允许与其建立 SSH 连接。<br/><br/>只能在具有以下存储的 Linux 计算机上启用保护：文件系统（EXT3、ETX4、ReiserFS、XFS）；多路径软件设备映射器（多路径）；卷管理器 (LVM2)。 不支持使用 HP CCISS 控制器存储的物理服务器。 ReiserFS 文件系统仅在 SUSE Linux Enterprise Server 11 SP3 上受支持。<br/><br/>Site Recovery 支持包含 RDM 磁盘的 VM。 在针对 Linux 进行故障回复期间，Site Recovery 不重复使用 RDM 磁盘。 它将为每个相应的 RDM 磁盘创建新的 VMDK 文件。 |
 
 仅适用于 Linux VM：在 VMware 中，请确保在 VM 的“配置参数”中设置了 disk.enableUUID=true 设置。 如果此行不存在，请添加此行。 若要为 VMDK 提供一致的 UUID，以便能够正确进行装载，则这是必需的。 如果没有此设置，故障回复时会进行完整的下载，即使 VM 在本地可用。 添加此设置可确保在故障回复过程中仅将增量更改传输回来。
 
@@ -232,7 +232,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 1. 在 Azure 中通过管理服务器打开 Site Recovery 控制台。 在“**恢复服务**”页上，单击保管库以打开“**快速启动**”页。 也可随时单击相应的图标打开“快速启动”页。
 
     ![“快速启动”图标](./media/site-recovery-vmware-to-azure-classic/quick-start-icon.png)
-2. 在“快速启动”页中，单击“准备目标资源” > “下载注册密钥”。 此时将自动生成注册文件。 该文件在生成后的&5; 天内有效。
+2. 在“快速启动”页中，单击“准备目标资源” > “下载注册密钥”。 此时将自动生成注册文件。 该文件在生成后的 5 天内有效。
 
 ## <a name="step-5-install-the-management-server"></a>步骤 5：安装管理服务器
 > [!TIP]
@@ -454,7 +454,7 @@ C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstalls
 
 | 源操作系统 | 移动服务安装文件 |
 | --- | --- |
-| Windows Server（仅限&64; 位） |Microsoft-ASR_UA_9.*.0.0_Windows_* release.exe |
+| Windows Server（仅限 64 位） |Microsoft-ASR_UA_9.*.0.0_Windows_* release.exe |
 | CentOS 6.4、6.5、6.6（仅限 64 位） |Microsoft-ASR_UA_9.*.0.0_RHEL6-64_*release.tar.gz |
 | SUSE Linux Enterprise Server 11 SP3（仅限 64 位） |Microsoft-ASR_UA_9.*.0.0_SLES11-SP3-64_*release.tar.gz |
 | Oracle Enterprise Linux 6.4、6.5（仅限 64 位） |Microsoft-ASR_UA_9.*.0.0_OL6-64_*release.tar.gz |
@@ -579,7 +579,7 @@ C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstalls
 3. 可在此处更改以下设置：
 
    * **Azure VM 名称**：这是在故障转移以后，要提供给 Azure 中的计算机的名称。 该名称必须符合 Azure 要求。
-   * **Azure VM 大小**：网络适配器数目根据你为目标虚拟机指定的大小来确定。 有关大小和适配器的详细信息，请参阅[大小表格](../virtual-machines/virtual-machines-linux-sizes.md#size-tables)。 请注意：
+   * **Azure VM 大小**：网络适配器数目根据你为目标虚拟机指定的大小来确定。 有关大小和适配器的详细信息，请参阅[大小表格](../virtual-machines/virtual-machines-linux-sizes.md)。 请注意：
 
      * 在修改虚拟机的大小并保存设置后，下一次打开“配置”选项卡时，网络适配器的数量将会改变。 目标虚拟机的网络适配器最小数目等于源虚拟机上的网络适配器最小数目。 网络适配器最大数目由虚拟机的大小决定。
        * 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。

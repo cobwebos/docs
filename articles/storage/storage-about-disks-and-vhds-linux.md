@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: e34a2bfbf5f1ae544a729c994d91c485d48bb440
-ms.openlocfilehash: 7cd157cd1c5730443a710ac46d923319789aec61
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 94ed8a0a1e47f6cb05095f8fe192a9da2a42fc2d
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -61,6 +61,6 @@ ms.lasthandoff: 03/01/2017
 ## <a name="next-steps"></a>后续步骤
 * [附加磁盘](../virtual-machines/virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)可为 VM 添加额外的存储。
 * [配置软件 RAID](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 实现冗余。
-* [捕获 Linux 虚拟机](../virtual-machines/virtual-machines-linux-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)，以便快速部署更多 VM。
+* [捕获 Linux 虚拟机](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)，以便快速部署更多 VM。
 
 

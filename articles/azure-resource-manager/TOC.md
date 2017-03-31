@@ -14,11 +14,11 @@
 ## 创建模板
 ### [模板最佳实践](resource-manager-template-best-practices.md)
 ### [模板节](resource-group-authoring-templates.md)
-### [模板函数](resource-group-template-functions.md)
 ### [定义资源之间的依赖关系](resource-group-define-dependencies.md)
+### [设置位置](resource-manager-template-location.md)
+### [分配标记](resource-manager-template-tags.md)
 ### [设置子资源名称和类型](resource-manager-template-child-resource.md)
 ### [创建资源类型的多个实例](resource-group-create-multiple.md)
-### [在部署期间传递安全值](resource-manager-keyvault-parameter.md)
 ### [链接到其他模板](resource-group-linked-templates.md)
 ### [在链接模板之间共享状态](best-practices-resource-manager-state.md)
 ### [模板设计模式](best-practices-resource-manager-design-templates.md)
@@ -28,6 +28,7 @@
 ### [门户](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [与 Visual Studio Team Services 的持续集成](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [在部署期间传递安全值](resource-manager-keyvault-parameter.md)
 ## 管理
 ### [PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
@@ -56,6 +57,7 @@
 ### [查看部署操作](resource-manager-deployment-operations.md)
 
 # 引用
+## [模板函数](resource-group-template-functions.md)
 ## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources)
 ## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)

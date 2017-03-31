@@ -16,9 +16,9 @@ ms.tgt_pltfrm: NA
 ms.date: 12/22/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: f234e50d194c1b8b8deed8282a6ab1250b53d075
-ms.openlocfilehash: d055e40305b277338ae85e8d6c53d3d76a78d235
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: fa4cf56c10f885a2fd4b62e08a369a51d1280ab3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -91,10 +91,6 @@ ms.lasthandoff: 02/16/2017
 14. 单击“保存”以使用此新策略对你配置的 Azure 恢复服务保管库启用长期备份保留。
 
    ![定义保留策略](./media/sql-database-get-started-backup-recovery/enable-long-term-retention.png)
-
-14. 在启用长期备份保留后，打开“恢复服务保管库”边栏选项卡（转到“所有资源”并从订阅的资源列表中选择它）。
-
-   ![查看恢复服务保管库](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault.png)
 
 
 ## <a name="restore-from-long-term-backup-retention-using-the-azure-portal"></a>使用 Azure 门户从长期备份保留存储中还原

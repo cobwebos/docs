@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 52c58c5c8ea35bf29f8b847e5b7d119d6ab85da4
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 9f6c36011941510d2da7f6a043128e493c13d47b
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/10/2017
 本文介绍与 Azure AD 目录中存储的用户帐户关联的各种密码策略和复杂性要求。
 
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 >
 >
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/10/2017
 | --- | --- |
 | 允许的字符 |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> 。 - \_ ! \# ^ \~</li></ul> |
 | 不允许的字符 |<ul> <li>任何不分隔用户名和域的“@”字符。</li> <li>不能包含紧靠在“@”符号前面的点字符“.”</li></ul> |
-| 长度约束 |<ul> <li>总长度不能超过 113 个字符</li><li>“@”符号前为&64; 个字符</li><li>“@”符号后为&48; 个字符</li></ul> |
+| 长度约束 |<ul> <li>总长度不能超过 113 个字符</li><li>“@”符号前为 64 个字符</li><li>“@”符号后为 48 个字符</li></ul> |
 
 ## <a name="password-policies-that-apply-only-to-cloud-user-accounts"></a>仅适用于云用户帐户的密码策略
 下表描述了可用于在 Azure AD 中创建和管理的用户帐户的密码策略设置。
@@ -54,7 +54,7 @@ ms.lasthandoff: 03/10/2017
 | 帐户锁定 |10 次登录尝试失败（错误密码）之后，用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 |
 
 ## <a name="next-steps"></a>后续步骤
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 * [从任意位置管理密码](active-directory-passwords.md)
 * [密码管理的工作原理](active-directory-passwords-how-it-works.md)
 * [密码管理入门](active-directory-passwords-getting-started.md)

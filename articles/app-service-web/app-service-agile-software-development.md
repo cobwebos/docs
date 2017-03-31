@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5ef5cfeb82eed86fd0a9b6328c803d6a88cd2822
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 5ea7af4744876f1085e14de800d599e001c3f3dd
+ms.lasthandoff: 03/27/2017
 
 
 ---
 # <a name="agile-software-development-with-azure-app-service"></a>使用 Azure App Service 进行敏捷软件开发
-本教程将介绍如何以支持[敏捷软件开发](https://en.wikipedia.org/wiki/Agile_software_development)的方式，通过 [Azure App Service](/services/app-service/) 创建高缩放性的复杂应用程序。 假设用户已知道了如何[通过可预测方式在 Azure 中部署复杂应用程序](app-service-deploy-complex-application-predictably.md)。
+本教程将介绍如何以支持[敏捷软件开发](https://en.wikipedia.org/wiki/Agile_software_development)的方式，通过 [Azure App Service](/azure/app-service/) 创建高缩放性的复杂应用程序。 假设用户已知道了如何[通过可预测方式在 Azure 中部署复杂应用程序](app-service-deploy-complex-application-predictably.md)。
 
 技术流程限制通常会妨碍成功的实施灵便方法。 如果在 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 中合理地将部署的协调与管理结合起来，则具有[连续发布](app-service-continuous-deployment.md)、[过渡环境](web-sites-staged-publishing.md)（槽）和[监视](web-sites-monitor.md)等功能的 Azure App Service 是非常适合采用敏捷软件开发的开发人员的解决方案。
 

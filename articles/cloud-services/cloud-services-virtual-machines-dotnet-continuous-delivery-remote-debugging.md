@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: bd0768b9d46c12c38ecd530ccef8397d1b595d8d
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d011223dbb1ad7b5752875e94a4822be1b6cbe6e
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 03/07/2017
 6. 将证书（.pfx 文件）导入到装有 Visual Studio 和用于 .NET 的 Azure SDK 的计算机。 请确保导入到 `CurrentUser\My` 证书存储，否则附加到 Visual Studio 中的调试器会失败。
 
 ## <a name="enabling-remote-debugging-for-virtual-machines"></a>为虚拟机启用远程调试
-1. 创建一个 Azure 虚拟机。 请参阅[创建运行 Windows Server 的虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[在 Visual Studio 中创建和管理 Azure 虚拟机](../virtual-machines/virtual-machines-windows-classic-manage-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+1. 创建一个 Azure 虚拟机。 请参阅[创建运行 Windows Server 的虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[在 Visual Studio 中创建和管理 Azure 虚拟机](../virtual-machines/windows/classic/manage-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 2. 在 [Azure 经典门户页](http://go.microsoft.com/fwlink/p/?LinkID=269851)上的虚拟机仪表板中，查看虚拟机的“**RDP 证书指纹**”。 扩展配置中的 `ServerThumbprint` 值将使用此值。
 3. 根据 [Azure 云服务的证书概述](cloud-services-certs-create.md)中所述创建客户端证书（保留 .pfx 和 RDP 证书指纹）。
 4. 根据[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中所述安装 Azure Powershell（0.7.4 或更高版本）。

@@ -15,9 +15,9 @@ ms.date: 01/25/2017
 ms.author: jingwang
 published: true
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 4bc78bdf71c6de0c35197e84f4bb800d13bda6c0
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: d04bf7c5a457b90c5128050642bee6a2623787a0
+ms.lasthandoff: 03/30/2017
 
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/14/2017
 #### <a name="resolution"></a>解决方法
 请检查防火墙代理服务器设置，查看是否是设置阻止了从计算机到[下载中心](https://download.microsoft.com/)的网络连接，并相应地更新设置。
 
-也可在其他可以访问下载中心的计算机上从[下载中心](https://www.microsoft.com/en-US/download/details.aspx?id=39717)下载最新网关的安装文件。 然后即可将安装程序文件复制到网关主机并以手动方式运行，以便安装和更新网关。
+也可在其他可以访问下载中心的计算机上从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载最新网关的安装文件。 然后即可将安装程序文件复制到网关主机并以手动方式运行，以便安装和更新网关。
 
 ### <a name="2-problem"></a>2.问题
 通过在 Azure 门户中单击“直接安装在此计算机上”来尝试安装网关时会出现此错误。
@@ -252,7 +252,7 @@ ms.lasthandoff: 03/14/2017
     ![数据管理网关 - 发送日志](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
 3. （可选）单击“查看日志”在事件查看器中查看日志。
 4. （可选）单击“隐私”查看 Microsoft Web 服务隐私声明。
-5. 如若对要上传的内容感到满意，便可单击“发送日志”将过去&7; 天内的日志发送给 Microsoft，以便进行故障排除。 应该会看到“发送日志”操作的状态如以下屏幕快照所示。
+5. 如若对要上传的内容感到满意，便可单击“发送日志”将过去 7 天内的日志发送给 Microsoft，以便进行故障排除。 应该会看到“发送日志”操作的状态如以下屏幕快照所示。
 
     ![数据管理网关 - 发送日志状态](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. 操作完成后，会看到如以下屏幕快照所示的对话框。

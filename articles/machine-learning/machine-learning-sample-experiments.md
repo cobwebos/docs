@@ -17,6 +17,7 @@ ms.author: cgronlun;olgali
 translationtype: Human Translation
 ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
 ms.openlocfilehash: 7b2bca108770a79a693a408a628ccc6370c36b7c
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -58,7 +59,7 @@ ms.openlocfilehash: 7b2bca108770a79a693a408a628ccc6370c36b7c
 ## <a name="use-a-template-in-machine-learning-studio"></a>在机器学习工作室中使用模板
 你还可以使用库中的示例作为模板在机器学习工作室中创建新试验。
 
-1. 使用 Microsoft 帐户凭据登录到“工作室”，然后单击“新建”以创建新试验。[](https://studio.azureml.net)
+1. 使用 Microsoft 帐户凭据登录到[工作室](https://studio.azureml.net)，然后单击“新建”以创建新试验。
 2. 浏览示例内容并单击其中一个。
 
 使用该示例试验作为模板，在工作区中创建一个新试验。
@@ -67,9 +68,4 @@ ms.openlocfilehash: 7b2bca108770a79a693a408a628ccc6370c36b7c
 * [从各种源导入数据](machine-learning-data-science-import-data.md)
 * [适用于机器学习的 R 语言快速入门教程](machine-learning-r-quickstart.md)
 * [部署机器学习 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

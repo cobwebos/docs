@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 31821203c18f1310c6a781bd28022efd3da7f03d
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: bc047ba2aacbbea6d47d3870ee70d9d9a068f83a
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -149,7 +149,7 @@ Azure HDInsight 提供了两个类别的大数据云产品/服务：标准和[�
 使用 HDInsight 群集时，可以在群集创建期间配置两个用户帐户：
 
 * HTTP 用户。 默认的用户名为 admin。 它使用 Azure 门户上的基本配置。 有时称为“群集用户”。
-* SSH 用户（Linux 群集）。 通过 SSH 连接到群集时使用此用户。 群集创建后，可以根据[在 Linux、Unix 或 OS X 上将 SSH 与基于 Linux 的 Hadoop on HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)或者[在 Windows 上将 SSH 与基于 Linux 的 Hadoop on HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)中的步骤创建更多 SSH 用户帐户。
+* SSH 用户（Linux 群集）。 通过 SSH 连接到群集时使用此用户。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
   > [!NOTE]
   > 对于基于 Windows 的群集，可以创建一个 RDP 用户，用于通过 RDP 连接到群集。
@@ -212,7 +212,7 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 * Standard_A3 是大型
 * Standard_A4 是超大型
 
-| 大小 | CPU 核心数 | 内存 | NIC 数（最大值） | 最大 磁盘大小 | 最大 数据磁盘（每个&1023; GB） | 最大 IOPS（每个磁盘&500; 次） |
+| 大小 | CPU 核心数 | 内存 | NIC 数（最大值） | 最大 磁盘大小 | 最大 数据磁盘（每个 1023 GB） | 最大 IOPS（每个磁盘 500 次） |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A3\大型 |4 |7 GB |2 |临时磁盘 = 285 GB |8 |8x500 |
 | Standard_A4\超大型 |8 |14 GB |4 |临时磁盘 = 605 GB |16 |16x500 |
@@ -220,22 +220,22 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 | Standard_A7 |8 |56 GB |4 |临时磁盘 = 605 GB |16 |16x500 |
 
 #### <a name="standard-tier-d-series"></a>标准层：D 系列
-| 大小 | CPU 核心数 | 内存 | NIC 数（最大值） | 最大 磁盘大小 | 最大 数据磁盘（每个&1023; GB） | 最大 IOPS（每个磁盘&500; 次） |
+| 大小 | CPU 核心数 | 内存 | NIC 数（最大值） | 最大 磁盘大小 | 最大 数据磁盘（每个 1023 GB） | 最大 IOPS（每个磁盘 500 次） |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D3 |4 |14 GB |4 |临时磁盘 (SSD) =&200; GB |8 |8x500 |
-| Standard_D4 |8 |28 GB |8 |临时磁盘 (SSD) =&400; GB |16 |16x500 |
-| Standard_D12 |4 |28 GB |4 |临时磁盘 (SSD) =&200; GB |8 |8x500 |
-| Standard_D13 |8 |56 GB |8 |临时磁盘 (SSD) =&400; GB |16 |16x500 |
-| Standard_D14 |16 |112 GB |8 |临时磁盘 (SSD) =&800; GB |32 |32x500 |
+| Standard_D3 |4 |14 GB |4 |临时磁盘 (SSD) = 200 GB |8 |8x500 |
+| Standard_D4 |8 |28 GB |8 |临时磁盘 (SSD) = 400 GB |16 |16x500 |
+| Standard_D12 |4 |28 GB |4 |临时磁盘 (SSD) = 200 GB |8 |8x500 |
+| Standard_D13 |8 |56 GB |8 |临时磁盘 (SSD) = 400 GB |16 |16x500 |
+| Standard_D14 |16 |112 GB |8 |临时磁盘 (SSD) = 800 GB |32 |32x500 |
 
 #### <a name="standard-tier-dv2-series"></a>标准层：Dv2 系列
-| 大小 | CPU 核心数 | 内存 | NIC 数（最大值） | 最大 磁盘大小 | 最大 数据磁盘（每个&1023; GB） | 最大 IOPS（每个磁盘&500; 次） |
+| 大小 | CPU 核心数 | 内存 | NIC 数（最大值） | 最大 磁盘大小 | 最大 数据磁盘（每个 1023 GB） | 最大 IOPS（每个磁盘 500 次） |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D3_v2 |4 |14 GB |4 |临时磁盘 (SSD) =&200; GB |8 |8x500 |
-| Standard_D4_v2 |8 |28 GB |8 |临时磁盘 (SSD) =&400; GB |16 |16x500 |
-| Standard_D12_v2 |4 |28 GB |4 |临时磁盘 (SSD) =&200; GB |8 |8x500 |
-| Standard_D13_v2 |8 |56 GB |8 |临时磁盘 (SSD) =&400; GB |16 |16x500 |
-| Standard_D14_v2 |16 |112 GB |8 |临时磁盘 (SSD) =&800; GB |32 |32x500 |
+| Standard_D3_v2 |4 |14 GB |4 |临时磁盘 (SSD) = 200 GB |8 |8x500 |
+| Standard_D4_v2 |8 |28 GB |8 |临时磁盘 (SSD) = 400 GB |16 |16x500 |
+| Standard_D12_v2 |4 |28 GB |4 |临时磁盘 (SSD) = 200 GB |8 |8x500 |
+| Standard_D13_v2 |8 |56 GB |8 |临时磁盘 (SSD) = 400 GB |16 |16x500 |
+| Standard_D14_v2 |16 |112 GB |8 |临时磁盘 (SSD) = 800 GB |32 |32x500 |
 
 有关在计划使用这些资源时要考虑的部署注意事项，请参阅[虚拟机的大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。   
 

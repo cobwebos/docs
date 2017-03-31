@@ -63,19 +63,19 @@ ms.lasthandoff: 12/08/2016
    
     ![用作 Azure Web 作业的现有项目](./media/websites-dotnet-deploy-webjobs/eawj.png)
    
-    此时将显示“添加 Azure Web 作业”[](#configure)对话框。
+    此时将显示[“添加 Azure Web 作业”](#configure)对话框。
 2. 在“项目名称”下拉列表中，选择要添加为 Web 作业的控制台应用程序项目。
    
     ![在“添加 Azure Web 作业”对话框中选择项目](./media/websites-dotnet-deploy-webjobs/aaw1.png)
-3. 完成“添加 Azure Web 作业”[](#configure)对话框，然后单击“确定”。 
+3. 完成[“添加 Azure Web 作业”](#configure)对话框，然后单击“确定”。 
 
 ### <a id="convertnolink"></a>不使用 Web 项目启用 Web 作业部署
 1. 右键单击“解决方案资源管理器”中的控制台应用程序项目，然后单击“发布为 Azure Web 作业”。 
    
     ![发布为 Azure Web 作业](./media/websites-dotnet-deploy-webjobs/paw.png)
    
-    此时将显示“添加 Azure Web 作业”[](#configure)对话框，其“项目名称”框中已选中该项目。
-2. 完成“添加 Azure Web 作业”[](#configure)对话框，然后单击“确定”。
+    此时将显示[“添加 Azure Web 作业”](#configure)对话框，其“项目名称”框中已选中该项目。
+2. 完成[“添加 Azure Web 作业”](#configure)对话框，然后单击“确定”。
    
    此时将显示“发布 Web”向导。  如果你不打算立即发布，请关闭向导。 输入的设置将会保存，以便在[部署项目](#deploy)时使用。
 
@@ -105,8 +105,8 @@ ms.lasthandoff: 12/08/2016
    
     ![“新建 Azure Web 作业项目”菜单项](./media/websites-dotnet-deploy-webjobs/nawj.png)
    
-    此时将显示“添加 Azure Web 作业”[](#configure)对话框。
-2. 完成“添加 Azure Web 作业”[](#configure)对话框，然后单击“确定”。
+    此时将显示[“添加 Azure Web 作业”](#configure)对话框。
+2. 完成[“添加 Azure Web 作业”](#configure)对话框，然后单击“确定”。
 
 ## <a id="configure"></a>添加 Azure Web 作业对话框
 “添加 Azure Web 作业”对话框可让你输入 Web 作业的名称和计划设置。 

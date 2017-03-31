@@ -5,20 +5,17 @@
 ## [创建 DB - 门户](sql-database-get-started-portal.md)
 ## [创建 DB - Azure CLI](sql-database-get-started-cli.md)
 ## [创建 DB - PowerShell](sql-database-get-started-powershell.md)
-## 连接
+## 管理
 ### [SSMS](sql-database-connect-query-ssms.md)
 ### [VS Code](sql-database-connect-query-vscode.md)
+## 连接
 ### [C#](sql-database-connect-query-dotnet.md)
 # 示例
 ## [Azure CLI](sql-database-cli-samples.md)
 ## [PowerShell](sql-database-powershell-samples.md)
 # 教程
-## Access
-### [SQL Server](sql-database-control-access-sql-authentication-get-started.md)
-### [Azure AD](sql-database-control-access-aad-authentication-get-started.md)
-## 恢复
-### [门户](sql-database-get-started-backup-recovery-portal.md)
-### [PowerShell](sql-database-get-started-backup-recovery-powershell.md)
+## [设计数据库](sql-database-design-first-database.md)
+
 # 概念
 ## 数据库和服务器
 ### [数据库](sql-database-overview.md)
@@ -110,6 +107,9 @@
 ### [PowerShell](sql-database-elastic-pool-manage-powershell.md)
 ### [Transact SQL](sql-database-elastic-pool-manage-tsql.md)
 ### [C#](sql-database-elastic-pool-manage-csharp.md)
+## DB 访问 
+### [SQL Server](sql-database-control-access-sql-authentication-get-started.md)
+### [Azure AD](sql-database-control-access-aad-authentication-get-started.md)
 ## 保护数据
 ### [Azure AD 身份验证](sql-database-aad-authentication-configure.md)
 ### [审核](sql-database-auditing-portal.md)
@@ -117,11 +117,13 @@
 ### [加密 - 证书存储](sql-database-always-encrypted.md)
 ### [加密 - Key Vault](sql-database-always-encrypted-azure-key-vault.md)
 ### [配置屏蔽](sql-database-dynamic-data-masking-get-started-portal.md)
-## 备份和还原
-### [还原 - 门户](sql-database-restore-database-portal.md)
+## 恢复
+### [门户](sql-database-get-started-backup-recovery-portal.md)
+### [PowerShell](sql-database-get-started-backup-recovery-powershell.md)
+### [单一表](sql-database-cloud-migrate-restore-single-table-azure-backup.md)
+## 保留
 ### [保留 - 门户](sql-database-manage-long-term-backup-retention-portal.md)
 ### [保留 - PowerShell](sql-database-manage-long-term-backup-retention-powershell.md)
-### [恢复单个表](sql-database-cloud-migrate-restore-single-table-azure-backup.md)
 ## 异地复制数据
 ### [门户](sql-database-geo-replication-portal.md)
 ### [T-SQL - 配置](sql-database-geo-replication-transact-sql.md)

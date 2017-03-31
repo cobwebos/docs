@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
-ms.openlocfilehash: 3ade1f2850b2a67f68e8a4a7f519b7dc7ba1de10
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: e8d71d7b6b4302f177732381ad19e6a645bc5474
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/11/2017
 以下步骤说明如何使用 Transact-SQL 将 SQL 数据库复制到同一服务器或其他服务器。 复制数据库的操作将使用 [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) 语句。 
 
 > [!NOTE]
-> 还可使用 [Azure 门户](sql-database-copy-portal.md)或 [PowerShell](sql-database-copy-powershell.md) 复制 SQL 数据库。
+> 还可使用 [Azure 门户](sql-database-copy-portal.md)或 [PowerShell](scripts/sql-database-copy-database-to-new-server-powershell.md) 复制 SQL 数据库。
 >
 
 若要完成本文中的步骤，需要以下各项：

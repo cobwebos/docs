@@ -17,6 +17,7 @@ ms.author: milanga;juliako;johndeu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: fb8ec19434d4e8cc54b831bb4abf049c057da8df
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -30,7 +31,7 @@ Azure 媒体分析可让开发人员在一定程度上对视频快速使用可�
 
 下图显示**媒体分析**和媒体服务平台的其他主要部分。 
 
-![VoD 工作流](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
+![VoD 工作流](./media/media-services-analytics-overview/media-services-analytics-overview01.png)
 
 媒体分析媒体处理器会生成 MP4 文件或 JSON 文件。 如果媒体处理器生成了 MP4 文件，你可以采用渐进方式下载该文件。 如果媒体处理器生成了 JSON 文件，你可以从 Azure Blob 存储下载该文件。 
 
@@ -129,9 +130,4 @@ Azure 媒体分析可让开发人员在一定程度上对视频快速使用可�
 <!-- Images -->
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

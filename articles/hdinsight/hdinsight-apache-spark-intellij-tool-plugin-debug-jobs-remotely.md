@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 55fb454f-c7dc-46de-a978-e242e9a94f4c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,8 +17,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9b822da3d8fd2706bc65ab842d063be66904649f
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -75,7 +77,7 @@ ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
            192.xxx.xx.xx hn1-nitinp
            192.xxx.xx.xx hn1-nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
 6. 在连接到 HDInsight 群集所用 Azure 虚拟网络的计算机中，验证是否能够使用该 IP 地址和主机名 ping 到两个头节点。
-7. 参考[使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)中的说明，通过 SSH 连接到群集头节点。 从群集头节点，对台式机的 IP 地址执行 ping 操作。 应该测试是否能够连接到分配给计算机的两个 IP 地址，其中一个是网络连接的地址，另一个是计算机所连接到的 Azure 虚拟网络的地址。
+7. 参考[使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)中的说明，通过 SSH 连接到群集头节点。 从群集头节点，对台式机的 IP 地址执行 ping 操作。 应该测试是否能够连接到分配给计算机的两个 IP 地址，其中一个是网络连接的地址，另一个是计算机所连接到的 Azure 虚拟网络的地址。
 8. 针对其他头节点重复上述步骤。 
 
 ## <a name="step-4-create-a-spark-scala-application-using-the-hdinsight-tools-in-azure-toolkit-for-intellij-and-configure-it-for-remote-debugging"></a>步骤 4：使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具创建 Spark Scala 应用程序，并对其进行配置以进行远程调试
@@ -254,7 +256,7 @@ ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
    
     ![在调试模式下运行程序](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete.png)
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>另请参阅
+## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案
@@ -279,10 +281,5 @@ ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
 ### <a name="manage-resources"></a>管理资源
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](hdinsight-apache-spark-job-debugging.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

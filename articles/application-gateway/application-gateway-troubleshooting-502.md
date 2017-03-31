@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: cacc20da7945421f31ce69a9c0b34056c009d9e7
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: d61e50b7440dcd107df3e5dd085a36b149779553
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -34,9 +34,6 @@ ms.lasthandoff: 03/17/2017
 * VM 规模集的后端 VM 或实例未响应默认的运行状况探测。
 * 自定义运行状况探测的配置无效或不正确。
 * 请求超时，或用户请求出现连接问题。
-
-> [!note]
-> 应用程序网关会保留传入主机头，并将同一标头发送到后端。 如果后端需要不同的标头，则这将无法正常工作。 同样，如果后端是多租户且已启用端到端 SSL，则后端会预期在 SNI 扩展名中出现服务器名称。 在端到端 SSL 方案中，应用程序网关当前不支持在后端请求中发送 SNI 标头，这会导致探测和数据路径问题。
 
 ## <a name="empty-backendaddresspool"></a>BackendAddressPool 为空
 
@@ -109,7 +106,7 @@ BackendAddressPoolsText：
 * 如果 BackendHttpSetting 指定的端口不是 80，则应将默认站点配置为侦听指定的端口。
 * 对 http://127.0.0.1:port 的调用应返回 HTTP 结果代码 200。 应在 30 秒超时期限内返回此代码。
 * 确保配置的端口已打开，并且没有任何防火墙或 Azure 网络安全组在配置的端口上阻止传入或传出流量。
-* 如果对 Azure 经典 VM 或云服务使用 FQDN 或公共 IP，请确保打开相应的[终结点](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)。
+* 如果对 Azure 经典 VM 或云服务使用 FQDN 或公共 IP，请确保打开相应的[终结点](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)。
 * 如果 VM 是通过 Azure Resource Manager 配置的并且位于应用程序网关部署所在的 VNet 的外部，则必须将[网络安全组](../virtual-network/virtual-networks-nsg.md)配置为允许在所需端口上进行访问。
 
 ## <a name="problems-with-custom-health-probe"></a>自定义运行状况探测出现问题

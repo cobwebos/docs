@@ -16,15 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 11/28/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 64d3f55445c82bf2be3ca8e64d7ea5d19e70310b
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d9138b17e54aa1c4bf1982b09d3d0ad10e936d4c
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 AlwaysOn 可用性组的外部侦听器
 > [!div class="op_single_selector"]
-> * [内部侦听器](virtual-machines-windows-classic-ps-sql-int-listener.md)
-> * [外部侦听器](virtual-machines-windows-classic-ps-sql-ext-listener.md)
+> * [内部侦听器](../classic/ps-sql-int-listener.md)
+> * [外部侦听器](../classic/ps-sql-ext-listener.md)
 > 
 > 
 
@@ -33,7 +34,7 @@ ms.openlocfilehash: 64d3f55445c82bf2be3ca8e64d7ea5d19e70310b
 > [!IMPORTANT] 
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
-你的可用性组可以仅包含本地副本或 Azure 副本，也可以跨越本地和 Azure 以实现混合配置。 Azure 副本可以位于同一区域，也可以跨越使用多个虚拟网络 (VNet) 的多个区域。 下面的步骤假设已经[配置可用性组](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)，但未配置侦听器。
+你的可用性组可以仅包含本地副本或 Azure 副本，也可以跨越本地和 Azure 以实现混合配置。 Azure 副本可以位于同一区域，也可以跨越使用多个虚拟网络 (VNet) 的多个区域。 下面的步骤假设已经[配置可用性组](../classic/portal-sql-alwayson-availability-groups.md)，但未配置侦听器。
 
 ## <a name="guidelines-and-limitations-for-external-listeners"></a>外部侦听器的准则和限制
 在使用云服务的公共 VIP 地址部署时，请注意有关 Azure 中可用性组侦听器的以下准则：
@@ -47,12 +48,12 @@ ms.openlocfilehash: 64d3f55445c82bf2be3ca8e64d7ea5d19e70310b
 ## <a name="determine-the-accessibility-of-the-listener"></a>确定侦听器的可访问性
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-本文重点介绍如何创建使用**外部负载平衡**的侦听器。 如果要创建专用于虚拟网络的侦听器，请参阅本文的另一个版本，其中提供了设置[使用 ILB 的侦听器](virtual-machines-windows-classic-ps-sql-int-listener.md)的步骤
+本文重点介绍如何创建使用**外部负载均衡**的侦听器。 如果要创建专用于虚拟网络的侦听器，请参阅本文的另一个版本，其中提供了设置[使用 ILB 的侦听器](../classic/ps-sql-int-listener.md)的步骤
 
-## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>创建支持直接服务器返回的负载平衡 VM 终结点
-外部负载平衡使用托管 VM 的云服务的公共虚拟 IP 地址。 因此，在这种情况下，你不需要创建或配置负载均衡器。
+## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>创建支持直接服务器返回的负载均衡 VM 终结点
+外部负载均衡使用托管 VM 的云服务的公共虚拟 IP 地址。 因此，在这种情况下，你不需要创建或配置负载均衡器。
 
-你必须为每个托管 Azure 副本的 VM 创建一个负载平衡的终结点。 如果你在多个区域中拥有副本，该区域的每个副本必须位于同一个 VNet 的同一个云服务中。 跨越多个 Azure 区域创建可用性组副本需要配置多个 Vnet。 有关配置跨 VNet 连接的详细信息，请参阅[配置 VNet 到 VNet 连接](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
+你必须为每个托管 Azure 副本的 VM 创建一个负载均衡的终结点。 如果你在多个区域中拥有副本，该区域的每个副本必须位于同一个 VNet 的同一个云服务中。 跨越多个 Azure 区域创建可用性组副本需要配置多个 Vnet。 有关配置跨 VNet 连接的详细信息，请参阅[配置 VNet 到 VNet 连接](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
 
 1. 在 Azure 门户中，导航到托管副本的每个 VM 并查看详细信息。
 2. 单击每个 VM 的“终结点”选项卡。
@@ -94,7 +95,7 @@ ms.openlocfilehash: 64d3f55445c82bf2be3ca8e64d7ea5d19e70310b
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>在 PowerShell 中配置群集资源
-1. 对于外部负载平衡，你必须获取包含副本的云服务的公共虚拟 IP 地址。 登录到 Azure 经典门户。 导航到包含你的可用性组 VM 的云服务。 打开“仪表板”视图。
+1. 对于外部负载均衡，你必须获取包含副本的云服务的公共虚拟 IP 地址。 登录到 Azure 经典门户。 导航到包含你的可用性组 VM 的云服务。 打开“仪表板”视图。
 2. 记下“公共虚拟 IP (VIP)地址”下显示的地址。 如果解决方案跨 VNet，请针对包含副本所在 VM 的每个云服务重复此步骤。
 3. 在某个 VM 上，将以下 PowerShell 脚本复制到文本编辑器中，将变量设置为之前记下的值。
    
@@ -110,7 +111,7 @@ ms.openlocfilehash: 64d3f55445c82bf2be3ca8e64d7ea5d19e70310b
         # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
         # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
 4. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后从文本编辑器复制脚本，并将其粘贴到 Azure PowerShell 会话中运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行。
-5. 在每个 VM 上重复此过程。 此脚本将使用云服务的 IP 地址来配置 IP 地址资源，同时设置探测端口等其他参数。 在 IP 地址资源联机后，它可以响应我们在本教程前面部分创建的负载平衡终结点在探测端口上的轮询。
+5. 在每个 VM 上重复此过程。 此脚本将使用云服务的 IP 地址来配置 IP 地址资源，同时设置探测端口等其他参数。 在 IP 地址资源联机后，它可以响应我们在本教程前面部分创建的负载均衡终结点在探测端口上的轮询。
 
 ## <a name="bring-the-listener-online"></a>使侦听器联机
 [!INCLUDE [Bring-Listener-Online](../../../../includes/virtual-machines-ag-listener-bring-online.md)]
@@ -122,7 +123,7 @@ ms.openlocfilehash: 64d3f55445c82bf2be3ca8e64d7ea5d19e70310b
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>测试可用性组侦听器（通过 Internet）
-若要从虚拟网络外部访问侦听器，必须使用外部/公共负载平衡（如本主题中所述）而不是 ILB，因为 ILB 只能在同一 VNet 中进行访问。 在连接字符串中指定云服务名称。 例如，如果云服务名为 *mycloudservice*，则 sqlcmd 语句将如下所示：
+若要从虚拟网络外部访问侦听器，必须使用外部/公共负载均衡（如本主题中所述）而不是 ILB，因为 ILB 只能在同一 VNet 中进行访问。 在连接字符串中指定云服务名称。 例如，如果云服务名为 *mycloudservice*，则 sqlcmd 语句将如下所示：
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
@@ -132,10 +133,5 @@ ms.openlocfilehash: 64d3f55445c82bf2be3ca8e64d7ea5d19e70310b
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

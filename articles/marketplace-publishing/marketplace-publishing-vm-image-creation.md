@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: e801d966e7461be7ec6101941c7b70912ad8c403
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 62e9f34216f25bc1feab3bc76f78a9c1ab07ab9c
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -59,7 +59,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 3. 如果使用基于 Windows 的 SKU，请遵循建议链接来获取已批准的 Windows Server 版本。
 
 ## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2.创建与 Azure 兼容的 VHD（基于 Linux）
-本部分重点介绍有关为 Azure 应用商店创建基于 Linux 的 VM 映像的最佳做法。 有关分步演练，请参阅以下文档：[创建和上载包含 Linux 操作系统的虚拟硬盘](../virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+本部分重点介绍有关为 Azure 应用商店创建基于 Linux 的 VM 映像的最佳做法。 有关分步演练，请参阅以下文档：[创建和上载包含 Linux 操作系统的虚拟硬盘](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>3.创建与 Azure 兼容的 VHD（基于 Windows）
 本部分重点介绍用于为 Azure 应用商店创建基于 Windows Server 的 SKU 的步骤。
@@ -175,7 +175,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
         sysprep.exe /generalize /oobe /shutdown
 
-  以下 MSDN 文章的步骤提供了有关如何对操作系统执行 sysprep 操作的指南：[创建 Windows Server VHD 并上传到 Azure](../virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+  以下 MSDN 文章的步骤提供了有关如何对操作系统执行 sysprep 操作的指南：[创建 Windows Server VHD 并上传到 Azure](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="4-deploy-a-vm-from-your-vhds"></a>4.从 VHD 部署 VM
 将 VHD（一般化操作系统 VHD 以及零个或更多数据磁盘 VHD）上传到 Azure 存储器帐户之后，可将它们注册为用户 VM 映像。 然后可以测试该映像。 请注意，因为操作系统 VHD 已经一般化，所以无法通过提供 VHD URL 来直接部署 VM。
