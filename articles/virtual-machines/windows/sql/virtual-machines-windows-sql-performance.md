@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 7cf81f2081e7927e4d68b7d0c8ca185f891fdc8d
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 16b659bf07cc44d56234bb5532f931d5ca6fb0a6
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/17/2017
 
 | 区域 | 优化 |
 | --- | --- |
-| [VM 大小](#vm-size-guidance) |SQL Enterprise 版：[DS3](../../virtual-machines-windows-sizes.md#ds-series) 或更高。<br/><br/>SQL Standard 和 Web 版：[DS2](../../virtual-machines-windows-sizes.md#ds-series) 或更高。 |
+| [VM 大小](#vm-size-guidance) |SQL Enterprise 版：[DS3](../../virtual-machines-windows-sizes-memory.md) 或更高。<br/><br/>SQL Standard 和 Web 版：[DS2](../../virtual-machines-windows-sizes-memory.md) 或更高。 |
 | [存储](#storage-guidance) |使用[高级存储](../../../storage/storage-premium-storage.md)。 仅建议将标准存储用于开发/测试。<br/><br/>将[存储帐户](../../../storage/storage-create-storage-account.md)和 SQL Server VM 保存在相同的区域。<br/><br/>在存储帐户上禁用 Azure [异地冗余存储](../../../storage/storage-redundancy.md)（异地复制）。 |
 | [磁盘](#disks-guidance) |使用至少 2 个 [P30 磁盘](../../../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)（一个用于日志，另一个用于数据文件和 TempDB）。<br/><br/>避免使用操作系统或临时磁盘进行数据库存储或日志记录。<br/><br/>在托管数据文件和 TempDB 的磁盘上启用读取缓存。<br/><br/>不要在托管日志文件的磁盘上启用缓存。<br/><br/>重要说明：更改 Azure VM 磁盘的缓存设置时，请停止 SQL Server 服务。<br/><br/>条带化多个 Azure 数据磁盘，提高 IO 吞吐量。<br/><br/>使用规定的分配大小格式化。 |
 | [I/O](#io-guidance) |启用数据库页面压缩。<br/><br/>对数据文件启用即时文件初始化。<br/><br/>限制或禁用数据库自动增长。<br/><br/>禁用数据库自动收缩。<br/><br/>将所有数据库（包括系统数据库）转移到数据磁盘。<br/><br/>将 SQL Server 错误日志和跟踪文件目录移到数据磁盘。<br/><br/>设置默认的备份和数据库文件位置。<br/><br/>启用锁定页面。<br/><br/>应用 SQL Server 性能修复程序。 |
@@ -130,7 +130,7 @@ D 系列、Dv2 系列和 G 系列 VM 上的临时驱动器基于 SSD。 如果�
 * **Azure 中的 SQL Server 数据文件**：[Azure 中的 SQL Server 数据文件](https://msdn.microsoft.com/library/dn385720.aspx)这一新功能从 SQL Server 2014 开始提供。 在 SQL Server 上运行 Azure 中的数据文件，与使用 Azure 数据磁盘时的性能特征相当。
 
 ## <a name="next-steps"></a>后续步骤
-如有兴趣更深入地了解 SQL Server 和高级存储，请参阅文章[将 Azure 高级存储用于虚拟机上的 SQL Server](../sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage.md)。
+如有兴趣更深入地了解 SQL Server 和高级存储，请参阅文章[将 Azure 高级存储用于虚拟机上的 SQL Server](../classic/sql-server-premium-storage.md)。
 
 有关安全最佳实践，请参阅 [Azure 虚拟机中 SQL Server 的安全注意事项](virtual-machines-windows-sql-security.md)。
 

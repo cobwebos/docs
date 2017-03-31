@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/17/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 7706fd453ef8be4ebe65b65da643ec38b7c18433
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 218d7dcf14ebbb28ac043e50e6f9248ecb942aaa
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.openlocfilehash: 7706fd453ef8be4ebe65b65da643ec38b7c18433
 ## <a name="overview"></a>概述
 本教程演示如何使用 Azure PowerShell cmdlet 创建采用 **Azure Resource Manager** 部署模型的单个 Azure 虚拟机。 在本教程中，我们将从 SQL 库中的映像创建使用单个磁盘驱动器的单个虚拟机。 我们将为虚拟机要使用的存储、网络和计算资源创建新的提供程序。 如果上述任何资源存在现有的提供程序，你可以改用这些提供程序。
 
-如果需要阅读本主题的经典版本，请参阅 [Provision a SQL Server virtual machine using Azure PowerShell Classic](../sqlclassic/virtual-machines-windows-classic-ps-sql-create.md)（使用 Azure PowerShell Classic 预配 SQL Server 虚拟机）。
+如果需要阅读本主题的经典版本，请参阅 [Provision a SQL Server virtual machine using Azure PowerShell Classic](../classic/ps-sql-create.md)（使用 Azure PowerShell Classic 预配 SQL Server 虚拟机）。
 
 ## <a name="prerequisites"></a>先决条件
 在本教程中，你需要：
@@ -190,7 +191,7 @@ ms.openlocfilehash: 7706fd453ef8be4ebe65b65da643ec38b7c18433
     $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>设置虚拟机的操作系统属性
-现在，我们已准备好设置虚拟机的操作系统属性。 我们使用 [Set-AzureRmVMOperatingSystem](https://msdn.microsoft.com/library/mt603843.aspx) cmdlet 将操作系统的类型设置为 Windows，要求安装[虚拟机代理](../../virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)，指定该 cmdlet 允许使用前面初始化的变量自动更新和设置虚拟机名称、计算机名称和凭据。
+现在，我们已准备好设置虚拟机的操作系统属性。 我们使用 [Set-AzureRmVMOperatingSystem](https://msdn.microsoft.com/library/mt603843.aspx) cmdlet 将操作系统的类型设置为 Windows，要求安装[虚拟机代理](../classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)，指定该 cmdlet 允许使用前面初始化的变量自动更新和设置虚拟机名称、计算机名称和凭据。
 
 执行以下 cmdlet 来设置虚拟机的操作系统属性。
 
@@ -295,10 +296,5 @@ ms.openlocfilehash: 7706fd453ef8be4ebe65b65da643ec38b7c18433
 
 ## <a name="next-steps"></a>后续步骤
 创建虚拟机后，你可以使用 RDP 和设置连接来连接虚拟机。 有关详细信息，请参阅 [Connect to a SQL Server Virtual Machine on Azure (Resource Manager)](virtual-machines-windows-sql-connect.md)（连接到 Azure 上的 SQL Server 虚拟机 (Resource Manager)）。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

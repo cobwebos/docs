@@ -17,15 +17,15 @@ ms.date: 02/17/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: e0950a5c2c7d40751664c0c5a60facef68a79b2a
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 2a9ac5763bb934bd0646e47c3936f7bdd0d603b1
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>在 Azure 虚拟机上配置 SQL Server 的 Azure Key Vault 集成（经典）
 > [!div class="op_single_selector"]
 > * [Resource Manager](../sql/virtual-machines-windows-ps-sql-keyvault.md)
-> * [经典](virtual-machines-windows-classic-ps-sql-keyvault.md)
+> * [经典](../classic/ps-sql-keyvault.md)
 > 
 > 
 
@@ -45,7 +45,7 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](https://m
 使用 PowerShell 来配置 Azure 密钥保管库集成。 以下各节概述了所需的参数，然后提供了一个示例 PowerShell 脚本。
 
 ### <a name="install-the-sql-server-iaas-extension"></a>安装 SQL Server IaaS 扩展
-首先，请[安装 SQL Server IaaS 扩展](virtual-machines-windows-classic-sql-server-agent-extension.md)。
+首先，请[安装 SQL Server IaaS 扩展](../classic/sql-server-agent-extension.md)。
 
 ### <a name="understand-the-input-parameters"></a>了解输入参数
 下表列出在下一节中运行 PowerShell 脚本所需的参数。

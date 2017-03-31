@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 86ba122b406d8a3d633184982fbacab078d7c0d1
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 6195b80037762a7f71eee9138c765e4d342acd5f
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="do-you-need-help-with-myapps"></a>是否需要 MyApps 帮助？
 
-用户访问此页面可能是因为在使用 MyApps 门户时遇到了问题。 虽然有些情况需要用户联系支持人员或管理员才能解决问题，但大部分情况下，用户可以先自行尝试一下我们在本主题中提供的针对常见问题的步骤。 
+用户访问此页面可能是因为在使用 MyApps 门户时遇到了问题。 虽然有些情况需要用户联系支持人员或管理员才能解决问题，但大部分情况下，用户可以先自行尝试一下我们在本主题中提供的针对常见问题的步骤。
 
-如果需要与密码管理相关的帮助，可尝试阅读[此文](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)(#how-to-reset-your-password)。
-  
+如果需要与密码管理相关的帮助，可尝试阅读[此文](active-directory-passwords-update-your-own-password.md#reset-your-password)。
+
 
 ## <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
 
@@ -35,9 +35,9 @@ MyApps 是一个 Web 门户，用于：
 
 - 管理和启动基于云的应用程序
 - 管理组成员身份
-- 管理配置文件设置 
+- 管理配置文件设置
 
-![访问面板][1] 
+![访问面板][1]
 
 
 
@@ -49,7 +49,7 @@ MyApps 是一个 Web 门户，用于：
 3.    键入旧密码，然后键入新密码并确认。
 4.    单击“提交”。
 
-有关详细信息，请参阅[如何更新自己的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+有关详细信息，请参阅[如何更新自己的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 
 
 ## <a name="how-do-i-setup-password-reset"></a>如何设置密码重置？
@@ -58,7 +58,7 @@ MyApps 是一个 Web 门户，用于：
 2.    在“管理帐户”下，单击“设置自助服务密码重置”。
 3.    按照对话框中的步骤进行操作并提交。
 
-有关详细信息，请参阅[如何重置密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+有关详细信息，请参阅[如何重置密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 
 
 ## <a name="how-can-i-add-a-new-app"></a>如何添加新的应用？

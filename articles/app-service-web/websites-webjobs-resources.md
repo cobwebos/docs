@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 03/25/2017
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 80627139ee253bb6a01241e460781519dac69e71
-ms.openlocfilehash: a8541d5bd5e5becb25e8460b6ca774ec6637563a
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: fc5c87e45f3c92172f01a462451bc145ce8b0b16
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -43,7 +43,7 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 * [如何通过 WebJobs SDK 使用 Azure Blob 存储](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 * [如何通过 WebJobs SDK 使用 Azure 表存储](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
 * [如何通过 WebJobs SDK 使用 Azure 服务总线](websites-dotnet-webjobs-sdk-service-bus.md)
-* [Azure WebJobs SDK 快速参考（PDF 下载）](http://go.microsoft.com/fwlink/?LinkID=524028&clcid=0x409)
+* [Azure WebJobs SDK 快速参考（PDF 下载）](https://go.microsoft.com/fwlink/p/?linkid=845558)
 * [GitHub 中的 WebJobs 设置文档](https://github.com/projectkudu/kudu/wiki/Web-jobs)。
 * 视频
   * [WebJobs 和 WebJobs SDK](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-153-WebJobs-with-Pranav-Rastogi?utm_source=dlvr.it&utm_medium=twitter)

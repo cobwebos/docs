@@ -4,30 +4,29 @@
 
 # 入门
 ## [创建命名空间](relay-create-namespace-portal.md)
-## [混合连接入门](relay-hybrid-connections-dotnet-get-started.md)
-## [WCF 中继入门](service-bus-dotnet-how-to-use-relay.md)
-## [共享访问签名](../service-bus-messaging/service-bus-sas-overview.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [WCF 中继混合教程](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
-## [WCF 中继 .NET 教程](service-bus-relay-tutorial.md)
-## [WCF 中继 REST 教程](service-bus-relay-rest-tutorial.md)
+## 混合连接
+### [.NET](relay-hybrid-connections-dotnet-get-started.md)
+### [Node](relay-hybrid-connections-node-get-started.md)
+## [WCF 中继](relay-wcf-dotnet-get-started.md)
 
 # 如何
-## [身份验证和授权](../service-bus-messaging/service-bus-authentication-and-authorization.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [中断和灾难计划](../service-bus-messaging/service-bus-outages-disasters.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [混合连接协议](relay-hybrid-connections-protocol.md)
-## [常见异常](relay-exceptions.md)
+## 规划和设计
+### [身份验证和安全性](relay-authentication-and-authorization.md)
+### [混合连接协议](relay-hybrid-connections-protocol.md)
+## 开发
+### [可用 API](relay-api-overview.md)
+#### [.NET](relay-hybrid-connections-dotnet-api-overview.md)
+#### [Node](relay-hybrid-connections-node-ws-api-overview.md)
 
 # 引用
-## [示例](service-bus-relay-samples.md)
-## [混合连接 .NET API](/dotnet/api/microsoft.servicebus)
-## [WCF 中继 .NET API](/dotnet/api/microsoft.servicebus)
-## [端口设置](service-bus-relay-port-settings.md)
+## .NET
+### [Microsoft.Azure.Relay](/dotnet/api/microsoft.azure.relay)
+### [Microsoft.ServiceBus](/dotnet/api/Microsoft.ServiceBus)
+## [异常](relay-exceptions.md)
+## [端口设置](relay-port-settings.md)
 
 # 资源
-## [博客](https://blogs.msdn.microsoft.com/servicebus/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
-## [MSDN 论坛](https://social.msdn.microsoft.com/forums/home?forum=servbus)
+## [示例](https://github.com/azure/azure-relay/tree/master/samples)
 ## [定价](https://azure.microsoft.com/pricing/details/service-bus/)
-## [学习路径](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
-## [服务更新](https://azure.microsoft.com/updates/?product=service-bus)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
+## [博客](https://blogs.msdn.microsoft.com/servicebus/)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-servicebusrelay)

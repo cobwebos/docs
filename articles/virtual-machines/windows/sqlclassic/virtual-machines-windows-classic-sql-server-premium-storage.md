@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 11/28/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 67ee949acaed274a3a1522008e833d86c8442a23
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d055a859ec89ef7fec23db9bf1d574dd8cb76293
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -49,7 +50,7 @@ ms.openlocfilehash: 67ee949acaed274a3a1522008e833d86c8442a23
 要使用高级存储，需要使用 DS 系列虚拟机 (VM)。 如果你以前尚未在云服务中使用 DS 系列虚拟机，则必须在重新创建 VM 作为 DS* 角色大小之前，删除现有 VM、保留附加磁盘，然后创建新的云服务。 有关虚拟机大小的详细信息，请参阅 [Azure 的虚拟机和云服务大小](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ### <a name="cloud-services"></a>云服务
-在新的云服务中创建 VM 时，只能将 DS* VM 用于高级存储。 如果在 Azure 中使用 SQL Server Always On，则 Always On 侦听器将引用与云服务关联的 Azure 内部或外部负载平衡器 IP 地址。 本文重点介绍如何在此方案中迁移，同时保持可用性。
+在新的云服务中创建 VM 时，只能将 DS* VM 用于高级存储。 如果在 Azure 中使用 SQL Server Always On，则 Always On 侦听器将引用与云服务关联的 Azure 内部或外部负载均衡器 IP 地址。 本文重点介绍如何在此方案中迁移，同时保持可用性。
 
 > [!NOTE]
 > DS* 系列必须是部署到新的云服务的第一个 VM。
@@ -270,7 +271,7 @@ ms.openlocfilehash: 67ee949acaed274a3a1522008e833d86c8442a23
 
 
 #### <a name="step-3-use-existing-image"></a>步骤 3：使用现有映像
-可以使用现有映像， 也可以[创建现有虚拟机的映像](../../virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，创建映像的虚拟机不一定是 DS* 虚拟机。获得映像后，以下步骤演示如何使用 **Start-AzureStorageBlobCopy** PowerShell commandlet 将其复制到高级存储帐户。
+可以使用现有映像， 也可以[创建现有虚拟机的映像](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，创建映像的虚拟机不一定是 DS*虚拟机。获得映像后，以下步骤演示如何使用**Start-AzureStorageBlobCopy** PowerShell commandlet 将其复制到高级存储帐户。
 
     #Get storage account keys:
     #Standard Storage account
@@ -463,12 +464,12 @@ ms.openlocfilehash: 67ee949acaed274a3a1522008e833d86c8442a23
 停机时间最短的一个策略是获取现有的云辅助版本并将其从当前云服务中删除。 然后将 VHD 复制到新的高级存储帐户，并在新的云服务中创建 VM。 然后，在群集和故障转移中更新侦听器。
 
 ##### <a name="points-of-downtime"></a>停机时间点
-* 使用负载平衡终结点更新最后一个节点时，会出现停机时间。
+* 使用负载均衡终结点更新最后一个节点时，会出现停机时间。
 * 你的客户端重新连接可能会延迟，具体取决于你的客户端/DNS 配置。
 * 如果选择将 Always On 群集组脱机来换出 IP 地址，则会增加停机时间。 可以通过对添加的 IP 地址资源使用 OR 依赖关系和可能的所有者来避免出现这种情况。 请参阅[附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 
 > [!NOTE]
-> 如果要让添加的节点作为 Always On 故障转移伙伴参与其中，则需要添加带有对负载平衡集的引用的 Azure 终结点。 运行 **Add-AzureEndpoint** 命令来执行此操作时，当前连接将保持打开，但在更新负载平衡器之前，将无法与侦听器建立新连接。 在测试时，看到此现像持续 90 到 120 秒，应该对此进行测试。
+> 如果要让添加的节点作为 Always On 故障转移伙伴参与其中，则需要添加带有对负载均衡集的引用的 Azure 终结点。 运行 **Add-AzureEndpoint** 命令来执行此操作时，当前连接将保持打开，但在更新负载均衡器之前，将无法与侦听器建立新连接。 在测试时，看到此现像持续 90 到 120 秒，应该对此进行测试。
 >
 >
 
@@ -642,7 +643,7 @@ ms.openlocfilehash: 67ee949acaed274a3a1522008e833d86c8442a23
     ##Set RegisterAllProvidersIP
     Get-ClusterResource $ListenerName| Set-ClusterParameter RegisterAllProvidersIP  1
 
-在后面的迁移步骤中，将需要使用引用负载平衡器的已更新 IP 地址更新 Always On 侦听器，这将涉及删除和添加 IP 地址资源。 更新 IP 之后，你需要确保已在 DNS 区域中更新新的 IP 地址并且客户端将更新其本地 DNS 缓存。
+在后面的迁移步骤中，将需要使用引用负载均衡器的已更新 IP 地址更新 Always On 侦听器，这将涉及删除和添加 IP 地址资源。 更新 IP 之后，你需要确保已在 DNS 区域中更新新的 IP 地址并且客户端将更新其本地 DNS 缓存。
 
 如果客户端驻留在不同网络段，并引用不同的 DNS 服务器，则需要考虑在迁移期间将发生哪些与 DNS 区域传送相关的事件，因为应用程序重新连接时间将至少受到侦听器的任何新 IP 地址的区域传送时间的约束。 如果你在此处受到时间约束，则应与 Windows 团队讨论并测试强制增量区域传送，同时还应将 DNS 主机记录设为较小的生存时间 (TTL)，以使客户端更新。 有关详细信息，请参阅[增量区域传送](https://technet.microsoft.com/library/cc958973.aspx)和 [Start-DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx)。
 
@@ -839,7 +840,7 @@ ms.openlocfilehash: 67ee949acaed274a3a1522008e833d86c8442a23
     #Create VM
     $vmConfig  | New-AzureVM –ServiceName $destcloudsvc –Location $location -VNetName $vnet ## Optional (-ReservedIPName $reservedVIPName)
 
-#### <a name="step-13-create-ilb-on-new-cloud-svc-add-load-balanced-endpoints-and-acls"></a>步骤 13：在新的云服务上创建 ILB，添加负载平衡终结点和 ACL
+#### <a name="step-13-create-ilb-on-new-cloud-svc-add-load-balanced-endpoints-and-acls"></a>步骤 13：在新的云服务上创建 ILB，添加负载均衡终结点和 ACL
     #Check for existing ILB
     GET-AzureInternalLoadBalancer -ServiceName $destcloudsvc
 
@@ -1057,7 +1058,7 @@ ms.openlocfilehash: 67ee949acaed274a3a1522008e833d86c8442a23
     #Create VM
     $vmConfig  | New-AzureVM –ServiceName $destcloudsvc –Location $location -VNetName $vnet -Verbose
 
-#### <a name="step-22-add-load-balanced-endpoints-and-acls"></a>步骤 22：添加负载平衡终结点和 ACL
+#### <a name="step-22-add-load-balanced-endpoints-and-acls"></a>步骤 22：添加负载均衡终结点和 ACL
     #Endpoints
     $epname="sqlIntEP"
     $prot="tcp"
@@ -1126,9 +1127,4 @@ ms.openlocfilehash: 67ee949acaed274a3a1522008e833d86c8442a23
 [23]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_13.png
 [24]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_15.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

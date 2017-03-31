@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: dc61f74a10fed1ba9e3959326e0020cf2b4440ea
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 554d1d504205767a287c690d82f03808047b1961
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -42,7 +43,7 @@ ms.openlocfilehash: dc61f74a10fed1ba9e3959326e0020cf2b4440ea
 ## <a name="firewall-configuration"></a>防火墙配置
 Azure 提供了一个入站数据包筛选器，用于限制与 Azure 经典门户中指定的端口的连接。 默认情况下，唯一允许的端口为 SSH。 通过在 Azure 经典门户中配置终结点，可以启用对 Linux 虚拟机上的其他端口的访问：
 
-* 请参阅[如何设置虚拟机的终结点](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+* 请参阅[如何设置虚拟机的终结点](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 默认情况下，Azure 库中的 Linux 映像不支持 *iptables* 防火墙。 如果需要，可以将该防火墙配置为提供附加筛选。
 
@@ -60,7 +61,7 @@ Azure Linux 代理包含自动检测此名称更改的功能，并会相应地�
 ### <a name="cloud-init"></a>Cloud-Init
 **Ubuntu** 和 **CoreOS** 映像利用 Azure 上的 cloud-init 为启动虚拟机提供附加功能。
 
-* [如何插入自定义数据](virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [如何插入自定义数据](windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [Microsoft Azure 上的自定义数据和 Cloud-Init](https://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)
 * [使用 Cloud-Init 创建 Azure 交换分区](https://wiki.ubuntu.com/AzureSwapPartitions)
 * [如何在 Azure 上使用 CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html)
@@ -72,7 +73,7 @@ Azure Linux 代理包含自动检测此名称更改的功能，并会相应地�
 2. 关闭虚拟机。
 3. 在 Azure 经典门户中单击“捕获”或者使用 Powershell 或 CLI 工具将虚拟机作为映像捕获。
    
-   * 请参阅：[如何捕获用作模板的 Linux 虚拟机](virtual-machines-linux-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+   * 请参阅：[如何捕获用作模板的 Linux 虚拟机](linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## <a name="attaching-disks"></a>附加磁盘
 每个虚拟机都附加有一个临时的本地*资源磁盘*。 由于资源磁盘上的数据可能不能在重新启动后持久存在，因此它通常由在虚拟机中运行的应用程序和进程用于数据的短暂和**临时**存储。 它还用来为操作系统存储页面文件或交换文件。
@@ -84,13 +85,8 @@ Azure Linux 代理包含自动检测此名称更改的功能，并会相应地�
 > 
 > 
 
-在 Linux 上，数据磁盘可能由内核命名为 `/dev/sdc`，并且用户需要对该资源进行分区、格式化和装载。 在[如何将数据磁盘附加到虚拟机](virtual-machines-linux-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)的教程中对此进行了分步说明。
+在 Linux 上，数据磁盘可能由内核命名为 `/dev/sdc`，并且用户需要对该资源进行分区、格式化和装载。 在[如何将数据磁盘附加到虚拟机](linux/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)的教程中对此进行了分步说明。
 
 * **另请参阅：**[在 Linux 上配置软件 RAID](virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) & [在 Azure 中的 Linux VM 上配置 LVM](virtual-machines-linux-configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

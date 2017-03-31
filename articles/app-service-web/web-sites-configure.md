@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 98e5764f84f23ec586ebd823634b9024e4689c5c
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -163,7 +164,7 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 [ASP.NET SignalR]: http://www.asp.net/signalr
 [Azure 门户]: https://portal.azure.com/
 [在 Azure 应用服务中配置自定义域名]: ./web-sites-custom-domain-name.md
-请参阅[为 Azure 应用服务中的 Web 应用部署到过渡环境]: ./web-sites-staged-publishing.md。
+[为 Azure 应用服务中的 Web 应用部署到过渡环境]: ./web-sites-staged-publishing.md。
 [为 Azure 应用服务中的应用启用 HTTPS]: ./web-sites-configure-ssl-certificate.md
 [如何监视 Web 终结点状态]: http://go.microsoft.com/fwLink/?LinkID=279906
 [Azure 应用服务中 Web 应用的监视基础知识]: ./web-sites-monitor.md
@@ -177,9 +178,4 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 [configure01]: ./media/web-sites-configure/configure01.png
 [configure02]: ./media/web-sites-configure/configure02.png
 [configure03]: ./media/web-sites-configure/configure03.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

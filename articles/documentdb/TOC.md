@@ -21,6 +21,7 @@
 ## 构建 Web 应用
 ### [.NET Web 应用](documentdb-dotnet-application.md)
 ### [用于 MongoDB API 的 .NET Web 应用](documentdb-mongodb-application.md)
+### [Xamarin 应用](documentdb-mobile-apps-with-xamarin.md)
 ### [Node.js Web 应用](documentdb-nodejs-application.md)
 ### [Java Web 应用](documentdb-java-application.md)
 ### [Python Flask Web 应用](documentdb-python-application.md)

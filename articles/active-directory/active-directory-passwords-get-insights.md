@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 334819e0819206d1bd928c0861b25cc59dd29fa7
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: e4e9e16c62ab1262021d1a719f5aa15d936f4843
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="how-to-get-operational-insights-with-password-management-reports"></a>如何使用密码管理报告获取操作见解
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 >
 >
 
@@ -94,10 +94,10 @@ ms.lasthandoff: 03/10/2017
 * [**重置密码(自助服务)**](#activity-type-reset-password-self-service) - 表示用户已成功通过 [Azure AD 密码重置门户](https://passwordreset.microsoftonline.com)重置其密码。
 * [**自助密码重置流活动进度**](#activity-type-self-serve-password-reset-flow-activity-progress) - 表示密码重置过程中用户执行的每个特定步骤（例如，传递特定的密码重置身份验证门限）。
 * [**解锁用户帐户(自助服务)**](#activity-type-unlock-user-account-self-service) - 表示用户在未通过 [Azure AD 密码重置门户](https://passwordreset.microsoftonline.com)重置其密码的情况下，使用[无需重置的 AD 帐户解锁](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-customize#allow-users-to-unlock-accounts-without-resetting-their-password)功能成功解锁了其 Active Directory 帐户。
-* [**用户已注册自助密码重置**](#activity-type-user-registered-for-self-service-password-reset) - 表示用户已注册全部所需的信息，可以根据当前指定的租户密码重置策略重置其密码。 
+* [**用户已注册自助密码重置**](#activity-type-user-registered-for-self-service-password-reset) - 表示用户已注册全部所需的信息，可以根据当前指定的租户密码重置策略重置其密码。
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>活动类型：被自助密码重置功能阻止
-以下列表详细说明了此活动： 
+以下列表详细说明了此活动：
 
 * **活动说明** - 表示用户在 24 小时内尝试重置密码、使用特定的门限或验证某个电话号码总共超过 5 次。
 * **活动参与者** - 被限制执行其他重置操作的用户。 可能是最终用户，也可能是管理员。
@@ -107,7 +107,7 @@ ms.lasthandoff: 03/10/2017
 * **活动状态失败原因** - 不适用
 
 ### <a name="activity-type-change-password-self-service"></a>活动类型：更改密码(自助服务)
-以下列表详细说明了此活动： 
+以下列表详细说明了此活动：
 
 * **活动说明** - 表示用户执行了自愿性或强制性（由于密码过期）密码更改。
 * **活动参与者** - 更改其密码的用户。 可能是最终用户，也可能是管理员。
@@ -115,11 +115,11 @@ ms.lasthandoff: 03/10/2017
 * **允许的活动状态**
  * _成功_ - 表示用户已成功更改其密码
  * _失败_ - 表示用户未能更改其密码。 单击相应的行可查看“活动状态原因”类别，详细了解发生失败的原因。
-* **活动状态失败原因** - 
+* **活动状态失败原因** -
  * _FuzzyPolicyViolationInvalidPassword_ - 由于 Microsoft 的“受禁密码检测”功能发现用户选择的某个密码过于常见或者太弱，因此已自动阻止此密码。
 
 ### <a name="activity-type-reset-password-by-admin"></a>活动类型：重置密码(由管理员)
-以下列表详细说明了此活动： 
+以下列表详细说明了此活动：
 
 * **活动说明** - 表示管理员通过 Azure 门户代表用户执行了密码重置。
 * **活动参与者** - 代表其他最终用户或管理员执行密码重置的管理员。 必须是全局管理员、密码管理员、用户管理员或支持管理员。
@@ -129,7 +129,7 @@ ms.lasthandoff: 03/10/2017
  * _失败_ - 表示管理员未能更改用户的密码。 单击相应的行可查看“活动状态原因”类别，详细了解发生失败的原因。
 
 ### <a name="activity-type-reset-password-self-service"></a>活动类型：重置密码(自助服务)
-以下列表详细说明了此活动： 
+以下列表详细说明了此活动：
 
 * **活动说明** - 表示用户已成功通过 [Azure AD 密码重置门户](https://passwordreset.microsoftonline.com)重置其密码。
 * **活动参与者** - 重置其密码的用户。 可能是最终用户，也可能是管理员。
@@ -137,11 +137,11 @@ ms.lasthandoff: 03/10/2017
 * **允许的活动状态**
  * _成功_ - 表示用户已成功重置其自己的密码
  * _失败_ - 表示用户未能重置其自己的密码。 单击相应的行可查看“活动状态原因”类别，详细了解发生失败的原因。
-* **活动状态失败原因** - 
+* **活动状态失败原因** -
  * _FuzzyPolicyViolationInvalidPassword_ - 由于 Microsoft 的“受禁密码检测”功能发现管理员选择的某个密码过于常见或者太弱，因此已自动阻止此密码。
 
 ### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>活动类型：自助密码重置流活动进度
-以下列表详细说明了此活动： 
+以下列表详细说明了此活动：
 
 * **活动说明** - 表示密码重置过程中用户执行的每个特定步骤（例如，传递特定的密码重置身份验证门限）。
 * **活动参与者** - 执行了密码重置流的一部分步骤的用户。 可能是最终用户，也可能是管理员。
@@ -153,7 +153,7 @@ ms.lasthandoff: 03/10/2017
  * 请参阅下表中列出的[所有允许的重置活动状态原因](#allowed-values-for-details-column)
 
 ### <a name="activity-type-unlock-user-account-self-service"></a>活动类型：解锁用户帐户(自助服务)
-以下列表详细说明了此活动： 
+以下列表详细说明了此活动：
 
 * **活动说明** - 表示用户在未通过 [Azure AD 密码重置门户](https://passwordreset.microsoftonline.com)重置其密码的情况下，使用[无需重置的 AD 帐户解锁](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-customize#allow-users-to-unlock-accounts-without-resetting-their-password)功能成功解锁了其 Active Directory 帐户。
 * **活动参与者** - 在未重置其密码的情况下解锁了其帐户的用户。 可能是最终用户，也可能是管理员。
@@ -163,13 +163,13 @@ ms.lasthandoff: 03/10/2017
  * _失败_ - 表示用户未能解锁其自己的帐户。 单击相应的行可查看“活动状态原因”类别，详细了解发生失败的原因。
 
 ### <a name="activity-type-user-registered-for-self-service-password-reset"></a>活动类型：用户已注册自助密码重置
-以下列表详细说明了此活动： 
+以下列表详细说明了此活动：
 
-* **活动说明** - 表示用户已注册全部所需的信息，可以根据当前指定的租户密码重置策略重置其密码。 
+* **活动说明** - 表示用户已注册全部所需的信息，可以根据当前指定的租户密码重置策略重置其密码。
 * **活动参与者** - 注册了密码重置的用户。 可能是最终用户，也可能是管理员。
 * **活动目标** - 注册了密码重置的用户。 可能是最终用户，也可能是管理员。
 * **允许的活动状态**
- * _成功_ - 表示用户已根据当前策略成功注册了密码重置。 
+ * _成功_ - 表示用户已根据当前策略成功注册了密码重置。
  * _失败_ - 表示用户未能注册密码重置。 单击相应的行可查看“活动状态原因”类别，详细了解发生失败的原因。 注意 - 这并不表示用户无法重置其自己的密码，而只是表示该用户未完成注册过程。 如果用户的帐户中未验证的数据是正确的（例如，未验证的电话号码），则即使他们未验证此电话号码，也仍可以使用该电话号码来重置其密码。 有关详细信息，请参阅[用户注册时会发生什么情况？](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers)
 
 ## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>如何通过 Azure AD 报告和事件 API 检索密码管理事件
@@ -184,7 +184,7 @@ ms.lasthandoff: 03/10/2017
 * [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent)：列出密码重置注册事件可用的列
 
 ### <a name="reporting-api-data-retrieval-limitations"></a>报告 API 数据检索限制
-目前，Azure AD 报告和事件 API 最多可以检索**过去 30 天内** [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) 和 [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) 类型的 **75,000 个事件**。 
+目前，Azure AD 报告和事件 API 最多可以检索**过去 30 天内** [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) 和 [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) 类型的 **75,000 个事件**。
 
 如果需要检索或存储的数据超过此时间范围，我们建议将数据保存在外部数据库中，并使用该 API 来查询生成的差异数据。 最佳做法是在组织中启动密码重置注册过程时开始检索此数据并将其保存在外部，然后从此时间点开始继续跟踪差异数据。
 
@@ -300,7 +300,7 @@ ms.lasthandoff: 03/10/2017
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置和更改云密码或本地密码
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为

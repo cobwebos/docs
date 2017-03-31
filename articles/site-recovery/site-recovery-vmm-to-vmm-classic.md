@@ -59,7 +59,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 2. 展开“**数据服务**” > “**恢复服务**”，并单击“**Site Recovery 保管库**”。
 3. 单击“**新建**” > “**快速创建**”。
 4. 在“名称”中，输入一个友好名称以标识此保管库。
-5. 在“**区域**”中，为保管库选择地理区域。 若要查看受支持的区域，请参阅 Azure Site Recovery 价格详细信息中的“地域可用性” [](http://go.microsoft.com/fwlink/?LinkId=389880)。
+5. 在“**区域**”中，为保管库选择地理区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 价格详细信息中的](http://go.microsoft.com/fwlink/?LinkId=389880) “地域可用性”。
 6. 单击“创建保管库” 。
 
     ![创建保管库](./media/site-recovery-vmm-to-vmm-classic/create-vault.png)

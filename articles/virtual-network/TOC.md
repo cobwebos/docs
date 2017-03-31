@@ -123,6 +123,7 @@
 ### 路由
 #### [门户](virtual-network-routes-troubleshoot-portal.md)
 #### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
+### [吞吐量测试](virtual-network-bandwidth-testing.md)
 
 # 引用
 ## [PowerShell (Resource Manager)](/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network)

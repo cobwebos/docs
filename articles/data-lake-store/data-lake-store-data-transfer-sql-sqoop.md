@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f1c8c5b9bfa14b817efb635cf812242afaa70e35
-ms.openlocfilehash: d536ba2bd44941d036a00a74243cb37b8ae69abb
-ms.lasthandoff: 12/02/2016
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 7f165111cd089d5f32f309235dcbc24d11fb5d64
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/02/2016
             )
         ) ON [PRIMARY]
         GO
-2. 在**表 1** 中，添加一些示例数据。 **表 2 **留空。 从**表 1 **导入数据到 Data Lake Store。 然后，从 Data Lake Store 导入数据到**表 2**。 运行以下代码段。
+2. 在**表 1** 中，添加一些示例数据。 **表 2**留空。 从**表 1**导入数据到 Data Lake Store。 然后，从 Data Lake Store 导入数据到**表 2**。 运行以下代码段。
 
         INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 12/02/2016
 ## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-store"></a>使用具有 Data Lake Store 帐户访问权限的 Azure HDInsight 群集中的 Sqoop
 HDInsight 群集已经具有可用的 Sqoop 包。 如果已经配置 HDInsight 群集将 Data Lake Store 用作额外的存储，可使用 Sqoop（不作任何更改）在关系数据库（本例中是 Azure SQL 数据库）和 Data Lake Store 帐户之间导入/导出数据。
 
-1. 本教程假设你已经创建 Linux 群集，因此，应使用 SSH 连接到该群集。 请参阅[连接到基于 Linux 的 HDInsight 群集](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md#connect)。
+1. 本教程假设你已经创建 Linux 群集，因此，应使用 SSH 连接到该群集。 请参阅[连接到基于 Linux 的 HDInsight 群集](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 2. 验证是否可从此群集访问 Data Lake Store 帐户。 从 SSH 提示符处运行以下命令：
 
         hdfs dfs -ls adl://<data_lake_store_account>.azuredatalakestore.net/

@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: eabba7daa746a836592f775858782aa77fcebd9b
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8a6b48437eecd9f2f5c3fe8447b31192d8318149
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -102,7 +102,7 @@ Azure 中的 DHCP 服务不符合 RFC 标准，可能会导致创建某些故障
 如果可用性组跨多个 Azure 子网（例如，跨 Azure 区域的部署），则客户端连接字符串必须包含“**MultisubnetFailover=True**”。 这会导致与不同子网中的副本建立并行连接。 有关设置侦听器的说明，请参阅
 
 * [在 Azure 中配置 Always On 可用性组的 ILB 侦听器](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)。
-* [在 Azure 中配置 Always On 可用性组的外部侦听器](../sqlclassic/virtual-machines-windows-classic-ps-sql-ext-listener.md)。
+* [在 Azure 中配置 Always On 可用性组的外部侦听器](../classic/ps-sql-ext-listener.md)。
 
 你仍可通过直接连接到服务实例，单独连接到每个可用性副本。 此外，由于 Always On 可用性组与数据库镜像客户端向后兼容，因此可以像数据库镜像伙伴一样连接到可用性副本，只要这些副本配置得类似于数据库镜像即可：
 

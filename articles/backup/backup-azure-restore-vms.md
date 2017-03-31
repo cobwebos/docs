@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: trinadhk; jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: 7de8d98f24ea01012b8fa3a326e1d4ad3f04099a
-ms.openlocfilehash: 186929c1193f63ecda6fd4851bb66c8430ab99ab
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 64557a71f30762befe07616c3d274a621f22e235
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -92,10 +92,10 @@ ms.lasthandoff: 02/17/2017
 
 ![还原作业已完成](./media/backup-azure-restore-vms/restore-job-complete.png)
 
-还原虚拟机后，可能需要重新安装原始 VM 上的扩展，并在 Azure 门户中为虚拟机[修改终结点](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)。
+还原虚拟机后，可能需要重新安装原始 VM 上的扩展，并在 Azure 门户中为虚拟机[修改终结点](../virtual-machines/windows/classic/setup-endpoints.md)。
 
 ## <a name="post-restore-steps"></a>还原后的步骤
-如果使用基于 cloud-init 的 Linux 分发（如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/virtual-machines-linux-classic-reset-access.md)。 建议在这些分发上使用 SSH 密钥以避免还原后重置密码。 
+如果使用基于 cloud-init 的 Linux 分发（如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/linux/classic/reset-access.md)。 建议在这些分发上使用 SSH 密钥以避免还原后重置密码。 
 
 ## <a name="backup-for-restored-vms"></a>备份已还原的 VM
 如果将 VM 还原到的云服务与最初备份 VM 时所在的云服务同名，则还原之后，会继续备份该 VM。 如果将 VM 还原到了不同的云服务或者为还原的 VM 指定了不同的名称，则系统会将此 VM 视为新 VM，因此需为还原的 VM 设置备份。
@@ -124,7 +124,7 @@ Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。 但在�
 ## <a name="restoring-vms-with-special-network-configurations"></a>还原采用特殊网络配置的 VM
 Azure 备份支持备份虚拟机的以下特殊网络配置。
 
-* 采用负载平衡器的 VM（内部和外部）
+* 采用负载均衡器的 VM（内部和外部）
 * 具有多个保留 IP 的 VM
 * 具有多个 NIC 的 VM
 
@@ -146,7 +146,7 @@ PowerShell 能够只从备份还原 VM 磁盘，而不建立虚拟机。 当还�
 1. 使用 [Azure 备份 PowerShell](backup-azure-vms-classic-automation.md#restore-an-azure-vm) 从备份保管库还原磁盘
 2. 使用 PowerShell cmdlet 创建负载均衡器/多个 NIC/多个保留 IP 所需的 VM 配置，并使用该配置创建具有所需配置的 VM。
    
-   * 使用[内部负载平衡器](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)在云服务中创建 VM
+   * 使用[内部负载均衡器](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)在云服务中创建 VM
    * 创建 VM 以连接到[面向 Internet 的负载均衡器](https://azure.microsoft.com/en-us/documentation/articles/load-balancer-internet-getstarted/)
    * 创建具有[多个 NIC](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/) 的 VM
    * 创建具有[多个保留 IP](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/) 的 VM

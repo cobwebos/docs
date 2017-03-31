@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 94a4d2b85c845b135201fd919e8eac64a5e1cb37
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -40,7 +41,7 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 ## <a name="view-counters"></a>查看计数器
 “服务器”边栏选项卡显示一组默认的性能计数器。 
 
-若要查看其他计数器，则编辑“服务器”边栏选项卡上的图表，或打开新的“指标资源管理器”[](app-insights-metrics-explorer.md)边栏选项卡，然后添加新图表。 
+若要查看其他计数器，则编辑“服务器”边栏选项卡上的图表，或打开新的[指标资源管理器](app-insights-metrics-explorer.md)边栏选项卡，然后添加新图表。 
 
 编辑图表时，可用的计数器将以指标形式列出。
 
@@ -128,13 +129,8 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 ## <a name="alerts"></a>警报
 与其他指标一样，可以[设置警报](app-insights-alerts.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”边栏选项卡，然后单击“添加警报”。
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
+## <a name="next"></a>后续步骤
 * [依赖关系跟踪](app-insights-asp-net-dependencies.md)
 * [异常跟踪](app-insights-asp-net-exceptions.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
