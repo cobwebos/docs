@@ -1,0 +1,55 @@
+---
+title: "创建多个虚拟机 | Microsoft Docs"
+description: "用于在 Windows 上创建多个虚拟机的选项"
+services: virtual-machines-windows
+documentationcenter: 
+author: gbowerman
+manager: timlt
+editor: 
+tags: azure-resource-manager
+ms.assetid: dfc1d1bb-a47d-4d7c-9fd2-f12050baacab
+ms.service: virtual-machines-windows
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/25/2016
+ms.author: guybo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5e96805f8880a30a5fc8779d8f07addb6d068c09
+
+
+---
+# <a name="create-multiple-azure-virtual-machines"></a>创建多个 Azure 虚拟机
+在很多情况下，需要创建大量类似的虚拟机 (VM)。 部分示例包括高性能计算 (HPC)、大规模数据分析、可缩放且通常无状态的中间层或后端服务器（例如 Web 服务器），以及分布式数据库。
+
+本文介绍用于在 Azure 中创建多个 VM 的可用选项。 这些选项超越了手动创建一系列 VM 的简单方案。 在创建数量较多的 VM 时，如果按照平时使用的过程将无法适当缩放。
+
+若要创建许多类似的 VM，一种方法是使用 Azure Resource Manager *资源循环*构造。
+
+## <a name="resource-loops"></a>资源循环
+资源循环是 Azure Resource Manager 模板中的速记语法。 资源循环可在循环中创建一组设置相似的资源。 可以使用资源循环来创建多个存储帐户、网络接口或虚拟机。 有关资源循环的详细信息，请参阅 [Create VMs in availability sets using resource loops](https://azure.microsoft.com/documentation/templates/201-vm-copy-index-loops/)（使用资源循环在可用性集中创建 VM）。
+
+## <a name="challenges-of-scale"></a>规模的挑战
+尽管资源循环可以使大规模构建云基础结构变得更轻松，同时也可以生成更精简的模板，但仍有一些难题有待克服。 例如，如果你使用资源循环创建 100 个虚拟机，则需要将网络接口控制器 (NIC) 关联到相应的 VM 和存储帐户。 由于 VM 的数目和存储帐户的数目可能不同，因此还必须应对不同的资源循环大小。 这些问题是可以解决的，不过复杂性将随着规模扩大而大幅增长。
+
+另一项挑战发生在需要弹性缩放的基础结构时。 例如，你可能想要自动缩放基础结构，以根据工作负荷自动增加或减少 VM 数目。 VM 不提供改变数目（扩展和缩减）的集成机制。 如果你要通过删除 VM 来达到缩减目的，即使 VM 在更新域和容错域之间保持平衡，也依然很难保证高可用性。
+
+最后，当你使用资源循环时，将造成许多涉及到底层结构的资源创建诉求。 当有许多创建类似资源的诉求出现后，Azure 将有潜力可以改善设计和实施优化，以此提升部署可靠性和性能。 这是引入*虚拟机规模集*的原因。
+
+## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
+虚拟机规模集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。 由于所有 VM 配置相同，VM 规模集很容易进行缩放。 只需更改集中 VM 的数目即可。 也可将 VM 规模集配置为按工作负荷需求自动缩放。
+
+对于需要扩大和缩小计算资源的应用程序，缩放操作在容错域和更新域之间进行隐式平衡。
+
+VM 规模集可以集中配置网络、存储、虚拟机和扩展属性，不需将多个资源（例如 NIC 和 VM）关联在一起。
+
+如需 VM 规模集的简介，请参阅[虚拟机规模集产品页](https://azure.microsoft.com/services/virtual-machine-scale-sets/)。 有关详细信息，请访问[虚拟机规模集文档](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/)。
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+
