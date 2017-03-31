@@ -210,7 +210,7 @@ StorSimple 提供以下优势：
 -   在 StorSimple 卷上禁用 Windows Server 碎片整理。
 -   在 StorSimple 卷上禁用 Windows Server 索引编制。
 -   在源主机上运行防病毒扫描（不是针对 StorSimple 卷）。
--   在任务管理器中关闭默认的“Windows Server 维护”。[](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) 通过以下方式之一执行此操作：
+-   在任务管理器中关闭默认的[Windows Server 维护](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)。 通过以下方式之一执行此操作：
    - 在 Windows 任务计划程序中关闭“维护”配置器。
    - 通过 Windows Sysinternals 下载 [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx)。 下载 PsExec 后，以管理员身份运行 Azure PowerShell，键入：
       ```powershell
@@ -254,11 +254,11 @@ StorSimple 提供以下优势：
 | 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
 | 每周完整备份 | 1 | 4  | 4 |
-| 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用&2; 个以提高配额） |
+| 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用 2 个以提高配额） |
 | 每月完整备份 | 1 | 12 | 12 |
 | 每年完整备份 | 1  | 10 | 10 |
 | GFS 要求 |   | 38 |   |
-| 提高的配额  | 4  |   | 总共&42;，满足 GFS 要求  |
+| 提高的配额  | 4  |   | 总共 42，满足 GFS 要求  |
 \* GFS 乘数是需要根据备份策略要求保护和保留的副本数。
 
 ## <a name="set-up-backup-exec-storage"></a>设置 Backup Exec 存储
