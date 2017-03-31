@@ -16,9 +16,9 @@ ms.date: 10/10/2016
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 844f7d6fa4191a54d14010adf974401d3a94ba69
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 5bb3a67c999c1d41c50b2b660a97a53125511633
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/10/2017
    ![OMS 工作区](./media/log-analytics-azure-vm-extension/oms-connect-azure-01.png)
 4. 在“**Log Analytics 管理**”下，选择“**虚拟机**”。  
    ![虚拟机](./media/log-analytics-azure-vm-extension/oms-connect-azure-02.png)
-5. 在“**虚拟机**”列表中，选择想要在其中安装代理的虚拟机。。 VM 的“**OMS 连接状态**”指示其“**未连接**”。  
+5. 在“**虚拟机**”列表中，选择想要在其中安装代理的虚拟机。 VM 的“**OMS 连接状态**”指示其“**未连接**”。  
    ![VM 未连接](./media/log-analytics-azure-vm-extension/oms-connect-azure-03.png)
 6. 在虚拟机的详细信息中，选择“**连接**”。 则自动会为 Log Analytics 工作区安装并配置代理。 此过程需要几分钟的时间，在此期间，“OMS 连接”状态为“*正在连接...*”  
    ![连接 VM](./media/log-analytics-azure-vm-extension/oms-connect-azure-04.png)
@@ -385,7 +385,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 1. 使用 [KB 2965986](https://support.microsoft.com/kb/2965986#mt1) 中的步骤检查是否已安装 Azure VM 代理或者其是否正常工作。
    * 还可以查看 VM 代理日志文件 `C:\WindowsAzure\logs\WaAppAgent.log`
    * 如果此日志不存在，则未安装 VM 代理。
-     * [在经典 VM 上安装 Azure VM 代理](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+     * [在经典 VM 上安装 Azure VM 代理](../virtual-machines/windows/classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 2. 使用以下步骤确认 Microsoft Monitoring Agent 扩展检测信号任务正在运行：
    * 登录到虚拟机
    * 打开任务计划程序并找到 `update_azureoperationalinsight_agent_heartbeat` 任务

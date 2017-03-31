@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
 ms.openlocfilehash: 99c5ea06a0970c360eb711a8b10894d416146693
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -75,9 +76,4 @@ ms.openlocfilehash: 99c5ea06a0970c360eb711a8b10894d416146693
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)（管理和响应 Azure 安全中心的安全警报）。 了解如何管理和响应安全警报。
 * [处理 Azure 安全中心的安全事件](security-center-incident.md)
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

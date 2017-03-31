@@ -10,21 +10,21 @@ ms.service: service-bus
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 03/14/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3e94e98bde67db2e136420ada2a7c625ad5a0307
-ms.openlocfilehash: ac803aaa0cf4cbf69fdca9764923eaaf2d29efc0
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 3401257f406c71ff26d0eb2f7ca5f7e830d91882
+ms.lasthandoff: 03/27/2017
 
 ---
 #<a name="service-bus-documentation"></a>服务总线文档
 
-了解如何使用服务总线建立跨本地和云环境的连接。 教程、视频、API 参考和其他文档演示了如何在应用程序与服务之间设置云消息传送。
+了解如何使用服务总线和中继建立跨本地和云环境的连接。 教程、视频、API 参考和其他文档演示了如何在应用程序与服务之间设置云消息传送。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">
+        <a href="/azure/service-bus-messaging">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -42,161 +42,17 @@ ms.lasthandoff: 02/09/2017
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=service-bus">
+        <a href="/azure/service-bus-relay">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
+                            <img src="media/index/relay.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure 服务总线视频库</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/service-bus-messaging/service-bus-create-namespace-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>通过 Azure 门户开始使用服务总线</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>通过 .NET 开始使用服务总线队列</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/azure/service-bus-messaging/service-bus-java-how-to-use-queues">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/java.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>通过 Java 开始使用服务总线队列</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/nodejs.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>通过 Node.js 开始使用服务总线队列</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/azure/service-bus-messaging/service-bus-php-how-to-use-queues">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>通过 PHP 开始使用服务总线队列</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/azure/service-bus-messaging/service-bus-python-how-to-use-queues">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/python.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>通过 Python 开始使用服务总线队列</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/azure/service-bus-messaging/service-bus-ruby-how-to-use-queues">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/ruby.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>通过 Ruby 开始使用服务总线队列</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/azure/service-bus-messaging/service-bus-brokered-tutorial-rest">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/rest.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>通过 REST 开始使用服务总线队列</h3>
+                        <h3>了解 Azure 中继</h3>
                     </div>
                 </div>
             </div>
@@ -204,48 +60,3 @@ ms.lasthandoff: 02/09/2017
         </a>
     </li>
 </ul>
-
----
-
-<h2>引用</h2>
-<ul class="panelContent cardsW">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>命令行</h3>
-                        <p><a href="/powershell/resourcemanager">PowerShell</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST</h3>
-                        <p><a href="/rest/api/servicebus">REST API 参考</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>其他</h3>
-                        <p><a href="/dotnet/api/">托管参考 API</a></p>
-                   </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
-
-
-

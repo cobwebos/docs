@@ -50,19 +50,19 @@ ms.lasthandoff: 03/03/2017
 
 由于两个层次结构级别在帐户/订阅关系上的限制，根据计费要求调整帐户和订阅的命名约定至关重要。 例如，一家全球性公司在使用 Azure 时，可以选择每个区域建立一个帐户，并在区域级别管理订阅：
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
 
 例如，可以使用以下结构：
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
 
 如果某一区域决定将多个订阅关联到一个特定组，则命名约定应引入相应方法来对帐户或订阅名称的额外数据进行编码。 此组织允许窜改计费数据，在计费报告期间生成新的层次结构级别：
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
 该组织看起来可能如下例所示：
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
 我们通过可下载的文件为企业协议中的单个帐户或所有帐户提供详细的计费信息。
 

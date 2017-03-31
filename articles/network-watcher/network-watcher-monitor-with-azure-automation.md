@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 35efe2a6a7a1ea1285a8df26f18de0d425b7c48d
-ms.openlocfilehash: 02a1ba7f2861271ae3b0e2e06bde1b2cd03a378f
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 9a6f42e9b7b737e9316dcc1ff39ea532c4b923c5
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -55,7 +55,7 @@ ms.lasthandoff: 02/22/2017
 
 ### <a name="create-the-runbook"></a>创建 Runbook
 
-配置示例的第一个步骤是创建 Runbook。 本示例使用运行方式帐户。 若要了解运行方式帐户，请访问[使用 Azure 运行方式帐户进行 Runbook 身份验证](../automation/automation-sec-configure-azure-runas-account.md#create-a-new-automation-account-from-the-azure-portal)
+配置示例的第一个步骤是创建 Runbook。 本示例使用运行方式帐户。 若要了解运行方式帐户，请访问[使用 Azure 运行方式帐户进行 Runbook 身份验证](../automation/automation-sec-configure-azure-runas-account.md#create-an-automation-account-from-the-azure-portal)
 
 ### <a name="step-1"></a>步骤 1
 
@@ -191,17 +191,4 @@ else
 [8]: ./media/network-watcher-monitor-with-azure-automation/figure8.png
 [9]: ./media/network-watcher-monitor-with-azure-automation/figure9.png
 [10]: ./media/network-watcher-monitor-with-azure-automation/figure10.png
-
-
-
-
-
-
-
-
-
-
-
-
-
 

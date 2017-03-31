@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: bb4188bed4839aea6d19c49a8f0e6d154a343ec1
-ms.openlocfilehash: e0f77f88ee91b263c49a148197e418fdf64cca0b
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 9702f179a65754be88646987f868385b02a9f2d7
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -766,7 +767,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![](./media/data-factory-data-processing-using-batch/image12.png)
 4. 现在在“关系图视图”中，单击“OutputDataset”。
-5. 如果已生成图示，则将显示&5; 个输出切片处于“就绪”状态。
+5. 如果已生成图示，则将显示 5 个输出切片处于“就绪”状态。
 
    ![](./media/data-factory-data-processing-using-batch/image13.png)
 6. 使用 Azure 门户查看与**切片**关联的**任务**，并查看每个切片在哪些 VM 上运行。 请参阅[数据工厂和 Batch 集成](#data-factory-and-batch-integration)部分了解详细信息。
@@ -869,7 +870,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 创建含较高/较低的**每个 VM 的最大任务数**的池。 若要使用创建的新池，更新数据工厂解决方案中的 Azure Batch 链接服务。 （请参阅步骤 4：创建和运行管道，详细了解**每个 VM 的最大任务数**设置。）
 4. 创建带有**自动缩放**功能的 Azure Batch 池。 自动缩放 Azure 批处理池中的计算节点是指动态调整应用程序使用的处理能力。 例如，可以根据挂起任务的数量通过 0 专用的 VM 和自动缩放公式创建 Azure Batch 池：
 
-   一次为每个挂起的任务分配一个 VM（例如：5 个挂起任务->&5; 个 VM）：
+   一次为每个挂起的任务分配一个 VM（例如：5 个挂起任务-> 5 个 VM）：
     
     ```
     pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
@@ -891,10 +892,10 @@ test custom activity Microsoft test custom activity Microsoft
 ### <a name="next-steps-consume-the-data"></a>后续步骤：使用数据
 处理数据后，可通过 **Microsoft Power BI** 等联机工具使用数据。 以下是有助于了解 Power BI 以及如何在 Azure 中使用 Power BI 的链接：
 
-* [在 Power BI 中浏览数据集](https://powerbi.microsoft.com/en-us/documentation/powerbi-service-get-data/)
-* [Power BI Desktop 入门](https://powerbi.microsoft.com/en-us/documentation/powerbi-desktop-getting-started/)
-* [Power BI 中的数据刷新](https://powerbi.microsoft.com/en-us/documentation/powerbi-refresh-data/)
-* [Azure 和 Power BI - 基本概述](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)
+* [在 Power BI 中浏览数据集](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
+* [Power BI Desktop 入门](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Power BI 中的数据刷新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
+* [Azure 和 Power BI - 基本概述](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>参考
 * [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)
@@ -911,9 +912,4 @@ test custom activity Microsoft test custom activity Microsoft
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

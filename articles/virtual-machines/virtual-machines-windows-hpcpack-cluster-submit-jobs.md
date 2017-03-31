@@ -16,8 +16,9 @@ ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 71c896673706fad3eb215f12893b65af7b697843
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 4f5ae7c1750d697e7dae3f03ea5d3936c9fee52b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: 71c896673706fad3eb215f12893b65af7b697843
 ![向 Azure 中的群集提交作业][jobsubmit]
 
 ## <a name="prerequisites"></a>先决条件
-* **在 Azure VM 中部署的 HPC Pack 头节点** - 建议使用自动化工具（例如 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)或 [Azure PowerShell 脚本](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)）来部署头节点和群集。 需要获得头节点的 DNS 名称和群集管理员的凭据才能完成本文中的步骤。
+* **在 Azure VM 中部署的 HPC Pack 头节点** - 建议使用自动化工具（例如 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)或 [Azure PowerShell 脚本](windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)）来部署头节点和群集。 需要获得头节点的 DNS 名称和群集管理员的凭据才能完成本文中的步骤。
 * **客户端计算机** - 需要有可运行 HPC Pack 客户端实用工具的 Windows 或 Windows Server 客户端计算机（请参阅[系统要求](https://technet.microsoft.com/library/dn535781.aspx)）。 如果你只想要使用 HPC Pack Web 门户或 REST API 来提交作业，则可以使用自选的任意客户端计算机。
 * **HPC Pack 安装媒体** - 若要安装 HPC Pack 客户端实用工具，可从 [Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=328024)下载最新版 HPC Pack (HPC Pack 2012 R2) 的免费安装包。 确保下载与头节点 VM 上安装的版本相同的 HPC Pack 版本。
 
@@ -39,7 +40,7 @@ ms.openlocfilehash: 71c896673706fad3eb215f12893b65af7b697843
 有关详细过程，请参阅[安装 Microsoft HPC Pack Web 组件](http://technet.microsoft.com/library/hh314627.aspx)。
 
 > [!TIP]
-> HPC Pack 的某些 Azure 快速启动模板将自动安装并配置 Web 组件。 如果使用 [HPC Pack IaaS 部署脚本](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)创建群集，可以在部署期间选择安装并配置 Web 组件。
+> HPC Pack 的某些 Azure 快速启动模板将自动安装并配置 Web 组件。 如果使用 [HPC Pack IaaS 部署脚本](windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)创建群集，可以在部署期间选择安装并配置 Web 组件。
 > 
 > 
 
@@ -173,9 +174,4 @@ ms.openlocfilehash: 71c896673706fad3eb215f12893b65af7b697843
 
 <!--Image references-->
 [jobsubmit]: ./media/virtual-machines-windows-hpcpack-cluster-submit-jobs/jobsubmit.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

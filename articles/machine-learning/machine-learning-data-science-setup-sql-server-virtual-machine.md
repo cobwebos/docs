@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
-ms.openlocfilehash: 777dc11be139b20363e2060776ac0227883591ff
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 497b683b1058e134c3c79dbc8c8a119ff20e330b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -33,7 +34,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
   > 
   > 
 
-## <a name="a-nameprovisionaconnect-to-the-azure-classic-portal-and-provision-an-sql-server-virtual-machine"></a><a name="Provision"></a>连接到 Azure 经典门户并预配 SQL Server 虚拟机
+## <a name="Provision"></a>连接到 Azure 经典门户并预配 SQL Server 虚拟机
 1. 使用帐户登录到 [Azure 经典门户](http://manage.windowsazure.com/)。
    如果你没有 Azure 帐户，请访问 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 2. 在 Azure 经典门户中网页的左下角，依次单击“+新建”、“计算”、“虚拟机”和“从库中”。
@@ -83,7 +84,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
    * 正在运行（正在配置）
    * 正在运行
 
-## <a name="a-nameremotedesktopaopen-the-virtual-machine-using-remote-desktop-and-complete-setup"></a><a name="RemoteDesktop"></a>使用远程桌面打开虚拟机并完成设置
+## <a name="RemoteDesktop"></a>使用远程桌面打开虚拟机并完成设置
 1. 预配完成后，单击虚拟机名称转到“仪表板”页面。 在页面底部，单击“连接”。
 2. 选择使用 Windows 远程桌面程序打开 rpd 文件 (`%windir%\system32\mstsc.exe`)。
 3. 在“Windows 安全性”对话框中，提供你在前面步骤中指定的本地管理员帐户的密码。
@@ -92,7 +93,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
 
 使用 Windows 远程桌面连接到虚拟机后，可以像使用任何其他计算机一样使用虚拟机。 以正常方式使用 SQL Server Management Studio（在虚拟机上运行）连接到 SQL Server 的默认实例。
 
-## <a name="a-nameinstallipythonainstall-ipython-notebook-and-other-supporting-tools"></a><a name="InstallIPython"></a>安装 IPython Notebook 和其他支持工具
+## <a name="InstallIPython"></a>安装 IPython Notebook 和其他支持工具
 若要将新 SQL Server VM 配置为充当 IPython Notebook 服务器，并安装其他支持工具（例如 AzCopy、Azure 存储资源管理器、有用的数据科学 Python 包以及其他内容），系统将向你提供特殊的自定义脚本。 若要进行安装：
 
 * 右键单击 Windows“开始”图标，然后单击“命令提示符(管理员)”
@@ -113,7 +114,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
 * 可以使用 `https://<virtual_machine_DNS_name>:<port>` 形式的 URL 从任何本地或远程浏览器访问并运行 IPython Notebook，其中的 port 是在预配虚拟机时所选择的 IPython 公用端口。
 * IPython Notebook 服务器作为后台服务运行，并将在重新启动虚拟机时自动重新启动。
 
-## <a name="a-nameoptionalaattach-data-disk-as-needed"></a><a name="Optional"></a>根据需要附加数据磁盘
+## <a name="Optional"></a>根据需要附加数据磁盘
 如果 VM 映像不包含数据磁盘（即，C 驱动器（操作系统磁盘）和 D 驱动器（临时磁盘）之外的磁盘），需要添加一或多个数据磁盘来存储数据。 针对数据仓库工作负荷优化的 SQL Server 2012 SP2 Enterprise 的 VM 映像使用 SQL Server 数据和日志文件的附加磁盘进行预配置。
 
 > [!NOTE]
@@ -121,12 +122,12 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
 > 
 > 
 
-若要附加数据磁盘，请按照[如何将数据磁盘附加到 Windows 虚拟机](../virtual-machines/virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)中所述的步骤操作，这将指导你完成：
+若要附加数据磁盘，请按照[如何将数据磁盘附加到 Windows 虚拟机](../virtual-machines/windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)中所述的步骤操作，这将指导你完成：
 
 1. 将空磁盘附加到之前步骤中预配的虚拟机
 2. 虚拟机中新磁盘的初始化
 
-## <a name="a-namessmsaconnect-to-sql-server-management-studio-and-enable-mixed-mode-authentication"></a><a name="SSMS"></a>连接到 SQL Server Management Studio 并启用混合模式身份验证
+## <a name="SSMS"></a>连接到 SQL Server Management Studio 并启用混合模式身份验证
 在没有域环境的情况下，SQL Server 数据库引擎无法使用 Windows 身份验证。 若要从其他计算机连接到数据库引擎，请将 SQL Server 的身份验证模式配置为混合。 混合模式身份验证同时允许 SQL Server 身份验证和 Windows 身份验证。 需要使用 SQL 身份验证模式，才能在 [Azure 机器学习工作室](https://studio.azureml.net)中通过“输入数据”模块直接从 SQL Server VM 数据库引入数据。
 
 1. 在使用远程桌面连接到虚拟机时，使用 Windows“搜索”窗格，然后键入 **SQL Server Management Studio** (SMSS)。 单击以启动 SQL Server Management Studio (SSMS)。 可能需要在桌面上添加 SSMS 的快捷方式，供将来使用。
@@ -166,7 +167,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
    ![重新启动][9]
 5. 在“SQL Server Management Studio”对话框中，单击“是”同意重新启动 SQL Server。
 
-## <a name="a-nameloginsacreate-sql-server-authentication-logins"></a><a name="Logins"></a>创建 SQL Server 身份验证登录名
+## <a name="Logins"></a>创建 SQL Server 身份验证登录名
 若要从其他计算机连接到数据库引擎，你必须创建至少一个 SQL Server 身份验证登录名。  
 
 可以采用编程方式或使用 SQL Server Management Studio，创建新的 SQL Server 登录名。 若要以编程方式使用 SQL 身份验证创建新的 sysadmin 用户，请启动“新建查询”并执行以下脚本。 将 <新用户名\> 和 <新密码\> 替换为所选的*用户名*和*密码*。 
@@ -209,7 +210,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
     ![sysadmin][12]
 12. 单击“确定”。
 
-## <a name="a-namednsadetermine-the-dns-name-of-the-virtual-machine"></a><a name="DNS"></a>确定虚拟机的 DNS 名称
+## <a name="DNS"></a>确定虚拟机的 DNS 名称
 若要从另一台计算机连接到 SQL Server 数据库引擎，必须知道虚拟机的域名系统 (DNS) 名称。
 
 （这是 Internet 用于识别虚拟机的名称）。 可以使用 IP 地址，但 IP 地址在 Azure 为冗余或维护而移动资源时可能会变更。 DNS 名称将保持不变，因为可将该名称重定向到新的 IP 地址。）
@@ -217,7 +218,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
 1. 在 Azure 经典门户中（或在完成上一步后），选择“虚拟机”。
 2. 在“虚拟机实例”页上的“DNS 名称”列中，找到并复制带有前缀 **http://** 的虚拟机 DNS 名称。 （在用户界面上可能显示不出整个名称，不过没关系，你可以右键单击它，并选择“复制”。）
 
-## <a name="a-namecdeaconnect-to-the-database-engine-from-another-computer"></a><a name="cde"></a>从其他计算机连接到数据库引擎
+## <a name="cde"></a>从其他计算机连接到数据库引擎
 1. 在连接到 Internet 的计算机上，打开 SQL Server Management Studio。
 2. 在“连接到服务器”或“连接到数据库引擎”对话框的“服务器名称”框中，输入虚拟机的 DNS 名称（在以前的任务中确定）和 *DNSName,portnumber* 格式的公共终结点端口号（例如 **tutorialtestVM.cloudapp.net,57500**）。
 3. 在“身份验证”框中，选择“SQL Server 身份验证”。
@@ -225,7 +226,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
 5. 在“密码”框中，键入在前面的任务中创建的登录名的密码。
 6. 单击“连接”。
 
-## <a name="a-nameamlconnectaconnect-to-the-database-engine-from-azure-machine-learning"></a><a name="amlconnect"></a>从 Azure 机器学习连接到数据库引擎
+## <a name="amlconnect"></a>从 Azure 机器学习连接到数据库引擎
 在团队数据科学过程的后期，将使用 [Azure 机器学习工作室](https://studio.azureml.net)生成和部署机器学习模型。 若要将数据直接从 SQL Server VM 数据库引入 Azure 机器学习以供训练或评分，则在新的 [Azure 机器学习工作室](https://studio.azureml.net)实验中使用“导入数据”模块。 将通过数据科学过程链接详细介绍本主题。 有关说明，请参阅[什么是 Azure 机器学习工作室？](machine-learning-what-is-ml-studio.md)。
 
 1. 在[“导入数据”模块](https://msdn.microsoft.com/library/azure/dn905997.aspx)的“属性”窗格中，从“数据源”下拉列表中选择“Azure SQL 数据库”。
@@ -235,7 +236,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
    
    ![Azure 机器学习导入数据][13]
 
-## <a name="a-nameshutdownashutdown-and-deallocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>关闭并解除分配未使用的虚拟机
+## <a name="shutdown"></a>关闭并解除分配未使用的虚拟机
 Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未使用虚拟机时不会计费，它必须处于“已停止(已解除分配)”状态。
 
 > [!NOTE]
@@ -273,10 +274,5 @@ Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未
 [12]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/25sysadmin.png
 [13]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/amlreader.png
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

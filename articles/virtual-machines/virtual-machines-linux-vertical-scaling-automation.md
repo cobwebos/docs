@@ -69,7 +69,7 @@ ms.lasthandoff: 03/03/2017
 
 下图显示了需要导入的 Runbook
 
-![导入 Runbook](./media/virtual-machines-vertical-scaling-automation/scale-runbooks.png)
+![导入 Runbook](./windows/media/vertical-scaling-automation/scale-runbooks.png)
 
 ## <a name="add-a-webhook-to-your-runbook"></a>将 Webhook 添加到 Runbook
 导入 Runbook 后，需在 Runbook 中添加一个 Webhook，以便虚拟机发出的警报可以触发 Runbook。 可在此处阅读有关如何为 Runbook 创建 Webhook 的详细信息
@@ -88,8 +88,8 @@ ms.lasthandoff: 03/03/2017
 7. 选择一个时间段，超过该时间段时，监视服务将检查步骤 5 和 6 中的条件与阈值
 8. 粘贴你在上一部分复制的 Webhook。
 
-![将警报添加到虚拟机 1](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-1.png)
+![将警报添加到虚拟机 1](./windows/media/vertical-scaling-automation/add-alert-webhook-1.png)
 
-![将警报添加到虚拟机 2](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
+![将警报添加到虚拟机 2](./windows/media/vertical-scaling-automation/add-alert-webhook-2.png)
 
 

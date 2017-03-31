@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: c2e8f2d2f26bb93af5c2858242392b3dc207beb4
-ms.openlocfilehash: 2a3a5647f506d61e853f465f241d66fbe8c4ced0
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: ba07b1bf1b49ebb24a7d5cfbaad71f5f17c49192
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 2a3a5647f506d61e853f465f241d66fbe8c4ced0
 这些组件共同构成了 Reliable Actor 框架。 
 
 ## <a name="service-layering"></a>服务分层
-因为执行组件服务本身是一种 Reliable Service，Reliable Services 的所有[应用程序模型](service-fabric-application-model.md)、生命周期、[打包](service-fabric-application-model.md#package-an-application)、[部署](service-fabric-deploy-remove-applications.md)、升级和缩放概念同样适用于执行组件服务。 
+因为执行组件服务本身是一种 Reliable Service，Reliable Services 的所有[应用程序模型](service-fabric-application-model.md)、生命周期、[打包](service-fabric-package-apps.md)、[部署](service-fabric-deploy-remove-applications.md)、升级和缩放概念同样适用于执行组件服务。 
 
 ![执行组件服务分层][1]
 
@@ -248,9 +249,4 @@ ActorProxy.Create<IMyActor>(new ActorId(1234));
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 [5]: ./media/service-fabric-reliable-actors-introduction/distribution.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

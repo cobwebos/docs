@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: f14a0473ebcf21e04759cb8eb77eb684c4d9a9cb
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5c591e7f1838c86ca74caea9dd3a5e8f874fd8a7
+ms.lasthandoff: 03/29/2017
 
 ---
 
@@ -44,7 +45,9 @@ Azure 应用商店中的某些 Linux 虚拟机映像默认未配置 DHCPv6。 �
    * 在 **Ubuntu 12.04 和 14.04** 上，编辑 `/etc/network/interfaces.d/eth0.cfg` 文件
    * 在 **Ubuntu 16.04** 上，编辑 `/etc/network/interfaces.d/50-cloud-init.cfg` 文件
 
-        iface eth0 inet6 auto        up sleep 5        up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+         iface eth0 inet6 auto
+             up sleep 5
+             up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
 
 3. 续订 IPv6 地址：
 
@@ -146,9 +149,4 @@ Azure 中最新的 CoreOS 映像已预先配置 DHCPv6。 使用这些映像不�
     ```bash
     sudo systemctl restart systemd-networkd
     ```
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

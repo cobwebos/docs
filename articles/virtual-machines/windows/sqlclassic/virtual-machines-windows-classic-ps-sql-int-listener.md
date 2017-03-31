@@ -1,6 +1,6 @@
 ---
 title: "配置 Always On 可用性组的 ILB 侦听器 | Microsoft Docs"
-description: "本教程使用通过经典部署模型创建的资源，并使用内部负载平衡器 (ILB) 在 Azure 中创建 Always On 可用性组侦听器。"
+description: "本教程使用通过经典部署模型创建的资源，并使用内部负载均衡器 (ILB) 在 Azure 中创建 Always On 可用性组侦听器。"
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -16,44 +16,44 @@ ms.workload: iaas-sql-server
 ms.date: 03/01/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 8e59988f24748a82d4e143295bab9bdaa65cf8e4
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d09d2b869606995d227aa485a85acd67c18ee4e5
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 AlwaysOn 可用性组的 ILB 侦听器
 > [!div class="op_single_selector"]
-> * [内部侦听器](virtual-machines-windows-classic-ps-sql-int-listener.md)
-> * [外部侦听器](virtual-machines-windows-classic-ps-sql-ext-listener.md)
+> * [内部侦听器](../classic/ps-sql-int-listener.md)
+> * [外部侦听器](../classic/ps-sql-ext-listener.md)
 > 
 > 
 
 ## <a name="overview"></a>概述
-本主题介绍了如何使用**内部负载平衡器 (ILB)** 配置 Always On 可用性组的侦听器。
+本主题介绍了如何使用**内部负载均衡器 (ILB)** 配置 Always On 可用性组的侦听器。
 
 > [!IMPORTANT] 
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
-若要在 Resource Manager 模型中配置 Always On 可用性组的 ILB 侦听器，请参阅[在 Azure 中配置 Always On 可用性组的内部负载平衡器](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)。
+若要在 Resource Manager 模型中配置 Always On 可用性组的 ILB 侦听器，请参阅[在 Azure 中配置 Always On 可用性组的内部负载均衡器](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)。
 
-你的可用性组可以仅包含本地副本或 Azure 副本，也可以跨越本地和 Azure 以实现混合配置。 Azure 副本可以位于同一区域，也可以跨越使用多个虚拟网络 (VNet) 的多个区域。 下面的步骤假设已经[配置可用性组](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)，但未配置侦听器。
+你的可用性组可以仅包含本地副本或 Azure 副本，也可以跨越本地和 Azure 以实现混合配置。 Azure 副本可以位于同一区域，也可以跨越使用多个虚拟网络 (VNet) 的多个区域。 下面的步骤假设已经[配置可用性组](../classic/portal-sql-alwayson-availability-groups.md)，但未配置侦听器。
 
 ## <a name="guidelines-and-limitations-for-internal-listeners"></a>内部侦听器的准则和限制
 请注意有关 Azure 中使用 ILB 的可用性组侦听器的以下准则：
 
 * Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2 支持可用性组侦听器。
-* 每个云服务只支持一个内部可用性组侦听器，因为该侦听器将配置给 ILB，而每个云服务只有一个 ILB。 但是，可以创建多个外部侦听器。 有关详细信息，请参阅[在 Azure 中配置 Always On 可用性组的外部侦听器](virtual-machines-windows-classic-ps-sql-ext-listener.md)。
+* 每个云服务只支持一个内部可用性组侦听器，因为该侦听器将配置给 ILB，而每个云服务只有一个 ILB。 但是，可以创建多个外部侦听器。 有关详细信息，请参阅[在 Azure 中配置 Always On 可用性组的外部侦听器](../classic/ps-sql-ext-listener.md)。
 
 ## <a name="determine-the-accessibility-of-the-listener"></a>确定侦听器的可访问性
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-本文重点介绍如何创建使用**内部负载平衡器 (ILB)** 的侦听器。 如果你需要一个公共/外部侦听器，请参阅本文的另一个版本，其中提供了有关设置[外部侦听器](virtual-machines-windows-classic-ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)的步骤
+本文重点介绍如何创建使用**内部负载均衡器 (ILB)** 的侦听器。 如果你需要一个公共/外部侦听器，请参阅本文的另一个版本，其中提供了有关设置[外部侦听器](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)的步骤
 
-## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>创建支持直接服务器返回的负载平衡 VM 终结点
+## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>创建支持直接服务器返回的负载均衡 VM 终结点
 对于 ILB，必须先创建内部负载均衡器。 以下脚本将执行此操作。
 
-你必须为每个托管 Azure 副本的 VM 创建一个负载平衡的终结点。 如果你在多个区域中拥有副本，该区域的每个副本必须位于同一个 VNet 的同一个云服务中。 跨越多个 Azure 区域创建可用性组副本需要配置多个 Vnet。 有关配置跨 VNet 连接的详细信息，请参阅[配置 VNet 到 VNet 连接](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
+你必须为每个托管 Azure 副本的 VM 创建一个负载均衡的终结点。 如果你在多个区域中拥有副本，该区域的每个副本必须位于同一个 VNet 的同一个云服务中。 跨越多个 Azure 区域创建可用性组副本需要配置多个 Vnet。 有关配置跨 VNet 连接的详细信息，请参阅[配置 VNet 到 VNet 连接](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
 
 1. 在 Azure 门户中，导航到托管副本的每个 VM 并查看详细信息。
 2. 单击每个 VM 的“终结点”选项卡。
@@ -75,7 +75,7 @@ ms.lasthandoff: 01/11/2017
    
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 4. 选择一个可用地址，并将其用于以下脚本的 **$ILBStaticIP** 参数。
-5. 将以下 PowerShell 脚本复制到文本编辑器中，并根据你的环境设置变量值（注意，这里为某些参数提供了默认值）。 请注意，使用地缘组的现有部署不能添加 ILB。 有关 ILB 要求的详细信息，请参阅[内部负载平衡器](../../../load-balancer/load-balancer-internal-overview.md)。 此外，如果可用性组跨 Azure 区域，则你必须在每个数据中心内对云服务和节点运行该脚本一次。
+5. 将以下 PowerShell 脚本复制到文本编辑器中，并根据你的环境设置变量值（注意，这里为某些参数提供了默认值）。 请注意，使用地缘组的现有部署不能添加 ILB。 有关 ILB 要求的详细信息，请参阅[内部负载均衡器](../../../load-balancer/load-balancer-internal-overview.md)。 此外，如果可用性组跨 Azure 区域，则你必须在每个数据中心内对云服务和节点运行该脚本一次。
    
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
@@ -95,7 +95,7 @@ ms.lasthandoff: 01/11/2017
 6. 设置变量后，将脚本从文本编辑器复制到 Azure PowerShell 会话中运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行。注意：
 
 > [!NOTE]
-> Azure 经典门户目前不支持内部负载平衡器，因此在 Azure 经典门户中看不到 ILB 或终结点。 但是，如果负载平衡器在某个内部 IP 地址上运行，则 **Get-AzureEndpoint** 将返回该地址。 否则，将返回 null。
+> Azure 经典门户目前不支持内部负载均衡器，因此在 Azure 经典门户中看不到 ILB 或终结点。 但是，如果负载均衡器在某个内部 IP 地址上运行，则 **Get-AzureEndpoint** 将返回该地址。 否则，将返回 null。
 > 
 > 
 
@@ -142,7 +142,7 @@ ms.lasthandoff: 01/11/2017
    
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 3. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后从文本编辑器复制脚本，并将其粘贴到 Azure PowerShell 会话中运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行。
-4. 在每个 VM 上重复此过程。 此脚本将使用云服务的 IP 地址来配置 IP 地址资源，同时设置探测端口等其他参数。 在 IP 地址资源联机后，它可以响应我们在本教程前面部分创建的负载平衡终结点在探测端口上的轮询。
+4. 在每个 VM 上重复此过程。 此脚本将使用云服务的 IP 地址来配置 IP 地址资源，同时设置探测端口等其他参数。 在 IP 地址资源联机后，它可以响应我们在本教程前面部分创建的负载均衡终结点在探测端口上的轮询。
 
 ## <a name="bring-the-listener-online"></a>使侦听器联机
 [!INCLUDE [Bring-Listener-Online](../../../../includes/virtual-machines-ag-listener-bring-online.md)]

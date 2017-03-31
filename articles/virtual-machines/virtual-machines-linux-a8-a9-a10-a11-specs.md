@@ -17,9 +17,9 @@ ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: e6818ea7db680f34bb4ee900396c74fc6e42c4b6
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: e2e39b0fa9c45027c51bc5e063df990faf934ff5
+ms.lasthandoff: 03/27/2017
 
 ---
 # <a name="about-h-series-and-compute-intensive-a-series-vms-for-linux"></a>关于适用于 Linux 的 H 系列和计算密集型 A 系列 VM
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/16/2017
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 ## <a name="access-to-the-rdma-network"></a>RDMA 网络访问权限
-可以创建支持 RDMA 的 Linux VM 群集来运行以下受支持的 Linux HPC 分发版和受支持的 MPI 实现之一，以利用 Azure RDMA 网络。 有关部署选项和示例配置步骤，请参阅 [Set up a Linux RDMA cluster to run MPI applications](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（设置 Linux RDMA 群集以运行 MPI 应用程序）。
+可以创建支持 RDMA 的 Linux VM 群集来运行以下受支持的 Linux HPC 分发版和受支持的 MPI 实现之一，以利用 Azure RDMA 网络。 有关部署选项和示例配置步骤，请参阅 [Set up a Linux RDMA cluster to run MPI applications](linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（设置 Linux RDMA 群集以运行 MPI 应用程序）。
 
 * **分发版** - 必须从 Azure 应用商店中支持 RDMA 的 SUSE Linux Enterprise Server (SLES) 或基于 OpenLogic CentOS 的 HPC 映像部署 VM。 以下应用商店映像支持 RDMA 连接：
   
@@ -56,10 +56,10 @@ ms.lasthandoff: 03/16/2017
 
   * **基于 CentOS 的 HPC 映像** - 已安装 Intel MPI 5.1。  
     
-    需要进行额外的系统配置才能在群集 VM 上运行 MPI 作业。 例如，在 VM 群集上，需要在计算节点之间建立信任。 有关典型设置，请参阅 [Set up a Linux RDMA cluster to run MPI applications](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（设置 Linux RDMA 群集以运行 MPI 应用程序）。
+    需要进行额外的系统配置才能在群集 VM 上运行 MPI 作业。 例如，在 VM 群集上，需要在计算节点之间建立信任。 有关典型设置，请参阅 [Set up a Linux RDMA cluster to run MPI applications](linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（设置 Linux RDMA 群集以运行 MPI 应用程序）。
 
 ## <a name="considerations-for-hpc-pack-and-linux"></a>HPC Pack 和 Linux 的注意事项
-[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) 是 Microsoft 的免费 HPC 群集和作业管理解决方案，提供一个选项让你在 Linux 上使用计算密集型实例。 最新版本的 HPC Pack 支持多个 Linux 分发在由 Windows Server 头节点管理的 Azure VM 中部署的计算节点上运行。 使用支持 RDMA 且运行 Intel MPI 的 Linux 计算节点，HPC Pack 可以计划和运行访问 RDMA 网络的 Linux MPI 应用程序。 若要开始使用，请参阅 [Get started with Linux compute nodes in an HPC Pack cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。
+[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) 是 Microsoft 的免费 HPC 群集和作业管理解决方案，提供一个选项让你在 Linux 上使用计算密集型实例。 最新版本的 HPC Pack 支持多个 Linux 分发在由 Windows Server 头节点管理的 Azure VM 中部署的计算节点上运行。 使用支持 RDMA 且运行 Intel MPI 的 Linux 计算节点，HPC Pack 可以计划和运行访问 RDMA 网络的 Linux MPI 应用程序。 若要开始使用，请参阅 [Get started with Linux compute nodes in an HPC Pack cluster in Azure](linux/classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。
 
 ## <a name="network-topology-considerations"></a>网络拓扑注意事项
 * 在 Azure 中支持 RDMA 的 Linux VM 上，Eth1 保留用于传输 RDMA 网络流量。 不要更改引用此网络的配置文件中的任何 Eth1 设置或任何信息。 Eth0 保留用于传输常规 Azure 网络流量。
@@ -70,6 +70,6 @@ ms.lasthandoff: 03/16/2017
 ## <a name="next-steps"></a>后续步骤
 * 有关计算密集型大小的可用性和定价详细信息，请参阅 [Virtual Machines pricing](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)（虚拟机定价）。
 * 有关 VM 存储容量和磁盘详细信息，请参阅 [Sizes for virtual machines](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（虚拟机大小）。
-* 若要开始在 Linux 上部署和使用支持 RDMA 的计算密集型大小 VM，请参阅 [Set up a Linux RDMA cluster to run MPI applications](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（设置 Linux RDMA 群集以运行 MPI 应用程序）。
+* 若要开始在 Linux 上部署和使用支持 RDMA 的计算密集型大小 VM，请参阅 [Set up a Linux RDMA cluster to run MPI applications](linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（设置 Linux RDMA 群集以运行 MPI 应用程序）。
 
 

@@ -17,9 +17,9 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 translationtype: Human Translation
-ms.sourcegitcommit: bd70596bcc34684a6f751076e71cb3d0aa3877dd
-ms.openlocfilehash: 4c40fd95f42f4e89e86d829c8a32583a0398c74e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 24a01d243cda0d04b6b179ab3f87f1d5fcdce61b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -402,7 +402,7 @@ SLES-for-SAP Applications 12 GA 和 SP1 具有替换旧的 sapconf 实用工具�
 
 ## <a name="about-sap-azure-certifications-and-running-sap-hana-on-azure"></a>关于 SAP Azure 认证和在 Azure 上运行 SAP HANA
 有关详细信息，请参阅以下文档：
-* 有关在经典模式下使用 Windows OS 在 Azure 上运行 SAP 的一般 SAP Azure 信息：[Using SAP on Windows virtual machines in Azure](virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（在 Azure 中的 Windows 虚拟机上使用 SAP）。
+* 有关在经典模式下使用 Windows OS 在 Azure 上运行 SAP 的一般 SAP Azure 信息：[Using SAP on Windows virtual machines in Azure](windows/classic/sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（在 Azure 中的 Windows 虚拟机上使用 SAP）。
 * 有关供客户使用的现有 SAP 模板的信息：[Azure Quickstart Templates for SAP](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)（适用于 SAP 的 Azure 快速启动模板）。
 * 有关在 Azure Resource Manager 模型中使用 Linux OS 在 Azure 上运行 SAP 的一般 SAP Azure 信息：[Using SAP on Linux virtual machines (VMs)](virtual-machines-linux-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（在 Linux 虚拟机 (VM) 上使用 SAP）
 * 已认证的 SAP HANA 硬件目录，其中列出了生产环境支持的 Azure VM 类型：[Certified SAP HANA® Hardware Directory](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)（已认证的 SAP HANA® 硬件目录）。

@@ -15,8 +15,9 @@ ms.tgt_pltfrm: na
 ms.date: 01/23/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 814292d76601452493c1d708c39d42da909036d9
-ms.openlocfilehash: 1e436978da0f2fc8c122a1a99bd891fe82929f50
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: be73e3d009cfcbdd585d81512afaed752ae07364
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -51,7 +52,7 @@ ms.openlocfilehash: 1e436978da0f2fc8c122a1a99bd891fe82929f50
 设置 Azure 搜索所需的加密连接后，Azure VM 上的 SQL Server 内还有一些其他配置步骤。 如果尚未执行这些步骤，下一步是使用以下文章之一完成配置：
 
 * 有关 **Resource Manager** VM，请参阅[使用 Resource Manager 连接到 Azure 上的 SQL Server 虚拟机](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md)。 
-* 有关**经典** VM，请参阅[连接到 Azure 上的 SQL Server 虚拟机（经典）](../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect.md)。
+* 有关**经典** VM，请参阅[连接到 Azure 上的 SQL Server 虚拟机（经典）](../virtual-machines/windows/classic/sql-connect.md)。
 
 具体而言，查看每个文章中的“通过 Internet 连接”部分。
 
@@ -87,10 +88,5 @@ IP 寻址会产生一些挑战，如果你了解问题和潜在解决方法，�
 
 ## <a name="next-steps"></a>后续步骤
 完成配置后，你现在可以将 Azure VM 上的 SQL Server 指定为 Azure 搜索索引器的数据源。 有关详细信息，请参阅[使用索引器将 Azure SQL 数据库连接到 Azure 搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -17,9 +17,9 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: dcb02d8162d7dfe7ea414a4cce1920c9b98deaa9
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 4af8e4e1030aa44a149b5ac011cc185df850603b
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -27,11 +27,11 @@ ms.lasthandoff: 03/10/2017
 
 此示例 PowerShell 脚本创建 Azure SQL 数据库，并配置服务器级防火墙规则。 成功运行该脚本后，可以通过所有 Azure 服务和配置的 IP 地址访问 SQL 数据库。 
 
-在运行此脚本前，请确保已使用 `Add-AzureRmAccount` cmdlet 创建与 Azure 的连接。
+[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[主要](../../../powershell_scripts/sql-database/create-and-configure-database/create-and-configure-database.ps1 "创建 SQL 数据库")]
+[!code-powershell[主要](../../../powershell_scripts/sql-database/create-and-configure-database/create-and-configure-database.ps1?highlight=7-8 "创建 SQL 数据库")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -58,7 +58,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 
 有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/)。
 
-其他 SQL 数据库 PowerShell 脚本示例可以在 [Azure SQL 数据库 PowerShell 脚本](../sql-database-powershell-samples.md)中找到。
+可以在 [Azure SQL 数据库 PowerShell 脚本](../sql-database-powershell-samples.md)中找到更多 SQL 数据库 PowerShell 脚本示例。
 
 
 

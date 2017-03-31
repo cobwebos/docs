@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: kyliel
 translationtype: Human Translation
-ms.sourcegitcommit: 24410a07995d5ac813b2bf4cdeed320c72ce7e06
-ms.openlocfilehash: 7845b552bd1360927eae414f57fefbd74ac0b7f7
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: d0fc5de34f7d9e5a607495eb97d9e35dc9eb21f9
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -128,5 +128,5 @@ Microsoft Corporation 在 Azure 上提供预先配置了 [Azure VM 来宾代理]
 
 ## <a name="next-steps"></a>后续步骤
 * 转到 [Azure 应用商店](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)创建 FreeBSD VM。
-* 如果要将自己的 FreeBSD 放入 Azure，请参阅 [Create and upload a FreeBSD VHD to Azure](./virtual-machines-linux-classic-freebsd-create-upload-vhd.md)（创建 FreeBSD VHD 并将其上载到 Azure）。
+* 如果要将自己的 FreeBSD 放入 Azure，请参阅 [Create and upload a FreeBSD VHD to Azure](linux/classic/freebsd-create-upload-vhd.md)（创建 FreeBSD VHD 并将其上载到 Azure）。
 

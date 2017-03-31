@@ -17,9 +17,9 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 0f750cb3021f04ade9d639e2de14e1b119cde36e
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 38e7454c22b1e675e8da99da1eaa0f86b9549216
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/10/2017
 
 此示例 PowerShell 脚本在新服务器中创建现有数据库的副本。 
 
-在运行此脚本前，请确保已使用 `Add-AzureRmAccount` cmdlet 创建与 Azure 的连接。
+[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="copy-a-database-to-a-new-server"></a>将数据库复制到新服务器
 
@@ -58,5 +58,5 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 
 有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/)。
 
-其他 SQL 数据库 PowerShell 脚本示例可以在 [Azure SQL 数据库 PowerShell 脚本](../sql-database-powershell-samples.md)中找到。
+可以在 [Azure SQL 数据库 PowerShell 脚本](../sql-database-powershell-samples.md)中找到更多 SQL 数据库 PowerShell 脚本示例。
 
