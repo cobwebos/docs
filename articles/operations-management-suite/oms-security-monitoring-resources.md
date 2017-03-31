@@ -13,11 +13,12 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 81d7d09f48d08943623b24e7e7a26847a0d129fe
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -111,10 +112,5 @@ OMS 安全和审核解决方案允许 IT 人员主动监视所有资源，这有
 * [Operations Management Suite (OMS) 概述](operations-management-suite-overview.md)
 * [Operations Management Suite 安全和审核解决方案入门](oms-security-getting-started.md)
 * [监视和响应 Operations Management Suite 安全和审核解决方案中的安全警报](oms-security-responding-alerts.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

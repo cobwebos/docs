@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/05/2016
+ms.date: 03/28/2017
 ms.author: seanmck
 translationtype: Human Translation
 ms.sourcegitcommit: d7aa8568dd6fdd806d8ad70e408f108c722ec1ce
 ms.openlocfilehash: b56d75d49e0b95025dd1a0bae532f677958eac8d
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -45,10 +46,5 @@ Reliable Actor 框架在 Reliable Services 的基础上构建，是根据执行�
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Reliable Actors 的详细信息](service-fabric-reliable-actors-introduction.md)或开始[编写第一个 Reliable Actor 服务](service-fabric-reliable-actors-get-started.md)
 [深入了解在 Windows 或 Linux 中容器化服务](service-fabric-deploy-container.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -13,11 +13,12 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
 ms.openlocfilehash: 888b9786de8302ccd2e11f271aa417bcbcc2620b
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -183,10 +184,5 @@ OMS 安全和审核仪表板有四个主要类别：
 * [Operations Management Suite (OMS) 概述](operations-management-suite-overview.md)
 * [监视和响应 Operations Management Suite 安全和审核解决方案中的安全警报](oms-security-responding-alerts.md)
 * [监视 Operations Management Suite 安全和审核解决方案中的资源](oms-security-monitoring-resources.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

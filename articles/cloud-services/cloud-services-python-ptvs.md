@@ -346,7 +346,7 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 [什么是云服务？]: cloud-services-choose-me.md
 [execution model-web sites]: ../app-service-web/app-service-web-overview.md
-[execution model-vms]: ../virtual-machines/virtual-machines-windows-about.md
+[execution model-vms]:../virtual-machines/windows/about.md
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 

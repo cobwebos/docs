@@ -40,7 +40,7 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
   * Web 服务器位于前端子网中 
   * 应用程序服务器、MongoDB 群集和域控制器位于后端子网中
 
-![不同应用程序基础结构层的关系图](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
+![不同应用程序基础结构层的关系图](windows/media/infrastructure-example/example-tiers.png)
 
 当客户浏览在线商店时，传入的安全 Web 流量必须在 Web 服务器之间进行负载均衡。 来自 Web 服务器的 HTTP 请求形式的订单处理流量必须在应用程序服务器之间进行负载均衡。 此外，基础结构必须设计为具有高可用性。
 
@@ -107,7 +107,7 @@ Adventure Works Cycles 决定为其 Azure VM 使用以下名称：
 
 这是生成的配置。
 
-![在 Azure 中部署的最终应用程序基础结构](./media/virtual-machines-common-infrastructure-service-guidelines/example-config.png)
+![在 Azure 中部署的最终应用程序基础结构](windows/media/infrastructure-example/example-config.png)
 
 此配置引入以下项：
 

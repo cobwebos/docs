@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: b1806950581e0adbeec52839f12c70599d28100d
 ms.lasthandoff: 03/21/2017
-
 
 ---
 # <a name="use-ssh-with-hdinsight-hadoop-from-putty-on-windows"></a>在 Windows 上的 PuTTY 中将 SSH 与 HDInsight (Hadoop) 配合使用

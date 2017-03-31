@@ -68,7 +68,7 @@ Refernce article:
 1. 连接到虚拟机。 有关说明，请参阅[如何连接并登录到运行 Windows 的 Azure 虚拟机](../../virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 2. 在登录虚拟机后，打开“服务器管理器”。 在左窗格中，选择“文件和存储服务”。
 
-    ![打开服务器管理器](./media/attach-disk/fileandstorageservices.png)
+    ![打开服务器管理器](../media/attach-disk-portal/fileandstorageservices.png)
 
 3. 选择“磁盘”。
 4. “磁盘”部分会列出磁盘。 大多数情况下，虚拟机包含磁盘 0、磁盘 1 和磁盘 2。 磁盘 0 是操作系统磁盘，磁盘 1 是临时磁盘，磁盘 2 是新附加到虚拟机的数据磁盘。 数据磁盘将分区列为“未知”。
