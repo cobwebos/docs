@@ -17,6 +17,7 @@ ms.author: sngun
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 0f8308b73a70fc3758a53063bc69d16480df8f02
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -227,7 +228,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 * **名称：**必需。 作业要启动的 Runbook 的名称。  
 * **Runbook 参数：**可选。 参数列表的字典；列表必须采用 (名称, 值) 格式，其中的名称应为字符串类型，值可以是任何有效的 JSON 值。
 
-如果想要启动之前以 **VMName** 和 **resourceGroupName** 作为参数创建的** Get-AzureVMTextual Runbook**，请使用以下 JSON 格式的请求正文。
+如果想要启动之前以 **VMName** 和 **resourceGroupName** 作为参数创建的**Get-AzureVMTextual Runbook**，请使用以下 JSON 格式的请求正文。
 
    ```
     {
@@ -258,7 +259,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 
 ![创建 webhook 并分配参数](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-当使用 Webhook 执行 Runbook 时，将连同定义的输入参数一起发送预定义的输入参数 **Webhookdata[](automation-webhooks.md#details-of-a-webhook)**。 可单击 **WebhookData** 参数将它展开，以查看更多详细信息。
+当使用 Webhook 执行 Runbook 时，将连同定义的输入参数一起发送预定义的输入参数 **[Webhookdata](automation-webhooks.md#details-of-a-webhook)**。 可单击 **WebhookData** 参数将它展开，以查看更多详细信息。
 
 ![WebhookData 参数](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 
@@ -267,10 +268,5 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 * 有关以不同方式启动 Runbook 的详细信息，请参阅[启动 Runbook](automation-starting-a-runbook.md)。
 * 若要编辑文本 Runbook，请参阅[编辑文本 Runbook](automation-edit-textual-runbook.md)。
 * 若要编辑图形 Runbook，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
