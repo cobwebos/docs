@@ -12,11 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
 ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -56,7 +57,7 @@ ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
 
 部署合作伙伴解决方案后，可以查看有关解决方案运行状况的信息，以及通过安全中心主仪表板中的“合作伙伴解决方案”磁贴执行基本管理任务。 有关管理安全中心的合作伙伴解决方案的详细信息，请阅读[监视 Azure 安全中心的合作伙伴解决方案](security-center-partner-solutions.md)。
 
-![合作伙伴集成](./media/security-center-partner-integration/security-center-partner-integration-fig1.png)
+![合作伙伴集成](./media/security-center-partner-integration/security-center-partner-integration-fig1-new.png)
 
 
 ## <a name="see-also"></a>另请参阅
@@ -69,9 +70,4 @@ ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
 * [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) （通过 Azure 安全中心监视合作伙伴解决方案）- 了解如何监视合作伙伴解决方案的运行状况。
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 
