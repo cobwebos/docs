@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
 ms.openlocfilehash: 7873ad084c9d77eea556ae3fec846bebd4c99ebd
+ms.lasthandoff: 12/20/2016
 
 
 ---
-# <a name="a-nameheadingasample-data-in-azure-blob-storage"></a><a name="heading"></a>对 Azure blob 存储中的数据采样
+# <a name="heading"></a>对 Azure blob 存储中的数据采样
 本文档介绍对在 Azure blob 存储中数据进行取样的方法：通过以编程方式下载，然后使用以 Python 编写的过程对其进行采样。
 
 以下**菜单**所链接到的主题将描述如何从不同的存储环境采样数据。 
@@ -68,7 +69,7 @@ ms.openlocfilehash: 7873ad084c9d77eea556ae3fec846bebd4c99ebd
 
 现在可以使用上述具有 1% 样本的数据框架，执行进一步的研究和功能生成。
 
-## <a name="a-nameheadingaupload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>上载数据并读入 Azure 机器学习
+## <a name="heading"></a>上载数据并读入 Azure 机器学习
 你可以使用以下示例代码向下采样数据，并直接在 Azure 机器学习中使用：
 
 1. 将数据帧写入本地文件
@@ -100,10 +101,5 @@ ms.openlocfilehash: 7873ad084c9d77eea556ae3fec846bebd4c99ebd
 3. 使用 Azure 机器学习[导入数据](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)从 Azure blob 中读取数据，如下图中所示：
 
 ![blob 读取器](./media/machine-learning-data-science-sample-data-blob/reader_blob.png)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

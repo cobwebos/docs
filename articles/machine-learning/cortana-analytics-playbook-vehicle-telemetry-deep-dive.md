@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
 ms.openlocfilehash: 898b93ad95ab812b8b6a538048a86a8cc8951101
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -705,10 +706,5 @@ Power BI 为此解决方案提供了丰富的仪表板，用于实时数据和�
 
 ## <a name="summary"></a>摘要
 本文档包含对车辆遥测分析解决方案的详细深入分析。 这展示了一种 lambda 体系结构模式，用于实时和批处理分析，包括预测和操作。 此模式适用于需要热路径（实时）和冷路径（批处理）分析的各种的示例。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

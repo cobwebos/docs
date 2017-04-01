@@ -116,6 +116,7 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 图 X 中显示的每个交互分别代表一个可在 Azure AD 中引入的访问控制方案。 每种方案的说明如下：
 
 1.对在本地托管的应用程序的条件性访问：可以将已注册的设备与配置为将 AD FS 与 Windows Server 2012 R2 一起使用的应用程序的访问策略一起使用。 有关设置本地条件性访问的详细信息，请参阅 [使用 Azure Active Directory 设备注册设置本地条件性访问](active-directory-conditional-access.md)。
+
 2. 对 Azure 管理门户的访问控制：Azure 还能使用 RBAC（基于角色的访问控制）来控制对管理门户的访问。 公司可以使用此方法限制有权访问 Azure 管理门户的个人可以执行的操作数量。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方式委派访问权限：
 
 * 基于组的角色分配：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这使你能够充分利用组织在工具和组管理过程中已有的现有投资。 你也可以使用 Azure AD 高级版中的委派组管理功能。
