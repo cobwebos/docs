@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: xibingao;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
 ms.openlocfilehash: 4de0683f2f58cc598a5c37e74a30b7e17aa7fd0d
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -43,10 +44,5 @@ ms.openlocfilehash: 4de0683f2f58cc598a5c37e74a30b7e17aa7fd0d
 > Azure 虚拟机定价为**只为自己使用的东西付费**。 为了确保不会在不使用虚拟机时付费，它必须位于 [Azure 经典门户](http://manage.windowsazure.com/)的“已停止(已解除分配)”状态。 有关分步说明或如何解除分配虚拟机的信息，请参阅[关闭并在不使用虚拟机时取消分配](machine-learning-data-science-setup-virtual-machine.md#shutdown)
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

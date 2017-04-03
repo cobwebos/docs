@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 1654c100c1c57b04a61cf2b9d2cf37d58cec1870
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: 1654c100c1c57b04a61cf2b9d2cf37d58cec1870
 > 
 > 
 
-## <a name="a-namesql-dataexplorationaexplore-sql-data-with-sql-scripts"></a><a name="sql-dataexploration"></a>使用 SQL 脚本浏览 SQL 数据
+## <a name="sql-dataexploration"></a>使用 SQL 脚本浏览 SQL 数据
 以下是几个可用于浏览存储在 SQL Server 中的数据的示例 SQL 脚本。
 
 1. 获取每个工作日观测值的计数
@@ -53,7 +54,7 @@ ms.openlocfilehash: 1654c100c1c57b04a61cf2b9d2cf37d58cec1870
 > 
 > 
 
-## <a name="a-namepythonaexplore-sql-data-with-python"></a><a name="python"></a>使用 Python 浏览 SQL 数据
+## <a name="python"></a>使用 Python 浏览 SQL 数据
 如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](machine-learning-data-science-process-data-blob.md)中所述。 数据需要从数据库加载到 pandas 数据帧，然后才可以进行进一步的处理。 在本部分中，我们记录连接到数据库并将数据加载到数据帧的过程。
 
 以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（具有特定值的替换服务器名、dbname、用户名和密码）：
@@ -71,10 +72,5 @@ Python 中的 [Pandas 库](http://pandas.pydata.org/)提供一组丰富的数据
 
 ## <a name="cortana-analytics-process-in-action-example"></a>操作示例中的 Cortana Analytics 过程
 有关 Cortana Analytics 过程中使用公用数据集的端到端演练示例，请参阅[操作中的团队数据科学过程：使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

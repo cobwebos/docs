@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 69bb7e5fb0dafa3a9d0f6ad4eb271ab1af2edc50
 ms.openlocfilehash: a258404e659bd6d6e7e0f468a5f3ce5e184be2a3
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -54,10 +55,5 @@ Azure 存储资源管理器是 Microsoft 免费提供的应用，可用于在 Wi
 7. 若要将数据上载到容器，请选择目标容器，然后单击“上载”按钮。![存储帐户](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
 8. 单击“文件”框右侧的“...”，选择要从文件系统上载的一个或多个文件，然后单击“上载”开始上载文件。![上载文件](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
 9. 要下载数据，请在相应容器中选择要下载的 blob，然后单击“**下载**”。 ![下载文件](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
