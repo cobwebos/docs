@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
 ms.openlocfilehash: c046220304075242f655bced2f0f16a6fb692ad3
+ms.lasthandoff: 12/20/2016
 
 
 ---
-# <a name="a-nameheadingasample-data-in-azure-blob-containers-sql-server-and-hive-tables"></a><a name="heading"></a>对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样
+# <a name="heading"></a>对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样
 本文档所链接到的主题介绍如何对存储在三个不同 Azure 位置之一的数据采样：
 
 * **Azure Blob 容器数据**的采样方法是先以编程方式下载该数据，然后使用样本 Python 代码对其采样。
@@ -35,10 +36,5 @@ ms.openlocfilehash: c046220304075242f655bced2f0f16a6fb692ad3
 
 ## <a name="why-sample-data"></a>为什么对数据采样？
 如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和功能设计。 它在 Cortana Analytics 进程中的作用是能够快速建立数据处理函数和机器学习模型的快速原型。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

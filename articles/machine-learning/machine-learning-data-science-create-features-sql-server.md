@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev;fashah;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 2bcc1410410ed70d9d8a18fd5693bf32cab6fb23
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -38,7 +39,7 @@ ms.openlocfilehash: 2bcc1410410ed70d9d8a18fd5693bf32cab6fb23
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)
 * 在 SQL Server 中存储的数据。 如果尚未存储，请参阅[将数据移到 Azure 机器学习 Azure SQL Database](machine-learning-data-science-move-sql-azure.md) 以便获取有关如何移动数据的说明。
 
-## <a name="a-namesql-featuregenafeature-generation-with-sql"></a><a name="sql-featuregen"></a>使用 SQL 生成功能
+## <a name="sql-featuregen"></a>使用 SQL 生成功能
 在本部分中，将介绍使用 SQL 生成功能的方法：  
 
 1. [生成基于计数的功能](#sql-countfeature)
@@ -50,7 +51,7 @@ ms.openlocfilehash: 2bcc1410410ed70d9d8a18fd5693bf32cab6fb23
 > 
 > 
 
-### <a name="a-namesql-countfeatureacount-based-feature-generation"></a><a name="sql-countfeature"></a>生成基于计数的功能
+### <a name="sql-countfeature"></a>生成基于计数的功能
 本文档演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用 where 子句。 之后这些新表格可与原始表结合（使用主键列），使其具有原始数据的计数功能。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
@@ -58,13 +59,13 @@ ms.openlocfilehash: 2bcc1410410ed70d9d8a18fd5693bf32cab6fb23
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
-### <a name="a-namesql-binningfeatureabinning-feature-generation"></a><a name="sql-binningfeature"></a>生成装箱功能
+### <a name="sql-binningfeature"></a>生成装箱功能
 下面的示例演示如何通过将可用作函数的数值列装箱（使用 5 箱），从而生成装箱函数：
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="a-namesql-featurerolloutarolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>从单个列推出函数
+### <a name="sql-featurerollout"></a>从单个列推出函数
 在此部分中，将演示如何在表格中推出单列以生成其他功能。 该示例假定用户尝试在其中生成功能的表中，具有一个纬度或经度列。
 
 下面简要介绍纬度/经度位置数据（来自 stackoverflow 的资源`http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`）。 在特征化位置字段之前，了解以上知识会很有用：
@@ -101,12 +102,12 @@ ms.openlocfilehash: 2bcc1410410ed70d9d8a18fd5693bf32cab6fb23
 > 
 > 
 
-### <a name="a-namesql-amlaconnecting-to-azure-machine-learning"></a><a name="sql-aml"></a>连接到 Azure 机器学习
+### <a name="sql-aml"></a>连接到 Azure 机器学习
 新生成的功能可作为列添加到现有表或存储在新表中，也可与原始表结合以进行机器学习。 如果已经创建，可使用 Azure ML 中的[导入数据](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)模块生成或访问生成功能，如下所示：
 
 ![azureml 读取器](./media/machine-learning-data-science-process-sql-server-virtual-machine/reader_db_featurizedinput.png)
 
-## <a name="a-namepythonausing-a-programming-language-like-python"></a><a name="python"></a>使用 Python 等编程语言
+## <a name="python"></a>使用 Python 等编程语言
 如果数据位于 SQL Server 中，使用 Python 生成函数类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的过程 Azure Blob 数据](machine-learning-data-science-process-data-blob.md)中所述。 需要将数据从数据库加载到 pandas 数据帧，然后才可以进行进一步的处理。 在本部分中，我们记录连接到数据库并将数据加载到的数据帧的过程。
 
 以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（替换服务器名、dbname、用户名和密码替换为特定值）：
@@ -121,10 +122,5 @@ Python 中的 [Pandas 库](http://pandas.pydata.org/)提供一组丰富的数据
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
 现在可根据 [Panda 创建 Azure blob 存储数据](machine-learning-data-science-create-features-blob.md) 主题中的说明来使用 Pandas 数据框架。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

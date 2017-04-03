@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: zhangya;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 4a2bb073360b372bb66281bceb2292d5d29f5625
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -68,7 +69,7 @@ ms.openlocfilehash: 4a2bb073360b372bb66281bceb2292d5d29f5625
 
 ![结果比较](./media/machine-learning-data-science-create-features/result1.png)
 
-## <a name="a-nameexample2a-example-2-creating-features-in-text-mining"></a><a name="example2"></a> 示例 2：在文本挖掘中创建特征
+## <a name="example2"></a> 示例 2：在文本挖掘中创建特征
 特征工程广泛应用于与文本挖掘相关的任务，如文档分类和情绪分析。 例如，想要将文档分成几个类别时，典型的假设是包含在一个文档类别中的单词/短语不太可能出现在另一个文档类别中。 换句话说，单词/短语分布的频率能够显示不同的文档类别的特征。 在文本挖掘应用程序中，由于文本内容的各个部分通常用作输入数据，因此需要特征工程过程来创建涉及单词/短语频率的特征。
 
 为了完成这个任务，应用被称为**特征哈希**的技术将任意文本特征有效地转换为索引。 该方法通过将哈希函数应用于特征并将它们的哈希值直接用作索引来起作用，而不是将每个文本特征（单词/短语）与特定索引相关联。
@@ -89,10 +90,5 @@ ms.openlocfilehash: 4a2bb073360b372bb66281bceb2292d5d29f5625
 设计和选择的特征提高了定型过程的效率，此过程尝试提取数据中包含的关键信息。 它们还提高了这些模型准确分类输入数据以及更加可靠地预测感兴趣的结果的能力。 特征工程和选择也可以结合起来使用，以使学习在计算上更易处理。 它通过增加然后减少校准或定型模型所需的特征数量来实现这一目标。 从数学上来说，所选的定型模型的特征是一组最小的独立变量，其解释数据中的模式，然后成功预测结果。
 
 注意，并不总是必须执行特征工程或特征选择。 根据拥有的或收集的数据、选择的算法以及实验的目的决定是否需要。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

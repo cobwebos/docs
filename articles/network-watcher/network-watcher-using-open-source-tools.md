@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 05fb0b7e80684737277626c12468ca9c754a0ac9
+ms.sourcegitcommit: 50d82847fb629880f298f79f9ab791a13836f01c
 ms.openlocfilehash: e27bb694d0cbcf1ff7c9d8ca4682a79c8b5c5cb1
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -26,8 +26,6 @@ ms.lasthandoff: 02/22/2017
 数据包捕获中包含可用于执行网络取证和深度数据包检查的网络数据。 可以使用许多开源工具来分析数据包捕获，以洞察网络。 此类工具包括 CapAnalysis，它是一个开源数据包捕获可视化工具。 将数据包捕获数据可视化，是根据网络中的模式和异常快速衍生见解信息的重要方式。 此外，使用可视化效果还能以易用的方式分享这些见解。
 
 Azure 网络观察程序允许在网络中执行数据包捕获，提供捕获此类有用数据的功能。 本文将会演练如何使用 CapAnalysis 和网络观察程序来可视化数据包捕获并从中获得见解。
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>方案
 

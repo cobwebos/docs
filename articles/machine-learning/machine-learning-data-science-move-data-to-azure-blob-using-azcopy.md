@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
 ms.openlocfilehash: 1acc98f9688ced2e1cf177a881b28ce98c0bff9e
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -88,10 +89,5 @@ AzCopy 命令的基本语法是：
 > 3. 不能指定要使用 */Source* 参数下载的**特定 blob 文件**。 若要下载特定文件，请指定要使用 */Pattern* 参数下载的 blob 文件名称。 **/S** 参数可用于使用 AzCopy 以递归方式查找文件名称模式。 如果不使用模式参数，AzCopy 将下载该目录中的所有文件。
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 
