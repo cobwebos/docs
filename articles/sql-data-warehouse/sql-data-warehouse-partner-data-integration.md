@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: partners
 ms.date: 01/30/2017
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: d9436796373af55a18c0b6fbfc036bd6616bbe4f
 ms.openlocfilehash: ea9c6be4dce0b0812ac780257732321444a57beb
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -118,8 +120,3 @@ ms.openlocfilehash: ea9c6be4dce0b0812ac780257732321444a57beb
 
 <!--WhitePaper-->
 [alteryx_whitepaper]:http://pages.alteryx.com/Microsoft-Azure-InDB-WP?lsm=microsoft
-
-
-<!--HONumber=Jan17_HO5-->
-
-

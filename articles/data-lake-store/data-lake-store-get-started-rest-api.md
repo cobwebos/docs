@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
 ms.openlocfilehash: 33574b0c1f023a8a5f83b1bf06f0523623891757
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -260,10 +261,5 @@ ms.openlocfilehash: 33574b0c1f023a8a5f83b1bf06f0523623891757
 
 ## <a name="see-also"></a>另请参阅
 * [Open Source Big Data applications compatible with Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: febecd5f53077c2e3daa0845964e95025b97893b
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -109,9 +111,4 @@ Azure SQL 数据仓库透明数据加密 (TDE) 可以对静态数据进行实时
 
 <!--Other Web references-->
 [Role-based access control in Azure Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
