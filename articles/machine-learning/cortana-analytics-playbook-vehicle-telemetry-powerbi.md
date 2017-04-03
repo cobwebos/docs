@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
 ms.openlocfilehash: 24d440049b5e889c6d4417cc16787edd42bc5848
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -419,10 +420,5 @@ ms.openlocfilehash: 24d440049b5e889c6d4417cc16787edd42bc5848
 ![车辆遥测 - 组织仪表板 2](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard3.png)
 
 祝贺你！ 你已成功创建报表和仪表板，以获得关于车辆运行状况和驾驶习惯的实时、预测性和批处理的深入了解。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

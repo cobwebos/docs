@@ -37,8 +37,6 @@ ARMclient 用于使用 PowerShell 调用 REST API。 根据 [Chocolatey 上的 A
 
 此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ## <a name="scenario"></a>方案
 
 此方案使用“IP 流验证”功能来验证虚拟机是否可以通过端口 443 与其他计算机通信。 如果拒绝了流量，它将返回拒绝该流量的安全规则。 若要了解有关 IP 流验证的详细信息，请访问 [IP 流验证概述](network-watcher-ip-flow-verify-overview.md)

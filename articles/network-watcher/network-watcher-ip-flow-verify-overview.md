@@ -29,8 +29,6 @@ ms.lasthandoff: 03/04/2017
 
 需要在要运行“IP 流验证”的所有区域中创建网络观察程序实例。 网络观察程序是一个区域性服务，只能针对同一区域中的资源运行。 这不会影响“IP 流验证”的结果，因为仍将返回与 NIC 关联的路由。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ![1][1]
 
 ## <a name="next-steps"></a>后续步骤

@@ -111,7 +111,7 @@
 ### [管理定价和配额](app-insights-pricing.md)
 ### [为 SCOM 使用 Application Insights 的应用程序性能监视](app-insights-scom.md)
 
-##导出
+## 导出
 ### [连续导出](app-insights-export-telemetry.md)
 ### [导出数据模型](app-insights-export-data-model.md)
 ### [导出到 Power BI](app-insights-export-power-bi.md)
@@ -159,10 +159,5 @@
 ### [支持](app-insights-get-dev-support.md)
 
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=application-insights)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

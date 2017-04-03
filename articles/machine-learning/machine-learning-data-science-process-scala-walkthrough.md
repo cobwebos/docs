@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev;deguhath
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 99f12dc1ea65d4b9be3249ea5d5c7452f5a8d72e
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -1107,10 +1108,5 @@ ROC 曲线为 0.9846895479241554 下的面积
 [Team Data Science Process 演练](data-science-process-walkthroughs.md)针对特定方案，介绍了其他端到端演练，演示 Team Data Science Process 中的步骤。 该演练还展示了如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。
 
 [为 Spark 构建的机器学习模型评分](machine-learning-data-science-spark-model-consumption.md)展示如何使用 Scala 代码通过内置在 Spark 中且保存在 Azure Blob 存储中的机器学习模型自动加载数据并对新数据评分。 可以按照文中提供的说明进行操作，只需使用本文中的 Scala 代码替换 Python 代码，便可自动使用。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

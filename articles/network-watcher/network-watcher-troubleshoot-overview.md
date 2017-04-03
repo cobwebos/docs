@@ -25,8 +25,6 @@ ms.lasthandoff: 03/04/2017
 
 虚拟网关在 Azure 中的本地资源和其他虚拟网络之间提供连接。 监视这些网关及其连接对于确保通信不中断至关重要。 网络观察程序提供对虚拟网关和连接进行故障排除的功能。 可以通过 PowerShell、CLI 或 REST API 调用网络观察程序。 调用后，网络观察程序将对虚拟网关或连接的运行状况进行诊断，并返回相应的结果。 该请求是一个长时间运行的事务。一旦诊断完毕，就会返回结果。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ## <a name="results"></a>结果
 
 可以通过返回的初步结果大致了解资源的运行状况。 可以为资源提供更深层的信息，如以下部分所示：

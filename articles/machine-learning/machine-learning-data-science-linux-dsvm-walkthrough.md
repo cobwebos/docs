@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev;paulsh
 translationtype: Human Translation
 ms.sourcegitcommit: d0075eec26c2131f2019e7aca4c00d2d63cc976b
 ms.openlocfilehash: 80051996b0c39c53da63dc6b7bc75c869f692575
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -530,9 +531,4 @@ Azure SQL 数据仓库是一种基于云的向外扩展数据库，可以处理�
 获取主题概述，了解包含在 Azure 中的数据科学过程的任务，请参阅[团队数据科学过程](http://aka.ms/datascienceprocess)。
 
 有关针对特定方案，演示团队数据科学过程中的步骤的其他端到端演练的说明，请参阅[团队数据科学过程演练](data-science-process-walkthroughs.md)。 该演练还展示了如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 
