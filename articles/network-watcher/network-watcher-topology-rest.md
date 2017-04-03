@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1d0136b044f6049e59fa09d824cf244cac703c45
+ms.sourcegitcommit: 50d82847fb629880f298f79f9ab791a13836f01c
 ms.openlocfilehash: 4fa34050a8039cebebe30842469c596c83744313
-ms.lasthandoff: 02/23/2017
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -30,8 +30,6 @@ ms.lasthandoff: 02/23/2017
 
 网络观察程序的拓扑功能提供订阅中网络资源的可视表示形式。 在此门户中，将自动向你显示此可视化效果。 可以通过 PowerShell 检索此门户中拓扑视图背后的信息。
 此功能使拓扑信息更为通用，因为这些数据可由其他工具用于构建出可视化效果。
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 在两个关系下为互连建模。
 

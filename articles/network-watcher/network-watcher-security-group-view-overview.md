@@ -29,8 +29,6 @@ ms.lasthandoff: 03/04/2017
 
 在门户中，规则按生效时间、子网、网络接口和默认值划分。 这将提供一个应用于虚拟机的规则的简单视图。 无论哪个标签页，提供的下载按钮均可将所有安全规则轻松地转换为 CSV 文件。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ![安全组视图][1]
 
 可以选择规则并打开一个新的边栏选项卡以显示网络安全组以及源和目标前缀。 从此边栏选项卡可以直接导航到网络安全组资源。

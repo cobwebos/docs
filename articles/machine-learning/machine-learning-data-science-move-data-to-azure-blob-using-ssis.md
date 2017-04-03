@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 179cac8856cd42cfad4a4d4aaa6301afb2c58329
 ms.openlocfilehash: 6d802148cec5b12004d1d374485f56af8eae64f8
+ms.lasthandoff: 12/17/2016
 
 
 ---
@@ -88,10 +89,5 @@ SSIS 功能包能够通过将任务一起打包来处理更复杂的流。 例�
 
 * 若要使用 SSIS 在 Azure HDInsight 群集上运行 Hive 脚本，请使用 [Azure HDInsight Hive 任务](https://msdn.microsoft.com/library/mt146771.aspx)。
 * 若要使用 SSIS 在 Azure HDInsight 群集上运行 Pig 脚本，请使用 [Azure HDInsight Pig 任务](https://msdn.microsoft.com/library/mt146781.aspx)。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

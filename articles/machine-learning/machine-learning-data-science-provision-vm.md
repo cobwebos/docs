@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: e1563db23e687f772eaff2e90ce9853c9d8b87de
 ms.openlocfilehash: f87df28a5a44b7ab3c1d9a48d43c8d1354c48830
+ms.lasthandoff: 11/23/2016
 
 
 ---
@@ -196,10 +197,5 @@ VM 上安装了多个 Azure 工具：
 * 阅读文章：[数据科研虚拟机的十大功能](http://aka.ms/dsvmtenthings)
 * 通过使用 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)，了解如何系统性地构建端到端分析解决方案。
 * 访问 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)，获取有关使用 Cortana Intelligence Suite 的机器学习和数据分析示例。 我们还在虚拟机的“开始”菜单与桌面上提供了此库的图标。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

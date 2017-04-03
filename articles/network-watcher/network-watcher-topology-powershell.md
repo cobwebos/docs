@@ -31,8 +31,6 @@ ms.lasthandoff: 03/22/2017
 网络观察程序的拓扑功能提供订阅中网络资源的可视表示形式。 在此门户中，将自动向你显示此可视化效果。 可以通过 PowerShell 检索此门户中拓扑视图背后的信息。
 此功能使拓扑信息更为通用，因为这些数据可由其他工具用于构建出可视化效果。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 在两个关系下为互连建模。
 
 - **包含** - 示例：VNet 包含一个具有 NIC 的子网

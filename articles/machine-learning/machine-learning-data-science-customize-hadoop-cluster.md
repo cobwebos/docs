@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: hangzh;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 22d7dc81cb2fc44ff4471951cbc482f60a97bb27
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/20/2016
 
 [!INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
-## <a name="a-namecustomizeacustomize-azure-hdinsight-hadoop-cluster"></a><a name="customize"></a>自定义 Azure HDInsight Hadoop 群集
+## <a name="customize"></a>自定义 Azure HDInsight Hadoop 群集
 若要创建自定义的 HDInsight Hadoop 群集，请先登录到 [**Azure 经典门户**](https://manage.windowsazure.com/)，单击左下角的“新建”，然后选择数据服务-> HDINSIGHT-> “自定义创建”以打开“群集详细信息”窗口。 
 
 ![创建工作区](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
@@ -67,7 +67,7 @@ ms.lasthandoff: 12/20/2016
 
 ![创建工作区](./media/machine-learning-data-science-customize-hadoop-cluster/script-actions.png)
 
-## <a name="a-nameheadnodea-access-the-head-node-of-hadoop-cluster"></a><a name="headnode"></a> 访问 Hadoop 群集的头节点
+## <a name="headnode"></a> 访问 Hadoop 群集的头节点
 必须启用对 Azure 中的 Hadoop 群集的远程访问，然后才能通过 RDP 访问 Hadoop 群集的头节点。 
 
 1. 登录到 [**Azure 经典门户**](https://manage.windowsazure.com/)，选择左侧的 **HDInsight**，然后从群集列表中选择Hadoop 群集，请单击 **配置** 选项卡，然后单击页面底部的 **启用远程** 图标。

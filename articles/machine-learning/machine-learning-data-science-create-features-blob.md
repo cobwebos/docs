@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b6751bf2367ca849f35c81a7857b4f85d75ef6a2
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -57,10 +58,10 @@ ms.openlocfilehash: b6751bf2367ca849f35c81a7857b4f85d75ef6a2
 
 现在可以准备浏览数据并在此数据集上生成功能了。
 
-## <a name="a-nameblob-featuregenafeature-generation"></a><a name="blob-featuregen"></a>生成功能
+## <a name="blob-featuregen"></a>生成功能
 接下来的两部分介绍如何通过指示器值和装箱功能使用 Python 脚本生成分类功能。
 
-### <a name="a-nameblob-countfeatureaindicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>基于生成功能的指示器值
+### <a name="blob-countfeature"></a>基于生成功能的指示器值
 可以按如下方式创建分类功能：
 
 1. 检查分类列的分布：
@@ -79,7 +80,7 @@ ms.openlocfilehash: b6751bf2367ca849f35c81a7857b4f85d75ef6a2
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="a-nameblob-binningfeatureabinning-feature-generation"></a><a name="blob-binningfeature"></a>生成装箱功能
+### <a name="blob-binningfeature"></a>生成装箱功能
 要生成装箱功能，请按如下所示操作：
 
 1. 添加一系列的列，量化数字列
@@ -93,7 +94,7 @@ ms.openlocfilehash: b6751bf2367ca849f35c81a7857b4f85d75ef6a2
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)
 
-## <a name="a-namesql-featuregenawriting-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>将数据写回 Azure blob 并在 Azure 机器学习中使用
+## <a name="sql-featuregen"></a>将数据写回 Azure blob 并在 Azure 机器学习中使用
 浏览过数据并创建必要功能后，可将数据（示例或定义数据）上传至 Azure blob 并在 Azure 机器学习中使用数据，操作步骤如下：请注意，也可在 Azure 机器学习工作室中创建其他功能。
 
 1. 将数据帧写入本地文件
@@ -123,10 +124,5 @@ ms.openlocfilehash: b6751bf2367ca849f35c81a7857b4f85d75ef6a2
 3. 现在可使用 Azure 机器学习的[导入数据](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)模块从 blob 读取数据，如下方屏幕截图所示：
 
 ![blob 读取器](./media/machine-learning-data-science-process-data-blob/reader_blob.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

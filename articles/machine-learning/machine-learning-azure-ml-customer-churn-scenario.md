@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/31/2017
 ms.author: jeannt
 translationtype: Human Translation
 ms.sourcegitcommit: 80bede0dc3ad3934d63feabb946744aeb45f334d
 ms.openlocfilehash: f239a2a270df00cecbe263fa61b84af06af817db
+ms.lasthandoff: 12/15/2016
 
 
 ---
@@ -250,9 +251,4 @@ Azure 机器学习中即将推出的另一项令人兴奋的功能是，可将�
 [8]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-8.png
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 
