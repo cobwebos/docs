@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 61adb7ae8fddc3cf423ee4558308eb9ded11fea3
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -66,9 +68,4 @@ ms.openlocfilehash: 61adb7ae8fddc3cf423ee4558308eb9ded11fea3
 
 <!--Other Web references--> 
 [Download Migration Utility]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
 ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -62,7 +64,7 @@ ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
 ### <a name="can-i-view-the-compute-nodes"></a>能否查看计算节点？
 每个计算节点都有一个节点 ID，可在与 SQL 数据仓库和并行数据仓库相关的系统视图中查看。  在名称以 sys.pdw_nodes 开头的系统视图中找到 node_id 列即可查看计算节点。 如需系统视图的列表，请参阅 [MPP 系统视图](sql-data-warehouse-reference-tsql-statements.md)。
 
-## <a name="a-namereplicatedareplicated-tables-for-parallel-data-warehouse"></a><a name="Replicated"></a>并行数据仓库的复制表
+## <a name="Replicated"></a>并行数据仓库的复制表
 适用于：并行数据仓库
 
 除了使用分布式表，并行数据仓库还提供了复制表的选项。 复制表是指整个存储在每个计算节点上的表。 复制表以后，就不需要在用表进行联接或聚合操作之前在计算节点中传输表行。 复制表仅适用于小型表，因为将整个表存储在每个计算节点上需要额外的存储。  
@@ -73,10 +75,5 @@ ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
 
 ## <a name="next-steps"></a>后续步骤
 若要有效地使用分布式表，请参阅[在 SQL 数据仓库中分布表](sql-data-warehouse-tables-distribute.md)  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
