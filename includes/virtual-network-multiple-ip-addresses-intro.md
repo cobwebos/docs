@@ -14,4 +14,4 @@
 
 附加到 VM 的每个 NIC 都具有一个或多个关联的 IP 配置。 每个配置分配有一个静态或动态专用 IP 地址。 每个配置还可以具有一个关联的公共 IP 地址资源。 公共 IP 地址资源分配有动态或静态公共 IP 地址。 若要详细了解 Azure 中的 IP 地址，请阅读 [Azure 中的 IP 地址](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md)一文。 
 
-最多可为每个 NIC 分配 250 个专用 IP 地址。 虽然可以将多个公共 IP 地址分配给每个 NIC，但 Azure 订阅中能够使用的公共 IP 地址存在限制。 有关详细信息，请参阅 [Azure 限制](../articles/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)一文。
+分配给 NIC 的专用 IP 地址数目存在限制。 能够在 Azure 订阅中使用的公共 IP 地址数也存在限制。 有关详细信息，请参阅 [Azure 限制](../articles/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文。

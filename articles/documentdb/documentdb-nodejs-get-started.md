@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 12/25/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: e955366aa6fb8481fc8a76158b298dd927e855a2
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 2b8ac838e9387b04467f03d0608da05b3edfdd26
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -604,7 +604,7 @@ DocumentDB 支持删除 JSON 文档。
 祝贺你！ 你已完成 Node.js 教程并已成功创建，拥有了第一个 DocumentDB 控制台应用程序！
 
 ## <a id="GetSolution"></a>获取完整的 Node.js 教程解决方案
-如果没有时间完成本教程中的步骤，或者只需下载代码，则可从 [Github](https://github.com/Azure-Samples/documentdb-node-getting-started) 获取。
+如果没有时间完成本教程中的步骤，或者只需下载代码，则可从 [GitHub](https://github.com/Azure-Samples/documentdb-node-getting-started) 获取。
 
 若要运行包含本文所有示例的 GetStarted 解决方案，需要做好以下准备：
 

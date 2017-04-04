@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 01/05/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 74af5fda495adc726bfa85ad48a407fd61d4dd88
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: da7907ffc515ea2e3040075c93bcd53840cf3ff5
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -60,12 +60,12 @@ ms.lasthandoff: 03/08/2017
 * [Maven](http://maven.apache.org/download.cgi)。
 
 ## <a name="step-1-create-a-documentdb-account"></a>第 1 步：创建 DocumentDB 帐户
-让我们创建一个 DocumentDB 帐户。 如果已有一个可用的帐户，可以直接跳到[克隆 Github 项目](#GitClone)。 如果使用 DocumentDB Emulator，请遵循 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) 中的步骤设置该模拟器，然后直接跳到[克隆 Github 项目](#GitClone)。
+让我们创建一个 DocumentDB 帐户。 如果已有一个可用的帐户，可以直接跳到[克隆 GitHub 项目](#GitClone)。 如果使用 DocumentDB 模拟器，请遵循 [Azure DocumentDB 模拟器](documentdb-nosql-local-emulator.md)中的步骤设置该模拟器，然后直接跳到[克隆 GitHub 项目](#GitClone)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a id="GitClone"></a>步骤 2：克隆 Github 项目
-首先，可以根据 [DocumentDB 和 Java 入门](https://github.com/Azure-Samples/documentdb-java-getting-started)中所述克隆 Github 存储库。 例如，在本地目录中运行以下命令，在本地检索示例项目。
+## <a id="GitClone"></a>步骤 2：克隆 GitHub 项目
+首先，可以根据 [Get Started with DocumentDB and Java](https://github.com/Azure-Samples/documentdb-java-getting-started)（DocumentDB 和 Java 入门）中所述克隆 GitHub 存储库。 例如，在本地目录中运行以下命令，在本地检索示例项目。
 
     git clone git@github.com:Azure-Samples/documentdb-java-getting-started.git
 

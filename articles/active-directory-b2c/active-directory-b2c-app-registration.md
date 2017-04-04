@@ -5,7 +5,7 @@ services: active-directory-b2c
 documentationcenter: 
 author: parakhj
 manager: krassk
-editor: bryanla
+editor: parakhj
 ms.assetid: 20e92275-b25d-45dd-9090-181a60c99f69
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -15,9 +15,10 @@ ms.topic: get-started-article
 ms.date: 3/13/2017
 ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 541849501335fb25d96cffa81b8119adc158cdd7
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: e04fbd97dd4d5ecaf12edf47d80572b32d29ed00
+ms.lasthandoff: 03/23/2017
+
 
 
 ---
@@ -48,18 +49,26 @@ ms.lasthandoff: 03/14/2017
 2. 单击边栏选项卡顶部的“ **+添加** ”。
 3. 输入应用程序的“ **名称** ”，用于向使用者描述你的应用程序。 例如，你可以输入“Contoso B2C app”。
 4. 将“包括 Web 应用/Web API”开关切换到“是”。 **回复 URL** 是 Azure AD B2C 将在其中返回应用程序请求的任何令牌的终结点。 例如，输入 `https://localhost:44316/`。
-5. 单击“保存”注册应用程序。
-6. 单击刚刚创建的应用程序，并复制稍后将在代码中使用的全局唯一“ **应用程序客户端 ID** ”。
+5. 单击“ **创建** ”以注册你的应用程序。
+6. 单击刚刚创建的应用程序，并复制稍后将在代码中使用的全局唯一“ **应用程序客户端 ID** ”。 
+7. 如果 Web 应用程序还将调用一个受 Azure AD B2C 保护的 Web API，则需转到“密钥”边栏选项卡并单击“生成密钥”按钮，以便创建“应用程序密钥”。
 
+> [!NOTE]
+> **应用程序密钥** 是一个重要的安全凭据，应进行适当地保护。
+> 
+   
 
 ## <a name="register-a-web-api"></a>注册 Web API
 1. 在 Azure 门户的 B2C 功能边栏选项卡上，单击“ **应用程序**”。
 2. 单击边栏选项卡顶部的“ **+添加** ”。
 3. 输入应用程序的“ **名称** ”，用于向使用者描述你的应用程序。 例如，可以输入“Contoso B2C api”。
 4. 将“包括 Web 应用/Web API”开关切换到“是”。 **回复 URL** 是 Azure AD B2C 将在其中返回应用程序请求的任何令牌的终结点。 例如，输入 `https://localhost:44316/`。
-5. 单击“保存”注册应用程序。
-6. 单击刚刚创建的应用程序，并复制稍后将在代码中使用的全局唯一“ **应用程序客户端 ID** ”。
-
+5. 输入**应用 ID URI**。 这是用于 Web API 的标识符。 例如，输入“notes”。 将会在下方生成完整标识符 URI。 
+6. 单击“ **创建** ”以注册你的应用程序。
+7. 单击刚刚创建的应用程序，并复制稍后将在代码中使用的全局唯一“ **应用程序客户端 ID** ”。
+8. 单击“已发布范围”。 这是定义授予其他应用程序的权限（作用域）的位置。
+9. 根据需要添加更多作用域。 默认情况下，将定义“user_impersonation”作用域。 这样一来，其他应用程序就可以代表已登录用户访问该 API。 可以根据需要将其删除。 
+10. 单击“保存” 。
 
 ## <a name="register-a-mobilenative-application"></a>注册移动/本机应用程序
 1. 在 Azure 门户的 B2C 功能边栏选项卡上，单击“ **应用程序**”。
@@ -69,6 +78,11 @@ ms.lasthandoff: 03/14/2017
 5. 输入使用自定义方案的**重定向 URI**。 例如，com.onmicrosoft.contoso.appname://redirect/path。 确保选择[适当的重定向 URI](#choosing-a-redirect-uri)。
 6. 单击“保存”注册应用程序。
 7. 单击刚刚创建的应用程序，并复制稍后将在代码中使用的全局唯一“ **应用程序客户端 ID** ”。
+8. 如果本机应用程序还将调用一个受 Azure AD B2C 保护的 Web API，则需转到“密钥”边栏选项卡并单击“生成密钥”按钮，以便创建“应用程序密钥”。
+
+> [!NOTE]
+> **应用程序密钥** 是一个重要的安全凭据，应进行适当地保护。
+> 
 
 ### <a name="choosing-a-redirect-uri"></a>选择重定向 URI
 为移动/本机应用程序选择重定向 URI 时，有两个重要的考虑事项： 

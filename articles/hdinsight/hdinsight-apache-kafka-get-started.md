@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: 
 ms.topic: hero-article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/14/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: f592dc23938c436e803c7a0d8f7fd2dd5b4185c8
-ms.openlocfilehash: 3b645725b88b33e7283ce2bf89383b285d75cddc
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 1c7a95354358d91859ce9d2019cef93b6662811f
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="get-started-with-apache-kafka-preview-on-hdinsight"></a>Apache Kafka on HDInsight（预览版）入门
@@ -35,11 +36,7 @@ ms.lasthandoff: 02/15/2017
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
-* **熟悉 SSH 和 SCP**。 有关如何将 SSH 和 SCP 与 HDInsight 配合使用的详细信息，请参阅以下文档：
-  
-   * **Linux、Unix、OS X 和 Windows 10 客户端**：请参阅[在 Linux、OS X、Unix 和 Windows 10 Bash 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-   
-   * **Windows 客户端**：请参阅 [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+* **熟悉 SSH 和 SCP**。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 或类似程序，如 OpenJDK。
 
@@ -108,16 +105,9 @@ ms.lasthandoff: 02/15/2017
 
 出现提示时，输入用于 SSH 帐户的密码。
 
-> [!NOTE]
-> 如果 Windows 版本不包括 SSH 命令，请参阅[在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)文档。 该文档包含适用于 Windows 的 PuTTY SSH 客户端的使用信息。
+有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-有关如何将 SSH 与 HDInsight 配合使用的信息，请参阅以下文档：
-
-* [在 Linux、Unix、OS X 和 Windows 10 Bash 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-* [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
-
-##<a name="a-idgetkafkainfoaget-the-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>获取 Zookeeper 主机和代理主机信息
+##<a id="getkafkainfo"></a>获取 Zookeeper 主机和代理主机信息
 
 使用 Kafka 时，必须了解两个主机值；Zookeeper 主机和代理主机。 这些主机配合 Kafka API 和 Kafka 随附的许多实用工具一起使用。
 
@@ -257,7 +247,7 @@ Kafka 的一个重要概念是使用者在读取记录时使用使用者组（�
 
 2. 观察每个会话对从主题中收到的记录进行计数。 两个会话的总记录数应与之前从一个使用者中收到的记录数相同。
 
-同一组中客户端的使用情况通过主题的分区进行处理。 之前创建的 `test` 主题有&8; 个分区。 若打开&8; 个 SSH 会话，并在所有会话中启动一个使用者，每个使用者都将从主题的单个分区中读取记录。
+同一组中客户端的使用情况通过主题的分区进行处理。 之前创建的 `test` 主题有 8 个分区。 若打开 8 个 SSH 会话，并在所有会话中启动一个使用者，每个使用者都将从主题的单个分区中读取记录。
 
 > [!IMPORTANT]
 > 使用者组中存在的使用者实例不能比分区多。 此示例中，一个使用者组最多可包含 8 个使用者，因为这是本主题中分区的数量。 或者可拥有多个使用者组，每个组的使用者不能超过 8 个。
