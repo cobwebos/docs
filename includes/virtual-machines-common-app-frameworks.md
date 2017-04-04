@@ -26,7 +26,7 @@
 除了这些模板，也可以在 [gallery templates](https://azure.microsoft.com/documentation/templates/)（库模板）中搜索模板。
 
 ## <a name="azure-portal"></a>Azure 门户
-使用 Azure 门户部署模板很容易，只需向其发送 URL 即可。 需要提供模板文件的名称才能进行部署。 查找名称时，你可以在模板库中查找页面，也可以在 Github 存储库中查找。 将此 URL 中的 {template name} 更改为要部署的模板名称，然后将其输入浏览器中：
+使用 Azure 门户部署模板很容易，只需向其发送 URL 即可。 需要提供模板文件的名称才能进行部署。 查找名称时，可以在模板库中查看页面，也可以在 GitHub 存储库中查看。 将此 URL 中的 {template name} 更改为要部署的模板名称，然后将其输入浏览器中：
 
     https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F{template name}%2Fazuredeploy.json
 

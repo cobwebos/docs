@@ -119,7 +119,7 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 * 确保没有对虚拟阵列应用组策略对象 (GPO)。 可以阻止继承，确保虚拟阵列（子节点）不会自动继承父节点的任何 GPO。 有关详细信息，请转到[阻止继承](https://technet.microsoft.com/library/cc731076.aspx)。
 
 ### <a name="networking"></a>网络
-虚拟阵列的网络配置是通过本地 Web UI 完成的。 虚拟网络接口是通过虚拟阵列预配所在的虚拟机监控程序启用的。 使用“网络设置”页可以配置虚拟网络接口的 IP 地址、子网和网关。[](storsimple-ova-deploy3-fs-setup.md)  此外，可为设备配置主要和辅助 DNS 服务器、时间设置和可选的代理设置。 大多数网络配置都是一次性的设置。 在部署虚拟阵列之前，请查看 [StorSimple 网络要求](storsimple-ova-system-requirements.md#networking-requirements)。
+虚拟阵列的网络配置是通过本地 Web UI 完成的。 虚拟网络接口是通过虚拟阵列预配所在的虚拟机监控程序启用的。 使用 [网络设置](storsimple-ova-deploy3-fs-setup.md) 页可以配置虚拟网络接口的 IP 地址、子网和网关。  此外，可为设备配置主要和辅助 DNS 服务器、时间设置和可选的代理设置。 大多数网络配置都是一次性的设置。 在部署虚拟阵列之前，请查看 [StorSimple 网络要求](storsimple-ova-system-requirements.md#networking-requirements)。
 
 部署虚拟阵列时，建议遵循以下最佳实践：
 

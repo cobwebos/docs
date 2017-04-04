@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 12/27/2016
 ms.author: saysa
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: fc73eedae7ec9664da714567f47a543e625cd023
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: e5d14eb0a656d67030f4c0d3d510aec0e9cafae7
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -38,17 +38,20 @@ Service Fabric 不在 OS X 本机上运行。为了运行本地 Service Fabric �
 * [VirtualBox](http://www.virtualbox.org/wiki/Downloads)
 
 >[!NOTE]
->  需使用 Vagrant 和 VirtualBox 的相互支持的版本。 在不受支持的 VirtualBox 版本上，Vagrant 的行为可能不稳定。
+> 需使用 Vagrant 和 VirtualBox 的相互支持的版本。 在不受支持的 VirtualBox 版本上，Vagrant 的行为可能不稳定。
 >
 
 ## <a name="create-the-local-vm"></a>创建本地 VM
 若要创建包含 5 节点 Service Fabric 群集的本地 VM，请执行以下步骤：
 
-1. 克隆 **Vagrantfile** 存储库
+1. 克隆 `Vagrantfile` 存储库
 
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
+    此步骤获取包含 VM 配置和 VM 下载位置的文件 `Vagrantfile`。
+
+   
 2. 导航到本地克隆存储库
 
     ```bash
@@ -58,10 +61,10 @@ Service Fabric 不在 OS X 本机上运行。为了运行本地 Service Fabric �
 
     默认情况下，本地 VM 采用如下配置：
 
-   * 分配&3; GB 内存
+   * 分配 3 GB 内存
    * 在 IP 192.168.50.50 配置专用主机网络，以便能够从 Mac 主机传递流量
 
-     可以更改这些设置或向 Vagrantfile 中的 VM 添加其他配置。 请参阅 [Vagrant 文档](http://www.vagrantup.com/docs)，获得配置选项的完整列表。
+     可以更改这些设置或向 `Vagrantfile` 中的 VM 添加其他配置。 请参阅 [Vagrant 文档](http://www.vagrantup.com/docs)，获得配置选项的完整列表。
 4. 创建 VM
 
     ```bash
@@ -72,19 +75,24 @@ Service Fabric 不在 OS X 本机上运行。为了运行本地 Service Fabric �
 
     ![群集安装将在 VM 设置后启动][cluster-setup-script]
 
+>[!TIP]
+> 如果 VM 下载耗时过长，可以使用 wget 或 curl 下载，也可通过浏览器下载，只需导航到文件 `Vagrantfile` 中通过 **config.vm.box_url** 指定的链接即可。 将其下载到本地以后，请编辑 `Vagrantfile`，以便指向下载了映射的本地路径。 例如，如果已将映像下载到 /home/users/test/azureservicefabric.tp8.box，则请将 **config.vm.box_url** 设置为该路径。
+>
+
 5. 导航到 http://192.168.50.50:19080/Explorer 的 Service Fabric Explorer（假设保留了默认的专用网络 IP 地址），测试是否已正确安装群集。
 
     ![从主机 Mac 查看的 Service Fabric Explorer][sfx-mac]
 
 ## <a name="install-the-service-fabric-plugin-for-eclipse-neon"></a>为 Eclipse Neon 安装 Service Fabric 插件
 
-Service Fabric 为**适用于 Java IDE 的 Eclipse Neon** 提供了一个插件，可简化创建、生成和部署 Java 服务的过程。 可以按照通用[文档](service-fabric-get-started-eclipse.md#install-or-update-service-fabric-plugin-on-eclipse-neon)中提及的安装步骤，安装或更新 Service Fabric Eclipse 插件。
+Service Fabric 为**适用于 Java IDE 的 Eclipse Neon** 提供了一个插件，可简化创建、生成和部署 Java 服务的过程。 可以按照通用[文档](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon)中提及的安装步骤，安装或更新 Service Fabric Eclipse 插件。
 
 ## <a name="using-service-fabric-eclipse-plugin-on-mac"></a>在 Mac 上使用 Service Fabric Eclipse 插件
 
-确保已完成 [Service Fabric Eclipse 插件文档](service-fabric-get-started-eclipse.md)中提及的步骤。 在 Mac 主机上使用 vagrant-guest 容器创建、生成和部署 Service Fabric Java 应用程序的步骤大部分与通用文档所述相同，但需牢记有几点不同之处，如下所述：
-* 由于需要 Service Fabric 库才能成功生成 Service Fabric Java 应用程序，因此需在共享路径中创建 Eclipse 项目。 默认情况下，在 ``Vagrantfile`` 所在主机上的路径中的内容与来宾计算机上的 ``/vagrant`` 路径共享。
-* 因此，简单说来，如果在路径中有 ``Vagrantfile``（例如 ``~/home/john/allprojects/``），则需在位置 ``~/home/john/allprojects/MyActor`` 中创建 service-fabric 项目 ``MyActor``，而 Eclipse 工作区的路径将是 ``~/home/john/allprojects``。
+确保已完成 [Service Fabric Eclipse 插件文档](service-fabric-get-started-eclipse.md)中提及的步骤。 在 Mac 主机上使用 vagrant-guest 容器创建、生成和部署 Service Fabric Java 应用程序的步骤大部分与通用文档所述相同，以下项目除外：
+
+* 由于 Service Fabric Java 应用程序需要 Service Fabric 库，因此需在共享路径中创建 Eclipse 项目。 默认情况下，在 ``Vagrantfile`` 所在主机上的路径中的内容与来宾计算机上的 ``/vagrant`` 路径共享。
+* 如果在路径中有 ``Vagrantfile``（例如 ``~/home/john/allprojects/``），则需在位置 ``~/home/john/allprojects/MyActor`` 中创建 Service Fabric 项目 ``MyActor``，而 Eclipse 工作区的路径将是 ``~/home/john/allprojects``。
 
 ## <a name="next-steps"></a>后续步骤
 <!-- Links -->

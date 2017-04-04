@@ -33,7 +33,7 @@
 3. 将虚拟网络对象存储为变量。
    
         $vnet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG
-4. 将网关子网添加到虚拟网络中。 网关子网必须命名为“GatewaySubnet”。 想要创建 /27 或更大（/26、/25 等）的网关。
+4. 将网关子网添加到虚拟网络中。 网关子网必须命名为“GatewaySubnet”。 应创建 /27 或更大（/26、/25 等）的网关子网。
    
         Add-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
 5. 设置配置。
@@ -72,8 +72,3 @@
 使用以下命令可删除网关
 
     Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG  
-
-
-<!--HONumber=Nov16_HO3-->
-
-

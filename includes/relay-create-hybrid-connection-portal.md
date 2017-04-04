@@ -1,4 +1,4 @@
-请确保已创建中继命名空间，如[此处][namespace-how-to]所示。
+确保已创建中继命名空间，如[此处][namespace-how-to]所示。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在门户的左侧导航窗格中，单击“中继”。
@@ -14,7 +14,3 @@
 6. 单击边栏选项卡底部的“创建” 。
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 
-
-<!--HONumber=Feb17_HO1-->
-
-

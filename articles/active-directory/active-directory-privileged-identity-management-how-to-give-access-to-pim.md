@@ -43,7 +43,7 @@ ms.lasthandoff: 01/27/2017
 5. 单击“确定”保存选择内容。 选定的用户将出现在“特权角色管理员”列表中。
    
    * 每当向某位用户分配新角色时，系统会自动将其设置有资格激活该角色。 如果想要让这些用户永久充当该角色，请在列表中单击该用户。 在用户信息菜单中，选择“设为永久”。
-6. 将“Azure AD Privileged Identity Management 入门”链接发送给用户。[](active-directory-privileged-identity-management-getting-started.md)
+6. 将 [Azure AD Privileged Identity Management 入门](active-directory-privileged-identity-management-getting-started.md) 链接发送给用户。
 
 ## <a name="remove-another-users-access-rights-for-managing-pim"></a>删除另一位用户的 PIM 管理访问权限
 从特权角色管理员角色中删除某人之前，请确保仍有两位用户分配有该角色。

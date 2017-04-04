@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 06/05/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6a03b96b3f06d9c8cdb820e6c7835f728a28cc99
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: eec7d1402bdea4e5433c473dd713eed23aa80464
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -62,10 +63,10 @@ Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在
 9. 选择项目和分支后，单击“确定”。 你应会看到部署通知。
    
    ![image9][image9]
-10. 浏览回到 Github，以查看为了将源代码管理存储库与 Azure 集成而创建的 Webhook。 只需执行一些简单的步骤，Azure 门户即可与 Github 集成。
+10. 浏览回到 GitHub，以查看为了将源代码管理存储库与 Azure 集成而创建的 Webhook。 只需执行一些简单的步骤，即可通过 Azure 门户与 GitHub 集成。
     
     ![image10][image10]
-11. 为了演示连续部署，请将一些内容快速添加到存储库。 为了创建一个简单示例，请将一个示例文本文件添加到 Github 存储库。 你可以任意将 .NET、Ruby、Python 或其他某种类型的应用程序与 App Service 配合使用。 在所选的存储库中任意添加文本文件、ASP.NET MVC、Java 或 Ruby 应用程序。
+11. 为了演示连续部署，请将一些内容快速添加到存储库。 为了创建一个简单示例，请将一个示例文本文件添加到 GitHub 存储库。 你可以任意将 .NET、Ruby、Python 或其他某种类型的应用程序与 App Service 配合使用。 在所选的存储库中任意添加文本文件、ASP.NET MVC、Java 或 Ruby 应用程序。
     
     ![image11][image11]
 12. 将更改提交到存储库之后，你将在门户的通知区域中看到新部署已启动。 提交到存储库之后，如果未马上看到更改，请单击“同步”。
@@ -334,9 +335,4 @@ Azure 提供了许多功能用于对正在运行的应用程序进行监视和�
 [image67]: ./media/tutorial-azureportal-devops/image67.png
 [image68]: ./media/tutorial-azureportal-devops/image68.png
 [image69]: ./media/tutorial-azureportal-devops/image69.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

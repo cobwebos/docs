@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 03/19/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 639eb424c31abea4106cf37b14fee99a8fd9d307
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 648aa01beaffccf69250f1028e27bc13ed70837c
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -529,7 +529,7 @@ DocumentDB 支持删除 JSON 文档。
 祝贺你！ 你已经完成该 NoSQL 教程，并且获得了一个正常工作的 C# 控制台应用程序！
 
 ## <a id="GetSolution"></a> 获取完整的 NoSQL 教程解决方案
-如果没有时间完成本教程中的步骤，或者只需下载代码示例，则可从 [Github](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) 获取。 
+如果没有时间完成本教程中的步骤，或者只需下载代码示例，则可从 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) 获取。 
 
 若要生成 GetStarted 解决方案，需备齐以下各项：
 
