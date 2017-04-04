@@ -18,13 +18,13 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 31897e11abfe70ed08381f0d13c6bdabe56c28ed
-ms.openlocfilehash: 05ff751255000220be3b59d013b6106473e4732b
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 25a35912b72f7f44b83ccd49f298b44665318418
+ms.lasthandoff: 03/29/2017
 
 
 ---
-# <a name="make-a-remote-connection-to-a-kuburnetes-dcos-or-docker-swarm-cluster"></a>建立到 Kuburnetes、DC/OS 或 Docker Swarm 群集的远程连接
+# <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>建立到 Kubernetes、DC/OS 或 Docker Swarm 群集的远程连接
 创建 Azure 容器服务群集后，需要连接到该群集才能部署和管理工作负荷。 本文介绍如何通过远程计算机连接到群集的主 VM。 
 
 Kubernetes、DC/OS 和 Docker Swarm 群集在本地提供 HTTP 终结点。 对于 Kubernetes，此终结点在 Internet 上安全公开，用户可在连接到 Internet 的任意计算机上通过运行 `kubectl` 命令行工具来访问此终结点。 

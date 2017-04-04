@@ -1,6 +1,6 @@
 ---
 title: "在 Windows、Linux、Unix 或 OS X 中将 SSH 与 HDInsight (Hadoop) 配合使用 | Microsoft 文档"
-description: " 可以使用安全外壳 (SSH) 访问 HDInsight。 本文档提供有关在 Windows、Linux、Unix 或 OS X 客户端中将 SSH 与 HDInsight 配合使用的信息。."
+description: " 可以使用安全外壳 (SSH) 访问 HDInsight。 本文档提供有关使用 SSH 连接到 Windows、Linux、Unix 或 OS X 客户端中的 HDInsight 的信息。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,166 +13,153 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/27/2017
+ms.date: 03/16/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
-ms.openlocfilehash: 4cde035f75bfa3c448f12e9ebf2896b9a54a6873
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 89d44476e9de8ac32195efaf66535cdd9fb4260e
+ms.lasthandoff: 03/25/2017
 
 ---
-# <a name="use-ssh-with-hdinsight-hadoop-from-bash-on-windows-10-linux-unix-or-os-x"></a>在 Windows 10、Linux、Unix 或 OS X 上的 Bash 中将 SSH 与 HDInsight (Hadoop) 配合使用
+# <a name="connect-to-hdinsight-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Hadoop)
 
-> [!div class="op_single_selector"]
-> * [PuTTY (Windows)](hdinsight-hadoop-linux-use-ssh-windows.md)
-> * [SSH（Windows、Linux、Unix、OS X）](hdinsight-hadoop-linux-use-ssh-unix.md)
+了解如何使用[安全外壳 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) 安全连接到 HDInsight。 HDInsight 可以使用 Linux (Ubuntu) 作为群集中节点的操作系统。 可以使用 SSH 连接到基于 Linux 的群集的头节点和边缘节点，并直接在这些节点上运行命令。
 
-在[安全外壳 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) 中，可以使用命令行接口登录到基于 Linux 的 HDInsight 群集并运行命令。 本文档提供有关 SSH 的基本信息，以及有关在 HDInsight 中使用 SSH 的具体信息。
+下表包含使用 SSH 连接到 HDInsight 时所需的地址和端口信息：
 
-## <a name="what-is-ssh"></a>什么是 SSH？
+| 地址 | 端口 | 连接到... |
+| ----- | ----- | ----- |
+| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | 边缘节点（如果存在） |
+| `<clustername>-ssh.azurehdinsight.net` | 22 | 主头节点 |
+| `<clustername>-ssh.azurehdinsight.net` | 23 | 辅助头节点 |
 
-SSH 是一种加密网络协议，可用于通过不安全的网络来与远程服务器安全通信。 使用 SSH 可以通过命令行安全登录到远程服务器。 在本例中，远程服务器是 HDInsight 群集的头节点或边缘节点。
-
-还可以使用 SSH 以隧道方式将网络流量从客户端传送到 HDInsight 群集。 使用隧道可以访问 HDInsight 群集中不直接在 Internet 上公开的服务。 有关在 HDInsight 中使用 SSH 隧道的详细信息，请参阅 [Use SSH tunneling with HDInsight](hdinsight-linux-ambari-ssh-tunnel.md)（在 HDInsight 中使用 SSH 隧道）。
+> [!NOTE]
+> 将 `<edgenodename>` 替换为边缘节点的名称。 有关使用边缘节点的详细信息，请参阅 [Use edge nodes in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node)（在 HDInsight 中使用边缘节点）。
+>
+> 将 `<clustername>` 替换为 HDInsight 群集的名称。
+>
+> 我们建议__始终连接到边缘节点__（如果有）。 头节点托管的服务对于群集运行状况而言至关重要。 边缘节点只会运行其上放置的软件。
 
 ## <a name="ssh-clients"></a>SSH 客户端
 
-许多操作系统通过 `ssh` 和 `scp` 命令行实用工具提供 SSH 客户端功能。
+大多数操作系统提供 `ssh` 客户端。 默认情况下，Microsoft Windows 不提供 SSH 客户端。 以下每个包中提供了适用于 Windows 的 SSH 客户端：
 
-* __ssh__：可用于建立远程命令行会话和创建隧道的常规 SSH 客户端。
-* __scp__：可以使用 SSH 协议在本地系统与远程系统之间复制文件的实用工具。
+* [Windows 10 上的 Bash on Ubuntu](https://msdn.microsoft.com/commandline/wsl/about)：通过 Windows 命令行中的 Bash 提供 `ssh` 命令。
 
-Windows 10 周年纪念版提供 Bash 作为开发人员功能。 其中提供 `ssh`、`scp` 及其他 Linux 命令。 有关使用 Bash on Windows 10 的详细信息，请参阅 [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about)（Windows 上的 Ubuntu Bash）。
+* [Git (https://git-scm.com/)](https://git-scm.com/)：通过 GitBash 命令行提供 `ssh` 命令。
 
-如果你使用的是 Windows 但无法访问 Bash on Windows 10，我们建议使用以下 SSH 客户端：
+* [GitHub Desktop (https://desktop.github.com/)](https://desktop.github.com/)：通过 Git Shell 命令行提供 `ssh` 命令。 可将 GitHub Desktop 配置为使用 Bash、Windows 命令提示符或 PowerShell 作为 Git Shell 的命令行。
 
-* [适用于 Windows 的 Git](https://git-for-windows.github.io/)：提供 `ssh` 和 `scp` 命令行实用工具。
-* [Cygwin](https://cygwin.com/)：提供 `ssh` 和 `scp` 命令行实用工具。
+* [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)：PowerShell 团队正在将 OpenSSH 移植到 Windows，到时将提供测试版。
 
-> [!NOTE]
-> 本文档中的步骤假设你可以访问 `ssh` 命令。 如果你使用 puTTY 或 MobaXterm 等客户端，请查阅相应产品的文档，了解等效的命令和参数。
+    > [!WARNING]
+    > OpenSSH 包中包含 SSH 服务器组件 `sshd`。 此组件可在系统上启动 SSH 服务器，使其他人能够连接到该服务器。 除非想要在系统上托管 SSH 服务器，否则请不要配置此组件，也不要打开端口 22。 与 HDInsight 通信并不需要使用此组件。
 
-## <a name="ssh-authentication"></a>SSH 身份验证
+此外，还可以使用多个图形 SSH 客户端，例如 [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) 和 [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/)。 尽管可以使用这些客户端连接到 HDInsight，但连接到服务器的过程与使用 `ssh` 实用工具时不同。 有关详细信息，请参阅所用图形客户端的文档。
 
-可以使用密码或[公钥加密 (https://en.wikipedia.org/wiki/Public-key_cryptography)](https://en.wikipedia.org/wiki/Public-key_cryptography) 对 SSH 连接进行身份验证。 最安全的做法是使用密钥，因为它不像密码那样容易受到多种攻击。 但是，与使用密码相比，创建和管理密钥更为复杂。
+## <a id="sshkey"></a>身份验证：SSH 密钥
 
-使用公钥加密涉及到创建_公钥_和_私钥_对。
+SSH 密钥使用[公钥加密](https://en.wikipedia.org/wiki/Public-key_cryptography)来保护群集。 SSH 密钥比密码更安全，使用它可以轻松保护 HDInsight 群集。
 
-* **公钥**将载入 HDInsight 群集的节点中，或者载入要对其使用公钥加密的其他任何服务。
+如果使用密钥保护 SSH 帐户，客户端必须在你连接时提供匹配的私钥：
 
-* **私钥**是你使用 SSH 客户端登录时，为了验证自己的身份而提供给 HDInsight 群集的凭据。 请保护好私钥， 不要透露给其他人。
+* 可将大多数客户端配置为使用__默认密钥__。 例如，在 Linux 和 Unix 环境中，`ssh` 客户端将在 `~/.ssh/id_rsa` 位置查找私钥。
 
-    为私钥创建通行短语可以进一步提高安全性。 如果使用密码，则使用 SSH 进行身份验证时必须输入该密码。
+* 可以指定__私钥的路径__。 在 `ssh` 客户端中，可使用 `-i` 参数指定私钥的路径。 例如，`ssh -i ~/.ssh/hdinsight sshuser@myedge.mycluster-ssh.azurehdinsight.net`。
 
-### <a name="create-a-public-and-private-key"></a>创建公钥和私钥
+* 如果对不同的服务器使用__多个私钥__，可以使用 [ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) 等实用工具自动选择要使用的密钥。
 
-创建用于 HDInsight 的公钥和私钥对的最简单方法是使用 `ssh-keygen` 实用工具。 从命令行使用以下命令即可创建用于 HDInsight 的新密钥对：
+> [!IMPORTANT]
+>
+> 如果使用密码保护私钥，使用该密钥时必须输入密码。 为提供方便，`ssh-agent` 等实用工具可以缓存密码。
 
-> [!NOTE]
-> 如果使用 MobaXTerm 或 puTTY 等 GUI SSH 客户端，请查阅客户端的文档了解如何生成密钥。
+### <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
+
+使用 `ssh-keygen` 命令创建公钥和私钥文件。 以下命令生成可在 HDInsight 中使用的 2048 位 RSA 密钥对：
 
     ssh-keygen -t rsa -b 2048
 
-系统将提示输入以下信息：
+在创建密钥的过程中，系统会提示你输入信息。 例如，密钥的存储位置，或者是否要使用密码。 完成该过程后，将创建两个文件：一个公钥文件和一个私钥文件。
 
-* 文件位置：位置默认为 `~/.ssh/id_rsa`。
+* __公钥__用于创建 HDInsight 群集。 公钥的扩展名为 `.pub`。
 
-* 可选的通行短语：如果输入了一个通行短语，在 HDInsight 群集上身份验证时必须重新输入该通行短语。
+* __私钥__用于在 HDInsight 群集中对客户端进行身份验证。
 
 > [!IMPORTANT]
-> 通行短语是私钥的密码。 每当使用私钥进行身份验证时，必须先提供通行短语，然后才能使用该密钥。 如果有人获取了你的私钥，在不知道通行短语的情况下，他们无法使用该私钥。
->
-> 但是，如果你忘记了通行短语，就没有办法重置或恢复它。
+> 可以使用密码保护密钥。 该密码其实是私钥中的一个密码。 即使有人获取了你的私钥，但他们必须知道该密码才能使用该私钥。
 
-完成上述命令后，将获得两个新文件：
+### <a name="create-hdinsight-using-the-public-key"></a>使用公钥创建 HDInsight
 
-* __id\_rsa__：此文件包含私钥。
+| 创建方法 | 如何使用公钥 |
+| ------- | ------- |
+| **Azure 门户** | 取消选中“使用与群集登录相同的密码”，然后选择“公钥”作为 SSH 身份验证类型。 最后，在“SSH 公钥”字段中选择公钥文件，或粘贴该文件的文本内容。</br>![创建 HDInsight 群集时的 SSH 公钥对话框](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
+| **Azure PowerShell** | 使用 `New-AzureRmHdinsightCluster` cmdlet 的 `-SshPublicKey` 参数，并以字符串的形式传递公钥内容。|
+| **Azure CLI 1.0** | 使用 `azure hdinsight cluster create` 命令的 `--sshPublicKey` 参数，并以字符串的形式传递公钥内容。 |
+| **Resource Manager 模板** | 有关在模板中使用 SSH 密钥的示例，请参阅 [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)（使用 SSH 密钥在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) 文件中的 `publicKeys` 元素用于在创建群集时向 Azure 传递密钥。 |
 
-    > [!WARNING]
-    > 限制对此文件的访问，防止有人未经授权访问公钥保护的服务。
+## <a id="sshpassword"></a>身份验证：密码
 
-* __id\_rsa.pub__：此文件包含公钥。 创建 HDInsght 群集时需要用到此文件。
+可以使用密码保护 SSH 帐户。 使用 SSH 连接到 HDInsight 时，系统会提示你输入密码。
 
-    > [!NOTE]
-    > 谁有权访问_公钥_并不重要。 所有公钥的作用无非就是验证私钥。 当你使用私钥进行身份验证时，SSH 服务器等服务使用公钥来验证你的身份。
+> [!WARNING]
+> 不建议将密码身份验证用于 SSH。 密码可能被猜出，容易受到暴力破解攻击。 我们建议[使用 SSH 密钥进行身份验证](#sshkey)。
 
-## <a name="configure-ssh-on-hdinsight"></a>在 HDInsight 上配置 SSH
+### <a name="create-hdinsight-using-a-password"></a>使用密码创建 HDInsight
 
-创建基于 Linux 的 HDInsight 群集时，必须提供 _SSH 用户名_以及_密码_或_公钥_。 在创建群集的过程中，将使用这些信息在 HDInsight 群集节点上创建登录名。 密码或公钥用于保护用户帐户。
+| 创建方法 | 如何指定密码 |
+| --------------- | ---------------- |
+| **Azure 门户** | 默认情况下，SSH 用户帐户的密码与群集登录帐户的密码相同。 若要使用不同的密码，请取消选中“使用与群集登录相同的密码”，然后在“SSH 密码”字段中输入密码。</br>![创建 HDInsight 群集时的 SSH 密码对话框](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
+| **Azure PowerShell** | 使用 `New-AzureRmHdinsightCluster` cmdlet 的 `--SshCredential` 参数，并传递包含 SSH 用户帐户名和密码的 `PSCredential` 对象。 |
+| **Azure CLI 1.0** | 使用 `azure hdinsight cluster create` 命令的 `--sshPassword` 参数，并提供密码值。 |
+| **Resource Manager 模板** | 有关在模板中使用密码的示例，请参阅 [Deploy HDInsight on Linux with SSH password](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)（使用 SSH 密码在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) 文件中的 `linuxOperatingSystemProfile` 元素用于在创建群集时向 Azure 传递 SSH 帐户名和密码。|
 
-有关在创建群集期间配置 SSH 的详细信息，请参阅以下文档之一：
+### <a name="change-the-ssh-password"></a>更改 SSH 密码
 
-* [Create HDInsight using the Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md)（使用 Azure 门户创建 HDInsight）
-* [Create HDInsight using the Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md)（使用 Azure CLI 创建 HDInsight）
-* [Create HDInsight using Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)（使用 Azure PowerShell 创建 HDInsight）
-* [Create HDInsight using Azure Resource Manager templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md)（使用 Azure Resource Manager 模板创建 HDInsight）
-* [Create HDInsight using the .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)（使用 .NET SDK 创建 HDInsight）
-* [Create HDInsight using REST](hdinsight-hadoop-create-linux-clusters-curl-rest.md)（使用 REST 创建 HDInsight）
+有关更改 SSH 用户帐户密码的信息，请参阅 [Manage HDInsight](hdinsight-administer-use-portal-linux.md#change-passwords)（管理 HDInsight）文档的 __Change passwords__（更改密码）部分。
 
-### <a name="additional-ssh-users"></a>其他 SSH 用户
+## <a id="domainjoined"></a>身份验证：已加入域的 HDInsight
 
-尽管创建群集后可将其他 SSH 用户添加到群集，但我们不建议这样做。
+如果使用__已加入域的 HDInsight 群集__，必须在通过 SSH 建立连接后使用 `kinit` 命令。 此命令将提示你输入域用户和密码，并在与群集关联的 Azure Active Directory 域中对你的会话进行身份验证。
 
-* 新 SSH 用户需要添加到群集中每个节点。
+有关详细信息，请参阅 [Configure domain-joined HDInsight](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight）。
 
-* 新 SSH 用户对 HDInsight 的访问权限与默认用户相同。 无法根据 SSH 用户帐户限制访问 HDInsight 中的数据或作业。
+## <a name="connect-to-worker-and-zookeeper-nodes"></a>连接到工作节点和 Zookeeper 节点
 
-若要基于用户限制访问权限，必须使用已加入域的 HDInsight 群集。 已加入域的 HDInsight 使用 Active Directory 来控制对群集资源的访问。
-
-借助已加入域的 HDInsight 群集，可在通过 SSH 建立连接后，使用 Active Directory 进行身份验证。 多个用户可以使用 SSH 建立连接，然后在其 Active Directory 帐户中进行身份验证。 有关详细信息，请参阅[已加入域的 HDInsight](#domainjoined) 部分。
-
-##<a name="a-idconnecta-connect-to-hdinsight"></a><a id="connect"></a>连接到 HDInsight
-
-尽管 HDInsight 群集中的所有节点都运行 SSH 服务器，但你只能通过公共 Internet 连接到头节点或边缘节点。
-
-* 若要连接到_头节点_，请使用 `CLUSTERNAME-ssh.azurehdinsight.net`，其中，__CLUSTERNAME__ 是 HDInsight 群集的名称。 端口 22（SSH 的默认端口）连接到主头节点。 端口 23 连接到辅助头节点。
-
-* 若要连接到_边缘节点_，请使用 `EDGENAME.CLUSTERNAME-ssh.azurehdinsight.net`，其中，__EDGENAME__ 是边缘节点的名称，__CLUSTERNAME__ 是 HDInsight 群集的名称。 连接到边缘节点时请使用端口 22。
-
-以下示例演示如何使用 SSH 用户名 __sshuser__ 连接到名为 __myhdi__ 的群集的头节点和边缘节点。 边缘节点名为 __myedge__。
-
-| 要执行以下操作... | 请使用以下方法... |
-| ----- | ----- |
-| 连接到主头节点 | `ssh sshuser@myhdi-ssh.azurehdinsight.net` |
-| 连接到辅助头节点 | `ssh -p 23 sshuser@myhdi-ssh.azurehdinsight.net` |
-| 连接到边缘节点 | `ssh sshuser@edge.myhdi-ssh.azurehdinsight.net` |
-
-如果使用密码保护 SSH 帐户，系统将提示输入该密码。
-
-如果使用公钥保护 SSH 帐户，可能需要使用 `-i` 开关指定匹配的私钥的路径。 以下示例演示如何使用 `-i` 开关：
-
-    ssh -i /path/to/public.key sshuser@myhdi-ssh.azurehdinsight.net
-
-### <a name="connect-to-other-nodes"></a>连接到其他节点
-
-辅助角色节点和 Zookeeper 节点不能直接从群集外部访问，但可以从群集头节点或边缘节点访问。 以下是连接到其他节点的一般步骤：
+无法直接从 Internet 访问工作节点和 Zookeeper 节点，但可以从群集头节点或边缘节点访问。 以下是连接到其他节点的一般步骤：
 
 1. 使用 SSH 连接到头节点或边缘节点：
 
-        ssh sshuser@myhdi-ssh.azurehdinsight.net
+        ssh sshuser@myedge.mycluster-ssh.azurehdinsight.net
 
-2. 通过 SSH 连接到头节点或边缘节点后，使用 `ssh` 命令连接到群集中的辅助角色节点：
+2. 通过 SSH 连接到头节点或边缘节点后，使用 `ssh` 命令连接到群集中的工作节点：
 
         ssh sshuser@wn0-myhdi
 
-    若要检索群集中辅助角色节点的列表，请参阅 [Manage HDInsight by using the Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)（使用 Ambari REST API 管理 HDInsight）文档中有关如何检索群集节点完全限定域名的示例。
+    若要检索群集中节点的域名列表，请参阅 [Manage HDInsight by using the Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)（使用 Ambari REST API 管理 HDInsight）文档中的示例。
 
-如果使用密码保护 SSH 帐户，系统会要求输入该密码来建立连接。
+如果使用__密码__保护 SSH 帐户，系统会要求输入该密码并建立连接。
 
-如果使用 SSH 密钥对你的用户帐户进行进行身份验证，必须确保为本地环境配置 SSH 代理转发。
+如果使用 __SSH 密钥__保护 SSH 帐户，必须确保为本地环境配置 SSH 代理转发。
+
+> [!NOTE]
+> 直接访问群集中所有节点的另一种方法是在 Azure 虚拟网络中安装 HDInsight。 然后，可将远程计算机加入相同的虚拟网络，这样就可以直接访问群集中的所有节点。
+>
+> 有关详细信息，请参阅将 [Use a virtual network with HDInsight](hdinsight-extend-hadoop-virtual-network.md)（对 HDInsight 使用虚拟网络）。
+
+### <a name="configure-ssh-agent-forwarding"></a>配置 SSH 代理转发
 
 > [!IMPORTANT]
 > 以下步骤假设在基于 Linux/UNIX 的系统上操作，并且能够使用 Bash on Windows 10。 如果这些步骤不适用于你的系统，你可能需要查阅 SSH 客户端的文档。
 
 1. 使用文本编辑器打开 `~/.ssh/config`。 如果此文件不存在，可以在命令行中输入 `touch ~/.ssh/config` 来创建。
 
-2. 将以下内容添加到该文件中。 将 *CLUSTERNAME* 替换为 HDInsight 群集的名称。
+2. 将以下文本添加到 `config` 文件。
 
-        Host CLUSTERNAME-ssh.azurehdinsight.net
+        Host <edgenodename>.<clustername>-ssh.azurehdinsight.net
           ForwardAgent yes
 
-    此条目为 HDInsight 群集配置 SSH 代理转发。
+    将 __Host__ 信息替换为使用 SSH 连接到的节点的地址。 上面的示例使用边缘节点。 此条目为指定的节点配置 SSH 代理转发。
 
 3. 在终端中通过使用以下命令测试 SSH 代理转发：
 
@@ -190,41 +177,10 @@ Windows 10 周年纪念版提供 Bash 作为开发人员功能。 其中提供 `
 
     如果你的私钥存储在不同文件中，请将 `~/.ssh/id_rsa` 替换为该文件的路径。
 
-<a id="domainjoined"></a>
-### <a name="domain-joined-hdinsight"></a>已加入域的 HDInsight
-
-[已加入域的 HDInsight](hdinsight-domain-joined-introduction.md) 可将 Kerberos 与 HDInsight 中的 Hadoop 集成。 由于 SSH 用户不是 Active Directory 域用户，因此在使用 Active Directory 进行身份验证之前无法运行 Hadoop 命令。 执行以下步骤，使用 Active Directory 对 SSH 会话进行身份验证：
-
-1. 使用 SSH 连接到已加入域的 HDInsight 群集。 例如，以下命令使用名为 __sshuser__ 的 SSH 帐户连接到名为 __myhdi__ 的 HDInsight 群集。
-
-        ssh sshuser@myhdi-ssh.azurehdinsight.net
-
-2. 运行以下命令，使用域用户和密码进行身份验证：
-
-        kinit
-
-     出现提示时，请输入域用户名以及该域用户的密码。
-
-    有关如何为已加入域的 HDInsight 群集配置域用户的详细信息，请参阅 [Configure Domain-joined HDInisight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInisight 群集）。
-
-使用 `kinit` 命令进行身份验证后，即可使用 `hdfs dfs -ls /` 或 `hive` 等 Hadoop 命令。
-
-## <a name="a-idtunnelassh-tunneling"></a><a id="tunnel"></a>SSH 隧道
-
-可以使用 SSH 来以隧道方式将本地请求（例如 Web 请求）传送到 HDInsight 群集。 该请求将转发到群集，然后在群集内进行解决。
-
-> [!IMPORTANT]
-> 访问某些 Hadoop 服务的 Web UI 需要使用 SSH 隧道。 例如，作业历史记录 UI 或资源管理器 UI 只能使用 SSH 隧道访问。
-
-有关创建和使用 SSH 隧道的详细信息，请参阅[使用 SSH 隧道访问 Ambari Web UI、JobHistory、NameNode、Oozie 和其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md)。
+5. 使用 SSH 连接到群集边缘节点或头节点。 然后使用 SSH 命令连接到工作节点或 zookeeper 节点。 使用转发的密钥建立连接。
 
 ## <a name="next-steps"></a>后续步骤
 
-既然你了解了如何使用 SSH 密钥进行身份验证，就可以学习如何在 HDInsight 上将 MapReduce 与 Hadoop 配合使用。
-
-* [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
-* [将 MapReduce 作业与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
-
-[preview-portal]: https://portal.azure.com/
-
+* [对 HDInsight 使用 SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)
+* [对 HDInsight 使用虚拟网络](hdinsight-extend-hadoop-virtual-network.md)
+* [在 HDInsight 中使用边缘节点](hdinsight-apps-use-edge-node.md#access-an-edge-node)

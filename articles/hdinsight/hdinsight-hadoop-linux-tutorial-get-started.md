@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: d038245747ff8cfd2c80d7a7e0f05373ccb1e5fe
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 24bb7e2ffd212594f50bab735e86d74ab95d8c62
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/11/2017
 
 大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，然后删除群集。 本部分介绍如何使用 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-template-deploy.md)在 HDInsight 中创建 Hadoop 群集。 Resource Manager 模板完全可自定义，使用它可以轻松创建 HDInsight 等 Azure 资源。 学习本教程不需要有 Resource Manager 模板方面的经验。 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。 使用页面顶部的选择器选择群集创建选项。
 
-在本教程中使用的 Resource Manager 模板位于 [Github](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)。 
+在本教程中使用的 Resource Manager 模板位于 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)。 
 
 1. 单击以下映像以登录到 Azure，然后在 Azure 门户中打开 Resource Manager 模板。 
    

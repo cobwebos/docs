@@ -12,14 +12,14 @@ ms.service: sql-database
 ms.custom: quick start
 ms.workload: data-management
 ms.tgt_pltfrm: na
-ms.devlang: cli
+ms.devlang: azurecli
 ms.topic: hero-article
 ms.date: 03/13/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f1e07d232328c35a43497c5a0ed6661a4277423d
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 3d642447526c5562ae3bfad5e4a4592e33e766aa
+ms.lasthandoff: 03/25/2017
 
 ---
 
@@ -63,18 +63,18 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
     -n AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
-## <a name="create-a-database-in-the-server"></a>在服务器中创建数据库
+## <a name="create-a-database-in-the-server-with-sample-data"></a>使用示例数据在服务器中创建数据库
 
-使用 [az sql db create](/cli/azure/sql/db#create) 命令在服务器中创建 [S0 性能级别](sql-database-service-tiers.md)的数据库。 以下示例创建一个空的名为 `mySampleDatabase` 的数据库。 根据需要替换此预定义的值。
+使用 [az sql db create](/cli/azure/sql/db#create) 命令在服务器中创建 [S0 性能级别](sql-database-service-tiers.md)的数据库。 以下示例创建名为 `mySampleDatabase` 的数据库，并将 AdventureWorksLT 示例数据加载到该数据库中。 根据需要替换这些预定义的值（此集合中的其他快速入门基于此快速入门中的值）。
 
 ```azurecli
 az sql db create --resource-group myResourceGroup --server $servername \
-    --name mySampleDatabase --service-objective S0
+    --name mySampleDatabase --sample-name AdventureWorksLT --service-objective S0
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
 
-此集合中的“连接方式”快速入门以及教程集合中的教程以此快速入门为基础。 如果计划继续使用后续的快速入门或相关教程，请勿清除在本快速入门中创建的资源。 如果不打算继续，请使用以下命令删除通过本快速入门创建的所有资源。
+本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果计划继续使用后续的快速入门或相关教程，请勿清除在本快速入门中创建的资源。 如果不打算继续，请使用以下命令删除通过本快速入门创建的所有资源。
 
 ```azurecli
 az group delete --name myResourceGroup

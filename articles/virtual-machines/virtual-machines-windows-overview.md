@@ -60,7 +60,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 | --- | --- |
 | Azure 门户 |创建 VM 时，可从列表中选择位置。 |
 | Azure PowerShell |使用 [Get-AzureRmLocation](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/get-azurermlocation) 命令。 |
-| REST API |使用“列出位置”操作。[](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations) |
+| REST API |使用 [列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations) 操作。 |
 
 ### <a name="vm-size"></a>VM 大小
 VM 的[大小](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)由所要运行的工作负荷决定。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure 提供各种大小来支持多种类型的用途。
@@ -131,7 +131,7 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 | --- | --- |
 | Azure 门户 |在中心菜单中，单击“虚拟机”，然后从列表中选择 VM。 在 VM 的边栏选项卡中，可以访问概述信息、设置值以及监视指标。 |
 | Azure PowerShell |有关使用 PowerShell 管理 VM 的信息，请参阅 [Manage Azure Virtual Machines using Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（使用 Resource Manager 与 PowerShell 来管理 Azure 虚拟机）。 |
-| REST API |使用“获取 VM 信息”操作获取有关 VM 的信息。[](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get) |
+| REST API |使用 [获取 VM 信息](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get) 操作获取有关 VM 的信息。 |
 | 客户端 SDK |有关使用 C# 管理 VM 的信息，请参阅 [Manage Azure Virtual Machines using Azure Resource Manager and C#](virtual-machines-windows-csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（使用 Azure Resource Manager 与 C# 来管理 Azure 虚拟机）。 |
 
 ### <a name="log-on-to-the-vm"></a>登录到 VM

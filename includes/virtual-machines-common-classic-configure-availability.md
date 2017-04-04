@@ -1,14 +1,14 @@
 
 
 
-可用性集可帮助虚拟机在停机期间（例如维护期间）保持可用。 在可用性集中放置两个或更多个类似配置的虚拟机，可针对虚拟机运行的应用程序或服务创建保持其可用性所需的冗余。 有关此方面工作原理的详细信息，请参阅[管理虚拟机的可用性][管理虚拟机的可用性]。
+可用性集可帮助虚拟机在停机期间（例如维护期间）保持可用。 在可用性集中放置两个或更多个类似配置的虚拟机，可针对虚拟机运行的应用程序或服务创建保持其可用性所需的冗余。 有关工作原理的详细信息，请参阅[管理虚拟机的可用性][Manage the availability of virtual machines]。
 
-同时使用可用性集和负载平衡终结点是帮助确保应用程序一直可用并有效运行的最佳实践。 有关负载平衡终结点的详细信息，请参阅 [Azure 基础结构服务的负载平衡][Azure 基础结构服务的负载平衡]。
+同时使用可用性集和负载均衡终结点是帮助确保应用程序一直可用并有效运行的最佳实践。 有关负载均衡终结点的详细信息，请参阅 [Azure 基础结构服务的负载均衡][Load balancing for Azure infrastructure services]。
 
 可以使用以下两个选项中的一个，将经典虚拟机添加到可用性集中：
 
-* [选项 1：同时创建虚拟机和可用性集][选项 1：同时创建虚拟机和可用性集]。 然后，在创建虚拟机时将新的虚拟机添加到该集。
-* [选项 2：将现有虚拟机添加到可用性集][选项 2：将现有虚拟机添加到可用性集]。
+* [选项 1：同时创建虚拟机和可用性集][Option 1: Create a virtual machine and an availability set at the same time]。 然后，在创建虚拟机时将新的虚拟机添加到该集。
+* [选项 2：将现有虚拟机添加到可用性集][Option 2: Add an existing virtual machine to an availability set]。
 
 > [!NOTE]
 > 在经典模型中，要放入同一可用性集的虚拟机必须属于同一云服务。
@@ -36,7 +36,7 @@
 8. 查看配置设置。 完成后，单击“创建”。
 9. 当 Azure 创建虚拟机时，可以在中心菜单的“虚拟机”下跟踪进度。
 
-若要使用 Azure PowerShell 命令创建 Azure 虚拟机并将它添加到新的或现有的可用性集，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+若要使用 Azure PowerShell 命令创建 Azure 虚拟机并将它添加到新的或现有的可用性集，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a id="addmachine"> </a>选项 2：将现有虚拟机添加到可用性集
 在 Azure 门户中，可以将现有经典虚拟机添加到现有可用性集，或为现有经典虚拟机创建新的可用性集。 （请记住，同一可用性集中的虚拟机必须属于同一云服务。）步骤几乎完全相同。 使用 Azure PowerShell 时，可以将虚拟机添加到现有可用性集。
@@ -64,17 +64,12 @@
 > 
 
 <!-- LINKS -->
-[选项 1：同时创建虚拟机和可用性集]: #createset
-[选项 2：将现有虚拟机添加到可用性集]: #addmachine
+[Option 1: Create a virtual machine and an availability set at the same time]: #createset
+[Option 2: Add an existing virtual machine to an availability set]: #addmachine
 
-[Azure 基础结构服务的负载平衡]: ../articles/virtual-machines/virtual-machines-linux-load-balance.md
-[管理虚拟机的可用性]: ../articles/virtual-machines/virtual-machines-linux-manage-availability.md
+[Load balancing for Azure infrastructure services]: ../articles/virtual-machines/virtual-machines-linux-load-balance.md
+[Manage the availability of virtual machines]:../articles/virtual-machines/linux/manage-availability.md
 
-[创建运行 Windows 的虚拟机]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
-[虚拟网络概述]: ../articles/virtual-network/virtual-networks-overview.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Create a virtual machine running Windows]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
+[Virtual Network overview]: ../articles/virtual-network/virtual-networks-overview.md
 

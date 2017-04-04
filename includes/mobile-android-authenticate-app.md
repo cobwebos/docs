@@ -12,24 +12,32 @@
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
 2. 将以下方法添加到 **ToDoActivity** 类：
 
+        // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
+        public static final int GOOGLE_LOGIN_REQUEST_CODE = 1;
+ 
         private void authenticate() {
             // Login using the Google provider.
-
-            ListenableFuture<MobileServiceUser> mLogin = mClient.login(MobileServiceAuthenticationProvider.Google);
-
-            Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
-                @Override
-                public void onFailure(Throwable exc) {
-                    createAndShowDialog((Exception) exc, "Error");
-                }           
-                @Override
-                public void onSuccess(MobileServiceUser user) {
-                    createAndShowDialog(String.format(
-                            "You are now logged in - %1$2s",
-                            user.getUserId()), "Success");
-                    createTable();    
+            mClient.login("Google", "{url_scheme_of_your_app}", GOOGLE_LOGIN_REQUEST_CODE);
+        }
+         
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            // When request completes
+            if (resultCode == RESULT_OK) {
+                // Check the request code matches the one we send in the login request
+                if (requestCode == GOOGLE_LOGIN_REQUEST_CODE) {
+                    MobileServiceActivityResult result = mClient.onActivityResult(data);
+                    if (result.isLoggedIn()) {
+                        // login succeeded
+                        createAndShowDialog(String.format("You are now logged in - %1$2s", mClient.getCurrentUser().getUserId()), "Success");
+                        createTable();
+                    } else {
+                        // login failed, check the error message
+                        String errorMessage = result.getErrorMessage();
+                        createAndShowDialog(errorMessage, "Error");
+                    }
                 }
-            });       
+            }
         }
 
     这将会创建一个用于处理身份验证过程的新方法。 使用 Google 登录对用户进行身份验证。 出现的对话框中会显示已经过身份验证的用户 ID。 如果未正常完成身份验证，你将无法继续操作。
@@ -59,11 +67,38 @@
             // Load the items from Azure.
             refreshItemsFromTable();
         }
-5. 然后，从“运行”菜单中单击“运行应用”启动应用，并使用所选的标识提供者登录。
+
+5. 将下面的 _RedirectUrlActivity_ 代码片段添加到 _AndroidManifest.xml_，确保可以重定向。
+ 
+        <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="{url_scheme_of_your_app}"
+                    android:host="easyauth.callback"/>
+            </intent-filter>
+        </activity>
+
+6.  将 redirectUriScheme 添加到 Android 应用程序的 _build.gradle_。
+ 
+        android {
+            buildTypes {
+                release {
+                    // … …
+                    manifestPlaceholders = ['redirectUriScheme': '{url_scheme_of_your_app}://easyauth.callback']
+                }
+                debug {
+                    // … …
+                    manifestPlaceholders = ['redirectUriScheme': '{url_scheme_of_your_app}://easyauth.callback']
+                }
+            }
+        }
+
+7. 将 com.android.support:customtabs:23.0.1 添加到 build.gradle 中的依赖项：
+
+      依赖项 {        // ...        编译“com.android.support:customtabs:23.0.1”    }
+
+8. 然后，从“运行”菜单中单击“运行应用”启动应用，并使用所选的标识提供者登录。
 
 成功登录后，应用应可以正常运行，并且你应能够查询后端服务并对数据进行更新。
-
-
-<!--HONumber=Dec16_HO2-->
-
-

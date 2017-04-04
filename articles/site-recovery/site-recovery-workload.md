@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 0c56a74e43b989a32b10a878cec16cce0f972a9f
-ms.openlocfilehash: 63c0397b6e737038fb7758d2749ae82d1485d45d
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 34a9d187eecec185e2b8d6977baea267ca9e60e5
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -130,6 +130,19 @@ Azure Site Recovery 可通过以下方式帮助保护 Dynamics AX ERP 解决方�
 * 按需创建一个与生产类似的副本来进行应用程序的测试和调试，从而简化 SAP 的开发与测试。
 
 [详细了解](http://aka.ms/asr-sap) 如何保护 SAP。
+
+## <a name="protect-iis"></a>保护 IIS
+按如下所述使用 Site Recovery 来保护 IIS 部署：
+
+Azure Site Recovery 可以将环境中的关键组件复制到冷远程站点或公有云（例如 Microsoft Azure），从而提供灾难恢复。 由于包含 Web 服务器和数据库的虚拟机将复制到恢复站点，因此不需单独备份配置文件或证书。 依赖于环境变量（在故障转移后已更改）的应用程序映射和绑定可以通过集成到灾难恢复计划中的脚本进行更新。 仅当故障转移时，才会在恢复站点中启动虚拟机。 不仅如此，Azure Site Recovery 还提供以下功能，帮助你协调端到端故障转移：
+
+-    顺序安排各层中虚拟机的关机和启动。
+-    添加脚本，以便在虚拟机启动后更新其上的应用程序依赖项和绑定。 也可使用脚本更新 DNS 服务器，使之指向恢复站点。
+-    通过映射主网络和恢复网络，在故障转移前向虚拟机分配 IP 地址，以便在故障转移后使用不需更新的脚本。
+-    能够对 Web 服务器上的多个 Web 应用程序进行一键式故障转移，因此在发生灾难时不会造成混淆。
+-    能够在适用于 DR 演练的隔离环境中测试恢复计划。
+
+[详细了解](https://aka.ms/asr-iis)如何保护 IIS Web 场。
 
 ## <a name="next-steps"></a>后续步骤
 [检查先决条件](site-recovery-prereq.md) 
