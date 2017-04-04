@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-/ms.date: 3/8/2017
+ms.date: 03/27/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 4e81088857c0e9cacaf91342227ae63080fc90c5
-ms.openlocfilehash: 780066b1e71d967c64da0a1c1a284ffd5d1b7481
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: fcdeac53c79551000b48a47a1afc65e082bcc692
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/23/2017
 现在所有存储帐户均支持文件存储，因此你可以使用现有存储帐户，也可以创建新的存储帐户。 请参阅 [How to create a storage account](storage-create-storage-account.md#create-a-storage-account) （如何创建存储帐户），了解有关创建新存储帐户的信息。
 
 ## <a name="use-the-azure-portal-to-manage-a-file-share"></a>使用 Azure 门户管理文件共享
-[Azure 门户](https://portal.azure.com) 提供了方便客户管理文件共享的用户界面。 在门户中，你可以：
+[Azure 门户](https://portal.azure.com)提供了方便客户管理文件共享的用户界面。 在门户中，你可以：
 
 * 创建文件共享
 * 将文件上载到文件共享以及从文件共享下载文件。
@@ -211,8 +211,8 @@ Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -Des
 ### <a name="mount-the-file-share-from-an-azure-virtual-machine-running-windows"></a>从运行 Windows 的 Azure 虚拟机装载文件共享
 为了演示如何装载 Azure 文件共享，现在我们将创建一个运行 Windows 的 Azure 虚拟机，并远程登录到它内部以装载共享。
 
-1. 首先，按照 [在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的说明创建新的 Azure 虚拟机。
-2. 接下来，按照 [使用 Azure 门户登录到 Windows 虚拟机](../virtual-machines/virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的说明远程登录到虚拟机。
+1. 首先，按照[在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的说明创建新的 Azure 虚拟机。
+2. 接下来，按照[使用 Azure 门户登录到 Windows 虚拟机](../virtual-machines/virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的说明远程登录到虚拟机。
 3. 在该虚拟机上打开 PowerShell 窗口。
 
 ### <a name="persist-your-storage-account-credentials-for-the-virtual-machine"></a>保存虚拟机的存储帐户凭据
@@ -264,17 +264,29 @@ net use z: \\samples.file.core.windows.net\logs /u:AZURE\samples <storage-accoun
 若要编写调用文件存储的代码，可以使用适用于 .NET 和 Java 的存储客户端库或 Azure 存储 REST API。 本部分中的示例演示如何通过在桌面上运行的简单控制台应用程序使用 [用于 .NET 的 Azure 存储客户端库](https://msdn.microsoft.com/library/mt347887.aspx) 处理文件共享。
 
 ### <a name="create-the-console-application-and-obtain-the-assembly"></a>创建控制台应用程序，并获取程序集
-在 Visual Studio 中创建新的控制台应用程序并安装包含 Azure 存储空间客户端库的 NuGet 包：
+在 Visual Studio 中创建新的 Windows 控制台应用程序。 以下步骤演示如何在 Visual Studio 2017 中创建控制台应用程序，但是，其他 Visual Studio 版本中的步骤是类似的。
 
-1. 在 Visual Studio 中，选择“文件”>“新建项目”，然后从 Visual C# 模板列表中选择“Windows”>“控制台应用程序”。
-2. 提供控制台应用程序的名称，然后单击“确定”。
-3. 创建项目后，在解决方案资源管理器中右键单击该项目并选择“管理 NuGet 包”。 在线搜索“WindowsAzure.Storage”，然后单击“安装”以安装适用于 .NET 包和依赖项的 Azure 存储客户端库。
+1. 选择“文件” > “新建” > “项目”
+2. 选择“已安装” > “模板” > “Visual C#” > “Windows 经典桌面”
+3. 选择“控制台应用(.NET Framework)”
+4. 在“名称:”字段中输入应用程序的名称
+5. 选择“确定”
 
-此文章中的代码示例还使用 [Microsoft Azure Configuration Manager 库](https://msdn.microsoft.com/library/azure/mt634646.aspx) 从控制台应用程序中的 app.config 文件中检索存储连接字符串。 使用 Azure Configuration Manager，可以在运行时检索连接字符串，无论你的应用程序是在 Microsoft Azure 中运行还是从桌面设备、移动设备或 Web 应用程序中运行。
+本教程中的所有代码示例都可以添加到控制台应用程序的 `Program.cs` 文件的 `Main()` 方法。
 
-若要安装 Azure Configuration Manager 包，请在“解决方案资源管理器”中右键单击项目，然后选择“管理 NuGet 包”。 在线搜索“ConfigurationManager”，然后单击“安装”以安装包。
+可以在任意类型的 .NET 应用程序（包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序）中使用 Azure 存储客户端库。 为简单起见，我们在本指南中使用控制台应用程序。
 
-不一定要使用 Azure Configuration Manager。 还可以使用 API，例如 .NET Framework 的 [ConfigurationManager 类](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx)。
+### <a name="use-nuget-to-install-the-required-packages"></a>使用 NuGet 安装所需包
+为完成此教程，需要在项目中引用两个包：
+
+* [适用于 .NET 的 Microsoft Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)：此包提供以编程方式访问存储帐户中数据资源的权限。
+* [适用于 .NET 的 Microsoft Azure Configuration Manager 库](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)：此包提供用于分析配置文件中连接字符串的类，而不考虑应用程序在何处运行。
+
+可以使用 NuGet 获取这两个包。 执行以下步骤:
+
+1. 在“解决方案资源管理器”中，右键单击你的项目并选择“管理 NuGet 包”。
+2. 在线搜索“WindowsAzure.Storage”，然后单击“安装”  以安装存储客户端库和依赖项。
+3. 在线搜索“WindowsAzure.ConfigurationManager”，然后单击“安装”以安装 Azure Configuration Manager。
 
 ### <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 app.config 文件
 接下来，将你的凭据保存到项目的 app.config 文件中。 编辑 app.config 文件，使其看起来类似于下面的示例，将 `myaccount` 替换为你的存储帐户名称，并将 `mykey` 替换为你的存储帐户密钥。
@@ -296,8 +308,8 @@ net use z: \\samples.file.core.windows.net\logs /u:AZURE\samples <storage-accoun
 > 
 > 
 
-### <a name="add-namespace-declarations"></a>添加命名空间声明
-从解决方案资源管理器打开 `program.cs` 文件，并在该文件顶部添加以下命名空间声明。
+### <a name="add-using-directives"></a>添加 using 指令
+从解决方案资源管理器打开 `Program.cs` 文件，并在该文件顶部添加以下 using 指令。
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -546,7 +558,7 @@ Azure 存储空间分析现在支持用于文件存储的指标。 使用指标�
 
 下面的代码示例演示如何使用适用于 .NET 的存储客户端库启用文件存储的指标。
 
-首先，在添加以上语句后，将以下 `using` 语句添加到你的 program.cs 文件中：
+首先，在添加以上指令后，将以下 `using` 指令添加到 `Program.cs` 文件中：
 
 ```csharp
 using Microsoft.WindowsAzure.Storage.File.Protocol;
@@ -645,7 +657,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
     若要将大量文件传输到文件存储，建议使用 AzCopy、Azure Powershell (Windows) 或 Azure CLI (Linux/Unix)，因为这些工具已针对网络传输进行优化。
 15. **发布了修复 Azure 文件慢速性能问题的修补程序**
     
-    Windows 团队最近发布了一个修补程序，旨在修复客户从 Windows 8.1 计算机或 Windows Server 2012 R2 服务器访问 Azure 文件存储时遇到的慢速性能问题。 有关详细信息，请查看相关的知识库文章： [Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2](https://support.microsoft.com/en-us/kb/3114025)（从 Windows 8.1 或 Server 2012 R2 访问 Azure 文件存储时性能降低）。
+    Windows 团队最近发布了一个修补程序，旨在修复客户从 Windows 8.1 计算机或 Windows Server 2012 R2 服务器访问 Azure 文件存储时遇到的慢速性能问题。 有关详细信息，请查看相关的知识库文章： [Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2](https://support.microsoft.com/kb/3114025)（从 Windows 8.1 或 Server 2012 R2 访问 Azure 文件存储时性能降低）。
 16. **通过 IBM MQ 使用 Azure 文件存储**
     
     IBM 已发布相关文档来指导 IBM MQ 客户通过其服务配置 Azure 文件存储。 有关详细信息，请查阅 [如何通过 Microsoft Azure 文件服务设置 IBM MQ 多实例队列管理器](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)。
@@ -655,9 +667,10 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 18. **如何针对 Azure 文件启用服务器端加密？**
 
-    [服务器端加密](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)目前提供预览版。 在预览期间，只能为新创建的 Azure Resource Manager (ARM) 存储帐户启用此功能。
-    可以使用 Azure 门户在 Azure Resource Manager 存储帐户上启用此功能。 我们计划二月底在 [Azure Powershell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx)、[Azure CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli-nodejs) 或 [Microsoft Azure 存储资源提供程序 API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) 上启用针对文件存储的加密。 启用此功能不需额外付费。 针对 Azure 文件存储启用存储服务加密以后，系统会自动加密数据。 
-    了解有关存储服务加密的详细信息。 有关预览版的其他问题，也可发送邮件至 ssediscussions@microsoft.com。
+    针对 Azure 文件的[服务器端加密](storage-service-encryption.md)目前提供预览版。 在预览期间，只能在使用 [Azure 门户](https://portal.azure.com)新建的 Azure Resource Manager 存储帐户上启用此功能。 启用此功能不需额外付费。 针对 Azure 文件存储启用存储服务加密以后，系统会自动加密数据。 
+    
+    我们计划未来允许用户通过 [Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage)、[Azure CLI](storage-azure-cli.md) 和 [Azure 存储资源提供程序 REST API](/rest/api/storagerp/storageaccounts) 为文件存储启用加密。 
+    若要详细了解如何在 Azure 存储中进行静态加密，请参阅[存储服务加密](storage-service-encryption.md)；如果在预览期间有疑问，可联系 ssediscussions@microsoft.com。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。
@@ -670,7 +683,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 * [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)
 * [如何对 Microsoft Azure 存储空间使用 AzCopy](storage-use-azcopy.md)
 * [将 Azure CLI 用于 Azure 存储空间](storage-azure-cli.md#create-and-manage-file-shares)
-* [排查 Azure 文件存储问题](https://docs.microsoft.com/en-us/azure/storage/storage-troubleshoot-file-connection-problems)
+* [排查 Azure 文件存储问题](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>引用
 * [.NET 存储客户端库参考](https://msdn.microsoft.com/library/azure/dn261237.aspx)

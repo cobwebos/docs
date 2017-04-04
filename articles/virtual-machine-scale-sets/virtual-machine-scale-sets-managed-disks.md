@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 2/21/2017
 ms.author: negat
 translationtype: Human Translation
-ms.sourcegitcommit: 9b2ef23effa32e9b7507ad6e6eb29e97609a2034
-ms.openlocfilehash: e59e95c55beeb2af6c704bcaad11c8d622f4e853
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 4ec20a30f423d4b30e953f873100be90167f987b
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -41,7 +41,7 @@ az group create -l southcentralus -n dsktest
 az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
 ```
 
-或者，可以在 [Azure 快速入门模板 Github 存储库](https://github.com/Azure/azure-quickstart-templates)中查找包含 `vmss` 的文件夹，以查看预先构建的用于部署规模集的模板示例。 若要区分哪些模板已使用托管磁盘，可以参考[此列表](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)。
+或者，可以在 [Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)中查找包含 `vmss` 的文件夹，以查看预先构建的用于部署规模集的模板示例。 若要区分哪些模板已使用托管磁盘，可以参考[此列表](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)。
 
 ## <a name="api-versions"></a>API 版本
 

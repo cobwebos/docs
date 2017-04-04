@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/08/2016
+ms.date: 03/27/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 12ce6b6bccf3ea2aa2945ddd775716f29cf01e1f
-ms.openlocfilehash: 24b23c412ae4e092427b4e68b16df0369f9e9f0e
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 29d8693dd1d6d1ef26ccb21e3a5b29cf1adbfcc5
+ms.lasthandoff: 03/28/2017
 
 ---
-
 # <a name="get-started-with-azure-blob-storage-using-net"></a>通过 .NET 开始使用 Azure Blob 存储
+
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../includes/storage-check-out-samples-dotnet.md)]
 
-## <a name="overview"></a>概述
 Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中的服务。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。
 
 ### <a name="about-this-tutorial"></a>关于本教程
@@ -33,7 +33,7 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 
 **先决条件：**
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/)
 * [适用于 .NET 的 Azure 存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * 一个 [Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)
@@ -49,8 +49,8 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 
 [!INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
 
-### <a name="add-namespace-declarations"></a>添加命名空间声明
-将下列 **using** 语句添加到 `program.cs` 文件的顶部：
+### <a name="add-using-directives"></a>添加 using 指令
+将以下 **using** 指令添加到 `Program.cs` 文件顶部：
 
 ```csharp
 using Microsoft.Azure; // Namespace for CloudConfigurationManager
@@ -96,10 +96,10 @@ container.SetPermissions(
     new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 ```
 
-Internet 中的所有人都可以查看公共容器中的 blob，但是，仅在你具有相应的帐户访问密钥或共享的访问签名时，才能修改或删除它们。
+在 Internet 上的任何人都可以看到公共容器中的 Blob。 但是，仅当你具有相应的帐户访问密钥或共享访问签名时，才能修改或删除它们。
 
 ## <a name="upload-a-blob-into-a-container"></a>将 Blob 上载到容器中
-Azure Blob 存储支持块 Blob 和页 Blob。  大多数情况下，推荐使用块 Blob。
+Azure Blob 存储支持块 Blob 和页 Blob。  大多数情况下，推荐使用块 Blob 类型。
 
 若要将文件上载到块 Blob，请获取容器引用，并使用它获取块 Blob 引用。 获取 Blob 引用后，可以通过调用 **UploadFromStream** 方法，将任何数据流上载到该 Blob。 如果之前不存在 Blob，此操作将创建一个；如果存在 Blob，此操作将覆盖它。
 
@@ -127,7 +127,7 @@ using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 ```
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
-若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 **ListBlobs** 方法来检索其中的 Blob 和/或目录。 若要访问返回的 **IListBlobItem** 的丰富属性和方法，必须将它转换为 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。  如果类型未知，可以使用类型检查来确定要将其转换为哪种类型。  以下代码演示了如何检索和输出 _photos_ 容器中每项的 URI：
+若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 **ListBlobs** 方法来检索其中的 Blob 和/或目录。 若要访问返回的 **IListBlobItem** 的丰富属性和方法，必须将它转换为 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。 如果类型未知，可以使用类型检查来确定要将其转换为哪种类型。 以下代码演示了如何检索和输出 _photos_ 容器中每项的 URI：
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -166,24 +166,28 @@ foreach (IListBlobItem item in container.ListBlobs(null, false))
 }
 ```
 
-如上所示，你可以命名 Blob，在其名称中包含路径信息。 这将创建一个虚拟目录结构，你可以像传统文件系统一样组织和遍历。 注意，该目录结构仅仅是虚拟的 - Blob 存储中唯一可用的资源是容器和 Blob。 但是，存储空间客户端库提供 **CloudBlobDirectory** 对象来引用虚拟目录，并简化了以这种方式组织的 Blob 的使用过程。
+将路径信息包括在 Blob 名称中即可创建一个虚拟目录结构，你可以像使用传统文件系统一样进行组织和遍历。 该目录结构仅仅是虚拟的 - Blob 存储中能够使用的资源只有容器和 Blob。 但是，存储空间客户端库提供 **CloudBlobDirectory** 对象来引用虚拟目录，并简化了以这种方式组织的 Blob 的使用过程。
 
-例如，请考虑名为 _photos_ 的容器中包含的下面一组块 Blob：
+例如，请考虑名为 *photos* 的容器中包含的下面一组块 Blob：
 
-    photo1.jpg
-    2010/architecture/description.txt
-    2010/architecture/photo3.jpg
-    2010/architecture/photo4.jpg
-    2011/architecture/photo5.jpg
-    2011/architecture/photo6.jpg
-    2011/architecture/description.txt
-    2011/photo7.jpg
+```
+photo1.jpg
+2010/architecture/description.txt
+2010/architecture/photo3.jpg
+2010/architecture/photo4.jpg
+2011/architecture/photo5.jpg
+2011/architecture/photo6.jpg
+2011/architecture/description.txt
+2011/photo7.jpg
+```
 
-当对 _photos_ 容器调用 **ListBlobs** 时（如上面的示例中），将返回一个层次结构列表。 它包含 **CloudBlobDirectory** 和 **CloudBlockBlob** 对象，分别表示容器中的目录和 Blob。 生成的输出如下所示：
+对 *photos* 容器调用 **ListBlobs** 时（如前述代码片段所示），将返回一个层次结构列表。 它包含 **CloudBlobDirectory** 和 **CloudBlockBlob** 对象，分别表示容器中的目录和 Blob。 生成的输出如下所示：
 
-    Directory: https://<accountname>.blob.core.windows.net/photos/2010/
-    Directory: https://<accountname>.blob.core.windows.net/photos/2011/
-    Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
+```
+Directory: https://<accountname>.blob.core.windows.net/photos/2010/
+Directory: https://<accountname>.blob.core.windows.net/photos/2011/
+Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
+```
 
 另外，也可以将 **ListBlobs** 方法的 **UseFlatBlobListing** 参数设置为 **true**。 在这种情况下，作为 **CloudBlockBlob** 对象返回容器中的每一个 Blob。 对 **ListBlobs** 的调用返回一个平面列表，如下所示：
 
@@ -197,15 +201,16 @@ foreach (IListBlobItem item in container.ListBlobs(null, true))
 
 结果如下所示：
 
-    Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
-    Block blob of length 314618: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo3.jpg
-    Block blob of length 522713: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo4.jpg
-    Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2011/architecture/description.txt
-    Block blob of length 419048: https://<accountname>.blob.core.windows.net/photos/2011/architecture/photo5.jpg
-    Block blob of length 506388: https://<accountname>.blob.core.windows.net/photos/2011/architecture/photo6.jpg
-    Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/2011/photo7.jpg
-    Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
-
+```
+Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
+Block blob of length 314618: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo3.jpg
+Block blob of length 522713: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo4.jpg
+Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2011/architecture/description.txt
+Block blob of length 419048: https://<accountname>.blob.core.windows.net/photos/2011/architecture/photo5.jpg
+Block blob of length 506388: https://<accountname>.blob.core.windows.net/photos/2011/architecture/photo6.jpg
+Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/2011/photo7.jpg
+Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
+```
 
 ## <a name="download-blobs"></a>下载 Blob
 若要下载 Blob，请首先检索 Blob 引用，然后调用 **DownloadToStream** 方法。 以下示例使用 **DownloadToStream** 方法将 Blob 内容传输到一个流对象，然后可以将该对象保存到本地文件。
@@ -315,7 +320,7 @@ async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer cont
 ```
 
 ## <a name="writing-to-an-append-blob"></a>写入追加 Blob
-追加 Blob 是一个新类型的 Blob，由用于 .NET 的 Azure 存储空间客户端库 5.x 版引入。 追加 Blob 针对追加操作（例如日志记录）进行了优化。 类似于块 Blob，追加 Blob 由块组成，但是当你将新的块添加到追加 Blob 时，始终追加到该 Blob 的末尾。 你不能更新或删除追加 Blob 中现有的块。 追加 Blob 的块 ID 不公开，因为它们是用于一个块 Blob 的。
+追加 Blob 针对追加操作（例如日志记录）进行了优化。 类似于块 Blob，追加 Blob 由块组成，但是当你将新的块添加到追加 Blob 时，始终追加到该 Blob 的末尾。 你不能更新或删除追加 Blob 中现有的块。 追加 Blob 的块 ID 不公开，因为它们是用于一个块 Blob 的。
 
 追加 Blob 中的每个块可以有不同的大小，最大为 4 MB，并且追加 Blob 最多可包含 50000 个块。 因此，追加 Blob 的最大大小稍微大于 195 GB（4 MB X 50000 块）。
 
@@ -360,7 +365,7 @@ for (int i = 0; i < numBlocks; i++)
 Console.WriteLine(appendBlob.DownloadText());
 ```
 
-请参阅 [了解块 Blob、页 Blob 和追加 Blob](https://msdn.microsoft.com/library/azure/ee691964.aspx) ，就有关三种 Blob 之间的差异了解详细信息。
+请参阅 [了解块 Blob、页 Blob 和追加 Blob](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) ，就有关三种 Blob 之间的差异了解详细信息。
 
 ## <a name="managing-security-for-blobs"></a>管理 Blob 安全性
 默认情况下，Azure 存储空间会限制拥有帐户访问密钥的帐户所有者的访问权限来保持数据安全。 当你需要共享存储帐户中的 Blob 数据时，请注意不可危及帐户访问密钥的安全性。 此外，可以加密 Blob 数据，以确保其在网络中传输时以及在 Azure 存储空间中时的安全性。
@@ -383,33 +388,17 @@ Azure 存储空间支持在客户端和服务器上加密 Blob 数据：
 现在，你已了解 Blob 存储的基础知识，可单击下面的链接了解详细信息。
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure 存储空间资源管理器
-* [Microsoft Azure 存储资源管理器 (MASE)](../vs-azure-tools-storage-manage-with-storage-explorer.md) 是 Microsoft 免费提供的独立应用，可用于在 Windows、OS X 和 Linux 上以可视方式处理 Azure 存储数据。
+* [Microsoft Azure 存储资源管理器 (MASE)](../vs-azure-tools-storage-manage-with-storage-explorer.md) 是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
 
 ### <a name="blob-storage-samples"></a>Blob 存储示例
 * [在 .NET 中使用 Azure Blob 存储入门](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
 
 ### <a name="blob-storage-reference"></a>Blob 存储参考
-* [.NET 存储客户端库参考](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-* [REST API 参考](http://msdn.microsoft.com/library/azure/dd179355)
+* [.NET 存储客户端库参考](https://msdn.microsoft.com/library/azure/mt347887.aspx)
+* [REST API 参考](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
 
 ### <a name="conceptual-guides"></a>概念性指南
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
 * [开始使用适用于 .NET 的文件存储](storage-dotnet-how-to-use-files.md)
 * [如何通过 WebJobs SDK 使用 Azure Blob 存储](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
-
-[Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
-[Blob6]: ./media/storage-dotnet-how-to-use-blobs/blob6.png
-[Blob7]: ./media/storage-dotnet-how-to-use-blobs/blob7.png
-[Blob8]: ./media/storage-dotnet-how-to-use-blobs/blob8.png
-[Blob9]: ./media/storage-dotnet-how-to-use-blobs/blob9.png
-
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
-[.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-[REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

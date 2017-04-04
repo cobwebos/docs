@@ -25,7 +25,7 @@ ms.lasthandoff: 03/17/2017
 本文有助于你了解 Azure 安全中心提供的各类安全警报。 有关如何管理警报的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
 
 > [!NOTE]
-> 若要设置高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 若要升级，请选择“安全策略”中的“定价层”。[](security-center-policies.md) 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+> 若要设置高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 若要升级，请选择 **安全策略** 中的 [定价层](security-center-policies.md) 。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 >
 >
 

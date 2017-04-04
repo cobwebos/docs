@@ -1,14 +1,16 @@
+通过站点到站点连接连接到本地网络需要 VPN 设备。 有许多不同的适用于 Azure 的 VPN 设备。 有关 VPN 设备和配置设置的信息，请参阅 [VPN 设备](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md)。 在配置 VPN 设备之前，对于要使用的 VPN 设备，请查看是否存在任何[已知的设备兼容性问题](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#known)。 如需具体的 VPN 设备配置信息，请联系设备制造商。
 
-若要配置 VPN 设备，你需要使用虚拟网络网关的公共 IP 地址来配置本地 VPN 设备。 请联系你的设备制造商以获得具体的配置信息并配置设备。 有关可在 Azure 上正常工作的 VPN 设备的详细信息，请参阅 [VPN 设备](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md) 。
+配置 VPN 设备时，需要以下项：
 
-若要使用 PowerShell 查找虚拟网络网关的公共 IP 地址，请使用以下示例：
+- 虚拟网关的“公共 IP 地址”。
 
-    Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
+    -  若要使用 Azure 门户查找公共 IP 地址，请导航到“虚拟网关”，然后单击网关的名称。 
 
-也可以使用 Azure 门户来查看虚拟网络网关的公共 IP 地址。 导航到“虚拟网络网关”，然后单击网关的名称。
+    - 若要使用 PowerShell 查找虚拟网关的公共 IP 地址，请使用以下示例，将相关值替换为你自己的值：
+
+            Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
+- **共享密钥**。 此共享密钥就是在创建站点到站点 VPN 连接时需指定的共享密钥。 在示例中，我们使用很基本的共享密钥。 你应该生成更复杂的可用密钥。
 
 
-
-<!--HONumber=Nov16_HO2-->
 
 

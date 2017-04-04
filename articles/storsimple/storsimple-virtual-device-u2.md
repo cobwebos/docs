@@ -4,7 +4,7 @@ description: "了解如何在 Microsoft Azure 虚拟网络中创建、部署和�
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: f37752a5-cd0c-479b-bef2-ac2c724bcc37
 ms.service: storsimple
@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/20/2017
+ms.date: 03/22/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 8b07ac76ebf40cd9bcf428711c2c0f3f3d917388
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 48d9d8ae97eb763932dd6a59a7df01ae92c92eff
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -33,7 +33,7 @@ StorSimple 虚拟设备可以在两种模型中使用：标准 8010（前身为 
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3（4 核，7 GB 内存） |Standard_DS3（4 核，14 GB 内存） |
 | **版本兼容性** |运行 pre-Update 2 或更高版本的设备版本 |运行 Update 2 或更高版本的设备版本 |
-| **上市区域** |所有 Azure 区域 |支持高级存储的所有 Azure 区域<br></br>可以在“Azure 服务(按区域)”列表中找到高级存储区域。[](https://azure.microsoft.com/en-us/regions/services) 确定支持 VM 的 DS、DSV2、Fs 和 GS 系列的区域。 |
+| **上市区域** |所有 Azure 区域 |支持高级存储的所有 Azure 区域<br></br> 高级存储区域对应于 [Azure 服务（按区域）](https://azure.microsoft.com/en-us/regions/services)列表中“磁盘存储”所在的行。 |
 | **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br>了解如何[创建高级存储帐户](../storage/storage-premium-storage.md) |
 | **工作负荷指导** |在级别从备份中检索文件 |云开发和测试方案、低延迟、高性能工作负荷 <br></br>用于灾难恢复的辅助设备 |
 
@@ -69,7 +69,7 @@ StorSimple 虚拟设备是软件形式的 StorSimple，在 Microsoft Azure 虚�
 #### <a name="azure-requirements"></a>Azure 要求
 预配虚拟设备之前，需要在 Azure 环境中做好以下准备：
 
-* 对于虚拟设备，需 [在 Azure 中配置虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-portal.md)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 可以在“Azure 服务(按区域)”列表中找到高级存储区域。[](https://azure.microsoft.com/en-us/regions/services) 确定支持 VM 的 DS、DSV2、Fs 和 GS 系列的区域。
+* 对于虚拟设备，需 [在 Azure 中配置虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-portal.md)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域对应于 [Azure 服务（按区域）](https://azure.microsoft.com/en-us/regions/services)列表中“磁盘存储”所在的行。
 * 建议使用 Azure 提供的默认 DNS 服务器，而不要指定自己的 DNS 服务器名称。 如果 DNS 服务器名称无效，或者 DNS 服务器无法正确解析 IP 地址，则创建虚拟设备将会失败。
 * 点到站点和站点到站点连接是可选的，而不是必需的。 如果需要，可以针对更高级方案配置这些选项。
 * 可以在可使用虚拟设备公开的卷的虚拟网络中创建 [Azure 虚拟机](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) （主机服务器）。 这些服务器必须满足以下要求：                             
