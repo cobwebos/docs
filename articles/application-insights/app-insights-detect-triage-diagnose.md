@@ -148,7 +148,7 @@ Fabrikam Bank 团队已经改进了始终发送异常遥测的做法，除非有
 
 TrackException 用于报告异常，因为它发送堆栈副本。 TrackEvent 用于报告其他事件。 可附加任何可能在诊断中有用的属性。
 
-在“诊断搜索”边栏选项卡中显示的异常和事件。[](app-insights-diagnostic-search.md) 可深入研究它们，了解其他属性和堆栈跟踪。
+在 [诊断搜索](app-insights-diagnostic-search.md) 边栏选项卡中显示的异常和事件。 可深入研究它们，了解其他属性和堆栈跟踪。
 
 ![在“诊断搜索”中，使用筛选器显示特定类型的数据](./media/app-insights-detect-triage-diagnose/appinsights-333facets.png)
 
@@ -166,7 +166,7 @@ TrackException 用于报告异常，因为它发送堆栈副本。 TrackEvent �
 该团队已习惯掌握关于用户活动的信息。 如今，他们无论什么时候设计一项新功能，都能知道如何获取关于使用情况的反馈。 他们从开始就设计将跟踪调用插入功能。 在每个开发循环中都使用反馈改进功能。
 
 ## <a name="proactive-monitoring"></a>主动监视
-Marcela 并不是坐等警报出现。 每次重新部署后不久，她都会查看“响应时间”，观察整体数字和最慢请求表以及异常计数。[](app-insights-web-monitor-performance.md)  
+Marcela 并不是坐等警报出现。 每次重新部署后不久，她都会查看 [响应时间](app-insights-web-monitor-performance.md)，观察整体数字和最慢请求表以及异常计数。  
 
 ![响应时间图和服务器响应时间网格。](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
 
