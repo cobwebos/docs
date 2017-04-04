@@ -132,7 +132,7 @@ ms.lasthandoff: 01/05/2017
                 }
             }
         }
-2. 导航到“在线 Swagger 编辑器”[]。 在该位置，单击“文件”->“粘贴 JSON”菜单项。
+2. 导航到 [在线 Swagger 编辑器] 。 在该位置，单击“文件”->“粘贴 JSON”菜单项。
    
     ![“粘贴 JSON”菜单项][paste-json]
 3. 粘贴前面复制的联系人列表 API Swagger JSON。 

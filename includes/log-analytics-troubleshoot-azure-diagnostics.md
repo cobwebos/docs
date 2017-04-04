@@ -17,6 +17,8 @@
 注册 *Microsoft.insights* 资源提供程序以后，可重试配置诊断。
 
 
-<!--HONumber=Feb17_HO2-->
+在 PowerShell 中，如果收到以下错误消息，则需更新 PowerShell 版本：
 
+`Set-AzureRmDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
+根据 [Get started with Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)（Azure PowerShell cmdlet 入门）一文的说明，将 PowerShell 更新到“2016 年 11 月(v2.3.0)”或更高版本。

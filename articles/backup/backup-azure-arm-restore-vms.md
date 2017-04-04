@@ -95,7 +95,7 @@ ms.lasthandoff: 03/27/2017
 ## <a name="choosing-a-vm-restore-configuration"></a>选择 VM 还原配置
 选择还原点点，请选择用于还原 VM 的配置。 用于配置已还原 VM 的选项包括使用 Azure 门户或 PowerShell。
 
-1. 如果尚未到达这一步，请转到“**还原**”边栏选项卡。 确保已选择“还原点”，然后单击“还原配置”，打开“恢复配置”边栏选项卡。[](#select-restore-point-for-restore)
+1. 如果尚未到达这一步，请转到“**还原**”边栏选项卡。 确保已选择 [还原点](#select-restore-point-for-restore)，然后单击 **还原配置**，打开 **恢复配置** 边栏选项卡。
 
     ![已设置恢复配置向导](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
 2. 在“还原配置”边栏选项卡上，有两个选择：

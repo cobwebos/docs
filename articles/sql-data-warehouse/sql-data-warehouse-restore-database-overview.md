@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
 ms.openlocfilehash: 104986e88ededf2137725fe258b6ce51f608b37d
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -100,9 +102,4 @@ Yes, for the next seven calendar days. When you delete a data warehouse, SQL Dat
 
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

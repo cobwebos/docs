@@ -1,5 +1,5 @@
 ---
-title: "配置可以并存的 ExpressRoute 连接和站点到站点 VPN 连接 | Microsoft Docs"
+title: "配置可以并存的 ExpressRoute 连接和站点到站点 VPN 连接：经典：Azure | Microsoft Docs"
 description: "本文将指导你配置可在经典部署模型中并存的 ExpressRoute 连接和站点到站点 VPN 连接。"
 documentationcenter: na
 services: expressroute
@@ -13,22 +13,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 03/21/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: aae9215ea67ff254bb3b67c5b113ad55eb3b1ca2
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 7e866a218c003390e0281f1adce7c0d843d006c0
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections-for-the-classic-deployment-model"></a>为经典部署模型配置 ExpressRoute 和站点到站点共存连接
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]
-> * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
+> * [PowerShell - 资源管理器](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - 经典](expressroute-howto-coexist-classic.md)
 > 
 > 
 
 能够配置站点到站点 VPN 和 ExpressRoute 具有多项优势。 你可以将站点到站点 VPN 配置为 ExressRoute 的安全故障转移路径，或者使用站点到站点 VPN 连接到不是通过 ExpressRoute 进行连接的站点。 我们将在本文中介绍这两种方案的配置步骤。 本文适用于经典部署模型。 此配置在门户中不可用。
+
+[!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
 **关于 Azure 部署模型**
 
@@ -74,9 +77,9 @@ ms.openlocfilehash: aae9215ea67ff254bb3b67c5b113ad55eb3b1ca2
   
     你可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 [为现有的 VNet 配置并存连接](#add) 部分将指导你删除网关，然后创建新的 ExpressRoute 连接和站点到站点 VPN 连接。 请注意，在创建新连接时，必须按照非常特定的顺序完成步骤。 不要按照其他文章中的说明来创建网关和连接。
   
-    在此过程中，创建可以共存的连接将需要你删除网关，然后配置新网关。 这意味着，在你删除并重新创建网关和连接时，跨界连接将会停止工作，但你无需将任何 VM 或服务迁移到新的虚拟网络。 在你配置网关时，如果进行了相应配置，你的 VM 和服务仍可以通过负载平衡器与外界通信。
+    在此过程中，创建可以共存的连接将需要你删除网关，然后配置新网关。 这意味着，在你删除并重新创建网关和连接时，跨界连接将会停止工作，但你无需将任何 VM 或服务迁移到新的虚拟网络。 在你配置网关时，如果进行了相应配置，你的 VM 和服务仍可以通过负载均衡器与外界通信。
 
-## <a name="a-namenewato-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>创建新的虚拟网络和并存连接
+## <a name="new"></a>创建新的虚拟网络和并存连接
 本过程将指导你创建 VNet，以及创建将共存的站点到站点连接和 ExpressRoute 连接。
 
 1. 你需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
@@ -182,7 +185,7 @@ ms.openlocfilehash: aae9215ea67ff254bb3b67c5b113ad55eb3b1ca2
 
         New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
 
-## <a name="a-nameaddato-configure-coexsiting-connections-for-an-already-existing-vnet"></a><a name="add"></a>为现有的 VNet 配置并存连接
+## <a name="add"></a>为现有的 VNet 配置并存连接
 如果你已经有了一个虚拟网络，请检查网关子网大小。 如果网关子网为 /28 或 /29，则必须先删除虚拟网络网关，然后增加网关子网大小。 本部分的步骤将说明如何这样做。
 
 如果网关子网为 /27 或更大，且虚拟网络是通过 ExpressRoute 连接的，则可跳过下面的步骤，转到前一部分的 [“步骤 6 - 创建站点到站点 VPN 网关”](#vpngw) 。
@@ -222,10 +225,5 @@ ms.openlocfilehash: aae9215ea67ff254bb3b67c5b113ad55eb3b1ca2
 
 ## <a name="next-steps"></a>后续步骤
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

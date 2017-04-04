@@ -16,15 +16,15 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: ee46da891ab50a64c649b0370cb9231dd3448ea1
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: c2c46637ccccd01c1c3056d6a25ef605cfd68f2d
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="getting-started-with-password-management"></a>密码管理入门
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 >
 >
 
@@ -375,7 +375,7 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 #### <a name="to-enable-password-writeback-using-windows-powershell"></a>使用 Windows PowerShell 启用密码写回
 1. 在**目录同步计算机**上，打开一个新的**权限提升的 Windows PowerShell 窗口**。
 2. 如果尚未加载该模块，请键入 `import-module ADSync` 命令以将 Azure AD Connect cmdlet 载入当前会话。
-3. 通过运行 `Get-ADSyncConnector` cmdlet 并将结果存储在 `$aadConnectorName` 中，以获取系统中 Azure AD 连接器的列表，例如 `$connectors = Get-ADSyncConnector|where-object {$\_.name -like "\*AAD"}`
+3. 通过运行 `Get-ADSyncConnector` cmdlet 并将结果存储在 `$aadConnectorName` 中，以获取系统中 Azure AD 连接器的列表，例如 `$aadConnectorName = Get-ADSyncConnector|where-object {$_.name -like "*AAD"}`
 4. 运行以下 cmdlet 获得当前连接器的当前写回状态：`Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name`
 5. 运行以下 cmdlet 启用密码写回：`Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name –Enable $true`
 
@@ -399,9 +399,9 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 
 #### <a name="why-do-i-need-to-do-this"></a>为什么需要执行此操作？
 
-为了使密码写回正常运行，运行 Azure AD Connect 的计算机需要能够建立到 **.servicebus.windows.net* 的出站 HTTPS 连接以及 Azure 使用的特定 IP 地址，如[Microsoft Azure 数据中 IP 范围列表](https://www.microsoft.com/download/details.aspx?id=41653)中所述。
+若要正常使用密码写回功能，运行 Azure AD Connect 的计算机需要能够与密码重置服务和 Azure 服务总线通信。
 
-对于 Azure AD Connect 工具 **1.1.443.0**（最新）及更高版本：
+对于 Azure AD Connect 工具 **1.1.443.0** 及更高版本：
 
 - 最新版的 Azure AD Connect 工具将需要以下网站的**出站 HTTPS** 访问权限：
     - *passwordreset.microsoftonline.com*
@@ -421,7 +421,7 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
         - 在此配置中，要使密码写回继续工作，需要确保网络设备使用 Microsoft Azure 数据中心 IP 范围列表中的最新 IP 每周更新。 这些 IP 范围可用作每周三（太平洋时间）更新的 XML 文件，并在下一个星期一（太平洋时间）生效。
     - 所需步骤：
         - 允许连接到 *.servicebus.windows.net 的所有出站 HTTPS 连接
-        - 允许连接到 Microsoft Azure 数据中心 IP 范围列表中所有 IP 的所有出站 HTTPS 连接，并使此配置每周更新。
+        - 允许连接到 Microsoft Azure 数据中心 IP 范围列表中所有 IP 的所有出站 HTTPS 连接，并使此配置每周更新。 [此处](https://www.microsoft.com/download/details.aspx?id=41653)提供可下载的列表。
 
 > [!NOTE]
 > 如果按照上述说明配置了密码写回，且在 Azure AD Connect 事件日志中没有看到任何错误，但是在测试时遇到连接错误，则可能是环境中的网络设备阻止了连接到 IP 地址的 HTTPS 连接。 例如，虽然允许连接到 *https://*.servicebus.windows.net*，但可能会阻止连接到该范围内的特定 IP 地址。 若要解决此问题，需要配置网络环境以允许通过端口 443 连接到任何 URL 或 IP 地址的所有出站 HTTPS 连接（上述的选项 1），或与你的网络团队协作，明确允许 HTTPS 连接到特定 IP 地址（上述的选项 2）。
@@ -495,7 +495,7 @@ Azure AD Connect 工具会定期将 ping/keepalive 发送到 ServiceBus 终结�
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为
 * [**最佳做法**](active-directory-passwords-best-practices.md) - 了解如何快速部署且有效管理组织的密码

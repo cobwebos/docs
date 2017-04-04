@@ -12,11 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 03/31/2017
 ms.author: luisca
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-datamarket-deprecation
 translationtype: Human Translation
 ms.sourcegitcommit: 9ac2a1bf5987fc6fc30e20a1b4a10340eeed3825
 ms.openlocfilehash: 15cf891b9c31e1f2e2b108e631f32883ce2f36a7
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -136,10 +139,5 @@ API 文档为 [Azure 机器学习建议 - 快速入门指南](machine-learning-r
 **在哪里可以找到使用条款？**
 
 [Microsoft Azure 机器学习建议 API 服务条款](https://datamarket.azure.com/dataset/amla/recommendations#terms)。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

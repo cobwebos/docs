@@ -169,7 +169,7 @@ Active Directory 评估使用已启用的代理收集 WMI 数据、注册表数�
 
 *有没有方法来忽略建议？*
 
-* 有的，请参阅上面的“忽略建议”[](#ignore-recommendations)部分。
+* 有的，请参阅上面的 [忽略建议](#ignore-recommendations) 部分。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看详细的 AD 评估数据和建议。

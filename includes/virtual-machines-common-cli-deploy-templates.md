@@ -677,9 +677,9 @@ info:    group deployment create command OK
 ### <a name="step-2-obtain-the-vhd"></a>步骤 2：获取 VHD
 显然，为此你需要一个 .vhd。 你可以使用 Azure 中现有的 .vhd，或者上载一个 .vhd。
 
-对于基于 Windows 的虚拟机，请参阅[创建 Windows Server VHD 并将其上载到 Azure](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+对于基于 Windows 的虚拟机，请参阅[创建 Windows Server VHD 并将其上载到 Azure](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
-有关基于 Linux 的虚拟机，请参阅[创建和上载包含 Linux 操作系统的虚拟硬盘](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
+有关基于 Linux 的虚拟机，请参阅[创建和上载包含 Linux 操作系统的虚拟硬盘](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
 
 ### <a name="step-3-create-the-virtual-machine-by-using-the-template"></a>步骤 3：使用模板创建虚拟机
 现在你已准备好使用 .vhd 创建新的虚拟机。 使用 `azure group create <location>` 创建一个要部署到的组：
@@ -760,7 +760,7 @@ info:    group deployment create command OK
 按照以下步骤部署一个多 VM 应用程序，它会通过 Azure PowerShell 命令使用 Github 模板存储库中的资源管理器模板，然后就可以使用虚拟网络和负载均衡器。
 
 ### <a name="step-1-examine-the-json-file-for-the-template"></a>步骤 1：检查 JSON 文件中的模板
-以下是模板的 JSON 文件内容。 如果需要最新版本，可查阅 [Github repository for templates](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)（Github 模板存储库）。 此主题使用 `--template-uri` 开关来调用模板，不过你也可以使用 `--template-file` 开关来传递本地版本。
+以下是模板的 JSON 文件内容。 如果需要最新版本，可查阅 [Github 模板存储库](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)。 此主题使用 `--template-uri` 开关来调用模板，不过你也可以使用 `--template-file` 开关来传递本地版本。
 
 ```json
 {

@@ -89,7 +89,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ### <a name="viewing-azure-sql-monitoring-data"></a>查看 Azure SQL Monitoring 数据
 
-单击“Azure SQL Monitoring”磁贴打开“Azure SQL Analytics”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”或单击列标题运行返回所有记录的日志搜索。。
+单击“Azure SQL Monitoring”磁贴打开“Azure SQL Analytics”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”或单击列标题运行返回所有记录的日志搜索。
 
 阅读有关[服务层 SQL 数据库选项和性能](../sql-database/sql-database-service-tiers.md)的信息。
 

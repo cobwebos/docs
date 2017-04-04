@@ -1,7 +1,7 @@
 在公有云中与在本地管理标识一样重要。 为此，Azure 支持多种不同的云标识技术。 它们包括：
 
 * 可以使用通过 Azure 虚拟机技术创建的虚拟机在云中运行 Windows Server Active Directory（通常简称为 AD）。 此方法在你使用 Azure 将本地数据中心扩展到云中时非常有用。
-* 可以使用 Azure Active Directory 让你的用户通过单一登录访问“软件即服务”(SaaS) 应用程序[](https://azure.microsoft.com/overview/what-is-saas/)。 例如，Microsoft 的 Office 365 使用此技术，而在 Azure 或其他云平台上运行的应用程序也可以使用此技术。
+* 可以使用 Azure Active Directory 让你的用户通过单一登录访问 [软件即服务(SaaS) 应用程序](https://azure.microsoft.com/overview/what-is-saas/)。 例如，Microsoft 的 Office 365 使用此技术，而在 Azure 或其他云平台上运行的应用程序也可以使用此技术。
 * 在云中或本地运行的应用程序可以使用 Azure Active Directory Access Control 让用户使用 Facebook、Google、Microsoft 和其他标识提供者的标识进行登录。
 
 本文将一一介绍这三种方式。
@@ -11,7 +11,7 @@
 * [使用 Azure Active Directory](#ad)
 * [使用 Azure Active Directory 访问控制](#ac)
 
-## <a name="a-nameadinvmarunning-windows-server-active-directory-in-virtual-machines"></a><a name="adinvm"></a>在虚拟机中运行 Windows Server Active Directory
+## <a name="adinvm"></a>在虚拟机中运行 Windows Server Active Directory
 在 Azure 虚拟机中运行 Windows Server AD 与在本地运行它非常类似。 [图 1](#fig1) 显示了这种情况的典型示例。
 
 ![虚拟机中的 Azure Active Directory](./media/identity/identity_01_ADinVM.png)
@@ -36,7 +36,7 @@
 
 也还有其他可能的情况。 例如，你不需要将云中的 Windows Server AD 连接到本地数据中心。 如果你要运行服务于特定用户组（如全部用户将使用基于云的标识单独登录）的 SharePoint 服务器场，则你可能要在 Azure 上创建一个独立林。 使用此技术的方式取决于您的目标。 （有关将 Windows Server AD 与 Azure 结合使用的更多详细指南，请[参见此处](http://msdn.microsoft.com/library/windowsazure/jj156090.aspx)。）
 
-## <a name="a-nameadausing-azure-active-directory"></a><a name="ad"></a>使用 Azure Active Directory
+## <a name="ad"></a>使用 Azure Active Directory
 随着 SaaS 应用程序越来越常见，它们产生了一个明显的问题：这些基于云的应用程序应当使用哪种类型的目录服务？ Microsoft 对该问题的回答是 Azure Active Directory。
 
 在云中主要通过两种方式来使用此目录服务：
@@ -73,7 +73,7 @@
 
 现今，Azure AD 不能完全取代本地 Windows Server AD。 正如已提到的那样，云目录拥有更加简单的架构，但同时也缺少一些功能，如组策略、存储有关计算机信息的能力和对 LDAP 的支持。 （事实上，Windows 计算机不能配置为让用户只使用 Azure AD 进行登录，这是不受支持的方案。）相反，Azure AD 的初始目标包括让企业用户访问云中的应用程序，无需维护单独的登录，无需本地目录管理员手动将其本地目录与组织使用的每个 SaaS 应用程序进行同步。 不过，随着时间的推移，期望此云目录服务能够处理更多的情况。
 
-## <a name="a-nameacausing-azure-active-directory-access-control"></a><a name="ac"></a>使用 Azure Active Directory 访问控制
+## <a name="ac"></a>使用 Azure Active Directory 访问控制
 基于云的标识技术可用于解决各种问题。 例如，Azure Active Directory 可让组织的用户通过单一登录访问多个 SaaS 应用程序。 但云中的标识技术还可用于其他方面。
 
 例如，假设某个应用程序希望让用户使用由多个*标识提供者 (IdP)* 颁发的令牌进行登录。 现今有很多不同的标识提供程序（包括 Facebook、Google、Microsoft 和其他标识提供程序），应用程序通常会让用户使用其中一种标识进行登录。 为什么应用程序在能够依赖已有标识的情况下还要费力维护自己的用户和密码列表呢？ 接受现有标识可以让那些拥有很少要记住的用户名和密码的用户以及那些创建应用程序、不再需要维护自己的用户名和密码列表的人员的工作变得更简单。
@@ -101,9 +101,4 @@
 
 ## <a name="about-the-author"></a>关于作者
 David Chappell 是位于加利福尼亚州旧金山市的 Chappell & Associates ([www.davidchappell.com](http://www.davidchappell.com)) 的负责人。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

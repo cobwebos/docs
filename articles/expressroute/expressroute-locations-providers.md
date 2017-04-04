@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2017
+ms.date: 03/22/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 9e89f7d362a61f39af2a6e2a94241f99b95806a4
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: ccb33119c7fb87cf3d56c02d2a9ac727c347fed6
 ms.lasthandoff: 03/22/2017
 
 ---
@@ -74,10 +74,10 @@ ms.lasthandoff: 03/22/2017
 | **釜山** |LG CNS+ |
 | **金奈** |Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **芝加哥** |AT&T NetBond、Comcast、Equinix、Level 3 Communications、Verizon、Zayo Group |
-| **达拉斯** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon |
+| **达拉斯** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon、Zayo Group+ |
 | **都柏林** |Colt、Telecity Group |
 | **香港** |British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
-| **伦敦** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone |
+| **伦敦** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone、Zayo Group+ |
 | **拉斯维加斯** |Level 3 Communications+、Megaport |
 | **洛杉矶** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
 | **墨尔本** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |
@@ -109,6 +109,7 @@ ms.lasthandoff: 03/22/2017
 | **达拉斯** |Equinix、Megaport、Verizon |
 | **纽约** |Equinix、Level 3 Communications+、Verizon |
 | **硅谷** | Equinix |
+| **西雅图** | Equinix+ |
 | **华盛顿特区** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 
 ### <a name="china"></a>中国
@@ -125,7 +126,7 @@ ms.lasthandoff: 03/22/2017
 | **柏林** |Colt+、e-shelter、Megaport+ |
 | **法兰克福** |Colt、Equinix、Interxion |
 
-## <a name="nonpartners"></a>通过未列出的服务提供商建立连接
+## <a name="c1partners"></a>通过未列出的服务提供商建立连接
 如果前面部分中未列出你的连接服务提供商，你仍可以建立连接。
 
 * 请咨询你的连接服务提供商，以确定他们是否已连接到上表中列出的任何 Exchange 提供商。 你可以访问以下链接，以收集 Exchange 提供商所提供的服务的详细信息。 已有多个连接提供商连接到以太网 Exchange。
@@ -144,11 +145,12 @@ ms.lasthandoff: 03/22/2017
 | **位置** | **Exchange** | **连接提供商** |
 | --- | --- | --- |
 | **阿姆斯特丹** | Equinix | Eurofiber |
-| **伦敦** | Equinix | Exponential E、HSO |
+| **达拉斯** | Equinix、Megaport | C3ntro、Data Foundry |
+| **伦敦** | Equinix | Exponential E、HSO、NexGen Networks |
 | **纽约** |Equinix |Lightower |
 | **西雅图** |Equinix |Alaska Communications |
 | **硅谷** |Equinix |XO Communications |
-| **新加坡** |Equinix |1CLOUDSTAR |
+| **新加坡** |Equinix |1CLOUDSTAR、Epsilon Telecommunications Limited |
 | **悉尼** | Megaport | Macquarie Telecom Group|
 | **东京** | Equinix | ARTERIA Networks Corporation |
 | **华盛顿特区** |Equinix | Lightower, Masergy |
@@ -160,7 +162,7 @@ ms.lasthandoff: 03/22/2017
 | --- | --- |
 | **亚洲** |Avanade Inc.、OneAs1a |
 | **澳大利亚** | IT Consultancy |
-| **欧洲** |Avanade Inc.、Dotnet Solutions、MSG Services、Nelite |
+| **欧洲** |Avanade Inc.、Dotnet Solutions、MSG Services、Nelite、sol-tec |
 | **北美** |Avanade Inc.、Equinix Professional Services、Perficient、Project Leadership |
 | **南美洲** |Avanade Inc. |
 ## <a name="next-steps"></a>后续步骤

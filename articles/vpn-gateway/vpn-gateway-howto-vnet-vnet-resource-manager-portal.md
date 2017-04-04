@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
-ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 102eab0e2e915521f8702b526dda886a2502f40b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -66,7 +67,7 @@ ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
 
 有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet 注意事项](#faq)。
 
-### <a name="a-namevaluesaexample-settings"></a><a name="values"></a>示例设置
+### <a name="values"></a>示例设置
 练习这些步骤时，可以使用示例配置值。 为了举例，我们对每个 VNet 使用了多个地址空间。 但是，VNet 到 VNet 配置并不需要多个地址空间。
 
 **TestVNet1 的值：**
@@ -115,18 +116,18 @@ ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
   * 名称：TestVNet4toTestVNet1
   * 共享密钥：可以自己创建共享密钥。 在此示例中，我们将使用 abc123。 重要的是在创建 VNet 之间的连接时，值必须匹配。
 
-## <a name="a-namecreatvneta1-create-and-configure-testvnet1"></a><a name="CreatVNet"></a>1.创建并配置 TestVNet1
+## <a name="CreatVNet"></a>1.创建并配置 TestVNet1
 如果已有一个 VNet，请验证这些设置是否与 VPN 网关设计兼容。 请特别注意任何可能与其他网络重叠的子网。 如果有重叠子网，连接将无法正常工作。 如果 VNet 配置了正确的设置，则可以开始执行 [指定 DNS 服务器](#dns) 部分中的步骤。
 
 ### <a name="to-create-a-virtual-network"></a>创建虚拟网络
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="a-namesubnetsa2-add-additional-address-space-and-create-subnets"></a><a name="subnets"></a>2.添加其他地址空间并创建子网
+## <a name="subnets"></a>2.添加其他地址空间并创建子网
 创建 VNet 后，可以添加其他地址空间和创建子网。
 
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
-## <a name="a-namegatewaysubneta3-create-a-gateway-subnet"></a><a name="gatewaysubnet"></a>3.创建网关子网
+## <a name="gatewaysubnet"></a>3.创建网关子网
 将虚拟网络连接到网关之前，必须先创建要连接的虚拟网络的网关子网。 在可能的情况下，最好是使用 CIDR 块 /28 或 /27 创建网关子网，以便提供足够的 IP 地址，满足将来的其他配置要求。
 
 如果正在练习创建此配置，请在创建网关子网时参考[示例设置](#values)。
@@ -136,21 +137,21 @@ ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
 ### <a name="to-create-a-gateway-subnet"></a>创建网关子网
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
-## <a name="a-namednsservera4-specify-a-dns-server-optional"></a><a name="DNSServer"></a>4.指定 DNS 服务器（可选）
-如果希望对部署到 VNet 的虚拟机进行名称解析，则需要指定 DNS 服务器。
+## <a name="DNSServer"></a>4.指定 DNS 服务器（可选）
+VNet 到 VNet 连接不需要 DNS。 但是，如果希望对部署到虚拟网络的资源进行名称解析，则应指定 DNS 服务器。 可以通过此设置指定 DNS 服务器，以便将其用于此虚拟网络的名称解析。 此设置不创建 DNS 服务器。
 
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
-## <a name="a-namevnetgatewaya5-create-a-virtual-network-gateway"></a><a name="VNetGateway"></a>5.创建虚拟网络网关
+## <a name="VNetGateway"></a>5.创建虚拟网络网关
 在此步骤中，为 VNet 创建虚拟网络网关。 此步骤最多需要 45 分钟才能完成。 如果正在练习创建此配置，可以参考[示例设置](#values)。
 
 ### <a name="to-create-a-virtual-network-gateway"></a>创建虚拟网络网关
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-## <a name="a-namecreatetestvnet4a6-create-and-configure-testvnet4"></a><a name="CreateTestVNet4"></a>6.创建并配置 TestVNet4
+## <a name="CreateTestVNet4"></a>6.创建并配置 TestVNet4
 配置 TestVNet1 后，请通过重复上述步骤创建 TestVNet4，并将值替换为 TestVNet4 的值。 无需等待 TestVNet1 的虚拟网络网关完成创建即可配置 TestVNet4。 如果使用自己的值，请确保地址空间不与任何想要连接的 VNet 重叠。
 
-## <a name="a-nametestvnet1connectiona7-configure-the-testvnet1-connection"></a><a name="TestVNet1Connection"></a>7.配置 TestVNet1 连接
+## <a name="TestVNet1Connection"></a>7.配置 TestVNet1 连接
 TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创建虚拟网络网关连接。 在本部分中，将创建从 VNet1 到 VNet4 的连接。
 
 1. 在“所有资源”中，导航到你的 VNet 的虚拟网络网关。 例如，**TestVNet1GW**。 单击“TestVNet1GW”打开“虚拟网络网关”边栏选项卡。
@@ -172,10 +173,10 @@ TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创�
     ![共享密钥](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "共享密钥")
 10. 单击边栏选项卡底部的“确定”以保存更改。
 
-## <a name="a-nametestvnet4connectiona8-configure-the-testvnet4-connection"></a><a name="TestVNet4Connection"></a>8.配置 TestVNet4 连接
+## <a name="TestVNet4Connection"></a>8.配置 TestVNet4 连接
 接下来，创建从 TestVNet4 到 TestVNet1 的连接。 使用与创建从 TestVNet1 到 TestVNet4 的连接相同的方法。 确保使用的同一个共享秘钥。
 
-## <a name="a-nameverifyconnectiona9-verify-your-connection"></a><a name="VerifyConnection"></a>9.验证连接
+## <a name="VerifyConnection"></a>9.验证连接
 验证连接。 对每个虚拟网络网关执行以下操作：
 
 1. 找到虚拟网络网关的边栏选项卡。 例如，**TestVNet4GW**。 
@@ -189,16 +190,11 @@ TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创�
 
 ![概要](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "概要")
 
-## <a name="a-namefaqavnet-to-vnet-considerations"></a><a name="faq"></a>VNet 到 VNet 注意事项
+## <a name="faq"></a>VNet 到 VNet 注意事项
 查看常见问题解答详细信息以获取有关 VNet 到 VNet 连接的其他信息。
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机文档](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
