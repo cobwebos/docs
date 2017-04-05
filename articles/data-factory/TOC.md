@@ -25,10 +25,11 @@
 
 # 如何
 ## 移动数据
+### [复制活动：概述](data-factory-data-movement-activities.md)
 ### [数据工厂复制向导](data-factory-azure-copy-wizard.md)
 #### [在 15 分钟内加载 1 TB 数据](data-factory-load-sql-data-warehouse.md)
-### [复制活动](data-factory-data-movement-activities.md)
-#### [性能和优化指南](data-factory-copy-activity-performance.md)
+### [性能和优化指南](data-factory-copy-activity-performance.md)
+### 连接器
 #### [Amazon Redshift](data-factory-amazon-redshift-connector.md)
 #### [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
 #### [Azure Blob 存储](data-factory-azure-blob-connector.md)
@@ -52,16 +53,14 @@
 #### [PostgreSQL](data-factory-onprem-postgresql-connector.md)
 #### [Salesforce](data-factory-salesforce-connector.md)
 #### [SAP Business Warehouse](data-factory-sap-business-warehouse-connector.md)
-#### [SFTP](data-factory-sftp-connector.md)
 #### [SAP HANA](data-factory-sap-hana-connector.md)
+#### [SFTP](data-factory-sftp-connector.md)
 #### [SQL Server](data-factory-sqlserver-connector.md)
 #### [Sybase](data-factory-onprem-sybase-connector.md)
 #### [Teradata](data-factory-onprem-teradata-connector.md)
 #### [Web 表](data-factory-web-table-connector.md)
 ### [数据管理网关](data-factory-data-management-gateway.md)
 ### [在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)
-### [映射输入和输出数据集列](data-factory-map-columns.md)
-### [支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)
 
 ## [转换数据](data-factory-data-transformation-activities.md)
 ### [HDInsight Hive 活动](data-factory-hive-activity.md)
@@ -100,9 +99,9 @@
 ### [产品建议](data-factory-product-reco-usecase.md)
 ### [客户分析](data-factory-customer-profiling-usecase.md)
 ### [使用数据工厂和批处理来处理大规模数据集](data-factory-data-processing-using-batch.md)
-## [服务更新](https://azure.microsoft.com/en-us/updates/?product=data-factory)
+## [服务更新](https://azure.microsoft.com/updates/?product=data-factory)
 ## [定价](https://azure.microsoft.com/pricing/details/data-factory/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-factory)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=data-factory)
 ## [请求功能](https://feedback.azure.com/forums/270578-azure-data-factory)

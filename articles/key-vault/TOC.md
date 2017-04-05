@@ -24,9 +24,10 @@
 
 ## 自动化
 ### [Azure 自动化](automation-manage-key-vault.md)
-### [使用 CLI 创建和管理](key-vault-manage-with-cli.md)
+### [使用 CLI 进行创建和管理](key-vault-manage-with-cli.md)
+### [使用 CLI 2.0 进行创建和管理](key-vault-manage-with-cli2.md)
 
-# 参考
+# 引用
 ## [PowerShell](/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault)
 ## [Azure CLI 2.0](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)

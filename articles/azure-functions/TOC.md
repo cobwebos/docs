@@ -21,13 +21,12 @@
 #### [HTTP 和 Webhook 绑定](functions-bindings-http-webhook.md)
 #### [移动应用绑定](functions-bindings-mobile-apps.md)
 #### [通知中心输出绑定](functions-bindings-notification-hubs.md)
-#### [用于队列和主题的服务总线触发器与绑定](functions-bindings-service-bus.md)
-#### [Sendgrid 绑定](functions-bindings-sendgrid.md)
+#### [服务总线绑定](functions-bindings-service-bus.md)
+#### [SendGrid 绑定](functions-bindings-sendgrid.md)
 #### 存储绑定
 ##### [Blob 绑定](functions-bindings-storage-blob.md)
 ##### [队列绑定](functions-bindings-storage-queue.md)
 ##### [表绑定](functions-bindings-storage-table.md)
-##### [SendGrid 绑定](functions-bindings-sendgrid.md)
 #### [计时器触发器](functions-bindings-timer.md)
 #### [Twilio 输出绑定](functions-bindings-twilio.md)
 ### [通过 Azure 门户创建 Function App](functions-create-function-app-portal.md) 
@@ -35,6 +34,8 @@
 ### [进行本地开发和调试](functions-run-local.md)
 ### [Azure Functions 最佳实践](functions-best-practices.md)
 ### [使用 Azure Functions 来执行计划的清理任务](functions-scenario-database-table-cleanup.md)
+### [创建 OpenAPI 定义（预览版）](functions-api-definition-getting-started.md)
+#### [函数引用中的 OpenAPI 2.0](functions-api-definition.md)
 
 ## 管理
 ### [为函数应用配置设置](functions-how-to-use-azure-function-app-settings.md)

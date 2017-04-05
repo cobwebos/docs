@@ -16,6 +16,7 @@
 ### [对 DC/OS 容器进行负载均衡](container-service-load-balancing.md)
 ### [DC/OS 中应用/用户特定的 Orchestrator](container-service-application-specific-marathon.md)
 ### [添加文件共享](container-service-dcos-fileshare.md)
+### [使用 Azure 容器注册表](container-service-dcos-acr.md)
 ### 监视 DC/OS
 #### [使用 ELK 进行监视](container-service-monitoring-elk.md)
 #### [使用 OMS 进行监视](container-service-monitoring-oms.md)
@@ -36,6 +37,7 @@
 ## 使用 Docker Swarm 进行管理
 ### [Docker 和 Docker Compose](container-service-docker-swarm.md)
 ### [Docker Swarm 持续集成](container-service-docker-swarm-setup-ci-cd.md)
+## [保护容器](container-service-security.md)
 # 引用
 ## [Azure CLI 2.0](/cli/azure/acs)
 ## [REST](/rest/api/compute/containerservices)
@@ -43,3 +45,4 @@
 ## [上市区域](https://azure.microsoft.com/regions/services/)
 ## [定价](https://azure.microsoft.com/pricing/details/container-service/)
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-container-service)

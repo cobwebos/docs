@@ -33,6 +33,8 @@
 ### [Azure 安全中心](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Azure 日志集成简介](security-azure-log-integration-overview.md)
 #### [Azure 日志集成入门](security-azure-log-integration-get-started.md)
+#### [集成 Azure Active Directory 审核日志](security-azure-log-integration-ad.md)
+#### [集成安全中心警报](security-azure-log-integration-security-center.md)
 #### [常见问题](security-azure-log-integration-faq.md)
 
 ## 身份管理
