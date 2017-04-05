@@ -15,13 +15,6 @@
 ## [PowerShell](app-service-powershell-samples.md) 
 
 # 教程
-## [将功能添加到 Web 应用](app-service-web-get-started-2.md)
-## [将 ASP.NET 应用与 SQL 数据库配合使用](web-sites-dotnet-get-started.md)
-## [将 Laravel 应用与 MySQL 配合使用](app-service-web-php-get-started.md)
-## [将 Sails.js 应用与 NOSQL DB 配合使用](app-service-web-nodejs-sails.md)
-## [将 Java 应用与 Eclipse 配合使用](app-service-web-eclipse-create-hello-world-web-app.md)
-## [将 Java 应用与 IntelliJ 配合使用](app-service-web-intellij-create-hello-world-web-app.md)
-## [将 Django 应用与 MySQL 配合使用](web-sites-python-ptvs-django-mysql.md)
 
 # 概念
 ## [应用服务的工作方式](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)    
@@ -34,20 +27,25 @@
 # 操作指南
 ## 开发应用    
 ### ASP.NET
-
+#### [将 ASP.NET 应用与 SQL 数据库配合使用](web-sites-dotnet-get-started.md)
 #### [使用 VS Code 开发 ASP.NET Core 应用](web-sites-create-web-app-using-vscode.md)
 ### PHP
+#### [将 Laravel 应用与 MySQL 配合使用](app-service-web-php-get-started.md)
 #### [设置 PHP 项目](web-sites-php-configure.md)
 #### [设置 WordPress Multisite](web-sites-php-convert-wordpress-multisite.md) 
 ### Node.js
+#### [将 Sails.js 应用与 NOSQL DB 配合使用](app-service-web-nodejs-sails.md)
 #### [使用 io.js](web-sites-nodejs-iojs.md)
 #### [调试 Node.js 应用](web-sites-nodejs-debug.md)
 ### Java
-
+#### [将 Java 应用与 Eclipse 配合使用](app-service-web-eclipse-create-hello-world-web-app.md)
+#### [将 Java 应用与 IntelliJ 配合使用](app-service-web-intellij-create-hello-world-web-app.md)
 #### [使用用于 Java 的 Azure SDK](java-create-azure-website-using-java-sdk.md)
 #### [上载现有应用](web-sites-java-add-app.md)
 #### [远程调试 Eclipse](app-service-web-debug-java-web-app-in-eclipse.md)
 #### [远程调试 IntelliJ](app-service-web-debug-java-web-app-in-intellij.md)
+### Python
+#### [将 Django 应用与 MySQL 配合使用](web-sites-python-ptvs-django-mysql.md)
 
 ### [使用 SendGrid 发送电子邮件](sendgrid-dotnet-how-to-send-email.md)
 
@@ -82,6 +80,7 @@
 
 ### [从 IIS 迁移](web-sites-migration-from-iis-server.md)
 ### [在生产中测试](app-service-web-test-in-production-get-start.md)
+### [将功能添加到 Web 应用](app-service-web-get-started-2.md)
 
 ## 连接到数据库/资源        
 

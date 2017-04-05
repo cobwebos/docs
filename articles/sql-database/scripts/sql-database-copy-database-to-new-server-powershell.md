@@ -27,7 +27,7 @@ ms.lasthandoff: 03/30/2017
 
 此示例 PowerShell 脚本在新服务器中创建现有数据库的副本。 
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="copy-a-database-to-a-new-server"></a>将数据库复制到新服务器
 
