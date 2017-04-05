@@ -1,5 +1,5 @@
 ---
-title: "SensorTag 设备和 Azure IoT 网关 - 第 1 课：设置 NUC | Microsoft Docs"
+title: "SensorTag 设备和 Azure IoT 网关 - 第 1 课：设置 Intel NUC | Microsoft Docs"
 description: "将 Intel NUC 设置为传感器和 Azure IoT 中心之间的 IoT 网关，用于收集传感器信息并将其发送到 IoT 中心。"
 services: iot-hub
 documentationcenter: 
@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
-ms.openlocfilehash: 53e709c5134eec29d71be1d75353d606aa651273
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: af2dde245fdef2984465f0c8447b558a2c770618
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -29,7 +29,8 @@ ms.lasthandoff: 01/25/2017
 - 将 Intel NUC 设置为 IoT 网关。
 - 在 Intel NUC 上安装 Azure IoT 网关 SDK 包。
 - 在 Intel NUC 上运行“hello_world”示例应用程序，验证网关功能。
-如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-troubleshooting.md)上查找解决方案。
+    
+  > 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-troubleshooting.md)上查找解决方案。
 
 ## <a name="what-you-will-learn"></a>你要学习的知识
 
@@ -41,11 +42,12 @@ ms.lasthandoff: 01/25/2017
 
 ## <a name="what-you-need"></a>所需条件
 
-- 预安装 Intel IoT 网关软件套件 (Wind River Linux *7.0.0.13) 的 Intel NUC 工具包 DE3815TYKE。
+- 预安装 Intel IoT 网关软件套件 (Wind River Linux *7.0.0.13) 的 Intel NUC 工具包 DE3815TYKE。 [单击此处购买 Grove IoT 商业网关工具包](https://www.seeedstudio.com/Grove-IoT-Commercial-Gateway-Kit-p-2724.html)。
 - 以太网电缆。
 - 键盘。
 - HDMI 或 VGA 电缆。
 - 带有 HDMI 或 VGA 端口的监视器。
+- 可选：[Texas Instruments Sensor Tag (CC2650STK)](http://www.ti.com/tool/cc2650stk)
 
 ![网关工具包](media/iot-hub-gateway-kit-lessons/lesson1/kit.png)
 
@@ -54,39 +56,43 @@ ms.lasthandoff: 01/25/2017
 下图是已连接到各种外围设备的 Intel NUC 示例：
 
 1. 连接到键盘。
-2. 通过 VGA 电缆或 HDMI 电缆连接到监视器。
-3. 通过以太网电缆连接到有线网络。
+2. 使用 VGA 电缆或 HDMI 电缆连接到监视器。
+3. 使用以太网电缆连接到有线网络。
 4. 通过电源线连接到电源。
 
 ![连接到外围设备的 Intel NUC](media/iot-hub-gateway-kit-lessons/lesson1/nuc.png)
 
 ## <a name="connect-to-the-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a>通过安全外壳 (SSH) 从主计算机连接到 Intel NUC 系统
 
-此时需要键盘和监视器才能获取 NUC 设备的 IP 地址。 如果已知道 IP 地址，则可跳到本部分的步骤 3。
+此时需要键盘和监视器才能获取 Intel NUC 设备的 IP 地址。 如果已知道 IP 地址，可跳到本部分的步骤 3。
 
-1. 按下电源按钮打开 Intel NUC，然后登录到系统。
+1. 按下电源按钮打开 Intel NUC，然后登录。
 
    默认用户名和密码都是 `root`。
 
-2. 运行 `ifconfig` 命令，获取 NUC 的 IP 地址。 请在 NUC 设备上完成此步骤。
+       > Hit the enter key on your keyboard if you see either of the following errors when you boot: 'A TPM error (7) occurred attempting to read a pcr value.' or 'Timeout, No TPM chip found, activating TPM-bypass!'
+
+2. 在 Intel NUC 设备上运行 `ifconfig` 命令，Intel NUC 的 IP 地址。
 
    以下是命令输出的示例。
 
-   ![显示 NUC IP 的 ifconfig 输出](media/iot-hub-gateway-kit-lessons/lesson1/ifconfig.png)
+   ![显示 Intel NUC IP 的 ifconfig 输出](media/iot-hub-gateway-kit-lessons/lesson1/ifconfig.png)
 
    在此示例中，`inet addr:` 后面的值是计划从主计算机远程连接到 Intel NUC 时所需的 IP 地址。
 
 3. 使用主计算机的以下任一 SSH 客户端连接到 Intel NUC。
 
-   - [PuTTY](http://www.putty.org/) for Windows。
-   - Ubuntu 或 macOS 上的内置 SSH 客户端。
+    - [PuTTY](http://www.putty.org/) for Windows。
+    - Ubuntu 或 macOS 上的内置 SSH 客户端。
 
-   通过主计算机在 Intel NUC 上执行操作更高效。 需要 IP 地址、用户名和密码才能通过 SSH 客户端连接 NUC。 下面是在 macOS 上使用 SSH 客户端的示例。
+   通过主计算机在 Intel NUC 上执行操作更高效。 需要 Intel NUC 的 IP 地址、用户名和密码才能通过 SSH 客户端与它建立连接。 下面是在 macOS 使用 SSH 客户端的示例。
    ![在 macOS 上运行的 SSH 客户端](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)
 
 ## <a name="install-the-azure-iot-gateway-sdk-package"></a>安装 Azure IoT 网关 SDK 包
 
-Azure IoT 网关 SDK 包中包含 SDK 及其依赖项的预编译二进制文件。 这些二进制文件包括 Azure IoT 网关 SDK、Azure IoT SDK 和相应的工具。 该包还包含用于验证网关功能的“hello_world”示例应用程序。 SDK 是网关的核心部分。 若要安装包，请执行以下步骤：
+Azure IoT 网关 SDK 包中包含 SDK 及其依赖项的预编译二进制文件。 这些二进制文件包括 Azure IoT 网关 SDK、Azure IoT SDK 和相应的工具。 该包还包含用于验证网关功能的“hello_world”示例应用程序。 SDK 是网关的核心部分。 
+
+执行以下步骤安装该包。
 
 1. 在终端窗口中运行以下命令，添加 IoT 云存储库：
 
@@ -99,11 +105,13 @@ Azure IoT 网关 SDK 包中包含 SDK 及其依赖项的预编译二进制文件
 
    ![rpm 和智能通道命令输出](media/iot-hub-gateway-kit-lessons/lesson1/rpm_smart_channel.png)
 
+2. 执行智能更新命令：
+
    ```bash
    smart update
    ```
 
-2. 运行以下命令来安装包：
+3. 运行以下命令安装 Azure IoT 网关包：
 
    ```bash
    smart install packagegroup-cloud-azure -y
@@ -111,22 +119,42 @@ Azure IoT 网关 SDK 包中包含 SDK 及其依赖项的预编译二进制文件
 
    `packagegroup-cloud-azure` 是包的名称。 `smart install` 命令用于安装包。
 
-   安装此包后，Intel NUC 应可用作网关。
+
+    > 如果出现“公钥不可用”错误，请运行以下命令
+
+    ```bash
+    smart config --set rpm-check-signatures=false
+    smart install packagegroup-cloud-azure -y
+    ```
+   
+   安装此包后，Intel NUC 可用作网关。
 
 ## <a name="run-the-azure-iot-gateway-sdk-helloworld-sample-application"></a>运行 Azure IoT 网关 SDK“hello_world”示例应用程序
 
-转到 `azureiotgatewaysdk/samples` 并运行“hello_world”示例应用程序。 此示例应用程序通过 `hello_world.json` 文件创建网关，并使用 Azure IoT 网关 SDK 体系结构的基本组件每隔 5 秒将“hello world”消息记录到文件。
+此示例应用程序通过 `hello_world.json` 文件创建网关，并使用 Azure IoT 网关 SDK 体系结构的基本组件每隔 5 秒将“hello world”消息记录到文件 (log.txt)。
 
-运行以下命令，运行“hello_world”示例应用程序：
+可以通过执行以下命令来运行 Hello World 示例：
 
 ```bash
 cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 ./hello_world hello_world.json
 ```
 
-如果网关功能正常工作，示例应用程序将生成以下输出：
-
+允许 Hello World 应用程序运行几分钟，然后点击 Enter 键来将其停止。
 ![应用程序输出](media/iot-hub-gateway-kit-lessons/lesson1/hello_world.png)
+
+> 可以忽略后按 Enter，会显示任何参数无效 handle(NULL) 错误。
+
+可以验证是否成功通过打开 log.txt 文件现在处于 hello_world 文件夹运行网关：![log.txt 目录视图](media/iot-hub-gateway-kit-lessons/lesson1/logtxtdir.png)
+
+使用以下命令打开 log.txt：
+
+```bash
+vim log.txt
+```
+
+然后，你将看到 log.txt，将每隔 5 秒编写的网关 Hello World 模块的日志记录消息的 JSON 格式输出的内容。
+![log.txt 目录视图](media/iot-hub-gateway-kit-lessons/lesson1/logtxtview.png)
 
 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-troubleshooting.md)上查找解决方案。
 

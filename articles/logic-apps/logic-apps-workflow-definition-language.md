@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 183b28ad9b9d0d0cf30d057a15fdd1e9e902d249
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 09ccdaa18d383569747612c33b63595c06a0131e
+ms.lasthandoff: 03/28/2017
 
 ---
 
@@ -320,7 +320,7 @@ ms.lasthandoff: 03/22/2017
 |startOfHour|返回传入的字符串时间戳的起始小时。 例如 `2017-03-15T13:00:00Z`：<br /><br /> `startOfHour('2017-03-15T13:27:36Z')`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 这是包含时间的字符串。<br /><br />**参数数目**：2<br /><br /> **名称**：格式<br /><br /> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  
 |startOfDay|返回传入的字符串时间戳的起始日期。 例如 `2017-03-15T00:00:00Z`：<br /><br /> `startOfDay('2017-03-15T13:27:36Z')`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 这是包含时间的字符串。<br /><br />**参数数目**：2<br /><br /> **名称**：格式<br /><br /> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。| 
 |startOfMonth|返回传入的字符串时间戳的起始月份。 例如 `2017-03-01T00:00:00Z`：<br /><br /> `startOfMonth('2017-03-15T13:27:36Z')`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 这是包含时间的字符串。<br /><br />**参数数目**：2<br /><br /> **名称**：格式<br /><br /> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。| 
-|dayOfWeek|返回字符串时间戳的星期日期组成部分。 例如 `Wednesday`：<br /><br /> `dayOfWeek('2017-03-15T13:27:36Z')`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 这是包含时间的字符串。| 
+|dayOfWeek|返回字符串时间戳的星期日期组成部分。  星期日为 0，星期一为 1，依此类推。 例如 `3`：<br /><br /> `dayOfWeek('2017-03-15T13:27:36Z')`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 这是包含时间的字符串。| 
 |dayOfMonth|返回字符串时间戳的月份日期组成部分。 例如 `15`：<br /><br /> `dayOfMonth('2017-03-15T13:27:36Z')`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 这是包含时间的字符串。| 
 |dayOfYear|返回字符串时间戳的年份日期组成部分。 例如 `74`：<br /><br /> `dayOfYear('2017-03-15T13:27:36Z')`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 这是包含时间的字符串。| 
 |ticks|返回字符串时间戳的计时周期属性。 例如 `1489603019`：<br /><br /> `ticks('2017-03-15T18:36:59Z')`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 这是包含时间的字符串。| 

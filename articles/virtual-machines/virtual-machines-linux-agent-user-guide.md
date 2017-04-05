@@ -17,9 +17,9 @@ ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 07ee32a293d53dd9c0e0afa5da2bac7ec146a536
-ms.openlocfilehash: c7f39a5396f0f9b6f9a577a3225ccadff1fd0dc9
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: b95d2f268548b48a1e31f2a35de8feaab251a485
+ms.lasthandoff: 03/29/2017
 
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
@@ -50,7 +50,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
   * 确保网络接口名称的稳定性
 * **内核**
   
-  * 配置虚拟 NUMA（版本低于&2;.6.37 的内核已禁用）
+  * 配置虚拟 NUMA（版本低于 2.6.37 的内核已禁用）
   * 将 Hyper-V 熵用于 /dev/random
   * 为根设备配置 SCSI 超时（可能通过远程方式）
 * **诊断**
@@ -105,7 +105,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 ## <a name="installation"></a>安装
 使用你的分发包存储库中的 RPM 或 DEB 包进行安装是安装和升级 Azure Linux 代理的首选方法。 所有[认可的分发版提供商](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)会将 Azure Linux 代理包集成到其映像和存储库。
 
-请参阅 [Github 上的 Azure Linux 代理存储库](https://github.com/Azure/WALinuxAgent)中的文档了解高级安装选项，例如从源安装，或者安装到自定义位置或前缀。
+请参阅 [GitHub 上的 Azure Linux 代理存储库](https://github.com/Azure/WALinuxAgent)中的文档了解高级安装选项，例如从源安装，或者安装到自定义位置或前缀。
 
 ## <a name="command-line-options"></a>命令行选项
 ### <a name="flags"></a>标志
@@ -305,6 +305,6 @@ Linux 代理的正常运行依赖一些系统程序包：
 * 请参阅以下资源来配置资源磁盘装入点，并在预配期间交换 Ubuntu 云映像上的空间：
   
   * [Ubuntu Wiki：配置交换分区](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [将自定义数据注入到 Azure 虚拟机中](virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+  * [将自定义数据注入到 Azure 虚拟机中](windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 

@@ -61,7 +61,7 @@ ms.lasthandoff: 02/09/2017
         </a>
     </li>
      <li>
-        <a href="/azure/sql-data-WArehouse/sql-data-warehouse-get-started-provision">
+        <a href="/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

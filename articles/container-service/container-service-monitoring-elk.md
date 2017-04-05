@@ -4,7 +4,7 @@ description: "使用 ELK（Elasticsearch、Logstash 和 Kibana）监视 Azure �
 services: container-service
 documentationcenter: 
 author: sauryadas
-manager: dan.lepow
+manager: madhana
 editor: 
 tags: acs, azure-container-service
 keywords: "容器, DC/OS, Azure, 监视, elk"
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 03/27/2017
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: 9433eb9f734dbe1b815074f86b9a691b4d16b5c8
-ms.openlocfilehash: c372c4a04de61f1eace81418ec6dea054007ec1f
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: fa17900f8a752d692a62e47d301651cc4f435f06
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -63,12 +64,10 @@ ELK 堆栈是 Elasticsearch、Logstash 和 Kibana 的组合，提供可用于监
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Elasticsearch、Logstash 和 Kibarna 的详细信息，请参阅[弹性堆栈文档](https://www.elastic.co/guide/index.html)。
+* 有关系统和应用程序日志转发和设置，请参阅[使用 ELK 在 DC/OS 中管理日志](https://docs.mesosphere.com/1.8/administration/logging/elk/)。
+
+* 若要筛选日志，请参阅[使用 ELK 筛选日志](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/)。 
+
  
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

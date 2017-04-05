@@ -1,6 +1,6 @@
 ---
-title: "为 Azure 导入作业准备硬盘驱动器的示例工作流 | Microsoft Docs"
-description: "参阅为 Azure 导入/导出服务中的导入作业准备驱动器的整个过程演练"
+title: "为 Azure 导入/导出服务的导入作业准备硬盘驱动器的示例工作流 - v1 | Microsoft Docs"
+description: "请参阅为 Azure 导入/导出服务中的导入作业准备驱动器的完整过程演练。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: ee7a8c9ae4cda5b67184100dd37ee4e0384aff26
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 313f8c1f3962a943b4c98c530c324ff28aa84c10
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/16/2017
   
 `5TB + 30GB + 25GB + 10GB = 5TB + 65GB`  
   
-对于本示例，两个 3TB 的硬盘驱动器应该足够。 但是，由于源目录 `H:\Video` 包含 5TB 数据，而单个硬盘驱动器的容量仅为 3TB，因此在运行 Microsoft Azure 导入/导出工具之前，需要将 `H:\Video` 分解为两个小目录：`H:\Video1` 和 `H:\Video2`。 此步骤将生成以下源目录：  
+对于本示例，两个 3TB 的硬盘驱动器应该足够。 但是，由于源目录 `H:\Video` 包含 5 TB 数据，而单个硬盘驱动器的容量仅为 3 TB，因此在运行 Microsoft Azure 导入/导出工具之前，需要将 `H:\Video` 分解为两个小目录：`H:\Video1` 和 `H:\Video2`。 此步骤将生成以下源目录：  
   
 |位置|大小|目标虚拟目录或 Blob|  
 |--------------|----------|-------------------------------------------|  
@@ -85,7 +85,7 @@ ms.lasthandoff: 02/16/2017
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
 <Metadata>  
-    <UploadMethod>Windows Azure Import/Export Service</UploadMethod>  
+    <UploadMethod>Windows Azure Import/Export service</UploadMethod>  
     <DataSetName>SampleData</DataSetName>  
     <CreationDate>10/1/2013</CreationDate>  
 </Metadata>  
@@ -131,38 +131,50 @@ ms.lasthandoff: 02/16/2017
     WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:x:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt /skipwrite
 ```
 
-对于第一个驱动器，请运行 Azure 导入/导出工具两次来复制两个源目录：  
+## <a name="copy-sessions---first-drive"></a>复制会话 - 第 1 个驱动器
+
+对于第 1 个驱动器，请运行 Azure 导入/导出工具 2 次来复制两个源目录：  
+
+**第 1 个复制会话**
   
 ```
-## First copy session for first drive  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:H:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```
 
+**第 2 个复制会话**
+
 ```  
-## Second copy session for first drive  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Photo /srcdir:H:\Photo /dstdir:photo/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt
 ```
+
+## <a name="copy-sessions---second-drive"></a>复制会话 - 第二个驱动器
+ 
+对于第 2 个驱动器，请运行 Azure 导入/导出工具 3 次（针对源目录运行 2 次，针对独立的 Blu-Ray™ 映像文件运行 1 次）：  
   
-对于第二个驱动器，请运行 Azure 导入/导出工具三次（针对源目录运行两次，针对独立的 Blu-Ray™ 映像文件运行一次）：  
-  
+**第 1 个复制会话** 
+
 ```
-## First copy session  
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:Video2 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:y /format /encrypt /srcdir:H:\Video2 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```
   
+**第 2 个复制会话**
+
 ```
-## Second copy session  
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:Music /srcdir:\\bigshare\john\music /dstdir:music/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```  
   
+**第 3 个复制会话**  
+
 ```
-## Third copy session  
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp\BlueRay.ISO /dstblob:favorite/BlueRay.ISO /MetadataFile:c:\WAImportExport\SampleMetadata.txt /PropertyFile:c:\WAImportExport\SampleProperties.txt  
 ```
-  
+
+## <a name="copy-session-completion"></a>复制会话完成
+
 复制会话完成后，可断开两个驱动器与复制计算机的连接，然后将其寄送到相应的 Microsoft Azure 数据中心。 在 [Microsoft Azure 管理门户](https://manage.windowsazure.com/)中创建导入作业时，将上载两个日记文件：`FirstDrive.jrn` 和 `SecondDrive.jrn`。  
   
-## <a name="see-also"></a>另请参阅  
-[为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-[常用命令快速参考](storage-import-export-tool-quick-reference-v1.md) 
+## <a name="next-steps"></a>后续步骤
+
+* [为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [常用命令快速参考](storage-import-export-tool-quick-reference-v1.md) 
 

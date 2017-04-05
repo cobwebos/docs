@@ -9,6 +9,7 @@ tags: azure-portal
 documentationcenter: 
 ms.assetid: cdc7d1b4-15d7-4d4d-a13f-c7d3a694b4fb
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: fd30c5befb378a031e818c29e9bde72c1105bf78
-ms.openlocfilehash: ac7e47835b0ae4fee724c18df949cedfc3a16957
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: ff1013840c220c54a9120572d16946ab6c5c5b07
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -120,7 +121,8 @@ ms.lasthandoff: 03/02/2017
 
 **在边缘节点上使用 Hive**
 
-1. 使用 SSH 连接到边缘节点。  请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)或[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)。
+1. 使用 SSH 连接到边缘节点。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
+
 2. 使用 SSH 连接到边缘节点后，使用以下命令打开 Hive 控制台：
    
         hive

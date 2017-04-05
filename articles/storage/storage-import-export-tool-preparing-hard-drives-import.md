@@ -15,20 +15,19 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 48ee2a2bd2ecd2f487748588ef2ad3138dd9983b
-ms.openlocfilehash: a113120381c4e83bd64a41fd30beb138cb1dd5fa
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: d95aaf81ee4d9c19549a57dd1af0f79a1e1bffdd
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器
-## <a name="overview"></a>概述
 
 WAImportExport 工具是可与 [Microsoft Azure 导入/导出服务](storage-import-export-service.md)一起使用的驱动器准备和修复工具。 可以使用此工具将数据复制到要寄送给 Azure 数据中心的硬盘驱动器。 完成某个导入作业后，可以使用此工具修复已损坏、丢失或与其他 Blob 冲突的任何 Blob。 通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。 本文讲解此工具的工作原理。
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="prerequisites-for-running-waimportexportexe"></a>运行 WAImportExport.exe 的先决条件
+### <a name="requirements-for-waimportexportexe"></a>WAImportExport.exe 的先决条件
 
 - **计算机配置**
   - Windows 7、Windows Server 2008 R2 或更新版本的 Windows 操作系统
@@ -52,7 +51,7 @@ WAImportExport 工具是可与 [Microsoft Azure 导入/导出服务](storage-imp
 
 ## <a name="download-and-install-waimportexport"></a>下载并安装 WAImportExport
 
-下载[最新版本的 WAImportExport.exe](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip)。 将压缩文件的内容解压缩到计算机上的某个目录。
+下载[最新版本的 WAImportExport.exe](https://www.microsoft.com/download/details.aspx?id=42659)。 将压缩文件的内容解压缩到计算机上的某个目录。
 
 下一个任务是创建 CSV 文件。
 
@@ -86,10 +85,10 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 | 字段 | 说明 |
 | --- | --- |
 | BasePath | **[必需]**<br/>此参数的值表示要导入的值所在的来源。此工具将以递归方式复制位于此路径下的所有数据。<br><br/>**允许的值**：这必须是本地计算机上的有效路径或者是有效的共享路径，并且应当可以供用户访问。 目录路径必须是绝对路径（而不是相对路径）。如果路径以“\\”结尾，则表示目录；如果路径不以“\\”结尾，则表示文件。<br/>不允许在此字段中指定正则表达式。 如果路径包含空格，请将其输入在 "" 中。<br><br/>**示例**："c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory 1"  |
-| DstBlobPathOrPrefix | **[必需]**<br/> Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。 如果不存在，则导入/导出服务会创建一个目录。<br/><br/>在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅 [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/fileservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 与元数据）。如果仅指定根，则源的目录结构将目标 Blob 容器中复制。如果所需的目录结构不同于源中的目录结构，可在 CSV 中包含多个映射行<br/><br/>可以指定容器，或者指定类似于 music/70s/ 的 Blob 前缀。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br/><br/>当目标容器为根容器时，必须显式指定包含正斜杠的根容器，例如 $root/。 由于根容器下的 Blob 的名称中不能包含“/”，因此当目标目录为根容器时，将不会复制源目录中的任何子目录。<br/><br/>**示例**<br/>如果目标 blob 路径是 https://mystorageaccount.blob.core.windows.net/video，则此字段的值可以为 video/  |
+| DstBlobPathOrPrefix | **[必需]**<br/> Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。 如果不存在，则导入/导出服务会创建一个。<br/><br/>在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅 [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/fileservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 与元数据）。如果仅指定根，则源的目录结构将目标 Blob 容器中复制。如果所需的目录结构不同于源中的目录结构，可在 CSV 中包含多个映射行<br/><br/>可以指定容器，或者指定类似于 music/70s/ 的 Blob 前缀。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br/><br/>当目标容器为根容器时，必须显式指定包含正斜杠的根容器，例如 $root/。 由于根容器下的 Blob 的名称中不能包含“/”，因此当目标目录为根容器时，将不会复制源目录中的任何子目录。<br/><br/>**示例**<br/>如果目标 blob 路径是 https://mystorageaccount.blob.core.windows.net/video，则此字段的值可以为 video/  |
 | /BlobType | **[可选]** block &#124; page<br/>导入/导出服务当前支持 2 种 Blob。 页 Blob 和块 Blob。默认情况下，所有文件将以块 Blob 的形式导入。 \*.vhd 和 \*.vhdx 将以页 Blob 的形式导入。块 Blob 和页 Blob 的允许大小有限制。 有关详细信息，请参阅 [Storage scalability targets](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files)（存储可伸缩性目标）。  |
 | Disposition | **[可选]** rename &#124; no-overwrite &#124; overwrite <br/> 此字段指定导入期间 （也就是将数据从磁盘上载到存储帐户时）的复制行为。可用选项为：rename&#124;overwite&#124;no-overwrite。如果未指定任何值，则默认为“rename”。 <br/><br/>**Rename**：如果存在同名的对象，则在目标中创建一个副本。<br/>Overwrite：将文件覆盖为较新的文件。 最后修改的文件优先。<br/>**No-overwrite**：如果文件已存在，则跳过写入该文件。|
-| MetadataFile | **[可选]** <br/>此字段的值是用户需要保留对象的元数据或者提供自定义元数据时可提供的元数据文件。 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md)。 |
+| MetadataFile | **[可选]** <br/>此字段的值是用户需要保留对象的元数据或者提供自定义元数据时可提供的元数据文件。 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md) |
 | PropertiesFile | **[可选]** <br/>目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md)。 |
 
 ## <a name="prepare-initialdriveset-or-additionaldriveset-csv-file"></a>准备 InitialDriveSet 或 AdditionalDriveSet CSV 文件
@@ -187,7 +186,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /AbortSession
 
 如果异常终止，则只能中止最后的复制会话。 请注意，无法中止驱动器的第一个复制会话。 在此情况下，必须重新启动包含新日记文件的复制会话。
 
-### <a name="resume-a-latest-interrupted-session"></a>恢复最近中断的会话：
+### <a name="resume-a-latest-interrupted-session"></a>恢复最近中断的会话
 
 如果复制会话因任何原因导致中断，可通过在仅指定日记文件的情况下运行该工具来恢复会话：
 
@@ -206,7 +205,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 
 ## <a name="waimportexport-parameters"></a>WAImportExport 参数
 
-| 参数 | 说明 |
+| parameters | 说明 |
 | --- | --- |
 |     /j:&lt;JournalFile&gt;  | **必需**<br/> 日记文件的路径。 日记文件跟踪一组驱动器，并记录这些驱动器的准备进度。 必须始终指定日记文件。  |
 |     /logdir:&lt;LogDirectory&gt;  | **可选**。 日志目录。<br/> 详细日志文件以及某些临时文件将写入此目录。 如果未指定，则将当前目录用作日志目录。 对于同一个日记文件，只能将日志目录指定指定一次。  |
@@ -269,7 +268,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 </DriveManifest>
 ```
 
-### <a name="sample-journal-file-for-each-drive-ending-with-xml"></a>每个驱动器的示例日记文件：以 .xml 结尾
+### <a name="sample-journal-file-xml-for-each-drive"></a>每个驱动器的示例日记文件 (XML)
 
 ```xml
 [BeginUpdateRecord][2016/11/01 21:22:25.379][Type:ActivityRecord]
@@ -286,7 +285,7 @@ SaveCommandOutput: Completed
 [EndUpdateRecord]
 ```
 
-### <a name="sample-journal-file-for-session-ended-with-jrn--which-records-the-trail-of-sessions"></a>会话的示例日记文件：以 .jrn 结尾，记录会话跟踪
+### <a name="sample-journal-file-jrn-for-session-which-records-the-trail-of-sessions"></a>会话的示例日记文件 (JRN)：记录会话跟踪
 
 ```
 [BeginUpdateRecord][2016/11/02 18:24:14.735][Type:NewJournalFile]
@@ -367,11 +366,11 @@ SessionId 可以包含字母、0~9、下划线 (\_)、短划线 (-) 或井号 (#
 3. 编辑“启动时需要附加身份验证”策略。
 4. 将该策略设置为“已启用”，并确保“没有兼容的 TPM 时允许 BitLocker”已选中。
 
-####  <a name="how-to-check-if-net-4-or-higher-version-is-installed-on-my-machine"></a>如何检查计算机上是否已安装 .Net 4 或更高版本？
+####  <a name="how-to-check-if-net-4-or-higher-version-is-installed-on-my-machine"></a>如何检查计算机上是否已安装 .NET 4 或更高版本？
 
 所有 Microsoft .NET Framework 版本都安装在以下目录：%windir%\Microsoft.NET\Framework\
 
-请在要运行该工具的目标计算机上导航到上述路径。 查找以“v4”开头的文件夹名称。 如果不存在这种目录，则表示计算机上未安装 .Net v4。 可以使用 [Microsoft .NET Framework 4（Web 安装程序）](https://www.microsoft.com/download/details.aspx?id=17851)在计算机上下载 .Net 4。
+请在要运行该工具的目标计算机上导航到上述路径。 查找以“v4”开头的文件夹名称。 如果不存在这种目录，则表示计算机上未安装 .NET 4。 可以使用 [Microsoft .NET Framework 4（Web 安装程序）](https://www.microsoft.com/download/details.aspx?id=17851)在计算机上下载 .Net 4。
 
 ### <a name="limits"></a>限制
 
@@ -403,9 +402,20 @@ WAImportExport 工具逐批读取和写入文件，每个批最多包含 100000 
 
 ### <a name="waimportexport-output"></a>WAImportExport 输出
 
-#### <a name="there-are-two-journal-files-which-one-should-i-upload-to-azure-portal"></a>有两个日记文件。 应该将哪个文件上载到 Azure 门户？
+#### <a name="there-are-two-journal-files-which-one-should-i-upload-to-azure-portal"></a>其中有两个日记文件，应该将哪个文件上传到 Azure 门户？
 
-**.xml** - 对于使用 WAImportExport 工具准备的每个硬盘驱动器，该工具将创建一个日记文件，文件名为“&lt;DriveID&gt;.xml”，其中，驱动器 ID 是与该工具从磁盘读取的驱动器关联的序列号。 在 Azure 门户中创建导入作业时，需要使用所有驱动器中的日记文件。 在工具中断的情况下，还可使用此日记文件来恢复驱动器准备操作。
+**.xml** - 对于使用 WAImportExport 工具准备的每个硬盘驱动器，该工具将创建一个日记文件，文件名为“`<DriveID>.xml`”，其中，DriveID 是与该工具从磁盘读取的驱动器关联的序列号。 在 Azure 门户中创建导入作业时，需要使用所有驱动器中的日记文件。 在工具中断的情况下，还可使用此日记文件来恢复驱动器准备操作。
 
-**.jrn** - 带 .jrn 后缀的日志文件包含硬盘驱动器的所有复制会话的状态。 它还包含创建导入作业所需的信息。 运行 WAImportExport 工具时，始终必须指定一个日志文件，以及一个复制会话 ID。
+**.jrn** - 带 `.jrn` 后缀的日志文件包含硬盘驱动器的所有复制会话的状态。 它还包含创建导入作业所需的信息。 运行 WAImportExport 工具时，始终必须指定一个日志文件，以及一个复制会话 ID。
+
+## <a name="next-steps"></a>后续步骤
+
+* [设置 Azure 导入/导出工具](storage-import-export-tool-setup.md)
+* [在导入过程中设置属性和元数据](storage-import-export-tool-setting-properties-metadata-import.md)
+* [为导入作业准备硬盘驱动器的示例工作流](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
+* [常用命令快速参考](storage-import-export-tool-quick-reference.md) 
+* [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)
+* [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)
+* [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)
+* [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
 

@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 2/25/2017
 ms.author: ronitr;giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: d1350081aa4f70660802c61a77250496e1e7fc2a
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: e20a30a565198c01f213895a87fe8807a37272cb
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
 # <a name="configure-and-manage-sql-database-auditing-in-the-azure-portal"></a>在 Azure 门户中配置和管理 SQL 数据库审核
 
-以下部分介绍了如何使用 Azure 门户配置和管理审核。 若要使用 PowerShell 配置和管理审核，请参阅[在 PowerShell 中配置审核](sql-database-auditing-powershell.md)。 
+以下部分介绍了如何使用 Azure 门户配置和管理审核。 若要使用 PowerShell 配置和管理审核，请参阅[在 PowerShell 中配置审核](scripts/sql-database-create-and-configure-database-powershell.md)。 
 
 有关审核的概述，请参阅 [SQL 数据库审核](sql-database-auditing.md)。
 
@@ -188,7 +188,7 @@ Blob 审核日志以 blob 文件集合的形式保存在名为“**sqldbauditlog
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要使用 PowerShell 配置和管理审核，请参阅[使用 PowerShell 配置数据库审核](sql-database-auditing-powershell.md)。
+* 若要使用 PowerShell 配置和管理审核，请参阅[使用 PowerShell 配置数据库审核](scripts/sql-database-create-and-configure-database-powershell.md)。
 * 有关审核的概述，请参阅[数据库审核](sql-database-auditing.md)。
 
 

@@ -1,5 +1,5 @@
 ---
-title: "集成 Azure 安全中心警报和 Azure 日志集成（预览版）| Microsoft Docs"
+title: "集成 Azure 安全中心警报和 Azure 日志集成 | Microsoft Docs"
 description: "本文有助于开始集成安全中心警报和 Azure 日志集成。"
 services: security-center
 documentationcenter: na
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
+ms.date: 03/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: 32d26fa811f1b5b34981e40d20e6c941d5f08477
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: fcd14b6b0afe08db82f2b8050beaf03ece7fd212
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="integrating-azure-security-center-alerts-with-azure-log-integration-preview"></a>集成 Azure 安全中心警报和 Azure 日志集成（预览版）
+# <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>集成 Azure 安全中心警报和 Azure 日志集成
 许多安全操作和事件响应团队依靠安全信息和事件管理 (SIEM) 解决方案作为会审和调查安全警报的起始点。 使用 Azure 日志集成，客户可以近实时地同步通过 Azure 诊断和 Azure 审核日志收集的安全中心警报和虚拟机安全事件，以及其日志分析或 SIEM 解决方案。
 
 Azure 日志集成适用于 HP ArcSight、Splunk、IBM QRadar 和其他类型。
@@ -92,9 +93,4 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)了解如何管理和响应安全警报。
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/) — 获取最新的 Azure 安全新闻和信息。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

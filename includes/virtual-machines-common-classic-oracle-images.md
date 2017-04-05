@@ -12,7 +12,7 @@
 * Windows Server 2012 上的 JDK 6
 
 ## <a name="oracle-linux-virtual-machine-images"></a>Oracle Linux 虚拟机映像
-以下是在 Azure 的 Oracle Linux 上运行的可用预配置 Oracle 虚拟机映像的列表。 可对这些映像使用自带许可，因为使用这些预配置的虚拟机映像没有 Oracle 许可费。 也可使用自带许可在自定义虚拟机的 Windows 或 Linux 上安装和运行 Oracle 软件。 以下是有关 [Azure 上的 Oracle 许可](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support)的完整详细信息。 以下是有关如何使用[用户自己的映像](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)创建虚拟机的详细信息。 若要了解如何使用此方法以及其他方法将 Oracle 负荷和其他工作负荷迁移到 Azure，请参阅[创建基于 Windows 的虚拟机的不同方式](../articles/virtual-machines/virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+以下是在 Azure 的 Oracle Linux 上运行的可用预配置 Oracle 虚拟机映像的列表。 可对这些映像使用自带许可，因为使用这些预配置的虚拟机映像没有 Oracle 许可费。 也可使用自带许可在自定义虚拟机的 Windows 或 Linux 上安装和运行 Oracle 软件。 以下是有关 [Azure 上的 Oracle 许可](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support)的完整详细信息。 以下是有关如何使用[用户自己的映像](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)创建虚拟机的详细信息。 若要了解如何使用此方法以及其他方法将 Oracle 负荷和其他工作负荷迁移到 Azure，请参阅[创建基于 Windows 的虚拟机的不同方式](../articles/virtual-machines/windows/creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 * Oracle Linux 上的 Oracle 数据库 12c 企业版
 * Oracle Linux 上的 Oracle 数据库 12c 标准版

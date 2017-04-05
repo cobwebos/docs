@@ -85,6 +85,7 @@
 
 
 ## 集成
+### [连接到 Spark](documentdb-spark-connector.md)
 ### [使用 Azure 应用服务部署网站](documentdb-create-documentdb-website.md)
 ### [使用逻辑应用进行应用程序日志记录](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 ### [绑定到 Azure Functions](../azure-functions/functions-bindings-documentdb.md)

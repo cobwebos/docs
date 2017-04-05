@@ -9,6 +9,7 @@ editor: cgronlun
 tags: 
 ms.assetid: 6ebc4d2f-2f6a-4e1e-ab6d-af4db6b4c87c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +17,9 @@ ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 78382cf83ed5e94507854d41293a95fd529964c1
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: e2b2e8d6110062efb99201f4daac1e1295d9b904
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -108,10 +110,5 @@ ms.openlocfilehash: 78382cf83ed5e94507854d41293a95fd529964c1
 ## <a name="next-steps"></a>后续步骤
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](hdinsight-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。
-* 若要在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+* 有关在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
 

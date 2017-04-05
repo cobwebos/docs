@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 319eaccb0613a7829da01e28112e9510bdf66e67
-ms.openlocfilehash: 7f806619f794b9e9d943a125e59936e51658070c
-ms.lasthandoff: 12/23/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: ea9ddb361d013e58d55401112c98a72b487d92d3
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,8 +27,8 @@ ms.lasthandoff: 12/23/2016
 将 RolePoint 与 Azure AD 集成具有以下优势：
 
 - 可在 Azure AD 中控制谁有权访问 RolePoint
-- 可以让用户使用其 Azure AD 帐户自动登录到 RolePoint（单一登录）
-- 可在一个中心位置（即 Azure 经典门户）管理帐户
+- 可以让用户使用其 Azure AD 帐户自动登录到 RolePoint 单一登录 (SSO)
+- 可在一个中心位置（即 Azure 经典门户）管理你的帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -37,27 +37,26 @@ ms.lasthandoff: 12/23/2016
 若要配置 Azure AD 与 RolePoint 的集成，需备齐以下项目：
 
 - 一个 Azure AD 订阅
-- 启用 RolePoint 单一登录的订阅
+- 启用了 RolePoint SSO 的订阅
 
-
-> [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
-
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。
+>
 
 测试本教程中的步骤应遵循以下建议：
 
 - 不应使用生产环境，除非有此必要。
-- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-
+- 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，将在测试环境中测试 Azure AD SSO。
+
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 RolePoint
-2. 配置和测试 Azure AD 单一登录
+2. 配置和测试 Azure AD SSO
 
-
-## <a name="adding-rolepoint-from-the-gallery"></a>从库添加 RolePoint
+## <a name="add-rolepoint-from-the-gallery"></a>从库中添加 RolePoint
 若要配置 RolePoint 与 Azure AD 的集成，需要从库中将 RolePoint 添加到托管 SaaS 应用列表。
 
 **若要从库添加 RolePoint，请按以下步骤操作：**
@@ -88,25 +87,24 @@ ms.lasthandoff: 12/23/2016
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-rolepoint-tutorial/tutorial_rolepoint_0001.png)
 
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 RolePoint 的 Azure AD SSO。
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，基于一个名为“Britta Simon”的测试用户使用 RolePoint 配置和测试 Azure AD 单一登录。
-
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 RolePoint 用户。 换句话说，需要建立 Azure AD 用户与 RolePoint 中相关用户之间的关联关系。
+若要运行 SSO，Azure AD 需要知道与 Azure AD 用户相对应的 RolePoint 用户。 换句话说，需要建立 Azure AD 用户与 RolePoint 中相关用户之间的关联关系。
 
 通过将 Azure AD 中“用户名”的值分配为 RolePoint 中“用户名”的值来建立此链接关系。
 
-若要配置并测试 RolePoint 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 RolePoint 的 Azure AD SSO，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[创建 RolePoint 测试用户](#creating-a-rolepoint-test-user)** - 在 RolePoint 中创建与 Britta Simon 相对应的用户，且该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-本部分的目的是在 Azure 经典门户中启用 Azure AD 单一登录并在 RolePoint 应用程序中配置单一登录。
+本部分的目的是在 Azure 经典门户中启用 Azure AD SSO并在 RolePoint 应用程序中配置单一登录。
 
 RolePoint 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可从应用程序的“属性”选项卡管理这些属性的值。 以下屏幕截图显示一个示例。 
 
@@ -125,16 +123,13 @@ RolePoint 应用程序需要采用特定格式的 SAML 断言。 请为此应用
     | FirstName | user.givenname |
     | LastName | user.surname |
     | 电子邮件 | user.mail |
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加用户属性”，打开“添加用户属性”对话框。
+ 
+  1. 单击“添加用户属性”，打开“添加用户属性”对话框。
 
     ![配置单一登录](./media/active-directory-saas-rolepoint-tutorial/tutorial_rolepoint_03.png)
-    
-    b. 在“属性名称”文本框中，键入为该行显示的属性名称。
-    
-    c. 在“属性值”列表中，键入为该行显示的属性值。
-    
-    d.单击“下一步”。 单击“完成”
+  2. 在“属性名称”文本框中，键入为该行显示的属性名称。
+  3. 在“属性值”列表中，键入为该行显示的属性值。
+  4. 单击“完成”。
 
 3. 在顶部菜单中，单击“快速启动”。
 
@@ -147,13 +142,12 @@ RolePoint 应用程序需要采用特定格式的 SAML 断言。 请为此应用
 5. 在“配置应用设置”对话框页上，执行以下步骤：
 
     ![配置单一登录](./media/active-directory-saas-rolepoint-tutorial/tutorial_rolepoint_06.png)
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.rolepoint.com/login`
-
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“下一步”。
-
-    > [!NOTE] 
-    > 请注意，这不是实际值。 必须使用实际登录 URL 更新此值。 若要获取此值，请与 [RolePoint 支持团队](emaiLto:info@rolepoint.com)联系。
+  1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.rolepoint.com/login`
+  2. 单击“下一步”。
+  
+    >[!NOTE] 
+    >请注意，这不是实际值。 必须使用实际登录 URL 更新此值。 若要获取此值，请与 [RolePoint 支持团队](emaiLto:info@rolepoint.com)联系。
+    >
 
 6. 在“配置 RolePoint 的单一登录”页上，单击“下载元数据”，然后将该文件保存在计算机上：
 
@@ -169,8 +163,7 @@ RolePoint 应用程序需要采用特定格式的 SAML 断言。 请为此应用
   
     ![Azure AD 单一登录][11]
 
-
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在经典门户中创建名为“Britta Simon”的测试用户。
 
 ![创建 Azure AD 用户][20]
@@ -194,26 +187,18 @@ RolePoint 应用程序需要采用特定格式的 SAML 断言。 请为此应用
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-rolepoint-tutorial/create_aaduser_05.png) 
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-
-    c. 单击“下一步”。
+ 1. 在“用户类型”中，选择“你的组织中的新用户”。
+ 2. 在“用户名”文本框中，键入“BrittaSimon”。
+ 3. 单击“资源组名称” 的 Azure 数据工厂。
 
 6.  在“用户配置文件”对话框页上，执行以下步骤：
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-rolepoint-tutorial/create_aaduser_06.png) 
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-
-    b. 在“姓氏”文本框中，键入“Simon”。
-
-    c. 在“显示名称”文本框中，键入“Britta Simon”。
-
-    d.单击“下一步”。 在“角色”列表中，选择“用户”。
-
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+ 1. 在“名字”文本框中，键入“Britta”。 
+ 2. 在“姓氏”文本框中，键入“Simon”。
+ 3. 在“显示名称”文本框中，键入“Britta Simon”。
+ 4. 在“角色”列表中，选择“用户”。
+ 5. 单击“资源组名称” 的 Azure 数据工厂。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
 
@@ -222,19 +207,14 @@ RolePoint 应用程序需要采用特定格式的 SAML 断言。 请为此应用
 8. 在“获取临时密码”对话框页上，执行以下步骤：
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-rolepoint-tutorial/create_aaduser_08.png) 
+ 1. 写下“新密码”的值。
+ 2. 单击“完成”。   
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-
-    b. 单击“完成”。   
-
-
-
-### <a name="creating-a-rolepoint-test-user"></a>创建 RolePoint 测试用户
+### <a name="create-a-rolepoint-test-user"></a>创建 RolePoint 测试用户
 
 在本部分中，将在 RolePoint 中创建一个名为“Britta Simon”的用户。 请与 RolePoint [支持团队](emaiLto:info@rolepoint.com)协作，将用户添加到 RolePoint 平台中。
 
-
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 RolePoint 的权限，允许她使用 Azure 单一登录。
 
@@ -260,14 +240,11 @@ RolePoint 应用程序需要采用特定格式的 SAML 断言。 请为此应用
     
     ![分配用户][205]
 
+### <a name="test-single-sign-on"></a>测试单一登录
 
-
-### <a name="testing-single-sign-on"></a>测试单一登录
-
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分中，使用访问面板测试 Azure AD SSO 配置。
 
 单击访问面板中的“RolePoint”磁贴时，用户应自动登录到 RolePoint 应用程序。
-
 
 ## <a name="additional-resources"></a>其他资源
 

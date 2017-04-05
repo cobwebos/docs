@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
-ms.openlocfilehash: c169f9ab2eead732ad0fe5579caaa1b4b015732b
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 7287cb1709b7c863cd046edfb995e23455398ec2
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -60,17 +61,39 @@ Azure 会阻止删除正在使用的证书。 需要删除使用该证书的部�
 ### <a name="disable-ssl-30"></a>禁用 SSL 3.0
 若要禁用 SSL 3.0 并使用 TLS 安全，可创建在以下博客文章中记录的启动任务：https://azure.microsoft.com/en-us/blog/how-to-disable-ssl-3-0-in-azure-websites-roles-and-virtual-machines/
 
-## <a name="scale-a-cloud-service"></a>扩展云服务
+### <a name="add-nosniff-to-your-website"></a>将 **nosniff** 添加到网站
+若要防止客户端探查 MIME 类型，请在 *web.config* 文件中添加设置。
+
+```xml
+<configuration>
+   <system.webServer>
+      <httpProtocol>
+         <customHeaders>
+            <add name="X-Content-Type-Options" value="nosniff" />
+         </customHeaders>
+      </httpProtocol>
+   </system.webServer>
+</configuration>
+```
+
+也可以将此项作为 IIS 中的设置添加。 使用[常见启动任务](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)一文中的以下命令。
+
+```cmd
+%windir%\system32\inetsrv\appcmd set config /section:httpProtocol /+customHeaders.[name='X-Content-Type-Options',value='nosniff']
+```
+
+### <a name="customize-iis-for-a-web-role"></a>为 web 角色自定义 IIS
+使用[常见启动任务](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)一文中的 IIS 启动脚本。
+
+## <a name="scaling"></a>扩展
 ### <a name="i-cannot-scale-beyond-x-instances"></a>无法扩展到 X 个实例以上
 Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用的核心，将无法进行扩展。 例如，如果限制为 100 个核心，这意味着云服务可以有大小为 100 A1 的虚拟机实例或大小为 50 A2 的虚拟机实例。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="networking"></a>联网
 ### <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>无法在多 VIP 云服务中保留 IP
 首先，请确保已打开想要为其保留 IP 的虚拟机实例。 其次，请确保为过渡和生产部署使用保留 IP。 **请勿**在部署升级过程中更改设置。
 
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+## <a name="remote-desktop"></a>远程桌面
+### <a name="how-do-i-remote-desktop-when-i-have-an-nsg"></a>设置了 NSG 时，如何使用远程桌面？
+向 NSG 添加转发端口 **20000** 的规则。
 

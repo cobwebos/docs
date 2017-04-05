@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 12/12/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 0997b2c2eec9070cf8043b09e69d0a4d1ae6e56a
-ms.openlocfilehash: 668ab8121a40aa2300d5cb13e561745fc51b545f
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: bc3013541fdb32f252339140fe61ff7c515a264e
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 668ab8121a40aa2300d5cb13e561745fc51b545f
 故障排除过程如下：
 
 1. 删除遇到问题的 VM，保留虚拟硬盘。
-2. 将虚拟硬盘附加并装载到另一个 Windows VM，以便进行故障排除。
+2. 将虚拟硬盘附加并装入到另一个 Windows VM，以便进行故障排除。
 3. 连接到故障排除 VM。 编辑文件或运行任何工具以修复原始虚拟硬盘上的问题。
 4. 从故障排除 VM 卸载并分离虚拟硬盘。
 5. 使用原始虚拟硬盘创建 VM。
@@ -135,7 +136,7 @@ ms.openlocfilehash: 668ab8121a40aa2300d5cb13e561745fc51b545f
 ## <a name="create-vm-from-original-hard-disk"></a>从原始硬盘创建 VM
 若要从原始虚拟硬盘创建 VM，请使用[此 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet)。 该模板使用前面命令中的 VHD URL 将 VM 部署到现有虚拟网络。 单击“部署到 Azure”按钮，如下所示：
 
-![从 Github 中的模板部署 VM](./media/virtual-machines-windows-troubleshoot-recovery-disks/deploy-template-from-github.png)
+![从 GitHub 中的模板部署 VM](./media/virtual-machines-windows-troubleshoot-recovery-disks/deploy-template-from-github.png)
 
 模板已载入 Azure 门户进行部署。 请输入新 VM 和现有 Azure 资源的名称，然后粘贴现有虚拟硬盘的 URL。 若要开始部署，请单击“购买”：
 
@@ -151,8 +152,4 @@ ms.openlocfilehash: 668ab8121a40aa2300d5cb13e561745fc51b545f
 如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[对 Windows VM 上的应用程序连接问题进行故障排除](virtual-machines-windows-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
-
-<!--HONumber=Dec16_HO3-->
-
 

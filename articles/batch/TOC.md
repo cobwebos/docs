@@ -37,8 +37,8 @@
 
 # 相关内容
 ## [批处理 Shipyard](https://github.com/Azure/batch-shipyard)
+## [使用批处理和数据工厂进行数据处理](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [Azure 云中的批处理和 HPC 解决方案](batch-hpc-solutions.md)
-## [Azure 中的大型计算：技术资源](big-compute-resources.md)
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/batch/)
@@ -48,5 +48,8 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [CLI 示例](batch-cli-samples.md)
+## [大型计算资源](big-compute-resources.md)
 ## [博客](https://blogs.technet.microsoft.com/windowshpc/)
+
 

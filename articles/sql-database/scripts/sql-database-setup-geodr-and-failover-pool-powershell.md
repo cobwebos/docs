@@ -27,7 +27,7 @@ ms.lasthandoff: 03/30/2017
 
 此示例 PowerShell 脚本为弹性池中的数据库配置活动异地复制，并将其故障转移到辅助副本。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-scripts"></a>示例脚本
 

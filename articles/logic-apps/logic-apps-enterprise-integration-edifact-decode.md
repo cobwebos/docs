@@ -41,7 +41,7 @@ ms.lasthandoff: 03/10/2017
 
 2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加一个触发器，然后向逻辑应用中添加一个操作。
 
-3.    在搜索框中，输入“EDIFACT”作为筛选器。 选择“解码 EDIFACT 消息”。
+3. 在搜索框中，输入“EDIFACT”作为筛选器。 选择“解码 EDIFACT 消息”。
    
     ![搜索 EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/10/2017
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-4.    在完成连接创建时，选择“创建”。 连接详细信息应如此示例所示：
+4. 在完成连接创建时，选择“创建”。 连接详细信息应如此示例所示：
 
     ![集成帐户详细信息](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 

@@ -2,8 +2,8 @@
 
 如果在使用 RDP 或 SSH 连接到 VM 时发生问题，请先参阅以下文章之一：
 
-* [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 > [!NOTE]
 > Azure 具有用于创建和处理资源的两个不同的部署模型： [资源管理器和经典](../articles/resource-manager-deployment-model.md)。 这篇文章介绍如何使用这两种模型，但 Microsoft 建议大多数最新部署使用资源管理器模型。
@@ -21,8 +21,8 @@
   * [Resource Manager 模型 - 管理网络安全组](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 * 从不同的位置（例如不同的 Azure 虚拟网络）进行连接
 * 重新部署虚拟机
-  * [重新部署 Windows VM](../articles/virtual-machines/virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-  * [重新部署 Linux VM](../articles/virtual-machines/virtual-machines-linux-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  * [重新部署 Windows VM](../articles/virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+  * [重新部署 Linux VM](../articles/virtual-machines/linux/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * 重新创建虚拟机
 
 有关详细信息，请参阅[终结点连接（RDP/SSH/HTTP 等故障）疑难解答](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows)。
@@ -115,7 +115,7 @@
 * 来自 Azure 虚拟机的入站应用程序响应流量。
 
 ## <a name="additional-resources"></a>其他资源
-[对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

@@ -24,7 +24,7 @@ ms.lasthandoff: 02/09/2017
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/best-practices-CDN">
+        <a href="/azure/best-practices-cdn">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

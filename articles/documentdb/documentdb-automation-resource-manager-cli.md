@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 03/20/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: 655f501f920e3169450831f501f7183ae46a4a60
-ms.openlocfilehash: 67d06372d186a0b51eac7a94ad67b9cd7f516319
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: b286a93d7cc5f962f969e877b2f487e56cbb1a95
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -51,7 +51,7 @@ ms.lasthandoff: 02/27/2017
 * 执行“az documentdb -h”可获取可用命令的完整列表，或访问[参考页][az-documentdb-ref]。
 * 执行“az documentdb <command> -h”可获取每个命令的必需和可选参数的详细信息列表。
 
-## <a name="a-idcreate-documentdb-account-clia-create-a-documentdb-database-account"></a><a id="create-documentdb-account-cli"></a> 创建 DocumentDB 数据库帐户
+## <a id="create-documentdb-account-cli"></a> 创建 DocumentDB 数据库帐户
 
 此命令可创建 DocumentDB 数据库帐户。 可以将新数据库帐户配置为具有特定[一致性策略](documentdb-consistency-levels.md)的单区域或[多区域][scaling-globally]。 
 
@@ -65,6 +65,7 @@ Arguments
                                     address ranges in CIDR form to be included as the allowed list
                                     of client IPs for a given database account. IP addresses/ranges
                                     must be comma separated and must not contain any spaces.
+                                    To enable portal access, include 104.42.195.92.
     --kind                        : The type of DocumentDB database account to create.  Allowed
                                     values: GlobalDocumentDB, MongoDB, Parse.  Default:
                                     GlobalDocumentDB.
@@ -93,7 +94,7 @@ Arguments
 ### <a name="notes"></a>说明
 * 位置必须是已正式推出 DocumentDB 的区域。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
 
-## <a name="a-idupdate-documentdb-account-clia-update-a-documentdb-database-account"></a><a id="update-documentdb-account-cli"></a> 更新 DocumentDB 数据库帐户
+## <a id="update-documentdb-account-cli"></a> 更新 DocumentDB 数据库帐户
 
 此命令可更新 DocumentDB 数据库帐户属性。 这包括一致性策略和数据库帐户所在的位置。
 
@@ -128,7 +129,7 @@ Arguments
     az documentdb update -g rg-test -n docdb-test --ip-range-filter "13.91.6.132,13.91.6.1/24"
     az documentdb update -g rg-test -n docdb-test --default-consistency-level BoundedStaleness --max-interval 10 --max-staleness-prefix 200
 
-## <a name="a-idadd-remove-region-documentdb-account-clia-addremove-region-from-a-documentdb-database-account"></a><a id="add-remove-region-documentdb-account-cli"></a> 在 DocumentDB 数据库帐户中添加/删除区域
+## <a id="add-remove-region-documentdb-account-cli"></a> 在 DocumentDB 数据库帐户中添加/删除区域
 
 若要在现有 DocumentDB 数据库帐户中添加或删除区域，请使用带 `--locations` 标志的 [update](#update-documentdb-account-cli) 命令。 以下示例演示如何创建新帐户，随后在该帐户中添加和删除区域。
 
@@ -138,7 +139,7 @@ Arguments
     az documentdb update -g rg-test -n docdb-test --locations "East US"=0 "North Europe"=1 "South Central US"=2
 
 
-## <a name="a-iddelete-documentdb-account-clia-delete-a-documentdb-database-account"></a><a id="delete-documentdb-account-cli"></a> 删除 DocumentDB 数据库帐户
+## <a id="delete-documentdb-account-cli"></a> 删除 DocumentDB 数据库帐户
 
 此命令可删除现有 DocumentDB 数据库帐户。
 
@@ -152,7 +153,7 @@ Arguments
 
     az documentdb delete -g rg-test -n docdb-test
 
-## <a name="a-idget-documentdb-properties-clia-get-properties-of-a-documentdb-database-account"></a><a id="get-documentdb-properties-cli"></a> 获取 DocumentDB 数据库帐户的属性
+## <a id="get-documentdb-properties-cli"></a> 获取 DocumentDB 数据库帐户的属性
 
 此命令可获取现有 DocumentDB 数据库帐户的属性。
 
@@ -166,7 +167,7 @@ Arguments
 
     az documentdb show -g rg-test -n docdb-test
 
-## <a name="a-idlist-account-keys-clia-list-account-keys"></a><a id="list-account-keys-cli"></a> 列出帐户密钥
+## <a id="list-account-keys-cli"></a> 列出帐户密钥
 
 当你创建 DocumentDB 帐户时，服务生成两个主访问密钥，用于访问 DocumentDB 帐户时的身份验证。 提供两个访问密钥后，DocumentDB 支持在不中断你的 DocumentDB 帐户连接的情况下重新生成密钥。 还可以使用只读密钥，用于对只读操作进行身份验证。 有两个读写密钥（主密钥和辅助密钥）和两个只读密钥（主密钥和辅助密钥）。
 
@@ -180,7 +181,7 @@ Arguments
 
     az documentdb list-keys -g rg-test -n docdb-test
 
-## <a name="a-idregenerate-account-key-clia-regenerate-account-key"></a><a id="regenerate-account-key-cli"></a> 重新生成帐户密钥
+## <a id="regenerate-account-key-cli"></a> 重新生成帐户密钥
 
 你应定期将访问密钥更改为你的 DocumentDB 帐户，使你的连接更安全。 分配了两个访问密钥，你可以使用一个访问密钥保持与 DocumentDB 帐户的连接，同时，你可以重新生成另一个访问密钥。
 
@@ -196,9 +197,9 @@ Arguments
 
     az documentdb regenerate-key -g rg-test -n docdb-test --key-kind secondary
 
-## <a name="a-idmodify-failover-priority-clia-modify-failover-priority-of-a-documentdb-database-account"></a><a id="modify-failover-priority-cli"></a> 修改 DocumentDB 数据库帐户的故障转移优先级
+## <a id="modify-failover-priority-cli"></a> 修改 DocumentDB 数据库帐户的故障转移优先级
 
-对于多区域数据库帐户，可以更改 DocumentDB 数据库帐户所在的各个区域的故障转移优先级。 若要深入了解 DocumentDB 数据库帐户中的故障转移，请参阅 [使用 DocumentDB 全局分配数据][distribute-data-globally]。
+对于多区域数据库帐户，可以更改 DocumentDB 数据库帐户所在的各个区域的故障转移优先级。 若要深入了解 DocumentDB 数据库帐户中的故障转移，请参阅[使用 DocumentDB 全局分配数据](documentdb-distribute-data-globally.md)。
 
 ```
 Arguments

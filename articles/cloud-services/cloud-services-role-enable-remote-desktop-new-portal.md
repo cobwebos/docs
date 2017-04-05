@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: a2dec2daa4be60a4a53a98164265171bf898cafb
-ms.openlocfilehash: 7f03d376b1785637261b58fc34a0f0e1c1e25f5f
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: b478251715076a254fe87abee1d709f47e2b3886
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -65,12 +66,11 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
 
 4. 依次单击“**打开**”和“**连接**”，以启动远程桌面连接。
 
-## <a name="next-steps"></a>后续步骤
+>[!NOTE]
+> 如果云服务位于 NSG 后面，可能需要创建一个规则以打开端口 **20000**。
+
+## <a name="additional-resources"></a>其他资源
 
 [如何配置云服务](cloud-services-how-to-configure.md)
-
-
-
-<!--HONumber=Nov16_HO5-->
-
+[云服务常见问题 - 远程桌面](cloud-services-faq.md#remote-desktop)
 

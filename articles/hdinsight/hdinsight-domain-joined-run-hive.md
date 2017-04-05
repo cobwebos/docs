@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 3fade1e5-c2e1-4ad5-b371-f95caea23f6d
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 9ddeaea93af8d5a4356d49da76cb64f5e43657db
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 213b6b5274ebde8cc460829ff1edc96a66eef994
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -140,7 +141,7 @@ ms.lasthandoff: 03/09/2017
 ## <a name="next-steps"></a>后续步骤
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。
 * 若要管理已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-manage.md)（管理已加入域的 HDInsight 群集）。
-* 若要在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）。
+* 有关在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
 * 若要使用 Hive JDBC 连接 Hive，请参阅 [Connect to Hive on Azure HDInsight using the Hive JDBC driver](hdinsight-connect-hive-jdbc-driver.md)（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Hive）
 * 若要使用 Hive ODBC 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop with the Microsoft Hive ODBC drive](hdinsight-connect-excel-hive-odbc-driver.md)（使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop）
 * 若要使用 Power Query 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop by using Power Query](hdinsight-connect-excel-power-query.md)（使用 Power Query 将 Excel 连接到 Hadoop）

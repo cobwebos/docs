@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 193bbedca440302ead00eaac0df62fb7fe767515
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 9cfdb94d1e030fe9d467389acf8894d79efd17d1
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -93,7 +93,7 @@ HTTP 终结点由 Service Fabric 自动建立 ACL。
 HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进行加密。 若要在 Service Fabric 服务上启用 HTTPS，请在服务清单的“*资源 -> 终结点 -> 终结点*”部分中指定该协议，如前面针对终结点 *ServiceEndpoint3* 的操作所示。
 
 > [!NOTE]
-> 不能在应用程序升级期间更改服务的协议，因为这是一项破坏性更改。
+> 在应用程序升级期间不能更改服务的协议。 如果在升级期间进行了更改，那将是一项重大的更改。
 > 
 > 
 

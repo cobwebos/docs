@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: 
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,8 +16,9 @@ ms.workload: big-data
 ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
-ms.openlocfilehash: 0cb9d65e33bf6f6b67e2a74b7e4634aba3f2359b
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c56decc1f7603795e027ce20363c387c593999ae
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="use-apache-spark-with-kafka-preview-on-hdinsight"></a>将 Apache Spark 与 Kafka on HDInsight（预览版）配合使用
@@ -32,11 +34,7 @@ ms.openlocfilehash: 0cb9d65e33bf6f6b67e2a74b7e4634aba3f2359b
 
 * Azure 订阅
 
-* SSH 客户端（需要 `ssh` 和 `scp` 命令）- 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档：
-
-    * [在 Linux、Unix 和 Mac OS 中将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-    * [从 Windows 配合使用 SSH 与基于 Linux 的 HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md)
+* SSH 客户端（需要 `ssh` 和 `scp` 命令）- 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 * [cURL](https://curl.haxx.se/) - 跨平台实用工具，用于发出 HTTP 请求。
 
@@ -116,7 +114,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 项目中的每个单元格包含注释或说明代码作用的文本部分。
 
-##<a name="a-idkafkahostsakafka-host-information"></a><a id="kafkahosts"></a>Kafka 主机信息
+##<a id="kafkahosts"></a>Kafka 主机信息
 
 创建与 Kafka on HDInsight 配合使用的应用程序时，应首先获取 Kafka 中转站和 Kafka 群集的 Zookeeper 主机的信息。 客户端应用程序利用此操作与 Kafka 通信。
 
@@ -183,10 +181,5 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 * [Apache Kafka on HDInsight 入门](hdinsight-apache-kafka-get-started.md)
 * [使用 MirrorMaker 创建 Kafka on HDInsight 的副本](hdinsight-apache-kafka-mirroring.md)
 * [将 Apache Storm 与 Kafka on HDInsight 结合使用](hdinsight-apache-storm-with-kafka.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

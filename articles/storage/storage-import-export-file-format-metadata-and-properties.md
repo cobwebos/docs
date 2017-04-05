@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: 0cac5419d4b481a5b783b4b9fbd4ad2d4d637042
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 9aa7815eae9ae3c1771cd0efdc8b9db4ad2e0b65
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -69,6 +69,8 @@ ms.lasthandoff: 02/16/2017
 |`Content-Encoding`|String|可选。 Blob 的内容编码。|  
 |`Content-Language`|String|可选。 Blob 的内容语言。|  
 |`Cache-Control`|String|可选。 Blob 的缓存控制字符串。|  
-  
- 有关设置 Blob 元数据和属性的详细规则，请参阅，请参阅[设置 Blob 属性](/rest/api/storageservices/fileservices/set-blob-properties)、[设置 Blob 元数据](/rest/api/storageservices/fileservices/set-blob-metadata)以及[设置和检索 Blob 资源的属性与元数据](/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)。
+
+## <a name="next-steps"></a>后续步骤
+
+有关设置 Blob 元数据和属性的详细规则，请参阅[设置 Blob 属性](/rest/api/storageservices/fileservices/set-blob-properties)、[设置 Blob 元数据](/rest/api/storageservices/fileservices/set-blob-metadata)以及[设置和检索 Blob 资源的属性与元数据](/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)。
 

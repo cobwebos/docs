@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: c3fd647fdd21f6978e4d631ca9b10429e963cd05
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6703df0f64534ed638e570342eef7fbda2a74d2e
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -278,7 +278,7 @@ VPN 客户端包中包含用于配置 Windows 内置 VPN 客户端软件的信�
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
-连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/virtual-machines-linux-azure-vm-network-overview.md)。
+连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。
 
 
 

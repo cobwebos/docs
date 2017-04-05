@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 03/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: a9d496d696298d800bc40b1f3880c95f84e5f29f
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 03d38dbce86711395a967cf8bad440fd50a38631
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,8 +27,8 @@ Azure SQL 数据库提供了四个[服务层](sql-database-service-tiers.md)：�
 
 > [!NOTE]
 > 本文侧重于 Azure SQL 数据库中单一数据库的性能指南。 有关弹性池的性能指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。 不过，请注意，你也可以将本文中的多项优化建议应用于弹性池中的数据库，获得类似的性能优势。
-> 
-> 
+>
+>
 
 ## <a name="why-service-tiers"></a>为什么使用服务层？
 尽管每个数据库工作负荷可能各不相同，但服务层的目的就是在不同的性能级别下提供性能可预测性。 数据库资源要求繁杂的客户可以在更专用的计算环境中运行其数据库。
@@ -58,7 +58,7 @@ SQL 数据库所需的服务级别取决于每个资源维度的峰值负载要�
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
 > [!IMPORTANT]
-> 使用 P11 和 P15 性能级别的客户最多可以使用 4 TB 的包含存储，而无需额外付费。 此 4 TB 选项目前在以下区域中处于公共预览状态：美国东部 2、美国西部、西欧、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 有关当前限制，请参阅[当前 4 TB 限制](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)
+> 使用 P11 和 P15 性能级别的客户最多可以使用 4 TB 的包含存储，而无需额外付费。 此 4 TB 选项目前在以下区域中处于公共预览状态：美国东部 2、美国西部、西欧、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。
 >
 
 ### <a name="maximum-in-memory-oltp-storage"></a>最大内存中 OLTP 存储
@@ -86,8 +86,8 @@ SQL 数据库所需的服务级别取决于每个资源维度的峰值负载要�
 
 > [!NOTE]
 > 此限制目前不适用于弹性池中的数据库。
-> 
-> 
+>
+>
 
 ### <a name="maximum-sessions"></a>最大会话数
 若要查看当前活动会话数，请在 SQL 数据库中运行以下 Transact-SQL 查询：
@@ -105,7 +105,7 @@ SQL 数据库所需的服务级别取决于每个资源维度的峰值负载要�
 
 同样，这些查询将返回时间点计数。 如果在一段内收集多个样本，则会对会话的使用情况有最佳了解。
 
-对于 SQL 数据库分析，也可以通过查询 [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图并查看 **active_session_count** 列获取会话的历史统计信息。 
+对于 SQL 数据库分析，也可以通过查询 [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图并查看 **active_session_count** 列获取会话的历史统计信息。
 
 ## <a name="monitor-resource-use"></a>监视资源使用情况
 
@@ -149,8 +149,8 @@ Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_
 
 > [!NOTE]
 > 你必须连接到逻辑 SQL 数据库服务器的 **master** 数据库，才能查询下面示例中的 **sys.resource_stats**。
-> 
-> 
+>
+>
 
 此示例演示如何公开此视图中的数据：
 
@@ -164,14 +164,14 @@ Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_
 下面的示例演示你可以用不同方式使用 **sys.resource_stats** 目录视图，以获取有关 SQL 数据库如何使用资源的信息：
 
 1. 若要查看数据库 userdb1 过去一周的资源使用情况，可以运行此查询：
-   
+
         SELECT *
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND
               start_time > DATEADD(day, -7, GETDATE())
         ORDER BY start_time DESC;
 2. 若要评估你的工作负荷与性能级别的适合程度，需要向下钻取资源指标的每个方面：CPU、读取数、写入数、辅助进程数和会话数。 下面是使用 **sys.resource_stats** 的修订查询，用于报告这些资源度量值的平均值和最大值：
-   
+
         SELECT
             avg(avg_cpu_percent) AS 'Average CPU use in percent',
             max(avg_cpu_percent) AS 'Maximum CPU use in percent',
@@ -186,35 +186,35 @@ Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
 3. 使用每个资源指标的平均值和最大值信息，可以评估你的工作负荷与所选性能级别的适合程度。 通常情况下，**sys.resource_stats** 中的平均值可提供一个用于目标大小的良好基准。 它应该是你的主要测量标杆。 例如，你可能正在使用 S2 性能级别的标准服务层。 CPU 平均使用率和 I/O 读写百分比低于 40%，平均辅助进程数低于 50，平均会话数低于 200。 你的工作负荷可能适合 S1 性能级别。 很容易查看你的数据库是否在辅助角色和会话限制内。 若要查看数据库是否适合 CPU 和读写数等更低性能级别，请将更低性能级别的 DTU 数除以当前性能级别的 DTU 数，然后将结果乘以 100：
-   
-    **S1 DTU / S2 DTU * 100 = 20 / 50* 100 = 40**
-   
+
+    **S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40**
+
     结果是以百分比表示的两个性能级别之间的相对性能差异。 如果资源率使用不超出此量，则你的工作负荷可能适合更低的性能级别。 但是，你需要查看资源用量值的所有范围，并按百分比确定数据库工作负荷适合更低性能级别的频率。 以下查询将会根据此示例中计算得出的 40% 阈值，输出每个资源维度的适合百分比：
-   
+
         SELECT
             (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent'
             ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log Write Fit Percent'
             ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical Data IO Fit Percent'
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-   
+
     根据数据库服务级别目标 (SLO)，你可以决定工作负荷是否适合更低的性能级别。 如果数据库工作负荷 SLO 为 99.9%，而上述查询针对所有三个资源维度返回的值大于 99.9%，则工作负荷可能适合更低的性能级别。
-   
+
     查看适合性百分比还可以深入分析是否应转到下一个更高的性能级别以满足 SLO。 例如，userdb1 显示过去一周的如下 CPU 使用率：
-   
+
    | 平均 CPU 百分比 | 最大 CPU 百分比 |
    | --- | --- |
    | 24.5 |100.00 |
-   
+
     平均 CPU 大约是性能级别限制的四分之一，这意味着它很适合数据库的性能级别限制。 但是，最大值显示该数据库达到了性能级别的限制。 在这种情况下，是否需要转到下一个更高的性能级别？ 查看工作负荷达到 100% 的次数，然后将这种情况与数据库工作负荷 SLO 进行比较。
-   
+
         SELECT
         (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
         ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log write fit percent'
         ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical data I/O fit percent'
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-   
+
     如果对于三个资源维度中的任何一个维度，此查询返回的值小于 99.9%，请考虑转到下一个更高的性能级别，或使用应用程序优化技术来减少 SQL 数据库上的负载。
 4. 本练习还应将未来预计的工作负荷增加考虑在内。
 
@@ -400,8 +400,8 @@ SQL Server 中常见的、也适用于 Azure SQL 数据库的一个示例是，�
 
 > [!NOTE]
 > 虽然此示例特意选择了较小的卷，但非最佳参数的影响仍很大，对于较大的数据库尤为如此。 这种区别在极端情况下对于快速情况和慢速情况可在数秒和数小时之间。
-> 
-> 
+>
+>
 
 你可检查 **sys.resource_stats**，以确定测试使用的资源多于还是少于另一个测试。 在比较数据时，请使测试相隔一定时间，以使其不会在 **sys.resource_stats** 视图中的同一 5 分钟时间范围内重合。 本练习的目标是将使用的资源总量降至最低，而非将峰值资源降至最低。 一般而言，优化一段产生延迟的代码也将减少资源消耗。 请确保对应用程序进行的更改都是必需的，并且这些更改不会对可能在应用程序中使用查询提示的人员的客户体验产生负面影响。
 
@@ -412,8 +412,8 @@ SQL Server 中常见的、也适用于 Azure SQL 数据库的一个示例是，�
 
 > [!NOTE]
 > SQL 数据库现在提供一个库来帮助分片。 有关详细信息，请参阅[弹性数据库客户端库概述](sql-database-elastic-database-client-library.md)。
-> 
-> 
+>
+>
 
 例如，如果数据库包含客户名称、订单和订单明细（如 SQL Server 附带的传统示例 Northwind 数据库），则可通过将客户与相关订单及订单明细集中在一起，将这些数据拆分到多个数据库中。 你可以保证客户的数据保留在单一数据库中。 应用程序将不同的客户拆分到多个数据库上，实际上就是将负载分散在多个数据库上。 通过分片，客户不仅可以避免达到最大数据库大小限制，而且 Azure SQL 数据库还能够处理明显大于不同性能级别限制的工作负荷，前提是每个数据库适合其 DTU。
 
@@ -436,5 +436,4 @@ SQL Server 用户经常将许多功能集中在单一数据库内。 例如，�
 * 有关服务层的详细信息，请参阅 [SQL 数据库选项和性能](sql-database-service-tiers.md)
 * 有关弹性池的详细信息，请参阅[什么是 Azure 弹性池？](sql-database-elastic-pool.md)
 * 有关性能和弹性池的信息，请参阅[何时考虑弹性池](sql-database-elastic-pool-guidance.md)
-
 

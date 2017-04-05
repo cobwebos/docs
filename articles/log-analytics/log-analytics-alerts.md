@@ -1,6 +1,6 @@
 ---
-title: "OMS Log Analytics 中的警报概述 | Microsoft 文档"
-description: "Log Analytics 中的警报标识 OMS 存储库中的重要信息，并可以主动向你通知问题，或调用操作以尝试更正问题。  本文介绍如何创建警报规则和它们可执行的不同操作的详细信息。"
+title: "了解 OMS Log Analytics 中的警报 | Microsoft Docs"
+description: "Log Analytics 中的警报标识 OMS 存储库中的重要信息，并可以主动向你通知问题，或调用操作以尝试更正问题。  本文介绍不同类型的警报规则及其定义方式。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,82 +12,108 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
+ms.date: 03/23/2017
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ec7167fb36e54219957629699f33dfce950f86d5
-ms.openlocfilehash: 48d921650dbbf3f9cc2a8a0e265e0c7deaebdafd
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 76db33674c5a3b9e323a1890c0d48d98dc3f03cf
+ms.lasthandoff: 03/29/2017
 
 
 ---
-# <a name="respond-to-issues-in-log-analytics-using-alerts"></a>使用警报响应 Log Analytics 中的问题
+# <a name="understanding-alerts-in-log-analytics"></a>了解 Log Analytics 中的警报
 
-Log Analytics 中的警报标识 Log Analytics 存储库中的重要信息。  可以使用警报在出现问题时获得主动通知，或者采用自动操作来应对问题。  本文概述了如何创建和使用警报。  
+Log Analytics 中的警报标识 Log Analytics 存储库中的重要信息。  本文详细说明了 Log Analytics 中警报规则的作用原理，并介绍了不同类型警报规则的差异。
 
+有关创建警报规则的过程，请参阅以下文章。
 
->[!NOTE]
-> 有关公共预览版中当前存在的指标测量的警报规则的信息，请参阅 [New metric measurement alert rule type in Public Preview!](https://blogs.technet.microsoft.com/msoms/2016/11/22/new-metric-measurement-alert-rule-type-in-public-preview/)（公共预览中新的指标测量警报规则类型！）。
+- 使用 [Azure 门户](log-analytics-alerts-creating.md)创建警报规则
+- 使用 [Resource Manager 模板](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)创建警报规则
+- 使用 [REST API](log-analytics-api-alerts.md) 创建警报规则
+
 
 ## <a name="alert-rules"></a>警报规则
 
-警报通过警报规则创建，警报规则定期自动运行日志搜索。  如果日志搜索的结果符合特定条件，则会创建警报记录。  该规则还可自动运行一个或多个操作，主动向用户提供警报通知或调用另一个进程。  
+警报通过警报规则创建，警报规则定期自动运行日志搜索。  如果日志搜索的结果符合特定条件，则会创建警报记录。  然后，该规则可自动运行一个或多个操作来主动向你通知警报或调用另一个进程。  不同类型的警报规则使用不同的逻辑来执行此分析。
 
 ![Log Analytics 警报](media/log-analytics-alerts/overview.png)
-
 
 警报规则通过以下详细信息定义。
 
 - **日志搜索**。  这是每次触发警报规则时都会运行的查询。  此查询返回的记录将用于确定是否创建了警报。
 - **时间窗口**。  指定查询的时间范围。  查询仅返回在当前时间的这个范围内创建的记录。  这可以是介于 5 分钟到 24 小时之间的任何值。 例如，如果时间范围设置为 60 分钟，并且在下午 1:15 运行查询，则仅返回下午 12:15 和 1:15 PM 之间创建的记录。
-- **频率**。  指定应运行查询的频率。 可以是介于 5 分钟到 24 小时之间的任何值。 应等于或小于时间范围。  如果该值大于时间窗口，则会有记录缺失的风险。<br>例如，考虑一下时间窗口为 30 分钟，频率为 60 分钟的情况。  如果查询在下午 1:00 运行，则会返回中午 12:30 和下午 1:00 之间的记录。  下次运行查询的时间是下午 2:00，将会返回下午 1:30 到 2:00 之间的记录。  在下午 1:00 和 1:30 之间创建的任何记录不会获得评估。
-- **阈值**。  如果从日志搜索返回的记录数超出阈值，则会创建警报。
+- **频率**。  指定应运行查询的频率。 可以是介于 5 分钟到 24 小时之间的任何值。 应等于或小于时间范围。  如果该值大于时间范围，则会有记录缺失的风险。<br>例如，假设时间范围为 30 分钟，频率为 60 分钟。  如果查询在下午 1:00 运行，则会返回中午 12:30 和下午 1:00 之间的记录。  下次运行查询的时间是下午 2:00，将会返回下午 1:30 到 2:00 之间的记录。  在下午 1:00 和 1:30 之间创建的任何记录不会获得评估。
+- **阈值**。  对日志搜索的结果进行评估，确定是否应创建警报。  不同类型的警报规则的阈值不同。
 
-## <a name="creating-alert-rules"></a>创建警报规则
-可以使用多种方法创建和修改警报规则。  有关详细指南，请参阅以下文章。  
+Log Analytics 中的每个警报规则都属于以下两种类型之一。  这些类型中的每一种都在随后的相应部分进行了详细介绍。
 
-- 使用 [OMS 门户](log-analytics-alerts-creating.md)创建警报规则。
-- 使用 [Resource Manager 模板](log-analytics-template-workspace-configuration.md)创建警报规则。
-- 使用 [REST API](log-analytics-api-alerts.md) 创建警报规则。
+- **[结果数](#number-of-results-alert-rules)**。 当日志搜索返回的记录数超出指定数目时，将创建单个警报。
+- **[指标度量](#metric-measurement-alert-rules)**。  为日志搜索结果中其值超出指定阈值的每个对象创建警报。 
 
-## <a name="alert-actions"></a>警报操作
+警报规则类型之间的差异如下所示。
 
-除了创建警报记录，警报规则还可以在创建警报时执行一个或多个操作。  可以通过操作发送邮件以响应警报，也可以启动一个过程，以便采取纠正措施。  
+- “结果数”警报规则将始终创建单个警报，而“指标度量”警报规则将为超出阈值的每个对象创建一个警报。
+- “结果数”警报规则将在阈值超出一次时创建一个警报。 当阈值在特定的时间间隔内超出特定的次数时，“指标度量”警报规则即可创建一个警报。
 
-也可利用操作提升 Log Analytics 在其他服务中的功能。  例如，Log Analytics 目前不提供通过短信或电话通知用户的功能。  但是，用户可以使用警报规则中的 Webhook 操作调用提供这些功能的服务，例如 [PagerDuty](https://www.pagerduty.com/)。  用户可以参阅[通过在 OMS Log Analytics 中创建警报 Webhook 操作向 Slack 发送短信](log-analytics-alerts-webhooks.md)中提供的示例，了解如何使用 [Slack](https://slack.com/) 创建可发送短信的 Webhook。
+## <a name="number-of-results-alert-rules"></a>“结果数”警报规则
+当搜索查询返回的记录数超出指定的阈值时，“结果数”警报规则将创建一个警报。 
 
-下表列出了可执行的操作。  可参阅[在 Log Analytics 中向警报规则添加操作](log-analytics-alerts-actions.md)，了解所有这些内容。 
+### <a name="threshold"></a>阈值
+“结果数”警报规则的阈值要么超出某个特定值，要么低于该值。  如果日志搜索返回的记录数与此条件匹配，则创建警报。
 
-| 操作 | 说明 |
-|:--|:--|
-| 电子邮件  |     将内含警报详细信息的电子邮件发送给一位或多位收件人。 |
-| Webhook | 通过单个 HTTP POST 请求调用外部进程。 |
-| Runbook | 在 Azure 自动化中启动 Runbook。 |
+### <a name="scenarios"></a>方案
 
+#### <a name="events"></a>事件
+此类警报规则适用于 Windows 事件日志、Syslog 和自定义日志等事件。  产生特定错误事件时，或在特定时间范围内产生多个错误事件时，你可能希望创建警报。
 
-## <a name="alerting-scenarios"></a>警报方案
+若要对单个事件发出警报，请将结果数设置为大于 0，并将频率和时间范围都设置为 5 分钟。  这样便会每 5 分钟运行一次查询，并检查自上次运行该查询以来已创建的某一事件的出现次数。  较长的频率可能会延长收集事件和创建警报之间的时间。
 
-### <a name="events"></a>事件
-若要对单个事件发出警报，请在创建规则时将结果数设置为“大于 0”，并将频率和时间窗口都设置为“5 分钟”。  这样便会每 5 分钟运行一次查询，并检查自上次运行该查询以来已创建的某一事件的出现次数。  较长的频率可能会延长收集事件和创建警报之间的时间。  可以使用类似下面的查询，指定感兴趣的事件。
+某些应用程序可能会记录不一定引发警报的偶然错误。  例如，应用程序可能会重试导致错误事件的进程，而下一次就会成功。  在这种情况下，你可能不想创建警报，除非在特定时间范围内创建多个事件。  
 
-    Type=Event Source=MyApplication EventID=7019 
+在某些情况下，你可能想要在某个事件不存在的情况下创建警报。  例如，进程可能记录常规事件以指明其运行正常。  如果它不在特定时间范围内记录某个事件，则应创建警报。  在这种情况下，应将阈值设置为“小于 1”。
 
-某些应用程序可能会记录不一定引发警报的偶然错误。  例如，应用程序可能会重试导致错误事件的进程，而下一次就会成功。  在这种情况下，你可能不想创建警报，除非在特定时间范围内创建多个事件。  为此，可使用同一查询，但需将阈值设置为更高的值。  例如，若要对 30 分钟内发生 5 个事件这种情况发出警报，可将频率设置为“5 分钟”，将时间窗口设置为“30 分钟”，将结果数设置为“大于 4”。    
+#### <a name="performance-alerts"></a>性能警报
+与事件类似，[性能数据](log-analytics-data-sources-performance-counters.md)存储为 OMS 存储库中的记录。  如果你想要在性能计数器超过特定阈值时发出警报，则该阈值应包括在查询中。
 
-在某些情况下，你可能想要在某个事件不存在的情况下创建警报。  例如，进程可能记录常规事件以指明其运行正常。  如果它不在特定时间范围内记录某个事件，则应创建警报。  在这种情况下，应将结果数设置为“小于 1”。
-
-### <a name="performance-alerts"></a>性能警报
-与事件类似，[性能数据](log-analytics-data-sources-performance-counters.md)作为记录存储在 Log Analytics 存储库中。  如果你想要在性能计数器超过特定阈值时发出警报，则该阈值应包括在查询中。
-
-例如，若希望处理器在使用率超过 90% 时发出警报，可以使用如下查询，并将警报规则的结果数设置为“大于 0”。
+例如，若希望处理器超过 90% 时发出警报，可以使用如下查询，并将警报规则的阈值设置为“大于 0”。
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
-若希望处理器在特定时间窗口的平均使用率超过 90% 时发出警报，则可使用如下所示的 [measure 命令](log-analytics-search-reference.md#commands)进行查询，并将警报规则的阈值设置为“大于 0”。 
+若希望处理器在特定时间范围平均超过 90% 时发出警报，则可使用如下所示的 [measure 命令](log-analytics-search-reference.md#commands)进行查询，并将警报规则的阈值设置为“大于 0”。 
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
+## <a name="metric-measurement-alert-rules"></a>“指标度量”警报规则
+
+>[!NOTE]
+> “指标度量”警报规则目前为公共预览版。
+
+“指标度量”警报规则为查询中其值超出指定阈值的每个对象创建一个警报。  这些规则具有下述不同于“结果数”警报规则的差异。
+
+#### <a name="log-search"></a>日志搜索
+虽然可以对“结果数”警报规则使用任何查询，但对适用于“指标度量”警报规则的查询存在特定的要求。  该查询必须包含[指标命令](log-analytics-search-reference.md#commands)，以便将特定字段的结果组合在一起。 该命令必须包含以下元素。
+
+- **聚合函数**。  确定将要执行的计算以及可能要聚合的数字字段。  例如，**count()** 将返回查询中的记录数，**avg(CounterValue)** 将返回 CounterValue 字段在特定时间间隔内的平均值。
+- **组字段**。  将为此字段的每个实例创建包含聚合值的记录，并可为每个实例生成警报。  例如，如果需要为每台计算机生成一个警报，则可使用“按计算机”。   
+- **时间间隔**。  定义一个时间间隔，在该间隔内对数据进行聚合。  例如，如果指定“5 分钟”，则会在为警报指定的时间范围内，为组字段（按 5 分钟间隔进行聚合）的每个实例创建一个记录。
+
+#### <a name="threshold"></a>阈值
+“指标度量”警报规则的阈值通过一个聚合值和一个违规次数来定义。  如果日志搜索中的任何数据点超出该值，则被视为违规。  如果结果中任何对象的违规次数超出指定值，则会针对该对象创建警报。
+
+#### <a name="example"></a>示例
+考虑一下这样一种情形：如果任何计算机的处理器利用率在 30 分钟内超出 90% 三次，则需发出警报。  你可以创建一个警报规则，详情如下。  
+
+**查询：**Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer Interval 5minute<br>
+**时间范围:** 30 分钟<br>
+**警报频率:** 5 分钟<br>
+**聚合值:** 大于 90<br>
+**触发警报的标准:** 违规总次数大于 5<br>
+
+查询将按 5 分钟的时间间隔为每台计算机创建一个平均值。  对于在前 30 分钟 内收集的数据，此查询将每隔 5 分钟运行一次。  下面显示的示例数据是针对三台计算机的。
+
+![示例查询结果](media/log-analytics-alerts/metrics-measurement-sample-graph.png)
+
+在此示例中，将为 srv02 和 srv03 创建单独的警报，因为二者都在指定的时间范围内超出 90% 的阈值 3 次。  如果将“触发警报的标准:”更改为“连续”，则只会为 srv03 创建警报，因为连续 3 个示例它都超出了阈值。
 
 ## <a name="alert-records"></a>警报记录
 Log Analytics 中警报规则创建的警报记录的“**类型**”为“**警报**”，“**SourceSystem**”为“**OMS**”。  它们具有下表中的属性。
@@ -96,6 +122,7 @@ Log Analytics 中警报规则创建的警报记录的“**类型**”为“**警
 |:--- |:--- |
 | 类型 |*Alert* |
 | SourceSystem |*OMS* |
+| *Object*  | [“指标度量”警报](#metric-measurement-alert-rules)将有一个针对组字段的属性。  例如，如果日志搜索按“计算机”进行组合，则警报记录会有一个“计算机”字段，其值为计算机的名称。
 | AlertName |警报的名称。 |
 | AlertSeverity |警报的严重级别。 |
 | LinkToSearchResults |指向 Log Analytics 日志搜索的链接，该搜索会从创建警报的查询返回记录。 |
@@ -110,7 +137,6 @@ Log Analytics 中警报规则创建的警报记录的“**类型**”为“**警
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [OMS 门户](log-analytics-alerts-creating.md)创建警报规则。
 * 安装[警报管理解决方案](log-analytics-solution-alert-management.md)，以分析 Log Analytics 中创建的警报和从 System Center Operations Manager (SCOM) 收集的警报。
 * 深入了解有关可生成警报的[日志搜索](log-analytics-log-searches.md)。
 * 完成[配置 Webook](log-analytics-alerts-webhooks.md) 和警报规则的演练步骤。  

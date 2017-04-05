@@ -9,15 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: cd57f3a43142b3af3546eafd9749123fadd333c2
-ms.openlocfilehash: 27cb0cda5d836e042e9eca3c053577db0bd8c148
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 21078a82e979af251a08bca70d623c80949d064a
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -54,10 +56,5 @@ HDInsight 中的外围安全性是使用虚拟网络和网关服务实现的。 
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。
 * 若要管理已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-manage.md)（管理已加入域的 HDInsight 群集）。
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](hdinsight-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。
-* 若要在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+* 有关在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
 

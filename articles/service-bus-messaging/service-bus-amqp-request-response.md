@@ -1,5 +1,5 @@
 ---
-title: "服务总线基于请求-响应的操作中的 AMQP 1.0 | Microsoft Docs"
+title: "Azure 服务总线基于请求-响应的操作中的 AMQP 1.0 | Microsoft Docs"
 description: "Microsoft Azure 服务总线基于请求/响应的操作的列表。"
 services: service-bus-messaging
 documentationcenter: na
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 03/22/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 05c5c8e8c12357fd150be10def6cd9a272d613e2
-ms.openlocfilehash: 4df8ce114600abfa7abe8e70959a2cd51e2cd8a6
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: a09aefd00a89c48acdc885f98e34d7faa9c5629a
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -46,10 +47,10 @@ ms.openlocfilehash: 4df8ce114600abfa7abe8e70959a2cd51e2cd8a6
 创建用于发送请求的管理节点的链接。  
   
 ```  
-requestLink = session.attach(     
+requestLink = session.attach(       
 role: SENDER,   
-    target: { address: "<entity address>/$management" },   
-    source: { address: ""<my request link unique address>" }   
+       target: { address: "<entity address>/$management" },   
+       source: { address: ""<my request link unique address>" }   
 )  
   
 ```  
@@ -59,10 +60,10 @@ role: SENDER,
 创建一个链接，以便从管理节点接收响应。  
   
 ```  
-responseLink = session.attach(    
+responseLink = session.attach(      
 role: RECEIVER,   
     source: { address: "<entity address>/$management" }   
-    target: { address: "<my response link unique address>" }   
+       target: { address: "<my response link unique address>" }   
 )  
   
 ```  
@@ -96,13 +97,13 @@ responseMessage = responseLink.receiveTransfer()
   
 ```  
 Message(  
-properties: {     
+properties: {      
         correlation-id: <request id>  
     },  
     application-properties: {  
             "statusCode" -> <status code>,  
             "statusDescription" -> <status description>,  
-           },         
+           },          
 )  
   
 ```  
@@ -495,7 +496,7 @@ sql-filter 映射必须包含以下条目。
 |session-id|字符串|否||  
 |reply-to-session-id|字符串|否||  
 |content-type|字符串|否||  
-|属性|map|否|映射到服务总线 [BrokeredMessage.Properties](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.properties.aspx)。|  
+|属性|map|否|映射到服务总线 [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties)。|  
   
 **sql-rule-action** 映射必须包含以下条目。  
   
@@ -624,8 +625,3 @@ sql-filter 映射必须包含以下条目。
 [服务总线 AMQP 概述]: service-bus-amqp-overview.md
 [针对服务总线分区队列和主题的 AMQP 1.0 支持]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/library/dn574799.asp
-
-
-<!--HONumber=Nov16_HO4-->
-
-

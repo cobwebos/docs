@@ -9,16 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 2817b779-1594-486b-8759-489379ca907d
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 03/24/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 3c349aecc87e28275045828a84e0ea3f89400b9e
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 6cb0da6d7b3aafeb9a8079b427e31c66811a6281
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -165,6 +166,16 @@ HDInsight 3.5 群集默认情况下禁止使用本地文件路径访问示例数
 2. 在左侧导航中，单击“Livy”，然后单击“配置”。
 
 3. 如果要允许完全访问文件系统，请在 **livy-default** 下添加属性名称 `livy.file.local-dir-whitelist`，并将其值设置为 **"/"**。 如果要仅允许访问特定目录，请提供该目录的路径作为值。
+
+## <a name="troubleshooting"></a>故障排除
+
+以下是使用 Livy 将远程作业提交到 Spark 群集时可能会遇到的一些问题。
+
+### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>不支持从附加存储使用外部 jar
+
+**问题：**如果正在使用 Livy 运行 Spark 作业并从与群集关联的附加存储引用外部 jar，则作业将失败。
+
+**解决方法：**请确保要使用的 jar 在与 HDInsight 群集关联的默认存储中可用。
 
 
 ## <a name="seealso"></a>另请参阅

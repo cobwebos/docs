@@ -30,8 +30,8 @@
 #### [仅通过 NGFW 路由流量](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)
 
 ### [SQL 服务建议](security-center-sql-service-recommendations.md)
-#### [对 SQL 数据库启用审核](security-center-enable-auditing-on-sql-databases.md)
-#### [对 SQL 服务器启用审核](security-center-enable-auditing-on-sql-servers.md)
+#### [在 SQL 数据库上启用审核与威胁检测](security-center-enable-auditing-on-sql-databases.md)
+#### [在 SQL 服务器上启用审核与威胁检测](security-center-enable-auditing-on-sql-servers.md)
 #### [启用透明数据加密](security-center-enable-transparent-data-encryption.md)
 
 ### [虚拟机建议](security-center-virtual-machine-recommendations.md)
@@ -74,8 +74,3 @@
 ## [服务概述](https://azure.microsoft.com/services/security-center/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=security-center)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=security-center)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

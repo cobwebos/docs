@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2017
+ms.date: 03/23/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 6fe5ed03611d68a1201e4fe48580a3499811abeb
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 159aed19b4c5e381ef15c40c15cf6bd7694d2fa3
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/17/2017
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登录并设置 Azure 帐户
 
-登录 Azure 帐户，并将 Azure CLI 配置为与 IoT 中心资源配合使用。
+登录到 Azure 帐户，然后选择订阅。
 
 1. 在命令提示符中，运行 [login 命令][lnk-login-command]：
     
@@ -96,7 +96,7 @@ ms.lasthandoff: 03/17/2017
 若要删除 IoT 中心，请运行以下命令：
 
 ```azurecli
-az resource delete --name {your iot hub name} --resource-group {your resource group name} --resource-type Microsoft.Devices/IotHubs
+az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
 ```
 
 若要删除资源组及其所有资源，请运行以下命令：

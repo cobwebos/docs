@@ -12,12 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 03/29/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: cd4de75743ee46bb07aec2cf23fa7687f4f20f43
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 892d24199be5065ee54d46863cca2fd958db3236
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -114,13 +114,9 @@ ms.lasthandoff: 03/22/2017
 * 流量管理器
 * 虚拟机 - 不支持移到新的订阅（当其证书存储在密钥保管库中时）
 * 虚拟机（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
-* 虚拟网络
+* 虚拟网络 - 当前无法移动对等虚拟网络，直到禁用了 VNet 对等互连为止。 禁用后，即可成功移动虚拟网络，然后可启用 VNet 对等互连。
+* VPN 网关 
 
-> [!NOTE] 
-> 目前不能移动包含 VPN 网关的虚拟网络，除非已临时删除网关。 删除后，即可成功移动虚拟网络，并可创建网关。
->
-> 当前无法移动对等虚拟网络，直到禁用了 VNet 对等互连为止。 禁用后，即可成功移动虚拟网络，然后可启用 VNet 对等互连。
->
  
 ## <a name="services-that-do-not-enable-move"></a>不支持移动的服务
 目前不可移动资源的服务包括：
@@ -137,9 +133,14 @@ ms.lasthandoff: 03/22/2017
 * 安全
 * 证书存储在密钥保管库中的虚拟机
 * 带托管磁盘的虚拟机
+* 带托管磁盘的虚拟机的可用性集
+* 带托管磁盘的虚拟机规模集
+* 托管磁盘
+* 从托管磁盘创建的映像
+* 从托管磁盘创建的快照
 * 虚拟机规模集
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
-* VPN 网关
+* 无法在订阅之间移动从应用商店资源创建的虚拟机。 需要在当前订阅中取消设置资源，并在新的订阅中再次部署资源
 
 ## <a name="app-service-limitations"></a>App Service 限制
 使用 App Service 应用时，你不能只移动 App Service 计划。 若要移动 App Service 应用，可以使用以下选项：

@@ -17,9 +17,9 @@ ms.topic: get-started-article
 ms.date: 3/10/2017
 ms.author: markgal;giridham;arunak;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 463e2a8af1fd319b396c6a769896344cac5f9f32
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 87d500d886feb2dbd61d15d5a980ab2c4018c2f2
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -213,7 +213,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 
 **对于 Azure VM 备份：**
 
-* **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/virtual-machines-linux-endorsed-distros.md) ，但 Core OS Linux 除外。  只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 分发版应该也能正常运行。
+* **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/linux/endorsed-distros.md) ，但 Core OS Linux 除外。  只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 分发版应该也能正常运行。
 * **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
 
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 03/23/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: a12d3a5c25decdc88df0c9f9b3216bfaae33d5a6
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: e4cbc9b0c9532d56376c4fabebcde8c64cb0474b
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -80,7 +80,7 @@ Database database = await client.CreateDatabaseAsync(
 ## <a name="resource-tokens"></a>资源令牌
 
 资源令牌提供对数据库中应用程序资源的访问权限。 资源令牌：
-- 提供对特定集合、文档、附件、存储过程、触发器和 UDF 的访问权限。
+- 提供对特定集合、分区键、文档、附件、存储过程、触发器和 UDF 的访问权限。
 - 向[用户](#users)授予对特定资源的[权限](#permissions)时创建。
 - 通过 POST、GET 或 PUT 调用操作权限资源时重新创建。
 - 使用专门针对用户、资源和权限构造的哈希资源令牌。
@@ -105,9 +105,9 @@ DocumentDB 资源令牌提供一种安全的替代方案，使客户端能够根
 
     ![DocumentDB 资源令牌工作流](./media/documentdb-secure-access-to-data/resourcekeyworkflow.png)
 
- 资源令牌的生成和管理由本机 DocumentDB 客户端库处理；但是，如果使用 REST，必须构造请求/身份验证标头。 有关为 REST 创建身份验证标头的详细信息，请参阅 [DocumentDB 资源的访问控制](https://docs.microsoft.com/en-us/rest/api/documentdb/access-control-on-documentdb-resources)或 [SDK 源代码](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js)。
- 
- 有关用于生成或代理资源令牌的中间层服务的示例，请参阅 [ResourceTokenBroker 应用](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
+资源令牌的生成和管理由本机 DocumentDB 客户端库处理；但是，如果使用 REST，必须构造请求/身份验证标头。 有关为 REST 创建身份验证标头的详细信息，请参阅 [DocumentDB 资源的访问控制](https://docs.microsoft.com/en-us/rest/api/documentdb/access-control-on-documentdb-resources)或 [SDK 源代码](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js)。
+
+有关用于生成或代理资源令牌的中间层服务的示例，请参阅 [ResourceTokenBroker 应用](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
 
 <a id="users"></a>
 
@@ -184,5 +184,4 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 * 若要详细了解 DocumentDB 数据库安全性，请参阅 [DocumentDB：NoSQL 数据库安全性](documentdb-nosql-database-security.md)。
 * 若要了解如何管理主密钥和只读密钥，请参阅[如何管理 DocumentDB 帐户](documentdb-manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys)。
 * 若要了解如何构造 DocumentDB 授权令牌，请参阅 [DocumentDB 资源的访问控制](https://docs.microsoft.com/en-us/rest/api/documentdb/access-control-on-documentdb-resources)。
-
 

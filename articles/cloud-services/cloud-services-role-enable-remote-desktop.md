@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: eb34bf45fde1fdaa1d7938967e659a13515a0f56
-ms.openlocfilehash: 914d391fa314de5893da462af3e9b59e6f8ce185
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: f64c41733f8fa7e34a0b0dfbbff2b565af7cf7db
+ms.lasthandoff: 03/25/2017
 
 ---
 
@@ -134,9 +135,5 @@ Azure 经典门户使用远程桌面扩展方法，以便即使在部署应用�
 
 ## <a name="additional-resources"></a>其他资源
 [如何配置云服务](cloud-services-how-to-configure.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+[云服务常见问题 - 远程桌面](cloud-services-faq.md#remote-desktop)
 

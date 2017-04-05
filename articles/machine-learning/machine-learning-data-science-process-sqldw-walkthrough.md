@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev;hangzh;weig
 translationtype: Human Translation
-ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
-ms.openlocfilehash: f12bf7ef4f608e01115a7e7d12b734d65ccc40e5
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 55e3f99cd3202abc012d310b43358d3795c8531e
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -55,7 +55,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 ## <a name="mltasks"></a>解决三种类型的预测任务
 我们根据 *tip\_amount* 编写了三个预测问题的公式，来阐明三种类型的建模任务︰
 
-1. 二元分类：预测是否已支付某个车程的小费，即大于 $0 的 **tip**amount* 是正例，等于 $0 的 \_tip*amount* 是反例\_*。
+1. 二元分类：预测是否已支付某个车程的小费，即大于 $0 的 **tip**amount*是正例，等于 $0 的 \_tip*amount* 是反例\_*。
 2. **多元分类**：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
    
         Class 0 : tip_amount = $0
@@ -85,7 +85,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 * **用户名**
 * **密码**
 
-**安装 Visual Studio 和 SQL Server Data Tools。 ** 有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
+**安装 Visual Studio 和 SQL Server Data Tools。** 有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
 
 **使用 Visual Studio 连接到你的 Azure SQL DW。** 有关说明，请参阅[使用 Visual Studio 连接到 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 和 2。
 
@@ -105,7 +105,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 **在你的 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](machine-learning-create-workspace.md)。
 
 ## <a name="getdata"></a>将数据载入 SQL 数据仓库
-打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令以下载示例 SQL 脚本文件，我们在 Github 上将这些脚本文件共享到了你使用参数 *-DestDir* 指定的一个本地目录中。 你可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在， PowerShell 脚本将创建它。
+打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令将我们在 GitHub 上与你共享的示例 SQL 脚本文件下载到你使用参数 *-DestDir* 指定的本地目录中。 你可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在， PowerShell 脚本将创建它。
 
 > [!NOTE]
 > 如果你的 *DestDir* 目录需要管理员权限才能创建或向其中写入数据，那么在执行下面的 PowerShell 脚本时，你可能需要**以管理员身份运行**。
@@ -340,7 +340,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 ![][20]
 
 ## <a name="dbexplore"></a>Azure SQL 数据仓库中的数据浏览和特征工程
-在本部分中，我们会通过直接使用 **Visual Studio Data Tools** 针对 Azure SQL DW 运行 SQL 查询，执行数据浏览和功能生成。 本部分中使用的所有 SQL 查询都可以在名为 *SQLDW_Explorations.sql* 的示例脚本中找到。 此文件已经由 PowerShell 脚本下载到你的本地目录。 也可以从 [Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) 检索它。 但 Github 中的文件并未插入 Azure SQL DW 信息。
+在本部分中，我们会通过直接使用 **Visual Studio Data Tools** 针对 Azure SQL DW 运行 SQL 查询，执行数据浏览和功能生成。 本部分中使用的所有 SQL 查询都可以在名为 *SQLDW_Explorations.sql* 的示例脚本中找到。 此文件已经由 PowerShell 脚本下载到你的本地目录。 也可以从 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) 检索它。 但 GitHub 中的文件并未插入 Azure SQL DW 信息。
 
 使用 Visual Studio 用 SQL DW 登录名和密码连接到你的 Azure SQL DW，并打开 **SQL 对象资源管理器**以确认已导入数据库和表。 检索 *SQLDW_Explorations.sql* 文件。
 

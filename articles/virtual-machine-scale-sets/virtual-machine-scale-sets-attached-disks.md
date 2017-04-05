@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 2/6/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 2939de432fcb5dbf4a7316343c3c6ae102b579e8
-ms.openlocfilehash: 5b34969f9c854775587d402acbedee12f236ab7a
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 91d36d5321f455a2af31093fa460ddf6640942d4
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -62,7 +63,7 @@ az vmss create --help
 az vmss disk attach -g dsktest -n dskvmss --size-gb 50 --lun 3
 ```
 > [!NOTE]
-> 不同的 VM 大小对所支持的附加驱动器数目有不同的限制。 在添加新磁盘之前，请检查[虚拟机大小特征](../virtual-machines/virtual-machines-windows-sizes.md)。
+> 不同的 VM 大小对所支持的附加驱动器数目有不同的限制。 在添加新磁盘之前，请检查[虚拟机大小特征](../virtual-machines/windows/sizes.md)。
 
 也可通过以下方式添加磁盘：先向规模集定义的 _storageProfile_ 中的 _dataDisks_ 属性添加新条目，然后应用所做的更改。 若要测试这一点，请在 [Azure 资源浏览器](https://resources.azure.com/)中找到一项现有的规模集定义。 选择“编辑”，然后将新磁盘添加到数据磁盘列表。 例如 使用以上示例：
 ```json
@@ -106,10 +107,5 @@ az vmss disk detach -g dsktest -n dskvmss --lun 2
 
 Azure 门户对规模集中附加数据磁盘的支持一开始是受限的。 可以根据需要使用 Azure 模板、CLI、PowerShell、SDK 和 REST API 管理附加磁盘。
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

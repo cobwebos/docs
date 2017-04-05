@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 1/23/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 2deaf44de51a989463826d6e4815f9ce9f0bbee5
-ms.openlocfilehash: 4b1fd3527140bc40299c008071753a91d264d567
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5e2ad5e5eae97645368797c8cdf848d88719bb64
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 4b1fd3527140bc40299c008071753a91d264d567
 本文编录了社区提供的工具，这些工具适用于将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型。
 
 > [!NOTE]
-> Microsoft 支持服务并不正式支持这些工具。 因此 Github 上提供了其开放源代码，我们很乐意接受有关修复或其他方案的 PR。 若要报告问题，请使用 Github 问题功能。
+> Microsoft 支持服务并不正式支持这些工具。 因此 GitHub 上提供了其开放源代码，我们很乐意接受有关修复或其他方案的 PR。 若要报告问题，请使用 GitHub 问题功能。
 > 
 > 使用这些工具进行迁移会造成经典虚拟机停机。 若要了解平台支持的迁移，请访问 
 > 
@@ -44,10 +45,5 @@ ms.openlocfilehash: 4b1fd3527140bc40299c008071753a91d264d567
 migAz 是另一选项，用于将整套经典部署模型 IaaS 资源迁移到 Azure Resource Manager IaaS 资源。 可以在同一订阅中迁移，也可以在不同订阅和不同订阅类型（例如 CSP 订阅）中迁移。
 
 [工具文档链接](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/migaz)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

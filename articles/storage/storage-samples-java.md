@@ -15,8 +15,9 @@ ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: ae5719c60c6ed2d3467f162f3b273d5bfdcf0073
-ms.openlocfilehash: 9a311233a6e604ccdb6ab862f11774bff7382a8d
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 98e6022062b4ef5b5c71b54a0e94775b925d216b
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 9a311233a6e604ccdb6ab862f11774bff7382a8d
 
 ## <a name="java-sample-index"></a>Java 示例索引
 
-下表概述了我们的示例存储库和每个示例中涉及的方案。 单击链接可在 Github 中查看相应的示例代码。
+下表概述了示例存储库和每个示例中涉及的场景。 单击链接可查看 GitHub 中相应的示例代码。
 
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">终结点</th><th style="font-size:110%">方案</th><th style="font-size:110%">代码示例</th></tr></thead><tbody> 
 <tr> 
@@ -69,7 +70,7 @@ ms.openlocfilehash: 9a311233a6e604ccdb6ab862f11774bff7382a8d
 <td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-test/src/com/microsoft/azure/storage/blob/CloudPageBlobTests.java">页 Blob 测试示例</a></td>
 </tr> 
 <tr> 
-<td>租用 Blob/容器</td>
+<td>租赁 Blob/容器</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java 中 Azure Blob 服务入门</a></td>
 </tr> 
 <tr> 
@@ -83,11 +84,11 @@ ms.openlocfilehash: 9a311233a6e604ccdb6ab862f11774bff7382a8d
 <tr> 
 <td>SAS</td>
 <td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-test/src/com/microsoft/azure/storage/blob/SasTests.java">SAS 测试示例</a></td>
-</tr>   
+</tr>     
 <tr> 
 <td>服务属性</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Java 中 Azure Blob 服务入门</a></td>
-</tr>           
+</tr>             
 <tr> 
 <td>快照 Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java 中 Azure Blob 服务入门</a></td>
@@ -132,11 +133,11 @@ ms.openlocfilehash: 9a311233a6e604ccdb6ab862f11774bff7382a8d
 <tr> 
 <td rowspan="8"><b>队列</b></td>
 <td>添加消息</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted/QueueBasics.java">Java 存储客户端库示例</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted/QueueBasics.java">存储 Java 客户端库示例</a></td> 
 </tr> 
 <tr> 
 <td>客户端加密</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/encryption/queue/gettingstarted/QueueGettingStarted.java">Java 存储客户端库示例</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/encryption/queue/gettingstarted/QueueGettingStarted.java">存储 Java 客户端库示例</a></td> 
 </tr> 
 <tr> 
 <td>创建队列</td> 
@@ -173,7 +174,7 @@ ms.openlocfilehash: 9a311233a6e604ccdb6ab862f11774bff7382a8d
 </tr> 
 <tr> 
 <td>插入/合并/替换实体</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Java 存储客户端库示例</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">存储 Java 客户端库示例</a></td> 
 </tr> 
 <tr> 
 <td>查询实体</td> 
@@ -189,7 +190,7 @@ ms.openlocfilehash: 9a311233a6e604ccdb6ab862f11774bff7382a8d
 </tr> 
 <tr> 
 <td>更新实体</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Java 存储客户端库示例</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">存储 Java 客户端库示例</a></td> 
 </tr> 
 </tbody> 
 </table>
@@ -216,8 +217,4 @@ ms.openlocfilehash: 9a311233a6e604ccdb6ab862f11774bff7382a8d
 
 * .NET：[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
 * 所有其他语言：[Azure 存储示例](storage-samples.md)
-
-
-<!--HONumber=Jan17_HO2-->
-
 

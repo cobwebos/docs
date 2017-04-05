@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics 中的容量管理解决方案 | Microsoft Docs"
-description: "Log Analytics 中的容量规划解决方案可用于帮助你了解 System Center Virtual Machine Manager 管理的 Hyper-V 服务器的容量"
+title: "Azure Log Analytics 中的容量和性能解决方案 | Microsoft Docs"
+description: "使用 Log Analytics 中的容量和性能解决方案来帮助理解 Hyper-V 服务器的容量。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,170 +12,126 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 03/29/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 57e7fbdaa393e078b62a6d6a0b181b67d532523d
-ms.openlocfilehash: c34cda0da164c711c8effc78d2af38ad8df581aa
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: af4aa0c69587b6a0448c470892e566b7efec4858
+ms.lasthandoff: 03/30/2017
 
 
 ---
-# <a name="capacity-management-solution-in-log-analytics"></a>Log Analytics 中的容量管理解决方案
-可使用 Log Analytics 中的容量管理解决方案帮助理解 Hyper-V 服务器的容量。 此解决方案需要 System Center Operations Manager 和 System Center Virtual Machine Manager。 如果使用直接连接的代理，容量规划解决方案无法运行。 该解决方案会读取受监视服务器上的性能计数器，然后将使用情况数据发送到云中的 OMS 服务进行处理。 逻辑应用于使用情况数据，云服务记录数据。 随着时间的推移，将基于当前消耗量确定使用模式并预测容量。
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>使用容量和性能解决方案（预览版）计划 Hyper-V 虚拟机容量
 
-例如，预测可以确定单个服务器何时需要额外的处理器核心或内存。 在本示例中，该预测可能会指出：服务器在 30 天后会需要额外的内存。 此预测可帮助你在服务器下一个维护时段期内规划内存升级。
+![容量和性能解决方案](./media/log-analytics-capacity/capacity-solution.png) 可以使用 Log Analytics 中的容量和性能解决方案来帮助理解 Hyper-V 服务器的容量。 可以通过该解决方案查看在这些 Hyper-V 主机上运行的主机和 VM 的总体利用率（CPU、内存和磁盘），从而深入了解 Hyper-V 环境。 将收集在这些 Hyper-V 主机上运行的所有主机和 VM 的 CPU、内存和磁盘的指标。
+
+解决方案：
+
+-    显示 CPU 和内存利用率最高和最低的主机
+-    显示 CPU 和内存利用率最高和最低的 VM
+-    显示 IOPS 和吞吐量利用率最高和最低的 VM
+-    显示哪些 VM 运行在哪些主机上
+-    显示群集共享卷中吞吐量、IOPS 和延迟较高的前几个磁盘
+- 允许根据组进行自定义和筛选
 
 > [!NOTE]
-> 不能将容量管理解决方案添加到工作区。 已安装容量管理解决方案的客户可以继续使用该解决方案。  
->
->
+> 名为“容量管理”的旧版容量和性能解决方案需要 System Center Operations Manager 和 System Center Virtual Machine Manager。 此更新后的解决方案没有这些依赖项。
 
-个人预览版提供替换容量和性能解决方案。 此替换解决方案旨在通过原始容量管理解决方案解决以下客户报告的难题：
 
-* 使用 Virtual Machine Manager 和 Operations Manager 的要求
-* 无法基于组进行自定义/筛选
-* 以小时为单位的数据聚合，频率不够高
-* 不存在 VM 级别的见解
-* 数据可靠性
+## <a name="connected-sources"></a>连接的源
 
-新的容量解决方案的优点：
+下表介绍了该解决方案支持的连接的源。
 
-* 支持精细的数据收集，改善了可靠性和准确性
-* 支持 Hyper-V，无需使用 VMM
-* 关于 VM 级别利用率的见解
+| 连接的源 | 支持 | 说明 |
+|---|---|---|
+| [Windows 代理](log-analytics-windows-agents.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
+| [Linux 代理](log-analytics-linux-agents.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
+| [SCOM 管理组](log-analytics-om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 OMS。 数据从管理组转发到 OMS 存储库。|
+| [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | Azure 存储不包括容量和性能数据。|
 
-新解决方案当前需要 Hyper-V Server 2012 或更高版本。 该解决方案可深入了解 Hyper-V 环境，并可查看在这些 Hyper-V 服务器上运行的主机和 VM 的总体利用率（CPU、内存和磁盘）。 将收集在这些服务器上运行的所有主机和 VM 的 CPU、内存和磁盘度量值。
+## <a name="prerequisites"></a>先决条件
 
-此页的剩余文档介绍旧的容量管理解决方案。 此文档在公共预览版提供新解决方案时更新。
+- 必须在 Windows Server 2012 或更高版本的 Hyper-V 主机而非虚拟机上安装 Windows 或 Operations Manager 代理。
 
-## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
-使用以下信息安装和配置解决方案。
 
-* 容量管理解决方案需要 Operations Manager。
-* 容量管理解决方案需要 Virtual Machine Manager。
-* 需要将 Operations Manager 与 Virtual Machine Manager (VMM) 连接起来。 有关连接系统的详细信息，请参阅[如何将 VMM 与 Operations Manager 连接起来](http://technet.microsoft.com/library/hh882396.aspx)。
-* Operations Manager 必须连接到 Log Analytics。
-* 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将容量管理解决方案添加到 OMS 工作区。  无需进一步配置。
+## <a name="configuration"></a>配置
 
-## <a name="capacity-management-data-collection-details"></a>容量管理数据集合详细信息
-容量管理使用已启用的代理收集性能数据、元数据和状态数据。
+执行以下步骤，将容量和性能解决方案添加到工作区。
 
-下表显示了数据收集方法以及有关如何为容量管理收集数据的其他详细信息。
+- 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中描述的过程，将容量和性能解决方案添加到 OMS 工作区。
 
-| 平台 | 直接代理 | Operations Manager 代理 | Azure 存储空间 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Windows |![否](./media/log-analytics-capacity/oms-bullet-red.png) |![是](./media/log-analytics-capacity/oms-bullet-green.png) |![否](./media/log-analytics-capacity/oms-bullet-red.png) |![是](./media/log-analytics-capacity/oms-bullet-green.png) |![是](./media/log-analytics-capacity/oms-bullet-green.png) |每小时 |
+## <a name="management-packs"></a>管理包
 
-下表显示容量管理收集的数据类型的示例：
+如果 SCOM 管理组已连接到 OMS 工作区，则添加该解决方案时会在 SCOM 中安装以下管理包。 无需对这些管理包进行任何配置或维护。
 
-| **数据类型** | **字段** |
-| --- | --- |
-| Metadata |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP Address、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
-| 性能 |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
-| 状态 |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
+- Microsoft.IntelligencePacks.CapacityPerformance (Microsoft.IntelligencePacks.UpdateAssessment)
 
-## <a name="capacity-management-page"></a>容量管理页面
-安装容量规划解决方案后，可通过使用 OMS 中**概述**页上的“容量规划”磁贴，查看受监视服务器的容量。
+1201 事件类似于：
 
-![“容量规划”磁贴图像](./media/log-analytics-capacity/oms-capacity01.png)
 
-该磁贴打开“容量管理”仪表板，可在其中查看服务器容量摘要。 该页面显示以下可单击的磁贴：
+```
+New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", version:"1.10.3190.0" received.
+```
 
-* *虚拟机计数*：显示虚拟机容量的剩余天数
-* *计算*：显示处理器核心和可用内存
-* *存储*：显示所用磁盘空间和平均磁盘延迟
-* *搜索*：可使用数据资源管理器搜索 OMS 系统中的任何数据
+更新容量和性能解决方案后，版本号会更改。
 
-![“容量管理”仪表板图像](./media/log-analytics-capacity/oms-capacity02.png)
+有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md)。
 
-### <a name="to-view-a-capacity-page"></a>查看容量页面
-* 在“概述”页面上，单击“容量管理”，然后单击“计算”或“存储”。
+## <a name="using-the-solution"></a>使用解决方案
 
-## <a name="compute-page"></a>计算页
-可使用 Microsoft Azure OMS 中的“计算”仪表板查看关于利用率的容量信息、预测的容量天数以及与基础结构相关的效率。 使用“利用率”区域查看虚拟机主机中的 CPU 内核和内存利用率。 可使用预测工具评估给定日期范围需要的容量。 可使用“效率”区域查看虚拟机主机的效率。 可通过单击链接项来查看有关详细信息。
+将容量和性能解决方案添加到工作区时，会将“容量和性能”添加到“概览”仪表板。 此磁贴显示当前处于活动状态的 Hyper-V 主机的计数，以及曾在所选时间段内受监视的活动虚拟机的计数。
 
-可为以下类别生成 Excel 工作簿：
+![“容量和性能”磁贴](./media/log-analytics-capacity/capacity-tile.png)
 
-* 内核利用率最高的顶部主机
-* 内存利用率最高的顶部主机
-* 虚拟机效率低下的顶部主机
-* 按利用率分类的顶部主机
-* 按利用率分类的底部主机
 
-![“容量管理计算”页面图像](./media/log-analytics-capacity/oms-capacity03.png)
+### <a name="review-utilization"></a>查看利用率
 
-以下区域显示在“计算”仪表板上：
+单击“容量和性能”磁贴，打开“容量和性能”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”或单击列标题运行返回所有记录的日志搜索。
 
-**利用率**：查看虚拟机主机上的 CPU 核心和内存利用率。
+- **主机**
+    - **主机 CPU 利用率**：根据所选时间段显示主计算机的 CPU 利用率图形趋势和主机的列表。 将鼠标悬停在折线图上即可查看特定时间点的详细信息。 单击图表即可在日志搜索中查看更多详细信息。 单击任意主机名称即可打开日志搜索并查看托管 VM 的 CPU 计数器详细信息。
+    - **主机内存利用率**：根据所选时间段显示主计算机的内存利用率图形趋势和主机的列表。 将鼠标悬停在折线图上即可查看特定时间点的详细信息。 单击图表即可在日志搜索中查看更多详细信息。 单击任意主机名称即可打开日志搜索并查看托管 VM 的内存计数器详细信息。
+- **虚拟机**
+    - **VM CPU 利用率**：根据所选时间段显示虚拟机的 CPU 利用率图形趋势和虚拟机的列表。 将鼠标悬停在折线图上即可查看前 3 个 VM 在特定时间点的详细信息。 单击图表即可在日志搜索中查看更多详细信息。 单击任意 VM 名称即可打开日志搜索并查看 VM 的聚合 CPU 计数器详细信息。
+    - **VM 内存利用率**：根据所选时间段显示虚拟机的内存利用率图形趋势和虚拟机的列表。 将鼠标悬停在折线图上即可查看前 3 个 VM 在特定时间点的详细信息。 单击图表即可在日志搜索中查看更多详细信息。 单击任意 VM 名称即可打开日志搜索并查看 VM 的聚合内存计数器详细信息。
+    - **VM 总磁盘 IOPS**：根据所选时间段显示虚拟机的总磁盘 IOPS 图形趋势和包含其 IOPS 的虚拟机的列表。 将鼠标悬停在折线图上即可查看前 3 个 VM 在特定时间点的详细信息。 单击图表即可在日志搜索中查看更多详细信息。 单击任意 VM 名称即可打开日志搜索并查看 VM 的聚合磁盘 IOPS 计数器详细信息。
+    - **VM 总磁盘吞吐量**：根据所选时间段显示虚拟机的总磁盘吞吐量图形趋势和包含其总磁盘吞吐量的虚拟机的列表。 将鼠标悬停在折线图上即可查看前 3 个 VM 在特定时间点的详细信息。 单击图表即可在日志搜索中查看更多详细信息。 单击任意 VM 名称即可打开日志搜索并查看 VM 的聚合总磁盘吞吐量计数器详细信息。
+- **群集共享卷**
+    - **总吞吐量**：显示群集共享卷上读取数和写入数的总和。
+    - **总 IOPS**：显示群集共享卷上每秒输入/输出操作数的总和。
+    - **总延迟**：显示群集共享卷上的总延迟。
+- **主机密度**：顶部磁贴显示适用于解决方案的主机和虚拟机的总数。 单击顶部磁贴即可在日志搜索中查看其他详细信息。 此外还列出了所有主机以及所托管的虚拟机数。 单击某个主机即可深入查看日志搜索中的 VM 结果。
 
-* *使用的核心数*：所有主机的总和（CPU 使用百分比乘以主机上物理核心数）。
-* *可用核心数*：总物理核心数减去使用的核心数。
-* *可用核心数百分比*：可用物理核心数除以物理核心总数。
-* *每个虚拟机的虚拟核心数*：系统中的总虚拟核心数除以系统中的虚拟机总数。
-* *虚拟核心数与物理核心数之比*：物理核心总数与系统中虚拟机使用的物理核心数之比。
-* *可用的虚拟核心数*：虚拟核心数与物理核心数之比乘以可用的物理核心数。
-* *使用的内存*：所有主机使用的总内存。
-* *可用内存*：总物理内存减去使用的内存。
-* *可用内存百分比*：可用物理内存除以总物理内存。
-* *每个虚拟机的虚拟内存*：系统中的总虚拟内存除以系统中的虚拟机总数。
-* *虚拟内存与物理内存之比*：系统中的总虚拟内存除以系统中的总物理内存。
-* *可用的虚拟内存*：虚拟内存与物理内存之比乘以可用的物理内存。
 
-**预测工具**
+![仪表板“主机”边栏选项卡](./media/log-analytics-capacity/dashboard-hosts.png)
 
-使用预测工具可查看资源利用率的历史趋势。 这包括虚拟机、内存、核心和存储的使用趋势。 预测功能使用预测算法，有助于了解耗尽每个资源的时间。 这有助于计算相应的容量规划，以便了解何时需要购买更多容量（例如内存、内核或存储）。
+![仪表板虚拟机边栏选项卡](./media/log-analytics-capacity/dashboard-vms.png)
 
-**效率**
 
-* *空闲虚拟机*：在指定时间内使用少于 10% 的 CPU 和 10% 的内存。
-* *过度使用的虚拟机*：在指定时间内使用多于 90% 的 CPU 和 90% 的内存。
-* *空闲主机*：在指定时间内使用少于 10% 的 CPU 和 10% 的内存。
-* *过度使用的主机*：在指定时间内使用多于 90% 的 CPU 和 90% 的内存。
+### <a name="evaluate-performance"></a>评估性能
 
-### <a name="to-work-with-items-on-the-compute-page"></a>在“计算”页面处理项目
-1. 在“计算”仪表板的“利用率”区域中，查看有关使用的 CPU 内核和内存的容量信息。
-2. 在“搜索”页中单击项目以打开它，然后查看有关详细信息。
-3. 在“预测工具”中，移动日期滑块，显示将在所选日期使用的容量预测情况。
-4. 在“效率”区域中，查看有关虚拟机和虚拟机主机的容量效率信息。
+不同组织的生产计算环境相差很大。 另外，容量和性能工作负荷可能取决于 VM 的运行方式以及你所认为的正常的标准。 特定的用于衡量性能的过程可能不适用于你的环境。 因此，更通用的说明性指导帮助性更大。 Microsoft 发布了各种说明性的关于如何衡量性能的指导文章。
 
-## <a name="direct-attached-storage-page"></a>“直接附加存储”页
-可使用 OMS 中的“直接附加存储”仪表板查看有关存储利用率、磁盘性能和预测磁盘容量天数的容量信息。 使用“利用率”区域查看虚拟机主机中的磁盘空间使用情况。 可使用“磁盘性能”区域查看虚拟机主机的磁盘吞吐量和延迟。 还可使用预测工具估算在给定日期范围内预期可用的容量。 可通过单击链接项来查看有关详细信息。
+总之，该解决方案从包括性能计数器在内的各种源收集容量和性能数据。 请使用在解决方案的各个图面中提供的该容量和性能数据，并将你的结果与 [Measuring Performance on Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx)（衡量 Hyper-V 上的性能）一文中的结果进行比较。 虽然该文已发布了一段时间，但指标、注意事项和准则仍然有效。 该文包含指向其他有用资源的链接。
 
-通过此容量信息为以下类别生成 Excel 工作簿：
 
-* 按主机排序的最高磁盘空间使用率
-* 按主机排序的最高平均延迟
+## <a name="sample-log-searches"></a>示例日志搜索
 
-以下区域显示在“存储”页面上：
+下表提供的示例日志搜索针对该解决方案所收集和计算的容量和性能数据。
 
-* *利用率*：查看虚拟机主机中的磁盘空间使用情况。
-* *总磁盘空间*：所有主机的总和（逻辑磁盘空间）
-* *使用的磁盘空间*：所有主机的总和（使用的逻辑磁盘空间）
-* *可用的磁盘空间*：总磁盘空间减去使用的磁盘空间
-* *已用磁盘的百分比*：已经使用的磁盘空间除以总磁盘空间
-* *可用磁盘百分比*：可用磁盘空间除以总磁盘空间
+| 查询 | 说明 |
+|---|---|
+| 所有主机内存配置 | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="Host Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
+| 所有 VM 内存配置 | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="VM Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
+| 所有 VM 的总磁盘 IOPS 明细 | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="VHD Reads/s" OR CounterName="VHD Writes/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
+| 所有 VM 的总磁盘吞吐量明细 | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="VHD Read MB/s" OR CounterName="VHD Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
+| 所有 CSV 的总 IOPS 明细 | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Reads/s" OR CounterName="CSV Writes/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
+| 所有 CSV 的总吞吐量明细 | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read MB/s" OR CounterName="CSV Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
+| 所有 CSV 的总延迟明细 | <code> Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read Latency" OR CounterName="CSV Write Latency") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
 
-![“容量管理直接附加存储”页面的图像](./media/log-analytics-capacity/oms-capacity04.png)
-
-**磁盘性能**
-
-使用 OMS 可查看磁盘空间的历史使用趋势。 预测功能使用算法预测未来的使用情况。 特别是对空间使用情况，预测功能支持预测耗尽磁盘空间的时间。 此预测有助于规划相应的存储，并了解何时需要购买更多存储。
-
-**预测工具**
-
-使用预测工具可查看磁盘空间利用率的历史趋势。 预测功能还支持预测耗尽磁盘空间的时间。 此预测有助于规划相应的存储，并了解何时需要购买更多存储容量。
-
-### <a name="to-work-with-items-on-the-direct-attached-storage-page"></a>在“直接附加存储”页上处理项目
-1. 在“直接附加存储”仪表板的“利用率”区域中，查看磁盘利用率信息。
-2. 在“搜索”页中单击链接项目打开它，然后查看有关详细信息。
-3. 在“磁盘性能”区域中，查看磁盘吞吐量和延迟信息。
-4. 在“预测工具”中，移动日期滑块，显示将在所选日期使用的容量预测情况。
-
-## <a name="next-steps"></a>后续步骤
-* 使用[在 Log Analytics 中进行日志搜索](log-analytics-log-searches.md)查看详细的容量管理数据。
 
 
 
-<!--HONumber=Nov16_HO3-->
-
+## <a name="next-steps"></a>后续步骤
+* 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看详细的容量和性能数据。
 

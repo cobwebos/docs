@@ -1,5 +1,5 @@
 ---
-title: "在 OMS Log Analytics 中创建警报规则 | Microsoft 文档"
+title: "在 OMS Log Analytics 中创建警报 | Microsoft Docs"
 description: "Log Analytics 中的警报标识 OMS 存储库中的重要信息，并可以主动向你通知问题，或调用操作以尝试更正问题。  本文介绍如何创建警报规则和它们可执行的不同操作的详细信息。"
 services: log-analytics
 documentationcenter: 
@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
+ms.date: 03/23/2017
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fdf22ff85a3a76be5de50632c4948df44c2312df
-ms.openlocfilehash: 9778c79ca887e154ad2796ce5d90d953643b8067
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: eec118430c6262626728c3156634361c977ccb4b
+ms.lasthandoff: 03/29/2017
 
 
 ---
-# <a name="create-and-manage-alert-rules-in-log-analytics-with-the-oms-portal"></a>使用 OMS 门户在 Log Analytics 中创建和管理警报规则
-[Log Analytics 中的警报](log-analytics-alerts.md)是由定期自动运行日志搜索的警报规则创建的。  如果结果符合特定的条件，警报规则将创建警报记录。  然后，该规则可自动运行一个或多个操作来主动向你通知警报或调用另一个进程。   
+# <a name="working-with-alert-rules-in-log-analytics"></a>使用 Log Analytics 中的警报规则
+警报通过警报规则创建，警报规则定期自动运行日志搜索。  如果结果符合特定的条件，警报规则将创建警报记录。  然后，该规则可自动运行一个或多个操作来主动向你通知警报或调用另一个进程。   
 
 本文介绍使用 OMS 门户创建和编辑警报规则的过程。  有关不同的设置以及如何实现所需逻辑的详细信息，请参阅[了解 Log Analytics 中的警报](log-analytics-alerts.md)。
 
@@ -79,23 +78,37 @@ ms.lasthandoff: 03/01/2017
 
 如果提供警报规则的时间范围，则将显示该时间范围内符合搜索条件的现有记录数。  这可以帮助你确定将为你提供期望的结果数的频率。
 
-#### <a name="threshold"></a>阈值
-
-| 属性 | 说明 |
-|:--- |:---|
-| 结果数 |如果查询返回的记录数**大于**或**小于**提供的值，则创建警报。  |
-
-### <a name="alert-frequency"></a>警报频率
+### <a name="schedule"></a>计划
 定义搜索查询的运行频率。
 
 | 属性 | 说明 |
 |:--- |:---|
 | 警报频率 | 指定应运行查询的频率。 可以是介于 5 分钟到 24 小时之间的任何值。 应等于或小于时间范围。  如果该值大于时间范围，则会有记录缺失的风险。<br><br>例如，假设时间范围为 30 分钟，频率为 60 分钟。  如果查询在下午 1:00 运行，则会返回中午 12:30 和下午 1:00 之间的记录。  下次运行查询的时间是下午 2:00，将会返回下午 1:30 到 2:00 之间的记录。  在下午 1:00 和 1:30 之间创建的任何记录不会获得评估。 |
+
+
+### <a name="generate-alert-based-on"></a>基于以下项生成警报
+定义将针对搜索查询的结果计算的条件，以确定是否应创建警报。  这些详细信息将因所选的警报规则的类型而异。  可以从[了解 Log Analytics 中的警报](log-analytics-alerts.md)中获取不同警报规则类型的详细信息。
+
+| 属性 | 说明 |
+|:--- |:---|
 | 阻止警报 | 如果打开警报规则的阻止功能，则新建警报之后将在定义的时间段内禁用该规则的操作。 此规则仍在运行中，并且会在满足条件的情况下创建警报记录。 这是为了让你有时间更正问题，而无需运行重复操作。 |
 
+#### <a name="number-of-results-alert-rules"></a>结果警报规则数
+
+| 属性 | 说明 |
+|:--- |:---|
+| 结果数 |如果查询返回的记录数**大于**或**小于**提供的值，则创建警报。  |
+
+#### <a name="metric-measurement-alert-rules"></a>指标度量警报规则
+
+| 属性 | 说明 |
+|:--- |:---|
+| 聚合值 | 要视为违规，结果中每个聚合值必须超过的阈值。 |
+| 基于以下项触发警报 | 要创建的警报的违规次数。  可以为结果集中的任何违规组合指定**总违规数**，或指定**连续违规数**以要求违规必须在连续采样时发生。 |
 
 ### <a name="actions"></a>操作
-达到阈值时，警报规则始终创建[警报记录](#alert-records)。  还可以定义一个或多个要运行的操作，例如，发送电子邮件或启动 Runbook。  有关配置操作的详细信息，请参阅[将操作添加到 Log Analytics 中的警报规则](log-analytics-alerts-actions.md)。 
+达到阈值时，警报规则始终创建[警报记录](#alert-records)。  还可以定义一个或多个要运行的响应，例如，发送电子邮件或启动 Runbook。
+
 
 
 #### <a name="email-actions"></a>电子邮件操作
@@ -115,7 +128,7 @@ Webhook 操作可让你通过单个 HTTP POST 请求调用外部进程。
 | Webhook |如果想要在触发警报时调用 webhook，则指定“**是**”。 |
 | Webhook URL |Webhook 的 URL。 |
 | 包含自定义 JSON 负载 |如果想要将默认负载替换为自定义负载，请选择此选项。 |
-| 输入自定义 JSON 负载 |要发送到 Webhook 的自定义有效负载。  |
+| 输入自定义 JSON 负载 |Webhook 的自定义负载。  如需详细信息，请参阅上一节。 |
 
 #### <a name="runbook-actions"></a>Runbook 操作
 Runbook 操作可在 Azure 自动化中启动 Runbook。 

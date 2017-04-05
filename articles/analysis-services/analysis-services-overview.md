@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 653c9a04016c0157b2107710e170ba63b3a499f7
-ms.openlocfilehash: 38f68d6df19d24492a234933e10d5d5cf34d1b23
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 3539da8afe5781d74cbf723090050b767373f268
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -103,7 +103,7 @@ Azure Analysis Services 当前支持 1200 兼容级别表格模型的表格模�
 ##### <a name="data-sources"></a>数据源
 对于预览版，在部署到 Azure Analysis Services 服务器的表格 1200 模型中支持以下数据源。
 
-| **云** | **本地** |
+| **云** | **本地（需要数据网关）** |
 | --- | --- |
 | SQL 数据库 |SQL Server |
 | SQL 数据仓库 |APS |
@@ -114,7 +114,8 @@ Azure Analysis Services 当前支持 1200 兼容级别表格模型的表格模�
 Azure Analysis Services 中的数据模型可能需要不同的数据提供程序连接到数据源，而不是 SQL Server Analysis Services 中的数据模型。 数据提供程序要求取决于云中或本地的数据源以及数据模型类型；内存中或直接查询。 若要了解详细信息，请参阅[数据源连接](analysis-services-datasource.md)。
 
 ### <a name="client-connections"></a>客户端连接
-预览版尚不支持 Power BI Embedded。
+
+客户端应用程序需要最新的客户端[数据提供程序](analysis-services-data-providers.md)，才能连接到 Azure Analysis Services。
 
 不支持实时连接 Azure Analysis Services 服务器并保存在 OneDrive 或 SharePoint Online 上的 Excel 工作簿。
 

@@ -15,8 +15,9 @@ ms.workload: tbd
 ms.date: 01/05/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: ecb2ab00b56476b4373fa06cb766384cb2fcd514
-ms.openlocfilehash: fceb4254461bd91fd2da8603af4fefa47def72e8
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: f4f3caed8390ba3a80d6cf1282f4d2751c67ae6b
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -523,7 +524,7 @@ RRS 的一个用处就是验证应用程序的可靠性。 在这种情况下，
     }
 
 #### <a name="sample-code-in-java-for-bes"></a>Java 中的 BES 示例代码
-批处理执行服务 REST API 采用包含对输入示例 csv 和输出示例 csv 的引用的 JSON（如下示例所示），并在 Azure ML 中创建一项作业完成批处理预测。 可在 [Github](https://github.com/nk773/AzureML_BESApp/tree/master/src/azureml_besapp) 中查看完整代码。 此代码示例需要 [apache http 客户端库](https://hc.apache.org/downloads.cgi)。 
+批处理执行服务 REST API 采用包含对输入示例 csv 和输出示例 csv 的引用的 JSON（如下示例所示），并在 Azure ML 中创建一项作业完成批处理预测。 可在 [GitHub](https://github.com/nk773/AzureML_BESApp/tree/master/src/azureml_besapp) 中查看完整代码。 此代码示例需要 [apache http 客户端库](https://hc.apache.org/downloads.cgi)。 
 
     { "GlobalParameters": {}, 
         "Inputs": { "input1": { "ConnectionString":     "DefaultEndpointsProtocol=https;
@@ -730,9 +731,4 @@ RRS 的一个用处就是验证应用程序的可靠性。 在这种情况下，
 <!-- External Links -->
 [webservicesportal]: https://services.azureml.net/
 [mlstudio]: https://studio.azureml.net
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

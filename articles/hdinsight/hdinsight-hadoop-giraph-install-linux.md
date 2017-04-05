@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 9fcac906-8f06-4002-9fe8-473e42f8fd0f
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
-ms.openlocfilehash: 699626f24e6f66f4b149feda5eb292e64d4b6647
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: ff27749800319517a8f635530f0f16b928692575
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 02/09/2017
 > [!IMPORTANT]
 > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
-## <a name="a-namewhatisawhat-is-giraph"></a><a name="whatis"></a>什么是 Giraph？
+## <a name="whatis"></a>什么是 Giraph？
 
 [Apache Giraph](http://giraph.apache.org/) 可让你使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。 图形可为对象之间的关系建模，例如，为大型网络（例如 Internet）上的路由器之间的连接建模，或者为社交网络上的人物之间的关系建模（有时称为社交图形）。 通过图形处理，你可以推理图形中对象之间的关系，例如：
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 02/09/2017
 
 * 将 `giraph-examples.jar` 文件复制到群集的默认存储 (WASB)：`/example/jars/giraph-examples.jar`
 
-## <a name="a-nameinstallainstall-giraph-using-script-actions"></a><a name="install"></a>使用脚本操作安装 Giraph
+## <a name="install"></a>使用脚本操作安装 Giraph
 
 用于在 HDInsight 群集上安装 Giraph 的示例脚本位于下列位置。
 
@@ -86,7 +87,7 @@ ms.lasthandoff: 02/09/2017
 
 4. 根据[创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中所述继续创建群集。
 
-## <a name="a-nameusegiraphahow-do-i-use-giraph-in-hdinsight"></a><a name="usegiraph"></a>如何在 HDInsight 中使用 Giraph？
+## <a name="usegiraph"></a>如何在 HDInsight 中使用 Giraph？
 
 完成群集创建之后，便可执行以下步骤来运行 Giraph 随附的 SimpleShortestPathsComputation 示例。 这会使用基本 [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) 实现来查找图形中对象之间的最短路径。
 
@@ -94,11 +95,7 @@ ms.lasthandoff: 02/09/2017
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    有关如何在 HDInsight 中使用 SSH 的详细信息，请参阅以下文档：
-   
-   * [在 Linux、Unix、OS X 或 Windows 的 HDInsight 上结合使用 SSH 和基于 Linux 的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-   * [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+    有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 使用以下命令创建名为 **tiny_graph.txt** 的新文件：
    

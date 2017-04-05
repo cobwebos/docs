@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 03/23/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 5ad5c688bae7b20ce6e5830e8c7b8dfa9c6df701
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 1ddf62c155264c5f76d8fd738b979c21cb527962
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -346,12 +346,61 @@ ReadDocumentFeed 支持使用以下方案/任务对 DocumentDB 集合中的更�
 
 经过一段时间后，就会建立平衡。 通过这种动态功能，可以向使用者应用基于 CPU 的自动缩放，以实现向上扩展和向下缩减。 如果 DocumentDB 中的更改提供速率超过了使用者可以处理的速率，则可使用使用者的 CPU 增大功能来实现辅助角色实例数的自动缩放。
 
-ChangeFeedProcessorHost 类还使用单独的 DocumentDB 租约集合实现了检查点机制。 此机制按分区存储偏移量，使每个使用者都能确定前一个使用者的最后一个检查点是什么。 当分区通过租约在节点之间转移时，正是这个同步机制在促进负载转移。
+`ChangeFeedProcessorHost` 类还使用单独的 DocumentDB 租约集合实现了检查点机制。 此机制按分区存储偏移量，使每个使用者都能确定前一个使用者的最后一个检查点是什么。 当分区通过租约在节点之间转移时，正是这个同步机制在促进负载转移。
+
+
+以下是用于将更改打印到控制台的简单更改源处理器主机的代码片段：
+
+```cs
+    class DocumentFeedObserver : IChangeFeedObserver
+    {
+        private static int s_totalDocs = 0;
+        public Task OpenAsync(ChangeFeedObserverContext context)
+        {
+            Console.WriteLine("Worker opened, {0}", context.PartitionKeyRangeId);
+            return Task.CompletedTask;  // Requires targeting .NET 4.6+.
+        }
+        public Task CloseAsync(ChangeFeedObserverContext context, ChangeFeedObserverCloseReason reason)
+        {
+            Console.WriteLine("Worker closed, {0}", context.PartitionKeyRangeId);
+            return Task.CompletedTask;
+        }
+        public Task ProcessEventsAsync(IReadOnlyList<Document> docs, ChangeFeedObserverContext context)
+        {
+            Console.WriteLine("Change feed: total {0} doc(s)", Interlocked.Add(ref s_totalDocs, docs.Count));
+            return Task.CompletedTask;
+        }
+    }
+```
+
+以下代码片段演示如何注册新主机以侦听 DocumentDB 集合的更改。 在这里我们配置单独的集合，以管理跨多个使用者的分区的租约：
+
+```cs
+    string hostName = Guid.NewGuid().ToString();
+    DocumentCollectionInfo documentCollectionLocation = new DocumentCollectionInfo
+    {
+        Uri = new Uri("https://YOUR_SERVICE.documents.azure.com:443/"),
+        MasterKey = "YOUR_SECRET_KEY==",
+        DatabaseName = "db1",
+        CollectionName = "documents"
+    };
+
+    DocumentCollectionInfo leaseCollectionLocation = new DocumentCollectionInfo
+    {
+        Uri = new Uri("https://YOUR_SERVICE.documents.azure.com:443/"),
+        MasterKey = "YOUR_SECRET_KEY==",
+        DatabaseName = "db1",
+        CollectionName = "leases"
+    };
+
+    ChangeFeedEventHost host = new ChangeFeedEventHost(hostName, documentCollectionLocation, leaseCollectionLocation);
+    await host.RegisterObserverAsync<DocumentFeedObserver>();
+```
 
 本文逐步讲解了 DocumentDB 的更改源支持，以及如何使用 DocumentDB REST API 和/或 SDK 跟踪对 DocumentDB 数据所做的更改。 
 
 ## <a name="next-steps"></a>后续步骤
-* 尝试 [Github 上的 DocumentDB 更改源代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)
+* 尝试 [GitHub 上的 DocumentDB 更改源代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)
 * 详细了解 [DocumentDB 的资源模型和层次结构](documentdb-resources.md)
 * 使用 [DocumentDB SDK](documentdb-sdk-dotnet.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 开始编写代码
 

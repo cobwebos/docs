@@ -104,7 +104,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 ## <a name="explore-your-logs"></a>浏览你的日志
 在调试模式下运行应用，或者实时部署它。
 
-在 [Application Insights 门户][portal]中应用的概述边栏选项卡中，选择“搜索”[][diagnostic]。
+在 [Application Insights 门户][portal]中应用的概述边栏选项卡中，选择 [搜索][diagnostic]。
 
 ![在 Application Insights 中，选择“搜索”](./media/app-insights-asp-net-trace-logs/020-diagnostic-search.png)
 

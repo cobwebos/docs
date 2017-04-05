@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: 2c76120a967aabf546fdb5246478f78e8cf47f94
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: d56754c9c205ddc4933b29e8f4891a56f42496e9
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -90,7 +90,10 @@ block-list ::=
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        Hash="md5-hash"/>]  
     </BlockList>  
+
 ```
+
+## <a name="manifest-xml-elements-and-attributes"></a>清单 XML 的元素和属性
 
 下表指定了驱动器清单 XML 格式的数据元素和属性。  
   
@@ -131,6 +134,7 @@ block-list ::=
 |`Blob/PropertiesPath`|String|可选。 指定 properties 文件的相对路径。 在导入过程中，将对目标 Blob 设置属性。 在执行导出操作过程中，Blob 属性将存储在驱动器上的 properties 文件中。|  
 |`Blob/PropertiesPath/@Hash`|属性，字符串|指定 Blob properties 文件的 Base16 编码 MD5 哈希。|  
   
-## <a name="see-also"></a>另请参阅  
-[存储导入/导出 REST](/rest/api/storageimportexport/)
+## <a name="next-steps"></a>后续步骤
+ 
+* [存储导入/导出 REST API](/rest/api/storageimportexport/)
 

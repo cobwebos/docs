@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ecc141c9afa46f23d31de4356068ef4f98a92aa
-ms.openlocfilehash: 79e04b1569f6e3ca221b673ebe4eb9825d89abe1
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: e696906adf604ebdb665a7a29fd1bba25095e842
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -55,13 +55,7 @@ ms.lasthandoff: 02/10/2017
 
 如果创建 HDInsight 群集时**提供了 SSH 身份验证密码**，则需要在系统提示时提供该密码。
 
-若要深入了解如何将 SSH 与 HDInsight 配合使用，请参阅[在 Linux、OS X、Unix 和 Bash on Windows 10 的 HDInsight 上结合使用 SSH 和基于 Linux 的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-### <a name="putty-windows-clients"></a>PuTTY（Windows 客户端）
-
-早期版本的 Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载的 **PuTTY**。
-
-有关 PuTTY 的详细使用信息，请参阅[在 Windows 的 HDInsight 上结合使用 SSH (PuTTY) 和基于 Linux 的 Hadoop](hdinsight-hadoop-linux-use-ssh-windows.md)。
+有关将 SSH 与 HDInsight 配合使用的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a id="hadoop"></a>使用 Hadoop 命令
 
