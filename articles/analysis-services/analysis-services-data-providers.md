@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/27/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 03720b926e3a75c5443308f510b38132144318ff
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 14218a7c2acf6b68025095c1ecb60cb480233044
+ms.lasthandoff: 03/23/2017
 
 
 ---

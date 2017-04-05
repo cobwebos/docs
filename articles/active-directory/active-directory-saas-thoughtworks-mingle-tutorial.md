@@ -11,17 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 3/09/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 49352a5e8255468bbc54c02e0cd9242d49002dbd
-ms.openlocfilehash: 6a9a1cf616531de1d0b8194bc0e6c186acc27008
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 3a58f6d2d3bc39af650f5d62acdf09d769cd7ad0
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>教程：Azure Active Directory 与 Thoughtworks Mingle 集成
 本教程的目的是说明 Azure 与 Thoughtworks Mingle 的集成。  
+
 在本教程中概述的方案假定您已具有以下各项：
 
 * 一个有效的 Azure 订阅
@@ -30,16 +31,17 @@ ms.lasthandoff: 12/08/2016
 在本教程中概述的方案由以下构建基块组成：
 
 1. 为 Thoughtworks Mingle 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
 ![方案](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785150.png "方案")
 
-## <a name="enabling-the-application-integration-for-thoughtworks-mingle"></a>为 Thoughtworks Mingle 启用应用程序集成
+## <a name="enable-the-application-integration-for-thoughtworks-mingle"></a>为 Thoughtworks Mingle 启用应用程序集成
 本部分的目的是概述如何为 Thoughtworks Mingle 启用应用程序集成。
 
-### <a name="to-enable-the-application-integration-for-thoughtworks-mingle-perform-the-following-steps"></a>若要为 Thoughtworks Mingle 启用应用程序集成，请执行以下步骤：
+**若要为 Thoughtworks Mingle 启用应用程序集成，请执行以下步骤：**
+
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
     ![Active Directory](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC700993.png "Active Directory")
@@ -66,12 +68,14 @@ ms.lasthandoff: 12/08/2016
    
     ![Thoughtworks Mingle](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785152.png "Thoughtworks Mingle")
 
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Thoughtworks Mingle 进行身份验证。  
+
 在此过程中，需要将证书上载到 Thoughtworks Mingle。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
-1. 在 Azure 经典门户中的“Thoughtworks Mingle”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
+**若要配置单一登录，请执行以下步骤：**
+
+1. 在 Azure 经典门户的“Thoughtworks Mingle”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785153.png "配置单一登录")
 
@@ -95,21 +99,21 @@ ms.lasthandoff: 12/08/2016
 
 7. 在“SSO 配置”部分中，执行以下步骤：
    
-    ![SSO 配置](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785158.png "SSO Config")
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 若要上载元数据文件，请单击“选择文件”。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“保存更改”。
+    ![SSO 配置](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785158.png "SSO Config")   
+ 1. 若要上载元数据文件，请单击“选择文件”。 
+ 2. 单击“保存更改”。
 
 8. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785159.png "配置单一登录")
 
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 要使 AAD 用户能够登录，必须使用其 Azure Active Directory 用户名将其预配到 Thoughtworks Mingle 应用程序中。  
-对于 Thoughtworks Mingle，预配是一项手动任务。
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户设置，请执行以下步骤：
+* 对于 Thoughtworks Mingle，预配是一项手动任务。
+
+**若要配置用户预配，请执行以下步骤：**
+
 1. 以管理员身份登录 Thoughtworks Mingle 公司站点。
 
 2. 单击“配置文件”。
@@ -126,24 +130,21 @@ ms.lasthandoff: 12/08/2016
 
 5. 在“新建用户”对话框页上，执行以下步骤：
    
-    ![新建用户](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785163.png "New User")
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将要预配的有效 AAD 帐户的**登录名**、**显示名称**、**选择密码**、**确认密码**键入到相关文本框中。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 对于“用户类型”，请选择“全用户”。
-   
-    c. 单击“创建此配置文件”。
+    ![新建用户](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785163.png "New User")   
+  1. 将要预配的有效 AAD 帐户的**登录名**、**显示名称**、**选择密码**、**确认密码**键入到相关文本框中。 
+  2. 对于“用户类型”，请选择“全用户”。
+  3. 单击“创建此配置文件”。
 
-> [!NOTE]
-> 可以使用任何其他 Thoughtworks Mingle 用户帐户创建工具或 Thoughtworks Mingle 提供的 API 来预配 AAD 用户帐户。
-> 
-> 
+>[!NOTE]
+>可以使用任何其他 Thoughtworks Mingle 用户帐户创建工具或 Thoughtworks Mingle 提供的 API 来预配 AAD 用户帐户。
+>  
 
-## <a name="assigning-users"></a>分配用户
-若要测试配置，需要通过分配权限的方式向要允许其使用应用程序的 Azure AD 用户授予该应用程序的访问权限。
+## <a name="assign-users"></a>分配用户
+若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
-### <a name="to-assign-users-to-thoughtworks-mingle-perform-the-following-steps"></a>若要将用户分配到 Thoughtworks Mingle，请执行以下步骤：
-1. 在 Azure 经典门户中，创建测试帐户。
+**若要将用户分配到 Thoughtworks Mingle，请执行以下步骤：**
+
+1. 在 Azure 经典门户中，创建一个测试帐户。
 
 2. 在“Thoughtworks Mingle”应用程序集成页上，单击“分配用户”。
    

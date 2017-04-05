@@ -13,12 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: eadf0611ca46a975c364a1b073828c6c3faf5f77
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 9e6e0a696ba27c7758c21fa46754a8539ae2255b
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -27,27 +27,15 @@ ms.lasthandoff: 01/24/2017
 了解如何在 Apache Spark 群集上安装 Zeppelin 笔记本，以及如何使用 Zeppelin 笔记本运行 Spark 作业。
 
 > [!IMPORTANT]
-> 如果已在 HDInsight 3.5 上预配了 Spark 1.6 群集。 默认情况下可以按照[在 HDInsight Linux 上将 Zeppelin 笔记本与 Apache Spark 群集配合使用](hdinsight-apache-spark-zeppelin-notebook.md)中的说明，访问 Zeppelin 笔记本。 如果要使用 HDInsight 群集版本 3.3、3.4 上的 Zeppelin，或 HDInsight 3.5 上的 Spark 2.0，则必须按照本文中的说明安装 Zeppelin。
+> 如果已在 HDInsight 3.5 上预配 Spark 1.6 群集，默认情况下可以按照[在 HDInsight Linux 上将 Zeppelin 笔记本与 Apache Spark 群集配合使用](hdinsight-apache-spark-zeppelin-notebook.md)中的说明，访问 Zeppelin。 如果要使用 HDInsight 群集版本 3.3 或 3.4 上的 Zeppelin，则必须按照本文中的说明安装 Zeppelin。
 >
->
+> 不支持使用本文中的脚本在 Spark 2.0 群集上安装 Zeppelin。
 
-**先决条件：**
+## <a name="prerequisites"></a>先决条件
 
-* 在开始学习本教程之前，你必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* 必须拥有 Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
-* SSH 客户端。 对于 Linux 和 Unix 分发版或 Macintosh OS X，操作系统已随附 `ssh` 命令。 对于 Windows，我们建议使用 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
-  > [!NOTE]
-  > 如果想要使用 `ssh` 或 PuTTY 以外的 SSH 客户端，请参阅客户端的文档，以了解如何建立 SSH 隧道。
-  >
-  >
-* 可配置为使用 SOCKS 代理的 Web 浏览器
-* **（可选）**：类似于 [FoxyProxy](http://getfoxyproxy.org/,) 的插件，它可以应用只会通过隧道路由特定请求的规则。
-
-  > [!WARNING]
-  > 如果不使用类似于 FoxyProxy 的插件，则可以通过隧道路由所有通过浏览器发出的请求。 这可能导致浏览器中的网页加载速度变慢。
-  >
-  >
 
 ## <a name="install-zeppelin-on-a-spark-cluster"></a>在 Spark 群集上安装 Zeppelin
 可以使用脚本操作在 Spark 群集上安装 Zeppelin。 脚本操作使用自定义脚本在群集上安装默认情况下未提供的组件。 可以使用自定义脚本，通过 Azure 门户、HDInsight .NET SDK 或 Azure PowerShell 安装 Zeppelin。 可以在创建群集过程中或者在群集已启动并运行之后使用脚本安装 Zeppelin。 以下部分中的链接提供了有关如何执行此操作的说明。

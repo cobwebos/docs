@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 3c18b1929a78137ff3b53b8e084dc35e0c8dcaac
-ms.openlocfilehash: 478db825a269beeaa9fbb0afef3488fc7d49d024
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: b7334f68e4526b716210b28388afcd0ee6e48940
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/15/2017
 
 ## <a name="develop"></a>开发
 ### <a name="app-service-editor"></a>应用服务编辑器
-应用服务编辑器是一种高级的门户内编辑器，可用于修改诸如 JSON 配置文件和代码文件等内容。 选择此选项会启动单独的浏览器选项卡和基本编辑器。 借此，可与 Github 集成、运行和调试代码，并可修改函数应用设置。
+应用服务编辑器是一种高级的门户内编辑器，可用于修改诸如 JSON 配置文件和代码文件等内容。 选择此选项会启动单独的浏览器选项卡和基本编辑器。 借此，可与 GitHub 集成、运行和调试代码，并可修改 Function App 设置。
 
 ![应用服务编辑器](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 553d474c8a9cbd7b8452daf85e1bb74b294b5699
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 579015f419ac0ee886f8e8497760a562ab324c24
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -26,21 +27,21 @@ ms.openlocfilehash: 553d474c8a9cbd7b8452daf85e1bb74b294b5699
 > 
 > 
 
-本指南说明如何以编程方式从 Python 执行常见服务管理任务。 [用于 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) 中的 **ServiceManagementService** 类支持以编程方式访问 [Azure 经典门户][management-portal] 中提供的众多与服务管理相关的功能（例如**创建、更新和删除云服务、部署、数据管理服务和虚拟机**）。 此功能可用于构建需要以编程方式访问服务管理的应用程序。
+本指南说明如何以编程方式从 Python 执行常见服务管理任务。 [用于 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) 中的 **ServiceManagementService** 类支持以编程方式访问 [Azure 经典门户][management-portal]中提供的众多与服务管理相关的功能（例如**创建、更新和删除云服务、部署、数据管理服务和虚拟机**）。 此功能可用于构建需要以编程方式访问服务管理的应用程序。
 
 ## <a name="WhatIs"> </a>什么是服务管理？
-利用服务管理 API，可以编程方式访问通过 [Azure 经典门户][management-portal] 提供的众多服务管理功能。 Azure SDK for Python 允许你管理云服务和存储帐户。
+利用服务管理 API，可以编程方式访问通过 [Azure 经典门户][management-portal]提供的众多服务管理功能。 Azure SDK for Python 允许你管理云服务和存储帐户。
 
 若要使用服务管理 API，需要[创建 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="Concepts"> </a>概念
-Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后者是一种 REST API。 所有 API 操作都是通过 SSL 执行的，并且使用 X.509 v3 证书互相进行身份验证。 可以从在 Azure 中运行的服务访问管理服务，或直接通过 Internet 从可发送 HTTPS 请求和接收 HTTPS 响应的任意应用程序访问管理服务。
+Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后者是 REST API。 所有 API 操作都是通过 SSL 执行的，并且使用 X.509 v3 证书互相进行身份验证。 可以从在 Azure 中运行的服务访问管理服务，或直接通过 Internet 从可发送 HTTPS 请求和接收 HTTPS 响应的任意应用程序访问管理服务。
 
 ## <a name="Installation"> </a>安装
 `azure-servicemanagement-legacy` 包中提供了本文介绍的所有功能，可以使用 pip 安装该包。 有关安装的更多详细信息（例如，如果刚开始接触 Python），请参阅此文：[安装 Python 和 Azure SDK](../python-how-to-install.md)
 
 ## <a name="Connect"> </a>如何：连接到服务管理
-若要连接到服务管理终结点，你需要 Azure 订阅 ID 和有效管理证书。 可以通过 [Azure 经典门户][management-portal] 获取订阅 ID。
+若要连接到服务管理终结点，你需要 Azure 订阅 ID 和有效管理证书。 可以通过 [Azure 经典门户][management-portal]获取订阅 ID。
 
 > [!NOTE]
 > 从 Azure SDK for Python v0.8.0 开始，在 Windows 上运行时，可以使用通过 OpenSSL 创建的证书。  需要 Python 2.7.4 或更高版本。 我们建议用户使用 OpenSSL 而不是 .pfx，因为将来可能会取消对 .pfx 证书的支持。
@@ -58,7 +59,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
 有关 Azure 证书的详细信息，请参阅 [Azure 云服务证书概述](cloud-services-certs-create.md)。 有关 OpenSSL 参数的完整说明，请参阅 [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html) 上的文档。
 
-创建这些文件后，需要通过 [Azure 经典门户][management-portal] 中“设置”选项卡的“上载”操作将 `.cer` 文件上载到 Azure，并且需要记下 `.pem` 文件的保存位置。
+创建这些文件后，需要通过 [Azure 经典门户][management-portal]的“设置”选项卡的“上载”操作将 `.cer` 文件上载到 Azure，并且需要记下 `.pem` 文件的保存位置。
 
 在你获取订阅 ID，创建证书并将 `.cer` 文件上载到 Azure 之后，你可以通过将订阅 ID 和 `.pem` 文件的路径传递给 **ServiceManagementService** 来连接到 Azure 管理终结点：
 
@@ -79,7 +80,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
 该命令将创建 `.cer` 文件，然后将该文件安装到“**个人**”证书存储中。 有关详细信息，请参阅 [Azure 云服务证书概述](cloud-services-certs-create.md)。
 
-在创建了证书后，需要通过 [Azure 经典门户][management-portal] 的“设置”选项卡的“上载”操作，将 `.cer` 文件上载到 Azure。
+创建证书后，需要通过 [Azure 经典门户][management-portal]的“设置”选项卡的“上载”操作，将 `.cer` 文件上载到 Azure。
 
 在获取了订阅 ID、创建了证书并且将 `.cer` 文件上载到 Azure 后，可以通过将订阅 ID 以及你的“**个人**”证书存储中的证书位置传递到 **ServiceManagementService**（此外，用你的证书名称替代 *AzureCertificate*），连接到 Azure 管理终结点：
 
@@ -123,7 +124,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 * 澳大利亚东南部
 
 ## <a name="CreateCloudService"> </a>如何：创建云服务
-当创建应用程序并在 Azure 中运行该应用程序时，相关代码和配置统称为 Azure [云服务][云服务]（在早期版本的 Azure 中称为*托管服务*）。 **create\_hosted\_service** 方法允许你通过提供托管服务名称（它在 Azure 中必须是唯一的）、标签（自动编码为 base64）、说明和位置来创建新的托管服务。
+创建应用程序并在 Azure 中运行该应用程序时，相关代码和配置统称为 Azure [云服务][cloud service]（在早期版本的 Azure 中称为*托管服务*）。 **create\_hosted\_service** 方法允许你通过提供托管服务名称（它在 Azure 中必须是唯一的）、标签（自动编码为 base64）、说明和位置来创建新的托管服务。
 
     from azure import *
     from azure.servicemanagement import *
@@ -399,42 +400,37 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
         role_size='Small',
         vm_image_name = image_name)
 
-若要了解有关如何捕获 Linux 虚拟机的详细信息，请参阅[如何捕获 Linux 虚拟机](../virtual-machines/virtual-machines-linux-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
+若要了解有关如何捕获 Linux 虚拟机的详细信息，请参阅[如何捕获 Linux 虚拟机](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
 
-若要了解有关如何捕获 Windows 虚拟机的详细信息，请参阅[如何捕获 Windows 虚拟机](../virtual-machines/virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+若要了解有关如何捕获 Windows 虚拟机的详细信息，请参阅[如何捕获 Windows 虚拟机](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="What's Next"></a>后续步骤
 现在，你已学习了有关服务管理的基础知识，接下来可以访问 [Azure Python SDK 的完整 API 参考文档](http://azure-sdk-for-python.readthedocs.org/)，并轻松执行复杂的任务来管理你的 python 应用程序。
 
 有关详细信息，请参阅 [Python 开发人员中心](/develop/python/)。
 
-[什么是服务管理]: #WhatIs
-[概念]: #Concepts
-[如何：连接到服务管理]: #Connect
-[如何：列出可用位置]: #ListAvailableLocations
-[如何：创建云服务]: #CreateCloudService
-[如何：删除云服务]: #DeleteCloudService
-[如何：创建部署]: #CreateDeployment
-[如何：更新部署]: #UpdateDeployment
-[如何：在过渡环境和生产环境之间移动部署]: #MoveDeployments
-[如何：删除部署]: #DeleteDeployment
-[如何：创建存储服务]: #CreateStorageService
-[如何：删除存储服务]: #DeleteStorageService
-[如何：列出可用操作系统]: #ListOperatingSystems
-[如何：创建操作系统映像]: #CreateVMImage
-[如何：删除操作系统映像]: #DeleteVMImage
-[如何：创建虚拟机]: #CreateVM
-[如何：删除虚拟机]: #DeleteVM
-[后续步骤]: #NextSteps
+[What is Service Management]: #WhatIs
+[Concepts]: #Concepts
+[How to: Connect to service management]: #Connect
+[How to: List available locations]: #ListAvailableLocations
+[How to: Create a cloud service]: #CreateCloudService
+[How to: Delete a cloud service]: #DeleteCloudService
+[How to: Create a deployment]: #CreateDeployment
+[How to: Update a deployment]: #UpdateDeployment
+[How to: Move deployments between staging and production]: #MoveDeployments
+[How to: Delete a deployment]: #DeleteDeployment
+[How to: Create a storage service]: #CreateStorageService
+[How to: Delete a storage service]: #DeleteStorageService
+[How to: List available operating systems]: #ListOperatingSystems
+[How to: Create an operating system image]: #CreateVMImage
+[How to: Delete an operating system image]: #DeleteVMImage
+[How to: Create a virtual machine]: #CreateVM
+[How to: Delete a virtual machine]: #DeleteVM
+[Next Steps]: #NextSteps
 [management-portal]: https://manage.windowsazure.com/
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[云服务]:/services/cloud-services/
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+[cloud service]:/services/cloud-services/
 
 

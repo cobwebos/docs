@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 09747f06d06f2f0e105b3eef9d46e1505b9e1a7b
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 173607c481d0ba7ceece6310fcd131ff622a0677
+ms.lasthandoff: 03/23/2017
 
 ---
 
@@ -28,9 +28,9 @@ ms.lasthandoff: 03/22/2017
 
 若要让用户访问使用标头进行身份验证的应用，可在应用程序代理和 PingAccess 中发布用于远程访问的应用。 应用程序代理将这些应用视为与其他任何应用一样，它使用 Azure AD 对访问进行身份验证，然后通过连接器服务传递流量。 PingAccess 驻留在应用的前面，可将 Azure AD 提供的访问令牌转换为标头，使应用程序能够接收采用可读格式的身份验证令牌。 
 
-用户登录后使用你的企业应用时，感觉不到任何差异。 他们仍可在任何位置的任何设备上工作。 当用户在办公室工作时，应用程序代理不会路由其身份验证请求，但 PingAccess 仍然充当中介，将令牌转换为标头。 
+用户登录后使用你的企业应用时，感觉不到任何差异。 他们仍可在任何位置的任何设备上工作。 当用户在办公室时，应用程序代理和 PingAccess 都不会截获流量，因此用户自始至终都会获得相同的体验。
 
-由于应用程序代理连接器会将流量定向到所有应用（不管其身份验证类型为何），因此也会继续自动进行负载均衡。 
+由于应用程序代理连接器会将远程流量定向到所有应用（不管其身份验证类型为何），因此也会继续自动进行负载均衡。 
 
 ## <a name="how-do-i-get-access"></a>如何获取访问权限？
 
@@ -69,20 +69,25 @@ ms.lasthandoff: 03/22/2017
 3. 单击边栏选项卡顶部的“添加”。 
 4. 选择“本地应用程序”。
 5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置：
-  - **内部 URL**：提供在企业网络中操作时可将你转到应用登录页的 URL。
+  - **内部 URL**：通常提供在企业网络中时可将你转到应用登录页的 URL。 对于此合作关系，连接器需要将 PingAccess 代理视为应用的首页。 使用此格式：`https://<host name of your PA server>:<port>/<App path name>`。 默认情况下端口为 3000，但可以在 PingAccess 中对其进行配置。
   - **预身份验证方法**：Azure Active Directory
   - **转换标头中的 URL**：否
 6. 选择边栏选项卡底部的“添加”。 添加应用程序后，将打开快速启动菜单。 
 7. 在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。 确保此测试帐户有权访问本地应用程序。 
 8. 选择“分配”，保存测试用户分配。 
 9. 在应用管理边栏选项卡中选择“单一登录”。 
-10. 从下拉菜单中选择“基于标头的登录”。 选择“保存”。 
+10. 从下拉菜单中选择“基于标头的登录”。 选择“保存”。
+
+  ![选择基于标头的登录](./media/application-proxy-ping-access/sso-header.PNG)
+
 11. 关闭“企业应用程序”边栏选项卡或一直向左滚动，返回“Azure Active Directory”菜单。 
 12. 选择“应用注册”。
 13. 选择刚添加的应用，然后选择“回复 URL”。 
 14. 检查在步骤 5 中分配到应用的外部 URL 是否出现在“回复 URL”列表中。 如果未出现，现在请添加。 
 15. 在应用设置边栏选项卡中，选择“所需的权限”。 
-16. 选择“添加”。 对于 API，请选择“Windows Azure Active Directory”，然后单击“选择”。 对于权限，请选择“读取和写入所有应用程序”，然后依次单击“选择”和“完成”。   
+16. 选择“添加”。 对于 API，请选择“Windows Azure Active Directory”，然后单击“选择”。 对于权限，请选择“读取和写入所有应用程序”和“登录并读取用户配置文件”，然后依次单击“选择”和“完成”。  
+
+  ![选择权限](./media/application-proxy-ping-access/select-permissions.png) 
 
 #### <a name="collect-information-for-the-pingaccess-steps"></a>收集 PingAccess 步骤的信息
 

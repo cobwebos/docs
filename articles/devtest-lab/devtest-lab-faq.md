@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 4fc454a8c7974b8f53cd6621639dd5b575cc66f7
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5c427ddbe408fc42403eb6738d1983c220e899a7
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -65,7 +65,7 @@ ms.lasthandoff: 03/22/2017
 * [ 创建过程中项目失败。如何解决它？](#my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it)
 * [为什么我的虚拟网络没有正确保存？](#why-isnt-my-existing-virtual-network-saving-properly)
 * [从 PowerShell 预配时，为什么会收到“找不到父资源”错误？](#why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell)  
-* [VM 部署失败时，可在何处查找错误详细信息](#where-can-i-find-more-error-information-when-vm-deployment-is-failed)  
+* [VM 部署失败时，可在何处查找错误详细信息？](#where-can-i-find-more-error-information-if-a-vm-deployment-fails)  
 
 ### <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 如果此处未列出你的问题，请联系我们寻求答案。
@@ -98,9 +98,9 @@ Azure 开发测试实验室是免费的服务，意味着可免费创建实验�
 ### <a name="what-are-the-different-security-levels-in-azure-devtest-labs"></a>Azure 开发测试实验室中有哪些安全级别？
 安全访问权限由 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-built-in-roles.md) 决定。 若要了解如何访问，最好先了解权限、角色和由 RBAC 定义的作用域之间的差异。
 
-* **权限** - 权限是对特定操作的定义访问。 例如，权限可以是对所有虚拟机的读取访问。
+* **权限** - 权限是对特定操作的定义访问。 例如，权限可以是对所有虚拟机的读取访问权限。
 * **角色** - 角色是可进行分组和分配给用户的一组权限。 例如，“订阅所有者”对订阅中所有资源都具有访问权限。
-* **作用域** - 作用域是 Azure 资源的层次结构中的级别。 例如，作用域可能是资源组或单个实验室或整个订阅。
+* **作用域** - 作用域是 Azure 资源的层次结构中的级别。 例如，作用域可以是资源组、单个实验室或整个订阅。
 
 Azure 开发测试实验室的作用域中存在两种定义用户权限的角色：实验室所有者和实验室用户。
 
@@ -160,7 +160,7 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果要将 Windows OS 映像用于我的测试，是否需要购买 MSDN 订阅？
 如果需要在 Azure 中使用 Windows 客户端 OS 映像（Windows 7 或更高版本）进行开发或测试，必须：
 
-- [购买 MSDN 订阅](https://www.visualstudio.com/products/how-to-buy-vs)。 
+- [购买 MSDN 订阅](https://www.visualstudio.com/products/how-to-buy-vs)。
 - 如果你具有企业协议，请通过 [Enterprise 开发/测试优惠](https://azure.microsoft.com/en-us/offers/ms-azr-0148p)创建 Azure 订阅。
 
 若要深入了解每个 MSDN 产品/服务的 Azure 信用额度，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/)。
@@ -216,10 +216,10 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 
 
 ### <a name="what-are-artifacts"></a>项目是什么？
-项目是用于将最新位或开发工具部署到 VM 的可自定义元素。 仅需单击几次即可在创建期间将其附加到你的 VM 中，且预配 VM 后，项目将部署和配置你的 VM。 我们的[公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)中有各种预先存在的项目，但你也可轻松[对自己的项目进行创作](devtest-lab-artifact-author.md)。
+项目是用于将最新位或开发工具部署到 VM 的可自定义元素。 仅需单击几次即可在创建期间将其附加到你的 VM 中，且预配 VM 后，项目将部署和配置你的 VM。 我们的[公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)中有各种预先存在的项目，但你也可轻松[创作自己的项目](devtest-lab-artifact-author.md)。
 
 ### <a name="how-do-i-create-a-lab-from-an-azure-resource-manager-template"></a>如何从 Azure Resource Manager 模板创建实验室？
-我们提供了 [实验室 Azure Resource Manager 模板的 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)，你可对其按原样部署，或对其进行修改来为你的实验室创建自定义模板。 其中每个模板都提供了链接，可单击链接在自己的 Azure 订阅下按原样部署实验室，或[使用 PowerShell 或 Azure CLI](../azure-resource-manager/resource-group-template-deploy.md) 自定义模板和部署。
+我们提供了 [实验室 Azure Resource Manager 模板的 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)，你可对其按原样部署，或对其进行修改以为你的实验室创建自定义模板。 其中每个模板都提供了链接，可单击链接在自己的 Azure 订阅下按原样部署实验室，或[使用 PowerShell 或 Azure CLI](../azure-resource-manager/resource-group-template-deploy.md) 自定义模板和部署。
 
 ### <a name="why-are-my-vms-created-in-different-resource-groups-with-arbitrary-names-can-i-rename-or-modify-these-resource-groups"></a>为什么我的 VM 创建于具有随机名称的不同资源组？ 我能重新命名或修改这些资源组吗？
 以这种方式创建资源组以便 Azure 开发测试实验室管理用户权限和访问虚拟机。 虽然你可以将 VM 移动到具有所需名称的另一资源组，但不推荐此操作。 我们正努力改善该体验，允许更大的灵活性。   
@@ -237,7 +237,7 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 2. 从浏览器复制实验室 URL 并与实验室的用户进行共享。
 
 > [!NOTE]
-> 如果实验室用户是具有 [Microsoft 帐户](#what-is-a-microsoft-account)的外部用户且不属于公司的 Active Directory，则其在导航到所提供的链接时可能会收到错误。 若用户收到错误，请指导他们在 Azure 门户的右上角单击其名称，然后在菜单的“目录”部分选择实验室所在的目录。
+> 如果实验室用户是具有 [Microsoft 帐户](#what-is-a-microsoft-account)的外部用户且不属于公司的 Active Directory，则他们在导航到所提供的链接时可能会收到错误。 若用户收到错误，请指导他们在 Azure 门户的右上角单击其名称，然后在菜单的“目录”部分选择实验室所在的目录。
 >
 >
 
@@ -261,7 +261,7 @@ Microsoft 帐户会用于 Microsoft 设备和服务中几乎所有的操作。 �
 VM 是资源组中实验室下的子资源。 使用 Azure 资源模板通过 PowerShell 部署时，PowerShell 脚本中提供的资源组名称应为实验室的资源组名称。 有关详细信息，请参阅[排查常见的 Azure 部署错误](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)。
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM 部署失败时，可在何处查找错误详细信息？
-VM 部署错误将在活动日志中捕获。 在实验室的 VM 边栏选项卡（在“我的虚拟机”列表中选择 VM 后，将显示该选项卡）中的资源菜单上，可通过“审核日志”或“虚拟机诊断”找到实验室 VM 活动日志。 
+VM 部署错误将在活动日志中捕获。 在实验室的 VM 边栏选项卡（在“我的虚拟机”列表中选择 VM 后，将显示该选项卡）中的资源菜单上，可通过“审核日志”或“虚拟机诊断”找到实验室 VM 活动日志。
 
 有时，在开始部署 VM 前（例如在超过与 VM 一起创建的资源的订阅限制时）将发生部署错误。 此情况下，将在实验室级别“活动日志”中捕获错误详细信息，该日志位于“配置和策略”设置的底部。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-audit)。
 

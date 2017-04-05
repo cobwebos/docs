@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 11/11/2016
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: 94376ba0cb7e68045e5bc44e356a91ac2ca787b2
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d337114c123151f06a24e80b0208c6eafb1df487
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -293,7 +294,7 @@ JavaScript 函数也被绑定在资源消耗量上。 DocumentDB 基于预配的
         }
     }
 
-## <a name="a-idtriggera-database-triggers"></a><a id="trigger"></a>数据库触发器
+## <a id="trigger"></a>数据库触发器
 ### <a name="database-pre-triggers"></a>数据库预触发器
 DocumentDB 提供通过文档中的操作执行或触发的触发器。 例如，当创建文档时你可以指定预触发器 – 此预触发器将在文档创建之前运行。 下面就是如何使用预触发器来验证正在创建的文档的属性的示例：
 
@@ -436,7 +437,7 @@ DocumentDB 提供通过文档中的操作执行或触发的触发器。 例如�
 
 务必要注意的一点是 DocumentDB 中触发器的**事务**执行。 此后触发器作为与原始文档的创建相同的事务的一部分运行。 因此，如果我们从后触发器引发异常（假设我们无法更新元数据文档），那么整个事务都将失败并回滚。 不会创建文档，而将返回异常。  
 
-## <a name="a-idudfauser-defined-functions"></a><a id="udf"></a>用户定义的函数
+## <a id="udf"></a>用户定义的函数
 将用户定义的函数 (UDF) 用来扩展 DocumentDB SQL 查询语言语法和实现自定义业务逻辑。 它们只能从查询内部调用。 它们不具有对上下文对象的访问权限且旨在被用作仅计算的 JavaScript。 因此，UDF 可以在 DocumentDB 服务的次要副本上运行。  
 
 以下示例创建 UDF 来计算基于各种收入档次的税率的所得税，然后在查询内部使用它查找所有支付税款超过 $20,000 的人。
@@ -793,7 +794,7 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
 此处，要通过请求运行的预触发器在 x-ms-documentdb-pre-trigger-include 标头中指定。 相应地，任何后触发器将在 x-ms-documentdb-post-trigger-include 标头中给定。 请注意，可以针对某个给定的请求指定预触发器和后触发器。
 
 ## <a name="sample-code"></a>代码示例
-可在 [Github 存储库](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)上找到更多服务器端代码示例（包括 [bulk-delete](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js) 和 [update](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)）。
+可在 [GitHub 存储库](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)上找到更多服务器端代码示例（包括 [bulk-delete](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js) 和 [update](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)）。
 
 想要共享你令人惊叹的存储过程吗？ 请向我们发送拉取请求！ 
 
@@ -810,10 +811,5 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
 * [Secure and Portable Database Extensibility](http://dl.acm.org/citation.cfm?id=276339)（安全和可移植的数据库扩展性） 
 * [面向服务的数据库体系结构](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 * [Hosting the .NET Runtime in Microsoft SQL server](http://dl.acm.org/citation.cfm?id=1007669)（在 Microsoft SQL Server 中托管 .NET 运行时）
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

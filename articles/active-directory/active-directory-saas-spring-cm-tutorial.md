@@ -11,27 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/08/2017
+ms.date: 03/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 451369e21e7471180b6cd8c77d62b157d0bcddff
-ms.openlocfilehash: 95fbe26a9bb886c6edbb862c9e15885ffc5eeed6
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 5600adfbc20fb499bdd206e966a9730f49a03e40
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>教程：Azure Active Directory 与 SpringCM 集成
-本教程的目的是介绍如何在 Azure Active Directory 和 Spring CM 之间设置单一登录。
+本教程的目的是介绍如何在 Azure Active Directory 和 SpringCM 之间设置单一登录 (SSO)。
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已具有以下各项：
 
 * 一个有效的 Azure 订阅
-* 已启用 SpringCM 单一登录的订阅
+* 已启用 SpringCM 单一登录 (SSO) 的订阅
 
-完成本教程后，已向 SpringCM 分配的 Azure Active Directory 用户将能够使用 AAD 访问面板单一登录。
+完成本教程后，已向 SpringCM 分配的 Azure Active Directory 用户将能够使用 AAD 访问面板进行 SSO。
 
 1. 为 SpringCM 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
@@ -40,7 +40,8 @@ ms.lasthandoff: 12/14/2016
 ## <a name="enabling-the-application-integration-for-springcm"></a>为 SpringCM 启用应用程序集成
 本部分的目的是概述如何为 SpringCM 启用应用程序集成。
 
-### <a name="to-enable-the-application-integration-for-springcm-perform-the-following-steps"></a>若要为 SpringCM 启用应用程序集成，请执行以下步骤：
+**若要为 SpringCM 启用应用程序集成，请执行以下步骤：**
+
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
     ![Active Directory](./media/active-directory-saas-spring-cm-tutorial/IC700993.png "Active Directory")
@@ -67,10 +68,11 @@ ms.lasthandoff: 12/14/2016
    
     ![SpringCM](./media/active-directory-saas-spring-cm-tutorial/IC797046.png "SpringCM")
 
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 本部分概述如何让用户使用基于 SAML 协议的联合身份验证通过其在 Azure Active Directory 中的帐户向 SpringCM 进行身份验证。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
+**若要配置单一登录，请执行以下步骤：**
+
 1. 在 Azure 经典门户中的“SpringCM”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-spring-cm-tutorial/IC797047.png "配置单一登录")
@@ -97,32 +99,28 @@ ms.lasthandoff: 12/14/2016
 
 7. 在“标识提供者配置”部分执行以下步骤：
    
-    ![标识提供者配置](./media/active-directory-saas-spring-cm-tutorial/IC797052.png "标识提供者配置")
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 若要上载已下载的 Azure Active Directory 证书，请单击“选择颁发者证书”或“更改颁发者证书”。
-   
-    b. 在 Azure 经典门户的“配置 SpringCM 的单一登录”页上，复制“颁发者 URL”值，然后将其粘贴到“颁发者”文本框中。
-   
-    c. 在 Azure 经典门户的“配置 SpringCM 的单一登录”页上，复制“单一登录服务 URL”值，然后将其粘贴到“服务提供商(SP)启动的终结点”文本框中。
-   
-    d.单击“下一步”。 对于“启用 SAML”，选择“启用”。
-   
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“保存” 。
+    ![标识提供者配置](./media/active-directory-saas-spring-cm-tutorial/IC797052.png "标识提供者配置")   
+  1. 若要上载已下载的 Azure Active Directory 证书，请单击“选择颁发者证书”或“更改颁发者证书”。
+  2. 在 Azure 经典门户的“配置 SpringCM 的单一登录”页上，复制“颁发者 URL”值，然后将其粘贴到“颁发者”文本框中。
+  3. 在 Azure 经典门户的“配置 SpringCM 的单一登录”页上，复制“单一登录服务 URL”值，然后将其粘贴到“服务提供商(SP)启动的终结点”文本框中。
+  4. 对于“启用 SAML”，选择“启用”。
+  5. 单击“保存” 。
 
 8. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
    ![配置单一登录](./media/active-directory-saas-spring-cm-tutorial/IC797053.png "配置单一登录")
 
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 要使 Azure AD 用户能够登录 SpringCM，必须将这些用户预配到 SpringCM 中。  
+
 对于 SpringCM，预配是一项手动任务。
 
-> [!NOTE]
-> 有关更多详细信息，请参阅[创建和编辑 SpringCM 用户](http://knowledge.springcm.com/create-and-edit-a-springcm-user)
-> 
+>[!NOTE]
+>有关更多详细信息，请参阅[创建和编辑 SpringCM 用户](http://knowledge.springcm.com/create-and-edit-a-springcm-user)。 
 > 
 
-### <a name="to-provision-a-user-account-to-springcm-perform-the-following-steps"></a>若要将用户帐户预配到 SpringCM，请执行以下步骤：
+**若要将用户帐户预配到 SpringCM，请执行以下步骤：**
+
 1. 以管理员身份登录 **SpringCM** 公司站点。
 
 2. 单击“转到”，然后单击“通讯簿”。
@@ -141,15 +139,15 @@ ms.lasthandoff: 12/14/2016
 
 8. 单击“保存” 。
 
-> [!NOTE]
-> 可以使用任何其他 SpringCM 用户帐户创建工具或 SpringCM 提供的 API 来预配 AAD 用户帐户。
-> 
-> 
+  >[!NOTE]
+  >可以使用任何其他 SpringCM 用户帐户创建工具或 SpringCM 提供的 API 来预配 AAD 用户帐户。  
+  > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
-### <a name="to-assign-users-to-springcm-perform-the-following-steps"></a>若要将用户分配到 SpringCM，请执行以下步骤：
+**若要将用户分配到 SpringCM，请执行以下步骤：**
+
 1. 在 Azure 经典门户中，创建一个测试帐户。
 
 2. 在“SpringCM”应用程序集成页上，单击“分配用户”。

@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 01/26/2017
+ms.date: 03/27/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: f1b0fde1e6e31a8179ed61508348d850c5dd784f
-ms.openlocfilehash: 9e2c0cff442f7c66a4b1c76ab612175410f49497
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 5f712c7fa9b6ee06f7c89de40ba4227a925a35ce
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -35,15 +36,22 @@ DocumentDB 是一种 NoSQL 数据库，它允许应用程序即时迭代其数�
 
 现在，让我们学习 ODBC 驱动程序的入门知识。
 
-## <a name="a-idinstallastep-1-install-the-documentdb-odbc-driver"></a><a id="install"></a>步骤 1：安装 DocumentDB ODBC 驱动程序
-1. 下载适用于 64 位 Windows OS 的 [Microsoft Azure DocumentDB ODBC 64 bit.msi](https://aka.ms/documentdb-odbc-64x64)，或适用于 32 位 Windows OS 的.[Microsoft Azure DocumentDB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32)。 在本地运行 msi 文件，启动“Microsoft Azure DocumentDB ODBC 驱动程序安装向导”。 
+## <a id="install"></a>步骤 1：安装 DocumentDB ODBC 驱动程序
+
+1. 下载适用于你的环境的驱动程序：
+
+    * [Microsoft Azure DocumentDB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64)（适用于 64 位 Windows）
+    * [Microsoft Azure DocumentDB ODBC 32x64-bit.msi](https://aka.ms/documentdb-odbc-32x64)（适用于 32 位或 64 位 Windows）
+    * [Microsoft Azure DocumentDB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32)（适用于 32 位 Windows）
+
+    在本地运行 msi 文件，启动“Microsoft Azure DocumentDB ODBC 驱动程序安装向导”。 
 2. 使用默认输入完成安装向导，安装 ODBC 驱动程序。
 3. 在 Windows 搜索框中键入“ODBC 数据源”，在计算机上打开“ODBC 数据源管理器”应用。 
     可通过单击“驱动程序”选项卡并检查“Microsoft DocumentDB ODBC 驱动程序”是否已列出，来确认是否已安装该驱动程序。
 
     ![DocumentDB ODBC 数据源管理器](./media/documentdb-nosql-odbc-driver/documentdb-nosql-odbc-driver.png)
 
-## <a name="a-idconnectastep-2-connect-to-your-documentdb-database"></a><a id="connect"></a>步骤 2：连接到 DocumentDB 数据库
+## <a id="connect"></a>步骤 2：连接到 DocumentDB 数据库
 
 1. [安装 DocumentDB ODBC 驱动程序](#install)后，请在“ODBC 数据源管理器”窗口中单击“添加”。 可以创建一个用户 DSN 或系统 DSN。 在本示例中，我们将创建一个用户 DSN。
 2. 在“创建新数据源”窗口中选择“Microsoft DocumentDB ODBC 驱动程序”，然后单击“完成”。
@@ -69,7 +77,7 @@ DocumentDB 是一种 NoSQL 数据库，它允许应用程序即时迭代其数�
 
     ![“用户 DSN”选项卡中的新 DocumentDB ODBC DSN](./media/documentdb-nosql-odbc-driver/documentdb-nosql-odbc-driver-user-dsn.png)
 
-## <a name="a-idcollection-mappingastep-3-create-a-schema-definition-using-the-collection-mapping-method"></a><a id="#collection-mapping"></a>步骤 3：使用集合映射方法创建架构定义
+## <a id="#collection-mapping"></a>步骤 3：使用集合映射方法创建架构定义
 
 可以使用两种类型的采样方法：**集合映射**或**表分隔符**。 采样会话可以利用这两种采样方法，但每个集合只能使用特定的采样方法。 以下步骤使用集合映射方法为一个或多个集合中的数据创建架构。 此采样方法将检索集合页面中的数据，以确定数据的结构。 它会将集合转置到 ODBC 端的某个表。 如果集合中的数据是同构的，此采样方法将十分快速高效。 如果集合包含异构类型的数据，我们建议使用[表分隔符映射方法](#table-mapping)，因为这是确定集合中数据结构的更可靠采样方法。 
 
@@ -87,7 +95,7 @@ DocumentDB 是一种 NoSQL 数据库，它允许应用程序即时迭代其数�
 
     以后如果想要配合 DSN 使用此架构，请打开“DocumentDB ODBC 驱动程序 DSN 设置”窗口（通过“ODBC 数据源管理器”），单击“高级选项”，然后在“架构文件”框中导航到保存的架构。 将架构文件保存到现有 DSN 会将 DSN 连接范围修改为架构定义的数据和结构。
 
-## <a name="a-idtable-mappingastep-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>步骤 4：使用表分隔符映射方法创建架构定义
+## <a id="table-mapping"></a>步骤 4：使用表分隔符映射方法创建架构定义
 
 可以使用两种类型的采样方法：**集合映射**或**表分隔符**。 采样会话可以利用这两种采样方法，但每个集合只能使用特定的采样方法。 
 
@@ -143,8 +151,4 @@ DocumentDB 是一种 NoSQL 数据库，它允许应用程序即时迭代其数�
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 DocumentDB 的详细信息，请参阅[什么是 DocumentDB？](documentdb-introduction.md)。
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/30/2016
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 006ebbbc3f6f745f60c5fc6646649097e144beaf
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d2dd84007832c56f5893f0ea9f5effcf5ec5816b
+ms.lasthandoff: 03/29/2017
 
 ---
 
@@ -61,5 +61,5 @@ ms.lasthandoff: 03/17/2017
 ## <a name="next-steps"></a>后续步骤
 
 1. 若要深入了解应用程序如何使用 Azure AD 执行身份验证，请查看[快速入门](active-directory-developers-guide.md)。
-2. 在 [Github](https://github.com/azure-samples) 中查看代码示例的完整列表。
+2. 在 [GitHub](https://github.com/azure-samples) 中查看代码示例的完整列表。
 

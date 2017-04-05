@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/28/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
-ms.openlocfilehash: e971bd36f9245032296537ea3e0b64e5f3e18ddd
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 32e3ff626e0f4afe80dac11eccbdaa3146d39c31
+ms.lasthandoff: 03/29/2017
 
 
 ---
-# <a name="retrain-a-new-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>使用机器学习管理 PowerShell cmdlet 重新训练新 Web 服务
+# <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>使用机器学习管理 PowerShell cmdlet 重新训练新的基于 Resource Manager 的 Web 服务
 重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。  
 
 ## <a name="prerequisites"></a>先决条件
@@ -29,8 +29,6 @@ ms.lasthandoff: 03/02/2017
 
 > [!IMPORTANT]
 > 预测实验必须部署为基于 Azure Resource Manager（全新）的机器学习 Web 服务。 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。 
-
-
 
 有关部署 Web 服务的其他信息，请参阅[部署 Azure 机器学习 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)。
 

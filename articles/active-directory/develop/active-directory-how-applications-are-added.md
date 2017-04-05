@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: shoatman
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: ceb16b1431d689fb7d56c4dd588b50914357680a
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 65c8a2c020d5ef7ce47905927a248b9e73d2ed1b
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -131,7 +132,7 @@ Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象�
 了解有关如何将应用程序添加到 Azure AD 以及如何为应用程序配置服务的详细信息。
 
 * 开发人员：[了解如何将应用程序与 AAD 集成](https://msdn.microsoft.com/library/azure/dn151122.aspx)
-* 开发人员：[在 Github 上查看与 Azure Active Directory 集成的应用的示例代码](https://github.com/AzureADSamples)
+* 开发人员：[在 GitHub 上查看与 Azure Active Directory 集成的应用的示例代码](https://github.com/AzureADSamples)
 * 开发人员和 IT 专业人员：[查看 Azure Active Directory Graph API 的 REST API 文档](https://msdn.microsoft.com/library/azure/hh974478.aspx)
 * IT 专业人员：[了解如何从应用库使用 Azure Active Directory 预先集成的应用程序](https://msdn.microsoft.com/library/azure/dn308590.aspx)
 * IT 专业人员：[查找有关配置特定预先集成应用的教程](https://msdn.microsoft.com/library/azure/dn893637.aspx)
@@ -143,9 +144,4 @@ Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象�
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
 [app_settings]:../media/active-directory-how-applications-are-added/IntegratedAppSettings.jpg
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

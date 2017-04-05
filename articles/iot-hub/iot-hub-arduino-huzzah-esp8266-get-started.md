@@ -13,12 +13,12 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2017
+ms.date: 03/28/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 034725a50d203d28a9fc4b43a5389eac0a232cbe
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 544f98afc1769f75bd4e06dc7b2bf8a1a0d91371
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -28,10 +28,10 @@ ms.lasthandoff: 03/17/2017
 
 ## <a name="what-you-will-do"></a>执行的操作
 
-将 Adafruit Feather HUZZAH ESP8266 连接到要创建的 Azure IoT 中心。 然后，在 ESP8266 上运行一个示例应用程序，用于从 DHT22 传感器收集温度和湿度数据。 最后，将传感器数据发送到 IoT 中心。
+将 Adafruit Feather HUZZAH ESP8266 连接到 IoT 中心。 然后，在 ESP8266 上运行一个示例应用程序，用于从 DHT22 传感器收集温度和湿度数据。 最后，将传感器数据发送到 IoT 中心。
 
 > [!NOTE]
-> 如果使用其他 ESP8266 开发板，仍可遵循这些步骤将它连接到 IoT 中心。 根据所用的 ESP8266 开发板，可能需要重新配置 `LED_PIN`。 例如，如果使用 AI-Thinker 提供的 ESP8266，可将此参数从 `0` 更改为 `2`。 没有工具包？请单击[此处](http://azure.com/iotstarterkits)
+>如果使用其他 ESP8266 开发板，仍可遵循这些步骤将它们连接到 IoT 中心。 根据所用的 ESP8266 开发板，可能需要重新配置 `LED_PIN`。 例如，如果使用 AI-Thinker 提供的 ESP8266，可将此参数从 `0` 更改为 `2`。 还没有板？ [获取 Microsoft Azure IoT 初学者套件](http://azure.com/iotstarterkits)。
 
 ## <a name="what-you-will-learn"></a>你要学习的知识
 
@@ -56,6 +56,7 @@ ms.lasthandoff: 03/17/2017
 * 建立 Internet 连接，以便下载配置工具。
 * [Arduino IDE](https://www.arduino.cc/en/main/software) 版本 1.6.8（或更高版本），早期版本不适用于 AzureIoT 库。
 
+
 如果没有传感器，以下各项是可选的。 也可以使用模拟的传感器数据。
 
 * Adafruit DHT22 温度和湿度传感器。
@@ -75,8 +76,9 @@ ms.lasthandoff: 03/17/2017
 
    ![创建 IoT 中心所需的基本信息](media/iot-hub-arduino-huzzah-esp8266-get-started/4_iot-hub-provide-basic-info.png)
 
-   * **名称**：IoT 中心的名称。 如果输入的名称有效，将显示一个绿色复选标记。
-   * **定价和缩放级别**：选择免费的 F1 级别对于本演示教程已足够。 请参阅[定价和缩放级别](https://azure.microsoft.com/pricing/details/iot-hub/)。
+   * **名称**：它是 IoT 中心的名称。 如果输入的名称有效，将显示一个绿色复选标记。
+   * **定价和缩放级别**：选择免费的 F1 级别。 此选项对于本演示来说已足够。 请参阅[定价和缩放级别](https://azure.microsoft.com/pricing/details/iot-hub/)。
+
    * **资源组**：创建用于托管 IoT 中心的资源组，或使用现有的资源组。 请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
    * **位置**：选择与创建的 IoT 中心最靠近的位置。
    * **固定仪表板**：选中此选项可以方便地从仪表板访问 IoT 中心。
@@ -84,7 +86,7 @@ ms.lasthandoff: 03/17/2017
 
    ![在通知窗格中监视 IoT 中心创建进度](media/iot-hub-arduino-huzzah-esp8266-get-started/5_iot-hub-monitor-creation-progress-notification-pane.png)
 
-1. 创建 IoT 中心后，请在仪表板中单击它。 记下“主机名”供稍后使用，然后单击“共享访问策略”。
+1. 创建 IoT 中心后，请在仪表板中单击它。 记下“主机名”，然后单击“共享访问策略”。
 
    ![获取 IoT 中心的主机名](media/iot-hub-arduino-huzzah-esp8266-get-started/6_iot-hub-get-hostname.png)
 
@@ -92,13 +94,11 @@ ms.lasthandoff: 03/17/2017
 
    ![获取 IoT 中心连接字符串](media/iot-hub-arduino-huzzah-esp8266-get-started/7_iot-hub-get-connection-string.png)
 
-现在已创建 IoT 中心。 稍后将会用到记下的主机名和连接字符串。
-
 ### <a name="register-a-device-for-feather-huzzah-esp8266-in-your-iot-hub"></a>在 IoT 中心注册 Feather HUZZAH ESP8266 的设备
 
 每个 IoT 中心都有一个标识注册表，存储允许连接到 IoT 中心的设备的相关信息。 IoT 中心的标识注册表中必须先有设备的条目，然后该设备才能连接到 IoT 中心。
 
-本部分将使用 CLI 工具 iothub explorer 在 IoT 中心的标识注册表中注册 Feather HUZZAH ESP8266 的设备。
+本部分使用 CLI 工具 iothub explorer 在 IoT 中心的标识注册表中注册 Feather HUZZAH ESP8266 的设备。
 
 > [!NOTE]
 > iothub explorer 需要 Node.js 4.x 或更高版本才能正常工作。
@@ -108,17 +108,23 @@ ms.lasthandoff: 03/17/2017
 1. [下载](https://nodejs.org/en/download/)并安装 Node.js 的最新 LTS 版本，包括 NPM。
 1. 使用 NPM 安装 iothub explorer。
 
-   * Windows 7 或更高版本：以管理员身份启动命令提示符。 运行以下命令安装 iothub explorer：
+   * Windows 7 或更高版本
+
+     以管理员身份启动命令提示符。 运行以下命令安装 iothub explorer：
 
      ```bash
      npm install -g iothub-explorer
      ```
-   * Ubuntu 16.04 或更高版本：使用快捷键 Ctrl+Alt+T 打开终端，然后运行以下命令：
+   * Ubuntu 16.04 或更高版本
+
+     使用键盘快捷方式 Ctrl + Alt + T 打开终端，然后运行以下命令：
 
      ```bash
      sudo npm install -g iothub-explorer
      ```
-   * macOS 10.1 或更高版本：打开终端，然后运行以下命令：
+   * macOS 10.1 或更高版本
+
+     打开终端，然后运行以下命令：
 
      ```bash
      npm install -g iothub-explorer
@@ -128,13 +134,16 @@ ms.lasthandoff: 03/17/2017
    ```bash
    iothub-explorer login [your iot hub connection string]
    ```
-1. 注册新设备（`deviceID` 为 `new-device`），然后运行以下命令获取设备的连接字符串。
+1. 使用 `deviceID` 将新设备注册为 `new-device`，然后运行以下命令获取设备的连接字符串：
 
    ```bash
    iothub-explorer create new-device --connection-string
    ```
 
-记下已注册设备的连接字符串，因为稍后将要用到。
+记下已注册设备的连接字符串。
+
+> [!NOTE]
+> 若要查看已注册设备的连接字符串，请运行 `iothub-explorer list` 命令。
 
 ## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>将 Feather HUZZAH ESP8266 与传感器和计算机相连接
 
@@ -144,7 +153,7 @@ ms.lasthandoff: 03/17/2017
 
 ![连接参考](media/iot-hub-arduino-huzzah-esp8266-get-started/15_connections_on_breadboard.png)
 
-我们使用以下传感器引脚连线方式：
+使用以下传感器引脚接线：
 
 | 启动（传感器）           | 结束（开发板）           | 线缆颜色   |
 | -----------------------  | ---------------------- | ------------: |
@@ -152,10 +161,9 @@ ms.lasthandoff: 03/17/2017
 | DATA（引脚 32F）           | GPIO 2（引脚 46A）       | 蓝线    |
 | GND（引脚 34F）            | GND（引脚 56I）          | 黑线   |
 
+有关详细信息，请参阅：[Adafruit DHT22 sensor setup](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor)（Adafruit DHT22 传感器设置）和 [Adafruit Feather HUZZAH Esp8266 Pinouts](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide?view=all#pinouts)（Adafruit Feather HUZZAH Esp8266 引出线）
 
-- 有关详细信息，请参阅：[Adafruit DHT22 sensor setup](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor)（Adafruit DHT22 传感器设置）和 [Adafruit Feather HUZZAH Esp8266 Pinouts](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide?view=all#pinouts)（Adafruit Feather HUZZAH Esp8266 引出线）
-
-现在，Adafruit Feather Huzzah ESP8266 应已连接到正常工作的传感器。
+现在，Feather Huzzah ESP8266 应已连接到正常工作的传感器。
 
 ![将 dht22 与 Feather huzzah 相连接](media/iot-hub-arduino-huzzah-esp8266-get-started/8_connect-dht22-feather-huzzah.png)
 
@@ -167,7 +175,7 @@ ms.lasthandoff: 03/17/2017
 
 ### <a name="add-serial-port-permissions--ubuntu-only"></a>添加串行端口权限 - 仅适用于 Ubuntu
 
-如果使用 Ubuntu，请确保普通用户有权在 Feather HUZZAH ESP826 的 USB 端口上操作。 若要为普通用户添加串行端口权限，请执行以下步骤：
+如果使用 Ubuntu，请确保你有权在 Feather HUZZAH ESP826 的 USB 端口上操作。 若要添加串行端口权限，请执行以下步骤：
 
 1. 在终端中运行以下命令：
 
@@ -197,9 +205,9 @@ ms.lasthandoff: 03/17/2017
 
 在本部分，你将在 Feather HUZZAH ESP8266 上部署并运行一个示例应用程序。 该示例应用程序会使 Feather HUZZAH ESP8266 上的 LED 闪烁，并将从 DHT22 传感器收集的温度和湿度数据发送到 IoT 中心。
 
-### <a name="get-the-sample-application-from-github"></a>从 Github 获取示例应用程序
+### <a name="get-the-sample-application-from-github"></a>从 GitHub 获取示例应用程序
 
-该示例应用程序托管在 Github 中。 从 GitHub 中克隆包含该示例应用程序的示例存储库。 若要克隆示例存储库，请执行以下步骤：
+该示例应用程序托管在 GitHub 中。 从 GitHub 中克隆包含该示例应用程序的示例存储库。 若要克隆示例存储库，请执行以下步骤：
 
 1. 打开命令提示符或终端窗口。
 1. 转到用于存储示例应用程序的文件夹。
@@ -226,7 +234,8 @@ ms.lasthandoff: 03/17/2017
 
 1. 在“Preference”（首选项）对话框中，单击“OK”（确定）。
 1. 单击“Tools”（工具） > “Board”（开发板） > “Boards Manager”，然后搜索 esp8266。
-   应安装 2.2.0 或更高版本的 ESP8266。
+
+   Boards Manager 指示 ESP8266 安装了版本 2.2.0 或更高版本。
 
    ![已安装 esp8266 包](media/iot-hub-arduino-huzzah-esp8266-get-started/12_arduino-ide-esp8266-installed.png)
 
@@ -253,8 +262,8 @@ ms.lasthandoff: 03/17/2017
    define SIMULATED_DATA true
    ```
    ![将示例应用程序配置为使用模拟的数据](media/iot-hub-arduino-huzzah-esp8266-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
-   
-1. 使用 `Control-s` 保存该文件。
+
+1. 使用 `Control-s` 保存文件。
 
 ### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>将示例应用程序部署到 Feather HUZZAH ESP8266
 
@@ -283,7 +292,14 @@ ms.lasthandoff: 03/17/2017
 
 ![arduino ide 中的最终输出](media/iot-hub-arduino-huzzah-esp8266-get-started/14_arduino-ide-final-output.png)
 
-## <a name="summary"></a>摘要
+## <a name="next-steps"></a>后续步骤
 
-现已成功将 Feather HUZZAH ESP8266 连接到 IoT 中心，并将捕获的传感器数据发送到了 IoT 中心。
+现已成功将 Feather HUZZAH ESP8266 连接到 IoT 中心，并将捕获的传感器数据发送到了 IoT 中心。 
+
+若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
+
+- [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
+- [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
+- [使用 Power BI 直观显示 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
+- [使用 Azure Web 应用直观显示 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-web-apps.md)。
 

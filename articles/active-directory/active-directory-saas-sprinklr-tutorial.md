@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/08/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 451369e21e7471180b6cd8c77d62b157d0bcddff
-ms.openlocfilehash: 19bd7971e172f32367ee2dae903389e52709a306
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 44b5314a250d88f7ea2f8db2c1270a9090f083cd
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -32,16 +32,17 @@ ms.lasthandoff: 12/14/2016
 在本教程中概述的方案由以下构建基块组成：
 
 1. 为 Sprinklr 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
 ![方案](./media/active-directory-saas-sprinklr-tutorial/IC782900.png "方案")
 
-## <a name="enabling-the-application-integration-for-sprinklr"></a>为 Sprinklr 启用应用程序集成
+## <a name="enable-the-application-integration-for-sprinklr"></a>为 Sprinklr 启用应用程序集成
 本部分的目的是概述如何为 Sprinklr 启用应用程序集成。
 
-### <a name="to-enable-the-application-integration-for-sprinklr-perform-the-following-steps"></a>若要为 Sprinklr 启用应用程序集成，请执行以下步骤：
+**若要为 Sprinklr 启用应用程序集成，请执行以下步骤：**
+
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
     ![Active Directory](./media/active-directory-saas-sprinklr-tutorial/IC700993.png "Active Directory")
@@ -68,12 +69,16 @@ ms.lasthandoff: 12/14/2016
    
     ![Sprinklr](./media/active-directory-saas-sprinklr-tutorial/IC782902.png "Sprinklr")
 
-## <a name="configuring-single-sign-on"></a>配置单一登录
-本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Sprinklr 进行身份验证。  
+## <a name="configure-single-sign-on"></a>配置单一登录
+本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Sprinklr 进行身份验证。 
+
+
 在此过程中，需要创建 base-64 编码的证书文件。  
+
 如果不熟悉此过程，请参阅[如何将二进制证书转换为文本文件](http://youtu.be/PlgrzUZ-Y1o)。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
+**若要配置单一登录，请执行以下步骤：**
+
 1. 在 Azure 经典门户中的“Sprinklr”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/IC782903.png "配置单一登录")
@@ -107,41 +112,30 @@ ms.lasthandoff: 12/14/2016
 9. 在“单一登录”页上，执行以下步骤：
    
     ![单一登录](./media/active-directory-saas-sprinklr-tutorial/IC782910.png "Single Sign-Ons")
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：*WAADSSOTest*）。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 选择“启用”。
-   
-    c. 选择“使用新 SSO 证书”。
-
-    d.单击“下一步”。 根据下载的证书创建 **base-64 编码**文件。  
-      
-    > [!TIP]
-    > 有关详细信息，请参阅[如何将二进制证书转化为文本文件](http://youtu.be/PlgrzUZ-Y1o)
-    > 
-    > 
-   
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后再粘贴到“标识提供者证书”文本框中。
-   
-    f. 在 Azure 经典门户的“配置 Sprinklr 的单一登录”对话框页上，复制“标识提供者 ID”值，然后将其粘贴到“实体 ID”文本框中。
-   
-    g. 在 Azure 经典门户的“配置 Sprinklr 的单一登录”对话框页上，复制“远程登录 URL”值，然后将其粘贴到“标识提供者登录 URL”文本框中。
-   
-    h. 在 Azure 经典门户的“配置 Sprinklr 的单一登录”对话框页上，复制“远程注销 URL”值，然后将其粘贴到“标识提供者注销 URL”文本框中。
-   
-    i. 对于“SAML 用户 ID 类型”，请选择“断言包含用户的 sprinklr.com 用户名”。
-   
-    j. 对于“SAML 用户 ID 位置”，请选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素中”。
-   
-    k. 单击“保存”。
+  1. 在“名称”文本框中，键入配置名称（例如：*WAADSSOTest*）。
+  2. 选择“启用”。
+  3. 选择“使用新 SSO 证书”。
+  4. 根据下载的证书创建 **base-64 编码**文件。  
+  
+     >[!TIP]
+     >有关详细信息，请参阅 [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)（如何将二进制证书转换为文本文件）。 
+     >    
+     
+  5. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“标识提供者证书”文本框。
+  6. 在 Azure 经典门户的“配置 Sprinklr 的 SSO”对话框中：
+     *  复制“标识提供者 ID”值，然后将其粘贴到“实体 ID”文本框中。
+     * 复制“远程登录 URL”值，然后将其粘贴到“标识提供者登录 URL”文本框中。
+     * 复制“远程注销 URL”值，然后将其粘贴到“标识提供者注销 URL”文本框中。
+  7. 对于“SAML 用户 ID 类型”，请选择“断言包含用户的 sprinklr.com 用户名”。
+  8. 对于“SAML 用户 ID 位置”，请选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素中”。
+  9. 单击“保存” 。
        
     ![SAML](./media/active-directory-saas-sprinklr-tutorial/IC782911.png "SAML")
-
 10. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
     
     ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/IC782912.png "配置单一登录")
 
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 要使 AAD 用户能够登录进行访问，必须将这些用户预配到 Sprinklr 应用程序中。  
 本部分介绍如何在 Sprinklr 中创建 AAD 用户帐户。
 
@@ -162,40 +156,32 @@ ms.lasthandoff: 12/14/2016
 
 5. 在“编辑用户”对话框中，执行以下步骤：
    
-    ![编辑用户](./media/active-directory-saas-sprinklr-tutorial/IC782916.png "Edit user")
+    ![编辑用户](./media/active-directory-saas-sprinklr-tutorial/IC782916.png "Edit user") 
+  1. 在“电子邮件”、“名字”和“姓氏”文本框中，键入要预配的 Azure AD 用户帐户的信息。
+  2. 选择“禁用密码”。
+  3. 选择一种**语言**。
+  4. 选择**用户类型**。
+  5. 单击“更新”。
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“电子邮件”、“名字”和“姓氏”文本框中，键入要预配的 Azure AD 用户帐户的信息。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 选择“禁用密码”。
-   
-    c. 选择一种**语言**。
-   
-    d.单击“下一步”。 选择**用户类型**。
-   
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“更新”。
-   
-    > [!IMPORTANT]
-    > 必须选择“禁用密码”才能让用户通过标识提供者登录。
-    > 
-    > 
+     >[!IMPORTANT]
+     >必须选择“禁用密码”才能让用户通过标识提供者登录。 
+     > 
 
 6. 单击“角色”，然后执行以下步骤：
    
     ![合作伙伴角色](./media/active-directory-saas-sprinklr-tutorial/IC782917.png "Partner Roles")
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 从“全局”列表中，选择“ALL\_Permissions”。
-    
-    b. 单击“更新”。
+ 1. 从“全局”列表中，选择“ALL\_Permissions”。  
+ 2. 单击“更新”。
 
-> [!NOTE]
-> 可以使用任何其他 Sprinklr 用户帐户创建工具或 Sprinklr 提供的 API 来预配 AAD 用户帐户。
-> 
+>[!NOTE]
+>可以使用任何其他 Sprinklr 用户帐户创建工具或 Sprinklr 提供的 API 来预配 AAD 用户帐户。 
 > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
-### <a name="to-assign-users-to-sprinklr-perform-the-following-steps"></a>若要将用户分配到 Sprinklr，请执行以下步骤：
+**若要将用户分配到 Sprinklr，请执行以下步骤：**
+
 1. 在 Azure 经典门户中，创建一个测试帐户。
 
 2. 在“Sprinklr”应用程序集成页上，单击“分配用户”。
@@ -206,6 +192,6 @@ ms.lasthandoff: 12/14/2016
    
     ![是](./media/active-directory-saas-sprinklr-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 

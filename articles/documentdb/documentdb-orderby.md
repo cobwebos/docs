@@ -2,8 +2,9 @@
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
-ms.openlocfilehash: c5fc68fb25a4cb2166e0c0a72871d16c71397852
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 0ca716857733290fad4278e3be5059408bb75393
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -90,7 +91,7 @@ DocumentDB 支持每个查询使用单个数值、字符串或布尔值属性进
 
 
 ## <a name="samples"></a>示例
-查看 [Github 示例项目](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)，了解如何使用 Order By，包括创建索引策略和使用 Order By 进行分页。 这些示例是开放源代码的，并且我们鼓励你提交可让其他 DocumentDB 开发人员获益的相关拉取请求。 有关如何做出贡献的指导，请参考 [Contribution guidelines（贡献准则）](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)。  
+查看 [GitHub 示例项目](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)，了解如何使用 Order By，包括创建索引策略和使用 Order By 进行分页。 这些示例是开放源代码的，并且我们鼓励你提交可让其他 DocumentDB 开发人员获益的相关拉取请求。 有关如何做出贡献的指导，请参考 [Contribution guidelines（贡献准则）](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)。  
 
 ## <a name="faq"></a>常见问题
 **Order By 查询的预期请求单位 (RU) 使用情况如何？**
@@ -123,17 +124,12 @@ DocumentDB 支持每个查询使用单个数值、字符串或布尔值属性进
 如果收到 Order By 不支持的错误，请检查正在使用的版本是否是 Order By 支持的 [SDK](documentdb-sdk-dotnet.md) 版本。 
 
 ## <a name="next-steps"></a>后续步骤
-分叉 [Github 示例项目](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)并开始对数据进行排序！ 
+派生 [GitHub 示例项目](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)并开始对数据进行排序！ 
 
 ## <a name="references"></a>参考
 * [DocumentDB 查询参考](documentdb-sql-query.md)
 * [DocumentDB 索引策略参考](documentdb-indexing-policies.md)
 * [DocumentDB SQL 参考](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 * [DocumentDB Order By 示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

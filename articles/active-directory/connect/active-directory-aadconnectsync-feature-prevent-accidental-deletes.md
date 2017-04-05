@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2048c2786cbe7e237f7a72f5a73a4b135ed60088
-ms.openlocfilehash: cf4ee6d18d5ab3b0f53ec5e8ab80d6e91864a103
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 48531d69fcefed27785e0e1ae667274fa48ea1d2
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -57,19 +58,15 @@ ms.openlocfilehash: cf4ee6d18d5ab3b0f53ec5e8ab80d6e91864a103
 
 如果想要查看所有删除项，请执行以下操作：
 
-1. 若要暂时禁用此保护并允许删除这些项，请运行 PowerShell cmdlet：`Disable-ADSyncExportDeletionThreshold`。 提供 Azure AD 全局管理员帐户和密码。
+1. 若要检索当前的删除阈值，请运行 PowerShell cmdlet `Get-ADSyncExportDeletionThreshold`。 提供 Azure AD 全局管理员帐户和密码。 默认值为 500。
+2. 若要暂时禁用此保护并允许删除这些项，请运行 PowerShell cmdlet：`Disable-ADSyncExportDeletionThreshold`。 提供 Azure AD 全局管理员帐户和密码。
    ![凭据](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/credentials.png)
-2. 如果 Azure Active Directory 连接器仍被选中，请选择“运行”操作，再选择“导出”。
-3. 若要重新启用保护，请运行 PowerShell cmdlet：`Enable-ADSyncExportDeletionThreshold`。
+3. 如果 Azure Active Directory 连接器仍被选中，请选择“运行”操作，再选择“导出”。
+4. 若要重新启用保护，请运行 PowerShell cmdlet：`Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`。 检索当前的删除阈值时，请将 500 替换为你看到的值。 提供 Azure AD 全局管理员帐户和密码。
 
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
 
 * [Azure AD Connect 同步：理解和自定义同步](active-directory-aadconnectsync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

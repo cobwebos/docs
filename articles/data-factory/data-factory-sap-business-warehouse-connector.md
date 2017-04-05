@@ -14,15 +14,16 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 6a14e5e0cab25b26782ebd45b52aa7542b7e24d5
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: cf62f0676740c82d58d5ac5644ceffb8daf1a4f2
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
-本文概述如何使用 Azure 数据工厂管道中的复制活动在 SAP Business Warehouse 和另一个数据存储之间移动数据。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何结合使用复制活动和受支持的数据存储进行数据移动。 数据工厂当前仅支持将数据从 SAP Business Warehouse 移至其他数据存储，但不支持将数据从其他数据存储移至 SAP Business Warehouse。
+本文介绍如何使用 Azure 数据工厂中的复制活动从本地 SAP Business Warehouse (BW) 移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
+可以将数据从本地 SAP Business Warehouse 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 SAP Business Warehouse 移至其他数据存储，而不支持将数据从其他数据存储移至 SAP Business Warehouse。 
 
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
 此连接器支持 SAP Business Warehouse 版本 7.x。 它支持使用 MDX 查询从 InfoCubes 和 QueryCubes（包括 BEx 查询）复制数据。
@@ -31,25 +32,66 @@ ms.lasthandoff: 03/17/2017
 - **数据管理网关**：数据工厂服务支持使用称为“数据管理网关”的组件连接到本地数据存储（包括 SAP Business Warehouse）。 若要了解数据管理网关和设置网关的分步说明，请参阅[在本地数据存储与云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 即使 SAP Business Warehouse 托管在 Azure IaaS 虚拟机 (VM) 中，也需要网关。 只要网关能连接数据库，即可在与数据存储相同的 VM 上或不同的 VM 上安装网关。
 - 网关计算机上的 **SAP NetWeaver 库**。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”获取最新版本的下载位置。 确保 SAP NetWeaver 库（32 位或 64 位）的体系结构与安装的网关匹配。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
 
-## <a name="supported-sinks"></a>支持的接收器
-有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 可以将数据从 SAP Business Warehouse 移到任何支持的接收器数据存储。 
+## <a name="getting-started"></a>入门
+可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
-## <a name="copy-data-wizard"></a>复制数据向导
-若要创建将数据从 SAP Business Warehouse 复制到任何支持的接收器数据存储的管道，最简单的方法是使用复制数据向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+- 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
+
+1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
+2. 创建**数据集**以表示复制操作的输入和输出数据。 
+3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
+
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 SAP Business Warehouse 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 SAP Business Warehouse 复制到 Azure Blob](#json-example-copy-data-from-sap-business-warehouse-to-azure-blob) 部分。 
+
+对于特定于 SAP BW 数据存储的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
+
+## <a name="linked-service-properties"></a>链接服务属性
+下表提供了 SAP Business Warehouse (BW) 链接服务专属 JSON 元素的说明。
+
+属性 | 说明 | 允许的值 | 必选
+-------- | ----------- | -------------- | --------
+server | SAP BW 实例所驻留的服务器的名称。 | 字符串 | 是
+systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
+clientId | SAP W 系统中的客户端的客户端 ID。 | 用字符串表示的三位十进制数。 | 是
+username | 有权访问 SAP 服务器的用户名 | 字符串 | 是
+password | 用户密码。 | 字符串 | 是
+gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP BW 实例。 | 字符串 | 是
+encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
+
+## <a name="dataset-properties"></a>数据集属性
+有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
+
+每种数据集的 **TypeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的 SAP BW 数据集不支持任何类型特定的属性。 
+
+
+## <a name="copy-activity-properties"></a>复制活动属性
+有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称和描述等属性、输入和输出表格以及策略可用于所有类型的活动。
+
+但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
+
+在复制活动中，当源属于 **RelationalSource** 类型（包括 SAP BW）时，以下属性在 typeProperties 节中可用：
+
+| 属性 | 说明 | 允许的值 | 必选 |
+| --- | --- | --- | --- |
+| query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | MDX 查询。 | 是 |
+
+
+## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON 示例：将数据从 SAP Business Warehouse 复制到 Azure Blob
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 此示例演示如何将数据从本地 SAP Business Warehouse 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
 
 > [!IMPORTANT]
 > 此示例提供 JSON 代码段。 它不包括创建数据工厂的分步说明。 请参阅文章[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)以获取分步说明。
 
-## <a name="sample-copy-data-from-sap-business-warehouse-to-azure-blob"></a>示例：将数据从 SAP Business Warehouse 复制到 Azure Blob
 此示例具有以下数据工厂实体：
 
-1. [SapBw](#sap-bw-linked-service) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 类型的链接服务。
-3. [RelationalTable](#sap-bw-dataset) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#sap-bw-source-in-copy-activity) 和 [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties)。
+1. [SapBw](#linked-service-properties) 类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+3. [RelationalTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例每小时将数据从 SAP Business Warehouse 实例复制到 Azure blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
 
@@ -227,35 +269,6 @@ ms.lasthandoff: 03/17/2017
 ```
 
 
-## <a name="sap-bw-linked-service"></a>SAP BW 链接服务
-下表提供了 SAP Business Warehouse (BW) 链接服务专属 JSON 元素的说明。
-
-属性 | 说明 | 允许的值 | 必选
--------- | ----------- | -------------- | --------
-server | SAP BW 实例所驻留的服务器的名称。 | 字符串 | 是
-systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
-clientId | SAP W 系统中的客户端的客户端 ID。 | 用字符串表示的三位十进制数。 | 是
-username | 有权访问 SAP 服务器的用户名 | 字符串 | 是
-password | 用户密码。 | 字符串 | 是
-gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP BW 实例。 | 字符串 | 是
-encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
-
-## <a name="sap-bw-dataset"></a>SAP BW 数据集
-有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
-
-每种数据集的 **TypeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的 SAP BW 数据集不支持任何类型特定的属性。 
-
-
-## <a name="sap-bw-source-in-copy-activity"></a>复制活动中的 SAP BW 源
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称和描述等属性、输入和输出表格以及策略可用于所有类型的活动。
-
-但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
-
-在复制活动中，当源属于 **RelationalSource** 类型（包括 SAP BW）时，以下属性在 typeProperties 节中可用：
-
-| 属性 | 说明 | 允许的值 | 必选 |
-| --- | --- | --- | --- |
-| query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | MDX 查询。 | 是 |
 
 ### <a name="type-mapping-for-sap-bw"></a>SAP BW 的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文所述，复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换：
@@ -290,9 +303,15 @@ DATS | String
 NUMC | String
 TIMS | String
 
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
-[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
-[!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
+> [!NOTE]
+> 若要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
+
+
+## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
+若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
+
+## <a name="repeatable-read-from-relational-sources"></a>从关系源进行可重复读取
+从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。

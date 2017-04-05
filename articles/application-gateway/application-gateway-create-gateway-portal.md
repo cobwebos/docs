@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: e20f7349f30c309059c2867d7473fa6fdefa9b61
-ms.openlocfilehash: f7036e8e629e78c5346688556a5aa5794bde3955
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 9edaa7a101ae0e1a395491999854ee7009fb69cd
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -30,7 +31,10 @@ ms.openlocfilehash: f7036e8e629e78c5346688556a5aa5794bde3955
 > * [Azure Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Azure 应用程序网关是第 7 层负载平衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载平衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
+Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。
+应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。
+
+若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
 
 ## <a name="scenario"></a>方案
 
@@ -47,8 +51,6 @@ Azure 应用程序网关是第 7 层负载平衡器。 它在不同服务器之�
 
 > [!IMPORTANT]
 > 针对应用程序网关进行的其他配置（包括自定义运行状况探测、后端池地址以及其他规则）是在对应用程序网关配置以后配置的，不是在初始部署期间配置的。
-> 
-> 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -70,7 +72,7 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 
 * **名称** - 应用程序网关的名称。
 * **层** - 此设置是应用程序网关的层。 可以使用两个层，即 **WAF** 层和**标准**层。 WAF 启用 Web 应用程序防火墙功能。
-* **SKU 大小** - 此设置是指应用程序网关的大小，可用选项包括**小型**、**中型**和**大型**。 选择 WAF 层时，小型不可用。
+* **SKU 大小** - 此设置是指应用程序网关的大小，可用选项包括“小型”、“中型”和“大型”。 选择 WAF 层时，小型不可用。
 * **实例计数** - 实例的数目，此值应该是 2 到 10 之间的数字。
 * **资源组** - 用于保存应用程序网关的资源组，可以是现有资源组，也可以是新的资源组。
 * **位置** - 应用程序网关所在的区域，与资源组的位置相同。 位置很重要，因为虚拟网络和公共 IP 必须与网关位于同一位置。
@@ -84,7 +86,7 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 
 ### <a name="step-3"></a>步骤 3
 
-定义基本设置以后，下一步是定义要使用的虚拟网络。 虚拟网络托管的应用程序也是通过应用程序网关进行负载平衡的应用程序。
+定义基本设置以后，下一步是定义要使用的虚拟网络。 虚拟网络托管的应用程序也是通过应用程序网关进行负载均衡的应用程序。
 
 单击“选择虚拟网络”对虚拟网络进行配置。
 
@@ -149,21 +151,51 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 
 ## <a name="add-servers-to-backend-pools"></a>将服务器添加到后端池
 
-创建应用程序网关后，仍需将系统（托管着将进行负载平衡的应用程序）添加到应用程序网关。 这些服务器的 IP 地址 或 FQDN 值已添加到后端地址池。
+创建应用程序网关后，仍需将系统（托管着要进行负载均衡的应用程序）添加到应用程序网关。 这些服务器的 IP 地址 或 FQDN 值已添加到后端地址池。
 
-### <a name="step-1"></a>步骤 1
+### <a name="ip-address-or-fqdn"></a>IP 地址或 FQDN
+
+#### <a name="step-1"></a>步骤 1
 
 单击创建的应用程序网关，单击“后端池”，然后选择当前后端池。
 
 ![应用程序网关后端池][11]
 
-### <a name="step-2"></a>步骤 2
+#### <a name="step-2"></a>步骤 2
 
-在文本框中添加 IP 地址或 FQDN 值，然后单击“保存”
+单击“添加目标”以添加 FQDN 的 IP 地址值
+
+![应用程序网关后端池][11-1]
+
+#### <a name="step-3"></a>步骤 3
+
+输入所有后端值后，单击“保存”
 
 ![向应用程序网关后端池添加值][12]
 
 此操作会将值保存到后端池。 更新应用程序网关后，进入应用程序网关的流量将路由到在此步骤中添加的后端地址。
+
+### <a name="virtual-machine-and-nic"></a>虚拟机和 NIC
+
+也可以将虚拟机 NIC 添加为后端池成员。 只有应用程序网关所在的虚拟网络中的虚拟机通过下拉列表提供。
+
+#### <a name="step-1"></a>步骤 1
+
+单击创建的应用程序网关，单击“后端池”，然后选择当前后端池。
+
+![应用程序网关后端池][11]
+
+#### <a name="step-2"></a>步骤 2
+
+单击“添加目标”以添加新的后端池成员。 从下拉框中选择虚拟机和 NIC。
+
+![将 NIC 添加到应用程序网关后端池][13]
+
+#### <a name="step-3"></a>步骤 3
+
+完成后，单击“保存”将 NIC 保存为后端成员。
+
+![保存 NIC 应用程序网关后端池][14]
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -187,11 +219,9 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 [9]: ./media/application-gateway-create-gateway-portal/figure9.png
 [10]: ./media/application-gateway-create-gateway-portal/figure10.png
 [11]: ./media/application-gateway-create-gateway-portal/figure11.png
+[11-1]: ./media/application-gateway-create-gateway-portal/figure11-1.png
 [12]: ./media/application-gateway-create-gateway-portal/figure12.png
+[13]: ./media/application-gateway-create-gateway-portal/figure13.png
+[14]: ./media/application-gateway-create-gateway-portal/figure14.png
 [scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
