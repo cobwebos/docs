@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/16/2016
+ms.date: 03/20/2016
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 60219a9c78884e01fcf46e18ac03e2a955787bc5
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 382eecf863f1e4798533034f915101c08dd4f448
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -29,13 +29,13 @@ ms.lasthandoff: 03/07/2017
 * 我如何使用 SQL 和 LINQ 查询 Azure DocumentDB 中的地理空间数据？
 * 我如何在 DocumentDB 中启用或禁用空间索引？
 
-请参阅此 [Github 项目](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs)中的代码示例。
+请参阅此 [GitHub 项目](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs)中的代码示例。
 
 ## <a name="introduction-to-spatial-data"></a>空间数据简介
 空间数据用于描述空间中对象的位置和形状。 在大部分应用程序中，这些会对应于地球上的对象，也就是地理空间数据。 空间数据可以用来表示人、名胜古迹、城市边界或湖泊所处的位置。 常见用例通常涉及邻近查询，例如“寻找我目前位置附近的所有咖啡厅”。 
 
 ### <a name="geojson"></a>GeoJSON
-DocumentDB 支持对使用 [GeoJSON 规范](http://geojson.org/geojson-spec.html)表示的地理空间点数据进行索引编制和查询。 GeoJSON 数据结构永远是有效的 JSON 对象，因此可以通过 DocumentDB 来存储和查询，无需任何专用的工具或库。 DocumentDB SDK 提供帮助程序类和方法，让空间数据更易使用。 
+DocumentDB 支持对使用 [GeoJSON 规范](https://tools.ietf.org/html/rfc7946)表示的地理空间点数据进行索引编制和查询。 GeoJSON 数据结构永远是有效的 JSON 对象，因此可以通过 DocumentDB 来存储和查询，无需任何专用的工具或库。 DocumentDB SDK 提供帮助程序类和方法，让空间数据更易使用。 
 
 ### <a name="points-linestrings-and-polygons"></a>点、LineString 和多边形
 **点**代表空间中的单一位置。 在地理空间数据中，某个点所代表的确切位置可能是杂货店、电话亭、汽车或城市的街道地址。  点使用其坐标对或经纬度，以 GeoJSON 格式（和 DocumentDB）表示。 以下是点的 JSON 示例。
@@ -236,7 +236,7 @@ DocumentDB 还支持执行反向查询，即可在 DocumentDB 中索引多边形
 
 ST_ISVALID 和 ST_ISVALIDDETAILED 可用来检查空间对象是否有效。 例如，下列查询检查纬度值 (-132.8) 超出范围的点的有效性。 ST_ISVALID 仅返回一个布尔值，ST_ISVALIDDETAILED 则返回布尔值和字符串，字符串中包含被视为无效的原因。
 
-**查询**
+** 查询 **
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 
@@ -385,7 +385,7 @@ DocumentDB .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用�
 ## <a name="next-steps"></a>后续步骤
 你已经学会如何开始使用 DocumentDB 中的地理空间支持，现在可以：
 
-* 使用 [Github 上的地理空间 .NET 代码示例](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)开始编写代码
+* 使用 [GitHub 上的地理空间 .NET 代码示例](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)开始编写代码
 * 在 [DocumentDB 查询板块](http://www.documentdb.com/sql/demo#geospatial)中实际操作地理空间查询
 * 详细了解 [DocumentDB 查询](documentdb-sql-query.md)
 * 详细了解 [DocumentDB 索引策略](documentdb-indexing-policies.md)

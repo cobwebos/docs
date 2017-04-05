@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 1/30/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 2ed6b838608f0f2249ef16b62ff2fb0159fc6e7f
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 34148a8fe2fe5b9ebd2ff4a01ff523f7f5a74c67
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -104,7 +105,7 @@ ms.openlocfilehash: 2ed6b838608f0f2249ef16b62ff2fb0159fc6e7f
 
 * type 设置为 AzureSqlTable。
 * tableName 类型属性（特定于 AzureSqlTable 类型）设置为 MyTable。
-* linkedServiceName 指的是 AzureSqlDatabase 类型的链接服务。 请参阅以下链接服务的定义。
+* linkedServiceName 引用 AzureSqlDatabase 类型的链接服务，该类型在以下 JSON 代码段中定义。
 * availability frequency 设置为“Day”且 interval 设置为 1，意味着每天都会生成切片。  
 
 AzureSqlLinkedService 定义如下：
@@ -134,11 +135,11 @@ AzureSqlLinkedService 定义如下：
 >
 >
 
-## <a name="a-nametypea-dataset-type"></a><a name="Type"></a>数据集类型
+## <a name="Type"></a>数据集类型
 支持的数据源和数据集类型是一致的。 有关数据集类型和配置的信息，请参阅[数据移动活动](data-factory-data-movement-activities.md#supported-data-stores-and-formats)一文中引用的主题。 例如，如果使用 Azure SQL 数据库中的数据，可单击支持的数据存储列表中的 Azure SQL 数据库以查看详细信息。  
 
-## <a name="a-namestructureadataset-structure"></a><a name="Structure"></a>数据集结构
-**结构**部分定义数据集的架构。 它包含列的名称和数据类型的集合。  在以下示例中，数据集具有三列 slicetimestamp、projectname 和 pageviews，它们的类型分别为：String、String 和 Decimal。
+## <a name="Structure"></a>数据集结构
+**结构**部分是**可选**部分，用于定义数据集的架构。 它包含列的名称和数据类型的集合。 结构部分用于提供**类型转换**的类型信息或执行**列映射**。 在以下示例中，数据集具有三列 `slicetimestamp`、`projectname` 和 `pageviews`，它们的类型分别为：String、String 和 Decimal。
 
 ```json
 structure:  
@@ -149,7 +150,28 @@ structure:
 ]
 ```
 
-## <a name="a-nameavailabilitya-dataset-availability"></a><a name="Availability"></a>数据集的可用性
+每个列包含以下属性：
+
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| 名称 |列的名称。 |是 |
+| type |列的数据类型。  |否 |
+| culture |指定类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认值为“en-us”。 |否 |
+| 格式 |指定类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 |否 |
+
+若要了解何时加入“结构”信息以及在**结构**部分包含哪些信息，请遵循以下指南。
+
+* 对于存储数据架构、类型信息和数据本身的**结构化数据源**（如 SQL Server、Oracle、Azure 表等源），仅在要将源列映射到接收器列且其名称不相同时，才应指定“结构”部分。 
+  
+    由于类型信息已可用于结构化数据源，因此包含“结构”部分时不应包含类型信息。
+* **对于读取数据源（尤其是 Azure Blob）的架构**，可以选择存储数据但不存储数据的任何架构或类型信息。 对于这些类型的数据源，当你希望将源列映射到接收器列时，（或者）当数据集是复制活动的输入数据集并且需要将源数据集的数据类型转换为接收器的本机类型时，请包括“结构”。 
+    
+    数据工厂支持使用以下符合 CLS 标准、基于 .NET 的类型值在“结构”中为读取数据源（如 Azure Blob）的架构提供类型信息：Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan。
+
+将数据从源数据存储移到接收器数据存储时，数据工厂自动执行类型转换。 
+  
+
+## <a name="Availability"></a>数据集的可用性
 数据集中的**可用性**部分定义了处理时段（每小时、每天和每周等）或数据集的切片模型。 有关数据集切片和依赖关系模型的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)一文。
 
 以下可用性部分指定每小时生成输出数据集或每小时提供输入数据集：
@@ -166,11 +188,11 @@ structure:
 
 | 属性 | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
-| frequency |指定数据集切片生成的时间单位。<br/><br/>**支持的频率**：Minute、Hour、Day、Week、Month |是 |不可用 |
-| interval |指定频率的乘数<br/><br/>“频率 x 间隔”确定生成切片的频率。<br/><br/>若需要数据集每小时生成切片，请将“Frequency”设置为“Hour”，将“interval”设置为“1”。<br/><br/>**注意：**如果将 Frequency 指定为 Minute，建议将 interval 设置为小于 15 的值 |是 |不可用 |
+| frequency |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
+| interval |指定频率的乘数<br/><br/>“频率 x 间隔”确定生成切片的频率。<br/><br/>若需要数据集每小时生成切片，请将“Frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/><b>注意</b>：如果将 Frequency 指定为 Minute，建议将 interval 设置为小于 15 的值 |是 |不可用 |
 | style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>若将 Month 设置为 Month，style 设置为 EndOfInterval，则将在每月的最后一天生成切片。 若将 style 设为 StartOfInterval，将在每月的第一天生成切片。<br/><br/>若将 Frequency 设置为 Day，style 设置为 EndOfInterval，则将在一天的最后一小时生成切片。<br/><br/>若将 Frequency 设置为 Hour，style 设置为 EndOfInterval，则将在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
-| anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/>**注意：**如果 AnchorDateTime 的日期部分比频率部分更精细，则忽略更精细的部分。 <br/><br/>例如，如果“interval”是“每小时”（frequency: hour 且 interval: 1），而 ** AnchorDateTime** 包含**分钟和秒**，则将忽略 AnchorDateTime 的**分钟和秒**部分。 |否 |01/01/0001 |
-| offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/>**注意：**如果同时指定了 anchorDateTime 和 offset ，则结果是组合偏移。 |否 |不可用 |
+| anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/><b>注意</b>：如果 AnchorDateTime 的日期部分比频率部分更精细，则忽略更精细部分。 <br/><br/>例如，如果“间隔”<b></b>是“每小时”<b></b>（frequency: hour 且 interval: 1），而 <b> AnchorDateTime</b> 包含<b>分钟和秒</b>，则将忽略 AnchorDateTime 的<b>分钟和秒</b>部分。 |否 |01/01/0001 |
+| offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/><b>注意</b>：如果同时指定了 anchorDateTime 和 offset，则结果是组合偏移。 |否 |不可用 |
 
 ### <a name="offset-example"></a>偏移示例
 从早上 6 点（非默认值 - 午夜）开始的每日切片。
@@ -220,7 +242,7 @@ structure:
 }
 ```
 
-## <a name="a-namepolicyadataset-policy"></a><a name="Policy"></a>数据集策略
+## <a name="Policy"></a>数据集策略
 数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。
 
 ### <a name="validation-policies"></a>验证策略
@@ -365,9 +387,4 @@ structure:
     }
 }
 ```
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 1a2a08a844f1502d970cb7686d512387263d1d13
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9a2e9b7809b00ae2b60e152bc240ab2ef775c7bf
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -67,10 +67,7 @@ ms.lasthandoff: 03/21/2017
 2. 按照“在 HDInsight 中创建基于 Linux 的群集”文档中的步骤创建测试环境。 在创建群集之前停止，并改为选择“可选配置”。
 3. 从“可选配置”边栏选项卡中，选择“链接的存储帐户”。
 4. 选择“添加存储密钥”，并在出现提示时选择步骤 1 中由 PowerShell 脚本返回的存储帐户。 在每个边栏选项卡上单击“选择”。 最后，创建群集。
-5. 创建群集后，使用 **SSH** 连接到该群集。 如果你不熟悉将 SSH 与 HDInsight 配合使用，请参阅以下任一文档：
-
-   * [在 Windows 客户端中将 SSH (PuTTY) 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
-   * [在 Linux、Unix、OS X 和 Windows 10 上的 Bash 中将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+5. 创建群集后，使用 **SSH** 连接到该群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 6. 从 SSH 会话中，使用以下命令来将文件从链接的存储帐户复制到新的默认存储帐户。 将 CONTAINER 替换为 PowerShell 返回的容器信息。 将 __ACCOUNT__ 替换为帐户名称。 将数据的路径替换为数据文件的路径。
 
@@ -109,10 +106,7 @@ ms.lasthandoff: 03/21/2017
 
 我们建议使用公钥证书，因为它比密码更安全。 证书身份验证将生成已签名的公钥/私钥对，然后在创建群集时提供公钥。 使用 SSH 连接到服务器时，客户端上的私钥将会为连接提供身份验证。
 
-有关配合 HDInsight 使用 SSH 的详细信息，请参阅：
-
-* [在 Windows 客户端中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
-* [在 Linux、Unix 和 OS X 客户端中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 ### <a name="cluster-customization"></a>群集自定义
 与基于 Linux 的群集配合使用的**脚本操作**必须以 Bash 脚本编写。 尽管脚本操作可在群集创建期间使用，它们也可以用于在基于 Linux 的群集已启动并开始运行之后进行自定义。 有关详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight](hdinsight-hadoop-customize-cluster-linux.md) 和[针对基于 Linux 的 HDInsight 的脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。
@@ -220,8 +214,8 @@ Azure 数据工厂自定义 .NET 活动目前不受基于 Linux 的 HDInsight �
       hdfs dfs -put -f script.py wasbs:///path/to/script.py
 
 ## <a name="next-steps"></a>后续步骤
+
 * [了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
-* [从 Windows 客户端使用 SSH 连接到基于 Linux 的群集](hdinsight-hadoop-linux-use-ssh-windows.md)
-* [从 Linux、Unix，或 Mac 客户端使用 SSH 连接到基于 Linux 的群集](hdinsight-hadoop-linux-use-ssh-unix.md)
+* [使用 SSH 连接到 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [使用 Ambari 管理基于 Linux 的群集](hdinsight-hadoop-manage-ambari.md)
 

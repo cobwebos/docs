@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: d3327faa5864b721fff5d3a34389d214b0ae29a9
-ms.openlocfilehash: dab95c2b63e18c2cd21ffb33370ce16404237762
-ms.lasthandoff: 12/16/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: f72a2b50fd315d4fa97bd3ca1a65eff062ee05bb
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,8 +27,8 @@ ms.lasthandoff: 12/16/2016
 将 Oneteam 与 Azure AD 集成可提供以下优势：
 
 - 可在 Azure AD 中控制谁有权访问 Oneteam
-- 可以让用户使用其 Azure AD 帐户自动登录到 Oneteam（单一登录）
-- 可在一个中心位置（即 Azure 经典门户）管理帐户
+- 可以让用户使用其 Azure AD 帐户自动登录到 Oneteam 单一登录 (SSO)
+- 可在一个中心位置（即 Azure 经典门户）管理你的帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -36,28 +36,28 @@ ms.lasthandoff: 12/16/2016
 
 若要配置 Azure AD 与 Oneteam 的集成，需要具有以下项：
 
-- Azure AD 订阅
-- 启用了 Oneteam 单一登录的订阅
+- 一个 Azure AD 订阅
+- 启用了 Oneteam SSO 的订阅
 
-
-> [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
-
+>[!NOTE]
+>为了测试本教程中的步骤，我们不建议使用生产环境。
+>
 
 测试本教程中的步骤应遵循以下建议：
 
 - 不应使用生产环境，除非有此必要。
-- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+- 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，将在测试环境中测试 Azure AD SSO。 
+
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Oneteam
-2. 配置和测试 Azure AD 单一登录
+2. 配置和测试 Azure AD SSO
 
-
-## <a name="adding-oneteam-from-the-gallery"></a>从库中添加 Oneteam
+## <a name="add-oneteam-from-the-gallery"></a>从库中添加 Oneteam
 若要配置 Oneteam 与 Azure AD 的集成，需要从库中将 Oneteam 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Oneteam，请执行以下步骤：**
@@ -88,25 +88,24 @@ ms.lasthandoff: 12/16/2016
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oneteam-tutorial/tutorial_oneteam_0001.png)
 
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Oneteam 的 Azure AD SSO。
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Oneteam 的 Azure AD 单一登录。
-
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Oneteam 用户。 换句话说，需要在 Azure AD 用户与 Oneteam 中的相关用户之间建立链接关系。
+若要运行 SSO，Azure AD 需要知道与 Azure AD 用户相对应的 Oneteam 用户。 换句话说，需要在 Azure AD 用户与 Oneteam 中的相关用户之间建立链接关系。
 
 可以通过将 Azure AD 中“用户名”的值分配为 Oneteam 中“用户名”的值来建立此链接关系。
 
-若要配置并测试 Oneteam 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 Oneteam 的 Azure AD SSO，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[创建 Oneteam 测试用户](#creating-a-oneteam-test-user)** - 在 Oneteam 中创建 Britta Simon 的对应用户，将其链接到其 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在经典门户中启用 Azure AD 单一登录并在 Oneteam 应用程序中配置单一登录。
+在本部分中，将在经典门户中启用 Azure AD SSO 并在 Oneteam 应用程序中配置单一登录。
 
 
 **若要配置 Oneteam 的 Azure AD 单一登录，请执行以下步骤：**
@@ -122,23 +121,19 @@ ms.lasthandoff: 12/16/2016
 3. 在“配置应用设置”对话框页上，如果要在“IDP 发起的模式”下配置应用程序，请执行以下步骤，然后单击“下一步”：
 
     ![配置单一登录](./media/active-directory-saas-oneteam-tutorial/tutorial_oneteam_03.png)
-
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.one-team.io/teams/<team name>/auth/saml/issuer`。
-
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.one-team.io/teams/<team name>/auth/saml/callback`。
-
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+  1. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.one-team.io/teams/<team name>/auth/saml/issuer`。
+  2. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.one-team.io/teams/<team name>/auth/saml/callback`。
+  3. 单击“资源组名称” 的 Azure 数据工厂。
 
 4. 如果要在“配置应用设置”对话框页上以“SP 发起的模式”配置应用程序，则单击“显示高级设置(可选)”，然后输入“登录 URL”，并单击“下一步”。
 
     ![配置单一登录](./media/active-directory-saas-oneteam-tutorial/tutorial_oneteam_04.png)
+  1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<team name>.one-team.io/`。
+  2. 单击“下一步”。
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<team name>.one-team.io/`。
-
-    b. 单击“资源组名称” 的 Azure 数据工厂。
-
-    > [!NOTE]
-    > 请注意，必须使用实际“登录 URL”、标识符和“回复 URL”更新这些值。 可以在<a href="https://support.one-team.com/hc/en-us/requests/new">此处</a>向 Oneteam 提交支持票证以获取这些值。
+    >[!NOTE]
+    >请注意，必须使用实际“登录 URL”、标识符和“回复 URL”更新这些值。 可以在<a href="https://support.one-team.com/hc/en-us/requests/new">此处</a>向 Oneteam 提交支持票证以获取这些值。
+    >
 
 5. 在“在 Oneteam 处配置单一登录”页上，单击“下载元数据”，然后将该文件保存在计算机上：
 
@@ -154,8 +149,7 @@ ms.lasthandoff: 12/16/2016
   
     ![Azure AD 单一登录][11]
 
-
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在经典门户中创建名为“Britta Simon”的测试用户。
 
 ![创建 Azure AD 用户][20]
@@ -179,26 +173,18 @@ ms.lasthandoff: 12/16/2016
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oneteam-tutorial/create_aaduser_05.png) 
-
-    a. 对于“用户类型”，选择“组织中的新用户”。
-
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-
-    c. 单击“下一步”。
+ 1. 在“用户类型”中，选择“你的组织中的新用户”。
+ 2. 在“用户名”文本框中，键入“BrittaSimon”。
+ 3. 单击“资源组名称” 的 Azure 数据工厂。
 
 6.  在“用户配置文件”对话框页上，执行以下步骤：
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oneteam-tutorial/create_aaduser_06.png) 
-
-    a. 在“名字”文本框中，键入“Britta”。  
-
-    b. 在“姓氏”文本框中，键入“Simon”。
-
-    c. 在“显示名称”文本框中，键入“Britta Simon”。
-
-    d. 在“角色”列表中，选择“用户”。
-
-    e. 单击“下一步”。
+ 1. 在“名字”文本框中，键入“Britta”。  
+ 2. 在“姓氏”文本框中，键入“Simon”。
+ 3. 在“显示名称”文本框中，键入“Britta Simon”。
+ 4. 在“角色”列表中，选择“用户”。
+ 5. 单击“资源组名称” 的 Azure 数据工厂。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
 
@@ -207,24 +193,19 @@ ms.lasthandoff: 12/16/2016
 8. 在“获取临时密码”对话框页上，执行以下步骤：
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oneteam-tutorial/create_aaduser_08.png) 
+ 1. 写下“新密码”的值。
+ 2. 单击“完成”。   
 
-    a. 写下“新密码”的值。
-
-    b. 单击“完成”。   
-
-
-
-### <a name="creating-a-oneteam-test-user"></a>创建 Oneteam 测试用户
+### <a name="create-a-oneteam-test-user"></a>创建 Oneteam 测试用户
 
 本部分的目的是在 Oneteam 中创建名为 Britta Simon 的用户。 Oneteam 支持在默认情况下启用的实时预配。
 
 此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Oneteam 期间会创建一个新用户。
 
-> [!NOTE]
-> 如果需要手动创建用户，请从<a href="https://support.one-team.com/hc/en-us/requests/new">此处</a>向 Oneteam 支持团队提交支持票证。
+>[!NOTE]
+>如果需要手动创建用户，请从<a href="https://support.one-team.com/hc/en-us/requests/new">此处</a>向 Oneteam 支持团队提交支持票证。
 
-
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过向 Britta Simon 授予对 Oneteam 的访问权限使她能够使用 Azure 单一登录。
 
@@ -250,11 +231,9 @@ ms.lasthandoff: 12/16/2016
     
     ![分配用户][205]
 
+### <a name="test-single-sign-on"></a>测试单一登录
 
-
-### <a name="testing-single-sign-on"></a>测试单一登录
-
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分中，使用访问面板测试 Azure AD SSO 配置。
 
 当在访问面板中单击 Oneteam 磁贴时，应当会自动登录到 Oneteam 应用程序。
 

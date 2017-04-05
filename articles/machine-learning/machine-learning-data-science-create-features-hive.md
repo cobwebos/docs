@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: hangzh;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7f34a63acf5720ef880193b08f3a90d1f904774d
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5a4ca11079ac2a3962d92c7688e8d7337c31389d
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 7f34a63acf5720ef880193b08f3a90d1f904774d
 
 创建功能所需要的操作可以是内存密集型。 在这种情况下，Hive 查询的性能将变得更加重要，可通过优化某些参数来对其进行改善。 将在最后部分中讨论这些参数的优化。
 
-显示的查询示例指定为 [NYC Taxi Trip Data](http://chriswhong.com/open-data/foil_nyc_taxi/)（纽约出租车行程数据）方案，[GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也提供了这些方案。 这些查询已具有指定的数据架构，并准备好提交以运行。 最后部分也会讨论用户可对其进行优化以改善 Hive 查询性能的参数。
+显示的查询示例特定于 [NYC Taxi Trip Data](http://chriswhong.com/open-data/foil_nyc_taxi/)（纽约出租车行程数据）方案，[GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也提供了这些方案。 这些查询已具有指定的数据架构，并准备好提交以运行。 最后部分也会讨论用户可对其进行优化以改善 Hive 查询性能的参数。
 
 [!INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
 
@@ -39,7 +40,7 @@ ms.openlocfilehash: 7f34a63acf5720ef880193b08f3a90d1f904774d
 * 数据已上传到 Azure HDInsight Hadoop 群集中的 Hive 表。 如果没有，请按照[创建并将数据上传到 Hive 表](machine-learning-data-science-move-hive-tables.md)，先将数据上传到 Hive 表。
 * 已启用群集的远程访问权限。 如果需要说明，请参阅[访问 Hadoop 群集的头节点](machine-learning-data-science-customize-hadoop-cluster.md#headnode)。
 
-## <a name="a-namehive-featureengineeringafeature-generation"></a><a name="hive-featureengineering"></a>功能生成
+## <a name="hive-featureengineering"></a>功能生成
 在本部分中，将介绍使用 Hive 查询可用其生成功能的方法的几个示例。 如果已生成其他功能，则可将其作为列添加到现有表，或创建具有这些其他功能和主密钥的新表，新表之后可联接到原始表。 以下是显示的示例：
 
 1. [基于功能生成的频率](#hive-frequencyfeature)
@@ -48,7 +49,7 @@ ms.openlocfilehash: 7f34a63acf5720ef880193b08f3a90d1f904774d
 4. [从文本字段中提取功能](#hive-textfeatures)
 5. [计算 GPS 坐标之间的距离](#hive-gpsdistance)
 
-### <a name="a-namehive-frequencyfeatureafrequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>基于功能生成的频率
+### <a name="hive-frequencyfeature"></a>基于功能生成的频率
 通常用于计算分类变量级别的频率，或多个分类变量中某些组合级别的频率。 用户可使用以下脚本计算这些频率：
 
         select
@@ -62,7 +63,7 @@ ms.openlocfilehash: 7f34a63acf5720ef880193b08f3a90d1f904774d
         order by frequency desc;
 
 
-### <a name="a-namehive-riskfeaturearisks-of-categorical-variables-in-binary-classification"></a><a name="hive-riskfeature"></a>二元分类中分类变量的风险
+### <a name="hive-riskfeature"></a>二元分类中分类变量的风险
 在二元分类中，如果使用的模型只采用数字特征，则需要将非数字分类变量装换为数字特征。 通过使用数字风险替代非数字级别来完成此操作。 在此部分中，将演示计算分类变量的风险值（对数几率）的某些泛型 Hive 查询。
 
         set smooth_param1=1;
@@ -87,13 +88,13 @@ ms.openlocfilehash: 7f34a63acf5720ef880193b08f3a90d1f904774d
 
 计算风险表之后，用户可通过将其联接到风险表来将风险值分配到表。 前面部分中提供了 Hive 联接查询。
 
-### <a name="a-namehive-datefeaturesaextract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>从日期时间字段中提取功能
+### <a name="hive-datefeatures"></a>从日期时间字段中提取功能
 Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认日期时间格式为“yyyy-MM-dd 00:00:00”（例如，“1970-01-01 12:21:32”）。 在本部分中，将演示从日期时间字段中提取某月的某天、某月的示例，以及将日期时间字符串转换为某种格式而不是使用默认日期时间字符串格式的其他示例。
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-此 Hive 查询假定 *<日期时间字段> *使用的是默认日期时间格式。
+此 Hive 查询假定 *<日期时间字段>*使用的是默认日期时间格式。
 
 如果日期时间字段并未使用默认格式，则需要先将日期时间字段转换为 Unix 时间戳，然后将 Unix 时间戳转换为默认格式的日期时间字符串。 如果日期时间使用默认格式，那么用户可以应用嵌入的日期时间 UDF 以提取功能。
 
@@ -107,13 +108,13 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
 
 预配群集时，此查询中的 *hivesampletable* 将在所有 Azure HDInsight Hadoop 群集上默认预安装。
 
-### <a name="a-namehive-textfeaturesaextract-features-from-text-fields"></a><a name="hive-textfeatures"></a>从文本字段中提取功能
+### <a name="hive-textfeatures"></a>从文本字段中提取功能
 如果 Hive 表具有包含以空格分隔的单词的字符串的文本字段，那么以下查询将提取字符串的长度和字符串中的单词数。
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
-### <a name="a-namehive-gpsdistanceacalculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>计算 GPS 坐标集之间的距离
+### <a name="hive-gpsdistance"></a>计算 GPS 坐标集之间的距离
 本部分中给出的查询可直接应用于纽约出租车行程数据。 此查询旨在演示如何应用 Hive 中的嵌入数学函数以生成功能。
 
 此查询中使用的字段为提取和减少位置的 GPS 坐标，名为*提取\_经度*、*提取\_纬度*、*减少\_经度*、*减少\_纬度*。 计算提取和减少坐标之间直接距离的查询为：
@@ -134,13 +135,13 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
         and dropoff_latitude between 30 and 90
         limit 10;
 
-计算两个 GPS 坐标之间距离的数学等式可在 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a>（可移动类型脚本）站点上找到，该站点由 Peter Lapisu 创作。 在他的 Javascript 中，函数 `toRad()` 只是 *lat_or_lon*pi/180*，这将度数转换为弧度。此处，*lat_or_lon* 是纬度或经度。 由于 Hive 不提供函数 `atan2`，但提供函数 `atan`，所以 `atan2` 函数通过 <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定义由上述的 Hive 查询中的函数 `atan` 来实现。
+计算两个 GPS 坐标之间距离的数学等式可在 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a>（可移动类型脚本）站点上找到，该站点由 Peter Lapisu 创作。 在其 Javascript 中，函数 `toRad()` 就是 *lat_or_lon*pi/180*，它将度数转换为弧度。 此处，*lat_or_lon* 是纬度或经度。 由于 Hive 不提供函数 `atan2`，但提供函数 `atan`，所以 `atan2` 函数通过 <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定义由上述的 Hive 查询中的函数 `atan` 来实现。
 
 ![创建工作区](./media/machine-learning-data-science-create-features-hive/atan2new.png)
 
 嵌入 UDF 的 Hive 的完整列表可在 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a> 上的**内置函数**部分中找到）。  
 
-## <a name="a-nametuninga-advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a>高级主题：优化 Hive 参数以改进查询速度
+## <a name="tuning"></a>高级主题：优化 Hive 参数以改进查询速度
 Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查询的数据。 在本部分中，将讨论用户可对其进行优化以改进 Hive 查询性能的某些参数。 用户需要在查询处理数据之前，先添加优化查询参数。
 
 1. **Java 堆空间**：对于涉及联接大数据集或处理长记录的查询，一个常见错误为“堆空间不足”。 可以通过将参数 *mapreduce.map.java.opts* 和 *mapreduce.task.io.sort.mb* 设置为所需的值来对其进行优化。 下面是一个示例：
@@ -168,10 +169,5 @@ Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查
         set mapreduce.reduce.java.opts=-Xmx8192m;
         set mapred.reduce.tasks=128;
         set mapred.tasktracker.reduce.tasks.maximum=128;
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

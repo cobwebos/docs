@@ -9,6 +9,7 @@ editor: cgronlun
 tags: 
 ms.assetid: 0cbb49cc-0de1-4a1a-b658-99897caf827c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +17,9 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 86a0f6f2bc27f1411652b273325e73144582eee0
-ms.openlocfilehash: b0122a87ec64d16d6e026f9b37a563125a5f1920
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 424ee513afce6ab689c8804594754b1b49234754
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -404,11 +406,6 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 ## <a name="next-steps"></a>后续步骤
 * 若要使用 Azure PowerShell 配置已加入域的 HDInsight 群集，请参阅[使用 Azure PowerShell 配置已加入域的 HDInsight 群集](hdinsight-domain-joined-configure-use-powershell.md)。
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](hdinsight-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。
-* 有关使用 SSH 连接到已加入域的 HDInsight 群集，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
-
-
-
-
-<!--HONumber=Nov16_HO5-->
+* 有关使用 SSH 连接到已加入域的 HDInsight 群集，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
 
 

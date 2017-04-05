@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 7427a5740dd7fe32aeb4d8396568706399c66bd7
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: f09c231baecf2452a6e3abd196748629f13885ff
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/15/2017
 |----|----|----|
 |运行持续时间|90 天||
 |存储保留期|90 天|这从运行开始时间开始计算|
-|最小重复间隔|1 秒|| 对于带有应用服务计划的逻辑应用为&15; 秒
+|最小重复间隔|1 秒|| 对于带有应用服务计划的逻辑应用为 15 秒
 |最大重复间隔|500 天||
 
 
@@ -70,9 +70,9 @@ ms.lasthandoff: 03/15/2017
 
 |Name|限制|说明|
 |----|----|----|
-|ForEach 项|5,000|可以使用[查询操作](../connectors/connectors-native-query.md)根据需要筛选更大数组|
+|ForEach 项|100,000|可以使用[查询操作](../connectors/connectors-native-query.md)根据需要筛选更大数组|
 |Until 迭代|5,000||
-|SplitOn 项|5,000||
+|SplitOn 项|100,000||
 |ForEach 并行度|20|可以通过将 `"operationOptions": "Sequential"` 添加到 `foreach` 操作来设置为顺序 foreach|
 
 
@@ -82,8 +82,9 @@ ms.lasthandoff: 03/15/2017
 
 |Name|限制|说明|
 |----|----|----|
-|每秒执行的操作数（突发）|1,000|可以根据需要在多个应用之间分配工作负荷|
-|每小时执行的操作数（持续）|1,000,000|可以根据需要在多个应用之间分配工作负荷|
+|每 5 分钟执行的操作数 |100,000|可以根据需要在多个应用之间分配工作负荷|
+
+如果你在正常处理中需要超过此限制，或想要运行在一段时间内可能超过此限制的负载测试，请[与我们联系](mailto://logicappsemail@microsoft.com)，以便我们可以帮助满足你的需求。
 
 ### <a name="definition-limits"></a>定义限制
 

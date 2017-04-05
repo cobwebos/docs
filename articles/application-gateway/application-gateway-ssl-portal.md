@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: b1852b82875c63fa0e252c14b69b281bd501095f
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: a9cb2d921d1be226661311d91367b2b6f44fa0dc
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -69,7 +70,7 @@ HTTPS 侦听器根据配置来查找流量，并可将流量路由到后端池�
 
 ## <a name="create-a-rule-and-associate-it-to-the-listener"></a>创建规则并将其关联到侦听器
 
-现在已创建侦听器。 此时需创建规则来处理来自侦听器的流量。
+现在已创建侦听器。 此时需创建规则来处理来自侦听器的流量。 规则定义如何基于多个配置设置（包括是否使用了基于 Cookie 的会话相关性、协议、端口和运行状况探测）将流量路由到后端池。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -93,9 +94,4 @@ HTTPS 侦听器根据配置来查找流量，并可将流量路由到后端池�
 [2]: ./media/application-gateway-ssl-portal/figure2.png
 [3]: ./media/application-gateway-ssl-portal/figure3.png
 [4]: ./media/application-gateway-ssl-portal/figure4.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

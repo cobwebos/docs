@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 03/24/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: f4c225c97ac997c412704b278c033c519d4424ed
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 25e266441e902a06d980b3b51abdd4fcf668d4d2
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -95,6 +95,8 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | 巴西 | 巴西南部 | 巴西南部 |
 | 欧洲 | 北欧 | 欧洲北部 |
 | &nbsp; | 欧洲西部 | 西欧 |
+| 英国 | 英国西部 | 英国南部 |
+| &nbsp; | 英国南部 | 英国南部 |
 | 亚太区 | 东南亚 | 东南亚 |
 | &nbsp; | 东亚 | 东南亚 |
 | 澳大利亚 | 澳大利亚东部 | 澳大利亚东部 |
@@ -105,7 +107,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | &nbsp; | 印度西部 | 印度中部 |
 | &nbsp; | 印度南部 | 印度中部 |
 
-或者可以通过指定复制活动 `typeProperties` 下的 `executionLocation` 属性，明确指示要用于执行复制的数据工厂服务的区域。 上述**用于数据移动的区域**列中列举了此属性支持的值。 请注意复制过程中数据将通过网络经过该区域。 例如，若要在英国的 Azure 存储间进行复制，可以指定 `"executionLocation": "North Europe"`，以便经过欧洲北部（请参阅[示例 JSON](#by-using-json-scripts) 作为参考）。
+或者可以通过指定复制活动 `typeProperties` 下的 `executionLocation` 属性，明确指示要用于执行复制的数据工厂服务的区域。 上述**用于数据移动的区域**列中列举了此属性支持的值。 请注意复制过程中数据将通过网络经过该区域。 例如，若要在韩国的 Azure 存储间进行复制，可以指定 `"executionLocation": "Japan East"`，以便经过日本区域（请参阅[示例 JSON](#by-using-json-scripts) 作为参考）。
 
 > [!NOTE]
 > 如果目标数据存储的区域不在上方列表中或未找到该区域，默认情况下，复制活动将失败，而不会通过其他区域完成，除非指定了 `executionLocation`。 以后支持的区域列表还将扩大。
@@ -155,7 +157,7 @@ JSON 属性（例如名称、说明、输入和输出表，以及策略）可用
           "sink": {
             "type": "SqlSink"
           },
-          "executionLocation": "North Europe"          
+          "executionLocation": "Japan East"          
         },
         "Policy": {
           "concurrency": 1,
@@ -181,7 +183,7 @@ JSON 属性（例如名称、说明、输入和输出表，以及策略）可用
 若要详细了解如何在数据工厂中计划和执行活动，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。 可以按顺序或以有序的方式依次运行多个复制操作。 请参阅[按顺序复制](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)部分。
 
 ## <a name="type-conversions"></a>类型转换
-不同数据存储具有不同本机类型系统。 复制活动使用以下&2; 步方法执行从源类型到接收器类型的自动类型转换：
+不同数据存储具有不同本机类型系统。 复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型。
 2. 从 .NET 类型转换为本机接收器类型。

@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
-ms.openlocfilehash: 271a15d258177c98ad72be007c20ae278df6236b
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 4fe50acbbf9424275c5746b3bdabc79b08b027d3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/18/2017
 * 基于 Linux 的 HDInsight（HDInsight 上的 Hadoop）群集。
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
 
 * SSH 客户端。 SSH 客户端上应该装有 Linux、Unix 和 Mac OS。 Windows 用户必须下载 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 之类的客户端。
 
@@ -53,14 +53,9 @@ ms.lasthandoff: 01/18/2017
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
 
-如果在创建 HDInsight 群集时**提供了 SSH 身份验证的密码**，则需要根据提示提供该密码。
+如果你在创建 HDInsight 群集时**提供了 SSH 身份验证的密码**，则需要根据提示提供该密码。
 
-有关将 SSH 与 HDInsight 配合使用的详细信息，请参阅[在 Linux、OS X 和 Unix 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-### <a name="putty-windows-based-clients"></a>PuTTY（基于 Windows 的客户端）
-Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载的 **PuTTY**。
-
-有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)。
+有关将 SSH 与 HDInsight 配合使用的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a id="pig"></a>使用 Pig 命令
 1. 连接后，请使用以下命令启动 Pig 命令行界面 (CLI)。

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/29/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: fba4e68e78b8267ff2413f94d5ca5066325f9c76
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: b01b0d3d61168c1eec52f3fd040b829e0c51a878
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/28/2017
 
 你可以使用单一管理门户，在 OMS 中借助 Log Analytics 查看和管理所有这些数据源。 这样，无需使用多个不同的系统便可监视数据源，使得数据源的使用更加容易，并且你可以将喜欢的任何数据导出到已有的任何业务分析解决方案或系统。
 
-本文是快速入门指南，可帮助你使用 OMS Agent for Linux 收集和管理 Linux 计算机的数据。 有关更多技术详细信息（如代理服务器配置、CollectD 指标和自定义 JSON 数据源的信息），请参阅 Github 上的 [OMS Agent for Linux 概述](https://github.com/Microsoft/OMS-Agent-for-Linux)和 [OMS Agent for Linux 完整文档](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md)。
+本文是快速入门指南，可帮助你使用 OMS Agent for Linux 收集和管理 Linux 计算机的数据。 有关更多技术详细信息（如代理服务器配置、CollectD 指标和自定义 JSON 数据源的相关信息），请参阅 GitHub 上的 [OMS Agent for Linux 概述](https://github.com/Microsoft/OMS-Agent-for-Linux)和 [OMS Agent for Linux 完整文档](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md)。
 
 目前，可以从 Linux 计算机收集以下类型的数据︰
 
@@ -70,7 +70,7 @@ Operations Management Suite Agent for Linux 包含多个程序包。 发布文�
 ### <a name="linux-data-collection-details"></a>Linux 数据收集详细信息
 下表显示数据收集方法以及有关如何收集数据的其他详细信息。
 
-| 源 | 直接代理 | SCOM 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 源 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Zabbix |![是](./media/log-analytics-linux-agents/oms-bullet-green.png) |![否](./media/log-analytics-linux-agents/oms-bullet-red.png) |![否](./media/log-analytics-linux-agents/oms-bullet-red.png) |![否](./media/log-analytics-linux-agents/oms-bullet-red.png) |![否](./media/log-analytics-linux-agents/oms-bullet-red.png) |1 分钟 |
 | Nagios |![是](./media/log-analytics-linux-agents/oms-bullet-green.png) |![否](./media/log-analytics-linux-agents/oms-bullet-red.png) |![否](./media/log-analytics-linux-agents/oms-bullet-red.png) |![否](./media/log-analytics-linux-agents/oms-bullet-red.png) |![否](./media/log-analytics-linux-agents/oms-bullet-red.png) |到达时 |
@@ -149,7 +149,7 @@ Linux 性能计数器类似于 Windows 性能计数器 — 运行方式类似。
 同样，为父计数器选择的采样间隔会应用于其所有子计数器。 换言之，所有子计数器的采样间隔和实例都绑定在一起。
 
 ### <a name="add-and-configure-performance-metrics-with-linux"></a>使用 Linux 添加和配置性能指标
-要收集的性能指标由 /etc/opt/microsoft/omsagent/conf/omsagent.conf 中的配置控制。 有关 OMS Agent for Linux 的可用类和指标，请参阅[可用的性能指标](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#appendix-available-performance-metrics)。
+要收集的性能指标由 /etc/opt/microsoft/omsagent/&lt;工作区 id&gt;/conf/omsagent.conf 中的配置控制。 有关 OMS Agent for Linux 的可用类和指标，请参阅[可用的性能指标](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#appendix-available-performance-metrics)。
 
 要收集的性能指标的每个对象或类别应在配置文件中作为单个 `<source>` 元素进行定义。 语法遵循下面的模式。
 
@@ -219,9 +219,9 @@ Linux 性能计数器类似于 Windows 性能计数器 — 运行方式类似。
 >
 
 ```
-sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>
 
-sudo service omiserverd restart
+sudo /opt/omi/bin/service_control restart
 ```
 
 
@@ -330,12 +330,12 @@ log { source(src); filter(f_warning_oms); destination(warning_oms); };
 ### <a name="collect-alerts-from-nagios"></a>收集来自 Nagios 的警报
 要收集来自 Nagios 服务器的警报，需要进行以下配置更改。
 
-1. 向用户 **omsagent** 授予 Nagios 日志文件（即 /var/log/nagios/nagios.log/var/log/nagios/nagios.log）的读访问权限。 假定 nagios.log 文件归组 **nagios** 所有，你可以将用户 **omsagent** 添加到 **nagios** 组。
+1. 向用户 **omsagent** 授予对 Nagios 日志文件（即 /var/log/nagios/nagios.log）的读访问权限。 假定 nagios.log 文件归组 **nagios** 所有，你可以将用户 **omsagent** 添加到 **nagios** 组。
 
     ```
     sudo usermod –a -G nagios omsagent
     ```
-2. 修改 omsagent.conf 配置文件 (/ etc/opt/microsoft/omsagent/conf/omsagent.conf)。 确保以下条目存在且未注释掉︰
+2. 修改 omsagent.conf 配置文件 (/etc/opt/microsoft/omsagent/&lt;工作区 id&gt;/conf/omsagent.conf)。 确保以下条目存在且未注释掉︰
 
     ```
     <source>
@@ -353,13 +353,13 @@ log { source(src); filter(f_warning_oms); destination(warning_oms); };
 3. 重新启动 omsagent 守护程序︰
 
     ```
-    sudo service omsagent restart
+    sudo /opt/microsoft/omsagent/bin/service_control restart
     ```
 
 ### <a name="collect-alerts-from-zabbix"></a>收集来自 Zabbix 的警报
 要收集来自 Zabbix 服务器的警报，你可以执行类似于上述 Nagios 的步骤，但需要以*明文*指定用户和密码。 这不是理想的做法，但可能会很快更改。 要解决此问题，建议你创建用户并仅为其授予监视权限。
 
-Zabbix 的 omsagent.conf 配置文件 (/etc/opt/microsoft/omsagent/conf/omsagent.conf) 的示例部分类似如下所示︰
+Zabbix 的 omsagent.conf 配置文件 (/etc/opt/microsoft/omsagent/&lt;工作区 id&gt;/conf/omsagent.conf) 的示例部分应类似如下所示：
 
 ```
 <source>
@@ -416,7 +416,7 @@ OMS Agent for Linux 与 System Center Operations Manager 代理共享代理二�
 3. 重新启动 OMI 服务器︰
 
     ```
-    service omiserver restart or systemctl restart omiserver
+    sudo /opt/omi/bin/service_control restart
     ```
 
 ## <a name="database-permissions-required-for-mysql-performance-counters"></a>MySQL 性能计数器所需的数据库权限
@@ -506,7 +506,7 @@ MySQL OMI 身份验证文件应位于以下位置并命名为 "mysql-auth"：
 ## <a name="agent-logs"></a>代理日志
 OMS Agent for Linux 的日志位于以下位置︰
 
-/var/opt/microsoft/omsagent/log/
+/var/opt/microsoft/omsagent/&lt;工作区 id&gt;/log/
 
 omsconfig（代理配置）程序的 OMS Agent for Linux 日志位于以下位置︰
 
@@ -529,15 +529,15 @@ OMI 和 SCX 组件（这些组件提供性能指标数据）的日志位于以�
 ### <a name="important-log-locations"></a>重要的日志位置
 | 文件 | 路径 |
 | --- | --- |
-| OMS Agent for Linux 日志文件 |`/var/opt/microsoft/omsagent/log/omsagent.log ` |
+| OMS Agent for Linux 日志文件 |`/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log ` |
 | OMS Agent 配置日志文件 |`/var/opt/microsoft/omsconfig/omsconfig.log` |
 
 ### <a name="important-configuration-files"></a>重要的配置文件
 | 类别 | 文件位置 |
 | --- | --- |
 | Syslog |`/etc/syslog-ng/syslog-ng.conf` 或 `/etc/rsyslog.conf` 或 `/etc/rsyslog.d/95-omsagent.conf` |
-| 性能、Nagios、Zabbix、OMS 输出和常规代理 |`/etc/opt/microsoft/omsagent/conf/omsagent.conf` |
-| 其他配置 |`/etc/opt/microsoft/omsagent/conf.d/*.conf` |
+| 性能、Nagios、Zabbix、OMS 输出和常规代理 |`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` |
+| 其他配置 |`/etc/opt/microsoft/omsagent/<workspace id>/omsagent.d/*.conf` |
 
 > [!NOTE]
 > 如果 OMS 门户配置已启用，则将覆盖性能计数器和 syslog 的编辑配置文件。 可以在 OMS 门户中针对所有节点禁用配置，也可以通过运行以下命令针对单个节点禁用配置︰
@@ -553,7 +553,7 @@ sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --d
 要启用调试日志记录，可以使用 OMS 输出插件和详细输出。
 
 #### <a name="oms-output-plugin"></a>OMS 输出插件
-FluentD 允许插件针对输入和输出指定不同的日志级别。 要为 OMS 输出指定不同的日志级别，请在 `/etc/opt/microsoft/omsagent/conf/omsagent.conf` 文件中编辑常规代理配置。
+FluentD 允许插件针对输入和输出指定不同的日志级别。 要为 OMS 输出指定不同的日志级别，请在 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 文件中编辑常规代理配置。
 
 在靠近配置文件底部，将 `log_level` 属性从 `info` 更改为 `debug`。
 
@@ -564,7 +564,7 @@ FluentD 允许插件针对输入和输出指定不同的日志级别。 要为 O
   num_threads 5
   buffer_chunk_limit 5m
   buffer_type file
-  buffer_path /var/opt/microsoft/omsagent/state/out_oms*.buffer
+  buffer_path /var/opt/microsoft/omsagent/<workspace id>/state/out_oms*.buffer
   buffer_queue_limit 10
   flush_interval 20s
   retry_limit 10
@@ -585,7 +585,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 #### <a name="verbose-output"></a>详细输出
 如果不使用 OMS 输出插件，还可以将数据项直接输出到 OMS Agent for Linux 日志文件中可见的 `stdout`。
 
-在 OMS 常规代理配置文件中的 `/etc/opt/microsoft/omsagent/conf/omsagent.conf` 处，通过在每一行的前面添加 `#` 注释掉 OMS 输出插件。
+在 OMS 常规代理配置文件中的 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 处，通过在每一行的前面添加 `#` 注释掉 OMS 输出插件。
 
 ```
 #<match oms.** docker.**>
@@ -594,7 +594,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 #  num_threads 5
 #  buffer_chunk_limit 5m
 #  buffer_type file
-#  buffer_path /var/opt/microsoft/omsagent/state/out_oms*.buffer
+#  buffer_path /var/opt/microsoft/omsagent/<workspace id>/state/out_oms*.buffer
 #  buffer_queue_limit 10
 #  flush_interval 20s
 #  retry_limit 10
@@ -662,7 +662,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 
 #### <a name="resolutions"></a>解决方法
 * 添加 omsagent 用户以从 Nagios 文件中读取。 有关详细信息，请参阅 [Nagios 警报](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)。
-* 在 `/etc/opt/microsoft/omsagent/conf/omsagent.conf` 处的 OMS Agent for Linux 常规配置文件中，确保 Nagios 源和筛选器部分**都**已删除注释，类似于下面的示例。
+* 在 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 处的 OMS Agent for Linux 常规配置文件中，确保 Nagios 源和筛选器部分**都**已删除注释，类似于下面的示例。
 
 ```
 <source>
@@ -685,10 +685,10 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * 备份了 OMS Agent for Linux 数据
 
 #### <a name="resolutions"></a>解决方法
-* 通过验证 `/etc/opt/microsoft/omsagent/conf/omsadmin.conf` 是否存在，确认到 OMS 服务的载入已成功。
+* 通过验证 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` 是否存在，确认到 OMS 服务的载入已成功。
 * 使用 omsadmin.sh 命令行重新载入。 有关详细信息，请参阅[使用命令行载入](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)。
 * 如果使用代理服务器，请使用上述代理服务器疑难解答步骤
-* 在某些情况下，当 OMS Agent for Linux 无法与 OMS 服务通信时，Agent 上的数据会备份到整个缓冲区（大小 50 MB）。 通过运行 `service omsagent restart` 或 `systemctl restart omsagent` 命令，重新启动 OMS Agent for Linux。
+* 在某些情况下，当 OMS Agent for Linux 无法与 OMS 服务通信时，Agent 上的数据会备份到整个缓冲区（大小 50 MB）。 通过运行 `/opt/microsoft/omsagent/bin/service_control restart` 命令重新启动 OMS Agent for Linux。
   >[AZURE.NOTE] 此问题已在 Agent 1.1.0-28 及更高版本中解决。
 
 ### <a name="syslog-linux-performance-counter-configuration-is-not-applied-in-the-oms-portal"></a>Syslog Linux 性能计数器配置未在 OMS 门户中应用
@@ -697,7 +697,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * 未应用门户中的已修改设置
 
 #### <a name="resolutions"></a>解决方法
-`omsconfig` 是 OMS Agent for Linux 中的配置代理，会每隔 5 分钟检索 OMS 门户配置更改。 此配置然后应用于 `/etc/opt/microsoft/omsagent/conf/omsagent.conf` 处的 OMS Agent for Linux 配置文件。
+`omsconfig` 是 OMS Agent for Linux 中的配置代理，会每隔 5 分钟检索 OMS 门户配置更改。 此配置然后应用于 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` 处的 OMS Agent for Linux 配置文件。
 
 * 在某些情况下，OMS Agent for Linux 配置代理可能无法与门户配置服务通信，导致未应用最新配置。
 * 使用以下命令验证是否安装了 `omsconfig` 代理：
@@ -721,7 +721,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * 这是一个已知的争用条件问题，已在 OMS Agent for Linux 版本 1.1.0-217 中修复
 
 #### <a name="resolutions"></a>解决方法
-* 通过确定 `/etc/opt/microsoft/omsagent/conf/omsadmin.conf` 文件是否存在，确认已经成功载入。
+* 通过确定 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` 文件是否存在，确认已经成功载入。
   * 如果需要，使用 omsadmin.sh 命令行重新载入。 有关详细信息，请参阅[使用命令行载入](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)。
 * 在 OMS 门户中，在“**数据**”选项卡的“**设置**”下，确保选择“**将下列配置应用于我的 Linux 服务器**”设置  
   ![应用配置](./media/log-analytics-linux-agents/customloglinuxenabled.png)
@@ -741,7 +741,7 @@ OMS Agent for Linux 不是以具有特权的用户 `root` 身份运行，而是�
 这是一个已知的争用条件问题，已在 OMS Agent for Linux 版本 1.1.0-217 中解决。 更新到最新的代理后，运行以下命令以获取最新版本的输出插件︰
 
 ```
-sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/conf/omsagent.conf
+sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf
 ```
 
 ## <a name="known-limitations"></a>已知限制
@@ -750,7 +750,7 @@ sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/oms
 ### <a name="azure-diagnostics"></a>Azure 诊断
 对于在 Azure 中运行的 Linux 虚拟机，可能需要附加步骤以允许由 Azure 诊断和 Operations Management Suite 收集数据。 为了与 OMS Agent for Linux 兼容，需要安装**版本 2.2** 的 Linux 诊断扩展。
 
-有关安装和配置 Linux 诊断扩展的详细信息，请参阅[使用 Azure CLI 命令启用 Linux 诊断扩展](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md#use-the-azure-cli-command-to-enable-the-linux-diagnostic-extension)。
+有关安装和配置 Linux 诊断扩展的详细信息，请参阅[使用 Azure CLI 命令启用 Linux 诊断扩展](../virtual-machines/linux/classic/diagnostic-extension.md#use-the-azure-cli-command-to-enable-the-linux-diagnostic-extension)。
 
 **将 Linux 诊断扩展从 2.0 升级到 2.2 Azure CLI ASM：**
 

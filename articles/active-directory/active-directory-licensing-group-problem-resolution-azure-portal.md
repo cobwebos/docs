@@ -18,9 +18,9 @@ ms.date: 02/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 40042fd5ca2671cc26a67736b1c7a1e907c004d8
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 68155ebaa6af36500bfe856c9bcd49f5efb6cbc2
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -43,6 +43,8 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 若要查看哪些用户和组正在使用许可证，请单击某个产品。 在“许可的用户”下面，可以看到直接或者通过一个或多个组向其分配许可证的所有用户。 在“许可的组”下面，可以看到该产品已分配到的所有组。
 
+**PowerShell：**PowerShell cmdlet 将此错误报告为 _CountViolation_。
+
 ## <a name="conflicting-service-plans"></a>冲突的服务计划
 
 **问题：**组中指定的某个产品包含的服务计划，与已通过不同的产品分配给用户的另一个服务计划相冲突。 某些服务计划已配置为不能作为另一个相关服务计划分配给相同的用户。
@@ -56,11 +58,15 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 有冲突的产品许可证的解决方法始终由管理员决定。 Azure AD 不会自动解决许可证冲突。
 
+**PowerShell：**PowerShell cmdlet 将此错误报告为 _MutuallyExclusiveViolation_。
+
 ## <a name="other-products-depend-on-this-license"></a>其他产品依赖于此许可证
 
 **问题：**组中指定的某个产品包含的服务计划必须为另一个产品中的另一个服务计划启用才能正常工作。 当 Azure AD 尝试删除基础服务计划时，将出现此错误。 例如，从组中删除用户时，可能会发生此错误。
 
 若要解决此问题，需确保所需的计划仍通过其他某种方法分配给用户，或者为这些用户禁用了依赖服务。 执行这些操作后，可以正确地删除这些用户的组许可证。
+
+**PowerShell：**PowerShell cmdlet 将此错误报告为 _DependencyViolation_。
 
 ## <a name="usage-location-isnt-allowed"></a>不允许的使用位置
 
@@ -69,6 +75,8 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 当 Azure AD 尝试向使用位置不受支持的用户分配组许可证时，该操作将会失败，并且会记录用户发生的此项错误。
 
 若要解决此问题，请从许可组中删除其位置不受支持的用户。 或者，如果当前使用位置值不代表实际用户位置，可以修改这些值，以便下次可以正常分配许可证（如果新位置受支持）。
+
+**PowerShell：**PowerShell cmdlet 将此错误报告为 _ProhibitedInUsageLocationViolation_。
 
 > [!NOTE]
 > 当 Azure AD 分配组许可证时，任何未指定使用位置的用户将继承目录的位置。 建议管理员在使用基于组的许可之前，先为用户设置正确的使用位置值，以符合当地法律和法规。

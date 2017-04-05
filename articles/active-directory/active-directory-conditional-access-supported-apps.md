@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory 中使用条件性访问规则的应用程序 | Microsoft Docs"
+title: "使用 Azure Active Directory 中条件访问规则的应用程序和浏览器 | Microsoft Docs"
 description: "借助条件性访问控制，Azure Active Directory 会在验证用户身份时检查特定条件，以允许应用程序访问。"
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/22/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 6dea1af021599eb530a4feb3257238e088191d5f
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 7dc79fad1a87f015475cd2643c8bec55192b2a15
+ms.lasthandoff: 03/28/2017
 
 
 ---
-# <a name="applications-that-use-conditional-access-rules-in-azure-active-directory"></a>Azure Active Directory 中使用条件性访问规则的应用程序
+# <a name="applications-and-browsers-that-use-conditional-access-rules-in-azure-active-directory"></a>使用 Azure Active Directory 中条件访问规则的应用程序和浏览器
+
 条件性访问规则在以下应用程序中受支持：已连接 Azure Active Directory (Azure AD) 的应用程序、预集成联合软件即服务 (SaaS) 应用程序、使用密码单一登录 (SSO) 的应用程序、业务线应用程序以及使用 Azure AD 应用程序代理的应用程序。 有关可以对其使用条件性访问的应用程序的详细列表，请参阅[启用了条件性访问的服务](active-directory-conditional-access-technical-reference.md)。 条件性访问可与使用新式身份验证的移动和桌面应用程序搭配使用。 在本文中，我们将介绍条件性访问在移动和桌面应用中的工作原理。
 
 可以在使用新式身份验证的应用程序中使用 Azure AD 登录页面。 在登录页面中，会提示用户进行多重身份验证。 如果用户的访问被阻止，则会显示一条消息。 设备需要先进行新式身份验证才能使用 Azure AD 进行身份验证，以便评估基于设备的条件性访问策略。
@@ -48,7 +49,7 @@ ms.lasthandoff: 03/22/2017
 | Office 365 SharePoint Online |Mac OS X |仅限多重身份验证和位置的 Office 2016 应用；计划将来提供的基于设备的策略支持 |
 | Office 365 Yammer |Windows 10、iOS；计划将来提供 Android 支持 |Office Yammer 应用 |
 | Dynamics CRM |Windows 10、Windows 8.1、Windows 7、iOS 和 Android |Dynamics CRM 应用 |
-| PowerBI 服务 |Windows 10、Windows 8.1、Windows 7 和 iOS|PowerBI 应用（不支持 Andoird 应用） |
+| PowerBI 服务 |Windows 10、Windows 8.1、Windows 7、iOS 和 Android |PowerBI 应用 |
 | Azure 远程应用服务 |Windows 10、Windows 8.1、Windows 7、iOS、Android 和 Mac OS X |Azure 远程应用 |
 | 任何“我的应用”应用服务 |Android 和 iOS |任何“我的应用”应用服务 |
 
@@ -109,4 +110,35 @@ Exchange 提供两种主要类型的协议。 查看以下选项，然后选择�
     c1:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork", Value == "false"] &&
     c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
+
+
+## <a name="supported-browsers"></a>支持的浏览器
+
+
+| 操作系统                     | 浏览器                 | 支持 |
+| :--                    | :--                      | :-:     |
+| Win 10                 | IE、Edge                 | ![勾选标记][1] |
+| Win 10                 | Chrome                   | 即将支持 |
+| Win 8/8.1            | IE                       | ![勾选标记][1] |
+| Win 7                  | IE                       | ![勾选标记][1] |
+| iOS                     | Safari                   | ![勾选标记][1] |
+| Android                | Chrome                   | ![勾选标记][1] |
+| WinPhone               | IE、Edge                 | ![勾选标记][1] |
+| Windows Server 2016    | IE、Edge                 | ![勾选标记][1] |
+| Windows Server 2012 R2 | IE                       | ![勾选标记][1] |
+| Windows Server 2008 R2     | IE                       | ![勾选标记][1] |
+| Mac OS                 | Safari                   | ![勾选标记][1] |
+| Mac OS                 | Chrome                   | 即将支持 |
+
+
+## <a name="next-steps"></a>后续步骤
+
+有关更多详细信息，请参阅 [Azure Active Directory 中的条件访问](active-directory-conditional-access.md)
+
+
+
+<!--Image references-->
+[1]: ./media/active-directory-conditional-access-supported-apps/ic195031.png
+
+
 

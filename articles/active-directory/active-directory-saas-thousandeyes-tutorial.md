@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 3/09/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2924309737f2bc631e4e4f764bc7e8473353e865
-ms.openlocfilehash: 567917ee7c602a9971cf74367a1f6fcb96002e56
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 7bc96e6a711c70f9c5fa5daa4e059d9d7c04a134
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/01/2017
 在本教程中概述的方案假定您已具有以下各项：
 
 * 一个有效的 Azure 订阅
-* 已启用 ThousandEyes 单一登录的订阅
+* 已启用 ThousandEyes 单一登录 (SSO) 的订阅
 
 完成本教程后，已向 ThousandEyes 分配的 AAD 用户将能够在 ThousandEyes 公司站点（服务提供商发起的登录）或使用 AAD 访问面板单一登录到应用程序。
 
@@ -37,10 +37,11 @@ ms.lasthandoff: 03/01/2017
 
 ![方案](./media/active-directory-saas-thousandeyes-tutorial/IC790059.png "方案")
 
-## <a name="enabling-the-application-integration-for-thousandeyes"></a>为 ThousandEyes 启用应用程序集成
+## <a name="enable-the-application-integration-for-thousandeyes"></a>为 ThousandEyes 启用应用程序集成
 本部分的目的是概述如何为 ThousandEyes 启用应用程序集成。
 
-### <a name="to-enable-the-application-integration-for-thousandeyes-perform-the-following-steps"></a>若要为 ThousandEyes 启用应用程序集成，请执行以下步骤：
+**若要为 ThousandEyes 启用应用程序集成，请执行以下步骤：**
+
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
     ![Active Directory](./media/active-directory-saas-thousandeyes-tutorial/IC700993.png "Active Directory")
@@ -66,15 +67,16 @@ ms.lasthandoff: 03/01/2017
    
     ![ThousandEyes](./media/active-directory-saas-thousandeyes-tutorial/IC790061.png "ThousandEyes")
 
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 本部分概述如何让用户使用基于 SAML 协议的联合身份验证通过其在 Azure Active Directory 中的帐户向 ThousandEyes 进行身份验证。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
-1. 在 Azure 经典门户中的“ThousandEyes”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
+**若要配置单一登录，请执行以下步骤：**
+
+1. 在 Azure 经典门户的“ThousandEyes”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-thousandeyes-tutorial/IC790062.png "配置单一登录")
 
-1. 在“你希望用户如何登录 ThousandEyes”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
+2. 在“你希望用户如何登录 ThousandEyes”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
     ![配置单一登录](./media/active-directory-saas-thousandeyes-tutorial/IC790063.png "配置单一登录")
 
@@ -103,28 +105,23 @@ ms.lasthandoff: 03/01/2017
 9. 在“设置单一登录”部分中，执行以下步骤：
    
     ![设置单一登录](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "设置单一登录")
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“启用单一登录”。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 在 Microsoft Azure 经典门户的“配置 ThousandEyes 的单一登录”页上，复制“远程登录 URL”值，然后将其粘贴到“登录页 URL”文本框中。
-   
-    c. 在 Microsoft Azure 经典门户的“配置 ThousandEyes 的单一登录”页上，复制“远程注销 URL”值，然后将其粘贴到“注销页 URL”文本框中。
-   
-    d.单击“下一步”。 在 Microsoft Azure 经典门户的“配置 ThousandEyes 的单一登录”页上，复制“颁发者 URL”值，然后将其粘贴到“标识提供程序颁发者”文本框中。
-   
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“标识提供者证书”中，单击“选择文件”，然后上载已从 Microsoft Azure 经典门户下载的证书。
-   
-    f. 单击“保存” 。
+  1. 选择“启用单一登录”。
+  2. 在 Microsoft Azure 经典门户的“配置 ThousandEyes 的单一登录”页上，复制“远程登录 URL”值，然后将其粘贴到“登录页 URL”文本框中。
+  3. 在 Microsoft Azure 经典门户的“配置 ThousandEyes 的单一登录”页上，复制“远程注销 URL”值，然后将其粘贴到“注销页 URL”文本框中。
+  4. 在 Microsoft Azure 经典门户的“配置 ThousandEyes 的单一登录”页上，复制“颁发者 URL”值，然后将其粘贴到“标识提供程序颁发者”文本框中。
+  5. 在“标识提供者证书”中，单击“选择文件”，然后上载已从 Microsoft Azure 经典门户下载的证书。
+  6. 单击“保存” 。
 
 10. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
     
     ![配置单一登录](./media/active-directory-saas-thousandeyes-tutorial/IC790070.png "配置单一登录")
 
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 要使 Azure AD 用户能够登录 ThousandEyes，必须将这些用户预配到 ThousandEyes 中。  
 对于 ThousandEyes，预配是一项手动任务。
 
-### <a name="to-provision-a-user-account-to-thousandeyes-perform-the-following-steps"></a>若要将用户帐户预配到 ThousandEyes，请执行以下步骤：
+**若要将用户帐户预配到 ThousandEyes，请执行以下步骤：**
+
 1. 以管理员身份登录 ThousandEyes 公司站点。
 
 2. 单击“设置”。
@@ -141,27 +138,24 @@ ms.lasthandoff: 03/01/2017
 
 5. 在“添加用户和帐户”部分中，执行以下步骤：
    
-    ![添加用户帐户](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "添加用户帐户")
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“名称”、“电子邮件”和其他详细信息。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“将新用户添加到帐户”。
+    ![添加用户帐户](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "添加用户帐户")   
+  1. 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“名称”、“电子邮件”和其他详细信息。
+  2. 单击“将新用户添加到帐户”。
       
-    > [!NOTE]
-    > AAD 帐户持有者将收到一封电子邮件，其中包含用于确认和激活帐户的链接。
-    > 
-    > 
+     >[!NOTE]
+     >AAD 帐户持有者将收到一封电子邮件，其中包含用于确认和激活帐户的链接。
+     >  
 
-> [!NOTE]
-> 可以使用任何其他 ThousandEyes 用户帐户创建工具或 ThousandEyes 提供的 API 来预配 AAD 用户帐户。
-> 
-> 
+>[!NOTE]
+>可以使用任何其他 ThousandEyes 用户帐户创建工具或 ThousandEyes 提供的 API 来预配 AAD 用户帐户。
+>  
 
-## <a name="assigning-users"></a>分配用户
-若要测试配置，需要通过分配权限的方式向要允许其使用应用程序的 Azure AD 用户授予该应用程序的访问权限。
+## <a name="assign-users"></a>分配用户
+若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
-### <a name="to-assign-users-to-thousandeyes-perform-the-following-steps"></a>若要将用户分配到 ThousandEyes，请执行以下步骤：
-1. 在 Azure 经典门户中，创建测试帐户。
+**若要将用户分配到 ThousandEyes，请执行以下步骤：**
+
+1. 在 Azure 经典门户中，创建一个测试帐户。
 
 2. 在“ThousandEyes”应用程序集成页上，单击“分配用户”。
    
