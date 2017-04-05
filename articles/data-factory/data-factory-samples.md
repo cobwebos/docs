@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 3137773458ca5b50b1bf42972d4cfd8e9b8d5cba
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 446a7b585ca1204d49d76f71106799cbd2b0aa70
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -41,7 +42,7 @@ ms.openlocfilehash: 3137773458ca5b50b1bf42972d4cfd8e9b8d5cba
 | [U-SQL 示例输入文件](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |此文件是 U-SQL 活动使用的示例文件。 |
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
-可在 Github 上找到数据工厂的以下 Azure Resource Manager 模板。
+可在 GitHub 上找到数据工厂的以下 Azure Resource Manager 模板。
 
 | 模板 | 说明 |
 | --- | --- |
@@ -120,9 +121,4 @@ ms.openlocfilehash: 3137773458ca5b50b1bf42972d4cfd8e9b8d5cba
 16. 在“部署状态”  页上，应看到部署过程的状态。 部署完成后，单击“完成”。
 
 若要深入了解如何使用 Visual Studio 来创作数据工厂实体并将其发布到 Azure，请参阅[生成第一个数据工厂 (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md)。          
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

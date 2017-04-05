@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 374b2601857b3983bcd7b2f2e11d22b187fe7105
-ms.openlocfilehash: 732ebaaf5bf16c02cfc2185d9e7138daf74c71dd
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 15a1605938941b056eda1a151ea018d05bffc246
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -74,28 +74,28 @@ az disk create --resource-group myResourceGroup --name myManagedDisk \
   --source https://mystorageaccount.blob.core.windows.net/mydisks/myDisk.vhd
 ```
 
-使用 [az disk list](/cli/azure/disk/list) 获取创建的托管磁盘的 URI：
+使用 [az disk list](/cli/azure/disk/list) 获取创建的托管磁盘的详细信息：
 
 ```azurecli
 az disk list --resource-group myResourceGroup \
-  --query '[].{Name:name,URI:creationData.sourceUri}' --output table
+  --query [].{Name:name,ID:id} --output table
 ```
 
 输出类似于以下示例：
 
 ```azurecli
-Name               URI
+Name               ID
 -----------------  ----------------------------------------------------------------------------------------------------
-myUMDiskFromVHD    https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
+myManagedDisk    /subscriptions/mySubscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myManagedDisk
 ```
 
-现在，使用 [az vm create](/cli/azure/vm#create) 创建 VM，并指定托管磁盘的 URI (`--image`)。 以下示例使用基于上载的 VHD 创建的托管磁盘创建名为 `myVM` 的 VM：
+现在，使用 [az vm create](/cli/azure/vm#create) 创建 VM，并指定托管磁盘的名称 (`--attach-os-disk`)。 以下示例使用基于上载的 VHD 创建的托管磁盘创建名为 `myVM` 的 VM：
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
     --name myVM --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --attach-os-disk myUMDiskFromVHD
+    --attach-os-disk myManagedDisk
 ```
 
 ### <a name="unmanaged-disks"></a>非托管磁盘

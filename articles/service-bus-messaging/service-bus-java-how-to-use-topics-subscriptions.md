@@ -1,5 +1,5 @@
 ---
-title: "如何通过 Java 使用服务总线主题 | Microsoft Docs"
+title: "如何通过 Java 使用 Azure 服务总线主题 | Microsoft Docs"
 description: "了解如何在 Azure 中使用服务总线主题和订阅。 代码示例是针对 Java 应用程序编写的。"
 services: service-bus-messaging
 documentationcenter: java
@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 03/23/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 0b1f6f7ec47e47f39407cdbfd5efef2a18944ecc
-ms.openlocfilehash: 38692f530a84f89f3b4573dbdc86712ffcb08322
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 7132d1e42963d2e419d2bf1b7866ca5888f8719d
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -37,18 +38,18 @@ ms.openlocfilehash: 38692f530a84f89f3b4573dbdc86712ffcb08322
 利用 Service Bus 主题和订阅，你可以进行扩展以处理跨大量用户和应用程序的许多消息。
 
 ## <a name="create-a-service-namespace"></a>创建服务命名空间
-若要开始在 Azure 中使用服务总线主题和订阅，必须先创建一个服务命名空间。 命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
+若要开始在 Azure 中使用服务总线主题和订阅，必须先创建一个命名空间，该命名空间提供一个范围容器，用于对应用程序中的服务总线资源进行寻址。
 
 创建命名空间：
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用 Service Bus
-在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用的是 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]。 然后，可将 **Microsoft Azure Libraries for Java** 添加到项目：
+在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]。 然后，可将 **Microsoft Azure Libraries for Java** 添加到项目：
 
 ![](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
 
-将以下导入语句添加到 Java 文件顶部：
+将以下 `import` 语句添加到 Java 文件顶部：
 
 ```java
 import com.microsoft.windowsazure.services.servicebus.*;
@@ -150,7 +151,7 @@ BrokeredMessage message = new BrokeredMessage("MyMessage");
 service.sendTopicMessage("TestTopic", message);
 ```
 
-发送到服务总线主题的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage]* 对象包含一组标准方法（如 **setLabel** 和 **TimeToLive**），一个用来保存自定义应用程序特定属性的字典和大量任意的应用程序数据。应用程序可通过将任何可序列化对象传入到 [BrokeredMessage][BrokeredMessage] 的构造函数中来设置消息的正文，然后使用适当的 **DataContractSerializer** 序列化对象。或者，也可以提供 **java.io.InputStream**。
+发送到服务总线主题的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage]*对象包含一组标准方法（如**setLabel**和**TimeToLive**），一个用来保存自定义应用程序特定属性的字典和大量任意的应用程序数据。应用程序可通过将任何可序列化对象传入到 [BrokeredMessage][BrokeredMessage] 的构造函数中来设置消息的正文，然后使用适当的 **DataContractSerializer** 序列化对象。或者，也可以提供 **java.io.InputStream**。
 
 以下示例演示了如何将五条测试消息发送到我们在前面的代码片段中获得的 `TestTopic` **MessageSender**。
 请注意每条消息的 **MessageNumber** 属性值如何随循环迭代而变化（这将确定接收消息的订阅）：
@@ -263,9 +264,4 @@ service.deleteTopic("TestTopic");
 [0]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-13.png
 [2]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-04.png
 [3]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-09.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

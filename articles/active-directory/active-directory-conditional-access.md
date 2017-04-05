@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 条件性访问 | Microsoft Docs"
-description: "使用 Azure Active Directory 中的条件性访问控制以检查对应用程序的访问进行身份验证时的特定条件。"
+title: "Azure Active Directory 条件性访问 | Microsoft 文档"
+description: "使用 Azure Active Directory 中的条件性访问控制检查对应用程序的访问进行身份验证时的特定条件。"
 services: active-directory
 keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
 documentationcenter: 
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: af104d47d316b3e46108e7e2ed0771bd06f360af
-ms.openlocfilehash: 6c3b547b052bca6999e47ddc10fcce5e1e56fe09
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 31659a7394a34cf8fb5b6ff11c955bdc9f8b65bb
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -81,7 +82,7 @@ Azure AD 条件性访问是 [Azure Active Directory Premium](http://www.microsof
 
 ### <a name="multi-factor-authentication-and-location-policies"></a>多重身份验证和位置策略
 * [基于组、位置和多重身份验证策略实现对与 Azure AD 连接的应用的条件性访问入门](active-directory-conditional-access-azuread-connected-apps.md)
-* [支持的应用程序](active-directory-conditional-access-supported-apps.md)
+* [支持的应用程序和浏览器](active-directory-conditional-access-supported-apps.md)
 
 ### <a name="device-based-conditional-access"></a>基于设备的条件访问
 * [设置基于设备的条件性访问策略以实现对与 Azure Active Directory 连接的应用程序的访问控制](active-directory-conditional-access-policy-connected-applications.md)
@@ -95,10 +96,5 @@ Azure AD 条件性访问是 [Azure Active Directory Premium](http://www.microsof
 ### <a name="next-steps"></a>后续步骤
 * [条件性访问常见问题解答](active-directory-conditional-faqs.md)
 * [技术参考](active-directory-conditional-access-technical-reference.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

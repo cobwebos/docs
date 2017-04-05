@@ -15,51 +15,101 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: af15b530dd512873e4534fb61d276c8c8c3a196a
-ms.openlocfilehash: 7b7d3b87e1285993d744e74d01f5192732b70e77
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 6a48c11508bdc7f6f6fbfe4a504172f9944c93c0
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 Cassandra 数据库移动数据
-本文概括介绍了如何使用 Azure 数据工厂中的“复制活动”将数据从本地 Cassandra 数据库复制到[支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)部分的“接收器”列下所列出的任意数据存储。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何结合使用复制活动和受支持的数据存储进行数据移动。
+本文介绍如何使用 Azure 数据工厂中的复制活动从本地 Cassandra 数据库移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-数据工厂当前仅支持将数据从 Cassandra 数据库移动到[支持的接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)，而不支持将数据从其他数据存储移动到 Cassandra 数据库。
+可以将数据从本地 Cassandra 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Cassandra 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 Cassandra 数据存储。 
 
 ## <a name="supported-versions"></a>支持的版本
-此 Cassandra 连接器支持 Cassandra 版本 2.X。
+Cassandra 连接器支持以下版本的 Cassandra：2.X。
 
 ## <a name="prerequisites"></a>先决条件
-若要使 Azure 数据工厂能够连接到本地 Cassandra 数据库，必须安装以下组件：
+要使 Azure 数据工厂服务能够连接到本地 Cassandra 数据库，必须在托管数据库的同一计算机上或在单独的计算机上安装数据管理网关，以避免与数据库争用资源。 数据管理网关是一个以安全和托管的方式将本地数据源连接到云服务的组件。 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
-* 在托管数据库的同一计算机上（若希望避免其与数据库争用资源，则在另一台计算机上），安装数据管理网关 2.0 或更高版本。 数据管理网关是一种以安全和托管的方式将本地数据源连接到云服务的软件。 有关数据管理网关的详细信息，请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
+必须使用网关连接到 Cassandra 数据库，即使数据库在云中托管（例如，在 Azure IaaS VM 上），也是如此。 只要网关能连接数据库，就可在托管数据库的同一 VM 上或单独的 VM 上安装网关。  
 
-    安装网关时，会自动安装用于连接到 Cassandra 数据库的 Microsoft Cassandra ODBC 驱动程序。
+安装网关时，会自动安装用于连接到 Cassandra 数据库的 Microsoft Cassandra ODBC 驱动程序。 因此，从 Cassandra 数据库复制数据时，不需要手动在网关计算机上安装任何驱动程序。 
 
 > [!NOTE]
 > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
->
->
 
-## <a name="copy-data-wizard"></a>复制数据向导
-若要创建将数据从 Cassandra 数据库复制到任何支持的接收器数据存储的管道，最简单的方法是使用复制数据向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+## <a name="getting-started"></a>入门
+可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
-以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何将数据从 Cassandra 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。   
+- 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
-## <a name="sample-copy-data-from-cassandra-to-blob"></a>示例：将数据从 Cassandra 复制到 Blob
-此示例中每隔一小时会将数据从 Cassandra 数据库复制到 Azure blob。 示例后续部分描述了这些示例中使用的 JSON 属性。 可使用 Azure 数据工厂中的复制活动，直接将数据复制到[数据移动活动](data-factory-data-movement-activities.md#supported-data-stores-and-formats)一文中所述的任何接收器。
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-* [OnPremisesCassandra](#onpremisescassandra-linked-service-properties) 类型的链接服务。
-* [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 类型的链接服务。
-* [CassandraTable](#cassandratable-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-* [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-* 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [CassandraSource](#cassandrasource-type-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties)。
+1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
+2. 创建**数据集**以表示复制操作的输入和输出数据。 
+3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
 
-**Cassandra 链接服务**
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 Cassandra 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Cassandra 复制到 Azure Blob](#json-example-copy-data-from-cassandra-to-azure-blob) 部分。 
 
-此示例使用 **Cassandra** 链接服务。 有关此链接服务支持的属性，请参阅 [Cassandra 链接服务](#onpremisescassandra-linked-service-properties)部分。  
+对于特定于 Cassandra 数据存储的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
-```JSON
+## <a name="linked-service-properties"></a>链接服务属性
+下表提供特定于 Cassandra 链接服务的 JSON 元素的说明。
+
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| type |“type”属性必须设置为：**OnPremisesCassandra** |是 |
+| 主机 |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
+| 端口 |Cassandra 服务器用来侦听客户端连接的 TCP 端口。 |否，默认值：9042 |
+| authenticationType |Basic 或 Anonymous |是 |
+| username |为用户帐户指定用户名。 |是（如果 authenticationType 设置为 Basic）。 |
+| password |指定用户帐户的密码。 |是（如果 authenticationType 设置为 Basic）。 |
+| gatewayName |用于连接到本地 Cassandra 数据库的网关的名称。 |是 |
+| encryptedCredential |网关加密的凭据。 |否 |
+
+## <a name="dataset-properties"></a>数据集属性
+有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
+
+每种数据集的 **TypeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **CassandraTable** 数据集类型的 typeProperties 节具有以下属性
+
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| keyspace |Cassandra 数据库中密钥空间或架构的名称。 |是（如果未定义 **CassandraSource** 的**查询**）。 |
+| tableName |Cassandra 数据库中表的名称。 |是（如果未定义 **CassandraSource** 的**查询**）。 |
+
+## <a name="copy-activity-properties"></a>复制活动属性
+有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
+
+而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
+
+源类型为 **CassandraSource** 时，以下属性在 typeProperties 节中可用：
+
+| 属性 | 说明 | 允许的值 | 必选 |
+| --- | --- | --- | --- |
+| query |使用自定义查询读取数据。 |SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 **keyspace name.table name** 来表示要查询的表。 |否（如果定义了数据集上的 tableName 和 keyspace）。 |
+| consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE。 有关详细信息，请参阅 [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。 |不会。 默认值为 ONE。 |
+
+## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>JSON 示例：将数据从 Cassandra 复制到 Azure Blob
+此示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 其中演示如何将数据从本地 Cassandra 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+
+> [!IMPORTANT]
+> 此示例提供 JSON 代码段。 它不包括创建数据工厂的分步说明。 请参阅文章[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)以获取分步说明。
+
+此示例具有以下数据工厂实体：
+
+* [OnPremisesCassandra](#linked-service-properties) 类型的链接服务。
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+* [CassandraTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+* 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [CassandraSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
+
+**Cassandra 链接服务：**
+
+此示例使用 **Cassandra** 链接服务。 有关此链接服务支持的属性，请参阅 [Cassandra 链接服务](#linked-service-properties)部分。  
+
+```json
 {
     "name": "CassandraLinkedService",
     "properties":
@@ -78,9 +128,9 @@ ms.lasthandoff: 02/10/2017
 }
 ```
 
-**Azure 存储链接服务**
+**Azure 存储链接服务：**
 
-```JSON
+```json
 {
     "name": "AzureStorageLinkedService",
     "properties": {
@@ -92,9 +142,9 @@ ms.lasthandoff: 02/10/2017
 }
 ```
 
-**Cassandra 输入数据集**
+**Cassandra 输入数据集：**
 
-```JSON
+```json
 {
     "name": "CassandraInput",
     "properties": {
@@ -122,11 +172,11 @@ ms.lasthandoff: 02/10/2017
 
 将“external”设置为“true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
-**Azure Blob 输出数据集**
+**Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
+数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。
 
-```JSON
+```json
 {
     "name": "AzureBlobOutput",
     "properties":
@@ -146,13 +196,13 @@ ms.lasthandoff: 02/10/2017
 }
 ```
 
-**包含复制活动的管道**
+**管道中使用 Cassandra 源和 Blob 接收器的复制活动：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，“源”类型设置为 **CassandraSource**，“接收器”类型设置为 **BlobSink**。
 
-有关 RelationalSource 支持的属性的列表，请参阅 [RelationalSource 类型属性](#cassandrasource-type-properties)。
+有关 RelationalSource 支持的属性的列表，请参阅 [RelationalSource 类型属性](#copy-activity-properties)。
 
-```JSON
+```json
 {  
     "name":"SamplePipeline",
     "properties":{  
@@ -199,42 +249,6 @@ ms.lasthandoff: 02/10/2017
     }
 }
 ```
-
-## <a name="onpremisescassandra-linked-service-properties"></a>OnPremisesCassandra 链接服务属性
-下表提供特定于 Cassandra 链接服务的 JSON 元素的说明。
-
-| 属性 | 说明 | 必选 |
-| --- | --- | --- |
-| type |“type”属性必须设置为：**OnPremisesCassandra** |是 |
-| 主机 |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
-| 端口 |Cassandra 服务器用来侦听客户端连接的 TCP 端口。 |否，默认值：9042 |
-| authenticationType |Basic 或 Anonymous |是 |
-| username |为用户帐户指定用户名。 |是（如果 authenticationType 设置为 Basic）。 |
-| password |指定用户帐户的密码。 |是（如果 authenticationType 设置为 Basic）。 |
-| gatewayName |用于连接到本地 Cassandra 数据库的网关的名称。 |是 |
-| encryptedCredential |网关加密的凭据。 |否 |
-
-## <a name="cassandratable-properties"></a>CassandraTable 属性
-有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
-
-每种数据集的 **TypeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **CassandraTable** 数据集类型的 typeProperties 节具有以下属性
-
-| 属性 | 说明 | 必选 |
-| --- | --- | --- |
-| keyspace |Cassandra 数据库中密钥空间或架构的名称。 |是（如果未定义 **CassandraSource** 的**查询**）。 |
-| tableName |Cassandra 数据库中表的名称。 |是（如果未定义 **CassandraSource** 的**查询**）。 |
-
-## <a name="cassandrasource-type-properties"></a>CassandraSource 类型属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
-
-另一方面，可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
-
-源类型为 **CassandraSource** 时，以下属性在 typeProperties 节中可用：
-
-| 属性 | 说明 | 允许的值 | 必选 |
-| --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 **keyspace name.table name** 来表示要查询的表。 |否（如果定义了数据集上的 tableName 和 keyspace）。 |
-| consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE。 有关详细信息，请参阅 [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。 |不会。 默认值为 ONE。 |
 
 ### <a name="type-mapping-for-cassandra"></a>Cassandra 的类型映射
 | Cassandra 类型 | 基于 .Net 的类型 |
@@ -320,9 +334,11 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 | 3 |A |
 | 3 |E |
 
-[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
+若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+## <a name="repeatable-read-from-relational-sources"></a>从关系源进行可重复读取
+从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。

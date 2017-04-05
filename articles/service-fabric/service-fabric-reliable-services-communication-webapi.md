@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 02/10/2017
 ms.author: vturecek
+redirect_url: /azure/service-fabric/service-fabric-reliable-services-communication-aspnetcore
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dc0a7dfa74e9100a61fbc45fda908e9227cf54da
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 73b7e1c0cb93ae7c54780a3aab837b0e5bcdb0a0
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -34,19 +36,13 @@ Service Fabric 中的 Web API 是你熟知并喜爱的相同 ASP.NET Web API。 
 Web API 应用程序本身不会更改。 它与你可能已在过去编写的 Web API 应用程序没什么不同，你应能够转移大部分应用程序代码。 但是，如果要在 IIS 上托管，托管应用程序的位置可能与你的习惯稍有不同。 在我们深入探讨托管部分之前，我们从更熟悉的部分开始：Web API 应用程序。
 
 ## <a name="create-the-application"></a>创建应用程序
-首先在 Visual Studio 2015 中创建一个新的 Service Fabric 应用程序（具有单个无状态服务）：
-
-![创建新的 Service Fabric 应用程序](media/service-fabric-reliable-services-communication-webapi/webapi-newproject.png)
+首先在 Visual Studio 2015 中创建一个新的 Service Fabric 应用程序（具有单个无状态服务）。
 
 使用 Web API 的无状态服务有 Visual Studio 模板可供使用。 在本教程中，我们将从头开始构建一个 Web API 项目，这就是你选择此模板时所会得到的结果。
 
 选择一个空白的无状态服务项目以了解如何从头开始构建一个 Web API 项目，或者你可以使用无状态服务 Web API 模板，按照指示操作即可。  
 
-![创建单个无状态服务](media/service-fabric-reliable-services-communication-webapi/webapi-newproject2.png)
-
 第一步是为 Web API 拉入一些 NuGet 包。 我们要使用的包是 Microsoft.AspNet.WebApi.OwinSelfHost。 此包中包括所有所需的 Web API 包和*宿主*包。 这在后面会非常重要。
-
-![使用 NuGet 包管理器创建 Web API](media/service-fabric-reliable-services-communication-webapi/webapi-nuget.png)
 
 安装了这些包之后，我们可以开始构建基本的 Web API 项目结构。 如果你使用过 Web API，则项目结构应看上去非常熟悉。 首先添加 `Controllers` 目录和简单的值控制器：
 
@@ -626,16 +622,12 @@ namespace WebService
 }
 ```
 
-所有部分都准备就绪后，项目现在应类似于具有 Reliable Services API 入口点和 OWIN 主机的典型 Web API 应用程序：
-
-![包含 Reliable Services API 入口点和 OWIN 主机的 Web API](media/service-fabric-reliable-services-communication-webapi/webapi-projectstructure.png)
+所有部分都准备就绪后，项目现在应类似于具有 Reliable Services API 入口点和 OWIN 主机的典型 Web API 应用程序。
 
 ## <a name="run-and-connect-through-a-web-browser"></a>运行 Web 浏览器并通过它进行连接
 如果尚未这样做，请[设置开发环境](service-fabric-get-started.md)。
 
 现在，你可以生成并部署你的服务。 在 Visual Studio 中按 **F5** 以生成并部署应用程序。 在“诊断事件”窗口中，应看到一条消息，指示已在 http://localhost:8281/ 上打开了 Web 服务器。
-
-![Visual Studio 诊断事件窗口](media/service-fabric-reliable-services-communication-webapi/webapi-diagnostics.png)
 
 > [!NOTE]
 > 如果计算机上的另一个进程已经打开该端口，你可能会在此看到错误消息。 这表示无法打开侦听器。 如果是这种情况，请在 ServiceManifest.xml 中的终结点配置中尝试使用不同端口。
@@ -671,10 +663,5 @@ New-ServiceFabricService -ApplicationName "fabric:/WebServiceApplication" -Servi
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Visual Studio 调试 Service Fabric 应用程序](service-fabric-debugging-your-application.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 7e16fa749389ab876ae413e2ffef7713ed22adac
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: d89135c8f3d5011d7549158a29050e3569defbcc
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -54,6 +54,9 @@ AD FS 管理
 * 修复了在选择了“直通身份验证”但其连接器注册失败时，Azure AD Connect 向导将失败的问题。
 * 修复了在启用了桌面 SSO 功能时，Azure AD Connect 向导将绕过对所选登录方法的验证检查。
 
+密码重置
+* 修复了这样一个问题：当连接已由防火墙或代理终止时，该问题可能会导致 Azure AAD Connect 服务器不尝试重新连接。
+
 **新功能/改进：**
 
 Azure AD Connect 同步
@@ -65,6 +68,10 @@ AD FS 管理
 * 添加了对管理 AD FS 2016 的支持。
 * 现在可以在 AD FS 安装期间指定现有 gMSA（组托管服务帐户）。
 * 现在可以将 SHA-256 配置为 Azure AD 信赖方信任的签名哈希算法。
+
+密码重置
+* 引入了多项改进，以允许产品在具有更严格防火墙规则的环境中正常工作。
+* 提高了与 Azure 服务总线的连接可靠性。
 
 ## <a name="113800"></a>1.1.380.0
 发布日期：2016 年 12 月
@@ -217,7 +224,7 @@ AD FS 管理
 
 **新的预览功能：**
 
-* 新的默认同步周期间隔为 30 分钟。 过去所有旧版本都是&3; 小时。 添加了对更改[计划程序](active-directory-aadconnectsync-feature-scheduler.md)行为的支持。
+* 新的默认同步周期间隔为 30 分钟。 过去所有旧版本都是 3 小时。 添加了对更改[计划程序](active-directory-aadconnectsync-feature-scheduler.md)行为的支持。
 
 **已解决的问题：**
 

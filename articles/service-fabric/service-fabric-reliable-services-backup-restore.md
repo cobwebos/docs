@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 3/1/2017
 ms.author: mcoskun
 translationtype: Human Translation
-ms.sourcegitcommit: 615e7ea84aae45f384edb671a28e4ff98b4ade3a
-ms.openlocfilehash: 9cb940a07bf9a5d624669816161450b33e862626
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: babda2a4ad7dade942a0c7ece84a6f1d65bd3453
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -123,10 +123,10 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 * 重写虚拟基类方法 **OnDataLossAsync**。
 * 在包含服务的备份的外部位置中查找最新备份。
 * 下载最新的备份（如果备份已压缩，则将其解压缩到备份文件夹中）。
-* **OnDataLossAsync **方法提供 **RestoreContext**。 在提供的 **RestoreContext** 上调用 **RestoreAsync** API。
+* **OnDataLossAsync**方法提供 **RestoreContext**。 在提供的 **RestoreContext** 上调用 **RestoreAsync** API。
 * 如果还原成功，则返回 true。
 
-以下是 **OnDataLossAsync **方法的实现示例：
+以下是 **OnDataLossAsync**方法的实现示例：
 
 ```C#
 
@@ -240,7 +240,7 @@ class MyCustomActorService : ActorService
 请务必确保关键数据正在进行备份，并可进行还原。 为此，可在 PowerShell 中调用会导致特定分区丢失数据的 **Invoke-ServiceFabricPartitionDataLoss** cmdlet，以测试服务的数据备份和还原功能是否按预期运行。  此外，也可以通过编程方式调用数据丢失，并从该事件中还原。
 
 > [!NOTE]
-> 你可以在 Github 上找到 Web 引用应用中备份和还原功能的实现示例。 有关更多详细信息，请查看 Inventory.Service 服务。
+> 可以在 GitHub 上找到 Web 引用应用中备份和还原功能的实现示例。 有关更多详细信息，请查看 Inventory.Service 服务。
 > 
 > 
 
@@ -256,7 +256,7 @@ class MyCustomActorService : ActorService
 可靠状态管理器具有使用 **RestoreAsync** API 从备份还原的功能。  
 只能在 **OnDataLossAsync** 方法内部调用 **RestoreContext** 上的 **RestoreAsync** 方法。
 由 **OnDataLossAsync** 返回的布尔值表示服务是否从外部源还原其状态。
-如果 **OnDataLossAsync **返回 true，则 Service Fabric 将使用此主副本重新生成所有其他副本。 Service Fabric 可确保将接收 **OnDataLossAsync** 调用的副本先转换为主角色，但不会授予其读取状态或写入状态。
+如果 **OnDataLossAsync**返回 true，则 Service Fabric 将使用此主副本重新生成所有其他副本。 Service Fabric 可确保将接收 **OnDataLossAsync** 调用的副本先转换为主角色，但不会授予其读取状态或写入状态。
 这意味着对于 StatefulService 实现程序，不会调用 **RunAsync**，直到 **OnDataLossAsync** 成功完成。
 然后，将在新的主副本上调用 **OnDataLossAsync**。
 将一次调用一回 API，如此循环，直到服务成功完成此 API（返回 true 或 false），并完成相关的重新配置。

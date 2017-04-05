@@ -65,10 +65,11 @@
 #### [创建和发布应用商店项目](azure-stack-create-and-publish-marketplace-item.md)
 #### [添加自定义虚拟机映像](azure-stack-add-vm-image.md)
 #### [部署 Linux 虚拟机](azure-stack-linux.md)
-### 帐单和退款
-#### [帐单和退款概述](azure-stack-billing-and-chargeback.md)
-#### [提供程序资源使用情况 API](azure-stack-provider-resource-api.md)
-#### [租户资源使用情况 API](azure-stack-tenant-resource-usage-api.md)
+### 使用情况和计费
+#### [概述](azure-stack-billing-and-chargeback.md)
+#### [使用情况数据报告](azure-stack-usage-reporting.md)
+#### [提供者使用情况 API](azure-stack-provider-resource-api.md)
+#### [租户使用情况 API](azure-stack-tenant-resource-usage-api.md)
 #### [使用情况常见问题](azure-stack-usage-related-faq.md)
 
 # 使用服务

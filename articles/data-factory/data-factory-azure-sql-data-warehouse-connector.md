@@ -12,38 +12,154 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 03/24/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: e7d2d0063b1555e098c43b95272c78eaf4678af9
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: b5ef1e2f89c67676b64dedb227ad5101b6b4f3fe
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="move-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移出或移入 Azure SQL 数据仓库
-本文概述了如何使用 Azure 数据工厂中的复制活动在 Azure SQL 数据仓库和另一数据存储之间移动数据。 本文在[数据移动活动](data-factory-data-movement-activities.md)一文的基础上，概述了包含数据活动的数据移动以及源/接收器数据存储列表。
+本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure SQL 数据仓库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。  
+
+可将数据从任一支持的源数据存储复制到 Azure SQL 数据仓库，或从 Azure SQL 数据仓库复制到任一支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。
 
 > [!TIP]
 > 若要实现最佳性能，请使用 PolyBase 将数据加载到 Azure SQL 数据仓库。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
->
 
-## <a name="copy-data-wizard"></a>复制数据向导
+## <a name="getting-started"></a>入门
+可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出 Azure SQL 数据仓库。
+
 若要创建从/向 Azure SQL 数据仓库复制数据的管道，最简单的方法是使用复制数据向导。 有关使用“复制数据”向导创建管道的快速演练，请参阅[教程：使用数据工厂将数据加载到 SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)。
 
 > [!TIP]
-> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure SQL 数据仓库时，如果目标存储中不存在该表，数据工厂可以通过使用源数据存储中的表架构自动在 SQL 数据仓库中创建该表。 有关详细信息，请参阅[自动表创建](#auto-table-creation)。 
+> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure SQL 数据仓库时，如果目标存储中不存在该表，数据工厂可以通过使用源数据存储中的表架构自动在 SQL 数据仓库中创建该表。 有关详细信息，请参阅[自动表创建](#auto-table-creation)。
 
+也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+
+1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
+2. 创建**数据集**以表示复制操作的输入和输出数据。 
+3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
+
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure SQL 数据仓库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。 
+
+对于特定于 Azure SQL 数据仓库的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息： 
+
+## <a name="linked-service-properties"></a>链接服务属性
+下表提供 Azure SQL 数据仓库链接服务专属 JSON 元素的说明。
+
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| type |type 属性必须设置为：**AzureSqlDW** |是 |
+| connectionString |为 connectionString 属性指定连接到 Azure SQL 数据仓库实例所需的信息。 |是 |
+
+> [!IMPORTANT]
+> 配置 [Azure SQL 数据库防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)和数据库服务器以[允许 Azure 服务访问该服务器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 此外，如果将数据从 Azure 外部（包括具有数据工厂网关的本地部署数据源）复制到 Azure SQL 数据仓库，请为将数据发送到 Azure SQL 数据仓库的计算机配置适当 IP 地址范围。
+
+## <a name="dataset-properties"></a>数据集属性
+有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 结构、可用性和数据集 JSON 的策略等部分与所有数据集类型（Azure SQL、Azure blob、Azure 表等）类似。
+
+每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureSqlDWTable** 类型数据集的 **typeProperties** 节具有以下属性：
+
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| tableName |链接服务引用的 Azure SQL 数据仓库数据库中的表名称或视图。 |是 |
+
+## <a name="copy-activity-properties"></a>复制活动属性
+有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
+
+> [!NOTE]
+> 复制活动只使用一个输入，只生成一个输出。
+
+而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
+
+### <a name="sqldwsource"></a>SqlDWSource
+源为 **SqlDWSource** 类型时，可在 **typeProperties** 节中使用以下属性：
+
+| 属性 | 说明 | 允许的值 | 必选 |
+| --- | --- | --- | --- |
+| sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 |否 |
+| sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 |否 |
+| storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
+
+如果为 SqlDWSource 指定 **sqlReaderQuery**，则复制活动针对 Azure SQL 数据仓库源运行此查询以获取数据。
+
+此外，也可以通过指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 来指定存储过程（如果存储过程获取参数）。
+
+如果不指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则使用在数据集 JSON 的结构部分定义的列来生成针对 Azure SQL 数据仓库运行的查询。 示例：`select column1, column2 from mytable`。 如果数据集定义不具备该结构，则从表中选择所有列。
+
+#### <a name="sqldwsource-example"></a>SqlDWSource 示例
+
+```JSON
+"source": {
+    "type": "SqlDWSource",
+    "sqlReaderStoredProcedureName": "CopyTestSrcStoredProcedureWithParameters",
+    "storedProcedureParameters": {
+        "stringData": { "value": "str3" },
+        "identifier": { "value": "$$Text.Format('{0:yyyy}', SliceStart)", "type": "Int"}
+    }
+}
+```
+**存储过程定义：**
+
+```SQL
+CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
+(
+    @stringData varchar(20),
+    @identifier int
+)
+AS
+SET NOCOUNT ON;
+BEGIN
+     select *
+     from dbo.UnitTestSrcTable
+     where dbo.UnitTestSrcTable.stringData != stringData
+    and dbo.UnitTestSrcTable.identifier != identifier
+END
+GO
+```
+
+### <a name="sqldwsink"></a>SqlDWSink
+**SqlDWSink** 支持以下属性：
+
+| 属性 | 说明 | 允许的值 | 必选 |
+| --- | --- | --- | --- |
+| writeBatchSize |缓冲区大小达到 writeBatchSize 时将数据插入 SQL 表 |整数（行数） |否（默认值：10000） |
+| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
+| sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[可重复性部分](#repeatability-during-copy)。 |查询语句。 |否 |
+| allowPolyBase |指示是否使用 PolyBase（适用时）而非 BULKINSERT 机制将数据加载到 Azure SQL 数据仓库。 <br/><br/>目前，仅**格式**设置为 **TextFormat** 的 **Azure blob** 数据集才能作为源数据集。 <br/><br/>有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。 |True <br/>False（默认值） |否 |
+| polyBaseSettings |**allowPolybase** 属性设置为 **true** 时可以指定的一组属性。 |&nbsp; |否 |
+| rejectValue |指定在查询失败之前可以拒绝的行数或百分比。 <br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅[创建外部表 (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) 主题的**参数**部分。 |0（默认值）、1、2 … |否 |
+| rejectType |指定将 rejectValue 选项指定为文字值还是百分比。 |值（默认），百分比 |否 |
+| rejectSampleValue |确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。 |1、2 … |如果 **rejectType** 是**百分比**，则为“是” |
+| useTypeDefault |指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。 |True、False（默认值） |否 |
+
+#### <a name="sqldwsink-example"></a>SqlDWSink 示例
+
+```JSON
+"sink": {
+    "type": "SqlDWSink",
+    "writeBatchSize": 1000000,
+    "writeBatchTimeout": "00:05:00"
+}
+```
+
+
+## <a name="json-examples"></a>JSON 示例
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何从/向 Azure SQL 数据仓库和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
-## <a name="sample-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>示例：将数据从 Azure SQL 数据仓库复制到 Azure Blob
+## <a name="example-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>示例：将数据从 Azure SQL 数据仓库复制到 Azure Blob
 此示例定义以下数据工厂实体：
 
 1. [AzureSqlDW](#linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 类型的链接服务。
-3. [AzureSqlDWTable](#dataset-type-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-5. 包含复制活动的[管道](data-factory-create-pipelines.md)，它使用 [SqlDWSource](#copy-activity-type-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties)。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+3. [AzureSqlDWTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+5. 包含复制活动的[管道](data-factory-create-pipelines.md)，它使用 [SqlDWSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 示例每小时将时间序列（每小时、每天等）数据从 Azure SQL 数据仓库数据集中的表复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
@@ -163,9 +279,9 @@ ms.lasthandoff: 03/18/2017
 }
 ```
 
-**复制活动的管道：**
+**管道中使用 SqlDWSource 和 BlobSink 的复制活动：**
 
-管道包含配置为使用输入和输出数据集且计划每隔一小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **SqlDWSource**，**接收器**类型设置为 **BlobSink**。 为 **SqlReaderQuery** 属性指定的 SQL 查询选择复制过去一小时的数据。
+管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **SqlDWSource**，**接收器**类型设置为 **BlobSink**。 为 **SqlReaderQuery** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
 ```JSON
 {  
@@ -222,14 +338,14 @@ ms.lasthandoff: 03/18/2017
 >
 >
 
-## <a name="sample-copy-data-from-azure-blob-to-azure-sql-data-warehouse"></a>示例：将数据从 Azure Blob 复制到 Azure SQL 数据仓库
+## <a name="example-copy-data-from-azure-blob-to-azure-sql-data-warehouse"></a>示例：将数据从 Azure Blob 复制到 Azure SQL 数据仓库
 此示例定义以下数据工厂实体：
 
 1. [AzureSqlDW](#linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 类型的链接服务。
-3. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureSqlDWTable](#dataset-type-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) 和 [SqlDWSink](#copy-activity-type-properties)。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)。
+4. [AzureSqlDWTable](#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 和 [SqlDWSink](#copy-activity-properties)。
 
 示例每小时将时间序列数据（每小时、每天等）从 Azure Blob 复制到 Azure SQL 数据仓库中的表。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
@@ -347,9 +463,9 @@ ms.lasthandoff: 03/18/2017
   }
 }
 ```
-**具有复制活动的管道**
+**管道中使用 BlobSource 和 SqlDWSink 的复制活动：**
 
-管道包含配置为使用输入和输出数据集且计划每隔一小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **BlobSource**，**接收器**类型设置为 **SqlDWSink**。
+管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **BlobSource**，**接收器**类型设置为 **SqlDWSink**。
 
 ```JSON
 {  
@@ -486,7 +602,7 @@ GO
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时将数据插入 SQL 表 |整数（行数） |否（默认值：10000） |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[可重复性部分](#repeatability-during-copy)。 |查询语句。 |否 |
-| allowPolyBase |指示是否使用 PolyBase（适用时）而非 BULKINSERT 机制将数据加载到 Azure SQL 数据仓库。 <br/><br/>目前，仅**格式**设置为 **TextFormat** 的 **Azure blob** 数据集才能作为源数据集。 <br/><br/>有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。 |True <br/>False（默认值） |否 |
+| allowPolyBase |指示是否使用 PolyBase（适用时）而非 BULKINSERT 机制将数据加载到 Azure SQL 数据仓库。 <br/><br/>有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。 |True <br/>False（默认值） |否 |
 | polyBaseSettings |**allowPolybase** 属性设置为 **true** 时可以指定的一组属性。 |&nbsp; |否 |
 | rejectValue |指定在查询失败之前可以拒绝的行数或百分比。 <br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅[创建外部表 (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) 主题的**参数**部分。 |0（默认值）、1、2 … |否 |
 | rejectType |指定将 rejectValue 选项指定为文字值还是百分比。 |值（默认），百分比 |否 |
@@ -502,6 +618,7 @@ GO
     "writeBatchTimeout": "00:05:00"
 }
 ```
+
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>使用 PolyBase 将数据加载到 Azure SQL 数据仓库
 使用 **PolyBase** 是将大量数据加载到高吞吐量 Azure SQL 数据仓库的有效方法。 可通过使用 PolyBase 而非默认 BULKINSERT 机制实现吞吐量的巨大增加。 请参阅[复制性能参考数量](data-factory-copy-activity-performance.md#performance-reference)了解详细比较。
 
@@ -528,8 +645,8 @@ GO
 
 如果不满足要求，Azure 数据工厂将检查设置，并自动回退到 BULKINSERT 机制以进行数据移动。
 
-1. **源链接服务**的类型为：**AzureStorage**，并且未配置为使用 SAS（共享访问签名）身份验证。 有关详细信息，请参阅 [Azure 存储链接服务](data-factory-azure-blob-connector.md#azure-storage-linked-service)。  
-2. **输入数据集**的类型为：**AzureBlob**，`type` 属性下的格式类型为 **OrcFormat** 或 **TextFormat**，其配置如下：
+1. **源链接服务**的类型为：**AzureStorage** 或 **AzureDataLakeStore**。  
+2. **输入数据集**的类型为：**AzureBlob** 或 **AzureDataLakeStore**，`type` 属性下的格式类型为 **OrcFormat** 或 **TextFormat**，其配置如下：
 
    1. `rowDelimiter` 必须是 **\n**。
    2. `nullValue` 设置为**空字符串** ("")，或者 `treatEmptyAsNull` 设置为“true”。
@@ -554,7 +671,7 @@ GO
     },
     ```
 
-3. 管道中复制活动的 **BlobSource** 下没有 `skipHeaderLineCount` 设置。
+3. 管道中复制活动的 **BlobSource** 或 **AzureDataLakeStore** 下没有 `skipHeaderLineCount` 设置。
 4. 管道中复制活动的 **SqlDWSink** 下没有 `sliceIdentifierColumnName` 设置。 （PolyBase 保证所有数据都已更新或在单次运行中没有任何更新。 若要实现**可重复性**，可使用 `sqlWriterCleanupScript`）。
 5. 复制活动的关联内容中没有使用 `columnMapping`。
 
@@ -568,7 +685,7 @@ GO
 
 若要使用此功能，请创建 [Azure 存储链接服务](data-factory-azure-blob-connector.md#azure-storage-linked-service)（引用具有临时 blob 存储的 Azure 存储帐户），然后指定复制活动的 `enableStaging` 和 `stagingSettings` 属性，如下方代码所示：
 
-```JSON
+```json
 "activities":[  
 {
     "name": "Sample copy activity from SQL Server to SQL Data Warehouse via PolyBase",
@@ -629,9 +746,9 @@ All columns of the table must be specified in the INSERT BULK statement.
 NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入数据（以 blob 为单位）可以为空（输入数据集中不能缺失数据）。 PolyBase 在 Azure SQL 数据仓库中插入 NULL 来表示它们。  
 
 ## <a name="auto-table-creation"></a>自动表创建
-如果使用“复制向导”将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure SQL 数据仓库，并且目标存储中不存在对应于源表的表，则数据工厂可以通过使用源表架构自动在数据仓库中创建该表。 
+如果使用“复制向导”将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure SQL 数据仓库，并且目标存储中不存在对应于源表的表，则数据工厂可以通过使用源表架构自动在数据仓库中创建该表。
 
-数据工厂在目标存储中创建与源数据存储中具有相同表名称的表。 根据以下类型映射选择列的数据类型。 如果需要，它会执行类型转换，从而修复源存储和目标存储之间的任何不兼容问题。 它还使用轮循机制表分布。 
+数据工厂在目标存储中创建与源数据存储中具有相同表名称的表。 根据以下类型映射选择列的数据类型。 如果需要，它会执行类型转换，从而修复源存储和目标存储之间的任何不兼容问题。 它还使用轮循机制表分布。
 
 | 源 SQL 数据库列类型 | 目标 SQL DW 列类型（大小限制） |
 | --- | --- |
@@ -663,10 +780,6 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | VarChar | VarChar（最多 8000） |
 | NVarChar | NVarChar（最多 4000） |
 | Xml | Varchar（最多 8000） |
-
-[!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
-
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### <a name="type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下 2 步方法执行从源类型到接收器类型的自动类型转换：
@@ -713,9 +826,13 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | varchar |String, Char[] |
 | xml |Xml |
 
-[!INCLUDE [data-factory-type-conversion-sample](../../includes/data-factory-type-conversion-sample.md)]
+## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
+若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
-[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+## <a name="repeatable-copy"></a>可重复复制
+将数据复制到 SQL Server 数据库时，默认情况下复制活动将数据追加到接收器表后面。 若要改为执行 UPSERT，请参阅[可重复写入 SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) 一文。 
+
+从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。

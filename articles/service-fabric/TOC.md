@@ -57,16 +57,19 @@
 #### 入门
 ##### [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
 ##### [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
-#### [Reliable Services 生命周期](service-fabric-reliable-services-lifecycle.md)
+#### [Reliable Services 生命周期 - C#](service-fabric-reliable-services-lifecycle.md)
+#### [Reliable Services 生命周期 - Java](service-fabric-reliable-services-lifecycle-java.md)
 #### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
 #### [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
 #### [配置](service-fabric-reliable-services-configuration.md)
 #### [通知](service-fabric-reliable-services-notifications.md)
 #### [备份和还原](service-fabric-reliable-services-backup-restore.md)
 #### [与 Reliable Services 通信](service-fabric-reliable-services-communication.md)
-#### [通过 Reliable Services 进行安全通信](service-fabric-reliable-services-secure-communication.md)
+#### [使用 Reliable Services 保护通信 - C#](service-fabric-reliable-services-secure-communication.md)
+#### [使用 Reliable Services 保护通信 - Java](service-fabric-reliable-services-secure-communication-java.md)
 ##### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
-##### [服务远程](service-fabric-reliable-services-communication-remoting.md)
+##### [服务远程处理 - C#](service-fabric-reliable-services-communication-remoting.md)
+##### [服务远程处理 - Java](service-fabric-reliable-services-communication-remoting-java.md)
 ##### [WCF](service-fabric-reliable-services-communication-wcf.md)
 ##### [反向代理](service-fabric-reverseproxy.md)
 #### [高级使用率](service-fabric-reliable-services-advanced-usage.md)
@@ -104,6 +107,7 @@
 #### [使用 Azure CLI 管理群集](service-fabric-azure-cli.md) 
 #### [保护群集](service-fabric-cluster-security.md)
 #### [灾难恢复](service-fabric-disaster-recovery.md)
+#### [Linux 和 Windows 之间的功能差异](service-fabric-linux-windows-differences.md)
 
 ### Azure 上的群集
 #### 在 Azure 上创建群集

@@ -1,6 +1,6 @@
 ---
 title: "为 Azure 导入/导出创建导出作业 | Microsoft Docs"
-description: "了解如何为 Microsoft Azure 导入/导出服务创建导出作业"
+description: "了解如何为 Microsoft Azure 导入/导出服务创建导出作业。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: 55a45cf4169056d9426141a533dd1d32fe8064c4
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 3440d7e80e6a806c4119dff687fb9c590b8f0d14
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -81,7 +81,7 @@ ms.lasthandoff: 02/16/2017
 -   要导出的 Blob（或 Blob 前缀）的列表。
 
 ## <a name="shipping-your-drives"></a>寄送驱动器
- 接下来，根据已选择导出的 Blob 和驱动器大小，使用 Azure 导入/导出工具确定需要寄送的驱动器数目。 有关详细信息，请参阅 [Azure 导入导出工具参考](storage-import-export-tool-how-to-v1.md)。
+ 接下来，根据选择的要导出的 Blob 和驱动器大小，使用 Azure 导入/导出工具确定需寄送的驱动器数目。 有关详细信息，请参阅 [Azure 导入/导出工具参考](storage-import-export-tool-how-to-v1.md)。
 
  将驱动器打包到一个包裹中，然后将其寄送到在上一步骤中获取的地址。 记下包裹的跟踪号供下一步使用。
 
@@ -94,6 +94,7 @@ ms.lasthandoff: 02/16/2017
 ## <a name="receiving-the-package"></a>接收包裹
  处理导出作业后，驱动器将连同加密的数据一起回邮给你。 可以通过调用[获取作业](/rest/api/storageimportexport/jobs#Jobs_Get)操作检索每个驱动器的 BitLocker 密钥。 然后，可以使用该密钥解锁驱动器。 每个驱动器上的驱动器清单文件包含驱动器上的文件列表以及每个文件的原始 Blob 地址。
 
-## <a name="see-also"></a>另请参阅
- [使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
+## <a name="next-steps"></a>后续步骤
+
+* [使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
 

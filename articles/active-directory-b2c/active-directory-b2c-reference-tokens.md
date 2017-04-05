@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 3/17/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 0ae9ad40f2e32d56fd50c90b86339cbb458d7291
-ms.openlocfilehash: a3276c764ebb6382594cf7002e7c7e8e328862ef
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 318ce3e14e2bbc23b180d582d81b0571d1e81d56
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -59,9 +59,7 @@ CQhoFA
 ```
 
 ### <a name="access-tokens"></a>访问令牌
-访问令牌也是应用从 Azure AD B2C `authorize` 和 `token` 终结点接收的一种安全令牌。 访问令牌也表示为 [JWT](#types-of-tokens)，并且它们包含声明，可用于标识 Web 服务和 API 中的用户。
-
-访问令牌已签名，但目前不会加密 - 与 ID 令牌十分相似。  访问令牌应用来提供对 Web 服务和 API 的访问，并标识这些服务中的用户和进行身份验证。  但是，它们不提供任何有关这些服务的授权断言。  也就是说，访问令牌中的 `scp` 声明不会限制或表示已授予令牌使用者的访问权限。
+访问令牌也是应用从 Azure AD B2C `authorize` 和 `token` 终结点接收的一种安全令牌。 访问令牌也以 [JWT](#types-of-tokens) 表示，并且它们包含声明，可用于标识已授予的对 API 的权限。 访问令牌已签名，但目前未加密。  访问令牌应用于提供对 API 和资源服务器的访问权限。 详细了解如何[使用访问令牌](active-directory-b2c-access-tokens.md)。 
 
 当 API 收到访问令牌时，必须[验证签名](#token-validation)，证明令牌可信。 API 还必须验证令牌中的一些声明，证明令牌有效。 根据具体的方案要求，应用验证的声明有所不同，但应用在每个方案中均须执行某些[常见声明验证](#token-validation)。
 
@@ -150,7 +148,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/key
 
 | 令牌 | 生存期 | 说明 |
 | --- | --- | --- |
-| ID 令牌 |一小时 |ID 令牌的有效期通常为&1; 小时。 Web 应用可使用此生存期维护其与用户的会话（推荐）。 也可以选择不同的会话生存期。 如果应用需要获取新的 ID 令牌，只需要对 Azure AD 发出新的登录请求即可。 如果用户与 Azure AD 具有有效的浏览器会话，则可能不会要求该用户再次输入凭据。 |
+| ID 令牌 |一小时 |ID 令牌的有效期通常为 1 小时。 Web 应用可使用此生存期维护其与用户的会话（推荐）。 也可以选择不同的会话生存期。 如果应用需要获取新的 ID 令牌，只需要对 Azure AD 发出新的登录请求即可。 如果用户与 Azure AD 具有有效的浏览器会话，则可能不会要求该用户再次输入凭据。 |
 | 刷新令牌 |最长 14 天 |单个刷新令牌的有效期最长为 14 天。 但是，刷新令牌可能随时会因为很多原因失效。 应用应继续尝试使用刷新令牌，直到该请求失败，或直到应用使用新的刷新令牌替换该刷新令牌。  如果自用户上次输入凭据已过 90 天，刷新令牌也可能失效。 |
 | 授权代码 |五分钟 |授权代码均有意设定为短期有效。 在收到授权代码时，应立即兑换访问令牌、ID 令牌或刷新令牌。 |
 

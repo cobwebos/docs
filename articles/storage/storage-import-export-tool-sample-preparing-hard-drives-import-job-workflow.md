@@ -1,6 +1,6 @@
 ---
-title: "为 Azure 导入作业准备硬盘驱动器的示例工作流 | Microsoft Docs"
-description: "参阅针对 Azure 导入/导出服务中的导入作业准备驱动器的整个过程演练"
+title: "为 Azure 导入/导出服务的导入作业准备硬盘驱动器的示例工作流 | Microsoft Docs"
+description: "请参阅为 Azure 导入/导出服务中的导入作业准备驱动器的完整过程演练。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
-ms.openlocfilehash: ebed1f1d4cb6cca96e02322d2f76abd6e9810ecc
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 2e522fabf9be5af7477e556ee0c2bf66f41c28fe
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -89,7 +89,7 @@ Y,Format,SilentMode,Encrypt,
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Metadata>
-    <UploadMethod>Windows Azure Import/Export Service</UploadMethod>
+    <UploadMethod>Windows Azure Import/Export service</UploadMethod>
     <DataSetName>SampleData</DataSetName>
     <CreationDate>10/1/2013</CreationDate>
 </Metadata>

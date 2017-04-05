@@ -16,13 +16,14 @@ ms.workload: na
 ms.date: 02/16/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 147c27d12b87379ff02b871ceabd8154e53b6c1a
-ms.openlocfilehash: f189e19b5b843d6a7d056c8230bc06d85e568202
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 466595773663d43ad8e25fa9ec0ec0163a3f5962
+ms.lasthandoff: 03/24/2017
 
 
 ---
 # <a name="create-an-analysis-services-server"></a>创建 Analysis Services 服务器
-本文指导如何在 Azure 订阅中创建新的 Analysis Services 服务器资源。
+本文指导如何在 Azure 订阅中创建 Analysis Services 服务器资源。
 
 ## <a name="before-you-begin"></a>开始之前
 若要开始，您需要：
@@ -45,17 +46,17 @@ ms.openlocfilehash: f189e19b5b843d6a7d056c8230bc06d85e568202
    
    * **服务器名称**：键入用于引用服务器的唯一名称。
    * **订阅**：选择此服务器计费的订阅。
-   * **资源组**：资源组是旨在帮助管理 Azure 资源集合的容器。 有关详细信息，请参阅[资源组](../azure-resource-manager/resource-group-overview.md)。
+   * **资源组**：这些容器旨在帮助管理 Azure 资源的集合。 有关详细信息，请参阅[资源组](../azure-resource-manager/resource-group-overview.md)。
    * **位置**：此 Azure 数据中心位置托管该服务器。 选择最接近最大用户群的位置。
-   * **定价层**：选择定价层。 支持最多 100 GB 的表格模型。 此后可以随时更改定价层。
-4. 单击“创建” 。
+   * **定价层**：选择定价层。 支持最多 100 GB 的表格模型。 若要了解详细信息，请参阅 [Azure Analysis Services 定价](https://azure.microsoft.com/pricing/details/analysis-services/)。
+4. 单击“创建”。
 
-创建通常不超过一分钟，一般几秒钟便可完成。 如果选择“添加到门户”，请导航到门户查看新服务器。 或者，请导航到**更多服务** > **Analysis Services**，查看服务器是否就绪。 如果未显示，请刷新列表。
+创建通常不超过一分钟，一般几秒钟便可完成。 如果选择“添加到门户”，请导航到门户查看新服务器。 或者，请导航到**更多服务** > **Analysis Services**，查看服务器是否就绪。
 
  ![仪表板](./media/analysis-services-create-server/aas-create-server-dashboard.png)
 
 ## <a name="automate-server-creation"></a>自动执行服务器创建
-可使用 Azure 资源管理器模板文件自动执行运行状态下的服务器预配。 观看此帮助视频，了解详细信息。
+可使用 Azure 资源管理器模板文件自动执行运行状态下的服务器预配。 若要了解详细信息，请观看此帮助视频。
 
 >[!VIDEO https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation/player]
 >
@@ -66,10 +67,5 @@ ms.openlocfilehash: f189e19b5b843d6a7d056c8230bc06d85e568202
 创建服务器后，便可使用 SSDT 或 SSMS 对其[部署模型](analysis-services-deploy.md)。
 
 如果部署到服务器的模型连接本地数据源，则需要在网络中的计算机上安装[本地数据网关](analysis-services-gateway.md)。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

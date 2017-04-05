@@ -15,8 +15,9 @@ ms.workload: integration
 ms.date: 11/11/2016
 ms.author: mezha
 translationtype: Human Translation
-ms.sourcegitcommit: 69c33986f05181460c9eea73295de5721c9ea3cf
-ms.openlocfilehash: 16e87412fd1cbe34ed8a37d6cebcb9395d1c7e36
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 42b182c314795b1ebf69639ec7ac5583208dc7c1
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -132,7 +133,7 @@ ms.openlocfilehash: 16e87412fd1cbe34ed8a37d6cebcb9395d1c7e36
         
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-token-auth/cdn-rules-engine2.png)
 
-5. 可以自定义令牌，该令牌是一种应用程序，它可以为基于令牌的身份验证功能生成令牌。 可在此处 [Github](https://github.com/VerizonDigital/ectoken) 访问源代码。
+5. 可以自定义令牌，该令牌是一种应用程序，它可以为基于令牌的身份验证功能生成令牌。 可在 [GitHub](https://github.com/VerizonDigital/ectoken) 中的此处访问源代码。
 可用的语言包括：
     
     - C
@@ -146,9 +147,4 @@ ms.openlocfilehash: 16e87412fd1cbe34ed8a37d6cebcb9395d1c7e36
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN 功能和提供程序定价
 
 请参阅 [CDN 概述](cdn-overview.md)主题。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

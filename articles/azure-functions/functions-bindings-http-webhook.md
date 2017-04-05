@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: d405c58bf658222ceb72cc2b73e71f2ae1e1ed8d
-ms.openlocfilehash: ce7534b9ff675e1ae0902ba936e1ea897d80d936
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 06958522139d621f86afd8bf25128ee64cf822b3
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -118,7 +118,7 @@ HTTP 触发器将执行函数以响应 HTTP 请求。 可以对其自定义以�
 
 此外，触发器可以定制为特定 webhook 提供程序（例如，[GitHub](https://developer.github.com/webhooks/) 和 [Slack](https://api.slack.com/outgoing-webhooks)）。 如果指定了提供程序，则 Functions 运行时可以处理提供程序的验证逻辑。  
 
-### <a name="configuring-github-as-a-webhook-provider"></a>将 Github 配置为 webhook 提供程序
+### <a name="configuring-github-as-a-webhook-provider"></a>将 GitHub 配置为 webhook 提供程序
 若要响应 GitHub webhook，首先请创建包含 HTTP 触发器的函数，并将 _webHookType_ 的属性设置为“github”。 然后将其 [URL](#url) 和 [API 密钥](#keys)复制到 GitHub 存储库的“添加 webhook”页。 有关详细信息，请参阅 GitHub 的 [创建 Webhook](http://go.microsoft.com/fwlink/?LinkID=761099&clcid=0x409)一文。
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)

@@ -46,6 +46,9 @@
 ### [计划程序](active-directory-aadconnectsync-feature-scheduler.md)
 ### [目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md)
 
+### [更改 Azure AD 同步服务帐户密码](active-directory-aadconnectsync-change-serviceacct-pass.md)
+### [启用 AD 回收站](active-directory-aadconnectsync-recycle-bin.md)
+
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
 #### [操作](active-directory-aadconnectsync-service-manager-ui-operations.md)
 #### [连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md)

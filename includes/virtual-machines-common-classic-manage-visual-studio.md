@@ -1,7 +1,7 @@
 可以在 Visual Studio 中使用“服务器资源管理器”创建 Azure 中的虚拟机。
 
 ## <a name="create-an-azure-virtual-machine-in-server-explorer"></a>在服务器资源管理器中创建 Azure 虚拟机
-可以在 [Azure 管理门户](http://go.microsoft.com/fwlink/?LinkID=253103)中创建虚拟机，同时，也可以在“服务器资源管理器”中使用命令创建 Azure 中的虚拟机。 例如，可以使用虚拟机在常见的负载平衡式公共终结点后面提供一个前端。
+可以在 [Azure 管理门户](http://go.microsoft.com/fwlink/?LinkID=253103)中创建虚拟机，同时，也可以在“服务器资源管理器”中使用命令创建 Azure 中的虚拟机。 例如，可以使用虚拟机在常见的负载均衡式公共终结点后面提供一个前端。
 
 ### <a name="to-create-a-new-virtual-machine"></a>创建新虚拟机
 1. 在“服务器资源管理器”中打开“Azure”节点，然后单击“虚拟机”。
@@ -129,10 +129,5 @@
 2. 在快捷菜单中，选择“关闭”命令，或选择“配置”以查看虚拟机配置页，然后选择“关闭”按钮。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关创建虚拟机的详细信息，请参阅 [Create a Virtual Machine Running Linux](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（创建运行 Linux 的虚拟机）和 [Create a virtual machine running Windows in the Azure preview portal](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（在 Azure 预览门户中创建运行 Windows 的虚拟机）。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+若要了解有关创建虚拟机的详细信息，请参阅 [Create a Virtual Machine Running Linux](../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（创建运行 Linux 的虚拟机）和 [Create a virtual machine running Windows in the Azure preview portal](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（在 Azure 预览门户中创建运行 Windows 的虚拟机）。
 

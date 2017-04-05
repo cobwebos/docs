@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: 4dc9491f3645b071640262af3f1ffcb480cfabef
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d1c327e90ca3343703784c22aba93280d4599723
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -365,7 +365,7 @@ def create_pool(batch_service_client, pool_id,
 * 池的 **ID**（*id* - 必需）<p/>与 Batch 中的大多数实体一样，新池在 Batch 帐户中必须具有唯一 ID。 代码将使用池 ID 引用此池，这也是在 Azure [门户][azure_portal]中识别池的方式。
 * **计算节点数**（*target_dedicated* - 必需）<p/>此属性指定应在池中部署多少个 VM。 必须注意，所有批处理帐户都有默认**配额**，用于限制批处理帐户中的**核心**（因此也包括计算节点）数目。 可以在 [Quotas and limits for the Azure Batch service](batch-quota-limit.md)（Azure 批处理服务的配额和限制）中找到默认配额以及如何[提高配额](batch-quota-limit.md#increase-a-quota)（例如批处理帐户中的核心数目上限）的说明。 如果你有类似于“为什么我的池不能包含 X 个以上的节点？ ”的疑惑，则原因可能在于此核心配额。
 * 节点的**操作系统**（*virtual_machine_configuration* **或** *cloud_service_configuration* - 必需）<p/>在 *python_tutorial_client.py* 中，使用 [VirtualMachineConfiguration][py_vm_config] 创建 Linux 节点池。 `common.helpers` 中的 `select_latest_verified_vm_image_with_node_agent_sku` 函数简化了 [Azure 虚拟机应用商店][vm_marketplace]映像的用法。 有关使用应用商店映像的详细信息，请参阅[在 Azure 批处理池中预配 Linux 计算节点](batch-linux-nodes.md)。
-* **计算节点的大小**（*vm_size* - 必需）<p/>由于我们要为 [VirtualMachineConfiguration][py_vm_config] 指定 Linux 节点，因此应根据 [Azure 中虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)指定 VM 大小（在本示例中为 `STANDARD_A1`）。 同样，请参阅 [在 Azure Batch 池中预配 Linux 计算节点](batch-linux-nodes.md) 获取详细信息。
+* **计算节点的大小**（*vm_size* - 必需）<p/>由于我们要为 [VirtualMachineConfiguration][py_vm_config] 指定 Linux 节点，因此应根据 [Azure 中虚拟机的大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)指定 VM 大小（在本示例中为 `STANDARD_A1`）。 同样，请参阅 [在 Azure Batch 池中预配 Linux 计算节点](batch-linux-nodes.md) 获取详细信息。
 * **启动任务**（*start_task* - 可选）<p/>还可以连同上述物理节点属性一起指定池的 [StartTask][py_starttask]（可选）。 StartTask 在每个节点加入池以及每次重新启动节点时在该节点上运行。 StartTask 特别适合用于准备计算节点，以便执行任务，例如安装任务将要运行的应用程序。<p/>在此示例应用程序中，StartTask 将它从存储下载的文件（使用 StartTask 的 **resource_files** 属性指定），从 StartTask *工作目录*复制到在节点上运行的所有任务可以访问的*共享*目录。 本质上，这会在节点加入池时，将 `python_tutorial_task.py` 复制到每个节点上的共享目录，因此该节点上运行的任何任务都可以访问它。
 
 你可能注意到了对 `wrap_commands_in_shell` helper 函数的调用。 此函数采用不同命令的集合，并针对任务的命令行属性创建适当的单个命令行。

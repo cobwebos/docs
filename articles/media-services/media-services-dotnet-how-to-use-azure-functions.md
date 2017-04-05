@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 0469880325b907065b95f94f62ab76d252c0eda5
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 0cde1f36af2d41697fa956c62cc882e5429707e8
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -339,7 +339,7 @@ project.json 文件包含依赖项。 下面是一个 **project.json** 文件示
 
 现在，你可以开始开发媒体服务应用程序了。 
  
-若要更详细了解如何结合使用 Azure 媒体服务以及 Azure Functions 和逻辑应用来创建自定义内容创建工作流，并了解其完整示例/解决方案，请参阅 [Github 上的媒体服务 .NET 函数集成示例](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
+若要更详细了解如何结合使用 Azure 媒体服务以及 Azure Functions 和逻辑应用来创建自定义内容创建工作流，并了解其完整示例/解决方案，请参阅 [GitHub 上的媒体服务 .NET 函数集成示例](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
 另请参阅[使用 Azure WebHook 通过 .NET 监视媒体服务作业通知 ](media-services-dotnet-check-job-progress-with-webhooks.md)。 
 

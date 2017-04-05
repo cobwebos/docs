@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 0d6756dcc5b47898575002cd7336b8d4d5200e08
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: eab8b66bc4a9cf3090ee81f9bb47430aaf26eeee
+ms.lasthandoff: 03/24/2017
 
 ---
 
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>使用流量管理器配置地理流量路由方法
 
-使用地理流量路由方法，可基于请求源自的地理位置将流量定向到特定终结点。 本教程说明如何使用此路由方法创建流量管理器配置文件，并配置终结点以从特定地理区域接收流量 
+使用地理流量路由方法，可基于请求源自的地理位置将流量定向到特定终结点。 本教程说明如何使用此路由方法创建流量管理器配置文件，并配置终结点以从特定地理区域接收流量。
 
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件 
 
@@ -62,8 +62,6 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-
-- 了解[加权流量路由方法](traffic-manager-configure-weighted-routing-method.md)。
-- 详细了解[性能路由方法](traffic-manager-configure-performance-routing-method.md)。
+- 深入了解[地理流量路由方法](traffic-manager-routing-methods.md#geographic-traffic-routing-method)。
 - 了解如何[测试流量管理器设置](traffic-manager-testing-settings.md)。
 

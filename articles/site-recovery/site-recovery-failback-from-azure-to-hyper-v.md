@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: a1769a522d13926e887e82b8d26b36afb4c80b08
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 845a950f02ba95a100ffedbb07e4d1491b22a2da
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -63,7 +63,7 @@ Azure 是具有高可用性的环境，你的虚拟机将始终可用。 故障�
 
 4. 如果为云启用了数据加密，请在“加密密钥”中选择你在 VMM 服务器上安装提供者期间启用数据加密时颁发的证书。
 5. 启动故障转移。 你可以在“**作业**”选项卡上跟踪故障转移进度。
-6. 如果你选择了在故障转移之前同步数据的选项，请在完成初始数据同步并且你已准备好在 Azure 中关闭虚拟机后，单击“作业” > <planned failover job name>“完成故障转移”。 这将关闭 Azure 计算机，将最新更改传输到本地虚拟机，然后启动本地虚拟机。
+6. 如果选择了在故障转移之前同步数据的选项，请在完成初始数据同步且已准备好在 Azure 中关闭虚拟机后，单击“作业”（计划故障转移工作名称）、“完成故障转移”。 这将关闭 Azure 计算机，将最新更改传输到本地虚拟机，然后启动本地虚拟机。
 7. 现在，你可以登录到虚拟机，以验证是否可以按预期使用它。
 8. 虚拟机处于待提交状态。 单击“**提交**”以提交故障转移。
 9. 现在，为了完成故障回复，请单击“**反向复制**”以开始保护主站点中的虚拟机。

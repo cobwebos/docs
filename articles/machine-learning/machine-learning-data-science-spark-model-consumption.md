@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: cfab4ea7491d15321d54cd9482e35a89fe7c7275
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 00fec675bed0137473f7e3c5ddfe9c3c0e8344c6
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -531,7 +531,7 @@ BoostedTreeRegressionFileLoc：GradientBoostingTreeRegression_2016-05-0317_23_56
 Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理作业或交互式查询的机制。 Livy 在 HDInsight Spark 群集上默认处于启用状态。 有关 Livy 的详细信息，请参阅：[使用 Livy 远程提交 Spark 作业](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)。 
 
 可使用 Livy 远程提交一个作业，该作业批处理评分存储在 Azure Blob 中的文件，然后将结果写入另一个 blob。 若要执行此操作，将 Python 脚本从  
-[Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上传到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上载到了 ***wasb:///example/python/ConsumeGBNYCReg.py***。   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上载到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上载到了 ***wasb:///example/python/ConsumeGBNYCReg.py***。   
 
 > [!NOTE]
 > 可在与 Spark 群集相关联的存储帐户的门户上找到所需的访问密钥。 

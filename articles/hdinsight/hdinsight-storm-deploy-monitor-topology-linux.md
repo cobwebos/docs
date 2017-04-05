@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/22/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 8fd6f5ffc076ea861ed29d992a7a94b6cd2c700b
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 00fa4810e41bdbc19d0a2663cfe1437c6e678ab3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -36,11 +36,7 @@ ms.lasthandoff: 03/22/2017
 
 * **基于 Linux 的 Storm on HDInsight 群集**：请参阅 [Apache Storm on HDInsight 入门](hdinsight-apache-storm-tutorial-get-started-linux.md)获取群集创建步骤
 
-* （可选）**熟悉 SSH 和 SCP**：有关如何将 SSH 和 SCP 与 HDInsight 配合使用的详细信息，请参阅以下文档：
-  
-  * [在 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-  * [在 Windows 上的 PuTTY 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+* （可选）**熟悉 SSH 和 SCP**：有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 * （可选）**Visual Studio**：Azure SDK 2.5.1 或更高版本，以及针对 Visual Studio 的 Data Lake 工具。 有关详细信息，请参阅[开始使用针对 Visual Studio 的 Data Lake 工具](hdinsight-hadoop-visual-studio-tools-get-started.md)。
 
@@ -85,11 +81,7 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    有关如何使用 SSH 连接到 HDInsight 群集的详细信息，请参阅以下文档：
-   
-   * [在 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-   * [在 Windows 上的 PuTTY 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+    有关使用 SSH 连接到 HDInsight 群集的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 使用以下命令启动示例拓扑：
    

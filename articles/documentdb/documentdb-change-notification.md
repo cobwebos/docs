@@ -2,9 +2,9 @@
 redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-change-feed-hl7-fhir-logic-apps
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 0b93e0cd71add8bad86c2b3c0023b524bc4f621a
-ms.openlocfilehash: 1e44ae2341257df6ac367db83947178918016430
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 1b5ec3cb1c2aba86570c6f1753d9142c0d0349ce
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -734,7 +734,7 @@ QueryDocuments 操作会对 API 应用执行 HTTP POST 操作。
 
 在此操作中，你会发送电子邮件通知。  你会使用 [SendGrid](https://sendgrid.com/marketing/sendgrid-services?cvosrc=PPC.Bing.sendgrib&cvo_cid=SendGrid%20-%20US%20-%20Brand%20-%20&mc=Paid%20Search&mcd=BingAds&keyword=sendgrib&network=o&matchtype=e&mobile=&content=&search=1&utm_source=bing&utm_medium=cpc&utm_term=%5Bsendgrib%5D&utm_content=%21acq%21v2%2134335083397-8303227637-1649139544&utm_campaign=SendGrid+-+US+-+Brand+-+%28English%29)。   
 
-其代码是使用逻辑应用的模板以及 [101-logic-app-sendgrid Github 存储库中的 SendGrid 生成的](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sendgrid)。
+其代码是使用逻辑应用的模板以及 [101-logic-app-sendgrid GitHub 存储库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sendgrid)中的 SendGrid 生成的。
 
 HTTP 操作是一个 POST。 
 
@@ -874,7 +874,7 @@ emailBody 会将查询所返回的文档数目（可能是“0”或更多）与
 
 ```
 
-此触发器已设置为&24; 个小时重复一次。 操作为 HTTP POST，该操作使用主要逻辑应用的回叫 URL。 主体包含 JSON 架构中指定的参数。 
+此触发器已设置为 24 个小时重复一次。 操作为 HTTP POST，该操作使用主要逻辑应用的回叫 URL。 主体包含 JSON 架构中指定的参数。 
 
 #### <a name="operations"></a>操作
 ##### <a name="request"></a>请求
@@ -1112,7 +1112,7 @@ emailBody 会将查询所返回的文档数目（可能是“0”或更多）与
 重点在于事先规划并建立工作流模型。
 
 ## <a name="next-steps"></a>后续步骤
-请下载并使用 [Github](https://github.com/HEDIDIN/DocDbNotifications) 上提供的逻辑应用代码。 竭诚邀请你在该应用程序基础上进行构建，并将更改提交到存储库。 
+请下载并使用 [GitHub](https://github.com/HEDIDIN/DocDbNotifications) 上提供的逻辑应用代码。 竭诚邀请你在该应用程序基础上进行构建，并将更改提交到存储库。 
 
 若要详细了解 DocumentDB，请访问[学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)。
 

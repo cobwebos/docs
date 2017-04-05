@@ -48,6 +48,7 @@
 ### [与流分析配合使用](data-lake-store-stream-analytics.md)
 ### [与 Power BI 配合使用](data-lake-store-power-bi.md)
 ### [与数据目录配合使用](data-lake-store-with-data-catalog.md)
+### [在 SQL 数据仓库中使用 PolyBase](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [更多 Azure 集成选项](data-lake-store-integrate-with-other-services.md)
 
 ## 管理

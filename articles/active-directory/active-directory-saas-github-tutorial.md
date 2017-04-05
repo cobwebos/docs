@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Github 的集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 与 Github 之间配置单一登录。"
+title: "教程：Azure Active Directory 与 GitHub 集成 | Microsoft Docs"
+description: "了解如何在 Azure Active Directory 与 GitHub 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,34 +14,34 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 74b354778e775146ed6384b50b4e21cfd5c75858
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 8b0417d131bc25225e777285b9e4bfbaa97aad8f
+ms.lasthandoff: 03/29/2017
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-github"></a>教程：Azure Active Directory 与 Github 的集成
+# <a name="tutorial-azure-active-directory-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 集成
 
-本教程介绍如何将 Github 与 Azure Active Directory (Azure AD) 集成。
+本教程介绍如何将 GitHub 与 Azure Active Directory (Azure AD) 集成。
 
-将 Github 与 Azure AD 集成可提供以下优势：
+将 GitHub 与 Azure AD 集成可提供以下优势：
 
-- 可在 Azure AD 中控制谁有权访问 Github
-- 可以让用户使用其 Azure AD 帐户自动登录到 Github（单一登录）
+- 可在 Azure AD 中控制谁有权访问 GitHub
+- 可以让用户使用其 Azure AD 帐户自动登录到 GitHub（单一登录）
 - 可在一个中心位置（即 Azure 管理门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Github 的集成，需要准备好以下各项：
+若要配置 Azure AD 与 GitHub 的集成，需要以下项：
 
-- Azure AD 订阅
-- 启用了 Github 单一登录的订阅
+- 一个 Azure AD 订阅
+- 启用了 GitHub 单一登录的订阅
 
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 
 测试本教程中的步骤应遵循以下建议：
@@ -53,14 +53,14 @@ ms.lasthandoff: 03/10/2017
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 Github
-2. 配置和测试 Azure AD 单一登录
+1. 从库中添加 GitHub
+2. 配置并测试 Azure AD 单一登录
 
 
-## <a name="adding-github-from-the-gallery"></a>从库中添加 Github
-若要配置 Github 与 Azure AD 的集成，需要从库中将 Github 添加到托管 SaaS 应用列表。
+## <a name="adding-github-from-the-gallery"></a>从库中添加 GitHub
+若要配置 GitHub 与 Azure AD 的集成，需要从库中将 GitHub 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Github，请执行以下步骤：**
+**若要从库中添加 GitHub，请执行以下步骤：**
 
 1. 在 **[Azure 管理门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
@@ -74,37 +74,37 @@ ms.lasthandoff: 03/10/2017
 
     ![应用程序][3]
 
-4. 在搜索框中，键入 **Github.com**。
+4. 在搜索框中，键入“GitHub.com”。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-github-tutorial/tutorial_github_search02.png)
 
-5. 在结果窗格中，选择“Github”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“GitHub”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-github-tutorial/tutorial_github_search_result02.png)
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，基于一个名为“Britta Simon”的测试用户使用 Github 配置和测试 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 GitHub 的 Azure AD 单一登录。
 
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Github 用户。 换句话说，需要建立 Azure AD 用户与 Github 中相关用户之间的链接关系。
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 GitHub 用户。 换句话说，需要在 Azure AD 用户与 GitHub 中的相关用户之间建立链接关系。
 
-通过将 Azure AD 中“用户名”的值分配为 Github 中“用户名”的值来建立此链接关系。
+通过将 Azure AD 中“用户名”的值分配为 GitHub 中“用户名”的值来建立此链接关系。
 
-若要配置和测试 Github 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 GitHub 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Github 测试用户](#creating-a-Github-test-user)** - 目的是在 Github 中拥有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+3. **[创建 GitHub 测试用户](#creating-a-GitHub-test-user)** - 在 GitHub 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 Github 应用程序中配置单一登录。
+在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 GitHub 应用程序中配置单一登录。
 
-**若要配置 Github 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 GitHub 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 管理门户的“Github”应用程序集成页上，单击“单一登录”。
+1. 在 Azure 管理门户的“GitHub”应用程序集成页上，单击“单一登录”。
 
     ![配置单一登录][4]
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 03/10/2017
  
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_01.png)
 
-3. 在“Github 域和 URL”部分中，执行以下步骤：
+3. 在“GitHub 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_saml011.png)
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 03/10/2017
     b.保留“数据库类型”设置，即设置为“共享”。 在“标识符”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<entity-id>`
 
     > [!NOTE] 
-    > 请注意，这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 转到“Github 管理”部分检索这些值。 
+    > 请注意，这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 转到“GitHub 管理”部分检索这些值。 
 
 4. 在“用户属性”部分中，为“用户标识符”选择“user.mail”。
 
@@ -147,13 +147,13 @@ ms.lasthandoff: 03/10/2017
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_05.png) 
 
-10. 在“Github 配置”部分，单击“配置 Github”打开“配置登录”窗口。
+10. 在“GitHub 配置”部分中，单击“配置 GitHub”打开“配置登录”窗口。
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_06.png) 
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_07.png)
 
-11. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Github 组织站点。
+11. 在另一个 Web 浏览器窗口中，以管理员身份登录到 GitHub 组织站点。
 
 12. 导航“设置”并单击“安全性”。
 
@@ -211,14 +211,14 @@ ms.lasthandoff: 03/10/2017
     d.单击“下一步”。 单击“创建” 。 
 
 
-### <a name="creating-a-github-test-user"></a>创建 Github 测试用户
+### <a name="creating-a-github-test-user"></a>创建 GitHub 测试用户
 
-要使 Azure AD 用户能够登录 Github，必须将这些用户预配到 Github 中。  
-就 Github 来说，预配任务需要手动完成。
+要使 Azure AD 用户能够登录 GitHub，必须将这些用户预配到 GitHub 中。  
+就 GitHub 来说，预配任务需要手动完成。
 
 **若要预配用户帐户，请执行以下步骤：**
 
-1. 以管理员身份登录到 Github 公司站点。
+1. 以管理员身份登录到 GitHub 公司站点。
 
 2. 单击“人员”。
 
@@ -244,17 +244,17 @@ ms.lasthandoff: 03/10/2017
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-本部分通过授予 Britta Simon 访问 Github 的权限，允许她使用 Azure 单一登录。
+本部分通过授予 Britta Simon 访问 GitHub 的权限，允许她使用 Azure 单一登录。
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Github，请执行以下步骤：**
+**若要将 Britta Simon 分配到 GitHub，请执行以下步骤：**
 
 1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Github.com”。
+2. 在应用程序列表中，选择“GitHub.com”。
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_search_result021.png) 
 
@@ -278,7 +278,7 @@ ms.lasthandoff: 03/10/2017
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击 Github 磁贴时，应会登录到 Github 应用程序。 一开始将以组织帐户登录，但随后需要使用个人帐户登录。
+单击访问面板中的 GitHub 磁贴时，你应自动登录到 GitHub 应用程序。 一开始将以组织帐户登录，但随后需要使用个人帐户登录。
 
 
 ## <a name="additional-resources"></a>其他资源
@@ -301,3 +301,4 @@ ms.lasthandoff: 03/10/2017
 [201]: ./media/active-directory-saas-github-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-github-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-github-tutorial/tutorial_general_203.png
+

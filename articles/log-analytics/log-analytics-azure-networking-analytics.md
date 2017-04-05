@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 1095267ce0c2a922d4bd9cb95a607ce8993df310
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 9b0936299d506e951e45d54f630657c187ec6820
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -37,8 +37,6 @@ Log Analytics 提供了用来监视网络的以下解决方案：
 * 公有云与本地 
 * 数据中心和用户位置（分支机构）
 * 托管着多层应用程序的各个层次的子网。
-
- ![网络性能监视器的图像](./media/log-analytics-network-performance-monitor/npm-topology.png)
 
 有关详细信息，请参阅[网络性能监视器](log-analytics-network-performance-monitor.md)。
 

@@ -12,24 +12,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/28/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
-ms.openlocfilehash: 30a3a6c438bae191605e35c352cf03fd8eaddf0f
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 20e2c9edc4729015f65fbe72649e32effe7f8a3a
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习 Web 服务
+
 创建预测性实验时，通常添加 Web 服务输入和输出。 部署实验时，使用者可通过输入和输出从 Web 服务发送和接收数据。 对于某些应用程序，使用者的数据可能从数据源提供或已经驻留在外部数据源（如 Azure Blob 存储）中。 在这些情况下，它们不需要使用 Web 服务输入和输出读取和写入数据。 它们可以改为使用批处理执行服务 (BES)，使用导入数据模块从数据源读取数据，使用导出数据模块将评分结果写入不同的数据位置。
 
-导入数据和导出数据模块可在大量数据位置（如通过 HTTP 的 Web URL、Hive 查询、Azure SQL 数据库、Azure 表存储、Azure Blob 存储、数据源提供或本地 SQL 数据库）中读取和写入数据。
+导入数据和导出数据模块可在各个数据位置（如通过 HTTP 的 Web URL、Hive 查询、Azure SQL 数据库、Azure 表存储、Azure Blob 存储、数据源提供或本地 SQL 数据库）中读取和写入数据。
 
 本主题使用“示例 5：二元分类的训练、测试、评估：成人数据集”示例，并假设数据集已加载到名为 censusdata 的 Azure SQL 表中。
 
 ## <a name="create-the-training-experiment"></a>创建训练实验
-打开“示例 5：二元分类的训练、测试、评估：成人数据集”示例时，它使用示例成人人口收入二元分类数据集。 画布中的实验看起来将类似于下图。
+打开“示例 5：二元分类的训练、测试、评估：成人数据集”示例时，它使用示例成人人口收入二元分类数据集。 画布中的实验将看起来类似于下图：
 
 ![实验的初始配置。](./media/machine-learning-web-services-that-use-import-export-modules/initial-look-of-experiment.png)
 
@@ -63,7 +64,7 @@ ms.lasthandoff: 03/02/2017
 8. 在实验画布的底部，单击“**运行**”。
 
 ## <a name="create-the-predictive-experiment"></a>创建预测性实验
-接下来，设置将从中部署 Web 服务的预测性实验。
+接下来，设置从中部署 Web 服务的预测性实验。
 
 1. 在实验画布的底部，单击“设置 Web 服务”，然后选择“预测 Web 服务 [推荐]”。
 2. 从预测性实验中删除 *Web 服务输入*和 *Web 服务输出模块*。 
@@ -85,7 +86,7 @@ ms.lasthandoff: 03/02/2017
 3. 在*导出数据*模块属性窗格底部，在“Web 服务参数”部分中单击“数据库查询”并将其重命名为“查询”。
 4. 单击“数据表名称”并将其重命名为“表”。
 
-完成后，实验应看起来类似于下图。
+完成后，实验应看起来类似于下图：
 
 ![实验的最终外观。](./media/machine-learning-web-services-that-use-import-export-modules/experiment-with-import-data-added.png)
 
@@ -105,7 +106,7 @@ ms.lasthandoff: 03/02/2017
 6. 在 API 帮助页上，找到页面底部的“示例代码”部分。
 7. 将 C# 示例代码复制并粘贴到 Program.cs 文件中，然后删除对 blob 存储的所有引用。
 8. 使用之前保存的 API 密钥更新 *apiKey* 变量的值。
-9. 找到请求声明并更新传递到*导入数据*和*导出数据*模块的值。 在此情况下，将使用原始查询，但定义新的表名称。
+9. 找到请求声明并更新传递到*导入数据*和*导出数据*模块的值。 在此示例中，将使用原始查询，但定义新的表名。
    
         var request = new BatchExecutionRequest() 
         {            
@@ -133,7 +134,7 @@ ms.lasthandoff: 03/02/2017
 6. 在 Visual Studio 中，创建 C# 控制台应用程序。
 7. 将 C# 示例代码复制并粘贴到 Program.cs 文件中。
 8. 使用位于“基本使用信息”部分中的**主键**替换 *apiKey* 变量的值。
-9. 找到 *scoreRequest* 声明并更新传递到*导入数据*和*导出数据*模块的值。 在此情况下，将使用原始查询，但定义新的表名称。
+9. 找到 *scoreRequest* 声明并更新传递到*导入数据*和*导出数据*模块的值。 在此示例中，将使用原始查询，但定义新的表名。
    
         var scoreRequest = new
         {        

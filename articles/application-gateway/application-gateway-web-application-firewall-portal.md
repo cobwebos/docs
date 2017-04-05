@@ -1,5 +1,5 @@
 ---
-title: "使用 Web 应用程序防火墙创建 Azure 应用程序网关 | Microsoft Docs"
+title: "使用 Web 应用程序防火墙创建或更新 Azure 应用程序网关 | Microsoft Docs"
 description: "了解如何使用门户创建具有 Web 应用程序防火墙的应用程序网关"
 services: application-gateway
 documentationcenter: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/03/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 9ba454ad2988c1ebb6410d78f79e46ed020a4bc5
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 9f16384a3944c3943dbfc094aaba37a24969e949
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -30,8 +31,8 @@ ms.openlocfilehash: 9ba454ad2988c1ebb6410d78f79e46ed020a4bc5
 
 Azure 应用程序网关中的 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序，使其免受常见 Web 攻击的威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。 Web 应用程序可以防止 OWASP 十大常见 Web 漏洞中的大部分漏洞。
 
-Azure 应用程序网关是第&7; 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。
-应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载平衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。
+Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。
+应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。
 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
 
 ## <a name="scenarios"></a>方案
@@ -51,7 +52,7 @@ Azure 应用程序网关是第&7; 层负载均衡器。 它在不同服务器之
 
 Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请确保保留足够的地址空间，以便设置多个子网。 将应用程序网关部署到子网后，只能向该子网添加其他应用程序网关。
 
-## <a name="add-web-application-firewall-to-an-existing-application-gateway"></a>将 Web 应用程序防火墙添加到现有的应用程序网关
+##<a name="add-web-application-firewall-to-an-existing-application-gateway"></a> 将 Web 应用程序防火墙添加到现有的应用程序网关
 
 此方案会更新现有的应用程序网关，以在阻止模式下支持 Web 应用程序防火墙。
 
@@ -63,14 +64,18 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 
 ### <a name="step-2"></a>步骤 2
 
-单击“配置”并更新应用程序网关设置。 完成后，单击“保存”
+单击“Web 应用程序防火墙”并更新应用程序网关设置。 完成后，单击“保存”
 
 用于更新现有应用程序网关以支持 Web 应用程序防火墙的设置如下：
 
-* **层** - 所选的层必须是 **WAF** 才能支持 Web 应用程序防火墙
-* **SKU 大小** - 此设置是指具有 Web 应用程序防火墙的应用程序网关的大小，可用选项包括**中型**和**大型**。
+* **升级到 WAF 层** - 需要使用此设置配置 WAF。
 * **防火墙状态** - 此设置会禁用或启用 Web 应用程序防火墙。
 * **防火墙模式** - 此设置是指 Web 应用程序防火墙处理恶意流量的方式。 **检测**模式只记录事件，而**阻止**模式则会记录事件并停止恶意流量。
+* **规则集** - 此设置确定用于保护后端池成员的[核心规则集](application-gateway-web-application-firewall-overview.md#core-rule-sets)。
+* **配置已禁用的规则** - 为了防止可能误报，此设置允许你禁用某些[规则和规则组](application-gateway-crs-rulegroups-rules.md)。
+
+>[!NOTE]
+> 将现有应用程序网关升级到 WAF SKU 时，SKU 大小将更改为“中型”。 配置完成后，可以重新配置此项。
 
 ![显示基本设置的边栏选项卡][2]
 
@@ -99,8 +104,8 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 基本设置需要的信息如下：
 
 * **名称** - 应用程序网关的名称。
-* **层** - 应用程序网关的层，可用选项包括**标准**和 **WAF**。 Web 应用程序防火墙仅在 WAF 层中提供。
-* **SKU 大小** - 此设置是指应用程序网关的大小，可用选项包括**中型**和**大型**。
+* **层** - 应用程序网关的层，可用选项包括“标准”和“WAF”。 Web 应用程序防火墙仅在 WAF 层中提供。
+* **SKU 大小** - 此设置是指应用程序网关的大小，可用选项包括“中型”和“大型”。
 * **实例计数** - 实例的数目，此值应该是 **2** 到 **10** 之间的数字。
 * **资源组** - 用于保存应用程序网关的资源组，可以是现有资源组，也可以是新的资源组。
 * **位置** - 应用程序网关所在的区域，与资源组的位置相同。 *位置很重要，因为虚拟网络和公共 IP 必须与网关位于同一位置*。
@@ -112,7 +117,7 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 
 ### <a name="step-3"></a>步骤 3
 
-定义基本设置以后，下一步是定义要使用的虚拟网络。 虚拟网络托管的应用程序也是通过应用程序网关进行负载平衡的应用程序。
+定义基本设置以后，下一步是定义要使用的虚拟网络。 虚拟网络托管的应用程序也是通过应用程序网关进行负载均衡的应用程序。
 
 单击“选择虚拟网络”对虚拟网络进行配置。
 
@@ -164,7 +169,7 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 配置 **WAF** 特定设置。
 
 * **防火墙状态** - 此设置可打开或关闭 WAF。
-* **防火墙模式** - 此设置确定 WAF 对恶意流量采取的操作。 如果选择**检测**，只会记录流量。  如果选择**阻止**，会记录并停止流量，同时提供“403 未授权”响应。
+* **防火墙模式** - 此设置确定 WAF 对恶意流量采取的操作。 如果选择**检测**，只会记录流量。  如果选择“阻止”，会记录并停止流量，同时返回“403 未授权”响应。
 
 ![Web 应用程序防火墙设置][9]
 
@@ -179,6 +184,9 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 ![应用程序网关资源视图][10]
 
 这些步骤会创建基本的应用程序网关，提供侦听器、后端池、后端 http 设置以及规则的默认设置。 预配成功后，即可根据部署修改这些设置
+
+> [!NOTE]
+> 为使用基本 Web 应用程序防火墙配置创建的应用程序网关配置 CRS 3.0 以进行保护。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -202,9 +210,4 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 [9]: ./media/application-gateway-web-application-firewall-portal/figure9.png
 [10]: ./media/application-gateway-web-application-firewall-portal/figure10.png
 [scenario]: ./media/application-gateway-web-application-firewall-portal/scenario.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

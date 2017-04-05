@@ -12,23 +12,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 03/27/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: a27ec9e1ebfde3493e41c493b85c0dc7f0ada2a0
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 80ad4ee51dc03c588e9da6a3277120c685839a2b
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="move-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入/移出本地 Oracle
-本文概述如何使用数据工厂复制活动在 Oracle 和另一个数据存储之间移动数据。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何结合使用复制活动和受支持的数据存储进行数据移动。
+本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出本地 Oracle 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
 
+可将数据从任一支持的源数据存储移到 Oracle 数据库，或从 Oracle 数据库移到任一支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 
+
+## <a name="prerequisites"></a>先决条件
 数据工厂支持通过数据管理网关连接到本地 Oracle 源。 若要了解数据管理网关，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文，有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移动到云](data-factory-move-data-between-onprem-and-cloud.md)。
 
+即使 Oracle 托管在 Azure IaaS VM 中，仍需要网关。 可在与数据存储相同的 IaaS VM 上或不同的 VM 上安装网关，只要网关能连接数据库即可。
+
 > [!NOTE]
-> 即使 Oracle 托管在 Azure IaaS VM 中，仍需要网关。 可在与数据存储相同的 IaaS VM 上或不同的 VM 上安装网关，只要网关能连接数据库即可。
->
+> 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
 
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
 Oracle 连接器支持两个版本的驱动程序：
@@ -39,23 +43,118 @@ Oracle 连接器支持两个版本的驱动程序：
     > 目前，适用于 Oracle 的 Microsoft 驱动程序仅支持从 Oracle 复制数据，不支持将数据写入 Oracle。 请注意，数据管理网关“诊断”选项卡中的测试连接功能不支持此驱动程序。 或者，可以使用复制向导验证连接。
     >
 
-- **用于 .NET 的 Oracle 数据提供程序：**数据管理网关 2.7 版或更高版本包括此组件，因此无需单独安装。 如果使用的网关版本低于 2.7，建议从[此处](https://www.microsoft.com/download/details.aspx?id=39717)安装最新版本的网关。 可在数据管理网关配置管理器的“帮助”页上找到此网关版本（搜索“数据管理网关”）。
+- **用于 .NET 的 Oracle 数据提供程序：**还可以选择使用 Oracle 数据提供程序在 Oracle 中复制/粘贴数据。 该组件包含在[适用于 Windows 的 Oracle 数据访问组件](http://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在安装有网关的计算机上安装合适的版本（32/64 位）。 [Oracle 数据提供程序 .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可访问 Oracle 数据库 10g 版本 2 或更高版本。
 
-## <a name="copy-data-wizard"></a>复制数据向导
-若要创建向 Oracle 数据库复制数据或将数据从 Oracle 数据库复制到任何支持的接收数据存储的管道，最简单的方法是使用复制数据向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+    如果选择“XCopy 安装”，请遵循 readme.htm 中的步骤。 推荐选择带 UI 的安装程序（非 XCopy）。
+    
+    安装提供程序后，使用服务小程序（或）数据管理网关配置管理器在计算机上**重启**数据管理网关主机服务。  
 
+## <a name="getting-started"></a>入门
+可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出本地 Oracle 数据库。
+
+创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+
+也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+
+1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
+2. 创建**数据集**以表示复制操作的输入和输出数据。 
+3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
+
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从本地 Oracle 数据库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。 
+
+以下部分提供了有关用于定义数据工厂实体的 JSON 属性的详细信息： 
+
+## <a name="linked-service-properties"></a>链接服务属性
+下表提供了有关特定于 Oracle 链接服务的 JSON 元素的描述。
+
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| type |类型属性必须设置为：**OnPremisesOracle** |是 |
+| driverType | 指定在 Oracle 数据库复制/粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 或 **ODP**（默认值）。 请参阅驱动程序详细信息上的[支持版本和安装](#supported-versions-and-installation)部分。 | 否 |
+| connectionString | 为 connectionString 属性指定连接到 Oracle 数据库实例所需的信息。 | 是 |
+| gatewayName | 用于连接到本地 Oracle 服务器的网关的名称 |是 |
+
+**示例：使用 Microsoft 驱动程序：**
+```json
+{
+    "name": "OnPremisesOracleLinkedService",
+    "properties": {
+        "type": "OnPremisesOracle",
+        "typeProperties": {
+            "driverType": "Microsoft",
+            "connectionString":"Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;",
+            "gatewayName": "<gateway name>"
+        }
+    }
+}
+```
+
+**示例：使用 ODP 驱动程序**
+
+有关允许的格式，请参考[此站点](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)。
+
+```json
+{
+    "name": "OnPremisesOracleLinkedService",
+    "properties": {
+        "type": "OnPremisesOracle",
+        "typeProperties": {
+            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<hostname>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<SID>)));
+User Id=<username>;Password=<password>;",
+            "gatewayName": "<gateway name>"
+        }
+    }
+}
+```
+
+## <a name="dataset-properties"></a>数据集属性
+有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Oracle、Azure blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分类似。
+
+每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 OracleTable 类型的数据集的 typeProperties 部分具有以下属性：
+
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| tableName |链接服务引用的 Oracle 数据库中表的名称。 |否（如果指定了 **OracleSource** 的 **oracleReaderQuery**） |
+
+## <a name="copy-activity-properties"></a>复制活动属性
+有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
+
+> [!NOTE]
+> 复制活动只使用一个输入，只生成一个输出。
+
+而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
+
+### <a name="oraclesource"></a>OracleSource
+在复制活动中，如果源的类型为 **OracleSource**，则可以在 **typeProperties** 部分中使用以下属性：
+
+| 属性 | 说明 | 允许的值 | 必选 |
+| --- | --- | --- | --- |
+| oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable <br/><br/>如果未指定，执行的 SQL 语句为：select * from MyTable |否（如果指定了**数据集**的 **tableName**） |
+
+### <a name="oraclesink"></a>OracleSink
+**OracleSink** 支持以下属性：
+
+| 属性 | 说明 | 允许的值 | 必选 |
+| --- | --- | --- | --- |
+| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：00:30:00（30 分钟）。 |否 |
+| writeBatchSize |缓冲区大小达到 writeBatchSize 时将数据插入 SQL 表。 |整数（行数） |否（默认值：100） |
+| sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 |查询语句。 |否 |
+| sliceIdentifierColumnName |指定复制活动要使用自动生成的切片标识符进行填充的列名，该标识符用于重新运行时清除特定切片的数据。 |数据类型为 binary(32) 的列的列名。 |否 |
+
+## <a name="json-examples"></a>JSON 示例
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们介绍如何在 Oracle 数据库和 Azure Blob 存储之间复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。   
 
-## <a name="sample-copy-data-from-oracle-to-azure-blob"></a>示例：将数据从 Oracle 复制到 Azure Blob
-此示例演示如何将数据从本地 Oracle 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
+## <a name="example-copy-data-from-oracle-to-azure-blob"></a>示例：将数据从 Oracle 复制到 Azure Blob
 
 此示例具有以下数据工厂实体：
 
-1. [OnPremisesOracle](data-factory-onprem-oracle-connector.md#oracle-linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 类型的链接服务。
-3. [OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该活动将 [OracleSource](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) 用作源，并将 [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) 用作接收器。
+1. [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties) 类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+3. [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该活动将 [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) 用作源，并将 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 用作接收器。
 
 该实例每隔一小时会将数据从本地 Oracle 数据库中的表复制到 blob。 有关此实例中使用的各类属性的详细信息，请参阅实例之后的部分中的文档。
 
@@ -233,16 +332,16 @@ Oracle 连接器支持两个版本的驱动程序：
 }
 ```
 
-## <a name="sample-copy-data-from-azure-blob-to-oracle"></a>示例：将数据从 Azure Blob 复制到 Oracle
+## <a name="example-copy-data-from-azure-blob-to-oracle"></a>示例：将数据从 Azure Blob 复制到 Oracle
 该实例演示如何将数据从 Azure Blob 存储复制到本地 Oracle 数据库。 但可使用 Azure 数据工厂中的复制活动**直接**从[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何源复制数据。  
 
 此示例具有以下数据工厂实体：
 
-1. [OnPremisesOracle](data-factory-onprem-oracle-connector.md#oracle-linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 类型的链接服务。
-3. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该活动将 [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) 用作源，并将[OracleSink](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) 用作接收器。
+1. [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties) 类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
+4. [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该活动将 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 用作源，并将[OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) 用作接收器。
 
 该实例每隔一小时会将数据从 blob 复制到本地 Oracle 数据库中的表。 有关此实例中使用的各类属性的详细信息，请参阅实例之后的部分中的文档。
 
@@ -405,85 +504,6 @@ Oracle 连接器支持两个版本的驱动程序：
 }
 ```
 
-## <a name="oracle-linked-service-properties"></a>Oracle 链接服务属性
-下表提供了有关特定于 Oracle 链接服务的 JSON 元素的描述。
-
-| 属性 | 说明 | 必选 |
-| --- | --- | --- |
-| type |类型属性必须设置为：**OnPremisesOracle** |是 |
-| driverType | 指定在 Oracle 数据库复制/粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 或 **ODP**（默认值）。 请参阅驱动程序详细信息上的[支持版本和安装](#supported-versions-and-installation)部分。 | 否 |
-| connectionString | 为 connectionString 属性指定连接到 Oracle 数据库实例所需的信息。 | 是 |
-| gatewayName | 用于连接到本地 Oracle 服务器的网关的名称 |是 |
-
-请参阅[使用数据管理网关在本地源和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)，了解有关设置本地 Oracle 数据源凭据的详细信息。
-
-**示例：使用 Microsoft 驱动程序**
-```JSON
-{
-    "name": "OnPremisesOracleLinkedService",
-    "properties": {
-        "type": "OnPremisesOracle",
-        "typeProperties": {
-            "driverType": "Microsoft",
-            "connectionString":"Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;",
-            "gatewayName": "<gateway name>"
-        }
-    }
-}
-```
-
-**示例：使用 ODP 驱动程序**
-
-可以参考[此站点](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)，了解更多允许的格式。
-```JSON
-{
-    "name": "OnPremisesOracleLinkedService",
-    "properties": {
-        "type": "OnPremisesOracle",
-        "typeProperties": {
-            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<hostname>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<SID>)));
-User Id=<username>;Password=<password>;",
-            "gatewayName": "<gateway name>"
-        }
-    }
-}
-```
-
-## <a name="oracle-dataset-type-properties"></a>Oracle 数据集类型属性
-有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Oracle、Azure blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分类似。
-
-每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 OracleTable 类型的数据集的 typeProperties 部分具有以下属性：
-
-| 属性 | 说明 | 必选 |
-| --- | --- | --- |
-| tableName |链接服务引用的 Oracle 数据库中表的名称。 |否（如果指定了 **OracleSource** 的 **oracleReaderQuery**） |
-
-## <a name="oracle-copy-activity-type-properties"></a>Oracle 复制活动类型属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
-
-> [!NOTE]
-> 复制活动只使用一个输入，只生成一个输出。
->
->
-
-而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
-
-### <a name="oraclesource"></a>OracleSource
-在复制活动中，如果源的类型为 **OracleSource**，则可以在 **typeProperties** 部分中使用以下属性：
-
-| 属性 | 说明 | 允许的值 | 必选 |
-| --- | --- | --- | --- |
-| oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：如未指定，则为 select *from MyTable <br/><br/>，则执行的 SQL 语句是：select* from MyTable |否（如果指定了**数据集**的 **tableName**） |
-
-### <a name="oraclesink"></a>OracleSink
-**OracleSink** 支持以下属性：
-
-| 属性 | 说明 | 允许的值 | 必选 |
-| --- | --- | --- | --- |
-| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：00:30:00（30 分钟）。 |否 |
-| writeBatchSize |缓冲区大小达到 writeBatchSize 时将数据插入 SQL 表。 |整数（行数） |否（默认值：100） |
-| sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 |查询语句。 |否 |
-| sliceIdentifierColumnName |指定复制活动要使用自动生成的切片标识符进行填充的列名，该标识符用于重新运行时清除特定切片的数据。 |数据类型为 binary(32) 的列的列名。 |否 |
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 ### <a name="problem-1-net-framework-data-provider"></a>问题 1：.NET Framework 数据提供程序
@@ -518,8 +538,6 @@ User Id=<username>;Password=<password>;",
 
     "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\')  AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
-
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### <a name="type-mapping-for-oracle"></a>Oracle 的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下 2 步方法执行从源类型到接收器类型的自动类型转换：
@@ -557,9 +575,12 @@ User Id=<username>;Password=<password>;",
 
 > [!NOTE]
 > 使用 Microsoft 驱动程序时，不支持数据类型 **INTERVAL YEAR TO MONTH** 和 **INTERVAL DAY TO SECOND**。
->
 
-[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
+若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
+
+## <a name="repeatable-read-from-relational-sources"></a>从关系源进行可重复读取
+从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。

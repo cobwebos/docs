@@ -15,9 +15,9 @@ ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: ce0be184fe11a7e5873639d79961e98de730ec86
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: ef7df25d8080cae41235dffb287906508d4a652d
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -58,6 +58,10 @@ ms.lasthandoff: 03/10/2017
 
 安装网关后，必须将 Azure 订阅与网关相关联。
 
+> [!IMPORTANT] 
+> 确保在逻辑应用所在的同一 Azure 区域中创建网关资源。 如果未将该资源部署到同一区域，则无法在应用逻辑中访问该资源。 
+> 
+
 1. 使用安装网关期间使用的同一工作或学校电子邮件地址登录到 Azure。
 2. 选择“新建”。
 3. 找到并选择“本地数据网关”。
@@ -80,6 +84,11 @@ ms.lasthandoff: 03/10/2017
 4. 若要创建连接，请选择“创建”。
 
 现已配置可供逻辑应用使用的连接。
+
+## <a name="data-gateway-connection-modifications"></a>数据网关连接修改
+将数据网关连接添加到逻辑应用后，可能需要修改它以调整特定于该连接的设置。 可以在以下两个位置中找到该连接：
+* 在逻辑应用的主边栏选项卡上的“开发工具”部分中应看到“API 连接”的面板。 选择该面板将显示与逻辑应用关联的所有 API 连接，其中之一是数据网关连接。 选择该连接则可以查看和修改与该连接关联的设置。
+* 选择“API 连接”主边栏选项卡将显示订阅中的所有 API 连接。 此列表中有数据网关连接。 选择该连接可以查看和修改与该连接关联的设置。
 
 ## <a name="next-steps"></a>后续步骤
 

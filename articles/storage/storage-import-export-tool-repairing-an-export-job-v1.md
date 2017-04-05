@@ -1,5 +1,5 @@
 ---
-title: "修复 Azure 导出作业 | Microsoft Docs"
+title: "修复 Azure 导入/导出服务的导出作业 - v1 | Microsoft Docs"
 description: "了解如何使用 Azure 导入/导出服务修复已创建和运行的导出作业。"
 author: muralikk
 manager: syadav
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: 7ae819a662230a7ca7da6f7bc5bbb3b3f940074e
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: cab61ee993306e830ae899ed639929b0ee7fba82
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -30,7 +30,11 @@ ms.lasthandoff: 02/16/2017
   
 若要使用此功能，必须与 Azure 存储建立连接。  
   
-用于修复导入作业的命令是 **RepairExport**。 可以指定以下参数：  
+用于修复导入作业的命令是 **RepairExport**。
+
+## <a name="repairexport-parameters"></a>RepairExport 参数
+
+可以使用 **RepairExport** 指定以下参数：  
   
 |参数|说明|  
 |---------------|-----------------|  
@@ -129,31 +133,34 @@ WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bob
 ``` 
   
 完成修复过程后，工具将读取在该清单文件中引用的每个文件，并使用 MD5 哈希验证该文件的完整性。 对于上面的清单文件，工具将遍历以下组成部分。  
+
+```  
+G:\pictures\city\redmond.jpg, offset 0, length 3584  
   
-G:\pictures\city\redmond.jpg，偏移量 0，长度 3584  
+G:\pictures\city\redmond.jpg, offset 3584, length 3584  
   
-G:\pictures\city\redmond.jpg，偏移量 3584，长度 3584  
-  
-G:\pictures\city\redmond.jpg，偏移量 7168，长度 3584  
+G:\pictures\city\redmond.jpg, offset 7168, length 3584  
   
 G:\pictures\city\redmond.jpg.properties  
   
-G:\pictures\wild\canyon.jpg，偏移量 0，长度 2721  
+G:\pictures\wild\canyon.jpg, offset 0, length 2721  
   
-G:\pictures\wild\canyon.jpg，偏移量 2721，长度 2721  
+G:\pictures\wild\canyon.jpg, offset 2721, length 2721  
   
-G:\pictures\wild\canyon.jpg，偏移量 5442，长度 2721  
+G:\pictures\wild\canyon.jpg, offset 5442, length 2721  
   
-G:\pictures\wild\canyon.jpg，偏移量 8163、 长度 2721  
+G:\pictures\wild\canyon.jpg, offset 8163, length 2721  
   
 G:\pictures\wild\canyon.jpg.properties  
-  
+```
+
 工具将下载验证失败的所有组成部分，并将其重新写入驱动器上的同一文件。  
   
-## <a name="see-also"></a>另请参阅  
-[设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
-[为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-[使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
-[修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)   
-[排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
+## <a name="next-steps"></a>后续步骤
+ 
+* [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
+* [为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)   
+* [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
 

@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 341dcec8c45b380286e2bb96c57afc7740605d16
-ms.openlocfilehash: c4ae1c80b854e84fe94a52e2872bec2c24b4580f
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: bed4a821990a1a311fc4fc60aa9a47cb4be2b503
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -162,7 +162,7 @@ ms.lasthandoff: 02/10/2017
 ## <a name="create-vm-from-original-hard-disk"></a>从原始硬盘创建 VM
 若要从原始虚拟硬盘创建 VM，请使用[此 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-specialized-vm-in-existing-vnet)。 该模板使用前面命令中的 VHD URL 将 VM 部署到现有虚拟网络。 单击“部署到 Azure”按钮，如下所示：
 
-![从 Github 中的模板部署 VM](./media/virtual-machines-linux-troubleshoot-recovery-disks/deploy-template-from-github.png)
+![从 GitHub 中的模板部署 VM](./media/virtual-machines-linux-troubleshoot-recovery-disks/deploy-template-from-github.png)
 
 模板已载入 Azure 门户进行部署。 请输入新 VM 和现有 Azure 资源的名称，然后粘贴现有虚拟硬盘的 URL。 若要开始部署，请单击“购买”：
 
@@ -178,3 +178,4 @@ ms.lasthandoff: 02/10/2017
 如果在连接到 VM 时遇到问题，请参阅[排查 Azure VM 的 SSH 连接问题](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果在访问 VM 上运行的应用时遇到问题，请参阅 [Troubleshoot application connectivity issues on a Linux VM](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（排查 Linux VM 上的应用程序连接问题）。
 
 有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+

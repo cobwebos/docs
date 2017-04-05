@@ -55,7 +55,7 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
 5. 根据提示创建一个 **Web 应用程序**和/或 **WebAPI**。
   * 应用程序的“名称”向用户描述应用程序。
 
-  * “登录 URL”是应用的基本 URL。  框架的默认值是 `http://localhost:3000/auth/openid/return``。
+  * “登录 URL”是应用的基本 URL。  框架的默认值是`http://localhost:3000/auth/openid/return``。
 
 6. 注册后，Azure AD 会为应用分配唯一的应用程序 ID。 在后续部分中需用到此值，因此，请从应用程序页复制此值。
 7. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 “应用程序 ID URI”是应用程序的唯一标识符。 约定使用的格式是 `https://<tenant-domain>/<app-name>`，例如：`https://contoso.onmicrosoft.com/my-first-aad-app`。
@@ -209,8 +209,9 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
 
 6. Finally, let's add the routes that hand off the actual sign-in requests to the `passport-azure-ad` engine:
 
-```JavaScript
-
+       
+       ```JavaScript
+ 
         // Our Auth routes (section 3)
 
         // GET /auth/openid

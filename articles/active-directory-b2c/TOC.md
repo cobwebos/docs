@@ -45,6 +45,8 @@
 ## [身份验证协议](active-directory-b2c-reference-protocols.md)
 ## [令牌](active-directory-b2c-reference-tokens.md)
 
+## [威胁管理](active-directory-b2c-reference-threat-management.md)
+
 # 相关内容
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
@@ -55,7 +57,3 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
 ## [服务更新](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [支持](active-directory-b2c-support.md)
-
-<!--HONumber=Nov16_HO4-->
-
-

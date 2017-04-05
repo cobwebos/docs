@@ -6,7 +6,7 @@
 Azure Resource Manager 模板允许用户通过定义资源之间的依赖关系，使用 JSON 语言以声明方式指定 Azure IaaS 基础结构。 有关 Azure 资源管理器模板的详细概述，请参阅以下文章：
 
 * [资源组概述](../articles/azure-resource-manager/resource-group-overview.md)
-* [使用 Azure PowerShell 部署模板](../articles/virtual-machines/virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [使用 Azure PowerShell 部署模板](../articles/virtual-machines/windows/ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ### <a name="prerequisites"></a>先决条件
 1. 从[此处](https://azure.microsoft.com/downloads/)下载适合自己操作系统的 Azure 命令行工具。

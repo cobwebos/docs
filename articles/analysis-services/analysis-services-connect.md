@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/13/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 3992e327bbe887338234fc2d516b053f0750a151
-ms.openlocfilehash: 118ea84abb0de095ac515ee98a643718ca54c043
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: eccc181e2203a97de58005f9597613775338ebcc
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -41,7 +41,7 @@ ms.lasthandoff: 02/16/2017
 
 ## <a name="get-the-server-name"></a>获取服务器名称
 
-在连接之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，然后复制整个服务器名称。 如果组织中的其他用户也在连接此服务器，则可能需要将此服务器名称与他们共享。 指定服务器名称时，必须使用完整路径。
+在连接之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，然后复制整个服务器名称。 如果组织中的其他用户也要连接此服务器，则可以将此服务器名称与他们共享。 指定服务器名称时，必须使用完整路径。
 
 ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 02/16/2017
 > 
 > 
 
-1. 在 [Power BI Desktop](https://powerbi.microsoft.com/desktop/) 中，单击“获取数据” > “数据库” > “Azure Analysis Services”。
+1. 在 [Power BI Desktop](https://powerbi.microsoft.com/desktop/) 中，单击“获取数据” > “Azure” > “Microsoft Azure Analysis Services 数据库”。
 2. 在“服务器”中，从剪贴板粘贴服务器名称。
 3. 在“数据库”中，如果知道要连接到的表格模型数据库或透视的名称，请将其粘贴在此处。 否则，可将此字段留空。 可在下一屏幕上选择数据库或透视。
 4. 保留默认选中的“实时连接”选项，然后按“连接”。 如果系统提示输入帐户，请输入你组织的帐户。
@@ -68,14 +68,14 @@ ms.lasthandoff: 02/16/2017
 可通过使用 Excel 2016 中的“获取数据”或较低版本中的 Power Query 在 Excel 中连接到 Azure Analysis Services。 需要 [MSOLAP.7 提供程序](analysis-services-data-providers.md)。 不支持使用 Power Pivot 中的“导入表向导”进行连接。
 
 > [!NOTE]
-> 某些组织在延期频道上部署 Office 365 更新；这意味着从当前版本的版本更新最多将延迟 4 个月。 对于 Excel 2016 内部版本 1609.7369.2115 及更早版本，或 Excel 2013，可创建 Office 数据连接 (.odc) 文件并手动更新 MSOLAP.7 提供程序以连接到 Azure Analysis Services 服务器。 若要了解详细信息，请参阅[创建 .odc 文件](analysis-services-odc.md)。
+> 某些组织在延期频道上部署 Office 365 更新；这意味着从当前版本的版本更新最多将延迟 4 个月。 对于 Excel 2016 版本 1609.7369.2115 及更早版本或 Excel 2013，可创建 .odc 文件并手动更新 MSOLAP.7 提供程序以连接到服务器。 若要了解详细信息，请参阅[创建 .odc 文件](analysis-services-odc.md)。
 > 
 > 
 
 **从 Excel 2016 进行连接**
 
 1. 在 Excel 2016 的“数据”功能区上，单击“获取外部数据” > “从其他源获取” > “从 Analysis Services 获取”。
-2. 在“数据连接向导”的“服务器名称”中，从剪贴板粘贴服务器名称。 然后，在“登录凭据”中，选择“使用以下用户名和密码”，然后键入组织的用户名，例如 nancy@adventureworks.com, 和密码。
+2. 在“数据连接向导”的“服务器名称”中，从剪贴板粘贴服务器名称。 然后，在“登录凭据”中，选择“使用以下用户名和密码”，然后键入组织的用户名（例如 nancy@adventureworks.com）和密码。
 
     ![“在 Excel 中连接”登录](./media/analysis-services-connect/aas-connect-excel-logon.png)
 3. 在“选择数据库和表”中，选择数据库和模型或透视，然后单击“完成”。

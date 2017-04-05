@@ -17,9 +17,9 @@ ms.date: 06/24/2015
 ms.author: hbai
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: cb631a1bcbe73c18b06e247b29056a83cfa61a46
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: c0fc55d24506f669a74d67a803304ebf0b53bf21
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -178,7 +178,7 @@ ms.lasthandoff: 03/21/2017
         ssh-keygen (press [Enter]s to use default file names and empty passcode)
 4. 在 GitHub 添加 id_rsa.pub 或所选的公钥。 可以使用 SSH 密钥配置屏幕上的“添加 SSH 密钥”按钮来执行此操作。
    
-   ![Github 密钥](media/virtual-machines-linux-deis-cluster/github-key.png)
+   ![GitHub 密钥](media/virtual-machines-linux-deis-cluster/github-key.png)
    
    <p />
 5. 注册新用户：
