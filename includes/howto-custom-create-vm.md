@@ -44,6 +44,6 @@
 ## <a name="next-steps"></a>后续步骤
 创建虚拟机后，将自动启动它。 当门户显示状态为正在运行时，您可以登录到该虚拟机。 有关说明，请参阅以下文章之一：
 
-* [如何登录到运行 Linux 的虚拟机](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [如何登录到运行 Linux 的虚拟机](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [如何登录到运行 Windows Server 的虚拟机](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 

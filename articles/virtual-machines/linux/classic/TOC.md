@@ -1,16 +1,16 @@
-# [概述](../../virtual-machines-linux-azure-overview.md)
+# [概述](../overview.md)
 ## [映像](about-images.md)
 ## [VM 扩展](agents-and-extensions.md)
 ## [可用性](configure-availability.md)
 ## [常见问题](faq.md)
 
-# [入门](../../virtual-machines-linux-opensource-links.md)
+# [入门](../opensource-links.md)
 ## [使用门户创建 Linux VM](createportal.md)
 ## [安装 Azure CLI](../../../cli-install-nodejs.md)
-## [创建 SSH 密钥](../../virtual-machines-linux-mac-create-ssh-keys.md)
+## [创建 SSH 密钥](../mac-create-ssh-keys.md)
 
 # 如何
-## [计算](../../virtual-machines-linux-intro-on-azure.md)
+## [计算](../intro-on-azure.md)
 ### [创建自定义 VM](create-custom.md)
 ### [捕获 VM](capture-image.md)
 ### [将远程桌面与 Linux VM 一起使用](remote-desktop.md)

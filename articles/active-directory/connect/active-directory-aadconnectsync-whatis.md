@@ -54,7 +54,7 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 | [Azure AD Connect 同步服务功能](active-directory-aadconnectsyncservice-features.md) |介绍同步服务端，以及如何在 Azure AD 中更改同步设置。 |
 | [重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) |介绍如何启用并使用 **userPrincipalName** 和 **proxyAddresses** 重复属性值复原。 |
 | **操作和 UI** | |
-| [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) |介绍 Synchronization Service Manager UI，包括“操作”[](active-directory-aadconnectsync-service-manager-ui-operations.md)、“连接器”[](active-directory-aadconnectsync-service-manager-ui-connectors.md)、“Metaverse 设计器”[](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)和“Metaverse 搜索”[](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)选项卡。 |
+| [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) |介绍 Synchronization Service Manager UI，包括 [操作](active-directory-aadconnectsync-service-manager-ui-operations.md) 、[连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md) 、[Metaverse 设计器](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) 和 [Metaverse 搜索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md) 选项卡。 |
 | [操作任务和注意事项](active-directory-aadconnectsync-operations.md) |描述操作注意事项，例如灾难恢复。 |
 | **如何...** | |
 | [重置 Azure AD 帐户](active-directory-aadconnectsync-howto-azureadaccount.md) |如何重置用于从 Azure AD Connect 同步连接到 Azure AD 的服务帐户凭据。 |

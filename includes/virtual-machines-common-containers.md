@@ -2,7 +2,7 @@ Azure 云解决方案以虚拟机为基础构建（模拟物理计算机硬件�
 
 Azure 提供以下 Docker 值：
 
-* 提供[许多](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)[不同的](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方式，可根据具体需求为容器创建 Docker 主机
+* 提供[许多](../articles/virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)[不同的](../articles/virtual-machines/linux/dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方式，可根据具体需求为容器创建 Docker 主机
 * [Azure 容器服务](https://azure.microsoft.com/documentation/services/container-service/)使用 **marathon** 和 **swarm** 等协调器来创建容器主机的群集。
 * [Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md) 和[资源组模板](../articles/resource-group-authoring-templates.md)可简化复杂的分布式应用程序的部署和更新
 * 可与许多专有和开放源配置管理工具集成
@@ -92,19 +92,19 @@ IT 和运营专家还可以从容器与虚拟机的组合中获益。
 最近，Azure 发布了 [Azure 资源管理](../articles/resource-manager-deployment-model.md) REST API，并更新了 PowerShell 和 Azure CLI 工具，使之更容易使用。 用户可以使用包含 Azure 资源管理 API 的 [Azure Resource Manager 模板](../articles/resource-group-authoring-templates.md)部署、修改或重新部署整个应用程序拓扑，使用：
 
 * [使用模板的 Azure 门户](https://github.com/Azure/azure-quickstart-templates)&mdash;提示，使用“DeployToAzure”按钮
-* [Azure CLI](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure PowerShell 模块](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure CLI](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure PowerShell 模块](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="deployment-and-management-of-entire-groups-of-azure-vms-and-containers"></a>部署和管理整个组的 Azure VM 和容器
 有多个常用系统可部署整个组的 VM，并在其上安装 Docker（或其他 Linux 容器主机系统）作为可自动化组。 有关直接链接，请参阅下文的[容器和工具](#containers-and-vm-technologies)部分。 有许多系统都或多或少能实现这一点，此列表不能尽录。 根据你的技能组合和具体情况，它们可能有用，也可能不发挥作用。
 
-Docker 有自己的 VM 创建工具集 ([docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) 和一个负载均衡、docker-container 群集管理工具 ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json))。 此外，[Azure Docker VM 扩展程序](https://github.com/Azure/azure-docker-extension/blob/master/README.md)附带了默认的 [`docker-compose`](https://docs.docker.com/compose/) 支持，此功能可在多个容器内部署已配置的应用程序容器。
+Docker 有自己的 VM 创建工具集 ([docker-machine](../articles/virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) 和一个负载均衡、docker-container 群集管理工具 ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json))。 此外，[Azure Docker VM 扩展程序](https://github.com/Azure/azure-docker-extension/blob/master/README.md)附带了默认的 [`docker-compose`](https://docs.docker.com/compose/) 支持，此功能可在多个容器内部署已配置的应用程序容器。
 
 另外，用户还可以尝试使用 [Mesosphere 的数据中心操作系统 (DCOS)](http://docs.mesosphere.com/install/azurecluster/)。 DCOS 基于开放源 [mesos](http://mesos.apache.org/)“分布式系统内核”，有助于用户将数据中心视为一个可寻址服务进行处理。 DCOS 拥有适合于多个重要系统（[Spark](http://spark.apache.org/) 和 [Kafka](http://kafka.apache.org/) 及其他）的内置程序包，以及 [Marathon](https://mesosphere.github.io/marathon/)（一种容器控制系统）和 [Chronos](https://mesos.github.io/chronos/)（一种分布式计划程序）等内置服务。 Mesos 是借鉴了从 Twitter、AirBnb 和其他网络级企业学到的经验。 还可以使用 **swarm** 作为协调引擎。
 
 另外，[kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) 是一种用于 VM 和容器组管理的开放源系统，借鉴了从 Google 学习的经验。 用户甚至可以将 [kubernetes 与 weave 配合使用，以提供网络支持](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)。
 
-[Deis](http://deis.io/overview/) 是一种开放源“平台即服务”(PaaS)，可帮助在自己的服务器上轻松部署和管理应用程序。 Deis 构建在 Docker 和 CoreOS 的基础之上，可提供轻型 PaaS，其中包含一个受 Heroku 启发的工作流。 用户可以轻松[创建一个包含 3 个节点的 Azure VM 组并将 Deis 安装](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)到 Azure 上，然后[安装 Hello World Go 应用程序](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md#deploy-and-scale-a-hello-world-application)。
+[Deis](http://deis.io/overview/) 是一种开放源“平台即服务”(PaaS)，可帮助在自己的服务器上轻松部署和管理应用程序。 Deis 构建在 Docker 和 CoreOS 的基础之上，可提供轻型 PaaS，其中包含一个受 Heroku 启发的工作流。 用户可以轻松[创建一个包含 3 个节点的 Azure VM 组并将 Deis 安装](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)到 Azure 上，然后[安装 Hello World Go 应用程序](../articles/virtual-machines/linux/deis-cluster.md#deploy-and-scale-a-hello-world-application)。
 
 [CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html) 是一种 Linux 分发，可提供优化的占用空间和 Docker 支持，且具有名为 [rkt](https://github.com/coreos/rkt) 的自有容器系统，还有一个名为 [fleet](https://coreos.com/using-coreos/clustering/) 的容器组管理工具。
 
@@ -144,13 +144,13 @@ Docker 工具：
 
 Microsoft Azure 上的 Docker：
 
-* [适用于 Azure 上 的 Linux 的 Docker VM 扩展](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [适用于 Azure 上 的 Linux 的 Docker VM 扩展](../articles/virtual-machines/linux/dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Docker VM 扩展用户指南](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
 * [从 Azure 命令行接口 (Azure CLI) 使用 Docker VM 扩展](../articles/virtual-machines/linux/classic/cli-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [在 Azure 门户中使用 Docker VM 扩展](../articles/virtual-machines/linux/classic/portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [如何在 Azure 上使用 docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [如何在 Azure 上使用 docker-machine](../articles/virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [如何在 Azure 上将 docker 与 swarm 一起使用](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [在 Azure 上使用 Docker 和 Compose 入门](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [在 Azure 上使用 Docker 和 Compose 入门](../articles/virtual-machines/linux/docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用 Azure 资源组模板在 Azure 上快速创建 Docker 主机](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)
 * [对包含在容器内的应用程序的 `compose`](https://github.com/Azure/azure-docker-extension#11-public-configuration-keys) 提供内置支持
 * [在 Azure 上实现 Docker 专用注册表](../articles/virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -164,7 +164,7 @@ Linux 分发和 Azure 示例：
 * [CoreOS 上的 Fleet](https://coreos.com/using-coreos/clustering/)
 * Deis
 
-  * [创建一个包含 3 个节点的 Azure VM 组、安装 Deis，并启动 Hello World Go 应用程序](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  * [创建一个包含 3 个节点的 Azure VM 组、安装 Deis，并启动 Hello World Go 应用程序](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * Kubernetes
 
   * [使用 CoreOS 和 Weave 自动部署 Kubernetes 群集的完整指南](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)

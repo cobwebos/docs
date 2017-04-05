@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 25a35912b72f7f44b83ccd49f298b44665318418
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3dfa2c56dd6d3e0fe7757995d284cebe172eabc4
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,7 +35,7 @@ Kubernetes、DC/OS 和 Docker Swarm 群集在本地提供 HTTP 终结点。 对�
 ## <a name="prerequisites"></a>先决条件
 
 * [部署在 Azure 容器服务中](container-service-deployment.md)的 Kubernetes、DC/OS 或 Swarm 群集。
-* SSH RSA 私钥文件，对应于在部署期间添加到群集的公钥。 这些命令假设 SSH 私钥位于计算机上的 `$HOME/.ssh/id_rsa` 中。 有关详细信息，请参阅适用于 [OS X 和 Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 的说明。 如果 SSH 连接不起作用，可能需要[重置 SSH 密钥](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)。
+* SSH RSA 私钥文件，对应于在部署期间添加到群集的公钥。 这些命令假设 SSH 私钥位于计算机上的 `$HOME/.ssh/id_rsa` 中。 有关详细信息，请参阅适用于 [OS X 和 Linux](../virtual-machines/linux/mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/linux/ssh-from-windows.md) 的说明。 如果 SSH 连接不起作用，可能需要[重置 SSH 密钥](../virtual-machines/linux/troubleshoot-ssh-connection.md)。
 
 ## <a name="connect-to-a-kubernetes-cluster"></a>连接到 Kubernetes 群集
 

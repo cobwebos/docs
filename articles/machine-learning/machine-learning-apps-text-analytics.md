@@ -12,11 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 04/04/2017
 ms.author: onewth
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: ../cognitive-services/cognitive-services-text-analytics-quick-start
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: f4389705a81b531bd706cbabc0b4c3b171febd5f
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -360,10 +363,5 @@ API 以 JSON 格式返回输出，格式如下：
 | ID |记录的标识符。 等同于输入中包含的 ID。 |
 | TopicId |已为其分配记录的主题 ID。 |
 | 距离 |对记录属于主题的置信度。 距离越接近零表示置信度越高。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

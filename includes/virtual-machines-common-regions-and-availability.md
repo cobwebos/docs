@@ -81,14 +81,14 @@ Azure 允许用户在规定的地理区域（例如“美国西部”、“北�
 
 从 Azure 应用商店中的映像创建 VM 时，实际上是在使用模板。 Azure Resource Manager 模板是声明性的 JavaScript 对象表示法 (JSON) 文件，可用于创建包含 VM、存储、虚拟网络等的复杂应用程序环境。详细了解如何使用 [Azure Resource Manager 模板](../articles/azure-resource-manager/resource-group-overview.md)，包括如何[构建自己的模板](../articles/resource-group-authoring-templates.md)。
 
-也可以使用 [Azure CLI](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 创建自己的自定义映像并将其上载，快速创建符合特定构建要求的自定义 VM。
+也可以使用 [Azure CLI](../articles/virtual-machines/linux/upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Azure PowerShell](../articles/virtual-machines/windows/upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 创建自己的自定义映像并将其上载，快速创建符合特定构建要求的自定义 VM。
 
 ## <a name="availability-sets"></a>可用性集
 可用性集是 VM 的逻辑分组，可让 Azure 了解应用程序的构建方式，以便提供冗余和可用性。 建议在可用性集内创建两个或多个 VM，提供高度可用的应用程序，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 当单个 VM 使用 [Azure 高级存储](../articles/storage/storage-premium-storage.md)时，Azure SLA 适用于计划外维护事件。 可用性集由可防止硬件故障以及允许安全应用更新的两个额外分组构成 - 容错域 (FD) 和更新域 (UD)。
 
 ![更新域和容错域配置的概念图](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
 
-详细了解如何管理 [Linux VM](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Windows VM](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的可用性。
+详细了解如何管理 [Linux VM](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Windows VM](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的可用性。
 
 ### <a name="fault-domains"></a>容错域
 容错域是共享公用电源和网络交换机的基础硬件逻辑组，类似于本地数据中心内的机架。 在可用性集内创建 VM 时，Azure 平台会将 VM 自动分布到这些容错域。 此方法可限制潜在物理硬件故障、网络中断或断电的影响。
@@ -101,9 +101,4 @@ Azure 允许用户在规定的地理区域（例如“美国西部”、“北�
 
 ## <a name="next-steps"></a>后续步骤
 现在即可开始使用这些可用性和冗余功能构建 Azure 环境。 有关最佳实践的信息，请参阅 [Azure 可用性的最佳实践](../articles/best-practices-availability-checklist.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
