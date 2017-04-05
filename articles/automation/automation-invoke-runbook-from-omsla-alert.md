@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 8460ed6be3e922fb85f46982662d44eed21dda7c
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 81cf490eae7f283c0180875cb3a2ed2ffe6333c8
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/18/2017
 
 ## <a name="calling-a-runbook-using-a-webhook"></a>使用 Webhook 调用 Runbook
 
-使用 Webhook 可在 Azure 自动化中通过单个 HTTP 请求启动特定的 Runbook。  在将 [Log Analytics 警报](../log-analytics/log-analytics-alerts.md#creating-alert-rules)配置为使用 Webhook 以警报操作的形式调用 Runbook 之前，首先需要针对使用此方法调用的 Runbook 创建一个 Webhook。  请查看并遵循[创建 Webhook](automation-webhooks.md#creating-a-webhook) 一文中的步骤，别忘了要记下 Webhook URL，以便在配置警报规则时引用。   
+使用 Webhook 可在 Azure 自动化中通过单个 HTTP 请求启动特定的 Runbook。  在将 [Log Analytics 警报](../log-analytics/log-analytics-alerts.md#alert-rules)配置为使用 Webhook 以警报操作的形式调用 Runbook 之前，首先需要针对使用此方法调用的 Runbook 创建一个 Webhook。  请查看并遵循[创建 Webhook](automation-webhooks.md#creating-a-webhook) 一文中的步骤，别忘了要记下 Webhook URL，以便在配置警报规则时引用。   
 
 ## <a name="calling-a-runbook-directly"></a>直接调用 Runbook
 

@@ -6,7 +6,7 @@
 | 每个订阅的[共同管理员数](../articles/billing-add-change-azure-subscription-administrator.md) |不受限制 |不受限制 |
 | 每个订阅的[存储帐户数](../articles/storage/storage-create-storage-account.md) |200 |200<sup>2</sup> |
 | 每个订阅的[资源组数](../articles/azure-resource-manager/resource-group-overview.md) |800 |800 |
-| 每个订阅的[可用性集数](../articles/virtual-machines/virtual-machines-windows-manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每个区域 2000 个 |每个区域 2000 个 |
+| 每个订阅的[可用性集数](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每个区域 2000 个 |每个区域 2000 个 |
 | 资源管理器 API 读取次数 |每小时 15000 次 |每小时 15000 次 |
 | 资源管理器 API 写入次数 |每小时 1200 次 |每小时 1200 次 |
 | 资源管理器 API 请求大小 |4194304 字节 |4194304 字节 |
@@ -24,9 +24,4 @@
 > <!-- -->
 > 
 > 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

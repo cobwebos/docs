@@ -6,7 +6,7 @@
 ## <a name="can-i-migrate-my-vm-created-in-the-classic-deployment-model-to-the-new-resource-manager-model"></a>是否可以将经典部署模型中创建的 VM 迁移到新的 Resource Manager 模型？
 是的。 有关如何迁移的说明，请参阅：
 
-* [使用 Azure PowerShell 从经典部署迁移到 Azure Resource Manager 部署](../articles/virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)。
+* [使用 Azure PowerShell 从经典部署迁移到 Azure Resource Manager 部署](../articles/virtual-machines/windows/migration-classic-resource-manager-ps.md)。
 * [使用 Azure CLI 从经典部署迁移到 Azure Resource Manager 部署](../articles/virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)。
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>我可以在 Azure VM 上运行什么程序？
@@ -26,7 +26,7 @@
 Azure Resource Manager 部署模型和 Azure 门户已弃用地缘组功能。 对于经典 Azure 门户，我们将禁止支持创建地缘组以及创建固定到地缘组的存储资源。 你无需修改现有的使用地缘组的云服务。 但是，你不能在新的云服务中使用地缘组，除非 Azure 支持专业人员建议使用它们。
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
-每个数据磁盘的容量高达 1 TB。 你可以使用的数据磁盘的数目取决于虚拟机的大小。 有关详细信息，请参阅[虚拟机大小](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+每个数据磁盘的容量高达 1 TB。 你可以使用的数据磁盘的数目取决于虚拟机的大小。 有关详细信息，请参阅[虚拟机大小](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存储。 每个磁盘都是一个 .vhd 文件，以页 blob 形式存储。 有关定价详细信息，请参阅 [Storage Pricing Details](http://go.microsoft.com/fwlink/p/?LinkId=396819)（存储定价详细信息）。
 
@@ -40,7 +40,7 @@ Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHD
 在许多方面，它们与“第 1 代”Hyper-V VM 类似，但并非完全相同。 两种类型的虚拟机都提供虚拟化硬件，并且兼容 VHD 格式虚拟硬盘。 这意味着可以在 Hyper-V 与 Azure 之间交换使用它们。 同时存在以下三大区别，有时也会使 Hyper-V 用户感到惊讶：
 
 * Azure 不提供对虚拟机的控制台访问。 在 VM 完成启动前，无法对其进行访问。
-* 大多数[大小](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的 Azure VM 只有 1 个虚拟网络适配器，这意味着它们也只能具有 1 个外部 IP 地址。 （A8 和 A9 大小的 VM 可使用第二个网络适配器在实例之间进行应用程序通信，但仅限特定方案。）
+* 大多数[大小](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的 Azure VM 只有 1 个虚拟网络适配器，这意味着它们也只能具有 1 个外部 IP 地址。 （A8 和 A9 大小的 VM 可使用第二个网络适配器在实例之间进行应用程序通信，但仅限特定方案。）
 * Azure VM 不支持第 2 代 Hyper-V VM 功能。 有关这些功能的详细信息，请参阅 [Virtual Machine Specifications for Hyper-V](http://technet.microsoft.com/library/dn592184.aspx)（Hyper-V 虚拟机规范）和 [Generation 2 Virtual Machine Overview](https://technet.microsoft.com/library/dn282285.aspx)（第 2 代虚拟机概述）。
 
 ## <a name="can-these-virtual-machines-use-my-existing-on-premises-networking-infrastructure"></a>这些虚拟机可否使用现有的本地网络基础结构？
@@ -52,14 +52,14 @@ Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHD
 你需要通过适用于 Windows VM 的远程桌面连接或适用于 Linux VM 的安全外壳 (SSH) 建立登录虚拟机所需的远程连接。 有关说明，请参阅：
 
 * [如何登录到运行 Windows Server 的虚拟机](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 除非将服务器配置为远程桌面服务会话主机，否则最多支持 2 个并发连接。  
-* [如何登录到运行 Linux 的虚拟机](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增大此数目。
+* [如何登录到运行 Linux 的虚拟机](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增大此数目。
 
-如果在使用远程桌面或 SSH 时遇到问题，请安装和使用 [VMAccess](../articles/virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 扩展帮助解决问题。
+如果在使用远程桌面或 SSH 时遇到问题，请安装和使用 [VMAccess](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 扩展帮助解决问题。
 
 对于 Windows VM，其他选项包括：
 
 * 在 Azure 经典门户中找到 VM，然后单击命令栏中的“重置远程访问”。
-* 查看[解决远程桌面连接到基于 Windows 的 Azure 虚拟机的问题](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 查看[解决远程桌面连接到基于 Windows 的 Azure 虚拟机的问题](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 使用 Windows PowerShell 远程连接到 VM，或创建其他终结点以方便其他资源连接到 VM。 有关详细信息，请参阅 [How to Set Up Endpoints to a Virtual Machine](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（如何设置虚拟机的终结点）。
 
 如果熟悉 Hyper-V，可以寻找类似于 VMConnect 的工具。 Azure 不提供类似的工具，因为不支持通过控制台来访问虚拟机。
@@ -68,7 +68,7 @@ Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHD
 不得使用临时磁盘（Windows 默认的 D: 盘或 Linux 的 /dev/sdb1）存储数据。 这些磁盘只是临时存储空间，因此存在丢失数据且无法恢复数据的风险。 将虚拟机迁移到其他主机时，可能会发生这种情况。 调整虚拟机大小，更新主机和主机硬件故障都是需要迁移动虚拟机的原因。
 
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>如何更改临时磁盘的驱动器号？
-在 Windows 虚拟机中，可以通过移动页面文件和重新分配驱动器号更改驱动器号，但需要确保按特定顺序执行这些步骤。 有关说明，请参阅[更改 Windows 临时磁盘的驱动器号](../articles/virtual-machines/virtual-machines-windows-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+在 Windows 虚拟机中，可以通过移动页面文件和重新分配驱动器号更改驱动器号，但需要确保按特定顺序执行这些步骤。 有关说明，请参阅[更改 Windows 临时磁盘的驱动器号](../articles/virtual-machines/windows/change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="how-can-i-upgrade-the-guest-operating-system"></a>如何升级来宾操作系统？
 术语“升级”通常是指迁移到更新的操作系统版本，同时保留原有硬件。 对于 Azure VM，迁移到更新的 Linux 版本和 Windows 版本是不同过程：
@@ -81,7 +81,7 @@ Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHD
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>虚拟机的默认用户名和密码是什么？
 Azure 提供的映像没有预先配置的用户名和密码。 使用其中一个映像创建虚拟机时，需提供用于登录到虚拟机的用户名和密码。
 
-如果忘记用户名或密码且已安装 VM 代理，可以安装并使用 [VMAccess](../articles/virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 扩展解决该问题。
+如果忘记用户名或密码且已安装 VM 代理，可以安装并使用 [VMAccess](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 扩展解决该问题。
 
 其他详细信息：
 
@@ -120,12 +120,12 @@ Azure 根据 VM 的大小和操作系统按小时价格计费。 对于不足一
 
 因计划内维护而重新启动时，你还可以使用 Azure 经典门户或 Azure PowerShell 查看重新启动日志。 有关详细信息，请参阅[查看 VM 重新启动日志](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)。
 
-若要提供冗余，可将两个或多个采用类似配置的 VM 放到同一个可用性集中。 这可以确保在计划内或计划外维护期间至少有一个 VM 可用。 对于此配置，Azure 可以保证某些级别的 VM 可用性。 有关详细信息，请参阅[管理虚拟机的可用性](../articles/virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要提供冗余，可将两个或多个采用类似配置的 VM 放到同一个可用性集中。 这可以确保在计划内或计划外维护期间至少有一个 VM 可用。 对于此配置，Azure 可以保证某些级别的 VM 可用性。 有关详细信息，请参阅[管理虚拟机的可用性](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="additional-resources"></a>其他资源
 [关于 Azure 虚拟机](../articles/virtual-machines/virtual-machines-linux-about.md)
 
-[创建 Linux 虚拟机的不同方式](../articles/virtual-machines/virtual-machines-linux-creation-choices.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[创建 Linux 虚拟机的不同方式](../articles/virtual-machines/linux/creation-choices.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[创建 Windows 虚拟机的不同方式](../articles/virtual-machines/virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[创建 Windows 虚拟机的不同方式](../articles/virtual-machines/windows/creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

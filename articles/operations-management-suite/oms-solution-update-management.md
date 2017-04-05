@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: f709fe00cce61f6766a0a56ea31b023e00c91fce
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 18aa17f6af7fe492f3875e1af7cb06b613f171af
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -82,7 +82,7 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 ![更新管理摘要磁贴](media/oms-solution-update-management/update-management-summary-tile.png)  
 
 ## <a name="viewing-update-assessments"></a>查看更新评估
-单击“更新管理”磁贴打开“更新管理”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”或单击列标题运行返回所有记录的日志搜索。。
+单击“更新管理”磁贴打开“更新管理”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”或单击列标题运行返回所有记录的日志搜索。
 
 | 列 | 说明 |
 | --- | --- |
@@ -106,7 +106,7 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 
 通过 Azure 自动化中的 runbook 安装更新。  无法查看这些 runbook，它们不需要任何配置。  创建更新的部署时，它创建计划，并在指定的时间为包括在内的计算机启动主更新 runbook。  而此主要 runbook 在每个 Windows 代理上启动子 runbook，来执行所需更新的安装。  
 
-对于从 Azure 应用商店中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。  对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。  
+对于从 Azure 应用商店中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/linux/update-infrastructure-redhat.md)。  对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。  
 
 ### <a name="viewing-update-deployments"></a>查看更新部署
 单击“更新部署” 磁贴以查看现有的更新部署列表。  这些对象按状态分组 – **已计划**、**正在运行**和 **已完成**。<br><br> ![更新部署计划页](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
