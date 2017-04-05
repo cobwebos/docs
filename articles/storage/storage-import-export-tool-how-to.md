@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 导入/导出工具 - v1 | Microsoft Docs"
-description: "了解如何使用导入/导出工具为导入作业准备硬盘驱动器，以修复导入作业或导出作业。"
+title: "使用 Azure 导入/导出工具 | Microsoft Docs"
+description: "了解如何使用导入/导出工具为导入作业准备硬盘驱动器、修复导入作业或导出作业。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: ca2d4bf2b1e1cb56910fa3ee7af6e45b6b77b450
-ms.openlocfilehash: 7c628022a6de01de50f50256bd2ea0cdba2c2555
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 86073f5d15253d658fcb371e913dd3a543a2b075
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -36,8 +37,6 @@ ms.openlocfilehash: 7c628022a6de01de50f50256bd2ea0cdba2c2555
 - 修复导出作业。 
 - 排查在使用 Azure 导入/导出工具的过程中遇到的问题。 
 
+## <a name="next-steps"></a>后续步骤
 
-
-<!--HONumber=Dec16_HO3-->
-
-
+* [设置 WAImportExport 工具](storage-import-export-tool-setup.md)

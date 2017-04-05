@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/11/2016
 ms.author: ccompy
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1184277f90dce4215de2add8b48c022e013d191d
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5c8268a90c5e14839ed97daa6a186d170f5a4cc3
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -95,7 +95,7 @@ VNET 集成不支持某些功能，其中包括：
 ![][8]
 
 ##### <a name="enabling-point-to-site-in-a-resource-manager-vnet"></a>在 Resource Manager VNET 中启用点到站点连接
-若要为 Resource Manager VNET 配置网关和点到站点连接，需使用 PowerShell，如下所述：[使用 PowerShell 配置虚拟网络的点到站点连接][V2VNETP2S]。  尚未提供执行此功能的 UI。 
+若要使用网关和点到站点配置 Resource Manager VNET，可以使用此处（[使用 PowerShell 配置与虚拟网络的点到站点连接][V2VNETP2S]）所述的 PowerShell，或使用此处（[使用 Azure 门户配置与 VNet 的点到站点连接][V2VNETPortal]）所述的 Azure 门户。  尚未提供执行此功能的 UI。 
 
 ### <a name="creating-a-pre-configured-vnet"></a>创建预先配置的 VNET
 若要创建配置了网关和点到站点连接的新 VNET，则可使用应用服务网络 UI 来执行该操作，但仅限于 Resource Manager VNET。  若要创建配置了网关和点到站点连接的经典 VNET，则需通过“网络”用户界面手动执行该操作。 
@@ -300,4 +300,5 @@ VNET 集成功能的一大好处是，如果 VNET 通过站点到站点 VPN 连�
 [IntPowershell]: http://azure.microsoft.com/documentation/articles/app-service-vnet-integration-powershell/
 [ASEintro]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
 [ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
+[V2VNETPortal]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
 

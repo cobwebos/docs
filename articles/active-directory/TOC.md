@@ -128,7 +128,6 @@
 
 ## 管理设备
 ### [注册设备](active-directory-device-registration-overview.md)
-#### [管理自动注册](active-directory-device-registration.md)
 #### [设置](active-directory-conditional-access-automatic-device-registration-setup.md)
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
 #### [常见问题](active-directory-device-registration-faq.md)
@@ -161,7 +160,6 @@
 ##### [Azure 门户](application-proxy-publish-azure-portal.md)
 ##### [经典门户](active-directory-application-proxy-publish.md)
 
-#### [用于 Azure AD 的 PingAccess](application-proxy-ping-access.md)
 #### [安全性](application-proxy-security-considerations.md)
 #### [网络](application-proxy-network-topology-considerations.md)
 #### [远程桌面](application-proxy-publish-remote-desktop.md)
@@ -174,7 +172,8 @@
 #### [自定义域](active-directory-application-proxy-custom-domains.md)
 #### [访问应用](active-directory-appssoaccess-whatis.md)
 ##### [Azure 门户](application-proxy-sso-azure-portal.md)
-#### [单一登录](active-directory-application-proxy-sso-using-kcd.md)
+#### [使用 KCD 执行 SSO](active-directory-application-proxy-sso-using-kcd.md)
+#### [使用标头执行 SSO](application-proxy-ping-access.md)
 #### [声明感知应用](active-directory-application-proxy-claims-aware-apps.md)
 #### [本机客户端应用](active-directory-application-proxy-native-client.md)
 #### [自定义主页](application-proxy-office365-app-launcher.md)

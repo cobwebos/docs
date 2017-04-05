@@ -1,7 +1,6 @@
 ---
-
-title: "为导入作业准备硬盘驱动器 | Microsoft Docs"
-description: "了解如何为 Microsoft Azure 导入/导出服务的导入作业准备一个或多个硬盘驱动器"
+title: "为 Azure 导入/导出的导入作业准备硬盘驱动器 - v1 | Microsoft Docs"
+description: "了解如何使用 WAImportExport v1 工具准备硬盘驱动器，以便为 Azure 导入/导出服务创建导入作业。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -16,8 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: d4894b4168a524d2378048f2da091298fb010d67
-ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 5ec2f1346e7c9723aeca45f1c278d0731b3a43b5
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 
  有关示例工作流，请参阅[为导入作业准备硬盘驱动器的示例工作流](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)。
 
-##  <a name="a-nameprepareharddrivesidentifythedatatobeimporteda-identify-the-data-to-be-imported"></a><a name="PrepareHardDrives_IdentifytheDatatoBeImported"></a>确定要导入的数据
+## <a name="identify-the-data-to-be-imported"></a>确定要导入的数据
  创建导入作业的第一个步骤是确定要导入哪些目录和文件， 这可以是目录列表、唯一文件列表或两者的组合。 包含某个目录时，该目录及其子目录中的所有文件都将成为导入作业的一部分。
 
 > [!NOTE]
@@ -43,7 +43,7 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 >
 >  目前，Microsoft Azure 导入/导出工具存在以下限制：如果目录包含的数据超过硬盘驱动器可包含的数据，该目录需要分解为较小目录。 例如，如果目录包含 2.5TB 数据，而硬盘驱动器的容量仅为 2TB，则需要将此 2.5TB 目录分解为多个小目录。 该工具的更高版本中将解除该限制。
 
-##  <a name="a-nameprepareharddrivesidentifythedestinationlocationsintheblobservicea-identify-the-destination-locations-in-the-blob-service"></a><a name="PrepareHardDrives_IdentifytheDestinationLocationsintheBlobService"></a>在 Blob 服务中确定目标位置
+## <a name="identify-the-destination-locations-in-the-blob-service"></a>在 Blob 服务中确定目标位置
  对于要导入的每个目录或文件，需要在 Azure Blob 服务中指定一个目标虚拟目录或 Blob。 这些目标将用作 Azure 导入/导出工具的输入。 请注意，目录应使用正斜杠字符“/”来分隔。
 
  下表显示了 Blob 目标的一些示例：
@@ -55,7 +55,7 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 |K:\Temp\FavoriteVideo.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteVideo.ISO|
 |\\\myshare\john\music|https://mystorageaccount.blob.core.windows.net/music|
 
-##  <a name="a-nameprepareharddrivesdeterminehowmanydrivesareneededa-determine-how-many-drives-are-needed"></a><a name="PrepareHardDrives_DetermineHowManyDrivesAreNeeded"></a>确定所需的驱动器数
+## <a name="determine-how-many-drives-are-needed"></a>确定所需的驱动器数
  接下来，需要确定：
 
 -   存储数据所需的硬盘驱动器数。
@@ -64,8 +64,8 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 
  确保准备好所需数量的硬盘驱动器，以便能够存储所要传输的数据。
 
-##  <a name="a-nameprepareharddrivescopydatatoasingleharddrivea-copy-data-to-your-hard-drive"></a><a name="PrepareHardDrives_CopyDatatoaSingleHardDrive"></a>将数据复制到硬盘驱动器
- 本部分介绍如何调用 Azure 导入/导出工具，将数据复制到一个或多个硬盘驱动器。 每次调用 Azure 导入/导出工具都会创建一个新的*复制会话*。 需要为数据复制到的每个驱动器至少创建一个复制会话；在某些情况下，可能需要使用多个复制会话将所有数据复制到单个驱动器。 下面是可能需要多个复制会话的一些原因：
+## <a name="copy-data-to-your-hard-drive"></a>将数据复制到硬盘驱动器
+ 本部分介绍如何调用 Azure 导入/导出工具，将数据复制到一个或多个硬盘驱动器。 每次调用 Azure 导入/导出工具都会创建一个新的复制会话。 需要为数据复制到的每个驱动器至少创建一个复制会话；在某些情况下，可能需要使用多个复制会话将所有数据复制到单个驱动器。 下面是可能需要多个复制会话的一些原因：
 
 -   必须为将数据复制到的每个驱动器创建一个单独的复制会话。
 
@@ -121,7 +121,7 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 |**/logdir:**<LogDirectory\>|`Optional.` 日志目录指定用于存储详细日志和临时清单文件的目录。 如果未指定，则使用当前目录作为日志目录。|
 
 ### <a name="parameters-required-for-all-copy-sessions"></a>所有复制会话所需的参数
- 日记文件包含硬盘驱动器的所有复制会话的状态。 它还包含创建导入作业所需的信息。 运行 Azure 导入/导出工具时，始终必须指定一个日志文件，以及一个复制会话 ID。
+ 日记文件包含硬盘驱动器的所有复制会话的状态。 它还包含创建导入作业所需的信息。 运行 Azure 导入/导出工具时，必须始终指定一个日志文件，以及一个复制会话 ID：
 
 |||
 |-|-|
@@ -174,18 +174,14 @@ WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AbortSession
 
  如果异常终止，则只能中止最后的复制会话。 请注意，无法中止驱动器的第一个复制会话。 在此情况下，必须重新启动包含新日记文件的复制会话。
 
-## <a name="see-also"></a>另请参阅
- [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)
- [在导入过程中设置属性和元数据](storage-import-export-tool-setting-properties-metadata-import-v1.md)
- [为导入作业准备硬盘驱动器的示例工作流](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
- [常用命令快速参考](storage-import-export-tool-quick-reference-v1.md) 
- [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)
- [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)
- [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)
- [Azure 导入/导出工具故障排除](storage-import-export-tool-troubleshooting-v1.md)
+## <a name="next-steps"></a>后续步骤
 
-
-
-<!--HONumber=Dec16_HO3-->
-
+* [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)
+* [在导入过程中设置属性和元数据](storage-import-export-tool-setting-properties-metadata-import-v1.md)
+* [为导入作业准备硬盘驱动器的示例工作流](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
+* [常用命令快速参考](storage-import-export-tool-quick-reference-v1.md) 
+* [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)
+* [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)
+* [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)
+* [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
 

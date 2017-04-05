@@ -1,6 +1,6 @@
 ---
 title: "为 Azure 导入/导出创建导入作业 | Microsoft Docs"
-description: "了解如何为 Microsoft Azure 导入/导出服务创建导入作业"
+description: "了解如何为 Microsoft Azure 导入/导出服务创建导入作业。"
 author: muralikk
 manager: syadav
 editor: syadav
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
-ms.openlocfilehash: 84ba5256c3ee485af9a1a6bccc0571f93c9c0ab7
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 3a0ac3de9828903b7ca66c15e5422d1228e2a731
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -105,6 +105,7 @@ ms.lasthandoff: 02/16/2017
 ## <a name="updating-the-import-job-with-your-shipping-information"></a>使用寄送信息更新导入作业
 获取跟踪号后，请调用[更新作业属性](/api/storageimportexport/jobs#Jobs_Update)操作更新承运人名称、作业跟踪号以及运送回邮的承运人帐号。 可以选择性地指定驱动器数量和寄送日期。
 
-## <a name="see-also"></a>另请参阅
-[使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
+## <a name="next-steps"></a>后续步骤
+
+* [使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
 

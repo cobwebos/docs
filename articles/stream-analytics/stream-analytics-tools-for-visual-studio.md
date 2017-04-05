@@ -4,20 +4,21 @@ description: "用于 Visual Studio 的 Azure 流分析工具入门教程"
 keywords: visual studio
 documentationcenter: 
 services: stream-analytics
-author: 
-manager: 
-editor: 
+author: jeffstokes72
+manager: jhubbard
+editor: cgronlun
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/01/2017
-ms.author: 
+ms.date: 03/28/2017
+ms.author: sujie
 translationtype: Human Translation
-ms.sourcegitcommit: 81a5678051b026a16bdae2f2eab7ead2c17f9563
-ms.openlocfilehash: 4874c52b24d9c69fa1d1648035102aaef276f944
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d0125dda4df69279e49a9fad4dc28dcbf6368322
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -56,28 +57,28 @@ ms.openlocfilehash: 4874c52b24d9c69fa1d1648035102aaef276f944
 2. 使用 Azure 帐户登录。 
 
 ## <a name="define-input-sources"></a>定义输入源
-1.  在“解决方案资源管理器”中展开“输入”节点，将 **Input.json** 重命名为 **EntryStream.json**。 双击“EntryStream.json”。
-2.  “输入别名”现在应为 **EntryStream**。 请注意，输入别名是要在查询脚本中使用的别名。 
-3.  “源类型”为“数据流”
-4.  源是**事件中心**。
-5.  “服务总线命名空间”应是下拉列表中的 **tollData** 命名空间。
-6.  事件中心名称应设置为 **entry**。
-7.  事件中心策略名称为 **RootManageSharedAccessKey**（默认值）。
-8.  选择“JSON”作为“事件序列化格式”，选择“UTF8”作为“编码”。
+1.    在“解决方案资源管理器”中展开“输入”节点，将 **Input.json** 重命名为 **EntryStream.json**。 双击“EntryStream.json”。
+2.    “输入别名”现在应为 **EntryStream**。 请注意，输入别名是要在查询脚本中使用的别名。 
+3.    “源类型”为“数据流”
+4.    源是**事件中心**。
+5.    “服务总线命名空间”应是下拉列表中的 **tollData** 命名空间。
+6.    事件中心名称应设置为 **entry**。
+7.    事件中心策略名称为 **RootManageSharedAccessKey**（默认值）。
+8.    选择“JSON”作为“事件序列化格式”，选择“UTF8”作为“编码”。
    
    设置看起来类似于：
    
    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-01.png)
    
-9.  单击页面底部的“保存”，完成向导操作。 现在，可以添加另一个输入源来创建出口流。 右键单击输入节点，然后单击“新建项”。
+9.    单击页面底部的“保存”，完成向导操作。 现在，可以添加另一个输入源来创建出口流。 右键单击输入节点，然后单击“新建项”。
    
    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-02.png)
    
-10. 在弹出的窗口中选择“Azure 流分析输入”，将“名称”更改为 **ExitStream.json**。 单击 **“添加”**。
+10.    在弹出的窗口中选择“Azure 流分析输入”，将“名称”更改为 **ExitStream.json**。 单击 **“添加”**。
    
    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-03.png)
    
-11. 在项目中双击“ExitStream.json”，然后遵循配置入口流时使用的相同步骤填写信息。 请确保按以下屏幕截图所示输入“事件中心名称”的值。
+11.    在项目中双击“ExitStream.json”，然后遵循配置入口流时使用的相同步骤填写信息。 请确保按以下屏幕截图所示输入“事件中心名称”的值。
    
    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-04.png)
    
@@ -87,21 +88,21 @@ ms.openlocfilehash: 4874c52b24d9c69fa1d1648035102aaef276f944
    
    接下来，为包含汽车注册数据的 blob 文件添加引用数据输入。
    
-12. 在项目中右键单击“输入”节点，然后遵循配置流输入时使用的相同过程，但这次要选择“引用数据”而不是“数据流”，并且“输入别名”是 **Registration**。
+12.    在项目中右键单击“输入”节点，然后遵循配置流输入时使用的相同过程，但这次要选择“引用数据”而不是“数据流”，并且“输入别名”是 **Registration**。
    
    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-06.png)
    
-13. 选择包含 **tolldata** 的存储帐户。 容器名称应为 **tolldata**，**路径模式**应为 **registration.json**。 此文件名区分大小写，并且应该全为小写。
-14. 单击“保存”完成向导操作。
+13.    选择包含 **tolldata** 的存储帐户。 容器名称应为 **tolldata**，**路径模式**应为 **registration.json**。 此文件名区分大小写，并且应该全为小写。
+14.    单击“保存”完成向导操作。
 
 现在，已定义所有输入。
 
 ## <a name="define-output"></a>定义输出
-1.  在“解决方案资源管理器”中展开“输入”节点，然后双击“Output.json”。
-2.  将“输出别名”设置为 **output**，然后将“接收器”设置为“SQL 数据库”。
-2.  输入数据库名称：**TollDataDB**。
-3.  在“用户名”字段中输入“tolladmin”、在“密码”字段中输入“123toll!” ，并在“表”字段中输入“TollDataRefJoin”。
-4.  单击“保存” 。
+1.    在“解决方案资源管理器”中展开“输入”节点，然后双击“Output.json”。
+2.    将“输出别名”设置为 **output**，然后将“接收器”设置为“SQL 数据库”。
+2.    输入数据库名称：**TollDataDB**。
+3.    在“用户名”字段中输入“tolladmin”、在“密码”字段中输入“123toll!” ，并在“表”字段中输入“TollDataRefJoin”。
+4.    单击“保存” 。
 
 ![定义输出](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-output-01.png)
  
@@ -124,7 +125,8 @@ ms.openlocfilehash: 4874c52b24d9c69fa1d1648035102aaef276f944
 
 既然已经编写了第一个 Azure 流分析查询，现在就可以使用位于 TollApp 文件夹中以下路径的示例数据文件来测试该查询：
 
-**..\TollApp\TollApp\Data**
+<seg>
+  **..\TollApp\TollApp\Data**</seg>
 
 此文件夹包含以下文件：• Entry.json • Exit.json • Registration.json
 
@@ -252,10 +254,5 @@ ms.openlocfilehash: 4874c52b24d9c69fa1d1648035102aaef276f944
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -4,7 +4,7 @@ description: "介绍如何为连接到运行 Windows Server 2012 R2 的主机的
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 879fd0f9-c763-4fa0-a5ba-f589a825b2df
 ms.service: storsimple
@@ -12,16 +12,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/17/2016
+ms.date: 03/27/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: d07d1c838d99d0de0c5b62aaf42330b447df102c
-ms.openlocfilehash: 4483a395659a09e88fc4174e622143d9acaedf61
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 7b484c27157bd0a261adbf81d66b73a78e252955
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>为 StorSimple 设备配置多路径 I/O
-Microsoft 针对 Windows Server 中的多路径 I/O (MPIO) 功能提供内置支持，帮助构建高度可用、可容错的 SAN 配置。 MPIO 使用冗余的物理路径组件（适配器、电缆和交换机）在服务器与存储设备之间创建逻辑路径。 如果组件故障导致某条逻辑路径发生故障，多路径逻辑将使用备用路径执行 I/O，使应用程序仍可访问其数据。 另外，根据具体的配置，MPIO 还可以通过在这些路径之间重新进行负载均衡来提高性能。 有关详细信息，请参阅 [MPIO 概述](https://technet.microsoft.com/library/cc725907.aspx "MPIO 的概述和功能")。  
+Microsoft 针对 Windows Server 中的多路径 I/O (MPIO) 功能提供内置支持，帮助构建高度可用、可容错的 SAN 配置。 MPIO 使用冗余的物理路径组件（适配器、电缆和交换机）在服务器与存储设备之间创建逻辑路径。 如果发生组件故障，导致某条逻辑路径失败，则多路径逻辑将使用备用路径执行 I/O，以便应用程序仍然可以访问其数据。 另外，根据你的配置，MPIO 还可以通过在这些路径之间重新进行负载平衡来提高性能。 有关详细信息，请参阅 [MPIO 概述](https://technet.microsoft.com/library/cc725907.aspx "MPIO 的概述和功能")。  
 
 为实现 StorSimple 解决方案的高可用性，应在 StorSimple 设备上配置 MPIO。 在运行 Windows Server 2012 R2 的主机服务器上安装 MPIO 后，服务器可以承受链路、网络或接口故障。 
 
@@ -104,7 +105,7 @@ MPIO 是 Windows 服务器上的一项可选功能，默认情况下并未安装
    * 单击“确定”返回到“iSCSI 发起程序属性”对话框。
 9. 单击“属性”。 在“属性”对话框中，单击“添加会话”。
 10. 在“连接到目标”对话框中，选中“启用多路径”复选框。 单击“高级”。
-11. 在“高级设置”对话框中执行以下操作：                                        
+11. 在“高级设置”对话框中：                                        
     
     * 在“本地适配器”下拉列表中，选择“Microsoft iSCSI 发起程序”。
     * 在“发起程序 IP”下拉列表中，选择与主机对应的 IP 地址。 在本例中，我们要将设备上的两个网络接口连接到主机上的单个网络接口。 因此，此接口与提供给第一个会话的接口相同。
@@ -122,22 +123,21 @@ MPIO 是 Windows 服务器上的一项可选功能，默认情况下并未安装
     * 重试计数 = 3
     * PDO 删除期限 = 20
     * 重试间隔 = 1
-    * 已启用路径验证 = 未选中。
+    * 已启用路径验证 = 不选中。
 
 > [!NOTE]
 > **不要修改默认参数。**
-> 
-> 
+
 
 ## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>步骤 4：配置 MPIO 以实现高可用性和负载均衡
 为了实现基于多路径的高可用性和负载均衡，必须手动添加多个会话以声明多个可用路径。 例如，如果主机有两个接口连接到 SAN，设备有两个接口连接到 SAN，则需要配置具有正确路径排列的四个会话（如果每个 DATA 接口和主机接口在不同的 IP 子网上并且不可路由，则只需两个会话）。
 
+**建议设备和应用程序主机之间至少具有 4 个活动平行会话。** 这可通过在 Windows Server 系统上启用 4 个网络接口实现。 在 Windows Server 主机上的硬件或操作系统级别使用物理网络接口或网络虚拟化技术。 设备上具有 2 个网络接口时，此配置将产生 8 个会话，其中 4 个为活动会话（连接到活动控制器），另外 4 个为被动会话（连接到被动控制器）。 此配置有助于优化设备和云吞吐量。
+
 > [!IMPORTANT]
 > **建议不要将 1 GbE 和 10 GbE 网络接口混合使用。如果要使用两种网络接口，它们的类型应该相同。**
-> 
-> 
 
-以下过程描述当有两个网络接口的 StorSimple 设备连接到有两个网络接口的主机时，如何添加会话。
+以下过程描述当有两个网络接口的 StorSimple 设备连接到有两个网络接口的主机时，如何添加会话。 仅提供 2 个活动会话。 对于 2 个网络接口连接到具有 4 个网络接口的主机的 StorSimple 设备，采用相同的过程。 需要配置 8 个而不是此处所述的 4 个会话。
 
 ### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>配置 MPIO 以实现高可用性和负载均衡
 1. 执行目标发现：在“iSCSI 发起程序属性”对话框中，单击“发现”选项卡，然后单击“发现门户”。
@@ -165,14 +165,9 @@ MPIO 是 Windows 服务器上的一项可选功能，默认情况下并未安装
    4. 单击“确定”返回到“iSCSI 发起程序属性”对话框。 现已向目标添加第二个会话。
 10. 重复步骤 8-10，向目标添加其他会话（路径）。 主机上有两个接口，设备上也有两个接口，总共可以添加四个会话。
 11. 在添加所需的会话（路径）后，在“iSCSI 发起程序属性”对话框中，选择目标并单击“属性”。 在“属性”对话框的“会话”选项卡上，记下与可能的路径排列对应的四个会话标识符。 若要取消会话，请选中会话标识符旁边的复选框，然后单击“断开连接”。
-12. 若要查看会话中的设备，请选择“设备”选项卡。 若要为所选设备配置 MPIO 策略，请单击“MPIO”。 此时将显示“设备详细信息”对话框。 在“MPIO”选项卡上，可以选择适当的“负载均衡策略”设置。 还可以查看“活动”或“备用”路径类型。
+12. 若要查看会话内存在的设备，请选择“设备”选项卡。 若要为所选设备配置 MPIO 策略，请单击“MPIO”。 此时将显示“设备详细信息”对话框。 在“MPIO”选项卡上，可以选择适当的“负载均衡策略”设置。 还可以查看“活动”或“备用”路径类型。
 
 ## <a name="next-steps"></a>后续步骤
 详细了解如何[使用 StorSimple Manager 服务修改 StorSimple 设备配置](storsimple-modify-device-config.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

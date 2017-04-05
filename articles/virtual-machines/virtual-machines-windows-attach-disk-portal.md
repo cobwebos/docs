@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: 40375aa411920f966aa6923f0899ca2f88a9ed39
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 88956ec33009bfd6ce5047085f6d7512d951edee
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -30,6 +31,7 @@ ms.openlocfilehash: 40375aa411920f966aa6923f0899ca2f88a9ed39
 * 对于现有磁盘，Azure 存储帐户中必须要有可用的 .vhd 文件。 你可以使用已经存在的 .vhd（如果该磁盘没有附加到另一虚拟机），或者将你自己的 .vhd 文件上载到存储帐户。
 
 还可以[使用 Powershell 附加数据磁盘](virtual-machines-windows-attach-disk-ps.md)。
+
 
 
 ## <a name="find-the-virtual-machine"></a>查找虚拟机
@@ -54,7 +56,7 @@ ms.openlocfilehash: 40375aa411920f966aa6923f0899ca2f88a9ed39
 1. 连接到虚拟机。 有关说明，请参阅[如何连接并登录到运行 Windows 的 Azure 虚拟机](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 2. 在登录虚拟机后，打开“服务器管理器”。 在左窗格中，选择“文件和存储服务”。
    
-    ![打开服务器管理器](./media/virtual-machines-windows-classic-attach-disk/fileandstorageservices.png)
+    ![打开服务器管理器](./windows/classic/media/attach-disk/fileandstorageservices.png)
 3. 展开菜单并选择“磁盘”。
 4. “磁盘”部分会列出磁盘。 在大多数情况下，会有磁盘 0、磁盘 1 和磁盘 2。 磁盘 0 是操作系统磁盘，磁盘 1 是临时磁盘，磁盘 2 是刚附加到 VM 的数据磁盘。 新的数据磁盘会将分区列为“未知”。 右键单击磁盘，然后选择“初始化”。
 5. 在初始化磁盘时，系统会通知用户所有的数据将被擦除。 单击“是”以确认警告并初始化磁盘。 完成后，即会将分区列为“GPT”。 再次右键单击磁盘，然后选择“新建卷”。
@@ -91,13 +93,14 @@ fsutil behavior query DisableDeleteNotify
 ```
 fsutil behavior set DisableDeleteNotify 0
 ```
+                
+从磁盘中删除数据后，可以通过使用 TRIM 运行碎片整理确保 TRIM 操作刷新正常：
+
+```
+defrag.exe <volume:> -l
+```
 
 ## <a name="next-steps"></a>后续步骤
-如果应用程序需要使用 D: 盘存储数据，可以[更改 Windows 临时磁盘的驱动器号](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
+如果应用程序需要使用 D: 盘存储数据，可以[更改 Windows 临时磁盘的驱动器号](virtual-machines-windows-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 

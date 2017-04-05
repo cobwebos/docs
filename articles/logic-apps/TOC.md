@@ -16,9 +16,9 @@
 ### [使用 Azure Functions 添加自定义代码](logic-apps-azure-functions.md)
 ### [循环、范围和数据解除批处理](logic-apps-loops-and-scopes.md)
 ### [编写逻辑应用定义](logic-apps-author-definitions.md)
+### [调用、触发或嵌套逻辑应用](logic-apps-http-endpoint.md)
 ### [为逻辑应用创建自定义 API](logic-apps-create-api-app.md)
 ### [调用逻辑应用的自定义 API](logic-apps-custom-hosted-api.md)
-### [以触发器的形式调用逻辑应用终结点](logic-apps-http-endpoint.md)
 ### [处理错误和异常](logic-apps-exception-handling.md)
 ### [处理内容类型](logic-apps-content-type.md)
 ### [保护逻辑应用](logic-apps-securing-a-logic-app.md)
@@ -47,6 +47,7 @@
 ### [X12 企业集成](logic-apps-enterprise-integration-x12.md)
 ### [X12 编码](logic-apps-enterprise-integration-x12-encode.md)
 ### [X12 解码](logic-apps-enterprise-integration-x12-decode.md)
+### [灾难恢复](logic-apps-enterprise-integration-b2b-business-continuity.md)
 
 ## 访问本地数据
 ### [连接到本地数据](logic-apps-gateway-connection.md)
@@ -69,6 +70,7 @@
 
 ## 示例、方案和演练
 ### [概述](logic-apps-examples-and-scenarios.md)
+### [创建无服务器的社交仪表板](logic-apps-scenario-social-serverless.md)
 ### [使用 Azure Functions 调用逻辑应用](logic-apps-scenario-function-sb-trigger.md)
 ### [添加错误和异常处理](logic-apps-scenario-error-and-exception-handling.md)
 ### [B2B 处理](logic-apps-enterprise-integration-b2b.md)

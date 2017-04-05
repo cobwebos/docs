@@ -15,8 +15,9 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: f589111d3a4da061e1cc3313632dd0b5403dc278
-ms.openlocfilehash: f93e5802141b16862f5e37126196069bd32c1f19
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 94f9bbcfddf8ea3d5ae9bffcb3c196a30f4bb396
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,8 +28,8 @@ ms.openlocfilehash: f93e5802141b16862f5e37126196069bd32c1f19
 > * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 > * [REST](sql-data-warehouse-manage-compute-rest-api.md)
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
-> 
-> 
+>
+>
 
 <a name="current-dwu-bk"></a>
 
@@ -39,14 +40,15 @@ ms.openlocfilehash: f93e5802141b16862f5e37126196069bd32c1f19
 2. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
 3. 从 sys.database_service_objectives 动态管理视图中选择。 下面是一个示例： 
 
-```
+```sql
 SELECT
- db.name [Database],
- ds.edition [Edition],
- ds.service_objective [Service Objective]
+    db.name [Database]
+,    ds.edition [Edition]
+,    ds.service_objective [Service Objective]
 FROM
- sys.database_service_objectives ds
- JOIN sys.databases db ON ds.database_id = db.database_id
+     sys.database_service_objectives ds
+JOIN
+    sys.databases db ON ds.database_id = db.database_id
 ```
 
 <a name="scale-dwu-bk"></a>
@@ -65,6 +67,35 @@ ALTER DATABASE MySQLDW
 MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 ;
 ```
+
+<a name="check-database-state-bk"></a>
+
+## <a name="check-database-state-and-operation-progress"></a>查看数据库状态和操作进度
+
+1. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
+2. 提交查询以查看数据库状态
+
+```sql
+SELECT *
+FROM
+sys.databases
+```
+
+3. 提交查询以查看操作状态
+
+```sql
+SELECT *
+FROM
+    sys.dm_operation_status
+WHERE
+    resource_type_desc = 'Database'
+AND 
+    major_resource_id = 'MySQLDW'
+```
+
+此 DMV 将返回有关对 SQL 数据仓库的各种管理操作的信息，例如操作和操作状态（IN_PROGRESS 或 COMPLETED）。
+
+
 
 <a name="next-steps-bk"></a>
 
@@ -86,9 +117,4 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 <!--Other Web references-->
 
 [Azure portal]: http://portal.azure.com/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

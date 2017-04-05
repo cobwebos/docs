@@ -46,11 +46,12 @@
 ### [安全注意事项](best-practices-resource-manager-security.md)
 ## 设置资源策略
 ### [什么是资源策略？](resource-manager-policy.md)
-### [分配和管理策略](resource-manager-policy-create-assign.md)
+### [门户策略分配](resource-manager-policy-portal.md)
+### [脚本策略分配](resource-manager-policy-create-assign.md)
 ### [资源标记策略](resource-manager-policy-tags.md)
 ### [存储策略](resource-manager-policy-storage.md)
-### [Linux VM 策略](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Windows VM 策略](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Linux VM 策略](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Windows VM 策略](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## 审核和故障排除
 ### [排查常见部署错误](resource-manager-common-deployment-errors.md)
 ### [查看活动日志](resource-group-audit.md)

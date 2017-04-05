@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 41be26b5dc3b7333521f02053ecb4b6ae1b17f73
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 2ef27dc58e12d1b9e8eed54239332a53860ddd52
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ Xamarin 使开发人员能够通过共享的 C# 代码库来使用其本机用�
 [!INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="create-a-new-xamarin-application"></a>创建新的 Xamarin 应用程序
-对于本教程，我们将创建面向 Android、iOS 和 Windows 的应用。 此应用只需将创建一个容器，并将 Blob 上传到此容器中。 我们将使用 Windows 上的 Visual Studio，这些知识同样适用于通过 Mac OS 上的 Xamarin Studio 创建应用的情况。
+对于本教程，我们将创建面向 Android、iOS 和 Windows 的应用。 此应用只需将创建一个容器，并将 Blob 上传到此容器中。 我们将使用 Windows 上的 Visual Studio，这些知识同样适用于通过 macOS 上的 Xamarin Studio 创建应用的情况。
 
 请按以下步骤创建应用程序：
 

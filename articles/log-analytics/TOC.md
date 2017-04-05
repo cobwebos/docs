@@ -52,7 +52,7 @@
 ### [AD 复制状态](log-analytics-ad-replication-status.md)
 ### [警报管理](log-analytics-solution-alert-management.md)
 ### [Azure SQL Analytics](log-analytics-azure-sql.md)
-### [容量管理](log-analytics-capacity.md)
+### [容量和性能](log-analytics-capacity.md)
 ### [更改跟踪](log-analytics-change-tracking.md)
 ### [容器](log-analytics-containers.md)
 ### [密钥保管库](log-analytics-azure-key-vault.md)

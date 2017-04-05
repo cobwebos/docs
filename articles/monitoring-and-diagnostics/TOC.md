@@ -4,6 +4,7 @@
 ## [警报](monitoring-overview-alerts.md)
 ## [自动缩放](monitoring-overview-autoscale.md)
 ## [活动日志](monitoring-overview-activity-logs.md)
+## [操作组](monitoring-action-groups.md)
 ## [诊断日志](monitoring-overview-of-diagnostic-logs.md)
 ## [合作伙伴集成](monitoring-partners.md)
 ## [Azure 诊断](azure-diagnostics.md)
@@ -28,10 +29,19 @@
 ### [针对自动缩放配置 webhook 和电子邮件通知](insights-autoscale-to-webhook-email.md)
 ## 使用活动日志
 ### [在活动日志中查看事件](insights-debugging-with-events.md)
-### [针对活动日志警报配置 webhook](insights-auditlog-to-webhook-email.md)
+### [针对活动日志事件配置警报](monitoring-activity-log-alerts.md)
 ### [存档活动日志](monitoring-archive-activity-log.md)
 ### [将活动日志流式传输到事件中心](monitoring-stream-activity-logs-event-hubs.md)
 ### [使用 Resource Manager 执行审核操作](../azure-resource-manager/resource-group-audit.md)
+### [使用 Resource Manager 创建活动日志警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+## 服务通知
+### [查看服务通知](monitoring-service-notifications.md)
+### [针对服务通知配置警报](monitoring-activity-log-alerts-on-service-notifications.md)
+## 操作组
+### [了解 webhook 架构](monitoring-activity-log-alerts-webhook.md)
+### [短信警报行为](monitoring-sms-alert-behavior.md)
+### [警报速率限制](monitoring-alerts-rate-limiting.md)
+### [使用 Resource Manager 创建操作组](monitoring-create-action-group-with-resource-manager-template.md)
 ## 管理诊断日志
 ### [存档](monitoring-archive-diagnostic-logs.md)
 ### [流式传输到事件中心](monitoring-stream-diagnostic-logs-to-event-hubs.md)

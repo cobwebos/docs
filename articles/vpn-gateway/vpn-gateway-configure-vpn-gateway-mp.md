@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 经典门户中配置 VPN 网关 | Microsoft 文档"
-description: "本文将演示如何配置虚拟网络 VPN 网关和更改网关 VPN 路由类型。"
+title: "配置 VPN 网关：经典门户：Azure | Microsoft Docs"
+description: "本文将演示如何配置虚拟网络 VPN 网关和更改网关 VPN 路由类型。 以下步骤适用于经典部署模型和经典门户。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,36 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2016
+ms.date: 03/09/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 799a7ebd9df049bc3f8f4452f33ac40fa414c390
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: b6f001345daf411497295357ab43d01635ae743e
+ms.lasthandoff: 03/25/2017
 
 
 ---
-# <a name="configure-a-vpn-gateway-for-the-classic-deployment-model"></a>配置经典部署模型的 VPN 网关
-如果想要在 Azure 与本地位置之间创建安全的跨界连接，则需要配置 VPN 网关连接。 在经典部署模型中，网关可以是以下两种 VPN 路由类型之一：静态或动态。 所选的类型取决于您的网络设计规划和想要使用的本地 VPN 设备。 
-
-例如，某些连接选项（如点到站点连接）需要动态路由网关。 如果想要将网关配置为同时支持点到站点 (P2S) 连接和站点到站点 (S2S) 连接，即使可使用任意一种网关 VPN 路由类型配置站点到站点，也必须要配置动态路由网关。 
-
-此外，必须确保用于连接的设备支持所要创建的 VPN 路由类型。 请参阅 [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
-
-**关于本文** 
-
-本文是针对使用[经典管理门户](https://manage.windowsazure.com)（而不是 Azure 门户）的经典部署模型编写的。 
+# <a name="configure-a-vpn-gateway-in-the-classic-portal"></a>在经典门户中配置 VPN 网关 
+如果想要在 Azure 与本地位置之间创建安全的跨界连接，需要创建虚拟网络网关。 VPN 网关是特定类型的虚拟网络网关。 在经典部署模型中，VPN 网关可以是以下两种 VPN 路由类型之一：静态或动态。 所选的 VPN 类型取决于你的网络设计规划和想要使用的本地 VPN 设备。 有关 VPN 设备的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 
 **关于 Azure 部署模型**
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-overview"></a>配置概述
-以下步骤将演示如何在 Azure 经典门户中配置 VPN 网关。 这些步骤适用于使用经典部署模型创建的虚拟网络的网关。 目前，并非所有网关的配置设置在 Azure 门户中都可用。 当它们可用时，我们将创建一套适用于 Azure 门户的新说明。
-
-1. [为 VNet 创建 VPN 网关](#create-a-vpn-gateway)
-2. [收集 VPN 设备配置信息](#gather-information-for-your-vpn-device-configuration)
-3. [配置 VPN 设备](#configure-your-vpn-device)
-4. [验证局域网范围和 VPN 网关 IP 地址](#verify-your-local-network-ranges-and-vpn-gateway-ip-address)
+以下步骤将演示如何在经典门户中配置 VPN 网关。 这些步骤适用于使用经典部署模型创建的虚拟网络的网关。 目前，并非所有网关的配置设置在 Azure 门户中都可用。 当它们可用时，我们将创建一套适用于 Azure 门户的新说明。
 
 ### <a name="before-you-begin"></a>开始之前
 在配置网关之前，必须先创建虚拟网络。 有关为跨界连接创建虚拟网络的步骤，请参阅[使用站点到站点 VPN 连接配置虚拟网络](vpn-gateway-site-to-site-create.md)或[使用点到站点 VPN 连接配置虚拟网络](vpn-gateway-point-to-site-create.md)。 然后，按照以下步骤来配置 VPN 网关，并收集配置 VPN 设备所需的信息。 
@@ -68,16 +56,18 @@ ms.openlocfilehash: 799a7ebd9df049bc3f8f4452f33ac40fa414c390
 
 ![网关连接](./media/vpn-gateway-configure-vpn-gateway-mp/IC717028.png)
 
-## <a name="gather-information-for-your-vpn-device-configuration"></a>收集 VPN 设备配置信息
-创建网关后，收集 VPN 设备配置的信息。 此信息位于虚拟网络的“**仪表板**”页：
+## <a name="site-to-site-connections"></a>站点到站点连接
+
+### <a name="step-1-gather-information-for-your-vpn-device-configuration"></a>步骤 1。 收集 VPN 设备配置信息
+如果要创建站点到站点连接，创建网关后，收集 VPN 设备配置的信息。 此信息位于虚拟网络的“**仪表板**”页：
 
 1. **网关 IP 地址 -** IP 地址可在“**仪表板**”页中找到。 只有在网关创建完成之后才能看到该地址。
-2. **共享密钥 -** 单击屏幕底部的“**管理密钥**”。 单击密钥旁边的图标将密钥复制到剪贴板，然后粘贴并保存密钥。 仅当只有一个 S2S VPN 隧道时，此按钮才有效。 如果有多个 S2S VPN 隧道，请使用*获取虚拟网络网关共享密钥* API 或 PowerShell cmdlet。
+2. **共享密钥 -** 单击屏幕底部的“**管理密钥**”。 单击密钥旁边的图标将密钥复制到剪贴板，然后粘贴并保存密钥。 仅当只有一个 S2S VPN 隧道时，此按钮才有效。 如果有多个 S2S VPN 隧道，请使用获取虚拟网络网关共享密钥 API 或 PowerShell cmdlet。
 
 ![管理密钥](./media/vpn-gateway-configure-vpn-gateway-mp/IC717029.png)
 
-## <a name="configure-your-vpn-device"></a>配置 VPN 设备
-完成前面的步骤之后，您或网络管理员需要配置 VPN 设备以创建连接。 有关 VPN 设备的详细信息，请参阅[关于用于虚拟网络连接的 VPN 设备](vpn-gateway-about-vpn-devices.md)。
+### <a name="step-2--configure-your-vpn-device"></a>步骤 2.  配置 VPN 设备
+对于站点到站点连接，完成前面的步骤之后，你或网络管理员需要配置 VPN 设备以创建连接。 有关 VPN 设备的详细信息，请参阅[关于用于虚拟网络连接的 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 
 配置 VPN 设备之后，可以在 VNet 的“仪表板”页上查看更新的连接信息。
 
@@ -88,18 +78,18 @@ ms.openlocfilehash: 799a7ebd9df049bc3f8f4452f33ac40fa414c390
 | **检查主模式 SA** |show crypto isakmp sa |show crypto isakmp sa |get ike cookie |show security ike security-association |
 | **检查快速模式 SA** |show crypto ipsec sa |show crypto ipsec sa |get sa |show security ipsec security-association |
 
-## <a name="verify-your-local-network-ranges-and-vpn-gateway-ip-address"></a>验证局域网范围和 VPN 网关 IP 地址
-### <a name="verify-your-vpn-gateway-ip-address"></a>验证 VPN 网关 IP 地址
+### <a name="step-3-verify-your-local-network-ranges-and-vpn-gateway-ip-address"></a>步骤 3. 验证局域网范围和 VPN 网关 IP 地址
+#### <a name="verify-your-vpn-gateway-ip-address"></a>验证 VPN 网关 IP 地址
 为了使网关正常建立连接，必须针对你为跨界配置指定的局域网正确配置 VPN 设备的 IP 地址。 通常，这在指定站点到站点配置的过程中配置的。 但是，如果以前已将此本地网络用于不同的设备，或此本地网络的 IP 地址已更改，则需要编辑设置，以指定正确的网关 IP 地址。
 
 1. 若要验证网关 IP 地址，请在左侧门户窗格中单击“**网络**”，然后在页面顶部选择“**本地网络**”。 你将看到针对每个局域网创建的 VPN 网关地址。 若要编辑 IP 地址，请选择 VNet，然后在页面底部单击“**编辑**”。
 2. 在“**指定本地网络详细信息**”页上编辑 IP 地址，然后单击页面底部的“下一步”箭头。
 3. 在“**指定地址空间**”页上，单击右下角的选中标记以保存设置。
 
-### <a name="verify-the-address-ranges-for-your-local-networks"></a>验证局域网的地址范围
+#### <a name="verify-the-address-ranges-for-your-local-networks"></a>验证局域网的地址范围
 对于流经网关到达本地位置的正确流量，您需要验证是否已指定了每个 IP 地址范围。 必须在 Azure **本地网络**配置中列出每个范围。 这可能会是比较大型的任务，具体取决于本地位置的网络配置。 包含在列出范围中的 IP 地址所绑定的流量将通过虚拟网络 VPN 网关来发送。 尽管列出的范围不一定是专用范围，但您需要验证本地配置是否能够接收入站流量。
 
-若要添加或编辑本地网络的范围，请按照以下步骤进行。
+若要添加或编辑本地网络的范围，请按照以下步骤操作：
 
 1. 若要编辑本地网络的 IP 地址范围，请在左侧门户窗格中单击“**网络**”，然后在页面顶部选择“**本地网络**”。 在门户中，查看所列出的范围的最简单方法是在“**编辑**”页上查看。 若要查看范围，请选择 VNet，然后单击页面底部的“**编辑**”。
 2. 在“**指定本地网络详细信息**”页上，请勿进行任何更改。 单击页面底部的“下一步”箭头。
@@ -135,13 +125,8 @@ ms.openlocfilehash: 799a7ebd9df049bc3f8f4452f33ac40fa414c390
     按照位于页面顶部的过程来创建新网关：[创建 VPN 网关](#create-a-vpn-gateway)。
 
 ## <a name="next-steps"></a>后续步骤
-你可以将虚拟机添加到虚拟网络。 请参阅 [如何创建自定义虚拟机](../virtual-machines/virtual-machines-windows-classic-createportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+你可以将虚拟机添加到虚拟网络。 请参阅 [如何创建自定义虚拟机](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 如果要配置点到站点 VPN 连接，请参阅[配置点到站点 VPN 连接](vpn-gateway-point-to-site-create.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

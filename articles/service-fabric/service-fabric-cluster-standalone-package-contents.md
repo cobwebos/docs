@@ -14,9 +14,9 @@ ms.workload: NA
 ms.date: 2/15/2017
 ms.author: chackdan;maburlik
 translationtype: Human Translation
-ms.sourcegitcommit: 523a26ad37ab45fabcc5fc99c291abf864297a22
-ms.openlocfilehash: 88a4b9832fa2c0bf0f22e65dec1787e137398791
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: a09ee1955717d7e042c1df3382c4cecd40069e3a
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/16/2017
 | ClusterConfig.gMSA.Windows.MultiMachine.json |群集配置示例文件，其中包含安全型多计算机（或虚拟机）群集的所有设置，这些设置包括安全群集中每个节点的信息。 使用[组托管服务帐户](https://technet.microsoft.com/en-us/library/jj128431(v=ws.11).aspx)保护该群集。 |
 
 # <a name="cluster-configuration-samples"></a>群集配置示例
-可在以下 Github 页面找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
+可在以下 GitHub 页面找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
 
 ## <a name="related"></a>相关内容
 * [创建独立 Azure Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)

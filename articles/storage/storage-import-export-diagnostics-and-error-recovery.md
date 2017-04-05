@@ -1,6 +1,6 @@
 ---
 title: "Azure 导入/导出作业的诊断和错误恢复 | Microsoft Docs"
-description: "了解如何为 Microsoft Azure 导入/导出服务作业启用详细日志记录"
+description: "了解如何为 Microsoft Azure 导入/导出服务作业启用详细日志记录。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 9aca8aad3f268bf21f3bad9fa22821f5d825f99d
-ms.openlocfilehash: 88c42ff541aac2e43724fe62f99e3ddea56afc3c
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 0068aae9d6780aa41a070db0eb191d0d5a165d21
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -29,9 +29,11 @@ ms.lasthandoff: 02/16/2017
 
  可以调用[获取作业](/rest/api/storageimportexport/jobs#Jobs_Get)操作来检索作业的日志 URI。 每个驱动器的详细日志 URI 在 `VerboseLogUri` 属性中返回，错误日志的 URI 在 `ErrorLogUri` 属性中返回。
 
-可以使用日志记录数据来识别以下问题：
+可以使用日志记录数据来识别以下问题。
 
-**驱动器错误**
+## <a name="drive-errors"></a>驱动器错误
+
+以下各项被归类为驱动器错误：
 
 -   访问或读取清单文件时出错
 
@@ -39,7 +41,9 @@ ms.lasthandoff: 02/16/2017
 
 -   驱动器读/写错误
 
-**Blob 错误**
+## <a name="blob-errors"></a>Blob 错误
+
+以下各项被归类为 blob 错误：
 
 -   Blob 或者名称不正确或有冲突
 
@@ -57,6 +61,7 @@ ms.lasthandoff: 02/16/2017
 
 可能存在以下情况：导入或导出作业的某些部分未成功完成，但整体作业仍已完成。 在此情况下，可以通过网络上载或下载数据的缺失部分，也可以创建新作业来传输数据。 若要了解如何通过网络修复数据，请参阅 [Azure 导入/导出工具参考](storage-import-export-tool-how-to-v1.md)。
 
-## <a name="see-also"></a>另请参阅
-[使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
+## <a name="next-steps"></a>后续步骤
+
+* [使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
 

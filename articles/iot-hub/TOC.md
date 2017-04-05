@@ -100,9 +100,17 @@
 ### [Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
 #### [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
 #### [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
+#### [Power BI 中的数据可视化](iot-hub-live-data-visualization-in-power-bi.md)
+#### [使用 Web 应用进行数据可视化](iot-hub-live-data-visualization-in-web-apps.md)
+#### [使用 Azure 机器学习预测天气](iot-hub-weather-forecast-machine-learning.md)
+
 ### [Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
 #### [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
+#### [Power BI 中的数据可视化](iot-hub-live-data-visualization-in-power-bi.md)
+#### [使用 Web 应用进行数据可视化](iot-hub-live-data-visualization-in-web-apps.md)
+#### [使用 Azure 机器学习预测天气](iot-hub-weather-forecast-machine-learning.md)
+
 
 ### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### 第 1 课：配置设备

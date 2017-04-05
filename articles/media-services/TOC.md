@@ -41,6 +41,7 @@
 #### [.NET](media-services-dotnet-upload-files.md)
 #### [REST](media-services-rest-upload-files.md)
 ### [使用 Aspera 上载大型文件](media-services-upload-files-with-aspera.md)
+### [使用 StorSimple 上载文件](media-services-upload-files-from-storsimple.md)
 ### [复制现有的 Blob](media-services-copying-existing-blob.md)
 
 ## [对内容进行编码](media-services-encode-asset.md)
