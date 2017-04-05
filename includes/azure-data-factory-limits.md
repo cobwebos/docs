@@ -1,4 +1,4 @@
-数据工厂是一项多租户服务，具有以下默认限制，目的是确保客户订阅不受彼此工作负荷的影响。 订阅的许多限制只需联系支持部门即可提高，最多可提高到最大限制。 
+数据工厂是一项多租户服务，具有以下默认限制，目的是确保客户订阅不受彼此工作负荷的影响。 订阅的许多限制只需联系支持部门即可提高，最多可提高到最大限制。
 
 | **资源** | **默认限制** | **最大限制** |
 | --- | --- | --- |
@@ -9,7 +9,7 @@
 | 每个管道的每个对象字节数 <sup>1</sup> |200 KB |200 KB |
 | 数据集和关联的服务对象的每个对象字节数 <sup>1</sup> |100 KB |2000 KB |
 | 订阅中的 HDInsight 按需群集核心数 <sup>2</sup> |60 |[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| 云数据移动单位 <sup>3</sup> |8 |[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| 云数据移动单位 <sup>3</sup> |32 |[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | 管道活动运行的重试次数 |1000 |MaxInt（32 位） |
 
 <sup>1</sup> 管道、数据集和链接服务对象代表工作负荷的逻辑组。 对这些对象的限制与可以使用 Azure 数据工厂服务移动或处理的数据量无关。 可以缩放数据工厂以处理 PB 量级的数据。
@@ -25,10 +25,4 @@
 | 重试超时值 |1 秒 |1 秒 |
 
 ### <a name="web-service-call-limits"></a>Web 服务调用限制
-Azure Resource Manager 限制 API 调用。 可以根据 [Azure Resource Manager API 限制](../articles/azure-subscription-service-limits.md#resource-group-limits)中规定的频率执行 API 调用。 
-
-
-
-<!--HONumber=Jan17_HO2-->
-
-
+Azure Resource Manager 限制 API 调用。 可以根据 [Azure Resource Manager API 限制](../articles/azure-subscription-service-limits.md#resource-group-limits)中规定的频率执行 API 调用。

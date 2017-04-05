@@ -1,6 +1,6 @@
 
 
-[Docker](https://www.docker.com/) 是最常用的虚拟化方法之一，它使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC)而不是虚拟机作为在共享资源上隔离应用程序数据和执行计算的方法。 可以在 [Azure Linux 代理](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中使用 [Azure Docker VM 扩展](https://github.com/Azure/azure-docker-extension/blob/master/README.md)，创建可在 Azure 上为应用程序托管任意数量的容器的 Docker VM。
+[Docker](https://www.docker.com/) 是最常用的虚拟化方法之一，它使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC)而不是虚拟机作为在共享资源上隔离应用程序数据和执行计算的方法。 可以在 [Azure Linux 代理](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中使用 [Azure Docker VM 扩展](https://github.com/Azure/azure-docker-extension/blob/master/README.md)，创建可在 Azure 上为应用程序托管任意数量的容器的 Docker VM。
 
 本主题介绍：
 
@@ -50,9 +50,9 @@ Docker VM 扩展是在创建的 VM 实例中安装的组件，它会自行安装
 * [如何在 Azure 经典门户中使用 Docker VM 扩展]
 
 ## <a name="virtual-machine-extensions-for-linux-and-windows"></a>适用于 Linux 和 Windows 的虚拟机扩展
-[Azure 的 Docker VM 扩展](https://github.com/Azure/azure-docker-extension/blob/master/README.md)只是提供特殊行为的众多 VM 扩展之一，还有许多正在开发中。 例如，许多 [Linux VM 代理扩展](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)功能使用户能够修改和管理虚拟机，包括安全功能、内核和网络功能，等等。 例如，VMAccess 扩展能够实现重置管理员密码或 SSH 密钥。
+[Azure 的 Docker VM 扩展](https://github.com/Azure/azure-docker-extension/blob/master/README.md)只是提供特殊行为的众多 VM 扩展之一，还有许多正在开发中。 例如，许多 [Linux VM 代理扩展](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)功能使用户能够修改和管理虚拟机，包括安全功能、内核和网络功能，等等。 例如，VMAccess 扩展能够实现重置管理员密码或 SSH 密钥。
 
-有关完整列表，请参阅 [Azure VM 扩展](../articles/virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+有关完整列表，请参阅 [Azure VM 扩展](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 <!--Anchors-->
 [如何从 Azure 命令行接口 (Azure CLI) 使用 Docker VM 扩展]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
@@ -61,8 +61,3 @@ Docker VM 扩展是在创建的 VM 实例中安装的组件，它会自行安装
 [Docker 和 Linux 容器]: #Docker-and-Linux-Containers
 [如何对 Azure 使用 Docker VM 扩展]: #How-to-use-the-Docker-VM-Extension-with-Azure
 [适用于 Linux 和 Windows 的虚拟机扩展]: #Virtual-Machine-Extensions-For-Linux-and-Windows
-
-
-<!--HONumber=Jan17_HO3-->
-
-

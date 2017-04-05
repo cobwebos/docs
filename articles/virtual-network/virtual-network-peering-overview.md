@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2016
 ms.author: narayan
 translationtype: Human Translation
-ms.sourcegitcommit: 15afcad97941fc595478e36e826a73831f40475e
-ms.openlocfilehash: eb05b504c5cf13cd852a5e01cc3bec79fd20d547
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6fbcdcf77f46a3c643e8fedc1d112588cbd7befc
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -36,7 +37,7 @@ VNet 对等互连的要求和关键方面：
 * VNet 对等互连存在于两个 VNet 之间，多个对等互连之间没有任何派生的可传递关系。 例如，如果 VNetA 与 VNetB 对等互连，VNetB 与 VNetC 对等互连，但 VNetA *不* 与 VNetC 对等互连。
 * 可以将存在于两个不同订阅中的 VNet 对等互连，只要两个订阅的特权用户授权予对等互连，并且订阅与同一个 Active Directory 租户关联即可。
 * 如果两个 VNet 都是通过 Resource Manager 部署模型创建的，或者一个 VNet 是通过 Resource Manager 部署模型创建的，另一个 VNet 是通过经典部署模型创建的，则可以将 VNet 对等互连。 但是，两个都是通过经典部署模型创建的 VNet 不能彼此对等互连。 将通过不同部署模型创建的 VNet 对等互连时，两个 VNet 必须存在于*同一* 订阅中。 在**预览**版中，可以将通过不同部署模型创建且存在于*不同* 订阅中的 VNet 对等互连。 如需更多详细信息，请阅读[使用 Powershell 创建虚拟网络对等互连](virtual-networks-create-vnetpeering-arm-ps.md)一文。
-* 虽然在对等 VNet 中进行 VM 之间的通信没有其他带宽限制，但有一个最大网络带宽，具体取决于 VM 大小（仍适用）。 若要详细了解不同 VM 大小的最大网络带宽，请阅读有关 [Windows](../virtual-machines/virtual-machines-windows-sizes.md) 或 [Linux](../virtual-machines/virtual-machines-linux-sizes.md) VM 大小的文章。
+* 虽然在对等 VNet 中进行 VM 之间的通信没有其他带宽限制，但有一个最大网络带宽，具体取决于 VM 大小（仍适用）。 若要详细了解不同 VM 大小的最大网络带宽，请阅读有关 [Windows](../virtual-machines/windows/sizes.md) 或 [Linux](../virtual-machines/linux/sizes.md) VM 大小的文章。
 
 ![基本 VNet 对等互连](./media/virtual-networks-peering-overview/figure01.png)
 
@@ -84,15 +85,10 @@ VNet 对等互连是一项特权操作。 它是 VirtualNetworks 命名空间下
 ## <a name="pricing"></a>定价
 对于利用 VNet 对等互连的入口和出口流量，有少许收费。 有关详细信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/virtual-network)。
 
-## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 了解如何通过以下方式创建 VNet 对等互连：
 
 * [Azure 门户](virtual-networks-create-vnetpeering-arm-portal.md)
 * [Azure PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 * [Azure Resource Manager 模板](virtual-networks-create-vnetpeering-arm-template-click.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
