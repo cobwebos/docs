@@ -1,6 +1,6 @@
 ---
 title: "Azure Functions 存储表绑定 | Microsoft Docs"
-description: "了解如何在 Azure Functions 中使用 Azure 存储触发器和绑定。"
+description: "了解如何在 Azure Functions 中使用 Azure 存储绑定。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -17,16 +17,16 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 0d37eb09a6c8a0bb39a331e51a8993c114202b91
-ms.openlocfilehash: 88858cffa5ddc6ba83152d3430f5400a1c66a26a
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 67c308f8216ebd291ae483c9b18d43528687e9a9
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="azure-functions-storage-table-bindings"></a>Azure Functions 存储表绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-本文介绍如何在 Azure Functions 中配置和编码 Azure 存储表触发器和绑定。 Azure Functions 支持 Azure 存储表的输入和输出绑定。
+本文介绍如何在 Azure Functions 中配置和编码 Azure 存储表绑定。 Azure Functions 支持 Azure 存储表的输入和输出绑定。
 
 存储表绑定支持以下方案：
 

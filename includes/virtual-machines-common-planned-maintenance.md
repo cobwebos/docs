@@ -14,7 +14,7 @@
 
 多实例配置可跨物理计算机、电源和网络提供冗余，若要确保应用程序的可用性，建议采用此配置。 可用性集中的所有虚拟机应对应用程序具有相同的用途。
 
-有关配置虚拟机以实现高可用性的详细信息，请参阅[管理 Windows 虚拟机的可用性](../articles/virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[管理 Linux 虚拟机的可用性](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关配置虚拟机以实现高可用性的详细信息，请参阅[管理 Windows 虚拟机的可用性](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[管理 Linux 虚拟机的可用性](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 相反，单实例配置用于未放置在可用性集中的独立虚拟机。 这些虚拟机不符合服务级别协议 (SLA) 的要求，SLA 要求在同一可用性集中部署两个或更多虚拟机。
 
@@ -28,7 +28,7 @@
 基础 Azure 平台为可用性集中的每个虚拟机分配一个更新域和一个容错域。 每个更新域是在同一时间内重新启动的一组虚拟机。 每个容错域是共享公共电源和网络交换机的一组虚拟机。
 
 
-有关更新域和容错域的详细信息，请参阅[配置可用性集中的多个虚拟机以实现冗余](../articles/virtual-machines/virtual-machines-windows-manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。
+有关更新域和容错域的详细信息，请参阅[配置可用性集中的多个虚拟机以实现冗余](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。
 
 为了通过更新保持可用性，Azure 通过更新域进行维护，一次更新一个域。 在更新域中进行维护时，其步骤包括：关闭域中的每个虚拟机，对主机应用更新，然后重新启动虚拟机。 当域中的维护完成以后，Azure 对下一个更新域重复此过程，继续对每个域进行操作，直至所有域都进行了更新。
 
@@ -101,4 +101,4 @@ Azure 会提前发送电子邮件通信，提醒用户即将执行计划内维�
 <!--Link references-->
 [Virtual Machines Manage Availability]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
 
-[Understand planned versus unplanned maintenance]: ../articles/virtual-machines/virtual-machines-windows-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
+[Understand planned versus unplanned maintenance]: ../articles/virtual-machines/windows/manage-availability.md#Understand-planned-versus-unplanned-maintenance/

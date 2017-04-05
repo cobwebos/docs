@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 3ad42c2f982446445402f176ff913833e01c42d6
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 0ca485599d159fd4e7e001b68e4d4b41b6b2043f
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -445,7 +445,7 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 * [设置警报](app-insights-powershell-alerts.md)
 * [创建 Web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [将 Azure 诊断发送到 Application Insights](app-insights-powershell-azure-diagnostics.md)
-* [从 Github 部署到 Azure](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
+* [从 GitHub 部署到 Azure](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [创建版本注释](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 
 

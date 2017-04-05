@@ -12,18 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 22d7dc81cb2fc44ff4471951cbc482f60a97bb27
-ms.openlocfilehash: b266dc9ead635fb852d64efa82587299f692a153
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5fb930cb71fe008ba63d2068bb36643f40259e76
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="set-up-an-azure-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics"></a>将 Azure 虚拟机设置为用于高级分析的 IPython Notebook 服务器
 本主题介绍如何针对高级分析预配和配置 Azure 虚拟机以便可用作数据科学环境的一部分。 Windows 虚拟机使用支持工具（例如 IPython Notebook、Azure 存储资源管理器、AzCopy 以及其他可用于高级分析项目的实用程序）进行配置。 例如，Azure 存储资源管理器和 AzCopy 提供了从本地计算机将数据上载到 Azure blob 存储或从 blob 存储下载到本地计算机的便捷方法。
 
-## <a name="a-namecreate-vmastep-1-create-a-general-purpose-azure-virtual-machine"></a><a name="create-vm"></a>步骤 1：创建通用 Azure 虚拟机
+## <a name="create-vm"></a>步骤 1：创建通用 Azure 虚拟机
 如果已具有 Azure 虚拟机，而且只想要在其上设置 IPython Notebook 服务器，可以跳过此步骤，转到[步骤 2：将 IPython Notebook 终结点添加到现有虚拟机](#add-endpoint)。
 
 开始在 Azure 上创建虚拟机之前，需要确定处理其项目数据所需的虚拟机大小。 与较大虚拟机相比，较小虚拟机的内存更少并且 CPU 内核更少，不过其成本也较低。 有关虚拟机类型和价格列表，请参阅<a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">虚拟机定价</a>页
@@ -53,15 +54,15 @@ ms.openlocfilehash: b266dc9ead635fb852d64efa82587299f692a153
 
 ![创建工作区][29]
 
-## <a name="a-nameadd-endpointastep-2-add-an-endpoint-for-ipython-notebooks-to-an-existing-virtual-machine"></a><a name="add-endpoint"></a>步骤 2：将 IPython Notebook 的终结点添加到现有虚拟机
+## <a name="add-endpoint"></a>步骤 2：将 IPython Notebook 的终结点添加到现有虚拟机
 如果已按照步骤 1 中的说明创建虚拟机，则已经添加 IPython Notebook 的终结点，可跳过此步骤。
 
 如果虚拟机已存在，并且需要添加 IPython Notebook 的终结点（它将在下面的步骤 3 中进行安装），则首先登录到 Azure 经典门户、选择虚拟机，然后添加 IPython Notebook 服务器的终结点。 下图包含在将 Python Notebook 的终结点添加到 Windows 虚拟机后的门户屏幕截图。
 
 ![创建工作区][17]
 
-## <a name="a-namerun-commandsastep-3-install-ipython-notebook-and-other-supporting-tools"></a><a name="run-commands"></a>步骤 3：安装 IPython Notebook 和其他支持工具
-创建虚拟机后，使用远程桌面协议 (RDP) 登录到 Windows 虚拟机。 有关说明，请参阅[如何登录到运行 Windows Server 的虚拟机](../virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 以**管理员身份**打开**命令提示符**（**而非 Powershell 命令窗口**），然后运行以下命令。
+## <a name="run-commands"></a>步骤 3：安装 IPython Notebook 和其他支持工具
+创建虚拟机后，使用远程桌面协议 (RDP) 登录到 Windows 虚拟机。 有关说明，请参阅[如何登录到运行 Windows Server 的虚拟机](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 以**管理员身份**打开**命令提示符**（**而非 Powershell 命令窗口**），然后运行以下命令。
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
 
@@ -71,7 +72,7 @@ ms.openlocfilehash: b266dc9ead635fb852d64efa82587299f692a153
 
 当系统出现提示时，输入 IPython Notebook 的密码和虚拟机管理员的密码。 这样一来，IPython Notebook 便可以在虚拟机上作为服务运行。
 
-## <a name="a-nameaccessastep-4-access-ipython-notebooks-from-a-web-browser"></a><a name="access"></a>步骤 4：从 Web 浏览器访问 IPython Notebook
+## <a name="access"></a>步骤 4：从 Web 浏览器访问 IPython Notebook
 若要访问 IPython Notebook 服务器，请打开 Web 浏览器，并在 URL 文本框中输入 *https://&#60;虚拟机 DNS 名称>:&#60;公用端口号>*。 此处 *&#60;公用端口号>* 应该是添加 IPython Notebook 终结点时所指定的端口号。
 
 *&#60;虚拟机 DNS 名称>* 可以在 Azure 经典门户中找到。 登录到经典门户后，单击“虚拟机”，选择所创建的虚拟机，然后选择“仪表板”，随后 DNS 名称将如下所示：
@@ -86,17 +87,17 @@ ms.openlocfilehash: b266dc9ead635fb852d64efa82587299f692a153
 **Chrome：**
 ![创建工作区][21]
 
-登录到 IPython Notebook 后，目录 *DataScienceSamples* 将显示在浏览器上。 此目录包含 Microsoft 共享的示例 IPython Notebook，以帮助用户执行数据科学任务。 这些示例 IPython Notebook 是在 IPython Notebook 服务器设置期间从 [**Github 存储库**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)检出到虚拟机的。 Microsoft 会经常维护并更新此存储库。 用户可以访问 Github 存储库来获取最近更新的示例 IPython Notebook。
+登录到 IPython Notebook 后，目录 *DataScienceSamples* 将显示在浏览器上。 此目录包含 Microsoft 共享的示例 IPython Notebook，以帮助用户执行数据科学任务。 这些示例 IPython Notebook 是在 IPython Notebook 服务器设置期间从 [**GitHub 存储库**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)检出到虚拟机的。 Microsoft 会经常维护并更新此存储库。 用户可以访问 GitHub 存储库来获取最近更新的示例 IPython Notebook。
 ![创建工作区][18]
 
-## <a name="a-nameuploadastep-5-upload-an-existing-ipython-notebook-from-a-local-machine-to-the-ipython-notebook-server"></a><a name="upload"></a>步骤 5：将现有 IPython Notebook 从本地计算机上载到 IPython Notebook 服务器
+## <a name="upload"></a>步骤 5：将现有 IPython Notebook 从本地计算机上载到 IPython Notebook 服务器
 IPython Notebook 提供一种简单的方式，让用户可以将其本地计算机上的现有 IPython Notebook 上载到虚拟机上的 IPython Notebook 服务器。 在通过 Web 浏览器登录到 IPython Notebook 后，单击 IPython Notebook 将上传到的**目录**。 然后，在“文件资源管理器”中选择要从本地计算机上载的 IPython Notebook .ipynb 文件，并将其拖放到 Web 浏览器上的 IPython Notebook 目录。 单击“上载”按钮，将 .ipynb 文件上载到 IPython Notebook 服务器。 其他用户就可以从其 Web 浏览器开始使用它。
 
 ![创建工作区][22]
 
 ![创建工作区][23]
 
-## <a name="a-nameshutdownashut-down-and-de-allocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>关闭并解除分配未使用的虚拟机
+## <a name="shutdown"></a>关闭并解除分配未使用的虚拟机
 Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未使用虚拟机时不会计费，当虚拟机未使用时，其必须处于“已停止(已解除分配)”状态。
 
 > [!NOTE]
@@ -134,9 +135,4 @@ Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未
 [27]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-4.png
 [28]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

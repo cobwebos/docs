@@ -1,7 +1,7 @@
 ---
 
 title: "Azure 导入/导出服务日志文件格式 | Microsoft Docs"
-description: "了解针对导入/导出服务作业执行步骤时创建的日志文件的格式"
+description: "了解针对导入/导出服务作业执行步骤时创建的日志文件的格式。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: 0b402db8c7e6bd4abb5aaf6ded7f539cfec7172e
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/16/2017
   
 -   详细日志默认未启用，但可通过对[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)或[更新作业属性](/rest/api/storageimportexport/jobs#Jobs_Update)操作设置 `EnableVerboseLog` 属性来启用该日志。  
   
-## <a name="log-file-location"></a>日志文件的位置  
+## <a name="log-file-location"></a>日志文件位置  
 日志将写入到 `ImportExportStatesPath` 设置（可在“`Put Job`”操作中设置）指定的容器或虚拟目录中的块 Blob。 日志写入到的位置取决于为该作业指定身份验证的方式，以及为 `ImportExportStatesPath` 指定的值。 可通过存储帐户密钥或容器 SAS（共享访问签名）为作业指定身份验证。  
   
 容器或虚拟目录的名称可以是 `waimportexport` 的默认名称，也可以是指定的另一个容器或虚拟目录名称。  
@@ -149,7 +149,7 @@ properties-status ::=
 |`Properties/Path/@Hash`|属性，字符串|properties 文件的 Base16 编码 MD5 哈希。|  
 |`Blob/Status`|String|Blob 的处理状态。|  
   
-### <a name="drive-status-codes"></a>驱动器状态代码  
+# <a name="drive-status-codes"></a>驱动器状态代码  
 下表列出了驱动器的处理状态代码。  
   
 |状态代码|说明|  
@@ -178,7 +178,7 @@ properties-status ::=
 |`BlobRequestForbidden`|禁止访问存储帐户中的 Blob。 这可能是因为存储帐户密钥或容器 SAS 无效。|  
 |`InternalError`|处理驱动器时出现内部错误。|  
   
-### <a name="blob-status-codes"></a>Blob 状态代码  
+## <a name="blob-status-codes"></a>Blob 状态代码  
 下表列出了 Blob 的处理状态代码。  
   
 |状态代码|说明|  
@@ -197,7 +197,7 @@ properties-status ::=
 |`IOFailed`|处理 Blob 时出现磁盘或网络 I/O 故障。|  
 |`Failed`|处理 Blob 时出现未知错误。|  
   
-### <a name="import-disposition-status-codes"></a>导入处置状态代码  
+## <a name="import-disposition-status-codes"></a>导入处置状态代码  
 下表列出了导入处置的解决状态代码。  
   
 |状态代码|说明|  
@@ -208,7 +208,7 @@ properties-status ::=
 |`Overwritten`|Blob 已根据 `overwrite` 导入处置覆盖现有 Blob。|  
 |`Cancelled`|前一个错误导致停止进一步处理导入处置。|  
   
-### <a name="page-rangeblock-status-codes"></a>页面范围/块状态代码  
+## <a name="page-rangeblock-status-codes"></a>页面范围/块状态代码  
 下表列出了页面范围或块的处理状态代码。  
   
 |状态代码|说明|  
@@ -224,7 +224,7 @@ properties-status ::=
 |`Failed`|处理页面范围或块时出现未知错误。|  
 |`Cancelled`|前一个错误导致停止进一步处理页面范围或块。|  
   
-### <a name="metadata-status-codes"></a>元数据状态代码  
+## <a name="metadata-status-codes"></a>元数据状态代码  
 下表列出了 Blob 元数据的处理状态代码。  
   
 |状态代码|说明|  
@@ -242,7 +242,7 @@ properties-status ::=
 |`Failed`|处理元数据时出现未知错误。|  
 |`Cancelled`|前一个错误导致停止进一步处理元数据。|  
   
-### <a name="properties-status-codes"></a>属性状态代码  
+## <a name="properties-status-codes"></a>属性状态代码  
 下表列出了 Blob 属性的处理状态代码。  
   
 |状态代码|说明|  
@@ -358,6 +358,7 @@ properties-status ::=
 </DriveLog>  
 ```
   
-## <a name="see-also"></a>另请参阅  
-[存储导入/导出 REST](/rest/api/storageimportexport/)
+## <a name="next-steps"></a>后续步骤
+ 
+* [存储导入/导出 REST API](/rest/api/storageimportexport/)
 

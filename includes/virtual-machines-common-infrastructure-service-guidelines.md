@@ -140,7 +140,7 @@ Azure 使用一个操作系统磁盘、一个临时磁盘和零个或更多可�
 ### <a name="striped-disks"></a>条带化的磁盘
 除了提供相关功能来创建大于 1023 GB 的磁盘外，在许多情况下，对数据磁盘使用条带化还可增强性能，因为这会使多个 blob 能够支持单个卷的存储。 使用条带化时，将会并行处理针对单个逻辑磁盘写入和读取数据所需的 I/O。
 
-Azure 将对可用的数据磁盘量和带宽加以限制，具体取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+Azure 将对可用的数据磁盘量和带宽加以限制，具体取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 如果要对 Azure 数据磁盘使用磁盘条带化，请考虑以下准则：
 
@@ -307,7 +307,7 @@ Contoso Corporation 已使用最先进的专有算法开发了下一代财务分
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
 
-从 Internet 上的 Contoso 客户端传入的安全 Web 流量需要在 Web 服务器之间进行负载平衡。 来自 Web 服务器的 HTTP 请求形式的计算请求流量需要在应用程序服务器之间进行平衡。 此外，还必须设计引擎以实现高可用性。
+从 Internet 上的 Contoso 客户端传入的安全 Web 流量需要在 Web 服务器之间进行负载均衡。 来自 Web 服务器的 HTTP 请求形式的计算请求流量需要在应用程序服务器之间进行平衡。 此外，还必须设计引擎以实现高可用性。
 
 生成的设计必须引入：
 
@@ -390,16 +390,11 @@ Contoso 决定将以下名称用于其 Azure 虚拟机：
 ## <a name="additional-resources"></a>其他资源
 [Microsoft Azure 订阅和服务限制、配额与约束](../articles/azure-subscription-service-limits.md#storage-limits)
 
-[虚拟机的大小](../articles/virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[虚拟机的大小](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Azure 存储可伸缩性和性能目标](../articles/storage/storage-scalability-targets.md)
 
 [数据中心扩展参考体系结构示意图](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 
 [Azure Resource Manager 中的 Azure 计算、网络和存储提供程序](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

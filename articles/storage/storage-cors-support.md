@@ -3,7 +3,7 @@ title: "跨域资源共享 (CORS) 支持 | Microsoft Docs"
 description: "了解如何为 Microsoft Azure 存储服务启用 CORS 支持。"
 services: storage
 documentationcenter: .net
-author: cbrooks
+author: cbrooksmsft
 manager: carmonm
 editor: tysonn
 ms.assetid: a0229595-5b64-4898-b8d6-fa2625ea6887
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 2/22/2017
 ms.author: cbrooks
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c61be739ce592d75b04bee15d14850cdf94c09da
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: e50e55fb6471add71b3d2ebd477a91ec424a4fab
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -136,7 +137,7 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 | **方法** |**源** |**请求标头** |**规则匹配** |**结果** |
 | **PUT** |http://www.contoso.com |x-ms-blob-content-type |第一条规则 |成功 |
 | **GET** |http://www.contoso.com |x-ms-blob-content-type |第二条规则 |成功 |
-| **GET** |http://www.contoso.com |x-ms-blob-content-type |第二条规则 |失败 |
+| **GET** |http://www.contoso.com |x-ms-client-request-id |第二条规则 |失败 |
 
 第一个请求与第一条规则相匹配，源域与允许的来源相匹配，方法与允许的方法相匹配，标头与允许的标头相匹配，所以第一个请求成功。
 
@@ -189,10 +190,5 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）
 
 [W3C 跨域资源共享规范](http://www.w3.org/TR/cors/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 46eb4a20c85140a7893d77984f375d6abf3e7634
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 7dc5143086e3a73e0536408a41468b8cdd40bd12
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/22/2017
 | 容器服务 |是 |[容器服务 REST](/rest/api/compute/containerservices) |[容器服务资源](/azure/templates/microsoft.containerservice/containerservices) |
 | 动态生命周期服务 |是 | | |
 | 规模集 |是 |[规模集 REST](/rest/api/compute/virtualmachinescalesets) |[规模集资源](/azure/templates/microsoft.compute/virtualmachinescalesets) |
-| Service Fabric |是 |[Service Fabric Rest](/rest/api/servicefabric) | [Service Fabric 架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-09-01/Microsoft.ServiceFabric.json) |
+| Service Fabric |是 |[Service Fabric Rest](/rest/api/servicefabric) | [Service Fabric 资源](/azure/templates/microsoft.servicefabric/clusters) |
 | 虚拟机 |是 |[VM REST](/rest/api/compute/virtualmachines) |[VM 资源](/azure/templates/microsoft.compute/virtualmachines) |
 | 虚拟机（经典） |受限制 |- |- |
 | 远程应用 |否 |- |- |
@@ -117,11 +117,11 @@ ms.lasthandoff: 03/22/2017
 | CDN |是 |[CDN REST](/rest/api/cdn) |[CDN 资源](/azure/templates/microsoft.cdn/profiles) |
 | 媒体服务 |是 |[媒体服务 REST](/rest/api/media) |[媒体资源](/azure/templates/microsoft.media/mediaservices) |
 
-## <a name="hybrid-integration"></a>混合集成
+## <a name="enterprise-integration"></a>企业集成
 | 服务 | 已启用资源管理器 | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | BizTalk 服务 |是 | |[BizTalk 架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) |
-| 恢复服务 |是 |[恢复服务 REST](/rest/api/recoveryservices) |[恢复服务资源](/azure/templates/microsoft.recoveryservices/vaults) |
+| 中继 | 是 |  | [中继资源](/azure/templates/microsoft.relay/namespaces) |
 | 服务总线 |是 |[服务总线 REST](/rest/api/servicebus) |[服务总线资源](/azure/templates/microsoft.servicebus/namespaces) |
 
 ## <a name="identity--access-management"></a>标识和访问管理
@@ -139,10 +139,11 @@ Azure Active Directory 可以使用 Resource Manager 为订阅启用基于角色
 | 服务 | 已启用资源管理器 | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | 顾问 | 是 | [顾问 REST](/rest/api/advisor/) | - |
-| 自动化 |是 |[自动化 REST](https://msdn.microsoft.com/library/azure/mt662285.aspx) |[自动化架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-10-31/Microsoft.Automation.json) |
+| 自动化 |是 |[自动化 REST](https://msdn.microsoft.com/library/azure/mt662285.aspx) |[自动化资源](/azure/templates/microsoft.automation/automationaccounts) |
 | 计费 | 是 | [计费 REST](/rest/api/billing/) | - |
 | 密钥保管库 |是 |[密钥保管库 REST](/rest/api/keyvault) |[Key Vault 资源](/azure/templates/microsoft.keyvault/vaults) |
 | 操作见解 |是 | | |
+| 恢复服务 |是 |[恢复服务 REST](/rest/api/recoveryservices) |[恢复服务资源](/azure/templates/microsoft.recoveryservices/vaults) |
 | 计划程序 |是 |[计划程序 REST](/rest/api/scheduler) |[计划程序资源](/azure/templates/microsoft.scheduler/jobcollections) |
 | “安全” |是 |[安全 REST](https://msdn.microsoft.com/library/azure/mt704034.aspx) | |
 | 服务器管理 | 是 | [服务器管理 REST](/rest/api/servermanagement/) | [服务器管理资源](/azure/templates/microsoft.servermanagement/gateways) |

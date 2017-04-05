@@ -9,16 +9,17 @@ tags: azure-portal
 documentationcenter: 
 ms.assetid: 367b3f4a-f7d3-4e59-abd0-5dc59576f1ff
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/27/2017
 ms.author: bprakash
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: d9c85736e9578ff4f821a118a25055e360e33ae9
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: c753eac8caed139250a0db85b639fca57c1e9ea6
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -88,6 +89,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 | Apache Phoenix |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |1.6.2 + 2.0（仅限 Linux） |1.6.0（仅限 Linux） |1.5.2（仅限 Linux/实验性生成） |1.3.1（仅限 Windows） |-|-|
 | Apache Kafka | 0.10.0 | 0.9.0 |-|-|-|-|
+| Mono |4.2.1 |3.2.8 |-|-|-|-|
 
 **获取当前组件版本信息**
 
@@ -105,6 +107,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
 | HDInsight 版本 | HDP 版本 | VM OS | 高可用性 | 发布日期 | 在 Azure 门户上提供 | 支持到期日期 | 弃用日期 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| HDI 3.6 预览版 |HDP 2.6 |Ubuntu 16 |是 |02/28/2017 |是 | | |
 | HDI 3.5 |HDP 2.5 |Ubuntu 16 |是 |2016/9/30 |是 | | |
 | HDI 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |是 |03/29/2016 |是 |2016/12/29 |2018/1/9 |
 | HDI 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS 或 Windows Server 2012R2 |是 |12/02/2015 |是 |06/27/2016 |07/31/2017 |
@@ -113,6 +116,9 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 | HDI 3.0 |HDP 2.0 |Windows Server 2012R2 |是 |02/11/2014 |否 |09/17/2014 |06/30/2015 |
 | HDI 2.1 |HDP 1.3 |Windows Server 2012R2 |是 |10/28/2013 |否 |05/12/2014 |05/31/2015 |
 | HDI 1.6 |HDP 1.1 | |否 |10/28/2013 |否 |04/26/2014 |05/31/2015 |
+
+##<a name="hdi-36-preview-with-apache-spark-21"></a>包含 Apache Spark 2.1 的 HDI 3.6 预览版
+HDI 3.6 预览版于 2017 年 2 月 28 日发布。 这已在用于 Apache Spark 2.1 的预览版中提供。 有关更多详细信息，请参阅[包含 Apache Spark 2.1 的 HDI 3.6 预览版](https://azure.microsoft.com/en-us/blog/announcing-preview-of-azure-hdinsight-3-6-with-apache-spark-2-1/)
 
 ##<a name="hdi-version-32-and-33-nearing-deprecation-date"></a>HDI 版本 3.2 和 3.3 接近弃用日期
 对 HDI 3.2 群集的支持于 03/01/2016 到期，并将于 04/01/2017 弃用。 对 HDI 3.3 群集的支持于 06/27/2016 到期，并将于 07/31/2017 弃用。 如果你有 HDI 3.2 或 3.3 HDI 群集，则请立刻将群集升级到 HDI 3.5（最新版本）。

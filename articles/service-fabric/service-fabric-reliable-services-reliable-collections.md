@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 3/1/2017
+ms.date: 3/27/2017
 ms.author: mcoskun
 translationtype: Human Translation
-ms.sourcegitcommit: 4952dfded6ec5c4512a61cb18d4c754bf001dade
-ms.openlocfilehash: b5fab7cf91493d477cafd66e27e346ea3ad02f04
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 6ac47fe040793f2ac4ff596880675df0b331143e
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -146,6 +146,7 @@ Reliable Collections 负责保存到该点为止的状态。
 * 切勿在另一个事务的 `using` 语句内创建事务，因为它可能会导致死锁。
 * 务必确保您的 `IComparable<TKey>` 实现是正确的。 系统采用其上的依赖关系以合并检查点。
 * 意图更新某项而读取该项时，切勿更新锁以防止出现某类死锁。
+* 请考虑保留 80 KB 以下的项（例如 Reliable Dictionary 的 TKey + TValue）：越小越好。 这将减少大型对象堆的使用量，并降低磁盘和网络 IO 的要求。 在许多情况下，还会减少在只更新一小部分值时复制的重复数据。 在 Reliable Dictionary 中实现此效果的常用方法是将一行划分为多行。 
 * 请考虑使用备份和还原功能来进行灾难恢复。
 * 避免在同一事务中混合使用单个实体操作和多个实体操作（例如 `GetCountAsync`、`CreateEnumerableAsync`），因为它们的隔离级别不同。
 * 务必处理 InvalidOperationException。 系统可能出于各种原因中止用户事务。 例如，当可靠状态管理器将其角色从“主要”更改为其他角色时，或者当长时间运行的事务阻止截断事务日志时。 在这类情况下，用户可能会收到 InvalidOperationException，指示其事务已终止。 假设用户未请求终止事务，那么，处理此异常的最佳方式是释放事务，然后检查是否发出了取消令牌（或者是否更改了副本的角色），如果没有，则创建新的事务并重试。  

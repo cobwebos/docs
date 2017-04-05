@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2017
+ms.date: 03/28/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 4f8ff754858dfb12a7c1fb6e11b1ea99d99d4aeb
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 7fe9111061fed4af6aa720d0b158e5b4f2becd90
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -29,6 +29,7 @@ Microsoft Azure 包括可靠的网络基础结构以支持你的应用程序和�
 此 Azure 网络安全概述文章将重点介绍以下内容：
 
 * Azure 网络
+* Azure 网络观察程序
 * 网络访问控制
 * 安全远程访问和跨界连接
 * 可用性
@@ -43,6 +44,18 @@ Microsoft Azure 包括可靠的网络基础结构以支持你的应用程序和�
 了解更多：
 
 * [虚拟网络概述](../virtual-network/virtual-networks-overview.md)
+
+## <a name="azure-network-watcher"></a>Azure 网络观察程序
+Azure 网络观察程序包括大量有助于问题故障排除的网络监视功能，还提供一整套全新的工具来帮助识别安全问题。
+
+[安全组视图](/network-watcher/network-watcher-security-group-view-overview.md)有助于虚拟机的审核和安全符合性检查，并可用于以编程方式执行比较组织定义的基线策略和每个 VM 的有效规则的审核。 这有助于识别任何配置偏移。
+
+通过[数据包捕获](/network-watcher/network-watcher-packet-capture-overview.md)可以捕获流向和流出虚拟机的网络流量。 除在网络统计信息收集和应用程序问题排查方面提供帮助外，数据包捕获在网络入侵调查中也非常有用。 此功能还可与 Azure Functions 一起使用，使其根据特定 Azure 警报启动网络捕获。
+
+若要深入了解 Azure 网络观察程序以及如何开始测试实验室中的一些功能，请参阅 [Azure 网络观察程序监视概述](/network-watcher/network-watcher-monitoring-overview.md)
+
+>[!NOTE]
+Azure 网络观察程序仍以公共预览版提供，因此其可用性和可靠性与正式发布版本中的相应服务可能不在同一级别。 某些功能可能不受支持，能力可能会受约束，并且可能不是在所有 Azure 位置都可用。 有关此服务可用性和状态方面的最新通知，请参阅 [Azure 更新页](https://azure.microsoft.com/updates/?product=network-watcher)
 
 ## <a name="network-access-control"></a>网络访问控制
 网络访问控制是限制 Azure 虚拟网络内特定设备或子网之间的连接的行为。 网络访问控制旨在确保你的虚拟机和服务仅让你指定可访问的用户和设备进行访问。 访问控制基于虚拟机或服务之间的连接的允许或拒绝决策。
@@ -158,8 +171,8 @@ Azure 网络支持以下安全远程访问方案：
 
 负载均衡是专为在多个设备之间均匀分布连接而设计的机制。 负载均衡的目标是：
 
-* 提高可用性 – 在跨多个设备对连接进行负载平衡时，一个或多个设备可能变得不可用，并且正在其余联机设备上运行的服务可以继续提供来自服务的内容。
-* 提高性能 – 在跨多个设备对连接进行负载平衡时，单个设备不必占用处理器命中。 相反，提供内容的处理和内存需求遍布多个设备。
+* 提高可用性 – 在跨多个设备对连接进行负载均衡时，一个或多个设备可能变得不可用，并且正在其余联机设备上运行的服务可以继续提供来自服务的内容。
+* 提高性能 – 在跨多个设备对连接进行负载均衡时，单个设备不必占用处理器命中。 相反，提供内容的处理和内存需求遍布多个设备。
 
 ### <a name="http-based-load-balancing"></a>基于 HTTP 的负载均衡
 运行基于 Web 的服务的组织通常希望在这些 Web 服务前面具有基于 HTTP 的负载均衡器，以帮助确保足够级别的性能和高可用性。 与传统的基于网络的负载均衡器相比，由基于 HTTP 的负载均衡器所做的负载平衡决策基于 HTTP 协议的特征，而不是基于网络和传输层协议的特征。
@@ -181,7 +194,7 @@ Azure 网络支持以下安全远程访问方案：
 
 * 基于 IP 地址和端口号的网络级别负载均衡
 * 支持任何应用程序层协议
-* 对 Azure 虚拟机和云服务角色实例进行负载平衡
+* 对 Azure 虚拟机和云服务角色实例进行负载均衡
 * 可用于面向 Internet（外部负载均衡）和面向非 Internet（内部负载均衡）的应用程序和虚拟机
 * 终结点监视，用于确定负载均衡器后面的任何服务是否已变得不可用
 
@@ -213,6 +226,7 @@ Azure 网络支持以下安全远程访问方案：
 了解更多：
 
 * [网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md)
+
 
 ## <a name="name-resolution"></a>名称解析
 名称解析是在 Azure 中托管的所有服务的一个重要功能。 从安全角度看，名称解析功能的泄漏可能会导致攻击者将来自你的站点的请求重定向到攻击者的站点。 安全的名称解析是所有云托管的服务的要求。

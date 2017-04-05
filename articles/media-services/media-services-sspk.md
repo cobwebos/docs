@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 03/29/2017
 ms.author: xpouyat
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c4fe7c13f4805f9a3808096f87e86f5f9c973372
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 2a6122645f96e7a1a1286ef2d13c155b5b106056
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -91,6 +92,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
+* iWEDIA S.A. 
 * Liberty Global Services BV
 * MediaTek Inc.
 * MStar Co, Ltd
@@ -157,10 +159,5 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

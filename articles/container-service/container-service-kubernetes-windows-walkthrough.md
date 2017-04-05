@@ -18,9 +18,9 @@ ms.date: 03/20/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: c43648dae95d90d0ee9f3d6b5bedfad7ab4889ca
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: eb3af43b8a13eaaebfa9147848383ff889119d97
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/22/2017
 ## <a name="prerequisites"></a>先决条件
 
 
-* **SSH RSA 公钥**：通过门户或某个 Azure 快速入门模板进行部署时需提供 SSH RSA 公钥，以便针对 Azure 容器服务虚拟机进行身份验证。 若要创建安全外壳 (SSH) RSA 密钥，请参阅 [OS X 和 Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 指南。 
+* **SSH RSA 公钥**：通过门户或某个 Azure 快速入门模板进行部署时需提供 SSH RSA 公钥，以便针对 Azure 容器服务虚拟机进行身份验证。 若要创建安全外壳 (SSH) RSA 密钥，请参阅 [OS X 和 Linux](../virtual-machines/linux/mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/linux/ssh-from-windows.md) 指南。 
 
 * **服务主体客户端 ID 和机密**：有关详细信息和指南，请参阅[关于 Kubernetes 群集的服务主体](container-service-kubernetes-service-principal.md)。
 

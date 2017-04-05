@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 2/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 4cde82601758c9f92ab36c692265a8b6c192cbdc
-ms.openlocfilehash: eef19d304ec63d752b6b84c78833af44ca5344d2
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 8192f9e36ebadd41d93ec3c2fa61b05e342d5bc1
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -154,7 +154,7 @@ ClusterConfig.JSON 中的 **properties** 节用于配置群集，如下所示。
 * *serviceConnectionEndpointPort* 是节点上部署的应用程序和服务用来与该特定节点上的 Service Fabric 客户端通信的端口。
 * *httpGatewayEndpointPort* 是 Service Fabric Explorer 用来连接群集的端口。
 * *ephemeralPorts* 替代 [OS 使用的动态端口](https://support.microsoft.com/kb/929851)。 Service Fabric 将使用其中的一部分端口作为应用程序端口，剩余的端口供 OS 使用。 它还会将此范围映射到 OS 中的现有范围，因此，无论何时，你都可以使用示例 JSON 文件中指定的范围。 需要确保起始端口与结束端口至少相差 255。 如果此差异过低，则可能会遇到冲突，因为此范围与操作系统共享。 通过运行 `netsh int ipv4 show dynamicport tcp` 来查看配置的动态端口范围。
-* *applicationPorts* 是 Service Fabric 应用程序使用的端口。 这些端口应是 *ephemeralPorts* 的子集，其范围足以满足应用程序的终结点要求。 每当需要新端口时，Service Fabric 将使用这些端口，并负责为这些端口打开防火墙。 
+* *applicationPorts* 是 Service Fabric 应用程序使用的端口。 应用程序端口范围的大小应足以满足应用程序的终结点要求。 此范围在计算机上的动态端口范围中应是独占的，即按配置中设置的 *ephemeralPorts* 范围。  每当需要新端口时，Service Fabric 将使用这些端口，并负责为这些端口打开防火墙。 
 * *reverseProxyEndpointPort* 是可选的反向代理终结点。 有关详细信息，请参阅 [Service Fabric 反向代理](service-fabric-reverseproxy.md)。 
 
 ### <a name="log-settings"></a>日志设置

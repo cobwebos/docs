@@ -1,6 +1,6 @@
 ---
-title: "Azure 导入/导出工具的导入作业命令的快速参考 | Microsoft Docs"
-description: "导入作业常用的 Azure 导入/导出工具命令参考。 本文所述的导入/导出工具为 v1 版本。"
+title: "Azure 导入/导出工具的导入作业命令的快速参考 - v1 | Microsoft Docs"
+description: "Azure 导入/导出工具的常用导入作业命令参考。 本文所述的导入/导出工具为 v1 版本。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 0c58a94a553a22ac06bfdfd8032879f4a4a87fe5
-ms.openlocfilehash: e1c440ee165d148b59f29035b853cd8e13a44e7c
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 632100f324c47d69f64cff020aafbaa300ae8c2b
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -59,11 +60,7 @@ WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:music /srcdir:d:\Music /dstd
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:dvd /srcfile:d:\dvd\favoritemovie.vhd /dstblob:dvd/favoritemovie.vhd  
 ```  
   
-## <a name="see-also"></a>另请参阅  
- [为导入作业准备硬盘驱动器的示例工作流](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
+## <a name="next-steps"></a>后续步骤
 
-
-
-<!--HONumber=Dec16_HO3-->
-
+* [为导入作业准备硬盘驱动器的示例工作流](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
 

@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: a09fc0052538316a37a9ff07dfddd89de00cb499
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 4d9471fcdff26ac76312fcecdb427dca842f7ee3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -90,7 +90,7 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
 执行以下步骤使用 PuTTY 创建 SSH 隧道。
 
-1. 打开 PuTTY 并输入你的连接信息。 如果不熟悉 PuTTY，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)，了解如何配合 HDInsight 使用 PuTTY。
+1. 打开 PuTTY 并输入你的连接信息。 如果不熟悉 PuTTY，请参阅 [PuTTY 文档 (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)。
 
 2. 在对话框左侧的“类别”部分中，依次展开“连接”和“SSH”，然后选择“隧道”。
 
@@ -159,9 +159,6 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
 * [使用 Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
 
-有关如何在 HDInsight 中使用 SSH 的详细信息，请参阅以下文档：
-
-* [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-* [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+有关将 SSH 与 HDInsight 配合使用的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 

@@ -3,7 +3,7 @@
 3. 对于“资源组”，请选择现有资源组，或创建新组（使用与应用相同的名称。） 
    
     可以选择其他应用服务计划或创建新的计划。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 [Azure App Service 计划深入概述](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
-4. 对于“应用服务计划”，请选择默认计划（位于“标准层”[](https://azure.microsoft.com/pricing/details/app-service/)）。 还可以选择不同的计划，或[创建一个新计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)。 应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。 
+4. 对于“应用服务计划”，请选择默认计划（位于 [标准层](https://azure.microsoft.com/pricing/details/app-service/)）。 还可以选择不同的计划，或[创建一个新计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)。 应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。 
    
     做出有关计划的决定后，单击“创建”。 随后将创建移动应用后端。 
 5. 在新的移动应用后端的“设置”边栏选项卡中，依次单击“快速启动”>你的客户端应用平台 >“连接数据库”。 
@@ -17,8 +17,3 @@
 
 <!-- URLs. -->
 [Azure 门户]: https://portal.azure.com/
-
-
-<!--HONumber=Nov16_HO3-->
-
-

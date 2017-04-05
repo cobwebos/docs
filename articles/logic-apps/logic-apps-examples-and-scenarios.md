@@ -15,9 +15,9 @@ ms.workload: integration
 ms.date: 03/14/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: cbe7011f827418c1094c4e262e016cb93d6d224c
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: dcf089d680249d0a2f9d748b315076d91c8c78e8
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -70,6 +70,7 @@ Azure 逻辑应用为不同服务提供弹性业务流程和集成。 逻辑应�
 
 逻辑应用还提供了与许多服务，如 Azure 函数、Azure API 管理、Azure 应用服务和自定义 HTTP 终结点（例如，REST 和 SOAP）的集成。
 
+* [使用 Azure Serverless 创建实时社交仪表板](logic-apps-scenario-social-serverless.md)
 * [从逻辑应用调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md)
 * [方案：使用 Azure Functions 触发逻辑应用](logic-apps-scenario-function-sb-trigger.md)
 * [博客：从逻辑应用调用 SOAP 终结点](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)

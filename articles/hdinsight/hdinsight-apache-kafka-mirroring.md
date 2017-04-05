@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 015d276e-f678-4f2b-9572-75553c56625b
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
-ms.openlocfilehash: 1527896e4f512cdfa6a4e925bbdca88a1e6a8fe7
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 281901045723266128db9069a6f244acb183ae80
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="use-mirrormaker-to-create-a-replica-of-a-kafka-on-hdinsight-cluster-preview"></a>使用 MirrorMaker 创建 Kafka on HDInsight 群集的副本（预览）
@@ -118,18 +119,12 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
    
     用创建群集时使用的 SSH 用户名替换 **sshuser**。 用创建群集时使用的基名称替换 **BASENAME**。
    
-    有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档：
-   
-    * [在 Linux、Mac OS、Unix 客户端或 Windows 10 上的 Bash 中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
-   
-    * [在 Windows 客户端中将 SSH (PuTTY) 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)。
+    有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 使用以下命令查找 Zookeeper 主机，设置 `SOURCE_ZKHOSTS` 变量，然后创建数个名为 `testtopic` 的新主题：
    
     ```bash
-    # Get a list of zookeeper hosts for the source cluster
     SOURCE_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
-    # Create a topic on the source cluster
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SOURCE_ZKHOSTS
     ```
 
@@ -147,11 +142,11 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
     echo $SOURCE_ZKHOSTS
     ```
    
-    这会返回类似于以下文本的信息：
+ 这会返回类似于以下文本的信息：
    
-        zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk6-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181
+       zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk6-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181
    
-    请保存此信息。 在下一部分中使用。
+ 请保存此信息。 在下一部分中使用。
 
 ## <a name="configure-mirroring"></a>配置镜像
 
@@ -161,11 +156,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
    
     用创建群集时使用的 SSH 用户名替换 **sshuser**。 用创建群集时使用的基名称替换 **BASENAME**。
    
-    有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档：
-   
-    * [在 Linux、Mac OS、Unix 客户端或 Windows 10 上的 Bash 中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-    
-    * [在 Windows 客户端中将 SSH (PuTTY) 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+    有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 使用以下命令创建介绍如何与**源**群集通信的 `consumer.properties` 文件：
    
@@ -187,11 +178,8 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 3. 配置与目标群集通信的创建器之前，必须找到**目标**群集的中转站主机。 使用以下命令检索此信息：
    
     ```bash
-    # Install JQ for parsing JSON documents
     sudo apt -y install jq
-    # Get the broker information for the destination cluster
     DEST_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
-    # Display the information
     echo $DEST_BROKERHOSTS
     ```
    
@@ -240,28 +228,22 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 2. From the SSH connection to the **source** cluster, use the following command to start a producer and send messages to the topic:
     
     ```bash
-    # Install JQ for working with JSON
     sudo apt -y install jq
-    # Retrieve the Kafka brokers
     SOURCE_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
-    # Start a producer
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
     ```
 
-    出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到**源**群集上的主题。 完成后，使用 **Ctrl + C** 结束生成者进程。
+ 出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到**源**群集上的主题。 完成后，使用 **Ctrl + C** 结束生成者进程。
 
 3. 从**目标**群集的 SSH 连接开始，使用 **Ctrl + C** 结束 MirrorMaker 进程。 然后使用以下命令验证是否已创建 `testtopic` 主题，以及该主题中的数据是否已复制到此镜像：
     
     ```bash
-    # Get a list of zookeeper hosts for the destination cluster
     DEST_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
-    # List topics on destination
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $DEST_ZKHOSTS
-    # Retrieve messages from the `testtopic`
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
     ```
     
-    主题列表现包含 `testtopic`，该条目创建于 MirrorMaster 将主题从源群集镜像到目标时。 从主题检索到的消息与在源群集上输入的消息相同。
+  主题列表现包含 `testtopic`，该条目创建于 MirrorMaster 将主题从源群集镜像到目标时。 从主题检索到的消息与在源群集上输入的消息相同。
 
 ## <a name="delete-the-cluster"></a>删除群集
 

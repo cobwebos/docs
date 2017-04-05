@@ -39,7 +39,7 @@
 如果你的 Azure VM 来自 Ubuntu 或 CoreOS 映像，则可以使用 CustomData 将 cloud-config 发送到 cloud-init。 或者，如果你的自定义数据文件是一个脚本，则 cloud-init 只需执行它。
 
 ### <a name="ubuntu-cloud-images"></a>Ubuntu 云映像
-在大多数 Azure Linux 映像中，你将编辑“/etc/waagent.conf”来配置临时资源磁盘和交换文件。 有关详细信息，请参阅 [Azure Linux 代理用户指南](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+在大多数 Azure Linux 映像中，你将编辑“/etc/waagent.conf”来配置临时资源磁盘和交换文件。 有关详细信息，请参阅 [Azure Linux 代理用户指南](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 但是，在 Ubuntu 云映像上，你必须使用 cloud-init 来配置资源磁盘（又称“临时”磁盘）和交换分区。 有关更多详细信息，请参阅 Ubuntu wiki 上的以下页面：[AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions)。
 
@@ -51,9 +51,4 @@
 [添加 Azure 角色服务管理 REST API 参考](http://msdn.microsoft.com/library/azure/jj157186.aspx)
 
 [Azure 命令行接口](https://github.com/Azure/azure-xplat-cli)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

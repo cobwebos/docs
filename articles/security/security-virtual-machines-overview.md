@@ -1,6 +1,6 @@
 ---
 title: "与 Azure 虚拟机配合使用的 Azure 安全功能 | Microsoft Docs"
-description: " 能够与 Azure 虚拟机配合使用的 Azure 核心安全功能概述。 通过 Azure VM 可灵活进行虚拟化，无需购买和维护运行 VM 的物理硬件. "
+description: " 能够与 Azure 虚拟机配合使用的 Azure 核心安全功能概述。 通过 Azure VM 可灵活进行虚拟化，无需购买和维护运行 VM 的物理硬件。 "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
-ms.openlocfilehash: 5e9dcd9913cf301e7c5a50eb9e55fb0b3dc303e5
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 70d22ae8d7f67f1e12a233e004f1eb749927e7d8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -70,8 +71,8 @@ Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的�
 
 * [适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](azure-security-antimalware.md)
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](../virtual-machines/virtual-machines-windows-classic-install-trend.md)
-* [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../virtual-machines/virtual-machines-windows-classic-install-symantec.md)
+* [如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](../virtual-machines/windows/classic/install-trend.md)
+* [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../virtual-machines/windows/classic/install-symantec.md)
 * [用于保护 Azure 虚拟机的新反恶意软件选项 – McAfee Endpoint Protection](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 * [Azure 应用商店中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
 
@@ -151,9 +152,4 @@ Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关�
 
 * [Microsoft Trust Center: Compliance](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)（Microsoft 信任中心：合规性）
 * [Trusted Cloud: Microsoft Azure Security, Privacy, and Compliance](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)（可信云：Microsoft Azure 安全性、隐私和合规性）
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

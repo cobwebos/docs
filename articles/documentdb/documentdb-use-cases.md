@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 03/23/2017
 ms.author: hawong
 translationtype: Human Translation
-ms.sourcegitcommit: 912d5af4231dee6aa8bc2f32d7950f59377fe90f
-ms.openlocfilehash: dbd5448c94577e6a21a2433a00e7a2f75afcc4a0
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 9a0ba106b4c2aded8aaac673dfba3610bd4ca0fb
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -78,7 +79,7 @@ DocumentDB 用于 [Next Games](http://www.nextgames.com/) 推出的 [The Walking
 ![Azure DocumentDB 游戏参考体系结构](./media/documentdb-use-cases/documentdb-gaming-architecture.png)
 
 ## <a name="web-and-mobile-applications"></a>Web 和移动应用程序
-DocumentDB 通常用于 Web 和移动应用程序内部，尤其适用于社交互动建模、与第三方服务集成和积累丰富的个性化体验。 
+DocumentDB 通常用于 Web 和移动应用程序内部，尤其适用于社交互动建模、与第三方服务集成和积累丰富的个性化体验。 可以使用 DocumentDB SDK 构建使用常用 [Xamarin 框架](documentdb-mobile-apps-with-xamarin.md)的丰富 iOS 和 Android 应用程序。  
 
 ### <a name="social-applications"></a>社交应用程序
 DocumentDB 的一个常见用例就是存储和查询 Web 和移动应用程序，尤其是社交媒体应用程序的用户生成内容 (UGC)。 UGC 的部分示例包括聊天会话、推文、博客文章、评级和评论。 通常情况下，社交媒体应用程序中的 UGC 混合了不受刚性结构约束的自由形式文本、属性、标记和关系。 可将聊天、评论和帖子等内容存储在 DocumentDB 中，而无需转换或复杂对象关系映射层。  可以轻易添加或修改数据属性以满足开发人员遍历应用程序代码的要求，从而促进快速开发。  
@@ -115,9 +116,4 @@ JSON 是一种用于呈现 UI 布局数据的有效格式，它不仅轻量而�
 * [Orange Tribes](https://customers.microsoft.com/en-US/story/theres-more-to-that-food-app-than-meets-the-eye-or-the-mouth)。 使用这款食品应用，得到的不仅仅是视觉或味觉上的满足。
 * [Real Madrid](https://customers.microsoft.com/en-US/story/real-madrid-brings-the-stadium-closer-to-450-million-f)。 皇家马德里足球俱乐部借助 Microsoft 云拉近体育场与全球 4.5 亿粉丝之间的距离。
 * [Tuku](https://customers.microsoft.com/en-US/story/tuku-makes-car-buying-fun-with-help-from-azure-services)。 TUKU 借助 Azure 服务增加购买汽车的乐趣 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

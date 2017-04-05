@@ -15,8 +15,9 @@ ms.tgt_pltfrm: na
 ms.date: 01/18/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 19a652f81beacefd4a51f594f045c1f3f7063b59
-ms.openlocfilehash: b7f6c92867e3fabe07312539ec8dfd2d3525f02e
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 66e6fec16aab7764b05b616efc0fccbfb2d0595e
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -60,8 +61,8 @@ ms.openlocfilehash: b7f6c92867e3fabe07312539ec8dfd2d3525f02e
 可通过以下一种方式提供表的凭据： 
 
 - **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure Resource Manager 存储帐户），从 Azure 门户获取连接字符串。
-- **存储帐户共享访问签名** (SAS) 连接字符串：`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`。 SAS 应具有容器（本例中为表）和对象（表行）的列表和读取权限。
--  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`。 SAS 应具有表的列表和读取权限。
+- **存储帐户共享访问签名** (SAS) 连接字符串：`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`。 SAS 应具有容器（本例中为表）和对象（表行）的列表和读取权限。
+-  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`。 SAS 应具有表的查询（读取）权限。
 
 有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)。
 
@@ -134,9 +135,4 @@ ms.openlocfilehash: b7f6c92867e3fabe07312539ec8dfd2d3525f02e
 
 ## <a name="help-us-make-azure-search-better"></a>帮助我们改进 Azure 搜索
 如果你有功能请求或改进建议，请通过我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)与我们联系。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

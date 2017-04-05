@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: SubramaR
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: c4c83345596900162826feab9fe549bc261e7d00
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 62d7e0088c66a538dff7f3b99882ebef4949211b
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -48,4 +48,5 @@ Linux 上的 Service Fabric 在概念上等同于 Windows 上的 Service Fabric�
 3. [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
 4. [在 Linux 上创建第一个 Service Fabric Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
 5. [使用 Jenkins 和 GitHub 设置 Service Fabric 持续集成和部署](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+6. [Service Fabric Windows/Linux 差异](service-fabric-linux-windows-differences.md)
 

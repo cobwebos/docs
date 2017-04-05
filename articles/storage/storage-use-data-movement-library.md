@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 229007db52de53cd50f4d86c145b87d6c2ecf399
-ms.openlocfilehash: e1baa43957ced78b1e25fd632661be2385530db3
-ms.lasthandoff: 01/28/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 2ba94e4dd931b6d385101c7dadccfa3583b5296e
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -26,9 +26,9 @@ ms.lasthandoff: 01/28/2017
 ## <a name="overview"></a>概述
 Microsoft Azure 存储数据移动库是一个高性能的跨平台开源库，用于上载、下载和复制 Azure 存储 Blob 与文件。 此库是驱动 [AzCopy](storage-use-azcopy.md) 的核心数据移动框架。 数据移动库提供传统 [.NET Azure 存储客户端库](storage-dotnet-how-to-use-blobs.md)中所不能提供的便利方法。 这些功能包括设置并行操作数目、跟踪传输进度、轻松恢复已取消的传输，等等。  
 
-此库还使用 .NET Core，这意味着，可以在构建适用于 Windows、Linux 和 MacOS 的 .NET 应用时使用它。 若要了解有关 .NET Core 的详细信息，请参阅 [.NET Core 文档](https://dotnet.github.io/)。 此库也适用于面向 Windows 的传统 .NET Framework 应用。 
+此库还使用 .NET Core，这意味着，可以在构建适用于 Windows、Linux 和 macOS 的 .NET 应用时使用它。 若要了解有关 .NET Core 的详细信息，请参阅 [.NET Core 文档](https://dotnet.github.io/)。 此库也适用于面向 Windows 的传统 .NET Framework 应用。 
 
-本文档演示如何创建在 Windows、Linux 和 MacOS 上运行的 .NET Core 控制台应用程序并执行以下方案：
+本文档演示如何创建在 Windows、Linux 和 macOS 上运行的 .NET Core 控制台应用程序并执行以下方案：
 
 - 将文件和目录上载到 Blob 存储。
 - 定义传输数据时使用的并行操作数目。
@@ -581,7 +581,7 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 数据移动应用程序现已完成。 [GitHub 上提供了完整的代码示例](https://github.com/azure-samples/storage-dotnet-data-movement-library-app)。 
 
 ## <a name="next-steps"></a>后续步骤
-在本入门教程中，我们创建了可与 Azure 存储交互的、在 Windows、Linux 和 MacOS 上运行的应用程序。 本入门教程重点介绍有关 Blob 存储的操作。 但是，也可以针对文件存储运用这些知识。 若要了解详细信息，请查看 [Azure 存储数据移动库参考文档](https://azure.github.io/azure-storage-net-data-movement)。
+在本入门教程中，我们创建了可与 Azure 存储交互的、在 Windows、Linux 和 macOS 上运行的应用程序。 本入门教程重点介绍有关 Blob 存储的操作。 但是，也可以针对文件存储运用这些知识。 若要了解详细信息，请查看 [Azure 存储数据移动库参考文档](https://azure.github.io/azure-storage-net-data-movement)。
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 

@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 23c49393a115d9cd0ac3a1b0f146e9dcc780347e
-ms.openlocfilehash: 42be5d71d8f22a2eb06f7ca0ebd4c33fb3d8bebe
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 025e8c9e575123a3ad9863a35061ebd0af212486
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -138,6 +138,16 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 
 - - -
+## <a name="security"></a>安全
+**问：帐户在经过特定次数的失败尝试后被锁定还是使用了更复杂的策略？**</br>
+我们使用更复杂的策略来锁定帐户。  这基于请求的 IP 和输入的密码。 锁定的持续时间也会根据存在攻击的可能性而延长。  
+
+**问：某些（通用）密码会被拒绝并且显示消息“此密码已使用了许多次”，这是否是指当前 Active Directory 中使用的密码？**</br>
+这指的是全局通用的密码，例如“Password”和“123456”的任何变体。
+
+**问：B2C 租户中就会阻止来自可疑来源（僵尸网络、Tor 终结点）的登录请求还是需要使用基本或高级版租户才能阻止？**</br>
+我们有一个网关，它会筛选请求并针对僵尸网络提供一定的防护，它适用于所有 B2C 租户。 
+
 ## <a name="application-access"></a>应用程序访问
 **问：在哪里可以找到与 Azure AD 预先集成的应用程序及其功能的列表？**
 

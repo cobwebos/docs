@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: bd4a38e74ecab47071631f7e67e99c7806abd935
-ms.openlocfilehash: e8f1d55dd374608b49d4189fb47603a6ddaee3dd
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: cd410316910bce76f5c915c06e83b24c034481b7
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -58,7 +59,7 @@ ms.openlocfilehash: e8f1d55dd374608b49d4189fb47603a6ddaee3dd
 因为数据文件没有列标题，所以工作室提供了通用标题（Col1、Col2 等）。 好标题不是创建模型的关键，但它们使得处理实验中的数据变得更容易。 此外，当我们最终在 Web 服务中发布此模型时，标题将有助于识别服务用户的列。  
 
 可以使用[编辑元数据][edit-metadata]模块来添加列标题。
-可以使用[编辑元数据][edit-metadata]模块来更改与数据集关联的元数据。 在本例中，我们将使用它来为列标题提供更友好的名称。 
+可以使用[编辑元数据][edit-metadata]模块来更改与数据集关联的元数据。 在本例中，我们使用它来为列标题提供更友好的名称。 
 
 若要使用[编辑元数据][edit-metadata]，请首先指定要修改的列（在本例中为所有列）。接下来，指定要对这些列执行的操作（在此情况下为更改列标题）。
 
@@ -102,7 +103,8 @@ ms.openlocfilehash: e8f1d55dd374608b49d4189fb47603a6ddaee3dd
 > 
 
 ## <a name="create-training-and-test-datasets"></a>创建训练和测试数据集
-实验的下一步是将数据集拆分为两个单独的数据集。 我们将使用其中一个来训练模型，使用另一个来测试模型。
+我们需要一些用于训练模型的数据和一些用于测试模型的数据。
+因此，在试验的下一步中，我们将数据集拆分为两个单独的数据集：一个用于训练模型，一个用于测试模型。
 
 为此，我们使用[拆分数据][split]模块。  
 
@@ -111,7 +113,7 @@ ms.openlocfilehash: e8f1d55dd374608b49d4189fb47603a6ddaee3dd
 2. 默认情况下，拆分比为 0.5，并且设置了“随机拆分”参数。 这意味着，随机的一半数据通过[拆分数据][split]模块的一个端口输出，另一半通过另一个端口输出。 你可以调整这些参数，以及“随机种子”参数，以更改训练和测试数据之间的拆分。 在本例中，我们将其保持原样。
    
    > [!TIP]
-   > **第一个输出数据集中行的分数**属性决定了通过左输出端口输出的数据量。 例如，如果将比率设置为 0.7，则 70% 的数据将通过左端口输出，30% 通过右端口输出。  
+   > **第一个输出数据集中行的分数**属性决定了通过*左*输出端口输出的数据量。 例如，如果将比率设置为 0.7，则 70% 的数据将通过左端口输出，30% 通过右端口输出。  
    > 
    > 
 
@@ -119,7 +121,7 @@ ms.openlocfilehash: e8f1d55dd374608b49d4189fb47603a6ddaee3dd
 
 我们可以使用[拆分数据][split]模块的输出，但我们选择使用左输出作为训练数据，右输出作为测试数据。  
 
-如前文所述，将高信用风险错误分类为低的成本是将低信用风险错误分类为高的成本的五倍。 考虑到这一点，我们生成一个反映此成本函数的新数据集。 在新数据集中，每个高风险示例会复制五次，而每个低风险示例则不复制。   
+如[上一步骤](machine-learning-walkthrough-2-upload-data.md)中所述，将高信用风险错误分类为低的成本比将低信用风险错误分类为高的成本高五倍。 考虑到这一点，我们生成一个反映此成本函数的新数据集。 在新数据集中，每个高风险示例会复制五次，而每个低风险示例则不复制。   
 
 我们可以使用 R 代码进行此复制：  
 
@@ -139,7 +141,7 @@ ms.openlocfilehash: e8f1d55dd374608b49d4189fb47603a6ddaee3dd
 
     ![“执行 R 脚本”模块中的 R 脚本][9]
 
-我们需要对 [拆分数据][split]模块的每个输出执行相同的复制操作，以便训练和测试数据具有相同的成本调整。 我们将通过以下方法执行此操作：复制刚才创建的[执行 R 脚本][execute-r-script]模块，将其连接到[拆分数据][split]模块的另一个输出端口。
+我们需要对 [拆分数据][split]模块的每个输出执行相同的复制操作，以便训练和测试数据具有相同的成本调整。 执行此操作的最简单方法是：复制刚才生成的[执行 R 脚本][execute-r-script]模块，将其连接到[拆分数据][split]模块的另一个输出端口。
 
 1. 右键单击 [执行 R 脚本][execute-r-script]模块，然后选择“复制”。
 
@@ -178,9 +180,4 @@ ms.openlocfilehash: e8f1d55dd374608b49d4189fb47603a6ddaee3dd
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 [edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

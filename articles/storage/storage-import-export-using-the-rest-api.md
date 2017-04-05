@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 导入/导出服务 REST API | Microsoft Docs"
-description: "了解如何使用 Azure 导入/导出服务 REST API"
+description: "了解可在何处查找使用 Azure 导入/导出服务 REST API 的资源，包括操作说明和参考材料。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 22e37e26fec913a7638c71b2547c38f5efacd10b
-ms.openlocfilehash: 675aef8ec0f9344d2b3073021e83856c2fb34b7c
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: e4f5ca289f4bd87574e448d37a1154b222f221f5
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -38,7 +39,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 对导入/导出服务发出的请求必须指定 `api-version` 参数并将其值设置为 `2016-11-01`。
 
-## <a name="in-this-section"></a>本节内容
+## <a name="importexport-service-operations"></a>导入/导出服务操作
 
 [创建导入作业](storage-import-export-creating-an-import-job.md)
 
@@ -54,11 +55,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 [导入/导出作业的诊断和错误恢复](storage-import-export-diagnostics-and-error-recovery.md)
 
-## <a name="see-also"></a>另请参阅
- [存储导入/导出 REST](/rest/api/storageimportexport)
+## <a name="next-steps"></a>后续步骤
 
-
-
-<!--HONumber=Dec16_HO3-->
-
+* [存储导入/导出 REST](/rest/api/storageimportexport)
 

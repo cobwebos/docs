@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 81c9313635f382252550a4c0dcc7a707e9f365fb
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c731099cb91512f3bf0ecc2ffa5258788c90cd1b
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -101,7 +101,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 你�
     |**资源组**|**使用现有项:** 选择 *MyRG*|虽然我们使用的资源组与用于 VNet 的相同，但资源不需属于同一资源组。|
     |**位置**|*美国西部*|此位置必须是用户在本文[创建包含两个子网的虚拟网络](#create-vnet)部分的步骤 5 中指定的位置。 资源所连接到的 VM 和 VNet 必须属于同一位置。|
 
-4. 在“选择大小”边栏选项卡中单击“DS1_V2 标准”，然后单击“选择”。 请阅读 [Windows VM 大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文，了解 Azure 所支持的所有 Windows VM 大小的列表。
+4. 在“选择大小”边栏选项卡中单击“DS1_V2 标准”，然后单击“选择”。 请阅读 [Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文，了解 Azure 所支持的所有 Windows VM 大小的列表。
 5. 在“设置”边栏选项卡中，输入或选择以下值，然后单击“确定”：
 
     |**设置**|**值**|**详细信息**|
@@ -111,7 +111,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 你�
     |**子网**|选择“前端”|可以选择 VNet 中存在的任何子网。|
     |**公共 IP 地址**|接受默认值|可以使用公共 IP 地址从 Internet 连接到 VM。 若要详细了解公共 IP 地址，请阅读 [IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)一文。|
     |**网络安全组(防火墙)**|接受默认值|单击门户创建的“(新建) MyWebServer-nsg”默认 NSG 查看其设置。 在打开的“创建网络安全组”边栏选项卡中，可以看到其中有一个入站规则，该规则允许来自任意源 IP 地址的 TCP/3389 (RDP) 流量。|
-    |**所有其他值**|接受默认值|若要详细了解其余设置，请阅读[关于 VM](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文。|
+    |**所有其他值**|接受默认值|若要详细了解其余设置，请阅读[关于 VM](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文。|
 
     可以使用网络安全组 (NSG)，针对流入和流出 VM 的网络流量的类型创建入站/出站规则。 默认情况下，将拒绝到 VM 的所有入站流量。 可以为生产型 Web 服务器添加更多针对 TCP/80 (HTTP) 和 TCP/443 (HTTPS) 的入站规则。 没有针对出站流量的规则，因为默认情况下，所有出站流量都是允许的。 可以添加/删除规则，按策略来控制流量。 阅读[网络安全组](virtual-networks-nsg.md)一文，了解有关 NSG 的详细信息。
 
@@ -160,7 +160,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 你�
 
     ![资源组内容](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-若要详细了解 VM、磁盘和存储帐户，请阅读[虚拟机](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[磁盘](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[存储帐户](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)这三篇概述文章。 可以看到门户创建的两个默认 NSG。 还可以看到门户创建了两个网络接口 (NIC) 资源。 VM 可以使用 NIC 通过 VNet 连接到其他资源。 若要详细了解 NIC，请阅读 [NIC](virtual-network-network-interface.md) 一文。 门户还创建了一个公共 IP 地址资源。 公共 IP 地址是针对公共 IP 地址资源的一种设置。 若要详细了解公共 IP 地址，请阅读 [IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)一文。
+若要详细了解 VM、磁盘和存储帐户，请阅读[虚拟机](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[磁盘](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[存储帐户](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)这三篇概述文章。 可以看到门户创建的两个默认 NSG。 还可以看到门户创建了两个网络接口 (NIC) 资源。 VM 可以使用 NIC 通过 VNet 连接到其他资源。 若要详细了解 NIC，请阅读 [NIC](virtual-network-network-interface.md) 一文。 门户还创建了一个公共 IP 地址资源。 公共 IP 地址是针对公共 IP 地址资源的一种设置。 若要详细了解公共 IP 地址，请阅读 [IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)一文。
 
 ## <a name="connect-to-from-vms"></a>连接到 VM
 
@@ -252,5 +252,5 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 你�
 - [公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
 - [网络接口](virtual-network-network-interface.md)
 - [网络安全组](virtual-networks-nsg.md)
-- [虚拟机](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [虚拟机](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 

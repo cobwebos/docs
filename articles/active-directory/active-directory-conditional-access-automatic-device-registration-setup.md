@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 03/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 6a7e0964a3a6e9be534a6bd683446d3da5edcecd
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 96fb170e7a079fbb4bcfb4a6b1e98970a709406f
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -87,7 +87,8 @@ Azure AD Connect：
 | 步骤 1：配置服务连接点 | ![勾选标记][1]                            | ![勾选标记][1]                    | ![勾选标记][1]        |
 | 步骤 2：设置声明颁发           |                                        | ![勾选标记][1]                    | ![勾选标记][1]        |
 | 步骤 3：启用非 Windows 10 设备      |                                        |                                | ![勾选标记][1]        |
-
+| 步骤 4：控制部署和实施     | ![勾选标记][1]                            | ![勾选标记][1]                    | ![勾选标记][1]        |
+| 步骤 5：验证已注册的设备          | ![勾选标记][1]                            | ![勾选标记][1]                    | ![勾选标记][1]        |
 
 
 
@@ -292,8 +293,13 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
         Value = "http://<verified-domain-name>/adfs/services/trust/"
     );
 
-> [!NOTE]
-> 上述规则中计算机的 issuerID 声明必须包含 Azure AD 中的一个已验证域名。 这不是 AD FS 服务 URL。
+
+在上述声明中，
+
+- `$<domain>` 是 AD FS 服务 URL
+- `<verified-domain-name>` 是一个占位符，需要将其替换为 Azure AD 中已验证域名之一
+
+
 
 有关已验证的域名的详细信息，请参阅 [Add a custom domain name to Azure Active Directory](active-directory-add-domain.md)（向 Azure Active Directory 添加自定义域名）。  
 若要获取已验证的公司域的列表，可以使用 [Get-MsolDomain](https://docs.microsoft.com/powershell/msonline/v1/get-msoldomain) cmdlet。 

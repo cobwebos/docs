@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: ba0fc8849a7131a2dee8c9e7db546ca1a22e05df
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: c041802cd86f9e8b07771413f867691d76b01abf
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -331,7 +331,7 @@ Vowpal Wabbit 是一种使用在线、哈希、allreduce、缩减、learning2sea
 
 将 .Model 文件写入到指定目录。 有关此演示示例的信息，可在 [GitHub](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification) 上了解。
 
-有关 xgboost 的详细信息，请参阅 [xgboost 文档页](https://xgboost.readthedocs.org/en/latest/)及其 [Github 存储库](https://github.com/dmlc/xgboost)。
+有关 xgboost 的详细信息，请参阅 [xgboost 文档页](https://xgboost.readthedocs.org/en/latest/)及其 [GitHub 存储库](https://github.com/dmlc/xgboost)。
 
 #### <a name="rattle"></a>Rattle
 Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 使用基于 GUI 的数据浏览和建模。 它提供数据的统计和可视化摘要，转换可轻松建模的数据，从数据构建不受监督和受监督的模型，以图形方式呈现模型的性能，以及对新数据集进行评分。 它还生成 R 代码，用于复制 UI 中可直接在 R 中运行或用作进一步分析的起点的操作。

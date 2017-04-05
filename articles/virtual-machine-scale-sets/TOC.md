@@ -4,6 +4,7 @@
 # 入门
 ## [在门户中部署规模集](virtual-machine-scale-sets-portal-create.md)
 ## [使用 PowerShell 或 Azure CLI 部署规模集](virtual-machine-scale-sets-create.md)
+## [使用模板部署自动缩放应用](virtual-machine-scale-sets-deploy-scaling-app-template.md)
 
 # 如何
 ## 规划和设计

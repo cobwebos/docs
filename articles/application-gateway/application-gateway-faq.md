@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2017
+ms.date: 03/28/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: a673044269016f5d216fa62a3bcc6f3b106838c0
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 037045c4e76d0fb8e96944fe8a3235223594a034
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -44,7 +44,7 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 **问：目前支持在后端池中添加哪些资源？**
 
-后端池可以包含 NIC、虚拟机规模集 (VMSS)、公共 IP、内部 IP 和完全限定的域名 (FQDN)。 目前不提供 Azure Web 应用支持。 应用程序网关后端池成员不会绑定到可用性集。 后端池的成员可以跨群集、数据中心，或者在 Azure 外部，前提是它们建立了 IP 连接。
+后端池可以包含 NIC、虚拟机规模集、公共 IP、内部 IP 和完全限定的域名 (FQDN)。 目前不提供 Azure Web 应用支持。 应用程序网关后端池成员不会绑定到可用性集。 后端池的成员可以跨群集、数据中心，或者在 Azure 外部，前提是它们建立了 IP 连接。
 
 **问：该服务已在哪些区域推出？**
 
@@ -65,7 +65,6 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 **问：在应用程序网关的生存期内，其 IP 或 DNS 是否会变化？**
 
 如果客户停止再启动网关，VIP 可能会变化。 与应用程序网关关联的 DNS 在网关的整个生命周期内不会变化。 出于此原因，建议使用 CNAME 别名并使其指向应用程序网关的 DNS 地址。
-
 
 **问：应用程序网关是否支持静态 IP？**
 
@@ -124,10 +123,6 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 **问：自定义探测的 Host 字段是什么意思？**
 
 Host 字段指定要将探测数据发送到的名称。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值不同于 VM 主机名，它采用 \<协议\>://\<主机\>:\<端口\>\<路径\> 格式。 
-
-**问：应用程序网关是否还支持多租户后端？**
-
-否，当前应用程序网关会保留传入主机标头，并将同一标头发送到后端。 如果后端需要不同的标头，则这将无法正常工作。 同样，如果后端是多租户且已启用端到端 SSL，则后端会预期在 SNI 扩展名中出现服务器名称。 在端到端 SSL 方案中，应用程序网关当前不支持在后端请求中发送 SNI 标头，这会导致探测和数据路径问题。 
 
 ## <a name="performance"></a>性能
 
@@ -219,7 +214,7 @@ TLS_RSA_WITH_3DES_EDE_CBC_SHA
 
 **问：应用程序网关支持哪个 CRS 版本？**
 
-应用程序网关支持 CRS 2.2.9
+应用程序网关支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) 和 CRS [3.0](application-gateway-crs-rulegroups-rules.md#owasp30)。
 
 **问：如何监视 WAF？**
 
@@ -231,11 +226,11 @@ TLS_RSA_WITH_3DES_EDE_CBC_SHA
 
 **问：如何自定义 WAF 规则？**
 
-WAF 规则目前不可自定义。
+是的，WAF 规则可自定义，有关如何自定义这些规则的详细信息，请访问[自定义 WAF 规则组和规则](application-gateway-customize-waf-rules-portal.md)
 
 **问：目前支持哪些规则？**
 
-WAF 目前支持 CRS 2.2.9，该规则针对开放 Web 应用程序安全项目 (OWASP) 识别到的 10 大漏洞中的大多数漏洞提供基准安全要求，相关信息请参阅 [OWASP top 10 Vulnerabilities](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)（OWASP 10 大漏洞）
+WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) 和 CRS [3.0](application-gateway-crs-rulegroups-rules.md#owasp30)，这些规则针对开放 Web 应用程序安全项目 (OWASP) 识别到的 10 大漏洞中的大多数漏洞提供基准安全要求，相关信息请参阅 [OWASP top 10 Vulnerabilities](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)（OWASP 10 大漏洞）
 
 * SQL 注入保护
 
@@ -251,9 +246,9 @@ WAF 目前支持 CRS 2.2.9，该规则针对开放 Web 应用程序安全项目 
 
 * 检测常见应用程序错误配置（即 Apache、IIS 等）
 
-**问：WAF 是否也支持 DDos 防护？**
+**问：WAF 是否也支持 DDoS 防护？**
 
-WAF 不提供 DDos 防护。
+否，WAF 不提供 DDoS 防护。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 
@@ -288,4 +283,3 @@ WAF 不提供 DDos 防护。
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关应用程序网关的详细信息，请访问 [Introduction to Application Gateway](application-gateway-introduction.md)（应用程序网关简介）。
-

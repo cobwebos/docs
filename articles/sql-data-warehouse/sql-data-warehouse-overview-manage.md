@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: manage
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: f421f2e333b0725fe4561997d44ed61b20b3f1d6
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 0056c458cc002cbdb1b8dabefe0d11a8abd61179
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -39,82 +41,77 @@ SQL 数据仓库自动执行管理数据库的许多方面的操作。 例如，
 可以使用多种工具来管理 SQL 数据仓库中的数据库。 管理数据库时，你将为需要执行的每种类型的任务制定工具首选项。
 
 ### <a name="azure-portal"></a>Azure 门户
-[Azure 门户][Azure 门户]是一个基于 Web 的门户，你可以从中创建、更新和删除数据库以及监视数据库资源。 如果你刚开始使用 Azure、管理少量的数据仓库数据库或需要快速执行某些操作，该工具是理想之选。
+[Azure 门户][Azure portal]是一个基于 Web 的门户，可用于创建、更新和删除数据库以及监视数据库资源。 如果你刚开始使用 Azure、管理少量的数据仓库数据库或需要快速执行某些操作，该工具是理想之选。
 
-若要开始使用 Azure 门户，请参阅[创建 SQL 数据仓库（Azure 门户）][创建 SQL 数据仓库（Azure 门户）]。
+若要开始使用 Azure 门户，请参阅[创建 SQL 数据仓库（Azure 门户）][Create a SQL Data Warehouse (Azure portal)]。
 
 ### <a name="sql-server-data-tools-in-visual-studio"></a>Visual Studio 中的 SQL Server Data Tools
-使用 Visual Studio 中的 [SQL Server Data Tools][SQL Server Data Tools] (SSDT)，可以连接到你的数据库并对其进行管理和开发。 如果你是熟悉 Visual Studio 或其他集成开发环境 (IDE) 的应用程序开发人员，请尝试使用 Visual Studio 中的 SSDT。
+使用 Visual Studio 中的 [SQL Server Data Tools][SQL Server Data Tools] (SSDT)，可连接到你的数据库并对其进行管理和开发。 如果你是熟悉 Visual Studio 或其他集成开发环境 (IDE) 的应用程序开发人员，请尝试使用 Visual Studio 中的 SSDT。
 
 使用 SSDT 包含的 SQL Server 对象资源管理器，可以针对 SQL 数据仓库数据库进行可视化、连接和执行脚本。 若要快速连接到 SQL 数据仓库，只需在 Azure 经典门户中查看数据库详细信息时，单击命令栏中的“**在 Visual Studio 中打开**”按钮。  
 
-若要开始使用 Visual Studio 中的 SSDT，请参阅[使用 Visual Studio 查询 Azure SQL 数据仓库][使用 Visual Studio 查询 Azure SQL 数据仓库]。
+若要开始使用 Visual Studio 中的 SSDT，请参阅[使用 Visual Studio 查询 Azure SQL 数据仓库][Query Azure SQL Data Warehouse with Visual Studio]。
 
 ### <a name="command-line-tools"></a>命令行工具
 命令行工具最适合用于自动执行工作负荷。  PowerShell 和 sqlcmd 是自动执行过程的两个很好方法。  由于可为所需的作业编写脚本并自动执行此类作业，因此我们建议使用这些工具来管理大量的逻辑服务器，以及在生产环境中部署资源更改。
 
 ### <a name="dynamic-management-views"></a>动态管理视图
-DMV 是管理 SQL 数据仓库的必备工具。 在门户中显示的所有信息几乎都依赖于 DMV。 若要查看 SQL 数据仓库 DMV 的列表，请参阅 [SQL 数据仓库系统视图][SQL 数据仓库系统视图]。
+DMV 是管理 SQL 数据仓库的必备工具。 在门户中显示的所有信息几乎都依赖于 DMV。 若要查看 SQL 数据仓库 DMV 的列表，请参阅 [SQL 数据仓库系统视图][SQL Data Warehouse system views]。
 
-若要开始，请参阅[使用 sqlcmd 进行连接和查询][使用 sqlcmd 进行连接和查询]和[创建数据库 (PowerShell)][创建数据库 (PowerShell)]。
+若要开始，请参阅[使用 sqlcmd 进行连接和查询][Connect and query with sqlcmd]以及[创建数据库 (PowerShell)][Create a database (PowerShell)]。
 
 ## <a name="scale-compute"></a>缩放计算
 在 SQL 数据仓库中，你可以快速地进行性能缩放，只需增加或减少 CPU 计算资源、内存和 I/O 带宽即可。 进行性能缩放时，只需调整 SQL 数据仓库分配给你的数据库的数据仓库单位 (DWU) 数即可。 SQL 数据仓库可以快速地进行更改，并处理针对硬件或软件的所有基础更改。
 
-若要了解有关缩放 DWU 的详细信息，请参阅[缩放性能][缩放性能]。
+若要了解有关缩放 DWU 的详细信息，请参阅[缩放性能]。
 
 ## <a name="pause-and-resume"></a>暂停和恢复
 为了节省成本，可以按需暂停和恢复计算资源。 例如，如果你晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 当数据库暂停时不对 DWU 进行收费。
 
-有关详细信息，请参阅[暂停计算][暂停计算]和[恢复计算][恢复计算]。
+有关详细信息，请参阅[暂停计算][Pause compute]和[恢复计算][Resume compute]。
 
 ## <a name="performance-best-practices"></a>性能最佳实践
 开始使用一种新技术时，从一开始就发现最适用的提示和技巧可以节省大量时间。  用户会发现，最佳实践贯穿了许多主题。
 
-若要查看在开发工作负荷时最重要的注意事项的摘要，请参阅 [SQL 数据仓库最佳实践][SQL 数据仓库最佳实践]。
+若要查看在开发工作负荷时最重要的注意事项的摘要，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。
 
 ## <a name="query-monitoring"></a>监视查询
 有时查询运行时间太长，但你不能确定哪个是问题所在。 SQL 数据仓库包含动态管理视图 (DMV)，可用于找出哪个查询用时过长。
 
-若要查找长时间运行的查询，请参阅[使用 DMV 监视工作负荷][使用 DMV 监视工作负荷]。
+若要查找长时间运行的查询，请参阅[使用 DMV 监视工作负荷][Monitor your workload using DMVs]。
 
 ## <a name="security"></a>“安全”
 若要维护一个安全系统，必须警惕和防范任何类型的未经授权的访问。 安全系统需要确保防火墙规则已到位，以便只有经过授权的 IP 地址才能连接。 它需要对用户凭据进行相应身份验证。 用户连接到数据库后，用户只应有权执行最小数量的操作。 若要保护数据，可以使用加密。 具有审核和跟踪功能也很重要，以便在有任何可疑活动时可以追溯事件。
 
-若要了解管理安全性，请直接访问[安全性概述][安全性概述]。
+若要了解管理安全性，请直接访问[安全性概述][Security overview]。
 
 ## <a name="backup-and-restore"></a>备份和还原
-创建数据的可靠备份是任何生产数据库必不可少的组成部分。 SQL 数据仓库可通过定期自动备份活动数据库来使数据保持安全。 通过这些备份可以从损坏了数据或是意外删除了数据或数据库的情形中恢复。  有关数据备份计划、保留策略以及如何还原数据库，请参阅[从快照还原][从快照还原]。
+创建数据的可靠备份是任何生产数据库必不可少的组成部分。 SQL 数据仓库可通过定期自动备份活动数据库来使数据保持安全。 通过这些备份可以从损坏了数据或是意外删除了数据或数据库的情形中恢复。  有关数据备份计划、保留策略以及如何还原数据库，请参阅[从快照还原][Restore from snapshot]。
 
 ## <a name="next-steps"></a>后续步骤
-使用好的数据库设计原则可更轻松地在 SQL 数据仓库中管理数据库。 若要了解详细信息，请直接访问[部署概述][部署概述]。
+使用好的数据库设计原则可更轻松地在 SQL 数据仓库中管理数据库。 若要了解详细信息，请直接访问[开发概述][Development overview]。
 
 <!--Image references-->
 
 <!--Article references-->
-[创建 SQL 数据仓库（Azure 门户）]: sql-data-warehouse-get-started-provision.md
-[创建数据库 (PowerShell)]: sql-data-warehouse-get-started-provision-powershell.md
-[连接]: sql-data-warehouse-develop-connections.md
-[使用 Visual Studio 查询 Azure SQL 数据仓库]: sql-data-warehouse-query-visual-studio.md
-[使用 sqlcmd 进行连接和查询]: sql-data-warehouse-get-started-connect-sqlcmd.md
-[部署概述]: sql-data-warehouse-overview-develop.md
-[使用 DMV 监视工作负荷]: sql-data-warehouse-manage-monitor.md
-[暂停计算]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
-[从快照还原]: sql-data-warehouse-restore-database-overview.md
-[恢复计算]: sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
-[缩放性能]: sql-data-warehouse-manage-compute-overview.md#scale-performance-bk
-[安全性概述]: sql-data-warehouse-overview-manage-security.md
-[SQL 数据仓库最佳实践]: sql-data-warehouse-best-practices.md
-[SQL 数据仓库系统视图]: sql-data-warehouse-reference-tsql-system-views.md
+[Create a SQL Data Warehouse (Azure Portal)]: sql-data-warehouse-get-started-provision.md
+[Create a database (PowerShell)]: sql-data-warehouse-get-started-provision-powershell.md
+[connection]: sql-data-warehouse-develop-connections.md
+[Query Azure SQL Data Warehouse with Visual Studio]: sql-data-warehouse-query-visual-studio.md
+[Connect and query with sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
+[Development overview]: sql-data-warehouse-overview-develop.md
+[Monitor your workload using DMVs]: sql-data-warehouse-manage-monitor.md
+[Pause compute]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
+[Restore from snapshot]: sql-data-warehouse-restore-database-overview.md
+[Resume compute]: sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
+[缩放性能]: sql-data-warehouse-manage-compute-overview.md#scale-compute
+[Security overview]: sql-data-warehouse-overview-manage-security.md
+[SQL Data Warehouse Best Practices]: sql-data-warehouse-best-practices.md
+[SQL Data Warehouse system views]: sql-data-warehouse-reference-tsql-system-views.md
 
 <!--MSDN references-->
 [SQL Server Data Tools]: https://msdn.microsoft.com/library/mt204009.aspx
 
 <!--Other web references-->
-[Azure 门户]: http://portal.azure.com/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Azure portal]: http://portal.azure.com/
 

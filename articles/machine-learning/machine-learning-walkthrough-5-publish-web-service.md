@@ -1,5 +1,5 @@
 ---
-title: "步骤 5：部署机器学习 Web 服务 | Microsoft 文档"
+title: "步骤 5：部署机器学习 Web 服务 | Microsoft Docs"
 description: "开发预测解决方案演练的步骤 5：在 Azure 机器学习工作室中部署一个 Web 服务形式的预测试验。"
 services: machine-learning
 documentationcenter: 
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: ac5dfa34c867ecf2f38ebe33d7f5cf6610c33472
-ms.openlocfilehash: 005d96d66843b50d9c7003ae5264896718c37151
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 065e84e8ddee3466834e04fb5d1929652533265a
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -34,14 +34,17 @@ ms.lasthandoff: 03/02/2017
 - - -
 为了让其他人可以使用此演练中开发的预测模型，我们可以将它部署为 Azure 上的 Web 服务。
 
-截至目前，我们一直在试验如何训练模型。 但是已部署的服务不再进行训练，它会根据模型，通过对用户的输入进行评分来生成预测。 因此我们需要做好一些准备工作，将此试验从***训练***试验转换为***预测***试验。 
+截至目前，我们一直在试验如何训练模型。 但是已部署的服务不再进行训练，它会根据模型，通过对用户的输入进行评分来生成新的预测。 因此我们需要做好一些准备工作，将此试验从***训练***试验转换为***预测***试验。 
 
-此过程由两个步骤组成：  
+此过程由三个步骤组成：  
 
-1. 将创建的*训练试验*转换为*预测试验*
-2. 将预测试验部署为 Web 服务
+1. 删除一个模型
+2. 将创建的*训练试验*转换为*预测试验*
+3. 将预测试验外部署为 Web 服务
 
-但首先，需要稍微修整一下此试验。 目前试验中有两个不同的模型，但将试验部署为 Web 服务时，只需要一个模型。  
+## <a name="remove-one-of-the-models"></a>删除一个模型
+
+首先，需要稍微修整一下此试验。 目前试验中有两个不同的模型，但将试验部署为 Web 服务时，只需要一个模型。  
 
 假设已确定提升树模型的性能强于 SVM 模型。 因此，首先是删除[双类支持向量机][two-class-support-vector-machine]模块，以及用于训练该模块的其他模块。 可能需要单击试验画布底部的“另存为”，先创建一个试验副本。
 
@@ -52,13 +55,19 @@ ms.lasthandoff: 03/02/2017
 * [规范化数据][normalize-data]（两者）
 * [评估模型][evaluate-model]（因为我们已评估完模型）
 
-选择每个模块并按 Delete 键，或右键单击模块并选择“删除”。
+选择每个模块并按 Delete 键，或右键单击模块并选择“删除”。 
+
+![删除 SVM 模型][3a]
+
+模型现在看起来应与下图类似：
+
+![删除 SVM 模型][3]
 
 现已准备好使用[双类提升决策树][two-class-boosted-decision-tree]部署此模型。
 
 ## <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>将训练实验转换为预测实验
 
-转换为预测试验的过程包括三个步骤：
+若要使此模型准备好进行部署，需要将此训练实验转换为预测实验。 这涉及到三个步骤：
 
 1. 保存已训练的模型，然后替换训练模块
 2. 修整试验，删除只有训练需要的模块
@@ -85,7 +94,6 @@ ms.lasthandoff: 03/02/2017
 
 需要对此特定试验执行一个额外的步骤。
 已添加两个[执行 R 脚本][execute-r-script]模块来向数据提供加权函数。 该函数仅用于训练和测试，因此可以在最终模型中移除这些模块。
-
 机器学习工作室已在删除[拆分][split]模块时删除了一个[执行 R 脚本][execute-r-script]模块。 现在可以删除另一个模块，并直接将[元数据编辑器][metadata-editor]连接到[评分模型][score-model]。    
 
 试验现在应如下所示：  
@@ -102,10 +110,10 @@ ms.lasthandoff: 03/02/2017
 最后一次运行试验（单击“运行”）。若要验证模型是否仍然正常工作，请单击[评分模型][score-model]模块的输出，然后选择“查看结果”。 此时将显示原始数据，以及信用风险值（“评分标签”）和评分概率值（“评分概率”）。 
 
 ## <a name="deploy-the-web-service"></a>部署 Web 服务
-可以将实验部署为经典 Web 服务或基于 Azure Resource Manager 的新式 Web 服务。
+可以将实验部署为经典 Web 服务或基于 Azure Resource Manager 的新 Web 服务。
 
 ### <a name="deploy-as-a-classic-web-service"></a>部署为经典 Web 服务
-若要部署派生自试验的经典 Web 服务，请单击画布下面的“部署 Web 服务”，然后选择“部署 Web 服务 [经典]”。 机器学习工作室会将试验部署为 Web 服务，并将你转到该 Web 服务的仪表板。 在这里可以返回试验（“查看快照”或“查看最新”），以及运行简单的 Web 服务测试（请参阅下面的**测试 Web 服务**）。 此处，还提供了有关创建可访问 Web 服务的应用程序的信息（本演练的下一步骤提供了更多相关信息）。
+若要部署派生自试验的经典 Web 服务，请单击画布下面的“部署 Web 服务”，然后选择“部署 Web 服务 [经典]”。 机器学习工作室会将试验部署为 Web 服务，并将你转到该 Web 服务的仪表板。 在此页中可以返回试验（“查看快照”或“查看最新”），以及运行简单的 Web 服务测试（请参阅下面的**测试 Web 服务**）。 此处，还提供了有关创建可访问 Web 服务的应用程序的信息（本演练的下一步骤提供了更多相关信息）。
 
 ![Web 服务仪表板][6]
 
@@ -113,7 +121,7 @@ ms.lasthandoff: 03/02/2017
 
 ![配置 Web 服务][5]  
 
-### <a name="deploy-as-a-new-web-service"></a>部署为新式 Web 服务
+### <a name="deploy-as-a-new-web-service"></a>部署为新 Web 服务
 
 > [!NOTE] 
 > 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。 
@@ -142,40 +150,45 @@ ms.lasthandoff: 03/02/2017
 ## <a name="test-the-web-service"></a>测试 Web 服务
 
 访问 Web 服务时，用户的数据将通过“Web 服务输入”模块传递给[评分模型][score-model]模块并评分。 根据我们设置预测实验的方式，模型预期采用的数据格式与原始信用风险数据集的格式相同。
-
 然后，结果将通过“Web 服务输出”模块从 Web 服务返回给用户。
 
 > [!TIP]
-> 根据预测实验的配置方式，将返回[评分模型][score-model]模块的整个结果。 这包括所有输入数据以及信用风险值和评分概率。 如果希望返回不同的结果（例如只要信用风险值），可以在[评分模型][score-model]和“Web 服务输出”之间插入[投影列][project-columns]模块，用于排除不想要让 Web 服务返回的列。 
+> 根据预测实验的配置方式，将返回[评分模型][score-model]模块的整个结果。 这包括所有输入数据以及信用风险值和评分概率。 如果希望返回不同的结果 - 例如，只返回信用风险值， 可以在[评分模型][score-model]和 **Web 服务输出**之间插入[投影列][project-columns]模块，用于排除不想要让 Web 服务返回的列。 
 > 
 > 
+
+可以在**机器学习工作室**或 **Azure 机器学习 Web 服务**门户中测试经典 Web 服务。
+只能在 **Azure 机器学习 Web 服务**门户中测试新的 Web 服务。
+
+> [!TIP]
+> 在 Azure 机器学习 Web 服务门户中测试时，可以让门户创建用于测试请求-响应服务的示例数据。 在“配置”页上，针对“启用示例数据?”选择“是”。 打开“测试”页上的“请求-响应”选项卡时，门户会在其中填充取自原始信用风险数据集的示例数据。
 
 ### <a name="test-a-classic-web-service"></a>测试经典 Web 服务
 
-可以在机器学习工作室或 Azure 机器学习 Web 服务门户中测试 Web 服务。 在 Azure 机器学习 Web 服务门户中测试的好处是可以启用 
+可以在机器学习工作室或机器学习 Web 服务门户中测试经典 Web 服务。 
 
-**在机器学习工作室中测试**
+#### <a name="test-in-machine-learning-studio"></a>在机器学习工作室中测试
 
-1. 在“仪表板”页上，单击“默认终结点”下的“测试”按钮。 将弹出一个对话框，要求用户输入服务的输入数据。 这些是在原始信用风险数据集中出现的列。  
+1. 在 Web 服务的“仪表板”页上，单击“默认终结点”下的“测试”按钮。 将弹出一个对话框，要求用户输入服务的输入数据。 这些是在原始信用风险数据集中出现的列。  
 
 2. 输入一组数据，然后单击“确定”。 
 
-**在 Azure 机器学习 Web 服务门户中测试**
+#### <a name="test-in-the-machine-learning-web-services-portal"></a>在机器学习 Web 服务门户中测试
 
-1. 在“仪表板”页上，单击“默认终结点”下的“测试”预览链接。 Azure 机器学习 Web 服务门户中的 Web 服务终结点测试页将打开，并要求提供服务的输入数据。 这些是在原始信用风险数据集中出现的列。
+1. 在 Web 服务的“仪表板”页上，单击“默认终结点”下的“测试预览”链接。 Azure 机器学习 Web 服务门户中的 Web 服务终结点测试页将打开，并要求提供服务的输入数据。 这些是在原始信用风险数据集中出现的列。
 
 2. 单击“测试请求-响应”。 
 
-### <a name="test-a-new-web-service"></a>测试新式 Web 服务
+### <a name="test-a-new-web-service"></a>测试新的 Web 服务
 
-1. 在 Azure 机器学习 Web 服务门户中，单击页面顶部的“测试”。 此时将打开“测试”页，可在其中输入服务的数据。 显示的输入字段对应于原始信用风险数据集中出现的列。 
+只能在 Azure 机器学习 Web 服务门户中测试新的 Web 服务。
+
+1. 在 [Azure 机器学习 Web 服务](https://services.azureml.net/quickstart)门户中，单击页面顶部的“测试”。 此时将打开“测试”页，可在其中输入服务的数据。 显示的输入字段对应于原始信用风险数据集中出现的列。 
 
 2. 输入一组数据，然后单击“测试请求-响应”。
 
 测试结果将显示在页面右侧的输出列中。 
 
-> [!TIP]
-> 在 Azure 机器学习 Web 服务门户中测试时，可以让门户创建用于测试请求-响应服务的示例数据。 在“配置”页上，针对“启用示例数据?”选择“是”。 打开“测试”页上的“请求-响应”选项卡时，门户会在其中填充取自原始信用风险数据集的示例数据。
 
 ## <a name="manage-the-web-service"></a>管理 Web 服务
 
@@ -197,13 +210,13 @@ ms.lasthandoff: 03/02/2017
 * [创建终结点](machine-learning-create-endpoint.md)
 * [缩放 Web 服务](machine-learning-scaling-webservice.md)
 
-### <a name="manage-a-web-service-in-the-azure-machine-learning-web-services-portal"></a>在 Azure 机器学习 Web 服务门户中管理 Web 服务
+### <a name="manage-a-classic-or-new-web-service-in-the-azure-machine-learning-web-services-portal"></a>在 Azure 机器学习 Web 服务门户中管理经典或新的 Web 服务
 
-部署 Web 服务（经典或新式）后，可以从 [Azure 机器学习 Web 服务门户](https://services.azureml.net)管理它。
+部署 Web 服务（经典或新式）后，可以从 [Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net/quickstart)管理它。
 
 监视 Web 服务的性能：
 
-1. 登录到 [Azure 机器学习 Web 服务门户](https://servics.azureml.net)
+1. 登录到 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/quickstart)门户
 2. 单击“Web 服务”
 3. 单击你的 Web 服务
 4. 单击“仪表板”
@@ -211,9 +224,8 @@ ms.lasthandoff: 03/02/2017
 - - -
 **后续步骤：[访问 Web 服务](machine-learning-walkthrough-6-access-web-service.md)**
 
-[1]: ./media/machine-learning-walkthrough-5-publish-web-service/publish1.png
-[2]: ./media/machine-learning-walkthrough-5-publish-web-service/publish2.png
 [3]: ./media/machine-learning-walkthrough-5-publish-web-service/publish3.png
+[3a]: ./media/machine-learning-walkthrough-5-publish-web-service/publish3a.png
 [4]: ./media/machine-learning-walkthrough-5-publish-web-service/publish4.png
 [5]: ./media/machine-learning-walkthrough-5-publish-web-service/publish5.png
 [6]: ./media/machine-learning-walkthrough-5-publish-web-service/publish6.png

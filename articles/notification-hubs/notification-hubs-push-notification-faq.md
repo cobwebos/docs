@@ -13,44 +13,43 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/19/2017
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7f76f8786bf08e4aacc63758260202fe7e1a832f
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9f0e7f071f1aa8fdd95c4959eae884afc60644e9
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="push-notifications-with-azure-notification-hubs---frequently-asked-questions"></a>使用 Azure 通知中心推送通知 — 常见问题
 ## <a name="general"></a>常规
-### <a name="1----what-is-the-price-model-for-notification-hubs"></a>1.  通知中心的价格模型有哪些？
-通知中心按三层提供：
+### <a name="0--what-is-the-resource-structure-of-notification-hubs"></a>0.通知中心的资源结构是怎样的？
 
-* **免费** - 每个订阅一个月可获得最多 100 万次推送。
-* **基本** - 以每个订阅一个月可获得 1,000 万次推送作为基准，具有配额增长选项。
-* **标准** - 以每个订阅一个月可获得 1,000 万次推送作为基准，具有配额增长选项，再加上丰富的遥测功能。
+通知中心有两个资源级别：中心和命名空间。 中心是单个推送资源，可以保存一个应用的跨平台推送信息。 命名空间是一个区域中所有中心的集合。
 
-可以在[通知中心定价]页面找到最新的详细信息。 定价根据订阅级别制定，并以推送通知起始次数为基础，因此，定价与在 Azure 订阅中创建的命名空间或通知中心的多少无关。
+通常推荐的映射使用一个命名空间匹配一个应用。 在命名空间内，可具有适用于生产应用的生产中心、适用于测试应用的测试中心等。
 
-**免费**层适用于没有 SLA 保证的开发目的。 对于那些想要通过 Azure 通知中心了解推送通知功能的用户，虽然这一层可能是个不错的起点，但可能不是中型到大型应用程序的最佳选择。
+### <a name="1--what-is-the-price-model-for-notification-hubs"></a>1.通知中心的价格模型有哪些？
+可以在[通知中心定价]页面找到最新的详细信息。 通知中心是按照命名空间级别（请参阅以上资源结构，了解命名空间的级别）计费的，并提供以下三层：
 
-**基本** & **标准**层适用于具有以下*仅针对标准层*启用的关键特性的生产使用情况：
+* **免费层** - 这是浏览推送功能的良好起点，不推荐用于生产应用。 每个命名空间每月可获得 500 台设备和 100 万次推送，但不具有 SLA 保证。
+* **基本层** - 该层或标准层建议用于较小型的生产应用。 以每个命名空间每月可获得 200K 台设备和 1000 万次推送作为基准，具有配额增长选项。
+* **标准层** - 建议用于中型、大型生产应用。 以每个命名空间每月可获得 10M 台设备和 1000万次推送作为基准，具有配额增长选项，再加上丰富的遥测功能。
 
-* *丰富的遥测* - 通知中心提供许多功能，可导出遥测数据以及推送通知注册信息，以供脱机查看和分析。
-* *多租户* - 如果要使用通知中心创建移动应用以支持多个租户，则适合使用此功能。 这使你可以在应用的通知中心命名空间级别设置推送通知服务 (PNS) 凭据，然后可以分隔租户以在此公共命名空间下向他们提供单个中心。 这样便于维护，同时保存这些 SAS 密钥以从这些针对各个租户分隔的通知中心发送和接收推送通知，确保不会出现跨租户重叠。
-* *计划推送* - 允许你计划推送通知，而推送通知随后会排入队列并发送出去。
-* *批量导入* - 允许你批量导入注册。
+以下是一些出色的标准层功能：
+* *丰富的遥测功能* - 通知中心提供消息遥测来跟踪所有推送请求和用于调试的平台通知系统反馈。
+* *多租户* - 可在命名空间级别与平台通知系统 (PNS) 凭据一起使用。 这样可轻松地将租户拆分到相同命名空间内的中心。
+* *计划推送* - 可以计划随时发出通知。
 
-### <a name="2----what-is-the-notification-hubs-sla"></a>2.  什么是通知中心 SLA？
-对于**基本**和**标准**通知中心层，就在受支持的层内部署的通知中心而言，我们保证至少在 99.9% 的情况下，正确配置的应用程序将能够发送推送通知或执行注册管理操作。 若要详细了解我们的 SLA，请访问[通知中心 SLA] 页面。
+### <a name="2--what-is-the-notification-hubs-sla"></a>2.什么是通知中心 SLA？
+对于**基本**和**标准**通知中心层，就在受支持的层内部署的通知中心而言，我们保证至少在 99.9% 的情况下，正确配置的应用程序将能够发送推送通知或执行注册管理操作。 若要详细了解我们的 SLA，请访问[通知中心 SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) 页面。
 
 > [!NOTE]
-> 由于通知中心依赖于外部平台提供商将推送通知传递到设备，因此平台通知服务和设备之间没有用于支撑的 SLA 保证。
-> 
-> 
+> 由于推送通知取决于第三方平台通知系统（Apple 的 APNS、Google 的 FCM 等），所以这些消息的发送不具有 SLA 保证。 通知中心将这些发送批处理到 PNS（具有 SLA 保证）后，PNS 负责完成推送（不具有 SLA 保证）。
 
-### <a name="3----which-customers-are-using-notification-hubs"></a>3.  哪些客户在使用通知中心？
-我们有许多客户在使用通知中心，以下是几位著名客户：
+### <a name="3--which-customers-are-using-notification-hubs"></a>3.哪些客户在使用通知中心？
+我们有许多客户在使用通知中心，以下列出了几位知名客户：
 
 * Sochi 2014 — 数百个兴趣组、300 多万台设备、2 周内发出的通知超过了 1.5 亿条。 [案例研究 - Sochi]
 * Skanska - [案例研究 - Skanska]
@@ -59,20 +58,21 @@ ms.openlocfilehash: 7f76f8786bf08e4aacc63758260202fe7e1a832f
 * 7Digital - [案例研究 - 7Digital]
 * 必应应用 — 数千万台设备，每天发送 300 万条以上的通知。
 
-### <a name="4-how-do-i-upgrade-or-downgrade-my-notification-hubs-to-change-my-service-tier"></a>4.如何升级或降级通知中心以更改我的服务层？
-转到 [Azure 经典门户]，然后依次单击“服务总线”、你的命名空间和你的通知中心。 在“缩放”选项卡中，可以更改你的通知中心服务层。
+### <a name="4-how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>4.如何将中心升级或降级到不同层的命名空间？
+转到 [Azure 门户]的通知中心命名空间或通知中心，单击要更新的资源，在导航中转到“定价层”。 可以更新到所需的任何层，但请注意：
+* 更新后的定价层将应用于正在使用的命名空间中的所有中心。
+* 如果要降级，并且设备数超出所要降级到的层的限制，则需要删除设备以满足限制的要求才能进行降级。
 
-![](./media/notification-hubs-faq/notification-hubs-classic-portal-scale.png)
 
 ## <a name="design--development"></a>设计和开发
-### <a name="1----which-server-side-platforms-do-you-support"></a>1.  支持哪些服务器端平台？
-我们针对 .NET、Java、PHP、Python、Node.js 提供 SDK 和[完整的示例]，因此，可以设置应用后端以使用其中任一平台与通知中心通信。 通知中心 API 以 REST 接口为基础，因此，如果你不想增加额外的依赖项，可以选择直接与其通信。 可以在 [NH - REST API] 页面找到更多详细信息。
+### <a name="1--which-server-side-platforms-do-you-support"></a>1.支持哪些服务器端平台？
+我们的服务器 SDK 适用于 .NET、Java、Node.js、PHP 和 Python。 此外，通知中心 API 基于 REST 接口，因此如果要处理不同的平台或不希望有其他依赖项，可选择直接通过 REST API 操作。 在 [NH - REST API] 页面，可以看到更多详细信息。
 
-### <a name="2----which-client-platforms-do-you-support"></a>2.  支持哪些客户端平台？
-我们支持将推送通知发送到 [Apple iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-gcm-get-started.md)、[Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)、[Android China（通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin（[iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) & [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)）、[Chrome 应用](notification-hubs-chrome-push-notifications-get-started.md)和 [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) 平台。 有关在这些平台上发送推送通知的入门教程的完整列表，请访问 [NH - 入门教程]页面。
+### <a name="2--which-client-platforms-do-you-support"></a>2.支持哪些客户端平台？
+我们支持将推送通知发送到 [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-gcm-get-started.md)、[Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)、[Android China（通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin（[iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) & [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)）、[Chrome 应用](notification-hubs-chrome-push-notifications-get-started.md)和 [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)。 有关详细信息，请访问[入门教程]页面。
 
-### <a name="3----do-you-support-smsemailweb-notifications"></a>3.  是否支持 SMS/电子邮件/Web 通知？
-通知中心主要针对使用上面列出的平台将通知发送到移动应用而设计。 我们尚未提供发送电子邮件或短信提示的功能；但提供这些功能的第三方平台可以与通知中心进行集成，以通过使用 [Azure 移动应用]发送原生推送通知。
+### <a name="3--do-you-support-smsemailweb-notifications"></a>3.是否支持 SMS/电子邮件/Web 通知？
+通知中心的设计目的主要是将通知发送到移动应用，不提供电子邮件或短信的功能。 但提供这些功能的第三方平台可以与通知中心进行集成，以通过使用 [Azure 移动应用]发送原生推送通知。
 
 通知中心也不提供现成的浏览器内推送通知传递服务。 客户可以在支持的服务器端平台上，选择使用 SignalR 来实现此功能。 如果想要在 Chrome 沙盒中将通知发送到浏览器应用，请查看 [Chrome 应用教程]。
 
@@ -198,14 +198,14 @@ Azure 通知中心支持在 [Azure 经典门户]中查看遥测数据。 可以�
 
 [Azure 经典门户]: https://manage.windowsazure.com
 [通知中心定价]: http://azure.microsoft.com/pricing/details/notification-hubs/
-[通知中心 SLA]: http://azure.microsoft.com/support/legal/sla/
+[Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
 [案例研究 - Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
 [案例研究 - Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
 [案例研究 - Seattle Times]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
 [案例研究 - Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [案例研究 - 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [NH - REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[NH - 入门教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[NH - Getting Started Tutorials]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Chrome 应用教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
 [Mobile Services Pricing]: http://azure.microsoft.com/pricing/details/mobile-services/
 [后端注册指南]: https://msdn.microsoft.com/library/azure/dn743807.aspx
@@ -216,13 +216,8 @@ Azure 通知中心支持在 [Azure 经典门户]中查看遥测数据。 可以�
 [NH - 指标]: https://msdn.microsoft.com/library/dn458822.aspx
 [NH - 指标示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [注册信息导出/导入]: https://msdn.microsoft.com/library/dn790624.aspx
-[Azure Portal]: https://portal.azure.com
-[完整的示例]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure 移动应用]: https://azure.microsoft.com/en-us/services/app-service/mobile/
-[应用服务定价]: https://azure.microsoft.com/en-us/pricing/details/app-service/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+[Azure 门户]: https://portal.azure.com
+[complete samples]: https://github.com/Azure/azure-notificationhubs-samples
+[Azure 移动应用]: https://azure.microsoft.com/services/app-service/mobile/
+[应用服务定价]: https://azure.microsoft.com/pricing/details/app-service/
 

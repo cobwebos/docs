@@ -9,6 +9,7 @@ documentationcenter:
 tags: azure-portal
 ms.assetid: 9ee6384c-cb61-4087-8273-fb53fa27c1c3
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: Java
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 110f3aa9ce4848c9350ea2e560205aa762decf7a
-ms.openlocfilehash: e9b31ebc4c63cb779c8573511101aef991cbbe4a
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: a8623991dda4192d700d35ef3970d416e315c5c6
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 02/21/2017
 
 了解如何使用 Apache Maven 创建基于 Java 的 MapReduce 应用程序，然后在 HDInsight 群集中基于 Linux 的 Hadoop 上部署和运行它。
 
-## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 或更高版本（或类似程序，如 OpenJDK）...
     
@@ -244,7 +245,7 @@ ms.lasthandoff: 02/21/2017
    > [!NOTE]
    > `wordcountjava-1.0-SNAPSHOT.jar` 文件是一种 uberjar，其中不仅包含 WordCount 作业，还包含该作业在运行时需要的依赖项。
 
-## <a name="a-iduploadaupload-the-jar"></a><a id="upload"></a>上载该 jar
+## <a id="upload"></a>上载该 jar
 
 使用以下命令将该 jar 文件上载到 HDInsight 头节点：
 
@@ -260,12 +261,9 @@ ms.lasthandoff: 02/21/2017
 > 如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。 如果你使用了 SSH 密钥，你可能必须使用 `-i` 参数和私钥的路径。 例如，`scp -i /path/to/private/key wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`。
 
 
-## <a name="a-namerunarun-the-mapreduce-job"></a><a name="run"></a>运行 MapReduce 作业
+## <a name="run"></a>运行 MapReduce 作业
 
-1. 使用 SSH 连接到 HDInsight，如以下文章所述：
-   
-   * [在 Linux、Unix、OS X 和 Windows 10 Bash 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+1. 使用 SSH 连接到 HDInsight。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 在 SSH 会话中，使用以下命令运行 MapReduce 应用程序：
    
@@ -287,7 +285,7 @@ ms.lasthandoff: 02/21/2017
         zelus   1
         zenith  2
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 
 在本文档中，你学习了如何开发 Java MapReduce 作业。 请参阅以下文档，了解使用 HDInsight 的其他方式。
 

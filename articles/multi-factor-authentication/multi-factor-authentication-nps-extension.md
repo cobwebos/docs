@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 03/13/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 9c587378bc8ffe43f6153c6424748e814c7a1d89
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 34919221a82a024bd3a1d09c1def6040ff6c55e1
+ms.lasthandoff: 03/23/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成 - 公共预览版
@@ -80,7 +80,7 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 -    向网络用户授予对证书私钥的访问权限。
 -    重新启动 NPS。
 
-除非你想要使用自己的证书（而不是 PowerShell 脚本生成的自签名证书），否则请运行该 PowerShell 脚本来完成安装。
+除非你想要使用自己的证书（而不是 PowerShell 脚本生成的自签名证书），否则请运行该 PowerShell 脚本来完成安装。 如果在多台服务器上安装扩展，则每个服务器都应有自己的证书，以便在续订证书时不会有停机时间。 
 
 ## <a name="configure-your-nps-extension"></a>配置 NPS 扩展
 

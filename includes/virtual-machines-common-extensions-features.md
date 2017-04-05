@@ -26,7 +26,7 @@ VM 扩展实现了要用于 VM 的大多数关键功能，包括重置密码、�
 | **CentosChefClient** | | |
 | **ChefClient** |在 Windows 上创建 Chef 客户端。 （也可以使用下面的 DSC 扩展。） |[Chef 和 Microsoft Azure](https://www.getchef.com/solutions/azure/) |
 | **LinuxChefClient** | | |
-| **DockerExtension** |安装 Docker 后台程序以支持远程 Docker 命令。 |有关[如何使用 Docker 虚拟机扩展](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)更广泛的信息，请参阅 [Docker VM 扩展用户指南](https://github.com/Azure/azure-docker-extension/blob/master/README.md) |
+| **DockerExtension** |安装 Docker 后台程序以支持远程 Docker 命令。 |有关[如何使用 Docker 虚拟机扩展](../articles/virtual-machines/linux/dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)更广泛的信息，请参阅 [Docker VM 扩展用户指南](https://github.com/Azure/azure-docker-extension/blob/master/README.md) |
 | **DSC** |PowerShell DSC (Desired State Configuration) 扩展。 |[Azure PowerShell DSC (Desired State Configuration) 扩展](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx) |
 | **PuppetEnterpriseAgent** |实现 Puppet Enterprise 的功能。 |[Azure 上的 Puppet](http://puppetlabs.com/solutions/microsoft) |
 | **CustomScriptExtension** (Windows)**CustomScriptForLinux** (Linux) |在任何时候调用 VM 上的自定义脚本：启动时或在生存期内。 |[自定义脚本扩展](../articles/virtual-machines/windows/classic/extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) |
@@ -49,7 +49,7 @@ VM 扩展实现了要用于 VM 的大多数关键功能，包括重置密码、�
 
 | **VM 扩展名称** | 功能说明 | 更多信息 |
 | --- | --- | --- |
-| **AzureVmLogCollector** |可以使用 **AzureVMLogCollector** 扩展按需从一个或多个云服务 VM（从 Web 角色和辅助角色）执行一次性日志收集，并将收集到的文件传输到 Azure 存储帐户 - 所有这些操作都无需远程登录到任何 VM。 |[AzureLogCollector 扩展](../articles/virtual-machines/virtual-machines-windows-log-collector-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| **AzureVmLogCollector** |可以使用 **AzureVMLogCollector** 扩展按需从一个或多个云服务 VM（从 Web 角色和辅助角色）执行一次性日志收集，并将收集到的文件传输到 Azure 存储帐户 - 所有这些操作都无需远程登录到任何 VM。 |[AzureLogCollector 扩展](../articles/virtual-machines/windows/log-collector-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | **IaaSDiagnostics** |启用、禁用和配置 Azure 诊断，也可由 **AzureCATExtensionHandler** 用于支持 SAP 监视。 |[使用 Azure 诊断扩展监视 Microsoft Azure 虚拟机](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | **OSPatchingForLinux** |使 Azure VM 管理员能够使用自定义配置自动执行 VM OS 更新。 可以使用 OSPatching 扩展为虚拟机配置 OS 更新，包括：指定安装 OS 修补程序的频率和时间，指定要安装的修补程序，并配置更新后的重新启动行为 |[OS 修补扩展博客文章](https://azure.microsoft.com/blog/2014/10/23/automate-linux-vm-os-updates-using-ospatching-extension/)。 另请参阅 GitHub 上 [OS 修补扩展](https://github.com/Azure/azure-linux-extensions)中的自述文件和源。 |
 
@@ -72,5 +72,5 @@ VM 扩展实现了要用于 VM 的大多数关键功能，包括重置密码、�
 | VM 扩展名称 | 功能说明 | 更多信息 |
 | --- | --- | --- |
 | **BGInfo** |使用 RDP 时在桌面上显示有用服务器信息的合并图片。 |[BGInfo 扩展](https://msdn.microsoft.com/library/mt589195.aspx) |
-| **HpcVmDrivers** |在运行 Windows Server 2012 R2 或 Windows Server 2012 的 A8 或 A9 VM 上，安装、配置和维护远程直接内存访问 (RDMA) 网络设备驱动程序。 运行并行 MPI 应用程序时，支持群集 A8 或 A9 VM 使用 RDMA 网络。 |[关于 A8、A9、A10 和 A11 计算密集型实例](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| **HpcVmDrivers** |在运行 Windows Server 2012 R2 或 Windows Server 2012 的 A8 或 A9 VM 上，安装、配置和维护远程直接内存访问 (RDMA) 网络设备驱动程序。 运行并行 MPI 应用程序时，支持群集 A8 或 A9 VM 使用 RDMA 网络。 |[关于 A8、A9、A10 和 A11 计算密集型实例](../articles/virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 

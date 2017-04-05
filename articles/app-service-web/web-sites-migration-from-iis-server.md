@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 52e4ba9f1f623312780a9072719866932b1af502
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 6fdee57d33b19569ef892d0d32ea7007fd69faaf
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -43,21 +43,13 @@ ms.lasthandoff: 01/20/2017
 * IIS5 兼容性模式 – Web Apps 不支持该模式。 
 * 应用程序池 - 在 Web Apps 中，各站点及其子应用程序在同一个应用程序池中运行。 如果您的站点有多个子应用程序利用多个应用程序池，请将它们整合到带有常用设置的单个应用程序池，或者将各应用程序迁移到另一个 Web 应用。
 * COM 组件 – Web Apps 不允许 COM 组件在平台上注册。 如果您的网站或应用程序使用任何 COM 组件，您必须在托管代码中对它们进行重写，并将其与网站或应用程序一同部署。
-* ISAPI 筛选器 – Web Apps 支持使用 ISAPI 筛选器。 您需要执行以下操作：
+* ISAPI 扩展 - Web 应用支持使用 ISAPI 扩展。 您需要执行以下操作：
   
   * 将 DLL与您的 Web Apps 一同部署 
   * 使用 [Web.config](http://www.iis.net/configreference/system.webserver/isapifilters) 注册 DLL
-  * 将 applicationHost.xdt 文件放置在带有下列内容的站点根目录中：
+  * 使用[本文](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)的“允许加载 arbitrart ISAPI 扩展”部分中概述的内容将 applicationHost.xdt 文件放置于站点根目录下 
     
-      <?xml version="1.0"?>
-    
-      <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-      <configSections>
-          <sectionGroup name="system.webServer">
-            <section name="isapiFilters" xdt:Transform="SetAttributes(overrideModeDefault)" overrideModeDefault="Allow" />
-          </sectionGroup>
-        </configSections>
-      </configuration>
+  
     
     有关如何使用 XML 文档转换网站的更多示例，请参阅[转换你的 Microsoft Azure 网站](http://blogs.msdn.com/b/waws/archive/2014/06/17/transform-your-microsoft-azure-web-site.aspx)。
 * 其他组件，比如 SharePoint、首页、server extensions (FPSE)、FTP，SSL 证书等，将不予迁移。

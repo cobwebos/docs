@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 6b50b65fa1ad86c8e80fff0fb92352b1be52632e
-ms.openlocfilehash: db7066fb87175caa165d741b63f9b0e3f9ed851c
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 2faab833724bf4bb3f3262517e1d724868f7524d
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.openlocfilehash: db7066fb87175caa165d741b63f9b0e3f9ed851c
 * [教程：使用 Azure Resource Manager 模板创建处理数据的管道](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>GitHub 上的数据工厂模板
-请查看 GitHub 上的以下 Azure 快速启动模板：
+请查看 GitHub 上的以下 Azure 快速入门模板：
 
 * [创建数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
 * [创建包含 Azure HDInsight 群集上的 Hive 活动的数据工厂](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
@@ -252,9 +253,4 @@ dataFactoryName 在“变量”中定义为：
 > 尽管目前尚不支持导出现有数据工厂的模板，但正在积极筹备中。
 >
 >
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

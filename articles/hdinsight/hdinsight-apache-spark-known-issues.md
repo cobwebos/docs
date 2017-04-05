@@ -9,15 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 610c4103-ffc8-4ec0-ad06-fdaf3c4d7c10
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 03/24/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 6c81d978e470754f5c0a737aba0437e105949099
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 2ba5f280b38622b6a0c966d76617cd5698420b92
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -32,7 +34,8 @@ ms.openlocfilehash: 6c81d978e470754f5c0a737aba0437e105949099
 
 使用以下过程解决该问题：
 
-1. 通过 SSH 连接到头节点。 对于 Windows 客户端，请参阅[在装有 PuTTY 的 Windows 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)；对于 Linux、Unix 或 OS X，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md) 
+1. 通过 SSH 连接到头节点。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
+
 2. 运行以下命令，以查找通过 Livy 启动的交互式作业的应用程序 ID。 
    
         yarn application –list
@@ -61,6 +64,14 @@ ms.openlocfilehash: 6c81d978e470754f5c0a737aba0437e105949099
 3. 使用 Ambari 将 Spark 日志位置更新为具有 777 权限的目录。  
 4. 以 sudo 身份运行 spark-submit。  
 
+## <a name="spark-phoenix-connector-is-not-supported"></a>不支持 Spark-Phoenix 连接器
+
+目前，HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
+
+**缓解：**
+
+必须改用 Spark-HBase 连接器。 有关说明，请参阅[如何使用 Spark-HBase 连接器](https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
+
 ## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter 笔记本的相关问题
 下面是与 Jupyter 笔记本相关的一些已知问题。
 
@@ -72,7 +83,7 @@ ms.openlocfilehash: 6c81d978e470754f5c0a737aba0437e105949099
 
 **缓解：**
 
-收到此错误并不表示数据已损坏或丢失。  笔记本仍在磁盘上的 `/var/lib/jupyter` 中，可以通过 SSH 连接到群集来访问它。 对于 Windows 客户端，请参阅[在装有 PuTTY 的 Windows 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)；对于 Linux、Unix 或 OS X，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+收到此错误并不表示数据已损坏或丢失。  笔记本仍在磁盘上的 `/var/lib/jupyter` 中，可以通过 SSH 连接到群集来访问它。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 一旦使用 SSH 连接到群集后，即可将笔记本从群集复制到本地计算机（使用 SCP 或 WinSCP）作为备份，以免丢失笔记本中的重要数据。 然后，可以使用端口 8001 通过 SSH 隧道（不通过网关）连接到头节点来访问 Jupyter。  可以从该处清除笔记本的输出，并将其重新保存，以在最大程度上缩小笔记本的大小。
 
@@ -124,10 +135,5 @@ ms.openlocfilehash: 6c81d978e470754f5c0a737aba0437e105949099
 ### <a name="manage-resources"></a>管理资源
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](hdinsight-apache-spark-job-debugging.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -3,8 +3,9 @@
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
-ms.openlocfilehash: d0a616d27c653e8d3749d93f565f5e8616fdf909
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 7023e7e7f5857db345c47c9a3aa00a816e027a96
+ms.lasthandoff: 03/29/2017
 
 
 
@@ -21,7 +22,7 @@ Azure DocumentDB 支持[对集合自动分区](documentdb-partition-data.md)。 
 * ACID 事务（即存储过程和触发器）不能跨越集合。 事务的作用域在集合内的单个分区键值内。
 * 集合不强制实施架构，因此它们可以用于相同类型或不同类型的 JSON 文档。
 
-从 [Azure DocumentDB SDK&1;.5.x](documentdb-sdk-dotnet.md) 版本开始，可以直接对数据库进行文档操作。 在内部，[DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) 使用为数据库指定的 PartitionResolver 将请求路由到相应的集合。
+从 [Azure DocumentDB SDK 1.5.x](documentdb-sdk-dotnet.md) 版本开始，可以直接对数据库进行文档操作。 在内部，[DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) 使用为数据库指定的 PartitionResolver 将请求路由到相应的集合。
 
 > [!NOTE]
 > REST API 2015-12-16 和 SDKs 1.6.0+ 中引入的[服务器端分区](documentdb-partition-data.md)弃用了用于简单用例的客户端分区解析程序。 但是，客户端分区更灵活，并可让你跨分区键控制性能隔离，在读取多个分区中的结果时控制并行度，并使用范围/空间分区方法与哈希。
@@ -112,7 +113,7 @@ foreach (UserProfile activeUser in query)
 范围分区的一种特殊情况是范围只是单一的离散值，有时被称为“查找分区”。 这通常用于按区域（例如斯堪的纳维亚的分区包含挪威、丹麦和瑞典）分区或多租户应用程序内的租户分区。
 
 ## <a name="samples"></a>示例
-请查看 [DocumentDB 分区示例 Github 项目](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)，它包含有关如何使用这些 PartitionResolver 的代码片段，并对这些代码片段进行扩展，以实现你自己的解析程序来满足特定用例，如下所示： 
+请查看 [DocumentDB 分区示例 GitHub 项目](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)，它包含有关如何使用这些 PartitionResolver 的代码片段，并对这些代码片段进行扩展，以实现你自己的解析程序来满足特定用例，如下所示： 
 
 * 如何为 GetPartitionKey 指定任意 lambda 表达式，并使用它来实现复合分区键，或以不同方式对不同类型的对象进行分区。
 * 如何创建一个使用手动查找表来执行分区的简单 [LookupPartitionResolver](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Partitioners/LookupPartitionResolver.cs)。 此模式通常用于基于离散值（如区域、租户 ID 或应用程序名称）进行分区。
@@ -151,14 +152,9 @@ foreach (UserProfile activeUser in query)
 ## <a name="references"></a>参考
 * [DocumentDB 中的服务器端分区](documentdb-partition-data.md)
 * [DocumentDB 集合和性能级别](documentdb-performance-levels.md)
-* [Partitioning code samples on Github](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)（Github 上的分区代码示例）
+* [GitHub 上的分区代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)
 * [DocumentDB .NET SDK Documentation at MSDN](https://msdn.microsoft.com/library/azure/dn948556.aspx)（MSDN 中的 DocumentDB .NET SDK 文档）
 * [DocumentDB .NET samples](https://github.com/Azure/azure-documentdb-net)（DocumentDB .NET 示例）
 * [DocumentDB Blog on Performance Tips](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)（DocumentDB 性能提示博客）
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

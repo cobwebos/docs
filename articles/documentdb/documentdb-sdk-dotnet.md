@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 03/29/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5bded9c15ef6ec5464952d533c6681801f137749
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: c953615ef370dc89ed09bb8a32dc2caf7a7bcc3b
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -51,6 +51,12 @@ ms.lasthandoff: 03/21/2017
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11311131httpswwwnugetorgpackagesmicrosoftazuredocumentdb1131"></a><a name="1.13.1"/>[1.13.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.13.1)
+* 修复了在 ASP.NET 上下文内使用时，在某些异步 API 中导致死锁的问题。
+
+### <a name="a-name11301130httpswwwnugetorgpackagesmicrosoftazuredocumentdb1130"></a><a name="1.13.0"/>[1.13.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.13.0)
+* 修复程序，用于使 SDK 更具弹性，以便在某些情况下自动故障转移。
 
 ### <a name="a-name11221122httpswwwnugetorgpackagesmicrosoftazuredocumentdb1122"></a><a name="1.12.2"/>[1.12.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.2)
 * 修复偶尔导致 WebException 的问题：无法解析远程名称。
@@ -216,6 +222,8 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.13.1](#1.13.1) |2017 年 3 月 29 日 |--- |
+| [1.13.0](#1.13.0) |2017 年 3 月 24 日 |--- |
 | [1.12.2](#1.12.2) |2017 年 3 月 20 日 |--- |
 | [1.12.1](#1.12.1) |2017 年 3 月 14 日 |--- |
 | [1.12.0](#1.12.0) |2017 年 2 月 15 日 |--- |

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: gokuma;weig;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1072ab3d7c8cc472258925baaa2ef82cdfb17eed
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 3b608f341278ceaef9dd112cea38f138be69ee44
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -237,15 +238,15 @@ DSVM 不仅允许你在虚拟机上本地生成分析解决方案，而且还允
 现在可以像访问 VM 上的任何正常驱动器一样访问此驱动器。
 
 ## <a name="6-share-code-with-your-team-using-github"></a>6.使用 GitHub 与团队共享代码
-GitHub 是一个代码存储库，可以在其中找到其他工具的许多示例代码和资源，这些工具使用了开发人员社区共享的各种技术。 它使用 Git 作为跟踪和存储代码文件版本的技术。 Github 也是一个平台，可以在其中创建你自己的存储库来存储团队的共享代码和文档、实现版本控制，还可以控制谁有权查看和贡献代码。 有关使用 Git 的详细信息，请访问 [Github 帮助页](https://help.github.com/)。 可以将 Github 用作与团队协作、使用社区开发的代码以及重新贡献代码给社区的方法之一。
+GitHub 是一个代码存储库，可以在其中找到其他工具的许多示例代码和资源，这些工具使用了开发人员社区共享的各种技术。 它使用 Git 作为跟踪和存储代码文件版本的技术。 GitHub 也是一个平台，可以在其中创建你自己的存储库来存储团队的共享代码和文档、实现版本控制，还可以控制谁有权查看和贡献代码。 有关使用 Git 的详细信息，请访问 [GitHub 帮助页](https://help.github.com/)。 可以将 GitHub 用作与团队协作、使用社区开发的代码以及重新贡献代码给社区的方法之一。
 
-DSVM 已在命令行以及 GUI 上装载了用于访问 GitHub 存储库的客户端工具。 使用 Git 和 Github 的命令行工具称为 Git Bash。 DSVM 上已安装的 Visual Studio 具有 Git 扩展。 可以在“开始”菜单和桌面上找到这些工具的启动图标。
+DSVM 已在命令行以及 GUI 上加载了用于访问 GitHub 存储库的客户端工具。 使用 Git 和 GitHub 的命令行工具称为 Git Bash。 DSVM 上已安装的 Visual Studio 具有 Git 扩展。 可以在“开始”菜单和桌面上找到这些工具的启动图标。
 
 若要从 GitHub 存储库下载代码，请使用 ```git clone``` 命令。 例如，若要将 Microsoft 发布的数据科研存储库下载到当前目录，请在使用的 ```git-bash``` 中运行以下命令。
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
-在 Visual Studio 中，可以执行相同的克隆操作。 以下屏幕截图演示了如何访问 Visual Studio 中的 Git 和 Github 工具。
+在 Visual Studio 中，可以执行相同的克隆操作。 以下屏幕截图演示了如何在 Visual Studio 中访问 Git 和 GitHub 工具。
 
 ![Visual Studio 中的 Git](./media/machine-learning-data-science-vm-do-ten-things/VSGit.PNG)
 
@@ -865,10 +866,5 @@ Azure DocumentDB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文�
 
 ## <a name="summary"></a>摘要
 这些只是 Microsoft 数据科研虚拟机上的一部分功能。 有更多使它成为有效分析环境的功能。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

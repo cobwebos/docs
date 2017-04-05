@@ -15,8 +15,9 @@ ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: ae5719c60c6ed2d3467f162f3b273d5bfdcf0073
-ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d2b6b3d9483f230ad25ae47255a4f28c1a67e064
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 
 ## <a name="net-sample-index"></a>.NET 示例索引
 
-下表概述了示例存储库和每个示例中涉及的场景。 单击链接可查看 Github 中相应的示例代码。
+下表概述了示例存储库和每个示例中涉及的场景。 单击链接可查看 GitHub 中相应的示例代码。
 
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">终结点</th><th style="font-size:110%">方案</th><th style="font-size:110%">代码示例</th></tr></thead><tbody> 
 <tr> 
@@ -34,7 +35,7 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 </tr> 
 <tr> 
 <td>块 blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage Photo Gallery Web Application（Azure Blob 存储照片库 Web 应用程序）</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage Photo Gallery Web Application</a>（Azure Blob 存储照片库 Web 应用程序）</td>
 </tr> 
 <tr> 
 <td>客户端加密</td>
@@ -46,11 +47,11 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 </tr> 
 <tr> 
 <td>创建容器</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage Photo Gallery Web Application（Azure Blob 存储照片库 Web 应用程序）</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage Photo Gallery Web Application</a>（Azure Blob 存储照片库 Web 应用程序）</td>
 </tr> 
 <tr> 
 <td>删除 Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage Photo Gallery Web Application（Azure Blob 存储照片库 Web 应用程序）</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage Photo Gallery Web Application</a>（Azure Blob 存储照片库 Web 应用程序）</td>
 </tr> 
 <tr> 
 <td>删除容器</td>
@@ -62,7 +63,7 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 </tr> 
 <tr> 
 <td>容器 ACL/元数据/属性</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage Photo Gallery Web Application（Azure Blob 存储照片库 Web 应用程序）</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage Photo Gallery Web Application</a>（Azure Blob 存储照片库 Web 应用程序）</td>
 </tr> 
 <tr> 
 <td>获取页面范围</td>
@@ -83,11 +84,11 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 <tr> 
 <td>SAS</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Blob 入门</a></td>
-</tr>   
+</tr>     
 <tr> 
 <td>服务属性</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Blob 入门</a></td>
-</tr>           
+</tr>             
 <tr> 
 <td>快照 Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs">使用增量快照备份 Azure 虚拟机磁盘</a></td>
@@ -99,7 +100,7 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 </tr>
 <tr> 
 <td>删除共享/目录/文件</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/master/FileStorage/GettingStarted.cs">Getting Started with Azure File Service in .NET（.NET 中 Azure 文件服务入门）</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/master/FileStorage/GettingStarted.cs">Getting Started with Azure File Service in .NET</a>（.NET 中 Azure 文件服务入门）</td> 
 </tr> 
 <tr> 
 <td>目录属性/元数据</td> 
@@ -132,7 +133,7 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 <tr> 
 <td rowspan="8"><b>队列</b></td>
 <td>添加消息</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET（.NET 中 Azure 队列服务入门）</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET</a>（.NET 中 Azure 队列服务入门）</td> 
 </tr> 
 <tr> 
 <td>客户端加密</td> 
@@ -140,32 +141,32 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 </tr> 
 <tr> 
 <td>创建队列</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET（.NET 中 Azure 队列服务入门）</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET</a>（.NET 中 Azure 队列服务入门）</td> 
 </tr> 
 <tr> 
 <td>删除消息/队列</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET（.NET 中 Azure 队列服务入门）</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET</a>（.NET 中 Azure 队列服务入门）</td> 
 </tr> 
 <tr> 
 <td>扫视消息</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET（.NET 中 Azure 队列服务入门）</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET</a>（.NET 中 Azure 队列服务入门）</td> 
 </tr> 
 <tr> 
 <td>队列 ACL/元数据/统计信息</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs">Getting Started with Azure Queue Service in .NET（.NET 中 Azure 队列服务入门）</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs">Getting Started with Azure Queue Service in .NET</a>（.NET 中 Azure 队列服务入门）</td> 
 </tr> 
 <tr> 
 <td>队列服务属性</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs">Getting Started with Azure Queue Service in .NET（.NET 中 Azure 队列服务入门）</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs">Getting Started with Azure Queue Service in .NET</a>（.NET 中 Azure 队列服务入门）</td> 
 </tr> 
 <tr> 
 <td>更新消息</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET（.NET 中 Azure 队列服务入门）</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET</a>（.NET 中 Azure 队列服务入门）</td> 
 </tr> 
 <tr> 
 <td rowspan="7"><b>表</b></td>
 <td>创建表</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">使用 Azure 存储管理并发 - 示例应用程序</a></td> 
+<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Managing Concurrency using Azure Storage - Sample Application</a>（使用 Azure 存储管理并发 - 示例应用程序）</td> 
 </tr> 
 <tr> 
 <td>删除实体/表</td> 
@@ -173,7 +174,7 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 </tr> 
 <tr> 
 <td>插入/合并/替换实体</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">使用 Azure 存储管理并发 - 示例应用程序</a></td> 
+<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Managing Concurrency using Azure Storage - Sample Application</a>（使用 Azure 存储管理并发 - 示例应用程序）</td> 
 </tr> 
 <tr> 
 <td>查询实体</td> 
@@ -189,7 +190,7 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 </tr> 
 <tr> 
 <td>更新实体</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">使用 Azure 存储管理并发 - 示例应用程序</a></td> 
+<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Managing Concurrency using Azure Storage - Sample Application</a>（使用 Azure 存储管理并发 - 示例应用程序）</td> 
 </tr> 
 </tbody> 
 </table>
@@ -216,8 +217,4 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 
 * Java：[使用 Java 的 Azure 存储示例](storage-samples-java.md)
 * 所有其他语言：[Azure 存储示例](storage-samples.md)
-
-
-<!--HONumber=Jan17_HO2-->
-
 

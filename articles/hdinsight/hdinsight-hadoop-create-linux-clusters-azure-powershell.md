@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 4208deca-d64a-45e1-8948-2673d5d7678c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2dd64398fce3a85f92492b01951008eab31a2c3f
-ms.openlocfilehash: a566fe935da98d303f1260cbc2a2009e5702530a
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 44e418e52fc18dd22820331f7d921e789da62832
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -62,10 +63,7 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 创建 Linux 群集必须设置的两个最重要参数是用于指定 OS 类型和 SSH 用户详细信息的参数：
 
 * 确保将 **-OSType** 参数指定为 **Linux**。
-* 若要在群集上对远程会话使用 SSH，可以指定 SSH 用户密码或 SSH 公钥。 如果你同时指定 SSH 用户密码和 SSH 公钥，则将忽略该密钥。 如果你要对远程会话使用 SSH 密钥，则必须在出现提示时指定空 SSH 密码。 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文章之一：
-  
-  * [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-  * [在 Windows 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+* 若要在群集上对远程会话使用 SSH，可以指定 SSH 用户密码或 SSH 公钥。 如果你同时指定 SSH 用户密码和 SSH 公钥，则将忽略该密钥。 如果你要对远程会话使用 SSH 密钥，则必须在出现提示时指定空 SSH 密码。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 以下脚本演示了如何创建新群集：
 

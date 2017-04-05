@@ -9,16 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: eaf5904d-41e2-4a5f-8bec-9dde069039c2
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 8e7911a3a8080ef8fa125779aa1f6778b9655cde
-ms.openlocfilehash: 8780c193c6aa4b6b183723f88d67ac0990347d1e
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 3b2a18232a9ab8c1b587cfa4fa14ced0c3b515ba
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -101,11 +102,11 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
    * 状态：应用程序状态。 
    * 网页：已部署到边缘节点的 Web 应用程序的 URL（如果有）。 此凭据与你针对群集配置的 HTTP 用户凭据相同。
    * HTTP 终结点：此凭据与你针对群集配置的 HTTP 用户凭据相同。 
-   * SSH 终结点：可以使用 [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 连接到边缘节点。 SSH 凭据与你针对群集配置的 SSH 用户凭据相同。
+   * SSH 终结点：可以使用 SSH 连接到边缘节点。 SSH 凭据与你针对群集配置的 SSH 用户凭据相同。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 6. 若要删除应用程序，请右键单击应用程序，然后单击上下文菜单中的“删除”  。
 
 ## <a name="connect-to-the-edge-node"></a>连接到边缘节点
-你可以使用 HTTP 和 SSH 连接到边缘节点。 可在 [门户](#list-installed-hdinsight-apps-and-properties)中找到终结点信息。 有关使用 SSH 的详细信息，请参阅 [在 Linux、Unix 和 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 
+你可以使用 HTTP 和 SSH 连接到边缘节点。 可在 [门户](#list-installed-hdinsight-apps-and-properties)中找到终结点信息。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 HTTP 终结点凭据是你针对 HDInsight 群集配置的 HTTP 用户凭据；SSH 终结点凭据是你针对 HDInsight 群集配置的 SSH 凭据。
 

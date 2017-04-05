@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/16/2017
+ms.date: 3/24/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
-ms.openlocfilehash: 056968900d8078dfe53948a2da1daa26cb04a713
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 01c0d7e8430df758749f7a524dd3b7771b24fac1
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -44,10 +44,19 @@ Service Fabric 提供多种容器功能，可帮助你构建由容器化的微�
 ## <a name="packaging-a-docker-container-with-yeoman"></a>使用 yeoman 打包 docker 容器
 打包 Linux 上的容器时，可以选择使用 yeoman 项目模板，或者[手动创建应用程序包](#manually)。
 
-Service Fabric 应用程序可以包含一个或多个容器，每个容器在提供应用程序功能时都具有特定角色。 用于 Linux 的 Service Fabric SDK 包括 [Yeoman](http://yeoman.io/) 生成器，利用它可以轻松地创建第一个服务应用程序和添加容器映像。 让我们使用 Yeoman 创建有一个名为 *SimpleContainerApp* 的 Docker 容器的新应用程序。 稍后，你可以通过编辑生成的清单文件添加更多服务。
+Service Fabric 应用程序可以包含一个或多个容器，每个容器在提供应用程序功能时都具有特定角色。 用于 Linux 的 Service Fabric SDK 包括 [Yeoman](http://yeoman.io/) 生成器，利用它可以轻松地创建第一个服务应用程序和添加容器映像。 让我们使用 Yeoman 创建具有单个 Docker 容器（名为 *SimpleContainerApp*）的应用程序。 稍后，你可以通过编辑生成的清单文件添加更多服务。
+
+## <a name="install-docker-on-your-development-box"></a>在开发环境中安装 Docker
+
+运行以下命令以在 Linux 开发环境中安装 docker（如果是在 OSX 上使用 vagrant 映像，则已安装 docker）：
+
+```bash
+    sudo apt-get install wget
+    wget -qO- https://get.docker.io/ | sh
+```
 
 ## <a name="create-the-application"></a>创建应用程序
-1. 在终端中，键入 **yo azuresfguest**。
+1. 在终端中，键入 `yo azuresfguest`。
 2. 对于框架，选择“容器”。
 3. 为应用程序命名，例如 SimpleContainerApp
 4. 提供 DockerHub 存储库中容器映像的 URL。 此映像参数采用的格式为 [repo]/[image name]
@@ -59,26 +68,30 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
 
 1. 连接到本地 Service Fabric 群集。
 
-    ```bash
+```bash
     azure servicefabric cluster connect
-    ```
+```
+
 2. 使用模板中提供的安装脚本可将应用程序包复制到群集的映像存储、注册应用程序类型和创建应用程序的实例。
 
-    ```bash
+```bash
     ./install.sh
-    ```
+```
+
 3. 打开浏览器并导航到 http://localhost:19080/Explorer 的 Service Fabric Explorer（如果在 Mac OS X 上使用 Vagrant，则使用 VM 的专用 IP 替换 localhost）。
 4. 展开应用程序节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
 5. 使用模板中提供的卸载脚本删除应用程序实例并取消注册应用程序类型。
 
-    ```bash
+```bash
     ./uninstall.sh
-    ```
+```
+
 有关示例应用程序，请[查看 GitHub 上的 Service Fabric 容器代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="adding-more-services-to-an-existing-application"></a>将更多服务添加到现有应用程序
 
 若要将其他容器服务添加到使用 `yo` 创建的应用程序，请执行以下步骤： 
+
 1. 将目录更改为现有应用程序的根目录。  例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
 2. 运行 `yo azuresfguest:AddService`
 
@@ -180,7 +193,7 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
 ```
 
 ## <a name="configure-container-to-container-discovery-and-communication"></a>配置容器到容器的发现和通信
-通过使用 `PortBinding` 策略将容器端口映射到服务清单中的 `Endpoint`，如以下示例中所示。 终结点 `Endpoint1` 可以指定固定端口（例如端口 80）。 也可不指定任何端口，在此情况下，将从群集的应用程序端口范围内选择一个随机端口。
+通过使用 `PortBinding` 策略将容器端口映射到服务清单中的 `Endpoint`。 终结点 `Endpoint1` 可以指定固定端口（例如端口 80）。 也可不指定任何端口，在此情况下，将从群集的应用程序端口范围内选择一个随机端口。
 
 如果在来宾容器的服务清单中使用 `Endpoint` 标记指定了终结点，则 Service Fabric 可以自动将此终结点发布到命名服务。 因此群集中运行的其他服务可以使用 REST 查询进行解析来发现该容器。
 
@@ -302,5 +315,5 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
 * [使用 Azure CLI 与 Service Fabric 群集交互](service-fabric-azure-cli.md)
 
 <!-- Images -->
-[sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman.png
+[sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman1.png
 

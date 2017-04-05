@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 导入/导出设置属性和元数据 | Microsoft Docs"
-description: "了解如何在运行 Azure 导入/导出工具准备驱动器时，指定要对目标 Blob 设置的属性和元数据。"
+description: "了解如何在运行 Azure 导入/导出工具准备驱动器时，指定要对目标 blob 设置的属性和元数据。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: 26fb4d030341001238e7206c3856597c95d84719
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: bdc7a53f82d1fbbb726e2b1bd5d96678a8563566
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>在导入过程中设置属性和元数据
 
-在运行 Microsoft Azure 导入/导出工具准备驱动器时，可以指定要对目标 Blob 设置的属性和元数据。 执行以下步骤:
+在运行 Microsoft Azure 导入/导出工具准备驱动器时，可以指定要对目标 blob 设置的属性和元数据。 执行以下步骤:
 
 1.  若要设置 Blob 属性，请在本地计算机上创建一个指定属性名称和值的文本文件。
 2.  若要设置 Blob 元数据，请在本地计算机上创建一个指定元数据名称和值的文本文件。
-3.  在 `PrepImport` 操作过程中，需要将其中一个或两个文件的完整路径传递给 Azure 导入/导出工具。
+3.  在 `PrepImport` 操作过程中，将其中一个或两个文件的完整路径传递给 Azure 导入/导出工具。
 
 > [!NOTE]
 >  将某个属性或元数据文件指定为复制会话的一部分时，将为作为该复制会话一部分导入的每个 Blob 设置这些属性或元数据。 如果想要为导入的某些 Blob 指定一组不同的属性或元数据，需要创建包含不同属性或元数据文件的单独复制会话。
@@ -55,7 +55,7 @@ ms.lasthandoff: 02/16/2017
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Metadata>
-    <UploadMethod>Windows Azure Import/Export Service</UploadMethod>
+    <UploadMethod>Windows Azure Import/Export service</UploadMethod>
     <DataSetName>SampleData</DataSetName>
     <CreationDate>10/1/2013</CreationDate>
 </Metadata>
@@ -75,5 +75,5 @@ K:\Temp\FavoriteVideo.ISO,https://mystorageaccount.blob.core.windows.net/favorit
 
 ## <a name="next-steps"></a>后续步骤
 
-[导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md)
+* [导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md)
 

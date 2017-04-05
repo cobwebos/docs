@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: f67e96618ea25e4463a4fdf83ea20f238498fac0
-ms.openlocfilehash: 838a19ef05adad59e0317fb62e2acec8a40d7a64
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 97c6724261e35063c461ee95ccad36372dd907db
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -112,7 +113,7 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 本文档中列出的每个方案都包括一个小节，用以介绍其设置要求。 有关在 Azure AD 中预配应用程序以及单租户应用程序与多租户应用程序之间区别的更深入信息，请参阅[将应用程序与 Azure Active Directory 集成](active-directory-integrating-applications.md)了解详细信息。 继续阅读以了解 Azure AD 中的常见应用程序方案。
 
 ## <a name="application-types-and-scenarios"></a>应用程序类型和方案
-本文档中所述的每个方案可以使用各种语言和平台进行开发。 它们都由完整代码示例（在[代码示例指南](active-directory-code-samples.md)中提供，也可以直接从对应的 [Github 示例存储库](https://github.com/Azure-Samples?utf8=%E2%9C%93&query=active-directory)中获取）提供支持。 此外，如果你的应用程序需要某个端到端方案的特定片段，在大多数情况下都可以独立添加该功能。 例如，如果你有一个调用某个 Web API 的本机应用程序，则你可以轻松添加也调用该 Web API 的 Web 应用程序。 下面的图示介绍了这些方案和应用程序类型，以及可以如何添加各种组件：
+本文档中所述的每个方案可以使用各种语言和平台进行开发。 它们都由完整代码示例提供支持，这些代码可在[代码示例指南](active-directory-code-samples.md)中获取，也可以直接从对应的 [GitHub 示例存储库](https://github.com/Azure-Samples?utf8=%E2%9C%93&query=active-directory)获取。 此外，如果你的应用程序需要某个端到端方案的特定片段，在大多数情况下都可以独立添加该功能。 例如，如果你有一个调用某个 Web API 的本机应用程序，则你可以轻松添加也调用该 Web API 的 Web 应用程序。 下面的图示介绍了这些方案和应用程序类型，以及可以如何添加各种组件：
 
 ![应用程序类型和方案](./media/active-directory-authentication-scenarios/application_types_and_scenarios.png)
 
@@ -294,10 +295,5 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 [有关 Azure AD 中签名密钥滚动更新的重要信息](active-directory-signing-key-rollover.md)
 
 [Azure AD 中的 OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -65,6 +65,7 @@
 ### [预测食品检测结果](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 ### [分析网站日志](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 ### [使用 Caffe 深入学习](hdinsight-deep-learning-caffe-spark.md)
+### [使用 Microsoft 认知工具包](hdinsight-apache-spark-microsoft-cognitive-toolkit.md)
 ### [使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 ### [Jupyter 笔记本内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 ### [通过单元 Magic 将外部包与 Jupyter 配合使用](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
@@ -141,9 +142,8 @@
 #### [使用 REST 安装应用](https://msdn.microsoft.com/library/mt706515.aspx)
 #### [将 HDInsight 应用发布到 Azure 应用商店](hdinsight-apps-publish-applications.md)
 ## 安全
+### [将 Pig 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [使用 SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)
-### [从 Linux、Unix 或 OS X 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
-### [从 Windows OS 使用 SSH](hdinsight-hadoop-linux-use-ssh-windows.md)
 ### [限制数据访问](hdinsight-storage-sharedaccesssignature-permissions.md)
 ## 管理
 ### [创建 Linux 群集](hdinsight-hadoop-provision-linux-clusters.md)
@@ -171,6 +171,8 @@
 ### [群集及服务端口和 URI](hdinsight-hadoop-port-settings-for-services.md)
 ### [迁移到 Resource Manager 开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)
 ### [可用性和可靠性](hdinsight-high-availability-linux.md)
+### [将 HDInsight 群集升级到更新的版本](hdinsight-upgrade-cluster.md)
+### [为 HDInsight 群集修补 OS](hdinsight-os-patching.md)
 ## 故障排除
 ### [适用于 Linux 的提示](hdinsight-hadoop-linux-information.md)
 ### [发行说明](hdinsight-release-notes.md)
@@ -195,16 +197,7 @@
 # 相关内容
 ## Windows 群集
 ### [将 Windows 群集迁移到 Linux 群集](hdinsight-migrate-from-windows-to-linux.md)
-### [Hadoop 入门](hdinsight-hadoop-tutorial-get-started-windows.md)
-### [Storm 入门](hdinsight-apache-storm-tutorial-get-started.md)
-### [HBase 入门](hdinsight-hbase-tutorial-get-started.md)
 ### [运行 Hadoop MapReduce 示例](hdinsight-run-samples.md)
-### [创建 Hadoop 群集](hdinsight-provision-clusters.md)
-#### [使用 Azure 门户](hdinsight-hadoop-create-windows-clusters-portal.md)
-#### [使用 .NET SDK](hdinsight-hadoop-create-windows-clusters-dotnet-sdk.md)
-#### [使用 Azure CLI](hdinsight-hadoop-create-windows-clusters-cli.md)
-#### [使用 Azure PowerShell](hdinsight-hadoop-create-windows-clusters-powershell.md)
-#### [使用 Resource Manager 模板](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
 ### [在群集上使用 Solr](hdinsight-hadoop-solr-install-linux.md)
 ### [使用 Giraph 处理大型图形](hdinsight-hadoop-giraph-install.md)
 ### [为工作流使用 Oozie](hdinsight-use-oozie.md)
@@ -212,7 +205,6 @@
 ### [使用 Maven 构建 Java 应用程序](hdinsight-hbase-build-java-maven.md)
 ### [使用 Tez UI 调试 Tez 作业](hdinsight-debug-tez-ui.md)
 ### [使用脚本操作进行自定义](hdinsight-hadoop-customize-cluster.md)
-### [可用性和可靠性](hdinsight-high-availability.md)
 ### [访问 YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs.md)
 ### [使用 Apache Phoenix 和 SQuirreL](hdinsight-hbase-phoenix-squirrel.md)
 ### [使用 Mahout 生成电影推荐](hdinsight-mahout.md)

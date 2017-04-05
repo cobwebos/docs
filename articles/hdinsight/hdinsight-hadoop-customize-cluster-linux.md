@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: b615f97484033bb406022e84fbcf50f88458de3c
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 1f64380b0bd271658c0f06e01a9b013ae4e25636
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -758,11 +759,7 @@ __解决方法__：若要解决此错误，请使用 `ssh` 手动连接到每个
 sudo pip install azure-storage==0.20.0
 ```
 
-有关如何使用 SSH 连接到群集的详细信息，请参阅以下文档：
-
-* [在 Linux、Unix、OS X 或 Windows 的 HDInsight 上结合使用 SSH 和基于 Linux 的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-* [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+有关使用 SSH 连接到群集的信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ### <a name="history-doesnt-show-scripts-used-during-cluster-creation"></a>历史记录未显示创建群集期间使用的脚本
 

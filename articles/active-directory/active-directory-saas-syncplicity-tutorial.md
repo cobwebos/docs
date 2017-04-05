@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 3/09/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 49352a5e8255468bbc54c02e0cd9242d49002dbd
-ms.openlocfilehash: 57c649e974cc0514d3a534a5977d537bdd2bb7c5
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 044769ca5a74b90843cb29510b66d9ce7e90566c
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -31,16 +31,17 @@ ms.lasthandoff: 12/08/2016
 完成本教程后，已向 Syncplicity 分配的 Azure AD 用户将能够在 Syncplicity 公司站点（服务提供商发起的登录）或使用 Azure AD 访问面板单一登录到应用程序。
 
 1. 为 Syncplicity 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
 ![方案](./media/active-directory-saas-syncplicity-tutorial/IC769524.png "方案")
 
-## <a name="enabling-the-application-integration-for-syncplicity"></a>为 Syncplicity 启用应用程序集成
+## <a name="enable-the-application-integration-for-syncplicity"></a>为 Syncplicity 启用应用程序集成
 本部分的目的是概述如何为 Syncplicity 启用应用程序集成。
 
-### <a name="to-enable-the-application-integration-for-syncplicity-perform-the-following-steps"></a>若要为 Syncplicity 启用应用程序集成，请执行以下步骤：
+**若要为 Syncplicity 启用应用程序集成，请执行以下步骤：**
+
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
     ![Active Directory](./media/active-directory-saas-syncplicity-tutorial/IC700993.png "Active Directory")
@@ -67,11 +68,12 @@ ms.lasthandoff: 12/08/2016
    
     ![Syncplicity](./media/active-directory-saas-syncplicity-tutorial/IC769533.png "Syncplicity")
 
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 本部分概述如何让用户使用基于 SAML 协议的联合身份验证通过其在 Azure Active Directory 中的帐户向 Syncplicity 进行身份验证。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
-1. 在 Azure 经典门户中的“Syncplicity”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
+**若要配置单一登录，请执行以下步骤：**
+
+1. 在 Azure 经典门户的“Syncplicity”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-syncplicity-tutorial/IC769534.png "配置单一登录")
 
@@ -97,30 +99,24 @@ ms.lasthandoff: 12/08/2016
 
 7. 在“单一登录(SSO)”对话框页上，执行以下步骤：
    
-    ![单一登录\(\)SSO](./media/active-directory-saas-syncplicity-tutorial/IC769550.png "Single Sign-On \\\(SSO\\\)")
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“自定义域”文本框中，键入域名。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 选择“已启用”作为“单一登录状态”。
-   
-    c. 在 Azure 经典门户中的“配置 Syncplicity 的单一登录”对话框页上，复制“实体 ID”值，然后将其粘贴到“实体 ID”文本框中。
-   
-    d.单击“下一步”。 在 Azure 经典门户的“配置 Syncplicity 的单一登录”对话框页上，复制“单一登录服务 URL”值，然后将其粘贴到“登录页 URL”文本框中。
-   
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在 Azure 经典门户的“配置 Syncplicity 的单一登录”对话框页上，复制“远程注销 URL”值，然后将其粘贴到“远程页 URL”文本框中。
-   
-    f. 在“标识提供者证书”中，单击“选择文件”，然后上载已从 Azure 经典门户下载的证书。
-   
-    g. 单击“保存更改”。
+    ![单一登录\(\)SSO](./media/active-directory-saas-syncplicity-tutorial/IC769550.png "Single Sign-On \\\(SSO\\\)")   
+  1. 在“自定义域”文本框中，键入域名。
+  2. 选择“已启用”作为“单一登录状态”。
+  3. 在 Azure 经典门户中的“配置 Syncplicity 的单一登录”对话框页上，复制“实体 ID”值，然后将其粘贴到“实体 ID”文本框中。
+  4. 在 Azure 经典门户的“配置 Syncplicity 的单一登录”对话框页上，复制“单一登录服务 URL”值，然后将其粘贴到“登录页 URL”文本框中。
+  5. 在 Azure 经典门户的“配置 Syncplicity 的单一登录”对话框页上，复制“远程注销 URL”值，然后将其粘贴到“远程页 URL”文本框中。
+  6. 在“标识提供者证书”中，单击“选择文件”，然后上载已从 Azure 经典门户下载的证书。 
+  7. 单击“保存更改”。
 
 8. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
     ![确认](./media/active-directory-saas-syncplicity-tutorial/IC769554.png "确认")
 
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 要使 AAD 用户能够登录，必须将这些用户预配到 Syncplicity 应用程序中。 本部分介绍如何在 Syncplicity 中创建 AAD 用户帐户。
 
-### <a name="to-provision-a-user-account-to-syncplicity-perform-the-following-steps"></a>若要将用户帐户预配到 Syncplicity，请执行以下步骤：
+**若要将用户帐户预配到 Syncplicity，请执行以下步骤：**
+
 1. 登录到 **Syncplicity** 租户（例如：*https://company.Syncplicity.com*）。
 
 2. 单击“管理员”，然后选择“用户帐户”。
@@ -133,33 +129,31 @@ ms.lasthandoff: 12/08/2016
    
     ![帐户信息](./media/active-directory-saas-syncplicity-tutorial/IC769765.png "帐户信息")
    
-    > [!NOTE]
-    > AAD 帐户持有者将收到一封电子邮件，其中包含用于确认和激活帐户的链接。
-    > 
+    >[!NOTE]
+    >AAD 帐户持有者将收到一封电子邮件，其中包含用于确认和激活帐户的链接。 
     > 
 
 5. 选择新用户应属于你的公司中的哪个组，然后单击“下一步”。
    
     ![组成员身份](./media/active-directory-saas-syncplicity-tutorial/IC769772.png "组成员身份")
    
-    > [!NOTE]
-    > 如果没有列出任何组，直接单击“下一步”。
-    > 
+    >[!NOTE]
+    >如果没有列出任何组，直接单击“下一步”。 
     > 
 
 6. 在用户的计算机上选择要置于 Syncplicity 的控制下的文件夹，然后单击“下一步”。
    
     ![Syncplicity 文件夹](./media/active-directory-saas-syncplicity-tutorial/IC769773.png "Syncplicity 文件夹")
 
-> [!NOTE]
-> 可以使用 Syncplicity 提供的任何其他 Syncplicity 用户帐户创建工具或 API 来预配 AAD 用户帐户。
-> 
+>[!NOTE]
+>可以使用 Syncplicity 提供的任何其他 Syncplicity 用户帐户创建工具或 API 来预配 AAD 用户帐户。 
 > 
 
-## <a name="assigning-users"></a>分配用户
-若要测试配置，需要通过分配权限的方式向要允许其使用应用程序的 Azure AD 用户授予该应用程序的访问权限。
+## <a name="assign-users"></a>分配用户
+若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
-### <a name="to-assign-users-to-syncplicity-perform-the-following-steps"></a>若要将用户分配到 Syncplicity，请执行以下步骤：
+**若要将用户分配到 Syncplicity，请执行以下步骤：**
+
 1. 在 Azure 经典门户中，创建测试帐户。
 
 2. 在“Syncplicity”应用程序集成页上，单击“分配用户”。

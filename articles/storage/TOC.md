@@ -45,11 +45,11 @@
 
 ## 磁盘存储 
 ### [使用 Resource Manager 和 PowerShell 创建 VM](../virtual-machines/virtual-machines-windows-ps-create.md)
-### [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
-### [使用 PowerShell 将托管磁盘附加到 Windows VM](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
-### [将托管磁盘添加到 Linux VM](../virtual-machines/virtual-machines-linux-add-disk.md)
-### [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
-### [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/linux/virtual-machines-linux-snapshot-copy-managed-disk.md)
+### [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/linux/quick-create-cli.md)
+### [使用 PowerShell 将托管磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)
+### [将托管磁盘添加到 Linux VM](../virtual-machines/linux/add-disk.md)
+### [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/windows/snapshot-copy-managed-disk.md)
+### [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 # 如何
 ## [创建存储帐户](storage-create-storage-account.md)
@@ -74,8 +74,8 @@
 ### [Windows VM 的磁盘和 VHD](storage-about-disks-and-vhds-windows.md)
 ### [Linux VM 的磁盘和 VHD](storage-about-disks-and-vhds-linux.md)
 ### [Azure 托管磁盘概述](storage-managed-disks-overview.md)
-### [将 Azure VM 迁移到 Azure 托管磁盘](../virtual-machines/virtual-machines-windows-migrate-to-managed-disks.md)
-### [从 AWS 和其他平台迁移到托管磁盘](../virtual-machines/virtual-machines-windows-on-prem-to-azure.md)
+### [将 Azure VM 迁移到 Azure 托管磁盘](../virtual-machines/windows/migrate-to-managed-disks.md)
+### [从 AWS 和其他平台迁移到托管磁盘](../virtual-machines/windows/on-prem-to-azure.md)
 ### [有关 Azure IaaS VM 磁盘的常见问题](storage-faq-for-disks.md)
 ### 高级存储
 #### [用于 VM 磁盘的高性能高级存储](storage-premium-storage.md)
@@ -201,6 +201,7 @@
 ## Azure 存储资源管理器
 ### [存储资源管理器（预览版）](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 ### [使用存储资源管理器（预览版）管理 Blob](../vs-azure-tools-storage-explorer-blobs.md)
+### [将存储资源管理器（预览版）与 Azure 文件存储配合使用](../vs-azure-tools-storage-explorer-files.md)
 
 ## NuGet 包
 ### [适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
