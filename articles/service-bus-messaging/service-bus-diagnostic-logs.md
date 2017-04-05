@@ -2,10 +2,10 @@
 title: "Azure 服务总线诊断日志 | Microsoft 文档"
 description: "了解如何为 Azure 中的服务总线设置诊断日志。"
 keywords: 
-documentationcenter: 
+documentationcenter: .net
 services: service-bus-messaging
 author: banisadr
-manager: 
+manager: timlt
 editor: 
 ms.assetid: 
 ms.service: service-bus-messaging
@@ -13,41 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/17/2017
-ms.author: babanisa
+ms.date: 03/23/2017
+ms.author: babanisa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: abcb0eee979853948cf6d981ff8f3a457eeeeef0
-ms.openlocfilehash: 65fe81dc90f2dc7a251860adfdd8374912cb8d73
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: b8ed786fe0c049d9be7ba1ca1cb6adef1950b8e9
+ms.lasthandoff: 03/24/2017
 
 
 ---
 # <a name="service-bus-diagnostic-logs"></a>服务总线诊断日志
 
 可以查看两种类型的 Azure 服务总线日志：
-* **[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**。 此类日志提供对作业执行的操作的相关信息。 此类日志始终开启。
-* **[诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 可以配置诊断日志，以便更深入地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
+* **[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**。 此类日志包含对作业执行的操作的相关信息。 始终启用这些日志。
+* **[诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 可以配置诊断日志，以便更深入地了解作业内发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
 ## <a name="turn-on-diagnostic-logs"></a>启用诊断日志
-诊断日志默认已**禁用**。 若要启用诊断日志，请执行下列步骤：
+诊断日志默认已禁用。 若要启用诊断日志，请执行以下操作：
 
-1.    在 Azure 门户中，转到流式处理作业边栏选项卡。
+1.    在 [Azure 门户](https://portal.azure.com)中，转到“流式处理作业”边栏选项卡。
 
 2.    在“监视”下面，转到“诊断日志”边栏选项卡。
 
     ![在边栏选项卡中导航到诊断日志](./media/service-bus-diagnostic-logs/image1.png)  
 
-3.    选择“启用诊断”。
+3.    单击“启用诊断”。
 
     ![启用诊断日志](./media/service-bus-diagnostic-logs/image2.png)
 
-4.    对于“状态”，选择“打开”。
+4.    对于“状态”，单击“打开”。
 
     ![更改诊断日志的状态](./media/service-bus-diagnostic-logs/image3.png)
 
 5.    设置所需的存档目标，例如存储帐户、事件中心或 Azure Log Analytics。
 
-6.    选择想要收集的日志类别，例如“执行”或“创作”。
+6.    选择要收集的日志类别；例如“执行”或“创作”。
 
 7.    保存新的诊断设置。
 
@@ -96,5 +96,5 @@ Example:
 
 ## <a name="next-steps"></a>后续步骤
 * [服务总线简介](service-bus-messaging-overview.md)
-* [服务总线入门](service-bus-create-namespace-portal.md)
+* [服务总线入门](service-bus-dotnet-get-started-with-queues.md)
 

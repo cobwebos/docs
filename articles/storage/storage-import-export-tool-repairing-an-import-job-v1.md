@@ -1,6 +1,6 @@
 ---
-title: "修复 Azure 导入作业 | Microsoft Docs"
-description: "了解如何使用导入/导出服务修复已创建和运行的导入作业。"
+title: "修复 Azure 导入/导出服务的导入作业 - v1 | Microsoft Docs"
+description: "了解如何修复使用 Azure 导入/导出服务创建和运行的导入作业。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: a47b0da43a84bb77fb8de16c37811a4b87fe3fbf
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 9403fb0bb16227871388f063e9d0004c7186866e
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -31,9 +31,11 @@ Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的
   
 -   存储帐户密钥在传输文件时已更改。  
   
-可以使用导入作业的复制日志文件来运行 Microsoft Azure 导入/导出工具，将缺失的文件（或某个文件的部分内容）上传到 Windows Azure 存储帐户，从而完成导入作业。  
+可以使用导入作业的复制日志文件来运行 Microsoft Azure 导入/导出工具，该工具会将缺少的文件（或某个文件的部分内容）上传到 Windows Azure 存储帐户，从而完成导入作业。  
   
-用于修复导入作业的命令是 **RepairImport**。 可以指定以下参数：  
+## <a name="repairimport-parameters"></a>RepairImport 参数
+
+可以使用 **RepairImport** 指定以下参数： 
   
 |||  
 |-|-|  
@@ -73,7 +75,7 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
 </DriveLog>  
 ```
   
-将此复制日志传递给 Azure 导入/导出工具后，该工具将尝试通过网络复制缺失的内容来完成此文件的导入。 根据上面的示例，该工具将在 `C:\Users\bob\Pictures` 和 `X:\BobBackup\photos` 目录中查找原始文件 `\animals\koala.jpg`。 如果文件 `C:\Users\bob\Pictures\animals\koala.jpg` 存在，Azure 导入/导出工具会将缺失的数据部分复制到对应的 Blob `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`。  
+将此复制日志传递给 Azure 导入/导出工具后，该工具将尝试通过跨网络复制缺失的内容来完成此文件的导入。 根据上面的示例，该工具将在 `C:\Users\bob\Pictures` 和 `X:\BobBackup\photos` 目录中查找原始文件 `\animals\koala.jpg`。 如果文件 `C:\Users\bob\Pictures\animals\koala.jpg` 存在，Azure 导入/导出工具会将缺失的数据部分复制到对应的 Blob `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`。  
   
 ## <a name="resolving-conflicts-when-using-repairimport"></a>使用 RepairImport 时解决冲突  
 在某些情况下，可能会出于以下原因之一，工具无法找到或打开所需的文件：找不到该文件、文件不可访问、文件名不明确，或文件内容不再正确。  
@@ -102,10 +104,11 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
   
 使工具可以处理所需的文件或者更新路径映射文件后，可返回此工具完成导入过程。  
   
-## <a name="see-also"></a>另请参阅  
-[设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
-[为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-[使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
-[修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)   
-[排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
+## <a name="next-steps"></a>后续步骤
+ 
+* [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
+* [为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)   
+* [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
 

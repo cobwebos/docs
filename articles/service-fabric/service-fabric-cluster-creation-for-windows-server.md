@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/24/2017
 ms.author: chackdan;maburlik
 translationtype: Human Translation
-ms.sourcegitcommit: af121309be44852ee51f34130330533adf19d586
-ms.openlocfilehash: d833fb81a903ed9577bcfa64ee27d94cf428729d
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 3389684dca62a1b3c8297600c7c09ffef642c854
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -38,6 +38,7 @@ ms.lasthandoff: 02/16/2017
 * 打开 [Service Fabric 专业支持](http://support.microsoft.com/oas/default.aspx?prid=16146)票证。  在[此处](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)了解有关 Microsoft 专业支持的详细信息。
 * 你还可以获取作为 [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)的一部分的对此包的支持。
 * 有关详细信息，请参阅 [Azure Service Fabric 支持选项](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support)。
+* 若要以支持为目的收集日志，请运行 [Service Fabric 独立日志收集器](https://go.microsoft.com/fwlink/?linkid=842487)。
 
 <a id="downloadpackage"></a>
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: abnarain
 translationtype: Human Translation
-ms.sourcegitcommit: 3d66640481d8e1f96d3061077f0c97da5fa6bf4e
-ms.openlocfilehash: a0ccdffa5347c4f3cda16ec75b75da3eb3199539
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: dfa78d1773afd0094ff98a5761a771101016ee13
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -130,28 +130,39 @@ ms.lasthandoff: 02/02/2017
 ### <a name="ports-and-firewall"></a>端口和防火墙
 需要考虑两个防火墙：在组织的中央路由器上运行的“企业防火墙”和在安装了网关的本地计算机上配置为守护程序的“Windows 防火墙”。  
 
-![防火墙](./media/data-factory-data-management-gateway/firewalls.png)
+![防火墙](./media/data-factory-data-management-gateway/firewalls2.png)
 
 在企业防火墙级别，需配置以下域和出站端口：
 
 | 域名 | 端口 | 说明 |
 | --- | --- | --- |
-| *.servicebus.windows.net |443, 80 |通过 TCP 的服务总线中继上的侦听器（需要 443 来获取访问控制令牌） |
-| *.servicebus.windows.net |9350-9354, 5671 |通过 TCP 的可选服务总线中继 |
-| *.core.windows.net |443 |HTTPS |
-| *.clouddatahub.net |443 |HTTPS |
-| graph.windows.net |443 |HTTPS |
-| login.windows.net |443 |HTTPS |
+| *.servicebus.windows.net |443, 80 |用于与数据移动服务后端进行通信 |
+| *.core.windows.net |443 |用于使用 Azure Blob 的暂存复制（如果已配置）|
+| *frontend.clouddatahub.net |443 |用于与数据移动服务后端进行通信 |
+
 
 在 windows 防火墙级别，通常启用了这些出站端口。 如果没有，可以在网关计算机上相应地配置域和端口。
+
+> [!NOTE]
+> 1. 根据你的源/接收器，可能需要在企业/windows 防火墙中将其他域和出站端口加入允许列表。
+> 2. 对于某些云数据库（例如， [SQL Azure 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) 等），可能需要在其防火墙配置中将网关计算机的 IP 地址加入允许列表。
+>
+>
+
 
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>将数据从源数据存储复制到接收器数据存储
 确保在企业防火墙、网关计算机上的 Windows 防火墙和数据存储上正确启用防火墙规则。 启用这些规则可以让网关成功连接到源和接收器。 为复制操作涉及的每个数据存储启用规则。
 
 例如，若要从**本地数据存储复制到 Azure SQL 数据库接收器或 Azure SQL 数据仓库接收器**，请执行以下步骤：
 
-* 对于 Windows 防火墙和企业防火墙，允许 **1433** 端口上的出站 **TCP** 通信
+* 对于 Windows 防火墙和企业防火墙，允许 **1433** 端口上的出站 **TCP** 通信。
 * 配置 Azure SQL Server 的防火墙设置，将网关计算机的 IP 地址添加到允许的 IP 地址列表。
+
+> [!NOTE]
+> 如果防火墙不允许出站端口 1433，则网关无法直接访问 Azure SQL。 在这种情况下，可以将[暂存复制](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy)用于 SQL Azure 数据库/SQL Azure DW。 在这种情况下，仅需要将 HTTPS（端口 443）用于数据移动。
+>
+>
+
 
 ### <a name="proxy-server-considerations"></a>代理服务器注意事项
 如果企业网络环境使用代理服务器访问 Internet，配置数据管理网关以使用合适的代理设置。 可以在初始注册阶段设置代理。
@@ -186,7 +197,7 @@ ms.lasthandoff: 02/02/2017
 >
 >
 
-### <a name="configure-proxy-server-settings"></a>配置代理服务器设置 
+### <a name="configure-proxy-server-settings"></a>配置代理服务器设置
 如果为 HTTP 代理服务器选择“使用系统代理”设置，则网关使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。  如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则网关无需通过代理，直接连接到云服务。 以下过程说明如何更新 diahost.exe.config 文件。  
 
 1. 在文件资源管理器中，生成 C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config 的安全副本，以备份原始文件。
@@ -211,7 +222,7 @@ ms.lasthandoff: 02/02/2017
 
 > [!IMPORTANT]
 > 不要忘记**同时**更新 diahost.exe.config 和 diawp.exe.config。  
-     
+
 
 除了这几点，还需要确保 Microsoft Azure 列于公司的允许列表中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=41653)下载有效的 Microsoft Azure IP 地址列表。
 
@@ -260,12 +271,12 @@ ms.lasthandoff: 02/02/2017
 1. 在网关计算机上启动 Windows PowerShell。
 2. 切换到 C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript 文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。   
-    
+
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -off
     ```
 4. 若要重新打开，请执行以下操作：
-    
+
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -on  
     ```
@@ -367,8 +378,8 @@ ms.lasthandoff: 02/02/2017
                 "connectionString": "data source=myserver;initial catalog=mydatabase;Integrated Security=False;EncryptedCredential=eyJDb25uZWN0aW9uU3R",
                 "gatewayName": "adftutorialgateway"
             }
-        }
-    }
+         }
+     }
     ```
 如果从不同于网关计算机的计算机访问门户，必须确保凭据管理器应用程序可以连接网关计算机。 如果应用程序无法连接网关计算机，则不允许为数据源设置凭据和测试数据源连接。  
 
@@ -387,7 +398,7 @@ ms.lasthandoff: 02/02/2017
 
 1. 在管理员模式下启动 **Azure PowerShell**。
 2. 运行以下命令并输入 Azure 凭据登录到 Azure 帐户。
-    
+
     ```PowerShell
     Login-AzureRmAccount
     ```
@@ -414,7 +425,7 @@ ms.lasthandoff: 02/02/2017
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. 在 Azure PowerShell 中，切换到的文件夹：**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\**。运行与本地变量 **$Key** 关联的 **RegisterGateway.ps1**，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
+1. 在 Azure PowerShell 中，切换到的文件夹：**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\**。运行与本地变量 **$Key** 关联的**RegisterGateway.ps1**，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -435,13 +446,13 @@ ms.lasthandoff: 02/02/2017
 可以通过 **Remove-AzureRmDataFactoryGateway** cmdlet 删除网关，并使用 **Set-AzureRmDataFactoryGateway** cmdlets 更新网关描述 。 有关语法和上述 cmdlet 的其他详细信息，请参阅《数据工厂 Cmdlet 参考》。  
 
 ### <a name="list-gateways-using-powershell"></a>使用 PowerShell 列出网关
-    
+
 ```PowerShell
 Get-AzureRmDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
 ### <a name="remove-gateway-using-powershell"></a>使用 PowerShell 移除网关
-    
+
 ```PowerShell
 Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```

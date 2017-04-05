@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 590d2c39e295e2f855910b00e0302f01d96de8dc
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: c309151e3e3aa6ff235f0dee2ddf975940f34f44
+ms.lasthandoff: 03/24/2017
 
 ---
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 03/18/2017
 
 **捕获配置**
 
-- **存储** - 确定是否将数据包捕获保存在存储帐户中。
+- **存储帐户** - 确定是否将数据包捕获保存在存储帐户中。
 - **文件** - 确定是否将数据包捕获保存在虚拟机本地。
 - **存储帐户** - 用于保存数据包捕获的选定存储帐户。 默认位置为 https://{storage account name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription id}/resourcegroups/{resource group name}/providers/microsoft.compute/virtualmachines/{virtual machine name}/{YY}/{MM}/{DD}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap。 （仅当选择了“存储”时才启用此选项）
 - **本地文件路径** - 虚拟机上保存数据包捕获的本地路径。 （仅当选择了“文件”时才启用此选项）。 必须提供有效的路径

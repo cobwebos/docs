@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2017
+ms.date: 03/23/2017
 ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 4a972b9b8b52a90f27afda98d8bdc661016d1fe1
-ms.openlocfilehash: f5fd4c6c0b8db3fe91d8b57a68fe33dcff353a59
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: a433b918f48b42d3bf7ee8ee16bd912e278a381d
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -52,7 +52,7 @@ Azure 中继是 Azure 服务总线平台最重要的功能支柱之一。 该中
 注册侦听器和维护控制通道必须使用的安全令牌可能会在侦听器活动期间到期。 令牌到期不会影响正在进行的连接，但会导致服务在到期时或到期不久后终止控制通道。 “续订”操作是一个 JSON 消息，侦听器可以发送它来替换与控制通道关联的令牌，这样即可延长控制通道的维护时间。
 
 #### <a name="ping"></a>Ping
-如果控制通道长时间处于空闲，通道上的中介，例如负载平衡器或 NAT 可能会终止 TCP 连接。 “ping”操作可通过在该通道上发送少量数据，提醒网络路由上的所有人该连接处于活动状态，以此来避免上述终止情况。 如果 ping 失败，则控制通道应视为不可用，并且侦听器应重新进行连接。
+如果控制通道长时间处于空闲，通道上的中介，例如负载均衡器或 NAT 可能会终止 TCP 连接。 “ping”操作可通过在该通道上发送少量数据，提醒网络路由上的所有人该连接处于活动状态，以此来避免上述终止情况。 如果 ping 失败，则控制通道应视为不可用，并且侦听器应重新进行连接。
 
 ### <a name="sender-interaction"></a>发送方交互
 发送方与服务之间仅存在一种交互，即发送方进行连接。
@@ -138,9 +138,6 @@ wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token
 #### <a name="accepting-the-socket"></a>接受套接字
 若接受，侦听器会创建对已提供地址的 Web 套接字连接。
 
-注意，在预览版中，地址 URI 可能会使用裸 IP 地址，因此，服务器提供的 TLS 证书将无法对该地址进行验证。
-此问题将在预览版中进行纠正。
-
 如果“接受”消息包含“Sec-WebSocket-Protocol”头，则在侦听器支持该协议且在创建 Web 套接字时设置了该头的情况下，将只会接受 Web 套接字。
 
 这同样适用于“Sec-WebSocket-Extensions”头。 如果框架支持扩展，则框架应针对扩展将头设置为：所需的“Sec-WebSocket-Extensions”握手的*服务器*端回复。
@@ -187,7 +184,7 @@ URL 必须原样使用，用于创建接受套接字，但是要包含以下参�
 | statusCode |是 |数值型 HTTP 状态代码。 |
 | statusDescription |是 |可人工读取的拒绝原因。 |
 
-生成的 URI 然后用于建立 WebSocket 连接；再强调一次，预览版的 TLS 证书可能不匹配地址，因此可能需要禁用验证。
+然后使用生成的 URI 建立 WebSocket 连接。
 
 正确完成后，该握手将有意失败，并出现 HTTP 错误代码 410，因为尚未创建任何 Web 套接字。 如果出现错误，可使用以下选项：
 

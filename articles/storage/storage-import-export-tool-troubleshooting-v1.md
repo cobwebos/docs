@@ -1,6 +1,6 @@
 ---
 title: "排查 Azure 导入/导出工具问题 | Microsoft Docs"
-description: "了解用户在使用导入/导出工具时遇到的常见问题及其解决方法。"
+description: "了解使用 Azure 导入/导出工具时遇到的一些常见问题及其解决方法。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 9aca8aad3f268bf21f3bad9fa22821f5d825f99d
-ms.openlocfilehash: 53755e0048cfd80d9f930419a105893e5b34dc41
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 43b5d5a57df6bdda57a31ff0330ec6eff7aa732c
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
-# <a name="troubleshooting-the-azure-import-export-tool"></a>排查 Azure 导入/导出工具问题
+# <a name="troubleshooting-the-azure-importexport-tool"></a>排查 Azure 导入/导出工具问题
 在遇到问题时，Microsoft Azure 导入/导出工具会返回错误消息。 本主题列出用户可能会遇到的一些常见问题。  
   
 ## <a name="a-copy-session-fails-what-i-should-do"></a>复制会话失败该怎么办？  
@@ -38,10 +38,11 @@ ms.lasthandoff: 02/16/2017
 ## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>在丢失日记文件的情况下是否仍可创建作业？  
  驱动器的日记文件包含将数据复制到此驱动器时记录的完整信息，向驱动器添加更多文件以及创建导入作业时需要该日记文件。 如果丢失日记文件，需要为驱动器重做所有复制会话。  
   
-## <a name="see-also"></a>另请参阅  
- [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
- [为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
- [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
- [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)   
- [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)
+## <a name="next-steps"></a>后续步骤
+ 
+* [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
+* [为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)   
+* [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)
 

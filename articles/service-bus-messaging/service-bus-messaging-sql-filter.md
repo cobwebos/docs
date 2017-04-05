@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2016
+ms.date: 03/23/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: c5127a457e99772a52b76e28e7fd3a3e4dd861b0
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -221,7 +222,7 @@ ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
   
     -   `property IS NULL` 作为 `true` 求值（如果属性不存在，或者属性的值为 `null`）。  
   
-属性求值语义：  
+### <a name="property-evaluation-semantics"></a>属性求值语义  
   
 -   尝试对不存在的系统属性求值会引发 [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) 异常。  
   
@@ -273,7 +274,7 @@ ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
 +---+---+---+---+  
 ```  
   
-运算符绑定语义：  
+### <a name="operator-binding-semantics"></a>运算符绑定语义
   
 -   在进行数据类型提升和隐式转换时，比较运算符（例如 `>`、`>=`、`<`、`<=`、`!=`、`=`）与 C# 运算符绑定遵循相同的语义。  
   
@@ -283,8 +284,3 @@ ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
 
 - [SQLFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLRuleAction 类](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

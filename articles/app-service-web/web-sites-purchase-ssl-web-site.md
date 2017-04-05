@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: edcb6d37eb4d82ff5928ee33cf456c3795eb8131
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: f9ff33f33a196e65f6cb7ee7f5332aacb9231f6d
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/10/2017
 > 
 > 
 
-默认情况下，**[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)**已使用 *.azurewebsites.net domain 域的通配符证书为 Web 应用启用了 HTTPS。如果不打算配置自定义域，可以直接利用默认的 HTTPS 证书。但是，就像所有*[通配符域](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates)一样，这不如将自定义域与自己的证书搭配使用那么安全。 Azure 应用服务现在提供一种真正简单的方式来让用户直接从 Azure 门户购买和管理 SSL 证书，而完全不用离开门户。  
+默认情况下，**[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** 已使用 *.azurewebsites.net 域的通配符证书为 Web 应用启用了 HTTPS。 如果不打算配置自定义域，可以直接利用默认的 HTTPS 证书。 但是，就像所有 *[通配符域](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates)一样，这不如将自定义域与自己的证书搭配使用那么安全。 Azure 应用服务现在提供一种真正简单的方式来让用户直接从 Azure 门户购买和管理 SSL 证书，而完全不用离开门户。  
 本文说明如何使用 3 个简单的步骤购买和配置 **[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)**的 SSL 证书。 
 
 > [!NOTE]
@@ -85,15 +85,15 @@ ms.lasthandoff: 03/10/2017
 > 
 
 ## <a name="bkmk_StoreKeyVault"></a>步骤 1：将证书上载到 Azure 密钥保管库
-在此步骤中，你将了解如何将 SSL 证书存储到所选的 Azure 密钥保管库。
+在此步骤中可了解如何将购买的 SSL 证书存储到所选的 Azure Key Vault。
 
 1. SSL 证书购买过程完成之后，需要再次浏览到“应用服务证书”资源边栏选项卡将它手动打开（请参阅上述“步骤 1”）   
    
    ![插入已准备好存储在 KV 中的图像](./media/app-service-web-purchase-ssl-web-site/ReadyKV.jpg)
    
    将会看到证书状态是“等待颁发”，因为在可以开始使用此证书之前，还有一些步骤需要完成。
-2. 单击“证书属性”边栏选项卡中的“证书配置”，然后单击“步骤 1: 存储”将此证书存储到 Azure 密钥保管库。
-3. 在“密钥保管库状态”边栏选项卡中单击“密钥保管库存储库”，选择要存储此证书的现有密钥保管库，或者选择“创建新的密钥保管库”，在同一订阅和资源组中创建新的密钥保管库。
+2. 单击“证书属性”边栏选项卡中的“证书配置”，然后单击“步骤 1: 存储”将此证书存储到 Azure Key Vault。
+3. 在“Key Vault 状态”边栏选项卡中单击“Key Vault 存储库”，选择要存储此证书的现有 Key Vault，或者选择“创建新的 Key Vault”，在同一订阅和资源组中创建新的 Key Vault。
    
    ![插入新建 KV 的图像](./media/app-service-web-purchase-ssl-web-site/NewKV.jpg)
    
@@ -173,8 +173,16 @@ ms.lasthandoff: 03/10/2017
 * 通过使用您的域名注册机构所提供的工具，修改您的自定义域名的 A 记录以指向上一步中的 IP 地址。
    此时，你应该能够使用 HTTPS:// 而不是 HTTP:// 访问你的应用，以便验证证书是否已正确配置。
 
-## <a name="bkmk_Rekey"></a>导出应用服务证书
+## <a name="bkmk_Export"></a>导出应用服务证书
 可以创建应用服务证书的本地 PFX 副本，以便将其用于其他 Azure 服务。 有关详细信息，请**[阅读我们的博客文章](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)**
+
+## <a name="bkmk_Renew"></a>自动续订应用服务证书
+若要切换证书自动续订设置或手动续订证书，只需在“证书属性”边栏选项卡中选择“自动续订设置”选项。 
+
+
+  ![插入使用浏览创建的图像](./media/app-service-web-purchase-ssl-web-site/autorenew.png)
+
+如要在证书过期前自动续订证书，请启用“自动续订”。 这是默认选项。 如果启用此项，我们会在证书过期前 90 天尝试续订证书。 如果已使用 Azure 门户体验在应用服务应用上创建 SSL 绑定，则新证书就绪后，也会用于更新这些绑定（类似于“重新生成密钥并同步”方案）。 另一方面，如果需要手动续订，则应关闭此设置。 仅可在证书到期前 90 天内手动续订应用服务证书。
 
 ## <a name="bkmk_Rekey"></a>重新生成密钥并同步证书
 1. 如果出于安全原因而需要重新生成证书的密钥，只需在“证书属性”边栏选项卡中选择“重新生成密钥并同步”选项。 

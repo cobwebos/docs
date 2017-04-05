@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 03/24/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: e1331276cda20d235341171852dffeb4a9cb8bb2
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 2673c95d2e312d427454585d46ac790cb126fea6
+ms.lasthandoff: 03/27/2017
 
 
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>如何在 Windows VM 中重置远程桌面服务或其登录密码
-如果无法连接到 Windows 虚拟机 (VM)，可以重置本地管理员密码或远程桌面服务配置。 可以使用 Azure 门户或 Azure PowerShell 中的 VM 访问扩展重置密码。 如果使用 PowerShell，请务必[安装和配置最新的 PowerShell 模块](/powershell/azureps-cmdlets-docs)，并登录到 Azure 订阅。 也可以对[使用经典部署模型创建的 VM 执行这些步骤](virtual-machines-windows-classic-reset-rdp.md)。
+如果无法连接到 Windows 虚拟机 (VM)，可以重置本地管理员密码或远程桌面服务配置。 可以使用 Azure 门户或 Azure PowerShell 中的 VM 访问扩展重置密码。 如果使用 PowerShell，请务必[安装和配置最新的 PowerShell 模块](/powershell/azureps-cmdlets-docs)，并登录到 Azure 订阅。 也可以对[使用经典部署模型创建的 VM 执行这些步骤](windows/classic/reset-rdp.md)。
 
 ## <a name="ways-to-reset-configuration-or-credentials"></a>重置配置或凭据的方式
 可以根据需要，通过多种不同的方式重置远程桌面服务和凭据：
@@ -44,9 +44,15 @@ ms.lasthandoff: 03/16/2017
 
 输入用户名和新密码，然后单击“更新”。 尝试重新连接到 VM。
 
+> [!NOTE] 
+> - 更改密码后，门户中操作完成，此更改需要 3–5 分钟才能在 VM 上生效。 但是，如果更改未生效，请尝试重启 VM。
+> - VMAccess 扩展仅适用于内置本地管理员帐户，不会对任何其他本地 ID 或域 ID 执行任何操作。
+> - 如果目标计算机为域控制器，此扩展会重置或重命名域管理员帐户。
+
+
 ### <a name="reset-the-remote-desktop-service-configuration"></a>**重置远程桌面服务配置**
 
-选择 Windows 虚拟机，然后单击“支持 + 故障排除” > “重置密码”。 此时会显示密码重置边栏选项卡。 
+选择 Windows 虚拟机，然后单击“支持 + 故障排除” > “重置密码”。 此时会显示密码重置边栏选项卡，如下所示：
 
 ![重置 RDP 配置](./media/virtual-machines-windows-reset-rdp/Portal-RM-RDP-Reset.png)
 

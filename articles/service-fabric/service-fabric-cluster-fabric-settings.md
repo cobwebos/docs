@@ -16,14 +16,38 @@ ms.workload: NA
 ms.date: 02/15/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 1b2e22150f9cea004af4892cd7fa2fb2b59c8787
-ms.openlocfilehash: 16e53dbdb4ce6de02a9c8acb2fb1d8a3ac265b8f
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: bee47924092a0b327ef3aa5b936116bf311ce8d7
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>自定义 Service Fabric 群集设置和结构升级策略
 本文档说明如何为 Service Fabric 群集自定义各种结构设置和结构升级策略。 可以使用门户或 Azure Resource Manager 模板完成自定义。
+
+> [!NOTE]
+> 并非所有设置都可通过门户进行验证。 如果不能通过门户使用下面列出的设置，请使用 Azure Resource Manager 模板对其进行自定义。
+> 
+
+## <a name="customizing-service-fabric-cluster-settings-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板自定义 Service Fabric 群集设置
+下面的步骤演示如何将新设置 *MaxDiskQuotaInMB* 添加到“诊断”部分。
+
+1. 请转到 https://resources.azure.com
+2. 导航到订阅：展开订阅 -> 资源组 -> Microsoft.ServiceFabric -> 群集名称
+3. 选择右上角的“读/写”
+4. 选择“编辑”，然后更新 `fabricSettings` JSON 元素并添加新元素
+
+```
+      {
+        "name": "Diagnostics",
+        "parameters": [
+          {
+            "name": "MaxDiskQuotaInMB",
+            "value": "65536"
+          }
+        ]
+      }
+```
 
 ## <a name="fabric-settings-that-you-can-customize"></a>可以自定义的结构设置
 下面是可以自定义的结构设置：
@@ -71,7 +95,7 @@ ms.lasthandoff: 02/16/2017
 | MaxCopyQueueSize |Uint，默认值为 16384 |这是用于定义队列初始大小的最大值，该队列用于维护复制操作。 请注意，它必须是 2 的幂。 如果在运行时该队列增长到此大小，将限制主复制器和辅助复制器之间的操作。 |
 | BatchAcknowledgementInterval | 时间以秒为单位，默认值为 0.015 | 指定以秒为单位的时间范围。 确定接收到操作后到发送回确认之前，复制器等待的时间。 在该时间段期间接收的其他操作将通过一条消息发送回其确认 -> 减少网络流量，同时可能降低复制器的吞吐量。 |
 | MaxReplicationMessageSize |Uint，默认值为 52428800 | 复制操作的最大消息大小。 默认值为 50MB。 |
-| ReplicatorAddress |Wstring，默认值为“localhost:0” | 采用字符串形式 -'IP:Port' 的终结点，Windows Fabric 复制器将其用于与其他副本建立连接以发送/接收操作。 |
+| ReplicatorAddress |string，默认值为“localhost:0” | 采用字符串形式 -'IP:Port' 的终结点，Windows Fabric 复制器将其用于与其他副本建立连接以发送/接收操作。 |
 | InitialPrimaryReplicationQueueSize |Uint，默认值为 64 | 这是用于定义队列初始大小的值，该队列用于维护主复制器上的复制操作。 请注意，它必须是 2 的幂。|
 | MaxPrimaryReplicationQueueSize |Uint，默认值为 8192 |这是主复制队列中可以存在的最大操作数量。 请注意，它必须是 2 的幂。 |
 | MaxPrimaryReplicationQueueMemorySize |Uint，默认值为 0 |这是主复制队列的最大值（以字节为单位）。 |
@@ -92,7 +116,7 @@ ms.lasthandoff: 02/16/2017
 ### <a name="section-name-fabricclient"></a>节名称：FabricClient
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-| NodeAddresses |Wstring，默认值为“” |不同节点上的地址（连接字符串）的集合，可用于与命名服务通信。 最初，客户端随机选择一个地址进行连接。 如果提供了多个连接字符串且因通信或超时错误导致连接失败，客户端按顺序切换为使用下一个地址。 请参阅命名服务地址重试部分，了解有关重试语义的详细信息。 |
+| NodeAddresses |string，默认值为“” |不同节点上的地址（连接字符串）的集合，可用于与命名服务通信。 最初，客户端随机选择一个地址进行连接。 如果提供了多个连接字符串且因通信或超时错误导致连接失败，客户端按顺序切换为使用下一个地址。 请参阅命名服务地址重试部分，了解有关重试语义的详细信息。 |
 | ConnectionInitializationTimeout |以秒为单位的时间，默认值为 2 |指定以秒为单位的时间范围。 每次客户端尝试打开网关连接时的连接超时间隔。 |
 | PartitionLocationCacheLimit |Int，默认值为 100000 |为服务解析所缓存的分区数（设置为 0，表示无限制）。 |
 | ServiceChangePollInterval |以秒为单位的时间，默认值为 120 |指定以秒为单位的时间范围。 服务的连续轮询之间的间隔从客户端更改为用于注册服务更改通知回调的网关。 |
@@ -121,7 +145,7 @@ ms.lasthandoff: 02/16/2017
 ### <a name="section-name-nodedomainids"></a>节名称：NodeDomainIds
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-| UpgradeDomainId |Wstring，默认值为“” |描述节点所属的升级域。 |
+| UpgradeDomainId |string，默认值为“” |描述节点所属的升级域。 |
 | PropertyGroup |NodeFaultDomainIdCollection |描述节点所属的容错域。 通过用于描述数据中心中节点所在位置的 URI 定义容错域。  容错域 URI 的格式是 fd:/fd/，后跟 URI 路径段。|
 
 ### <a name="section-name-nodeproperties"></a>节名称：NodeProperties
@@ -139,27 +163,27 @@ ms.lasthandoff: 02/16/2017
 | --- | --- | --- |
 | StartApplicationPortRange |Int，默认值为 0 |由宿主子系统管理的应用程序端口的开始位置。 当托管中的 EndpointFilteringEnabled 为 true 时为必需。 |
 | EndApplicationPortRange |Int，默认值为 0 |由宿主子系统管理的应用程序端口的结束位置（不含）。 当托管中的 EndpointFilteringEnabled 为 true 时为必需。 |
-| ClusterX509StoreName |Wstring，默认值为“My” |X.509 证书存储的名称，该存储包含用于保护群集内部通信的群集证书。 |
-| ClusterX509FindType |Wstring，默认值为“FindByThumbprint” |指示如何在由 ClusterX509StoreName 支持的值（“FindByThumbprint”和“FindBySubjectName”）指定的存储中搜索群集证书。使用“FindBySubjectName”时，如果有多个匹配项，使用到期时间最远的那一个。 |
-| ClusterX509FindValue |Wstring，默认值为“” |用于查找群集证书的搜索筛选器值。 |
-| ClusterX509FindValueSecondary |Wstring，默认值为“” |用于查找群集证书的搜索筛选器值。 |
-| ServerAuthX509StoreName |Wstring，默认值为“My” |X.509 证书存储的名称，包含用于准入服务的服务器证书。 |
-| ServerAuthX509FindType |Wstring，默认值为“FindByThumbprint” |指示如何在由 ServerAuthX509StoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索服务器证书。 |
-| ServerAuthX509FindValue |Wstring，默认值为“” |用于查找服务器证书的搜索筛选器值。 |
-| ServerAuthX509FindValueSecondary |Wstring，默认值为“” |用于查找服务器证书的搜索筛选器值。 |
-| ClientAuthX509StoreName |Wstring，默认值为“My” |X.509 证书存储的名称，包含默认管理员角色 FabricClient 的证书。 |
-| ClientAuthX509FindType |Wstring，默认值为“FindByThumbprint” |指示如何在由 ClientAuthX509StoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索证书。 |
-| ClientAuthX509FindValue |Wstring，默认值为“” | 用于查找默认管理员角色 FabricClient 的证书的搜索筛选器值。 |
-| ClientAuthX509FindValueSecondary |Wstring，默认值为“” |用于查找默认管理员角色 FabricClient 的证书的搜索筛选器值。 |
-| UserRoleClientX509StoreName |Wstring，默认值为“My” |X.509 证书存储的名称，包含默认用户角色 FabricClient 的证书。 |
-| UserRoleClientX509FindType |Wstring，默认值为“FindByThumbprint” |指示如何在由 UserRoleClientX509StoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索证书。 |
-| UserRoleClientX509FindValue |Wstring，默认值为“” |用于查找默认用户角色 FabricClient 的证书的搜索筛选器值。 |
-| UserRoleClientX509FindValueSecondary |Wstring，默认值为“” |用于查找默认用户角色 FabricClient 的证书的搜索筛选器值。 |
+| ClusterX509StoreName |string，默认值为“My” |X.509 证书存储的名称，该存储包含用于保护群集内部通信的群集证书。 |
+| ClusterX509FindType |string，默认值为“FindByThumbprint” |指示如何在由 ClusterX509StoreName 支持的值（“FindByThumbprint”和“FindBySubjectName”）指定的存储中搜索群集证书。使用“FindBySubjectName”时，如果有多个匹配项，使用到期时间最远的那一个。 |
+| ClusterX509FindValue |string，默认值为“” |用于查找群集证书的搜索筛选器值。 |
+| ClusterX509FindValueSecondary |string，默认值为“” |用于查找群集证书的搜索筛选器值。 |
+| ServerAuthX509StoreName |string，默认值为“My” |X.509 证书存储的名称，包含用于准入服务的服务器证书。 |
+| ServerAuthX509FindType |string，默认值为“FindByThumbprint” |指示如何在由 ServerAuthX509StoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索服务器证书。 |
+| ServerAuthX509FindValue |string，默认值为“” |用于查找服务器证书的搜索筛选器值。 |
+| ServerAuthX509FindValueSecondary |string，默认值为“” |用于查找服务器证书的搜索筛选器值。 |
+| ClientAuthX509StoreName |string，默认值为“My” |X.509 证书存储的名称，包含默认管理员角色 FabricClient 的证书。 |
+| ClientAuthX509FindType |string，默认值为“FindByThumbprint” |指示如何在由 ClientAuthX509StoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索证书。 |
+| ClientAuthX509FindValue |string，默认值为“” | 用于查找默认管理员角色 FabricClient 的证书的搜索筛选器值。 |
+| ClientAuthX509FindValueSecondary |string，默认值为“” |用于查找默认管理员角色 FabricClient 的证书的搜索筛选器值。 |
+| UserRoleClientX509StoreName |string，默认值为“My” |X.509 证书存储的名称，包含默认用户角色 FabricClient 的证书。 |
+| UserRoleClientX509FindType |string，默认值为“FindByThumbprint” |指示如何在由 UserRoleClientX509StoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索证书。 |
+| UserRoleClientX509FindValue |string，默认值为“” |用于查找默认用户角色 FabricClient 的证书的搜索筛选器值。 |
+| UserRoleClientX509FindValueSecondary |string，默认值为“” |用于查找默认用户角色 FabricClient 的证书的搜索筛选器值。 |
 
 ### <a name="section-name-paas"></a>节名称：Paas
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-| ClusterId |Wstring，默认值为“” |由 Fabric 用于配置保护的 X509 证书存储。 |
+| ClusterId |string，默认值为“” |由 Fabric 用于配置保护的 X509 证书存储。 |
 
 ### <a name="section-name-fabrichost"></a>节名称：FabricHost
 | **Parameter** | **允许的值** | **指导或简短说明** |
@@ -190,7 +214,7 @@ ms.lasthandoff: 02/16/2017
 |ReplicaRestartWaitDuration | 以秒为单位的时间，默认值为 (60.0 * 30)| 指定以秒为单位的时间范围。 命名服务副本不可用时，此定时器将启动。  当它到期时，FM 将开始替换已经关闭的副本（暂不将其视为丢失）。 |
 |QuorumLossWaitDuration | 以秒为单位的时间，默认值为 MaxValue | 指定以秒为单位的时间范围。 命名服务进入仲裁丢失状态时，此计时器将启动。  指定时间到期后，FM 将不可用副本视为丢失，并尝试恢复仲裁。 请注意，这可能导致数据丢失。 |
 |StandByReplicaKeepDuration | 以秒为单位的时间，默认值为 3600.0 * 2 | 指定以秒为单位的时间范围。 命名服务副本从不可用状态恢复时，可能已被替换为另一副本。  此定时器决定 FM 在放弃备用副本之前保留其多长时间。 |
-|PlacementConstraints | Wstring，默认值为“” | 命名服务的放置约束。 |
+|PlacementConstraints | string，默认值为“” | 命名服务的放置约束。 |
 |ServiceDescriptionCacheLimit | Int，默认值为 0 | 命名存储服务处的 LRU 服务说明缓存中可维持的最大条目数（设置为 0 表示无限制）。 |
 |RepairInterval | 以秒为单位的时间，默认值为 5 | 指定以秒为单位的时间范围。 针对授权所有者和名称所有者之间命名不一致情况的修复操作的时间间隔。 |
 |MaxNamingServiceHealthReports | Int，默认值为 10 | 命名存储服务一次所报告的运行不正常的最大慢速操作数量。 如果设置为 0，则将发送所有慢速操作。 |
@@ -207,30 +231,30 @@ ms.lasthandoff: 02/16/2017
 ### <a name="section-name-runas"></a>节名称：RunAs
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-| RunAsAccountName |Wstring，默认值为“” |指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或 "user@domain"。 |
-|RunAsAccountType|Wstring，默认值为“” |指示 RunAs 帐户类型。 需用于任何 RunAs 部分，有效值为“DomainUser/NetworkService/ManagedServiceAccount/LocalSystem”。|
-|RunAsPassword|Wstring，默认值为“” |指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
+| RunAsAccountName |string，默认值为“” |指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或“user@domain”。 |
+|RunAsAccountType|string，默认值为“” |指示 RunAs 帐户类型。 需用于任何 RunAs 部分，有效值为“DomainUser/NetworkService/ManagedServiceAccount/LocalSystem”。|
+|RunAsPassword|string，默认值为“” |指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
 
 ### <a name="section-name-runasfabric"></a>节名称：RunAs_Fabric
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-| RunAsAccountName |Wstring，默认值为“” |指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或 "user@domain"。 |
-|RunAsAccountType|Wstring，默认值为“” |指示 RunAs 帐户类型。 需用于任何 RunAs 部分，有效值为“LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem”。 |
-|RunAsPassword|Wstring，默认值为“” |指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
+| RunAsAccountName |string，默认值为“” |指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或“user@domain”。 |
+|RunAsAccountType|string，默认值为“” |指示 RunAs 帐户类型。 需用于任何 RunAs 部分，有效值为“LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem”。 |
+|RunAsPassword|string，默认值为“” |指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
 
 ### <a name="section-name-runashttpgateway"></a>节名称：RunAs_HttpGateway
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-| RunAsAccountName |Wstring，默认值为“” |指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或 "user@domain"。 |
-|RunAsAccountType|Wstring，默认值为“” |指示 RunAs 帐户类型。 需用于任何 RunAs 部分，有效值为“LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem”。 |
-|RunAsPassword|Wstring，默认值为“” |指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
+| RunAsAccountName |string，默认值为“” |指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或“user@domain”。 |
+|RunAsAccountType|string，默认值为“” |指示 RunAs 帐户类型。 需用于任何 RunAs 部分，有效值为“LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem”。 |
+|RunAsPassword|string，默认值为“” |指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
 
 ### <a name="section-name-runasdca"></a>节名称：RunAs_DCA
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-| RunAsAccountName |Wstring，默认值为“” |指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或 "user@domain"。 |
-|RunAsAccountType|Wstring，默认值为“” |指示 RunAs 帐户类型。 需用于任何 RunAs 部分，有效值为“LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem”。 |
-|RunAsPassword|Wstring，默认值为“” |指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
+| RunAsAccountName |string，默认值为“” |指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或“user@domain”。 |
+|RunAsAccountType|string，默认值为“” |指示 RunAs 帐户类型。 需用于任何 RunAs 部分，有效值为“LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem”。 |
+|RunAsPassword|string，默认值为“” |指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
 
 ### <a name="section-name-httpgateway"></a>节名称：HttpGateway
 | **Parameter** | **允许的值** | **指导或简短说明** |
@@ -242,12 +266,12 @@ ms.lasthandoff: 02/16/2017
 ### <a name="section-name-ktllogger"></a>节名称：KtlLogger
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-|AutomaticMemoryConfiguration |Int，默认值为 1 | 该标志指示是否应自动且动态地配置内存设置。 如果设置为&0;，则根据系统条件直接使用内存配置设置而不进行任何更改。 如果设置为&1;，则自动配置内存设置，并可根据系统条件进行更改。 |
+|AutomaticMemoryConfiguration |Int，默认值为 1 | 该标志指示是否应自动且动态地配置内存设置。 如果设置为 0，则根据系统条件直接使用内存配置设置而不进行任何更改。 如果设置为 1，则自动配置内存设置，并可根据系统条件进行更改。 |
 |WriteBufferMemoryPoolMinimumInKB |Int，默认值为 8388608 |最初为写入缓冲区内存池分配的 KB 数。 设置为 0 表示没有限制，默认值应与以下 SharedLogSizeInMB 值保持一致。 |
 |WriteBufferMemoryPoolMaximumInKB | Int，默认值为 0 |允许写入缓冲区内存池增长到的 KB 数。 使用 0 表示没有限制。 |
 |MaximumDestagingWriteOutstandingInKB | Int，默认值为 0 | 共享日志可位于专用日志之前的 KB 数。 使用 0 表示没有限制。
-|SharedLogPath |Wstring，默认值为“” | 要放置共享日志容器的位置的路径和文件名。 设置为“”表示使用 Fabric 数据根目录下的默认路径。 |
-|SharedLogId |Wstring，默认值为“” |共享日志容器的唯一 guid。 若要使用 Fabric 数据根目录下的默认路径，请设置为“”。 |
+|SharedLogPath |string，默认值为“” | 要放置共享日志容器的位置的路径和文件名。 设置为“”表示使用 Fabric 数据根目录下的默认路径。 |
+|SharedLogId |string，默认值为“” |共享日志容器的唯一 guid。 若要使用 Fabric 数据根目录下的默认路径，请设置为“”。 |
 |SharedLogSizeInMB |Int，默认值为 8192 | 共享日志容器中要分配的 MB 数。 |
 
 ### <a name="section-name-applicationgatewayhttp"></a>节名称：ApplicationGateway/Http
@@ -258,11 +282,11 @@ ms.lasthandoff: 02/16/2017
 |DefaultHttpRequestTimeout |以秒为单位的时间。 默认值为 60 |指定以秒为单位的时间范围。  提供用于 http 应用网关中正在处理的 http 请求的默认请求超时时间。 |
 |ResolveServiceBackoffInterval |以秒为单位的时间，默认值为 5 |指定以秒为单位的时间范围。  提供重试失败的解析服务操作之前的默认回退时间间隔。 |
 |BodyChunkSize |Uint，默认值为 4096 |  提供用于读取正文的区块大小（以字节为单位）。 |
-|GatewayAuthCredentialType |Wstring，默认值为“None” | 指示在 http 应用网关终结点处使用的安全凭据的类型，有效值为 "None/X509。 |
-|GatewayX509CertificateStoreName |Wstring，默认值为“My” | 包含 http 应用网关证书的 X.509 证书存储的名称。 |
-|GatewayX509CertificateFindType |Wstring，默认值为“FindByThumbprint” | 指示如何在由 GatewayX509CertificateStoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索证书。 |
-|GatewayX509CertificateFindValue | Wstring，默认值为“” | 用于查找 http 应用网关证书的搜索筛选器值。 此证书在 https 终结点上配置，并且如果服务需要，还可用于验证应用的标识。 首先查找 FindValue，如果其不存在，再查找 FindValueSecondary。 |
-|GatewayX509CertificateFindValueSecondary | Wstring，默认值为“” |用于查找 http 应用网关证书的搜索筛选器值。 此证书在 https 终结点上配置，并且如果服务需要，还可用于验证应用的标识。 首先查找 FindValue，如果其不存在，再查找 FindValueSecondary。|
+|GatewayAuthCredentialType |string，默认值为“None” | 指示在 http 应用网关终结点处使用的安全凭据的类型，有效值为 "None/X509。 |
+|GatewayX509CertificateStoreName |string，默认值为“My” | 包含 http 应用网关证书的 X.509 证书存储的名称。 |
+|GatewayX509CertificateFindType |string，默认值为“FindByThumbprint” | 指示如何在由 GatewayX509CertificateStoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索证书。 |
+|GatewayX509CertificateFindValue | string，默认值为“” | 用于查找 http 应用网关证书的搜索筛选器值。 此证书在 https 终结点上配置，并且如果服务需要，还可用于验证应用的标识。 首先查找 FindValue，如果其不存在，再查找 FindValueSecondary。 |
+|GatewayX509CertificateFindValueSecondary | string，默认值为“” |用于查找 http 应用网关证书的搜索筛选器值。 此证书在 https 终结点上配置，并且如果服务需要，还可用于验证应用的标识。 首先查找 FindValue，如果其不存在，再查找 FindValueSecondary。|
 
 ### <a name="section-name-management"></a>节名称：Management
 | **Parameter** | **允许的值** | **指导或简短说明** |
@@ -293,7 +317,7 @@ ms.lasthandoff: 02/16/2017
 | ReplicaRestartWaitDuration |以秒为单位的时间，默认值为 60 分钟|指定以秒为单位的时间范围。 FaultAnalysisService 的 ReplicaRestartWaitDuration。 |
 | QuorumLossWaitDuration | 以秒为单位的时间，默认值为 MaxValue |指定以秒为单位的时间范围。 FaultAnalysisService 的 QuorumLossWaitDuration。 |
 | StandByReplicaKeepDuration| 以秒为单位的时间，默认值为 (60*24*7) 分钟 |指定以秒为单位的时间范围。 FaultAnalysisService 的 StandByReplicaKeepDuration。 |
-| PlacementConstraints | Wstring，默认值为“”| FaultAnalysisService 的 PlacementConstraints。 |
+| PlacementConstraints | string，默认值为“”| FaultAnalysisService 的 PlacementConstraints。 |
 | StoredActionCleanupIntervalInSeconds | Int，默认值为 3600 |这是清理存储的频率。  仅会删除处于终态和至少在 CompletedActionKeepDurationInSeconds 以前完成的操作。 |
 | CompletedActionKeepDurationInSeconds | Int，默认值为 604800 | 这是处于终态的操作的大致保留时长。  这也取决于 StoredActionCleanupIntervalInSeconds，因为仅在此间隔时间内执行清理工作。 604800 秒是 7 天。 |
 | StoredChaosEventCleanupIntervalInSeconds | Int，默认值为 3600 |这是审核存储（以进行清理）的频率，如果事件数量超过 30000，则开始执行清理。 |
@@ -309,20 +333,20 @@ ms.lasthandoff: 02/16/2017
 | MaxRequestProcessingThreads | Uint，默认值为 200 |可在主节点中处理请求的最大并行线程数。 ‘0’== 内核数。 |
 | MaxSecondaryFileCopyFailureThreshold | Uint，默认值为 25| 放弃前，辅助节点上的最大文件副本重试次数。 |
 | AnonymousAccessEnabled | Bool，默认值为 true |启用/禁用对 FileStoreService 共享的匿名访问。 |
-| PrimaryAccountType | Wstring，默认值为“” |FileStoreService 共享的 ACL 主体的主帐户类型。 |
-| PrimaryAccountUserName | Wstring，默认值为“” |FileStoreService 共享的 ACL 主体的主帐户用户名。 |
+| PrimaryAccountType | string，默认值为“” |FileStoreService 共享的 ACL 主体的主帐户类型。 |
+| PrimaryAccountUserName | string，默认值为“” |FileStoreService 共享的 ACL 主体的主帐户用户名。 |
 | PrimaryAccountUserPassword | SecureString，默认值为空 |FileStoreService 共享的 ACL 主体的主帐户密码。 |
 | FileStoreService | PrimaryAccountNTLMPasswordSecret | SecureString，默认值为空 | 密码，用于在使用 NTLM 身份验证时用作种子以生成相同密码。 |
-| PrimaryAccountNTLMX509StoreLocation | Wstring，默认值为“LocalMachine”| 使用 NTLM 身份验证时，用于在 PrimaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的存储位置。 |
-| PrimaryAccountNTLMX509StoreName | Wstring，默认值为“MY”| 使用 NTLM 身份验证时，用于在 PrimaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的存储名称。 |
-| PrimaryAccountNTLMX509Thumbprint | Wstring，默认值为“”|使用 NTLM 身份验证时，用于在 PrimaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的指纹。 |
-| SecondaryAccountType | Wstring，默认值为“”| FileStoreService 共享的 ACL 主体的辅助帐户类型。 |
-| SecondaryAccountUserName | Wstring，默认值为“”| FileStoreService 共享的 ACL 主体的辅助帐户用户名。 |
+| PrimaryAccountNTLMX509StoreLocation | string，默认值为“LocalMachine”| 使用 NTLM 身份验证时，用于在 PrimaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的存储位置。 |
+| PrimaryAccountNTLMX509StoreName | string，默认值为“MY”| 使用 NTLM 身份验证时，用于在 PrimaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的存储名称。 |
+| PrimaryAccountNTLMX509Thumbprint | string，默认值为“”|使用 NTLM 身份验证时，用于在 PrimaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的指纹。 |
+| SecondaryAccountType | string，默认值为“”| FileStoreService 共享的 ACL 主体的辅助帐户类型。 |
+| SecondaryAccountUserName | string，默认值为“”| FileStoreService 共享的 ACL 主体的辅助帐户用户名。 |
 | SecondaryAccountUserPassword | SecureString，默认值为空 |FileStoreService 共享的 ACL 主体的辅助帐户密码。  |
 | SecondaryAccountNTLMPasswordSecret | SecureString，默认值为空 | 密码，用于在使用 NTLM 身份验证时用作种子以生成相同密码。 |
-| SecondaryAccountNTLMX509StoreLocation | Wstring，默认值为“LocalMachine” |使用 NTLM 身份验证时，用于在 SecondaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的存储位置。 |
-| SecondaryAccountNTLMX509StoreName | Wstring，默认值为“MY” |使用 NTLM 身份验证时，用于在 SecondaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的存储名称。 |
-| SecondaryAccountNTLMX509Thumbprint | Wstring，默认值为“”| 使用 NTLM 身份验证时，用于在 SecondaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的指纹。 |
+| SecondaryAccountNTLMX509StoreLocation | string，默认值为“LocalMachine” |使用 NTLM 身份验证时，用于在 SecondaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的存储位置。 |
+| SecondaryAccountNTLMX509StoreName | string，默认值为“MY” |使用 NTLM 身份验证时，用于在 SecondaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的存储名称。 |
+| SecondaryAccountNTLMX509Thumbprint | string，默认值为“”| 使用 NTLM 身份验证时，用于在 SecondaryAccountNTLMPasswordSecret 上生成 HMAC 的 X509 证书的指纹。 |
 
 ### <a name="section-name-imagestoreservice"></a>节名称：ImageStoreService
 | **Parameter** | **允许的值** | **指导或简短说明** |
@@ -333,7 +357,7 @@ ms.lasthandoff: 02/16/2017
 | ReplicaRestartWaitDuration | 以秒为单位的时间，默认值为 60.0 * 30 | 指定以秒为单位的时间范围。 ImageStoreService 的 ReplicaRestartWaitDuration。 |
 | QuorumLossWaitDuration | 以秒为单位的时间，默认值为 MaxValue | 指定以秒为单位的时间范围。 ImageStoreService 的 QuorumLossWaitDuration。 |
 | StandByReplicaKeepDuration | 以秒为单位的时间，默认值为 3600.0 * 2 | 指定以秒为单位的时间范围。 ImageStoreService 的 StandByReplicaKeepDuration。 |
-| PlacementConstraints | Wstring，默认值为“” | ImageStoreService 的 PlacementConstraints。 |
+| PlacementConstraints | string，默认值为“” | ImageStoreService 的 PlacementConstraints。 |
 | ClientUploadTimeout | 以秒为单位的时间，默认值为 1800 |指定以秒为单位的时间范围。 对映像存储服务的顶级上传请求的超时值。 |
 | ClientCopyTimeout | 以秒为单位的时间，默认值为 1800 | 指定以秒为单位的时间范围。 对映像存储服务的顶级复制请求的超时值。 |
 | ClientDownloadTimeout | 以秒为单位的时间，默认值为 1800 | 指定以秒为单位的时间范围。 对映像存储服务的顶级下载请求的超时值 |
@@ -352,7 +376,7 @@ ms.lasthandoff: 02/16/2017
 ### <a name="section-name-tokenvalidationservice"></a>节名称：TokenValidationService
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-| 提供程序 |Wstring，默认值为“DSTS” |要启用的令牌验证提供程序的逗号分隔列表（有效的提供程序是：DSTS、AAD）。 目前只能在任何时候启用单个提供程序。 |
+| 提供程序 |string，默认值为“DSTS” |要启用的令牌验证提供程序的逗号分隔列表（有效的提供程序是：DSTS、AAD）。 目前只能在任何时候启用单个提供程序。 |
 
 ### <a name="section-name-upgradeorchestrationservice"></a>节名称：UpgradeOrchestrationService
 | **Parameter** | **允许的值** | **指导或简短说明** |
@@ -362,113 +386,113 @@ ms.lasthandoff: 02/16/2017
 | ReplicaRestartWaitDuration | 以秒为单位的时间，默认值为 60 分钟| 指定以秒为单位的时间范围。 UpgradeOrchestrationService 的 ReplicaRestartWaitDuration。 |
 | QuorumLossWaitDuration | 以秒为单位的时间，默认值为 MaxValue | 指定以秒为单位的时间范围。 UpgradeOrchestrationService 的 QuorumLossWaitDuration。 |
 | StandByReplicaKeepDuration | 以秒为单位的时间，默认值为 60*24*7 分钟 | 指定以秒为单位的时间范围。 UpgradeOrchestrationService 的 StandByReplicaKeepDuration。 |
-| PlacementConstraints | Wstring，默认值为“” | UpgradeOrchestrationService 的 PlacementConstraints。 |
+| PlacementConstraints | string，默认值为“” | UpgradeOrchestrationService 的 PlacementConstraints。 |
 | AutoupgradeEnabled | Bool，默认值为 true | 基于目标状态文件的自动轮训和升级操作。 |
 | UpgradeApprovalRequired | Bool，默认值为 false | 此设置可让升级代码需要管理员批准才能继续操作。 |
 
 ### <a name="section-name-upgradeservice"></a>节名称：UpgradeService
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-| PlacementConstraints |Wstring，默认值为“” |升级服务的 PlacementConstraints。 |
+| PlacementConstraints |string，默认值为“” |升级服务的 PlacementConstraints。 |
 | TargetReplicaSetSize | Int，默认值为 3 | UpgradeService 的 TargetReplicaSetSize。 |
 | MinReplicaSetSize | Int，默认值为 2 | UpgradeService 的 MinReplicaSetSize。 |
-| CoordinatorType | Wstring，默认值为“WUTest”| UpgradeService 的 CoordinatorType。 |
-| BaseUrl | Wstring，默认值为“” |UpgradeService 的 BaseUrl。 |
-| ClusterId | Wstring，默认值为“” | UpgradeService 的 ClusterId。 |
-| X509StoreName | Wstring，默认值为“My”| UpgradeService 的 X509StoreName。 |
-| X509StoreLocation | Wstring，默认值为“” | UpgradeService 的 X509StoreLocation。 |
-| X509FindType | Wstring，默认值为“”| UpgradeService 的 X509FindType。 |
-| X509FindValue | Wstring，默认值为“” | UpgradeService 的 X509FindValue。 |
-| X509SecondaryFindValue | Wstring，默认值为“” | UpgradeService 的 X509SecondaryFindValue。 |
+| CoordinatorType | string，默认值为“WUTest”| UpgradeService 的 CoordinatorType。 |
+| BaseUrl | string，默认值为“” |UpgradeService 的 BaseUrl。 |
+| ClusterId | string，默认值为“” | UpgradeService 的 ClusterId。 |
+| X509StoreName | string，默认值为“My”| UpgradeService 的 X509StoreName。 |
+| X509StoreLocation | string，默认值为“” | UpgradeService 的 X509StoreLocation。 |
+| X509FindType | string，默认值为“”| UpgradeService 的 X509FindType。 |
+| X509FindValue | string，默认值为“” | UpgradeService 的 X509FindValue。 |
+| X509SecondaryFindValue | string，默认值为“” | UpgradeService 的 X509SecondaryFindValue。 |
 | OnlyBaseUpgrade | Bool，默认值为 false | UpgradeService 的 OnlyBaseUpgrade。 |
-| TestCabFolder | Wstring，默认值为“” | UpgradeService 的 TestCabFolder。 |
+| TestCabFolder | string，默认值为“” | UpgradeService 的 TestCabFolder。 |
 
 ### <a name="section-name-securityclientaccess"></a>节名称：Security/ClientAccess
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
-| CreateName |Wstring，默认值为“Admin” |用于命名 URI 创建的安全性配置。 |
-| DeleteName |Wstring，默认值为“Admin” |用于命名 URI 删除的安全性配置。 |
-| PropertyWriteBatch |Wstring，默认值为“Admin” |用于命名属性写入操作的安全性配置。 |
-| CreateService |Wstring，默认值为“Admin” | 用于服务创建的安全性配置。 |
-| CreateServiceFromTemplate |Wstring，默认值为“Admin” |用于通过模板进行的服务创建的安全性配置。 |
-| UpdateService |Wstring，默认值为“Admin” |用于服务更新的安全性配置。 |
-| DeleteService  |Wstring，默认值为“Admin” |用于服务删除的安全性配置。 |
-| ProvisionApplicationType |Wstring，默认值为“Admin” | 用于应用程序类型预配的安全性配置。 |
-| CreateApplication |Wstring，默认值为“Admin” | 用于应用程序创建的安全性配置。 |
-| DeleteApplication |Wstring，默认值为“Admin” | 用于应用程序删除的安全性配置。 |
-| UpgradeApplication |Wstring，默认值为“Admin” | 用于启动或中断应用程序升级的安全性配置。 |
-| RollbackApplicationUpgrade |Wstring，默认值为“Admin” | 用于回滚应用程序升级的安全性配置。 |
-| UnprovisionApplicationType |Wstring，默认值为“Admin” | 用于取消设置应用程序类型的安全性配置。 |
-| MoveNextUpgradeDomain |Wstring，默认值为“Admin” | 用于使用显式升级域恢复应用程序升级的安全性配置。 |
-| ReportUpgradeHealth |Wstring，默认值为“Admin” | 用于恢复应用程序升级并提供当前升级进度的安全性配置。 |
-| ReportHealth |Wstring，默认值为“Admin” | 用于报告运行状况的安全性配置。 |
-| ProvisionFabric |Wstring，默认值为“Admin” | 用于预配 MSI 和/或群集清单的安全性配置。 |
-| UpgradeFabric |Wstring，默认值为“Admin” | 用于启动群集升级的安全性配置。 |
-| RollbackFabricUpgrade |Wstring，默认值为“Admin” | 用于回滚群集升级的安全性配置。 |
-| UnprovisionFabric |Wstring，默认值为“Admin” | 用于取消设置 MSI 和/或群集清单的安全性配置。 |
-| MoveNextFabricUpgradeDomain |Wstring，默认值为“Admin” | 用于使用显式升级域恢复群集升级的安全性配置。 |
-| ReportFabricUpgradeHealth |Wstring，默认值为“Admin” | 用于恢复群集升级并提供当前升级进度的安全性配置。 |
-| StartInfrastructureTask |Wstring，默认值为“Admin” | 用于启动基础结构任务的安全性配置。 |
-| FinishInfrastructureTask |Wstring，默认值为“Admin” | 用于完成基础结构任务的安全性配置。 |
-| ActivateNode |Wstring，默认值为“Admin” | 用于激活节点的安全性配置。 |
-| DeactivateNode |Wstring，默认值为“Admin” | 用于停用节点的安全性配置。 |
-| DeactivateNodesBatch |Wstring，默认值为“Admin” | 用于停用多个节点的安全性配置。 |
-| RemoveNodeDeactivations |Wstring，默认值为“Admin” | 用于在多个节点上还原停用操作的安全性配置。 |
-| GetNodeDeactivationStatus |Wstring，默认值为“Admin” | 用于检查停用状态的安全性配置。 |
-| NodeStateRemoved |Wstring，默认值为“Admin” | 用于报告删的节点状态的安全性配置。 |
-| RecoverPartition |Wstring，默认值为“Admin” | 用于恢复分区的安全性配置。 |
-| RecoverPartitions |Wstring，默认值为“Admin” | 用于恢复多个分区的安全性配置。 |
-| RecoverServicePartitions |Wstring，默认值为“Admin” | 用于恢复服务分区的安全性配置。 |
-| RecoverSystemPartitions |Wstring，默认值为“Admin” | 用于恢复系统服务分区的安全性配置。 |
-| ReportFault |Wstring，默认值为“Admin” | 用于报告故障的安全性配置。 |
-| InvokeInfrastructureCommand |Wstring，默认值为“Admin” | 用于基础结构任务管理命令的安全性配置。 |
-| FileContent |Wstring，默认值为“Admin” | 用于传输映像存储客户端文件（群集外部）的安全性配置。 |
-| FileDownload |Wstring，默认值为“Admin” | 用于启动映像存储客户端文件下载（群集外部）的安全性配置。 |
-| InternalList |Wstring，默认值为“Admin” | 用于映像存储客户端文件列表操作（内部）的安全性配置。 |
-| 删除 |Wstring，默认值为“Admin” | 用于映像存储客户端删除操作的安全性配置。 |
-| 上载 |Wstring，默认值为“Admin” | 用于映像存储客户端上传操作的安全性配置。 |
-| GetStagingLocation |Wstring，默认值为“Admin” | 用于检索映像存储客户端暂存位置的安全性配置。 |
-| GetStoreLocation |Wstring，默认值为“Admin” | 用于检索映像存储客户端存储位置的安全性配置。 |
-| NodeControl |Wstring，默认值为“Admin” | 用于启动、停止和重启节点的安全性配置。 |
-| CodePackageControl |Wstring，默认值为“Admin” | 用于重启代码包的安全性配置。 |
-| UnreliableTransportControl |Wstring，默认值为“Admin” | 添加和删除行为的不可靠传输。 |
-| MoveReplicaControl |Wstring，默认值为“Admin” | 移动副本。 |
-| PredeployPackageToNode |Wstring，默认值为“Admin” | 预部署 API。 |
-| StartPartitionDataLoss |Wstring，默认值为“Admin” | 在分区上引入数据丢失。 |
-| StartPartitionQuorumLoss |Wstring，默认值为“Admin” | 在分区上引入仲裁丢失。 |
-| StartPartitionRestart |Wstring，默认值为“Admin” | 同时重启分区的部分或所有副本。 |
-| CancelTestCommand |Wstring，默认值为“Admin” | 取消特定的 TestCommand（如果处于运行中）。 |
-| StartChaos |Wstring，默认值为“Admin” | 启动混沌 - 如果尚未启动。 |
-| StopChaos |Wstring，默认值为“Admin” | 停止混沌 - 如果已启动。 |
-| StartNodeTransition |Wstring，默认值为“Admin” | 用于启动节点转换的安全性配置。 |
-| StartClusterConfigurationUpgrade |Wstring，默认值为“Admin” | 在分区上引入 StartClusterConfigurationUpgrade。 |
-| GetUpgradesPendingApproval |Wstring，默认值为“Admin” | 在分区上引入 GetUpgradesPendingApproval。 |
-| StartApprovedUpgrades |Wstring，默认值为“Admin” | 在分区上引入 StartApprovedUpgrades。 |
-| Ping |Wstring，默认值为“Admin\|\|User" | 用于客户端 ping 的安全性配置。 |
-| 查询 |Wstring，默认值为“Admin\|\|User" | 用于查询的安全性配置。 |
-| NameExists |Wstring，默认值为“Admin\|\|User" | 用于检查命名 URI 存在的安全性配置。 |
-| EnumerateSubnames |Wstring，默认值为“Admin\|\|User" | 用于枚举命名 URI 的安全性配置。 |
-| EnumerateProperties |Wstring，默认值为“Admin\|\|User" | 用于枚举命名属性的安全性配置。 |
-| PropertyReadBatch |Wstring，默认值为“Admin\|\|User" | 用于命名属性读取操作的安全性配置。 |
-| GetServiceDescription |Wstring，默认值为“Admin\|\|User" | 用于长时间轮询服务通知和读取服务描述的安全性配置。 |
-| ResolveService |Wstring，默认值为“Admin\|\|User" | 用于基于投诉的服务解析的安全配置。 |
-| ResolveNameOwner |Wstring，默认值为“Admin\|\|User" | 用于解析命名 URI 所有者的安全性配置。 |
-| ResolvePartition |Wstring，默认值为“Admin\|\|User" | 用于解析系统服务的安全性配置。 |
-| ServiceNotifications |Wstring，默认值为“Admin\|\|User" | 用于基于时间的服务通知的安全配置。 |
-| PrefixResolveService |Wstring，默认值为“Admin\|\|User" | 用于基于投诉的服务前缀解析的安全配置。 |
-| GetUpgradeStatus |Wstring，默认值为“Admin\|\|User" | 用于轮询应用程序升级状态的安全性配置。 |
-| GetFabricUpgradeStatus |Wstring，默认值为“Admin\|\|User" | 用于轮询群集升级状态的安全性配置。 |
-| InvokeInfrastructureQuery |Wstring，默认值为“Admin\|\|User" | 用于查询基础结构任务的安全性配置。 |
-| 列出 |Wstring，默认值为“Admin\|\|User" | 用于映像存储客户端文件列表操作的安全性配置。 |
-| ResetPartitionLoad |Wstring，默认值为“Admin\|\|User" | 用于 failoverUnit 的重置负载的安全性配置。 |
-| ToggleVerboseServicePlacementHealthReporting | Wstring，默认值为“Admin\|\|User" | 用于切换详细服务放置运行状况报告的安全配置。 |
-| GetPartitionDataLossProgress | Wstring，默认值为“Admin\|\|User" | 获取调用数据丢失 API 调用的进度。 |
-| GetPartitionQuorumLossProgress | Wstring，默认值为“Admin\|\|User" | 获取调用仲裁丢失 API 调用的进度。 |
-| GetPartitionRestartProgress | Wstring，默认值为“Admin\|\|User" | 获取重启分区 API 调用的进度。 |
-| GetChaosReport | Wstring，默认值为“Admin\|\|User" | 获取给定时间范围内混沌的状态。 |
-| GetNodeTransitionProgress | Wstring，默认值为“Admin\|\|User" | 用于获取节点转换命令进度的安全配置。 |
-| GetClusterConfigurationUpgradeStatus | Wstring，默认值为“Admin\|\|User" | 在分区上引入 GetClusterConfigurationUpgradeStatus。 |
-| GetClusterConfiguration | Wstring，默认值为“Admin\|\|User" | 在分区上引入 GetClusterConfiguration。 |
+| CreateName |string，默认值为“Admin” |用于命名 URI 创建的安全性配置。 |
+| DeleteName |string，默认值为“Admin” |用于命名 URI 删除的安全性配置。 |
+| PropertyWriteBatch |string，默认值为“Admin” |用于命名属性写入操作的安全性配置。 |
+| CreateService |string，默认值为“Admin” | 用于服务创建的安全性配置。 |
+| CreateServiceFromTemplate |string，默认值为“Admin” |用于通过模板进行的服务创建的安全性配置。 |
+| UpdateService |string，默认值为“Admin” |用于服务更新的安全性配置。 |
+| DeleteService  |string，默认值为“Admin” |用于服务删除的安全性配置。 |
+| ProvisionApplicationType |string，默认值为“Admin” | 用于应用程序类型预配的安全性配置。 |
+| CreateApplication |string，默认值为“Admin” | 用于应用程序创建的安全性配置。 |
+| DeleteApplication |string，默认值为“Admin” | 用于应用程序删除的安全性配置。 |
+| UpgradeApplication |string，默认值为“Admin” | 用于启动或中断应用程序升级的安全性配置。 |
+| RollbackApplicationUpgrade |string，默认值为“Admin” | 用于回滚应用程序升级的安全性配置。 |
+| UnprovisionApplicationType |string，默认值为“Admin” | 用于取消设置应用程序类型的安全性配置。 |
+| MoveNextUpgradeDomain |string，默认值为“Admin” | 用于使用显式升级域恢复应用程序升级的安全性配置。 |
+| ReportUpgradeHealth |string，默认值为“Admin” | 用于恢复应用程序升级并提供当前升级进度的安全性配置。 |
+| ReportHealth |string，默认值为“Admin” | 用于报告运行状况的安全性配置。 |
+| ProvisionFabric |string，默认值为“Admin” | 用于预配 MSI 和/或群集清单的安全性配置。 |
+| UpgradeFabric |string，默认值为“Admin” | 用于启动群集升级的安全性配置。 |
+| RollbackFabricUpgrade |string，默认值为“Admin” | 用于回滚群集升级的安全性配置。 |
+| UnprovisionFabric |string，默认值为“Admin” | 用于取消设置 MSI 和/或群集清单的安全性配置。 |
+| MoveNextFabricUpgradeDomain |string，默认值为“Admin” | 用于使用显式升级域恢复群集升级的安全性配置。 |
+| ReportFabricUpgradeHealth |string，默认值为“Admin” | 用于恢复群集升级并提供当前升级进度的安全性配置。 |
+| StartInfrastructureTask |string，默认值为“Admin” | 用于启动基础结构任务的安全性配置。 |
+| FinishInfrastructureTask |string，默认值为“Admin” | 用于完成基础结构任务的安全性配置。 |
+| ActivateNode |string，默认值为“Admin” | 用于激活节点的安全性配置。 |
+| DeactivateNode |string，默认值为“Admin” | 用于停用节点的安全性配置。 |
+| DeactivateNodesBatch |string，默认值为“Admin” | 用于停用多个节点的安全性配置。 |
+| RemoveNodeDeactivations |string，默认值为“Admin” | 用于在多个节点上还原停用操作的安全性配置。 |
+| GetNodeDeactivationStatus |string，默认值为“Admin” | 用于检查停用状态的安全性配置。 |
+| NodeStateRemoved |string，默认值为“Admin” | 用于报告删的节点状态的安全性配置。 |
+| RecoverPartition |string，默认值为“Admin” | 用于恢复分区的安全性配置。 |
+| RecoverPartitions |string，默认值为“Admin” | 用于恢复多个分区的安全性配置。 |
+| RecoverServicePartitions |string，默认值为“Admin” | 用于恢复服务分区的安全性配置。 |
+| RecoverSystemPartitions |string，默认值为“Admin” | 用于恢复系统服务分区的安全性配置。 |
+| ReportFault |string，默认值为“Admin” | 用于报告故障的安全性配置。 |
+| InvokeInfrastructureCommand |string，默认值为“Admin” | 用于基础结构任务管理命令的安全性配置。 |
+| FileContent |string，默认值为“Admin” | 用于传输映像存储客户端文件（群集外部）的安全性配置。 |
+| FileDownload |string，默认值为“Admin” | 用于启动映像存储客户端文件下载（群集外部）的安全性配置。 |
+| InternalList |string，默认值为“Admin” | 用于映像存储客户端文件列表操作（内部）的安全性配置。 |
+| 删除 |string，默认值为“Admin” | 用于映像存储客户端删除操作的安全性配置。 |
+| 上载 |string，默认值为“Admin” | 用于映像存储客户端上传操作的安全性配置。 |
+| GetStagingLocation |string，默认值为“Admin” | 用于检索映像存储客户端暂存位置的安全性配置。 |
+| GetStoreLocation |string，默认值为“Admin” | 用于检索映像存储客户端存储位置的安全性配置。 |
+| NodeControl |string，默认值为“Admin” | 用于启动、停止和重启节点的安全性配置。 |
+| CodePackageControl |string，默认值为“Admin” | 用于重启代码包的安全性配置。 |
+| UnreliableTransportControl |string，默认值为“Admin” | 添加和删除行为的不可靠传输。 |
+| MoveReplicaControl |string，默认值为“Admin” | 移动副本。 |
+| PredeployPackageToNode |string，默认值为“Admin” | 预部署 API。 |
+| StartPartitionDataLoss |string，默认值为“Admin” | 在分区上引入数据丢失。 |
+| StartPartitionQuorumLoss |string，默认值为“Admin” | 在分区上引入仲裁丢失。 |
+| StartPartitionRestart |string，默认值为“Admin” | 同时重启分区的部分或所有副本。 |
+| CancelTestCommand |string，默认值为“Admin” | 取消特定的 TestCommand（如果处于运行中）。 |
+| StartChaos |string，默认值为“Admin” | 启动混沌 - 如果尚未启动。 |
+| StopChaos |string，默认值为“Admin” | 停止混沌 - 如果已启动。 |
+| StartNodeTransition |string，默认值为“Admin” | 用于启动节点转换的安全性配置。 |
+| StartClusterConfigurationUpgrade |string，默认值为“Admin” | 在分区上引入 StartClusterConfigurationUpgrade。 |
+| GetUpgradesPendingApproval |string，默认值为“Admin” | 在分区上引入 GetUpgradesPendingApproval。 |
+| StartApprovedUpgrades |string，默认值为“Admin” | 在分区上引入 StartApprovedUpgrades。 |
+| Ping |string，默认值为“Admin\|\|User" | 用于客户端 ping 的安全性配置。 |
+| 查询 |string，默认值为“Admin\|\|User" | 用于查询的安全性配置。 |
+| NameExists |string，默认值为“Admin\|\|User" | 用于检查命名 URI 存在的安全性配置。 |
+| EnumerateSubnames |string，默认值为“Admin\|\|User" | 用于枚举命名 URI 的安全性配置。 |
+| EnumerateProperties |string，默认值为“Admin\|\|User" | 用于枚举命名属性的安全性配置。 |
+| PropertyReadBatch |string，默认值为“Admin\|\|User" | 用于命名属性读取操作的安全性配置。 |
+| GetServiceDescription |string，默认值为“Admin\|\|User" | 用于长时间轮询服务通知和读取服务描述的安全性配置。 |
+| ResolveService |string，默认值为“Admin\|\|User" | 用于基于投诉的服务解析的安全配置。 |
+| ResolveNameOwner |string，默认值为“Admin\|\|User" | 用于解析命名 URI 所有者的安全性配置。 |
+| ResolvePartition |string，默认值为“Admin\|\|User" | 用于解析系统服务的安全性配置。 |
+| ServiceNotifications |string，默认值为“Admin\|\|User" | 用于基于时间的服务通知的安全配置。 |
+| PrefixResolveService |string，默认值为“Admin\|\|User" | 用于基于投诉的服务前缀解析的安全配置。 |
+| GetUpgradeStatus |string，默认值为“Admin\|\|User" | 用于轮询应用程序升级状态的安全性配置。 |
+| GetFabricUpgradeStatus |string，默认值为“Admin\|\|User" | 用于轮询群集升级状态的安全性配置。 |
+| InvokeInfrastructureQuery |string，默认值为“Admin\|\|User" | 用于查询基础结构任务的安全性配置。 |
+| 列出 |string，默认值为“Admin\|\|User" | 用于映像存储客户端文件列表操作的安全性配置。 |
+| ResetPartitionLoad |string，默认值为“Admin\|\|User" | 用于 failoverUnit 的重置负载的安全性配置。 |
+| ToggleVerboseServicePlacementHealthReporting | string，默认值为“Admin\|\|User" | 用于切换详细服务放置运行状况报告的安全配置。 |
+| GetPartitionDataLossProgress | string，默认值为“Admin\|\|User" | 获取调用数据丢失 API 调用的进度。 |
+| GetPartitionQuorumLossProgress | string，默认值为“Admin\|\|User" | 获取调用仲裁丢失 API 调用的进度。 |
+| GetPartitionRestartProgress | string，默认值为“Admin\|\|User" | 获取重启分区 API 调用的进度。 |
+| GetChaosReport | string，默认值为“Admin\|\|User" | 获取给定时间范围内混沌的状态。 |
+| GetNodeTransitionProgress | string，默认值为“Admin\|\|User" | 用于获取节点转换命令进度的安全配置。 |
+| GetClusterConfigurationUpgradeStatus | string，默认值为“Admin\|\|User" | 在分区上引入 GetClusterConfigurationUpgradeStatus。 |
+| GetClusterConfiguration | string，默认值为“Admin\|\|User" | 在分区上引入 GetClusterConfiguration。 |
 
 ### <a name="section-name-reconfigurationagent"></a>节名称：ReconfigurationAgent
 | **Parameter** | **允许的值** | **指导或简短说明** |
@@ -513,13 +537,13 @@ ms.lasthandoff: 02/16/2017
 |UseMoveCostReports | Bool，默认值为 false | 指示 LB 忽略评分函数的成本元素，从而可能产生大量可优化平衡放置的移动。 |
 |PreventTransientOvercommit | Bool，默认值为 false | 确定 PLB 是否应该立即对将由启动的移动所释放的资源进行计数。 默认情况下，PLB 可以在同一节点上发起移出和移入操作，这会造成暂时性过载。 将此参数设置为 true 将防止这种过载，并将禁用按需碎片整理（也称为 placementWithMove）。 |
 |InBuildThrottlingEnabled | Bool，默认值为 false | 决定是否启用内置限制。 |
-|InBuildThrottlingAssociatedMetric | Wstring，默认值为“” | 此限制的关联指标名称。 |
+|InBuildThrottlingAssociatedMetric | string，默认值为“” | 此限制的关联指标名称。 |
 |InBuildThrottlingGlobalMaxValue | Int，默认值为 0 |全局范围内所允许的最大内置副本数。 |
 |SwapPrimaryThrottlingEnabled | Bool，默认值为 false| 确定是否启用交换主限制。 |
-|SwapPrimaryThrottlingAssociatedMetric | Wstring，默认值为“”| 此限制的关联指标名称。 |
+|SwapPrimaryThrottlingAssociatedMetric | string，默认值为“”| 此限制的关联指标名称。 |
 |SwapPrimaryThrottlingGlobalMaxValue | Int，默认值为 0 | 全局范围内所允许的最大交换主副本数。 |
 |PlacementConstraintPriority | Int，默认值为 0 | 决定放置约束的优先级：0：硬；1：软；负值：忽略。 |
-|PreferredLocationConstraintPriority | Int，默认值为 2| 决定首选位置约束的优先级：0：硬；1：软；2：最佳；负值：忽略 |
+|PreferredLocationConstraintPriority | Int，默认值为 2| 确定首选位置约束的优先级：0：硬；1：软；2：最佳；负值：忽略 |
 |CapacityConstraintPriority | Int，默认值为 0 | 确定容量约束的优先级：0：硬；1：软；负值：忽略。 |
 |AffinityConstraintPriority | Int，默认值为 0 | 确定相关性约束的优先级：0：硬；1：软；负值：忽略。 |
 |FaultDomainConstraintPriority | Int，默认值为 0 | 确定容错域约束的优先级：0：硬；1：软；负值：忽略。 |
@@ -571,7 +595,7 @@ ms.lasthandoff: 02/16/2017
 |ReplicaRestartWaitDuration |以秒为单位的时间，默认值为 (60.0 * 30)|指定以秒为单位的时间范围。 ClusterManager 的 ReplicaRestartWaitDuration。 |
 |QuorumLossWaitDuration |以秒为单位的时间，默认值为 MaxValue | 指定以秒为单位的时间范围。 ClusterManager 的 QuorumLossWaitDuration。 |
 |StandByReplicaKeepDuration | 以秒为单位的时间，默认值为 (3600.0 * 2)|指定以秒为单位的时间范围。 ClusterManager 的 StandByReplicaKeepDuration。 |
-|PlacementConstraints | Wstring，默认值为“” |ClusterManager 的 PlacementConstraints。 |
+|PlacementConstraints | string，默认值为“” |ClusterManager 的 PlacementConstraints。 |
 |SkipRollbackUpdateDefaultService | Bool，默认值为 false |CM 将在应用程序升级回滚过程中跳过恢复更新的默认服务。 |
 |EnableDefaultServicesUpgrade | Bool，默认值为 false |在应用程序升级期间启用升级默认服务。 升级后，将会覆盖默认服务说明。 |
 |InfrastructureTaskHealthCheckWaitDuration |以秒为单位的时间，默认值为 0| 指定以秒为单位的时间范围。 对基础结构任务的后处理完成后，开始运行状况检查之前的等待时间量。 |
