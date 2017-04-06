@@ -247,7 +247,7 @@ app.post('/sms', (request, response) => {
 [purchase_phone]: https://www.twilio.com/console/phone-numbers/search
 [twiml]: https://www.twilio.com/docs/api/twiml
 [signup]: http://ahoy.twilio.com/azure
-[azure_new_site]: /app-service-web/web-sites-nodejs-develop-deploy-mac.md
+[azure_new_site]: app-service-web/app-service-web-get-started-nodejs.md
 [twilio_console]: https://www.twilio.com/console
 [npm]: http://npmjs.org
 [express]: http://expressjs.com
