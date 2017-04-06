@@ -48,7 +48,7 @@ ms.lasthandoff: 11/17/2016
    ![定义条件](./media/stream-analytics-set-up-alerts/03-stream-analytics-set-up-alerts.png)  
 
 ## <a name="set-up-alerts-through-the-operations-logs"></a>通过操作日志设置警报
-1. 在“Azure 经典门户”[](https://manage.windowsazure.com)中的“管理服务”中，转到“警报”选项卡。  
+1. 在 [Azure 经典门户](https://manage.windowsazure.com) 中的“管理服务”中，转到 **警报** 选项卡。  
 2. 单击“添加规则”  
    
    ![条件](./media/stream-analytics-set-up-alerts/04-stream-analytics-set-up-alerts.png)  

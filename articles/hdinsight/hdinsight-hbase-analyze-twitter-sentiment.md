@@ -1206,7 +1206,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 * [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
 [hbase-get-started]: hdinsight-hbase-tutorial-get-started-linux.md
-[website-get-started]: ../app-service-web/web-sites-dotnet-get-started.md
+[website-get-started]: ../app-service-web/app-service-web-get-started-dotnet.md
 
 
 

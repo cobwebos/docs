@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: f231252c222c5520d0a66f9b40749bd203545f16
 ms.openlocfilehash: 44ee1e58b65b23eeb3fa3710fcb29a1646d5f3ad
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -44,10 +45,5 @@ Azure Active Directory Identity Protection 是一项新功能，提供的统一�
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
