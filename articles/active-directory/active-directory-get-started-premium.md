@@ -3,8 +3,8 @@ title: "Azure Active Directory Premium 入门"
 description: "本主题介绍如何通过批量许可网站注册 Azure Active Directory Premium Edition。"
 services: active-directory
 documentationcenter: 
-author: MarkusVi
-manager: curtand
+author: curtand
+manager: femila
 ms.assetid: 391764e5-c4eb-4ae6-b8a9-3d09f0de04a6
 ms.service: active-directory
 ms.workload: infrastructure-services

@@ -38,7 +38,7 @@ ms.lasthandoff: 12/08/2016
 
 如果有 Visual Studio Ultimate，还可以使用 [IntelliTrace](http://msdn.microsoft.com/library/vstudio/dd264915.aspx) 进行调试。 本教程未介绍 IntelliTrace。
 
-## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 本教程适用于在 [Azure 和 ASP.NET 入门][GetStarted]中设置的开发环境、Web 项目和 Azure Web 应用。 对于 WebJobs 部分，需要用到在 [Azure WebJobs SDK 入门][GetStartedWJ]中创建的应用程序。
 
 在本教程中所示的代码示例适用于 C# MVC Web 应用程序，但对于 Visual Basic 和 Web 窗体应用程序，故障排除过程是一样的。
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/08/2016
 
 流式日志功能仅适用于面向 .NET Framework 4 或更高版本的应用程序。
 
-## <a name="a-namesitemanagementaweb-app-configuration-and-management"></a><a name="sitemanagement"></a>Web 应用配置和管理
+## <a name="sitemanagement"></a>Web 应用配置和管理
 通过 Visual Studio，用户可以访问 [Azure 门户](http://go.microsoft.com/fwlink/?LinkId=529715)中提供的 Web 应用管理功能和配置设置的子集。 本节介绍使用**服务器资源管理器**可以实现的功能。 若要了解最新的 Azure 集成功能，请同时试用**云资源管理器**。 可以从“视图”菜单打开这两个窗口。
 
 1. 如果还未在 Visual Studio 中登录到 Azure，请单击“服务器资源管理器”中的“连接到 Azure”按钮。
@@ -75,7 +75,7 @@ ms.lasthandoff: 12/08/2016
 
     如果要执行的 Web 应用管理任务无法在此窗口进行，请单击“在管理门户中打开”，以便在浏览器窗口中打开 Azure 门户。
 
-## <a name="a-nameremoteviewaaccess-web-app-files-in-server-explorer"></a><a name="remoteview"></a>在服务器资源管理器中访问 Web 应用文件
+## <a name="remoteview"></a>在服务器资源管理器中访问 Web 应用文件
 部署 Web 项目时，Web.config 文件中的 `customErrors` 标志通常设置为 `On` 或 `RemoteOnly`，这意味着如果出现问题你不会获得任何有帮助的错误消息。 无论发生何种错误，你获得的都是类似如下所示的页面。
 
 **'/' 应用程序中出现服务器错误：**
@@ -113,7 +113,7 @@ ms.lasthandoff: 12/08/2016
 
 编辑 Web.config 文件示例演示了能够读取并编辑 Azure Web 应用上的文件使得故障排除变得更加简单，而这仅仅只是其中之一。
 
-## <a name="a-nameremotedebugaremote-debugging-web-apps"></a><a name="remotedebug"></a>远程调试 Web 应用
+## <a name="remotedebug"></a>远程调试 Web 应用
 如果详细的错误消息提供的信息量不够，且无法本地重新创建该错误，则可以采用远程运行调试模式进行故障排除. 可以设置断点、直接操作内存、逐行执行代码，甚至更改代码路径。
 
 远程调试不适用于 Visual Studio Express 版。
@@ -159,7 +159,7 @@ ms.lasthandoff: 12/08/2016
 
      ![显示新值的关于页面](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="a-nameremotedebugwja-remote-debugging-webjobs"></a><a name="remotedebugwj"></a> 远程调试 WebJobs
+## <a name="remotedebugwj"></a> 远程调试 WebJobs
 本部分说明如何使用在 [Azure WebJobs SDK 入门](websites-dotnet-webjobs-sdk.md)中创建的项目和 Web 应用进行远程调试。
 
 本部分所示的功能只能在 Visual Studio 2013 Update 4 或更高版本中使用。
@@ -221,7 +221,7 @@ ms.lasthandoff: 12/08/2016
 * 启用远程调试功能时，服务器上会出现一个计时器，48 小时后该功能将自动关闭。 这一 48 小时的限制是出于安全性与性能的考虑。 可以根据需要轻松地多次重启该功能。 我们建议，在不主动进行调试的时候，保持其处于禁用状态。
 * 可以手动将调试器附加到任何进程，而不仅仅是 Web 应用进程 (w3wp.exe)。 有关如何在 Visual Studio 中使用调试模式的信息，请参阅[在 Visual Studio 中进行调试](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)。
 
-## <a name="a-namelogsoverviewadiagnostic-logs-overview"></a><a name="logsoverview"></a>诊断日志概述
+## <a name="logsoverview"></a>诊断日志概述
 运行在 Azure Web 应用中的 ASP.NET 应用程序可以创建以下几类日志：
 
 * **应用程序跟踪日志**<br/>
@@ -237,7 +237,7 @@ ms.lasthandoff: 12/08/2016
 
 日志将写入 Web 应用文件系统中 *LogFiles* 文件夹内的文件，并可通过 FTP 访问。 Web 服务器日志和应用程序日志也可写入 Azure 存储帐户。 可在存储帐户中为日志留出大于文件系统预留量的空间。 使用文件系统时，最多可存储 100 兆字节的日志。 （文件系统日志仅适合短期保留。 达到限制后，Azure 将删除旧日志文件以便为新日志腾出空间。）  
 
-## <a name="a-nameapptracelogsacreate-and-view-application-trace-logs"></a><a name="apptracelogs"></a>创建并查看应用程序跟踪日志
+## <a name="apptracelogs"></a>创建并查看应用程序跟踪日志
 在本节中，将执行以下任务：
 
 * 将跟踪语句添加到在 [Azure 和 ASP.NET 入门][GetStarted]中创建的 Web 项目。
@@ -373,7 +373,7 @@ ms.lasthandoff: 12/08/2016
 
 如果输入搜索字符串或正则表达式，Visual Studio 将在客户端筛选日志记录信息。 这意味着可以在日志显示在“输出”窗口后输入条件，并可更改筛选条件而不必重新生成日志。
 
-## <a name="a-namewebserverlogsaview-web-server-logs"></a><a name="webserverlogs"></a>查看 Web 服务器日志
+## <a name="webserverlogs"></a>查看 Web 服务器日志
 Web 服务器日志将记录 Web 应用上所有的 HTTP 活动。 若要在“输出”窗口中查看这些日志，必须为 Web 应用启用日志并告知 Visual Studio 希望对其进行监视。
 
 1. 在通过“服务器资源管理器”打开的“Azure Web 应用配置”选项卡上，将“Web 服务器日志记录”的状态更改为“开启”，然后单击“保存”。
@@ -395,7 +395,7 @@ Web 服务器日志将记录 Web 应用上所有的 HTTP 活动。 若要在“�
 
 如果使用门户将 Web 服务器日志记录写入 Azure 存储帐户，之后在 Visual Studio 中禁用日志记录，则在 Visual Studio 中重新启用日志记录时，存储帐户设置将还原。
 
-## <a name="a-namedetailederrorlogsaview-detailed-error-message-logs"></a><a name="detailederrorlogs"></a>查看详细的错误消息日志
+## <a name="detailederrorlogs"></a>查看详细的错误消息日志
 详细的错误日志提供了有关导致错误响应代码（400 或更大）的 HTTP 请求的一些额外信息。 若要在“输出”窗口中查看这些日志，必须为 Web 应用启用日志并告知 Visual Studio 希望对其进行监视。
 
 1. 在通过“服务器资源管理器”打开的“Azure Web 应用配置”选项卡上，将“详细的错误消息”的状态更改为“开启”，然后单击“保存”。
@@ -415,7 +415,7 @@ Web 服务器日志将记录 Web 应用上所有的 HTTP 活动。 若要在“�
 
     ![浏览器窗口中详细的错误日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorloginbrowser.png)
 
-## <a name="a-namedownloadlogsadownload-file-system-logs"></a><a name="downloadlogs"></a>下载文件系统日志
+## <a name="downloadlogs"></a>下载文件系统日志
 任何可在“输出”窗口中监视的日志都可作为 *.zip* 文件进行下载。
 
 1. 在“输出”窗口中单击“下载流式传输日志”。
@@ -435,7 +435,7 @@ Web 服务器日志将记录 Web 应用上所有的 HTTP 活动。 若要在“�
 
      （*deployments* 文件夹内是由源代码管理发布创建的文件；其中没有任何有关 Visual Studio 发布的内容。 *Git* 文件夹内是与源代码管理发布以及日志文件流式传输服务相关的跟踪。）  
 
-## <a name="a-namestoragelogsaview-storage-logs"></a><a name="storagelogs"></a>查看存储日志
+## <a name="storagelogs"></a>查看存储日志
 也可将应用程序跟踪日志发送至 Azure 存储帐户，可通过 Visual Studio 进行查看。 若要如此，需要创建一个存储帐户，在经典门户中启用存储日志，然后在“Azure Web 应用”窗口的“日志”选项卡中对其进行查看。
 
 可以将日志发送到以下所有目的地或其中之一：
@@ -514,7 +514,7 @@ Web 服务器日志将记录 Web 应用上所有的 HTTP 活动。 若要在“�
 
      ![服务器资源管理器中的跟踪表](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png)
 
-## <a name="a-namefailedrequestlogsaview-failed-request-tracing-logs"></a><a name="failedrequestlogs"></a>查看失败请求跟踪日志
+## <a name="failedrequestlogs"></a>查看失败请求跟踪日志
 在出现诸如 URL 重写或身份验证问题之类的情况下，需要详细了解 IIS 如何处理 HTTP 请求时可求助于失败请求跟踪日志。
 
 Azure Web 应用使用 IIS 7.0 及更高版本中提供的相同失败请求跟踪功能。 IIS 设置经过配置可记录指定错误，但无法访问该设置。 启用失败请求跟踪后，所有错误都将纳入捕获范围内。
@@ -555,7 +555,7 @@ Azure Web 应用使用 IIS 7.0 及更高版本中提供的相同失败请求跟�
 
     ![浏览器中的失败请求跟踪](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequestinbrowser.png)
 
-## <a name="a-namenextstepsanext-steps"></a><a name="nextsteps"></a>后续步骤
+## <a name="nextsteps"></a>后续步骤
 以上部分介绍了如何通过 Visual Studio 轻松查看由 Azure Web 应用创建的日志。 以下部分提供了相关主题中其他资源的链接：
 
 * Azure Web 应用故障排除
@@ -637,6 +637,6 @@ Internet 上对于 ASP.NET 跟踪没有全面且最新的介绍。 最佳做法�
 ### <a name="analyzing-failed-request-tracing-logs"></a>分析失败请求跟踪日志
 Microsoft TechNet 网站包含的[使用失败请求跟踪](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing)部分对于了解如何使用这些日志非常有用。 然而，该文档主要着重于在 IIS 中配置失败请求跟踪，并不适用于 Azure Web 应用。
 
-[GetStarted]: web-sites-dotnet-get-started.md
+[GetStarted]: app-service-web-get-started-dotnet.md
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
 
