@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: dc8e9647d99b39cdee36ec11e144452326e2d968
 ms.openlocfilehash: 99a3e44730737a9e1b3db8eead6dfe181382962b
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -31,16 +33,16 @@ ms.openlocfilehash: 99a3e44730737a9e1b3db8eead6dfe181382962b
 >
 > 有关 HDInsight 3.4 或更高版本，请参阅[将 MapReduce 与 SSH 配合使用](hdinsight-hadoop-use-mapreduce-ssh.md)，了解如何连接到 HDInsight 群集以及如何运行 MapReduce 作业。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
+## <a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
 
 * 基于 Windows 的 HDInsight（HDInsight 上的 Hadoop）群集
 * 运行 Windows 10、Windows 8 或 Windows 7 的客户端计算机
 
-## <a name="a-idconnectaconnect-with-remote-desktop"></a><a id="connect"></a>使用远程桌面进行连接
+## <a id="connect"></a>使用远程桌面进行连接
 为 HDInsight 群集启用远程桌面，然后根据[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)中的说明连接到该群集。
 
-## <a name="a-idhadoopause-the-hadoop-command"></a><a id="hadoop"></a>使用 Hadoop 命令
+## <a id="hadoop"></a>使用 Hadoop 命令
 连接到 HDInsight 群集的桌面之后，请使用以下步骤，以通过 Hadoop 命令来运行 MapReduce 作业：
 
 1. 从 HDInsight 桌面启动“Hadoop 命令行”。 这将在 **c:\apps\dist\hadoop-&lt;version number>** 目录中打开新的命令提示符。
@@ -89,10 +91,10 @@ ms.openlocfilehash: 99a3e44730737a9e1b3db8eead6dfe181382962b
         wretched        6
         wriggling       1
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>摘要
+## <a id="summary"></a>摘要
 如你所见，Hadoop 命令提供简单的方法让你在 HDInsight 群集上运行 MapReduce 作业，然后查看作业输出。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 MapReduce 作业的一般信息：
 
 * [在 HDInsight Hadoop 上使用 MapReduce](hdinsight-use-mapreduce.md)
@@ -101,9 +103,4 @@ ms.openlocfilehash: 99a3e44730737a9e1b3db8eead6dfe181382962b
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

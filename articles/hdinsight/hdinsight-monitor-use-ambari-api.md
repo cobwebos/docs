@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
 ms.openlocfilehash: 6d36976712ba1ea5d51f203fc532d7f89c3b0871
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -170,9 +172,4 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 [hdinsight-provision]: hdinsight-provision-clusters.md
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
