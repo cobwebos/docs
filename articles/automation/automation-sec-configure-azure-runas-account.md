@@ -13,7 +13,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.date: 04/06/2017
 ms.author: magoedte
 translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
@@ -250,7 +250,7 @@ ms.lasthandoff: 03/29/2017
 2. 在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。 
 3. 请记下“属性”边栏选项卡中的值。
 
- ![自动化帐户的“属性”边栏选项卡](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
+![自动化帐户的“属性”边栏选项卡](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
 
 ### <a name="create-a-run-as-account-powershell-script"></a>创建运行方式帐户 PowerShell 脚本
 此 PowerShell 脚本包括对以下配置的支持：
@@ -340,6 +340,7 @@ ms.lasthandoff: 03/29/2017
         $KeyCredential = New-Object  Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential
         $KeyCredential.StartDate = $CurrentDate
         $KeyCredential.EndDate= [DateTime]$PfxCert.GetExpirationDateString()
+        $KeyCredential.EndDate = $KeyCredential.EndDate.AddDays(-1)
         $KeyCredential.KeyId = $KeyId
         $KeyCredential.CertValue  = $keyValue
 
@@ -414,7 +415,6 @@ ms.lasthandoff: 03/29/2017
         $TenantID = $SubscriptionInfo | Select TenantId -First 1
         $Thumbprint = $PfxCert.Thumbprint
         $ConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId}
-
 
         # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ConnectionAssetName $ConnectionTypeName $ConnectionFieldValues

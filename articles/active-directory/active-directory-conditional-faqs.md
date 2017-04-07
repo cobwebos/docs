@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 3980b99206c9f0c81ba3d03778777878e25db7c8
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -36,10 +37,5 @@ ms.openlocfilehash: 3980b99206c9f0c81ba3d03778777878e25db7c8
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>条件性访问策略是否应用于服务帐户？
 **答：**条件性访问策略应用于所有服务帐户。 其中包括用作服务帐户的用户帐户。 在许多情况下，以无人参与方式运行的服务帐户无法满足策略。 例如，在需要进行 MFA 的情况下。 在这些情况下，可以使用条件性访问策略管理设置从策略中排除服务帐户。 在此处了解更多有关将策略应用于用户的信息。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

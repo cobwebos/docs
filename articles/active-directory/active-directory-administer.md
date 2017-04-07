@@ -3,7 +3,7 @@ title: "管理 Azure AD 目录 | Microsoft Docs"
 description: "介绍什么是 Azure AD 租户，以及如何通过 Azure Active Directory 管理 Azure。"
 services: active-directory
 documentationcenter: 
-author: MarkusVi
+author: curtand
 writer: markvi
 manager: femila
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
@@ -12,11 +12,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/11/2017
-ms.author: markvi
+ms.date: 04/06/2017
+ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 001ffc0f9c7465552392a9848ef1487a4c0eafce
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -146,9 +147,4 @@ Azure AD 要求删除目录之前必须符合特定的条件。 这可以降低�
 <!--Image references-->
 [1]: ./media/active-directory-administer/aad_portals.png
 [2]: ./media/active-directory-administer/azure_tenants.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/19/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: be986fd7bb1745dcf43a1066dfabc1e1c699ab4c
 ms.openlocfilehash: b9cd11954a52600c1cd50155cb7ce9b7d2355cd3
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -195,10 +196,5 @@ Azure 门户中主要有三种与审核相关的活动：
 
 ## <a name="next-steps"></a>后续步骤
 请参阅 [Azure Active Directory 报表指南](active-directory-reporting-guide.md)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

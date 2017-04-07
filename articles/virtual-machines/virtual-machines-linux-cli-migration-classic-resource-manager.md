@@ -33,7 +33,7 @@ ms.lasthandoff: 03/22/2017
 <br>
 下面是一个流程图，用于确定在迁移过程中需要执行步骤的顺序
 
-![显示迁移步骤的屏幕截图](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-prepare-for-migration"></a>步骤 1：准备迁移
 下面是建议你在将 IaaS 资源从经典部署模型迁移到 Resource Manager 部署模型时遵循的一些最佳实践：
