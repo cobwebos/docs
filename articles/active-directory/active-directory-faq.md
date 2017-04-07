@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>访问 Azure 和 Azure Active Directory
-**问：尝试在 Azure 经典门户 (https://manage.windowsazure.com) 中访问 Azure AD 时，为何收到“找不到订阅”？**
+**问：尝试在 Azure 经典门户(https://manage.windowsazure.com)中访问 Azure AD 时，为何收到“找不到订阅”？**
 
 **答：**若要访问 Azure 经典门户，每个用户都需要 Azure 订阅的权限。 如果订阅为付费型 Office 365 订阅或 Azure AD 订阅，请访问 [http://aka.ms/accessAAD](http://aka.ms/accessAAD)，了解一次性激活步骤。 否则需激活免费型 [Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)或某个付费型订阅。
 
