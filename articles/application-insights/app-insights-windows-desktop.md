@@ -10,12 +10,13 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.date: 08/26/2016
 ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
 ms.openlocfilehash: 6f87eaf58c9c8dcd301a6ac245119621244a1c27
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -47,7 +48,7 @@ ms.openlocfilehash: 6f87eaf58c9c8dcd301a6ac245119621244a1c27
 5. [使用 API](app-insights-api-custom-events-metrics.md) 发送遥测。
 6. 运行应用，并在 Azure 门户中查看所创建的资源中的遥测。
 
-## <a name="a-nametelemetryaexample-code"></a><a name="telemetry"></a>示例代码
+## <a name="telemetry"></a>示例代码
 ```C#
 
     public partial class Form1 : Form
@@ -89,10 +90,5 @@ ms.openlocfilehash: 6f87eaf58c9c8dcd301a6ac245119621244a1c27
 * [诊断搜索](app-insights-diagnostic-search.md)
 * [探索指标](app-insights-metrics-explorer.md)
 * [编写分析查询](app-insights-analytics.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

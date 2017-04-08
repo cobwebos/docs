@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 1/6/2017
+ms.date: 4/6/2017
 ms.author: v-six
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: c91a34eb34a73abe5c5ac2bb6aeb08c818a97856
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -71,9 +72,4 @@ Azure 数据中心的服务器分区成群集。 会在多个群集中尝试新�
    * 按照上面的第 2 种方法进行操作，确保在服务的 CSCFG 中指定新的 ReservedIP。
 4. 删除针对新部署的地缘组 - 不再建议使用地缘组。 按照上面第 1 种方法的步骤部署新的云服务。 确保云服务不在地缘组中。
 5. 转变成区域虚拟网络 - 请参阅[如何从地缘组迁移到区域虚拟网络 (VNet)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
