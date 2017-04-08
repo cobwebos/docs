@@ -6,7 +6,7 @@
     ```
     npm install -g iothub-explorer@latest
     ```
-2. 然后，运行以下命令登录中心，请记得使用之前复制的 IoT 中心连接字符串替换 `{iot hub connection string}`：
+2. 然后，运行以下命令登录到中心。 将 `{iot hub connection string}` 替换为前面复制的 IoT 中心连接字符串：
 
     ```
     iothub-explorer login "{iot hub connection string}"
@@ -21,7 +21,7 @@
 
 ![][img-identity]
 
-若要了解以编程方式创建设备标识的方法，请参阅 [IoT 中心入门][lnk-getstarted]。
+若要以编程方式创建设备标识，请参阅 [IoT 中心入门][lnk-getstarted]。
 
 <!-- images and links -->
 [img-identity]: media/iot-hub-get-started-create-device-identity/devidentity.png

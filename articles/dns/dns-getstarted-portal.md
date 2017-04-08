@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 0fee02286f6d5dd4614a933590cdab43cc69237f
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 79f0c9297c4be70f705f325274f3d9241ea4bc3f
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -79,20 +79,20 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 
 ## <a name="view-records"></a>查看记录
 
-在 DNS 区域边栏选项卡的下半部分，可以看到 DNS 区域的记录。 你应当会看到默认的 NS 和 SOA 记录（在每个区域中都会创建这些记录）以及你创建的新记录。
+在 DNS 区域边栏选项卡的下半部分，可以看到 DNS 区域的记录。 你应当会看到默认的 DNS 和 SOA 记录（在每个区域中都会创建这些记录）以及你创建的任何新记录。
 
 ![区域](./media/dns-getstarted-portal/viewzone500.png)
 
 
 ## <a name="update-name-servers"></a>更新名称服务器
 
-在你认为你的 DNS 区域和记录都已正确设置后，需要将你的域名配置为使用 Azure DNS 名称服务器。 这使得 Internet 上的其他用户可以发现你的 DNS 记录。
+正确设置 DNS 区域和记录后，需要将域名配置为使用 Azure DNS 名称服务器。 这使得 Internet 上的其他用户可以发现你的 DNS 记录。
 
 区域的名称服务器在 Azure 门户中指定：
 
 ![区域](./media/dns-getstarted-portal/viewzonens500.png)
 
-这些名称服务器应当配置有域名注册机构（你向其购买域名的机构）。 你的域名注册机构将提供选项来为域设置名称服务器。 有关详细信息，请参阅[将域委托给 Azure DNS](dns-domain-delegation.md)。
+这些名称服务器应当配置有域名注册机构（你向其购买域名的机构）。 域名注册机构将提供选项来为域设置名称服务器。 有关详细信息，请参阅[将域委派给 Azure DNS](dns-domain-delegation.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

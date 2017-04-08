@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2017
+ms.date: 03/31/2017
 ms.author: sethm; babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 55cc1559189a37741d866d86241426fb73f72e4f
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 6450651062219c8f2c4757d6f233bd4b710e56ff
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/08/2017
 事件中心还允许在移动应用中进行行为跟踪、从 Web 场采集流量信息、在电视游戏中捕获游戏内事件，或者从工业机器或互联汽车中收集遥测数据。
 
 ## <a name="azure-event-hubs-overview"></a>Azure 事件中心概述
-事件中心在解决方案体系结构中扮演的常见角色是充当事件管道的“前门”，通常称为“事件引入器”。 事件引入器是位于事件发布者与事件使用者之间的组件或服务，可以将事件流的生成与这些事件的使用分离开来。
+事件中心在解决方案体系结构中扮演的常见角色是充当事件管道的“前门”，通常称为“事件引入器”。 事件引入器是位于事件发布者与事件使用者之间的组件或服务，可以将事件流的生成与这些事件的使用分离开来。 下图显示了此体系结构：
 
 ![事件中心](./media/event-hubs-what-is-event-hubs/event_hubs_full_pipeline.png)
 
@@ -104,6 +104,8 @@ Azure 事件中心是一种事件处理服务，用于提供云规模的事件�
 //[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
 //[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
 ```
+
+下图显示了事件中心流处理体系结构：
 
 ![事件中心](./media/event-hubs-what-is-event-hubs/event_hubs_architecture.png)
 

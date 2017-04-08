@@ -15,14 +15,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 9d80640a58171e94440ca02f44a73866f6412997
-ms.openlocfilehash: 296dfaaa05b89cae265a9926fad08495ea02a647
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a8ee2d2a4862e448d75b075537ef51cbdf8bfc9f
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="azure-remoteapp-faq"></a>Azure RemoteApp 常见问题解答
 > [!IMPORTANT]
-> Azure RemoteApp 将要停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -124,10 +125,5 @@ ms.openlocfilehash: 296dfaaa05b89cae265a9926fad08495ea02a647
 
 ### <a name="help-us-help-you"></a>请帮助我们改进，以便为用户提供更好的帮助和支持
 是否知道除了给这篇文章评级和在下面发表评论，还可以对文章本身进行更改？ 缺了什么？ 出现了错误？ 是否编写了令人困惑的内容？ 向上滚动并单击“在 GitHub 上编辑”  进行更改 - 更改的内容会发送给我们进行审阅，一旦签核，便可以在此处看到这些更改和改进。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
