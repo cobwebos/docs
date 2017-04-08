@@ -2,8 +2,7 @@
 title: "5 个数据科学问题 - 适合初学者的数据科学 - Azure | Microsoft Docs"
 description: "通过“适合初学者的数据科学”的五个简短视频（以“数据科学可回答的 5 个问题”开始），快速了解数据科学。"
 keywords: "研究数据科学，数据科学初学者，适合初学者的数据科学，数据科学基础知识，数据科学问题，数据科学视频，数据科学简介"
-services: machine-learning
-documentationcenter: na
+services: machine-learningdocumentationcenter: na
 author: cjgronlund
 manager: jhubbard
 editor: cjgronlund
@@ -22,7 +21,7 @@ ms.lasthandoff: 02/10/2017
 
 
 ---
-# <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适用于初学者的数据科研视频 1：5 个数据科研问题的解答
+# <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适用于初学者的数据科学视频 1：5 个数据科学问题的解答
 通过顶级数据科学家制作的“适合初学者的数据科学”的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
 
 第一个视频是有关数据科学可回答的这类问题。 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
