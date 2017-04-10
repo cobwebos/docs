@@ -17,15 +17,16 @@ ms.author: asmalser-msft
 translationtype: Human Translation
 ms.sourcegitcommit: a3c339de98250f43c71f7dd9706888c6715ca2ef
 ms.openlocfilehash: e39f2202e83cdf66b85f1cc02a9320ec9e31472e
+ms.lasthandoff: 02/08/2017
 
 ---
 
-#<a name="tutorial-configuring-slack-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Slack
+# <a name="tutorial-configuring-slack-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Slack
 
 
 本教程的目的是说明从 Azure AD 自动将用户帐户预配到 Slack 和取消其预配所需在 Slack 和 Azure 中执行的步骤。 
 
-##<a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 在本教程中概述的方案假定您已具有以下各项：
 
@@ -113,9 +114,4 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

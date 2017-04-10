@@ -10,7 +10,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
-ms.custom: manage
+ms.custom: quick start manage
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,15 +18,15 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 86471fe29bbc9076624d96b83f7001d8755363bc
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: fd5cb0d45d0955b7e4c471dc5ccecac65ad7400a
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL 数据库：使用 Visual Studio Code 进行连接和数据查询
 
-[Visual Studio Code](https://code.visualstudio.com/docs) 是一种图形代码编辑器，适用于支持扩展的 Linux、macOS 和 Windows。 将 Visual Studio Code 与 [mssql 扩展](https://aka.ms/mssql-marketplace)配合使用，以便连接到 Azure SQL 数据库并对其进行查询。 本指南详述了如何使用 Visual Studio Code 连接到 Azure SQL 数据库，然后执行查询、插入、更新和删除语句。
+[Visual Studio Code](https://code.visualstudio.com/docs) 是一种图形代码编辑器，适用于支持扩展的 Linux、macOS 和 Windows。 将 Visual Studio Code 与 [mssql 扩展](https://aka.ms/mssql-marketplace)配合使用，以便连接到 Azure SQL 数据库并对其进行查询。 本快速入门教程详述了如何使用 Visual Studio Code 连接到 Azure SQL 数据库，然后执行查询、插入、更新和删除语句。
 
 此快速入门使用以下某个快速入门中创建的资源作为其起点：
 

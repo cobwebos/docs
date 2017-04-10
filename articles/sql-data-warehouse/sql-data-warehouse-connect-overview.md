@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 106b9e8b5fd3461655527004fa7a65bbab9b3182
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: c3c30e51b81886ebc875df7c815a17dfa633a5f8
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -34,7 +36,7 @@ ms.openlocfilehash: 106b9e8b5fd3461655527004fa7a65bbab9b3182
     ![完整服务器名称][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>支持的驱动程序和连接字符串
-Azure SQL 数据仓库支持 [ADO.NET][ADO.NET][ODBC][ODBC][PHP][PHP] 和 [JDBC][JDBC]。 单击前述的某个驱动程序，查找最新版本和文档。 若要自动生成通过 Azure 门户使用的驱动程序的连接字符串，可单击前述示例中的“显示数据库连接字符串”。  下面也是一些示例，说明了每个驱动程序的连接字符串的样式。
+Azure SQL 数据仓库支持 [ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP] 和 [JDBC][JDBC]。 单击前述的某个驱动程序，查找最新版本和文档。 若要自动生成通过 Azure 门户使用的驱动程序的连接字符串，可单击前述示例中的“显示数据库连接字符串”。  下面也是一些示例，说明了每个驱动程序的连接字符串的样式。
 
 > [!NOTE]
 > 请考虑将连接超时值设置为 300 秒，以便连接可以经受住短时间内不可用。
@@ -66,17 +68,17 @@ SQL 数据仓库在连接和创建对象期间标准化一些设置。 这些设
 
 | 数据库设置 | 值 |
 |:--- |:--- |
-| [ANSI_NULLS][ANSI_NULLS] |开 |
-| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |开 |
+| [ANSI_NULLS][ANSI_NULLS] |亮起 |
+| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |亮起 |
 | [DATEFORMAT][DATEFORMAT] |mdy |
 | [DATEFIRST][DATEFIRST] |7 |
 
 ## <a name="next-steps"></a>后续步骤
-若要使用 Visual Studio 进行连接和查询，请参阅[使用 Visual Studio 进行查询][Query with Visual Studio]。 若要详细了解身份验证选项，请参阅[对 Azure SQL 数据仓库进行身份验证][Authentication to Azure SQL Data Warehouse]。
+若要使用 Visual Studio 进行连接和查询，请参阅 [Query with Visual Studio][Query with Visual Studio]（使用 Visual Studio 进行查询）。 若要详细了解身份验证选项，请参阅 [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse]（向 Azure SQL 数据仓库进行身份验证）。
 
 <!--Articles-->
-[使用 Visual Studio 进行查询]: ./sql-data-warehouse-query-visual-studio.md
-[对 Azure SQL 数据仓库进行身份验证]: ./sql-data-warehouse-authentication.md
+[Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
+[Authentication to Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
 [ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
@@ -89,15 +91,10 @@ SQL 数据仓库在连接和创建对象期间标准化一些设置。 这些设
 [DATEFIRST]: https://msdn.microsoft.com/library/ms181598.aspx
 
 <!--Other-->
-[Azure 门户]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-connect-overview/get-server-name.png
 
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

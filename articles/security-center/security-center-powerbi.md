@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
-ms.openlocfilehash: 10e58a76644b5e4d50f05a2db03f4af193cc5152
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 1091abef19121ac4ce65fdaf7299b091bf41eb1c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,12 +29,12 @@ Azure 安全中心的 [Power BI 仪表板](http://aka.ms/azure-security-center-p
 ## <a name="using-azure-security-center-dashboard-to-access-power-bi"></a>使用 Azure 安全中心仪表板访问 Power BI
 Azure 安全中心仪表板还可用于访问 Power BI 报表。 按照以下步骤执行该任务：
 
-1. 在“Azure 安全中心”仪表板中，单击“在 Power BI 中浏览”按钮。
+1. 在“Azure 安全中心”仪表板中，单击“Power BI”按钮。
 
-    ![使用 Power BI 连接到 Azure 安全中心](./media/security-center-powerbi/security-center-powerbi-fig1-new10.png)
-2. 此时会在右侧打开“在 Power BI 中浏览”边栏选项卡，如以下屏幕所示： 
+    ![使用 Power BI 连接到 Azure 安全中心](./media/security-center-powerbi/security-center-powerbi-fig1-new10-2017.png)
+2. 此时会在右侧打开“Power BI”边栏选项卡，如以下屏幕所示： 
 
-    ![使用 Power BI 连接到 Azure 安全中心](./media/security-center-powerbi/security-center-powerbi-fig1-new2.png)
+    ![使用 Power BI 连接到 Azure 安全中心](./media/security-center-powerbi/security-center-powerbi-fig1-new11-2017.png)
 3. 如果是首次创建 Power BI 仪表板，则可在“在 Power BI 中浏览”边栏选项卡中选择以下选项之一： 
 
    * **安全见解仪表板**：若要创建包含安全状况、线程和检测方式在内的仪表板，则可选择此选项。 此选项更常用于 DevOps 角色，该角色负责跨订阅分析保护状况和“检测到威胁”警报。
@@ -119,9 +120,4 @@ Azure 安全中心链接可将用户重定向到 Azure 门户。 可以通过图
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) （管理和响应 Azure 安全中心的安全警报）- 了解如何管理和响应安全警报
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

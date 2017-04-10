@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 84aaff1f1e8a92583107295643e0ada81376fab0
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: d32d91f7bbfcea61caba6ccc3033929d307f14be
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="run-any-windows-app-on-any-device-with-azure-remoteapp"></a>使用 Azure RemoteApp 在任何设备上运行任何 Windows 应用
 > [!IMPORTANT]
-> Azure RemoteApp 将要停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -121,10 +122,5 @@ ms.openlocfilehash: 84aaff1f1e8a92583107295643e0ada81376fab0
 已学会创建集合后，请尝试创建 [使用 Office 365 的集合](remoteapp-tutorial-o365anywhere.md)。 也可以创建能够访问本地网络的 [混合集合 ](remoteapp-create-hybrid-deployment.md)。
 
 <!--Image references-->
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

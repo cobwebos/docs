@@ -14,14 +14,15 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 300ee477a00cdd463a2abf87dd73550777fd9e05
-ms.openlocfilehash: 941cc40c3c1979609649eda42e4b39aa383c3fd2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a6d4fbdf0e552f50673092183e893841ec0c5aa4
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-microsoft-outlook-in-azure-remoteapp"></a>在 Azure RemoteApp 中使用 Microsoft Outlook
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 请阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -36,10 +37,5 @@ Azure RemoteApp 支持 Microsoft Outlook O365。 请阅读有关 [Office 如何�
 
 ## <a name="search"></a>搜索
 在 Azure RemoteApp 中，Outlook 中的搜索功能有其局限性。 因为 Azure RemoteApp 使用共用的 VM 来处理用户会话。 搜索索引将取决于会因不同 VM 而变化的计算机 ID。 用户每次登录 Azure RemoteApp 时，可能会将其定向到新的 VM。 这意味着，如果我们启用本地搜索，每当计算机 ID 更改时（用户在不同的 VM 上时），索引器就会运行。 根据 OST 文件的大小，索引器可能需要很长时间才能完成并且耗尽其他应用程序所需的资源。 搜索起来不仅速度慢，而且可能无法生成结果。 使用联机模式帐户配置文件可以解决此问题，但由于缺乏本地缓存，整体性能将会受到影响（有关缓存和联机模式之间差异的详细信息，请前往上面的链接）。 遗憾的是，在 Outlook 2013 中不能禁用索引/本地搜索并且不能在默认情况下启用联机搜索。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

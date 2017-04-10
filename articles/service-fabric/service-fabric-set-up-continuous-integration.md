@@ -17,6 +17,7 @@ ms.author: mthalman;mikhegn
 translationtype: Human Translation
 ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
 ms.openlocfilehash: 437e343425da5c8cfe71d4ae67c423fcc2b794c2
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -104,7 +105,7 @@ Team Services 发布定义所描述的工作流由一系列按顺序执行的任
     1. 选择“**新建服务终结点**”，然后从菜单中选择“**Azure Service Fabric**”。
     2. 选择此终结点针对的群集所要使用的身份验证类型。
     3. 在“**连接名称**”字段中定义连接的名称。  通常情况下，你会使用群集的名称。
-    4. 在“**群集终结点**”字段中定义客户端连接终结点 URL。  示例：https://contoso.westus.cloudapp.azure.com:19000。
+    4. 在“**群集终结点**”字段中定义客户端连接终结点 URL。  示例 ： https://contoso.westus.cloudapp.azure.com:19000 。
     5. 对于 Azure Active Directory 凭据，可在“**用户名**”和“**密码**”字段中定义需要用来连接到群集的凭据。
     6. 对于基于证书的身份验证，可在“**客户端证书**”字段中定义客户端证书文件的 Base64 编码。  若要了解如何获取该值，请参阅有关该字段的弹出帮助。  如果证书受密码保护，可在“**密码**”字段中定义密码。
     7. 单击“**确定**”确认所做的更改。 导航回发布定义以后，单击“**群集连接**”字段的刷新图标即可查看刚添加的终结点。
@@ -130,10 +131,5 @@ Team Services 发布定义所描述的工作流由一系列按顺序执行的任
 * [Team Services 文档主页](https://www.visualstudio.com/docs/overview)
 * [Team Services 中的生成管理](https://www.visualstudio.com/docs/build/overview)
 * [Team Services 中的发布管理](https://www.visualstudio.com/docs/release/overview)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

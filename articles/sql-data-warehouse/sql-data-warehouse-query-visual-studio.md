@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 77474214c6fafe7f591030d30f6a46c66fbc5c09
-ms.openlocfilehash: 71a56d0e99308d3f7f514283792a2155a05a7172
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 342f32596c91d2af7c0f33138a43d5c8925d5350
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,9 +37,9 @@ ms.openlocfilehash: 71a56d0e99308d3f7f514283792a2155a05a7172
 ## <a name="prerequisites"></a>先决条件
 要使用本教程，你需要：
 
-* 现有 SQL 数据仓库。 若要创建这样一个数据仓库，请参阅[创建 SQL 数据仓库][创建 SQL 数据仓库]。
-* 适用于 Visual Studio 的 SSDT。 如果你具有 Visual Studio，则可以已具有此工具。 有关安装指说明和选项，请参阅[安装 Visual Studio 和 SSDT][安装 Visual Studio 和 SSDT]。
-* 完全限定的 SQL Server 名称。 若要查找此名称，请参阅[连接到 SQL 数据仓库][连接到 SQL 数据仓库]。
+* 现有 SQL 数据仓库。 若要创建 SQL 数据仓库，请参阅 [创建 SQL 数据仓库][Create a SQL Data Warehouse]。
+* 适用于 Visual Studio 的 SSDT。 如果你具有 Visual Studio，则可以已具有此工具。 有关安装说明和选项，请参阅 [安装 Visual Studio 和 SSDT][Installing Visual Studio and SSDT]。
+* 完全限定的 SQL Server 名称。 若要查找此名称，请参阅 [连接到 SQL 数据仓库][Connect to SQL Data Warehouse]。
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1.连接到 SQL 数据仓库
 1. 打开 Visual Studio 2013 或 2015。
@@ -79,19 +81,19 @@ ms.openlocfilehash: 71a56d0e99308d3f7f514283792a2155a05a7172
     ![查询结果][7]
 
 ## <a name="next-steps"></a>后续步骤
-既然你可以执行连接和查询，接下来请尝试[使用 PowerBI 可视化数据][使用 PowerBI 可视化数据]。
+既然你可以执行连接和查询，接下来请尝试 [使用 PowerBI 直观地显示数据][visualizing the data with PowerBI]。
 
-若要为 Azure Active Directory 配置环境，请参阅 [SQL 数据仓库身份验证][SQL 数据仓库身份验证]。
+若要为 Azure Active Directory 身份验证配置环境，请参阅[向 SQL 数据仓库进行身份验证][Authenticate to SQL Data Warehouse]。
 
 <!--Arcticles-->
-[连接到 SQL 数据仓库]: sql-data-warehouse-connect-overview.md
-[创建 SQL 数据仓库]: sql-data-warehouse-get-started-provision.md
-[安装 Visual Studio 和 SSDT]: sql-data-warehouse-install-visual-studio.md
-[SQL 数据仓库身份验证]: sql-data-warehouse-authentication.md
-[使用 PowerBI 可视化数据]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
+[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Installing Visual Studio and SSDT]: sql-data-warehouse-install-visual-studio.md
+[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
+[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
 
 <!--Other-->
-[Azure 门户]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 <!--Image references-->
 
@@ -102,9 +104,4 @@ ms.openlocfilehash: 71a56d0e99308d3f7f514283792a2155a05a7172
 [5]: media/sql-data-warehouse-query-visual-studio/new-query2.png
 [6]: media/sql-data-warehouse-query-visual-studio/run-query.png
 [7]: media/sql-data-warehouse-query-visual-studio/query-results.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

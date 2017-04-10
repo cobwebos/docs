@@ -9,23 +9,25 @@ manager: jhubbard
 editor: 
 ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start create
 ms.workload: data-management
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/13/2017
+ms.date: 04/03/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: be5839e04fae457b889db11dffe56f31afe723a5
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: c0c6cdf8aa48568b7a4468dd87b2896f94fc1bf6
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>在 Azure 门户中创建 Azure SQL 数据库
 
 本快速入门教程逐步讲解如何在 Azure 中创建 SQL 数据库。  Azure SQL 数据库是一种“数据库即服务”产品，可用于在云中运行和缩放高可用性 SQL Server 数据库。  本快速入门教程介绍如何开始使用 Azure 门户创建新的 SQL 数据库。
+
+如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -43,10 +45,10 @@ ms.lasthandoff: 03/28/2017
 
     ![创建数据库 - 1](./media/sql-database-get-started/create-database-1.png)
 
-3. 如上图所示，在“SQL 数据库”窗体中填写以下信息： 
-   - 数据库名称：使用 **mySampleDatabase**
-   - 资源组：使用 **myResourceGroup**
-   - 源：选择“示例(AdventureWorksLT)”
+3. 如上图所示，在“SQL 数据库”窗体中填写以下信息：     
+   - 数据库名称：**mySampleDatabase**
+   - 资源组：**myResourceGroup**
+   - 源：**示例(AdventureWorksLT)**
 
 4. 单击“服务器”，为新数据库创建并配置新服务器。 填写“新建服务器”窗体，指定全局唯一的服务器名称，提供服务器管理员登录名，然后指定所选的密码。 
 
@@ -82,7 +84,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 4. 单击“确定”，然后单击“X”关闭“防火墙设置”页。
 
-现在可以使用 SQL Server Management Studio 或其他所选工具连接到数据库及其服务器。
+现在可以使用之前创建的服务器管理员帐户通过 SQL Server Management Studio 或其他所选工具从此 IP 地址连接到数据库及其服务器。
 
 ## <a name="query-the-sql-database"></a>查询 SQL 数据库
 
@@ -103,7 +105,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 5. 完成身份验证后，在查询编辑器窗格中键入以下查询。
 
    ```
-   SELECT pc.Name as CategoryName, p.name as ProductName
+   SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
    FROM SalesLT.ProductCategory pc
    JOIN SalesLT.Product p
    ON pc.productcategoryid = p.productcategoryid;

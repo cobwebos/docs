@@ -15,14 +15,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
-ms.openlocfilehash: bf8f7763db5844a0706264d24ad7a035758ebbda
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: bc5de9daeb09339c9488de8699174cd280197525
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="what-is-azure-remoteapp"></a>什么是 Azure RemoteApp？
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -36,7 +37,7 @@ Azure RemoteApp 将远程桌面服务支持的本地 Microsoft RemoteApp 程序�
 
 Azure RemoteApp 是 [Microsoft 虚拟桌面基础结构](http://www.microsoft.com/server-cloud/products/virtual-desktop-infrastructure/explore.aspx)的一部分。
 
-**新增内容！**  想要详细了解 Azure RemoteApp？ 或已准备好大规模验证 Azure RemoteApp？ 加入每周的 [专家咨询网络研讨会](https://azureinfo.microsoft.com/AzureRemoteAppAskTheExperts-Registration-Page.html?ls=Website)。
+**新增内容！** 想要详细了解 Azure RemoteApp？ 或已准备好大规模验证 Azure RemoteApp？ 加入每周的 [专家咨询网络研讨会](https://azureinfo.microsoft.com/AzureRemoteAppAskTheExperts-Registration-Page.html?ls=Website)。
 
 ## <a name="azure-remoteapp-collections"></a>Azure RemoteApp 集合
 有两种类型的 [Azure RemoteApp 集合](remoteapp-collections.md)：
@@ -83,10 +84,5 @@ Azure RemoteApp 是 [Microsoft 虚拟桌面基础结构](http://www.microsoft.co
 
 ### <a name="help-us-help-you"></a>请帮助我们改进，以便为你提供更好的帮助和支持
 是否知道除了给这篇文章评级和在下面发表评论，还可以对文章本身进行更改？ 缺了什么？ 出现了错误？ 是否编写了令人困惑的内容？ 向上滚动并单击“在 GitHub 上编辑”或“编辑”进行更改 - 更改的内容会发送给我们进行审阅，一旦签核，便可以在此处看到这些更改和改进。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

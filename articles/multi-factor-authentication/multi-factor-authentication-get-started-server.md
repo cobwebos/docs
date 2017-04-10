@@ -13,12 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/26/2017
+ms.date: 03/26/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c5a26a17ab50993f8b57c8868b02541251de1cb1
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: b769f785f67c24b99156dcfc21a42f661cc9da27
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -121,13 +121,13 @@ ms.lasthandoff: 03/06/2017
 ## <a name="send-users-an-email"></a>向用户发送电子邮件
 将用户导入 MFA 服务器后，请向用户发送一封电子邮件，告知已经为他们注册了双重验证。
 
-应该根据为用户配置双步验证的方式来确定该电子邮件的内容。 例如，如果可以从公司目录导入电话号码，则电子邮件中应该包含默认电话号码，使用户知道下一步会发生什么。 如果未导入电话号码，或者用户要使用移动应用，则发送的电子邮件应该指导用户通过 Azure 多重身份验证用户门户的超链接完成帐户注册。
+应该根据为用户配置双步验证的方式来确定该电子邮件的内容。 例如，如果可以从公司目录导入电话号码，则电子邮件中应该包含默认电话号码，使用户知道下一步会发生什么。 如果未导入电话号码，或者用户要使用移动应用，则发送的电子邮件将指导用户完成其帐户注册。 电子邮件中包含指向 Azure 多重身份验证用户门户的超链接。
 
 此外，电子邮件的内容根据为用户设置的验证方法（电话呼叫、短信或移动应用）的不同而异。  例如，如果要求用户在身份验证时使用 PIN 码，则该电子邮件将告诉用户其初始 PIN 码的设置。  要求用户在首次验证期间更改其 PIN 码。
 
 
 ### <a name="configure-email-and-email-templates"></a>配置电子邮件和电子邮件模板
-单击左侧的电子邮件图标，设置用于发送这些电子邮件的设置。 可以在此处输入邮件服务器的 SMTP 信息，并通过选中“向用户发送电子邮件”复选框来发送电子邮件。
+单击左侧的电子邮件图标，设置用于发送这些电子邮件的设置。 可以在此页中输入邮件服务器的 SMTP 信息，并通过选中“向用户发送电子邮件”复选框来发送电子邮件。
 
 ![电子邮件设置](./media/multi-factor-authentication-get-started-server/email1.png)
 
@@ -155,11 +155,7 @@ ms.lasthandoff: 03/06/2017
 
 - 为用户的自助服务设置和配置[用户门户](multi-factor-authentication-get-started-portal.md)。
 
-- 设置使用 [Active Directory 联合服务](multi-factor-authentication-get-started-adfs.md) 的多重身份验证
-
-- 设置和配置使用 [RADIUS 身份验证](multi-factor-authentication-get-started-server-radius.md)的 Azure MFA 服务器。 使用 RADIUS 可将各种第三方系统与 Azure MFA 服务器集成。 
-
-- 设置和配置使用 [Windows 身份验证](multi-factor-authentication-get-started-server-windows.md)的 Azure MFA 服务器。
+- 为 Azure MFA 服务器设置和配置 [Active Directory 联合身份验证服务](multi-factor-authentication-get-started-adfs.md)、[RADIUS 身份验证](multi-factor-authentication-get-started-server-radius.md)或 [LDAP 身份验证](multi-factor-authentication-get-started-server-ldap.md)。
 
 - 设置和配置[使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server-rdg.md)。 
 

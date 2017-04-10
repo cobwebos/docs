@@ -272,7 +272,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 此示例使用的是解决方案中常用的[标准解决方案参数](operations-management-suite-solutions-solution-file.md#parameters)变量，不同于资源定义中使用的硬编码值。
 
     {
-        "$schema": "http://schemas.microsoft.org/azure/deploymentTemplate?api-version=2015-01-01#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0",
         "parameters": {
           "workspaceName": {

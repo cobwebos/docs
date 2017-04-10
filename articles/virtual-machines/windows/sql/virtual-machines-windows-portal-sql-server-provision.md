@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
+ms.date: 04/03/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: fa7c846cf5018b5f0d918e5dc9d9020313833d77
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f5793f771553df78c1c335ad57e0d64078d98148
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -97,14 +97,17 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
     ![SQL 基本信息边栏选项卡](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
 ## <a name="2-choose-virtual-machine-size"></a>2.选择虚拟机大小
-执行“大小”设置步骤时，请在“选择大小”边栏选项卡中选择虚拟机大小。 边栏选项卡最初将根据你选择的映像显示建议的计算机大小。 系统还会估算每月运行 VM 的费用。
+执行“大小”设置步骤时，请在“选择大小”边栏选项卡中选择虚拟机大小。 边栏选项卡最初将根据你选择的映像显示建议的计算机大小。
+
+> [!IMPORTANT]
+> 在“选择大小”边栏选项卡上显示的每月估计成本不包括 SQL Server 许可成本。 这只是 VM 的成本。 对于 SQL Server 的 Express 和开发人员版本，这是估计的总成本。 对于其他版本，请参阅[“Windows 虚拟机定价”页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)并选择 SQL Server 的目标版本。 
 
 ![SQL VM 大小选项](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
 对于生产工作负荷，建议选择可支持 [高级存储](../../../storage/storage-premium-storage.md)的虚拟机大小。 如果不需要该级别的性能，请使用“全部查看”按钮来查看所有计算机大小选项。 例如，可以将较小的计算机大小用于开发或测试环境。
 
 > [!NOTE]
-> 有关虚拟机大小的详细信息，请参阅 [虚拟机大小](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 有关 SQL Server VM 大小的考虑事项，请参阅 [SQL Server 在 Azure 虚拟机中的性能最佳实践](virtual-machines-windows-sql-performance.md)。
+> 有关虚拟机大小的详细信息，请参阅 [虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 有关 SQL Server VM 大小的考虑事项，请参阅 [SQL Server 在 Azure 虚拟机中的性能最佳实践](virtual-machines-windows-sql-performance.md)。
 > 
 > 
 
@@ -123,7 +126,7 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 * 在“存储帐户”下面 ，可以接受自动预配的存储帐户名称。 还可以单击“存储帐户”  以选择现有帐户和配置存储帐户类型。 默认情况下，Azure 将创建具有本地冗余存储空间的新存储帐户。 有关存储选项的详细信息，请参阅 [Azure 存储空间复制](../../../storage/storage-redundancy.md)。
 * 在“网络”下面，可以接受自动填充的值。 也可以单击每个功能来手动配置**虚拟网络**、**子网**、**公共 IP 地址**和**网络安全组**。 对于本教程，请保留默认值。
 * 默认情况下，Azure 会对为 VM 指定的同一个存储帐户启用“监视”功能。 你可以在此处更改这些设置。
-* 在“可用性集”下指定可用性集。 在本教程中，可以选择“无”。 如果你计划设置 SQL AlwaysOn 可用性组，可以对可用性进行配置，避免重新创建虚拟机。  有关详细信息，请参阅 [管理虚拟机的可用性](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 在“可用性集”下指定可用性集。 在本教程中，可以选择“无”。 如果你计划设置 SQL AlwaysOn 可用性组，可以对可用性进行配置，避免重新创建虚拟机。  有关详细信息，请参阅 [管理虚拟机的可用性](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 配置完这些设置后，请单击“确定”。
 
