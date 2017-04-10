@@ -46,7 +46,6 @@ ARMclient 用于使用 PowerShell 调用 REST API。 根据 [Chocolatey 上的 A
 
 使用网络观察程序故障排除功能可以排查虚拟网络网关和连接发生的问题。 向资源故障排除功能发出请求时，系统将查询并检查日志。 检查完成后，将返回结果。 故障排除 API 请求是长时间运行的请求，可能需要好几分钟才返回结果。 日志存储在存储帐户上的某个容器中。
 
-
 ## <a name="log-in-with-armclient"></a>使用 ARMClient 登录
 
 ```PowerShell

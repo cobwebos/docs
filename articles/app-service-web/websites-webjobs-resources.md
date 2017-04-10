@@ -27,6 +27,8 @@ ms.lasthandoff: 03/27/2017
 
 [WebJobs SDK](websites-webjobs-resources.md) 用于简化针对 Web 作业执行的常见任务（如图像处理、队列处理、RSS 聚合、文件维护和发送电子邮件）编写的代码。 WebJobs SDK 的内置功能使用 Azure 存储空间和 Service Bus，用于计划任务和处理错误，以及用于许多其他常见方案。 此外，还可以扩展其设计，且拥有[用于扩展的开源存储库](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。 [Azure Functions](../azure-functions/functions-overview.md)（当前以预览版提供）基于使用 C# 脚本、Node.js 和其他语言的 WebJobs SDK 的版本。 
 
+[!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
+
 使用 Visual Studio 中集成的工具，可以顺利地创建、部署和管理 Web 作业。 你可以从模板创建 Web 作业，还可以发布和管理（运行/停止/监视/调试）这些作业。 
 
 Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你全面控制 Web 作业的执行，包括调用 Web 作业中的各个函数。 该仪表板还会显示函数运行时和日志记录输出。 
