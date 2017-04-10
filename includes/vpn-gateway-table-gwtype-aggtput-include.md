@@ -4,7 +4,7 @@
 
 |  | **VPN 网关吞吐量 (1)** | **VPN 网关最大 IPsec 隧道数 (2)** | **ExpressRoute 网关吞吐量** | **VPN 网关和 ExpressRoute 共存** |
 | --- | --- | --- | --- | --- |
-| **基本 SKU (3)(5)** |100 Mbps |10 |500 Mbps |否 |
+| **基本 SKU (3)(5)(6)** |100 Mbps |10 |500 Mbps (6) |否 |
 | **标准 SKU (4)(5)** |100 Mbps |10 |1000 Mbps |是 |
 | **高性能 SKU (4)** |200 Mbps |30 |2000 Mbps |是 |
 
@@ -13,9 +13,4 @@
 * (3) 基本 SKU 不支持 BGP。
 * (4) 此 SKU 不支持 PolicyBased VPN。 仅基本 SKU 支持它们。
 * (5) 此 SKU 不支持主动-主动 S2S VPN 网关连接。 只有 HighPerformance SKU 才支持主动-主动连接。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-
+* (6) 用于 Expressroute 的基本 SKU 已弃用。

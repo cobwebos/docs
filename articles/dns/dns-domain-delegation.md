@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 06/30/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
-ms.openlocfilehash: 5145418159aa457be6d1fc9ed5bb1a43a955791c
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: 1a662d23c7b8eef68e0f182792699210d2b80bac
+ms.lasthandoff: 04/04/2017
 
 ---
 
@@ -28,11 +28,11 @@ ms.lasthandoff: 02/10/2017
 
 ### <a name="domains-and-zones"></a>域和区域
 
-域名系统是域的层次结构。 该层次结构从名为“**.**”的“根”域开始。  根域的下面是顶级域，例如“com”、“net”、“org”、“uk”或“jp”。  再往下是二级域，例如“org.uk”或“co.jp”。  依此类推。 DNS 层次结构中的域托管在不同的 DNS 区域。 这些区域遍布全球，由世界各地的 DNS 名称服务器托管。
+域名系统是域的层次结构。 该层次结构从名为“**.**”的“根”域开始。  根域的下面是顶级域，例如“com”、“net”、“org”、“uk”或“jp”。  这些顶级域的下面是二级域，例如“org.uk”或“co.jp”。  依此类推。 DNS 层次结构中的域托管在不同的 DNS 区域。 这些区域遍布全球，由世界各地的 DNS 名称服务器托管。
 
 **DNS 区域**
 
-域在域名系统中具有一个唯一名称，例如“contoso.com”。 DNS 区域用来托管某个特定域的 DNS 记录。 例如，域“contoso.com”可能包含许多 DNS 记录，例如“mail.contoso.com”（用于邮件服务器）和“www.contoso.com”（用于网站）。
+域在域名系统中具有一个唯一名称，例如“contoso.com”。 DNS 区域用来托管某个特定域的 DNS 记录。 例如，域“contoso.com”可能包含几条 DNS 记录，如“mail.contoso.com”（用于邮件服务器）和“www.contoso.com”（用于网站）。
 
 **域注册机构**
 
@@ -55,9 +55,9 @@ ms.lasthandoff: 02/10/2017
 
 电脑或移动设备中的 DNS 客户端通常调用递归 DNS 服务器来执行客户端应用程序所需的任何 DNS 查询。
 
-当递归 DNS 服务器收到 DNS 记录查询时（例如“www.contoso.com”），必须先找到托管“contoso.com”域的区域的名称服务器。 为此，它从根名称服务器开始，查找托管“com”区域的名称服务器。 然后，查询“com”名称服务器，查找托管“contoso.com”区域的名称服务器。  最后，它便可以向这些名称服务器查询“www.contoso.com”。
+当递归 DNS 服务器收到 DNS 记录查询时（例如“www.contoso.com”），必须先找到托管“contoso.com”域的区域的名称服务器。 若要查找名称服务器，请从根名称服务器开始，接着查找托管“com”区域的名称服务器。 然后，查询“com”名称服务器，查找托管“contoso.com”区域的名称服务器。  最后，它便可以向这些名称服务器查询“www.contoso.com”。
 
-这称为 DNS 名称解析。 严格地说，DNS 解析还有其他步骤，例如跟踪 CNAME，但这对于了解 DNS 委托的工作原理并不重要。
+此过程称为 DNS 名称解析。 严格地说，DNS 解析还有其他步骤，例如跟踪 CNAME，但这对于了解 DNS 委托的工作原理并不重要。
 
 父区域如何“指向”子区域的名称服务器？ 方法是使用一种特殊的 DNS 记录，名为 NS 记录（NS 代表“名称服务器”）。 例如，根区域包含“com”的 NS 记录，并显示“com”区域的名称服务器。 而“com”区域又包含“contoso.com”的 NS 记录，其中显示“contoso.com”区域的名称服务器。 在父区域中设置子区域的 NS 记录称为委托域。
 
@@ -66,10 +66,11 @@ ms.lasthandoff: 02/10/2017
 每个委托实际上有两份 NS 记录：一份在父区域中指向子区域，另一份在子区域本身。 “contoso.com”区域包含“contoso.com”的 NS 记录（“com”中的 NS 记录除外）。 这些记录称为权威 NS 记录，位于子区域的顶点处。
 
 ## <a name="delegating-a-domain-to-azure-dns"></a>将域委托给 Azure DNS
+
 在 Azure DNS 中创建 DNS 区域后，需要在父区域中设置 NS 记录，使 Azure DNS 成为区域的名称解析权威来源。 如果域是从注册机构购买的，注册机构将提供设置这些 NS 记录的选项。
 
 > [!NOTE]
-> 不必要拥有域即可在 Azure DNS 中以该域名创建 DNS 区域。 但是，必须拥有域才能在注册机构中设置对 Azure DNS 的委托。
+> 不需要拥有一个域即可在 Azure DNS 中以该域名创建 DNS 区域。 但是，必须拥有域才能在注册机构中设置对 Azure DNS 的委托。
 
 例如，假设购买了域“contoso.com”，并在 Azure DNS 中创建了名为“contoso.com”的区域。 作为域的所有者，注册机构将提供选项来设置域的名称服务器地址（即 NS 记录）。 注册机构将这些 NS 记录存储在父域中（在本例中为“.com”）。 然后，当世界各地的客户端尝试解析“contoso.com”中的 DNS 记录时，将定向到在 Azure DNS 区域中的域。
 
@@ -82,7 +83,7 @@ ms.lasthandoff: 02/10/2017
 
 Azure DNS 自动在包含所分配名称服务器的区域中创建权威 NS 记录。  只需要检索这些记录，就能通过 Azure PowerShell 或 Azure CLI 查看名称服务器的名称。
 
-使用 Azure PowerShell 可按如下所示检索权威 NS 记录。 请注意，记录名称 "@" 用于引用区域顶点处的记录。
+使用 Azure PowerShell 可按如下所示检索权威 NS 记录。 记录名称“@”用于引用区域顶点处的记录。
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.net -ResourceGroupName MyResourceGroup
@@ -132,7 +133,7 @@ info:    network dns record-set show command OK
 
 每个注册机构都有自身的 DNS 管理工具，可以更改域的名称服务器记录。 在注册机构的 DNS 管理页中，可以编辑 NS 记录并将 NS 记录替换为 Azure DNS 创建的记录。
 
-将域委托给 Azure DNS 时，必须使用 Azure DNS 提供的名称服务器名称。  无论域名是什么，都始终应该使用名称服务器的所有 4 个名称。  域委托不需要名称服务器名称即可使用相同的顶级域作为域。
+将域委托给 Azure DNS 时，必须使用 Azure DNS 提供的名称服务器名称。 建议使用名称服务器的所有 4 个名称，不管域名是什么。  域委托不需要名称服务器名称即可使用相同的顶级域作为域。
 
 不要使用“粘性记录”指向 Azure DNS 名称服务器 IP 地址，因为这些 IP 地址今后可能会更改。 Azure DNS 目前不支持使用区域中名称服务器名称进行委托（有时称为“虚构名称服务器”）。
 
@@ -140,7 +141,7 @@ info:    network dns record-set show command OK
 
 完成委托后，可以使用“nslookup”等工具来查询区域的 SOA 记录（这也是在创建区域时自动创建的），验证名称解析是否正常工作。
 
-请注意，不需要指定 Azure DNS 名称服务器，因为如果已正确设置委托，则普通的 DNS 解析进程将自动查找名称服务器。
+如果已正确设置委派，则不需要指定 Azure DNS 名称服务器，因为普通的 DNS 解析过程会自动查找名称服务器。
 
 ```
 nslookup -type=SOA contoso.com
@@ -190,7 +191,7 @@ $child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType
 
 #### <a name="step-3-delegate-the-child-zone"></a>步骤 3. 委托子区域
 
-在父区域中创建相应的 NS 记录集以完成委托。 请注意，父区域中的记录集名称与子区域名称匹配，在本例中为“partners”。
+在父区域中创建相应的 NS 记录集以完成委托。 父区域中的记录集名称与子区域名称匹配，在本例中为“partners”。
 
 ```powershell
 $parent_ns_recordset = New-AzureRmDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600

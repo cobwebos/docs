@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/6/2017
+ms.date: 4/6/2017
 ms.author: v-six
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 55d8e38462691c77a34eb5fca6ac79e2e0f69c37
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -75,9 +76,4 @@ namespace WorkerRole1
 查看更多针对云服务的[故障排除文章](/?tag=top-support-issue&product=cloud-services)。
 
 若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请查看 [Kevin Williamson 博客系列](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

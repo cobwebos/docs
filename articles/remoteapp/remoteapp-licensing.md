@@ -14,14 +14,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
-ms.openlocfilehash: 47a60ba7de5ad09f0fc27efd2d041199b71be348
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 43d0dbb905b2f2b9d98fb3bf8c073ba1c4b6f4c4
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-does-licensing-work-in-azure-remoteapp"></a>如何在 Azure RemoteApp 中进行授权？
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 请阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -40,10 +41,5 @@ RemoteApp 不需要任何 Windows 许可证或远程桌面 CAL。 你的订阅�
 这种说法很合理，对吗？ 你可以发布你有合法权利共享的任何应用。 并且你需要确保自己确实有权共享自己的程序。
 
 请注意，你不能在云集合中使用 CAL 或批量许可协议。 你 *可以* 使用批量许可协议来激活你混合集合中的应用程序（Office 除外）。 只需将其从批量许可介质安装到你的模板映像上。 按照应用程序供应商提供的信息在远程桌面环境中安装许可证。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

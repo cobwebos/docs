@@ -14,14 +14,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
-ms.openlocfilehash: 21ae6458d1d65698c0c8fc7081696cb7406a918c
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 348306795fd3c8275b21e4ec6dceae408916bf72
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="what-is-in-the-azure-remoteapp-template-images"></a>Azure RemoteApp 模板映像中的内容是什么？
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -111,10 +112,5 @@ Office 365 是最常用的应用程序，因此创建了可以使用它的“自
 > **法律信息：** 此映像不包括 Microsoft Office 许可证且 *不能用于生产*。 Office 2013 Professional Plus 映像仅适用于试用版。 如果想要将 Azure RemoteApp 中的 Office 应用用于生产，需要使用 Office 365 ProPlus 映像。 有关授予 Office 许可的详细信息，请参阅 [将 Office 365 与 Azure RemoteApp 一起使用](remoteapp-o365.md)
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 
