@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 12/09/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 8da480acc04922a3636821c5303f6380236c5ea3
-ms.openlocfilehash: 1bff76371ea1ca3ee68c9f04ea24a42f95bb7da7
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 45ff2ff08cb36f9a4bf49ff04de149accf157e0e
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/17/2017
 1. [Azure AD 集成的优点](active-directory-how-to-integrate.md)：了解为何与 Azure AD 集成是安全登录和授权的最佳解决方案。
 2. [Azure AD 身份验证方案](active-directory-authentication-scenarios.md)：利用 Azure AD 中的简化身份验证来登录应用程序。
 3. [将应用程序与 Azure AD 集成](active-directory-integrating-applications.md)：了解如何从 Azure AD 添加、更新和删除应用程序，以及有关集成应用的品牌准则。
-4. [Azure AD 图形 API](active-directory-graph-api.md)：使用 Azure AD 图形 API 通过 REST API 终结点以编程方式访问 Azure AD。 也可以通过 [Microsoft Graph](https://graph.microsoft.io/)访问 Azure AD 图形 API。 Microsoft Graph 具有统一的 API，可让你通过单个 REST API 终结点和单个访问令牌访问多个 Microsoft 云服务 API。
+4. [Microsoft Graph](https://graph.microsoft.io/) 和 [Azure AD 图形 API](active-directory-graph-api.md)：通过 REST API 终结点以编程方式访问 Azure AD。 **强烈建议使用 Microsoft Graph（而非 Azure AD 图形 API）访问 Azure Active Directory 资源。** 目前，我们在集中开发 Microsoft Graph，未计划进一步改进 Azure AD Graph API。 Azure AD Graph API 仍可能适用的方案非常有限；有关详细信息，请参阅 Office 开发人员中心的 [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)（Microsoft Graph 或 Azure AD Graph）博客文章。
 5. [Azure AD 身份验证库](active-directory-authentication-libraries.md)：使用适用于 .NET、JavaScript、Objective-C、Android 和其他语言的 Azure AD 身份验证库轻松对用户进行身份验证以获取访问令牌。
 
 ## <a name="getting-started"></a>入门
@@ -57,10 +57,10 @@ ms.lasthandoff: 02/17/2017
 |:---:|:---:|
 | [.NET](active-directory-devquickstarts-webapi-dotnet.md) |[Node.js](active-directory-devquickstarts-webapi-nodejs.md) |
 
-### <a name="querying-the-directory-quickstart-guide"></a>查询目录快速入门指南
-| [![.NET](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md) |
-|:---:|
-| [Graph API](active-directory-graph-api-quickstart.md) |
+### <a name="microsoft-graph-and-azure-ad-graph-api-quick-start-guides"></a>Microsoft Graph 和 Azure AD 图形 API 快速入门指南
+| [![Microsoft Graph](./media/active-directory-developers-guide/msgraph.png)](https://developer.microsoft.com/graph/quick-start) | [![Azure AD 图形 API](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md) |
+|:---:|:---:|
+| [Microsoft Graph](https://developer.microsoft.com/graph/quick-start) | [Azure AD 图形 API](active-directory-graph-api-quickstart.md) |
 
 ## <a name="how-tos"></a>操作方法
 以下文章介绍如何使用 Azure Active Directory 执行特定任务：
@@ -91,9 +91,13 @@ ms.lasthandoff: 02/17/2017
 * [Azure Active Directory 示例](https://github.com/azure-samples?query=active-directory)：浏览示例列表的最简单方法是使用[代码示例的索引](active-directory-code-samples.md)。
 * [用于 .NET 的 Active Directory 身份验证库 (ADAL)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) - 适用于[最新主要版本](https://docs.microsoft.com/active-directory/adal/microsoft.identitymodel.clients.activedirectory)和[以前主要版本](https://docs.microsoft.com/active-directory/adal/v2/microsoft.identitymodel.clients.activedirectory)的参考文档。
 
-### <a name="graph-api"></a>Graph API
-* [图形 API 参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)：Azure Active Directory 图形 API 的 REST 参考。 [查看交互式图形 API 参考体验](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)。
-* [图形 API 权限范围](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)：用于控制应用对租户中目录数据的访问权限的 OAuth 2.0 权限范围。
+### <a name="microsoft-graph-and-azure-ad-graph-api"></a>Microsoft Graph 和 Azure AD 图形 API
+> [!IMPORTANT]
+> 强烈建议使用 [Microsoft Graph](https://graph.microsoft.io/)（而非 Azure AD Graph API）访问 Azure Active Directory 资源。 目前，我们在集中开发 Microsoft Graph，未计划进一步改进 Azure AD Graph API。 Azure AD Graph API 仍可能适用的方案非常有限；有关详细信息，请参阅 Office 开发人员中心的 [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)（Microsoft Graph 或 Azure AD Graph）博客文章。
+> 
+* [Microsoft Graph](https://graph.microsoft.io/)：有关 Microsoft Graph 的文档、参考、示例和 SDK。 
+* [Azure AD 图形 API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)：Azure Active Directory 图形 API 的 REST 参考。 
+* [Azure AD 图形 API 权限范围](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)：用于控制应用对租户中目录数据的访问权限的 OAuth 2.0 权限范围。
 
 ### <a name="authentication-and-authorization-protocols"></a>身份验证和授权协议
 * [Azure AD 中的签名密钥滚动更新](active-directory-signing-key-rollover.md)：了解 Azure AD 的签名密钥滚动更新频率，以及如何为最常见的应用程序应用场景更新密钥。

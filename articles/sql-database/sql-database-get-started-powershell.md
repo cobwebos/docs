@@ -9,17 +9,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start create
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: hero-article
-ms.date: 03/13/2017
+ms.date: 04/03/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 70cf89a5832aee2d0c303e0d40e104d84837b50c
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 90dc7e4a07f2a3c514c25b4031128f4df4e32aab
+ms.lasthandoff: 04/04/2017
 
 ---
 
@@ -27,7 +27,9 @@ ms.lasthandoff: 03/25/2017
 
 PowerShell 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 PowerShell 在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的 [Azure SQL 数据库逻辑服务器](sql-database-features.md)中部署 Azure SQL 数据库。
 
-在开始之前，请确保安装 PowerShell 的最新版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 
+若要完成本教程，请确保已安装最新的 [Azure PowerShell](/powershell/azureps-cmdlets-docs)。 
+
+如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 

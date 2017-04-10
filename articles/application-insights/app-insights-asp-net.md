@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: ae869be6ed9f304629498f416ffdda96252bdf9c
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: bcd8b3b7fb44a28d7184d14969eb998ce07c8e53
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -83,9 +83,10 @@ ms.lasthandoff: 03/16/2017
 ![Visual Studio 的屏幕快照，显示如何打开 Application Insights 门户](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
 > [!NOTE]
-> 如果出现访问错误，原因可能是你有多个 Microsoft 凭据集，登录时使用了错误的凭据集。 请在门户中注销，然后再次登录。
+> 如果收到访问错误：你是否有多个 Microsoft 凭据集？是否登录时使用了错误的凭据集？ 请在门户中注销，然后再次登录。
 
 门户将从应用打开遥测视图。
+
 ![Application Insights 概述页的屏幕截图](./media/app-insights-asp-net/66.png)
 
 单击任何磁贴或图表以查看更多详细信息。

@@ -1,6 +1,6 @@
 ---
-title: "将 Windows Server 2012 R2 AD FS 与 MFA 服务器配合使用 | Microsoft Docs"
-description: "本文介绍如何开始将 Azure 多重身份验证与 Windows Server 2012 R2 中的 AD FS 配合使用。"
+title: "将 MFA 服务器与 Windows Server 中的 AD FS 配合使用 | Microsoft Docs"
+description: "本文介绍如何开始将 Azure 多重身份验证与 Windows Server 2012 R2 和 2016 中的 AD FS 配合使用。"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/19/2017
+ms.date: 03/29/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
-ms.openlocfilehash: 7fd5c4edadc6d9cc070dff937a963f9a83ec66c2
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f2481c18f12d74a90938ffb0353dd000fe73f440
+ms.lasthandoff: 04/03/2017
 
 ---
-# <a name="configure-azure-multi-factor-authentication-server-to-work-with-with-ad-fs-in-windows-server-2012-r2"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 2012 R2 中的 AD FS 配合使用
+# <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 中的 AD FS 配合使用
 如果使用 Active Directory 联合身份验证服务 (AD FS)，同时想要保护云或本地资源，则可以将 Azure 多重身份验证服务器配置为与 AD FS 配合使用。 此配置将为重要的终结点触发双重验证。
 
-本文介绍如何将 Azure 多重身份验证服务器与 Windows Server 2012 R2 中的 AD FS 配合使用。 请阅读如何 [将 Azure 多重身份验证服务器与 AD FS 2.0 配合使用来保护云资源和本地资源](multi-factor-authentication-get-started-adfs-adfs2.md)，了解详细信息。
+本文介绍如何将 Azure 多重身份验证服务器与 Windows Server 2012 R2 或 Windows Server 2016 中的 AD FS 配合使用。 请阅读如何 [将 Azure 多重身份验证服务器与 AD FS 2.0 配合使用来保护云资源和本地资源](multi-factor-authentication-get-started-adfs-adfs2.md)，了解详细信息。
 
-## <a name="secure-windows-server-2012-r2-ad-fs-with-azure-multi-factor-authentication-server"></a>使用 Azure 多重身份验证服务器保护 Windows Server 2012 R2 AD FS
+## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>使用 Azure 多重身份验证服务器保护 Windows Server AD FS
 安装 Azure 多重身份验证服务器时，可以使用以下选项：
 
 * 在与 AD FS 所在的同一台服务器上本地安装 Azure 多重身份验证服务器
@@ -34,20 +34,22 @@ ms.lasthandoff: 02/28/2017
 
 在开始之前，请注意以下信息：
 
-* 不需要在 AD FS 服务器上安装 Azure 多重身份验证服务器。 但是，必须在运行 AD FS 的 Windows Server 2012 R2 上安装用于 AD FS 的多重身份验证适配器。 可以将服务器安装在其他计算机上（如果支持该服务器版本），将 AD FS 适配器单独安装在 AD FS 联合服务器上。 请参阅以下过程，了解如何单独安装适配器。
-* 设计 MFA 服务器 AD FS 适配器时，预期的是 AD FS 可以将信赖方的名称传递给适配器。 然后，可以将信赖方的名称用作应用程序名称。 但是，结果并非如此。 如果组织使用短信或移动应用验证方法，“公司设置”中定义的字符串将包含占位符 <$*application_name*$>。 使用 AD FS 适配器时不会自动替换此占位符。 因此，建议在保护 AD FS 时，从相应的字符串中删除此占位符。
+* 不需要在 AD FS 服务器上安装 Azure 多重身份验证服务器。 但是，必须在运行 AD FS 的 Windows Server 2012 R2 或 Windows Server 2016 上安装用于 AD FS 的多重身份验证适配器。 可以将服务器安装在其他计算机上（如果支持该服务器版本），将 AD FS 适配器单独安装在 AD FS 联合服务器上。 请参阅以下过程，了解如何单独安装适配器。
+* 如果组织使用短信或移动应用验证方法，“公司设置”中定义的字符串将包含占位符 <$*application_name*$>。 在 MFA 服务器 v7.1 中，可以提供一个应用程序名称来替换此占位符。 在 v7.0 或更低的版本中，使用 AD FS 适配器时不会自动替换此占位符。 对于这些旧版本，请在保护 AD FS 时从相应的字符串中删除此占位符。
 * 用于登录的帐户必须拥有在 Active Directory 服务中创建安全组的用户权限。
-* 多重身份验证 AD FS 适配器安装向导将在 Active Directory 的实例中创建名为 PhoneFactor Admins 的安全组。 然后将联合身份验证服务的 AD FS 服务帐户添加到此组。 建议在域控制器上检查是否确实创建了 PhoneFactor Admins 组，以及 AD FS 服务帐户是否是此组的成员。 如果需要，请在域控制器上手动将 AD FS 服务帐户添加到 PhoneFactor Admins 组。
+* 多重身份验证 AD FS 适配器安装向导将在 Active Directory 的实例中创建名为 PhoneFactor Admins 的安全组。 然后将联合身份验证服务的 AD FS 服务帐户添加到此组。 在域控制器上检查是否确实创建了 PhoneFactor Admins 组，以及 AD FS 服务帐户是否是此组的成员。 如果需要，请在域控制器上手动将 AD FS 服务帐户添加到 PhoneFactor Admins 组。
 * 请阅读如何 [为 Azure 多重身份验证服务器部署用户门户](multi-factor-authentication-get-started-portal.md)
 
 ### <a name="install-azure-multi-factor-authentication-server-locally-on-the-ad-fs-server"></a>在 AD FS 服务器上本地安装 Azure 多重身份验证服务器
 1. 在 AD FS 服务器上下载并安装 Azure 多重身份验证服务器。 请阅读 [Azure 多重身份验证服务器入门](multi-factor-authentication-get-started-server.md)，了解详细信息。
-2. 在 Azure 多重身份验证服务器管理控制台中单击“AD FS”图标，然后选择“允许用户注册”和“允许用户选择方法”选项。
+2. 在 Azure 多重身份验证服务器管理控制台中，单击“AD FS”图标。 选择选项“允许用户注册”和“允许用户选择方法”。
 3. 选择要为组织指定的其他任何选项。
 4. 单击“安装 AD FS 适配器”。
+   
    <center>![云](./media/multi-factor-authentication-get-started-adfs-w2k12/server.png)</center>
-5. 如果显示“Active Directory”窗口，则表示两点。 计算机已加入域，但保护 AD FS 适配器与多重身份验证服务之间通信的 Active Directory 配置并未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动 Active Directory 配置并手动配置设置”复选框，然后单击“下一步”。
-6. 如果显示“本地组”窗口，则表示两点。 计算机尚未加入域，且保护 AD FS 适配器与多重身份验证服务之间通信的本地组配置未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动本地组配置并手动配置设置”复选框，然后单击“下一步”。
+
+5. 如果显示“Active Directory”窗口，则表示两点。 计算机已加入域，但保护 AD FS 适配器与多重身份验证服务之间通信的 Active Directory 配置并未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动 Active Directory 配置并手动配置设置”复选框。 单击“资源组名称” 的 Azure 数据工厂。
+6. 如果显示“本地组”窗口，则表示两点。 计算机尚未加入域，且保护 AD FS 适配器与多重身份验证服务之间通信的本地组配置未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动本地组配置并手动配置设置”复选框。 单击“下一步”。
 7. 在安装向导中单击“下一步”。 Azure 多重身份验证服务器将创建 PhoneFactor Admins 组，并将 AD FS 服务帐户添加到 PhoneFactor Admins 组。
    <center>![云](./media/multi-factor-authentication-get-started-adfs-w2k12/adapter.png)</center>
 8. 在“启动安装程序”页中单击“下一步”。
@@ -77,7 +79,7 @@ ms.lasthandoff: 02/28/2017
 按照以下步骤编辑 MultiFactorAuthenticationAdfsAdapter.config 文件：
 
 1. 将“UseWebServiceSdk”节点设置为“true”。  
-2. 将“WebServiceSdkUrl”的值设置为多重身份验证 Web 服务 SDK 的 URL。 例如：*https://contoso.com/&lt;certificatename&gt;/MultiFactorAuthWebServicesSdk/PfWsSdk.asmx*，其中 certificatename 是证书的名称。  
+2. 将“WebServiceSdkUrl”的值设置为多重身份验证 Web 服务 SDK 的 URL。 例如：*https://contoso.com/&lt;certificatename&gt;/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*，其中 *certificatename* 是证书的名称。  
 3. 编辑 Register-MultiFactorAuthenticationAdfsAdapter.ps1 脚本，将 *-ConfigurationFilePath &lt;path&gt;* 添加到 `Register-AdfsAuthenticationProvider` 命令的末尾，其中 *&lt;path&gt;* 是 MultiFactorAuthenticationAdfsAdapter.config 文件的完整路径。
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>使用用户名和密码配置 Web 服务 SDK
@@ -134,7 +136,7 @@ ms.lasthandoff: 02/28/2017
 
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
 
-6. 为规则提供一个名称。 
+6. 为规则提供一个名称。
 7. 选择“身份验证方法引用”作为传入声明类型。
 8. 选择“传递所有声明值”。
     ![添加转换声明规则向导](./media/multi-factor-authentication-get-started-adfs-cloud/configurewizard.png)

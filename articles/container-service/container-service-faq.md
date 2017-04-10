@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 682ebb212f9056f3704a6de5dde8d3a35681108f
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a70b82770a13231ee59ac768deb45b232f95687d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -44,7 +44,7 @@ Swarm 模式目前不受支持，但已列入服务计划。
 ### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>是否建议在 Azure 容器服务中使用特定的协调器？ 
 通常情况下，我们不提供特定协调器方面的建议。 如果你体验过某个受支持的协调器，可以将该体验应用在 Azure 容器服务中。 不过，数据趋势表明，DC/OS 已在生产环境中证明适用于大数据和 IoT 工作负荷，Kubernetes 适用于云原生工作负荷，Docker Swarm 已知可以集成 Docker 工具且易于学习。
 
-用户也可以使用其他 Azure 服务，根据自己的情况生成和管理自定义容器解决方案。 这些服务包括[虚拟机](../virtual-machines/virtual-machines-linux-azure-overview.md)、[Service Fabric](../service-fabric/service-fabric-overview.md)、[Web 应用](../app-service-web/app-service-web-overview.md)和[批处理](../batch/batch-technical-overview.md)。  
+用户也可以使用其他 Azure 服务，根据自己的情况生成和管理自定义容器解决方案。 这些服务包括[虚拟机](../virtual-machines/linux/overview.md)、[Service Fabric](../service-fabric/service-fabric-overview.md)、[Web 应用](../app-service-web/app-service-web-overview.md)和[批处理](../batch/batch-technical-overview.md)。  
 
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Azure 容器服务和 ACS 引擎的区别是什么？ 
 Azure 容器服务是支持 SLA 的 Azure 服务，具有 Azure 门户、Azure 命令行工具和 Azure API 中提供的功能。 用户可以使用该服务快速实现和管理运行标准容器协调工具的群集，配置选项相对较少。 
@@ -55,7 +55,7 @@ Azure 容器服务是支持 SLA 的 Azure 服务，具有 Azure 门户、Azure �
 
 ### <a name="how-do-i-create-ssh-keys-for-my-cluster"></a>如何为群集创建 SSH 密钥？
 
-可以使用操作系统上的标准工具创建一个 SSH RSA 公钥和私钥对，以便针对群集的 Linux 虚拟机进行身份验证。 有关步骤，请参阅 [OS X 和 Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 指南。 
+可以使用操作系统上的标准工具创建一个 SSH RSA 公钥和私钥对，以便针对群集的 Linux 虚拟机进行身份验证。 有关步骤，请参阅 [OS X 和 Linux](../virtual-machines/linux/mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/linux/ssh-from-windows.md) 指南。 
 
 如果使用 [Azure CLI 2.0 命令](container-service-create-acs-cluster-cli.md)部署容器服务群集，则可为群集自动生成 SSH 密钥。
 
@@ -66,6 +66,12 @@ Azure 容器服务是支持 SLA 的 Azure 服务，具有 Azure 门户、Azure �
 
 如果使用 [Azure CLI 2.0命令](container-service-create-acs-cluster-cli.md)部署 Kubernetes 群集，则可为群集自动生成服务主体凭据。
 
+### <a name="how-large-a-cluster-can-i-create"></a>可以创建多大的群集？
+可以创建包含 1、3 或 5 个主节点的群集。 最多可以选择 100 个代理节点。
+
+> [!IMPORTANT]
+> 对于更大的群集，根据你为节点选择的 VM 大小，可能需要增加订阅中的内核配额。 若要请求增加配额，可免费建立[联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
+> 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>创建群集后，如何提高主机数？ 
 创建群集后，主机数是固定的，不能更改。 在创建群集的过程中，理想情况下应选择多个主机以确保高可用性。

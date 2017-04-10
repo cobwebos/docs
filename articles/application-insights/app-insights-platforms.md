@@ -14,8 +14,9 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 46e6ab8a9c5d4e6a00d61ee4e5bbfd42307bfc69
-ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 42507475b5d15c4704e6bcb3d56dc00c91006655
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -60,9 +61,10 @@ ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
 ## <a name="logging-frameworks"></a>记录框架
 * [Log4Net、NLog 或 System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 * [Java、Log4J 或 Logback](app-insights-java-trace-logs.md)
-* [语义式日志记录 (SLAB)](https://github.com/fidmor89/SLAB_AppInsights)&#151;与[语义式日志记录应用程序块](https://msdn.microsoft.com/library/dn440729.aspx)集成
+* [语义式日志记录 (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) - 与[语义式日志记录应用程序块](https://msdn.microsoft.com/library/dn440729.aspx)集成
 * [基于云的负载测试](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 * [LogStash 插件](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
+* [OMS Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 
 ## <a name="content-management-systems"></a>内容管理系统
 * [Concrete](https://github.com/fidmor89/appInsights-Concrete)
@@ -77,11 +79,6 @@ ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
 * [Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [流分析](app-insights-export-power-bi.md)
 
-## <a name="a-nameprojectsa-build-your-own-sdk"></a><a name="projects"></a> 自行生成 SDK
+## <a name="projects"></a> 自行生成 SDK
 如果尚不存在适用于你的语言或平台的 SDK，也许你想要生成一个？ 查看 [GitHub 上的 Application Insights SDK 项目](https://github.com/Microsoft/AppInsights-Home)中列出的现有 SDK 的代码。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -18,9 +18,9 @@ ms.date: 11/14/2016
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: dd504c95e22d322707c55818815b09d8a36c7ca4
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
+ms.openlocfilehash: 0d3b09fb20f748fe70049c505625d813190e94b0
+ms.lasthandoff: 04/04/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>专用 Docker 容器注册表简介
@@ -48,9 +48,7 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 
 
 ## <a name="key-concepts"></a>关键概念
-* **注册表** - 在 Azure 订阅中创建一个或多个容器注册表。 每个注册表由同一位置的标准 Azure [存储帐户](../storage/storage-introduction.md)提供支持。 在与部署相同的 Azure 位置创建注册表，充分利用容器映像的本地闭合网络存储。
-
-  注册表在根域中根据订阅的 [Azure Active Directory 租户](../active-directory/active-directory-howto-tenant.md)命名。 例如，如果你在 Contoso 域中有一个组织帐户，则完全限定的注册表名称采用 `myregistry-contoso.azurecr.io` 格式。
+* **注册表** - 在 Azure 订阅中创建一个或多个容器注册表。 每个注册表由同一位置的标准 Azure [存储帐户](../storage/storage-introduction.md)提供支持。 在与部署相同的 Azure 位置创建注册表，充分利用容器映像的本地闭合网络存储。 完全限定的注册表名称采用以下格式：`myregistry.azurecr.io`。
 
   可以使用使用 Azure Active Directory 支持的 [服务主体](../active-directory/active-directory-application-objects.md)或提供的管理员帐户来[控制访问](container-registry-authentication.md)容器注册表。 运行标准 `docker login` 命令可对注册表进行身份验证。
 
