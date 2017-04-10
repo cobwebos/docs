@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: a295a768-7ff2-4a86-a253-0090281c8efa
 ms.service: sql-database
-ms.custom: migrate and move
+ms.custom: sync data
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,6 +18,7 @@ ms.author: jhubbard
 translationtype: Human Translation
 ms.sourcegitcommit: c8e285fc6fb82ab5c929236ac9cb5dc858924e57
 ms.openlocfilehash: 6535260a1650a2d3cc665eeb9d3ea33ae2de2650
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -179,9 +180,4 @@ Azure SQL 数据同步允许选择要同步的表和列。 如果还希望对列
 * [下载完整的 SQL 数据同步技术文档](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)
 * [SQL 数据库概述](sql-database-technical-overview.md)
 * [数据库生命周期管理](https://msdn.microsoft.com/library/jj907294.aspx)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
