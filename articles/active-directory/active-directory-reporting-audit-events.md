@@ -17,6 +17,7 @@ ms.author: dhanyahk;markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 6950072b8970dfc1b80674efe0be6cb7496fd5ce
 ms.openlocfilehash: 2dda60160bbcaa729bc8e5cec4f47efc10d120cf
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -65,7 +66,7 @@ Azure Active Directory 审核报告可帮助客户识别其 Azure Active Directo
 | 将角色成员添加到角色 |已将用户添加到目录角色。 |
 | 从角色中删除角色成员 |已从目录角色中删除用户。 |
 | AddRoleDefinition |已添加角色定义。 |
-| UpdateRoleDefinition |已更新角色定义。 若要查看哪些角色设置已更新，请参阅以下部分中的“已审核角色定义属性”[](#update-role-definition-attributes) |
+| UpdateRoleDefinition |已更新角色定义。 若要查看哪些角色设置已更新，请参阅以下部分中的 [已审核角色定义属性](#update-role-definition-attributes) |
 | DeleteRoleDefinition |已删除角色定义。 |
 | AddRoleAssignmentToRoleDefinition |已将角色分配添加到角色定义。 |
 | RemoveRoleAssignmentFromRoleDefinition |已从角色定义中删除角色分配。 |
@@ -325,10 +326,5 @@ Azure AD 审核报告中的事件将保留 180 天。 有关保留报告的详�
 | PasswordValidityPeriodDays |必须更改密码的合理天数。 |
 
 审核记录是许多标准规定的必要控制机制。 对于根据法规要求使用 Azure Active Directory 审核报告的客户，建议提交本帮助主题的副本（连同客户导出的审核报告副本）来解释报告的详细信息。 如果审核人员想要了解 Azure 当前符合的法规，请将审核人员定向到 Microsoft Azure 信任中心的[合规性页面](https://azure.microsoft.com/support/trust-center/compliance/)。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
