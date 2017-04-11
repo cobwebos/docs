@@ -61,7 +61,7 @@ ms.lasthandoff: 04/03/2017
 ### <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>我已在备份保管库中备份了经典 VM。 是否可以将 VM 从经典模式迁移到 Resource Manager 模式并在恢复服务保管库中保护它们？
 将 VM 从经典模式迁移到 Resource Manager 模式时，备份保管库中的经典 VM 恢复点不会自动迁移到恢复服务保管库。 可以按照以下步骤传输 VM 备份：
 
-1. 在备份保管库中，转到“受保护的项”选项卡并选择 VM。 单击“停止保护”。[](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines) 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
+1. 在备份保管库中，转到“受保护的项”选项卡并选择 VM。 单击[停止保护](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines)。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
 2. 将虚拟机从经典模式迁移到资源管理器模式。 确保与虚拟机对应的存储和网络信息也已迁移到 Resource Manager 模式。
 3. 创建一个恢复服务保管库，并使用保管库仪表板顶部的“备份”操作在迁移的虚拟机上配置备份。 有关将 VM 备份到恢复服务保管库的详细信息，请参阅文章[使用恢复服务保管库保护 Azure VM](backup-azure-vms-first-look-arm.md)。
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 04/03/2017
 
 ### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>如果重命名了用于将数据备份到 Azure 的 Windows 服务器，会发生什么情况？<br/>
 当你重命名服务器时，所有当前配置的备份都将停止。
-将向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中的“其他服务器”选项[](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+将向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中的[**其他服务器**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)选项。
 
 ### <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>可以从哪些类型的驱动器备份文件和文件夹？ <br/>
 无法备份以下驱动器/卷：

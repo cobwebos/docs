@@ -3,7 +3,7 @@ title: "使用 Web 作业运行后台任务"
 description: "了解如何在 Azure Web 应用中运行后台任务。"
 services: app-service
 documentationcenter: 
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
