@@ -3,7 +3,7 @@ title: "Azure Web 作业文档资源"
 description: "学习如何使用 Azure Web 作业和 Azure WebJobs SDK 时可以参考的推荐资源"
 services: app-service
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: ed005e56-4334-4641-a5e5-15435c2be36b

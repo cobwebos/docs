@@ -1,4 +1,4 @@
-可使用“浏览” [](https://portal.azure.com) 边栏选项卡在 **Azure 门户** 访问缓存。
+可使用**浏览** 边栏选项卡在 [Azure 门户](https://portal.azure.com) 访问缓存。
 
 ![Azure Redis 缓存浏览边栏选项卡](media/redis-cache-browse/redis-cache-browse.png)
 
@@ -11,9 +11,4 @@
 可以从“Redis 缓存”边栏选项卡查看和配置缓存。
 
 ![Redis 缓存的所有设置](media/redis-cache-browse/redis-cache-blade.png)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 
