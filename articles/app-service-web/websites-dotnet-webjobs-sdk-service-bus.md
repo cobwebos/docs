@@ -3,7 +3,7 @@ title: "如何通过 WebJobs SDK 使用 Azure Service Bus"
 description: "了解如何通过 WebJobs SDK 使用 Azure 服务总线队列和主题。"
 services: app-service\web, service-bus
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: 2114a934-135b-42b8-871c-6cc040214e76

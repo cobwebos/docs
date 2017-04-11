@@ -3,8 +3,8 @@ title: "在 Mac OS X 上设置开发环境 | Microsoft Docs"
 description: "安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Mac OS X 上开始生成应用程序。"
 services: service-fabric
 documentationcenter: java
-author: saysa
-manager: raunakp
+author: sayantancs
+manager: timlt
 editor: 
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
@@ -12,7 +12,7 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/27/2016
+ms.date: 04/06/2017
 ms.author: saysa
 translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
@@ -51,7 +51,7 @@ Service Fabric 不在 OS X 本机上运行。为了运行本地 Service Fabric �
     ```
     此步骤获取包含 VM 配置和 VM 下载位置的文件 `Vagrantfile`。
 
-   
+
 2. 导航到本地克隆存储库
 
     ```bash

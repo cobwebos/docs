@@ -51,7 +51,7 @@ ms.lasthandoff: 03/29/2017
 
 执行下列步骤以创建事件中心：
 
-1. 在“Azure 门户”中[](https://portal.azure.com)，选择“新建”，键入“事件中心”，然后从生成的搜索中选择“事件中心”。 然后，选择“创建”。
+1. 在 [Azure 门户](https://portal.azure.com) 中，选择“新建”，键入“事件中心”，然后从生成的搜索中选择“事件中心”。 然后，选择“创建”。
 
 2. 提供事件中心的名称，然后创建资源组。 我们已分别指定 `socialtwitter-eh` 和 `socialtwitter-rg`。 选择将帐户固定到仪表板的选项，然后选择“创建”按钮。
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 03/29/2017
 
 若要设置流分析作业，请执行以下步骤：
 
-1. 在“Azure 门户”[](https://portal.azure.com/)中，选择“新建”，键入“STREAM ANALYTICS”，然后选择“流分析”磁贴。
+1. 在 [Azure 门户](https://portal.azure.com/) 中，选择“新建”，键入“STREAM ANALYTICS”，然后选择“流分析”磁贴。
 
 2. 指定以下值，然后选择“创建”。
 

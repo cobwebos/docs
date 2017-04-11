@@ -3,7 +3,7 @@ title: "使用 Visual Studio 部署 Web 作业"
 description: "了解如何使用 Visual Studio 将 Azure Web 作业部署到 Azure App Service Web 应用。"
 services: app-service
 documentationcenter: 
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755

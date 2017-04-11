@@ -35,7 +35,7 @@ ms.lasthandoff: 03/27/2017
 
     ![Azure 云服务项目的的属性](./media/vs-azure-tools-emulator-express-debug-run/web-properties.png)
 
-1. 在“本地开发服务器”下，选择“使用 IIS Express”选项。。
+1. 在“本地开发服务器”下，选择“使用 IIS Express”选项。
 
 1. 在“模拟器”下，选择“使用 Emulator Express”。
    

@@ -3,7 +3,7 @@ title: "使用 Web 作业运行后台任务"
 description: "了解如何在 Azure Web 应用中运行后台任务。"
 services: app-service
 documentationcenter: 
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
@@ -24,6 +24,8 @@ ms.lasthandoff: 03/01/2017
 # <a name="run-background-tasks-with-webjobs"></a>使用 Web 作业运行后台任务
 ## <a name="overview"></a>概述
 可使用&3; 种方式在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用的 WebJobs 中运行程序或脚本：按需、连续或按计划。 使用 Web 作业无需支付额外的费用。
+
+[!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
 本文说明如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs。 有关如何使用 Visual Studio 或连续交付过程进行部署的信息，请参阅[如何将 Azure WebJobs 部署到 Web 应用](websites-dotnet-deploy-webjobs.md)。
 
