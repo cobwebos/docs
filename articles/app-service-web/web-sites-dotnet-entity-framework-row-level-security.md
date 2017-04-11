@@ -17,6 +17,7 @@ ms.author: thmullan
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ba1bb3d84b462dfebbb2564569517d7336bf54fd
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -203,7 +204,7 @@ ALTER TABLE Contacts ADD UserId nvarchar(128)
 
 ![SSMS AspNetUsers 表](./media/web-sites-dotnet-entity-framework-row-level-security/SSMS-AspNetUsers.png)
 
-复制 user1@contoso.com, 的 ID，将其粘贴到下面的 T-SQL 语句中。 执行该语句，将 3 个联系人与此 UserId 相关联。
+复制 user1@contoso.com 的 ID，将其粘贴到下面的 T-SQL 语句中。 执行该语句，将 3 个联系人与此 UserId 相关联。
 
 ```
 UPDATE Contacts SET UserId = '19bc9b0d-28dd-4510-bd5e-d6b6d445f511'
@@ -248,10 +249,5 @@ go
 本教程仅概要介绍了可以通过 RLS 执行的各种操作。 例如，可以创建更完善或更细致的访问逻辑，还可以在 SESSION_CONTEXT 中存储除当前 UserId 之外的其他内容。 还可以[将 RLS 与弹性数据库工具客户端库相集成](../sql-database/sql-database-elastic-tools-multi-tenant-row-level-security.md)，以便在扩展型数据层中启用多租户分片。
 
 除了提供这些可能的操作，我们还致力于改进 RLS 的功能。 如果你有任何问题、想法或者希望看到我们推出特定的功能，请在评论中指出。 非常感谢你的反馈！
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
