@@ -15,9 +15,9 @@ ms.tgt_pltfrm: na
 ms.author: heidist
 ms.date: 10/27/2016
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 960880e44ad4de74339df7d0786dd8aa34962e3f
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: a67637d149a84313270c03d21acf8a9c1870be05
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -85,8 +85,6 @@ Azure 搜索使用默认计分计算初始分数，但可以通过计分概要�
 如前所述，自定义计分通过索引架构中定义的计分概要文件实现。
 
 此示例演示具有两个计分概要文件的索引架构（`boostGenre`、`newAndHighlyRated`）。 针对此索引的任何查询（包含任一概要文件作为查询参数）将使用此概要文件对结果集进行计分。
-
-[尝试运行此示例](search-get-started-scoring-profiles.md)。
 
     {
       "name": "musicstoreindex",

@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 07/21/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: bc052dd441661b18c3ada71e5c79c88ab0ecbc10
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 187642db18806f4034dcecf4c25b5c71028fdfe3
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="about-images-for-linux-virtual-machines"></a>关于 Linux 虚拟机的映像
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Resource Manager 模型的映像的信息，请参阅[此处](../../virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Resource Manager 模型的映像的信息，请参阅[此处](../cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 [!INCLUDE [virtual-machines-common-classic-about-images](../../../../includes/virtual-machines-common-classic-about-images.md)]
 
 ## <a name="working-with-images"></a>使用映像
 可以使用适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (CLI) 模块管理可供 Azure 订阅使用的映像。 也可以使用 Azure 门户完成某些映像任务，但命令行可提供更多选项。
 
-有关这些工具的示例，请参阅 [Common Azure CLI commands on Linux and Mac](../../virtual-machines-linux-cli-manage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Linux 和 Mac 上的常用 Azure CLI 命令）。
+有关这些工具的示例，请参阅 [Common Azure CLI commands on Linux and Mac](../cli-manage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Linux 和 Mac 上的常用 Azure CLI 命令）。
 
 ## <a name="next-steps"></a>后续步骤
 还可以[上载自己的映像](create-upload-vhd.md)。

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 3/12/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 1dc2883056eab9764cda674b42fa40c517550ccd
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 61f09a6f103b9cedaf19f1128a21fa8d5df974a1
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -128,7 +128,7 @@ ms.lasthandoff: 03/27/2017
 
 完成还原操作后，可以：
 * [使用模板来自定义已还原的 VM](#use-templates-to-customize-restore-vm)
-* [使用已还原的磁盘附加到现有虚拟机](../virtual-machines/virtual-machines-windows-attach-disk-portal.md)
+* [使用已还原的磁盘附加到现有虚拟机](../virtual-machines/windows/attach-disk-portal.md)
 * [使用 PowerShell 从已还原的磁盘创建新虚拟机。](./backup-azure-vms-automation.md#restore-an-azure-vm)
 
 在“**还原配置**”边栏选项卡中，单击“**确定**”完成还原配置。 在“**还原**”边栏选项卡中，单击“**还原**”以触发还原操作。
@@ -193,7 +193,7 @@ ms.lasthandoff: 03/27/2017
 * 如果使用基于 cloud-init 的 Linux 分发（如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/linux/classic/reset-access.md)。 建议在这些分发上使用 SSH 密钥以避免还原后重置密码。
 * 将会安装存在于备份配置期间的扩展，但不会启用这些扩展。 如果发现任何问题，请重新安装扩展。 
 * 如果备份的 VM 具有静态 IP，则还原的 VM 将具有动态 IP 以避免在创建还原的 VM 时发生冲突。 详细了解如何[向还原的 VM 添加静态 IP](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
-* 还原的 VM 将不会设置可用性值。 使用已还原的磁盘从 PowerShell 或模板创建 VM 时，建议使用还原磁盘选项和[添加可用性集](../virtual-machines/virtual-machines-windows-create-availability-set.md#use-powershell-to-create-an-availability-set)。 
+* 还原的 VM 将不会设置可用性值。 使用已还原的磁盘从 PowerShell 或模板创建 VM 时，建议使用还原磁盘选项和[添加可用性集](../virtual-machines/windows/create-availability-set.md#use-powershell-to-create-an-availability-set)。 
 
 ## <a name="backup-for-restored-vms"></a>备份还原的 VM
 如果将 VM 还原到的资源组与最初备份 VM 时所在的资源组同名，则还原之后，会继续备份该 VM。 如果将 VM 还原到了不同的资源组或者为还原的 VM 指定了不同的名称，则系统会将此 VM 视为新 VM，因此需要为还原的 VM 设置备份。

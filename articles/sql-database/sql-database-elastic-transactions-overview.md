@@ -16,9 +16,9 @@ ms.workload: sql-database
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 144774c9106bf5a0e389c99075c822d1c5282692
-ms.openlocfilehash: f9c53a981376cf534c50d80ae2f60fc01f193e4d
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: ceb2d7a28cc416186f3faf1dc5228fce161c34c5
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -143,7 +143,6 @@ SQL DB 中的弹性数据库事务当前存在以下限制：
 
 * 仅支持 SQL DB 中跨数据库的事务。 其他 [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) 资源提供程序和除 SQL DB 以外的数据库无法参与弹性数据库事务。 这意味着，弹性数据库事务无法扩展到本地 SQL Server 和 Azure SQL 数据库。 对于本地的分布式事务，请继续使用 MSDTC。 
 * 仅支持来自 .NET 应用程序的客户端协调事务。 目前已规划 T-SQL 的服务器端支持，例如 BEGIN DISTRIBUTED TRANSACTION，但尚未推出。 
-* 仅支持 Azure SQL DB V12 上的数据库。
 * 不支持跨 WCF 服务的事务。 例如，你有一个执行事务的 WCF 服务方法。 事务范围内的调用将失败，并显示异常 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)。
 
 ## <a name="next-steps"></a>后续步骤

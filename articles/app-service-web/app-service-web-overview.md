@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 83c063bb003ccda80ba6c1a74aadcd624d77ae47
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 2a1e1004a4dab48aed75740a24ff5556242eaa67
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -62,12 +62,12 @@ ms.lasthandoff: 03/21/2017
 若要开始在应用服务中向新 Web 应用部署示例代码，请遵循下拉框中的某篇教程。 你需要一个免费 Azure 帐户。
 
 > [!div class="op_single_selector"]
-> * [在 5 分钟内将第一个 HTML 站点部署到 Azure](app-service-web-get-started-html-cli-nodejs.md)
-> * [在 5 分钟内将第一个 ASP.NET Web 应用部署到 Azure](app-service-web-get-started-dotnet-cli-nodejs.md)
-> * [在 5 分钟内将第一个 PHP Web 应用部署到 Azure](app-service-web-get-started-php-cli-nodejs.md)
-> * [在 5 分钟内将第一个 Node.js Web 应用部署到 Azure](app-service-web-get-started-nodejs-cli-nodejs.md)
-> * [在 5 分钟内将第一个 Python Web 应用部署到 Azure](app-service-web-get-started-python-cli-nodejs.md)
+> * [在 5 分钟内将第一个 ASP.NET Web 应用部署到 Azure](app-service-web-get-started-dotnet.md)
+> * [在 5 分钟内将第一个 PHP Web 应用部署到 Azure](app-service-web-get-started-php.md)
+> * [在 5 分钟内将第一个 Node.js Web 应用部署到 Azure](app-service-web-get-started-nodejs.md)
 > * [在 5 分钟内将第一个 Java Web 应用部署到 Azure](app-service-web-get-started-java.md)
+> * [在 5 分钟内将第一个 Python Web 应用部署到 Azure](app-service-web-get-started-python.md)
+> * [在 5 分钟内将第一个 HTML 站点部署到 Azure](app-service-web-get-started-html.md)
 > 
 > 
 

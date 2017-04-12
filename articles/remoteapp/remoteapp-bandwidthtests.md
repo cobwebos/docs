@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1729d9ba3f873800127ba3ca77676b843611fded
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a321f9c03f3ec8f898ddf9bdd588c1d79bfd163a
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="azure-remoteapp---testing-your-network-bandwidth-usage-with-some-common-scenarios"></a>Azure RemoteApp - 通过一些常见方案测试网络带宽使用情况
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -100,10 +101,5 @@ ms.openlocfilehash: 1729d9ba3f873800127ba3ca77676b843611fded
 * [估计 Azure RemoteApp 的网络带宽使用情况](remoteapp-bandwidth.md)
 * [Azure RemoteApp - 网络带宽和体验质量如何相辅相成？](remoteapp-bandwidthexperience.md)
 * [Azure RemoteApp 网络带宽 - 通用指南（如果无法自行测试）](remoteapp-bandwidthguidelines.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

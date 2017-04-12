@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/02/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 1d010dd85ccf2dd708a7740eb8399fc06a603574
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c306000e898f5fe0260ef3347988923266ed096e
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -65,7 +65,7 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="vm-availability-and-network-access"></a>VM 可用性和网络访问
 
-如果 VM 运行需要具有高可用性的关键应用程序，我们强烈建议使用多个 VM。 为提高可用性，请在[可用性集](../virtual-machines/virtual-machines-windows-infrastructure-availability-sets-guidelines.md)中至少创建两个 VM。
+如果 VM 运行需要具有高可用性的关键应用程序，我们强烈建议使用多个 VM。 为提高可用性，请在[可用性集](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md)中至少创建两个 VM。
 
 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)还要求负载均衡 VM 属于同一可用性集。 如果必须通过 Internet 访问 VM，则必须配置[面向 Internet 的负载均衡器](../load-balancer/load-balancer-internet-overview.md)。
 
@@ -123,7 +123,7 @@ Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新�
 
 如果 VM 进程消耗的资源多过实际所需的量，可能会造成资源滥用的问题。 VM 性能问题可能会导致服务中断，从而违反可用性安全原则。 因此，不仅要在出现问题时被动监视 VM 的访问，而且还要在正常运行期间针对基准性能进行主动监视。
 
-通过分析 [Azure 诊断日志文件](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)，可以监视 VM 资源并识别可能会损害性能与可用性的潜在问题。 Azure 诊断扩展在基于 Windows 的 VM 上提供监视和诊断功能。 在 [Azure Resource Manager 模板](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)中包含该扩展即可启用这些功能。
+通过分析 [Azure 诊断日志文件](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)，可以监视 VM 资源并识别可能会损害性能与可用性的潜在问题。 Azure 诊断扩展在基于 Windows 的 VM 上提供监视和诊断功能。 在 [Azure Resource Manager 模板](../virtual-machines/windows/extensions-diagnostics-template.md)中包含该扩展即可启用这些功能。
 
 还可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) 来洞察资源的运行状况。
 

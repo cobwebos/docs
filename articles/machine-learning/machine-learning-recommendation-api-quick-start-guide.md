@@ -12,12 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/31/2017
 ms.author: luisca
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-datamarket-deprecation
 translationtype: Human Translation
-ms.sourcegitcommit: c5d1812a3bd7e1ad3621ca691339f01729882b08
-ms.openlocfilehash: 67131bbaccff549817bfe5fdf874d609ea22c2bc
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 21cf8b726ffd9b05f771c8ac6480140a6ed3199e
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -51,9 +53,9 @@ ms.lasthandoff: 01/31/2017
 ## <a name="limitations"></a>限制
 * 每个订阅的最大模型数是 10 个。
 * 目录可容纳的最大项目数是 100000 个。
-* 保留的最大使用点数约为&50000;00 个。 如果上载或报告新使用点，将删除最老的使用点。
+* 保留的最大使用点数约为 5000000 个。 如果上载或报告新使用点，将删除最老的使用点。
 * 在 POST 中可发送的最大数据大小（例如导入目录数据、导入使用数据）是 200MB。
-* 非活动建议模型版本的每秒事务数约为&2;TPS。 活动建议模型版本最多可容纳 20TPS。
+* 非活动建议模型版本的每秒事务数约为 2TPS。 活动建议模型版本最多可容纳 20TPS。
 
 ## <a name="integration"></a>集成
 ### <a name="authentication"></a>身份验证

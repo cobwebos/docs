@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 12f27315348040ac897c1ff286b54d38e9950c7d
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: f2decec5385ffab59a441cdc28da80371b579df7
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="create-an-azure-remoteapp-image"></a>创建 Azure RemoteApp 映像
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -36,10 +37,5 @@ Azure RemoteApp 使用映像来保存你与你的用户共享的应用。 （我
 * 你可以使用 RemoteApp 订阅中包括的[模板映像](remoteapp-images.md)之一。 这些映像是由 RemoteApp 团队创建和维护的，而且包含一些你可以提供给你的用户的标准应用程序（如 Office 套件）。 请注意，只有 Office 365 Pro Plus 映像可以在生产设置中使用。
 
 无论你从何处获取映像或者如何创建映像，都要确保你已了解[应用要求](remoteapp-appreqs.md)，以确保你的应用在 RemoteApp 中正常运行。 然后，下一步是创建[云](remoteapp-create-cloud-deployment.md)或[混合](remoteapp-create-hybrid-deployment.md)集合。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/21/2016
 ms.author: riande
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 11d9869e656014fe7106f9c66975792c5faa357d
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: b1d9c1c75d29e39bbd9433197ad06a56da5dc799
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/20/2017
 * 如何将使用数据库的 Web 项目部署到 Azure App Service 中的 [Web 应用](http://go.microsoft.com/fwlink/?LinkId=529714)。
 
 > [!NOTE]
-> 本教程的篇幅较长。 如果要快速了解 Azure App Service 和 Visual Studio Web 项目，请参阅[在 Azure App Service 中创建 ASP.NET Web 应用](web-sites-dotnet-get-started.md)。 有关疑难解答信息，请参阅[疑难解答](#troubleshooting)部分。
+> 本教程的篇幅较长。 如果要快速了解 Azure App Service 和 Visual Studio Web 项目，请参阅[在 Azure App Service 中创建 ASP.NET Web 应用](app-service-web-get-started-dotnet.md)。 有关疑难解答信息，请参阅[疑难解答](#troubleshooting)部分。
 > 
 > 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
@@ -581,7 +581,7 @@ ASP.NET MVC 基架功能可以自动生成用于执行创建、读取、更新�
 
 * 预配 SQL 数据库时出错 - 确保已安装最新的 SDK。 2.8.1 之前的版本存在一个 bug，在某些情况下，当 VS 尝试创建数据库服务器或数据库时，该 bug 会导致错误。
 * 创建 Azure 资源时出现错误消息“操作不支持订阅优惠类型”- 与上面相同。
-* 部署时出错 - 建议查看[基本 ASP.NET 部署](web-sites-dotnet-get-started.md)一文。 该部署方案较为简单，如果你遇到相同的问题，也许可以轻松地识别原因。 例如，在某些企业环境中，企业防火墙可能会阻止 Web Deploy 与 Azure 建立所需的连接类型。
+* 部署时出错 - 建议查看[基本 ASP.NET 部署](app-service-web-get-started-dotnet.md)一文。 该部署方案较为简单，如果你遇到相同的问题，也许可以轻松地识别原因。 例如，在某些企业环境中，企业防火墙可能会阻止 Web Deploy 与 Azure 建立所需的连接类型。
 * 部署时无法在“发布 Web”向导中选择连接字符串 - 如果你使用其他方法创建 Azure 资源（例如，尝试部署到在门户中创建的 Web 应用和 SQL 数据库），SQL 数据库可能与 Web 应用不相关联。 最简单的解决方案是根据本教程中所示，使用 VS 创建新的 Web 应用和数据库。 不需要从头开始学习本教程 - 在“发布 Web”向导中，可以选择创建新的 web 应用，此时会出现在创建项目时所看到的相同的 Azure 资源创建对话框。
 * 有关 Google 或 Facebook 开发人员门户的指导已过时 - 请参阅本教程末尾的 Disqus 专门注释。
 

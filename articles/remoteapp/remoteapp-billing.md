@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 4558a91c7f1e1f5ee825e167e20988878d164862
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 18c369c4e8ccf828c35ec4a964e61f13613f899b
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-stop-being-billed-for-azure-remoteapp"></a>如何停止对 Azure RemoteApp 收费
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -34,10 +35,5 @@ ms.openlocfilehash: 4558a91c7f1e1f5ee825e167e20988878d164862
 3. 在你的订阅中为每个集合重复此操作。 
 
 可能需要花费几分钟来删除每个集合。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

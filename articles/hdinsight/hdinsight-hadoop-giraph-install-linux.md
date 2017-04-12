@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: ff27749800319517a8f635530f0f16b928692575
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 98008946357e3c4f15f43f7901ac5ffa2dab0b60
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/25/2017
 本主题介绍如何通过脚本操作安装 Giraph。 一旦你已安装 Giraph，你还将了解如何将 Giraph 用于大多数典型应用程序，也就是处理大型图形。
 
 > [!IMPORTANT]
-> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="whatis"></a>什么是 Giraph？
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/25/2017
 
 > [!WARNING]
 > 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助找出并解决与这些组件相关的问题。
-> 
+>
 > 自定义组件（如 Giraph）可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求你参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
 
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 03/25/2017
 
     https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-本部分说明如何在通过 Azure 门户创建群集时使用示例脚本。 
+本部分说明如何在通过 Azure 门户创建群集时使用示例脚本。
 
 > [!NOTE]
 > Azure PowerShell、Azure CLI、HDInsight .NET SDK 或 Azure Resource Manager 模板也可用于应用脚本操作。 你也可以将脚本操作应用于已在运行的群集。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
@@ -70,7 +70,7 @@ ms.lasthandoff: 03/25/2017
 1. 使用[创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤开始创建群集，但是不完成创建。
 
 2. 在“可选配置”边栏选项卡上，选择“脚本操作”，并提供以下信息：
-   
+
    * **名称**：输入脚本操作的友好名称。
 
    * **脚本 URI**：https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
@@ -92,19 +92,19 @@ ms.lasthandoff: 03/25/2017
 完成群集创建之后，便可执行以下步骤来运行 Giraph 随附的 SimpleShortestPathsComputation 示例。 这会使用基本 [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) 实现来查找图形中对象之间的最短路径。
 
 1. 使用 SSH 连接到 HDInsight 群集：
-   
+
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
-   
+
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 使用以下命令创建名为 **tiny_graph.txt** 的新文件：
-   
+
     ```
     nano tiny_graph.txt
     ```
-   
+
     使用以下项作为此文件的内容：
-   
+
     ```
     [0,0,[[1,1],[3,3]]]
     [1,0,[[0,1],[2,2],[3,1]]]
@@ -112,29 +112,29 @@ ms.lasthandoff: 03/25/2017
     [3,0,[[0,3],[1,1],[4,4]]]
     [4,0,[[3,4],[2,4]]]
     ```
-   
+
     此数据使用 `[source_id, source_value,[[dest_id], [edge_value],...]]` 格式描述定向图形中对象之间的关系。 每一行代表 `source_id` 对象与一个或多个 `dest_id` 对象之间的关系。 `edge_value`（或权重）可被视为 `source_id` 和 `dest\_id` 之间的连接强度或距离。
-   
+
     使用表示对象间距离的值（或权重）绘制图形后，上述数据可能与下面类似。
-   
+
     ![tiny_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
 
 3. 若要保存文件，请使用 **Ctrl+X**，然后输入“Y”，最后按 **Enter** 以接受文件名。
 
 4. 使用以下命令将数据存储到 HDInsight 群集的主存储中：
-   
+
     ```
     hdfs dfs -put tiny_graph.txt /example/data/tiny_graph.txt
     ```
 
 5. 使用以下命令运行 SimpleShortestPathsComputation 示例。
-   
+
     ```
     yarn jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=headnodehost:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
     ```
-   
+
     下表介绍了与此命令搭配使用的参数：
-   
+
    | 参数 | 作用 |
    | --- | --- |
    | `jar /usr/hdp/current/giraph/giraph-examples.jar` |包含示例的 jar 文件。 |
@@ -146,27 +146,27 @@ ms.lasthandoff: 03/25/2017
    | `-vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat` |输出格式。 在此例中，ID 和值是纯文本。 |
    | `-op /example/output/shortestpaths` |输出位置。 |
    | `-w 2` |要使用的辅助角色数目。 此例中为 2。 |
-   
+
     有关这些参数以及与 Giraph 示例搭配使用的其他参数的详细信息，请参阅 [Giraph 快速入门](http://giraph.apache.org/quick_start.html)。
 
 6. 完成该作业后，结果将存储在 **/example/out/shotestpaths** 目录中。 输出文件的名称将以 **part-m-** 开头，结尾的数字表示第一个文件、第二个文件，依此类推。 使用以下命令查看输出：
-   
+
     ```
     hdfs dfs -text /example/output/shortestpaths/*
     ```
-   
+
     输出应如下所示：
-   
+
         0    1.0
         4    5.0
         2    2.0
         1    0.0
         3    1.0
-   
+
     SimpleShortestPathComputation 示例硬编码为从对象 ID 1 开始查找与其他对象间的最短路径。 因此，输出应显示为 `destination_id distance`，其中，distance 为对象 ID 1 与目标 ID 的边缘之间的行程值（或权重）。
-   
+
     在可视化此数据的情况下，你可以通过体验 ID 1 与所有其他对象之间的最短路径来验证结果。 请注意，ID 1 和 ID 4 之间的最短路径为 5。 这是从 <span style="color:orange">ID 1 到 ID 3</span>，然后再从 <span style="color:red">ID 3 到 ID 4</span> 的总距离。
-   
+
     ![将对象绘制为圆圈，并绘制对象之间的最短路径](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph-out.png)
 
 ## <a name="next-steps"></a>后续步骤
@@ -176,5 +176,4 @@ ms.lasthandoff: 03/25/2017
 * [在 HDinsight 群集上安装 R](hdinsight-hadoop-r-scripts-linux.md)：说明如何使用群集自定义在 HDInsight Hadoop 群集上安装并使用 R。 R 是一种用于统计计算的开放源代码语言和环境。 它提供了数百个内置统计函数及其自己的编程语言，可结合各方面的函数编程和面向对象的编程。 它还提供了各种图形功能。
 
 * [在 HDInsight 群集上安装 Solr](hdinsight-hadoop-solr-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Solr。 Solr 允许对存储的数据执行功能强大的搜索操作。
-
 

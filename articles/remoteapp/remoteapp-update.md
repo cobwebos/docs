@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 593718b0d0d99f813321cb9ad6a7241e2315f6d0
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 41c8a13ebd008ed4f9d8a5399bf8e272bf0fd7b2
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="update-a-collection-in-azure-remoteapp"></a>在 Azure RemoteApp 中更新集合
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -41,10 +42,5 @@ ms.openlocfilehash: 593718b0d0d99f813321cb9ad6a7241e2315f6d0
    * **更新后给用户 60 分钟时间**。 只要完成更新，Azure RemoteApp 就会向所有活动用户显示一条消息，通知他们保存其工作，注销，然后再次登录。 在 60 分钟后尚未注销的任何活动用户将被自动注销。 用户可以立即再次登录。
    * **立即注销用户**。 只要完成更新，就会自动注销所有用户，而不会显示任何警告。 如果选择此选项，用户可能会丢失数据。 但是，他们可以立即重新连接到应用。
 6. 请单击复选标记开始更新。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

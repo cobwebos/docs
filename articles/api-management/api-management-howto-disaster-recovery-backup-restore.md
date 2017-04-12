@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 1c812fc31011b57f2cdb357574877d6b7125280f
-ms.openlocfilehash: c5ae5049588d5bc7628442942e71f182a425fead
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c0413f9c83fd6dceb4a1d956c0f32712e29bdc58
+ms.lasthandoff: 03/31/2017
 
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/10/2017
 第一步是创建 Azure Active Directory 应用程序。 使用包含 API 管理服务实例的订阅登录 [Azure 经典门户](http://manage.windowsazure.com/)并导航到默认 Azure Active Directory 的“应用程序”选项卡。
 
 > [!NOTE]
-> 如果 Azure Active Directory 默认目录对帐户不可见，请联系 Azure 订阅的管理员以向帐户授予所需权限。 若要了解如何查找默认目录，请参阅[在 Azure Active Directory 中创建用于 Windows VM 的工作或学校标识](../virtual-machines/virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的“在 Azure 经典门户中查找默认目录”。
+> 如果 Azure Active Directory 默认目录对帐户不可见，请联系 Azure 订阅的管理员以向帐户授予所需权限。 若要了解如何查找默认目录，请参阅[在 Azure Active Directory 中创建用于 Windows VM 的工作或学校标识](../virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的“在 Azure 经典门户中查找默认目录”。
 >
 >
 

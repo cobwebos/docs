@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 4e6c6571be85cd5fe374c7df644741ae017ccd19
-ms.openlocfilehash: 6db4cf048147cb9559ca1a2e6921c679fe6ec9e5
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 6bc1325809f39a45d387914e1fdc4d10f46df539
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="troubleshoot-azure-remoteapp---application-launch-and-connection-failures"></a>解决 Azure RemoteApp 问题 - 应用程序启动和连接故障
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -51,10 +52,5 @@ ms.openlocfilehash: 6db4cf048147cb9559ca1a2e6921c679fe6ec9e5
 这是一般性错误消息 - 请联系 Azure 支持人员，以便我们进行调查。 
 
 ![一般的 Azure RemoteApp 消息](./media/remoteapp-apptrouble/ra-apptrouble4.png) 
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

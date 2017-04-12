@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 2bd8f7ac127cd34b2d5129ecb49c56e2adf257b8
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c6de21da824a6e81c38f36c41c05ddd704fadcb6
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -130,7 +131,7 @@ DSC 可以使用最热门机制的一些资源扩展 - PowerShell DSC、Chef 和
 ### <a name="free-form-configurations"></a>自由格式配置
 表面上，自由格式配置听起来很实用。 它们允许用户选择 VM 类型，并提供任意数目的节点以及这些节点的附加磁盘（用作模板的参数）。 但是，有些方案不适合使用此方法。
 
-[虚拟机大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)介绍了不同的 VM 类型和可用大小，以及每种可附加的持久性磁盘数目（2、4、8、16 或 32）。 每个附加的磁盘提供 500 IOPS，可将这些磁盘的倍数组建成池，以成倍提高 IOPS 数目。 例如，可将 16 个磁盘组建成池，以提供 8,000 IOPS。 可以使用 Microsoft Windows 存储空间或者在 Linux 使用价格便宜的磁盘冗余阵列 (RAID)，使用操作系统中的配置来实现池的组建。
+[虚拟机大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)介绍了不同的 VM 类型和可用大小，以及每种可附加的持久性磁盘数目（2、4、8、16 或 32）。 每个附加的磁盘提供 500 IOPS，可将这些磁盘的倍数组建成池，以成倍提高 IOPS 数目。 例如，可将 16 个磁盘组建成池，以提供 8,000 IOPS。 可以使用 Microsoft Windows 存储空间或者在 Linux 使用价格便宜的磁盘冗余阵列 (RAID)，使用操作系统中的配置来实现池的组建。
 
 自由格式配置允许选择多个 VM 实例，并为这些实例选择多个 VM 类型和大小，每个 VM 类型可选择多个磁盘，还可选择一个或多个脚本来配置 VM 内容。
 
@@ -347,10 +348,5 @@ Redis 只使用单节点类型，因此需创建名为 node-resources.json 的�
 * 至于如何在 Azure Resource Manager 中处理安全事项，请参阅 [Security considerations for Azure Resource Manager](best-practices-resource-manager-security.md)（Azure Resource Manager 的安全注意事项）以获取相关建议
 * 若要了解如何共享进出模板的状态，请参阅 [Sharing state in Azure Resource Manager templates](best-practices-resource-manager-state.md)（共享 Azure Resource Manager 模板中的状态）。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

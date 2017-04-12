@@ -16,9 +16,9 @@ ms.date: 10/10/2016
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 5bb3a67c999c1d41c50b2b660a97a53125511633
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 87e888bf3d7355b36c42e8787abe9bf1cb191fcd
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/25/2017
 对于 Windows 虚拟机，要启用 *Microsoft Monitoring Agent* 虚拟机扩展。
 对于 Linux 虚拟机，要启用 *OMS Agent For Linux* 虚拟机扩展。
 
-详细了解 [Azure 虚拟机扩展](../virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和 [Linux 代理](../virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+详细了解 [Azure 虚拟机扩展](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和 [Linux 代理](../virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 使用基于代理的日志数据集合时，必须配置 [Log Analytics 中的数据源](log-analytics-data-sources.md) 指定要收集的日志和指标。
 
@@ -397,18 +397,18 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 6. 通过在虚拟机上的 PowerShell 特权窗口中键入以下内容来查看 Microsoft Monitoring Agent 的状态：`  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
 7. 查看 `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs` 中的 Microsoft Monitoring Agent 安装日志文件
 
-有关详细信息，请参阅 [Windows 扩展故障排除](../virtual-machines/virtual-machines-windows-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+有关详细信息，请参阅 [Windows 扩展故障排除](../virtual-machines/windows/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ### <a name="troubleshooting-linux-virtual-machines"></a>Linux 虚拟机故障排除
 如果 *OMS Agent for Linux* VM 代理扩展未安装或未报告，可以执行以下步骤来解决此问题。
 
 1. 如果扩展状态为“*未知*”，则通过查看 VM 代理日志文件 `/var/log/waagent.log` 来检查是否已安装 Azure VM 代理且正常工作
    * 如果此日志不存在，则未安装 VM 代理。
-   * [在 Linux VM 上安装 Azure VM 代理](../virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   * [在 Linux VM 上安装 Azure VM 代理](../virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 2. 对于其他不正常状态，请查看 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` 和 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log` 中的 OMS Agent for Linux VM 扩展日志文件
 3. 如果扩展状态正常，但是未上载数据，则查看 `/var/opt/microsoft/omsagent/log/omsagent.log` 中的 OMS Agent for Linux 日志文件
 
-有关详细信息，请参阅 [Linux 扩展故障排除](../virtual-machines/virtual-machines-linux-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关详细信息，请参阅 [Linux 扩展故障排除](../virtual-machines/linux/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 * 配置 [Log Analytics 中的数据源](log-analytics-data-sources.md) 指定要收集的日志和指标。

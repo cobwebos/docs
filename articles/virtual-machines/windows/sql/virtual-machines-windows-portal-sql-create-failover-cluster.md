@@ -17,9 +17,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 6f0fe474787efc15db5c75266cde369725832aab
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: c9b7cc0321ba06a5d30ea5bd467efe4feeb73b99
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -87,7 +87,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 1. 使用订阅登录到 [Azure 门户](http://portal.azure.com)。
 
-1. [创建 Azure 可用性集](../../virtual-machines-windows-create-availability-set.md)。
+1. [创建 Azure 可用性集](../create-availability-set.md)。
 
    可用性集可将各个容错域和更新域中的虚拟机分组。 可用性集确保应用程序不会受到单一故障点（例如网络交换机或服务器机架电源装置）的影响。 
 

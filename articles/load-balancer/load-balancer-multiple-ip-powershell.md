@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 中的多个 IP 配置上进行负载均衡 | Microsoft 文档"
+title: "针对 Azure 中的多个 IP 配置进行负载均衡 | Microsoft Docs"
 description: "在主要和辅助 IP 配置间进行负载均衡。"
 services: load-balancer
 documentationcenter: na
@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 4d139e615bea737473d0dfcbed22bf01367a1eb7
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: fb6a74ba476d410f7545a3cfcbaf23190f0bd402
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/22/2017
 > * [CLI](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
-本文介绍如何将 Azure 负载均衡器用于辅助网络接口 (NIC) 的多个 IP 地址。 在此方案中，有两个运行 Windows 的 VM，每个 VM 有一个主 NIC 和一个辅助 NIC。 每个辅助 NIC 具有两个 IP 配置。 每个 VM 都托管了 contoso.com 和 fabrikam.com 这两个网站。 每个网站都绑定到辅助 NIC 的一个 IP 配置。 我们使用 Azure 负载均衡器公开两个前端 IP 地址，每个地址分别对应于一个网站，从而将流量分发到网站的各个 IP 配置。 此场景中两个前端以及两个后端池 IP 地址都使用相同的端口号。
+本文介绍如何将 Azure 负载均衡器用于辅助网络接口 (NIC) 的多个 IP 地址。 在此方案中，有两个运行 Windows 的 VM，每个 VM 有一个主 NIC 和一个辅助 NIC。 每个辅助 NIC 具有两个 IP 配置。 每个 VM 托管网站 contoso.com 和 fabrikam.com。 每个网站都绑定到辅助 NIC 的一个 IP 配置。 我们使用 Azure 负载均衡器公开两个前端 IP 地址，每个地址分别对应于一个网站，从而将流量分发到网站的各个 IP 配置。 此场景中两个前端以及两个后端池 IP 地址都使用相同的端口号。
 
 ![负载平衡应用场景图像](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/22/2017
 
     有关详细信息，请参阅[创建资源组](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)中的第 2 步。
 
-3. [创建可用性集](../virtual-machines/virtual-machines-windows-create-availability-set.md?toc=%2fazure%2fload-balancer%2ftoc.json)来包含 VM。 对于此场景，请使用以下命令：
+3. [创建可用性集](../virtual-machines/windows/create-availability-set.md?toc=%2fazure%2fload-balancer%2ftoc.json)来包含 VM。 对于此场景，请使用以下命令：
 
     ```powershell
     New-AzureRmAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"

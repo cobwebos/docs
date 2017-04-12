@@ -9,8 +9,6 @@ Azure 允许用户在规定的地理区域（例如“美国西部”、“北�
 
 * **美国弗吉尼亚州政府**和**美国爱荷华州政府**
   * 适用于美国政府代理和合作伙伴的 Azure 物理和逻辑网络隔离实例，由甄选出来的美国公民操作。 包括其他合规认证，例如 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) 和 [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA)。 详细了解 [Azure Government](https://azure.microsoft.com/features/gov/)。
-* **印度中部**、**印度南部**和**印度西部**
-  * 这些区域目前可供在印度拥有本地注册的批量许可客户和合作伙伴使用。 在 2016 年，如果用户购买了直接在线订阅，则可以访问这些区域。
 * **中国东部**和**中国北部**
   * 这些区域在 Microsoft 和 21Vianet 达成唯一合作关系之后可供用户使用，有了这种关系，Microsoft 就不需直接维护相关数据中心。 详细了解 [Microsoft Azure（中国）](http://www.windowsazure.cn/)。
 * **德国中部**和**德国东北部**

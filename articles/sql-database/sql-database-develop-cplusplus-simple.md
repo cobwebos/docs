@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: tobiast
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 6cb781b9bc0cfe672e2734661be958d4794e08d8
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d15ab88be778b8cc081e07fb95fbd99164f18ba1
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -79,7 +79,7 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 祝贺你！ 现在已成功使用 Windows 上的 C++ 和 ODBC 连接到 Azure SQL。 也可以继续阅读以对 Linux 平台进行相同的操作。 
 
 ## <a id="Linux"></a>步骤 5：从 Linux C/C++ 应用程序连接
-也许你还不知道，Visual Studio 现在也允许开发 C++ Linux 应用程序。 可以在 [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)（用于 Linux 开发的 Visual C++）博客中阅读此新方案。 要针对 Linux 构建，将需要一台运行 Linux 发行版的远程计算机。 如果没有可用的远程计算机，可以使用 [Linux Azure 虚拟机](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速设置。 
+也许你还不知道，Visual Studio 现在也允许开发 C++ Linux 应用程序。 可以在 [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)（用于 Linux 开发的 Visual C++）博客中阅读此新方案。 要针对 Linux 构建，将需要一台运行 Linux 发行版的远程计算机。 如果没有可用的远程计算机，可以使用 [Linux Azure 虚拟机](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速设置。 
 
 对于本教程，我们假设你设置了 Ubuntu 16.04 Linux 发行版。 此处的步骤也适用于 Ubuntu 15.10、 Red Hat 6 和 Red Hat 7。 
 

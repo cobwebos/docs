@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 0639e19423adc842a708982997852fb8d10df779
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 9375981db64ec4a1ae523e958423b5f5787cec33
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="sizing-information-for-a-vnet-in-azure-remoteapp"></a>Azure RemoteApp 中的 VNET 的大小调整信息
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -33,10 +34,5 @@ ms.openlocfilehash: 0639e19423adc842a708982997852fb8d10df779
 
 * [从个人 VNET 迁移到 Azure VNET](remoteapp-migratevnet.md)
 * [验证 Azure RemoteApp 是否与 Azure VNET 一起使用](remoteapp-vnet.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

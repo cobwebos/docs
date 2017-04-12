@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 8f62547316e4ecc02da0341aab94010d880115f8
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 5e5c11251cd316e8161dbe362b300be76927ac01
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/25/2017
 * **Azure 订阅**：验证 Azure 订阅中可用的内核数。 如果创建的建议 VM 大小为 **A3**，则需要 **4** 个可用内核。 如果使用的 VM 大小为 **A2**，则需要 **2** 个可用内核。
   
   * 若要验证订阅的内核限制，请在 Azure 经典门户中，单击左侧窗格中的“设置”，然后单击顶部菜单中的“使用情况”。
-  * 若要增加内核配额，请联系 [Azure 支持](https://azure.microsoft.com/support/options/)。 有关 VM 大小信息，请参阅 [Azure 的虚拟机大小](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+  * 若要增加内核配额，请联系 [Azure 支持](https://azure.microsoft.com/support/options/)。 有关 VM 大小信息，请参阅 [Azure 的虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * **Windows PowerShell 脚本**：本主题假定你对 Windows PowerShell 有基本的认识。 有关使用 Windows PowerShell 的详细信息，请参阅以下部分：
   
   * [在 Windows Server 上启动 Windows PowerShell](https://technet.microsoft.com/library/hh847814.aspx)

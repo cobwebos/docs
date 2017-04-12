@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 translationtype: Human Translation
-ms.sourcegitcommit: 0b7c4c95328eb3ca573694b8eca0b0abda646fc5
-ms.openlocfilehash: cc8044f78da504c5cd9155c887b24f6880645262
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: a78d37ee59663896acc3192f8ae03575270101a8
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: cc8044f78da504c5cd9155c887b24f6880645262
 本教程介绍如何在[应用服务环境](app-service-app-service-environment-intro.md) (ASE) 中创建 Web 应用和应用服务计划。 
 
 > [!NOTE]
-> 如果想要了解如何创建 Web 应用，但不需要在应用服务环境中进行操作，请参阅[创建 .NET Web 应用](web-sites-dotnet-get-started.md)，或适用于其他语言和框架的相关教程之一。
+> 如果想要了解如何创建 Web 应用，但不需要在应用服务环境中进行操作，请参阅[创建 .NET Web 应用](app-service-web-get-started-dotnet.md)，或适用于其他语言和框架的相关教程之一。
 > 
 > 
 
@@ -58,7 +59,7 @@ ms.openlocfilehash: cc8044f78da504c5cd9155c887b24f6880645262
     如果 ASE 使用内部 VIP，则该 ASE 中应用的 URL 为：[站点名称].[在 ASE 创建过程中指定的子域]   
     在 ASE 创建过程中选择 ASP 后，可在“名称”下看到子域更新
 
-## <a name="a-namecreateplana-create-an-app-service-plan"></a><a name="createplan"></a>创建 App Service 计划
+## <a name="createplan"></a>创建 App Service 计划
 在应用服务环境中创建应用服务计划时，由于 ASE 中没有共享的辅助角色，因此辅助角色的选择会有所不同。  必须使用的辅助角色也就是由管理员分配给 ASE 的辅助角色。  这意味着在创建新的计划时，分配给 ASE 辅助角色池的辅助角色数，必须超过该辅助角色池中所有计划的实例总数。  如果 ASE 辅助角色池中没有足够的辅助角色来创建计划，则需要与 ASE 管理员合作来添加辅助角色。
 
 而应用服务环境托管的应用服务计划还有另一项差异，那就是缺少定价选项。  如果拥有应用服务环境，你是在为系统所用的计算资源付费，且该环境中的计划不产生附加的费用。  一般说来，创建 App Service 计划时即选择了决定计费的定价计划。  App Service 环境本质上是一个可以在其中创建内容的专用位置。  你只为环境付费而不为托管内容付费。
@@ -107,9 +108,4 @@ ms.openlocfilehash: cc8044f78da504c5cd9155c887b24f6880645262
 [HowtoConfigureASE]: http://azure.microsoft.com/documentation/articles/app-service-web-configure-an-app-service-environment
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

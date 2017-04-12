@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5ec9f7ad24dad833758d3b981fd4d8735119d813
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 045d5148cd3f12dac63c961ccf7c953d355ed725
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -67,19 +69,14 @@ SET     @v +=1;
 不能使用 SELECT 或 UPDATE 来分配变量。
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[部署概述][部署概述]。
+有关更多开发技巧，请参阅[开发概述][development overview]。
 
 <!--Image references-->
 
 <!--Article references-->
-[部署概述]: sql-data-warehouse-overview-develop.md
+[development overview]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 90e443fe69afdda8786dd00ffb32e9680a476cd4
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: ee480f4382a93a2420f7c73f7259ce1f0a03d595
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -92,7 +92,7 @@ Microsoft Azure 虚拟机库包括若干含有 Microsoft SQL Server 的映像。
 ## <a name="general-recommendations-and-best-practices"></a>一般建议和最佳实践
 * 在使用 SQL Server Enterprise Edition 时，虚拟机的最小建议大小是 **A3**。 对于 Analysis Services 和 Reporting Services 的 SQL Server BI 部署，建议的虚拟机大小是 **A4**。
   
-    有关当前 VM 大小的信息，请参阅 [Azure 的虚拟机大小](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+    有关当前 VM 大小的信息，请参阅 [Azure 的虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 磁盘管理的最佳实践是在 **C**: 和 **D**: 以外的驱动器上存储数据、日志和备份文件。 例如，创建数据磁盘 **E**: 和 **F**:。
   
   * 默认驱动器 **C**: 的驱动器缓存策略未针对处理数据进行优化。

@@ -17,8 +17,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 7a75cb16a1d71b55b7b74107a82b9becbe7f6cb3
-ms.openlocfilehash: 22ce8f67cd3546a0983ce395372e8459e895c136
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 1ceb55ba137a61d6bc2121a6b23df2c87e5b7ce2
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -183,10 +184,5 @@ ms.openlocfilehash: 22ce8f67cd3546a0983ce395372e8459e895c136
 * [Always On 可用性组](http://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure 虚拟机](http://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure 负载均衡器](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
-* [Azure 可用性集](../../virtual-machines-windows-manage-availability.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+* [Azure 可用性集](../manage-availability.md)
 

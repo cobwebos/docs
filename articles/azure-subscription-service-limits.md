@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 8b4818ccea1ac5025e93fa0939735b3ed606f47c
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e26a37fbe783c2ca95679b5bdcc9b0ba0beec76b
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -140,7 +140,7 @@ ms.lasthandoff: 03/22/2017
 #### <a name="virtual-machine-disk-limits"></a>虚拟机磁盘限制 
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-有关其他详细信息，请参阅[虚拟机大小](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关其他详细信息，请参阅[虚拟机大小](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 #### <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
 
@@ -275,7 +275,7 @@ DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行
 ## <a name="see-also"></a>另请参阅
 [Understanding Azure Limits and Increases](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)（了解 Azure 的限制和增加）
 
-[Azure 的虚拟机和云服务大小](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Azure 的虚拟机和云服务大小](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [云服务的大小](cloud-services/cloud-services-sizes-specs.md)
 

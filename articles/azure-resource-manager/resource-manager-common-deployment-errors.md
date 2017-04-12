@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: b31ecb83665208151e48f81e6148928bbf21d1b5
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: bfbb3356454b9ef8b1834d03e7b76de9860a12c9
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -679,13 +679,13 @@ Resource Manager 可在模板验证过程中确定循环依赖项。 它会返�
 
 | 错误 | 文章 |
 | --- | --- |
-| 自定义脚本扩展错误 |[Windows VM 扩展失败](../virtual-machines/virtual-machines-windows-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />或<br />[Linux VM 扩展失败](../virtual-machines/virtual-machines-linux-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| OS 映像预配错误 |[新 Windows VM 错误](../virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />或<br />[新 Linux VM 错误](../virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| 分配失败 |[Windows VM 分配失败](../virtual-machines/virtual-machines-windows-allocation-failure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />或<br />[Linux VM 分配失败](../virtual-machines/virtual-machines-linux-allocation-failure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| 尝试进行连接时的安全外壳 (SSH) 错误 |[到 Linux VM 的安全外壳连接](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| 连接到 VM 上运行的应用程序时出错 |[在 Windows VM 上运行的应用程序](../virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />或<br />[在 Linux VM 上运行的应用程序](../virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| 远程桌面连接错误 |[到 Windows VM 的远程桌面连接](../virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
-| 通过重新部署解决连接错误 |[将虚拟机重新部署到新的 Azure 节点](../virtual-machines/virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| 自定义脚本扩展错误 |[Windows VM 扩展失败](../virtual-machines/windows/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />或<br />[Linux VM 扩展失败](../virtual-machines/linux/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| OS 映像预配错误 |[新 Windows VM 错误](../virtual-machines/windows/troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />或<br />[新 Linux VM 错误](../virtual-machines/linux/troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| 分配失败 |[Windows VM 分配失败](../virtual-machines/windows/allocation-failure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />或<br />[Linux VM 分配失败](../virtual-machines/linux/allocation-failure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| 尝试进行连接时的安全外壳 (SSH) 错误 |[到 Linux VM 的安全外壳连接](../virtual-machines/linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| 连接到 VM 上运行的应用程序时出错 |[在 Windows VM 上运行的应用程序](../virtual-machines/windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)<br />或<br />[在 Linux VM 上运行的应用程序](../virtual-machines/linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| 远程桌面连接错误 |[到 Windows VM 的远程桌面连接](../virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| 通过重新部署解决连接错误 |[将虚拟机重新部署到新的 Azure 节点](../virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | 云服务错误 |[云服务部署问题](../cloud-services/cloud-services-troubleshoot-deployment-problems.md) |
 
 下表列出了其他 Azure 服务的故障排除主题。 它重点介绍与部署或配置资源相关的问题。 如果你需要帮助排查资源的运行时问题，请参阅该 Azure 服务的文档。

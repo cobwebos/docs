@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 456175d718898287496d9e19cae8da259fba2e8e
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 39dd726078c4dcc55063300bdca998ad822feadd
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-migrate-data-into-and-out-of-azure-remoteapp"></a>如何将用户数据迁入和迁出 Azure RemoteApp
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -60,10 +61,5 @@ ms.openlocfilehash: 456175d718898287496d9e19cae8da259fba2e8e
 
 ## <a name="copy-files-by-using-drive-redirection"></a>使用驱动器重定向复制文件
 如果已启用 [驱动器重定向](remoteapp-redirection.md)，则已创建用户的映射驱动器。 在此示例中，用户可以在重定向的驱动器上压缩他们的文件，然后将文件保存到用户的本地 PC。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

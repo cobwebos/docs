@@ -15,15 +15,16 @@ ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 8c2dbd0a79a616e291c974c16d20d423cbb25ce2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: af3e2ad623d8d7bfafe676411f9ae3fbee78aab8
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店创建虚拟机映像的技术先决条件
 在开始之前，请仔细阅读过程，并了解执行每个步骤的位置和原因。 在开始产品/服务创建过程前，应尽可能多地准备公司信息和其他数据、下载必需的工具和/或创建技术组件。 通过查看本文，应该清楚了解这些项目。  
 
-## <a name="download-needed-tools-applications"></a>下载所需的工具和应用程序
+## <a name="download-needed-tools--applications"></a>下载所需的工具和应用程序
 在开始过程前，应已准备好以下项目：
 
 * 根据所面向的操作系统，从 [Azure 下载](https://azure.microsoft.com/downloads/)页安装 [Azure PowerShell cmdlet](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids) 或 [Linux 命令行接口工具](https://go.microsoft.com/fwlink/?LinkId=253472&clcid=0x409)。
@@ -51,17 +52,5 @@ ms.openlocfilehash: 8c2dbd0a79a616e291c974c16d20d423cbb25ce2
 * 基于云的开发意味着，所有开发步骤均在驻留在 Azure 上的 VHD 中远程执行。
 * 本地开发需要下载 VHD 并使用本地基础结构进行开发。 尽管此操作可行，但不建议这样做。 请注意，针对 Windows 或 SQL 本地开发要求具有相关的本地许可证密钥。 在创建 VM 后，无法包括或安装 SQL Server。 还必须以 Azure 门户中已批准 SQL 映像上的产品/服务为基础。 如果决定在本地开发，必须执行一些不同于在云中开发的步骤。 可以在[创建本地 VM 映像](marketplace-publishing-vm-image-creation-on-premise.md)中找到相关信息。
 
-## <a name="next-steps"></a>后续步骤
-现在已查看先决条件并已完成必需的任务，可以继续创建虚拟机映像产品/服务，如[虚拟机映像发布指南](marketplace-publishing-vm-image-creation.md)中所详述。
-
-## <a name="see-also"></a>另请参阅
-* [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)
-* [在 Azure 预览门户中创建运行 Windows 的虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: dcafe045203d77b6169f2e7a5d7a0c42de37f685
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: d2caf4a741dfaec43b1c2fb6042f5b69601bb16a
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/27/2017
 > [!IMPORTANT] 
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
-在 **Resource Manager** 部署模型中，终结点使用**网络安全组 (NSG)** 进行配置。 有关详细信息，请参阅[允许通过 Azure 门户对 VM 进行外部访问](../../virtual-machines-windows-nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+在 **Resource Manager** 部署模型中，终结点使用**网络安全组 (NSG)** 进行配置。 有关详细信息，请参阅[允许通过 Azure 门户对 VM 进行外部访问](../nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 在 Azure 经典门户中创建 Windows 虚拟机时，通常会自动创建常用终结点（如用于远程桌面和 Windows PowerShell 远程处理的终结点）。 你可以在创建虚拟机时或之后根据需要配置其他终结点。
 

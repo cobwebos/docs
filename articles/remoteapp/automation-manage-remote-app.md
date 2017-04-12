@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: magoedte;csand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3e21af65ecb6f0ce70048846a9786271dd4cc985
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 59ac11f153c0bd74a1106400dbbf5790968b657c
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="managing-azure-remoteapp-using-azure-automation"></a>使用 Azure 自动化管理 Azure RemoteApp
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -42,10 +43,5 @@ Azure 自动化提供了具有高可靠性和高可用性的工作流执行引�
 在了解 Azure 自动化 以及如何使用它来管理 Azure RemoteApp 的基础知识后，请使用以下链接了解有关 Azure 自动化的更多信息。
 
 * 请参阅 Azure 自动化[入门教程](../automation/automation-first-runbook-graphical.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

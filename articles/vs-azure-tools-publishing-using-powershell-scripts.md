@@ -15,9 +15,9 @@ ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: f79068d5d1bb28762640545ebf13784b7070440e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 6041c627d87f0223b9c718f3883a709ff81c28e1
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/25/2017
 我们还提供其他工具和资源，用于在 Visual Studio 中通过 PowerShell 进行 Azure 开发。 请参阅 [PowerShell Tools for Visual Studio](http://go.microsoft.com/fwlink/?LinkId=404012)（适用于 Visual Studio 的 PowerShell 工具）。
 
 ## <a name="generating-the-publish-scripts"></a>生成发布脚本
-在创建新项目时，可以遵照[这些说明](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)为托管网站的虚拟机生成发布脚本。 还可以[为 Azure 应用服务中的 Web 应用生成发布脚本](app-service-web/web-sites-dotnet-get-started.md)。
+在创建新项目时，可以遵照[这些说明](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)为托管网站的虚拟机生成发布脚本。 还可以[为 Azure 应用服务中的 Web 应用生成发布脚本](app-service-web/app-service-web-get-started-dotnet.md)。
 
 ## <a name="scripts-that-visual-studio-generates"></a>Visual Studio 生成的脚本
 Visual Studio 将生成名为 **PublishScripts** 的解决方案级文件夹，其中包含两个 Windows PowerShell 文件、一个针对虚拟机或网站的发布脚本，以及一个包含要在脚本中使用的函数的模块。 Visual Studio 还将生成 JSON 格式的文件，用于指定你要部署的项目的详细信息。

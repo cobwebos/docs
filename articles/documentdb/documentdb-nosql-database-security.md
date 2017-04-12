@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: ca5f5696e9478d5087a09fff16742f65ea3e5589
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 9cf87aa75b2ef65719a38e446a81086d265e7f4d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -69,9 +69,9 @@ ms.lasthandoff: 03/10/2017
 |Active Directory 集成 (RBAC)| 还可以在 Azure 门户中使用访问控制 (IAM) 来提供对数据库帐户的访问权限。 IAM 提供基于角色的访问控制并与 Active Directory 集成。 对于个人和组，可如下图中所示使用内置角色或自定义角色。<br><br>![Azure 门户中的访问控制 (IAM) - 演示 NoSQL 数据库安全性](./media/documentdb-nosql-database-security/nosql-database-security-identity-access-management-iam-rbac.png)|
 |全局复制|DocumentDB 提供全面的全局分发。只需单击一个按钮，就能将数据复制到 Azure 的任何一个全球数据中心。 全局复制可以实现全局缩放，以较低的延迟访问全球各地的数据。<br><br>从安全的上下文来看，全局复制可确保数据受到保护，防范区域性故障。<br><br>在[全局分发数据](documentdb-distribute-data-globally.md)中了解详细信息。|
 |区域性故障转移|如果已将数据复制到多个数据中心，当区域数据中心脱机时，DocumentDB 会自动切换你的操作。 可以使用数据复制到的区域创建故障转移区域的优先级列表。 <br><br>在 [Azure DocumentDB 中的区域性故障转移](documentdb-regional-failovers.md)中了解详细信息。|
-|本地复制|即使是在单个数据中心内，DocumentDB 也会自动复制数据来实现高可用性，并允许选择[一致性级别](documentdb-consistency-levels.md)。 这可以保证  [99.99% 运行时间的可用性 SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_0/) 并附带财务保证 - 其他 NoSQL 数据库服务无法提供这样的保证。|
+|本地复制|即使是在单个数据中心内，DocumentDB 也会自动复制数据来实现高可用性，并允许选择[一致性级别](documentdb-consistency-levels.md)。 这可以保证  [99.99% 运行时间的可用性 SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) 并附带财务保证 - 其他 NoSQL 数据库服务无法提供这样的保证。|
 |自动联机备份|DocumentDB 数据库将定期备份并存储在异地冗余的存储中。 <br><br>在[使用 DocumentDB 进行自动联机备份和还原](documentdb-online-backup-and-restore.md)中了解详细信息。|
-|还原已删除的数据|可以使用自动联机备份来恢复大约&30; 天内意外删除的数据。 <br><br>在[使用 DocumentDB 进行自动联机备份和还原](documentdb-online-backup-and-restore.md)中了解详细信息|
+|还原已删除的数据|可以使用自动联机备份来恢复大约 30 天内意外删除的数据。 <br><br>在[使用 DocumentDB 进行自动联机备份和还原](documentdb-online-backup-and-restore.md)中了解详细信息|
 |保护和隔离敏感数据|可将 PII 和其他机密数据隔离到特定的集合，并限制为只能由特定的用户进行读写或只读访问。|
 |监视攻击|使用审核日志和活动日志，可以监视帐户中的正常和异常活动。 可以查看针对资源执行了哪些操作、操作是谁发起的、操作是何时发生的、操作的状态，等等。<br><br>![Azure DocumentDB 的活动日志](./media/documentdb-nosql-database-security/nosql-database-security-application-logging.png)|
 |响应攻击|联系 Azure 支持部门举报潜在的攻击行为后，将启动由 5 个步骤构成的事件响应过程。 该 5 步骤过程的目的是在检测到问题并启动调查后，尽快将服务安全性和操作恢复正常。<br><br>在[云中的 Microsoft Azure 安全响应](https://aka.ms/securityresponsepaper)中了解详细信息。|
