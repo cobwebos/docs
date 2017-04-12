@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 04/12/2017
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/30/2017
 
 数据工厂当前仅支持将数据从 Web 表移至其他数据存储，但不支持将数据从其他数据存储移至 Web 表目标。
 
-> [!NOTE]
+> [!IMPORTANT]
 > 此 Web 连接器目前仅支持从 HTML 页提取表内容。 若要从 HTTP/s 终结点中检索数据，请改用 [HTTP 连接器](data-factory-http-connector.md)。
 
 ## <a name="getting-started"></a>入门

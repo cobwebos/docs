@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/12/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 49545648a069f25820f6a6e483072be8410b091e
 ms.openlocfilehash: 0fc9eb7869ebe7316e4aed0d561638a05bc9a91c
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -89,10 +90,5 @@ Azure 数据工厂复制向导用于简化数据引入过程，这通常是端�
 
 ## <a name="next-steps"></a>后续步骤
 有关使用数据工厂复制向导创建具有复制活动的管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

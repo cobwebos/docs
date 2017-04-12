@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 04/11/2017
 ms.author: bwren
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: df1a5b2c200b7fa69961247ac036ee35fd14f54d
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -83,10 +84,5 @@ Azure Site Recovery 有三种基本复制方案。
 * 了解 [Azure 自动化](https://azure.microsoft.com/documentation/services/automation)的相关信息。
 * 了解 [Azure 备份](http://azure.microsoft.com/documentation/services/backup)的相关信息。
 * 了解 [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) 的相关信息。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
