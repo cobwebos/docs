@@ -26,7 +26,7 @@
 ###[使用群集分布缓存](cache-how-to-premium-clustering.md)
 ## 自动化
 ###[使用 Powershell 进行部署和管理](cache-howto-manage-redis-cache-powershell.md)
-###[使用 Azure CLI 进行部署和管理](cache-manage-cli.md)
+###[使用 Azure CLI 进行部署和管理](cli-samples.md)
 ###[预配 Redis 缓存](cache-redis-cache-arm-provision.md)
 ###[使用 Redis 缓存预配 Web 应用](cache-web-app-arm-with-redis-cache-provision.md)
 ## 与 ASP.NET 集成

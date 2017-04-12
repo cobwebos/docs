@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/10/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: e476a80a3846b8c80c35d6803d5518727f008824
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 2ac78606f851068fa0fb7dcab3bac1c629b9cdb3
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -153,7 +153,7 @@ DocumentDB 输出绑定允许将新文档写入 Azure DocumentDB 数据库。
 注意以下事项：
 
 * 将 `createIfNotExists` 设置为 `true` 以创建数据库和集合（如果不存在）。 默认值为 `false`。 新集合使用保留的吞吐量进行创建，具有定价方面的隐含意义。 有关详细信息，请参阅 [DocumentDB 定价](https://azure.microsoft.com/pricing/details/documentdb/)。
-* `connection` 必须是某个应用设置的名称，该设置指向 DocumentDB 帐户的终结点（包含值 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`）。 如果通过函数门户 UI 创建 DocumentDB 帐户，则帐户创建过程会创建一个新应用设置。 若要使用现有 DocumentDB 帐户，需要[手动配置此应用设置]()。 
+* `connection` 必须是某个应用设置的名称，该设置指向 DocumentDB 帐户的终结点（包含值 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`）。 如果通过函数门户 UI 创建 DocumentDB 帐户，则帐户创建过程会创建一个新应用设置。 若要使用现有 DocumentDB 帐户，需要[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
 
 ## <a name="output-usage"></a>输出使用情况
 本部分演示如何在函数代码中使用 DocumentDB 输出绑定。

@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 7a34394ebc83e106bd2755ea2e3d966837c01be6
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c07773be6e4a2274287920de9420f4c8b96f58e1
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="accessing-your-apps-in-azure-remoteapp"></a>在 Azure RemoteApp 中访问应用
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -173,10 +174,5 @@ Azure RemoteApp 的优点之一是，可以从任何设备访问应用。 另外
 8. 这将使你能够访问一组基本应用，从而开始使用 RemoteApp。
    
     ![Azure RemoteApp 的演示订阅源](./media/remoteapp-clients/WinPhone8.png)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

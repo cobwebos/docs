@@ -15,12 +15,19 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: masnider;
 translationtype: Human Translation
-ms.sourcegitcommit: 1472bd1647b620d1f0489cdabbed58e72585aef7
-ms.openlocfilehash: ad1f713f2b12af4f778b9b14edf33a568d2aa8b1
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 1237f467cf993170eaf1345134fb732d4f0b1171
+ms.lasthandoff: 04/03/2017
 
 ---
 
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services 生命周期概述
+> [!div class="op_single_selector"]
+> * [Windows 上的 C#](service-fabric-reliable-services-lifecycle.md)
+> * [Linux 上的 Java](service-fabric-reliable-services-lifecycle-java.md)
+>
+>
+
 在考虑要 Reliable Services 的生命周期时，具备生命周期的基础知识这一点极为重要。 一般而言：
 
 * 在启动期间
@@ -110,9 +117,4 @@ Service Fabric 需要使用此副本来停止处理消息，退出正在执行�
 * [Reliable Services 简介](service-fabric-reliable-services-introduction.md)
 * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services 高级用法](service-fabric-reliable-services-advanced-usage.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

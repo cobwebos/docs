@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 257138fddc75b39985ba974b1314e978a554b1e2
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: f9ea34229e2f6e498c2826be04c09fb2da6393e3
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -30,7 +30,7 @@ Hive 和 Pig 非常适合用于处理 Azure HDInsight 中的数据，但有时�
 在本文档中，你将了解如何将 C# 与 Hive 和 Pig 配合使用。
 
 > [!IMPORTANT]
-> 本文档中的步骤需要使用以 Windows 作为操作系统的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> 本文档中的步骤需要使用以 Windows 作为操作系统的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -228,7 +228,7 @@ Hive 和 Pig 非常适合用于处理 Azure HDInsight 中的数据，但有时�
         bin\pig
 
     此时将显示 `grunt>` 提示。
-    
+
 3. 输入以下命令以使用 .NET Framework 应用程序运行 Pig 作业：
 
         DEFINE streamer `pigudf.exe` SHIP('pigudf.exe');

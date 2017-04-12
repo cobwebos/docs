@@ -1,6 +1,6 @@
 ---
 title: "故障排除：Azure Active Directory 活动日志中缺少数据 - 预览 | Microsoft 文档"
-description: "为自己提供解决方法 列出 Azure Active Directory 预览版的各种可用报表"
+description: "列出 Azure Active Directory 预览的各种可用报表"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 03/09/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: ebc92bc23201dbcd01f90e0cc3d5055fb85820be
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: c372fe5f3a419a6a27ef00d755d5d46325b956c6
+ms.lasthandoff: 04/06/2017
 
 
 ---

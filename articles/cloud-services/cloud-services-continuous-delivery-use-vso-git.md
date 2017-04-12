@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 91e061820e8edc81bca395dc78d3e1e840b21438
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: da4bb7fcbb45afed5d45f4d48c0b90e44503daf8
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -44,7 +45,7 @@ ms.openlocfilehash: 91e061820e8edc81bca395dc78d3e1e840b21438
    
     ![][4]
 2. 你可以通过执行本演练中的步骤来部署 Web 应用或云服务（Azure 应用程序）。 创建新的 Azure 云服务项目或新的 ASP.NET MVC 项目。 请确保该项目面向 .NET Framework 4 或更高版本。 如果要创建云服务项目，请添加一个 ASP.NET MVC Web 角色和一个辅助角色。
-   如果要创建 Web 应用，请选择“**ASP.NET Web 应用**”项目模板，然后选择 **MVC**。 有关详细信息，请参阅[在 Azure 应用服务中创建 ASP.NET Web 应用](../app-service-web/web-sites-dotnet-get-started.md)。
+   如果要创建 Web 应用，请选择“**ASP.NET Web 应用**”项目模板，然后选择 **MVC**。 有关详细信息，请参阅[在 Azure 应用服务中创建 ASP.NET Web 应用](../app-service-web/app-service-web-get-started-dotnet.md)。
 3. 打开解决方案的快捷菜单，然后选择“**提交”**。
    
     ![][7]
@@ -232,9 +233,4 @@ ms.openlocfilehash: 91e061820e8edc81bca395dc78d3e1e840b21438
 [45]: ./media/cloud-services-continuous-delivery-use-vso-git/SyncChanges2.PNG
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

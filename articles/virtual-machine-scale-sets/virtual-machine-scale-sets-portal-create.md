@@ -18,9 +18,9 @@ ms.date: 09/15/2016
 ms.author: negat
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 06e7418111762a0388ce1704ba5abaa9c3a10349
-ms.openlocfilehash: e0853070b5a3f9d44baebecac625a5ad6b9ef755
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 308355e7d66c977f5cbfc8de3b939b76c2f8f83c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/01/2017
 现在可使用默认设置并快速创建规模集。
 
 * 在 `Basics` 边栏选项卡上，输入规模集的名称。 此名称将成为规模集前端负载均衡器的 FQDN 的基础，因此请确保在所有 Azure 中，此名称是唯一的。
-* 选择所需的 OS 类型，输入所需的用户名，然后选择首选的身份验证类型。 如果选择使用密码，密码的长度必须至少为 12 个字符，并且必须符合以下四个复杂性要求中的其中三个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 了解有关[用户名和密码要求](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm)的详细信息。 如果选择 `SSH public key`，请确保仅在公钥中粘贴，而不是在私钥中：
+* 选择所需的 OS 类型，输入所需的用户名，然后选择首选的身份验证类型。 如果选择使用密码，密码的长度必须至少为 12 个字符，并且必须符合以下四个复杂性要求中的其中三个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 了解有关[用户名和密码要求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)的详细信息。 如果选择 `SSH public key`，请确保仅在公钥中粘贴，而不是在私钥中：
 
 ![ScaleSetPortalBasics](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalBasics.PNG)
 

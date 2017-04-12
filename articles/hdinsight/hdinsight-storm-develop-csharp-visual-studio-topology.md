@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: c2a92e3be7616d241eba3c6690c8f10326d8004c
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: cc6b16b559c4d1eafc570d0361c710487021f175
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -31,9 +31,9 @@ ms.lasthandoff: 03/07/2017
 
 > [!IMPORTANT]
 > 虽然本文档中的步骤依赖于具有 Visual Studio 的 Windows 开发环境，但编译后的项目可以提交到基于 Linux 或基于 Windows 的 HDInsight 群集。 __仅 2016 年 10 月 28 日之后创建的基于 Linux 的群集支持 SCP.NET 拓扑__。
-> 
+>
 > 若要将 C# 拓扑与基于 Linux 的群集配合使用，则必须将项目使用的 Microsoft.SCP.Net.SDK NuGet 包更新到版本 0.10.0.6 或更高版本。 包的版本还必须与安装在 HDInsight 上的 Storm 主版本相匹配。 例如，Storm on HDInsight 版本 3.3 和 3.4 使用 Storm 版本 0.10.x，而 HDInsight 3.5 使用 Storm 1.0.x。
-> 
+>
 > 基于 Linux 的群集上的 C# 拓扑必须使用 .NET 4.5，并使用 Mono 在 HDInsight 群集上运行。 大多数情况下会正常工作，但还是应查看 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)文档了解可能的不兼容性。
 
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 03/07/2017
   * 路径中必须包含 **%JAVA_HOME%/bin** 目录
 
 * 下列其中一个版本的 Visual Studio：
-  
+
   * Visual Studio 2012 [Update 4](http://www.microsoft.com/download/details.aspx?id=39305)
   * Visual Studio 2013 [Update 4](http://www.microsoft.com/download/details.aspx?id=44921) 或 [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
   * Visual Studio 2015 或 [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
@@ -54,14 +54,14 @@ ms.lasthandoff: 03/07/2017
 * Azure SDK 2.9.5 或更高版本
 
 * HDInsight Tools for Visual Studio：请参阅[开始使用 HDInsight Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md) 安装和配置 HDInsight Tools for Visual Studio。
-  
+
   > [!NOTE]
   > HDInsight Tools for Visual Studio 不支持 Visual Studio Express
 
 * Apache Storm on HDInsight 群集：请参阅 [Apache Storm on HDInsight 入门](hdinsight-apache-storm-tutorial-get-started.md) 了解创建群集的步骤。
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="templates"></a>模板
 
@@ -100,19 +100,19 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
 2. 打开 Visual Studio，选择“文件” > “新建”，然后选择“项目”。
 
 3. 在“新建项目”屏幕中，展开“已安装” > “模板”，然后选择“Azure Data Lake”。 从模板列表中，选择“Storm 应用程序”。 在屏幕底部，输入 **WordCount** 作为应用程序名称。
-   
+
     ![图像](./media/hdinsight-storm-develop-csharp-visual-studio-topology/new-project.png)
 
 4. 创建项目后，应有以下文件：
-   
+
    * **Program.cs**：此文件定义项目的拓扑。 默认情况下会创建包含一个 Spout 和一个 Bolt 的默认拓扑。
 
    * **Spout.cs**：发出随机数的示例 Spout。
 
    * **Bolt.cs**：保留 Spout 所发出数字计数的示例 Bolt。
-     
+
      在项目创建期间，将会从 NuGet 下载最新的 [SCP.NET 包](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/)。
-     
+
      [!INCLUDE [scp.net version important](../../includes/hdinsight-storm-scpdotnet-version.md)]
 
 在以下部分中，将此项目修改成基本的 WordCount 应用程序。
@@ -120,7 +120,7 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
 ### <a name="implement-the-spout"></a>实现 Spout
 
 1. 打开 **Spout.cs**。 Spout 用于将外部源中的数据读入拓扑。 Spout 的主要组件如下：
-   
+
    * **NextTuple**：允许 Spout 发出新的元组时由 Storm 调用。
 
    * **Ack**（仅限事务拓扑）：针对从此 Spout 发送的元组，处理拓扑中其他组件所发起的确认。 确认元组可让 Spout 知了解下游组件已成功处理元组。
@@ -128,7 +128,7 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
    * **失败**（仅限事务拓扑）：处理无法处理拓扑中其他组件的元组。 实现失败方法可以重新发出元组，以便可以再次处理。
 
 2. 将 **Spout** 类的内容替换为以下文本。 此 Spout 随机将句子发出到拓扑中。
-    
+
     ```csharp
     private Context ctx;
     private Random r = new Random();
@@ -186,7 +186,7 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
         // Only used for transactional topologies
     }
     ```
-   
+
     请花费片刻时间阅读注释，以了解此代码的作用。
 
 ### <a name="implement-the-bolts"></a>实现 Bolt
@@ -194,18 +194,18 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
 1. 删除项目中的现有 **Bolt.cs** 文件。
 
 2. 在“解决方案资源管理器”中，右键单击“项目”，然后依次选择“添加” > 和“新建项”。 从列表中选择“Storm Bolt”，并输入 **Splitter.cs** 作为名称。 重复此过程，以创建名为 **Counter.cs** 的另一个 Bolt。
-   
+
    * **Splitter.cs**：实现 Bolt，以将句子分割成不同的单词并发出一串新单词。
 
    * **Counter.cs**：实现 Bolt，以统计每个单词的数目，并发出一串新单词和每个单词的计数。
-     
+
      > [!NOTE]
      > 这些 Bolt 读取和写入流，但是你也可以使用 Bolt 来与数据库或服务等源进行通信。
 
 3. 打开 **Splitter.cs**。 默认情况下它只包含一个方法：**Execute**。 在 Bolt 收到要处理的元组时将调用 Execute 方法。 此时，可读取和处理传入元组，以及发出传出元组。
 
 4. 将 **Splitter** 类的内容替换为以下代码：
-    
+
     ```csharp
     private Context ctx;
 
@@ -249,11 +249,11 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
         Context.Logger.Info("Execute exit");
     }
     ```
-   
+
     请花费片刻时间阅读注释，以了解此代码的作用。
 
 5. 打开 **Counter.cs** 并将类内容替换为以下内容：
-    
+
     ```csharp
     private Context ctx;
 
@@ -305,7 +305,7 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
         Context.Logger.Info("Execute exit");
     }
     ```
-   
+
     请花费片刻时间阅读注释，以了解此代码的作用。
 
 ### <a name="define-the-topology"></a>定义拓扑
@@ -382,21 +382,21 @@ return topologyBuilder;
 ## <a name="submit-the-topology"></a>提交拓扑
 
 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“提交到 Storm on HDInsight”。
-   
+
    > [!NOTE]
    > 如果出现提示，请输入 Azure 订阅的登录凭据。 如果有多个订阅，请登录包含 Storm on HDInsight 群集的订阅。
 
 2. 从“Storm 群集”下拉列表中选择 Storm on HDInsight 群集，然后选择“提交”。 可使用“输出”窗口监视提交是否成功。
 
 3. 成功提交拓扑之后，应该会出现群集的“Storm 拓扑”。 从列表中选择“WordCount”拓扑，以查看有关正在运行的拓扑的信息。
-   
+
    > [!NOTE]
    > 也可以展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”，以从“服务器资源管理器”查看“Storm 拓扑”。
 
     若要在拓扑中查看有关组件的信息，请双击关系图中的组件。
 
 4. 从“拓扑摘要”视图中，单击“终止”以停止拓扑。
-   
+
    > [!NOTE]
    > Storm 拓扑会一直运行，直到它被停用，或者群集被删除。
 
@@ -413,9 +413,9 @@ return topologyBuilder;
 * **失败**：每个 Bolt 都可以调用 `this.ctx.Fail(tuple)`，指出元组的处理失败。 这项失败会传播到 Spout 的 `Fail` 方法，在其中，可以使用缓存的元数据来重放 Tuple。
 
 * **序列 ID**：发出元组时，可以指定唯一序列 ID。 此值标识要进行重播（确认和失败）处理的元组。 例如，发出数据时，**Storm 示例项目**中的 Spout 会使用以下项：
-  
+
         this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);
-  
+
     此代码会发出包含默认数据流的句子的元组，以及 **lastSeqId** 中所含的序列 ID 值。 在此示例中，**lastSeqId** 针对发出的每个元组递增。
 
 如 **Storm 示例**项目中所示，在运行时，可以根据配置来设置组件是否为事务性。
@@ -427,13 +427,13 @@ HDInsight Tools for Visual Studio 还可用于创建混合拓扑，其中某些�
 对于示例混合拓扑，请创建一个项目，然后选择“Storm 混合示例”。 此示例类型演示以下概念：
 
 * **Java Spout** 和 **C# Bolt**：在 **HybridTopology_javaSpout_csharpBolt** 中定义
-  
+
     * 事务版本在 **HybridTopologyTx_javaSpout_csharpBolt** 中定义
 
 * **C# Spout** 和 **Java Bolt**：在 **HybridTopology_csharpSpout_javaBolt** 中定义
-  
+
     * 事务版本在 **HybridTopologyTx_csharpSpout_javaBolt** 中定义
-  
+
   > [!NOTE]
   > 此版本还演示了如何使用文本文件中的 clojure 代码作为 Java 组件。
 
@@ -510,7 +510,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 > [!IMPORTANT]
 > 如果项目是通过未使用 NuGet 的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到更新版本：
-> 
+>
 > 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“管理 NuGet 包”。
 > 2. 使用“搜索”字段搜索 **Microsoft.SCP.Net.SDK**，然后将其添加到项目中。
 
@@ -542,22 +542,22 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 > 本地测试只适用于仅限 C# 的基本拓扑。 不能将本地测试用于混合拓扑或使用多个流的拓扑。
 
 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“属性”。 在项目属性中，将“输出类型”更改为“控制台应用程序”。
-   
+
     ![输出类型](./media/hdinsight-storm-develop-csharp-visual-studio-topology/outputtype.png)
-   
+
    > [!NOTE]
    > 将拓扑部署到群集之前，请记得将“输出类型”更改回“类库”。
 
 2. 在“解决方案资源管理器”中，右键单击项目，然后依次选择“添加” > “新建项”。 选择“类”，并输入 **LocalTest.cs** 作为类名称。 最后，单击“添加”。
 
 3. 打开 **LocalTest.cs**，并在顶部添加以下 **using** 语句：
-    
+
     ```csharp
     using Microsoft.SCP;
     ```
 
 4. 使用以下代码作为 **LocalTest** 类的内容：
-    
+
     ```csharp
     // Drives the topology components
     public void RunTestCase()
@@ -638,7 +638,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
     花费片刻时间通读代码注释。 此代码使用 **LocalContext** 在开发环境中运行组件，并将组件之间的数据流保存到本地磁盘驱动器上的文本文件中。
 
 1. 打开 **Program.cs**，将以下代码添加到 **Main** 方法中：
-    
+
     ```csharp
     Console.WriteLine("Starting tests");
     System.Environment.SetEnvironmentVariable("microsoft.scp.logPrefix", "WordCount-LocalTest");
@@ -661,7 +661,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 2. 保存更改，然后单击“F5”，或选择“调试” > “开始调试”以启动项目。 随后应会出现一个控制台窗口，并记录测试进行的状态。 出现“测试已完成”后，请按任意键关闭窗口。
 
 3. 使用“Windows 资源管理器”找到包含项目的目录，例如 **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。 在此目录中打开 **Bin**，然后单击“调试”。 应可看到运行测试时生成的文本文件：sentences.txt、counter.txt 和 splitter.txt。 打开每个文本文件并检查数据。
-   
+
    > [!NOTE]
    > 字符串数据会保存为这些文件中的十进制值数组。 例如，**splitter.txt** 文件中的 \[[97,103,111]] 是单词“and”。
 
@@ -729,5 +729,4 @@ Context.Logger.Info("Component started");
 **Apache HBase on HDInsight**
 
 * [HBase on HDInsight 入门](hdinsight-hbase-tutorial-get-started.md)
-
 
