@@ -13,12 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 03/15/2017
 ms.author: kgremban
+ms.custom: end-user
 translationtype: Human Translation
 ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
 ms.openlocfilehash: 6dafec65b2e8091954cae39994d0013d9fd06558
-
+ms.lasthandoff: 12/22/2016
 
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>为帐户设置双重验证
@@ -97,9 +98,4 @@ ms.openlocfilehash: 6dafec65b2e8091954cae39994d0013d9fd06558
 * 更改首选项和[管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)
 * 为不支持双重验证的本地设备应用设置[应用密码](multi-factor-authentication-end-user-app-passwords.md)。
 * 使用 [Microsoft Authenticator 应用](microsoft-authenticator-app-how-to.md)完成快速、安全的身份验证（即使没有手机网络服务）。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

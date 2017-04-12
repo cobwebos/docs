@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "从云检索数据, iot 云服务"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: 78e4b6ea-968d-401e-a7dc-8f9acdb3ec1a
 ms.service: iot-hub
 ms.devlang: c

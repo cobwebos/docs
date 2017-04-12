@@ -38,4 +38,3 @@ Azure Active Directory 公开特定于租户的和公用的（独立于租户的
 
 有关 Azure AD 发布的联合元数据文档的信息，请参阅 [Federation Metadata](active-directory-federation-metadata.md)（联合元数据）。
 
-

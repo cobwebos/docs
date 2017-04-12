@@ -64,7 +64,7 @@ ms.lasthandoff: 03/10/2017
 2. 登录到 [Azure 门户](https://portal.azure.com/)。
 3. 在“登录”  页面上，提供订阅的凭据。
    
-   ![登录](./media/sql-database-get-started/login.png)
+   ![登录](./media/sql-database-get-started-portal/login.png)
 
 
 <a name="create-logical-server-bk"></a>
@@ -99,7 +99,7 @@ ms.lasthandoff: 03/10/2017
 
 2. 安装后，在 Windows 搜索框中键入 **Microsoft SQL Server Management Studio**，然后单击 **Enter** 打开 SSMS。
 
-   ![SQL Server Management Studio](./media/sql-database-get-started/ssms.png)
+   ![SQL Server Management Studio](./media/sql-database-connect-query-ssms/ssms.png)
 
 3. 在“连接到服务器”对话框中选择一种 Active Directory 身份验证方法，然后提供相应的身份验证信息。 有关选择方法的信息，请参阅 [Azure Active Directory 身份验证](sql-database-aad-authentication.md)和 [Azure AD MFA 的 SSMS 支持](sql-database-ssms-mfa-authentication.md)。
 
