@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/09/2016
+ms.date: 04/11/2017
 ms.author: bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 31291a9b0f452adeae42f744a976c14e61a4b303
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -105,10 +106,5 @@ Azure 备份和站点恢复提供用于保护企业数据并确保服务器和�
 
 ## <a name="next-steps"></a>后续步骤
 * 有关自动化 OMS 服务的技术信息，请参考 [OMS SDK](operations-management-suite-sdk.md)。  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
