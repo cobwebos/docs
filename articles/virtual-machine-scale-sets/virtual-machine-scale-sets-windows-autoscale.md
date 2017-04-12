@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 4fa0cdc2ee71d4e499dfc45bac7b690d728b626a
-ms.openlocfilehash: 2649edd4af67e25ce49bf0ced858b7c7e4633290
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: b2565bef6643decd1b96fc3cc5b01003916e9685
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="automatically-scale-machines-in-a-virtual-machine-scale-set"></a>自动缩放虚拟机规模集中的虚拟机
-使用虚拟机规模集可以轻松地将相同的虚拟机作为集来进行部署和管理。 缩放集为超大规模应用程序提供高度可缩放且可自定义的计算层，并且它们支持 Windows 平台映像、Linux 平台映像、自定义映像和扩展。 有关规模集的详细信息，请参阅[虚拟机规模集](virtual-machine-scale-sets-overview.md)。
+使用虚拟机规模集可以轻松地将相同的虚拟机作为集来进行部署和管理。 规模集为超大规模应用程序提供高度可缩放且可自定义的计算层，并且它们支持 Windows 平台映像、Linux 平台映像、自定义映像和扩展。 有关规模集的详细信息，请参阅[虚拟机规模集](virtual-machine-scale-sets-overview.md)。
 
 本教程演示如何创建 Windows 虚拟机的规模集，并自动缩放集中的虚拟机。 通过使用 Azure PowerShell 创建和部署 Azure Resource Manager 模板，可创建规模集并设置缩放。 有关模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。 若要了解有关规模集自动缩放的详细信息，请参阅[自动缩放和虚拟机规模集](virtual-machine-scale-sets-autoscale-overview.md)。
 
@@ -108,11 +108,11 @@ ms.lasthandoff: 02/09/2017
     * 网络接口所用的 DNS 名称。
 
         * 虚拟网络和子网的 IP 地址名称和前缀。
-        * 虚拟网络、负载平衡器和网络接口的名称和标识符。
-        * 与缩放集中虚拟机关联的帐户的存储帐户名称。
-        * 已安装在虚拟机上的诊断扩展的设置。 有关诊断扩展的详细信息，请参阅[使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+        * 虚拟网络、负载均衡器和网络接口的名称和标识符。
+        * 与规模集中虚拟机关联的帐户的存储帐户名称。
+        * 已安装在虚拟机上的诊断扩展的设置。 有关诊断扩展的详细信息，请参阅[使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-4. 将存储帐户资源添加到已添加到模板中的资源父元素下。 此模板使用一个循环来创建建议的&5; 个存储帐户，其中将存储操作系统磁盘和诊断数据。 这组帐户可在一个缩放集中最多支持 100 个虚拟机，这是当前的最大值。 每个存储帐户通过将变量中定义的字母指示符与模板的参数中提供的前缀组合来命名。
+4. 将存储帐户资源添加到已添加到模板中的资源父元素下。 此模板使用一个循环来创建建议的 5 个存储帐户，其中将存储操作系统磁盘和诊断数据。 这组帐户可在一个规模集中最多支持 100 个虚拟机，这是当前的最大值。 每个存储帐户通过将变量中定义的字母指示符与模板的参数中提供的前缀组合来命名。
 
     ```json
     {
@@ -148,7 +148,7 @@ ms.lasthandoff: 02/09/2017
     },
     ```
 
-6. 添加负载平衡器和网络接口所使用的公共 IP 地址资源。
+6. 添加负载均衡器和网络接口所使用的公共 IP 地址资源。
 
     ```json
     {
@@ -177,7 +177,7 @@ ms.lasthandoff: 02/09/2017
     },
     ```
 
-7. 添加缩放集使用的负载平衡器资源。 有关详细信息，请参阅 [Azure Resource Manager 对负载平衡器的支持](../load-balancer/load-balancer-arm.md)。
+7. 添加规模集使用的负载均衡器资源。 有关详细信息，请参阅 [Azure Resource Manager 对负载均衡器的支持](../load-balancer/load-balancer-arm.md)。
 
     ```json   
     {
@@ -459,7 +459,7 @@ ms.lasthandoff: 02/09/2017
     此值是虚拟机规模集的资源标识符。
     
     * **timeGrain**  
-    此值是收集的指标的粒度。 在此模板中，它设置为&1; 分钟。
+    此值是收集的指标的粒度。 在此模板中，它设置为 1 分钟。
     
     * **statistic**  
     此值可确定如何组合指标以调节自动缩放操作。 可能的值包括：Average、Min、Max。 在此模板中，已收集虚拟机的平均总 CPU 使用率。
@@ -474,16 +474,16 @@ ms.lasthandoff: 02/09/2017
     此值是用于比较指标数据和阈值的运算符。 可能的值包括：Equals、NotEquals、GreaterThan、GreaterThanOrEqual、LessThan、LessThanOrEqual。
     
     * **threshold**  
-    此值是触发缩放操作的值。 在此模板中，当缩放集中的虚拟机的平均 CPU 使用率超过 50% 时，会将虚拟机添加到缩放集。
+    此值是触发缩放操作的值。 在此模板中，当规模集中的虚拟机的平均 CPU 使用率超过 50% 时，会将虚拟机添加到规模集。
     
     * **direction**  
-    此值可确定在达到阈值时执行的操作。 可能的值为 Increase 或 Decrease。 在此模板中，如果在定义的时间窗口中阈值超过 50%，则将增加缩放集中的虚拟机数。
+    此值可确定在达到阈值时执行的操作。 可能的值为 Increase 或 Decrease。 在此模板中，如果在定义的时间窗口中阈值超过 50%，则将增加规模集中的虚拟机数。
     
     * **类型**  
     此值是应发生的操作类型，且必须设置为 ChangeCount。
     
     * **value**  
-    此值是已在规模集中添加或删除的虚拟机数。 此值必须大于或等于 1。 默认值为 1。 在此模板中，当达到该阈值时，缩放集中的虚拟机数将递增 1。
+    此值是已在规模集中添加或删除的虚拟机数。 此值必须大于或等于 1。 默认值为 1。 在此模板中，当达到该阈值时，规模集中的虚拟机数将递增 1。
     
     * **cooldown**  
     此值是自上次缩放操作后，至下次操作发生之前要等待的时间。 此值必须介于一分钟到一周之间。
@@ -553,10 +553,10 @@ vmName: vmsstestvm1
 > 
 
 ## <a name="step-6-monitor-resources"></a>步骤 6：监视资源
-你可以使用以下方法获取有关虚拟机缩放集的一些信息：
+你可以使用以下方法获取有关虚拟机规模集的一些信息：
 
 * Azure 门户 - 当前使用门户可以获取有限数量的信息。
-* [Azure 资源浏览器](https://resources.azure.com/) - 要浏览规模集的当前状态，这是最好的工具。 遵循此路径，你应该看到所创建的缩放集的实例视图：
+* [Azure 资源浏览器](https://resources.azure.com/) - 要浏览规模集的当前状态，这是最好的工具。 遵循此路径，你应该看到所创建的规模集的实例视图：
   
     订阅 > {你的订阅} > resourceGroups > vmsstestrg1 > 提供程序 > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
 
@@ -584,7 +584,7 @@ vmName: vmsstestvm1
   Remove-AzureRmResourceGroup -Name vmsstestrg1
   ```
 
-如果要保留资源组，可以仅删除缩放集。
+如果要保留资源组，可以仅删除规模集。
 
   ```powershell
   Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name"

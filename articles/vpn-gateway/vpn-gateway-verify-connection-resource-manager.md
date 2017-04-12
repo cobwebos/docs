@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2017
+ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: b5bad71095e4b7e3b26df15780467526200ffa10
 ms.openlocfilehash: 68d94a6402b1497f65c4d03fb987ba800e86c2a3
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -34,14 +35,20 @@ ms.openlocfilehash: 68d94a6402b1497f65c4d03fb987ba800e86c2a3
 
 ### <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
 1. 使用提升的权限打开 PowerShell 控制台，然后连接到帐户。
-   
-        Login-AzureRmAccount
+
+  ```powershell
+  Login-AzureRmAccount
+  ```
 2. 检查该帐户的订阅。
-   
-        Get-AzureRmSubscription 
+
+  ```powershell
+  Get-AzureRmSubscription
+  ``` 
 3. 指定要使用的订阅。
-   
-        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  ```
 
 ### <a name="verify-your-connection"></a>验证连接
 
@@ -56,27 +63,30 @@ ms.openlocfilehash: 68d94a6402b1497f65c4d03fb987ba800e86c2a3
 
 ### <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
 1. 使用提升的权限打开 PowerShell 控制台，然后连接到帐户。
-   
-        Login-AzureRmAccount
+
+  ```powershell
+  Login-AzureRmAccount
+  ```
 2. 检查该帐户的订阅。
-   
-        Get-AzureRmSubscription 
+
+  ```powershell
+  Get-AzureRmSubscription 
+  ```
 3. 指定要使用的订阅。
-   
-        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  ```
 4. 登录以使用适用于经典部署模型的服务管理 cmdlet。
 
-        Add-AzureAccount
+  ```powershell
+  Add-AzureAccount
+  ```
 
 ### <a name="verify-your-connection"></a>验证连接
 [!INCLUDE [Classic PowerShell](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 * 你可以将虚拟机添加到虚拟网络。 请参阅 [创建虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 以获取相关步骤。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

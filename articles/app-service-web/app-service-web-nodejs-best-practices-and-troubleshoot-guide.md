@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: ranjithr;wadeh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 802a6126302a30aefae5841f42d8b9d782065638
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 79e5329332c457c738c082277ee7b79eb8ead049
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Azure Web Apps 上节点应用程序的最佳做法和故障排除指南
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-本文介绍 Azure Web 应用上运行的[节点应用程序](app-service-web-nodejs-get-started.md)的最佳实践和故障排除步骤（使用 [iisnode](https://github.com/azure/iisnode)）。
+本文介绍 Azure Web 应用上运行的[节点应用程序](app-service-web-get-started-nodejs.md)的最佳实践和故障排除步骤（使用 [iisnode](https://github.com/azure/iisnode)）。
 
 > [!WARNING]
 > 在生产站点上使用故障排除步骤时，请格外小心。 建议在非生产安装（例如过渡槽）上排查应用问题，当问题修复后，请交换过渡槽与生产槽。
@@ -252,16 +253,11 @@ NODE.exe 内有名为 NODE\_PENDING\_PIPE\_INSTANCES 的设置。 默认情况�
 ## <a name="more-resources"></a>更多资源
 请访问以下链接，了解有关 Azure 应用服务上的 node.js 应用程序的详细信息。
 
-* [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-nodejs-get-started.md)
+* [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
 * [如何在 Azure App Service 中调试 Node.js Web 应用](web-sites-nodejs-debug.md)
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure 应用服务 Web 应用：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js 开发人员中心](../nodejs-use-node-modules-azure-apps.md)
 * [Kudu 调试控制台探秘](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

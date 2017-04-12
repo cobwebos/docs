@@ -7,6 +7,7 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "iot 问题, 物联网问题"
+ROBOTS: NOINDEX
 ms.assetid: 5f742c38-0e33-465a-9a0d-1e41e8d17187
 ms.service: iot-hub
 ms.devlang: c

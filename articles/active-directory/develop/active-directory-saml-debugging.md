@@ -16,6 +16,7 @@ ms.author: asmalser
 translationtype: Human Translation
 ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
 ms.openlocfilehash: 245c2de65ca771cdc0e6371010246725c407ae11
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -36,10 +37,4 @@ ms.openlocfilehash: 245c2de65ca771cdc0e6371010246725c407ae11
 * [如何为预先集成的应用自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md)
 
 <!--Image references-->
-[1]: ./media/active-directory-saml-debugging/fiddler.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+[1]: ../media/active-directory-saml-debugging/fiddler.png

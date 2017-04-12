@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "ble 应用, 传感器监视器应用, 传感器数据收集, 来自传感器的数据, 到云的传感器数据"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: b33e53a1-1df7-4412-ade1-45185aec5bef
 ms.service: iot-hub
 ms.devlang: c

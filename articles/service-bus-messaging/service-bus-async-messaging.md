@@ -15,15 +15,16 @@ ms.workload: na
 ms.date: 01/13/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 798b4310eb5ea7a4877d7842371b5dd7cf88d632
-ms.openlocfilehash: 8a5c1a381cc5cf30f211da948951dc577a124951
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 3142bea414e54e321e3dc9ae13aca110049ee105
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>异步消息传送模式和高可用性
 可以通过多种不同的方式实现异步消息传送。 对于队列、主题和订阅，Azure 服务总线通过存储和转发机制支持异步。 在正常（同步）操作中，会将消息发送到队列和主题，并从队列和主题接收消息。 你编写的应用程序依赖于这些始终可用的实体。 当实体运行状况因各种环境而发生变化时，你需要一种能够提供满足大多数需求的缩减功能实体的方式。
 
-应用程序通常使用异步消息传送模式来实现大量通信方案。 你可以构建一些应用程序，以便客户端在其中可以向服务发送消息（即使该服务未运行）。 对于将经历大量通信的应用程序，队列可以通过提供缓冲通信的场所，帮助对负载进行分级。 最后，你可以获得一个简单而高效的负载平衡器，从而在多台计算机间分发消息。
+应用程序通常使用异步消息传送模式来实现大量通信方案。 你可以构建一些应用程序，以便客户端在其中可以向服务发送消息（即使该服务未运行）。 对于将经历大量通信的应用程序，队列可以通过提供缓冲通信的场所，帮助对负载进行分级。 最后，你可以获得一个简单而高效的负载均衡器，从而在多台计算机间分发消息。
 
 为了维护任何这些实体的可用性，请考虑表达这些实体可能不可用的多种方式，从而构建持久的消息传送系统。 一般而言，发现实体对应用程序不可用时，有以下表达方式：
 
@@ -39,7 +40,7 @@ ms.openlocfilehash: 8a5c1a381cc5cf30f211da948951dc577a124951
 
 * 来自服务总线所依赖的外部系统的限制。 与存储和计算资源的交互存在限制。
 * 服务总线所依赖的系统出现问题。 例如，存储的给定部分可能遇到问题。
-* 单个子系统上出现服务总线故障。 在此情况下，计算节点可能会陷入不一致状态而必须重新启动其自身，从而导致它负责处理的所有实体负载平衡到其他节点。 这又可能导致短时间内消息处理变慢。
+* 单个子系统上出现服务总线故障。 在此情况下，计算节点可能会陷入不一致状态而必须重新启动其自身，从而导致它负责处理的所有实体负载均衡到其他节点。 这又可能导致短时间内消息处理变慢。
 * Azure 数据中心内的服务总线故障。 这是“灾难性故障”，无论故障时间是数分钟还是几小时，在此期间都无法访问系统。
 
 > [!NOTE]
@@ -81,10 +82,9 @@ Azure 中的其他组件可能偶尔会发生服务问题。 例如，当服务�
 
 1. 仅从主命名空间接收消息。
 2. 已发送到特定队列或主题的消息可能会无序到达。
-3. 如果应用程序使用会话，某个会话中的消息可以无序到达。 这突破了会话的正常功能。 这意味着你的应用程序可以使用会话对消息进行逻辑分组。 仅在主命名空间上保持会话状态。
-4. 某个会话中的消息可以无序到达。 这突破了会话的正常功能。 这意味着你的应用程序可以使用会话对消息进行逻辑分组。
-5. 仅在主命名空间上保持会话状态。
-6. 主队列可以在辅助队列将所有消息都传送到主队列之前进入联机状态并开始接收消息。
+3. 某个会话中的消息可以无序到达。 这突破了会话的正常功能。 这意味着你的应用程序可以使用会话对消息进行逻辑分组。
+4. 仅在主命名空间上保持会话状态。
+5. 主队列可以在辅助队列将所有消息都传送到主队列之前进入联机状态并开始接收消息。
 
 以下各节介绍了 API 以及实现 API 的方式，并显示了使用此功能的示例代码。 请注意，此功能将对计费产生相关影响。
 
@@ -152,9 +152,4 @@ if (sendAvailabilityOptions.BacklogQueueCount < 1)
 [UnauthorizedAccessException]: https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx
 [BacklogQueueCount]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_BacklogQueueCount
 [paired namespaces]: service-bus-paired-namespaces.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

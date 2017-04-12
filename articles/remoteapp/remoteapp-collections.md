@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7c526faeef2418cfbbca7948004691e127327020
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 7891ce3b04cd5978440dd8af73dc95d1d123ed92
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="what-kind-of-collection-do-you-need-for-azure-remoteapp"></a>Azure RemoteApp 需要哪种集合？
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -90,10 +91,5 @@ Azure RemoteApp 支持 Microsoft 帐户和 Azure Active Directory 帐户，但�
 好了，我认为我们现在已经都弄明白了，因此，只剩一件事要做 - 创建你的第一个 Azure RemoteApp 集合。
 
 [创建云集合](remoteapp-create-cloud-deployment.md)或[创建混合集合](remoteapp-create-hybrid-deployment.md) - 开始创建吧！
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

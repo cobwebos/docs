@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 4725f4200446434bfcb8754aac9bf0d99f8a7526
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 0959dace90686324b9fe4360f4696f8d85c3a9e7
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -58,7 +58,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
     Enter the code E1A2B3C4D to authenticate.
 
 > [!NOTE]
-> 如果没有 Azure 帐户，则会看到一条错误消息，指出需要不同类型的帐户。 若要从当前 Azure 帐户创建一个帐户，请参阅[在 Azure Active Directory 中创建工作或学校标识](../virtual-machines/virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> 如果没有 Azure 帐户，则会看到一条错误消息，指出需要不同类型的帐户。 若要从当前 Azure 帐户创建一个帐户，请参阅[在 Azure Active Directory 中创建工作或学校标识](../virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 >
 >
 

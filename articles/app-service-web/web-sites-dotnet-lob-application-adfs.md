@@ -15,9 +15,9 @@ ms.workload: web
 ms.date: 08/31/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 29b7146837f8a88baebd67fc448954f01388d67b
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 22fe6397120c36e1aa716f4711fbe9e7c72d17e8
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -87,14 +87,17 @@ ms.lasthandoff: 11/17/2016
 4. 在 App_Start\Startup.Auth.cs 中，更改以下静态字符串定义：  
    
    <pre class="prettyprint">
-private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIdentifier</mark>"]; <mark><del>private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];</del></mark>
+   private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIdentifier</mark>"];
+   <mark><del>private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];</del></mark>
    <mark><del>private static string tenant = ConfigurationManager.AppSettings["ida:Tenant"];</del></mark>
    <mark><del>private static string metadata = string.Format("{0}/{1}/federationmetadata/2007-06/federationmetadata.xml", aadInstance, tenant);</del></mark>
    <mark>private static string metadata = string.Format("https://{0}/federationmetadata/2007-06/federationmetadata.xml", ConfigurationManager.AppSettings["ida:ADFS"]);</mark>
    
    <mark><del>string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);</del></mark>
    </pre>
-5. 现在，请在 Web.config 中进行相应的更改。 打开 Web.config，修改以下应用设置：  <pre class="prettyprint">
+5. 现在，请在 Web.config 中进行相应的更改。 打开 Web.config，修改以下应用设置：  
+   
+   <pre class="prettyprint">
    &lt;appSettings&gt;
    &lt;add key="webpages:Version" value="3.0.0.0" /&gt;
    &lt;add key="webpages:Enabled" value="false" /&gt;
@@ -208,7 +211,16 @@ private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIden
     
     <pre class="prettyprint">
     c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] &amp;&amp;
-    c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant"] => add( store = "_OpaqueIdStore", types = ("<mark>http://contoso.com/internal/sessionid</mark>"), query = "{0};{1};{2};{3};{4}", param = "useEntropy", param = c1.Value, param = c1.OriginalIssuer, param = "", param = c2.Value);
+    c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant"]
+     => add(
+         store = "_OpaqueIdStore",
+         types = ("<mark>http://contoso.com/internal/sessionid</mark>"),
+         query = "{0};{1};{2};{3};{4}",
+         param = "useEntropy",
+         param = c1.Value,
+         param = c1.OriginalIssuer,
+         param = "",
+         param = c2.Value);
     </pre>
     
     自定义规则应如以下屏幕截图所示：
@@ -267,7 +279,9 @@ private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIden
    
     <pre class="prettyprint">
     <mark>[Authorize(Roles="Test Group")]</mark>
-    public ActionResult About() { ViewBag.Message = "Your application description page.";
+    public ActionResult About()
+    {
+        ViewBag.Message = "Your application description page.";
    
         return View();
     }
@@ -287,8 +301,12 @@ private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIden
     如果调查事件查看器中的 AD FS 服务器上出现此错误，将看到此异常消息：  
    
     <pre class="prettyprint">
-    Microsoft.IdentityServer.Web.InvalidRequestException：MSIS7042：<mark>同一个客户端浏览器会话在过去“11”秒内发出了“6”个请求。</mark> 请联系管理员获取详细信息。
-   at Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie(WrappedHttpListenerContext context) at Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse(WSFederationContext context, MSISSignInResponse response) at Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest(ProtocolContext protocolContext, PassiveProtocolHandler protocolHandler) at Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext(WrappedHttpListenerContext context)  </pre>
+    Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>The same client browser session has made '6' requests in the last '11' seconds.</mark> Contact your administrator for details.
+       at Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie(WrappedHttpListenerContext context)
+       at Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse(WSFederationContext context, MSISSignInResponse response)
+       at Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest(ProtocolContext protocolContext, PassiveProtocolHandler protocolHandler)
+       at Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext(WrappedHttpListenerContext context)
+    </pre>
    
     发生此错误的原因是默认情况下当用户的角色未授权时，MVC 将返回“401 未授权”。 这会触发对标识提供程序 (AD FS) 的重新进行身份验证请求。 由于用户已经过身份验证，AD FS 将返回同一页，然后再次发出 401，并创建重定向循环。 您将使用简单的逻辑替代 AuthorizeAttribute 的 `HandleUnauthorizedRequest` 方法，以显示一些有意义的内容，而不是继续重定向循环。
 5. 在项目中创建名为 AuthorizeAttribute.cs 的文件，并将以下代码粘贴到其中。

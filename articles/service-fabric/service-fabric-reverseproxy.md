@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 02/23/2017
+ms.date: 04/07/2017
 ms.author: bharatn
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: a68855e0b6ba436849c4de13f1439f0e70009b6a
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 121bf91a2476a079c0737187aef8791be0b4b250
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -297,7 +297,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 > 在现有群集上使用不同于群集证书的证书来启用反向代理时，请在启用反向代理之前在群集上安装反向代理证书并更新 ACL。 在执行步骤 1-4 开始部署以启用反向代理之前，请使用上述设置完成 [Azure Resource Manager 模板](service-fabric-cluster-creation-via-arm.md)部署。
 
 ## <a name="next-steps"></a>后续步骤
-* 参阅 [GitHub 上的示例项目](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount)中服务之间的 HTTP 通信示例。
+* 参阅 [GitHub 上的示例项目](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)中服务之间的 HTTP 通信示例。
 * [使用 Reliable Services 远程控制执行远程过程调用](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)
 * [使用 Reliable Services 的 WCF 通信](service-fabric-reliable-services-communication-wcf.md)

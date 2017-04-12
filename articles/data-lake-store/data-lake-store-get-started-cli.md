@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/31/2017
+ms.date: 03/17/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: e43a6ea9510c481518becb52cc571ec62e3b151d
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: f7748dba30c6e0332c166feda25f4aaa93c06efa
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -29,19 +29,21 @@ ms.lasthandoff: 03/21/2017
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
+> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
 
-> [!NOTE]
-> 若要上载和下载大量数据（大型文件和/或大量文件），建议使用 [Python SDK](data-lake-store-get-started-python.md)、[.NET SDK](data-lake-store-get-started-net-sdk.md) 或 [Azure PowerShell](data-lake-store-get-started-powershell.md)。 这些选项都有更好的性能，因为使用了多个线程并行执行数据移动操作。
-> 
->  
-
 了解如何使用 Azure 命令行接口来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。
 
 Azure CLI 是以 Node.js 实现的。 可以在支持 Node.js 的任意平台（包括 Windows、Mac 和 Linux）上使用它。 Azure CLI 是开放源代码。 在 GitHub 中管理源代码（网址为 <a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a>）。 本文仅介绍如何配合使用 Azure CLI 和 Data Lake Store。 有关如何使用 Azure CLI 的一般指南，请参阅[如何使用 Azure CLI][azure-command-line-tools]。
+
+
+> [!NOTE]
+> 若要上载和下载大量数据（大型文件和/或大量文件），建议使用 [Python SDK](data-lake-store-get-started-python.md)、[.NET SDK](data-lake-store-get-started-net-sdk.md) 或 [Azure PowerShell](data-lake-store-get-started-powershell.md)。 这些选项都有更好的性能，因为使用了多个线程并行执行数据移动操作。
+> 
+>
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，你必须具有：
@@ -50,10 +52,13 @@ Azure CLI 是以 Node.js 实现的。 可以在支持 Node.js 的任意平台（
 * **Azure CLI** - 有关安装和配置信息，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) 。 安装 CLI 后，确保重启计算机。
 
 ## <a name="authentication"></a>身份验证
+
 本文对 Data Lake Store 使用一种较为简单的身份验证方法，可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别监管对 Data Lake Store 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Store 中进行身份验证，即**最终用户身份验证**或**服务到服务身份验证**。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 ## <a name="login-to-your-azure-subscription"></a>登录到你的 Azure 订阅
+
 1. 遵循[从 Azure 命令行接口 (Azure CLI) 连接到 Azure 订阅中](../xplat-cli-connect.md)所述的步骤，并使用 `azure login` 方法连接到订阅。
+
 2. 使用 `azure account list` 命令列出与帐户关联的订阅。
    
         info:    Executing command account list
