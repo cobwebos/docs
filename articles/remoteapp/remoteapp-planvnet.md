@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 71537845edcca85a7d0722dd32264da9f6b579e9
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 1eb8115b13fb18074b4c4726b69e3d9faf387c32
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-plan-your-virtual-network-for-azure-remoteapp"></a>如何规划 Azure RemoteApp 的虚拟网络
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -56,10 +57,5 @@ ms.openlocfilehash: 71537845edcca85a7d0722dd32264da9f6b579e9
 
 ## <a name="virtual-network-with-forced-tunneling"></a>使用强制隧道的虚拟网络
 [强制隧道](../vpn-gateway/vpn-gateway-about-forced-tunneling.md) 现在支持所有新的 Azure RemoteApp 集合。 为了支持强制隧道，我们目前不支持迁移现有集合。  你必须使用链接到 Azure RemoteApp 的 VENT 删除所有现有集合并创建一个新集合，以在集合上启用强制隧道。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
