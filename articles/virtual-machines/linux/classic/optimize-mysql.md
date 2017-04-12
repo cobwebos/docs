@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: bd313ae585667cc80d44ae50f9d97659b8de62eb
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e910c47d88434fae76f9c2d3bcb8a258d7d3fde4
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/27/2017
 影响 Azure 上 MySQL 性能的因素有很多，主要体现在虚拟硬件选择和软件配置两个方面。 本文重点介绍如何通过存储、系统和数据库配置优化性能。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Resource Manager 模型进行 Linux VM 优化的信息，请参阅[优化 Azure 上的 Linux VM](../../virtual-machines-linux-optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Resource Manager 模型进行 Linux VM 优化的信息，请参阅[优化 Azure 上的 Linux VM](../optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="utilize-raid-on-an-azure-virtual-machine"></a>利用 Azure 虚拟机上的 RAID
 存储是影响云环境中的数据库性能的关键因素。 与单个磁盘相比，RAID 可以通过并发访问提供更快的访问速度。 有关详细信息，请参阅[标准 RAID 级别](http://en.wikipedia.org/wiki/Standard_RAID_levels)。   
@@ -71,7 +71,7 @@ ms.lasthandoff: 03/27/2017
     sudo grep SCSI /var/log/dmesg
 
 #### <a name="create-raid-with-the-additional-disks"></a>创建具有更多磁盘的 RAID
-以下步骤介绍如何[在 Linux 上配置软件 RAID](../../virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+以下步骤介绍如何[在 Linux 上配置软件 RAID](../configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 > [!NOTE]
 > 如果使用的是 XFS 文件系统，创建 RAID 后请执行以下步骤。

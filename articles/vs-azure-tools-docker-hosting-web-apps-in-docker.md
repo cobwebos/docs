@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 06/08/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: f99dcb1ce4cfe2a629c9254264a93b4d9d02ce4b
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7169b6f2d9738abd9651120be96bb1cf209ea85d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -28,7 +29,7 @@ Docker 是轻型容器引擎，在某些方面类似于虚拟机，你可以将�
 ## <a name="prerequisites"></a>先决条件
 以下是完成本教程所要做好的准备：
 
-* 创建 Azure Docker 主机 VM，如 [How to use docker-machine with Azure](virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（如何将 docker-machine 与 Azure 配合使用）中所述
+* 创建 Azure Docker 主机 VM，如 [How to use docker-machine with Azure](virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（如何将 docker-machine 与 Azure 配合使用）中所述
 * 安装 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)
 * [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
 * 安装 [Visual Studio 2015 Tools for Docker - 预览版](http://aka.ms/DockerToolsForVS)
@@ -96,9 +97,4 @@ Docker 是轻型容器引擎，在某些方面类似于虚拟机，你可以将�
 [1]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/change-docker-machine-name.png
 [2]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

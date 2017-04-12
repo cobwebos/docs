@@ -50,7 +50,7 @@
 ## 管理
 ### [服务总线管理库](service-bus-management-libraries.md)
 ### [使用 Azure Resource Manager 模板](service-bus-resource-manager-overview.md)
-### [使用 PowerShell 预配实体](service-bus-powershell-how-to-provision.md)
+### [使用 PowerShell 预配实体](service-bus-manage-with-ps.md)
 
 # 引用
 ## .NET

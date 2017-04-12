@@ -12,11 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bd892d5f15a8d95664ef0666cd35e434e773bbce
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 98f9519a66b2be8634d533d4e9bc5e690c006e82
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,7 +37,7 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 * [为数据库设置审核]
 * [分析审核日志和报告]
 
-## <a name="a-idsubheading-1aazure-sql-data-warehouse-database-auditing-basics"></a><a id="subheading-1"></a>Azure SQL 数据仓库数据库审核基础知识
+## <a id="subheading-1"></a>Azure SQL 数据仓库数据库审核基础知识
 SQL 数据仓库数据库审核可让你：
 
 * **保留**选定事件的审核痕迹。 可以定义要审核的数据库操作的类别。
@@ -62,7 +64,7 @@ SQL 数据仓库数据库审核可让你：
 
 在设置审核之前，请检查是否正在使用[“下层客户端”](sql-data-warehouse-auditing-downlevel-clients.md)。
 
-## <a name="a-idsubheading-2aset-up-auditing-for-your-database"></a><a id="subheading-2"></a>为数据库设置审核
+## <a id="subheading-2"></a>为数据库设置审核
 1. 启动 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。
 2. 导航到你要审核的 SQL 数据仓库数据库/SQL Server 的配置边栏选项卡。 单击顶部的“设置”按钮，然后在“设置”边栏选项卡中选择“审核”。
    
@@ -81,7 +83,7 @@ SQL 数据仓库数据库审核可让你：
 8. 如果你要为某个数据库配置审核，可能需要更改客户端的连接字符串，以确保正确捕获数据审核。 对于下层客户端连接，请查看[修改连接字符串中的服务器 FDQN](sql-data-warehouse-auditing-downlevel-clients.md) 主题。
 9. 单击 **“确定”**。
 
-## <a name="a-idsubheading-3analyze-audit-logs-and-reportsa"></a><a id="subheading-3">分析审核日志和报告</a>
+## <a id="subheading-3">分析审核日志和报告</a>
 审核日志将在设置期间选择的 Azure 存储帐户中前缀为 **SQLDBAuditLogs** 的一系列存储表内进行聚合。 你可以使用工具（比如 <a href="http://azurestorageexplorer.codeplex.com/" target="_blank">Azure 存储资源管理器</a>）查看日志文件。
 
 预配置的仪表板报告模板作为<a href="http://go.microsoft.com/fwlink/?LinkId=403540" target="_blank">可下载的 Excel 电子表格</a>提供，可帮助你快速分析日志数据。 若要对审核日志使用模板，需要安装可从<a href="http://www.microsoft.com/download/details.aspx?id=39379">此处</a>下载的 Excel 2013 或更高版本以及 Power Query。
@@ -92,10 +94,10 @@ SQL 数据仓库数据库审核可让你：
 
 ![][5]
 
-## <a name="a-idsubheading-4practices-for-usage-in-productiona"></a><a id="subheading-4">生产环境中的用法实践</a>
+## <a id="subheading-4">生产环境中的用法实践</a>
 本部分中的说明与以上屏幕截图相关。 可以使用 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>或<a href= "https://manage.windowsazure.com/" target="_bank"> Azure 经典门户</a>。
 
-## <a name="a-idsubheading-5astorage-key-regeneration"></a><a id="subheading-5"></a>重新生成存储密钥
+## <a id="subheading-5"></a>重新生成存储密钥
 在生产环境中，你可能会定期刷新存储密钥。 刷新密钥时，你需要重新保存策略。 过程如下：
 
 1. 在审核配置边栏选项卡中（如以上有关设置审核的部分中所述），将“存储访问密钥”从“主”切换为“辅助”，然后单击“保存”。
@@ -104,7 +106,7 @@ SQL 数据仓库数据库审核可让你：
 3. 返回审核配置边栏选项卡，将“存储访问密钥”从“辅助”切换为“主”，然后按“保存”。
 4. 返回存储 UI 并**重新生成**辅助访问密钥（为下一个密钥刷新周期做好准备）。
 
-## <a name="a-idsubheading-6aautomation"></a><a id="subheading-6"></a>自动化
+## <a id="subheading-6"></a>自动化
 可以使用多个 PowerShell cmdlet 来配置 Azure SQL 数据库中的审核。 若要访问审核 cmdlet，你必须以 Azure 资源管理器模式运行 PowerShell。
 
 > [!NOTE]
@@ -129,9 +131,4 @@ SQL 数据仓库数据库审核可让你：
 
 
 <!--Link references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

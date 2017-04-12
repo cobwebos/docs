@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: ericor
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: b948a8c0394fffcfa63b5b48646639118cba8953
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: dcf897cfb03316312613a641f1758cd4636d06b7
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="upload-a-custom-image-for-azure-remoteapp"></a>上载 Azure RemoteApp 的自定义映像
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -53,10 +54,5 @@ ms.openlocfilehash: b948a8c0394fffcfa63b5b48646639118cba8953
 * 请确保使用 Windows PowerShell 而不是 Azure PowerShell。 你需要安装 Azure PowerShell 模块，因为在上载过程中会需要某些模块。
 * 永远不要更改脚本，验证可以在你方便的时候进行。
 * 如果 vhd 文件在上载过程中被锁定，请复制该文件或将它移至一个新位置并再次尝试上载。 可能存在某些阻止上载的 Windows 进程。  
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

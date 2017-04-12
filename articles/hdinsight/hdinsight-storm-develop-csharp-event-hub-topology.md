@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 23bdde763de6f437a0dec74c51722cbcfc19b141
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: bd44ba6795bc89ff4d250caf38520a72dd37c448
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -31,7 +31,7 @@ Azure 事件中心可让你处理网站、应用程序和设备中的大量数�
 * **EventHubWriter**：随机生成数据，并将其写入事件中心
 * **EventHubReader**：从事件中心读取数据并将数据记录到 Storm 日志
 
-> [!NOTE] 
+> [!NOTE]
 > 如需此项目的 Java 版，请参阅[使用 Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](hdinsight-storm-develop-java-event-hub-topology.md)。
 
 ## <a name="scpnet"></a>SCP.NET
@@ -46,7 +46,7 @@ Azure 事件中心可让你处理网站、应用程序和设备中的大量数�
 项目所使用的 Microsoft.SCP.Net.SDK NuGet 包必须与安装在 HDInsight 上的 Storm 的主要版本匹配。 Storm on HDInsight 版本 3.3 和 3.4 使用 Storm 版本 0.10.x，因此必须对这些群集使用 SCP.NET 版本 0.10.x.x。 HDInsight 3.5 使用 Storm 1.0.x.，因此必须对此群集版本使用 SCP.NET 版本 1.0.x.x。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 HDInsight 3.4 及更高版本使用 Mono 运行 C# 拓扑。 大多数情况下使用 Mono。 但应查看 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)文档了解可能的不兼容性。
 
@@ -198,12 +198,12 @@ topologyBuilder.SetJavaBolt(
 事件中心是此示例的数据源。 使用[事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)文档中**创建事件中心**部分的信息。
 
 1. 创建事件中心后，在 Azure 门户中查看 EventHub 边栏选项卡，选择“共享访问策略”。 选择“+ 添加”添加以下策略：
-   
+
    | Name | 权限 |
    | --- | --- |
    | writer |发送 |
    | reader |侦听 |
-   
+
     ![策略](./media/hdinsight-storm-develop-csharp-event-hub-topology/sas.png)
 
 2. 选择“读取器”和“写入器”策略。 复制并保存两个策略的**主密钥**值，因为稍后将使用这些值。
@@ -215,7 +215,7 @@ topologyBuilder.SetJavaBolt(
 2. 从 [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载解决方案。
 
 3. 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用之前配置的事件中心中的信息填写以下键的值：
-   
+
    | 键 | 值 |
    | --- | --- |
    | EventHubPolicyName |写入器（如果对具有“发送”权限的策略使用不同名称，则改用它。） |
@@ -231,7 +231,7 @@ topologyBuilder.SetJavaBolt(
 1. 打开 **EventHubReader** 项目。
 
 2. 打开 **EventHubReader** 的 **App.config**。 使用之前配置的事件中心中的信息填写以下键的值：
-   
+
    | 键 | 值 |
    | --- | --- |
    | EventHubPolicyName |读取器（如果对具有“侦听”权限的策略使用不同名称，则改用它。） |
@@ -245,15 +245,15 @@ topologyBuilder.SetJavaBolt(
 ## <a name="deploy-the-topologies"></a>部署拓扑
 
 1. 在“解决方案资源管理器”中，右键单击 **EventHubReader** 项目，然后选择“提交到 Storm on HDInsight”。
-   
+
     ![提交到 Storm](./media/hdinsight-storm-develop-csharp-event-hub-topology/submittostorm.png)
 
 2. 在“提交拓扑”屏幕上，选择“Storm 群集”。 展开“其他配置”，选择“Java 文件路径”，选择“...”，然后选择前面下载的 jar 文件所在的目录。 最后，单击“提交”。
-   
+
     ![提交对话框的图像](./media/hdinsight-storm-develop-csharp-event-hub-topology/submit.png)
 
 3. 提交拓扑之后，将会出现“Storm 拓扑查看器”。 若要查看有关拓扑的信息，请选择左窗格中的 **EventHubReader** 拓扑。
-   
+
     ![示例存储视图](./media/hdinsight-storm-develop-csharp-event-hub-topology/topologyviewer.png)
 
 4. 在“解决方案资源管理器”中，右键单击 **EventHubWriter** 项目，然后选择“提交到 Storm on HDInsight”。
@@ -267,7 +267,7 @@ topologyBuilder.SetJavaBolt(
 8. 若要打开 Bolt 的**组件摘要**，请双击图表中的“LogBolt”组件。
 
 9. 在“执行器”部分，选择“端口”列中的链接之一。 这将显示由组件记录的信息。 记录的信息类似于以下文本：
-   
+
         2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
         2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
         2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
@@ -289,5 +289,4 @@ topologyBuilder.SetJavaBolt(
 * [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 * [SCP 编程指南](hdinsight-storm-scp-programming-guide.md)
 * [Storm on HDInsight 的示例拓扑](hdinsight-storm-example-topology.md)
-
 

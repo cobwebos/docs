@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: genli;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 26ea5c6f867165a25dd5aecb01d0a0ce3b213a51
-ms.openlocfilehash: 707d666eb6c23fb926c31711daddfb22979513bc
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d7924d8aade1ea582faa0f319f8c1d16d5461fbc
+ms.lasthandoff: 04/03/2017
 
 ---
 
@@ -55,7 +55,7 @@ VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 A
 ### <a name="solution"></a>解决方案
 对于 Linux VM，与代理或扩展相关的大多数失败都是由于影响过时的 VM 代理的问题所造成的。 若要解决此问题，请遵循以下一般性指导：
 
-1. 按照[更新 Linux VM 代理](../virtual-machines/virtual-machines-linux-update-agent.md)的说明进行操作。
+1. 按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md)的说明进行操作。
 
  >[!NOTE]
  >我们强烈建议只通过分发存储库更新代理。 不建议直接从 GitHub 下载代理代码进行更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。

@@ -17,9 +17,9 @@ ms.workload: database
 ms.date: 04/04/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 2e65b7a5c44c240c1bc7dea8119c821a7bca2120
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 7a8a6c634cb4be2da654a971d9412f981d4e0e8a
+ms.lasthandoff: 04/11/2017
 
 ---
 
@@ -49,7 +49,7 @@ az group delete --name myResourceGroup
 |---|---|
 | [az group create](/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
 | [az sql server create](/cli/azure/sql/server#create) | 创建用于托管 SQL 数据库的逻辑服务器。 |
-| [az sql server firewall create](/cli/azure/sql/server/firewall#create) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器上的所有 SQL 数据库。 |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器上的所有 SQL 数据库。 |
 | [az sql db create](/cli/azure/sql/db#create) | 在逻辑服务器中创建 SQL 数据库。 |
 | [az group delete](/cli/azure/resource#delete) | 删除资源组，包括所有嵌套的资源。 |
 

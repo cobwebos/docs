@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: raprasa
 translationtype: Human Translation
-ms.sourcegitcommit: b5419efbaf51476cfc662c8aa814001e2757b4b7
-ms.openlocfilehash: db7b24c049153b6622f50fd9934611d48c98a1e8
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e9b99a79adf445da8761ee399fb1e1a51f9224fc
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -28,7 +28,7 @@ Azure DocumentDB 会定期自动备份所有数据。 自动备份不会影响 N
 本文先简要回顾 DocumentDB 中的数据冗余性和可用性，然后讨论备份。 
 
 ## <a name="high-availability-with-documentdb---a-recap"></a>DocumentDB 的高可用性 - 概要
-DocumentDB 旨在成为[全局分布式](documentdb-distribute-data-globally.md) - 允许跨多个 Azure 区域以及策略驱动的故障转移和透明多宿主 API 调整吞吐量规模。 作为一个提供 [99.99% 可用性 SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_0/) 的数据库系统，DocumentDB 中的所有写入在确认到客户端之前，都会通过本地数据中心内的副本仲裁永久提交到本地磁盘。 请注意，DocumentDB 的高可用性依赖于本地存储，而不依赖于任何外部存储技术。 此外，如果数据库帐户与多个 Azure 区域关联，那么还将跨其他区域复制写入。 若要调整吞吐量规模并以低延迟访问数据，可以拥有任意数量的与数据库帐户关联的读取区域。 在每个读取区域中，（复制）数据将在副本集中永久保存。  
+DocumentDB 旨在成为[全局分布式](documentdb-distribute-data-globally.md) - 允许跨多个 Azure 区域以及策略驱动的故障转移和透明多宿主 API 调整吞吐量规模。 作为一个提供 [99.99% 可用性 SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) 的数据库系统，DocumentDB 中的所有写入在确认到客户端之前，都会通过本地数据中心内的副本仲裁永久提交到本地磁盘。 请注意，DocumentDB 的高可用性依赖于本地存储，而不依赖于任何外部存储技术。 此外，如果数据库帐户与多个 Azure 区域关联，那么还将跨其他区域复制写入。 若要调整吞吐量规模并以低延迟访问数据，可以拥有任意数量的与数据库帐户关联的读取区域。 在每个读取区域中，（复制）数据将在副本集中永久保存。  
 
 如下面的关系图中所示，单个 DocumentDB 集合将[水平分区](documentdb-partition-data.md)。 在下图中，圆圈表示“分区”，每个分区通过副本集而具有高度可用性。 这是单个 Azure 区域（X 轴表示）内的本地分布。 此外，每个分区（含有其相应的副本集）都将在与数据库帐户关联的多个区域中进行全局分布（例如，此图中的三个区域 - 美国东部、美国西部和印度中部）。 “分区集”是一个包含每个区域（Y 轴表示）中多个数据副本的全局式分布实体。 可将优先级分配到与数据库帐户关联的区域，DocumentDB 将透明故障转移到下一区域，以免发生灾难。 也可以手动模拟故障转移以测试应用程序的端到端可用性。  
 

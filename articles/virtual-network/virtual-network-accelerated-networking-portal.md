@@ -17,9 +17,9 @@ ms.date: 09/26/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: a2e8e0dc40a63c363f295149e35f9823c8e90fa8
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 90dc3b45f470bfac03c34c1a20a7b54b9acbc281
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -56,7 +56,7 @@ ms.lasthandoff: 02/28/2017
 * **VM 创建：**已启用加速网络的网络接口只能在创建 VM 时附加到该 VM。 该网络接口无法附加到现有 VM。
 * **区域：**仅在美国中西部以及西欧 Azure 区域提供。 推出的区域今后会不断增加。
 * **支持的操作系统：**Microsoft Windows Server 2012 R2 和 Windows Server 2016 Technical Preview 5。 不久后即会增加对 Linux 和 Windows Server 2012 的支持。
-* **VM 大小：**Standard_D15_v2 和 Standard_DS15_v2 是唯一受支持的 VM 实例大小。 有关详细信息，请参阅 [Windows VM 大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)一文。 支持的 VM 实例大小组合今后会不断增加。
+* **VM 大小：**Standard_D15_v2 和 Standard_DS15_v2 是唯一受支持的 VM 实例大小。 有关详细信息，请参阅 [Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)一文。 支持的 VM 实例大小组合今后会不断增加。
 
 当这些限制有变化时，我们会通过 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/accelerated-networking-in-preview)页发出通告。
 

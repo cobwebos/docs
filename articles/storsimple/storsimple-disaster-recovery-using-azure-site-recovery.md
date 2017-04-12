@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 05/16/2016
 ms.author: vidarmsft
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: a0817ac21afb83745ec2cc213fc6029fa395d479
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 700dffe72af853d0daa9af06c0b316e0363ab30b
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -122,7 +123,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    > 这将导致文件共享暂时不可用
    >
    >
-2. 通过 Azure Site Recovery 门户为文件服务器 VM [启用虚拟机保护](../site-recovery/site-recovery-hyper-v-site-to-azure.md#step-6-enable-replication)。
+2. 通过 Azure Site Recovery 门户为文件服务器 VM [启用虚拟机保护](../site-recovery/site-recovery-hyper-v-site-to-azure.md#enable-replication)。
 3. 初始同步开始时，可以再次重新连接目标。 转到 iSCSI 发起程序，选择 StorSimple 设备，然后单击“连接”。
 4. 当同步完成且 VM 的状态为“受保护”时，请选择 VM，选择“配置”选项卡，然后相应地更新 VM 的网络（这是已故障转移的 VM 所属的网络）。 如果网络未显示，则表示同步仍在进行。
 
@@ -301,9 +302,4 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 
 ## <a name="summary"></a>摘要
 使用 Azure Site Recovery，可以针对在 StorSimple 存储中托管文件共享的文件服务器 VM 创建完整的自动化灾难恢复计划。 发生服务中断时，可以在数秒内从任何位置启动故障转移，在数分钟内启动和运行应用程序。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

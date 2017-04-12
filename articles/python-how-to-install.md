@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: c2d6999c6c6e8d9168e2417309207dd14bf4f6f2
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: be8fed81757d3a7467707e4e0fdf1fd5734e0f07
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -109,11 +109,11 @@ PTVS 适用于你现有的 Visual Studio 2013 或 2015 版本的安装。  有�
 2. 在 Linux VM 中运行你的应用程序
 3. 使用 Git 开发和发布到 Azure 网站
 
-第一个方案使你能够通过 Azure REST API 的 Pythonic 包装来创作利用 Azure PaaS 功能（例如 [Blob 存储](virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[队列存储](storage/storage-python-how-to-use-queue-storage.md)、[表存储](storage/storage-python-how-to-use-table-storage.md)等）的丰富 Web 应用。 这些应用程序在 Windows、Mac 和 Linux 上的工作方式是相同的。  此外可以从本地开发计算机或在 Azure 上运行的 Linux VM 中使用这些客户端库。
+第一个方案使你能够通过 Azure REST API 的 Pythonic 包装来创作利用 Azure PaaS 功能（例如 [Blob 存储](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[队列存储](storage/storage-python-how-to-use-queue-storage.md)、[表存储](storage/storage-python-how-to-use-table-storage.md)等）的丰富 Web 应用。 这些应用程序在 Windows、Mac 和 Linux 上的工作方式是相同的。  此外可以从本地开发计算机或在 Azure 上运行的 Linux VM 中使用这些客户端库。
 
-对于 VM 方案，你只需启动所选的 Linux VM（Ubuntu、CentOS、Suse）并运行/管理所需内容。  例如，可以在 Windows/Mac/Linux 计算机上运行 [IPython][IPython] REPL/notebook，并使浏览器指向在 Azure 上运行 IPython 引擎的 Linux 或 Windows 多处理器 VM。 请参阅 [IPython Notebook on Azure](virtual-machines/virtual-machines-linux-jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Azure 上的 IPython Notebook）教程了解详细信息。
+对于 VM 方案，你只需启动所选的 Linux VM（Ubuntu、CentOS、Suse）并运行/管理所需内容。  例如，可以在 Windows/Mac/Linux 计算机上运行 [IPython][IPython] REPL/notebook，并使浏览器指向在 Azure 上运行 IPython 引擎的 Linux 或 Windows 多处理器 VM。 请参阅 [IPython Notebook on Azure](virtual-machines/linux/jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Azure 上的 IPython Notebook）教程了解详细信息。
 
-有关如何安装 Linux VM 的信息，请参阅 [Create a Virtual Machine Running Linux](virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（创建运行 Linux 的虚拟机）教程。
+有关如何安装 Linux VM 的信息，请参阅 [Create a Virtual Machine Running Linux](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（创建运行 Linux 的虚拟机）教程。
 
 使用 Git 部署，可以从任何操作系统开发 Python web 应用程序并将其发布到 Azure 网站。  当将您的存储库推送到 Azure 时，它将自动创建虚拟环境和 pip 安装所需的包。
 
@@ -130,7 +130,7 @@ PTVS 适用于你现有的 Visual Studio 2013 或 2015 版本的安装。  有�
 * [NumPy - Python 的数字库][NumPy - A numerics library for Python]
 * [Django 项目 - 成熟的 Web 框架/CMS][Django Project - A mature web framework/CMS]
 * [IPython - Python 的高级 REPL/Notebook][IPython - an advanced REPL/Notebook for Python]
-* [Azure 上的 IPython Notebook](virtual-machines/virtual-machines-linux-jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure 上的 IPython Notebook](virtual-machines/linux/jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [GitHub 上的用于 Visual Studio 的 Python 工具][Python Tools for Visual Studio on GitHub]
 * [Python 开发人员中心](/develop/python/)
 

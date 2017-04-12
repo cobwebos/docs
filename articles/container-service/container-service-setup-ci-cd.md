@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 65fc37a1fd1d1d0149b98767117f8faafb5dcd2b
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: acfba48585b960a1ce39b77e35d292189aa9732b
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -50,8 +50,8 @@ ms.lasthandoff: 03/18/2017
 >[!IMPORTANT]
 > 调用 `az acs create` 时，创建一个传送 SSH 公共密钥文件的安全群集进行传送。 可以通过 Azure CLI 2.0 生成密钥并使用 `--generate-ssh-keys` 选项同时传送密钥，或者可使用 `--ssh-key-value` 选项将路径传送至密钥（Linux 上默认的位置为 `~/.ssh/id_rsa.pub`，Windows 上为 `%HOMEPATH%\.ssh\id_rsa.pub`，但可更改位置）。
 <!---Loc Comment: What do you mean by "you pass your SSH public key file to pass"? Thank you.--->
-> 若要在 Linux 上创建 SSH 公钥和私钥文件，请参阅[在 Linux 和 Mac 上创建 SSH 密钥](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json)。 
-> 若要在 Windows 上创建 SSH 公钥和私钥文件，请参阅[在 Windows 上创建 SSH 密钥](../virtual-machines/virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json)。 
+> 若要在 Linux 上创建 SSH 公钥和私钥文件，请参阅[在 Linux 和 Mac 上创建 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json)。 
+> 若要在 Windows 上创建 SSH 公钥和私钥文件，请参阅[在 Windows 上创建 SSH 密钥](../virtual-machines/linux/ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json)。 
 
 1. 首先，在终端窗口键入 [az login](/cli/azure/#login) 命令，使用 Azure CLI 登录到你的 Azure 订阅： 
 

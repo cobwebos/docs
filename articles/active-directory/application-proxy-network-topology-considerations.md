@@ -11,20 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 03/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 4b21bf6bc1be59facd503000a4f83a56189d55d3
-ms.openlocfilehash: aea1b35348bec0affe2288ff683e0320e2b0f714
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6869453e0776405841890978eef97f549be97541
+ms.lasthandoff: 04/03/2017
 
 
 ---
 
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项
-> [!NOTE]
-> 应用程序代理是一项仅当升级到高级版或基本版的 Azure Active Directory 才可用的功能。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
->
 
 本文介绍使用 Azure Active Directory (Azure AD) 应用程序代理远程发布和访问应用程序时的网络拓扑注意事项。
 
@@ -88,7 +85,6 @@ ms.lasthandoff: 02/28/2017
 
 > [!NOTE]
 有某些情况下，需要同时优化跃点 2 和跃点 3 才能获得所需的延迟特征。 例如，如果在网络与 Azure 数据中心之间设置了 VPN 或 ExpressRoute，则可以优化这两个跃点。
->
 
 ### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>模式 2：利用结合公共对等互连的 ExpressRoute
 
@@ -110,7 +106,7 @@ ms.lasthandoff: 02/28/2017
 
 越来越多的组织正在将其网络移入托管环境。 这样，便可以将应用放在同样属于企业网络一部分的托管环境中，而这些应用仍会保留在域中。 在这种情况下，可向新的应用程序位置应用前面部分中所述的模式。
 
-考虑使用连接器组来针对不同位置和网络中的应用分组。 考虑此选项时，请参阅 [Azure AD 域服务](https://azure.microsoft.com/services/active-directory-ds)。
+考虑使用连接器组来针对不同位置和网络中的应用分组。 考虑此选项时，请参阅 [Azure AD 域服务](../active-directory-domain-services/active-directory-ds-overview.md)。
 
 ## <a name="common-scenarios"></a>常见方案
 
@@ -173,8 +169,9 @@ ms.lasthandoff: 02/28/2017
 ![显示全球各洲地图以及如何在本用例中排列跃点的示意图](./media/application-proxy-network-topologies/application-proxy-pattern5c.png)
 
 ## <a name="next-steps"></a>后续步骤
-[启用应用程序代理](active-directory-application-proxy-enable.md)<br>
-[启用单一登录](active-directory-application-proxy-sso-using-kcd.md)<br>
-[启用条件访问](active-directory-application-proxy-conditional-access.md)<br>
-[排查使用应用程序代理时遇到的问题](active-directory-application-proxy-troubleshoot.md)
+
+- [启用应用程序代理](active-directory-application-proxy-enable.md)
+- [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
+- [启用条件性访问](active-directory-application-proxy-conditional-access.md)
+- [解决使用应用程序代理时遇到的问题](active-directory-application-proxy-troubleshoot.md)
 

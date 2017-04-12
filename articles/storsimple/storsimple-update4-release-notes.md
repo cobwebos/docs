@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/21/2017
+ms.date: 04/04/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: a545925bdade693f4db7db45228188dae7e5ff38
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 23f1bbb066c5b6481988ee841ad8979d78abf084
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -52,8 +52,6 @@ Update 4 中进行了以下重大改进和 bug 修复。
 * **StorSimple 诊断工具** - Update 4 发布了一款 StorSimple 诊断工具，以便可以轻松诊断和排查与系统、网络、性能和硬件组件运行状况相关的问题。 此工具通过 Windows PowerShell for StorSimple 运行。 有关详细信息，请转到[使用 StorSimple 诊断工具进行故障排除](storsimple-8000-diagnostics.md)。
 
 * **基于 UI 的 StorSimple 迁移工具** - 在此版本之前，从 5000-7000 系列迁移数据要求用户使用 Azure PowerShell 接口执行一部分迁移工作流。 在此版本中，则提供了易于使用的基于 UI 的 StorSimple 迁移工具，使执行相同的迁移工作流变得更加便利。 此工具还支持合并恢复存储桶。 
-
-* **对 StorSimple Snapshot Manager 的 MPIO 支持** - 此版本实现了对 StorSimple Snapshot Manager 的 MPIO 支持。
 
 * **与 FIPS 相关的更改** - 自此版本起，对于 Microsoft Azure 政府和 Azure 公有云帐户，将在所有 StorSimple 8000 系列设备上默认启用 FIPS。
 

@@ -17,9 +17,9 @@ ms.date: 11/8/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 54094c18dcbb751835bfa56d53358ce19e08387d
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 988510350ceb97a15bb305edff397a0e3212a89d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -32,13 +32,13 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 本文说明如何使用 Azure 门户通过 Resource Manager 部署模型创建 VNet。 此外，也可以使用其他工具通过 Resource Manager 创建 VNet，或者从以下列表中选择一个不同的选项，通过经典部署模型创建 VNet：
 
 > [!div class="op_single_selector"]
-- [门户](virtual-networks-create-vnet-arm-pportal.md)
-- [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-- [CLI](virtual-networks-create-vnet-arm-cli.md)
-- [模板](virtual-networks-create-vnet-arm-template-click.md)
-- [门户 经典）](virtual-networks-create-vnet-classic-pportal.md)
-- [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
-- [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
+> * [门户](virtual-networks-create-vnet-arm-pportal.md)
+> * [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+> * [CLI](virtual-networks-create-vnet-arm-cli.md)
+> * [模板](virtual-networks-create-vnet-arm-template-click.md)
+> * [门户 经典）](virtual-networks-create-vnet-classic-pportal.md)
+> * [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
+> * [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
 
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
@@ -80,6 +80,6 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
 如何连接：
 
-- 阅读文章[创建 Windows VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 或[创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-portal.md)，将虚拟机 (VM) 连接到虚拟网络。 不要根据这两篇文章的步骤创建 VNet 和子网，可以选择要将 VM 连接到的现有 VNet 和子网。
+- 阅读文章[创建 Windows VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 或[创建 Linux VM](../virtual-machines/linux/quick-create-portal.md)，将虚拟机 (VM) 连接到虚拟网络。 不要根据这两篇文章的步骤创建 VNet 和子网，可以选择要将 VM 连接到的现有 VNet 和子网。
 - 阅读[连接 VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) 一文，将一个虚拟网络连接到其他虚拟网络。
 - 使用站点到站点虚拟专用网络 (VPN) 或 ExpressRoute 线路，将本地网络连接到虚拟网络。 阅读文章[使用站点到站点 VPN 将 VNet 连接到本地网络](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)和[将 VNet 链接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)，了解相关操作方法。

@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 03/06/2017
 ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 590cb831ad265d9b83713f573c92d8675e64db3d
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7b4ae9281bca20949c37b2c797e4a1a677665929
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -55,7 +55,7 @@ ms.lasthandoff: 03/22/2017
 注意以下事项：
 
 * 有关 `path`，请参阅[名称模式](#pattern)了解如何设置 blob 名称模式的格式。
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置]()。 
+* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
 
 基于消耗计划运行时，如果 Function App 处于空闲状态，则在处理新 Blob 时，可能会出现某天耗时长达 10 分钟的情况。 Function App 运行以后，Blob 处理速度会加快。 若要避免这种初始延迟，可以使用常规的应用服务计划并启用“始终可用”，或者使用其他机制来触发 Blob 处理，例如使用包含 Blob 名称的队列消息。 
 
@@ -227,7 +227,7 @@ Azure 存储 blob 输入绑定可让用户在函数中使用存储容器中的 b
 注意以下事项：
 
 * `path` 必须包含容器名称和 blob 名称。 例如，如果函数中有[队列触发器](functions-bindings-storage-queue.md)，则可以使用 `"path": "samples-workitems/{queueTrigger}"` 指向 `samples-workitems` 容器中的一个 blob，其名称与触发器消息中指定的 blob 名称相匹配。   
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置]()。 
+* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
 
 <a name="inputusage"></a>
 
@@ -340,7 +340,7 @@ module.exports = function(context) {
 注意以下事项：
 
 * `path` 必须包含容器名称和要写入的 blob 名称。 例如，如果函数中有[队列触发器](functions-bindings-storage-queue.md)，则可以使用 `"path": "samples-workitems/{queueTrigger}"` 指向 `samples-workitems` 容器中的一个 blob，其名称与触发器消息中指定的 blob 名称相匹配。   
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置]()。 
+* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
 
 <a name="outputusage"></a>
 

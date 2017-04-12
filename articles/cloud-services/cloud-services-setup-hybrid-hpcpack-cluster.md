@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
-ms.openlocfilehash: da7102882b9dcf7db1285c0ec004ce1ad3859853
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 0fcfcc53641ebdf8a668b353db8eebb3bc64795d
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: da7102882b9dcf7db1285c0ec004ce1ad3859853
 
 本教程展示了一种方法（有时称作群集“迸发至云”）来使用 Azure 中可伸缩的按需计算资源运行计算密集型应用程序。
 
-本教程假定你之前未使用过计算群集或 HPC Pack 2012 R2。 它只是为了出于演示目的帮助你快速部署混合群集。 有关在生产环境中以更大规模部署混合 HPC Pack 群集或使用 HPC Pack 2016 的注意事项和步骤，请参阅[详细指南](http://go.microsoft.com/fwlink/p/?LinkID=200493)。 有关使用 HPC Pack 的其他方案，包括在 Azure 虚拟机中自动执行群集部署，请参阅 [Azure 中 Microsoft HPC Pack 的 HPC 群集选项](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+本教程假定你之前未使用过计算群集或 HPC Pack 2012 R2。 它只是为了出于演示目的帮助你快速部署混合群集。 有关在生产环境中以更大规模部署混合 HPC Pack 群集或使用 HPC Pack 2016 的注意事项和步骤，请参阅[详细指南](http://go.microsoft.com/fwlink/p/?LinkID=200493)。 有关使用 HPC Pack 的其他方案，包括在 Azure 虚拟机中自动执行群集部署，请参阅 [Azure 中 Microsoft HPC Pack 的 HPC 群集选项](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="prerequisites"></a>先决条件
 * **Azure 订阅** - 如果没有 Azure 订阅，只需几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。
@@ -269,7 +270,7 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 ## <a name="next-steps"></a>后续步骤
 * 浏览 [HPC Pack](https://technet.microsoft.com/library/cc514029) 的文档。
 * 若要以更大的规模设置混合 HPC Pack 群集部署，请参阅[使用 Microsoft HPC Pack 迸发到 Azure 辅助角色实例](http://go.microsoft.com/fwlink/p/?LinkID=200493)。
-* 有关在 Azure 中创建 HPC Pack 群集的其他方法，包括使用 Azure Resource Manager 模板，请参阅[在 Azure 中使用 Microsoft HPC Pack 时的 HPC 群集选项](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 有关在 Azure 中创建 HPC Pack 群集的其他方法，包括使用 Azure Resource Manager 模板，请参阅[在 Azure 中使用 Microsoft HPC Pack 时的 HPC 群集选项](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 有关 Azure 中的大型计算和 HPC 云解决方案范围的详细信息，请参阅 [Azure 中的大型计算：用于批处理和高性能计算 (HPC) 的技术资源](../batch/big-compute-resources.md)。
 
 [Overview]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png
@@ -308,9 +309,4 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 [stop_node2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node2.png
 [stop_node4]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node4.png
 [view_instances2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/view_instances2.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

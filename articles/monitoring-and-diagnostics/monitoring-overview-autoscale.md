@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/02/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 99c972b4adf1dedbc556b20cdc7587edeb7f50e0
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 62bafc9bc58811cd9bd314639e3c2a609f4935d3
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -94,7 +94,7 @@ Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.micros
 
 纵向缩放与此不同。 它保持 VM 数量不变，但会增强（“提高”）或削弱（“降低”）VM 的功能。 功能按内存、CPU 速度、磁盘空间等指标衡量。垂直缩放有更多的限制。 具体取决于更大型硬件的可用性，此可用性会快速达到上限，并因区域而异。 纵向缩放通常还需要停止和重新启动 VM。
 
-有关详细信息，请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/virtual-machines-linux-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关详细信息，请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/linux/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="methods-of-access"></a>访问方法
 可以通过以下方式设置自动缩放：

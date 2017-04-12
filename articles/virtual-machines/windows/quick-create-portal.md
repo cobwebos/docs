@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 04/03/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 3cb94144addabf2371c8a058cebff25def4b6338
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 17fb538b33a4a4a2b333ff501e6e729f6000f623
+ms.lasthandoff: 04/06/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/04/2017
 
 可以通过 Azure 门户创建 Azure 虚拟机。 此方法提供一个基于浏览器的用户界面，用于创建和配置虚拟机和所有相关的资源。 此快速入门介绍了如何使用 Azure 门户创建虚拟机。 部署完成后，我们将连接到服务器并安装 IIS。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/) 。
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 04/04/2017
 
 1. 在虚拟机边栏选项卡的“概要”部分中，单击**资源组**的名称。
 2. 在资源组的边栏选项卡中，单击资源列表中的“网络安全组”。 NSG 名称应为 VM 名称后面追加“-nsg”。
-3. 单击“入站安全规则”标题以打开入站规则列表。 你应看到列表中已有一条适用于 RDP 的规则。
+3. 单击“入站安全规则”标题打开入站规则列表。 此时列表中应会出现一条适用于 RDP 的规则。
 4. 单击“+ 添加”打开“添加入站安全规则”边栏选项卡。
 5. 在“名称”中键入 **IIS** 并确保“端口范围”设置为 80 且“操作”设置为“允许”，然后单击“确定”。
 

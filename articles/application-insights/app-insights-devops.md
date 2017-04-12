@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: f6c8c895f406187f2bc525a60ca7e53f12e99d77
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 6bc820657da4a72455d76f38dbdb06fe50b0c895
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -162,8 +162,8 @@ Visual Studio 和 Eclipse 提供相应的工具来为开发中的项目配置正
 ## <a name="but-what-about"></a>但是...？
 * [隐私和存储](app-insights-data-retention-privacy.md) - 遥测数据保留在 Azure 安全服务器上。
 * 性能 - 影响很小。 遥测数据将经过批处理。
-* [支持](app-insights-get-dev-support.md) - 可以使用 Azure 支持程序。 可以在活跃的论坛中获取开发人员提供的解答。 在别无他法的情况下，我们还可以提供一对一的个人帮助。
 * [价格](app-insights-pricing.md) - 可以从免费版着手，如果用量不大，可以一直使用免费版。
+
 
 ## <a name="video"></a>视频
 

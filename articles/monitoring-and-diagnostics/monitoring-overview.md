@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/31/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: ca55f1c295d99ff92abaef1a919d4c90d3c33b8a
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 8e2b1a31b9875b8403e6c97c097ba65985f5f3b5
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -34,13 +34,10 @@ Azure Monitor 的视频演练位于
 
 ![非计算资源的监视和诊断模型](./media/monitoring-overview/Monitoring_Azure_Resources-compute_v4.png)
 
-图 1：非计算资源的监视和诊断概念模型
-
 <br/>
 
 ![计算资源的监视和诊断模型](./media/monitoring-overview/Monitoring_Azure_Resources-non-compute_v4.png)
 
-图 2：计算资源的监视和诊断概念模型
 
 ## <a name="monitoring-sources"></a>监视源
 ### <a name="activity-logs"></a>活动日志

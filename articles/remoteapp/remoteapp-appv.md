@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8057e9ce27f9df3e9455d48d9c8196033612c8f3
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 0e82c639ea7bfceb89f0cf9c59ab657a951f2d5f
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-app-v-apps-in-azure-remoteapp"></a>在 Azure RemoteApp 中使用 App-V 应用
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -41,10 +42,5 @@ ms.openlocfilehash: 8057e9ce27f9df3e9455d48d9c8196033612c8f3
 | 全局（计算机） |预发布或使用发布服务器作为目标 |如果你想要更新应用（大型），则需要更新 Azure 映像。 占用映像上的一些空间。 | |
 
  创建自定义映像和混合集合后，发布你的应用程序，分配用户并尽享托管在传递到任何设备的任意位置的 Azure RemoteApp 中的现有 App-V 应用程序。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

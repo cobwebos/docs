@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 4818c0c036c7e462af5b8d99f1085f8d9025156c
-ms.openlocfilehash: 7b4db2f215b8f7369694a45533d0c862b8f8d08e
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: bd45a0fb99a77851aa7b91d23bd4b830b6f5cc7b
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/30/2017
 应考虑的一些事项包括：
 
 * 每个 VM 有多少个核心？您加载了所有核心吗？
-  上面的 Azure 快速入门模板示例具有 do_work.php 脚本，它加载单个核心。 如果正在使用比单核 VM 大小（如 Standard_A1 或 D1）更大的 VM，则需要多次运行此负载。 通过查看 [Azure 中 Windows 虚拟机的大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)检查 VM 中有多少个核心
+  上面的 Azure 快速入门模板示例具有 do_work.php 脚本，它加载单个核心。 如果正在使用比单核 VM 大小（如 Standard_A1 或 D1）更大的 VM，则需要多次运行此负载。 通过查看 [Azure 中 Windows 虚拟机的大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)检查 VM 中有多少个核心
 * VM 规模集中有多少个 VM？您正在处理每个 VM 吗？
   
     仅当规模集中**所有** VM 的平均 CPU 在自动缩放规则中内部定义的时间之内超出阈值时，才会发生扩大事件。

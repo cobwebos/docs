@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 537fbe37b0ee21cb5d2c9f1ba437ac178850fee2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a486dcb3f994cd78311ee86521a6792a4d57438e
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="troubleshoot-creating-azure-remoteapp-hybrid-collections"></a>排查创建 Azure RemoteApp 混合集合时遇到的问题
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -71,10 +72,5 @@ ms.openlocfilehash: 537fbe37b0ee21cb5d2c9f1ba437ac178850fee2
 
 ## <a name="what-domain-name-did-you-specify-when-you-created-your-collection"></a>创建你的集合时，指定了哪些域名？
 你创建或添加的域名必须是内部域名（不是 Azure AD 域名），并且必须是可解析的 DNS 格式 (contoso.local)。 例如，你有一个 Active Directory 内部名称 (contoso.local) 和一个 Active Directory UPN (contoso.com) - 创建你的集合时必须使用内部名称。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
