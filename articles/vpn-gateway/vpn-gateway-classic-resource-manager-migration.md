@@ -15,15 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8efa8df1381c19aa00bd49bedb3f99086e01d9e2
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 32ca2e4b1dcf5715602b8e1e1f3026cb785fbe0c
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN 网关从经典部署模型迁移到 Resource Manager 部署模型
 VPN 网关现可从经典部署模型迁移到 Resource Manager 部署模型。 你可以阅读有关 Azure Resource Manager [功能和优点](../azure-resource-manager/resource-group-overview.md)的更多内容。 在本文中，我们将详细介绍如何从经典部署模型迁移到更新的基于 Resource Manager 的部署模型。 
 
-作为 VNet 迁移的一部分，VPN 网关将从经典部署模型迁移到 Resource Manager 部署模型。 一次仅限一个 VNet 完成此迁移。 就迁移工具或迁移前提条件而言，没有什么额外要求。 迁移步骤与现有 VNet 迁移步骤相同，并且已在 [IaaS 资源迁移页](../virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)进行了编档。 在迁移期间没有任何数据路径停机时间，因此，现有的工作负荷将继续运行，并且在迁移期间不会丢失本地连接。 在迁移过程中，与 VPN 网关关联的公用 IP 地址不会更改。 这就说明完成迁移后无需重新配置本地路由器。  
+作为 VNet 迁移的一部分，VPN 网关将从经典部署模型迁移到 Resource Manager 部署模型。 一次仅限一个 VNet 完成此迁移。 就迁移工具或迁移前提条件而言，没有什么额外要求。 迁移步骤与现有 VNet 迁移步骤相同，并且已在 [IaaS 资源迁移页](../virtual-machines/windows/migration-classic-resource-manager-ps.md)进行了编档。 在迁移期间没有任何数据路径停机时间，因此，现有的工作负荷将继续运行，并且在迁移期间不会丢失本地连接。 在迁移过程中，与 VPN 网关关联的公用 IP 地址不会更改。 这就说明完成迁移后无需重新配置本地路由器。  
 
 Resource Manager 中的模型与经典模型不同，它由虚拟网络网关、本地网络网关和连接资源组成。 这些表示 VPN 网关本身，即分别表示本地地址空间和两者之间连接的本地站点。 完成迁移后，网关在经典模型下将不再可用，并且必须使用 Resource Manager 模型对虚拟网络网关、本地网络网关和连接对象执行所有管理操作。
 
@@ -65,11 +66,6 @@ Resource Manager 中的模型与经典模型不同，它由虚拟网络网关、
 * 在受影响的 VNet 和表示本地位置的本地网络网关之间建立显式连接。 这还需要更改本地路由器配置来创建和配置 IPsec 隧道。
 
 ## <a name="next-steps"></a>后续步骤
-在了解过 VPN 网关迁移支持后，请转到[在支持的平台上将 IaaS 资源从经典模型迁移到 Resource Manager 模型](../virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)开始学习。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+在了解过 VPN 网关迁移支持后，请转到[在支持的平台上将 IaaS 资源从经典模型迁移到 Resource Manager 模型](../virtual-machines/windows/migration-classic-resource-manager-ps.md)开始学习。
 
 

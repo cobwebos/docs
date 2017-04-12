@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 8f85a4cee6a59316eb5c321007b5b9d562c71302
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 3d9bdd4f07d22a7bc6c80150ae27453813d39f07
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -78,7 +78,7 @@ ms.lasthandoff: 03/25/2017
 ReportViewer 需要使用正确的凭据向报表服务器进行身份验证，并且凭据必须经报表服务器授权才能访问所需的报表。 有关身份验证的信息，请查看白皮书 [Reporting Services 报表查看器控件和基于 Microsoft Azure 虚拟机的报表服务器](https://msdn.microsoft.com/library/azure/dn753698.aspx)。
 
 ## <a name="publish-the-aspnet-web-application-to-azure"></a>发布 ASP.NET Web 应用程序到 Azure
-有关将 ASP.NET Web 应用程序发布到 Azure 的说明，请参阅[如何：从 Visual Studio 将 Web 应用程序迁移和发布到 Azure](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) 和 [Web Apps 和 ASP.NET 入门](../../../app-service-web/web-sites-dotnet-get-started.md)。
+有关将 ASP.NET Web 应用程序发布到 Azure 的说明，请参阅[如何：从 Visual Studio 将 Web 应用程序迁移和发布到 Azure](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) 和 [Web Apps 和 ASP.NET 入门](../../../app-service-web/app-service-web-get-started-dotnet.md)。
 
 > [!IMPORTANT]
 > 如果在解决方案资源管理器中的快捷菜单中未显示添加Azure 部署项目或添加 Azure 云服务项目命令，你可能需要将该项目的目标框架更改为 .NET Framework 4。

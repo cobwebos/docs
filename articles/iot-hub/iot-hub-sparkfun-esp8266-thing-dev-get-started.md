@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: a1d6dba724b93d1ea05474b8680bf2226c23bddc
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: be140e86047cae304bfb5c32c5cdd9135413df82
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -287,9 +287,5 @@ ms.lasthandoff: 03/30/2017
 
 现已成功将 Sparkfun ESP8266 Thing Dev 连接到 IoT 中心，并将捕获的传感器数据发送到了 IoT 中心。 
 
-若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
-- [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
-- [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
-- [使用 Power BI 可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
-- [使用 Azure Web 应用可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-web-apps.md)。

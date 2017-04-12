@@ -16,16 +16,15 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: de47a15dd4009b9a33a53fd981bc178eaa50c035
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ef5d4af5d5dad2b548ab01be5ba9c4769b21416a
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="save-iot-hub-messages-that-contain-information-like-sensor-data-to-azure-table-storage"></a>将包含传感器数据等信息的 IoT 中心消息保存到 Azure 表存储
 
-> [!Note]
-> 在开始本教程之前，请确保已完成[将 ESP8266 连接到 Azure IoT 中心](/iot-hub-arduino-huzzah-esp8266-get-started.md)。 在[将 ESP8266 连接到 Azure IoT 中心](/iot-hub-arduino-huzzah-esp8266-get-started.md)教程中，你已设置 IoT 设备和 IoT 中心，并部署了一个在设备上运行的示例应用程序。 该应用程序会将收集的传感器数据发送到 IoT 中心。
+[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 ## <a name="what-you-will-learn"></a>你要学习的知识
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 03/30/2017
 
 ## <a name="what-you-will-need"></a>所需的项目
 
-- 满足已完成的教程[将 ESP8266 连接到 Azure IoT 中心](/iot-hub-arduino-huzzah-esp8266-get-started.md)所述的以下要求：
+- 满足已完成的教程[将 ESP8266 连接到 Azure IoT 中心](iot-hub-arduino-huzzah-esp8266-get-started.md)所述的以下要求：
   - 一个有效的 Azure 订阅。
   - 已订阅中创建一个 Azure IoT 中心。
   - 一个可向 Azure IoT 中心发送消息的正常运行的应用程序。
@@ -205,6 +204,4 @@ IoT 中心公开一个与事件中心兼容的内置终结点，使应用程序�
 
 现已成功创建 Azure 存储帐户，以及可将 IoT 中心收到的消息存储在 Azure 表存储中的 Azure Function App。
 
-若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
-
-- [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

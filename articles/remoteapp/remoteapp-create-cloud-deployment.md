@@ -15,20 +15,21 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 59619d78959f9fcc3144a30af883021a8f5f3044
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: b245c889513e3527960bf9ed1f9360ea84bff758
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-create-a-cloud-collection-of-azure-remoteapp"></a>如何创建 Azure RemoteApp 的云集合
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
 有两种类型的 [Azure RemoteApp 集合](remoteapp-collections.md)： 
 
-* 云：完全驻留在 Azure 中。 你可以选择在云中保存所有数据（即仅限云集合），或者将你的集合连接到 VNET，并将数据保存在其中。   
+* 云：完全驻留在 Azure 中。 你可以选择在云中保存所有数据（即仅限云集合），或者将集合连接到 VNET，并将数据保存在其中。   
 * 混合：包括一个用于本地访问的虚拟网络，这需要使用 Azure AD 和本地 Active Directory 环境。
 
 本教程将逐步指导你完成创建云集合的过程。 有四个步骤： 
@@ -38,7 +39,7 @@ ms.openlocfilehash: 59619d78959f9fcc3144a30af883021a8f5f3044
 3. 发布应用。
 4. 配置用户访问权限。
 
-**开始之前**
+**准备阶段**
 
 在创建集合之前，需要执行以下操作：
 
@@ -100,14 +101,9 @@ Azure RemoteApp 应用是你为用户提供的应用或程序。 它位于你为
 3. 对用户进行验证后，请单击“**保存**”。
 
 ## <a name="next-steps"></a>后续步骤
-至此，你已成功创建并部署了 Azure RemoteApp 云集合。 下一步是让你的用户下载并安装远程桌面客户端。 你可以在 Azure RemoteApp 的“快速入门”页上找到客户端的 URL。 然后，让用户登录到客户端并访问你发布的应用。
+至此，你已成功创建并部署了 Azure RemoteApp 云集合。 下一步是让你的用户下载并安装远程桌面客户端。 在 Azure RemoteApp 的“快速入门”页上可以找到客户端的 URL。 然后，让用户登录到客户端并访问你发布的应用。
 
 ### <a name="help-us-help-you"></a>请帮助我们改进，以便为你提供更好的帮助和支持
 是否知道除了给这篇文章评级和在下面发表评论，还可以对文章本身进行更改？ 缺了什么？ 出现了错误？ 是否编写了令人困惑的内容？ 向上滚动并单击“在 GitHub 上编辑”  进行更改 - 更改的内容会发送给我们进行审阅，一旦签核，便可以在此处看到这些更改和改进。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

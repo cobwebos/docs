@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: a7e7b2dee8aad6112bf253f0396b174287d2d469
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 951a421a2ea7e8bea4d082f03ad85695d3a8063e
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="free-30-day-trial-of-azure-remoteapp"></a>Azure RemoteApp 30 天免费试用版
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -37,10 +38,5 @@ ms.openlocfilehash: a7e7b2dee8aad6112bf253f0396b174287d2d469
 已经迫不及待了？ 观看有关如何[创建云部署](https://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/)的快速视频。
 
 有反馈？ 请将问题发布到[讨论论坛](https://feedback.azure.com/forums/247748-azure-remoteapp/)。 如果具有 [Azure 支持计划](https://azure.microsoft.com/support/plans/)，则可以提交支持案例。 所有人都可以在[反馈论坛](https://feedback.azure.com/forums/247748-azure-remoteapp/)上提交反馈。  
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

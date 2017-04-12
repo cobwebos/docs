@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 61610078ad5cefd513fdb758aec45d7489704817
-ms.openlocfilehash: b4cb40d81613c16558be1e0e2c10dbfa0265a6b7
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 1a462b8d557ad23bda912ddf9431195a8cfe909e
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -125,7 +125,7 @@ Azure 托管磁盘当前仅支持本地冗余存储 (LRS)。
 
 **为何客户必需使用 Azure 托管磁盘在端口 8443 上为 VM 解除阻止出站流量？**
 
-Azure VM 代理使用端口 8443 将每个 VM 扩展的状态报告给 Azure 平台。 如果不解除对该端口的阻止，VM 代理将无法报告任何 VM 扩展的状态。 有关 VM 代理的详细信息，请参阅 [Azure 虚拟机代理概述](../virtual-machines/virtual-machines-windows-agent-user-guide.md)。
+Azure VM 代理使用端口 8443 将每个 VM 扩展的状态报告给 Azure 平台。 如果不解除对该端口的阻止，VM 代理将无法报告任何 VM 扩展的状态。 有关 VM 代理的详细信息，请参阅 [Azure 虚拟机代理概述](../virtual-machines/windows/agent-user-guide.md)。
 
 **如果在部署 VM 时未取消对扩展和端口的阻止，会发生什么情况？**
 

@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
-ms.openlocfilehash: 4f2b61e7c97beb7556bffca89c3608aaee831ddc
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 9134b5893413abbc49e2332651fb4a8b549ce559
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="use-windows-powershell-cmdlets-with-azure-remoteapp"></a>将 Windows PowerShell cmdlet 与 Azure RemoteApp 一起使用
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -114,10 +115,5 @@ RemoteApp 模板映像 cmdlet：
 * Get-AzureRemoteAppWorkspace
 * Set-AzureRemoteAppWorkspace
 * Get-AzureRemoteAppOperationResult
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

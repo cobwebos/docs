@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: 801fe10ad20c48fb965d3f80956d7979c9c2314e
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: f5d6bb7ccbf15424e9940ccda2fac668a2af5a57
+ms.lasthandoff: 04/12/2017
 
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
@@ -158,7 +159,7 @@ git push
 
 ![部署][api-management-configuration-deploy]
 
-有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 将 Git 更改部署到配置数据库](https://msdn.microsoft.com/library/dn781420.aspx#DeployChanges)。
+有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 将 Git 更改部署到配置数据库](https://docs.microsoft.com/en-us/rest/api/apimanagement/tenantconfiguration)。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>本地 Git 存储库的文件和文件夹结构参考
 本地 Git 存储库中的文件和文件夹包含有关服务实例的配置信息。
@@ -308,10 +309,5 @@ git push
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

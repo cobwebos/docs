@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: b4a64bbccabf0e7b0e7aec659d066883139c8207
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 31fa57771aaa2d4d6e4e0d387e045fb28e378887
+ms.lasthandoff: 04/10/2017
 
 
 ---
 # <a name="create-a-net-webjob-in-azure-app-service"></a>在 Azure App Service 中创建 .NET Web 作业
 本教程演示如何为使用 [WebJobs SDK](websites-dotnet-webjobs-sdk.md) 的简单多层 ASP.NET MVC 5 应用程序编写代码。
+
+[!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
 [WebJobs SDK](websites-webjobs-resources.md) 用于简化针对 Web 作业执行的常见任务（如图像处理、队列处理、RSS 聚合、文件维护和发送电子邮件）编写的代码。 WebJobs SDK 的内置功能使用 Azure 存储空间和 Service Bus，用于计划任务和处理错误，以及用于许多其他常见方案。 此外，还可以扩展其设计，且拥有[用于扩展的开源存储库](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。
 

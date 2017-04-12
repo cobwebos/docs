@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 19afc13a1715890316b34ed1128b594105c53c69
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 09e3828172d06a8c7ef39c89e69653c48a7e729e
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 19afc13a1715890316b34ed1128b594105c53c69
 本文将演示如何使用 **ADO.NET SqlClient** 和/或**实体框架**，同时运用这些技术来构建具有高度可伸缩性数据层、支持多租户分片的应用程序。  
 
 * **弹性数据库工具**可让开发人员使用一组 .NET 库和 Azure 服务模板通过行业标准分片实践扩大应用程序的数据层。 使用弹性数据库客户端库管理分片有助于自动化和简化通常与分片关联的许多基础结构任务。 
-* **行级安全性**可让开发人员使用安全策略来筛选掉不属于执行查询的租户的行，从而将多个租户的数据存储在同一个数据库中。 集中化数据库而不是应用程序中的 RLS 访问逻辑可以简化维护，降低由于应用程序代码库不断增长而带来的出错风险。 RLS 需要 [Azure SQL 数据库 (V12)](sql-database-technical-overview.md)。 
+* **行级安全性**可让开发人员使用安全策略来筛选掉不属于执行查询的租户的行，从而将多个租户的数据存储在同一个数据库中。 集中化数据库而不是应用程序中的 RLS 访问逻辑可以简化维护，降低由于应用程序代码库不断增长而带来的出错风险。 
 
 将这些功能一起使用，应用程序可以在同一个分片数据库中存储多个租户的数据，从而带来成本节约和效率提高的好处。 同时，应用程序仍然能够为需要更严格性能保证的“高级”租户提供隔离的单租户分片，因为多租户分片不保证在租户之间平衡分配资源。  
 
@@ -317,10 +318,5 @@ GO
 [1]: ./media/sql-database-elastic-tools-multi-tenant-row-level-security/blogging-app.png
 <!--anchors-->
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

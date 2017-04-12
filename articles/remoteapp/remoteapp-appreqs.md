@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 74bba898d2a4f5e35b2312dd28cb515a2e159df2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a9a305e4c07e2c348b1c1503d53f1da05da57966
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="app-requirements"></a>应用要求
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -59,10 +60,5 @@ Azure RemoteApp 支持流式处理 Windows Server 2012 R2 映像中的 32 位或
 * 若要最大化所有用户的 CPU 可用性，可以禁用[后台任务](https://msdn.microsoft.com/library/aa380665.aspx)或者创建非资源密集型的高效后台任务。
 * 应调整和平衡多用户、多处理器环境的应用程序[线程使用情况](https://msdn.microsoft.com/library/aa383520.aspx)。
 * [检测](https://msdn.microsoft.com/library/aa380798.aspx)应用程序是否正在客户端会话中运行是优化性能的有效做法。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 4f4013225e3ea7afb34628bab47ec3b1432bb2b2
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 691caf95971ccdd37b12bbc178627f25b228a782
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>How to capture a classic Linux virtual machine as an image（如何捕获用作映像的经典 Linux 虚拟机）
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](../../virtual-machines-linux-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](../capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 本文将演示如何捕获运行 Linux 的经典 Azure 虚拟机 (VM) 作为创建其他虚拟机的映像。 此映像包括操作系统磁盘和附加到 VM 的数据磁盘。 它不包括网络配置，因此在使用此映像创建其他 VM 时需要进行网络配置。
 
@@ -34,7 +34,7 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
 这些步骤假定已使用经典部署模型创建了 Azure VM 并配置了操作系统，包括附加任何数据磁盘。 如果需要创建 VM，请阅读[如何创建 Linux 虚拟机][How to Create a Linux Virtual Machine]。
 
 ## <a name="capture-the-virtual-machine"></a>捕获虚拟机
-1. 使用所选 SSH 客户端[连接到 VM](../../virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+1. 使用所选 SSH 客户端[连接到 VM](../mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 2. 在 SSH 窗口中，键入以下命令。 `waagent` 的输出结果可能会因此实用程序的版本而略有差异：
 
     ```bash
@@ -98,7 +98,7 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
 
 此外，也可以使用 [Azure 经典门户][Azure classic portal]创建自定义 VM，方法是使用**从库中**方法并选择所创建的映像。 有关详细信息，请参阅[如何创建自定义 VM][How to Create a Custom Virtual Machine]。
 
-**另请参阅：**[Azure Linux 代理用户指南](../../virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+**另请参阅：**[Azure Linux 代理用户指南](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Azure classic portal]:http://manage.windowsazure.com
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md

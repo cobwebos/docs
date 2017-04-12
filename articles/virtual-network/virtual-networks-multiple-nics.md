@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: d10ae92ba79014d9700613c06ef37a437089f5ac
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 5e91f640ab72fd3a5fffcb0f9d7bac1e9e031249
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: d10ae92ba79014d9700613c06ef37a437089f5ac
 * 多 NIC VM 目前不支持实例级公共 IP (LPIP) 地址（经典部署）。
 * VM 内部 NIC 的顺序将是随机的，在 Azure 基础结构更新过程中也可能会更改。 不过，IP 地址和相应的以太网 MAC 地址将会保持不变。 例如，假定 **Eth1** 的 IP 地址为 10.1.0.100，MAC 地址为 00-0D-3A-B0-39-0D；在进行 Azure 基础结构更新并重新启动后，它可能会更改为 **Eth2**，但 IP 和 MAC 配对将保持不变。 如果是客户执行的重新启动，NIC 顺序将保持不变。
 * 每个 VM 上的每个 NIC 的地址必须位于一个子网中，你可以向单个 VM 上的多个 NIC 分配同一子网中的地址。
-* VM 大小决定了可以为 VM 创建的 NIC 的数目。 参考 [Windows Server](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 和 [Linux](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM 大小一文，以确定每个 VM 大小支持的 NIC 数。 
+* VM 大小决定了可以为 VM 创建的 NIC 的数目。 参考 [Windows Server](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 和 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM 大小一文，以确定每个 VM 大小支持的 NIC 数。 
 
 ## <a name="network-security-groups-nsgs"></a>网络安全组 (NSG)
 在资源管理器部署中，VM 上的任何 NIC（包括启用了多 NIC 的 VM 上的任何 NIC）都可以与网络安全组 (NSG) 相关联。 如果向 NIC 分配了子网中的地址，且该子网与某个 NSG 相关联，则子网的 NSG 中的规则也适用于该 NIC。 除了将子网与 NSG 相关联，你还可以将 NIC 与 NSG 相关联。
@@ -227,10 +228,5 @@ ms.openlocfilehash: d10ae92ba79014d9700613c06ef37a437089f5ac
 ## <a name="next-steps"></a>后续步骤
 * [在资源管理器部署的 2 层应用程序方案中部署多 NIC VM](virtual-network-deploy-multinic-arm-template.md)。
 * [在经典部署的 2 层应用程序方案中部署多 NIC VM](virtual-network-deploy-multinic-classic-ps.md)。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

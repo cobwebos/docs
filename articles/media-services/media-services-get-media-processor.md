@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cc3c3bff6179b634b82884dfcb3f8f8395f6bb89
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 88f6e1da090eb6088e54c6f81d0f83b1737d3c2c
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -38,10 +39,10 @@ ms.openlocfilehash: cc3c3bff6179b634b82884dfcb3f8f8395f6bb89
 | 媒体编码器高级工作流 |允许你使用媒体编码器高级工作流运行编码任务。 |[简要介绍并比较 Azure 按需媒体编码器](media-services-encode-asset.md) |
 | Azure Media Indexer |使媒体文件和内容可搜索，以及生成隐藏字幕跟踪和关键字。 |[Azure Media Indexer](media-services-index-content.md) |
 | Azure Media Hyperlapse（预览） |使你能够通过视频防抖动功能消除视频中的“晃动”。 也可使将内容制作为可用剪辑的速度加快。 |[Azure Media Hyperlapse](media-services-hyperlapse-content.md) |
-| Azure Media Encoder |已过时 | |
-| 存储解密 |已过时 | |
-| Azure 媒体包装器 |已过时 | |
-| Azure 媒体加密器 |已过时 | |
+| Azure Media Encoder |已放弃 | |
+| 存储解密 |已放弃 | |
+| Azure 媒体包装器 |已放弃 | |
+| Azure 媒体加密器 |已放弃 | |
 
 ## <a name="get-media-processor"></a>获取媒体处理器
 以下方法演示了如何获取媒体处理器实例。 该代码示例假设使用名为 **_context** 的模块级变量来引用[如何：以编程方式连接到媒体服务](media-services-dotnet-connect-programmatically.md)部分中描述的服务器上下文。
@@ -66,10 +67,5 @@ ms.openlocfilehash: cc3c3bff6179b634b82884dfcb3f8f8395f6bb89
 
 ## <a name="next-steps"></a>后续步骤
 了解如何获取媒体处理器实例后，请转到[如何对资产进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)主题，其中说明了如何使用 Media Encoder Standard 对资产进行编码。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

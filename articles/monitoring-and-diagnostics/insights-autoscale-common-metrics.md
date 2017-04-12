@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/6/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 376e3ff9078cf0b53493dbfee9273c415da04e52
-ms.openlocfilehash: fa978644f2cd95b8eb21687e90d16d0df22b3d44
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: bc9d9aa1cbe704de5f7fb960f1467aa522acd0b5
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -34,11 +35,11 @@ ms.openlocfilehash: fa978644f2cd95b8eb21687e90d16d0df22b3d44
 
 可以使用 `Get MetricDefinitions` API/PoSH/CLI 来查看 VMSS 资源的可用指标。 
 
-如果使用 VM 缩放集，而且发现特定指标未列出，可能是其在诊断扩展中*已禁用*。
+如果使用 VM 规模集，而且发现特定指标未列出，可能是其在诊断扩展中*已禁用*。
 
 如果特定指标未采样或以所需的频率传输，你可以更新诊断配置。
 
-如果发生上述任一情况，请查看[使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md)，将 Azure VM 诊断扩展配置和更新为启用该指标。 这篇文章还包含一个诊断配置文件示例。
+如果发生上述任一情况，请查看[使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断](../virtual-machines/windows/ps-extensions-diagnostics.md)，将 Azure VM 诊断扩展配置和更新为启用该指标。 这篇文章还包含一个诊断配置文件示例。
 
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>基于 Resource Manager 的 Windows 和 Linux VM 的主机指标
 默认情况下，将向 Windows 和 Linux 实例中的 Azure VM 和 VMSS 发出以下主机级指标。 这些指标可描述 Azure VM，但这些指标是从 Azure VM 主机而不是通过来宾 VM 上安装的代理收集的。 可在自动缩放规则中使用这些指标。 
@@ -196,10 +197,5 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 > 若使用服务总线，则不存在资源组这一概念，但 Azure Resource Manager 会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-EastUS”、“Default-ServiceBus-WestUS”、“Default-ServiceBus-AustraliaEast”等等。
 > 
 > 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

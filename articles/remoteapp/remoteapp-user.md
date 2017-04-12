@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3dbeba840501f395c9bad07109fe8ea47947a5fa
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a84aa7e3ac7de717c2a628abcf6f5f11b05411e8
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-add-a-user-to-your-azure-remoteapp-collection"></a>如何将用户添加到 Azure RemoteApp 集合
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -60,10 +61,5 @@ Office 365 用户是 Azure Active Directory 用户。 如果他们有 Azure Acti
 
 ## <a name="office-365-proplus-user-account-information"></a>Office 365 ProPlus 用户帐户信息
 如果你在集合中使用 Office 365 ProPlus 模板映像，*或者*如果你创建了使用 Office 365 的自定义映像，则仅允许你添加将 Office 365 订阅作为订阅的默认域的 Azure Active Directory 用户。 有关详细信息，请参阅[将 Office 365 与 Azure RemoteApp 一起使用](remoteapp-o365.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

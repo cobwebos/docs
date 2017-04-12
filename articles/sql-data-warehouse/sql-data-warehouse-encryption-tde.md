@@ -12,11 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 177062eab9f2825a510aa1b66117ce942c959352
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: b1db3bdfdfb54bda325c9b971cfcb4dd5efa333a
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -59,7 +61,7 @@ ms.openlocfilehash: 177062eab9f2825a510aa1b66117ce942c959352
 * [sys.dm_pdw_nodes_database_encryption_keys]
 
 <!--MSDN references-->
-[透明数据加密 (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 [sys.databases]: http://msdn.microsoft.com/library/ms178534.aspx
 [sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
@@ -71,9 +73,4 @@ ms.openlocfilehash: 177062eab9f2825a510aa1b66117ce942c959352
 [5]: ./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png
 
 <!--Link references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

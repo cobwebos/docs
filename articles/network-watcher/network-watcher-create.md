@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: a39ce143796408f8e44b0d2c877e631e92473462
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 7d8eb5972d35eac6cb55fc393090cfcc21ec341c
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -25,58 +25,8 @@ ms.lasthandoff: 03/28/2017
 
 网络观察程序是一个区域性服务，可用于在网络方案级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 使用方案级别监视可以诊断端到端网络级别视图的问题。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
-## <a name="register-the-preview-capability"></a>注册预览版功能
-
-网络观察程序目前处于预览状态，若要使用网络观察程序的功能，需要注册该功能。 为此，请运行以下 PowerShell 示例：
-
-```powershell
-Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcher -ProviderNamespace Microsoft.Network
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-若要验证注册是否成功，请运行以下 Powershell 示例：
-
-```powershell
-Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcher -ProviderNamespace  Microsoft.Network
-```
-
-如果该功能已正确注册，输出应匹配以下内容：
-
-```
-FeatureName         ProviderName      RegistrationState
------------         ------------      -----------------
-AllowNetworkWatcher Microsoft.Network Registered
-```
-
-### <a name="instructions-for-cli-10"></a>有关 CLI 1.0 的说明
-
-注册
-
-```CLI
-azure feature register  Microsoft.Network AllowNetworkWatcher
-azure provider register Microsoft.Network
-```
-
-若要验证注册是否成功，请运行以下 CLI 命令：
-
-```CLI
-azure feature show Microsoft.Network AllowNetworkWatcher
-```
-
-如果该功能已正确注册，输出应匹配以下内容：
-
-```CLI
-info:    Executing command feature show
-data:    Feature Name:       AllowNetworkWatcher
-data:    Provider Name:      Microsoft.Network
-data:    Registration State: Registered
-info:    feature show command OK
-```
-
 > [!NOTE]
-> 因为网络观察程序当前仅支持 CLI 1.0，所以创建新的网络观察程序实例的说明是针对 CLI 1.0 提供的。 若要注册 CLI 2.0 的提供程序，请使用 `az feature register -n AllowNetworkWatcher --namespace Microsoft.Network`。
+> 因为网络观察程序当前仅支持 CLI 1.0，所以创建新的网络观察程序实例的说明是针对 CLI 1.0 提供的。
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>在门户中创建网络观察程序
 

@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 07/11/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: 6533b1e6a40b7cbf7d3d6961523144b3d0e5263b
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 82a1888cca687ce60f811c2c3cec6b971d4a0461
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -31,21 +32,21 @@ ms.openlocfilehash: 6533b1e6a40b7cbf7d3d6961523144b3d0e5263b
 
 请禁用该扩展，或使用不同的浏览器。
 
-## <a name="a-namee-aa-unexpected-error"></a><a name="e-a"></a>“意外的错误”
+## <a name="e-a"></a>“意外的错误”
 ![“意外的错误”屏幕](./media/app-insights-analytics-troubleshooting/010.png)
 
 在门户运行时期间发生内部错误 – 未经处理的异常。
 
 * 清除浏览器的缓存。 
 
-## <a name="a-namee-ba403--please-try-to-reload"></a><a name="e-b"></a>403 ... 请尝试重新加载
+## <a name="e-b"></a>403 ... 请尝试重新加载
 ![403 ... 请尝试重新加载](./media/app-insights-analytics-troubleshooting/020.png)
 
 发生身份验证相关的错误（在身份验证期间或生成访问令牌期间）。 如果不更改浏览器设置，门户可能无法恢复。
 
 * 检查是否在浏览器中[启用了第三方 Cookie](#cookies)。 
 
-## <a name="a-nameauthenticationa403--verify-security-zone"></a><a name="authentication"></a>403 ... 验证安全区域
+## <a name="authentication"></a>403 ... 验证安全区域
 ![403 ... 验证安全区域](./media/app-insights-analytics-troubleshooting/030.png)
 
 发生身份验证相关的错误（在身份验证期间或生成访问令牌期间）。 如果不更改浏览器设置，门户可能无法恢复。
@@ -68,12 +69,12 @@ ms.openlocfilehash: 6533b1e6a40b7cbf7d3d6961523144b3d0e5263b
      https://login.microsoftonline.com<br/>
      https://login.windows.net
 
-## <a name="a-namee-da404--resource-not-found"></a><a name="e-d"></a>404 ...找不到资源
+## <a name="e-d"></a>404 ...找不到资源
 ![404 ... 找不到资源](./media/app-insights-analytics-troubleshooting/040.png)
 
 应用程序资源已从 Application Insights 中删除，不再可用。 如果将 URL 保存到了“Analytics”页，可能发生这种情况。
 
-## <a name="a-namee-ea403--no-authorization"></a><a name="e-e"></a>403 ...未授权
+## <a name="e-e"></a>403 ...未授权
 ![403 ... 未授权](./media/app-insights-analytics-troubleshooting/050.png)
 
 你无权在 Analytics 中打开此应用程序。
@@ -81,7 +82,7 @@ ms.openlocfilehash: 6533b1e6a40b7cbf7d3d6961523144b3d0e5263b
 * 链接是其他人提供的吗？ 请求他们将你设置为[此资源组的读取者或参与者](app-insights-resources-roles-access-control.md)。
 * 保存链接时是否使用了不同的凭据？ 请打开 [Azure 门户](https://portal.azure.com)，注销，提供正确的凭据，然后重试打开此链接。
 
-## <a name="a-namehtml-storagea403--html5-storage"></a><a name="html-storage"></a>403 ...HTML5 存储
+## <a name="html-storage"></a>403 ...HTML5 存储
 我们的门户使用 HTML5 localStorage 和 sessionStorage。
 
 * Chrome：选择“设置”、“隐私”、“内容设置”。
@@ -89,31 +90,24 @@ ms.openlocfilehash: 6533b1e6a40b7cbf7d3d6961523144b3d0e5263b
 
 ![403 ... 尝试启用 HTML5 存储](./media/app-insights-analytics-troubleshooting/060.png)
 
-## <a name="a-namee-ga404--subscription-not-found"></a><a name="e-g"></a>404 ...找不到订阅
+## <a name="e-g"></a>404 ...找不到订阅
 ![404 ...找不到订阅](./media/app-insights-analytics-troubleshooting/070.png)
 
 URL 无效。 
 
 * 在 [Application Insights 门户](https://portal.azure.com)中打开应用资源。 然后使用“Analytics”按钮。
 
-## <a name="a-namee-ha404--page-doesnt-exist"></a><a name="e-h"></a>404 ... 页面不存在
+## <a name="e-h"></a>404 ... 页面不存在
 ![404 ...页面不存在](./media/app-insights-analytics-troubleshooting/080.png)
 
 URL 无效。
 
 * 在 [Application Insights 门户](https://portal.azure.com)中打开应用资源。 然后使用“Analytics”按钮。
 
-## <a name="a-namecookiesaenable-third-party-cookies"></a><a name="cookies"></a>启用第三方 Cookie
+## <a name="cookies"></a>启用第三方 Cookie
   请参阅[如何禁用第三方 Cookie](http://www.digitalcitizen.life/how-disable-third-party-cookies-all-major-browsers)，但请注意，我们需要**启用**它们。
 
-## <a name="a-namee-xaif-all-else-fails"></a><a name="e-x"></a>如果发生其他失败
-[联系我们](app-insights-get-dev-support.md)
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 680b2bec3af18273d0ac43d7102a99392fd8ebe0
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 4e542ea6431933668d96f7028431826bceb9f337
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -85,7 +85,7 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
    完成运行作业后，使节点脱机，并在 HPC 群集管理器中使用“停止”操作。
 
 ## <a name="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas"></a>方案 2：在计算密集型 VM (IaaS) 中部署计算节点
-在此方案中，可以将 HPC Pack 头节点和群集计算节点部署到 Azure 虚拟网络中的 VM 上。 HPC Pack 在 Azure VM 中提供了多个[部署选项](../../virtual-machines-linux-hpcpack-cluster-options.md)，包括自动部署脚本和 Azure 快速入门模板。 例如，以下注意事项和步骤将指导你使用 [HPC Pack IaaS 部署脚本](hpcpack-cluster-powershell-script.md)在 Azure 中自动部署 HPC Pack 2012 R2 群集。
+在此方案中，可以将 HPC Pack 头节点和群集计算节点部署到 Azure 虚拟网络中的 VM 上。 HPC Pack 在 Azure VM 中提供了多个[部署选项](../../linux/hpcpack-cluster-options.md)，包括自动部署脚本和 Azure 快速入门模板。 例如，以下注意事项和步骤将指导你使用 [HPC Pack IaaS 部署脚本](hpcpack-cluster-powershell-script.md)在 Azure 中自动部署 HPC Pack 2012 R2 群集。
 
 ![Azure VM 中的群集][iaas]
 
@@ -102,7 +102,7 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
    * **Windows Server 操作系统**：若要支持 RDMA 连接，请为计算节点 VM 指定 Windows Server 2012 R2 或 Windows Server 2012 操作系统。
    * **云服务**：建议在两个不同的云服务中分别部署头节点和计算节点。
    * **头节点大小**：在此方案中，请考虑至少将头节点设为 A4（特大）大小。
-   * **HpcVmDrivers 扩展**：部署大小为 A8 或 A9、运行 Windows Server 操作系统的计算节点时，部署脚本会自动安装 Azure VM 代理和 HpcVmDrivers 扩展。 HpcVmDrivers 扩展将驱动程序安装在计算节点 VM 上，以便它们可以连接到 RDMA 网络。 在支持 RDMA 的 H 系列 VM 上，必须手动安装 HpcVmDrivers 扩展。 请参阅 [About H-series and compute-intensive A-series VMs](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#access-to-the-rdma-network)（关于 H 系列和计算密集型 A 系列 VM）。
+   * **HpcVmDrivers 扩展**：部署大小为 A8 或 A9、运行 Windows Server 操作系统的计算节点时，部署脚本会自动安装 Azure VM 代理和 HpcVmDrivers 扩展。 HpcVmDrivers 扩展将驱动程序安装在计算节点 VM 上，以便它们可以连接到 RDMA 网络。 在支持 RDMA 的 H 系列 VM 上，必须手动安装 HpcVmDrivers 扩展。 请参阅 [About H-series and compute-intensive A-series VMs](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#access-to-the-rdma-network)（关于 H 系列和计算密集型 A 系列 VM）。
    * **群集网络配置**：部署脚本将自动设置拓扑 5 中的 HPC Pack 群集（企业网络上的所有节点）。 此拓扑是 VM 中所有 HPC Pack 群集部署所必需的。 以后请不要更改群集网络拓扑。
 2. **使计算节点联机以运行作业**
    

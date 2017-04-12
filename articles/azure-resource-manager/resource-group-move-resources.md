@@ -12,12 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 04/10/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 892d24199be5065ee54d46863cca2fd958db3236
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ba85ab354d051990d0a9bae089e45c8df7ade4ea
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -114,6 +114,7 @@ ms.lasthandoff: 03/30/2017
 * 流量管理器
 * 虚拟机 - 不支持移到新的订阅（当其证书存储在密钥保管库中时）
 * 虚拟机（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
+* 虚拟机规模集
 * 虚拟网络 - 当前无法移动对等虚拟网络，直到禁用了 VNet 对等互连为止。 禁用后，即可成功移动虚拟网络，然后可启用 VNet 对等互连。
 * VPN 网关 
 
@@ -134,11 +135,9 @@ ms.lasthandoff: 03/30/2017
 * 证书存储在密钥保管库中的虚拟机
 * 带托管磁盘的虚拟机
 * 带托管磁盘的虚拟机的可用性集
-* 带托管磁盘的虚拟机规模集
 * 托管磁盘
 * 从托管磁盘创建的映像
 * 从托管磁盘创建的快照
-* 虚拟机规模集
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 无法在订阅之间移动从应用商店资源创建的虚拟机。 需要在当前订阅中取消设置资源，并在新的订阅中再次部署资源
 

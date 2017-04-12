@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 02/10/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: fa3f31cdd708729071876ffad707bea70567da83
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 6b1dede903083d1771733330a069b6ab533d9f00
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -103,7 +103,7 @@ Azure 完成应用部署时，你将看到另一条通知。
     ![Umbraco 配置 - Azure 应用服务中的第一个 Umbraco](./media/app-service-web-get-started-dotnet-portal/umbraco-config.png)
     
 ## <a name="next-steps"></a>后续步骤
-* [使用 Visual Studio 将 ASP.NET Web 应用部署到 Azure 应用服务](web-sites-dotnet-get-started.md) - 了解如何使用任意一种包含的应用程序模板从 Visual Studio 创建新的 Azure Web 应用。
+* [使用 Visual Studio 将 ASP.NET Web 应用部署到 Azure 应用服务](app-service-web-get-started-dotnet.md) - 了解如何使用任意一种包含的应用程序模板从 Visual Studio 创建新的 Azure Web 应用。
 * [将代码部署到 Azure 应用服务](web-sites-deploy.md) - 了解如何从 FTP 或从源代码管理存储库进行部署。
 * [在第一个 Web 应用中添加功能](app-service-web-get-started-2.md) - 使 Azure 应用上升到更高的层次。 对用户进行身份验证。 按需缩放。 设置一些性能警报。 所有这些操作只需按几下鼠标即可完成。
 

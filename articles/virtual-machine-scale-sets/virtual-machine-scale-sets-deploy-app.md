@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 9a92490239f22bd4c57c902ac53898aff1adf530
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f39840ab2fb31775c9703799393d8c386a8451ee
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/17/2017
 ## <a name="install-new-software-on-a-platform-image-at-deployment-time"></a>部署时在平台映像中安装新软件
 在本文的语境中，平台映像是指从 Azure 应用商店获取的操作系统映像，例如 Ubuntu 16.04、Windows Server 2012 R2 等。
 
-可以使用 [VM 扩展](../virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)在平台映像中安装新软件。 VM 扩展是部署 VM 时运行的软件。 可以使用自定义脚本扩展，在部署时运行所需的任何代码。 [这](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)是一个示例 Azure Resource Manager 模板。该模板使用 [Azure Desired State Configuration (DSC) 扩展](virtual-machine-scale-sets-dsc.md)来安装 IIS 以及与 Azure 自动缩放集成的 .NET MVC 应用程序。
+可以使用 [VM 扩展](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)在平台映像中安装新软件。 VM 扩展是部署 VM 时运行的软件。 可以使用自定义脚本扩展，在部署时运行所需的任何代码。 [这](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)是一个示例 Azure Resource Manager 模板。该模板使用 [Azure Desired State Configuration (DSC) 扩展](virtual-machine-scale-sets-dsc.md)来安装 IIS 以及与 Azure 自动缩放集成的 .NET MVC 应用程序。
 
 此方法的优点是在应用程序代码与 OS 之间提供某种程度的隔离，可以单独维护应用程序。 当然，这也意味着会出现更多的运动组件，如果脚本需要下载和配置的项很多，VM 部署时间也可能更长。
 

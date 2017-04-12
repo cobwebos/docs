@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 253b7fe3614579d5a9a74d1de21bd2d3efe50d09
-ms.openlocfilehash: bf642e08d92414543f55ddeceff297c886b82882
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 9684a04b9ce12e6ca09e60909167f7557212c8be
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -50,7 +51,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 | \*.microsoftonline.com |HTTPS/443 |用于配置 Azure AD 目录并导入/导出数据。 |
 
 ## <a name="errors-in-the-wizard"></a>向导中的错误
-安装向导使用两种不同的安全上下文。 在“连接到 Azure AD”页上，使用的是当前登录的用户。 在“配置”页上，改为[运行同步引擎服务的帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)。 如果出现问题，该问题很有可能已显示在向导中的“连接到 Azure AD”页上，因为代理配置是全局性的。
+安装向导使用两种不同的安全上下文。 在“连接到 Azure AD”页上，使用的是当前登录的用户。 在“配置”页上，改为[运行同步引擎服务的帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)。 如果出现问题，该问题很有可能已显示在向导中的“连接到 Azure AD”页上，因为代理配置是全局性的。
 
 以下问题是在安装向导中遇到的最常见错误。
 
@@ -196,9 +197,4 @@ PowerShell 使用 machine.config 中的配置来联系代理。 winhttp/netsh �
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

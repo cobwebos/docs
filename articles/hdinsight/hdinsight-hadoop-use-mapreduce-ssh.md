@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: e696906adf604ebdb665a7a29fd1bba25095e842
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: fbf33ea6a6362857bf4bc92055cabd9b099a6d0c
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/25/2017
 * 基于 Linux 的 HDInsight（HDInsight 上的 Hadoop）群集
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
 
 * SSH 客户端。 SSH 客户端上应该安装有 Linux、Unix 和 Mac 操作系统。 Windows 用户必须下载 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 之类的客户端。
 
@@ -60,42 +60,42 @@ ms.lasthandoff: 03/25/2017
 ## <a id="hadoop"></a>使用 Hadoop 命令
 
 1. 连接到 HDInsight 群集后，使用以下 **Hadoop** 命令来启动 MapReduce 作业：
-   
+
     ```
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
     这会启动包含在 **hadoop-mapreduce-examples.jar** 文件中的 **wordcount** 类。 作为输入，它会使用 **/example/data/gutenberg/davinci.txt** 文档，输出将存储在 **/example/data/WordCountOutput**。
-   
+
     > [!NOTE]
     > 有关此 MapReduce 作业和示例数据的详细信息，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](hdinsight-use-mapreduce.md)。
 
 2. 作业在处理时提供详细信息，并在完成时返回如下信息：
-   
+
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
 
 3. 作业完成之后，请使用以下命令行列出存储在 **wasbs://example/data/WordCountOutput** 中的输出文件：
-   
+
     ```
     hdfs dfs -ls /example/data/WordCountOutput
     ```
-   
+
     这应会显示两个文件：**_SUCCESS** 和 **part-r-00000**。 **part-r-00000** 文件包含此作业的输出。
-   
+
     > [!NOTE]
     > 某些 MapReduce 作业可能会将结果拆分成多个 **part-r-#####** 文件。 如果是这样，请使用 ##### 后缀指示文件的顺序。
 
 4. 若要查看输出，请使用以下命令：
-   
+
     ```
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
-   
+
     这会显示 **wasbs://example/data/gutenberg/davinci.txt** 文件中包含的单词列表，以及每个单词的出现次数。 下面是文件中所含数据的示例：
-   
+
         wreathed        3
         wreathing       1
         wreaths         1
@@ -118,5 +118,4 @@ ms.lasthandoff: 03/25/2017
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
-
 

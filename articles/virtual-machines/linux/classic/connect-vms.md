@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 02b158735fe1cd17d712dc725f8cb3bc1d2a8f51
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 92787b7ba6927ecea3e3ee074ed5e1cb869094d1
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/27/2017
 
 如果云服务不在虚拟网络中，就称为*独立*云服务。 独立云服务中的虚拟机只能使用其他虚拟机的公用 DNS 名称与其通信，流量通过 Internet 传送。 如果云服务是在虚拟网络中，则该云服务中的虚拟机可与虚拟网络中的其他所有虚拟机通信，而不需要通过 Internet 传送任何流量。
 
-如果你将虚拟机放在相同的独立云服务中，你仍然可以使用负载均衡和可用性集。 有关详细信息，请参阅[对虚拟机进行负载均衡](../../virtual-machines-linux-load-balance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)和[管理虚拟机的可用性](../../virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 不过，你无法组织子网上的虚拟机，也无法将独立云服务连接到本地网络。 下面是一个示例：
+如果你将虚拟机放在相同的独立云服务中，你仍然可以使用负载均衡和可用性集。 有关详细信息，请参阅[对虚拟机进行负载均衡](../../virtual-machines-linux-load-balance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)和[管理虚拟机的可用性](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 不过，你无法组织子网上的虚拟机，也无法将独立云服务连接到本地网络。 下面是一个示例：
 
 [!INCLUDE [virtual-machines-common-classic-connect-vms](../../../../includes/virtual-machines-common-classic-connect-vms.md)]
 

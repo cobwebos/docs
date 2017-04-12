@@ -17,9 +17,9 @@ ms.date: 02/06/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
-ms.openlocfilehash: bd9133fde0c3ebfd915c8ae33daa6d0113b37889
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 059fd9c1578cb987aec09a2f72099a0472c9b119
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -27,8 +27,8 @@ ms.lasthandoff: 02/07/2017
 本主题说明如何访问 Azure HDInsight 中基于 Windows 的 Hadoop 群集上已完成的 YARN (Yet Another Resource Negotiator) 应用程序的日志
 
 > [!IMPORTANT]
-> 本文档中的信息仅适用于基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关在基于 Linux 的 HDInsight 群集上访问 YARN 日志的信息，请参阅[在 HDInsight 上基于 Linux 的 Hadoop 中访问 YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-> 
+> 本文档中的信息仅适用于基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关在基于 Linux 的 HDInsight 群集上访问 YARN 日志的信息，请参阅[在 HDInsight 上基于 Linux 的 Hadoop 中访问 YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+>
 
 
 ### <a name="prerequisites"></a>先决条件
@@ -70,9 +70,9 @@ YARN 通过将资源管理与应用程序计划/监视相分离，来支持多�
 
 
 ## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
-YARN ResourceManager UI 在群集头节点上运行，且可以通过 Azure 门户仪表板进行访问： 
+YARN ResourceManager UI 在群集头节点上运行，且可以通过 Azure 门户仪表板进行访问：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。 
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在左侧菜单中，依次单击“浏览”、“HDInsight 群集”和要访问 YARN 应用程序日志的基于 Windows 的群集。
 3. 在顶部菜单中单击“仪表板”。 将看到在新的浏览器选项卡上打开名为“HDInsight 查询控制台”页面。
 4. 在“HDInsight 查询控制台”中单击“Yarn UI”。

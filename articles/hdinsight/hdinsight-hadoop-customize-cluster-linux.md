@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 1f64380b0bd271658c0f06e01a9b013ae4e25636
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 02a978402c8067105900ac50a2796000f8eef67f
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -30,7 +30,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 > [!IMPORTANT]
 > 只有基于 Linux 的 HDInsight 群集能够在运行中的群集上使用脚本操作。
 >
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 
 还可以将脚本操作作为 HDInsight 应用程序发布到 Azure 应用商店。 本文档中的某些示例将演示如何使用 PowerShell 和 .NET SDK 的脚本操作命令来安装 HDInsight 应用程序。 有关 HDInsight 应用程序的详细信息，请参阅[将 HDInsight 应用程序发布到 Azure 应用商店中](hdinsight-apps-publish-applications.md)。

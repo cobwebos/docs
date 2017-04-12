@@ -16,16 +16,15 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 8c25b8f558aae638a95d6e7186e19e77d02edbb2
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: df1cf03bc452b76569bdca030b60719d6d2f29f3
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用 iothub-explorer 在设备与 IoT 中心之间发送和接收消息
 
-> [!NOTE]
-> 在开始本教程之前，请确保已完成[将 ESP8266 连接到 Azure IoT 中心](/iot-hub-arduino-huzzah-esp8266-get-started.md)。 在[将 ESP8266 连接到 Azure IoT 中心](/iot-hub-arduino-huzzah-esp8266-get-started.md)教程中，你已设置 IoT 设备和 IoT 中心，并部署了一个在设备上运行的示例应用程序。 该应用程序会将收集的传感器数据发送到 IoT 中心。
+[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 [iothub-explorer](https://github.com/azure/iothub-explorer) 提供一些命令用于简化 IoT 中心的管理。 本教程重点介绍如何使用 iothub-explorer 在设备与 IoT 中心之间发送和接收消息。
 
@@ -40,9 +39,9 @@ ms.lasthandoff: 03/30/2017
 
 ## <a name="what-you-need"></a>所需条件
 
-- 满足已完成的教程[将 ESP8266 连接到 Azure IoT 中心](/iot-hub-arduino-huzzah-esp8266-get-started.md)所述的以下要求：
+- 满足已完成的教程[将 ESP8266 连接到 Azure IoT 中心](iot-hub-arduino-huzzah-esp8266-get-started.md)所述的以下要求：
   - 一个有效的 Azure 订阅。
-  - 已订阅中创建一个 Azure IoT 中心。
+  - 已在订阅中创建一个 Azure IoT 中心。
   - 一个可向 Azure IoT 中心发送消息的客户端应用程序。
 - iothub-explorer。 （[安装 iothub-explorer](https://github.com/azure/iothub-explorer)）
 
@@ -86,6 +85,4 @@ ms.lasthandoff: 03/30/2017
 
 现在，你已了解如何监视设备到云的消息，以及在 IoT 设备与 Azure IoT 中心之间发送云到设备的消息。
 
-若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
-
-- [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

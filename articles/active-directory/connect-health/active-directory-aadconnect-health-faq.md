@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2017
+ms.date: 04/04/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 6ad2194a71e0d36ba4a0b9a46ca6dbcd58b619ff
-ms.openlocfilehash: 06a8b79f0740e902bb7f9412b449a98b2f0167ea
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: e22a1ccb958942cfa3c67194430af6bc74fdba64
+ms.openlocfilehash: 233691d19aa2553744f92af17f7ecf9fda2290e0
+ms.lasthandoff: 04/05/2017
 
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
@@ -67,7 +67,7 @@ ms.lasthandoff: 02/16/2017
 
 以下数字是近似值：
 
-* CPU 占用率：增加约&1;-5%。
+* CPU 占用率：增加约 1-5%。
 * 内存消耗：最多为系统总内存的 10%。
 
 > [!NOTE]
@@ -75,7 +75,7 @@ ms.lasthandoff: 02/16/2017
 >
 >
 
-* Azure AD Connect Health 代理的本地缓冲区存储：约&20; MB。
+* Azure AD Connect Health 代理的本地缓冲区存储：约 20 MB。
 * 对于 AD FS 服务器，建议预配一个 1,024 MB (1 GB) 大小的磁盘空间，方便 Azure AD Connect Health 代理的 AD FS 审核通道在所有审核数据被覆盖之前将其处理掉。
 
 **问：在 Azure AD Connect Health 代理安装期间，我必须重新启动我的服务器吗？**
@@ -138,22 +138,6 @@ ms.lasthandoff: 02/16/2017
 **问：如何解除 Azure AD Connect Health 警报？**
 
 在成功的情况下，将解除 Azure AD Connect Health 警报。 Azure AD Connect Health 代理将定期检测并向服务报告成功的情况。 某些警报的解除取决于时间。 换句话说，如果在警报生成后的 72 小时内未观察到相同的错误条件，则警报会自动解除。
-
-## <a name="migration-questions"></a>迁移问题
-
-本部分仅适用于已收到通知的客户（通知内容为客户的 Azure AD Connect Health 数据即将被迁移）。
-
-**问：在迁移后，是否需要重新注册代理，或重新配置通知设置？**
-
-否，作为迁移的一部分，代理注册信息和通知设置将被移动。
-
-**问：迁移开始后，要多久才能在门户中看到数据？**
-
-在迁移后的一小时之内，数据将出现在门户中。
-
-**问：现有的活动警报将如何？**
-
-在迁移后的一小时之内，任何适用的警报都将被重新激活。
 
 ## <a name="related-links"></a>相关链接
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
