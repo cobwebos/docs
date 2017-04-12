@@ -7,6 +7,8 @@ author: shizn
 manager: yjianfeng
 tags: 
 keywords: "iot 网关, intel nuc, nuc 计算机, DE3815TYKE"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: f41d6b2e-9b00-40df-90eb-17d824bea883
 ms.service: iot-hub
 ms.devlang: c

@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "将数据存储在云中, 存储在云中的数据, iot 云服务"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: f84f9a85-e2c4-4a92-8969-f65eb34c194e
 ms.service: iot-hub
 ms.devlang: c

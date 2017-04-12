@@ -59,7 +59,7 @@ ms.lasthandoff: 03/10/2017
 2. 登录到 [Azure 门户](https://portal.azure.com/)。
 3. 在“登录”  页面上，提供订阅的凭据。
    
-   ![登录](./media/sql-database-get-started/login.png)
+   ![登录](./media/sql-database-get-started-portal/login.png)
 
 
 <a name="create-logical-server-bk"></a>
@@ -84,11 +84,11 @@ ms.lasthandoff: 03/10/2017
 
 1. 打开 SQL Server Management Studio，使用 SQL Server 身份验证和服务器管理员帐户以服务器管理员的身份连接到服务器。
 
-   ![连接到服务器](./media/sql-database-get-started/connect-to-server.png)
+   ![连接到服务器](./media/sql-database-get-started-portal/connect-to-server.png)
 
 2. 单击“连接”。
 
-   ![已连接到服务器](./media/sql-database-get-started/connected-to-server.png)
+   ![已连接到服务器](./media/sql-database-get-started-portal/connected-to-server.png)
 
 3. 在对象资源管理器中展开“安全性”，然后展开“登录名”查看服务器的现有登录名 - 新服务器上的唯一登录名就是服务器管理员帐户的登录名。
 

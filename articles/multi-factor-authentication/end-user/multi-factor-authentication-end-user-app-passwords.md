@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 03/15/2017
 ms.author: kgremban
+ms.custom: end-user
 translationtype: Human Translation
 ms.sourcegitcommit: 3fd5b85f718313d8267157157e45965b2b21f2db
 ms.openlocfilehash: 60c84a5f5c675b012f2504f6fe222f35ce4d0646
-
+ms.lasthandoff: 02/03/2017
 
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 中的应用密码是什么？
@@ -116,9 +117,4 @@ ms.openlocfilehash: 60c84a5f5c675b012f2504f6fe222f35ce4d0646
 - [管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)
 
 - 试用 [Microsoft 验证器应用](microsoft-authenticator-app-how-to.md)以验证是否可以使用应用通知（而不是通过接收短信或电话）登录。 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
