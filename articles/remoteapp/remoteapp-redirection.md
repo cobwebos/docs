@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5a5ad526513c7adf9b8274acec7d89fe375f43fc
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: cab03e7765dc7116a7f974833871fae652e8363c
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-redirection-in-azure-remoteapp"></a>在 Azure RemoteApp 中使用重定向
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -115,10 +116,5 @@ RemoteApp 利用远程桌面协议 (RDP) 和 RemoteFX 来提供重定向。
 6. 双击“**允许此计算机中受支持的其他 RemoteFX USB 设备的 RDP 重定向**”。
 7. 选择“**已启用**”，然后选择“**在 RemoteFX USB 重定向访问权限中的管理员和用户**”。
 8. 单击 **“确定”**。  
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
