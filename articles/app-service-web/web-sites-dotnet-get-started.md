@@ -1,11 +1,11 @@
 ---
 redirect_url: /azure/app-service-web/app-service-web-get-started-dotnet
-redirect_document_id: TRUE
+redirect_document_id: FALSE
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 30bd4c4e63612a533fb8cede63259ccecbbbfbd2
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 5ba4c7cc91c05b55bf6877cd2098e9b5a1549871
+ms.lasthandoff: 04/11/2017
 
 ---
 
