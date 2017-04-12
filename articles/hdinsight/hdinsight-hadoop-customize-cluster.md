@@ -17,9 +17,9 @@ ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: b5fafb9603957a93a0ca8fbc6dd53798070641a4
-ms.openlocfilehash: da013207a2c804898d1a93dfd7875ed2a2deed22
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 96a7410ec90d31e565ea8338d908564c209c6a4f
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/16/2017
 本文中的信息特定于基于 Windows 的 HDInsight 群集。 有关基于 Linux 的群集，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 你也可以使用多种其他方法来自定义 HDInsight 群集，例如包含其他存储帐户、更改 hadoop 配置文件（core-site.xml、hive-site.xml 等），或者将共享库（例如 Hive、Oozie）添加到群集中的共同位置。 这些自定义可以通过使用 Azure PowerShell、Azure HDInsight .NET SDK 或 Azure 门户来完成。 有关详细信息，请参阅 [在 HDInsight 中创建 Hadoop 群集][hdinsight-provision-cluster]。
 
@@ -76,7 +76,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
         <tr><td>脚本 URI</td>
             <td>指定要调用来自定义群集的脚本的 URI。 s</td></tr>
         <tr><td>头节点/辅助节点</td>
-            <td>指定在其上运行自定义脚本的节点（**头节点**或**辅助角色节点**）。</b>。
+            <td>指定在其上运行自定义脚本的节点（**头节点**或**辅助角色节点**）</b>。
         <tr><td>parameters</td>
             <td>根据脚本的需要，指定参数。</td></tr>
     </table>

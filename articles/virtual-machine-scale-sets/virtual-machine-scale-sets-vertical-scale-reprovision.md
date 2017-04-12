@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 4533b446f661568d0e70a23bb64880022038bb9a
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 9159a5a9041864fe06785829121233379c46bb03
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
-本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 有关 VM 的垂直缩放（规模集中不存在），请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/virtual-machines-windows-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 有关 VM 的垂直缩放（规模集中不存在），请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 垂直缩放，也称为增加和减少，即增加或减少虚拟机 (VM) 大小，以响应工作负荷。 将此与[水平缩放](virtual-machine-scale-sets-autoscale-overview.md)（也称为扩大和缩小，其中 VM 数目的更改取决于工作负荷）进行比较。
 

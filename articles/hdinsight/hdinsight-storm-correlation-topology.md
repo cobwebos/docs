@@ -17,9 +17,9 @@ ms.date: 03/01/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: a16b3eee9ed52a197b5407dc7ebe71c0710d6fa1
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: d0a5bc9d3365a48b03d6f53c21d672a928777956
+ms.lasthandoff: 04/12/2017
 
 ---
 # <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>使用 Storm 和 HBase 关联在不同时间到达的事件
@@ -33,14 +33,14 @@ ms.lasthandoff: 03/07/2017
 * Visual Studio 和用于 Visual Studio 的 HDInsight 工具。 有关详细信息，请参阅[用于 Visual Studio 的 HDInsight 工具入门](hdinsight-hadoop-visual-studio-tools-get-started.md)。
 
 * Apache Storm on HDInsight 群集（基于 Windows）。
-  
+
   > [!IMPORTANT]
   > 尽管在 2016/10/28 之后创建的基于 Linux 的 Storm 群集支持 SCP.NET 拓扑，但是在 2016/10/28 之后可用的 HBase SDK for .NET 包在 Linux 上无法正常工作。
 
 * HDInsight 群集上的 Apache HBase（基于 Linux 或 Windows）。
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 * 开发环境中采用 [Java](https://java.com) 1.7 或更高版本。 将拓扑提交到 HDInsight 群集时，Java 用于打包拓扑。
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 03/07/2017
 
 > [!IMPORTANT]
 > 虽然此拓扑演示了基本的模式，但生产型解决方案需要针对以下情况进行设计：
-> 
+>
 > * 事件在到达时混乱无序
 > * 重复的事件
 > * 删除的事件
@@ -96,7 +96,7 @@ ms.lasthandoff: 03/07/2017
 * 行键：会话 ID 用作此表中行的键。
 
 * 列系列：系列名称为“cf”。 存储在此系列中的列包括：
-  
+
   * 事件：开始或结束。
 
   * 时间：事件发生的时间（以毫秒为单位）。
@@ -104,7 +104,7 @@ ms.lasthandoff: 03/07/2017
   * 持续时间：开始事件和结束事件之间的时长。
 
 * 版本：“cf”系列设置为每行保留 5 个版本。
-  
+
   > [!NOTE]
   > 可以使用版本来记录以前为特定行键存储的值。 默认情况下，HBase 只返回行的最新版本的值。 在这种情况下，同一行将用于所有事件（开始、结束）。每个版本的行通过时间戳值来标识。 使用版本可通过历史视图来查看针对特定 ID 记录的事件。
 
@@ -123,11 +123,11 @@ ms.lasthandoff: 03/07/2017
 1. 打开 Visual Studio 中的 **SessionInfo** 项目。
 
 2. 在“解决方案资源管理器”中，右键单击 **SessionInfo** 项目，然后选择“属性”。
-   
+
     ![属性已选定的菜单的屏幕快照](./media/hdinsight-storm-correlation-topology/selectproperties.png)
 
 3. 选择“设置”，然后设置以下值：
-   
+
    * HBaseClusterURL：到 HBase 群集的 URL。 例如，https://myhbasecluster.azurehdinsight.net。
 
    * HBaseClusterUserName：群集的管理员/HTTP 用户帐户
@@ -137,7 +137,7 @@ ms.lasthandoff: 03/07/2017
    * HBaseTableName：用于此示例的表的名称
 
    * HBaseTableColumnFamily：列系列名称
-     
+
      ![设置对话框的图像](./media/hdinsight-storm-correlation-topology/settings.png)
 
 4. 运行解决方案。 出现提示时，选择可在 HBase 群集上创建表的“c”键。
@@ -149,7 +149,7 @@ ms.lasthandoff: 03/07/2017
 2. 在“解决方案资源管理器”中，右键单击 **CorrelationTopology** 项目，然后选择属性。
 
 3. 在属性窗口中，选择“设置”，然后输入此项目的配置值。 前 5 个属性的值与 **SessionInfo** 项目所使用的值相同：
-   
+
    * HBaseClusterURL：到 HBase 群集的 URL。 例如，https://myhbasecluster.azurehdinsight.net。
 
    * HBaseClusterUserName：群集的管理员/HTTP 用户帐户。
@@ -159,30 +159,30 @@ ms.lasthandoff: 03/07/2017
    * HBaseTableName：用于此示例的表的名称。 此值是与 SessionInfo 项目中使用的相同的表名。
 
    * HBaseTableColumnFamily：列系列名称。 此值是与 SessionInfo 项目中使用的相同的列系列名称。
-   
+
    > [!IMPORTANT]
    > 请勿更改 HBaseTableColumnNames，因为其默认值是 **SessionInfo** 用来检索数据的名称。
 
 4. 保存属性，然后生成项目。
 
 5. 在“解决方案资源管理器”中，右键单击项目，然后选择“提交到 Storm on HDInsight”。 如果出现提示，请输入 Azure 订阅的凭据。
-   
+
    ![提交到 storm 菜单项的图像](./media/hdinsight-storm-correlation-topology/submittostorm.png)
 
 6. 在“提交拓扑”对话框中，选择要将此拓扑部署到的 Storm 群集。
-   
+
    > [!NOTE]
    > 第一次提交拓扑时，可能需要几秒钟来检索 HDInsight 群集名称。
 
 7. 将拓扑上传并提交到该群集后，“Storm 拓扑视图”将打开并显示正在运行的拓扑。 若要刷新数据，请选择“CorrelationTopology”，然后使用页面右上角的“刷新”按钮。
-   
+
    ![拓扑视图的图像](./media/hdinsight-storm-correlation-topology/topologyview.png)
-   
+
    拓扑开始生成数据时，“已发出”列的值将递增。
-   
+
    > [!NOTE]
    > 如果“Storm 拓扑视图”不会自动打开，可使用以下步骤将其打开：
-   > 
+   >
    > 1. 在“解决方案资源管理器”中，展开“Azure”，然后展开“HDInsight”。
    > 2. 右键单击运行拓扑的 Storm 群集，然后选择“查看 Storm 拓扑”
 
@@ -193,11 +193,11 @@ ms.lasthandoff: 03/07/2017
 1. 返回到 **SessionInfo** 项目。 如果该项目未运行，可启动一个新实例。
 
 2. 出现提示时，选择 **s** 即可搜索开始事件。 系统会提示输入开始时间和结束时间，以便定义一个时间范围 - 将只返回这两个时间之间的事件。
-   
+
     输入开始和结束时间时使用以下格式：HH:MM 以及“am”或“pm”。 例如，11:20pm。
-   
+
     若要返回记录的事件，可使用部署 Storm 拓扑之前的某个时间作为开始时间，而使用现在的时间作为结束时间。 返回的数据包含类似于以下文本的条目：
-   
+
         Session e6992b3e-79be-4991-afcf-5cb47dd1c81c started at 6/5/2015 6:10:15 PM. Timestamp = 1433527820737
 
 搜索结束事件与搜索开始事件在原理上是相同的。 不过，结束事件是在开始事件之后 1 到 5 分钟随机生成的。 你可能需要尝试数个时间范围才能找到结束事件。 结束事件还会包含会话持续时间 - 开始事件时间与结束事件时间之差。 下面是结束事件数据的一个示例：
@@ -218,5 +218,4 @@ ms.lasthandoff: 03/07/2017
 ## <a name="next-steps"></a>后续步骤
 
 如需更多的 Storm 示例，请参阅 [Storm on HDInsight 的示例拓扑](hdinsight-storm-example-topology.md)。
-
 

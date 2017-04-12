@@ -1,34 +1,10 @@
 ---
-title: "Windows VM 最佳实践 | Microsoft Docs"
-description: "提供有关在 Azure 中运行 Windows 虚拟机的最佳实践的信息。"
-services: virtual-machines-windows
-documentationcenter: 
-author: mikewasson
-manager: timlt
-editor: 
-tags: azure-resource-manager
-ms.assetid: 02048c63-d1db-494b-b172-4dd6490d2b7d
-ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 06/29/2016
-ms.author: mwasson
+redirect_url: /azure/virtual-machines/windows/guidance-compute-single-vm
+redirect_document_id: true
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5d466b28dc719466b798d65b471a54306f5abf5d
-
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 00eee88e4c4cbc1910a92af72ac7ae00d5fdc96c
+ms.lasthandoff: 03/31/2017
 
 ---
-# <a name="best-practices-for-running-a-windows-vm-on-azure"></a>在 Azure 上运行 Windows VM 的最佳实践
-[!INCLUDE [pnp-header](../../includes/guidance-pnp-header-include.md)]
-
-[!INCLUDE [gudiance-comput-single-vm-windows](../../includes/guidance-compute-single-vm-windows.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

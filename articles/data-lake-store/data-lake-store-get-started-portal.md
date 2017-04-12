@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: db53f991aab10bace2d253fa96f739f99640bd77
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: efb9e68256765873eb2776637d1a9469af6e46d6
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -28,6 +29,7 @@ ms.openlocfilehash: db53f991aab10bace2d253fa96f739f99640bd77
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
+> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
@@ -86,7 +88,7 @@ ms.openlocfilehash: db53f991aab10bace2d253fa96f739f99640bd77
    * 在第一个选项中，单击“授予权限”来配置访问权限。 仅当创建 Data Lake Store 帐户的用户也是 Azure 密钥保管库的管理员时，才启用第一个选项。
    * 另一个选项用于运行边栏选项卡中显示的 PowerShell cmdlet。 你必须是 Azure 密钥保管库的所有者，或者能够授予对 Azure 密钥保管库的权限。 运行该 cmdlet 后，请返回上述边栏选项卡，然后单击“启用”配置访问权限。
 
-## <a name="a-namecreatefolderacreate-folders-in-azure-data-lake-store-account"></a><a name="createfolder"></a>在 Azure Data Lake Store 帐户中创建文件夹
+## <a name="createfolder"></a>在 Azure Data Lake Store 帐户中创建文件夹
 可以在 Azure Data Lake Store 帐户下创建文件夹，用于管理和存储数据。
 
 1. 打开刚刚创建的 Data Lake Store 帐户。 从左窗格中，单击“浏览”，单击“Data Lake Store”，从 Data Lake Store 边栏选项卡中单击要在其下创建文件夹的帐户名。 如果将帐户固定到了启动板，请单击该帐户磁贴。
@@ -101,14 +103,14 @@ ms.openlocfilehash: db53f991aab10bace2d253fa96f739f99640bd77
    
     ![在 Data Lake 帐户中创建文件夹](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "在 Data Lake 帐户中创建文件夹")
 
-## <a name="a-nameuploaddataaupload-data-to-azure-data-lake-store-account"></a><a name="uploaddata"></a>将数据上传到 Azure Data Lake Store 帐户
+## <a name="uploaddata"></a>将数据上传到 Azure Data Lake Store 帐户
 可以直接将数据上传到 Azure Data Lake Store 帐户的根级别，也可以上传到在帐户中创建的文件夹。 请按照下面屏幕截图中的步骤，从“数据资源管理器”  边栏选项卡上传文件到子文件夹。 在此屏幕截图中，文件已上传到子文件夹，如痕迹导航栏（用红框标记）所示。
 
 如果正在查找一些示例数据进行上载，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。
 
 ![上载数据](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "上载数据")
 
-## <a name="a-namepropertiesaproperties-and-actions-available-on-the-stored-data"></a><a name="properties"></a>存储数据的属性以及可执行的操作
+## <a name="properties"></a>存储数据的属性以及可执行的操作
 单击新添加的文件，打开“属性”  边栏选项卡。 此边栏选项卡中将显示与文件相关的属性以及可对文件执行的操作。 还可将文件的完整路径复制到 Azure Data Lake Store 帐户，如下面屏幕截图中的红框所示。
 
 ![数据的属性](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "数据的属性")
@@ -133,10 +135,5 @@ ms.openlocfilehash: db53f991aab10bace2d253fa96f739f99640bd77
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [获取 Data Lake Store 的诊断日志](data-lake-store-diagnostic-logs.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

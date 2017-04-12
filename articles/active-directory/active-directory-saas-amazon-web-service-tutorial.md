@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 8ea8de916a36a1b5274f42513b0446f99707c179
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 2cbd477776329ef84ef615b6c28c56cfee12fc99
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -50,7 +50,7 @@ ms.lasthandoff: 03/28/2017
 ## <a name="scenario-description"></a>方案描述
 本教程旨在介绍如何在测试环境中测试 Azure AD SSO。  
 
-本教程中概述的方案包括三个主要构建基块：
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Amazon Web Services (AWS) 
 2. 配置和测试 Azure AD SSO

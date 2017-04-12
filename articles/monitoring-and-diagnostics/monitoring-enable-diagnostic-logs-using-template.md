@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 2/14/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: f4e7b1f2ac7f10748473605eacee71bf0cd538e6
-ms.openlocfilehash: 2b28045c3ec32a703c62aeb509777750342ffbb3
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 87403d68bfb57645417d6255329af7fd0d757f50
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -231,19 +232,14 @@ ms.openlocfilehash: 2b28045c3ec32a703c62aeb509777750342ffbb3
 3. 将 WADCfg XML 文件的内容添加到 XMLCfg 属性中，对所有 XML 字符进行适当的转义。
 
 > [!WARNING]
-> 这最后一步操作起来比较复杂。 请[参阅此文](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md#diagnostics-configuration-variables)获取相关示例，了解如何将诊断配置架构拆分成进行了正确转义和格式化操作的变量。
+> 这最后一步操作起来比较复杂。 请[参阅此文](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables)获取相关示例，了解如何将诊断配置架构拆分成进行了正确转义和格式化操作的变量。
 > 
 > 
 
-整个过程（包括示例）详见[此文档](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+整个过程（包括示例）详见[此文档](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 * [详细了解 Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)
 * [将 Azure 诊断日志流式传输到事件中心](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

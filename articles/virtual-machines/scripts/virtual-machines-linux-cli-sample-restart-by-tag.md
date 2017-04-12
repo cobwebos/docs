@@ -16,13 +16,17 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: be1c613744d510e4ace636b47fdf730462a2ae07
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 85fa6ab8f7f5ad31347901a0be932d2474594802
+ms.lasthandoff: 04/06/2017
 
 ---
 
 # <a name="restart-vms"></a>重新启动 VM
+
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 此示例展示了用来获取一些 VM 并重新启动它们的几种方法。
 
@@ -38,7 +42,7 @@ az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
-此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../virtual-machines-windows-cli-options.md)。
+此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../windows/cli-options.md)。
 
 
 ## <a name="sample-script"></a>示例脚本
@@ -93,5 +97,5 @@ az group delete -n myResourceGroup --no-wait --yes
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 
-可以在 [Azure Linux VM 文档](../virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。
+可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。
 

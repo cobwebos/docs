@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 9cf09000-87fc-4589-8543-a89175151bc2
 ms.service: sql-database
-ms.custom: migrate and move
+ms.custom: migrate
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -17,9 +17,9 @@ ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 2d72731304aee0952abbb1f3b2c24b620118fc6c
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 272b5eade0a80b1f46af4e4df1c7801d86fee175
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/18/2017
 2. 以 Transact-SQL 脚本形式准备任何必需的修补程序。
 3. 对要迁移的源数据库进行事务一致性复制 - 确保不对源数据库进行进一步的更改（也可在迁移完成后手动应用任何此类更改）。 有许多方法可以使数据库处于静默状态，例如禁用客户端连接以创建[数据库快照](https://msdn.microsoft.com/library/ms175876.aspx)。
 4. 部署 Transact-SQL 脚本，将修补程序应用到数据库副本。
-5. 将数据库副本[导出](sql-database-export-sqlpackage.md)到本地驱动器上的 .BACPAC 文件。
+5. 将数据库副本[导出](sql-database-export.md)到本地驱动器上的 .BACPAC 文件。
 6. 使用多个 BACPAC 导入工具中的任何一个（若要获得最佳性能，建议使用 SQLPackage.exe 工具），以新 Azure SQL 数据库的形式[导入](sql-database-import-sqlpackage.md) .BACPAC 文件。
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>优化迁移过程中的数据传输性能 

@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: fc2a181a301ca56e41f586428e2994fcdf6d704d
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>如何将数据磁盘附加到 Linux 虚拟机
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 请参阅如何[使用 Resource Manager 部署模型附加数据磁盘](../../virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 请参阅如何[使用 Resource Manager 部署模型附加数据磁盘](../add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 你可以将空磁盘和包含数据的磁盘附加到 Azure VM。 这两种类型的磁盘是驻留在 Azure 存储帐户中的 .vhd 文件。 与将任何磁盘添加到 Linux 计算机一样，附加磁盘之后需要将它初始化和格式化才可供使用。 本文将详细说明如何附加空磁盘和附加包含数据的磁盘到 VM，以及初始化和格式化新磁盘的方法。
 
@@ -229,10 +229,10 @@ ms.lasthandoff: 03/27/2017
 * [如何登录到运行 Linux 的虚拟机][Logon]
 * [如何从 Linux 虚拟机分离磁盘](detach-disk.md)
 * [将 Azuer CLI 与经典部署模型搭配使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [在 Azure 中的 Linux VM 上配置 RAID](../../virtual-machines-linux-configure-raid.md)
-* [在 Azure 中的 Linux VM 上配置 LVM](../../virtual-machines-linux-configure-lvm.md)
+* [在 Azure 中的 Linux VM 上配置 RAID](../configure-raid.md)
+* [在 Azure 中的 Linux VM 上配置 LVM](../configure-lvm.md)
 
 <!--Link references-->
-[Agent]:../../virtual-machines-linux-agent-user-guide.md
-[Logon]:../../virtual-machines-linux-mac-create-ssh-keys.md
+[Agent]:../agent-user-guide.md
+[Logon]:../mac-create-ssh-keys.md
 

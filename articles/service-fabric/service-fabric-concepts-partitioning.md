@@ -15,13 +15,14 @@ ms.workload: NA
 ms.date: 02/17/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
-ms.openlocfilehash: 41acd377d456fa5e85e3a8ff0b12f7f6eff6cdfe
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 0379cd02fe663fbe9f024bc2f786186b0ea1358b
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
-本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) 上获取。
+本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) 上获取。
 
 ## <a name="partitioning"></a>分区
 分区并不是 Service Fabric 所独有的。 事实上，它是构建可缩放服务的核心模式。 从更广泛的意义来说，我们可以将分区视为将状态（数据）和计算划分为更小的可访问单元，以提高可伸缩性和性能的一种概念。 一种众所周知的分区形式是[数据分区][wikipartition]，也称为分片。
@@ -359,7 +360,7 @@ Service Fabric 提供了三个分区方案可供选择：
     
     ![浏览器屏幕截图](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-该示例的完整源代码位于 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions)。
+该示例的完整源代码位于 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Service Fabric 概念的信息，请参阅以下内容：
@@ -369,9 +370,4 @@ Service Fabric 提供了三个分区方案可供选择：
 * [Service Fabric 应用程序的容量规划](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

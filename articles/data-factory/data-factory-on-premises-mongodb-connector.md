@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 3540e9c151890468be028af7224a6d11045aec6b
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: b1d31112f024ddc8856835f639f58e2defd67bdf
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -53,6 +53,44 @@ ms.lasthandoff: 03/30/2017
 使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 MongoDB 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 MongoDB 复制到 Azure Blob](#json-example-copy-data-from-mongodb-to-azure-blob) 部分。 
 
 对于特定于 MongoDB 源的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
+
+## <a name="linked-service-properties"></a>链接服务属性
+下表提供 **OnPremisesMongoDB** 链接服务专属 JSON 元素的说明。
+
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| type |type 属性必须设置为：**OnPremisesMongoDb** |是 |
+| server |MongoDB 服务器的 IP 地址或主机名。 |是 |
+| 端口 |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |（可选）默认值：27017 |
+| authenticationType |Basic 或 Anonymous。 |是 |
+| username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
+| password |用户密码。 |是（如果使用基本身份验证）。 |
+| authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |可选（如果使用基本身份验证）。 默认值：使用管理员帐户和使用 databaseName 属性指定的数据库。 |
+| databaseName |要访问的 MongoDB 数据库名称。 |是 |
+| gatewayName |用于访问数据存储的网关名称。 |是 |
+| encryptedCredential |经过网关加密的凭据。 |可选 |
+
+## <a name="dataset-properties"></a>数据集属性
+有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
+
+每种数据集的 **TypeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **MongoDbCollection** 数据集类型的 typeProperties 节具有以下属性：
+
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| collectionName |MongoDB 数据库中集合的名称。 |是 |
+
+## <a name="copy-activity-properties"></a>复制活动属性
+有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
+
+另一方面，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
+
+源为 **MongoDbSource** 类型时，可在 typeProperties 节使用以下属性：
+
+| 属性 | 说明 | 允许的值 | 必选 |
+| --- | --- | --- | --- |
+| query |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如，select * from MyTable。 |否（如果指定了**数据集**的 **collectionName**） |
+
+
 
 ## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON 示例：将数据从 MongoDB 复制到 Azure Blob
 此示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它演示如何将数据从本地 MongoDB 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
@@ -236,41 +274,6 @@ ms.lasthandoff: 03/30/2017
 }
 ```
 
-## <a name="linked-service-properties"></a>链接服务属性
-下表提供 **OnPremisesMongoDB** 链接服务专属 JSON 元素的说明。
-
-| 属性 | 说明 | 必选 |
-| --- | --- | --- |
-| type |type 属性必须设置为：**OnPremisesMongoDb** |是 |
-| server |MongoDB 服务器的 IP 地址或主机名。 |是 |
-| 端口 |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |（可选）默认值：27017 |
-| authenticationType |Basic 或 Anonymous。 |是 |
-| username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
-| password |用户密码。 |是（如果使用基本身份验证）。 |
-| authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |可选（如果使用基本身份验证）。 默认值：使用管理员帐户和使用 databaseName 属性指定的数据库。 |
-| databaseName |要访问的 MongoDB 数据库名称。 |是 |
-| gatewayName |用于访问数据存储的网关名称。 |是 |
-| encryptedCredential |经过网关加密的凭据。 |可选 |
-
-## <a name="dataset-properties"></a>数据集属性
-有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
-
-每种数据集的 **TypeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **MongoDbCollection** 数据集类型的 typeProperties 节具有以下属性：
-
-| 属性 | 说明 | 必选 |
-| --- | --- | --- |
-| collectionName |MongoDB 数据库中集合的名称。 |是 |
-
-## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
-
-另一方面，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
-
-源为 **MongoDbSource** 类型时，可在 typeProperties 节使用以下属性：
-
-| 属性 | 说明 | 允许的值 | 必选 |
-| --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如，select * from MyTable。 |否（如果指定了**数据集**的 **collectionName**） |
 
 ## <a name="schema-by-data-factory"></a>数据工厂的构架
 Azure 数据工厂服务通过使用 MongoDB 集合中最新的 100 个文档来推断该集合的架构。 如果这 100 个文档不包含完整架构，则在复制操作期间可能忽略某些列。

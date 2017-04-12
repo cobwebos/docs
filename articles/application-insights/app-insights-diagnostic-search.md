@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 5e3cf1407079a166fbe5e24abae2248ef467ebbb
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 08390472c6480200751f37028fef594fb055f118
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -165,7 +165,7 @@ ms.lasthandoff: 03/16/2017
 * 从 [.NET](app-insights-asp-net-trace-logs.md) 或 [Java](app-insights-java-trace-logs.md) 中偏好的日志记录框架捕获日志跟踪。 也就是说，可以搜索日志跟踪并将其与页面视图、异常和其他事件相关联。 
 * [编写代码](app-insights-api-custom-events-metrics.md)用于发送自定义事件、页面视图和异常。 
 
-[了解如何向 Application Insights 发送日志和自定义的遥测数据](app-insights-search-diagnostic-logs.md)。
+[了解如何向 Application Insights 发送日志和自定义的遥测数据](app-insights-asp-net-trace-logs.md)。
 
 ## <a name="questions"></a>问题解答
 ### <a name="limits"></a>保留多少数据？
@@ -173,7 +173,7 @@ ms.lasthandoff: 03/16/2017
 请参阅[限制摘要](app-insights-pricing.md#limits-summary)。
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>如何查看服务器请求中的 POST 数据？
-我们不自动记录 POST 数据，但你可以使用 [TrackTrace 或日志调用](app-insights-search-diagnostic-logs.md)。 POST 数据放在消息参数中。 无法像筛选属性一样筛选消息，但消息的大小限制更大。
+我们不自动记录 POST 数据，但你可以使用 [TrackTrace 或日志调用](app-insights-asp-net-trace-logs.md)。 POST 数据放在消息参数中。 无法像筛选属性一样筛选消息，但消息的大小限制更大。
 
 ## <a name="video"></a>视频
 
@@ -181,7 +181,7 @@ ms.lasthandoff: 03/16/2017
 
 ## <a name="add"></a>后续步骤
 * [在 Analytics 中编写复杂查询](app-insights-analytics-tour.md)
-* [向 Application Insights 发送日志和自定义的遥测数据](app-insights-search-diagnostic-logs.md)
+* [向 Application Insights 发送日志和自定义的遥测数据](app-insights-asp-net-trace-logs.md)
 * [设置可用性和响应能力测试](app-insights-monitor-web-app-availability.md)
 * [故障排除](app-insights-troubleshoot-faq.md)
 

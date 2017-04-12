@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 42507475b5d15c4704e6bcb3d56dc00c91006655
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 22adefb1d506376e72bf27e295e009b1cf56d630
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -37,11 +37,10 @@ ms.lasthandoff: 03/31/2017
 * [Angular](https://www.npmjs.com/package/angular-applicationinsights)
 * [ASP.NET](app-insights-asp-net.md)
 * [ASP.NET - 适用于已处于活动状态的应用](app-insights-monitor-performance-live-website-now.md)
-* [ASP.NET 5](app-insights-asp-net-core.md)
+* [ASP.NET Core](app-insights-asp-net-core.md)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
 * [Azure Web 应用](app-insights-azure-web-apps.md)
 * [Azure 云服务](app-insights-cloudservices.md)&#151;包括 Web 角色和辅助角色
-* [Microsoft Dynamics 中的 CRM Online](app-insights-sample-mscrm.md)
 * [Docker](app-insights-docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (HockeyApp)
