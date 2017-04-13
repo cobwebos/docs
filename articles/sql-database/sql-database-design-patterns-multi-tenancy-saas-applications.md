@@ -119,10 +119,10 @@ SQL 数据库中的弹性池结合租户隔离与租户数据库之间的资源�
 | --- | --- |
 | 租户隔离与资源共享 |[弹性池](sql-database-elastic-pool.md)：分配 SQL 数据库资源池，使多个数据库可共享这些资源。 此外，单个数据库可以按需要从池提取资源，以应对租户工作负荷变化而造成的容量要求剧增。 弹性池本身可根据需要扩展或收缩。 弹性池还支持在池级别轻松管理、监视和故障排除。 |
 | 跨数据库简化 DevOps |[弹性池](sql-database-elastic-pool.md)：如前所述。 |
-| [弹性查询](sql-database-elastic-query-horizontal-partitioning.md)：跨数据库查询，进行报告或跨租户分析。 | |
-| [弹性作业](sql-database-elastic-jobs-overview.md)：将数据库维护操作或者数据库架构更改打包，然后可靠地部署到多个数据库。 | |
-| [弹性事务](sql-database-elastic-transactions-overview.md)：以原子隔离的方式处理多个数据库的更改。 当应用程序在多个数据库操作之间需要保证“全有或全无”时，就需要弹性事务功能。 | |
-| [弹性数据库客户端库](sql-database-elastic-database-client-library.md)：管理数据分布，将租户映射到数据库。 | |
+| | [弹性查询](sql-database-elastic-query-horizontal-partitioning.md)：跨数据库查询，进行报告或跨租户分析。 |
+| | [弹性作业](sql-database-elastic-jobs-overview.md)：将数据库维护操作或者数据库架构更改打包，然后可靠地部署到多个数据库。 |
+| | [弹性事务](sql-database-elastic-transactions-overview.md)：以原子隔离的方式处理多个数据库的更改。 当应用程序在多个数据库操作之间需要保证“全有或全无”时，就需要弹性事务功能。 |
+| | [弹性数据库客户端库](sql-database-elastic-database-client-library.md)：管理数据分布，将租户映射到数据库。 |
 
 ## <a name="shared-models"></a>共享模型
 如前所述，大多数 SaaS 提供商的“共享模型”方法可能造成租户隔离问题，以及应用程序开发和维护的复杂性。 然而，对于直接向消费者提供服务的多租户应用程序，租户隔离要求的优先性可能敌不过降低成本。 它们也许能够以非常高的密度将租户打包在一个或多个数据库中来降低成本。 使用单一数据库或多个分片数据库的共享数据库模型可以提高资源共享的效率，降低总体成本。 Azure SQL 数据库提供的一些功能可帮助客户在数据层中大规模构建隔离，改善安全和管理。
@@ -132,10 +132,10 @@ SQL 数据库中的弹性池结合租户隔离与租户数据库之间的资源�
 | 安全隔离功能 |[行级安全](https://msdn.microsoft.com/library/dn765131.aspx) |
 | [数据库架构](https://msdn.microsoft.com/library/dd207005.aspx) | |
 | 跨数据库简化 DevOps |[弹性查询](sql-database-elastic-query-horizontal-partitioning.md) |
-| [弹性作业](sql-database-elastic-jobs-overview.md) | |
-| [弹性事务](sql-database-elastic-transactions-overview.md) | |
-| [弹性数据库客户端库](sql-database-elastic-database-client-library.md) | |
-| [弹性数据库拆分和合并](sql-database-elastic-scale-overview-split-and-merge.md) | |
+| | [弹性作业](sql-database-elastic-jobs-overview.md) |
+| | [弹性事务](sql-database-elastic-transactions-overview.md) |
+| | [弹性数据库客户端库](sql-database-elastic-database-client-library.md) |
+| | [弹性数据库拆分和合并](sql-database-elastic-scale-overview-split-and-merge.md) |
 
 ## <a name="summary"></a>摘要
 对于大多数 SaaS 多租户应用程序，租户隔离要求非常重要。 提供隔离的最佳选项严重依赖于“租户各有数据库”方法。 其他两种方法需要在复杂的应用程序层投入心力，并需要有熟练的开发人员来提供隔离，因而大幅增加成本与风险。 如果在服务开发初期不重视隔离要求，在前两个模型中改造时付出更大的代价。 “租户各有数据库”模型的缺点在于，因为共享和维护不足以及管理大量数据库，导致云资源成本增加。 SaaS 应用程序开发人员经常挣扎于这些取舍之中。
