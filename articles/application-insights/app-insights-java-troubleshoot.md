@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 4fc4561516490b9b285220e7ae688bf97384fe6e
 ms.openlocfilehash: 9164a93308a4a2f3eed4ff6262942239df029dae
+ms.lasthandoff: 12/17/2016
 
 
 ---
@@ -145,11 +146,6 @@ ms.openlocfilehash: 9164a93308a4a2f3eed4ff6262942239df029dae
 [javalogs]: app-insights-java-trace-logs.md
 [platforms]: app-insights-platforms.md
 [track]: app-insights-api-custom-events-metrics.md
-[usage]: app-insights-web-track-usage.md
-
-
-
-
-<!--HONumber=Dec16_HO3-->
+[usage]: app-insights-javascript.md
 
 

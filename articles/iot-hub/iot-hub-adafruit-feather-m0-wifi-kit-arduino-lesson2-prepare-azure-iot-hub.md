@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "将 arduino 连接到云, azure iot 中心, 物联网云, azure iot 中心创建设备, arduino 云"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: 5edc690b-7a1d-4ebc-b011-ff27bfffe6e8
 ms.service: iot-hub
 ms.devlang: arduino
