@@ -185,6 +185,8 @@
     items:
     - name: "复制 DB"
       href: sql-database-copy.md
+    - name: "导入 DB"
+      href: sql-database-import.md
     - name: "导出 DB"
       href: sql-database-export.md
   - name: "监视和优化"
@@ -209,16 +211,6 @@
       href: sql-database-compatibility-level-query-performance-130.md
 - name: "操作指南"
   items:
-  - name: "管理防火墙"
-    items:
-    - name: "门户"
-      href: sql-database-configure-firewall-settings.md
-    - name: "PowerShell"
-      href: sql-database-configure-firewall-settings-powershell.md
-    - name: "REST API"
-      href: sql-database-configure-firewall-settings-rest.md
-    - name: "Transact-SQL"
-      href: sql-database-configure-firewall-settings-tsql.md
   - name: "管理弹性池"
     items:
     - name: "门户"
@@ -249,20 +241,10 @@
       href: sql-database-always-encrypted-azure-key-vault.md
     - name: "配置掩码"
       href: sql-database-dynamic-data-masking-get-started-portal.md
-  - name: "恢复"
-    items:
-    - name: "门户"
-      href: sql-database-get-started-backup-recovery-portal.md
-    - name: "PowerShell"
-      href: sql-database-get-started-backup-recovery-powershell.md
-    - name: "单一表"
-      href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
-  - name: "保留"
-    items:
-    - name: "保留 - 门户"
-      href: sql-database-manage-long-term-backup-retention-portal.md
-    - name: "保留 - PowerShell"
-      href: sql-database-manage-long-term-backup-retention-powershell.md
+  - name: "恢复单个表"
+    href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
+  - name: "为备份配置保管库"
+    href: sql-database-long-term-backup-retention-configure.md
   - name: "异地复制数据"
     items:
     - name: "门户"
@@ -277,10 +259,6 @@
       href: sql-database-disaster-recovery-drills.md
   - name: "移动数据"
     items:
-    - name: "导入 - 门户"
-      href: sql-database-import-portal.md
-    - name: "导入 - SQLPackage"
-      href: sql-database-import-sqlpackage.md
     - name: "使用 BCP 加载数据"
       href: sql-database-load-from-csv-with-bcp.md
     - name: "使用 ADF 加载数据"

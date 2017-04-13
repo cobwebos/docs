@@ -8,6 +8,7 @@
 ## 入门
 ### [部署先决条件](azure-stack-deploy.md)
 ### [部署](azure-stack-run-powershell-script.md)
+### [激活门户](azure-stack-run-powershell-script.md#activate-the-administrator-and-tenant-portals)
 ### [注册](azure-stack-register.md)
 ## 如何
 ### [连接到 Azure Stack POC](azure-stack-connect-azure-stack.md)
@@ -56,6 +57,7 @@
 #### [Azure Stack 中的应用服务概述](azure-stack-app-service-overview.md)
 #### [准备工作](azure-stack-app-service-before-you-get-started.md)
 #### [部署应用服务资源提供程序](azure-stack-app-service-deploy.md)
+#### [脱机部署应用服务](azure-stack-app-service-deploy-offline.md)
 #### [添加更多 Web 辅助角色](azure-stack-app-service-add-worker-roles.md)
 #### [配置部署源](azure-stack-app-service-configure-deployment-sources.md)
 #### [在 Azure Stack 上的应用服务中启用 FTP](azure-stack-app-service-enable-ftp.md)
@@ -80,7 +82,7 @@
 ### [概述](azure-stack-storage-overview.md)
 ### [差异和注意事项](azure-stack-acs-differences-tp2.md)
 ## 网络
-### [适用于 Azure Stack 的 iDNS](azure-stack-understanding-dns-in-tp2.md)
+### [适用于 Azure Stack 的 iDNS](azure-stack-understanding-dns.md)
 ### [Azure Stack 中的 DNS](azure-stack-dns.md)
 ### [了解站点到站点的 VPN 连接](azure-stack-create-vpn-connection-one-node-tp2.md)
 ## 密钥保管库

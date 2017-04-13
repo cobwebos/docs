@@ -1,16 +1,17 @@
 # 概述
 ## [什么是 Azure 自动化？](automation-intro.md)
 # 入门
-## [创建 runbook](automation-first-runbook-graphical.md)
-## [创建 PowerShell Runbook](automation-first-runbook-textual-powershell.md)
-## [创建 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
-## [管理基于角色的访问控制](automation-role-based-access-control.md)
+## Runbook 教程
+### [创建图形 runbook](automation-first-runbook-graphical.md)
+### [创建 PowerShell Runbook](automation-first-runbook-textual-powershell.md)
+### [创建 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
 # 如何
-## 设置身份验证
+## 身份验证和安全性
 ### [Azure 自动化中的身份验证](automation-security-overview.md)
-### [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)
-### [Azure 服务管理和 Resource Manager](automation-sec-configure-aduser-account.md)
-### [Amazon Web Services](automation-sec-configure-aws-account.md)
+### [配置 Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)
+### [配置 Azure AD 用户帐户](automation-sec-configure-aduser-account.md)
+### [配置使用 AWS 进行的身份验证](automation-sec-configure-aws-account.md)
+### [管理基于角色的访问控制](automation-role-based-access-control.md)
 ## 创建 Runbook
 ### [Runbook 类型](automation-runbook-types.md)
 ### [创建和导入 Runbook](automation-creating-importing-runbook.md)
