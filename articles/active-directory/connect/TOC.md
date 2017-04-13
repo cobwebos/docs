@@ -47,6 +47,7 @@
 ### [目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md)
 
 ### [更改 Azure AD 同步服务帐户密码](active-directory-aadconnectsync-change-serviceacct-pass.md)
+### [更改 AD DS 帐户密码](active-directory-aadconnectsync-change-addsacct-pass.md)
 ### [启用 AD 回收站](active-directory-aadconnectsync-recycle-bin.md)
 
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
@@ -58,6 +59,7 @@
 
 ## 管理联合身份验证服务
 ### [管理和自定义](active-directory-aadconnect-federation-management.md)
+### [将 Azure AD 的多个实例与 AD FS 的单个实例联合](active-directory-aadconnectfed-single-adfs-multitenant-federation.md)
 
 
 ## 故障排除
