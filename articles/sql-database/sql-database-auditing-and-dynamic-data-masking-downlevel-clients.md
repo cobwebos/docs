@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
 ms.service: sql-database
-ms.custom: secure and protect
+ms.custom: security-protect
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/17/2017
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL 数据库 - 针对审核的下层客户端支持和 IP 终结点更改
 对于支持 TDS 重定向的 SQL 客户端，可以自动使用[数据库审核](sql-database-auditing.md)。 请注意，使用 Blob 审核方法时，重定向不适用。
 
-## <a name="a-idsubheading-1adownlevel-clients-support"></a><a id="subheading-1"></a>下层客户端支持
+## <a id="subheading-1"></a>下层客户端支持
 任何实现了 TDS 7.4 的客户端同样应当支持重定向。 例外情况包括不完全支持重定向功能的 JDBC 4.0 以及未实现重定向的 Tedious（适用于 Node.JS）。
 
 对于“下层客户端”，即支持 TDS 7.3 版和更低版本的客户端 — 应修改连接字符串中的服务器 FQDN：
@@ -43,7 +43,7 @@ ms.lasthandoff: 02/17/2017
 
 **注释：**上面的服务器 FDQN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。
 
-## <a name="a-idsubheading-2aip-endpoint-changes-when-enabling-auditing"></a><a id="subheading-2"></a>启用审核时的 IP 终结点的更改
+## <a id="subheading-2"></a>启用审核时的 IP 终结点的更改
 请注意，启用表审核时，数据库的 IP 终结点将发生更改。 如果你有严格的防火墙设置，请相应地更新这些防火墙设置。
 
 新的数据库 IP 终结点将取决于数据库区域：
