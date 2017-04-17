@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
+ms.date: 04/04/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 280a17677714a522ca978a6eb6baf3e70f853d7a
-ms.openlocfilehash: 5b0865310076557c8f7ce6f9d9b553950854407c
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 2fc966e7c93e44007f15c3129fbe709beddb21af
+ms.lasthandoff: 04/05/2017
 
 
 ---
-# <a name="expressroute-technical-overview"></a>ExpressRoute 技术概述
+# <a name="expressroute-overview"></a>ExpressRoute 概述
 Microsoft Azure ExpressRoute 可让你通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。 
 
 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。 若要了解如何使用 ExpressRoute 将网络连接到 Microsoft，请参阅 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。
 
-![](./media/expressroute-introduction/expressroute-connection-overview-diagram.png)
+![](./media/expressroute-introduction/expressroute-connection-overview.png)
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -46,7 +46,7 @@ Microsoft Azure ExpressRoute 可让你通过连接服务提供商所提供的专
 Microsoft 采用行业标准动态路由协议 (BGP)，在本地网络、Azure 中的实例和 Microsoft 公共地址之间交换路由。  我们根据不同的流量配置文件来与网络建立多个 BGP 会话。 有关详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md) 一文。
 
 ### <a name="redundancy"></a>冗余
-每个 ExpressRoute 线路有两道连接，用于从连接服务提供商/你的网络边缘连接到两个 Microsoft 企业边缘路由器 (MSEE)。 Microsoft 要求从连接服务提供商/你的一端建立双重 BGP 连接 – 各自连接到每个 MSEE。 你可以选择不要在你的一端部署冗余设备/以太网路线。 但是，连接服务提供商会使用冗余设备，确保以冗余方式将你的连接移交给 Microsoft。 冗余的第 3 层连接配置是 Microsoft [SLA](https://azure.microsoft.com/support/legal/sla/) 生效的条件。 
+每个 ExpressRoute 线路有两道连接，用于从连接服务提供商/你的网络边缘连接到两个 Microsoft 企业边缘路由器 (MSEE)。 Microsoft 要求从连接服务提供商/你的一端建立双重 BGP 连接 – 各自连接到每个 MSEE。 你可以选择不要在你的一端部署冗余设备/以太网路线。 但是，连接服务提供商会使用冗余设备，确保以冗余方式将你的连接移交给 Microsoft。 冗余的第 3 层连接配置是 Microsoft [SLA](https://azure.microsoft.com/support/legal/sla/) 生效的条件。
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>与 Microsoft 云服务建立连接
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
@@ -107,6 +107,6 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。 
 * 请参阅[路由](expressroute-routing.md)、[NAT](expressroute-nat.md) 和 [QoS](expressroute-qos.md) 的要求。
 * 配置 ExpressRoute 连接。
   * [创建 ExpressRoute 线路](expressroute-howto-circuit-portal-resource-manager.md)
-  * [配置路由](expressroute-howto-routing-portal-resource-manager.md)
-  * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-portal-resource-manager.md)
+  * [配置 ExpressRoute 线路的对等互连](expressroute-howto-routing-portal-resource-manager.md)
+  * [将虚拟网络连接到 ExpressRoute 线路](expressroute-howto-linkvnet-portal-resource-manager.md)
 

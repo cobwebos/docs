@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 0664888dbb14aaa353d5d126cdf799b62711d71f
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -106,7 +106,7 @@ ms.lasthandoff: 02/03/2017
     ```PowerShell
     $azureAdApplication    
     ```
-    记下应用程序 ID（输出中的**applicationID** ）。
+    记下输出中的应用程序 ID (applicationID)。
 
 应该通过相应的步骤获取以下四个值：
 
@@ -123,8 +123,8 @@ ms.lasthandoff: 02/03/2017
    4. 从右侧项目类型列表中选择“控制台应用程序”。
    5. 在“名称”中输入 **DataFactoryAPITestApp** 。
    6. 在“位置”中选择“C:\ADFGetStarted”。
-   7.  。
-2. 单击“工具”，指向“Nuget 包管理器”，然后单击“包管理器控制台”。
+   7. 单击“确定”以创建该项目  。
+2. 单击“工具”，指向“NuGet 包管理器”，然后单击“包管理器控制台”。
 3. 在“包管理器控制台”中执行以下步骤：
    1. 运行以下命令安装数据工厂包：`Install-Package Microsoft.Azure.Management.DataFactories`
    2. 运行以下命令安装 Azure Active Directory 包（因为要在代码中使用 Active Directory API）：`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
@@ -184,7 +184,7 @@ ms.lasthandoff: 02/03/2017
    > [!IMPORTANT]
    > 将 **resourceGroupName** 的值替换为 Azure 资源组的名称。
    >
-   > 将数据工厂的名称 (**dataFactoryName**) 更新为唯一名称。 数据工厂的名称必须全局唯一。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
+   > 将数据工厂的名称 (dataFactoryName) 更新为唯一名称。 数据工厂的名称必须全局唯一。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 
 7. 将以下用于创建**数据工厂**的代码添加到 **Main** 方法。
 
@@ -473,7 +473,7 @@ ms.lasthandoff: 02/03/2017
     }
     ```
 
-15. 在解决方案资源管理器中展开项目 (**DataFactoryAPITestApp**)，右键单击“引用”，然后单击“添加引用”。 选中“System.Configuration”程序集对应的复选框，然后单击“确定”。
+15. 在解决方案资源管理器中展开项目 (DataFactoryAPITestApp)，右键单击“引用”，然后单击“添加引用”。 选中“System.Configuration”程序集对应的复选框。 然后单击“确定”。
 16. 生成控制台应用程序。 在菜单中单击“生成”，然后单击“生成解决方案”。
 17. 确认 Azure Blob 存储中的 **adftutorial** 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 **Emp.txt** 文件，然后将它上载到 adftutorial 容器。
 

@@ -12,12 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.date: 04/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 981155c38bdc8cb54639d2271be1f3bd3036125c
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5348cedf369264defc5bb8417397aae046915ca7
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -49,9 +49,16 @@ Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务�
 
 ## <a name="migrate-on-premises-vms-and-physical-servers"></a>迁移本地 VM 和物理服务器
 
-若要迁移本地 Hyper-V VM、VMware VM 和物理服务器，遵循的步骤大致与普通复制相同。 此过程包括设置恢复服务保管库，配置所需的管理服务器（具体取决于想要迁移哪些工作负荷），将这些服务器添加到保管库，然后指定复制设置。 为想要迁移的计算机启用复制，并运行快速测试故障转移，确保一切按预期运行。
+若要迁移本地 Hyper-V VM、VMware VM 和物理服务器，遵循的步骤大致与普通复制相同。
 
-确认复制环境正常工作后，根据方案[支持的操作](site-recovery-failover.md)使用计划内或计划外故障转移。 迁移时，不需要提交故障转移。 对于想要迁移的每台计算机，可以选择“完成迁移”选项。 “完成迁移”操作会完成迁移过程，删除计算机复制设置，使计算机不再产生 Site Recovery 费用。
+1. 设置恢复服务保管库
+2. 配置所需的管理服务器（VMware、VMM、Hyper-V - 具体取决于想要迁移哪些工作负荷），将这些服务器添加到保管库，然后指定复制设置。
+3. 为需要迁移的虚拟机启用复制
+4. 初始迁移之后，请运行一个快速的测试性故障转移，确保一切正常。
+5. 确认复制环境正常工作后，根据方案[支持的操作](site-recovery-failover.md)使用计划内或计划外故障转移。 我们建议你尽可能使用计划内故障转移。
+6. 迁移时，不需要提交故障转移，也不需将其删除。 对于想要迁移的每台计算机，可以选择“完成迁移”选项。
+     - 在“复制的项”中，右键单击 VM，然后单击“完成迁移”。 单击“确定”完成相关操作。 若要在 VM 属性中跟踪进度，可以在“Site Recovery 作业”中监视“完成迁移”作业。
+     - “完成迁移”操作会完成迁移过程，删除计算机复制设置，使计算机不再产生 Site Recovery 费用。
 
 ![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
 

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: c5049cbe98dbb04deae4a2b9dc098938aa65495a
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 003a32f2ef67f8aa63ed7be2553fa0f0c3afc08a
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -49,14 +50,14 @@ ms.openlocfilehash: c5049cbe98dbb04deae4a2b9dc098938aa65495a
   3. 获取 **租户 ID**。 
   4. 将 **ADFCopyTutorialApp** 应用程序分配给**数据工厂参与者**角色。  
 * 安装 [Azure PowerShell](/powershell/azureps-cmdlets-docs)。  
-* 启动 **PowerShell** 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
+* 启动 **PowerShell** 并执行以下步骤。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
   
-  1. 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
+  1. 运行以下命令并输入用于登录 Azure 门户的用户名和密码：
     
     ```PowerShell 
     Login-AzureRmAccount
     ```   
-  2. 运行以下命令查看此帐户的所有订阅。
+  2. 运行以下命令查看此帐户的所有订阅：
 
     ```PowerShell     
     Get-AzureRmSubscription
@@ -66,7 +67,7 @@ ms.openlocfilehash: c5049cbe98dbb04deae4a2b9dc098938aa65495a
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
-  4. 在 PowerShell 中运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组。  
+  4. 在 PowerShell 中运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组：  
 
     ```PowerShell     
       New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
@@ -172,10 +173,10 @@ JSON 定义用于定义名为 **AzureBlobInput**的数据集，表示管道中�
 * **linkedServiceName** 设置为 **AzureStorageLinkedService**。 
 * **folderPath** 设置为 **adftutorial** 容器，**fileName** 设置为 **emp.txt**。  
 * 格式 **type** 设置为 **TextFormat**
-* 文本文件中有两个以逗号分隔 (**columnDelimiter**) 的字段 - **FirstName** 和 **LastName**    
-* **availability** 设置为 **hourly**（frequency 设置为 hour，interval 设置为 1）。 因此，数据工厂每小时在指定的 Blob 容器 (**adftutorial**) 的根文件夹中查找输入数据。 
+* 文本文件中有两个以逗号分隔 (columnDelimiter) 的字段 - **FirstName** 和 **LastName**    
+* **availability** 设置为 **hourly**（frequency 设置为 hour，interval 设置为 1）。 因此，数据工厂每小时在指定的 Blob 容器 (adftutorial) 的根文件夹中查找输入数据。 
 
-如果没有指定输入数据集的 **fileName**，则输入文件夹 (**folderPath**) 中的所有文件/Blob 都被视为输入。 如果在 JSON 中指定 fileName，则只有指定的文件/Blob 被视为输入。
+如果没有指定输入数据集的 **fileName**，则输入文件夹 (folderPath) 中的所有文件/Blob 都被视为输入。 如果在 JSON 中指定 fileName，则只有指定的文件/Blob 被视为输入。
 
 如果未指定**输出表**的 **fileName**，**folderPath** 中生成的文件根据以下格式命名：Data.&lt;Guid&gt;.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt）。
 
@@ -230,7 +231,7 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 * **linkedServiceName** 设置为 **AzureSqlLinkedService**。
 * **tablename** 设置为 **emp**。
 * 数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
-* **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。  数据工厂服务每隔一小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
+* **availability** 设置为 **hourly**（frequency 设置为 hour，interval 设置为 1）。  数据工厂服务每隔一小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
 
 ### <a name="pipelinejson"></a>pipeline.json
 
@@ -316,7 +317,7 @@ $adf = "ADFCopyTutorialDF"
 ```
 
 ## <a name="authenticate-with-aad"></a>在 AAD 中进行身份验证
-运行以下命令，在 Azure Active Directory (AAD) 中进行身份验证。 
+运行以下命令，在 Azure Active Directory (AAD) 中进行身份验证： 
 
 ```PowerShell
 $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
@@ -428,7 +429,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 * 创建文本文件 **emp.txt**，并将其作为 Blob 上载到 **adftutorial** 容器。 
 * 在 **AzureSqlLinkedService** 指向的 Azure SQL 数据库中，创建名为 **emp** 的表。
 
-1. 启动记事本，粘贴以下文本，将文件命名为 **emp.txt**，然后将其保存到硬盘上的 **C:\ADFGetStartedPSH** 文件夹。 
+1. 启动记事本。 复制以下文本，将文件命名为 **emp.txt**，然后将其保存到硬盘上的 **C:\ADFGetStartedPSH** 文件夹。 
 
     ```   
     John, Doe
@@ -456,7 +457,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     如果不允许客户端访问 Azure SQL Server，则需要将 Azure SQL Server 的防火墙配置为允许从计算机（IP 地址）访问。 请参阅 [此文](../sql-database/sql-database-configure-firewall-settings.md) 中的步骤，为 Azure SQL Server 配置防火墙。
 
 ### <a name="create-input-dataset"></a>创建输入数据集
-本步骤在 **AzureStorageLinkedService** 链接服务代表的 Azure 存储中，创建指向 Blob 容器的 **AzureBlobInput** 数据集。 此 Blob 容器 (**adftutorial**) 包含 **emp.txt** 文件中的输入数据。 
+本步骤在 **AzureStorageLinkedService** 链接服务代表的 Azure 存储中，创建指向 Blob 容器的 **AzureBlobInput** 数据集。 此 Blob 容器 (adftutorial) 包含 **emp.txt** 文件中的输入数据。 
 
 1. 将命令分配到名为 **cmd**的变量。 
 
@@ -475,7 +476,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     ```
 
 ### <a name="create-output-dataset"></a>创建输出数据集
-本步骤创建名为 **AzureSqlOutput**的输出表。 此数据集指向 Azure SQL 数据库中 **AzureSqlLinkedService** 所代表的 SQL 表 (**emp**)。 管道将输入 Blob 中的数据复制到 **emp** 表。 
+本步骤创建名为 **AzureSqlOutput**的输出表。 此数据集指向 Azure SQL 数据库中 **AzureSqlLinkedService** 所代表的 SQL 表 (emp)。 管道将输入 Blob 中的数据复制到 **emp** 表。 
 
 1. 将命令分配到名为 **cmd**的变量。
 
@@ -573,9 +574,4 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
 
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

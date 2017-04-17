@@ -12,18 +12,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 01/10/2017
+ms.date: 04/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: 76c884bfdfbfacf474489d41f1e388956e4daaa0
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 ## <a name="introduction"></a>介绍
-使用 Visual Studio 和免费的 Azure SDK for .NET，可以轻松针对 Microsoft Azure 进行开发。 本教程将指导你完成创建使用在本地环境中运行的多个 Azure 资源的应用程序的步骤。 这些步骤假设你之前未使用过 Azure。
+使用 Visual Studio 和免费的 Azure SDK for .NET，可以轻松针对 Microsoft Azure 进行开发。 本教程将指导你完成创建使用在本地环境中运行的多个 Azure 资源的应用程序的步骤。
 
 你将学习以下技能：
 
@@ -34,16 +34,16 @@ ms.lasthandoff: 03/01/2017
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-在本教程中，你将生成多层应用程序并在 Azure 云服务中运行它。 前端为 ASP.NET MVC Web 角色，后端为使用服务总线队列的辅助角色。 可以创建与前端相同的多层应用程序，作为要部署到 Azure 网站而不是云服务的 Web 项目。 有关如何以不同方式处理 Azure 网站前端的说明，请参阅 [后续步骤](#nextsteps) 部分。 还可以试用 [.NET 本地/云混合应用程序](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教程。
+在本教程中，你将生成多层应用程序并在 Azure 云服务中运行它。 前端为 ASP.NET MVC Web 角色，后端为使用服务总线队列的辅助角色。 可以创建与前端相同的多层应用程序，作为要部署到 Azure 网站而不是云服务的 Web 项目。 还可以试用 [.NET 本地/云混合应用程序](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教程。
 
 以下屏幕截图显示了已完成的应用程序。
 
 ![][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>方案概述：角色间通信
-若要提交处理命令，以 Web 角色运行的前端 UI 组件必须与以辅助角色运行的中间层逻辑进行交互。 此示例使用服务总线中转消息传送在各层之间进行通信。
+若要提交处理命令，以 Web 角色运行的前端 UI 组件必须与以辅助角色运行的中间层逻辑进行交互。 此示例使用服务总线消息传送在各层之间进行通信。
 
-在 Web 层和中间层之间使用中转消息传送将分离这两个组件。 与直接消息传送（即 TCP 或 HTTP）不同，Web 层不会直接连接到中间层，而是将工作单元作为消息推送到服务总线，服务总线将以可靠方式保留这些工作单元，直到中间层准备好使用和处理它们。
+在 Web 层和中间层之间使用服务总线消息传送将分离这两个组件。 与直接消息传送（即 TCP 或 HTTP）不同，Web 层不会直接连接到中间层，而是将工作单元作为消息推送到服务总线，服务总线将以可靠方式保留这些工作单元，直到中间层准备好使用和处理它们。
 
 服务总线提供了两个实体以支持中转消息传送：队列和主题。 通过队列，发送到队列的每个消息均由一个接收方使用。 主题支持发布/订阅模式，在该模式中，每个已发布消息都将提供给在该主题中注册的订阅。 每个订阅都以逻辑方式保留自己的消息队列。 此外，还可以使用筛选规则配置订阅，这些规则可将传递给订阅队列的消息集限制为符合筛选条件的消息集。 以下示例使用服务总线队列。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 03/01/2017
 
 * **暂时分离。** 使用异步消息传送模式，生产者和使用者不需要在同一时间联机。 服务总线可靠地存储消息，直到使用方准备好接收它们。 这将允许分布式应用程序的组件断开连接，例如，为进行维护而自动断开，或因组件故障断开连接，而不会影响系统的整体性能。 此外，使用方应用程序可能只需在一天的特定时段内联机。
 * **负载量。** 在许多应用程序中，系统负载随时间而变化，而每个工作单元所需的处理时间通常为常量。 使用队列在消息创建者与使用者之间中继意味着，只需将使用方应用程序（辅助）预配为适应平均负载而非最大负载。 队列深度将随传入负载的变化而加大和减小。 这将直接根据为应用程序加载提供服务所需的基础结构的数目来节省成本。
-* **负载平衡。** 随着负载增加，可添加更多的工作进程以从队列中读取。 每条消息仅由一个辅助进程处理。 另外，可通过此基于拉取的负载平衡来以最合理的方式使用辅助计算机，即使这些辅助计算机具有不同的处理能力（因为它们将以其最大速率拉取消息）也是如此。 此模式通常称为 *使用者竞争* 模式。
+* **负载均衡。** 随着负载增加，可添加更多的工作进程以从队列中读取。 每条消息仅由一个辅助进程处理。 另外，可通过此基于拉取的负载均衡来以最合理的方式使用辅助计算机，即使这些辅助计算机具有不同的处理能力（因为它们将以其最大速率拉取消息）也是如此。 此模式通常称为 *使用者竞争* 模式。
   
   ![][2]
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 03/01/2017
 在开始开发 Azure 应用程序之前，需要获取工具并设置开发环境。
 
 1. 从 SDK [下载页](https://azure.microsoft.com/downloads/)安装用于 .NET 的 Azure SDK。
-2. 在“.NET”列中，单击要使用的 [Visual Studio](http://www.visualstudio.com) 版本。 本教程中的步骤使用 Visual Studio 2015。
+2. 在“.NET”列中，单击要使用的 [Visual Studio](http://www.visualstudio.com) 版本。 本教程中的步骤适用于 Visual Studio 2015，但也适用于 Visual Studio 2017。
 3. 当提示你是要运行还是保存安装程序时，单击“运行” 。
 4. 在“Web 平台安装程序”中，单击“安装”，然后继续安装。
 5. 安装完成后，你就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
@@ -78,7 +78,7 @@ ms.lasthandoff: 03/01/2017
 之后，你将添加代码，以便将项目提交到服务总线队列并显示有关队列的状态信息。
 
 ### <a name="create-the-project"></a>创建项目
-1. 使用管理员特权启动 Microsoft Visual Studio。 若要使用管理员特权启动 Visual Studio，请右键单击“Visual Studio”程序图标，然后单击“以管理员身份运行”。 Azure 计算模拟器（本文后面会讨论）要求使用管理员权限启动 Visual Studio。
+1. 使用管理员特权启动 Visual Studio：右键单击“Visual Studio”程序图标，然后单击“以管理员身份运行”。 Azure 计算模拟器（本文后面会讨论）要求使用管理员权限启动 Visual Studio。
    
    在 Visual Studio 的“文件”菜单中，单击“新建”，然后单击“项目”。
 2. 从“Visual C#”下的“已安装模板”中，单击“云”，然后单击“Azure 云服务”。 **MultiTierApp**。 。
@@ -98,7 +98,7 @@ ms.lasthandoff: 03/01/2017
     ![][16]
 7. 返回到“新建 ASP.NET 项目”对话框，单击“确定”以创建项目。
 8. 在“解决方案资源管理器”的“FrontendWebRole”项目中，右键单击“引用”，然后单击“管理 NuGet 包”。
-9. 单击“浏览”选项卡，然后搜索 `Microsoft Azure Service Bus`。 单击“安装” 并接受使用条款。
+9. 单击“浏览”选项卡，然后搜索 `Microsoft Azure Service Bus`。 搜索 **WindowsAzure.ServiceBus** 包，单击“安装”，并接受使用条款。
    
    ![][13]
    
@@ -362,7 +362,7 @@ ms.lasthandoff: 03/01/2017
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Service Bus 的详细信息，请参阅以下资源：  
 
-* [Azure 服务总线][sbmsdn]  
+* [Azure 服务总线文档][sbdocs]  
 * [服务总线服务页][sbacom]  
 * [如何使用服务总线队列][sbacomqhowto]  
 
@@ -370,7 +370,7 @@ ms.lasthandoff: 03/01/2017
 
 * [使用存储表、队列和 Blob 的 .NET 多层应用程序][mutitierstorage]  
 
-[0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
+[0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app.png
 [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
 [2]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
 [9]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
@@ -381,8 +381,8 @@ ms.lasthandoff: 03/01/2017
 [14]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-33.png
 [15]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-34.png
 [16]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-14.png
-[17]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-36.png
-[18]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-37.png
+[17]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app.png
+[18]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app2.png
 
 [19]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-38.png
 [20]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-39.png
@@ -391,7 +391,7 @@ ms.lasthandoff: 03/01/2017
 [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
 [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
-[sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx  
+[sbdocs]: /azure/service-bus-messaging/  
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36

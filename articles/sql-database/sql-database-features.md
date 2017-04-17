@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 03/03/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: e052109ff10f21c3a737f336479fe43fb54e500e
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 7dc5210c073a3130bfc9ffdbc9ce33e19ca5bc1a
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -42,7 +42,7 @@ Azure SQL 数据库中的每个数据库都与一个逻辑服务器相关联。 
 
 下面的表列出了 Azure SQL 数据库和 SQL Server 的主要功能，指定其支持能力，并提供了关于每个平台上该功能的详细信息的链接。 对于 Transact-SQL 功能，请参阅表中适用于该功能类别的链接。 有关不支持某些类型的功能的原因，另请参阅 [Azure SQL 数据库 Transact-SQL 差异](sql-database-transact-sql-information.md)来了解详细背景。
 
-我们会继续向 V12 添加功能。 因此，我们鼓励访问我们的针对 Azure 的服务更新网页并使用其筛选器：
+我们会继续向 Azure SQL 数据库添加功能。 因此，我们鼓励访问我们的针对 Azure 的服务更新网页并使用其筛选器：
 
 * 筛选为 [SQL 数据库服务](https://azure.microsoft.com/updates/?service=sql-database)。
 * 筛选为针对 SQL 数据库功能的正式发布版本 [(GA) 公告](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)。

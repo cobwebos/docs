@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/22/2017
+ms.date: 04/07/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 48d9d8ae97eb763932dd6a59a7df01ae92c92eff
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d9ba200dba2b1460a9d3c9ba07e2bca54c30b53a
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -33,7 +33,7 @@ StorSimple 虚拟设备可以在两种模型中使用：标准 8010（前身为 
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3（4 核，7 GB 内存） |Standard_DS3（4 核，14 GB 内存） |
 | **版本兼容性** |运行 pre-Update 2 或更高版本的设备版本 |运行 Update 2 或更高版本的设备版本 |
-| **上市区域** |所有 Azure 区域 |支持高级存储的所有 Azure 区域<br></br> 高级存储区域对应于 [Azure 服务（按区域）](https://azure.microsoft.com/en-us/regions/services)列表中“磁盘存储”所在的行。 |
+| **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的所有 Azure 区域<br></br> 请使用[此列表](https://azure.microsoft.com/en-us/regions/services)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在你的区域是否均可用。 |
 | **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br>了解如何[创建高级存储帐户](../storage/storage-premium-storage.md) |
 | **工作负荷指导** |在级别从备份中检索文件 |云开发和测试方案、低延迟、高性能工作负荷 <br></br>用于灾难恢复的辅助设备 |
 

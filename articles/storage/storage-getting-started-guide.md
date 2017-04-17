@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/23/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: a8e5d36d31aabc9226206f52d8543566c5218494
-ms.openlocfilehash: 6c833cd40439fef1fe9cca2591d36a6c49630579
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 6508b5a5d7d654954c68f9390c62a7871c1f032c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -75,7 +75,7 @@ ms.lasthandoff: 02/23/2017
 ## <a name="run-your-first-azure-storage-application-locally-against-the-azure-storage-emulator"></a>使用 Azure 存储模拟器在本地运行你的第一个 Azure 存储空间应用程序
 [Azure 存储模拟器](storage-use-emulator.md) 提供了一个针对开发目的模拟 Azure Blob、队列和表服务的本地环境。 你可以使用存储模拟器在本地测试你的应用程序，而无需创建 Azure 订阅或存储帐户，并且不会产生任何费用。
 
-若要尝试，让我们在 Visual Studio 中使用 Azure 快速启动示例项目之一创建一个简单的 Azure 存储空间应用程序。 本教程重点介绍 **Azure Blob 存储**、**Azure 表存储**和 **Azure 队列存储**示例项目：
+若要尝试，让我们在 Visual Studio 中使用 Azure 快速启动示例项目之一创建一个简单的 Azure 存储应用程序。 本教程重点介绍 **Azure Blob 存储**、**Azure 表存储**和 **Azure 队列存储**示例项目：
 
 1. 启动 Visual Studio。
 2. 在“文件”菜单上，单击“新建项目”

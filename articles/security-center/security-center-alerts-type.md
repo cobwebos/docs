@@ -12,12 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2017
+ms.date: 04/05/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 5da00d1d64b258773fa485baa804b283fde731c3
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 1b0d278c102497eca978d8cd3fa29cd2527f186c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -148,11 +148,63 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 ![可疑进程警报](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
 ### <a name="multiple-domain-accounts-queried"></a>已查询多个域帐户
-安全中心可以检测到查询域帐户的多次尝试，此类尝试通常由攻击者在网络侦测期间完成。 攻击者可以利用此技术来查询域，确定用户、域管理员帐户、属于域控制器的计算机，以及与其他域之间存在的可能的域信任关系。
+安全中心可以检测到查询 Active Directory 域帐户的多次尝试，此类尝试通常由攻击者在网络侦测期间完成。 攻击者可以利用此技术来查询域，确定用户、域管理员帐户、属于域控制器的计算机，以及与其他域之间存在的可能的域信任关系。
 
 下面是此类警报的示例：
 
 ![多域帐户警报](./media/security-center-alerts-type/security-center-alerts-type-fig7-new.png)
+
+### <a name="local-administrators-group-members-were-enumerated"></a>本地管理员组成员已枚举
+
+在 Windows Server 2016 和 Windows 10 中触发安全事件 4798 时，安全中心将触发一个警报。 这种情况发生在枚举本地管理员组的时候，该枚举通常是由攻击者在网络侦测期间执行的。 攻击者可以使用管理特权，利用此方法来查询用户的标识。
+
+下面是此类警报的示例：
+
+![本地管理员](./media/security-center-alerts-type/security-center-alerts-type-fig14-new.png)
+
+### <a name="anomalous-mix-of-upper-and-lower-case-characters"></a>大写和小写字符异常混合
+
+安全中心会在检测到命令行中混合使用了大写和小写字符时触发一个警报。 某些攻击者会使用此方法，将攻击指令隐藏在区分大小写或基于哈希的计算机规则中。
+
+下面是此类警报的示例：
+
+![异常组合](./media/security-center-alerts-type/security-center-alerts-type-fig15-new.png)
+
+### <a name="suspected-kerberos-golden-ticket-attack"></a>可疑的 Kerberos 黄金票证攻击
+
+攻击者可能会使用泄露的 [krbtgt](https://technet.microsoft.com/library/dn745899.aspx) 密钥来创建 Kerberos“黄金票证”，这样攻击者就可以随心所欲地模拟任何用户。 安全中心在检测到此类活动时会触发一个警报。
+
+> [!NOTE] 
+> 有关 Kerberos 黄金票证的详细信息，请阅读 [Windows 10 credential theft mitigation guide](http://download.microsoft.com/download/C/1/4/C14579CA-E564-4743-8B51-61C0882662AC/Windows%2010%20credential%20theft%20mitigation%20guide.docx)（Windows 10 防凭据偷窃指南）。
+
+下面是此类警报的示例：
+
+![黄金票证](./media/security-center-alerts-type/security-center-alerts-type-fig16-new.png)
+
+### <a name="suspicious-account-created"></a>创建的可疑帐户
+
+当某个创建的帐户十分类似现有的内置管理特权帐户时，安全中心会触发一个警报。 攻击者可能会使用此方法创建一个恶意帐户，目的是避免被人工验证发现。
+ 
+下面是此类警报的示例：
+
+![可疑帐户](./media/security-center-alerts-type/security-center-alerts-type-fig17-new.png)
+
+### <a name="suspicious-firewall-rule-created"></a>创建的可疑防火墙规则
+
+攻击者可能会尝试规避主机安全措施，其方法是创建自定义防火墙规则，允许恶意应用程序与命令和控件通信，或者使用受损的主机通过网络发起攻击。 如果检测到某个操作在可疑位置通过可执行文件创建了新的防火墙规则，安全中心就会触发一个警报。
+ 
+下面是此类警报的示例：
+
+![防火墙规则](./media/security-center-alerts-type/security-center-alerts-type-fig18-new.png)
+
+### <a name="suspicious-combination-of-hta-and-powershell"></a>HTA 和 PowerShell 的可疑组合
+
+如果检测到 Microsoft HTML 应用程序主机 (HTA) 正在启动 PowerShell 命令，安全中心就会触发一个警报。 攻击者使用此方法启动恶意的 PowerShell 脚本。
+ 
+下面是此类警报的示例：
+
+![HTA 和 PS](./media/security-center-alerts-type/security-center-alerts-type-fig19-new.png)
+
 
 ## <a name="network-analysis"></a>网络分析
 安全中心进行网络威胁检测的机制是自动收集 Azure IPFIX (Internet Protocol Flow Information Export) 流量中的安全信息。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。

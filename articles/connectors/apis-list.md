@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/27/2017
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: a469a6e29e07029b7eab4e80e132b9276c5b18df
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 53bb5d64e27458b4a88981bd20ea4236b31431ec
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -87,7 +87,7 @@ ms.lasthandoff: 04/04/2017
 
 ## <a name="custom-connectors-and-certification-for-microsoft-azure"></a>Microsoft Azure 的自定义连接器和认证
 
-想要创建自己的连接器，或者找不到所需的连接器？ 可以[扩展逻辑应用平台](../logic-apps/logic-apps-create-api-app.md)，并创建 API 应用来调用不是作为现成连接器提供的 API 或系统。 此外，你可以提交自己的 API 应用供 Microsoft Azure 认证，然后通过 Azure 发布这些应用。 详细了解如何使解决方案通过 [Microsoft Azure 认证](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)。
+若要调用的 API 运行自定义代码，或者无法作为连接器使用，可以将基于 REST 的 API 应用作为自定义连接器创建，以便[扩展逻辑应用平台](../logic-apps/logic-apps-create-api-app.md)。 若要将自定义 API 应用公开并使其可以在 Azure 中使用，请将提名的应用提交到 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)。
 
 ## <a name="get-help"></a>获取帮助
 
