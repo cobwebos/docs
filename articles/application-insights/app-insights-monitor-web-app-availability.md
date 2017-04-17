@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/13/2017
+ms.date: 04/06/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 153a97154faf65598141f321bcd33c4503fa30b0
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: cfe70aa09b21aa914e3705bf7969583c7a1bbd52
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -57,7 +57,7 @@ Web 测试有两种类型：
 
     **测试超时**：减少此值可以接收有关响应变慢的警报。 如果未在这段时间内收到站点的响应，则将测试视为失败。 如果选择了“分析依赖请求”，则必须在这段时间内收到所有图像、样式文件、脚本和其他依赖资源。
 
-    **HTTP 响应**：视为成功的返回状态代码。 代码&200; 指示返回了正常网页。
+    **HTTP 响应**：视为成功的返回状态代码。 代码 200 指示返回了正常网页。
 
     **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。
 * **警报** 。 某个位置的失败很可能是网络问题，而不是站点问题。 但是，可以将阈值更改为更敏感或更不敏感，也可以更改要将电子邮件发送给哪个人。
@@ -241,7 +241,10 @@ Web 测试插件提供时间参数化方式。
     这两个术语可以换用。
 * *如何在防火墙后面运行的内部服务器上使用可用性测试？*
 
-    请将防火墙配置为允许从 [Web 测试代理 IP 地址](app-insights-ip-addresses.md)发出的请求。
+    有两个可能的解决方案：
+    
+    * 请将防火墙配置为允许从[我们的 Web 测试代理 IP 地址](app-insights-ip-addresses.md)发出的传入请求。
+    * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 你的测试进程可以通过核心 SDK 包中的 [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果不会显示在可用性 Web 测试边栏选项卡中，但会作为可用性结果显示在分析、搜索和指标资源管理器中。
 * *上载多步骤 Web 测试失败*
 
     存在 300 K 大小限制。
@@ -260,10 +263,6 @@ Web 测试插件提供时间参数化方式。
 
     抱歉，不支持这种测试。
 
-## <a name="video"></a>视频
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Monitoring-Availability-with-Application-Insights/player]
->
->
 
 ## <a name="next"></a>后续步骤
 [搜索诊断日志][diagnostic]

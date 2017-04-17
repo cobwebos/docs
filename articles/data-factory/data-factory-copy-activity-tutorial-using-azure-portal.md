@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/14/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: a4658f1eee3cdd24b3da47b4c7319c61ea39cb34
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 079cb3e69954a9b02e26e005ad4bb1b7ef14c909
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -175,12 +175,12 @@ ms.lasthandoff: 03/24/2017
     ```   
     注意以下几点： 
    
-   * 数据集 **type** 设置为 **AzureBlob**。
-   * **linkedServiceName** 设置为 **AzureStorageLinkedService**。 已在步骤 2 中创建此链接服务。
-   * **folderPath** 设置为 **adftutorial** 容器。 也可以使用 **fileName** 属性指定文件夹中 Blob 的名称。 由于未指定 Blob 的名称，容器中所有 Blob 的数据被视为输入数据。  
-   * 格式 **type** 设置为 **TextFormat**
-   * 文本文件中有两个以逗号分隔 (**columnDelimiter**) 的字段 - **FirstName** 和 **LastName**    
-   * **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。 因此，数据工厂每小时在指定的 Blob 容器 (**adftutorial**) 的根文件夹中查找输入数据。 
+    - 数据集 **type** 设置为 **AzureBlob**。
+    - **linkedServiceName** 设置为 **AzureStorageLinkedService**。 已在步骤 2 中创建此链接服务。
+    - **folderPath** 设置为 **adftutorial** 容器。 也可以使用 **fileName** 属性指定文件夹中 Blob 的名称。 由于未指定 Blob 的名称，容器中所有 Blob 的数据被视为输入数据。
+    - 格式 **type** 设置为 **TextFormat**
+    - 文本文件中有两个以逗号分隔 (**columnDelimiter**) 的字段 - **FirstName** 和 **LastName**
+    - **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。 因此，数据工厂每小时在指定的 Blob 容器 (**adftutorial**) 的根文件夹中查找输入数据。 
      
      如果没有指定**输入**数据集的 **fileName**，则输入文件夹 (**folderPath**) 中的所有文件/Blob 都被视为输入。 如果在 JSON 中指定 fileName，则只有指定的文件/Blob 被视为输入。
      
@@ -240,11 +240,11 @@ ms.lasthandoff: 03/24/2017
     ```       
     注意以下几点： 
    
-   * 数据集 **type** 设置为 **AzureSQLTable**。
-   * **linkedServiceName** 设置为 **AzureSqlLinkedService**（已在步骤 2 中创建此链接服务）。
-   * **tablename** 设置为 **emp**。
-   * 数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
-   * **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。  数据工厂服务每隔一小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
+    - 数据集 **type** 设置为 **AzureSQLTable**。
+    - **linkedServiceName** 设置为 **AzureSqlLinkedService**（已在步骤 2 中创建此链接服务）。
+    - **tablename** 设置为 **emp**。
+    - 数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
+    - **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。  数据工厂服务每隔一小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
 3. 单击工具栏上的“部署”，创建并部署 **OutputDataset** 数据集。 确认树视图中显示了 **OutputDataset**。 
 
 > [!NOTE]
@@ -303,17 +303,17 @@ ms.lasthandoff: 03/24/2017
     
     注意以下几点：
    
-   * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
-   * 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。
-   * 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。
+    - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
+    - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。
+    - 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。
      
-     将 **start** 属性的值替换为当前日期，将 **end** 值替换为下一个日期。 可以仅指定日期部分，跳过日期时间的时间部分。 例如，“2016-02-03”等效于“2016-02-03T00:00:00Z”
+    将 **start** 属性的值替换为当前日期，将 **end** 值替换为下一个日期。 可以仅指定日期部分，跳过日期时间的时间部分。 例如，“2016-02-03”等效于“2016-02-03T00:00:00Z”
      
-     开始和结束日期时间必须采用 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。 
+    开始和结束日期时间必须采用 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。 
      
-     如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
+    如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
      
-     在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
+    在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
 3. 单击工具栏上的“部署”，创建并部署 **ADFTutorialPipeline**。 确认树视图中显示了该管道。 
 4. 现在，请单击“X”关闭“编辑器”边栏选项卡。再次单击“X”查看 **ADFTutorialDataFactory** 的“数据工厂”主页。
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/04/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 9a648ca8f91529bc5aaa7b8ffbcfddb40864f409
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 4b8627f3cdd13578f9b4c35297bf5d550dccfd07
+ms.lasthandoff: 04/06/2017
 
 
 ---
-# <a name="troubleshooting-you-cant-get-there-from-here-on-a-windows-device"></a>排查在 Windows 设备上无法切换不同位置的问题
+# <a name="you-cant-get-there-from-here-on-a-windows-device"></a>在 Windows 设备上无法切换位置
 
 在尝试访问组织的 SharePoint Online Intranet 或进行其他类似访问时，你可能会看到一个页面，指出“无法从此处转到该位置”。 之所以出现此页面，是因为管理员配置了条件访问策略，阻止在某些情况下访问组织的资源。 有时可能需要联系支持人员或管理员才能解决此问题，但有时你也可以自行尝试一些解决方法。
 

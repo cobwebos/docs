@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2e8ff5304d4ccc63f92567b22c0508e3fc7b9bcf
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 71903120a77aa4d8fd58ea600488d3464570b0cb
+ms.lasthandoff: 04/06/2017
 
 ---
 # <a name="deploy-a-docker-container-hosting-solution-using-the-azure-portal"></a>使用 Azure 门户部署 Docker 容器托管解决方案
@@ -36,7 +36,11 @@ ms.lasthandoff: 04/03/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：如果没有订阅，可以注册[免费试用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)。 
+* **Azure 订阅**：如果没有订阅，可以注册[免费试用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)。 对于较大的群集，请考虑即用即付订阅或其他购买选项。
+
+    > [!NOTE]
+    > 你的 Azure 订阅使用量和[资源配额](../azure-subscription-service-limits.md)（例如核心配额）可能会限制所部署群集的大小。 若要请求增加配额，可免费建立[联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。
+    >
 
 * **SSH RSA 公钥**：通过门户或某个 Azure 快速入门模板进行部署时需提供公钥，以便针对 Azure 容器服务虚拟机进行身份验证。 若要创建安全外壳 (SSH) RSA 密钥，请参阅 [OS X 和 Linux](../virtual-machines/linux/mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/linux/ssh-from-windows.md) 指南。 
 
@@ -109,7 +113,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="create-a-cluster-by-using-a-quickstart-template"></a>使用快速入门模板创建群集
 Azure 快速入门模板适用于在 Azure 容器服务中部署群集。 可修改提供的快速入门模板，包含其他或高级 Azure 配置。 若要使用 Azure 快速入门模板创建 Azure 容器服务群集，需要 Azure 订阅。 如果没有该订阅，请注册[免费试用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)。 
 
-请按以下步骤使用模板和 Azure CLI 2.0 部署群集（参见[安装和设置说明](/cli/azure/install-az-cli2.md)）。
+请按以下步骤使用模板和 Azure CLI 2.0 部署群集（参见[安装和设置说明](/cli/azure/install-az-cli2)）。
 
 > [!NOTE] 
 > 如果使用 Windows 系统，可以通过 Azure PowerShell 按照类似步骤部署模板。 请参阅本部分后面的步骤。 也可通过[门户](../azure-resource-manager/resource-group-template-deploy-portal.md)或其他方法部署模板。

@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 02e30f7fcbe0782528460b542a75f1d11c7286a1
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 076a85b7b965f163255e919eb61700aef0d1fc18
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -70,7 +70,7 @@ ms.lasthandoff: 03/28/2017
 
     对于“身份验证”设置，请确保指定“无身份验证”。 根据你的 Visual Studio 版本，可能会默认设置为其他。 若要对其进行更改，请单击“更改身份验证”，然后选择“无身份验证”。
 
-    如果使用的是 Visual Studio 2015，请清除“在云中托管”复选框。 本教程的后续步骤介绍了[预配 Azure 资源](#provision-the-azure-resources)以及[将应用程序发布到 Azure](#publish-the-application-to-azure)。 勾选“在云中托管”，即可通过 Visual Studio 预配应用服务 Web 应用，如需此方面的示例，请参阅[配合 ASP.NET 和 Visual Studio 使用 Azure 应用服务中的 Web 应用入门](../app-service-web/web-sites-dotnet-get-started.md)。
+    如果使用的是 Visual Studio 2015，请清除“在云中托管”复选框。 本教程的后续步骤介绍了[预配 Azure 资源](#provision-the-azure-resources)以及[将应用程序发布到 Azure](#publish-the-application-to-azure)。 勾选“在云中托管”，即可通过 Visual Studio 预配应用服务 Web 应用，如需此方面的示例，请参阅[配合 ASP.NET 和 Visual Studio 使用 Azure 应用服务中的 Web 应用入门](../app-service-web/app-service-web-get-started-dotnet.md)。
    
     ![选择项目模板][cache-select-template]
 4. 单击“确定”以创建该项目  。
@@ -86,7 +86,7 @@ ms.lasthandoff: 03/28/2017
 ### <a name="add-the-entity-framework-nuget-package"></a>添加实体框架 NuGet 包
 
 1. 在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”。
-2. 从 `Package Manager Console` 窗口运行以下命令。
+2. 在“包管理器控制台”窗口中，运行以下命令。
     
     ```
     Install-Package EntityFramework

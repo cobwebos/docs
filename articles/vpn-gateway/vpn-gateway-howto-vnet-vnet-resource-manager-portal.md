@@ -13,43 +13,39 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2017
+ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c80ddbaf8c2c84735564e514ddaf4308c4aff303
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 4133e2e90f51d141044f2ac064c60df1263b498e
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="configure-a-vnet-to-vnet-connection-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet 连接
+
+将一个虚拟网络连接到另一个虚拟网络（VNet 到 VNet）类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。 甚至可以将 VNet 到 VNet 通信与多站点连接配置组合使用。 这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑。
+
+![v2v 示意图](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
+
+本文将逐步引导用户通过使用 VPN 网关和 Azure 门户在 Resource Manager 部署模型中创建 VNet 到 VNet 连接。 使用 Azure 门户连接虚拟网络时，VNet 必须属于同一订阅。 如果虚拟网络属于不同的订阅，仍然可以通过使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 步骤连接它们。
+
+[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)] 若要使用其他部署模型在不同的部署模型之间创建 VNet 到 VNet 连接，或者要使用其他部署工具来进行该操作，可从下面的项目下拉列表中选择一个选项：
+
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [经典 - Azure 门户](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [经典 - 经典门户](virtual-networks-configure-vnet-to-vnet-connection.md)
-> 
-> 
-
-本文将逐步引导用户通过使用 VPN 网关和 Azure 门户在 Resource Manager 部署模型中创建 VNet 到 VNet 连接。
-
-使用 Azure 门户连接虚拟网络时，VNet 必须属于同一订阅。 如果虚拟网络属于不同的订阅，仍然可以通过使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 步骤连接它们。
-
-![v2v 示意图](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
-
-### <a name="deployment-models-and-methods-for-vnet-to-vnet-connections"></a>VNet 到 VNet 连接的部署模型和方法
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
-
-下表显示了 VNet 到 VNet 配置的当前可用部署模型和方法。 当有配置步骤相关的文章发布时，我们会直接从此表格链接到该文章。
-
-[!INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
-
-**VNet 对等互连**
+> * [连接不同的部署模型 - Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [连接不同的部署模型 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
+>
+>
 
 [!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
 
+
 ## <a name="about-vnet-to-vnet-connections"></a>关于 VNet 到 VNet 的连接
-将一个虚拟网络连接到另一个虚拟网络（VNet 到 VNet）类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 Azure VPN 网关来提供使用 IPsec/IKE 的安全隧道。 连接的 VNet 可位于不同的区域或不同的订阅中。
+将一个虚拟网络连接到另一个虚拟网络（VNet 到 VNet）类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 Azure VPN 网关来提供使用 IPsec/IKE 的安全隧道。 连接的 VNet 可位于不同的区域或不同的订阅中。 请注意，如果 VNet 属于不同的订阅，则不能在门户中创建该连接。 可以使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)。
 
 你甚至可以将 VNet 到 VNet 通信与多站点配置组合使用。 这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑，如下图所示：
 
@@ -144,7 +140,7 @@ VNet 到 VNet 连接不需要 DNS。 但是，如果希望对部署到虚拟网�
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>5.创建虚拟网络网关
-在此步骤中，为 VNet 创建虚拟网络网关。 此步骤最多需要 45 分钟才能完成。 如果正在练习创建此配置，可以参考[示例设置](#values)。
+在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。 如果正在练习创建此配置，可以参考[示例设置](#values)。
 
 ### <a name="to-create-a-virtual-network-gateway"></a>创建虚拟网络网关
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
@@ -153,7 +149,7 @@ VNet 到 VNet 连接不需要 DNS。 但是，如果希望对部署到虚拟网�
 配置 TestVNet1 后，请通过重复上述步骤创建 TestVNet4，并将值替换为 TestVNet4 的值。 无需等待 TestVNet1 的虚拟网络网关完成创建即可配置 TestVNet4。 如果使用自己的值，请确保地址空间不与任何想要连接的 VNet 重叠。
 
 ## <a name="TestVNet1Connection"></a>7.配置 TestVNet1 连接
-TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创建虚拟网络网关连接。 在本部分中，将创建从 VNet1 到 VNet4 的连接。
+TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创建虚拟网络网关连接。 在本部分中，将创建从 VNet1 到 VNet4 的连接。 这些步骤仅适用于同一订阅中的 VNet。 如果 VNet 属于不同的订阅，则必须使用 PowerShell 进行连接。 请参阅 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 一文。
 
 1. 在“所有资源”中，导航到你的 VNet 的虚拟网络网关。 例如，**TestVNet1GW**。 单击“TestVNet1GW”打开“虚拟网络网关”边栏选项卡。
    

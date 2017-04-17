@@ -12,7 +12,7 @@
     ```
 2. 将以下中继`constants`添加到 `listener.js`，用于保存混合连接的连接详细信息。 将括号中的占位符替换为在创建混合连接时获得的相应值。
    
-   1. `const ns` - 中继命名空间
+   1. `const ns` - 中继命名空间（使用 FQDN - 例如 `{namespace}.servicebus.windows.net`）
    2. `const path` - 混合连接的名称
    3. `const keyrule` - SAS 密钥的名称
    4. `const key` - SAS 密钥值
@@ -71,9 +71,4 @@
         console.log('error' + err);
     });
     ```
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 
