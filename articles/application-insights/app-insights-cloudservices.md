@@ -131,7 +131,7 @@ ms.lasthandoff: 03/16/2017
     （在 .config 文件中，可以看到消息询问将检测密钥放到该处。 但是，对于云应用程序，最好是通过 .cscfg 文件设置检测密钥。 这可以确保在门户中正确识别角色。）
 
 #### <a name="run-and-publish-the-app"></a>运行并发布应用
-运行应用并登录到 Azure。 打开创建的 Application Insights 资源，此时可以看到“搜索”中显示了每个数据点，并且“指标资源管理器”中显示了聚合数据。[](app-insights-diagnostic-search.md)[](app-insights-metrics-explorer.md) 
+运行应用并登录到 Azure。 打开创建的 Application Insights 资源，此时可以看到[搜索](app-insights-diagnostic-search.md)中显示了每个数据点，并且[指标资源管理器](app-insights-metrics-explorer.md)中显示了聚合数据。 
 
 添加更多遥测数据 - 请参阅以下部分 - 然后发布应用以获取实时诊断和用法反馈。 
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 03/16/2017
 * Windows 事件日志显示为跟踪和自定义事件。
 * 应用程序日志、ETW 日志和所有诊断基础结构日志均显示为跟踪。
 
-若要查看性能计数器和事件计数，请打开“指标资源管理器”并添加新图表：[](app-insights-metrics-explorer.md)
+若要查看性能计数器和事件计数，请打开[指标资源管理器](app-insights-metrics-explorer.md)并添加新图表：
 
 ![Azure 诊断数据](./media/app-insights-cloudservices/23-wad.png)
 
