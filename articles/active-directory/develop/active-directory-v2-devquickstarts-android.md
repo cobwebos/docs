@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: brandwe
+ms.author: xerners
 translationtype: Human Translation
 ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
 ms.openlocfilehash: 2dfe58c032888ca34e905f4e549fcc4d6e36d324
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -188,10 +189,5 @@ git@github.com:kalemontes/OIDCAndroidLib.git
 
 ## <a name="get-security-updates-for-our-product"></a>获取产品的安全更新
 建议访问[安全技术中心](https://technet.microsoft.com/security/dd252948)并订阅“安全公告通知”来获取有关安全事件的通知。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
