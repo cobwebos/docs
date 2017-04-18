@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 692a0086bd8e0dd6b57de1db0f4e2a9b4f2f0bda
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 6e1a1f522b9632c7d162d36ad5baa23d6130f8b6
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -29,11 +30,6 @@ Azure 监视器是一款平台服务，提供了用于监视 Azure 资源的单�
 2. 单击“监视器”选项打开“监视器”边栏选项卡。 此边栏选项卡将所有监视设置和数据汇聚到一个合并视图中。 首次打开的是“活动日志”部分。
    
     ![监视器边栏选项卡导航](./media/monitoring-get-started/monitor-blade-nav.png)
-   
-   > [!WARNING]
-   > 只有加入这些功能的个人预览版的用户才可查看上述显示的“服务通知”和“通知组”选项。
-   > 
-   > 
    
     Azure 监视器有 3 个基本类别的监视数据：**活动日志**、**度量**和**诊断日志**。
 3. 单击“活动日志”，确保显示活动日志部分。
@@ -88,7 +84,7 @@ Azure 监视器是一款平台服务，提供了用于监视 Azure 资源的单�
     
     ![面向公众的警报边栏选项卡](./media/monitoring-get-started/monitor-alerts-nopp.png)
     
-    可在此处管理 Azure 资源上的所有[**警报**](monitoring-overview-alerts.md)。 这包括与度量、活动日志事件（个人预览版）、Application Insights Web 测试（位置）和 Application Insights 主动诊断相关的警报。 警报还会触发电子邮件发送，或者将 HTTP POST 发送到 webhook URL。
+    可在此处管理 Azure 资源上的所有[**警报**](monitoring-overview-alerts.md)。 这些警报包括与指标、活动日志事件、Application Insights Web 测试（位置）和 Application Insights 主动诊断相关的警报。 警报还会触发电子邮件发送，或者将 HTTP POST 发送到 webhook URL。
 13. 单击“添加度量警报”以创建警报。
     
     ![添加指标警报](./media/monitoring-get-started/monitor-alerts-add.png)
@@ -103,10 +99,5 @@ Azure 监视器是一款平台服务，提供了用于监视 Azure 资源的单�
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [Azure 监视器概述](monitoring-overview.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
