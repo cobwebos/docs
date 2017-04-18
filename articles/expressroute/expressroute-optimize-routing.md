@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/24/2017
+ms.date: 04/06/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: f03099391600bc3b918eb3a8c866c16a02052b7a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: c3a85b9445d69330c3f6c7d298169efddb6ecca0
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -67,7 +67,7 @@ ms.lasthandoff: 03/25/2017
 ![ExpressRoute 案例 3 - 虚拟网络之间的路由欠佳](./media/expressroute-optimize-routing/expressroute-case3-problem.png)
 
 ### <a name="solution-assign-a-high-weight-to-local-connection"></a>解决方法：将高权重分配给本地连接
-解决方法很简单。 由于你知道 VNet 和线路的位置，因此可以告诉我们，每个 VNet 应该优先使用哪条路径。 具体而言，在本示例中，可向本地连接分配一个比远程连接更高的权重。 当 VNet 收到多个连接上的另一个 VNet 的前缀时，将优先选择具有最高权重的连接将流量发送到该前缀。
+解决方法很简单。 由于你知道 VNet 和线路的位置，因此可以告诉我们，每个 VNet 应该优先使用哪条路径。 具体而言，在本示例中，可向本地连接分配一个比远程连接更高的权重（请参阅[此处](expressroute-howto-linkvnet-arm.md#modify-a-virtual-network-connection)的配置示例）。 当 VNet 收到多个连接上的另一个 VNet 的前缀时，将优先选择具有最高权重的连接将流量发送到该前缀。
 
 ![ExpressRoute 案例 3 解决方法 - 将高权重分配给本地连接](./media/expressroute-optimize-routing/expressroute-case3-solution.png)
 
@@ -75,3 +75,4 @@ ms.lasthandoff: 03/25/2017
 > 如果有多条 ExpressRoute 线路，也可以影响从 VNet 到本地网络的路由：配置连接的权重而不是应用 AS PATH 附加（上面第二种方案中所述的技术）。 对于每个前缀，我们在确定如何发送流量时，始终会查看 AS Path 长度前面的连接权重。
 >
 >
+

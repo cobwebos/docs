@@ -13,16 +13,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 9df9d10d436ac56c881c9547f3095b630d4cb97f
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ff70484dff03a44d23d2cf34ce115fd57c4b0390
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal"></a>使用经典门户创建具有站点到站点连接的 VNet
+
+站点到站点 (S2S) VPN 网关连接是通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道建立的连接。 此类型的连接要求位于本地的 VPN 设备分配有一个公共 IP 地址，并且不位于 NAT 后面。 站点到站点连接可以用于跨界和混合配置。
+
+![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
+
+本文介绍了如何使用经典部署模型和经典门户创建虚拟网络和到本地网络的站点到站点 VPN 网关连接。 站点到站点连接可以用于跨界和混合配置。 也可为 Resource Manager 部署模型创建该配置，只需从以下列表中选择另一选项即可：
+
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -31,22 +38,14 @@ ms.lasthandoff: 03/17/2017
 >
 >
 
-本文介绍了如何使用经典部署模型和经典门户创建虚拟网络和到本地网络的站点到站点 VPN 网关连接。 站点到站点连接可以用于跨界和混合配置。
-
-![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
-
-### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>用于站点到站点连接的部署模型和方法
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
-
-下表显示了站点到站点配置当前可用的部署模型和方法。 当有配置步骤相关的文章发布时，我们会直接从此表格链接到该文章。
-
-[!INCLUDE [vpn-gateway-table-site-to-site-table](../../includes/vpn-gateway-table-site-to-site-include.md)]
-
 #### <a name="additional-configurations"></a>其他配置
 如果想要将多个 VNet 连接到一起，请参阅 [为经典部署模型配置 VNet 到 VNet 连接](virtual-networks-configure-vnet-to-vnet-connection.md)。 如果想要向已具有连接的 VNet 添加站点到站点连接，请参阅[使用现有 VPN 网关连接将 S2S 连接添加到 VNet](vpn-gateway-multi-site.md)。
 
 ## <a name="before-you-begin"></a>开始之前
-在开始配置之前，请确认具有以下各项。
+
+[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
+
+在开始配置之前，请确认具有以下各项：
 
 * 一台兼容的 VPN 设备和能够对其进行配置的人员。 请参阅 [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 如果不熟悉 VPN 设备的配置，或者不熟悉本地网络配置中的 IP 地址范围，则需咨询能够为你提供此类详细信息的人员。
 * 一个用于 VPN 设备的面向外部的公共 IP 地址。 此 IP 地址不得位于 NAT 之后。

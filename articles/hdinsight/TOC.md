@@ -5,21 +5,24 @@
 ## [Apache Spark](hdinsight-apache-spark-overview.md)
 ## [HBase](hdinsight-hbase-overview.md)
 ## [Apache Storm](hdinsight-storm-overview.md)
-## [已加入域的 HDInsight 预览版](hdinsight-domain-joined-introduction.md)
-## [Kafka 预览版](hdinsight-apache-kafka-introduction.md)
+## [Kafka（预览版）](hdinsight-apache-kafka-introduction.md)
+## [已加入域的 HDInsight 群集（预览版）](hdinsight-domain-joined-introduction.md)
+## 发行说明
+### [最近](hdinsight-release-notes.md)
+### [存档](hdinsight-release-notes-archive.md)
 
 # 入门
 ## [Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [从 R Server 开始](hdinsight-hadoop-r-server-get-started.md)
 ## [Spark 入门](hdinsight-apache-spark-jupyter-spark-sql.md)
+## [从 R Server 开始](hdinsight-hadoop-r-server-get-started.md)
 ## [HBase 和 NoSQL 入门](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm 入门](hdinsight-apache-storm-tutorial-get-started-linux.md)
-## [交互式 Hive 预览版入门](hdinsight-hadoop-use-interactive-hive.md)
-## [Kafka 预览版入门](hdinsight-apache-kafka-get-started.md)
+## [Interactive Hive（预览版）入门](hdinsight-hadoop-use-interactive-hive.md)
+## [Kafka（预览版）入门](hdinsight-apache-kafka-get-started.md)
 ## [Hadoop 沙盒](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake 工具与 Hortonworks 沙盒](hdinsight-hadoop-emulator-visual-studio.md)
 ## [适用于 Visual Studio 的工具](hdinsight-hadoop-visual-studio-tools-get-started.md)
-## [使用 Blob 存储](hdinsight-hadoop-use-blob-storage.md)
+## [HDInsight 存储选项](hdinsight-hadoop-use-blob-storage.md)
 
 # 如何
 ## 使用 Hadoop 执行批处理查询
@@ -35,17 +38,17 @@
 #### [使用查询控制台](hdinsight-hadoop-use-hive-query-console.md)
 ### [将 Java UDF 与 Hive 配合使用](hdinsight-hadoop-hive-java-udf.md)
 ### [将 MapReduce 与 Hadoop 配合使用](hdinsight-use-mapreduce.md)
-#### [使用远程桌面](hdinsight-hadoop-use-mapreduce-remote-desktop.md)
 #### [使用 SSH](hdinsight-hadoop-use-mapreduce-ssh.md)
 #### [使用 cURL](hdinsight-hadoop-use-mapreduce-curl.md)
 #### [使用 PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md)
+#### [使用远程桌面](hdinsight-hadoop-use-mapreduce-remote-desktop.md)
 ### [运行 MapReduce 示例](hdinsight-hadoop-run-samples-linux.md)
 ### [将 Pig 与 Hadoop 配合使用](hdinsight-use-pig.md)
-#### [使用远程桌面](hdinsight-hadoop-use-pig-remote-desktop.md)
 #### [使用 SSH 和 Pig](hdinsight-hadoop-use-pig-ssh.md)
 #### [使用 PowerShell](hdinsight-hadoop-use-pig-powershell.md)
 #### [使用 .NET SDK](hdinsight-hadoop-use-pig-dotnet-sdk.md)
 #### [使用 cURL](hdinsight-hadoop-use-pig-curl.md)
+#### [使用远程桌面](hdinsight-hadoop-use-pig-remote-desktop.md)
 ### [将 DataFu 与 Pig 配合使用](hdinsight-hadoop-use-pig-datafu-udf.md)
 ### [按需群集](hdinsight-hadoop-create-linux-clusters-adf.md)
 ### [提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)
@@ -58,8 +61,8 @@
 ### [使用 Data Lake Store](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [使用 BI 工具](hdinsight-apache-spark-use-bi-tools.md)
 ### [创建独立应用](hdinsight-apache-spark-create-standalone-application.md)
-### [使用 Eclipse 开发应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
-### [使用 IntelliJ 开发应用](hdinsight-apache-spark-intellij-tool-plugin.md)
+### [使用 Eclipse 创建应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
+### [使用 IntelliJ 创建应用](hdinsight-apache-spark-intellij-tool-plugin.md)
 ### [处理流事件](hdinsight-apache-spark-eventhub-streaming.md)
 ### [预测 HVAC 性能](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [预测食品检测结果](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
@@ -97,11 +100,11 @@
 #### [处理车辆传感器数据](hdinsight-storm-iot-eventhub-documentdb.md)
 #### [关联各个时间的事件](hdinsight-storm-correlation-topology.md)
 #### [使用 Python 开发拓扑](hdinsight-storm-develop-python-topology.md)
-## 使用已加入域的 HDInsight 预览版
+## 使用已加入域的 HDInsight（预览版）
 ### [配置](hdinsight-domain-joined-configure.md)
 ### [管理](hdinsight-domain-joined-manage.md)
 ### [配置 Hive 策略](hdinsight-domain-joined-run-hive.md)
-## 使用 Kafka 预览版
+## 使用 Kafka（预览版）
 ### [复制 Kafka 数据](hdinsight-apache-kafka-mirroring.md)
 ### [与 Spark 配合使用](hdinsight-apache-spark-with-kafka.md)
 ### [与 Storm 配合使用](hdinsight-apache-storm-with-kafka.md)
@@ -175,7 +178,6 @@
 ### [为 HDInsight 群集修补 OS](hdinsight-os-patching.md)
 ## 故障排除
 ### [适用于 Linux 的提示](hdinsight-hadoop-linux-information.md)
-### [发行说明](hdinsight-release-notes.md)
 ### [分析 HDInsight 日志](hdinsight-debug-jobs.md)
 ### [使用 YARN 日志调试应用](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 ### [启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

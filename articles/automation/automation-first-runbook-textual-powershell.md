@@ -48,7 +48,7 @@ ms.lasthandoff: 03/27/2017
 2. 单击“Runbook”磁贴打开 Runbook 的列表。<br><br> ![RunbooksControl](media/automation-first-runbook-textual-powershell/runbooks-control-tiles.png)  
 3. 通过单击“添加 Runbook”按钮，然后单击“创建新 Runbook”，创建一个新 Runbook。
 4. 将该 Runbook 命名为 *MyFirstRunbook-PowerShell*。
-5. 在本例中，我们将要创建一个 PowerShell Runbook，因此请选择“Powershell”作为“Runbook 类型”[](automation-runbook-types.md#powershell-runbooks)。<br><br> ![Runbook 类型](media/automation-first-runbook-textual-powershell/automation-runbook-type.png)  
+5. 在本例中，我们将要创建一个 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks)，因此请选择“Powershell”作为“Runbook 类型”。<br><br> ![Runbook 类型](media/automation-first-runbook-textual-powershell/automation-runbook-type.png)  
 6. 单击“创建”以创建 Runbook 并打开文本编辑器  。
 
 ## <a name="step-2---add-code-to-the-runbook"></a>步骤 2 - 将代码添加到 Runbook

@@ -17,9 +17,9 @@ ms.date: 3/13/2017
 ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: a2452b95c9355957b10477a6e457000f0eba6a9c
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 2e981f0f45bc5b338937839b74114e12db960927
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -90,9 +90,9 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | 组件 | Linux（Azure 认可）支持 |
 | --- | --- |
 | Azure 备份 (MARS) 代理 |否（仅限基于 Windows 的代理） |
-| System Center DPM |文件一致性备份仅支持 Hyper-V<br/> （不适用于 Azure VM） |
-| Azure 备份服务器 |文件一致性备份仅支持 Hyper-V<br/> （不适用于 Azure VM） |
-| Azure IaaS VM 备份 |是（应用程序一致性备份，使用[前脚本和后脚本框架](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)） |
+| System Center DPM |在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/> （不适用于 Azure VM）<br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原 |
+| Azure 备份服务器 |在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/> （不适用于 Azure VM）<br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原 |
+| Azure IaaS VM 备份 |应用程序一致性备份，使用[前脚本和后脚本框架](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)<br/> [精细文件恢复](backup-azure-restore-files-from-vm.md)<br/> [还原所有 VM 磁盘](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-backed-up-disks)<br/> [VM 还原](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-new-vm-from-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>结合使用高级存储 VM 和 Azure 备份
 Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储的详细信息，请参阅[高级存储：Azure 虚拟机工作负荷的高性能存储](../storage/storage-premium-storage.md)一文。

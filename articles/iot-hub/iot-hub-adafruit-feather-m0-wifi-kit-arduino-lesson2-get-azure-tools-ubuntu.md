@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "azure cli, iot 云服务, arduino 云"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: bb5cb602-7292-4772-ac90-c0b52ebc8340
 ms.service: iot-hub
 ms.devlang: arduino

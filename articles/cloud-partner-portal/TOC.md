@@ -9,6 +9,7 @@
 ## 管理虚拟机
 ### [创建虚拟机产品/服务](./cloud-partner-portal-publish-virtual-machine.md)
 #### [先决条件](./cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm)
+#### [Microsoft 开发人员帐户注册](./cloud-partner-portal-dev-center-accounts-registration.md)
 #### [创建新的 VM 产品/服务](./cloud-partner-portal-publish-virtual-machine.md#how-to-create-a-new-vm-offer)
 #### [产品/服务设置表单](./cloud-partner-portal-publish-virtual-machine.md#how-to-fill-out-the-offer-settings-form)
 #### [SKU 表单](./cloud-partner-portal-publish-virtual-machine.md#how-to-create-skus)
@@ -21,6 +22,7 @@
 ### [更新现有产品/服务](./cloud-partner-portal-update-existing-offer.md)
 ### [删除 VM 产品/服务/SKU](./cloud-partner-portal-delete-an-offer.md)
 ### [迁移到云合作伙伴门户](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+## [Azure 应用商店卖家指南](./cloud-partner-portal-seller-guide.md)
 
 ## [市场营销潜在客户管理](./cloud-partner-portal-marketing-lead-management.md)
 ### [Azure 表](./cloud-partner-portal-lead-management-instructions-azure-table.md)

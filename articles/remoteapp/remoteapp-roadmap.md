@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4bfc5ac853833b8e51e7e3a556ed6208f22884d3
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 9e9f865470f25ec6d8e43ffa042315db79959789
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="whats-coming-in-azure-remoteapp"></a>Azure RemoteApp 中即将推出的功能
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -52,10 +53,5 @@ ms.openlocfilehash: 4bfc5ac853833b8e51e7e3a556ed6208f22884d3
 * 使用情况指标仪表板
 * 通过使用 CSV 文件配置大量用户
 * 在澳大利亚数据中心的可用性
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

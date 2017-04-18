@@ -10,13 +10,13 @@ ms.service: azure-portal
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2017
+ms.topic: get-started-article
+ms.date: 03/30/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: d7a8d669e75991f6707641e4ce53c9b63d04853c
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 8d9d39d63209b8ab6884ddeff569687b55591f95
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -52,6 +52,8 @@ ms.lasthandoff: 03/16/2017
 Application Insights 可以通过将 SDK 安装到应用中来提供更详细的遥测。 具体而言，可以收集跟踪日志，[编写自定义遥测](app-insights-api-custom-events-metrics.md)，以及获取更详细的异常报告。
 
 1. **在 Visual Studio 中**（2013 Update 2 或更高版本），为项目配置 Application Insights。
+
+    右键单击 Web 项目，然后选择“添加”>“Application Insights”或“配置 Application Insights”。
    
     ![右键单击 Web 项目，然后选择“添加或配置 Application Insights”](./media/app-insights-azure-web-apps/03-add.png)
    
@@ -91,11 +93,17 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 
 若要针对遥测数据执行更强大的搜索，请使用[分析查询语言](app-insights-analytics-tour.md)。
 
+## <a name="more-telemetry"></a>其他遥测数据
+
+* [网页加载数据](app-insights-javascript.md)
+* [自定义遥测](app-insights-api-custom-events-metrics.md)
+
 ## <a name="video"></a>视频
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>后续步骤
+* [在实时应用上运行探查器](app-insights-profiler.md)。
 * [将 Azure 诊断配置为](app-insights-azure-diagnostics.md)向 Application Insights 发送数据。
 * [监视服务运行状况指标](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且做出快速响应。
 * 每当操作事件发生或指标超过阈值时[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。

@@ -25,7 +25,7 @@ NuGet 程序包会给客户端应用程序下载并添加所需的程序集引�
 > 
 > 
 
-也可安装 StackExchange.Redis NuGet 包，方法是：依次单击“工具”菜单中的“NuGet 包管理器”、“包管理器控制台”，然后在`Package Manager Console`窗口中运行以下命令。
+也可安装 StackExchange.Redis NuGet 包，方法是：依次单击“工具”菜单中的“NuGet 包管理器”、“包管理器控制台”，然后在“包管理器控制台”窗口中运行以下命令。
     
 ```
 Install-Package StackExchange.Redis

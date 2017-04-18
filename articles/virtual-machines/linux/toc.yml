@@ -39,6 +39,8 @@
     href: azure-vm-network-overview.md
   - name: "VM 规模集"
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
+  - name: "实例元数据服务" 
+    href: ../virtual-machines-instancemetadataservice-overview.md
   - name: "容器"
     href: containers.md
   - name: "资源管理器"

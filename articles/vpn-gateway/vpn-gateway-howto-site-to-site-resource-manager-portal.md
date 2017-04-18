@@ -13,16 +13,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/23/2017
+ms.date: 04/04/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 80939bb48c29ba39e2d347cb80d6169d79329cfc
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: d6f4caebeeced1286f24dd5fcb4f5fc7d8591785
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
+
+站点到站点 (S2S) VPN 网关连接是通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道建立的连接。 此类型的连接要求位于本地的 VPN 设备分配有一个公共 IP 地址，并且不位于 NAT 后面。 站点到站点连接可以用于跨界和混合配置。
+
+![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
+
+本文逐步讲解如何使用 Azure Resource Manager 部署模型和 Azure 门户创建一个虚拟网络和一个连接到本地网络的站点到站点 VPN 网关连接。 也可使用不同的部署工具创建该配置，而如果使用的是经典部署模型，则只需从以下列表中选择另一选项即可：
+
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -32,23 +39,13 @@ ms.lasthandoff: 03/25/2017
 >
 
 
-站点到站点 (S2S) VPN 网关连接是通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道建立的连接。 此类型的连接要求位于本地的 VPN 设备分配有一个公共 IP 地址，并且不位于 NAT 后面。 站点到站点连接可以用于跨界和混合配置。
-
-本文逐步讲解如何使用 Azure Resource Manager 部署模型和 Azure 门户创建一个虚拟网络和一个连接到本地网络的站点到站点 VPN 网关连接。 
-
-![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
-
-### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>用于站点到站点连接的部署模型和方法
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
-
-下表显示了站点到站点配置当前可用的部署模型和方法。 当有配置步骤相关的文章发布时，我们会直接从此表格链接到该文章。
-
-[!INCLUDE [site-to-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
-
 #### <a name="additional-configurations"></a>其他配置
 如果你想要将多个 VNet 连接到一起，但又不想创建连接到本地位置的连接，则请参阅 [配置 VNet 到 VNet 连接](vpn-gateway-vnet-vnet-rm-ps.md)。 如果想要向已具有连接的 VNet 添加站点到站点连接，请参阅[使用现有 VPN 网关连接将 S2S 连接添加到 VNet](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。
 
 ## <a name="before-you-begin"></a>开始之前
+
+[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
+
 在开始配置之前，请确认你具有以下各项：
 
 * 一台兼容的 VPN 设备和能够对其进行配置的人员。 请参阅 [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
@@ -88,7 +85,7 @@ ms.lasthandoff: 03/25/2017
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="gatewaysubnet"></a>3.创建网关子网
-必须为 VPN 网关创建一个网关子网。 网关子网包含 VPN 网关服务将使用的 IP 地址。 在可能情况下，请使用 CIDR 块 /28 或 /27 创建网关子网。 这样可确保你有足够的 IP 地址来应对未来的网关配置需求。
+必须为 VPN 网关创建一个网关子网。 网关子网包含 VPN 网关服务使用的 IP 地址。 在可能情况下，请使用 CIDR 块 /28 或 /27 创建网关子网。 这样可确保你有足够的 IP 地址来应对未来的网关功能。
 
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-s2s-rm-portal-include.md)]
 
@@ -106,7 +103,7 @@ ms.lasthandoff: 03/25/2017
 
 ## <a name="CreateConnection"></a>7.创建站点到站点 VPN 连接
 
-在此步骤中，你将在虚拟网关和本地 VPN 设备之间创建站点到站点 VPN 连接。 在开始本部分之前，请确认虚拟网络网关与局域网网关已完成创建。
+在此步骤中，你在虚拟网关和本地 VPN 设备之间创建站点到站点 VPN 连接。 在开始本部分之前，请确认虚拟网络网关与局域网网关已完成创建。
 
 [!INCLUDE [vpn-gateway-add-site-to-site-connection-rm-portal](../../includes/vpn-gateway-add-site-to-site-connection-s2s-rm-portal-include.md)]
 

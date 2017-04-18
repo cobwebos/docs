@@ -48,16 +48,19 @@
 ### [为 JSON Blob 创建索引](search-howto-index-json-blobs.md)
 ### [配置与 Azure VM 上 SQL Server 的索引器连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [索引器中的字段映射](search-indexer-field-mappings.md)
-##  搜索体验
-### [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-### [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-### [Lucene 语法查询示例](search-query-lucene-examples.md)
-### [筛选器表达式语法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+##  搜索 
+### [全文搜索工作原理](search-lucene-query-architecture.md)
+### 查询构造
+#### [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
+#### [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
+#### [Lucene 语法查询示例](search-query-lucene-examples.md)
+#### [筛选器表达式语法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+### 自定义搜索
+#### [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)
+#### [自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 ### [评分](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
 ### [建议](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [多面导航](search-faceted-navigation.md)
-### [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)
-### [自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 
 # 引用
 ## [.NET](/dotnet/api/microsoft.azure.search)

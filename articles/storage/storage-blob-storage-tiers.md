@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/27/2017
 ms.author: mihauss
 translationtype: Human Translation
-ms.sourcegitcommit: c004285f3b3052ed9361fc7165702aff8f5e835d
-ms.openlocfilehash: e0df34dbb4278d759ee412000d6dafd64276d926
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 618d31e991d9405ece6533727d700e316ae85bec
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -268,6 +268,7 @@ Blob 存储帐户使用基于存储层的 Blob 存储的新定价模型。 使�
 
 ### <a name="migrating-existing-data"></a>迁移现有数据
 Blob 存储帐户专用于仅存储块 blob 和追加 blob。 现有的通用存储帐户（使你可以存储表、队列、文件和磁盘以及 Blob）无法转换为 Blob 存储帐户。 若要使用存储层，将需要创建新的 Blob 存储帐户并将你现有的数据迁移到新创建的帐户。
+
 可以使用以下方法从本地存储设备、第三方云存储提供程序或 Azure 中现有的通用存储帐户将现有数据迁移到 Blob 存储帐户：
 
 #### <a name="azcopy"></a>AzCopy

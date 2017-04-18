@@ -1,6 +1,6 @@
 ---
 title: "使用 .NET (C#) 连接 Azure SQL 数据库 | Microsoft Docs"
-description: "使用本快速入门教程中的示例代码可以生成一个包含 C# 代码并由云中强大的 Azure SQL 数据库关系数据库支持的现代应用程序。"
+description: "演示了一个可以用来连接到 Azure SQL 数据库并进行查询的 .NET 代码示例"
 services: sql-database
 documentationcenter: 
 author: ajlam
@@ -8,37 +8,42 @@ manager: jhubbard
 editor: 
 ms.assetid: 7faca033-24b4-4f64-9301-b4de41e73dfd
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start connect
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 03/28/2017
+ms.date: 04/05/2017
 ms.author: andrela;sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: c6c0c218b8d0456d37a4514238675fd8e75faf9d
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: c36c3a3f651bcee38b953b12e48cab8d93a34207
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="azure-sql-database-use-net-c-to-connect-and-query-data"></a>Azure SQL 数据库：使用 .NET (C#) 进行连接和数据查询
 
-使用 [C# 和 ADO.NET](https://msdn.microsoft.com/library/kb9s9ks0.aspx) 连接和查询 Azure SQL 数据库。 本指南详述了如何使用 C# 连接到 Azure SQL 数据库，然后执行查询、插入、更新和删除语句。
+本快速入门演示了如何通过 Windows、Mac OS 和 Ubuntu Linux 平台使用 [C# 和 ADO.NET](https://msdn.microsoft.com/library/kb9s9ks0.aspx) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
 
 此快速入门使用以下某个快速入门中创建的资源作为其起点：
 
 - [创建 DB - 门户](sql-database-get-started-portal.md)
 - [创建 DB - CLI](sql-database-get-started-cli.md)
 
-## <a name="configure-development-environment"></a>配置开发环境
+## <a name="install-net"></a>安装 .NET
 
-下文将详细介绍如何配置现有 Mac OS、Linux(Ubuntu) 和 Windows 开发环境，以便使用 Azure SQL 数据库。
+### <a name="windows-net-framework-and-net-core"></a>**Windows .NET Framework 和 .NET Core**
+
+Visual Studio 2017 Community 是全功能、可扩展的免费 IDE，用于创建适用于 Android、iOS、Windows 以及 Web 和数据库应用程序与云服务的新式应用程序。 可以安装完整的 .NET Framework，也可以只安装 .NET Core。 快速入门中的代码片段二者都可以使用。 如果已在计算机上安装了 Visual Studio，请跳过下面几个步骤。
+
+1. 下载[安装程序](https://go.microsoft.com/fwlink/?LinkId=691978)。 
+2. 运行该安装程序，并遵照安装提示完成安装。
 
 ### <a name="mac-os"></a>**Mac OS**
 打开终端并导航到要在其中创建 .NET Core 项目的目录。 输入以下命令安装 **brew**、**OpenSSL** 和 **.NET Core**。 
 
-```C#
+```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 brew install openssl
@@ -52,20 +57,12 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 打开终端并导航到要在其中创建 .NET Core 项目的目录。 输入以下命令安装 **.NET Core**。
 
-```C#
+```bash
 sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 sudo apt-get update
 sudo apt-get install dotnet-dev-1.0.1
 ```
-
-### <a name="windows"></a>**Windows**
-安装 Visual Studio 2015 Community Edition 和 .NET Framework。 如果已在计算机上安装了 Visual Studio，请跳过下面几个步骤。
-
-Visual Studio 2015 Community 是全功能、可扩展的免费 IDE，用于创建适用于 Android、iOS、Windows 以及 Web 和数据库应用程序与云服务的新式应用程序。
-
-1. 下载[安装程序](https://go.microsoft.com/fwlink/?LinkId=691978)。 
-2. 运行该安装程序，并遵照安装提示完成安装。
 
 ## <a name="get-connection-information"></a>获取连接信息
 
@@ -309,5 +306,11 @@ namespace ConsoleApplication1
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 .NET 文档，请参阅 [.NET 文档](https://docs.microsoft.com/dotnet/)。
-- 有关使用 Visual Studio Code 查询和编辑数据的信息，请参阅 [Visual Studio Code](https://code.visualstudio.com/docs)。
+- 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
+- 若要使用 Visual Studio 进行连接和查询，请参阅[使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
+- 若要使用 PHP 进行连接和查询，请参阅[使用 PHP 进行连接和查询](sql-database-connect-query-php.md)。
+- 若要使用 Node.js 进行连接和查询，请参阅[使用 Node.js 进行连接和查询](sql-database-connect-query-nodejs.md)。
+- 若要使用 Java 进行连接和查询，请参阅[使用 Java 进行连接和查询](sql-database-connect-query-java.md)。
+- 若要使用 Python 进行连接和查询，请参阅[使用 Python 进行连接和查询](sql-database-connect-query-python.md)。
+- 若要使用 Ruby 进行连接和查询，请参阅[使用 Ruby 进行连接和查询](sql-database-connect-query-ruby.md)。
 

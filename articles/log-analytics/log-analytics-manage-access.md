@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/09/2017
+ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
@@ -78,7 +78,7 @@ ms.lasthandoff: 03/10/2017
 可以通过两种权限模型控制对 Log Analytics 工作区的访问：
 
 1. 旧式 Log Analytics 用户角色
-2. [Azure 基于角色的访问权限](../active-directory/role-based-access-control-configure.md) 
+2. [Azure 基于角色的访问权限](../active-directory/role-based-access-control-configure.md)
 
 下表汇总了可以通过每个权限模型设置的访问权限：
 
@@ -101,13 +101,14 @@ Log Analytics 门户中的以下活动也需要 Azure 权限：
 | 添加和删除管理解决方案                        | 资源组写入 <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
 | 更改定价层                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | 查看*备份* 和 *Site Recovery* 解决方案磁贴中的数据 | 管理员/共同管理员 | 访问通过经典部署模型部署的资源 |
- 
+
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>使用 Azure 权限管理对 Log Analytics 的访问
 若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[使用角色分配来管理对 Azure 订阅资源的访问权限](../active-directory/role-based-access-control-configure.md)中的步骤。
 
 如果你对 Log Analytics 工作区的权限至少为 Azure 读取权限，则可在查看 Log Analytics 工作区时单击“OMS 门户”任务，打开 OMS 门户。
 
-打开 Log Analytics 门户时，请改用旧式 Log Analytics 用户角色。 如果系统尚未在 Log Analytics 门户中为你分配角色，该服务会[检查你在工作区中的 Azure 权限](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource)。 可以通过下表来确定系统在 Log Analytics 门户中为你分配的角色：
+打开 Log Analytics 门户时，请改用旧式 Log Analytics 用户角色。 如果系统尚未在 Log Analytics 门户中为你分配角色，该服务会[检查你在工作区中的 Azure 权限](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource)。
+可以通过下表来确定系统在 Log Analytics 门户中为你分配的角色：
 
 | 条件                                                   | 分配的 Log Analytics 用户角色 | 说明 |
 |--------------------------------------------------------------|----------------------------------|-------|
@@ -119,7 +120,7 @@ Log Analytics 门户中的以下活动也需要 Azure 权限：
 | 适用于云解决方案提供商 (CSP) 托管的订阅 <br> 登录时使用的帐户位于链接到工作区的 Azure Active Directory 中 | 管理员 | 通常为 CSP 的客户 |
 | 适用于云解决方案提供商 (CSP) 托管的订阅 <br> 登录时使用的帐户不在链接到工作区的 Azure Active Directory 中 | 参与者 | 通常为 CSP |
 
-<sup>1</sup> 有关角色定义的详细信息，请参阅 [Azure 权限](../active-directory/role-based-access-control-custom-roles.md)。 在评估角色时，`*` 操作与 `Microsoft.OperationalInsights/workspaces/*` 不等效。 
+<sup>1</sup> 有关角色定义的详细信息，请参阅 [Azure 权限](../active-directory/role-based-access-control-custom-roles.md)。 在评估角色时，`*` 操作与 `Microsoft.OperationalInsights/workspaces/*` 不等效。
 
 有关 Azure 门户需记住的一些要点：
 

@@ -29,13 +29,13 @@
 ##### [表绑定](functions-bindings-storage-table.md)
 #### [计时器触发器](functions-bindings-timer.md)
 #### [Twilio 输出绑定](functions-bindings-twilio.md)
+### [定义 Functions 代理](functions-proxies.md)
 ### [通过 Azure 门户创建 Function App](functions-create-function-app-portal.md) 
+### [执行计划的清理任务](functions-scenario-database-table-cleanup.md)
 ### [测试 Azure Functions](functions-test-a-function.md)
 ### [进行本地开发和调试](functions-run-local.md)
 ### [Azure Functions 最佳实践](functions-best-practices.md)
-### [使用 Azure Functions 来执行计划的清理任务](functions-scenario-database-table-cleanup.md)
-### [创建 OpenAPI 定义（预览版）](functions-api-definition-getting-started.md)
-#### [函数引用中的 OpenAPI 2.0](functions-api-definition.md)
+### [创建 OpenAPI 定义](functions-api-definition-getting-started.md)
 
 ## 管理
 ### [为函数应用配置设置](functions-how-to-use-azure-function-app-settings.md)
