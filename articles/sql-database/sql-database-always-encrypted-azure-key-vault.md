@@ -9,7 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 6ca16644-5969-497b-a413-d28c3b835c9b
 ms.service: sql-database
-ms.custom: secure and protect
+ms.custom: security-protect
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: aa3f2bc04fe33466ca44abd7331a4b3aa7be26fc
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: bc60fde6c299bc98aa4ee3a207cd57b6b050765f
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -94,7 +94,7 @@ ms.lasthandoff: 03/07/2017
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 转到“新建” > “数据 + 存储” > “SQL 数据库”。
-3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 若要深入了解如何在 Azure 门户中创建数据库，请参阅[ SQL 数据库](sql-database-get-started.md)。
+3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 若要深入了解如何在 Azure 门户中创建数据库，请参阅[ SQL 数据库](sql-database-get-started-portal.md)。
    
     ![创建空数据库](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
@@ -196,7 +196,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 2. 将项目命名为 **AlwaysEncryptedConsoleAKVApp**，然后单击“确定”。
 3. 通过转到“工具” > “NuGet 包管理器” > “包管理器控制台”来安装以下 NuGet 包。
 
-在包管理器控制台中运行以下&2; 行代码。
+在包管理器控制台中运行以下 2 行代码。
 
     Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory

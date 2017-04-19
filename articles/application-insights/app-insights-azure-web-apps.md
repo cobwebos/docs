@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 03/30/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 8d9d39d63209b8ab6884ddeff569687b55591f95
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: c6f25b8cf8c133f44644db1507958b2176efa230
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -107,7 +107,7 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 * [将 Azure 诊断配置为](app-insights-azure-diagnostics.md)向 Application Insights 发送数据。
 * [监视服务运行状况指标](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且做出快速响应。
 * 每当操作事件发生或指标超过阈值时[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
-* 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](app-insights-web-track-usage.md)。
+* 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](app-insights-javascript.md)。
 * [设置可用性 Web 测试](app-insights-monitor-web-app-availability.md)，以便在站点关闭时发出警报。
 
 

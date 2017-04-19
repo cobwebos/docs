@@ -15,8 +15,9 @@ ms.workload: TBD
 ms.date: 07/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 715720d22b58ddd3d0e5042de151219e49549c5e
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: cc5136c209483b6b72e8d456084338688792c0d0
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -52,7 +53,7 @@ ms.openlocfilehash: 715720d22b58ddd3d0e5042de151219e49549c5e
     使用在上一步中记下的连接 URL。 此时会出现一个错误，告知用户网站的安全证书有问题。 单击“继续访问此网页”。
    
     ![安全证书错误](./media/storsimple-ova-deploy3-iscsi-setup/image3.png)
-2. 以 **StorSimpleAdmin** 身份登录到虚拟设备的 Web UI。 输入在“步骤 3：启动虚拟设备”中更改的设备管理员密码，详见[部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配虚拟设备](storsimple-ova-deploy2-provision-hyperv.md)或[部署 StorSimple 虚拟阵列 - 在 VMware 中预配虚拟设备](storsimple-ova-deploy2-provision-vmware.md)。
+2. 以 **StorSimpleAdmin** 身份登录到虚拟设备的 Web UI。 输入在“步骤 3：启动虚拟设备”中更改的设备管理员密码，详见[部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配虚拟设备](storsimple-ova-deploy2-provision-hyperv.md)或[部署 StorSimple 虚拟阵列 - 在 VMware 中预配虚拟设备](storsimple-ova-deploy2-provision-vmware.md)。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。 
    
     ![登录页](./media/storsimple-ova-deploy3-iscsi-setup/image4.png)
 3. 此时会转到“主页”。 该页介绍配置虚拟设备并将其注册到 StorSimple Manager 服务所需的各种设置。 请注意，“网络设置”、“Web 代理设置”和“时间设置”为可选设置。 仅“设备设置”和“云设置”为必需设置。
@@ -242,10 +243,5 @@ ms.openlocfilehash: 715720d22b58ddd3d0e5042de151219e49549c5e
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

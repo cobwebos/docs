@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 11/10/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 42e682eb8e0a740393648e9fe49244c3a02a9867
-ms.openlocfilehash: eb6bce9be34467e472fbae6cbf154f3b789b6ddc
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 878badf2753b4ceb471abc789e388fd784c4c42a
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -132,14 +133,9 @@ ms.openlocfilehash: eb6bce9be34467e472fbae6cbf154f3b789b6ddc
 [了解有关指标的详细信息。](app-insights-metrics-explorer.md)
 
 ## <a name="next-steps"></a>后续步骤
-* [将遥测添加到网页](app-insights-web-track-usage.md)，用于监视页面视图和用户指标。
+* [将遥测添加到网页](app-insights-javascript.md)，用于监视页面视图和用户指标。
 * [设置 Web 测试](app-insights-monitor-web-app-availability.md)，确保应用程序处于活动状态且能够做出响应。
 * [捕获日志跟踪](app-insights-java-trace-logs.md)
 * [搜索事件和日志](app-insights-diagnostic-search.md)帮助诊断问题。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

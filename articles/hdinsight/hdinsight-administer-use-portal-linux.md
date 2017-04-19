@@ -17,16 +17,16 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 82c12f4a2a24e190babfd88ff667e24d6c45ebac
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 636d58cc3bda38c0fb49412b6bd4cbb96d235858
+ms.lasthandoff: 04/19/2017
 
 
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-使用 [Azure门户][azure-portal]可以管理 Azure HDInsight 中的 Hadoop 群集。 使用选项卡选择器还可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。 
+使用 [Azure门户][azure-portal]可以管理 Azure HDInsight 中的 Hadoop 群集。 使用选项卡选择器还可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。
 
 **先决条件**
 
@@ -37,12 +37,12 @@ ms.lasthandoff: 03/25/2017
 ## <a name="open-the-portal"></a>打开门户
 1. 登录到 [https://portal.azure.com](https://portal.azure.com)。
 2. 打开门户之后，你可以：
-   
+
    * 单击左侧菜单中的“新建”以创建新的群集：
-     
+
        ![新建 HDInsight 群集按钮](./media/hdinsight-administer-use-portal-linux/azure-portal-new-button.png)
    * 在左侧菜单中单击“HDInsight 群集”以列出现有群集
-     
+
        ![Azure 门户中的 HDInsight 群集按钮](./media/hdinsight-administer-use-portal-linux/azure-portal-hdinsight-button.png)
 
        如果没有看到 HDInsight 群集，请单击列表底部的“更多服务”，然后单击“智能 + 分析”部分下的“HDInsight 群集”。
@@ -50,16 +50,16 @@ ms.lasthandoff: 03/25/2017
 ## <a name="create-clusters"></a>创建群集
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件的列表，请参阅 [Azure HDInsight 包含哪个版本的 Hadoop？](hdinsight-component-versioning.md)。 有关创建群集的一般信息，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。 
+HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件的列表，请参阅 [Azure HDInsight 包含哪个版本的 Hadoop？](hdinsight-component-versioning.md)。 有关创建群集的一般信息，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 ## <a name="list-and-show-clusters"></a>列出并显示群集
 1. 登录到 [https://portal.azure.com](https://portal.azure.com)。
 2. 在左侧菜单中单击“HDInsight 群集”以列出现有群集。
 3. 单击群集名称。 如果群集列表很长，你可以使用页面顶部的筛选器。
 4. 单击列表中的群集可查看概述页：
-   
+
     ![Azure 门户 HDInsight 群集概要](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png)
-   
+
     **概述菜单：**
 
    * **仪表板**：打开群集仪表板，即可用于基于 Linux 群集的 Ambari Web。
@@ -68,7 +68,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
    * **删除**：删除群集。
 
     **左侧菜单：**
-   
+
    * **活动日志**：显示和查询活动日志。
    * **访问控制 (IAM)**：使用角色分配。  请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../active-directory/role-based-access-control-configure.md)。
    * **标记**：允许设置键/值对，以定义云服务的自定义分类。 例如，可以创建名为 **project** 的键，然后对与特定项目关联的所有服务使用一个公用值。
@@ -78,7 +78,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
    * **快速启动**：显示可帮助你开始使用 HDInsight 的信息。
    * **适用于 HDInsight 的工具**：HDInsight 相关工具的帮助信息。
    * **群集登录**：显示群集登录信息。
-   * **订阅核心使用情况**：显示订阅的已使用和可用核心。 
+   * **订阅核心使用情况**：显示订阅的已使用和可用核心。
    * **缩放群集**：增加和减少群集辅助角色节点的数量。 请参阅[缩放群集](hdinsight-administer-use-management-portal.md#scale-clusters)。
    * **安全外壳**：显示使用安全 Shell (SSH) 连接与群集建立连接的说明。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
    * **HDInsight 合作伙伴**：添加/删除当前的 HDInsight 合作伙伴。
@@ -87,20 +87,20 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
    * **应用程序**：添加/删除 HDInsight 应用程序。  请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
    * **属性**：查看群集属性。
    * **存储帐户**：查看存储帐户和密钥。 存储帐户在群集创建过程中配置。
-   * **群集 AAD 标识**： 
+   * **群集 AAD 标识**：
    * **新的支持请求**：允许对 Microsoft 支持创建支持票证。
 
 6. 单击“属性”：
-   
+
     属性包括：
-   
+
    * **主机名**：群集名称。
    * **群集 URL**。 Ambari Web 界面的 URL。
    * **状态**：包括 Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization
    * **区域**：Azure 位置。 有关受支持的 Azure 位置的列表，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)中的“区域”下拉列表框。
    * **创建日期**。
    * **操作系统**：**Windows** 或 **Linux**。
-   * **类型**：Hadoop、HBase、Storm、Spark。 
+   * **类型**：Hadoop、HBase、Storm、Spark。
    * **版本**。 请参阅 [HDInsight 版本](hdinsight-component-versioning.md)
    * **订阅**：订阅名称。
    * **默认数据源**：默认的群集文件系统。
@@ -122,42 +122,42 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
 > [!NOTE]
 > 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果你不确定群集的版本，可以查看“属性”页。  请参阅[列出和显示群集](#list-and-show-clusters)。
-> 
-> 
+>
+>
 
 更改 HDInsight 支持的每种类型的群集所用数据节点数的影响：
 
 * Hadoop
-  
+
     你可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 你还可以在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
-  
+
     减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 这会导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，你可以在操作完成后重新提交这些作业。
 * HBase
-  
+
     你可以顺利地在 HBase 群集运行时对其添加或删除节点。 在完成缩放操作后的几分钟内，区域服务器就能自动平衡。 不过，你也可以手动平衡区域服务器，方法是登录到群集的头节点，然后在命令提示符窗口中运行以下命令：
-  
+
         >pushd %HBASE_HOME%\bin
         >hbase shell
         >balancer
-  
+
     有关使用 HBase shell 的详细信息，请参阅 []
 * Storm
-  
+
     你可以顺利地在 Storm 群集运行时对其添加或删除数据节点。 但是，在缩放操作成功完成后，你需要重新平衡拓扑。
-  
+
     可以使用两种方法来完成重新平衡操作：
-  
+
   * Storm Web UI
   * 命令行界面 (CLI) 工具
-    
+
     有关详细信息，请参阅 [Apache Storm 文档](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
-    
+
     HDInsight 群集上提供了 Storm Web UI：
-    
+
     ![HDInsight Storm 规模重新平衡](./media/hdinsight-administer-use-portal-linux/hdinsight.portal.scale.cluster.storm.rebalance.png)
-    
+
     以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
-    
+
         ## Reconfigure the topology "mytopology" to use 5 worker processes,
         ## the spout "blue-spout" to use 3 executors, and
         ## the bolt "yellow-bolt" to use 10 executors
@@ -170,7 +170,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 3. 单击要缩放的群集。
 3. 单击“缩放群集”。
 4. 输入**辅助角色节点数**。 对群集节点数的限制不会因 Azure 订阅而有所不同。 若要增大限制，可联系计费支持人员。  成本信息将反映对节点数所做的更改。
-   
+
     ![HDInsight Hadoop HBase Storm Spark 缩放](./media/hdinsight-administer-use-portal-linux/hdinsight.portal.scale.cluster.png)
 
 ## <a name="pauseshut-down-clusters"></a>暂停/关闭群集
@@ -195,11 +195,11 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（�
 
 > [!NOTE]
 > 如果你更改群集用户 (admin) 的密码，可能会导致针对此群集运行的脚本操作失败。 如果你的任何持久性脚本操作以辅助角色节点为目标，则当你通过调整大小操作在群集中添加节点时，这些操作可能会失败。 有关脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
-> 
-> 
+>
+>
 
 1. 使用 HDInsight 群集用户凭据登录到 Ambari Web UI。 默认的用户名为 **admin**。 URL 为 **https://&lt;HDInsight Cluster Name>azurehdinsight.net**。
-2. 在顶部菜单中单击“管理”，然后单击“管理 Ambari”。 
+2. 在顶部菜单中单击“管理”，然后单击“管理 Ambari”。
 3. 在左侧菜单中，单击“用户”。
 4. 单击“管理”。
 5. 单击“更改密码”。
@@ -208,23 +208,23 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（�
 
 ### <a name="change-the-ssh-user-password"></a>更改 SSH 用户密码
 1. 使用文本编辑器将以下文本保存为名为“changepassword.sh”的文件。
-   
+
    > [!IMPORTANT]
    > 所用的编辑器必须使用 LF 作为行尾。 如果编辑器使用 CRLF，则脚本将无法正常工作。
-   > 
-   > 
-   
+   >
+   >
+
         #! /bin/bash
         USER=$1
         PASS=$2
-   
+
         usermod --password $(echo $PASS | openssl passwd -1 -stdin) $USER
 2. 将该文件上载到可以使用 HTTP 或 HTTPS 地址从 HDInsight 访问的存储位置。 例如，某个公共文件存储（如 OneDrive 或 Azure Blob 存储）。 将 URI（HTTP 或 HTTPS 地址）保存到该文件中，因为下一步需要用到。
 3. 从 Azure 门户中，单击“HDInsight 群集”。
 4. 单击 HDInsight 群集。
 4. 单击“脚本操作”。
 4. 在“脚本操作”边栏选项卡中，选择“提交新项”。 出现“提交脚本操作”边栏选项卡时，请输入以下信息。
-   
+
    | 字段 | 值 |
    | --- | --- |
    | 名称 |更改 ssh 密码 |
@@ -272,7 +272,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 1. 使用 HDInsight 群集用户凭据登录到 Ambari Web UI。 默认的用户名为 **admin**。 URL 为 **https://&lt;HDInsight Cluster Name>azurehdinsight.net**。
 2. 打开 Hive 视图，如以下屏幕截图中所示：  
-   
+
     ![HDIinsight Hive 视图](./media/hdinsight-administer-use-portal-linux/hdinsight-hive-view.png)
 3. 在顶部菜单中单击“查询”。
 4. 在“查询编辑器”中输入 Hive 查询，然后单击“执行”。
@@ -296,11 +296,11 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 
 > [!IMPORTANT]
 > 若要监视 HDInsight 群集提供的服务，必须使用 Ambari Web 或 Ambari REST API。 有关如何使用 Ambari 的详细信息，请参阅[使用 Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
-> 
-> 
+>
+>
 
 ## <a name="connect-to-a-cluster"></a>连接到群集
-请参阅[通过 SSH 将 Hive 与 HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-hive-ssh.md#ssh)。
+请参阅[通过 SSH 将 Hive 与 HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-hive-beeline.md#a-idsshaconnect-with-ssh)。
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你学习了如何使用门户创建 HDInsight 群集以及如何打开 Hadoop 命令行工具。 若要了解更多信息，请参阅下列文章：

@@ -31,7 +31,7 @@
 ## 规划和设计
 ### [对 Web 应用和服务进行深度诊断](app-insights-devops.md)
 ### [在 Web 应用程序中监视性能](app-insights-web-monitor-performance.md)
-### [Application Insights 使用分析](app-insights-overview-usage.md)
+### [Application Insights 使用分析](app-insights-web-track-usage.md)
 ### [分隔 Application Insights 资源](app-insights-separate-resources.md)
 ### [如何在 Application Insights 中执行...？](app-insights-how-do-i.md)
 
@@ -49,7 +49,6 @@
 #### [依赖项](app-insights-asp-net-dependencies.md)
 #### [版本注释](app-insights-annotations.md)
 #### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-#### [常见问题](app-insights-troubleshoot-faq.md)
 
 
 ### J2EE
@@ -92,6 +91,7 @@
 #### [教程](app-insights-analytics-tour.md)
 #### [使用](app-insights-analytics-using.md)
 #### [导入](app-insights-analytics-import.md)
+#### [诊断](app-insights-analytics-diagnostics.md)
 
 ## 自动化
 
@@ -146,6 +146,7 @@
 ### [SDK 发行说明](app-insights-release-notes.md)
 ### [开发人员分析工具发行说明](app-insights-release-notes-vsix.md)
 
+## [常见问题](app-insights-troubleshoot-faq.md)
 
 ## 帮助
 ### [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  

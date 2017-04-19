@@ -50,7 +50,7 @@
 ### [IoT 安全最佳实践](../iot-suite/iot-security-best-practices.md)
 
 ## 安全体系结构
-### [数据分类](azure-security-data-classification.md)
+### [数据分类](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03)
 ### [构建在 Azure 基础之上的应用程序灾难恢复和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 # 相关内容

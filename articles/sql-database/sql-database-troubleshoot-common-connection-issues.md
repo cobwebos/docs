@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 7e48069b84c1048617a86fbc334a04462b52deda
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 914084ff790ceb2e11852c5dae757b935f813062
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -80,20 +80,6 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 2. 在客户端与 Internet 之间的所有防火墙上，确保为出站连接打开端口 1433。 有关需要为 Azure Active Directory 身份验证打开的其他端口的其他信息，请查看[配置 Windows 防火墙以允许 SQL Server 访问](https://msdn.microsoft.com/library/cc646023.aspx)和[混合标识所需的端口和协议](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports)。
 3. 验证连接字符串和其他连接设置。 请参阅[连接问题主题](sql-database-connectivity-issues.md#connections-to-azure-sql-database)中的“连接字符串”部分。
 4. 在仪表板中检查服务运行状况。 如果认为存在区域性的中断，请参阅[从中断恢复](sql-database-disaster-recovery.md)，以了解恢复到新区域的步骤。
-
-## <a name="all-topics-for-azure-sql-database-connection-problems"></a>有关 Azure SQL 数据库连接问题的所有主题
-下表列出了直接适用于 Azure SQL 数据库服务的所有连接问题主题。
-
-| &nbsp; | 标题 | 说明 |
-| ---:|:--- |:--- |
-| 1 |[排查 Azure SQL 数据库的连接问题](sql-database-troubleshoot-common-connection-issues.md) |这是对 Azure SQL 数据库中的连接问题进行故障排除的登陆页面。 该页面介绍如何识别并解决 Azure SQL 数据库中的暂时性错误和永久性或非暂时性错误。 |
-| 2 |[排查、诊断和防止 SQL 数据库中的 SQL 连接错误和暂时性错误](sql-database-connectivity-issues.md) |了解如何排查、诊断和防止 Azure SQL 数据库中的 SQL 连接错误或暂时性错误。 |
-| 3 |[暂时性错误处理的一般指南](../best-practices-retry-general.md) |介绍连接到 Azure SQL 数据库时的暂时性错误处理的一般指南。 |
-| 4 |[排查 Microsoft Azure SQL 数据库的连接问题](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database) |该工具可帮助你识别并解决连接错误。 |
-| 5 |[排查“服务器 &lt;y&gt; 上的数据库 &lt;x&gt; 当前不可用。请稍后重试连接”进行故障排除](sql-database-troubleshoot-connection.md) |介绍如何识别并解决 40613 错误：“服务器 &lt;y&gt; 上的数据库 &lt;x&gt; 当前不可用。 请稍后重试连接”错误。 |
-| 6 |[SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题](sql-database-develop-error-messages.md) |介绍有关 SQL 数据库客户端应用程序的 SQL 错误代码的信息，例如常见的数据库连接错误、数据库复制问题和常规错误。 |
-| 7 |[Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md) |提供了帮助你确定哪个服务层适合你的应用程序的指导。 此外提供了调优应用程序以充分利用 Azure SQL 数据库的建议。 |
-| 8 |[SQL 数据库开发概述](sql-database-develop-overview.md) |提供了你可以用来连接到 Azure SQL 数据库以及与之进行交互的各种技术的代码示例的链接。 |
 
 ## <a name="next-steps"></a>后续步骤
 * [排查 Azure SQL 数据库性能问题](sql-database-troubleshoot-performance.md)
