@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 03/062/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 6f646b3776f0aa0bbfba227c81ac5fc4fde9265f
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 78dbbaa272d9889add5bc833c7557618f41056db
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/10/2017
 
 本文说明如何在 [Azure 门户](http://portal.azure.com)中为 SQL 数据库配置活动异地复制，以及如何启动故障转移。
 
-若要使用 Azure 门户启动故障转移，请参阅[使用 Azure 门户为 Azure SQL 数据库启动计划内或计划外故障转移](sql-database-geo-replication-failover-portal.md)。
+若要使用 Azure 门户启动故障转移，请参阅[使用 Azure 门户为 Azure SQL 数据库启动计划内或计划外故障转移](sql-database-geo-replication-portal.md)。
 
 > [!NOTE]
 > 活动异地复制（可读辅助数据库）现在可供所有服务层中的所有数据库使用。 非可读辅助类型将在 2017 年 4 月停用，现有的非可读数据库将自动升级到可读辅助数据库。

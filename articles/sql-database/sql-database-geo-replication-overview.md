@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: bd3aea04266baebbba1b953d5a2b7c4b2fb41a87
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 8d8743529f4f0b9e8c036d328d63bea247279fe3
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -29,11 +29,11 @@ ms.lasthandoff: 03/28/2017
 > 活动异地复制（可读辅助数据库）现在可供所有服务层中的所有数据库使用。 2017 年 4 月将停用非可读辅助类型数据库，现有的非可读数据库将自动升级到可读辅助数据库。
 >  
 
- 可以使用 [Azure 门户](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md)、[Transact-SQL](sql-database-geo-replication-transact-sql.md) 或 [REST API - 创建或更新数据库](https://msdn.microsoft.com/library/azure/mt163685.aspx)配置活动异地复制。
+ 可以使用 [Azure 门户](sql-database-geo-replication-portal.md)、[PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)、[Transact-SQL](sql-database-geo-replication-transact-sql.md) 或 [REST API - 创建或更新数据库](https://msdn.microsoft.com/library/azure/mt163685.aspx)配置活动异地复制。
 
 如果主数据库因某种原因而出现故障，或者只是需要脱机，则可以*故障转移*到任何辅助数据库。 当将故障转移激活到辅助数据库之一时，所有其他辅助数据库会自动链接到新的主数据库。
 
-可以使用 [Azure 门户](sql-database-geo-replication-failover-portal.md)、[PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 计划的故障转移](https://msdn.microsoft.com/library/mt575007.aspx)或 [REST API - 未计划的故障转移](https://msdn.microsoft.com/library/mt582027.aspx)故障转移到辅助数据库。
+可以使用 [Azure 门户](sql-database-geo-replication-portal.md)、[PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 计划的故障转移](https://msdn.microsoft.com/library/mt575007.aspx)或 [REST API - 未计划的故障转移](https://msdn.microsoft.com/library/mt582027.aspx)故障转移到辅助数据库。
 
 故障转移后，请确保在新的主机上配置服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 03/28/2017
 ## <a name="programmatically-managing-active-geo-replication"></a>以编程方式管理活动异地复制
 如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理活动异地复制。 下表描述了可用的命令集。
 
-* **Azure Resource Manager API 和基于角色的安全性**：活动异地复制包括一组用于管理的 [Azure Resource Manager API](https://msdn.microsoft.com/library/azure/mt163571.aspx)，其中包括[基于 Azure Resource Manager 的 PowerShell cmdlet](sql-database-geo-replication-powershell.md)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
+* **Azure Resource Manager API 和基于角色的安全性**：活动异地复制包括一组用于管理的 [Azure Resource Manager API](https://msdn.microsoft.com/library/azure/mt163571.aspx)，其中包括[基于 Azure Resource Manager 的 PowerShell cmdlet](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
 
 > [!NOTE]
 > 只有使用基于 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 的 [Azure SQL REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) 和 [Azure SQL 数据库 PowerShell cmdlet](https://msdn.microsoft.com/library/azure/mt574084.aspx) 才支持活动异地复制的许多新功能。 后向兼容性支持[（经典）REST API](https://msdn.microsoft.com/library/azure/dn505719.aspx) 和 [Azure SQL 数据库（经典）cmdlet](https://msdn.microsoft.com/library/azure/dn546723.aspx)，因此建议使用基于 Azure Resource Manager 的 API。 

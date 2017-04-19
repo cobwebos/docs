@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6ed35ca1b83f5f7221824d99817800c1e42e68c1
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 51e4665b6372859021237144a0bf7f6763a2638b
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -55,7 +55,7 @@ Azure Active Directory 域服务需要凭据哈希的格式适用于 NTLM 和 Ke
    > 如果在“访问面板”窗口中没有显示“更改密码”选项，请确保组织已配置 [Azure AD 中的密码管理](../active-directory/active-directory-passwords-getting-started.md)。
    >
    >
-4. 在“更改密码”页上，键入现有（旧）密码，然后键入新密码并确认。 
+4. 在“更改密码”页上，键入现有（旧）密码，然后键入新密码并确认。
 
     ![为 Azure AD 域服务创建虚拟网络。](./media/active-directory-domain-services-getting-started/user-change-password2.png)
 
@@ -64,7 +64,7 @@ Azure Active Directory 域服务需要凭据哈希的格式适用于 NTLM 和 Ke
 更改密码后，新密码数分钟后将在 Azure Active Directory 域服务中可用。 再过几分钟后（通常情况下，大约为 20 分钟），你就可以使用新更改的密码登录到已加入托管域的计算机了。
 
 ## <a name="next-steps"></a>后续步骤
-* [如何更新自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md#reset-your-password)
+* [如何更新自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md#reset-my-password)
 * [Azure AD 中的密码管理入门](../active-directory/active-directory-passwords-getting-started.md)
 * [对已同步的 Azure AD 租户启用 Azure Active Directory 域服务密码同步](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [管理 Azure Active Directory 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)

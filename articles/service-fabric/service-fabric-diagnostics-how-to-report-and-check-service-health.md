@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 01/04/2017
 ms.author: dekapur
 translationtype: Human Translation
-ms.sourcegitcommit: bb93d4dac1853a317bbd6ac70946753f35be264e
-ms.openlocfilehash: bc1dd1d2c378e628094fe717d9c89298aca1f7b4
-ms.lasthandoff: 01/06/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: e2b969151876fac34b2a5c05ce050ee6b51004d0
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/06/2017
 
 有三种方式可让你报告服务的运行状况：
 
-* 使用 [Partition](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.aspx) 或 [CodePackageActivationContext](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.aspx) 对象。  
+* 使用 [Partition](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) 或 [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) 对象。  
   你可以使用 `Partition` 和 `CodePackageActivationContext` 对象在属于当前上下文一部分的项目中报告运行状况。 例如，作为副本一部分运行的代码只能报告该副本、其所属的分区，以及其所属应用程序的运行状况。
 * 使用 `FabricClient`。   
   如果群集不[安全](service-fabric-cluster-security.md)或者使用管理员权限运行服务，则可以使用 `FabricClient` 从服务代码中报告运行状况。 在大部分的真实方案中都不会发生此情况。 你可以使用 `FabricClient` 报告任何属于群集一部分的实体的运行状况。 但是，在理想情况下，服务代码应该只发送与其本身运行状况相关的报告。

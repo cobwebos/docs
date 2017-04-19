@@ -26,7 +26,9 @@
 ## 将虚拟网络链接到 ExpressRoute 线路
 ### [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
-## [配置 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)
+## 配置 ExpressRoute 的虚拟网络网关
+### [Azure 门户](expressroute-howto-add-gateway-portal-resource-manager.md)
+### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [配置 ExpressRoute 和站点到站点并存连接](expressroute-howto-coexist-resource-manager.md)
 ## [将线路从经典部署转移到 Resource Manager 部署](expressroute-howto-move-arm.md)
 ## [将关联的虚拟网络从经典部署迁移到 Resource Manager 部署](expressroute-migration-classic-resource-manager.md)

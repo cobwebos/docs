@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: tobiast
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d15ab88be778b8cc081e07fb95fbd99164f18ba1
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 713e4a29550f37b03af3547bead42146a84a417f
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -41,7 +41,7 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 连接到 Azure SQL DB 没有任何不同，且当前有两种方法连接到数据库：ODBC（开放数据库连接）和 OLE DB（对象链接和嵌入数据库）。 最近几年，Microsoft 已在使用 [ODBC 进行本地关系数据访问](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/)。 ODBC 相对简单，且比 OLE DB 快得多。 唯一需要说明的是，ODBC 使用的是旧的 C 样式 API。 
 
 ## <a id="Create"></a>步骤 1：创建 Azure SQL 数据库
-请参阅[入门页](sql-database-get-started.md)，以了解如何创建示例数据库。  或者，可以遵循此[两分钟短视频](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)使用 Azure 门户创建 Azure SQL 数据库。
+请参阅[入门页](sql-database-get-started-portal.md)，以了解如何创建示例数据库。  或者，可以遵循此[两分钟短视频](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)使用 Azure 门户创建 Azure SQL 数据库。
 
 ## <a id="ConnectionString"></a>步骤 2：获取连接字符串
 设置 Azure SQL 数据库后，需要执行以下步骤来确定连接信息，并添加客户端 IP 用于防火墙访问。 

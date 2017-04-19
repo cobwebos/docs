@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 9faa28a86c9427a83e8ca4485ebcdc8e8dacd93d
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 0288d70bb5c0094b5c738b2d0c597e4c6d38a5aa
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -69,7 +69,7 @@ ms.lasthandoff: 03/03/2017
 #### <a name="verify"></a>验证
 1. 启动 cmd 提示符并转到 `%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. 运行：`csexport "Name of Connector" %temp%\export.xml /f:x` 连接器名称可以在同步服务中找到。 它的名称类似于“contoso.com – AAD”（表示 Azure AD）。
-3. 将 PowerShell 脚本从 [CSAnalyzer](#Appendix-CSAnalyzer) 部分复制到名为 `csanalyzer.ps1` 的文件。
+3. 将 PowerShell 脚本从 [CSAnalyzer](#appendix-csanalyzer) 部分复制到名为 `csanalyzer.ps1` 的文件。
 4. 打开 PowerShell 窗口并浏览到已在其中创建 PowerShell 脚本的文件夹。
 5. 运行：`.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`。
 6. 现在已经有名为 **processedusers1.csv** 的文件，可在 Microsoft Excel 中检查。 可在此文件中找到要导出到 Azure AD 的处于暂存状态的所有更改。
