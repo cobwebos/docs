@@ -18,9 +18,9 @@ ms.workload: big-data
 ms.date: 03/07/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 8bea5c13b8657be737cdc135b2d46bd0068b6b88
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 86641734634df131fd366e0b9e7cc6f0d4e54b7e
+ms.lasthandoff: 04/18/2017
 
 
 ---

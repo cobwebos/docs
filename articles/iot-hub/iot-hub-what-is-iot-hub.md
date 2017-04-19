@@ -18,7 +18,7 @@ ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
 ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
 ms.openlocfilehash: ed204c466c5cfb60e5ba250b9dacb2524ca384eb
-ms.lasthandoff: 03/02/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -59,7 +59,7 @@ IoT 中心和设备库可帮助你应对挑战，即如何以可靠且安全的�
 ## <a name="why-use-azure-iot-hub"></a>为何使用 Azure IoT 中心
 除了一套丰富的“[设备到云][lnk-d2c-guidance]”和“[云到设备][lnk-c2d-guidance]”通信选项（包括消息传递、文件传输和请求-答复方法），Azure IoT 中心还通过以下方式解决设备连接问题：
 
-* **设备孪生**。 可以使用[设备孪生][lnk-twins]存储、同步和查询设备元数据和状态信息。 设备孪生是存储设备状态信息（元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到 IoT 中心的每台设备保留一个设备克隆。 
+* **设备孪生**。 可以使用[设备孪生][lnk-twins]存储、同步和查询设备元数据和状态信息。 设备孪生是存储设备状态信息（元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 
 * **每个设备的身份验证和安全连接性**。 可以为每台设备预配独有的[安全密钥][lnk-devguide-security]，让它连接到 IoT 中心。 [IoT 中心标识注册表][lnk-devguide-identityregistry]会在解决方案中存储设备标识和密钥。 解决方案后端可添加单独的设备，允许或拒绝列表完全控制设备访问权限。
 * **基于声明性规则将设备到云的消息路由到 Azure 服务**。 IoT 中心根据路由规则定义消息路由，用于控制中心发送设备到云消息的位置。 路由规则不要求用户编写任何代码，并且可以代替自定义的引入后消息调度程序。
 * **设备连接操作监视**。 你可以收到有关设备标识管理操作与设备连接事件的详细操作日志。 这种监视功能使 IoT 解决方案能够标识连接问题，例如，尝试使用错误凭据进行连接的设备、消息发送太频繁，或拒绝所有云到设备的消息。

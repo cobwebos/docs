@@ -3,8 +3,3 @@
 
 用关键字 `azure-functions`标记问题。 - [访问堆栈溢出](http://stackoverflow.com/questions/tagged/azure-functions)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-
