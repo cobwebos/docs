@@ -16,9 +16,9 @@ ms.date: 03/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 969e6bd55ca69e293f13b66f1a51f1d5fd1996b7
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: ac67a1a67c3a11fde98242519266fcd3ab4f60cb
+ms.lasthandoff: 04/18/2017
 
 
 ---
