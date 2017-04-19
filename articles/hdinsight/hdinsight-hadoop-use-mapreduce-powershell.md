@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 9eafaca75bbf3db639a42c8206d2ac506c255273
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 936212bf634a0245ea70318fcad703a87bf63c5f
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/22/2017
 * **Azure HDInsight（HDInsight 上的 Hadoop）群集**
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 * **配备 Azure PowerShell 的工作站**。
 
@@ -61,13 +61,13 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
     [!code-powershell[main](../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
 2. 打开一个新的 **Azure PowerShell** 命令提示符。 将目录更改为 **mapreducejob.ps1** 文件所在位置，然后使用以下命令来运行脚本：
-   
+
         .\mapreducejob.ps1
-   
+
     运行脚本时，系统会提示输入 HDInsight 群集的名称和该群集的 HTTPS/管理员帐户名和密码。 还会提示针对 Azure 订阅进行身份验证。
 
 3. 作业完成后，将收到类似于以下文本的输出：
-    
+
         Cluster         : CLUSTERNAME
         ExitCode        : 0
         Name            : wordcount
@@ -77,12 +77,12 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
         StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
         SubmissionTime  : 12/5/2014 8:34:09 PM
         JobId           : job_1415949758166_0071
-    
+
     此输出指示作业已成功完成。
-    
+
     > [!NOTE]
     > 如果 **ExitCode** 的值不是 0，请参阅[故障排除](#troubleshooting)。
-    
+
     此示例还会将下载的文件存储到从中运行脚本的目录中的 **output.txt** 文件。
 
 ### <a name="view-output"></a>查看输出
@@ -122,5 +122,4 @@ Get-AzureRmHDInsightJobOutput `
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
-
 

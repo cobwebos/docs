@@ -17,9 +17,9 @@ ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 7de810dc712e7fdcd66ddedae5ccaa2a9753102f
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/18/2017
 在本文中，你将了解如何在浏览器中使用 HDInsight 查询控制台在 HDInsight Hadoop 群集上运行 Hive 查询。
 
 > [!IMPORTANT]
-> HDInsight 查询控制台只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
+> HDInsight 查询控制台只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
 >
 > 有关 HDInsight 3.4 或更高版本，请参阅[在 Ambari Hive 视图中运行 Hive 查询](hdinsight-hadoop-use-hive-ambari-view.md)，了解如何通过 Web 浏览器运行 Hive 查询。
 
@@ -42,29 +42,29 @@ ms.lasthandoff: 01/18/2017
 ## <a id="run"></a>使用查询控制台运行 Hive 查询
 1. 打开 Web 浏览器并导航到 **https://CLUSTERNAME.azurehdinsight.net** ，其中 **CLUSTERNAME** 是 HDInsight 群集的名称。 出现提示时，输入在创建群集时使用的用户名和密码。
 2. 在页面顶部的链接中，选择“Hive 编辑器”。 此时将显示一个窗体，你可以在其中输入要在 HDInsight 群集上运行的 HiveQL 语句。
-   
+
     ![hive 编辑器](./media/hdinsight-hadoop-use-hive-query-console/queryconsole.png)
-   
+
     将文本 `Select * from hivesampletable` 替换为以下 HiveQL 语句：
-   
+
         set hive.execution.engine=tez;
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
         ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
         STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
-   
+
     这些语句将执行以下操作：
-   
+
    * **DROP TABLE**：删除表和数据文件（如果该表已存在）。
    * **CREATE EXTERNAL TABLE**：在 Hive 中创建新的“外部”表。 外部表仅在 Hive 中存储表定义；数据会保留在原始位置。
-     
+
      > [!NOTE]
      > 当你预期以外部源更新基础数据（例如自动化数据上载过程），或以其他 MapReduce 操作更新基础数据，但希望 Hive 查询始终使用最新数据时，必须使用外部表。
-     > 
+     >
      > 删除外部表**不会**删除数据，只会删除表定义。
-     > 
-     > 
+     >
+     >
    * **ROW FORMAT**：告知 Hive 如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。
    * **STORED AS TEXTFILE LOCATION**：告知 Hive 数据的存储位置（example/data 目录），并且告知数据已存储为文本。
    * **SELECT**：选择其列 **t4** 包含值 **[ERROR]** 的所有行的计数。 这应会返回值 **3**，因为有三行包含此值。

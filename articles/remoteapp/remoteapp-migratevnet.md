@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dbc8a612d05f8456e55eb26c58cd4461ced4a521
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 10b5f4844a38fe97852dee8634e8cf54f1a23a1e
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-migrate-a-hybrid-collection-from-a-remoteapp-vnet-to-an-azure-vnet"></a>如何将混合集合从 RemoteApp VNET 迁移到 Azure VNET
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -53,10 +54,5 @@ ms.openlocfilehash: dbc8a612d05f8456e55eb26c58cd4461ced4a521
 大功告成！
 
 如果存在任何问题，或需要特别帮助，请发送电子邮件至 [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

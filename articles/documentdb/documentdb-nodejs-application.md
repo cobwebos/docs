@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 12/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 284bf43ceae0c42b88d6ea3fe8a2e68e7530e5fe
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 6c84c21a0a61ab3e4d043e85d48780fc23f23a08
+ms.lasthandoff: 04/18/2017
 
 
 ---

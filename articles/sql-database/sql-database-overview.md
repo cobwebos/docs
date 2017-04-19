@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: single databases
+ms.custom: DBs and servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 06639080dec485395d6821c371a4f792c7c02845
-ms.openlocfilehash: 5e3ac3a08ea3e5c72082dcc7faa209d848acf2fe
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: ebfc2a6a2e16140953abbb9da3b81702fcc26e60
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -40,7 +41,7 @@ Azure SQL 数据库中的每个数据库都与一个逻辑服务器相关联。 
 - **SQL 数据库防火墙**：为了帮助保护你的数据，在你指定哪些计算机具有访问权限之前，SQL 数据库防火墙将禁止所有对数据库服务器或其数据库的访问。 请参阅[防火墙](sql-database-firewall-configure.md)
 
 ## <a name="what-collations-are-supported"></a>哪些排序规则受支持？
-Microsoft Azure SQL 数据库使用的默认数据库排序规则是 **SQL_LATIN1_GENERAL_CP1_CI_AS**。其中，**LATIN1_GENERAL** 是英语（美国），**CP1** 是代码页 1252，**CI** 是不区分大小写，**AS** 是区分重音。 无法改变 V12 数据库的排序规则。 有关如何设置排序规则的详细信息，请参阅 [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)。
+Microsoft Azure SQL 数据库使用的默认数据库排序规则是 **SQL_LATIN1_GENERAL_CP1_CI_AS**。其中，**LATIN1_GENERAL** 是英语（美国），**CP1** 是代码页 1252，**CI** 是不区分大小写，**AS** 是区分重音。 有关如何设置排序规则的详细信息，请参阅 [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)。
 
 ## <a name="what-are-the-naming-requirements-for-database-objects"></a>数据库对象的命名要求有哪些？
 
@@ -53,9 +54,10 @@ Microsoft Azure SQL 数据库使用的默认数据库排序规则是 **SQL_LATIN
 ## <a name="how-do-i-manage-an-azure-sql-database"></a>如何管理 Azure SQL 数据库？
 
 可以使用几种方法来管理 Azure SQL 数据库逻辑服务器：
-- [Azure 门户](sql-database-manage-portal.md)
-- [PowerShell](sql-database-manage-powershell.md)
-- [Transact SQL](sql-database-manage-azure-ssms.md)
+- [Azure 门户](sql-database-manage-overview.md)
+- [PowerShell](sql-database-manage-overview.md)
+- [Transact SQL](sql-database-connect-query-ssms.md)
+- [Contact.java](sql-database-connect-query-vscode.md)
 - [REST](/rest/api/sql/)
 
 ## <a name="next-steps"></a>后续步骤
@@ -67,10 +69,5 @@ Microsoft Azure SQL 数据库使用的默认数据库排序规则是 **SQL_LATIN
 - 了解基于**服务层**的具体资源配额和限制的信息。 有关服务层的概述，请参阅 [SQL 数据库服务层](sql-database-service-tiers.md)。
 - 有关安全概述，请参阅 [Azure SQL 数据库安全概述](sql-database-security-overview.md)。
 - 有关驱动程序可用性和 SQL 数据库支持的信息，请参阅[用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

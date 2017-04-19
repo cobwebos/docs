@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 5d741836f5defd5d9287b90e53e71aeea439a1df
-ms.openlocfilehash: 81a7a57e6b025710660f7d55145ee286b71acf24
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 4019b379939e43e4e974552f1f0be245c5b1d33e
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -38,7 +38,7 @@ Azure AD 应用程序代理提供以下安全优势：
 **条件访问：**在与网络建立连接之前应用更丰富的策略控制。
 
 * 使用条件访问可以针对允许哪些流量访问后端应用程序来进一步具体化限制。 可以基于位置、身份验证强度和用户风险配置文件来定义限制。
-* 此功能可给攻击者带来更大的障碍。 有关条件访问的详细信息，请参阅 [Getting started with Azure AD conditional access](https://azure.microsoft.com/en-us/documentation/articles/active-directory-conditional-access-azuread-connected-apps)（Azure AD 条件访问入门）。
+* 此功能可给攻击者带来更大的障碍。 有关条件访问的详细信息，请参阅 [Getting started with Azure AD conditional access](https://azure.microsoft.com/documentation/articles/active-directory-conditional-access-azuread-connected-apps)（Azure AD 条件访问入门）。
 
 **流量终止：**所有流量在云中终止。
 
@@ -53,14 +53,14 @@ Azure AD 应用程序代理提供以下安全优势：
 
 * Azure AD Identity Protection 包含机器学习驱动的智能，其数据由我们的反数字犯罪部门和 Microsoft 安全响应中心馈送。 此外，我们会主动识别遭到入侵的帐户并提供实时保护，防范高风险的登录。 我们会考虑诸多因素，例如，通过受感染的设备和匿名网络的访问，以及通过异常位置和不太可能的位置的访问。
 * 其中的许多报告与事件已通过某个 API 提供，便于与安全信息与事件管理 (SIEM) 系统集成。
-* 有关详细信息，请参阅 [Azure AD Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection)。
+* 有关详细信息，请参阅 [Azure AD Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection)。
 
 **以服务的形式进行远程访问：**无需担心要维护和修补本地服务器。
 
 * Azure AD 应用程序代理是 Microsoft 拥有的一个 Internet 级服务，保证为用户提供最新的安全修补程序和升级。
 * 未修补的软件仍会遭受大量攻击。 使用我们的服务模型，客户不再需要承受管理边缘服务器的负担。
 
-Azure AD 随附的远程访问服务 [Azure 信任中心](https://azure.microsoft.com/en-us/support/trust-center)所述的指导原则和标准运行。
+Azure AD 随附的远程访问服务 [Azure 信任中心](https://azure.microsoft.com/support/trust-center)所述的指导原则和标准运行。
 
 下图显示了 Azure AD 如何实现对本地应用程序的安全远程访问。
 

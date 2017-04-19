@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/25/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 5818efb315a0452beea03cde1adc657a9520dcac
-ms.openlocfilehash: 1fe3f3a697618bec5d314c6ebf161da37efc1346
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 28f100276511c1ae978466870ff48f885dd53c28
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -27,13 +27,11 @@ ms.lasthandoff: 03/01/2017
 
 >[!NOTE]
 >应用程序代理是一项仅当升级到高级版或基本版的 Azure Active Directory 才可用的功能。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
->
 
 如果希望用户登陆到应用中的特定页面（例如 *https://expenseApp-contoso.msappproxy.net/login/login.aspx*），可以使用 Azure AD PowerShell 模块定义实例的自定义主页 URL。
 
 >[!NOTE]
 >向用户提供对已发布应用的访问权限时，将在 [Azure AD 访问面板](active-directory-saas-access-panel-introduction.md)和 [Office 365 应用启动器](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher)中显示这些应用。
->
 
 当用户启动应用时，他们默认会定向到已发布应用的根域 URL。 登陆页通常设置为主页 URL。 例如，对于后端应用 http://ExpenseApp，URL 将发布为 *https://expenseApp-contoso.msappproxy.net*。 默认情况下，主页 URL 设置为 *https://expenseApp-contoso.msappproxy.net*。
 
@@ -139,6 +137,6 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-enable-remote-access-sharepoint.md)<br>
-[在 Azure 门户中启用应用程序代理](https://github.com/Microsoft/azure-docs-pr/blob/master/articles/active-directory/active-directory-application-proxy-enable.md)
+- [使用 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-enable-remote-access-sharepoint.md)
+- [在 Azure 门户中启用应用程序代理](active-directory-application-proxy-enable.md)
 

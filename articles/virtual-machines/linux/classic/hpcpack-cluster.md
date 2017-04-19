@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 28426f048205e7cf836375d8b8855e06d5de807e
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 868026150e81347aa3a7914f63bc19c3a878c586
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/27/2017
 * **Azure Resource Manager 模板** - 使用 Azure 应用商店中的模板或社区中的快速入门模板，自动在 Resource Manager 部署模型中创建群集。 例如，Azure 应用商店中的 [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)（适用于 Linux 工作负荷的 HPC Pack 群集）模板可为 Linux HPC 工作负荷创建完整的 HPC Pack 群集基础结构。
 * **PowerShell 脚本** - 使用 [Microsoft HPC Pack IaaS 部署脚本](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) 在经典部署模型中自动执行完整的群集部署。 此 Azure PowerShell 脚本使用 Azure 应用商店中的 HPC Pack VM 映像进行快速部署，并提供一组全面的配置参数用于部署 Linux 计算节点。
 
-有关 Azure 中 HPC Pack 群集部署选项的详细信息，请参阅 [Options to create and manage a high-peformance computing (HPC) cluster in Azure with Microsoft HPC Pack](../../virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 Microsoft HPC Pack 在 Azure 中创建和管理高性能计算 (HPC) 群集时可用的选项）。
+有关 Azure 中 HPC Pack 群集部署选项的详细信息，请参阅 [Options to create and manage a high-peformance computing (HPC) cluster in Azure with Microsoft HPC Pack](../hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 Microsoft HPC Pack 在 Azure 中创建和管理高性能计算 (HPC) 群集时可用的选项）。
 
 ### <a name="prerequisites"></a>先决条件
 * **Azure 订阅** - 可以使用 Azure 全球或 Azure 中国服务中的订阅。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
@@ -52,7 +52,7 @@ ms.lasthandoff: 03/27/2017
   * **Ubuntu Server**：14.04 LTS、16.04 LTS
     
     > [!TIP]
-    > 若要使用具有某个支持 RDMA 的 VM 大小的 Azure RDMA 网络，请从应用商店中指定 SUSE Linux Enterprise Server 12 HPC 或基于 CentOS 的 HPC 映像。 有关详细信息，请参阅 [About H-series and compute-intensive A-series VMs](../../virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（关于 H 系列和计算密集型 A 系列 VM）。
+    > 若要使用具有某个支持 RDMA 的 VM 大小的 Azure RDMA 网络，请从应用商店中指定 SUSE Linux Enterprise Server 12 HPC 或基于 CentOS 的 HPC 映像。 有关详细信息，请参阅 [About H-series and compute-intensive A-series VMs](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（关于 H 系列和计算密集型 A 系列 VM）。
     > 
     > 
 
@@ -166,7 +166,7 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
    > 
 
 ## <a name="connect-to-the-head-node"></a>连接到头节点
-在 Azure 中部署 HPC Pack 群集后，使用部署群集时提供的域凭据（例如，*hpc\\clusteradmin*）[通过远程桌面连接](../../virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)到头节点 VM。 可以从头节点管理群集。
+在 Azure 中部署 HPC Pack 群集后，使用部署群集时提供的域凭据（例如，*hpc\\clusteradmin*）[通过远程桌面连接](../../windows/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)到头节点 VM。 可以从头节点管理群集。
 
 在头节点上，启动 HPC 群集管理器来查看 HPC Pack 群集的状态。 你可以用处理 Windows 计算节点的相同方式管理和监视 Linux 计算节点。 例如，在“资源管理”中，将会看到列出的 Linux 节点（这些节点都是使用 **LinuxNode** 模板部署的）。
 
@@ -269,7 +269,7 @@ NFS 服务使你能够在运行 Windows Server 2012 操作系统的计算机之�
 * HPC Web 门户
 * REST API
 
-通过 HPC Pack GUI 工具和 HPC Web 门户将作业提交到 Azure 中的群集的方法与 Windows 计算节点相同。 请参阅 [HPC Pack Job Manager](https://technet.microsoft.com/library/ff919691.aspx)（HPC Pack 作业管理器）和 [How to submit jobs from an on-premises client computer](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（如何从本地客户端计算机提交作业）。
+通过 HPC Pack GUI 工具和 HPC Web 门户将作业提交到 Azure 中的群集的方法与 Windows 计算节点相同。 请参阅 [HPC Pack Job Manager](https://technet.microsoft.com/library/ff919691.aspx)（HPC Pack 作业管理器）和 [How to submit jobs from an on-premises client computer](../../windows/hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（如何从本地客户端计算机提交作业）。
 
 若要通过 REST API 提交作业，请参阅 [Creating and Submitting Jobs by Using the REST API in Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)（在 Microsoft HPC Pack 中通过使用 REST API 创建和提交作业）。 若要从 Linux 客户端提交作业，另请参阅 [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756) 中的 Python 示例。
 
@@ -299,7 +299,7 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) 工具�
 
 ## <a name="next-steps"></a>后续步骤
 * 尝试扩展群集，使之拥有更多的节点，或者尝试在群集上运行 Linux 工作负荷。 有关示例，请参阅 [Run NAMD with Microsoft HPC Pack on Linux compute nodes in Azure](hpcpack-cluster-namd.md)（在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD）。
-* 尝试使用包含[支持 RDMA 的计算密集型 VM](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 的群集来运行 MPI 工作负荷。 如需示例，请参阅 [Run OpenFOAM with Microsoft HPC Pack on a Linux RDMA cluster in Azure](hpcpack-cluster-openfoam.md)（在 Azure 中的 Linux RDMA 群集上运行 OpenFOAM 和 Microsoft HPC Pack）。
+* 尝试使用包含[支持 RDMA 的计算密集型 VM](../../windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 的群集来运行 MPI 工作负荷。 如需示例，请参阅 [Run OpenFOAM with Microsoft HPC Pack on a Linux RDMA cluster in Azure](hpcpack-cluster-openfoam.md)（在 Azure 中的 Linux RDMA 群集上运行 OpenFOAM 和 Microsoft HPC Pack）。
 * 如果想要在本地 HPC Pack 群集中使用 Linux 节点，请参阅 [TechNet guidance](https://technet.microsoft.com/library/mt595803.aspx)（TechNet 指南）。
 
 <!--Image references-->

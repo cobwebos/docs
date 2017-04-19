@@ -3,7 +3,7 @@
 若要引用 CloudConfigurationManager 包，请添加下面的 `using` 指令：
 
 ```csharp
-using Microsoft.Azure;    //Namespace for CloudConfigurationManager
+using Microsoft.Azure; //Namespace for CloudConfigurationManager
 ```
 
 下面的示例演示了如何检索配置文件中的连接字符串：
@@ -15,9 +15,4 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 ```
 
 可以选择使用 Azure Configuration Manager。 还可以使用 API，例如 .NET Framework 的 [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx) 类。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

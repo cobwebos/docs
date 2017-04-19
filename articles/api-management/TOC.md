@@ -45,6 +45,7 @@
 ### [使用自动化进行管理](automation-manage-api-management.md)
 ### [使用 Git 进行配置](api-management-configuration-repository-git.md)
 ### [使用 Azure Monitor 进行监视](api-management-howto-use-azure-monitor.md)
+### [使用基于角色的访问控制](api-management-role-based-access-control.md)
 # 引用
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [REST](/rest/api/apimanagement/)

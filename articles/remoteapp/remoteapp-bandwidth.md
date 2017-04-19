@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 045410664ec70c846abbf32a36dcc8f70ac471be
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 8b5f4568fa4e505b28011134cc8669ea50e17cf6
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="estimate-azure-remoteapp-network-bandwidth-usage"></a>估计 Azure RemoteApp 的网络带宽使用情况
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -43,10 +44,5 @@ Azure RemoteApp 使用远程桌面协议 (RDP) 在运行于 Azure 云的应用�
 虽然我们讨论了设备重定向，但是并未考虑由于连接的设备（如存储器、 打印机、 扫描仪、 网络照相机和其他 USB 设备）对网络通信造成的带宽影响。 这些设备的影响通常使带宽需求暂时性达到峰值，任务完成后影响也随之消失。 但是如果经常发生这种情况，带宽需求可能会非常显著。
 
 同一网络中的一位用户可能会影响其他用户的情况也不在讨论范围。 例如，在一个每秒 100 MB的网络中，一位用户观看 4k 的视频，这会严重影响同一网络上正在执行同样任务的其他用户。 遗憾的是，要确定并发使用的影响，从而提供有关系统在聚合时如何执行的常用或完整建议变得愈发困难。 只能说基础协议技术会充分利用可用网络带宽，但它的确有其自身的局限性。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

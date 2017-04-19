@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/05/2017
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
@@ -115,167 +115,172 @@ ms.lasthandoff: 03/30/2017
 
 **PostgreSQL 链接服务：**
 
-    {
-        "name": "OnPremPostgreSqlLinkedService",
-        "properties": {
-            "type": "OnPremisesPostgreSql",
-            "typeProperties": {
-                "server": "<server>",
-                "database": "<database>",
-                "schema": "<schema>",
-                "authenticationType": "<authentication type>",
-                "username": "<username>",
-                "password": "<password>",
-                "gatewayName": "<gatewayName>"
-            }
+```json
+{
+    "name": "OnPremPostgreSqlLinkedService",
+    "properties": {
+        "type": "OnPremisesPostgreSql",
+        "typeProperties": {
+            "server": "<server>",
+            "database": "<database>",
+            "schema": "<schema>",
+            "authenticationType": "<authentication type>",
+            "username": "<username>",
+            "password": "<password>",
+            "gatewayName": "<gatewayName>"
         }
     }
-
+}
+```
 **Azure Blob 存储链接服务：**
 
-    {
-      "name": "AzureStorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<AccountName>;AccountKey=<AccountKey>"
-        }
-      }
+```json
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<AccountName>;AccountKey=<AccountKey>"
     }
-
+    }
+}
+```
 **PostgreSQL 输入数据集：**
 
 该示例假定已在 PostgreSQL 中创建表“MyTable”，并且它包含用于时间序列数据的“timestamp”列。
 
 设置“external”: true 将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
-    {
-        "name": "PostgreSqlDataSet",
-        "properties": {
-            "type": "RelationalTable",
-            "linkedServiceName": "OnPremPostgreSqlLinkedService",
-            "typeProperties": {},
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "external": true,
-            "policy": {
-                "externalData": {
-                    "retryInterval": "00:01:00",
-                    "retryTimeout": "00:10:00",
-                    "maximumRetry": 3
-                }
+```json
+{
+    "name": "PostgreSqlDataSet",
+    "properties": {
+        "type": "RelationalTable",
+        "linkedServiceName": "OnPremPostgreSqlLinkedService",
+        "typeProperties": {},
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {
+            "externalData": {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
             }
         }
     }
-
+}
+```
 
 **Azure Blob 输出数据集：**
 
 数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月、日和小时部分。
 
-    {
-        "name": "AzureBlobPostgreSqlDataSet",
-        "properties": {
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties": {
-                "folderPath": "mycontainer/postgresql/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
-                "format": {
-                    "type": "TextFormat",
-                    "rowDelimiter": "\n",
-                    "columnDelimiter": "\t"
-                },
-                "partitionedBy": [
-                    {
-                        "name": "Year",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "yyyy"
-                        }
-                    },
-                    {
-                        "name": "Month",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "MM"
-                        }
-                    },
-                    {
-                        "name": "Day",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "dd"
-                        }
-                    },
-                    {
-                        "name": "Hour",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "HH"
-                        }
-                    }
-                ]
+```json
+{
+    "name": "AzureBlobPostgreSqlDataSet",
+    "properties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+            "folderPath": "mycontainer/postgresql/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
+            "format": {
+                "type": "TextFormat",
+                "rowDelimiter": "\n",
+                "columnDelimiter": "\t"
             },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            }
+            "partitionedBy": [
+                {
+                    "name": "Year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "Month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "MM"
+                    }
+                },
+                {
+                    "name": "Day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "dd"
+                    }
+                },
+                {
+                    "name": "Hour",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "HH"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
-
+}
+```
 
 **包含复制活动的管道：**
 
 管道包含配置为使用输入和输出数据集，且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **RelationalSource**，将 **sink** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询从 PostgreSQL 数据库的 public.usstates 表中选择数据。
 
-    {
-        "name": "CopyPostgreSqlToBlob",
-        "properties": {
-            "description": "pipeline for copy activity",
-            "activities": [
-                {
-                    "type": "Copy",
-                    "typeProperties": {
-                        "source": {
-                            "type": "RelationalSource",
-                            "query": "select * from \"public\".\"usstates\""
-                        },
-                        "sink": {
-                            "type": "BlobSink"
-                        }
+```json
+{
+    "name": "CopyPostgreSqlToBlob",
+    "properties": {
+        "description": "pipeline for copy activity",
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "RelationalSource",
+                        "query": "select * from \"public\".\"usstates\""
                     },
-                    "inputs": [
-                        {
-                            "name": "PostgreSqlDataSet"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "AzureBlobPostgreSqlDataSet"
-                        }
-                    ],
-                    "policy": {
-                        "timeout": "01:00:00",
-                        "concurrency": 1
-                    },
-                    "scheduler": {
-                        "frequency": "Hour",
-                        "interval": 1
-                    },
-                    "name": "PostgreSqlToBlob"
-                }
-            ],
-            "start": "2014-06-01T18:00:00Z",
-            "end": "2014-06-01T19:00:00Z"
-        }
+                    "sink": {
+                        "type": "BlobSink"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "PostgreSqlDataSet"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "AzureBlobPostgreSqlDataSet"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00",
+                    "concurrency": 1
+                },
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
+                },
+                "name": "PostgreSqlToBlob"
+            }
+        ],
+        "start": "2014-06-01T18:00:00Z",
+        "end": "2014-06-01T19:00:00Z"
     }
-
+}
+```
 ## <a name="type-mapping-for-postgresql"></a>PostgreSQL 的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下 2 步方法执行从源类型到接收器类型的自动类型转换：
 
@@ -286,46 +291,46 @@ ms.lasthandoff: 03/30/2017
 
 | PostgreSQL 数据库类型 | PostgresSQL 别名 | .NET Framework 类型 |
 | --- | --- | --- |
-| abstime | |Datetime |
+| abstime | |Datetime | &nbsp;
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bit [ (n) ] | |Byte[], String |
+| bit [ (n) ] | |Byte[], String | &nbsp;
 | bit varying [ (n) ] |varbit |Byte[], String |
 | 布尔值 |bool |布尔 |
-| box | |Byte[], String |
-| bytea | |Byte[], String |
+| box | |Byte[], String |&nbsp;
+| bytea | |Byte[], String |&nbsp;
 | character [ (n) ] |char [ (n) ] |String |
 | character varying [ (n) ] |varchar [ (n) ] |String |
-| cid | |String |
-| cidr | |String |
-| circle | |Byte[], String |
-| 日期 | |Datetime |
-| daterange | |String |
+| cid | |String |&nbsp;
+| cidr | |String |&nbsp;
+| circle | |Byte[], String |&nbsp;
+| 日期 | |Datetime |&nbsp;
+| daterange | |String |&nbsp;
 | 双精度 |float8 |Double |
-| inet | |Byte[], String |
-| intarry | |String |
-| int4range | |String |
-| int8range | |String |
+| inet | |Byte[], String |&nbsp;
+| intarry | |String |&nbsp;
+| int4range | |String |&nbsp;
+| int8range | |String |&nbsp;
 | integer |int, int4 |Int32 |
-| interval [ fields ] [ (p) ] | |Timespan |
-| json | |String |
-| jsonb | |Byte[] |
-| 折线图 | |Byte[], String |
-| lseg | |Byte[], String |
-| macaddr | |Byte[], String |
-| money | |小数 |
+| interval [ fields ] [ (p) ] | |Timespan |&nbsp;
+| json | |String |&nbsp;
+| jsonb | |Byte[] |&nbsp;
+| 折线图 | |Byte[], String |&nbsp;
+| lseg | |Byte[], String |&nbsp;
+| macaddr | |Byte[], String |&nbsp;
+| money | |小数 |&nbsp;
 | numeric [ (p, s) ] |decimal [ (p, s) ] |小数 |
-| numrange | |String |
-| oid | |Int32 |
-| 路径 | |Byte[], String |
-| pg_lsn | |Int64 |
-| point | |Byte[], String |
-| polygon | |Byte[], String |
+| numrange | |String |&nbsp;
+| oid | |Int32 |&nbsp;
+| 路径 | |Byte[], String |&nbsp;
+| pg_lsn | |Int64 |&nbsp;
+| point | |Byte[], String |&nbsp;
+| polygon | |Byte[], String |&nbsp;
 | real |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |String |
+| text | |String |&nbsp;
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

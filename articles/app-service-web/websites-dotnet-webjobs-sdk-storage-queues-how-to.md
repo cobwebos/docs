@@ -3,7 +3,7 @@ title: "如何通过 WebJobs SDK 使用 Azure 队列存储"
 description: "了解如何通过 WebJobs SDK 使用 Azure 队列存储。 创建和删除队列；插入、扫视、获取和删除队列消息等。"
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: dbfac5d9-f4a0-4e3e-9ecc-af3d7bf80463

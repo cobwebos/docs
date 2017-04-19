@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 52edc23e0f677567beeb33c47b14f6ea66989890
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 24d41c7eb6b5bd34c07d21318740ecf4c6db2d22
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="sql-azure-with-azure-remoteapp"></a>SQL Azure 与 Azure RemoteApp
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -56,10 +57,5 @@ ms.openlocfilehash: 52edc23e0f677567beeb33c47b14f6ea66989890
 * 从设备到 Azure 的网络延迟较高。 移动到可能的最佳和最快的网络连接以获取最佳性能。 使用 [azurespeed.com](http://azurespeed.com/) 作为常规工具，测试设备与 Azure 数据中心的延迟。  
 * 在 Azure RemoteApp 中托管的客户端应用压力过大。 选择一个不同的计费计划（如 Premium 计费）可提高性能。 另一个技巧是监视应用程序正在消耗的资源：在活动会话期间，执行 ctrl-alt-end 按键顺序，启动 SAS 屏幕，再选择“任务管理器”，然后观察应用的资源使用情况。
 * SQL 服务器压力过大或未优化。 按照 SQL 指南进行故障排除。 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

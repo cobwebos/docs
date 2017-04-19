@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 8c04dc5a91b7859b5d75f919da55846599038f61
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 5a8af257eb964be4677d5da6a57aadaad1eb2cc3
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-office-with-azure-remoteapp"></a>结合使用 Office 和 Azure RemoteApp
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -53,10 +54,5 @@ RemoteApp 支持 Office 365 共享计算机激活。 当你启用共享计算机
 * Office 2013 Professional Plus（试用版）模板映像仅用于评估。 使用此模板映像运行的集合不能转换到生产模式。 它们将处于“已禁用”状态。
 
 如果在试用版过期之前不转换到生产模式，RemoteApp 集合将被禁用。 别担心 - 你的设置和用户的数据会再保存 90 天，因此，你仍然可以激活你的服务，并切换到生产模式，而不会丢失任何数据。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

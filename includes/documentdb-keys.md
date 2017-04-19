@@ -2,8 +2,3 @@
 
 ![Azure 门户的屏幕截图，显示 DocumentDB 帐户，在“DocumentDB 帐户”边栏选项卡上突出显示“键”按钮，在“键”边栏选项卡上突出显示 URI、主键、辅键的值](./media/documentdb-keys/keys.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

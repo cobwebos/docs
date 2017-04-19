@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
 ms.openlocfilehash: 813120692232096275f3a7500c3b54e16af26b77
+ms.lasthandoff: 11/17/2016
 
 ---
 
@@ -197,9 +198,4 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
 * 使用 Log Analytics 中的“[日志搜索](log-analytics-log-searches.md)”可查看详细的 VMware 主机数据。
 * [创建你自己的仪表板](log-analytics-dashboards.md)显示了 VMware 主机数据。
 * 发生特定 VMware 主机事件时[创建警报](log-analytics-alerts.md)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -14,9 +14,9 @@ ms.workload: big-data
 ms.date: 02/14/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: d8100903d78a9ca8d88d2649ad5245ce3f456518
-ms.openlocfilehash: c21f244408ed6f6ca3168ee193bcba4d3b26cd40
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 230cbb12830793ca4e6b9679c5c37c4733c00f02
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -57,7 +57,7 @@ ms.lasthandoff: 02/16/2017
 * **Windows SDK**。 可从[此处](https://dev.windows.com/en-us/downloads)进行安装。 可使用它来创建安全证书。
 * **Azure Active Directory 服务主体**。 本教程中的步骤用于指导如何在 Azure AD 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 Azure AD 管理员可以跳过此先决条件，继续阅读本教程。
 
-    **如果不是 Azure AD 管理员**，将无法执行创建服务主体所需的步骤。 在这种情况下，Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 此外，必须使用证书创建服务主体，如[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)中所述。
+    **如果不是 Azure AD 管理员**，将无法执行创建服务主体所需的步骤。 在这种情况下，Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 此外，必须使用证书创建服务主体，如[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)中所述。
 
 ## <a name="create-an-azure-data-lake-store"></a>创建 Azure Data Lake Store
 按照这些步骤创建 Data Lake Store。
@@ -118,7 +118,7 @@ ms.lasthandoff: 02/16/2017
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
-        
+
         makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
     系统会提示输入私钥密码。 此命令成功执行后，指定的证书目录中应会出现 **CertFile.cer** 和 **mykey.pvk**。
@@ -194,7 +194,7 @@ ms.lasthandoff: 02/16/2017
 
     此 cmdlet 成功完成后，应出现列出群集详细信息的输出。
 
-        
+
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>在 HDInsight 群集上运行测试作业以使用 Data Lake Store
 配置 HDInsight 群集后，可在该群集上运行测试作业来测试该 HDInsight 群集是否可访问 Data Lake Store。 为此，我们会运行示例 Hive 作业，该作业会使用先前已上传至 Data Lake Store 的示例数据创建一个表。
 
@@ -228,7 +228,7 @@ ms.lasthandoff: 02/16/2017
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>使用 HDFS 命令访问 Data Lake Store
 配置 HDInsight 群集使用 Data Lake Store 后，可使用 HDFS shell 命令访问此存储。
 
-本节中，将以 SSH 方式连接到创建的 HDInsight Linux 群集中，然后运行 HDFS 命令。 
+本节中，将以 SSH 方式连接到创建的 HDInsight Linux 群集中，然后运行 HDFS 命令。
 
 * 如果使用 Windows 客户端以 SSH 方式连接到群集中，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 * 如果使用 Linux 客户端以 SSH 方式连接到群集中，请参阅[在 Linux 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)

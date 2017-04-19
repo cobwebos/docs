@@ -7,7 +7,7 @@ author: adhurwit
 manager: jhubbard
 ms.assetid: 1052c83c-e7f5-4736-922f-216194d8874b
 ms.service: sql-database
-ms.custom: overview
+ms.custom: manage-how-to
 ms.workload: data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 9916eb7deaae6acb784cac1b7b64d93a03f3c590
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 92cad42344fb6f77b3088f74ea0e37a542bd0378
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -58,11 +58,11 @@ Azure RemoteApp 是 Azure 中的 RDS 服务，用于交付应用程序。 如需
 使用库中的“Windows Server 远程桌面会话主机 Windows Server 2012 R2”映像创建新的 VM。
 
 ### <a name="2-install-ssms-from-sql-express"></a>2.从 SQL Express 安装 SSMS
-转到新的 VM，导航到此下载页面：[Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/en-us/download/details.aspx?id=42299)
+转到新的 VM，导航到此下载页面：[Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/download/details.aspx?id=42299)
 
 有一个仅下载 SSMS 的选项。 下载后，请进入安装目录，然后运行安装程序以安装 SSMS。
 
-你还需安装 SQL Server 2014 Service Pack 1。 可以在此处下载：[Microsoft SQL Server 2014 Service Pack 1 (SP1)](https://www.microsoft.com/en-us/download/details.aspx?id=46694)
+你还需安装 SQL Server 2014 Service Pack 1。 可以在此处下载：[Microsoft SQL Server 2014 Service Pack 1 (SP1)](https://www.microsoft.com/download/details.aspx?id=46694)
 
 SQL Server 2014 Service Pack 1 包括的基本功能适用于 Azure SQL 数据库。
 

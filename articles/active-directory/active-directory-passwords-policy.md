@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 9f6c36011941510d2da7f6a043128e493c13d47b
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: ae3a2236b163e6a6ffdd7f1aeabf93406981ff0b
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/28/2017
 本文介绍与 Azure AD 目录中存储的用户帐户关联的各种密码策略和复杂性要求。
 
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-my-password)。
 >
 >
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 03/28/2017
 | 帐户锁定 |10 次登录尝试失败（错误密码）之后，用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 |
 
 ## <a name="next-steps"></a>后续步骤
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-my-password)。
 * [从任意位置管理密码](active-directory-passwords.md)
 * [密码管理的工作原理](active-directory-passwords-how-it-works.md)
 * [密码管理入门](active-directory-passwords-getting-started.md)

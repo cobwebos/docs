@@ -17,9 +17,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 96f42929c3f4d0ccf4f2f1fbc206dddd90d6d3d1
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 8073a2ed0b565b1fdd2685f9c0f69abf2a3fc10a
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -136,7 +136,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
 ## <a name="create-availability-sets"></a>创建可用性集
 
-在创建虚拟机之前，需要创建可用性集。 可用性集可减少计划内或计划外维护事件的停机时间。 Azure 可用性集是 Azure 置于物理容错域和更新域上的逻辑资源组。 容错域确保可用性集的成员具有不同的电源和网络资源。 更新域确保可用性集的成员不会同时停机进行维护。 [管理虚拟机的可用性](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+在创建虚拟机之前，需要创建可用性集。 可用性集可减少计划内或计划外维护事件的停机时间。 Azure 可用性集是 Azure 置于物理容错域和更新域上的逻辑资源组。 容错域确保可用性集的成员具有不同的电源和网络资源。 更新域确保可用性集的成员不会同时停机进行维护。 [管理虚拟机的可用性](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 需要两个可用性集。 一个用于域控制器， 另一个用于 SQL Server。
 
@@ -195,7 +195,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
 
    >[!IMPORTANT]
-   >只能在创建 VM 时将 VM 放入可用性集。 创建 VM 后，无法更改可用性集。 请参阅[管理虚拟机的可用性](../../virtual-machines-windows-manage-availability.md)。
+   >只能在创建 VM 时将 VM 放入可用性集。 创建 VM 后，无法更改可用性集。 请参阅[管理虚拟机的可用性](../manage-availability.md)。
 
 Azure 将创建虚拟机。
 

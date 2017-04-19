@@ -30,15 +30,15 @@
 # 如何
 ## 规划和设计
 ### [对 Web 应用和服务进行深度诊断](app-insights-devops.md)
-### [使用 Application Insights 和 HockeyApp 进行开发人员分析](app-insights-developer-analytics.md)
 ### [在 Web 应用程序中监视性能](app-insights-web-monitor-performance.md)
-### [Application Insights 使用分析](app-insights-overview-usage.md)
+### [Application Insights 使用分析](app-insights-web-track-usage.md)
 ### [分隔 Application Insights 资源](app-insights-separate-resources.md)
 ### [如何在 Application Insights 中执行...？](app-insights-how-do-i.md)
 
 
 ## 配置
 ### Azure
+#### [探查器](app-insights-profiler.md)
 #### [诊断](app-insights-azure-diagnostics.md)
 
 ### ASP.NET
@@ -49,7 +49,6 @@
 #### [依赖项](app-insights-asp-net-dependencies.md)
 #### [版本注释](app-insights-annotations.md)
 #### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-#### [常见问题](app-insights-troubleshoot-faq.md)
 
 
 ### J2EE
@@ -92,6 +91,7 @@
 #### [教程](app-insights-analytics-tour.md)
 #### [使用](app-insights-analytics-using.md)
 #### [导入](app-insights-analytics-import.md)
+#### [诊断](app-insights-analytics-diagnostics.md)
 
 ## 自动化
 
@@ -139,11 +139,6 @@
 
 ## [定价](https://azure.microsoft.com/pricing/details/application-insights/)  
 
-## [示例和演练](app-insights-code-samples.md)
-### [演练：为 Microsoft Dynamics CRM Online 启用遥测](app-insights-sample-mscrm.md)
-### [演练：使用流分析导出到 SQL](app-insights-code-sample-export-sql-stream-analytics.md)
-### [代码示例：分析导出的数据](app-insights-code-sample-export-telemetry-sql-database.md)
-
 ## 新闻
 
 ### [博客](https://azure.microsoft.com/blog/tag/application-insights/)
@@ -151,12 +146,13 @@
 ### [SDK 发行说明](app-insights-release-notes.md)
 ### [开发人员分析工具发行说明](app-insights-release-notes-vsix.md)
 
+## [常见问题](app-insights-troubleshoot-faq.md)
 
 ## 帮助
 ### [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
 ### [堆栈溢出](http://stackoverflow.com/questions/tagged/az-application-insights)
 ### [用户之声](https://visualstudio.uservoice.com/forums/357324-application-insights)
-### [支持](app-insights-get-dev-support.md)
+### [支持](https://azure.microsoft.com/support/)
 
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=application-insights)
 

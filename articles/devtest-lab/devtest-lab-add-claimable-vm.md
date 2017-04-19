@@ -3,7 +3,7 @@ title: "向 Azure 开发测试实验室中的实验室添加可声明的 VM | Mi
 description: "了解如何向 Azure 开发测试实验室中的实验室添加可声明的虚拟机"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: craigcaseyMSFT
+author: tomarcher
 manager: douge
 editor: 
 ms.assetid: f671e66e-9630-4e30-a131-a6bad9ed9c11
@@ -13,16 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
-ms.author: v-craic
+ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: fde776806c3b5eb126540841c12267ba1a6a90e4
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 1b6e826426ebafe10abdf33f9bcfecc1c6315cfc
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加可声明的 VM
 使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可声明的 VM：通过作为[自定义映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或[应用商店映像](devtest-lab-configure-marketplace-images.md)的“基”添加。 本教程将指导你使用 Azure 门户向开发测试实验室中的实验室添加可声明的 VM，并展示用户声明 VM 时需遵循的过程。
+
+> [!NOTE]
+> 如果使用 [Azure Resource Manager 模板](devtest-lab-create-environment-from-arm.md)部署实验室 VM，则可通过将属性部分中的 **allowClaim** 属性设置为 true 来创建可声明的 VM。
+>
+>
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加可声明的 VM 的步骤
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
@@ -51,12 +56,8 @@ ms.lasthandoff: 03/21/2017
 1. 选择“创建”将指定的 VM 添加到实验室。
 1. 实验室边栏选项卡显示 VM 的创建状态 - 先是显示为“正在创建”，然后当启动 VM 后显示为“正在运行”。
 
-> [!NOTE]
-> 如果使用 [Azure Resource Manager 模板](devtest-lab-create-environment-from-arm.md)部署实验室 VM，则可通过将属性部分中的 **allowClaim** 属性设置为 true 来创建可声明的 VM。
->
->
 
-### <a name="using-a-claimable-vm"></a>使用可声明的 VM
+## <a name="using-a-claimable-vm"></a>使用可声明的 VM
 
 用户可执行以下某步骤声明“可声明的虚拟机”列表中的任何 VM：
 

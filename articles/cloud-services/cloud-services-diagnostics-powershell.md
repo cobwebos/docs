@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 43eaec477ef5279631454edd584f22573e224977
-ms.openlocfilehash: b97a81cd516b6d3d20740609c064a13fb9f8622a
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 6c68ec173fad1800a63a827028ed5481a4e7f5c8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -136,10 +137,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ## <a name="next-steps"></a>后续步骤
 * 有关使用 Azure 诊断和其他方法排查问题的详细说明，请参阅[在 Azure 云服务和虚拟机中启用诊断](cloud-services-dotnet-diagnostics.md)。
 * [诊断配置架构](https://msdn.microsoft.com/library/azure/dn782207.aspx)说明了诊断扩展的各种 XML 配置选项。
-* 若要了解如何为虚拟机启用诊断扩展，请参阅[使用 Azure 资源管理器模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+* 若要了解如何为虚拟机启用诊断扩展，请参阅[使用 Azure 资源管理器模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/windows/extensions-diagnostics-template.md)
 

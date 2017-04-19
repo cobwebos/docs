@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: jhubbard
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 0bab2cde451687311936ee74f304580a2a3b4b5e
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 6a9993aa31142681f3f6c57684913bf932fd5e7d
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -27,9 +27,9 @@ ms.lasthandoff: 03/14/2017
 
 将 Excel 连接到云中的 SQL 数据库，导入数据并根据数据库中的值来创建表和图表。 在本教程中，你将设置 Excel 与数据库表之间的连接，保存用于存储 Excel 的数据和连接信息的文件，然后根据数据库值创建分析数据透视图。
 
-在开始之前，需要在 Azure 中创建一个 SQL 数据库。 如果你没有，请参阅 [创建你的第一个 SQL 数据库](sql-database-get-started.md) ，以在几分钟内获取数据库，并让其中的示例数据正常运行。 在本文中，会将该文章中的示例数据导入 Excel，但你可以使用自己的数据执行类似的步骤。
+在开始之前，需要在 Azure 中创建一个 SQL 数据库。 如果你没有，请参阅 [创建你的第一个 SQL 数据库](sql-database-get-started-portal.md) ，以在几分钟内获取数据库，并让其中的示例数据正常运行。 在本文中，会将该文章中的示例数据导入 Excel，但你可以使用自己的数据执行类似的步骤。
 
-你还需要 Excel 的副本。 本文使用 [Microsoft Excel 2016](https://products.office.com/en-US/)。
+你还需要 Excel 的副本。 本文使用 [Microsoft Excel 2016](https://products.office.com/)。
 
 ## <a name="connect-excel-to-a-sql-database-and-create-an-odc-file"></a>将 Excel 连接到 SQL 数据库并创建 odc 文件
 1. 若要将 Excel 连接到 SQL 数据库，请打开 Excel，然后创建新的工作簿或打开现有的 Excel 工作簿。

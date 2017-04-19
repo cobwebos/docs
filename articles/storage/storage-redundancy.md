@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 349be81b5d1d5ccc1510360974b4e3b10471cf7f
-ms.openlocfilehash: 13cd31bdce89ae898a6e22a1d27b5aed819ccc0a
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 72e07c4fd686feee5045ef3b9a504d2ea41f8675
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -108,6 +109,7 @@ LRS 是成本最低的选项，与其他选项相比，提供最小的持久性�
 | 澳大利亚东南部 |澳大利亚东部 |
 | 印度南部 |印度中部 |
 | 印度中部 |印度南部 |
+| 印度西部 |印度南部 |
 | 美国政府爱荷华州 |美国政府弗吉尼亚州 |
 | 美国政府弗吉尼亚州 |美国政府爱荷华州 |
 | 加拿大中部 |加拿大东部 |
@@ -140,10 +142,5 @@ LRS 是成本最低的选项，与其他选项相比，提供最小的持久性�
 * [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)
 * [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)（Microsoft Azure 存储冗余选项和读取访问异地冗余存储）
 * [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储：具有高度一致性的高可用性云存储服务）
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

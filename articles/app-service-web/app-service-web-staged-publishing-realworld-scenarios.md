@@ -17,6 +17,7 @@ ms.author: sumuth
 translationtype: Human Translation
 ms.sourcegitcommit: 385eb87ec32f5f605b28cc8c76b1c89c7e90bfec
 ms.openlocfilehash: 5284022ea473db893800b0f64b5bf4f811d994aa
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -164,7 +165,7 @@ ms.openlocfilehash: 5284022ea473db893800b0f64b5bf4f811d994aa
     * prefix. Only numbers, letters, and underscores please!
     */
     $table_prefix = getenv('DB_PREFIX');
-```
+    ```
 
 #### <a name="use-relative-paths"></a>使用相对路径
 最后需要在 WordPress 应用中配置的是相对路径。 WordPress 在数据库中存储 URL 信息。 此存储让从一个环境将内容移动到另一个环境的操作变得更加困难。 每次从本地环境移到过渡环境或从过渡环境移到生产环境时，都需要更新数据库。 若要降低每次在不同环境间部署数据库时造成问题的风险，请使用[相对根链接插件](https://wordpress.org/plugins/root-relative-urls/)，可使用 WordPress 管理员仪表板来安装该插件。
@@ -442,9 +443,4 @@ Courier 不会帮助用户从 Umbraco CMS 的一个版本升级到另一个版�
 [为 Azure 应用服务中的 Web 应用设置过渡环境](web-sites-staged-publishing.md)
 
 [如何阻止对非生产部署槽的 Web 访问](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

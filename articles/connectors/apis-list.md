@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/27/2017
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: e9eae9ea648fc0e657d32f3f91e6641046bfae79
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 53bb5d64e27458b4a88981bd20ea4236b31431ec
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -26,30 +26,36 @@ ms.lasthandoff: 03/15/2017
 选择一个连接器即可了解如何快速构建工作流。
 
 ## <a name="standard-connectors"></a>标准连接器
+
 | 连接器 |  |  |  |
 | --- | --- | --- | --- |
-|[![API Icon][API/Web-Appicon]<br/> **API/Web App**][API/Web-Appdoc]|![API 图标][appFiguresicon]<br/>**Appfigures**|![API 图标][Asanaicon]<br/>**Asana**|![API 图标][Azure-DocumentDBicon]<br/>**Azure DocumentDB**|
-|![API 图标][Azure-MLicon]<br/>**Azure ML**|[![API Icon][Azure-Functionsicon]<br/>**Azure<br/>Functions**][Azure-Functionsdoc]|[![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>存储**][AzureBlobStoragedoc]|![API 图标][Basecamp-3icon]<br/>**Basecamp 3**|
-|![API 图标][Bitlyicon]<br/>**Bitly**|![API 图标][BizTalk-Servericon]<br/>**BizTalk Server**|![API 图标][Bloggericon]<br/>**Blogger**|[![API Icon][Boxicon]<br/>**Box**][boxDoc]|
-|![API 图标][Campfireicon]<br/>**Campfire**|![API 图标][Cognitive-Services-Text-Analyticsicon]<br/>**认知服务<br/>文本分析**|![API 图标][Common-Data-Serviceicon]<br/>**Common Data<br/>Service**|[![API Icon][DB2icon]<br/>**DB2**][db2doc]|
-|[![API Icon][Delayicon]<br/>**Delay**][Delaydoc]|[![API Icon][Dropboxicon]<br/>**Dropbox**][dropboxdoc]|[![API Icon][Dynamics-365icon]<br/>**Dynamics 365**][Dynamics-365doc]|![API 图标][Dynamics-365-for-Financialsicon]<br/>**Dynamics 365<br/>for Financials**|
-|![API 图标][Dynamics-365-for-Operationsicon]<br/>**Dynamics 365<br/>for Operations**|![API 图标][Easy-Redmineicon]<br/>**Easy Redmine**|[![API Icon][Facebookicon]<br/>**Facebook**][Facebookdoc]|[![API Icon][FileSystemIcon]<br/>**文件系统**][FileSystemdoc]|
-|[![API Icon][FTPicon]<br/>**FTP**][FTPdoc]|![API 图标][GitHubicon]<br/>**GitHub**|![API 图标][Google-Calendaricon]<br/>**Google 日历**|[![API Icon][Google-Driveicon]<br/>**Google Drive**][Google-Drivedoc]|
-|![API 图标][Google-Sheetsicon]<br/>**Google Sheets**|![API 图标][Google-Tasksicon]<br/>**Google Tasks**|![API 图标][HipChaticon]<br/>**HipChat**|[![API Icon][HTTPicon]<br/>**HTTP**][HTTPdoc]|
-|[![API Icon][HTTP-Swaggericon]<br/>**HTTP Swagger**][http-swaggerdoc]|[![API Icon][HTTP-Requesticon]<br/>**HTTP<br/>请求**][HTTP-Requestdoc]|[![API Icon][HTTP-Responseicon]<br/>**HTTP<br/>响应**][HTTP-Responsedoc]|[![API Icon][Informixicon]<br/>**Informix**][Informixdoc]|
-|![API 图标][Insightlyicon]<br/>**Insightly**|![API 图标][Instagramicon]<br/>**Instagram**|![API 图标][Instapapericon]<br/>**Instapaper**|![API 图标][JIRAicon]<br/>**JIRA**|
-|[![API Icon][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|![API 图标][Mandrillicon]<br/>**Mandrill**|[![API Icon][Microsoft-Translatoricon]<br/>**Microsoft<br/>Translator**][Microsoft-Translatordoc]|[![API Icon][Nested-Logic-Appicon]<br/>**嵌套<br/>逻辑应用**][Nested-Logic-Appdoc]|
-|[![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc]|[![API Icon][Office-365-Usersicon]][office365-usersdoc]<br/>**Office 365<br/>用户**|[![API Icon][Office-365-Videoicon]<br/>**Office 365<br/>视频**][office365-videodoc]|[![API Icon][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|
-|[![API Icon][OneDrive-for-Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for-Businessdoc]|[![API Icon][Oracle-DB-icon]<br/>**Oracle DB**][oracle-db-doc]|[![API Icon][Outlook.comicon]<br/>**Outlook.com**][Outlook.comdoc]|![API 图标][PagerDutyicon]<br/>**PagerDuty**|
-|![API 图标][Pinteresticon]<br/>**Pinterest**|[![API Icon][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|[![API Icon][Queryicon]<br/>**查询**][Querydoc]|[![API Icon][Recurrenceicon]<br/>**重复周期**][Recurrencedoc]|
-|![API 图标][Redmineicon]<br/>**Redmine**|[![API Icon][RSSicon]<br/>**RSS**][RSSdoc]|[![API Icon][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API Icon][SendGridicon]<br/>**SendGrid**][SendGriddoc]|
-|[![API Icon][Service-Busicon]<br/>**服务总线**][Service-Busdoc]|[![API Icon][SFTPicon]<br/>**SFTP**][SFTPdoc]|[![API Icon][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API Icon][Slackicon]<br/>**Slack**][Slackdoc]|
-|![API 图标][Smartsheeticon]<br/>**Smartsheet**|[![API Icon][SMTPicon]<br/>**SMTP**][SMTPdoc]|![API 图标][SparkPosticon]<br/>**SparkPost**|[![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc]|
-|![API 图标][Todoisticon]<br/>**Todoist**|[![API Icon][Trelloicon]<br/>**Trello**][Trellodoc]|[![API Icon][Twilioicon]<br/>**Twilio**][Twiliodoc]|[![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc]|
-|![API 图标][Vimeoicon]<br/>**Vimeo**|![API 图标][Visual-Studio-Team-Servicesicon]<br/>**Visual Studio<br/>Team Services**|[![API Icon][Webhookicon]<br/>**Webhook**][Webhookdoc]|![API 图标][WordPressicon]<br/>**WordPress**|
-|[![API Icon][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API Icon][Yammericon]<br/>**Yammer**][Yammerdoc]|![API 图标][YouTubeicon]<br/>**YouTube**|
+|[![API Icon][API/Web-Appicon]<br/> **API/Web App**][API/Web-Appdoc]|![API 图标][appFiguresicon]<br/>**appFigures**|![API 图标][Asanaicon]<br/>**Asana**|![API 图标][Azure-Automation-icon]<br/>**Azure 自动化**|
+|[![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>存储**][AzureBlobStoragedoc]|![API 图标][Azure-Data-Lake-icon]<br/>**Azure Data<br/>Lake**|![API 图标][Azure-DocumentDBicon]<br/>**Azure DocumentDB**|[![API Icon][Azure-Functionsicon]<br/>**Azure<br/>Functions**][Azure-Functionsdoc]|
+|![API 图标][Azure-MLicon]<br/>**Azure ML**|![API 图标][Azure-Resource-Manager-icon]<br/>**Azure Resource<br/>Manager**|![API 图标][Azure-Queues-icon]<br/>**Azure 队列**|![API 图标][Basecamp-3icon]<br/>**Basecamp 3**|
+|![API 图标][Bitbucket-icon]<br/>**Bitbucket**|![API 图标][Bitlyicon]<br/>**Bitly**|![API 图标][BizTalk-Servericon]<br/>**BizTalk Server**|![API 图标][Bloggericon]<br/>**Blogger**|
+|[![API Icon][Boxicon]<br/>**Box**][boxDoc]|![API 图标][Campfireicon]<br/>**Campfire**|![API 图标][Cognitive-Services-Text-Analyticsicon]<br/>**认知服务<br/>文本分析**|![API 图标][Common-Data-Serviceicon]<br/>**Common Data<br/>Service**|
+|[![API Icon][DB2icon]<br/>**DB2**][db2doc]|[![API Icon][Delayicon]<br/>**Delay**][Delaydoc]|[![API Icon][Dropboxicon]<br/>**Dropbox**][dropboxdoc]|[![API Icon][Dynamics-365icon]<br/>**Dynamics 365**][Dynamics-365doc]|
+|![API 图标][Dynamics-365-for-Financialsicon]<br/>**Dynamics 365<br/>for Financials**|![API 图标][Dynamics-365-for-Operationsicon]<br/>**Dynamics 365<br/>for Operations**|![API 图标][Easy-Redmineicon]<br/>**Easy Redmine**|[![API Icon][Event-hubs-icon]<br/>**事件中心**][event-hubs-doc]|
+|[![API Icon][Facebookicon]<br/>**Facebook**][Facebookdoc]|[![API Icon][FileSystemIcon]<br/>**文件系统**][FileSystemdoc]|[![API Icon][FTPicon]<br/>**FTP**][FTPdoc]|![API 图标][GitHubicon]<br/>**GitHub**|
+|![API 图标][Google-Calendaricon]<br/>**Google 日历**|[![API Icon][Google-Driveicon]<br/>**Google Drive**][Google-Drivedoc]|![API 图标][Google-Sheetsicon]<br/>**Google Sheets**|![API 图标][Google-Tasksicon]<br/>**Google Tasks**|
+|![API 图标][HipChaticon]<br/>**HipChat**|[![API Icon][HTTPicon]<br/>**HTTP**][HTTPdoc]|[![API Icon][HTTP-Swaggericon]<br/>**HTTP Swagger**][http-swaggerdoc]|[![API Icon][HTTP-Requesticon]<br/>**HTTP<br/>请求**][HTTP-Requestdoc]|
+|[![API Icon][HTTP-Responseicon]<br/>**HTTP<br/>响应**][HTTP-Responsedoc]|[![API Icon][Informixicon]<br/>**Informix**][Informixdoc]|![API 图标][Insightlyicon]<br/>**Insightly**|![API 图标][Instagramicon]<br/>**Instagram**|
+|![API 图标][Instapapericon]<br/>**Instapaper**|![API 图标][JIRAicon]<br/>**JIRA**|[![API Icon][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|![API 图标][Mandrillicon]<br/>**Mandrill**|
+|[![API Icon][Microsoft-Translatoricon]<br/>**Microsoft<br/>Translator**][Microsoft-Translatordoc]|[![API Icon][Nested-Logic-Appicon]<br/>**嵌套<br/>逻辑应用**][Nested-Logic-Appdoc]|[![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc]|[![API Icon][Office-365-Usersicon]][office365-usersdoc]<br/>**Office 365<br/>用户**|
+|[![API Icon][Office-365-Videoicon]<br/>**Office 365<br/>视频**][office365-videodoc]|[![API Icon][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|[![API Icon][OneDrive-for-Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for-Businessdoc]|[![API Icon][Oracle-DB-icon]<br/>**Oracle DB**][oracle-db-doc]|
+|[![API Icon][Outlook.comicon]<br/>**Outlook.com**][Outlook.comdoc]|![API 图标][PagerDutyicon]<br/>**PagerDuty**|![API 图标][Pinteresticon]<br/>**Pinterest**|[![API Icon][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|
+|[![API Icon][Queryicon]<br/>**查询**][Querydoc]|[![API Icon][Recurrenceicon]<br/>**重复周期**][Recurrencedoc]|![API 图标][Redmineicon]<br/>**Redmine**|[![API Icon][RSSicon]<br/>**RSS**][RSSdoc]|
+|[![API Icon][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API Icon][SendGridicon]<br/>**SendGrid**][SendGriddoc]|[![API Icon][Service-Busicon]<br/>**服务总线**][Service-Busdoc]|[![API Icon][SFTPicon]<br/>**SFTP**][SFTPdoc]|
+|[![API Icon][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API Icon][Slackicon]<br/>**Slack**][Slackdoc]|![API 图标][Smartsheeticon]<br/>**Smartsheet**|[![API Icon][SMTPicon]<br/>**SMTP**][SMTPdoc]|
+|![API 图标][SparkPosticon]<br/>**SparkPost**|[![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc]|![API 图标][Todoisticon]<br/>**Todoist**|[![API Icon][Trelloicon]<br/>**Trello**][Trellodoc]|
+|[![API Icon][Twilioicon]<br/>**Twilio**][Twiliodoc]|[![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc]|![API 图标][Vimeoicon]<br/>**Vimeo**|![API 图标][Visual-Studio-Team-Servicesicon]<br/>**Visual Studio<br/>Team Services**|
+|[![API Icon][Webhookicon]<br/>**Webhook**][Webhookdoc]|![API 图标][WordPressicon]<br/>**WordPress**|[![API Icon][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API Icon][Yammericon]<br/>**Yammer**][Yammerdoc]|
+|![API 图标][YouTubeicon]<br/>**YouTube**|
 
-### <a name="integration-account-connectors"></a>集成帐户连接器 
+> [!TIP]
+> 若要在注册 Azure 帐户前开始使用 Azure 逻辑应用，请转到[试用逻辑应用](https://tryappservice.azure.com/?appservice=logic)。 可以立即在应用服务中创建一个短期的初学者逻辑应用。 不需要使用信用卡，也不需要做出承诺。
+
+## <a name="integration-account-connectors"></a>集成帐户连接器 
 
 | 集成帐户<br/>连接器 |  |  |  |
 | --- | --- | --- | --- |
@@ -57,29 +63,37 @@ ms.lasthandoff: 03/15/2017
 | [![API Icon][as2icon]<br/>**AS2</br> 解码**][as2decode] |[![API Icon][as2icon]<br/>**AS2</br> 编码**][as2encode] |[![API Icon][x12icon]<br/>**X12</br> 解码**][x12decode] |[![API Icon][x12icon]<br/>**X12</br> 解码**][x12encode] |
 | [![API Icon][x12icon]<br/>**EDIFACT</br> 解码**][EDIFACTdecode] |[![API Icon][x12icon]<br/>**EDIFACT</br> 编码**][EDIFACTencode] | | |
 
-> [!NOTE]
-> 若要在注册 Azure 帐户前开始使用 Azure 逻辑应用，请转到[试用逻辑应用](https://tryappservice.azure.com/?appservice=logic)。 可以立即在应用服务中创建一个短期的初学者逻辑应用。 不需要使用信用卡，也不需要做出承诺。
-
 ## <a name="enterprise-connectors"></a>企业连接器
-使用企业连接器为包含 EAI 和 EDI 的 B2B 方案创建逻辑应用。  
+
+若要为包含 EAI 和 EDI 的 B2B 方案创建逻辑应用，请添加这些企业连接器。
 
 | Enterprise<br/>连接器 |  |
 | --- | --- |
 |![API 图标][MQicon]<br/>**MQ**|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
 
+## <a name="connectors-as-triggers"></a>用作触发器的连接器
 
-
-<!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
-### <a name="connectors-can-be-triggers"></a>连接器可以是触发器
-多个连接器可提供触发器，在发生特定事件时通知应用。 例如，FTP 连接器提供 OnUpdatedFile 触发器。 可以生成侦听此触发器并每当触发器触发时执行某个操作的逻辑应用、PowerApp 或流。
+某些连接器提供触发器，在发生特定事件时通知应用。 例如，FTP 连接器提供 OnUpdatedFile 触发器，在更新文件时可通知应用。 可以构建侦听此触发器并每当触发器触发时执行某个操作的逻辑应用、PowerApp 或流。
 
 触发器有两种类型：  
 
-* 轮询触发器：这些触发器以指定的频率轮询服务，检查是否有新数据。 有新数据可用时，将运行应用的新实例并以该数据作为输入。 为了防止多次使用同一数据，触发器可能会清除已读取并已传递给应用的数据。
-* 推送触发器：这些触发器侦听终结点上的数据或要发生的事件，然后触发应用的新实例。 Twitter 连接器就是一个例子。
+* *轮询触发器*：这些触发器以指定的频率轮询服务，检查是否有新数据。 有新数据可用时，将运行应用的新实例并以该数据作为输入。 为了防止多次使用同一数据，触发器可能会清除已读取并已传递给应用的数据。
 
-### <a name="connectors-can-be-actions"></a>连接器可以是操作
-还可在应用中将连接器用作操作。 操作可用于查找数据，随后可在运行应用时使用这些数据。 例如，在处理订单时，可能需要从 SQL 数据库中查找客户数据。 或者，可能需要在目标表中写入、更新或删除数据。 可以使用连接器提供的操作来执行这些任务。 操作映射到 Swagger 元数据中定义的操作。
+* *推送触发器*：这些触发器侦听终结点上的数据或要发生的事件，然后触发应用的新实例。 Twitter 连接器就是一个例子。
+
+## <a name="connectors-as-actions"></a>用作操作的连接器
+
+连接器还提供可在应用工作流中使用的操作。 例如，应用可以查找数据，然后，你可以在运行应用时使用这些数据。 举个具体的例子，在处理订单时，你可以从 SQL 数据库中查找客户数据。 或者，可能需要在目标表中写入、更新或删除数据。 操作映射到 Swagger 元数据中定义的操作。
+
+## <a name="custom-connectors-and-certification-for-microsoft-azure"></a>Microsoft Azure 的自定义连接器和认证
+
+若要调用的 API 运行自定义代码，或者无法作为连接器使用，可以将基于 REST 的 API 应用作为自定义连接器创建，以便[扩展逻辑应用平台](../logic-apps/logic-apps-create-api-app.md)。 若要将自定义 API 应用公开并使其可以在 Azure 中使用，请将提名的应用提交到 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)。
+
+## <a name="get-help"></a>获取帮助
+
+若要提问、解答问题和了解其他 Azure 逻辑应用用户的活动，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+
+为了帮助我们改进逻辑应用和连接器，敬请在[逻辑应用用户反馈站点](http://aka.ms/logicapps-wish)上投票或发表看法。
 
 ## <a name="next-steps"></a>后续步骤
 * [创建第一个逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
@@ -95,6 +109,7 @@ ms.lasthandoff: 03/15/2017
 [delaydoc]: ./connectors-native-delay.md "执行延迟的操作"
 [dropboxdoc]: ./connectors-create-api-dropbox.md "连接到 Dropbox。上载、获取、删除、列出文件，等等"
 [Dynamics-365doc]: ./connectors-create-api-crmonline.md "连接到 Dynamics CRM Online，以便使用 CRM Online 数据"
+[event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "连接到 Azure 事件中心。在逻辑应用与事件中心之间接收和发送事件"
 [facebookdoc]: ./connectors-create-api-facebook.md "连接到 Facebook。发布到时间线、获取页面源，等等"
 [filesystemdoc]: ../logic-apps/logic-apps-using-file-connector.md "连接到本地文件系统"
 [ftpdoc]: ./connectors-create-api-ftp.md "连接到 FTP/FTPS 服务器以执行 FTP 任务，例如上载、获取、删除文件，等等"
@@ -118,7 +133,7 @@ ms.lasthandoff: 03/15/2017
 [office365-videodoc]: ./connectors-create-api-office365-video.md "获取视频信息、视频列表和频道，以及 Office 365 视频的播放 URL"
 [onedrivedoc]: ./connectors-create-api-onedrive.md "连接到个人 Microsoft OneDrive。上载、删除、列出文件，等等"
 [onedrive-for-businessdoc]: ./connectors-create-api-onedriveforbusiness.md "连接到企业 Microsoft OneDrive。上载、删除、列出文件，等等"
-[oracle-db-doc]: https://powerapps.microsoft.com/blog/connecting-to-oracle-database-from-powerapps-flow-and-logic-apps "连接到 Oracle 数据库"
+[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "连接到 Oracle 数据库以添加、插入和删除行以及执行其他操作"
 [outlook.comdoc]: ./connectors-create-api-outlook.md "连接到 Outlook 邮箱。管理电子邮件、日历、联系人等"
 [project-onlinedoc]: ./connectors-create-api-projectonline.md "连接到 Microsoft Project Online。管理项目、任务、资源等"
 [querydoc]: ./connectors-native-query.md "通过查询操作选择和筛选数组"
@@ -159,10 +174,15 @@ ms.lasthandoff: 03/15/2017
 <!--Icon references-->
 [appFiguresicon]: ./media/apis-list/appfigures.png
 [Asanaicon]: ./media/apis-list/asana.png
+[Azure-Automation-icon]: ./media/apis-list/azure-automation.png
 [AzureBlobStorageicon]: ./media/apis-list/azureblob.png
-[Azure-DocumentDBicon]: ./media/apis-list/documentdb.png
+[Azure-Data-Lake-icon]: ./media/apis-list/azure-data-lake.png
+[Azure-DocumentDBicon]: ./media/apis-list/azure-documentdb.png
 [Azure-MLicon]: ./media/apis-list/azureml.png
+[Azure-Resource-Manager-icon]: ./media/apis-list/azure-resource-manager.png
+[Azure-Queues-icon]: ./media/apis-list/azure-queues.png
 [Basecamp-3icon]: ./media/apis-list/basecamp.png
+[Bitbucket-icon]: ./media/apis-list/bitbucket.png
 [Bitlyicon]: ./media/apis-list/bitly.png
 [BizTalk-Servericon]: ./media/apis-list/biztalk.png
 [Bloggericon]: ./media/apis-list/blogger.png
@@ -175,6 +195,7 @@ ms.lasthandoff: 03/15/2017
 [Dynamics-365-for-Financialsicon]: ./media/apis-list/madeira.png
 [Dynamics-365-for-Operationsicon]: ./media/apis-list/dynamicsax.png
 [Easy-Redmineicon]: ./media/apis-list/easyredmine.png
+[Event-Hubs-icon]: ./media/apis-list/eventhubs.png
 [Facebookicon]: ./media/apis-list/facebook.png
 [FTPicon]: ./media/apis-list/ftp.png
 [GitHubicon]: ./media/apis-list/github.png

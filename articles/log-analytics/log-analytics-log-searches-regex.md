@@ -14,39 +14,39 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 73739f4f154bebe271ce29bd285122ea7f56d769
-ms.openlocfilehash: bcf36cdec6c1dda7aa0213c42adf8d0281dc28d2
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 6c01fe7a791742d283505057a310891a075029ef
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="using-regular-expressions-to-filter-log-searches-in-log-analytics"></a>在 Log Analytics 中使用正则表达式筛选日志搜索结果
 
-可以通过[日志搜索](log-analytics-log-searches.md)从 Log Analytics 存储库提取信息。  可以通过[筛选表达式](log-analytics-search-reference.md#filter-expression)按特定条件筛选搜索结果。  可以使用 **RegEx** 关键字为该筛选器指定正则表达式。  
+可以通过[日志搜索](log-analytics-log-searches.md)从 Log Analytics 存储库提取信息。  可以通过[筛选表达式](log-analytics-search-reference.md#filter-expressions)按特定条件筛选搜索结果。  可以使用 **RegEx** 关键字为该筛选器指定正则表达式。  
 
 本文详细介绍了 Log Analytics 使用的正则表达式语法。
 
 
 ## <a name="regex-keyword"></a>RegEx 关键字
 
-请通过以下语法在日志搜索中使用 **RegEx** 关键字。  若要确定正则表达式本身的语法，可参阅本文其他部分。 
+请通过以下语法在日志搜索中使用 **RegEx** 关键字。  若要确定正则表达式本身的语法，可参阅本文其他部分。
 
     field:Regex("Regular Expression")
     field=Regex("Regular Expression")
 
-例如，若要通过正则表达式返回类型为*警告* 或*错误* 的警报记录，可使用以下日志搜索。 
+例如，若要通过正则表达式返回类型为*警告* 或*错误* 的警报记录，可使用以下日志搜索。
 
     Type=Alert AlertSeverity=RegEx("Warning|Error")
 
 ## <a name="partial-matches"></a>部分匹配
 请注意，正则表达式必须与属性的整个文本匹配。  部分匹配不会返回任何记录。  例如，如果尝试从名为 srv01.contoso.com 的计算机返回记录，则以下日志搜索**不会**返回任何记录。
 
-    Computer=RegEx("srv..") 
+    Computer=RegEx("srv..")
 
-这是因为仅名称的第一部分与正则表达式匹配。  下面的两个日志搜索会从该计算机返回记录，因为与整个名称匹配。 
+这是因为仅名称的第一部分与正则表达式匹配。  下面的两个日志搜索会从该计算机返回记录，因为与整个名称匹配。
 
     Computer=RegEx("srv..@")
-    Computer=RegEx("srv...contoso.com") 
+    Computer=RegEx("srv...contoso.com")
 
 ## <a name="characters"></a>字符
 指定不同的字符。

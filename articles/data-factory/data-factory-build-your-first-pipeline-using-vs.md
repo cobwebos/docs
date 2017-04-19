@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 23927acae12f0db13fe6dd24a4e1fde8ced25d40
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 5c6a6fcf86867fb2195a31d636003f16ed503da2
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -502,6 +502,9 @@ ms.lasthandoff: 03/07/2017
 6. 部署操作完成后，请单击“完成”。
 
 部署时，在将实体部署到 Azure 数据工厂服务之前，将使用配置文件中的值设置数据工厂实体的 JSON 文件中的属性。   
+
+## <a name="use-azure-key-vault"></a>使用 Azure 密钥保管库
+不建议将敏感数据（例如连接字符串）提交到代码存储库，这样做违反安全策略。 请参阅 GitHub 上的 [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFSecurePublish) 示例，了解在发布数据工厂实体时，如何将敏感信息存储在 Azure Key Vault 中并进行使用。 使用适用于 Visual Studio 的 Secure Publish 扩展，可以将机密存储在 Key Vault 中，仅在链接的服务/部署配置中指定这些机密的引用。 向 Azure 发布数据工厂实体时，将会对这些引用进行解析。 然后即可将这些文件提交到源存储库，不会公开任何机密。
 
 ## <a name="summary"></a>摘要
 本教程通过在 HDInsight hadoop 群集上运行 Hive 脚本，创建了一个 Azure 数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下步骤：  

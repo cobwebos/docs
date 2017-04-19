@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e28f4004e3cafcfa09309ff0143c83af5fa5493a
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c5b87c3a814b816e8bdc28d3e22b64c2197579af
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-create-a-custom-template-image-for-azure-remoteapp"></a>如何创建 Azure RemoteApp 的自定义模板映像
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -142,10 +143,5 @@ Azure RemoteApp 使用 Windows Server 2012 R2 模板映像托管所有要与用�
 
 * [如何创建 RemoteApp 的混合集合](remoteapp-create-hybrid-deployment.md)
 * [如何创建 RemoteApp 的云集合](remoteapp-create-cloud-deployment.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

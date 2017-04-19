@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/17/2017
+ms.date: 04/06/2017
 ms.author: edmaca, yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: f5a27eba14560a56ad5020daf7741f37ac2cc6f2
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: c26ac89bd7ef494331ba309aacf87de03506ac4c
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="tutorial-develop-u-sql-scripts-using-data-lake-tools-for-visual-studio"></a>教程：使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-了解如何安装用于 Visual Studio 的 Data Lake 工具，以及如何使用用于 Visual Studio 的 Data Lake 工具来编写和测试 U-SQL 脚本。
+使用用于 Visual Studio 的 Data Lake 工具编写和测试 U-SQL 脚本。
 
 U-SQL 是高度可缩放、高度可扩展的语言，用于准备、转换和分析 Data Lake 中的所有数据，此外还提供其他功能。 有关详细信息，请参阅 [U-SQL Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348)（U-SQL 参考）。
 
 ## <a name="prerequisites"></a>先决条件
-* **Visual Studio 2015 update 3、Visual Studio 2013 update 4 或 Visual Studio 2012。支持 Enterprise (Ultimate/Premium)、Professional、Community 版本；不支持 Express 版本。目前不支持 Visual Studio 2017。**
+* **Visual Studio 2017（使用数据存储和处理工作负荷）、Visual Studio 2015 Update 3、Visual Studio 2013 Update 4 或 Visual Studio 2012。支持 Enterprise (Ultimate/Premium)、Professional、Community 版本；不支持 Express 版本。**
 * **用于 .NET 的 Microsoft Azure SDK 2.7.1 或更高版本**。  可以使用 [Web 平台安装程序](http://www.microsoft.com/web/downloads/platform.aspx)安装它。
 * **[适用于 Visual Studio 的 Data Lake 工具](http://aka.ms/adltoolsvs)**。
 
-    安装用于 Visual Studio 的 Data Lake 工具后，可以在服务器资源管理器的“Azure”节点下看到“Data Lake Analytics”节点（可以按 Ctrl+Alt+S 打开服务器资源管理器）。
+    安装用于 Visual Studio 的 Data Lake 工具后，可以在服务器资源管理器的“Azure”节点下看到“Data Lake Analytics”节点（按 Ctrl+Alt+S 打开服务器资源管理器）。
 
-* **Data Lake Analytics 帐户和示例数据** Data Lake 工具不支持创建 Data Lake Analytics 帐户。 可使用 Azure 门户、Azure PowerShell、.NET SDK 或 Azure CLI 创建帐户。
+* **Data Lake Analytics 帐户和示例数据** Data Lake 工具不支持创建 Data Lake Analytics 帐户。 请使用 Azure 门户、Azure PowerShell、.NET SDK 或 Azure CLI 创建帐户。
 为方便起见，[附录 A：用于准备教程的 PowerShell 示例](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)部分中提供了用于创建 Data Lake Analytics 服务及上传源数据文件的 PowerShell 脚本。
 
-    也可浏览[通过 Azure 门户开始使用 Azure Data Lake Analytics ](data-lake-analytics-get-started-portal.md)中的以下两个部分，手动创建帐户和上传数据：
+    也可浏览[通过 Azure 门户开始使用 Azure Data Lake Analytics ](data-lake-analytics-get-started-portal.md)中的以下两个部分，手动创建帐户和上载数据：
 
     1. [创建 Azure Data Lake Analytics 帐户](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)。
     2. [将 SearchLog.tsv 上载到默认的 Data Lake Storage 帐户](data-lake-analytics-get-started-portal.md#prepare-source-data)。
@@ -54,7 +54,7 @@ U-SQL 是高度可缩放、高度可扩展的语言，用于准备、转换和�
 ## <a name="upload-source-data-files"></a>上载源数据文件
 已在本教程前面的 **先决条件** 部分中上载了一些数据。  
 
-如果想要使用自己的数据，下面是从 Data Lake 工具上载数据的过程。
+若要使用自己的数据，请执行以下步骤，以便从 Data Lake 工具上载数据。
 
 **将文件上载到依赖的 Azure Data Lake 帐户**
 
@@ -128,9 +128,9 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
        自动填写名称，并显示行集、类、数据库、架构和用户定义对象 (UDO) 的成员。
 
        目录实体（数据库、架构、表、UDO 等）的 IntelliSense 与计算帐户相关。 可以在顶部工具栏中检查当前活动的计算帐户、数据库和架构，通过下拉列表切换实体。
-   * **展开* 列**
+   * **展开 * 列**
 
-       单击 *的右侧，可以看到*下面出现蓝色下划线。 将鼠标光标悬停在蓝色下划线上，然后单击向下箭头。
+       单击 * 的右侧，可以看到 * 下面出现蓝色下划线。 将鼠标光标悬停在蓝色下划线上，然后单击向下箭头。
        ![Data Lake visual studio 工具展开](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        单击“展开列”，工具会将 * 替换为列名称。

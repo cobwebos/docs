@@ -16,15 +16,15 @@ ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 9d1a89e84b7340bf4bb3d759b4ae856431efcc0e
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: e1e915e07591ed104a30e9194ec6228b04519b8c
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS)（预览版）中设计和生成管理解决方案
 > [!NOTE]
-> 这是在 OMS 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。   j
+> 这是在 OMS 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。
 
 通过提供客户可添加到其 OMS 工作区的打包管理方案，[管理解决方案](operations-management-suite-solutions.md)可扩展 Operations Management Suite (OMS) 的功能。  本文提供了一个基本的流程，方便用户设计和生成符合最常见要求的管理解决方案。  如果你不了解如何生成管理解决方案，则可一开始就使用此流程，然后在要求提高以后利用相关概念生成更复杂的解决方案。
 

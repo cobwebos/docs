@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: fcdeac53c79551000b48a47a1afc65e082bcc692
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: b835b04d6ef6d06e35add4f503e6800099e97383
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -259,6 +259,16 @@ net use z: \\samples.file.core.windows.net\logs /u:AZURE\samples <storage-accoun
 > 某些 Internet 服务提供商可能会阻止端口 445，因此你可能需要与你的服务提供商核实。
 > 
 > 
+
+### <a name="unmount-the-file-share"></a>卸载文件共享
+若要卸载文件共享，可以将 `net use` 命令与 `/delete` 选项配合使用。
+
+```
+net use <drive-letter> /delete
+
+example :
+net use z: /delete
+```
 
 ## <a name="develop-with-file-storage"></a>使用文件存储进行开发
 若要编写调用文件存储的代码，可以使用适用于 .NET 和 Java 的存储客户端库或 Azure 存储 REST API。 本部分中的示例演示如何通过在桌面上运行的简单控制台应用程序使用 [用于 .NET 的 Azure 存储客户端库](https://msdn.microsoft.com/library/mt347887.aspx) 处理文件共享。
@@ -633,7 +643,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
     是的。 如果流量在同一区域，是免费的。
 7. **从本地虚拟机连接到 Azure 文件存储是否依赖于 Azure ExpressRoute？**
    
-    否。 如果你没有 ExpressRoute，你仍可以从本地访问文件共享，只要你将端口 445（TCP 出站）打开供 Internet 访问。 但是，如果你愿意，你可以将 ExpressRoute 用于文件存储。
+    不能。 如果没有 ExpressRoute，仍可从本地访问文件共享，只需将端口 445（TCP 出站）打开供 Internet 访问即可。 但是，如果你愿意，你可以将 ExpressRoute 用于文件存储。
 8. **故障转移群集的“文件共享见证”是 Azure 文件存储的使用案例之一吗？**
    
     目前，不支持此功能。
@@ -666,11 +676,13 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
     可以参考 [Azure 文件故障排除文章](storage-troubleshoot-file-connection-problems.md)了解有关端到端故障排除指南。               
 
 18. **如何针对 Azure 文件启用服务器端加密？**
+> [!NOTE]
+> 针对 Azure 文件的[服务器端加密](storage-service-encryption.md)目前提供预览版。 如果在预览期间出现问题，可联系 [SSEDiscussion](mailto:ssediscussions@microsoft.com)。
 
-    针对 Azure 文件的[服务器端加密](storage-service-encryption.md)目前提供预览版。 在预览期间，只能在使用 [Azure 门户](https://portal.azure.com)新建的 Azure Resource Manager 存储帐户上启用此功能。 启用此功能不需额外付费。 针对 Azure 文件存储启用存储服务加密以后，系统会自动加密数据。 
+    [Server Side Encryption](storage-service-encryption.md) for Azure Files is currently in preview. During preview, you can enable this feature only on new Azure Resource Manager storage accounts created by using the [Azure portal](https://portal.azure.com). There is no additional charge for enabling this feature. When you enable Storage Service Encryption for Azure File Storage, your data is automatically encrypted for you. 
     
-    我们计划未来允许用户通过 [Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage)、[Azure CLI](storage-azure-cli.md) 和 [Azure 存储资源提供程序 REST API](/rest/api/storagerp/storageaccounts) 为文件存储启用加密。 
-    若要详细了解如何在 Azure 存储中进行静态加密，请参阅[存储服务加密](storage-service-encryption.md)；如果在预览期间有疑问，可联系 ssediscussions@microsoft.com。
+    We plan to support enabling encryption for file storage with [Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage), [Azure CLI](storage-azure-cli.md), and the [Azure Storage Resource Provider REST API](/rest/api/storagerp/storageaccounts) in the future. 
+    See [Storage Service Encryption](storage-service-encryption.md) for more information about encryption at rest in Azure Storage, and you can contact ssediscussions@microsoft.com if you have questions during the preview.
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。

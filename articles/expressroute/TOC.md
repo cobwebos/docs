@@ -14,7 +14,7 @@
 ## [路由要求](expressroute-routing.md)
 ## [NAT 要求](expressroute-nat.md)
 ## [QoS 要求](expressroute-qos.md)
-## [将线路从经典部署转移到 Resource Manager 部署](expressroute-move.md)
+## [关于将线路从经典部署移动到 Resource Manager 部署](expressroute-move.md)
 
 # 如何
 ## 创建和修改线路
@@ -26,9 +26,12 @@
 ## 将虚拟网络链接到 ExpressRoute 线路
 ### [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
-## [配置 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)
+## 配置 ExpressRoute 的虚拟网络网关
+### [Azure 门户](expressroute-howto-add-gateway-portal-resource-manager.md)
+### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [配置 ExpressRoute 和站点到站点并存连接](expressroute-howto-coexist-resource-manager.md)
 ## [将线路从经典部署转移到 Resource Manager 部署](expressroute-howto-move-arm.md)
+## [将关联的虚拟网络从经典部署迁移到 Resource Manager 部署](expressroute-migration-classic-resource-manager.md)
 ## 为 ExpressRoute 配置路由器
 ### [配置路由器](expressroute-config-samples-routing.md)
 ### [NAT 的路由器配置示例](expressroute-config-samples-nat.md)

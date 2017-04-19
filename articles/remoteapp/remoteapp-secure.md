@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: fb524efc41b1eaa36319726b3b8b534857e2afc7
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 13085f51529dadb739b4c629bb50d8aff0c9d8c2
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="secure-apps-and-resources-in-azure-remoteapp"></a>保护 Azure RemoteApp 中的应用和资源的安全
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -48,10 +49,5 @@ Azure RemoteApp 为用户提供对集中管理的 Windows 应用的访问，从�
 * 请注意，通过 RemoteApp PowerShell 模块配置重定向（如[此处](remoteapp-redirection.md)所示）依赖客户端计算机强制实施该策略，因此，如果安全性是主要目标，你会希望通过模板映像本地策略或通过组策略强制实施该策略。
 * [Windows Server 2012 R2 策略](https://technet.microsoft.com/library/hh831791.aspx)。
 * [Office 2013 策略](https://technet.microsoft.com/library/cc178969.aspx)（包括[如何自定义 Office 工具栏](https://technet.microsoft.com/library/cc179143.aspx)）。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

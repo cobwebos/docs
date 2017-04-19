@@ -1,16 +1,17 @@
----
+--- 
 layout: HubPage
 hide_bc: true
-title: "Microsoft Azure 文档 | Microsoft 文档"
+title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 24a921e6ccb73d3092e774243d51085f2d7835b9
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 11c880885b501f402413dec9175c8b2659f65bf3
+ms.lasthandoff: 04/19/2017
 
 ---
 <div id="main" class="v2">
     <div class="container">
+        <h1 class="screenReader">Microsoft Azure 文档</h1>
         <ul class="cardsY panelContent featuredContent">
             <li>
                 <a href="http://aka.ms/azuredevgetstarted/">
@@ -23,7 +24,7 @@ ms.lasthandoff: 03/31/2017
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>Azure 开发人员入门指南</h3>
+                                    <span class="likeAnH3">Azure 开发人员入门指南</span>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +42,7 @@ ms.lasthandoff: 03/31/2017
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>Azure IT 操作人员入门指南</h3>
+                                    <span class="likeAnH3">Azure IT 操作人员入门指南</span>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +60,7 @@ ms.lasthandoff: 03/31/2017
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>适用于 Azure 的免费 PluralSight 视频培训</h3>
+                                    <span class="likeAnH3">适用于 Azure 的免费 PluralSight 视频培训</span>
                                 </div>
                             </div>
                         </div>
@@ -548,19 +549,19 @@ ms.lasthandoff: 03/31/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/app-service-web">
+                                            <a href="/azure/app-service-web/">
                                                 <img src="media/index/app-service-web.svg" alt="" />
                                                 <p>Web 应用</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/app-service-mobile">
+                                            <a href="/azure/app-service-mobile/">
                                                 <img src="media/index/app-service-mobile.svg" alt="" />
                                                 <p>移动应用</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/app-service-api">
+                                            <a href="/azure/app-service-api/">
                                                 <img src="media/index/app-service-api.svg" alt="" />
                                                 <p>API 应用</p>
                                             </a>
@@ -667,7 +668,113 @@ ms.lasthandoff: 03/31/2017
                         </ul>
                     </li>
                     <li>
-                        <a data-default="true" href="#Compute">计算</a>
+                        <a data-default="true" href="#get-started">入门</a>
+                        <ul id="get-started" class="cardsL">
+                            <li>
+                                <div class="container intro">
+                                    <h2 class="likeAnH1">Azure 入门</h2>
+                                    <p>使用快速入门、示例和教程探索我们最常用的服务。</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardText">
+                                                <h3>部署基础结构</h3>
+                                                <a class="barLink" href="/azure/virtual-machines/linux/">Linux 虚拟机</a>
+                                                <a class="barLink" href="/azure/virtual-machines/windows/">Windows 虚拟机</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardText">
+                                                <h3>开发应用</h3>
+                                                <div class="ico48Link">
+                                                    <a href="/azure/app-service-web/app-service-web-get-started-dotnet">
+                                                        <img src="media/index/logo_NET.svg" alt="">
+                                                        <span>.NET</span>
+                                                    </a>
+                                                </div>
+                                                <div class="ico48Link">
+                                                    <a href="/azure/app-service-web/app-service-web-get-started-nodejs">
+                                                        <img src="media/index/logo_nodejs.svg" alt="">
+                                                        <span>Node.js</span>
+                                                    </a>
+                                                </div>
+                                                <div class="ico48Link">
+                                                    <a href="/azure/app-service-web/app-service-web-get-started-php">
+                                                        <img src="media/index/logo_PHP.svg" alt="">
+                                                        <span>PHP</span>
+                                                    </a>
+                                                </div>
+                                                <div class="ico48Link">
+                                                    <a href="/azure/app-service-web/app-service-web-get-started-java">
+                                                        <img src="media/index/logo_java.svg" alt="">
+                                                        <span>Java</span>
+                                                    </a>
+                                                </div>
+                                                <div class="ico48Link">
+                                                    <a href="/azure/app-service-web/app-service-web-get-started-python">
+                                                        <img src="media/index/logo_python.svg" alt="">
+                                                        <span>Python</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardText">
+                                                <h3>管理数据</h3>
+                                                <a class="barLink" href="/azure/sql-database/">SQL 数据库即服务</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardText">
+                                                <h3>命令行工具</h3>
+                                                <div class="ico48Link">
+                                                    <a href="/cli/azure/overview">
+                                                        <img src="media/index/azure_dev-7.svg" alt="">
+                                                        <span>Azure<br />CLI</span>
+                                                    </a>
+                                                </div>
+                                                <div class="ico48Link">
+                                                    <a href="/powershell/azure/overview">
+                                                        <img src="media/index/azure_dev-8.svg" alt="">
+                                                        <span>Azure<br />PowerShell</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li></li>
+                            <li class="bottomRightItem">
+                              <a href="https://aka.ms/j3wr7y">
+                                <button style="cursor: pointer;position: relative; background: #3498db; border:none; padding:8px 16px; padding-right:30px;color: white; font-size:14px;">查看所有 Azure 服务<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 14" style="fill:white;height: 14px;position: absolute;bottom: 13px;right: 12px;width: 1em;"><path d="M7.4 7L1 .6l.6-.6 7 7-7 7-.6-.7L7.4 7z"/></svg></button>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#Compute">计算</a>
                         <ul id="Compute" class="cardsA">
                             <li>
                                 <a href="/azure/virtual-machines/linux/">
@@ -2446,7 +2553,7 @@ ms.lasthandoff: 03/31/2017
                         <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
-                                    <h1>语言 &amp; 框架</h1>
+                                    <h2>语言 &amp; 框架</h2>
                                 </div>
                             </li>
                             <li>
@@ -2460,13 +2567,13 @@ ms.lasthandoff: 03/31/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/dotnet/api">获取 .NET SDK</a>
+                                                    <a href="/azure/dotnet/ ">获取 .NET SDK</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/azure/app-service-web/app-service-web-get-started-dotnet">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/dotnet/api">API 参考</a>
+                                                    <a href="/dotnet/api/?term=Microsoft.Azure">API 参考</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/documentation/samples/?platform=dotnet">获取示例</a>
@@ -2553,7 +2660,7 @@ ms.lasthandoff: 03/31/2017
                                                     <a href="https://github.com/Azure/azure-sdk-for-java#download">获取 Java SDK</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/java/api/">入门</a>
+                                                    <a href="/java/api/">入门</a>
                                                 </p>
                                                 <p>
                                                     <a href="/java/api/">API 参考</a>
@@ -2610,7 +2717,7 @@ ms.lasthandoff: 03/31/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://docs.microsoft.com/rest/api/">REST 入门</a>
+                                                    <a href="/rest/api/">REST 入门</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/rest/api">参考</a>
@@ -2625,7 +2732,7 @@ ms.lasthandoff: 03/31/2017
                             </li>
                             <li>
                                 <div class="container">
-                                    <h1>命令行接口 (CLI)</h1>
+                                    <h2>命令行接口 (CLI)</h2>
                                 </div>
                             </li>
                             <li>
@@ -2665,13 +2772,13 @@ ms.lasthandoff: 03/31/2017
                                             <div class="cardText">
                                                 <h3>PowerShell</h3>
                                                 <p>
-                                                    <a href="/azure/powershell-install-configure">入门</a>
+                                                    <a href="/powershell/azure/get-started-azureps">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/PowerShell/PowerShell/blob/master/docs/installation/">下载 PowerShell</a>
+                                                    <a href="/powershell/azure/install-azurerm-ps">下载 PowerShell</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/">参考</a>
+                                                    <a href="/powershell/azure/overview">参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2702,7 +2809,7 @@ ms.lasthandoff: 03/31/2017
                                                     <a href="http://aka.ms/webpi-azure-cli">下载用于 Windows 的 Azure CLI</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/articles/azure-cli-arm-commands/">参考</a>
+                                                    <a href="/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2711,7 +2818,7 @@ ms.lasthandoff: 03/31/2017
                             </li>
                             <li>
                                 <div class="container">
-                                    <h1>工具 &amp; 扩展</h1>
+                                    <h2>工具 &amp; 扩展</h2>
                                 </div>
                             </li>
                             <li>
@@ -2797,10 +2904,10 @@ ms.lasthandoff: 03/31/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://storageexplorer.com/">存储资源管理器</a>
+                                                    <a href="http://storageexplorer.com">存储资源管理器</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/">入门</a>
+                                                    <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">入门</a>
                                                 </p>
                                                 <p>
                                                      <a  href="http://go.microsoft.com/fwlink/?LinkId=722418">适用于 Linux 的下载项</a>
@@ -2856,7 +2963,7 @@ ms.lasthandoff: 03/31/2017
                                 </div>
                             </li>
                             <li>
-                                <a href="http://aka.ms/cloud-fundamentals">
+                                <a href="/azure/architecture/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2875,7 +2982,7 @@ ms.lasthandoff: 03/31/2017
                                 </a>
                             </li>
                             <li>
-                                <a href="http://aka.ms/architecture">
+                                <a href="/azure/architecture/reference-architectures/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2894,7 +3001,7 @@ ms.lasthandoff: 03/31/2017
                                 </a>
                             </li>
                             <li>
-                                <a href="http://aka.ms/cloud-design-patterns">
+                                <a href="/azure/architecture/patterns/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2913,7 +3020,7 @@ ms.lasthandoff: 03/31/2017
                                 </a>
                             </li>
                             <li>
-                                <a href="http://aka.ms/practices">
+                                <a href="/azure/architecture/best-practices/api-design">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2931,8 +3038,8 @@ ms.lasthandoff: 03/31/2017
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="http://aka.ms/cloud-scenarios">
+<!--                            <li>
+                                <a href="/azure/architecture/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2942,19 +3049,19 @@ ms.lasthandoff: 03/31/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>方案指南</h3>
-                                                    <p>有关云中各种端到端应用程序方案的指南。 包括书面指南和参考实现。</p>
+                                                    <h3>Scenario Guides</h3>
+                                                    <p>Guidance for various end-to-end application scenarios in the cloud. Includes
+                                                        written guidance and reference implementations.</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </li>
-                        </ul>
+-->                        </ul>
                     </li>
                 </ul>
             </li>
         </ul>
     </div>
 </div>
-

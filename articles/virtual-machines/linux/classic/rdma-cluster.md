@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 8dd8aafcae3ef9652e6f45cd3a07cdd1fd74d58f
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: b002d21b198fa4887e30d30c20ec67d21ae30579
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>设置 Linux RDMA 群集以运行 MPI 应用程序
-了解如何在 Azure 中设置包含 [H 系列或计算密集型 A 系列 VM](../../virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的 Linux RDMA 群集，以便运行并行消息传递接口 (MPI) 应用程序。 本文提供准备 Linux HPC 映像以便在群集上运行 Intel MPI 的步骤。 准备映像后，使用此映像和支持 RDMA 的 Azure VM 大小（当前为 H16r、H16mr、A8 或 A9）之一来部署 VM 群集。 可以使用该群集来运行通过基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络有效进行通信的 MPI 应用程序。
+了解如何在 Azure 中设置包含 [H 系列或计算密集型 A 系列 VM](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的 Linux RDMA 群集，以便运行并行消息传递接口 (MPI) 应用程序。 本文提供准备 Linux HPC 映像以便在群集上运行 Intel MPI 的步骤。 准备映像后，使用此映像和支持 RDMA 的 Azure VM 大小（当前为 H16r、H16mr、A8 或 A9）之一来部署 VM 群集。 可以使用该群集来运行通过基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络有效进行通信的 MPI 应用程序。
 
 > [!IMPORTANT]
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
@@ -85,7 +85,7 @@ ms.lasthandoff: 03/27/2017
 
 
 ### <a name="customize-the-vm"></a>自定义 VM
-在 VM 完成预配后，使用 VM 的外部 IP 地址（或 DNS 名称）和已配置的外部端口号通过 SSH 登录到 VM，然后对其进行自定义。 有关连接详细信息，请参阅[如何登录到运行 Linux 的虚拟机](../../virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 必须以 VM 上配置的用户身份执行命令，除非必须要根访问权限才能完成步骤。
+在 VM 完成预配后，使用 VM 的外部 IP 地址（或 DNS 名称）和已配置的外部端口号通过 SSH 登录到 VM，然后对其进行自定义。 有关连接详细信息，请参阅[如何登录到运行 Linux 的虚拟机](../mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 必须以 VM 上配置的用户身份执行命令，除非必须要根访问权限才能完成步骤。
 
 > [!IMPORTANT]
 > Microsoft Azure 不提供对 Linux VM 的根访问权限。 若要在以用户身份连接至 VM 时获得管理访问权限，请使用 `sudo` 运行命令。

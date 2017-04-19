@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: tobiast
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 6cb781b9bc0cfe672e2734661be958d4794e08d8
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 713e4a29550f37b03af3547bead42146a84a417f
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -41,7 +41,7 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 连接到 Azure SQL DB 没有任何不同，且当前有两种方法连接到数据库：ODBC（开放数据库连接）和 OLE DB（对象链接和嵌入数据库）。 最近几年，Microsoft 已在使用 [ODBC 进行本地关系数据访问](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/)。 ODBC 相对简单，且比 OLE DB 快得多。 唯一需要说明的是，ODBC 使用的是旧的 C 样式 API。 
 
 ## <a id="Create"></a>步骤 1：创建 Azure SQL 数据库
-请参阅[入门页](sql-database-get-started.md)，以了解如何创建示例数据库。  或者，可以遵循此[两分钟短视频](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)使用 Azure 门户创建 Azure SQL 数据库。
+请参阅[入门页](sql-database-get-started-portal.md)，以了解如何创建示例数据库。  或者，可以遵循此[两分钟短视频](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)使用 Azure 门户创建 Azure SQL 数据库。
 
 ## <a id="ConnectionString"></a>步骤 2：获取连接字符串
 设置 Azure SQL 数据库后，需要执行以下步骤来确定连接信息，并添加客户端 IP 用于防火墙访问。 
@@ -79,7 +79,7 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 祝贺你！ 现在已成功使用 Windows 上的 C++ 和 ODBC 连接到 Azure SQL。 也可以继续阅读以对 Linux 平台进行相同的操作。 
 
 ## <a id="Linux"></a>步骤 5：从 Linux C/C++ 应用程序连接
-也许你还不知道，Visual Studio 现在也允许开发 C++ Linux 应用程序。 可以在 [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)（用于 Linux 开发的 Visual C++）博客中阅读此新方案。 要针对 Linux 构建，将需要一台运行 Linux 发行版的远程计算机。 如果没有可用的远程计算机，可以使用 [Linux Azure 虚拟机](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速设置。 
+也许你还不知道，Visual Studio 现在也允许开发 C++ Linux 应用程序。 可以在 [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)（用于 Linux 开发的 Visual C++）博客中阅读此新方案。 要针对 Linux 构建，将需要一台运行 Linux 发行版的远程计算机。 如果没有可用的远程计算机，可以使用 [Linux Azure 虚拟机](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速设置。 
 
 对于本教程，我们假设你设置了 Ubuntu 16.04 Linux 发行版。 此处的步骤也适用于 Ubuntu 15.10、 Red Hat 6 和 Red Hat 7。 
 

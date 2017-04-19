@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 03/10/2017
-ms.author: brandwe
+ms.author: xerners
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 443516838190ccad408bc2b3b6b63513b3a3041e
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: a4d9394983539da52105bda6cf06273205f8b0ad
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -35,14 +35,11 @@ ms.lasthandoff: 03/15/2017
 3. 使用 Passport 向 Azure AD 发出登录和注销请求。
 4. 输出用户数据。
 
-本教程的代码 [保留在 GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS)。 若要遵循本文的步骤操作下去，可以[下载 .zip 文件格式的应用骨架](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)， 也可以克隆骨干项目：
+本教程的代码 [保留在 GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS)。 若要遵循本文的步骤进行操作，可以[下载 .zip 文件格式的应用骨架](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)， 也可以克隆骨干项目：
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git```
 
 本教程末尾提供完成的应用程序。
-
-> [!WARNING]
-目前必须对 Web API 任务服务器以及连接到该服务器的客户端使用相同的**客户 ID**/**应用程序 ID** 和策略。 这也适用于 iOS 和 Android 教程。 如果你以前已在某个此类快速入门教程中创建了应用程序，请使用其中的值，而不要创建新的值。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
 
@@ -90,7 +87,7 @@ ms.lasthandoff: 03/15/2017
 - `npm install express-session`
 - `npm install cookie-parser`
 
-此外，在快速入门的骨架项目在，我们对预览版使用了 `passport-azure-ad`。
+此外，在快速入门的骨架项目内，我们对预览版使用了 `passport-azure-ad`。
 
 - `npm install passport-azure-ad`
 
@@ -118,7 +115,7 @@ var log = bunyan.createLogger({
 });
 ```
 
-使用刚刚提到的策略来处理登录请求。
+使用刚刚引用的策略来处理登录请求。
 
 ```JavaScript
 // Use the OIDCStrategy in Passport (Section 2).
@@ -337,7 +334,7 @@ app.listen(3000);
 
 ## <a name="create-the-views-and-routes-in-express-to-call-your-policies"></a>在 Express 中创建调用策略所需的视图和路由
 
-`app.js` 现已完成。 你只需添加路由和视图，以便调用登录和注册策略。 这些策略也处理你所创建的 `/logout` 和 `/login` 路由。
+`app.js` 现已完成。 你只需添加路由和视图，以便调用登录和注册策略。 这些策略也会处理你所创建的 `/logout` 和 `/login` 路由。
 
 在根目录下创建 `/routes/index.js` 路由。
 

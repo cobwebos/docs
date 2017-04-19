@@ -397,5 +397,5 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 [eclipse]: app-insights-java-eclipse.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
-[usage]: app-insights-web-track-usage.md
+[usage]: app-insights-javascript.md
 

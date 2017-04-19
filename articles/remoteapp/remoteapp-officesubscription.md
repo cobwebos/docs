@@ -14,18 +14,19 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 4ad7970b94949bf105ddf549279d4d1bcbad5f40
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c92eec471cf080a651d6f12e9db9fa391beabd2a
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-use-your-office-365-subscription-with-azure-remoteapp"></a>如何将 Office 365 订阅与 Azure RemoteApp 一起使用
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
-你是否知道你可以在 Azure RemoteApp 中使用你的现有 Office 365 订阅从云中共享 Office 应用？ 继续阅读有关你的 Office 365 + Azure RemoteApp 选项的信息，包括可以帮助你充分利用订阅的 Office 365 相关文章的链接。
+你知道吗？在 Azure RemoteApp 中可以使用你的现有 Office 365 订阅从云中共享 Office 应用？ 继续阅读有关 Office 365 + Azure RemoteApp 选项的信息，包括可以帮助你充分利用订阅的 Office 365 相关文章的链接。
 
 ## <a name="how-do-i-use-office-365-accounts-for-azure-remoteapp"></a>如何将 Office 365 帐户用于 Azure RemoteApp？
 请查看 Peter 的新文章了解所有信息：[如何通过 Office 365 的用户帐户使用 Azure RemoteApp](remoteapp-o365user.md)
@@ -35,7 +36,7 @@ ms.openlocfilehash: 4ad7970b94949bf105ddf549279d4d1bcbad5f40
 
 （注意：如果你的 Azure RemoteApp 部署是由托管合作伙伴提供的，他们或许能够提供给你基于[服务提供商许可协议](http://www.microsoft.com/en-us/Licensing/licensing-programs/spla-program.aspx)的 Office 许可证）
 
-有关 Office 365 订阅的最大优点是它允许你在许多不同的平台和环境（包括 Azure 云）中使用相同的用户许可证。 在 Azure RemoteApp 中使用 Office 应用程序时，你不需要购买额外的许可证或以任何特殊方式配置现有的许可证。 你只需要一个 Office 365 订阅，其中包括 [Office 365 ProPlus](https://technet.microsoft.com/library/Gg702619.aspx)。
+Office 365 订阅的最大优点是它允许你在许多不同的平台和环境（包括 Azure 云）中使用相同的用户许可证。 在 Azure RemoteApp 中使用 Office 应用程序时，你不需要购买额外的许可证或以任何特殊方式配置现有的许可证。 你只需要一个包括 [Office 365 ProPlus](https://technet.microsoft.com/library/Gg702619.aspx) 的 Office 365 订阅。
 
 Office 365 ProPlus 启用[共享计算机激活](https://technet.microsoft.com/library/Dn782860.aspx) - 此功能在虚拟环境和云环境（如 Azure RemoteApp）以及远程桌面服务中为 Office 启用基于临时用户的激活。
 
@@ -117,10 +118,5 @@ Office 365 ProPlus 的每个用户许可证都允许单个用户在多达 5 台�
 * [使用 Office 部署工具部署 Office 365 即点即用产品](https://technet.microsoft.com/library/JJ219423.aspx)
 * [使用 Office 部署工具部署和更新 Office 365 ProPlus](https://channel9.msdn.com/Events/Ignite/2015/BRK3168)（视频）
 * [为 Office 365 ProPlus 配置更新设置](https://technet.microsoft.com/library/dn761708.aspx)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

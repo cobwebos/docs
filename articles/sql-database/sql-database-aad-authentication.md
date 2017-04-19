@@ -9,7 +9,7 @@ editor:
 tags: 
 ms.assetid: 7e2508a1-347e-4f15-b060-d46602c5ce7e
 ms.service: sql-database
-ms.custom: authentication and authorization
+ms.custom: security-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,9 +17,9 @@ ms.workload: data-management
 ms.date: 03/23/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 01294f8f8fdaa65a5f33dbf6d35c0baa342cacc8
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 154cd7eec65559ec2263a12b8977ec0af0a78743
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -39,12 +39,11 @@ Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) �
 配置步骤包括配置和使用 Azure Active Directory 身份验证的以下过程。
 
 1. 创建并填充 Azure AD。
-2. 确保你的数据库位于 Azure SQL 数据库 V12 中。 （SQL 数据仓库无此要求。）
-3. 可选：关联或更改当前与 Azure 订阅关联的 Active Directory。
-4. 为 Azure SQL Server 或 [Azure SQL 数据仓库](https://azure.microsoft.com/services/sql-data-warehouse/)创建 Azure Active Directory 管理员。
-5. 配置客户端计算机。
-6. 在映射到 Azure AD 标识的数据库中创建包含的数据库用户。
-7. 通过使用 Azure AD 标识连接到你的数据库。
+2. 可选：关联或更改当前与 Azure 订阅关联的 Active Directory。
+3. 为 Azure SQL Server 或 [Azure SQL 数据仓库](https://azure.microsoft.com/services/sql-data-warehouse/)创建 Azure Active Directory 管理员。
+4. 配置客户端计算机。
+5. 在映射到 Azure AD 标识的数据库中创建包含的数据库用户。
+6. 通过使用 Azure AD 标识连接到你的数据库。
 
 > [!NOTE]
 > 若要了解如何创建和填充 Azure AD，然后使用 Azure SQL 数据库和 SQL 数据仓库配置 Azure AD，请参阅[使用 Azure SQL 数据库配置 Azure AD](sql-database-aad-authentication-configure.md)。

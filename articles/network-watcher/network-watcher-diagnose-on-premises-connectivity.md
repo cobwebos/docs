@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 8b832916f5b6fe413f9fc7b3fcefcea40d3ce7ef
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 2776f640bc192b0775b0ccbaaf62bb719b3bb790
+ms.lasthandoff: 04/19/2017
 
 ---
 
 # <a name="diagnose-on-premise-connectivity-via-vpn-gateways"></a>通过 VPN 网关诊断本地连接
 
-使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#a-namedevicetableavalidated-vpn-devices)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#IPSec)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 否则会导致连接断开，而到目前为止，排查这些问题并非小事一桩，通常需要花费几个小时来识别和修复问题。
+使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#a-namedevicetableavalidated-vpn-devices-and-device-configuration-guides)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#a-nameipsecaipsecike-parameters)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 否则会导致连接断开，而到目前为止，排查这些问题并非小事一桩，通常需要花费几个小时来识别和修复问题。
 
 使用 Azure 网络观察程序故障排除功能，可以诊断任何网关和连接问题，在几分钟内获得足够的信息，就如何解决问题做出明智的决策。
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/29/2017
 1. 站点到站点连接（基于策略）- [VPN 网关与本地 CISCO ASA 之间的连接](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#a-namecreateconnectiona8-create-a-site-to-site-vpn-connection)
 1. [配置 CISCO ASA](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA)
 
-有关站点到站点配置的详细分步指南，请访问：[使用 Azure 门户创建具有站点到站点连接的 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。 
+有关站点到站点配置的详细分步指南，请访问：[使用 Azure 门户创建具有站点到站点连接的 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
 
 一个关键的配置步骤是配置 IPsec 通信参数，任何不当的配置都会导致本地网络与 Azure 之间的连接断开。 目前，Azure VPN 网关配置为支持第 1 阶段的以下 IPsec 参数。 请注意，如前所述，这些设置不可修改。  如下表中所示，Azure VPN 网关支持的加密算法包括 AES256、AES128、和 3DES。
 
@@ -50,23 +50,23 @@ ms.lasthandoff: 03/29/2017
 | 加密算法 |AES256 AES128 3DES |AES256 3DES |
 | 哈希算法 |SHA1(SHA128) |SHA1(SHA128)、SHA2(SHA256) |
 | 阶段 1 安全关联 (SA) 生命周期（时间） |28,800 秒 |10,800 秒 |
- 
+
 用户需要配置 Cisco ASA，在 [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Cisco/Current/ASA/ASA_9.1_and_above_Show_running-config.txt) 上可以找到示例配置。 在其他配置中，还需要指定哈希算法。 Cisco ASA 支持的[加密和哈希算法](http://www.cisco.com/c/en/us/about/security-center/next-generation-cryptography.html)比 Azure VPN 网关要多。 你无意中将 Cisco ASA 配置为使用 SHA-512 作为哈希算法。 由于基于策略的连接不支持此算法，因此 VPN 连接无法正常工作。
 
-这些问题很难排查，其根本原因通常并不明显。 在这种情况下，可以开具支持票证，请求帮助解决此问题。 但如果使用 Azure 网络观察程序故障排除 API，则可以自行识别这些问题。 
+这些问题很难排查，其根本原因通常并不明显。 在这种情况下，可以开具支持票证，请求帮助解决此问题。 但如果使用 Azure 网络观察程序故障排除 API，则可以自行识别这些问题。
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>使用 Azure 网络观察程序进行故障排除
 
-若要诊断连接，请连接到 Azure PowerShell 并启动 `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet。 可以在 [Troubleshoot Virtual Network Gateway and connections - PowerShell](network-watcher-troubleshoot-manage-powershell.md)（排查虚拟网络网关和连接问题 - PowerShell）中找到有关使用此 cmdlet 的详细信息。 此 cmdlet 最长可能需要几分钟时间才能完成。 
+若要诊断连接，请连接到 Azure PowerShell 并启动 `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet。 可以在 [Troubleshoot Virtual Network Gateway and connections - PowerShell](network-watcher-troubleshoot-manage-powershell.md)（排查虚拟网络网关和连接问题 - PowerShell）中找到有关使用此 cmdlet 的详细信息。 此 cmdlet 最长可能需要几分钟时间才能完成。
 
 完成该 cmdlet 后，可以导航到该 cmdlet 中指定的存储位置，获取有关问题和日志的详细信息。 Azure 网络观察程序创建包含以下日志文件的 zip 文件夹：
 
 ![1][1]
 
-打开名为 IKEErrors.txt 的文件，其中显示了以下错误，指出存在本地 IKE 设置配置不当的问题。 
+打开名为 IKEErrors.txt 的文件，其中显示了以下错误，指出存在本地 IKE 设置配置不当的问题。
 
 ```
-Error: On-premises device rejected Quick Mode settings. Check values. 
+Error: On-premises device rejected Quick Mode settings. Check values.
      based on log : Peer sent NO_PROPOSAL_CHOSEN notify
 ```
 
@@ -74,7 +74,7 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 
 另一种常见的不当配置是指定了错误的共享密钥。 如果在前面的示例中指定不同的共享密钥，IKEErrors.txt 将显示以下错误：`Error: Authentication failed. Check shared key`。
 
-借助 Azure 网络观察程序故障排除功能，可以使用一个简单易用的 PowerShell cmdlet 来诊断和排查 VPN 网关与连接问题。 目前我们支持诊断以下状态，并且正在努力添加更多状态的诊断。 
+借助 Azure 网络观察程序故障排除功能，可以使用一个简单易用的 PowerShell cmdlet 来诊断和排查 VPN 网关与连接问题。 目前我们支持诊断以下状态，并且正在努力添加更多状态的诊断。
 
 ### <a name="gateway"></a>网关
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 4debed5ceed2c94b2e5b666d6fcebec5667bfda7
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 806634bb66ebb538020f1ffa693704433fc43352
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -30,7 +30,7 @@ Refernce article:
 
 本文介绍如何通过 Azure 门户将通过经典部署模型创建的新磁盘和现有磁盘附加到 Windows 虚拟机。
 
-也可以[在 Azure 门户中将磁盘数据附加到 Linux VM](../../virtual-machines-linux-attach-disk-portal.md)。
+也可以[在 Azure 门户中将磁盘数据附加到 Linux VM](../../linux/attach-disk-portal.md)。
 
 附加磁盘之前，请查看以下提示：
 

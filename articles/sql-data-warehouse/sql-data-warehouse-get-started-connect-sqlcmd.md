@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 77474214c6fafe7f591030d30f6a46c66fbc5c09
-ms.openlocfilehash: 1cd3bd8cab4e74da820f844d2ba96243cc6ccdcd
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3508cdf6dcfa3d7122e1e3b635f3cd37863dbf62
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -30,7 +32,7 @@ ms.openlocfilehash: 1cd3bd8cab4e74da820f844d2ba96243cc6ccdcd
 > 
 > 
 
-使用 [sqlcmd][sqlcmd] 命令行实用工具连接和查询 Azure SQL 数据仓库。  
+使用 [sqlcmd][sqlcmd] 命令行实用程序连接并查询 Azure SQL 数据仓库。  
 
 ## <a name="1-connect"></a>1.连接
 若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入 **sqlcmd**，后跟 SQL 数据仓库数据库的连接字符串。 连接字符串需要以下参数：
@@ -86,7 +88,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 sqlcmd 中提供的选项的详细信息，请参阅 [sqlcmd 文档][sqlcmd] 。
+请参阅 [sqlcmd 文档][sqlcmd]，详细了解 sqlcmd 中的可用选项。
 
 <!--Image references-->
 
@@ -94,12 +96,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 <!--MSDN references--> 
 [sqlcmd]: https://msdn.microsoft.com/library/ms162773.aspx
-[Azure 门户]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

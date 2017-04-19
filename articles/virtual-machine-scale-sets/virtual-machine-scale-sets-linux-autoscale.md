@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: fefd6f08d3150a28f73d7733fb397f7db38aef95
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7d67ae1bd0c53f99d9c298f5ae8f161e6a484359
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -55,7 +55,7 @@ ms.lasthandoff: 03/21/2017
     ```
    
     > [!NOTE]
-    > 如果有工作或学校 ID，并且不启用双重身份验证，请使用 `azure login -u` 的 ID 登录而无需交互式会话。 如果没有工作或学校 ID，则可以[从 Microsoft 个人帐户创建工作或学校 ID](../virtual-machines/virtual-machines-linux-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+    > 如果有工作或学校 ID，并且不启用双重身份验证，请使用 `azure login -u` 的 ID 登录而无需交互式会话。 如果没有工作或学校 ID，则可以[从 Microsoft 个人帐户创建工作或学校 ID](../virtual-machines/linux/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
     
 2. **创建资源组**  
 必须将所有资源部署到资源组。 对于本教程，将资源组命名为 **vmsstest1**。
@@ -132,9 +132,9 @@ ms.lasthandoff: 03/21/2017
    * 虚拟网络和子网的 IP 地址名称和前缀。
    * 虚拟网络、负载均衡器和网络接口的名称和标识符。
    * 与规模集中虚拟机关联的帐户的存储帐户名称。
-   * 已安装在虚拟机上的诊断扩展的设置。 有关诊断扩展的详细信息，请参阅[使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+   * 已安装在虚拟机上的诊断扩展的设置。 有关诊断扩展的详细信息，请参阅[使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-4. 将存储帐户资源添加到已添加到模板中的资源父元素下。 此模板使用一个循环来创建建议的&5; 个存储帐户，其中将存储操作系统磁盘和诊断数据。 这组帐户可在一个规模集中最多支持 100 个虚拟机，这是当前的最大值。 每个存储帐户通过将变量中定义的字母指示符与模板的参数中提供的后缀组合来命名。
+4. 将存储帐户资源添加到已添加到模板中的资源父元素下。 此模板使用一个循环来创建建议的 5 个存储帐户，其中将存储操作系统磁盘和诊断数据。 这组帐户可在一个规模集中最多支持 100 个虚拟机，这是当前的最大值。 每个存储帐户通过将变量中定义的字母指示符与模板的参数中提供的后缀组合来命名。
    
         {
           "type": "Microsoft.Storage/storageAccounts",
@@ -479,7 +479,7 @@ ms.lasthandoff: 03/21/2017
     此值是虚拟机规模集的资源标识符。
     
     * **timeGrain**  
-    此值是收集的指标的粒度。 在此模板中，它设置为&1; 分钟。
+    此值是收集的指标的粒度。 在此模板中，它设置为 1 分钟。
     
     * **statistic**  
     此值可确定如何组合指标以调节自动缩放操作。 可能的值包括：Average、Min、Max。 在此模板中，已收集虚拟机的平均总 CPU 使用率。

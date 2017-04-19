@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 754e07e1942a809e415a1da6d1eab6307c65a47a
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 7129137e6deca6ae4cbb5096058b58b32056d415
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -90,12 +90,12 @@ ms.lasthandoff: 03/21/2017
     发布应用程序后，在浏览器中打开该网站。 您应看到一则指示“Hello from Azure running node version: v0.8.1”的消息。
 
 ## <a name="next-steps"></a>后续步骤
-了解如何指定应用程序使用的 Node.js 版本后，请了解[如何使用模块]、[构建并部署 Node.js 网站](app-service-web/web-sites-nodejs-develop-deploy-mac.md)以及[如何使用针对 Mac 和 Linux 的 Azure 命令行工具]。
+了解如何指定应用程序使用的 Node.js 版本后，请了解[如何使用模块]、[构建并部署 Node.js 网站](app-service-web/app-service-web-get-started-nodejs.md)以及[如何使用针对 Mac 和 Linux 的 Azure 命令行工具]。
 
 有关详细信息，请参阅 [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)。
 
 [如何使用针对 Mac 和 Linux 的 Azure 命令行工具]:cli-install-nodejs.md
 [Azure 命令行工具]:cli-install-nodejs.md
 [如何使用模块]: nodejs-use-node-modules-azure-apps.md
-[build and deploy a Node.js Web Site]: web-sites-nodejs-develop-deploy-mac.md
+[build and deploy a Node.js Web Site]: app-service-web/app-service-web-get-started-nodejs.md
 

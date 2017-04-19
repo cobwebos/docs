@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dd281ead7d2c06af98ea0baea31d897b5be0d9d7
-ms.openlocfilehash: 04d8031a4c5f06d56afc1d08d4a4fa5fb50f8a25
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: e1a1848bac1cb339569b813ae5c5e214e1ec2409
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-does-azure-remoteapp-save-user-data-and-settings"></a>Azure RemoteApp 如何保存用户数据和设置？
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
 Azure RemoteApp 跨设备和会话保存用户标识和自定义项。 此用户数据存储在一个每用户每集合磁盘中，该磁盘称为用户配置文件磁盘 (UPD)。 该磁盘跟随用户，无论用户在什么位置登录，都可以确保用户获得一致的体验。
 
-用户配置文件磁盘对于用户是完全透明的，用户可以照常将文档保存到其“文档”文件夹（看起来就像是在本地驱动器的文件夹上）并更改其应用设置。 同时，从任何设备连接到 Azure RemoteApp 时，都会保留所有个人设置。 用户所看到的全部就是其处于同一位置的数据。
+用户配置文件磁盘对于用户是完全透明的，用户可以照常将文档保存到其“文档”文件夹（看起来就像是在本地驱动器的文件夹上）并更改其应用设置。 同时，从任何设备连接到 Azure RemoteApp 时，都会保留所有个人设置。 用户看到的全部信息均来自同一位置的数据。
 
 每个 UPD 有 50 GB 的永久存储空间，并且既包含用户数据，也包含应用程序设置。 
 
@@ -46,7 +46,7 @@ Azure RemoteApp 跨设备和会话保存用户标识和自定义项。 此用户
 是的，我们按地理位置保存了用户数据的备份。 该数据是只读的，如果主数据中心停止服务，那么可以像访问常规数据那样访问该数据（与 Azure RemoteApp 联系以了解如何访问常规数据）。 数据会实时复制到备份位置，我们不会保留不同版本的副本。 因此，在发生数据损坏时，我们无法将其还原到某个先前的已知良好版本，但是，如果主数据中心停止服务，你将能够从另一个位置获取用户数据。
 
 ## <a name="how-do-users-see-the-upd-on-the-server-side"></a>用户如何在服务器端看到 UPD？
-每个用户都将在服务器上有其自己的目录，该目录映射到其 UPD：c:\Users\username。
+在服务器上，每个用户都有映射到其 UPD 的目录：c:\Users\username。
 
 ## <a name="whats-the-best-way-to-use-outlook-and-upd"></a>使用 Outlook 和 UPD 的最佳方式是什么？
 Azure RemoteApp 会保存各个会话之间的 Outlook 状态（邮箱、PST）。 要启用此功能，我们需要将 PST 存储在用户配置文件数据中 (c:\users\<username>)。 这是数据的默认位置，因此，只要你不更改该位置，数据将在会话之间一直保持。
@@ -61,21 +61,21 @@ Azure RemoteApp 会保存各个会话之间的 Outlook 状态（邮箱、PST）�
 ## <a name="can-i-use-my-upd-as-a-network-share"></a>我是否可以将我的 UPD 用作网络共享？
 否。 不能将 UPD 用作网络共享。 仅当用户主动连接到 Azure RemoteApp 时，UPD 才对用户可用。
 
-## <a name="if-i-delete-a-user-from-a-collection-is-their-upd-deleted"></a>如果我将用户从某个集合中删除，是否也会删除其 UPD？
-不会删除，当你删除用户时，我们不会自动删除 UPD，在你删除集合之前，我们会一直存储该数据。 在你删除集合之后 90 天，我们会删除所有 UPD。 
+## <a name="if-i-delete-a-user-from-a-collection-is-their-upd-deleted"></a>如果从集合中删除某位用户，是否会删除其 UPD？
+不会，删除用户时不会自动删除 UPD，该数据会一直存在，除非将集合删除。 但如果删除了集合，那么 90 天后，我们会删除所有 UPD。 
 
 如果你需要从某个集合删除 UPD，请与 Azure RemoteApp 联系，我们可以从服务器端删除 UPD。
 
-## <a name="can-i-access-my-users-upds-either-current-or-deleted-users"></a>我是否可以访问我的用户的 UPD（无论是当前用户还是已删除的用户）？
+## <a name="can-i-access-my-users-upds-either-current-or-deleted-users"></a>是否可以访问用户的 UPD（不管是当前存在的用户还是已删除的用户）？
 可以，如果你与 [Azure RemoteApp](mailto:remoteappforum@microsoft.com) 联系，我们可以为你设置一个 URL 来访问该数据。 你大约有 10 个小时可以从 UPD 下载数据或文件，之后访问就会过期。
 
 ## <a name="are-upds-available-offline"></a>UPD 是否可脱机使用？
-目前，在上面所述的 10 小时访问窗口期之外的时间，我们不提供对 UPD 的脱机访问。 这意味着我们当前无法为你提供足够长的访问时间来完成更复杂的任务，比如在 UPD 上运行防病毒软件或访问数据以进行审核。
+目前，除上述 10 小时访问窗口期外，我们在其他时间不提供对 UPD 的脱机访问。 这意味着我们当前无法为你提供足够长的访问时间来完成更复杂的任务，比如在 UPD 上运行防病毒软件或访问数据以进行审核。
 
-## <a name="do-registry-key-settings-persist"></a>注册表项设置是否会保持？
-是的，写入 HKEY_Current_User 的任何内容都是 UPD 的组成部分。
+## <a name="do-registry-key-settings-persist"></a>注册表项设置会不会保留？
+会，写入 HKEY_Current_User 的任何内容都是 UPD 的组成部分。
 
-## <a name="can-i-disable-upds-for-a-collection"></a>我是否可以针对某个集合禁用 UPD？
+## <a name="can-i-disable-upds-for-a-collection"></a>是否可以针对某个集合禁用 UPD？
 是的，你可以请求 Azure RemoteApp 针对某个订阅禁用 UPD，但不要自行这样做。 这意味着对于订阅中的所有集合，都将禁用 UPD。
 
 你可能希望在遇到以下情形之一时禁用 UPD： 
@@ -132,15 +132,15 @@ Azure RemoteApp 会保存各个会话之间的 Outlook 状态（邮箱、PST）�
 不可以，Azure RemoteApp 不支持这样做。
 
 ## <a name="can-i-store-data-on-the-vm-locally"></a>我是否可以将数据存储在虚拟机本地？
-不可以，除了存储在 UPD 中，存储在虚拟机上任意位置的数据都将丢失。 很有可能用户在下次登录 Azure RemoteApp 时得到的不是同一个虚拟机。 我们并不保持用户-虚拟机间的持久性，因此，用户将不会登录到同一虚拟机，所以数据将会丢失。 此外，在我们更新集合时，现有的虚拟机将替换一组新的虚拟机，这意味着存储在虚拟机本身上的任何数据都将丢失。 推荐将数据存储在 UPD 中，像 Azure 文件一样存储在共享存储空间中，存储在 VNET 内部的文件服务器中，或者使用像 DropBox 一样的云存储系统存储在云中。
+不可以，除了存储在 UPD 中，存储在虚拟机上任意位置的数据都将丢失。 用户下次登录 Azure RemoteApp 时获得的很可能不是同一个虚拟机。 我们并不保持用户-虚拟机间的持久性，因此，用户将不会登录到同一虚拟机，所以数据将会丢失。 此外，在我们更新集合时，现有的虚拟机将替换一组新的虚拟机，这意味着存储在虚拟机本身上的任何数据都将丢失。 建议将数据存储在 UPD 中，例如“Azure 文件”之类的共享存储空间（VNET 中的文件服务器），或者 DropBox 之类使用云存储系统的云中。
 
-## <a name="how-do-i-mount-an-azure-file-share-on-a-vm-using-powershell"></a>我如何可以使用 PowerShell 将某个 Azure 文件共享装载到一个虚拟机上？
-你可以使用 Net-PSDrive cmdlet 装载驱动器，如下所示：
+## <a name="how-do-i-mount-an-azure-file-share-on-a-vm-using-powershell"></a>如何可以使用 PowerShell 将某个 Azure 文件共享装载到一个虚拟机上？
+可以使用 Net-PSDrive cmdlet 装载驱动器，如下所示：
 
     New-PSDrive -Name <drive-name> -PSProvider FileSystem -Root \\<storage-account-name>.file.core.windows.net\<share-name> -Credential :<storage-account-name>
 
 
-你还可以通过运行以下各项保存你的凭据：
+还可以通过运行以下各项保存你的凭据：
 
     cmdkey /add:<storage-account-name>.file.core.windows.net /user:<storage-account-name> /pass:<storage-account-key>
 

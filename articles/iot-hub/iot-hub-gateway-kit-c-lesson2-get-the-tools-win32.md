@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "iot 开发, iot 软件, iot 云服务, 物联网软件, azure cli, 在 windows 上安装 git, gulp 运行, 安装 node js windows, 在 windows 上安装 npm, 在 windows 上安装 python"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: 18ae6ee4-574a-4d5f-9838-ca2a78165628
 ms.service: iot-hub
 ms.devlang: c

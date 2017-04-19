@@ -79,6 +79,7 @@
 ### [有关 Azure IaaS VM 磁盘的常见问题](storage-faq-for-disks.md)
 ### 高级存储
 #### [用于 VM 磁盘的高性能高级存储](storage-premium-storage.md)
+#### [使用 Azure Site Recovery 迁移到高级存储](storage-migrate-to-premium-storage-using-azure-site-recovery.md)
 #### [高性能设计](storage-premium-storage-performance.md)
 ### 标准存储
 #### [高性价比标准存储以及非托管和托管 VM 磁盘](storage-standard-storage.md)

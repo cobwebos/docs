@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 1e1e3b405d752c459ecfc7f74fbdafc148c147b5
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f46facee3e45704f74a13db7a18274f5ce90ceff
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -61,7 +61,7 @@ ms.lasthandoff: 03/27/2017
    ![私钥和公钥][keys]
 
 ### <a name="add-the-key-pair-to-the-hpc-pack-cluster"></a>将密钥对添加到 HPC Pack 群集中
-1. 使用部署群集时提供的域凭据（例如，hpc\clusteradmin）[通过远程桌面连接到头节点 VM](../../virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 可以从头节点管理群集。
+1. 使用部署群集时提供的域凭据（例如，hpc\clusteradmin）[通过远程桌面连接到头节点 VM](../../windows/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 可以从头节点管理群集。
 2. 使用 Windows Server 标准程序，在群集的 Active Directory 域中创建一个域用户帐户。 例如，在头节点上使用 Active Directory 用户和计算机工具。 本文中的示例假设你在 hpclab 域中创建了一个名为 hpcuser 的域用户 (hpclab\hpcuser)。
 3. 将域用户作为群集用户添加到 HPC Pack 群集中。 有关说明，请参阅 [Add or remove cluster users](https://technet.microsoft.com/library/ff919330.aspx)（添加或删除群集用户）。
 4. 创建一个名为 C:\cred.xml 的文件，将 RSA 密钥数据复制到此文件中。 你可以在本文末尾的示例文件中找到一个示例。

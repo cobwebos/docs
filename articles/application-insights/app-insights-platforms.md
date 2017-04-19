@@ -14,8 +14,9 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 46e6ab8a9c5d4e6a00d61ee4e5bbfd42307bfc69
-ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 219ccaf9a97642fda99490423aa94883b0629fb5
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
 ## <a name="languages"></a>语言
 * [C#|VB (.NET)](app-insights-asp-net.md)
 * [Java](app-insights-java-get-started.md)
-* [JavaScript 网页](app-insights-web-track-usage.md)
+* [JavaScript 网页](app-insights-javascript.md)
 * [Objective-C](https://github.com/Microsoft/ApplicationInsights-iOS)
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
@@ -36,11 +37,10 @@ ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
 * [Angular](https://www.npmjs.com/package/angular-applicationinsights)
 * [ASP.NET](app-insights-asp-net.md)
 * [ASP.NET - 适用于已处于活动状态的应用](app-insights-monitor-performance-live-website-now.md)
-* [ASP.NET 5](app-insights-asp-net-core.md)
+* [ASP.NET Core](app-insights-asp-net-core.md)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
 * [Azure Web 应用](app-insights-azure-web-apps.md)
 * [Azure 云服务](app-insights-cloudservices.md)&#151;包括 Web 角色和辅助角色
-* [Microsoft Dynamics 中的 CRM Online](app-insights-sample-mscrm.md)
 * [Docker](app-insights-docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (HockeyApp)
@@ -60,9 +60,10 @@ ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
 ## <a name="logging-frameworks"></a>记录框架
 * [Log4Net、NLog 或 System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 * [Java、Log4J 或 Logback](app-insights-java-trace-logs.md)
-* [语义式日志记录 (SLAB)](https://github.com/fidmor89/SLAB_AppInsights)&#151;与[语义式日志记录应用程序块](https://msdn.microsoft.com/library/dn440729.aspx)集成
+* [语义式日志记录 (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) - 与[语义式日志记录应用程序块](https://msdn.microsoft.com/library/dn440729.aspx)集成
 * [基于云的负载测试](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 * [LogStash 插件](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
+* [OMS Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 
 ## <a name="content-management-systems"></a>内容管理系统
 * [Concrete](https://github.com/fidmor89/appInsights-Concrete)
@@ -77,11 +78,6 @@ ms.openlocfilehash: 5ec35fb0171a4a62b915579b5a079060132998dd
 * [Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [流分析](app-insights-export-power-bi.md)
 
-## <a name="a-nameprojectsa-build-your-own-sdk"></a><a name="projects"></a> 自行生成 SDK
+## <a name="projects"></a> 自行生成 SDK
 如果尚不存在适用于你的语言或平台的 SDK，也许你想要生成一个？ 查看 [GitHub 上的 Application Insights SDK 项目](https://github.com/Microsoft/AppInsights-Home)中列出的现有 SDK 的代码。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

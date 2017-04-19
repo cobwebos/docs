@@ -3,7 +3,7 @@ title: "如何通过 WebJobs SDK 使用 Azure 表存储"
 description: "如何通过 WebJobs SDK 使用 Azure 表存储 创建表，将实体添加到表，并读取现有表。"
 services: app-service\web, storage
 documentationcenter: .net
-author: tdykstra
+author: ggailey777
 manager: erikre
 editor: jimbe
 ms.assetid: 451432cc-c780-4310-85d3-84f44fe48afe

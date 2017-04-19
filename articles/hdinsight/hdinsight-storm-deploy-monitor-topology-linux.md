@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/22/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 00fa4810e41bdbc19d0a2663cfe1437c6e678ab3
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 53092b0cfcf2bf9a09b36f6425724669f770e7fb
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -27,8 +27,8 @@ ms.lasthandoff: 03/25/2017
 本文档介绍有关如何在 HDInsight 群集上管理和监视 Storm 上运行的 Storm 拓扑的基本知识。
 
 > [!IMPORTANT]
-> 本文中的步骤需要使用 HDInsight 群集上基于 Linux 的 Storm。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 
-> 
+> 本文中的步骤需要使用 HDInsight 群集上基于 Linux 的 Storm。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 
+>
 > 有关在基于 Windows 的 HDInsight 上部署和监视拓扑的详细信息，请参阅 [在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology.md)
 
 
@@ -78,20 +78,20 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
 ## <a name="submit-a-topology-ssh-and-the-storm-command"></a>提交拓扑：SSH 和 Storm 命令
 
 1. 使用 SSH 连接到 HDInsight 群集。 将 **USERNAME** 替换为 SSH 登录名。 将 **CLUSTERNAME** 替换为 HDInsight 群集名：
-   
+
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
-   
+
     有关使用 SSH 连接到 HDInsight 群集的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 使用以下命令启动示例拓扑：
-   
+
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar storm.starter.WordCountTopology WordCount
-   
+
     此命令启动群集上的示例 WordCount 拓扑。 此拓扑随机生成句子，并统计句子中每个单词的出现次数。
-   
+
    > [!NOTE]
    > 将拓扑提交到群集时，必须先复制包含群集的 jar 文件，然后才能使用 `storm` 命令。 若要将文件复制到群集，可以使用 `scp` 命令。 例如： `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
-   > 
+   >
    > WordCount 示例和其他 Storm 初学者示例已经包含在群集中，其位置为 `/usr/hdp/current/storm-client/contrib/storm-starter/`。
 
 ## <a name="submit-a-topology-programmatically"></a>提交拓扑：以编程方式
@@ -187,11 +187,11 @@ Storm UI 的主页面提供以下信息：
 
 * **拓扑摘要**：有关拓扑的基本信息。
 * **拓扑操作**：可对拓扑执行的管理操作。
-  
+
   * **激活**：继续处理已停用的拓扑。
   * **停用**：暂停正在运行的拓扑。
   * **重新平衡**：调整拓扑的并行度。 更改群集中的节点数目之后，你应该重新平衡正在运行的拓扑。 此操作可让拓扑调整并行度，以弥补群集中增加或减少的节点数。
-    
+
     有关详细信息，请参阅 <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">了解 Storm 拓扑的并行度</a>。
   * **终止**：在经过指定的超时之后终止 Storm 拓扑。
 * **拓扑统计信息**：有关拓扑的统计信息。 若要设置页面上剩余项的时间范围，请使用“窗口”列中的链接。
@@ -245,5 +245,4 @@ Storm UI 是以 REST API 为基础生成的，因此，你可以使用 API 执�
 在了解了如何使用 Storm 仪表板部署和监视拓扑后，接下来请了解如何[使用 Maven 开发基于 Java 的拓扑](hdinsight-storm-develop-java-topology.md)。
 
 有关更多示例拓扑的列表，请参阅 [Storm on HDInsight 的示例拓扑](hdinsight-storm-example-topology.md)。
-
 

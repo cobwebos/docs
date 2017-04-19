@@ -473,7 +473,7 @@ REFERENCE ASSEMBLY JSONBlog.[Microsoft.Analytics.Samples.Formats];
 
 首先，从 [SQL Server 2016 功能包](https://www.microsoft.com/download/details.aspx?id=52676)中下载并安装程序集。 为确保使用 64 位版本的库，请选择 64 位版本的安装程序 (ENU\x64\SQLSysClrTypes.msi)。
 
-安装程序将托管程序集 Microsoft.SqlServer.Types.dll 安装到 C:\Program Files (x86)\Microsoft SQL Server\130\SDK\Assemblies，并将本机程序集 SqlServerSpatial130.dll 安装到 \Windows\System32\。\.现在将程序集上传到 Azure Data Lake Store（例如上传到 /upload/asm/spatial 文件夹中）。
+安装程序将托管程序集 Microsoft.SqlServer.Types\.dll 安装到 C:\Program Files (x86)\Microsoft SQL Server\130\SDK\Assemblies，并将本机程序集 SqlServerSpatial130.dll 安装到 \Windows\System32\。现在将程序集上传到 Azure Data Lake Store（例如上传到 /upload/asm/spatial 文件夹中）。
 
 由于安装程序已将本机库安装到系统文件夹 c:\Windows\System32，因此必须确保在上载 SqlServerSpatial130.dll 之前将其从文件夹中进行复制，或确保使用的工具不会执行系统文件夹的[文件系统重定向](https://msdn.microsoft.com/library/windows/desktop/aa384187(v=vs.85).aspx)。
 

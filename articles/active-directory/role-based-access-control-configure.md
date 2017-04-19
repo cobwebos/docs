@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/17/2017
+ms.date: 03/27/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c3e3e407eb6a05b208863443bb8ccf3cba701b23
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 9fb0fdf1a2a48c5c9daf7d0ec22e85221bfb6b28
+ms.lasthandoff: 04/07/2017
 
 
 ---
-# <a name="use-role-assignments-to-manage-access-to-your-azure-subscription-resources"></a>使用角色分配管理对 Azure 订阅资源的访问权限
+# <a name="use-role-based-access-control-to-manage-access-to-your-azure-subscription-resources"></a>使用基于角色的访问控制管理 Azure 订阅资源的访问权限
 > [!div class="op_single_selector"]
 > * [管理用户或组的访问权限](role-based-access-control-manage-assignments.md)
 > * [管理资源的访问权限](role-based-access-control-configure.md)
 
 Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，你可以仅授予用户执行其作业所需的访问次数。 本文可帮助你在 Azure 门户中启动并运行 RBAC。 如果想要解有关 RBAC 如何帮助你管理访问权限的详细信息，请参阅 [什么是基于角色的访问控制](role-based-access-control-what-is.md)。
+
+在每个订阅中，你最多可以授予 2000 个角色分配。 
 
 ## <a name="view-access"></a>查看访问权限
 可在 [Azure 门户](https://portal.azure.com)中的主边栏选项卡上查看谁有权访问资源、资源组或订阅。 例如，我们想要查看谁有权访问其中一个资源组：

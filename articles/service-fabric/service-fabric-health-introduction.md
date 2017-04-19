@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2017
+ms.date: 04/12/2017
 ms.author: oanapl
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 240ae97458747099bde6807bf13e0ce6fd9452d1
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 9d261741efd7e49e40b807b1631ff8a2b9eefdb1
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -25,7 +26,7 @@ Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富�
 
 Service Fabric 组件使用这种提供丰富信息的运行状况模型报告其当前状态。 你可以使用相同的机制报告应用程序中的运行状况。 只要投入时间规划高质量的运行状况报告来捕获自定义条件，就能更轻松地检测并修复运行中应用程序的问题。
 
-以下 Microsoft Virtual Academy 视频还介绍 Service Fabric 运行状况模型及其用法：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
+以下 Microsoft Virtual Academy 视频还介绍 Service Fabric 运行状况模型及其用法：<center><a target="_blank" href="https://mva.microsoft.com/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
 <img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
@@ -72,7 +73,7 @@ Service Fabric 组件使用这种提供丰富信息的运行状况模型报告�
 ## <a name="health-states"></a>运行状况状态
 Service Fabric 使用三种运行状况状态来说明实体是否正常：“正常”、“警告”和“错误”。 发送到运行状况存储的任何报告都必须指定其中一种状态。 运行状况评估结果是其中一种状态。
 
-可能的[运行状况](https://msdn.microsoft.com/library/azure/system.fabric.health.healthstate)如下：
+可能的[运行状况](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate)如下：
 
 * **确定**。 实体正常。 没有针对它或其子项（如果适用）报告已知问题。
 * **警告**。 实体遇到一些问题，但并非不正常（例如，存在延迟，但没有导致任何功能问题）。 在某些情况下，警告条件可能会在不需要任何特殊干预的情况下修复本身，并可用于提供后续事项的可见性。 在其他情况下，警告条件可能会在无需用户干预的情况下降级为严重问题。
@@ -90,13 +91,13 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 默认情况下，Service Fabric 针对父-子层次结构关系应用严格的规则（所有内容都必须正常）。 只要其中一个子项具有一个不正常事件，父项则被视为不正常。
 
 ### <a name="cluster-health-policy"></a>群集运行状况策略
-[群集运行状况策略](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.aspx)用于评估群集运行状况状态和节点运行状况状态。 可以在群集清单中对它进行定义。 如果该策略不存在，则会使用默认策略（不容许失败）。
+[群集运行状况策略](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy)用于评估群集运行状况状态和节点运行状况状态。 可以在群集清单中对它进行定义。 如果该策略不存在，则会使用默认策略（不容许失败）。
 群集运行状况策略包含：
 
-* [ConsiderWarningAsError](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.considerwarningaserror.aspx)。 指定是否在运行状况评估期间将“警告”运行状况报告视为错误。 默认值：false。
-* [MaxPercentUnhealthyApplications](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications.aspx)。 指定群集被视为“错误”之前可以保留不正常的应用程序的最大容忍百分比。
-* [MaxPercentUnhealthyNodes](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes.aspx)。 指定群集被视为“错误”之前可以保留不正常的节点的最大容忍百分比。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。
-* [ApplicationTypeHealthPolicyMap](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap.aspx)。 应用程序类型的运行状况策略对应可以在群集运行状况评估期间，用于描述特殊的应用程序类型。 默认情况下，所有的应用程序都放入池，并使用 MaxPercentUnhealthyApplications 进行评估。 如果某些应用程序类型应以不同的方式处理，则可以从全局池中取出这些类型。 相反，则根据映射中的应用程序类型名称关联的百分比来评估这些类型。 例如，在群集中，有数千个不同类型的应用程序，以及某个特殊应用程序类型的多个控制应用程序实例。 控制应用程序应该永远不发生错误。 可以将全局的 MaxPercentUnhealthyApplications 指定为 20%，以容许一些失败，但如果应用程序类型为“ControlApplicationType”，请将 MaxPercentUnhealthyApplications 设为 0。 如此一来，如果其中许多应用程序的状况不良，但低于全局状况不良的百分比，则将群集评估为 Warning。 Warning 运行状况并不影响群集升级或由 Error 运行状况触发的其他监视。 但是，即使只有一个控制应用程序出错，也会造成群集不正常，根据具体的升级配置，这会触发回滚或暂停群集升级。
+* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 指定是否在运行状况评估期间将“警告”运行状况报告视为错误。 默认值：false。
+* [MaxPercentUnhealthyApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications)。 指定群集被视为“错误”之前可以保留不正常的应用程序的最大容忍百分比。
+* [MaxPercentUnhealthyNodes](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes)。 指定群集被视为“错误”之前可以保留不正常的节点的最大容忍百分比。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。
+* [ApplicationTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 应用程序类型的运行状况策略对应可以在群集运行状况评估期间，用于描述特殊的应用程序类型。 默认情况下，所有的应用程序都放入池，并使用 MaxPercentUnhealthyApplications 进行评估。 如果某些应用程序类型应以不同的方式处理，则可以从全局池中取出这些类型。 相反，则根据映射中的应用程序类型名称关联的百分比来评估这些类型。 例如，在群集中，有数千个不同类型的应用程序，以及某个特殊应用程序类型的多个控制应用程序实例。 控制应用程序应该永远不发生错误。 可以将全局的 MaxPercentUnhealthyApplications 指定为 20%，以容许一些失败，但如果应用程序类型为“ControlApplicationType”，请将 MaxPercentUnhealthyApplications 设为 0。 如此一来，如果其中许多应用程序的状况不良，但低于全局状况不良的百分比，则将群集评估为 Warning。 Warning 运行状况并不影响群集升级或由 Error 运行状况触发的其他监视。 但是，即使只有一个控制应用程序出错，也会造成群集不正常，根据具体的升级配置，这会触发回滚或暂停群集升级。
   对于映射中定义的应用程序类型，所有应用程序实例都是从应用程序的全局池中所取出。 系统使用映射中的特定 MaxPercentUnhealthyApplications 根据应用程序类型的应用程序总数来评估它们。 所有其他应用程序都保留于全局池中，并使用 MaxPercentUnhealthyApplications 进行评估。
 
 以下示例摘自某个群集清单。 若要定义应用程序类型映射中的条目，请在参数名称前面添加“ApplicationTypeMaxPercentUnhealthyApplications-”，后接应用程序类型名称。
@@ -113,20 +114,20 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 ```
 
 ### <a name="application-health-policy"></a>应用程序运行状况策略
-[应用程序运行状况策略](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.aspx)说明如何对应用程序及其子项进行事件和子项状态聚合评估。 它可以在应用程序清单（应用程序包中的 **ApplicationManifest.xml**）中定义。 如果未指定任何策略，则当运行状况报告或子项处于“警告”或“错误”运行状况状态时，Service Fabric 会假设实体不正常。
+[应用程序运行状况策略](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy)说明如何对应用程序及其子项进行事件和子项状态聚合评估。 它可以在应用程序清单（应用程序包中的 **ApplicationManifest.xml**）中定义。 如果未指定任何策略，则当运行状况报告或子项处于“警告”或“错误”运行状况状态时，Service Fabric 会假设实体不正常。
 可配置的策略是：
 
-* [ConsiderWarningAsError](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx)。 指定是否在运行状况评估期间将“警告”运行状况报告视为错误。 默认值：false。
-* [MaxPercentUnhealthyDeployedApplications](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications.aspx)。 指定应用程序被视为“错误”之前可以保留不正常的已部署应用程序的最大容忍百分比。 此百分比是将不正常的已部署应用程序数目除以目前在群集中部署的应用程序节点数目计算得出的。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 默认百分比：零。
-* [DefaultServiceTypeHealthPolicy](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy.aspx)。 指定默认服务类型运行状况策略，该策略会替换应用程序中所有服务类型的默认运行状况策略。
-* [ServiceTypeHealthPolicyMap](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap.aspx)。 针对每个服务类型提供服务运行状况策略的映射。 这些策略取代每个指定服务类型的默认服务类型运行状况策略。 例如，如果某个应用程序包含无状态网关服务类型和有状态引擎服务类型，可以针对这些类型的评估配置不同的运行状况策略。 当你针对每个服务类型指定策略时，可以更精细地控制服务的运行状况。
+* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx)。 指定是否在运行状况评估期间将“警告”运行状况报告视为错误。 默认值：false。
+* [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications)。 指定应用程序被视为“错误”之前可以保留不正常的已部署应用程序的最大容忍百分比。 此百分比是将不正常的已部署应用程序数目除以目前在群集中部署的应用程序节点数目计算得出的。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 默认百分比：零。
+* [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy)。 指定默认服务类型运行状况策略，该策略会替换应用程序中所有服务类型的默认运行状况策略。
+* [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap)。 针对每个服务类型提供服务运行状况策略的映射。 这些策略取代每个指定服务类型的默认服务类型运行状况策略。 例如，如果某个应用程序包含无状态网关服务类型和有状态引擎服务类型，可以针对这些类型的评估配置不同的运行状况策略。 当你针对每个服务类型指定策略时，可以更精细地控制服务的运行状况。
 
 ### <a name="service-type-health-policy"></a>服务类型运行状况策略
-[服务类型运行状况策略](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.aspx)指定如何评估和聚合服务及服务的子项。 该策略包含：
+[服务类型运行状况策略](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy)指定如何评估和聚合服务及服务的子项。 该策略包含：
 
-* [MaxPercentUnhealthyPartitionsPerService](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice.aspx)。 指定服务被视为不正常之前不正常分区的最大容忍百分比。 默认百分比：零。
-* [MaxPercentUnhealthyReplicasPerPartition](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition.aspx)。 指定分区被视为不正常之前不正常副本的最大容忍百分比。 默认百分比：零。
-* [MaxPercentUnhealthyServices](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices.aspx)。 指定应用程序被视为不正常之前不正常服务的最大容忍百分比。 默认百分比：零。
+* [MaxPercentUnhealthyPartitionsPerService](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice)。 指定服务被视为不正常之前不正常分区的最大容忍百分比。 默认百分比：零。
+* [MaxPercentUnhealthyReplicasPerPartition](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition)。 指定分区被视为不正常之前不正常副本的最大容忍百分比。 默认百分比：零。
+* [MaxPercentUnhealthyServices](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices)。 指定应用程序被视为不正常之前不正常服务的最大容忍百分比。 默认百分比：零。
 
 以下示例摘自某个应用程序清单：
 
@@ -191,10 +192,10 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 ## <a name="health-reporting"></a>运行状况报告
 系统组件、系统结构应用程序和内部/外部监视器可以针对 Service Fabric 实体进行报告。 报告器基于它们正在监视的条件对监视实体的运行状况进行*本地*判断。 它们无需查看任何全局状态或聚合数据。 所需的行为是使用简单的报告器而不是复杂的有机体，因为后者需要分析许多内容才能推断所要发送的信息。
 
-若要将运行状况数据发送到运行状况存储，报告器需要标识受影响的实体并创建运行状况报告。 然后，报告可以通过使用 [FabricClient.HealthClient.ReportHealth](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient_members.aspx) 的 API、通过 PowerShell 或通过 REST 进行发送。
+若要将运行状况数据发送到运行状况存储，报告器需要标识受影响的实体并创建运行状况报告。 然后，报告可以通过使用 [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) 的 API、通过 PowerShell 或通过 REST 进行发送。
 
 ### <a name="health-reports"></a>运行状况报告
-群集中每个实体的[运行状况报告](https://msdn.microsoft.com/library/azure/system.fabric.health.healthreport.aspx)都包含以下信息：
+群集中每个实体的[运行状况报告](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport)都包含以下信息：
 
 * **SourceId**。 唯一标识运行状况事件的报告器的字符串。
 * **实体标识符**。 标识对其申请报告的实体。 它会因[实体类型](service-fabric-health-introduction.md#health-entities-and-hierarchy)而异：
@@ -217,7 +218,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 每个运行状况报告都需要四种信息（SourceId、实体标识符、属性和 HealthState）。 不允许 SourceId 字符串以前缀“**System.**”开头，该字符串是为系统报告保留的。 对于相同实体，相同的源和属性只有一个报告。 如果为相同的源和属性生成多个报告，它们会在运行状况客户端（如果按批处理）或在运行状况存储端覆盖彼此。 根据序列号进行这种替换操作：较新的报告（具有更高的序列号）替换较旧的报告。
 
 ### <a name="health-events"></a>运行状况事件
-在内部，运行状况存储保留[运行状况事件](https://msdn.microsoft.com/library/azure/system.fabric.health.healthevent.aspx)，其中包含报告的所有信息以及其他元数据。 元数据包括报告提供给运行状况客户端的时间，以及在服务器端修改该报告的时间。 运行状况事件通过[运行状况查询](service-fabric-view-entities-aggregated-health.md#health-queries)返回。
+在内部，运行状况存储保留[运行状况事件](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent)，其中包含报告的所有信息以及其他元数据。 元数据包括报告提供给运行状况客户端的时间，以及在服务器端修改该报告的时间。 运行状况事件通过[运行状况查询](service-fabric-view-entities-aggregated-health.md#health-queries)返回。
 
 已添加元数据包含：
 
@@ -318,10 +319,5 @@ HealthEvents                    :
 [在本地监视和诊断服务](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

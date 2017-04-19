@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
-ms.openlocfilehash: 34f5c92dc565e644bd8c569bfbea65e92ace5a19
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 290271855ac54af8c99311ff675a08d1e6942d93
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -38,14 +38,14 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Hadoop 群集�
 使用 Linux 操作系统的 HDInsight 群集已按默认提供 Ambari Web UI。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 
 
 ## <a name="connectivity"></a>连接
 
-在 HDInsight 群集上从 HTTPS://CLUSTERNAME.azurehdidnsight.net 可获得 Ambari Web UI，其中 **CLUSTERNAME** 是 HDInsight 群集的名称。 
+在 HDInsight 群集上从 HTTPS://CLUSTERNAME.azurehdidnsight.net 可获得 Ambari Web UI，其中 **CLUSTERNAME** 是 HDInsight 群集的名称。
 
 > [!IMPORTANT]
-> 连接到 HDInsight 上的 Ambari 需要 HTTPS。 此外，必须使用管理员帐户名（默认为 **admin**）和创建群集时提供的密码在 Ambari 上进行身份验证。 
+> 连接到 HDInsight 上的 Ambari 需要 HTTPS。 此外，必须使用管理员帐户名（默认为 **admin**）和创建群集时提供的密码在 Ambari 上进行身份验证。
 
 ## <a name="ssh-tunnel-proxy"></a>SSH 隧道（代理）
 
@@ -147,7 +147,7 @@ Ambari 提供多个警报，其可能状态如下：
 
 > [!NOTE]
 > 选择任意服务的“快速链接”链接将会导致出现“找不到服务器”错误，除非使用安全套接字层 (SSL) 隧道通过代理向群集发送 Web 流量。 这是因为用于显示此信息的 Web 应用程序未在 Internet 上公开。
-> 
+>
 > 有关将 SSL 隧道与 HDInsight 配合使用的信息，请参阅[使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md)
 
 ## <a name="management"></a>管理
@@ -171,7 +171,7 @@ Ambari 提供多个警报，其可能状态如下：
 1. 选择你要管理的主机。
 
 2. 使用“操作”菜单选择要执行的操作：
-   
+
    * **启动所有组件** - 启动主机上的所有组件。
 
    * **停止所有组件** - 停止主机上的所有组件。
@@ -189,12 +189,12 @@ Ambari 提供多个警报，其可能状态如下：
    * **重新启动** - 停止然后启动主机上的 DataNode 或 NodeManagers。
 
    * **停用** - 从群集中删除主机。
-     
+
      > [!NOTE]
      > 请勿在 HDInsight 群集上使用此操作。
 
    * **重用** - 将以前已停用的主机添加到群集中。
-     
+
      > [!NOTE]
      > 请勿在 HDInsight 群集上使用此操作。
 
@@ -212,14 +212,14 @@ Ambari 提供多个警报，其可能状态如下：
 1. 从“仪表板”或“服务”页面中选择一个服务。
 
 2. 在“摘要”选项卡的顶部，使用“服务操作”按钮，然后选择要执行的操作。 这会重启所有节点上的服务。
-   
+
     ![服务操作](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
-   
+
    > [!NOTE]
    > 在群集运行时重新启动某些服务可能会生成警报。 若要避免这个问题，可使用“服务操作”按钮来启用服务的“维护模式”，然后再执行重新启动。
 
 3. 选择某个操作后，页面顶部的“# 项操作”条目的数字便会递增，指出正在进行后台操作。 如果已配置为显示，则将显示后台操作的列表。
-   
+
    > [!NOTE]
    > 如果你已对服务启用了“维护模式”，请记得在操作完成后使用“服务操作”按钮来将它禁用。
 
@@ -228,7 +228,7 @@ Ambari 提供多个警报，其可能状态如下：
 1. 从“仪表板”或“服务”页面中选择一个服务。
 
 2. 选择“配置”选项卡。 这会显示当前配置。 同时，还会显示以前的配置列表。
-   
+
     ![配置](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
 
 3. 使用显示的字段修改配置，然后选择“保存”。 或者，选择以前的某个配置，然后选择“设为当前配置”以回滚到以前的设置。
@@ -242,5 +242,4 @@ Ambari 视图允许开发人员使用 [Ambari 视图框架](https://cwiki.apache
 * Hive 视图: Hive 视图允许你直接从 Web 浏览器运行 Hive 查询。 可保存查询、查看结果、将结果保存到群集存储中或将结果下载到本地系统。 有关使用 Hive 视图的详细信息，请参阅[将 Hive 视图与 HDInsight 配合使用](hdinsight-hadoop-use-hive-ambari-view.md)。
 
 * Tez 视图：Tez 视图让你能够通过查看 Tez 作业的执行方式和作业使用的资源更好地理解和优化作业。
-
 

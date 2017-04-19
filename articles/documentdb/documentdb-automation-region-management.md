@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 19ba92fae63cadef20cd5414fa23bf4821ab6d56
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 809941992e719ea2eb85cc900063ea218e8fccbb
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -56,7 +56,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 [Azure Resource Manager �
     Enter the code E1A2B3C4D to authenticate.
 
 > [!NOTE]
-> 如果你没有 Azure 帐户，则会看到一条错误消息，指出你需要不同类型的帐户。 若要从当前 Azure 帐户创建一个帐户，请参阅[在 Azure Active Directory 中创建工作或学校标识](../virtual-machines/virtual-machines-windows-create-aad-work-id.md)。
+> 如果你没有 Azure 帐户，则会看到一条错误消息，指出你需要不同类型的帐户。 若要从当前 Azure 帐户创建一个帐户，请参阅[在 Azure Active Directory 中创建工作或学校标识](../virtual-machines/windows/create-aad-work-id.md)。
 
 在浏览器中打开 [https://aka.ms/devicelogin](https://aka.ms/devicelogin)，然后输入命令输出中提供的代码。
 

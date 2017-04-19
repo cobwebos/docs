@@ -22,7 +22,7 @@
 > [!NOTE]
 > 必须能够同时从两个控制器访问修补程序，以便检测来自对等 > 控制器的任何潜在错误消息。
 >
-> 必须在 3 个不同的文件夹中复制修补程序。 设备软件更新必须在 _FirstOrderUpdate_ 文件夹中复制，所有其他非中断性更新应该在 _SecondOrderUpdate_ 文件夹中复制，维护模式更新应该在 _ThirdOrderUpdate_ 文件夹中复制。
+> 必须在 3 个不同的文件夹中复制修补程序。 例如，设备软件更新可以在 _FirstOrderUpdate_ 文件夹中复制，所有其他非中断性更新可以在 _SecondOrderUpdate_ 文件夹中复制，维护模式更新可以在 _ThirdOrderUpdate_ 文件夹中复制。
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>安装和验证常规模式修补程序
 
@@ -40,11 +40,11 @@
    
     根据提示提供密码。
    
-    安装第一级更新的示例输出显示在下面。
+    安装第一级更新的示例输出显示在下面。 对于第一级更新，需要指向特定文件。
    
         ````
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
-        \FirstOrderUpdate\ -Credential contoso\John
+        \FirstOrderUpdate\HcsSoftwareUpdate.exe -Credential contoso\John
    
         Confirm
    
@@ -96,7 +96,7 @@
     > [!IMPORTANT]
     > 必须先通过 `Restart-HcsController` cmdlet 重新启动主动控制器，然后应用剩余的更新。
      
-7. 重复步骤 3-5，安装第二级更新。 只需运行 `Start-HcsHotfix cmdlet` 并指向第二级更新所在的文件夹，即可安装多个更新。 该 cmdlet 将执行文件夹中所有可用的更新。 如果更新已安装，则更新逻辑会删除该更新，不应用该更新。 安装所有修补程序后，请使用 `Get-HcsSystem` cmdlet。 版本应为：
+7. 重复步骤 3-5，安装第二级更新。 **对于第二级更新，只需运行 `Start-HcsHotfix cmdlet` 并指向第二级更新所在的文件夹，即可安装多个更新。该 cmdlet 将执行此文件夹中所有可用的更新。** 如果更新已安装，则更新逻辑会删除该更新，不应用该更新。 安装所有修补程序后，请使用 `Get-HcsSystem` cmdlet。 版本应为：
 
    * `CisAgentVersion:  1.0.9441.0`
    * `MdsAgentVersion: 35.2.2.0`
@@ -247,9 +247,4 @@
    `Exit-HcsMaintenanceMode`
 
 5. 退出维护模式时，控制器会重新启动。 成功应用磁盘固件更新并且设备退出维护模式后，将返回 Azure 经典门户。 请注意，门户在 24 小时内可能不会显示已安装维护模式更新。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

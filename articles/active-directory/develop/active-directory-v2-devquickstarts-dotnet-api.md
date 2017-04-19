@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
-ms.openlocfilehash: af75c0016d4c64c13c971abc80d0c56542a0db3e
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: d063ea881c82b158a196cb5f63e7514777732846
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.openlocfilehash: af75c0016d4c64c13c971abc80d0c56542a0db3e
 git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 ```
 
-该骨架应用包含简单 API 应用的重复使用代码，但是缺少与标识相关的所有部分。 如果不想延用该应用，可克隆或[下载完整的示例](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip)。
+该骨架应用包含简单 API 应用的重复使用代码，但是缺少与标识相关的所有部分。 如果不想延用该应用，可克隆或[下载完整的示例](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip)。
 
 ```
 git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
@@ -166,9 +167,4 @@ public IEnumerable<TodoItem> Get()
 
 ## <a name="get-security-updates-for-our-products"></a>获取关于我们产品的安全更新
 建议发生安全事件时获取相关通知，方法是访问 [此页](https://technet.microsoft.com/security/dd252948) 并订阅“安全公告通知”。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

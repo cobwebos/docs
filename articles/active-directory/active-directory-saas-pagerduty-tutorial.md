@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/26/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: d78e5a50f5c0416aa5f7caa92d51f688abb1efcc
-ms.openlocfilehash: adfc80090c732fc0dfa2fa35056451921d242f6a
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a7fae61f9b2dc400cbbd7054c11ec622f8683ccb
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.openlocfilehash: adfc80090c732fc0dfa2fa35056451921d242f6a
 在本教程中概述的方案由以下构建基块组成：
 
 1. 为 Pagerduty 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
@@ -62,7 +63,7 @@ ms.openlocfilehash: adfc80090c732fc0dfa2fa35056451921d242f6a
    
    ![PagerDuty](./media/active-directory-saas-pagerduty-tutorial/IC778530.png "PagerDuty")
    
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 
 此部分的目的是概述如何使用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Pagerduty 进行身份验证。  
 
@@ -112,10 +113,11 @@ ms.openlocfilehash: adfc80090c732fc0dfa2fa35056451921d242f6a
    ![配置单一登录](./media/active-directory-saas-pagerduty-tutorial/IC778538.png "配置单一登录")
    
 
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 
 若要让 Azure AD 用户登录 Pagerduty，必须将其预配到 Pagerduty 中。  
-使用 Pagerduty 时，预配属手动任务。
+
+* 使用 Pagerduty 时，预配属手动任务。
 
 **若要预配用户帐户，请执行以下步骤：**
 
@@ -128,17 +130,17 @@ ms.openlocfilehash: adfc80090c732fc0dfa2fa35056451921d242f6a
    
    ![邀请团队](./media/active-directory-saas-pagerduty-tutorial/IC778540.png "邀请团队")
    
-   > [!NOTE]
-   > 所有已添加的用户都会收到创建 PagerDuty 帐户的邀请。
+   >[!NOTE]
+   >所有已添加的用户都会收到创建 PagerDuty 帐户的邀请。
    > 
    > 
 
-> [!NOTE]
-> 可以使用任何其他 Pagerduty 用户帐户创建工具或 Pagerduty 提供的 API 来预配 AAD 用户帐户。
+>[!NOTE]
+>可以使用任何其他 Pagerduty 用户帐户创建工具或 Pagerduty 提供的 API 来预配 AAD 用户帐户。
 > 
 > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
 **若要将用户分配到 Pagerduty，请执行以下步骤：**
@@ -151,11 +153,10 @@ ms.openlocfilehash: adfc80090c732fc0dfa2fa35056451921d242f6a
    
    ![是](./media/active-directory-saas-pagerduty-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
+## <a name="additional-resources"></a>其他资源
 
-
-
-<!--HONumber=Feb17_HO1-->
-
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 

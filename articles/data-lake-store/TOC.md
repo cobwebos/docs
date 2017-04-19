@@ -11,6 +11,7 @@
 ## [使用 Java SDK](data-lake-store-get-started-java-sdk.md)
 ## [使用 REST API](data-lake-store-get-started-rest-api.md)
 ## [使用 Azure CLI](data-lake-store-get-started-cli.md)
+## [使用 Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 ## [使用 Node.js](data-lake-store-manage-use-nodejs.md)
 ## [使用 Python](data-lake-store-get-started-python.md)
 
@@ -49,6 +50,7 @@
 ### [与 Power BI 配合使用](data-lake-store-power-bi.md)
 ### [与数据目录配合使用](data-lake-store-with-data-catalog.md)
 ### [在 SQL 数据仓库中使用 PolyBase](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)
+### [与 SQL Server Integration Services 配合使用](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)
 ### [更多 Azure 集成选项](data-lake-store-integrate-with-other-services.md)
 
 ## 管理
@@ -63,6 +65,7 @@
 ## [Python（帐户管理）](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
 ## [Python（文件系统管理）](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
+## [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/dls)
 
 # 资源
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-lake-store)

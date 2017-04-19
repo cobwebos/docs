@@ -24,13 +24,10 @@
 ### [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 ### [Azure 门户（经典）](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-### [经典门户（经典）](virtual-networks-configure-vnet-to-vnet-connection.md)
 ## 配置部署模型之间的 VNet 到 VNet 连接
 ### [Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
-## 创建站点到站点与 ExpressRoute 共存连接
-### [PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
-### [PowerShell（经典）](../expressroute/expressroute-howto-coexist-classic.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
+## [配置站点到站点和 ExpressRoute 的共存连接](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## 配置强制隧道
 ### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [PowerShell（经典）](vpn-gateway-about-forced-tunneling.md)
@@ -50,8 +47,8 @@
 ## [配置 VPN 网关（经典）](vpn-gateway-configure-vpn-gateway-mp.md)
 
 # 引用
-## [PowerShell](https://msdn.microsoft.com/library/mt163510(v=azure.300))
-## [PowerShell（经典）](https://msdn.microsoft.com/library/mt270335(v=azure.300))
+## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.6.0/azurerm.network)
+## [PowerShell（经典）](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
 ## [REST](https://msdn.microsoft.com/library/mt163859)
 ## [REST（经典）](https://msdn.microsoft.com/library/jj154113)
 

@@ -15,14 +15,14 @@ ms.topic: get-started-article
 ms.date: 05/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 9916000ddf38fdda1dcbdcf8818c5833a445efc8
-ms.openlocfilehash: 3f099db9f75466b5571aa732bb60343af7bd86da
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 34cccf6a0962f72e04a90516fa7643db2533d85d
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="add-functionality-to-your-first-web-app"></a>在第一个 Web 应用中添加功能
-通过[在&5; 分钟内将第一个 Web 应用部署到 Azure](app-service-web-get-started-cli-nodejs.md) 教程，你已将一个示例 Web 应用部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 在本文中，你将会快速地在所部署的 Web 应用中添加一些强大功能。 只需几分钟，你就能够：
+通过[在 5 分钟内将第一个 Web 应用部署到 Azure](app-service-web-get-started-dotnet.md) 教程，你已将一个示例 Web 应用部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 在本文中，你将会快速地在所部署的 Web 应用中添加一些强大功能。 只需几分钟，你就能够：
 
 * 强制实施用户身份验证
 * 自动缩放应用
@@ -129,7 +129,7 @@ App Service 针对某些常见的身份验证要求提供周全的解决方案�
 
 祝贺你，你现在可以接收警报。
 
-此警报设置将每隔&5; 分钟检查一次 CPU 使用率。 如果该数字高于 90%，以及获得授权的人员都收到电子邮件警报。 若要查看有权接收警报的人员，请回到应用的边栏选项卡，然后单击“ **访问** ”按钮。  
+此警报设置将每隔 5 分钟检查一次 CPU 使用率。 如果该数字高于 90%，以及获得授权的人员都收到电子邮件警报。 若要查看有权接收警报的人员，请回到应用的边栏选项卡，然后单击“ **访问** ”按钮。  
 ![查看谁会收到警报](./media/app-service-web-get-started/alert-rbac.png)
 
 应会看到“订阅管理员”已是应用的“所有者”。 如果你是 Azure 订阅（例如你的试用订阅）的帐户管理员，该组将包括你。 有关 Azure 基于角色的访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。

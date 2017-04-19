@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: f31a8347bf6bb36fa166d35f52915813394d85e9
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: e2d3a6725ee53dc6d6986b185fac143901ba6955
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -59,7 +59,7 @@ Azure 诊断扩展可将此数据传输到 Azure 存储帐户，或者发送到 
 
 * [将 Azure 诊断与适用于云服务的 Application Insights 配合使用](../application-insights/app-insights-cloudservices.md)
 * [使用 Azure 诊断跟踪云服务应用程序的流](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
-* [使用 PowerShell 在云服务上设置诊断](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [使用 PowerShell 在云服务上设置诊断](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="virtual-machines-using-azure-diagnostics"></a>使用 Azure 诊断的虚拟机
 * 如果使用 Visual Studio，请参阅[使用 Visual Studio 跟踪 Azure 虚拟机](../vs-azure-tools-debug-cloud-services-virtual-machines.md)帮助自己入门。 否则，请参阅
@@ -67,8 +67,8 @@ Azure 诊断扩展可将此数据传输到 Azure 存储帐户，或者发送到 
 
 有关更高级主题，请参阅
 
-* [使用 PowerShell 在 Azure 虚拟机上设置诊断](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [使用 PowerShell 在 Azure 虚拟机上设置诊断](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="service-fabric-using-azure-diagnostics"></a>使用 Azure 诊断的 Service Fabric
 请参阅[监视 Service Fabric 应用程序](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)帮助自己入门。 打开此文章后，可以使用左侧的导航树来查看其他许多 Service Fabric 诊断文章。

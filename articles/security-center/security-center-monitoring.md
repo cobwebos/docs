@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
-ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: d796566676e13b312832dd543f52d3475d877ef8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -33,30 +34,31 @@ ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
 
 在“资源安全运行状况”磁贴中，可以监视资源的安全状态。 在下面的示例中，可以看到许多问题严重级别为“高”和“中”，需要引起注意。 启用的安全策略会影响受监视控件的类型。
 
-![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-new4-2017.png)
+![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-new001-2017.png)
 
 如果安全中心确定需要解决的漏洞（例如虚拟机缺少安全更新，或者子网没有[网络安全组](/virtual-network/virtual-networks-nsg.md)），会将其列在此处。
 
-### <a name="monitor-virtual-machines"></a>监视虚拟机
-在“资源安全运行状况”磁贴中单击“虚拟机”时，“虚拟机”边栏选项卡随即打开，显示有关载入的更多详细信息、预防步骤以及安全中心监视的所有虚拟机的列表，如以下屏幕截图所示。
+### <a name="monitor-compute"></a>监视计算节点
+在“资源安全运行状况”磁贴中单击“计算”时，打开的“计算”边栏选项卡将显示三个选项卡：
 
-![各虚拟机缺少的系统更新](./media/security-center-monitoring/security-center-monitoring-fig2-ga.png)
+- **概述**：有关监视和虚拟机的建议。
+- **虚拟机**：列出所有虚拟机及其当前安全状态。
+- **云服务**：列出安全中心监视的所有 Web 角色和辅助角色。
 
-* 加载步骤
-* 虚拟机建议
-* 虚拟机
+![各虚拟机缺少的系统更新](./media/security-center-monitoring/security-center-monitoring-fig1-new002-2017.png)
 
-可以选择每一部分中的各个选项，查看可解决相关问题的建议步骤的更多相关详细信息。 以下各部分将更详细地介绍这些方面。
+每个选项卡可能包含多个部分，在每个部分，可以选择单个选项详细查看可解决该特定问题的建议步骤。 
 
 #### <a name="monitoring-recommendations"></a>监视建议
-此部分显示已启动以进行数据收集的虚拟机的总数及其当前状态。 所有虚拟机都启动数据收集后，它们即可接收安全中心的安全策略。 单击此条目以时，“数据收集安装状态”边栏选项卡随即打开，此时可在“安装状态”列中看到虚拟机的名称及数据收集的当前状态，如以下屏幕截图所示。
+此部分显示已启动以进行数据收集的虚拟机的总数及其当前状态。 所有虚拟机都启动数据收集后，它们即可接收安全中心的安全策略。 单击此项时，将打开“VM 代理缺失或无响应”边栏选项卡。 
 
-![虚拟机的初始化状态](./media/security-center-monitoring/security-center-monitoring-fig3-ga.png)
+![各虚拟机缺少的系统更新](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
+
 
 #### <a name="virtual-machine-recommendations"></a>虚拟机建议
 此部分为受 Azure 安全中心监视的[每个虚拟机提供了一组建议](security-center-virtual-machine-recommendations.md)。 第一列列出了建议。 第二列显示受该建议的虚拟机的总数。 第三列显示问题的严重级别，如以下屏幕截图所示。
 
-![虚拟机建议](./media/security-center-monitoring/security-center-monitoring-fig4-ga.png)
+![虚拟机建议](./media/security-center-monitoring/security-center-monitoring-fig1-new004-2017.png)
 
 > [!NOTE]
 > “网络拓扑”列表的“网络运行状况”边栏选项卡中仅显示至少具有一个公共终结点的虚拟机。
@@ -93,7 +95,7 @@ ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
 #### <a name="virtual-machines-section"></a>虚拟机部分
 通过虚拟机部分可概览所有虚拟机和建议。 每一列代表一组建议，如以下屏幕截图所示：
 
-![所有虚拟机和建议的概览](./media/security-center-monitoring/security-center-monitoring-fig7-ga.png)
+![所有虚拟机和建议的概览](./media/security-center-monitoring/security-center-monitoring-fig1-new005-2017.png)
 
 每个建议下都会显示一个图标，用于快速确定需要关注的虚拟机以及建议的类型。
 
@@ -103,12 +105,12 @@ ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
 
 此边栏选项卡提供虚拟机的安全详细信息。 在此边栏选项卡的底部，可以看到建议的操作以及每个问题的严重级别。
 
-#### <a name="cloud-services-preview-section"></a>云服务（预览版）部分
-虚拟机“安全运行状况”磁贴包含云服务的运行状况。 操作系统版本过期时创建了建议，如以下屏幕截图所示：
+#### <a name="cloud-services-section"></a>云服务部分
+对于云服务，将在操作系统版本过期时创建建议，如以下屏幕截图所示：
 
-![云服务的运行状态](./media/security-center-monitoring/security-center-monitoring-fig8-new2.png)
+![云服务的运行状态](./media/security-center-monitoring/security-center-monitoring-fig1-new006-2017.png)
 
-必须按建议中的步骤更新操作系统版本。 例如，如果单击 WebRole1（运行 Windows Server，将 Web 应用自动部署到 IIS）或 WorkerRole1（运行 Windows Server，将 Web 应用自动部署到 IIS）行中红色警报，将打开新的边栏选项卡，其中包含有关此建议的更多详细信息，如以下屏幕截图所示：
+如果确实提供了建议（在上一示例中不是这样），则你需要遵循建议中的步骤更新操作系统版本。 如果有可用的更新，将会出现警报（红色或橙色 - 取决于问题的严重性）。 如果单击 WebRole1（运行 Windows Server，将 Web 应用自动部署到 IIS）或 WorkerRole1（运行 Windows Server，将 Web 应用自动部署到 IIS）行中的此警报，将打开新的边栏选项卡，其中包含有关此建议的更多详细信息，如以下屏幕截图所示：
 
 ![云服务详细信息](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
 
@@ -214,9 +216,4 @@ ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状态。
 * [Azure 安全中心常见问题](security-center-faq.md)：查找有关使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/):.查找关于 Azure 安全性及合规性的博客文章
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

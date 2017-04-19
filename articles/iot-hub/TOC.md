@@ -103,6 +103,7 @@
 #### [Power BI 中的数据可视化](iot-hub-live-data-visualization-in-power-bi.md)
 #### [使用 Web 应用进行数据可视化](iot-hub-live-data-visualization-in-web-apps.md)
 #### [使用 Azure 机器学习预测天气](iot-hub-weather-forecast-machine-learning.md)
+#### [使用 iothub-explorer 进行设备管理](iot-hub-device-management-iothub-explorer.md)
 
 ### [Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
@@ -110,6 +111,7 @@
 #### [Power BI 中的数据可视化](iot-hub-live-data-visualization-in-power-bi.md)
 #### [使用 Web 应用进行数据可视化](iot-hub-live-data-visualization-in-web-apps.md)
 #### [使用 Azure 机器学习预测天气](iot-hub-weather-forecast-machine-learning.md)
+#### [使用 iothub-explorer 进行设备管理](iot-hub-device-management-iothub-explorer.md)
 
 
 ### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
@@ -138,54 +140,13 @@
 ### [Linux 上的模拟](iot-hub-linux-gateway-sdk-get-started.md)
 ### [Windows 上的模拟](iot-hub-windows-gateway-sdk-get-started.md)
 
+
 ## 使用 IoT 网关初学者工具包
-### [模拟设备](iot-hub-gateway-kit-c-sim-get-started.md)
-#### 第 1 课：配置 NUC
-##### [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)
+### 配置 IoT 网关初学者工具包
+#### [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+#### [将 IoT 网关连接到 IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+#### [使用 IoT 网关进行数据转换](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
-#### 第 2 课：创建 IoT 中心
-##### [获取工具 (Windows 7+)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
-##### [获取工具 (Ubuntu 16.04)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-ubuntu.md)
-##### [获取工具 (macOS 10.10)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-mac.md)
-##### [创建 IoT 中心并注册设备](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
-
-#### 第 3 课：从模拟设备接收消息
-##### [配置并运行 BLE 示例应用](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
-##### [从 IoT 中心读取消息](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)
-
-#### 第 4 课：将消息保存到 Azure 表存储
-##### [创建 Azure Function App 和 Azure 存储帐户](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
-##### [读取 Azure 表存储中保存的消息](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md)
-
-#### [第 5 课：创建你的第一个 Azure IoT 网关模块](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
-
-#### [故障排除](iot-hub-gateway-kit-c-sim-troubleshooting.md)
-
-### [SensorTag 设备](iot-hub-gateway-kit-c-get-started.md)
-#### 第 1 课：配置 NUC
-##### [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-
-#### 第 2 课：创建 IoT 中心
-##### [获取工具 (Windows 7+)](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
-##### [获取工具 (Ubuntu 16.04)](iot-hub-gateway-kit-c-lesson2-get-the-tools-ubuntu.md)
-##### [获取工具 (macOS 10.10)](iot-hub-gateway-kit-c-lesson2-get-the-tools-mac.md)
-##### [创建 IoT 中心并注册设备](iot-hub-gateway-kit-c-lesson2-register-device.md)
-
-#### 第 3 课：从模拟设备接收消息
-##### [配置并运行 BLE 示例应用](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)
-##### [从 IoT 中心读取消息](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md)
-
-#### 第 4 课：将消息保存到 Azure 表存储
-##### [创建 Azure Function App 和 Azure 存储帐户](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
-##### [读取 Azure 表存储中保存的消息](iot-hub-gateway-kit-c-lesson4-read-table-storage.md)
-
-#### [第 5 课：创建你的第一个 Azure IoT 网关模块](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
-
-##### [故障排除](iot-hub-gateway-kit-c-troubleshooting.md)
-
-## [使用适用于 C 的 IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)
-### [使用 IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
-### [使用序列化程序](iot-hub-device-sdk-c-serializer.md)
 
 # 如何
 ## 计划
@@ -211,6 +172,9 @@
 #### [设备和服务 SDK](iot-hub-devguide-sdks.md)
 #### [MQTT 支持](iot-hub-mqtt-support.md)
 #### [术语表](iot-hub-devguide-glossary.md)
+### [使用适用于 C 的 IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)
+#### [使用 IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
+#### [使用序列化程序](iot-hub-device-sdk-c-serializer.md)
 ### 处理设备到云的消息
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
@@ -268,8 +232,8 @@
 ## [Azure CLI 2.0 预览版](/cli/azure/iot)
 ## [.NET（服务）](/dotnet/api/microsoft.azure.devices)
 ## [.NET（设备）](/dotnet/api/microsoft.azure.devices.client)
-## [Java（服务）](/java/api/com.microsoft.azure.iot.service.auth)
-## [Java（设备）](/java/api/com.microsoft.azure.iothub)
+## [Java（服务）](/java/api/com.microsoft.azure.sdk.iot.service)
+## [Java（设备）](/java/api/com.microsoft.azure.sdk.iot.device)
 ## [Azure IoT SDK](http://azure.github.io/azure-iot-sdks/)
 ## [网关 SDK](http://azure.github.io/azure-iot-gateway-sdk)
 ## [REST（资源提供程序）](https://docs.microsoft.com/rest/api/iothub/iothubresource)

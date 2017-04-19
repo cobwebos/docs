@@ -13,10 +13,11 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: brandwe
+ms.author: xerners
 translationtype: Human Translation
 ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
 ms.openlocfilehash: 36c83ad9424c7c1e0bc096696148dda801bc4257
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -568,10 +569,5 @@ NSArray *accounts = [store accountsWithAccountType:@"myGraphService"];
 
 ## <a name="get-security-updates-for-our-product"></a>获取产品的安全更新
 建议访问[安全技术中心](https://technet.microsoft.com/security/dd252948)并订阅“安全公告通知”，以便在发生安全事件时获取相关通知。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -12,12 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/03/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: f8512229ee30fee6315d8ba167f1716e40f79b3e
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: cee4748a0b24e11cd8a8ee46471418680fcf7b33
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -53,7 +53,7 @@ ms.lasthandoff: 03/06/2017
 3. 边栏选项卡将显示部署摘要。 摘要包括此部署及其操作的状态，以及为参数提供的值。 若要查看用于部署的模板，请选择“查看模板”。
    
      ![查看部署摘要](./media/resource-manager-export-template/deployment-summary.png)
-4. Resource Manager 将检索以下六个文件：
+4. Resource Manager 为你检索以下七个文件：
    
    1. **模板** - 定义解决方案基础结构的模板。 通过门户创建存储帐户时，Resource Manager 使用模板来部署该存储帐户，并保存该模板供将来参考。
    2. **参数** - 可用于在部署过程中传入值的参数文件。 它包含在首次部署期间提供的值，但你可以在重新部署该模板时更改其中任何值。
@@ -148,28 +148,28 @@ ms.lasthandoff: 03/06/2017
      并非所有资源类型都支持导出模板功能。 如果资源组仅包含本文中显示的存储帐户和虚拟网络，则不会显示错误。 不过，如果你已经创建其他资源类型，则可能会显示一个错误，指出导出存在问题。 [修复导出问题](#fix-export-issues) 部分介绍了如何处理这些问题。
 2. 此时将再次显示可用于重新部署解决方案的六个文件，但这一次模板稍有不同。 该模板只有两个参数：一个用于存储帐户名称，一个用于虚拟网络名称。
 
-  ```json
-  "parameters": {
-    "virtualNetworks_VNET_name": {
-      "defaultValue": "VNET",
-      "type": "String"
-    },
-    "storageAccounts_storagetf05092016_name": {
-      "defaultValue": "storagetf05092016",
-      "type": "String"
-    }
-  },
-  ```
+   ```json
+   "parameters": {
+     "virtualNetworks_VNET_name": {
+       "defaultValue": "VNET",
+       "type": "String"
+     },
+     "storageAccounts_storagetf05092016_name": {
+       "defaultValue": "storagetf05092016",
+       "type": "String"
+     }
+   },
+   ```
    
-     Resource Manager 未检索到在部署期间使用的模板。 但是，它将基于资源的当前配置生成新模板。 例如，模板会将存储帐户位置和复制值设置为：
+   Resource Manager 未检索到在部署期间使用的模板。 但是，它将基于资源的当前配置生成新模板。 例如，模板会将存储帐户位置和复制值设置为：
 
-  ```json 
-  "location": "northeurope",
-  "tags": {},
-  "properties": {
-    "accountType": "Standard_RAGRS"
-  },
-  ```
+   ```json 
+   "location": "northeurope",
+   "tags": {},
+   "properties": {
+     "accountType": "Standard_RAGRS"
+   },
+   ```
 3. 可通过几个选项继续使用此模板。 可以下载模板，并使用 JSON 编辑器本地使用它。 也可将模板保存到库，并通过门户使用它。
    
      如果喜欢使用 [VS Code](resource-manager-vs-code.md) 或 [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) 等 JSON 编辑器，可本地下载模板并使用该编辑器。 如果不使用 JSON 编辑器进行设置，可通过门户编辑模板。 本主题其余部分假设你已在门户中将模板保存到库。 但无论使用本地 JSON 编辑器还是通过门户，都要对模板进行相同的语法更改。
@@ -205,88 +205,88 @@ ms.lasthandoff: 03/06/2017
      ![编辑模板](./media/resource-manager-export-template/edit-template.png)
 3. 若要能够传入在部署过程中可能需要指定的值，请将 **parameters** 部分替换为新的参数定义。 注意 **storageAccount_accountType** 的 **allowedValues** 的值。 如果你意外地提供了无效的值，则在部署开始之前将识别该错误。 另请注意，你仅提供存储帐户名称的前缀，该前缀限制为 11 个字符。 将前缀限制为 11 个字符时，可确保完整名称不会超过存储帐户的最大字符数。 使用前缀，可将命名约定应用于存储帐户。 在下一步中，你将了解如何创建唯一名称。
 
-  ```json
-  "parameters": {
-    "storageAccount_prefix": {
-      "type": "string",
-      "maxLength": 11
-    },
-    "storageAccount_accountType": {
-      "defaultValue": "Standard_RAGRS",
-      "type": "string",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_ZRS",
-        "Standard_GRS",
-        "Standard_RAGRS",
-        "Premium_LRS"
-      ]
-    },
-    "virtualNetwork_name": {
-      "type": "string"
-    },
-    "addressPrefix": {
-      "defaultValue": "10.0.0.0/16",
-      "type": "string"
-    },
-    "subnetName": {
-      "defaultValue": "subnet-1",
-      "type": "string"
-    },
-    "subnetAddressPrefix": {
-      "defaultValue": "10.0.0.0/24",
-      "type": "string"
-    }
-  },
-  ```
+   ```json
+   "parameters": {
+     "storageAccount_prefix": {
+       "type": "string",
+       "maxLength": 11
+     },
+     "storageAccount_accountType": {
+       "defaultValue": "Standard_RAGRS",
+       "type": "string",
+       "allowedValues": [
+         "Standard_LRS",
+         "Standard_ZRS",
+         "Standard_GRS",
+         "Standard_RAGRS",
+         "Premium_LRS"
+       ]
+     },
+     "virtualNetwork_name": {
+       "type": "string"
+     },
+     "addressPrefix": {
+       "defaultValue": "10.0.0.0/16",
+       "type": "string"
+     },
+     "subnetName": {
+       "defaultValue": "subnet-1",
+       "type": "string"
+     },
+     "subnetAddressPrefix": {
+       "defaultValue": "10.0.0.0/24",
+       "type": "string"
+     }
+   },
+   ```
 
 4. 模板的 **variables** 节当前为空。 在 **variables** 部分，创建可简化模板其余部分语法的值。 将此部分替换为新的变量定义。 **storageAccount_name** 变量将参数中的前缀连接成一个唯一字符串，该字符串将基于资源组的标识符生成。 提供参数值时无需再揣测唯一名称。
 
-  ```json
-  "variables": {
-    "storageAccount_name": "[concat(parameters('storageAccount_prefix'), uniqueString(resourceGroup().id))]"
-  },
-  ```
+   ```json
+   "variables": {
+     "storageAccount_name": "[concat(parameters('storageAccount_prefix'), uniqueString(resourceGroup().id))]"
+   },
+   ```
 
 5. 若要在资源定义中使用参数和变量，请将 **resources** 部分替换为新的资源定义。 请注意，除了分配给资源属性的值外，资源定义中几乎未发生更改。 属性与导出的模板中的属性相同。 你只需为参数值分配属性，而不是对值进行硬编码。 资源的位置通过 **resourceGroup().location** 表达式设置为使用资源组所在的位置。 为存储帐户名称创建的变量通过 **variables** 表达式进行引用。
 
-  ```json
-  "resources": [
-    {
-      "type": "Microsoft.Network/virtualNetworks",
-      "name": "[parameters('virtualNetwork_name')]",
-      "apiVersion": "2015-06-15",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "addressSpace": {
-          "addressPrefixes": [
-            "[parameters('addressPrefix')]"
-          ]
-        },
-        "subnets": [
-          {
-            "name": "[parameters('subnetName')]",
-            "properties": {
-              "addressPrefix": "[parameters('subnetAddressPrefix')]"
-            }
-          }
-        ]
-      },
-      "dependsOn": []
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccount_name')]",
-      "apiVersion": "2015-06-15",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "properties": {
-        "accountType": "[parameters('storageAccount_accountType')]"
-      },
-      "dependsOn": []
-    }
-  ]
-  ```
+   ```json
+   "resources": [
+     {
+       "type": "Microsoft.Network/virtualNetworks",
+       "name": "[parameters('virtualNetwork_name')]",
+       "apiVersion": "2015-06-15",
+       "location": "[resourceGroup().location]",
+       "properties": {
+         "addressSpace": {
+           "addressPrefixes": [
+             "[parameters('addressPrefix')]"
+           ]
+         },
+         "subnets": [
+           {
+             "name": "[parameters('subnetName')]",
+             "properties": {
+               "addressPrefix": "[parameters('subnetAddressPrefix')]"
+             }
+           }
+         ]
+       },
+       "dependsOn": []
+     },
+     {
+       "type": "Microsoft.Storage/storageAccounts",
+       "name": "[variables('storageAccount_name')]",
+       "apiVersion": "2015-06-15",
+       "location": "[resourceGroup().location]",
+       "tags": {},
+       "properties": {
+         "accountType": "[parameters('storageAccount_accountType')]"
+       },
+       "dependsOn": []
+     }
+   ]
+   ```
 
 6. 编辑完模板后，选择“确定”。
 7. 选择“保存”以保存对模板所做的更改。
@@ -393,7 +393,7 @@ ms.lasthandoff: 03/06/2017
 ```
 
 ### <a name="virtual-machine-extension"></a>虚拟机扩展
-如需虚拟机扩展的示例，请参阅 [Azure Windows VM 扩展配置示例](../virtual-machines/virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如需虚拟机扩展的示例，请参阅 [Azure Windows VM 扩展配置示例](../virtual-machines/windows/extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ### <a name="virtual-network-gateway"></a>虚拟网络网关
 添加虚拟网络网关资源类型。

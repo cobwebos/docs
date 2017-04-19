@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/02/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 39824fa66dee9f1bd57687e59ece97f4f4636b7d
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 9716d18773fca8dd4612d681d1f9588106aacb14
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -148,10 +148,10 @@ ms.lasthandoff: 03/24/2017
    * **linkedServiceName** 设置为 **AzureStorageLinkedService**。 已在步骤 2 中创建此链接服务。
    * **folderPath** 设置为 **adftutorial** 容器。 也可以使用 **fileName** 属性指定文件夹中 Blob 的名称。 由于未指定 Blob 的名称，容器中所有 Blob 的数据被视为输入数据。  
    * 格式 **type** 设置为 **TextFormat**
-   * 文本文件中有两个以逗号分隔 (**columnDelimiter**) 的字段 - **FirstName** 和 **LastName**    
-   * **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。 因此，数据工厂每小时在指定的 Blob 容器 (**adftutorial**) 的根文件夹中查找输入数据。 
+   * 文本文件中有两个以逗号分隔 (columnDelimiter) 的字段 - **FirstName** 和 **LastName**    
+   * **availability** 设置为 **hourly**（frequency 设置为 hour，interval 设置为 1）。 因此，数据工厂每小时在指定的 Blob 容器 (adftutorial) 的根文件夹中查找输入数据。 
    
-   如果没有指定**输入**数据集的 **fileName**，则输入文件夹 (**folderPath**) 中的所有文件/Blob 都被视为输入。 如果在 JSON 中指定 fileName，则只有指定的文件/Blob 被视为输入。
+   如果没有指定“输入”数据集的 **fileName**，则输入文件夹 (folderPath) 中的所有文件/Blob 都被视为输入。 如果在 JSON 中指定 fileName，则只有指定的文件/Blob 被视为输入。
    
    如果未指定**输出表**的 **fileName**，**folderPath** 中生成的文件根据以下格式命名：Data.&lt;Guid&gt;.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt）。
    
@@ -180,7 +180,7 @@ ms.lasthandoff: 03/24/2017
 2. 在“添加新项”对话框中，选择“Azure SQL”，然后单击“添加”。 
 3. 将 JSON 文本替换为以下 JSON 并保存 **AzureSqlTableLocation1.json** 文件。
 
-    ```json
+  ```json
     {
      "name": "OutputDataset",
      "properties": {
@@ -213,7 +213,7 @@ ms.lasthandoff: 03/24/2017
    * **linkedServiceName** 设置为 **AzureSqlLinkedService**（已在步骤 2 中创建此链接服务）。
    * **tablename** 设置为 **emp**。
    * 数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
-   * **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。  数据工厂服务每隔一小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
+   * **availability** 设置为 **hourly**（frequency 设置为 hour，interval 设置为 1）。  数据工厂服务每隔一小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
 
 > [!NOTE]
 > 有关 JSON 属性的详细信息，请参阅 [Move data from/to Azure SQL Database](data-factory-azure-sql-connector.md#linked-service-properties)（将数据移出/移入 Azure SQL 数据库）。
@@ -227,7 +227,7 @@ ms.lasthandoff: 03/24/2017
 2. 在“添加新项”对话框中，选择“复制数据管道”，然后单击“添加”。 
 3. 将 JSON 替换为以下 JSON 并保存 **CopyActivity1.json** 文件。
 
-    ```json   
+  ```json   
     {
      "name": "ADFTutorialPipeline",
      "properties": {
@@ -281,7 +281,7 @@ ms.lasthandoff: 03/24/2017
    
    开始和结束日期时间必须采用 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。 
    
-   如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
+   如果未指定 **end** 属性的值，则以“开始时间 + 48 小时”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
    
    在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
 
@@ -325,7 +325,7 @@ ms.lasthandoff: 03/24/2017
 
 请注意以下几点： 
 
-* 如果收到错误：“**该订阅未注册为使用命名空间 Microsoft.DataFactory**”，请执行下列操作之一，尝试再次发布： 
+* 如果收到错误：“该订阅未注册为使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布： 
   
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。 
 

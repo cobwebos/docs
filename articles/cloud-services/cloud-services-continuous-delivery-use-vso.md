@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 171c3f05b0eacfd8b1ede0b807f284ce6c0555b4
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: d80ce63eb7ddfd7c45726be887a772f9a7594b28
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -39,7 +40,7 @@ ms.openlocfilehash: 171c3f05b0eacfd8b1ede0b807f284ce6c0555b4
 1. 在 Visual Studio 中，打开要部署的解决方案或创建一个新的解决方案。
    你可以通过执行本演练中的步骤来部署 Web 应用或云服务（Azure 应用程序）。
    若要创建新的解决方案，请创建新的 Azure 云服务项目或新的 ASP.NET MVC 项目。 确保项目以 .NET Framework 4 或 4.5 为目标。如果你要创建云服务项目，请添加 ASP.NET MVC Web 角色和辅助角色，并为 Web 角色选择 Internet 应用程序。 系统提示时，请选择“**Internet 应用程序**”。
-   如果要创建 Web 应用，请选择 ASP.NET Web 应用程序项目模板，然后选择 MVC。 请参阅[在 Azure 应用服务中创建 ASP.NET Web 应用](../app-service-web/web-sites-dotnet-get-started.md)。
+   如果要创建 Web 应用，请选择 ASP.NET Web 应用程序项目模板，然后选择 MVC。 请参阅[在 Azure 应用服务中创建 ASP.NET Web 应用](../app-service-web/app-service-web-get-started-dotnet.md)。
    
    > [!NOTE]
    > Visual Studio Team Services 目前仅支持 Visual Studio Web 应用程序的 CI 部署。 网站项目不在支持范围内。
@@ -289,9 +290,4 @@ ms.openlocfilehash: 171c3f05b0eacfd8b1ede0b807f284ce6c0555b4
 [48]: ./media/cloud-services-continuous-delivery-use-vso/CheckInChangeToMakeTestsFail.PNG
 [49]: ./media/cloud-services-continuous-delivery-use-vso/TestsFailed.PNG
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

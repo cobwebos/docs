@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: b62ee732f1730e8934443fb4320327e64d110833
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 52db4d82faa0db07224f48b6600e690e34808e91
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -158,7 +158,7 @@ PHP 5.6 和 PHP 7.0 也可用，但它们在默认情况下不启用。 若要�
 <a name="composer" />
 
 ## <a name="how-to-enable-composer-automation-in-azure"></a>如何：在 Azure 中启用编辑器自动化
-默认情况下，如果 PHP 项目中有 composer.json，则应用服务与其不相关。 如果使用 [Git 部署](app-service-web-php-get-started.md)，则可以通过在 `git push` 期间启用编辑器扩展来启用 composer.json 处理。
+默认情况下，如果 PHP 项目中有 composer.json，则应用服务与其不相关。 如果使用 [Git 部署](app-service-deploy-local-git.md)，则可以通过在 `git push` 期间启用编辑器扩展来启用 composer.json 处理。
 
 > [!NOTE]
 > 可以[在此处针对应用服务中的一流编辑器支持进行投票](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)！

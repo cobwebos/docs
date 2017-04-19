@@ -6,6 +6,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 | [Pig](../articles/data-factory/data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](../articles/data-factory/data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop 流式处理](../articles/data-factory/data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
+| [Spark](../articles/data-factory/data-factory-spark.md) | HDInsight [Hadoop] |
 | [机器学习活动：批处理执行和更新资源](../articles/data-factory/data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [存储过程](../articles/data-factory/data-factory-stored-proc-activity.md) |Azure SQL、Azure SQL 数据仓库或 SQL Server |
 | [Data Lake Analytics U-SQL](../articles/data-factory/data-factory-usql-activity.md) |Azure Data Lake Analytics |
@@ -16,9 +17,4 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 > 可以创建一项自定义活动，在安装了 R 的 HDInsight 群集上运行 R 脚本。 请参阅 [Run R Script using Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)（使用 Azure 数据工厂运行 R 脚本）。
 > 
 > 
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

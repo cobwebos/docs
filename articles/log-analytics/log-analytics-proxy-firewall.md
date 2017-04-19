@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/10/2017
+ms.date: 04/12/2017
 ms.author: banders;magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 6a527fa303f1e2bd06ac662e545d6b6a1d299fb4
-ms.openlocfilehash: cd06dfd498540970dc8ed29650f4d9e3ca57939b
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: cc3ff1ca5e638896df155b55145b300f70f7540a
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -41,7 +41,6 @@ OMS 网关需要 Internet 访问权限。 将代理服务器或防火墙设置�
 | \*.oms.opinsights.azure.com |443 |是 |
 | \*.blob.core.windows.net |443 |是 |
 | \*.azure-automation.net |443 |是 |
-| ods.systemcenteradvisor.com |443 | |
 
 可通过以下过程，使用控制面板为 Microsoft Monitoring Agent 配置代理设置。 需要对每个服务器使用此过程。 如果需要配置多台服务器，使用脚本自动执行此过程可能更加轻松。 如果是，请参阅下一过程：[使用脚本配置 Microsoft Monitoring Agent 的代理设置](#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script)。
 
@@ -102,7 +101,6 @@ OMS 网关需要 Internet 访问权限。 将代理服务器或防火墙设置�
 | \*.ods.opinsights.azure.com |443 |
 | \*.oms.opinsights.azure.com |443 |
 | .blob.core.windows.net/\*\* |443 |
-| ods.systemcenteradvisor.com |443 |
 
 <br>
 以下是管理服务器资源和端口的列表：<br>
@@ -112,8 +110,6 @@ OMS 网关需要 Internet 访问权限。 将代理服务器或防火墙设置�
 | service.systemcenteradvisor.com |443 | |
 | \*.service.opinsights.azure.com |443 | |
 | \*.blob.core.windows.net |443 |是 |
-| data.systemcenteradvisor.com |443 | |
-| ods.systemcenteradvisor.com |443 | |
 | \*.ods.opinsights.azure.com |443 |是 |
 | \*.azure-automation.net |443 |是 |
 

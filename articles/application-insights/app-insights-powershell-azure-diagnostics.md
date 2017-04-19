@@ -10,12 +10,13 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 11/17/2015
 ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
 ms.openlocfilehash: df5fe5808a0fb6c2d580f35ed8430b52f34a4110
+ms.lasthandoff: 11/16/2016
 
 
 ---
@@ -137,10 +138,5 @@ ms.openlocfilehash: df5fe5808a0fb6c2d580f35ed8430b52f34a4110
 * [使用 Application Insights 监视 Azure Cloud Service 应用](app-insights-cloudservices.md)
 * [将 Azure 诊断发送到 Application Insights](app-insights-azure-diagnostics.md)
 * [自动配置警报](app-insights-powershell-alerts.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

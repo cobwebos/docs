@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/20/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 79beda244007649253fb7130f0403f587fcf76bf
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 6437190ac58a021ce84993f667bbb5fad6031bb3
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -33,7 +33,7 @@ Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其
 
 
 >[!IMPORTANT]
-> 从版本 9.7.0.0 开始，在 Windows 虚拟机 (VM) 上，移动服务安装程序还会安装最新可用的 [Azure VM 代理](../virtual-machines/virtual-machines-windows-extensions-features.md#azure-vm-agent)。 当计算机故障转移到 Azure 时，该计算机满足使用任何 VM 扩展所需的代理安装先决条件。
+> 从版本 9.7.0.0 开始，在 Windows 虚拟机 (VM) 上，移动服务安装程序还会安装最新可用的 [Azure VM 代理](../virtual-machines/windows/extensions-features.md#azure-vm-agent)。 当计算机故障转移到 Azure 时，该计算机满足使用任何 VM 扩展所需的代理安装先决条件。
 
 ## <a name="prerequisites"></a>先决条件
 在服务器上手动安装移动服务之前，请完成以下先决条件步骤：

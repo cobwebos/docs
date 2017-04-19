@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 5326c779d766e075a54f5ec43f92b6c5c973be8b
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 1199ca2378cfe4adba2d591bfab204113b4a0468
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="change-the-azure-active-directory-tenant-in-azure-remoteapp"></a>在 Azure RemoteApp 中更改 Azure Active Directory 租户
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -48,10 +49,5 @@ Azure RemoteApp 使用 Azure Active Directory (Azure AD) 来允许用户访问�
 8. 重新登录，并返回到“**设置 -> 订阅**”。 选择你的订阅，然后单击“**编辑目录**”。 选择你想要使用的 Azure AD 租户。
 
 你可以立即使用新的 Azure AD 租户来控制对 Azure 订阅的访问，并在 Azure RemoteApp 中配置用户访问权限。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

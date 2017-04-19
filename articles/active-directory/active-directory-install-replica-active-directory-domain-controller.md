@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: ccec356c653cf5d3c767fd273c37ea5685607135
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 6e03b6072b5244aca2810f704c485384de5aedf8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/25/2017
 ## <a name="scenario-diagram"></a>方案示意图
 在此案例中，外部用户需要访问在添加域的服务器上运行的应用程序。 运行应用程序服务器和副本 DC 的 VM 安装在 Azure 虚拟网络中。 虚拟网络可通过[站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) 连接方式连接到本地网络（如下图中所示），也可以使用 [ExpressRoute](../expressroute/expressroute-locations-providers.md) 更快地进行连接。
 
-应用程序服务器和 DC 将部署在独立的云服务中以分散计算处理，并部署在[可用性集](../virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中改进容错功能。
+应用程序服务器和 DC 将部署在独立的云服务中以分散计算处理，并部署在[可用性集](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中改进容错功能。
 DC 将使用 Active Directory 复制功能在彼此之间以及与本地 DC 相互复制。 不需要任何同步工具。
 
 ![用图解法表示 pf Active Directory 域控制器 Azure vnet][1]

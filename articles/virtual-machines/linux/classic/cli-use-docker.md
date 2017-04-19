@@ -16,17 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 96d88513eb4817b208d45883ed0c926921c7c10e
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a542332c921862241f1f000e6a8f0a0ae0e8a934
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>从 Azure 命令行界面 (Azure CLI) 使用 Docker VM 扩展
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关将 Docker VM 扩展与 Resource Manager 模型配合使用的信息，请参阅[此处](../../virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关将 Docker VM 扩展与 Resource Manager 模型配合使用的信息，请参阅[此处](../dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-本主题说明如何通过 Azure CLI 中的服务管理 (asm) 模式，在任何平台上创建包含 Docker VM 扩展的 VM。 [Docker](https://www.docker.com/) 是最常用的虚拟化技术之一，它使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC)而不是虚拟机作为在共享资源上隔离数据和执行计算的方法。 可以在 [Azure Linux 代理](../../virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中使用 Docker VM 扩展，创建可在 Azure 上为应用程序托管任意数量的容器的 Docker VM。 若要查看容器及其优点的综合讨论，请参阅 [Docker 高级白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
+本主题说明如何通过 Azure CLI 中的服务管理 (asm) 模式，在任何平台上创建包含 Docker VM 扩展的 VM。 [Docker](https://www.docker.com/) 是最常用的虚拟化技术之一，它使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC)而不是虚拟机作为在共享资源上隔离数据和执行计算的方法。 可以在 [Azure Linux 代理](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中使用 Docker VM 扩展，创建可在 Azure 上为应用程序托管任意数量的容器的 Docker VM。 若要查看容器及其优点的综合讨论，请参阅 [Docker 高级白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
 
 ## <a name="how-to-use-the-docker-vm-extension-with-azure"></a>如何对 Azure 使用 Docker VM 扩展
 若要对 Azure 使用 Docker VM 扩展，必须安装 0.8.6 版本以上的 [Azure 命令行接口 ](https://github.com/Azure/azure-sdk-tools-xplat)(Azure CLI) （截至本文编写时的最新版本为 0.10.0）。 可以在 Mac、Linux 和 Windows 上安装 Azure CLI。
@@ -56,10 +56,10 @@ ms.lasthandoff: 03/27/2017
 ### <a name="install-docker-and-use-the-docker-vm-extension-for-azure"></a>安装 Docker 并对 Azure 使用 Docker VM 扩展
 遵循 [Docker 安装说明](https://docs.docker.com/installation/#installation)在计算机本地安装 Docker。
 
-若要将 Docker 与 Azure 虚拟机配合使用，VM 使用的 Linux 映像上必须已安装 [Azure Linux VM 代理](../../virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 目前，只有两种类型的映像提供此代理：
+若要将 Docker 与 Azure 虚拟机配合使用，VM 使用的 Linux 映像上必须已安装 [Azure Linux VM 代理](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 目前，只有两种类型的映像提供此代理：
 
 * Azure 映像库中的 Ubuntu 映像，或
-* 使用已安装并配置的 Azure Linux VM 代理创建的自定义 Linux 映像。 有关如何使用 Azure VM 代理构建自定义 Linux VM 的详细信息，请参阅 [Azure Linux VM 代理](../../virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 使用已安装并配置的 Azure Linux VM 代理创建的自定义 Linux 映像。 有关如何使用 Azure VM 代理构建自定义 Linux VM 的详细信息，请参阅 [Azure Linux VM 代理](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ### <a name="using-the-azure-image-gallery"></a>使用 Azure 映像库
 从 Bash 或终端会话键入以下 Azure CLI 命令找到 VM 映像库中要使用的最新 Ubuntu 映像
@@ -181,5 +181,5 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 [Docker 用户指南]:https://docs.docker.com/userguide/
 
-[开始使用 Docker 和 Compose，在 Azure 虚拟机上定义和运行多容器应用程序]:../../virtual-machines-linux-docker-compose-quickstart.md
+[开始使用 Docker 和 Compose，在 Azure 虚拟机上定义和运行多容器应用程序]:../docker-compose-quickstart.md
 

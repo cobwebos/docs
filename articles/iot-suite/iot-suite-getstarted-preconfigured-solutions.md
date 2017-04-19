@@ -18,7 +18,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
 ms.openlocfilehash: e68815c2dafc596c3560ad3fcb2a7bf96d29182b
-ms.lasthandoff: 03/06/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -115,7 +115,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 ## <a name="update-desired-properties"></a>更新所需属性
 
-用户现在已确定一组可能需要修复的设备。 不过，用户认为 15 秒的数据频率不足以对问题进行明确诊断。 将遥测频率更改为&5; 秒可以提供更多的数据点，从而对问题进行更好的诊断。 可以将该配置更改从解决方案门户推送到远程设备。 进行更改以后，即可评估影响，然后处理结果。
+用户现在已确定一组可能需要修复的设备。 不过，用户认为 15 秒的数据频率不足以对问题进行明确诊断。 将遥测频率更改为 5 秒可以提供更多的数据点，从而对问题进行更好的诊断。 可以将该配置更改从解决方案门户推送到远程设备。 进行更改以后，即可评估影响，然后处理结果。
 
 执行以下步骤，通过运行一项作业更改受影响设备所需的 **TelemetryInterval** 属性。 收到新的 **TelemetryInterval** 属性值以后，设备会更改其配置，每隔 5 秒而非 15 秒发送一次遥测：
 
@@ -123,11 +123,11 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 1. 调用作业“更改遥测时间间隔”。
 
-1. 将**所需属性**名称 **desired.Config.TelemetryInterval** 的值更改为&5; 秒。
+1. 将**所需属性**名称 **desired.Config.TelemetryInterval** 的值更改为 5 秒。
 
 1. 选择“计划”。
 
-    ![将 TelemetryInterval 属性更改为&5; 秒][img-change-interval]
+    ![将 TelemetryInterval 属性更改为 5 秒][img-change-interval]
 
 1. 可在门户的“管理作业”页中监视作业进度。
 
@@ -148,7 +148,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
     ![显示筛选器列表][img-old-filter]
 
-1. 设备列表现在仅显示固件版本过旧的设备。 该列表包括&5; 个通过“不正常设备”筛选器标识的设备，以及&3; 个其他设备：
+1. 设备列表现在仅显示固件版本过旧的设备。 该列表包括 5 个通过“不正常设备”筛选器标识的设备，以及 3 个其他设备：
 
     ![查看已筛选的显示旧设备的设备列表][img-filtered-old-list]
 

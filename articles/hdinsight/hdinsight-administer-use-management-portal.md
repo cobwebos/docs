@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 58011fe25a96edfe2744990180b2f2866537bd37
-ms.openlocfilehash: ec35e177d1bb94671b1703020c9aa863a3805af1
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 316a3b6bd0ff32213df4baa9f722ff36ecc41d22
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 02/07/2017
 本文中的信息仅适用于基于 Windows 的 HDInsight 群集。 有关管理基于 Linux 的群集的信息，请参阅[使用 Azure 门户管理 HDInsight 中的 Hadoop 群集](hdinsight-administer-use-portal-linux.md)。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 
 ## <a name="prerequisites"></a>先决条件

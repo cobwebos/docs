@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9f9908466dbfd471bc881387c0968c924140c67b
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 99292dedfd83c0adde6b7352e08e7ae3b0b14513
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/21/2017
     },
     ```
 
-6. 请注意，**vmSize** 包含值 *Standard_DS3*。 只有某些 VM 大小允许使用多个 NIC。 可以通过阅读文章 [Windows VM 大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和 [Linux VM 大小](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来确定哪些 VM 大小支持多个 NIC。
+6. 请注意，**vmSize** 包含值 *Standard_DS3*。 只有某些 VM 大小允许使用多个 NIC。 可以通过阅读文章 [Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来确定哪些 VM 大小支持多个 NIC。
 
 7. 向下滚动到“**资源**”，并留意第一个元素。 它描述存储帐户。 此存储帐户将用于维护每个数据库 VM 使用的数据磁盘。 在此方案中，每个数据库 VM 有一个存储在常规存储中的 OS 磁盘，以及两个存储在 SSD（高级）存储中的数据磁盘。
 

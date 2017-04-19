@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/16/2017
+ms.date: 04/03/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 89d44476e9de8ac32195efaf66535cdd9fb4260e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: 248e820ccd2c68a8500aab3233c5beea3c8cc868
+ms.lasthandoff: 04/04/2017
 
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Hadoop)
@@ -30,16 +30,19 @@ ms.lasthandoff: 03/25/2017
 
 | 地址 | 端口 | 连接到... |
 | ----- | ----- | ----- |
-| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | 边缘节点（如果存在） |
+| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | 边缘节点（HDInsight 上的 R Server） |
+| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | 边缘节点（如果存在边缘节点，则可以是任何其他群集类型） |
 | `<clustername>-ssh.azurehdinsight.net` | 22 | 主头节点 |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | 辅助头节点 |
 
 > [!NOTE]
-> 将 `<edgenodename>` 替换为边缘节点的名称。 有关使用边缘节点的详细信息，请参阅 [Use edge nodes in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node)（在 HDInsight 中使用边缘节点）。
+> 将 `<edgenodename>` 替换为边缘节点的名称。
 >
 > 将 `<clustername>` 替换为 HDInsight 群集的名称。
 >
 > 我们建议__始终连接到边缘节点__（如果有）。 头节点托管的服务对于群集运行状况而言至关重要。 边缘节点只会运行其上放置的软件。
+>
+> 有关使用边缘节点的详细信息，请参阅 [Use edge nodes in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node)（在 HDInsight 中使用边缘节点）。
 
 ## <a name="ssh-clients"></a>SSH 客户端
 

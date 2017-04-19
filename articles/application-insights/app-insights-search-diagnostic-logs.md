@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
 ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
 
 还可编写代码以发送自定义事件、异常、报表和跟踪。 如果已经使用 log4J、log4net、NLog 或 System.Diagnostics.Trace 之类的记录框架，则可以捕获这些日志并将它们包含在搜索中。 这使将日志跟踪与用户操作、异常和其他事件关联起来更容易。
 
-## <a name="a-namesendabefore-you-write-custom-telemetry"></a><a name="send"></a>编写自定义遥测前
+## <a name="send"></a>编写自定义遥测前
 如果尚未[为项目设置 Application Insights][start]，请立即执行该操作。
 
 运行应用程序时，它将发送某些将在“诊断搜索”中显示的遥测，包括服务器接收的请求、在客户端记录的页面视图和未捕获的异常。
@@ -40,7 +41,7 @@ ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
 ## <a name="sampling"></a>采样
 如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](app-insights-sampling.md)
 
-## <a name="a-nameeventsacustom-events"></a><a name="events"></a>自定义事件
+## <a name="events"></a>自定义事件
 自定义事件显示在[诊断搜索][diagnostic]和[指标资源管理器][metrics]中。 可从设备、网页和服务器应用程序发送它们。 它们可用于诊断目的和[了解使用模式][track]。
 
 自定义事件具有名称，还可携带可与数字度量值一起作为过滤条件的属性。
@@ -95,7 +96,7 @@ ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
 
 ![](./media/app-insights-search-diagnostic-logs/appinsights-23-customevents-4.png)
 
-## <a name="a-namepagesa-page-views"></a><a name="pages"></a> 页面视图
+## <a name="pages"></a> 页面视图
 页面视图遥测由[在网页中插入的 JavaScript 代码片段][usage]中的 trackPageView() 调用进行发送。 它的主要目标是构成页面上显示的页面视图计数。
 
 通常在每个 HTML 页面中调用它一次，但可以插入更多调用，例如，如果你有一个单页应用，并且希望每当用户获取更多数据时都记录新页面。
@@ -108,7 +109,7 @@ ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
      {Game: currentGame.name, Difficulty: currentGame.difficulty});
 
 
-## <a name="a-nametracea-trace-telemetry"></a><a name="trace"></a> 跟踪遥测
+## <a name="trace"></a> 跟踪遥测
 跟踪遥测是专门插入用于创建诊断日志的代码。 
 
 例如，可以插入如下调用：
@@ -133,7 +134,7 @@ ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
 
 NuGet 包安装必要的程序集，并且还修改 web.config 或 app.config。
 
-#### <a name="a-namepepperainsert-diagnostic-log-calls"></a><a name="pepper"></a>插入诊断日志调用
+#### <a name="pepper"></a>插入诊断日志调用
 如果使用 System.Diagnostics.Trace，则典型的调用将是：
 
     System.Diagnostics.Trace.TraceWarning("Slow response - database01");
@@ -146,7 +147,7 @@ NuGet 包安装必要的程序集，并且还修改 web.config 或 app.config。
 
 选择跟踪筛选器时，将在“诊断搜索”中看到消息。
 
-### <a name="a-nameexceptionsaexceptions"></a><a name="exceptions"></a>异常
+### <a name="exceptions"></a>异常
 在 Application Insights 中获取异常报表可提供功能强大的体验，尤其是因为用户可以在失败的请求和异常之间导航，并读取异常堆栈。
 
 在某些情况下，需要[插入一些代码行][exceptions]以确保自动捕获异常。
@@ -246,24 +247,24 @@ VB
         .Add(new MyTelemetryInitializer());
     }
 
-### <a name="a-namerequestsa-server-web-requests"></a><a name="requests"></a> 服务器 Web 请求
+### <a name="requests"></a> 服务器 Web 请求
 [在 Web 服务器上安装状态监视器][redfield]或[将 Application Insights 添加到 Web 项目][greenbrown]时，将自动发送请求遥测。 它还发送到指标资源管理器和“概述”页面中的请求和响应时间图中。
 
 如果要发送其他事件，可以使用 TrackRequest() API。
 
-## <a name="a-namequestionsaq--a"></a><a name="questions"></a>问题解答
-### <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>我得到错误“检测密钥不能为空”
+## <a name="questions"></a>问题解答
+### <a name="emptykey"></a>我得到错误“检测密钥不能为空”
 看起来你在未安装 Application Insights 的情况下安装了日志记录适配器 Nuget 包。
 
 在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 你将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。 这应当解决此问题。
 
-### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>保留多少数据？
+### <a name="limits"></a>保留多少数据？
 每个应用程序每秒最多保留 500 个事件。 事件保留七天。
 
 ### <a name="some-of-my-events-or-traces-dont-appear"></a>某些事件或跟踪未显示
 如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](app-insights-sampling.md)
 
-## <a name="a-nameaddanext-steps"></a><a name="add"></a>后续步骤
+## <a name="add"></a>后续步骤
 * [设置可用性和响应能力测试][availability]
 * [故障排除][qna]
 
@@ -278,12 +279,7 @@ VB
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [track]: app-insights-api-custom-events-metrics.md
-[usage]: app-insights-web-track-usage.md
+[usage]: app-insights-javascript.md
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

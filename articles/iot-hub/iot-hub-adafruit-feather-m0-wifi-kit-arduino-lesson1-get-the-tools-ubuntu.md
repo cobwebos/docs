@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "arduino 开发工具, iot 开发, iot 软件, 物联网软件, 在 ubuntu 上安装 git, 安装 node js ubuntu"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: 7572f191-420d-41f0-923b-7ea86c0bfa73
 ms.service: iot-hub
 ms.devlang: arduino

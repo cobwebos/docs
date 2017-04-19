@@ -81,6 +81,7 @@
 ### [命名网络](active-directory-known-networks-azure-portal.md)
 ### [报告迁移](active-directory-reporting-migration.md)
 ### [保留](active-directory-reporting-retention.md)
+### [延迟](active-directory-reporting-latencies-azure-portal.md)
 ### [常见问题](active-directory-reporting-faq.md)
 ### 故障排除
 #### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
@@ -109,8 +110,9 @@
 ##### [异常登录](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
 ## [管理密码](active-directory-manage-passwords.md)
-### [更新自己的密码](active-directory-passwords-update-your-own-password.md)
-### [设置自助服务密码重置](active-directory-passwords.md)
+### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
+### [注册自助密码重置](active-directory-passwords-reset-register.md)
+### [管理员启用自助密码重置](active-directory-passwords.md)
 ### [了解密码管理](active-directory-passwords-how-it-works.md)
 ### [了解策略和限制](active-directory-passwords-policy.md)
 ### 重置密码
@@ -155,19 +157,12 @@
 ### [授予对应用的远程访问权限](active-directory-application-proxy-get-started.md)
 #### [启用应用代理](active-directory-application-proxy-enable.md)
 #### [了解连接器](application-proxy-understand-connectors.md)
-
-#### 发布应用
-##### [Azure 门户](application-proxy-publish-azure-portal.md)
-##### [经典门户](active-directory-application-proxy-publish.md)
-
+#### [发布应用](application-proxy-publish-azure-portal.md)
 #### [安全性](application-proxy-security-considerations.md)
 #### [网络](application-proxy-network-topology-considerations.md)
 #### [远程桌面](application-proxy-publish-remote-desktop.md)
 #### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-
-#### 在单独的网络上发布
-##### [Azure 门户](active-directory-application-proxy-connectors-azure-portal.md)
-##### [经典门户](active-directory-application-proxy-connectors.md)
+#### [在单独的网络上发布](active-directory-application-proxy-connectors-azure-portal.md)
 #### [代理服务器](application-proxy-working-with-proxy-servers.md)
 #### [自定义域](active-directory-application-proxy-custom-domains.md)
 #### [访问应用](active-directory-appssoaccess-whatis.md)
@@ -181,6 +176,11 @@
 #### [无提示安装](active-directory-application-proxy-silent-installation.md)
 #### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [故障排除](active-directory-application-proxy-troubleshoot.md)
+#### 使用经典门户
+##### [下载连接器](application-proxy-enable-classic-portal.md)
+##### [发布应用](active-directory-application-proxy-publish.md)
+##### [使用连接器](active-directory-application-proxy-connectors.md)
+
 
 ### 管理企业应用
 #### [分配用户](active-directory-coreapps-assign-user-azure-portal.md)
@@ -200,8 +200,21 @@
 #### [自助服务访问权限](active-directory-self-service-application-access.md)
 #### [SSO 证书](active-directory-sso-certs.md)
 #### [租户限制](active-directory-tenant-restrictions.md)
+#### [使用 SCIM 预配用户](active-directory-scim-provisioning.md)
 
-### [使用 SCIM 预配用户](active-directory-scim-provisioning.md)
+### [故障排除](active-directory-application-troubleshoot-content-map.md)
+#### 应用程序开发
+##### [配置和注册](active-directory-application-dev-config-content-map.md)
+##### [开发](active-directory-application-dev-development-content-map.md)
+#### 应用程序管理
+##### [配置](active-directory-application-config-content-map.md)
+##### [登录](active-directory-application-sign-in-content-map.md)
+##### [预配](active-directory-application-provisioning-content-map.md)
+##### [管理访问](active-directory-application-access-content-map.md)
+##### [访问面板](active-directory-application-access-panel-content-map.md)
+##### [应用程序代理](active-directory-application-proxy-content-map.md)
+##### [条件性访问](active-directory-application-conditional-access-content-map.md)
+
 ### [文档库](active-directory-apps-index.md)
 
 ## 管理目录
@@ -316,8 +329,14 @@
 
 ## [故障排除](active-directory-troubleshooting.md)
 
+## 部署 Azure AD 概念证明 (PoC)
+### [PoC 演练手册：简介](active-directory-playbook-intro.md)
+### [PoC 演练手册：要素](active-directory-playbook-ingredients.md)
+### [PoC 演练手册：实现](active-directory-playbook-implementation.md)
+### [PoC 演练手册：构建基块](active-directory-playbook-building-blocks.md)
 
-# 参考
+
+# 引用
 ## [PowerShell cmdlets](/powershell/ )
 ## [Java API 参考](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)

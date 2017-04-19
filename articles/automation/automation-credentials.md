@@ -4,7 +4,7 @@ description: "Azure 自动化中的凭据资产包含可用于向 Runbook 或 DS
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 3209bf73-c208-425e-82b6-df49860546dd
 ms.service: automation
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/11/2016
+ms.date: 04/14/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: afb6662e1b4af6cf66fd3c8e7b155b5b6bea85ff
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 17b4dc2223d30ef13877efc650b56268b707c4bd
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -89,7 +89,7 @@ ms.lasthandoff: 12/08/2016
 
 ![将凭据添加到画布](media/automation-credentials/credential-add-canvas.png)
 
-下图显示了在图形 Runbook 中使用凭据的示例。  在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，如[使用 Azure AD 用户帐户进行 Runbook 身份验证](automation-sec-configure-aduser-account.md)中所述。  第一个活动检索有权访问 Azure 订阅的凭据。  然后，**Add-AzureAccount** 活动使用此凭据对它之后的任何活动提供身份验证。  此处是一个[管道链接](automation-graphical-authoring-intro.md#links-and-workflow)，因为 **Get-AutomationPSCredential** 要求是单个对象。  
+下图显示了在图形 Runbook 中使用凭据的示例。  在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，如[使用 Azure AD 用户帐户进行 Runbook 身份验证](automation-create-aduser-account.md)中所述。  第一个活动检索有权访问 Azure 订阅的凭据。  然后，**Add-AzureAccount** 活动使用此凭据对它之后的任何活动提供身份验证。  此处是一个[管道链接](automation-graphical-authoring-intro.md#links-and-workflow)，因为 **Get-AutomationPSCredential** 要求是单个对象。  
 
 ![将凭据添加到画布](media/automation-credentials/get-credential.png)
 

@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 6cc74e3d3bd704dab1a43b66374b51c1f3e2a0a2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 75d5415d33324d957617426e75909a6c6c58b1f9
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="never-store-sensitive-data-on-custom-images"></a>永远不要将敏感数据存储在自定义映像上
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -47,10 +48,5 @@ ms.openlocfilehash: 6cc74e3d3bd704dab1a43b66374b51c1f3e2a0a2
 * 创建自定义映像时，永远不要存储可能会在映像上丢失的敏感数据。
 * 敏感数据应该始终驻留在云中的一个单独文件服务器上、单独的 Azure VM 上，且始终位于 Azure RemoteApp 内承载你的应用程序的 VM 实例的外部。 
 * 用户数据保存并保持在用户配置文件磁盘 (UPD) 中
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
