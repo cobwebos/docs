@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 05/26/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
-ms.openlocfilehash: e1863b43706ffc200bb94c4a26ae75080a6dd857
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 37d25c8c7b47bf8ef3b4d5c6d3978b13c52329c3
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/30/2017
    使用在上一步中记下的连接 URL。 此时会出现一个错误，指出网站的安全证书有问题。 单击“继续访问此网页”。
    
    ![](./media/storsimple-ova-deploy3-fs-setup/image2.png)
-2. 以 **StorSimpleAdmin** 身份登录到虚拟设备的 Web UI。 输入在“步骤 3：启动虚拟设备”中更改的设备管理员密码，详见[在 Hyper-V 中预配 StorSimple 虚拟阵列](storsimple-ova-deploy2-provision-hyperv.md)或[在 VMware 中预配 StorSimple 虚拟阵列](storsimple-ova-deploy2-provision-vmware.md)。
+2. 以 **StorSimpleAdmin** 身份登录到虚拟设备的 Web UI。 输入在“步骤 3：启动虚拟设备”中更改的设备管理员密码，详见[在 Hyper-V 中预配 StorSimple 虚拟阵列](storsimple-ova-deploy2-provision-hyperv.md)或[在 VMware 中预配 StorSimple 虚拟阵列](storsimple-ova-deploy2-provision-vmware.md)。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
    
    ![](./media/storsimple-ova-deploy3-fs-setup/image3.png)
 3. 此时会转到“主页”。 该页介绍配置虚拟设备并将其注册到 StorSimple Manager 服务所需的各种设置。 请注意，“网络设置”、“Web 代理设置”和“时间设置”为可选设置。 仅“设备设置”和“云设置”为必需设置。

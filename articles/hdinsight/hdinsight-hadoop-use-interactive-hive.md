@@ -18,14 +18,14 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6971e123b388eab689e02a5c67809509c2ad29c6
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 72206e299c245187731e4397610bbcfb01f5311c
+ms.lasthandoff: 04/18/2017
 
 
 ---
 # <a name="use-interactive-hive-in-hdinsight-preview"></a>在 HDInsight（预览版）中使用交互式 Hive
-交互式 Hive（也称为 [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一个新的 HDInsight [群集类型](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。  交互式 Hive 允许在内存中缓存，这使 Hive 查询更具交互性且速度更快。 这个新功能使 HDInsight 成为世界上性能最高和最具灵活性的工具之一，可通过内存中缓存（使用 Hive 和 Spark）打开云上的大数据解决方案，并通过与 R 服务的深度集成进行高级分析。 
+交互式 Hive（也称为 [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一个新的 HDInsight [群集类型](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。  交互式 Hive 允许在内存中缓存，这使 Hive 查询更具交互性且速度更快。 这项新功能使 HDInsight 成为世界上性能、灵活性和开放性最高的，具有内存中缓存（使用 Hive 和 Spark）和高级分析功能（通过与 R 服务的深度集成）的云端大数据解决方案之一。 
 
 交互式 Hive 群集与 Hadoop 群集有所不同。 交互式 Hive 群集只包含 Hive 服务。 
 

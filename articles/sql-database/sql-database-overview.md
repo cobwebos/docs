@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: single databases
+ms.custom: DBs and servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: b986fc881a39ca3a28d6f5f968cefe19c05b5dc5
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: ebfc2a6a2e16140953abbb9da3b81702fcc26e60
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -54,9 +54,10 @@ Microsoft Azure SQL 数据库使用的默认数据库排序规则是 **SQL_LATIN
 ## <a name="how-do-i-manage-an-azure-sql-database"></a>如何管理 Azure SQL 数据库？
 
 可以使用几种方法来管理 Azure SQL 数据库逻辑服务器：
-- [Azure 门户](sql-database-manage-portal.md)
-- [PowerShell](sql-database-manage-powershell.md)
-- [Transact SQL](sql-database-manage-azure-ssms.md)
+- [Azure 门户](sql-database-manage-overview.md)
+- [PowerShell](sql-database-manage-overview.md)
+- [Transact SQL](sql-database-connect-query-ssms.md)
+- [Contact.java](sql-database-connect-query-vscode.md)
 - [REST](/rest/api/sql/)
 
 ## <a name="next-steps"></a>后续步骤

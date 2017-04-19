@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 8005e1c485b9ce2e19e134a12206058ef54a5a8b
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 9457b4628414400849198222d361d1b51c682ec0
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -201,7 +201,7 @@ ms.lasthandoff: 03/16/2017
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Application Insights 监视使用情况](app-insights-overview-usage.md)
+* [使用 Application Insights 监视使用情况](app-insights-web-track-usage.md)
 * [使用诊断搜索](app-insights-diagnostic-search.md)
 
 <!--Link references-->

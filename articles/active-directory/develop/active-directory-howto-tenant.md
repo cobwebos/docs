@@ -4,7 +4,7 @@ description: "如何获取用于注册和生成应用程序的 Azure Active Dire
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: terrylan
+manager: mbaldwin
 editor: 
 ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 09/28/2015
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
-ms.openlocfilehash: 151b9bd8f29a1112c9ad839f2729309dba97c283
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: b4232f2d27624e44a720047ad44991059316413e
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -47,7 +48,7 @@ ms.openlocfilehash: 151b9bd8f29a1112c9ad839f2729309dba97c283
 3. 你应自动登录到“默认目录”，否则你可以通过单击右上角的帐户名称切换目录。
 4. 从“快速任务”部分中，选择“添加用户”。
 5. 在“添加用户”表单中，提供以下详细信息：
-   
+
    * 名称：（选择相应值）
    * 用户名：（选择此管理员的用户名）
    * 配置文件：（填写名字、姓氏、职务和部门的相应值）
@@ -57,16 +58,10 @@ ms.openlocfilehash: 151b9bd8f29a1112c9ad839f2729309dba97c283
 8. 若要更改临时密码，请使用此新用户帐户登录到 [https://login.microsoftonline.com](https://login.microsoftonline.com)，然后根据请求更改密码。
 
 ## <a name="use-an-organizational-azure-subscription"></a>使用组织的 Azure 订阅
-如果之前使用组织帐户注册过 Azure 订阅，则你已有一个租户！  在 [Azure 门户](https://portal.azure.com)中，导航到“更多服务”和“Azure Active Directory”时，应看到一个租户。  你可以根据需要任意使用此租户。 
+如果之前使用组织帐户注册过 Azure 订阅，则你已有一个租户！  在 [Azure 门户](https://portal.azure.com)中，导航到“更多服务”和“Azure Active Directory”时，应看到一个租户。  你可以根据需要任意使用此租户。
 
 ## <a name="start-from-scratch"></a>从头开始
 如果上述所有方法都不起作用，请不要担心。  只需访问 [https://account.windowsazure.com/organization](https://account.windowsazure.com/organization) ，即可以新组织的身份注册 Azure。  完成注册过程后，你将会获得自己的 Azure AD 租户，该租户使用了你在注册期间选择的域名。  在 [Azure 门户](https://portal.azure.com)中，可以通过导航到左侧导航栏中“Azure Active Directory”来查找你的租户。
 
 在注册 Azure 的过程中，你需要提供信用卡详细信息。  你可以放心地继续注册 - 在 Azure AD 中发布应用程序或者创建新租户时，我们不会向你收费。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

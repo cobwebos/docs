@@ -18,7 +18,7 @@ ms.author: syamk
 translationtype: Human Translation
 ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
 ms.openlocfilehash: 44307f258ea05635addf85bf9c59cd78b2ac0f1e
-ms.lasthandoff: 03/08/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -559,7 +559,7 @@ ms.lasthandoff: 03/08/2017
     - 区域：选择最靠近应用用户的区域
     - 数据库服务器：单击“数据库”，然后单击“创建”。 
 
-4. 在“todo-net-app *”屏幕中，单击“验证连接”。**验证连接后，单击“发布”。** 
+4. 在“todo-net-app * ” 屏幕中，单击“验证连接”。 验证连接后，单击“发布”。 
     
     然后，该应用将显示在浏览器中。
 

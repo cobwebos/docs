@@ -13,9 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 964b9b1ab804b8e5d56863ab5a174c984ebf8235
-ms.openlocfilehash: 2180a54f576c8878e8a33bd6a5be3082188abebc
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
+ms.openlocfilehash: 849fd1871d0f19883f25b0f211a09831931a752b
+ms.lasthandoff: 04/12/2017
 
 ---
 #<a name="service-fabric-documentation"></a>Service Fabric 文档
@@ -127,7 +127,7 @@ ms.lasthandoff: 02/09/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>命令行</h3>
-                        <p><a href="/powershell/servicefabric/vlatest/servicefabric">PowerShell</a></p>
+                        <p><a href="/powershell/module/ServiceFabric">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -139,8 +139,8 @@ ms.lasthandoff: 02/09/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>语言</h3>
-                        <p><a href="/java/api/microsoft.servicefabric.services">Java API</a></p>
-                        <p><a href="/dotnet/api/microsoft.servicefabric.services">.NET</a></p>
+                        <p><a href="/java/api">Java API</a></p>
+                        <p><a href="/dotnet/api">.NET</a></p>
                     </div>
                 </div>
             </div>

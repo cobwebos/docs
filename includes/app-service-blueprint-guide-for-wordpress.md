@@ -6,7 +6,7 @@
 * [部署由 MySQL 复制群集支持的 WordPress Web 应用](/documentation/templates/wordpress-mysql-replication/)
 * [使用 Percona 群集构建自己的双主 MySQL 群集](/documentation/templates/mysql-ha-pxc/)并[详细了解如何管理群集](https://github.com/fanjeffrey/axiom.articles/tree/master/pxc)
 * [部署由具有主从配置的 MySQL 复制群集支持的 WordPress](/documentation/templates/mysql-replication/)
-* [部署受 ProjectNami 所托管的 SQL Azure DB 支持的 WordPress 应用](/marketplace/partners/projectnami/projectnami/)
+* [部署受 ProjectNami 所托管的 SQL Azure DB 支持的 WordPress 应用](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/ProjectNami.ProjectNami?tab=Overview)
 
 ## <a name="troubleshooting-wordpress-application"></a>WordPress 应用程序故障排除
 * [如何排除 WordPress 应用故障](https://sunithamk.wordpress.com/2014/09/04/wordpress-troubleshooting-techniques-on-azure-websites/)
@@ -24,9 +24,4 @@
 * [如何使用 supercache 插件来加速 WordPress 应用](http://ruslany.net/2008/12/speed-up-wordpress-on-iis-70/)
 * [如何使用 IIS 输出缓存进行服务器缓存](http://blogs.msdn.com/b/brian_swan/archive/2011/06/08/performance-tuning-php-apps-on-windows-iis-with-output-caching.aspx)
 * [如何为静态内容启用浏览器缓存](http://www.iis.net/configreference/system.webserver/staticcontent)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

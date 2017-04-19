@@ -9,7 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: ce7e052e-8bf6-4d7c-9204-4c6f4afeba4b
 ms.service: sql-database
-ms.custom: secure and protect
+ms.custom: security-protect
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: 02ea369d76c1fe7266e9dc0cad2c75e4b5eada6a
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: e2474b2f69ee0301ba00bd2a49afa90f83935cb6
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/16/2017
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击“新建” > “数据 + 存储” > “SQL 数据库”。
-3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 如需在 Azure 门户中创建数据库的详细说明，请参阅[第一个 Azure SQL 数据库](sql-database-get-started.md)。
+3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 如需在 Azure 门户中创建数据库的详细说明，请参阅[第一个 Azure SQL 数据库](sql-database-get-started-portal.md)。
    
     ![创建空数据库](./media/sql-database-always-encrypted/create-database.png)
 

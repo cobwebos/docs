@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
-ms.openlocfilehash: 898b93ad95ab812b8b6a538048a86a8cc8951101
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 0a4dba58445cf0fd9fd8f51d443576bacd92251b
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -97,11 +97,6 @@ ms.lasthandoff: 01/24/2017
 | XUF99EW9OIQOMV7Q7 |家庭轿车 |
 | 8OMCL3LGI7XNCC21U |敞篷车 |
 | ……. | |
-
-### <a name="to-generate-simulated-data"></a>若要生成模拟数据
-1. 要下载数据模拟器包，请单击车辆远程信息处理模拟器节点右上方的箭头。 在本地计算机上保存并解压缩文件。 ![车辆遥测分析解决方案蓝图](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig2-vehicle-telemetry-blueprint.png) *图 2 - 车辆遥测分析解决方案蓝图*
-2. 在本地计算机上，转到解压缩车辆远程信息处理模拟器包的文件夹。 ![车辆远程信息处理模拟器](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telematics-simulator-folder.png) *图 3 - 车辆远程信息处理模拟器*
-3. 执行应用程序 **CarEventGenerator.exe**。
 
 ### <a name="references"></a>参考
 [Vehicle Telematics Simulator Visual Studio Solution](http://go.microsoft.com/fwlink/?LinkId=717075)（车辆远程信息处理模拟器 Visual Studio 解决方案） 
@@ -393,11 +388,9 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
 单击 [RealtimeDashboardApp 下载](http://go.microsoft.com/fwlink/?LinkId=717078)以下载用于自定义的 RealtimeDashboardApp Visual Studio 解决方案。 
 
 **若要执行实时仪表板应用程序**
-
-1. 单击图示视图上的 Power BI 节点，然后单击属性窗格上的“下载实时仪表板应用程序”链接。 ![Power BI 仪表板设置说明](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig15-vehicle-telematics-powerbi-dashboard-setup.png) *图 15 - Power BI 仪表板设置说明*
-2. 解压缩并本地保存 ![RealtimeDashboardApp 文件夹](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png) *图 16 – RealtimeDashboardApp 文件夹*  
-3. 执行应用程序 RealtimeDashboardApp.exe
-4. 提供有效的 Power BI 凭据，登录并单击“接受” ![实时仪表板应用登录到 Power BI](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![实时仪表板应用完成 Power BI 登录](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
+1. 解压缩并本地保存 ![RealtimeDashboardApp 文件夹](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png) *图 16 – RealtimeDashboardApp 文件夹*  
+2. 执行应用程序 RealtimeDashboardApp.exe
+3. 提供有效的 Power BI 凭据，登录并单击“接受” ![实时仪表板应用登录到 Power BI](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![实时仪表板应用完成 Power BI 登录](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
 
 *图 17 - RealtimeDashboardApp：登录到 Power BI*
 

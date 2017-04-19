@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 04/12/2017
 ms.author: oanapl
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d986275612b3e5c97636936a5e448dd6d0fcfc4e
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 0e8152e2c26cdb8f1dd96eca781f8e22ca15d9b2
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -47,7 +47,7 @@ Service Fabric 报告器可监视感兴趣的已标识条件。 它们会根据�
 > 
 > 
 
-只要运行状况报告的设计清晰明了，发送运行状况报告就十分容易。 如果群集不[安全](service-fabric-cluster-security.md)或 Fabric 客户端拥有管理员权限，可以使用 [FabricClient](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.aspx) 报告运行状况。 可以使用 [FabricClient.HealthManager.ReportHealth](https://msdn.microsoft.com/library/system.fabric.fabricclient.healthclient.reporthealth.aspx) 通过 API 来完成，或者通过 PowerShell 或 REST 来完成。 有用于批处理报告的配置旋钮，可提升性能。
+只要运行状况报告的设计清晰明了，发送运行状况报告就十分容易。 如果群集不[安全](service-fabric-cluster-security.md)或 Fabric 客户端拥有管理员权限，可以使用 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 报告运行状况。 可以使用 [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) 通过 API 来完成，或者通过 PowerShell 或 REST 来完成。 有用于批处理报告的配置旋钮，可提升性能。
 
 > [!NOTE]
 > 报告运行状况会同步处理，并且只代表客户端上的验证工作。 运行状况客户端或者 `Partition` 或 `CodePackageActivationContext` 对象接受报告的这项事实并不表示该报告应用在存储中。 它以异步方式发送并可能与其他报告一起进行批处理。 在服务器上处理仍可能失败：序号可能已过时、必须应用报告的实体已被删除，等等。
@@ -67,7 +67,7 @@ Service Fabric 报告器可监视感兴趣的已标识条件。 它们会根据�
 > 
 
 客户端上的缓冲会将报告的唯一性纳入考虑范围。 例如，如果特定的错误报告器针对相同实体的相同属性每秒产生 100 个报告，则会以最后一个版本取代所有报告。 客户端队列中最多存在一个这样的报告。 如果配置了批处理，则发送到运行状况存储的报告数目仅为每个发送间隔发送一份报告。 这是最后添加的报告，可反映实体的最新状态。
-通过传递 [FabricClientSettings](https://msdn.microsoft.com/library/azure/system.fabric.fabricclientsettings.aspx)（包含与运行状况相关的实体的相应值）创建 `FabricClient` 时，可以指定所有配置参数。
+通过传递 [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings)（包含与运行状况相关的实体的相应值）创建 `FabricClient` 时，可以指定所有配置参数。
 
 以下命令将创建结构客户端，并指定在添加报告后尽快发送。 在可重试的错误或超时发生时，每 40 秒重试一次。
 
@@ -117,12 +117,12 @@ GatewayInformation   : {
 ## <a name="report-from-within-low-privilege-services"></a>在低特权的服务内进行报告
 在对群集不具有管理员访问权限的 Service Fabric 服务内，你可以通过 `Partition` 或 `CodePackageActivationContext`，报告来自当前上下文的实体的运行状况。
 
-* 对于无状态服务，使用 [IStatelessServicePartition.ReportInstanceHealth](https://msdn.microsoft.com/library/system.fabric.istatelessservicepartition.reportinstancehealth.aspx) 报告当前服务实例的运行状况。
-* 对于有状态服务，使用 [IStatefulServicePartition.ReportReplicaHealth](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.reportreplicahealth.aspx) 报告当前副本的运行状况。
-* 使用 [IServicePartition.ReportPartitionHealth](https://msdn.microsoft.com//library/system.fabric.iservicepartition.reportpartitionhealth.aspx) 报告当前分区实体的运行状况。
-* 使用 [CodePackageActivationContext.ReportApplicationHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportapplicationhealth.aspx) 报告当前应用程序的运行状况。
-* 使用 [CodePackageActivationContext.ReportDeployedApplicationHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth.aspx) 报告当前节点上部署的当前应用程序的运行状况。
-* 使用 [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth.aspx) 报告当前节点上部署的当前应用程序的服务包的运行状况。
+* 对于无状态服务，使用 [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) 报告当前服务实例的运行状况。
+* 对于有状态服务，使用 [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) 报告当前副本的运行状况。
+* 使用 [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) 报告当前分区实体的运行状况。
+* 使用 [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) 报告当前应用程序的运行状况。
+* 使用 [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) 报告当前节点上部署的当前应用程序的运行状况。
+* 使用 [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) 报告当前节点上部署的当前应用程序的服务包的运行状况。
 
 > [!NOTE]
 > 就内部而言，`Partition` 和 `CodePackageActivationContext` 会保留使用默认设置配置的运行状况客户端。 注意事项对[运行状况客户端](service-fabric-report-health.md#health-client)同样适用 - 由于报告是通过计时器进行批处理和发送，因此对象应保持可用状态，才有机会发送报告。
@@ -291,7 +291,7 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-通过 REST 使用 POST 请求发送运行状况报告，这些请求将发送到所需的实体，其正文中包含运行状况报告描述。 如需示例，请参阅有关如何发送 REST [群集运行状况报告](https://msdn.microsoft.com/library/azure/dn707640.aspx)或[服务运行状况报告](https://msdn.microsoft.com/library/azure/dn707640.aspx)的文档。 支持所有实体。
+通过 REST 使用 POST 请求发送运行状况报告，这些请求将发送到所需的实体，其正文中包含运行状况报告描述。 如需示例，请参阅有关如何发送 REST [群集运行状况报告](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster)或[服务运行状况报告](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)的文档。 支持所有实体。
 
 ## <a name="next-steps"></a>后续步骤
 根据运行状况数据，服务编写人员和群集/应用程序管理员可以想一想如何使用这些信息。 例如，他们可以根据运行状况设置警报，以便在出现导致服务中断的严重问题之前就将其捕获。 管理员还可以设置修复系统以便自动修复问题。

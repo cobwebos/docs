@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: bf7dd55be2b0e6ae43fc148ff36d8d2141a2f12b
-ms.lasthandoff: 12/20/2016
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: b5df0883f20cd484970587b17d5df646022ba84f
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -135,7 +135,7 @@ ms.lasthandoff: 12/20/2016
 
 ## <a name="additional-information"></a>其他信息
 * [使用条件性访问管理风险](../active-directory-conditional-access.md)
-* [使用 Azure Active Directory Device Registration 设置本地条件性访问](https://msdn.microsoft.com/library/azure/dn788908.aspx)
+* [使用 Azure Active Directory Device Registration 设置本地条件性访问](../active-directory-device-registration-on-premises-setup.md)
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。

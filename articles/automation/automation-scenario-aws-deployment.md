@@ -4,7 +4,7 @@ description: "本文演示如何使用 Azure 自动化来自动创建 Amazon Web
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 1d85c01a-d795-4523-8194-84fc15b53838
 ms.service: automation
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/13/2017
+ms.date: 04/14/2017
 ms.author: tiandert; bwren
 translationtype: Human Translation
-ms.sourcegitcommit: ff1acafaacc40dd8a04b008df7cd479c811a7af0
-ms.openlocfilehash: 62b6c09f749aa36307206e23d36bd86b5b8ce455
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: e0b784006b4933fe986890c09afa965934511784
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 62b6c09f749aa36307206e23d36bd86b5b8ce455
 在本文中，我们将演示如何使用 Azure 自动化在 Amazon Web Service (AWS) 订阅中预配虚拟机，并为该 VM 提供特定的名称（AWS 称为“标记”VM）。
 
 ## <a name="prerequisites"></a>先决条件
-鉴于本文的目的，你需要拥有 Azure 自动化帐户和 AWS 订阅。 有关设置 Azure 自动化帐户和使用 AWS 订阅凭据对其进行配置的详细信息，请参阅[使用 Amazon Web Services 配置身份验证](automation-sec-configure-aws-account.md)。  继续操作之前应使用 AWS 订阅凭据创建或更新此帐户，因为我们将在下面的步骤中引用此帐户。
+鉴于本文的目的，你需要拥有 Azure 自动化帐户和 AWS 订阅。 有关设置 Azure 自动化帐户和使用 AWS 订阅凭据对其进行配置的详细信息，请参阅[使用 Amazon Web Services 配置身份验证](automation-configure-aws-account.md)。  继续操作之前应使用 AWS 订阅凭据创建或更新此帐户，因为我们将在下面的步骤中引用此帐户。
 
 ## <a name="deploy-amazon-web-services-powershell-module"></a>部署 Amazon Web Services PowerShell 模块
 我们的 VM 预配 Runbook 将利用 AWS PowerShell 模块来执行其功能。 执行以下步骤将模块添加到配置有 AWS 订阅凭据的自动化帐户。  
@@ -113,10 +114,5 @@ ms.openlocfilehash: 62b6c09f749aa36307206e23d36bd86b5b8ce455
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
 * 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)
 * 有关 PowerShell 脚本支持功能的详细信息，请参阅 [Azure 自动化中的本机 PowerShell 脚本支持](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
