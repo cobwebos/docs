@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "从云检索数据, iot 云服务"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-c-get-started
 ms.assetid: 8c5558bb-3c31-4445-90e6-b1a978738545
 ms.service: iot-hub
 ms.devlang: c

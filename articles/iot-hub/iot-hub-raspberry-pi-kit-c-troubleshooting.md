@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "iot 问题, 物联网问题"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-c-get-started
 ms.assetid: 3653c79b-8a0c-41d4-b0bf-f6b4edb4d233
 ms.service: iot-hub
 ms.devlang: c
