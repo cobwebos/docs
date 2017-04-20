@@ -19,6 +19,7 @@
 ### [配置成本管理](devtest-lab-configure-cost-management.md)
 ### [配置虚拟网络](devtest-lab-configure-vnet.md)
 ### [了解共享的 IP 地址](devtest-lab-shared-ip.md)
+### [使用模板和 PowerShell 自动执行实验室修改](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 
 ## 管理项目
 ### [添加项目存储库](devtest-lab-add-artifact-repo.md)

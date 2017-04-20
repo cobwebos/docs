@@ -15,7 +15,6 @@
 ### [添加默认映像](azure-stack-add-default-image.md)
 ### [预配虚拟机](azure-stack-provision-vm.md)
 ### [创建存储帐户](azure-stack-provision-storage-account.md)
-### [添加 Azure Stack 租户](azure-stack-add-new-user-aad.md)
 ### [重新部署 Azure Stack POC](azure-stack-redeploy.md)
 
 # 管理
@@ -31,15 +30,17 @@
 ## 如何
 ### [管理更新](azure-stack-updates.md)
 ### [监视运行状况和警报](azure-stack-monitor-health.md)
-### [管理网络资源](azure-stack-viewing-public-ip-address-consumption-in-tp2.md)
+### [管理网络资源](azure-stack-viewing-public-ip-address-consumption.md)
 ### [管理存储资源](azure-stack-manage-storage-accounts.md)
 ### [管理 Windows Azure Pack VM](azure-stack-manage-windows-azure-pack.md)
 
 # 安全性和遵从性
 ## 如何
 ### [管理 RBAC](azure-stack-manage-permissions.md)
+### [为 Azure AD 添加用户](azure-stack-add-new-user-aad.md)
 ### [为 AD FS 添加用户](azure-stack-add-users-adfs.md)
 ### [创建服务主体](Azure-stack-create-service-principals.md)
+### [启用多租户](azure-stack-enable-multitenancy.md)
 
 # 提供服务
 ## 入门

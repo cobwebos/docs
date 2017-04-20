@@ -74,6 +74,8 @@
 ### [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 ### [.NET 自定义活动](data-factory-use-custom-activities.md)
 ### [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+### [在 Azure Analysis Services 中重新处理模型](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample)
+
 ## 开发
 ### [Azure Resource Manager 模板](data-factory-how-to-use-resource-manager-templates.md)
 ### [示例](data-factory-samples.md)

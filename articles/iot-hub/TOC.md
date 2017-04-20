@@ -4,149 +4,118 @@
 ## [设备管理概述](iot-hub-device-management-overview.md)
 
 # [入门](iot-hub-get-started.md)
-## 使用模拟设备
-### [.NET](iot-hub-csharp-csharp-getstarted.md)
-### [Java](iot-hub-java-java-getstarted.md)
-### [Node.js](iot-hub-node-node-getstarted.md)
 
-## 使用 Raspberry Pi
-### [Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
-#### 第 1 课：配置设备
-##### [配置设备](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
-##### [获取工具 (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
-##### [获取工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-ubuntu.md)
-##### [获取工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-mac.md)
-##### [创建和部署闪烁的应用程序](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
-#### 第 2 课：创建 IoT 中心
-##### [获取 Azure 工具 (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
-##### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-ubuntu.md)
-##### [获取 Azure 工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
-##### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
-#### 第 3 课：发送设备到云的消息
-##### [创建 Azure Function App 和存储帐户](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
-##### [运行用于发送消息的示例应用程序](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
-##### [阅读存储中保存的消息](iot-hub-raspberry-pi-kit-node-lesson3-read-table-storage.md)
-#### 第 4 课：发送云到设备的消息
-##### [运行用于接收消息的示例应用程序](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md)
-##### [可选：更改 LED 行为](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
-#### [故障排除](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
+## 设置设备
+### 使用模拟设备
+#### [.NET](iot-hub-csharp-csharp-getstarted.md)
+#### [Java](iot-hub-java-java-getstarted.md)
+#### [Node.js](iot-hub-node-node-getstarted.md)
 
-### [C](iot-hub-raspberry-pi-kit-c-get-started.md)
-#### 第 1 课：配置设备
-##### [配置设备](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)
-##### [获取工具 (Windows 7+)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
-##### [获取工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-ubuntu.md)
-##### [获取工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-mac.md)
-##### [创建和部署闪烁的应用程序](iot-hub-raspberry-pi-kit-c-lesson1-deploy-blink-app.md)
-#### 第 2 课：创建 IoT 中心
-##### [获取 Azure 工具 (Windows 7+)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-win32.md)
-##### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-ubuntu.md)
-##### [获取 Azure 工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-mac.md)
-##### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md)
-#### 第 3 课：发送设备到云的消息
-##### [创建 Azure Function App 和存储帐户](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md)
-##### [运行用于发送消息的示例应用程序](iot-hub-raspberry-pi-kit-c-lesson3-run-azure-blink.md)
-##### [阅读存储中保存的消息](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)
-#### 第 4 课：发送云到设备的消息
-##### [运行用于接收消息的示例应用程序](iot-hub-raspberry-pi-kit-c-lesson4-send-cloud-to-device-messages.md)
-##### [可选：更改 LED 行为](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md)
-#### [故障排除](iot-hub-raspberry-pi-kit-c-troubleshooting.md)
+### 使用模拟网关 
+#### [Linux 上的模拟](iot-hub-linux-gateway-sdk-get-started.md)
+#### [Windows 上的模拟](iot-hub-windows-gateway-sdk-get-started.md)
 
-## 使用 Intel Edison
-### [Node.js](iot-hub-intel-edison-kit-node-get-started.md)
-#### 第 1 课：配置设备
-##### [配置设备](iot-hub-intel-edison-kit-node-lesson1-configure-your-device.md)
-##### [获取工具 (Windows 7+)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md)
-##### [获取工具 (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-ubuntu.md)
-##### [获取工具 (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-mac.md)
-##### [创建和部署闪烁的应用程序](iot-hub-intel-edison-kit-node-lesson1-deploy-blink-app.md)
-#### 第 2 课：创建 IoT 中心
-##### [获取 Azure 工具 (Windows 7+)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-win32.md)
-##### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-ubuntu.md)
-##### [获取 Azure 工具 (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md)
-##### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md)
-#### 第 3 课：发送设备到云的消息
-##### [创建 Azure Function App 和存储帐户](iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
-##### [运行用于发送消息的示例应用程序](iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md)
-##### [阅读存储中保存的消息](iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md)
-#### 第 4 课：发送云到设备的消息
-##### [运行用于接收消息的示例应用程序](iot-hub-intel-edison-kit-node-lesson4-send-cloud-to-device-messages.md)
-##### [可选：更改 LED 行为](iot-hub-intel-edison-kit-node-lesson4-change-led-behavior.md)
-#### [故障排除](iot-hub-intel-edison-kit-node-troubleshooting.md)
+### 使用物理设备
+#### [将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)
+##### 第 1 课：配置设备
+###### [配置设备](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
+###### [获取工具 (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
+###### [获取工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-ubuntu.md)
+###### [获取工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-mac.md)
+###### [创建和部署闪烁的应用程序](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
+##### 第 2 课：创建 IoT 中心
+###### [获取 Azure 工具 (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
+###### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-ubuntu.md)
+###### [获取 Azure 工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
+###### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
+##### 第 3 课：发送设备到云的消息
+###### [创建 Azure Function App 和存储帐户](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
+###### [运行用于发送消息的示例应用程序](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
+###### [阅读存储中保存的消息](iot-hub-raspberry-pi-kit-node-lesson3-read-table-storage.md)
+##### 第 4 课：发送云到设备的消息
+###### [运行用于接收消息的示例应用程序](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md)
+###### [可选：更改 LED 行为](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
+##### [故障排除](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
 
-### [C](iot-hub-intel-edison-kit-c-get-started.md)
-#### 第 1 课：配置设备
-##### [配置设备](iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md)
-##### [获取工具 (Windows 7+)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md)
-##### [获取工具 (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-ubuntu.md)
-##### [获取工具 (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-mac.md)
-##### [创建和部署闪烁的应用程序](iot-hub-intel-edison-kit-c-lesson1-deploy-blink-app.md)
-#### 第 2 课：创建 IoT 中心
-##### [获取 Azure 工具 (Windows 7+)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-win32.md)
-##### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-ubuntu.md)
-##### [获取 Azure 工具 (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-mac.md)
-##### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-intel-edison-kit-c-lesson2-prepare-azure-iot-hub.md)
-#### 第 3 课：发送设备到云的消息
-##### [创建 Azure Function App 和存储帐户](iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md)
-##### [运行用于发送消息的示例应用程序](iot-hub-intel-edison-kit-c-lesson3-run-azure-blink.md)
-##### [阅读存储中保存的消息](iot-hub-intel-edison-kit-c-lesson3-read-table-storage.md)
-#### 第 4 课：发送云到设备的消息
-##### [运行用于接收消息的示例应用程序](iot-hub-intel-edison-kit-c-lesson4-send-cloud-to-device-messages.md)
-##### [可选：更改 LED 行为](iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md)
-#### [故障排除](iot-hub-intel-edison-kit-c-troubleshooting.md)
+#### [将 Raspberry Pi 与 C 配合使用](iot-hub-raspberry-pi-kit-c-get-started.md)
+##### 第 1 课：配置设备
+###### [配置设备](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)
+###### [获取工具 (Windows 7+)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
+###### [获取工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-ubuntu.md)
+###### [获取工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-mac.md)
+###### [创建和部署闪烁的应用程序](iot-hub-raspberry-pi-kit-c-lesson1-deploy-blink-app.md)
+##### 第 2 课：创建 IoT 中心
+###### [获取 Azure 工具 (Windows 7+)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-win32.md)
+###### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-ubuntu.md)
+###### [获取 Azure 工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-mac.md)
+###### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md)
+##### 第 3 课：发送设备到云的消息
+###### [创建 Azure Function App 和存储帐户](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md)
+###### [运行用于发送消息的示例应用程序](iot-hub-raspberry-pi-kit-c-lesson3-run-azure-blink.md)
+###### [阅读存储中保存的消息](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)
+##### 第 4 课：发送云到设备的消息
+###### [运行用于接收消息的示例应用程序](iot-hub-raspberry-pi-kit-c-lesson4-send-cloud-to-device-messages.md)
+###### [可选：更改 LED 行为](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md)
+##### [故障排除](iot-hub-raspberry-pi-kit-c-troubleshooting.md)
 
-## 使用 Arduino
+#### [将 Intel Edison 与 Node.js 配合使用](iot-hub-intel-edison-kit-node-get-started.md)
+##### 第 1 课：配置设备
+###### [配置设备](iot-hub-intel-edison-kit-node-lesson1-configure-your-device.md)
+###### [获取工具 (Windows 7+)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md)
+###### [获取工具 (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-ubuntu.md)
+###### [获取工具 (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-mac.md)
+###### [创建和部署闪烁的应用程序](iot-hub-intel-edison-kit-node-lesson1-deploy-blink-app.md)
+##### 第 2 课：创建 IoT 中心
+###### [获取 Azure 工具 (Windows 7+)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-win32.md)
+###### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-ubuntu.md)
+###### [获取 Azure 工具 (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md)
+###### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md)
+##### 第 3 课：发送设备到云的消息
+###### [创建 Azure Function App 和存储帐户](iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
+###### [运行用于发送消息的示例应用程序](iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md)
+###### [阅读存储中保存的消息](iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md)
+##### 第 4 课：发送云到设备的消息
+###### [运行用于接收消息的示例应用程序](iot-hub-intel-edison-kit-node-lesson4-send-cloud-to-device-messages.md)
+###### [可选：更改 LED 行为](iot-hub-intel-edison-kit-node-lesson4-change-led-behavior.md)
+##### [故障排除](iot-hub-intel-edison-kit-node-troubleshooting.md)
 
-### [Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
-#### [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
-#### [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
-#### [Power BI 中的数据可视化](iot-hub-live-data-visualization-in-power-bi.md)
-#### [使用 Web 应用进行数据可视化](iot-hub-live-data-visualization-in-web-apps.md)
-#### [使用 Azure 机器学习预测天气](iot-hub-weather-forecast-machine-learning.md)
-#### [使用 iothub-explorer 进行设备管理](iot-hub-device-management-iothub-explorer.md)
+#### [将 Intel Edison 与 C 配合使用](iot-hub-intel-edison-kit-c-get-started.md)
+##### 第 1 课：配置设备
+###### [配置设备](iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md)
+###### [获取工具 (Windows 7+)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md)
+###### [获取工具 (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-ubuntu.md)
+###### [获取工具 (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-mac.md)
+###### [创建和部署闪烁的应用程序](iot-hub-intel-edison-kit-c-lesson1-deploy-blink-app.md)
+##### 第 2 课：创建 IoT 中心
+###### [获取 Azure 工具 (Windows 7+)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-win32.md)
+###### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-ubuntu.md)
+###### [获取 Azure 工具 (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-mac.md)
+###### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-intel-edison-kit-c-lesson2-prepare-azure-iot-hub.md)
+##### 第 3 课：发送设备到云的消息
+###### [创建 Azure Function App 和存储帐户](iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md)
+###### [运行用于发送消息的示例应用程序](iot-hub-intel-edison-kit-c-lesson3-run-azure-blink.md)
+###### [阅读存储中保存的消息](iot-hub-intel-edison-kit-c-lesson3-read-table-storage.md)
+##### 第 4 课：发送云到设备的消息
+###### [运行用于接收消息的示例应用程序](iot-hub-intel-edison-kit-c-lesson4-send-cloud-to-device-messages.md)
+###### [可选：更改 LED 行为](iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md)
+##### [故障排除](iot-hub-intel-edison-kit-c-troubleshooting.md)
 
-### [Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
-#### [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
-#### [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
-#### [Power BI 中的数据可视化](iot-hub-live-data-visualization-in-power-bi.md)
-#### [使用 Web 应用进行数据可视化](iot-hub-live-data-visualization-in-web-apps.md)
-#### [使用 Azure 机器学习预测天气](iot-hub-weather-forecast-machine-learning.md)
-#### [使用 iothub-explorer 进行设备管理](iot-hub-device-management-iothub-explorer.md)
+#### [将 Adafruit Feather HUZZAH ESP8266 与 Arduino IDE 配合使用](iot-hub-arduino-huzzah-esp8266-get-started.md)
+#### [将 Sparkfun ESP8266 Thing Dev 与 Arduino IDE 配合使用](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
+#### [将 Adafruit Feather M0 与 Arduino IDE 配合使用](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
+#### 使用 IoT 网关初学者工具包
+##### [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+##### [将 IoT 网关连接到 IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+##### [使用 IoT 网关进行数据转换](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
-### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
-#### 第 1 课：配置设备
-##### [配置设备](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-configure-your-device.md)
-##### [获取工具 (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md)
-##### [获取工具 (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-ubuntu.md)
-##### [获取工具 (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-mac.md)
-##### [创建和部署闪烁的应用程序](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-deploy-blink-app.md)
-#### 第 2 课：创建 IoT 中心
-##### [获取 Azure 工具 (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-win32.md)
-##### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-ubuntu.md)
-##### [获取 Azure 工具 (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-mac.md)
-##### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
-#### 第 3 课：发送设备到云的消息
-##### [创建 Azure Function App 和存储帐户](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
-##### [运行用于发送消息的示例应用程序](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md)
-##### [阅读存储中保存的消息](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-read-table-storage.md)
-#### 第 4 课：发送云到设备的消息
-##### [运行用于接收消息的示例应用程序](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
-##### [可选：更改 LED 行为](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
-#### [故障排除](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
-
-
-## 使用网关 SDK
-### [Linux 上的模拟](iot-hub-linux-gateway-sdk-get-started.md)
-### [Windows 上的模拟](iot-hub-windows-gateway-sdk-get-started.md)
-
-
-## 使用 IoT 网关初学者工具包
-### 配置 IoT 网关初学者工具包
-#### [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-#### [将 IoT 网关连接到 IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-#### [使用 IoT 网关进行数据转换](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
-
+## [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
+## [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
+## [Power BI 中的数据可视化](iot-hub-live-data-visualization-in-power-bi.md)
+## [使用 Web 应用进行数据可视化](iot-hub-live-data-visualization-in-web-apps.md)
+## [使用 Azure 机器学习预测天气](iot-hub-weather-forecast-machine-learning.md)
+## [使用 iothub-explorer 进行设备管理](iot-hub-device-management-iothub-explorer.md)
+## [使用逻辑应用执行远程监视和发送通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
 # 如何
 ## 计划
@@ -249,6 +218,9 @@
 ## [机器学习](https://azure.microsoft.com/documentation/services/machine-learning/)
 
 # 资源
+## [iothub-explorer 工具](https://github.com/Azure/iothub-explorer)
+## [iothub-diagnostics 工具](https://github.com/Azure/iothub-diagnostics)
+## [DeviceExplorer 工具](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
 ## [定价](https://azure.microsoft.com/pricing/details/iot-hub/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-iot-hub)

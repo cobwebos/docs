@@ -1,7 +1,7 @@
 # 概述
 ## [概述](active-directory-b2c-overview.md)
 ## [应用程序的类型](active-directory-b2c-apps.md)
-## [生产规模与 B2C 租户预览](active-directory-b2c-reference-tenant-type.md)
+## [上市区域和数据驻留](active-directory-b2c-reference-tenant-type.md)
 
 # 入门
 ## [创建 Azure AD B2C 目录](active-directory-b2c-get-started.md)

@@ -14,12 +14,15 @@
 ## 创建模板
 ### [模板最佳实践](resource-manager-template-best-practices.md)
 ### [模板节](resource-group-authoring-templates.md)
+### [链接到其他模板](resource-group-linked-templates.md)
 ### [定义资源之间的依赖关系](resource-group-define-dependencies.md)
+### 复制循环以创建多个实例
+#### [基本语法](resource-group-create-multiple.md)
+#### [顺序循环](resource-manager-sequential-loop.md)
+#### [属性复制](resource-manager-property-copy.md)
 ### [设置位置](resource-manager-template-location.md)
 ### [分配标记](resource-manager-template-tags.md)
 ### [设置子资源名称和类型](resource-manager-template-child-resource.md)
-### [创建资源类型的多个实例](resource-group-create-multiple.md)
-### [链接到其他模板](resource-group-linked-templates.md)
 ### [在链接模板之间共享状态](best-practices-resource-manager-state.md)
 ### [模板设计模式](best-practices-resource-manager-design-templates.md)
 ## 部署

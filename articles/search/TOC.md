@@ -18,6 +18,7 @@
 ## [处理搜索结果](search-pagination-page-layout.md)
 ## 教程
 ### [.NET](search-howto-dotnet-sdk.md)
+### [.NET 同义词（预览版）](search-synonyms-tutorial-sdk.md)
 ### [门户](search-get-started-portal.md)
 ### [NodeJS](search-get-started-nodejs.md)
 ### [Java](search-get-started-java.md)
@@ -48,7 +49,7 @@
 ### [为 JSON Blob 创建索引](search-howto-index-json-blobs.md)
 ### [配置与 Azure VM 上 SQL Server 的索引器连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [索引器中的字段映射](search-indexer-field-mappings.md)
-##  搜索 
+##  搜索
 ### [全文搜索工作原理](search-lucene-query-architecture.md)
 ### 查询构造
 #### [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
@@ -61,6 +62,7 @@
 ### [评分](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
 ### [建议](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [多面导航](search-faceted-navigation.md)
+### [同义词（预览版）](search-synonyms.md)
 
 # 引用
 ## [.NET](/dotnet/api/microsoft.azure.search)
