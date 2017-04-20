@@ -7,6 +7,8 @@ author: shizn
 manager: timlt
 tags: 
 keywords: "使用 raspberry pi 控制 led, raspberry pi led 控制, raspberry pi 控制 led"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: 3b42a4ad-0197-42f6-8ca9-04c883e879e8
 ms.service: iot-hub
 ms.devlang: node

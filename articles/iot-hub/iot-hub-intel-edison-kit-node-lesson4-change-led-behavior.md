@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "使用 arduino 控制 led"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-node-get-started
 ms.assetid: 387cd97e-b05e-43c4-b252-f68ad45d524a
 ms.service: iot-hub
 ms.devlang: nodejs

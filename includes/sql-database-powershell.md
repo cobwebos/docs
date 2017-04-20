@@ -9,13 +9,12 @@
 
 运行 [**Add-AzureRmAccount**](https://msdn.microsoft.com/library/azure/mt619267\(v=azure.300\).aspx) cmdlet，然后就会出现一个要求输入凭据的登录屏幕。 使用与登录 Azure 门户相同的凭据。
 
-    Add-AzureRmAccount
+```PowerShell
+Add-AzureRmAccount
+```
 
 如果有多个订阅，请使用 [**Set-AzureRmContext**](https://msdn.microsoft.com/library/azure/mt619263\(v=azure.300\).aspx) cmdlet 选择 PowerShell 会话应使用的订阅。 若要查看当前 PowerShell 会话正在使用哪个订阅，请运行 [**Get-AzureRmContext**](https://msdn.microsoft.com/library/azure/mt619265\(v=azure.300\).aspx)。 若要查看所有订阅，请运行 [**Get-AzureRmSubscription**](https://msdn.microsoft.com/library/azure/mt619284\(v=azure.300\).aspx)。
 
-    Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
-
-
-<!--HONumber=Jan17_HO1-->
-
-
+```PowerShell
+Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
+```

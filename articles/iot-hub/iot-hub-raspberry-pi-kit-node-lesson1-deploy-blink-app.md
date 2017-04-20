@@ -9,6 +9,8 @@ author: shizn
 manager: timlt
 tags: 
 keywords: "raspberry pi led 闪烁, 使用 raspberry pi 使 led 闪烁"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: a5a03a57-fe86-416f-90ff-6eca17775842
 ms.service: iot-hub
 ms.devlang: node

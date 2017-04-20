@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "安装, raspbian 下载, 如何安装 raspbian, raspbian 设置, raspberry pi 安装 raspbian, raspberry pi 安装 os, raspberry pi sd 卡安装, raspberry pi 连接, 连接到 raspberry pi, raspberry pi 连接"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-c-get-started
 ms.assetid: 8ee9b23c-93f7-43ff-8ea1-e7761eb87a6f
 ms.service: iot-hub
 ms.devlang: c

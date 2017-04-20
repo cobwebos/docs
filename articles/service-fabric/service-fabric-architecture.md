@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/09/2016
+ms.date: 04/19/2016
 ms.author: rsinha
 translationtype: Human Translation
 ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
 ms.openlocfilehash: c485e8a3d12e7d2dcbfd6304a67aaa4fc2838b3f
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -62,10 +63,5 @@ Service Fabric 是利用分层子系统而生成的。 这些子系统让你能�
 
 ## <a name="testability-subsystem"></a>可测试性子系统
 可测试性是一套专为测试建立于Service Fabric 基础之上的服务而设计的工具。 这些工具让开发人员能够轻松地引发有意义的故障及运行测试方案来执行和验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控且安全的方式进行。 可测试性还提供了一种机制来运行更长时间的测试，可在不丢失可用性的情况下循环访问各种可能的故障。 这可以为你提供生产环境中的测试。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
