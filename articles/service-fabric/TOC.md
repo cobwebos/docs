@@ -5,7 +5,7 @@
 ## [应用程序方案](service-fabric-application-scenarios.md)
 ## [体系结构](service-fabric-architecture.md)
 ## [术语](service-fabric-technical-overview.md)
-## [内容路线图](service-fabric-content-roadmap.md)
+## [入门](service-fabric-content-roadmap.md)
 
 # 入门
 ## 设置开发环境
@@ -17,7 +17,8 @@
 ### [Linux 上的 Java](service-fabric-create-your-first-linux-application-with-java.md)
 ### [Linux 上的 C#](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [在本地群集上部署应用](service-fabric-get-started-with-a-local-cluster.md)
-## [创建独立群集](service-fabric-get-started-standalone-cluster.md)
+## [在 Azure 上创建第一个群集](service-fabric-get-started-azure-cluster.md)
+## [创建第一个独立群集](service-fabric-get-started-standalone-cluster.md)
 
 # 如何
 ## 构建应用程序
@@ -124,7 +125,6 @@
 #### [访问控制](service-fabric-cluster-security-roles.md)
 #### [配置群集](service-fabric-cluster-fabric-settings.md)
 #### [添加或滚动更新群集证书](service-fabric-cluster-security-update-certs-azure.md) 
-#### [免费试用 Party 群集](http://aka.ms/tryservicefabric)
 
 ### 独立群集
 #### [规划和准备部署](service-fabric-cluster-standalone-deployment-preparation.md)

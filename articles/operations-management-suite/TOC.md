@@ -3,15 +3,9 @@
 ## [OMS 体系结构](operations-management-suite-architecture.md)
 
 # 入门
-## 见解与分析
-### [注册 Log Analytics](../log-analytics/log-analytics-get-started.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## 自动化与控制
-### [第一个 Runbook](../automation/automation-first-runbook-graphical.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## 保护与恢复
-### [Azure 备份简介](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## 安全性和遵从性
-### [安全和审核](oms-security-getting-started.md)
-### [数据安全](oms-security-data-security.md)
+## 演练
+### [服务地图](operations-management-suite-walkthrough-servicemap.md)
+
 
 # 如何
 

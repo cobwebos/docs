@@ -287,10 +287,10 @@
 ### [语言](Translator/languages.md)
 ### [Hub](Translator/translator-hub-overview.md)
 ### [CTF](Translator/collaborative-translation-framework-reporting-api.md)
-### [语音翻译 API 概述](Translator/speech-overview.md)
-### [语音翻译 API 参考](http://docs.microsofttranslator.com/speech-translate.html)
-### [文本翻译 API 概述](Translator/text-overview.md)
-### [文本翻译 API 参考](http://docs.microsofttranslator.com/text-translate.html)
+### [翻译工具语音 API 概述](Translator/speech-overview.md)
+### [翻译工具语音 API 参考](http://docs.microsofttranslator.com/speech-translate.html)
+### [翻译工具文本 API 概述](Translator/text-overview.md)
+### [翻译工具文本 API 参考](http://docs.microsofttranslator.com/text-translate.html)
 
 ## 视频
 ### [概述](Video/Home.md)

@@ -1,4 +1,5 @@
-# [概述](active-directory-developers-guide.md)
+# 概述
+## [开发人员指南](active-directory-developers-guide.md)
 ## [应用和 Azure Active Directory](active-directory-how-applications-are-added.md)
 ## [开发人员术语表](active-directory-dev-glossary.md)
 ## [AAD 图形 API](active-directory-graph-api.md)
@@ -39,14 +40,12 @@
 ## [品牌准则](active-directory-branding-guidelines.md)
 ## 使用 SAML
 ### [Azure AD 和 SAML](active-directory-saml-protocol-reference.md)
-### [查看访问控制返回的 SAML](active-directory-java-view-saml-returned-by-access-control.md)
 ### [自定义声明](active-directory-saml-claims-customization.md)
 ### [调试基于 SAML 的 SSO](active-directory-saml-debugging.md)
 ### [单一登录 SAML 协议](active-directory-single-sign-on-protocol-reference.md)
 ### [单一注销 SAML 协议](active-directory-single-sign-out-protocol-reference.md)
 ## 使用 Visual Studio
 ### [开始使用 Azure Active Directory 和 Visual Studio 连接服务（MVC Projects.md）](vs-active-directory-dotnet-getting-started.md)
-### [我的 MVC 项目发生了什么情况](Visual Studio Azure Active Directory connected service.md)？](vs-active-directory-dotnet-what-happened
 ### [身份验证检测期间的错误](vs-active-directory-error.md)
 ### [WebApi 入门](vs-active-directory-webapi-getting-started.md)
 ### [我的 Web API 项目发生了什么情况](vs-active-directory-webapi-what-happened.md)
@@ -59,7 +58,8 @@
 ### [联合元数据](active-directory-federation-metadata.md)
 ### [Oauth](active-directory-protocols-oauth-code.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
-# [v2.0 终结点](active-directory-appmodel-v2-overview.md)
+### [服务到服务调用](active-directory-protocols-oauth-service-to-service.md)
+# v2.0 终结点
 ## [概述](active-directory-appmodel-v2-overview.md)
 ### [差异](active-directory-v2-compare.md)
 ### [应用类型](active-directory-v2-flows.md)
@@ -82,12 +82,11 @@
 ## 引用
 ### [应用注册参考](active-directory-v2-registration-portal.md)
 ### [身份验证库](active-directory-v2-libraries.md)
+### [v2.0 身份验证协议](active-directory-v2-protocols.md)
+#### [令牌参考](active-directory-v2-tokens.md)
+#### [OAuth 2.0 授权代码流](active-directory-v2-protocols-oauth-code.md)
+#### [OpenID Connect](active-directory-v2-protocols-oidc.md)
+#### [隐式流](active-directory-v2-protocols-implicit.md)
+#### [OAuth 2.0 客户端凭据](active-directory-v2-protocols-oauth-client-creds.md)
 ### [范围](active-directory-v2-scopes.md)
-### [令牌参考](active-directory-v2-tokens.md)
-### [OpenID Connect](active-directory-v2-protocols-oidc.md)
-### [隐式流](active-directory-v2-protocols-implicit.md)
-### [OAuth 2.0 授权代码流](active-directory-v2-protocols-oauth-code.md)
-### [OAuth 2.0 客户端凭据](active-directory-v2-protocols-oauth-client-creds.md)
-### [OAuth 2.0 和 OpenID](active-directory-v2-protocols.md)
-### [服务到服务调用](active-directory-protocols-oauth-service-to-service.md)
 # [示例](active-directory-code-samples.md)

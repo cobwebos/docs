@@ -1,17 +1,20 @@
 # 概述
 ## [什么是 Azure 自动化？](automation-intro.md)
 # 入门
+## [Azure 自动化入门](automation-offering-get-started.md)
 ## Runbook 教程
 ### [创建图形 runbook](automation-first-runbook-graphical.md)
 ### [创建 PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 ### [创建 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
 # 如何
 ## 身份验证和安全性
-### [Azure 自动化中的身份验证](automation-security-overview.md)
-### [配置 Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)
-### [配置 Azure AD 用户帐户](automation-sec-configure-aduser-account.md)
-### [配置使用 AWS 进行的身份验证](automation-sec-configure-aws-account.md)
+### [创建独立的自动化帐户](automation-create-standalone-account.md)
+### [创建 Azure AD 用户帐户](automation-create-aduser-account.md)
+### [配置使用 AWS 进行的身份验证](automation-config-aws-account.md)
+### [使用 PowerShell 创建 Azure 运行方式帐户](automation-update-account-powershell.md)
+### [验证自动化帐户配置](automation-verify-runas-authentication.md)
 ### [管理基于角色的访问控制](automation-role-based-access-control.md)
+### [管理自动化帐户](automation-manage-account.md)
 ## 创建 Runbook
 ### [Runbook 类型](automation-runbook-types.md)
 ### [创建和导入 Runbook](automation-creating-importing-runbook.md)
@@ -71,7 +74,7 @@
 ## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
 ## [PowerShell（经典）](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
-## [REST](https://msdn.microsoft.com/library/azure/mt662285.aspx)
+## [REST](/rest/api/automation)
 ## [REST（经典）](https://msdn.microsoft.com/library/azure/mt163781)
 # 资源
 ## [发行说明](https://azure.microsoft.com/updates/?product=automation)

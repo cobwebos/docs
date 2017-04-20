@@ -24,7 +24,7 @@
 ### [迁移到云合作伙伴门户](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
 ## [Azure 应用商店卖家指南](./cloud-partner-portal-seller-guide.md)
 
-## [市场营销潜在客户管理](./cloud-partner-portal-marketing-lead-management.md)
+## [获取潜在客户](./cloud-partner-portal-get-customer-leads.md)
 ### [Azure 表](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 ### [Dynamics CRM Online](./cloud-partner-portal-lead-management-instructions-dynamics.md)
 ### [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md)
@@ -32,5 +32,4 @@
 
 ## [管理发布者个人资料](./cloud-partner-portal-manage-publisher-profile.md)
 ## [管理用户](./cloud-partner-portal-manage-users.md)
-## [提供反馈](./cloud-partner-portal-give-feedback.md)
 ## [获取支持](./cloud-partner-portal-support-for-cloud-partner-portal.md)
