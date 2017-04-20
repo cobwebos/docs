@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 02/23/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 4e3840f68c93998a52fa2956c2ea9d0976e0f627
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 3dd7f6db58bbb8704b7811b2fd19619e5e1ec0d4
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -25,6 +25,7 @@ ms.lasthandoff: 03/28/2017
 > [!div class="op_single_selector"]
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+> * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 > 
 > 
 
@@ -42,7 +43,7 @@ ms.lasthandoff: 03/28/2017
 2. 如果不再需要该应用程序类型，则将其取消注册
 3. 从映像存储中删除应用程序包
 
-如果使用 Visual Studio 来部署和调试本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。[](service-fabric-publish-app-remote-cluster.md)  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便你可以在 Visual Studio 外部执行相同的操作。 
+如果使用 [Visual Studio 来部署和调试](service-fabric-publish-app-remote-cluster.md)本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便你可以在 Visual Studio 外部执行相同的操作。 
  
 ## <a name="connect-to-the-cluster"></a>连接至群集
 在运行本文中的任何 PowerShell 命令之前，请始终先使用 [Connect-ServiceFabricCluster](/powershell/servicefabric/vlatest/connect-servicefabriccluster) 连接到 Service Fabric 群集。 若要连接到本地部署群集，请运行以下命令：
