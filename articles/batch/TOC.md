@@ -25,8 +25,18 @@
 ### [批处理 PowerShell cmdlet](batch-powershell-cmdlets-get-started.md)
 ### [Azure CLI](batch-cli-get-started.md)
 ### [批处理诊断日志](batch-diagnostics.md)
+### [批处理分析](batch-analytics.md)
+#### [池创建事件](batch-pool-create-event.md)
+#### [池删除启动事件](batch-pool-delete-start-event.md)
+#### [池删除完成事件](batch-pool-delete-complete-event.md)
+#### [池调整大小启动事件](batch-pool-resize-start-event.md)
+#### [池调整大小完成事件](batch-pool-resize-complete-event.md)
+#### [任务启动事件](batch-task-start-event.md)
+#### [任务完成事件](batch-task-complete-event.md)
+#### [任务失败事件](batch-task-fail-event.md)
+### [Azure 批处理计算节点环境变量](batch-compute-node-environment-variables.md)
 
-# 参考
+# 引用
 ## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
