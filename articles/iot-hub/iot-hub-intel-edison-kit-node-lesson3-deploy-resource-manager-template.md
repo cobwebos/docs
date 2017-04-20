@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "将数据存储在云中, 存储在云中的数据, iot 云服务"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-node-get-started
 ms.assetid: 37ee5962-95ce-40e8-8162-17e735eaec21
 ms.service: iot-hub
 ms.devlang: nodejs

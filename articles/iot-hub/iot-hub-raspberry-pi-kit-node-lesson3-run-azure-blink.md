@@ -7,6 +7,8 @@ author: shizn
 manager: timlt
 tags: 
 keywords: "闪烁 led 云 pi, 通过云使 led 闪烁"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: 427d8e5e-8af8-4249-8607-44edc90a4972
 ms.service: iot-hub
 ms.devlang: node

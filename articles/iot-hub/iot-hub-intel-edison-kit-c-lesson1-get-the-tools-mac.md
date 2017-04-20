@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "arduino 开发工具, iot 开发, iot 软件, 物联网软件, 在 mac 上安装 git, 安装 node js mac"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-c-get-started
 ms.assetid: 3f764f2e-25fa-4dde-9e8d-d278453fccfd
 ms.service: iot-hub
 ms.devlang: c

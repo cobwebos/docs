@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "云中的数据, 云数据收集, iot 云服务, iot 数据"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-c-get-started
 ms.assetid: cad545c3-dd88-486c-a663-d587a924ccd4
 ms.service: iot-hub
 ms.devlang: c
