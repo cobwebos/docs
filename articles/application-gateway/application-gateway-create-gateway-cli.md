@@ -32,7 +32,7 @@ ms.lasthandoff: 03/01/2017
 > * [Azure CLI 1.0](application-gateway-create-gateway-cli.md)
 > * [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
 
-Azure 应用程序网关是第&7; 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载平衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
+Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载平衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
 

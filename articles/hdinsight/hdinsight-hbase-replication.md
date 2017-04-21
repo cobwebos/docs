@@ -184,7 +184,7 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 
 启用复制后，可以使用两个单独的脚本操作脚本来复制/迁移数据：
 
-- [针对小型表的脚本](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh)（几个 GB 的大小，在不到&1; 小时内就有望完成整个复制）
+- [针对小型表的脚本](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh)（几个 GB 的大小，在不到 1 小时内就有望完成整个复制）
 
 - [针对大型表的脚本](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh)（预计需要一小时以上才能完成复制）
 
