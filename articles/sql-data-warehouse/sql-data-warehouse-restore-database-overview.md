@@ -61,7 +61,7 @@ Yes, for the next seven calendar days. When you delete a data warehouse, SQL Dat
 如果使用的是异地冗余存储，则可将数据仓库还原到另一地理区域的[配对数据中心](../best-practices-availability-paired-regions.md)。 从上次的每日备份还原数据仓库。 
 
 ## <a name="restore-timeline"></a>还原时间线
-可以将数据库还原到过去&7; 天的任何可用还原点。 快照&4; 到&8; 小时启动一次，可供使用&7; 天。 快照超过&7; 天将过期，其还原点不再可用。
+可以将数据库还原到过去 7 天的任何可用还原点。 快照 4 到 8 小时启动一次，可供使用 7 天。 快照超过 7 天将过期，其还原点不再可用。
 
 ## <a name="restore-costs"></a>还原费用
 已还原的数据仓库的存储费用按 Azure 高级存储费率计算。 
@@ -73,7 +73,7 @@ Yes, for the next seven calendar days. When you delete a data warehouse, SQL Dat
 ## <a name="uses-for-restore"></a>还原的用途
 数据仓库还原的主要用途是在意外丢失或损坏数据后恢复数据。
 
-数据仓库还原还可用于保留那些时间超过&7; 天的备份。 还原备份以后，数据仓库处于联机状态，可以无限次将其暂停以节省计算费用。 暂停的数据库按 Azure 高级存储费率收取存储费用。 
+数据仓库还原还可用于保留那些时间超过 7 天的备份。 还原备份以后，数据仓库处于联机状态，可以无限次将其暂停以节省计算费用。 暂停的数据库按 Azure 高级存储费率收取存储费用。 
 
 ## <a name="related-topics"></a>相关主题
 ### <a name="scenarios"></a>方案
