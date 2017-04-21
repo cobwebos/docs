@@ -387,11 +387,11 @@ ms.lasthandoff: 03/01/2017
 }
 ```
 
-在本例中，我们提取前一步的 `startTime`。 然后，我们获取当前时间，并从中减去&1; 秒：
+在本例中，我们提取前一步的 `startTime`。 然后，我们获取当前时间，并从中减去 1 秒：
 
 [`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
 
-可以使用其他时间单位，例如`minutes`或`hours`。 最后，比较这两个值。 如果第一个值小于第二个值，则意味着从首次下订单开始过去了&1; 秒以上的时间。
+可以使用其他时间单位，例如`minutes`或`hours`。 最后，比较这两个值。 如果第一个值小于第二个值，则意味着从首次下订单开始过去了 1 秒以上的时间。
 
 若要设置日期格式，可以使用字符串格式化程序。 例如，若要获取 RFC1123，可以使用 [`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)。 若要了解日期格式设置，请参阅 [Workflow Definition Language](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)（工作流定义语言）。
 
