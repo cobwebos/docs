@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 04/19/2017
 ms.author: v-donglo
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 139980b62aee440ac5f4160e83c7a5eafb32eec2
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -145,10 +146,5 @@ ms.openlocfilehash: 139980b62aee440ac5f4160e83c7a5eafb32eec2
 
 ## <a name="next-steps"></a>后续步骤
 [Azure 机器学习经典 Web 服务重新训练的故障排除](machine-learning-troubleshooting-retraining-models.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

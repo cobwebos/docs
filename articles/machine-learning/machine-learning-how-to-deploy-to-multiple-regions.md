@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 04/19/2017
 ms.author: v-donglo
 translationtype: Human Translation
 ms.sourcegitcommit: 0b7c4c95328eb3ca573694b8eca0b0abda646fc5
 ms.openlocfilehash: ba27d4adf73b4d5d3747567b54aeb5f0d06f8243
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -48,10 +49,5 @@ ms.openlocfilehash: ba27d4adf73b4d5d3747567b54aeb5f0d06f8243
 9. 从“存储帐户”下拉列表中，选择要存储 Web 服务的存储帐户。
 10. 从“价格计划”下拉列表中，选择步骤 8 中所选的区域中的计划。
 11. 单击“复制”。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
