@@ -134,7 +134,7 @@ Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言
 | Toyota |2015-01-01T00:00:02.0000000Z |
 | Toyota |2015-01-01T00:00:03.0000000Z |
 
-**输出&1;**：
+**输出 1**：
 
 | 制造商 | 时间 |
 | --- | --- |
@@ -144,7 +144,7 @@ Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言
 | Toyota |2015-01-01T00:00:02.0000000Z |
 | Toyota |2015-01-01T00:00:03.0000000Z |
 
-**输出&2;**：
+**输出 2**：
 
 | 制造商 | 时间 | 计数 |
 | --- | --- | --- |
@@ -500,7 +500,7 @@ GROUP BY
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 
 
-**说明**：此查询每隔 5 秒生成事件，并输出前面收到的最后一个事件。 [跳跃窗口](https://msdn.microsoft.com/library/dn835041.aspx "跳跃窗口 - Azure 流分析")持续时间确定多久后查询将查找最新事件（在本例中为&300; 秒）。
+**说明**：此查询每隔 5 秒生成事件，并输出前面收到的最后一个事件。 [跳跃窗口](https://msdn.microsoft.com/library/dn835041.aspx "跳跃窗口 - Azure 流分析")持续时间确定多久后查询将查找最新事件（在本例中为 300 秒）。
 
 ## <a name="get-help"></a>获取帮助
 如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
