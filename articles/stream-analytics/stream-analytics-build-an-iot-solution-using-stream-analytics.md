@@ -129,7 +129,7 @@ ms.lasthandoff: 03/06/2017
 > 
 > 
 
-请务必按照本文末尾的“清理 Azure 帐户”部分中的步骤操作，以便充分利用&200; 美元的免费 Azure 信用额度。
+请务必按照本文末尾的“清理 Azure 帐户”部分中的步骤操作，以便充分利用 200 美元的免费 Azure 信用额度。
 
 ## <a name="provision-azure-resources-required-for-the-tutorial"></a>预配本教程所需的 Azure 资源
 本教程需要两个事件中心来接收“入口”和“出口”数据流。 Azure SQL 数据库输出流分析作业的结果。 Azure 存储空间存储有关汽车注册的引用数据。
@@ -255,7 +255,7 @@ PowerShell 脚本使用 TollApp 示例应用程序自动发送事件。 你不�
 6. 源是**事件中心**。
 7. **服务总线命名空间**应是下拉菜单中的 TollData。
 8. **事件中心名称**应设置为**条目**。
-9. **事件中心策略名称*是 **RootManageSharedAccessKey**（默认值）。
+9. **事件中心策略名称*是**RootManageSharedAccessKey**（默认值）。
 10. 选择“JSON”作为“事件序列化格式”，选择“UTF8”作为“编码”。
    
     设置看起来类似于：
