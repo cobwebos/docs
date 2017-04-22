@@ -46,7 +46,7 @@ ms.lasthandoff: 03/09/2017
 
 ![所有端口的故障转移-故障回复列表](./media/site-recovery-failback-azure-to-vmware-classic/Failover-Failback.png)
 
-故障转移到 Azure 以后，可通过以下&3; 个阶段故障回复到本地站点：
+故障转移到 Azure 以后，可通过以下 3 个阶段故障回复到本地站点：
 
 * **阶段 1**：对 Azure VM 进行重新保护，使之开始复制回在本地站点运行的 VMware VM。
 * **阶段 2**：将 Azure VM 复制到本地站点后，通过运行故障转移从 Azure 进行故障回复。

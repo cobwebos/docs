@@ -180,7 +180,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 城市、区域和国家/地区维度派生自 IP 地址，因此不一定始终都是准确的。
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>在 Azure 云服务中运行时发生“找不到方法”异常
-生成的项目是否面向 .NET 4.6？ Azure 云服务角色不能现成地支持&4;.6。 请先[在每个角色上安装 4.6](../cloud-services/cloud-services-dotnet-install-dotnet.md)，再运行应用。
+生成的项目是否面向 .NET 4.6？ Azure 云服务角色不能现成地支持 4.6。 请先[在每个角色上安装 4.6](../cloud-services/cloud-services-dotnet-install-dotnet.md)，再运行应用。
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
 * [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

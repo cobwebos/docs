@@ -464,7 +464,7 @@ private static async Task<List<CloudTask>> AddTasksAsync(
 在上述代码片段中的 `foreach` 循环内，可以看到已构造任务的命令行，因此有三个命令行参数已传递到 *TaskApplication.exe*：
 
 1. **第一个参数** 是要处理的文件的路径。 这是节点上现有文件的本地路径。 首次创建上面 `UploadFileToContainerAsync` 中的 ResourceFile 对象时，会将文件名用于此属性（作为 ResourceFile 构造函数的参数）。 这意味着可以在 *TaskApplication.exe*所在的目录中找到此文件。
-2. **第二个参数** 指定应将前 *N* 个单词写入输出文件。 在示例中，此参数已经过硬编码，因此会将前&3; 个单词写入输出文件。
+2. **第二个参数** 指定应将前 *N* 个单词写入输出文件。 在示例中，此参数已经过硬编码，因此会将前 3 个单词写入输出文件。
 3. **第三个参数**是共享访问签名 (SAS)，提供对 Azure 存储中**输出**容器的写访问。 *TaskApplication.exe* 使用此共享访问签名 URL。 你可以在 TaskApplication 项目的 `Program.cs` 文件的 `UploadFileToContainer` 方法中找到此方面的代码：
 
 ```csharp

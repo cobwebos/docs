@@ -67,7 +67,7 @@ ms.lasthandoff: 03/10/2017
 ![Service Fabric 项目结构][2]
 
 ## <a name="reliable-actors-basic-building-blocks"></a>Reliable Actors 基本构建基块
-典型的 Reliable Actors 解决方案由&3; 个项目组成：
+典型的 Reliable Actors 解决方案由 3 个项目组成：
 
 * **应用程序项目 (MyActorApplication)**。 这是将所有服务打包在一起以进行部署的项目。 它包含用于管理应用程序的 *ApplicationManifest.xml* 和 PowerShell 脚本。
 * **接口项目 (MyActor.Interfaces)**。 这是包含执行组件的接口定义的项目。 在 MyActor.Interfaces 项目中，你可以定义在解决方案中执行组件所使用的接口。 可在任何项目中使用任何名称定义执行组件接口。不过，因为该接口定义了执行组件实现和调用执行组件的客户端所共享的执行组件协定，所以合理的做法是在独立于执行组件实现的程序集中定义接口，并且其他多个项目可以共享接口。

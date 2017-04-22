@@ -189,7 +189,7 @@ ms.lasthandoff: 03/14/2017
 2. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
 
     ![图示磁贴](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. 在“图示视图”中，双击数据集 `sprocsampleout`。 将看到切片处于“就绪”状态。 由于切片是在 JSON 中针对开始时间和结束时间之间的每一小时生成的，因此，应该有&5; 个切片。
+3. 在“图示视图”中，双击数据集 `sprocsampleout`。 将看到切片处于“就绪”状态。 由于切片是在 JSON 中针对开始时间和结束时间之间的每一小时生成的，因此，应该有 5 个切片。
 
     ![图示磁贴](media/data-factory-stored-proc-activity/data-factory-slices.png)
 4. 切片处于“就绪”状态时，对 Azure SQL 数据库运行 `select * from sampletable` 查询，以验证存储过程是否已将数据插入到表中。
