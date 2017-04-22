@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 中不到&5; 分钟创建一个静态 HTML Web 应用 | Microsoft 文档"
+title: "在 Azure 中不到 5 分钟创建一个静态 HTML Web 应用 | Microsoft 文档"
 description: "了解如何通过部署一个示例应用，轻松地在应用服务中运行 Web 应用。"
 services: app-service\web
 documentationcenter: 
@@ -21,7 +21,7 @@ ms.lasthandoff: 03/18/2017
 
 
 ---
-# <a name="create-a-static-html-web-app-in-azure-in-five-minutes"></a>在 Azure 中不到&5; 分钟创建一个静态 HTML Web 应用
+# <a name="create-a-static-html-web-app-in-azure-in-five-minutes"></a>在 Azure 中不到 5 分钟创建一个静态 HTML Web 应用
 [!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
 
 本快速入门帮助你在数分钟内将简单的 HTML+CSS 站点部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。
