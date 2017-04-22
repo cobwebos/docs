@@ -116,7 +116,7 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
     在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 遵循退让可确保最大程度地减少等待重试的时间。 重试策略支持包含在 DocumentDB [.NET](documentdb-sdk-dotnet.md) 和 [Java](documentdb-sdk-java.md) 1.8.0 和更高版本中，以及 [Node.js](documentdb-sdk-node.md) 和 [Python](documentdb-sdk-python.md) 1.9.0 或更高版本以及所有受支持的 [.NET Core](documentdb-sdk-dotnet-core.md) SDK 版本中。 有关详细信息，请参阅[超过保留的吞吐量限制](documentdb-request-units.md#RequestRateTooLarge)和 [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)。
 7. **增大客户端工作负荷**
 
-    如果以高吞吐量级别（>&50;,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此限制，可以将客户端应用程序扩展到多个服务器，以进一步推送 DocumentDB 帐户。
+    如果以高吞吐量级别（> 50,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此限制，可以将客户端应用程序扩展到多个服务器，以进一步推送 DocumentDB 帐户。
 8. **缓存较低读取延迟的文档 URI**
 
     尽可能缓存文档 URI 以获得最佳读取性能。
