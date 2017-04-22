@@ -85,7 +85,7 @@ Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实�
 
 ## <a name="updates"></a>更新
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4
-Scout Update 4 是累积更新。 它包含从 Update&1; 到 Update&3; 的所有修复，以及之后的 bug 修复和增强功能。
+Scout Update 4 是累积更新。 它包含从 Update 1 到 Update 3 的所有修复，以及之后的 bug 修复和增强功能。
 
 **新的平台支持**
 
@@ -174,7 +174,7 @@ Update 2 中的修复包括：
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
 Update 1 包含以下 bug 修复和新功能：
 
-* 每个服务器实例享有&31; 天的免费保护。 这样，你便可以测试功能或建立概念认证。
+* 每个服务器实例享有 31 天的免费保护。 这样，你便可以测试功能或建立概念认证。
   * 从使用 Site Recovery Scout 首次保护服务器的时间开始计算的前 31 天，服务器上的所有操作（包括故障转移和故障回复）都是免费的。
   * 从第 32 天起，将会根据标准实例费率，针对每个受保护的服务器，向客户拥有的站点收取 Azure Site Recovery 保护费用。
   * 在 Azure Site Recovery 保管库的“仪表板”页上随时会显示当前计费的受保护服务器数目。
