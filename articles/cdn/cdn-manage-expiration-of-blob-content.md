@@ -31,7 +31,7 @@ ms.lasthandoff: 03/21/2017
 在多个与 Azure CDN 集成的基于 Azure 的源中，[Azure 存储](../storage/storage-introduction.md)中的 [Blob 服务](../storage/storage-introduction.md#blob-storage)是其中一个。  任何可公开访问的 blob 内容均可在 Azure CDN 中进行缓存，直到其生存时间 (TTL) 结束。  TTL 由来自 Azure 存储的 HTTP 响应中的 [*Cache-Control* 标头](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)决定。
 
 > [!TIP]
-> 你可以选择不对 blob 设置 TTL。  在这种情况下，Azure CDN 将自动应用默认为&7; 天的 TTL。
+> 你可以选择不对 blob 设置 TTL。  在这种情况下，Azure CDN 将自动应用默认为 7 天的 TTL。
 > 
 > 有关 Azure CDN 如何加速访问 blob 和其他文件的详细信息，请参阅 [Azure CDN 概述](cdn-overview.md)。
 > 
@@ -101,7 +101,7 @@ class Program
 ## <a name="other-methods"></a>其他方法
 * [Azure 命令行接口](../cli-install-nodejs.md)
   
-    上载 blob 时，使用 `-p` 开关来设置 *cacheControl* 属性。  此示例将 TTL 设置为&1; 小时（3600 秒）。
+    上载 blob 时，使用 `-p` 开关来设置 *cacheControl* 属性。  此示例将 TTL 设置为 1 小时（3600 秒）。
   
     ```text
     azure storage blob upload -c <connectionstring> -p cacheControl="public, max-age=3600" .\test.txt myContainer test.txt
