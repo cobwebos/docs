@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 9ef430dfaa43f9bc4294593c8abbdaf457ef07c8
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -36,37 +37,53 @@ ms.openlocfilehash: 9ef430dfaa43f9bc4294593c8abbdaf457ef07c8
 
 ## <a name="to-import-your-storage-accounts-using-a-publish-settings-file"></a>使用发布设置文件导入存储帐户
 1. 在“存储帐户”对话框中，单击“从发布设置文件导入”。
+
 2. （如果你已到本地计算机上保存了发布设置文件，请跳过此步骤。）在“导入订阅信息”对话框中，单击“下载发布设置文件”。 如果你尚未登录到 Azure 帐户，则系统将提示你登录。 然后系统将提示你保存 Azure 发布设置文件。 （你可以忽略登录页中显示的最终说明 - 它们是由 Azure 门户提供的，适用于 Visual Studio 用户。）请将该文件保存到本地计算机。
+
 3. 仍在“导入订阅信息”对话框中，单击“浏览”按钮，选择在前面保存到本地的发布设置文件，然后单击“打开”。
+
 4. 单击“确定”关闭“导入订阅信息”对话框。
 
 ## <a name="to-create-a-new-storage-account"></a>新建新的存储帐户
 1. 在“存储帐户”对话框中，单击“添加”。
+
 2. 在“添加存储帐户”对话框中，单击“新建”。
+
 3. 在“新建存储帐户”对话框中，指定以下设置的值：
+
    * 存储帐户名称。
+
    * 存储帐户的位置。
+
    * 存储帐户的说明。
+
    * 存储帐户所属的订阅。
+
 4. 单击“确定”关闭“新建存储帐户”对话框。
 
 创建存储帐户可能需要几分钟时间。 创建后，请单击“确定”关闭“添加存储帐户”对话框，新的存储帐户将添加到可用存储帐户列表中。
 
 ## <a name="to-add-an-existing-storage-account-to-the-list"></a>将现有存储帐户添加到列表
 1. 如果没有 Azure 存储帐户，可以遵照上面“创建新的存储帐户”部分中列出的步骤创建一个存储帐户。 （或者，也可以在 [Azure 管理门户][Azure Management Portal]中创建新的存储帐户。）
+
 2. 在“存储帐户”对话框中，单击“添加”。
+
 3. 在“添加存储帐户”对话框中，输入“名称”和“访问密钥”的值。 这必须是现有 Azure 存储帐户的帐户名称和访问密钥。 使用 [Azure 管理门户][Azure Management Portal]的“存储”部分查看存储帐户名称和密钥。 “添加存储帐户”对话框如下所示。
    
-    ![][ic719497]
+   ![][ic719497]
+
 4. 单击“确定”关闭“添加存储帐户”对话框。
 
 ## <a name="to-modify-a-storage-account-to-use-a-new-access-key"></a>修改存储帐户以使用新的访问密钥
 1. 在“存储帐户”对话框中，单击要编辑的存储帐户，然后单击“编辑”。
+
 2. 在“编辑存储帐户访问密钥”对话框中，修改“访问密钥”值。
+
 3. 单击“确定”关闭“编辑存储帐户访问密钥”对话框。
 
 ## <a name="to-remove-a-storage-account-from-the-list-maintained-in-eclipse"></a>从 Eclipse 维护的列表中删除存储帐户
 1. 在“存储帐户”对话框中，单击要编辑的存储帐户，然后单击“删除”。
+
 2. 当系统提示是否删除该存储帐户时，单击“确定”。
 
 > [!NOTE]
@@ -98,9 +115,4 @@ ms.openlocfilehash: 9ef430dfaa43f9bc4294593c8abbdaf457ef07c8
 [ic719497]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719497.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn205108.aspx -->
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

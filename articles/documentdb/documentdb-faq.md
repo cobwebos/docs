@@ -62,7 +62,7 @@ DocumentDB 是面向 NoSQL 文档的数据库，以 JSON 格式存储数据。  
 请参考 [DocumentDB 定价详细信息](https://azure.microsoft.com/pricing/details/documentdb/)页面了解详细信息。 DocumentDB 使用量费用取决于预配的集合数目、集合的联机小时数，以及每个集合的已预配吞吐量。
 
 ### <a name="is-there-a-free-account-available"></a>有免费的帐户吗？
-如果不熟悉 Azure，可以注册 [Azure 免费帐户](https://azure.microsoft.com/free/)，这样可以得到 30 天试用期和 200 美元，让你试用所有 Azure 服务。 或者，如果有 Visual Studio 订阅，则有资格[免费获取每月&150; 美元的 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，可用于任何 Azure 服务。  
+如果不熟悉 Azure，可以注册 [Azure 免费帐户](https://azure.microsoft.com/free/)，这样可以得到 30 天试用期和 200 美元，让你试用所有 Azure 服务。 或者，如果有 Visual Studio 订阅，则有资格[免费获取每月 150 美元的 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，可用于任何 Azure 服务。  
 
 也可以使用 [Azure DocumentDB 模拟器](documentdb-nosql-local-emulator.md) 在本地免费开发和测试应用程序，无需创建 Azure 订阅。 如果对应用程序在 DocumentDB Emulator 中的工作情况感到满意，可以改为在云中使用 Azure DocumentDB 帐户。
 

@@ -397,7 +397,7 @@ public class ResourcesController : ApiController
 | 参考              | [在 ASP.NET Core 1.0 中启用跨域请求 (CORS)](https://docs.asp.net/en/latest/security/cors.html) |
 | 步骤 | <p>在 ASP.NET Core 1.0 中，可以使用中间件或 MVC 启用 CORS。 使用 MVC 启用 CORS 时，将使用相同的 CORS 服务，但使用 CORS 中间件启用 CORS 时则不是这样。</p>|
 
-**方式&1;** 使用中间件启用 CORS：若要为整个应用程序启用 CORS，请使用 UseCors 扩展方法将 CORS 中间件添加到请求管道。 使用 CorsPolicyBuilder 类添加 CORS 中间件时，可以指定跨域策略。 可通过两种方式实现此目的：
+**方式 1** 使用中间件启用 CORS：若要为整个应用程序启用 CORS，请使用 UseCors 扩展方法将 CORS 中间件添加到请求管道。 使用 CorsPolicyBuilder 类添加 CORS 中间件时，可以指定跨域策略。 可通过两种方式实现此目的：
 
 ### <a name="example"></a>示例
 第一种方式是使用 lambda 调用 UseCors。 lambda 使用一个 CorsPolicyBuilder 对象： 
@@ -432,7 +432,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-**方式&2;** 在 MVC 中启用 CORS：开发人员也可以使用 MVC 按操作、按控制器，或者针对所有控制器全局应用特定的 CORS。
+**方式 2** 在 MVC 中启用 CORS：开发人员也可以使用 MVC 按操作、按控制器，或者针对所有控制器全局应用特定的 CORS。
 
 ### <a name="example"></a>示例
 按操作：若要为特定的操作指定 CORS 策略，请将 [EnableCors] 特性添加到该操作。 指定策略名称。 

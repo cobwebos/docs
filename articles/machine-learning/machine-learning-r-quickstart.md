@@ -1249,7 +1249,7 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
 * DataCamp：在浏览器中舒适地观看 DataCamp 的 R 课程的视频和编码练习。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。 可从以下网址获取免费的互动式 R 教程：https://www.datacamp.com/courses/introduction-to-r
 * 有关 R from Programiz 入门的指南：https://www.programiz.com/r-programming
 * Clarkson 大学的 Kelly Black 编写的快速 R 教程，网址为 http://www.cyclismo.org/tutorial/R/
-* 以下网址中列出了&60; 多个 R 资源：http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
+* 以下网址中列出了 60 多个 R 资源：http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
 
 <!--Image references-->
 [1]: ./media/machine-learning-r-quickstart/fig1.png

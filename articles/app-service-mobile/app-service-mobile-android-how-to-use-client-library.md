@@ -334,12 +334,12 @@ ToDoItemAdapter 构造函数的第二个参数是对布局的引用。 我们现
 **orderBy** 方法的第一个参数是与要排序的字段名称相同的字符串。 第二个参数使用 **QueryOrder** 枚举来指定是按升序还是按降序排序。  如果使用 ***where*** 方法筛选，则必须在调用 ***orderBy*** 方法之前调用 ***where*** 方法。
 
 ### <a name="paging"></a>如何在页中返回数据
-第一个示例演示了如何选择表中的前&5; 项。 此查询返回 **ToDoItems** 表中的项。 **mToDoTable** 是对前面创建的后端表的引用：
+第一个示例演示了如何选择表中的前 5 项。 此查询返回 **ToDoItems** 表中的项。 **mToDoTable** 是对前面创建的后端表的引用：
 
     List<ToDoItem> result = mToDoTable.top(5).execute().get();
 
 
-以下查询跳过前&5; 项，返回后&5; 项：
+以下查询跳过前 5 项，返回后 5 项：
 
     mToDoTable.skip(5).top(5).execute().get();
 

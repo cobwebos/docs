@@ -94,7 +94,7 @@ ms.lasthandoff: 03/14/2017
 
   ![演示如何直接向用户分配许可证的屏幕截图](media/active-directory-licensing-group-advanced/assign-license-to-user.png)
 
-3. 因此，该用户仍然只会使用 E3 产品的&1; 个许可证。 但是，直接分配只会为该用户启用 Yammer Enterprise 服务。 下图显示组成员身份与直接分配分别会启用哪些服务。
+3. 因此，该用户仍然只会使用 E3 产品的 1 个许可证。 但是，直接分配只会为该用户启用 Yammer Enterprise 服务。 下图显示组成员身份与直接分配分别会启用哪些服务。
 
   ![继承分配与直接分配的屏幕截图](media/active-directory-licensing-group-advanced/direct-vs-inherited-assignment.png)
 
