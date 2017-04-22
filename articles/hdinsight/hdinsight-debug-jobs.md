@@ -38,7 +38,7 @@ Azure HDInsight 中的每个 Hadoop 群集都有一个用作默认文件系统�
 * ambariserverlog
 * ambariagentlog
 
-为基于 Windows 的群集创建&3; 个表：
+为基于 Windows 的群集创建 3 个表：
 
 * setuplog：记录在预配/设置 HDInsight 群集的过程中遇到的事件/异常。
 * hadoopinstalllog：记录在群集中安装 Hadoop 时遇到的事件/异常。 可以使用此表来调试使用自定义参数创建的群集的相关问题。
