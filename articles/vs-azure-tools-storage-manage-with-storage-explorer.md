@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 0550f5fecd83ae9dc0acb2770006156425baddf3
-ms.openlocfilehash: 0617d2e668fe719d6002254b6d13ca729887c0e3
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 07b62cd6f6deb0cf3ff1c806204ebc26c773a164
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -57,6 +58,67 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 4. 左窗格会显示与所选 Azure 订阅关联的存储帐户。
 
     ![选择的 Azure 订阅][4]
+
+## <a name="connect-to-an-azure-stack-subscription"></a>连接到 Azure Stack 订阅
+
+1. 需要先建立 VPN 连接，然后存储资源管理器才能对 Azure Stack 订阅进行远程访问。 若要了解如何设置到 Azure Stack 的 VPN 连接，请参阅[使用 VPN 连接到 Azure Stack](azure-stack/azure-stack-connect-azure-stack.md#connect-with-vpn)
+
+2. 对于 Azure Stack POC，需导出 Azure Stack 证书颁发机构的根证书。 在 MAS-CON01 上打开 `mmc.exe`，前者是 Azure Stack 主机或本地机，具有到 Azure Stack 的 VPN 连接。 在“文件”中选择“添加/删除管理单元”，然后添加“证书”以管理“本地计算机”的“计算机帐户”。
+
+   ![通过 mmc.exe 加载 Azure stack 根证书][25]   
+
+   在 **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 下查找 **AzureStackCertificationAuthority**。 右键单击该项目，选择“所有任务”->“导出”。 然后按照对话框中的说明，导出类型为“Base-64 编码 X.509 (.CER)”的证书。 导出的证书将在下一步使用。   
+
+   ![导出 Azure Stack 根证书颁发机构的根证书][26]   
+
+3. 在存储资源管理器（预览版）中，依次选择“编辑”菜单、“SSL 证书”和“导入证书”。 通过文件选取器对话框找到并打开在上一步浏览过的证书。 导入后，系统会提示你重新启动存储资源管理器。
+
+   ![将证书导入存储资源管理器（预览版）][27]
+
+4. 存储资源管理器（预览版）重新启动以后，即可选择“编辑”菜单，确保选中“目标 Azure Stack”。 如果尚未选中，请将其选中，然后重新启动存储资源管理器，使更改生效。 此配置是必需的，否则无法与 Azure Stack 环境兼容。
+
+   ![确保选中“目标 Azure Stack”][28]
+
+5. 在左侧栏中，选择“管理帐户”。 左窗格显示你已登录的所有 Microsoft 帐户。 若要连接到 Azure Stack 帐户，请选择“添加帐户”。
+
+   ![添加 Azure Stack 帐户][29]
+
+6. 在“添加新帐户”对话框的“Azure 环境”下选择“创建自定义环境”，然后单击“下一步”。
+
+7. 输入 Azure Stack 自定义环境的所有必填信息，然后单击“登录”。  在“登录到自定义云环境”对话框中填充信息，以便使用 Azure Stack 帐户登录，该帐户与至少一个活动的 Azure Stack 订阅相关联。 对话框中每个字段的详细信息如下所示：
+
+    * **环境名称** - 用户可以自定义此字段。
+    * **证书颁发机构** - 此值应为 https://login.windows.net。 对于 Azure 中国区 (Mooncake)，请使用 https://login.chinacloudapi.cn。
+    * **登录资源 ID** - 执行以下 PowerShell 即可检索此值：
+
+    如果你是云管理员：
+
+    ```powershell
+    PowerShell (Invoke-RestMethod -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+    ```
+
+    如果你是租户：
+
+    ```powershell
+    PowerShell (Invoke-RestMethod -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+    ```
+
+    * **Graph 终结点** - 此值应为 https://graph.windows.net。 对于 Azure 中国区 (Mooncake)，请使用 https://graph.chinacloudapi.cn。
+    * **ARM 资源 ID** - 使用与登录资源 ID 相同的值。
+    * **ARM 资源终结点** - ARM 资源终结点的示例：
+
+    云管理员：https://adminmanagement.local.azurestack.external   
+    租户：https://management.local.azurestack.external
+ 
+    * **租户 ID** - 可选。 只有在必须指定目录的情况下，才提供此值。
+
+8. 使用 Azure Stack 帐户成功登录后，左窗格将填充与该帐户关联的 Azure Stack 订阅。 选择要使用的 Azure Stack 订阅，然后选择“应用”。 （选择“所有订阅”会选择所有列出的 Azure Stack 订阅，或者一个都不选。）
+
+   ![填充“自定义云环境”对话框后，选择 Azure Stack 订阅][30]
+
+9. 左窗格会显示与所选 Azure Stack 订阅关联的存储帐户。
+
+   ![存储帐户列表，其中包括 Azure Stack 订阅帐户][31]
 
 ## <a name="work-with-local-development-storage"></a>使用本地开发存储
 使用存储资源管理器（预览版），你可以通过 Azure 存储模拟器对本地存储进行操作。 因此，你不需要在 Azure 上部署存储帐户就可以针对存储编写代码并对存储进行测试（因为存储帐户是通过 Azure 存储模拟器进行模拟的）。
@@ -207,9 +269,11 @@ Azure 订阅管理员可以临时通过 [SAS（共享访问签名）](storage/st
 [22]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/download-storage-emulator.png
 [23]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-icon.png
 [24]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-next.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+[25]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-certificate-azure-stack.png
+[26]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/export-root-cert-azure-stack.png
+[27]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/import-azure-stack-cert-storage-explorer.png
+[28]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/select-target-azure-stack.png
+[29]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-azure-stack-account.png
+[30]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/select-accounts-azure-stack.png
+[31]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/azure-stack-storage-account-list.png
 

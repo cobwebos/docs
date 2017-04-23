@@ -9,9 +9,9 @@ ms.topic: hero-article
 ms.service: app-service-web
 manager: erikre
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: a12eab1f7bc4177f659771d58a58f749507c994c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 8194e669f943a6c47f02ae0d2a55e0e720420489
+ms.lasthandoff: 04/19/2017
 
 ---
 # <a name="connect-a-web-app-to-a-content-delivery-network"></a>将 Web 应用连接到内容交付网络
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="step-2---create-a-cdn-profile"></a>步骤 2 - 创建 CDN 配置文件
 
-在左侧导航栏中单击 `+ New` 按钮，然后单击“Web + 移动”。 在“Web + 移动”类别下面选择“CDN”。
+在左侧导航栏中单击“+ 新建”按钮，然后单击“Web + 移动”。 在“Web + 移动”类别下面选择“CDN”。
 
 指定“名称”、“位置”、“资源组”、“定价层”，然后单击“创建”。
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="step-3---create-a-cdn-endpoint"></a>步骤 3 - 创建 CDN 终结点
 
-在搜索框旁边的命令中单击 `+ Endpoint`，启动“创建终结点”边栏选项卡。
+在搜索框旁边的命令中单击“+ 终结点”，启动“创建终结点”边栏选项卡。
 
 指定“名称”、“原点类型”、“原点主机名”，然后单击“添加”。
 

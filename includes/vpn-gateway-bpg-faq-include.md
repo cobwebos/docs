@@ -28,6 +28,8 @@ Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>能否将默认路由 (0.0.0.0/0) 播发给 Azure VPN 网关？
 是的。
 
+请注意，这样会强制所有的 VNet 出口流量流向本地站点，并且会阻止 VNet VM 接受直接来自 Internet 的公共通信，例如从 Internet 发往 VM 的 RDP 或 SSH。
+
 ### <a name="can-i-advertise-the-exact-prefixes-as-my-virtual-network-prefixes"></a>能否播发与虚拟网络前缀完全相同的前缀？
 
 不能，Azure 平台将阻止播发与任一虚拟网络地址前缀相同的前缀或对其进行筛选。 但是，可播发属于虚拟网络内所拥有内容超集的前缀。 
@@ -65,9 +67,4 @@ Azure 本地网关为本地网络指定初始地址前缀。 使用 BGP 时，�
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>应为 BGP 对等会话添加到本地 VPN 设备什么内容？
 你应在指向 IPsec S2S VPN 隧道的 VPN 设备上添加 Azure BGP 对等节点 IP 地址的主机路由。 例如，如果 Azure VPN 对等节点 IP 为“10.12.255.30”，则应在 VPN 设备上添加“10.12.255.30”的主机路由（包含匹配的 IPsec 隧道接口的下一跃点接口）。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
