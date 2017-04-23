@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 371c76ed36cd9d21026a5a49c6ef86a0cd3cc816
-ms.openlocfilehash: 8fd8b4b9611adb15df7e436a00f8ec35ea1e9614
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: a7b3f8addbba21e60be0076784ae954f4cedb0b8
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -26,7 +27,13 @@ ms.openlocfilehash: 8fd8b4b9611adb15df7e436a00f8ec35ea1e9614
 查看 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md) 页，获得各种路由域概述。 为了符合 Azure 公共和 Microsoft 对等互连的公共 IP 地址要求，建议在网络与 Microsoft 之间设置 NAT。 本部分提供需要设置的 NAT 基础结构的详细描述。
 
 ## <a name="nat-requirements-for-azure-public-peering"></a>Azure 公共对等互连的 NAT 要求
-Azure 公共对等互连路径可让你连接到托管于 Azure 中的所有服务的公共 IP 地址。 其中包括 [ExpessRoute 常见问题](expressroute-faqs.md) 中列出的服务以及由 Microsoft Azure 上的 ISV 托管的任何服务。 始终从你的网络向 Microsoft 网络发起与公共对等互连中 Microsoft Azure 服务的连接。 定向到公共对等互连中 Microsoft Azure 的流量必须由 SNAT 转换成有效的公共 IPv4 地址，才能进入 Microsoft 网络。 下图提供了有关如何设置 NAT 以符合上述要求的综合示意图。
+Azure 公共对等互连路径可让你连接到托管于 Azure 中的所有服务的公共 IP 地址。 其中包括 [ExpessRoute 常见问题](expressroute-faqs.md) 中列出的服务以及由 Microsoft Azure 上的 ISV 托管的任何服务。 
+
+> [!IMPORTANT]
+> 始终从你的网络向 Microsoft 网络发起与公共对等互连中 Microsoft Azure 服务的连接。 因此，不能通过 ExpressRoute 启动从 Microsoft Azure 服务到网络的会话。 在尝试过后，发送到这些播发 IP 的数据包将使用 Internet 而不是 ExpressRoute。
+> 
+
+定向到公共对等互连中 Microsoft Azure 的流量必须由 SNAT 转换成有效的公共 IPv4 地址，才能进入 Microsoft 网络。 下图提供了有关如何设置 NAT 以符合上述要求的综合示意图。
 
 ![](./media/expressroute-nat/expressroute-nat-azure-public.png) 
 
@@ -66,10 +73,5 @@ Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等
   * [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)
   * [配置路由](expressroute-howto-routing-classic.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

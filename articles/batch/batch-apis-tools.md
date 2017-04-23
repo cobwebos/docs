@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 405cb202e2b6da0dd24e6f7b8ed55ce8c56e0fe1
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 9ed3e60679a0c637c99f8019119289c71be81f83
+ms.lasthandoff: 04/18/2017
 
 ---
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/31/2017
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet ][api_net_nuget] |[教程](batch-dotnet-get-started.md) |[GitHub][api_sample_net] | [发行说明](https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/Client/changelog.md) |
 | **Batch Python** |[readthedocs.io][api_python] |[PyPI][api_python_pypi] |[教程](batch-python-tutorial.md)|[GitHub][api_sample_python] | [自述文件](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
 | **批处理 Node.js** |[github.io][api_nodejs] |[npm][api_nodejs_npm] |- |- | [自述文件](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
-| **批处理 Java**（预览版） |[github.io][api_java] |[Maven][api_java_jar] |- |[自述文件][api_sample_java] | [自述文件](https://github.com/Azure/azure-batch-sdk-for-java)|
+| **批处理 Java** |[github.io][api_java] |[Maven][api_java_jar] |- |[自述文件][api_sample_java] | [自述文件](https://github.com/Azure/azure-batch-sdk-for-java)|
 
 ## <a name="batch-command-line-tools"></a>批处理命令行工具
 

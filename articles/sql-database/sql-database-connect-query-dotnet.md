@@ -13,12 +13,12 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 04/05/2017
+ms.date: 04/17/2017
 ms.author: andrela;sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c36c3a3f651bcee38b953b12e48cab8d93a34207
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 368ffc65382c75b0fe5f4c20ce1c6a487a764ed3
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -70,16 +70,18 @@ sudo apt-get install dotnet-dev-1.0.1
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
-3. 在数据库的“概要”窗格中，查看完全限定的服务器名称。 
+3. 在数据库的“概览”页上，查看如下图所示的完全限定的服务器名称。 可以将鼠标悬停在服务器名称上以打开“单击以复制”选项。 
 
-    <img src="./media/sql-database-connect-query-dotnet/connection-strings.png" alt="connection strings" style="width: 780px;" />
+   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. 单击“显示数据库连接字符串”。
+4. 如果忘了 Azure SQL 数据库服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。
 
-5. 查看完整的 **ADO.NET** 连接字符串。
+5. 单击“显示数据库连接字符串”。
 
-    <img src="./media/sql-database-connect-query-dotnet/adonet-connection-string.png" alt="ADO.NET connection string" style="width: 780px;" />
-    
+6. 查看完整的 **ADO.NET** 连接字符串。
+
+    ![ADO.NET 连接字符串](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
+  
 ## <a name="add-systemdatasqlclient"></a>添加 System.Data.SqlClient
 使用 .NET Core 时，请将 System.Data.SqlClient 作为依赖项添加到项目的 ***csproj*** 文件。
 
@@ -94,8 +96,7 @@ sudo apt-get install dotnet-dev-1.0.1
 1. 在开发环境中，打开一个空白的代码文件。
 2. 将 ```using System.Data.SqlClient``` 添加到代码文件 ([System.Data.SqlClient namespace](https://msdn.microsoft.com/library/system.data.sqlclient.aspx))。 
 
-3. 使用 [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) 和 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句查询 Azure SQL 数据库中的数据。 为服务器添加相应的值
-
+3. 使用 [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) 和 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句查询 Azure SQL 数据库中的数据。 为服务器添加相应的值。
 ```csharp
 using System;
 using System.Data;

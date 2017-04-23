@@ -1,6 +1,6 @@
 ---
-title: "排查在 Azure 门户中无法在 Windows 设备上切换不同位置的问题 | Microsoft Docs"
-description: "了解解决组织的联机资源访问问题时可以执行的步骤。"
+title: "在 Azure 门户中无法在 Windows 设备上切换位置 | Microsoft Docs"
+description: "了解在哪些情况下可能会碰到无法切换位置的问题，以及可以检查哪些内容来避免遇到此类对话框。"
 services: active-directory
 keywords: "基于设备的条件访问, 设备注册, 启用设备注册, 设备注册和 MDM"
 documentationcenter: 
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/06/2017
+ms.date: 04/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 4b8627f3cdd13578f9b4c35297bf5d550dccfd07
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
+ms.openlocfilehash: 42dcc653b50698cf8ce8145dfb51f27be7ece440
+ms.lasthandoff: 04/12/2017
 
 
 ---

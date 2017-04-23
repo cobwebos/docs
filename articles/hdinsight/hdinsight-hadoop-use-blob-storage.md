@@ -18,9 +18,9 @@ ms.topic: get-started-article
 ms.date: 02/27/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: f85f6484db177285e0fd64a15991a7eb227cd29b
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: f5c36624360b4a09819ea70f3ac23f943688c120
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -106,6 +106,9 @@ Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键
 从门户创建 HDInsight 群集时，可通过以下选项提供存储帐户详细信息。 还可以指定是否要将其他的存储帐户与该群集相关联，如有需要，请选择 Data Lake Store 或另一个 Azure 存储 blob 作为其他存储。
 
 ![HDInsight hadoop 创建数据源](./media/hdinsight-hadoop-use-blob-storage/hdinsight.provision.data.source.png)
+
+> [!WARNING]
+> 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
 
 #### <a name="using-azure-cli"></a>使用 Azure CLI
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
@@ -285,6 +288,8 @@ $clusterName = "<HDInsightClusterName>"
 
 创建 HDInsight 群集时，可以指定要与其关联的 Azure 存储帐户。 除了此存储帐户外，在创建过程中或群集创建完成后，还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。 有关添加其他存储帐户的说明，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
+> [!WARNING]
+> 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
 
 ## <a name="using-azure-data-lake-store-with-hdinsight-clusters"></a>将 Azure Data Lake Store 与 HDInsight 群集配合使用
 

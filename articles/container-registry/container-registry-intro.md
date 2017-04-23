@@ -18,9 +18,9 @@ ms.date: 11/14/2016
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
-ms.openlocfilehash: 0d3b09fb20f748fe70049c505625d813190e94b0
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 25301f1bbacdf2f1e3d04ed3470eafd31098ea32
+ms.lasthandoff: 04/18/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>专用 Docker 容器注册表简介
@@ -39,7 +39,7 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 将 Azure 容器注册表中的映像提取到各种部署目标：
 
 * 用于跨主机群集管理容器化应用程序的**可缩放协调系统**，包括 [DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/) 和 [Kubernetes](http://kubernetes.io/docs/)。
-* 支持大规模构建和运行应用程序的 **Azure 服务**，包括[容器服务](../container-service/index.md)、[应用服务](/app-service/index.md)、[批处理](../batch/index.md)和 [Service Fabric](../service-fabric/index.md)。
+* 支持大规模构建和运行应用程序的 **Azure 服务**，包括[容器服务](../container-service/index.md)、[应用服务](/app-service/index.md)、[批处理](../batch/index.md)、[Service Fabric](../service-fabric/index.md) 等。
 
 开发人员还可以在执行容器开发工作流的过程中将内容推送到容器注册表。 例如，通过连续集成和部署工具（如 [Visual Studio Team Services](https://www.visualstudio.com/docs/overview) 或 [Jenkins](https://jenkins.io/)）将目标设置为容器注册表。
 

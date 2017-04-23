@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c173f1b6937739f662eb41aa1886e66cb06ed729
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: a08fe566f4962684bc4aad220687e9cd36fc4abf
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -41,12 +41,13 @@ ms.lasthandoff: 04/12/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
-3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。
+3. 在数据库的“概览”页上，查看如下图所示的完全限定的服务器名称。 可以将鼠标悬停在服务器名称上以打开“单击以复制”选项。
 
    ![连接信息](./media/sql-database-connect-query-ssms/connection-information.png) 
 
+4. 如果忘了 Azure SQL 数据库服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。 
 
-## <a name="connect-to-the-server-and-your-new-database"></a>连接到服务器和新数据库
+## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>连接到 SQL 数据库逻辑服务器中的数据库
 
 使用 SQL Server Management Studio 建立到 Azure SQL 数据库服务器的连接。 
 
@@ -65,7 +66,7 @@ ms.lasthandoff: 04/12/2017
 
    ![连接到服务器](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. 单击“选项” 。 在“连接到数据库”部分输入 **mySampleDatabase**，以便连接到你此前创建的该数据库。
+3. 单击“连接到服务器”对话框中的“选项”。 在“连接到数据库”部分输入 **mySampleDatabase**，以连接到此数据库。
 
    ![连接到服务器上的 DB](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
@@ -73,7 +74,7 @@ ms.lasthandoff: 04/12/2017
 
    ![已连接到服务器](./media/sql-database-connect-query-ssms/connected.png)  
 
-4. 在对象资源管理器中展开“数据库”，然后展开 **mySampleDatabase**，查看示例数据库中的对象。
+5. 在对象资源管理器中展开“数据库”，然后展开 **mySampleDatabase**，查看示例数据库中的对象。
 
 ## <a name="query-data"></a>查询数据
 
@@ -91,7 +92,7 @@ ms.lasthandoff: 04/12/2017
 
 3. 在工具栏中，单击“执行”从 Product 表和 ProductCategory 表检索数据。
 
-    <img src="./media/sql-database-connect-query-ssms/query.png" alt="query" style="width: 780px;" />
+    ![query](./media/sql-database-connect-query-ssms/query.png)
 
 ## <a name="insert-data"></a>插入数据
 

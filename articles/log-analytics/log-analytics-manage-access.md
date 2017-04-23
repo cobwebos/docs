@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: ace5d18cd88d55d167f8447d18d65ca21818ff62
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 0a6b5115a4eebfcce14094d82cdcc9579f80def6
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/10/2017
 ## <a name="determine-the-number-of-workspaces-you-need"></a>确定所需工作区数
 工作区是一种 Azure 资源，也是 Azure 门户中收集、聚合、分析和呈现数据的容器。
 
-一个 Azure 订阅可以有多个工作区，你可以访问多个工作区。 由于不可能跨多个工作区进行查询，请尽量减少工作区的数目，这样就可以跨大部分数据执行查询和关联操作。 本部分介绍有助于创建多个工作区的情况。
+一个 Azure 订阅可以有多个工作区，你可以访问多个工作区。 由于不可能跨多个工作区进行查询，请尽量减少工作区的数目，这样就可以对最多的数据执行查询和关联操作。 本部分介绍有助于创建多个工作区的情况。
 
 工作区目前提供：
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/10/2017
 
 可以在 Azure 门户中查看有关工作区的详细信息。 也可以在 OMS 门户中查看详细信息。
 
-#### <a name="view-workspace-information-the-azure-portal"></a>在 Azure 门户中查看工作区信息
+#### <a name="view-workspace-information-in-the-azure-portal"></a>在 Azure 门户中查看工作区信息
 
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请使用 Azure 订阅登录。
 2. 在“中心”菜单中，单击“更多服务”，然后在资源列表中，键入“Log Analytics”。 当你开始键入时，会根据你的输入筛选该列表。 单击“Log Analytics”。  
@@ -202,9 +202,6 @@ Log Analytics 门户中的以下活动也需要 Azure 权限：
     > [!IMPORTANT]
     > 若要链接工作区，Azure 帐户必须已可以访问要链接的工作区。  换言之，用于访问 Azure 门户的帐户必须与用于访问工作区的帐户**相同**。 否则，请参阅[将用户添加到现有工作区](#add-a-user-to-an-existing-workspace)。
 
-
-
-
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>将工作区链接到 Azure 门户中的 Azure 订阅
 1. 登录到 [Azure 门户](http://portal.azure.com)。
 2. 浏览到 **Log Analytics**，然后选择它。
@@ -225,7 +222,7 @@ Log Analytics 门户中的以下活动也需要 Azure 权限：
 8. 单击“确定”。 工作区现已链接到 Azure 帐户。
 
 > [!NOTE]
-> 如果找不到要链接的工作区，则 Azure 订阅无法访问使用 OMS 网站创建的工作区。  若要通过 OMS 门户授予此帐户的访问权限，请参阅[将用户添加到现有工作区](#add-a-user-to-an-existing-workspace)。
+> 如果找不到要链接的工作区，则 Azure 订阅无法访问使用 OMS 门户创建的工作区。  若要通过 OMS 门户授予此帐户的访问权限，请参阅[将用户添加到现有工作区](#add-a-user-to-an-existing-workspace)。
 >
 >
 
@@ -250,7 +247,7 @@ Log Analytics 门户中的以下活动也需要 Azure 权限：
 OMS 订阅权利在 Azure 或 OMS 门户中不可见。 可在企业门户中看到权利和使用情况。  
 
 如果需要更改工作区链接到的 Azure 订阅，可以使用 Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) cmdlet。
-to
+
 ### <a name="using-azure-commitment-from-an-enterprise-agreement"></a>使用企业协议中的 Azure 承诺
 如果没有 OMS 订阅，则需单独为 OMS 的每个组件付费，使用量会显示在 Azure 帐单上。
 
@@ -290,12 +287,12 @@ to
 
 ## <a name="change-how-long-log-analytics-stores-data"></a>更改 Log Analytics 的数据存储期限
 
-在免费定价层中，Log Analytics 会提供过去&7; 天的数据。
+在免费定价层中，Log Analytics 会提供过去 7 天的数据。
 在标准定价层中，Log Analytics 会提供过去 30 天的数据。
 在高级定价层中，Log Analytics 会提供过去 365 天的数据。
 在独立和 OMS 定价层中，Log Analytics 默认会提供过去 31 天的数据。
 
-使用独立和 OMS 定价层时，可将数据保留长达 2 年（730 天）之久。 如果数据的存储超过默认的 31 天，将产生数据保留费。 有关价格详细信息，请参阅[超额费用](https://azure.microsoft.com/pricing/details/log-analytics/)。
+使用独立定价层和 OMS 定价层时，可将数据保留长达 2 年（730 天）之久。 如果数据的存储超过默认的 31 天，将产生数据保留费。 有关价格详细信息，请参阅[超额费用](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
 若要更改数据保留期，请执行以下操作：
 

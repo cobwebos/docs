@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 04/14/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: a888593f992913e31bbf04834c86b1d4a2f1b196
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 32b8cd51c983b2a66f3631ec399aa88e34555196
+ms.lasthandoff: 04/18/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
@@ -71,12 +71,12 @@ ms.lasthandoff: 04/06/2017
 | --- | --- |
 | **阿姆斯特丹** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Internet Solutions - Cloud Connect、Interxion、KPN、Level 3 Communications、Orange、Tata Communications、TeleCity Group、Telefonica+、Telenor、Verizon |
 | **亚特兰大** |Equinix |
-| **釜山** |LG CNS+ |
+| **釜山** |LG CNS |
 | **金奈** |Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **芝加哥** |AT&T NetBond、Comcast、Equinix、Level 3 Communications、Verizon、Zayo Group |
 | **达拉斯** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon、Zayo Group+ |
 | **都柏林** |Colt、Telecity Group |
-| **香港** |British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
+| **香港** |Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **拉斯维加斯** |Level 3 Communications+、Megaport |
 | **伦敦** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone、Zayo Group+ |
 | **洛杉矶** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
