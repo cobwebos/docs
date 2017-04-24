@@ -14,12 +14,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/03/2017
+ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 58af25d90b419b3ddb986118a8c9ba3b42aa95a6
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 3366348e6ea3ae296bc249090e75c16ebe9fc1fb
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -50,18 +50,26 @@ ms.lasthandoff: 04/12/2017
    - 资源组：**myResourceGroup**
    - 源：**示例(AdventureWorksLT)**
 
-4. 单击“服务器”，为新数据库创建并配置服务器。 填写“新建服务器”窗体，指定全局唯一的服务器名称，提供服务器管理员登录名，然后指定所选的密码。 
+   > [!IMPORTANT]
+   > 必须选择此表单中的示例数据库，因为本快速入门中的其余部分会用到它。
+   > 
+
+4. 单击“服务器”，然后填写“新建服务器”表单，指定全局唯一的服务器名称，提供服务器管理员登录名，然后指定所选的密码。 
+
+   > [!IMPORTANT]
+   > 在此处指定的服务器管理员登录名和密码是你以后在本快速入门中登录到服务器及其数据库所必需的。 请牢记或记录此信息，以后会使用到它。 
+   >  
 
     ![创建数据库 - 服务器](./media/sql-database-get-started-portal/create-database-server.png)
-5. 单击“选择”。
+5. 完成表单操作后，单击“选择”。
 
-6. 单击“定价层”为新数据库指定服务层和性能级别。 对于本快速入门，请选择 **20 DTU** 和 **250** GB 存储
+6. 单击“定价层”为新数据库指定服务层和性能级别。 使用滑块选择“20 DTU”和 **250** GB 的存储。 有关 DTU 的详细信息，请参阅[什么是 DTU？](sql-database-what-is-a-dtu.md)。
 
     ![创建数据库 - s1](./media/sql-database-get-started-portal/create-database-s1.png)
 
-7. 单击“应用” 。  
+7. 选择的 DTU 的量之后，单击“应用”。  
 
-8. 单击“创建”预配数据库。 预配需要数分钟。 
+8. 完成 SQL 数据库表单后，即可单击“创建”对数据库进行预配。 预配需要数分钟。 
 
 9. 在工具栏上，单击“通知”可监视部署过程。
 
@@ -72,13 +80,26 @@ ms.lasthandoff: 04/12/2017
 
 SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防火墙规则来为特定的 IP 地址打开防火墙，否则会阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 按照以下步骤为客户端 IP 地址创建 [SQL 数据库服务器级防火墙规则](sql-database-firewall-configure.md)，并只允许通过针对你的 IP 地址打开的 SQL 数据库防火墙建立外部连接。 
 
-1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击你的数据库。 此时将打开数据库的概述页，其中显示了完全限定的服务器名称（例如 **mynewserver20170327.database.windows.net**），并提供了其他配置的选项。
+> [!NOTE]
+> 通过端口 1433 进行的 SQL 数据库通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非你的 IT 部门打开了端口 1433。
+>
 
-      ![服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png) 
+1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“mySampleDatabase”。 此时将打开数据库的概览页，其中显示了完全限定的服务器名称（例如 **mynewserver20170411.database.windows.net**），并提供了其他配置的选项。
+
+   > [!IMPORTANT]
+   > 在后续的快速入门中，需提供此完全限定的服务器名称才能连接到服务器及其数据库。
+   > 
+
+      ![服务器名称](./media/sql-database-get-started-portal/server-name.png) 
 
 2. 如上图所示，在工具栏上单击“设置服务器防火墙”。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
 
-3. 在工具栏上单击“添加客户端 IP”，然后单击“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则。
+      ![服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png) 
+
+
+3. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+
+4. 单击“保存” 。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
       ![设置服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule-set.png) 
 
@@ -86,13 +107,12 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 现在可以使用之前创建的服务器管理员帐户通过 SQL Server Management Studio 或其他所选工具从此 IP 地址连接到 SQL 数据库服务器及其数据库。
 
-> [!NOTE]
-> 通过端口 1433 进行的 SQL 数据库通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非你的 IT 部门打开了端口 1433。
->
+> [!IMPORTANT]
+> 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 在此页上单击“关”即可对所有 Azure 服务执行禁用操作。
 
 ## <a name="query-the-sql-database"></a>查询 SQL 数据库
 
-创建 SQL 数据库时，我们填充了 **AdventureWorksLT** 示例数据库（这是在本本快速入门教程前面的“创建 UI”中选择的选项之一）。 现在，让我们使用 Azure 门户中的内置查询工具来查询数据。 
+在 Azure 中创建示例数据库以后，即可使用 Azure 门户中的内置查询工具确认你是否能够连接到数据库并查询数据。 
 
 1. 在数据库的“SQL 数据库”页上，单击工具栏上的“工具”。 此时会打开“工具”页。
 

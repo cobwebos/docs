@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/06/2017
+ms.date: 04/12/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: cfe70aa09b21aa914e3705bf7969583c7a1bbd52
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 5893f8126b0f18ac0d56e434a8e495380bd605d5
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -34,23 +34,26 @@ Web 测试有两种类型：
 
 对于每个应用程序资源，最多可以创建 10 个 Web 测试。
 
-## <a name="create"></a>1.为测试报告创建资源
-如果已经为此应用程序[设置 Application Insights 资源][start]，并且想要在同一位置查看可用性报告，请跳过本步骤。
+## <a name="create"></a>1.为 Web 测试报告打开资源
 
-注册 [Microsoft Azure](http://azure.com)，转到 [Azure 门户](https://portal.azure.com)，然后创建 Application Insights 资源。
+**如果已配置 Application Insights**（针对 Web 应用），请在 [Azure 门户](https://portal.azure.com)中打开 Application Insights 资源。
+
+**或者，若要在新资源中查看报告**，请注册 [Microsoft Azure](http://azure.com)，转到 [Azure 门户](https://portal.azure.com)，然后创建 Application Insights 资源。
 
 ![“新建”>“Application Insights”](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
 单击“所有资源”，打开新资源的“概述”边栏选项卡。
 
 ## <a name="setup"></a>2.创建 URL ping 测试
-在 Application Insights 资源中，找到“可用性”磁贴。 单击它，打开应用程序的“Web 测试”边栏选项卡，然后添加 Web 测试。
+打开“可用性”边栏选项卡，然后添加一个 Web 测试。
 
 ![至少填写网站的 URL](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
-* **URL** 必须在公共 Internet 上公开。 它可以包含查询字符串 &#151; 例如，可以稍微训练一下数据库。 如果 URL 解析为重定向，最多可以跟踪 10 个重定向。
-* **分析依赖请求**：测试时请求图像、脚本、样式文件和页面的其他资源，记录的响应时间包括这些时间。 如果无法在超时期限内为整个测试成功下载所有这些资源，测试将会失败。
-* **启用重试**：测试失败时，将在短时间后重试。 仅当连续三次尝试失败时，才报告失败。 然后，将按照一般的测试频率执行后续测试。 重试将会暂停，直到下次成功为止。 可在每个测试位置单独应用此规则。 （建议使用此设置。 平均大约有 80% 的失败可在重试后消除。）
+* **URL** 可以是要测试的任何网页，但必须在公共 Internet 中可见。 URL 可以包含查询字符串 &#151; 例如，可以稍微训练一下数据库。 如果 URL 解析为重定向，最多可以跟踪 10 个重定向。
+* **分析从属请求**：如果选中此选项，则测试将请求图像、脚本、样式文件以及其他属于受测网页一部分的文件。 记录的响应时间包括获取这些文件所耗费的时间。 如果无法在超时期限内为整个测试成功下载所有这些资源，测试将会失败。 
+
+    如果不选中此选项，则测试只请求指定 URL 的文件。
+* **启用重试**：如果选中此选项，则测试失败时，将在短时间后重试。 仅当连续三次尝试失败时，才报告失败。 然后，将按照一般的测试频率执行后续测试。 重试将会暂停，直到下次成功为止。 可在每个测试位置单独应用此规则。 建议使用此选项。 平均大约有 80% 的失败可在重试后消除。
 * **测试频率**：设置从每个测试位置运行测试的频率。 如果有五个测试位置，且频率为五分钟，则平均每隔一分钟测试站点一次。
 * **测试位置** 是服务器将 Web 请求发送到的 URL 位置。 请选择多个位置，以便区分网站问题与网络问题。 最多可以选择 16 个位置。
 * **成功准则**：
@@ -67,14 +70,23 @@ Web 测试有两种类型：
 ### <a name="test-more-urls"></a>测试其他 URL
 添加更多测试。 例如，除了测试主页，还可以测试搜索 URL 来确保数据库正在运行。
 
+
 ## <a name="monitor"></a>3.查看 Web 测试结果
-1-2 分钟后，结果将出现在“Web 测试”边栏选项卡中。
+
+5 分钟之后，单击“刷新”即可查看测试结果。 
 
 ![主页边栏选项卡中的摘要结果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 单击摘要图表上的任何条形可以获取该时间段的更详细视图。
 
-这些图表合并了此应用程序的所有 Web 测试结果。
+## <a name="edit"></a> 检查和编辑测试
+
+从摘要页面选择特定的测试。 你可以在该处查看具体结果，对其进行编辑或者临时禁用它。
+
+![编辑或禁用 Web 测试](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+
+对服务执行维护时，可能需要禁用 Web 测试。
+
 
 ## <a name="failures"></a>如果看到失败
 单击红点。
@@ -103,7 +115,9 @@ Web 测试有两种类型：
 
 若要创建多步骤测试，可以使用 Visual Studio Enterprise 来录制方案，然后将录制内容上载到 Application Insights。 Application Insights 将按特定间隔重放该方案，并验证响应。
 
-请注意，无法在测试中使用编码的函数：方案步骤必须作为脚本包含在 .webtest 文件中。
+> [!NOTE]
+> 不能在测试中使用编码的函数或循环。 测试必须完全包含在 .webtest 脚本中。 但是，你可以使用标准插件。
+>
 
 #### <a name="1-record-a-scenario"></a>1.录制方案
 使用 Visual Studio Enterprise 录制 Web 会话。
@@ -144,13 +158,19 @@ Web 测试有两种类型：
 
     像设置 ping 测试一样设置测试位置、频率和警报参数。
 
-像在单 url 测试中一样查看测试结果和所有失败。
+#### <a name="3-see-the-results"></a>3.查看结果
 
-失败的常见原因是测试运行时间太久。 运行时间不能超过两分钟。
+像单 url 测试一样查看测试结果和所有失败。
 
-别忘了，必须正确加载页面的所有资源，测试才能成功（包括脚本、样式表、图像，等等）。
+此外，你还可以下载测试结果，在 Visual Studio 中查看。
 
-请注意，Web 测试必须完全包含在 .webtest 文件中：不能在测试中使用编码的函数。
+#### <a name="too-many-failures"></a>失败太多？
+
+* 失败的常见原因是测试运行时间太久。 运行时间不能超过两分钟。
+
+* 别忘了，必须正确加载页面的所有资源，测试才能成功（包括脚本、样式表、图像，等等）。
+
+* Web 测试必须完全包含在 .webtest 脚本中：不能在测试中使用编码的函数。
 
 ### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>将时间和随机数插入多步骤测试
 假设要测试的工具从外部源获取与时间相关的数据（例如股票）。 录制 Web 测试时，必须使用具体的时间，但要将它们设置为测试参数：StartTime 和 EndTime。
@@ -211,12 +231,6 @@ Web 测试插件提供时间参数化方式。
 * 参数化令牌，设置参数来指定从验证器返回令牌的时间，并在站点查询中使用该参数。
   （Visual Studio 会尝试参数化测试，但无法正确参数化令牌。）
 
-## <a name="edit"></a> 编辑或禁用测试
-打开单个测试进行编辑或将其禁用。
-
-![编辑或禁用 Web 测试](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
-
-对服务执行维护时，可能需要禁用 Web 测试。
 
 ## <a name="performance-tests"></a>性能测试
 可以在网站上运行负载测试。 与可用性测试一样，可以从全球各地的站点发送简单请求或多步骤请求。 与可用性测试不同的是，发送的许多请求可以模拟多个并发用户。
@@ -229,7 +243,7 @@ Web 测试插件提供时间参数化方式。
 * [使用 PowerShell 脚本设置 Web 测试](app-insights-powershell.md#add-an-availability-test) 。
 * 设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 。
 
-## <a name="questions-problems"></a>有疑问？ 遇到问题？
+## <a name="qna"></a>有疑问？ 遇到问题？
 * *是否可以从 Web 测试调用代码？*
 
     不可以。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。

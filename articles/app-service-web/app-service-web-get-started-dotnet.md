@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: b575e92d2140ecc0e0f30186302e7733e08d0415
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 24ddf0d81e52960bd582861d324585b8ba0ca357
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 04/04/2017
 
 [!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
 
-本快速入门帮助你在数分钟内将你的第一个 ASP.NET Web 应用部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 完成本教程后，你将能够在云中启动并运行一个简单的 Web 应用。
+本快速入门帮助你在数分钟内将你的第一个 ASP.NET Web 应用部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 完成本教程后，你将能够在云中启动并运行一个简单的应用。
 
 ![Azure 应用服务中的 ASP.NET Web 应用](./media/app-service-web-get-started-dotnet/updated-azure-web-app.png)
 

@@ -1,5 +1,5 @@
 ---
-title: "使用 Aspera 将文件上载到 Azure 媒体服务帐户 | Microsoft 文档"
+title: "使用 Aspera 将文件上载到 Azure 媒体服务帐户 | Microsoft Docs"
 description: "本教程逐步讲解如何使用 Azure 上的 **Aspera Server On Demand** 服务将文件上载到与媒体服务帐户关联的存储帐户。"
 services: media-services
 documentationcenter: 
@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/22/2017
+ms.date: 04/17/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 44fe2f5c0a3f050a93368589d9ea6b8ea3e35d26
-ms.openlocfilehash: 60a35bbda79a45bd0ac24e76b0a20720afe79774
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 86cb6a979d3aa429c0f501a5ebf37db4bff8ba99
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -31,6 +31,7 @@ ms.lasthandoff: 02/23/2017
 
 本教程逐步讲解如何使用 Azure 上的 **Aspera Server On Demand** 服务将文件上载到与媒体服务帐户关联的存储帐户。 
 
+[此处](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/103-aspera-ingest)提供了一个示例，介绍如何将 Azure Functions 与 Aspera 和媒体服务配合使用。
 
 >[!NOTE]
 >使用 Azure 媒体服务媒体处理器 (MP) 进行处理时，支持的最大文件大小有限制。 有关文件大小限制的详细信息，请参阅[此主题](media-services-quotas-and-limitations.md)。
@@ -60,7 +61,7 @@ ms.lasthandoff: 02/23/2017
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera003.png)
 
-4. 单击“定价层”，然后在子面板中选择所需的每月用量。 在“计划详细信息”面板中选择“确定”。 然后，“选择定价层”面板中单击“选择”。
+4. 单击“定价层”，然后在子面板中选择所需的每月用量。 在“计划详细信息”面板中选择“确定”。 然后，在“选择定价层”面板中单击“选择”。
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera004.png)
 

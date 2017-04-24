@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2017
+ms.date: 04/21/2017
 ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/22/2017
     6. 单击“创建” 。
     7. 流量管理器配置文件的全局部署完成后，它将在相应的资源组中作为资源之一列出。
 
-![创建流量管理器配置文件](./media/traffic-manager-create-profile/Create-traffic-manager-profile.png)
+    ![创建流量管理器配置文件](./media/traffic-manager-create-profile/Create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 03/22/2017
 5.    对于下一个 Azure Web 应用终结点重复步骤 3 和步骤 4。 确保添加该终结点时将其**优先级**值设为 **2**。
 6.    添加完这两个终结点后，这两个终结点将显示在“流量管理器配置文件”边栏选项卡中，并且其监视状态为“联机”。
 
-![添加流量管理器终结点](./media/traffic-manager-create-profile/add-traffic-manager-endpoint.png)
+    ![添加流量管理器终结点](./media/traffic-manager-create-profile/add-traffic-manager-endpoint.png)
 
 ## <a name="use-the-traffic-manager-profile"></a>使用流量管理器配置文件
 1.    在门户的搜索栏中，搜索在前面部分中创建的**流量管理器配置文件**名称。 在显示的结果中，单击流量管理器配置文件。

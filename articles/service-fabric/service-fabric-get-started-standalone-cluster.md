@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 04/11/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6da8b21014966edd9f4cea0fd27f6973b2b820f0
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 5e32f1e534057b5e8e0ed6d5c0a4631f9fefbca5
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/12/2017
 可以在任何运行 Windows Server 2012 R2 或 Windows Server 2016（不管是在本地还是在云中）的虚拟机或计算机上创建独立的 Service Fabric 群集。 本快速入门介绍如何在数分钟内创建独立的开发群集。  完成后，你将有一个三节点群集运行在单台可以向其部署应用的计算机上。
 
 ## <a name="before-you-begin"></a>开始之前
-Service Fabric 提供了一个安装程序包，用于创建独立的 Service Fabric 群集。  [下载安装程序包](http://go.microsoft.com/fwlink/?LinkId=730690)。  将其解压缩到计算机或虚拟机（需在其中设置开发群集）的某个文件夹（例如 *C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer*）。  安装包的内容详见[此处](service-fabric-cluster-standalone-package-contents.md)。
+Service Fabric 提供了一个安装程序包，用于创建独立的 Service Fabric 群集。  [下载安装程序包](http://go.microsoft.com/fwlink/?LinkId=730690)。  将安装程序包解压缩到计算机或虚拟机（需在其中设置开发群集）的文件夹中。  安装包的内容详见[此处](service-fabric-cluster-standalone-package-contents.md)。
 
 部署和配置群集的群集管理员必须拥有计算机的管理员权限。 不能在域控制器上安装 Service Fabric。
 
@@ -37,7 +37,9 @@ Service Fabric 提供了一个安装程序包，用于创建独立的 Service Fa
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
 ```
 ## <a name="create-the-cluster"></a>创建群集
-可以通过安装包安装多个示例性的群集配置文件。 *ClusterConfig.Unsecure.DevCluster.json* 是最简单的群集配置：在单台计算机上运行一个不受保护的三节点群集。 就本教程来说，不需修改任何默认的配置设置。  其他配置文件描述的是受 X.509 证书或 Windows 安全措施保护的单机或多机群集。  请阅读[保护群集](service-fabric-cluster-security.md)，详细了解 Service Fabric 群集安全性。 
+可以通过安装包安装多个示例性的群集配置文件。 *ClusterConfig.Unsecure.DevCluster.json* 是最简单的群集配置：在单台计算机上运行一个不受保护的三节点群集。  其他配置文件描述的是受 X.509 证书或 Windows 安全措施保护的单机或多机群集。  就本教程来说，你无需修改任何默认的配置设置，但仍请查看配置文件，熟悉一下这些设置。  **nodes** 节描述了群集中的三个节点：名称、IP 地址、[节点类型、容错域和升级域](service-fabric-cluster-manifest.md#nodes-on-the-cluster)。  **properties** 节定义群集的[安全性、可靠级别、诊断集合和节点类型](service-fabric-cluster-manifest.md#cluster-properties)。
+
+此群集是不安全的。  任何人都可以进行匿名连接并执行管理操作，因此生产型群集应始终使用 X.509 证书或 Windows 安全措施来确保安全性。  安全性只能在群集创建时配置，不能在创建群集以后启用安全性。  请阅读[保护群集](service-fabric-cluster-security.md)，详细了解 Service Fabric 群集安全性。  
 
 若要创建三节点开发群集，请通过管理员 PowerShell 会话运行 *CreateServiceFabricCluster.ps1* 脚本：
 
@@ -88,7 +90,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion ConfigVersio
 ```
 
 ## <a name="next-steps"></a>后续步骤
-设置单独的开发群集以后，可尝试以下操作：
+设置单独的开发群集以后，可尝试阅读以下文件：
 * [设置独立的多机群集](service-fabric-cluster-creation-for-windows-server.md)并启用安全性。
 * [使用 PowerShell 部署应用](service-fabric-deploy-remove-applications.md)
 

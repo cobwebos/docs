@@ -24,19 +24,19 @@ In addition to default workflow used for generating reviews, you can define cust
 
 To get started on defining a workflow, make sure you have valid credentials for the API you intend to use in your workflow. Content Moderator includes a small set of Connectors by default.
 
-![Connectors](images/2-Workflows.PNG)
+![Connectors](images/2-workflows.png)
 
 ## <a name="navigate-to-the-workflows-section"></a>Navigate to the Workflows section ##
 
 Select the **Workflows** option under **Settings**.
 
-![Connectors](images/2-Workflows-0.PNG)
+![Connectors](images/2-workflows-0.png)
 
 ## <a name="start-a-new-workflow"></a>Start a new workflow ##
 
 Use the **Add Workflows** option to get started.
 
-![Connectors](images/2-Workflows-1.PNG)
+![Connectors](images/2-workflows-1.png)
 
 ## <a name="name-your-workflow"></a>Name your workflow ##
 

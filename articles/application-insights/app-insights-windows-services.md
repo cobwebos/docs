@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 97d750035e79d4780738e660d05e1a41085d51f1
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 29598f052778759ed362e3aa4b997acb799717ef
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -115,10 +115,7 @@ Application Insights 程序包的安装和配置因使用的平台而异。 对�
 在调试模式下运行时，系统通过管道加速遥测，因此应该可以在数秒内看到数据。 以发布配置部署应用时，数据的累积速度会更慢。
 
 #### <a name="no-data-after-you-publish-to-your-server"></a>发布到服务器后却没有数据？
-在服务器的防火墙中打开这些出口流量的端口：
-
-* `dc.services.visualstudio.com:443`
-* `f5.services.visualstudio.com:443`
+在服务器的防火墙中打开出口流量的端口。 若要获取所需地址的列表，请参阅[此页](https://docs.microsoft.com/azure/application-insights/app-insights-ip-addresses) 
 
 #### <a name="trouble-on-your-build-server"></a>生成服务器遇到问题？
 请参阅 [此疑难解答项](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)。

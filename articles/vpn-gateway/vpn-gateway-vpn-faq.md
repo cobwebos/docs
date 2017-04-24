@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2017
+ms.date: 04/17/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 15ac382f72cab455246ffcc05f08c8aba5876c8f
-ms.openlocfilehash: c90bb4f41661aedec2bde53abe035fe9bcc80320
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 49aeb711de73bf967f330ec54385fb8bb36dd7ca
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -35,18 +35,18 @@ ms.lasthandoff: 02/15/2017
 ### <a name="what-are-my-cross-premises-connection-options"></a>我的跨界连接选项有哪些？
 支持以下跨界连接：
 
-* [站点到站点](vpn-gateway-howto-site-to-site-resource-manager-portal.md) – 基于 IPsec（IKE v1 和 IKE v2）的 VPN 连接。 此类型的连接需要 VPN 设备或 RRAS。
-* [点到站点](vpn-gateway-howto-point-to-site-resource-manager-portal.md) – 基于 SSTP（安全套接字隧道协议）的 VPN 连接。 此连接不需要 VPN 设备。
-* [VNet 到 VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) - 此类连接与站点到站点配置相同。 VNet 到 VNet 是一种基于 IPsec（IKE v1 和 IKE v2）的 VPN 连接。 它不需要 VPN 设备。
-* [多站点](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) - 这是站点到站点配置的变体，可以让你将多个本地站点连接到虚拟网络。
-* [ExpressRoute](../expressroute/expressroute-introduction.md) – ExpressRoute 可以从你的 WAN 直接连接到 Azure，不需要通过公共 Internet。 有关详细信息，请参阅 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)和 [ExpressRoute 常见问题](../expressroute/expressroute-faqs.md)。
+* 站点到站点 - 基于 IPsec（IKE v1 和 IKE v2）的 VPN 连接。 此类型的连接需要 VPN 设备或 RRAS。 有关详细信息，请参阅[站点到站点](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+* 点到站点 - 基于 SSTP（安全套接字隧道协议）的 VPN 连接。 此连接不需要 VPN 设备。 有关详细信息，请参阅[点到站点](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。
+* VNet 到 VNet - 此类连接与站点到站点配置相同。 VNet 到 VNet 是一种基于 IPsec（IKE v1 和 IKE v2）的 VPN 连接。 它不需要 VPN 设备。 有关详细信息，请参阅 [VNet 到 VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。
+* 多站点 - 这是站点到站点配置的变体，可以让你将多个本地站点连接到虚拟网络。 有关详细信息，请参阅[多站点](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。
+* ExpressRoute - ExpressRoute 可以从 WAN 直接连接到 Azure，不需要经公共 Internet 的 VPN 连接。 有关详细信息，请参阅 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)和 [ExpressRoute 常见问题](../expressroute/expressroute-faqs.md)。
 
 有关 VPN 网关连接的详细信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>站点到站点连接和点到站点连接的区别是什么？
-**站点到站点**配置是指本地位置与 Azure 之间的配置。 这意味着，用户可以将任何本地计算机连接到虚拟网络中的任何虚拟机或角色实例，具体取决于如何选择路由的配置。 它对于需要始终可用的跨界连接来说是一个极佳的选项，很适合混合配置。 此类连接依赖于 IPsec VPN 设备（硬件或软件设备），该设备必须部署在网络边缘。 若要创建此类连接，必须具有必需的 VPN 硬件和面向外部的 IPv4 地址。
+**站点到站点**（IPsec/IKE VPN 隧道）配置是指本地位置与 Azure 之间的配置。 这意味着，你可以将任何本地计算机连接到虚拟网络中的任何虚拟机或角色实例，具体取决于如何选择路由和权限的配置。 它对于需要始终可用的跨界连接来说是一个极佳的选项，很适合混合配置。 此类连接依赖于 IPsec VPN 设备（硬件设备或软件设备），该设备必须部署在网络边缘。 若要创建此类连接，必须具有面向外部且不在 NAT 之后的 IPv4 地址。
 
-**点到站点**配置允许用户从任何位置的单台计算机连接到虚拟网络中的任何内容。 它使用 Windows 内置的 VPN 客户端。 在进行点到站点配置时，你需要安装证书和 VPN 客户端配置包，其中包含的设置允许你的计算机连接到虚拟网络中的任何虚拟机或角色实例。 此连接适用于需要连接到虚拟网络但该虚拟网络不在本地的情况。 当你无法访问 VPN 硬件或面向外部的 IPv4 地址（二者是进行站点到站点连接所必需的）时，它也是一个很好的选项。
+**点到站点**（基于 SSTP 的 VPN）配置允许你从任何位置的单台计算机连接到虚拟网络中的任何内容。 它使用 Windows 内置的 VPN 客户端。 在进行点到站点配置时，你需要安装证书和 VPN 客户端配置包，其中包含的设置允许你的计算机连接到虚拟网络中的任何虚拟机或角色实例。 此连接适用于需要连接到虚拟网络但该虚拟网络不在本地的情况。 当你无法访问 VPN 硬件或面向外部的 IPv4 地址（二者是进行站点到站点连接所必需的）时，它也是一个很好的选项。
 
 可以将虚拟网络配置为同时使用站点到站点连接和点到站点连接，前提是使用基于路由的 VPN 类型为网关创建站点到站点连接。 在经典部署模型中，基于路由的 VPN 类型称为动态网关。
 
@@ -62,9 +62,9 @@ VPN 网关是一类虚拟网关。 VPN 网关可跨公共连接在虚拟网络�
 基于路由的网关可实施基于路由的 VPN。 基于路由的 VPN 使用 IP 转发或路由表中的“路由”将数据包引导到相应的隧道接口中。 然后，隧道接口会加密或解密出入隧道的数据包。 基于路由的 VPN 的策略或流量选择器配置为任意到任意（或通配符）。
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>是否需要 'GatewaySubnet'？
-是的。 网关子网包含虚拟网关服务使用的 IP 地址。 若要配置虚拟网关，需要先为 VNet 创建网关子网。 所有网关子网都必须命名为 'GatewaySubnet' 才能正常工作。 不要对网关子网使用其他名称。 此外，不要在网关子网中部署 VM 或其他组件。
+是的。 网关子网包含虚拟网络网关服务使用的 IP 地址。 若要配置虚拟网关，需要先为 VNet 创建网关子网。 所有网关子网都必须命名为 'GatewaySubnet' 才能正常工作。 不要对网关子网使用其他名称。 此外，不要在网关子网中部署 VM 或其他组件。
 
-创建网关子网时，请指定子网包含的 IP 地址数。 网关子网中的 IP 地址分配到网关服务。 某些配置相对于其他配置需要将更多 IP 地址分配到网关服务。 需确保网关子网包含足够多的 IP 地址，以便应对将来的业务增长以及可能会添加的新连接配置。 因此，尽管网关子网最小可以创建为 /29，但建议创建 /28 或更大（/28、/27、/26 等）的网关子网。 查看要创建的配置的要求，验证网关子网是否会满足这些要求。
+创建网关子网时，请指定子网包含的 IP 地址数。 网关子网中的 IP 地址分配到网关服务。 某些配置相对于其他配置需要将更多 IP 地址分配到网关服务。 需确保网关子网包含足够多的 IP 地址，以便应对将来的业务增长以及可能会添加的新连接配置。 因此，尽管网关子网最小可创建为 /29，但建议创建 /27 或更大（/27、/26 和 /25 等）的网关子网。 查看要创建的配置的要求，验证网关子网是否会满足这些要求。
 
 ### <a name="can-i-deploy-virtual-machines-or-role-instances-to-my-gateway-subnet"></a>是否可以将虚拟机或角色实例部署到网关子网？
 否。
@@ -107,11 +107,23 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 有关详细信息，请参阅[关于 VPN 网关配置设置](vpn-gateway-about-vpn-gateway-settings.md)。
 
 ## <a name="site-to-site-connections-and-vpn-devices"></a>站点到站点连接和 VPN 设备
-### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>选择 VPN 设备时应考虑什么？
-我们在与设备供应商合作的过程中验证了一系列的标准站点到站点 VPN 设备。 可在 [此处](vpn-gateway-about-vpn-devices.md)找到已知兼容的 VPN 设备及其相应的配置说明/示例和设备规范的列表。 设备系列中列为已知兼容设备的所有设备都应适用于虚拟网络。 若要获取配置 VPN 设备的帮助，请参考对应于各设备系列的设备配置示例或链接。
 
-### <a name="what-do-i-do-if-i-have-a-vpn-device-that-isnt-in-the-known-compatible-device-list"></a>如果已知兼容设备的列表中没有我的 VPN 设备，该怎么办？
-如果没有看到你的设备列为已知兼容 VPN 设备，但想使用该设备进行 VPN 连接，则需要确认它符合 [此处](vpn-gateway-about-vpn-devices.md)列出的受支持 IPsec/IKE 配置选项和参数。 满足最低要求的设备应该兼容 VPN 网关。 请联系设备制造商，了解更多支持和配置说明。
+### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>选择 VPN 设备时应考虑什么？
+我们在与设备供应商合作的过程中验证了一系列的标准站点到站点 VPN 设备。 可在[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)一文中找到已知兼容的 VPN 设备及其相应的配置说明/示例和设备规范的列表。 设备系列中列为已知兼容设备的所有设备都应适用于虚拟网络。 若要获取配置 VPN 设备的帮助，请参考对应于各设备系列的设备配置示例或链接。
+
+### <a name="where-can-i-find-configuration-settings-for-vpn-devices"></a>在哪里可以找到有关 VPN 设备的配置设置？
+
+有关设备配置设置的链接，请参阅[已验证的 VPN 设备](vpn-gateway-about-vpn-devices.md#devicetable)。 我们会尽力提供各种设备配置链接。 如需最新的配置信息，最好是咨询设备制造商。
+
+在配置 VPN 设备之前，对于要使用的 VPN 设备，请查看是否存在任何[已知的设备兼容性问题](vpn-gateway-about-vpn-devices.md#known)。
+
+### <a name="how-do-i-edit-vpn-device-configuration-samples"></a>如何编辑 VPN 设备配置示例？
+
+若要了解如何编辑设备配置示例，请参阅[编辑示例](vpn-gateway-about-vpn-devices.md#editing)。
+
+### <a name="where-do-i-find-ipsec-and-ike-parameters"></a>在何处查找 IPsec 和 IKE 参数？
+
+对于 IPsec/IKE 参数，请参阅[参数](vpn-gateway-about-vpn-devices.md#ipsec)。
 
 ### <a name="why-does-my-policy-based-vpn-tunnel-go-down-when-traffic-is-idle"></a>在流量处于空闲状态时，为何我那基于策略的 VPN 隧道会关闭？
 对于基于策略（也称为静态路由）的 VPN 网关来说，这是预期的行为。 当经过隧道的流量处于空闲状态 5 分钟以上时，将销毁该隧道。 当流量朝任一方向开始流动时，该隧道将立刻重新建立。
@@ -121,11 +133,11 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 其他软件 VPN 解决方案只要遵循行业标准 IPsec 实现，就会与我们的网关兼容。 有关配置和支持说明，请与该软件的供应商联系。
 
-## <a name="a-namep2sapoint-to-site-connections"></a><a name="P2S"></a>点到站点连接
+## <a name="P2S"></a>点到站点连接
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-## <a name="a-namev2vmultiavnet-to-vnet-and-multi-site-connections"></a><a name="V2VMulti"></a>VNet 到 VNet 连接和多站点连接
+## <a name="V2VMulti"></a>VNet 到 VNet 连接和多站点连接
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
@@ -152,7 +164,7 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 ### <a name="can-i-connect-a-virtual-network-with-ipsec-vpns-to-my-expressroute-circuit"></a>能否将使用 IPsec VPN 的虚拟网络连接到我的 ExpressRoute 线路？
 能，系统支持该操作。 有关详细信息，请参阅 [配置可共存的 ExpressRoute 连接和站点到站点 VPN 连接](../expressroute/expressroute-howto-coexist-classic.md)。
 
-## <a name="a-namebgpabgp"></a><a name="bgp"></a>BGP
+## <a name="bgp"></a>BGP
 [!INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
 
 ## <a name="cross-premises-connectivity-and-vms"></a>跨界连接和 VM
@@ -162,7 +174,7 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 如果你有一个配置了跨界连接的虚拟网络，则可以通过使用内部 DIP 或专用 IP 地址连接到你的虚拟机。 你也可以使用位于同一虚拟网络中的另一个虚拟机的内部 DIP 连接到你的虚拟机。 如果要从虚拟网络外部的位置进行连接，则无法使用 DIP RDP 到你的虚拟机。 例如，如果你配置了点到站点虚拟网络，并且未从计算机建立连接，则无法通过 DIP 连接到虚拟机。
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-with-cross-premises-connectivity-does-all-the-traffic-from-my-vm-go-through-that-connection"></a>如果我的虚拟机位于使用跨界连接的虚拟网络中，从我的 VM 流出的所有流量是否都会经过该连接？
-否。 只有其目标 IP 包含在指定虚拟网络本地网络 IP 地址范围内的流量才会通过虚拟网络网关。 流量有一个目标 IP 位于虚拟网络中，并将保留在虚拟网络中。 其他流量通过负载平衡器发送到公共网络，或者在使用强制隧道的情况下通过 Azure VPN 网关发送。 如果你要进行故障排除，则重要的是确保列出本地网络中你要通过网关发送的所有范围。 确保本地网络地址范围没有与虚拟网络中的任何地址范围重叠。 另外，还需确保所使用的 DNS 服务器会将名称解析成正确的 IP 地址。
+否。 只有其目标 IP 包含在指定虚拟网络本地网络 IP 地址范围内的流量才会通过虚拟网络网关。 流量有一个目标 IP 位于虚拟网络中，并将保留在虚拟网络中。 其他流量通过负载均衡器发送到公共网络，或者在使用强制隧道的情况下通过 Azure VPN 网关发送。 如果你要进行故障排除，则重要的是确保列出本地网络中你要通过网关发送的所有范围。 确保本地网络地址范围没有与虚拟网络中的任何地址范围重叠。 另外，还需确保所使用的 DNS 服务器会将名称解析成正确的 IP 地址。
 
 ## <a name="virtual-network-faq"></a>虚拟网络常见问题解答
 请在 [虚拟网络常见问题](../virtual-network/virtual-networks-faq.md)中查看更多虚拟网络信息。

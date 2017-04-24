@@ -19,7 +19,7 @@ ms.lasthandoff: 04/12/2017
 # <a name="sign-up-for-content-moderator"></a>Sign Up for Content Moderator #
 Navigate to the [Content Moderator sign up](http://contentmoderator.cognitive.microsoft.com/Account/Signup) page. You can either sign up with your Microsoft account or create an account on the Content Moderator web site.
 
-![Sign up](images/0-Signup-1.PNG)
+![Sign up](images/0-signup-1.PNG)
 
 ## <a name="name-your-team"></a>Name Your Team ##
 Provide a name for your review team. Optionally, you can invite your colleagues to join your team.

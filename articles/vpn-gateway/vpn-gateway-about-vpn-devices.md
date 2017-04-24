@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 03ba7f0df69da073fd876fc4c06121952e594a02
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: d7c4c5b118dade39bd47ae2c7836157589fcb45a
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -33,21 +33,21 @@ ms.lasthandoff: 04/12/2017
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>查看表时的注意事项：
 
-* Azure VPN 网关的术语已更改。 无功能性更改，只是名称进行了更改。
+* Azure VPN 网关的术语已更改。 没有功能更改。 只有名称更改。
   * 静态路由 = PolicyBased
   * 动态路由 = RouteBased
 * 除非另有说明，否则高性能 VPN 网关和 RouteBased VPN 网关的规范相同。 例如，经验证与 RouteBased VPN 网关兼容的 VPN 设备也与 Azure 高性能 VPN 网关兼容。
 
 > [!NOTE]
-> 配置站点到站点连接时，需要为你的 VPN 设备提供面向公众的 IPv4 IP 地址。                                                                                                                                                                               
+> 配置站点到站点连接时，需要为你的 VPN 设备提供面向公众的 IPv4 IP 地址。
+>                
 
-
-## <a name="devicetable"></a>已验证的 VPN 设备
+## <a name="devicetable"></a>验证的 VPN 设备和设备配置指南
 我们在与设备供应商合作的过程中验证了一系列的标准 VPN 设备。 以下列表中包含的设备系列中的所有设备都应适用于 Azure VPN 网关。 请参阅 [关于 VPN 网关](vpn-gateway-about-vpngateways.md) 以确定需要为要配置的解决方案创建的网关类型。
 
-若要获取配置 VPN 设备的帮助，请参考各设备系列相对应的链接。  我们会尽力提供各种配置说明链接。 如需 VPN 设备支持，请联系设备制造商。
+若要获取配置 VPN 设备的帮助，请参考各设备系列相对应的链接。 我们会尽力提供各种配置说明链接。 如需 VPN 设备支持，请联系设备制造商。
 
-|**供应商**          |**设备系列**     |**最低操作系统版本** |**PolicyBased** |**RouteBased** |
+|**供应商**          |**设备系列**     |**最低操作系统版本** |**PolicyBased 配置说明** |**RouteBased 配置说明** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不兼容  |[配置指南](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
 | Allied Telesis     |AR 系列 VPN 路由器 |2.9.2                  |即将支持     |不兼容  |
@@ -81,7 +81,7 @@ ms.lasthandoff: 04/12/2017
 ## <a name="editing"></a>编辑设备配置示例
 在下载提供的 VPN 设备配置示例后，你需要替换一些值来反映你环境的设置。
 
-###<a name="to-edit-a-sample"></a>编辑示例的步骤：
+### <a name="to-edit-a-sample"></a>编辑示例的步骤：
 
 1. 使用记事本打开示例。
 2. 搜索所有 <*text*> 字符串并将其替换为与你的环境相关的值。 请确保包含 < 和 >。 指定名称时，你选择的名称应是唯一的。 如果命令无效，请查看设备制造商文档。
@@ -106,7 +106,7 @@ ms.lasthandoff: 04/12/2017
 > 
 >
 
-在下表中：
+在下面的表中：
 
 * SA = 安全关联
 * IKE 阶段 1 也称“主模式”
@@ -185,7 +185,7 @@ ms.lasthandoff: 04/12/2017
 >
 >
 
-###<a name="feb-16-2017"></a>2017 年 2 月 16 日
+### <a name="feb-16-2017"></a>2017 年 2 月 16 日
 
 **早于 7.1.4 版的 Palo Alto Networks 设备**（针对 Azure 基于路由的 VPN）：如果通过 PAN-OS 版本早于 7.1.4 的 Palo Alto Networks 使用 VPN 设备，并且遇到 Azure 基于路由的 VPN 网关的连接问题，请执行以下步骤：
 

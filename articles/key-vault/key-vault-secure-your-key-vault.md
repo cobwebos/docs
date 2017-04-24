@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: a28e325e8a7e902a64f8cc267e2f0d3be151bcb3
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: c344941c59c52d260999c29f448bb94df24fba1d
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -31,7 +31,7 @@ Azure 密钥保管库是一种云服务，用于保护云应用程序的加密�
 
 以下是所涵盖的主题的简要概述：
 
-[使用 Azure Active Directory 进行身份验证](#authentication-using-azure-active-direcrory) - 本部分介绍调用方如何使用 Azure Active Directory 进行身份验证，以通过管理平面和数据平面访问密钥保管库。 
+[使用 Azure Active Directory 进行身份验证](#authentication-using-azure-active-directory) - 本部分介绍调用方如何使用 Azure Active Directory 进行身份验证，以通过管理平面和数据平面访问密钥保管库。 
 
 [管理平面和数据平面](#management-plane-and-data-plane) - 管理平面和数据平面是用于访问密钥保管库的两个访问平面。 每个访问平面都支持特定的操作。 本部分介绍访问终结点、支持的操作，以及每个平面使用的访问控制方法。 
 

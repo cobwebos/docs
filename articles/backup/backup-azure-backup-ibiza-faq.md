@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: e12d533ac5befe020c0aad4aa64ca9ed50349c3d
-ms.openlocfilehash: 271f447a36f42330ed7b8dea78b32c06eebdeda6
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: e5ef305d926a57e32cdebd44f3dbe2185c735dd4
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -40,6 +40,7 @@ ms.lasthandoff: 02/17/2017
 如果在备份保管库中备份经典 VM，将 VM 从经典迁移到资源管理器模式时不会自动迁移到恢复服务。 请按照以下步骤迁移 VM 备份：
 
 1. 在备份保管库中，请转到“ **受保护的项** ”选项卡并选择 VM。 单击“ [停止保护](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines)”。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
-2. 将虚拟机从经典模式迁移到资源管理器模式。 确保与虚拟机对应的存储和网络也已迁移到资源管理器模式。
-3. 创建恢复服务保管库，使用保管库仪表板顶部的“ **备份** ”操作在迁移的虚拟机上配置备份。 了解有关如何 [在恢复服务保管库中启用备份](backup-azure-vms-first-look-arm.md)
+2. 在 [Azure 门户](https://portal.azure.com)中转到 VM 的“扩展”菜单，卸载 **VMSnapshot/VMSnapshotLinux** 扩展。
+3. 将虚拟机从经典模式迁移到资源管理器模式。 确保与虚拟机对应的存储和网络也已迁移到资源管理器模式。
+4. 创建恢复服务保管库，使用保管库仪表板顶部的“ **备份** ”操作在迁移的虚拟机上配置备份。 了解有关如何 [在恢复服务保管库中启用备份](backup-azure-vms-first-look-arm.md)
 

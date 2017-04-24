@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/03/2017
+ms.date: 04/13/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 17fb538b33a4a4a2b333ff501e6e729f6000f623
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 8a86cf64dcd65e74285a1073f7494eba0708ddcd
+ms.lasthandoff: 04/15/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/06/2017
 
 可以通过 Azure 门户创建 Azure 虚拟机。 此方法提供一个基于浏览器的用户界面，用于创建和配置虚拟机和所有相关的资源。 此快速入门介绍了如何使用 Azure 门户创建虚拟机。 部署完成后，我们将连接到服务器并安装 IIS。
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F) 。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -42,7 +42,9 @@ ms.lasthandoff: 04/06/2017
 
     ![在门户边栏选项卡中输入 VM 的基本信息](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)  
 
-5. 为 VM 选择大小并单击“选择”。
+5. 为 VM 选择大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 
+
+    ![显示 VM 大小的屏幕截图](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
 6. 在“设置”边栏选项卡上，在“使用托管磁盘”下选择“是”，为其余设置保留默认值，然后单击“确定”。
 
@@ -54,11 +56,11 @@ ms.lasthandoff: 04/06/2017
 
 若要允许 IIS 的流量，需要为 Web 流量打开端口 80。 此步骤将介绍如何创建网络安全组 (NSG) 规则，以允许端口 80 上的入站连接。
 
-1. 在虚拟机边栏选项卡的“概要”部分中，单击**资源组**的名称。
+1. 在虚拟机边栏选项卡的“基本信息”部分，单击**资源组**的名称。
 2. 在资源组的边栏选项卡中，单击资源列表中的“网络安全组”。 NSG 名称应为 VM 名称后面追加“-nsg”。
-3. 单击“入站安全规则”标题打开入站规则列表。 此时列表中应会出现一条适用于 RDP 的规则。
-4. 单击“+ 添加”打开“添加入站安全规则”边栏选项卡。
-5. 在“名称”中键入 **IIS** 并确保“端口范围”设置为 80 且“操作”设置为“允许”，然后单击“确定”。
+3. 单击“入站安全规则”标题，打开入站规则列表。 此时列表中应会出现一条适用于 RDP 的规则。
+4. 单击“+ 添加”，打开“添加入站安全规则”边栏选项卡。
+5. 在“名称”中，键入 **IIS**。 请确保将“端口范围”设置为 80，将“操作”设置为“允许”。 单击 **“确定”**。
 
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
@@ -78,7 +80,7 @@ ms.lasthandoff: 04/06/2017
 
 ## <a name="install-iis-using-powershell"></a>使用 PowerShell 安装 IIS
 
-现在，你已登录到 Azure VM，可以使用单行 PowerShell 安装 IIS，并启用本地防火墙规则以允许 Web 流量。  打开 PowerShell 提示符并运行以下命令：
+在虚拟机上打开 PowerShell 提示符并运行以下命令，以便安装 IIS 并启用本地防火墙规则，使之允许 Web 通信：
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -90,13 +92,6 @@ IIS 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 你可�
 
 ![IIS 默认站点](./media/quick-create-powershell/default-iis-website.png) 
 
-## <a name="delete-virtual-machine"></a>删除虚拟机
-
-如果不再需要资源组、VM 和所有相关的资源，可以使用以下命令将其删除。
-
-```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup
-```
 ## <a name="delete-virtual-machine"></a>删除虚拟机
 
 不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请从虚拟机边栏选项卡中选择该资源组，然后单击“删除”。

@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: c4e1ecc824b09fd7523cdc7a29559adca19488f3
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: a06ba41193f00f4aa2c7af4e5430ed15f9bb877c
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -108,7 +108,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 ![在 portal.azure.com 中，打开应用的资源，然后单击“设置”、“浏览器”](./media/app-insights-javascript/03.png)
 
-*还没有数据？单击页面顶部的“刷新”**。仍然没有数据？请参阅[故障排除](app-insights-troubleshoot-faq.md)。*
+*还没有数据？单击页面顶部的“刷新”。仍然没有数据？请参阅[故障排除](app-insights-troubleshoot-faq.md)。*
 
 “浏览器”边栏选项卡是一个[指标资源管理器边栏选项卡](app-insights-metrics-explorer.md)，其中包含预设筛选器和图表选项。 如果需要，可以编辑时间范围、筛选器和图表配置，将结果另存为收藏项目。 单击“还原默认值”可恢复原始边栏选项卡配置。
 
@@ -230,6 +230,6 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 ## <a name="next"></a>后续步骤
 * [跟踪使用情况](app-insights-web-track-usage.md)
 * [自定义事件和指标](app-insights-api-custom-events-metrics.md)
-* [Build-measure-learn](app-insights-overview-usage.md)
+* [Build-measure-learn](app-insights-web-track-usage.md)
 
 

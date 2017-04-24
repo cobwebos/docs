@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 02/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: a0340359dff470551a08a8213f3a704f15f78794
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 88abdb41a403f9c1dc85e574c655c532ee9b1eb5
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -184,6 +184,54 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 
 * 将最新的 Application Insights SDK 下载到服务器。
 
+## <a name="questions"></a>有关状态监视器的问题
+
+### <a name="what-is-status-monitor"></a>什么是状态监视器？
+
+在 IIS Web 服务器中安装的桌面应用程序。 它有助于检测并配置 Web 应用。 
+
+### <a name="when-do-i-use-status-monitor"></a>何时使用状态监视器？
+
+* 检测在 IIS 服务器上运行的任何 Web 应用，即使它已在运行。
+* 为 Web 应用启用其他遥测，此类应用已在编译时[通过 Application Insights SDK 生成](app-insights-asp-net.md)。 
+
+### <a name="can-i-close-it-after-it-runs"></a>可以在它运行后关闭它吗？
+
+是的。 在它检测所选网站后，即可将其关闭。
+
+它不会自行收集遥测。 它只配置 Web 应用并设置某些权限。
+
+### <a name="what-does-status-monitor-do"></a>状态监视器的作用是什么？
+
+为要进行检测的状态监视器选择 Web 应用时，请执行以下操作：
+
+* 下载 Application Insights 程序集和 .config 文件，并将其置于 Web 应用的二进制文件文件夹中。
+* 修改 `web.config`，以便添加 Application Insights HTTP 跟踪模块。
+* 启用 CLR 分析，以便收集依赖项调用。
+
+### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>是否每次更新应用都需要运行状态监视器？
+
+如果以增量方式重新进行部署，则不需要。 
+
+如果在发布过程中选择了“删除现有文件”选项，则需重新运行状态监视器来配置 Application Insights。
+
+### <a name="what-telemetry-is-collected"></a>收集何种遥测？
+
+对于只在运行时使用状态监视器进行检测的应用程序：
+
+* HTTP 请求
+* 对依赖项的调用
+* 异常
+* 性能计数器
+
+对于已在编译时进行检测的应用程序：
+
+ * 进程计数器。
+ * 依赖项调用 (.NET 4.5)；返回依赖项调用中的值 (.NET 4.6)。
+ * 异常堆栈跟踪值。
+
+[了解详细信息](http://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+
 ## <a name="video"></a>视频
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
@@ -212,5 +260,5 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 [greenbrown]: app-insights-asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
-[usage]: app-insights-web-track-usage.md
+[usage]: app-insights-javascript.md
 

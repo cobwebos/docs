@@ -20,5 +20,5 @@ ms.lasthandoff: 04/12/2017
 
 Click the **Dashboard** TAB to see key metrics for all content review done within the tool. You can see total, completed, and in-progress reviews for images and text. You can see metrics for your default team and for your subteams.
 
-![View Dashboard](images/0-Dashboard.PNG)
+![View Dashboard](images/0-dashboard.png)
 

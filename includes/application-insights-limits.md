@@ -7,14 +7,12 @@
 | 限制 | 32000 个事件/秒 | 限制按分钟计量。
 | 数据保留 | 90 天 | 此资源适用于[搜索](../articles/application-insights/app-insights-diagnostic-search.md)、[分析](../articles/application-insights/app-insights-analytics.md)和[指标资源管理器](../articles/application-insights/app-insights-metrics-explorer.md)。
 | [可用性多步骤测试](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests)详细结果保留 | 90 天 | 此资源提供了每个步骤的详细结果。
-| 属性和指标名称长度 | 150 |
-| 属性值字符串长度 | 8,192 |
-| 跟踪和异常消息长度 | 10 k |
+| 最大事件大小 | 64 K | 
+| 属性和指标名称长度 | 150 | 有关详细信息，请参阅下面的注释
+| 属性值字符串长度 | 8,192 | 有关详细信息，请参阅下面的注释
+| 跟踪和异常消息长度 | 10 k | 有关详细信息，请参阅下面的注释
 | 每个应用的[可用性测试](../articles/application-insights/app-insights-monitor-web-app-availability.md)计数  | 10 |
 
 有关详细信息，请参阅[关于 Application Insights 中的定价和配额](../articles/application-insights/app-insights-pricing.md)。
 
-
-<!--HONumber=Feb17_HO2-->
-
-
+有关数据字段限制的详细信息，请参阅[按类型划分的架构](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)

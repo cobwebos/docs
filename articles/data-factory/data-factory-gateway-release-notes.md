@@ -97,7 +97,7 @@ ms.lasthandoff: 02/13/2017
 
 *  手动安装期间可选择用于网关的语言/区域性。
 
-*  网关未按预期工作时，可选择向 Microsoft 发送最近&7; 天的网关日志，帮助解决此问题。 如果网关未连接到云服务，可选择保存和存档网关日志。  
+*  网关未按预期工作时，可选择向 Microsoft 发送最近 7 天的网关日志，帮助解决此问题。 如果网关未连接到云服务，可选择保存和存档网关日志。  
 
 *  网关配置管理器的用户界面改进：
 
@@ -207,7 +207,7 @@ ms.lasthandoff: 02/13/2017
 
 ### <a name="1556121"></a>1.5.5612.1
 
-*  支持用于 Azure 数据工厂的&5; 个关系数据库（MySQL、PostgreSQL、DB2、Teradata 和 Sybase）
+*  支持用于 Azure 数据工厂的 5 个关系数据库（MySQL、PostgreSQL、DB2、Teradata 和 Sybase）
 *  压缩支持（Gzip 和 Deflate）
 *  性能提升
 *  Bug 修复
