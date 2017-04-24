@@ -4,7 +4,7 @@ description: "为 Azure 搜索（Microsoft Azure 上云托管的搜索服务）�
 services: search
 documentationcenter: 
 author: bernitorres
-manager: pablocas
+manager: jlembicz
 editor: 
 ms.assetid: b31d79cf-5924-4522-9276-a1bb5d527b13
 ms.service: search
@@ -12,235 +12,188 @@ ms.devlang: multiple
 ms.workload: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/22/2017
+ms.date: 04/05/2017
 ms.author: betorres
 translationtype: Human Translation
-ms.sourcegitcommit: cdcf121e52eaf6a1fc45194b7a4f5a02e9e5c001
-ms.openlocfilehash: f6b354caf37f94906865b5a2f334e2b7a02f9d5b
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 303ca5c820f573dc0b58f1910f258403c3baad2a
+ms.lasthandoff: 04/07/2017
 
 ---
 
-# <a name="enabling-and-using-search-traffic-analytics"></a>允许并使用搜索流量分析
-搜索流量分析是一项 Azure 搜索功能，让你可以了解搜索服务并解锁有关用户及其行为的洞察力。 当启用此功能时，搜索服务数据将复制到选择的存储帐户。 此数据包括搜索服务日志和聚合操作度量值，可进行处理和操作以供进一步分析。
+# <a name="what-is-search-traffic-analytics"></a>搜索流量分析是什么
+搜索流量分析是用于为搜索服务实现反馈循环的模式。 此模式描述必需的数据以及如何使用 Application Insights（用于监视多个平台中的服务的行业领导者）收集这些数据。
 
-## <a name="how-to-enable-search-traffic-analytics"></a>如何启用搜索流量分析
-在相同区域和订阅中需要存储帐户作为搜索服务。
+使用搜索流量分析可以了解搜索服务并获得有关用户及其行为的见解。 拥有有关用户所选内容的数据，即可做出进一步改善搜索体验的决策，并可在结果不及预期时后退。
 
-> [!IMPORTANT]
-> 针对此存储帐户收取标准费用
+Azure 搜索提供集成 Azure Application Insights 和 Power BI 的遥测解决方案，以便提供深入的监视和跟踪。 由于与 Azure 搜索的交互只能通过 API 进行，因此遥测必须由开发人员按此页中的说明使用搜索来实现。
+
+## <a name="identify-the-relevant-search-data"></a>标识相关搜索数据
+
+若要拥有有用的搜索指标，请务必记录来自搜索应用程序用户的某些信号。 这些信号意味着用户感兴趣的内容以及他们认为与其需求相关的内容。
+
+搜索流量分析需要两个信号：
+
+1. 用户生成的搜索事件：只有用户启动的搜索查询才需要关注。 用于填充 Facet、附加内容或任何内部信息的搜索查询都不重要，它们会扭曲结果并造成结果有偏差。
+
+2. 用户生成的单击事件：本文档中的单击是指用户选择从搜索查询返回的特定搜索结果。 一次单击通常意味着文档是特定搜索查询的相关结果。
+
+通过使用相关性 ID 链接搜索和单击事件，可以分析应用程序上的用户的行为。 如果仅使用搜索流量日志，则无法获取这些搜索见解。
+
+## <a name="how-to-implement-search-traffic-analytics"></a>如何实现搜索流量分析
+
+前一部分中提到的信号必须在用户与搜索应用程序交互时从该搜索应用程序中收集。 Application Insights 是一个可扩展的监视解决方案，可用于多个平台，具有灵活的检测选项。 使用 Application insights 可以充分利用由 Azure 搜索创建的 Power BI 搜索报表，从而使数据分析更加容易。
+
+在 Azure 搜索服务的[门户](https://portal.azure.com)页中，“搜索流量分析”边栏选项卡包含一个用于遵循此遥测模式的速查表。 还可以选择或创建 Application Insights 资源，然后查看必需的数据，所有这些全都在一个位置完成。
+
+![“搜索流量分析”说明][1]
+
+### <a name="1-select-an-application-insights-resource"></a>1.选择 Application Insights 资源
+
+需要选择要使用的 Application Insights 资源，如果你还没有 Application Insights 资源，则需要创建一个。 可以使用已在使用的资源记录所需的自定义事件。
+
+创建新的 Application Insights 资源时，此方案对所有应用程序类型都有效。 选择一个最适合所用平台的资源。
+
+为应用程序创建遥测客户端时需要使用检测密钥。 可以从 Application Insights 门户仪表板获取该密钥，也可以从“搜索流量分析”页获取它，只需选择要使用的实例即可。
+
+### <a name="2-instrument-your-application"></a>2.检测应用程序
+
+在此阶段中，你将使用以上步骤中创建的 Application Insights 资源检测自己的搜索应用程序。 此过程有四个步骤：
+
+**I.创建一个遥测客户端**。这是将事件发送到 Application Insights 资源的对象。
+
+*C#*
+
+    private TelemetryClient telemetryClient = new TelemetryClient();
+    telemetryClient.InstrumentationKey = "<YOUR INSTRUMENTATION KEY>";
+
+*JavaScript*
+
+    <script type="text/javascript">var appInsights=window.appInsights||function(config){function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t}
+    ({
+    instrumentationKey: "<YOUR INSTRUMENTATION KEY>"
+    });
+    window.appInsights=appInsights;
+    </script>
+
+对于其他语言和平台，请参阅完整的[列表](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)。
+
+**II.请求用于关联的搜索 ID**。为了将搜索请求与单击相关联，必须具有一个将这两个不同事件关联起来的相关性 ID。 你使用标头请求搜索 ID 时，Azure 搜索将为你提供该 ID：
+
+*C#*
+
+    // This sample uses the Azure Search .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
+
+    var client = new SearchIndexClient(<ServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
+    var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
+    var response = await client.Documents.SearchWithHttpMessagesAsync(searchText: searchText, searchParameters: parameters, customHeaders: headers);
+    IEnumerable<string> headerValues;
+    string searchId = string.Empty;
+    if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out headerValues)){
+     searchId = headerValues.FirstOrDefault();
+    }
+
+*JavaScript*
+
+    request.setRequestHeader("x-ms-azs-return-searchid", "true");
+    request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
+    var searchId = request.getResponseHeader('x-ms-azs-searchid');
+
+**III.记录搜索事件**
+
+每当用户发出搜索请求时，你应使用 Application Insights 自定义事件上的以下架构，将该请求作为搜索事件进行记录：
+
+**ServiceName**：(string) 搜索服务名称 **SearchId**：(guid) 搜索查询的唯一标识符（进入搜索响应） **IndexName**：(string) 要查询的搜索服务索引 **QueryTerms**：(string) 用户输入的搜索词 **ResultCount**：(int) 返回的文档数（进入搜索响应）**ScoringProfile**：(string) 所用计分概要文件的名称（如果有计分概要文件）
+
+> [!NOTE]
+> 请通过向搜索查询添加 $count=true 来请求用户生成查询的计数。 请在[此处](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)查看详细信息
 >
+
+> [!NOTE]
+> 请记住仅记录由用户生成的搜索查询。
 >
 
-可以在门户上或者通过 PowerShell 启用搜索流量分析。 启用后，数据会在 5-10 分钟内开始流入存储帐户，再流入这两个 blob 容器：
+*C#*
 
-    insights-logs-operationlogs: search traffic logs
-    insights-metrics-pt1m: aggregated metrics
+    var properties = new Dictionary <string, string> {
+    {"SearchServiceName", <service name>},
+    {"SearchId", <search Id>},
+    {"IndexName", <index name>},
+    {"QueryTerms", <search terms>},
+    {"ResultCount", <results count>},
+    {"ScoringProfile", <scoring profile used>}
+    };
+    telemetryClient.TrackEvent("Search", properties);
 
+*JavaScript*
 
-### <a name="a-using-the-portal"></a>A. 使用门户
-在 [Azure 门户](http://portal.azure.com)中打开 Azure 搜索服务。 在“设置”下，找到“搜索流量分析”选项。
+    appInsights.trackEvent("Search", {
+    SearchServiceName: <service name>,
+    SearchId: <search id>,
+    IndexName: <index name>,
+    QueryTerms: <search terms>,
+    ResultCount: <results count>,
+    ScoringProfile: <scoring profile used>
+    });
 
-![][1]
+**IV.记录单击事件**
 
-将状态更改为“开”、选择要使用的 Azure 存储帐户，然后选择要复制的数据：日志和/或度量值。 我们建议复制日志和度量值。
-可以数据的保留策略设置为 1 到 365 天。 若要无限期保留数据，请将保留（天数）设置为 0。
+每次用户单击文档，都是一个必须记录以用于搜索分析的信号。 使用 Application Insights 自定义事件可利用下面的架构来记录这些事件：
 
-![][2]
+**ServiceName**：(string) 搜索服务名称 **SearchId**：(guid) 相关搜索查询的唯一标识符 **DocId**：(string) 文档标识符 **Position**：(int) 搜索结果页中文档的排名
 
-### <a name="b-using-powershell"></a>B. 使用 PowerShell
-首先，确保已安装最新的 [Azure PowerShell cmdlet](https://github.com/Azure/azure-powershell/releases)。
-
-然后，获取搜索服务和存储帐户的资源 ID。 可以通过导航到“设置”->“属性”->“ResourceId”，在门户中找到它们。
-
-![][3]
-
-```PowerShell
-Login-AzureRmAccount
-$SearchServiceResourceId = "Your Search service resource id"
-$StorageAccountResourceId = "Your Storage account resource id"
-Set-AzureRmDiagnosticSetting -ResourceId $SearchServiceResourceId StorageAccountId $StorageAccountResourceId -Enabled $true
-```
-
-## <a name="understanding-the-data"></a>了解数据
-数据存储在 Azure 存储 blob 中，它的格式为 JSON。
-
-每个容器每小时会有一个 blob。
-
-示例路径：`resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
-
-### <a name="logs"></a>日志
-日志 blob 包含搜索服务流量日志。
-每个 Blob 具有一个名为 **records** 的根对象，该对象包含一组日志对象。
-每个 blob 会记录同一小时内发生的所有操作。
-
-#### <a name="log-schema"></a>日志架构
-| Name | 类型 | 示例 | 说明 |
-| --- | --- | --- | --- |
-| time |datetime |“2015-12-07T00:00:43.6872559Z” |操作的时间戳 |
-| resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |你的 ResourceId |
-| operationName |字符串 |“Query.Search” |操作的名称 |
-| operationVersion |字符串 |“2016-09-01” |使用的 api-version |
-| category |字符串 |“OperationLogs” |常量 |
-| resultType |字符串 |“Success” |可能的值：成功或失败 |
-| resultSignature |int |200 |HTTP 结果代码 |
-| durationMS |int |50 |操作持续时间，以毫秒为单位 |
-| 属性 |对象 |请参阅下表 |包含特定于操作的数据的对象 |
-
-#### <a name="properties-schema"></a>属性架构
-| Name | 类型 | 示例 | 说明 |
-| --- | --- | --- | --- |
-| 说明 |字符串 |“GET /indexes('content')/docs” |操作的终结点 |
-| 查询 |字符串 |“?search=AzureSearch&$count=true&api-version=2016-09-01” |查询参数 |
-| 文档 |int |42 |处理的文档数目 |
-| IndexName |字符串 |“testindex” |与操作关联的索引名称 |
-
-### <a name="metrics"></a>度量值
-度量值 blob 包含搜索服务的聚合值。
-每个文件都有一个名为 **records** 的根对象，该对象包含度量值对象的数组。 此根对象包含可用数据的每分钟度量值。
-
-可用度量值：
-
-* SearchLatency：搜索服务处理搜索查询所需的时间（每分钟汇总一次）。
-* SearchQueriesPerSecond：每秒接收的搜索查询次数（每分钟汇总一次）。
-* ThrottledSearchQueriesPercentage：已限制的搜索查询百分比（每分钟汇总一次）。
-
-> [!IMPORTANT]
-> 如果由于发送的查询过多，耗尽了服务的预配资源容量，将进行限制。 考虑将更多副本添加到服务。
->
+> [!NOTE]
+> Position 指的是应用程序中的基数顺序。 可以随意设置此数字以用于比较，只要它始终相同。
 >
 
-#### <a name="metrics-schema"></a>度量值架构
-| Name | 类型 | 示例 | 说明 |
-| --- | --- | --- | --- |
-| resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |你的资源 ID |
-| metricName |字符串 |“Latency” |度量值名称 |
-| time |datetime |“2015-12-07T00:00:43.6872559Z” |操作的时间戳 |
-| average |int |64 |度量值时间间隔内原始样本的平均值 |
-| minimum |int |37 |度量值时间间隔内原始样本的最小值 |
-| maximum |int |78 |度量值时间间隔内原始样本的最大值 |
-| total |int |258 |度量值时间间隔内原始样本的总计值 |
-| count |int |4 |用于生成度量值的原始样本数 |
-| timegrain |字符串 |“PT1M” |采用 ISO 8601 的度量值时间粒度 |
+*C#*
 
-所有度量值会按一分钟的时间间隔报告。 每个度量值都会显示每分钟的最小、最大和平均值。
+    var properties = new Dictionary <string, string> {
+    {"SearchServiceName", <service name>},
+    {"SearchId", <search id>},
+    {"ClickedDocId", <clicked document id>},
+    {"Rank", <clicked document position>}
+    };
+    telemetryClient.TrackEvent("Click", properties);
 
-对于 SearchQueriesPerSecond 度量值，最小值是该分钟内已注册的每秒搜索查询次数最低值。 最大值也是如此。 平均值是一分钟内的聚合值。
-假设一分钟内出现以下情形：有 1 秒出现高负载（这是 SearchQueriesPerSecond 的最大值），紧接着有 58 秒的平均负载，最后 1 秒只有 1 个查询（这是最小值）。
+*JavaScript*
 
-对于 ThrottledSearchQueriesPercentage、minimum、maximum、average 和 total，全都具有相同的值：在一分钟内的搜索查询总数中，已限制搜索查询百分比。
+    appInsights.TrackEvent("Click", {
+        SearchServiceName: <service name>,
+        SearchId: <search id>,
+        ClickedDocId: <clicked document id>,
+        Rank: <clicked document position>
+    });
 
-## <a name="analyzing-your-data"></a>分析数据
-数据位于存储帐户中，我们建议采用最适合自身情况的方式浏览此数据。
+### <a name="3-analyze-with-power-bi-desktop"></a>3.使用 Power BI Desktop 进行分析
 
-作为起点，我们建议使用 [Power BI](https://powerbi.microsoft.com) 来浏览和可视化数据。 可轻松连接到 Azure 存储帐户，并快速开始分析数据。
+检测到应用并确认应用程序已正确连接到 Application Insights 后，可以对 Power BI Desktop 使用由 Azure 搜索创建的预定义模板。
+此模板包含图表和表格，可帮助你做出更明智的决策来提高搜索性能和相关性。
 
-#### <a name="power-bi-online"></a>Power BI Online
-[Power BI 内容包](https://app.powerbi.com/getdata/services/azure-search)：创建 Power BI 仪表板和一组 Power BI 报告以便自动显示数据，并提供关于搜索服务的可视洞察力。 请参阅[内容包帮助页](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-search/)。
+若要实例化 Power BI Desktop 模板，需要三部分有关 Application Insights 的信息。 此数据可以在“搜索流量分析”页中找到（当你选择要使用的资源时）
 
-![][4]
+![“搜索流量分析”边栏选项卡中的 Application Insights 数据][2]
 
-#### <a name="power-bi-desktop"></a>Power BI Desktop
-[Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop)：浏览数据并为数据创建你自己的可视化。 请参阅以下部分中的入门查询：
+Power BI Desktop 模板中包括的指标：
 
-1. 打开新的 PowerBI Desktop 报告。
+*    单击率 (CTR)：单击特定文档的用户占总搜索次数的比率。
+*    无单击的搜索：查询次数最多但未记录任何单击的词
+*    单击次数最多的文档：过去24 小时、7 天和 30 天内单击次数最多的文档，按 ID 显示。
+*    常用术语-文档对：导致同一文档被单击的词，按单击次数排序。
+*    时间 - 单击：自搜索查询以来按时间存储的单击次数
 
-2. 依次选择“获取数据”->“更多...”
+![用于从 Application Insights 进行读取的 Power BI 模板][3]
 
-    ![][5]
-
-3. 依次选择“Microsoft Azure Blob 存储”和“连接”。
-
-    ![][6]
-
-4. 输入存储帐户的名称和帐户密钥。
-
-5. 选择“insight-logs-operationlogs”和“insights-metrics-pt1m”，然后单击“编辑”。
-
-6. 当查询编辑器打开时，请确保已选择左侧的“insight-logs-operationlogss”。 现在，通过依次选择“查看”->“高级编辑器”，打开高级编辑器。
-
-    ![][7]
-    
-7. 保留前两行并将其余部分替换为以下查询：
-
-   ~~~~
-   > # "insights-logs-operationlogs" = Source{[Name="insights-logs-operationlogs"]}[Data],
-   > # "Sorted Rows" = Table.Sort(#"insights-logs-operationlogs",{{"Date modified", Order.Descending}}),
-   > # "Kept First Rows" = Table.FirstN(#"Sorted Rows",744),
-   > # "Removed Columns" = Table.RemoveColumns(#"Kept First Rows",{"Name", "Extension", "Date accessed", "Date modified", "Date created", "Attributes", "Folder Path"}),
-   > # "Parsed JSON" = Table.TransformColumns(#"Removed Columns",{},Json.Document),
-   > # "Expanded Content" = Table.ExpandRecordColumn(#"Parsed JSON", "Content", {"records"}, {"records"}),
-   > # "Expanded records" = Table.ExpandListColumn(#"Expanded Content", "records"),
-   > # "Expanded records1" = Table.ExpandRecordColumn(#"Expanded records", "records", {"time", "resourceId", "operationName", "operationVersion", "category", "resultType", "resultSignature", "durationMS", "properties"}, {"time", "resourceId", "operationName", "operationVersion", "category", "resultType", "resultSignature", "durationMS", "properties"}),
-   > # "Expanded properties" = Table.ExpandRecordColumn(#"Expanded records1", "properties", {"Description", "Query", "IndexName", "Documents"}, {"Description", "Query", "IndexName", "Documents"}),
-   > # "Renamed Columns" = Table.RenameColumns(#"Expanded properties",{{"time", "Datetime"}, {"resourceId", "ResourceId"}, {"operationName", "OperationName"}, {"operationVersion", "OperationVersion"}, {"category", "Category"}, {"resultType", "ResultType"}, {"resultSignature", "ResultSignature"}, {"durationMS", "Duration"}}),
-   > # "Added Custom2" = Table.AddColumn(#"Renamed Columns", "QueryParameters", each Uri.Parts("http://tmp" & [Query])),
-   > # "Expanded QueryParameters" = Table.ExpandRecordColumn(#"Added Custom2", "QueryParameters", {"Query"}, {"Query.1"}),
-   > # "Expanded Query.1" = Table.ExpandRecordColumn(#"Expanded QueryParameters", "Query.1", {"search", "$skip", "$top", "$count", "api-version", "searchMode", "$filter"}, {"search", "$skip", "$top", "$count", "api-version", "searchMode", "$filter"}),
-   > # "Removed Columns1" = Table.RemoveColumns(#"Expanded Query.1",{"OperationVersion"}),
-   > # "Changed Type" = Table.TransformColumnTypes(#"Removed Columns1",{{"Datetime", type datetimezone}, {"ResourceId", type text}, {"OperationName", type text}, {"Category", type text}, {"ResultType", type text}, {"ResultSignature", type text}, {"Duration", Int64.Type}, {"Description", type text}, {"Query", type text}, {"IndexName", type text}, {"Documents", Int64.Type}, {"search", type text}, {"$skip", Int64.Type}, {"$top", Int64.Type}, {"$count", type logical}, {"api-version", type text}, {"searchMode", type text}, {"$filter", type text}}),
-   > # "Inserted Date" = Table.AddColumn(#"Changed Type", "Date", each DateTime.Date([Datetime]), type date),
-   > # "Duplicated Column" = Table.DuplicateColumn(#"Inserted Date", "ResourceId", "Copy of ResourceId"),
-   > # "Split Column by Delimiter" = Table.SplitColumn(#"Duplicated Column","Copy of ResourceId",Splitter.SplitTextByEachDelimiter({"/"}, null, true),{"Copy of ResourceId.1", "Copy of ResourceId.2"}),
-   > # "Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Copy of ResourceId.1", type text}, {"Copy of ResourceId.2", type text}}),
-   > # "Removed Columns2" = Table.RemoveColumns(#"Changed Type1",{"Copy of ResourceId.1"}),
-   > # "Renamed Columns1" = Table.RenameColumns(#"Removed Columns2",{{"Copy of ResourceId.2", "ServiceName"}}),
-   > # "Lowercased Text" = Table.TransformColumns(#"Renamed Columns1",{{"ServiceName", Text.Lower}}),
-   > # "Added Custom" = Table.AddColumn(#"Lowercased Text", "DaysFromToday", each Duration.Days(DateTimeZone.UtcNow() - [Datetime])),
-   > # "Changed Type2" = Table.TransformColumnTypes(#"Added Custom",{{"DaysFromToday", Int64.Type}})
-   > in
-   >
-   > # "Changed Type2"
-   >
-   ~~~~
-
-8. 单击“完成”。
-
-9. 现在从左方最后的查询中选择“insights-metrics-pt1m”，然后再次打开“高级编辑器”。 保留前两行并将其余部分替换为以下查询：
-
-   ~~~~
-   > # "insights-metrics-pt1m1" = Source{[Name="insights-metrics-pt1m"]}[Data],
-   > # "Sorted Rows" = Table.Sort(#"insights-metrics-pt1m1",{{"Date modified", Order.Descending}}),
-   > # "Kept First Rows" = Table.FirstN(#"Sorted Rows",744),
-   > # "Removed Columns" = Table.RemoveColumns(#"Kept First Rows",{"Name", "Extension", "Date accessed", "Date modified", "Date created", "Attributes", "Folder Path"}),
-   > # "Parsed JSON" = Table.TransformColumns(#"Removed Columns",{},Json.Document),
-   > # "Expanded Content" = Table.ExpandRecordColumn(#"Parsed JSON", "Content", {"records"}, {"records"}),
-   > # "Expanded records" = Table.ExpandListColumn(#"Expanded Content", "records"),
-   > # "Expanded records1" = Table.ExpandRecordColumn(#"Expanded records", "records", {"resourceId", "metricName", "time", "average", "minimum", "maximum", "total", "count", "timeGrain"}, {"resourceId", "metricName", "time", "average", "minimum", "maximum", "total", "count", "timeGrain"}),
-   > # "Filtered Rows" = Table.SelectRows(#"Expanded records1", each ([metricName] = "Latency")),
-   > # "Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"timeGrain"}),
-   > # "Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"time", "Datetime"}, {"resourceId", "ResourceId"}, {"metricName", "MetricName"}, {"average", "Average"}, {"minimum", "Minimum"}, {"maximum", "Maximum"}, {"total", "Total"}, {"count", "Count"}}),
-   > # "Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"ResourceId", type text}, {"MetricName", type text}, {"Datetime", type datetimezone}, {"Average", type number}, {"Minimum", Int64.Type}, {"Maximum", Int64.Type}, {"Total", Int64.Type}, {"Count", Int64.Type}}),
-   > Rounding = Table.TransformColumns(#"Changed Type",{{"Average", each Number.Round(_, 2)}}),
-   >
-   > # "Changed Type1" = Table.TransformColumnTypes(Rounding,{{"Average", type number}}),
-   > # "Inserted Date" = Table.AddColumn(#"Changed Type1", "Date", each DateTime.Date([Datetime]), type date)
-   > in
-   >
-   > # "Inserted Date"
-   >
-   ~~~~
-
-10. 单击“完成”，然后选择“主页”选项卡中的“关闭并应用”。
-
-11. 过去 30 天的数据现随时可供使用。 继续并创建一些[可视化](https://powerbi.microsoft.com/en-us/documentation/powerbi-desktop-report-view/)。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关搜索语法和查询参数的详细信息。 有关详细信息，请参阅[搜索文档（Azure 搜索 REST API）](https://msdn.microsoft.com/library/azure/dn798927.aspx)。
+检测搜索应用程序，以获取提供深入见解的有关搜索服务的强大数据。
+
+可以在[此处](https://go.microsoft.com/fwlink/?linkid=842905)找到有关 Application Insights 的详细信息。 访问 Application Insights [定价页](https://azure.microsoft.com/pricing/details/application-insights/)可了解有关其不同服务层的详细信息。
 
 了解有关创建出色报告的详细信息。 有关详细信息，请参阅 [Power BI Desktop 入门](https://powerbi.microsoft.com/en-us/documentation/powerbi-desktop-getting-started/)
 
 <!--Image references-->
-
-[1]: ./media/search-traffic-analytics/SettingsBlade.png
-[2]: ./media/search-traffic-analytics/DiagnosticsBlade.png
-[3]: ./media/search-traffic-analytics/ResourceId.png
-[4]: ./media/search-traffic-analytics/Dashboard.png
-[5]: ./media/search-traffic-analytics/GetData.png
-[6]: ./media/search-traffic-analytics/BlobStorage.png
-[7]: ./media/search-traffic-analytics/QueryEditor.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+[1]: ./media/search-traffic-analytics/AzureSearch-TrafficAnalytics.png
+[2]: ./media/search-traffic-analytics/AzureSearch-AppInsightsData.png
+[3]: ./media/search-traffic-analytics/AzureSearch-PBITemplate.png
 
