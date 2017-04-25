@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/25/2017
+ms.date: 04/17/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
@@ -54,7 +54,7 @@ ms.lasthandoff: 02/03/2017
     ```    
    * 运行以下命令查看此帐户的所有订阅。
     ```PowerShell
-    Get-AzureRmSubscription 
+    Get-AzureRmSubscription    
     ```
    * 运行以下命令选择要使用的订阅。 此订阅应与 Azure 门户中使用的订阅相同。
     ```PowerShell
