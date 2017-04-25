@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 04/24/2017
 ms.author: markvi;andkjell
 translationtype: Human Translation
 ms.sourcegitcommit: 9bf2e87353901a043f01ff7d634e1b174cd6a52a
 ms.openlocfilehash: 3623537c80bd0e4190d1e51f289a4b194c13878d
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -90,9 +91,4 @@ metaverse 是相邻连接器空间中的所有已联接标识的合并视图。
 
 <!--Image references-->
 [1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

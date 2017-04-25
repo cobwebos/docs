@@ -107,7 +107,7 @@ Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-
     ![设置源](./media/site-recovery-vmware-to-azure/set-source1.png)
 3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中。
 4. 下载站点恢复统一安装程序安装文件。
-5. 下载保管库注册密钥。 运行统一安装程序时需要用到此密钥。 生成的密钥有效期为&5; 天。
+5. 下载保管库注册密钥。 运行统一安装程序时需要用到此密钥。 生成的密钥有效期为 5 天。
 
    ![设置源](./media/site-recovery-vmware-to-azure/set-source2.png)
 6. 在配置服务器 VM 上，确保系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步，然后运行统一安装程序安装配置服务器、进程服务器和主目标服务器。
