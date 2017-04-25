@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: 60e8bf883a09668100df8fb51572f9ce0856ccb3
 ms.openlocfilehash: 9eb32ac7936ad54d487dc15d3ef320ec279ce0bc
+ms.lasthandoff: 02/10/2017
 
 ---
 
@@ -94,9 +95,4 @@ ms.openlocfilehash: 9eb32ac7936ad54d487dc15d3ef320ec279ce0bc
 8. 应用更新后，单击“关闭”。
 
 就这么简单！ 现在，仅当声明来自公司 Intranet 外部时，Office 365 联合用户才需要使用 MFA。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

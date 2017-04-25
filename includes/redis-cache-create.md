@@ -34,8 +34,3 @@
 
 ![创建的缓存](media/redis-cache-create/redis-cache-cache-created.png)
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

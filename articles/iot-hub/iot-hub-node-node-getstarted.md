@@ -107,6 +107,7 @@ ms.lasthandoff: 03/17/2017
 > 
 > 
 
+<a id="D2C_node"></a>
 ## <a name="receive-device-to-cloud-messages"></a>接收设备到云的消息
 在本部分中，将创建一个 Node.js 控制台应用程序，用于读取来自 IoT 中心的设备到云消息。 IoT 中心公开与[事件中心][lnk-event-hubs-overview]兼容的终结点，以便用户可读取设备到云的消息。 为了简单起见，本教程创建的基本读取器不适用于高吞吐量部署。 [Process device-to-cloud messages][lnk-process-d2c-tutorial]（处理设备到云的消息）教程介绍了如何大规模处理设备到云的消息。 [事件中心入门][lnk-eventhubs-tutorial]教程更详细介绍了如何处理来自事件中心的消息，此教程也适用于与 IoT 中心事件中心兼容的终结点。
 
