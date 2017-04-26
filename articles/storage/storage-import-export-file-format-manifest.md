@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: d56754c9c205ddc4933b29e8f4891a56f42496e9
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: c1857eb94fba13c30e7f07669616f5d0ab9953f4
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -123,7 +123,7 @@ block-list ::=
 |`PageRange/@Offset`|属性，整数|指定传输文件中的偏移量，以及指定的页面范围的起始 Blob。 此值必须是 512 的倍数。|  
 |`PageRange/@Length`|属性，整数|指定页面范围的长度。 此值必须是 512 的倍数，并且不超过 4 MB。|  
 |`PageRange/@Hash`|属性，字符串|为页面范围指定 Base16 编码 MD5 哈希值。|  
-|`BlockList`|嵌套的 XML 元素|对于包含命名块的块 Blob 而言是必需的。<br /><br /> 对于导入操作而言，块列表指定要导入到 Azure 存储中的一组块。 对于导出操作而言，块列表指定每个块在导出磁盘上的文件中的存储位置。 每个块由该文件中的偏移量和块长度描述；每个块进一步由块 ID 属性命名，包含该块的 MD5 哈希。 最多可以使用 50,000 个块来描述一个 Blob。  所有块都必须按偏移量排序，它们应共同涵盖文件的完整范围，*也就是说*，块之间不能有间隙。 如果 Blob 未超过 64 MB，则每个块的块 ID 必须全有或全无。 块 ID 必须是 Base64 编码字符串。 有关块 ID 的其他要求，请参阅[放置块](/rest/api/storageservices/fileservices/put-block)。|  
+|`BlockList`|嵌套的 XML 元素|对于包含命名块的块 Blob 而言是必需的。<br /><br /> 对于导入操作而言，块列表指定要导入到 Azure 存储中的一组块。 对于导出操作而言，块列表指定每个块在导出磁盘上的文件中的存储位置。 每个块由该文件中的偏移量和块长度描述；每个块进一步由块 ID 属性命名，包含该块的 MD5 哈希。 最多可以使用 50,000 个块来描述一个 Blob。  所有块都必须按偏移量排序，它们应共同涵盖文件的完整范围，*也就是说*，块之间不能有间隙。 如果 Blob 未超过 64 MB，则每个块的块 ID 必须全有或全无。 块 ID 必须是 Base64 编码字符串。 有关块 ID 的其他要求，请参阅[放置块](/rest/api/storageservices/put-block)。|  
 |`Block`|XML 元素|表示块。|  
 |`Block/@Offset`|属性，整数|指定特定块的起始偏移位置。|  
 |`Block/@Length`|属性，整数|指定块中的字节数；此值不得超过 4MB。|  

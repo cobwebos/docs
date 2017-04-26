@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 1876b78186da3aa6c0ae9dc7de3b7ab7e46888bb
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 0f80ac93e3ff1ee95477e4fa5dbe21d61ddf8ead
+ms.lasthandoff: 04/25/2017
 
 ---
 
@@ -211,7 +211,7 @@ Azure 自动化 DSC 可用于管理各种计算机：
 | AzureClassicAutomationTutorial Runbook | 一个示例图形 Runbook，它使用经典运行方式帐户（证书）获取订阅中使用经典部署模型中创建的所有 VM，然后写入 VM 名称和状态。 |
 | AzureClassicAutomationTutorial 脚本 Runbook | 一个示例 PowerShell Runbook，它使用经典运行方式帐户（证书）获取订阅中的所有经典 VM，然后写入 VM 名称和状态。 |
 | AzureClassicRunAsCertificate | 自动创建的证书资产，用于向 Azure 进行身份验证，以便从 Runbook 管理 Azure 经典资源。 该证书的有效期为一年。 |
-| AzureClassicRunAsConnection | 自动创建的连接资产，用于向 Azure 进行身份验证，以便从 Runbook 管理 Azure 经典资源。 |向 Azure 进行身份验证，以便通过 Runbook 管理 Azure 经典资源。 |
+| AzureClassicRunAsConnection | 自动创建的连接资产，用于向 Azure 进行身份验证，以便从 Runbook 管理 Azure 经典资源。|
 
 ## <a name="next-steps"></a>后续步骤
 * 可以参阅[测试 Azure 自动化运行方式帐户身份验证](automation-verify-runas-authentication.md)一文，确认新的自动化帐户能否针对 Azure 资源进行身份验证。

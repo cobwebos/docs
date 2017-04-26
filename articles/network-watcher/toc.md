@@ -7,6 +7,7 @@
 ## [安全组视图](network-watcher-security-group-view-overview.md)
 ## [下一跃点](network-watcher-next-hop-overview.md)
 ## [VPN 连接故障排除](network-watcher-troubleshoot-overview.md)
+## [服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-watcher-limits)
 # 入门
 ## [配置网络观察程序](network-watcher-create.md)
 ## 管理数据包捕获

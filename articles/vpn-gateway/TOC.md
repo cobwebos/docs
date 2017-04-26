@@ -14,6 +14,7 @@
 ## 配置站点到站点连接
 ### [Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure 门户（经典）](vpn-gateway-howto-site-to-site-classic-portal.md)
 ### [经典门户（经典）](vpn-gateway-site-to-site-create.md)
 ## 配置点到站点连接
@@ -38,7 +39,6 @@
 ## [配置高可用性主动-主动连接](vpn-gateway-activeactive-rm-powershell.md)
 ## [使用 PowerShell 修改本地网络网关设置](vpn-gateway-modify-local-network-gateway.md)
 ## [验证 VPN 网关连接](vpn-gateway-verify-connection-resource-manager.md)
-## [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
 ## [重置 VPN 网关](vpn-gateway-resetgw-classic.md)
 ## 删除 VPN 网关
 ### [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -46,12 +46,15 @@
 ### [PowerShell（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [创建用于 P2S 连接的自签名根证书](vpn-gateway-certificates-point-to-site.md)
 ## [配置 VPN 网关（经典）](vpn-gateway-configure-vpn-gateway-mp.md)
+## 故障排除
+### [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
 
 # 引用
 ## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.6.0/azurerm.network)
 ## [PowerShell（经典）](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
 ## [REST](https://msdn.microsoft.com/library/mt163859)
 ## [REST（经典）](https://msdn.microsoft.com/library/jj154113)
+## [Azure CLI](https://docs.microsoft.com/cli/azure/network)
 
 # 相关内容
 ## [虚拟网络](/azure/virtual-network/)

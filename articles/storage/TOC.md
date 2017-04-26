@@ -67,7 +67,7 @@
 ### [表设计指南](storage-table-design-guide.md)
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 ## 使用文件
-### [概述](/rest/api/storageservices/fileservices/File-Service-Concepts)
+### [概述](/rest/api/storageservices/File-Service-Concepts)
 ### [对 Azure 文件进行故障排除](storage-troubleshoot-file-connection-problems.md)
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 ## 使用磁盘
@@ -180,7 +180,7 @@
 ## [iOS](http://azure.github.io/azure-storage-ios/)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST
-### [Blob、队列、表和文件](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
+### [Blob、队列、表和文件](/rest/api/storageservices/azure-storage-services-rest-api-reference)
 ### [资源提供程序](/rest/api/storagerp)
 ### [导入/导出](/rest/api/storageimportexport)
 
