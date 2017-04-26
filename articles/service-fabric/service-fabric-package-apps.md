@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 3/24/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 45bf19b4c8406cfc09624bef2b9c0f1c443d8fd6
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: bc87185c56b2dc45f041136474b9fb1bf6afebc3
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -64,7 +64,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 
-打包完成后，该包的位置将显示在“**输出**”窗口中。 请注意，当你在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
+打包完成后，该包的位置将显示在“输出”窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
 
 ### <a name="build-a-package-by-command-line"></a>通过命令行生成一个包
 还可以使用 `msbuild.exe` 以编程方式打包你的应用程序。 这是 Visual Studio 实际运行的操作，因此输出是相同的。
@@ -75,7 +75,7 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 
 ## <a name="test-the-package"></a>测试包
 可以使用 [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) 命令，通过 PowerShell 在本地验证包结构。
-此命令将检查是否存在清单分析问题，并验证所有引用。 此命令只验证包中目录与文件结构的正确性。
+此命令会检查是否存在清单分析问题，并验证所有引用。 此命令只验证包中目录与文件结构的正确性。
 它不验证任何代码或数据包内容，而只检查所有必要的文件是否存在。
 
 ```
@@ -169,8 +169,9 @@ PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApp
 ```
 
 在内部，Service Fabric 将计算应用程序包的校验和以进行验证。 使用压缩时，将对每个包的压缩版本计算校验和。
-如果复制了应用程序包的未压缩版本，并且想对此包使用压缩，则必须更改应用程序清单版本以避免校验和不匹配。
-同样，如果上传了压缩版本的包，则必须更新应用程序清单版本才能使用未压缩的包。
+如果复制了应用程序包的未压缩版本，并且想对此包使用压缩，则必须更改 `code`、`config` 和 `data` 包的版本以避免校验和不匹配。 如果包未发生更改，则可以使用[差异预配](service-fabric-application-upgrade-advanced.md)而不是更改版本。 使用此选项，不要包含未更改的包，只需从服务清单中引用它即可。
+
+同样，如果上传了压缩版本的包并需要使用未压缩的包，则必须更新版本以避免校验和不匹配。
 
 现在已将包进行了正确打包、验证和压缩（如需要），因此可以将其[部署](service-fabric-deploy-remove-applications.md)到一个或多个 Service Fabric 群集。
 

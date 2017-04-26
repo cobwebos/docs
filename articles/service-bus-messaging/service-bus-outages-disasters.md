@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2017
+ms.date: 04/12/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 994a379129bffd7457912bc349f240a970aed253
-ms.openlocfilehash: 6424d4dabe20514c0e41c6d755d644494afea302
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: bc84dbe5c26a834b2cff5f71ba5f541e94ba0b38
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -87,20 +88,15 @@ ms.openlocfilehash: 6424d4dabe20514c0e41c6d755d644494afea302
 若要了解有关灾难恢复的详细信息，请参阅这些文章：
 
 * [Azure SQL 数据库业务连续性][Azure SQL Database Business Continuity]
-* [Azure 复原技术指南][Azure resiliency technical guidance]
+* [设计适用于 Azure 的弹性应用程序][Azure resiliency technical guidance]
 
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md
 [Asynchronous messaging patterns and high availability]: service-bus-async-messaging.md#failure-of-service-bus-within-an-azure-datacenter
 [Geo-replication with Service Bus Relayed Messages]: http://code.msdn.microsoft.com/Geo-replication-with-16dbfecd
-[BrokeredMessage.MessageId]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId
-[BrokeredMessage.Label]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label
+[BrokeredMessage.MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId
+[BrokeredMessage.Label]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label
 [Geo-replication with Service Bus Brokered Messages]: http://code.msdn.microsoft.com/Geo-replication-with-f5688664
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
-[Azure resiliency technical guidance]: ../resiliency/resiliency-technical-guidance.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
+[Azure resiliency technical guidance]: /azure/architecture/resiliency
 

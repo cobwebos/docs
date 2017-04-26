@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 884e519f-23bb-4b73-a718-00658629646a
 ms.service: sql-database
-ms.custom: overview
+ms.custom: resources
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 03/06/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 61eac09668b14a98a42b1907a54577d80eb933a6
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: a2177926e76b25ceb5ecb4fd9471f961d3fa989f
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/29/2017
 Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源：**资源调控**和**强制限制**。 本主题介绍了资源管理的这两个主要方面。
 
 ## <a name="resource-governance"></a>资源调控
-基本、标准和高级服务层的设计目标之一是为了让 Azure SQL 数据库的行为与数据库运行在其自己的计算机上相同，独立于其他数据库。 资源调控模拟了此行为。 如果聚合资源利用率达到分配给数据库的最大可用 CPU、内存、日志 I/O 和数据 I/O 资源数，资源调控会将执行中的查询排队，并在资源释放时将资源分配给排队的查询。
+基本、标准、高级和高级 RS 服务层的设计目标之一是为了让 Azure SQL 数据库的行为与数据库运行在其自己的计算机上相同，独立于其他数据库。 资源调控模拟了此行为。 如果聚合资源利用率达到分配给数据库的最大可用 CPU、内存、日志 I/O 和数据 I/O 资源数，资源调控会将执行中的查询排队，并在资源释放时将资源分配给排队的查询。
 
 由于在专用计算机上，利用所有可用资源将导致当前执行的查询的执行时间较长，这可能会导致客户端上的命令超时。 达到并发请求数限制后，如果尝试执行新查询，具有积极重试逻辑的应用程序以及对数据库执行查询的应用程序遇到错误消息的频率会很高。
 
@@ -47,7 +47,7 @@ CPU、内存、日志 I/O 和数据 I/O 以外的资源在达到限制时，将�
 单一数据库和弹性池都有服务层和性能级别。
 
 ### <a name="single-databases"></a>单一数据库
-对于单一数据库，数据库服务层和性能级别定义了数据库限制。 下表描述了基本、标准和高级数据库在不同性能级别上的特征。
+对于单一数据库，数据库服务层和性能级别定义了数据库限制。 下表描述了基本、标准、高级和高级 RS 数据库在不同性能级别上的特征。
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
@@ -56,7 +56,7 @@ CPU、内存、日志 I/O 和数据 I/O 以外的资源在达到限制时，将�
 >
 
 ### <a name="elastic-pools"></a>弹性池
-[弹性池](sql-database-elastic-pool.md)共享池中数据库中的资源。 下表描述了基本、标准和高级弹性池的特征。
+[弹性池](sql-database-elastic-pool.md)共享池中数据库中的资源。 下表描述了“基本”、“标准”、“高级”和“高级 RS”弹性池的特征。
 
 [!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
@@ -66,8 +66,8 @@ CPU、内存、日志 I/O 和数据 I/O 以外的资源在达到限制时，将�
 | 区域 | 限制 | 说明 |
 | --- | --- | --- |
 | 使用按订阅自动导出的数据库 |10 |自动导出可创建自定义计划来备份 SQL 数据库。 此功能的预览将于 2017 年 3 月 1 日结束。  |
-| 每个服务器的数据库数 |最多 5000 个 |V12 服务器上每个服务器最多允许使用 5000 个数据库。 |
-| 每个服务器的 DTU |45000 |V12 服务器上每个服务器有 45000 个 DTU 可用于预配独立数据库和弹性池。 每台服务器允许的独立数据库和池的总数仅受服务器 DTU 数限制。  
+| 每个服务器的数据库数 |最多 5000 个 |每个服务器最多允许使用 5000 个数据库。 |
+| 每个服务器的 DTU |45000 |允许每个服务器有 45000 个 DTU 可用于预配独立数据库和弹性池。 每台服务器允许的独立数据库和池的总数仅受服务器 DTU 数限制。  
 
 > [!IMPORTANT]
 > Azure SQL 数据库自动导出现在处于预览状态，将在 2017 年 3 月 1 日停用。 从 2016 年 12 月 1 日起，你将不再能够在任何 SQL 数据库上配置自动导出。 所有现有自动导出作业将继续正常运行，直到 2017 年 3 月 1 日。 2016 年 12 月 1 日之后，可以使用[长期备份保留](sql-database-long-term-retention.md)或 [Azure 自动化](../automation/automation-intro.md)，根据所选计划定期使用 PowerShell 存档 SQL 数据库。 对于示例脚本，可以从 [Github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) 下载示例脚本。

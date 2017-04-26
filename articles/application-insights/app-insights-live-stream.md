@@ -11,22 +11,22 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 04/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fc6acf7b24bb017e4a93df1c15ed493a4442d6b5
-ms.openlocfilehash: 917261e32845b53f2f2f3d12f60ca5fa87d441c7
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 11b9f52801e9a62b9c52f0f622fdcae761cc122a
+ms.lasthandoff: 04/19/2017
 
 
 ---
 
 # <a name="live-metrics-stream-instant-metrics-for-close-monitoring"></a>实时指标流：适用于关闭监视的实时指标
-实时指标流说明 [Application Insights](app-insights-overview.md) 指标正处于此非常时刻，接近实时的延迟为&1; 秒。 发布新版本并想要确保一切按预期运行，或者要实时调查某个事件时，此实时监视非常有用。
+实时指标流说明 [Application Insights](app-insights-overview.md) 指标正处于此非常时刻，接近实时的延迟为 1 秒。 发布新版本并想要确保一切按预期运行，或者要实时调查某个事件时，此实时监视非常有用。
 
 不同于[指标资源管理器](app-insights-metrics-explorer.md)，实时指标流显示一组固定指标。 数据只会在图表上显示时才会得到保留，不显示时将被丢弃。
 
-实时指标流数据是免费的：不会计入帐单中。
+实时指标流数据是免费的：不会计入帐单中。 适用于 ASP.NET 和 Java 应用程序。
 
 ![实时指标流视频](./media/app-insights-live-stream/youtube.png)[实时指标流视频](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 02/27/2017
 
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Application Insights 监视使用情况](app-insights-overview-usage.md)
+* [使用 Application Insights 监视使用情况](app-insights-web-track-usage.md)
 * [使用诊断搜索](app-insights-diagnostic-search.md)
 
 

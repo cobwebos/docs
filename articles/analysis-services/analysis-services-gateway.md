@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
-ms.openlocfilehash: 90584f60864589744888817ea71d0eb0d4d170ff
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: c7127f4bd89bf00a4ef72e54dc7694a1766e5762
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -129,6 +129,25 @@ ms.lasthandoff: 11/17/2016
 如果在安装和配置网关时遇到问题，请参阅 [Power BI 网关疑难解答](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem-tshoot/)。 如果认为防火墙有问题，请参阅“防火墙或代理”部分。
 
 如果认为遇到的是网关代理问题，请参阅 [配置 Power BI 网关的代理设置](https://powerbi.microsoft.com/documentation/powerbi-gateway-proxy.md)。
+
+### <a name="telemetry"></a>遥测
+遥测可用于监视和排错。 
+
+**启用遥测**
+
+1.    查看计算机上的本地数据网关客户端目录。 通常为 %systemdrive%\Program Files\On-premises data gateway。 或者可以打开服务控制台，然后查看可执行文件（本地数据网关服务的属性之一）的路径。
+2.    在客户端目录的 Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config 文件中， 将 SendTelemetry 设置更改为 true。
+        
+    ```
+        <setting name="SendTelemetry" serializeAs="String">
+                    <value>true</value>
+        </setting>
+    ```
+
+3.    保存更改并重启 Windows 服务：本地数据网关服务。
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 * [管理 Analysis Services](analysis-services-manage.md)

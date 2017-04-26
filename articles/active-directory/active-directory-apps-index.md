@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 6017fa3fe2134452bf24d2fc54c8f82b08862dbb
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 564dd782834898709f89f85e10627d07b17138ce
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/18/2017
 | 联合单一登录 |[排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
 | 基于密码的单一登录 |[Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md) |
 | 应用程序代理 |[应用代理故障排除指南](active-directory-application-proxy-troubleshoot.md) |
-| 本地 AD 与 Azure AD 之间的单一登录 |[排查密码同步问题](connect/active-directory-aadconnectsync-implement-password-synchronization.md#troubleshooting-password-synchronization)<br /><br />[排查密码写回问题](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| 本地 AD 与 Azure AD 之间的单一登录 |[排查密码同步问题](connect/active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)<br /><br />[排查密码写回问题](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | 动态组成员身份 |[动态组成员身份疑难解答](active-directory-accessmanagement-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>单一登录 (SSO)
@@ -109,7 +109,9 @@ Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure
 |:---:| --- |
 | 跨 Azure AD、Office365 和 Intune 提供的条件性访问功能简介 |[使用条件性访问管理风险](active-directory-conditional-access.md) |
 | 如何为以下类型的资源启用条件性访问 |[SaaS 应用的条件性访问](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Office 365 服务的条件性访问](active-directory-conditional-access-device-policies.md)<br /><br />[本地应用程序的条件性访问](active-directory-conditional-access.md)<br /><br />[通过 Azure AD 应用代理发布的本地应用程序的条件性访问](active-directory-application-proxy-conditional-access.md) |
-| 如何向 Azure Active Directory 注册设备以启用基于设备的条件性访问策略 |[Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)<br /><br />[如何为加入域的 Windows 设备启用自动设备注册](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 设备的步骤](active-directory-device-registration.md#configure-automatic-device-registration-for-windows-7-and-windows-81-domain-joined-devices)<br />— [Windows 7 设备的步骤](active-directory-device-registration.md#configure-automatic-device-registration-for-windows-7-and-windows-81-domain-joined-devices) |
+
+| 如何向 Azure Active Directory 注册设备以启用基于设备的条件性访问策略 |[Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)<br /><br />[如何为加入域的 Windows 设备启用自动设备注册](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 设备的步骤](active-directory-conditional-access-automatic-device-registration-setup.md)<br />— [Windows 7 设备的步骤](active-directory-conditional-access-automatic-device-registration-setup.md) |
+
 | 如何使用 Microsoft Authenticator 应用进行双重验证 |[Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
 
 条件性访问是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。

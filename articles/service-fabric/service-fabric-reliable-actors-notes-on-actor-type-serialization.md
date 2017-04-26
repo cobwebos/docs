@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: f08fc1df10506dead5d049fb2c6cdc29c8f89d90
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: c0eda3f6648c085a7328c6271ed36eafde5ff142
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/17/2016
 所有方法的参数、执行组件接口中每个方法返回的任务的结果类型和执行组件的状态管理器中存储的对象都必须是[数据协定可序列化](https://msdn.microsoft.com/library/ms731923.aspx)。 这同样适用于[执行组件事件接口](service-fabric-reliable-actors-events.md)中定义的方法的参数。 （执行组件事件接口方法始终返回 void。）
 
 ## <a name="custom-data-types"></a>自定义数据类型
-在此示例中，以下执行组件接口定义了一个返回自定义数据类型（名为 `VoicemailBox`）的方法。
+在此示例中，以下执行组件接口定义了一个返回自定义数据类型（名为 `VoicemailBox`）的方法：
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -82,7 +82,7 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 * 在执行组件实例和调用方之间传输该对象。
 * 该对象保存在状态管理器中，即持久保存在磁盘中，并且已复制到其他节点。
 
-Reliable Actor 框架使用 DataContract 序列化。 因此，自定义数据对象及其成员必须分别使用 **DataContract** 和 **DataMember** 属性进行批注
+Reliable Actor 框架使用 DataContract 序列化。 因此，自定义数据对象及其成员必须分别使用 **DataContract** 和 **DataMember** 属性进行批注。
 
 ```csharp
 [DataContract]

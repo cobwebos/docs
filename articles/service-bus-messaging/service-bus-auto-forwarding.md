@@ -1,6 +1,6 @@
 ---
-title: "自动转发服务总线消息传送实体 | Microsoft 文档"
-description: "如何将队列或订阅链接到另一个队列或主题。"
+title: "自动转发 Azure 服务总线消息传送实体 | Microsoft Docs"
+description: "如何将服务总线队列或订阅链接到另一个队列或主题。"
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2017
+ms.date: 04/12/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 994a379129bffd7457912bc349f240a970aed253
-ms.openlocfilehash: cbbd416a065b3284e85957cc024955d11524d3da
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: d58e9b9dc4771cc69265d02b62cf8fe3c9b7d72e
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>使用自动转发链接服务总线实体
-通过自动转发功能可将队列或订阅连接到作为相同命名空间组成部分的另一个队列或主题。 启用自动转发时，服务总线会自动删除放置在第一个队列或订阅（源）中的消息，并将其放入第二个队列或主题（目标）中。 请注意，仍可将消息直接发送到目标实体。 此外，无法将子队列（例如死信队列）连接到另一个队列或主题。
+
+通过服务总线自动转发功能可将队列或订阅链接到作为相同命名空间组成部分的另一个队列或主题。 启用自动转发时，服务总线会自动删除放置在第一个队列或订阅（源）中的消息，并将其放入第二个队列或主题（目标）中。 请注意，仍可将消息直接发送到目标实体。 此外，无法将子队列（例如死信队列）连接到另一个队列或主题。
 
 ## <a name="using-auto-forwarding"></a>使用自动转发
 可通过在源的 [QueueDescription][QueueDescription] 或 [SubscriptionDescription][SubscriptionDescription] 对象上设置 [QueueDescription.ForwardTo][QueueDescription.ForwardTo] 或 [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] 属性来启用自动转发，如以下示例所示。
@@ -45,33 +47,33 @@ namespaceManager.CreateSubscription(srcSubscription));
 如果 Alice 处于度假期间，则其个人队列（而不是 ERP）会填满。 此方案中，由于销售代表未接收到任何消息，因此没有任何 ERP 主题会达到配额。
 
 ## <a name="auto-forwarding-considerations"></a>自动转发注意事项
-如果目标实体累积了多条消息并超出配额，或禁用了目标实体，则源实体会将消息添加到其[死信队列](service-bus-dead-letter-queues.md)，直到目标中存在可用空间（或重新启用了该实体）。 这些消息将继续位于死信队列中，因此你必须从死信队列显式接收和处理它们。
+
+如果目标实体累积了过多消息并超出配额，或禁用了目标实体，则源实体会将消息添加到其[死信队列](service-bus-dead-letter-queues.md)，直到目标中存在可用空间（或重新启用了该实体）。 这些消息将继续位于死信队列中，因此你必须从死信队列显式接收和处理它们。
 
 将各个主题连接到一起以获取具有多个订阅的复合主题时，推荐第一级别主题上具有中等数量的订阅，第二级别主题上具有多个订阅。 例如，一个第一级别主题包含 20 个订阅，其中每个订阅连接到一个包含 200 个订阅的第二级别主题，则这个第一级别的主题允许的吞吐量高于另一个包含 200 个订阅（其中每个订阅连接到一个包含 20 个订阅的第二级别主题）的第一级别主题。
 
 服务总线对于每条转发的消息收取一个操作的费用。 例如，将一条消息发送到一个包含 20 个订阅（每个订阅配置为将消息自动转发到另一队列或主题）的主题，如果所有第一级别的订阅都接收到此消息的副本，则会作为 21 次操作进行计费。
 
-若要创建连接到另一个队列或主题的订阅，则订阅创建者必须具有源和目标实体的**管理**权限。 将消息发送到源主题仅需要源主题的**发送**权限。
+若要创建链接到另一个队列或主题的订阅，则订阅创建者必须具有源和目标实体的**管理**权限。 将消息发送到源主题仅需要源主题的**发送**权限。
 
 ## <a name="next-steps"></a>后续步骤
+
 有关自动转发的详细信息，请参阅以下参考主题：
 
 * [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo]
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
-若要了解有关服务总线性能提升的详细信息，请参阅[分区消息传送实体][Partitioned messaging entities]。
+若要深入了解服务总线性能提升，请参阅 
 
-[QueueDescription.ForwardTo]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
-[SubscriptionDescription.ForwardTo]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
-[QueueDescription]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription
-[SubscriptionDescription]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription
+* [使用服务总线消息传送改进性能的最佳做法](service-bus-performance-improvements.md)
+* [分区消息传送实体][Partitioned messaging entities]。
+
+[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
+[SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
+[QueueDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
+[SubscriptionDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
 [0]: ./media/service-bus-auto-forwarding/IC628631.gif
 [1]: ./media/service-bus-auto-forwarding/IC628632.gif
 [Partitioned messaging entities]: service-bus-partitioning.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

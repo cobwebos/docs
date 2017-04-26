@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7dc5143086e3a73e0536408a41468b8cdd40bd12
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: a740813b013e75a098836290ad8e9ebe76d33b37
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/24/2017
 | 容器注册表 |是 |[容器注册表 REST](/rest/api/containerregistry) |[容器注册表资源](/azure/templates/microsoft.containerregistry/registries) |
 | 容器服务 |是 |[容器服务 REST](/rest/api/compute/containerservices) |[容器服务资源](/azure/templates/microsoft.containerservice/containerservices) |
 | 动态生命周期服务 |是 | | |
-| 规模集 |是 |[规模集 REST](/rest/api/compute/virtualmachinescalesets) |[规模集资源](/azure/templates/microsoft.compute/virtualmachinescalesets) |
+| 规模集 |是 |[规模集 REST](/rest/api/virtualmachinescalesets/) |[规模集资源](/azure/templates/microsoft.compute/virtualmachinescalesets) |
 | Service Fabric |是 |[Service Fabric Rest](/rest/api/servicefabric) | [Service Fabric 资源](/azure/templates/microsoft.servicefabric/clusters) |
 | 虚拟机 |是 |[VM REST](/rest/api/compute/virtualmachines) |[VM 资源](/azure/templates/microsoft.compute/virtualmachines) |
 | 虚拟机（经典） |受限制 |- |- |
@@ -132,7 +132,7 @@ Azure Active Directory 可以使用 Resource Manager 为订阅启用基于角色
 | --- | --- | --- | --- |
 | 监视 |是 |[监视器 REST](/rest/api/monitor) |[Insights 资源](/azure/templates/microsoft.insights/alertrules) |
 | 必应地图 |是 | | |
-| DevTest Labs |是 | [开发测试 REST](/rest/api/dtl) |[开发测试实验室资源](/azure/templates/microsoft.devtestlab/labs) |
+| DevTest Labs |是 | [开发测试实验室 REST](/rest/api/dtl) |[开发测试实验室资源](/azure/templates/microsoft.devtestlab/labs) |
 | Visual Studio 帐户 |是 | |[Visual Studio 架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-02-26/microsoft.visualstudio.json) |
 
 ## <a name="management-and-security"></a>管理和安全性
@@ -157,7 +157,7 @@ Azure Active Directory 可以使用 Resource Manager 为订阅启用基于角色
 ## <a name="resource-providers-and-types"></a>资源提供程序和类型
 部署资源时，经常需要检索有关资源提供程序和类型的信息。 可以通过 REST API、Azure PowerShell 或 Azure CLI 检索此信息。
 
-若要使用资源提供程序，该资源提供程序必须已注册到你的帐户。 默认情况下，会自动注册多个资源提供程序；但是，你可能需要手动注册某些资源提供程序。 下面的示例演示如何获取资源提供程序的注册状态，并注册资源提供程序（如果需要）。
+若要使用资源提供程序，该资源提供程序必须已注册到你的帐户。 默认情况下，会自动注册多个资源提供程序；但是，你可能需要手动注册某些资源提供程序。 本节中的示例演示如何获取资源提供程序的注册状态，并注册资源提供程序。
 
 ### <a name="portal"></a>门户
 从订阅边栏选项卡选择“资源提供程序”即可轻松查看支持的资源提供程序列表。 若要向资源提供程序注册订阅，请选择“注册”链接。
@@ -255,7 +255,7 @@ az provider show --namespace Microsoft.Web --query "resourceTypes[?resourceType=
 以下示例演示如何获取特定资源类型的可用 API 版本。
 
 ```powershell
-    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
+((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
 输出类似于：

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: dca6f5189693fc98cec4f92eac81b6985e691889
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: a07051ea0be58cafcf1a7d7ae800b44e7abd05cd
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="learn-more-about-password-management"></a>了解有关密码管理的详细信息
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-my-password)。
 >
 >
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 03/28/2017
 6. 一旦消息到达服务总线，密码重置终结点便自动唤醒并看到有重置请求挂起。
 7. 然后，该服务使用云定位点属性查找相关用户。  要使查找成功，该用户对象必须存在于 AD 连接器空间中、必须链接到相应的 MV 对象，而且必须链接到相应的 AAD 连接器对象。 最后，为使同步查找此用户帐户，AD 连接器对象到 MV 的链接必须具有同步规则 `Microsoft.InfromADUserAccountEnabled.xxx`。  如此要求的原因是：从云中进行调用时，同步引擎使用 cloudAnchor 属性查找 AAD 连接器空间对象，然后遵循该链接依次回到 MV 对象和 AD 对象。 由于同一用户可能有多个 AD 对象（多林），因此，同步引擎将依赖 `Microsoft.InfromADUserAccountEnabled.xxx` 链接选取正确的对象。 请注意，由于此逻辑，必须将 Azure AD Connect 连接到主域控制器才可使用密码写回功能。  若需执行此操作，可右键单击 Active Directory 同步连接器的“属性”，然后选择“配置目录分区”将 Azure AD Connect 配置为使用主域控制器仿真器。 在此处查找“域控制器连接设置”部分，并勾选标题为“仅使用首选的域控制器”的框。 请注意：如果首选的 DC 不是 PDC 仿真器，Azure AD Connect 仍将访问 PDC 进行密码写回。
 8. 一旦找到用户帐户，我们将尝试直接在相应的 AD 林中重置密码。
-9. 如果密码设置操作成功，我们将告诉用户其密码已被修改，他们可以继续操作。
+9. 如果密码设置操作成功，我们将告诉用户其密码已被修改，他们可以继续操作。 使用密码同步将用户密码同步到 Azure AD 时，可能本地密码策略比云密码策略要弱。 在这种情况下，我们仍然强制执行本地策略，并允许密码哈希同步对该密码的哈希进行同步。 这样无论使用密码同步或联合身份验证来提供单一登录，都可以确保本地策略在云中强制执行。
 10. 如果密码设置操作失败，我们会将错误返回给用户，让他们再试一次。  操作失败的可能原因是服务已关闭、用户选择的密码不符合组织策略、我们在本地 AD 中找不到该用户等。  我们对于许多这类情况都有一个特定消息，并告知用户他们可以执行哪些操作来解决问题。
 
 ## <a name="scenarios-supported-for-password-writeback"></a>密码写回支持的方案
@@ -629,7 +629,7 @@ Not possible in PowerShell V2
 ## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-your-password)。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md#reset-my-password)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置和更改云密码或本地密码
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为

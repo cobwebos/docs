@@ -1,5 +1,5 @@
 ---
-title: "使用 Resource Manager 模板创建服务总线命名空间 | Microsoft 文档"
+title: "使用 Azure Resource Manager 模板创建服务总线命名空间 | Microsoft Docs"
 description: "使用 Azure Resource Manager 模板创建服务总线命名空间"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,11 +12,12 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/10/2017
+ms.date: 04/12/2017
 ms.author: sethm;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: dfd1ae52cc56a4d4b4c7ee3f69f0c454be607401
-ms.openlocfilehash: bb37faa10000c0352fcad3d7b2cefadc604716e5
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: efd0ec90a1c0775661069faa323e56914dd4e032
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -139,18 +140,13 @@ azure group deployment create <my-resource-group> <my-deployment-name> --templat
 ## <a name="next-steps"></a>后续步骤
 现在，你已使用 Azure Resource Manager 创建并部署了资源，请通过阅读以下文章了解如何管理这些资源：
 
-* [使用 PowerShell 管理服务总线](service-bus-powershell-how-to-provision.md)
+* [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)
 * [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace template]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
-[Service Bus pricing and billing]: https://azure.microsoft.com/documentation/articles/service-bus-pricing-billing/
+[Service Bus pricing and billing]: service-bus-pricing-billing.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

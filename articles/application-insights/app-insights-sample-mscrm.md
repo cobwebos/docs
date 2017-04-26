@@ -4,18 +4,19 @@ description: "使用 Application Insights 从 Microsoft Dynamics CRM Online 获�
 services: application-insights
 documentationcenter: 
 author: mazharmicrosoft
-manager: douge
+manager: carmonm
 ms.assetid: 04c66338-687e-49e5-9975-be935f98f156
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2015
+ms.date: 04/16/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 948c894cba1b8bb513a26d720cbe433b38353d03
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -37,9 +38,9 @@ ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
     ![依次单击“+”、“开发人员服务”、“Application Insights”。](./media/app-insights-sample-mscrm/01.png)
    
     选择 ASP.NET 作为应用程序类型。
-3. 打开“快速启动”选项卡并打开代码脚本。
+3. 依次打开“入门”页和“监视和诊断客户端”。
    
-    ![](./media/app-insights-sample-mscrm/03.png)
+    ![网页中插入的代码片段](./media/app-insights-sample-mscrm/03.png)
 
 **使代码页保持打开状态**，同时在另一浏览器窗口上执行下一步。 你将很快就会需要代码。 
 
@@ -47,40 +48,40 @@ ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
 1. 打开 CRM Online 实例并使用管理员特权登录。
 2. 打开“Microsoft Dynamics CRM 设置”、“自定义”、“自定义系统”
    
-    ![](./media/app-insights-sample-mscrm/04.png)
+    ![Microsoft Dynamics CRM 设置](./media/app-insights-sample-mscrm/04.png)
    
-    ![](./media/app-insights-sample-mscrm/05.png)
+    ![设置 > 自定义项](./media/app-insights-sample-mscrm/05.png)
 
-    ![](./media/app-insights-sample-mscrm/06.png)
+    ![自定义系统选项](./media/app-insights-sample-mscrm/06.png)
 
 1. 创建 JavaScript 资源。
    
-    ![](./media/app-insights-sample-mscrm/07.png)
+    ![“新建 Web 资源”对话框](./media/app-insights-sample-mscrm/07.png)
    
     为它指定名称、选择“脚本 (JScript)”，并打开文本编辑器。
    
-    ![](./media/app-insights-sample-mscrm/08.png)
+    ![打开文本编辑器](./media/app-insights-sample-mscrm/08.png)
 2. 从 Application Insights 复制代码。 复制时确认忽略脚本标记。 请参阅下面的屏幕快照：
    
-    ![](./media/app-insights-sample-mscrm/09.png)
+    ![设置检测密钥](./media/app-insights-sample-mscrm/09.png)
    
     代码包括用于标识 Application insights 资源的检测密钥。
 3. 保存并发布。
    
-    ![](./media/app-insights-sample-mscrm/10.png)
+    ![保存并发布](./media/app-insights-sample-mscrm/10.png)
 
 ### <a name="instrument-forms"></a>检测窗体
 1. 在 Microsoft CRM Online 中，打开帐户窗体
    
-    ![](./media/app-insights-sample-mscrm/11.png)
+    ![帐户窗体](./media/app-insights-sample-mscrm/11.png)
 2. 打开窗体属性
    
-    ![](./media/app-insights-sample-mscrm/12.png)
+    ![窗体属性](./media/app-insights-sample-mscrm/12.png)
 3. 添加已创建的 JavaScript Web 资源
    
-    ![](./media/app-insights-sample-mscrm/13.png)
+    ![添加菜单](./media/app-insights-sample-mscrm/13.png)
    
-    ![](./media/app-insights-sample-mscrm/14.png)
+    ![添加 Web 资源](./media/app-insights-sample-mscrm/14.png)
 4. 保存并发布窗体自定义。
 
 ## <a name="metrics-captured"></a>指标捕获
@@ -89,45 +90,45 @@ ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
 下面是你将看到的数据示例。
 
 #### <a name="application-health"></a>应用程序运行状况
-![](./media/app-insights-sample-mscrm/15.png)
+![加载时间示例页面](./media/app-insights-sample-mscrm/15.png)
 
-![](./media/app-insights-sample-mscrm/16.png)
+![视图图表示例页面](./media/app-insights-sample-mscrm/16.png)
 
 浏览器异常：
 
-![](./media/app-insights-sample-mscrm/17.png)
+![浏览器异常图表](./media/app-insights-sample-mscrm/17.png)
 
 单击图表以获取更多详细信息：
 
-![](./media/app-insights-sample-mscrm/18.png)
+![异常列表](./media/app-insights-sample-mscrm/18.png)
 
 #### <a name="usage"></a>使用情况
-![](./media/app-insights-sample-mscrm/19.png)
+![用户、会话和页面视图](./media/app-insights-sample-mscrm/19.png)
 
-![](./media/app-insights-sample-mscrm/20.png)
+![会话图表](./media/app-insights-sample-mscrm/20.png)
 
-![](./media/app-insights-sample-mscrm/21.png)
+![浏览器版本](./media/app-insights-sample-mscrm/21.png)
 
 #### <a name="browsers"></a>浏览器
-![](./media/app-insights-sample-mscrm/22.png)
+![页面加载时间明细](./media/app-insights-sample-mscrm/22.png)
 
-![](./media/app-insights-sample-mscrm/23.png)
+![按浏览器版本分类的会话数](./media/app-insights-sample-mscrm/23.png)
 
 #### <a name="geolocation"></a>地理位置
-![](./media/app-insights-sample-mscrm/24.png)
+![按国家/地区分类的会话数](./media/app-insights-sample-mscrm/24.png)
 
-![](./media/app-insights-sample-mscrm/25.png)
+![按国家/地区分类的会话和用户](./media/app-insights-sample-mscrm/25.png)
 
 #### <a name="inside-page-view-request"></a>深入了解页面查看请求
-![](./media/app-insights-sample-mscrm/26.png)
+![页面视图摘要](./media/app-insights-sample-mscrm/26.png)
 
-![](./media/app-insights-sample-mscrm/27.png)
+![搜索页面视图事件](./media/app-insights-sample-mscrm/27.png)
 
-![](./media/app-insights-sample-mscrm/28.png)
+![相似的页面视图](./media/app-insights-sample-mscrm/28.png)
 
-![](./media/app-insights-sample-mscrm/29.png)
+![页面视图属性](./media/app-insights-sample-mscrm/29.png)
 
-![](./media/app-insights-sample-mscrm/30.png)
+![每个会话的页面数](./media/app-insights-sample-mscrm/30.png)
 
 ## <a name="sample-code"></a>代码示例
 [浏览示例代码](https://dynamicsandappinsights.codeplex.com/)。
@@ -142,10 +143,4 @@ ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
 * [什么是 Application Insights？](app-insights-overview.md)
 * [适用于网页的 Application Insights](app-insights-javascript.md)
 * [更多示例和演练](app-insights-code-samples.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

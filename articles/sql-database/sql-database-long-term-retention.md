@@ -17,9 +17,9 @@ ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 768a630e1652a48fa4478ec2c25173d536ea6c09
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 043a1779ac694b0b3cbb5f1fd00117f716583669
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -33,7 +33,10 @@ ms.lasthandoff: 03/23/2017
 > [!NOTE]
 > 24 小时内，每个保管库最多可启用 200 个数据库。 因此，建议对每个服务器使用单独的保管库，将此限制的影响降至最低。 
 > 
-> 
+
+
+
+ 
 ## <a name="how-does-sql-database-long-term-backup-retention-work"></a>SQL 数据库长期备份保留的工作原理是什么？
 
 通过备份的长期备份保留，可将 Azure SQL 数据库服务器与 Azure 恢复服务保管库相关联。 
@@ -43,7 +46,7 @@ ms.lasthandoff: 03/23/2017
 * 此后，可从其中任意备份还原到订阅中任意服务器内的新数据库。 由 Azure 存储从现有备份进行复制，不会对现有数据库的性能造成影响。
 
 > [!TIP]
-> 相关教程，请参阅[通过 Azure 门户开始使用备份和还原进行数据保护和恢复](sql-database-get-started-backup-recovery-portal.md)或[通过 PowerShell 开始使用备份和还原进行数据保护和恢复](sql-database-get-started-backup-recovery-powershell.md)
+> 有关操作指南，请参阅[从 Azure SQL 数据库长期备份保留进行配置和恢复](sql-database-long-term-backup-retention-configure.md)
 
 ## <a name="how-do-i-enable-long-term-backup-retention"></a>如何启用长期备份保留？
 
@@ -54,7 +57,13 @@ ms.lasthandoff: 03/23/2017
 3. 创建 Azure 恢复服务保护策略
 4. 向需要长期备份保留的数据库应用保护策略
 
-若要使用 Azure 门户在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[使用 Azure 门户管理长期备份保留](sql-database-manage-long-term-backup-retention-portal.md)。 若要使用 PowerShell 在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[使用 PowerShell 管理长期备份保留](sql-database-manage-long-term-backup-retention-powershell.md)。
+### <a name="azure-portal"></a>Azure 门户
+
+若要使用 Azure 门户在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请单击“长期备份保留”，选择数据库，然后单击“配置”。 
+
+   ![选择要进行长期备份保留的数据库](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
+
+若要使用 PowerShell 在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[从 Azure SQL 数据库长期备份保留进行配置和还原](sql-database-long-term-backup-retention-configure.md)。
 
 ## <a name="how-do-i-restore-a-database-stored-with-the-long-term-backup-retention-feature"></a>如何还原通过长期备份保留功能存储的数据库？
 
@@ -66,7 +75,7 @@ ms.lasthandoff: 03/23/2017
 4. 列出可还原的恢复点
 5. 从恢复点还原到订阅中的目标服务器
 
-若要使用 Azure 门户在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[使用 Azure 门户管理长期备份保留](sql-database-manage-long-term-backup-retention-portal.md)。 若要使用 PowerShell 在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[使用 PowerShell 管理长期备份保留](sql-database-manage-long-term-backup-retention-powershell.md)。
+若要使用 Azure 门户在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[使用 Azure 门户管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。 若要使用 PowerShell 在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[使用 PowerShell 管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。
 
 ## <a name="how-much-does-long-term-backup-retention-cost"></a>长期备份保留的价格是多少？
 
@@ -76,7 +85,7 @@ Azure SQL 数据库的长期备份保留按 [Azure 备份服务定价费率](htt
 
 ## <a name="view-available-backups-stored-in-long-term-backup-retention"></a>查看长期备份保留中存储的可用备份
 
-若要使用 Azure 门户在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[使用 Azure 门户管理长期备份保留](sql-database-manage-long-term-backup-retention-portal.md)。 若要使用 PowerShell 在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[使用 PowerShell 管理长期备份保留](sql-database-manage-long-term-backup-retention-powershell.md)。
+若要使用 Azure 门户在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[使用 Azure 门户管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。 若要使用 PowerShell 在 Azure 恢复服务保管库中配置、管理和从自动备份的长期备份保留进行还原，请参阅[使用 PowerShell 管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。
 
 ## <a name="disabling-long-term-retention"></a>禁用长期保留
 
@@ -91,16 +100,15 @@ Azure SQL 数据库的长期备份保留按 [Azure 备份服务定价费率](htt
 > [!NOTE]
 > 保管库中已有的备份不会受到影响。 恢复服务将在其保留期到期时将其自动删除。
 
-
 ## <a name="removing-long-term-backup-retention-backups-from-the-azure-recovery-services-vault"></a>从 Azure 恢复服务保管库中删除长期备份保留备份
 
-若要从保管库中删除长期备份保留备份，请参阅[删除长期备份保留备份](sql-database-manage-long-term-backup-retention-powershell.md)
+若要从保管库中删除长期备份保留备份，请参阅[删除长期备份保留备份](sql-database-long-term-backup-retention-configure.md)
 
 ## <a name="long-term-backup-retention-faq"></a>长期备份保留常见问题：
 
 1. 问：可否手动删除保管库中的特定备份？
 
-    答：目前不可以，保管库会在保留期到期后自动清理备份。
+    答：目前不可以。 保管库会在保留期到期后自动清理备份。
 2. 问：可否将服务器注册为将备份存储到多个存储库？
 
     答：不可以，目前，在同一时间只能将备份存储到一个保管库。
@@ -140,7 +148,7 @@ Azure SQL 数据库的长期备份保留按 [Azure 备份服务定价费率](htt
 14. 问： 如果某个数据库是活动异地复制辅助数据库，而我们在该数据库上设置了长期备份保留，则会发生什么情况？
 
     答：目前我们不对副本进行备份，因此对于辅助数据库上的长期备份保留，不提供任何选项。 但是，客户必须在活动异地复制辅助数据库上设置长期备份保留，原因如下：
-    - 发生故障转移时，该辅助数据库会成为主数据库，我们会进行完整的备份，然后将这个完整的备份上载到保管库。
+    - 发生故障转移时，该辅助数据库会成为主数据库，我们会进行完整的备份，然后将这个完整的备份上传到保管库。
     - 在辅助数据库上设置长期备份保留对客户来说没有额外的费用。
 
 

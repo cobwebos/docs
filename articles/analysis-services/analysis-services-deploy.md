@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 04/17/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
-ms.openlocfilehash: 18d64f1ad4ef0dd41ae9302d08e02e94d1c608f5
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 766120913d419ec8090a4f25d304f2d3cf9b6693
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/17/2016
 * **本地网关** - 如果你组织的网络中有一个或多个本地数据源，则需要安装[本地数据网关](analysis-services-gateway.md)。 网关对于云中的服务器是必需的，可帮助服务器连接到本地数据源，以在模型中处理和刷新数据。
 
 ## <a name="to-deploy-a-tabular-model-from-ssdt"></a>从 SSDT 部署表格模型
-若要从 SSDT 部署，请确保使用更新于 2016 年 9 月 30 日或之后的[最新版本](https://msdn.microsoft.com/library/mt204009.aspx)。
+若要从 SSDT 部署，请务必使用[最新版本](https://msdn.microsoft.com/library/mt204009.aspx)。
 
 > [!TIP]
 > 在部署之前，请确保可以在表中处理数据。 在 SSDT 中，单击“模型” > “处理” > “全部处理”。 如果处理失败，则部署也将失败。

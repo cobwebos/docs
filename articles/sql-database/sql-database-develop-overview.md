@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: cf627b92399856af2b9a58ab155fac6730128f85
-ms.openlocfilehash: 59b8e7b6b2e2442c0a961d105ccdbc9336445aa6
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 338fa476377e9ff04c9a1f4e585f790b92a59f87
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 59b8e7b6b2e2442c0a961d105ccdbc9336445aa6
 本文逐步讲解开发人员在编写代码以连接到 Azure SQL 数据库时应考虑的基本注意事项。
 
 > [!TIP]
-> 若需通过教程来了解如何创建服务器、创建基于服务器的防火墙、查看服务器属性、使用 SQL Server Management Studio 进行连接、查询 master 数据库、创建示例数据库和空数据库、查询数据库属性、使用 SQL Server Management Studio 进行连接，以及查询示例数据库，请参阅[入门教程](sql-database-get-started.md)。
+> 若需通过教程来了解如何创建服务器、创建基于服务器的防火墙、查看服务器属性、使用 SQL Server Management Studio 进行连接、查询 master 数据库、创建示例数据库和空数据库、查询数据库属性、使用 SQL Server Management Studio 进行连接，以及查询示例数据库，请参阅[入门教程](sql-database-get-started-portal.md)。
 >
 
 ## <a name="language-and-platform"></a>语言和平台
@@ -64,8 +65,8 @@ Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据�
 
 ## <a name="network-considerations"></a>网络注意事项
 * 在托管你的客户端程序的计算机上，确保防火墙允许端口 1433 上的传出 TCP 通信。  详细信息：[配置 Azure SQL 数据库防火墙](sql-database-configure-firewall-settings.md)
-* 如果客户端程序连接到 SQL 数据库 V12，而客户端运行在 Azure 虚拟机 (VM) 上，则必须打开 VM 上的某些端口范围。 详细信息：[用于 ADO.NET 4.5 和 SQL 数据库 V12 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)
-* 与 Azure SQL 数据库 V12 建立的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。 详细信息：[用于 ADO.NET 4.5 和 SQL 数据库 V12 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)
+* 客户端在 Azure 虚拟机 (VM) 上运行时，如果客户端程序连接到 SQL 数据库，则必须打开 VM 上的某些端口范围。 详细信息：[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)
+* 与 Azure SQL 数据库建立的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。 详细信息：[用于 ADO.NET 4.5 和 SQL 数据库 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 ## <a name="data-sharding-with-elastic-scale"></a>数据分片和弹性缩放
 弹性缩放简化了扩展（和缩减）过程。 
@@ -76,9 +77,4 @@ Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据�
 
 ## <a name="next-steps"></a>后续步骤
 浏览所有 [SQL 数据库的功能](sql-database-technical-overview.md)。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
