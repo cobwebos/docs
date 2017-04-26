@@ -11,15 +11,15 @@ ms.assetid: 3dc9b7a3-4b10-423a-8e44-9174aca5cf3d
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 11/17/2016
+ms.date: 04/18/2016
 ms.author: ninarn
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 878bb6e792cff555747912a57c1a15632f06b2f7
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 66f7cc63d311b6b5cd223fe0d8a9bf9f636abef1
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -53,7 +53,7 @@ ms.lasthandoff: 03/10/2017
 
     **- 或 -**
 
-    你可能会看到一条消息，指出该服务器已有建议的弹性池（仅限 V12）。 单击消息以查看基于历史数据库使用量遥测的建议池，然后单击层以查看更多详细信息并自定义池。 有关如何进行建议的信息，请参阅本主题后面的 [了解池建议](#understand-pool-recommendations) 。
+    你可能会看到一条消息，指出该服务器已有建议的弹性池。 单击消息以查看基于历史数据库使用量遥测的建议池，然后单击层以查看更多详细信息并自定义池。 有关如何进行建议的信息，请参阅本主题后面的 [了解池建议](#understand-pool-recommendations) 。
 
     ![建议的池](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)
 
@@ -88,13 +88,12 @@ ms.lasthandoff: 03/10/2017
 
     如果所使用的数据库具有足够的历史使用情况遥测数据，则将更新“估计的弹性 DTU 和 GB 使用量”图表和“弹性 DTU 实际使用量”条形图，以帮助进行配置决策。 此外，服务可能会向你提供建议消息，以帮助正确调整池大小。 请参阅 [动态建议](#dynamic-recommendations)。
 
-3. 使用“配置池”  页面上的控件浏览设置并配置池。 请参阅[弹性池限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)，了解有关每个服务层限制的详细信息；参阅[弹性池价格和性能注意事项](sql-database-elastic-pool-guidance.md)，了解有关正确调整弹性池大小的详细指南。 有关池设置的详细信息，请参阅[弹性池属性](sql-database-elastic-pool.md#elastic-pool-properties)。
+3. 使用“配置池”  页面上的控件浏览设置并配置池。 请参阅[弹性池限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)，了解有关每个服务层限制的详细信息；参阅[弹性池价格和性能注意事项](sql-database-elastic-pool.md)，了解有关正确调整弹性池大小的详细指南。 有关池设置的详细信息，请参阅[弹性池属性](sql-database-elastic-pool.md#database-properties-for-pooled-databases)。
 
     ![配置弹性池](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
 
 4. 更改设置后，单击“配置池”边栏选项卡中的“选择”。
 5. 单击“确定”创建池。
-
 
 ## <a name="understand-elastic-pool-recommendations"></a>了解弹性池建议
 
@@ -104,12 +103,13 @@ SQL 数据库服务将评估使用量历史记录，并在比使用单一数据�
 
 池建议包括：
 
-- 池的定价层（基本、标准或高级）
+- 池的定价层（基本、标准、高级或高级 RS）
 - 合适的 **池弹性 DTU** （也称为每个池的“弹性 DTU 最大值”）
 - 每个数据库的“弹性 DTU 最大值”和“弹性 DTU 最小值”
 - 池的建议数据库列表
 
-> ！[重要] 建议池时，服务将考虑过去 30 天的遥测数据。 数据库若要被视为弹性池的候选项，则必须至少存在 7 天。 已在弹性池中的数据库不会被视为推荐的弹性池候选项。
+> [!IMPORTANT]
+> 建议池时，服务将考虑过去 30 天的遥测数据。 数据库若要被视为弹性池的候选项，则必须至少存在 7 天。 已在弹性池中的数据库不会被视为推荐的弹性池候选项。
 >
 
 服务会评估将每个服务层中的单一数据库移到同一层的池的资源需求和成本效益。 例如，评估服务器上的所有标准数据库是否适合标准弹性池。 这意味着，服务不进行跨层建议，例如将标准数据库移到高级池。
@@ -260,7 +260,7 @@ SQL 数据库服务将评估使用量历史记录，并在比使用单一数据�
 
 ## <a name="change-performance-settings-of-an-elastic-pool"></a>更改弹性池的性能设置
 
-监视弹性池的资源利用率时，可能会发现需要进行一些调整。 池可能需要在性能或存储限制方面进行更改。 你可能要更改池中的数据库设置。 可以随时更改池的设置以获得性能和成本的最佳平衡。 请参阅[何时应使用弹性池？](sql-database-elastic-pool-guidance.md)，了解详细信息。
+监视弹性池的资源利用率时，可能会发现需要进行一些调整。 池可能需要在性能或存储限制方面进行更改。 你可能要更改池中的数据库设置。 可以随时更改池的设置以获得性能和成本的最佳平衡。 请参阅[何时应使用弹性池？](sql-database-elastic-pool.md)，了解详细信息。
 
 更改每个池的 eDTU 或存储限制以及每个数据库的 eDTU：
 
@@ -281,7 +281,7 @@ SQL 数据库服务将评估使用量历史记录，并在比使用单一数据�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解什么是弹性池，请参阅 [SQL 数据库弹性池](sql-database-elastic-pool.md)。
-- 有关使用弹性池的指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
+- 有关使用弹性池的指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)。
 - 若要使用弹性作业根据池中数据库的数目来运行 Transact-SQL 脚本，请参阅[弹性作业概述](sql-database-elastic-jobs-overview.md)。
 - 有关跨池中任意数量数据库的查询，请参阅[弹性查询概述](sql-database-elastic-query-overview.md)。
 - 有关池中任意数量数据库的事务，请参阅[弹性事务](sql-database-elastic-transactions-overview.md)。
