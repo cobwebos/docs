@@ -10,11 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 04/24/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: c8c6c105c2142dac1b3df6c26838ba8626161092
 ms.openlocfilehash: d818cd3a243fb78228706b21a002f295782189be
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -218,10 +219,5 @@ EAS 配置文件必须包含以下信息：
 
 1. 在应用程序中配置满足上述要求的 EAS 配置文件。  
 2. 打开应用程序，验证邮件是否正在同步。 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
