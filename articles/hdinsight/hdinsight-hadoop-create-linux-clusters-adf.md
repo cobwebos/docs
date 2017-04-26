@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/23/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: a77aa4a44bbb7dafffa4269c3713153df9bbced9
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 8b7ccb0be15b4eba3bb400f546bc2469bb2b6009
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -28,23 +28,23 @@ ms.lasthandoff: 03/25/2017
 
 [Azure 数据工厂](../data-factory/data-factory-introduction.md)是一项基于云的数据集成服务，可对数据的转移进行调整并自动实现数据的转换过程。 它可以实时创建 HDInsight Hadoop 群集来处理输入数据切片，并在处理完成后删除群集。 使用按需 HDInsight Hadoop 群集的部分优势包括：
 
-- 用户只需为作业在 HDInsight Hadoop 群集上运行那段时间（以及一段简短的可配置空闲时间）付费。 HDInsight 群集是基于分钟按比例收费，而不管用户是否正在使用它们。 在数据工厂中使用按需 HDInsight 链接服务时，群集是按需创建的。 并在作业完成时，自动删除这些群集。 因此，用户只需为作业运行时间和简短的空闲时间（生存时间设置）付费。 
+- 用户只需为作业在 HDInsight Hadoop 群集上运行那段时间（以及一段简短的可配置空闲时间）付费。 HDInsight 群集是基于分钟按比例收费，而不管用户是否正在使用它们。 在数据工厂中使用按需 HDInsight 链接服务时，群集是按需创建的。 并在作业完成时，自动删除这些群集。 因此，用户只需为作业运行时间和简短的空闲时间（生存时间设置）付费。
 - 用户可以使用数据工厂管道创建工作流。 例如，用户可以通过管道将数据从本地 SQL Server 复制到 Azure Blob 存储，在按需 HDInsight Hadoop 群集上运行 Hive 脚本和 Pig 脚本来处理数据， 然后将结果数据复制到 Azure SQL 数据仓库供 BI 应用程序使用。
 - 可以对工作流进行计划，使之定期（每小时、每日、每周、每月等）运行。
 
-在 Azure 数据工厂中，一个数据工厂可以有一个或多个数据管道。 一个数据管道有一个或多个活动。 有两种类型的活动：[数据移动活动](../data-factory/data-factory-data-movement-activities.md)和[数据转换活动](../data-factory/data-factory-data-transformation-activities.md)。 可以使用数据移动活动（目前只能使用复制活动）将数据从源数据存储移动到目标数据存储。 可以使用数据转换活动来转换/处理数据。 HDInsight Hive 活动是数据工厂支持的转换活动之一。 用户在本教程中使用 Hive 转换活动。 
+在 Azure 数据工厂中，一个数据工厂可以有一个或多个数据管道。 一个数据管道有一个或多个活动。 有两种类型的活动：[数据移动活动](../data-factory/data-factory-data-movement-activities.md)和[数据转换活动](../data-factory/data-factory-data-transformation-activities.md)。 可以使用数据移动活动（目前只能使用复制活动）将数据从源数据存储移动到目标数据存储。 可以使用数据转换活动来转换/处理数据。 HDInsight Hive 活动是数据工厂支持的转换活动之一。 用户在本教程中使用 Hive 转换活动。
 
-可以将 Hive 活动配置为使用用户自己的 HDInsight Hadoop 群集或按需 HDInsight Hadoop 群集。 在本教程中，数据工厂管道中的 Hive 活动配置为使用按需 HDInsight 群集。 因此，当运行活动来处理数据切片时，会发生下面这样的情况： 
+可以将 Hive 活动配置为使用用户自己的 HDInsight Hadoop 群集或按需 HDInsight Hadoop 群集。 在本教程中，数据工厂管道中的 Hive 活动配置为使用按需 HDInsight 群集。 因此，当运行活动来处理数据切片时，会发生下面这样的情况：
 
 1. 系统自动为用户实时创建 HDInsight Hadoop 群集，以便处理该切片。  
-2. 通过在群集上运行 HiveQL 脚本处理输入数据。 
+2. 通过在群集上运行 HiveQL 脚本处理输入数据。
 3. HDInsight Hadoop 群集在处理完成后删除，群集空闲时间为配置的时间（timeToLive 设置）。 如果在这段 timeToLive 空闲时间内可以处理下一数据切片，则会使用同一群集处理该切片。  
-      
-在本教程中，与 Hive 活动关联的 HiveQL 脚本执行以下操作： 
+
+在本教程中，与 Hive 活动关联的 HiveQL 脚本执行以下操作：
 
 1. 创建一个外部表，以便引用存储在 Azure Blob 存储中的原始 Web 日志数据。
 2. 按年和月将原始数据分区。
-3. 在 Azure Blob 存储中存储分区的数据。 
+3. 在 Azure Blob 存储中存储分区的数据。
 
 在本教程中，与 Hive 活动关联的 HiveQL 脚本创建一个外部表，以便引用存储在 Azure Blob 存储中的原始 Web 日志数据。 以下是针对输入文件中的每个月的示例行。
 
@@ -184,21 +184,21 @@ Write-host "`nScript completed" -ForegroundColor Green
 3. 双击使用 PowerShell 脚本创建的资源组名称。 如果列出了太多资源组，请使用筛选器。
 4. 除非你与其他项目共享资源组，否则在“资源”磁贴中，应列出一个资源。 该资源就是具有你在前面指定的名称的存储帐户。 单击存储帐户名称。
 5. 单击“Blob”磁贴。
-6. 单击“adfgetstarted”容器。 可看到两个文件夹：**inputdata** 和 **script**。 
-7. 打开文件夹，并检查文件夹中的文件。 inputdata 包含 input.log 文件（其中有输入数据），script 文件夹包含 HiveQL 脚本文件。 
+6. 单击“adfgetstarted”容器。 可看到两个文件夹：**inputdata** 和 **script**。
+7. 打开文件夹，并检查文件夹中的文件。 inputdata 包含 input.log 文件（其中有输入数据），script 文件夹包含 HiveQL 脚本文件。
 
 ## <a name="create-a-data-factory-using-resource-manager-template"></a>使用 Resource Manager 模板创建数据工厂
-准备好存储帐户、输入数据和 HiveQL 脚本后，你便可以创建 Azure 数据工厂了。 有几种方法可以创建数据工厂。 本教程使用 Azure 门户部署 Azure Resource Manager 模板，从而创建数据工厂。 还可以使用 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 和 [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy) 部署 Resource Manager 模板。 有关其他数据工厂创建方法，请参阅[教程：构建第一个数据工厂](../data-factory/data-factory-build-your-first-pipeline.md)。
+准备好存储帐户、输入数据和 HiveQL 脚本后，你便可以创建 Azure 数据工厂了。 有几种方法可以创建数据工厂。 本教程使用 Azure 门户部署 Azure Resource Manager 模板，从而创建数据工厂。 还可以使用 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 和 [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template) 部署 Resource Manager 模板。 有关其他数据工厂创建方法，请参阅[教程：构建第一个数据工厂](../data-factory/data-factory-build-your-first-pipeline.md)。
 
 1. 单击以下映像以登录到 Azure，然后在 Azure 门户中打开 Resource Manager 模板。 该模板位于 https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json。 请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分，以便详细了解模板中定义的实体。 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-adf/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. 针对“资源组”设置选择“使用现有项”选项，然后选择在上一步创建（使用 PowerShell 脚本）的资源组的名称。 
+2. 针对“资源组”设置选择“使用现有项”选项，然后选择在上一步创建（使用 PowerShell 脚本）的资源组的名称。
 3. 输入数据工厂的名称（**数据工厂名称**）。 该名称必须全局唯一。
 4. 输入在前面的步骤中记下的**存储帐户名称**和**存储帐户密钥**。
 5. 阅读完“条款和条件”后，选择“我同意上述条款和条件”。
-6. 选择“固定到仪表板”选项。 
-6. 单击“购买/创建”。 在仪表板上，可看到一个名为“部署模板部署”的磁贴。 等待资源组的“资源组”边栏选项卡打开。 也可单击标题为资源组名称的磁贴，打开资源组边栏选项卡。 
+6. 选择“固定到仪表板”选项。
+6. 单击“购买/创建”。 在仪表板上，可看到一个名为“部署模板部署”的磁贴。 等待资源组的“资源组”边栏选项卡打开。 也可单击标题为资源组名称的磁贴，打开资源组边栏选项卡。
 6. 如果资源组边栏选项卡尚未打开，请单击该磁贴打开资源组。 现在，你应看到除了存储帐户资源外，多列出了一个数据工厂资源。
 7. 单击数据工厂的名称（为 **Data Factory Name** 参数指定的值）。
 8. 在“数据工厂”边栏选项卡中，单击“图表”磁贴。 图表显示一个包含输入数据集和输出数据集的活动：
@@ -207,13 +207,13 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     Resource Manager 模板中定义了名称。
 9. 双击“AzureBlobOutput”。
-10. 在“最近更新的切片”中，可看到一个切片。 如果状态为“正在进行”，请等到状态变为“就绪”。 创建一个 HDInsight 群集通常需要大约 **20 分钟**的时间。 
+10. 在“最近更新的切片”中，可看到一个切片。 如果状态为“正在进行”，请等到状态变为“就绪”。 创建一个 HDInsight 群集通常需要大约 **20 分钟**的时间。
 
 ### <a name="check-the-data-factory-output"></a>检查数据工厂输出
 
 1. 使用上一课程中的相同过程检查 adfgetstarted 容器包含的内容。 除了 **adfgetsarted** 外，还有两个新容器：
 
-   * 一个其名称遵循 `adf<yourdatafactoryname>-linkedservicename-datetimestamp` 模式的容器。 此容器是 HDInsight 群集的默认容器。 
+   * 一个其名称遵循 `adf<yourdatafactoryname>-linkedservicename-datetimestamp` 模式的容器。 此容器是 HDInsight 群集的默认容器。
    * adfjobs：此容器是 ADF 作业日志的容器。
 
      根据 Resource Manager 模板中的配置，数据工厂输出存储在 **afgetstarted** 中。
@@ -227,7 +227,7 @@ Write-host "`nScript completed" -ForegroundColor Green
     ![Azure 数据工厂 HDInsight 按需 Hive 活动管道输出](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-month.png)
 
 ## <a name="data-factory-entities-in-the-template"></a>模板中的数据工厂实体
-下面是数据工厂的顶级 Resource Manager 模板的情况： 
+下面是数据工厂的顶级 Resource Manager 模板的情况：
 
 ```json
 {
@@ -267,9 +267,9 @@ Write-host "`nScript completed" -ForegroundColor Green
 }
 ```
 dataFactoryName 是在部署模板时指定的数据工厂的名称。 目前，仅美国东部、美国西部和北欧区域支持数据工厂。
-   
+
 ### <a name="defining-entities-within-the-data-factory"></a>定义数据工厂中的实体
-JSON 模板中定义了以下数据工厂实体： 
+JSON 模板中定义了以下数据工厂实体：
 
 * [Azure 存储链接服务](#azure-storage-linked-service)
 * [HDInsight 按需链接服务](#hdinsight-on-demand-linked-service)
@@ -278,7 +278,7 @@ JSON 模板中定义了以下数据工厂实体：
 * [包含复制活动的数据管道](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
-Azure 存储链接服务将 Azure 存储帐户链接到数据工厂。 在本教程中，同一存储帐户既用作默认的 HDInsight 存储帐户，又用作输入数据存储和输出数据存储。 因此，只定义一个 Azure 存储链接服务。 在链接服务定义中，用户指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息。请参阅 [Azure Storage linked service](../data-factory/data-factory-azure-blob-connector.md#azure-storage-linked-service)（Azure 存储链接服务）。 
+Azure 存储链接服务将 Azure 存储帐户链接到数据工厂。 在本教程中，同一存储帐户既用作默认的 HDInsight 存储帐户，又用作输入数据存储和输出数据存储。 因此，只定义一个 Azure 存储链接服务。 在链接服务定义中，用户指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息。请参阅 [Azure Storage linked service](../data-factory/data-factory-azure-blob-connector.md#azure-storage-linked-service)（Azure 存储链接服务）。
 
 ```json
 {
@@ -323,7 +323,7 @@ Azure 存储链接服务将 Azure 存储帐户链接到数据工厂。 在本教
     }
 }
 ```
-注意以下几点： 
+注意以下几点：
 
 * 数据工厂为用户创建**基于 Linux 的** HDInsight 群集。
 * HDInsight Hadoop 群集在创建时与存储帐户位于同一区域。
@@ -336,7 +336,7 @@ Azure 存储链接服务将 Azure 存储帐户链接到数据工厂。 在本教
 > 随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 
 #### <a name="azure-blob-input-dataset"></a>Azure Blob 输入数据集
-在输入数据集定义中，用户指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](../data-factory/data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。 
+在输入数据集定义中，用户指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](../data-factory/data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。
 
 ```json
 
@@ -370,7 +370,7 @@ Azure 存储链接服务将 Azure 存储帐户链接到数据工厂。 在本教
 
 ```
 
-请注意 JSON 定义中的以下特定设置： 
+请注意 JSON 定义中的以下特定设置：
 
 ```json
 "fileName": "input.log",
@@ -409,7 +409,7 @@ Azure 存储链接服务将 Azure 存储帐户链接到数据工厂。 在本教
 }
 ```
 
-folderPath 指定保留输出数据的文件夹的路径： 
+folderPath 指定保留输出数据的文件夹的路径：
 
 ```json
 "folderPath": "adfgetstarted/partitioneddata",
@@ -428,7 +428,7 @@ folderPath 指定保留输出数据的文件夹的路径：
 在 Azure 数据工厂中，输出数据集可用性将驱动管道。 在此示例中，将在每月的最后一天 (EndOfInterval) 生成切片。 有关详细信息，请参阅[数据工厂计划和执行](../data-factory/data-factory-scheduling-and-execution.md)。
 
 #### <a name="data-pipeline"></a>数据管道
-定义一个管道，用于在按需 Azure HDInsight 群集上通过运行 Hive 脚本来转换数据。 有关用于定义本示例中所述管道的 JSON 元素的说明，请参阅 [Pipeline JSON](../data-factory/data-factory-create-pipelines.md#pipeline-json)（管道 JSON）。 
+定义一个管道，用于在按需 Azure HDInsight 群集上通过运行 Hive 脚本来转换数据。 有关用于定义本示例中所述管道的 JSON 元素的说明，请参阅 [Pipeline JSON](../data-factory/data-factory-create-pipelines.md#pipeline-json)（管道 JSON）。
 
 ```json
 {
@@ -487,7 +487,7 @@ folderPath 指定保留输出数据的文件夹的路径：
 ### <a name="delete-the-blob-containers-created-by-on-demand-hdinsight-cluster"></a>删除由按需 HDInsight 群集创建的 Blob 容器
 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (timeToLive)，否则每当需要处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。 对于每个群集，Azure 数据工厂都会在用作群集的默认存储帐户的 Azure Blob 存储中创建 Blob 容器。 即使删除 HDInsight 群集，也不会删除默认 blob 存储容器和关联的存储帐户。 这是设计的行为。 随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adfyourdatafactoryname-linkedservicename-datetimestamp` 模式。
 
-删除 **adfjobs** 和 **adfyourdatafactoryname-linkedservicename-datetimestamp** 文件夹。 adfjobs 容器包含来自 Azure 数据工厂的作业日志。 
+删除 **adfjobs** 和 **adfyourdatafactoryname-linkedservicename-datetimestamp** 文件夹。 adfjobs 容器包含来自 Azure 数据工厂的作业日志。
 
 ### <a name="delete-the-resource-group"></a>删除资源组
 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 用于将解决方案作为组来部署、管理和监视。  删除资源组会删除组内的所有组件。  
@@ -594,5 +594,4 @@ azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adf
 ```
 
 容器名称为 *adfgetstarted*。 请保留该名称。 否则，需要更新 Resource Manager 模板。 如果需要关于此 CLI 脚本的帮助，请参阅[将 Azure CLI 用于 Azure 存储](../storage/storage-azure-cli.md)。
-
 

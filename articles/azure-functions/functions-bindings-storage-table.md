@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 67c308f8216ebd291ae483c9b18d43528687e9a9
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: bb01be3ee044f60376e0c9c2de7b3dd34f3b7aca
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -61,7 +61,7 @@ ms.lasthandoff: 03/29/2017
 注意以下事项： 
 
 * 协同使用 `partitionKey` 和 `rowKey` 读取单个实体。 这些属性是可选的。 
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 还可以[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md#application-settings)。  
+* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 还可以[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md#settings)。  
 
 <a name="inputusage"></a>
 
@@ -179,7 +179,7 @@ module.exports = function (context, myQueueItem) {
 注意以下事项： 
 
 * 协同使用 `partitionKey` 和 `rowKey` 写入单个实体。 这些属性是可选的。 当在函数代码中创建实体对象时还可以指定 `PartitionKey` 和 `RowKey`。
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 还可以[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md#application-settings)。 
+* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 还可以[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md#settings)。 
 
 <a name="outputusage"></a>
 

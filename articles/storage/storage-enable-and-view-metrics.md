@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: d7a08bb0f4128eb3915658b41843b35613108a98
-ms.openlocfilehash: d544695654ff136ee25856cb4a0309f882057ebb
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 4036c994cb5be68b372a4f244f65a17ce173ecc2
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/22/2017
 * ServiceType：可能值为 Blob、Queue 和 Table。
 * MetricsLevel：可能的值为 None、Service 和 ServiceAndApi。
 
-例如，以下命令在保留期设为&5; 天的情况下，在默认存储帐户中为 Blob 服务打开分钟度量值：
+例如，以下命令在保留期设为 5 天的情况下，在默认存储帐户中为 Blob 服务打开分钟度量值：
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
@@ -214,4 +214,4 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 * Blob 的容量表每天添加两行（如果用户已为日志选择加入）：这表示，此表的大小每天最多以约 300 字节的幅度增加。
 
 ## <a name="next-steps"></a>后续步骤
-[启用存储日志记录和访问日志数据](/rest/api/storageservices/fileservices/Enabling-Storage-Logging-and-Accessing-Log-Data)
+[启用存储日志记录和访问日志数据](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)

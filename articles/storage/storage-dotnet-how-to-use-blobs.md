@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 29d8693dd1d6d1ef26ccb21e3a5b29cf1adbfcc5
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: e9cfcdd9d6e36c1154b91904da60483825ff8b94
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="get-started-with-azure-blob-storage-using-net"></a>通过 .NET 开始使用 Azure Blob 存储
@@ -365,7 +365,7 @@ for (int i = 0; i < numBlocks; i++)
 Console.WriteLine(appendBlob.DownloadText());
 ```
 
-请参阅 [了解块 Blob、页 Blob 和追加 Blob](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) ，就有关三种 Blob 之间的差异了解详细信息。
+请参阅 [了解块 Blob、页 Blob 和追加 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) ，就有关三种 Blob 之间的差异了解详细信息。
 
 ## <a name="managing-security-for-blobs"></a>管理 Blob 安全性
 默认情况下，Azure 存储空间会限制拥有帐户访问密钥的帐户所有者的访问权限来保持数据安全。 当你需要共享存储帐户中的 Blob 数据时，请注意不可危及帐户访问密钥的安全性。 此外，可以加密 Blob 数据，以确保其在网络中传输时以及在 Azure 存储空间中时的安全性。
@@ -395,7 +395,7 @@ Azure 存储空间支持在客户端和服务器上加密 Blob 数据：
 
 ### <a name="blob-storage-reference"></a>Blob 存储参考
 * [.NET 存储客户端库参考](https://msdn.microsoft.com/library/azure/mt347887.aspx)
-* [REST API 参考](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
+* [REST API 参考](/rest/api/storageservices/azure-storage-services-rest-api-reference)
 
 ### <a name="conceptual-guides"></a>概念性指南
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)

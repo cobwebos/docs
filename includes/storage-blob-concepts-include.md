@@ -22,5 +22,5 @@ Blob 服务包含以下组件：
   
     *页 Blob* 最大可达 1 TB 大小，并且对于频繁的读/写操作更加高效。 Azure 虚拟机使用页 Blob 作为 OS 和数据磁盘。
   
-    有关命名容器和 Blob 的详细信息，请参阅 [命名和引用容器、Blob 和元数据](/rest/api/storageservices/fileservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)。
+    有关命名容器和 Blob 的详细信息，请参阅 [命名和引用容器、Blob 和元数据](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)。
 

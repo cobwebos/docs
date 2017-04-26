@@ -22,7 +22,7 @@
 
 ## 创建 Web 应用
 ### [.NET](../app-service-web/app-service-web-get-started-dotnet.md)
-### [PHP](../app-service-web/app-service-web-get-started-php.md)    
+### [PHP](../app-service-web/app-service-web-get-started-php.md)
 ### [Node.js](../app-service-web/app-service-web-get-started-nodejs.md)
 ### [Java](../app-service-web/app-service-web-get-started-java.md)
 ### [Python](../app-service-web/app-service-web-get-started-python.md)
@@ -68,7 +68,7 @@
 #### [添加推送通知](app-service-mobile-windows-store-dotnet-get-started-push.md)
 #### [使用客户端 SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
 
-### Xamarin.Android 
+### Xamarin.Android
 #### [启用脱机同步](app-service-mobile-xamarin-android-get-started-offline-data.md)
 #### [添加身份验证](app-service-mobile-xamarin-android-get-started-users.md)
 #### [添加推送通知](app-service-mobile-xamarin-android-get-started-push.md)
@@ -78,7 +78,6 @@
 #### [启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 #### [添加身份验证](app-service-mobile-xamarin-forms-get-started-users.md)
 #### [添加推送通知](app-service-mobile-xamarin-forms-get-started-push.md)
-#### [在 Xamarin.Forms 应用中连接到 Azure 存储](app-service-mobile-xamarin-forms-blob-storage.md)
 #### [使用客户端 SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.iOS
@@ -194,7 +193,6 @@
 ### [使用 Azure 自动化管理应用](../app-service-web/automation-manage-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## 集成
-### [在 Xamarin.Forms 应用中连接到 Azure 存储](app-service-mobile-xamarin-forms-blob-storage.md)
 ### [使用混合连接访问本地资源](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [如何在 Azure 中使用 SendGrid 发送电子邮件](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
@@ -219,10 +217,10 @@
 ## [Azure 门户](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # 资源
-## [定价](https://azure.microsoft.com/en-us/pricing/details/app-service/)  
-## [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)  
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-mobile-services)  
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services) 
+## [定价](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-mobile-services)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## 示例
 ### [现场工程师](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
 ### [结构化数据同步](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/)
