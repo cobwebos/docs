@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: db3285bcdfb93c0c2b9f8972edb04e7064cfa31c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: e6efa8c05c51b0438912738c3c5fcad4bc12b8f4
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -56,8 +56,16 @@ ms.lasthandoff: 04/12/2017
 
 请注意，图表分组成磁贴：一个磁贴可以包含多个图表。 可将整个磁贴固定到仪表板。
 
+图表会自动刷新，刷新频率取决于图表的时间范围：
+
+* 时间范围为低于 1 小时：每 5 分钟刷新一次
+* 时间范围为 1 - 24 小时：每 15 分钟刷新一次
+* 时间范围为 24 小时以上：（时间范围）/60。
+
 ### <a name="pin-any-query-in-analytics"></a>固定 Analytics 中的任何查询
 还可以[将 Analytics 图表固定](app-insights-analytics-using.md#pin-to-dashboard)到[共享的](#share-dashboards-with-your-team)仪表板。 这样，便可以添加任意查询以及标准指标的图表。 （此功能收费。）
+
+每小时自动重新计算结果。 单击图表上的“刷新”图标可立即重新计算。 （刷新浏览器不会重新计算。）
 
 ## <a name="adjust-a-tile-on-the-dashboard"></a>调整仪表板上的磁贴
 将某个磁贴放到仪表板上后，可以调整该磁贴。

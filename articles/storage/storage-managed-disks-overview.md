@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 6ec77968a0f264b8bf1fa56a23e4cc7faef614da
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 53bd62688aa0d1a06d2d012c8da664d2de4b0b45
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/17/2017
 Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-introduction.md)简化了 Azure IaaS VM 的磁盘管理。 你只需指定所需的类型（[高级](storage-premium-storage.md)或[标准](storage-standard-storage.md)）和磁盘大小，Azure 将为你创建和管理磁盘。
 
 >[!NOTE]
->使用托管磁盘的 VM 要求端口 8443 上的出站流量将已安装 [VM 扩展](../virtual-machines/virtual-machines-windows-extensions-features.md)的状态报告给 Azure 平台。 如果无法使用该端口，则为 VM 预配扩展会失败。 另外，如果将扩展安装在正在运行的 VM 上，该扩展的部署状态将为未知。 如果不能解除对端口 8443 的阻止，则必须使用非托管磁盘。 我们正在努力解决此问题。 有关更多详细信息，请参阅 [IaaS VM 磁盘常见问题](storage-faq-for-disks.md#managed-disks-and-port-8443)。 
+>使用托管磁盘的 VM 要求端口 8443 上的出站流量将已安装 [VM 扩展](../virtual-machines/windows/extensions-features.md)的状态报告给 Azure 平台。 如果无法使用该端口，则为 VM 预配扩展会失败。 另外，如果将扩展安装在正在运行的 VM 上，该扩展的部署状态将为未知。 如果不能解除对端口 8443 的阻止，则必须使用非托管磁盘。 我们正在努力解决此问题。 有关更多详细信息，请参阅 [IaaS VM 磁盘常见问题](storage-faq-for-disks.md#managed-disks-and-port-8443)。 
 >
 >
 
@@ -37,13 +37,13 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 
 ### <a name="simple-and-scalable-vm-deployment"></a>简单且可缩放的 VM 部署
 
-托管磁盘在幕后为你处理存储。 以前，你必须创建存储帐户来存储你的 Azure VM 的磁盘（VHD 文件）。 以前，进行扩展时，你必须创建额外的存储帐户，以便任何磁盘都不会超出对存储的 IOPS 限制。 使用托管磁盘处理存储时，不再受限于存储帐户限制（例如 20,000 IOPS / 帐户）。 也不再需要将自定义映像（VHD 文件）复制到多个存储帐户。 可以在一个中心位置管理自定义映像（每个 Azure 区域一个存储帐户），并使用它们在一个订阅中创建数百台 VM。
+托管磁盘在幕后为你处理存储。 以前，你必须创建存储帐户来存储你的 Azure VM 的磁盘（VHD 文件）。 进行扩展时，必须确保创建了额外的存储帐户，以便任何磁盘都不会超出对存储的 IOPS 限制。 使用托管磁盘处理存储时，不再受限于存储帐户限制（例如 20,000 IOPS / 帐户）。 也不再需要将自定义映像（VHD 文件）复制到多个存储帐户。 可以在一个中心位置管理自定义映像（每个 Azure 区域一个存储帐户），并使用它们在一个订阅中创建数百台 VM。
 
 托管磁盘允许在一个订阅中创建最多 10,000 个 VM **磁盘**，这使得你可以在单个订阅中创建数百台 **VM**。 通过允许使用某个应用商店映像在一个 VMSS 中创建多达一千台 VM，此功能还可以进一步增加[虚拟机规模集 (VMSS)](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) 的可伸缩性。
 
 ### <a name="better-reliability-for-availability-sets"></a>可用性集更加可靠
 
-通过确保可用性集中的 VM 的磁盘彼此之间完全隔离以避免单点故障，托管磁盘为可用性集提供了更佳的可靠性。 它通过自动将磁盘放置在不同的存储缩放单位（模块）中来实现这一点。 如果某个模块因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。 例如，假定某个应用程序在五台 VM 上运行并且这些 VM 位于一个可用性集中。 这些 VM 的磁盘不会存储在同一个模块中，因此，如果一个模块失败，该应用程序的其他实例可以继续运行。
+通过确保可用性集中的 VM 的磁盘彼此之间完全隔离以避免单点故障，托管磁盘为可用性集提供了更佳的可靠性。 它通过自动将磁盘放置在不同的存储缩放单位（模块）中来实现这一点。 如果某个模块因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。 例如，假定某个应用程序在 5 台 VM 上运行并且这些 VM 位于一个可用性集中。 这些 VM 的磁盘不会存储在同一个模块中，因此，如果一个模块失败，该应用程序的其他实例可以继续运行。
 
 ### <a name="granular-access-control"></a>粒度访问控制
 
@@ -95,8 +95,8 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 
 若要了解有关如何使用托管磁盘创建快照的详细信息，请查看下列资源：
 
-* [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
-* [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/linux/virtual-machines-linux-snapshot-copy-managed-disk.md)
+* [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 
 有关托管磁盘的详细定价信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
@@ -106,8 +106,8 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 托管磁盘还支持创建托管自定义映像。 可以从存储帐户中的自定义 VHD 创建映像或者直接从通用化 (sys-prepped) VM 创建映像。 这会将与 VM 关联的所有托管磁盘捕获到单个映像中，包括 OS 和数据磁盘。 这将允许使用自定义映像创建数百台 VM，且不需要复制或管理任何存储帐户。
 
 有关创建映像的信息，请查看以下文章：
-* [如何在 Azure 中捕获通用 VM 的托管映像](../virtual-machines/virtual-machines-windows-capture-image-resource.md)
-* [如何使用 Azure CLI 2.0 用化和捕获 Linux 虚拟机](../virtual-machines/virtual-machines-linux-capture-image.md)
+* [如何在 Azure 中捕获通用 VM 的托管映像](../virtual-machines/windows/capture-image-resource.md)
+* [如何使用 Azure CLI 2.0 用化和捕获 Linux 虚拟机](../virtual-machines/linux/capture-image.md)
 
 ## <a name="images-versus-snapshots"></a>映像与快照
 
@@ -141,11 +141,11 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 * [使用 Resource Manager 和 PowerShell 创建 VM](../virtual-machines/virtual-machines-windows-ps-create.md)
 
-* [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/linux/quick-create-cli.md)
 
-* [使用 PowerShell 将托管数据磁盘附加到 Windows VM](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
+* [使用 PowerShell 将托管数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)
 
-* [将托管磁盘添加到 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [将托管磁盘添加到 Linux VM](../virtual-machines/linux/add-disk.md)
 
 ### <a name="compare-managed-disks-storage-options"></a>比较托管磁盘存储选项 
 
@@ -155,7 +155,7 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 ### <a name="operational-guidance"></a>操作指南
 
-* [从 AWS 和其他平台迁移到 Azure 中的托管磁盘](../virtual-machines/virtual-machines-windows-on-prem-to-azure.md)
+* [从 AWS 和其他平台迁移到 Azure 中的托管磁盘](../virtual-machines/windows/on-prem-to-azure.md)
 
-* [将 Azure VM 转换为 Azure 中的托管磁盘](../virtual-machines/virtual-machines-windows-migrate-to-managed-disks.md)
+* [将 Azure VM 转换为 Azure 中的托管磁盘](../virtual-machines/windows/migrate-to-managed-disks.md)
 

@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: 16e1276d5c0cc7eb8a8a868fa3b31fd51fbb1b96
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 8922c65a1755343e19072a0594b800838a5e1cf9
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -225,7 +225,7 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 
 #### <a name="track-usage"></a>跟踪使用情况
 * [添加 Web 客户端遥测][usage]，以监视页面视图和基本用户指标。
-* 在客户端和服务器上[跟踪自定义事件和指标][track]，详细了解应用程序的使用情况。
+* [跟踪自定义事件和指标](app-insights-web-track-usage.md)，了解应用程序在客户端和服务器上的使用情况。
 
 <!--Link references-->
 
@@ -235,5 +235,5 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [track]: app-insights-api-custom-events-metrics.md
-[usage]: app-insights-web-track-usage.md
+[usage]: app-insights-javascript.md
 

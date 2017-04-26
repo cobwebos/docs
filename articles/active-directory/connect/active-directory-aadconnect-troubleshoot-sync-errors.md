@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 1/31/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 6a466937358932a28604cddf7f32cdfd02a5b88d
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: a1190f0ab4caf749cce0b5c9ba45e55f7e6ca8ec
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -180,9 +180,9 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 #### <a name="related-articles"></a>相关文章
 * [Prepare to provision users through directory synchronization to Office 365](https://support.office.com/en-us/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)（准备在 Office 365 中通过目录同步来预配用户）
 
-### <a name="datavalidationfailed"></a>DataValidationFailed
+### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
 #### <a name="description"></a>说明
-这是导致“DataValidationFailed”同步错误的一个具体的案例：用户的 UserPrincipalName 后缀已从一个联合域更改为另一个联合域。
+这是导致“FederatedDomainChangeError”同步错误的一个具体案例：用户的 UserPrincipalName 后缀已从一个联合域更改为另一个联合域。
 
 #### <a name="scenarios"></a>方案
 某个已同步用户的 UserPrincipalName 后缀已从一个联合域更改为本地的另一个联合域。 例如，*UserPrincipalName = bob@contoso.com* 已更改为 *UserPrincipalName = bob@fabrikam.com*。
@@ -191,7 +191,7 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 1. 在 Active Directory 中，已将 Contoso.com 的帐户 Bob Smith 添加为新用户，其 UserPrincipalName 为 bob@contoso.com
 2. Bob 将移到 Contoso.com 中名为 Fabrikam.com 的另一个分支机构，其 UserPrincipalName 将更改为 bob@fabrikam.com
 3. contoso.com 和 fabrikam.com 域是与 Azure Active Directory 联合的域。
-4. Bob 的 userPrincipalName 不会更新，并且会导致“DataValidationFailed”同步错误。
+4. Bob 的 userPrincipalName 不会更新，并且会导致“FederatedDomainChangeError”同步错误。
 
 #### <a name="how-to-fix"></a>如何解决
 如果用户的 UserPrincipalName 后缀已从 bob@**contoso.com** 更新为 bob@**fabrikam.com**，并且 **contoso.com** 和 **fabrikam.com** 都是**联合域**，则执行以下步骤可以解决同步错误
@@ -215,7 +215,7 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 1. Bob 的 userCertificate 属性存储了过多的分配给 Bob 的证书。 其中可能包括旧的或过期的证书。 硬限制为 15 个证书。
 2. Bob 的 userSMIMECertificate 属性存储了过多的分配给 Bob 的证书。 其中可能包括旧的或过期的证书。 硬限制为 15 个证书。
 3. 在 Active Directory 中为 Bob 设置的 thumbnailPhoto 过大，无法在 Azure AD 中同步。
-4. 在 Active Directory 中自动填充 ProxyAddresses 属性期间，为某个对象分配了&500; 个以上的 ProxyAddresses。
+4. 在 Active Directory 中自动填充 ProxyAddresses 属性期间，为某个对象分配了 500 个以上的 ProxyAddresses。
 
 ### <a name="how-to-fix"></a>如何解决
 1. 确保导致错误的属性在允许的限制范围内。

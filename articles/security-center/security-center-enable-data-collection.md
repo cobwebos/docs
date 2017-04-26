@@ -1,6 +1,6 @@
 ---
 title: "启用 Azure 安全中心中的数据收集 | Microsoft 文档"
-description: " 了解如何启用 Azure 安全中心中的数据收集功能。. "
+description: " 了解如何启用 Azure 安全中心中的数据收集。 "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 04/12/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 57c0228c398ba4ba3fd18a1088472749bed3ac69
-ms.openlocfilehash: 9ebbed56bdbc8385bb651c7aa1e77f369da1d727
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: b942f934ecb25083d779096dc628e342870edc26
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="enable-data-collection-in-azure-security-center"></a>启用 Azure 安全中心中的数据收集
-为了帮助客户防止、检测和应对威胁，Azure 安全中心会收集和处理有关 Azure 虚拟机的数据，包括配置信息、元数据、事件日志等。 初次访问安全中心时，将在订阅中的所有虚拟机上启用数据收集。 建议收集数据，但可在安全中心策略中关闭数据收集以选择退出（请参阅[禁用数据收集](#disabling-data-collection)）。 如果关闭数据收集，安全中心将建议打开该订阅的安全策略中的数据收集。
+为了帮助客户防止、检测和应对威胁，Azure 安全中心会收集和处理有关 Azure 虚拟机的数据，包括配置信息、元数据和事件日志。 初次访问安全中心时，将在订阅中的所有虚拟机上启用数据收集。 建议收集数据，但可在安全中心策略中关闭数据收集以选择退出（请参阅[禁用数据收集](#disabling-data-collection)）。 如果关闭数据收集，安全中心会建议打开该订阅的安全策略中的数据收集。
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。 这并非一份循序渐进的指南。
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/09/2017
 通过 Azure 监视代理和 Azure 安全监视扩展启用数据收集。 Azure 安全监视扩展会扫描各种安全相关配置，并将其发送到 [Windows 事件跟踪](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 的跟踪中。 此外，操作系统会创建事件日志条目。 Azure 监视代理读取事件日志条目和 ETW 跟踪，并将其复制到存储帐户进行分析。 监视代理还将故障转储文件复制到存储帐户。 这是在安全策略中配置的存储帐户。
 
 ## <a name="disabling-data-collection"></a>禁用收集数据
-可随时禁用数据收集，这将自动删除安全中心先前安装的所有监视代理。 必须选择订阅以关闭数据收集。
+可随时禁用数据收集，这将自动删除安全中心先前安装的所有监视代理。 必须选择一个订阅以关闭数据收集。
 
 > [!NOTE]
 > 虽然可以在 Azure 订阅级别和资源组级别设置安全策略，但必须选择一个订阅以关闭数据收集。

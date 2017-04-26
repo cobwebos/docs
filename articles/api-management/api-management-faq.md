@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: ea6b80e289f039a5924fcc2ccf9d71dbbb432982
-ms.openlocfilehash: 2f2676d85a513a152832cfd336c3b643577341b9
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 7d58748c4b0195246fffafe2e5544678b83dfd60
+ms.lasthandoff: 04/14/2017
 
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
@@ -44,6 +44,8 @@ ms.lasthandoff: 02/24/2017
 * [是否可以为后端使用自签名 SSL 证书？](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
 * [为何在尝试克隆 GIT 存储库时得到身份验证失败？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API 管理是否适用于 Azure ExpressRoute ？](#does-api-management-work-with-azure-expressroute)
+* [为什么在 Resource Manager 样式 VNET 中部署 API 管理时需要专用子网？](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
+* [在 VNET 中部署 API 管理时所需的最小子网大小是多少？](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
 * [是否可将 API 管理服务从一个订阅移到另一个订阅？](#can-i-move-an-api-management-service-from-one-subscription-to-another)
 * [导入 API 是否存在限制或已知问题？](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
@@ -114,8 +116,8 @@ ms.lasthandoff: 02/24/2017
 在标准和高级层中，API 管理租户的公共 IP 地址 (VIP) 在租户生存期内是静态的，但有一些例外。 IP 地址在以下情况下更改：
 
 * 服务被删除，然后重新创建。
-* 服务订阅被暂停（例如，由于未付款），然后恢复。
-* 添加或删除 Azure 虚拟网络（只能在高级层使用虚拟网络）。
+* 服务订阅被[暂停](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)或[警告](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)（例如，由于未付款），然后恢复。
+* 添加或删除 Azure 虚拟网络（只能在开发人员层和高级层使用虚拟网络）。
 
 对于多区域部署，仅当区域先空出然后恢复时，区域地址会更改（只能在高级层使用多区域部署）。
 
@@ -144,6 +146,13 @@ API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-ro
 
 ### <a name="does-api-management-work-with-azure-expressroute"></a>API 管理是否适用于 Azure ExpressRoute？
 是的。 API 管理适用于 Azure ExpressRoute。
+
+### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>为什么在 Resource Manager 样式 VNET 中部署 API 管理时需要专用子网？
+API 管理需要专用子网，因为它建立在经典（PAAS V1 层）部署模型之上。 虽然也可以在 Resource Manager VNET（V2 层）中进行部署，但这样会导致后续问题。 Azure 中的经典部署模型与 Resource Manager 模型结合不紧密，因此如果在 V2 层中创建资源，V1 层会毫不知情，这样会发生问题，例如 API 管理会尝试使用已经分配给 NIC（在 V2 上构建）的 IP。
+若要深入了解 Azure 中经典模型和 Resource Manager 模型的差异，请参阅[部署模型的差异](../azure-resource-manager/resource-manager-deployment-model.md)。
+
+### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>在 VNET 中部署 API 管理时所需的最小子网大小是多少？
+部署 API 管理所需的最小子网大小为 [/29](../virtual-network/virtual-networks-faq.md#configuration)，这是 Azure 支持的最小子网大小。
 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>是否可将 API 管理服务从一个订阅移到另一个订阅？
 是的。 若要了解操作方法，请参阅[将资源移动到新资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。

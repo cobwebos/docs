@@ -17,9 +17,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 06a67e4d2134baf54e88708d64981b897ecb74a0
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 7490fe7261c760f2945d67a7f819091fd69b04f8
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -55,13 +55,13 @@ SQL 数据库弹性池是一种简单且经济高效的解决方案，用于管�
 ## <a name="which-databases-go-in-a-pool"></a>在池中有哪些数据库？
 ![弹性池中共享 eDTU 的 SQL 数据库。][1]
 
-最适合添加到弹性池的数据库通常是有时活动，有时不活动。 在上述示例中，你可以看到单一数据库的活动、4 个数据库的活动，最后是包含 20 个数据库的弹性池的活动。 活动随时间而不同的数据库很适合添加到弹性池，因为它们不是永远都在使用中，而且可以共享 eDTU。 并非所有数据库都符合此模式。 具有更稳定的资源需求的数据库更适合“基本”、“标准”和“高级”服务层级，这些层级的资源是单独分配的。
+最适合添加到弹性池的数据库通常是有时活动，有时不活动。 在上述示例中，你可以看到单一数据库的活动、4 个数据库的活动，最后是包含 20 个数据库的弹性池的活动。 活动随时间而不同的数据库很适合添加到弹性池，因为它们不是永远都在使用中，而且可以共享 eDTU。 并非所有数据库都符合此模式。 具有更稳定的资源需求的数据库更适合“基本”、“标准”、“高级”和“高级 RS”服务层，这些层的资源是单独分配的。
 
 [弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
 
 ## <a name="edtu-and-storage-limits-for-elastic-pools"></a>弹性池的 eDTU 和存储限制
 
-下表描述了基本、标准和高级弹性池的特征。
+下表描述了“基本”、“标准”、“高级”和“高级 RS”弹性池的特征。
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
@@ -74,7 +74,7 @@ SQL 数据库弹性池是一种简单且经济高效的解决方案，用于管�
 ### <a name="limits-for-elastic-pools"></a>弹性池的限制
 | 属性 | 说明 |
 |:--- |:--- |
-| 服务层 |“基本”、“标准”或“高级”。 服务层确定性能范围和可配置的存储限制的范围，以及业务连续性选择。 池中的每个数据库都有与池相同的服务层。 “服务层”也被称为“版本”。 |
+| 服务层 |基本、标准、高级或高级 RS。 服务层确定性能范围和可配置的存储限制的范围，以及业务连续性选择。 池中的每个数据库都有与池相同的服务层。 “服务层”也被称为“版本”。 |
 | 每个池的 eDTU 数 |池中的数据库可以共享的 eDTU 的数量上限。 池中的数据库同时使用的 eDTU 总量不能超过此限制。 |
 | 每个池的最大存储空间 (GB) |池中的数据库可以共享的存储量上限（以 GB 为单位）。 池中的数据库使用的存储总量不能超过此限制。 此限制取决于每个池的 eDTU。 如果超出此限制，所有数据库都将变成只读。 每个池的最大存储是指池中数据文件的最大存储，不包括日志文件使用的空间。 |
 | 每个池的数据库的最大数目 |每个池允许的数据库的最大数目。 |
@@ -106,7 +106,7 @@ SQL 数据库弹性池是一种简单且经济高效的解决方案，用于管�
 当数据库因其所在的区域发生事故而不可用时，异地还原会提供默认的恢复选项。 请参阅[还原 Azure SQL 数据库或故障转移到辅助数据库](sql-database-disaster-recovery.md)
 
 ### <a name="active-geo-replication"></a>活动异地复制
-对于具有异地还原无法提供的更强烈的恢复要求的应用程序，可使用 [Azure 门户](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md) 或 [Transact-SQL](sql-database-geo-replication-transact-sql.md) 配置活动异地复制。
+对于具有异地还原无法提供的更强烈的恢复要求的应用程序，请配置[活动异地复制](sql-database-geo-replication-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

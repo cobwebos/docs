@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 2f046ff687985a5c4f83ca7236ce832b4c81ea6e
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: d55892027a01bc9a1be2455d5d9bfee05b6fb982
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -28,6 +28,7 @@ ms.lasthandoff: 03/18/2017
   * 在应用代码中安装 [Application Insights SDK](app-insights-asp-net.md)，或者
   * 在 IIS Web 服务器上运行 [Application Insights 代理](app-insights-monitor-performance-live-website-now.md)，或者
   * 在 Azure Web 应用中添加 [Application Insights 扩展](app-insights-azure-web-apps.md)
+  * Java Web 应用：安装 [Java 代理](app-insights-java-agent.md)
 * 在网页中安装 [JavaScript 代码片段](app-insights-javascript.md)可以捕获浏览器异常。
 * 在某些应用程序框架中或者使用某些设置时，需要执行一些额外的步骤来捕获异常：
   * [Web 窗体](#web-forms)

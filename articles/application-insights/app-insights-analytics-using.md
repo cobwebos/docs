@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: d7f6f9582a3d15563c19d69845836a92a35ee95e
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 8485fd9350672dd0f41e2d5dada57a1940c43f16
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -134,7 +134,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 如果表包含四个或更少的列，可将其固定到仪表板。 只显示前七行。
 
 ### <a name="dashboard-refresh"></a>仪表板刷新
-固定到仪表板的图表大约每半小时通过自动重新运行查询进行刷新。
+固定到仪表板的图表大约每小时通过自动重新运行查询进行刷新。 也可以单击“刷新”按钮。
 
 ### <a name="automatic-simplifications"></a>自动简化
 

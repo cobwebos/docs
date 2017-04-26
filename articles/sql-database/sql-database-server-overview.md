@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: servers
+ms.custom: DBs and servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 79a9e72d29b5522dc3960b79bae7876f21acb4c5
-ms.openlocfilehash: 07181e5d35703cddf8a896badd45e7485c9e07a2
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 430af168e1bd19c15170996247bc7c7a62fe52d4
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -41,8 +42,8 @@ Azure 数据库逻辑服务器：
 - 连接到 master 数据库通过 DMV 提供对与包含资源相关的元数据的访问 
 - 提供应用于其数据库的管理策略的作用域：登录名、防火墙、审核、威胁检测等。 
 - 受父订阅中的配额的限制（每个订阅六个服务器 - [请在此处参阅订阅限制](../azure-subscription-service-limits.md)）
-- 为它包含的资源提供数据库配额和 DTU 配额的作用域（例如 V12 中的 45000 DTU）
-- 是在包含资源上启用的功能的版本控制作用域（最新版本为 V12）
+- 为它包含的资源提供数据库配额和 DTU 配额的作用域（例如 45000 DTU）
+- 是在包含资源上启用的功能的版本控制作用域 
 - 服务器级主体登录名可以管理服务器上的所有数据库
 - 可以包含与本地 SQL Server 实例中的登录名类似的登录名，这些登录名有权访问服务器上的一个或多个数据库，并可以向这些登录名授予有限的管理权限。 有关详细信息，请参阅[登录名](sql-database-manage-logins.md)。
 
@@ -55,7 +56,7 @@ Azure 数据库逻辑服务器：
 
 ## <a name="what-collations-are-supported"></a>支持哪些排序规则？
 
-Microsoft Azure SQL 数据库（包括 master 主数据）使用的默认数据库排序规则是 **SQL_LATIN1_GENERAL_CP1_CI_AS**。其中，**LATIN1_GENERAL** 是英语（美国），**CP1** 是代码页 1252，**CI** 是不区分大小写，**AS** 是区分重音。 建议在创建后不要更改 V12 数据库的排序规则。 有关排序规则的详细信息，请参阅 [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)。
+Microsoft Azure SQL 数据库（包括 master 主数据）使用的默认数据库排序规则是 **SQL_LATIN1_GENERAL_CP1_CI_AS**。其中，**LATIN1_GENERAL** 是英语（美国），**CP1** 是代码页 1252，**CI** 是不区分大小写，**AS** 是区分重音。 建议在创建数据库后不要更改排序规则。 有关排序规则的详细信息，请参阅 [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)。
 
 ## <a name="what-are-the-naming-requirements-for-database-objects"></a>数据库对象的命名要求有哪些？
 
@@ -68,8 +69,8 @@ Microsoft Azure SQL 数据库（包括 master 主数据）使用的默认数据�
 ## <a name="how-do-i-manage-a-logical-server"></a>如何管理逻辑服务器？
 
 可以使用几种方法来管理 Azure SQL 数据库逻辑服务器：
-- [Azure 门户](sql-database-manage-portal.md)
-- [PowerShell](sql-database-manage-powershell.md)
+- [Azure 门户](sql-database-manage-overview.md)
+- [PowerShell](sql-database-manage-overview.md)
 - [REST](/rest/api/sql/)
 
 ## <a name="next-steps"></a>后续步骤
@@ -81,10 +82,5 @@ Microsoft Azure SQL 数据库（包括 master 主数据）使用的默认数据�
 - 了解基于**服务层**的具体资源配额和限制的信息。 有关服务层的概述，请参阅 [SQL 数据库服务层](sql-database-service-tiers.md)。
 - 有关安全概述，请参阅 [Azure SQL 数据库安全概述](sql-database-security-overview.md)。
 - 有关驱动程序可用性和 SQL 数据库支持的信息，请参阅[用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

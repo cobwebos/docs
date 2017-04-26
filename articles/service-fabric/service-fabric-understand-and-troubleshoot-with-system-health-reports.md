@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 04/12/2017
 ms.author: oanapl
 translationtype: Human Translation
-ms.sourcegitcommit: d20b8d5848d1a11326c60d998099571a4ab8056e
-ms.openlocfilehash: 0306b8c38a7dd86dff56f6cc7bb9eab7e0428762
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 93a4e5fc2ec3c4e847f3fe8e76df9f83253eea9b
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -57,7 +57,7 @@ Azure Service Fabric 组件报告包含群集中的所有实体。 [运行状况
 * **后续步骤**：调查网络上邻居丢失的原因（例如，检查群集节点之间的通信）。
 
 ## <a name="node-system-health-reports"></a>节点系统运行状况报告
-**System.FM** 表示故障转移管理器 (Failover Manager) 服务，是管理群集节点信息的主管服务。 每个节点应该都有一个来自 System.FM 的报告，显示其状态。 删除节点状态时，也会删除节点实体（请参阅 [RemoveNodeStateAsync](https://msdn.microsoft.com/library/azure/mt161348.aspx)）。
+**System.FM** 表示故障转移管理器 (Failover Manager) 服务，是管理群集节点信息的主管服务。 每个节点应该都有一个来自 System.FM 的报告，显示其状态。 删除节点状态时，也会删除节点实体（请参阅 [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync)）。
 
 ### <a name="node-updown"></a>节点开启/节点关闭
 当节点加入环时，System.FM 报告为正常（节点已启动且正在运行）。 当节点离开环时，则报告错误（节点已关闭进行升级，或只是发生故障）。 运行状况存储构建的运行状况层次结构依据 System.FM 节点报告在已部署的实体上实施操作。 它将节点视为所有已部署实体的虚拟父项。 如果 System.FM 报告节点处于开启状态，且拥有的实例与在该节点上部署的实体相关联的实例相同，则可以通过查询看到这些实体。 当 System.FM 报告节点关闭或已重新启动（新实例）时，运行状况存储自动清理只能在已关闭节点或该节点的上一实例中存在的已部署实体。
@@ -97,7 +97,7 @@ HealthEvents          :
 * **后续步骤**：如果证书即将过期，则更新证书。
 
 ### <a name="load-capacity-violation"></a>负载容量冲突
-如果 Service Fabric 负载平衡器检测到节点负载容量冲突，则报告警告。
+如果 Service Fabric 负载均衡器检测到节点负载容量冲突，则报告警告。
 
 * **SourceId**：System.PLB
 * **属性**：以 **Capacity** 开头
@@ -486,7 +486,7 @@ Visual Studio 2015 诊断事件：RunAsync 在 **fabric:/HelloWorldStatefulAppli
 * **属性**：**PrimaryReplicationQueueStatus** 或 **SecondaryReplicationQueueStatus**，视副本角色而定
 
 ### <a name="slow-naming-operations"></a>命名操作速度慢
-当命名操作所花时间过长而导致无法接受时，**System.NamingService** 会报告其主副本的运行状况。 [CreateServiceAsync](https://msdn.microsoft.com/library/azure/mt124028.aspx) 或 [DeleteServiceAsync](https://msdn.microsoft.com/library/azure/mt124029.aspx) 都是命名操作的示例。 在 FabricClient 下可找到更多方法，例如，可在[服务管理方法](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.servicemanagementclient.aspx)或[属性管理方法](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.propertymanagementclient.aspx)下找到更多方法。
+当命名操作所花时间过长而导致无法接受时，**System.NamingService** 会报告其主副本的运行状况。 [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) 或 [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) 都是命名操作的示例。 在 FabricClient 下可找到更多方法，例如，可在[服务管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)或[属性管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)下找到更多方法。
 
 > [!NOTE]
 > 命名服务将服务名称解析到群集中的某个位置，并允许用户管理服务名称和属性。 它是一个 Service Fabric 分区型持久服务。 其中一个分区代表“颁发机构所有者”，内含与所有 Service Fabric 名称和服务相关的元数据。 Service Fabric 名称映射到不同的分区，这些分区称为“名称所有者”分区，因此该服务是可扩展的。 阅读有关[命名服务](service-fabric-architecture.md)的更多内容。
@@ -604,7 +604,7 @@ HealthEvents                       :
 对于每个代码包，如果成功激活，则 **System.Hosting** 报告正常。 如果激活失败，则报告配置的警告。 如果 **CodePackage** 无法激活，或者由于错误数超过配置的 **CodePackageHealthErrorThreshold** 而终止，则 Hosting 报告错误。 如果服务包中有多个代码包，则为每个包生成激活报告。
 
 * **SourceId**：System.Hosting
-* **属性**：使用前缀 **CodePackageActivation**，并以 **CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint* 的形式包含代码包的名称和入口点**（例如，**CodePackageActivation:Code:SetupEntryPoint**）
+* **属性**：使用前缀 **CodePackageActivation**，并以 **CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint*** 的形式包含代码包的名称和入口点（例如，**CodePackageActivation:Code:SetupEntryPoint**）
 
 ### <a name="service-type-registration"></a>服务类型注册
 如果服务类型注册成功，则 **System.Hosting** 报告正常。 如果未按时完成注册（时间通过 **ServiceTypeRegistrationTimeout** 配置），则报告错误。 如果因为运行时已关闭而导致服务类型从节点注销， 则 Hosting 报告警告。
