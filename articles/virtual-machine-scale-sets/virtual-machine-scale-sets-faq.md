@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/17/2017
+ms.date: 4/10/2017
 ms.author: negat
 ms.custom: na
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: e207ace4eb5722e08f2020078dfea9129ef1deb8
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 1c7b4c4b7675bfc33e102c9abb4f942a1dd33ad4
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -538,11 +538,33 @@ IP 地址是从指定的子网中选择的。
 
 
 
+## <a name="patching-and-operations"></a>修补和操作
+
+### <a name="how-do-i-create-a-scale-set-in-an-existing-resource-group"></a>如何在现有资源组中创建规模集？
+
+尚不能通过 Azure 门户在现有资源组中创建规模集，但从 Azure Resource Manager 模板部署规模集时，可以指定现有资源组。 也可以在使用 Azure PowerShell 或 CLI 创建规模集时指定现有资源组。
+
+### <a name="can-we-move-a-scale-set-to-another-resource-group"></a>可以将规模集移至另一个资源组吗？
+
+可以，可以将规模集资源移至新的订阅或资源组。
+
+### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>如何将虚拟机规模集更新为新映像？ 如何管理修补？
+
+若要将虚拟机规模集更新为新映像，或管理修补，请参阅[升级虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)。
+
+### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>是否可以在不更改映像的情况下，使用重置映像操作来重置 VM？ （也就是说，将 VM 重置为出厂设置而不是重置为新映像）
+
+可以在不更改映像的情况下，使用重置映像操作来重置 VM。 但是，如果虚拟机规模集使用 `version = latest` 引用了平台映像，则调用 `reimage` 时，VM 可以更新为更高版本的 OS 映像。
+
+有关详细信息，请参阅[管理虚拟机规模集中的所有 VM](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set)。
+
+
+
 ## <a name="troubleshooting"></a>故障排除
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>如何启用启动诊断？
 
-若要启用启动诊断，首先，创建存储帐户。 然后，将此 JSON 块放在虚拟机规模集 **virtualMachineProfile** 中，并更新虚拟机规模集：
+若要启用启动诊断，首先，创建存储帐户。 然后，将此 JSON 块放在虚拟机规模集  **virtualMachineProfile** 中，并更新虚拟机规模集：
 
 ```json
       "diagnosticsProfile": {
@@ -561,21 +583,6 @@ IP 地址是从指定的子网中选择的。
     "serialConsoleLogBlobUri": "https://o0sz3nhtbmkg6geswarm5.blob.core.windows.net/bootdiagnostics-swarmagen-4157d838-8335-4f78-bf0e-b616a99bc8bd/swarm-agent-9574AE92vmss-0_2.4157d838-8335-4f78-bf0e-b616a99bc8bd.serialconsole.log"
   }
 ```
-
- 
-
-## <a name="updates"></a>更新
-
-### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>如何将虚拟机规模集更新为新映像？ 如何管理修补？
-
-若要将虚拟机规模集更新为新映像，或管理修补，请参阅[升级虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)。
-
-### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>是否可以在不更改映像的情况下，使用重置映像操作来重置 VM？ （也就是说，将 VM 重置为出厂设置而不是重置为新映像）
-
-可以在不更改映像的情况下，使用重置映像操作来重置 VM。 但是，如果虚拟机规模集使用 `version = latest` 引用了平台映像，则调用 `reimage` 时，VM 可以更新为更高版本的 OS 映像。
-
-有关详细信息，请参阅[管理虚拟机规模集中的所有 VM](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set)。
-
 
 
 ## <a name="virtual-machine-properties"></a>虚拟机属性

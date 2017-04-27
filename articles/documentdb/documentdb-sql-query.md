@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 04/08/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 5ed72d95ae258d6fa8e808cd72ab6e8a665901c9
-ms.openlocfilehash: 4c72a7c7127f2d387926ac2722aeb3f1e5f7c2a6
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: c1360cb76c6fe8fd5177f13ea67f2109b5777521
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -1411,7 +1411,7 @@ DocumentDB 还支持使用许多内置函数进行常见操作，这些函数可
 | [FLOOR (num_expr)](#bk_floor) | 返回小于或等于指定数值表达式的最大整数。 |
 | [EXP (num_expr)](#bk_exp) | 返回指定数值表达式的指数。 |
 | [LOG (num_expr [,base])](#bk_log) | 返回指定数值表达式的自然对数，或使用指定底数的对数 |
-| [LOG10 (num_expr)](#bk_log10) | 返回指定数值表达式以&10; 为底的对数值。 |
+| [LOG10 (num_expr)](#bk_log10) | 返回指定数值表达式以 10 为底的对数值。 |
 | [ROUND (num_expr)](#bk_round) | 返回一个数值，四舍五入到最接近的整数值。 |
 | [TRUNC (num_expr)](#bk_trunc) | 返回一个数值，截断到最接近的整数值。 |
 | [SQRT (num_expr)](#bk_sqrt) | 返回指定数值表达式的平方根。 |
@@ -1769,6 +1769,7 @@ DocumentDB 查询提供程序执行从 LINQ 查询到 DocumentDB SQL 查询的�
 * **Where**：筛选器转换为 SQL WHERE，且支持 &&、|| 和 ! 与 SQL 运算符之间的转换
 * **SelectMany**：允许将数组展开到 SQL JOIN 子句。 可以用于链/嵌套表达式以对数组元素进行筛选
 * **OrderBy 和 OrderByDescending**：转换为 ORDER BY 升序/降序
+* 用于聚合的 **Count**、**Sum**、**Min**、**Max** 和 **Average** 运算符及其异步等效项 **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync** 和 **AverageAsync**。
 * **CompareTo**：转换为范围比较。 通常用于字符串，因为它们在 .NET 中不可进行比较
 * **Take**：转换为 SQL TOP，用于限制查询中的结果
 * **数学函数**：支持从 .NET 的 Abs、Acos、Asin、Atan、Ceiling、Cos、Exp、Floor、Log、Log10、Pow、Round、Sign、Sin、Sqrt、Tan 和 Truncate 转换为等效的 SQL 内置函数。
@@ -1777,11 +1778,6 @@ DocumentDB 查询提供程序执行从 LINQ 查询到 DocumentDB SQL 查询的�
 * **地理空间扩展函数**：支持从 stub 方法 Distance、Within、IsValid 和 IsValidDetailed 转换为等效的 SQL 内置函数。
 * **用户定义的函数扩展函数**：支持从 stub 方法 UserDefinedFunctionProvider.Invoke 转换为相应的用户的定义函数。
 * **其他**：支持联合与条件运算符的转换。 可以根据上下文将 Contains 转换为字符串 CONTAINS、ARRAY_CONTAINS 或 SQL IN。
-
-> [!NOTE]
-> 聚合运算符 **Count、Sum、Min、Max 和 Average** 目前不受支持，但可以在未来版本的 SDK 中使用。  
-> 
-> 
 
 ### <a name="sql-query-operators"></a>SQL 查询运算符
 以下示例演示了一些标准 LINQ 查询运算符是如何转换为 DocumentDB 查询的。
