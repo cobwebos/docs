@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: af3ba5a4d1bd457f19038b9917ce55920e5e882b
-ms.openlocfilehash: 7d97e0f8be183c8858520d795ac28b7ad63a6dae
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: f8ecb68fddf4293592e546c0c10d0c86664bd090
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/22/2017
 [!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
 
 ## <a name="about-this-tutorial"></a>关于本教程
-本教程将介绍如何针对 Microsoft Azure 文件存储服务执行基本的操作。 通过以 C++ 编写的示例，学习如何创建共享和目录，以及如何上传、列出和删除文件。 如果不熟悉 Microsoft Azure 文件存储服务，学习后续部分的概念对于理解示例有帮助。
+本教程将介绍如何针对 Microsoft Azure 文件存储服务执行基本的操作。 通过用 C++ 编写的示例，学习如何创建共享和目录，以及如何上传、列出和删除文件。 如果不熟悉 Microsoft Azure 文件存储服务，学习后续部分的概念对于理解示例有帮助。
 
 [!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 

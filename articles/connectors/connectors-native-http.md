@@ -1,11 +1,11 @@
 ---
-title: "在逻辑应用中添加 HTTP 操作 | Microsoft Docs"
-description: "使用属性的 HTTP 操作的概述"
-services: 
-documentationcenter: 
+title: "通过 HTTP 向任意终结点通信 - Azure 逻辑应用 | Microsoft Docs"
+description: "创建可以通过 HTTP 向任意终结点通信的逻辑应用"
+services: logic-apps
 author: jeffhollan
 manager: anneta
 editor: 
+documentationcenter: 
 tags: connectors
 ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.service: logic-apps
@@ -14,14 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
-ms.author: jehollan
+ms.author: jehollan; LADocs
 translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: d3514dad84bea024ad6215711877a9784a8d8ffd
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: d422a07a27ffa62a673bd2d471ae4fc837251dee
+ms.lasthandoff: 04/11/2017
 
 
 ---
 # <a name="get-started-with-the-http-action"></a>HTTP 操作入门
+
 借助 HTTP 操作，可以扩展组织的工作流并通过 HTTP 向任意终结点通信。
 
 你可以：
@@ -32,19 +34,21 @@ ms.openlocfilehash: d3514dad84bea024ad6215711877a9784a8d8ffd
 若要开始在逻辑应用中使用 HTTP 操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="use-the-http-trigger"></a>使用 HTTP 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。
+触发器是可用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。
 
 下面是显示如何在逻辑应用设计器中设置 HTTP 触发器的示例序列。
 
 1. 在逻辑应用中添加 HTTP 触发器。
 2. 为要轮询的 HTTP 终结点填写参数。
 3. 修改关于轮询频率的重复周期间隔。
-4. 逻辑应用现在可对每个检查期间返回的任何内容触发。
 
-![HTTP 触发器](./media/connectors-native-http/using-trigger.png)
+   逻辑应用现在可由每个检查期间返回的任何内容触发。
+
+   ![HTTP 触发器](./media/connectors-native-http/using-trigger.png)
 
 ### <a name="how-the-http-trigger-works"></a>HTTP 触发器工作原理
-HTTP 触发器按重复间隔对 HTTP 终结点进行调用。 默认情况下，小于 300 的任何 HTTP 响应代码都会导致应用运行。 可在代码视图中添加在 HTTP 调用后进行评估的条件，以确定逻辑应用是否应触发。 下面是一个每当返回的状态代码大于或等于 `400` 时触发的 HTTP 触发器示例。
+
+HTTP 触发器按重复间隔对 HTTP 终结点发送调用。 任何低于 300 的 HTTP 响应代码默认会引起逻辑应用的运行。 若要指定应触发的逻辑应用，可以在代码视图中编辑逻辑应用，并添加在 HTTP 调用后计算的条件。 以下是一个当返回的状态代码大于或等于 `400` 时触发的 HTTP 触发器示例。
 
 ```javascript
 "Http":
@@ -72,17 +76,20 @@ HTTP 触发器按重复间隔对 HTTP 终结点进行调用。 默认情况下�
 [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger) 上提供有关 HTTP 触发器参数的完整详细信息。
 
 ## <a name="use-the-http-action"></a>使用 HTTP 操作
-操作是由在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息](connectors-overview.md)。
 
-1. 选择“新步骤”按钮。
-2. 选择“添加操作”。
-3. 在操作搜索框中，键入 **http** 列出 HTTP 操作。
+操作是由在逻辑应用中定义的工作流执行的操作。 
+[了解有关操作的详细信息](connectors-overview.md)。
+
+1. 选择“新步骤” > “添加操作”。
+3. 在操作搜索框中，键入“http”列出 HTTP 操作。
    
     ![选择 HTTP 操作](./media/connectors-native-http/using-action-1.png)
-4. 添加 HTTP 调用所需的任何参数。
+
+4. 添加 HTTP 调用的任何必选参数。
    
     ![完成 HTTP 操作](./media/connectors-native-http/using-action-2.png)
-5. 单击工具栏左上角保存。 逻辑应用将保存并发布（激活）。
+
+5. 在设计器工具栏上，单击“保存”。 同时会保存逻辑应用，并发布已激活的逻辑应用。
 
 ## <a name="http-trigger"></a>HTTP 触发器
 下面是此连接器支持的触发器的详细信息。 HTTP 连接器具有一个触发器。
@@ -132,21 +139,21 @@ HTTP 触发器按重复间隔对 HTTP 终结点进行调用。 默认情况下�
 * [Azure Active Directory (Azure AD) OAuth 身份验证](#azure-active-directory-oauth-authentication)
 
 #### <a name="basic-authentication"></a>基本身份验证
+
 基本身份验证需要以下身份验证对象。
 * 表示它是必填字段。
 
 | 属性名称 | 数据类型 | 说明 |
 | --- | --- | --- |
 | 类型* |type |身份验证类型（对于基本身份验证，必须是 `Basic`） |
-| Username* |username |要进行身份验证的用户名 |
+| 用户名* |username |要进行身份验证的用户名 |
 | 密码* |password |要进行身份验证的密码 |
 
 > [!TIP]
-> 如果要使用无法从定义检索的密码，则使用 `securestring` 参数和 `@parameters()` [工作流定义函数](http://aka.ms/logicappdocs)。
-> 
-> 
+> 如果要使用无法从定义检索的密码，则使用 `securestring` 参数和 `@parameters()` 
+> [ 工作流定义函数](http://aka.ms/logicappdocs)。
 
-因此，将在身份验证字段中创建如下对象：
+例如：
 
 ```javascript
 {
@@ -157,6 +164,7 @@ HTTP 触发器按重复间隔对 HTTP 终结点进行调用。 默认情况下�
 ```
 
 #### <a name="client-certificate-authentication"></a>客户端证书身份验证
+
 客户端证书身份验证需要以下身份验证对象。 * 表示它是必填字段。
 
 | 属性名称 | 数据类型 | 说明 |
@@ -166,9 +174,8 @@ HTTP 触发器按重复间隔对 HTTP 终结点进行调用。 默认情况下�
 | 密码* |password |用于访问 PFX 文件的密码 |
 
 > [!TIP]
-> 可使用 `securestring` 参数和 `@parameters()` [工作流定义函数](http://aka.ms/logicappdocs)使用将在保存逻辑应用后不可读的参数。
-> 
-> 
+> 若要使用定义中将在保存逻辑应用后不可读的参数，可使用 `securestring` 参数和 `@parameters()` 
+> [工作流定义函数](http://aka.ms/logicappdocs)。
 
 例如：
 
@@ -187,7 +194,7 @@ Azure AD OAuth 身份验证需要以下身份验证对象。 * 表示它是必�
 | --- | --- | --- |
 | 类型* |type |身份验证类型（对于 Azure AD OAuth，必须是 `ActiveDirectoryOAuth`） |
 | 租户* |tenant |Azure AD 租户的租户标识符 |
-| 受众* |audience |设置为 `https://management.core.windows.net/` |
+| 受众* |audience |正在请求授权使用的资源。 例如： `https://management.core.windows.net/` |
 | 客户端 ID* |clientId |Azure AD 应用程序的客户端标识符 |
 | 机密* |secret |正在请求令牌的客户端的机密 |
 
@@ -210,10 +217,5 @@ Azure AD OAuth 身份验证需要以下身份验证对象。 * 表示它是必�
 
 ## <a name="next-steps"></a>后续步骤
 现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

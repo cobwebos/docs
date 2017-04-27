@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 04/03/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: bd2240678fed44db748ae062bdf91e457159b4a2
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6d893efd775ff6b55524ba3a621d8248adbdd432
+ms.lasthandoff: 04/03/2017
 
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>将连接器与 Azure AD Connect Sync Service Manager 配合使用
@@ -67,6 +67,28 @@ ms.lasthandoff: 03/04/2017
 例如，如果进行子树搜索，将获取某个 OU 中的所有对象。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)  
 可以从此网格中选择一个对象，选择“属性”，并从源连接器空间到 Metaverse 再到目标连接器空间一直[跟踪对象](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)。
+
+### <a name="changing-the-ad-ds-account-password"></a>更改 AD DS 帐户密码
+如果更改帐户密码，Synchronization Service 将不再能将更改导入/导出到本地 AD。   可能会看到如下内容：
+
+- AD 连接器的导入/导出步骤失败，错误为“no-start-credentials”。
+- 在 Windows 事件查看器下，应用程序事件日志包含一个错误，事件 ID 为 6000，消息为“管理代理‘contoso.com’未能运行，因为凭据无效”。
+
+若要解决此问题，请使用以下方法更新 AD DS 用户帐户：
+
+
+1. 启动 Synchronization Service Manager（“开始”→ Synchronization Service）。
+</br>![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)
+2. 转到“连接器”选项卡。
+3. 选择配置为使用 AD DS 帐户的 AD 连接器。
+4. 在“操作”下，选择“属性”。
+5. 在弹出对话框中，选择“连接到 Active Directory 林”：
+6. 林名称指示相应的本地 AD。
+7. 用户名指示用于同步的 AD DS 帐户。
+8. 在密码文本框 ![Azure AD Connect 同步加密密钥实用程序](media/active-directory-aadconnectsync-encryption-key/key6.png)中输入 AD DS 帐户的新密码
+9. 单击“确定”以保存新密码，并重启 Synchronization Service 以从内存缓存中删除旧密码。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。

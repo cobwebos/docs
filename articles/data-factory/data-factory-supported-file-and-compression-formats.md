@@ -12,17 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 03/29/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: edef5fbc015f6b6ba01aa2bfc3d908e6f11159cc
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 06f7b38f5d08f2182f08d38a11dec526042c1828
+ms.lasthandoff: 03/31/2017
 
 
 ---
 
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure 数据工厂支持的文件和压缩格式
+*本主题适用于以下连接器：[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[文件系统](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md) 和 [SFTP](data-factory-sftp-connector.md)。*
+
 Azure 数据工厂支持以下文件格式类型：
 
 * [文本格式](#text-format)
@@ -47,7 +49,7 @@ Azure 数据工厂支持以下文件格式类型：
 | treatEmptyAsNull |指定从输入文件读取数据时，是否将 null 或空字符串视为 null 值。 |**True（默认值）**<br/>False |否 |
 
 ### <a name="textformat-example"></a>TextFormat 示例
-在某个数据集的以下 JSON 定义中，指定了一些可选属性。 
+在某个数据集的以下 JSON 定义中，指定了一些可选属性。
 
 ```json
 "typeProperties":
@@ -80,7 +82,7 @@ Azure 数据工厂支持以下文件格式类型：
 * 你要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
 
 ## <a name="json-format"></a>JSON 格式
-若要**在 DocumentDB 中按原样导入/导出 JSON 文件**，请参阅[将数据移入/移出 DocumentDB](data-factory-azure-documentdb-connector.md) 一文中的[导入/导出 JSON 文档](data-factory-azure-documentdb-connector.md#importexport-json-documents)部分。 
+若要**在 DocumentDB 中按原样导入/导出 JSON 文件**，请参阅[将数据移入/移出 DocumentDB](data-factory-azure-documentdb-connector.md) 一文中的[导入/导出 JSON 文档](data-factory-azure-documentdb-connector.md#importexport-json-documents)部分。
 
 若要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` 节中的 `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
@@ -452,7 +454,7 @@ Azure 数据工厂支持以下文件格式类型：
 * 不支持复杂数据类型（MAP、LIST）
 * Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，数据工厂会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。
 
-## <a name="compression-support"></a>压缩支持 
+## <a name="compression-support"></a>压缩支持
 处理大型数据集可能导致 I/O 和网络瓶颈。 因此，存储中的压缩数据不但可以跨网络加速数据传输和节省磁盘空间，也能在处理大数据时带来显著的性能提升。 目前，Azure Blob 或本地文件系统等基于文件的数据存储支持压缩。  
 
 若要为数据集指定压缩，请在数据集 JSON 中使用 **compression** 属性，如以下示例所示：   
@@ -511,3 +513,4 @@ Azure 数据工厂支持以下文件格式类型：
 - [HDFS](data-factory-hdfs-connector.md)
 - [文件系统](data-factory-onprem-file-system-connector.md)
 - [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
+

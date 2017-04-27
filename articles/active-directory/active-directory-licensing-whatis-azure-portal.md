@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 04/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: b5153d2339f688b22796789d74cb9117985a43d2
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 52c3e88689441045c3bd34ea3ab17a8a1d270f23
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -51,7 +51,7 @@ Microsoft 云服务（如 Office 365、企业移动性 + 安全性、Dynamics CR
 
 - 在某些情况下，无法向用户分配许可证。 例如，当租户中可用许可证不足时，或者同时分配了冲突服务时。 对于 Azure AD 无法为其完全处理组许可证的用户，管理员有权访问其信息。 然后，可以根据这些信息采取纠正措施。
 
-- 在公共预览期，租户需要 Azure AD 基本版或高级版的付费或试用订阅才能使用基于组的许可证管理。 此外，从组中继承任何许可证的每个用户都必须分配到付费 Azure AD 版本许可证。
+- 在公共预览期，租户需要 Azure AD 基本版或高级版的付费或试用订阅才能使用基于组的许可证管理。
 
 ## <a name="next-steps"></a>后续步骤
 

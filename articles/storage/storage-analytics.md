@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 4680985e5c66444ca8a356cc92d45dc0f1838f55
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: da581b2e22f85152ae7bc5f0d403b2fc0aaf0e54
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -86,7 +86,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 | DD |用两位数表示的日志月份。 例如：07。 |
 | hh |用两位数表示的日志起始小时，采用 24 小时 UTC 格式。 例如：18。 |
 | mm |用两位数表示的日志起始分钟。 最新的存储分析版本中不支持该值，其值始终为 00。 |
-| <counter> |从零开始且具有六位数字的计数器，表示在&1; 小时内为存储服务生成的日志 Blob 数。 此计数器从 000000 开始。 例如：000001。 |
+| <counter> |从零开始且具有六位数字的计数器，表示在 1 小时内为存储服务生成的日志 Blob 数。 此计数器从 000000 开始。 例如：000001。 |
 
 下面是组合前述示例的完整示例日志名称。
 
@@ -116,7 +116,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 * LogVersion=1.0
 
 ### <a name="accessing-logging-data"></a>访问日志记录数据
-可以使用 Blob 服务 API（包括 Azure 托管库提供的 .NET API）访问 `$logs` 容器中的所有数据。 存储帐户管理员可以读取和删除日志，但不能创建或更新日志。 在查询日志时，可以使用日志的元数据和日志名称。 给定小时的日志可能顺序不正确，但元数据始终指定日志项的时间范围。 因此，在搜索特定日志时，你可以使用日志名称和元数据组合。
+可以使用 Blob 服务 API（包括 Azure 托管库提供的 .NET API）访问 `$logs` 容器中的所有数据。 存储帐户管理员可以读取和删除日志，但不能创建或更新日志。 在查询日志时，可以使用日志的元数据和日志名称。 给定小时的日志可能顺序不正确，但元数据始终指定日志中日志项的时间范围。 因此，在搜索特定日志时，你可以使用日志名称和元数据组合。
 
 ## <a name="about-storage-analytics-metrics"></a>关于存储分析度量值
 存储分析可存储一些度量值，这些度量值包括有关存储服务请求的聚合事务统计信息和容量数据。 在 API 操作级别以及存储服务级别报告事务，并在存储服务级别报告容量。 度量值数据可用于分析存储服务使用情况，诊断对存储服务所发出请求的问题以及提高使用服务的应用程序的性能。
@@ -138,11 +138,11 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 > 
 > 
 
-每天记录存储帐户的 BLOB 服务的容量数据，并写入两个表实体。 一个实体提供用户数据的统计信息，另一个实体提供有关存储分析所使用的 `$logs` Blob 容器的统计信息。 `$MetricsCapacityBlob` 表包含以下统计信息：
+每天记录存储帐户的 Blob 服务的容量数据，并写入两个表实体。 一个实体提供用户数据的统计信息，另一个实体提供有关存储分析所使用的 `$logs` Blob 容器的统计信息。 `$MetricsCapacityBlob` 表包含以下统计信息：
 
 * **Capacity**：存储帐户的 Blob 服务使用的存储量（字节）。
-* **ContainerCount**：存储帐户的 Blob 服务中的 Blob 容器数。
-* **ObjectCount**：存储帐户的 Blob 服务中的提交和未提交的块或页 Blob 数量。
+* **ContainerCount**：存储帐户的 Blob 服务中的 blob 容器数。
+* **ObjectCount**：存储帐户的 Blob 服务中的提交和未提交的块或页 blob 数量。
 
 有关容量指标的详细信息，请参阅[存储分析指标表架构](https://msdn.microsoft.com/library/hh343264.aspx)。
 
@@ -151,7 +151,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 
 | 度量值级别 | 表名 | 支持的版本 |
 | --- | --- | --- |
-| 每小时度量值，主位置 |$MetricsTransactionsBlob <br/>$MetricsTransactionsTable <br/> $MetricsTransactionsQueue |仅限 2013-08-15 之前的版本。 虽然仍然支持这些名称，但还是建议你改为使用下面列出的表。 |
+| 每小时度量值，主位置 |$MetricsTransactionsBlob <br/>$MetricsTransactionsTable <br/> $MetricsTransactionsQueue |仅限 2013-08-15 之前的版本。 虽然仍然支持这些名称，但还是建议改用下面列出的表。 |
 | 每小时度量值，主位置 |$MetricsHourPrimaryTransactionsBlob <br/>$MetricsHourPrimaryTransactionsTable <br/>$MetricsHourPrimaryTransactionsQueue |所有版本，包括 2013-08-15。 |
 | 分钟度量值，主位置 |$MetricsMinutePrimaryTransactionsBlob <br/>$MetricsMinutePrimaryTransactionsTable <br/>$MetricsMinutePrimaryTransactionsQueue |所有版本，包括 2013-08-15。 |
 | 每小时度量值，辅助位置 |$MetricsHourSecondaryTransactionsBlob <br/>$MetricsHourSecondaryTransactionsTable <br/>$MetricsHourSecondaryTransactionsQueue |所有版本，包括 2013-08-15。 必须启用读访问的地域冗余复制。 |

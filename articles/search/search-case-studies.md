@@ -16,8 +16,9 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 197e5eba551d60ec33bcb5705bfa13f145554b74
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: e7cbbdc606920b9698b30e4b7a9c3325a0f866e2
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -42,8 +43,8 @@ JLL（以前称为 Jones Lang LaSalle）希望通过充分利用云，更改其�
 ## <a name="weichert-realtorshttpscustomersmicrosoftcompagescustomerstoryaspxrecid21252"></a>[Weichert Realtors](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=21252)
 Weichert Realtors 正在移动到云，这会使公司开展其业务的方式发生重大转变。 通过迁移到 Microsoft Azure，公司可以降低 60 %的运营成本（因为不再需要昂贵的本地硬件和软件）并使用强大的搜索功能更新其 CRM 解决方案，还生成了各种对将来业务至关重要的新数据服务。 [了解详细信息...](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=21252)
 
-## <a name="whattopediacomsearch-dev-case-study-whattopediamd"></a>[Whattopedia.com](search-dev-case-study-whattopedia.md)
-了解一家瑞典创业公司如何构建一个通过高度相关的范围搜索体验将消费者与零售商联系在一起的信息门户，类似于旅游门户如何将处于陌生地区的旅行者与酒店、餐馆和娱乐匹配在一起。[了解详细信息...](search-dev-case-study-whattopedia.md)
+## <a name="whattopediacom"></a>Whattopedia.com
+了解一家瑞典创业公司如何构建一个通过高度相关的范围搜索体验将消费者与零售商联系在一起的信息门户，类似于旅游门户如何将处于陌生地区的旅行者与酒店、餐馆和娱乐匹配在一起。
 
 <!--Image References -- here for future reference. Had to -->
 [1]: ./media/search-case-studies/autotrader_m.png
@@ -52,9 +53,4 @@ Weichert Realtors 正在移动到云，这会使公司开展其业务的方式�
 [4]: ./media/search-case-studies/medihoo_m.png
 [5]: ./media/search-case-studies/weichert_m.png
 [xomni]: ./media/search-case-studies/xomni_m.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

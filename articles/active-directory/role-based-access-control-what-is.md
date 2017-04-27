@@ -1,5 +1,5 @@
 ---
-title: "管理角色的访问权限和权限 - Azure RBAC | Microsoft Docs"
+title: "使用 RBAC 管理访问和权限 — Azure RBAC | Microsoft Docs"
 description: "Azure 门户中具有 Azure 基于角色的访问控制的访问管理入门。 在目录中使用角色分配来分配权限。"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/23/2017
+ms.date: 04/03/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d00ba4e6d1abd62e5a0d5a9d5bb229d3fa64b473
-ms.openlocfilehash: fb12fb78d4257fc8264bd476de70671eb8264323
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: aa31b373e67d4742f7697e2ec6958e108535f746
+ms.lasthandoff: 04/07/2017
 
 
 ---
-# <a name="get-started-with-access-management-in-the-azure-portal"></a>Azure 门户中的访问管理入门
+# <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Azure 门户中基于角色的访问控制入门
 面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，攻击者可轻松威胁帐户。 权限太少，员工无法有效完成其工作。 Azure 基于角色的访问控制 (RBAC) 通过对 Azure 提供细致的访问管理帮助解决此问题。
 
 使用 RBAC，你可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对你的 Azure 订阅或资源的无限权限，你可以仅允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
@@ -67,9 +68,4 @@ Azure RBAC 仅支持 Azure 门户和 Azure Resource Manager API 中的 Azure 资
 * [Azure 门户中基于角色的访问控制](role-based-access-control-configure.md)入门。
 * 请参阅 [RBAC 内置角色](role-based-access-built-in-roles.md)
 * 定义你在 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

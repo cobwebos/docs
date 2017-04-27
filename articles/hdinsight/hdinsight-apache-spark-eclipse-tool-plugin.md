@@ -1,6 +1,6 @@
 ---
 title: "使用适用于 Eclipse 的 Azure 工具包为 Spark 创建 Scala 应用程序 | Microsoft Docs"
-description: "了解如何创建要在 HDInsight Spark 群集中运行的独立 Spark 应用程序。"
+description: "在 Azure Toolkit for Eclipse 中使用 HDInsight 工具开发以 Scala 编写的 Spark 应用程序，并直接从 Eclipse IDE 将其提交到 HDInsight Spark 群集。"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -17,14 +17,15 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: b304f66f71142606391ecbb3f29b917c32ba876a
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 6dde4684e4bbb8eb79c69b620c7f52e085cb40c6
+ms.lasthandoff: 04/06/2017
 
 
 ---
-# <a name="use-hdinsight-tools-in-azure-toolkit-for-eclipse-to-create-spark-applications-for-hdinsight-spark-cluster"></a>使用适用于 Eclipse 的 Azure 工具包中的 HDInsight 工具为 HDInsight Spark 群集创建 Spark 应用程序
-本文提供有关使用 Azure Toolkit for Eclipse 中的 HDInsight 工具开发用 Scala 编写的 Spark 应用程序并将其提交到 HDInsight Spark 群集的分步指导。 可以按照多种不同的方式使用这些工具：
+# <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 创建用于 HDInsight 群集的 Spark 应用程序
+
+在 Azure Toolkit for Eclipse 中使用 HDInsight 工具开发以 Scala 编写的 Spark 应用程序，并直接从 Eclipse IDE 将其提交到 HDInsight Spark 群集。 可以通过多种不同方式使用 HDInsight 工具插件：
 
 * 在 HDInsight Spark 群集中开发和提交 Scala Spark 应用程序
 * 访问 Azure HDInsight Spark 群集资源

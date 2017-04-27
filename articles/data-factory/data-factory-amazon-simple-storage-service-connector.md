@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 23d0092915c98da54ed486aed22afba4839befd1
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 27f37b3fb441f1269cc8df5b7d60446ce9aade9a
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="move-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务移动数据
-本文介绍如何使用 Azure 数据工厂中的复制活动从 Amazon Simple Storage Service (S3) 移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
+本文介绍如何使用 Azure 数据工厂中的复制活动从 Amazon Simple Storage Service (S3) 移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
 可以将数据从 Amazon Simple Storage Service (S3) 复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Amazon S3 移至其他数据存储，但不支持将数据从其他数据存储移至 Amazon S3。
 
@@ -39,17 +39,17 @@ ms.lasthandoff: 03/30/2017
 
 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
-无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
-2. 创建**数据集**以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
+2. 创建**数据集**以表示复制操作的输入和输出数据。
+3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从 Amazon S3 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Amazon S3 复制到 Azure Blob](#json-example-copy-data-from-amazon-s3-to-azure-blob) 部分。 
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从 Amazon S3 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Amazon S3 复制到 Azure Blob](#json-example-copy-data-from-amazon-s3-to-azure-blob) 部分。
 
-对于特定于 Amazon S3 的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息： 
+对于特定于 Amazon S3 的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 创建 **AwsAccessKey** 类型的链接服务，以便将 Amazon S3 数据存储链接到数据工厂。 下表提供 Amazon S3 (AwsAccessKey) 链接服务专属 JSON 元素的说明。
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/30/2017
 | accessKeyID |机密访问键 ID。 |字符串 |是 |
 | secretAccessKey |机密访问键本身。 |加密的机密字符串 |是 |
 
-下面是一个示例： 
+下面是一个示例：
 
 ```json
 {
@@ -162,9 +162,11 @@ ms.lasthandoff: 03/30/2017
 | --- | --- | --- | --- |
 | recursive |指定是否以递归方式列出目录下的 S3 对象。 |true/false |否 |
 
+## <a name="supported-file-and-compression-formats"></a>支持的文件和压缩格式
+请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob"></a>JSON 示例：将数据从 Amazon S3 复制到 Azure Blob
-此示例演示如何将数据从 Amazon S3 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。 
+此示例演示如何将数据从 Amazon S3 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 此示例提供了以下数据工厂实体的 JSON 定义。 可以通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 使用这些定义创建管道，以便将数据从 Amazon S3 复制到 Azure Blob 存储。   
 

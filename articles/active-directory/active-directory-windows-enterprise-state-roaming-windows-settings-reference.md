@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 9b88b18e32e6a5ef6c0a0195e649fe2862583a0b
-ms.openlocfilehash: c2c50ff6e92cf42a7d309afafb01210c4edabbe0
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5082ed8d2f41e72fa979b978e2ac0b0840fdcdac
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -89,7 +89,19 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **设备**：已连接的共享打印机 |X |X |其他 |
 | **Microsoft Edge 浏览器**：读取列表 |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：收藏夹 |sync |sync |内部 |
-| **Microsoft Edge 浏览器**：所有其他 Edge 设置 |X |X | |
+| **Microsoft Edge 浏览器**：热门网站 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：键入的 URL <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：收藏夹栏设置 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：显示主页按钮 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：阻止弹出窗口 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：询问如何处理每个下载 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：提出保存密码 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：发送 Do Not Track 请求 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：保存窗体项 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：键入时显示搜索和站点建议 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：cookie 首选项 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：允许站点保存设备中受保护的媒体许可证 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge 浏览器**：屏幕阅读器设置 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **高对比度**：打开或关闭 |sync |X |轻松访问 |
 | **高对比度**：主题设置 |sync |X |轻松访问 |
 | **Internet Explorer**：打开选项卡（URL 和标题） |sync |sync |Internet Explorer |
@@ -158,6 +170,9 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **键入**：键入时播放键的声音 |sync |backup |语言 |
 | **键入**：触摸键盘的个性化数据 |sync |backup |语言 |
 | **Wi-Fi**：Wi-Fi 配置文件（仅 WPA） |sync |sync |密码 |
+
+###### <a name="footnote-1"></a>脚注 1
+Windows Creators 更新（内部版本 15063）受支持的最低 OS 版本。 
 
 ## <a name="related-topics"></a>相关主题
 * [企业状态漫游概述](active-directory-windows-enterprise-state-roaming-overview.md)

@@ -15,14 +15,15 @@ ms.workload: tbd
 ms.date: 10/04/2016
 ms.author: himad
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 143a12ef975aa915ab28a66e20df1b586925daab
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 700761e24565310df0792a209ce6e41699f3d0e8
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="creating-endpoints"></a>创建终结点
 > [!NOTE]
-> 本主题介绍适用于经典 Web 服务的技术。
+>  本主题介绍适用于**经典**机器学习 Web 服务的技术。
 > 
 > 
 
@@ -71,10 +72,5 @@ ms.openlocfilehash: 143a12ef975aa915ab28a66e20df1b586925daab
 
 ## <a name="next-steps"></a>后续步骤
 [如何使用已发布的 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

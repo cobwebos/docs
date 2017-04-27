@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: d61e50b7440dcd107df3e5dd085a36b149779553
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 178cd0e1c20947c952a2abb4bad253272da9fcd4
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -132,6 +132,8 @@ BackendAddressPoolsText：
 * 确保已根据[指南](application-gateway-create-probe-ps.md)正确指定了探测。
 * 如果在应用程序网关中设置了单站点，则默认情况下，除非已在自定义探测中进行配置，否则应将主机名指定为“127.0.0.1”。
 * 确保对 http://\<host\>:\<port\>\<path\> 的调用返回 HTTP 结果代码 200。
+* 确保 Interval、Time-out 和 UnhealtyThreshold 都在可接受的范围内。
+* 如果使用 HTTPS 探测器，请通过在后端服务器本身上配置回退证书，确保后端服务器不需要 SNI。 
 * 确保 Interval、Time-out 和 UnhealtyThreshold 都在可接受的范围内。
 
 ## <a name="request-time-out"></a>请求超时

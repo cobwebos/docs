@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 03/30/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 9ee7213aa30a11b13d4aa091b403b8b27fb78197
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: bb6f3a7710c52a210ea8014430285ba8917cc895
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -31,9 +31,10 @@ ms.lasthandoff: 03/18/2017
 * Azure 订阅或 [Azure 试用版订阅](https://azure.microsoft.com/pricing/free-trial/)。 此订阅仅用来访问 Azure 门户，不用于使用 Azure AD Connect。 如果使用 PowerShell 或 Office 365，则无需 Azure 订阅即可使用 Azure AD Connect。 如果你有 Office 365 许可证，则还可以使用 Office 365 门户。 使用付费的 Office 365 许可证，还可以从 Office 365 门户访问 Azure 门户。
   * 还可以使用 [Azure 门户](https://portal.azure.com)中的 Azure AD 预览版功能。 此门户不需要 Azure 许可证。
 * [添加并验证要在 Azure AD 中使用的域](../active-directory-add-domain.md)。 例如，如果计划让用户使用 contoso.com，请确保此域已经过验证，并且不是直接使用 contoso.onmicrosoft.com 默认域。
-* 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制将增加到 30 万个对象。 如果在 Azure AD 中需要更多的对象，则需要开具支持案例来请求增大此限制。 如果需要 50 万个以上的对象，则需要购买 Office 365、Azure AD Basic、Azure AD Premium 或企业移动性套件等许可证。
+* 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制将增加到 30 万个对象。 如果在 Azure AD 中需要更多的对象，则需要开具支持案例来请求增大此限制。 如果需要 50 万个以上的对象，则需要购买 Office 365、Azure AD Basic、Azure AD Premium 或企业移动性和安全性等许可证。
 
 ### <a name="prepare-your-on-premises-data"></a>准备本地数据
+* 使用 [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) 确定目录中的错误，如重复项和格式设置问题，然后同步到 Azure AD 和 Office 365。
 * 查看[可以在 Azure AD 中启用的可选同步功能](active-directory-aadconnectsyncservice-features.md)并评估要启用哪些功能。
 
 ### <a name="on-premises-active-directory"></a>本地 Active Directory
@@ -42,13 +43,15 @@ ms.lasthandoff: 03/18/2017
 * Azure AD 使用的域控制器必须可写。 **不支持**使用 RODC（只读域控制器），并且 Azure AD Connect 不会遵循任何写重定向。
 * **不支持**使用具有 SLD（单标签域）的本地林/域。
 * **不支持**使用具有“点”（名称包含句点“.”）NetBios 名称的本地林/域。
+* 建议[启用 Active Directory 回收站](active-directory-aadconnectsync-recycle-bin.md)。
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect 服务器
 * 不能在 Small Business Server 或 Windows Server Essentials 上安装 Azure AD Connect。 该服务器必须使用 Windows Server Standard 或更高版本。
 * 必须在 Azure AD Connect 服务器上安装完整的 GUI。 **不支持**在服务器核心上安装 GUI。
 * Azure AD Connect 必须安装在 Windows Server 2008 或更高版本上。 使用快速设置时，此服务器可以是域控制器或成员服务器。 如果使用自定义设置，服务器也可以是独立服务器，并且不需要加入域。
-* 如果在 Windows Server 2008 上安装 Azure AD Connect，请确保从 Windows Update 应用最新的修补程序。 在未修补的服务器上无法启动安装。
+* 如果在 Windows Server 2008 或 Windows Server 2008 R2 上安装 Azure AD Connect，请确保从 Windows Update 应用最新的修补程序。 在未修补的服务器上无法启动安装。
 * 如果打算使用**密码同步**功能，则必须在 Windows Server 2008 R2 SP1 或更高版本上安装 Azure AD Connect 服务器。
+* 如果打算使用**组托管服务帐户**，则 Azure AD Connect 服务器必须位于 Windows Server 2012 或更高版本上。
 * Azure AD Connect 服务器必须安装 [.NET Framework 4.5.1](#component-prerequisites) 或更高版本和 [Microsoft PowerShell 3.0](#component-prerequisites) 或更高版本。
 * 如果正在部署 Active Directory 联合身份验证服务，则要安装 AD FS 或 Web 应用程序代理的服务器必须是 Windows Server 2012 R2 或更高版本。 必须在这些服务器上启用 [Windows 远程管理](#windows-remote-management)才能进行远程安装。
 * 若要部署 Active Directory 联合身份验证服务，需要使用 [SSL 证书](#ssl-certificate-requirements)。
@@ -56,7 +59,7 @@ ms.lasthandoff: 03/18/2017
 * 如果全局管理员已启用 MFA，URL **https://secure.aadcdn.microsoftonline-p.com** 必须在受信任的站点列表中。 在显示 MFA 质询提示之前，系统会先提示将此站点添加到受信任的站点列表中（如果尚未添加）。 可以使用 Internet Explorer 将它添加到受信任的站点。
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect 使用的 SQL Server
-* Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 默认情况下，将会安装 SQL Server 2012 Express LocalDB（轻量版 SQL Server Express），并在本地计算机上创建服务的服务帐户。 SQL Server Express 有 10GB 的大小限制，允许你管理大约 100,000 个对象。 如果你需要管理更多的目录对象，则需要将安装向导指向不同的 SQL Server 安装。
+* Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 默认安装 SQL Server 2012 Express LocalDB（轻量版本的 SQL Server Express）。 SQL Server Express 有 10GB 的大小限制，允许你管理大约 100,000 个对象。 如果你需要管理更多的目录对象，则需要将安装向导指向不同的 SQL Server 安装。
 * 如果使用独立的 SQL Server，则这些要求适用：
   * Azure AD Connect 支持从 SQL Server 2008（包含最新的 Service Pack）到 SQL Server 2016 的各种 Microsoft SQL Server。 **不支持**将 Microsoft Azure SQL 数据库用作数据库。
   * 必须使用不区分大小写的 SQL 排序规则。 可通过其名称中的 \_CI_ 识别排序规则。 **不支持**使用区分大小写的排序规则，可通过其名称中的 \_CS_ 识别。
@@ -87,7 +90,7 @@ ms.lasthandoff: 03/18/2017
     </system.net>
 ```
 
-* 如果代理服务器要求身份验证，则[服务帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)必须位于域中，且必须使用自定义的设置安装路径来指定[自定义服务帐户](active-directory-aadconnect-get-started-custom.md#install-required-components)。 还需要对 machine.config 进行不同的更改。 在 machine.config 中进行此更改之后，安装向导和同步引擎将响应来自代理服务器的身份验证请求。 在所有安装向导页中（“配置”页除外）都使用已登录用户的凭据。 在安装向导结束时的“配置”页上，上下文将切换到创建的[服务帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)。 machine.config 节应如下所示。
+* 如果代理服务器要求身份验证，则[服务帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)必须位于域中，且必须使用自定义的设置安装路径来指定[自定义服务帐户](active-directory-aadconnect-get-started-custom.md#install-required-components)。 还需要对 machine.config 进行不同的更改。 在 machine.config 中进行此更改之后，安装向导和同步引擎将响应来自代理服务器的身份验证请求。 在所有安装向导页中（“配置”页除外）都使用已登录用户的凭据。 在安装向导结束时的“配置”页上，上下文将切换到创建的[服务帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account)。 machine.config 节应如下所示。
 
 ```
     <system.net>

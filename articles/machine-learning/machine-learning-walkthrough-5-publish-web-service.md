@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 065e84e8ddee3466834e04fb5d1929652533265a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: cec1bcceea158a20742c7019a266dcefaac4c9cf
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -76,7 +76,7 @@ ms.lasthandoff: 03/25/2017
 我们可以手动执行此操作，不过幸好上述三个步骤只需单击实验画布底部的“设置 Web 服务”（以及选择“预测 Web 服务”选项）即可完成。
 
 > [!TIP]
-> 若要更详细地了解在将训练实验转换为预测实验时会发生什么情况，请参阅[将机器学习训练实验转换为预测实验](machine-learning-convert-training-experiment-to-scoring-experiment.md)。
+> 若要更详细地了解在将训练实验转换为预测实验时会发生什么情况，请参阅[如何准备模型以便在 Azure 机器学习工作室中进行部署](machine-learning-convert-training-experiment-to-scoring-experiment.md)。
 
 单击“设置 Web 服务”时，会发生以下情况：
 

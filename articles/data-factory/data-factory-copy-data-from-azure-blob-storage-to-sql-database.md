@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2dcba235353f2b1bd2b42d93066a91071f0ea1a1
-ms.openlocfilehash: 8b9afcd62ad318e181e2d210af58dcb412eefaaf
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 393bc1ad782b072f3b27eeeb3e4149ec8ab64252
+ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
+# <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
@@ -32,8 +32,6 @@ ms.lasthandoff: 02/22/2017
 > * [Azure Resource Manager 模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
->
->
 
 此教程介绍如何创建包含管道的数据工厂，以将数据从 Blob 存储复制到 SQL 数据库。
 
@@ -45,7 +43,7 @@ ms.lasthandoff: 02/22/2017
 >
 
 ## <a name="prerequisites-for-the-tutorial"></a>教程先决条件
-在开始阅读本教程前，你必须具有：
+开始本教程之前，必须具有以下先决条件：
 
 * **Azure 订阅**。  如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[免费使用](http://azure.microsoft.com/pricing/free-trial/)一文。
 * **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
@@ -87,7 +85,7 @@ ms.lasthandoff: 02/22/2017
 ## <a name="prepare-blob-storage-and-sql-database"></a>准备 Blob 存储和 SQL 数据库
 现在，执行以下步骤来准备本教程所需的 Azure Blob 存储和 Azure SQL 数据库：  
 
-1. 启动记事本，粘贴以下文本，将文件命名为 **emp.txt**，然后将其保存到硬盘上的 **C:\ADFGetStarted** 文件夹。
+1. 启动记事本。 复制以下文本，将文件命名为 **emp.txt**，然后将其保存到硬盘上的 **C:\ADFGetStarted** 文件夹。
 
     ```
     John, Doe

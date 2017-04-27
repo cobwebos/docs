@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 07/12/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 28c847137bda93886a2ae80151e3834f149a4858
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 62e8e0299aff517f45c89349ed836ec8a6dabd2b
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -44,7 +45,7 @@ ms.openlocfilehash: 28c847137bda93886a2ae80151e3834f149a4858
 ## <a name="batching-strategies"></a>批处理策略
 ### <a name="note-about-timing-results-in-this-topic"></a>有关本主题中计时结果的注意事项
 > [!NOTE]
-> 结果并不是基准，而是用于显示**相对性能**。 计时基于至少运行 10 次测试后的平均值。 操作将插入空表。 这些测试将在 V12 以前的版本中测量，不一定对应于在使用新[服务层](sql-database-service-tiers.md)的 V12 数据库中可能会获得的吞吐量。 批处理技术的相对优势应该类似。
+> 结果并不是基准，而是用于显示**相对性能**。 计时基于至少运行 10 次测试后的平均值。 操作将插入空表。 这些测试是不久前完成的，不一定对应于今天可能产生的吞吐量。 批处理技术的相对优势应该类似。
 > 
 > 
 
@@ -585,7 +586,7 @@ OrderID 表中的 PurchaseOrderDetail 列必须引用 PurchaseOrder 表的订单
       SocialSecurityNumber NVARCHAR(50) );
     GO
 
-接下来，创建一个使用 MERGE 语句的存储过程或编写包含该语句的代码来执行更新和插入。 以下示例使用针对类型为 EmployeeTableType 的表值参数 @employees, 的 MERGE 语句。 @employees 表的内容未在此处显示。
+接下来，创建一个使用 MERGE 语句的存储过程或编写包含该语句的代码来执行更新和插入。 以下示例使用针对类型为 EmployeeTableType 的表值参数 @employees 的 MERGE 语句。 @employees 表的内容未在此处显示。
 
     MERGE Employee AS target
     USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
@@ -623,10 +624,5 @@ OrderID 表中的 PurchaseOrderDetail 列必须引用 PurchaseOrder 表的订单
 
 ## <a name="next-steps"></a>后续步骤
 本文着重于与批处理相关的数据库设计和代码编写技术，以及如何改善应用程序的性能和缩放性。 但这只是整体策略中的一个因素。 有关其他可改善性能和缩放性的方式，请参阅 [Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md)及[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

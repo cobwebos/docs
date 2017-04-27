@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 03/31/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
-ms.openlocfilehash: 1573ae126f8b76983abe98b37b9ac4072e70d9d0
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: ff7d5c372500c2cd392ed65a921d8a994b090f23
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -45,7 +46,7 @@ ms.openlocfilehash: 1573ae126f8b76983abe98b37b9ac4072e70d9d0
 ## <a name="download"></a>下载
 你可以从库下载任何笔记本的副本到你的机器学习 Studio 工作室。
 
-### <a name="from-the-gallery"></a>从库中获取
+### <a name="download-from-the-gallery"></a>从库中下载
 从库下载笔记本副本：
 
 1. 在库中打开笔记本的详细信息页
@@ -56,7 +57,7 @@ ms.openlocfilehash: 1573ae126f8b76983abe98b37b9ac4072e70d9d0
 
 单击“在工作室中打开”时，笔记本将加载到机器学习工作室工作区并打开（如果尚未登录到工作室，在将笔记本复制到工作区前，系统会提示你使用 Microsoft 帐户进行登录）。 稍后，你可以单击工作室首页左侧的“笔记本”，以便重新找到该笔记本。
 
-### <a name="in-machine-learning-studio"></a>在机器学习工作室中
+### <a name="download-in-machine-learning-studio"></a>在机器学习工作室中下载
 在机器学习工作室中工作时，也可以打开任何相同的库笔记本：
 
 1. 在机器学习工作室中，单击“+新建”
@@ -71,10 +72,5 @@ ms.openlocfilehash: 1573ae126f8b76983abe98b37b9ac4072e70d9d0
 **[将我转到库 >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

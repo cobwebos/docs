@@ -18,9 +18,9 @@ ms.date: 02/28/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0ec56111847300833ba92cc9149e8a276ba2c6c1
-ms.openlocfilehash: af7cabf3d5286dc3cd368db191bc5218cd9c5893
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: e64c0336578be2c1a1126f7459775f47d73f9d6e
+ms.lasthandoff: 04/07/2017
 
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/02/2017
 
 * **所有内容都会转让吗？包括资源组、VM、磁盘和其他正在运行的服务吗？**
 
-  是的，所有资源（如 VM、磁盘和网站）都会转让给新的所有者。 但是，不会转让所设置的任何[管理员角色](billing-add-change-azure-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 政策。 
+  是的，所有资源（如 VM、磁盘和网站）都会转让给新的所有者。 但是，不会在不同目录之间传递所设置的任何[管理员角色](billing-add-change-azure-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 策略。
 
 * <a id="no-button"></a>**为什么我没有看到“转让订阅”按钮？**
 

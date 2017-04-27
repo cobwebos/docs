@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 8b9e174523b3d08be20a4d30cc83c11f5bc93cd5
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: a47a806856be9e2daa9bcac8ce23da4d15386cc8
+ms.lasthandoff: 04/06/2017
 
 ---
 
@@ -154,7 +154,7 @@ Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 
     Add-AzureAccount
     ```
 
-2. 在“登录 Microsoft Azure”窗口中，键入与你的帐户关联的电子邮件地址和密码。 Azure 将对凭据信息进行身份验证和保存，然后关闭该窗口。
+2. 在“登录 Microsoft Azure”窗口中，键入与帐户关联的电子邮件地址和密码。 Azure 将对凭据信息进行身份验证和保存，然后关闭该窗口。
 
 3. 接下来，运行以下命令以查看本地 PowerShell 环境中的 Azure 帐户，并检查是否列出了帐户：
    
@@ -284,9 +284,9 @@ Get-AzureStorageKey -StorageAccountName "yourstorageaccount"
 如果想要重新生成密钥，请使用以下 cmdlet。 -KeyType 的有效值为“Primary”和“Secondary”
 
 ```powershell
-New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Primary”
+New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType "Primary"
     
-New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Secondary”
+New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType "Secondary"
 ```
 
 ## <a name="how-to-manage-azure-blobs"></a>如何管理 Azure blob

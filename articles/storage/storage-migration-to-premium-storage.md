@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 2703a7ae9274e6bef38e530839c1a7c5ad69fb88
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: cbf4f1a3bce53844e032c49637d4cfd9dd722679
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -49,13 +49,13 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 ### <a name="prerequisites"></a>先决条件
 * 需要 Azure 订阅。 如果没有，可创建为期一个月的[免费试用](https://azure.microsoft.com/pricing/free-trial/)订阅或访问 [Azure 定价](https://azure.microsoft.com/pricing/)获取更多选择。
 * 若要执行 PowerShell cmdlet，将需要 Microsoft Azure PowerShell 模块。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
-* 计划使用在高级存储上运行的 Azure VM 时，需要使用支持高级存储的 VM。 可在支持高级存储的 VM 上使用标准和高级存储磁盘。 在将来，会有更多的 VM 类型提供高级存储磁盘。 有关所有可用 Azure VM 磁盘类型和大小的详细信息，请参阅[虚拟机大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[云服务大小](../cloud-services/cloud-services-sizes-specs.md)。
+* 计划使用在高级存储上运行的 Azure VM 时，需要使用支持高级存储的 VM。 可在支持高级存储的 VM 上使用标准和高级存储磁盘。 在将来，会有更多的 VM 类型提供高级存储磁盘。 有关所有可用 Azure VM 磁盘类型和大小的详细信息，请参阅[虚拟机大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[云服务大小](../cloud-services/cloud-services-sizes-specs.md)。
 
 ### <a name="considerations"></a>注意事项
 Azure VM 支持附加多个高级存储磁盘，使应用程序可以具有每个 VM 多达 64 TB 的存储空间。 借助高级存储，应用程序对于每个 VM 可以实现 80,000 IOPS（每秒输入/输出操作数）和每秒 2000 MB 的磁盘吞吐量，并且读取操作的延迟非常低。 可选择多种 VM 和 磁盘。 本部分可帮助用户找到最适合工作负荷的选项。
 
 #### <a name="vm-sizes"></a>VM 大小
-[虚拟机大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中列出了 Azure VM 大小规范。 查看适用于高级存储的虚拟机的性能特征并选择最适合工作负荷的 VM 大小。 确保 VM 上有足够的带宽来驱动磁盘通信。
+[虚拟机大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中列出了 Azure VM 大小规范。 查看适用于高级存储的虚拟机的性能特征并选择最适合工作负荷的 VM 大小。 确保 VM 上有足够的带宽来驱动磁盘通信。
 
 #### <a name="disk-sizes"></a>磁盘大小
 有三种类型的磁盘可用于 VM，每种磁盘都具有特定的 IOPS 和吞吐率限制。 根据应用程序在容量、性能、可伸缩性和峰值负载方面的需要为 VM 选择磁盘类型时，需要考虑这些限制。
@@ -66,7 +66,7 @@ Azure VM 支持附加多个高级存储磁盘，使应用程序可以具有每�
 | 每个磁盘的 IOPS |500 |2300 |5000 |
 | 每个磁盘的吞吐量 |每秒 100 MB |每秒 150 MB |每秒 200 MB |
 
-根据工作负荷，确定 VM 是否需要附加数据磁盘。 可以将多个持久性数据磁盘附加到 VM。 如有需要，可以跨磁盘条带化，以增加卷的容量与性能。 （请参阅[此处](storage-premium-storage-performance.md#disk-striping)，了解什么是磁盘条带化。）如果使用[存储空间][4]来条带化高级存储数据磁盘，应该以使用的每个磁盘一个列的方式来配置它。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 对于 Linux VM，可以使用 mdadm 实用工具来实现同一目的。 有关详细信息，请参阅[在 Linux 上配置软件 RAID](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 一文。
+根据工作负荷，确定 VM 是否需要附加数据磁盘。 可以将多个持久性数据磁盘附加到 VM。 如有需要，可以跨磁盘条带化，以增加卷的容量与性能。 （请参阅[此处](storage-premium-storage-performance.md#disk-striping)，了解什么是磁盘条带化。）如果使用[存储空间][4]来条带化高级存储数据磁盘，应该以使用的每个磁盘一个列的方式来配置它。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 对于 Linux VM，可以使用 mdadm 实用工具来实现同一目的。 有关详细信息，请参阅[在 Linux 上配置软件 RAID](../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 一文。
 
 #### <a name="storage-account-scalability-targets"></a>存储帐户的可伸缩性目标
 高级存储帐户除了 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)外还具有以下可伸缩性目标。 如果应用程序需求超过了单个存储帐户的可伸缩性目标，则在生成应用程序时请让它使用多个存储帐户，并将数据分布在这些存储帐户中。
@@ -75,7 +75,7 @@ Azure VM 支持附加多个高级存储磁盘，使应用程序可以具有每�
 |:--- |:--- |
 | 磁盘容量：35TB<br />快照容量：10 TB |入站 + 出站最高每秒 50 Gbps |
 
-有关高级存储规范的详细信息，请查看[使用高级存储时的可伸缩性和性能目标](storage-premium-storage.md#premium-storage-scalability-and-performance-targets)。
+有关高级存储规范的详细信息，请查看[使用高级存储时的可伸缩性和性能目标](storage-premium-storage.md#scalability-and-performance-targets)。
 
 #### <a name="disk-caching-policy"></a>磁盘缓存策略
 默认情况下，所有高级数据磁盘的磁盘缓存策略都是“只读”，所有附加到 VM 的高级操作系统都是“读写”。 为使应用程序的 IO 达到最佳性能，建议使用此配置设置。 对于频繁写入或只写的磁盘（例如 SQL Server 日志文件），禁用磁盘缓存可获得更佳的应用程序性能。 可以使用 [Azure 门户](https://portal.azure.com)或 *Set-AzureDataDisk* cmdlet 的 *-HostCaching* 参数更新现有数据磁盘的缓存设置。
@@ -185,11 +185,11 @@ VM 需要完全关闭，以便迁移干净状态。 在迁移完成之前将会�
 
     下面是 AzCopy 命令中使用的参数的说明：
 
-   * **/Source:*&lt;source&gt;:*** 包含 VHD 的文件夹或存储容器 URL 的位置。
-   * **/SourceKey:*&lt;source-account-key&gt;:*** 源存储帐户的存储帐户密钥。
-   * **/Dest:*&lt;destination&gt;:*** 要将 VHD 复制到的存储容器 URL。
-   * **/DestKey:*&lt;dest-account-key&gt;:*** 目标存储帐户的存储帐户密钥。
-   * **/Pattern:*&lt;file-name&gt;:*** 指定要复制的 VHD 文件名。
+   * **/Source: &lt;source&gt;:** 包含 VHD 的文件夹或存储容器 URL 的位置。
+   * **/SourceKey: &lt;source-account-key&gt;:** 源存储帐户的存储帐户密钥。
+   * **/Dest: &lt;destination&gt;:** 要将 VHD 复制到的存储容器 URL。
+   * **/DestKey: &lt;dest-account-key&gt;:** 目标存储帐户的存储帐户密钥。
+   * **/Pattern: &lt;file-name&gt;:** 指定要复制的 VHD 文件名。
 
 有关使用 AzCopy 工具的详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
 
@@ -270,7 +270,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
     ```azcopy
     AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
     ```
-    
+
     示例：
 
     ```azcopy
@@ -279,12 +279,12 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 
     下面是 AzCopy 命令中使用的参数的说明：
 
-   * **/Source:*&lt;source&gt;:*** 包含 VHD 的文件夹或存储容器 URL 的位置。
-   * **/SourceKey:*&lt;source-account-key&gt;:*** 源存储帐户的存储帐户密钥。
-   * **/Dest:*&lt;destination&gt;:*** 要将 VHD 复制到的存储容器 URL。
-   * **/DestKey:*&lt;dest-account-key&gt;:*** 目标存储帐户的存储帐户密钥。
+   * **/Source: &lt;source&gt;:** 包含 VHD 的文件夹或存储容器 URL 的位置。
+   * **/SourceKey: &lt;source-account-key&gt;:** 源存储帐户的存储帐户密钥。
+   * **/Dest: &lt;destination&gt;:** 要将 VHD 复制到的存储容器 URL。
+   * **/DestKey: &lt;dest-account-key&gt;:** 目标存储帐户的存储帐户密钥。
    * **/BlobType: page:** 指定目标是页 blob。
-   * **/Pattern:*&lt;file-name&gt;:*** 指定要复制的 VHD 文件名。
+   * **/Pattern: &lt;file-name&gt;:** 指定要复制的 VHD 文件名。
 
 有关使用 AzCopy 工具的详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
 
@@ -459,14 +459,14 @@ Update-AzureVM  -VM $vm
     .Terms of Use
     Copyright © 2015 Microsoft Corporation.  All rights reserved.
 
-    THIS CODE AND ANY ASSOCIATED INFORMATION ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND,
+    THIS CODE AND ANY ASSOCIATED INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
     EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY
     AND/OR FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK OF USE, INABILITY TO USE, OR
     RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 
     .Example (Save this script as Migrate-AzureVM.ps1)
 
-    .\Migrate-AzureVM.ps1 -SourceServiceName CurrentServiceName -SourceVMName CurrentVMName –DestStorageAccount newpremiumstorageaccount -DestServiceName NewServiceName -DestVMName NewDSVMName -DestVMSize "Standard_DS2" –Location “Southeast Asia”
+    .\Migrate-AzureVM.ps1 -SourceServiceName CurrentServiceName -SourceVMName CurrentVMName –DestStorageAccount newpremiumstorageaccount -DestServiceName NewServiceName -DestVMName NewDSVMName -DestVMSize "Standard_DS2" –Location "Southeast Asia"
 
     .Link
     To find more information about how to set up Azure PowerShell, refer to the following links.
@@ -581,7 +581,7 @@ Update-AzureVM  -VM $vm
     # check if VM is shut down
     if ( $sourceVM.Status -notmatch "Stopped" )
     {
-        Write-Host "[Warning] - Stopping the VM is a required step so that the file system is consistent when you do the copy operation. Azure does not support live migration at this time. If you’d like to create a VM from a generalized image, sys-prep the Virtual Machine before stopping it." -ForegroundColor Yellow
+        Write-Host "[Warning] - Stopping the VM is a required step so that the file system is consistent when you do the copy operation. Azure does not support live migration at this time. If you'd like to create a VM from a generalized image, sys-prep the Virtual Machine before stopping it." -ForegroundColor Yellow
         $ContinueAnswer = Read-Host "`n`tDo you wish to stop $SourceVMName now? Input 'N' if you want to shut down the VM manually and come back later.(Y/N)"
         If ($ContinueAnswer -ne "Y") { Write-Host "`n Exiting." -ForegroundColor Red;Exit }
         $sourceVM | Stop-AzureVM

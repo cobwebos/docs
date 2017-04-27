@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/28/2017
 ms.author: sethm;hillaryc
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 1952adece7e874ade97c2a8480455e1236bb74f1
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 946f3ac069db436828427e575be5a14efac9dda9
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -65,7 +65,9 @@ ns.CreateTopic(td);
 **MessageId**：如果队列或主题将 [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection] 属性设置为 **true** 且未设置 [BrokeredMessage.SessionId][BrokeredMessage.SessionId] 或 [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey] 属性，则 [BrokeredMessage.MessageId][BrokeredMessage.MessageId] 属性将充当分区键。 （请注意，如果应用程序进行分配，Microsoft .NET 和 AMQP 库会自动分配消息 ID。）在这种情况下，同一消息的所有副本都由同一消息中转站处理。 这使服务总线能够检测并消除重复的消息。 如果 [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection] 属性未设置为 **true**，服务总线不考虑将 [MessageId][MessageId] 属性用作分区键。
 
 ### <a name="not-using-a-partition-key"></a>不使用分区键
-如果没有分区键，服务总线以轮循机制将消息分发到分区队列或主题的所有片段。 如果所选的片段不可用，服务总线会将消息分配给不同的片段。 这样一来，尽管消息存储暂时不可用，发送操作仍可成功。
+如果没有分区键，服务总线以轮循机制将消息分发到分区队列或主题的所有片段。 如果所选的片段不可用，服务总线会将消息分配给不同的片段。 这样一来，尽管消息存储暂时不可用，发送操作仍可成功。 但是，你无法实现分区键提供的保证排序。
+
+有关可用性（没有分区键）和一致性（使用分区键）之间的权衡的更深入讨论，请参阅[此文](../event-hubs/event-hubs-availability-and-consistency.md)。 此信息同样适用于已分区服务总线实体和事件中心分区。
 
 若要给服务总线足够的时间将消息排入不同片段的队列中，发送消息的客户端指定的 [MessagingFactorySettings.OperationTimeout][MessagingFactorySettings.OperationTimeout] 值必须大于 15 秒。 建议将 [OperationTimeout][OperationTimeout] 属性设置为 60 秒的默认值。
 
@@ -109,7 +111,7 @@ committableTransaction.Commit();
 服务总线支持从分区实体、向分区实体或在分区实体之间进行消息自动转发。 若要启用消息自动转发，请在源队列或订阅上设置 [QueueDescription.ForwardTo][QueueDescription.ForwardTo] 属性。 如果消息指定分区键（[SessionId][SessionId]、[PartitionKey][PartitionKey] 或 [MessageId][MessageId]），则该分区键用于目标实体。
 
 ## <a name="considerations-and-guidelines"></a>注意事项和指南
-* **高度一致性功能**：如果实体使用会话、重复检测或显式控制分区键等功能，则消息传送操作一定会路由至特定的片段。 如果任何片段遇到过高的流量，或基础存储处于不正常状态，这些操作将失败，而且可用性会降低。 整体来说，一致性仍然远高于非分区实体；只有一部分流量会遇到问题，而不是所有流量。
+* **高度一致性功能**：如果实体使用会话、重复检测或显式控制分区键等功能，则消息传送操作一定会路由至特定的片段。 如果任何片段遇到过高的流量，或基础存储处于不正常状态，这些操作将失败，而且可用性会降低。 整体来说，一致性仍然远高于非分区实体；只有一部分流量会遇到问题，而不是所有流量。 有关详细信息，请参阅此处[对可用性和一致性的讨论](../event-hubs/event-hubs-availability-and-consistency.md)。
 * **管理**：必须对实体的所有片段执行创建、更新及删除等操作。 如果任何片段处于不正常状态，可能会导致这些操作失败。 以“获取”操作来说，必须汇总来自所有片段的信息，例如消息计数。 如果任何片段处于不正常状态，则实体可用性状态会报告为受限制。
 * **少量消息的情况**：对于这类情况，尤其是使用 HTTP 协议时，可能必须执行多次接收操作，才能获取所有消息。 对于接收请求，前端会在所有片段上执行接收，并缓存所有收到的响应。 相同连接上的后续接收请求将受益于此缓存，而且接收延迟将会缩短。 不过，如果你有多个连接或使用 HTTP，则会针对每个请求建立新的连接。 因此，不保证抵达相同的节点。 如果现有的所有消息均被锁定，而且在另一个前端中缓存，则接收操作返回 **null**。 消息最后会到期，你可以再次接收它们。 建议使用 HTTP 保持连接。
 * **浏览/速览消息**：[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) 不一定返回 [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MessageCount) 属性中指定的消息数目。 这有两个常见的原因。 其中一个原因是消息集合的汇总大小超过大小上限 256KB。 另一个原因是，如果队列或主题的 [EnablePartitioning 属性](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning)设为 **true**，则分区可能没有足够的消息来完成所请求的消息数目。 一般情况下，如果应用程序要接收特定数目的消息，则应该重复调用 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_)，直到获得该数目的消息，或者已没有更多消息可速览为止。 有关详细信息，包括代码示例，请参阅 [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) 或 [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_PeekBatch_System_Int32_)。

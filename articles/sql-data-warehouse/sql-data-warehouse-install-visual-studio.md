@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
+ms.custom: connect
+ms.date: 03/30/2017
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9c44f417d465aedcbbc731757282e18985b0435c
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: ae025ee2e6865b225efc5e225e261ac579a339aa
+ms.lasthandoff: 04/03/2017
 
 
 ---
-# <a name="install-visual-studio-2015-and-ssdt-for-sql-data-warehouse"></a>安装适用于 SQL 数据仓库的 Visual Studio 2015 和 SSDT
-若要开发 SQL 数据仓库的应用程序，建议使用 Visual Studio 2015，并结合最新版本的 SQL Server Data Tools (SSDT)。  向后兼容也支持装有 SSDT 的 Visual Studio 2013 Update 5。  
+# <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>安装适用于 SQL 数据仓库的 Visual Studio 和 SSDT
+若要开发 SQL 数据仓库的应用程序，建议使用最新版本的 Visual Studio，并结合最新版本的 SQL Server Data Tools (SSDT)。  向后兼容也支持装有 SSDT 的 Visual Studio 2013 Update 5。  
 
 使用装有 SSDT 的 Visual Studio 让你可以使用 SQL Server 对象资源管理器以可视化方式浏览 SQL 数据仓库中的表格、视图、存储过程和其他更多对象，并运行查询。
 
@@ -30,10 +32,10 @@ ms.openlocfilehash: 9c44f417d465aedcbbc731757282e18985b0435c
 > 
 > 
 
-## <a name="step-1-install-visual-studio-2015"></a>步骤 1：安装 Visual Studio 2015
-遵循以下链接来下载并安装 Visual Studio 2015。 如果你已安装 Visual Studio 2013 或 2015，请跳到步骤 2 以安装 SSDT。
+## <a name="step-1-install-visual-studio"></a>步骤 1：安装 Visual Studio
+遵循以下链接，下载并安装 Visual Studio。 如果已安装 Visual Studio 2013 或更高版本，请跳到步骤 2 以安装 SSDT。
 
-1. [下载 Visual Studio 2015][Download Visual Studio 2015]。
+1. [下载 Visual Studio][]。
 2. 按照 MSDN 上的 [安装 Visual Studio][Installing Visual Studio] 指南安装，并选择默认配置。
 
 ## <a name="step-2-install-ssdt"></a>步骤 2：安装 SSDT
@@ -55,12 +57,7 @@ ms.openlocfilehash: 9c44f417d465aedcbbc731757282e18985b0435c
 [connect]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
-[Download Visual Studio 2015]: https://www.visualstudio.com/downloads/
+[下载 Visual Studio]: https://www.visualstudio.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

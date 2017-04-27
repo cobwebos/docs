@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 032d32be1719d4b459c88b13616bbef8d2d7be09
-ms.openlocfilehash: d5d6065aa2958ebb858d421ea7c3eb2a198b2a80
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 3f5419079baf0f557a14a355519e81f8ee7feb58
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -134,6 +135,12 @@ ms.openlocfilehash: d5d6065aa2958ebb858d421ea7c3eb2a198b2a80
 213.199.178.61
 213.199.178.63
 213.199.178.64
+52.187.29.7
+52.187.179.17
+52.187.76.248
+52.187.43.24
+52.163.57.91
+52.187.30.120
 65.54.66.56
 65.54.66.57
 65.54.66.58
@@ -190,9 +197,10 @@ ms.openlocfilehash: d5d6065aa2958ebb858d421ea7c3eb2a198b2a80
 | API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13.82.26.252<br/>40.76.213.73 |80,443 |
 | API 文档 |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13.82.24.149<br/>40.114.82.10 |80,443 |
 
+## <a name="profiler"></a>探查器
 
-
-
-<!--HONumber=Jan17_HO1-->
-
+| 目的 | URI | IP | 端口 |
+| --- | --- | --- | --- |
+| 代理 | agent.azureserviceprofiler.net | 动态 | 443
+| 门户 | gateway.azureserviceprofiler.net | 动态 | 443
 

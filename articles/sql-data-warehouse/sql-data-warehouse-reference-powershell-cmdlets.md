@@ -16,9 +16,9 @@ ms.custom: reference
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 96ac017b469405e0eb106bf5eb391b5273600ab2
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d30a49a79e74c575dd6daba9a260c18822a26462
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -73,8 +73,8 @@ $resultDatabase = $database | Resume-AzureRmSqlDatabase
 > 
 > 
 
-## <a name="frequently-used-powershell-cmdlets"></a>经常使用的 PowerShell cmdlet
-以下 PowerShell cmdlet 经常与 Azure SQL 数据仓库配合使用。
+## <a name="other-supported-powershell-cmdlets"></a>其他支持的 PowerShell cmdlet
+Azure SQL 数据仓库支持以下 PowerShell cmdlet。
 
 * [Get-AzureRmSqlDatabase][Get-AzureRmSqlDatabase]
 * [Get-AzureRmSqlDeletedDatabaseBackup][Get-AzureRmSqlDeletedDatabaseBackup]
@@ -93,7 +93,7 @@ $resultDatabase = $database | Resume-AzureRmSqlDatabase
 * [使用 PowerShell 创建 SQL 数据仓库][Create a SQL Data Warehouse using PowerShell]
 * [数据库还原][Database restore]
 
-有关可以使用 PowerShell 自动执行的所有任务的列表，请参阅 [Azure SQL 数据库 Cmdlet][Azure SQL Database Cmdlets]。  有关可以使用 REST 自动执行的任务的列表，请参阅 [Azure SQL 数据库的操作][Operations for Azure SQL Databases]。
+有关可使用 PowerShell 自动执行的其他列表，请参阅 [Azure SQL 数据库 Cmdlet][Azure SQL Database Cmdlets]。 请注意，Azure SQL 数据仓库并非支持全部 Azure SQL 数据库 cmdlet。  有关可以使用 REST 自动执行的任务的列表，请参阅 [Azure SQL 数据库的操作][Operations for Azure SQL Databases]。
 
 <!--Image references-->
 

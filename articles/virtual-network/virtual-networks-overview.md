@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 186b8331d2fcfc16bd41eb08badb200e2abf9e30
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: e22a1ccb958942cfa3c67194430af6bc74fdba64
+ms.openlocfilehash: 1072148f11052a643bdc70239029a651d9d71dda
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -39,12 +39,12 @@ ms.lasthandoff: 03/25/2017
 
 ## <a name = "isolation"></a>网络隔离和细分
 
-可在每个 Azure 订阅和 Azure 区域中实现多个 VNet。 每个 VNet 与其他 VNet 隔离。 对于每个 VNet，可执行以下操作：
+可在每个 Azure [订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)和 Azure [区域](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region)中实现多个 VNet。 每个 VNet 与其他 VNet 隔离。 对于每个 VNet，可执行以下操作：
 - 使用公共和专用 (RFC 1918) 地址指定自定义专用 IP 地址空间。 Azure 从分配的地址空间中向连接到 VNet 的资源分配一个专用 IP 地址。
 - 将 VNet 细分为一个或多个子网，并向每个子网分配一部分 VNet 地址空间。
 - 使用 Azure 提供的名称解析或指定你自己的 DNS 服务器以供连接到 VNet 的资源使用。 若要了解 VNet 中名称解析的详细信息，请阅读 [VM 和云服务的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)一文。
 
-## <a name = "internet"></a>连接到 Internet
+## <a name = "internet"></a>连接 Internet
 默认情况下，连接到 VNet 的所有资源都具有 Internet 出站连接。 资源的专用 IP 地址是由 Azure 基础结构转换到公共 IP 地址中的源网络地址 (SNAT)。 若要了解出站网络连接的详细信息，请阅读[了解 Azure 中的出站连接](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address)一文。 可通过实现自定义路由和流量筛选更改默认连接。
 
 若要从 Internet 入站通信到 Azure 资源或出站通信到不具 SNAT 的 Internet，则必须向资源分配一个公共 IP 地址。 若要详细了解公共 IP 地址，请阅读 [公共 IP 地址](virtual-network-public-ip-address.md)一文。
@@ -68,8 +68,6 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 若要了解有关所有以前连接选项的详细信息，请阅读[连接拓扑图](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#a-namediagramsaconnection-topology-diagrams)一文。
 
 ## <a name="filtering"></a>筛选网络流量
-<!---Get confirmation that a UDR on the gateway subnet is supported. Need to provide some additional info as to the key differences between the two options.--->
-
 可使用以下两个选项中任意一个或同时使用这两个方案筛选子网之间的网络流量：
 - **网络安全组 (NSG)：**每个 NSG 可包含多个入站和出站安全规则，通过这些规则可按源和目标 IP 地址、端口和协议筛选流量。 可将 NSG 应用到一个 VM 中的每个 NIC。 也可将 NSG 应用到 NIC 或其他 Azure 资源所连接的子网。 有关 NSG 的详细信息，请参阅[网络安全组](virtual-networks-nsg.md)一文。
 - **网络虚拟设备 (NVA)：**NVA 是运行软件的 VM，软件可执行网络功能，例如防火墙。 查看 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)中可用 NVA 列表。 NVA 也可用于提供 WAN 优化和其他网络流量功能。 NVA 通常与用户定义路由或 BGP 路由配合使用。 还可使用 NVA 筛选 VNet 之间的流量。

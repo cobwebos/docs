@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: e1c4342897fe6cf57e323a82e04e10473b3ece30
-ms.openlocfilehash: 777b84d9aa59f773345c1925c3c6467dc64d2d34
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: f703da63c4243c73cf68d3df9953f73d2462ac1c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -883,7 +883,7 @@ AzCopy 旨在最大程度上利用计算机资源来加快数据传输，如果�
       </appSettings>
     </configuration>
 
-如果属性“AzureStorageUseV1MD5”为 True（默认值），AzCopy 将使用 .NET MD5 实现；
+如果属性“AzureStorageUseV1MD5”为 True（默认值），AzCopy 将使用 .NET MD5 实现。
 如果为 False，AzCopy 将使用兼容 FIPS 的 MD5 算法。
 
 请注意，默认情况下，Windows 计算机上禁用 FIPS 兼容的算法，可以在运行的窗口中键入 secpol.msc 并在“安全设置”->“本地策略”->“安全选项”->“系统加密”处检查此开关：使用 FIPS 兼容算法来加密、哈希和签名。

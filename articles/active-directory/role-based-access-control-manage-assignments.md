@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 3/01/2017
+ms.date: 3/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 55baaf0984e01f3cbca7b2296f0b24661e70e7b5
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 82f084b220ba321945975c8d1a6d22e419acf5e4
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/04/2017
 * **作用域：**RBAC 角色分配的作用域为特定订阅、资源组或资源。 授予对单个资源访问权限的用户无法访问同一订阅中的任何其他资源。
 * **角色：**在分配范围内，通过分配角色可进一步收窄访问权限。 角色可以是高级别的（如所有者），也可以是特定的（如虚拟机阅读器）。
 
-只可以在订阅、资源组或资源（即分配范围）内分配角色。 不过你可以在单个位置查看给定用户或组的所有访问权限分配。
+只可以在订阅、资源组或资源（即分配范围）内分配角色。 不过你可以在单个位置查看给定用户或组的所有访问权限分配。 每个订阅中最多可以拥有 2000 个角色分配。 
 
 获取有关如何[使用角色分配管理对 Azure 订阅资源的访问权限](role-based-access-control-configure.md)的详细信息。
 

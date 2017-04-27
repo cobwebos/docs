@@ -12,17 +12,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/31/2017
 ms.author: jeannt
 translationtype: Human Translation
-ms.sourcegitcommit: 8ea727f7b8d93401b35a7b9dbd2f00a5534c3072
-ms.openlocfilehash: e54c37f688e8d107f5323125ea42d63ec91a4c84
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 965c60ffde55041cc3864d06d81f5590c7ea1c11
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>有关 Azure 机器学习的 Net# 神经网络规范语言的指南
 ## <a name="overview"></a>概述
-Net# 是由 Microsoft 开发的一种用于定义神经网络体系结构的语言。 可以在 Microsoft Azure 机器学习的神经网络模块中使用 Net#，也可以在 [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml/microsoftml) 中的 `rxNeuralNetwork()` 函数中使用。 
+Net# 是由 Microsoft 开发的一种用于定义神经网络体系结构的语言。 可以在 Microsoft Azure 机器学习的神经网络模块中使用 Net#。
+
+<!-- This function doesn't currentlyappear in the MicrosoftML documentation. If it is added in a future update, we can uncomment this text.
+
+, or in the `rxNeuralNetwork()` function in [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml/microsoftml). 
+
+-->
 
 本文介绍开发自定义神经网络所需的基本概念： 
 
@@ -211,9 +218,9 @@ Net # 支持各种类型的连接捆绑，可自定义映射到隐藏层和映�
       }  
 
 * 捆绑的实参数量为 3（元组 **InputShape**、**KernelShape** 和 **Stride** 的长度）。 
-* 源层中的节点数为 *5 * 24 * 24 = 2880*。 
+* 源层中的节点数为 5 * 24 * 24 = 2880。 
 * 这是传统本地池层，因为 **KernelShape** 和 **Stride** 相等。 
-* 目标层中的节点数为 *5 * 12 * 12 = 1440*。  
+* 目标层中的节点数为 5 * 12 * 12 = 1440。  
 
 有关池层的详细信息，请参阅这些文章：  
 
@@ -396,22 +403,17 @@ Net # 可选择支持定义具有共享权重的多个捆绑。 如果任意两�
 * Net 具有第三个隐藏层 *Hid3*，其与第二个隐藏层 *Conv2* 完全连接。
 * 输出层 *Digit* 仅与第三个隐藏层 *Hid3* 连接。 关键字 **all** 指示输出层与 *Hid3* 完全连接。
 * 卷积的实参数量为 3（元组 **InputShape**、**KernelShape**、**Stride** 和 **Sharing** 的长度）。 
-* 每个内核的权重数是 *1 + **KernelShape**\[0] * **KernelShape**\[1]  *KernelShape**\[2] = 1 + 1 * 5 * 5 = 26。或 26 * 50 = 1300*。
+* 每个内核的权重数是 *1 + **KernelShape**\[0] * **KernelShape**\[1] * **KernelShape**\[2] = 1 + 1 * 5 * 5 = 26。或 26 * 50 = 1300*。
 * 可以计算每个隐藏层中的节点，如下所示：
   * **NodeCount**\[0] = (5 - 1) / 1 + 1 = 5。
   * **NodeCount**\[1] = (13 - 5) / 2 + 1 = 5。 
   * **NodeCount**\[2] = (13 - 5) / 2 + 1 = 5。 
-* 可通过使用层的声明维数 [50, 5, 5] 计算总节点数，如下所示：***MapCount** * **NodeCount**\[0]  *NodeCount**\[1] * **NodeCount**\[2] = 10 * 5 * 5 * 5*
+* 可通过使用层的声明维数 [50, 5, 5] 计算节点总数，如下所示：***MapCount** * **NodeCount**\[0] * **NodeCount**\[1] * **NodeCount**\[2] = 10 * 5 * 5 * 5*
 * 因为仅对于 *d == 0*，**Sharing**[d] 为 False，所以内核数为 ***MapCount** * **NodeCount**\[0] = 10 * 5 = 50*。 
 
 ## <a name="acknowledgements"></a>致谢
 用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅 [Neural Nets in Azure ML - Introduction to Net#](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)（Azure ML 中的神经网络 - Net# 简介）
 
 [1]:./media/machine-learning-azure-ml-netsharp-reference-guide/formula_large.gif
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

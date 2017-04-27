@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/27/2017
+ms.date: 04/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 7b484c27157bd0a261adbf81d66b73a78e252955
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 77f06b6ef146bdea8dc2f6cb920979e827626e35
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -132,7 +132,7 @@ MPIO 是 Windows 服务器上的一项可选功能，默认情况下并未安装
 ## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>步骤 4：配置 MPIO 以实现高可用性和负载均衡
 为了实现基于多路径的高可用性和负载均衡，必须手动添加多个会话以声明多个可用路径。 例如，如果主机有两个接口连接到 SAN，设备有两个接口连接到 SAN，则需要配置具有正确路径排列的四个会话（如果每个 DATA 接口和主机接口在不同的 IP 子网上并且不可路由，则只需两个会话）。
 
-**建议设备和应用程序主机之间至少具有 4 个活动平行会话。** 这可通过在 Windows Server 系统上启用 4 个网络接口实现。 在 Windows Server 主机上的硬件或操作系统级别使用物理网络接口或网络虚拟化技术。 设备上具有 2 个网络接口时，此配置将产生 8 个会话，其中 4 个为活动会话（连接到活动控制器），另外 4 个为被动会话（连接到被动控制器）。 此配置有助于优化设备和云吞吐量。
+**建议设备和应用程序主机之间至少具有 8 个活动平行会话。** 这可通过在 Windows Server 系统上启用 4 个网络接口实现。 在 Windows Server 主机上的硬件或操作系统级别使用物理网络接口或网络虚拟化技术。 设备上两个网络接口时，此配置会形成 8 个活动会话。 此配置有助于优化设备和云吞吐量。
 
 > [!IMPORTANT]
 > **建议不要将 1 GbE 和 10 GbE 网络接口混合使用。如果要使用两种网络接口，它们的类型应该相同。**

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: ae8e531c32b49e121b1c43b15071c138aaacf498
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: ba078a870a3998568170cc197bd6698b97b7fadb
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -29,6 +29,11 @@ ms.lasthandoff: 03/21/2017
 >
 
 Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演示了如何使用 Azure CLI 创建和管理 Azure Redis 缓存实例。
+
+> [!NOTE]
+> 本文适用于以前版本的 Azure CLI。 有关最新的 Azure CLI 2.0 示例脚本，请参阅 [Azure CLI Redis 缓存示例](cli-samples.md)。
+> 
+> 
 
 ## <a name="prerequisites"></a>先决条件
 若要使用 Azure CLI 创建和管理 Azure Redis 缓存实例，必须完成以下步骤。

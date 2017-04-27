@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: f02e17bb413f250fc4d980c62cfb46bc5359f7fb
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 3d2ba1d63f4bb89ff51275044922fb86b5f70365
+ms.lasthandoff: 04/11/2017
 
 ---
 
@@ -70,4 +70,6 @@ SNAT 端口是可能会被耗尽的有限资源。 因此了解它们的使用�
 ## <a name="limitations"></a>限制
 
 尽管不保证，但当前可用的最大 SNAT 端口数为 64,511（65,535 - 1024 个特权端口）。  这不会直接转换为连接数，有关何时和如何分配 SNAT 端口以及如何管理此可耗尽资源的详细信息，请参见上文。
+
+如果[多个（公共）IP 地址与一个负载均衡器关联](load-balancer-multivip-overview.md)，则所有这些公共 IP 地址皆是出站流的候选项。
 

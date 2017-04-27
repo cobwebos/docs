@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 3ab6d21263ee2f4082cae8d772e715ed04d7d7c0
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 70c7e2334336be78d26784815fb988ce1d22eb12
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -54,7 +54,7 @@ ms.lasthandoff: 03/30/2017
 对于特定于 SQL Server 的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息： 
 
 ## <a name="linked-service-properties"></a>链接服务属性
-在示例中，已使用 **OnPremisesSqlServer** 类型的链接服务将 SQL Server 数据库链接到数据工厂。 下表提供了有关特定于本地 SQL Server 链接服务的 JSON 元素的描述。
+创建 **OnPremisesSqlServer** 类型的链接服务，将本地 SQL Server 数据库链接到数据工厂。 下表提供了有关特定于本地 SQL Server 链接服务的 JSON 元素的描述。
 
 下表提供了有关特定于 SQL Server 链接服务的 JSON 元素的描述。
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 03/30/2017
     "name": "MyOnPremisesSQLDB",
     "properties":
     {
-        "type": "OnPremisesSqlLinkedService",
+        "type": "OnPremisesSqlServer",
         "typeProperties": {
             "connectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=False;User ID=<username>;Password=<password>;",
             "gatewayName": "<gateway name>"
@@ -97,7 +97,7 @@ ms.lasthandoff: 03/30/2017
      "Name": " MyOnPremisesSQLDB",
      "Properties":
      {
-         "type": "OnPremisesSqlLinkedService",
+         "type": "OnPremisesSqlServer",
          "typeProperties": {
              "ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
              "username": "<domain\\username>",
@@ -135,7 +135,7 @@ ms.lasthandoff: 03/30/2017
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如，select * from MyTable。 可引用输入数据集所引用的数据库中的多个表。 如果未指定，执行的 SQL 语句为：select from MyTable。 |否 |
-| sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 |否 |
+| sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 存储过程中的最后一条 SQL 语句必须是 SELECT 语句。 |否 |
 | storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 
 如果为 SqlSource 指定 **sqlReaderQuery**，则复制活动针对 SQL Server 数据库源运行此查询以获取数据。

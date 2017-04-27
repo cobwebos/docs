@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: queries
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e8c486ca190ae2af650a7fa17843c84538dde8d9
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: da71cb834c13da5d0f5690f471efc6c696163f30
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>SQL 数据仓库中的 Group By 选项
-[GROUP BY][GROUP BY] 子句可用于将数据聚合成摘要行集。 它还具有一些扩展其功能的选项，但这些选项需要经过处理，因为 Azure SQL 数据仓库不直接支持这些选项。
+[GROUP BY][GROUP BY] 子句用于将数据聚合成摘要行集。 它还具有一些扩展其功能的选项，但这些选项需要经过处理，因为 Azure SQL 数据仓库不直接支持这些选项。
 
 这些选项包括：
 
@@ -181,22 +183,17 @@ ORDER BY 1,2,3
 通过将代码拆分成不同的部分并生成循环构造，代码将更好管理和维护。
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[部署概述][部署概述]。
+有关更多开发技巧，请参阅[开发概述][development overview]。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png
 
 <!--Article references-->
-[部署概述]: sql-data-warehouse-overview-develop.md
+[development overview]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 [GROUP BY]: https://msdn.microsoft.com/library/ms177673.aspx
 
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

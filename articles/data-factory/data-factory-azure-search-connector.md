@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 94f0a741be663aae9f2ec4ee221a4b2b58e390e2
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 73cd37a83ba31f428b3d0262230e4c650692a842
+ms.lasthandoff: 04/10/2017
 
 ---
 
@@ -67,9 +67,9 @@ ms.lasthandoff: 03/27/2017
 
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表等属性和各种策略可用于所有类型的活动。 另一方面，可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
+有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表等属性和各种策略可用于所有类型的活动。 但是，可用于 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
-对于复制活动，如果源类型为 **AzureSearchIndexSink**，则可在 typeProperties 节中使用以下属性：
+对于复制活动，如果接收器类型为 **AzureSearchIndexSink**，则可在 typeProperties 节中使用以下属性：
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | -------- | ----------- | -------------- | -------- |
@@ -250,7 +250,7 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 }
 ```
 
-如果要将数据从云数据存储复制到 Azure 搜索中，则 `executionLocation` 属性是必需的。 下面显示在“复制活动 `typeProperties`”下所需的更改作为示例。 查看[在云数据存储之间复制数据](data-factory-data-movement-activities.md#global)部分以了解支持的值和详细信息。
+如果要将数据从云数据存储复制到 Azure 搜索中，则 `executionLocation` 属性是必需的。 以下 JSON 片段显示复制活动 `typeProperties`（作为示例）下所需的更改。 查看[在云数据存储之间复制数据](data-factory-data-movement-activities.md#global)部分以了解支持的值和详细信息。
 
 ```JSON
 "typeProperties": {
@@ -266,7 +266,7 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 
 
 ## <a name="copy-from-a-cloud-source"></a>从云源复制
-如果要将数据从云数据存储复制到 Azure 搜索中，则 `executionLocation` 属性是必需的。 下面显示在“复制活动 `typeProperties`”下所需的更改作为示例。 查看[在云数据存储之间复制数据](data-factory-data-movement-activities.md#global)部分以了解支持的值和详细信息。
+如果要将数据从云数据存储复制到 Azure 搜索中，则 `executionLocation` 属性是必需的。 以下 JSON 片段显示复制活动 `typeProperties`（作为示例）下所需的更改。 查看[在云数据存储之间复制数据](data-factory-data-movement-activities.md#global)部分以了解支持的值和详细信息。
 
 ```JSON
 "typeProperties": {

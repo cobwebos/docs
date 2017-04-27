@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/20/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 144dcd5277673024c7a71808f32c6a7b6491559a
-ms.openlocfilehash: 6ccea0eeb594070eed6341d3f5ec80db0efdf8f2
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 8f45d0e86a95779d5ceeddb72638b14e0e7a80eb
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/27/2017
 
 ## <a name="create-a-nodejs-sample-solution"></a>创建 node.js 示例解决方案
 
-请确保已在开发计算机上安装 Node.js version 0.10.x 或更高版本。 若要检查版本，可以在命令行中运行 `node --version`。
+请确保已在开发计算机上安装 Node.js 版本 0.11.5 或更高版本。 若要检查版本，可以在命令行中运行 `node --version`。
 
 1. 在开发计算机上，创建名为 **RemoteMonitoring** 的文件夹。 导航到命令行环境中的此文件夹。
 

@@ -12,27 +12,29 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: barbkess;jrj
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fe62d672ebd4c6d9f5e161e337dbace0c80f67a5
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 914d85267e82ce6a2e60f3841889935046f17c87
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>概述 SQL 数据仓库中的表
 > [!div class="op_single_selector"]
-> * [概述][概述]
-> * [数据类型][数据类型]
-> * [分布][分布]
-> * [索引][索引]
-> * [分区][分区]
-> * [统计信息][统计信息]
-> * [临时][临时]
+> * [概述][Overview]
+> * [数据类型][Data Types]
+> * [分布][Distribute]
+> * [索引][Index]
+> * [分区][Partition]
+> * [统计信息][Statistics]
+> * [临时][Temporary]
 > 
 > 
 
-在 Azure SQL 数据仓库中创建表的入门操作很简单。  基本的 [CREATE TABLE][CREATE TABLE] 语法与你最有可能通过使用其他数据库已经非常熟悉的常见语法无异。  创建表时，只需为表和列命名，然后为每个列定义数据类型即可。  如果你已经在其他数据库中创建过表，则此操作对你来说应该很熟悉。
+在 Azure SQL 数据仓库中创建表的入门操作很简单。  基本的 [CREATE TABLE][CREATE TABLE] 语法与常用语法无异，这种语法你在使用其他数据库时很可能已经非常熟悉。  创建表时，只需为表和列命名，然后为每个列定义数据类型即可。  如果你已经在其他数据库中创建过表，则此操作对你来说应该很熟悉。
 
 ```sql  
 CREATE TABLE Customers (FirstName VARCHAR(25), LastName VARCHAR(25))
@@ -47,38 +49,38 @@ RENAME OBJECT Customer TO CustomerOrig;
  ```
 
 ## <a name="distributed-tables"></a>分布式表
-由 SQL 数据仓库之类的分布式系统引入的新的基本属性是**分布列**。  分布列的含义正如其名。  分布列是指决定后台数据如何分布或划分的列。  如果创建表时未指定分布列，该表的数据会自动根据**轮循机制**进行分布。  虽然在某些情况下轮循机制表可能已经足够，但是定义分布列可以大大减少查询期间的数据移动，从而优化性能。  若要了解如何选择分布列的详细信息，请参阅[分布表][分布]。
+由 SQL 数据仓库之类的分布式系统引入的新的基本属性是**分布列**。  分布列的含义正如其名。  分布列是指决定后台数据如何分布或划分的列。  如果创建表时未指定分布列，该表的数据会自动根据**轮循机制**进行分布。  虽然在某些情况下轮循机制表可能已经足够，但是定义分布列可以大大减少查询期间的数据移动，从而优化性能。  若要了解如何选择分布列的详细信息，请参阅[分布表][Distribute]。
 
 ## <a name="indexing-and-partitioning-tables"></a>对表进行索引和分区
-当你在使用 SQL 数据仓库的过程中变得更老练以后，如果你想要优化性能，则需了解有关表设计的详细信息。  若要了解详细信息，请参阅有关[表数据类型][数据类型]、[分布表][分布]、[为表编制索引][索引] 和[将表分区][分区] 的文章。
+当你在使用 SQL 数据仓库的过程中变得更老练以后，如果你想要优化性能，则需了解有关表设计的详细信息。  若要了解详细信息，请参阅有关[表数据类型][Data Types]、[分布表][Distribute]、为[表索引][Index]、[表分区][Partition]的文章。
 
 ## <a name="table-statistics"></a>表统计信息
-若要获取 SQL 数据仓库的最佳性能，统计信息异常重要。  由于 SQL 数据仓库尚未自动创建和更新统计信息（这可能与 Azure SQL 数据库中的情况一样），因此为了确保获得最佳查询效果，请阅读我们有关[统计信息][统计信息]的文章，这可能是你需要阅读的最重要文章之一。
+若要获取 SQL 数据仓库的最佳性能，统计信息异常重要。  由于 SQL 数据仓库不会自动创建和更新统计信息（这可能与在 Azure SQL 数据库中遇到的情况一样），因此请阅读我们有关[统计信息][Statistics]的文章。该文章可能是需要阅读的最重要的文章之一，可确保获得最佳查询性能。
 
 ## <a name="temporary-tables"></a>临时表
-临时表是指仅在你登录期间存在且其他用户无法查看的表。  临时表可用于防止他人查看临时结果，并且不需清除。  由于临时表也利用本地存储，因此对于某些操作来说，临时表可以提供更快速的性能。  请参阅[临时表][临时] 的文章，了解有关临时表的更多详细信息。
+临时表是指仅在你登录期间存在且其他用户无法查看的表。  临时表可用于防止他人查看临时结果，并且不需清除。  由于临时表也利用本地存储，因此对于某些操作来说，临时表可以提供更快速的性能。  请参阅[临时表][Temporary] 的文章，了解有关临时表的更多详细信息。
 
 ## <a name="external-tables"></a>外部表
-外部表，也称 PolyBase 表，是指可以从 SQL 数据仓库查询但其指向的数据却位于 SQL 数据仓库外部的表。  例如，你可以创建一个外部表，让其指向 Azure Blob 存储上的文件。  若要详细了解如何创建和查询外部表，请参阅[使用 PolyBase 加载数据][使用 PolyBase 加载数据]。  
+外部表，也称 PolyBase 表，是指可以从 SQL 数据仓库查询但其指向的数据却位于 SQL 数据仓库外部的表。  例如，你可以创建一个外部表，让其指向 Azure Blob 存储上的文件。  若要详细了解如何创建和查询外部表，请参阅[使用 PolyBase 加载数据][Load data with Polybase]。  
 
 ## <a name="unsupported-table-features"></a>不支持的表功能
 虽然 SQL 数据仓库包含许多与其他数据库提供的表功能相同的表功能，但也有一些功能是不受支持的。  下面是目前仍不支持的部分表功能的列表。
 
 | 不支持的功能 |
 | --- |
-| [标识属性][标识属性]（请参阅[分配代理键解决方法][分配代理键解决方法]） |
-| 主键、外键、唯一键和查看[表约束][表约束] |
-| [唯一索引][唯一索引] |
-| [计算列][计算列] |
-| [稀疏列][稀疏列] |
-| [用户定义的类型][用户定义的类型] |
-| [序列][序列] |
-| [触发器][触发器] |
-| [索引视图][索引视图] |
-| [同义词][同义词] |
+| [标识属性][Identity Property]（请参阅[分配代理键解决方法][Assigning Surrogate Key Workaround]） |
+| 主键、外键、唯一键和查看[表约束][Table Constraints] |
+| [唯一索引][Unique Indexes] |
+| [计算列][Computed Columns] |
+| [稀疏列][Sparse Columns] |
+| [用户定义的类型][User-Defined Types] |
+| [序列][Sequence] |
+| [触发器][Triggers] |
+| [索引视图][Indexed Views] |
+| [同义词][Synonyms] |
 
 ## <a name="table-size-queries"></a>表大小查询
-若要确定这 60 个分布中每个分布的表所占用的空间和行，一种简单的方法是使用 [DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED]。
+若要确定这 60 个分布中每个分布的表所占用的空间和行，一个简单的方法是使用 [DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED]。
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -273,41 +275,36 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要了解详细信息，请参阅有关[表类型][数据类型]、[分布表][分布]、[为表编制索引][索引]、[将表分区][分区]、[维护表统计信息][统计信息] 和[临时表][临时] 的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL 数据仓库最佳实践]。
+有关详细信息，请参阅有关[表数据类型][Data Types]、[分布表][Distribute]、[表索引][Index]、[表分区][Partition]、[维护表统计信息][Statistics]和[临时表][Temporary]的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。
 
 <!--Image references-->
 
 <!--Article references-->
-[概述]: ./sql-data-warehouse-tables-overview.md
-[数据类型]: ./sql-data-warehouse-tables-data-types.md
-[分布]: ./sql-data-warehouse-tables-distribute.md
-[索引]: ./sql-data-warehouse-tables-index.md
-[分区]: ./sql-data-warehouse-tables-partition.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
-[临时]: ./sql-data-warehouse-tables-temporary.md
-[SQL 数据仓库最佳实践]: ./sql-data-warehouse-best-practices.md
-[使用 PolyBase 加载数据]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[Index]: ./sql-data-warehouse-tables-index.md
+[Partition]: ./sql-data-warehouse-tables-partition.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
+[Load data with Polybase]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
 
 <!--MSDN references-->
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
 [DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[标识属性]: https://msdn.microsoft.com/library/ms186775.aspx
-[分配代理键解决方法]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
-[表约束]: https://msdn.microsoft.com/library/ms188066.aspx
-[计算列]: https://msdn.microsoft.com/library/ms186241.aspx
-[稀疏列]: https://msdn.microsoft.com/library/cc280604.aspx
-[用户定义的类型]: https://msdn.microsoft.com/library/ms131694.aspx
-[序列]: https://msdn.microsoft.com/library/ff878091.aspx
-[触发器]: https://msdn.microsoft.com/library/ms189799.aspx
-[索引视图]: https://msdn.microsoft.com/library/ms191432.aspx
-[同义词]: https://msdn.microsoft.com/library/ms177544.aspx
-[唯一索引]: https://msdn.microsoft.com/library/ms188783.aspx
+[Identity Property]: https://msdn.microsoft.com/library/ms186775.aspx
+[Assigning Surrogate Key Workaround]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
+[Table Constraints]: https://msdn.microsoft.com/library/ms188066.aspx
+[Computed Columns]: https://msdn.microsoft.com/library/ms186241.aspx
+[Sparse Columns]: https://msdn.microsoft.com/library/cc280604.aspx
+[User-Defined Types]: https://msdn.microsoft.com/library/ms131694.aspx
+[Sequence]: https://msdn.microsoft.com/library/ff878091.aspx
+[Triggers]: https://msdn.microsoft.com/library/ms189799.aspx
+[Indexed Views]: https://msdn.microsoft.com/library/ms191432.aspx
+[Synonyms]: https://msdn.microsoft.com/library/ms177544.aspx
+[Unique Indexes]: https://msdn.microsoft.com/library/ms188783.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

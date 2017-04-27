@@ -12,36 +12,47 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/18/2017
+ms.date: 04/10/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 66e6fec16aab7764b05b616efc0fccbfb2d0595e
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 9b45ab6b86ab0a336b2a4b90e702fa4ff098d41c
+ms.lasthandoff: 04/10/2017
 
 ---
 
 # <a name="indexing-azure-table-storage-with-azure-search"></a>使用 Azure 搜索对 Azure 表存储编制索引
-本文介绍如何使用 Azure 搜索对 Azure 表存储中存储的数据编制索引。 新的 Azure 搜索表索引器可快速、无缝地实现此过程。
+本文介绍如何使用 Azure 搜索对 Azure 表存储中存储的数据编制索引。
 
 ## <a name="setting-up-azure-table-indexing"></a>设置 Azure 表索引
-若要创建和配置 Azure 表索引器，可以使用 Azure 搜索 REST API 创建并管理“索引器”和“数据源”，如[索引器操作](https://msdn.microsoft.com/library/azure/dn946891.aspx)中所述。 还可以使用 .NET SDK [2.0 预览版](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx)。 将来，对表索引的支持会添加到 Azure 门户。
 
-数据源指定要索引的数据、访问数据所需的凭据和支持 Azure 搜索有效标识数据更改（新建的行、修改的行或删除的行）的策略。
+可使用以下方式设置 Azure 表索引器：
 
-索引器从数据源读取数据，然后将它载入目标搜索索引。
+* [Azure 门户](https://ms.portal.azure.com)
+* Azure 搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure 搜索 [.NET SDK](https://aka.ms/search-sdk)
 
-若要创建表索引，请执行以下步骤:
+在这里，我们使用 REST API 演示流。 
 
-1. 创建数据源
-   * 将 `type` 参数设置为 `azuretable`
-   * 作为 `credentials.connectionString` 参数传入存储帐户连接字符串。 有关详细信息请参阅下方的[如何指定凭据](#Credentials)。
-   * 使用 `container.name` 参数指定表名称
-   * （可选）使用 `container.query` 参数指定查询。 如有可能，请在 PartitionKey 上使用筛选器，以获得最佳性能；任何其他查询将导致全表扫描，这可能会导致大型表性能降低。
-2. 使用与要编制索引的表中的列对应的模式创建搜索索引。
-3. 通过将数据源连接到搜索索引即可创建索引器。
+### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 
-### <a name="create-data-source"></a>创建数据源
+数据源指定要索引的数据、访问数据所需的凭据和支持 Azure 搜索有效标识数据更改的策略。
+
+若要为表编制索引，数据源必须具有以下属性：
+
+- **name** 是搜索服务中数据源的唯一名称。
+- **type** 必须是 `azuretable`。
+- **credentials** 参数包含存储帐户连接字符串。 有关详细信息，请参阅[如何指定凭据](#Credentials)部分。
+- **container** 设置表名称和可选查询
+    - 使用 `name` 参数指定表名称
+    - （可选）使用 `query` 参数指定查询。 
+
+> [!IMPORTANT] 
+> 为使性能更佳，请尽可能对 PartitionKey 使用筛选器。 任何其他查询会执行全表扫描，导致大型表性能不佳。 请参阅[性能注意事项](#Performance)部分。
+
+
+创建数据源：
+
     POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
@@ -53,7 +64,7 @@ ms.lasthandoff: 03/30/2017
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
 
-有关创建数据源 API 的详细信息，请参阅[创建数据源](https://msdn.microsoft.com/library/azure/dn946876.aspx)。
+有关创建数据源 API 的详细信息，请参阅[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)。
 
 <a name="Credentials"></a>
 #### <a name="how-to-specify-credentials"></a>如何指定凭据 ####
@@ -67,9 +78,13 @@ ms.lasthandoff: 03/30/2017
 有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)。
 
 > [!NOTE]
-> 如果使用 SAS 凭据，则需使用续订的签名定期更新数据源凭据，以防止其过期。 如果 SAS 凭据过期，索引器将失败，出现类似于 `Credentials provided in the connection string are invalid or have expired.` 的错误消息。  
+> 如果使用 SAS 凭据，则需使用续订的签名定期更新数据源凭据，以防止其过期。 如果 SAS 凭据过期，索引器会失败并出现类似于 `Credentials provided in the connection string are invalid or have expired.` 的错误消息。  
 
-### <a name="create-index"></a>创建索引
+### <a name="step-2-create-an-index"></a>步骤 2：创建索引
+索引指定文档、属性和其他构造中可以塑造搜索体验的字段。
+
+下面介绍如何创建索引：
+
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
@@ -82,10 +97,12 @@ ms.lasthandoff: 03/30/2017
           ]
     }
 
-有关创建索引 API，请参阅[创建索引](https://msdn.microsoft.com/library/dn798941.aspx)
+有关创建索引的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
-### <a name="create-indexer"></a>创建索引器
-最后，创建引用数据源和目标索引的索引器。 例如：
+### <a name="step-3-create-an-indexer"></a>步骤 3：创建索引器
+索引器将数据源与目标搜索索引关联，并提供自动执行数据刷新的计划。 
+
+创建索引和数据源后，就可以准备创建索引器了：
 
     POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
@@ -98,17 +115,17 @@ ms.lasthandoff: 03/30/2017
       "schedule" : { "interval" : "PT2H" }
     }
 
-有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://msdn.microsoft.com/library/azure/dn946899.aspx)。
+此索引器每两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行索引器一次，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
-就是这么简单 - 已成功创建索引！
+有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
 ## <a name="dealing-with-different-field-names"></a>处理不同的字段名称
-通常，现有索引中的字段名称将不同于表中的属性名称。 可以使用**字段映射**将表中的属性名称映射到搜索索引中的字段名称。 若要详细了解字段映射，请参阅 [Azure 搜索索引器字段映射弥补数据源和搜索索引之间的差异](search-indexer-field-mappings.md)。
+有时，现有索引中的字段名称会不同于表中的属性名称。 可以使用**字段映射**将表中的属性名称映射到搜索索引中的字段名称。 若要详细了解字段映射，请参阅 [Azure 搜索索引器字段映射弥补数据源和搜索索引之间的差异](search-indexer-field-mappings.md)。
 
 ## <a name="handling-document-keys"></a>处理文档键
 在 Azure 搜索中，文档键唯一标识某个文档。 每个搜索索引必须只有一个类型为 `Edm.String` 的键字段。 键字段对于要添加到索引的每个文档必不可少（事实上，它是唯一的必填字段）。
 
-由于表行具有复合键，因此 Azure 搜索会生成一个名为 `Key` 的合成字段，该字段是分区键值和行键值的串接。 例如，如果行的 PartitionKey 为 `PK1`、RowKey 为 `RK1`，那么 `Key` 字段的值将为 `PK1RK1`。
+由于表行具有复合键，因此 Azure 搜索会生成一个名为 `Key` 的合成字段，该字段是分区键值和行键值的串接。 例如，如果行的 PartitionKey 为 `PK1`、RowKey 为 `RK1`，那么 `Key` 字段的值为 `PK1RK1`。
 
 > [!NOTE]
 > `Key` 值中可能含有文档键中无效的字符（如短划线）。 可以通过使用 `base64Encode` [字段映射函数](search-indexer-field-mappings.md#base64EncodeFunction)处理无效字符。 如果执行此操作，在 API 调用（如 Lookup）中传递文档键时，还请记得使用 URL-safe Base64 编码。
@@ -118,7 +135,7 @@ ms.lasthandoff: 03/30/2017
 ## <a name="incremental-indexing-and-deletion-detection"></a>增量索引和删除检测
 当将表索引器设置为按计划运行时，它仅对由行的 `Timestamp` 值确定的新行或更新行重新编制索引。 无需指定更改检测策略 - 将自动为你启用增量索引。
 
-若要指示必须从索引中删除某些文档，可以使用软删除策略（不是删除行）、添加表明文档已删除的属性，然后在数据源上设置软删除检测策略。 例如，以下所示策略会在行具有值为 `"true"` 的属性 `IsDeleted` 的情况下，将该行视为已删除：
+若要指示必须从索引中删除某些文档，可使用软删除策略。 不删除行，而是添加一个属性来指示删除行，并对数据源设置软删除检测策略。 例如，如果某行具有值为 `"true"` 的属性 `IsDeleted`，以下策略会将该行视为已删除：
 
     PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
@@ -128,11 +145,29 @@ ms.lasthandoff: 03/30/2017
         "name" : "my-table-datasource",
         "type" : "azuretable",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "table name", "query" : "query" },
+        "container" : { "name" : "table name", "query" : "<query>" },
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }   
 
+<a name="Performance"></a>
+## <a name="performance-considerations"></a>性能注意事项
+
+默认情况下，Azure 搜索使用以下查询筛选器：`Timestamp >= HighWaterMarkValue`。 由于 Azure 表在 `Timestamp` 字段上没有辅助索引，因此该类型的查询需要执行全表扫描，导致大型表查询速度慢。
+
+
+下面是两种可能提高表索引性能的方法。 这两种方法都依赖于使用表分区： 
+
+- 如果可自然地将数据分区到多个分区范围中，可为每个分区范围创建数据源和相应的索引器。 现在每个索引器仅能处理一个特定分区范围，使得查询性能更佳。 如果需编制索引的数据具有较少的固定分区，查询性能会更好 - 每个索引器仅执行一次分区扫描。 例如，若要创建一个数据源用来处理含有键 `000` 到 `100` 的分区范围，请使用以下查询： 
+    ```
+    "container" : { "name" : "my-table", "query" : "PartitionKey ge '000' and PartitionKey lt '100' " }
+    ```
+
+- 如果数据按时间分区（例如，每天或每周创建一个新分区），请考虑以下方法： 
+    - 使用此格式的查询：`(PartitionKey ge <TimeStamp>) and (other filters)` 
+    - 使用[获取索引器状态 API](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)监视器索引器进度，并基于最新的成功的高使用标记值定期更新查询的 `<TimeStamp>` 条件。 
+    - 借助此方法，如果需要触发完整的索引重编制，除了重置索引器外还需要重置数据源查询。 
+
 
 ## <a name="help-us-make-azure-search-better"></a>帮助我们改进 Azure 搜索
-如果你有功能请求或改进建议，请通过我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)与我们联系。
+如果有功能请求或改进建议，请在我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)上提交。
 

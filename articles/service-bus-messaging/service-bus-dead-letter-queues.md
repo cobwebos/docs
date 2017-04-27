@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/14/2017
 ms.author: clemensv;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 6d08aacf43126011ed8ad3ce708485a188b67c3b
-ms.openlocfilehash: 4576340ef268a10014124d0d76c70eca941a90c8
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 2b118f285f822d6cba3a2db4130539e62aabd342
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -68,6 +68,7 @@ ms.lasthandoff: 02/15/2017
 
 - 消息传过 3 个以上[链接在一起](service-bus-auto-forwarding.md)的队列或主题。
 - 目标队列或主题被禁用或删除。
+- 目标队列或主题超出最大实体大小。
 
 若要检索这些死信消息，可以使用 [FormatTransferDeadletterPath](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_FormatTransferDeadLetterPath_System_String_) 实用方法创建接收器。
 

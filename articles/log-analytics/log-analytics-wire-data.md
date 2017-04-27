@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: b1db5cd0149374842b0201cd6b820436f3822325
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
 线路数据是通过 OMS 代理（包括 Operations Manager 和 Windows 连接的代理）从计算机收集的网络和性能整合数据。 网络数据与日志数据结合在一起，可帮助你将数据相关联。 在 IT 基础结构中的计算机上安装的 OMS 代理将监视发往这些计算机以及从这些计算机（网络级别为 2-3，处于 [OSI 模式](https://en.wikipedia.org/wiki/OSI_model)，包括使用的各种协议和端口）接收的网络数据。
 
 > [!NOTE]
-> 目前还不能将线路数据解决方案添加到工作区。 已启用线路数据解决方案的客户可以继续使用该解决方案。
+> 目前还不能将线路数据 1.0 解决方案添加到工作区。 已启用线路数据 1.0 解决方案的客户可以继续使用该解决方案。 但新客户应改用[线路数据 2.0](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) 解决方案。
 >
 >
 
@@ -66,7 +67,7 @@ ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
 
 下表显示了数据收集方法以及有关如何为线路数据收集数据的其他详细信息。
 
-| 平台 | 直接代理 | SCOM 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows（2012 R2 / 8.1 或更高版本） |![是](./media/log-analytics-wire-data/oms-bullet-green.png) |![是](./media/log-analytics-wire-data/oms-bullet-green.png) |![否](./media/log-analytics-wire-data/oms-bullet-red.png) |![否](./media/log-analytics-wire-data/oms-bullet-red.png) |![否](./media/log-analytics-wire-data/oms-bullet-red.png) |每隔 1 分钟 |
 
@@ -106,9 +107,4 @@ ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
 ## <a name="next-steps"></a>后续步骤
 * [搜索日志](log-analytics-log-searches.md)以查看详细的线路数据搜索记录。
 * 请参阅 Dan 写的博客帖子 [Using Wire Data in Operations Management Suite Log Search](http://blogs.msdn.com/b/dmuscett/archive/2015/09/09/using-wire-data-in-operations-management-suite.aspx)（在 Operations Management Suite 日中搜索中使用线路数据）。该帖子补充说明了收集数据的频率以及如何为 Operations Manager 代理修改收集属性。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

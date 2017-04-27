@@ -1,6 +1,6 @@
 ---
-title: "创建要在 Azure Spark 群集上运行的独立 Scala 应用程序 | Microsoft Docs"
-description: "了解如何创建要在 HDInsight Spark 群集中运行的独立 Spark 应用程序。"
+title: "创建要在 Azure Spark 群集上运行的 Scala Maven 应用程序 | Microsoft Docs"
+description: "了解如何使用 Maven 创建要在 HDInsight Spark 群集中运行的独立 Spark 应用程序。"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -17,19 +17,19 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 153b1ea4ec3d326fb533817cdb74d3489135f7d9
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: c435e8ec21b568afcadaa1af95964753d36d0ccb
+ms.lasthandoff: 04/06/2017
 
 
 ---
-# <a name="create-a-standalone-scala-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>创建要在 HDInsight 上的 Apache Spark 群集中运行的独立 Scala 应用程序
+# <a name="create-a-scala-maven-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>创建要在 HDInsight 上的 Apache Spark 群集中运行的 Scala Maven 应用程序
 
-本文提供了有关将 Maven 与 IntelliJ IDEA 配合使用以开发在 Scala 中编写的独立 Spark 应用程序的分步指南。 本文将 Apache Maven 用作生成系统，并使用 IntelliJ IDEA 提供的 Scala 的现有 Maven 原型启动。  粗略来说，在 IntelliJ IDEA 中创建 Scala 应用程序需要以下步骤：
+了解如何结合使用 Maven 和 IntelliJ IDEA 创建用 Scala 编写的 Spark 应用程序。 本文将 Apache Maven 用作生成系统，并从 IntelliJ IDEA 提供的 Scala 的现有 Maven 原型入手。  在 IntelliJ IDEA 中创建 Scala 应用程序需要以下步骤：
 
 * 将 Maven 用作生成系统。
 * 更新项目对象模型 (POM) 文件，以解析 Spark 模块依赖项。
-* 在 Scala 中编写应用程序。
+* 使用 Scala 编写应用程序。
 * 生成可以提交到 HDInsight Spark 群集的 jar 文件。
 * 使用 Livy 在 Spark 群集上运行应用程序。
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/24/2017
 > 
 > 
 
-**先决条件**
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
@@ -72,15 +72,15 @@ ms.lasthandoff: 01/24/2017
 6. 如有必要，对默认源和测试文件进行重命名。 从 IntelliJ IDEA 的左窗格中，导航到 **src\main\scala\com.microsoft.spark.example**。 右键单击“App.scala”，单击“重构”、“重命名”文件，然后在对话框中，提供应用程序的新名称，并单击“重构”。
    
     ![重命名文件](./media/hdinsight-apache-spark-create-standalone-application/rename-scala-files.png)  
-7. 在后续步骤中，将更新 pom.xml 以定义 Spark Scala 应用程序的依赖项。 这些依赖项将自动下载并解析，必须相应地配置 Maven。
+7. 后续步骤将更新 pom.xml 以定义 Spark Scala 应用程序的依赖项。 要实现这些依赖项的自动下载和解析，必须对 Maven 进行相应配置。
    
     ![配置 Maven 以进行自动下载](./media/hdinsight-apache-spark-create-standalone-application/configure-maven.png)
    
    1. 在“文件”菜单中，单击“设置”。
    2. 在“设置”对话框中，导航到“生成、执行、部署” > “生成工具” > “Maven” > “导入”。
-   3. 选择此选项以“自动导入 Maven 项目”。
+   3. 选择“自动导入 Maven 项目”选项。
    4. 单击“应用”，然后单击“确定”。
-8. 更新 Scala 源文件以包含应用程序代码。 打开并将当前示例代码替换为以下代码，然后保存所做的更改。 此代码从 HVAC.csv（用于所有 HDInsight Spark 群集）中读取数据，检索第六列中只有一个数字的行，并将输出写入群集的默认存储容器下的 **/HVACOut**。
+8. 更新 Scala 源文件以包含应用程序代码。 打开并将当前示例代码替换为以下代码，然后保存所做的更改。 此代码从 HVAC.csv（所有 HDInsight Spark 群集均有该文件）中读取数据，检索第六列中只有一个数字的行，并将输出写入群集的默认存储容器下的 **/HVACOut**。
    
         package com.microsoft.spark.example
    
@@ -137,7 +137,7 @@ ms.lasthandoff: 01/24/2017
         ![创建 JAR](./media/hdinsight-apache-spark-create-standalone-application/delete-output-jars.png)
        
         请务必选中“在创建时生成”框，以确保每次生成或更新项目时都创建 jar。 单击“应用”，然后单击“确定”。
-    7. 在菜单栏中单击“生成”，然后单击“创建项目”。 也可以单击“生成项目”以创建 jar。 将在 **\out\artifacts** 下创建输出 jar。
+    7. 在菜单栏中单击“生成”，然后单击“创建项目”。 也可以单击“生成项目”以创建 jar。 输出 jar 将在 **\out\artifacts** 下创建。
        
         ![创建 JAR](./media/hdinsight-apache-spark-create-standalone-application/output.png)
 

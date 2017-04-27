@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 132576ca394fe475000449ea58871726c36d078f
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: baa8880e47c827e09f6027637d73f2522fec60b9
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -690,8 +690,13 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 包含应用使用 TrackTrace() 或[其他记录框架](app-insights-asp-net-trace-logs.md)发送的遥测。
 
 ## <a name="video"></a>视频 
- 
+
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
+
+高级查询：
+
+> [!VIDEO https://channel9.msdn.com/Events/Build/2016/P591/player]
+
 
 ## <a name="next-steps"></a>后续步骤
 * [Analytics 语言参考](app-insights-analytics-reference.md)

@@ -16,9 +16,9 @@ ms.date: 03/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: c9065c3346c924ea21060c9e7e5b297a3cb26941
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 76c8feb077cca27dc96f43e708cdef4fbb0f824c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -44,9 +44,9 @@ ms.lasthandoff: 03/09/2017
 可能根据以下条件接收警报：
 
 * **指标值**：当指定指标的值在任一方向越过了指定的阈值时将触发警报。 也就是说，当条件先是满足以及之后不再满足该条件时，警报都会触发。 有关 Azure Monitor 支持的可用指标（不断增加中）的列表，请参阅 [Azure Monitor 支持的指标的列表](monitoring-supported-metrics.md)。
-* **活动日志事件**：此警报可以在发生每个事件时都触发，也可以仅在发生特定数量的事件时才触发。
+* **活动日志事件**：在对资源发生特定事件时，或是在服务通知发布到订阅时，可以触发此警报。
 
-## <a name="what-can-alerts-do"></a>警报可以做什么？
+## <a name="what-can-metric-alerts-do"></a>指标警报可以做什么？
 你可以配置警报来执行以下操作：
 
 * 将电子邮件通知发送到服务管理员、共同管理员或指定的其他电子邮件。
@@ -56,12 +56,27 @@ ms.lasthandoff: 03/09/2017
     - Azure 逻辑应用
     - 第三方服务
 
+## <a name="what-can-activity-log-alerts-do"></a>活动日志警报可以做什么？
+你可以配置警报来执行以下操作：
+* 每当对订阅下的资源之一发生特定事件时触发
+* 每当服务通知发布到订阅时触发
+* 通过以下方式向操作组的成员发出警报
+    * SMS
+    * 电子邮件
+    * Webhook
 
 ## <a name="next-steps"></a>后续步骤
 了解警报规则以及如何使用以下工具来配置这些规则：
 
-* [Azure 门户](insights-alerts-portal.md)
-* [PowerShell](insights-alerts-powershell.md)
-* [命令行接口 (CLI)](insights-alerts-command-line-interface.md)
-* [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* 详细了解[指标](monitoring-overview-metrics.md)
+* [通过 Azure 门户配置指标警报](insights-alerts-portal.md)
+* 配置[指标警报 PowerShell](insights-alerts-powershell.md)
+* 配置[指标警报命令行接口 (CLI)](insights-alerts-command-line-interface.md)
+* 配置[指标警报 Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* 详细了解[活动日志](monitoring-overview-activity-logs.md)
+* [通过 Azure 门户配置活动日志警报](monitoring-activity-log-alerts.md)
+* [通过 Resource Manager 配置活动日志警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* 查看[活动日志警报 webhook 架构](monitoring-activity-log-alerts-webhook.md)
+* 详细了解[服务通知](monitoring-service-notifications.md)
+* 详细了解[操作组](monitoring-action-groups.md)
 

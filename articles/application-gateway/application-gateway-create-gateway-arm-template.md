@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: f550ec9a8d254378d165f0c842459fd50ade7945
-ms.openlocfilehash: 5cdd26529ed06b7903ae232ab8da4527e79a8a68
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 58b3d4a84c06a17eee41385509aa80e820399716
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -30,7 +30,10 @@ ms.lasthandoff: 03/30/2017
 > * [Azure Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Azure 应用程序网关是第&7; 层负载平衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载平衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
+Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。
+应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。
+
+若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
 
 了解如何从 GitHub 下载并修改现有 Azure Resource Manager 模板，以及如何通过 GitHub、PowerShell 和 Azure CLI 部署该模板。
 
@@ -40,13 +43,13 @@ Azure 应用程序网关是第&7; 层负载平衡器。 它在不同服务器之
 
 在此方案中，你将：
 
-* 创建包含两个实例的应用程序网关。
+* 创建具有 Web 应用程序防火墙的应用程序网关。
 * 创建名为 VirtualNetwork1 且包含 10.0.0.0/16 保留 CIDR 块的虚拟网络。
 * 创建名为 Appgatewaysubnet 且使用 10.0.0.0/28 作为其 CIDR 块的子网。
-* 为需要用来进行流量负载平衡的 Web 服务器设置两个先前已配置的后端 IP。 在此模板示例中，后端 IP 是 10.0.1.10 和 10.0.1.11。
+* 为需要用来进行流量负载均衡的 Web 服务器设置两个先前已配置的后端 IP。 在此模板示例中，后端 IP 是 10.0.1.10 和 10.0.1.11。
 
 > [!NOTE]
-> 这些设置是适用于此模板的参数。 若要自定义模板，你可以更改规则、侦听程序，以及用于打开 azuredeploy.json 的 SSL。
+> 这些设置是适用于此模板的参数。 若要自定义模板，可更改 azuredeploy.json 文件中的规则、侦听程序、SSL 以及其他选项。
 
 ![方案](./media/application-gateway-create-gateway-arm-template/scenario.png)
 
@@ -54,71 +57,86 @@ Azure 应用程序网关是第&7; 层负载平衡器。 它在不同服务器之
 
 可以从 GitHub 下载用于创建虚拟网络和两个子网的现有 Azure Resource Manager 模板，进行任何所需的更改，然后重用该模板。 为此，请按照以下步骤操作：
 
-1. 导航到 [Create Application Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-create)（创建应用程序网关）。
-2. 单击 **azuredeploy.json**，然后单击 **RAW**。
-3. 将该文件保存到你计算机上的本地文件夹。
-4. 如果你熟悉 Azure Resource Manager 模板，则跳到步骤 7。
-5. 打开保存的文件，并查看 **parameters** 下第 5 行中的内容。 Azure Resource Manager 模板参数提供了在部署过程中可以填充的值的占位符。
-   
-   | 参数 | 说明 |
-   | --- | --- |
-   | **位置** |将创建应用程序网关的 Azure 区域 |
-   | **VirtualNetwork1** |新虚拟网络的名称 |
-   | **addressPrefix** |虚拟网络的地址空间，采用 CIDR 格式 |
-   | **ApplicationGatewaysubnet** |应用程序网关子网的名称 |
-   | **subnetPrefix** |应用程序网关子网的 CIDR 块 |
-   | **skuname** |SKU 实例大小 |
-   | **容量** |实例数 |
-   | **backendaddress1** |第一个 Web 服务器的 IP 地址 |
-   | **backendaddress2** |第二个 Web 服务器的 IP 地址 |
+1. 导航到[创建启用了 Web 应用程序防火墙的应用程序网关](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf)。
+1. 单击 **azuredeploy.json**，然后单击 **RAW**。
+1. 将该文件保存到你计算机上的本地文件夹。
+1. 如果你熟悉 Azure Resource Manager 模板，则跳到步骤 7。
+1. 打开保存的文件，并查看 **parameters** 下行中的内容
+1. Azure Resource Manager 模板参数提供了在部署过程中可以填充的值的占位符。
 
-    > [!IMPORTANT]
-    >在 GitHub 中维护的 Azure Resource Manager 模板可能随着时间的推移发生变化。 请确保在使用该模板之前对其进行检查。
+  | 参数 | 说明 |
+  | --- | --- |
+  | **subnetPrefix** |应用程序网关子网的 CIDR 块。 |
+  | **applicationGatewaySize** | 应用程序网关的大小。  WAF 仅允许中型和大型网关。 |
+  | **backendIpaddress1** |第一个 Web 服务器的 IP 地址。 |
+  | **backendIpaddress2** |第二个 Web 服务器的 IP 地址。 |
+  | **wafEnabled** | 用于确定是否启用了 WAF 的设置。|
+  | **wafMode** | Web 应用程序防火墙的模式。  可用选项有：“预防”或“检测”。|
+  | **wafRuleSetType** | WAF 的规则集类型。  目前，OWASP 是唯一受支持的选项。 |
+  | **wafRuleSetVersion** |规则集版本。 OWASP CRS 2.2.9 和 3.0 目前是支持的选项。 |
 
-6. 检查 **resources**下的内容，并注意以下属性：
+
+  > [!IMPORTANT]
+  > 在 GitHub 中维护的 Azure Resource Manager 模板可能随着时间的推移发生变化。 请确保在使用该模板之前对其进行检查。
+
+1. 检查 **resources**下的内容，并注意以下属性：
 
    * **type**。 模板创建的资源的类型。 在这种情况下，类型为 `Microsoft.Network/applicationGateways`，它表示应用程序网关。
    * **name**。 资源的名称。 请注意 `[parameters('applicationGatewayName')]` 的使用，这意味着该名称是在部署过程中由用户或参数文件作为输入提供的。
    * **properties**。 资源的属性列表。 此模板在应用程序网关创建期间，使用虚拟网络与公共 IP 地址。
 
-7. 导航回到 [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create)。
-8. 单击 **azuredeploy-paremeters.json**，然后单击 **RAW**。
-9. 将该文件保存到你计算机上的本地文件夹。
-10. 打开保存的文件并编辑参数的值。 使用以下值部署本方案中所述的应用程序网关。
+   > [!NOTE]
+   > 有关模板的详细信息，请参阅：[资源管理器模板参考](/templates/)
+
+1. 导航回 [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf)。
+1. 单击 **azuredeploy-parameters.json**，然后单击 **RAW**。
+1. 将该文件保存到你计算机上的本地文件夹。
+1. 打开保存的文件并编辑参数的值。 使用以下值部署本方案中所述的应用程序网关。
 
     ```json
-        {
+    {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        {
-        "location" : {
-        "value" : "West US"
-        },
-        "addressPrefix": {
-        "value": "10.0.0.0/16"
-        },
-        "subnetPrefix": {
-        "value": "10.0.0.0/24"
-        },
-        "skuName": {
-        "value": "Standard_Small"
-        },
-        "capacity": {
-        "value": 2
-        },
-        "backendIpAddress1": {
-        "value": "10.0.1.10"
-        },
-        "backendIpAddress2": {
-        "value": "10.0.1.11"
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "addressPrefix": {
+            "value": "10.0.0.0/16"
+            },
+            "subnetPrefix": {
+            "value": "10.0.0.0/28"
+            },
+            "applicationGatewaySize": {
+            "value": "WAF_Medium"
+            },
+            "capacity": {
+            "value": 2
+            },
+            "backendIpAddress1": {
+            "value": "10.0.1.10"
+            },
+            "backendIpAddress2": {
+            "value": "10.0.1.11"
+            },
+            "wafEnabled": {
+            "value": true
+            },
+            "wafMode": {
+            "value": "Detection"
+            },
+            "wafRuleSetType": {
+            "value": "OWASP"
+            },
+            "wafRuleSetVersion": {
+            "value": "3.0"
+            }
         }
-        }
+    }
     ```
 
-11. 保存文件。 可以使用联机 JSON 验证工具（例如 [JSlint.com](http://www.jslint.com/)）测试 JSON 模板和参数模板。
+1. 保存文件。 可以使用联机 JSON 验证工具（例如 [JSlint.com](http://www.jslint.com/)）测试 JSON 模板和参数模板。
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>使用 PowerShell 部署 Azure Resource Manager 模板
 
-如果从未使用过 Azure PowerShell，请参阅 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell），并按照说明进行操作，以登录到 Azure 并选择订阅。
+如果从未使用过 Azure PowerShell，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)，并按照说明进行操作，以登录到 Azure 并选择订阅。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -149,7 +167,7 @@ Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 如有必要，请使用 **New-AzureResourceGroup** cmdlet 创建资源组。 在以下示例中，在“美国东部”位置创建名为 AppgatewayRG 的资源组。
 
 ```powershell
-New-AzureRmResourceGroup -Name AppgatewayRG -Location "East US"
+New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
 ```
 
 运行 **New-AzureRmResourceGroupDeployment** cmdlet，使用在前面下载并修改的模板和参数文件部署新虚拟网络。
@@ -165,40 +183,26 @@ New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroup
 
 ### <a name="step-1"></a>步骤 1
 
-如果从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../xplat-cli-install.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+如果从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](/cli/azure/install-azure-cli) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 
 ### <a name="step-2"></a>步骤 2
 
-运行 **azure config mode** 命令切换到 Resource Manager 模式，如以下代码片段中所示。
+如有必要，请运行 `az group create` 命令创建一个资源组，如以下代码片段中所示。 请注意命令的输出。 在输出后显示的列表说明了所用的参数。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
 
 ```azurecli
-azure config mode arm
-```
-
-下面是上述命令的预期输出：
-
-```azurecli
-info:    New mode is arm
-```
-
-### <a name="step-3"></a>步骤 3
-
-如有必要，请运行 **azure group create** 命令创建新资源组，如以下代码片段中所示。 请注意命令的输出。 在输出后显示的列表说明了所用的参数。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
-
-```azurecli
-azure group create -n appgatewayRG -l eastus
+az group create --location westus --name appgatewayRG
 ```
 
 **-n（或 --name）**。 新资源组的名称。 在本方案中为 *appgatewayRG*。
 
-**-l（或 --location）**。 将创建新资源组的 Azure 区域。 在本方案中为 *eastus*。
+**-l（或 --location）**。 将创建新资源组的 Azure 区域。 在本方案中为 *westus*。
 
 ### <a name="step-4"></a>步骤 4
 
-运行 **azure group deployment create** cmdlet，使用上述步骤中下载并修改的模板和参数文件部署新虚拟网络。 在输出后显示的列表说明了所用的参数。
+运行 `az group deployment create` cmdlet，使用上述步骤中下载并修改的模板和参数文件部署新虚拟网络。 在输出后显示的列表说明了所用的参数。
 
 ```azurecli
-azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
+az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
 ```
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-click-to-deploy"></a>使用“单击部署”来部署 Azure Resource Manager 模板
@@ -207,7 +211,7 @@ azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\
 
 ### <a name="step-1"></a>步骤 1
 
-转到 [创建使用公共 IP 的应用程序网关](https://azure.microsoft.com/documentation/templates/101-application-gateway-public-ip/)。
+转到[创建具有 Web 应用程序防火墙的应用程序网关](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/)。
 
 ### <a name="step-2"></a>步骤 2
 
@@ -223,7 +227,7 @@ azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\
 
 ### <a name="step-4"></a>步骤 4
 
-选择“法律条款”，然后单击“购买”。
+选择“我同意上述条款和条件”，然后单击“购买”。
 
 ### <a name="step-5"></a>步骤 5
 
@@ -239,13 +243,13 @@ azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你要配置 SSL 卸载，请参阅 [Configure an application gateway for SSL offload](application-gateway-ssl.md)（配置应用程序网关以进行 SSL 卸载）。
+若要配置 SSL 卸载，请访问：[配置应用程序网关以进行 SSL 卸载](application-gateway-ssl.md)。
 
-如果你想要将应用程序网关配置为与内部负载平衡器配合使用，请参阅 [Create an application gateway with an internal load balancer (ILB)](application-gateway-ilb.md)（创建具有内部负载平衡器 (ILB) 的应用程序网关）。
+若要将应用程序网关配置为与内部负载均衡器配合使用，请访问：[创建具有内部负载均衡器 (ILB) 的应用程序网关](application-gateway-ilb.md)。
 
-如需负载平衡选项的其他常规信息，请访问：
+如需负载均衡选项的其他常规信息，请访问：
 
-* [Azure 负载平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
 

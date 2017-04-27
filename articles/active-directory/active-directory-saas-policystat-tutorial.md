@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/20/2017
+ms.date: 02/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: 8290d90f22a80d5c585192b17cfa0aeba00aa891
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: ecd58d8f1df60aff99d9ac2e0245d06f61e0b6bb
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -32,13 +33,13 @@ ms.openlocfilehash: 8290d90f22a80d5c585192b17cfa0aeba00aa891
 在本教程中概述的方案由以下构建基块组成：
 
 1. 为 PolicyStat 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
 ![方案](./media/active-directory-saas-policystat-tutorial/IC808662.png "方案")
 
-## <a name="enabling-the-application-integration-for-policystat"></a>为 PolicyStat 启用应用程序集成
+## <a name="enable-the-application-integration-for-policystat"></a>为 PolicyStat 启用应用程序集成
 本部分的目的是概述如何为 PolicyStat 启用应用程序集成。
 
 **若要为 PolicyStat 启用应用程序集成，请执行以下步骤：**
@@ -63,7 +64,7 @@ ms.openlocfilehash: 8290d90f22a80d5c585192b17cfa0aeba00aa891
    
    ![PolicyStat](./media/active-directory-saas-policystat-tutorial/IC810430.png "PolicyStat")
    
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 
 此部分的目的是概述如何使用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 PolicyStat 进行身份验证。  
 
@@ -126,19 +127,18 @@ PolicyStat 应用程序需要特定格式的 SAML 断言，这要求将自定义
    4. 从“邮件”列表中，选择“User.mail”。
    5. 单击“完成”。
 
-##<a name="configuring-user-provisioning"></a>配置用户设置
+##<a name="configure-user-provisioning"></a>配置用户设置
 
 若要让 Azure AD 用户登录 PolicyStat，必须将其预配到 PolicyStat 中。  
 
-PolicyStat 支持实时用户预配。 这意味着你不需手动将用户添加到 PolicyStat。  
-系统会在用户首次通过单一登录登录时自动将其添加到其中。
+PolicyStat 支持实时用户预配。 这意味着你不需手动将用户添加到 PolicyStat。 系统会在用户首次通过 SSO 登录时自动将其添加到其中。
 
-> [!NOTE]
-> 可以使用任何其他 PolicyStat 用户帐户创建工具或 PolicyStat 提供的 API 来预配 AAD 用户帐户。
+>[!NOTE]
+>可以使用任何其他 PolicyStat 用户帐户创建工具或 PolicyStat 提供的 API 来预配 AAD 用户帐户。
 > 
 > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
 **若要将用户分配到 PolicyStat，请执行以下步骤：**
@@ -151,11 +151,6 @@ PolicyStat 支持实时用户预配。 这意味着你不需手动将用户添�
    
    ![是](./media/active-directory-saas-policystat-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 

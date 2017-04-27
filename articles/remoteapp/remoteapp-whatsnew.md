@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 05487c4bbdce24ea9f31ed451026531c16ead7c4
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 6720bb6471ef36179042562c751e1a501979f02b
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="whats-new-in-azure-remoteapp"></a>Azure RemoteApp 中有哪些新功能？
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -43,7 +44,7 @@ Azure RemoteApp 的其中一个优势是我们一直在努力改进它。 每次
 8 月有很大的更改 - 以下是要点︰
 
 * 你现在可以将 Azure VNET 与云集合一起使用了！ 查看[云创建说明](remoteapp-create-cloud-deployment.md)了解新的步骤。
-* 对于 Windows RemoteApp 客户端，使得将应用添加到“**开始**”菜单成为可能。 应用将显示在应用程序列表中，并且你可以将它们固定到 Windows 的“**开始**”菜单中。
+* 对于 Windows RemoteApp 客户端，可将应用添加到“开始”菜单。 应用将显示在应用程序列表中，并且可将它们固定到 Windows 的“开始”菜单中。
 * 将一个新的映像添加到了 Azure VM 库中 - Windows Server 远程桌面会话主机与 Microsoft Office 365 ProPlus。
 * 修复了 Mac 客户端，使得具有模式窗口的应用将停止冻结。
 * 记录了你如何可以将 [Office 365 ProPlus 订阅](remoteapp-officesubscription.md)与 Azure RemoteApp 一起使用。
@@ -79,7 +80,7 @@ Azure RemoteApp 的其中一个优势是我们一直在努力改进它。 每次
 * 谈到 VNET，请查看关于 VNET 大小限制和局限性的[新的指导原则](remoteapp-vnetsizing.md)。
 * 而谈到限制 - 就只是[服务限制和默认设置](../azure-subscription-service-limits.md)吗？
 
- 想要详细了解 Azure RemoteApp？ RemoteApp 团队曾在几周前齐聚一堂，讨论 Ignite。 查看 Eric 的视频，[Microsoft Azure RemoteApp 管理与行政基础](http://channel9.msdn.com/Events/Ignite/2015/BRK3868)。
+想要详细了解 Azure RemoteApp？ RemoteApp 团队曾在几周前齐聚一堂，讨论 Ignite。 查看 Eric 的视频，[Microsoft Azure RemoteApp 管理与行政基础](http://channel9.msdn.com/Events/Ignite/2015/BRK3868)。
 
 需要查看现实世界中的 Azure RemoteApp 吗？ 查看[在任何地方的任何设备上运行任何应用](remoteapp-anyapp.md)教程 - 该教程演示了如何与你的用户共享访问权限，包括共享数据库文件。 我们还有一个教程，是关于[使 Office 365](remoteapp-tutorial-o365anywhere.md) 在任何设备上运行相同内容的。
 
@@ -87,10 +88,5 @@ Azure RemoteApp 的其中一个优势是我们一直在努力改进它。 每次
 
 ### <a name="help-us-help-you"></a>请帮助我们改进，以便为你提供更好的帮助和支持
 是否知道除了给这篇文章评级和在下面发表评论，还可以对文章本身进行更改？ 缺了什么？ 出现了错误？ 是否编写了令人困惑的内容？ 向上滚动并单击“在 GitHub 上编辑”  进行更改 - 更改的内容会发送给我们进行审阅，一旦签核，便可以在此处看到这些更改和改进。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

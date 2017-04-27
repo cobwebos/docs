@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 8744c5a133738fc60b86e7abd4b0d4b1cb28314c
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 532382c7e15ad9b67915e05e7c980a4123036a0f
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-use-azure-remoteapp-with-office-365-user-accounts"></a>如何将 Azure RemoteApp 和 Office 365 用户帐户一起使用
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -44,16 +45,11 @@ ms.openlocfilehash: 8744c5a133738fc60b86e7abd4b0d4b1cb28314c
 按照 [在 Azure RemoteApp 中更改 Azure Active Directory 租户](remoteapp-changetenant.md) 中所述的说明操作。 特别注意以下步骤：
 
 * 步骤 #1：如果已在此订阅中部署 Azure RemoteApp (ARA)，请务必首先将所有 ARA 集合中的所有 Azure AD 用户帐户移除，然后再尝试其他操作。 或者，可以考虑删除所有的现有集合。
-* 步骤 #2：这是关键步骤。 需要在订阅上以服务管理员身份使用 Microsoft 帐户（例如 @outlook.com)；这是因为不能将已有的 Azure AD 中的任意用户帐户附加到订阅 – 如果这样做了，则无法将其移动到不同的 Azure AD。
+* 步骤 #2：这是关键步骤。 需要在订阅上以服务管理员身份使用 Microsoft 帐户（例如 @outlook.com）；这是因为不能将已有的 Azure AD 中的任意用户帐户附加到订阅 – 如果这样做了，将无法将其移动到不同的 Azure AD。
 * 步骤 #4：添加已有目录时，系统将要求你使用该目录的管理员帐户登录。 请确保使用阶段 1 中的管理员帐户。
 * 步骤 #5：将订阅的父级目录更改到你的 Office 365 目录。 最终结果应该是，你的订阅在“设置 -> 订阅”中列出了 Office 365 目录。 
   ![更改订阅的父级目录](./media/remoteapp-o365user/settings.png)
 
 此时你的 Azure RemoteApp 订阅已关联到你的 Office 365 Azure AD； 你可以将现有的 Office 365 用户帐户和 Azure RemoteApp 一起使用！
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

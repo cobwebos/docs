@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/15/2017
+ms.date: 04/11/2017
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: f9eea56f7f7b4f8f47a159c0c444d0d0aacc99cc
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 60c387331f0d47ddcc0dd2da8831911618c002b7
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -34,11 +34,13 @@ Azure Function App 使用 Azure 应用服务基础结构。 本主题演示如�
 
 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 你的存储帐户名称在 Azure 中必须是唯一的。 
 
-创建 Function App 后，可以使用一种或多种不同的语言创建各个函数。 [通过使用门户](functions-create-first-azure-function-azure-portal.md#create-a-function)、[连续部署](functions-continuous-deployment.md)，或通过[使用 FTP 上传](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp)来创建函数。  
+创建 Function App 后，可以使用一种或多种不同的语言创建各个函数。 [通过使用门户](functions-create-first-azure-function.md#create-a-function)、[连续部署](functions-continuous-deployment.md)，或通过[使用 FTP 上传](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp)来创建函数。  
 
 ## <a name="service-plans"></a>服务计划
 
 Azure Functions 有两个不同的服务计划：消耗量计划和应用服务计划。 消耗量计划会在代码运行时自动分配计算能力，根据处理负载的需要扩大规模，在代码不运行时缩小规模。 应用服务计划为 Function App 提供访问应用服务所有工具的权限。 创建 Function App 后，必须选择服务计划，该选项当前无法更改。 有关详细信息，请参阅[选择 Azure Functions 托管计划](functions-scale.md)。
+
+如果计划在应用服务计划上运行 JavaScript 函数，则应选择具有较少核心的计划。 有关详细信息，请参阅[函数的 JavaScript 参考](functions-reference-node.md#choose-single-core-app-service-plans)。 
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 

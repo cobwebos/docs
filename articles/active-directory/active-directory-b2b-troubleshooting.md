@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/14/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 66c0084c89b5c7510196142afd27b58953d0dc86
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ccd7bb3cab65f95c53489de07479c9750e860040
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -27,9 +27,6 @@ ms.lasthandoff: 03/15/2017
 
 以下是 Azure Active Directory (Azure AD) B2B 协作的常见问题的一些补救措施。
 
-## <a name="i-cant-create-an-external-user-due-to-an-existing-contact"></a>由于存在现有联系人，无法创建外部用户
-
-如果你要邀请的外部用户已有预先存在的联系人对象，你将无法邀请该用户，直到你解决冲突（通常是通过删除该联系人对象来解决）。 在正式发布 B2B 协作之前，必须手动解决该冲突。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>我已添加外部用户，但在全局通讯簿或人员选取器中看不到这些用户
 
@@ -66,7 +63,7 @@ ms.lasthandoff: 03/15/2017
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>“\#”（这通常不是有效字符）如何与 Azure AD 进行同步？
 
-“\#”是 Azure AD B2B 协作或外部用户的 UPN 中的保留字符（即，如果 &lt;user@contoso.com&gt; 邀请，将变为 &lt;user_contoso.com#EXT@fabrikam.onmicrosoft.com&gt;），因此不允许来自本地的 UPN 中的 \# 登录到 Azure 门户。
+“\#”是 Azure AD B2B 协作或外部用户的 UPN 中的保留字符（即，如果 user@contoso.com 被邀请，将变为 user_contoso.com#EXT@fabrikam.onmicrosoft.com），因此不允许来自本地的 UPN 中的 \# 登录到 Azure 门户。
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>我将外部用户添加到同步组时，收到错误
 
@@ -74,11 +71,11 @@ ms.lasthandoff: 03/15/2017
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>我的外部用户未收到用于兑换的电子邮件
 
-被邀请者应该向其 ISP 或垃圾邮件筛选器查询，以确保允许以下地址：&lt;Invites@microsoft.com&gt;
+被邀请者应该向其 ISP 或垃圾邮件筛选器查询，以确保允许以下地址：Invites@microsoft.com
 
-## <a name="my-recipient-received-multiple-emails-from-me"></a>我的收件人收到了我的多个电子邮件
+## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>我发现邀请消息有时不包含自定义消息
 
-在某些情况下，邀请收件人的帐户有多个别名，他们可能会收到两份邀请。 在这些情况下，已兑换的第一个链接是获得创建的帐户，第二个兑换链接那时将无效。
+为了遵守隐私法规，如果邀请者在资源组织（也称为邀请租户）中不具有电子邮件地址，或当应用服务主体发送邀请时，API 不会在电子邮件邀请中包含自定义消息。 如果这对你而言是一个重要方案，那么可以禁止 API 发送邀请电子邮件，并通过所选的电子邮件机制发送邮件。 请记得咨询所属组织的法律顾问，以确保通过这种方式发送的任何电子邮件均符合隐私法。
 
 ## <a name="next-steps"></a>后续步骤
 

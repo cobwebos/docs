@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 04/06/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 79004e91c9e22b085b04e446999d4efe05426436
-ms.openlocfilehash: 512c4dc5f77d5f730720909628364c5c9d8b3174
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 6d878b00094f573adc440d2384c426506fea0a40
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>批量管理 IoT 中心设备标识
+
 每个 IoT 中心都有标识注册表，可用于在服务中创建每个设备资源，如包含未送达的云到设备消息的队列。 设备标识注册表还可控制对面向设备的终结点的访问。 本文介绍如何在标识注册表中批量导入和导出设备标识。
 
 *作业*的上下文中发生导入和导出操作，可允许你对 IoT 中心执行批量服务操作。
@@ -29,16 +30,17 @@ ms.lasthandoff: 02/23/2017
 **RegistryManager** 类包括使用**作业**框架的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 这些方法可让你导出、导入和同步整个 IoT 中心标识注册表。
 
 ## <a name="what-are-jobs"></a>什么是作业？
+
 当操作出现以下情况时，标识注册表操作使用“作业”系统：
 
-* 相较标准运行时操作，其执行时间可能很长，或
+* 相较标准运行时操作，其执行时间可能很长。
 * 向用户返回大量数据。
 
 针对这些情况（而不是针对在操作结果处等待或阻塞的单个 API 调用），操作将以异步方式创建该 IoT 中心的**作业**。 然后，操作立即返回 **JobProperties** 对象。
 
 以下 C# 代码段演示如何创建导出作业：
 
-```
+```csharp
 // Call an export job on the IoT Hub to retrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 ```
@@ -47,11 +49,11 @@ JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasU
 > 若要在 C# 代码中使用 **RegistryManager** 类，请将 **Microsoft.Azure.Devices** NuGet 包添加到项目。 **RegistryManager** 类位于 **Microsoft.Azure.Devices** 命名空间。
 
 
-然后，你可以通过使用 **RegistryManager** 类，查询使用返回的 **JobProperties** 元数据的**作业**的状态。
+可使用 **RegistryManager** 类，查询使用返回的 **JobProperties** 元数据的**作业**的状态。
 
 以下 C# 代码段演示如何每隔五秒轮询一次以查看作业是否已完成执行：
 
-```
+```csharp
 // Wait until job is finished
 while(true)
 {
@@ -69,22 +71,24 @@ while(true)
 ```
 
 ## <a name="export-devices"></a>导出设备
-使用 **ExportDevicesAsync** 方法，将整个 IoT 中心标识注册表导出到使用[共享访问签名](https://msdn.microsoft.com/library/ee395415.aspx)的 [Azure 存储](https://azure.microsoft.com/documentation/services/storage/) Blob 容器。
+
+使用 **ExportDevicesAsync** 方法，将整个 IoT 中心标识注册表导出到使用[共享访问签名](../storage/storage-security-guide.md#data-plane-security)的 [Azure 存储](../storage/index.md) Blob 容器。
 
 此方法可让你在所控制的 Blob 容器中创建可靠的设备信息备份。
 
 **ExportDevicesAsync** 方法需要两个参数：
 
 * 一个 *字符串*，其中包含 Blob 容器的 URI。 此 URI 必须包含可授予容器写入权限的 SAS 令牌。 作业在此容器中创建用于存储序列化导出设备数据的块 Blob。 SAS 令牌必须包含这些权限：
-  
-   ```
+
+   ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
+
 * 一个*布尔值*，该值指示你是否想要从导出数据中排除身份验证密钥。 如果为 **false**，则身份验证密钥包含在导出输出中。 否则，密钥导出为 **null**。
 
 下面的 C# 代码段演示了如何启动在导出数据中包含设备身份验证密钥的导出作业，然后对完成情况进行轮询：
 
-```
+```csharp
 // Call an export job on the IoT Hub to retrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 
@@ -108,7 +112,7 @@ while(true)
 
 下面的示例演示了输出数据：
 
-```
+```json
 {"id":"Device1","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 {"id":"Device2","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 {"id":"Device3","eTag":"MA==","status":"disabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
@@ -118,7 +122,7 @@ while(true)
 
 如果你需要在代码中访问此数据，可以使用 **ExportImportDevice** 类轻松反序列化此数据。 以下 C# 代码段演示如何读取前面导出到块 Blob 的设备信息：
 
-```
+```csharp
 var exportedDevices = new List<ExportImportDevice>();
 
 using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondition.GenerateIfExistsCondition(), RequestOptions, null), Encoding.UTF8))
@@ -134,44 +138,40 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 > [!NOTE]
 > 你还可以使用 **RegistryManager** 类的 **GetDevicesAsync** 方法获取设备的列表。 但是，此方法有一个硬性限制，那就是返回的设备对象数最多只能有 1000 个。 **GetDevicesAsync** 方法的预期用例用于帮助调试的开发方案，不建议用于生产工作负荷。
-> 
-> 
 
 ## <a name="import-devices"></a>导入设备
+
 通过 **RegistryManager** 类中的 **ImportDevicesAsync** 方法，可以在 IoT 中心标识注册表中执行批量导入和同步操作。 如同 **ExportDevicesAsync** 方法，**ImportDevicesAsync** 方法也使用**作业**框架。
 
 请小心使用 **ImportDevicesAsync** 方法，因为除了在标识注册表中预配新设备以外，它还可以更新和删除现有设备。
 
 > [!WARNING]
 > 导入操作不可撤消。 在对标识注册表进行批量更改之前，始终使用 **ExportDevicesAsync** 方法将现有数据备份到另一个 Blob 容器中。
-> 
-> 
 
 **ImportDevicesAsync** 方法采用两个参数：
 
-* 一个字符串，其中包含作为作业的输入使用的 [Azure 存储](https://azure.microsoft.com/documentation/services/storage/) Blob 容器的 URI。 此 URI 必须包含可授予容器读取权限的 SAS 令牌。 此容器必须包含名为 **devices.txt** 的 Blob，其中包含要导入标识注册表的序列化设备数据。 导入数据包含的设备信息必须采用 **ExportImportDevice** 作业在创建 **devices.txt** Blob 时使用的同一种 JSON 格式。 SAS 令牌必须包含这些权限：
-  
-   ```
+* 一个字符串，其中包含作为作业的输入使用的 [Azure 存储](../storage/index.md) Blob 容器的 URI。 此 URI 必须包含可授予容器读取权限的 SAS 令牌。 此容器必须包含名为 **devices.txt** 的 Blob，其中包含要导入标识注册表的序列化设备数据。 导入数据包含的设备信息必须采用 **ExportImportDevice** 作业在创建 **devices.txt** Blob 时使用的同一种 JSON 格式。 SAS 令牌必须包含这些权限：
+
+   ```csharp
    SharedAccessBlobPermissions.Read
    ```
 * 一个字符串，其中包含作为作业中的输出使用的 [Azure 存储](https://azure.microsoft.com/documentation/services/storage/) Blob 容器的 URI。 该作业在此容器中创建块 Blob，以存储来自已完成的导入**作业**的任何错误信息。 SAS 令牌必须包含这些权限：
-  
-   ```
+
+   ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
 
 > [!NOTE]
 > 这两个参数可以指向同一 Blob 容器。 参数不同只会让你更容易掌控数据，因为输出容器需要其他权限。
-> 
-> 
 
 以下 C# 代码段演示如何启动导入作业：
 
-```
+```csharp
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
 ## <a name="import-behavior"></a>导入行为
+
 可以使用 **ImportDevicesAsync** 方法在标识注册表中执行以下批量操作：
 
 * 批量注册新设备
@@ -196,17 +196,16 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 
 > [!NOTE]
 > 如果序列化数据未显式定义设备的 **importMode** 标志，则该标志在导入操作过程中默认为 **createOrUpdate**。
-> 
-> 
 
 ## <a name="import-devices-example--bulk-device-provisioning"></a>导入设备示例 – 批量预配设备
+
 下面的 C# 代码示例说明了如何生成多个执行以下操作的设备标识：
 
 * 包括身份验证密钥。
 * 将该设备信息写入块 blob。
 * 将设备导入标识注册表中。
 
-```
+```csharp
 // Provision 1,000 more devices
 var serializedDevices = new List<string>();
 
@@ -268,9 +267,10 @@ while(true)
 ```
 
 ## <a name="import-devices-example--bulk-deletion"></a>导入设备示例 – 批量删除
+
 以下代码示例演示如何删除使用前面代码示例添加的设备：
 
-```
+```csharp
 // Step 1: Update each device's ImportMode to be Delete
 sb = new StringBuilder();
 serializedDevices.ForEach(serializedDevice =>
@@ -317,10 +317,11 @@ while(true)
 
 ```
 
-## <a name="getting-the-container-sas-uri"></a>获取容器 SAS URI
+## <a name="get-the-container-sas-uri"></a>获取容器 SAS URI
+
 下面的代码示例演示如何使用 Blob 容器的读取、写入和删除权限生成 [SAS URI](../storage/storage-dotnet-shared-access-signature-part-2.md)：
 
-```
+```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
 {
   // Set the expiry time and permissions for the container.
@@ -345,6 +346,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 在本文中，你已学习如何针对 IoT 中心内的标识注册表执行批量操作。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [IoT 中心度量值][lnk-metrics]

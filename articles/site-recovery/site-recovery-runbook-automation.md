@@ -15,9 +15,9 @@ ms.workload: required
 ms.date: 02/22/2017
 ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: ac56273cf85aff550febecf0d75ec87d5c6dbbca
-ms.openlocfilehash: 26547135548dde96e9da601f2e0ccfe96c626880
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 198caeea693fbc48b6e0eb1c9c8ee559e0553261
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -238,25 +238,15 @@ ms.lasthandoff: 02/23/2017
 可以针对不同的恢复计划使用相同的脚本，并通过在不同的变量中存储对应于不同恢复计划的值，来提供不同的参数。
 
 ## <a name="sample-scripts"></a>示例脚本
-有关可直接导入自动化帐户中的脚本存储库，请参阅 [Kristian Nese 的 OMS 脚本存储库](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/Solutions/asrautomation)
+使用以下“部署到 Azure”按钮将示例脚本部署到自动化帐户。
 
-此处的脚本是 Azure Resource Manager 模板，将部署以下所有脚本
+[![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-* NSG
+还可查看有关将两层 WordPress 应用程序恢复到 Azure 的快速视频。
 
-NSG Runbook 向恢复计划中的每个 VM 分配公共 IP 地址，并将虚拟网络适配器附加到允许默认通信的网络安全组
+> [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
-* PublicIP
 
-公共 IP runbook 向恢复计划中的每个 VM 分配公共 IP 地址。 对计算机和应用程序的访问将取决于每个来宾的防火墙设置
-
-* CustomScript
-
-CustomScript runbook 向恢复计划中的每个 VM 分配公共 IP 地址并安装自定义脚本扩展，此扩展将在部署模板期间拉取你引用的脚本
-
-* NSGwithCustomScript
-
-NSGwithCustomScript runbook 向恢复计划中的每个 VM 分配公共 IP 地址，使用扩展安装自定义脚本，并将虚拟网络适配器连接到允许进行远程访问的默认入站和出站通信的 NSG
 
 ## <a name="additional-resources"></a>其他资源
 [Azure 自动化服务作为帐户运行](../automation/automation-sec-configure-azure-runas-account.md)

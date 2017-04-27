@@ -17,14 +17,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 81de52ac95aaf1b6d02572a70a4c1a84fb541401
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 67663af0913a03f2001b4cce6f9f49ee91195026
+ms.lasthandoff: 04/06/2017
 
 
 ---
 
-# <a name="create-always-on-availability-group-to-improve-availability-and-disaster-recovery"></a>创建 Always On 可用性组以提高可用性和改进灾难恢复
+# <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
 
 本教程说明如何在 Azure 虚拟机上创建 SQL Server Always On 可用性组。 完整教程将创建一个数据库副本位于两个 SQL Server 上的可用性组。
 
@@ -297,7 +297,7 @@ Repeat these steps on the second SQL Server.
 
     ![新建可用性组向导，选择初始数据同步](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为**\\\\\<第一个 SQL Server\>\Backup\**。单击“下一步”。*
+8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 **\\\\\<第一个 SQL Server\>\Backup\**。 单击“资源组名称” 的 Azure 数据工厂。
 
    >[!NOTE]
    >完全同步对 SQL Server 第一个实例上的数据库进行完整备份，并将其还原到第二个实例。 对于大型数据库，不建议使用完全同步，因为这可能要花费很长时间。 可以通过使用 `NO RECOVERY` 对数据库进行手动备份和还原来降低该时间。 如果配置可用性组之前，已在 SQL Server 上使用 `NO RECOVERY` 对数据库进行还原，请选择“仅联接”。 若想在配置可用性组之后进行备份，请选择“跳过初始数据同步”。

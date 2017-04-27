@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2016
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: d01dd1fdeed4aa809ba5118f79968f7719b11865
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 4870d2a0bbe35f3980864d8b4f3d011a189b650e
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -145,13 +145,12 @@ ms.lasthandoff: 03/27/2017
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 指定数据集的类型。 必须设置为 `Http`。 | 是 |
-| relativeUrl | 包含数据的资源的相对 URL。 未指定路径时，仅使用链接服务定义中指定的 URL。 | 否 |
+| relativeUrl | 包含数据的资源的相对 URL。 未指定路径时，仅使用链接服务定义中指定的 URL。 <br><br> 若要构造动态 URL，可以使用[数据工厂函数和系统变量](data-factory-functions-variables.md)，例如，"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"。 | 否 |
 | requestMethod | Http 方法。 允许的值为 **GET** 或 **POST**。 | 不会。 默认值为 `GET`。 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
-| partitionedBy | partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 | 否 |
-| 格式 | 如果你只想要**从 HTTP 终结点按原样检索数据**而不分析它，请跳过此格式设置。 <br><br> 如果想要在复制期间分析 HTTP 响应内容，下面是支持的格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](#specifying-textformat)、[Json 格式](#specifying-jsonformat)、[Avro 格式](#specifying-avroformat)、[Orc 格式](#specifying-orcformat)和 [Parquet 格式](#specifying-parquetformat)部分。  |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**；支持的级别为：**Optimal** 和 **Fastest**。 有关详细信息，请参阅[指定压缩](#specifying-compression)部分。 |否 |
+| 格式 | 如果你只想要**从 HTTP 终结点按原样检索数据**而不分析它，请跳过此格式设置。 <br><br> 如果想要在复制期间分析 HTTP 响应内容，下面是支持的格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：**最佳**和**最快**。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 ### <a name="example-using-the-get-default-method"></a>示例：使用 GET（默认）方法
 
@@ -196,20 +195,19 @@ ms.lasthandoff: 03/27/2017
 }
 ```
 
-[!INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]
-
-[!INCLUDE [data-factory-compression](../../includes/data-factory-compression.md)]
-
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 另一方面，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
-如果复制活动中的源为 **Http** 类型，目前支持以下属性。
+目前，如果复制活动中的源为 **HttpSource** 类型，则支持以下属性。
 
 | 属性 | 说明 | 必选 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 (TimeSpan)。 这是获取响应而不是读取响应数据的超时。 | 不会。 默认值：00:01:40 |
+
+## <a name="supported-file-and-compression-formats"></a>支持的文件和压缩格式
+请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
 
 ## <a name="json-examples"></a>JSON 示例
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示了如何将数据从 HTTP 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
@@ -267,7 +265,7 @@ ms.lasthandoff: 03/27/2017
         "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
-            "relativeUrl": "XXX/test.xml",
+            "relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)",
             "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
         },
         "external": true,

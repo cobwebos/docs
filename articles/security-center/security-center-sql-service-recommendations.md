@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
+ms.date: 04/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 7b5df25f46a2824acb361401ab90c960b8e5978f
-ms.openlocfilehash: 8ce47dd649d1d945df506ed65c871cf3afe2f004
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 0c3a11e9a86767641533b16de1b96b4c59bfdf51
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -28,10 +29,9 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 ## <a name="available-sql-service-and-data-recommendations"></a>可用的 SQL 服务和数据的建议
 | 建议 | 说明 |
 | --- | --- |
-| [启用服务器 SQL 审核](security-center-enable-auditing-on-sql-servers.md) |建议启用 Azure SQL 服务器审核（仅限 Azure SQL 服务；不包括虚拟机上运行的 SQL）。 |
-| [启用数据库 SQL 审核](security-center-enable-auditing-on-sql-databases.md) |建议启用 Azure SQL 数据库审核（仅限 Azure SQL 服务；不包括虚拟机上运行的 SQL）。 |
+| [在 SQL 服务器上启用审核与威胁检测](security-center-enable-auditing-on-sql-servers.md) |建议启用 Azure SQL 服务器审核和威胁检测（仅限 Azure SQL 服务；不包括虚拟机上运行的 SQL）。 |
+| [在 SQL 数据库上启用审核与威胁检测](security-center-enable-auditing-on-sql-databases.md) |建议启用 Azure SQL 数据库审核和威胁检测（仅限 Azure SQL 服务；不包括虚拟机上运行的 SQL）。 |
 | [启用 SQL 数据库的透明数据加密](security-center-enable-transparent-data-encryption.md) |建议启用 SQL 数据库加密（仅限 Azure SQL 服务）。 |
-| [为 Azure 存储帐户启用加密](security-center-enable-encryption-for-storage-account.md) | 建议为静态数据启用 Azure 存储服务加密。 存储服务加密 (SSE) 的工作原理是，在将数据写入 Azure 存储时对数据进行加密，以及在检索前对数据进行解密。 SSE 当前仅适用于 Azure Blob 服务，并可用于块 blob、页 blob 和追加 blob。 若要了解详细信息，请参阅[静态数据的存储服务加密](../storage/storage-service-encryption.md)。</br>只有 Resource Manager 存储帐户支持 SSE。 目前不支持经典存储帐户。 若要了解经典部署模型和 Resource Manager 部署模型，请参阅 [Azure 部署模型](../azure-classic-rm.md)。 |
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下内容：
@@ -45,9 +45,4 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 * [在 Azure 安全中心中设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [Azure 安全中心常见问题](security-center-faq.md) - 查找有关使用服务的常见问题。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -14,19 +14,19 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/31/2016
+ms.date: 04/01/2017
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 6aed248b91d25572c4eae691f4e5392e37c01400
-ms.openlocfilehash: e2d81d140c194a33ea6f1462effb09a9e283d3af
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6644f6b879e48787249111c5e02b75b963f1e1cd
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Azure Functions 服务总线绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-本文介绍如何在 Azure Functions 中配置和编码 Azure 服务总线绑定。 Azure Functions 支持对通知中心队列和主题的触发器和输出绑定。
+本文介绍如何在 Azure Functions 中配置和使用 Azure 服务总线绑定。 Azure Functions 支持对服务总线队列和主题的触发器和输出绑定。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/22/2017
 ## <a name="service-bus-trigger"></a>服务总线触发器
 使用服务总线触发器响应来自服务总线队列或主题的消息。 
 
-指向某个函数的通知中心队列和主题触发器使用 function.json 的 `bindings` 数组中的以下 JSON 对象：
+服务总线队列和主题触发器通过 function.json 的 `bindings` 数组中的以下 JSON 对象进行定义：
 
 * *队列*触发器：
 
@@ -66,10 +66,10 @@ ms.lasthandoff: 02/22/2017
 
 注意以下事项：
 
-* 对于 `connection`，[在函数应用中创建一个应用设置]()，其中包含指向服务中心命名空间的连接字符串，然后在触发器的 `connection` 属性中指定应用设置的名称。 按照[获取管理凭据](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)中显示的步骤，获取连接字符串。
+* 对于 `connection`，[在函数应用中创建一个应用设置](functions-how-to-use-azure-function-app-settings.md)，其中包含指向服务中心命名空间的连接字符串，然后在触发器的 `connection` 属性中指定应用设置的名称。 按照[获取管理凭据](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)中显示的步骤，获取连接字符串。
   必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。
   如果将 `connection` 留空，触发器假定已在名为 `AzureWebJobsServiceBus` 的应用设置中指定默认服务总线连接字符串。
-* 对于 `accessRights`，可用的值是 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为 `listen`。 否则，Functions 运行时可能会尝试但无法执行需要管理权限的操作。
+* 对于 `accessRights`，可用的值是 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为 `listen`。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。
 
 ## <a name="trigger-behavior"></a>触发器行为
 * **单线程** - 默认情况下，Functions 运行时同时处理多个消息。 若要指示运行时一次只处理单个队列或主题消息，请在 host.json 中将 `serviceBus.maxConcurrentCalls` 设置为 1。 
@@ -88,10 +88,10 @@ ms.lasthandoff: 02/22/2017
 * `string` - 适用于字符串消息
 * `byte[]` -适用于二进制数据
 * 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 适用于 JSON 序列化的数据。
-  如果声明自定义输入类型（如 `FooType`），Azure Functions 会尝试将 JSON 数据反序列化为指定类型。
+  如果声明自定义输入类型（如 `CustomType`），Azure Functions 会尝试将 JSON 数据反序列化为指定类型。
 * `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) 方法的反序列化消息。
 
-在 Node.js 中，服务总线触发器消息将作为字符串或 JavaScript 对象（对于 JSON 消息）传递到函数。
+在 Node.js 中，服务总线触发器消息将作为字符串或 JSON 对象传递到函数。
 
 <a name="triggersample"></a>
 
@@ -153,7 +153,7 @@ module.exports = function(context, myQueueItem) {
 <a name="output"></a>
 
 ## <a name="service-bus-output-binding"></a>服务总线输出绑定
-某个函数的通知中心队列和主题输出使用 function.json 的 `bindings` 数组中的以下 JSON 对象：
+函数的服务总线队列和主题输出使用 function.json 的 `bindings` 数组中的以下 JSON 对象：
 
 * *队列*输出：
 
@@ -162,7 +162,7 @@ module.exports = function(context, myQueueItem) {
         "name" : "<Name of output parameter in function signature>",
         "queueName" : "<Name of the queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>"
+        "accessRights" : "<Access rights for the connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
@@ -183,10 +183,10 @@ module.exports = function(context, myQueueItem) {
 
 注意以下事项：
 
-* 对于 `connection`，[在函数应用中创建一个应用设置]()，其中包含指向服务中心命名空间的连接字符串，然后在输出绑定的 `connection` 属性中指定应用设置的名称。 按照[获取管理凭据](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)中显示的步骤，获取连接字符串。
+* 对于 `connection`，[在函数应用中创建一个应用设置](functions-how-to-use-azure-function-app-settings.md)，其中包含指向服务中心命名空间的连接字符串，然后在输出绑定的 `connection` 属性中指定应用设置的名称。 按照[获取管理凭据](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)中显示的步骤，获取连接字符串。
   必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。
   如果将 `connection` 留空，输出绑定假定已在名为 `AzureWebJobsServiceBus` 的应用设置中指定默认服务总线连接字符串。
-* 对于 `accessRights`，可用的值是 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为 `listen`。 否则，Functions 运行时可能会尝试但无法执行需要管理权限的操作。
+* 对于 `accessRights`，可用的值是 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为 `listen`。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。
 
 <a name="outputusage"></a>
 

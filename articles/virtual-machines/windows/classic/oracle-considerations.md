@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/06/2016
+ms.date: 04/11/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 4f6f8dd109a1f0d395782ba73fd425c7a6ccf0eb
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 1a808a83a8ed1162d57f7c5a49e34b2e3be50833
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -29,18 +29,13 @@ ms.lasthandoff: 03/27/2017
 * Oracle JDK 虚拟机映像
 
 ## <a name="oracle-database-virtual-machine-images"></a>Oracle 数据库虚拟机映像
-### <a name="clustering-rac-is-not-supported"></a>不支持群集功能 (RAC)
-Azure 目前不支持 Oracle 数据库的 Oracle Real Application Clusters (RAC)。 只能使用独立的 Oracle 数据库实例。 这是因为 Azure 目前不支持在多个虚拟机实例中进行读/写方式的虚拟磁盘共享， 也不支持多播 UDP。
 
 ### <a name="no-static-internal-ip"></a>没有静态内部 IP
 Azure 为每个虚拟机分配内部 IP 地址。 除非虚拟机是虚拟网络的一部分，否则虚拟机的 IP 地址就是动态的，在虚拟机重启后可能会更改。 这会导致问题，因为 Oracle 数据库需要静态的 IP 地址。 若要避免此问题，请考虑将虚拟机添加到 Azure 虚拟网络中。 有关详细信息，请参阅[虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)和[在 Azure 中创建虚拟网络](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。
 
 ### <a name="attached-disk-configuration-options"></a>附加磁盘配置选项
-可以将数据文件放在虚拟机的操作系统磁盘上或附加磁盘上，后者也称数据磁盘。 与操作系统磁盘相比，附加磁盘的性能可能会更好，其大小也可以更灵活地进行调整。 只有在数据库大小不到 10 千兆字节 (GB) 时，操作系统磁盘才会有优势。
 
-附加磁盘依赖于 Azure Blob 存储服务。 每个磁盘理论上每秒最多能够完成大约 500 个输入/输出操作 (IOPS)。 附加磁盘的性能可能最初不是最佳的，IOPS 性能在经过大约 60 至 90 分钟连续操作的“老化”期后可能会显著提高。 如果磁盘随后保持空闲状态，IOPS 性能可能会降低，直到经过另一个连续操作的老化期为止。 简单地说，磁盘活动的时间越长，越有可能接近最佳的 IOPS 性能。
-
-虽然最简单的方法是将单个磁盘附加到虚拟机上，并将数据库文件放在该磁盘上，但这种方法也在性能方面存在最大限制。 如果你改用多个附加磁盘，将数据库数据分散到这些磁盘上，然后使用 Oracle 自动存储管理 (ASM)，通常可以提高有效的 IOPS 性能。 有关详细信息，请参阅 [Oracle 自动存储概述](http://www.oracle.com/technetwork/database/index-100339.html)。 虽然可以使用多个磁盘的操作系统级别条带化，但不建议使用该方法，因为它是否可以提高 IOPS 性能是未知的。
+附加磁盘依赖于 Azure Blob 存储服务。 每个标准磁盘理论上每秒最多能够完成大约 500 个输入/输出操作 (IOPS)。 高级磁盘产品主要针对高性能数据库工作负荷，每个磁盘 IOPS 高达 5000。 尽管可使用单个磁盘（如果这可满足性能需求），但是如果使用多个附加磁盘，将数据库数据分散到这些磁盘上，然后使用 Oracle 自动存储管理 (ASM)，通常可以提高有效 IOPS 性能。 有关详细信息，请参阅 [Oracle 自动存储概述](http://www.oracle.com/technetwork/database/index-100339.html)。 尽管可以在操作系统级别使用多个磁盘的条带化，但是使用其中任何一种路由都需要权衡取舍。 
 
 根据是要优先考虑数据库的读操作性能还是写操作性能，考虑两种附加多个磁盘的不同方法：
 
@@ -48,14 +43,16 @@ Azure 为每个虚拟机分配内部 IP 地址。 除非虚拟机是虚拟网络
     ![](media/mysql-2008r2/image2.png)
 
 > [!IMPORTANT]
-> 逐条评估写性能和读性能之间的得失。 使用此方法时的实际结果可能会有所不同。
+> 逐条评估写性能和读性能之间的得失。 实际结果可能有所不同 - 请执行正确的测试。 ASM 倾向于写入操作，操作系统磁盘条带化倾向于读取操作。
 > 
-> 
+
+### <a name="clustering-rac-is-not-supported"></a>不支持群集功能 (RAC)
+Oracle Real 应用程序群集 (RAC) 用于减少本地多节点群集配置中单一节点的故障。  它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术不适用于 Microsoft Azure 等超大规模公有云环境。 若要构建 Oracle DB 的异地冗余多节点配置，需要通过 Oracle DataGuard 实现数据复制。
 
 ### <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和灾难恢复注意事项
 在 Azure 虚拟机中使用 Oracle 数据库时，你负责实现高可用性和灾难恢复解决方案，以避免任何停机。 你还负责备份自己的数据和应用程序。
 
-可以在 Azure 上使用[数据防护、活动数据防护](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html)或 [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) 实现 Oracle Database Enterprise Edition（不带 RAC）的高可用性和灾难恢复，其中两个数据库位于两个单独的虚拟机中。 这两个虚拟机都位于相同的[云服务](../../linux/classic/connect-vms.md)和相同的[虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)中，以确保它们能够通过专用持久性 IP 地址相互访问。  另外，我们建议将虚拟机放置在同一[可用性集](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中，以便 Azure 将它们置于单独的容错域和升级域中。 只有同一云服务中的虚拟机可加入同一可用性集。 每台虚拟机必须至少具有 2 GB 内存和 5 GB 磁盘空间。
+可以在 Azure 上使用[数据防护、活动数据防护](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html)或 [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) 实现 Oracle Database Enterprise Edition（不带 RAC）的高可用性和灾难恢复，其中两个数据库位于两个单独的虚拟机中。 这两个虚拟机应都位于相同的[虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)，以确保它们能够通过专用持久性 IP 地址相互访问。  另外，我们建议将虚拟机放置在同一[可用性集](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中，以便 Azure 将它们置于单独的容错域和升级域中。 每台虚拟机必须至少具有 2 GB 内存和 5 GB 磁盘空间。
 
 有了 Oracle 数据防护，可以通过一个虚拟机中的主数据库、另一个虚拟机中的辅助（备用）数据库和它们之间的单向复制设置实现高可用性。 结果是对数据库副本的读取访问权限。 使用 Oracle GoldenGate，可以配置两个数据库之间的双向复制。 若要了解如何使用这些工具为数据库设置高可用性解决方案，请参阅 Oracle 网站上的[活动数据防护](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html)和 [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) 文档。 如果需要对数据库副本的读写访问权限，可以使用 [Oracle 活动数据防护](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)。
 

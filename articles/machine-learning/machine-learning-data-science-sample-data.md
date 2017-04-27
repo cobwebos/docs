@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
-ms.openlocfilehash: c046220304075242f655bced2f0f16a6fb692ad3
-ms.lasthandoff: 12/20/2016
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 0683be564a88ef54882e8d882d196851ecac243d
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -34,7 +34,8 @@ ms.lasthandoff: 12/20/2016
 
 此采样任务是[团队数据科学流程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的一个步骤。
 
-## <a name="why-sample-data"></a>为什么对数据采样？
+**为什么对数据采样？**
+
 如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和功能设计。 它在 Cortana Analytics 进程中的作用是能够快速建立数据处理函数和机器学习模型的快速原型。
 
 

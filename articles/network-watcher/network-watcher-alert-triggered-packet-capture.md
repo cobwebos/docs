@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5f31b24a0d46b9d557a55b3c9d0cd7748ecb9c33
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 941a795c4c83e05ec3c5bb55790f8fcc72829a65
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -46,7 +46,7 @@ Azure 中部署的资源全天候运行， 但你或你的同事无法全天候�
 
 ## <a name="creating-an-azure-function-and-overview"></a>创建 Azure 函数和操作概述
 
-第一步是创建一个 Azure 函数来处理警报并创建数据包捕获。 
+第一步是创建一个 Azure 函数来处理警报并创建数据包捕获。
 
 以下列表了提供发生的工作流概述。
 
@@ -65,7 +65,7 @@ Azure 中部署的资源全天候运行， 但你或你的同事无法全天候�
 
 ## <a name="adding-modules"></a>添加模块
 
-若要使用网络观察程序 PowerShell cmdlet，需要将最新 PowerShell 模块上载到 Function App。
+若要使用网络观察程序 PowerShell cmdlet，需要将最新 PowerShell 模块上传到 Function App。
 
 1. 在已安装最新 Azure PowerShell 模块的本地计算机上，运行以下 PowerShell 命令：
 
@@ -73,7 +73,7 @@ Azure 中部署的资源全天候运行， 但你或你的同事无法全天候�
     (Get-Module AzureRM.Network).Path
     ```
 
-    这将提供 Azure PowerShell 模块的本地路径。 在稍后的步骤中将使用这些文件夹。 此方案中使用的模块包括：
+    该示例提供 Azure PowerShell 模块的本地路径。 在稍后的步骤中将使用这些文件夹。 此方案中使用的模块包括：
 
     * AzureRM.Network
 
@@ -97,7 +97,7 @@ Azure 中部署的资源全天候运行， 但你或你的同事无法全天候�
 
     * AzureRM.Resources
 
-1. 右键单击 **AzureRM.Network** 子文件夹，然后单击“上载文件”。 导航到 Azure 模块的安装位置，在本地 AzureRM.Network 文件夹中选择该文件夹中的所有文件，然后单击“确定”。  对 AzureRM.Profile 和 AzureRM.Resources 重复这些步骤。
+1. 右键单击 **AzureRM.Network** 子文件夹，然后单击“上传文件”。 导航到 Azure 模块的安装位置，在本地 AzureRM.Network 文件夹中选择该文件夹中的所有文件，然后单击“确定”。  对 AzureRM.Profile 和 AzureRM.Resources 重复这些步骤。
 
     ![上载文件][functions6]
 
@@ -107,9 +107,9 @@ Azure 中部署的资源全天候运行， 但你或你的同事无法全天候�
 
 ## <a name="authentication"></a>身份验证
 
-如何使用 PowerShell cmdlet，必须进行身份验证。 需要在 Function App 中配置身份验证。 为此，将配置环境变量，并需要将加密密钥文件上载到 Function App。
+若要使用 PowerShell cmdlet，必须进行身份验证。 需要在 Function App 中配置身份验证。 若要配置身份验证，将配置环境变量，并需要将加密密钥文件上传到 Function App。
 
-> [!note]
+> [!NOTE]
 > 此方案仅提供如何使用 Azure Functions 实现身份验证的一个示例，还可以通过其他方法来执行此操作。
 
 ### <a name="encrypted-credentials"></a>加密凭据
@@ -139,7 +139,7 @@ $Encryptedpassword
 
 ### <a name="retrieving-values-for-environment-variables"></a>检索环境变量的值
 
-最终必需的配置是设置访问用于身份验证的值所需的环境变量。 下面是创建的环境变量的列表。
+最终必需的配置是设置访问用于身份验证的值所需的环境变量。 以下列表列出了创建的环境变量：
 
 * AzureClientID
 
@@ -303,7 +303,7 @@ if($requestBody.context.resourceType -eq "Microsoft.Compute/virtualMachines")
 ![将 VM 警报规则添加到虚拟机][1]
 
 > [!NOTE]
-> 某些指标默认未启用。 请访问[启用监视和诊断](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)，详细了解如何启用其他指标
+> 默认情况下不启用 TCP 段计量。 请访问[启用监视和诊断](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)，详细了解如何启用其他指标
 
 最后，将前面步骤中获取的 URL 粘贴到警报中的 Webhook 文本框。 单击“确定”保存警报规则。
 

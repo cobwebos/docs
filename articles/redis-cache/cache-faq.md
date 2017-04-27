@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 04/12/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: afdbd737be96acbcf2883c644bfbbb741fe94179
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 831ce961992747de87706c3dde24b812a281c23a
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -50,7 +50,7 @@ ms.lasthandoff: 03/22/2017
 * [Azure Redis 缓存性能](#azure-redis-cache-performance)
 * [我应该将缓存放在哪个区域？](#in-what-region-should-i-locate-my-cache)
 * [ Azure Redis 缓存如何计费？](#how-am-i-billed-for-azure-redis-cache)
-* [是否可通过 Azure 政府云或 Azure 中国云使用 Azure Redis 缓存？](#can-i-use-azure-redis-cache-with-azure-government-cloud-or-azure-china-cloud)
+* [是否可通过 Azure 政府云、Azure 中国云或 Microsoft Azure Germany 使用 Azure Redis 缓存？](#can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
 ## <a name="development-faqs"></a>开发常见问题
 * [StackExchange.Redis 配置选项有什么作用？](#what-do-the-stackexchangeredis-configuration-options-do)
@@ -162,15 +162,28 @@ Azure Redis 缓存基于流行的开放源代码 [Redis 缓存](http://redis.io)
 ### <a name="how-am-i-billed-for-azure-redis-cache"></a>Azure Redis 缓存如何计费？
 [此处](https://azure.microsoft.com/pricing/details/cache/)提供了 Azure Redis 缓存定价。 定价页列出了每小时费率。 缓存按分钟计费，从创建缓存时开始，到删除缓存时为止。 没有提供用于停止或暂停缓存的计费选项。
 
-## <a name="can-i-use-azure-redis-cache-with-azure-government-cloud-or-azure-china-cloud"></a>是否可通过 Azure 政府云或 Azure 中国云使用 Azure Redis 缓存？
-可以，Azure Redis 缓存可用于 Azure 政府云和 Azure 中国云。 与 Azure 公有云相比，在 Azure 政府云与 Azure 中国云中用于访问和管理 Azure Redis 缓存的 URL 有所不同。 有关通过 Azure 政府云以及 Azure 中国云使用 Azure Redis 缓存时的注意事项的详细信息，请参阅 [Azure 政府版数据库 - Azure Redis 缓存](../azure-government/documentation-government-services-database.md#azure-redis-cache)和 [Azure 中国云-Azure Redis 缓存](https://www.azure.cn/documentation/services/redis-cache/)。
+### <a name="can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>是否可通过 Azure 政府云、Azure 中国云或 Microsoft Azure Germany 使用 Azure Redis 缓存？
+可以，可通过 Azure 政府云、Azure 中国云或 Microsoft Azure Germany 使用 Azure Redis 缓存。 与 Azure 公有云相比，这些云中用于访问和管理 Azure Redis 缓存的 URL 有所不同。 
 
-有关通过 PowerShell 在 Azure 政府云和 Azure 中国云中使用 Azure Redis 缓存的信息，请参阅[如何连接到 Azure 政府云或 Azure 中国云](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-azure-government-cloud-or-azure-china-cloud)。
+| 云   | Redis 的 Dns 后缀            |
+|---------|---------------------------------|
+| 公共  | *.redis.cache.windows.net       |
+| 美国政府  | *.redis.cache.usgovcloudapi.net |
+| 德国 | *.redis.cache.cloudapi.de       |
+| 中国   | *.redis.cache.chinacloudapi.cn  |
+
+若要深入了解通过其他云使用 Azure Redis 缓存的注意事项，请参阅以下链接。
+
+- [Azure 政府数据库 - Azure Redis 缓存](../azure-government/documentation-government-services-database.md#azure-redis-cache)
+- [Azure 中国云 - Azure Redis 缓存](https://www.azure.cn/documentation/services/redis-cache/)
+- [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
+
+有关通过 PowerShell 在 Azure 政府云、Azure 中国云和 Microsoft Azure Germany 中使用 Azure Redis 缓存的信息，请参阅[如何连接到其他云 - Azure Redis 缓存 PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds)。
 
 <a name="cache-configuration"></a>
 
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange.Redis 配置选项有什么作用？
-StackExchange.Redis 有很多选项。 本部分将介绍一些常用设置。 有关 StackExchange.Redis 选项的详细详细，请参阅 [StackExchange.Redis configuration](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md)（StackExchange.Redis 配置）。
+StackExchange.Redis 有很多选项。 本部分将介绍一些常用设置。 有关 StackExchange.Redis 选项的详细详细，请参阅 [StackExchange.Redis configuration](https://stackexchange.github.io/StackExchange.Redis/Configuration)（StackExchange.Redis 配置）。
 
 | 配置选项 | 说明 | 建议 |
 | --- | --- | --- |

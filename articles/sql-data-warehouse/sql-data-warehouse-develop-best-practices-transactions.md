@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ed017b542de11a5e8abe46e1651b04cb61c77265
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f9f19d75a37351b3562ce8c2f3629df14c5437c6
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -87,7 +89,7 @@ Azure SQL 数据仓库使用事务日志将更改提交到数据库。 每个分
 将数据加载到含聚集索引的非空表通常可以包含完整记录和最少记录的行的组合。 聚集索引是页面的平衡树 (b-tree)。 如果正写入的页面已包含其他事务中的行，则这些写入操作会被完整记录。 但如果该页面为空，则写入到该页面将会按最少记录的方式记录。
 
 ## <a name="optimizing-deletes"></a>优化删除
-`DELETE` 是完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  为此，可使用 [CTAS][CTAS] 创建新表。  创建后，使用 [RENAME][RENAME] 将旧表更换为新创建的表。
+`DELETE` 是完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  为此，可使用 [CTAS][CTAS] 创建新表。  创建后，可通过 [RENAME][RENAME] 操作使用新创建的表将旧表交换出来。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -118,7 +120,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>优化更新
-`UPDATE` 是完整记录的操作。  如果需要更新表或分区中的大量行，通常更高效的方法是使用记录最少的操作（如 [CTAS][CTAS]）。
+`UPDATE` 是完整记录的操作。  如果需要更新表或分区中的大量行，通常更有效的方法是使用最少记录的操作（如 [CTAS][CTAS]）来实现。
 
 在下面的示例中，完整的表更新已转换为 `CTAS`，以便使最少日志记录成为可能。
 
@@ -179,12 +181,12 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 重新创建大型表可以受益于使用 SQL 数据仓库工作负荷管理功能。 如需了解更多详情，请参阅[并发][并发]一文中的工作负荷管理相关部分。
+> 重新创建大型表可以受益于使用 SQL 数据仓库工作负荷管理功能。 有关详细信息，请参阅[并发][concurrency]一文中的工作负荷管理部分。
 > 
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>使用分区切换进行优化
-如果[表分区][表分区]内有大规模修改，分区切换模式就很有必要。 如果数据修改非常重要且跨越多个分区，只需遍历分区即可获得相同的结果。
+面对[表分区][table partition]内较大规模修改时，分区切换模式非常有用。 如果数据修改非常重要且跨越多个分区，只需遍历分区即可获得相同的结果。
 
 执行分区切换的步骤如下所示：
 
@@ -420,26 +422,21 @@ END
 * 将该操作分解为多个块；针对行的子集进行操作
 
 ## <a name="next-steps"></a>后续步骤
-请参阅 [SQL 数据仓库中的事务][SQL 数据仓库中的事务]，详细了解隔离级别和事务限制。  若要概览其他最佳做法，请参阅 [SQL 数据仓库最佳实践][SQL 数据仓库最佳实践]。
+请参阅 [SQL 数据仓库中的事务][Transactions in SQL Data Warehouse]，以便详细了解隔离级别和事务限制。  有关其他最佳实践的概述，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL 数据仓库中的事务]: ./sql-data-warehouse-develop-transactions.md
-[表分区]: ./sql-data-warehouse-tables-partition.md
-[并发]: ./sql-data-warehouse-develop-concurrency.md
+[Transactions in SQL Data Warehouse]: ./sql-data-warehouse-develop-transactions.md
+[table partition]: ./sql-data-warehouse-tables-partition.md
+[Concurrency]: ./sql-data-warehouse-develop-concurrency.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
-[SQL 数据仓库最佳实践]: ./sql-data-warehouse-best-practices.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
-[ALTER INDEX]:https://msdn.microsoft.com/library/ms188388.aspx
+[alter index]:https://msdn.microsoft.com/library/ms188388.aspx
 [RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!-- Other web references -->
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

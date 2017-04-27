@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: jodebrui
 translationtype: Human Translation
-ms.sourcegitcommit: 42f3f6a24e423f54ad7bb282404ddc6ff2450cb7
-ms.openlocfilehash: 5b6fdbfa983cd5bb27ddd13860dfe89c5a3681b6
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: db2d6dbdec80e8c443014c72c80172ad3effb82c
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -25,13 +26,13 @@ ms.openlocfilehash: 5b6fdbfa983cd5bb27ddd13860dfe89c5a3681b6
 [内存中 OLTP](sql-database-in-memory.md) 可以用来改善[高级](sql-database-service-tiers.md) Azure SQL 数据库中的事务处理、数据引入的性能以及暂时性数据状况，且不需要提高定价层。 
 
 > [!NOTE] 
-> 了解 [Quorum 如何使用 SQL 数据库将关键数据库的工作负荷提高一倍，并将 DTU 降低 70%](https://customers.microsoft.com/en-US/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> 了解 [Quorum 如何使用 SQL 数据库将关键数据库的工作负荷提高一倍，并将 DTU 降低 70%](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 
 请按照以下步骤在现有数据库中采用内存中 OLTP。
 
 ## <a name="step-1-ensure-you-are-using-a-premium-database"></a>步骤 1：确保你使用的是高级数据库
-只有 v12 高级数据库支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持 In-Memory：
+只有高级数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持 In-Memory：
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
@@ -173,10 +174,5 @@ CREATE PROCEDURE schemaname.procedurename
 * [内存中 OLTP（内存中优化）](http://msdn.microsoft.com/library/dn133186.aspx)
 * [本机编译的存储过程简介](http://msdn.microsoft.com/library/dn133184.aspx)
 * [内存优化顾问](http://msdn.microsoft.com/library/dn284308.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

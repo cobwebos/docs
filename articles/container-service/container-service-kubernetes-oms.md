@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: 2a124c42e6c90e9443475e1f46cf3e10b5d53d6a
+ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
+ms.openlocfilehash: 46240f3dc99a8c8a103a1e7919ad4f5e7a8ea62a
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -70,40 +71,7 @@ Microsoft Operations Management (OMS) 是 Microsoft 基于云的 IT 管理解决
 Kubernetes 使用 DaemonSet 在群集中的每个主机上运行一个容器实例。
 DaemonSet 还特别适合用于运行监视代理。
 
-以下是 DaemonSet YAML 文件。 将其保存到名为 `oms-daemonset.yaml` 的文件，在文件中将下面的 `WSID` 和 `KEY` 的占位符值分别替换为工作区 ID 和密钥。
-
-```yaml
-apiVersion: extensions/v1beta1
-kind: DaemonSet
-metadata:
-  name: omsagent
-spec:
-  template:
-    metadata:
-      labels:
-        app: omsagent
-    spec:
-      containers:
-      - env:
-        - name: WSID
-          value: <your workspace ID>
-        - name: KEY
-          value: <your key>
-        image: microsoft/oms
-        name: omsagent
-        ports:
-        - containerPort: 25225
-          protocol: TCP
-        securityContext:
-          privileged: true
-        volumeMounts:
-        - mountPath: /var/run/docker.sock
-          name: docker-sock
-      volumes:
-      - name: docker-sock
-        hostPath:
-          path: /var/run/docker.sock
-```
+以下是 [DaemonSet YAML 文件](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)。 将其保存到名为 `oms-daemonset.yaml` 的文件，在文件中将 `WSID` 和 `KEY` 的占位符值分别替换为工作区 ID 和密钥。
 
 将工作区 ID 和密钥添加到 DaemonSet 配置中后，可以使用 `kubectl` 命令行工具在群集上安装 OMS 代理：
 
@@ -113,9 +81,4 @@ $ kubectl create -f oms-daemonset.yaml
 
 ### <a name="conclusion"></a>结束语
 就这么简单！ 几分钟后，应该可以看到数据流向 OMS 仪表板。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

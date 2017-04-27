@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 04/10/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
-
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 3624e4130cc1e87983ebc7c9adc4968436bec386
+ms.lasthandoff: 04/11/2017
 
 ---
+
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 OMS 工作区集成。  这将允许利用 OMS 的机会，同时继续使用 Operations Manager 执行以下操作：
 
@@ -27,18 +28,20 @@ ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
 * 保持与支持事件和问题管理的 ITSM 解决方案集成
 * 管理部署到本地和公有云 IaaS 虚拟机（使用 Operations Manager 监视）的代理的生命周期
 
-通过在收集、存储和分析 Operations Manager 数据时利用 OMS 的速度和效率，与 System Center Operations Manager 集成将会提高服务操作策略的价值。  OMS 帮助关联和努力确定问题故障并显示重现次数，以支持现有问题管理过程。   搜索引擎在检查性能、事件和警报数据方面非常灵活，丰富的仪表板和报告功能可以有意义的方式公开此数据，这均展示了 OMS 为使 Operations Manager 锦上添花所引入的强大优势。
+通过在收集、存储和分析 Operations Manager 数据时利用 OMS 的速度和效率，与 System Center Operations Manager 集成将会提高服务操作策略的价值。  OMS 可以帮助你确定问题的相关因素和根本原因，并重现其发生过程，为现有问题管理过程提供支持。   搜索引擎在检查性能、事件和警报数据方面非常灵活，丰富的仪表板和报告功能可以有意义的方式公开此数据，这均展示了 OMS 为使 Operations Manager 锦上添花所引入的强大优势。
 
-向 Operations Manager 管理组报告的代理基于在 OMS 订阅中启用的数据源和解决方案收集来自服务器的数据。  根据已启用的解决方案，这些解决方案的数据可直接从 Operations Manager 管理服务器发送到 OMS Web 服务，或者出于在代理管理系统上收集的数据量，直接从代理发送到 OMS Web 服务。 管理服务器直接将 OMS 数据转发到 OMS Web 服务，数据永远不会写入 OperationsManager 或 OperationsManagerDW 数据库。  当管理服务器与 OMS Web 服务断开连接时，会将数据缓存在本地直到与 OMS 重新建立通信。  如果管理服务器由于计划内维护或计划外停机而处于脱机状态，管理组中的另一台管理服务器将恢复与 OMS 的连接。  
+向 Operations Manager 管理组报告的代理基于在 OMS 订阅中启用的 Log Analytics 数据源和解决方案收集来自服务器的数据。  根据已启用的解决方案，这些解决方案的数据可直接从 Operations Manager 管理服务器发送到 OMS Web 服务，或者出于在代理管理系统上收集的数据量，直接从代理发送到 OMS Web 服务。 管理服务器直接将 OMS 数据转发到 OMS Web 服务，数据永远不会写入 OperationsManager 或 OperationsManagerDW 数据库。  当管理服务器与 OMS Web 服务断开连接时，会将数据缓存在本地直到与 OMS 重新建立通信。  如果管理服务器由于计划内维护或计划外停机而处于脱机状态，管理组中的另一台管理服务器将恢复与 OMS 的连接。  
 
 以下图表描绘了 System Center Operations Manager 管理组中的管理服务器及代理与 OMS 之间的连接，包括方向和端口。   
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
+如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 OMS 网关，以根据启用的解决方案接收配置信息并发送收集的数据。  若要详细了解如何将 Operations Manager 管理组配置为通过 OMS 网关与 OMS 服务进行通信，请参阅[使用 OMS 网关将计算机连接到 OMS](log-analytics-oms-gateway.md)。  
+
 ## <a name="system-requirements"></a>系统要求
 开始之前，请查看以下详细信息来验证是否满足必要的先决条件。
 
-* OMS 仅支持 Operations Manager 2012 SP1 UR6 及更高版本以及 Operations Manager 2012 R2 UR2 及更高版本。  Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
+* OMS 仅支持 Operations Manager 2016、Operations Manager 2012 SP1 UR6 及更高版本，以及 Operations Manager 2012 R2 UR2 及更高版本。  Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
 * 所有 Operations Manager 代理必须满足最低支持要求。 确保代理达到最低更新，否则 Windows 代理流量将失败，Operations Manager 事件日志可能会出现许多错误。
 * 一个 OMS 订阅。  有关进一步的详细信息，请参阅 [Log Analytics入门](log-analytics-get-started.md)。
 
@@ -46,9 +49,9 @@ ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
 执行以下一系列步骤来将 Operations Manager 管理组配置为连接到其中一个 OMS 工作区。
 
 1. 在 Operations Manager 控制台中，选择“**管理**”工作区。
-2. 展开 Operations Management Suite 节点，然后单击 “**连接**”。
+2. 展开 Operations Management Suite 节点，然后单击“**连接**”。
 3. 单击“**向 Operations Management Suite 注册**”链接。
-4. 在“**Operations Management Suite 载入向导:身份验证**”页面上，输入电子邮件地址或电话号码以及与 OMS 订阅关联的管理员帐户的密码，并单击“**登录**”。
+4. 在“**Operations Management Suite 载入向导: 身份验证**”页面上，输入电子邮件地址或电话号码以及与 OMS 订阅关联的管理员帐户的密码，并单击“**登录**”。
 5. 成功进行身份验证后，在“**Operations Management Suite 载入向导:选择工作区**”页面上，系统将提示选择 OMS 工作区。  如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，然后单击“**下一步**”。
    
    > [!NOTE]
@@ -62,7 +65,7 @@ ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
 配置与 OMS 工作区的集成后，这只是建立了与 OMS 的连接，不会从向管理组报告的代理中收集任何数据。 配置针对 Log Analytics 收集数据的特定代理管理计算机后才会出现这种情况。 可以单独选择计算机对象，或者选择一个包含 Windows 计算机对象的组。 不能选择包含另一个类实例的组，如逻辑磁盘或 SQL 数据库。
 
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
-2. 展开 Operations Management Suite 节点，然后单击 “**连接**”。
+2. 展开 Operations Management Suite 节点，然后单击“**连接**”。
 3. 在窗格右侧的“操作”标题下单击“**添加计算机/组**”链接。
 4. 在“**计算机搜索**”对话框中可以搜索 Operations Manager 监视的计算机或组。 选择要载入到 OMS 的计算机或组，单击“**添加**”，然后单击“**确定**”。
 
@@ -76,7 +79,7 @@ ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
 3. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
 4. 在“**Operations Management Suite 向导:代理服务器**”页面上，选择“**使用代理服务器访问 Operations Management Suite**”，然后键入包含端口号的 URL，例如 http://corpproxy:80 ，然后单击“**完成**”。
 
-如果代理服务器要求身份验证，请执行以下步骤来配置凭据和需要传播到受管理计算机的设置，这些受管理计算机将向管理组中的 OMS 报告。
+如果代理服务器要求身份验证，请执行以下步骤，配置需要向管理组中 OMS 报告的受管理计算机传播的凭据和设置。
 
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 2. 在“**运行方式配置**”下面，选择“**配置文件**”。
@@ -94,7 +97,7 @@ ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
 * 你选择要收集管理组中数据的代理和组将添加到 **Microsoft System Center Advisor Monitoring Server Group**。
 
 ## <a name="management-pack-updates"></a>管理包更新
-配置完成后，Operations Manager 管理组会与 OMS 服务建立连接。  管理服务器将与 Web 服务同步，针对与 Operations Manager 集成的已启用解决方案以管理包的形式接收更新的配置信息。   Operations Manager 将自动检查这些管理包的更新，并在更新可用时下载和导入。  特别是，有两个控制此行为的规则：
+配置完成后，Operations Manager 管理组会与 OMS 服务建立连接。  管理服务器将与 Web 服务同步，针对与 Operations Manager 集成的已启用解决方案，以管理包的形式接收更新的配置信息。   Operations Manager 将自动检查这些管理包的更新，并在更新可用时下载和导入。  特别是，有两个控制此行为的规则：
 
 * **Microsoft.SystemCenter.Advisor.MPUpdate** - 更新 OMS 基础管理包。 默认情况下，每十二 (12) 小时运行一次。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - 更新在工作区中启用的解决方案管理包。 默认情况下，每五 (5) 分钟运行一次。
@@ -137,28 +140,36 @@ ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
 ## <a name="remove-integration-with-oms"></a>移除与 OMS 的集成
 当不再需要 Operations Manager 管理组和 OMS 工作区之间的集成时，正确移除管理组中的连接和配置需要几个步骤。 下面的过程通过删除管理组的引用让你更新 OMS 工作区、删除 OMS 连接器，然后再删除支持 OMS 的管理包。   
 
+无法轻松从管理组中删除用于已启用的与 Operations Manager 集成的解决方案的管理包以及支持与 OMS 服务集成所需的管理包。  这是因为某些 OMS 管理包依赖于其他相关管理包。  若要删除与其他管理包具有依赖关系的管理包，请从 TechNet 脚本中心下载脚本 [remove a management pack with dependencies](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e)（删除具有依赖关系的管理包）。  
+
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 命令外壳。
    
-   > [!WARNING]
-   > 继续操作之前，确认所有自定义管理包的名称中均没有 Advisor 或 IntelligencePack 字样，否则通过以下步骤将把它们从管理组中删除。
-   > 
-   > 
-2. 在命令外壳提示下，键入 `Get-SCOMManagementPack -name "*advisor*" | Remove-SCOMManagementPack`
-3. 接着键入 `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack`
-4. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager Operations 控制台。
-5. 在“**管理**”下面选择“**管理包**”节点，并在“**查找:**”框中键入“**Advisor**”并确认以下管理包仍导入到管理组中：
+    > [!WARNING]
+    > 继续操作之前，确认所有自定义管理包的名称中均没有 Advisor 或 IntelligencePack 字样，否则通过以下步骤将把它们从管理组中删除。
+    > 
+
+2. 在命令外壳提示下，键入 `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`。
+3. 接着键入 `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`。
+4. 若要删除与其他 System Center Advisor 管理包具有依赖关系的剩余管理包，请使用之前从 TechNet 脚本中心下载的脚本  *RecursiveRemove.ps1*。  
+ 
+    > [!NOTE]
+    > 请勿删除 Microsoft System Center Advisor 或 Microsoft System Center Advisor Internal 管理包。  
+    >  
+
+5. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager Operations 控制台。
+6. 在“**管理**”下面选择“**管理包**”节点，并在“**查找:**”框中键入“**Advisor**”并确认以下管理包仍导入到管理组中：
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
-6. 在 OMS 门户中，单击“**设置**”磁贴。
-7. 选择“**相连的源**”。
-8. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。  在“**最后的数据**”列下，单击“**移除**”。  
+7. 在 OMS 门户中，单击“**设置**”磁贴。
+8. 选择“**相连的源**”。
+9. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。  在“**最后的数据**”列下，单击“**移除**”。  
    
-   > [!NOTE]
-   > 如果没有从连接的管理组中检测到活动，“**移除**”链接在 14 天后才可用。  
-   > 
-   > 
-9. 将出现一个窗口，要求你确认是否继续进行移除。  单击“**是**”继续。 
+    > [!NOTE]
+    > 如果没有从连接的管理组中检测到活动，“**移除**”链接在 14 天后才可用。  
+    > 
+
+10. 将出现一个窗口，要求你确认是否继续进行移除。  单击“**是**”继续。 
 
 要删除两个连接器 - Microsoft.SystemCenter.Advisor.DataConnector 和 Advisor Connector，请将以下 PowerShell 脚本保存到计算机，并使用以下示例执行删除。
 
@@ -168,7 +179,7 @@ ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
 ```
 
 > [!NOTE]
-> 运行此脚本的计算机如果不是管理服务器，应根据管理组的版本安装 Operations Manager 2012 SP1 或 R2 命令外壳。
+> 运行此脚本的计算机如果不是管理服务器，应根据管理组的版本安装 Operations Manager 命令外壳。
 > 
 > 
 
@@ -263,10 +274,5 @@ ms.openlocfilehash: 961a3867362d14ab7b6ff99ce4002380d763082f
 ## <a name="next-steps"></a>后续步骤
 * [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
 * 如果组织使用代理服务器或防火墙，请[在 Log Analytics 中配置代理服务器和防火墙设置](log-analytics-proxy-firewall.md)以便代理可以与 Log Analytics 服务进行通信。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

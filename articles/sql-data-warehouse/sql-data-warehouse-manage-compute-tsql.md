@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
+ms.date: 03/30/2017
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 94f9bbcfddf8ea3d5ae9bffcb3c196a30f4bb396
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: e37a943c775261a6817169c95a931f1b268305d9
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/28/2017
 ## <a name="view-current-dwu-settings"></a>查看当前的 DWU 设置
 若要查看数据库的当前 DWU 设置，请执行以下操作：
 
-1. 在 Visual Studio 2015 中打开“SQL Server 对象资源管理器”。
+1. 在 Visual Studio 中打开“SQL Server 对象资源管理器”。
 2. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
 3. 从 sys.database_service_objectives 动态管理视图中选择。 下面是一个示例： 
 

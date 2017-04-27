@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/19/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 64650bf7baf46b0f5473deb1a9b4ec329979d153
-ms.openlocfilehash: 0fc78521abb0fce2a38b14d1411dad42b3580df2
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 83ab487f382eb84aa64b927bdf5560eec5cbbd6d
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -70,10 +71,5 @@ Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各
 * 文件 – 使用 [AzCopy](storage-use-azcopy.md) 或 [Azure PowerShell](storage-powershell-guide-full.md) 将文件复制到其他区域的其他存储帐户。
 
 若要深入了解如何创建充分利用 RA-GRS 功能的应用程序，请参阅[使用 RA-GRS 存储设计高可用性应用程序](storage-designing-ha-apps-with-ragrs.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

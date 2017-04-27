@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/26/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: bd503bb141b5686f149c5fb46ba069db070d5fae
-ms.openlocfilehash: 99dbb3deefb066b619b839aa709fe5e9b804eb27
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a6ca819329de130257ec67e63a53f87cbca9f39b
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 99dbb3deefb066b619b839aa709fe5e9b804eb27
 在本教程中概述的方案由以下构建基块组成：
 
 1. 为 NetDocuments 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
@@ -61,13 +62,13 @@ ms.openlocfilehash: 99dbb3deefb066b619b839aa709fe5e9b804eb27
    
    ![NetDocuments](./media/active-directory-saas-netdocuments-tutorial/IC795042.png "NetDocuments")
    
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 
 本部分的目的是概述如何使用户使用基于 SAML 协议的联合身份验证通过其在 Azure AD 中的帐户向 NetDocuments 进行身份验证。  
 
-配置 NetDocuments 的单一登录要求检索证书的指纹值。 如果不熟悉此过程，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)。
+配置 NetDocuments 的 SSO 需要检索证书的指纹值。 如果不熟悉此过程，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)。
 
-**若要配置单一登录，请执行以下步骤：**
+**若要配置 SSO，请执行以下步骤：**
 
 1. 在 Azure 经典门户中的“NetDocuments”应用程序集成页上，单击“配置单一登录”打开“配置单一登录”对话框。
    
@@ -82,10 +83,11 @@ ms.openlocfilehash: 99dbb3deefb066b619b839aa709fe5e9b804eb27
    1. 在“登录 URL”文本框中，键入用户登录到 NetDocuments 应用程序时使用的 URL（例如“*https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=CA-JI1BG3H1*”）。
    2. 在“NetDocuments 答复 URL”文本框中键入的值与在“登录 URL”文本框中键入的值相同。  
       
-      > [!NOTE]
-      > 可以在“联合身份”对话框的末尾找到正确的值（参见步骤 9 的屏幕截图）。
-      > 
-      
+      >[!NOTE]
+      >可以在“联合身份”对话框的末尾找到正确的值（参见步骤 9 的屏幕截图）。
+      >
+      >
+     
    3. 单击“资源组名称” 的 Azure 数据工厂。
 4. 在“配置 NetDocuments 的单一登录”页面上，若要下载证书，请单击“下载证书”，然后将证书文件保存在本地计算机上。
    
@@ -109,7 +111,7 @@ ms.openlocfilehash: 99dbb3deefb066b619b839aa709fe5e9b804eb27
     
     ![配置单一登录](./media/active-directory-saas-netdocuments-tutorial/IC795050.png "配置单一登录")
     
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 
 若要让 Azure AD 用户登录 NetDocuments，必须将其预配到 NetDocuments 中。 使用 NetDocuments 时，预配属手动任务。
 
@@ -126,33 +128,32 @@ ms.openlocfilehash: 99dbb3deefb066b619b839aa709fe5e9b804eb27
    
    ![电子邮件地址](./media/active-directory-saas-netdocuments-tutorial/IC795053.png "电子邮件地址")
    
-   > [!NOTE]
-   > Azure Active Directory 帐户持有者将获得一封电子邮件，该邮件包含在激活帐户前确认帐户的链接。
+   >[!NOTE]
+   >Azure Active Directory 帐户持有者将获得一封电子邮件，该邮件包含在激活帐户前确认帐户的链接。
    > 
    > 
 
-> [!NOTE]
-> 可以使用任何其他 NetDocuments 用户帐户创建工具或 NetDocuments 提供的 API 来预配 AAD 用户帐户。
-> 
+>[!NOTE]
+>可以使用任何其他 NetDocuments 用户帐户创建工具或 NetDocuments 提供的 API 来预配 AAD 用户帐户。
+>
+>
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
 **若要将用户分配到 NetDocuments，请执行以下步骤：**
 
-1. 在 Azure 经典门户中，创建测试帐户。
-2. 在 **NetDocuments **应用程序集成页上，单击“分配用户”。
+1. 在 Azure 经典门户中，创建一个测试帐户。
+2. 在 **NetDocuments** 应用程序集成页上，单击“分配用户”。
    
    ![分配用户](./media/active-directory-saas-netdocuments-tutorial/IC795054.png "分配用户")
 3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
    ![是](./media/active-directory-saas-netdocuments-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
+## <a name="additional-resources"></a>其他资源
 
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)

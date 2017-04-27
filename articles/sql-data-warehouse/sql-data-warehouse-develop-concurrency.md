@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: performance
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1abac24447f709690c42add7c383394443ef957c
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: dd8c1b07262fc375678262a7617699c1f69c6090
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -269,7 +271,7 @@ Removed as these two are not confirmed / supported under SQLDW
     ```
    
    > [!NOTE]
-   > 最好是在针对 Azure SQL 数据仓库用户的 master 数据库中创建一个用户。 在 master 中创建用户以后，用户即可使用 SSMS 之类的工具登录，不需指定数据库名称。  此外，用户还可以使用对象资源管理器查看 SQL Server 上的所有数据库。  若要详细了解如何创建和管理用户，请参阅[保护 SQL 数据仓库中的数据库][保护 SQL 数据仓库中的数据库]。
+   > 最好是在针对 Azure SQL 数据仓库用户的 master 数据库中创建一个用户。 在 master 中创建用户以后，用户即可使用 SSMS 之类的工具登录，不需指定数据库名称。  此外，用户还可以使用对象资源管理器查看 SQL Server 上的所有数据库。  有关创建和管理用户的详细信息，请参阅[保护 SQL 数据仓库中的数据库][Secure a database in SQL Data Warehouse]。
    > 
    > 
 2. **创建 SQL 数据仓库用户：**与 **SQL 数据仓库数据库**建立连接，然后执行以下命令。
@@ -406,22 +408,17 @@ FROM    sys.dm_pdw_wait_stats w;
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解如何管理数据库用户和安全性，请参阅[保护 SQL 数据仓库中的数据库][保护 SQL 数据仓库中的数据库]。 有关如何通过更大型资源类来改进聚集列存储索引质量的详细信息，请参阅[重新生成索引以提升段质量]。
+有关如何管理数据库用户和安全性的详细信息，请参阅[保护 SQL 数据仓库中的数据库][Secure a database in SQL Data Warehouse]。 有关如何通过更大型资源类来改进聚集列存储索引质量的详细信息，请参阅[重新生成索引以提升段质量]。
 
 <!--Image references-->
 
 <!--Article references-->
-[保护 SQL 数据仓库中的数据库]: ./sql-data-warehouse-overview-manage-security.md
+[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 [重新生成索引以提升段质量]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
-[保护 SQL 数据仓库中的数据库]: ./sql-data-warehouse-overview-manage-security.md
+[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->
-[在 Azure SQL 数据库中管理数据库和登录名]:https://msdn.microsoft.com/library/azure/ee336235.aspx
+[Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

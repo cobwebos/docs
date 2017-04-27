@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 1a3b78575b2b7f8d36178d41975690e984277a29
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 454957b439e327b08dcd6e7f4acee37963970458
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -24,6 +24,9 @@ ms.lasthandoff: 03/30/2017
 本文概述如何在 Azure 数据工厂中使用复制活动将数据从本地/云 SFTP 服务器移至受支持的接收器数据存储。 本文建立在 [数据移动活动](data-factory-data-movement-activities.md)一文的基础上，该文提供通过复制活动和一系列支持作为源/接收器的数据存储进行数据移动的一般概述。
 
 数据工厂当前仅支持将数据从 SFTP 服务器移至其他数据存储，但不可将数据从其他数据存储移至 SFTP 服务器。 它支持本地和云 SFTP 服务器。
+
+> [!NOTE]
+> 复制活动在将源文件成功复制到目标后不会删除该文件。 如果需要在成功复制后删除源文件，请创建一个自定义活动，以便删除该文件并在管道中使用复制活动。 
 
 ## <a name="supported-scenarios-and-authentication-types"></a>支持的方案和身份验证类型
 可以使用此 SFTP 连接器从**云 SFTP 服务器和本地 SFTP 服务器**复制数据。 连接到 SFTP 服务器时，支持**基本**和 **SshPublicKey** 身份验证类型。
@@ -209,6 +212,8 @@ ms.lasthandoff: 03/30/2017
 
 [!INCLUDE [data-factory-file-system-source](../../includes/data-factory-file-system-source.md)]
 
+## <a name="supported-file-and-compression-formats"></a>支持的文件和压缩格式
+请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
 
 ### <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON 示例：将数据从 SFTP 服务器复制到 Azure Blob
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示了如何将数据从 SFTP 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。

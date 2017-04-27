@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2016
+ms.date: 04/03/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d5fb08bbeb5564566808cd8ff6d2e83dec89de6c
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f0ab9d4bea3a3f7f1e1a0af2206e7b5641be1288
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.openlocfilehash: d5fb08bbeb5564566808cd8ff6d2e83dec89de6c
 
 ![缩放依据](./media/insights-autoscale-to-webhook-email/insights-autoscale-scale-by.png)
 
-## <a name="virtual-machine-scale-sets"></a>虚拟机缩放集
+## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 对于使用 Resource Manager（虚拟机规模集）创建的较新虚拟机，可以使用REST API、Resource Manager 模板、PowerShell 和 CLI 进行配置。 门户界面尚不可用。
 使用 REST API 或 Resource Manager 模板时，包括具有以下选项的通知元素。
 
@@ -75,10 +76,7 @@ ms.openlocfilehash: d5fb08bbeb5564566808cd8ff6d2e83dec89de6c
 | properties |是 |值必须是空的 {}，也可以包含键值对 |
 
 ## <a name="authentication-in-webhooks"></a>webhook 中的身份验证
-有两种身份验证 URI 形式：
-
-1. 基于令牌的身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
-2. 基本身份验证：使用用户 ID 和密码。 例如 https://userid:password@mysamplealert/webcallback?someparamater=somevalue&parameter=value
+webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>自动缩放通知 webhook 负载架构
 生成自动缩放通知时，以下元数据会包含在 webhook 负载中：
@@ -128,10 +126,5 @@ ms.openlocfilehash: d5fb08bbeb5564566808cd8ff6d2e83dec89de6c
 | oldCapacity |是 |自动缩放执行缩放操作时的当前（旧）实例计数 |
 | newCapacity |是 |自动缩放将资源缩放到的新实例计数 |
 | 属性 |否 |可选。 <键, 值> 对集（例如字典 <String, String>）。 properties 字段是可选的。 在自定义用户界面或基于逻辑应用的工作流中，可以输入可使用有效负载传递的键和值。 将自定义属性传递回传出 webhook 调用的替代方法是使用 webhook URI 本身（作为查询参数） |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

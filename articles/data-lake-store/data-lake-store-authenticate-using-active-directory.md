@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/02/2017
+ms.date: 03/30/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: ae2280f7bd7945f723d88dc6ce3f9a117074e93f
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 7c1532db4d58673add9b8076154c471554810614
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -76,7 +76,22 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
     有关 Data Lake Store 中的权限和默认/访问 ACL 的详细信息，请参阅 [Data Lake Store 中的访问控制](data-lake-store-access-control.md)。
 7. 在“添加自定义访问”边栏选项卡中，单击“确定”。 “访问”边栏选项卡中会列出新添加的组以及相关的权限。
    
-    ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "分配权限给组")    
+    ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "分配权限给组")
+
+## <a name="step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications"></a>步骤 4：获取 OAuth 2.0 令牌终结点（仅适用于基于 Java 的应用程序）
+
+1. 登录新的 [Azure 门户](https://portal.azure.com)，在左侧窗格中单击“Active Directory”。
+
+2. 在左侧窗格中，单击“应用注册”。
+
+3. 在“应用注册”边栏选项卡顶部，单击“终结点”。
+
+    ![OAuth 令牌终结点](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth 令牌终结点")
+
+4. 从终结点列表中，复制 OAuth 2.0 令牌终结点。
+
+
+     ![OAuth 令牌终结点](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 令牌终结点")   
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，创建了一个 Azure AD Web 应用程序，并使用 .NET SDK、Java SDK 等在创作的客户端应用程序中收集了所需的信息。现在可以转到以下文章，它们讨论了如何使用 Azure AD Web 应用程序先进行 Data Lake Store 身份验证，再在存储中执行其他操作。

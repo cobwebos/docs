@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 53c9b75599af48be82c63bc7a9df31d4c2de13a3
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: da77ce827c65deb18d9d84ce5cf768d89788e205
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -55,7 +55,7 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 ## <a name="prerequisites"></a>先决条件
 若要使用 Batch 模板，需要满足以下条件：
 
-* 已安装 Visual Studio 2015 或更高版本的计算机。
+* 安装有 Visual Studio 2015 的一台计算机。 Batch 模板当前仅支持 Visual Studio 2015。
 * Batch 模板，可从 [Visual Studio 库][vs_gallery]以 Visual Studio 扩展的形式获取。 有两种方式可获取模板：
   
   * 使用 Visual Studio 中的“扩展和更新”对话框安装模板（有关详细信息，请参阅[查找和使用 Visual Studio 扩展][vs_find_use_ext]）。 在“扩展和更新”对话框中，搜索并下载以下两个扩展：

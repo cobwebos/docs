@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: cd727a02716323c54d1c54a23cd4edd8f4940da1
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: aaada39283b19015e460768b072d0164b0d22bae
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -44,7 +44,7 @@ SSE 的工作方式是在数据写入到 Azure 存储时对其加密，可用于
 若要了解详细信息，请参阅“常见问题解答”。
 
 ### <a name="availability-for-file-storage"></a>文件存储的可用性
-适用于文件存储的存储服务加密目前在以下区域中提供：美国东部、美国东部&2;、美国中部、美国中北部、美国中南部、美国中西部、美国西部、美国西部&2;、亚洲东部、欧洲北部、欧洲西部、澳大利亚东部和澳大利亚东南部。
+目前，在所有 Azure 区域中提供适用于文件存储的存储服务加密。
 
 
 若要启用或禁用存储帐户的存储服务加密，请登录 [Azure 门户](https://azure.portal.com)，然后选择存储帐户。 在“设置”边栏选项卡中，寻找如屏幕截图所示的“Blob 服务”部分，然后单击“加密”。

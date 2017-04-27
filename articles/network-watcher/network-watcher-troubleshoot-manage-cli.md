@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 0dcc02e4f3b1e512a2c9e4b96894324414182af9
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: a213c146a9ea1bb6c23bbcbfb6353372f2e4cbfc
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -55,7 +55,7 @@ azure network vpn-connection list -g resourceGroupName
 azure network vpn-connection list -s subscription
 ```
 
-知道存储帐户的名称后，可以运行此命令来获取其资源 ID：
+知道连接名称后，可以运行此命令来获取其资源 ID：
 
 ```azurecli
 azure network vpn-connection show -g resourceGroupName -n connectionName
@@ -65,9 +65,23 @@ azure network vpn-connection show -g resourceGroupName -n connectionName
 
 资源故障排除返回有关资源运行状况的数据，还将日志保存到要查看的存储帐户中。 在此步骤中，我们将创建一个存储帐户（如果存在现有的存储帐户，你可以使用它）。
 
-```azurecli
-azure storage account create -n storageAccountName -l location -g resourceGroupName
-```
+1. 创建存储帐户
+
+    ```azurecli
+    azure storage account create -n storageAccountName -l location -g resourceGroupName
+    ```
+
+1. 获取存储帐户密钥
+
+    ```azurecli
+    azure storage account keys list storageAccountName -g resourcegroupName
+    ```
+
+1. 创建容器
+
+    ```azurecli
+    azure storage container create --account-name storageAccountName -g resourcegroupName --acount-key {storageAccountKey} --container logs
+    ```
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>运行网络观察程序资源故障排除
 

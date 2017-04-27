@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 7f719fb38709f4bb7083b7f21a5979f7e0588d0f
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: c62f8d077906ce8ad1b5501864a21ee369b2314a
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/22/2017
 
 **Linux 客户端问题**
 
-* [间歇性 IO 错误 - 现有文件共享上出现“主机已关闭（错误 112）”或在装入点上执行列表命令时外壳挂起](#errorhold)
+* [间歇性 IO 错误 - 现有文件共享上出现“主机已关闭（错误 112）”或在装入点上执行列表命令时外壳挂起](#error112)
 * [尝试在 Linux VM 上装载 Azure 文件时，出现装载错误 115](#error15)
 * [装载在 Linux VM 上的 Azure 文件共享目前性能缓慢](#delayproblem)
 * [装载错误(11)：装载到 Ubuntu 4.8+ 内核时资源暂时不可用](#ubuntumounterror)
@@ -116,13 +116,13 @@ ms.lasthandoff: 03/22/2017
 以下情况可能引起此问题：
 
 ### <a name="cause-1"></a>原因 1
-“发生系统错误 53。 访问被拒绝。” 出于安全原因，如果通信通道未加密，并且连接尝试并非来自 Azure 文件共享驻留的同一数据中心，则将阻止连接到 Azure 文件共享。 如果用户的客户端 OS 不支持 SMB 加密，则不提供通信通道加密。 如果用户尝试从本地或不同的数据中心装载文件共享， 这将表示为“发生系统错误 53。访问被拒绝”错误消息。 Windows 8、Windows Server 2012 及更高版本的每个协商请求包括支持加密的 SMB 3.0。
+“发生系统错误 53。 访问被拒绝。” 出于安全原因，如果通信通道未加密，并且连接尝试并非来自 Azure 文件共享驻留的同一 Azure 区域，则将阻止连接到 Azure 文件共享。 如果用户的客户端 OS 不支持 SMB 加密，则不提供通信通道加密。 如果用户尝试从本地或不同的数据中心装载文件共享， 这将表示为“发生系统错误 53。访问被拒绝”错误消息。 Windows 8、Windows Server 2012 及更高版本的每个协商请求包括支持加密的 SMB 3.0。
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
-使用符合 Windows 8、Windows Server 2012 或更高版本要求的客户端进行连接，或者连接使用的虚拟机要位于 Azure 文件共享时所用的 Azure 存储帐户所在的同一数据中心。
+使用符合 Windows 8、Windows Server 2012 或更高版本要求的客户端进行连接，或者连接使用的虚拟机要位于 Azure 文件共享时所用的 Azure 存储帐户所在的同一 Azure 区域。
 
 ### <a name="cause-2"></a>原因 2
-如果端口 445 到 Azure 文件数据中心的出站通信受阻，则装载 Azure 文件共享时可能出现“系统错误 53”或“系统错误 67”。 单击[此处](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)，概括了解允许或禁止从端口 445 访问的 ISP。
+如果端口 445 到 Azure 文件 Azure 区域的出站通信受阻，则装载 Azure 文件共享时可能出现“系统错误 53”或“系统错误 67”。 单击[此处](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)，概括了解允许或禁止从端口 445 访问的 ISP。
 
 Comcast 和某些 IT 组织阻止此端口。 若要了解“系统错误 53”是否由此造成，可使用 Portqry 查询 TCP:445 终结点。 如果 TCP:445 终结点显示为“已筛选”，则 TCP 端口被阻止。 下面是一个示例查询：
 
@@ -213,7 +213,7 @@ Azure 文件仅支持 NTLMv2 身份验证。 请确保客户端应用了组策�
 
 但请注意，设置注册表项会影响网络共享的所有复制操作。
 
-<a id="errorhold"></a>
+<a id="error112"></a>
 
 ## <a name="host-is-down-error-112-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>现有文件共享上出现“主机已关闭（错误 112）”或在装入点上执行列表命令时外壳挂起
 ### <a name="cause"></a>原因
@@ -251,7 +251,7 @@ Azure 文件仅支持 NTLMv2 身份验证。 请确保客户端应用了组策�
 Linux 分发尚不支持 SMB 3.0 中的加密功能。 在某些分发中，如果用户尝试使用 SMB 3.0，可能会由于缺少此功能而收到“115”错误信息。
 
 ### <a name="solution"></a>解决方案
-如果使用的 Linux SMB 客户端不支持加密，则使用文件存储帐户所在的同一数据中心上 Linux VM 的 SMB 2.1 装载文件。
+如果使用的 Linux SMB 客户端不支持加密，则使用文件存储帐户所在的同一 Azure 区域中 Linux VM 的 SMB 2.1 装载 Azure 文件。
 
 <a id="delayproblem"></a>
 

@@ -16,9 +16,9 @@ ms.workload: data-catalog
 ms.date: 03/14/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: b92db8dd81af0c58861644cc02ca9e56b6a6a832
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: d68ed62022834c9417d820a7a64e30b47f71a1bd
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -416,6 +416,24 @@ ms.lasthandoff: 03/17/2017
   
     <tr>
       <td>Azure DocumentDB 集合</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+
+    <tr>
+      <td>泛型 ODBC 表</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+
+    <tr>
+      <td>泛型 ODBC 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -918,6 +936,22 @@ ms.lasthandoff: 03/17/2017
       <td>集合</td>
       <td>
         <font size=2>协议：document-db <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 集合 </font>
+      </td>
+    </tr>
+    <tr>
+      <td>泛型 ODBC</td>
+      <td>容器</td>
+      <td>数据库</td>
+      <td>
+        <font size=2> 协议：odbc <br>身份验证：{基本，windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选项 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+      </td>
+    </tr>
+    <tr>
+      <td>泛型 ODBC</td>
+      <td>表</td>
+      <td>表、视图</td>
+      <td>
+        <font size=2> 协议：odbc <br>身份验证：{基本，windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选项 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 </font>
       </td>
     </tr>
     <tr>
