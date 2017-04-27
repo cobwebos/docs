@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: 3e0f8d92495c976040113f8edc0d4c789920c549
 ms.openlocfilehash: e22dca7b666720edfcbfd1b871d98b9468441fbd
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -236,7 +237,7 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。 紧接着，
 
 使用完 ACS Hello World 应用程序后，请务必删除部署（可在[在 Eclipse 中创建 Azure 的 Hello World 应用程序](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)主题中了解如何删除部署）。
 
-## <a name="a-namenextstepsanext-steps"></a><a name="next_steps"></a>后续步骤
+## <a name="next_steps"></a>后续步骤
 有关 ACS 返回给你的应用程序的安全断言标记语言 (SAML) 的检查，请参阅[如何查看 Azure 访问控制服务返回的 SAML][How to view SAML returned by the Azure Access Control Service]。 若要进一步探索 ACS 的功能并尝试将其用于更复杂的方案，请参阅[访问控制服务 2.0][Access Control Service 2.0]。
 
 另外，此示例使用了“在 WAR 文件中嵌入证书”选项。 此选项简化了证书的部署。 相反，如果你要将签名证书与 WAR 文件分隔开，可使用以下方法：
@@ -296,10 +297,5 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。 紧接着，
 [add_jsp_file_acs]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddJSPFileACS.png
 [create_acs_hello_world]: ./media/active-directory-java-authenticate-users-access-control-eclipse/CreateACSHelloWorld.png
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

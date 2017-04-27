@@ -15,22 +15,13 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 236d38fcda90643992f66c9b2f4d92180e4463f5
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
+ms.openlocfilehash: 1caea59e71126e934e2e52a1ad7f533ffa7d4b03
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="devtest-labs-concepts"></a>开发测试实验室概念
-> [!NOTE]
-> 本系列共有 3 部分，本文是第 3 部分：
->
-> 1. [什么是开发测试实验室？](devtest-lab-overview.md)
-> 2. [为何选择开发测试实验室？](devtest-lab-why.md)
-> 3. **[开发测试实验室概念](devtest-lab-concepts.md)**
->
->
-
 ## <a name="overview"></a>概述
 下表包含关键开发测试实验室概念和定义：
 
@@ -91,10 +82,10 @@ Azure 可声明 VM 是一种可供具备权限的任何实验室用户使用的�
 
 由于作用域是分层的，因此用户在某个作用域具有权限时，将会自动授予他所包含的每个较低级别的作用域的权限。 例如，如果用户分配到订阅所有者的角色，那么他可访问订阅中的所有资源，包括所有虚拟机、所有虚拟网络和所有实验室。 因此，订阅所有者将自动继承实验室所有者的角色。 但是反过来则不适用。 实验室所有者具有访问实验室的权限，其低于订阅级别的作用域。 因此，实验室所有者将不能查看虚拟机或虚拟网络或实验室之外的任何资源。
 
-## <a name="arm-templates"></a>ARM 模板
-本文中所述的所有概念均可使用 Azure Resource Manager (ARM) 模板配置。 使用 ARM 模板，可以定义 Azure 解决方案的基础结构/配置，并以一致状态重复部署它。
+## <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
+本文中所述的所有概念都可以使用 Azure Resource Manager 模板配置，这些模板可用于定义 Azure 解决方案的基础结构/配置，并以一致的状态反复部署该解决方案。
 
-[ARM 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format)描述 Azure Resource Manager 模板的结构，以及模板的不同节中提供的属性。
+[了解 Azure Resource Manager 模板的结构和语法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format)描述了 Azure Resource Manager 模板的结构，以及模板的不同节中提供的属性。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

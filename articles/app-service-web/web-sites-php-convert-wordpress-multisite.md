@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 45a5c8f16dd70f65967907c18752f4f98ffa75ea
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -139,10 +140,5 @@ WordPress Multisite 当前没有用于映射自定义域的内置方法。 但�
 
 [wordpress-manage-domains]: ./media/web-sites-php-convert-wordpress-multisite/wordpress-manage-domains.png
 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
