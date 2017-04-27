@@ -17,6 +17,7 @@ ms.author: jucoriol
 translationtype: Human Translation
 ms.sourcegitcommit: c5e05a8693bd000010013922ed6f2a127e998efe
 ms.openlocfilehash: db58703f573c09ba45abed87547c5e80ef58638b
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -53,6 +54,8 @@ ms.openlocfilehash: db58703f573c09ba45abed87547c5e80ef58638b
 - [创建 Azure 容器注册表](../container-registry/container-registry-get-started-portal.md)
 - [创建 Visual Studio Team Services 帐户和团队项目](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
 - [将 GitHub 存储库分叉到 GitHub 帐户](https://github.com/jcorioland/MyShop/)
+
+[!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
 
 还需要准备一台装有 Docker 的 Ubuntu（14.04 或 16.04）计算机。 在生成和发布过程中，Visual Studio Team Services 将使用此计算机。 创建此计算机的方法之一是使用 [Azure 应用商店](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/)中提供的映像。 
 
@@ -227,8 +230,3 @@ Microsoft 提供了一个 VSTS 扩展，用于在生成和发布过程中操作 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关使用 Visual Studio Team Services 的 CI/CD 的详细信息，请参阅 [VSTS Build overview](https://www.visualstudio.com/docs/build/overview)（VSTS 生成概述）。
-
-
-<!--HONumber=Dec16_HO2-->
-
-

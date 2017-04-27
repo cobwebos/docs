@@ -202,7 +202,7 @@ Batch 服务在应用程序包的存储和检索操作中使用关联的存储�
 CloudPool myCloudPool =
     batchClient.PoolOperations.CreatePool(
         poolId: "myPool",
-        targetDedicated: "1",
+        targetDedicated: 1,
         virtualMachineSize: "small",
         cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
 
