@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 308c9f4d59f6c6981af74f4208c9963e3d0102dd
-ms.openlocfilehash: 6644afc1de68230ccca089529b32195c4c8ddfe7
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e190cfdf6d7a9dee86ed7b9072dc51ca8c993d32
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/17/2017
 在本教程中概述的方案由以下构建基块组成：
 
 * 为 BambooHR 启用应用程序集成
-* 配置单一登录
+* 配置单一登录 (SSO)
 * 配置用户设置
 * 分配用户
 
@@ -95,8 +95,8 @@ ms.lasthandoff: 02/17/2017
    
    ![SAML 单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796692.png "SAML 单一登录")
    
-   1. 在 Azure 经典门户的“配置 BambooHR 的单一登录”对话框页上，复制“单一登录服务 URL”值，然后将其粘贴到“SSO 登录 URL”文本框中。
-   2. 基于下载的证书创建一个 **base-64 编码**的文件。  
+   1. 在 Azure 经典门户的“配置 BambooHR 的单一登录”对话框页上，复制“单一登录服务 URL”值，然后将其粘贴到“SSO 登录 URL”****文本框中。
+   2. 根据下载的证书创建 **base-64 编码**文件。  
    
       >[!TIP]
       >有关详细信息，请参阅 [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)（如何将二进制证书转换为文本文件）。 
@@ -128,7 +128,7 @@ ms.lasthandoff: 02/17/2017
 >可使用其他任何 BambooHR 用户帐户创建工具或 BambooHR 提供的 API 预配 AAD 用户帐户。 
 > 
 
-## <a name="assig-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
 **若要将用户分配到 BambooHR，请执行以下步骤：**
@@ -141,6 +141,6 @@ ms.lasthandoff: 02/17/2017
    
    ![是](./media/active-directory-saas-bamboo-hr-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 

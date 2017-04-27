@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2017
+ms.date: 03/30/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 28c2ef4878305d5cdb37ab8c0802644b1f236337
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 754fad938fef321c07b95ddb5727ffdb2b0eaa2c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/07/2017
 
 如果配置了此功能，就无需在移动设备上的某些邮件和 Microsoft Office 应用程序中输入用户名和密码组合。 
 
-本主题面向 Office 365 企业版、商业版、教育版和 US Government 版计划中的租户用户，提供在 Android 设备上配置 CBA 时的要求和受支持方案。 
+本主题面向 Office 365 企业版、商业版、教育版和 US Government 版计划中的租户用户，提供在 iOS 设备上配置 CBA 时的要求和受支持方案。 
 
 此功能在 Office 365 US Government Defense 和 Federal 计划中以预览形式提供。
 

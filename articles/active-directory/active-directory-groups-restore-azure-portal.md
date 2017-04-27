@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/29/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: cc177695f73805940f6a0229c94e391bf3899f09
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 325d669f11891bf070d9bbb468af7427adda46d3
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -36,7 +36,8 @@ ms.lasthandoff: 03/30/2017
 
 
 ## <a name="how-to-view-deleted-office-365-groups-that-are-available-to-restore"></a>如何查看可还原的已删除 Office 365 组
-可以使用以下 cmdlet 查看已删除的组，确认尚未永久清除的、想要还原的一个或多个组。 这些 cmdlet 属于 [Azure Active Directory PowerShell V2 预览版模块](https://www.powershellgallery.com/packages/AzureADPreview)（下载链接）。 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/azuread/) 一文中介绍了此模块的详细信息。
+可以使用以下 cmdlet 查看已删除的组，确认尚未永久清除的、想要还原的一个或多个组。 这些 cmdlet 属于 [Azure Active Directory PowerShell V2 预览版模块](https://www.powershellgallery.com/packages/AzureADPreview)。 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/azuread/) 一文中介绍了此模块的详细信息。
+请注意，用于管理软删除和恢复的 cmdlet 位于公共预览版中，我们有时需要对预览版 cmdlet 进行重大更改。 因此，不建议在生产环境中使用这些 cmdlet。
 
 1.    运行以下 cmdlet，显示租户中所有已删除的但仍可还原的 Office 365 组。
   ```
@@ -80,3 +81,4 @@ ms.lasthandoff: 03/30/2017
 * [管理组的成员](active-directory-groups-members-azure-portal.md)
 * [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
 * [管理组中用户的动态规则](active-directory-groups-dynamic-membership-azure-portal.md)
+

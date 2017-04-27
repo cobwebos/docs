@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 04/05/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: caa4f001871beeb83cc0406bd2f89c5aa026cd97
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 3155990d977d8b0849c9e0be92db11ad6567cd6e
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -49,7 +49,7 @@ ms.lasthandoff: 12/08/2016
 | 响应 | 建议组织当前攻击和预防未来攻击的方式 |
 
 ## <a name="introductory-walkthrough"></a>介绍性演练
- 从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问安全中心。 [登录到门户](https://portal.azure.com)，选择“浏览”，然后滚动到“安全中心”选项，或选择之前固定到门户仪表板的“安全中心”磁贴。
+ 从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问安全中心。 [登录到门户](https://portal.azure.com)。 在主门户菜单下，滚动到“安全中心”选项，或选择之前固定到门户仪表板的“安全中心”磁贴。
 
 ![Azure 门户中的安全磁贴][1]
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 12/08/2016
 >
 >
 
-选择“预防策略”（参阅上文）打开“预防策略”边栏选项卡。 通过“显示建议”，可基于订阅内资源的安全要求来选择要监视和推荐的安全控件。
+选择“预防策略”（参阅上文）打开“预防策略”边栏选项卡。 通过“显示建议”，可基于订阅内资源的安全要求来选择要监视的安全控件和想要看到的建议。
 
 接下来，选择一个资源组查看其策略详细信息。
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 12/08/2016
 ### <a name="resource-health"></a>资源运行状况
 “**资源安全运行状况**”磁贴中会按资源类型（包括 VM、Web 应用程序和其他资源）显示环境的总体安全状况。   
 
-在“资源安全运行状况”磁贴上选择一种资源类型，以查看其详细信息（包括已发现的的潜在安全漏洞列表）。 （下面的示例中选择了“虚拟机”。）
+在“资源安全运行状况”磁贴上选择一种资源类型，以查看其详细信息（包括已发现的的潜在安全漏洞列表）。 （下面的示例中选择了“计算机”。）
 
 ![资源运行状况磁贴][6]
 

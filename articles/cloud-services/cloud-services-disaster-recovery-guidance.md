@@ -3,7 +3,7 @@ title: "发生影响 Azure 云服务的 Azure 服务中断时该怎么办 | Micr
 description: "了解发生影响 Azure 云服务的 Azure 服务中断时该怎么办。"
 services: cloud-services
 documentationcenter: 
-author: kmouss
+author: mmccrory
 manager: drewm
 editor: 
 ms.assetid: e52634ab-003d-4f1e-85fa-794f6cd12ce4
@@ -12,11 +12,12 @@ ms.workload: cloud-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2016
-ms.author: kmouss;aglick
+ms.date: 04/04/2017
+ms.author: mmccrory
 translationtype: Human Translation
-ms.sourcegitcommit: e7d3c82e235d691c4ab329be3b168dcccc19774f
-ms.openlocfilehash: 5db1864f5fb04b30a7b8ce59932e826fcef792f0
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: b20f846caa12866ce8815c7931a2c66346cd4085
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -34,25 +35,16 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 >
 >
 
-为帮助你处理这些罕见事件，我们提供以下 Azure 虚拟机 (VM) 指导，以应对 Azure VM 应用程序部署所在的整个区域发生服务中断的情况。
 
-## <a name="option-1-wait-for-recovery"></a>选项 1：等待恢复
-在此情况下，你不需要采取任何操作。 但你要知道，Azure 团队正在努力还原服务的可用性。 可在 [Azure 服务运行状况仪表板](https://azure.microsoft.com/status/)上查看当前服务状态。
+## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>选项 1：通过 Azure 流量管理器使用备份部署
+最可靠的灾难恢复解决方案涉及在不同区域维护应用程序的多个部署，然后使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)引导它们之间的流量。 Azure 流量管理器提供多个[路由方法](../traffic-manager/traffic-manager-routing-methods.md)，因此可选择使用主/备份模型管理部署或拆分它们之间的流量。
 
-> [!NOTE]
-> 如果客户尚未设置 Azure Site Recovery 或在其他区域中具有辅助部署，则这是最佳选择。
->
->
+![使用 Azure 流量管理器跨区域平衡 Azure 云服务](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
 
-想要立即访问部署的云服务的客户有以下选项可用。
+若要实现对区域丢失作出最快响应，配置流量管理器的[终结点监视](../traffic-manager/traffic-manager-monitoring.md)非常重要。
 
-> [!NOTE]
-> 注意，这些选项都有可能丢失部分数据。     
->
->
-
-## <a name="option-2-re-deploy-your-cloud-service-configuration-to-a-new-region"></a>选项 2：将云服务配置重新部署到新区域
-如果你具有原始代码，则可以仅仅将应用程序、关联配置和关联资源重新部署到新区域中新的云服务。  
+## <a name="option-2-deploy-your-application-to-a-new-region"></a>选项 2：将应用程序部署到新区域
+上一选项中所述的维持多个活动部署会持续产生额外成本。 如果恢复时间目标 (RTO) 足够灵活且你具有原始代码或已编译云服务包，可在另一区域中创建一个应用程序新实例，并更新 DNS 记录以指向新部署。
 
 有关如何创建和部署云服务应用程序的详细信息，请参阅[如何创建和部署云服务](cloud-services-how-to-create-deploy-portal.md)。
 
@@ -61,20 +53,11 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 * 有关 Azure 存储空间数据源，请参阅 [Azure 存储空间复制](../storage/storage-redundancy.md#read-access-geo-redundant-storage)以了解基于所选复制模型而可用于应用程序的选项。
 * 对于 SQL 数据库源，请阅读[概述：云业务连续性与使用 SQL 数据库进行数据库灾难恢复](../sql-database/sql-database-business-continuity.md)以了解基于所选复制模型而可用于应用程序的选项。
 
-## <a name="option-3-use-a-backup-deployment-through-azure-traffic-manager"></a>选项 3：通过 Azure 流量管理器使用备份部署
-此选项假设你已考虑使用区域灾难恢复设计应用程序解决方案。 如果你已具有在其他区域中运行且通过流量管理器通道连接的辅助云服务应用程序部署，则可以使用此选项。 在这种情况下，请检查辅助部署的运行状况。 如果它运行正常，则你可以通过 Azure 流量管理器将流量重定向到它。 借助此策略，可以利用 Azure 流量管理器中的流量路由方法和故障转移顺序配置。 有关详细信息，请参阅[什么是流量管理器？](../traffic-manager/traffic-manager-overview.md)。
 
-![使用 Azure 流量管理器跨区域平衡 Azure 云服务](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
+## <a name="option-3-wait-for-recovery"></a>选项 3：等待恢复
+这种情况下，你无需进行任何操作，但是在区域还原前服务不可用。 可在 [Azure 服务运行状况仪表板](https://azure.microsoft.com/status/)上查看当前服务状态。
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解如何实现灾难恢复和高可用性策略，请参阅 [Azure 应用程序的灾难恢复和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)。
 
 若要掌握有关云平台功能的详细技术知识，请参阅 [Azure 复原技术指南](../resiliency/resiliency-technical-guidance.md)。
-
-如果指示不清楚，或者如果希望 Microsoft 代你执行操作，请联系[客户支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

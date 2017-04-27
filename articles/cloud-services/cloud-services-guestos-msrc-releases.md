@@ -12,16 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/10/2017
+ms.date: 4/11/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: e579c7fd4547a88c6356c77a220b5f9e1a07e542
-ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 51b5c32eb73dc70b4019e60342db659959cc93bb
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 若要确定特定的更新是否适用于你使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
+
+## <a name="march-guest-os"></a>3 月来宾 OS
+| 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+| Rel 17-03 |  [4013429] |改进和修复 | 5.5 | 2017 年 3 月 14 日 |
+| Rel 17-03 |  [4012212] |2017 年 3 月 Windows 7 SP1 和 Windows Server 2008 R2 SP1 仅用于安全的质量更新 |2.60 |2017 年 3 月 14 日 |
+| Rel 17-03 |  [4012213] |2017 年 3 月 Windows 8.1 和 Windows Server 2012 R2 仅用于安全的质量更新 |4.40 |2017 年 3 月 14 日 |
+| Rel 17-03 |  [4012214] |2017 年 3 月 Windows Server 2012 仅用于安全的质量更新|3.47 |2017 年 3 月 14 日 |
+| Rel 17-03 |  [4012204] |Internet Explorer 的安全更新 |2.60, 3.47, 4.40, 5.5 |2017 年 3 月 14 日 |
+| 不适用 |  [4012864] |Northern Cypress、蒙古和俄罗斯萨拉托夫区域的 Windows DST 更改 |2.60, 3.47, 4.40 |2017 年 3 月 14 日 |
+| 不适用 |  [3212646] |2017 年 1 月 Windows 7 SP1 和 Windows Server 2008 R2 SP1 安全质量月度汇总更新 |2.60 |2017 年 3 月 14 日 |
+| 不适用 |  [3205409] |2016 年 12 月 Windows Server 2012 安全质量月度汇总更新 |3.47 |2017 年 3 月 14 日 |
+| 不适用 |  [3205401] |2016 年 12 月 Windows 8.1 和 Windows Server 2012 R2 安全质量月度汇总更新 |4.40 |2017 年 3 月 14 日 |
+| 不适用 |  [3211320] |Windows 10 版本 1607 和 Windows Server 2016 的服务堆栈更新：2017 年 1 月 24 日 |5.5 |2017 年 3 月 14 日 |
+
+
 
 ## <a name="january-guest-os"></a>1 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -33,14 +50,14 @@ ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
 | --- | --- | --- | --- | --- |
 | MS16-144 |[3204059] |Internet Explorer 的累积安全更新 |2.58、3.46、4.39 |2016 年 12 月 13 日 |
 | MS16-145 |[3204062] |Microsoft Edge 的累积安全更新 |5.4 |2016 年 12 月 13 日 |
-| MS16-146 |[3204066]   |Microsoft 图形组件的安全更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
-| MS16-147 |[3204063]   |Microsoft Uniscribe 的安全更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
-| MS16-149 |[3205655]   |Microsoft Windows 的安全更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
-| MS16-150 |[3205642]   |安全内核模式的安全更新 |5.4 |2016 年 12 月 13 日 |
-| MS16-151 |[3205651]   |内核模式驱动程序的安全更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
-| MS16-152 |[3199709]   |Windows 内核的安全更新 |5.4 |2016 年 12 月 13 日 |
+| MS16-146 |[3204066]    |Microsoft 图形组件的安全更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
+| MS16-147 |[3204063]    |Microsoft Uniscribe 的安全更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
+| MS16-149 |[3205655]    |Microsoft Windows 的安全更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
+| MS16-150 |[3205642]    |安全内核模式的安全更新 |5.4 |2016 年 12 月 13 日 |
+| MS16-151 |[3205651]    |内核模式驱动程序的安全更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
+| MS16-152 |[3199709]    |Windows 内核的安全更新 |5.4 |2016 年 12 月 13 日 |
 | MS16-153 |[3207328] |公用日志文件系统驱动程序的安全更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
-| MS16-155 |[3205640]   |.Net Framework 的安全更新 |5.4 |2016 年 12 月 13 日 |
+| MS16-155 |[3205640]    |.Net Framework 的安全更新 |5.4 |2016 年 12 月 13 日 |
 | 不适用 |[3197868] |2016 年 11 月 Windows 7 SP1 和 Windows Server 2008 R2 SP1 安全质量月度汇总更新 |2.58 |2016 年 12 月 13 日 |
 | 不适用 |[3197877] |2016 年 11 月 Windows Server 2012 安全质量月度汇总更新 |3.46 |2016 年 12 月 13 日 |
 | 不适用 |[3197874] |2016 年 11 月 Windows 8.1 和 Windows Server 2012 R2 安全质量月度汇总更新 |4.39 |2016 年 12 月 13 日 |
@@ -50,11 +67,11 @@ ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
 | --- | --- | --- | --- | --- |
 | MS16-129 |[3199057] |Microsoft Edge 的累积安全更新 |5.3 |2016 年 11 月 8 日 |
 | MS16-130 |[3199172] |Microsoft Windows 的安全更新 |5.3、4.38、3.45、2.57 |2016 年 11 月 8 日 |
-| MS16-131 |[3199151]   |Microsoft Video Control 的安全更新 |5.3、4.38、3.45、2.57 |2016 年 11 月 8 日 |
+| MS16-131 |[3199151]    |Microsoft Video Control 的安全更新 |5.3、4.38、3.45、2.57 |2016 年 11 月 8 日 |
 | MS16-132 |[3199120] |Microsoft 组件的安全更新 |5.3、4.38、3.45、2.57 |2016 年 11 月 8 日 |
 | MS16-134 |[3193706] |公用日志文件系统驱动程序的安全更新 |5.3、4.38、3.45、2.57 |2016 年 11 月 8 日 |
 | MS16-135 |[3199135] |内核模式驱动程序的安全更新 |5.3、4.38、3.45、2.57 |2016 年 11 月 8 日 |
-| MS16-137 |[3199173]   |Windows 身份验证方法的安全更新程序 |5.3、4.38、3.45、2.57 |2016 年 11 月 8 日 |
+| MS16-137 |[3199173]    |Windows 身份验证方法的安全更新程序 |5.3、4.38、3.45、2.57 |2016 年 11 月 8 日 |
 | MS16-138 |[3199647] |Microsoft 虚拟硬盘驱动器的安全更新 |5.3、4.38、3.45 |2016 年 11 月 8 日 |
 | MS16-139 |[3199720] |Windows 内核的安全更新 |2.57 |2016 年 11 月 8 日 |
 | MS16-140 |[3193479] |引导管理器的安全更新 |5.3、4.38、3.45 |2016 年 11 月 8 日 |
@@ -404,6 +421,18 @@ ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
 | 不适用 |[2999802] |在 Windows 中打印时，虚线变成实线 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 不适用 |[2896881] |在 Windows 中登录期间使用 AddPrinterConnection VBScript 命令映射用户的打印机时，登录时间过长 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 
+[4013429]: http://support.microsoft.com/kb/4013429 
+[4012212]: http://support.microsoft.com/kb/4012212 
+[4012213]: http://support.microsoft.com/kb/4012213 
+[4012214]: http://support.microsoft.com/kb/4012214 
+[4012204]: http://support.microsoft.com/kb/4012204 
+[4012864]: http://support.microsoft.com/kb/4012864 
+[3212646]: http://support.microsoft.com/kb/3212646 
+[3205409]: http://support.microsoft.com/kb/3205409 
+[3205401]: http://support.microsoft.com/kb/3205401
+[3211320]: http://support.microsoft.com/kb/3211320
+
+
 [3216771]: https://technet.microsoft.com/library/security/MS17-004
 
 [3204059]: http://support.microsoft.com/kb/3204059 
@@ -718,9 +747,4 @@ ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-explanation
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

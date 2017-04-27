@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: jahogg
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: a5193cb222fab1f3ed3e700d45c4a51676707d5a
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 8d2aa0c8ff9e39faf47c6c3339cd8da2610d2324
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -452,7 +452,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 度量值显示其中一个存储服务的 **PercentTimeoutError** 增加。 同时，客户端将收到存储操作发出的大量“500 操作超时”HTTP 状态消息。
 
 > [!NOTE]
-> 当存储服务通过将分区移到新服务器来对请求进行负载平衡时，你可能会临时地看到超时错误。
+> 当存储服务通过将分区移到新服务器来对请求进行负载均衡时，你可能会临时地看到超时错误。
 > 
 > 
 
@@ -460,7 +460,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 服务器超时是由于服务器上的错误导致的。 客户端超时之所以发生是因为服务器上的操作已超出客户端指定的超时值；例如，使用存储客户端库的客户端可以使用 **QueueRequestOptions** 类的 **ServerTimeout** 属性为操作设置超时值。
 
-服务器超时指示存储服务存在需要进一步调查的问题。 你可以使用度量值来了解是否已达到该服务的可伸缩性限制，并确定可能会导致此问题的流量峰值。 如果问题是间歇性的，则可能是由于服务中的负载平衡活动导致的。 如果问题是持久性的并且不是由于应用程序达到服务的可伸缩性限制导致的，则你应发送支持问题。 对于客户端超时，你必须确定在客户端中超时是否设为适当的值，可更改客户端中设置的超时值，或者调查如何改善存储服务中的操作性能，例如通过优化表查询或缩小消息的大小。
+服务器超时指示存储服务存在需要进一步调查的问题。 你可以使用度量值来了解是否已达到该服务的可伸缩性限制，并确定可能会导致此问题的流量峰值。 如果问题是间歇性的，则可能是由于服务中的负载均衡活动导致的。 如果问题是持久性的并且不是由于应用程序达到服务的可伸缩性限制导致的，则你应发送支持问题。 对于客户端超时，你必须确定在客户端中超时是否设为适当的值，可更改客户端中设置的超时值，或者调查如何改善存储服务中的操作性能，例如通过优化表查询或缩小消息的大小。
 
 ### <a name="metrics-show-an-increase-in-PercentNetworkError"></a>度量值显示 PercentNetworkError 增加
 度量值显示其中一个存储服务的 **PercentNetworkError** 增加。 **PercentNetworkError** 度量值是以下度量值的聚合：**NetworkError**、**AnonymousNetworkError** 和 **SASNetworkError**。 如果存储服务在客户端发出存储请求时检测到网络错误，则会出现这些错误。

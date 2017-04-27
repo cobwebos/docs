@@ -5,20 +5,20 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: pblachar, librown
+editor: librown
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 03/17/2017
 ms.author: kgremban
+ms.custom: end-user
 translationtype: Human Translation
-ms.sourcegitcommit: 7c91ae265dd86e8d7f206c1ada021c40fd8c4479
-ms.openlocfilehash: cb3b7cfefe22176e17064ad6cbb9df4da8c57c0f
-ms.lasthandoff: 03/01/2017
-
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 731275c72422a622e1d49f7d362447ef3361338b
+ms.lasthandoff: 04/12/2017
 
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator 应用常见问题解答
@@ -38,6 +38,18 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 代码每隔 30 秒更改一次的原因是，使你永远不会使用同一代码两次。 它不像你应记住的密码。 其思想是，只有有权访问你的手机的人员知道你的验证码。
 
 这些代码不需要 Internet 或数据，因此你不必担心使用电话服务进行登录，也不必担心应用将用完你的流量套餐。 关闭该应用后，该应用不会在后台继续运行，因此不会耗尽你的电池。 可以关闭该应用，并在下次登录之前忽略它。  
+
+### <a name="i-only-get-notifications-when-i-have-the-app-open-if-the-app-isnt-open-i-dont-get-any-notifications"></a>仅当应用处于打开状态时才会收到通知。 如果应用未打开，不会收到任何通知。
+
+如果会收到通知，但即使打开振铃，通知也不发出声音或不振动，请先检查应用设置。 让应用对通知使用声音或振动。
+
+如果完全不会收到通知，请检查是否存在以下情况：
+
+- 手机是否进入“免打扰”或“静音”模式？ 在这些模式下，应用可能不会发送通知。
+- 是否能从其他应用接收通知？ 如果不能，可能是手机出现网络连接问题或出现 Android/Apple 通知频道问题。 第一种问题可通过手机设置解决，但对于第二个问题，可能需要联系服务提供商获取帮助。
+- 是否应用上的某些帐户可以收到通知而其他帐户不能？ 如果是这样的话，从应用中删除有问题的帐户，然后重新添加该帐户以重新启用推送通知。 
+
+如果已实施这些故障排除建议，但问题仍然存在，请向我们发送诊断日志（转到应用设置，然后选择“帮助和反馈”以及“发送日志”），再转到 [Microsoft 验证器应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)，告诉我们所遇到的问题以及到目前为止已尝试过的步骤。 
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>我已使用 Microsoft Authenticator 应用程序生成验证代码。 如何切换到一键式推送通知？
 通过推送通知批准登录仅适用于个人 Microsoft 帐户或工作和学校 Microsoft 帐户，并不适用于 Google 或 Facebook 等第三方帐户。 如果你拥有工作或学校 Microsoft 帐户，你的组织可以选择禁用此选项。
@@ -83,6 +95,10 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 ### <a name="why-does-the-microsoft-authenticator-app-allow-you-to-approve-a-request-without-unlocking-the-device"></a>为什么 Microsoft Authenticator 应用允许在不解锁设备的情况下批准请求？
 
 这是设计使然。 双重验证要求提供两项证明：一件你知道的事和一件你拥有的物品。 你知道的事是密码。 你拥有的物品是你的手机（已使用 Microsoft Authenticator 应用设置，并已注册为 MFA 证明）。因此，拥有手机和批准请求符合第二个身份验证因素的标准。 
+
+### <a name="what-does-the-lock-icon-in-the-account-list-mean"></a>帐户列表中的锁状图标是什么意思？
+
+锁状图标指示设备已在 Azure AD 中注册并注册到帐户下。 在 Microsoft Intune 注册过程中执行适用于 iOS 的设备注册。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2017
+ms.date: 04/04/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: b2b969500d20d0c840f201ed2cf13a6f2ab38ee5
-ms.openlocfilehash: 719f1ea6a6f51d4a787f0465a4bbadb1a6057a8b
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 26ea8dcdeb8be3142d5e8bbd477f6d4ab6c26cdd
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>通过 Marathon REST API 管理 DC/OS 容器
-DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，以及底层硬件的抽象化。 DC/OS 上方是一种管理计划和执行计算工作负荷的框架。 尽管框架可用于许多常见的工作负荷，本文档介绍了如何通过使用 Marathon 创建和缩放容器部署。 
+DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，以及底层硬件的抽象化。 DC/OS 上方是一种管理计划和执行计算工作负荷的框架。 尽管框架可用于许多常见的工作负荷，本文档逐步讲解如何使用 Marathon REST API 创建和缩放容器部署。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +39,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 有关 [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) 和 [Chronos API](https://mesos.github.io/chronos/docs/api.html) 的详细信息，请参阅 Mesosphere 文档；有关 [Mesos 计划程序 API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) 的详细信息，请参阅 Apache 文档。
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>从 DC/OS 和 Marathon 收集信息
-在将容器部署到 DC/OS 群集之前，收集一些有关 DC/OS 的信息，例如 DC/OS 代理的名称和当前状态。 为此，请查询 DC/OS REST API 的 `master/slaves` 终结点。 如果一切正常，则查询会返回 DC/OS 代理列表和每个代理的数个属性。
+在将容器部署到 DC/OS 群集之前，收集一些有关 DC/OS 的信息，例如 DC/OS 代理的名称和状态。 为此，请查询 DC/OS REST API 的 `master/slaves` 终结点。 如果一切正常，则查询会返回 DC/OS 代理列表和每个代理的数个属性。
 
 ```bash
 curl http://localhost/mesos/master/slaves
@@ -54,24 +54,21 @@ curl localhost/marathon/v2/apps
 ```
 
 ## <a name="deploy-a-docker-formatted-container"></a>部署 Docker 格式容器
-使用描述了预期部署的 JSON 文件通过 Marathon 部署 Docker 格式容器。 以下示例部署 Nginx 容器，将 DC/OS 代理的端口 80 绑定到容器的端口 80。 另请注意，`acceptedResourceRoles` 属性设置为 `slave_public`。 这会在面向公众的代理规模集中将容器部署到代理。
+使用描述预期部署的 JSON 文件通过 Marathon REST API 部署 Docker 格式容器。 以下示例将 Nginx 容器部署到群集中的专用代理。 
 
 ```json
 {
   "id": "nginx",
   "cpus": 0.1,
-  "mem": 16.0,
+  "mem": 32.0,
   "instances": 1,
-    "acceptedResourceRoles": [
-    "slave_public"
-  ],
   "container": {
     "type": "DOCKER",
     "docker": {
       "image": "nginx",
       "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 80, "hostPort": 80, "servicePort": 9000, "protocol": "tcp" }
+        { "containerPort": 80, "servicePort": 9000, "protocol": "tcp" }
       ]
     }
   }
@@ -96,7 +93,29 @@ curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-typ
 curl localhost/marathon/v2/apps
 ```
 
-可在 `http://<containerServiceName>agents.<region>.cloudapp.azure.com` 上通过向代理池的完全限定域名发出 HTTP 请求来验证 Nginx 是否正在运行。
+## <a name="reach-the-container"></a>访问容器
+
+可以确定 Nginx 运行于群集中其中一个专用代理的容器中。 若要查找运行容器的的主机和端口，请查询正在运行的任务的 Marathon： 
+
+```bash
+curl localhost/marathon/v2/tasks
+```
+
+在输出中查找 `host` 的值（类似于 `10.32.0.x` 的 IP 地址）和 `ports` 的值。
+
+
+现在对群集的管理 FQDN 建立 SSH 终端连接，而不是隧道连接。 连接后，进行以下请求，从而替换 `host` 和 `ports` 的正确值：
+
+```bash
+curl http://host:ports
+```
+
+Nginx 服务器的输出与下面类似：
+
+![容器的 Nginx](./media/container-service-mesos-marathon-rest/nginx.png)
+
+
+
 
 ## <a name="scale-your-containers"></a>缩放容器
 可以使用 Marathon API 来扩大或缩小应用程序部署。 在上一示例中，为应用程序部署了一个实例。 让我们进行扩展，扩大为三个实例。 为此，请使用以下 JSON 文本创建 JSON 文件，并将其存储在可访问的位置。
@@ -105,7 +124,7 @@ curl localhost/marathon/v2/apps
 { "instances": 3 }
 ```
 
-运行以下命令来扩大应用程序。
+从隧道连接运行以下命令来扩大应用程序。
 
 > [!NOTE]
 > URI 为 http://localhost/marathon/v2/apps/，其后接要缩放的应用程序 ID。 如果使用了此处提供的 Nginx 示例，则 URI 将为 http://localhost/marathon/v2/apps/nginx。
@@ -116,7 +135,7 @@ curl localhost/marathon/v2/apps
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
-最后，查询应用程序的 Marathon 终结点。 此时可看到有&3; 个 Nginx 容器。
+最后，查询应用程序的 Marathon 终结点。 此时可看到有 3 个 Nginx 容器。
 
 ```bash
 curl localhost/marathon/v2/apps
@@ -137,7 +156,7 @@ Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 {
   "id": "nginx",
   "cpus": 0.1,
-  "mem": 16.0,
+  "mem": 32.0,
   "instances": 1,
   "container": {
     "type": "DOCKER",
@@ -145,14 +164,14 @@ Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
       "image": "nginx",
       "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 80, "hostPort": 80, "servicePort": 9000, "protocol": "tcp" }
+        { "containerPort": 80, "servicePort": 9000, "protocol": "tcp" }
       ]
     }
   }
 }
 ```
 
-若要部署 Docker 格式的容器，请将 JSON 文件存储在可访问的位置。 接下来，要部署容器，请运行以下命令。 指定 JSON 文件的名称（此示例中为 `marathon.json`）。
+若要部署 Docker 格式的容器，请将 JSON 文件存储在可访问的位置。 接下来，要部署容器，请运行以下命令。 指定 JSON 文件的路径（此示例中为 `marathon.json`）。
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'

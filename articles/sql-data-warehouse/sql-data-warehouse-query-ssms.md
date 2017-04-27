@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 77474214c6fafe7f591030d30f6a46c66fbc5c09
-ms.openlocfilehash: 30ac3558534e96b63d78f9c66d42d11b7c1a3c75
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3cf78b59dc2dd010fdf4f480b09b3f80def1e62d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,9 +37,9 @@ ms.openlocfilehash: 30ac3558534e96b63d78f9c66d42d11b7c1a3c75
 ## <a name="prerequisites"></a>先决条件
 要使用本教程，你需要：
 
-* 现有 SQL 数据仓库。 若要创建这样一个数据仓库，请参阅[创建 SQL 数据仓库][创建 SQL 数据仓库]。
-* 安装了 SQL Server Management Studio (SSMS)。 如果尚未[安装 SSMS][安装 SSMS]，请免费安装。
-* 完全限定的 SQL Server 名称。 若要查找此名称，请参阅[连接到 SQL 数据仓库][连接到 SQL 数据仓库]。
+* 现有 SQL 数据仓库。 若要创建 SQL 数据仓库，请参阅 [创建 SQL 数据仓库][Create a SQL Data Warehouse]。
+* 安装了 SQL Server Management Studio (SSMS)。 如果尚未[安装 SSMS][Install SSMS]，可免费安装。
+* 完全限定的 SQL Server 名称。 若要查找此名称，请参阅 [连接到 SQL 数据仓库][Connect to SQL Data Warehouse]。
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1.连接到 SQL 数据仓库
 1. 打开 SSMS。
@@ -76,19 +78,19 @@ ms.openlocfilehash: 30ac3558534e96b63d78f9c66d42d11b7c1a3c75
     ![查询结果][6]
 
 ## <a name="next-steps"></a>后续步骤
-既然你可以执行连接和查询，接下来请尝试[使用 PowerBI 可视化数据][使用 PowerBI 可视化数据]。
+既然你可以执行连接和查询，接下来请尝试 [使用 PowerBI 直观地显示数据][visualizing the data with PowerBI]。
 
-若要为 Azure Active Directory 配置环境，请参阅 [SQL 数据仓库身份验证][SQL 数据仓库身份验证]。
+若要为 Azure Active Directory 身份验证配置环境，请参阅[向 SQL 数据仓库进行身份验证][Authenticate to SQL Data Warehouse]。
 
 <!--Arcticles-->
-[连接到 SQL 数据仓库]: sql-data-warehouse-connect-overview.md
-[创建 SQL 数据仓库]: sql-data-warehouse-get-started-provision.md
-[SQL 数据仓库身份验证]: sql-data-warehouse-authentication.md
-[使用 PowerBI 可视化数据]: sql-data-warehouse-get-started-visualize-with-power-bi.md 
+[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
+[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md 
 
 <!--Other-->
-[Azure 门户]: https://portal.azure.com
-[安装 SSMS]: https://msdn.microsoft.com/en-US/library/hh213248.aspx
+[Azure portal]: https://portal.azure.com
+[Install SSMS]: https://msdn.microsoft.com/en-US/library/hh213248.aspx
 
 
 <!--Image references-->
@@ -99,9 +101,4 @@ ms.openlocfilehash: 30ac3558534e96b63d78f9c66d42d11b7c1a3c75
 [4]: media/sql-data-warehouse-query-ssms/new-query.png
 [5]: media/sql-data-warehouse-query-ssms/execute-query.png
 [6]: media/sql-data-warehouse-query-ssms/results.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

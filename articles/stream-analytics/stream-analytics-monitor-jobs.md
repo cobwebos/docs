@@ -13,19 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
+ms.date: 04/04/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 37797743df0e2ce029b65f267a7cea5c8d793773
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: dc19bec960edff15feffc41bee1bbc63eeff5c6d
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器
- 本文说明如何为流分析作业启用监视功能。 通过 REST API、Azure SDK 或 Powershell 创建的流分析作业并不默认启用监视功能。  你可以在 Azure 门户中手动启用此功能，只需导航到作业的“监视”页并单击“启用”按钮即可；你也可以按本文所述步骤自动化此过程。 流分析作业的监视数据将显示在 Azure 门户的“监视”选项卡中。
-
-![作业监视器作业选项卡](./media/stream-analytics-monitor-jobs/stream-analytics-monitor-jobs-tab.png)
+ 本文说明如何为流分析作业启用监视功能。 通过 REST API、Azure SDK 或 Powershell 创建的流分析作业并不默认启用监视功能。  可以在 Azure 门户中手动启用此功能，只需导航到作业的“监视”页并单击“启用”按钮即可；也可以按本文所述步骤自动化此过程。 流分析作业的监视数据将显示在 Azure 门户的“指标”区域。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，你必须具有：
@@ -34,7 +32,7 @@ ms.lasthandoff: 03/06/2017
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 * 需要启用监视功能的现有流分析作业。
 
-## <a name="setup-a-project"></a>设置项目
+## <a name="create-a-project"></a>创建一个项目
 1. 创建 Visual Studio C# .Net 控制台应用程序。
 2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
    
@@ -142,7 +140,7 @@ ms.lasthandoff: 03/06/2017
 以下代码将为**现有**流分析作业启用监视功能。 代码的第一部分针对流分析服务执行 GET 请求，目的是检索特定流分析作业的信息。 它使用“Id”属性（从 GET 请求检索而得）作为代码第二部分中 Put 方法的参数，目的是将 PUT 请求发送到 Insights 服务以启用流分析作业的监视功能。
 
 > [!WARNING]
-> 如果你此前为其他流分析作业启用了监视功能，不管是通过 Azure 门户进行的还是通过以下代码以编程方式完成的，**我们都建议你在提供存储帐户名称时提供你此前在启用监视功能时所使用的那个相同的存储帐户名称。**
+> 如果此前为其他流分析作业启用了监视功能，不管是通过 Azure 门户进行还是通过以下代码以编程方式完成，**我们都建议你在提供存储帐户名称时提供此前在启用监视功能时使用的相同存储帐户名称。**
 > 
 > 存储帐户与你创建流分析作业时所在的区域相关联，并不特定于作业本身。
 > 

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 7018320e601c1e8762e1c8fc409813a113a35044
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 20f60ccd9108a7473705c2368f28d3152d0dd614
+ms.lasthandoff: 04/07/2017
 
 ---
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 03/06/2017
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. 接下来，需要将 Logstash 配置为读取 eve.json 文件的输出。 使用以下命令创建 logstash.conf 文件：
+1. 接下来，需要配置 Logstash，以访问和分析流日志。 使用以下命令创建 logstash.conf 文件：
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
@@ -209,27 +209,27 @@ sudo /etc/init.d/logstash start
 
 1. 按一段时间的决策/方向显示的流 - 时间系列图，显示一段时间内流的数目。 可以编辑这些可视化效果的时间单位和跨度。 “按决策显示的流”显示所做的允许或拒绝决策所占的比例，而“按方向显示的流”则显示入站和出站流量的比例。 用户可以利用这些可视化效果检查一段时间内的流量趋势，查看是否存在峰值或异常模式。
 
-  ![图&2;][2]
+  ![图 2][2]
 
 1. 按目标端口/源端口显示的流 - 饼图，显示流向各自端口的流的明细。 可以通过此视图查看最常用的端口。 如果单击饼图中的特定端口，仪表板的其余部分就会对流进行筛选，仅保留该端口的流。
 
-  ![图&3;][3]
+  ![图 3][3]
 
 1. 流的数目和最早的日志时间 - 此指标显示记录的流的数目，以及捕获的最早日志的日期。
 
-  ![图&4;][4]
+  ![图 4][4]
 
 1. 按 NSG 和规则显示的流 - 条形图，显示每个 NSG 中流的分布情况，以及每个 NSG 中规则的分布情况。 可以通过此图了解产生最多流量的 NSG 和规则。
 
-  ![图&5;][5]
+  ![图 5][5]
 
 1. 排名前 10 的源/目标 IP - 条形图，显示排名前 10 的源 IP 和目标 IP。 可以调整这些图表，增加或减少排名靠前的 IP 的显示数目。 可以通过此图了解最常出现的 IP，以及针对每个 IP 所做的流量决策（允许或拒绝）。
 
-  ![图&6;][6]
+  ![图 6][6]
 
 1. 流元组 - 此表显示包含在每个流元组中的信息及其相应的 NSG 和规则。
 
-  ![图&7;][7]
+  ![图 7][7]
 
 用户可以使用仪表板顶部的查询栏，根据流的任何参数（例如订阅 ID、资源组、规则或者任何其他感兴趣的变量）对仪表板的内容进行筛选。 有关 Kibana 的查询和筛选器的详细信息，请参阅[正式文档](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)
 

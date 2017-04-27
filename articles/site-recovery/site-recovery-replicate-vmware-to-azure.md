@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 2/17/2017
 ms.author: asgang
 translationtype: Human Translation
-ms.sourcegitcommit: 54cf67bf630a9de30d4ccafdb09a3f8986c04145
-ms.openlocfilehash: 4415af41cfaf7230f398016e37b8a8cde453fa54
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 06ac75a40ed1dc97046836388bb7938dabd2b9ac
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -74,6 +74,14 @@ ms.lasthandoff: 02/22/2017
 10. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。 默认情况下会复制所有磁盘。 单击“所有磁盘”并清除不想要复制的所有磁盘。 。 可以稍后再设置其他属性。
 
     ![启用复制](./media/site-recovery-vmware-to-azure/enable-replication6.png)
+
+
+> [!NOTE]
+> 默认情况下将复制计算机上的所有磁盘。 可以[从复制中排除磁盘](site-recovery-exclude-disk.md)。 例如，你可能不想要复制包含临时数据，或者每当重新启动计算机或应用程序时刷新的数据（例如 pagefile.sys 或 SQL Server tempdb）的磁盘。
+>
+
+
+
 11. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。 可以在“设置” > “复制策略”> 策略名称 >“编辑设置”中修改复制策略设置。 应用到策略的更改将应用于复制计算机和新计算机。
 12. 如果要将计算机集合到复制组，请启用“多 VM 一致性”并指定组的名称。 。 请注意：
 
@@ -94,7 +102,26 @@ ms.lasthandoff: 02/22/2017
 1. 单击“设置” > “复制的项”，然后选择计算机。 “概要”边栏选项卡显示有关计算机设置和状态的信息。
 2. 在“属性”中，可以查看 VM 的复制和故障转移信息。
 3. 在“计算和网络” > “计算属性”中，可以指定 Azure VM 名称和目标大小。 根据需要修改名称，使其符合 Azure 要求。
-   你还可以查看和添加目标网络、子网的相关信息，以及要分配到 Azure VM 的 IP 地址。 注意以下事项：
+![启用复制](./media/site-recovery-vmware-to-azure/VMProperties_AVSET.png)
+
+*资源组*
+   
+  * 可以选择计算机会在故障转移后成为其中一部分的[资源组](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)。 在故障转移前，可以随时更改此设置。 
+  
+> [!NOTE]
+> 在故障转移后，如果将计算机迁移到其他资源组，则计算机的保护设置会中断。
+ 
+*可用性集*
+
+如果需要计算机在故障转移后成为某个[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)的一部分，可以选择一个。 选择可用性集时，请记住：
+
+* 仅会列出属于指定资源组的可用性集  
+* 具有不同虚拟网络的计算机不能属于同一可用性集 
+* 仅大小相同的虚拟机可以属于同一可用性集 
+
+*网络属性*
+
+你还可以查看和添加目标网络、子网的相关信息，以及要分配到 Azure VM 的 IP 地址。 注意以下事项：
 
    * 可以设置目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移将不会正常工作。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
    * 网络适配器数目根据你为目标虚拟机指定的大小来确定，如下所述：
@@ -116,5 +143,7 @@ ms.lasthandoff: 02/22/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-保护完成后，可以尝试测试故障转移，检查应用程序是否出现在 Azure 中。
+保护完成后，可以尝试[故障转移](site-recovery-failover.md)，检查应用程序是否出现在 Azure 中。
+
+如果想要禁用保护，请查看如何[清理注册和保护设置](site-recovery-manage-registration-and-protection.md)
 

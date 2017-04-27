@@ -12,19 +12,23 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/24/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: a0f47a19f7ef1832e64e9a0bdc4bda3434f77aa2
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 4d2ba8d3a5efad1be3395aae732874e7a770f64b
+ms.lasthandoff: 04/06/2017
 
 
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
 与其他 Azure 服务一样，与 Batch 服务关联的某些资源存在限制。 其中的许多限制是 Azure 在订阅或帐户级别应用的默认配额。 本文将描述这些默认值，以及如何请求提高配额。
+
+设计和增加 Batch 工作负荷时，请记住这些配额。 例如，如果池没有达到指定的计算节点目标数量，那么可能是已达到 Batch 帐户的核心配额限制。
+
+可以在单个批处理帐户中运行多个批处理工作负荷，或者在相同订阅的不同 Azure 区域的批处理帐户之间分散工作负荷。
 
 如果你打算在 Batch 中运行生产工作负荷，可能需要将一个或多个配额提高到默认值以上。 如果需要提高配额，可以免费提出在线[客户支持请求](#increase-a-quota)。
 
@@ -56,7 +60,7 @@ ms.lasthandoff: 02/28/2017
     ![Batch 帐户配额][account_quotas]
 
 ## <a name="increase-a-quota"></a>提高配额
-执行以下步骤，使用 [Azure 门户][portal]来请求提高配额。
+执行以下这些步骤，使用 [Azure 门户][portal]来请求提高配额。
 
 1. 在门户仪表板上选择“帮助 + 支持”磁贴，或单击门户右上角的问号 (**?**)。
 2. 选择“新建支持请求” > “基本”。

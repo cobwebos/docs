@@ -12,12 +12,12 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 03/29/2017
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 5edf2f4c7d9d2e8e8ceb2e8de9ae7cef4c9fd02e
-ms.openlocfilehash: 446e7361b5817ce888105fbb78f329affa7de6e6
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 458984f75eed3a7a3102c288798b55664afaa37d
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,12 +28,12 @@ ms.lasthandoff: 02/06/2017
 开始之前，必须：
 
 * [设置开发环境][lnk-setupdevbox]，以便在 Windows 上使用 SDK。
-* 若要在 Azure 订阅中[创建 IoT 中心][lnk-create-hub]，需要使用中心的名称来完成本演练。 如果你没有帐户，只需几分钟就能创建一个[免费帐户][lnk-free-trial]。
+* 若要在 Azure 订阅中[创建 IoT 中心][lnk-create-hub]，需要使用中心的名称来完成本演练。 如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
 * 将两个设备添加到 IoT 中心，并记下其 ID 和设备密钥。 可使用[设备资源管理器][lnk-device-explorer]或 [iothub-explorer][lnk-iothub-explorer] 工具将设备添加到在上一步中创建的 IoT 中心，并检索其密钥。
 
 生成示例：
 
-1. 打开 **VS2015 开发人员命令提示**命令提示符。
+1. 打开“VS 2015 开发人员命令提示”或“VS 2017 开发人员命令提示”命令提示符。
 2. 浏览到本地 **azure-iot-gateway-sdk** 存储库副本中的根文件夹。
 3. 运行 **tools\\build.cmd** 脚本。 此脚本创建 Visual Studio 解决方案文件并生成解决方案。 你可以在本地 **azure-iot-gateway-sdk** 存储库副本的 **build** 文件夹中找到 Visual Studio 解决方案。 可为脚本提供其他参数，用于生成和运行单元测试和端到端测试。 这些参数分别是 **--run-unittests** 和 **--run-e2e-tests**。
 
@@ -41,11 +41,11 @@ ms.lasthandoff: 02/06/2017
 
 在文本编辑器中，打开本地 **azure-iot-gateway-sdk** 存储库副本中的文件 **samples\\simulated_device_cloud_upload\\src\\simulated_device_cloud_upload_win.json**。 此文件配置示例网关中的模块：
 
-* **IoTHub** 模块连接到 IoT 中心。 必须配置该模块才能将数据发送到 IoT 中心。 具体而言，将 **IoTHubName** 值设置为 IoT 中心的名称，将 **IoTHubSuffix** 值设置为 **azure-devices.net**。 将**传输**值设置为“HTTP”、“AMQP”或“MQTT”之一。 请注意，目前只有“HTTP”会针对所有设备消息共享一个 TCP 连接。 如果将值设置为“AMQP”或“MQTT”，则网关将为每个设备维护与 IoT 中心的单独 TCP 连接。
+* **IoTHub** 模块连接到 IoT 中心。 将该模块配置为将数据发送到 IoT 中心。 具体而言，将 **IoTHubName** 值设置为 IoT 中心的名称，将 **IoTHubSuffix** 值设置为 **azure-devices.net**。 将“传输”值设置为“HTTP”、“AMQP”或“MQTT”其中的一个。 目前只有“HTTP”会针对所有设备消息共享一个 TCP 连接。 如果将值设置为“AMQP”或“MQTT”，则网关将为每个设备维护与 IoT 中心的单独 TCP 连接。
 * **mapping** 模块将模拟设备的 MAC 地址映射到 IoT 中心设备 ID。 确保 **deviceId** 值与添加到 IoT 中心的两台设备的 ID 一致，确保 **deviceKey** 值包含两台设备的密钥。
-* **BLE1** 和 **BLE2** 模块是模拟设备。 注意其 MAC 地址是否与 **mapping** 模块中的地址一致。
+* **BLE1** 和 **BLE2** 模块是模拟设备。 注意模块 MAC 地址如何与“映射”模块中的地址匹配。
 * **Logger** 模块将网关活动记录到一个文件中。
-* 如下所示的 **module path** 值假设已将 IoT 网关 SDK 存储库克隆到 **C:** 驱动器的根目录。 如果将该存储库下载到其他位置，则需要相应地调整 **module path** 值。
+* 以下示例中显示的 **module path** 值假定已将 IoT 网关 SDK 存储库克隆到 **C:** 驱动器的根目录。 如果将该存储库下载到其他位置，则需要相应地调整 **module path** 值。
 * JSON 文件底部的 **links** 数组将 **BLE1** 和 **BLE2** 模块连接到 **mapping** 模块，并将 **mapping** 模块连接到 **IoTHub** 模块。 它还确保 **Logger** 模块记录所有消息。
 
 ```

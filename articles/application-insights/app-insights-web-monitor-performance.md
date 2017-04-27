@@ -14,21 +14,22 @@ ms.topic: article
 ms.date: 11/25/2015
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
-ms.openlocfilehash: 7dd1289453fe146b446322570fcb1c0df74b4db2
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: cbdef43381deac957c0e48b7043273c43b032935
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
 
-确保应用程序性能良好，并快速查明任何故障。 [Application Insights][启动]将告知任何性能问题和异常，并帮助查找并诊断根本原因。
+确保应用程序性能良好，并快速查明任何故障。 [Application Insights][start]将告知任何性能问题和异常，并帮助查找并诊断根本原因。
 
 Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 服务。 可以在本地、在虚拟机上或作为 Microsoft Azure 网站托管它们。 
 
 在客户端，Application Insights 可从网页和各种设备（包括 iOS、Android 和 Windows 应用商店应用）获取遥测。
 
-## <a name="a-namesetupaset-up-performance-monitoring"></a><a name="setup"></a>设置性能监视
+## <a name="setup"></a>设置性能监视
 如果尚未将 Application Insights 添加到项目（即，如果它没有 ApplicationInsights.config），则选择以下方式之一开始操作：
 
 * [ASP.NET Web 应用](app-insights-asp-net.md)
@@ -37,7 +38,7 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 * [J2EE Web 应用](app-insights-java-get-started.md)
   * [添加依赖项监视](app-insights-java-agent.md)
 
-## <a name="a-nameviewaexploring-performance-metrics"></a><a name="view"></a>探索性能指标
+## <a name="view"></a>探索性能指标
 在 [Azure 门户](https://portal.azure.com)中，浏览到为应用程序设置的 Application Insights 资源。 “概述”边栏选项卡显示基本性能数据：
 
 单击任意图表查看更多详细信息，并查看更长时间段的结果。 例如，单击“请求”磁贴，然后选择时间范围：
@@ -53,7 +54,7 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 > 
 > 
 
-## <a name="a-namemetricsawhat-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>这一切意味着什么？ 性能磁贴和报表
+## <a name="metrics"></a>这一切意味着什么？ 性能磁贴和报表
 有多种性能指标可供获取。 让我们先从默认在应用程序边栏选项卡上显示的指标开始。
 
 ### <a name="requests"></a>请求
@@ -106,40 +107,33 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 *我看不到“添加警报”按钮。* - 这是否是你拥有只读访问权限的组帐户？ 请咨询帐户管理员。
 
-## <a name="a-namediagnosisadiagnosing-issues"></a><a name="diagnosis"></a>诊断问题
+## <a name="diagnosis"></a>诊断问题
 下面是查找和诊断性能问题的一些提示：
 
-* 设置 [Web 测试][可用性]，以在网站出现故障或响应错误或缓慢时得到警报。 
+* 设置 [Web 测试][availability]，以便在网站出现故障或响应错误或缓慢时得到警报。 
 * 将请求计数与其他指标比较，查看故障或响应缓慢是否与负载有关。
-* 在代码中[插入搜索跟踪语句][诊断]以帮助查明问题。
+* 在代码中[插入和搜索跟踪语句][diagnostic]以帮助查明问题。
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
-[Web 测试][可用性] - 使 Web 请求按固定间隔从世界各地发送到应用程序。
+## <a name="next"></a>后续步骤
+[Web 测试][availability] - 使 Web 请求按固定间隔从世界各地发送到应用程序。
 
-[捕获和搜索诊断跟踪][诊断] - 插入跟踪调用并筛查结果以查明问题。
+[捕获和搜索诊断跟踪][diagnostic] - 插入跟踪调用并筛查结果以查明问题。
 
-[使用情况跟踪][使用情况] - 查明用户使用应用程序的方式。
+[使用情况跟踪][usage] - 查明用户使用应用程序的方式。
 
-[故障排除][qna] - 和问题与解答
+[故障排除][qna] - 和问答
 
-## <a name="video"></a>视频
-> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/222/player]
 
 
 <!--Link references-->
 
-[可用性]: app-insights-monitor-web-app-availability.md
-[诊断]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
 [greenbrown]: app-insights-asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
-[启动]: app-insights-overview.md
-[使用情况]: app-insights-web-track-usage.md
+[start]: app-insights-overview.md
+[usage]: app-insights-web-track-usage.md
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: aungoo
 translationtype: Human Translation
-ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
-ms.openlocfilehash: 69fbac5acdc812917d1e022d19768a8d72955783
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 0efa2fdb2b78086e89e77429f8fac813ae1cf1a4
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -74,7 +74,7 @@ IOPS 是指应用程序在一秒内发送到存储磁盘的请求数。 可以�
 
 **应用程序性能要求清单**
 
-| **性能要求** | **第&50; 百分位数** | **第&90; 百分位数** | **第&99; 百分位数** |
+| **性能要求** | **第 50 百分位数** | **第 90 百分位数** | **第 99 百分位数** |
 | --- | --- | --- | --- |
 | 最大 每秒事务数 | | | |
 | 读取操作百分数 | | | |
@@ -164,8 +164,8 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 | 应用程序要求 | I/O 大小 | IOPS | 吞吐量/带宽 |
 | --- | --- | --- | --- |
 | 最大 IOPS |8 KB |5,000 |40 MB/秒 |
-| 最大吞吐量 |1024 KB |200 |每秒&200; MB |
-| 最大吞吐量 + 高 IOPS |64 KB |3,200 |每秒&200; MB |
+| 最大吞吐量 |1024 KB |200 |每秒 200 MB |
+| 最大吞吐量 + 高 IOPS |64 KB |3,200 |每秒 200 MB |
 | 最大 IOPS + 高吞吐量 |32 KB |5,000 |160 MB/秒 |
 
 若要获取比单个高级存储磁盘的最大值还要高的 IOPS 和带宽，可将多个高级磁盘一起条带化。 例如，将两个 P30 磁盘条带化得到的组合 IOPS 为 10,000 IOPS，得到的组合吞吐量为 400 MB/秒。 如下一部分所述，你必须使用支持组合式磁盘 IOPS 和吞吐量的 VM 大小。
@@ -184,10 +184,10 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 
 | VM 大小 | CPU 核心数 | 内存 | VM 磁盘大小 | 最大 数据磁盘 | 缓存大小 | IOPS | 带宽缓存 IO 限制 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS14 |16 |112 GB |OS = 1023 GB <br> 本地 SSD = 224 GB |32 |576 GB |50,000 IOPS <br> 每秒&512; MB |4,000 IOPS，33 MB/秒 |
-| Standard_GS5 |32 |448 GB |OS = 1023 GB <br> 本地 SSD = 896 GB |64 |4224 GB |80,000 IOPS <br> 每秒&2;,000 MB |5,000 IOPS，50 MB/秒 |
+| Standard_DS14 |16 |112 GB |OS = 1023 GB <br> 本地 SSD = 224 GB |32 |576 GB |50,000 IOPS <br> 每秒 512 MB |4,000 IOPS，33 MB/秒 |
+| Standard_GS5 |32 |448 GB |OS = 1023 GB <br> 本地 SSD = 896 GB |64 |4224 GB |80,000 IOPS <br> 每秒 2,000 MB |5,000 IOPS，50 MB/秒 |
 
-若要查看所有可用 Azure VM 大小的完整列表，请参阅 [Windows VM 大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或 [Linux VM 大小](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 选择能够满足或者在扩展后能够满足所需应用程序性能要求的 VM 大小。 除此之外，在选择 VM 大小时，还需考虑以下重要事项。
+若要查看所有可用 Azure VM 大小的完整列表，请参阅 [Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 选择能够满足或者在扩展后能够满足所需应用程序性能要求的 VM 大小。 除此之外，在选择 VM 大小时，还需考虑以下重要事项。
 
 规模限制  
 每个 VM 和每个磁盘的最大 IOPS 限制是不同的，且互不影响。 请确保应用程序所要实现的 IOPS 处于 VM 以及连接到 VM 的高级磁盘的限制内。 否则，应用程序性能就会受到限制。
@@ -211,7 +211,7 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 
 Linux 发行版  
 
-使用 Azure 高级存储，可以让运行 Windows 和 Linux 的 VM 获得相同级别的性能。 支持多种 Linux 发行版，可在[此处](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)查看完整列表。 请务必注意，不同的发行版适用于不同类型的工作负荷。 根据运行工作负荷的发行版的不同，你所看到的性能级别也会有所不同。 使用应用程序测试各种 Linux 发行版，选择最适合的。
+使用 Azure 高级存储，可以让运行 Windows 和 Linux 的 VM 获得相同级别的性能。 支持多种 Linux 发行版，可在[此处](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)查看完整列表。 请务必注意，不同的发行版适用于不同类型的工作负荷。 根据运行工作负荷的发行版的不同，你所看到的性能级别也会有所不同。 使用应用程序测试各种 Linux 发行版，选择最适合的。
 
 使用高级存储运行 Linux 时，请查看与所需驱动程序相关的最新更新，确保实现高性能。
 
@@ -222,7 +222,7 @@ Azure 高级存储目前提供了三种磁盘大小。 每种磁盘大小对 IOP
 | --- | --- | --- | --- |
 | 磁盘大小 |128 GiB |512 GiB |1024 GiB (1 TB) |
 | 每个磁盘的 IOPS |500 |2300 |5000 |
-| 每个磁盘的吞吐量 |每秒&100; MB |每秒&150; MB |每秒&200; MB |
+| 每个磁盘的吞吐量 |每秒 100 MB |每秒 150 MB |每秒 200 MB |
 
 选择多少磁盘取决于所选磁盘大小。 你可以使用单个 P30 磁盘或多个 P10 磁盘以满足应用程序要求。 进行选择时，可考虑下面列出的注意事项。
 
@@ -283,7 +283,7 @@ Azure 高级存储目前提供了三种磁盘大小。 每种磁盘大小对 IOP
    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  从缓存快速读取可以缩短 SQL Server 查询时间，因为从缓存检索数据页的速度要大大快于直接从数据磁盘进行检索的速度。  
    b.保留“数据库类型”设置，即设置为“共享”。  从缓存进行读取意味着可以从高级数据磁盘获得更多的吞吐量。 SQL Server 可以利用这额外的吞吐量来检索更多数据页和执行其他操作，例如备份/还原、批量加载以及索引重建。  
 2. 在托管日志文件的高级存储磁盘上将缓存配置为“无”。  
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  日志文件主要是进行频繁的写入操作。 因此，将缓存设置为 ReadOnly 对其无用。
+   a.  日志文件主要是进行频繁的写入操作。 因此，将缓存设置为 ReadOnly 对其无用。
 
 ## <a name="disk-striping"></a>磁盘条带化
 当高规格 VM 与多个高级存储永久性磁盘连接时，可以将这些磁盘一起条带化，以便聚合其 IOPS、带宽和存储容量。
@@ -292,7 +292,7 @@ Azure 高级存储目前提供了三种磁盘大小。 每种磁盘大小对 IOP
 
 重要提示：使用服务器管理器 UI，可以将列的总数设置为每个条带化卷最多 8 个。 连接 8 个以上的磁盘时，可使用 PowerShell 来创建卷。 使用 PowerShell，你可以将列数设置为与磁盘数相等。 例如，如果一个条带集中有 16 个磁盘，可在 *New-VirtualDisk* PowerShell cmdlet 的 *NumberOfColumns* 参数中指定 16 个列。
 
-在 Linux 中，可使用 MDADM 实用工具将磁盘条带化。 有关在 Linux 中对磁盘进行条带化操作的详细步骤，请参阅[在 Linux 上配置软件 RAID](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+在 Linux 中，可使用 MDADM 实用工具将磁盘条带化。 有关在 Linux 中对磁盘进行条带化操作的详细步骤，请参阅[在 Linux 上配置软件 RAID](../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 *条带大小*  
 进行磁盘条带化操作时，一项重要配置是条带大小。 条带大小或块大小是应用程序可以在条带化卷上处理的最小数据块区。 你配置的条带大小取决于应用程序类型及其请求模式。 如果你选择了错误的条带大小，则可能导致 IO 不一致，从而导致应用程序性能下降。
@@ -331,9 +331,9 @@ Azure 将高级存储平台设计为可以进行大规模并行处理。 因此�
 高队列深度  
 高队列深度可以让更多操作在磁盘上排队。 磁盘可以提前知道其队列中的下一个请求。 因此，磁盘可以提前计划操作，按最佳顺序对其进行处理。 由于应用程序向磁盘发送了更多的请求，因此磁盘可以处理更多的并行 IO。 最终，应用程序可以实现更高的 IOPS。 由于应用程序处理了更多的请求，因此应用程序的总吞吐量也增加。
 
-通常，在每个连接的磁盘存在 8-16 个以上待处理 IO 的情况下，应用程序可以实现最大吞吐量。 如果队列深度为&1;，则应用程序不会将足够的 IO 推送到系统，在给定时间内所能处理的 IO 数目会较少。 换而言之，吞吐量降低。
+通常，在每个连接的磁盘存在 8-16 个以上待处理 IO 的情况下，应用程序可以实现最大吞吐量。 如果队列深度为 1，则应用程序不会将足够的 IO 推送到系统，在给定时间内所能处理的 IO 数目会较少。 换而言之，吞吐量降低。
 
-例如，在 SQL Server 中，将查询的 MAXDOP 值设置为“4”就是告知 SQL Server：最多可以使用&4; 个内核来执行查询。 将由 SQL Server 来确定最佳队列深度值以及执行查询所需的内核数目。
+例如，在 SQL Server 中，将查询的 MAXDOP 值设置为“4”就是告知 SQL Server：最多可以使用 4 个内核来执行查询。 将由 SQL Server 来确定最佳队列深度值以及执行查询所需的内核数目。
 
 最佳队列深度  
 队列深度值过高也有其缺点。 如果队列深度值过高，则应用程序会尝试实现非常高的 IOPS。 除非应用程序的永久性磁盘具有足够高的预配 IOPS，否则会对应用程序延迟造成负面影响。 以下公式显示了 IOPS、延迟和队列深度之间的关系。  
@@ -443,7 +443,7 @@ FIO 是一种常用工具，可以在 Linux VM 上对存储进行基准测试。
 apt-get install fio
 ```
 
-我们将在磁盘上使用&4; 个工作线程来执行写入操作，4 个工作线程来执行读取操作。 写入工作线程将推动“nocache”卷上的流量，该卷有 10 个磁盘的缓存设置为“无”。 读取工作线程将推动“readcache”卷上的流量，该卷有 1 个磁盘的缓存设置为“ReadOnly”。
+我们将在磁盘上使用 4 个工作线程来执行写入操作，4 个工作线程来执行读取操作。 写入工作线程将推动“nocache”卷上的流量，该卷有 10 个磁盘的缓存设置为“无”。 读取工作线程将推动“readcache”卷上的流量，该卷有 1 个磁盘的缓存设置为“ReadOnly”。
 
 最大写入 IOPS  
 使用以下规范创建作业文件，以便获得最大写入 IOPS。 将其命名为“fiowrite.ini”。

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2c41c2df135caaead328d8fe05407cfa75cbcb91
-ms.openlocfilehash: a486fbe46f9892f6f70dcdcf27edbac63728af6e
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 223edfde090c9b77467e032198c2150fbaa56a5b
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -74,7 +74,7 @@ Azure 数据工厂提供存储、处理和数据移动服务的可靠且完整�
 1. 右键单击管道，然后单击“打开管道”查看管道中的所有活动以及该活动的输入和输出数据集。 如果管道包含多个活动且用户想要了解单个管道的操作沿袭，此功能非常有用。
 
     ![“打开管道”菜单](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)     
-2. 在以下示例中，可看到管道中具有输入和输出的两个活动。 此示例管道还包括类型为 HDInsight Hive 活动的 **JoinData** 活动以及类型为复制活动的 **EgressDataAzure** 活动。
+2. 在下面的示例中，可看到管道中的复制活动以及输入和输出。 
 
     ![管道中的活动](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png)
 3. 通过在左上角痕迹导航中单击“数据工厂”链接，可向后导航到数据工厂主页。
@@ -84,11 +84,9 @@ Azure 数据工厂提供存储、处理和数据移动服务的可靠且完整�
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>查看管道中每个活动的状态
 通过查看活动生成的任意数据集状态，可查看该活动的当前状态。
 
-在以下示例中，已成功运行 **BlobPartitionHiveActivity** 且生成了名为 **PartitionedProductsUsageTable** 的数据集，该数据集处于“就绪”状态。
+在“图示”中双击“OutputBlobTable”，可查看管道内不同活动运行所生成的所有切片。 可以看到过去 8 小时成功运行了复制活动，并生成了处于“就绪”状态的切片。  
 
 ![管道状态](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
-
-在“图示”中双击“PartitionedProductsUsageTable”，可查看管道内不同活动运行所生成的所有切片。 可以看到过去&8; 个月中每个月都成功运行了 **BlobPartitionHiveActivity**，并生成了处于“就绪”状态的切片。
 
 数据工厂中的数据集切片可以具有以下任一状态：
 

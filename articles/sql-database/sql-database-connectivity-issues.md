@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: a6489fd5ff5e60bc3a1c06485d330556250c21cd
-ms.openlocfilehash: eddbdda847d7d0cc12f3e1c6128ce76d15f6f39f
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 608cbc0fd1cc1d73d28056909ed06618457bd9c0
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/02/2017
 <a id="i-transient-faults" name="i-transient-faults"></a>
 
 ## <a name="transient-errors-transient-faults"></a>暂时性错误（暂时性故障）
-暂时性错误（也称为暂时性故障）存在很快解决自身问题的根本原因。 当 Azure 系统快速地将硬件资源转移到负载平衡更好的各种工作负荷时，偶尔会发生暂时性错误。 大多数这些重新配置事件通常在 60 秒内就能完成。 在进行这种重新配置的过程中，可能会遇到 Azure SQL 数据库的连接性问题。 连接到 Azure SQL 数据库的应用程序应当构建为能预见这些暂时性错误，并能通过在它们的代码内实现重试逻辑来处理它们，而不是以应用程序错误的形式呈现给用户。
+暂时性错误（也称为暂时性故障）存在很快解决自身问题的根本原因。 当 Azure 系统快速地将硬件资源转移到负载均衡更好的各种工作负荷时，偶尔会发生暂时性错误。 大多数这些重新配置事件通常在 60 秒内就能完成。 在进行这种重新配置的过程中，可能会遇到 Azure SQL 数据库的连接性问题。 连接到 Azure SQL 数据库的应用程序应当构建为能预见这些暂时性错误，并能通过在它们的代码内实现重试逻辑来处理它们，而不是以应用程序错误的形式呈现给用户。
 
 如果客户端程序使用 ADO.NET，系统将会引发 **SqlException**，使你的程序知道已发生暂时性错误。 你可以将 **Number** 属性与 [SQL 数据库客户端应用程序的 SQL 错误代码](sql-database-develop-error-messages.md)主题顶部附近的暂时性错误列表进行比较。
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 03/02/2017
 
 如果你忘记了配置 IP 地址，你的程序将失败，并显示简单的错误消息，指出所需的 IP 地址。
 
-[!INCLUDE [sql-database-include-ip-address-22-v12portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
+[!INCLUDE [sql-database-include-ip-address-22-portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
 
 有关详细信息，请参阅[如何：在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)
 
@@ -186,7 +186,7 @@ ms.lasthandoff: 03/02/2017
 6. &gt; 操作
 7. &gt; 新建规则
 
-如果你的客户端程序托管在 Azure 虚拟机 (VM) 上，应该阅读：<br/>[用于 ADO.NET 4.5 和 SQL 数据库 V12 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
+如果你的客户端程序托管在 Azure 虚拟机 (VM) 上，应该阅读：<br/>[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
 有关配置端口和 IP 地址的背景信息，请参阅 [Azure SQL 数据库防火墙](sql-database-firewall-configure.md)
 

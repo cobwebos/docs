@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/29/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 4676e0da4309b1460e471f94946161fa22d46226
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
+ms.lasthandoff: 04/04/2017
 
 ---
 # <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建实时客户见解仪表板
@@ -35,17 +35,17 @@ Functions 在云中提供无服务器计算。  在此方案中，我们将使�
 
 整个解决方案可以[在 Visual Studio 中生成](logic-apps-deploy-from-vs.md)，然后[作为资源模板的一部分部署](logic-apps-create-deploy-template.md)。  [第 9 频道](http://aka.ms/logicappsdemo)也有此方案的视频演练。
 
-## <a name="building-the-logic-app-to-trigger-on-customer-data"></a>生成可以针对客户数据进行触发操作的逻辑应用
+## <a name="build-the-logic-app-to-trigger-on-customer-data"></a>生成可以针对客户数据进行触发操作的逻辑应用
 
 在 Visual Studio 或 Azure 门户中[创建逻辑应用](logic-apps-create-a-logic-app.md)后，请执行以下操作：
 
 1. 针对 Twitter 的“出现新推文时”添加一个触发器
-1. 将触发器配置为侦听推文的关键字或井号标签。
+2. 将触发器配置为侦听推文的关键字或井号标签。
 
-> [!NOTE]
-> 触发器的“重复周期”属性将决定逻辑应用以多高的频率检查基于轮询的触发器上出现的新项
+   > [!NOTE]
+   > 触发器的“重复周期”属性将决定逻辑应用以多高的频率检查基于轮询的触发器上出现的新项
 
-![Twitter 触发器示例][1]
+   ![Twitter 触发器示例][1]
 
 现在，只要出现新推文，此应用就会触发。  然后，我们就可以根据该推文数据，对所表达的观点进行更深入的了解。  为此，我们使用 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)来检测文本观点。
 
@@ -99,7 +99,7 @@ Functions 在云中提供无服务器计算。  在此方案中，我们将使�
 
 也可将 Azure Functions 整合到部署模板中，将整个解决方案和所有依赖项作为单个模板进行管理。  [Azure 快速入门模板存储库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)中提供了函数部署模板的示例。
 
-## <a name="whats-next"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 * [查看 Azure 逻辑应用的其他示例和方案](logic-apps-examples-and-scenarios.md)
 * [观看有关如何创建此端到端解决方案的视频演练](http://aka.ms/logicappsdemo)

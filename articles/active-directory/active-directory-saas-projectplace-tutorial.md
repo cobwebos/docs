@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/19/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: aee8458ef8d6e564685cbf4d56f91af7766d1e2a
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: fcf3332a6674524ea5354b96826586c79a4ba3e1
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -23,14 +24,14 @@ ms.openlocfilehash: aee8458ef8d6e564685cbf4d56f91af7766d1e2a
 本教程的牡丹是介绍 Azure 与 Projectplace 的集成。 在本教程中概述的方案假定您已具有以下各项：
 
 * 一个有效的 Azure 订阅
-* 启用 Projectplace 单一登录的订阅
+* 已启用 Projectplace 单一登录 (SSO) 的订阅
 
 完成本教材后，分配到 Projectplace 的 Azure AD 用户将能够通过单一登录方式登录到 Projectplace 公司站点的应用程序（由服务提供商启动登录），也可以按照 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）中的步骤登录。
 
 在本教程中概述的方案由以下构建基块组成：
 
 1. 为 Projectplace 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
@@ -60,7 +61,7 @@ ms.openlocfilehash: aee8458ef8d6e564685cbf4d56f91af7766d1e2a
    
    ![ProjectPlace](./media/active-directory-saas-projectplace-tutorial/IC790219.png "ProjectPlace")
    
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 
 此部分的目的是概述如何使用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Projectplace 进行身份验证。
 
@@ -80,15 +81,15 @@ ms.openlocfilehash: aee8458ef8d6e564685cbf4d56f91af7766d1e2a
    ![配置单一登录](./media/active-directory-saas-projectplace-tutorial/IC790223.png "配置单一登录")
 5. 将元数据文件发送给 Projectplace 支持团队。
    
-   > [!NOTE]
-   > 单一登录配置必须由 Projectplace 支持团队执行。 配置完成后会立即收到通知。
+   >[!NOTE]
+   >单一登录配置必须由 Projectplace 支持团队执行。 配置完成后会立即收到通知。
    > 
    > 
 6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
    ![配置单一登录](./media/active-directory-saas-projectplace-tutorial/IC790227.png "配置单一登录")
    
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 
 若要让 Azure AD 用户登录到 Projectplace，必须在 Projectplace 中对其进行预配。 使用 Projectplace 时，预配属手动任务。
 
@@ -108,15 +109,15 @@ ms.openlocfilehash: aee8458ef8d6e564685cbf4d56f91af7766d1e2a
    1. 在“新建成员”文本框中，键入要在相关文本框中预配的有效 AAD 帐户的电子邮件地址。
    2. 单击“发送”。
 
- 将向 Azure Active Directory 帐户持有者发送一封电子邮件，该邮件包含在激活帐户前确认帐户的链接。
+将向 Azure Active Directory 帐户持有者发送一封电子邮件，该邮件包含在激活帐户前确认帐户的链接。
 
 
-> [!NOTE]
-> 可以使用任何其他 Projectplace 用户帐户创建工具或 Projectplace 提供的 API 来预配 AAD 用户帐户。
+>[!NOTE]
+>可以使用任何其他 Projectplace 用户帐户创建工具或 Projectplace 提供的 API 来预配 AAD 用户帐户。
 > 
 > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
 **若要将用户分配到 Projectplace，请执行以下步骤：**
@@ -129,11 +130,6 @@ ms.openlocfilehash: aee8458ef8d6e564685cbf4d56f91af7766d1e2a
    
    ![是](./media/active-directory-saas-projectplace-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 

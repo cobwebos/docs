@@ -12,11 +12,12 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/12/2016
+ms.date: 03/30/2017
 ms.author: piyushjo;ricksal
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2b89a13230439698854656f0bb5367f1ed35ce1c
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 1438b9479b3bbb8b7599d7d05b48e4cd6d981e0c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -52,18 +53,12 @@ ms.openlocfilehash: 2b89a13230439698854656f0bb5367f1ed35ce1c
 [如何在 Android 应用中使用高级 Mobile Engagement 标记 API](mobile-engagement-android-use-engagement-api.md)
 
 ## <a name="release-notes"></a>发行说明
-### <a name="423-08102016"></a>4.2.3 (08/10/2016)
-* 不再存在任何 WIFI 锁。
-* 修复了初始化前调用 getDeviceId 时出现的死锁状态（4.2.0 中介绍的问题）。
+### <a name="424-03302017"></a>4.2.4 (03/30/2017)
+* 将 Android 7 中的应用内通知文本颜色修复为与之前 Android 版本中相同。
 
 对于所有版本，请参阅[完整的发行说明](mobile-engagement-android-release-notes.md)。
 
 ## <a name="upgrade-procedures"></a>升级过程
 如果已将旧版本的 SDK 集成到应用程序中，则请参阅[升级过程](mobile-engagement-android-upgrade-procedure.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

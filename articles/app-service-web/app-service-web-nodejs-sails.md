@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: b3c8a2d54ea05462db8a873c852a70e64111bc2f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: ff5deaa15d1f78df249e9e89b1f0ffc82076fee1
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -72,7 +72,7 @@ ms.lasthandoff: 03/01/2017
         logDirectory: iisnode
 
     现在已为 Azure App Service 用于运行 Node.js 应用的 [iisnode](https://github.com/tjanczuk/iisnode) 服务器启用日志记录。 
-    有关具体操作的详细信息，请参阅 [从 iisnode 获取 stdout 和 stderr 日志](app-service-web-nodejs-get-started.md#iisnodelog)。
+    有关其工作原理的详细信息，请参阅 [如何调试 Azure 应用服务中的 Node.js Web 应用](web-sites-nodejs-debug.md)。
 
 2. 接下来，配置 Sails.js 应用使用 Azure 环境变量。 打开 config/env/production.js 来配置生产环境，并设置 `port` 和 `hookTimeout`：
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="troubleshoot-your-deployment"></a>排查部署问题
 如果 Sails.js 应用在应用服务中由于某种原因而失败，请查找 stderr 日志，以帮助进行故障排除。
-有关详细信息，请参阅[从 iisnode 获取 stdout 和 stderr 日志](app-service-web-nodejs-get-started.md#get-stdout-and-stderr-logs-from-iisnode)。
+有关详细信息，请参阅[如何调试 Azure 应用服务中的 Node.js Web 应用](web-sites-nodejs-debug.md)。
 如果应用成功启动，stdout 日志应显示熟悉的消息：
 
                    .-..-.
@@ -273,6 +273,6 @@ ms.lasthandoff: 03/01/2017
      如果 API 返回另一个新条目，那么 Azure Web 应用正在和 DocumentDB (MongoDB) 数据库通信。
 
 ## <a name="more-resources"></a>更多资源
-* [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-nodejs-get-started.md)
+* [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 

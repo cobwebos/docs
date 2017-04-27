@@ -16,20 +16,21 @@ ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: af2dde245fdef2984465f0c8447b558a2c770618
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 4c6b70d793a7d734f5a29139e1f0b91f0d41e73a
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="set-up-intel-nuc-as-an-iot-gateway"></a>将 Intel NUC 设置为 IoT 网关
+[!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 ## <a name="what-you-will-do"></a>执行的操作
 
 - 将 Intel NUC 设置为 IoT 网关。
 - 在 Intel NUC 上安装 Azure IoT 网关 SDK 包。
 - 在 Intel NUC 上运行“hello_world”示例应用程序，验证网关功能。
-    
+
   > 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-troubleshooting.md)上查找解决方案。
 
 ## <a name="what-you-will-learn"></a>你要学习的知识
@@ -97,9 +98,12 @@ Azure IoT 网关 SDK 包中包含 SDK 及其依赖项的预编译二进制文件
 1. 在终端窗口中运行以下命令，添加 IoT 云存储库：
 
    ```bash
-   rpm --import http://iotdk.intel.com/misc/iot_pub.key
+   rpm --import https://iotdk.intel.com/misc/iot_pub2.key
    smart channel --add IoT_Cloud type=rpm-md name="IoT_Cloud" baseurl=http://iotdk.intel.com/repos/iot-cloud/wrlinux7/rcpl13/ -y
+   smart channel --add WR_Repo type=rpm-md baseurl=https://distro.windriver.com/release/idp-3-xt/public_feeds/WR-IDP-3-XT-Intel-Baytrail-public-repo/RCPL13/corei7_64/
    ```
+
+   > 提示“是否包括此通道?”时，输入“y”
 
    `rpm` 命令导入 rpm 密钥。 `smart channel` 命令将 rpm 通道添加到智能包管理器。 运行 `smart update` 命令前，将看到如下输出。
 
@@ -119,14 +123,14 @@ Azure IoT 网关 SDK 包中包含 SDK 及其依赖项的预编译二进制文件
 
    `packagegroup-cloud-azure` 是包的名称。 `smart install` 命令用于安装包。
 
-
     > 如果出现“公钥不可用”错误，请运行以下命令
 
     ```bash
     smart config --set rpm-check-signatures=false
     smart install packagegroup-cloud-azure -y
     ```
-   
+    > 如果看到此错误：“无任何包提供 util-linux-dev”，则重新启动 Intel NUC
+
    安装此包后，Intel NUC 可用作网关。
 
 ## <a name="run-the-azure-iot-gateway-sdk-helloworld-sample-application"></a>运行 Azure IoT 网关 SDK“hello_world”示例应用程序
@@ -145,7 +149,7 @@ cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 
 > 可以忽略后按 Enter，会显示任何参数无效 handle(NULL) 错误。
 
-可以验证是否成功通过打开 log.txt 文件现在处于 hello_world 文件夹运行网关：![log.txt 目录视图](media/iot-hub-gateway-kit-lessons/lesson1/logtxtdir.png)
+可以通过打开现在位于 hello_world 文件夹 ![log.txt 目录视图](media/iot-hub-gateway-kit-lessons/lesson1/logtxtdir.png)中的 log.txt 文件来验证网关是否成功运行
 
 使用以下命令打开 log.txt：
 
@@ -163,5 +167,6 @@ vim log.txt
 祝贺你！ 现已将 Intel NUC 设置为网关。 接下来可进入下一课，了解如何设置主机、创建 Azure IoT 中心以及注册 Azure IoT 中心逻辑设备。
 
 ## <a name="next-steps"></a>后续步骤
-[准备好主计算机和 Azure IoT 中心](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
+[使用 IoT 网关将设备连接到 Azure IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+
 

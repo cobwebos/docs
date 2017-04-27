@@ -11,34 +11,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/26/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: b1c18ac614e17cbd25691dc92dbd14a781e4d8ab
-ms.openlocfilehash: ee656180676450834940b996bccf93c26190f9d6
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 84962c04e15bd010357f96da7dbf418cc68adab1
+ms.lasthandoff: 04/03/2017
 
 
 ---
 
 # <a name="tutorial-azure-active-directory-integration-with-onit"></a>教程：Azure Active Directory 与 Onit 的集成
 本教程的目的是介绍 Azure 与 Onit 的集成。  
+
 在本教程中概述的方案假定您已具有以下各项：
 
 * 一个有效的 Azure 订阅
-* 启用 Onit 单一登录的订阅
+* 已启用 Onit 单一登录 (SSO) 的订阅
 
 完成本教程后，分配到 Onit 的 Azure AD 用户将能够在 Onit 公司站点上（服务提供商启动的登录）或者使用[访问面板简介](active-directory-saas-access-panel-introduction.md)以单一登录 (SSO) 方式登录到应用程序。
 
 在本教程中概述的方案由以下构建基块组成：
 
 1. 为 Onit 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
 ![方案](./media/active-directory-saas-onit-tutorial/IC791166.png "方案")
 
-## <a name="enabling-the-application-integration-for-onit"></a>为 Onit 启用应用程序集成
+## <a name="enable-the-application-integration-for-onit"></a>为 Onit 启用应用程序集成
 本部分的目的是概述如何为 Onit 启用应用程序集成。
 
 **若要为 Onit 启用应用程序集成，请执行以下步骤：**
@@ -63,12 +65,13 @@ ms.openlocfilehash: ee656180676450834940b996bccf93c26190f9d6
    
    ![Onit](./media/active-directory-saas-onit-tutorial/IC795325.png "Onit")
    
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 
 此部分的目的是概述如何使用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Onit 进行身份验证。  
 
-配置 Onit 的单一登录要求检索证书的指纹值。  
-如果不熟悉此步骤，请参阅 [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)（如何检索证书的指纹值）。
+配置 Onit 的 SSO 需要检索证书的指纹值。
+
+如果不熟悉此过程，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)。
 
 Onit 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 **SAML 令牌属性**配置。  
 
@@ -76,7 +79,7 @@ Onit 应用程序需要特定格式的 SAML 断言，这要求将自定义属性
 
 ![单一登录](./media/active-directory-saas-onit-tutorial/IC791168.png "单一登录")
 
-**若要配置单一登录，请执行以下步骤：**
+**若要配置 SSO，请执行以下步骤：**
 
 1. 在 Azure 经典门户的“Onit”应用程序集成页的顶部菜单中单击“属性”，打开“SAML 令牌属性”对话框。
    
@@ -88,14 +91,14 @@ Onit 应用程序需要特定格式的 SAML 断言，这要求将自定义属性
    |名称|User.userprincipalname|
    |email|User.mail|
 
-   1.  对于上表中的每个数据行，单击“添加用户属性”。
-   2.  在“属性名称”文本框中，键入为该行显示的属性名称。
-   3.  在“属性值”列表中，选择为该行显示的属性值。
-   4.  单击“完成”。
+   1. 对于上表中的每个数据行，单击“添加用户属性”。
+   2. 在“属性名称”文本框中，键入为该行显示的属性名称。
+   3. 在“属性值”列表中，选择为该行显示的属性值。
+   4. 单击“完成”。
 
 3. 单击“应用更改”。
 4. 在浏览器中，单击“后退”以再次打开“快速启动”对话框。
-5. 单击“配置单一登录”以打开“配置单一登录”对话框。
+5. 单击“配置单一登录”以打开“配置单一登录”****对话框。
    
    ![配置单一登录](./media/active-directory-saas-onit-tutorial/IC791170.png "配置单一登录")
 6. 在“你希望用户如何登录 Onit”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
@@ -138,7 +141,7 @@ Onit 应用程序需要特定格式的 SAML 断言，这要求将自定义属性
     
     ![配置单一登录](./media/active-directory-saas-onit-tutorial/IC791179.png "配置单一登录")
     
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 
 若要让 Azure AD 用户登录 Onit，必须将其预配到 Onit 中。  
 
@@ -154,20 +157,21 @@ Onit 应用程序需要特定格式的 SAML 断言，这要求将自定义属性
    
    ![添加用户](./media/active-directory-saas-onit-tutorial/IC791181.png "添加用户")
    
-   1. 在相关文本框中键入要预配的有效 AAD 帐户的“名称”和“电子邮件地址”。
-   2. 单击“创建” 。    
+  1. 在相关文本框中键入要预配的有效 AAD 帐户的“名称”和“电子邮件地址”。
+  2. 单击“创建” 。    
    
       >[!NOTE]
       >帐户所有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
-      > 
-       
+      >
+      >
+     
 
 > [!NOTE]
 > 可以使用任何其他 Onit 用户帐户创建工具或 Onit 提供的 API 来预配 AAD 用户帐户。
 > 
 > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
@@ -181,11 +185,10 @@ Onit 应用程序需要特定格式的 SAML 断言，这要求将自定义属性
    
    ![是](./media/active-directory-saas-onit-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
+## <a name="additional-resources"></a>其他资源
 
-
-
-<!--HONumber=Feb17_HO1-->
-
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 

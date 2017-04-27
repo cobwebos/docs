@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/09/2017
 ms.author: sethm;jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: da7f8e3e61705cf07ff65c9dd1d8f292f4fb9f62
-ms.openlocfilehash: 9061829e42ed5563d64860774aa7d80f2ab011bd
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: cbbef00cb4c54f4df2634fbe7b3dacbd34a175bd
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -68,7 +68,8 @@ ms.lasthandoff: 02/10/2017
 否，服务总线不对存储收费。 但是，对于每个队列/主题的最大可保留数据量，有配额限制。 请参阅下一个常见问题。
 
 ## <a name="quotas"></a>配额
-有关服务总线限制和配额的列表，请参阅[配额概述][Quotas overview]。
+
+有关服务总线限制和配额的列表，请参阅[服务总线配额概述][Quotas overview]。
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>服务总线是否有任何使用率配额？
 默认情况下，对于任何云服务，Microsoft 设置聚合的每月使用配额，通过对所有的客户订阅计算得到。 由于我们清楚你可能需要这些限制之外的更多限制，因此，请随时联系客户服务，以便我们了解你的需求并相应地调整这些限制。 对于服务总线，总用量配额是每月 50 亿条消息。
@@ -76,32 +77,6 @@ ms.lasthandoff: 02/10/2017
 虽然我们保留禁用在给定月份超过使用率配额的客户帐户的权利，但我们仍然会在采取任何措施前发送电子邮件通知并会多次尝试与客户联系。 超过这些配额的客户仍将负责超出配额的费用。
 
 至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 服务强制执行的使用率配额如下：
-
-#### <a name="queuetopic-size"></a>队列/主题大小
-在创建队列或主题时指定最大队列或主题大小。 此配额的值可以是 1 GB、2 GB、3 GB、4 GB 或 5 GB。 如果达到最大大小，则将拒绝其他传入的消息，调用代码将收到一个异常。
-
-#### <a name="naming-restrictions"></a>命名限制
-服务总线命名空间名称长度必须为 6-50 个字符。 每个队列、主题或订阅的字符数限制为 1-50 个字符之间。
-
-#### <a name="number-of-concurrent-connections"></a>并发连接数
-队列/主题/订阅 - 队列/主题/订阅上的并发 TCP 连接数限制为 100。 如果达到此配额，将拒绝后续的其他连接请求，调用代码将收到一个异常。 对于每个消息工厂，如果由该消息传送工厂创建的任何客户端具有活动的操作挂起时，或者刚完成操作不超过 60 秒时间，则服务总线都会保持一个 TCP 连接。 REST 操作不计入并发 TCP 连接数。
-
-#### <a name="number-of-topicsqueues-per-service-namespace"></a>每个服务命名空间的主题/队列数
-服务命名空间上的主题/队列（持久存储备份的实体）的最大数被限制为 10,000。 如果达到此配额，将拒绝后续创建服务命名空间上的新主题/队列的请求。 在这种情况下，Azure 经典门户将显示一条错误消息或调用客户端代码将收到一个异常，具体取决于创建尝试是通过门户还是通过客户端代码完成的。
-
-### <a name="message-size-quotas"></a>消息大小配额
-#### <a name="queuetopicsubscription"></a>队列/主题/订阅
-**消息大小** – 每条消息的总大小限制为 256 KB，包括消息标头。
-
-**消息标头大小** – 每条消息标头限制为 64 KB。
-
-系统将拒绝超过这些大小配额的消息，调用代码将收到一个异常。
-
-**每个主题的订阅数** – 每个主题的最大订阅数被限制为 2,000。 如果达到此配额，将拒绝后续向主题创建更多订阅的请求。 在这种情况下，Azure 经典门户将显示一条错误消息或调用客户端代码将收到一个异常，具体取决于创建尝试是通过门户还是通过客户端代码完成的。
-
-**每个主题的 SQL 筛选器数** – 每个主题的最大 SQL 筛选器数被限制为 2,000。 如果达到此配额，将拒绝后续在主题上创建其他筛选器的请求，调用代码将收到一个异常。
-
-**每个主题的相关筛选器数** – 每个主题的最大相关筛选器数被限制为 100,000。 如果达到此配额，将拒绝后续在主题上创建其他筛选器的请求，调用代码将收到一个异常。
 
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Azure 服务总线 API 生成了哪些异常？建议采取什么操作？
@@ -141,5 +116,5 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
 [Quotas overview]: service-bus-quotas.md
 [Exceptions overview]: service-bus-messaging-exceptions.md
-[Shared Access Signatures]: service-bus-sas-overview.md
+[Shared Access Signatures]: service-bus-sas.md
 

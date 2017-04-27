@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/07/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 2e522fabf9be5af7477e556ee0c2bf66f41c28fe
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 78d7ce3bbd3205fd995ba331af08d830097c8156
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -32,10 +32,10 @@ ms.lasthandoff: 03/30/2017
 
 |位置|说明|数据大小|
 |--------------|-----------------|-----|
-|H:\Video|视频集合|12 TB|
-|H:\Photo|照片集合|30 GB|
+|H:\Video\ |视频集合|12 TB|
+|H:\Photo\ |照片集合|30 GB|
 |K:\Temp\FavoriteMovie.ISO|Blu-Ray™ 磁盘映像|25 GB|
-|\\\bigshare\john\music|网络共享上的音乐文件集合|10 GB|
+|\\\bigshare\john\music\|网络共享上的音乐文件集合|10 GB|
 
 ## <a name="storage-account-destinations"></a>存储帐户目标
 
@@ -43,10 +43,10 @@ ms.lasthandoff: 03/30/2017
 
 |源|目标虚拟目录或 Blob|
 |------------|-------------------------------------------|
-|H:\Video|https://mystorageaccount.blob.core.windows.net/video|
-|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|
-|K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|
-|\\\bigshare\john\music|https://mystorageaccount.blob.core.windows.net/music|
+|H:\Video\ |video/|
+|H:\Photo\ |photo/|
+|K:\Temp\FavoriteMovie.ISO|favorite/FavoriteMovies.ISO|
+|\\\bigshare\john\music\ |music|
 
 借助此映射，可将文件 `H:\Video\Drama\GreatMovie.mov` 导入 Blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`。
 
@@ -56,27 +56,24 @@ ms.lasthandoff: 03/30/2017
 
 `12TB + 30GB + 25GB + 10GB = 12TB + 65GB`
 
-对于本示例，两个 8TB 的硬盘驱动器应该足够。 但是，源目录 `H:\Video` 包含 12TB 数据，而单个硬盘驱动器的容量仅为 8TB。在这种情况下，可按以下方式在 **dataset.csv** 文件中指定设置：
-
-```
-BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
-H:\Video\,https://mystorageaccount.blob.core.windows.net/video/,BlockBlob,rename,None,H:\mydirectory\properties.xml
-H:\Photo\,https://mystorageaccount.blob.core.windows.net/photo/,BlockBlob,rename,None,H:\mydirectory\properties.xml
-K:\Temp\FavoriteVideo.ISO,https://mystorageaccount.blob.core.windows.net/favorite/FavoriteVideo.ISO,BlockBlob,rename,None,H:\mydirectory\properties.xml
-\\myshare\john\music\,https://mystorageaccount.blob.core.windows.net/music/,BlockBlob,rename,None,H:\mydirectory\properties.xml
-```
-
-## <a name="attach-drives-and-configure-the-job"></a>附加驱动器并配置作业
-
-需要将两个磁盘附加到计算机并创建卷。 然后编写 **driveset.csv** 文件：
+对于本示例，两个 8TB 的硬盘驱动器应该足够。 但是，源目录 `H:\Video` 包含 12TB 数据，而单个硬盘的容量仅为 8TB。在这种情况下，可按以下方式在 **driveset.csv** 文件中指定设置：
 
 ```
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
 X,Format,SilentMode,Encrypt,
 Y,Format,SilentMode,Encrypt,
 ```
-
 工具将以优化的方式在两个硬盘驱动器之间分发数据。
+
+## <a name="attach-drives-and-configure-the-job"></a>附加驱动器并配置作业
+需要将两个磁盘附加到计算机并创建卷。 然后创作 **dataset.csv** 文件：
+```
+BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
+H:\Video\,video/,BlockBlob,rename,None,H:\mydirectory\properties.xml
+H:\Photo\,photo/,BlockBlob,rename,None,H:\mydirectory\properties.xml
+K:\Temp\FavoriteVideo.ISO,favorite/FavoriteVideo.ISO,BlockBlob,rename,None,H:\mydirectory\properties.xml
+\\myshare\john\music\,music/,BlockBlob,rename,None,H:\mydirectory\properties.xml
+```
 
 此外，可为所有文件设置以下元数据：
 

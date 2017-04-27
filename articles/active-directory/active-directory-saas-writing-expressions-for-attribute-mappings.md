@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 04/06/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d49236c634be8260cb0fb24a0ee08cd71353f6ba
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: d2d7f5b00039cd1beab009b78b273ec4dffaab47
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -98,7 +99,7 @@ ms.openlocfilehash: d49236c634be8260cb0fb24a0ee08cd71353f6ba
 ### <a name="not"></a>Not
 **函数：**<br> Not(source)
 
-**说明：**<br> 翻转 **source** 的布尔值。 如果 **source ** 值为“*True*”，则返回“*False*”。 否则，返回“*True*”。
+**说明：**<br> 翻转 **source** 的布尔值。 如果 **source**  值为“*True*”，则返回“*False*”。 否则，返回“*True*”。
 
 **参数：**<br> 
 
@@ -176,7 +177,7 @@ ms.openlocfilehash: d49236c634be8260cb0fb24a0ee08cd71353f6ba
 
 **示例输入/输出：** <br>
 
-* **输入** (mail)："john.doe@contoso.com"
+* **输入** (mail)：“john.doe@contoso.com”
 * **输出**：“john.doe”
 
 ### <a name="append-constant-suffix-to-user-name"></a>将常量后缀附加到用户名
@@ -187,8 +188,8 @@ ms.openlocfilehash: d49236c634be8260cb0fb24a0ee08cd71353f6ba
 
 **示例输入/输出：** <br>
 
-* **输入**：(userPrincipalName)："John.Doe@contoso.com"
-* **输出**："John.Doe@contoso.com.test"
+* **输入**：(userPrincipalName)：“John.Doe@contoso.com”
+* **输出**：“John.Doe@contoso.com.test”
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>通过连接名字和姓氏部分来生成用户别名
 需要使用用户名字的前 3 个字母和用户姓氏的前 5 个字母来生成用户别名。
@@ -230,16 +231,11 @@ ms.openlocfilehash: d49236c634be8260cb0fb24a0ee08cd71353f6ba
 
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-* [在 SaaS 应用中自动预配/取消预配用户](active-directory-saas-app-provisioning.md)
+* [在 SaaS 应用中自动预配和取消预配用户](active-directory-saas-app-provisioning.md)
 * [为用户预配自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)
 * [用于用户预配的作用域筛选器](active-directory-saas-scoping-filters.md)
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](active-directory-scim-provisioning.md)
 * [帐户预配通知](active-directory-saas-account-provisioning-notifications.md)
 * [有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

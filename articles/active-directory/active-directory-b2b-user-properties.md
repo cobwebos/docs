@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: eb0482d0dec3121710cc2ee56ab538cd66cb03c9
-ms.openlocfilehash: eaf7fabc243b3dfa37d974f4315a378bec9356b7
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 3d7801d8a53ac048333e43ee64724c11c25bf6a8
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 
 - 状态 1：驻留在 Azure AD 的外部实例中，代表宿主组织中的来宾用户。 在这种情况下，B2B 用户需使用属于其宿主租户的 Azure AD 帐户进行登录。 如果该用户的外部组织在邀请时未使用 Azure AD，则在用户兑换其邀请期间将在 Azure AD 验证用户的电子邮件地址后在 Azure AD 中创建来宾用户。 这也称为适时 (JIT) 租户或促销型租户。
 
-- 状态 2：驻留在 Microsoft 帐户中，代表宿主组织中的来宾用户。 在这种情况下，来宾用户需使用 Microsoft 帐户登录。 在 Azure AD 公共预览版的全新版本中，受邀用户的非 Microsoft 帐户社交标识（google.com 或类似项）在兑换产品期间将创建为 Microsoft 帐户。
+- 状态 2：驻留在 Microsoft 帐户中，代表宿主组织中的来宾用户。 在这种情况下，来宾用户需使用 Microsoft 帐户登录。 受邀用户的非 Microsoft 帐户社交标识（google.com 或类似项）在兑换产品期间将创建为 Microsoft 帐户。
 
 - 状态 3：驻留在组织的本地 Active Directory 中，并且与宿主组织的 Azure AD 同步。 在此版本中，必须使用 PowerShell 手动更改云中的此类用户的 UserType。
 

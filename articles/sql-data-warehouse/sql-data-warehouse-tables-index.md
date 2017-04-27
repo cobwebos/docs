@@ -16,9 +16,9 @@ ms.custom: tables
 ms.date: 07/12/2016
 ms.author: jrj;barbkess;sonyama
 translationtype: Human Translation
-ms.sourcegitcommit: f1a24e4ee10593514f44d83ad5e9a46047dafdee
-ms.openlocfilehash: f132af2966e2ac59e77dc0fa8113eb83089c68dd
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: dff94161c7d6dfedc91cfb36954e847f945985f7
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -53,7 +53,6 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 在某些情况下，聚集列存储可能不是很好的选择：
 
-* 列存储表不支持辅助非聚集索引。  可以考虑使用堆或聚集索引表。
 * 列存储表不支持 varchar(max)、nvarchar(max) 和 varbinary(max)。  可以考虑使用堆或聚集索引。
 * 对瞬态数据使用列存储表可能会降低效率。  可以考虑使用堆，甚至临时表。
 * 包含少于 1 亿行的小型表。  可以考虑使用堆表。

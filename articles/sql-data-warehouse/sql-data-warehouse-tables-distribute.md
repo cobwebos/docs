@@ -12,23 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 4becdace365fce1fb70e9e870dd4c8b81d1c7496
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: fe47cc1e5489d094f08b771cc8ec89de84509972
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="distributing-tables-in-sql-data-warehouse"></a>在 SQL 数据仓库中分布表
 > [!div class="op_single_selector"]
-> * [概述][概述]
-> * [数据类型][数据类型]
-> * [分布][分布]
-> * [索引][索引]
-> * [分区][分区]
-> * [统计信息][统计信息]
-> * [临时][临时]
+> * [概述][Overview]
+> * [数据类型][Data Types]
+> * [分布][Distribute]
+> * [索引][Index]
+> * [分区][Partition]
+> * [统计信息][Statistics]
+> * [临时][Temporary]
 >
 >
 
@@ -180,7 +182,7 @@ WITH
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-但是，如果你查询 Azure SQL 数据仓库动态管理视图 (DMV)，则可以执行更详细的分析。  若要开始，请使用[表概述][概述]一文中的 SQL创建 [dbo.vTableSizes][dbo.vTableSizes] 视图。  创建该视图后，运行此查询来识别哪些表有 10% 以上的数据偏斜。
+但是，如果你查询 Azure SQL 数据仓库动态管理视图 (DMV)，则可以执行更详细的分析。  若要开始，请使用[表概述][Overview] 一文中的 SQL 创建 [dbo.vTableSizes][dbo.vTableSizes] 视图。  创建该视图后，运行此查询来识别哪些表有 10% 以上的数据偏斜。
 
 ```sql
 select *
@@ -198,7 +200,7 @@ order by two_part_name, row_count
 ```
 
 ### <a name="resolving-data-skew"></a>解决数据倾斜
-不能保证可以解决所有偏斜。  在某些情况下，某些查询中的表性能可能比数据偏斜的损害更严重。  若要确定是否应该解决表中的数据偏斜，你应该尽可能了解工作负荷中的数据卷和查询。   调查偏斜影响的方法之一是，使用[查询监视][查询监视]一文中的步骤来监视偏斜对查询性能的影响，尤其是对单个分布区完成查询所需时间的影响。
+不能保证可以解决所有偏斜。  在某些情况下，某些查询中的表性能可能比数据偏斜的损害更严重。  若要确定是否应该解决表中的数据偏斜，你应该尽可能了解工作负荷中的数据卷和查询。   调查偏斜影响的方法之一是使用[查询监视][Query Monitoring]一文中的步骤来监视偏斜对查询性能的影响，尤其是对单个分布区完成查询所需时间的影响。
 
 分布式数据是找出将数据偏斜降至最低与将数据移动降至最低两者之间的适当平衡。 这些可能是相反的目标，有时你会想要保留数据偏斜，以减少数据移动。 例如，当分布列经常是联接和聚合中的共享列时，你便会将数据移动降至最低。 最少的数据移动带来的好处可能胜过数据偏斜造成的影响。
 
@@ -283,31 +285,26 @@ RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要了解表设计的详细信息，请参阅文章[分布][分布]、[索引][索引]、[分区][分区]、[数据类型][数据类型]、[统计信息][统计信息]和[临时表][临时]。
+若要了解表设计的详细信息，请参阅文章[分布][Distribute]、[索引][Index]、[分区][Partition]、[数据类型][Data Types]、[统计信息][Statistics]和[临时表][Temporary]。
 
-若要概览最佳做法，请参阅 [SQL 数据仓库最佳实践][SQL 数据仓库最佳实践]。
+有关最佳实践的概述，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。
 
 <!--Image references-->
 
 <!--Article references-->
-[概述]: ./sql-data-warehouse-tables-overview.md
-[数据类型]: ./sql-data-warehouse-tables-data-types.md
-[分布]: ./sql-data-warehouse-tables-distribute.md
-[索引]: ./sql-data-warehouse-tables-index.md
-[分区]: ./sql-data-warehouse-tables-partition.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
-[临时]: ./sql-data-warehouse-tables-temporary.md
-[SQL 数据仓库最佳实践]: ./sql-data-warehouse-best-practices.md
-[查询监视]: ./sql-data-warehouse-manage-monitor.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[Index]: ./sql-data-warehouse-tables-index.md
+[Partition]: ./sql-data-warehouse-tables-partition.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
+[Query Monitoring]: ./sql-data-warehouse-manage-monitor.md
 [dbo.vTableSizes]: ./sql-data-warehouse-tables-overview.md#table-size-queries
 
 <!--MSDN references-->
 [DBCC PDW_SHOWSPACEUSED()]: https://msdn.microsoft.com/library/mt204028.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

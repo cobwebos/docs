@@ -14,12 +14,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 04/05/2017
 ms.author: ankshah
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 7acbdda2e8179219c21370d20d30a94feb405fce
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 7b4f397e4abb66933f05e5d5ba4afeb8c2c00d5f
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -61,6 +61,16 @@ ms.lasthandoff: 03/11/2017
 ![此屏幕截图显示了如何在 Azure 门户中打开“防火墙”边栏选项卡](./media/documentdb-firewall-support/documentdb-azure-portal-firewall.png)
 
 在新窗格中，指定 Azure 门户是否可以访问该帐户，并根据情况添加其他地址和范围，然后单击“保存”。  
+
+> [!NOTE]
+> 启用 IP 访问控制策略时，需要添加 Azure 门户的 IP 地址以维护访问。 门户 IP 地址是：
+> |区域|IP 地址|
+> |------|----------|
+> |所有区域（下面指定的这些区域除外）| 104.42.195.92|
+> |德国|51.4.229.218|
+> |中国|139.217.8.252|
+> |美国亚利桑那州政府|52.244.48.71|
+>
 
 ![此屏幕截图显示了如何在 Azure 门户中配置防火墙设置](./media/documentdb-firewall-support/documentdb-azure-portal-firewall-configure.png)
 

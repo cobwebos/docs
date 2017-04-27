@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 3cd588751346517f9359f760561839339b0f9edb
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 2e1915f017db8286b8a381aacf62205f3d34bcc9
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="securing-access-to-azure-remoteapp-and-beyond"></a>保护对 Azure RemoteApp 的访问安全，以及更多
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -34,7 +35,7 @@ ms.openlocfilehash: 3cd588751346517f9359f760561839339b0f9edb
 阅读相关信息和以下这些问题的解答。
 
 ## <a name="who-can-access-the-collection"></a>谁可以访问该集合？
-管理员选择可以访问集合中的远程应用程序的用户。 可使用 Azure Active Directory (Azure AD) 工作或学校帐户（先前称为“组织帐户”）或 Microsoft 帐户（例如 @outlook.com).）。大多数企业方案使用 Azure AD 帐户；在这些方案中，可使用稍后会讨论的条件访问功能，并且这些方案也是已加入域的集合的唯一选择。 本文的其余部分会假定你使用 Azure AD 帐户和 Azure RemoteApp。
+管理员选择可以访问集合中的远程应用程序的用户。 可使用 Azure Active Directory (Azure AD) 工作或学校帐户（先前称为“组织帐户”）或 Microsoft 帐户（例如 @outlook.com）。 大多数企业方案使用 Azure AD 帐户；在这些方案中，你可以使用稍后会讨论的条件访问功能，并且这些方案也是已加入域的集合的唯一选择。 本文的其余部分会假定你使用 Azure AD 帐户和 Azure RemoteApp。
 
 **我们已完成的工作︰**
 
@@ -115,10 +116,5 @@ Azure RemoteApp 支持两种类型的集合部署，你可以在其中提供你�
 下图显示了完整的解决方案，在这个方案中我们已经构建了一个从最终用户、经由 Azure RemoteApp (ARA)、进入后端资源的安全访问通道。
 ![保护 Azure RemoteApp 的安全](./media/remoteapp-secureaccess/ra-secureoverview.png)在阶段 1 中我们选择了用户，并创建了可控制如何访问 ARA 的访问规则。 在下面的示例中，我们仅允许在企业网络中工作的用户进行访问。 不符合条件的用户根本不能访问 ARA 环境。
 在阶段 2 中，我们仅通过我们控制的 VNet VPN 配置公开了后端资源。 Azure RemoteApp 已被置于同一个 VNet 中。 最终结果是该资源仅可以通过 ARA 环境进行访问。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
-ms.openlocfilehash: eb7e798120ea9075dba92da76826ff621882c32a
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 85ef906d680df8f6848b323d79a09b8414ed0817
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -252,9 +253,4 @@ Azure 存储空间用户经常要使用 Azure 存储客户端工具来查看其�
     <td></td>
   </tr>
 </table>
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

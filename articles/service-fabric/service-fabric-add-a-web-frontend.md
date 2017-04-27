@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2016
+ms.date: 03/30/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: faa452d3ba407d5e1ffb3fc4b60b71b2bc64113b
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: d7084624b7242a8dfc60f49d38f1808116206b46
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -29,9 +30,8 @@ ms.openlocfilehash: faa452d3ba407d5e1ffb3fc4b60b71b2bc64113b
 ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web UI 和 Web API。 让我们将 ASP.NET Web API 项目添加到现有的应用程序。
 
 > [!NOTE]
-> 若要完成本教程，需要[安装 .NET Core 1.0][dotnetcore-install]。
-> 
-> 
+> 本教程基于[用于 Visual Studio 2017 的 ASP.NET Core 工具](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/start-mvc)。 用于 Visual Studio 2015 的 .NET Core 工具不再更新。
+
 
 1. 在解决方案资源管理器中，右键单击应用程序项目中的“**服务**”，然后选择“**添加 > 新建 Service Fabric 服务**”。
    
@@ -39,22 +39,22 @@ ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web 
 2. 在“**创建服务**”页上，选择 **ASP.NET Core** 并将它命名。
    
     ![在新建服务对话框中选择 ASP.NET Web 服务][vs-new-service-dialog]
-3. 下一页将提供一组 ASP.NET Core 项目模板。 请注意，这些都是在 Service Fabric 应用程序外部创建 ASP.NET Core 项目时所看到的相同模板。 对于本教程，我们将选择 **Web API**。 不过你也可以运用相同的思路来构建完整的 Web 应用程序。
+
+3. 下一页将提供一组 ASP.NET Core 项目模板。 请注意，如果 ASP.NET Core 项目是在 Service Fabric 应用程序外部创建的，则在显示这些选项的同时，还会提供少量附加代码，用于向 Service Fabric 运行时注册该服务。 对于本教程，我们将选择 **Web API**。 不过你也可以运用相同的思路来构建完整的 Web 应用程序。
    
     ![选择 ASP.NET 项目类型][vs-new-aspnet-project-dialog]
    
     创建 Web API 项目后，应用程序中会有两个服务。 随着你不断构建应用程序，将以完全相同的方式添加更多服务。 每个服务都可以单独进行版本控制和升级。
 
 > [!TIP]
-> 若要了解有关构建 ASP.NET Core 服务的详细信息，请参阅 [ASP.NET Core 文档](https://docs.asp.net)。
-> 
+> 若要了解有关构建 ASP.NET Core 服务的详细信息，请参阅 [ASP.NET Core 文档](https://docs.microsoft.com/aspnet/core/)。
 > 
 
 ## <a name="run-the-application"></a>运行应用程序
 为了感受一下我们的成果，让我们部署新的应用程序并看看 ASP.NET Core Web API 模板提供的默认行为。
 
 1. 在 Visual Studio 中，按 F5 调试应用。
-2. 部署完成后，Visual Studio 将启动浏览器并打开 ASP.NET Web API 服务的根目录，类似于 http://localhost:33003。 端口号是随机分配的，可能与你计算机上的端口号不同。 ASP.NET Core Web API 模板不提供根目录的默认行为，因此你将在浏览器中收到错误。
+2. 部署完成后，Visual Studio 会启动浏览器并打开 ASP.NET Web API 服务的根目录，该服务默认侦听端口 8966。 ASP.NET Core Web API 模板不提供根目录的默认行为，因此你将在浏览器中收到错误。
 3. 将 `/api/values` 添加到浏览器中的位置。 这将对 Web API 模板中的 ValuesController 调用 `Get` 方法。 它会返回模板提供的默认响应，即包含两个字符串的 JSON 数组：
    
     ![从 ASP.NET Core Web API 模板返回的默认值][browser-aspnet-template-values]
@@ -73,14 +73,16 @@ ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web 
 2. 在左侧导航窗格中选择 **Visual C#** 条目，然后选择“**类库**”模板。 确保 .NET Framework 版本已设置为 **4.5.2**。
    
     ![为有状态服务创建接口项目][vs-add-class-library-project]
+
 3. 若要使某个接口可供 `ServiceProxy` 使用，它必须派生自 IService 接口。 此接口包含在某个 Service Fabric NuGet 包中。 若要添加该程序包，请右键单击新的类库项目，然后选择“**管理 NuGet 程序包**”。
 4. 搜索 **Microsoft.ServiceFabric.Services** 程序包并安装它。
    
     ![添加服务 NuGet 包][vs-services-nuget-package]
+
 5. 在类库中，使用单个方法 `GetCountAsync` 创建接口，并从 IService 扩展接口。
    
     ```c#
-    namespace MyStatefulService.Interfaces
+    namespace MyStatefulService.Interface
     {
         using Microsoft.ServiceFabric.Services.Remoting;
    
@@ -100,7 +102,7 @@ ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web 
 2. 找到继承自 `StatefulService` 的类（例如 `MyStatefulService`），然后扩展它以实现 `ICounter` 接口。
    
     ```c#
-    using MyStatefulService.Interfaces;
+    using MyStatefulService.Interface;
    
     ...
    
@@ -156,18 +158,13 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 现在，有状态服务已准备好接收来自其他服务的流量。 因此，剩下的操作便是从 ASP.NET Web 服务添加代码来与其通信。
 
 1. 在 ASP.NET 项目中，添加对包含 `ICounter` 接口的类库的引用。
-2. 在“**生成**”菜单中，打开 **Configuration Manager**。 您应看到与下面类似的内容：
-   
-    ![将类库显示为 AnyCPU 的 Configuration Manager][vs-configuration-manager]
-   
-    请注意，该类库项目 **MyStatefulService.Interface** 应配置为针对任意 CPU 生成。 为了能在 Service Fabric 中正常运行，它必须显式针对 x64。 单击平台下拉列表，选择“**新建**”，然后创建 x64 平台配置。
-   
-    ![新建类库平台][vs-create-platform]
-3. 将 Microsoft.ServiceFabric.Services 包添加到 ASP.NET 项目，就如同前面对类库项目所做的一样。 这将提供 `ServiceProxy` 类。
+
+2. 将 Microsoft.ServiceFabric.Services 包添加到 ASP.NET 项目，就如同前面对类库项目所做的一样。 这将提供 `ServiceProxy` 类。
+
 4. 在 **Controllers** 文件夹中，打开 `ValuesController` 类。 请注意，`Get` 方法目前只返回“value1”和“value2”的硬编码字符串数组，这符合前面在浏览器中看到的内容。 使用以下代码替换此实现：
    
     ```c#
-    using MyStatefulService.Interfaces;
+    using MyStatefulService.Interface;
     using Microsoft.ServiceFabric.Services.Remoting.Client;
    
     ...
@@ -192,16 +189,19 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     使用这两项信息，Service Fabric 可唯一标识请求应发送到的计算机。 `ServiceProxy` 类还能顺利处理托管有状态服务分区的计算机发生故障的情况，另一台计算机必须进行升级才能取而代之。 这种抽象使得编写客户端代码来处理其他服务变得简单许多。
    
     拥有代理后，我们只需调用 `GetCountAsync` 方法并返回其结果。
+
 5. 再次按 F5 运行修改后的应用程序。 像前面一样，Visual Studio 将自动启动浏览器并打开 Web 项目的根目录。 添加“api/values”路径，你应会看到返回的当前计数器值。
    
     ![浏览器中显示的有状态计数器值][browser-aspnet-counter-value]
    
     定期刷新浏览器，以查看计数器更新值。
 
-> [!WARNING]
-> 模板中提供的 ASP.NET Core Web 服务器称为 Kestrel，[目前尚不支持处理直接 Internet 流量](https://docs.asp.net/en/latest/fundamentals/servers.html#kestrel)。 对于生产方案，请考虑在 [API 管理][api-management-landing-page]或其他面向 Internet 的网关后面托管 ASP.NET Core 终结点。 请注意，IIS 中的部署不支持 Service Fabric。
-> 
-> 
+## <a name="kestrel-and-weblistener"></a>Kestrel 和 WebListener
+
+默认的 ASP.NET Core Web 服务器称为 Kestrel，[目前尚不支持处理直接 Internet 流量](https://docs.asp.net/en/latest/fundamentals/servers.html#kestrel)。 因此，Service Fabric 的 ASP.NET 模板默认使用 [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener)。 
+
+如果不用处理直接 Internet 流量，并且希望将 Kestrel 用作 Web 服务器，则可以在服务侦听器配置中更改它。 只需将 `return new WebHostBuilder().UseWebListener()` 替换为 `return new WebHostBuilder().UseKestrel()`。 Web 主机上的所有其他配置可以保持不变。
+ 
 
 ## <a name="what-about-actors"></a>执行组件的情况如何？
 本教程着重介绍添加与有状态服务通信的 Web 前端。 但是你可以遵循十分类似的模型来与执行组件交流。 事实上，这比较简单。
@@ -232,16 +232,9 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-add-class-library-reference]: ./media/service-fabric-add-a-web-frontend/vs-add-class-library-reference.png
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
-[vs-configuration-manager]: ./media/service-fabric-add-a-web-frontend/vs-configuration-manager.png
 [vs-create-platform]: ./media/service-fabric-add-a-web-frontend/vs-create-platform.png
 
 
 <!-- external links -->
 [dotnetcore-install]: https://www.microsoft.com/net/core#windows
-[api-management-landing-page]: https://azure.microsoft.com/en-us/services/api-management/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

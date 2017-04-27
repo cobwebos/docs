@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6a76c399e626ea85581d5f8fb863da878bdbf50b
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 280737097038ff328d487477279ce4f204b0ac0c
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/09/2017
 ## <a name="prerequisites"></a>先决条件
 * Visual Studio 2012、2013 或 2015
 * 下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)。
-* 将本机客户端应用程序添加到 Azure Active Directory。 有关添加应用程序的步骤，请参阅[将应用程序与 Azure Active Directory 集成](../active-directory/active-directory-integrating-applications.md)。 记下“配置”页上的**客户端 ID** 和**重定向 URI**。
+* 将本机客户端应用程序添加到 Azure Active Directory。 有关添加应用程序的步骤，请参阅[将应用程序与 Azure Active Directory 集成](../active-directory/active-directory-integrating-applications.md)。 记下“配置”页上的**客户端 ID** 和**重定向 URI**。 请参阅[使用 .NET API 复制活动教程](data-factory-copy-activity-tutorial-using-dotnet-api.md)一文获取详细步骤。 
 * 获取 Azure **订阅 ID**和**租户 ID**。 有关说明，请参阅[获取 Azure 订阅 ID和租户 ID](#get-azure-subscription-and-tenant-ids)。
 * 下载并安装用于 Azure 数据工厂的 NuGet 包。 本演练提供说明。
 
@@ -364,7 +364,7 @@ ms.lasthandoff: 03/09/2017
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. 在解决方案资源管理器中展开项目 (**DataFactoryAPITestApp**)，右键单击“引用”，然后单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，然后单击“确定”。
+14. 在“解决方案资源管理器”中展开项目 **DataFactoryAPITestApp**，右键单击“引用”，然后单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，然后单击“确定”。
 15. 生成控制台应用程序。 在菜单中单击“生成”，然后单击“生成解决方案”。
 16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，然后将其上传到 adftutorial 容器。
 

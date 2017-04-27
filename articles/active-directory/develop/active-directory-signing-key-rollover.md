@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: gsacavdm
 translationtype: Human Translation
-ms.sourcegitcommit: 0b035ad1505e45c8c0820c825ff609df6e6100f0
-ms.openlocfilehash: 826824d6ecf039dcf458dd2444b029f284103ed9
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: a13bedc2ad31e45f3525a87655b6c46e653cee16
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -39,7 +40,7 @@ OpenID Connect 发现文档和联合元数据文档中始终有多个有效密�
 * [使用 .NET OWIN OpenID Connect、WS-Fed 或 WindowsAzureActiveDirectoryBearerAuthentication 中间件保护资源的 Web 应用程序/API](#owin)
 * [使用 .NET Core OpenID Connect 或 JwtBearerAuthentication 中间件保护资源的 Web 应用程序/API](#owincore)
 * [使用 Node.js passport-azure-ad 模块保护资源的 Web 应用程序/API](#passport)
-* [保护资源的和使用 Visual Studio 2015 创建的 Web 应用程序/API](#vs2015)
+* [保护资源的和使用 Visual Studio 2015 或 Visual Studio 2017 创建的 Web 应用程序/API](#vs2015)
 * [保护资源的和使用 Visual Studio 2013 创建的 Web 应用程序](#vs2013)
 * [保护资源的和使用 Visual Studio 2013 创建的 Web API](#vs2013_webapi)
 * [保护资源的和使用 Visual Studio 2012 创建的 Web 应用程序](#vs2012)
@@ -51,20 +52,20 @@ OpenID Connect 发现文档和联合元数据文档中始终有多个有效密�
 * 从 Azure AD 应用程序库（包括自定义）添加的应用程序具有单独的签名密钥指南。 [详细信息。](../active-directory-sso-certs.md)
 * 通过应用程序代理发布的本地应用程序无需担心签名密钥。
 
-### <a name="a-namenativeclientanative-client-applications-accessing-resources"></a><a name="nativeclient"></a>访问资源的本机客户端应用程序
+### <a name="nativeclient"></a>访问资源的本机客户端应用程序
 仅访问资源的应用程序（例如 Microsoft Graph、KeyVault、Outlook API 和其他 Microsoft API）通常只获取一个令牌并将其传递给资源所有者。 由于它们不保护任何资源且不检查令牌，因此不需要确保正确地为令牌签名。
 
 本机客户端应用程序（不管是桌面还是移动应用程序）都属于此类别，因此不受滚动更新的影响。
 
-### <a name="a-namewebclientaweb-applications--apis-accessing-resources"></a><a name="webclient"></a>访问资源的 Web 应用程序/API
+### <a name="webclient"></a>访问资源的 Web 应用程序/API
 仅访问资源的应用程序（例如 Microsoft Graph、KeyVault、Outlook API 和其他 Microsoft API）通常只获取一个令牌并将其传递给资源所有者。 由于它们不保护任何资源且不检查令牌，因此不需要确保正确地为令牌签名。
 
 使用仅限应用流（客户端凭据/客户端证书）的 Web 应用程序和 Web API 属于此类别，因此不受滚动更新的影响。
 
-### <a name="a-nameappservicesaweb-applications--apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>保护资源的和使用 Azure App Service 构建的 Web 应用程序/API
+### <a name="appservices"></a>保护资源的和使用 Azure App Service 构建的 Web 应用程序/API
 Azure App Service 的服务身份验证/授权 (EasyAuth) 功能已包含必要的逻辑来自动处理密钥滚动更新。
 
-### <a name="a-nameowinaweb-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>使用 .NET OWIN OpenID Connect、WS-Fed 或 WindowsAzureActiveDirectoryBearerAuthentication 中间件保护资源的 Web 应用程序/API
+### <a name="owin"></a>使用 .NET OWIN OpenID Connect、WS-Fed 或 WindowsAzureActiveDirectoryBearerAuthentication 中间件保护资源的 Web 应用程序/API
 如果你的应用程序使用 .NET OWIN OpenID Connect、WS-Fed 或 WindowsAzureActiveDirectoryBearerAuthentication 中间件，则它已包含必要的逻辑来自动处理密钥滚动更新。
 
 你可以通过查看应用程序的 Startup.cs 或 Startup.Auth.cs 中的以下代码片段，来确认应用程序是否正在使用上述任何中间件
@@ -91,7 +92,7 @@ app.UseWsFederationAuthentication(
      });
 ```
 
-### <a name="a-nameowincoreaweb-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>使用 .NET Core OpenID Connect 或 JwtBearerAuthentication 中间件保护资源的 Web 应用程序/API
+### <a name="owincore"></a>使用 .NET Core OpenID Connect 或 JwtBearerAuthentication 中间件保护资源的 Web 应用程序/API
 如果应用程序使用 .NET Core OWIN OpenID Connect 或 JwtBearerAuthentication 中间件，则它已包含必要的逻辑来自动处理密钥滚动更新。
 
 你可以通过查看应用程序的 Startup.cs 或 Startup.Auth.cs 中的以下代码片段，来确认应用程序是否正在使用上述任何中间件
@@ -111,7 +112,7 @@ app.UseJwtBearerAuthentication(
      });
 ```
 
-### <a name="a-namepassportaweb-applications--apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>使用 Node.js passport-azure-ad 模块保护资源的 Web 应用程序/API
+### <a name="passport"></a>使用 Node.js passport-azure-ad 模块保护资源的 Web 应用程序/API
 如果你的应用程序使用 Node.js passport-ad 模块，则它已包含必要的逻辑来自动处理密钥滚动更新。
 
 你可以通过搜索应用程序的 app.js 中的以下代码片段，来确认应用程序是否正在使用 passport-ad
@@ -124,12 +125,12 @@ passport.use(new OIDCStrategy({
 ));
 ```
 
-### <a name="a-namevs2015aweb-applications--apis-protecting-resources-and-created-with-visual-studio-2015"></a><a name="vs2015"></a>保护资源的和使用 Visual Studio 2015 创建的 Web 应用程序/API
-如果应用程序通过 Visual Studio 2015 中的 Web 应用程序模板构建，且从“更改身份验证”菜单中选择了“工作和学校帐户”，则应用程序已包含必要的逻辑来自动处理密钥滚动更新。 此逻辑嵌入在 OWIN OpenID Connect 中间件中，可检索和缓存来自 OpenID Connect 发现文档中的密钥并定期刷新它们。
+### <a name="vs2015"></a>保护资源的和使用 Visual Studio 2015 或 Visual Studio 2017 创建的 Web 应用程序/API
+如果应用程序通过 Visual Studio 2015 或 Visual Studio 2017 中的 Web 应用程序模板构建，且从“更改身份验证”菜单中选择了“工作和学校帐户”，则应用程序已包含必要的逻辑来自动处理密钥滚动更新。 此逻辑嵌入在 OWIN OpenID Connect 中间件中，可检索和缓存来自 OpenID Connect 发现文档中的密钥并定期刷新它们。
 
 如果你已手动将身份验证添加到解决方案，则应用程序可能不包含必要的密钥滚动更新逻辑。 需要自行编写该逻辑，或遵循[使用任何其他库或手动实现任何受支持协议的 Web 应用程序/API](#other) 中的步骤。
 
-### <a name="a-namevs2013aweb-applications-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>保护资源的和使用 Visual Studio 2013 创建的 Web 应用程序
+### <a name="vs2013"></a>保护资源的和使用 Visual Studio 2013 创建的 Web 应用程序
 如果应用程序通过 Visual Studio 2013 中的 Web 应用程序模板生成，并且你从“更改身份验证”菜单中选择了“组织帐户”，则应用程序已包含必要的逻辑来自动处理密钥滚动更新。 此逻辑将组织的唯一标识符和签名密钥信息存储到与项目关联的两个数据库表中。 你可以在项目的 Web.config 文件中找到数据库的连接字符串。
 
 如果你已手动将身份验证添加到解决方案，则应用程序可能不包含必要的密钥滚动更新逻辑。 需要自行编写该逻辑，或遵循[使用任何其他库或手动实现任何受支持协议的 Web 应用程序/API](#other) 中的步骤。
@@ -144,7 +145,7 @@ passport.use(new OIDCStrategy({
 6. 构建并运行应用程序。 登录到你的帐户后，可以停止应用程序。
 7. 返回“服务器资源管理器”，查看“IssuingAuthorityKeys”和“Tenants”表中的值。 你会注意到，已自动使用联合元数据文档中的相应信息对这两个表进行重新填充。
 
-### <a name="a-namevs2013aweb-apis-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>保护资源的和使用 Visual Studio 2013 创建的 Web API
+### <a name="vs2013"></a>保护资源的和使用 Visual Studio 2013 创建的 Web API
 如果在 Visual Studio 2013 中使用 Web API 模板创建了 Web API 应用程序，然后从“更改身份验证”菜单中选择了“组织帐户”，则应用程序中已包含必需的逻辑。
 
 如果你已手动配置身份验证，请参阅下面的说明，了解如何配置 Web API 来自动更新其密钥信息。
@@ -239,7 +240,7 @@ namespace JWTValidation
 }
 ```
 
-### <a name="a-namevs2012aweb-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>保护资源的和使用 Visual Studio 2012 创建的 Web 应用程序
+### <a name="vs2012"></a>保护资源的和使用 Visual Studio 2012 创建的 Web 应用程序
 如果你的应用程序是在 Visual Studio 2012 中生成的，则你可能已使用标识和访问工具配置了应用程序。 还可能会用到[验证颁发者名称注册表 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)。 VINR 负责维护受信任标识提供程序 (Azure AD) 以及验证它们颁发令牌时所使用密钥的相关信息。 使用 VINR 还可轻松地自动更新存储在 Web.config 文件中的密钥信息，具体方法是：下载与你的目录关联的最新联合元数据文档，使用最新文档检查配置是否过期，然后根据需要更新应用程序以使用新密钥。
 
 如果你是使用 Microsoft 提供的代码示例或演练文档创建的应用程序，则密钥滚动更新逻辑已包含在你的项目中。 你会注意到下面的代码已存在于你的项目中。 如果应用程序尚未包含该逻辑，请按照下面的步骤添加该逻辑，并验证该逻辑是否正常工作。
@@ -285,7 +286,7 @@ namespace JWTValidation
 2. 在 **<add thumbprint=””>** 设置中，通过将任一字符替换为不同的字符来更改指纹值。 保存 **Web.config** 文件。
 3. 生成然后运行应用程序。 如果你能完成登录过程，则应用程序将通过从你的目录的联合元数据文档下载所需的信息来成功地更新密钥。 如果在登录时遇到问题，请阅读[使用 Azure AD 将登录名添加到 Web 应用程序](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)主题，或下载并检查代码示例 [Multi-Tenant Cloud Application for Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)（用于 Azure Active Directory 的多租户云应用程序），确保应用程序中的更改是正确的。
 
-### <a name="a-namevs2010aweb-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>保护资源的和使用 Visual Studio 2008 或 2010 和 Windows Identity Foundation (WIF) v1.0 for .NET 3.5 创建的 Web 应用程序
+### <a name="vs2010"></a>保护资源的和使用 Visual Studio 2008 或 2010 和 Windows Identity Foundation (WIF) v1.0 for .NET 3.5 创建的 Web 应用程序
 如果你在 WIF v1.0 中构建应用程序，则系统未提供相应的机制来自动刷新应用程序的配置以使用新密钥。
 
 * 最简单的方法使用 WIF SDK 中包含的 FedUtil 工具，该工具可以检索最新的元数据文档并更新配置。
@@ -299,7 +300,7 @@ namespace JWTValidation
 3. 系统提示时，请选择“更新”以开始更新联合元数据。 如果你有权访问托管应用程序的服务器环境，则可以选择使用 FedUtil 的[自动元数据更新计划程序](https://msdn.microsoft.com/library/ee517272.aspx)。
 4. 单击“完成”以完成更新过程。
 
-### <a name="a-nameotheraweb-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>使用任何其他库保护资源或手动实现任何受支持协议的 Web 应用程序/API
+### <a name="other"></a>使用任何其他库保护资源或手动实现任何受支持协议的 Web 应用程序/API
 如果你正在使用其他某个库或手动实现任何受支持的协议，则需要检查该库或实现，以确保正在从 OpenID Connect 发现文档或联合元数据文档检索密钥。 进行此项检查的方法之一是在你的代码或库的代码中执行搜索，以找到对 OpenID 发现文档或联合元数据文档的任何调用。
 
 如果密钥存储在应用程序中或在其中进行了硬编码，则可按照本指南文档末尾的说明执行手动滚动更新，手动检索密钥并进行相应更新。 **强烈建议**使用本文中所述的任何方法增强应用程序以支持自动滚动更新，从而避免在 Azure AD 增大其滚动更新频率或发生紧急带外滚动更新时出现工作中断或开销。
@@ -309,10 +310,5 @@ namespace JWTValidation
 
 ## <a name="how-to-perform-a-manual-rollover-if-you-application-does-not-support-automatic-rollover"></a>如果应用程序不支持自动滚动更新，如何执行手动滚动更新
 如果应用程序**不**支持自动滚动更新，则需要建立一个定期监视 Azure AD 签名密钥的过程，并手动执行相应滚动更新。 [此 GitHub 存储库](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)包含脚本和如何执行此操作的说明。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

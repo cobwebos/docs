@@ -1,10 +1,10 @@
 ---
-title: "Application Insights 数据模型"
+title: "Azure Application Insights 数据模型 | Microsoft Docs"
 description: "介绍在 JSON 中通过连续导出导出的、用作筛选器的属性。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
 ms.service: application-insights
 ms.workload: tbd
@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 03/21/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: feaa76e81f64b224f62e583541bf2ef376793a38
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 3084bb344976bc542e78a55a1c27c4dedc111af0
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -30,7 +31,6 @@ ms.openlocfilehash: feaa76e81f64b224f62e583541bf2ef376793a38
 * 持续时间的单位为微秒，因此 10000000 == 1 秒。
 * 日期和时间采用 UTC，以 ISO 格式 `yyyy-MM-DDThh:mm:ss.sssZ` 表示
 
-有多个[示例](app-insights-export-telemetry.md#code-samples)演示了其用法。
 
 ## <a name="example"></a>示例
     // A server report about an HTTP request
@@ -351,9 +351,4 @@ ms.openlocfilehash: feaa76e81f64b224f62e583541bf2ef376793a38
 * [Application Insights](app-insights-overview.md)
 * [连续导出](app-insights-export-telemetry.md)
 * [代码示例](app-insights-export-telemetry.md#code-samples)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

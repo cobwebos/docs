@@ -1,21 +1,22 @@
 ---
-title: "Application Insights 中的数据保留和存储"
+title: "Azure Application Insights 中的数据保留和存储 | Microsoft Docs"
 description: "保留和隐私政策声明"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: a6268811-c8df-42b5-8b1b-1d5a7e94cbca
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 04/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 3dc6373c9aaa01000a7da282e48557f175f040e7
-ms.openlocfilehash: a6588718fdc0b561a70f25ac4d674c5edf08d8cb
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: d82f27c9a657a97f23b60ade352e4d2a87166233
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -67,7 +68,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在你自己�
 * [异常](app-insights-asp-net-exceptions.md)和崩溃 - **堆栈转储**、版本 ID、CPU 类型。 
 * [依赖项](app-insights-asp-net-dependencies.md) - 对外部服务的调用，例如 REST、SQL、AJAX。 URI 或连接字符串、持续时间、成功结果、命令。
 * [可用性测试](app-insights-monitor-web-app-availability.md) - 测试持续时间、步骤、响应。
-* [跟踪日志](app-insights-search-diagnostic-logs.md)和[自定义遥测](app-insights-api-custom-events-metrics.md)  -  **在日志或遥测中编写的任何内容**。
+* [跟踪日志](app-insights-asp-net-trace-logs.md)和[自定义遥测](app-insights-api-custom-events-metrics.md)  -  **在日志或遥测中编写的任何内容**。
 
 [更多详细信息](#data-sent-by-application-insights)。
 
@@ -86,7 +87,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在你自己�
 可以编写[遥测处理器插件](app-insights-api-filtering-sampling.md)来实现此目的。
 
 ## <a name="how-long-is-the-data-kept"></a>数据保留多长时间？
-原始数据点（即，可以在 Analytics 中查询，在“搜索”中检查的项）保留 90 天。 如果需要将数据保留&7; 天以上，可以使用[连续导出](app-insights-export-telemetry.md)将它复制到存储帐户。
+原始数据点（即，可以在 Analytics 中查询，在“搜索”中检查的项）保留 90 天。 如果需要将数据保留 7 天以上，可以使用[连续导出](app-insights-export-telemetry.md)将它复制到存储帐户。
 
 1 分钟粒度的聚合数据（即，在指标资源管理器中显示的计数、平均值和其他统计信息）可保留 90 天。
 
@@ -198,16 +199,7 @@ Application Insights 不会筛选或删除数据。 你应该适当地管理数�
 ## <a name="credits"></a>致谢
 此产品包含 MaxMind 创建的 GeoLite2 数据，可从 [http://www.maxmind.com](http://www.maxmind.com) 获取。
 
-## <a name="a-namevideoavideos"></a><a name="video"></a>视频
-#### <a name="introduction"></a>介绍
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Application-Insights-Introduction/player]
-> 
-> 
 
-#### <a name="get-started"></a>入门
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Getting-Started-with-Application-Insights/player]
-> 
-> 
 
 <!--Link references-->
 
@@ -221,10 +213,5 @@ Application Insights 不会筛选或删除数据。 你应该适当地管理数�
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

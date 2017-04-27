@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 03/05/2017
+ms.date: 04/05/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: e0de3b12b98bf9bf361607dac4b087e4eacabf1e
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: ab914153df01c6d8135732bc772b78066e14d1d1
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -26,9 +26,8 @@ ms.lasthandoff: 03/06/2017
 > [!div class="op_single_selector"]
 > * [门户](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](search-get-started-management-api.md)
-> 
-> 
+> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自定义应用中生成丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.com)中对已预配的搜索服务执行的*服务管理*任务。 *服务管理*设计成轻型，它限于以下任务：
 
@@ -74,7 +73,7 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 根据服务的常规信息，可以通过以下方式获取信息：
 
 * 在门户中、在服务仪表板上、通过通知、属性和状态消息。
-* 使用 [PowerShell](search-manage-powershell.md) 或[管理 REST API](https://msdn.microsoft.com/library/azure/dn832684.aspx) 来[获取服务属性](https://msdn.microsoft.com/library/azure/dn832694.aspx)，或索引资源使用状况的状态。
+* 使用 [PowerShell](search-manage-powershell.md) 或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 来[获取服务属性](https://docs.microsoft.com/rest/api/searchmanagement/services)，或索引资源使用状况的状态。
 * 如前面所述，通过[搜索流量分析](search-traffic-analytics.md)。
 
 <a id="manage-keys"></a>
@@ -116,8 +115,8 @@ API 密钥是随机生成的数字和字母所组成的字符串。 它以独占
 
 使用搜索服务 API，可以获取文档和索引的计数。 存在与基于定价层的这些计数相关联的硬限制。 有关详细信息，请参阅[搜索服务限制](search-limits-quotas-capacity.md)。 
 
-* [获取索引统计信息](http://msdn.microsoft.com/library/dn798942.aspx)
-* [计数文档](http://msdn.microsoft.com/library/dn798924.aspx)
+* [获取索引统计信息](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [计数文档](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 > [!NOTE]
 > 缓存行为可暂时放宽限制。 例如，使用共享的服务时，你可能会看到文档计数超过 10,000 个文档的硬限制。 该超出情形是暂时的，将在下一次限制强制检查中检测出来。 
@@ -151,7 +150,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 它以独占
 ### <a name="add-replicas"></a>添加副本
 增加每秒查询次数 (QPS) 或实现高可用性可通过添加副本来完成。 每个副本都有索引的副本，因此多添加一个副本将转换为可用于处理服务查询要求的多个索引。 高可用性至少需要 3 个副本（有关详细信息，请参阅[容量规划](search-capacity-planning.md)）。
 
-具有许多副本的搜索服务可通过大量索引进行负载平衡查询请求。 在给定查询量级别的情况下，当有更多索引副本可用于为请求提供服务时，查询吞吐量的速度将更快。 如果出现查询延迟，会期望在附加副本联机后对性能产生积极的影响。
+具有许多副本的搜索服务可通过大量索引进行负载均衡查询请求。 在给定查询量级别的情况下，当有更多索引副本可用于为请求提供服务时，查询吞吐量的速度将更快。 如果出现查询延迟，会期望在附加副本联机后对性能产生积极的影响。
 
 尽管添加副本时查询吞吐量会提高，但不会按在将向服务添加副本时的恰好两倍或三倍来提高。 所有搜索应用程序都会因可能影响到查询性能的外部因素而受到约束。 复杂的查询和网络延迟是造成查询响应次数变化的两个因素。
 
@@ -170,7 +169,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 它以独占
 
 不存在任何检测方法可告诉你哪些索引分片存储在特定分区上。 每个分区提供大约 25 GB 的存储，因此需要将存储减少到可让所拥有分区数能容纳的大小。 如果要还原为一个分区，则所有 12 个分片都需要适合。
 
-为了帮助实现未来规划，你可能需要检查存储（使用[获取索引统计信息](http://msdn.microsoft.com/library/dn798942.aspx)），了解实际使用了多少空间。 
+为了帮助实现未来规划，你可能需要检查存储（使用[获取索引统计信息](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)），了解实际使用了多少空间。 
 
 <a id="advanced-deployment"></a>
 
@@ -187,7 +186,6 @@ API 密钥是随机生成的数字和字母所组成的字符串。 它以独占
 了解与服务管理相关的操作类型后，请考虑服务管理的各种方法：
 
 * [PowerShell](search-manage-powershell.md)
-* [管理 REST API](search-get-started-management-api.md)
 
 此外，如果尚未执行此操作，请查看[性能和优化文章](search-performance-optimization.md)，并选择性地观看上一部分所述的视频，以获取推荐技术的深入探讨和演示。
 

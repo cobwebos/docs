@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 02d810db5433370802b866424c24464d64171ef0
-ms.openlocfilehash: 6921965c3286209e024ba59637da0c485b4a0c71
-ms.lasthandoff: 02/01/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 14b7900a8b4fbf86e8a814def6fa8c7915832376
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/01/2017
 请参阅 [Azure 订阅和服务限制、配额与约束条件](../azure-subscription-service-limits.md#data-factory-limits)一文的 **Azure 数据工厂限制**部分。
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Azure 数据工厂服务的创作/开发人员体验是什么？
-可以使用下列方法之一创作/创建数据工厂：
+可以使用下列工具/SDK 之一创作/创建数据工厂：
 
 * **Azure 门户**
     Azure 门户中的“数据工厂”边栏选项卡提供丰富的用户界面，可供你创建数据工厂和链接服务。 “数据工厂编辑器”也是该门户的一部分，可用于创建链接服务、表、数据集和管道并且操作简单，通过指定这些项目的 JSON 定义即可实现。 有关使用门户/编辑器创建和部署数据工厂的示例，请参阅[使用 Azure 门户构建第一个数据管道](data-factory-build-your-first-pipeline-using-editor.md)。
@@ -64,7 +64,7 @@ ms.lasthandoff: 02/01/2017
 否。 和其他 Azure 资源一样，不可以更改 Azure 数据工厂的名称。
 
 ### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>是否可以将数据工厂从一个 Azure 订阅移动到另一个？
-是的。 可以使用数据工厂边栏选项卡上的“移动”按钮，如下面的关系图所示。
+是的。 使用数据工厂边栏选项卡上的“移动”按钮，如下面的关系图所示：
 
 ![移动数据工厂](media/data-factory-faq/move-data-factory.png)
 
@@ -78,6 +78,9 @@ ms.lasthandoff: 02/01/2017
 | [Azure 机器学习](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[机器学习活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure SQL 数据仓库](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[存储过程](data-factory-stored-proc-activity.md) |
+
+### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure 数据工厂与 SQL Server Integration Services (SSIS) 相比如何？ 
+请参阅 [Azure 数据工厂与 SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) 演示文稿，来自我们的 MVP（最有价值的专家）之一 Reza Rad。 幻灯片中可能未列出数据工厂中的一些最新更改。 我们将不断向 Azure 数据工厂添加更多的功能。 我们将不断向 Azure 数据工厂添加更多的功能。 我们会在今年晚些时候，将这些更新纳入 Microsoft 的数据集成技术的比较中。   
 
 ## <a name="activities---faq"></a>活动 - 常见问题解答
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>在数据工厂管道中可以使用哪些不同的活动类型？
@@ -158,7 +161,7 @@ Pipeline 1: dataset4->activity4->dataset5
     "offset": "06:00:00"
 }
 ```
-每日切片在**上午&6; 点**而不是默认的午夜开始。     
+每日切片在**上午 6 点**而不是默认的午夜开始。     
 
 ### <a name="how-can-i-rerun-a-slice"></a>如何重新运行切片？
 可通过以下方式之一重新运行切片：

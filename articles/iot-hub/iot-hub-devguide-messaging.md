@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: e9e1649e4329d10ca8b87c730ad8c6beb3be818f
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: ac3f4d2220c1902f00049ce237468ddee992209d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -191,7 +191,7 @@ IoT 中心还支持用户管理内置设备到云接收终结点上的使用者�
 | --- | --- |
 | EnqueuedTimeUtc |指示消息结果出现时的时间戳。 例如，设备已完成或消息已过期。 |
 | OriginalMessageId |此反馈信息所属的从云到设备的消息的 **MessageId**。 |
-| StatusCode |必须是整数。 在 IoT 中心生成的反馈消息中使用。 <br/> 0 = 成功 <br/> 1 = 消息过期 <br/> 2 = 超过最大传送数 <br/> 3 = 消息已被拒绝 |
+| StatusCode |必需的字符串。 在 IoT 中心生成的反馈消息中使用。 <br/> “Success” <br/> “Expired” <br/> “DeliveryCountExceeded” <br/> “Rejected” <br/> “Purged” |
 | 说明 |**StatusCode** 的字符串值。 |
 | DeviceId |此反馈信息所属的从云到设备的消息的目标设备的 **DeviceId**。 |
 | DeviceGenerationId |此反馈信息所属的从云到设备的消息的目标设备的 **DeviceGenerationId**。 |

@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0b81ef8425e44a9813fc0220f0ab314a3110f265
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 4cd4d35f44320ac57f015b5444985e8b4976ccf0
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-publish-an-app-in-remoteapp"></a>如何在 RemoteApp 中发布应用
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -35,17 +36,12 @@ ms.openlocfilehash: 0b81ef8425e44a9813fc0220f0ab314a3110f265
 在门户中的“**发布**”选项卡上，单击“**发布**”。 你可以从模板映像的“**开始**”菜单添加应用，或者可以提供在模板映像上应用所安装到的路径。 如果你选择从“**开始**”菜单添加，请选择要从列表发布的应用。 如果你选择提供到应用的路径，请为输入应用的名称，并输入应用的路径。 在路径中使用变量 - 例如，使用 "%systemdrive%" 而不是 "c:\"。
 
 > [!NOTE]
-> 如果你想要从“**开始**”菜单添加应用，则需要先*将应用添加到*你的模板映像上的“*开始**”菜单中。* 否则，RemoteApp 将仅会看到“**开始**”菜单中的*内容*，你会感到困惑。 
+> 如果想要从“开始”菜单添加应用，则需要*将应用添加到模板映像上的“开始”菜单。* 否则，RemoteApp 将仅会看到“**开始**”菜单中的*内容*，你会感到困惑。 
 > 
 > 若要确保你的应用位于“**开始**”菜单中，请将快捷方式文件 **.lnk** -放置到 %systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs 文件夹内。
 > 
 > 如果你在创建模板时忘记将应用添加到“**开始**”菜单中，请选择将该路径添加到应用中。 （或者重新创建模板映像，但这会需要多做一些工作。）
 > 
 > 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

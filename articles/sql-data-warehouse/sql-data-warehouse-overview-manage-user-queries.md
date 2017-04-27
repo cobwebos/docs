@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: performance
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9e557ff1d3faad244d660d9d98bc6d889e59f13c
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 54346a8e6f42fc81cd727db03c02f0e935db07d3
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -25,26 +27,21 @@ ms.openlocfilehash: 9e557ff1d3faad244d660d9d98bc6d889e59f13c
 
 | 类别 | 任务或注意事项 | 说明 |
 |:--- |:--- |:--- |
-| 降低性能 |查找长时间运行的用户查询 |[查找长时间运行的查询][查找长时间运行的查询] |
-| 并发 |将并发资源分配给用户查询 |[并发性和工作负荷管理][并发性和工作负荷管理] |
+| 降低性能 |查找长时间运行的用户查询 |[查找长时间运行的查询][Find long-running queries] |
+| 并发 |将并发资源分配给用户查询 |[并发性和工作负荷管理][Concurrency and workload management] |
 
 ## <a name="next-steps"></a>后续步骤
-有关更多管理提示，请转到[管理概述][管理概述]。
+有关更多管理提示，请转到[管理概述][Management overview]。
 
 <!--Image references-->
 
 <!--Article references-->
-[查找长时间运行的查询]: sql-data-warehouse-manage-monitor.md
-[并发性和工作负荷管理]: sql-data-warehouse-develop-concurrency.md
-[管理概述]: sql-data-warehouse-overview-manage.md
+[Find long-running queries]: sql-data-warehouse-manage-monitor.md
+[Concurrency and workload management]: sql-data-warehouse-develop-concurrency.md
+[Management overview]: sql-data-warehouse-overview-manage.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

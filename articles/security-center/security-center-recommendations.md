@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
+ms.date: 04/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 51a882d82793e5e284cfaeec9271ff3719385fcc
-ms.openlocfilehash: 4bebc8267040a52fabc12fa96d38f96f0a0eb993
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: b16d8607ca0dbb08421b332df11e462267eb80f5
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -84,8 +85,8 @@ ms.openlocfilehash: 4bebc8267040a52fabc12fa96d38f96f0a0eb993
 | [解决终结点保护运行状况警报](security-center-resolve-endpoint-protection-health-alerts.md) |建议解决终结点保护故障。 |
 | [在子网或虚拟机上启用网络安全组](security-center-enable-network-security-groups.md) |建议在子网或 VM 上启用 NSG。 |
 | [通过面向 Internet 的终结点限制访问](security-center-restrict-access-through-internet-facing-endpoints.md) |建议为 NSG 配置入站流量规则。 |
-| [启用服务器 SQL 审核](security-center-enable-auditing-on-sql-servers.md) |建议为 Azure SQL 服务器启用审核。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。） |
-| [启用数据库 SQL 审核](security-center-enable-auditing-on-sql-databases.md) |建议为 Azure SQL 数据库启用审核。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。） |
+| [在 SQL 服务器上启用审核与威胁检测](security-center-enable-auditing-on-sql-servers.md) |建议开启 Azure SQL Server 的审核与威胁检测。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。） |
+| [在 SQL 数据库上启用审核与威胁检测](security-center-enable-auditing-on-sql-databases.md) |建议开启 Azure SQL 数据库的审核与威胁检测。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。） |
 | [启用 SQL 数据库的透明数据加密](security-center-enable-transparent-data-encryption.md) |建议启用 SQL 数据库加密。 （仅 Azure SQL 服务。） |
 | [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意软件程序，则必须在 VM 上安装 VM 代理。 对于从 Azure 应用商店部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
 | [应用磁盘加密](security-center-apply-disk-encryption.md) |建议使用 Azure 磁盘加密（Windows 和 Linux VM）对 VM 磁盘进行加密。 对于 VM 上的 OS 和数据卷，建议使用加密。 |
@@ -123,9 +124,4 @@ ms.openlocfilehash: 4bebc8267040a52fabc12fa96d38f96f0a0eb993
 [1]: ./media/security-center-recommendations/recommendations-tile.png
 [2]: ./media/security-center-recommendations/filter-recommendations.png
 [3]: ./media/security-center-recommendations/dismiss-recommendations.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

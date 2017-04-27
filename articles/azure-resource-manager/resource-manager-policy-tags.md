@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 72d398c529fc7dd5eef450da0e134dcdab534ac5
-ms.openlocfilehash: 375a8df763eb6b4b8f7349e0061ab39c076ebfc6
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 6e71fd9eda822478fa0555aa44908a4094fe8de2
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: 375a8df763eb6b4b8f7349e0061ab39c076ebfc6
 * 将所需标记和值附加到带其他标记但未带所需标记和值的新资源和更新的资源上。
 * 不能从任何现有资源中删除所需标记和值。
 
-可向资源组应用以下&3; 项策略来实现此要求：
+可向资源组应用以下 3 项策略来实现此要求：
 
 * [附加标记](#append-tag) 
 * [在其他标记上附加标记](#append-tag-with-other-tags)
@@ -173,13 +174,8 @@ foreach($r in $resources)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 定义策略规则后（如上述示例所示），需要创建策略定义并将其分配给作用域。 作用域可以是订阅、资源组或资源。 有关创建和分配策略的示例，请参阅[分配和管理策略](resource-manager-policy-create-assign.md)。 
+* 定义策略规则后（如上述示例所示），需要创建策略定义并将其分配给作用域。 作用域可以是订阅、资源组或资源。 若要通过门户分配策略，请参阅[使用 Azure 门户分配和管理资源策略](resource-manager-policy-portal.md)。 若要通过 REST API、PowerShell 或 Azure CLI 分配策略，请参阅[通过脚本分配和管理策略](resource-manager-policy-create-assign.md)。
 * 有关资源策略的简介，请参阅[资源策略概述](resource-manager-policy.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

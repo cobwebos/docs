@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 56eb95f5c8dfb34c0dbaec75efc5509f0c930ec3
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: c46a85aaf5237a2a7643cc9069255bdad9ab1d69
+ms.lasthandoff: 04/07/2017
 
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
@@ -284,7 +284,7 @@ ms.lasthandoff: 03/06/2017
 <set-body>Hello world!</set-body>  
 ```  
   
-#### <a name="example-accessing-the-body-as-a-string"></a>示例：访问字符串形式的正文  
+#### <a name="example-accessing-the-body-as-a-string-note-that-we-are-preserving-the-original-request-body-so-that-we-can-access-it-later-in-the-pipeline"></a>示例：访问字符串形式的正文。 请注意，我们将保留原始请求正文，以便稍后可以在管道中进行访问。
   
 ```xml  
 <set-body>  
@@ -298,7 +298,7 @@ ms.lasthandoff: 03/06/2017
 </set-body>  
 ```  
   
-#### <a name="example-accessing-the-body-as-a-jobject"></a>示例：访问 JObject 形式的正文  
+#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>示例：访问 JObject 形式的正文。 请注意，由于我们不保留原始请求正文，稍后在管道进行访问将产生异常。  
   
 ```xml  
 <set-body>   
@@ -379,19 +379,41 @@ ms.lasthandoff: 03/06/2017
 |template|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- Liquid - 设置正文策略会使用 Liquid 模板引擎 |否|Liquid|  
 
 对于访问请求和响应信息，Liquid 模板可绑定到具有以下属性的上下文对象： <br />
-<pre>上下文。
-请求。
-Url Method OriginalMethod OriginalUrl IpAddress MatchedParameters HasBody ClientCertificates 标头
+<pre>context.
+    Request.
+        Url
+        Method
+        OriginalMethod
+        OriginalUrl
+        IpAddress
+        MatchedParameters
+        HasBody
+        ClientCertificates
+        Headers
 
     Response.
         StatusCode
         Method
         Headers
-URL。
-Scheme Host Port Path Query QueryString ToUri ToString
+Url.
+    Scheme
+    Host
+    Port
+    Path
+    Query
+    QueryString
+    ToUri
+    ToString
 
-OriginalUrl。
-Scheme Host Port Path Query QueryString ToUri ToString
+OriginalUrl.
+    Scheme
+    Host
+    Port
+    Path
+    Query
+    QueryString
+    ToUri
+    ToString
 </pre>
 
 

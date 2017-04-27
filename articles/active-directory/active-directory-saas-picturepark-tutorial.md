@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/20/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: e24bd626cd950f6e6d9474d1bd5f97c3ea4fb925
-ms.openlocfilehash: 626bdc99702b38c127beba54979add9b1cbd633f
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a6b6610bb4d4b427f525934146340a9cca6f52cb
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -32,13 +33,13 @@ ms.openlocfilehash: 626bdc99702b38c127beba54979add9b1cbd633f
 在本教程中概述的方案由以下构建基块组成：
 
 1. 为 Picturepark 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
 ![方案](./media/active-directory-saas-picturepark-tutorial/IC795055.png "方案")
 
-## <a name="enabling-the-application-integration-for-picturepark"></a>为 Picturepark 启用应用程序集成
+## <a name="enable-the-application-integration-for-picturepark"></a>为 Picturepark 启用应用程序集成
 本部分的目的是概述如何为 Picturepark 启用应用程序集成。
 
 **若要为 Picturepark 启用应用程序集成，请执行以下步骤：**
@@ -64,11 +65,11 @@ ms.openlocfilehash: 626bdc99702b38c127beba54979add9b1cbd633f
    ![Picturepark](./media/active-directory-saas-picturepark-tutorial/IC795057.png "Picturepark")
 
 
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 
 此部分的目的是概述如何使用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Picturepark 进行身份验证。  
 
-配置 Picturepark 的单一登录要求检索证书的指纹值。  
+配置 Picturepark 的 SSO 需要检索证书的指纹值。  
 
 如果不熟悉此步骤，请参阅 [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)（如何检索证书的指纹值）。
 
@@ -103,21 +104,23 @@ ms.openlocfilehash: 626bdc99702b38c127beba54979add9b1cbd633f
    4. 在 Azure 经典门户的“配置 Picturepark 的单一登录”对话框页上，复制“SAML SSO URL”值，然后将其粘贴到“颁发者 URI”文本框中。
    5. 从导出的证书中复制“指纹”值，然后将其粘贴到“可信颁发者指纹”文本框中。  
       
-      > [!TIP]
-      > 有关详细信息，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)
-      > 
+      >[!TIP]
+      >有关更多详细信息，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)。
+      >
+      >
 
 9. 单击“JoinDefaultUsersGroup”。
-10. 若要在“声明”文本框中设置 **Emailaddress** 属性，请键入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**。
+10. 若要在“声明”文本框中设置 **Emailaddress** 属性，请键入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 并单击“保存”。
 
-      ![配置](./media/active-directory-saas-picturepark-tutorial/IC795065.png "配置") a. 单击“保存” 。
+      ![配置](./media/active-directory-saas-picturepark-tutorial/IC795065.png "Configuration")
 11. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
    ![配置单一登录](./media/active-directory-saas-picturepark-tutorial/IC795066.png "配置单一登录")
 
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 若要让 Azure AD 用户登录 Picturepark，必须将其预配到 Picturepark 中。  
-使用 Picturepark 时，预配属手动任务。
+
+ * 使用 Picturepark 时，预配属手动任务。
 
 **若要预配用户帐户，请执行以下步骤：**
 
@@ -136,12 +139,12 @@ ms.openlocfilehash: 626bdc99702b38c127beba54979add9b1cbd633f
   2. 选择一种**语言**。
   3. 单击“创建” 。
 
-> [!NOTE]
-> 可以使用任何其他 Picturepark 用户帐户创建工具或 Picturepark 提供的 API 来预配 AAD 用户帐户。
+>[!NOTE]
+>可以使用任何其他 Picturepark 用户帐户创建工具或 Picturepark 提供的 API 来预配 AAD 用户帐户。
 > 
 > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
 **若要将用户分配到 Picturepark，请执行以下步骤：**
@@ -154,11 +157,6 @@ ms.openlocfilehash: 626bdc99702b38c127beba54979add9b1cbd633f
    
    ![是](./media/active-directory-saas-picturepark-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 04/03/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: f42dfce5409c1751c84ffb658a3c5464780a5a3d
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
+ms.openlocfilehash: cd11ef761a39b47e2426766cba64b3975595f4d4
+ms.lasthandoff: 04/04/2017
 
 ---
 
@@ -37,6 +37,7 @@ Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。 它结合了�
 | --- | --- |
 | 2016 年 4 月 13 日 |Microsoft Azure Active Directory Sync (DirSync) 和 Azure Active Directory Sync (Azure AD Sync) 已宣布弃用。 |
 | 2017 年 4 月 13 日 |结束支持。 客户必须先升级到 Azure AD Connect 才能建立支持案例。 |
+|2017 年 12 月 31 日|Azure AD 将不再接受来自 Windows Azure Active Directory 同步（“DirSync”）和 Microsoft Azure Active Directory 同步（“Azure AD Sync”）的通信。
 
 ## <a name="how-to-transition-to-azure-ad-connect"></a>如何过渡到 Azure AD Connect
 如果你正在运行 DirSync，可通过两种方式升级：就地升级和并行部署。 对大多数客户，如果使用最新的操作系统并且对象数少于 50,000 个，我们建议使用就地升级。 对于其他情况，建议执行并行部署，这样，DirSync 配置将迁移到运行 Azure AD Connect 的新服务器。
@@ -59,7 +60,7 @@ Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。 它结合了�
 该通知还会发送到使用内部版本为 1.0.\*.0 的 Azure AD Connect 的客户（使用 1.1 以前的版本）。 Microsoft 建议客户使用最新的 Azure AD Connect 版本。 在版本 1.1 中引入的[自动升级](active-directory-aadconnect-feature-automatic-upgrade.md)功能始终可让客户轻松安装最新版本的 Azure AD Connect。
 
 **问：DirSync/Azure AD Sync 将在 2017 年 4 月 13 日停用吗？**  
-不会。 我们将在日后宣布这些产品不再能够与 Azure AD 通信的日期。 你可以在此主题中找到该信息（如果已发布）。
+DirSync/Azure AD Sync 将在 2017 年 4 月 13 日继续工作。  但从 2017 年 12 月 31 日起，Azure AD 将不再接受来自 DirSync/Azure AD Sync 的通信。
 
 **问：可从哪些 DirSync 版本升级？**  
 支持从当前所用的任何 DirSync 版本升级。

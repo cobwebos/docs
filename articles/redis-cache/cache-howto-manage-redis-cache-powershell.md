@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 04/03/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 9d76e82b1658c3ea4dd6631bae232d17f375ab33
-ms.openlocfilehash: 61c0fd56aad1cc589138aa02ea43ef315edf9baf
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 715f76377947baaf1a72871cfe291f17e1cc0baf
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -65,7 +66,7 @@ ms.openlocfilehash: 61c0fd56aad1cc589138aa02ea43ef315edf9baf
 
     Get-Help New-AzureRmRedisCache -Detailed
 
-### <a name="how-to-connect-to-azure-government-cloud-or-azure-china-cloud"></a>如何连接到 Azure 政府版云或中国 Azure 云
+### <a name="how-to-connect-to-other-clouds"></a>如何连接到其他云
 默认情况下，Azure 环境是 `AzureCloud`，它表示全局 Azure 云实例。 若要连接到其他实例，请结合使用 `Add-AzureRmAccount` 与 `-Environment` 或结合使用 -`EnvironmentName` 命令行开关与所需环境或环境名称。
 
 若要查看可用环境列表，请运行 `Get-AzureRmEnvironment` cmdlet。
@@ -101,6 +102,23 @@ ms.openlocfilehash: 61c0fd56aad1cc589138aa02ea43ef315edf9baf
 * 中国北部
 
 有关中国 Azure 云的详细信息，请参阅[由中国 21Vianet 运营的 AzureChinaCloud for Azure](http://www.windowsazure.cn/)。
+
+### <a name="to-connect-to-microsoft-azure-germany"></a>连接到 Microsoft Azure Germany
+若要连接到 Microsoft Azure Germany，请使用以下命令之一。
+
+    Add-AzureRMAccount -EnvironmentName AzureGermanCloud
+
+
+或
+
+    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
+
+若要在 Microsoft Azure Germany 中创建缓存，请使用以下命令之一。
+
+* 德国中部
+* 德国东北部
+
+有关 Microsoft Azure Germany 的详细信息，请参阅 [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)。
 
 ### <a name="properties-used-for-azure-redis-cache-powershell"></a>Azure Redis 缓存 PowerShell 使用的属性
 下表包含使用 Azure PowerShell 创建和管理 Azure Redis 缓存实例时常用的参数的属性和说明。
@@ -318,7 +336,7 @@ ms.openlocfilehash: 61c0fd56aad1cc589138aa02ea43ef315edf9baf
 > * 不能从较高的定价层缩放到较低的定价层。
 > * 不能从**高级**缓存向下缩放到**标准**或**基本**缓存。
 > * 不能从**标准**缓存向下缩放到**基本**缓存。
-> * 可从**基本**缓存缩放为**标准**缓存，但不能同时更改大小。 如果你需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
+> * 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果你需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
 > * 不能从**基本**缓存直接缩放到**高级**缓存。 必须在一个缩放操作中从**基本**缩放到**标准**，然后在后续的缩放操作中从**标准**缩放到**高级**。
 > * 不能从较大的大小减小为 **C0 (250 MB)**。
 > 
@@ -768,10 +786,5 @@ ms.openlocfilehash: 61c0fd56aad1cc589138aa02ea43ef315edf9baf
 * [Azure 博客](http://blogs.msdn.com/windowsazure)：了解 Azure 中的新功能。
 * [Windows PowerShell 博客](http://blogs.msdn.com/powershell)：了解 Windows PowerShell 中的新功能。
 * [“你好，脚本编写专家！”博客](http://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实用提示和技巧。
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

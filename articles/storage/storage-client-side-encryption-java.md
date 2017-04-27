@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 7e182ee18e3c2c12eb29f864dd875d764ca5d534
-ms.openlocfilehash: 116693fdb8a8fa0e332b74459f7827bbf44c9ed7
-ms.lasthandoff: 11/22/2016
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 7601449c7f84a4367f9d684d9bbb0cf61fda29b0
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -44,14 +44,14 @@ ms.lasthandoff: 11/22/2016
 
 1. 客户端库假定用户在本地或 Azure 密钥保管库中管理密钥加密密钥 (KEK)。 用户不需要知道用于加密的特定密钥。 但是，可以设置和使用一个密钥解析程序，将不同的密钥标识符解析为密钥。  
 2. 客户端库下载存储在服务中的已加密数据以及任何加密材料。  
-3. 然后，使用密钥加密密钥 (KEK) 对已包装的内容加密密钥 (CEK) 进行解包（解密）。 这里同样，客户端库无法访问 KEK。 它只是调用自定义提供程序或密钥保管库提供程序的解包算法。  
+3. 然后，使用密钥加密密钥 (KEK) 对已包装的内容加密密钥 (CEK) 进行解包（解密）。 这里同样，客户端库无法访问 KEK。 它只是调用自定义提供程序或 Key Vault 提供程序的解包算法。  
 4. 然后，使用内容加密密钥 (CEK) 解密已加密的用户数据。
 
 ## <a name="encryption-mechanism"></a>加密机制
 存储客户端库使用 [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 来加密用户数据。 具体而言，是使用 AES 的[加密块链接 (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式。 每个服务的工作方式都稍有不同，因此我们将在此讨论其中每个服务。
 
 ### <a name="blobs"></a>Blob
-目前，客户端库仅支持整个 Blob 的加密。 具体而言，用户使用 **upload**方法或 openOutputStream* 方法时支持加密。 对于下载，支持完整下载和范围下载。  
+目前，客户端库仅支持整个 Blob 的加密。 具体而言，当用户使用 **upload*** 方法或 **openOutputStream** 方法时支持加密。 对于下载，支持完整下载和范围下载。  
 
 在加密过程中，客户端库将生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK) 并将使用此信息对 Blob 数据执行信封加密。 然后，已包装的 CEK 和一些附加加密元数据将与服务上的已加密 Blob 一起存储为 Blob 元数据。
 

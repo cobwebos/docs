@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 04/02/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 0ca485599d159fd4e7e001b68e4d4b41b6b2043f
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e1ceaf7baef021f97f70a6b1a5203e178db613db
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -173,6 +173,16 @@ ms.lasthandoff: 03/29/2017
 
 可添加其他参数，并且可在模板的参数部分找到说明。
 
+## <a name="to-get-the-instrumentation-key"></a>获取检测密钥
+创建应用程序资源后，需使用检测密钥： 
+
+```PS
+    $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>"
+    $details = Get-AzureRmResource -ResourceId $resource.ResourceId
+    $ikey = $details.Properties.InstrumentationKey
+```
+
+
 <a id="price"></a>
 ## <a name="set-the-price-plan"></a>设置价格计划
 
@@ -193,17 +203,11 @@ ms.lasthandoff: 03/29/2017
 |2|Enterprise|
 
 * 如果仅想使用默认的基本价格计划，可在模板中省略 CurrentBillingFeatures 资源。
+* 若要在创建组件资源后更改价格计划，可使用一个忽略“microsoft.insights/components”资源的模板。 此外，请忽略计费资源中的 `dependsOn` 节点。 
+
+若要验证已更新的价格计划，请查看浏览器中的“功能+定价”边栏选项卡。 **刷新浏览器视图**以确保其显示最新状态。
 
 
-## <a name="to-get-the-instrumentation-key"></a>获取检测密钥
-创建应用程序资源后，需要 iKey： 
-
-```PS
-
-    $resource = Get-AzureRmResource -ResourceId "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<YOUR RESOURCE GROUP>/providers/Microsoft.Insights/components/<YOUR APP NAME>"
-
-    $resource.Properties.InstrumentationKey
-```
 
 ## <a name="add-a-metric-alert"></a>添加指标警报
 

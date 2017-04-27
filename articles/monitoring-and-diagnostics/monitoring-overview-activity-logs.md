@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 4ec026a5b95170d0eba244123c37cd3c8fab150a
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: c123b76b0e4c95cfebcc79063fb1c3a27efc8646
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -47,9 +47,9 @@ ms.lasthandoff: 03/09/2017
 ![Azure 活动日志](./media/monitoring-overview-activity-logs/Activity_Log_Overview_v3.png)
 
 
-* [创建触发活动日志事件的电子邮件或 webhook 警报。](insights-auditlog-to-webhook-email.md)
+* [创建触发活动日志事件的警报。](monitoring-activity-log-alerts.md)
 * [将活动日志流式传输到**事件中心**](monitoring-stream-activity-logs-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
-* 在 PowerBI 中使用 [**PowerBI 内容包**](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
+* 在 PowerBI 中使用 [**PowerBI 内容包**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
 * [将活动日志保存到**存储帐户**进行存档或手动检查](monitoring-archive-activity-log.md)。 可以使用**日志配置文件**指定保留时间（天）。
 * 在 **Azure 门户**中查询和查看活动日志。
 * 通过 PowerShell Cmdlet、CLI 或 REST API 查询活动日志。
@@ -80,11 +80,10 @@ ms.lasthandoff: 03/09/2017
 
     ![门户中的“导出”按钮](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
 3. 在显示的边栏选项卡中，可以选择：  
-
-   * 要导出事件的区域
-   * 要保存事件的存储帐户
-   * 要在存储中保留这些事件的天数。 设置为 0 天将永久保留日志。
-   * 需要在其中创建事件中心，以便流式传输这些事件的服务总线命名空间。
+  * 要导出事件的区域
+  * 要保存事件的存储帐户
+  * 要在存储中保留这些事件的天数。 设置为 0 天将永久保留日志。
+  * 需要在其中创建事件中心，以便流式传输这些事件的服务总线命名空间。
 
      ![“导出活动日志”边栏选项卡](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
 4. 单击“保存”保存这些设置。 这些设置会即时应用到订阅。

@@ -1,6 +1,6 @@
 ---
-title: "开始使用队列存储和 Visual Studio 连接服务 (ASP.NET 5) | Microsoft Docs"
-description: "如何开始在 Visual Studio 中的 ASP.NET 5 项目中使用 Azure 队列存储"
+title: "开始使用队列存储和 Visual Studio 连接服务 (ASP.NET Core) | Microsoft Docs"
+description: "如何开始在 Visual Studio 中的 ASP.NET Core 项目中使用 Azure 队列存储"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -15,22 +15,23 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b166ced70b845dd297a1eb87aaec5456ec3e0b31
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 4622496544ce6e1057ac68a2e9946917573e997e
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-5"></a>开始使用队列存储和 Visual Studio 连接服务 (ASP.NET 5)
+# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用队列存储和 Visual Studio 连接服务 (ASP.NET Core)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET 5 项目中已创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 队列存储。 执行“添加连接服务”操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET Core 项目中已创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 队列存储。 执行“添加连接服务”操作会安装相应的 NuGet 程序包，以访问项目中的 Azure 存储，并将存储帐户的连接字符串添加到项目配置文件中。
 
 Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。 一条队列消息的大小最多可为 64 千字节 (KB)，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。
 
 若要开始，首先需要在存储帐户中创建 Azure 队列。 我们将向你展示如何使用代码创建队列。 此外，我们将展示如何执行基本的队列操作，例如添加、修改、读取和删除队列消息。 示例是用 C\# 代码编写的，并使用了 Azure Storage Client Library for .NET。 有关 ASP.NET 的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
 
-**注意：**在 ASP.NET 5 中执行调用 Azure 存储的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
+**注意：**在 ASP.NET Core 中执行 Azure 存储调用的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
 
 * 有关以编程方式操作队列的详细信息，请参阅[通过 .NET 开始使用 Azure 队列存储](storage-dotnet-how-to-use-queues.md)。
 * 有关 Azure 存储的常规信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。
@@ -38,7 +39,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 * 有关编写 ASP.NET 应用程序的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
 
 ## <a name="access-queues-in-code"></a>使用代码访问队列
-若要访问 ASP.NET 5 项目中的队列，需要将下列事项包含在访问 Azure 队列存储的任何 C# 源文件中。
+若要访问 ASP.NET Core 项目中的队列，需要将下列事项包含在任何访问 Azure 队列存储的 C# 源文件中。
 
 1. 请确保 C# 文件顶部的命名空间声明包括以下 **using** 语句。
    
@@ -153,10 +154,5 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

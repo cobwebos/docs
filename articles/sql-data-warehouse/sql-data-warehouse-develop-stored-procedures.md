@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 103b3ad93c6bb99f1781e9b3c485caa6042ae0a3
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e42d80f0ca35f3fbb67389c66d072bc40d8a8d2c
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -63,7 +65,7 @@ GO
 EXEC prc_nesting
 ```
 
-请注意，SQL 数据仓库当前不支持 @@NESTLEVEL.，你需要自行跟踪自己的嵌套级别。 不太可能达到 8 个嵌套级别的限制，但如果达到，则你需要重新处理代码并将其“平整化”，使其符合此限制。
+请注意，SQL 数据仓库当前不支持 @@NESTLEVEL。 将需要自行保持跟踪嵌套级别。 不太可能达到 8 个嵌套级别的限制，但如果达到，则你需要重新处理代码并将其“平整化”，使其符合此限制。
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 SQL 数据仓库不允许通过 INSERT 语句使用存储过程的结果集。 但是，你可以使用替代方法。
@@ -88,21 +90,16 @@ SQL 数据仓库中未实现 Transact-SQL 存储过程的某些方面。
 * return 语句
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[部署概述][部署概述]。
+有关更多开发技巧，请参阅[开发概述][development overview]。
 
 <!--Image references-->
 
 <!--Article references-->
 [临时表]: ./sql-data-warehouse-tables-temporary.md#modularizing-code
-[部署概述]: ./sql-data-warehouse-overview-develop.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[嵌套级别]: https://msdn.microsoft.com/library/ms187371.aspx
+[nest level]: https://msdn.microsoft.com/library/ms187371.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -4,7 +4,7 @@ description: "本文将演示如何配置虚拟网络 VPN 网关和更改网关 
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: fbe59ba8-b11f-4d21-9bb1-225ec6c6d351
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/09/2017
+ms.date: 04/04/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: b6f001345daf411497295357ab43d01635ae743e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 2ea4e6bb86b1ba6f7b501b193d0713d3901457af
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -67,16 +67,20 @@ ms.lasthandoff: 03/25/2017
 ![管理密钥](./media/vpn-gateway-configure-vpn-gateway-mp/IC717029.png)
 
 ### <a name="step-2--configure-your-vpn-device"></a>步骤 2.  配置 VPN 设备
-对于站点到站点连接，完成前面的步骤之后，你或网络管理员需要配置 VPN 设备以创建连接。 有关 VPN 设备的详细信息，请参阅[关于用于虚拟网络连接的 VPN 设备](vpn-gateway-about-vpn-devices.md)。
+通过站点到站点连接连接到本地网络需要 VPN 设备。 我们提供的配置步骤不是针对所有 VPN 设备的，你可以访问以下链接，获取有用的信息：
+
+- 有关兼容 VPN 设备的信息，请参阅 [VPN 设备](vpn-gateway-about-vpn-devices.md)。 
+- 有关设备配置设置的链接，请参阅[已验证的 VPN 设备](vpn-gateway-about-vpn-devices.md#devicetable)。 我们会尽力提供各种链接。 如需最新的配置信息，最好是咨询设备制造商。
+- 若要了解如何编辑设备配置示例，请参阅[编辑示例](vpn-gateway-about-vpn-devices.md#editing)。
+- 对于 IPsec/IKE 参数，请参阅[参数](vpn-gateway-about-vpn-devices.md#ipsec)。
+- 在配置 VPN 设备之前，对于要使用的 VPN 设备，请查看是否存在任何[已知的设备兼容性问题](vpn-gateway-about-vpn-devices.md#known)。
+
+配置 VPN 设备时，需要以下项：
+
+- 虚拟网络网关的“公共 IP 地址”。 转到虚拟网络的“概览”边栏选项卡即可找到该 IP 地址。
+- 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用很基本的共享密钥。 你应该生成更复杂的可用密钥。
 
 配置 VPN 设备之后，可以在 VNet 的“仪表板”页上查看更新的连接信息。
-
-还可以运行以下任一命令来测试连接：
-
-|  | Cisco ASA | Cisco ISR/ASR | Juniper SSG/ISG | Juniper SRX/J |
-| --- | --- | --- | --- | --- |
-| **检查主模式 SA** |show crypto isakmp sa |show crypto isakmp sa |get ike cookie |show security ike security-association |
-| **检查快速模式 SA** |show crypto ipsec sa |show crypto ipsec sa |get sa |show security ipsec security-association |
 
 ### <a name="step-3-verify-your-local-network-ranges-and-vpn-gateway-ip-address"></a>步骤 3. 验证局域网范围和 VPN 网关 IP 地址
 #### <a name="verify-your-vpn-gateway-ip-address"></a>验证 VPN 网关 IP 地址

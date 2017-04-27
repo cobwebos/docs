@@ -1,5 +1,5 @@
 ---
-title: "Azure 事件中心管理库 | Microsoft 文档"
+title: "Azure 事件中心管理库 | Microsoft Docs"
 description: "管理 .NET 中的事件中心命名空间和实体"
 services: event-hubs
 cloud: na
@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 1/6/2017
+ms.date: 4/10/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: dfd1ae52cc56a4d4b4c7ee3f69f0c454be607401
-ms.openlocfilehash: 84075b60074b0607c14787db72c8dff8b701a8ea
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: a9023448c4ced1edf54c84bb103454cbd76fbfba
+ms.lasthandoff: 04/12/2017
 
 
 ---
 
 # <a name="event-hubs-management-libraries"></a>事件中心管理库
 
-事件中心管理库可以动态设置事件中心命名空间和实体。 这样能够以编程方式确定要设置的实体，从而实现复杂的部署和消息传递方案。 这些库目前可用于 .NET。
+事件中心管理库可以动态设置事件中心命名空间和实体。 这样可以实现复杂的部署和消息传递方案，以便能够以编程方式确定要设置的实体。 这些库目前可用于 .NET。
 
 ## <a name="supported-functionality"></a>支持的功能
 
@@ -64,7 +65,7 @@ ms.openlocfilehash: 84075b60074b0607c14787db72c8dff8b701a8ea
     };
     ```
 
-1. 将 CreateOrUpdate 参数设置为指定值。
+1. 将 `CreateOrUpdate` 参数设置为指定值。
     ```csharp
     var ehParams = new EventHubCreateOrUpdateParameters()
     {
@@ -80,9 +81,4 @@ ms.openlocfilehash: 84075b60074b0607c14787db72c8dff8b701a8ea
 ## <a name="next-steps"></a>后续步骤
 * [.NET 管理示例](https://github.com/Azure-Samples/event-hubs-dotnet-management/)
 * [Microsoft.Azure.Management.EventHub 引用](/dotnet/api/Microsoft.Azure.Management.EventHub) 
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

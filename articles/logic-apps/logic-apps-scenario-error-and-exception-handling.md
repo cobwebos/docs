@@ -17,9 +17,9 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: b-hoedid
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: db5f70c88eb0b429a8d5d76f192a742f97fdf131
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: b996ed1889ec39de78dcee9bbcb18a5982fc5f7f
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -105,22 +105,22 @@ ms.lasthandoff: 03/09/2017
 
 1. 必须从 Dynamics CRM Online 获取新的预约记录。
 
-    来自 CRM 的触发器为我们提供 **CRM PatentId**、 **记录类型**、**新的或更新的记录**（新的或更新的布尔值）以及 **SalesforceId**。 **SalesforceId** 可以为 null，因为它只用于更新。
-    使用 CRM 的“PatientID”和“记录类型”来获取 CRM 记录。
+   来自 CRM 的触发器为我们提供 **CRM PatentId**、**记录类型**、**新的或更新的记录**（新的或更新的布尔值）以及 **SalesforceId**。 **SalesforceId** 可以为 null，因为它只用于更新。
+   使用 CRM 的“PatientID”和“记录类型”来获取 CRM 记录。
 
-2. 接下来，需要添加 DocumentDB API 应用 **InsertLogEntry** 操作，如下所示。
+2. 接下来，需要在逻辑应用设计器中添加 DocumentDB API 应用 **InsertLogEntry** 操作，如下所示。
 
-### <a name="insert-log-entry-designer-view"></a>插入日志条目设计器视图
+   **插入日志条目**
 
-![插入日志条目](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![插入日志条目](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
-### <a name="insert-error-entry-designer-view"></a>插入错误条目设计器视图
+   **插入错误条目**
 
-![插入日志条目](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![插入日志条目](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
-### <a name="check-for-create-record-failure"></a>检查是否存在创建记录失败
+   **检查是否存在创建记录失败**
 
-![条件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![条件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>逻辑应用源代码
 

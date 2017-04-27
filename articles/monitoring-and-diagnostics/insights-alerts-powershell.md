@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 62faba3827e9fc33e9788cd2d487adf04d760791
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 50127242cdf156771d0610e58cf2fc41281adae7
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="create-alerts-in-azure-monitor-for-azure-services---powershell"></a>在 Azure Monitor 中为 Azure 服务创建警报 - PowerShell 
+# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>在 Azure Monitor 中为 Azure 服务创建指标警报 - PowerShell
 > [!div class="op_single_selector"]
 > * [门户](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -30,14 +30,14 @@ ms.lasthandoff: 03/15/2017
 >
 
 ## <a name="overview"></a>概述
-本文演示如何使用 PowerShell 设置 Azure 警报。  
+本文演示如何使用 PowerShell 设置 Azure 指标警报。  
 
 可以根据监视指标或事件接收 Azure 服务的警报。
 
 * **指标值** - 指定指标的值超过在任一方向分配的阈值时，将触发警报。 也就是说，在以下两种情况下会触发警报：首先是满足条件时，然后是满足条件后，不再满足条件时。    
-* **活动日志事件** - 每个事件发生，或仅当出现一定次数的事件时，触发警报。
+* **活动日志事件** - 发生每个事件，或仅当出现特定事件时触发警报。 若要深入了解活动日志警报，请[单击此处](monitoring-activity-log-alerts.md)
 
-可配置警报，使警报触发时执行以下操作：
+可配置指标警报，使警报触发时执行以下操作：
 
 * 向服务管理员和共同管理员发送电子邮件通知
 * 将电子邮件发送到指定的其他电子邮件。
@@ -74,8 +74,8 @@ ms.lasthandoff: 03/15/2017
    ```
 4. 若要创建一条规则，首先需要有以下几条重要信息。
 
-   * 要为其设置警报的资源的**资源 ID**
-   * 资源可用的**指标定义**
+  * 要为其设置警报的资源的**资源 ID**
+  * 资源可用的**指标定义**
 
      获取资源 ID 的一种方法是使用 Azure 门户。 假设已创建该资源，在门户中选中它。 然后在下一个边栏选项卡中，选择“设置”分区下的“属性”。 **资源 ID** 是下一个边栏选项卡中的字段。 另一种方法是使用 [Azure Resource Explorer](https://resources.azure.com/)（Azure 资源浏览器）。
 
@@ -113,27 +113,14 @@ ms.lasthandoff: 03/15/2017
     Add-AzureRmMetricAlertRule -Name myMetricRuleWithWebhookAndEmail -Location "East US" -ResourceGroup myresourcegroup -TargetResourceId /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename -MetricName "BytesReceived" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -TimeAggregationOperator Total -Actions $actionEmail, $actionWebhook -Description "alert on any website activity"
     ```
 
-
-1. 若要创建在活动日志中特定条件下触发的警报，可使用以下形式的命令
-
-    ```PowerShell
-    $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
-    $actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://www.contoso.com?token=mytoken
-
-    Add-AzureRmLogAlertRule -Name myLogAlertRule -Location "East US" -ResourceGroup myresourcegroup -OperationName microsoft.web/sites/start/action -Status Succeeded -TargetResourceGroup resourcegroupbeingmonitored -Actions $actionEmail, $actionWebhook
-    ```
-
-    -OperationName 与活动日志中事件类型相对应。 示例包括 *Microsoft.Compute/virtualMachines/delete* 和 *microsoft.insights/diagnosticSettings/write*。
-
-    可以使用 PowerShell 命令 [Get AzureRmProviderOperation](https://msdn.microsoft.com/library/mt603720.aspx) 来获取可能 operationNames 的列表。 或者，可以使用 Azure 门户查询活动日志以及查找要为其设置警报的特定过去操作。 在友好名称的图形日志视图中显示操作。 查看该条目的 JSON，并拉取 OperationName 值。   
-2. 验证是否已通过查看单个规则正确创建警报。
+7. 验证是否已通过查看单个规则正确创建警报。
 
     ```PowerShell
     Get-AzureRmAlertRule -Name myMetricRuleWithWebhookAndEmail -ResourceGroup myresourcegroup -DetailedOutput
 
     Get-AzureRmAlertRule -Name myLogAlertRule -ResourceGroup myresourcegroup -DetailedOutput
     ```
-3. 删除警报。 这些命令将删除在本文前面创建的规则。
+8. 删除警报。 这些命令将删除在本文前面创建的规则。
 
     ```PowerShell
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myrule
@@ -144,6 +131,7 @@ ms.lasthandoff: 03/15/2017
 ## <a name="next-steps"></a>后续步骤
 * [获取 Azure 监视概述](monitoring-overview.md)，包括可收集和监视的信息的类型。
 * 了解[在警报中配置 Webhook](insights-webhooks-alerts.md)的详细信息。
+* 详细了解[配置活动日志事件的警报](monitoring-activity-log-alerts.md)。
 * 了解关于 [Azure 自动化 Runbook](../automation/automation-starting-a-runbook.md) 的详细信息。
 * 获取[收集诊断日志概述](monitoring-overview-of-diagnostic-logs.md)以收集有关服务的详细高频率指标。
 * 获取[指标集合概述](insights-how-to-customize-monitoring.md)以确保你的服务可用且响应迅速。

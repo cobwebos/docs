@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 06/30/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 94c4929c84a671eca210a0e6b53eda5019cc0951
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: f8d441a4945ff7b33da73d683749a9a581bc80ca
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -91,7 +91,7 @@ Azure SDK for .NET 将安装以下产品：
 ### <a id="wte"></a>Microsoft App Service Tools for Visual Studio
 这使你可以使用 Azure 网站：
 
-* [将 Web 项目发布到 Azure 网站](app-service-web/web-sites-dotnet-get-started.md)。
+* [将 Web 项目发布到 Azure 应用服务](app-service-web/app-service-web-get-started-dotnet.md)。
 * [将控制台应用程序项目发布到 Azure WebJobs](app-service-web/websites-dotnet-deploy-webjobs.md)。
 * [在创建新的 Web 项目或发布 Web 项目时创建 Azure 网站和 SQL 数据库资源](app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。
 * [在创建新网站时创建 PowerShell 部署脚本](http://msdn.microsoft.com/library/dn642480.aspx)。

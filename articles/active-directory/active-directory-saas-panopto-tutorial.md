@@ -11,17 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 41e04425a291c9f89bc58341c6bad22ad1bdb8ef
-ms.openlocfilehash: 90f962fbd19f125cfb609e439f157c4822acfce4
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 078a2ea0db006cf976f89a55c65a536a7b9f04aa
+ms.lasthandoff: 04/03/2017
 
 
 ---
 
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>教程：Azure Active Directory 与 Panopto 的集成
-本教程的目的是介绍 Azure 与 Panopto 的集成。 在本教程中概述的方案假定您已具有以下各项：
+本教程的目的是介绍 Azure 与 Panopto 的集成。 
+
+在本教程中概述的方案假定您已具有以下各项：
 
 * 一个有效的 Azure 订阅
 * Panopto 租户
@@ -31,13 +34,13 @@ ms.openlocfilehash: 90f962fbd19f125cfb609e439f157c4822acfce4
 在本教程中概述的方案由以下构建基块组成：
 
 1. 为 Panopto 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
 ![方案](./media/active-directory-saas-panopto-tutorial/IC777665.png "方案")
 
-## <a name="enabling-the-application-integration-for-panopto"></a>为 Panopto 启用应用程序集成
+## <a name="enable-the-application-integration-for-panopto"></a>为 Panopto 启用应用程序集成
 本部分的目的是概述如何为 Panopto 启用应用程序集成。
 
 **若要为 Panopto 启用应用程序集成，请执行以下步骤：**
@@ -66,10 +69,11 @@ ms.openlocfilehash: 90f962fbd19f125cfb609e439f157c4822acfce4
 
 此部分的目的是概述如何使用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Panopto 进行身份验证。  
 
-在此过程中，需要创建 base-64 编码的证书文件。  
+在此过程中，需要创建 base-64 编码的证书文件。 
+
 如果不熟悉此过程，请参阅[如何将二进制证书转换为文本文件](http://youtu.be/PlgrzUZ-Y1o)。
 
-**若要配置单一登录，请执行以下步骤：**
+**若要配置 SSO，请执行以下步骤：**
 
 1. 在 Azure 经典门户中的“Panopto”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
@@ -111,21 +115,21 @@ ms.openlocfilehash: 90f962fbd19f125cfb609e439f157c4822acfce4
  ![保存](./media/active-directory-saas-panopto-tutorial/IC777673.png "保存")
 9. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-panopto-tutorial/IC777674.png "配置单一登录")
+  ![配置单一登录](./media/active-directory-saas-panopto-tutorial/IC777674.png "配置单一登录")
    
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 
 没有相关操作项，因此无法通过配置将用户预配到 Panopto。  
 当已分配的用户尝试使用访问面板登录到 Panopto 时，Panopto 会检查该用户是否存在。  
 
 如果尚无用户帐户可用，Panopto 将自动创建该帐户。
 
-> [!NOTE]
-> 可以使用任何其他 Panopto 用户帐户创建工具或 Panopto 提供的 API 来预配 AAD 用户帐户。
-> 
+>[!NOTE]
+>可以使用任何其他 Panopto 用户帐户创建工具或 Panopto 提供的 API 来预配 AAD 用户帐户。
+>
+>
 
-
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
 **若要将用户分配到 Panopto，请执行以下步骤：**
@@ -138,11 +142,6 @@ ms.openlocfilehash: 90f962fbd19f125cfb609e439f157c4822acfce4
    
    ![是](./media/active-directory-saas-panopto-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 

@@ -12,11 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2017
+ms.date: 03/17/2017
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: 4ba60cee8848079935111ed3de480081a4aa58f6
-ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: c2192328a152e955d182c4a07b391c98a5960964
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>介绍
-在[设备管理入门][lnk-dm-getstarted]教程中，已了解如何使用[设备克隆][lnk-devtwin]和[直接方法][lnk-c2dmethod]基元来远程重新启动设备。 本教程使用相同的 IoT 中心基元，并演示如何进行端到端模拟固件更新。  此模式用于 [Raspberry Pi 设备实现示例][lnk-rpi-implementation]的固件更新实现。
+在[设备管理入门][lnk-dm-getstarted]教程中，已了解如何使用[设备孪生][lnk-devtwin]和[直接方法][lnk-c2dmethod]基元来远程重新启动设备。 本教程使用相同的 IoT 中心基元，并演示如何进行端到端模拟固件更新。  此模式用于 [Raspberry Pi 设备实现示例][lnk-rpi-implementation]的固件更新实现。
 
 本教程演示如何：
 
@@ -37,9 +38,9 @@ ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
 
 **TriggerFWUpdate**，它使用早前创建的设备标识连接到 IoT 中心，接收 firmwareUpdate 直接方法，运行一个多状态过程以模拟固件更新，此过程包括：等待映像下载、下载新映像以及最后应用映像。
 
-若要完成本教程，您需要以下各项：
+若要完成本教程，需要以下各项：
 
-* Microsoft Visual Studio 2015。
+* Visual Studio 2015 或 Visual Studio 2017。
 * Node.js 版本 0.12.x 或更高版本， <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
@@ -56,16 +57,16 @@ ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
 
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
 
-2. 在“解决方案资源管理器”中，右键单击“TriggerFWUpdate”项目，然后单击“管理 NuGet 包”。
-3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
+1. 在“解决方案资源管理器”中，右键单击“TriggerFWUpdate”项目，然后单击“管理 NuGet 包...”。
+1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
 
     ![“NuGet 包管理器”窗口][img-servicenuget]
-4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
    
         using Microsoft.Azure.Devices;
         using Microsoft.Azure.Devices.Shared;
         
-5. 将以下字段添加到 **Program** 类。 将多个占位符值替换为在上一部分中为中心创建的 IoT 中心连接字符串和设备的 Id。
+1. 将以下字段添加到 **Program** 类。 将多个占位符值替换为在上一部分中为中心创建的 IoT 中心连接字符串和设备的 Id。
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
@@ -73,7 +74,7 @@ ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
         static JobClient jobClient;
         static string targetDevice = "{deviceIdForTargetDevice}";
         
-6. 将以下方法添加到 **Program** 类：
+1. 将以下方法添加到 **Program** 类：
    
         public static async Task QueryTwinFWUpdateReported()
         {
@@ -81,7 +82,7 @@ ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
             Console.WriteLine(twin.Properties.Reported.ToJson());
         }
         
-7. 将以下方法添加到 **Program** 类：
+1. 将以下方法添加到 **Program** 类：
 
         public static async Task StartFirmwareUpdate()
         {
@@ -98,7 +99,7 @@ ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
             Console.WriteLine("Invoked firmware update on device.");
         }
 
-7. 最后，在 **Main** 方法中添加以下行：
+1. 最后，在 **Main** 方法中添加以下行：
    
         registryManager = RegistryManager.CreateFromConnectionString(connString);
         StartFirmwareUpdate().Wait();
@@ -106,7 +107,9 @@ ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
         Console.WriteLine("Press ENTER to exit.");
         Console.ReadLine();
         
-8. 生成解决方案。
+1. 在“解决方案资源管理器”中，打开“设置启动项目...”，并确保 **TriggerFWUpdate** 项目的“操作”为“启动”。
+
+1. 生成解决方案。
 
 [!INCLUDE [iot-hub-device-firmware-update](../../includes/iot-hub-device-firmware-update.md)]
 
@@ -122,6 +125,8 @@ ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
 
 3. 可在控制台查看对直接方法的设备响应。
 
+    ![已成功更新固件][img-fwupdate]
+
 ## <a name="next-steps"></a>后续步骤
 在本教程中，已使用直接方法在设备上触发远程固件更新，并使用报告属性跟踪固件更新的进度。
 
@@ -130,6 +135,7 @@ ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-firmware-update/servicesdknuget.png
 [img-createapp]: media/iot-hub-csharp-node-firmware-update/createnetapp.png
+[img-fwupdate]: media/iot-hub-csharp-node-firmware-update/fwupdated.png
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
@@ -141,8 +147,3 @@ ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-rpi-implementation]: https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm/pi_device
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-
-
-<!--HONumber=Feb17_HO1-->
-
-

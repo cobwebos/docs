@@ -12,11 +12,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2016
+ms.date: 04/02/2017
 ms.author: liamca
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9024c47e7d483129d66105012e0d67cfa9700cb9
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 56eeed7634fca840172ab828be5f202d80f3f4fb
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: 9024c47e7d483129d66105012e0d67cfa9700cb9
 1. 选取完成典型搜索请求应该花费的目标延迟（或最大时间量）。
 2. 针对你的搜索服务，使用现实数据集来创建和测试工作负载，以测量这些延迟速率。
 3. 从较小的每秒查询数量 (QPS) 开始，并不断增加在测试中执行的数量，直到查询延迟降到定义的目标延迟之下为止。  这是一个重要的基准，可帮助你计划应用程序在使用量增长方面的规模。
-4. 只要有可能，请重用 HTTP 连接。  如果你使用 Azure 搜索 .NET SDK，这意味着你应该重用某个实例或 [SearchIndexClient](https://msdn.microsoft.com/library/azure/microsoft.azure.search.searchindexclient.aspx) 实例，并且如果你使用 REST API，就应该重用单个 HttpClient。
+4. 只要有可能，请重用 HTTP 连接。  如果你使用 Azure 搜索 .NET SDK，这意味着你应该重用某个实例或 [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) 实例，并且如果你使用 REST API，就应该重用单个 HttpClient。
 
 在创建这些测试工作负荷时，需要记住 Azure 搜索的下面这些特征︰
 
@@ -46,7 +47,7 @@ ms.openlocfilehash: 9024c47e7d483129d66105012e0d67cfa9700cb9
 ## <a name="scaling-azure-search-for-high-query-rates-and-throttled-requests"></a>调整 Azure 搜索的规模以获得较高的查询速率和受限制的请求
 当你收到太多受限的请求或从某个增加的查询负荷已超过你的目标延迟速率时，你可以尝试使用以下两种方法之一来降低延迟速率︰
 
-1. **增加副本数︰**副本就像你的数据副本，它允许 Azure 搜索对面向多个副本的请求进行负载平衡。  在副本之间的所有负载平衡和数据的复制都是由 Azure 搜索管理的，你可以随时更改为你的服务分配的副本数量。  你最大可在一个标准搜索服务中分配 12 个副本，并在一个基本搜索服务中分配 3 个副本。  可以在 [Azure 门户](search-create-service-portal.md)中，或使用 [Azure 搜索管理 API](search-get-started-management-api.md) 来调整副本数。
+1. **增加副本数︰**副本就像你的数据副本，它允许 Azure 搜索对面向多个副本的请求进行负载均衡。  在副本之间的所有负载均衡和数据的复制都是由 Azure 搜索管理的，你可以随时更改为你的服务分配的副本数量。  你最大可在一个标准搜索服务中分配 12 个副本，并在一个基本搜索服务中分配 3 个副本。 可以从 [Azure 门户](search-create-service-portal.md)或 [PowerShell](search-manage-powershell.md) 调整副本。
 2. **增加搜索层︰**Azure 搜索来自[许多层](https://azure.microsoft.com/pricing/details/search/)，其中每个层都提供不同级别的性能。  在某些情况下，你可能有太多查询，即使在副本数超出限制时，你所在的层仍无法提供足够的低延迟速率。  在这种情况下，你可能需要考虑利用其中一个较高的搜索层，比如 Azure 搜索 S3 层，该层非常适合包含大量文档和极高查询工作负荷的方案。
 
 ## <a name="scaling-azure-search-for-slow-individual-queries"></a>针对速度慢的各个查询调整 Azure 搜索的规模
@@ -54,7 +55,7 @@ ms.openlocfilehash: 9024c47e7d483129d66105012e0d67cfa9700cb9
 
 1. **增加分区数**：分区是一种机制，可在额外资源之间拆分你的数据。  由于此原因，当你添加第二个分区时，你的数据会拆分为两份。  第三个分区会将你的索引拆分为三个，以此类推。这也会产生这样的效果，即在某些情形下，由于计算的并行化，速度慢的查询执行起来速度更快。  我们还见过一些例子，这种并行化特别适合具有低选择性查询的那些查询。  这包括匹配许多文档的查询，或者当分类需要提供对大量文档的计数时。  由于对文档的相关性进行评分或计算文档的数量需要大量的计算，因此，添加额外的分区可以帮助提供更多的计算能力。  
    
-   在标准搜索服务中最多可以有 12 个分区，在基本搜索服务中最多可以有 1 个分区。  可以在 [Azure 门户](search-create-service-portal.md)中或使用 [Azure 搜索管理 API](search-get-started-management-api.md) 来调整分区。
+   在标准搜索服务中最多可以有 12 个分区，在基本搜索服务中最多可以有 1 个分区。  可以从 [Azure 门户](search-create-service-portal.md)或 [PowerShell](search-manage-powershell.md) 调整分区。
 2. **限制高基数字段︰**高基数字段包含具有大量唯一值的可查找或可筛选的字段，因此，会获取要在其上计算结果的大量资源。   例如，将“产品 ID”或“描述”字段设置为可查找的/可筛选的会导致高基数，因为各个文档中的大多数值都是唯一的。 只要有可能，请限制高基数字段的数量。
 3. **增加搜索层︰**另一种方法是，向上移动到更高的 Azure 搜索层，可以为较慢的查询改进性能。  每个较高的层还会提供更快的 CPU 和更多的内存，这会对查询性能产生积极的影响。
 
@@ -76,7 +77,7 @@ ms.openlocfilehash: 9024c47e7d483129d66105012e0d67cfa9700cb9
    ![按区域的服务的交叉表][1]
 
 ### <a name="keeping-data-in-sync-across-multiple-azure-search-services"></a>让数据在多个 Azure 搜索服务之间保持同步
-有两个选项可让你的分布式搜索服务保持同步，包括使用 [Azure 搜索索引器](search-indexer-overview.md)或推送 API（也称为 [Azure 搜索 REST API](https://msdn.microsoft.com/library/dn798935.aspx)。  
+有两个选项可让你的分布式搜索服务保持同步，包括使用 [Azure 搜索索引器](search-indexer-overview.md)或推送 API（也称为 [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。  
 
 ### <a name="azure-search-indexers"></a>Azure 搜索索引器
 如果你正在使用 Azure 搜索索引器，那么就已经在从诸如 Azure SQL DB 或 DocumentDB 等中央数据存储导入数据更改。 当创建新的搜索服务时，针对指向此相同数据存储的服务，你只需要创建一个新 Azure 搜索索引器即可。 这样一来，每当数据存储中出现新的更改，它们接着就将通过各种索引器被编入索引。  
@@ -86,10 +87,10 @@ ms.openlocfilehash: 9024c47e7d483129d66105012e0d67cfa9700cb9
    ![具有分布式索引器和服务组合的单一数据源][2]
 
 ### <a name="push-api"></a>推送 API
-如果你正在使用 Azure 搜索推送 API [更新你的 Azure 搜索索引中的内容](https://msdn.microsoft.com/library/dn798930.aspx)，那么可以在需要更新时，可以通过将更改推送到所有搜索服务，以保持你的各种搜索服务同步。  执行此操作时，请务必确保会处理某一个搜索服务的更新失败和一个或多个更新成功的情形。
+如果你正在使用 Azure 搜索推送 API [更新你的 Azure 搜索索引中的内容](https://docs.microsoft.com/rest/api/searchservice/update-index)，那么可以在需要更新时，可以通过将更改推送到所有搜索服务，以保持你的各种搜索服务同步。  执行此操作时，请务必确保会处理某一个搜索服务的更新失败和一个或多个更新成功的情形。
 
 ## <a name="leveraging-azure-traffic-manager"></a>利用 Azure 流量管理器
-通过使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)，可以将请求路由到多个地理定位的网站，而这些网站由多个 Azure 搜索服务支持。  流量管理器的一个优点是，它可以探测 Azure 搜索以确保其可用，并在发生停机时将用户路由到备用搜索服务。  此外，如果你通过 Azure 网站路由搜索请求，Azure 流量管理器允许你在网站启动但没有 Azure 搜索的情形下进行负载平衡。  下面是利用流量管理器的体系结构的示例。
+通过使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)，可以将请求路由到多个地理定位的网站，而这些网站由多个 Azure 搜索服务支持。  流量管理器的一个优点是，它可以探测 Azure 搜索以确保其可用，并在发生停机时将用户路由到备用搜索服务。  此外，如果你通过 Azure 网站路由搜索请求，Azure 流量管理器允许你在网站启动但没有 Azure 搜索的情形下进行负载均衡。  下面是利用流量管理器的体系结构的示例。
 
    ![按区域服务的交叉表（带有中央流量管理器）][3]
 
@@ -113,9 +114,4 @@ STA 是一个重要的工具，可用于从 Azure 搜索的角度了解延迟速
 [1]: ./media/search-performance-optimization/geo-redundancy.png
 [2]: ./media/search-performance-optimization/scale-indexers.png
 [3]: ./media/search-performance-optimization/geo-search-traffic-mgr.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

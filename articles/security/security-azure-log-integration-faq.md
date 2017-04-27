@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 2d5201a335e96cc8595de834858750f6aac884a3
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f539fc2945b9c6646660d50713d11dd7d822d06f
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -25,7 +25,11 @@ ms.lasthandoff: 03/17/2017
 此常见问题回答有关 Azure 日志集成的问题，这项服务使你能够将来自 Azure 资源原始日志集成到本地安全信息和事件管理 (SIEM) 系统中。 此集成为本地或云中的所有资产提供统一的仪表板，以便聚合、相互关联、分析和警示与应用程序相关的安全事件。
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Azure 日志集成软件是否免费？
-是的。 Azure 日志集成软件不产生任何费用。 
+是的。 Azure 日志集成软件不产生任何费用。
+
+## <a name="where-is-azure-log-integration-available"></a>Azure 日志集成在哪些地方可用？
+
+目前 Azure 商业版和 Azure 政府版提供该功能，但在中国或德国不提供。
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs-from"></a>如何查看 Azure 日志集成从中提取 Azure VM 日志的存储帐户？
 运行 **azlog source list** 命令。
@@ -82,7 +86,7 @@ ms.lasthandoff: 03/17/2017
 请参阅[管理和响应 Azure 安全中心中的安全警报](../security-center/security-center-managing-and-responding-alerts.md)。
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>如何修改使用 VM 诊断收集的内容？
-有关如何获取、修改和设置 Windows *(WAD)* 配置中的详细信息，请参阅[使用 PowerShell 在运行 Windows 的虚拟机上启用 Azure 诊断](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 下面是一个示例：
+有关如何获取、修改和设置 Windows *(WAD)* 配置中的详细信息，请参阅[使用 PowerShell 在运行 Windows 的虚拟机上启用 Azure 诊断](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 下面是一个示例：
 
 ### <a name="get-the-wad-config"></a>获取 WAD 配置
     -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
@@ -107,7 +111,7 @@ ms.lasthandoff: 03/17/2017
 
 完成更改后，检查存储帐户，以确保收集正确的事件。
 
-如果在安装和配置过程中遇到问题，请开具[支持请求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)，选择“日志集成”作为需要请求支持的服务。
+如果在安装和配置过程中遇到问题，请打开[支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)，选择“日志集成”作为需要请求支持的服务。
 
 
 <!--Image references-->

@@ -16,9 +16,9 @@ ms.custom: manage
 ms.date: 03/22/2017
 ms.author: elbutter
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: f4a79413bc5e660504b4b6b48fcf496fb0f08ade
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: abe22f542a79714f6e894870872ee6b76ffe7633
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -171,7 +171,7 @@ SQL 数据仓库中的性能以[数据仓库单位 (DWU)][data warehouse units (
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章，了解其他一些重要性能概念：
 
-* [工作负荷与并发管理][工作负荷与并发管理]
+* [工作负荷和并发管理][Workload and concurrency management]
 * [表设计概述][Table design overview]
 * [表分发][Table distribution]
 * [表索引][Table indexing]

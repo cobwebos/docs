@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 2b5e2c2d5cc572ba951a61fd1eb78613c43ec453
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 305f02bb120a1096c46de94d103a5700dabdc8ba
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -193,7 +193,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 >
 >
 
-1. 在保护组的“**计算机**”选项卡上，单击“**将虚拟机添加到保护组以启用保护**”。
+1. 在保护组的“计算机”选项卡上，单击“将虚拟机添加到保护组以启用保护”****。
 2. 在“**启用虚拟机保护**”页上，选择你要保护的虚拟机。
 
     ![启用虚拟机保护](./media/site-recovery-hyper-v-site-to-azure-classic/add-vm.png)
@@ -208,9 +208,9 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
      * **大小**：故障转移的虚拟机的目标大小。
 
        ![配置虚拟机属性](./media/site-recovery-hyper-v-site-to-azure-classic/vm-properties.png)
-   * 在“*受保护的项*”* > *“*保护组*”* > “*protectiongroup_name*” > “**虚拟机**”>“*virtual_machine_name*” > “**配置*”* 中配置其他虚拟机设置，包括：
+   * 在“受保护的项*”>“保护组” > “protectiongroup_name” > “虚拟机 virtual_machine_name” > “配置”中配置其他虚拟机设置，包括：
 
-     * **网络适配器**：网络适配器数目根据你为目标虚拟机指定的大小来确定。 查看[虚拟机大小规格](../virtual-machines/virtual-machines-linux-sizes.md)，了解虚拟机大小所支持的 NIC 数目。
+     * **网络适配器**：网络适配器数目根据你为目标虚拟机指定的大小来确定。 查看[虚拟机大小规格](../virtual-machines/linux/sizes.md)，了解虚拟机大小所支持的 NIC 数目。
 
        修改虚拟机的大小并保存设置后，下一次打开“ **配置** ”页时，网络适配器的数量将会改变。 目标虚拟机的网络适配器数目是源虚拟机上网络适配器的最小数目和所选虚拟机大小支持的网络适配器的最大数目。 解释如下：
 

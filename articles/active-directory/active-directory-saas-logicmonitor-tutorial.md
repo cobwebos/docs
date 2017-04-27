@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2017
+ms.date: 03/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: d87f6068cef7630ca7d9e8929b43449d28d11f78
-ms.openlocfilehash: 9d9074c986c7210e7d7a345ad5d761ac781be3c1
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d47cb9ae48034c73ccb20bd1872a6b50eebb27d7
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/17/2017
 
 ![方案](./media/active-directory-saas-logicmonitor-tutorial/IC790045.png "方案")
 
-## <a name="enabling-the-application-integration-for-logicmonitor"></a>为 LogicMonitor 启用应用程序集成
+## <a name="enable-the-application-integration-for-logicmonitor"></a>为 LogicMonitor 启用应用程序集成
 本部分的目的是概述如何为 LogicMonitor 启用应用程序集成。
 
 **若要为 LogicMonitor 启用应用程序集成，请执行以下步骤：**
@@ -62,13 +62,13 @@ ms.lasthandoff: 02/17/2017
    
    ![LogicMonitor](./media/active-directory-saas-logicmonitor-tutorial/IC790047.png "LogicMonitor")
    
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 
 本部分的目的是概述如何让用户能够使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 LogicMonitor 证明自己的身份。
 
 **若要配置单一登录，请执行以下步骤：**
 
-1. 在 Azure 经典门户的“LogicMonitor”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
+1. 在 Azure 经典门户的 **LogicMonitor** 应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
    ![配置单一登录](./media/active-directory-saas-logicmonitor-tutorial/IC790048.png "配置单一登录")
 2. 在“你希望用户如何登录到 LogicMonitor”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
@@ -99,7 +99,7 @@ ms.lasthandoff: 02/17/2017
    
    ![配置单一登录](./media/active-directory-saas-logicmonitor-tutorial/IC790055.png "配置单一登录")
    
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 
 要使 AAD 用户能够登录，必须使用其 Azure Active Directory 用户名将其预配到 LogicMonitor 应用程序。
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 02/17/2017
 >可以使用 LogicMonitor 提供的任何其他 LogicMonitor 用户帐户创建工具或 API 来预配 Azure Active Directory 用户帐户。 
 > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
 **若要将用户分配到 LogicMonitor，请执行以下步骤：**

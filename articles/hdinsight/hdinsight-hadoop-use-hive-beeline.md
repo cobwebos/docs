@@ -14,68 +14,93 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 04/05/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: b015e3d99c72c1840a31bacee5d9655fa9f48da7
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 7a1757a7ef2881b9e09389745a8e5aeaea2abf9d
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="use-hive-with-hadoop-in-hdinsight-with-beeline"></a>通过 Beeline 将 Hive 与 HDInsight 中的 Hadoop 配合使用
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-在本文中，你将学习如何使用安全外壳 (SSH) 连接到基于 Linux 的 HDInsight 群集，然后使用 [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 命令行工具以交互方式提交 Hive 查询。
+了解如何使用 [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 在 HDInsight 上运行 Hive 查询。
+
+Beeline 是一个命令行工具，包含在 HDInsight 群集的头节点上。 它使用 JDBC 连接 HiveServer2，后者是 HDInsight 群集上托管的服务。 下表提供与 Beeline 结合使用的连接字符串：
+
+| 运行 Beeline 的位置 | 连接字符串 | 其他参数 |
+| --- | --- | --- |
+| 到头节点的 SSH 连接 | `jdbc:hive2://localhost:10001/;transportMode=http` | `-n admin` |
+| 边缘节点 | `jdbc:hive2://headnodehost:10001/;transportMode=http` | `-n admin` |
+| 群集外部 | `jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2` | `-n admin -p password` |
 
 > [!NOTE]
-> Beeline 使用 JDBC 连接到 Hive。 有关将 JDBC 与 Hive 配合使用的详细信息，请参阅[使用 Hive JDBC 驱动程序连接到 Hive on Azure HDInsight](hdinsight-connect-hive-jdbc-driver.md)。
+> 将“admin”替换为群集的群集登录帐户。
+>
+> 将“password”替换为群集登录帐户的密码。
+>
+> 将 `clustername` 替换为 HDInsight 群集的名称。
 
 ## <a id="prereq"></a>先决条件
-若要完成本文中的步骤，你将需要：
 
 * 基于 Linux 的 HDInsight 上的 Hadoop 群集。
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅[弃用 HDInsight 版本 3.2 和 3.3](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
 
-* SSH 客户端。 SSH 客户端上应该装有 Linux、Unix 和 Mac OS。 Windows 用户必须下载 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 之类的客户端。
+* SSH 客户端。 有关使用 SSH 的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a id="ssh"></a>使用 SSH 进行连接
-使用 SSH 命令连接到 HDInsight 群集的完全限定域名 (FQDN)。 FQDN 是你为群集指定的名称，后接 **.azurehdinsight.net**。 例如，以下命令将连接到名为 **myhdinsight** 的群集：
 
-    ssh admin@myhdinsight-ssh.azurehdinsight.net
+使用以下命令通过 SSH 连接到群集：
+
+```bash
+ssh sshuser@myhdinsight-ssh.azurehdinsight.net
+```
+
+将 `sshuser` 替换为群集的 SSH 帐户。 将 `myhdinsight` 替换为 HDInsight 群集的名称。
+
+如果创建 HDInsight 群集时**提供了 SSH 身份验证密码**，则必须在系统提示时提供该密码。
 
 如果创建 HDInsight 群集时**提供了 SSH 身份验证的证书密钥**，则可能需要指定客户端系统上的私钥位置：
 
-    ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
-
-如果你在创建 HDInsight 群集时**提供了 SSH 身份验证的密码**，则需要根据提示提供该密码。
+    ssh -i ~/.ssh/mykey.key ssh@myhdinsight-ssh.azurehdinsight.net
 
 有关将 SSH 与 HDInsight 配合使用的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a id="beeline"></a>使用 Beeline 命令
-1. 连接后，使用以下命令来启动 Beeline：
-   
-        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
-   
-    随后将会启动 Beeline 客户端并连接到 JDBC url。 此处之所以使用 `localhost`，是因为 HiveServer2 在群集中的两个头节点上运行，而我们将直接在主头节点上运行 Beeline。
-   
-    完成该命令后，将出现 `jdbc:hive2://localhost:10001/>` 提示符。
-2. Beeline 命令通常以 `!` 字符开头，例如，`!help` 将显示帮助。 但是，通常可以省略 `!`。 例如，`help` 也是有效的。
-   
-    查看帮助时，你会看到用于执行 HiveQL 语句的 `!sql`。 但是，由于 HiveQL 非常流行，因此可以省略前面的 `!sql`。 以下两个语句的结果完全相同；显示当前可通过 Hive 获取的表：
-   
-        !sql show tables;
-        show tables;
-   
+
+1. 在 SSH 会话中，使用以下命令启动 Beeline：
+
+    ```bash
+    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+    ```
+
+    此命令启动 Beeline 客户端，并连接到群集头节点上的 HiveServer2。 `-n` 参数用于提供群集登录帐户。 默认登录名是 `admin`。 如果在群集创建过程中使用了其他名称，则使用该名称而不是 `admin`。
+
+    命令完成后，将出现 `jdbc:hive2://localhost:10001/>` 提示符。
+
+2. Beeline 命令以 `!` 字符开头，例如，`!help` 将显示帮助。 但是，`!` 对于某些命令可以省略。 例如，`help` 也是有效的。
+
+    有一个 `!sql`，用于执行 HiveQL 语句。 但是，由于 HiveQL 非常流行，因此可以省略前面的 `!sql`。 以下两个语句等效：
+
+    ```hiveql
+    !sql show tables;
+    show tables;
+    ```
+
     在新群集上，只会列出一个表：**hivesampletable**。
-3. 使用以下命令可以显示 hivesampletable 的架构：
-   
-        describe hivesampletable;
-   
-    此命令将返回以下信息：
-   
+
+3. 使用以下命令显示 hivesampletable 的架构：
+
+    ```bash
+    describe hivesampletable;
+    ```
+
+    此命令返回以下信息：
+
         +-----------------------+------------+----------+--+
         |       col_name        | data_type  | comment  |
         +-----------------------+------------+----------+--+
@@ -91,95 +116,109 @@ ms.lasthandoff: 03/25/2017
         | sessionid             | bigint     |          |
         | sessionpagevieworder  | bigint     |          |
         +-----------------------+------------+----------+--+
-   
-    这将显示表中的列。 我们可以对此数据执行某些查询，不过，暂时让我们改为创建全新的表来演示如何将数据载入 Hive 并应用架构。
-4. 输入以下语句，以使用 HDInsight 群集随附的示例数据来创建名为 **log4jLogs** 的新表：
-   
-        DROP TABLE log4jLogs;
-        CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-        STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
-        SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
-   
-    这些语句将执行以下操作：
-   
-   * **DROP TABLE** - 删除表和数据文件（如果该表已存在）。
-   * **CREATE EXTERNAL TABLE**：在 Hive 中创建新的“外部”表。 外部表只会在 Hive 中存储表定义。 数据将保留在原始位置。
-   * **ROW FORMAT**：告知 Hive 如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。
-   * **STORED AS TEXTFILE LOCATION** - 让 Hive 知道数据的存储位置（example/data 目录），并且数据已存储为文本。
-   * **SELECT** - 选择第 **t4** 列包含值 **[ERROR]** 的所有行的计数。 这应会返回值 **3**，因为有三个行包含此值。
-   * **INPUT__FILE__NAME LIKE '%.log'** - 告诉 Hive，我们只应返回以 .log 结尾的文件中的数据。 通常，在使用 hive 查询时，同一个文件夹中只包含具有相同架构的数据，不过此示例日志文件将以其他数据格式存储。
-     
-     > [!NOTE]
-     > 当你预期以外部源更新基础数据（例如自动化数据上载过程），或以其他 MapReduce 操作更新基础数据，但希望 Hive 查询始终使用最新数据时，必须使用外部表。
-     > 
-     > 删除外部表**不会**删除数据，只会删除表定义。
-     > 
-     > 
-     
-     此命令的输出应与以下内容相似：
 
-     ```
-     INFO  : Tez session hasn't been created yet. Opening session
-     INFO  :
-     
-     INFO  : Status: Running (Executing on YARN cluster with App id application_1443698635933_0001)
-     
-     INFO  : Map 1: -/-      Reducer 2: 0/1
-     INFO  : Map 1: 0/1      Reducer 2: 0/1
-     INFO  : Map 1: 0/1      Reducer 2: 0/1
-     INFO  : Map 1: 0/1      Reducer 2: 0/1
-     INFO  : Map 1: 0/1      Reducer 2: 0/1
-     INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
-     INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
-     INFO  : Map 1: 1/1      Reducer 2: 0/1
-     INFO  : Map 1: 1/1      Reducer 2: 0(+1)/1
-     INFO  : Map 1: 1/1      Reducer 2: 1/1
-     +----------+--------+--+
-     |   sev    | count  |
-     +----------+--------+--+
-     | [ERROR]  | 3      |
-     +----------+--------+--+
-     1 row selected (47.351 seconds)
-     ```
-5. 若要退出 Beeline，请使用 `!quit`。
+    此信息描述表中的列。 我们可以对此数据执行某些查询，不过，暂时让我们改为创建全新的表来演示如何将数据载入 Hive 并应用架构。
+
+4. 输入以下语句，以使用 HDInsight 群集随附的示例数据来创建名为 **log4jLogs** 的表：
+
+    ```hiveql
+    DROP TABLE log4jLogs;
+    CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
+    ```
+
+    这些语句将执行以下操作：
+
+    * **DROP TABLE** -如果表存在，则将其删除。
+
+    * **CREATE EXTERNAL TABLE** - 在 Hive 中创建“外部”表。 外部表只会在 Hive 中存储表定义。 数据将保留在原始位置。
+
+    * **ROW FORMAT** - 数据的设格式置方式。 在此情况下，每个日志中的字段以空格分隔。
+
+    * **STORED AS TEXTFILE LOCATION** - 数据存储位置和文件格式。
+
+    * **SELECT** - 选择第 **t4** 列包含值 **[ERROR]** 的所有行的计数。 此查询返回值 **3**，因为有三行包含此值。
+
+    * **INPUT__FILE__NAME LIKE '%.log'** - 示例数据文件与其他文件一起存储。 此语句将查询范围限制为以 .log 结尾的文件中存储的数据。
+
+  > [!NOTE]
+  > 如果希望通过外部源更新基础数据，应使用外部表。 例如，自动化数据上传进程或 MapReduce 操作。
+  >
+  > 删除外部表**不会**删除数据，只会删除表定义。
+
+    此命令的输出类似于以下文本：
+
+        INFO  : Tez session hasn't been created yet. Opening session
+        INFO  :
+
+        INFO  : Status: Running (Executing on YARN cluster with App id application_1443698635933_0001)
+
+        INFO  : Map 1: -/-      Reducer 2: 0/1
+        INFO  : Map 1: 0/1      Reducer 2: 0/1
+        INFO  : Map 1: 0/1      Reducer 2: 0/1
+        INFO  : Map 1: 0/1      Reducer 2: 0/1
+        INFO  : Map 1: 0/1      Reducer 2: 0/1
+        INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
+        INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
+        INFO  : Map 1: 1/1      Reducer 2: 0/1
+        INFO  : Map 1: 1/1      Reducer 2: 0(+1)/1
+        INFO  : Map 1: 1/1      Reducer 2: 1/1
+        +----------+--------+--+
+        |   sev    | count  |
+        +----------+--------+--+
+        | [ERROR]  | 3      |
+        +----------+--------+--+
+        1 row selected (47.351 seconds)
+
+5. 若要退出 Beeline，请使用 `!exit`。
 
 ## <a id="file"></a>运行 HiveQL 文件
-Beeline 还可用于运行包含 HiveQL 语句的文件。 使用以下步骤创建文件，然后使用 Beeline 运行该文件。
 
-1. 使用以下命令创建一个名为 **query.hql** 的新文件：
-   
-        nano query.hql
-2. 编辑器打开后，使用以下内容作为该文件的内容。 此查询将创建名为 **errorLogs** 的新“内部”表：
-   
-        CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
-        INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
-   
+使用以下步骤创建文件，然后使用 Beeline 运行该文件。
+
+1. 使用以下命令创建一个名为 **query.hql** 的文件：
+
+    ```bash
+    nano query.hql
+    ```
+
+2. 将以下文本用作文件的内容。 此查询创建名为 **errorLogs** 的新“内部”表：
+
+    ```hiveql
+    CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
+    INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
+    ```
+
     这些语句将执行以下操作：
-   
-   * **CREATE TABLE IF NOT EXISTS** - 创建表（如果该表尚不存在）。 由于未使用 **EXTERNAL** 关键字，因此这是一个“内部”表，它存储在 Hive 数据仓库中并完全受 Hive 的管理。
-   * **STORED AS ORC**：以优化行纵栏表 (ORC) 格式存储数据。 这是高度优化且有效的 Hive 数据存储格式。
-   * **INSERT OVERWRITE ...SELECT** - 从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。
-     
-     > [!NOTE]
-     > 与外部表不同，删除内部表会同时删除基础数据。
-     > 
-     > 
+
+    * **CREATE TABLE IF NOT EXISTS** - 创建表（如果该表尚不存在）。 因为未使用 **EXTERNAL** 关键字，此语句创建内部表。 内部表存储在 Hive 数据仓库中，由 Hive 全权管理。
+    * **STORED AS ORC**：以优化行纵栏表 (ORC) 格式存储数据。 ORC 格式是高度优化且有效的 Hive 数据存储格式。
+    * **INSERT OVERWRITE ...SELECT** - 从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。
+
+    > [!NOTE]
+    > 与外部表不同，删除内部表会同时删除基础数据。
+
 3. 若要保存文件，请使用 **Ctrl**+**_X**，然后输入 **Y**，最后按 **Enter**。
+
 4. 使用以下命令以通过 Beeline 运行该文件。 将 **HOSTNAME** 替换为前面获取的头节点名称，将 **PASSWORD** 替换为 admin 帐户的密码：
-   
-        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i query.hql
-   
-   > [!NOTE]
-   > `-i` 参数将启动 Beeline，运行 query.hql 文件中的语句，并在出现 `jdbc:hive2://localhost:10001/>` 提示符时保留在 Beeline 中。 也可使用 `-f` 参数运行某个文件，以便在处理该文件后返回到 Bash。
-   > 
-   > 
+
+    ```bash
+    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i query.hql
+    ```
+
+    > [!NOTE]
+    > `-i` 参数将启动 Beeline，运行 query.hql 文件中的语句。 查询完成后，会出现 `jdbc:hive2://localhost:10001/>` 提示符。 还可以使用 `-f` 参数运行文件，该参数在查询完成后会退出 Beeline。
+
 5. 若要验证是否已创建 **errorLogs** 表，请使用以下语句从 **errorLogs** 返回所有行：
-   
-        SELECT * from errorLogs;
-   
+
+    ```hiveql
+    SELECT * from errorLogs;
+    ```
+
     应返回三行数据，所有行都包含 t4 列中的 **[ERROR]**：
-   
+
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         | errorlogs.t1  | errorlogs.t2  | errorlogs.t3  | errorlogs.t4  | errorlogs.t5  | errorlogs.t6  | errorlogs.t7  |
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
@@ -189,30 +228,40 @@ Beeline 还可用于运行包含 HiveQL 语句的文件。 使用以下步骤创
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (1.538 seconds)
 
-## <a name="more-about-beeline-connectivity"></a>有关 Beeline 连接的详细信息
-本文档中的步骤使用 `localhost` 连接到在群集头节点上运行的 HiveServer2。 你还可使用主机名或头节点的完全限定域名，其需要流程的其他步骤，用于查找主机名或 FQDN。 使用头节点中的 Beeline 时，使用 `localhost` 已足够。
+## <a name="edge-nodes"></a>边缘节点
 
-如果群集中具有边缘节点（已安装 Beeline），则需要使用头节点的主机名或 FQDN 进行连接。
+如果群集具有边缘节点，建议在使用 SSH 进行连接时始终使用边缘节点而非头节点。 若要通过指向边缘节点的 SSH 连接来启动 Beeline，请使用以下命令：
 
-如果将 Beeline 安装到群集以外的客户端，则可使用以下命令进行连接。 将 **CLUSTERNAME** 替换为 HDInsight 群集名。 将 **PASSWORD** 替换为管理员（HTTP 登录）帐户的密码。
+```bash
+beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin
+```
 
-    beeline -u 'jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=hive2' -n admin -p PASSWORD
+## <a name="remote-clients"></a>远程客户端
 
-请注意，参数/URI 与直接在头节点上运行或在群集内的边缘节点中运行时不同。 这是因为从 Internet 连接到群集使用的是通过端口 443 路由流量的公用网关。 此外，还有其他一些服务也在端口 443 上通过公用网关进行公开，因此 URI 与直接连接时的不同。 从 Internet 连接时，必须通过密码验证会话。
+如果本地安装了 Beeline，或者通过 Docker 映像（如 [sutoiku/beeline](https://hub.docker.com/r/sutoiku/beeline/)）使用它，必须使用以下参数：
+
+* __连接字符串__：`-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2'`
+
+* __群集登录名__：`-n admin`
+
+* __群集登录密码__`-p 'password'`
+
+将连接字符串中的 `clustername` 替换为 HDInsight 群集名称。
+
+将 `admin` 替换为群集登录名称，并将 `password` 替换为群集登录密码。
 
 ## <a id="summary"></a><a id="nextsteps"></a>后续步骤
-如你所见，Beeline 命令提供了简单的方法让你以交互方式在 HDInsight 群集上运行 Hive 查询。
 
-有关 HDInsight 中的 Hive 的一般信息：
+有关 HDInsight 中 Hive 的更多常规信息，请参阅以下文档：
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 
-有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
+若要深入了解使用 Hadoop on HDInsight 的其他方法，请参阅以下文档：
 
 * [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
 
-如果将 Tez 与 Hive 配合使用，请参阅以下文档以了解调试信息：
+如果将 Tez 与 Hive 配合使用，请参阅以下文档：
 
 * [在基于 Windows 的 HDInsight 上使用 Tez UI](hdinsight-debug-tez-ui.md)
 * [在基于 Linux 的 HDInsight 上使用 Ambari Tez 视图](hdinsight-debug-ambari-tez-view.md)
@@ -236,11 +285,10 @@ Beeline 还可用于运行包含 HiveQL 语句的文件。 使用以下步骤创
 [putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
-
 

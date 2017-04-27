@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 04/03/2017
 ms.author: rli; juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 8d8575decb177001cefbb7f159841b64c3f84f41
-ms.openlocfilehash: d9bb513a7f5acc0ba41902795b159564b2562842
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: b34502aa75d94da1abcda880bb1a251a8455f3f8
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -90,12 +91,12 @@ ms.openlocfilehash: d9bb513a7f5acc0ba41902795b159564b2562842
 
 ### <a name="set-up-the-tool"></a>设置工具
 
-1.  下载并生成整个解决方案。 
+1.    下载并生成整个解决方案。 
 
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
-2.  从[此处](https://ffmpeg.org/download.html)下载 FFMPEG。 此项目最初使用具有静态链接的版本 be1d324 (2016-10-04) 开发。 
-3.  将 ffmpeg.exe 和 ffprobe.exe 复制到与 AzureMediaRedactor.exe 相同的输出文件夹。 
+2.    从[此处](https://ffmpeg.org/download.html)下载 FFMPEG。 此项目最初使用具有静态链接的版本 be1d324 (2016-10-04) 开发。 
+3.    将 ffmpeg.exe 和 ffprobe.exe 复制到与 AzureMediaRedactor.exe 相同的输出文件夹。 
 
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
@@ -113,9 +114,13 @@ ms.openlocfilehash: d9bb513a7f5acc0ba41902795b159564b2562842
     
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
-5.  将更新底部文本字段，使其带有面部 ID。 创建名为“idlist.txt”的文件，将这些 ID 作为换行符分隔列表。 
-6.  将此文件上传到步骤 1 中的输出资产。 也将原始视频上传到此资产并设置为主要资产。 
-7.  在“修正”模式下对此资产运行修正作业，以获取最终修正的视频。 
+5.    将更新底部文本字段，使其带有面部 ID。 创建名为“idlist.txt”的文件，将这些 ID 作为换行符分隔列表。 
+
+    >[!NOTE]
+    > idlist.txt 应保存在 ANSI 中。 可以使用记事本保存在 ANSI 中。
+    
+6.    将此文件上传到步骤 1 中的输出资产。 也将原始视频上传到此资产并设置为主要资产。 
+7.    在“修正”模式下对此资产运行修正作业，以获取最终修正的视频。 
 
 ## <a name="next-steps"></a>后续步骤 
 
@@ -129,9 +134,5 @@ ms.openlocfilehash: d9bb513a7f5acc0ba41902795b159564b2562842
 
 [Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+[宣布推出 Azure 媒体分析的面部修订](https://azure.microsoft.com/blog/azure-media-redactor/)
 

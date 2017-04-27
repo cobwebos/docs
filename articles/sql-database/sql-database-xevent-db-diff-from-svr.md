@@ -17,8 +17,9 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
 translationtype: Human Translation
-ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
-ms.openlocfilehash: 6766242bef4e6f976a621547941e8e34a4915c6c
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 8c94c8789696507d89e08a637067ca040d45246a
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 6766242bef4e6f976a621547941e8e34a4915c6c
 
 本主题说明 Azure SQL 数据库中的扩展事件与 Microsoft SQL server 中的扩展事件在实现方式上有怎样的细微差别。
 
-- SQL 数据库 V12 在 2015 年下半年度推出了扩展事件功能。
+- SQL 数据库在 2015 年下半年度推出了扩展事件功能。
 - SQL Server 自 2008 年开始即已推出扩展事件。
 - SQL 数据库上的扩展事件功能集是强大的 SQL Server 功能子集。
 
@@ -215,9 +216,4 @@ SELECT
 - Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

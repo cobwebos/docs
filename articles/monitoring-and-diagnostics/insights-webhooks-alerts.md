@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 04/03/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: c0d101266fecf04a84b5717c1b81cefed90cab40
-ms.openlocfilehash: 440bd939f0c7d235d7be210c7fee9f2bc122718c
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 7282de704a1053e2052a189990fb2b30b2adad6f
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -33,10 +34,7 @@ Azure 警报会将警报内容以 JSON 格式（架构定义如下）HTTP POST �
 还可以使用 [Azure PowerShell Cmdlet](insights-powershell-samples.md#create-alert-rules)、[跨平台 CLI](insights-cli-samples.md#work-with-alerts) 或 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 将警报配置为发布到 webhook URI。
 
 ## <a name="authenticating-the-webhook"></a>对 webhook 进行身份验证
-Webhook 可以使用以下任一方法进行身份验证：
-
-1. **基于令牌的授权** - 例如，保存的 webhook URI 具有令牌 ID。 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
-2. **基于密码的授权** - 例如，保存的 webhook URI 具有用户名和密码，例如 `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
+webhook 可使用基于令牌的身份验证进行身份验证。 保存的 webhook URI 具有令牌 ID，例如 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
 
 ## <a name="payload-schema"></a>负载架构
 POST 操作对于所有基于度量值的警报包含以下 JSON 有效负载和架构。
@@ -112,9 +110,4 @@ POST 操作对于所有基于度量值的警报包含以下 JSON 有效负载和
 * [Use Logic App to send an SMS via Twilio from an Azure alert](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)（使用逻辑应用通过 Twilio 从 Azure 警报发送短信）
 * [Use Logic App to send a Slack message from an Azure alert](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)（使用逻辑应用从 Azure 警报发送 Slack 消息）
 * [Use Logic App to send a message to an Azure Queue from an Azure alert](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)（使用逻辑应用从 Azure 警报将消息发送到 Azure 队列）
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

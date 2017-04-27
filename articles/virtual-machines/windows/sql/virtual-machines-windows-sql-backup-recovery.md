@@ -16,18 +16,19 @@ ms.workload: iaas-sql-server
 ms.date: 11/15/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 0d2310748c65a25ead71f7c0859919b7241d9f6c
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: f05ef18fb33942883ba164985721ce2d4f79d3fa
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的备份和还原
 ## <a name="overview"></a>概述
-备份 SQL Server 数据库中的数据是防止应用程序或用户错误导致数据丢失而采取的策略的重要组成部分。 对于 Azure 虚拟机 (VM) 上运行的 SQL Server 同样如此。
+Azure 存储维护每个 Azure VM 磁盘的 3 个副本，以确保数据不会丢失或物理数据不会损坏。 因此，与在本地不同，无需担心这些问题。 但是，仍应备份 SQL Server 数据库，以防止发生应用程序或用户错误（例如插入错误数据或删除表）并能及时还原到某个点。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-对于 Azure VM 中运行的 SQL Server，可以使用附加的磁盘作为备份文件目标，通过本机备份和还原技术实现此目的。 不过，只能[根据虚拟机的大小](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，将有限数量的磁盘附加到 Azure 虚拟机。 磁盘管理开销也是一个考虑因素。
+对于 Azure VM 中运行的 SQL Server，可以使用附加的磁盘作为备份文件目标，通过本机备份和还原技术实现此目的。 不过，只能[根据虚拟机的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，将有限数量的磁盘附加到 Azure 虚拟机。 磁盘管理开销也是一个考虑因素。
 
 从 SQL Server 2014 开始，可以备份和还原到 Microsoft Azure Blob 存储。 SQL Server 2016 进一步增强了此选项。 此外，对于 Microsoft Azure Blob 存储中存储的数据库文件，SQL Server 2016 提供了一个选项，让你使用 Azure 快照以接近实时的效率进行备份和快速还原。 本文将概述这些选项，可以在[使用 Microsoft Azure Blob 存储服务执行 SQL Server 备份和还原](https://msdn.microsoft.com/library/jj919148.aspx)中找到更多信息。
 
@@ -87,10 +88,5 @@ SQL Server 2014 包括以下增强功能：
 尽管备份和还原可用于迁移数据，但是，Azure VM 上的 SQL Server 可能还存在更便捷的数据迁移路径。 有关迁移选项和建议的完整讨论，请参阅[将数据库迁移到 Azure VM 上的 SQL Server](virtual-machines-windows-migrate-sql.md)。
 
 请查看其他[有关在 Azure 虚拟机中运行 SQL Server 的资源](virtual-machines-windows-sql-server-iaas-overview.md)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: aungoo
 translationtype: Human Translation
-ms.sourcegitcommit: bfb29928783283336b6116f198d70b0b7117750d
-ms.openlocfilehash: 880b1c2ca069e3e4a5ce9cb2af881b95e84687f4
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 7b08ce207b2a3cc2dd3d3559765def6af42a844a
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -61,7 +61,7 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 
 必须符合以下先决条件：
 
-* Blob 是在&2016; 年&1; 月&1; 日或之后创建。
+* Blob 是在 2016 年 1 月 1 日或之后创建。
 * 未在两个快照之间使用 [PutPage](https://msdn.microsoft.com/library/azure/ee691975.aspx) 或[复制 Blob](https://msdn.microsoft.com/library/azure/dd894037.aspx) 覆盖 Blob。
 
 **注意**：此功能适用于高级和标准 Azure 页 Blob。
@@ -105,7 +105,7 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 ## <a name="steps-to-restore-a-disk-from-snapshots"></a>从快照还原磁盘的步骤
 下述步骤将高级磁盘 mypremiumdisk 从备份存储帐户 mybackupstdaccount 还原到以前的快照。
 
-1. 确定要将高级磁盘还原到的时间点。 假设这是存储在备份存储帐户mybackupstdaccount  中的快照 mybackupstdpageblob_ss2。
+1. 确定要将高级磁盘还原到的时间点。 假设这是存储在备份存储帐户 mybackupstdaccount 中的快照 mybackupstdpageblob_ss2。
 2. 在 mybackupstdaccount 中，将快照 mybackupstdpageblob_ss2 升级为新的备份基本页 Blob mybackupstdpageblobrestored。
 3. 获取这个已还原备份页 Blob 的、名为 mybackupstdpageblobrestored_ss1 的快照。
 4. 将已还原页 Blob mybackupstdpageblobrestored 从 mybackupstdaccount 复制到 mypremiumaccount，用作新的高级磁盘 mypremiumdiskrestored。

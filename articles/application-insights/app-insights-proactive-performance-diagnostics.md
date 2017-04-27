@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
-ms.openlocfilehash: 1c46c40b09ca1923190d3c7109d25bd7525cb577
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 843a3cafd5a00dd4b4de04a43f18d58e60a48b29
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -58,7 +59,7 @@ ms.openlocfilehash: 1c46c40b09ca1923190d3c7109d25bd7525cb577
 
   * 还不可以。 但可以：
   * [设置警报](app-insights-alerts.md)，以便在指标超出阈值时告知用户。
-  * [将遥测导出到](app-insights-export-telemetry.md)[数据库](app-insights-code-sample-export-sql-stream-analytics.md)或 [PowerBI](app-insights-export-power-bi.md) 或者[其他](app-insights-code-sample-export-telemetry-sql-database.md)工具，在其中可以自行分析。
+  * [将遥测导出到](app-insights-export-telemetry.md)[数据库](app-insights-code-sample-export-sql-stream-analytics.md)或 [PowerBI](app-insights-export-power-bi.md)，可自行在其中进行分析。
 * *执行分析的频率是多少？*
 
   * 我们每天在前一天的遥测上运行分析。
@@ -136,9 +137,4 @@ ms.openlocfilehash: 1c46c40b09ca1923190d3c7109d25bd7525cb577
 
 * [手动配置的指标警报](app-insights-alerts.md)
 * [可用性 Web 测试](app-insights-monitor-web-app-availability.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

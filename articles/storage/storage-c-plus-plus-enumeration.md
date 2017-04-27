@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 translationtype: Human Translation
-ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
-ms.openlocfilehash: f14ed08473ba9c424acf39d3fe98d4a11adf9948
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: d234dd87919f4906628014156708489bd1efab6c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -101,7 +102,7 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
 
 如果未指定 *max_results* 参数，则会在单个页面中返回默认的最大值（最多 5000 个结果）。
 
-另请注意，针对 Azure 表存储进行查询时，可能不会返回任何记录，或者返回的记录数小于所指定的 *max_results* 参数的值，即使继续标记不为空。 可能的一个原因是，查询可能无法在&5; 秒钟内完成。 只要继续标记不为空，查询就会继续，你的代码不应假定分段结果的大小。
+另请注意，针对 Azure 表存储进行查询时，可能不会返回任何记录，或者返回的记录数小于所指定的 *max_results* 参数的值，即使继续标记不为空。 可能的一个原因是，查询可能无法在 5 秒钟内完成。 只要继续标记不为空，查询就会继续，你的代码不应假定分段结果的大小。
 
 大多数情况下，建议采用分段列表编码模式，因为这样可以明确地了解列表或查询的进度，以及服务对每个请求是如何响应的。 具体说来，对于 C++ 应用程序或服务来说，对列表进程进行低级别的控制可以更好地控制内存和性能。
 
@@ -148,7 +149,7 @@ do
 
 可以指定该段的 *max_results* 参数，在请求数和内存使用量之间进行平衡，满足应用程序的性能要求。
 
-此外，如果你使用了分段列表 API，但采用“贪婪”方式将数据存储在本地集合中，则我们也强烈建议你对代码进行重构，谨慎地应对数据处理规模扩大时将数据存储在本地集合中带来的问题。
+此外，如果你使用了分段列表 API，但采用“贪婪”方式将数据存储在本地集合中，则我们也强烈建议你对代码进行重构，以便谨慎地处理在规模较大的本地集合中存储数据的问题。
 
 ## <a name="lazy-listing"></a>懒惰列表
 虽然贪婪列表带来了各种潜在的问题，但如果容器中的对象不是很多，则使用起来还是很方便的。
@@ -202,10 +203,5 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 * [适用于 C++ 的 Azure 存储客户端库 API 文档。](http://azure.github.io/azure-storage-cpp/)
 * [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 * [Azure 存档文档](https://azure.microsoft.com/documentation/services/storage/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

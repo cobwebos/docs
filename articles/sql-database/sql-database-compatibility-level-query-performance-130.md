@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: alainl
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 5649895d1ae39d9a7fa863407b5341f1cdf567ee
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: a5e84ded4e7b574a24583be507902f9537328153
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -29,10 +29,10 @@ Azure SQL 数据库在许多不同的兼容级别上以透明方式运行数十�
 
 下面列出了 SQL 版本与默认兼容级别的对照供参考：
 
-* 100：在 SQL Server 2008 和 Azure SQL 数据库 V11 中。
-* 110：在 SQL Server 2012 和 Azure SQL 数据库 V11 中。
-* 120：在 SQL Server 2014 和 Azure SQL 数据库 V12 中。
-* 130：在 SQL Server 2016 和 Azure SQL 数据库 V12 中。
+* 100：在 SQL Server 2008 和 Azure SQL 数据库中。
+* 110：在 SQL Server 2012 和 Azure SQL 数据库中。
+* 120：在 SQL Server 2014 和 Azure SQL 数据库中。
+* 130：在 SQL Server 2016 和 Azure SQL 数据库中。
 
 > [!IMPORTANT]
 > **新创建的**数据库的默认兼容级别为 130。
@@ -63,7 +63,7 @@ SELECT compatibility_level
   * 现在，将以批处理模式对包含列存储索引的表排序。
   * 开窗聚合现在以批处理模式运行，例如 T-SQL LAG/LEAD 语句。
   * 以批处理模式查询包含多个不同子句的列存储表。
-  * 在 DOP =&1; 下面运行的或具有串行计划的查询也以批处理模式运行。
+  * 在 DOP = 1 下面运行的或具有串行计划的查询也以批处理模式运行。
 * 最后，基数估算随着兼容级别 120 的出现得到了改进，但对于在较低的兼容级别（也就是 100 或 110）运行的基数估算，移动到兼容级别 130 也会带来这些改进，且这些改进也有益于应用程序的查询性能。
 
 ## <a name="practicing-compatibility-level-130"></a>演练兼容级别 130
@@ -151,7 +151,7 @@ SET STATISTICS XML OFF;
 ![图 1](./media/sql-database-compatibility-level-query-performance-130/figure-1.jpg)
 
 ## <a name="serial-batch-mode"></a>SERIAL 批处理模式
-同样地，在处理行时转到兼容级别 130 即可执行批处理模式处理。 首先，批处理模式操作仅适用于已准备好列存储索引时。 其次，一个批处理通常代表大约&900; 行，并使用针对多核 CPU、较高内存吞吐量优化的代码逻辑，并且尽可能直接利用列存储的压缩数据。 在这些情况下，SQL Server 2016 一次可以处理大约 900 行，而不是一次处理 1 行，因此操作的整体开销现在是由整个批处理分担，从而降低各行的整体成本。 与列存储压缩结合的此共享操作数量基本上可减少 SELECT 批处理模式操作中的延迟。 可以在[列存储索引指南](https://msdn.microsoft.com/library/gg492088.aspx)中找到有关列存储和批处理模式的详细信息。
+同样地，在处理行时转到兼容级别 130 即可执行批处理模式处理。 首先，批处理模式操作仅适用于已准备好列存储索引时。 其次，一个批处理通常代表大约 900 行，并使用针对多核 CPU、较高内存吞吐量优化的代码逻辑，并且尽可能直接利用列存储的压缩数据。 在这些情况下，SQL Server 2016 一次可以处理大约 900 行，而不是一次处理 1 行，因此操作的整体开销现在是由整个批处理分担，从而降低各行的整体成本。 与列存储压缩结合的此共享操作数量基本上可减少 SELECT 批处理模式操作中的延迟。 可以在[列存储索引指南](https://msdn.microsoft.com/library/gg492088.aspx)中找到有关列存储和批处理模式的详细信息。
 
 ```
 -- Serial batch mode execution
@@ -405,7 +405,7 @@ SET STATISTICS XML OFF;
 
 事实上，结果集为 200,704 行（但全都取决于运行以前示例查询的频率，但更重要的是，因为 T-SQL 使用 RAND() 语句，所以每次运行返回的实际值都有所不同）。 因此，在此特定示例中，新的基数估算在估算行数时效果更好，因为 202,877 比 194,284 更接近 200,704！ 最后，如果将 WHERE 子句更改为等号（举例而言，而非“>”），这可能使新旧基数函数之间的估算值更加不同（视可以获取多少匹配项目而定）。
 
-显然，在此情况下，与实际计数相差大约&6000; 行，在某些情况下并不代表大量数据。 现在，将此转置成跨数个表的数百万行和更复杂的查询，而有时候估算值可能相差数百万行，因此，挑选错误的执行计划，或请求授予的内存不足（导致 TempDB 溢出并造成更多的 I/O）的风险高出许多。
+显然，在此情况下，与实际计数相差大约 6000 行，在某些情况下并不代表大量数据。 现在，将此转置成跨数个表的数百万行和更复杂的查询，而有时候估算值可能相差数百万行，因此，挑选错误的执行计划，或请求授予的内存不足（导致 TempDB 溢出并造成更多的 I/O）的风险高出许多。
 
 如果有机会，请使用最典型的查询和数据集来练习此比较，并亲自查看旧的和新的估算值如何受到影响（有些估算值可能变得与事实相差更远，或者其他一些估算值可能更接近结果集中返回的实际行计数）。 这全都取决于查询图形、Azure SQL 数据库特性、数据集的性质和大小，以及其相关的可用统计信息。 如果才创建 Azure SQL 数据库实例，查询优化工具则必须从头构建其知识，而不是重复使用之前查询运行所构成的统计信息。 因此，估算值非常情境式，并且几乎是每个服务器和应用程序情况所特有。 这是要牢记的重要方面！
 
@@ -414,7 +414,7 @@ SET STATISTICS XML OFF;
 
 1. 请迁移到兼容级别 130，并查看如何执行操作。 如果出现一些性能衰退，请将兼容级别设置回其原始级别，或保持为 130，并且只让基数估算还原到旧模式（如前文所述，这可独立处理问题）。
 2. 可在类似的生产负载下彻底测试现有的应用程序、进行微调，以及在生产前验证性能。 若有任何问题，同上所述，可以随时恢复到原始兼容级别，或让基数估算还原到旧模式。
-3. 作为最后一个选项，处理这些问题的最新方法是使用查询存储。 这是目前的建议选项！ 为了帮助分析在兼容级别 120 下或低于兼容级别 130 的级别下的查询，我们完全鼓励使用查询存储。 查询存储适用于最新版的 Azure SQL 数据库 V12，并且其设计用于帮助进行查询性能故障排除。 将查询存储视为数据库的航班数据记录器，其可收集和呈现关于所有查询的详细历史信息。 这可减少诊断和解决问题所需的时间，从而大幅简化性能举证。 有关详细信息，请参阅 [Query Store: A flight data recorder for your database](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database/)（查询存储：数据库的航班数据记录器）。
+3. 作为最后一个选项，处理这些问题的最新方法是使用查询存储。 这是目前的建议选项！ 为了帮助分析在兼容级别 120 下或低于兼容级别 130 的级别下的查询，我们完全鼓励使用查询存储。 查询存储适用于最新版的 Azure SQL 数据库，并且其设计用于帮助进行查询性能故障排除。 将查询存储视为数据库的航班数据记录器，其可收集和呈现关于所有查询的详细历史信息。 这可减少诊断和解决问题所需的时间，从而大幅简化性能举证。 有关详细信息，请参阅 [Query Store: A flight data recorder for your database](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database/)（查询存储：数据库的航班数据记录器）。
 
 在高级别中，如果已经有一组在兼容级别 120 或更低级别运行的数据库，并计划将其中一些数据库转到 130，或因为工作负荷自动预配一些默认设置为 130 的新数据库，请考虑以下各项：
 
@@ -432,7 +432,7 @@ SET STATISTICS XML OFF;
 * [Borko Novakovic 在 2016 年 6 月 8 日发表的博客文章：Query Store: A flight data recorder for your database](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database/)（查询存储：数据库的航班数据记录器）
 * [ALTER DATABASE 兼容性级别 (Transact-SQL)](https://msdn.microsoft.com/library/bb510680.aspx)
 * [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx)（更改数据库范围的配置）
-* [Compatibility Level 130 for Azure SQL Database V12](https://azure.microsoft.com/updates/compatibility-level-130-for-azure-sql-database-v12/)（Azure SQL Database V12 的兼容性级别 130）
+* [Compatibility Level 130 for Azure SQL Database](https://azure.microsoft.com/updates/compatibility-level-130-for-azure-sql-database-v12/)（Azure SQL 数据库的兼容级别 130）
 * [Optimizing Your Query Plans with the SQL Server 2014 Cardinality Estimator](https://msdn.microsoft.com/library/dn673537.aspx)（使用 SQL Server 2014 基数估算器优化查询计划）
 * [列存储索引指南](https://msdn.microsoft.com/library/gg492088.aspx)
 * [Alain Lissoir 在 2016 年 5 月 6 日发表的博客文章：Improved Query Performance with Compatibility Level 130 in Azure SQL Database](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/05/06/improved-query-performance-with-compatibility-level-130-in-azure-sql-database/)（已改善 Azure SQL 数据库中兼容级别 130 的查询性能）
