@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 1b5527090a41c274b590ed9d1ac7b561b6f4ed14
 ms.openlocfilehash: 10faa27e0c82e59c35e00258a2d90bea977dc28f
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -124,7 +125,7 @@ ms.openlocfilehash: 10faa27e0c82e59c35e00258a2d90bea977dc28f
    
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
-4. 在“在 O.C.Tanner - AppreciateHub 上配置单一登录”页上，单击“下载元数据”，然后将元数据文件保存在计算机本地。**
+4. 在**“在 O.C.Tanner - AppreciateHub 上配置单一登录”页上，单击“下载元数据”，然后将元数据文件保存在计算机本地。**
    
     ![什么是 Azure AD Connect][9]
 5. 通过 xyz 联系 O.C. Tanner - AppreciateHub 支持团队，为其提供元数据文件，让他们知道应该为你启用 SSO。
@@ -250,10 +251,5 @@ ms.openlocfilehash: 10faa27e0c82e59c35e00258a2d90bea977dc28f
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
