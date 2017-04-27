@@ -19,11 +19,14 @@ ms.author: rogardle
 translationtype: Human Translation
 ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
 ms.openlocfilehash: bd20dc4eb3948d08e3c2dd2ad2bb42d18df67796
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="container-management-with-docker-swarm"></a>使用 Docker Swarm 管理容器
 Docker Swarm 提供了一个环境，用于跨一组共用的 Docker 主机部署容器化的工作负荷。 Docker Swarm 使用本地 Docker API。 用于在 Docker Swarm 中管理容器的工作流几乎完全与单个容器主机上的工作流相同。 本文档提供了简单的示例来演示如何在 Docker Swarm 的 Azure 容器服务实例中部署容器化的工作负荷。 有关深入介绍 Docker Swarm 的更多文档，请参阅 [Docker.com 上的 Docker Swarm](https://docs.docker.com/swarm/)。
+
+[!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
 
 本文档中这些练习的先决条件：
 
@@ -115,10 +118,5 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Docker Swarm 的更多信息](https://docs.docker.com/swarm/)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

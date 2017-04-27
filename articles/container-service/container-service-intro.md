@@ -74,6 +74,8 @@ Docker Swarm 为 Docker 提供本机群集。 由于 Docker Swarm 为标准 Dock
 
 ![配置为使用 Swarm 的 Azure 容器服务。](media/acs-intro/acs-swarm2.png)
 
+[!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
+
 支持用于管理 Swarm 群集上容器的工具包括但不限于以下工具：
 
 * Dokku
