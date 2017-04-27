@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 353677bc7eb7fe791d23bcfdb79f3a0df6366c6f
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 532afb45c73d68d6dc259fa504d9520eecdb23b7
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/03/2017
 | --- | --- |
 | REST API 中未提供几种常见的 HTTP 标头。 |如果你使用 REST API 来开发媒体服务应用程序，你将发现一些常见的 HTTP 标头字段（包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID）不受支持。 未来的更新将增加这些标头。 |
 | 不允许使用百分号编码。 |生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一个“.” 文件名扩展名。 |
-| Azure 存储空间 SDK 版本 3.x 中的 ListBlobs 方法将失败。 |媒体服务基于 [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/fileservices/Version-2012-02-12) 版本生成 SAS URL。 如果你希望使用 Azure 存储空间 SDK 来列出 BLOB 容器中的 BLOB，请使用 Azure 存储空间 SDK 版本 2.x 中的 [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) 方法。 Azure 存储空间 SDK 版本 3.x 中的 ListBlobs 方法将失败。 |
+| Azure 存储空间 SDK 版本 3.x 中的 ListBlobs 方法将失败。 |媒体服务基于 [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) 版本生成 SAS URL。 如果你希望使用 Azure 存储空间 SDK 来列出 BLOB 容器中的 BLOB，请使用 Azure 存储空间 SDK 版本 2.x 中的 [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) 方法。 Azure 存储空间 SDK 版本 3.x 中的 ListBlobs 方法将失败。 |
 | 媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。 该服务可能返回“服务不可用”(503) HTTP 状态代码。 |有关详细信息，请参阅 [Azure 媒体服务错误代码](media-services-encoding-error-codes.md)主题中 503 HTTP 状态代码的说明。 |
 | 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 |需要使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 **Skip** 和 **Take** (.NET)/ **top** (REST)。 |
 | 某些客户端可能会在平滑流式处理清单中碰到重复标记问题。 |有关详细信息，请参阅[此](media-services-deliver-content-overview.md#known-issues)部分。 |
@@ -493,7 +493,7 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
     已删除原点特定的版本。 SAS 特定的 context.Locators.CreateSasLocator(asset, accessPolicy) 将标记为已弃用或通过 GA 删除。 请参阅“新增功能”下的“定位符”部分以了解更新行为。
 
 ## <a id="june_changes_12"></a>2012 年 6 月预览版
-以下是&11; 月版 SDK 中的新增功能。
+以下是 11 月版 SDK 中的新增功能。
 
 * 删除实体
   

@@ -1,6 +1,6 @@
 # 概述
 ## [Azure VM 上的 SQL Server 是什么？](virtual-machines-windows-sql-server-iaas-overview.md) 
-## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
+## [定价](virtual-machines-windows-sql-server-pricing-guidance.md)
 ## [常见问题](virtual-machines-windows-sql-server-iaas-faq.md)
  
 # 入门
@@ -48,9 +48,4 @@
 ## [SQL Server工具](https://msdn.microsoft.com/library/mt238365.aspx)
 ## [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 ## [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

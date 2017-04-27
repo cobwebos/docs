@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/26/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: 5ae6afea4d55eb03624602f483a2dc9620e33bb7
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 84f9c9745cc0c95fc5134dcc7e659e7ace11b188
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -25,12 +26,12 @@ ms.openlocfilehash: 5ae6afea4d55eb03624602f483a2dc9620e33bb7
 在本教程中概述的方案假定您已具有以下各项：
 
 * 一个有效的 Azure 订阅
-* 启用 New Relic 单一登录的订阅
+* 启用 New Relic 单一登录 (SSO) 的订阅
 
-完成本教程后，分配到 New Relic 的 Azure Active Directory 用户将能够使用 AAD 访问面板进行单一登录。
+完成本教程后，已向 New Relic 分配的 Azure Active Directory 用户将能够使用 AAD 访问面板进行 SSO。
 
 1. 为 New Relic 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
@@ -61,11 +62,11 @@ ms.openlocfilehash: 5ae6afea4d55eb03624602f483a2dc9620e33bb7
    
    ![New Relic](./media/active-directory-saas-new-relic-tutorial/IC797032.png "New Relic")
    
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 
 此部分概述如何让用户使用基于 SAML 协议的联合身份验证通过其在 Azure Active Directory 中的帐户向 New Relic 进行身份验证。
 
-**若要配置单一登录，请执行以下步骤：**
+**若要配置 SSO，请执行以下步骤：**
 
 1. 在 Azure 经典门户的“New Relic”应用程序集成页上，单击“配置单一登录”打开“配置单一登录”对话框。
    
@@ -100,7 +101,7 @@ ms.openlocfilehash: 5ae6afea4d55eb03624602f483a2dc9620e33bb7
    
    ![配置单一登录](./media/active-directory-saas-new-relic-tutorial/IC797039.png "配置单一登录")
    
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 
 若要让 Azure Active Directory 用户登录到 New Relic，必须将其预配到 New Relic 中。 使用 New Relic 时，预配属手动任务。
 
@@ -121,12 +122,12 @@ ms.openlocfilehash: 5ae6afea4d55eb03624602f483a2dc9620e33bb7
    2. 选择“用户”作为“角色”。
    3. 单击“添加此用户”。
 
-> [!NOTE]
-> 可以使用任何其他 New Relic 用户帐户创建工具或 New Relic 提供的 API 来预配 AAD 用户帐户。
+>[!NOTE]
+>可以使用任何其他 New Relic 用户帐户创建工具或 New Relic 提供的 API 来预配 AAD 用户帐户。
 > 
 > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
 **若要将用户分配到 New Relic，请执行以下步骤：**
@@ -139,11 +140,9 @@ ms.openlocfilehash: 5ae6afea4d55eb03624602f483a2dc9620e33bb7
    
    ![是](./media/active-directory-saas-new-relic-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
+## <a name="additional-resources"></a>其他资源
 
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)

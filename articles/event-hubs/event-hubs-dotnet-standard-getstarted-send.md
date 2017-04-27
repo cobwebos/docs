@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 420a79a3f98500fa5e9054c3a59d9ac20ecb6cbf
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 12d4282082b3318bd14535a49e25c8d606d1bd7f
+ms.lasthandoff: 04/26/2017
 
 ---
 
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>使用 .NET Standard 将消息发送到 Azure 事件中心入门
 
 > [!NOTE]
-> [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) 上提供了此示例。
+> [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) 上提供了此示例。
 
-本教程演示如何编写 .NET Core 控制台应用程序，以将一组消息发送到事件中心。 可以按原样运行 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender) 解决方案，并将 `EhConnectionString` 和 `EhEntityPath` 字符串替换为事件中心的值。 或者，可以按照本教程中的步骤创建自己的解决方案。
+本教程演示如何编写将一组消息发送到事件中心的 .NET Core 控制台应用程序。 可以按原样运行 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) 解决方案，将 `EhConnectionString` 和 `EhEntityPath` 字符串替换为事件中心的值。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 03/28/2017
 
 将 [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet 包添加到项目。
 
-## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>编写一些代码将消息发送到事件中心
+## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>编写一些代码以将消息发送到事件中心
 
 1. 在 Program.cs 文件顶部添加以下 `using` 语句。
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 03/28/2017
 4. 将名为 `SendMessagesToEventHub` 的新方法添加到 `Program` 类，如下所示：
 
     ```csharp
-    // Creates an Event Hub client and sends 100 messages to the event hub.
+    // Creates an event hub client and sends 100 messages to the event hub.
     private static async Task SendMessagesToEventHub(int numMessagesToSend)
     {
         for (var i = 0; i < numMessagesToSend; i++)
@@ -166,7 +166,7 @@ ms.lasthandoff: 03/28/2017
                 Console.ReadLine();
             }
 
-            // Creates an Event Hub client and sends 100 messages to the event hub.
+            // Creates an event hub client and sends 100 messages to the event hub.
             private static async Task SendMessagesToEventHub(int numMessagesToSend)
             {
                 for (var i = 0; i < numMessagesToSend; i++)
@@ -193,7 +193,7 @@ ms.lasthandoff: 03/28/2017
 
 6. 运行程序，并确保没有任何错误。
 
-祝贺你！ 现在你已向事件中心发送消息。
+祝贺你！ 现在已向事件中心发送消息。
 
 ## <a name="next-steps"></a>后续步骤
 访问以下链接可以了解有关事件中心的详细信息：

@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 2/15/2017
+ms.date: 3/31/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 845a950f02ba95a100ffedbb07e4d1491b22a2da
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 8746abc957816f103abe6c33308af2a584e35485
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="failback-in-site-recovery"></a>在 Site Recovery 中进行故障回复
+
+# <a name="failback-in-site-recovery-for-hyper-v-virtual-machines"></a>Site Recovery 中 Hyper-V 虚拟机的故障回复
+
 > [!div class="op_single_selector"]
 > * [来自 Azure 的 VMware 虚拟机/物理计算机](site-recovery-failback-azure-to-vmware.md)
 > * [来自 Azure 的 Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
@@ -44,7 +46,7 @@ Azure 是具有高可用性的环境，你的虚拟机将始终可用。 故障�
 从主要位置故障转移到辅助位置后，复制的虚拟机不受 Site Recovery 的保护，辅助位置现在充当活动位置。 请遵循以下过程故障回复到原始主站点。 本过程描述如何对恢复计划运行计划的故障转移。 或者，也可以在“**虚拟机**”选项卡上对单个虚拟机运行故障转移。
 
 1. 选择“**恢复计划**” > “*recoveryplan_name*”。 单击“**故障转移**” > “**计划的故障转移**”。
-2. 在“确认计划的故障转移”页上，选择源和目标位置。 请注意故障转移方向。 如果从主要位置故障转移已按预期完成，并且所有虚拟机都位于辅助位置，则本部分仅供参考。
+2. 在“确认计划的故障转移”****页上，选择源和目标位置。 请注意故障转移方向。 如果从主要位置故障转移已按预期完成，并且所有虚拟机都位于辅助位置，则本部分仅供参考。
 3. 如果你要从 Azure 故障回复，请在“**数据同步**”中选择设置：
 
    * **在故障转移之前同步数据（仅同步增量更改）** - 此选项可最大程度地减少虚拟机的停机时间，因为它可在不关闭虚拟机的情况下执行同步。 此选项将执行以下操作：

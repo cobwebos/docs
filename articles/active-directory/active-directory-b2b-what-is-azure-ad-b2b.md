@@ -1,5 +1,5 @@
 ---
-title: "关于 Azure Active Directory B2B 协作预览版 | Microsoft 文档"
+title: "什么是 Azure Active Directory B2B 协作？ | Microsoft Docs"
 description: "Azure Active Directory B2B 协作可让业务合作伙伴有选择性地访问本方的企业应用程序，为跨公司合作关系提供支持。"
 services: active-directory
 documentationcenter: 
@@ -13,90 +13,97 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/18/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 4bfd76a00ba694096ef0b045b14beb757ba0809f
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: 9cd8edf47059a5f574489a604156890d157c8b1a
+ms.lasthandoff: 04/13/2017
 
 
 ---
 
-# <a name="about-the-azure-ad-b2b-collaboration-preview"></a>关于 Azure AD B2B 协作预览版
-本文介绍全新 Azure Active Directory (Azure AD) B2B 协作公共预览版的目标、功能和优势。
+# <a name="what-is-azure-ad-b2b-collaboration"></a>什么是 Azure AD B2B 协作？
 
-不管你是 IT 专业人员还是信息工作者，都可以利用许多的 Azure AD B2B 协作功能。 你可以与世界各地其他组织中的合作伙伴密切合作，不管他们的规模、行业或者法规遵从与政府监管要求如何。 可以向他们提供文档、资源和应用程序的访问权限，同时对其内部数据保持完全的控制。
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AhwrweCBdsc" frameborder="0" allowfullscreen></iframe>
 
-如果你是开发人员，可以使用 Azure AD B2B API 编写应用程序，以安全的方式将各组织凝聚在一起。 对于信息工作者用户而言，整个流程和导航都相当直接。
+借助 Azure AD 企业到企业 (B2B) 协作功能，任何使用 Azure AD 的组织都能安全可靠地与来自任何其他组织的用户协同工作（无论这些组织的规模大小、是否使用 Azure AD 以及是否具有 IT 部门）。 
 
-## <a name="how-b2b-collaboration-works"></a>B2B 协作的工作原理
+使用 Azure AD 的组织可以向其合作伙伴提供文档、资源和应用程序的访问权限，同时保持对企业数据的完全控制。 开发人员可以使用 Azure AD 企业到企业 API 编写应用程序，用于以安全的方式将两个组织凝聚在一起，同时使最终用户能无缝且直观地进行导航。
 
-在当前的预览版中，IT 专业人员和信息工作者可以通过 Azure 门户或邀请管理器 API 一次添加一个或多个用户，以此来与合作伙伴组织建立关系。
+多达 **97%** 的我方客户都表示 Azure AD B2B 协作对他们非常重要。
 
-管理员可以使用 Azure 门户中的新门户体验 (https://portal.azure.com) 和 PowerShell 来建立关系。
+![饼图](media/active-directory-b2b-what-is-azure-ad-b2b/97-percent-support.png)
 
-信息工作者可以使用 http://myapps.microsoft.com 中的访问面板体验。
+截至 2017 年 4 月初，已有约 300 万用户在使用 Azure AD B2B 协作功能。 在超过 23% 的 Azure AD 组织中，每个组织已有 10 个以上的用户从这些功能中获益。
 
-开发人员可以使用 Azure AD B2B 邀请管理器 API 创建应用程序，添加 B2B 协作用户以及自定义邀请和登记工作流。
+## <a name="the-key-benefits-of-azure-ad-b2b-collaboration-to-your-organization"></a>Azure AD B2B 协作对组织的主要益处
 
-B2B 协作用户通常是通过邀请与兑换过程添加的。 工作原理如下：
+### <a name="work-with-any-user-from-any-partner"></a>与来自任意合作伙伴的任意用户合作
 
-1. WoodGrove 公司的 John Doe 想要使用 Sam Oogle 的 gmail 地址 (gsamoogle@gmail.com) 来添加 Sam Oogle 用户。
+* 合作伙伴使用其自己的凭据
 
-2. John Doe 转到 WoodGrove 门户 (portal.azure.com) 或访问面板 (myapps.microsoft.com)，登录，然后将用户 Sam Oogle 添加到 WoodGrove 目录、组或应用程序。
+* 合作伙伴无需使用 Azure AD
 
-3. John Doe 指定一封要发送到 Sam Oogle 的自定义邀请电子邮件。
+* 无需任何外部目录或进行任何复杂设置
 
-4. John Doe 发送邀请后，将在 WoodGrove 的 Azure AD 中创建用户 Sam Oogle，如下所示：
+### <a name="simple-and-secure-collaboration"></a>协作简单安全
 
-  ![portal.azure.com 中的管理员用户界面](media/active-directory-b2b-what-is-azure-ad-b2b/user-is-added.png)
+* 提供对任何企业应用或数据的访问权限，同时应用 Azure AD 支持的高级授权策略
 
-5. 创建该用户后，Azure AD 将向 Sam Oogle 发送一封邀请电子邮件：
+* 无缝用户体验
 
-  ![发给 Sam Oogle 的邀请邮件](media/active-directory-b2b-what-is-azure-ad-b2b/invitation-mail-sent-to-sam.png)
+* 应用和数据的企业级安全性
 
-6. 在邀请中，Sam Oogle 选择“开始”。  
-此时将打开 Azure 门户。
+### <a name="no-management-overhead"></a>无管理开销
 
-7. Sam Oogle 登录到 Azure 门户。
+* 无需外部帐户或密码管理
 
-8. Azure AD 将使用 Sam Oogle 的令牌中的信息在 Azure AD 中更新 Sam Oogle 用户对象，如下所示：
+* 无需同步或手动的帐户生命周期管理
 
-  ![Azure 门户中的 Sam Oogle 用户配置文件](media/active-directory-b2b-what-is-azure-ad-b2b/user-profile-is-populated.png)
+* 无外部管理开销
 
-9. 现在，Sam Oogle 已兑换邀请，可以访问 WoodGrove 资源。 管理员可以管理用户 Sam Oogle，就像 Azure AD 中的其他任何用户一样。 用户列表如下所示：
+## <a name="you-can-easily-add-b2b-collaboration-users-to-your-organization"></a>可轻松向组织添加 B2B 协作用户
 
-  ![Azure AD 用户列表](media/active-directory-b2b-what-is-azure-ad-b2b/sam-now-user-in-azure-ad.png)
+管理员可在 [Azure 门户](https://portal.azure.com)添加 B2B 协作（来宾）用户。
 
-## <a name="public-preview-features"></a>公共预览版功能
-根据用户的反馈，B2B 协作公共预览全新版提供以下主要功能：
+![饼图](media/active-directory-b2b-what-is-azure-ad-b2b/adding-b2b-users-admin.png)
 
-* 对于管理员：[Azure 门户](https://portal.azure.com)中的用户界面已得到增强。 例如，管理员可以邀请 B2B 用户加入目录、任何组或应用程序。  
+### <a name="enable-your-collaborators-to-bring-their-own-identity"></a>允许协作者自带标识
 
-* 对于信息工作者：[访问面板](https://myapps.microsoft.com)中提供 B2B 协作自助邀请功能。 信息工作者可以邀请 B2B 协作用户加入他们管理的任何自助服务组或应用程序。
+B2B 协作者可以使用自己选择的标识登录。 如果用户没有 Microsoft 帐户或和 Azure AD 帐户，则会在提供兑换时为其无缝创建一个帐户。
 
-* 允许受邀用户使用任何电子邮件地址。 无论使用的是 Office 365、本地 Microsoft Exchange、outlook.com 还是任何社交电子邮件地址（Gmail、Yahoo 等等），用户都可以创建一个 Azure AD 帐户或 Microsoft 帐户来访问受邀请组织。
+![登录标识选择](media/active-directory-b2b-what-is-azure-ad-b2b/sign-in-identity-choice.png)
 
-* 创建带有租户品牌的专业邀请电子邮件。
+### <a name="delegate-to-application-and-group-owners"></a>委托给应用程序和组所有者 
+应用程序和组所有者可以直接将 B2B 用户添加到所关心的任何应用程序，无论是否为 Microsoft 应用程序。 管理员可向非管理员委托添加 B2B 用户的权限。 非管理员可以使用 [Azure AD 应用程序访问面板](https://myapps.microsoft.com)将 B2B 协作用户添加到应用程序或组。
 
-* 使用邀请 API 自定义用户定位。
+![访问面板](media/active-directory-b2b-what-is-azure-ad-b2b/access-panel.png)
 
-* 为邀请方组织中的 B2B 协作用户设置多重身份验证。
+![添加成员](media/active-directory-b2b-what-is-azure-ad-b2b/add-member.png)
 
-* 向非管理员委派邀请。
+### <a name="authorization-policies-protect-your-corporate-content"></a>授权策略保护企业内容
 
-* 为 B2B 协作提供 PowerShell 支持。
+管理员可以建立条件访问策略（如多重身份验证），此类策略可在租户级别、应用程序级别上实施或针对特定用户实施，以保护企业应用和数据。
 
-* 提供审核和报告功能。
+![添加成员](media/active-directory-b2b-what-is-azure-ad-b2b/add-member.png)
 
-## <a name="help-us-shape-your-features"></a>帮助塑造你的功能
- 
-我们将在改进 B2B 协作的过程中不断听取你的反馈。 诚邀你在 [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)加入讨论、分享用户方案和最佳实践并分享 Azure AD B2B 协作中让你钟意的方面
- 
-还力邀你在 [B2B 协作意见](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas)网站提交意见并为未来的功能投票。
+### <a name="use-our-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>使用 API 和示例代码轻松生成要载入的应用程序
+使用按组织需求自定义的方法引入外部合作伙伴。
+
+使用 [Azure AD B2B 邀请 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)，组织可以深入自定义其载入体验（包括创建自助注册门户），为此我们在 Github 上提供了代码示例：<https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web>
+
+![注册门户](media/active-directory-b2b-what-is-azure-ad-b2b/sign-up-portal.png)
+
+通过 Azure AD B2B 协作，可以获得 Azure AD 的全部功能，以最终用户认为简单且直观的方式来保护合作伙伴关系。 不要犹豫，加入使用 Azure AD B2B 进行外部协作的成千上万个组织的行列中吧！
 
 ## <a name="next-steps"></a>后续步骤
+
+* 管理员经验位于 [Azure 门户](https://portal.azure.com)。
+
+* 信息工作者经验位于[访问面板](https://myapps.microsoft.com)。
+
+* 此外，还可与往常一样通过 [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)（Microsoft 技术社区）与产品团队联系，获取任何反馈、讨论和建议。
 
 在 Azure AD B2B 协作网站上浏览我们的其他文章：
 

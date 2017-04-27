@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2017
+ms.date: 03/29/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 80ad4ee51dc03c588e9da6a3277120c685839a2b
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 750dfb2ff8b4d82b2f42518c3873a32d6be0bc20
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="move-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入/移出本地 Oracle
-本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出本地 Oracle 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
+本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出本地 Oracle 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-可将数据从任一支持的源数据存储移到 Oracle 数据库，或从 Oracle 数据库移到任一支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 
+可将数据从任一支持的源数据存储移到 Oracle 数据库，或从 Oracle 数据库移到任一支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。
 
 ## <a name="prerequisites"></a>先决条件
 数据工厂支持通过数据管理网关连接到本地 Oracle 源。 若要了解数据管理网关，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文，有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移动到云](data-factory-move-data-between-onprem-and-cloud.md)。
@@ -37,34 +37,36 @@ ms.lasthandoff: 03/30/2017
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
 Oracle 连接器支持两个版本的驱动程序：
 
-- **适用于 Oracle 的 Microsoft 驱动程序**与数据管理网关（2.7 版及更高版本）绑定。 **建议**使用此驱动程序。 除要连接到 Oracle 的网关外无需安装任何程序，还可以体验更好的复制性能。 支持 Oracle 数据库版本 10g 发布 2 或更高版本。
+- **适用于 Oracle 的 Microsoft 驱动程序（推荐）**：从数据管理网关 2.7 版开始，适用于 Oracle 的 Microsoft 驱动程序随网关一起自动安装，因此，无需另外处理驱动程序来建立与 Oracle 的连接，而且使用此驱动程序还可以体验到更好的复制性能。 支持 Oracle 数据库版本 10g 发布 2 或更高版本。
 
-    > [!NOTE]
+    > [!IMPORTANT]
     > 目前，适用于 Oracle 的 Microsoft 驱动程序仅支持从 Oracle 复制数据，不支持将数据写入 Oracle。 请注意，数据管理网关“诊断”选项卡中的测试连接功能不支持此驱动程序。 或者，可以使用复制向导验证连接。
     >
 
 - **用于 .NET 的 Oracle 数据提供程序：**还可以选择使用 Oracle 数据提供程序在 Oracle 中复制/粘贴数据。 该组件包含在[适用于 Windows 的 Oracle 数据访问组件](http://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在安装有网关的计算机上安装合适的版本（32/64 位）。 [Oracle 数据提供程序 .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可访问 Oracle 数据库 10g 版本 2 或更高版本。
 
     如果选择“XCopy 安装”，请遵循 readme.htm 中的步骤。 推荐选择带 UI 的安装程序（非 XCopy）。
-    
+
     安装提供程序后，使用服务小程序（或）数据管理网关配置管理器在计算机上**重启**数据管理网关主机服务。  
+
+如果使用复制向导来创作复制管道，则会自动确定驱动程序类型。 默认使用 Microsoft 驱动程序，除非网关版本低于 2.7 或者选择 Oracle 作为接收器。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出本地 Oracle 数据库。
 
 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
-无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
-2. 创建**数据集**以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
+2. 创建**数据集**以表示复制操作的输入和输出数据。
+3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从本地 Oracle 数据库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。 
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从本地 Oracle 数据库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。
 
-以下部分提供了有关用于定义数据工厂实体的 JSON 属性的详细信息： 
+以下部分提供了有关用于定义数据工厂实体的 JSON 属性的详细信息：
 
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了有关特定于 Oracle 链接服务的 JSON 元素的描述。

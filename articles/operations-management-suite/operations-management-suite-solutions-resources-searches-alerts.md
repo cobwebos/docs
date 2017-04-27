@@ -15,9 +15,9 @@ ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: e47aacd1a188649a3b424981c20a6c2b736b2d89
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 35264f1ec5df5a3e171f7631e0d3b46bf9c0b8e7
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -229,7 +229,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进程。 Webhook 操作与修正操作类似，不同之处在于它们是用于 Webhook，可能调用 Azure 自动化 Runbook 之外的进程。 此外，它们还提供其他选项来提供要发送到远程进程的负载。
 
-如果警报会调用 webhook，则除 **Alert** 操作资源外，它还需要一个类型为 **Webhook** 的操作资源。  
+如果警报会调用 webhook，则除 **Alert** 操作资源外，还将需要一个类型为 **Webhook** 的操作资源。  
 
     {
         "name": "<name-of-the-action>",
@@ -248,7 +248,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
         }
     }
 
-下表介绍了 Alert 操作资源的属性。
+下表介绍了 Webhook 操作资源的属性。
 
 | 元素名称 | 必选 | 说明 |
 |:--|:--|:--|

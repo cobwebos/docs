@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 8dc33077a955052a99b415b1299004cf8a4f217e
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: b49e06da0019a50cc8e50c4da47e42c03b44bcc6
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/15/2017
 [Azure 存储分析](storage-analytics.md)提供所有存储服务的指标，以及 Blob、队列和表的日志。 可以使用 [Azure 门户](https://portal.azure.com)来配置要为帐户记录哪些指标和日志，并配置图表来提供指标数据的可视表示形式。
 
 > [!NOTE]
-> 在 Azure 门户中检查监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析和计费](/rest/api/storageservices/fileservices/Storage-Analytics-and-Billing)。
+> 在 Azure 门户中检查监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析和计费](/rest/api/storageservices/Storage-Analytics-and-Billing)。
 >
 > Azure 文件存储目前支持存储分析指标，但尚不支持日志记录。
 >
@@ -51,7 +51,7 @@ ms.lasthandoff: 03/15/2017
    * **聚合**：收集入口/出口、可用性、延迟和成功百分比等指标。 系统将聚合 Blob、队列、表和文件服务的这些指标。
    * **按 API**：除了聚合指标以外，还在 Azure 存储服务 API 中为每项存储操作收集一组相同的指标。
 
-   若要设置数据保留策略，请移动“保留期(天)”滑块，或输入数据的保留天数（1 到 365 天）。 新存储帐户的默认保留期为&7; 天。 如果不需要设置保留策略，请输入零。 如果没有保留策略，则是否删除监视数据由你自己决定。
+   若要设置数据保留策略，请移动“保留期(天)”滑块，或输入数据的保留天数（1 到 365 天）。 新存储帐户的默认保留期为 7 天。 如果不需要设置保留策略，请输入零。 如果没有保留策略，则是否删除监视数据由你自己决定。
 
    > [!WARNING]
    > 手动删除指标数据会产生费用。 陈旧的分析数据（超过保留策略的数据）将被系统删除，不会产生费用。 建议根据要将帐户的存储分析数据保留多长时间来设置保留策略。 有关详细信息，请参阅[启用存储指标时需要支付多少费用？](storage-enable-and-view-metrics.md#what-charges-do-you-incur-when-you-enable-storage-metrics)
@@ -153,7 +153,7 @@ ms.lasthandoff: 03/15/2017
 
 诊断日志保存在你的存储帐户下名为 $logs 的 Blob 容器中。 可以使用 [Microsoft 存储资源管理器](http://storageexplorer.com)等存储资源管理器，或者使用存储客户端库或 PowerShell 以编程方式来查看日志数据。
 
-有关访问 $logs 容器的信息，请参阅[启用存储日志记录和访问日志数据](/rest/api/storageservices/fileservices/enabling-storage-logging-and-accessing-log-data)。
+有关访问 $logs 容器的信息，请参阅[启用存储日志记录和访问日志数据](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data)。
 
 ## <a name="next-steps"></a>后续步骤
 

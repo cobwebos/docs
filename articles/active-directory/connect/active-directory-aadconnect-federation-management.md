@@ -13,12 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 4/4/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: b4b5e1af6c03e1124de78308cab1dad86d06641e
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 2a64405c0862d09dd487d260a651123eafbcaf99
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -29,6 +29,7 @@ ms.lasthandoff: 03/28/2017
 |:--- |:--- |
 | **管理 AD FS** | |
 | [修复信任](#repairthetrust) |如何修复与 Office 365 的联合信任。 |
+| [使用备用登录 ID 与 Azure AD 联合](#alternateid) | 使用备用登录 ID 配置联合  |
 | [添加 AD FS 服务器](#addadfsserver) |如何使用附加的 AD FS 服务器扩展 AD FS 场。 |
 | [添加 AD FS Web 应用程序代理服务器](#addwapserver) |如何使用附加的 Web 应用程序代理 (WAP) 服务器扩展 AD FS 场。 |
 | [添加联合域](#addfeddomain) |如何添加联合域。 |
@@ -66,6 +67,22 @@ ms.lasthandoff: 03/28/2017
 
 > [!NOTE]
 > Azure AD Connect 只能对自签名的证书进行修复或采取措施。 Azure AD Connect 无法修复第三方证书。
+
+## 使用 AlternateID 与 Azure AD 进行联合<a name=alternateid></a>
+建议使本地用户主体名称 (UPN) 和云用户主体名称保持相同。 如果本地 UPN 使用不可路由的域（例如 Contoso.local），或由于本地应用程序依赖关系而无法更改，建议设置备用登录 ID。 备用登录 ID 允许配置登录体验，用户可以使用其 UPN 以外的属性（如邮件）登录。 用于 Azure AD Connect 中用户主体名称的属性默认为 Active Directory 中的 userPrincipalName 属性。 如果为用户主体名称选择任何其他属性，并使用 AD FS 进行联合，则 Azure AD Connect 将为备用登录 ID 配置 AD FS。 以下是为用户主体名称选择其他属性的一个示例：
+
+![备用 ID 属性选择](media/active-directory-aadconnect-federation-management/attributeselection.png)
+
+为 AD FS 配置备用登录 ID 包括两个主要步骤：
+1. **配置正确的颁发声明集**：已将 Azure AD 信赖方信任中的颁发声明规则修改为使用所选的 UserPrincipalName 属性作为用户的备用 ID。
+2. **在 AD FS 配置中启用备用登录 ID**：已更新 AD FS 配置，以便 AD FS 可以使用备用 ID 查找相应林中的用户。 此配置支持 Windows Server 2012 R2（带 KB2919355）或更高版本上的 AD FS。 如果 AD FS 服务器为 2012 R2，则 Azure AD Connect 会检查是否存在所需的知识库 (KB)。 如果未检测到知识库 (KB)，则在配置完成后将显示一条警告，如下所示：
+
+    ![警告：2012R2 上缺少知识库 (KB)](media/active-directory-aadconnect-federation-management/kbwarning.png)
+
+    若要纠正缺少知识库 (KB) 情况下的配置，请安装所需的 [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590)，然后借助[修复 AAD 和 AD FS 信任](#repairthetrust)修复信任。
+
+> [!NOTE]
+> 有关 AlternateID 和手动配置步骤的详细信息，请阅读[配置备用登录 ID](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
 
 ## 添加 AD FS 服务器 <a name=addadfsserver></a>
 

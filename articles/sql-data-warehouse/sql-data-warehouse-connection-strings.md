@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 99be9d9b840e3d8cfbb24a76fc3dc8d5e041f63d
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: cfdec6b621267d642371104c328f9b5e6fd19c59
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="drivers-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的驱动程序
-用户可以使用多个不同的应用程序协议（例如 [ADO.NET][ADO.NET]、[ODBC][ODBC] 、[PHP][PHP] 和 [JDBC][JDBC]）连接到 SQL 数据仓库。 下面是每个协议的连接字符串的一些示例。  可以使用 Azure 门户来生成连接字符串。  若要使用 Azure 门户生成连接字符串，请导航到数据库边栏选项卡，在“概要”下单击“显示数据库连接字符串”。
+用户可以使用多个不同的应用程序协议，例如 [ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP] 和 [JDBC][JDBC] 连接到 SQL 数据仓库。 下面是每个协议的连接字符串的一些示例。  可以使用 Azure 门户来生成连接字符串。  若要使用 Azure 门户生成连接字符串，请导航到数据库边栏选项卡，在“概要”下单击“显示数据库连接字符串”。
 
 ## <a name="sample-adonet-connection-string"></a>示例 ADO.NET 连接字符串
 ```C#
@@ -49,12 +51,12 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 > 
 
 ## <a name="next-steps"></a>后续步骤
-若要开始使用 Visual Studio 和其他应用程序查询数据仓库，请参阅[使用 Visual Studio 进行查询][使用 Visual Studio 进行查询]。
+若要开始使用 Visual Studio 和其他应用程序查询数据仓库，请参阅[使用 Visual Studio 进行查询][Query with Visual Studio]。
 
 <!--Image references-->
 
 <!--Azure.com references-->
-[使用 Visual Studio 进行查询]: ./sql-data-warehouse-query-visual-studio.md
+[Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--MSDN references-->
 [ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
@@ -63,9 +65,4 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 [JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
 
 <!--Other references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

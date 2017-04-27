@@ -15,9 +15,9 @@ ms.workload:
 ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: ef4324ebf3c24cdf2ebed58e4938f401b66b9c95
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: c75a3a2477f113f17aab7a3e1969f15a4ec88a02
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -37,6 +37,13 @@ ms.lasthandoff: 03/22/2017
 * 主目标应在可与进程服务器和配置服务器通信的网络中。
 * 主目标版本应该低于或等于进程服务器和配置服务器的版本。 例如，如果配置服务器版本为 9.4，则主目标的版本可以是 9.4 或 9.3，而不能是 9.5。
 * 主目标只能是 VMware 虚拟机，而不能是物理服务器。
+* 主目标需要遵循以下大小调整指南
+    * RAM：6GB 或更多
+    * 操作系统磁盘大小：50GB 或更多（用于安装 CentOS6.6）
+    * 保留驱动器的附加磁盘大小：1TB
+    * CPU 核心数：4 个核心或更多
+
+
 
 
 ## <a name="steps-to-deploy-the-master-target-server"></a>部署主目标服务器的步骤
@@ -401,5 +408,6 @@ wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz
 
 * 切勿在主目标等任何管理组件上打开存储 vMotion。 如果重新保护成功后移动主目标，将无法分离虚拟机磁盘 (VMDK)，并且故障回复会失败。
 * 主目标不应在虚拟机上留下任何快照。 如果有快照，故障回复将会失败。
-* 由于某些客户使用某些自定义 NIC 配置，使得网络接口在启动期间被禁用，因此，主目标代理无法初始化。 请确保正确设置以下属性。 在以太网卡文件 /etc/sysconfig/network-scripts/ifcfg-eth* 中检查这些属性。      * BOOTPROTO=dhcp * ONBOOT=yes
+* 由于某些客户使用某些自定义 NIC 配置，使得网络接口在启动期间被禁用，因此，主目标代理无法初始化。 请确保正确设置以下属性。 在以太网卡文件 /etc/sysconfig/network-scripts/ifcfg-eth* 中检查这些属性。
+        * BOOTPROTO=dhcp * ONBOOT=yes
 

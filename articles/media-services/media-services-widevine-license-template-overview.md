@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 03/29/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a90e56bb2b7db0bb964684f9cac04096a6577adc
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 5ef6e368a170816b7000c23cdf686644690fca45
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -26,7 +27,8 @@ Azure 媒体服务现在允许你配置和请求 Widevine 许可证。 当最终
 
 Widevine 许可证请求将格式化为 JSON 消息。  
 
-请注意，你可以选择创建不包含值而只有“{}”的空消息，并创建包含所有默认值的许可证模板。  
+>[!NOTE]
+> 可以选择创建不包含值而只有“{}”的空消息，并创建包含所有默认值的许可证模板。 默认值适用于大多数情况。 例如，对于基于 MS 的许可证传送方案，应始终为默认值。 如果确实需要设置“提供程序”和“content_id”值，提供程序必须与 Google Widevine 凭据匹配。
 
     {  
        “payload”:“<license challenge>”,
@@ -62,7 +64,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | --- | --- | --- |
 | payload |Base64 编码的字符串 |客户端发送的许可证请求。 |
 | content_id |Base64 编码的字符串 |用于针对每个 content_key_specs.track_type 派生 KeyId 与内容密钥的标识符。 |
-| provider |字符串 |用于查找内容密钥和策略。 必需。 |
+| provider |字符串 |用于查找内容密钥和策略。 如果 MS 密钥传送用于 Widevine 许可证传送，则忽略此参数。 |
 | policy_name |字符串 |以前注册的策略的名称。 可选 |
 | allowed_track_types |枚举 |SD_ONLY 或 SD_HD。 控制许可证应该包含的内容密钥 |
 | content_key_specs |有关 JSON 结构的数组，请参阅下面的**内容密钥规范** |更精细地控制要返回的内容密钥。 有关详细信息，请参阅以下的“内容密钥规范”。  只能指定 allowed_track_types 和 content_key_specs 中的一个。 |
@@ -197,10 +199,5 @@ Widevine 许可证请求将格式化为 JSON 消息。
 
 ## <a name="see-also"></a>另请参阅
 [使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-drm.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

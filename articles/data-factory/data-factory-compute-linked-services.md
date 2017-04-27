@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 5e113af94c1ac27d759a75ff35bb9eb29fa08bf6
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f9f29cd20020ec5e6538bf1dd31e89c2f7adcc92
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -33,6 +33,64 @@ ms.lasthandoff: 03/24/2017
 | [Azure 机器学习](#azure-machine-learning-linked-service) |[机器学习活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service)、[Azure SQL 数据仓库](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) |[存储过程](data-factory-stored-proc-activity.md) |
+
+## <a name="supported-hdinsight-versions-in-azure-data-factory"></a>Azure 数据工厂中支持的 HDInsight 版本
+Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版本选项创建 Hortonworks 数据平台 (HDP) 分发的特定版本和该分发内包含的一组组件。 Microsoft 不断更新支持的 HDInsight 版本列表，以提供最新的 Hadoop 生态系统组件和修补程序。 已于 2017/04/01 弃用 HDInsight 3.2，有关更多详细信息，请参阅[支持的 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)。
+
+这会影响某些现有 Azure 数据工厂，这些数据工厂具有针对 HDInsight 3.2 群集运行的活动。 建议用户遵循以下准则来更新受影响的数据工厂。
+
+### <a name="for-linked-services-pointing-to-your-own-hdinsight-clusters"></a>对于指向自己 HDInsight 群集的链接服务
+* **指向自己的 HDInsight 3.2 或更低版本群集的 HDInsight 链接服务：**
+
+  Azure 数据工厂支持将作业提交到自己的 HDInsight 群集（HDI 3.1 到[支持的最新 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)）。 但是，根据[支持的 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)中所述的弃用策略，2017/04/01 之后无法再创建 HDInsight 3.2 群集。  
+
+  **建议：** 
+  * 使用[不同 HDInsight 版本中提供的 Hadoop 组件](../hdinsight/hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)和[与 HDInsight 版本相关联的 Hortonworks 发行说明](../hdinsight/hdinsight-component-versioning.md#hortonworks-release-notes-associated-with-hdinsight-versions)中提供的信息，执行测试以确保引用此链接服务的活动与[支持的最新 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)兼容。
+  * 将 HDInsight 3.2 群集升级为[支持的最新 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)，以获取最新的 Hadoop 生态系统组件和修补程序。 
+
+* **指向自己的 HDInsight 3.3 或更高版本群集的 HDInsight 链接服务：**
+
+  Azure 数据工厂支持将作业提交到自己的 HDInsight 群集（HDI 3.1 到[支持的最新 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)）。 
+  
+  **建议：** 
+  * 从数据工厂的角度来看，无需任何操作。 但是，如果使用的是较低版本的 HDInsight，仍建议升级到[支持的最新 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)，以获取最新的 Hadoop 生态系统组件和修补程序。
+
+### <a name="for-hdinsight-on-demand-linked-services"></a>对于 HDInsight 按需链接服务
+* **在 HDInsight 按需链接服务 JSON 定义中指定 3.2 版或更低版本：**
+  
+  从 **2017/05/05** 开始，Azure 数据工厂将支持创建按需 HDInsight 3.3 及更高版本的群集。 而对现有按需 HDInsight 3.2 链接服务的支持将延至 **2017/07/05** 结束。  
+
+  **建议：** 
+  * 使用[不同 HDInsight 版本中提供的 Hadoop 组件](../hdinsight/hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)和[与 HDInsight 版本相关联的 Hortonworks 发行说明](../hdinsight/hdinsight-component-versioning.md#hortonworks-release-notes-associated-with-hdinsight-versions)中提供的信息，执行测试以确保引用此链接服务的活动与[支持的最新 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)兼容。
+  * 在 **2017/07/05** 之前，将按需 HDI 链接服务 JSON 定义中的“版本”属性更新为[支持的最新 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)，以获取最新的 Hadoop 生态系统组件和修补程序。 有关 JSON 的详细定义，请参阅 [Azure HDInsight 按需链接服务示例](#azure-hdinsight-on-demand-linked-service)。 
+
+* **未在按需 HDInsight 链接服务中指定的版本：**
+  
+  从 **2017/05/05** 开始，Azure 数据工厂将支持创建按需 HDInsight 3.3 及更高版本的群集。 而对现有按需 HDInsight 3.2 链接服务的支持将延至 **2017/07/05** 结束。 
+
+  在 **2017/05/05** 之前，如果留空，则版本和 osType 属性的默认值为： 
+
+  | 属性 | 默认值 | 必选 |
+  | --- | --- | --- |
+  版本    | 适用于 Windows 群集的 HDI 3.1 和适用于 Linux 群集的 HDI 3.2。| 否
+  osType | 默认值为 Windows | 否
+
+  在 **2017/05/05** 之后，如果留空，则版本和 osType 属性的默认值为：
+
+  | 属性 | 默认值 | 必选 |
+  | --- | --- | --- |
+  版本    | 适用于 Windows 群集的 HDI 3.3 和适用于 Linux 群集的 HDI 3.5。    | 否
+  osType | 默认值为 Linux    | 否
+
+  **建议：** 
+  * 在 **2017/05/05** 之前，更新链接服务以在按需 HDInsight 链接服务 JSON 定义中显式定义预期的版本和 osType 组合。 可以将版本设置为 3.2 以确保后向兼容性。 
+  * 在 **2017/05/05** 与 **2017/07/05** 之间，使用[不同 HDInsight 版本中提供的 Hadoop 组件](../hdinsight/hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)和[与 HDInsight 版本相关联的 Hortonworks 发行说明](../hdinsight/hdinsight-component-versioning.md#hortonworks-release-notes-associated-with-hdinsight-versions)中提供的信息，执行测试以确保引用此链接服务的活动与[支持的最新 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)兼容。  
+  * 在 **2017/07/05** 之前，将按需 HDI 链接服务 JSON 定义中的“版本”属性设置为[支持的最新 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)，或使用默认值 HDInsight 3.5，获取最新的 Hadoop 生态系统组件和修补程序。 有关 JSON 的详细定义，请参阅 [Azure HDInsight 按需链接服务示例](#azure-hdinsight-on-demand-linked-service)。
+
+>[!Note]
+>当前，Azure 数据工厂不支持使用 Azure Data Lake Store 作为主存储的 HDInsight 群集。 需要使用 Azure 存储作为 HDInsight 群集的主存储。 
+>  
+>  
 
 ## <a name="on-demand-compute-environment"></a>按需计算环境
 在此类型的配置中，计算环境由 Azure 数据工厂服务完全管理。 作业提交到进程数据前，数据工厂服务将自动创建计算环境，作业完成后则自动将其删除。 可以为按需计算环境创建并配置链接服务，以及控制作业执行、群集管理和引导操作的粒度设置。
@@ -165,7 +223,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | zookeeperNodeSize |指定 ZooKeeper 节点的大小。 默认值为：Standard_D3。 |否 |
 
 #### <a name="specifying-node-sizes"></a>指定节点大小
-若要了解需要为以上属性指定的字符串值，请参阅[虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md)。 这些值需要符合文章中所引用的 **CMDLET 和 API**。 如文章中所示，大尺寸（默认）的数据节点拥有 7 GB 的内存，这可能无法满足具体方案的需求。 
+若要了解需要为以上属性指定的字符串值，请参阅[虚拟机的大小](../virtual-machines/linux/sizes.md)。 这些值需要符合文章中所引用的 **CMDLET 和 API**。 如文章中所示，大尺寸（默认）的数据节点拥有 7 GB 的内存，这可能无法满足具体方案的需求。 
 
 如果想要创建 D4 大小的头节点和辅助进程节点，需要将 **Standard_D4** 指定为 headNodeSize 和 dataNodeSize 属性的值。 
 

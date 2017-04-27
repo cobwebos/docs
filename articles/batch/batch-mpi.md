@@ -11,17 +11,16 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
-ms.workload: big-compute
-ms.date: 02/27/2017
+ms.workload: 3/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: a23ae729e20dcf79ada73f7545861356e31b957e
-ms.lasthandoff: 03/09/2017
-
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d533dc2c49974f2ce4ef1d1f6dc12e23ec18877f
+ms.lasthandoff: 04/03/2017
 
 ---
+
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>在 Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序
 
 使用多实例任务可在多个计算节点上同时运行 Azure Batch 任务。 这些任务可在 Batch 中实现高性能计算方案，例如消息传递接口 (MPI) 应用程序。 本文介绍如何使用 [Batch .NET][api_net] 库执行多实例任务。
@@ -50,7 +49,9 @@ ms.lasthandoff: 03/09/2017
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>多实例任务的要求
-多实例任务需要有**已启用节点间通信**和**已禁用并发任务执行**的池。 如果尝试在已禁用节点间通信，或 *maxTasksPerNode* 值大于 1 的池中运行多实例任务，则永远不排定任务 -- 它无限期停留在“活动”状态。 本代码段显示如何使用 Batch .NET 库创建这种池。
+多实例任务需要有**已启用节点间通信**和**已禁用并发任务执行**的池。 若要禁用并发任务执行，请将 [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) 属性设置为 1。
+
+此代码段演示如何使用 Batch.NET 库为多实例任务创建池。
 
 ```csharp
 CloudPool myCloudPool =
@@ -66,7 +67,12 @@ myCloudPool.InterComputeNodeCommunicationEnabled = true;
 myCloudPool.MaxTasksPerComputeNode = 1;
 ```
 
-此外，多实例任务*只能*在 **2015 年 12 月 14 日之后创建的池**中的节点上执行。
+> [!NOTE]
+> 如果尝试在已禁用节点间通信，或 *maxTasksPerNode* 值大于 1 的池中运行多实例任务，则永远不排定任务 -- 它无限期停留在“活动”状态。 
+>
+> 多实例任务只能在 2015 年 12 月 14 日之后创建的池中的节点上执行。
+>
+>
 
 ### <a name="use-a-starttask-to-install-mpi"></a>使用 StartTask 安装 MPI
 若要通过多实例任务运行 MPI 应用程序，首先需在池中的计算节点上安装 MPI 实现（例如 MS-MPI 或 Intel MPI）。 这是使用 [StartTask][net_starttask] 的好时机，每当节点加入池或重新启动时，它就会执行。 此代码片段创建一个 StartTask，将 MS-MPI 安装程序包指定为[资源文件][net_resourcefile]。 资源文件下载到节点之后，将执行启动任务的命令行。 在本示例中，命令行执行 MS-MPI 的无人参与安装。
@@ -89,7 +95,7 @@ await myCloudPool.CommitAsync();
 ```
 
 ### <a name="remote-direct-memory-access-rdma"></a>远程直接内存访问 (RDMA)
-在批处理池中为计算节点选择[支持 RDMA 的大小](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（例如 A9）时，MPI 应用程序可以使用 Azure 的高性能、低延迟的远程直接内存访问 (RDMA) 网络。
+在批处理池中为计算节点选择[支持 RDMA 的大小](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（例如 A9）时，MPI 应用程序可以使用 Azure 的高性能、低延迟的远程直接内存访问 (RDMA) 网络。
 
 在以下文章中查找指定为“支持 RDMA”的大小：
 
@@ -98,8 +104,8 @@ await myCloudPool.CommitAsync();
   * [云服务的大小](../cloud-services/cloud-services-sizes-specs.md)（仅 Windows）
 * **VirtualMachineConfiguration** 池
 
-  * [Azure 中虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
-  * [Azure 中虚拟机的大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
+  * [Azure 中虚拟机的大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+  * [Azure 中虚拟机的大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
 > 若要充分利用 [Linux 计算节点](batch-linux-nodes.md)上的 RDMA，必须使用节点上的 **Intel MPI**。 有关 CloudServiceConfiguration 和 VirtualMachineConfiguration 池的详细信息，请参阅[批处理功能概述](batch-api-basics.md)的“池”部分。

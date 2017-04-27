@@ -13,87 +13,64 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/30/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
-ms.openlocfilehash: 2a4751351561728024417d50aeefba0e5b14a438
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 2093d6fcef343d9bf05942ce817989bcf5e559d3
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="change-the-credit-card-used-to-pay-for-an-azure-subscription"></a>更改用于支付 Azure 订阅的信用卡
-
-本文介绍如何添加、更改或删除与 Azure 帐户关联的信用卡，以及如何付款。
-
+以[帐户管理员身份](billing-subscription-transfer.md#whoisaa)登录 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)后，可添加、更改或删除与 Azure 帐户关联的信用卡。 
+ 
 <a id="addcard"></a>
 ## <a name="add-a-credit-card-as-a-payment-method"></a>添加信用卡作为付款方式
 
-请按照下列步骤将信用卡号添加到帐户。
-
 1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
-2. 在“单击订阅以查看详细信息和使用情况”下，选择要添加付款方式的订阅。
+2. 选择订阅。
 3. 在页面右侧，选择“管理付款方式”。
-4. 在“管理付款方式”页上，选择“+”添加信用卡。
-5. 选择信用卡类型，并提供全部所需的信息。
-6. 选择“下一步”返回“管理付款方式”页。 如果添加的信用卡有效，它将添加到可用付款方式列表。
+4. 选择“+”添加信用卡。
+5. 选择信用卡类型，输入所需信息。
+6. 选择“**下一步**”。 
 
-> [!NOTE]
->如果提交信用卡信息之后收到错误消息，请参阅[借记卡或信用卡被拒绝或不被接受](billing-credit-card-fails-during-azure-sign-up.md)一文。
->
->
+如果信用卡有效，将添加到可用付款方式列表。
+
+如果添加信用卡后发生错误，请参阅[注册 Azure 时信用卡遭拒](billing-credit-card-fails-during-azure-sign-up.md)。
 
 ## <a name="edit-payment-information-for-an-existing-credit-card"></a>编辑现有信用卡的付款信息
-
-按这些步骤验证付款方式，并更新现有信用卡的详细信息。
-
-1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
-
-   > [!NOTE]
-   > 只有帐户管理员有权访问帐户中心。 有关帐户管理员的详细信息，请参阅[如何添加或更改 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
-   >
-   >
-2. 在“单击订阅以查看详细信息和使用情况”下面，选择关联到信用卡的订阅。</br> ![selectsub](./media/billing-how-to-change-credit-card/selectsub.png)
-3. 在页面右侧，选择“管理付款方式”。</br> ![changesub](./media/billing-how-to-change-credit-card/changesub_new.png)
-
-  你将看到列出了当前付款方式。 选择它以验证所需信息。
-
-  **如何更新现有信用卡的详细信息**
-
-  如果更换了信用卡，但号码保持不变，则只需更新现有信用卡的详细信息（例如失效日期）即可。 但是，如果信用卡号码由于卡丢失、失窃或过期而更改，则需要[将信用卡添加到帐户](#addcard)。 这是因为信用卡号码更改时，卡片上的 CVV 安全代码也会更改。
-
-4. 在“管理付款方式”页上，选择信用卡号旁边的“编辑”。</br> ![changesub](./media/billing-how-to-change-credit-card/editcard_new.png)
-5. 在“编辑”页上，确认选择了正确的信用卡类型和卡号。
-6. 对信用卡详细信息进行所需的必要更改，然后选择“下一步”返回“选择付款方式”页。
-
-## <a name="change-the-credit-card-that-you-use-to-pay-an-azure-bill"></a>更改用于支付 Azure 帐单的信用卡
+  如果更换了信用卡，但号码保持不变，请更新现有信用卡的详细信息（例如到期日）。 如果信用卡号码由于卡丢失、失窃或过期而更改，则需要按照[将信用卡添加为支付方式](#addcard)中的步骤操作。 
 
 1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
-2. 在“单击订阅以查看详细信息和使用情况”下面，选择要更新付款方式的订阅。
+2. 选择链接到信用卡的订阅。</br> ![显示所选示例订阅的屏幕截图。](./media/billing-how-to-change-credit-card/selectsub.png)
+3. 选择“管理付款方式”。</br> ![显示已选择“管理付款方式”选项的屏幕截图。](./media/billing-how-to-change-credit-card/changesub_new.png)
+4. 选择付款方式。
+5. 选择信用卡号码旁边的“编辑”。</br> ![显示付款方式旁边的编辑选项的屏幕截图。](./media/billing-how-to-change-credit-card/editcard_new.png)
+6. 请确保信用卡类型以及卡号正确。
+7. 选择“**下一步**”。
+
+## <a name="change-the-credit-card-that-pays-your-azure-bill"></a>更改用于支付 Azure 帐单的信用卡
+
+1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
+2. 选择订阅。
 3. 在页面右侧，选择“管理付款方式”。
-4. 在“管理付款方式”页上，单击“使用其他”以选择想要使用的信用卡。
+4. 单击“改用”，然后选择要使用的信用卡。
 
 ## <a name="remove-a-credit-card-from-the-account"></a>从帐户中删除信用卡
 1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
-2. 在“单击订阅以查看详细信息和使用情况”下面，选择要更新付款方式的订阅。
+2. 选择订阅。
 3. 在页面右侧，选择“管理付款方式”。
-4. 在“管理付款方式”页上，单击“删除”以选择想要删除的信用卡。
+4. 对想要删除的信用卡单击“删除”。
 
-   > [!NOTE]
-   > 如果信用卡与其他处于活动状态的 Microsoft 订阅相关联，则不能删除信用卡。 如果收到一条提示“该卡正在使用”的错误消息，请确保取消该卡与所有处于活动状态的 Microsoft 订阅的关联。
-   >
-   >
+如果信用卡与其他活动的 Microsoft 订阅关联，则无法从 Azure 帐户中将其删除。 从你拥有的所有 Microsoft 活动订阅中删除该信用卡。
 
 ##  <a name="how-to-make-payments"></a>如何付款
 
-如果已将信用卡或借记卡设置为付款方式，则将自动进行付款。
-如果采用[发票付款方式](https://azure.microsoft.com/pricing/invoicing/)，可将付款寄送到发票底部列出的地点。
+* 如果已将信用卡或借记卡设置为付款方式，则将自动进行付款。
+* 如果采用[发票](https://azure.microsoft.com/pricing/invoicing/)，可将付款寄送到发票底部列出的地点。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

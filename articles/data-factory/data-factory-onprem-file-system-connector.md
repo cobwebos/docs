@@ -12,22 +12,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/24/2017
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 9ce6110b3677ccf8252a91654d71de4273e68b9e
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 6c26bf3eda7ef15e7a580a31ab7b6624c8a7a826
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="move-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出本地文件系统
 可以将数据从 HDFS 复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从本地 HDFS 移至其他数据存储，但不支持将数据从其他数据存储移至本地 HDFS。
 
-本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入和移出本地文件系统。 可将数据从本地文件系统复制到任何受支持的接收器数据存储，或从任何支持的源数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 有关可用作本地文件系统的源或接收器的数据存储列表，请参阅[支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 
+本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入和移出本地文件系统。 可将数据从本地文件系统复制到任何受支持的接收器数据存储，或从任何支持的源数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 有关可用作本地文件系统的源或接收器的数据存储列表，请参阅[支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
+
+> [!NOTE]
+> 复制活动在将源文件成功复制到目标后不会删除该文件。 如果需要在成功复制后删除源文件，请创建一个自定义活动，以便删除该文件并在管道中使用复制活动。 
 
 ## <a name="enabling-connectivity"></a>启用连接
-数据工厂支持通过**数据管理网关**连接到本地文件系统和从本地文件系统进行连接。 必须在数据工厂服务连接到任何支持的本地数据存储包括文件系统的本地环境中安装数据管理网关。 请参阅[使用数据管理网关在本地源和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。 除了数据管理网关之外，要与本地文件系统进行通信，不需要安装其他二进制文件。 必须安装并使用数据管理网关，即使文件系统在 Azure IaaS VM 中。 有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)。 
+数据工厂支持通过**数据管理网关**连接到本地文件系统和从本地文件系统进行连接。 必须在数据工厂服务连接到任何支持的本地数据存储包括文件系统的本地环境中安装数据管理网关。 请参阅[使用数据管理网关在本地源和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。 除了数据管理网关之外，要与本地文件系统进行通信，不需要安装其他二进制文件。 必须安装并使用数据管理网关，即使文件系统在 Azure IaaS VM 中。 有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)。
 
 若要使用 Linux 文件共享，请在 Linux 服务器上安装 [Samba](https://www.samba.org/)，在 Windows 服务器上安装数据管理网关。 不支持在 Linux 服务器上安装数据管理网关。
 
@@ -36,15 +39,15 @@ ms.lasthandoff: 03/30/2017
 
 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
-无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
-2. 创建**数据集**以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
+2. 创建**数据集**以表示复制操作的输入和输出数据。
+3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从文件系统复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。 
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从文件系统复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。
 
 对于特定于文件系统的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
@@ -179,6 +182,9 @@ ms.lasthandoff: 03/30/2017
 | false |preserveHierarchy |对于具有以下结构的源文件夹 Folder1，<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
 | false |flattenHierarchy |对于具有以下结构的源文件夹 Folder1，<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
 | false |mergeFiles |对于具有以下结构的源文件夹 Folder1，<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 的内容将合并到一个文件中，且自动生成文件名。<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
+
+## <a name="supported-file-and-compression-formats"></a>支持的文件和压缩格式
+请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
 
 ## <a name="json-examples"></a>JSON 示例
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何将数据复制到本地文件系统和 Azure Blob 存储，以及如何从本地文件系统和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据直接从任意源复制到[受支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任意接收器。
@@ -355,7 +361,7 @@ ms.lasthandoff: 03/30/2017
 }
 ```
 
-**管道中使用文件系统源和 Blob 接收器的复制活动：** 
+**管道中使用文件系统源和 Blob 接收器的复制活动：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **FileSystemSource**，将 **sink** 类型设置为 **BlobSink**。
 

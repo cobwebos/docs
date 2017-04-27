@@ -12,23 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 83b12c6daf5422039f3dd95eb9b177b972fad840
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 091ad6068c64bfe06c090430874d23f6ca497b34
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 数据仓库中的临时表
 > [!div class="op_single_selector"]
-> * [概述][概述]
-> * [数据类型][数据类型]
-> * [分布][分布]
-> * [索引][索引]
-> * [分区][分区]
-> * [统计信息][统计信息]
-> * [临时][临时]
+> * [概述][Overview]
+> * [数据类型][Data Types]
+> * [分布][Distribute]
+> * [索引][Index]
+> * [分区][Partition]
+> * [统计信息][Statistics]
+> * [临时][Temporary]
 > 
 > 
 
@@ -231,26 +233,21 @@ DROP TABLE #stats_ddl;
 SQL 数据仓库在实现临时表时确实会施加一些限制。  目前，仅支持会话范围的临时表。  不支持全局临时表。  此外，不能在临时表上创建视图。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解详细信息，请参阅有关[表概述][概述]、[表数据类型][数据类型]、[分布表][分布]、[为表编制索引][索引]、[将表分区][分区]和[维护表统计信息][统计信息]的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL 数据仓库最佳实践]。
+有关详细信息，请参阅有关[表概述][Overview]、[表数据类型][Data Types]、[分布表][Distribute]、[表索引][Index]、[表分区][Partition]和[维护表统计信息][Statistics]。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。
 
 <!--Image references-->
 
 <!--Article references-->
-[概述]: ./sql-data-warehouse-tables-overview.md
-[数据类型]: ./sql-data-warehouse-tables-data-types.md
-[分布]: ./sql-data-warehouse-tables-distribute.md
-[索引]: ./sql-data-warehouse-tables-index.md
-[分区]: ./sql-data-warehouse-tables-partition.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
-[临时]: ./sql-data-warehouse-tables-temporary.md
-[SQL 数据仓库最佳实践]: ./sql-data-warehouse-best-practices.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[Index]: ./sql-data-warehouse-tables-index.md
+[Partition]: ./sql-data-warehouse-tables-partition.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

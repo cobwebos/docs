@@ -13,11 +13,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2016
-ms.author: torsteng
+ms.date: 03/27/2017
+ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 5024e5edbfaaf9b070f66e6b009bc6085de3fa7e
-ms.openlocfilehash: b0f700bd742e1a69245711ff7f87d7f35535b3ab
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: ff9f3ee4e44f7d0b51a6724304b0ec0f967f7d88
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -42,7 +43,7 @@ ms.openlocfilehash: b0f700bd742e1a69245711ff7f87d7f35535b3ab
 如果应用程序本身无法处理分片映射，在工厂方法中使用的凭据应该对**全局分片映射**数据库仅有只读权限。 这些凭据通常与用于到分片映射管理器的开放连接的凭据不同。 另请参阅[用于访问弹性数据库客户端库的凭据](sql-database-elastic-scale-manage-credentials.md)。 
 
 ## <a name="call-the-openconnectionforkey-method"></a>调用 OpenConnectionForKey 方法
-**[ShardMap.OpenConnectionForKey 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)) **将返回 ADO.Net 连接，该连接可随时基于 **key** 参数的值将命令分发到相应的数据库中。 **ShardMapManager** 将分片信息缓存在应用程序中，因此这些请求通常不会针对**全局分片映射**数据库调用数据库查找。 
+**[ShardMap.OpenConnectionForKey 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)**将返回 ADO.Net 连接，该连接可随时基于 **key** 参数的值将命令分发到相应的数据库中。 **ShardMapManager** 将分片信息缓存在应用程序中，因此这些请求通常不会针对**全局分片映射**数据库调用数据库查找。 
 
     // Syntax: 
     public SqlConnection OpenConnectionForKey<TKey>(
@@ -126,10 +127,5 @@ int newPersonId = 4321;
 若要分离分片或重新附加分片，请参阅[使用 RecoveryManager 类解决分片映射问题](sql-database-elastic-database-recovery-manager.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

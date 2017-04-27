@@ -1,6 +1,6 @@
 ---
 title: "AAD 身份验证：Azure SQL 数据库防火墙、身份验证和访问权限 | Microsoft 文档"
-description: "本入门教程介绍如何在 SQL Server Management Studio 和 Transact-SQL 中使用授予 Azure SQL 数据库服务器和数据库访问权限与控制权限的服务器级和数据库级防火墙规则、Azure Active Directory 身份验证、登录名、用户与数据库角色。"
+description: "本操作方法指南介绍如何在 SQL Server Management Studio 和 Transact-SQL 中使用授予 Azure SQL 数据库服务器和数据库访问权限与控制权限的服务器级和数据库级防火墙规则、Azure Active Directory 身份验证、登录名、用户与数据库角色。"
 keywords: 
 services: sql-database
 documentationcenter: 
@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 67797b09-f5c3-4ec2-8494-fe18883edf7f
 ms.service: sql-database
-ms.custom: authentication and authorization
+ms.custom: security-access
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,14 +17,14 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: b97872ed00746009a800817b345f31937309ed67
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: ca679a820eefc7acbb08eed6b8f809f46aacd3a3
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="azure-ad-authentication-access-and-database-level-firewall-rules"></a>Azure AD 身份验证、访问和数据库级防火墙规则
-本教程介绍如何在 SQL Server Management Studio 中使用授予 Azure SQL 数据库服务器和数据库访问权限与许可权限的 Azure Active Directory 身份验证、登录名、用户与数据库角色。 学习内容：
+本操作方法指南介绍如何在 SQL Server Management Studio 中使用授予 Azure SQL 数据库服务器和数据库访问权限与许可权限的 Azure Active Directory 身份验证、登录名、用户与数据库角色。 学习内容：
 
 - 查看 master 数据库和用户数据库中的用户权限
 - 基于 Azure Active Directory 身份验证创建登录名和用户
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/10/2017
 - 针对数据库用户创建数据库级防火墙规则
 - 针对服务器管理员创建服务器级防火墙规则
 
-**时间估计**：完成本教程大约需要 45 分钟（假设满足先决条件）。
+**用时估计**：完成本操作方法指南大约需要 45 分钟（假设满足先决条件）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,18 +43,18 @@ ms.lasthandoff: 03/10/2017
 
 * **SQL Server Management Studio**。 可以通过[下载 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 下载并安装最新版本的 SQL Server Management Studio (SSMS)。 连接到 Azure SQL 数据库时，请始终使用最新版本的 SSMS，因为其中会不断地发布新功能。
 
-* **基服务器和数据库** 若要安装和配置在本教程中使用的服务器和两个数据库，请单击“部署到 Azure”按钮。 单击该按钮会打开“从模板部署”边栏选项卡；创建新的资源组，为将要创建的新服务器提供“管理员登录密码”：
+* **基服务器和数据库** 若要安装和配置在本操作方法指南中使用的服务器和两个数据库，请单击“部署到 Azure”按钮。 单击该按钮会打开“从模板部署”边栏选项卡；创建新的资源组，为将要创建的新服务器提供“管理员登录密码”：
 
    [![下载](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fsqldbtutorial.blob.core.windows.net%2Ftemplates%2Fsqldbgetstarted.json)
 
    > [!NOTE]
-   > 根据需要完成 SQL Server 身份验证的相关教程 [SQL 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则](sql-database-control-access-sql-authentication-get-started.md) - 但是，该教程讲解的一些概念未在本文中复述。 如果在同一台计算机（使用相同的 IP 地址）上完成了这篇相关教程，则无需执行本教程中与服务器和数据库级防火墙相关的过程。正因如此，这些过程在本教程中标记为可选。 此外，本教程中的屏幕截图内容假设读者已完成这篇相关教程。 
+   > 根据需要完成 SQL Server 身份验证的相关操作方法指南：[SQL 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则](sql-database-control-access-sql-authentication-get-started.md) - 但是，本操作方法指南讲解的一些概念未在本文中复述。 如果在同一台计算机（使用相同的 IP 地址）上完成了这篇相关操作方法指南，则无需执行本操作方法指南中与服务器和数据库级防火墙相关的过程。正因如此，这些过程在本操作方法指南中标记为可选。 此外，本操作方法指南中的屏幕截图内容假设读者已完成这篇相关操作方法指南。 
    >
 
 * 已创建并填充 Azure Active Directory。 有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../active-directory/active-directory-aadconnect.md)、[将自己的域名添加到 Azure AD](../active-directory/active-directory-add-domain.md)、[Microsoft Azure 现在支持与 Windows Server Active Directory 联合](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[管理 Azure AD 目录](https://msdn.microsoft.com/library/azure/hh967611.aspx)、[使用 Windows PowerShell 管理 Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx) 和[混合标识所需端口和协议](../active-directory/active-directory-aadconnect-ports.md)。
 
 > [!NOTE]
-> 本教程帮助读者了解以下学习主题的内容：[SQL 数据库访问和控制](sql-database-control-access.md)、[登录名、用户和数据库角色](sql-database-manage-logins.md)、[主体](https://msdn.microsoft.com/library/ms181127.aspx)、[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)、[SQL 数据库防火墙规则](sql-database-firewall-configure.md)和 [Azure Active Directory 身份验证](sql-database-aad-authentication.md)。 
+> 本操作方法指南帮助读者了解以下学习主题的内容：[SQL 数据库访问和控制](sql-database-control-access.md)、[登录名、用户和数据库角色](sql-database-manage-logins.md)、[主体](https://msdn.microsoft.com/library/ms181127.aspx)、[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)、[SQL 数据库防火墙规则](sql-database-firewall-configure.md)和 [Azure Active Directory 身份验证](sql-database-aad-authentication.md)。 
 >  
 
 ## <a name="sign-in-to-the-azure-portal-using-your-azure-account"></a>使用 Azure 帐户登录到 Azure 门户
@@ -64,14 +64,9 @@ ms.lasthandoff: 03/10/2017
 2. 登录到 [Azure 门户](https://portal.azure.com/)。
 3. 在“登录”  页面上，提供订阅的凭据。
    
-   ![登录](./media/sql-database-get-started-portal/login.png)
-
-
-<a name="create-logical-server-bk"></a>
-
 ## <a name="provision-an-azure-active-directory-admin-for-your-sql-logical-server"></a>为 SQL 逻辑服务器预配 Azure Active Directory 管理员
 
-本教程部分介绍如何在 Azure 门户中查看有关逻辑服务器安全配置的信息。
+本操作方法指南部分介绍如何在 Azure 门户中查看有关逻辑服务器安全配置的信息。
 
 1. 打开逻辑服务器的“SQL Server”边栏选项卡，在“概述”页中查看信息。 可以看到，Azure Active Directory 管理员尚未配置。
 
@@ -90,7 +85,7 @@ ms.lasthandoff: 03/10/2017
    ![保存选定的 AAD 管理员帐户](./media/sql-database-control-access-aad-authentication-get-started/aad_admin_save.png)
 
 > [!NOTE]
-> 若要查看此服务器的连接信息，请转到[管理服务器](sql-database-manage-servers-portal.md)。 在本系列教程中，完全限定的服务器名称为“sqldbtutorialserver.database.windows.net”。
+> 若要查看此服务器的连接信息，请转到[连接 SSMS](sql-database-connect-query-ssms.md)。 在本系列操作方法指南中，完全限定的服务器名称为“sqldbtutorialserver.database.windows.net”。
 >
 
 ## <a name="connect-to-sql-server-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 SQL 服务器
@@ -112,7 +107,7 @@ ms.lasthandoff: 03/10/2017
    ![已使用 AAD 连接到服务器](./media/sql-database-control-access-aad-authentication-get-started/connected_to_server_with_aad.png)
 
 ## <a name="view-the-server-admin-account-and-its-permissions"></a>查看服务器管理员帐户及其权限 
-本教程部分介绍如何查看有关 master 数据库和用户数据库中服务器管理员帐户及其权限的信息。
+本操作方法指南部分介绍如何查看有关 master 数据库和用户数据库中服务器管理员帐户及其权限的信息。
 
 1. 在对象资源管理器中，依次展开“数据库”、“系统数据库”、“master”、“安全性”、“用户”。 可以看到，在 master 数据库中已经为 Active Directory 管理员创建了一个用户帐户。 另外可以看到，并没有为 Active Directory 管理员用户帐户创建登录名。
 
@@ -193,10 +188,10 @@ ms.lasthandoff: 03/10/2017
 
 ## <a name="create-a-new-user-in-the-adventureworkslt-database-with-select-permissions"></a>在 AdventureWorksLT 数据库中创建具有 SELECT 权限的新用户
 
-本教程部分介绍如何基于 Azure AD 用户的用户主体名称或者 Azure AD 组的显示名称在 AdventureWorksLT 数据库中创建一个用户帐户，测试此用户作为公共角色成员的权限，向此用户授予 SELECT 权限，然后再次测试此用户的权限。
+本操作方法指南部分介绍如何基于 Azure AD 用户的用户主体名称或者 Azure AD 组的显示名称在 AdventureWorksLT 数据库中创建一个用户帐户，测试此用户作为公共角色成员的权限，向此用户授予 SELECT 权限，然后再次测试此用户的权限。
 
 > [!NOTE]
-> 数据库级用户（[包含的用户](https://msdn.microsoft.com/library/ff929188.aspx)）可以提高数据库的可移植性，后续教程将介绍此功能。
+> 数据库级用户（[包含的用户](https://msdn.microsoft.com/library/ff929188.aspx)）可以提高数据库的可移植性，后续的操作方法指南将介绍此功能。
 >
 
 1. 在对象资源管理器中右键单击“AdventureWorksLT”，然后单击“新建查询”打开一个连接到 AdventureWorksLT 数据库的查询窗口。
@@ -261,13 +256,13 @@ ms.lasthandoff: 03/10/2017
 ## <a name="create-a-database-level-firewall-rule-for-adventureworkslt-database-users"></a>针对 AdventureWorksLT 数据库用户创建数据库级防火墙规则
 
 > [!NOTE]
-> 如果完成了 SQL Server 身份验证相关教程中的等效过程 [SQL 身份验证和授权](sql-database-control-access-sql-authentication-get-started.md)，且正在使用具有相同 IP 地址的同一台计算机进行学习，则不需要完成此过程。
+> 如果完成了 SQL Server 身份验证相关操作方法指南中的等效过程 [SQL 身份验证和授权](sql-database-control-access-sql-authentication-get-started.md)，且正在使用具有相同 IP 地址的同一台计算机进行学习，则不需要完成此过程。
 >
 
-在本教程部分，你要尝试使用新用户帐户通过一台具有不同 IP 地址的计算机登录，以服务器管理员身份创建数据库级防火墙规则，然后使用这个新的数据库级防火墙规则成功登录。 
+在本操作方法指南部分中，你要尝试使用新用户帐户通过一台具有不同 IP 地址的计算机登录，以服务器管理员身份创建数据库级防火墙规则，然后使用这个新的数据库级防火墙规则成功登录。 
 
 > [!NOTE]
-> [数据库级防火墙规则](sql-database-firewall-configure.md)可以提高数据库的可移植性，后续教程将介绍此功能。
+> [数据库级防火墙规则](sql-database-firewall-configure.md)可以提高数据库的可移植性，后续的操作方法指南将介绍此功能。
 >
 
 1. 在尚未创建服务器级防火墙规则的另一台计算机上，打开 SQL Server Management Studio。
@@ -278,17 +273,17 @@ ms.lasthandoff: 03/10/2017
 
 2. 在“连接到服务器”窗口中，输入服务器名称和身份验证信息，以便使用 aaduser1@microsoft.com 帐户通过 SQL Server 身份验证进行连接。 
     
-   ![在不使用防火墙规则的情况下以 aaduser1@microsoft.com 身份进行连接&1;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule1.png)
+   ![在不使用防火墙规则的情况下以 aaduser1@microsoft.com 身份进行连接 1](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule1.png)
 
-3. 单击“选项”指定要连接到的数据库，然后在“连接属性”选项卡上的“连接到数据库”下拉框中键入 **AdventureWorksLT**。
+3. 在“连接到服务器”对话框中单击“选项”，指定要连接到的数据库，然后在“连接属性”选项卡上的“连接到数据库”下拉框中键入“AdventureWorksLT”。
    
-   ![在不使用防火墙规则的情况下以 aaduser1 身份进行连接&2;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule2.png)
+   ![在不使用防火墙规则的情况下以 aaduser1 身份进行连接 2](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule2.png)
 
 4. 单击“连接”。 此时会出现一个对话框，告知从中尝试连接到 SQL 数据库的计算机上不存在允许访问该数据库的防火墙规则。 根据前面在配置防火墙时执行的步骤，会出现两种不同形式的对话框，但一般情况下会显示第一种形式的对话框。
 
-   ![在不使用防火墙规则的情况下以 user1 身份进行连接&3;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule3.png)
+   ![在不使用防火墙规则的情况下以 user1 身份进行连接 3](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule3.png)
 
-   ![在不使用防火墙规则的情况下以 user1 身份进行连接&4;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule4.png)
+   ![在不使用防火墙规则的情况下以 user1 身份进行连接 4](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule4.png)
 
    > [!NOTE]
    > 最新版本的 SSMS 提供相应的功能让订阅所有者和参与者登录到 Microsoft Azure 以及创建服务器级防火墙规则。
@@ -304,7 +299,7 @@ ms.lasthandoff: 03/10/2017
      @start_ip_address = 'x.x.x.x', @end_ip_address = 'x.x.x.x';
    ```
 
-   ![添加数据库级防火墙规则&4;](./media/sql-database-control-access-aad-authentication-get-started/aaduser1_add_rule_aw.png)
+   ![添加数据库级防火墙规则 4](./media/sql-database-control-access-aad-authentication-get-started/aaduser1_add_rule_aw.png)
 
 8. 再次切换计算机，然后在“连接到服务器”对话框中单击“连接”，以 aaduser1 身份连接到 AdventureWorksLT。 
 

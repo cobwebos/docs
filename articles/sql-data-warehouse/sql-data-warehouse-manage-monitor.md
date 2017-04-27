@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: performance
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6877a54f77a4c0137e4f6a8b2b2fcff41664a4b5
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3735d656429da1f1fe7569f640b272b099382032
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -71,9 +73,9 @@ WHERE   [label] = 'My Query';
 
 从前面的查询结果中，记下想要调查的查询的**请求 ID**。
 
-处于**已暂停**状态的查询是指因并发限制而排队的查询。 这些查询也出现在类型为 UserConcurrencyResourceType 的 sys.dm_pdw_waits 等待查询中。 请参阅[并发性和工作负荷管理][并发性和工作负荷管理]，了解并发限制的更多详细信息。 查询也可能因其他原因（如对象锁定）处于等待状态。  如果查询正在等待资源，请参阅本文后面的[调查等待资源的查询][调查等待资源的查询]。
+处于**已暂停**状态的查询是指因并发限制而排队的查询。 这些查询也出现在类型为 UserConcurrencyResourceType 的 sys.dm_pdw_waits 等待查询中。 有关并发限制的详细信息，请参阅[并发和工作负荷管理][Concurrency and workload management]。 查询也可能因其他原因（如对象锁定）处于等待状态。  如果查询正在等待资源，请参阅本文后面的[调查等待资源的查询][Investigating queries waiting for resources]。
 
-为了简化在 sys.dm_pdw_exec_requests 表中查找查询的过程，请使用 [标签][标签] 将注释指定给可在 sys.dm_pdw_exec_requests 视图中查找的查询。
+为了简化在 sys.dm_pdw_exec_requests 表中查找查询的过程，请使用 [LABEL][LABEL] 将注释分配给可在 sys.dm_pdw_exec_requests 视图中查找的查询。
 
 ```sql
 -- Query with Label
@@ -95,7 +97,7 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-当 DSQL 计划的执行时间超出预期时，原因可能是计划很复杂，包含许多 DSQL 步骤，也可能是一个步骤占用很长的时间。  如果计划有很多步骤，包含多个移动操作，可考虑优化表分布，减少数据移动。 [表分布][表分布]一文说明了为何必须移动数据才能解决查询问题，并说明了如何使用某些分布策略，尽量减少数据移动。
+当 DSQL 计划的执行时间超出预期时，原因可能是计划很复杂，包含许多 DSQL 步骤，也可能是一个步骤占用很长的时间。  如果计划有很多步骤，包含多个移动操作，可考虑优化表分布，减少数据移动。 [表分布][Table distribution]一文说明了为何必须移动数据才能解决查询问题，并说明了如何使用某些分布策略，尽量减少数据移动。
 
 若要进一步调查单个步骤的详细信息，可检查长时间运行的查询步骤的 *operation_type* 列并记下**步骤索引**：
 
@@ -173,18 +175,18 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 如果查询正在主动等待另一个查询中的资源，则状态将为 **AcquireResources**。  如果查询具有全部所需资源，则状态将为 **Granted**。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅[系统视图][系统视图]，了解 DMV 的详细信息。
-有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL 数据仓库最佳实践]
+请参阅[系统视图][System views]，了解 DMV 的详细信息。
+有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse best practices]
 
 <!--Image references-->
 
 <!--Article references-->
-[管理概述]: ./sql-data-warehouse-overview-manage.md
-[SQL 数据仓库最佳实践]: ./sql-data-warehouse-best-practices.md
-[系统视图]: ./sql-data-warehouse-reference-tsql-system-views.md
-[表分布]: ./sql-data-warehouse-tables-distribute.md
-[并发性和工作负荷管理]: ./sql-data-warehouse-develop-concurrency.md
-[调查等待资源的查询]: ./sql-data-warehouse-manage-monitor.md#waiting
+[Manage overview]: ./sql-data-warehouse-overview-manage.md
+[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
+[System views]: ./sql-data-warehouse-reference-tsql-system-views.md
+[Table distribution]: ./sql-data-warehouse-tables-distribute.md
+[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
+[Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
 
 <!--MSDN references-->
 [sys.dm_pdw_dms_workers]: http://msdn.microsoft.com/library/mt203878.aspx
@@ -194,10 +196,5 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 [sys.dm_pdw_sql_requests]: http://msdn.microsoft.com/library/mt203889.aspx
 [DBCC PDW_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
 [DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
-[标签]: https://msdn.microsoft.com/library/ms190322.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[LABEL]: https://msdn.microsoft.com/library/ms190322.aspx
 

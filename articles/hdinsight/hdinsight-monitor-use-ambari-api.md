@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 04/07/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 6d36976712ba1ea5d51f203fc532d7f89c3b0871
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 16e0ec12e48fa0098c696ad70785bd3a817f5bbe
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -63,14 +63,14 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 
 **使用 Azure PowerShell**
 
-以下 Azure PowerShell 脚本可在 HDInsight 3.1 群集中获取 MapReduce 作业跟踪器信息  主要区别在于，我们从 YARN 服务（而非 MapReduce）中拉取这些详细信息。
+以下 Azure PowerShell 脚本可在 HDInsight 3.5 群集中获取 MapReduce 作业跟踪器信息。  主要区别在于，我们从 YARN 服务（而非 MapReduce）中拉取这些详细信息。
 
     $clusterName = "<HDInsightClusterName>"
     $clusterUsername = "<HDInsightClusterUsername>"
     $clusterPassword = "<HDInsightClusterPassword>"
 
-    $ambariUri = "https://$clusterName.azurehdinsight.net:443/ambari"
-    $uriJobTracker = "$ambariUri/api/v1/clusters/$clusterName.azurehdinsight.net/services/yarn/components/resourcemanager"
+    $ambariUri = "https://$clusterName.azurehdinsight.net:443"
+    $uriJobTracker = "$ambariUri/api/v1/clusters/$clusterName/services/YARN/components/RESOURCEMANAGER"
 
     $passwd = ConvertTo-SecureString $clusterPassword -AsPlainText -Force
     $creds = New-Object System.Management.Automation.PSCredential ($clusterUsername, $passwd)
@@ -167,9 +167,9 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
-[hdinsight-documentation]: /documentation/services/hdinsight/
+[hdinsight-documentation]: https://docs.microsoft.com/azure/hdinsight/
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
 

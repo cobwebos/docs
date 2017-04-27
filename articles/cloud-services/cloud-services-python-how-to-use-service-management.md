@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 04/05/2017
 ms.author: lmazuel
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 579015f419ac0ee886f8e8497760a562ab324c24
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 90f417768d58c42df9b786b5c50d96970f133548
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -38,13 +38,13 @@ ms.lasthandoff: 03/27/2017
 Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后者是 REST API。 所有 API 操作都是通过 SSL 执行的，并且使用 X.509 v3 证书互相进行身份验证。 可以从在 Azure 中运行的服务访问管理服务，或直接通过 Internet 从可发送 HTTPS 请求和接收 HTTPS 响应的任意应用程序访问管理服务。
 
 ## <a name="Installation"> </a>安装
-`azure-servicemanagement-legacy` 包中提供了本文介绍的所有功能，可以使用 pip 安装该包。 有关安装的更多详细信息（例如，如果刚开始接触 Python），请参阅此文：[安装 Python 和 Azure SDK](../python-how-to-install.md)
+`azure-servicemanagement-legacy` 包中提供了本文介绍的所有功能，可以使用 pip 安装该包。 有关安装的详细信息（例如，如果刚开始接触 Python），请参阅此文：[安装 Python 和 Azure SDK](../python-how-to-install.md)
 
 ## <a name="Connect"> </a>如何：连接到服务管理
 若要连接到服务管理终结点，你需要 Azure 订阅 ID 和有效管理证书。 可以通过 [Azure 经典门户][management-portal]获取订阅 ID。
 
 > [!NOTE]
-> 从 Azure SDK for Python v0.8.0 开始，在 Windows 上运行时，可以使用通过 OpenSSL 创建的证书。  需要 Python 2.7.4 或更高版本。 我们建议用户使用 OpenSSL 而不是 .pfx，因为将来可能会取消对 .pfx 证书的支持。
+> 现在，在 Windows 上运行时可以使用通过 OpenSSL 创建的证书。  需要 Python 2.7.4 或更高版本。 我们建议用户使用 OpenSSL 而不是 .pfx，因为将来可能会取消对 .pfx 证书的支持。
 > 
 > 
 

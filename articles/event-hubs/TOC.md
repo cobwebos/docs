@@ -29,7 +29,6 @@
 #### [.NET 标准](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET Framework](event-hubs-dotnet-framework-api-overview.md)
 #### [诊断日志](event-hubs-diagnostic-logs.md)
-### [身份验证和授权](../service-bus-messaging/service-bus-sas.md)
 ### [AMQP 1.0 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## 管理
 ### [事件中心管理库](event-hubs-management-libraries.md)

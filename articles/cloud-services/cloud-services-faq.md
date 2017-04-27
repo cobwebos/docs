@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 04/19/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 7287cb1709b7c863cd046edfb995e23455398ec2
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: a0fd75e0797319aecac29b48df75e7a268063e04
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -95,5 +95,5 @@ Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用�
 
 ## <a name="remote-desktop"></a>远程桌面
 ### <a name="how-do-i-remote-desktop-when-i-have-an-nsg"></a>设置了 NSG 时，如何使用远程桌面？
-向 NSG 添加转发端口 **20000** 的规则。
+将规则添加到 NSG，允许端口 **3389** 和 **20000** 上的流量。  远程桌面使用端口 **3389**。  云服务实例经过负载均衡，因此无法直接控制要连接到哪个实例。  RemoteForwarder 和 RemoteAccess 代理管理 RDP 流量，允许客户端发送 RDP cookie 和指定要连接到的单个实例。  RemoteForwarder 和 RemoteAccess 代理要求打开端口 **20000***（如果你具有 NSG，此端口可能已被阻止）。
 

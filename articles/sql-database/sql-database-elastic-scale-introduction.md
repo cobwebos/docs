@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
-ms.openlocfilehash: f1f963c1401b785b3d4ee007b6ea61f221f9ec4d
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 2a7c761062dcf5da016a2e106274839f5f6c0d13
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -94,7 +94,7 @@ VM 和 blob 存储可以轻松实现云应用程序的弹性和缩放需求 - �
 
 若要转换现有的数据库以使用该工具，请参阅[迁移要扩展的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
 
-若要查看弹性池的具体信息，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)，或者参考[弹性池](sql-database-elastic-pool-manage-portal.md)创建新池。  
+若要查看弹性池的具体信息，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)，或者参考[弹性池](sql-database-elastic-pool-manage-portal.md)创建新池。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

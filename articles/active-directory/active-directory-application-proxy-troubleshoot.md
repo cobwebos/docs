@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 03/27/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 0051bbeaac458e8df07e5c7aa186fbefb526f50e
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: f02fbbfb0e8704445d9bfdaba634dbf558ceef02
+ms.lasthandoff: 04/07/2017
 
 ---
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/15/2017
 * 打开 Windows 服务控制台并验证 **Microsoft AAD 应用程序代理连接器**服务已启用并且正在运行。 另请查看应用程序代理服务属性页，如下图所示：  
   ![Microsoft AAD 应用程序代理连接器属性窗口屏幕截图](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
 * 打开事件查看器，然后在**应用程序和服务日志** > **Microsoft** > **AadApplicationProxy** > **Connector** > **Admin** 中查找应用程序代理连接器事件。
-* 如果需要，可获取更详细的日志，方法是打开分析和调试日志，然后打开应用程序代理连接器会话日志。
+* 如果需要，可通过[打开应用程序代理连接器会话日志](application-proxy-understand-connectors.md#under-the-hood)获取更详细的日志。
 
 有关 Azure AD 故障排除工具的详细信息，请参阅[用于验证连接器网络先决条件的故障排除工具](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/03/troubleshooting-tool-to-validate-connector-networking-prerequisites)。
 

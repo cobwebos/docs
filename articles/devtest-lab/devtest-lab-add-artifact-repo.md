@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
-ms.openlocfilehash: 5c595bd2175f1cbc650bd1a757eeacc80cf39e23
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 407d50afe3470f5a9e84026eaa2dcccea4d06641
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -45,7 +46,7 @@ ms.openlocfilehash: 5c595bd2175f1cbc650bd1a757eeacc80cf39e23
 4. 选择 GitHub 右上角的配置文件图像，然后选择“设置”。
 5. 在左侧的“个人设置”菜单中，选择“个人访问令牌”。
 6. 选择“生成新令牌”。
-7. 在“新的个人访问令牌”页上，输入“令牌说明”，并且接受“选择范围”默认项目，然后选择“生成令牌”。
+7. 在“新建个人访问令牌”页上，输入“令牌描述”。 如果它是公共存储库，则接受“选择作用域”中的默认项；否则选择“存储库”作用域。 然后选择“生成令牌”。 [阅读有关 GitHub 中的 OAuth 作用域的详细信息](https://developer.github.com/v3/oauth/#scopes)。
 8. 保存生成的令牌，以备之后使用。
 9. 现在可以关闭 GitHub。   
 10. 继续[将实验室连接到项目存储库](#connect-your-lab-to-the-artifact-repository)部分。
@@ -95,10 +96,5 @@ ms.openlocfilehash: 5c595bd2175f1cbc650bd1a757eeacc80cf39e23
 ## <a name="related-blog-posts"></a>相关的博客文章
 * [如何对 AzureDevTestLabs 中的失败项目进行故障排除](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
 * [使用 Azure 开发人员测试实验室中的 ARM 模板将 VM 加入到现有的 AD 域](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

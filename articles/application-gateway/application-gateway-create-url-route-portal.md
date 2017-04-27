@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/03/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: e92c33b81aa1b69da0336bec1260cbda96c7a72e
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: df167435757b2d9d2d25b58b1b548a811b490eb5
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -27,9 +28,9 @@ ms.openlocfilehash: e92c33b81aa1b69da0336bec1260cbda96c7a72e
 > * [Azure 门户](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
 
-借助基于 URL 路径的路由，可根据 Http 请求的 URL 路径来关联路由。 它将检查是否有路由连接到针对应用程序网关中的 URL 列表配置的后端池，并将网络流量发送到定义的后端池。 基于 URL 的路由的常见用法是将不同内容类型的请求负载平衡到不同的后端服务器池。
+借助基于 URL 路径的路由，可根据 Http 请求的 URL 路径来关联路由。 它将检查是否有路由连接到为应用程序网关中列出的 URL 配置的后端池，并将网络流量发送到定义的后端池。 基于 URL 的路由的常见用法是将不同内容类型的请求负载均衡到不同的后端服务器池。
 
-基于 URL 的路由将新的规则类型引入应用程序网关。 应用程序网关有两种规则类型：基本规则和基于路径的规则。 基本规则类型针对后端池提供轮循机制服务，而基于路径的规则除了轮循机制分发以外，还在选择后端池时考虑请求 URL 的路径模式。
+基于 URL 的路由将新的规则类型引入应用程序网关。 应用程序网关有两种规则类型：基本规则和基于路径的规则。 基本规则类型针对后端池提供轮循机制服务，而基于路径的规则除了轮循机制分发以外，还在选择适当的后端池时考虑请求 URL 的路径模式。
 
 ## <a name="scenario"></a>方案
 
@@ -38,7 +39,7 @@ ms.openlocfilehash: e92c33b81aa1b69da0336bec1260cbda96c7a72e
 
 ![url 路由][scenario]
 
-## <a name="a-namecreateruleacreate-the-path-based-rule"></a><a name="createrule"></a>创建基于路径的规则
+## <a name="createrule"></a>创建基于路径的规则
 
 基于路径的规则需要自己的侦听器，在创建该规则之前，请务必确认有侦听器可供使用。
 
@@ -71,13 +72,15 @@ ms.openlocfilehash: e92c33b81aa1b69da0336bec1260cbda96c7a72e
 * **HTTP 设置** - 此设置可定义要用于规则的 HTTP 设置。
 
 > [!IMPORTANT]
-> 路径：要匹配的路径模式列表。 每个模式必须以 / 开头，“\*”只允许放在末尾处。 有效示例包括 /xyz、/xyz* 或 /xyz/*。  
+> 路径：要匹配的路径模式列表。 每个模式必须以 / 开头，“\*”只允许放在末尾处。 有效示例包括 /xyz, /xyz* 或 /xyz/*。  
 
 ![添加填写了信息的“基于路径的规则”边栏选项卡][2]
 
 将基于路径的规则添加到现有应用程序网关是可以通过门户完成的简单过程。 创建基于路径的规则后，即可对其进行编辑，以便轻松地添加其他规则。 
 
 ![添加其他基于路径的规则][3]
+
+这会配置基于路径的路由。 务必要知道，不会重新编写请求，因为请求进入应用程序网关时，URL 模式上的基本规则会检查请求并将请求发送到相应的后端。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -87,9 +90,4 @@ ms.openlocfilehash: e92c33b81aa1b69da0336bec1260cbda96c7a72e
 [2]: ./media/application-gateway-create-url-route-portal/figure2.png
 [3]: ./media/application-gateway-create-url-route-portal/figure3.png
 [scenario]: ./media/application-gateway-create-url-route-portal/scenario.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 15430904979108cbebe4a64a8ae07f2f01b82690
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: ae8c26069503a24f3ba17a86160801c60a68d668
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-to-create-a-hybrid-collection-for-azure-remoteapp"></a>如何创建 Azure RemoteApp 的混合集合
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -52,7 +53,7 @@ ms.openlocfilehash: 15430904979108cbebe4a64a8ae07f2f01b82690
 * 在 Active Directory 中创建要用作 Azure RemoteApp 服务帐户的用户帐户。 限制此帐户的权限，使其只可以将计算机加入到域。
 * 收集有关你的本地网络的信息：IP 地址信息和 VPN 设备详细信息。
 * 安装 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 模块。
-* 收集有关你想要授予访问权限的用户的信息。 你需要每个用户的 Azure Active Directory 用户主体名称 (例如，name@contoso.com)。 请确保 UPN 在 Azure AD 和 Active Directory 之间匹配。
+* 收集有关你想要授予访问权限的用户的信息。 需要每个用户的 Azure Active Directory 用户主体名称（例如，name@contoso.com）。 请确保 UPN 在 Azure AD 和 Active Directory 之间匹配。
 * 选择模板映像。 Azure RemoteApp 模板映像包含你希望为用户发布的应用和程序。 有关详细信息，请参阅 [Azure RemoteApp 映像选项](remoteapp-imageoptions.md)。
 * 想要使用 Office 365 ProPlus 映像？ 请查看[此处](remoteapp-officesubscription.md)的信息。
 * [为 RemoteApp 配置 Active Directory](remoteapp-ad.md)。
@@ -136,10 +137,5 @@ Azure RemoteApp 应用是你为用户提供的应用或程序。 它位于你为
 
 ### <a name="help-us-help-you"></a>请帮助我们改进，以便为你提供更好的帮助和支持
 是否知道除了给这篇文章评级和在下面发表评论，还可以对文章本身进行更改？ 缺了什么？ 出现了错误？ 是否编写了令人困惑的内容？ 向上滚动并单击“在 GitHub 上编辑”  进行更改 - 更改的内容会发送给我们进行审阅，一旦签核，便可以在此处看到这些更改和改进。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

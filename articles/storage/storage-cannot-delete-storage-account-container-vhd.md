@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: d3d59e19ff654a953be43706dce926c4450c6179
-ms.openlocfilehash: 6493230295dbfc939df3daf8504a7d8662083f51
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 64f875581dccd2ad1215a82eba1e2659fe01d191
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -69,7 +69,7 @@ ms.lasthandoff: 02/08/2017
 
 或
 
-Blob“BlobName.vhd”已用作虚拟机磁盘 “VirtualMachineDiskName”，因此无法删除该 Blob。
+Blob“BlobName.vhd”已用作虚拟机磁盘“VirtualMachineDiskName”，因此无法删除该 Blob。
 
 ## <a name="solution"></a>解决方案
 若要解决最常见的问题，请尝试以下方法：
@@ -133,7 +133,7 @@ Blob“BlobName.vhd”已用作虚拟机磁盘 “VirtualMachineDiskName”，�
 
 ![Azure 经典门户中的 VM 的已停止（已解除分配）的状态。](./media/storage-cannot-delete-storage-account-container-vhd/moreinfo1.png)
 
-已停止（已解除分配）的状态将释放计算机资源，如 CPU、内存和网络。 但是，磁盘将仍然保留，以便在需要时可以快速重新创建 VM。 这些磁盘都创建在基于 Azure 存储支持的 VHD 之上。 存储帐户拥有这些 VHD，并且磁盘在这些 VHD 上有租约。
+“已停止（已解除分配）”的状态将释放计算机资源，如 CPU、内存和网络。 但是，磁盘将仍然保留，以便在需要时可以快速重新创建 VM。 这些磁盘都创建在基于 Azure 存储支持的 VHD 之上。 存储帐户拥有这些 VHD，并且磁盘在这些 VHD 上有租约。
 
 ## <a name="next-steps"></a>后续步骤
 * [删除存储帐户](storage-create-storage-account.md#delete-a-storage-account)

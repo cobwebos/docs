@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 04/18/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 3992e327bbe887338234fc2d516b053f0750a151
-ms.openlocfilehash: fdc4e495fb3fb99022b0f7c487001b2fba42cccc
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 9a298a5869d449c974267483eb779f45bc6b7abc
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -31,61 +31,39 @@ ms.lasthandoff: 02/16/2017
 ![在 Azure 中获取服务器名称](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
-就像连接到自身组织中的服务器实例一样，在 Azure 中连接到服务器。 可在 SSMS 中执行许多相同的任务，例如处理数据或创建处理脚本、管理角色和使用 PowerShell。 [下载并安装 SSMS](#download-and-install-ssms)。
+就像连接到自身组织中的服务器实例一样，在 Azure 中连接到服务器。 可在 SSMS 中执行许多相同的任务，例如处理数据或创建处理脚本、管理角色和使用 PowerShell。
   
 ![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
- 最大的区别之一在于用于连接到服务器的身份验证。 若要连接到 Azure Analysis Services 服务器，需要选择“Active Directory 密码身份验证”。
+### <a name="download-and-install-ssms"></a>下载并安装 SSMS
+若要获取全部最新功能，并在连接至 Azure Analysis Services 服务器时享受最流畅的体验，请确保使用最新版本的 SSMS。 
 
- 使用 SSMS 时，在首次连接到服务器之前，需确保用户名已包含在 Analysis Services 管理员组中。 有关详细信息，请参阅本文后面的[服务器管理员](#server-administrators)。
+[下载 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+
 
 ### <a name="to-connect-with-ssms"></a>连接 SSMS
+ 使用 SSMS 时，在首次连接到服务器之前，需确保用户名已包含在 Analysis Services 管理员组中。 有关详细信息，请参阅本文后面的[服务器管理员](#server-administrators)。
+
 1. 在连接之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，然后复制服务器名称。
    
     ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. 在 SSMS >“对象资源管理器”中，单击“连接” > “Analysis Services”。
 3. 在“连接到服务器”对话框中，粘贴服务器名称，然后在“身份验证”中选择以下选项之一：
    
-    **Active Directory 集成身份验证**，其使用 Active Directory 到 Azure Active Directory 联合身份验证的单一登录。
-   
+    选择“Windows 身份验证”，以使用 Windows 域\用户名和密码凭据。
+
     **Active Directory 密码身份验证**，其使用组织帐户。 例如，从未加入域的计算机进行连接时。
-   
-    注意：如果没有看到 Active Directory 身份验证，则可能需要更新到[最新版本的 SSMS](#download-and-install-ssms)。
+
+    选择“Active Directory 通用身份验证”，以使用[非交互式或多重身份验证](../sql-database/sql-database-ssms-mfa-authentication.md)。 
    
     ![在 SSMS 中连接](./media/analysis-services-manage/aas-manage-connect-ssms.png)
-
-由于在 Azure 中使用 SSMS 管理服务器与管理本地服务器大体相同，因此不在此处详细介绍。 所需的全部帮助均可参阅 MSDN 上的 [Analysis Services 实例管理](https://msdn.microsoft.com/library/hh230806.aspx)。
 
 ## <a name="server-administrators-and-database-users"></a>服务器管理员和数据库用户
 Azure Analysis Services 中存在两种类型的用户，即服务器管理员和数据库用户。 这两种类型的用户必须存在于 Azure Active Directory 中，且必须由组织电子邮件地址或 UPN 指定。 这不同于通过 Windows 域用户名支持服务器管理员和数据库用户的本地表格模型数据库。 有关详细信息，请参阅[管理 Azure Analysis Services 中的用户](analysis-services-manage-users.md)。
 
-## <a name="download-and-install-ssms"></a>下载并安装 SSMS
-[下载 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
-
-在下载页上，你有两个选项：
- 
-* 候选发布 - 仅在连接到 Azure Analysis Services 预览版时建议使用。 此发行版可获取最新更新，并最适用于 Azure Analysis Services 预览版。
-* 当前生产版本 - 建议在连接到生产服务器以及 Azure Analysis Services 预览版使用。 使用此版本时，可能需要编辑注册表才能启用 Azure Active Directory 身份验证。
-
-## <a name="enable-azure-active-directory-authentication"></a>启用 Azure Active Directory 身份验证
-
-若要在注册表中启用 SSMS 的 Azure Active Directory 身份验证功能，请创建一个名为 EnableAAD.reg 的文本文件，然后复制粘贴以下内容：
-
-```
-Windows Registry Editor Version 5.00
-[HKEY_CURRENT_USER\Software\Microsoft\Microsoft SQL Server\Microsoft Analysis Services\Settings]
-"AS AAD Enabled"="True"
-```
-
-保存然后运行该文件。
 
 ## <a name="troubleshooting-connection-problems"></a>连接问题疑难解答
-使用 SSMS 连接到服务器时，如果（在步骤 3 中）尝试使用非联合帐户或非 Azure Active Directory 中的帐户登录，并且无法连接，则可能需要清除登录缓存。 请先关闭 SSMS，再执行下列步骤。
-
-1. 在文件资源管理器中，导航到 `C:\Users\<user_name>\AppData\Local\`。
-2. 删除 **AADCacheOM** 文件夹。
-3. 在**本地**文件夹中搜索以 **omlibs-tokens-cache** 名称开头的 .dat 文件。 请删除找到的任何文件。
-4. 打开 SSMS 并重复前文[连接 SSMS](#to-connect-with-ssms)中的步骤。
+若在使用 SSMS 进行连接时遇到问题，则可能需要清除登录缓存。 光盘中不缓存任何内容。 若要清除缓存，请关闭并重新启动连接进程。 
 
 ## <a name="next-steps"></a>后续步骤
 如果尚未将表格模型部署到新服务器，现在正是一个好时机。 有关详细信息，请参阅[部署到 Azure Analysis Services](analysis-services-deploy.md)。

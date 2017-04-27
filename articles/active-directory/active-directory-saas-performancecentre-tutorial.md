@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3b1a347322e2307aadbd287cb2235e39e11f1e79
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
 将 PerformanceCentre 与 Azure AD 集成具有以下优势： 
 
 * 可在 Azure AD 中控制谁有权访问 PerformanceCentre 
-* 可以让用户通过其 Azure AD 帐户自动登录到 PerformanceCentre（单一登录）
+* 可以让用户通过其 Azure AD 帐户自动登录到 PerformanceCentre 单一登录 (SSO)
 * 可以在一个中心位置（即 Azure Active Directory 经典门户）管理帐户
 
 如果想要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md)（什么是使用 Azure Active Directory 的应用程序访问和单一登录）。
@@ -35,27 +36,27 @@ ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
 若要配置 Azure AD 与 PerformanceCentre 的集成，需备齐以下项目：
 
 * Azure AD 订阅
-* 启用了 PerformanceCentre 单一登录的订阅
+* 启用了 PerformanceCentre 单一登录 (SSO) 的订阅
 
-> [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。
 > 
 > 
 
 测试本教程中的步骤应遵循以下建议：
 
 * 不应使用生产环境，除非有此必要。
-* 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。 
+* 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。 
 
 ## <a name="scenario-description"></a>方案描述
-本教程的目的是介绍如何在测试环境中测试 Azure AD 单一登录。  
+本教程旨在介绍如何在测试环境中测试 Azure AD SSO。  
 
 本教程中概述的方案包括以下主要构建基块：
 
 *  从库中添加 PerformanceCentre 
-*  配置和测试 Azure AD 单一登录
+*  配置和测试 Azure AD SSO
 
-## <a name="adding-performancecentre-from-the-gallery"></a>从库中添加 PerformanceCentre
+## <a name="add-performancecentre-from-the-gallery"></a>从库中添加 PerformanceCentre
 若要通过配置将 PerformanceCentre 集成到 Azure AD 中，需从库将 PerformanceCentre 添加到托管式 SaaS 应用的列表中。
 
 **若要从库添加 PerformanceCentre，请执行以下步骤：**
@@ -80,25 +81,25 @@ ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
    
     ![应用程序][500]
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-本部分的目的是介绍如何根据名为“Britta Simon”的测试用户的情况，配置和测试 PerformanceCentre 的 Azure AD 单一登录。
+## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
+本部分的目的是介绍如何根据名为“Britta Simon”的测试用户的情况，配置和测试 PerformanceCentre 的 Azure AD SSO。
 
-若要使用单一登录，Azure AD 需要了解与 Azure AD 中的用户相对应的 PerformanceCentre 中的用户是谁。 换句话说，需要建立 Azure AD 用户与 PerformanceCentre 中相关用户之间的关联关系。  
+若要运行 SSO，Azure AD 需要知道与 Azure AD 用户相对应的 PerformanceCentre 中的用户。 换句话说，需要建立 Azure AD 用户与 PerformanceCentre 中相关用户之间的关联关系。  
 
 将 Azure AD 中“用户名”的值指定为 PerformanceCentre 中“用户名”的值，即可建立此关联关系。
 
 **若要配置和测试 PerformanceCentre 的 Azure AD 单一登录，需要完成以下构建基块：**
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[创建 PerformanceCentre 测试用户](#creating-a-halogen-software-test-user)** - 目的是在 PerformanceCentre 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-本部分的目的是在 Azure 经典门户中启用 Azure AD 单一登录并在 PerformanceCentre 应用程序中配置单一登录。
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+本部分旨在介绍如何在 Azure AD 经典门户中启用 Azure AD SSO 并在 PerformanceCentre 应用程序中配置 SSO。
 
-**若要通过 PerformanceCentre 配置 Azure AD 单一登录，请执行以下步骤：**
+**若要通过 PerformanceCentre 配置 Azure AD SSO，请执行以下步骤：**
 
 1. 在 Azure AD 经典门户中的“PerformanceCentre”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
@@ -140,7 +141,7 @@ ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
     
      ![Azure AD 单一登录][16]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 经典门户中创建名为 Britta Simon 的测试用户。  
 
 ![创建 Azure AD 用户][20]
@@ -182,10 +183,10 @@ ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_08.png) 
    
-    1. 写下“新密码”的值。
-    2. 单击“完成”。   
+   1. 写下“新密码”的值。
+   2. 单击“完成”。   
 
-### <a name="creating-a-performancecentre-test-user"></a>创建 PerformanceCentre 测试用户
+### <a name="create-a-performancecentre-test-user"></a>创建 PerformanceCentre 测试用户
 本部分的目的是在 PerformanceCentre 中创建名为“Britta Simon”的用户。
 
 **若要在 PerformanceCentre 中创建名为“Britta Simon”的用户，请执行以下步骤：**
@@ -199,17 +200,18 @@ ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
     ![创建用户][401]
    
    1. 在相关文本框中键入 Britta Simon 的所需属性。
-   > [!IMPORTANT]
-   > Britta 在 PerformanceCentre 中的“用户名”属性必须与 Azure AD 中的“用户名”相同。
-   > 
-   > 
+
+    >[!IMPORTANT]
+    >Britta 在 PerformanceCentre 中的“用户名”属性必须与 Azure AD 中的“用户名”相同。
+    > 
+    > 
  
    2. 对于“选择角色”选项，请选择“客户端管理员”。
    3. 单击“保存” 。   
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-本部分的目的是通过授予 Britta Simon 访问 PerformanceCentre 的权限，允许她使用 Azure 单一登录。
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+本部分旨在通过授予 Britta Simon 访问 PerformanceCentre 的权限，允许她使用 Azure SSO。
 
 ![分配用户][200] 
 
@@ -229,8 +231,8 @@ ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
    
     ![分配用户][205]
 
-### <a name="testing-single-sign-on"></a>测试单一登录
-本部分的目的是使用访问面板测试 Azure AD 单一登录配置。  
+### <a name="test-single-sign-on"></a>测试单一登录
+本部分旨在使用“访问面板”测试 Azure AD SSO 配置。  
 
 单击访问面板中的“PerformanceCentre”磁贴时，用户就会自动登录到 PerformanceCentre 应用程序。
 
@@ -275,10 +277,5 @@ ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
 [402]: ./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_402.png
 
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

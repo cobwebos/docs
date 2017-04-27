@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
-ms.openlocfilehash: 1765e009438684373c89dc8364efd20dd1b7c84b
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 12f84f7ee418955f34316686c836a8697be94ea2
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -37,7 +37,7 @@ Azure SQL 数据库的弹性数据库作业（预览版）可让你跨多个数�
    ![命令提示符](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
 
 2. 在命令窗口中键入“1”，然后按“Enter”。 这会创建分片映射管理器，并将两个分片添加到服务器。 然后键入“3”并按“Enter”；重复该操作四次。 这会在你的分片中插入示例数据行。
-3. [Azure 门户](https://portal.azure.com)应会在 v12 服务器中显示三个新的数据库：
+3. [Azure 门户](https://portal.azure.com)应显示 3 个新数据库：
 
    ![Visual Studio 确认](./media/sql-database-elastic-query-getting-started/portal.png)
 

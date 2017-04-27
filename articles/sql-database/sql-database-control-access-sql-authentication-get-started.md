@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 67797b09-f5c3-4ec2-8494-fe18883edf7f
 ms.service: sql-database
-ms.custom: authentication and authorization
+ms.custom: security-access
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: a5084b62a309dba433e2b363322b9a9c362bcdc3
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 1bd474cc547ca2f6aa32944c1a1e5a92f917444a
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -58,11 +58,6 @@ ms.lasthandoff: 03/10/2017
 1. 打开所选的浏览器并连接到 [Azure 门户](https://portal.azure.com/)。
 2. 登录到 [Azure 门户](https://portal.azure.com/)。
 3. 在“登录”  页面上，提供订阅的凭据。
-   
-   ![登录](./media/sql-database-get-started-portal/login.png)
-
-
-<a name="create-logical-server-bk"></a>
 
 ## <a name="view-logical-server-security-information-in-the-azure-portal"></a>在 Azure 门户中查看逻辑服务器安全信息
 
@@ -268,17 +263,17 @@ ms.lasthandoff: 03/10/2017
 
 2. 在“连接到服务器”窗口中，输入服务器名称和身份验证信息，以便使用 **user1** 帐户通过 SQL Server 身份验证进行连接。 
     
-   ![在不使用防火墙规则的情况下以 user1 身份进行连接&1;](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule1.png)
+   ![在不使用防火墙规则的情况下以 user1 身份进行连接 1](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule1.png)
 
-3. 单击“选项”指定要连接到的数据库，然后在“连接属性”选项卡上的“连接到数据库”下拉框中键入 **sqldbtutorialdb**。
+3. 在“连接到服务器”对话框中单击“选项”，指定要连接到的数据库，然后在“连接属性”选项卡上的“连接到数据库”下拉框中键入“sqldbtutorialdb”。
    
-   ![在不使用防火墙规则的情况下以 user1 身份进行连接&2;](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule2.png)
+   ![在不使用防火墙规则的情况下以 user1 身份进行连接 2](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule2.png)
 
 4. 单击“连接”。 
 
    此时会出现一个对话框，告知从中尝试连接到 SQL 数据库的计算机上不存在允许访问该数据库的防火墙规则。 
 
-   ![在不使用防火墙规则的情况下以 user1 身份进行连接&4;](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule4.png)
+   ![在不使用防火墙规则的情况下以 user1 身份进行连接 4](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_no_rule4.png)
 
 
 5. 复制此对话框中的客户端 IP 地址，以便在步骤 8 中使用。
@@ -301,11 +296,11 @@ ms.lasthandoff: 03/10/2017
 
 10. 成功连接后，在对象资源管理器中展开“数据库”。 可以看到，**user1** 只能查看 **sqldbtutorialdb** 数据库。
 
-   ![使用防火墙规则以 user1 身份进行连接&1;](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_rule1.png)
+   ![使用防火墙规则以 user1 身份进行连接 1](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_rule1.png)
 
 11. 依次展开“sqldbtutorialdb”、“表”。 可以看到，user1 仅有权查看单个表，即 **SalesLT.ProductCategory** 表。 
 
-   ![以 user1 的身份建立连接并查看对象&1;](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_view_objects1.png)
+   ![以 user1 的身份建立连接并查看对象 1](./media/sql-database-control-access-sql-authentication-get-started/connect-user1_view_objects1.png)
 
 ## <a name="create-a-new-user-as-dbowner-and-a-database-level-firewall-rule"></a>创建名为 db_owner 的新用户和数据库级防火墙规则
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 223a7f808ae21ddf8e237e7c5ec2d7ba035e38e8
-ms.openlocfilehash: 82d91881e7f744471f4e60d1c6571e0ae2f7ee4e
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5413e86ac3c83947566b2686392612bd33c4483f
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -49,7 +50,7 @@ ms.openlocfilehash: 82d91881e7f744471f4e60d1c6571e0ae2f7ee4e
 
 1. 客户端库假定用户在本地或 Azure 密钥保管库中管理密钥加密密钥 (KEK)。 用户不需要知道用于加密的特定密钥。 但是，可以设置和使用一个密钥解析程序，将不同的密钥标识符解析为密钥。
 2. 客户端库下载存储在服务中的已加密数据以及任何加密材料。
-3. 然后，使用密钥加密密钥 (KEK) 对已包装的内容加密密钥 (CEK) 进行解包（解密）。 这里同样，客户端库无法访问 KEK。 它只是调用自定义提供程序或密钥保管库提供程序的解包算法。
+3. 然后，使用密钥加密密钥 (KEK) 对已包装的内容加密密钥 (CEK) 进行解包（解密）。 这里同样，客户端库无法访问 KEK。 它只是调用自定义提供程序或 Key Vault 提供程序的解包算法。
 4. 然后，使用内容加密密钥 (CEK) 解密已加密的用户数据。
 
 ## <a name="encryption-mechanism"></a>加密机制
@@ -245,8 +246,3 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 * 下载[适用于 .NET NuGet 包的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)
 * 下载 Azure 密钥保管库 NuGet [核心](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[客户端](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)和[扩展](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)包  
 * 访问 [Azure 密钥保管库文档](../key-vault/key-vault-whatis.md)
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -17,17 +17,17 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 0afe2d9e8cb6d26c43830df0ebfe2cea5c2f7665
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: ff27ec5eb86b11bbbc91e648ffa72956436f445a
+ms.lasthandoff: 04/12/2017
 
 ---
 
 # <a name="import-from-a-bacpac-into-a-sql-database-using-powershell"></a>使用 PowerShell 从 bacpac 导入 SQL 数据库
 
-此示例 PowerShell 脚本从 bacpac 导入数据库。  
+此 PowerShell 脚本示例从 **bacpac** 文件导入数据库。  
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -47,11 +47,11 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 
 | 命令 | 说明 |
 |---|---|
-| [New-AzureRmResourceGroup]() | 创建用于存储所有资源的资源组。 |
-| [New-AzureRmSqlServer]() | 创建用于托管 SQL 数据库的逻辑服务器。 |
-| [New-AzureRmSqlServerFirewallRule]() | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器上的所有 SQL 数据库。 |
-| [New-AzureRmSqlDatabase]() | 在逻辑服务器中创建 SQL 数据库。 |
-| [Remove-AzureRmResourceGroup]() | 删除资源组，包括所有嵌套的资源。 |
+| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.3.0/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
+| [New-AzureRmSqlServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.5.0/new-azurermsqlserver) | 创建用于托管 SQL 数据库的逻辑服务器。 |
+| [New-AzureRmSqlServerFirewallRule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqlserverfirewallrule) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器上的所有 SQL 数据库。 |
+| [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaseimport?view=azurermps-3.7.0) | 导入 .bacpac 文件，并在服务器上创建一个新数据库。 |
+| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/remove-azurermresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

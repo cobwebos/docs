@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: fcd14b6b0afe08db82f2b8050beaf03ece7fd212
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d13e5b87c446e587091551b22d80fe568d5d8093
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>集成 Azure 安全中心警报和 Azure 日志集成
-许多安全操作和事件响应团队依靠安全信息和事件管理 (SIEM) 解决方案作为会审和调查安全警报的起始点。 使用 Azure 日志集成，客户可以近实时地同步通过 Azure 诊断和 Azure 审核日志收集的安全中心警报和虚拟机安全事件，以及其日志分析或 SIEM 解决方案。
+许多安全操作和事件响应团队依靠安全信息和事件管理 (SIEM) 解决方案作为会审和调查安全警报的起始点。 通过 Azure 日志集成，可将 Azure 安全中心警报与 SIEM 解决方案集成。
 
-Azure 日志集成适用于 HP ArcSight、Splunk、IBM QRadar 和其他类型。
+Azure 日志集成当前支持 HP ArcSight、Splunk 和 IBM QRadar。
 
 ## <a name="what-logs-can-i-integrate"></a>可以集成哪些日志？
 Azure 针对每个服务生成大量日志记录。 这些日志分类如下：
 
-* **控制/管理日志**，使 Azure 资源管理器的 CREATE、UPDATE 和 DELETE 操作可见。
-* **数据平面日志**，可让使用 Azure 资源时引发的事件可见。 其中一个示例是 Windows 事件日志，即虚拟机中的安全和应用程序日志。
+* **控制/管理日志**，使 Azure 资源管理器的 CREATE、UPDATE 和 DELETE 操作可见。 这些控件平面事件显示在 Azure 活动日志中
+* **数据平面日志**，可让使用 Azure 资源时引发的事件可见。 Windows 事件日志是一个例子，可在其中从事件查看器的安全通道获取安全事件信息。 数据平面事件（由虚拟机或 Azure 服务生成）通过 Azure 诊断日志显示。
 
 Azure 日志集成当前支持以下集成：
 
@@ -78,15 +78,12 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 
    * **c:\Users\azlog\ AzureSecurityCenterJson**
    * **c:\Users\azlog\AzureSecurityCenterJsonLD**
-6. 将标准 SIEM 文件转发器连接器指向相应的文件夹，以将数据发送给 SIEM 实例。 关于 SIEM 配置，请参阅 [SIEM 配置](https://azsiempublicdrops.blob.core.windows.net/drops/ALL.htm)。
-
-如果有关于 Azure 日志集成方面的问题，请发送电子邮件至 [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)。
+6. 将 SIEM 文件转发器连接器配置到适当的文件夹。 该过程取决于所使用的 SIEM。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关 Azure 审核日志和属性定义的详细信息，请参阅：
+若要详细了解 Azure 活动日志和属性定义，请参阅：
 
 * [使用资源管理器执行审核操作](../azure-resource-manager/resource-group-audit.md)
-* [列出订阅中的管理事件](https://msdn.microsoft.com/library/azure/dn931934.aspx) - 检索审核日志事件。
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 

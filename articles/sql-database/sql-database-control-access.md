@@ -9,7 +9,7 @@ editor:
 tags: 
 ms.assetid: 8e71b04c-bc38-4153-8f83-f2b14faa31d9
 ms.service: sql-database
-ms.custom: overview
+ms.custom: security-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,9 +17,9 @@ ms.workload: data-management
 ms.date: 02/06/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
-ms.openlocfilehash: 8b9b9b70cc7b6a9b89a52523f713b43b74713042
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: e3bafbd9f010550f8b7117de27495b21cadbd3c1
+ms.lasthandoff: 04/10/2017
 
 ---
 # <a name="azure-sql-database-access-control"></a>Azure SQL 数据库访问控制
@@ -33,7 +33,7 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 
 只能通过 TCP 端口 1433 使用 Azure SQL 数据库服务。 若要从计算机访问 SQL 数据库，请确保客户端计算机防火墙允许 TCP 端口 1433 上的传出 TCP 通信。 如果其他应用程序不需要，则阻止 TCP 端口 1433 上的入站连接。 
 
-在连接过程中，来自 Azure 虚拟机的连接将重定向到每个辅助角色特有的不同 IP 地址和端口。 该端口号在 11000 到 11999 的范围内。 有关 TCP 端口的详细信息，请参阅[用于 ADO.NET 4.5 和 SQL 数据库 V12 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
+在连接过程中，来自 Azure 虚拟机的连接将重定向到每个辅助角色特有的不同 IP 地址和端口。 该端口号在 11000 到 11999 的范围内。 有关 TCP 端口的详细信息，请参阅[用于 ADO.NET 4.5 和 SQL Database2 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
 ## <a name="authentication"></a>身份验证
 

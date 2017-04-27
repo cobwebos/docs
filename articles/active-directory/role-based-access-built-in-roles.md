@@ -16,9 +16,9 @@ ms.date: 02/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 53fa0876ce1e3e2b2ac47316f37c5a0de2591d41
-ms.openlocfilehash: 404c4c4012eb5b6f8e7acdd7f985009b9f13b9f3
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: bb8d390a6ab045dc418bf80ec4fc218e0a35282b
+ms.lasthandoff: 04/11/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
@@ -48,6 +48,8 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | [DNS 区域参与者](#dns-zone-contributor) |可以管理 DNS 区域和记录 |
 | [DocumentDB 帐户参与者](#documentdb-account-contributor) |可管理 DocumentDB 帐户 |
 | [智能系统帐户参与者](#intelligent-systems-account-contributor) |可管理 Intelligent Systems 帐户 |
+| [监视查阅者](#monitoring-reader) |可以读取所有监视数据 |
+| [监视参与者](#monitoring-contributor) |可以读取监视数据和编辑监视设置 |
 | [网络参与者](#network-contributor) |可管理所有网络资源 |
 | [New Relic APM 帐户参与者](#new-relic-apm-account-contributor) |可管理 New Relic 应用程序性能管理帐户和应用程序 |
 | [所有者](#owner) |可管理一切内容（包括访问权限） |
@@ -336,6 +338,36 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.Resources/deployments/* |创建和管理资源组部署 |
 | Microsoft.Resources/subscriptions/resourceGroups/read |读取资源组 |
 | Microsoft.Support/* |创建和管理支持票证 |
+
+### <a name="monitoring-reader"></a>监视查阅者
+可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](/monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)。
+
+| **操作** |  |
+| --- | --- |
+| */read |读取除密码外的所有类型的资源。 |
+| Microsoft.OperationalInsights/workspaces/search/action |搜索 Log Analytics 数据 |
+| Microsoft.Support/* |创建和管理支持票证 |
+
+### <a name="monitoring-contributor"></a>监视参与者
+可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](/monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)。
+
+| **操作** |  |
+| --- | --- |
+| */read |读取除密码外的所有类型的资源。 |
+| Microsoft.Insights/AlertRules/* |读取/写入/删除警报规则。 |
+| Microsoft.Insights/components/* |读取/写入/删除 Application Insights 组件。 |
+| Microsoft.Insights/DiagnosticSettings/* |读取/写入/删除诊断设置。 |
+| Microsoft.Insights/eventtypes/* |列出订阅中的活动日志事件（管理事件）。 此权限适用于对活动日志的编程和门户访问。 |
+| Microsoft.Insights/LogDefinitions/* |此权限对于需要通过门户访问活动日志的用户是必需的。 列出活动日志中的日志类别。 |
+| Microsoft.Insights/MetricDefinitions/* |读取指标定义（资源的可用指标类型的列表）。 |
+| Microsoft.Insights/Metrics/* |读取资源的指标。 |
+| Microsoft.Insights/Register/Action |注册 Microsoft.Insights 提供程序。 |
+| Microsoft.Insights/webtests/* |读取/写入/删除 Application Insights Web 测试。 |
+| Microsoft.OperationalInsights/workspaces/intelligencepacks/* |读取/写入/删除 Log Analytics 解决方案包。 |
+| Microsoft.OperationalInsights/workspaces/savedSearches/* |读取/写入/删除 Log Analytics 保存的搜索。 |
+| Microsoft.OperationalInsights/workspaces/search/action |搜索 Log Analytics 工作区。 |
+| Microsoft.OperationalInsights/workspaces/sharedKeys/action |列出 Log Analytics 工作区的键。 |
+| Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* |读取/写入/删除 Log Analytics 存储深入了解配置。 |
 
 ### <a name="network-contributor"></a>网络参与者
 可管理所有网络资源

@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm;asirveda
 translationtype: Human Translation
 ms.sourcegitcommit: 0933eabf99ef94f2c4b425f1435530edfde65e3f
 ms.openlocfilehash: 9e55eb52797f1363cbb65050574e549c575ca5d8
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -131,9 +132,4 @@ ms.openlocfilehash: 9e55eb52797f1363cbb65050574e549c575ca5d8
 [Java 生成路径]: http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fref-properties-build-path.htm
 [license]: http://www.apache.org/licenses/LICENSE-2.0.html
 [maven-getting-started]: http://go.microsoft.com/fwlink/?LinkID=622998
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -15,9 +15,9 @@ ms.date: 02/27/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: d6330397b6e74b62836a2e864b1c37ab172d0028
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: c5a0f3f958d42d514a95477c1e39f02c78307d4d
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/15/2017
 ## <a name="web-browser-requirements"></a>Web 浏览器要求
 访问面板的最低要求是使用支持 JavaScript 且已启用 CSS 的浏览器。 为了让用户通过基于密码的单一登录 (SSO) 登录到应用程序，必须在用户的浏览器中安装“访问面板”扩展。 当用户选择某个已配置基于密码的 SSO 的应用程序时，会自动下载此扩展。
 
-“访问面板”扩展目前适用于 Internet Explorer 8 和更高版本、Chrome 及 Firefox 浏览器。
+“访问面板”扩展目前适用于 Internet Explorer 8 和更高版本、Microsoft Edge、Chrome 及 Firefox 浏览器。
 
 ## <a name="mobile-app-support"></a>移动应用支持
 Azure Active Directory 团队发布了“我的应用”移动应用。 用户安装此应用后，可以在 iOS 和 Android 设备上登录到基于密码的 SSO 应用程序。

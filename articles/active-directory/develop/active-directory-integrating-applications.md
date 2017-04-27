@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: mbaldwin;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 57383c11682342cb0a6446c79e603843a698fc8c
-ms.openlocfilehash: 835e1c494de59576fd8ac529240729cb33eaa50b
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: e8cc9b790224891a0770b18fe2edb8e1bbfd5b72
+ms.lasthandoff: 03/31/2017
 
 
 ---

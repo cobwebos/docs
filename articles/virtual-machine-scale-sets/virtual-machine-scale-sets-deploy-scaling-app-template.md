@@ -13,19 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: getting-started
-ms.date: 2/14/2017
+ms.date: 4/4/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 9a0e7a9aadf6ca12915635408653a37241dbb321
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 8a903cd870f01f9ca6224efd1386b68c63e3aa98
+ms.lasthandoff: 04/06/2017
 
 
 ---
 
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>使用模板部署自动缩放应用
 
-[Azure Resource Manager 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本教程基于[部署简单规模集](virtual-machine-scale-sets-mvss-start.md)，介绍如何使用 Azure Resource Manager 模板在规模集上部署简单的自动缩放应用程序。
+[Azure Resource Manager 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本教程基于[部署简单规模集](virtual-machine-scale-sets-mvss-start.md)，介绍如何使用 Azure Resource Manager 模板在规模集上部署简单的自动缩放应用程序。  还可以使用 PowerShell、CLI 或门户设置自动缩放。 有关详细信息，请参阅[自动缩放概述](virtual-machine-scale-sets-autoscale-overview.md)。
 
 ## <a name="two-quickstart-templates"></a>两个快速入门模板
 部署规模集时，可以使用 [VM 扩展](../virtual-machines/virtual-machines-windows-extensions-features.md)在平台映像中安装新软件。 VM 扩展是小型应用程序，可在Azure 虚拟机上提供部署后配置和自动化任务，例如部署应用。 [Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) 中提供两个不同的示例模板，介绍了如何使用 VM 扩展将自动缩放应用程序部署到规模集上。

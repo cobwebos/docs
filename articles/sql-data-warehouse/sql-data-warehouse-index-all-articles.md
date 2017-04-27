@@ -12,11 +12,13 @@ ms.workload: sql-data-warehouse
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.custom: reference
+ms.date: 03/30/2017
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ab5b0c283d1bd3fd1b734082d5ccffa4125f6de4
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 9fe41f12960dc099700e01573b4f03ebf63f8749
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -34,7 +36,7 @@ ms.openlocfilehash: ab5b0c283d1bd3fd1b734082d5ccffa4125f6de4
 | &nbsp; | 文章 | 更新的文本、代码片段 | 更新时间 |
 | ---:|:--- |:--- |:--- |
 | 2 |[将数据从 Azure Blob 存储载入 SQL 数据仓库 (PolyBase)](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) |/- 若要跟踪字节和文件 SELECT  r.command,  s.request_id,  r.status,  count(distinct input_name) as nbr_files,  sum(s.bytes_processed)/1024/1024 as gb_processed FROM  sys.dm_pdw_exec_requests r  inner join sys.dm_pdw_dms_external_work s  on r.request_id = s.request_id WHERE  r. label  = 'CTAS : Load  cso . DimProduct  '  OR r. label  = 'CTAS : Load  cso . FactOnlineSales  ' GROUP BY  r.command,  s.request_id,  r.status ORDER BY  nbr_files desc,  gb_processed desc; |2016-09-07 |
-| 3 |[SQL 数据仓库还原](sql-data-warehouse-restore-database-overview.md) |**可以恢复已暂停的数据仓库吗？** 若要还原已暂停的数据仓库，首先需要将其重新联机。 数据仓库重新联机后，有 7 天的恢复点可供选择。 **还原到异地冗余区域**如果使用的是异地冗余存储，则可将数据仓库还原到另一地理区域的配对数据中心。 从上次的每日备份还原数据仓库。 **还原时间线**可以将数据库还原到过去 7 天的任何还原点。 快照 4 到 8 小时启动一次，可供使用 7 天。 快照超过 7 天将过期，其还原点不再可用。 **还原成本**已还原的数据仓库的存储费用按 Azure 高级存储费率计算。 如果暂停还原的数据仓库，则存储费用按 Azure 高级存储费率计算。 暂停的优点是不收费 |2016-09-29 |
+| 3 |[SQL 数据仓库还原](sql-data-warehouse-restore-database-overview.md) |** 可否还原已暂停的数据仓库？** 若要还原已暂停的数据仓库，首先需要将其重新联机。 数据仓库重新联机后，有 7 天的恢复点可供选择。 ** 还原到异地冗余区域** 如果使用异地冗余存储，则可将数据仓库还原到另一地理区域的配对数据中心。 从上次的每日备份还原数据仓库。 ** 还原时间线** 可以将数据库还原到过去 7 天的任何还原点。 快照 4 到 8 小时启动一次，可供使用 7 天。 快照超过 7 天将过期，其还原点不再可用。 ** 还原成本** 已还原的数据仓库的存储费用按 Azure 高级存储费率计算。 如果暂停还原的数据仓库，则存储费用按 Azure 高级存储费率计算。 暂停的优点是不收费 |2016-09-29 |
 
 ## <a name="get-started"></a>入门
 | &nbsp; | 标题 | 说明 |
@@ -158,15 +160,10 @@ ms.openlocfilehash: ab5b0c283d1bd3fd1b734082d5ccffa4125f6de4
 ## <a name="miscellaneous"></a>其他
 | &nbsp; | 标题 | 说明 |
 | ---:|:--- |:--- |
-| 83 |[安装适用于 SQL 数据仓库的 Visual Studio 2015 和 SSDT](sql-data-warehouse-install-visual-studio.md) |安装适用于 Azure SQL 数据仓库的 Visual Studio 和 SQL Server 开发工具 (SSDT) |
+| 83 |[安装适用于 SQL 数据仓库的 Visual Studio 和 SSDT](sql-data-warehouse-install-visual-studio.md) |安装适用于 Azure SQL 数据仓库的 Visual Studio 和 SQL Server 开发工具 (SSDT) |
 | 84 |[迁移到高级存储的详细信息](sql-data-warehouse-migrate-to-premium-storage.md) |将 SQL 数据仓库迁移到高级存储的说明 |
 | 85 |[威胁检测入门](sql-data-warehouse-security-threat-detection.md) |如何开始使用威胁检测 |
 | 86 |[SQL 数据仓库容量限制](sql-data-warehouse-service-capacity-limits.md) |SQL 数据仓库的连接、数据库、表和查询的最大值。 |
 | 87 |[排查 Azure SQL 数据仓库问题](sql-data-warehouse-troubleshoot.md) |排查 Azure SQL 数据仓库问题。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

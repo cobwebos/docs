@@ -1,6 +1,6 @@
 ---
 title: "用于 SQL 数据库的非 1433 端口 | Microsoft 文档"
-description: "从 ADO.NET 到 Azure SQL 数据库 V12 的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。"
+description: "从 ADO.NET 到 Azure SQL 数据库的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。"
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 1df9f3549db8417445a5a012d31ed662977a9990
-ms.openlocfilehash: 961b8b4eeeb8543c2adec60ff958a7f420c785b5
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: e47d8f71fbfe95027e1fbfebb0b7e91ffe653c62
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -41,7 +42,7 @@ ms.openlocfilehash: 961b8b4eeeb8543c2adec60ff958a7f420c785b5
 2. 然后，ADO.NET 不通过任何中间件直接连接到 SQL 数据库服务器。
 3. 查询直接发送到数据库，结果直接返回到客户端。
 
-请确保 Azure 客户端计算机上 11000-11999 和 14000-14999 的端口范围已保留给 ADO.NET 4.5 客户端与 SQL 数据库 V12 之间的交互。
+确保为 ADO.NET 4.5 客户端与 SQL 数据库之间的交互保留 Azure 客户端计算机上 11000-11999 和 14000-14999 的端口范围。
 
 * 具体而言，范围中的端口必须没有其他任何出站阻塞器。
 * 在 Azure VM 上，**高级安全 Windows 防火墙**控制端口设置。
@@ -64,10 +65,5 @@ ms.openlocfilehash: 961b8b4eeeb8543c2adec60ff958a7f420c785b5
 * [SQL 数据库开发概述](sql-database-develop-overview.md)
 * [Azure SQL 数据库防火墙](sql-database-firewall-configure.md)
 * [如何：在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: asmalser
 translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: 1bee9573e23e1c814626d19a3df1eb7ab12486ab
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 39714145f84f5f9229dbf4bbe136103d4d102bed
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -86,23 +87,11 @@ Azure AD 通过连接到由每个应用程序供应商所提供的设置终结�
 有关特性如何在 Azure AD 和 SaaS 应用之间映射的更多详细信息，请参阅[自定义特性映射](active-directory-saas-customizing-attribute-mappings.md)一文。
 
 ## <a name="list-of-apps-that-support-automated-user-provisioning"></a>支持自动化用户设置的应用列表
-单击应用以查看如何为其配置自动化设置的教程：
-
-* [Box](http://go.microsoft.com/fwlink/?LinkId=286016)
-* [Citrix GoToMeeting](http://go.microsoft.com/fwlink/?LinkId=309580)
-* [Concur](http://go.microsoft.com/fwlink/?LinkId=309575)
-* [Docusign](http://go.microsoft.com/fwlink/?LinkId=403254)
-* [Dropbox for Business](http://go.microsoft.com/fwlink/?LinkId=309581)
-* [Google Apps](http://go.microsoft.com/fwlink/?LinkId=309577)
-* [Jive](http://go.microsoft.com/fwlink/?LinkId=309591)
-* [Salesforce](http://go.microsoft.com/fwlink/?LinkId=286017)
-* [Salesforce Sandbox](http://go.microsoft.com/fwlink/?LinkId=327869)
-* [ServiceNow](http://go.microsoft.com/fwlink/?LinkId=309587)
-* [Workday](http://go.microsoft.com/fwlink/?LinkId=690250)（入站预配）
+Azure AD 应用程序库中的所有“特别推荐的”应用均支持自动化用户预配。 [可以在此处查看特别推荐的应用列表。](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)
 
 为了使应用程序支持自动化用户设置，它必须首先提供必要的、允许外部程序自动执行创建、维护和删除用户操作的终结点。 因此，不是所有的 SaaS 应用都能兼容此功能。 对于不支持此功能的应用，Azure AD 工程团队将能够构建连接到这些应用的设置连接器，并按当前和潜在客户需求设置优先级。
 
-如需联系 Azure AD 工程团队以请求其他应用程序的预配支持，请通过 [Azure Active Directory 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)提交消息。
+如需联系 Azure AD 工程团队以请求其他应用程序的预配支持，请通过 [Azure Active Directory 反馈论坛](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/category/172035-user-provisioning)提交消息。
 
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
@@ -112,10 +101,5 @@ Azure AD 通过连接到由每个应用程序供应商所提供的设置终结�
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](active-directory-scim-provisioning.md)
 * [帐户预配通知](active-directory-saas-account-provisioning-notifications.md)
 * [有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

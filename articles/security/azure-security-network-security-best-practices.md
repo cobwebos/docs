@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 71e0d74f0e4787393e3184a3a5b553c4935cf785
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -44,7 +45,7 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 * 部署外围网络进行安全分区
 * 避免向具有专用 WAN 链接的 Internet 公开
 * 优化运行时间和性能
-* 使用全局负载平衡
+* 使用全局负载均衡
 * 禁用对 Azure 虚拟机的 RDP 访问
 * 启用 Azure 安全中心
 * 将数据中心扩展到 Azure
@@ -142,54 +143,54 @@ Azure 网络安全设备可通过网络级别控件提供的功能来提供大�
 机密性、完整性和可用性 (CIA) 三者构成现今最具影响力的安全模型。 机密性与加密和隐私相关，完整与确保数据不会遭到未经授权人员的更改有关，可用性与确保经过授权的个人可以访问他们有权访问的信息有关。 上述任何一个方面失败都代表可能破坏安全性。
 
 可用性可被视为与运行时间和性能有关。 如果服务已关闭，便无法访问信息。 如果性能不佳，以致数据无法使用，我们可将此数据视为不可访问。 因此，从安全角度来看，我们需要尽可能确保服务有最佳的运行时间和性能。
-用于增强可用性和性能的常用且有效的方法是使用负载平衡。 负载平衡是将网络流量分布于服务中各服务器的方法。 例如，如果服务中有前端 Web 服务器，可以使用负载平衡将流量分布于多台前端 Web 服务器。
+用于增强可用性和性能的常用且有效的方法是使用负载均衡。 负载均衡是将网络流量分布于服务中各服务器的方法。 例如，如果服务中有前端 Web 服务器，可以使用负载均衡将流量分布于多台前端 Web 服务器。
 
-这种流量分布将提高可用性，因为如果其中一台 Web 服务器不可用，负载平衡器将会停止将流量发送到该服务器，并将流量重定向到仍在运行的服务器。 负载平衡还有助于性能，因为处理请求的处理器、网络和内存开销将分布于所有负载平衡的服务器之间。
+这种流量分布将提高可用性，因为如果其中一台 Web 服务器不可用，负载均衡器将会停止将流量发送到该服务器，并将流量重定向到仍在运行的服务器。 负载均衡还有助于性能，因为处理请求的处理器、网络和内存开销将分布于所有负载均衡的服务器之间。
 
-建议尽可能为服务采用适当的负载平衡。 我们将在以下部分中探讨适当性。
-在 Azure 虚拟网络级别，Azure 将提供三个主要负载平衡选项：
+建议尽可能为服务采用适当的负载均衡。 我们将在以下部分中探讨适当性。
+在 Azure 虚拟网络级别，Azure 将提供三个主要负载均衡选项：
 
-* 基于 HTTP 的负载平衡
-* 外部负载平衡
-* 内部负载平衡
+* 基于 HTTP 的负载均衡
+* 外部负载均衡
+* 内部负载均衡
 
-## <a name="http-based-load-balancing"></a>基于 HTTP 的负载平衡
-基于 HTTP 的负载平衡使用 HTTP 协议的特征确定由哪一台服务器发送连接。 Azure 提供以应用程序网关名称为名的 HTTP 负载平衡器。
+## <a name="http-based-load-balancing"></a>基于 HTTP 的负载均衡
+基于 HTTP 的负载均衡使用 HTTP 协议的特征确定由哪一台服务器发送连接。 Azure 提供以应用程序网关名称为名的 HTTP 负载均衡器。
 
 建议在以下情况时使用 Azure 应用程序网关：
 
 * 需要使用来自同一用户/客户端会话的请求来访问相同后端虚拟机的应用程序。 此类应用程序的示例包括购物车应用程序和 Web 邮件服务器。
 * 希望使用应用程序网关的 [SSL 卸载](https://f5.com/glossary/ssl-offloading)功能消除 Web 服务器场的 SSL 终端开销的应用程序。
-* 要求长时间运行的同一 TCP 连接上多个 HTTP 请求路由到或负载平衡到不同后端服务器的应用程序（例如内容传送网络）。
+* 要求长时间运行的同一 TCP 连接上多个 HTTP 请求路由到或负载均衡到不同后端服务器的应用程序（例如内容传送网络）。
 
 若要详细了解 Azure 应用程序网关的工作原理及其在部署中的使用方式，请阅读[应用程序网关概述](../application-gateway/application-gateway-introduction.md)一文。
 
-## <a name="external-load-balancing"></a>外部负载平衡
-来自 Internet 的传入连接在位于 Azure 虚拟网络中的服务器之间达到平衡负载时，将进行外部负载平衡。 Azure 外部负载平衡器可以提供此功能，建议在不需要粘性会话或 SSL 卸载时使用。
+## <a name="external-load-balancing"></a>外部负载均衡
+来自 Internet 的传入连接在位于 Azure 虚拟网络中的服务器之间达到平衡负载时，将进行外部负载均衡。 Azure 外部负载均衡器可以提供此功能，建议在不需要粘性会话或 SSL 卸载时使用。
 
-相比于基于 HTTP 的负载平衡，外部负载平衡器将使用 OSI 网络模型的网络和传输层信息来确定哪一台服务器可平衡连接负载。
+相比于基于 HTTP 的负载均衡，外部负载均衡器将使用 OSI 网络模型的网络和传输层信息来确定哪一台服务器可平衡连接负载。
 
-建议每当[无状态应用程序](http://whatis.techtarget.com/definition/stateless-app)接受来自 Internet 的传入请求时，使用外部负载平衡。
+建议每当[无状态应用程序](http://whatis.techtarget.com/definition/stateless-app)接受来自 Internet 的传入请求时，使用外部负载均衡。
 
-若要详细了解 Azure 外部负载平衡器的工作原理和部署方式，请阅读[开始使用 PowerShell 在资源管理器中创建面向 Internet 的负载平衡器](../load-balancer/load-balancer-get-started-internet-arm-ps.md)一文。
+若要详细了解 Azure 外部负载均衡器的工作原理和部署方式，请阅读[开始使用 PowerShell 在资源管理器中创建面向 Internet 的负载均衡器](../load-balancer/load-balancer-get-started-internet-arm-ps.md)一文。
 
-## <a name="internal-load-balancing"></a>内部负载平衡
-内部负载平衡类似于外部负载平衡，使用相同的机制对其背后服务器的连接进行负载平衡。 唯一的差别在于，在此情况下的负载平衡器将接受来自不在 Internet 上的虚拟机的连接。 在大多数情况下，Azure 虚拟网络上的设备将发起负载平衡可接受的连接。
+## <a name="internal-load-balancing"></a>内部负载均衡
+内部负载均衡类似于外部负载均衡，使用相同的机制对其背后服务器的连接进行负载均衡。 唯一的差别在于，在此情况下的负载均衡器将接受来自不在 Internet 上的虚拟机的连接。 在大多数情况下，Azure 虚拟网络上的设备将发起负载均衡可接受的连接。
 
-建议将内部负载平衡用于将受益于此功能的方案，例如当需要对 SQL 服务器或内部 Web 服务器的连接进行负载平衡时。
+建议将内部负载均衡用于将受益于此功能的方案，例如当需要对 SQL 服务器或内部 Web 服务器的连接进行负载均衡时。
 
-若要详细了解 Azure 内部负载平衡器的工作原理和部署方式，请阅读[开始使用 PowerShell 创建 Internet 负载平衡器](../load-balancer/load-balancer-get-started-internet-arm-ps.md#update-an-existing-load-balancer)一文。
+若要详细了解 Azure 内部负载均衡器的工作原理和部署方式，请阅读[开始使用 PowerShell 创建 Internet 负载均衡器](../load-balancer/load-balancer-get-started-internet-arm-ps.md#update-an-existing-load-balancer)一文。
 
-## <a name="use-global-load-balancing"></a>使用全局负载平衡
-使用公有云计算可部署遍布全球的应用程序，其组件位于世界各地的数据中心。 由于 Azure 有全局数据中心，因此这种方案在 Microsoft Azure 上可行。 相比于前面提到的负载平衡技术，全局负载平衡可让服务即使在整个数据中心可能不可用时也能使用。
+## <a name="use-global-load-balancing"></a>使用全局负载均衡
+使用公有云计算可部署遍布全球的应用程序，其组件位于世界各地的数据中心。 由于 Azure 有全局数据中心，因此这种方案在 Microsoft Azure 上可行。 相比于前面提到的负载均衡技术，全局负载均衡可让服务即使在整个数据中心可能不可用时也能使用。
 
-可以使用 [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)在 Azure 中实现这种类型的全局负载平衡。 流量管理器可以根据用户的位置，对服务的连接进行负载平衡。
+可以使用 [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)在 Azure 中实现这种类型的全局负载均衡。 流量管理器可以根据用户的位置，对服务的连接进行负载均衡。
 
-例如，如果用户从欧盟对服务发出请求，此连接将被定向到位于欧盟数据中心的服务。 这一部分的流量管理器全局负载平衡有助于改善性能，因为连接到最近的数据中心比连接到远处的数据中心还要快。
+例如，如果用户从欧盟对服务发出请求，此连接将被定向到位于欧盟数据中心的服务。 这一部分的流量管理器全局负载均衡有助于改善性能，因为连接到最近的数据中心比连接到远处的数据中心还要快。
 
-在可用性方面，全局负载平衡可确保即使整个数据中心不可用，服务仍可使用。
+在可用性方面，全局负载均衡可确保即使整个数据中心不可用，服务仍可使用。
 
-例如，如果 Azure 数据中心因为环境原因或服务中断（例如区域网络故障）而不可用，对服务的连接将被重新路由到最近的在线数据中心。 使用可在流量管理器中创建的 DNS 策略来实现这种全局负载平衡。
+例如，如果 Azure 数据中心因为环境原因或服务中断（例如区域网络故障）而不可用，对服务的连接将被重新路由到最近的在线数据中心。 使用可在流量管理器中创建的 DNS 策略来实现这种全局负载均衡。
 
 如果所开发的云解决方案广泛分布于多个区域且需要最高级别的运行时间，我们建议使用流量管理器。
 
@@ -235,9 +236,4 @@ Azure 安全中心通过以下方式来帮助优化和监视网络安全：
 Microsoft 创建了[数据中心扩展参考体系结构关系图](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content)和相关支持材料，以帮助你了解此类数据中心扩展的形式。 其中提供了示例参考实现，可用于规划和设计如何安全地将企业数据中心扩展到云。 我们建议你参阅此文档，以大致了解安全解决方案的重要组件。
 
 若要详细了解如何安全地将数据中心扩展到 Azure，请观看视频[将数据中心扩展到 Microsoft Azure](https://www.youtube.com/watch?v=Th1oQQCb2KA)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

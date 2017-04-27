@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 79a2cb3739ebb13792a60a9b55761a054bf89e7a
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e5937f8472492cd1dd77c82ed518a665718623a1
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -28,29 +30,24 @@ SQL 数据仓库是一种分布式数据库系统，可根据你的需要弹性�
 ## <a name="migration-guidance"></a>迁移指导
 在开始迁移之前，请务必通读这些文章，确保了解一些产品差异和基本概念。
 
-* [迁移架构][迁移架构]
-* [迁移数据][迁移数据]
-* [迁移代码][迁移代码]
+* [迁移架构][Migrate your schema]
+* [迁移数据][Migrate your data]
+* [迁移代码][Migrate your code]
 
 ## <a name="next-steps"></a>后续步骤
-CAT（客户顾问团队）也有一些很好的通过博客发布的 SQL 数据仓库指南。  请参阅他们的[在实践中将数据迁移到 Azure SQL 数据仓库][在实践中将数据迁移到 Azure SQL 数据仓库]一文，了解有关迁移的更多指南。
+CAT（客户顾问团队）也有一些很好的通过博客发布的 SQL 数据仓库指南。  请参阅他们的[在实践中将数据迁移到 Azure SQL 数据仓库][Migrating data to Azure SQL Data Warehouse in practice]一文，了解有关迁移的更多指南。
 
 <!--Image references-->
 
 <!--Article references-->
-[迁移架构]: sql-data-warehouse-migrate-schema.md
-[迁移数据]: sql-data-warehouse-migrate-data.md
-[迁移代码]: sql-data-warehouse-migrate-code.md
+[Migrate your schema]: sql-data-warehouse-migrate-schema.md
+[Migrate your data]: sql-data-warehouse-migrate-data.md
+[Migrate your code]: sql-data-warehouse-migrate-code.md
 
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
-[在实践中将数据迁移到 Azure SQL 数据仓库]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
 

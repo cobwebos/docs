@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 04/07/2017
 ms.author: erihur;genli
 translationtype: Human Translation
-ms.sourcegitcommit: 29a6290a19186d5bc8a07d87617b47d21529d6b7
-ms.openlocfilehash: 2e99332e2a2b023c00669b3ad5ea07f0c791a805
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 6db1fedad08ee33f3468fb98f59071a1521921db
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -29,7 +29,7 @@ Microsoft Azure 订阅的费用因资费套餐而异。 某些资费套餐（如
 
 在上一计费周期结束时，最多 24 小时的使用情况可能显示在当前帐单中。 另外，对于国际客户，帐单上列出的费用仅用于估算目的。 不同的银行根据不同的兑换率计算费用。
 
-## <a name="a-namepdfa-understand-your-invoice-pdf"></a><a name="pdf"></a>了解发票 (.pdf)
+## <a name="pdf"></a>了解发票 (.pdf)
 发票提供费用的摘要。 可以从 [Azure 门户](https://portal.azure.com)下载可移植文档格式 (.pdf) 的发票。 有关详细信息，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。 
 
 下列部分列出了可在发票上看到的大多数条款以及每个条款的说明。
@@ -77,10 +77,10 @@ Microsoft Azure 订阅的费用因资费套餐而异。 某些资费套餐（如
 
 | 术语 | 说明 |
 | --- | --- |
-| 买方 |已预先填充了帐户的配置文件地址。 如果需要更改此项，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](billing-how-to-change-azure-account-profile.md)。 |
-| 付款说明 |如果付款方式为发票，将在此处寄送支票、电汇或隔天送达支票。 有关详细信息，请参阅 [Azure 账单 - 如何开具发票](https://azure.microsoft.com/pricing/invoicing/) |
+| 买方 | 该帐户上的配置文件地址。 如果需要更改地址，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](billing-how-to-change-azure-account-profile.md)。 |
+| 付款说明 | 如果按发票付款，这些说明会显示支票寄送、电汇或隔夜支票寄送的地址。 有关详细信息，请参阅 [Azure 账单 - 如何开具发票](https://azure.microsoft.com/pricing/invoicing/) |
 
-## <a name="a-namecsva-understand-detailed-usage-charges-csv"></a><a name="csv"></a>了解详细的使用费 (.csv)
+## <a name="csv"></a>了解详细的使用费 (.csv)
 使用情况文件显示在当前计费周期内每个资源使用了多少。 它以逗号分隔值 (.csv) 文件格式提供，你可以在电子表格应用程序中打开它。 如果看到两个版本可用，请下载版本 2。 这是最新的文件格式。 有关详细信息，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。
 
 使用费是订阅的**每月**总费用减去任何信用额度或折扣。 我们会根据你过去一个月的使用量向你收取费用。  
@@ -117,7 +117,7 @@ Microsoft Azure 订阅的费用因资费套餐而异。 某些资费套餐（如
 | --- | --- |
 |使用日期 |使用资源时的日期。 |
 |测定仪类别 |列出该次使用所属的最上层服务。 |
-|测定仪 ID |计费测定仪标识符。 此标识符用于为计费使用定价。 |
+|测定仪 ID |用于计算用量费用的费用计量标识符。 |
 |测定仪子类别 |定义 Azure 服务类型，该类型可能会影响费率。 |
 |测定仪名称 |列出耗用资源的度量单位。 |
 |测定仪区域|指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。 |
@@ -130,11 +130,9 @@ Microsoft Azure 订阅的费用因资费套餐而异。 某些资费套餐（如
 |标记 |分配给资源的标记。 使用标记对计费记录进行分组。 例如，可以使用标记按使用资源的部门分配费用。 支持发出标记的服务包括虚拟机、存储和使用 [Azure Resource Manager API](/rest/api/resources/resources) 预配的网络服务。 有关详细信息，请参阅[使用标记来组织 Azure 资源](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)。 |
 |其他信息 |服务特定的元数据。 例如，虚拟机的映像类型。 |
 |服务信息 1 |订阅上服务所属的项目名称。 |
-|服务信息 2 |这是一个旧字段，用于捕获可选的服务特定元数据。 |
+|服务信息 2 |旧字段，用于捕获可选的服务特定元数据。 |
 
 ## <a name="tips-for-cost-management"></a>成本管理建议
-最好主动控制成本：
-
 - 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)、[总体拥有成本计算器](https://aka.ms/azure-tco-calculator)和添加服务时估计成本
 - [设置计费警报](billing-set-up-alerts.md)
 - [在 Azure 门户中定期查看使用情况和成本](billing-getting-started.md#costs)
@@ -142,13 +140,13 @@ Microsoft Azure 订阅的费用因资费套餐而异。 某些资费套餐（如
 若要了解详细信息，请参阅 [Azure 计费和成本管理入门](billing-getting-started.md)。
 
 ## <a name="how-do-i-make-a-payment"></a>如何付款？
-如果已将信用卡或借记卡设置为付款方式，则将自动进行付款。 如果要使用[发票付款方式](https://azure.microsoft.com/pricing/invoicing/)，应将付款寄送到发票底部列出的地点。 有关更多帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+如果已将信用卡或借记卡设置为付款方式，则将自动进行付款。 如果采用[发票付款方式](https://azure.microsoft.com/pricing/invoicing/)，可将付款寄送到发票底部列出的地点。 有关更多帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>如何查看通过信用卡付款时的付款状态？
 [创建支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以询问付款状态。 
 
 ## <a name="what-about-marketplace-orders-or-external-service-charges"></a>应用商店订单或外部服务收取多少费用？
-外部服务过去称为应用商店订单。 外部服务由独立服务供应商提供，但已集成到 Azure 生态系统中。 若要了解详细信息，请参阅[了解 Azure 外部服务收费](billing-understand-your-azure-marketplace-charges.md)。
+外部服务过去称为应用商店订单。 外部服务由独立服务供应商提供，但已集成到 Azure 中。 若要了解详细信息，请参阅[了解 Azure 外部服务收费](billing-understand-your-azure-marketplace-charges.md)。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

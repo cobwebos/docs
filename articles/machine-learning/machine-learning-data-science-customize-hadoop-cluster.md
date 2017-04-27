@@ -40,7 +40,7 @@ ms.lasthandoff: 12/20/2016
 在下一页中，输入“DATA NODES”的数量，选择“REGION/VIRTUAL NETWORK”，然后选择“HEAD NODE”和“DATA NODE”。 单击箭头转到下一个配置页。
 
 > [!NOTE]
-> **REGION/VIRTUAL NETWORK**必须与 HDInsight Hadoop 群集的存储帐户所用的区域相同。 否则在第&4; 个配置页中，存储帐户不会出现在“帐户名”下拉列表中。
+> **REGION/VIRTUAL NETWORK**必须与 HDInsight Hadoop 群集的存储帐户所用的区域相同。 否则在第 4 个配置页中，存储帐户不会出现在“帐户名”下拉列表中。
 > 
 > 
 

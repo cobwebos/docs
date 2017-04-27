@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 3152a1306f2c3eeb42dd3b21cff62b696ed01e5d
-ms.openlocfilehash: 75ea0486a1b5abc71df3b7d9e8385717954b89f4
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d96dde8c74141d000c1f7c5fd9ef624ff5e46953
+ms.lasthandoff: 04/07/2017
 
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
@@ -186,7 +186,7 @@ ms.lasthandoff: 03/01/2017
 |context.User|Email: 字符串<br /><br /> FirstName: 字符串<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: 字符串<br /><br /> Identities: IEnumerable<IUserIdentity\><br /><br /> LastName: 字符串<br /><br /> Note: 字符串<br /><br /> RegistrationDate: DateTime|  
 |IApi|Id: 字符串<br /><br /> Name: 字符串<br /><br /> Path: 字符串<br /><br /> Protocols: IEnumerable<string\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|  
 |IGroup|Id: 字符串<br /><br /> Name: 字符串|  
-|IMessageBody|As<T\>(preserveContent: 布尔值 = false): Where T: 字符串, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Request.Body.As<T>` 方法用于读取采用指定格式之一的请求或响应消息正文。 请注意，默认情况下，当用户访问消息正文时，原始的消息正文会丢失，必须将正文返回到读取正文的表达式中，以便对其进行设置。 若要保留正文内容，请在访问消息时将 `preserveContent` 参数设置为 `true`。 `preserveContent` 的默认值为 `false`。 如果 `preserveContent` 设置为 `true`，而表达式返回了正文，则会使用返回的正文。 有关详细信息，请参阅[设置正文](api-management-transformation-policies.md#SetBody)策略。|  
+|IMessageBody|As<T\>(preserveContent: 布尔值 = false): Where T: 字符串, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法用于读取请求和响应采用指定类型 `T` 的消息正文。 该方法默认使用原始消息正文流，并在返回后将其呈现为不可用。 若要通过让该方法在正文流的副本上执行操作而避免这种情况，请将 `preserveContent` 参数设置为 `true`。 请转到[此处](api-management-transformation-policies.md#SetBody)查看示例。|  
 |IUrl|Host: 字符串<br /><br /> Path: 字符串<br /><br /> Port: 整数<br /><br /> Query: IReadOnlyDictionary<string, string[]><br /><br /> QueryString: 字符串<br /><br /> Scheme: 字符串|  
 |IUserIdentity|Id: 字符串<br /><br /> Provider: 字符串|  
 |ISubscriptionKeyParameterNames|Header: 字符串<br /><br /> Query: 字符串|  

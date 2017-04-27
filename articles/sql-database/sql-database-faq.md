@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 1da12abc-0646-43ba-b564-e3b049a6487f
 ms.service: sql-database
-ms.custom: overview
+ms.custom: reference
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 02/07/2017
 ms.author: sashan;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: ef58f595ff58b9156df813cf92e2306654a8b3ed
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 0b53eb34293078ad2ce334583fee88a8c5ac5ccf
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -77,17 +77,17 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 与单一数据库不同的是，对弹性数据库使用[活动异地复制](sql-database-geo-replication-overview.md)对计费没有直接的影响。  你只需支付对每个池（主池和辅助池）预配的 eDTU 费用
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>使用审核功能将对我的帐单产生什么影响？
-审核功能是 SQL 数据库服务的内置功能，无需另行付费，基本、标准和高级数据库均提供此功能。 但是，为了存储审核日志，审核功能将使用 Azure 存储帐户，而 Azure 存储空间中的表和队列费率根据审核日志的大小来应用。
+审核功能是 SQL 数据库服务的内置功能，无需另行付费，基本、标准、高级和高级 RS 数据库均提供此功能。 但是，为了存储审核日志，审核功能将使用 Azure 存储帐户，而 Azure 存储空间中的表和队列费率根据审核日志的大小来应用。
 
 ## <a name="how-do-i-find-the-right-service-tier-and-performance-level-for-single-databases-and-elastic-pools"></a>如何找到单一数据库和弹性池的正确服务层和性能级别？
 有几个工具可供使用。 
 
 * 对于本地数据库，请使用 [DTU 选型顾问](http://dtucalculator.azurewebsites.net/)，它会建议所需的数据库和 DTU，并为弹性池评估多个数据库。
-* 如果单一数据库可因池受益，当 Azure 的智能引擎发现了担保的历史使用模式时，将建议使用弹性池。 请参阅[使用 Azure 门户监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。 有关如何自行进行数学计算的详细信息，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)
+* 如果单一数据库可因池受益，当 Azure 的智能引擎发现了担保的历史使用模式时，将建议使用弹性池。 请参阅[使用 Azure 门户监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。 有关如何自行进行数学计算的详细信息，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)
 * 若要确定是否需要向上或向下调整单一数据库，请参阅[单一数据库的性能指南](sql-database-performance-guidance.md)。
 
 ## <a name="how-often-can-i-change-the-service-tier-or-performance-level-of-a-single-database"></a>可以按何种频率更改单一数据库的服务层或性能级别？
-使用 V12 数据库，可以（在基本、标准和高级之间）更改服务层或服务层内的性能级别（例如 S1 到 S2），次数随意。 对于早期版本的数据库，你可以在 24 小时内更改服务层或性能级别总共四次。
+可以（在基本、标准、高级和高级 RS 之间）更改服务层或服务层内的性能级别（例如 S1 到 S2），次数随意。 对于早期版本的数据库，你可以在 24 小时内更改服务层或性能级别总共四次。
 
 ## <a name="how-often-can-i-adjust-the-edtus-per-pool"></a>可以按何种频率调整每个池的 eDTU？
 次数随意。
@@ -96,16 +96,16 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 更改数据库的服务层和移入和移出池需要在平台上以后台操作的形式复制数据库。 更改服务层可能需要几分钟至几小时的时间，具体取决于数据库的大小。 在这两种情况下，数据库在移动期间保持联机和可用。 有关更改单一数据库的详细信息，请参阅[更改数据库的服务层](sql-database-service-tiers.md)。 
 
 ## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>何时应该使用单一数据库或弹性数据库？
-一般而言，弹性池针对典型的[软件即服务 (SaaS) 应用程序模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)而设计，该模式中每个客户或租户有一个数据库。 购买单独的数据库并超量设置以满足每个数据库的可变和峰值需求通常不够经济高效。 使用池可以管理池的整体性能，数据库将自动扩展和收缩。 如果 Azure 的智能引擎发现了担保的使用模式，将为数据库建议池。 有关详细信息，请参阅[弹性池指南](sql-database-elastic-pool-guidance.md)。
+一般而言，弹性池针对典型的[软件即服务 (SaaS) 应用程序模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)而设计，该模式中每个客户或租户有一个数据库。 购买单独的数据库并超量设置以满足每个数据库的可变和峰值需求通常不够经济高效。 使用池可以管理池的整体性能，数据库将自动扩展和收缩。 如果 Azure 的智能引擎发现了担保的使用模式，将为数据库建议池。 有关详细信息，请参阅[弹性池指南](sql-database-elastic-pool.md)。
 
 ## <a name="what-does-it-mean-to-have-up-to-200-of-your-maximum-provisioned-database-storage-for-backup-storage"></a>具有高达备份存储的最大已设置数据库存储两倍的容量是什么意思？
 备份存储是与用于[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)和[异地还原](sql-database-recovery-using-backups.md#geo-restore)的自动数据库备份关联的存储。 Microsoft Azure SQL 数据库提供了高达你的备份存储的最大已设置数据库存储两倍的容量，不需要支付额外的成本。 例如，如果你有一个标准数据库实例并且设置的数据库大小为 250 GB，则会向你提供 500 GB 的备份存储并且不额外收费。 如果数据库超过提供的备份存储，则可以选择与 Azure 支持联系来缩短保留期，或针对按标准读取访问地域冗余存储 (RA-GRS) 费率计费的额外备份存储支付费用。 有关 RA-GRS 计费的更多信息，请参阅“存储定价详细信息”。
 
 ## <a name="im-moving-from-webbusiness-to-the-new-service-tiers-what-do-i-need-to-know"></a>我正在从 Web/企业版迁移到新服务层，我需要了解哪些信息？
-Azure SQL Web 和企业数据库现已停用。 基本、标准、高级和弹性层将取代即将停用的 Web 和企业数据库。 我们制作了额外的常见问题解答，以帮助你完成此过渡期。 [Web 和 Business Edition 停用常见问题](sql-database-web-business-sunset-faq.md)
+Azure SQL Web 和企业数据库现已停用。 基本、标准、高级、高级 RS 和弹性层将取代即将停用的 Web 和企业数据库。 
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>在相同的 Azure 地理位置内的两个区域之间进行异地复制数据库时，哪些是预期的复制延迟？
-目前支持&5; 秒的 RPO，并且只要地域辅助数据库承载于 Azure 建议的配对区域并且属于相同的服务层，则复制延迟就会少于该时间。
+目前支持 5 秒的 RPO，并且只要地域辅助数据库承载于 Azure 建议的配对区域并且属于相同的服务层，则复制延迟就会少于该时间。
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-secondary-is-created-in-the-same-region-as-the-primary-database"></a>在主数据库所在的同一区域中创建地域辅助数据库时，哪些是预期的复制滞后？
 根据经验数据，在使用 Azure 建议的配对区域时，内部区域和区域之间的复制延迟没有太多差别。 

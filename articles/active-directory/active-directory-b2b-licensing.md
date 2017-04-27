@@ -13,19 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 64af2509036d035c5802f4b1985c3f986b685545
-ms.openlocfilehash: 2b677e684021a873c0bc4db751d8e60d9eaa6f9d
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: 4e620f3d76caa25ac0e5afb134f37ffe263935f0
+ms.lasthandoff: 04/13/2017
 
 
 ---
 
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B 协作授权指南
 
-Azure Active Directory (Azure AD) B2B 协作将一组选定的现有 Azure AD 功能扩展到了受邀加入 Azure AD 租户的来宾用户。 因此，Azure AD B2B 协作来宾用户将通过 Azure AD 许可证授权，并与此处所述的现有免费、基本和高级 P1/P2 许可证层相适应：https://azure.microsoft.com/en-us/pricing/details/active-directory/。
+Azure Active Directory (Azure AD) B2B 协作将一组选定的现有 Azure AD 功能扩展到了受邀加入 Azure AD 租户的来宾用户。 因此，Azure AD B2B 协作来宾用户将通过 Azure AD 许可证获得授权，并与此处所述的现有的免费、基本和高级 P1/P2 许可证层保持一致：https://azure.microsoft.com/pricing/details/active-directory/。
 
 邀请 B2B 用户并将其分配到 Azure AD 中的应用程序不会产生费用。 此外，B2B 用户的每个来宾用户最多可免费创建 10 个应用，B2B 用户可免费创建 3 份基本报告，因为他们属于 Azure AD“免费”层。
 通过 B2B 协作功能扩展到 B2B 用户的任何付费 Azure AD 功能需要使用 Azure AD 付费许可证（基本、高级 P1 或高级 P2，具体取决于使用的功能）授权。 邀请方租户将会凭借每个 Azure AD 付费许可证获得 5 个 B2B 用户权限。 也就是说，向某个租户中的一个员工用户提供对 Azure AD 付费功能的权限的每个 Azure AD 付费许可证现在还向被邀请到该租户的另外 5 个 B2B 用户提供对那些相同 Azure AD 付费功能的权限。
@@ -45,6 +45,21 @@ Azure Active Directory (Azure AD) B2B 协作将一组选定的现有 Azure AD �
 - 不需要将许可证实际分配给 B2B 用户帐户。 系统会自动计算和报告。
 - 如果租户中没有付费 Azure AD 许可证，每个受邀用户将获得 Azure AD 免费版提供的权限。
 - 如果某个 B2B 协作用户以员工身份从其组织获得了付费 Azure AD 许可证，则不会消耗邀请方租户中的一个 B2B 协作许可证。
+
+## <a name="advanced-discussion-what-are-the-licensing-considerations-when-we-add-users-from-a-conglomerate-organization-as-members-using-your-apis"></a>深入讨论：将企业集团中的用户添加为“成员”，并允许其使用 API 时有哪些授权注意事项？
+B2B 来宾用户属于合作伙伴组织，并且被邀请与主机组织进行合作。 通常，除此之外的任何其他情况都不符合 B2B 的条件，即使使用了 B2B 功能。 我们来特别了解以下两种情况：
+
+1. 如果主机邀请员工使用使用者地址
+  1. 这不符合我们的授权策略，并且当前不建议这样做。
+
+2.    如果主机组织从其他企业组织中添加用户
+  1. 这种情况下，用户受邀使用 B2B API，但这不是传统的 B2B。 理想情况下，应该让这些组织邀请其他组织的用户作为成员（API 允许这样操作）。 在这种情况下，必须向这些成员分配许可证，这样他们才能访问邀请组织中的资源。
+
+  2. 一些组织可能希望通过策略的方式添加其他组织中即将被添加为“来宾”用户。 这时存在两种情况：
+      * 该集团组织已经在使用 Azure AD，并且受邀用户已经在对方组织中获得许可：在这种情况下，受邀用户不需要遵循本文档前面提到的 1:5 公式。 
+
+      * 该集团组织未使用 Azure AD 或没有足够的许可证：在这种情况下，请遵循本文档前面提到的 1:5 公式。
+
 
 ## <a name="next-steps"></a>后续步骤
 

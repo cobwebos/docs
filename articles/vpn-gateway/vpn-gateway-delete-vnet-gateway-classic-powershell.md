@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: 
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2017
+ms.date: 03/29/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: b5d90aa60de4a24b6d76414204ceae24670e48a3
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 4437c8cb9f428bea54505dc4949410d361f77c11
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>使用 PowerShell 删除虚拟网络网关（经典）
 > [!div class="op_single_selector"]
+> * [Resource Manager - Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [经典 - PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/21/2017
 
 可在经典部署模型中使用 PowerShell 删除 VPN 网关。 删除虚拟网络网关后，修改网络配置文件以删除不再使用的元素。
 
-##<a name="part-1-connect-to-azure"></a>第 1 部分： 连接到 Azure
+##<a name="step-1-connect-to-azure"></a>步骤 1：连接到 Azure
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1.安装最新的 PowerShell cmdlet。
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 03/21/2017
 
     Add-AzureAccount
 
-## <a name="part-2-export-and-view-the-network-configuration-file"></a>第 2 部分： 导出并查看网络配置文件
+## <a name="step-2-export-and-view-the-network-configuration-file"></a>步骤 2：导出并查看网络配置文件
 
 在计算机上创建一个目录，然后将网络配置文件导出到该目录。 使用此文件查看当前配置信息并修改网络配置。
 
@@ -63,13 +64,13 @@ ms.lasthandoff: 03/21/2017
 
      Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 
-使用文本编辑器打开文件，并查看经典 VNet 的名称。 在 Azure 门户中创建 VNet 时，Azure 使用的全名在 Azure 门户中不可见。 例如，在 Azure 门户中命名为“ClassicVNet1”的 VNet 可能在网络配置文件中具有更长的名称。 名称可能如下所示：“Group ClassicRG1 ClassicVNet1”。 VNet 名称被列为“VirtualNetworkSite name =”。<br>运行 PowerShell cmdlet 时，请使用网络配置文件中的名称。
+使用文本编辑器打开文件，并查看经典 VNet 的名称。 在 Azure 门户中创建 VNet 时，Azure 使用的全名在门户中不可见。 例如，在 Azure 门户中命名为“ClassicVNet1”的 VNet 可能在网络配置文件中具有更长的名称。 名称可能如下所示：“Group ClassicRG1 ClassicVNet1”。 虚拟网络名称被列为“VirtualNetworkSite name =”。 运行 PowerShell cmdlet 时，请使用网络配置文件中的名称。
 
-## <a name="part-3-delete-the-virtual-network-gateway"></a>第 3 部分： 删除虚拟网络网关
+## <a name="step-3-delete-the-virtual-network-gateway"></a>步骤 3：删除虚拟网络网关
 
 删除虚拟网络网关时，通过该网关的所有 VNet 连接都将断开。 如果 P2S 客户端连接到 VNet，它们将断开连接且不发出警告。
 
-此示例将删除虚拟网络网关。 运行此示例时，请使用网络配置文件中虚拟网络的全名。
+此示例将删除虚拟网络网关。 确保使用网络配置文件中虚拟网络的全名。
 
     Remove-AzureVNetGateway -VNetName "Group ClassicRG1 ClassicVNet1"
 
@@ -77,13 +78,13 @@ ms.lasthandoff: 03/21/2017
 
     Status : Successful
 
-## <a name="part-4-modify-the-network-configuration-file"></a>第 4 部分： 修改网络配置文件
+## <a name="step-4-modify-the-network-configuration-file"></a>步骤 4：修改网络配置文件
 
 删除虚拟网络网关时，cmdlet 不会修改网络配置文件。 需修改文件才可删除不再使用的元素。 以下部分可帮助你修改下载的网络配置文件。
 
 ###<a name="local-network-site-references"></a>本地网络站点引用
 
-若要删除站点引用信息，请更改 ConnectionsToLocalNetwork/LocalNetworkSiteRef 的配置。 删除本地站点引用会触发 Azure 删除隧道。 根据你创建的配置，你可能没有列出 LocalNetworkSiteRef。
+若要删除站点引用信息，请更改 **ConnectionsToLocalNetwork/LocalNetworkSiteRef** 的配置。 删除本地站点引用会触发 Azure 删除隧道。 根据已创建的配置，可能没有列出 **LocalNetworkSiteRef**。
 
     <Gateway>
        <ConnectionsToLocalNetwork>
@@ -102,7 +103,7 @@ ms.lasthandoff: 03/21/2017
 
 ###<a name="local-network-sites"></a>本地网络站点
 
-删除不再使用的所有本地站点。 根据你创建的配置，你可能没有列出本地网络站点。
+删除不再使用的所有本地站点。 根据已创建的配置，可能没有列出 **LocalNetworkSite**。
 
     <LocalNetworkSites>
       <LocalNetworkSite name="Site1">
@@ -132,7 +133,7 @@ ms.lasthandoff: 03/21/2017
 
 ### <a name="client-addresspool"></a>客户地址池
 
-如果你的 P2S 连接到 VNet，你将有一个 VPNClientAddressPool。 删除与所删除的虚拟网络网关对应的客户地址池。
+如果 P2S 连接到 VNet，将有一个 **VPNClientAddressPool**。 删除与所删除的虚拟网络网关对应的客户地址池。
 
     <Gateway>
        <VPNClientAddressPool>
@@ -149,7 +150,7 @@ ms.lasthandoff: 03/21/2017
 
 ### <a name="gatewaysubnet"></a>GatewaySubnet
 
-删除与 VNet 对应的 GatewaySubnet。
+删除与 VNet 对应的 **GatewaySubnet**。
 
     <Subnets>
        <Subnet name="FrontEnd">
@@ -168,7 +169,7 @@ ms.lasthandoff: 03/21/2017
        </Subnet>
      </Subnets>
 
-## <a name="part-5-upload-the-network-configuration-file"></a>第 5 部分： 上传网络配置文件
+## <a name="step-5-upload-the-network-configuration-file"></a>步骤 5：上传网络配置文件
 
 保存所做的更改，并将网络配置文件上传到 Azure。 确保根据环境需要更改文件路径。
 

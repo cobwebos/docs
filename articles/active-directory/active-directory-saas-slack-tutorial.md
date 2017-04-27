@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9c027decf5d982519bc9f41aa9588fa431ef3975
-ms.openlocfilehash: 17ad8938cbee539e74f87210077a12c72e777edc
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: a1d7c2f01d3bf345f63077c4d42d79476235e941
+ms.lasthandoff: 04/07/2017
 
 
 ---
-# <a name="tutorial-azure-ad-integration-with-slack"></a>教程：Azure AD 与 Slack 集成
+# <a name="tutorial-azure-active-directory-integration-with-slack"></a>教程：Azure Active Directory 与 Slack 集成
 
 在本教程中，了解如何将 Slack 与 Azure Active Directory (Azure AD) 集成。
 
@@ -39,8 +39,10 @@ ms.lasthandoff: 02/24/2017
 * Azure AD 订阅
 * 已启用 Slack SSO 的订阅
 
-> [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。
+>
+>
 
 若要测试本教程中的步骤，请遵循以下建议：
 
@@ -76,7 +78,7 @@ ms.lasthandoff: 02/24/2017
 
 6. 在结果窗格中选择“Slack”，然后单击“添加”按钮添加该应用程序。
 
-    ![在结果窗格中选择“Slack”](./media/active-directory-saas-slack-tutorial/tutorial_slack_0001.png)
+     ![在结果窗格中选择“Slack”](./media/active-directory-saas-slack-tutorial/tutorial_slack_0001.png)
 
 ## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
 在本部分，我们将使用测试用户“Britta Simon”来配置和测试 Slack 的 Azure AD SSO。
@@ -85,13 +87,13 @@ ms.lasthandoff: 02/24/2017
 
 若要配置和测试 Slack 的 Azure AD SSO，请完成以下构建基块：
 
-1. [配置 Azure AD SSO](#configuring-azure-ad-single-sign-on)，让用户使用此功能。
+1. [配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)，使用户能够使用此功能。
 2. [创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)，以使用 Britta Simon 用户测试 Azure AD SSO。
 3. [创建 Slack 测试用户](#creating-a-slack-test-user)，使 Azure AD 用户 Britta Simon 链接到 Slack 中的对应用户。
 4. [分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)，使用户 Britta Simon 能够使用 Azure AD SSO。
-5. [测试 SSO](#testing-single-sign-on)，验证配置是否正常工作。
+5. [测试单一登录](#testing-single-sign-on)，验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分，我们将执行以下操作，在 Azure 门户中启用 Azure AD SSO，并在 Slack 应用程序中配置 SSO：
 
@@ -106,13 +108,13 @@ ms.lasthandoff: 02/24/2017
 3. 在“Slack 域和 URL”下面执行以下步骤：
 
     ![“单一登录”对话框](./media/active-directory-saas-slack-tutorial/tutorial_slack_02.png)
+  1. 在“登录 URL”框中，键入使用命名约定 _https://<company name>.slack.com_ 的 URL。
+  2. 在“标识符”框中，键入 **https://slack.com**。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”框中，键入使用命名约定 *https://<company name>.slack.com* 的 URL。
-
-    b.保留“数据库类型”设置，即设置为“共享”。 在“标识符”框中，键入 **https://slack.com**。
-
-    > [!NOTE]
-    > 上面的值不是实际值。 此处我们建议为 URL 和标识符使用唯一值。 稍后，我们将使用实际 URL 和标识符更新这些值。 若要获取这些值，请联系 [Slack 支持团队](https://slack.com/help/contact)。
+     >[!NOTE]
+     >上面的值不是实际值。 此处我们建议为 URL 和标识符使用唯一值。 稍后，我们将使用实际 URL 和标识符更新这些值。 若要获取这些值，请联系 [Slack 支持团队](https://slack.com/help/contact)。
+     >
+     >
 
 4. Slack 应用程序要求以特定的格式显示安全断言标记语言 (SAML) 断言。 在 Slack 应用程序集成页的“用户属性”部分中配置声明并管理这些属性的值，如以下屏幕截图中所示：
 
@@ -127,19 +129,15 @@ ms.lasthandoff: 02/24/2017
     | last_name | user.surname |
     | User.Username | extractmailprefix([userprincipalname]) |
 
-    a. 单击“添加属性”按钮。
+    1. 单击“添加属性”按钮。
 
     ![配置单一登录](./media/active-directory-saas-slack-tutorial/tutorial_slack_04.png)
-
-    b. 在“添加属性”对话框中的“名称”框内，输入表的“属性名称”列中的第一个名称。
+    2. 在“添加属性”对话框中的“名称”框内，输入表的“属性名称”列中的第一个名称。
 
     ![配置单一登录](./media/active-directory-saas-slack-tutorial/tutorial_slack_05.png)
-
-    c. 在“值”框中，输入表的“属性值”列中的第一个值。
-
-    d. 单击 **“确定”**。
-
-    e. 针对后面的三个表行重复步骤“a”到“d”。
+    3. 在“值”框中，输入表的“属性值”列中的第一个值。
+    4. 单击 **“确定”**。
+    5. 针对后面的三个表行重复步骤“a”到“d”。
 
 6. 在“SAML 签名证书”下面，单击“创建新证书”。
 
@@ -180,24 +178,15 @@ ms.lasthandoff: 02/24/2017
 15. 在“SAML 身份验证设置”对话框中，执行以下步骤：
 
     ![“SAML 身份验证设置”对话框](./media/active-directory-saas-slack-tutorial/tutorial_slack_003.png)
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“SAML 2.0 终结点(HTTP)”框中，输入 Azure AD 应用程序配置窗口中“SAML 单一登录服务 URL”值。
-
-    b.保留“数据库类型”设置，即设置为“共享”。 在“标识提供者颁发者”框中，输入 Azure AD 应用程序配置窗口中“SAML 实体 ID”值。
-
-    c. 在记事本中打开下载的证书文件，复制其内容，然后将其粘贴到“公共证书”框中。
-
-    d.单击“下一步”。 根据 Slack 团队的需要配置上述三项设置。 有关设置的详细信息，请参阅 [Guide to single sign-on with Slack](https://get.slack.help/hc/en-us/articles/220403548-Guide-to-single-sign-on-with-Slack)（使用 Slack 单一登录指南）。
-
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“保存配置”。
-
-    <!-- 取消选择“允许用户更改其电子邮件地址”。
-
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择“允许用户选择自己的用户名”。
-
-    f. 对于“必须对团队进行身份验证”，请选择“可选”。 -->
-
-
+  1. 在“SAML 2.0 终结点(HTTP)”框中，输入 Azure AD 应用程序配置窗口中“SAML 单一登录服务 URL”值。
+  2. 在“标识提供者颁发者”框中，输入 Azure AD 应用程序配置窗口中“SAML 实体 ID”值。
+  3. 在记事本中打开下载的证书文件，复制其内容，然后将其粘贴到“公共证书”框中。
+  4. 根据 Slack 团队的需要配置上述三项设置。 有关设置的详细信息，请参阅 [Guide to single sign-on with Slack](https://get.slack.help/hc/en-us/articles/220403548-Guide-to-single-sign-on-with-Slack)（使用 Slack 单一登录指南）。
+  5. 单击“保存配置”。
+  6. 取消选择“允许用户更改其电子邮件地址”。
+  7. 选择“允许用户选择自己的用户名”。
+  8. 对于“必须对团队进行身份验证”，请选择“可选”。
+  
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 在本部分，我们将执行以下操作，在 Azure 门户中创建一个名为 Britta Simon 的测试用户：
 
@@ -216,14 +205,10 @@ ms.lasthandoff: 02/24/2017
 4. 在“用户”对话框中输入以下信息：
 
     ![“用户”对话框](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png)
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
-
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-
-    d. 单击“创建” 。
+  1. 在“姓名”框中，键入“BrittaSimon”。
+  2. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+  3. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+  4. 单击“创建”。
 
 ### <a name="create-a-slack-test-user"></a>创建 Slack 测试用户
 
@@ -231,8 +216,10 @@ ms.lasthandoff: 02/24/2017
 
 此部分不存在任何操作项。 尝试访问 Slack 时，如果 Slack 中没有用户，系统会创建一个新用户。
 
-> [!NOTE]
-> 如果需要手动创建用户，请联系 [Slack 支持团队](https://slack.com/help/contact)。
+>[!NOTE]
+>如果需要手动创建用户，请联系 [Slack 支持团队](https://slack.com/help/contact)。
+>
+>
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -264,7 +251,7 @@ ms.lasthandoff: 02/24/2017
 
 7. 在“添加分配”边栏选项卡中，单击“分配”按钮。
 
-### <a name="test-sso"></a>测试 SSO
+### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分，我们将使用访问面板测试 Azure AD SSO 配置。
 

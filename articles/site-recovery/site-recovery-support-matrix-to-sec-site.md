@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/08/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 2541236d84100ed7889d06f9b0580fcbc55ecfdb
-ms.openlocfilehash: f9443b633601272c79739c92995d53ba1a7d2b4e
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: d53d4cfdc7b673d2816fa9372dedbed540380cce
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -30,11 +31,11 @@ ms.openlocfilehash: f9443b633601272c79739c92995d53ba1a7d2b4e
 
 ## <a name="deployment-options"></a>部署选项
 
-**部署** | **VMware/物理服务器** | **Hyper-V（不包含 VMM）** | **Hyper-V（包含 VMM）**
+**部署** | **VMware/物理服务器** | **Hyper-V（使用/不使用 SCVMM）
 --- | --- | --- | ---
-**Azure 门户** | 本地 VMware VM 到辅助 VMware 站点。<br/><br/> 下载 [InMage Scout 用户指南](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)（Azure 门户中未提供）。 | 不支持 | 将 VMM 云中的本地 Hyper-V VM 复制到辅助 VMM 云。<br/><br/> 仅限标准 Hyper-V 副本。 不支持 SAN。
-**经典门户** | 只能使用维护模式。 无法创建新保管库。 | 不支持 | 仅限维护模式
-**PowerShell** | 不支持 | 不支持 | 支持
+**Azure 门户** | 本地 VMware VM 到辅助 VMware 站点。<br/><br/> 下载 [InMage Scout 用户指南](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)（Azure 门户中未提供）。 | 将 VMM 云中的本地 Hyper-V VM 复制到辅助 VMM 云。<br></br> 支持 SCVMM  <br/><br/> 仅限标准 Hyper-V 副本。 不支持 SAN。
+**经典门户** | 只能使用维护模式。 无法创建新的保管库。 | 仅限维护模式<br></br> 支持 SCVMM
+**PowerShell** | 不支持 | 支持<br></br> 支持 SCVMM
 
 ## <a name="on-premises-servers"></a>本地服务器
 
@@ -119,7 +120,7 @@ RDM | 是 | 不适用
 包含条带化磁盘的卷 > 1 TB<br/><br/> LVM | 是 | 是
 存储空间 | 否 | 是
 热添加/移除磁盘 | 否 | 否
-排除磁盘 | 否 | 否
+排除磁盘 | 否 | 是
 多路径 (MPIO) | 不适用 | 是
 
 ## <a name="vaults"></a>保管库
@@ -140,9 +141,4 @@ RDM | 是 | 不适用
 ## <a name="next-steps"></a>后续步骤
 
 了解[部署先决条件](site-recovery-prereq.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

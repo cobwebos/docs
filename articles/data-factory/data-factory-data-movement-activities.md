@@ -13,18 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 25e266441e902a06d980b3b51abdd4fcf668d4d2
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 62586434f233b1d40b8a9efd539d1fcdca3bdec7
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
 ## <a name="overview"></a>概述
-在 Azure 数据工厂中，可使用复制活动将不同形态的数据从各种本地和云数据源复制到 Azure。 复制数据后，可对其执行进一步转换和分析。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
+在 Azure 数据工厂中，可使用“复制活动”在本地和云数据存储区之间复制数据。 复制数据后，可对其进一步执行转换和分析操作。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
 
 ![复制活动的角色](media/data-factory-data-movement-activities/copy-activity.png)
 
@@ -62,17 +62,17 @@ ms.lasthandoff: 03/27/2017
 ## <a name="supported-data-stores-and-formats"></a>支持的数据存储和格式
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-如需将数据移入/移出复制活动不支持的数据存储，可通过自己的逻辑使用数据工厂内的**自定义活动**来复制/移动数据。 有关创建和使用自定义活动的详细信息，请参阅[在 Azure数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)。
-
 ### <a name="supported-file-formats"></a>支持的文件格式
-可使用复制活动在两个基于文件的数据存储（例如 Azure Blob、Azure Data Lake Store、Amazon S3、FTP、文件系统和 HDFS）之间**按原样复制文件**。 为此，可在输入和输出数据集定义中跳过[格式部分](data-factory-create-datasets.md)。 无需任何序列化/反序列化操作即可有效复制数据。
+可使用“复制活动”在两个基于文件的数据存储之间“按原样复制文件”，可以同时在输入和输出数据集定义中跳过[格式部分](data-factory-create-datasets.md)。 无需任何序列化/反序列化操作即可有效复制数据。
 
-复制活动还以特定格式从文件中读取并写入到文件：**text、Avro、ORC、Parquet 和 JSON**，并且压缩编解码器**GZip、Deflate、BZip2 和 ZipDeflate** 也受支持。 可执行以下复制活动，例如：
+“复制活动”还以指定格式从文件中读取并写入到文件：**Text、JSON、Avro、ORC 和 Parquet**，并且压缩编解码器**GZip、Deflate、BZip2 和 ZipDeflate** 也受支持。 有关详细信息，请参阅[支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)。
 
-* 从 Azure Blob 复制 GZip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
-* 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob。
+例如，可执行以下复制活动：
+
 * 从本地 SQL Server 中复制数据，并将其以 ORC 格式写入 Azure Data Lake Store。
+* 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob。
 * 从本地文件系统中复制压缩文件，并将其解压缩然后传到 Azure Data Lake Store。
+* 从 Azure Blob 复制 GZip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
 
 ## <a name="global"></a>全局可用的数据移动
 Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 但是，为复制活动提供支持的服务在以下区域和地域内全局可用。 全局可用拓扑可确保高效的数据移动，此类移动通常避免跨区域跃点。 有关某区域内数据工厂和数据移动的可用性，请参阅[服务（按区域）](https://azure.microsoft.com/regions/#services)。

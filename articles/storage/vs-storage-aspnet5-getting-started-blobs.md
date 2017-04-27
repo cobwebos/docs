@@ -1,6 +1,6 @@
 ---
-title: "开始使用 blob 存储和 Visual Studio 连接服务 (ASP.NET 5) | Microsoft Docs"
-description: "在使用 Visual Studio 连接服务创建存储帐户后，如何开始在 Visual Studio ASP.NET 5 项目中使用 Azure Blob 存储"
+title: "开始使用 blob 存储和 Visual Studio 连接服务 (ASP.NET Core) | Microsoft Docs"
+description: "在使用 Visual Studio 连接服务创建存储帐户后，如何开始在 Visual Studio ASP.NET Core 项目中使用 Azure Blob 存储"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -15,23 +15,24 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 88e6ce0deeb5dab276b5ae49f6c99391e37495f4
-ms.openlocfilehash: 2a31f6d8aa00e89e8dbbe0089fc76ecbb2102b3c
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: e725015c8be7ecfa908f0ae75986b73f218fa3ae
+ms.lasthandoff: 04/06/2017
 
 
 ---
-# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-5"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET 5)
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET Core)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET 5 项目中已创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure Blob 存储。
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET Core 项目中已创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure Blob 存储。
 
-Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问这些数据。 单个 Blob 可以是任意大小。 Blob 可以是图像、音频和视频文件、原始数据以及文档文件等。 本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET 5 项目中已创建 Azure 存储帐户之后，如何开始使用 blob 存储。
+Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问这些数据。 单个 Blob 可以是任意大小。 Blob 可以是图像、音频和视频文件、原始数据以及文档文件等。 本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET Core 项目中已创建 Azure 存储帐户之后，如何开始使用 blob 存储。
 
 正如文件位于文件夹中一样，存储 Blob 位于容器中。 创建存储后，可以在存储中创建一个或多个容器。 例如，在名为“Scrapbook”的存储中，可以在名为“images”的存储中创建容器，用于存储图片，还可以在名为“audio”的存储中创建另一个容器，用于存储音频文件。 创建这些容器后，可以向它们上载单独的 Blob 文件。 有关以编程方式操作 Blob 的详细信息，请参阅 [Get started with Azure Blob storage using .NET](storage-dotnet-how-to-use-blobs.md)（通过 .NET 开始使用 Azure Blob 存储）。
 
 ## <a name="access-blob-containers-in-code"></a>使用代码访问 blob 容器
-若要以编程方式访问 ASP.NET 5 项目中的 Blob，需要添加以下项（如果尚未存在）。
+若要以编程方式访问 ASP.NET Core 项目中的 blob，需要添加以下项（如果尚未存在）。
 
 1. 在希望以编程方式访问 Azure 存储的任何 C# 文件中，将以下代码命名空间声明添加到文件的顶部。
    
@@ -53,7 +54,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
         // Create a blob client.
         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
    
-        // Get a reference to a container named “mycontainer.”
+        // Get a reference to a container named "mycontainer."
         CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
 ## <a name="create-a-container-in-code"></a>使用代码创建容器
@@ -62,14 +63,14 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
     // Create a blob client.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Get a reference to a container named “my-new-container.”
+    // Get a reference to a container named "my-new-container."
     CloudBlobContainer container = blobClient.GetContainerReference("my-new-container");
 
-    // If “mycontainer” doesn’t exist, create it.
+    // If "mycontainer" doesn't exist, create it.
     await container.CreateIfNotExistsAsync();
 
 
-**注意：**ASP.NET 5 中用来执行 Azure 存储调用的 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
+**注意：**ASP.NET Core 中用来执行 Azure 存储调用的 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
 
 如果要让容器中的文件可供所有人使用，则可以使用以下代码将容器设置为公共容器。
 
@@ -79,20 +80,20 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
     });
 
 ## <a name="upload-a-blob-into-a-container"></a>将 Blob 上载到容器中
-若要将 Blob 文件上载到容器中，请获取容器引用，并使用它来获取 Blob 引用。 获取 blob 引用后，可以通过调用 **UploadFromStreamAsync** 方法将任何数据流上载到该 blob。 此操作将创建 Blob（如果该 Blob 不存在），或者覆盖它（如果该 Blob 存在）。 下面的示例演示了如何将 Blob 上载到容器中，并假定已创建容器。
+若要将 Blob 文件上载到容器中，请获取容器引用，并使用它来获取 Blob 引用。 获取 blob 引用后，可以通过调用 **UploadFromStreamAsync** 方法将任何数据流上载到该 blob。 此操作将创建 blob（如果该 blob 不存在），或者覆盖它（如果该 blob 存在）。 下面的示例演示了如何将 Blob 上载到容器中，并假定已创建容器。
 
     // Get a reference to a blob named "myblob".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
     // Create or overwrite the "myblob" blob with the contents of a local file
-    // named “myfile”.
+    // named "myfile".
     using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
     {
         await blockBlob.UploadFromStreamAsync(fileStream);
     }
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
-若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以调用容器的 **ListBlobsSegmentedAsync** 方法检索 blob 和/或其中的目录。 若要访问返回的 **IListBlobItem** 的丰富属性和方法，必须将它转换为 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。 如果 Blob 类型未知，可以使用类型检查来确定要将其转换为哪种类型。 以下代码演示了如何检索和输出容器中每项的 URI。
+若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以调用容器的 **ListBlobsSegmentedAsync** 方法检索 blob 和/或其中的目录。 若要访问返回的 **IListBlobItem** 的丰富属性和方法，必须将它转换为 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。 如果 blob 类型未知，可以使用类型检查来确定要将其转换为哪种类型。 以下代码演示了如何检索和输出容器中每项的 URI。
 
     BlobContinuationToken token = null;
     do
@@ -132,7 +133,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
     // Get a reference to a blob named "photo1.jpg".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");
 
-    // Save the blob contents to a file named “myfile”.
+    // Save the blob contents to a file named "myfile".
     using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
     {
         await blockBlob.DownloadToStreamAsync(fileStream);
@@ -151,10 +152,5 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 04/10/2017
 ms.author: haining;garye
 translationtype: Human Translation
-ms.sourcegitcommit: de2c4d3d354ef3665134302655f602b043aa8ab0
-ms.openlocfilehash: 106efcd5580f91d6d1ed926b19c142d8ea0b0c7c
-ms.lasthandoff: 12/20/2016
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 4ed387d9ef595312d4fcde78b2fdc3644e96ee27
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -50,7 +50,7 @@ Microsoft Cortana Intelligence Competitions 要求数据爱好者们共同解决
 
 **参加这些竞赛时，可以使用开放源代码工具吗？**
 
-竞赛参与者利用 Azure 机器学习 Studio、Cortana Intelligence 套件中基于云的服务进行数据科学模型的开发，并创建提交的竞赛项。 机器学习工作室不只提供构造机器学习试验的 GUI 界面，还允许使用你自己的 R 和/或 Python 脚本进行本机执行。 该工作室中的 R 和 Python 运行时附带有一组丰富的开放源代码 R/Python 包，也可作为试验的一部分导入自己的包。 该工作室还具有内置的 Jupyter Notebook 服务，为你执行自由式数据浏览。 当然，你始终可以下载竞赛中使用的数据集，并在机器学习工作室之外使用喜欢的工具浏览它。 
+竞赛参与者利用 Azure 机器学习工作室、Cortana Intelligence 套件中基于云的服务进行数据科学模型的开发，并创建提交的竞赛项。 机器学习工作室不只提供构造机器学习试验的 GUI 界面，还允许使用你自己的 R 和/或 Python 脚本进行本机执行。 该工作室中的 R 和 Python 运行时附带有一组丰富的开放源代码 R/Python 包，也可作为试验的一部分导入自己的包。 该工作室还具有内置的 Jupyter Notebook 服务，为你执行自由式数据浏览。 当然，你始终可以下载竞赛中使用的数据集，并在机器学习工作室之外使用最喜爱的工具探索它。 
 
 **是否只有数据科学家才能加入？**
 
@@ -105,13 +105,13 @@ Microsoft 将验证专用排行榜的结果，然后我们将与你联系。 请
 
 **可以使用来宾工作区参与竞赛吗？**
 
-否。 必须使用免费或标准工作区参与竞赛。 可以在来宾工作区中打开竞赛初用者实验，但你不能从该工作区创建要提交的有效项。 
+不能。 必须使用免费或标准工作区参与竞赛。 可以在来宾工作区中打开竞赛初用者实验，但你不能从该工作区创建要提交的有效项。 
 
 **可以在任何 Azure 区域中使用工作区参与竞赛吗？**
 
 当前，竞赛平台仅支持从**美国中南部** Azure 区域中的工作区提交的竞赛项。 所有免费工作区都位于美国中南部，因此可以从任何免费工作区提交项。 如果选择使用标准工作区，请确保它位于美国中南部 Azure 区域中，否则你的提交不会成功。 
 
-**我们会保留用户的竞赛解决方案/项吗？**
+**我们会保留用户的竞赛解决方案和竞赛项吗？**
 
 仅保留用户项用于评估，以确定获胜的解决方案。 请参考[条款和条件](http://aka.ms/comptermsandconditions)，了解详细信息。
 

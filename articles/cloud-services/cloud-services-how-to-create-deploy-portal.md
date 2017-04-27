@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 04/19/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 1ce2e980dc71ede4f8cd8ec7c9166efac7b25d2e
-ms.openlocfilehash: 554ef45d7fba5f2ff314a162ae33c6cc27206933
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 542817c562e10ff32c62afd186cf012abbe82ac5
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -32,7 +33,7 @@ Azure 门户为你提供两种创建和部署云服务的方法：*快速创建*
 本文介绍如何使用“快速创建”方法创建新的云服务，然后使用“**上载**”在 Azure 中上载和部署云服务包。 使用此方法时，Azure 门户在你进行操作时将提供方便的链接供你完成所有要求。 如果你在创建云服务时还准备部署该云服务，则可以使用“自定义创建”同时执行这两项操作。
 
 > [!NOTE]
-> 如果你计划从 Visual Studio Team Services (VSTS) 发布云服务，请使用“快速创建”，然后从“Azure 快速启动”或仪表板设置 VSTS 发布。 有关详细信息，请参阅[使用 Visual Studio Team Services 向 Azure 持续传送项目][TFSTutorialForCloudService]，或查看“**快速启动**”页的帮助。
+> 如果你计划从 Visual Studio Team Services (VSTS) 发布云服务，请使用“快速创建”，然后从“Azure 快速启动”或仪表板设置 VSTS 发布。 有关详细信息，请参阅[使用 Visual Studio Team Services 向 Azure 持续交付][TFSTutorialForCloudService]，或查看“快速启动”页的帮助。
 >
 >
 
@@ -108,9 +109,4 @@ Azure 门户为你提供两种创建和部署云服务的方法：*快速创建*
 * 配置[自定义域名](cloud-services-custom-domain-name-portal.md)。
 * [管理云服务](cloud-services-how-to-manage-portal.md)。
 * 配置 [SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

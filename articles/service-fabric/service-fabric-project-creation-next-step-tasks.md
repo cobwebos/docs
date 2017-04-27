@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/01/2016
+ms.date: 03/28/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b4b2424e5efe3392b08e58ceb05ec63f15c7ad32
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 8208a1a41388a8cc36f3702bd0cad2bb82e16403
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -49,18 +50,20 @@ ms.openlocfilehash: b4b2424e5efe3392b08e58ceb05ec63f15c7ad32
 ### <a name="stateless-web-api"></a>无状态 Web API
 无状态 Web API 项目提供一个基本 Web 服务，可用于向外部客户端打开你的应用程序。 有关如何构建该项目的信息，请参阅 [Service Fabric Web API 服务与 OWIN 自托管](service-fabric-reliable-services-communication-webapi.md)。
 
+
 ### <a name="aspnet-core"></a>ASP.NET core
 Service Fabric SDK 提供相同的一组可用于独立 ASP.NET Core 项目的 ASP.NET Core 模板：空的，[Web API][aspnet-webapi] 和 [Web 应用程序][aspnet-webapp]。
+
+### <a name="guest-executables-and-guest-containers"></a>来宾可执行文件和来宾容器
+
+Service Fabric“来宾”是指不使用平台编程模型生成的服务。 可[直接在应用程序包中](service-fabric-deploy-existing-app.md)或[通过容器映像](service-fabric-deploy-container.md)打包来宾的二进制文件。 在这两种情况下，Visual Studio 都会在应用程序项目的 **ApplicationPackageRoot** 文件夹中创建必要的项目。 Visual Studio 不会创建新的服务项目，因为其他位置已存在相关代码。 如果想要一起管理 Service Fabric 应用程序项目和来宾项目，可将它们添加到同一 Visual Studio 解决方案中。
 
 ## <a name="next-steps"></a>后续步骤
 ### <a name="create-an-azure-cluster"></a>创建 Azure 群集
 Service Fabric SDK 提供一个用于开发和测试的本地群集。 若要在 Azure 中创建群集，请参阅[从 Azure 门户设置 Service Fabric 群集][create-cluster-in-portal]。
 
-### <a name="try-deploying-to-azure-for-free-with-party-clusters"></a>尝试使用合作群集免费部署到 Azure
-如果要尝试在 Azure 中部署和管理应用程序但不设置自己的群集，可以使用免费的[合作群集服务](http://aka.ms/tryservicefabric)。
-
 ### <a name="publish-your-application-to-azure"></a>将应用程序发布到 Azure
-可以直接从 Visual Studio 将应用程序发布到 Azure 群集。 若要了解操作方法，请参阅 [将应用程序发布到 Azure][publish-app-to-azure]。
+可以直接从 Visual Studio 将应用程序发布到 Azure 群集。 若要了解操作方法，请参阅[将应用程序发布到 Azure][publish-app-to-azure]。
 
 ### <a name="use-service-fabric-explorer-to-visualize-your-cluster"></a>使用 Service Fabric Explorer可视化群集
 Service Fabric Explorer 提供一种用于可视化群集（包括已部署的应用程序和物理布局）的简易方法。 有关详细信息，请参阅[使用 Service Fabric Explorer 可视化群集][visualize-with-sfx]。
@@ -69,7 +72,7 @@ Service Fabric Explorer 提供一种用于可视化群集（包括已部署的�
 Service Fabric 支持单独对应用程序中的独立服务进行版本控制和升级。 若要了解详细信息，请参阅[对服务进行版本控制和升级][app-upgrade-tutorial]。
 
 ### <a name="configure-continuous-integration-with-visual-studio-team-services"></a>配置与 Visual Studio Team Services 的持续集成
-要了解如何为 Service Fabric 应用程序设置持续集成过程，请参阅[使用 Visual Studio Team Services 配置持续集成][ci-with-vso]。
+若要了解如何为 Service Fabric 应用程序设置持续集成过程，请参阅[使用 Visual Studio Team Services 配置持续集成][ci-with-vso]。
 
 <!-- Links -->
 [add-web-frontend]: service-fabric-add-a-web-frontend.md
@@ -81,9 +84,4 @@ Service Fabric 支持单独对应用程序中的独立服务进行版本控制�
 [app-upgrade-tutorial]: service-fabric-application-upgrade-tutorial.md
 [aspnet-webapi]: https://docs.asp.net/en/latest/tutorials/first-web-api.html
 [aspnet-webapp]: https://docs.asp.net/en/latest/tutorials/first-mvc-app/index.html
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

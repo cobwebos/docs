@@ -11,14 +11,14 @@ ms.assetid: 6158c27f-6b9a-404e-a234-b5d48c4a5b29
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 04/04/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: b286a93d7cc5f962f969e877b2f487e56cbb1a95
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 150e8f3e186683bce735d0952adb57544505d1e9
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -65,7 +65,6 @@ Arguments
                                     address ranges in CIDR form to be included as the allowed list
                                     of client IPs for a given database account. IP addresses/ranges
                                     must be comma separated and must not contain any spaces.
-                                    To enable portal access, include 104.42.195.92.
     --kind                        : The type of DocumentDB database account to create.  Allowed
                                     values: GlobalDocumentDB, MongoDB, Parse.  Default:
                                     GlobalDocumentDB.
@@ -93,6 +92,7 @@ Arguments
 
 ### <a name="notes"></a>说明
 * 位置必须是已正式推出 DocumentDB 的区域。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
+* 若要启用门户访问，请在 ip-range-filter 中包含你所在区域的 Azure 门户的 IP 地址（按照[配置 IP 访问控制策略](documentdb-firewall-support.md#configure-ip-policy)中的指定）。
 
 ## <a id="update-documentdb-account-cli"></a> 更新 DocumentDB 数据库帐户
 
@@ -180,6 +180,20 @@ Arguments
 示例：
 
     az documentdb list-keys -g rg-test -n docdb-test
+
+## <a id="list-connection-strings-cli"></a> 列出连接字符串
+
+对于 MongoDB 帐户，可以使用以下命令检索将 MongoDB 应用连接到数据库帐户的连接字符串。
+
+```
+Arguments
+    --name -n           [Required]: Name of the DocumentDB database account.
+    --resource-group -g [Required]: Name of the resource group.
+```
+
+示例：
+
+    az documentdb list-connection-strings -g rg-test -n docdb-test
 
 ## <a id="regenerate-account-key-cli"></a> 重新生成帐户密钥
 

@@ -15,22 +15,22 @@ ms.workload: NA
 ms.date: 03/28/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2fbce8754a5e3162e3f8c999b34ff25284911021
-ms.openlocfilehash: 731c6542ba6d1385eeffa89a6f62e5bcf57a5c1e
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 87f99a9e6df2103f70968c10556242ddb268e9e4
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors 框架中的多态性技术
-Reliable Actors 框架允许你使用许多在面向对象的设计中使用的相同技术来生成执行组件。 其中一种技术是多态性技术，它允许类型和接口从多个通用父类中继承。 Reliable Actors 框架中的继承通常遵循 .NET 模型，并会受到一些附加限制。
+Reliable Actors 框架允许你使用许多在面向对象的设计中使用的相同技术来生成执行组件。 其中一种技术是多态性技术，它允许类型和接口从多个通用父类中继承。 Reliable Actors 框架中的继承通常遵循 .NET 模型，并会受到一些附加限制。 在 Java/Linux 中，它遵循 Java 模型。
 
 ## <a name="interfaces"></a>接口
-Reliable Actors 框架要求至少定义一个要由执行组件类型实现的接口。 此接口用于生成代理类，客户端可以使用此代理类与你的执行组件进行通信。 只要由执行组件类型实现的每个接口及其所有父接口最终派生自 IActor，就可以从其他接口继承接口。 IActor 是执行组件的平台定义的基类接口。 因此，使用形状的经典多态性示例可能如下所示：
+Reliable Actors 框架要求至少定义一个要由执行组件类型实现的接口。 此接口用于生成代理类，客户端可以使用此代理类与你的执行组件进行通信。 只要由执行组件类型实现的每个接口及其所有父接口最终派生自 IActor(C#) 或 Actor(Java)，就可以从其他接口继承接口。 IActor(C#) 和 Actor(Java) 是平台定义的基接口，分别用于 .NET 和 Java 框架中的执行组件。 因此，使用形状的经典多态性示例可能如下所示：
 
 ![形状执行组件的接口层次结构][shapes-interface-hierarchy]
 
 ## <a name="types"></a>类型
-你还可以创建执行组件类型的层次结构，这些类型派生自由平台提供的执行组件基类。 如果是形状，可以创建 `Shape` 基类型：
+你还可以创建执行组件类型的层次结构，这些类型派生自由平台提供的执行组件基类。 如果是形状，则可能具有一个 `Shape`(C#) 或 `ShapeImpl`(Java) 基类型：
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -40,8 +40,16 @@ public abstract class Shape : Actor, IShape
     public abstract Task<double> GetAreaAsync();
 }
 ```
+```Java
+public abstract class ShapeImpl extends FabricActor implements Shape
+{
+    public abstract CompletableFuture<int> getVerticeCount();
 
-`Shape` 的子类型可以替代基类型中的方法。
+    public abstract CompletableFuture<double> getAreaAsync();
+}
+```
+
+`Shape`(C#) 或 `ShapeImpl`(Java) 的子类型可以重写基类型的方法。
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -60,6 +68,26 @@ public class Circle : Shape, ICircle
         return Math.PI *
             state.Radius *
             state.Radius;
+    }
+}
+```
+```Java
+@ActorServiceAttribute(name = "Circle")
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+public class Circle extends ShapeImpl implements Circle
+{
+    @Override
+    public CompletableFuture<Integer> getVerticeCount()
+    {
+        return CompletableFuture.completedFuture(0);
+    }
+
+    @Override
+    public CompletableFuture<Double> getAreaAsync()
+    {
+        return (this.stateManager().getStateAsync<CircleState>("circle").thenApply(state->{
+          return Math.PI * state.radius * state.radius;
+        }));
     }
 }
 ```

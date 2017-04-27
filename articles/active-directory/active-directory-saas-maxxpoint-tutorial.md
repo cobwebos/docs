@@ -5,18 +5,18 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
-ms.assetid: d92e3edb-31aa-4d21-9bf8-6e5917d7bf5f
+ms.assetid: 15ba026e-96fc-4ae8-b135-0169da810e99
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 04/13/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 6844a46978618d5dc3292168bbcc228480311d47
-ms.openlocfilehash: e84a3aeb9e7a8cddccb293ab2bb9d7fdc5fa82b4
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 8a7481b71df5ca407dbed5da3d3cc26991504c82
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -28,9 +28,9 @@ ms.lasthandoff: 02/23/2017
 
 - 可以在 Azure AD 中控制谁有权访问 MaxxPoint
 - 可以让用户使用其 Azure AD 帐户自动登录到 MaxxPoint（单一登录）
-- 可在一个中心位置（即 Azure 管理门户）管理帐户
+- 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,16 +39,13 @@ ms.lasthandoff: 02/23/2017
 - Azure AD 订阅
 - 已启用 MaxxPoint 单一登录的订阅
 
-
 > [!NOTE]
 > 不建议使用生产环境测试本教程中的步骤。
-
 
 测试本教程中的步骤应遵循以下建议：
 
 - 不应使用生产环境，除非有此必要。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
@@ -62,7 +59,7 @@ ms.lasthandoff: 02/23/2017
 
 **若要从库中添加 MaxxPoint，请执行以下步骤：**
 
-1. 在 **[Azure 管理门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -70,7 +67,7 @@ ms.lasthandoff: 02/23/2017
 
     ![应用程序][2]
     
-3. 单击对话框顶部的“添加”按钮。
+3. 单击对话框顶部的“新建应用程序”按钮以添加新的应用程序。
 
     ![应用程序][3]
 
@@ -81,7 +78,6 @@ ms.lasthandoff: 02/23/2017
 5. 在结果窗格中，选择“MaxxPoint”，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_0001.png)
-
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 MaxxPoint 的 Azure AD 单一登录。
@@ -100,15 +96,15 @@ ms.lasthandoff: 02/23/2017
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 MaxxPoint 应用程序中配置单一登录。
+本部分介绍了在 Azure 门户中启用 Azure AD 单一登录，并在 MaxxPoint 应用程序中配置单一登录。
 
 **若要配置 MaxxPoint 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 管理门户的“MaxxPoint”应用程序集成页上，单击“单一登录”。
+1. 在 Azure 门户的“MaxxPoint”应用程序集成页上，单击“单一登录”。
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_300.png)
 
@@ -125,39 +121,29 @@ ms.lasthandoff: 02/23/2017
     b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
 
     > [!NOTE] 
-    > 请注意，这不是实际值。 必须使用实际登录 URL 更新此值。 请联系 [MaxxPoint 支持团队](mailto:iumsupport@intercall.com)获取这些值。
+    > 请注意，这不是实际值。 必须使用实际登录 URL 更新此值。 请拨打 MaxxPoint 团队电话 **888-728-0950** 以获取此值。
 
-5. 在“SAML 签名证书”部分中，单击“创建新证书”。
-
-    ![配置单一登录](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_400.png)     
-
-6. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
-
-    ![配置单一登录](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_500.png)
-
-7. 在“SAML 签名证书”部分中，选择“激活新证书”，然后单击“保存”按钮。
-
-    ![配置单一登录](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_05.png)
-
-8. 在弹出的“滚动更新证书”窗口中，单击“确定”。
-
-    ![配置单一登录](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_600.png)
-
-9. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+5. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-maxxpoint-tutorial/tutorial_maxxpoint_06.png) 
 
-10. 若要为应用程序配置 SSO，请联系 [MaxxPoint 支持团队](mailto:iumsupport@intercall.com)，并向他们提供下载的**元数据**。 
+6. 单击“保存”按钮。
 
+    ![配置单一登录](./media/active-directory-saas-maxxpoint-tutorial/tutorial_general_400.png)
+
+7. 若要为应用程序配置 SSO，请拨打 MaxxPoint 支持团队电话 **888-728-0950**，他们将进一步说明如何向其提供已下载的**元数据 XML** 文件。 
+
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-本部分的目的是在 Azure 管理门户中创建名为 Britta Simon 的测试用户。
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
 ![创建 Azure AD 用户][100]
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 Azure 管理门户的左侧导航窗格中，单击“Azure Active Directory”图标。
+1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-maxxpoint-tutorial/create_aaduser_01.png) 
 
@@ -181,12 +167,9 @@ ms.lasthandoff: 02/23/2017
 
     d.单击“下一步”。 单击“创建” 。 
 
-
-
 ### <a name="creating-a-maxxpoint-test-user"></a>创建 MaxxPoint 测试用户
 
-在本部分中，将在 MaxxPoint 中创建一个名为“Britta Simon”的用户。 请与 [MaxxPoint 支持团队](mailto:iumsupport@intercall.com)协作，将用户添加到 MaxxPoint 平台中。
-
+在本部分中，将在 MaxxPoint 中创建一个名为“Britta Simon”的用户。 请拨打 MaxxPoint 支持团队电话 **888-728-0950**，以便将用户添加到 MaxxPoint 应用程序中。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -196,7 +179,7 @@ ms.lasthandoff: 02/23/2017
 
 **若要将 Britta Simon 分配到 MaxxPoint，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -218,8 +201,6 @@ ms.lasthandoff: 02/23/2017
 
 7. 在“添加分配”对话框中单击“分配”按钮。
     
-
-
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。

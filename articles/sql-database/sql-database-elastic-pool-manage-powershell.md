@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 06/22/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: ffcf0f0aa80f0a6b65cbef65e361e4830fcca3ff
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 7ab1d760d26aac7fc185b0e9f5e4a7a47cc2eee5
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/10/2017
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
 ## <a name="create-an-elastic-pool"></a>创建弹性池
-[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) cmdlet 将创建弹性池。 每个池的 eDTU 值、最小和最大 DTU 受服务器层值（基本、标准或高级）的约束。 请参阅[弹性池和入池数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)。
+[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) cmdlet 将创建弹性池。 每个池的 eDTU 值、最小和最大 DTU 受服务器层值（基本、标准、高级或高级 RS）的约束。 请参阅[弹性池和入池数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)。
 
     New-AzureRmSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 03/10/2017
     $metrics = (Get-AzureRmMetric -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/elasticPools/franchisepool -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015")  
 
 ## <a name="get-resource-usage-data-for-a-database-in-an-elastic-pool"></a>获取弹性池中数据库的资源使用情况数据
-这些 API 与当前用来监视单一数据库的资源使用情况的 (V12) API 相同，但存在以下语义差异：检索到的指标表示为针对该池设置的每个数据库的最大 eDTU（或者 CPU 或 IO 等基础指标的等效上限）的百分比。 例如，对于任何此类指标来说，50% 的使用率表示特定资源消耗为父池中该资源的每个数据库上限的 50%。
+这些 API 与用来监视单一数据库的资源使用情况的 API 相同，但存在以下语义差异：检索到的指标表示为针对该池设置的每个数据库的最大 eDTU（或者 CPU 或 IO 等基础指标的等效上限）的百分比。 例如，对于任何此类指标来说，50% 的使用率表示特定资源消耗为父池中该资源的每个数据库上限的 50%。
 
 要检索指标：
 

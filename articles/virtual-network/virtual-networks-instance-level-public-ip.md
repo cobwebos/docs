@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c233439b78fb01beaa3183b79ab633aeb9357ef0
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -44,8 +44,8 @@ ms.lasthandoff: 03/22/2017
 ## <a name="why-would-i-request-an-ilpip"></a>为什么要请求 ILPIP？
 如果你想要能够通过直接向其分配的 IP 地址链接到 VM 或角色实例，请为 VM 或角色实例请求 ILPIP，而不是使用云服务VIP:&lt;端口号&gt;。
 
-* **被动 FTP** - 通过为 VM 分配 ILPIP，可在几乎任何端口上接收流量。 VM 不需要终结点来接收流量。 ILPIP 会启用与被动 FTP 类似的方案，以便动态选择端口。
-* **出站 IP** - 源自 VM 的出站流量与 ILPIP 一起出站，以便源和 ILPIP 可唯一标识针对外部实体的 VM。
+* **主动 FTP** - 通过向 VM 分配 ILPIP，可在任何端口上接收流量。 VM 不需要终结点来接收流量。  有关 FTP 协议的详细信息，请参阅 (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[FTP 协议概述]。
+* **出站 IP** - 源自 VM 的出站流量会映射到充当源的 ILPIP，而 ILPIP 唯一标识针对外部实体的 VM。
 
 > [!NOTE]
 > ILPIP 地址以前被称为公共 IP (PIP) 地址。

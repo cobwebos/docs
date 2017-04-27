@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: f32f61824de6a0195fc57b8cb0d73a89c7a06067
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: acf807538c8c9efdadb95c4b66db9a9d5d1f7a6d
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -32,10 +32,10 @@ ms.lasthandoff: 03/16/2017
 ## <a name="tools-for-troubleshooting-azure-storage-applications"></a>Azure 存储应用程序故障排除工具
 若要使用 Microsoft Azure 存储空间排查客户端应用程序问题，可以使用多种工具的组合来确定问题出现的时间以及可能的原因。 这些工具包括：
 
-* **Azure 存储分析**。 有关 Azure 存储的度量值和日志记录，请参阅 [Azure Storage Analytics](/rest/api/storageservices/fileservices/Storage-Analytics)（Azure 存储分析）。
+* **Azure 存储分析**。 有关 Azure 存储的度量值和日志记录，请参阅 [Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics)（Azure 存储分析）。
   
-  * **存储度量值**用于跟踪存储帐户的事务度量值和容量度量值。 使用度量值，你可以确定应用程序如何根据各种不同的度量值执行。 若要深入了解存储分析跟踪的度量值类型，请参阅 [Storage Analytics Metrics Table Schema](/rest/api/storageservices/fileservices/Storage-Analytics-Metrics-Table-Schema)（存储分析度量值表架构）。
-  * **存储日志记录**可在服务器端日志中记录发送到 Azure 存储服务的每个请求。 日志用于跟踪每个请求的详细数据，包括执行的操作、操作的状态和延迟信息。 若要深入了解存储分析写入日志的请求和响应数据，请参阅 [Storage Analytics Log Format](/rest/api/storageservices/fileservices/Storage-Analytics-Log-Format)（存储分析日志格式）。
+  * **存储度量值**用于跟踪存储帐户的事务度量值和容量度量值。 使用度量值，你可以确定应用程序如何根据各种不同的度量值执行。 若要深入了解存储分析跟踪的度量值类型，请参阅 [Storage Analytics Metrics Table Schema](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)（存储分析度量值表架构）。
+  * **存储日志记录**可在服务器端日志中记录发送到 Azure 存储服务的每个请求。 日志用于跟踪每个请求的详细数据，包括执行的操作、操作的状态和延迟信息。 若要深入了解存储分析写入日志的请求和响应数据，请参阅 [Storage Analytics Log Format](/rest/api/storageservices/Storage-Analytics-Log-Format)（存储分析日志格式）。
 
 > [!NOTE]
 > 具有区域冗余存储空间 (ZRS) 复制类型的存储帐户此时不启用度量值或日志记录功能。 
@@ -304,12 +304,12 @@ Message Analyzer 的存储空间资产包括 Azure 存储视图布局，这是�
 > 
 
 ### <a name="filter-log-data-to-find-404-errors"></a>筛选日志数据以查找 404 错误
-存储资产包括可用于缩小日志数据，以找出错误或你正在寻找的趋势的预定义筛选器。 接下来，我们将要应用两个预定义的筛选器：一个用于筛选服务器和网络跟踪日志中的 404 错误，另一个用于筛选指定时间范围内的数据。
+存储空间资产包括可用于缩小日志数据，以找出错误或你正在寻找的趋势的预定义筛选器。 接下来，我们将要应用两个预定义的筛选器：一个用于筛选服务器和网络跟踪日志中的 404 错误，另一个用于筛选指定时间范围内的数据。
 
 1. 显示“视图筛选器”工具窗口（如果尚未显示）。 在工具栏功能区中，选择“工具窗口”，然后选择“视图筛选器”。
 2. 在“视图筛选器”窗口中，选择“库”，然后搜索 `Azure Storage` 以查找 Azure 存储筛选器。 选择用于筛选**所有日志中的 404（找不到）消息**的筛选器。
 3. 再次显示“库”菜单，找到并选择“全局时间筛选器”。
-4. 将筛选器中显示的时间戳编辑为你想要查看的范围。 这有助于缩小要分析的数据范围。
+4. 将筛选器中显示的时间戳编辑为你想要查看的范围。 这有助于缩小分析数据的范围。
 5. 你的筛选器应类似于以下示例。 单击“应用”将筛选器应用到分析网格。
 
     ```   

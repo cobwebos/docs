@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 816305fb3ace5bfc7cf50bac5e42fde83e9697d3
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 232901ab919c63ea70e52afb845240b41a517c51
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="azure-ad--active-directory-requirements-for-azure-remoteapp"></a>Azure RemoteApp 的 Azure AD 和 Active Directory 要求
 > [!IMPORTANT]
-> 正在中断 Azure RemoteApp。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
+> Azure RemoteApp 将于 2017 年 8 月 31 日停用。 阅读 [公告](https://go.microsoft.com/fwlink/?linkid=821148) 了解详细信息。
 > 
 > 
 
@@ -32,12 +33,12 @@ ms.openlocfilehash: 816305fb3ace5bfc7cf50bac5e42fde83e9697d3
 
 注意 - 混合集合需进行目录同步。
 
-### <a name="make-sure-your-domaincom-match"></a>确保你的 "@domain.com" 匹配
+### <a name="make-sure-your-domaincom-match"></a>确保“@domain.com”匹配
 开始之前，请确保本地林的 UPN 与 Azure AD 域的后缀相匹配。 
 
-在 Azure AD 中设置 UPN 域后缀后，所有登录到 Azure RemoteApp 的用户都将以“"user@<the suffix you set up>”身份登录。 请确保用户也可以使用相同的 user@suffix 登录到本地域。 在某些情况下，可以在 Azure AD 中设置一个域名的同时，在本地为用户指定不同的域后缀。 在这种情况下，用户将无法通过 Azure RemoteApp 连接到任何已加入域的计算机或资源。
+在 Azure AD 中设置 UPN 域后缀后，所有登录 Azure RemoteApp 的用户都将以“user@<the suffix you set up>”身份登录。 请确保用户也可以使用相同的 user@suffix 登录到本地域。 在某些情况下，可以在 Azure AD 中设置一个域名的同时，在本地为用户指定不同的域后缀。 在这种情况下，用户将无法通过 Azure RemoteApp 连接到任何已加入域的计算机或资源。
 
-例如，如果在 AAD 中将 UPN 域后缀设置为 contoso.com，但本地/AD 上的某些用户被配置为使用 @contoso.uk, 登录，则这些用户将无法正确登录到 ARA 集合。 AAD 和 AD 中的用户 UPN 必须相同才能进行登录。
+例如，如果在 AAD 中将 UPN 域后缀设置为 contoso.com，但本地/AD 上的某些用户被配置为使用 @contoso.uk 登录，则这些用户将无法正确登录 ARA 集合。 AAD 和 AD 中的用户 UPN 必须相同才能进行登录。
 
 ### <a name="create-objects-for-azure-remoteapp"></a>创建 Azure RemoteApp 的对象
 还需要创建以下本地 Active Directory 对象：
@@ -46,10 +47,5 @@ ms.openlocfilehash: 816305fb3ace5bfc7cf50bac5e42fde83e9697d3
 * 组织单位 (OU)，以包含 RemoteApp 计算机对象。 建议使用的 OU（但不作要求）来隔离将帐户与将用于 RemoteApp 的策略。
 
 创建 RemoteApp 集合时会需要这两个对象，因此，请确保首先执行这些步骤。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

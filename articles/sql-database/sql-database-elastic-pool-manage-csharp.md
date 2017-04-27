@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: c83a5aacca6669c4259365fba9f444ecb1b2a6c9
-ms.openlocfilehash: 1e7393537f6c9e4d6af522dd05f149403a85559e
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 9e038bfeee023b26aa80046fe877db007baa1816
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -370,6 +370,6 @@ namespace SqlElasticPoolConsoleApp
 ## <a name="additional-resources"></a>其他资源
 *  若要详细了解 SQL 数据库客户端应用程序的 SQL 错误代码、数据库连接错误和其他问题，请参阅[错误消息](sql-database-develop-error-messages.md)。
 * [Azure 资源管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
-* 有关弹性池指南的信息，请参阅[何时使用弹性池？](sql-database-elastic-pool-guidance.md)
+* 有关弹性池指南的信息，请参阅[何时使用弹性池？](sql-database-elastic-pool.md)
 
 

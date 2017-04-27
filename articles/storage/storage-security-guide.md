@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: f9d15570aeeb398b34198918b78590948020f256
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: fb764e3d228aa852a4d4e6b0f314daa60d099093
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -318,7 +318,7 @@ SSE 可让你请求存储服务在将数据写入 Azure 存储空间时自动加
 
 客户端加密内置于 Java 和 .NET 存储客户端库，这些库使用 Azure 密钥保管库 API 让实现变得很简单。 加密和解密数据的程序将使用信封技术，并在每个存储对象中存储加密使用的元数据。 例如，对于 Blob，会会其存储在 Blob 元数据中；对于队列，会它添加到每个队列消息。
 
-对于加密本身，你可以生成和管理自己的加密密钥。 也可以使用 Azure 存储空间客户端库所生成的密钥，或者可以让 Azure 密钥保管库生成密钥。 可以将加密密钥存储在本地密钥存储中，或将它们存储在 Azure 密钥保管库中。 Azure 密钥保管库可让你使用 Azure Active Directory 为特定的用户授予 Azure 密钥保管库中密码的访问权限。 这意味着，并非每个人都能读取 Azure 密钥保管库，以及检索用于进行客户端加密的密钥。
+对于加密本身，你可以生成和管理自己的加密密钥。 也可以使用 Azure 存储空间客户端库所生成的密钥，或者可以让 Azure 密钥保管库生成密钥。 可以将加密密钥存储在本地密钥存储中，或将它们存储在 Azure 密钥保管库中。 Azure 密钥保管库可让你使用 Azure Active Directory 为特定的用户授予 Azure 密钥保管库中密码的访问权限。 这意味着，并非每个人都能读取 Azure Key Vault，以及检索用于进行客户端加密的密钥。
 
 #### <a name="resources"></a>资源
 * [在 Microsoft Azure 存储中使用 Azure 密钥保管库加密和解密 Blob](storage-encrypt-decrypt-blobs-key-vault.md)
@@ -326,7 +326,7 @@ SSE 可让你请求存储服务在将数据写入 Azure 存储空间时自动加
   此文说明如何配合 Azure 密钥保管库使用客户端加密，包括如何使用 PowerShell 来创建 KEK 并将它存储在保管库中。
 * [Microsoft Azure 存储的客户端加密和 Azure 密钥保管库](storage-client-side-encryption.md)
   
-  本文介绍了客户端加密，并通过示例解释了如何使用存储客户端库加密和解密&4; 个存储服务中的资源。 此外介绍了 Azure 密钥保管库。
+  本文介绍了客户端加密，并通过示例解释了如何使用存储客户端库加密和解密 4 个存储服务中的资源。 此外介绍了 Azure 密钥保管库。
 
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>使用 Azure 磁盘加密来加密虚拟机所用的磁盘
 Azure 磁盘加密是一项新功能。 此功能允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这将与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。
@@ -422,7 +422,7 @@ SSE 由 Azure 存储管理。 使用 SSE 不是针对传输中数据安全性提
 
 ![日志文件中字段的快照](./media/storage-security-guide/image3.png)
 
-我们对于 GetBlob 的条目及其身份验证方法感兴趣，因此需要查找操作类型“Get-Blob”的条目，并检查请求状态（第&4; 列）和授权类型（第&8; 列）。<sup></sup><sup></sup>
+我们对于 GetBlob 的条目及其身份验证方法感兴趣，因此需要查找操作类型“Get-Blob”的条目，并检查请求状态（第 4 列）和授权类型（第 8 列）。<sup></sup><sup></sup>
 
 例如，在上述列表的前几列中，请求状态为“Success”且授权类型为“authenticated”。 这意味着已使用存储帐户密钥验证请求。
 
@@ -525,7 +525,7 @@ Azure 存储空间允许你启用 CORS – 跨域资源共享。 对于每个存
    
    **资源**
 
-* [Why We’re Not Recommending“FIPS Mode”Anymore](http://blogs.technet.com/b/secguide/archive/2014/04/07/why-we-re-not-recommending-fips-mode-anymore.aspx)（为何建议不再使用“FIPS 模式”）
+* [为何建议不再使用“FIPS 模式”](http://blogs.technet.com/b/secguide/archive/2014/04/07/why-we-re-not-recommending-fips-mode-anymore.aspx)
   
   此博客文章提供 FIPS 概述，并说明他们为什么默认不启用 FIPS 模式。
 * [FIPS 140 Validation](https://technet.microsoft.com/library/cc750357.aspx)（FIPS 140 验证）

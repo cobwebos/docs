@@ -16,14 +16,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: neerajkh
 translationtype: Human Translation
-ms.sourcegitcommit: c54b16517b6f08ed8bfddfb6e2c793ec0f292899
-ms.openlocfilehash: 678f747fd1b2e5017d1859fd594c3b4bc465ea41
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 013354515d841003c912ac0338690dd975a79ef7
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>通过添加更多终结点来扩展 Azure 机器学习 Web 服务
 > [!NOTE]
-> 本主题介绍适用于经典机器学习 Web 服务的技术。 
+> 本主题介绍适用于**经典**机器学习 Web 服务的技术。 
 > 
 > 
 
@@ -42,9 +43,4 @@ Web 服务的扩展是常见任务。 扩展的一些原因是为了支持超过
 <!--Image references-->
 [1]: ./media/machine-learning-scaling-webservice/machlearn-1.png
 [2]: ./media/machine-learning-scaling-webservice/machlearn-2.png
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

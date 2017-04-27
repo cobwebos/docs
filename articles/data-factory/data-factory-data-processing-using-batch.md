@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 03/30/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 9702f179a65754be88646987f868385b02a9f2d7
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: eeaab56b376ffd3123efb95a1223b7344dd6d187
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -868,20 +868,18 @@ test custom activity Microsoft test custom activity Microsoft
 1. 添加 **inputfolder** 中的以下子文件夹：2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、2015-11-16-09，并将输入文件置于这些文件夹中。 将管道结束时间从 `2015-11-16T05:00:00Z` 更改为 `2015-11-16T10:00:00Z`。 在“关系图视图”中，双击“InputDataset”，并确认输入切片是否就绪。 双击“OuptutDataset”，查看输出切片的状态。 如果其处于“就绪”状态，请检查输出文件的输出文件夹。
 2. 增加或减少**并发**设置，了解其对解决方案性能的影响，尤其是对 Azure Batch 上进行的处理的影响。 （请参阅步骤 4：创建和运行管道，详细了解**并发**设置。）
 3. 创建含较高/较低的**每个 VM 的最大任务数**的池。 若要使用创建的新池，更新数据工厂解决方案中的 Azure Batch 链接服务。 （请参阅步骤 4：创建和运行管道，详细了解**每个 VM 的最大任务数**设置。）
-4. 创建带有**自动缩放**功能的 Azure Batch 池。 自动缩放 Azure 批处理池中的计算节点是指动态调整应用程序使用的处理能力。 例如，可以根据挂起任务的数量通过 0 专用的 VM 和自动缩放公式创建 Azure Batch 池：
+4. 创建带有**自动缩放**功能的 Azure Batch 池。 自动缩放 Azure 批处理池中的计算节点是指动态调整应用程序使用的处理能力。 
 
-   一次为每个挂起的任务分配一个 VM（例如：5 个挂起任务-> 5 个 VM）：
-    
-    ```
-    pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
-    $TargetDedicated = max(pendingTaskSampleVector);
-    ```
+    此处的示例公式实现以下行为：最初创建池后，它以 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
+ 
+    自动缩放公式：
 
-   每次最多一个 VM，不考虑挂起的任务数：
-
-    ```
-    pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
-    $TargetDedicated = (max(pendingTaskSampleVector)>0)?1:0;
+    ``` 
+    startingNumberOfVMs = 1;
+    maxNumberofVMs = 25;
+    pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
+    pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 * TimeInterval_Second));
+    $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
     ```
 
    有关详细信息，请参阅 [Automatically scale compute nodes in an Azure Batch pool](../batch/batch-automatic-scaling.md)（自动缩放 Azure Batch 池中的计算节点）。

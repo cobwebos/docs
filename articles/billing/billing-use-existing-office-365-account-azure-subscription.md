@@ -1,6 +1,6 @@
 ---
 title: "使用 Office 365 帐户注册 Azure | Microsoft 文档"
-description: "了解如何通过 Azure 订阅共享 Office 365 Azure AD 租户及其用户，或者反过来这样做"
+description: "了解如何使用 Office 365 帐户创建 Azure 订阅"
 services: 
 documentationcenter: 
 author: JiangChen79
@@ -13,148 +13,49 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 04/03/2017
 ms.author: cjiang
 translationtype: Human Translation
-ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
-ms.openlocfilehash: 488ea81fcdad156371b89b2c94ef7c90bb83ca33
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: d62ec023605573e4b0804da00c75f65c8dea5173
+ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="use-an-existing-office-365-account-with-your-azure-subscription-or-vice-versa"></a>对 Azure 订阅使用现有的 Office 365 帐户，或者相反
-场景：用户已经有了一个 Office 365 订阅，准备进行 Azure 订阅，但想要使用现有的 Office 365 用户帐户进行 Azure 订阅。 或者，用户是 Azure 订户，想要为现有 Azure Active Directory 中的用户获取 Office 365 订阅。 本文介绍如何轻松地实现这两个目的。
+# <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>使用 Office 365 帐户注册 Azure 订阅
+如果具有 Office 365 订阅，使用 Office 365 帐户创建 Azure 订阅。 可以在没有 Azure 订阅的情况下使用 Office 365 用户名和密码登录 [Azure 门户](https://portal.azure.com/)。 但如果想要设置虚拟机或使用其他 Azure 服务，则必须为帐户创建 Azure 订阅。 如果是想使用 Azure 服务的组织的成员，在创建订阅后将组织中的其他人员添加到订阅中。  
 
-> [!NOTE]
-> 本文不适用于企业协议 (EA) 客户。 对于本文中的任何部分，如需更多帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
->
->
+如果已具有 Office 365 帐户和 Azure 订阅，请参阅[将 Office 365 租户与 Azure 订阅关联](billing-add-office-365-tenant-to-azure-subscription.md)。
 
-## <a name="quick-guidance"></a>快速指南
-* 如果已经有了一个 Office 365 订阅并想要注册 Azure，可以使用“使用组织帐户登录”选项。 然后，继续通过 Office 365 帐户进行 Azure 注册。 请参阅[本文后面的详细步骤](#s1)。
-* 如果已经有了一个 Azure 订阅并想要获取 Office 365 订阅，可以使用 Azure 帐户登录到 Office 365。 然后，继续执行注册步骤。 注册完以后，Office 365 订阅将添加到 Azure 订阅所属的同一 Azure Active Directory 实例中。 有关详细信息，请参阅[本文后面的详细步骤](#s2)部分。
+## <a name="get-an-azure-subscription-by-using-your-office-365-account"></a>通过 Office 365 帐户获取 Azure 订阅
 
-> [!NOTE]
-> 若要获取 Office 365 订阅，用于注册的帐户必须是 Azure Active Directory 租户中全局管理员或计费管理员目录角色的成员。 [了解如何确定 Azure Active Directory 中的角色](#how-to-know-your-role-in-your-azure-active-directory)。
->
->
+若要注册 Azure，请使用 Azure 免费链接，并使用 Office 365 用户名和密码注册 Azure。 
 
-若要了解向帐户添加订阅后发生的情况，请参阅本文后面的背景信息。
+1. 转到 [Azure.com](https://azure.microsoft.com/)。 
+2. 单击“免费开始”。
+3. 使用 Office 365 用户名和密码登录。 所使用的帐户无需具有管理员权限。 如果具有多个 Office 365 帐户，请确保使用想要与 Azure 订阅关联的 Office 365 帐户的凭据。 
 
-## <a name="detailed-steps"></a>详细步骤
-<a id="s1"></a>
+   ![显示登录页的屏幕截图。](./media/billing-use-existing-office-365-account-azure-subscription/billing-sign-in-with-office-365-account.png)
 
-### <a name="scenario-1-office-365-users-who-plan-to-buy-azure"></a>场景 1：Office 365 用户计划购买 Azure
-在此场景中，假定 Kelley Wall 是一位拥有 Office 365 订阅且计划订阅 Azure 的用户。 此外还有两位活动用户：Jane 和 Tricia。 Kelley 的帐户是 admin@contoso.onmicrosoft.com。
+4. 填写所需信息并完成注册过程。
 
-![Office 365 用户管理中心](./media/billing-use-existing-office-365-account-azure-subscription/1-office365-users-admin-center.png)
+    ![显示注册表单的屏幕截图。](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
 
-若要注册 Azure，请按以下步骤操作：
+- 如果需要将组织中的其他人员添加到 Azure 订阅，请参阅 [Azure 门户中的访问管理入门](../active-directory/role-based-access-control-what-is.md)。 
+- 如果需要添加管理员以帮助管理订阅，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
 
-1. 在 [Azure.com](https://azure.microsoft.com/) 注册 Azure。 单击“免费帐户”。 在下一页中，单击“免费启动”。
+## <a id="more-about-subs">有关 Azure 和 Office 365 订阅的详细信息</a>
+Office 365 和 Azure 使用 Azure AD 服务管理用户和订阅。 Azure 目录类似于一个容器，可在其中对用户和订阅分组。 若要将相同用户帐户用于 Azure 和 Office 365 订阅，需确保这些订阅是在同一目录中创建的。 请注意以下几点：
 
-    ![免费试用 Azure。](./media/billing-use-existing-office-365-account-azure-subscription/2-azure-signup-try-free.png)
-2. 使用你的 Office 365 帐户登录。 在本示例中，它是 Kelley 的 Office 365 帐户。
+* 在目录下创建订阅。
+* 用户属于目录。
+* 订阅位于创建订阅的用户的目录中。 因此 Office 365 订阅被捆绑到与 Azure 订阅相同的帐户。
+* Azure 订阅归目录中的各个用户所有。
+* Office 365 订阅归目录本身所有。 在目录中具有相应权限的用户可管理这些订阅。
 
-    ![使用你的 Office 365 帐户登录。](./media/billing-use-existing-office-365-account-azure-subscription/4-sign-in-with-org-account.png)
-3. 填写信息并完成注册过程。
-
-    ![填写信息并完成注册。](./media/billing-use-existing-office-365-account-azure-subscription/5-azure-sign-up-fill-information.png)
-
-    ![单击“开始管理我的服务”。](./media/billing-use-existing-office-365-account-azure-subscription/6-azure-start-managing-my-service.png)
-
-现在已全部准备就绪。 Azure 门户中会显示相同的用户。 若要验证，请执行以下步骤：
-
-1. 在此前显示的屏幕中单击“开始管理我的服务”。
-2. 单击“浏览”，然后单击“Active Directory”。
-
-    ![单击“浏览”，然后单击“Active Directory”。](./media/billing-use-existing-office-365-account-azure-subscription/7-azure-portal-browse-ad.png)
-3. 单击“用户”。
-
-    ![“用户”选项卡](./media/billing-use-existing-office-365-account-azure-subscription/8-azure-portal-ad-users-tab.png)
-4. 此时会按预期方式列出包括 Kelley 在内的所有用户。
-
-    ![用户列表](./media/billing-use-existing-office-365-account-azure-subscription/9-azure-portal-ad-users.png)
-
-<a id="s2"></a>
-
-### <a name="scenario-2-azure-users-who-plan-to-buy-office-365"></a>场景 2：Azure 用户计划购买 Office 365
-在此场景中，Kelley Wall 是一位在帐户 admin@contoso.onmicrosoft.com 下拥有 Azure 订阅的用户。 Kelley 想要订阅 Office 365 并使用与 Azure 所用目录相同的目录。
-
-> [!NOTE]
-> 若要获取 Office 365 订阅，用于登录的帐户必须是 Azure Active Directory 租户中全局管理员或计费管理员目录角色的成员。 [了解如何知道 Azure Active Directory 中的角色](#how-to-know-your-role-in-your-azure-active-directory)。
->
->
-
-![Azure 门户订阅设置](./media/billing-use-existing-office-365-account-azure-subscription/10-azure-portal-settings-subscription.png)
-
-![Azure 门户 Active Directory 用户](./media/billing-use-existing-office-365-account-azure-subscription/11-azure-portal-ads-users.png)
-
-若要订阅 Office 365，请按以下步骤操作：
-
-1. 转到 [Office 365 产品页](https://products.office.com/business)，然后选择合适的计划。
-2. 选择计划后，将显示以下页面。 请勿填写表单。 在页面右上角单击“登录”。
-
-    ![Office 365 试用页](./media/billing-use-existing-office-365-account-azure-subscription/12-office-365-trial-page.png)
-3. 使用帐户凭据登录。 在本示例中，它是 Kelley 的帐户。
-
-    ![Office 365 登录](./media/billing-use-existing-office-365-account-azure-subscription/13-office-365-sign-in.png)
-4. 单击“立即试用”。
-
-    ![确认 Office 365 订单。](./media/billing-use-existing-office-365-account-azure-subscription/14-office-365-confirm-your-order.png)
-5. 在订单收据页上，单击“继续”。
-
-    ![Office 365 订单收据](./media/billing-use-existing-office-365-account-azure-subscription/15-office-365-order-receipt.png)
-
-现在已全部准备就绪。 在 Office 365 管理中心，会看到 Contoso 目录中的用户以活动用户的形式显示。 若要验证，请执行以下步骤：
-
-1. 打开 Office 365 管理中心。
-2. 展开“用户”，然后单击“活动用户”。
-
-    ![Office 365 管理中心用户](./media/billing-use-existing-office-365-account-azure-subscription/16-office-365-admin-center-users.png)
-
-### <a name="how-to-know-your-role-in-your-azure-active-directory"></a>如何知道你在 Azure Active Directory 中的角色
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“浏览”，然后单击“Active Directory”。
-
-    ![Azure 门户中的 Active Directory](./media/billing-use-existing-office-365-account-azure-subscription/7-azure-portal-browse-ad.png)
-3. 单击“用户”。
-
-    ![Azure 门户默认 Active Directory 用户](./media/billing-use-existing-office-365-account-azure-subscription/17-azure-portal-default-ad-users.png)
-4. 单击该用户。 在此示例中，用户为 Kelley Wall。
-
-    请注意“组织角色”字段。
-
-    ![Azure 门户用户标识](./media/billing-use-existing-office-365-account-azure-subscription/18-azure-portal-user-identity.png)
-
-## <a name="background-information-about-azure-and-office-365-subscriptions"></a>有关 Azure 和 Office 365 订阅的背景信息
-Office 365 和 Azure 使用 Azure Active Directory 服务管理用户和订阅。 可以将 Azure 目录视为一个容器，在其中对用户和订阅分组。 若要将同一用户帐户用于 Azure 和 Office 365 订阅，需确保这些订阅是在同一目录中创建的。 请注意以下几点：
-
-* 只能在目录下创建订阅，而不能在订阅中创建目录。
-* 用户属于目录，不能属于其他。
-* 订阅位于创建订阅的用户的目录中。 因此，使用 Azure 订阅的帐户创建 Office 365 订阅时，Office 365 订阅将绑定到同一 Azure 订阅帐户。
-
-![背景信息](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
+![显示目录、用户和订阅关系的屏幕截图。](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
 
 有关详细信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）。
 
-> [!NOTE]
-> Azure 订阅归目录中的各个用户所有。
->
-> [!NOTE]
-> Office 365 订阅归目录本身所有。 目录中的用户可以对这些订阅进行操作，前提是这些用户具有必需权限。
->
->
-
-## <a name="next-steps"></a>后续步骤
-如果在过去分别获得了 Azure 和 Office 365 订阅，现在想要能够从 Azure 订阅访问 Office 365 租户，则请参阅 [Associate an Office 365 tenant with an Azure subscription](billing-add-office-365-tenant-to-azure-subscription.md)（将 Office 365 租户与 Azure 订阅关联）。
-
-> [!NOTE]
-> 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
->
->
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 

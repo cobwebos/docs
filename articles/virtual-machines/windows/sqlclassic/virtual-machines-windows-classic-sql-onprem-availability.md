@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/12/2016
+ms.date: 04/03/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 38728a20527be060e63d2dbdea923263b3d6c7fa
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 59ca9514c4cac97e8dd6dafc7a59406925b7b2df
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -38,6 +38,9 @@ AlwaysOn 可用性组通过添加辅助副本为数据库组提供高可用性�
 
 ## <a name="add-azure-replica-wizard"></a>添加 Azure 副本向导
 本部分演示如何使用“添加 Azure 副本向导”来扩展 AlwaysOn 可用性组解决方案，使其包括 Azure 副本。
+
+> [!IMPORTANT]
+> “添加 Azure 副本向导”仅支持使用经典部署模型创建的虚拟机。 新的 VM 部署应使用较新的 Resource Manager 模型。 如果将 VM 用于 Resource Manager，则必须使用 Transact-SQL 命令（此处未显示）手动添加辅助 Azure 副本。 此向导不适用于 Resource Manager 方案。
 
 1. 在 SQL Server Management Studio 中，展开“AlwaysOn 高可用性” > “可用性组” > “[可用性组的名称]”。
 2. 右键单击“可用性副本”，然后单击“添加副本”。

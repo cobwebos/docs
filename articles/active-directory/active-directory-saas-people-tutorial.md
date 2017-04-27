@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
-ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f0b7010b75c612cb1112d7414bab1617844dfa65
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
 将 People 与 Azure AD 集成具有以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 People
-* 可以让用户通过其 Azure AD 帐户自动登录到 People（单一登录）
+* 可以让用户通过其 Azure AD 帐户自动登录到 People 单一登录 (SSO)
 * 可使用 Azure 经典门户在一个中心位置管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
@@ -37,23 +38,25 @@ ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
 * Azure 订阅
 * 已启用 People 单一登录 (SSO) 的订阅
 
-> [!NOTE]
-> 测试本教程中的步骤时，建议不要使用生产环境。
+>[!NOTE]
+>测试本教程中的步骤时，建议不要使用生产环境。
 > 
 > 
 
 测试本教程中的步骤应遵循以下建议：
 
 * 不应使用生产环境，除非有此必要。
-* 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-本教程的目的是介绍如何在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+本教程旨在介绍如何在测试环境中测试 Azure AD SSO。 
+
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 People
-2. 配置和测试 Azure AD 单一登录
+2. 配置和测试 Azure AD SSO
 
-## <a name="adding-people-from-the-gallery"></a>从库中添加 People
+## <a name="add-people-from-the-gallery"></a>从库中添加 People
 若要通过配置将 People 集成到 Azure AD 中，需从库将 People 添加到托管式 SaaS 应用的列表中。
 
 **若要从库添加 People，请执行以下步骤：**
@@ -78,21 +81,21 @@ ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-people-tutorial/tutorial_people_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-本部分的目的是介绍如何根据名为“Britta Simon”的测试用户的情况，配置和测试 People 的 Azure AD 单一登录。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+本部分旨在说明如何基于名为“Britta Simon”的测试用户配置和测试 People 的 Azure AD SSO。
 
 若要使用 People 配置和测试 Azure AD 单一登录，需完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[创建 People 测试用户](#creating-a-people-test-user)** - 目的是在 People 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-本部分的目的是在 Azure 经典门户中启用 Azure AD 单一登录，并在 People 应用程序中配置单一登录。
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+本部分的目的是在 Azure 经典门户中启用 Azure AD SSO并在 People 应用程序中配置单一登录。
 
-**若要通过 People 配置 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 People 的 Azure AD SSO，请执行以下步骤：**
 
 1. 在 Azure 经典门户中的“People”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
@@ -131,9 +134,10 @@ ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
    
     ![Azure AD 单一登录][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-本部分的目的是在 Azure 经典门户中创建名为“Britta Simon”的测试用户。
-在“用户列表”中，选择“Britta Simon”。
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 经典门户中创建名为 Britta Simon 的测试用户。
+
+ * 在“用户列表”中，选择“Britta Simon”。
 
 ![创建 Azure AD 用户][20]
 
@@ -153,9 +157,9 @@ ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-people-tutorial/create_aaduser_05.png) 
    
-    1. 在“用户类型”中，选择“你的组织中的新用户”。
-    2. 在“用户名”文本框中，键入“BrittaSimon”。
-    3. 单击“下一步”。
+   1. 在“用户类型”中，选择“你的组织中的新用户”。
+   2. 在“用户名”文本框中，键入“BrittaSimon”。
+   3. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-people-tutorial/create_aaduser_06.png) 
@@ -164,7 +168,7 @@ ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
    2. 在“姓氏”文本框中，键入“Simon”。
    3. 在“显示名称”文本框中，键入“Britta Simon”。
    4. 在“角色”列表中，选择“用户”。
-   5. 单击“下一步”。
+   5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-people-tutorial/create_aaduser_07.png) 
@@ -175,11 +179,11 @@ ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
    1. 写下“新密码”的值。
    2. 单击“完成”。   
 
-### <a name="creating-a-people-test-user"></a>创建 People 测试用户
+### <a name="create-a-people-test-user"></a>创建 People 测试用户
 本部分的目的是在 People 中创建名为“Britta Simon”的用户。 People 不支持实时预配，因此若要手动创建用户，需联系 People 支持团队。
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-本部分的目的是通过授予 Britta Simon 访问 People 的权限，允许她使用 Azure 单一登录。
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+本部分旨在通过授予 Britta Simon 访问 People 的权限，允许她使用 Azure SSO。
 
 ![分配用户][200] 
 
@@ -199,8 +203,9 @@ ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
    
     ![分配用户][205]
 
-### <a name="testing-single-sign-on"></a>测试单一登录
-本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
+### <a name="test-single-sign-on"></a>测试单一登录
+本部分旨在使用“访问面板”测试 Azure AD SSO 配置。
+
 单击访问面板中的“People”磁贴时，用户就会自动登录到 People 应用程序。
 
 ## <a name="additional-resources"></a>其他资源
@@ -224,9 +229,4 @@ ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
 [203]: ./media/active-directory-saas-people-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-people-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-people-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

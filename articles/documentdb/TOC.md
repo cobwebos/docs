@@ -4,6 +4,7 @@
 ## [什么是 DocumentDB：MongoDB 的 API？](documentdb-protocol-mongodb.md)
 ## [核心概念](documentdb-resources.md)
 ## [全局分发](documentdb-distribute-data-globally.md)
+## [区域故障转移](documentdb-regional-failovers.md)
 ## [安全性](documentdb-nosql-database-security.md)
 ## [NoSQL TCO 分析](https://aka.ms/documentdb-tco-paper)
 ## 方案
@@ -47,7 +48,6 @@
 ### [为数据建模](documentdb-modeling-data.md)
 ### [使数据自动过期](documentdb-time-to-live.md)
 ### [备份和还原](documentdb-online-backup-and-restore.md)
-### [区域故障转移](documentdb-regional-failovers.md)
 ### 自动化
 #### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
 #### [Azure CLI 1.0：创建帐户](documentdb-automation-resource-manager-cli-nodejs.md)

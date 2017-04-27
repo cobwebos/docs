@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 03/14/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 8e1fccf953579beb138d47d1897bf702461fc39a
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 203648d999032d86dca10f9b47c40a2208ab79e9
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="documentdb---a-globally-distributed-database-service-on-azure"></a>DocumentDB - Azure 上的一种全局分布式数据库服务
 Azure 无处不在 - 它的足迹遍布全球 30 多个地理区域，并且还在不断扩展。 借助其在全球范围的足迹，Azure 为其开发人员提供的特色功能之一是能够轻松生成、部署和管理全局分布式应用程序。 DocumentDB 是 Microsoft 的全局分布式多租户数据库系统，其设计旨在让开发人员能够生成全球规模的应用程序。 DocumentDB 允许跨任意数量的地理区域灵活扩展吞吐量和存储。 该服务提供有保证的 P99 低延迟、99.99% 的高可用性、可预测的吞吐量和[多个定义完善的一致性模型](documentdb-consistency-levels.md) - 均由综合 SLA 提供支持。 凭借其[架构不可知和经写入优化的数据库引擎](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)，DocumentDB 默认能够自动索引其引入的所有数据并以不受规模影响的方式服务于 [SQL](documentdb-sql-query.md)、[MongoDB](documentdb-protocol-mongodb.md) 和 [JavaScript 语言集成查询](documentdb-programming.md#javascript-language-integrated-query-api)。 作为一种云服务，DocumentDB 通过多租户和全局分发获得了全面彻底的精心设计。
 
-**跨&3; 个 Azure 区域进行分区和分布的单个 DocumentDB 集合**
+**跨 3 个 Azure 区域进行分区和分布的单个 DocumentDB 集合**
 
-![跨&3; 个区域进行分区和分布的 Azure DocumentDB 集合](./media/documentdb-distribute-data-globally/documentdb-global-apps.png)
+![跨 3 个区域进行分区和分布的 Azure DocumentDB 集合](./media/documentdb-distribute-data-globally/documentdb-global-apps.png)
 
 正如我们生成 DocumentDB 时所获知的一样，添加全局分发不能事后才进行 - 不能将其“锁定”到“单一站点”数据库系统之上。 全局分布式数据库提供的功能超越了“单一站点”数据库提供的传统地理灾难恢复 (GEO-DR) 的功能。 提供 GEO-DR 功能的单一站点数据库是全局分布式数据库的严格子集。 
 
@@ -208,7 +208,7 @@ Prof.Daniel Abadi 提出了更全面的 CAP 变体，名为 [PACELC](http://cs-w
 ## <a id="ThroughputGuarantees"></a>吞吐量保证 
 DocumentDB 允许根据需求，灵活地跨不同区域缩放吞吐量（以及存储）。 
 
-**跨&3; 个分片进行分区，然后跨&3; 个 Azure 区域进行分布的单个 DocumentDB 集合**
+**跨 3 个分片进行分区，然后跨 3 个 Azure 区域进行分布的单个 DocumentDB 集合**
 
 ![Azure DocumentDB 分布集合和分区集合](./media/documentdb-distribute-data-globally/documentdb-throughput.png)
 
@@ -259,5 +259,5 @@ DocumentDB 以透明方式公开吞吐量、延迟、一致性和可用性指标
 6. Peter Bailis et al。[Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)（实用部分仲裁的概率有限过期性 (PBS)）
 7. Naor 和 Wool。 [Load, Capacity and Availability in Quorum Systems](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)（仲裁系统中的负载、容量和可用性）
 8. Herlihy 和 Wing。 [Lineralizability: A correctness condition for concurrent objects](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)（Lineralizability：并发对象的正确性条件）
-9. Azure DocumentDB SLA（上次更新时间：2016 年 12 月）
+9. [Azure DocumentDB SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/)
 

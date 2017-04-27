@@ -16,33 +16,44 @@ ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 18c66b0ade7f96fa377926474f8f278d110b91e4
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: e736bf626cd379e1bffe2dbf023e86addb09539f
+ms.lasthandoff: 04/21/2017
 
 
 ---
 # <a name="create-templates-for-logic-apps-deployment-and-release-management"></a>创建模板以用于逻辑应用部署和版本管理
 
-创建逻辑应用之后，可能想要将其创建为 Azure Resource Manager 模板。 这样，可以轻松地将逻辑应用部署到任何需要它的环境或资源组。 有关 Resource Manager 模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)和[使用 Azure Resource Manager 模板部署资源](../azure-resource-manager/resource-group-template-deploy.md)。
+创建逻辑应用之后，可能想要将其创建为 Azure Resource Manager 模板。
+这样，可以轻松地将逻辑应用部署到任何需要它的环境或资源组。
+有关 Resource Manager 模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)和[使用 Azure Resource Manager 模板部署资源](../azure-resource-manager/resource-group-template-deploy.md)。
 
 ## <a name="logic-app-deployment-template"></a>逻辑应用的部署模板
 
 逻辑应用具有三个基本组件：
 
 * **逻辑应用资源**：包含定价计划、位置和工作流定义等内容的相关信息。
-* **工作流定义**：描述逻辑应用的工作流步骤以及逻辑应用引擎应如何执行工作流。 可以在逻辑应用的“代码视图”窗口中查看此定义。 在逻辑应用资源中，可以在 `definition` 属性中找到此定义。
-* **连接**：指单独的资源，用于安全存储有关任何连接器连接的元数据，例如连接字符串和访问令牌。 在逻辑应用资源中，逻辑应用在 `parameters` 节引用这些资源。
+* **工作流定义**：描述逻辑应用的工作流步骤以及逻辑应用引擎应如何执行工作流。
+可以在逻辑应用的“代码视图”窗口中查看此定义。
+在逻辑应用资源中，可以在 `definition` 属性中找到此定义。
+* **连接**：指单独的资源，用于安全存储有关任何连接器连接的元数据，例如连接字符串和访问令牌。
+在逻辑应用资源中，逻辑应用在 `parameters` 节引用这些资源。
 
 可以使用诸如 [Azure 资源管理器](http://resources.azure.com)之类的工具查看现有逻辑应用的所有这些资源。
 
-若要创建逻辑应用模板以用于资源组部署，必须先定义资源并根据需要将其参数化。 例如，如果部署到开发、测试和生产环境，则可能想要在每个环境中使用不同的连接字符串连接到 SQL 数据库。 或者，可能想要在不同的订阅或资源组中进行部署。  
+若要创建逻辑应用模板以用于资源组部署，必须先定义资源并根据需要将其参数化。
+例如，如果部署到开发、测试和生产环境，则可能想要在每个环境中使用不同的连接字符串连接到 SQL 数据库。
+或者，可能想要在不同的订阅或资源组中进行部署。  
 
 ## <a name="create-a-logic-app-deployment-template"></a>创建逻辑应用的部署模板
 
-获得有效逻辑应用部署模板的最简单方法是使用 [Visual Studio Tools for Logic Apps](logic-apps-deploy-from-vs.md)。 Visual Studio 工具生成可跨任何订阅或位置使用的有效部署模板。
+获得有效逻辑应用部署模板的最简单方法是使用 [Visual Studio Tools for Logic Apps](logic-apps-deploy-from-vs.md)。
+Visual Studio 工具生成可跨任何订阅或位置使用的有效部署模板。
 
-其他一些工具可在你创建逻辑应用部署模板时提供帮助。 你可以手动创建，也就是使用此处讨论的资源根据需要创建参数。 另一种方法是使用[逻辑应用模板创建程序](https://github.com/jeffhollan/LogicAppTemplateCreator) PowerShell 模块。 此开放源代码模块首先评估逻辑应用和其使用的任何连接，然后生成用于部署的模板资源与所需参数。 例如，如果逻辑应用从 Azure 服务总线队列接收消息，并将数据添加到 Azure SQL 数据库，那么该工具将保存所有业务流程逻辑并参数化 SQL 和服务总线连接字符串，以便可以在部署中设置它们。
+其他一些工具可在你创建逻辑应用部署模板时提供帮助。
+你可以手动创建，也就是使用此处讨论的资源根据需要创建参数。
+另一种方法是使用[逻辑应用模板创建程序](https://github.com/jeffhollan/LogicAppTemplateCreator) PowerShell 模块。 此开放源代码模块首先评估逻辑应用和其使用的任何连接，然后生成用于部署的模板资源与所需参数。
+例如，如果逻辑应用从 Azure 服务总线队列接收消息，并将数据添加到 Azure SQL 数据库，那么该工具将保存所有业务流程逻辑并参数化 SQL 和服务总线连接字符串，以便可以在部署中设置它们。
 
 > [!NOTE]
 > 连接必须位于和逻辑应用一样的资源组中。
@@ -71,12 +82,16 @@ ms.lasthandoff: 03/04/2017
 
 ## <a name="deploy-a-logic-app-template"></a>部署逻辑应用模板
 
-可以使用任意工具来部署模板，比如 PowerShell、REST API、[Visual Studio Team Services Release Management](#team-services) 和 Azure 门户模板部署。 另外，若要存储参数的值，建议创建[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameters)。
+可以使用任意工具来部署模板，比如 PowerShell、REST API、[Visual Studio Team Services Release Management](#team-services) 和 Azure 门户模板部署。
+另外，若要存储参数的值，建议创建[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)。
 了解如何[使用 Azure Resource Manager 模板和 PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)或[使用 Azure Resource Manager 模板和 Azure 门户部署资源](../azure-resource-manager/resource-group-template-deploy-portal.md)。
 
 ### <a name="authorize-oauth-connections"></a>授权 OAuth 连接
 
-部署后，逻辑应用使用有效参数进行端到端的运行。 但是，仍需要对 OAuth 连接授权以生成有效的访问令牌。 若要对 OAuth 连接授权，请在逻辑应用设计器中打开逻辑应用，然后对这些连接授权。 或者，如果想要自动部署，可以使用脚本来许可每个 OAuth 连接。 在 GitHub 的 [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) 项目下有一个示例脚本。
+部署后，逻辑应用使用有效参数进行端到端的运行。
+但是，仍需要对 OAuth 连接授权以生成有效的访问令牌。
+若要对 OAuth 连接授权，请在逻辑应用设计器中打开逻辑应用，然后对这些连接授权。 或者，如果想要自动部署，可以使用脚本来许可每个 OAuth 连接。
+在 GitHub 的 [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) 项目下有一个示例脚本。
 
 <a name="team-services"></a>
 ## <a name="visual-studio-team-services-release-management"></a>Visual Studio Team Services Release Management

@@ -1,6 +1,6 @@
 ---
 title: "使用 Ruby 连接 Azure SQL 数据库 | Microsoft Docs"
-description: "使用本快速入门教程中的示例代码可以生成一个包含 Ruby 的新型应用程序，该应用程序受云中强大的 Azure SQL 数据库关系数据库的支持。"
+description: "演示了一个可以用来连接到 Azure SQL 数据库并进行查询的 Ruby 代码示例。"
 services: sql-database
 documentationcenter: 
 author: ajlam
@@ -8,38 +8,36 @@ manager: jhubbard
 editor: 
 ms.assetid: 94fec528-58ba-4352-ba0d-25ae4b273e90
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start connect
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 03/28/2017
+ms.date: 04/17/2017
 ms.author: andrela;sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 8e01a717cbef6b5f6d26a8191c44e249bf7a9567
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 04fc29fe21b77a34094bb89ecb8496f78856f56b
+ms.lasthandoff: 04/19/2017
 
 
 ---
 
 # <a name="azure-sql-database-use-ruby-to-connect-and-query-data"></a>Azure SQL 数据库：使用 Ruby 进行连接和数据查询
 
-使用 [Ruby](https://Ruby.org) 连接 Azure SQL 数据库并进行查询。 本快速入门教程详述了如何使用 Ruby 连接到 Azure SQL 数据库，然后执行查询、插入、更新和删除语句。
+本快速入门演示了如何通过 Mac OS 和 Ubuntu Linux 平台使用 [Ruby](https://Ruby.org) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
 
 此快速入门使用以下某个快速入门中创建的资源作为其起点：
 
 - [创建 DB - 门户](sql-database-get-started-portal.md)
 - [创建 DB - CLI](sql-database-get-started-cli.md)
 
-## <a name="configure-development-environment"></a>配置开发环境
-
-下文将详细介绍如何配置现有 Mac OS 和 Linux(Ubuntu) 开发环境，以便使用 Azure SQL 数据库。
+## <a name="install-ruby-and-database-communication-libraries"></a>安装 Ruby 和数据库通信库
 
 ### <a name="mac-os"></a>**Mac OS**
 打开终端并导航到要在其中创建 Ruby 脚本的目录。 输入以下命令以安装 **brew**、**FreeTDS** 和 **TinyTDS**。
 
-```ruby
+```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew tap microsoft/msodbcsql https://github.com/Microsoft/homebrew-msodbcsql-preview
 brew update
@@ -50,7 +48,7 @@ gem install tiny_tds
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 打开终端并导航到要在其中创建 Ruby 脚本的目录。 输入以下命令以安装 **FreeTDS** 和 **TinyTDS**。
 
-```ruby
+```bash
 wget ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.27.tar.gz
 tar -xzf freetds-1.00.27.tar.gz
 cd freetds-1.00.27
@@ -66,20 +64,22 @@ gem install tiny_tds
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
-3. 在数据库的“概要”窗格中，查看完全限定的服务器名称。
+3. 在数据库的“概览”页上，查看如下图所示的完全限定的服务器名称。 可以将鼠标悬停在服务器名称上以打开“单击以复制”选项。 
 
-    <img src="./media/sql-database-connect-query-dotnet/server-name.png" alt="connection strings" style="width: 780px;" />
+   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
+
+4. 如果忘了 Azure SQL 数据库服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。
     
 
 ## <a name="select-data"></a>选择数据
-使用 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数和 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句查询 Azure SQL 数据库中的数据。 TinyTDS::Client 函数接受查询并返回结果集。 可使用 [result.each do |row|](https://github.com/rails-sqlserver/tiny_tds) 循环访问结果集。
+请通过以下代码使用 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数和 [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL 语句来查询 Azure SQL 数据库。 TinyTDS::Client 函数接受查询并返回结果集。 可使用 [result.each do |row|](https://github.com/rails-sqlserver/tiny_tds) 循环访问结果集。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 ```ruby
 require 'tiny_tds'
-server = 'yourserver.database.windows.net'
-database = 'yourdatabase'
-username = 'yourusername'
-password = 'yourpassword'
+server = 'your_server.database.windows.net'
+database = 'your_database'
+username = 'your_username'
+password = 'your_password'
 client = TinyTds::Client.new username: username, password: password, 
     host: server, port: 1433, database: database, azure: true
 
@@ -95,20 +95,20 @@ end
 ```
 
 ## <a name="insert-data"></a>插入数据
-使用 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数和 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句将数据插入 Azure SQL 数据库。
+请通过以下代码使用 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数和 [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL 语句来将新产品插入到指定数据库中的 SalesLT.Product 表中。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
-本示例介绍如何安全地执行 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) 语句，传递参数以保护应用程序免遭 [SQL 注入](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx)漏洞的危害，然后检索自动生成的[主键](https://msdn.microsoft.com/library/ms179610.aspx)值。    
+本示例介绍了如何安全地执行 INSERT 语句，传递参数以保护应用程序免遭 [SQL 注入](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx)漏洞的危害，然后检索自动生成的[主键](https://docs.microsoft.com/sql/relational-databases/tables/primary-and-foreign-key-constraints)值。    
   
 若要配合使用 TinyTDS 和 Azure，建议运行多个 `SET` 语句来更改当前会话处理特定信息的方式。 建议使用代码示例中所提供的 `SET` 语句。 例如，即使未显式指定列的可为 null 状态，通过 `SET ANSI_NULL_DFLT_ON` 依然可以创建新列来允许 null 值。  
   
-为符合 Microsoft SQL Server [日期时间](http://msdn.microsoft.com/library/ms187819.aspx)格式，请使用 [strftime](http://ruby-doc.org/core-2.2.0/Time.html#method-i-strftime) 函数转换成对应的日期时间格式。
+为符合 Microsoft SQL Server [日期时间](https://docs.microsoft.com/sql/t-sql/data-types/datetime-transact-sql)格式，请使用 [strftime](http://ruby-doc.org/core-2.2.0/Time.html#method-i-strftime) 函数转换成对应的日期时间格式。
 
 ```ruby
 require 'tiny_tds'
-server = 'yourserver.database.windows.net'
-database = 'yourdatabase'
-username = 'yourusername'
-password = 'yourpassword'
+server = 'your_server.database.windows.net'
+database = 'your_database'
+username = 'your_username'
+password = 'your_password'
 client = TinyTds::Client.new username: username, password: password, 
     host: server, port: 1433, database: database, azure: true
 
@@ -118,7 +118,7 @@ result = client.execute("SET CURSOR_CLOSE_ON_COMMIT OFF")
 result = client.execute("SET ANSI_NULL_DFLT_ON ON")
 result = client.execute("SET IMPLICIT_TRANSACTIONS OFF")
 result = client.execute("SET ANSI_PADDING ON")
-result = client.execute("SET QUOTED_IDENTIFIER ON"")
+result = client.execute("SET QUOTED_IDENTIFIER ON")
 result = client.execute("SET ANSI_WARNINGS ON")
 result = client.execute("SET CONCAT_NULL_YIELDS_NULL ON")
 
@@ -133,14 +133,14 @@ insert('BrandNewProduct', '200989', 'Blue', 75, 80, '7/1/2016')
 ```
 
 ## <a name="update-data"></a>更新数据
-使用 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数和 [UPDATE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句删除 Azure SQL 数据库中的数据。
+请通过以下代码使用 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数和 [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL 语句来更新 Azure SQL 数据库中的数据。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 ```ruby
 require 'tiny_tds'
-server = 'yourserver.database.windows.net'
-database = 'yourdatabase'
-username = 'yourusername'
-password = 'yourpassword'
+server = 'your_server.database.windows.net'
+database = 'your_database'
+username = 'your_username'
+password = 'your_password'
 client = TinyTds::Client.new username: username, password: password, 
     host: server, port: 1433, database: database, azure: true
     
@@ -154,14 +154,14 @@ update('BrandNewProduct', 500, client)
 ```
 
 ## <a name="delete-data"></a>删除数据
-使用 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数和 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句删除 Azure SQL 数据库中的数据。
+请通过以下代码使用 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数和 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句来删除 Azure SQL 数据库中的数据。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 ```ruby
 require 'tiny_tds'
-server = 'yourserver.database.windows.net'
-database = 'yourdatabase'
-username = 'yourusername'
-password = 'yourpassword'
+server = 'your_server.database.windows.net'
+database = 'your_database'
+username = 'your_username'
+password = 'your_password'
 client = TinyTds::Client.new username: username, password: password, 
     host: server, port: 1433, database: database, azure: true
 
@@ -185,7 +185,14 @@ delete('BrandNewProduct', client)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 请参阅 [SQL 数据库开发概述](sql-database-develop-overview.md)。
-* 有关 [Ruby Driver for SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/) 的详细信息。
-* 浏览所有 [SQL 数据库的功能](https://azure.microsoft.com/services/sql-database/)。
 
+- [TinyTDS](https://github.com/rails-sqlserver/tiny_tds) 的 Github 存储库。
+- [提出问题](https://github.com/rails-sqlserver/tiny_tds/issues)。        
+- 有关 [Ruby Driver for SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/) 的详细信息。
+- 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
+- 若要使用 Visual Studio 进行连接和查询，请参阅[使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
+- 若要使用 .NET 进行连接和查询，请参阅[使用 .NET 进行连接和查询](sql-database-connect-query-dotnet.md)。
+- 若要使用 PHP 进行连接和查询，请参阅[使用 PHP 进行连接和查询](sql-database-connect-query-php.md)。
+- 若要使用 Node.js 进行连接和查询，请参阅[使用 Node.js 进行连接和查询](sql-database-connect-query-nodejs.md)。
+- 若要使用 Java 进行连接和查询，请参阅[使用 Java 进行连接和查询](sql-database-connect-query-java.md)。
+- 若要使用 Python 进行连接和查询，请参阅[使用 Python 进行连接和查询](sql-database-connect-query-python.md)。

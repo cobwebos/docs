@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 52f672dcf42a19bf10935fcf733b8f07ff559a8d
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 93481fe9c3920ea4c578f3da326de9f9e8531a71
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -473,7 +473,7 @@ SAS URL 采用以下格式：
 >
 >
 
-有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Blob-Service-REST-API)。
+有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
 ### <a name="update-the-assetfile"></a>更新 AssetFile
 上载文件后，请更新 FileAsset 大小（和其他）信息。 例如：
@@ -962,7 +962,7 @@ MPEG DASH 的流 URL 采用以下格式：
 >
 >
 
-有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Blob-Service-REST-API)。
+有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
 由于之前已经执行了编码作业（编码成自适应 MP4 集），因此可以渐进式下载多个 MP4 文件。 例如：    
 

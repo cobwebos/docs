@@ -1,6 +1,6 @@
 ---
 title: "更改默认的 blob 路径 | Microsoft Docs"
-description: "了解如何设置 Azure 函数以重命名 Blob 文件路径（个人预览版）"
+description: "了解如何设置 Azure 函数以重命名 blob 文件路径（个人预览版）"
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -15,169 +15,230 @@ ms.workload: TBD
 ms.date: 03/16/2017
 ms.author: vidarmsft
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 8a06e4b3f482943f55e998c3c68857d3530ff98a
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 057d4d7370207859617eb63238bf425bfa6d3e16
+ms.lasthandoff: 04/12/2017
 
 ---
 
-# <a name="change-blob-path-from-the-default-private-preview"></a>更改默认的 blob 路径（个人预览版）
+# <a name="change-a-blob-path-from-the-default-path-private-preview"></a>更改默认的 blob 路径（个人预览版）
 
-本文介绍如何设置 Azure 函数以重命名默认 Blob 文件路径。 
+本文介绍如何设置 Azure 函数以重命名默认 blob 文件路径。 
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请确保具备以下条件：
-* 已在资源组中的混合数据资源中正确配置的作业定义。
+确保具有已在资源组中的混合数据资源中正确配置的作业定义。
 
 ## <a name="create-an-azure-function"></a>创建 Azure 函数
 
-执行下列步骤创建 Azure 函数。
-
-#### <a name="to-create-an-azure-function"></a>创建 Azure 函数
+若要创建 Azure 函数，请执行以下操作：
 
 1. 转到 [Azure 门户](http://portal.azure.com/)。
 
-2. 单击左上角的“+ 新建”。 在“搜索”文本框中键入“Function App”，然后按“Enter”。
+2. 在左窗格的顶部，单击“新建”。 
 
-    ![转到 Function App 资源](./media/storsimple-data-manager-change-default-blob-path/goto-function-app-resource.png)
+3. 在“搜索”框中，输入“Function App”，然后按 Enter。
 
-3. 单击结果中的“Function App”。
+    ![在搜索框中输入“Function App”](./media/storsimple-data-manager-change-default-blob-path/goto-function-app-resource.png)
 
-    ![选择 Function App 资源](./media/storsimple-data-manager-change-default-blob-path/select-function-app-resource.png)
+4. 在“结果”列表中，单击“Function App”。
 
-4. 打开“Function App”窗口并单击“创建”。
+    ![在结果列表中选择函数应用资源](./media/storsimple-data-manager-change-default-blob-path/select-function-app-resource.png)
 
-    ![创建新的 Function App](./media/storsimple-data-manager-change-default-blob-path/create-new-function-app.png)
+    “Function App”窗口随即打开。
 
-5. 在“配置”边栏选项卡中，输入所有输入信息，然后单击“创建”。
+5. 单击“创建”。
 
-    1. 应用程序名称
-    2. 订阅
-    3. 资源组
-    4. 托管计划 - **消耗计划**
-    5. 位置
-    6. 存储帐户 - 使用现有存储帐户，或创建一个新的存储帐户。 函数在内部使用一个存储帐户。
+    ![“Function App”窗口“创建”按钮](./media/storsimple-data-manager-change-default-blob-path/create-new-function-app.png)
 
-        ![输入新的 Function App 配置数据](./media/storsimple-data-manager-change-default-blob-path/enter-new-funcion-app-data.png)
+6. 在“Function App”配置边栏选项卡中，执行以下操作：
 
-6. 创建 Function App 后，在左下角导航到“更多服务 >”。 在“筛选器”文本框中键入“应用程序服务”，然后单击“应用程序服务”。
-
-    ![更多服务 >](./media/storsimple-data-manager-change-default-blob-path/more-services.png)
-
-7. 单击应用程序服务列表中的“Function App 名称”。
-
-8. 单击“+ 新建函数”。 在“语言”下拉列表中选择“C#”。 在模板列表中选择“QueueTrigger-CSharp”选项。 输入所有的输入信息。
-
-   1. 名称 - 提供函数的名称。
-   2. 队列名称 - 输入**数据转换作业定义名称**。
-   3. 存储帐户连接 - 单击“新建”选项。 选择对应于数据转换作业的帐户。
-      
-      记下 `Connection name`。 稍后在 Azure 函数中需要此名称。
-
-   4. 单击“创建”按钮。
-
-       ![新建 C Sharp 函数 >](./media/storsimple-data-manager-change-default-blob-path/create-new-csharp-function.png)
-
-9. 在“函数”窗口中，运行 _.csx_ 文件。 复制并粘贴以下代码：
-
-    ```
-        using System;
-        using System.Configuration;
-        using Microsoft.WindowsAzure.Storage.Blob;
-        using Microsoft.WindowsAzure.Storage.Queue;
-        using Microsoft.WindowsAzure.Storage;
-        using System.Collections.Generic;
-        using System.Linq;
-
-        public static void Run(QueueItem myQueueItem, TraceWriter log)
-        {
-            log.Info($"Blob Uri: {myQueueItem.TargetLocation}");
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["STORAGE_CONNECTIONNAME"]);
-
-            // Create the blob client.
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-            string uriString = "windows.net/";
-            string containerName = myQueueItem.TargetLocation;
-            containerName = containerName.Substring(containerName.IndexOf(uriString) + uriString.Length);
-            containerName = containerName.Substring(0, containerName.IndexOf("/"));
-            //log.Info($"Container name: {containerName}");
-
-            CloudBlobContainer container = blobClient.GetContainerReference(containerName);
-
-            if(!container.Exists())
-            {
-                log.Info($"Container - {containerName} not exists");
-                return;
-            }
-
-            string containerUri = string.Format("{0}/", container.Uri.ToString());  // Reading container Uri
-            string blobUri =  myQueueItem.TargetLocation;
-            string blobName = blobUri.Replace(containerUri, string.Empty).Replace("%20", " "); // Reading existing file path after container name
-            string newBlobName = blobName.Substring(blobName.IndexOf(string.Format("{0}/", container.Name)) + container.Name.Length + 1); // Reading actual File path after container name
-
-            log.Info($"Blob name: {blobName}");
-            log.Info($"New blob name: {newBlobName}");
-
-            CloudBlockBlob blobCopy = container.GetBlockBlobReference(newBlobName);
-            CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
-            if (!blobCopy.Exists())
-            {
-                blobCopy.StartCopy(blob);
-                // Delete old blob, after copy the blob
-                blob.DeleteIfExists();
-                log.Info($"Blob file path renamed completed successfully");
-            }
-            else
-            {
-                log.Info($"Blob file path renamed already done");
-                // Delete old blob, if already exists.
-                blob.DeleteIfExists();
-            }
-        }
-
-        public class QueueItem
-        {
-            public string SourceLocation {get;set;}
-            public long SizeInBytes {get;set;}
-            public string Status {get;set;}
-            public string JobID {get;set;}
-            public string TargetLocation {get; set;}
-        }
+    a. 在“应用名称”框中，输入应用名称。
     
+    b. 在“订阅”框中，输入订阅的名称。
+
+    c. 在“资源组”下，单击“新建”，然后输入资源组的名称。
+
+    d. 在“宿主计划”框中，输入“消耗计划”。
+
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“位置”框中，输入位置。
+
+    f. 在“存储帐户”下，选择现有存储帐户，或创建新存储帐户。 函数在内部使用一个存储帐户。
+
+    ![输入新的 Function App 配置数据](./media/storsimple-data-manager-change-default-blob-path/enter-new-funcion-app-data.png)
+
+7. 单击“创建”。  
+    随即创建函数应用。
+
+8. 在左窗格中，单击“更多服务”，然后执行以下操作：
+    
+    a. 在“筛选器”框中，输入“应用服务”。
+    
+    b. 单击“应用服务”。 
+
+    ![左窗格中的“更多服务”链接](./media/storsimple-data-manager-change-default-blob-path/more-services.png)
+
+9. 在应用服务的列表中，单击函数应用的名称。  
+    函数应用页面随即打开。
+
+10. 在左窗格中，单击“新建函数”，然后执行以下操作： 
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“语言”列表中，选择“C#”。
+    
+    b.保留“数据库类型”设置，即设置为“共享”。 在模板磁贴数组中，选择“QueueTrigger-CSharp”。
+
+    c. 在“为函数命名”框中，为函数输入名称。
+
+    d. 在“队列名称”框中，输入数据转换作业定义名称。
+
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“存储帐户连接”下，单击“新建”，然后选择与数据转换作业对应的帐户。  
+        记下连接名称。 稍后在 Azure 函数中需要该名称。
+
+       ![创建新的 C# 函数](./media/storsimple-data-manager-change-default-blob-path/create-new-csharp-function.png)
+
+    f. 单击“创建”。  
+    “函数”窗口随即打开。
+
+11. 在“函数”窗口中，运行 _.csx_ 文件中，然后执行以下操作：
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 粘贴以下代码：
+
+    ```
+    using System;
+    using System.Configuration;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.Queue;
+    using Microsoft.WindowsAzure.Storage;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    public static void Run(QueueItem myQueueItem, TraceWriter log)
+    {
+        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["STORAGE_CONNECTIONNAME"]);
+
+        string storageAccUriEndswith = "windows.net/";
+        string uri = myQueueItem.TargetLocation.Replace("%20", " ");
+        log.Info($"Blob Uri: {uri}");
+
+        // Remove storage account uri string
+        uri = uri.Substring(uri.IndexOf(storageAccUriEndswith) + storageAccUriEndswith.Length);
+
+        string containerName = uri.Substring(0, uri.IndexOf("/")); 
+
+        // Remove container name string
+        uri = uri.Substring(containerName.Length + 1);
+
+        // Current blob path
+        string blobName = uri; 
+
+        string volumeName = uri.Substring(containerName.Length + 1);
+        volumeName = uri.Substring(0, uri.IndexOf("/"));
+
+        // Remove volume name string
+        uri = uri.Substring(volumeName.Length + 1);
+
+        string newContainerName = uri.Substring(0, uri.IndexOf("/")).ToLower();
+        string newBlobName = uri.Substring(newContainerName.Length + 1);
+
+        log.Info($"Container name: {containerName}");
+        log.Info($"Volume name: {volumeName}");
+        log.Info($"New container name: {newContainerName}");
+
+        log.Info($"Blob name: {blobName}");
+        log.Info($"New blob name: {newBlobName}");
+
+        // Create the blob client.
+        CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+        // Container reference
+        CloudBlobContainer container = blobClient.GetContainerReference(containerName);
+        CloudBlobContainer newContainer = blobClient.GetContainerReference(newContainerName);
+        newContainer.CreateIfNotExists();
+
+        if(!container.Exists())
+        {
+            log.Info($"Container - {containerName} not exists");
+            return;
+        }
+
+        if(!newContainer.Exists())
+        {
+            log.Info($"Container - {newContainerName} not exists");
+            return;
+        }
+
+        CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
+        if (!blob.Exists())
+        {
+            // Skip to copy the blob to new container, if source blob doesn't exist
+            log.Info($"The specified blob does not exist.");
+            log.Info($"Blob Uri: {blob.Uri}");
+            return;
+        }
+
+        CloudBlockBlob blobCopy = newContainer.GetBlockBlobReference(newBlobName);
+        if (!blobCopy.Exists())
+        {
+            blobCopy.StartCopy(blob);
+            // Delete old blob, after copy to new container
+            blob.DeleteIfExists();
+            log.Info($"Blob file path renamed completed successfully");
+        }
+        else
+        {
+            log.Info($"Blob file path renamed already done");
+            // Delete old blob, if already exists.
+            blob.DeleteIfExists();
+        }
+    }
+
+    public class QueueItem
+    {
+        public string SourceLocation {get;set;}
+        public long SizeInBytes {get;set;}
+        public string Status {get;set;}
+        public string JobID {get;set;}
+        public string TargetLocation {get; set;}
+    }
+
     ```
 
-   1. 将第 12 行中的 **STORAGE_CONNECTIONNAME** 替换为存储帐户连接（参考点 8c）。
-   2. 单击左上角的“保存”按钮。
+    b. 将第 11 行中的 **STORAGE_CONNECTIONNAME** 替换为存储帐户连接（参考点 8c）。
 
-       ![保存函数 >](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
+    c. 在左上方单击“保存”。
 
-10.  单击右上角的“查看文件”。
+    ![保存函数](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 
-    ![查看文件](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
+12. 若要完成函数，请通过执行以下操作来添加一个或多个文件：
 
-   1. 单击“+ 添加”。 键入“project.json”，然后按“Enter”。
-   2. 复制以下代码并将其粘贴到 **project.json** 文件中。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“查看文件”。
 
-        ```
-            {
-            "frameworks": {
-                "net46":{
-                "dependencies": {
-                    "windowsazure.storage": "8.1.1"
-                }
-                }
-            }
-            }
-        
-        ```
+       ![“查看文件”链接](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
 
-   2. 单击“保存” 。
+    b. 单击 **“添加”**。
+    
+    c. 输入“project.json”，然后按 Enter。
+    
+    d.单击“下一步”。 在 **project.json** 文件中，粘贴以下代码：
 
-已创建 Azure 函数。 数据转换作业每次生成新的 blob 时，都会触发此函数。
+    ```
+    {
+    "frameworks": {
+        "net46":{
+        "dependencies": {
+            "windowsazure.storage": "8.1.1"
+        }
+        }
+    }
+    }
+
+    ```
+
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“保存” 。
+
+已创建 Azure 函数。 数据转换作业每次生成新 blob 时，都会触发此函数。
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 StorSimple Data Manager UI 转换数据](storsimple-data-manager-ui.md)。
+[使用 StorSimple Data Manager UI 转换数据](storsimple-data-manager-ui.md)
 

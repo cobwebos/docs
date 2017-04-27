@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 04/12/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0e71a840d4f503779131ee4a21fe6063d33185f1
-ms.openlocfilehash: cbefca2d45a332cd57cfea49dfeaa300426d5502
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: cdc951d4e16e7f0df425dba7c33d86255276f526
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -26,18 +26,14 @@ ms.lasthandoff: 02/24/2017
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure Active Directory B2B 协作的限制
 Azure Active Directory (Azure AD) B2B 协作当前具有本文中描述的限制。
 
-## <a name="invitation-apis-are-in-preview"></a>邀请 API 为预览版
-API 面是我们预期的前进方向。 不过，与所有预发行版本一样，该 API 受制于预览版命名空间协定。 我们会将该 API 与正式版 (GA) 一起迁移到带编号的版本。
-
 ## <a name="possible-double-multi-factor-authentication"></a>可能需要进行两次多重身份验证
-如果你的合作伙伴已实施了 Azure 多重身份验证策略，则可能会出现此冗余。 B2B 协作多重身份验证是在邀请方组织中执行和管理的。 这样的身份验证是理想的，因为它涵盖所有身份并使你能够控制 B2B 协作受邀者的身份验证强度。
+使用 Azure AD B2B，可在资源组织（邀请方组织）上进行多重身份验证。 [B2B 协作用户的条件访问](active-directory-b2b-mfa-instructions.md)中对使用此方法的原因进行了详细说明。 这意味着，如果合作伙伴已设置并实施了多重身份验证，则合作伙伴的用户可能必须在其本组织中执行一次身份验证，然后在你的组织中再次进行身份验证。
 
-但是，如果合作伙伴已设置并实施了多重身份验证，则合作伙伴的用户可能必须在其主组织中执行一次身份验证，然后在你的组织中再次进行身份验证。
+在将来的版本中，我们计划引入一个策略，使用该策略可以通过选择信任合作伙伴的多重身份验证来避免两次身份验证问题。
 
-在将来的版本中，我们计划引入一个策略，你可以使用该策略通过选择信任合作伙伴的多重身份验证来避免两次身份验证问题。
 
 ## <a name="instant-on"></a>即时启用
-通过 B2B 协作流，我们将用户添加到目录，并在邀请兑换、应用分配等期间动态更新用户。 更新和写入通常发生在一个目录实例中，并且必须复制到所有实例中。 我们观察到，由于可以用来完成复制的时间有限，有时可能会发生授权问题。 在正式版发布之前，我们正在努力减少或消除这些问题。 在这期间，你未必会遇到这些问题，但如果遇到，刷新或重试应当有助于解决它们。
+通过 B2B 协作流，我们将用户添加到目录，并在邀请兑换、应用分配等期间动态更新用户。 更新和写入通常发生在一个目录实例中，并且必须复制到所有实例中。 完成复制可能需要非零时间量。 有时，如果在目录的一个实例中编写或更新对象，但是对检索该对象的调用负载均衡到了另一个实例，则会导致授权问题。 我们已做了大量工作来消除或减少这些复制延迟，但是在某些少数情况下，它们仍然可能发生。 如果发生这种情况，刷新或重试可有所帮助。 如果正在使用 API 编写应用，则请重试后退操作，这是解决该问题的一个很好的防御措施。
 
 ## <a name="next-steps"></a>后续步骤
 

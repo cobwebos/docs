@@ -16,9 +16,9 @@ ms.date: 02/06/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
-ms.openlocfilehash: a90c412d2d66834cd0df3f348fa488b6ce10c898
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 159e41f3d1b43abc830b79e1ea0bed05e05505a2
+ms.lasthandoff: 04/11/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/07/2017
 在本教程中，你将通过使用 Twitter 流式传输 API 获取推文，然后使用 Apache Hive 在 Azure HDInsight 上获取发送最多包含某个特定词的推文的 Twitter 用户列表。
 
 > [!IMPORTANT]
-> 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关特定于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data-linux.md)。
+> 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关特定于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data-linux.md)。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，你必须具有：
@@ -461,7 +461,7 @@ HiveQL 脚本将执行以下操作：
 使用以下 Windows PowerShell 脚本运行 Hive 脚本。 你将需要设置第一个变量。
 
 > [!NOTE]
-> 要使用最后两部分中上载的推文和 HiveQL 脚本，请将 $hqlScriptFile 设置为“/tutorials/twitter/twitter.hql”。 若要使用已为你上载到公共 Blob 的推文和 HiveQL 脚本，请将 $hqlScriptFile 设置为 "wasbs://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql"。
+> 要使用最后两部分中上载的推文和 HiveQL 脚本，请将 $hqlScriptFile 设置为“/tutorials/twitter/twitter.hql”。 若要使用已为你上传到公共 Blob 的推文和 HiveQL 脚本，请将 $hqlScriptFile 设置为“wasbs://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql”。
 
 ```powershell
 #region variables and constants
@@ -563,7 +563,7 @@ Write-Host "==================================" -ForegroundColor Green
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [powershell-script]: http://technet.microsoft.com/library/ee176961.aspx
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage-powershell]:hdinsight-hadoop-use-blob-storage.md#access-blobs-using-azure-powershell
 [hdinsight-analyze-flight-delay-data]: hdinsight-analyze-flight-delay-data.md

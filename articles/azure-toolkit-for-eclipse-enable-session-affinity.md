@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 3fb7a0361717d4616ec21e55c0a202ed8bf8991d
-ms.openlocfilehash: a537a71a43b49d510a12d1293d8ee898d66efe63
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: ab8623d6f9751ed6d71d9a5b1c0d5e939c442862
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -27,10 +28,14 @@ ms.openlocfilehash: a537a71a43b49d510a12d1293d8ee898d66efe63
 
 ## <a name="to-enable-session-affinity-for-your-role"></a>为角色启用会话相关性
 1. 在 Eclipse 的项目资源管理器中右键单击角色，单击“Azure”，然后单击“负载均衡”。
+
 2. 在“WorkerRole1 负载均衡属性”对话框中：
-   1. 选中“为此角色启用 HTTP 会话相关性(粘性会话)”。
-   2. 对于“要使用的输入终结点”，请选择要使用的输入终结点，例如“http (public:80, private:8080)”。 你的应用程序必须使用此终结点作为其 HTTP 终结点。 你可以为角色启用多个终结点，但只能选择其中一个来支持粘性会话。
-   3. 重新生成你的应用程序。
+
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选中“为此角色启用 HTTP 会话相关性(粘性会话)”。
+
+   b.保留“数据库类型”设置，即设置为“共享”。 对于“要使用的输入终结点”，请选择要使用的输入终结点，例如“http (public:80, private:8080)”。 你的应用程序必须使用此终结点作为其 HTTP 终结点。 你可以为角色启用多个终结点，但只能选择其中一个来支持粘性会话。
+
+   c. 重新生成你的应用程序。
 
 启用后，如果你有多个角色实例，则来自特定客户端的 HTTP 请求将继续由同一角色实例处理。
 
@@ -38,8 +43,11 @@ Eclipse 工具包是通过在角色实例中安装名为应用程序请求路由
 
 ## <a name="notes-about-session-affinity"></a>有关会话相关性的说明
 * 会话相关性在计算模拟器中不起作用。 可以在计算模拟器中应用这些设置而不会干扰你的生成过程或计算模拟器执行，但该功能本身在计算模拟器中不能正常运行。
+
 * 启用会话相关性会导致部署在 Azure 中占用更多的磁盘空间量，因为当你的服务在 Azure 云中启动时，会在角色实例中下载并安装其他软件。
+
 * 初始化每个角色需要更长的时间。
+
 * 将会添加一个充当上述流量路由器的内部终结点。
 
 
@@ -65,9 +73,4 @@ Eclipse 工具包是通过在角色实例中安装名为应用程序请求路由
 [ic719492]: ./media/azure-toolkit-for-eclipse-enable-session-affinity/ic719492.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690950.aspx -->
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

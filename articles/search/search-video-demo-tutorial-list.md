@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/28/2017
+ms.date: 03/31/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 0925318a483d9a5e72015d33ee0868f41ae4bedd
-ms.openlocfilehash: 4d883d96a2a45f27e847c51c973d5ca7d0e267a8
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 70b04cde5fe877355c1dea29c78df3dcb8277973
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -27,17 +27,17 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="learn"></a>学习
 
-如果不熟悉 Azure 搜索，请先从本节开始。 看完以下所有资源大约需要&1; 个小时。
+如果不熟悉 Azure 搜索，请先从本节开始。 看完以下所有资源大约需要 1 个小时。
 
 | 标题 | 说明 | 日期 |
 |-------|-------------|------|
-| [观看此视频介绍](https://channel9.msdn.com/Events/Connect/2016/138) | 介绍功能、服务创建和查询，时长&9; 分&38; 秒。 | 2016 年 11 月 |
+| [观看此视频介绍](https://channel9.msdn.com/Events/Connect/2016/138) | 介绍功能、服务创建和查询，时长 9 分 38 秒。 | 2016 年 11 月 |
 | [创建服务](search-get-started-portal.md) | 在门户中设置 Azure 搜索的步骤。 | 2017 年 2 月 |
 | [查询索引](search-get-started-portal.md) | 使用内置的示例数据创建和查询索引。 利用门户中的工具，可快速了解查询类型和搜索参数。 | 2017 年 2 月 |
 | [下一步：<br/>.NET 中的代码](search-howto-dotnet-sdk.md) | C# 演练演示如何使用 Azure 搜索 .NET 库执行连接、索引和查询操作。 | 2016 年 11 月 |
 | [下一步：<br/>REST 中的代码](search-create-index-rest-api.md) | 查看用于在任何平台上用任何编程语言创建 Azure 搜索索引的 REST 调用和 JSON 有效负载。 | 2016 年 12 月 |
 
-## <a name="practice"></a>实践
+## <a name="code-samples"></a>代码示例
 
 通过示例和演练探索代码。
 
@@ -45,10 +45,19 @@ ms.lasthandoff: 03/01/2017
 |-------|-------------|
 | [Get started with .NET client library](https://github.com/Azure-Samples/search-dotnet-getting-started)（.NET 客户端库入门） | 使用 .NET 客户端库的 ASP.NET MVC 5 应用程序。 |
 | [Get started with REST API](https://github.com/Azure-Samples/search-rest-api-getting-started)（REST API 入门） | REST API 代码示例。 |
-| [Demo: NYC Jobs Website](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)（演示：NYC Jobs 网站） | 使用 ASP.NET MVC 通过 NYC Jobs 数据提供直播演示 Azure 搜索站点的源。 |
-| [Demo: Tate Art Gallery](https://github.com/liamca/azure-search-tate-art-gallery/)（演示：Tate Art Gallery） | 通过图库数据提供直播演示 Azure 搜索站点的源，显示集合数据类型和嵌套数据结构、平面和筛选器、人员姓名和缩略图。|
+| [Source: NYC Jobs Website Demo](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)（源：NYC Jobs 网站演示） | 使用 ASP.NET MVC 通过 NYC Jobs 数据提供直播演示 Azure 搜索站点的源。 |
+| [Source: Tate Art Gallery Demo](https://github.com/liamca/azure-search-tate-art-gallery/)（源：Tate Art Gallery 演示） | 通过图库数据提供直播演示 Azure 搜索站点的源，显示集合数据类型和嵌套数据结构、平面和筛选器、人员姓名和缩略图。|
 
 查找更多代码示例以了解特定的功能组合和方案：[**Azure 示例 > Azure 搜索**](https://github.com/azure-samples?utf8=%E2%9C%93&query=search)。
+
+## <a name="online-demos"></a>在线演示
+使用 Azure 搜索进行搜索体验的功能完整的 Web 应用程序。 这些链接内容提供使用应用（该应用使用 Azure 搜索）的入门经验。
+
+| 链接 | 说明 |
+|-------|-------------|
+|[New York City (NYC) Jobs portal demo for Azure Search](http://aka.ms/azjobsdemo)（New York City (NYC) Jobs 门户对 Azure 搜索的演示） | 使用 NYC Open Data Initiative 中的数据来演示 Azure 搜索功能的实时 ASP.NET 网站。 该应用使用[简单查询语法](https://msdn.microsoft.com/library/azure/dn798920.aspx)。 你可以修改代码来试用 [Lucene 语法](https://msdn.microsoft.com/library/azure/mt589323.aspx)。 |
+|[Tate Art Gallery Demo](https://rawgit.com/liamca/azure-search-tate-art-gallery/master/Demo/index.html)（Tate Art Gallery 演示） | 使用 Tate Art Gallery 中示例数据的托管 ASP.NET 网站。 请先尝试搜索“现代”、“照片”和“画像”等词。
+|[Azure Search Demo Site](https://searchsamples.azurewebsites.net/#/)（Azure 搜索演示站点） | Azure 搜索的演示应用集合。 使用 Azure 搜索试用媒体搜索、地理位置搜索和产品库存应用。 |
 
 ## <a name="courseware"></a>课件
 
@@ -58,14 +67,6 @@ ms.lasthandoff: 03/01/2017
 |------|-------------|------|
 [Building Intelligent Cross-Platform Mobile Applications Using Xamarin and Azure Search](https://mva.microsoft.com/en-US/training-courses/building-intelligent-crossplatform-mobile-applications-using-xamarin-and-azure-search-16890)（使用 Xamarin 和 Azure 搜索生成智能的跨平台移动应用程序） | Typeahead、全文搜索和分页、筛选、查找、moreLikeThis、机器学习、评分和优化、分析 | 2016 年 12 月 |
 [Using Windows Azure Search](https://mva.microsoft.com/en-US/training-courses/using-windows-azure-search-10540)（使用 Windows Azure 搜索） | 旧视频，深入介绍了缩放、地理空间搜索、语言分析和 Cortana 语音识别，仍具有一定参考价值 | 2015 年 5 月 | 
-
-## <a name="online-demos"></a>在线演示
-使用 Azure 搜索进行搜索体验的功能完整的 Web 应用程序。 
-
-| 链接 | 说明 |
-|-------|-------------|
-|[New York City (NYC) Jobs portal demo for Azure Search](http://aka.ms/azjobsdemo)（New York City (NYC) Jobs 门户对 Azure 搜索的演示） | 使用 NYC Open Data Initiative 中的数据来演示 Azure 搜索功能的实时 ASP.NET 网站。 该应用使用[简单查询语法](https://msdn.microsoft.com/library/azure/dn798920.aspx)。 你可以修改代码来试用 [Lucene 语法](https://msdn.microsoft.com/library/azure/mt589323.aspx)。 |
-|[Azure Search Demo Site](https://searchsamples.azurewebsites.net/#/)（Azure 搜索演示站点） | Azure 搜索的演示应用集合。 使用 Azure 搜索试用媒体搜索、地理位置搜索和产品库存应用。 |
 
 ## <a name="video-archive"></a>视频存档
 
@@ -98,6 +99,5 @@ ms.lasthandoff: 03/01/2017
 | [如何向搜索应用程序添加建议](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/) |了解如何实现建议，通常称为自动完成。 该演示介绍了多个主题，包括创建利用 Azure 搜索建议的 MVC4 应用程序、利用 Twitter typeahead.js 库使用 JavaScript 生成高效的自动建议组件及使用模糊建议实现即使在用户拼错单词时也可返回建议。 |
 | [TechNet 虚拟实验室：构建 Microsoft Azure 搜索应用程序](http://go.microsoft.com/?linkid=9874663) |提供开发环境、工具、文档和数据的虚拟实验室。 需要拥有一个 Azure 帐户、一个试用版订阅或 Azure 个人订阅才能完成此实验室。 |
 | [将 SQL Server 数据与 Azure 搜索同步](https://azure.microsoft.com/blog/2014/11/10/how-to-sync-sql-server-data-with-azure-search/) |介绍如何将 SQL Server 关系数据库中的数据加载到 Azure 搜索索引的博客文章。 |
-| [Azure 搜索管理 REST API 教程](search-get-started-management-api.md) |如何使用管理 REST API 设置服务和管理管理或查询 API 密钥。 |
 
 

@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/03/2017
+ms.date: 03/23/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9a653ac435198e89a527070a0174a1adaf830dc3
-ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 8d913c024fce9945cfd5eaf336deed259dfbef50
+ms.lasthandoff: 04/03/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>教程：Azure Active Directory 与 Rally Software 集成
 本教程的目的是说明 Azure 与 Rally Software 的集成。  
+
 在本教程中概述的方案假定您已具有以下各项：
 
 * 一个有效的 Azure 订阅
@@ -29,16 +31,17 @@ ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
 在本教程中概述的方案由以下构建基块组成：
 
 1. 为 Rally Software 启用应用程序集成
-2. 配置单一登录
+2. 配置单一登录 (SSO)
 3. 配置用户设置
 4. 分配用户
 
 ![方案](./media/active-directory-saas-rally-software-tutorial/IC769525.png "方案")
 
-## <a name="enabling-the-application-integration-for-rally-software"></a>为 Rally Software 启用应用程序集成
+## <a name="enable-the-application-integration-for-rally-software"></a>为 Rally Software 启用应用程序集成
 本部分的目的是概述如何为 Rally Software 启用应用程序集成。
 
-### <a name="to-enable-the-application-integration-for-rally-software-perform-the-following-steps"></a>若要为 Rally Software 启用应用程序集成，请执行以下步骤：
+**若要为 Rally Software 启用应用程序集成，请执行以下步骤：**
+
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
     ![Active Directory](./media/active-directory-saas-rally-software-tutorial/IC700993.png "Active Directory")
@@ -65,12 +68,14 @@ ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
    
     ![Rally Software](./media/active-directory-saas-rally-software-tutorial/IC769527.png "Rally Software")
    
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 
-本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Rally Software 进行身份验证。  
+本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Rally Software 进行身份验证。
+
 在此过程中，需要将证书上载到 Rally Software。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
+**若要配置单一登录，请执行以下步骤：**
+
 1. 在 Azure 经典门户中的“Rally Software”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-rally-software-tutorial/IC749323.png "配置单一登录")
@@ -99,21 +104,20 @@ ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
    
     ![身份验证](./media/active-directory-saas-rally-software-tutorial/IC769542.png "身份验证")
    
-    1. 从“身份验证”下拉列表中选择“Rally 或 SSO 身份验证”
- 
-    2. 在 Azure 经典门户的“配置 Rally Software 的单一登录”对话框页上，复制“标识提供者 ID”值，然后将其粘贴到“标识提供者 URL”文本框中
-
-    3. 在 Azure 经典门户的“配置 Rally Software 的单一登录”对话框页上，复制“远程注销 URL”值。
+  1. 从“身份验证”下拉列表中选择“Rally 或 SSO 身份验证”。
+  2. 在 Azure 经典门户的“配置 Rally Software 的单一登录”对话框页上，复制“标识提供者 ID”值，然后将其粘贴到“标识提供者 URL”文本框中。
+  3. 在 Azure 经典门户的“配置 Rally Software 的单一登录”对话框页上，复制“远程注销 URL”值。
 
 9. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-rally-software-tutorial/IC769547.png "配置单一登录")
    
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 
 要使 AAD 用户能够登录，必须使用其 Azure Active Directory 用户名将其预配到 Rally Software 应用程序中。
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户设置，请执行以下步骤：
+**若要配置用户预配，请执行以下步骤：**
+
 1. 登录到 Rally Software 租户。
 
 2. 转到“设置”\>“用户”，然后单击“+ 新增”。
@@ -126,21 +130,20 @@ ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
    
     ![创建用户](./media/active-directory-saas-rally-software-tutorial/IC781040.png "创建用户")
    
-    1. 在“用户名”文本框中，键入要预配的 Azure AD 用户的名称。
+   1. 在“用户名”文本框中，键入要预配的 Azure AD 用户的名称。
+   2. 在“电子邮件地址”文本框中，键入要预配的 Azure AD 用户的电子邮件地址。
+   3. 单击“保存并关闭”。
 
-    2. 在“电子邮件地址”文本框中，键入要预配的 Azure AD 用户的电子邮件地址。
-
-    3. 单击“保存并关闭”。
-
-> [!NOTE]
-> 可以使用任何其他 Rally Software 用户帐户创建工具或 Rally Software 提供的 API 来预配 AAD 用户帐户。
+>[!NOTE]
+>可以使用任何其他 Rally Software 用户帐户创建工具或 Rally Software 提供的 API 来预配 AAD 用户帐户。
 > 
 > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
-### <a name="to-assign-users-to-rally-software-perform-the-following-steps"></a>若要将用户分配到 Rally Software，请执行以下步骤：
+**若要将用户分配到 Rally Software，请执行以下步骤：**
+
 1. 在 Azure 经典门户中，创建一个测试帐户。
 
 2. 在“Rally Software”应用程序集成页上，单击“分配用户”。
@@ -151,11 +154,6 @@ ms.openlocfilehash: 504a5723f025d7383dbec78cdd268b7c1b94a1e5
    
     ![是](./media/active-directory-saas-rally-software-tutorial/IC767830.png "是")
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
+如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 

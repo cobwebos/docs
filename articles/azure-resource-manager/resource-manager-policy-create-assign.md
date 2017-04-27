@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 5560b22f3f92a8e0a7cb8b973ef2e4c66bc32c06
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: fd15cbc8f6efa788ddaeaee4ab39ce1410c4be5a
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/16/2017
 
 Azure 提供了一些预定义策略，可降低要定义的策略数目。 如果预定义策略适用于你的方案，请跳过前两个步骤，直接将预定义策略分配到作用域。
 
-本主题着重介绍创建策略定义以及将该定义分配到作用域的步骤。 而不是关注用于创建策略定义的语法。 有关策略语法的信息，请参阅[资源策略概述](resource-manager-policy.md)。
+本文着重介绍通过 REST API、PowerShell 或 Azure CLI 创建策略定义以及将该定义分配到作用域的步骤。 如果想要通过门户分配策略，请参阅[使用 Azure 门户分配和管理资源策略](resource-manager-policy-portal.md)。 本文不关注用于创建策略定义的语法。 有关策略语法的信息，请参阅[资源策略概述](resource-manager-policy.md)。
 
 ## <a name="rest-api"></a>REST API
 

@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: e085f90d3f34d32d2e065ede6674842000e29fb8
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 5a39d4ec9bbf1c7672267c7e89c957ebc49f1f3a
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -124,6 +125,14 @@ ms.openlocfilehash: e085f90d3f34d32d2e065ede6674842000e29fb8
 * 打开终端并在详细模式下启动 collectd，查看其报告的任何问题：
   * `sudo collectd -f`
 
+## <a name="known-issue"></a>已知问题
+
+Application Insights 写入插件与某些读取插件不兼容。 Application Insights 插件需要浮点数时，有些插件有时会发送“NaN”。
+
+症状：collectd 日志显示的错误包括“AI：...SyntaxError：意外的令牌 N”。
+
+解决方法：排除由问题写入插件收集的数据。 
+
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
@@ -134,12 +143,6 @@ ms.openlocfilehash: e085f90d3f34d32d2e065ede6674842000e29fb8
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
-[usage]: app-insights-web-track-usage.md
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

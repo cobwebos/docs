@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/18/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: be44ca9d14d6dbb7a50d5c42c163bc66531bb90f
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 5b77598e76de3508d90b35ce5a1f2ee338aca0c8
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -241,7 +241,7 @@ export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 >
 
 ## <a name="create-and-manage-blobs"></a>创建并管理 blob
-Azure Blob 存储是用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 本部分假设你已熟悉 Azure Blob 存储概念。 有关详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)和 [Blob 服务概念](/rest/api/storageservices/fileservices/blob-service-concepts)。
+Azure Blob 存储是用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 本部分假设你已熟悉 Azure Blob 存储概念。 有关详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)和 [Blob 服务概念](/rest/api/storageservices/blob-service-concepts)。
 
 ### <a name="create-a-container"></a>创建容器
 Azure 存储空间中的每个 Blob 都必须在容器中。 可以使用 `az storage container create` 命令创建容器：
@@ -267,7 +267,7 @@ az storage blob upload -f <local_file_path> -c <container_name> -n <blob_name>
 
  默认情况下，`blob upload` 命令将 *.vhd 文件上载到页 Blob 或块 Blob。 若要在上载 Blob 时指定另一种类型，可以使用 `--type` 参数，允许的值为 `append`、`block` 和 `page`。
 
- 有关不同 Blob 类型的详细信息，请参阅 [Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)（了解块 Blob、追加 Blob 和页 Blob）。
+ 有关不同 Blob 类型的详细信息，请参阅 [Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)（了解块 Blob、追加 Blob 和页 Blob）。
 
 ### <a name="download-blobs-from-a-container"></a>从容器下载 Blob
 此示例演示如何从容器下载 Blob：

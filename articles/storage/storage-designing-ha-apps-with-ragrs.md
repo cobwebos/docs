@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/19/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 1f274fdbcdb64425a296ac7388938c423745f477
-ms.openlocfilehash: c9c0756fd714438e4ae74deadf0e5f009164af13
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 3b7eca721181155cd2bcc619d517c9b5a6a89a0d
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -202,7 +203,7 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
 | T2       | 事务 B：<br>更新<br> 主要区域中的<br> 员工实体  |                                | T1                 | 事务 B 已写入主要区域，<br> 但尚未复制。  |
 | T3       | 事务 C：<br> 更新 <br>administrator<br>中的角色实体<br>primary |                    | T1                 | 事务 C 已写入主要区域，<br> 但尚未复制。  |
 | *T4*     |                                                       | 事务 C <br>复制到<br> 次要区域 | T1         | 事物 C 已复制到次要区域。<br>LastSyncTime 未更新，因为 <br>事务 B 尚未复制。|
-| *T5*     | 从次要区域 <br>读取实体                           |                                  | T1                 | 获取员工的过时值 <br> 因为事务 B 尚未 <br> 复制。 获取管理员角色实体的新值<br> 因为 C 已<br> 复制。 上次同步时间仍未<br> 更新，因为事务 B<br> 尚未复制。 可以判断出<br>管理员角色实体不一致 <br>因为实体日期/时间晚于 <br>上次同步时间。 |
+| *T5*     | 从次要区域 <br>读取实体                           |                                  | T1                 | 获取员工实体的过时值， <br> 因为事务 B 尚未 <br> 复制。 获取管理员角色实体的新值<br> 因为 C 已<br> 复制。 上次同步时间仍未<br> 更新，因为事务 B<br> 尚未复制。 可以判断出<br>管理员角色实体不一致 <br>因为实体日期/时间晚于 <br>上次同步时间。 |
 | *T6*     |                                                      | 事务 B<br> 复制到<br> 次要区域 | T6                 | *T6* - 通过 C 的所有事务都已 <br>复制，上次同步时间<br> 已更新。 |
 
 在此示例中，假定客户端在 T5 从次要区域切换到读取。 它此时能够成功读取**管理员角色**实体，但该实体包含的管理员数量值与次要区域中此时标记的**员工**数量不一致。 客户端只需显示此值，并且具有信息不一致的风险。 或者，客户端可能会尝试确定**管理员角色**可能是不一致的状态，因为更新是无序进行的，并随后告知用户这一事实。
@@ -234,9 +235,4 @@ static function OnBeforeResponse(oSession: Session) {
 * 有关读取访问权限异地冗余的详细信息及设置 LastSyncTime 的另一示例，请参阅 [Windows Azure Storage Redundancy Options and Read Access Geo Redundant Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)（Microsoft Azure 存储冗余选项和读取访问权限异地冗余存储）。
 
 * 有关如何在主终结点和辅助终结点之间来回切换的完整示例，请参阅 [Azure 示例 - 搭配使用断路器模式和 RA-GRS 存储](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs)。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

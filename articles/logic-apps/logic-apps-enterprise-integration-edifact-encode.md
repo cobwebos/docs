@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 75eeca842cc31be6807dd6071de6d9a5c327fad3
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 507fb3200fe62aaa813464e5d6152a79907fdef7
+ms.lasthandoff: 04/06/2017
 
 
 ---

@@ -1,6 +1,6 @@
 ---
-title: "如何开始使用表存储和 Visual Studio 连接服务 (ASP.NET 5) | Microsoft Docs"
-description: "在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 ASP.NET 5 项目中使用 Azure 表存储"
+title: "如何开始使用表存储和 Visual Studio 连接服务 (ASP.NET Core) | Microsoft Docs"
+description: "在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 ASP.NET Core 项目中使用 Azure 表存储"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5067bd03961387593c37a8d3b7eeae4e1e586539
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: b64d4f7e55977c7ce144987f7600e5ddcb25596c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 5067bd03961387593c37a8d3b7eeae4e1e586539
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET 5 项目中已创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 表存储。
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET Core 项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 表存储。
 
 Azure 表存储服务使用户可以存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。
 
@@ -34,10 +35,10 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 
 若要开始，首先需要在存储帐户中创建表。 我们将向你展示如何使用代码创建 Azure 表。 此外，我们将展示如何执行基本的表和实体操作，例如添加、修改、读取和删除表实体。 示例是用 C\# 代码编写的，并使用了 Azure Storage Client Library for .NET。
 
-**注意：** - 在 ASP.NET 5 中执行 Azure 存储调用的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
+**注意：**在 ASP.NET Core 中执行 Azure 存储调用的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
 
 ## <a name="access-tables-in-code"></a>使用代码访问表
-若要访问 ASP.NET 5 项目中的表，需要将下列事项包含在访问 Azure 表存储的任何 C# 源文件中。
+若要访问 ASP.NET Core 项目中的表，需要将下列事项包含在任何访问 Azure 表存储的 C# 源文件中。
 
 1. 请确保 C# 文件顶部的命名空间声明包括以下 **using** 语句。
    
@@ -184,10 +185,5 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

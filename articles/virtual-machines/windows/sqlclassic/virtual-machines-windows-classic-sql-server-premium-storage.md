@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 11/28/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: d055a859ec89ef7fec23db9bf1d574dd8cb76293
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: aba69b95db8313dd9ce711ddc6c26e5df55d79a4
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/25/2017
 ## <a name="overview"></a>概述
 [Azure 高级存储](../../../storage/storage-premium-storage.md)是下一代提供低延迟和高吞吐量 IO 的存储。 它最适用于关键 IO 密集型工作负荷，例如 IaaS [虚拟机](https://azure.microsoft.com/services/virtual-machines/)上的 SQL Server。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 本文提供迁移运行 SQL Server 的虚拟机以使用高级存储的规划和指南。 这包括 Azure 基础结构（网络、存储）以及来宾 Windows VM 步骤。 [附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)中的示例显示如何移动较大的 VM 以通过 PowerShell 利用改进的本地 SSD 存储的完整全面的端到端迁移。
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/25/2017
 使用高级存储有多个先决条件。
 
 ### <a name="machine-size"></a>虚拟机大小
-要使用高级存储，需要使用 DS 系列虚拟机 (VM)。 如果你以前尚未在云服务中使用 DS 系列虚拟机，则必须在重新创建 VM 作为 DS* 角色大小之前，删除现有 VM、保留附加磁盘，然后创建新的云服务。 有关虚拟机大小的详细信息，请参阅 [Azure 的虚拟机和云服务大小](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+要使用高级存储，需要使用 DS 系列虚拟机 (VM)。 如果你以前尚未在云服务中使用 DS 系列虚拟机，则必须在重新创建 VM 作为 DS* 角色大小之前，删除现有 VM、保留附加磁盘，然后创建新的云服务。 有关虚拟机大小的详细信息，请参阅 [Azure 的虚拟机和云服务大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ### <a name="cloud-services"></a>云服务
 在新的云服务中创建 VM 时，只能将 DS* VM 用于高级存储。 如果在 Azure 中使用 SQL Server Always On，则 Always On 侦听器将引用与云服务关联的 Azure 内部或外部负载均衡器 IP 地址。 本文重点介绍如何在此方案中迁移，同时保持可用性。
@@ -142,9 +142,9 @@ ms.lasthandoff: 03/25/2017
 将 VHD 映射到存储池中的物理磁盘后，可以将其分离并复制到高级存储帐户，然后使用正确的缓存设置附加它们。 请参阅[附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)中的示例，步骤 8 到步骤 12。 以下步骤显示如何将 VM 附加的 VHD 磁盘配置提取到 CSV 文件、复制 VHD、变更磁盘配置缓存设置，最后将 VM 重新部署为带所有附加磁盘的 DS 系列 VM。
 
 ### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>VM 存储带宽和 VHD 存储吞吐量
-存储量性能取决于指定的 DS* VM 大小和 VHD 大小。 VM 针对可附加的 VHD 数量以及它们支持的最大带宽（MB/秒）提供不同限额。 有关特定带宽数字，请参阅 [Azure 的虚拟机和云服务大小](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+存储量性能取决于指定的 DS* VM 大小和 VHD 大小。 VM 针对可附加的 VHD 数量以及它们支持的最大带宽（MB/秒）提供不同限额。 有关特定带宽数字，请参阅 [Azure 的虚拟机和云服务大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-较大的磁盘大小可提高 IOPS。 当你考虑迁移路径时，应考虑这一点。 有关详细信息，[请参阅 IOPS 和磁盘类型的表](../../../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)。
+较大的磁盘大小可提高 IOPS。 当你考虑迁移路径时，应考虑这一点。 有关详细信息，[请参阅 IOPS 和磁盘类型的表](../../../storage/storage-premium-storage.md#scalability-and-performance-targets)。
 
 最后，考虑到 VM 具有不同的最大磁盘带宽，它们将支持所有附加磁盘。 在高负载下可使可供该 VM 角色大小使用的最大磁盘带宽饱和。 例如，Standard_DS14 将最多支持 512MB/秒；因此，使用三个 P30 磁盘可使 VM 的磁盘带宽饱和。 但在此示例中，可以超出吞吐量限制，具体取决于读取和写入 IO 的组合。
 
@@ -271,7 +271,7 @@ ms.lasthandoff: 03/25/2017
 
 
 #### <a name="step-3-use-existing-image"></a>步骤 3：使用现有映像
-可以使用现有映像， 也可以[创建现有虚拟机的映像](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，创建映像的虚拟机不一定是 DS*虚拟机。获得映像后，以下步骤演示如何使用**Start-AzureStorageBlobCopy** PowerShell commandlet 将其复制到高级存储帐户。
+可以使用现有映像， 也可以[创建现有虚拟机的映像](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，创建映像的虚拟机不一定是 DS* 虚拟机。 获得映像后，以下步骤演示如何使用 **Start-AzureStorageBlobCopy** PowerShell commandlet 将其复制到高级存储帐户。
 
     #Get storage account keys:
     #Standard Storage account

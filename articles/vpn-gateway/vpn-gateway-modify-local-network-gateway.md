@@ -1,10 +1,10 @@
 ---
-title: "修改本地网络网关 IP 地址前缀和网关 IP | Microsoft 文档"
+title: "修改本地网络网关 IP 地址前缀和 VPN 网关 IP 地址 | Azure| PowerShell| Microsoft Docs"
 description: "本文介绍如何更改本地网络网关的 IP 地址前缀"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 8c7db48f-d09a-44e7-836f-1fb6930389df
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/08/2016
+ms.date: 04/05/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: 2459f106e90616b05062224be82a06ef20fbc7b4
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: a26cbe2172dc27c152246d70b7f6b504ec4a08a5
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -35,10 +36,5 @@ ms.openlocfilehash: 2459f106e90616b05062224be82a06ef20fbc7b4
 
 ## <a name="next-steps"></a>后续步骤
 可验证网关连接。 请参阅[验证网关连接](vpn-gateway-verify-connection-resource-manager.md)。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

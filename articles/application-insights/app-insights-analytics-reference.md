@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2017
+ms.date: 03/22/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: b850264ef2b89ad1679ae1e956a58cc849e63c84
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 7f6c71056bca7beebc02313409aabe386d191e23
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -824,7 +824,7 @@ requests
 * 在正则表达式分析中，正则表达式可以使用最小化运算符“?”尽快移至以下匹配项。
 * 包含类型的列名称将文本作为指定类型进行分析。 除非 kind=relaxed，否则不成功分析将验证是否匹配整个模式。
 * 不含类型或含“字符串”类型的列名称会复制最小字符数以访问以下匹配项。
-* “*”跳过最小字符数以访问以下匹配项。可在模式的开端和结尾或在类型后使用“*”，但不能在字符串后或字符串匹配项之间使用。
+* “*”跳过最小字符数以访问以下匹配项。 可在模式的开端和结尾或在类型后使用“*”，但不能在字符串后或字符串匹配项之间使用。
 
 分析模式中的所有元素必须匹配正确；否则，无法生成任何结果。 此规则的例外是，当 kind=relaxed 时，如果分析类型化变量失败，分析的其余部分将继续。
 
@@ -968,7 +968,7 @@ T
 * *Stop*：输出中正生成的最大值（如果 *step* 跳过此值，则为最大值边界）。
 * *Step*：两个连续值之间的差异。 
 
-参数必须为数字、日期或时间跨度值。 它们不能引用任何表的列。 （如需基于输入表计算范围，请使用 [range*函数*](#range)，可能需配合使用 [mvexpand 运算符](#mvexpand-operator)。） 
+参数必须为数字、日期或时间跨度值。 它们不能引用任何表的列。 （如需基于输入表计算范围，请使用 [range *函数*](#range)，可能需配合使用 [mvexpand 运算符](#mvexpand-operator)。） 
 
 **返回**
 
@@ -1035,9 +1035,13 @@ range timestamp from ago(4h) to now() step 1m
 | 巴黎 |27163 |
 
 ### <a name="render-directive"></a>render 指令
-    T | render [ table | timechart  | barchart | piechart ]
+    T | render [ table | timechart  | barchart | piechart | areachart | scatterchart ] 
+        [kind= default|stacked|stacked100|unstacked]
 
 render 指示表示层如何显示表。 它应是管道的最后一个元素。 这是在屏幕上使用控件的一种便捷替代方法，从而允许通过特定呈现方法保存查询。
+
+对于某些类型的图表，`kind` 提供其他选项。 例如，所选维度每条的 `stacked` barchart 段，显示不同的维度值对总数的贡献。 在 `stacked100` 图表中，每条的高度相同，均为 100%，以便能够比较相对的贡献。
+
 
 ### <a name="restrict-clause"></a>restrict 子句
 指定可用于以下运算符的表名称集。 例如：
@@ -1764,6 +1768,12 @@ Analytics 中将显示一个如下所示的事件组：
     iff(notnull(todouble(customDimensions.myValue)),
        ..., ...)
 
+
+
+
+
+
+
 ### <a name="scalar-comparisons"></a>标量比较
 |  |  |
 | --- | --- |
@@ -2096,6 +2106,12 @@ true 或 false 具体取决于值是否为 null。
 ## <a name="date-and-time"></a>日期和时间
 [ago](#ago) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) |  [dayofyear](#dayofyear) |[datepart](#datepart) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth)|  [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
+timespan 表示时间间隔，如 3 小时或 1 年。
+
+datetime 表示特定日历/时钟的日期和时间（UTC 格式）。
+
+不存在单独“date”类型。 若要从 datetime 删除时间，请使用 `bin(timestamp, 1d)` 等表达式。
+
 ### <a name="date-and-time-literals"></a>日期和时间文本
 |  |  |
 | --- | --- |
@@ -2118,22 +2134,22 @@ true 或 false 具体取决于值是否为 null。
 | `time("0.12:34:56.7")` |`0d+12h+34m+56.7s` |
 
 ### <a name="date-and-time-expressions"></a>日期和时间表达式
-| 表达式 | 结果 |
-| --- | --- |
-| `datetime("2015-01-02") - datetime("2015-01-01")` |`1d` |
-| `datetime("2015-01-01") + 1d` |`datetime("2015-01-02")` |
-| `datetime("2015-01-01") - 1d` |`datetime("2014-12-31")` |
-| `2h * 24` |`2d` |
-| `2d` / `2h` |`24` |
-| `datetime("2015-04-15T22:33") % 1d` |`timespan("22:33")` |
-| `bin(datetime("2015-04-15T22:33"), 1d)` |`datetime("2015-04-15T00:00")` |
-|  | |
-| `<` |小于 |
-| `<=` |小于或等于 |
-| `>` |大于 |
-| `>=` |大于或等于 |
-| `<>` |不等于 |
-| `!=` |不等于 |
+| 表达式 | 结果 |效果|
+| --- | --- |---|
+| `datetime("2015-01-02") - datetime("2015-01-01")` |`1d` | 时间差|
+| `datetime("2015-01-01") + 1d` |`datetime("2015-01-02")` | 加天数 |
+| `datetime("2015-01-01") - 1d` |`datetime("2014-12-31")` | 减天数|
+| `2h * 24` |`2d` |乘以时间跨度|
+| `2d` / `2h` |`24` |除以时间跨度|
+| `datetime("2015-04-15T22:33") % 1d` |`timespan("22:33")` |自 datetime 起的时间|
+| `bin(datetime("2015-04-15T22:33"), 1d)` |`datetime("2015-04-15T00:00")` |自 datetime 起的日期|
+|  | ||
+| `<` ||小于 |
+| `<=` ||小于或等于 |
+| `>` ||大于 |
+| `>=` ||大于或等于 |
+| `<>` ||不等于 |
+| `!=` ||不等于 |
 
 ### <a name="ago"></a>ago
 从当前 UTC 时钟时间减去给定时间跨度。 与 `now()` 类似，此函数可在语句中多次使用，并且所有实例化引用的 UTC 时钟时间均相同。

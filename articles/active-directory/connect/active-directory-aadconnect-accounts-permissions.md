@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 04/04/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 68e475891a91e4ae45a467cbda2b7b51c8020dbd
-ms.openlocfilehash: e5f643d444fb2bf00aa91083f5d09962372e0dbb
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 4ef0118435020edc3a922c88a5a55400992cbc09
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -106,14 +107,68 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 
 ![AD 帐户](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)
 
-### <a name="azure-ad-connect-sync-service-accounts"></a>Azure AD Connect 同步服务帐户
+如果使用自定义设置，则需负责在开始安装之前创建帐户。
+
+### <a name="azure-ad-connect-sync-service-account"></a>Azure AD Connect 同步服务帐户
+同步服务可在不同帐户下运行。 它可在**虚拟服务帐户** (VSA)、**组托管服务帐户** (gMSA/sMSA) 或常规用户帐户下运行。 2017 年 4 月版本的 Connect 的支持选项已更改（若进行全新安装）。 如果从早期版本的 Azure AD Connect 升级，这些附加选项将不可用。
+
+| 帐户的类型 | 安装选项 | 说明 |
+| --- | --- | --- |
+| [虚拟服务帐户](#virtual-service-account) | 快速和自定义，2017 年 4 月版及更高版本 | 此选项适用于所有快速安装，在域控制器上的安装除外。 对于自定义安装，除非使用了其他选项，否则它便是默认选项。 |
+| [组托管服务帐户](#group-managed-service-account) | 自定义，2017 年 4 月版及更高版本 | 如果使用远程 SQL Server，则建议使用组托管服务帐户。 |
+| [用户帐户](#user-account) | 快速和自定义，2017 年 4 月版及更高版本 | 只有在 Windows Server 2008 以及域控制器上安装时才会创建前缀为 AAD_ 的用户帐户。 |
+| [用户帐户](#user-account) | 快速和自定义，2017 年 3 月版及更早版本 | 在安装期间创建前缀为 AAD_ 的本地帐户。 使用自定义安装时，可指定另一个帐户。 |
+
+如果将 Connect 与 2017 年 3 月的版本或更早版本一起使用，则不应重置服务帐户中的密码，因为出于安全原因，Windows 会销毁加密密钥。 无法在不重装 Azure AD Connect 的情况下将帐户更改为任何其他帐户。 如果升级到 2017 年 4 月的版本或更高版本，则支持更改服务帐户中的密码，但不能更改使用的帐户。
+
+> [!Important]
+> 只能在首次安装时设置服务帐户。 完成安装后，不支持更改服务帐户。
+
+下面是针对同步服务帐户的默认、建议和支持的选项表。
+
+图例：
+
+- **粗体**表示默认选项，并且在大多数情况下是建议选项。
+- *斜体*表示建议选项（当该选项不是默认选项时）。
+- 2008 - 在 Windows Server 2008 上安装时的默认选项
+- 非粗体 - 支持的选项
+- 本地帐户 - 服务器上的本地用户帐户
+- 域帐户 - 域用户帐户
+- sMSA - [独立托管服务帐户](https://technet.microsoft.com/library/dd548356.aspx)
+- gMSA - [组托管服务帐户](https://technet.microsoft.com/library/hh831782.aspx)
+
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>“自定义” | 远程 SQL</br>“自定义” |
+| --- | --- | --- | --- |
+| **独立/工作组计算机** | 不支持 | **VSA**</br>本地帐户 (2008)</br>本地帐户 |  不支持 |
+| **加入域的计算机** | **VSA**</br>本地帐户 (2008) | **VSA**</br>本地帐户 (2008)</br>本地帐户</br>域帐户</br>sMSA、gMSA | **gMSA**</br>域帐户 |
+| **域控制器** | **域帐户** | *gMSA*</br>**域帐户**</br>sMSA| *gMSA*</br>**域帐户**|
+
+#### <a name="virtual-service-account"></a>虚拟服务帐户
+虚拟服务帐户是一种特殊类型的帐户，它没有密码且由 Windows 管理。
+
+![VSA](./media/active-directory-aadconnect-accounts-permissions/aadsyncvsa.png)
+
+VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使用远程 SQL，则建议改用[组托管服务帐户](#managed-service-account)。
+
+此功能需要 Windows Server 2008 R2 或更高版本。 如果在 Windows Server 2008 上安装 Azure AD Connect，则安装将回退改用[用户帐户](#user-account)。
+
+#### <a name="group-managed-service-account"></a>组托管服务帐户
+如果使用远程 SQL Server，则建议使用**组托管服务帐户**。 若要详细了解如何为组托管服务帐户准备 Active Directory ，请参阅 [Group Managed Service Accounts Overview](https://technet.microsoft.com/library/hh831782.aspx)（组托管服务帐户概述）。
+
+若要使用此选项，请在[安装所需组件](active-directory-aadconnect-get-started-custom.md#install-required-components)页上，选择“使用现有服务帐户”，然后选择“托管服务帐户”。  
+![VSA](./media/active-directory-aadconnect-accounts-permissions/serviceaccount.png)  
+还支持使用[独立托管服务帐户](https://technet.microsoft.com/library/dd548356.aspx)。 但由于这些帐户只能在本地计算机上使用，因此使用这些帐户相对默认虚拟服务帐户而言并没有实际的好处。
+
+此功能需要 Windows Server 2012 或更高版本。 如果需要使用早期版本的操作系统和远程 SQL，则必须使用[用户帐户](#user-account)。
+
+#### <a name="user-account"></a>用户帐户
 本地服务帐户将由安装向导创建（除非你在自定义设置指定了要使用的帐户）。 该帐户具有 **AAD_** 前缀，可用作实际同步服务的运行帐户。 如果你在域控制器上安装 Azure AD Connect，则会在该域中创建帐户。 域中必须具有 **AAD_** 服务帐户，才能使用运行 SQL Server 的远程服务器和需要身份验证的代理。
 
 ![同步服务帐户](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
 该帐户带有永不过期的长复杂密码。
 
-此帐户用于以安全方式存储其他帐户的密码。 其他这些帐户密码将以加密形式存储在数据库中。 通过使用 Windows 数据保护 API (DPAPI) 的密钥加密服务来保护加密密钥的私钥。 你不应重置服务帐户中的密码，否则出于安全原因，Windows 会销毁加密密钥。
+此帐户用于以安全方式存储其他帐户的密码。 其他这些帐户密码将以加密形式存储在数据库中。 通过使用 Windows 数据保护 API (DPAPI) 的密钥加密服务来保护加密密钥的私钥。
 
 如果使用完整的 SQL Server，服务帐户将是为同步引擎创建的数据库的 DBO。 如果使用其他权限，服务将无法按预期工作。 此外会创建 SQL 登录名。
 
@@ -132,10 +187,4 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](../active-directory-aadconnect.md)的详细信息。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

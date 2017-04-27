@@ -1,6 +1,6 @@
 ---
 title: "在门户中为 Azure 应用创建标识 | Microsoft 文档"
-description: "介绍如何创建新的 Active Directory 应用程序和服务主体，在 Azure 资源管理器中将此服务主体与基于角色的访问控制配合使用可以管理对资源的访问权限。"
+description: "介绍如何创建新的 Azure Active Directory 应用程序和服务主体，在 Azure Resource Manager 中将此服务主体与基于角色的访问控制配合使用可以管理对资源的访问权限。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -15,12 +15,13 @@ ms.workload: na
 ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 0b1d7bb2cbbeed2b41c22f19c1db49e81dadd4d7
+ms.lasthandoff: 04/19/2017
 
 
 ---
-# <a name="use-portal-to-create-active-directory-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Active Directory 应用程序和服务主体
+# <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体
 > [!div class="op_single_selector"]
 > * [PowerShell](resource-group-authenticate-service-principal.md)
 > * [Azure CLI](resource-group-authenticate-service-principal-cli.md)
@@ -28,7 +29,7 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 >
 >
 
-当应用程序需要访问或修改资源时，必须设置 Active Directory (AD) 应用程序，并为其分配所需的权限。 与使用用户自己的凭据运行应用相比，此方法更优，原因在于：
+当应用程序需要访问或修改资源时，必须设置 Azure Active Directory (AD) 应用程序，并为其分配所需的权限。 与使用用户自己的凭据运行应用相比，此方法更优，原因在于：
 
 * 可以将权限分配给应用标识，这些权限不同于你自己的权限。 通常情况下，这些权限仅限于应用需执行的操作。
 * 你的职责变化时，无需更改应用的凭据。 
@@ -37,20 +38,20 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 本主题演示如何通过门户执行这些步骤。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
  
 ## <a name="required-permissions"></a>所需的权限
-为完成本主题，必须具有足够的权限向 Active Directory 注册应用程序，并将应用程序分配到 Azure 订阅中的角色。 请确保你拥有适当的权限来执行这些步骤。
+为完成本主题，必须具有足够的权限向 Azure AD 租户注册应用程序，并将应用程序分配到 Azure 订阅中的角色。 请确保你拥有适当的权限来执行这些步骤。
 
-### <a name="check-active-directory-permissions"></a>检查 Active Directory 权限
+### <a name="check-azure-active-directory-permissions"></a>检查 Azure Active Directory 权限
 1. 通过 [Azure 门户](https://portal.azure.com)登录 Azure 帐户。
 2. 选择“Azure Active Directory”。
 
      ![选择 azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
-3. 在 Active Directory 中，选择“用户设置”。
+3. 在 Azure Active Directory 中，选择“用户设置”。
 
      ![选择用户设置](./media/resource-group-create-service-principal-portal/select-user-settings.png)
-4. 检查“应用注册”设置。 如果设置为“是”，则非管理员用户可以注册 AD 应用。 此设置意味着 Active Directory 中的任何用户都可以注册应用。 可继续转到[检查 Azure 订阅权限](#check-azure-subscription-permissions)。
+4. 检查“应用注册”设置。 如果设置为“是”，则非管理员用户可以注册 AD 应用。 此设置意味着 Active AD 租户中的任何用户都可以注册应用。 可继续转到[检查 Azure 订阅权限](#check-azure-subscription-permissions)。
 
      ![查看应用注册](./media/resource-group-create-service-principal-portal/view-app-registrations.png)
-5. 如果应用注册设置已设置为“否”，则只有管理员用户可以注册应用。 需要检查你的帐户是否为 Active Directory 管理员。 从快速任务选择“概述”和“查找用户”。
+5. 如果应用注册设置已设置为“否”，则只有管理员用户可以注册应用。 需要检查你的帐户是否为 Active AD 租户的管理员。 从快速任务选择“概述”和“查找用户”。
 
      ![查找用户](./media/resource-group-create-service-principal-portal/find-user.png)
 6. 搜索你的帐户，在找到帐户后选择它。
@@ -59,7 +60,7 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 7. 对于你的帐户，选择“目录角色”。 
 
      ![目录角色](./media/resource-group-create-service-principal-portal/select-directory-role.png)
-8. 查看你分配到的 Active Directory 角色。 如果你的帐户分配到“用户”角色，但（前面的步骤中设置的）应用注册设置仅限于管理员用户，请要求管理员为你分配管理员角色或允许用户注册应用。
+8. 在 Azure AD 中查看分配给你的目录角色。 如果你的帐户分配到“用户”角色，但（前面的步骤中设置的）应用注册设置仅限于管理员用户，请要求管理员为你分配管理员角色或允许用户注册应用。
 
      ![查看角色](./media/resource-group-create-service-principal-portal/view-role.png)
 
@@ -68,9 +69,9 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 
 检查订阅权限的方法如下：
 
-1. 如果未在前述步骤中看到 Active Directory 帐户，请从左窗格选择“Azure Active Directory”。
+1. 如果未在前述步骤中看到 Azure AD 帐户，请从左窗格选择“Azure Active Directory”。
 
-2. 查找 Active Directory 帐户。 从快速任务选择“概述”和“查找用户”。
+2. 查找 Azure AD 帐户。 从快速任务选择“概述”和“查找用户”。
 
      ![查找用户](./media/resource-group-create-service-principal-portal/find-user.png)
 2. 搜索你的帐户，在找到帐户后选择它。
@@ -84,7 +85,7 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 
      ![显示权限](./media/resource-group-create-service-principal-portal/view-assigned-roles.png)
 
-## <a name="create-an-active-directory-application"></a>创建 Active Directory 应用程序
+## <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 1. 通过 [Azure 门户](https://portal.azure.com)登录 Azure 帐户。
 2. 选择“Azure Active Directory”。
 
@@ -106,7 +107,7 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 ## <a name="get-application-id-and-authentication-key"></a>获取应用程序 ID 和身份验证密钥
 以编程方式登录时，需要使用应用程序的 ID 和身份验证密钥。 若要获取这些值，请使用以下步骤：
 
-1. 从 Active Directory 中的“应用注册”，选择应用程序。
+1. 从 Azure Active Directory 中的“应用注册”，选择应用程序。
 
      ![选择应用程序](./media/resource-group-create-service-principal-portal/select-app.png)
 2. 复制“应用程序 ID”并将其存储在应用程序代码中。 [示例应用程序](#sample-applications)部分的应用程序引用此值作为客户端 ID。
@@ -126,9 +127,9 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 ## <a name="get-tenant-id"></a>获取租户 ID
 以编程方式登录时，需要随身份验证请求传递租户 ID。 
 
-1. 若要获取租户 ID，请选择 Active directory 的“属性”。 
+1. 若要获取租户 ID，请选择 Azure AD 租户的“属性”。 
 
-     ![选择 active directory 属性](./media/resource-group-create-service-principal-portal/select-ad-properties.png)
+     ![选择 Azure AD 属性](./media/resource-group-create-service-principal-portal/select-ad-properties.png)
 
 2. 复制“目录 ID”。 此值即为租户 ID。
 
@@ -165,7 +166,7 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 
 ## <a name="log-in-as-the-application"></a>作为应用程序登录
 
-现已在 Active Directory 设置你的应用程序。 可使用 ID 和密钥登录为该应用程序。 应用程序分配到角色，可以该角色身份执行特定操作。 
+现已在 Azure Active Directory 中设置你的应用程序。 可使用 ID 和密钥登录为该应用程序。 应用程序分配到角色，可以该角色身份执行特定操作。 
 
 若要通过 PowerShell 登录，请参阅[通过 PowerShell 提供凭据](resource-group-authenticate-service-principal.md#provide-credentials-through-powershell)。
 
@@ -206,10 +207,5 @@ ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 ## <a name="next-steps"></a>后续步骤
 * 若要设置多租户应用程序，请参阅[使用 Azure Resource Manager API 进行授权的开发人员指南](resource-manager-api-authentication.md)。
 * 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

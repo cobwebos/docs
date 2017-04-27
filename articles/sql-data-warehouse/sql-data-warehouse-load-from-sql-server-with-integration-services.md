@@ -3,7 +3,7 @@ title: "将数据从 SQL Server 载入 Azure SQL 数据仓库 (SSIS) | Microsoft
 description: "演示如何创建 SQL Server Integration Services (SSIS) 包，以便将数据从各种数据源移动到 SQL 数据仓库。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: douglaslms
 manager: jhubbard
 editor: 
 ms.assetid: e2c252e9-0828-47c2-a808-e3bea46c134a
@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
-ms.author: barbkess
 ms.custom: loading
+ms.date: 03/30/2017
+ms.author: douglasl;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a8c557ea07cbccb913bc47c510f6759dd832c861
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d208f783e5b4e7786350706d8025e6e13f45f0d2
+ms.lasthandoff: 04/03/2017
+
 
 
 ---
@@ -55,14 +56,14 @@ SQL Server Integration Services (SSIS) 是一套灵活的工具，可提供连�
 若要逐步完成本教程，你需要：
 
 1. **SQL Server 集成服务 (SSIS)**。 SSIS 是 SQL Server 的一个组件，且需要使用 SQL Server 的评估版或许可的版本。 若要获取 SQL Server 2016 预览版的评估版本，请参阅 [SQL Server 评估][SQL Server Evaluations]。
-2. **Visual Studio**。 若要获取免费的 Visual Studio 2015 Community Edition，请参阅 [Visual Studio Community][Visual Studio Community]。
-3. **适用于 Visual Studio 的 SQL Server Data Tools (SSDT)**。 若要获取 SQL Server Data Tools for Visual Studio 2015，请参阅[下载 SQL Server Data Tools (SSDT)][Download SQL Server Data Tools (SSDT)]。
+2. **Visual Studio**。 若要获取免费的 Visual Studio Community Edition，请参阅 [Visual Studio Community][Visual Studio Community]。
+3. **适用于 Visual Studio 的 SQL Server Data Tools (SSDT)**。 若要获取 SQL Server Data Tools for Visual Studio，请参阅[下载 SQL Server Data Tools (SSDT)][Download SQL Server Data Tools (SSDT)]。
 4. **示例数据**。 本教程使用 AdventureWorks 示例数据库存储在 SQL Server 中的示例数据作为要加载到 SQL 数据仓库的源数据。 若要获取 AdventureWorks 示例数据库，请参阅 [AdventureWorks 2014 示例数据库][AdventureWorks 2014 Sample Databases]。
 5. **SQL 数据仓库数据库和权限**。 本教程连接到 SQL 数据仓库实例，并将数据加载到其中。 必须具有权限才能创建表并加载数据。
 6. **防火墙规则**。 将数据上传到 SQL 数据仓库之前，必须使用本地计算机的 IP 地址创建用于 SQL 数据仓库的防火墙规则。
 
 ## <a name="step-1-create-a-new-integration-services-project"></a>步骤 1：创建新的 Integration Services 项目
-1. 启动 Visual Studio 2015。
+1. 启动 Visual Studio。
 2. 在“文件”菜单中，选择“新建 | 项目”。
 3. 导航到“安装 | 模板 | 商业智能 | 集成服务”项目类型。
 4. 选择“集成服务项目”。 提供“名称”和“位置”的值，然后选择“确定”。

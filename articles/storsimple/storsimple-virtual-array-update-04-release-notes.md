@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/07/2017
+ms.date: 04/05/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 9797df57e6efcba689e6d2f13fed165ee0cc0755
-ms.openlocfilehash: 2b51cdf8ef55c2ee80e3f660a1073419e353ec3a
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: cc2b025b7f3e28954c7f95409ffab03e5cbcf13d
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -80,6 +81,8 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 | **12.** |CHAP |CHAP 凭据一旦创建之后便无法删除。 此外，如果要修改 CHAP 凭据，首先需要使这些卷脱机，然后再使它们联机，以使更改生效。 |此问题将在更高版本中得以解决。 |
 | **13.** |iSCSI 服务器 |在 StorSimple Manager服务和 iSCSI 主机中，为 iSCSI 卷显示的“已用存储”可能有所不同。 |iSCSI 主机具有“文件系统”视图。<br></br>设备能够查看当卷处于最大大小时所分配的快。 |
 | **14.** |文件服务器 |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
+| **15.** |文件服务器 |不支持符号链接。 | |
+| **16.** |文件服务器 |将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器时将导致不受支持的配置。  | |
 
 ## <a name="next-step"></a>后续步骤
 在 StorSimple Virtual Array 上[安装 Update 0.4](storsimple-virtual-array-install-update-04.md)。
@@ -90,10 +93,5 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 * [StorSimple Virtual Array Update 0.3 发行说明](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
 * [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

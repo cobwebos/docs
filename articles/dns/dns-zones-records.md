@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
-ms.openlocfilehash: 4e25ec1ece6017dc58c24ce593802293b7fc12b8
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: f15654f621bafb2617bdb456bbda0233db656be5
+ms.lasthandoff: 04/22/2017
 
 ---
 
@@ -68,7 +68,7 @@ CNAME 记录集不能与其他具有相同名称的记录集共存。 例如，�
 
 NS 记录集在每个区域（名称 =“@”）的顶点处自动创建，并在删除该区域时自动删除（不能单独删除）。  用户可以修改此记录集的 TTL，但无法修改记录，该记录预配置为引用分配给该区域的 Azure DNS 名称服务器。
 
-可以创建和删除该区域内（不在区域顶点处）的其他 NS 记录。  通过此操作可配置子区域（请参阅[在 Azure DNS 中委托子域](dns-domain-delegation.md#delegating-sub-domains-in-azure-dns)。）
+可以创建和删除该区域内（不在区域顶点处）的其他 NS 记录。  通过此操作可配置子区域（请参阅[在 Azure DNS 中委托子域](dns-domain-delegation.md)。）
 
 ### <a name="soa-records"></a>SOA 记录
 
@@ -78,11 +78,7 @@ SOA 记录集在每个区域（名称 =“@”）的顶点处自动创建，并�
 
 ### <a name="spf-records"></a>SPF 记录
 
-发送方策略框架 (SPF) 记录用于指定允许代表给定域名发送电子邮件的电子邮件服务器。  正确配置 SPF 记录非常重要，可防止收件人将你的邮件标记为“垃圾邮件”。
-
-DNS RFC 最初引入了新的“SPF”记录类型来支持这种方案。 为了支持旧名称服务器，还允许使用 TXT 记录类型指定 SPF 记录。  这种不明确性导致混乱，已通过 [RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1) 得到解决。  其中规定：应仅使用 TXT 记录类型创建 SPF 记录，并弃用 SPF 记录类型。
-
-**SPF 记录受 Azure DNS 支持且应使用 TXT 记录类型创建。** 不支持已过时的 SPF 记录类型。 [导入 DNS 区域文件](dns-import-export.md)时，使用 SPF 记录类型的任何 SPF 记录将转换为 TXT 记录类型。
+[!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
 ### <a name="srv-records"></a>SRV 记录
 
@@ -99,7 +95,7 @@ DNS 标准允许单个 TXT 记录包含多个字符串，其中每个字符串�
 
 调用 Azure DNS REST API 时，需要单独指定每个 TXT 字符串。  使用 Azure 门户、PowerShell 或 CLI 接口时，应对每个记录指定单个字符串（这会在需要时自动划分为 254 个字符的段）。
 
-DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆。  TXT 记录集可以包含多个记录，其中每个可以包含多个字符串。  Azure DNS 在每个 TXT 记录集（跨所有合并的记录）中支持总长度最多 1024 个字符。 
+DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆。  TXT 记录集可以包含多个记录，其中每个可以包含多个字符串。  Azure DNS 在每个 TXT 记录集（跨所有合并的记录）中支持总长度最多 1024 个字符。
 
 ## <a name="tags-and-metadata"></a>标记和元数据
 
@@ -141,5 +137,4 @@ Etag 是在 Azure DNS REST API 级别使用 HTTP 标头指定的。  下表给�
 
 * 若要开始使用 Azure DNS，请了解如何[创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)和[创建 DNS 记录](dns-getstarted-create-recordset-portal.md)。
 * 若要迁移现有 DNS 区域，请了解如何[导入和导出 DNS 区域文件](dns-import-export.md)。
-
 

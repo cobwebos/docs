@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
-ms.openlocfilehash: fa62c0883b8230e514f60626b59fa3b3b20a6784
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 5bcdb2cd11ffa633bce4e0faee4f49d9053a662b
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -51,7 +51,7 @@ Azure 机器学习让用户能够生成、测试和部署预测分析解决方�
 
 ![转换为评分实验](./media/machine-learning-publish-a-machine-learning-web-service/figure-1.png)
 
-有关如何执行此转换的详细信息，请参阅[将机器学习训练实验转换为预测实验](machine-learning-convert-training-experiment-to-scoring-experiment.md)。
+有关如何执行此转换的详细信息，请参阅[如何准备模型以便在 Azure 机器学习工作室中进行部署](machine-learning-convert-training-experiment-to-scoring-experiment.md)。
 
 以下步骤描述如何将预测实验部署为新的 Web 服务。 还可将实验部署为经典 Web 服务。
 

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: jodebrui
 translationtype: Human Translation
-ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
-ms.openlocfilehash: 620572f66367f61c6ee61d3c044083a0f71aca6f
-ms.lasthandoff: 01/12/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: f827b76b8164e4eae286c9a1247e64d4f5ee9ea8
+ms.lasthandoff: 04/15/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/12/2017
 
 以下两个示例演示了如何借助内存中 OLTP 大幅改善性能：
 
-- 使用内存中 OLTP，[仲裁商业解决方案能够使其工作负荷增加一倍，同时节省 70% 的 DTU（即资源消耗）](https://customers.microsoft.com/en-US/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
+- 使用内存中 OLTP，[仲裁商业解决方案能够使其工作负荷增加一倍，同时节省 70% 的 DTU（即资源消耗）](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
 - 以下视频使用示例工作负荷演示资源消耗的重大改善：[Azure SQL 数据库中的内存中 OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)。
 
 可在高级层中的所有数据库（包括高级弹性池中的数据库）内使用内存中技术。
@@ -140,7 +140,7 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 ## <a name="1-install-the-in-memory-oltp-sample"></a>1.安装内存中 OLTP 示例
 
-在 [Azure 门户](https://portal.azure.com/)中按几下鼠标，即可创建 AdventureWorksLT [V12] 示例数据库。 本部分中的步骤说明如何使用内存中 OLTP 对象项目扩充 AdventureWorksLT 数据库，并演示性能优势。
+在 [Azure 门户](https://portal.azure.com/)中按几下鼠标，即可创建 AdventureWorksLT 示例数据库。 本部分中的步骤说明如何使用内存中 OLTP 对象项目扩充 AdventureWorksLT 数据库，并演示性能优势。
 
 以下资源提供了更简单、更直观的内存中 OLTP 性能演示：
 
@@ -149,7 +149,7 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 #### <a name="installation-steps"></a>安装步骤
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，于 V12 服务器上创建一个高级数据库。 将**源**设置为 AdventureWorksLT [V12] 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-get-started.md)。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在服务器上创建一个高级数据库。 将“源”设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-get-started-portal.md)。
 
 2. 使用 SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx) 连接到该数据库。
 
@@ -242,7 +242,7 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 本部分显示 ostress.exe 命令行中内嵌的 T-SQL 脚本。 此脚本使用前面安装的 T-SQL 脚本所创建的项。
 
 
-以下脚本将在以下内存优化*表*中插入包含&5; 个细目的示例销售订单：
+以下脚本将在以下内存优化*表*中插入包含 5 个细目的示例销售订单：
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -350,7 +350,7 @@ ostress.exe 完成时，将在 RML 命令窗口中写入运行持续时间作为
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. 编辑 ostress.exe 命令行，将所有的 *_inmem *替换为 *_ondisk*。
+2. 编辑 ostress.exe 命令行，将所有的 *_inmem* 替换为 *_ondisk*。
 
 3. 再次重新运行 ostress.exe，并捕获持续时间结果。
 
@@ -479,7 +479,7 @@ SET STATISTICS TIME OFF
 GO
 ```
 
-在采用 P2 定价层的数据库中，与传统索引相比，使用聚集列存储索引时，此查询预期可获得约&9; 倍的性能提升。 对于 P15，使用列存储索引有望获得约 57 倍的性能提升。
+在采用 P2 定价层的数据库中，与传统索引相比，使用聚集列存储索引时，此查询预期可获得约 9 倍的性能提升。 对于 P15，使用列存储索引有望获得约 57 倍的性能提升。
 
 
 
@@ -496,7 +496,7 @@ GO
 
 #### <a name="deeper-information"></a>深入信息
 
-- [了解 Quorum 如何使用 SQL 数据库中的内存中 OLTP 将关键数据库的工作负荷提高一倍，并将 DTU 降低 70%](https://customers.microsoft.com/en-US/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [了解 Quorum 如何使用 SQL 数据库中的内存中 OLTP 将关键数据库的工作负荷提高一倍，并将 DTU 降低 70%](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 - [了解内存中 OLTP](http://msdn.microsoft.com/library/dn133186.aspx)
 

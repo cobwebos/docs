@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2017
+ms.date: 03/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 07b9df5ab5c7df0089f001a26200bb9c3fb1c508
-ms.openlocfilehash: 7f4f1c22e0b3382a9de770800ccb733c61d4f5b0
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: e7b71bec34aa9507d312eead52060d2c4b774432
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/17/2017
 
 ![方案](./media/active-directory-saas-lynda-tutorial/IC781046.png "方案")
 
-## <a name="enabling-the-application-integration-for-lyndacom"></a>为 Lynda.com 启用应用程序集成
+## <a name="enable-the-application-integration-for-lyndacom"></a>为 Lynda.com 启用应用程序集成
 本部分的目的是概述如何为 Lynda.com 启用应用程序集成。
 
 **若要为 Lynda.com 启用应用程序集成，请执行以下步骤：**
@@ -64,7 +64,7 @@ ms.lasthandoff: 02/17/2017
    
    ![Lynda.com](./media/active-directory-saas-lynda-tutorial/IC777525.png "Lynda.com")
    
-## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configure-single-sign-on"></a>配置单一登录
 
 本部分的目的是概述如何让用户能够使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Lynda.com 证明自己的身份。
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 02/17/2017
    
    ![配置单一登录](./media/active-directory-saas-lynda-tutorial/IC777530.png "配置单一登录")
    
-## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 
 没有操作项可供你用来配置 Lynda.com 的用户预配。  
 当已分配的用户尝试使用访问面板登录到 Lynda.com 时，Lynda.com 会检查该用户是否存在。  
@@ -103,7 +103,7 @@ ms.lasthandoff: 02/17/2017
 >可以使用 Lynda.com 提供的任何其他 Lynda.com 用户帐户创建工具或 API 来预配 AAD 用户帐户。 
 > 
 
-## <a name="assigning-users"></a>分配用户
+## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
 **若要将用户分配到 Lynda.com，请执行以下步骤：**

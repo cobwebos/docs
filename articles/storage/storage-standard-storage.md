@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/18/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: c208f44045ba414be2034f577435ae02ea4456cf
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 77e48af7ba59ed1e5b2ebcda0760e0eda1f407df
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -42,7 +42,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 有关如何使用托管磁盘创建 VM 的信息，请参阅以下文章之一。
 
 * [使用 Resource Manager 和 PowerShell 创建 VM](../virtual-machines/virtual-machines-windows-ps-create.md)
-* [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/linux/quick-create-cli.md)
 
 ## <a name="standard-storage-features"></a>标准存储功能 
 
@@ -153,4 +153,4 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 * [使用 Resource Manager 和 PowerShell 创建 VM](../virtual-machines/virtual-machines-windows-ps-create.md)
 
-* [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/linux/quick-create-cli.md)

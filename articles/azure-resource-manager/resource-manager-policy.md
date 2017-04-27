@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 03/30/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 6d459e37b8b39f5d76c4ec86ebb7351c783b81fb
-ms.openlocfilehash: 64cb4be184e02519a6c496f8639035201ebb60f8
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d75088bd83b0b70c889388c95331bb56fe9ba15b
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/15/2017
 * 策略定义 - 描述何时强制执行策略，以及要采取的操作
 * 策略分配 - 应用策略定义的范围（订阅或资源组）
 
-本主题重点介绍策略定义。 有关策略分配的信息，请参阅[分配和管理策略](resource-manager-policy-create-assign.md)。
+本主题重点介绍策略定义。 有关策略分配的信息，请参阅[使用 Azure 门户分配和管理资源策略](resource-manager-policy-portal.md)或[通过脚本分配和管理策略](resource-manager-policy-create-assign.md)。
 
 Azure 提供了一些可降低必须要定义的策略数目的内置策略定义。 如果内置策略定义适用于你的方案，则请在分配范围时使用该定义。
 
@@ -239,7 +239,7 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 
 * 有关标记策略的示例，请参阅[将资源策略应用于标记](resource-manager-policy-tags.md)。
 * 有关存储策略的示例，请参阅[将资源策略应用于存储帐户](resource-manager-policy-storage.md)。
-* 有关虚拟机策略的示例，请参阅[将资源策略应用于 Linux VM](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) 和[将资源策略应用于 Windows WM](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+* 有关虚拟机策略的示例，请参阅[将资源策略应用于 Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) 和[将资源策略应用于 Windows WM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ### <a name="allowed-resource-locations"></a>允许的资源位置
 要指定允许的位置，请参阅[策略定义结构](#policy-definition-structure)中的示例。 要分配此策略定义，请使用带有资源 ID `/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c` 的内置策略。
@@ -326,7 +326,7 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 定义策略规则之后，将其分配到某一范围。 有关策略分配的信息，请参阅[分配和管理策略](resource-manager-policy-create-assign.md)。
+* 定义策略规则之后，将其分配到某一范围。 若要通过门户分配策略，请参阅[使用 Azure 门户分配和管理资源策略](resource-manager-policy-portal.md)。 若要通过 REST API、PowerShell 或 Azure CLI 分配策略，请参阅[通过脚本分配和管理策略](resource-manager-policy-create-assign.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
 * 该策略架构在 [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) 中发布。 
 

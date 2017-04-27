@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 4c6bf3e46d80871c8f6ef1cd0a9959e4766a69f5
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 3fd558835fb36ef70ac97419727b5133d0741d7e
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -88,9 +89,7 @@ Webhook 触发器的行为非常类似于上述 Webhook 操作。  一旦添加�
 
 可以单击[此处](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers)查看 GitHub 中 webhook 触发器的示例
 
+## <a name="publish-custom-connectors-to-azure"></a>将自定义连接器发布到 Azure
 
-
-
-<!--HONumber=Jan17_HO3-->
-
+若要将自定义 API 应用公开并使其可以在 Azure 中使用，请将提名的应用提交到 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)。
 

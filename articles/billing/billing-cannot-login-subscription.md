@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
-ms.openlocfilehash: fc1c8cb6b7c186e189658cacf218ec7e9261472a
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 05e23ad6bc07293f53e081b905c3a9ce1c91e6f9
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -31,16 +32,22 @@ ms.openlocfilehash: fc1c8cb6b7c186e189658cacf218ec7e9261472a
 * 使用不同的 Internet 浏览器。
 * 如果使用的是 Microsoft Internet Explorer，请使用 InPrivate 浏览模式浏览到 Azure 门户。 
   
-  A.    单击“工具”![工具按钮](./media/billing-cannot-login-subscription/Toolsbutton.png) > **“安全”** > **“InPrivate 浏览”**。
+  A. 单击“工具”![工具按钮](./media/billing-cannot-login-subscription/Toolsbutton.png) > **“安全”** > **“InPrivate 浏览”**。
   
-  B.    浏览到 [Azure 门户](https://portal.azure.com)，然后登录到该门户。
+  B. 浏览到 [Azure 门户](https://portal.azure.com)，然后登录到该门户。
 
 ## <a name="error-message-no-subscriptions-found"></a>错误消息“找不到任何订阅”
 如果帐户没有足够的权限，则可能会看到“找不到任何订阅”的错误消息。 请确保以正确的管理员身份登录。 帐户管理员只能访问[帐户中心](https://account.windowsazure.com/Subscriptions)。 服务管理员 (SA) 和共同管理员 (CA) 则只能访问 [Azure 门户](https://portal.azure.com)或 Azure 经典门户。
 
 **场景 1：[Azure 门户](https://portal.azure.com)收到错误消息**
 
-若要解决此问题，请为帐户[添加共同管理员或所有者角色](billing-add-change-azure-subscription-administrator.md)。
+解决此问题：
+
+* 通过单击右上角的帐户确保已选择正确的 Azure 目录。
+
+![选择 Azure 门户右上角的目录](./media/billing-cannot-login-subscription/directory-switch.png)
+
+* 如果已选择正确的 Azure 目录，但仍收到错误，请将[帐户添加为所有者](billing-add-change-azure-subscription-administrator.md)。
 
 **场景 2：[Azure 帐户中心](https://account.windowsazure.com/Subscriptions)收到错误消息**
 
@@ -62,10 +69,5 @@ ms.openlocfilehash: fc1c8cb6b7c186e189658cacf218ec7e9261472a
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)以快速解决问题。 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

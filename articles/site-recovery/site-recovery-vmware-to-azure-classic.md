@@ -12,15 +12,18 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/05/2017
 ms.author: raynew
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: site-recovery-vmware-to-azure
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 03178e1b933f5681caf6efbeb5a89d56727ae743
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5c597e94f524a7ecbb9e4269adbbbd735a90aa14
+ms.lasthandoff: 04/06/2017
 
 
 ---
+
 # <a name="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery"></a>通过 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure
 > [!div class="op_single_selector"]
 > * [Azure 门户](site-recovery-vmware-to-azure.md)
@@ -579,7 +582,7 @@ C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstalls
 3. 可在此处更改以下设置：
 
    * **Azure VM 名称**：这是在故障转移以后，要提供给 Azure 中的计算机的名称。 该名称必须符合 Azure 要求。
-   * **Azure VM 大小**：网络适配器数目根据你为目标虚拟机指定的大小来确定。 有关大小和适配器的详细信息，请参阅[大小表格](../virtual-machines/virtual-machines-linux-sizes.md)。 请注意：
+   * **Azure VM 大小**：网络适配器数目根据你为目标虚拟机指定的大小来确定。 有关大小和适配器的详细信息，请参阅[大小表格](../virtual-machines/linux/sizes.md)。 请注意：
 
      * 在修改虚拟机的大小并保存设置后，下一次打开“配置”选项卡时，网络适配器的数量将会改变。 目标虚拟机的网络适配器最小数目等于源虚拟机上的网络适配器最小数目。 网络适配器最大数目由虚拟机的大小决定。
        * 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
@@ -709,7 +712,7 @@ C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstalls
 | --- | --- | --- |
 | Azure_Site_Recovery 角色 |VMware VM 发现 |为 v-Center 服务器分配这些特权：<br/><br/>数据存储：分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/>网络：网络分配<br/><br/>资源：将虚拟机分配给资源池、迁移电源关闭的虚拟机、迁移已打开的虚拟机<br/><br/>任务：创建任务、更新任务<br/><br/>虚拟机 > 配置<br/><br/>虚拟机 > 交互 > 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关机、开机、安装 VMware 工具<br/><br/>虚拟机 > 库存 > 创建、注册、取消注册<br/><br/>虚拟机 > 预配 > 允许虚拟机下载、允许虚拟机文件上载<br/><br/>虚拟机 > 快照 > 删除快照 |
 | vCenter 用户角色 |VMware VM 发现/在不关闭源 VM 的情况下进行故障转移 |为 v-Center 服务器分配这些特权：<br/><br/>数据中心对象 > 传播到子对象、角色=只读 <br/><br/>用户在数据中心级别进行分配，因此具有数据中心内所有对象的访问权限。 若要限制访问权限，请将具有“传播到子对象”权限的“禁止访问”角色分配给子对象（ESX 主机、数据存储、VM 和网络）。 |
-| vCenter 用户角色 |故障转移和故障回复 |为 v-Center 服务器分配这些特权：<br/><br/>数据中心对象 – 传播到子对象、角色=Azure_Site_Recovery<br/><br/>用户在数据中心级别进行分配，并因此具有数据中心内所有对象的访问权限。  若要限制访问权限，请将具有“传播到子对象”权限的“禁止访问”角色分配给子对象（ESX 主机、数据存储、VM 和网络）。 |
+| vCenter 用户角色 |故障转移和故障回复 |为 v-Center 服务器分配这些特权：<br/><br/>数据中心对象 – 传播到子对象、角色=Azure_Site_Recovery<br/><br/>用户在数据中心级别进行分配，并因此具有数据中心内所有对象的访问权限。  若要限制访问权限，请将具有“传播到子对象”权限的**禁止访问**角色分配给子对象（ESX 主机、数据存储、VM 和网络）。 |
 
 ## <a name="third-party-software-notices-and-information"></a>第三方软件通知和信息
 <!--Do Not Translate or Localize-->

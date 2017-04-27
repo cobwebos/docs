@@ -1,22 +1,22 @@
 ---
-title: "如何在 Application Insights 中执行... | Microsoft 文档"
+title: "如何在 Azure Application Insights 中执行... | Microsoft Docs"
 description: "有关 Application Insights 的常见问题解答。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2016
+ms.date: 04/04/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: d7795a494fbe8d3a850d7d8805cf059a86965a64
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -207,3 +207,21 @@ ms.lasthandoff: 02/02/2017
 * 首先[添加一个新图表](app-insights-metrics-explorer.md)，然后查看计数器是否出现在提供的基本集内。
 * 如果没有，请[将计数器添加到性能计数器模块收集的集内](app-insights-performance-counters.md)。
 
+## <a name="version-and-release-tracking"></a>版本和发行版本跟踪
+若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在 .csproj 文件中，添加：  
+
+```XML
+
+    <PropertyGroup>
+      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+    </PropertyGroup>
+```
+
+当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](app-insights-diagnostic-search.md)或[浏览指标](app-insights-metrics-explorer.md)时按版本进行筛选。
+
+但请注意，内部版本号只能由 Microsoft 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
+
+### <a name="release-annotations"></a>版本注释
+如果使用 Visual Studio Team Services，则可以在每次发布新版本时将[批注标记](app-insights-annotations.md)添加到图表中。 下图显示了此标记的形式。
+
+![图表中示例版本批注的屏幕截图](./media/app-insights-asp-net/release-annotation.png)
