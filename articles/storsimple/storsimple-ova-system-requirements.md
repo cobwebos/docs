@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/03/2017
+ms.date: 04/17/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: e5f9952d136a2a7914100d8a7f5ffa5ba05a9d75
-ms.openlocfilehash: 9eb839834ed4ee2291eb311f64a8dfa7f07a1ac3
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 4a2c86cee40dbd1dc2c37d58e69bdf35b0046c4d
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
@@ -80,7 +81,9 @@ ms.openlocfilehash: 9eb839834ed4ee2291eb311f64a8dfa7f07a1ac3
 > [!IMPORTANT]
 > 不要将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器；这将导致不受支持的配置。 
 > 
-> 
+
+### <a name="supported-storage-format"></a>受支持的存储格式
+仅支持 Azure 块 blob 存储。 页 blob 不受支持。 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
 
 ## <a name="networking-requirements"></a>网络要求
 下表列出了需要在防火墙中打开以允许 iSCSI、SMB、云或管理流量的端口。 在此表中，*入*或*入站*指传入客户端请求访问设备的方向。 *出*或*出站*指 StorSimple 设备越过部署向外部发送数据的方向：例如，到 Internet 的出站。
@@ -127,10 +130,5 @@ ms.openlocfilehash: 9eb839834ed4ee2291eb311f64a8dfa7f07a1ac3
 
 ## <a name="next-step"></a>后续步骤
 * [Prepare the portal to deploy your StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)（准备门户以部署 StorSimple Virtual Array）
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

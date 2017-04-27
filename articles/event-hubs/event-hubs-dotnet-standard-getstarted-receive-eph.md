@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: c86a1feee02bbf8580a40119ac140528217e435d
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: e286693b585a5991dbecd537fe5cd6621dd27e01
+ms.lasthandoff: 04/26/2017
 
 ---
 
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>使用 .NET Standard 中的事件处理程序主机接收消息入门
 
 > [!NOTE]
-> [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver) 上提供了此示例。
+> [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 上提供了此示例。
 
-本教程介绍如何编写 .NET Core 控制台应用程序，该应用程序使用 **EventProcessorHost** 从事件中心接收消息。 可以按原样运行 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver) 解决方案，并将字符串替换为事件中心和存储帐户的值。 或者，可以按照本教程中的步骤创建自己的解决方案。
+本教程演示如何编写使用 **EventProcessorHost** 从事件中心接收消息的 .NET Core 控制台应用程序。 可以按原样运行 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 解决方案，将字符串替换为事件中心和存储帐户的值。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/28/2017
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心  
 
-第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤进行操作，然后继续执行以下步骤。  
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤操作，然后继续执行以下步骤。  
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户  
 
@@ -211,7 +211,7 @@ ms.lasthandoff: 03/28/2017
 
 4. 运行程序，并确保没有任何错误。
 
-祝贺你！ 现在已使用事件处理程序主机从事件中心接收消息。
+祝贺你！ 现在已使用事件处理器主机从事件中心接收消息。
 
 ## <a name="next-steps"></a>后续步骤
 访问以下链接可以了解有关事件中心的详细信息：

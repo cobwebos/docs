@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 5c14bd2ae2effd554f52662961c2e219433f8cd8
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -70,9 +71,4 @@ GitHub 上提供了 [io.js 部署脚本](https://github.com/felixrieseberg/iojs-
 [io.js 分发包]: https://iojs.org/dist/
 [GitHub 上的 io.js]: https://github.com/iojs/io.js
 [io.js Deployment Script]: https://github.com/felixrieseberg/iojs-azure
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

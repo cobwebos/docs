@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 405e236288a32afa572da8c665ea2557a9c8cb03
-ms.openlocfilehash: 8d09eb65d6d165093f9de5810a6affbe95b7a053
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: ca5b67043843185ac40d02030f26fab8639a1f9f
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为文件服务器
@@ -134,7 +134,7 @@ ms.lasthandoff: 03/01/2017
     
     3. 将使用 256 位 AES 密钥与用户定义密钥进行加密。 指定 32 个字符的密钥，然后再次输入该密钥以进行确认。 在密钥管理应用中记录密钥以供将来参考。
     
-    4. 单击“配置所需设置”，指定要用于设备的存储帐户凭据。 如果未配置任何存储帐户凭据，请单击“新增”。
+    4. 单击“配置所需设置”，指定要用于设备的存储帐户凭据。 如果未配置任何存储帐户凭据，请单击“新增”。 **请确保所用的存储帐户支持块 blob。页 blob 不受支持。** 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
    
     ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. 在“添加存储帐户凭据”边栏选项卡中，执行以下操作： 
