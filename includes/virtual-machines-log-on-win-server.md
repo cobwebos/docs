@@ -13,8 +13,3 @@
    
    ![显示有关验证 VM 标识的消息的屏幕截图。](./media/virtual-machines-log-on-win-server/cert-warning.png)
 
-
-
-<!--HONumber=Jan17_HO3-->
-
-

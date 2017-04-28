@@ -48,8 +48,3 @@
 ],
 ```
 在本示例中，SliceStart 的年、月、日和时间已提取到 folderPath 和 fileName 属性使用的各个变量。
-
-
-<!--HONumber=Jan17_HO3-->
-
-
