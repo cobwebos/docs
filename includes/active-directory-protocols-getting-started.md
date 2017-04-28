@@ -31,8 +31,3 @@ ms.openlocfilehash: b31fa50a62d5b26a7346f212076ec3a2b0386f5e
   * 对于本机应用程序，请提供“重定向 URI”，Azure AD 将用其返回令牌响应。 输入特定于应用程序的值，例如 `http://MyFirstAADApp`
 * 完成注册后，Azure AD 将为应用程序分配一个唯一的客户端标识符，即应用程序 ID。 在后面的部分中将会用到此值，因此，请从应用程序页复制此值。
 
-
-
-<!--HONumber=Feb17_HO1-->
-
-

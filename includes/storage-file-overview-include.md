@@ -5,8 +5,3 @@ Azure 文件存储是一种使用标准 [服务器消息块 (SMB) 协议](https:
 
 可以使用 [Azure 门户](https://portal.azure.com)、Azure 存储空间 PowerShell cmdlet、Azure 存储空间客户端库或 Azure 存储空间 REST API 来创建 Azure 文件共享。 此外，由于这些文件共享是 SMB 共享，因此你还可以通过标准的和熟悉的文件系统 API 来访问它们。
 
-
-
-<!--HONumber=Jan17_HO3-->
-
-

@@ -14,7 +14,3 @@
 * [通过 REST API 管理导入/导出作业](https://azure.microsoft.com/resources/samples/storage-dotnet-import-export-job-management/)
 * [MyDriving - Azure IOT 和移动服务示例应用程序](https://azure.microsoft.com/resources/samples/mydriving/)
 * [.NET 存储客户端库示例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted)
-
-<!--HONumber=Jan17_HO3-->
-
-
