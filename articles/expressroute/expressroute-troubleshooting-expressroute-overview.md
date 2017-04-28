@@ -17,6 +17,7 @@ ms.author: rambala
 translationtype: Human Translation
 ms.sourcegitcommit: 1a4206c80bc3581034b140de0003c64556b90303
 ms.openlocfilehash: 49ed6dd2184e69487cedae81a89665f5ccc3843d
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -413,10 +414,5 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 
