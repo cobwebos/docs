@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/10/2017
+ms.date: 04/26/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
 ms.openlocfilehash: 7d2cc99925e01f8135f04f5863f798e13d7413e3
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -100,9 +101,4 @@ Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创�
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [什么是 Azure Active Directory？](active-directory-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

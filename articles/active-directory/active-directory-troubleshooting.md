@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
-ms.author: mbaldwin
+ms.date: 04/27/2017
+ms.author: bryanla
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9c52e9257272c5b0c55c488d2c7ca6fef500260b
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -51,10 +52,5 @@ ms.openlocfilehash: 9c52e9257272c5b0c55c488d2c7ca6fef500260b
 但是，在加载页面时，该项将灰显或标记为**不可用**。 这是一种暂时性的状态。 只需等待几秒，该项便可供使用。 如果延迟时间过长，刷新网页通常就会解决问题。
 
 ![屏幕截图：Active Directory 不可用](./media/active-directory-troubleshooting/not-available.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
