@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 04/27/2017
 ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
 ms.openlocfilehash: 91b138ee9590a66c63e2055eaeace82b4e719ae5
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -101,9 +102,4 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 [使用 AMQP 通过 PHP 使用服务总线]: service-bus-amqp-php.md
 [在 Azure Linux VM 上安装 Apache Qpid Proton-C]: service-bus-amqp-apache.md
 [适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
