@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
-ms.author: curtand
+ms.date: 04/26/2017
+ms.author: curtand;jeffsta
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d33da5ca6cf1768fc7ca6d9f2035be7edbb8ad36
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -42,9 +43,4 @@ ms.openlocfilehash: d33da5ca6cf1768fc7ca6d9f2035be7edbb8ad36
 * [为用户分配 Azure Active Directory 预览版中的管理员角色](active-directory-users-assign-role-azure-portal.md)
 * [在 Azure Active Directory 预览版中添加或更改用户的个人资料信息](active-directory-users-work-info-azure-portal.md)
 * [从 Azure Active Directory 预览版的目录中删除用户](active-directory-users-profile-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
