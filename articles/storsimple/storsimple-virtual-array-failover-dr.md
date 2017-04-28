@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 01acc0a5a6db7695d04d3adbf843826da5288025
-ms.openlocfilehash: 30b0aaa27be46ed581f56176fa3385273ff101c0
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 12079f8dbc409afe5acc274fa08bda878c90b76e
+ms.lasthandoff: 04/13/2017
 
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>通过 Azure 门户进行 StorSimple 虚拟阵列的灾难恢复和设备故障转移
@@ -54,7 +54,7 @@ ms.lasthandoff: 03/01/2017
   > 不要尝试通过服务配置已注册的虚拟设备。 不应通过该服务执行任何设备配置。
   > 
   > 
-* 目标设备不能具有与源设备相同的名称。 故障转移完成后，始终可以重命名目标设备。
+* 目标设备不能具有与源设备相同的名称。
 * 源和目标设备的类型必须相同。 只能将配置为文件服务器的虚拟阵列故障转移到另一个文件服务器。 这同样适用于 iSCSI 服务器。
 * 对于文件服务器 DR，我们建议将目标设备加入到与源相同的域。 此配置可确保自动解决共享权限问题。 仅限故障转移到相同域中的目标设备。
 * DR 的可用目标设备是所含容量等于或大于源设备的设备。 已连接到你的服务，但没有足够空间的设备不能用作目标设备。
@@ -78,7 +78,7 @@ ms.lasthandoff: 03/01/2017
   
   * 有效 ACR 名称。
   * 有效 IQN（不超过 220 个字符）。
-  * 有效 CHAP 密码（长并为&12;-16 个字符）。
+  * 有效 CHAP 密码（长并为 12-16 个字符）。
 
 如果上述任一预检查失败，都无法继续执行 DR。 需要解决这些问题，然后重试 DR。
 
@@ -155,7 +155,7 @@ ms.lasthandoff: 03/01/2017
     1. 选择并单击在故障转移过程中用作目标设备的 StorSimple 设备。
     2. 转到“设置”>“管理”>“共享”或“卷”（如果是 iSCSI 服务器）。 在“共享”边栏选项卡中，可以查看旧设备上的所有共享（卷）。
         ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. 现在可以重命名设备（与旧的源设备相同），以便应用程序服务器可以直接连接到此设备。 如果不想重命名设备，则需要[创建 DNS 别名](https://support.microsoft.com/kb/168322)，使要尝试连接的所有应用程序重定向到新设备。
+14. 需要[创建 DNS 别名](https://support.microsoft.com/kb/168322)，以使要尝试连接的所有应用程序都能重定向到新设备。
 
 ## <a name="errors-during-dr"></a>在 DR 期间出错
 
