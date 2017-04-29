@@ -39,8 +39,3 @@
       ![添加卷](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
 4. 单击勾号图标  ![选中图标](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png)。 使用指定的设置创建卷。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

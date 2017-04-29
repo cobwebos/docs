@@ -26,8 +26,3 @@ articles/sql-database/sql-database-get-started-tutorial.md
    
    ![登录](./media/azure-getting-started-portal-login/login.png)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

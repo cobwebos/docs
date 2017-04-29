@@ -8,7 +8,7 @@
    
      ![“服务注册密钥”对话框](./media/storsimple-get-service-registration-key/HCS_GetServiceRegistrationKey-include.png)
 3. 查找服务注册密钥
-4. 单击复制图标  ![StorSimple“复制”图标](./media/storsimple-get-service-registration-key/HCS_CopyIcon-include.png)  复制密钥并进行保存以供以后使用。
+4. 单击复制图标  ![StorSimple“复制”图标](./media/storsimple-get-service-registration-key/HCS_CopyIcon-include.png) 复制密钥并进行保存以供以后使用。
 5. 单击选中图标 ![StorSimple 选中图标](./media/storsimple-get-service-registration-key/HCS_CheckIcon-include.png)关闭此对话框并返回到“快速启动”页。
 
 > [!NOTE]
@@ -19,9 +19,4 @@
 ![可用视频](./media/storsimple-get-service-registration-key/Video_icon.png) **可用视频**
 
 若要观看如何获取服务注册密钥的演示视频，请单击 [此处](https://azure.microsoft.com/documentation/videos/get-the-service-registration-key/)。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

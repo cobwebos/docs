@@ -11,7 +11,7 @@
    
     ![](./media/mobile-engagement-ios-send-push/native-push-settings.png)
 
-## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>向应用发送通知
+## <a id="send"></a>向应用发送通知
 现在我们将创建一个简易的推送通知市场活动，向我们的应用发送通知：
 
 1. 导航到 Mobile Engagement 门户中的“市场宣传”  选项卡。
@@ -39,9 +39,4 @@
 8. 如果有 Apple Watch 与此 iOS 设备进行了配对，那么在 Apple Watch 上也可以看到该通知：
    
     ![](./media/mobile-engagement-ios-send-push/apple-watch.png)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

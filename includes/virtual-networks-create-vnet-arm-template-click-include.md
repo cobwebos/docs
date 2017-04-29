@@ -22,8 +22,3 @@
     
      ![在预览门户中创建 VNet](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.gif)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

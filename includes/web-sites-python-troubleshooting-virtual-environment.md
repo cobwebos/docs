@@ -18,8 +18,3 @@
 ### <a name="option-3-customize-deployment-script"></a>选项 3：自定义部署脚本
 如果您已自定义部署脚本，则可以更改 deploy.cmd 中的代码以强制其删除 env 文件夹。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-
