@@ -71,7 +71,3 @@ Logger 模块只使用来自中转站的消息，而不会将新消息发布到�
 <!-- Links -->
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
-
-<!--HONumber=Dec16_HO1-->
-
-
