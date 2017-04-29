@@ -2,8 +2,3 @@ Azure Functions 提供事件驱动、按需计算体验，可以扩展现有的 
 
 此入门视频将介绍如何创建 Function App、修改代码以及如何与触发器和绑定进行交互。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

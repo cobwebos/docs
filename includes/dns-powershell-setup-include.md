@@ -46,7 +46,3 @@ Azure DNS 服务由 Microsoft.Network 资源提供程序管理。 使用 Azure D
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
-
-<!--HONumber=Dec16_HO3-->
-
-

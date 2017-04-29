@@ -4,8 +4,3 @@
 还可使用 [Azure PowerShell](../articles/storage/storage-powershell-guide-full.md)、[Azure CLI](../articles/storage/storage-azure-cli.md) 或[适用于 .NET 的存储资源提供程序客户端库](https://msdn.microsoft.com/library/azure/mt131037.aspx)创建 Azure 存储帐户。
 
 
-
-
-<!--HONumber=Dec16_HO3-->
-
-

@@ -12,7 +12,7 @@
       
       ![StorSimple 最低要求设备设置基本设置](./media/storsimple-complete-minimum-device-setup-u1/HCS_MinDeviceSetupBasicSettings1-include.png)
 3. 单击箭头图标。 ![StorSimple 箭头图标](./media/storsimple-complete-minimum-device-setup/HCS_ArrowIcon-include.png)
-4. 在“ **网络接口** ”对话框中，为控制器 0 和控制器 1 提供固定的 IP 地址。 **控制器的固定 IP 地址需为子网内可由设备 IP 地址访问的可用 IP。**  如果已为 IPv4 配置 DATA 0 接口，则需要以 IPv4 格式提供固定的 IP 地址。 如果已为 IPv6 配置提供前缀，则固定的 IP 地址将自动填充到这些字段中。
+4. 在“ **网络接口** ”对话框中，为控制器 0 和控制器 1 提供固定的 IP 地址。 **控制器的固定 IP 地址需为子网内可由设备 IP 地址访问的可用 IP。** 如果已为 IPv4 配置 DATA 0 接口，则需要以 IPv4 格式提供固定的 IP 地址。 如果已为 IPv6 配置提供前缀，则固定的 IP 地址将自动填充到这些字段中。
 
     ![StorSimple 最低版本设备安装网络接口](./media/storsimple-complete-minimum-device-setup-u1/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
 
@@ -30,7 +30,3 @@
 
 <!--Link reference-->
 [Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx
-
-<!--HONumber=Nov16_HO2-->
-
-

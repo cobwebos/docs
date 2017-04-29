@@ -26,8 +26,3 @@
     
     ![VNet 中的子网列表](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

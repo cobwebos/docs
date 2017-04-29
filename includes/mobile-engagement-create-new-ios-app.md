@@ -15,8 +15,3 @@
 
 Xcode 将创建一个演示应用，以便将 Mobile Engagement 集成到该应用中。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

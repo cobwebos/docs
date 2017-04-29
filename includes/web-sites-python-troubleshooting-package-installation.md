@@ -62,8 +62,3 @@ Mac/Linux 用户：如果没有 Windows 计算机的访问权限，请参阅[创
 [创建运行 Windows 的虚拟机]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-hero-tutorial/
 [Microsoft Visual C++ Compiler for Python 2.7]: http://aka.ms/vcpython27
 [Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949
-
-
-<!--HONumber=Nov16_HO2-->
-
-

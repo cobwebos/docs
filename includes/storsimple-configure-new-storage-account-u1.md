@@ -44,8 +44,3 @@
 6. 单击选中图标  ![选中图标](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png)。 你将收到成功创建存储帐户的通知。
 7. 新创建的存储帐户将显示在“存储帐户”下的“配置”页上。 单击“ **保存** ”，以保存新建的存储帐户。 提示确认时单击“ **确定** ”。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

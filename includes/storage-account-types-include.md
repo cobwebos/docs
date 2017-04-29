@@ -1,6 +1,6 @@
 有两种类型的存储帐户：
 
-### <a name="generalpurpose-storage-accounts"></a>通用存储帐户
+### <a name="general-purpose-storage-accounts"></a>通用存储帐户
 通用存储帐户有权使用单个帐户访问诸如表、队列、文件、Blob 和 Azure 虚拟机磁盘等 Azure 存储空间服务。 此类型存储帐户具有两个性能层：
 
 * 标准存储性能层，允许存储表、队列、文件、Blob 和 Azure 虚拟机磁盘。
@@ -26,9 +26,4 @@ Blob 存储帐户公开 **访问层** 属性，该属性可在帐户创建过程
 你必须具有 Azure 订阅（这是允许你访问各种 Azure 服务的计划），然后才能创建存储帐户。 可通过 [免费帐户](https://azure.microsoft.com/pricing/free-trial/)开始使用 Azure。 一旦决定购买某个订阅计划，可从各种 [购买选项](https://azure.microsoft.com/pricing/purchase-options/)中进行选择。 如果你是 [MSDN 订户](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，则可以获得免费的月度信用，你可以将其用于各种 Azure 服务，包括 Azure 存储空间。 有关批量定价的信息，请参阅 [Azure 存储定价 ](https://azure.microsoft.com/pricing/details/storage/) 。
 
 若要了解如何创建存储帐户，请参阅 [创建存储帐户](../articles/storage/storage-create-storage-account.md#create-a-storage-account) 获取更多详细信息。 通过单个订阅，你最多可以创建 100 个唯一的命名存储帐户。 有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../articles/storage/storage-scalability-targets.md) 。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

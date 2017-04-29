@@ -12,16 +12,11 @@
    4. 提供并确认“云存储加密密钥”  ，长度为 8 到 32 个字符。 设备使用此密钥访问加密的数据。
    5. 如果想要使用所有可用带宽，请在“指定带宽”下拉列表中选择“无限制”。 还可以将此选项设置为“自定义”  以进行带宽控制，并指定一个 1 和 1000 Mbps 之间的值。 
       如果有可用的带宽使用情况信息，可以根据计划通过指定“选择带宽模板” 分配带宽。 有关分步过程，请转到 [添加带宽模板](../articles/storsimple/storsimple-manage-bandwidth-templates.md#add-a-bandwidth-template)。
-   6. 单击选中图标  ![check-icon](./media/storsimple-create-volume-container/HCS_CheckIcon-include.png)  保存此卷容器并退出向导。 
+   6. 单击选中图标  ![check-icon](./media/storsimple-create-volume-container/HCS_CheckIcon-include.png) 保存此卷容器并退出向导。 
    
    新创建的卷容器将在“卷容器”  页上列出。
 
 ![可用视频](./media/storsimple-create-volume-container/Video_icon.png) **可用视频**
 
 若要观看如何在 StorSimple 解决方案中创建卷容器的演示视频，请单击 [此处](https://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/)。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

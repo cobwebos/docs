@@ -30,8 +30,3 @@
 ## <a name="troubleshoot-connection-failures"></a>连接失败故障排除
 连接失败的最常见原因是服务器名称（记住，<*servername*> 是逻辑服务器（而非数据库）的名称）、用户名或密码错误，以及出于安全原因，服务器不允许进行连接。 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

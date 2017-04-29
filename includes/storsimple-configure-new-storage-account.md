@@ -14,8 +14,3 @@
       ![添加存储帐户](./media/storsimple-configure-new-storage-account/HCS_AddStorageAccount-include.png)
 4. 新创建的存储帐户将显示在“存储帐户”下的“配置”页上。 单击“保存”  ，保存新创建的存储帐户。 出现确认提示时单击“确定”  。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-
