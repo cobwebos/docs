@@ -6,8 +6,3 @@ ExpressRoute 虚拟网络网关可使用以下 SKU：
 * HighPerformance
 * UltraPerformance
 
-
-
-<!--HONumber=Dec16_HO1-->
-
-

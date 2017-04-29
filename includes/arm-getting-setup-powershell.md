@@ -52,8 +52,3 @@
 
 有关 Azure 订阅和帐户的详细信息，请参阅[如何：连接到你的订阅](/powershell/azureps-cmdlets-docs#step-3-connect)。
 
-
-
-<!--HONumber=Dec16_HO1-->
-
-
