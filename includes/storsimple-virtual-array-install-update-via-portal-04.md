@@ -53,7 +53,3 @@
 9. 成功安装更新后，在“设备更新”边栏选项卡中会显示一条关于此影响的消息。 软件版本也将更改为 **10.0.10289.0**。
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate17m1.png)
-
-<!--HONumber=Feb17_HO1-->
-
-

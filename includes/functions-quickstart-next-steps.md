@@ -10,7 +10,3 @@
   讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。 
 * [什么是 Azure App Service？](../articles/app-service/app-service-value-prop-what-is.md)  
   Azure Functions 使用 Azure App Service 平台执行核心功能，例如部署、环境变量和诊断。 
-
-<!--HONumber=Feb17_HO1-->
-
-

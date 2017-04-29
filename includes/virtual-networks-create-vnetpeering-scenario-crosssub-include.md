@@ -1,4 +1,4 @@
-## <a name="a-namex-subapeering-across-subscriptions"></a><a name="x-sub"></a>跨订阅对等
+## <a name="x-sub"></a>跨订阅对等
 在此方案中，将创建存在于不同订阅中的两个 VNet 间的对等互连。
 
 ![跨订阅方案](./media/virtual-networks-create-vnetpeering-scenario-crosssub-include/figure01.PNG)
@@ -9,9 +9,4 @@ VNet 对等互连依赖基于角色的访问控制 (RBAC) 进行授权。 对于
 > 如果同一用户具有两个订阅的权限，可跳过随后的步骤 1-4。
 > 
 > 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
