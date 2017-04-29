@@ -17,6 +17,7 @@ ms.author: bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
 ms.openlocfilehash: a9c70810c4f731b2d8b395873fa6b94db78306aa
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -58,10 +59,10 @@ Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 > 
 
 1. 单击“**浏览**”并浏览到示例文件。  请注意，此按钮在某些浏览器中可能标记为“**选择文件**”。
-2. 单击“资源组名称” 的 Azure 数据工厂。 
+2. 单击“下一步”。 
 3. 自定义日志向导将上载文件，并列出其标识的记录。
 4. 更改用于标识新记录的分隔符，选择最能标识日志文件中记录的分隔符。
-5. 单击“资源组名称” 的 Azure 数据工厂。
+5. 单击“下一步”。
 
 ### <a name="step-3-add-log-collection-paths"></a>步骤 3. 添加日志集合路径
 你必须在可查找自定义日志的代理上定义一个或多个路径。  可以提供日志文件的特定路径和名称，也可以使用通配符为名称指定路径。  这样可支持每天或当某个文件达到一定大小时创建新文件的应用程序。  此外还可以为单个日志文件提供多个路径。
@@ -173,10 +174,5 @@ Log Analytics 约每隔 5 分钟就会从每个自定义日志中收集新条目
 ## <a name="next-steps"></a>后续步骤
 * 使用[自定义字段](log-analytics-custom-fields.md)来将自定义日志中的条目解析为单个字段。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
