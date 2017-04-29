@@ -16,8 +16,3 @@
 ### <a name="can-i-host-arpa-zones-for-both-ipv4-and-ipv6-addresses-in-azure-dns"></a>是否可以在 Azure DNS 中托管 IPv4 和 IPv6 地址的 ARPA 区域？
 
 是的。
-
-
-<!--HONumber=Nov16_HO3-->
-
-

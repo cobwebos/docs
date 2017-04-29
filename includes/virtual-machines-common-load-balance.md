@@ -64,8 +64,3 @@ Azure 还可以在云服务或虚拟网络中实现负载平衡。 这称为“�
 
 有关负载均衡器的详细信息，请参阅[内部负载平衡](../articles/load-balancer/load-balancer-internal-overview.md)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

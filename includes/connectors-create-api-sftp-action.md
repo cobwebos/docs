@@ -27,8 +27,3 @@
    ![SFTP 操作条件图像 13](./media/connectors-create-api-sftp/condition-13.png)   
 9. 保存对工作流所做的更改  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

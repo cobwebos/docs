@@ -80,8 +80,3 @@
 ## <a name="additional-resources"></a>其他资源
 有关详细信息，请阅读[流量管理器的 REST API 文档](https://msdn.microsoft.com/library/azure/mt163664.aspx)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

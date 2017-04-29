@@ -16,8 +16,3 @@
 5. 请注意，连接已在门户中完成创建。 现在可以继续创建逻辑应用，并在该应用中使用 GitHub：   
    ![](./media/connectors-create-api-github/github-5.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

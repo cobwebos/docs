@@ -2,8 +2,3 @@
 
 在 VM 中实现多 NIC 之前，有必要了解何时可以使用多 NIC，以及如何使用它们。 若要详细了解具有多个 NIC 的 VM，请阅读[多 NIC 概述](../articles/virtual-network/virtual-networks-multiple-nics.md)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -16,8 +16,3 @@
 4. 请注意，连接已创建。 现在，继续在逻辑应用中执行其他步骤：  
    ![](./media/connectors-create-api-crmonline/dynamics-properties.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

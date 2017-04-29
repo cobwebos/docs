@@ -12,8 +12,3 @@
 3. 请注意，连接已创建，现在可以随时在逻辑应用中继续执行其他步骤：  
    ![MicrosoftTranslator 连接创建步骤](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -15,8 +15,3 @@
 5. 在其中一个控制器上应用修补程序之后，登录到另一个控制器。 正如你对前一个控制器所做的那样，应用修补程序。
 6. 在应用修补程序后，退出维护模式。 有关说明，请参阅[步骤 4：退出维护模式](../articles/storsimple/storsimple-update-device.md#step4)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

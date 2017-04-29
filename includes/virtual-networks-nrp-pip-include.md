@@ -39,8 +39,3 @@
 * 了解[实例层级公共 IP 地址](../articles/virtual-network/virtual-networks-instance-level-public-ip.md)。
 * 阅读公共 IP 地址的 [REST API 参考文档](https://msdn.microsoft.com/library/azure/mt163638.aspx)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -58,8 +58,3 @@
 
 按照从第一个规则开始并以最后一个规则结束的顺序评估规则。 这意味着规则应按最少限制到最多限制排序。 有关示例和详细信息，请参阅[什么是网络访问控制列表？](../articles/virtual-network/virtual-networks-acl.md)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

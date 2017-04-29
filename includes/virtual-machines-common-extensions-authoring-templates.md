@@ -32,8 +32,3 @@ Azure Resource Manager 模板允许用户通过定义资源之间的依赖关系
 ## <a name="identifying-the-publisher-type-and-typehandlerversion-for-any-extension"></a>确定任何扩展的发布者、类型和 typeHandlerVersion
 Azure VM 扩展由 Microsoft 和受信任的第三方发布者发布，每个扩展都通过其发布者、类型和 typeHandlerVersion 进行唯一标识。 可通过以下方式确定这些内容：  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -4,8 +4,3 @@
 | 模板 |创建模板的代码问题 |[提出问题](https://github.com/Azure/azure-webjobs-sdk-templates/issues) |
 | 门户 |用户界面或体验问题 |[提出问题](https://github.com/ProjectKudu/AzureFunctionsPortal/issues) |
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

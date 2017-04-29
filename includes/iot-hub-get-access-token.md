@@ -36,7 +36,3 @@ Azure Active Directory 必须使用 Azure Resource Manager 来验证所有针对
     ```
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-
-<!--HONumber=Nov16_HO3-->
-
-

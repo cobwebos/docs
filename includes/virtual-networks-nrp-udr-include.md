@@ -55,8 +55,3 @@ JSON 格式的示例路由表：
 * 阅读路由表的 [REST API 参考文档](https://msdn.microsoft.com/library/azure/mt502549.aspx)。
 * 阅读用户定义路由 (UDR) 的 [REST API 参考文档](https://msdn.microsoft.com/library/azure/mt502539.aspx)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

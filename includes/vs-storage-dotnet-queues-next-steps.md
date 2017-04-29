@@ -9,8 +9,3 @@
   * 若要使用 Azure 存储 Blob，请[通过 .NET 开始使用 Azure Blob 存储](../articles/storage/storage-dotnet-how-to-use-blobs.md)。
   * 若要存储关系数据，请参阅[使用 .NET (C#) 连接到 SQL 数据库](../articles/sql-database/sql-database-develop-dotnet-simple.md)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

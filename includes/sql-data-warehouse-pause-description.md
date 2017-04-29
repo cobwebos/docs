@@ -19,8 +19,3 @@ articles/sql-data-warehouse/sql-data-warehouse-manage-scale-out-tasks-rest-api.m
 * 不影响数据存储，你的数据保持不变。 
 * SQL 数据仓库将取消所有正在运行或已排队的操作。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

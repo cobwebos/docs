@@ -16,8 +16,3 @@
 5. 请注意，连接已创建，现在可以随时在逻辑应用中继续执行其他步骤：  
    ![Dropbox 步骤 5](./media/connectors-create-api-dropbox/dropbox-5.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

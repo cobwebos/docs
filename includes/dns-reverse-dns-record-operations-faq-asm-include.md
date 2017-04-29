@@ -32,8 +32,3 @@ Azure 网站不支持反向 DNS。 Azure PaaS 角色和 IaaS 虚拟机支持反�
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>是否可以从 Azure 计算服务将电子邮件发送到外部域？
 
 否。 [Azure 计算服务不支持向外部域发送电子邮件](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/)。
-
-
-<!--HONumber=Nov16_HO3-->
-
-

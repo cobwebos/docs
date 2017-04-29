@@ -5,8 +5,3 @@
   * 只能将 PolicyBased VPN 用于 S2S 连接且只能用于特定配置。 大多数 VPN 网关配置需要 RouteBased VPN。
 * **基于路由**：基于路由的 VPN 以前在经典部署模型中称为动态路由网关。 RouteBased VPN 使用 IP 转发或路由表中的“路由”将数据包引导到相应的隧道接口中。 然后，隧道接口会加密或解密出入隧道的数据包。 RouteBased VPN 的策略（或流量选择器）配置为任意到任意（或通配符）。 基于路由的 VPN 类型的值为 *RouteBased*。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-
