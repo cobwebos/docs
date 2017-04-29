@@ -4,8 +4,3 @@
 
    > [!NOTE]
    > 如果在添加 VMware vCenter 服务器或 VMware vSphere 主机时使用的帐户没有对 vCenter 或主机服务器的管理员权限，请确保为帐户启用了以下权限：数据中心、数据存储、文件夹、主机、网络、资源、虚拟机、vSphere 分布式交换机。 此外，VMware vCenter 服务器需要启用存储视图权限。
-
-
-<!--HONumber=Feb17_HO2-->
-
-
