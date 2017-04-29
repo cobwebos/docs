@@ -5,8 +5,3 @@
 * 创建运行状况探测
 
 ![负载平衡器方案](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

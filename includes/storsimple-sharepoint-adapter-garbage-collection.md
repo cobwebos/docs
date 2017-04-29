@@ -52,8 +52,3 @@
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
 2. 在 Web 前端服务器上的“管理中心”中，编辑所需内容数据库的“Web 应用程序常规设置”以重新启用回收站。 为此，请单击“管理中心” -> “应用程序管理” -> “Web 应用程序(管理 Web 应用程序)” -> “SharePoint - 80” -> “常规应用程序设置”。 将“回收站状态”设置为“打开”。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -75,8 +75,3 @@ NIC 具有一个名为 **ipConfigurations** 的子对象，包含以下属性：
 ### <a name="additional-resources"></a>其他资源
 * 阅读 NIC 的 [REST API 参考文档](https://msdn.microsoft.com/library/azure/mt163579.aspx)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

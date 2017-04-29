@@ -11,7 +11,7 @@
    
     ![StorSimple 注册设备 2](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice2-include.png)
    
-     完成步骤 5-12 以配置设备的最低要求的网络设置。 **需要在该设备的主动控制器上执行这些配置步骤。**  串行控制台菜单指示标题消息中的控制器状态。 如果你未连接到主动控制器，请断开连接，然后连接到主动控制器。
+     完成步骤 5-12 以配置设备的最低要求的网络设置。 **需要在该设备的主动控制器上执行这些配置步骤。** 串行控制台菜单指示标题消息中的控制器状态。 如果你未连接到主动控制器，请断开连接，然后连接到主动控制器。
 5. 在命令提示符处，键入你的密码。 默认设备密码为 **Password1**。
 6. 输入以下命令：
    
@@ -73,9 +73,4 @@
 ![可用视频](./media/storsimple-configure-and-register-device/Video_icon.png) **可用视频**
 
 若要观看演示如何通过 Windows PowerShell for StorSimple 配置和注册设备的视频，请单击 [此处](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/)。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

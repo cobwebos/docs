@@ -14,8 +14,3 @@
         ![添加存储帐户](./media/storsimple-ova-configure-new-storage-account/addnewstorageaccount-include.png)
 4. 新创建的存储帐户将显示在“存储帐户”下的“配置”页上。 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

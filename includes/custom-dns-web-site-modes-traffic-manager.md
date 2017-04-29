@@ -2,8 +2,3 @@
 
 有关应用服务计划模式的详细信息，包括如何更改站点模式，请参阅[如何缩放网站](../articles/app-service-web/web-sites-scale.md)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

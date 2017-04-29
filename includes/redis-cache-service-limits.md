@@ -12,8 +12,3 @@
 
 由于 Azure Redis 缓存实例的配置和管理是由 Microsoft 执行的，因此 Azure Redis 缓存不一定支持所有的 Redis 命令。 有关详细信息，请参阅 [Azure Redis 缓存中不支持的 Redis 命令]((redis-cache/cache-configure.md#redis-commands-not-supported-in-azure-redis-cache)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -14,8 +14,3 @@
 4. 请注意，连接已创建，现在可以随时在逻辑应用中继续执行其他步骤：  
    ![Facebook 步骤 4](./media/connectors-create-api-facebook/facebook-4.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

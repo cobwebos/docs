@@ -24,7 +24,3 @@
 使用以下命令可删除网关
 
     Remove-AzureVirtualNetworkGateway -GatewayId <Gateway ID>
-
-<!--HONumber=Nov16_HO3-->
-
-

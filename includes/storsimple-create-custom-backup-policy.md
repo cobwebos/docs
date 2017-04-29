@@ -25,8 +25,3 @@
    
     ![自定义备份策略](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

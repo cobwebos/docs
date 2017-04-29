@@ -219,8 +219,3 @@
 ### <a name="additional-resources"></a>其他资源
 有关详细信息，请阅读[应用程序网关 REST API](https://msdn.microsoft.com/library/azure/mt299388.aspx)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

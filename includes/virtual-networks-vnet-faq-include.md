@@ -39,7 +39,7 @@ VNet 可以与各种不同的 Azure 服务共同使用，例如云服务 (PaaS)�
 可以使用 [RFC 1918](http://tools.ietf.org/html/rfc1918) 中定义的公共 IP 地址范围和任何 IP 地址范围。
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>我的 VNet 中是否可以有公共 IP 地址？
- 是的。 有关公共 IP 地址范围的详细信息，请参阅[虚拟网络 (VNet) 中的公共 IP 地址空间](../articles/virtual-network/virtual-networks-public-ip-within-vnet.md)。 请记住，无法从 Internet 直接访问公共 IP。
+是的。 有关公共 IP 地址范围的详细信息，请参阅[虚拟网络 (VNet) 中的公共 IP 地址空间](../articles/virtual-network/virtual-networks-public-ip-within-vnet.md)。 请记住，无法从 Internet 直接访问公共 IP。
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-virtual-network"></a>虚拟网络中的子网数量是否有限制？
 VNet 中使用的子网数量没有限制。 所有子网都必须完全包含在虚拟网络地址空间中，并不应相互重叠。
@@ -154,7 +154,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 在此服�
 > 
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-re-deploying"></a>在无需重新部署的情况下，是否可以将 VM 从一个子网移动到 VNet 中的另一个子网？
- 是的。 可以在[此处](../articles/virtual-network/virtual-networks-move-vm-role-to-subnet.md)查看详细信息。
+是的。 可以在[此处](../articles/virtual-network/virtual-networks-move-vm-role-to-subnet.md)查看详细信息。
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>是否可以为我的 VM 配置静态 MAC 地址？
 不能。 MAC 地址不能以静态方式配置。
@@ -170,7 +170,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 在此服�
 只能在 VNet 中使用计算服务。 计算服务仅限于云服务（Web 和辅助角色）和 VM。
 
 ### <a name="can-i-use-web-apps-with-virtual-network"></a>是否可以共同使用 Web Apps 和虚拟网络？
- 是的。 可以使用 ASE（应用服务环境）在 VNet 内部部署 Web 应用。 此外，如果为 VNet 配置了点到站点，Web 应用则可以安全地连接和访问 Azure VNet 中的资源。 有关详细信息，请参阅以下主题：
+是的。 可以使用 ASE（应用服务环境）在 VNet 内部部署 Web 应用。 此外，如果为 VNet 配置了点到站点，Web 应用则可以安全地连接和访问 Azure VNet 中的资源。 有关详细信息，请参阅以下主题：
 
 * [在应用服务环境中创建 Web 应用](../articles/app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
 * [Web 应用虚拟网络集成](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
@@ -194,7 +194,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间完�
 不能。 不能将 ACL 或 NSG 关联到 VNet。 但是，可以在已部署到 VNet 的 VM 的输入终结点上定义 ACL，并且 NSG 可与子网或 NIC 相关联。
 
 ### <a name="is-there-a-vnet-security-whitepaper"></a>是否有 VNet 安全白皮书？
- 是的。 可以在[此处](http://go.microsoft.com/fwlink/?LinkId=386611)下载。
+是的。 可以在[此处](http://go.microsoft.com/fwlink/?LinkId=386611)下载。
 
 ## <a name="apis-schemas-and-tools"></a>API、架构和工具
 ### <a name="can-i-manage-vnets-from-code"></a>是否可以通过代码管理 VNet？
@@ -202,9 +202,4 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间完�
 
 ### <a name="is-there-tooling-support-for-vnets"></a>是否有 VNet 的工具支持？
 是的。 PowerShell 和命令行工具可用于各种平台。 可在[此处](http://go.microsoft.com/fwlink/?LinkId=317721)找到更多信息。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

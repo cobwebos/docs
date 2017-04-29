@@ -92,8 +92,3 @@
             module.exports = table;
 
     2. 编辑本地计算机上的文件时，请重新发布服务器项目。
-
-
-<!--HONumber=Nov16_HO3-->
-
-

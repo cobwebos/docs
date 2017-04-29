@@ -40,8 +40,3 @@
     
     ![配置 Azure 备份](./media/backup-install-agent/configure.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -6,8 +6,3 @@
 * 在 Azure 经典门户中可以安全使用用于加密 Azure StorSimple 中存储的数据的证书公钥，私钥保留在 StorSimple 设备中。 在 StorSimple 虚拟设备上，公钥和私钥都存储在 Azure 中。
 * 虚拟设备托管在 Microsoft Azure 数据中心内。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

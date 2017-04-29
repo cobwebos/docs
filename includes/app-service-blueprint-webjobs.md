@@ -24,8 +24,3 @@
 * [向外缩放 WebJobs](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 * [Magnus Mårtensson 主讲的 Azure WebJobs 视频](https://www.youtube.com/playlist?list=PLqp1ZOYYUSd81yEzMYLTw8cz91wx_LU9r)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

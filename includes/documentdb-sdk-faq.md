@@ -22,8 +22,3 @@ Microsoft 会在即将停用的 SDK 的支持结束之前提前 12 个月进行�
 
 我们建议尽早升级到最新 SDK。 SDK 标记为要停用之后，你会有 12 个月来更新应用程序。 如果由于任何原因而无法在此时间范围内完成应用程序更新，请在截止日期之前与 [DocumentDB 团队](mailto:askdocdb@microsoft.com)联系并请求其帮助。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

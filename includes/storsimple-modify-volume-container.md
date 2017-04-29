@@ -17,8 +17,3 @@
        ![使用带宽模板 2 修改卷容器](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
    3. 单击勾选图标![勾选图标](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png)保存已更新的设置。 “卷容器”页随即会更新，以反映所做的更改。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -11,8 +11,3 @@
 | **技术文档** |[VPN 网关文档](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[VPN 网关文档](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[ExpressRoute 文档](https://azure.microsoft.com/documentation/services/expressroute/) |
 | **常见问题** |[VPN 网关常见问题](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[VPN 网关常见问题](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[ExpressRoute 常见问题](../articles/expressroute/expressroute-faqs.md) |
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -9,8 +9,3 @@
 * [应用服务环境的自定义配置设置，包括 PCI 合规性设置](../articles/app-service-web/app-service-app-service-environment-custom-settings.md)
 * [使用应用服务环境托管的高密度应用](../articles/app-service/app-service-high-density-hosting.md#recommended-configuration-for-high-density-hosting)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

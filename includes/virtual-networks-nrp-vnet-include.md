@@ -77,8 +77,3 @@ JSON 格式的示例 VNet：
 * 阅读 VNet 的 [REST API 参考文档](https://msdn.microsoft.com/library/azure/mt163650.aspx)。
 * 阅读子网的 [REST API 参考文档](https://msdn.microsoft.com/library/azure/mt163618.aspx)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-
