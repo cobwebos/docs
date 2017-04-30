@@ -19,8 +19,3 @@ wwwroot
 
 每个函数有一个对应的文件夹，其中包含一个或多个代码文件、function.json 配置和其他依赖项。
 
-
-
-<!--HONumber=Nov16_HO4-->
-
-
