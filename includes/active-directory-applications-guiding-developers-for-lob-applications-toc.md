@@ -5,8 +5,3 @@
 * [将应用程序与 Azure Active Directory 集成](../articles/active-directory/active-directory-integrating-applications.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](../articles/active-directory/active-directory-apps-index.md)
 
-
-
-<!--HONumber=Dec16_HO5-->
-
-
