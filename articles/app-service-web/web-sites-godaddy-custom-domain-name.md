@@ -65,7 +65,7 @@ ms.lasthandoff: 01/20/2017
    
     ![添加区域记录](./media/web-sites-godaddy-custom-domain-name/godaddy-addzonerecord.png)
    
-   * 在添加 **A（主机）记录**时，必须将“主机”字段设置为 **@**（代表根域名，如 **contoso.com**）、*（用于匹配多个子域的通配符），或者要使用的子域（例如 **www**）。必须将“指向”* 字段设置为 Azure Web 应用的 IP 地址。*
+   * 在添加 **A（主机）记录**时，必须将“主机”字段设置为 **@**（代表根域名，如 **contoso.com**）、*（用于匹配多个子域的通配符），或者要使用的子域（例如**www**）。必须将“指向”* 字段设置为 Azure Web 应用的 IP 地址。*
    * 添加 **CNAME（别名）记录**时，必须将“主机”字段设置为要使用的子域。 例如 **www**。 必须将“指向”字段设置为你的 Azure Web 应用的 **.azurewebsites.net** 域名。 例如 **contoso.azurewebsites.net**。
 4. 单击“添加另一个”。
 5. 选择“TXT”作为记录类型，然后指定“主机”值 **@** 和“指向”值 **&lt;yourwebappname&gt;.azurewebsites.net**。

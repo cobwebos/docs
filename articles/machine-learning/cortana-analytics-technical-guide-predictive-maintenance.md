@@ -108,7 +108,7 @@ Azure 流分析服务从数据流读取数据并将数据输出到任意数量�
 第二个流分析作业 **maintenancesa02asablob** 中的查询将所有[事件中心](https://azure.microsoft.com/services/event-hubs/)事件输出到 [Azure 存储](https://azure.microsoft.com/services/storage/)，由于将完整的事件信息流输出到存储，因此无论数据格式为何都无需进行修改。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
-[Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务协调数据的移动和处理。 在航天工业预见性维护的解决方案模板中，数据工厂由&3; 个[管道](../data-factory/data-factory-create-pipelines.md)组成，使用不同的技术移动和处理数据。  可以打开随解决方案部署创建的解决方案模板图示底部的数据工厂节点来访问数据工厂。 这会转到 Azure 门户上的数据工厂。 如果在数据集下看到错误，可将其忽略，这些错误的原因是启动数据生成器之前已部署数据工厂。 这些错误不会防碍数据工厂的正常运行。
+[Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务协调数据的移动和处理。 在航天工业预见性维护的解决方案模板中，数据工厂由 3 个[管道](../data-factory/data-factory-create-pipelines.md)组成，使用不同的技术移动和处理数据。  可以打开随解决方案部署创建的解决方案模板图示底部的数据工厂节点来访问数据工厂。 这会转到 Azure 门户上的数据工厂。 如果在数据集下看到错误，可将其忽略，这些错误的原因是启动数据生成器之前已部署数据工厂。 这些错误不会防碍数据工厂的正常运行。
 
 ![数据工厂数据集错误](media/cortana-analytics-technical-guide-predictive-maintenance/data-factory-dataset-error.png)
 
@@ -147,7 +147,7 @@ Azure 流分析服务从数据流读取数据并将数据输出到任意数量�
  启动数据生成器后，管道将开始合成，解决方案的不同组件遵循数据工厂发出的命令开始操作。 可通过两种方式监视管道。
 
 1. 某个流分析作业会将原始传入数据写入 Blob 存储。 如果在成功部署解决方案的屏幕中单击解决方案的“Blob 存储”组件，然后在右窗格中单击“打开”，将会转到 [管理门户](https://portal.azure.com/)。 进入门户后，单击“Blob”。 在随后出现的面板中，可以看到容器列表。 单击“maintenancesadata”。 在随后出现的面板中，可以看到 **rawdata** 文件夹。 在 rawdata 文件夹内，可以看到具有 hour=17、hour=18 etc 等名称的文件夹。如果看到这些文件夹，则表示原始数据已成功在计算机上生成并存储在 Blob 存储中。 应会在这些文件夹中看到具有有限 MB 大小的 csv 文件。
-2. 管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要&3; 个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的一个方法是使用 [Azure 门户](https://manage.windowsazure.com/)。在左侧面板上查找 SQL 数据库 ![SQL 图标](media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png)并单击它。 然后查找自己的数据库 **pmaintenancedb** 并单击它。 在下一页的底部，单击“管理”
+2. 管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要 3 个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的一个方法是使用 [Azure 门户](https://manage.windowsazure.com/)。在左侧面板上查找 SQL 数据库 ![SQL 图标](media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png)并单击它。 然后查找自己的数据库 **pmaintenancedb** 并单击它。 在下一页的底部，单击“管理”
    
     ![管理图标](media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)。
    
