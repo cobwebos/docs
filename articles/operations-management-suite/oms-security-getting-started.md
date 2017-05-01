@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 04/19/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
-ms.openlocfilehash: 888b9786de8302ccd2e11f271aa417bcbcc2620b
-ms.lasthandoff: 12/02/2016
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: c6944fd4f93d2daa9071bb27f76ea0f772bdb743
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -44,7 +44,7 @@ OMS 安全和审核解决方案借助内置搜索查询找到需要关注的重�
 > 
 > 
 
-解决方案是用于应对主要客户挑战的逻辑、可视化和数据采集规则的集合。 安全和审核是一种解决方案，可单独添加其他解决方案。 阅读[添加解决方案](https://technet.microsoft.com/library/mt674635.aspx)一文，了解有关如何添加新解决方案的详细信息。
+解决方案是用于应对主要客户挑战的逻辑、可视化效果和数据采集规则的集合。 安全和审核是一种解决方案，可单独添加其他解决方案。 阅读[添加解决方案](https://technet.microsoft.com/library/mt674635.aspx)一文，了解有关如何添加新解决方案的详细信息。
 
 OMS 安全和审核仪表板有四个主要类别：
 
@@ -92,19 +92,19 @@ OMS 安全和审核仪表板有四个主要类别：
 ![搜索结果](./media/oms-security-getting-started/oms-getting-started-fig5.png)
 
 > [!NOTE]
-> *级别*是反映保护状态（开启、关闭、更新等等）和所发现威胁的等级。 采用数字形式有助于进行聚合。
+> *级别*是反映保护状态（开启、关闭、更新等）和所发现威胁的等级。 采用数字形式有助于进行聚合。
 > 
 > 
 
 如果单击计算机名，将看到此计算机按时间排列的保护状态。 如果需要了解反恶意软件是否安装后之后又在某时刻被移除，这将非常有用。   
 
 ### <a name="update-assessment"></a>更新评估
-此选项能够快速确定潜在安全问题的总体风险，以及这些更新对环境是否重要、有多重要。 OMS 安全和审核解决方案仅提供这些更新的可视化结果，实际数据来自[系统更新解决方案](https://technet.microsoft.com/library/mt484096.aspx)，这是 OMS 内的另一个模块。 下面是更新的示例：
+此选项能够快速确定潜在安全问题的总体风险，以及这些更新对环境是否重要、有多重要。 OMS 安全和审核解决方案仅提供这些更新的可视化结果，实际数据来自[更新管理解决方案](oms-solution-update-management.md)，这是 OMS 内的另一个模块。 下面是更新的示例：
 
-![系统更新](./media/oms-security-getting-started/oms-getting-started-fig6.png)
+![系统更新](./media/oms-security-getting-started/oms-getting-started-fig6-new.png)
 
 > [!NOTE]
-> 有关更新解决方案的详细信息，请阅读[使用系统更新解决方案更新服务器](https://technet.microsoft.com/library/mt484096.aspx)。
+> 有关更新管理解决方案的详细信息，请阅读 [OMS 中的更新管理解决方案](oms-solution-update-management.md)。
 > 
 > 
 
@@ -135,6 +135,14 @@ OMS 安全和审核仪表板有四个主要类别：
 
 可单击每台计算机上继续进行调查，并查看已标记的安全事件。
 
+### <a name="threat-intelligence"></a>威胁智能
+
+通过使用 OMS 安全和审核中的“威胁智能”选项，IT 管理员可根据环境识别安全威胁，例如识别某台特定的计算机是否是僵尸网络的一部分。 当攻击者非法安装秘密将此计算机连接到命令和控制的恶意软件时，该计算机就成为了僵尸网络的节点。 它还可以识别来自地下通信通道（例如暗网）的潜在威胁。 通过阅读[监视和响应 Operations Management Suite 安全和审核解决方案中的安全警报](oms-security-responding-alerts.md)一文，详细了解威胁情报。
+
+### <a name="baseline-assessment"></a>基线评估
+
+Microsoft 及全球的产业和政府组织定义了一个代表高安全度服务器部署的 Windows 配置。 此配置是一组注册表项、审核策略设置、安全策略设置，以及 Microsoft 对这些设置的建议值。 这一组规则称为安全基线。 请阅读 [Operations Management Suite 安全和审核解决方案中的基线评估](oms-security-baseline.md)，详细了解此选项。
+
 ### <a name="azure-security-center"></a>Azure 安全中心
 此磁贴基本上是用于访问 Azure 安全中心仪表板的快捷方式。 阅读 [Azure 安全中心入门](../security-center/security-center-get-started.md)，了解有关此解决方案的详细信息。
 
@@ -153,7 +161,7 @@ OMS 安全和审核仪表板有四个主要类别：
 此选项还可在[事件响应调查](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/)期间使用，从而执行评估并获取有关攻击的详细信息。
 
 > [!NOTE]
-> 有关如何针对事件响应使用 OMS 的详细信息，请观看 [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)（如何针对事件响应利用 Azure 安全中心和 Microsoft Operations Management Suite）。
+> 有关如何针对事件响应使用 OMS 的详细信息，请观看以下视频：[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)（如何针对事件响应利用 Azure 安全中心和 Microsoft Operations Management Suite）。
 > 
 > 
 

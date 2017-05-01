@@ -17,9 +17,9 @@ ms.topic: get-started-article
 ms.date: 3/10/2017
 ms.author: markgal;giridham;arunak;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 87d500d886feb2dbd61d15d5a980ab2c4018c2f2
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: aabd0481e6dd264e9a5e91c2e4b2b83f01227db1
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/03/2017
 缓存文件夹的大小由你正在备份的数据量确定。 缓存文件夹应是数据存储所需空间的 5%。
 
 ### <a name="can-i-migrate-my-backup-data-or-vault-between-subscriptions-br"></a>是否可以在订阅之间“迁移”我的备份数据或保管库？ <br/>
-不可以。 保管库是在订阅级别创建的，在创建后无法重新分配到另一订阅。
+否。 保管库是在订阅级别创建的，在创建后无法重新分配到另一订阅。
 
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-classic-mode-still-supported-br"></a>恢复服务保管库基于 Resource Manager。 是否仍支持备份保管库（经典模式）？ <br/>
 仍然支持[经典门户](https://manage.windowsazure.com)中所有现有的备份保管库。 但是，无法再使用经典门户来部署新的备份保管库。 Microsoft 建议你对所有部署使用恢复服务保管库，因为将来只会对恢复服务保管库进行增强。 如果尝试在经典门户中创建备份保管库，系统会将你重定向到 [Azure 门户](https://portal.azure.com)。
@@ -205,6 +205,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 | Windows Server 2016 |64 位 |Standard、Datacenter、Essentials |
 | Windows Server 2012 R2 和最新的 SP |64 位 |Standard、Datacenter、Foundation |
 | Windows Server 2012 和最新的 SP |64 位 |Datacenter、Foundation、Standard |
+| Windows Storage Server 2016 和最新的 SP |64 位 |Standard、Workgroup | 
 | Windows Storage Server 2012 R2 和最新的 SP |64 位 |Standard、Workgroup |
 | Windows Storage Server 2012 和最新的 SP |64 位 |Standard、Workgroup |
 | Windows Server 2012 R2 和最新的 SP |64 位 |Essential |
@@ -270,7 +271,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 从 Azure 备份执行恢复的次数没有限制。
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure-br"></a>还原数据时，Azure 的出口流量是否需要付费？ <br/>
-不可以。 恢复是免费的，不收取传出流量费。
+否。 恢复是免费的，不收取传出流量费。
 
 ### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>即使配置了备份策略，仍会显示警告“尚未为此服务器配置 Azure 备份” <br/>
 在本地服务器上存储的备份计划设置与备份保管库中存储的设置不同时，可能会出现此警告。 服务器或设置恢复为已知良好状态后，备份计划可能会失去同步。 如果收到此警告，请 [重新配置备份策略](backup-azure-manage-windows-server.md) ，然后 **立即运行备份** ，以便将本地服务器与 Azure 重新同步。

@@ -17,9 +17,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 06b6830b28745b0f6574d7bca5cca7907db8ecb1
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: fb0cd3898703b9acf54d7ff70774bd090d39f0e5
+ms.lasthandoff: 04/22/2017
 
 ---
 
@@ -45,18 +45,18 @@ az login
 
 ```azurecli
 # The data center and resource name for your resources
-resourcegroupname = myResourceGroup
-location = westeurope
+export resourcegroupname = myResourceGroup
+export location = westeurope
 # The logical server name: Use a random value or replace with your own value (do not capitalize)
-servername = server-$RANDOM
+export servername = server-$RANDOM
 # Set an admin login and password for your database
-adminlogin = ServerAdmin
-password = ChangeYourAdminPassword1
+export adminlogin = ServerAdmin
+export password = ChangeYourAdminPassword1
 # The ip address range that you want to allow to access your DB
-startip = "0.0.0.0"
-endip = "0.0.0.1"
+export startip = "0.0.0.0"
+export endip = "0.0.0.1"
 # The database name
-databasename = mySampleDatabase
+export databasename = mySampleDatabase
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
@@ -99,7 +99,11 @@ az sql db create --resource-group $resourcegroupname --server $servername \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果计划继续使用后续的快速入门或相关教程，请勿清除在本快速入门中创建的资源。 如果不打算继续，请使用以下命令删除通过本快速入门创建的所有资源。
+本教程系列中的其他快速入门教程是在本文的基础上制作的。 
+
+> [!TIP]
+> 如果计划继续使用后续的快速入门，请勿清除在本快速入门中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤，删除通过此快速入门创建的所有资源。
+>
 
 ```azurecli
 az group delete --name $resourcegroupname
@@ -107,12 +111,15 @@ az group delete --name $resourcegroupname
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
-- 若要使用 Visual Studio Code 进行连接和查询，请参阅[使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
-- 若要使用 .NET 进行连接和查询，请参阅[使用 .NET 进行连接和查询](sql-database-connect-query-dotnet.md)。
-- 若要使用 PHP 进行连接和查询，请参阅[使用 PHP 进行连接和查询](sql-database-connect-query-php.md)。
-- 若要使用 Node.js 进行连接和查询，请参阅[使用 Node.js 进行连接和查询](sql-database-connect-query-nodejs.md)。
-- 若要使用 Java 进行连接和查询，请参阅[使用 Java 进行连接和查询](sql-database-connect-query-java.md)。
-- 若要使用 Python 进行连接和查询，请参阅[使用 Python 进行连接和查询](sql-database-connect-query-python.md)。
-- 若要使用 Ruby 进行连接和查询，请参阅[使用 Ruby 进行连接和查询](sql-database-connect-query-ruby.md)。
+有了数据库以后，即可使用偏好的工具进行连接和查询。 若要了解详细信息，请选择下面的工具：
+
+- [SQL Server Management Studio](sql-database-connect-query-ssms.md)
+- [Contact.java](sql-database-connect-query-vscode.md)
+- [.NET](sql-database-connect-query-dotnet.md)
+- [PHP](sql-database-connect-query-php.md)
+- [Node.js](sql-database-connect-query-nodejs.md)
+- [Java](sql-database-connect-query-java.md)
+- [Python](sql-database-connect-query-python.md)
+- [Ruby](sql-database-connect-query-ruby.md)
+
 

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 762d8deac1f176e51b54295ef571ae529d338d2c
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: c2e78e0191be6ac7d828402859c04c486e8df594
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -27,7 +27,7 @@ Log Analytics 是 [Operations Management Suite \(OMS\)](../operations-management
 ## <a name="is-log-analytics-for-you"></a>Log Analytics 是否适合你？
 如果 Azure 环境中当前尚未部署监视机制，应该先使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 来收集和分析 Azure 资源的监视数据。  Log Analytics 可从 Azure Monitor 收集数据，以便将这些数据与其他数据相关联并提供更多分析信息。
 
-如果你想要监视本地环境，或者部署了使用 Azure Monitor 或 System Center Operations Manager 等服务的现有监视机制，则 Log Anlalytics 可以大大提高其价值。  它能直接将代理中的数据以及其他此类工具中的数据收集到单个存储库。  Log Analytics 中的分析工具（例如日志搜索、视图和解决方案）可针对收集的所有数据运行，提供整个环境的集中分析信息。
+若要监视本地环境，或者部署了使用 Azure Monitor 或 System Center Operations Manager 等服务的现有监视机制，则 Log Analytics 可以大大提高其价值。  它能直接将代理中的数据以及其他此类工具中的数据收集到单个存储库。  Log Analytics 中的分析工具（例如日志搜索、视图和解决方案）可针对收集的所有数据运行，提供整个环境的集中分析信息。
 
 
 ## <a name="using-log-analytics"></a>使用 Log Analytics
@@ -45,7 +45,7 @@ Log Analytics 提供用于快速检索和整合存储库中数据的查询语言
 
 ![仪表板](media/log-analytics-overview/dashboard.png)
 
-可以将 OMS 存储库的数据导出到 [Power BI](log-analytics-powerbi.md) 或 Excel 等工具，以在 Log Analytics 外部分析数据。  还可以使用 [Log Search API](log-analytics-log-search-api.md) 生成利用 Log Analytics 数据的自定义解决方案或与其他系统集成。
+可以将 OMS 存储库的数据导出到 [Power BI](log-analytics-powerbi.md) 或 Excel 等工具，以在 Log Analytics 外部分析数据。  还可以使用[日志搜索 API](log-analytics-log-search-api.md) 生成利用 Log Analytics 数据的自定义解决方案或与其他系统集成。
 
 ## <a name="add-functionality-with-management-solutions"></a>使用管理解决方案添加功能
 [管理解决方案](log-analytics-add-solutions.md)可将功能添加到 OMS，为 Log Analytics 提供更多数据和分析工具。  这些解决方案还可以定义要收集的新记录类型，并使用日志搜索或通过仪表板中的解决方案提供的其他用户界面进行分析。  以下示例截图显示了[更改跟踪解决方案](log-analytics-change-tracking.md)

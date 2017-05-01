@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 02/09/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 37a1653ca058c60a39df95f646127bd9e7fdd556
-ms.openlocfilehash: 57c7b895579e1c1e86224a60d961721d2d4cf638
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 1c8703d64ff45e589a7ce93f1f2176681e1bf331
+ms.lasthandoff: 04/25/2017
 
 
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="azure-iot-suite"></a>Azure IoT 套件
-Microsoft Azure IoT 套件是企业级解决方案，让用户能够通过一组可扩展的预配置解决方案快速入门。 这些解决方案用于处理常见 IoT 场景，例如[远程监视][lnk-preconfigured-solutions]和[预见性维护][lnk-predictive-maintenance]。 这些解决方案是本文所述的 IoT 解决方案体系结构的实现。
+Microsoft Azure IoT 套件是企业级解决方案，让用户能够通过一组可扩展的预配置解决方案快速入门。 这些解决方案用于处理常见 IoT 场景，例如[远程监视][lnk-preconfigured-solutions]、[预见性维护][lnk-predictive-maintenance]和[连接工厂][lnk-connected-factory]。 这些解决方案是本文所述的 IoT 解决方案体系结构的实现。
 
 预配置的解决方案是可以正常工作的完整端到端解决方案，其中包括：
 
@@ -53,4 +53,4 @@ Microsoft Azure IoT 套件是企业级解决方案，让用户能够通过一组
 [Azure Machine Learning]: https://azure.microsoft.com/documentation/services/machine-learning/
 [Azure storage]: https://azure.microsoft.com/documentation/services/storage/
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
-
+[lnk-connected-factory]: iot-suite-connected-factory-overview.md
