@@ -15,8 +15,3 @@
 3. 在 Android Studio 项目资源管理器中，右键单击项目节点，选择“属性”，并在左栏中选择“Android”。 确保“项目生成目标”设置为与 **targetSdkVersion** 相同的 SDK 版本。
 
 与 Eclipse 的情况不同，在 Android Studio 中，清单文件不再用于指定目标 SDK 版本和最低 SDK 版本。
-
-
-<!--HONumber=Dec16_HO2-->
-
-

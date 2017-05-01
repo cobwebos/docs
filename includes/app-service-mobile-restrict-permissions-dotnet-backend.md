@@ -18,8 +18,3 @@
         table.access = 'authenticated';
 
     有关更多详细信息，请参阅[如何：要求在访问表时进行身份验证](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth)。 若要了解如何从网站下载快速入门代码项目，请参阅[如何：使用 Git 下载 Node.js 后端快速入门代码项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)。
-
-
-<!--HONumber=Dec16_HO2-->
-
-

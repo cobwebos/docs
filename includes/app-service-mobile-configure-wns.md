@@ -5,8 +5,3 @@
     ![设置门户中的 WNS 密钥](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
 后端现已配置为使用 WNS 发送推送通知。
-
-
-<!--HONumber=Dec16_HO2-->
-
-
