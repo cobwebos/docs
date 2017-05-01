@@ -1,6 +1,6 @@
 选择与后端项目类型 &mdash;[.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
 
-### <a name="a-namedotnetanet-back-end-project"></a><a name="dotnet"></a>.NET 后端项目
+### <a name="dotnet"></a>.NET 后端项目
 1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”。 搜索 `Microsoft.Azure.NotificationHubs`，然后单击“安装”。 这将安装通知中心客户端库。
 2. 在“控制器”文件夹中，打开“TodoItemController.cs”，添加以下 `using` 语句：
 
@@ -48,7 +48,7 @@
 
 4. 重新发布服务器项目。
 
-### <a name="a-namenodejsanodejs-back-end-project"></a><a name="nodejs"></a>Node.js 后端项目
+### <a name="nodejs"></a>Node.js 后端项目
 1. 如果尚未执行此操作，请[下载快速入门项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)或使用 [Azure 门户中的在线编辑器](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
 2. 将 todoitem.js 文件中的现有代码替换为以下内容：
 
@@ -97,8 +97,3 @@
 
     插入新的 todo 项时，会发送包含 item.text 的 GCM 通知。
 3. 在本地计算机中编辑文件时，请重新发布服务器项目。
-
-
-<!--HONumber=Dec16_HO2-->
-
-

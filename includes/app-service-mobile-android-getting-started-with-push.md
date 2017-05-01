@@ -94,8 +94,3 @@
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
     你的应用现已更新，可支持推送通知。
-
-
-<!--HONumber=Dec16_HO2-->
-
-
