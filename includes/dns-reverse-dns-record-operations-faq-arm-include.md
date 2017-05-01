@@ -7,7 +7,7 @@
 
 ### <a name="will-the-reverse-dns-records-for-my-azure-assigned-public-ip-address-resolve-from-the-internet"></a>是否从 Internet 解析 Azure 分配的公共 IP 地址的反向 DNS 记录？
 
- 是的。 为公共 IP 地址设置反向 DNS 属性后，Azure 将管理所有必要的 DNS 委托和 DNS 区域，确保可为所有 Internet 用户解析反向 DNS 记录。
+是的。 为公共 IP 地址设置反向 DNS 属性后，Azure 将管理所有必要的 DNS 委托和 DNS 区域，确保可为所有 Internet 用户解析反向 DNS 记录。
 
 ### <a name="will-a-default-reverse-dns-record-be-created-for-my-public-ip-addresses"></a>是否为公共 IP 地址创建默认的反向 DNS 记录？
 
@@ -40,8 +40,3 @@ Azure 网站不支持反向 DNS。 Azure 虚拟机支持反向 DNS。
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>是否可以从 Azure 计算服务将电子邮件发送到外部域？
 
 不能。 [Azure 计算服务不支持向外部域发送电子邮件](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/)。
-
-
-<!--HONumber=Nov16_HO3-->
-
-

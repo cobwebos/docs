@@ -16,8 +16,3 @@
 
 若要部署上述方案，请按照[此链接](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG)，单击“部署至 Azure”，根据需要替换默认参数值，然后按照门户中的说明进行操作。 在以下示例说明中，使用了模板部署名为 **RG-NSG** 的资源组。 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

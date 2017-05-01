@@ -99,7 +99,7 @@ GeneralError*
 ## <a name="allocation-scenario-stagingproduction-deployments-platform-as-a-service-only"></a>分配案例：过渡/生产环境部署（仅适用于平台即服务）
 **错误**
 
-New_General* 或 New_VMSizeNotSupported*
+New_General *或 New_VMSizeNotSupported*
 
 **群集固定的原因**
 
@@ -112,7 +112,7 @@ New_General* 或 New_VMSizeNotSupported*
 ## <a name="allocation-scenario-affinity-group-vmservice-proximity"></a>分配案例：地缘组（VM/服务邻近性）
 **错误**
 
-New_General* 或 New_VMSizeNotSupported*
+New_General *或 New_VMSizeNotSupported*
 
 **群集固定的原因**
 
@@ -125,7 +125,7 @@ New_General* 或 New_VMSizeNotSupported*
 ## <a name="allocation-scenario-affinity-group-based-virtual-network"></a>分配案例：基于地缘组的虚拟网络
 **错误**
 
-New_General* 或 New_VMSizeNotSupported*
+New_General *或 New_VMSizeNotSupported*
 
 **群集固定的原因**
 
@@ -151,7 +151,7 @@ New_General* 或 New_VMSizeNotSupported*
 ## <a name="allocation-scenario-resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>分配案例：重设 VM 大小或向现有可用性集添加 VM
 **错误**
 
-Upgrade_VMSizeNotSupported* 或 GeneralError*
+Upgrade_VMSizeNotSupported *或 GeneralError*
 
 **群集固定的原因**
 
@@ -205,9 +205,4 @@ GeneralError*
 **GeneralError***
 
 “服务器遇到内部错误。 请重试请求。” 或者“无法为服务生成分配。”
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -9,16 +9,11 @@
    
      ![“服务注册密钥”对话框](./media/storsimple-get-service-registration-key-gov/HCS_ServiceRegistrationKey-gov-include.png)
 3. 查找服务注册密钥
-4. 单击复制图标  ![StorSimple“复制”图标](./media/storsimple-get-service-registration-key-gov/HCS_CopyIcon-include.png)  复制密钥并进行保存以供以后使用。
+4. 单击复制图标  ![StorSimple“复制”图标](./media/storsimple-get-service-registration-key-gov/HCS_CopyIcon-include.png) 复制密钥并进行保存以供以后使用。
 5. 单击选中图标 ![StorSimple 选中图标](./media/storsimple-get-service-registration-key-gov/HCS_CheckIcon-include.png)关闭此对话框并返回到“快速启动”页。
 
 > [!NOTE]
 > 服务注册密钥用于注册需要注册 StorSimple Manager 服务的所有设备。
 > 
 > 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

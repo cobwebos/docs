@@ -17,8 +17,3 @@
 8. 在更新已安装在当前控制器上并重新启动后，连接到另一个控制器，然后执行步骤 1 到 6。
 9. 在这两个控制器都已更新后，退出维护模式。 有关说明，请参阅[步骤 4：退出维护模式](../articles/storsimple/storsimple-update-device.md#step4)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-
