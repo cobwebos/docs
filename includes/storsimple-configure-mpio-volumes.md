@@ -6,8 +6,3 @@
     ![MPIO 属性发现多路径](./media/storsimple-configure-mpio-volumes/IC741003.png)
 4. 出现提示时，重新启动服务器。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

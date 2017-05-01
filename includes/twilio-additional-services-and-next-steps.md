@@ -1,7 +1,7 @@
-## <a name="a-nameadditionalservicesahow-to-use-additional-twilio-services"></a><a name="AdditionalServices"></a>如何：使用其他 Twilio 服务
+## <a name="AdditionalServices"></a>如何：使用其他 Twilio 服务
 除了此处所示的示例之外，Twilio 还提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程序中使用其他 Twilio 功能。 有关完整详细信息，请参阅 [Twilio API 文档][twilio_api_documentation]。
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>后续步骤
+## <a name="NextSteps"></a>后续步骤
 现在，你已了解 Twilio 服务的基础知识，单击下面的链接可以了解详细信息：
 
 * [Twilio 安全准则][twilio_security_guidelines]
@@ -16,10 +16,5 @@
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

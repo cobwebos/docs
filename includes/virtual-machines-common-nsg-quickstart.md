@@ -11,8 +11,3 @@
 
 可以创建复杂的网络配置，以使用网络安全组和规则来保护你的环境。 本示例仅使用一个或两个允许 HTTP 流量或远程管理的规则。 有关详细信息，请参阅下面的[更多信息](#more-information-on-network-security-groups)部分或[什么是网络安全组？](../articles/virtual-network/virtual-networks-nsg.md)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-
