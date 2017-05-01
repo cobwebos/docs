@@ -14,7 +14,7 @@
 
 以下部分提供了其中每个步骤的详细说明。 
 
-#### <a name="a-namegetnetaget-the-name-of-the-cluster-network-resource"></a><a name="getnet"></a>获取群集网络资源的名称
+#### <a name="getnet"></a>获取群集网络资源的名称
 
 1. 使用 RDP 连接到托管主副本的 Azure 虚拟机。 
 
@@ -26,7 +26,7 @@
 
    ![群集网络名称](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
-#### <a name="a-nameaddcapaadd-the-client-access-point"></a><a name="addcap"></a>添加客户端接入点
+#### <a name="addcap"></a>添加客户端接入点
 
 客户端接入点是应用程序用来连接到可用性组中数据库的网络名称。 可在故障转移群集管理器中创建客户端接入点。 
 
@@ -42,7 +42,7 @@
    
    若要完成创建侦听器，请单击“下一步”两次，然后单击“完成”。 不要在此时使侦听器或资源联机。
    
-#### <a name="a-namecongroupaconfigure-the-ip-resource-for-the-availability-group"></a><a name="congroup"></a>配置可用性组的 IP 资源
+#### <a name="congroup"></a>配置可用性组的 IP 资源
 
 1. 单击“资源”选项卡，然后展开创建的客户端接入点。 客户端接入点处于脱机状态。
 
@@ -58,7 +58,7 @@
 1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
 ------------------------->
 
-#### <a name="a-name--dependencygroupamake-the-sql-server-availability-group-resource-dependent-on-the-client-access-point"></a><a name = "dependencyGroup"></a>使 SQL Server 可用性组资源依赖于客户端接入点
+#### <a name = "dependencyGroup"></a>使 SQL Server 可用性组资源依赖于客户端接入点
 
 1. 在故障转移群集管理器中单击“角色”，然后单击你的可用性组。
 
@@ -70,7 +70,7 @@
 
 1. 单击 **“确定”**。
 
-#### <a name="a-namelistnameamake-the-client-access-point-resource-dependent-on-the-ip-address"></a><a name="listname"></a>使客户端接入点资源依赖于 IP 地址
+#### <a name="listname"></a>使客户端接入点资源依赖于 IP 地址
 
 1. 在故障转移群集管理器中单击“角色”，然后单击你的可用性组。 
 
@@ -84,7 +84,7 @@
 
 1. 右键单击侦听器名称，然后单击“联机”。 
 
-#### <a name="a-namesetparamaset-the-cluster-parameters-in-powershell"></a><a name="setparam"></a>在 PowerShell 中设置群集参数
+#### <a name="setparam"></a>在 PowerShell 中设置群集参数
 
 1. 将以下 PowerShell 脚本复制到某台 SQL 服务器。 请更新环境的变量。     
    ```PowerShell
@@ -102,10 +102,5 @@
 
 > [!NOTE]
 > 如果 SQL Server 位于不同的区域，则需要运行 PowerShell 脚本两次。 第一次运行时，请从第一个区域中选择 `$ILBIP` 和 `$ProbePort`。 第二次运行时，请从第二个区域中选择 `$ILBIP` 和 `$ProbePort`。 群集网络名称与群集 IP 资源名称相同。 
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

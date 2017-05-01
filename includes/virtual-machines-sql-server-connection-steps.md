@@ -94,8 +94,3 @@
 
 有关 SQL Server 登录名的详细信息，请参阅[创建登录名](http://msdn.microsoft.com/library/aa337562.aspx)。
 
-
-
-<!--HONumber=Jan17_HO2-->
-
-
