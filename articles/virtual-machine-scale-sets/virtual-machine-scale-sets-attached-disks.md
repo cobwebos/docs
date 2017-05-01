@@ -13,12 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/6/2017
+ms.date: 4/25/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 91d36d5321f455a2af31093fa460ddf6640942d4
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: d991adb8fa8f71a8785327be244ad9749a837dfd
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -58,10 +58,21 @@ az vmss create --help
 对于定义了附加磁盘的规模集模板，如需可供部署的完整示例，请访问 [https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data](https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data)。
 
 ## <a name="adding-a-data-disk-to-an-existing-scale-set"></a>将数据磁盘添加到现有规模集
+> [!NOTE]
+>  只能将数据磁盘附加到使用 [Azure 托管磁盘](./virtual-machine-scale-sets-managed-disks.md)创建的规模集。
+
 可以使用 Azure CLI _az vmss disk attach_ 命令将数据磁盘添加到 VM 规模集。 请确保指定尚未使用的 lun。 以下 CLI 示例将 50 GB 的驱动器添加到 lun 3：
 ```bash
 az vmss disk attach -g dsktest -n dskvmss --size-gb 50 --lun 3
 ```
+
+以下 PowerShell 示例将 50 GB 的驱动器添加到 lun 3：
+```powershell
+$vmss = Get-AzureRmVmss -ResourceGroupName myvmssrg -VMScaleSetName myvmss
+$vmss = Add-AzureRmVmssDataDisk -VirtualMachineScaleSet $vmss -Lun 3 -Caching 'ReadWrite' -CreateOption Empty -DiskSizeGB 50 -StorageAccountType StandardLRS
+Update-AzureRmVmss -ResourceGroupName myvmssrg -Name myvmss -VirtualMachineScaleSet $vmss
+```
+
 > [!NOTE]
 > 不同的 VM 大小对所支持的附加驱动器数目有不同的限制。 在添加新磁盘之前，请检查[虚拟机大小特征](../virtual-machines/windows/sizes.md)。
 

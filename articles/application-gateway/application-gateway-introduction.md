@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: d23b400d8e6db66bc596731770a98e2833302543
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: ba9c673676fd0b742eb8bd780b67930333b151b3
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -101,6 +101,9 @@ Azure 应用程序网关会通过基本或自定义运行状况探测，自动�
 
 定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 费用，具体请参阅[应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)。 数据处理费保持不变。
 
+## <a name="faq"></a>常见问题
+
+有关应用程序网关的常见问题，请参阅[应用程序网关常见问题](application-gateway-faq.md)。
 ## <a name="next-steps"></a>后续步骤
 
 了解应用程序网关后，可以[创建应用程序网关](application-gateway-create-gateway-portal.md)，也可以[创建应用程序网关 SSL 卸载](application-gateway-ssl-arm.md)，以便对 HTTPS 连接进行负载均衡。

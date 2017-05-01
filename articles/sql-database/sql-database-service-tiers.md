@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-wms.date: 03/06/2017
+wms.date: 04/14/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 85b7336958c90b477eea8ea185a69bab2bd87a79
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 884cd19bdfb1bf53d75cb27e840c448eff8bc991
+ms.lasthandoff: 04/21/2017
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL 数据库选项和性能：了解每个服务层提供的功能
 
-[Azure SQL 数据库](sql-database-technical-overview.md)提供四个服务层：**基本**、**标准**、**高级**和**高级 RS**。 每个服务层提供多个性能级别来处理不同的工作负荷。 更高的性能级别提供更多的资源，旨在逐级提高吞吐量。 可在不停机的情况下动态更改服务层和性能级别。 基本、标准、高级和高级 RS 服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 高级 RS 层提供的性能级别、安全功能和业务连续性功能与高级层相同，但 SLA 更低。
+[Azure SQL 数据库](sql-database-technical-overview.md)提供四个服务层：**基本**、**标准**、**高级**和**高级 RS**。 每个服务层提供多个性能级别来处理不同的工作负荷。 更高的性能级别提供更多的资源，旨在逐级提高吞吐量。 可在不停机的情况下动态更改服务层和性能级别。 基本、标准和高级服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 高级 RS 层提供的性能级别、安全功能和业务连续性功能与高级层相同，但 SLA 更低。
 
 > [!IMPORTANT]
 > 与高级或标准数据库相比，高级 RS 数据库以更少的冗余副本运行。 因此，在发生服务故障时，可能需要从备份中恢复数据库，这最长会出现 5 分钟的滞后时间。
@@ -44,18 +44,18 @@ ms.lasthandoff: 04/15/2017
 | **高级 RS** | 专为不需要最高可用性保证的 IO 密集型工作负荷设计。 示例包括测试高性能工作负荷或数据库不是记录系统的分析工作负荷。 |
 |||
 
-首先请确定是要运行包含定义数量的专用资源的单一数据库，还是要在一组数据库之间共享某个资源池。 查看[弹性池注意事项](sql-database-elastic-pool-guidance.md)。 若要确定服务层，首先确定需要的最少数据库功能：
+首先请确定是要运行包含定义数量的专用资源的单一数据库，还是要在一组数据库之间共享某个资源池。 查看[弹性池注意事项](sql-database-elastic-pool.md)。 若要确定服务层，首先确定需要的最少数据库功能：
 
 | **服务层功能** | **基本** | **标准** | **高级** | **高级 RS**|
 | :-- | --: | --: | --: | --: |
-| 单个数据库的最大大小 | 2 GB | 250 GB | 4 TB*  | 500 GB  |
-| 弹性池中的最大总存储 | 117 GB | 1200 GB | 750 GB | 750 GB |
-| 每个池的数据库数目上限 | 400  | 400 | 50 | 50 |
+| 最大单一数据库大小 | 2 GB | 250 GB | 4 TB*  | 500 GB  |
+| 弹性池中的最大数据库大小 | 156 GB | 2.9 TB | 500 GB | 500 GB |
+| 每个池的数据库数目上限 | 500  | 500 | 100 | 100 |
 | 数据库备份保留期 | 7 天 | 35 天 | 35 天 | 35 天 |
 ||||||
 
 > [!IMPORTANT]
-> 使用 P11 和 P15 性能级别的客户最多可以使用 4 TB 的包含存储，而无需额外付费。 此 4 TB 选项目前在以下区域中处于公共预览状态：美国东部 2、美国西部、西欧、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 有关当前的限制，请参阅[当前的 4 TB 限制](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)
+> 容量高达 4 TB 的单个数据库为公共预览版，适用于使用 P11 和 P15 性能级别的客户，且不额外收费。 存储容量超过 750 GB 的高级池目前也已推出。 这些额外的存储选项目前在以下区域可用：美国东部 2、美国西部、西欧、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 请参阅[当前的 4 TB 限制](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)
 >
 
 确定了最低服务层后，就可以确定数据库的性能级别（DTU 数）。 通常情况下，可以先使用标准 S2 和 S3 性能级别。 对于具有高 CPU 或 IO 要求的数据库，开始适合使用高级性能级别。 高级版提供更多的 CPU，并且一开始就提供比最高标准性能水平高出 10 倍的 IO。
@@ -90,7 +90,7 @@ ms.lasthandoff: 04/15/2017
 
 ## <a name="elastic-pool-service-tiers-and-performance-in-edtus"></a>弹性池服务层和性能 (eDTU)
 
-池允许数据库共享和使用 eDTU 资源，无需为该池中的每个数据库分配特定性能级别。 例如，标准池中的单一数据库可使用 0 个 eDTU 到最大数据库 eDTU 数（配置池时设置的）运转。 弹性池允许多个具有不同工作负荷的数据库有效地使用在整个池中都可用的 eDTU 资源。 有关详细信息，请参阅 [弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md) 。
+池允许数据库共享和使用 eDTU 资源，无需为该池中的每个数据库分配特定性能级别。 例如，标准池中的单一数据库可使用 0 个 eDTU 到最大数据库 eDTU 数（配置池时设置的）运转。 弹性池允许多个具有不同工作负荷的数据库有效地使用在整个池中都可用的 eDTU 资源。 有关详细信息，请参阅 [弹性池的价格和性能注意事项](sql-database-elastic-pool.md) 。
 
 下表描述了池服务层的特征。
 
@@ -144,7 +144,7 @@ ALTER DATABASE <myDatabaseName>
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[弹性池](sql-database-elastic-pool-guidance.md)和[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
+* 详细了解[弹性池](sql-database-elastic-pool.md)和[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)。
 * 了解如何[监视、管理弹性池和调整其大小](sql-database-elastic-pool-manage-portal.md)以及如何[监视单一数据库的性能](sql-database-single-database-monitor.md)。
 * 你了解了 SQL 数据库层，接下来请使用[免费帐户](https://azure.microsoft.com/pricing/free-trial/)试用一下这些层并了解[如何创建首个 SQL 数据库](sql-database-get-started-portal.md)。
 * 对于迁移方案，可使用 [DTU 计算器](http://dtucalculator.azurewebsites.net/)估计所需的 DTU 数。 

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 627f0004cd4d558150c1603681431e7638caef88
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 48f7ba325f61b4a91c0208b4c99058da801bee19
+ms.lasthandoff: 04/21/2017
 
 ---
 
@@ -35,6 +35,14 @@ ms.lasthandoff: 03/11/2017
 DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后将在此 DNS 区域内为每个 DNS 记录创建域。 最后，若要将 DNS 区域发布到 Internet，需要为域配置名称服务器。 以下描述了上述每一个步骤。
 
 这些说明假定你已安装并登录到 Azure PowerShell。 若需帮助，请参阅[如何使用 PowerShell 管理 DNS 区域](dns-operations-dnszones.md)。
+
+## <a name="create-the-resource-group"></a>创建资源组
+
+在创建 DNS 区域之前，创建了包含 DNS 区域的资源组。 以下显示该命令。
+
+```powershell
+New-AzureRMResourceGroup -name MyResourceGroup -location "westus"
+```
 
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
@@ -57,7 +65,7 @@ New-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceG
 
 ## <a name="view-records"></a>查看记录
 
-若要列出你的区域中的 DNS 记录，请使用：
+若要列出区域中的 DNS 记录，请使用：
 
 ```powershell
 Get-AzureRmDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyResourceGroup
@@ -66,7 +74,7 @@ Get-AzureRmDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyResourceGroup
 
 ## <a name="update-name-servers"></a>更新名称服务器
 
-在你认为你的 DNS 区域和记录都已正确设置后，需要将你的域名配置为使用 Azure DNS 名称服务器。 这使得 Internet 上的其他用户可以发现你的 DNS 记录。
+正确设置 DNS 区域和记录后，需要将域名配置为使用 Azure DNS 名称服务器。 这使得 Internet 上的其他用户可以发现你的 DNS 记录。
 
 你的区域的名称服务器是通过 `Get-AzureRmDnsZone` cmdlet 指定的：
 
@@ -82,8 +90,15 @@ NumberOfRecordSets    : 3
 MaxNumberOfRecordSets : 5000
 ```
 
-这些名称服务器应当配置有域名注册机构（你向其购买域名的机构）。 你的域名注册机构将提供选项来为域设置名称服务器。 有关详细信息，请参阅[将域委托给 Azure DNS](dns-domain-delegation.md)。
+这些名称服务器应当配置有域名注册机构（你向其购买域名的机构）。 域名注册机构将提供选项来为域设置名称服务器。 有关详细信息，请参阅[将域委派给 Azure DNS](dns-domain-delegation.md)。
 
+## <a name="delete-all-resources"></a>删除所有资源
+
+若要删除在本文中创建的所有资源，请执行以下步骤：
+
+```powershell
+Remove-AzureRMResourceGroup -Name MyResourceGroup
+```
 
 ## <a name="next-steps"></a>后续步骤
 

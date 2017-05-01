@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 04/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
-ms.openlocfilehash: ecae2cb9c0cdc78226c100cd287b840b6b2a6bb8
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 309a36b1aa5db95a287b7a6b21449f9d61880cf4
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="overview-of-azure-iot-suite"></a>Azure IoT 套件概述
+
 Azure 物联网 (IoT) 服务提供有各种功能。 这些企业级服务让你能够：
 
 * 从设备收集数据
@@ -52,9 +53,11 @@ Azure 物联网 (IoT) 服务提供有各种功能。 这些企业级服务让你
 有关典型 IoT 解决方案体系结构的概述，请参阅 [Microsoft Azure 和物联网 (IoT)][iot-suite-what-is-azure-iot]。
 
 ## <a name="preconfigured-solutions"></a>预配置解决方案
-IoT 套件包含预配置解决方案，允许快速开始使用并浏览常见 IoT 方案，例如*远程监视*和*预见性维护*。 你可以将这些解决方案部署到 Azure 订阅，然后运行完整的端到端 IoT 方案。
+
+IoT 套件包含预配置解决方案，允许你快速使用并浏览常见 IoT 方案，例如“远程监视”、“预见性维护”和“连接工厂”。 你可以将这些解决方案部署到 Azure 订阅，然后运行完整的端到端 IoT 方案。
 
 ## <a name="next-steps"></a>后续步骤
+
 现在，已大概了解 IoT 套件可以执行哪些操作以及其主要组件是什么，接下来可以详细了解 IoT 套件中的预配置解决方案。 有关详细信息，请参阅 [Azure IoT 预配置解决方案是什么？][lnk-what-are-preconfig]
 
 [lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/

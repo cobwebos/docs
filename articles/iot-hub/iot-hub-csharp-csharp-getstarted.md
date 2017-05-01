@@ -16,9 +16,9 @@ ms.date: 03/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: ac67a1a67c3a11fde98242519266fcd3ab4f60cb
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 33ddab887ade0d788129367eec4db7e70f35e0b9
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -95,6 +95,7 @@ ms.lasthandoff: 04/18/2017
 > 
 > 
 
+<a id="D2C_csharp"></a>
 ## <a name="receive-device-to-cloud-messages"></a>接收设备到云的消息
 本部分将创建一个 .NET 控制台应用，用于从 IoT 中心读取设备到云的消息。 IoT 中心公开与 [Azure 事件中心][lnk-event-hubs-overview]兼容的终结点，以让用户读取设备到云的消息。 为了简单起见，本教程创建的基本读取器不适用于高吞吐量部署。 若要了解如何大规模处理设备到云的消息，请参阅[处理设备到云的消息][lnk-process-d2c-tutorial]教程。 若要深入了解如何处理来自事件中心的消息，请参阅[事件中心入门][lnk-eventhubs-tutorial]教程。 （本教程适用与 IoT 中心和事件中心相兼容的终结点。）
 
@@ -178,20 +179,24 @@ ms.lasthandoff: 04/18/2017
    
         private static async void SendDeviceToCloudMessagesAsync()
         {
-            double avgWindSpeed = 10; // m/s
+            double minTemperature = 20;
+            double minHumidity = 60;
             Random rand = new Random();
    
             while (true)
             {
-                double currentWindSpeed = avgWindSpeed + rand.NextDouble() * 4 - 2;
+                double currentTemperature = minTemperature + rand.NextDouble() * 15;
+                double currentHumidity = minHumidity + rand.NextDouble() * 20;
    
                 var telemetryDataPoint = new
                 {
                     deviceId = "myFirstDevice",
-                    windSpeed = currentWindSpeed
+                    temperature = currentTemperature,
+                    humidity = currentHumidity
                 };
                 var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
                 var message = new Message(Encoding.ASCII.GetBytes(messageString));
+                message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");
    
                 await deviceClient.SendEventAsync(message);
                 Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
@@ -200,7 +205,7 @@ ms.lasthandoff: 04/18/2017
             }
         }
    
-    此方法每隔一秒发送一条新的设备到云消息。 该消息包含一个具有设备 ID 的 JSON 序列化对象和一个随机生成的编号，用于模拟风速传感器。
+    此方法每隔一秒发送一条新的设备到云消息。 该消息包含一个具有设备 ID 的 JSON 序列化对象和一个随机生成的编号，用于模拟温度传感器和湿度传感器。
 7. 最后，在 **Main** 方法中添加以下行：
    
         Console.WriteLine("Simulated device\n");

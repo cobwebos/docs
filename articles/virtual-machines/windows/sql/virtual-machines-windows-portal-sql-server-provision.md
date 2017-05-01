@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f5793f771553df78c1c335ad57e0d64078d98148
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: e16792bb762287bc16c280386981a4d442448674
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -42,11 +42,10 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 
 ## <a name="select-a-sql-vm-image-from-the-gallery"></a>从库中选择 SQL VM 映像
 1. 使用你的帐户登录到 [Azure 门户](https://portal.azure.com) 。
-   
+
    > [!NOTE]
    > 如果你没有 Azure 帐户，请访问 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-   > 
-   > 
+
 2. 在 Azure 门户中，单击“新建”。 该门户将打开“新建”边栏选项卡。 SQL Server VM 资源位于应用商店的“计算”组中。
 3. 在“新建”边栏选项卡中，单击“计算”，然后单击“全部查看”。
 4. 在“筛选器”文本框中，键入 SQL Server，然后按 ENTER 键。
@@ -58,13 +57,13 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 
    > [!TIP]
    > 本教程中使用 Developer 版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。
-   
+
    > [!NOTE]
-   > SQL VM 映像包括 SQL 服务器在用户创建的 VM（按分钟收费）中的许可费用（Developer 版和 Express 版除外）。 SQL Server Developer 可免费用于开发/测试（不可用于生产），而 SQL Express 可免费用于轻型工作负荷（1 GB 内存以内，10 GB 存储空间以内）。 另一个选项是自带许可 (BYOL)，只支付 VM 费用。 这些映像名称的前缀为 {BYOL}。 有关此选项的详细信息，请参阅[在 Azure 虚拟机上使用 SQL Server 入门](virtual-machines-windows-sql-server-iaas-overview.md)。
-   > 
-   > 
+   > SQL VM 映像包括 SQL 服务器在用户创建的 VM（按分钟收费）中的许可费用（Developer 版和 Express 版除外）。 SQL Server Developer 可免费用于开发/测试（不可用于生产），而 SQL Express 可免费用于轻型工作负荷（1 GB 内存以内，10 GB 存储空间以内）。
+   > 另一个选项是自带许可 (BYOL)，只支付 VM 费用。 这些映像名称的前缀为 {BYOL}。 有关这些选项的详细信息，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
+
 7. 在“选择部署模型”下面，确认已选择“Resource Manager”。 对于新虚拟机，建议使用“Resource Manager”部署模型。 单击“创建” 。
-   
+
     ![使用 Resource Manager 创建 SQL VM](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
 ## <a name="configure-the-vm"></a>配置 VM
@@ -100,7 +99,7 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 执行“大小”设置步骤时，请在“选择大小”边栏选项卡中选择虚拟机大小。 边栏选项卡最初将根据你选择的映像显示建议的计算机大小。
 
 > [!IMPORTANT]
-> 在“选择大小”边栏选项卡上显示的每月估计成本不包括 SQL Server 许可成本。 这只是 VM 的成本。 对于 SQL Server 的 Express 和开发人员版本，这是估计的总成本。 对于其他版本，请参阅[“Windows 虚拟机定价”页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)并选择 SQL Server 的目标版本。 
+> 在“选择大小”边栏选项卡上显示的每月估计成本不包括 SQL Server 许可成本。 这只是 VM 的成本。 对于 SQL Server 的 Express 和开发人员版本，这是估计的总成本。 对于其他版本，请参阅[“Windows 虚拟机定价”页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)并选择 SQL Server 的目标版本。 另请参阅 [SQL Server Azure VM 的定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
 ![SQL VM 大小选项](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
@@ -108,8 +107,6 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 
 > [!NOTE]
 > 有关虚拟机大小的详细信息，请参阅 [虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 有关 SQL Server VM 大小的考虑事项，请参阅 [SQL Server 在 Azure 虚拟机中的性能最佳实践](virtual-machines-windows-sql-performance.md)。
-> 
-> 
 
 选择计算机大小，然后单击“选择”。
 

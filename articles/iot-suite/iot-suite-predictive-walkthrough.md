@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2017
+ms.date: 04/25/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 719f9810abb12cbe8645651d35cbff936cecd158
-ms.openlocfilehash: 57531b609b095359c8bf0ea3685af40124f46311
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 9b2947d9ce00083c168635811395bc86b3e60b78
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -41,11 +42,11 @@ IoT 套件预见性维护预配置解决方案是一个用于商业应用场景�
 
 ## <a name="simulated-devices"></a>模拟设备
 
-在该预配置解决方案中，模拟设备代表飞机引擎。 该解决方案预配了&2; 个映射到单架飞机的引擎。 每个引擎发出 4 种遥测数据：传感器 9、传感器 11、传感器 14 和传感器 15 为机器学习模型提供所需的数据来计算引擎的 RUL。 每个模拟设备会将下列遥测消息发送到 IoT 中心：
+在该预配置解决方案中，模拟设备代表飞机引擎。 该解决方案预配了 2 个映射到单架飞机的引擎。 每个引擎发出 4 种遥测数据：传感器 9、传感器 11、传感器 14 和传感器 15 为机器学习模型提供所需的数据来计算引擎的 RUL。 每个模拟设备会将下列遥测消息发送到 IoT 中心：
 
-*周期计数*。 一个周期表示&2; 至&10; 小时不等的已完成飞行。 在飞行期间，每半小时捕获一次遥测数据。
+*周期计数*。 一个周期表示 2 至 10 小时不等的已完成飞行。 在飞行期间，每半小时捕获一次遥测数据。
 
-*遥测*。 有&4; 个代表引擎属性的传感器。 这些传感器一般标记为传感器 9、传感器 11、传感器 14 和传感器 15。 这四个传感器代表足以从 RUL 模型获取有用结果的遥测装置。 预配置解决方案中使用模型是基于包含实际引擎传感器数据的公共数据集创建的。 有关如何根据原始数据集创建该模型的详细信息，请参阅 [Cortana Intelligence 库预见性维护模板][lnk-cortana-analytics]。
+*遥测*。 有 4 个代表引擎属性的传感器。 这些传感器一般标记为传感器 9、传感器 11、传感器 14 和传感器 15。 这四个传感器代表足以从 RUL 模型获取有用结果的遥测装置。 预配置解决方案中使用模型是基于包含实际引擎传感器数据的公共数据集创建的。 有关如何根据原始数据集创建该模型的详细信息，请参阅 [Cortana Intelligence 库预见性维护模板][lnk-cortana-analytics]。
 
 模拟设备可以处理在解决方案中通过 IoT 中心发送的以下命令：
 
@@ -83,8 +84,3 @@ IoT 中心会提供设备命令确认。
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
-
-
-<!--HONumber=Feb17_HO1-->
-
-

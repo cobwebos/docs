@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 75ddb1ff6dde4a83e775b54c15c86b18d2b1cf7a
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: f7943b71bbd16c36df09436973d92539eb62b210
+ms.lasthandoff: 04/21/2017
 
 ---
 
@@ -36,6 +36,13 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 
 这些说明假设你已安装并登录到 Azure CLI 1.0。 若需帮助，请参阅[如何使用 Azure CLI 1.0 管理 DNS 区域](dns-operations-dnszones-cli-nodejs.md)。
 
+## <a name="create-the-resource-group"></a>创建资源组
+
+在创建 DNS 区域之前，创建了包含 DNS 区域的资源组。 以下显示该命令。
+
+```azurecli
+azure group create --name MyResourceGroup --location "West US"
+```
 
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
@@ -98,6 +105,13 @@ info:    network dns zone show command OK
 
 这些名称服务器应配置有域名注册机构（向其购买域名的机构）。 域名注册机构将提供选项来为域设置名称服务器。 有关详细信息，请参阅[将域委派给 Azure DNS](dns-domain-delegation.md)。
 
+## <a name="delete-all-resources"></a>删除所有资源
+ 
+若要删除在本文中创建的所有资源，请执行以下步骤：
+
+```azurecli
+azure group delete --name MyResourceGroup
+```
 
 ## <a name="next-steps"></a>后续步骤
 
