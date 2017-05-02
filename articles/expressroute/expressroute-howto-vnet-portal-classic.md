@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1206d7444f32216597a6f546c71131b2de0ec3f8
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -25,6 +26,8 @@ ms.openlocfilehash: 1206d7444f32216597a6f546c71131b2de0ec3f8
 本文中的步骤指导通过经典部署模型和经典门户配置用于 ExpressRoute 的虚拟网络和虚拟网络网关。
 
 有关 Resource Manager 部署模型的说明，请参阅以下文章：[使用 PowerShell 创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-ps.md)和[将 VPN 网关添加到 ExpressRoute 的 Resource Manager VNet](expressroute-howto-add-gateway-resource-manager.md)。
+
+[!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
 **关于 Azure 部署模型**
 
@@ -57,13 +60,13 @@ ms.openlocfilehash: 1206d7444f32216597a6f546c71131b2de0ec3f8
    * **添加网关子网** - 单击此项可添加网关子网。 网关子网仅用于此虚拟网络网关，并且是此配置必需的。<BR>ExpressRoute 的网关子网 CIDR（地址计数）必须是 /28 或更大值（/27、/26 等）。 这样一来，该子网中就会有足够的 IP 地址，配置就会起作用。 在经典门户中，如果选择了“使用 ExpressRoute”复选框，门户会使用 /28 来指定网关子网。  不能在经典门户中调整 CIDR 地址计数。 网关子网在经典门户中将显示为“网关”，虽然已创建的网关子网的真实名称实际上是 **GatewaySubnet**。 你可以通过 PowerShell 或 Azure 门户查看此名称。
 7. 单击页面底部的复选标记，此时将开始创建虚拟网络。 完成后，在经典门户的“网络”页上，可看到“状态”下面列出了“已创建”。
 
-## <a name="a-namegwacreate-the-gateway"></a><a name="gw"></a>创建网关
+## <a name="gw"></a>创建网关
 1. 在“网络”页上，单击刚创建的虚拟网络，然后单击页面顶部的“仪表板”。
 2. 在“仪表板”页的底部，单击“创建网关”，然后选择“动态路由”。 单击“是”，确认要创建网关。
 3. 开始创建网关时，你将看到一条消息，告知网关已经开始创建。 创建网关最多可能需要 45 分钟。
 4. 将你的网络连接到线路。 遵循[如何将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)一文中的说明。
 
-## <a name="a-nameconfigaconfigure-an-existing-classic-vnet-for-expressroute"></a><a name="config"></a>为 ExpressRoute 配置现有的经典 VNet
+## <a name="config"></a>为 ExpressRoute 配置现有的经典 VNet
 如果你已经有一个经典的 VNet，则可将其配置为在经典门户中连接到 ExpressRoute。 设置如以上部分所述，因此请通读这些部分以熟悉所需设置。 如果想要创建 ExpressRoute/站点到站点共存连接，请参阅[此文](expressroute-howto-coexist-classic.md)以了解相关步骤。 这些步骤不同于本文中的步骤。
 
 1. 需要先创建本地网络，然后才能更新 VNet 设置的其余部分。 若要创建新的本地网络（这是通过经典门户配置 ExpressRoute 所必需的），请单击“新建”**>**“网络服务”**>**“虚拟网络”**>**“添加本地网络”。 按照向导步骤创建本地网络。
@@ -73,10 +76,5 @@ ms.openlocfilehash: 1206d7444f32216597a6f546c71131b2de0ec3f8
 ## <a name="next-steps"></a>后续步骤
 * 如果要将虚拟机添加到虚拟网络，请参阅[虚拟机学习路径](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)。
 * 如果要了解有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 概述](expressroute-introduction.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
