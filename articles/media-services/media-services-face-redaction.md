@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 04/16/2017
 ms.author: juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 5b8d989d950c17d867f30a6fa8a464a8750e2303
-ms.openlocfilehash: 98922addf7aa8bfc77033be29bf137b362378661
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 2600c5cec36a8a44a85a62d6672d6ae57343f20c
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -92,7 +92,7 @@ ms.lasthandoff: 02/02/2017
           ]
         },
 
-… 已截断
+    … truncated
 
 ### <a name="redact-mode"></a>修订模式
 工作流的第二步使用更大数量的输入，这些输入必须合并为单个资产。
@@ -114,6 +114,12 @@ ms.lasthandoff: 02/02/2017
 
 [观看此视频](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
+示例 foo_IDList.txt
+ 
+     1
+     2
+     3
+ 
 ## <a name="attribute-descriptions"></a>属性说明
 修订 MP 提供高精确度的面部位置检测和跟踪功能，可在一个视频帧中检测到最多 64 张人脸。 正面的面部可提供最佳效果，而检测和跟踪侧面的面部和较小的面部（小于或等于 24x24 像素）可能具有一定难度。
 

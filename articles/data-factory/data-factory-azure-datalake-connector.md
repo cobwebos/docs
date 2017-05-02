@@ -12,39 +12,42 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 1d7ba169675e822ae08a6c679301a0db01e6e338
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 3f0575a170eb20d136858bedc1f87d4f4375c812
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="move-data-to-and-from-azure-data-lake-store-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure Data Lake Store
-本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure Data Lake Store。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
+本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure Data Lake Store。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
 可将数据从任一支持的源数据存储移到 Azure Data Lake Store，或从 Azure Data Lake Store 移到任一支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。  
 
 > [!NOTE]
 > 在使用复制活动创建管道之前，创建 Azure Data Lake Store 帐户，将数据移入/移出 Azure Data Lake store。 若要了解 Azure Data Lake Store，请参阅 [Azure Data Lake Store 入门](../data-lake-store/data-lake-store-get-started-portal.md)。
 
+## <a name="supported-authentication-types"></a>支持的身份验证类型
+Azure Data Lake Store 连接器支持**服务主体**身份验证和**用户凭据** (OAuth) 身份验证。 推荐使用前者（尤其对于计划的数据副本），以避免后者的令牌过期行为。 有关配置详细信息，请参阅[链接服务属性](#linked-service-properties)。
+
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出 Azure Data Lake Store。
 
 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
-无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
-2. 创建**数据集**以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
+2. 创建**数据集**以表示复制操作的输入和输出数据。
+3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure Data Lake Store 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。 
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure Data Lake Store 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。
 
-对于特定于 Azure Data Lake Store 的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息： 
+对于特定于 Azure Data Lake Store 的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 创建 **AzureDataLakeStore** 类型的链接服务，以便将 Azure Data Lake Store 链接到数据工厂。 下表提供了特定于 Azure Data Lake Store 链接服务的 JSON 元素的说明，你可在**服务主体**和**用户凭据**身份验证之间进行选择。
@@ -57,7 +60,7 @@ ms.lasthandoff: 03/24/2017
 | resourceGroupName | Data Lake Store 所属的 Azure 资源组名称。 | 接收器所需 |
 
 ### <a name="using-service-principal-authentication-recommended"></a>使用服务主体身份验证（推荐）
-若要使用服务主体身份验证，请在 Azure Active Directory (AAD) 中注册应用程序实体并授予其访问 Data Lake Store 的权限。 有关详细步骤，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 请记下以下值：**应用程序 ID**、**应用程序密钥**和**租户 ID**。 定义链接的服务时需使用此信息。 
+若要使用服务主体身份验证，请在 Azure Active Directory (AAD) 中注册应用程序实体并授予其访问 Data Lake Store 的权限。 有关详细步骤，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 请记下以下值：**应用程序 ID**、**应用程序密钥**和**租户 ID**。 定义链接的服务时需使用此信息。
 
 > [!IMPORTANT]
 > 如果使用“复制向导”创作数据管道，请确保在访问控制 (IAM) 中向服务主体至少授予对 Data Lake Store 帐户的“读取者”角色以及对 Data Lake Store 根 ("/") 及其子级的“读取+执行”权限。 否则，可能会看到“提供的凭据无效”错误。
@@ -115,7 +118,7 @@ ms.lasthandoff: 03/24/2017
 
 #### <a name="token-expiration"></a>令牌过期
 通过使用“授权”按钮生成的授权代码在一段时间后过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时，可能会看到以下错误消息：
- 
+
 ```
 "Credential operation error: invalid_grant - AADSTS70002: Error validating credentials. AADSTS70008: The provided access grant is expired or revoked. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21-09-31Z".
 ```
@@ -158,7 +161,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 针对代码中使用的 WindowsFormsWebAuthenticationDialog 类，向 **2.9.10826.1824** 版的 **Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll** 添加引用。
 
 ## <a name="dataset-properties"></a>数据集属性
-若要指定数据集来表示 Azure Blob 存储中的输入数据，可以将数据集的类型属性设置为：**AzureDataLakeStore**。 将数据集的 **linkedServiceName** 属性设置为 Azure Data Lake Store 链接服务的名称。 有关可用于定义数据集的 JSON 部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。 每种数据集的 **typeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置、格式等信息。 **AzureDataLakeStore** 数据集类型的 typeProperties 部分具有以下属性：
+若要指定数据集表示 Azure Data Lake Store 中的输入数据，可以将该数据集的类型属性设置为：**AzureDataLakeStore**。 将数据集的 **linkedServiceName** 属性设置为 Azure Data Lake Store 链接服务的名称。 有关可用于定义数据集的 JSON 部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。 每种数据集的 **typeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置、格式等信息。 **AzureDataLakeStore** 数据集类型的 typeProperties 部分具有以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -214,6 +217,9 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | copyBehavior |指定复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy</b>：源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，将会自动生成文件名。 |否 |
+
+## <a name="supported-file-and-compression-formats"></a>支持的文件和压缩格式
+请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
 
 ## <a name="json-examples"></a>JSON 示例
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何将数据复制到 Azure Data Lake Store 和 Azure Blob 存储，以及如何复制其中的数据。 但是，可以从任何源将数据**直接**复制到任何受支持的接收器。 有关详细信息，请参阅[使用复制活动移动数据](data-factory-data-movement-activities.md)中的“支持的数据存储和格式”部分。  
@@ -350,11 +356,11 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 
 
-**管道中使用 Blob 源和 Azure Data Lake Store 接收器的复制活动：** 
+**管道中使用 Blob 源和 Azure Data Lake Store 接收器的复制活动：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **BlobSource**，将 **sink** 类型设置为 **AzureDataLakeStoreSink**。
 
-```JSON
+```json
 {  
     "name":"SamplePipeline",
     "properties":
@@ -415,7 +421,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 **Azure Data Lake Store 链接服务：**
 
-```JSON
+```json
 {
     "name": "AzureDataLakeStoreLinkedService",
     "properties": {
@@ -451,7 +457,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 设置 **"external": true** 将告知数据工厂服务：表位于数据工厂外且不由数据工厂中的活动生成。
 
-```JSON
+```json
 {
     "name": "AzureDataLakeStoreInput",
       "properties":
@@ -546,7 +552,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **AzureDataLakeStoreSource**，将 **sink** 类型设置为 **BlobSink**。
 
-```JSON
+```json
 {  
     "name":"SamplePipeline",
     "properties":{  

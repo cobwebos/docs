@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 5bff7fa34fd8ce14a35018dfd3c13b9ca2019f2e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 000eaead1805ff06278b312a240aca07035e7289
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -82,6 +82,9 @@ Azure 应用商店无法供在阿塞拜疆、克罗地亚、挪威或波多黎�
 
 ## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>当我将资源从一个订阅迁移到另一个订阅时，我的 ClearDB MySQL 数据库也会跟着迁移吗？
 在订阅间迁移资源时，存在某些[限制](app-service-web/app-service-move-resources.md)。 ClearDB MySQL 数据库是第三方服务，因而在 Azure 订阅迁移期间不会被迁移。 如果在迁移 Azure 资源之前，没有管理 MySQL 数据库的迁移，你的 ClearDB MySQL 数据库可能会被禁用。 首先，手动迁移数据库，然后对 Web 应用执行 Azure 订阅迁移。 
+
+## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>我单击了订阅中的支出限制。 我删除了该限制，而且我的应用服务处于联机状态，但数据库却无法访问。 我该如何重新启用 ClearDB 数据库？
+请联系 [ClearDB 支持部门](https://www.cleardb.com/developers/help/support)以重新启用该数据库。 向他们提供 Azure 订阅信息和数据库名称。
 
 ## <a name="can-i-transfer-a-cleardb-database-from-a-credit-card-subscription-to-an-ea-subscription"></a>可以将 ClearDB 数据库从信用卡订阅转换为 EA 订阅吗？
 现有 ClearDB 数据库使用与现有订阅关联的信用卡。 若要使用 EA 订阅，需要将数据迁移到新数据库：

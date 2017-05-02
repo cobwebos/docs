@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: fe331199333d492dbc42c9125c9da96a44066ee1
-ms.openlocfilehash: 8db864801042170fcad947d5b40220eea9c1c307
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 35bf064fdf2a766b8f699bed5c32d30c6c4dcd3c
+ms.lasthandoff: 04/19/2017
 
 ---
 
-## <a name="receive-events-from-azure-event-hubs-using-apache-storm"></a>使用 Apache Storm 从 Azure 事件中心接收事件
-[Apache Storm](https://storm.incubator.apache.org) 是一个分布式实时计算系统，它简化了对未绑定的数据流进行可靠处理的过程。 本节演示如何使用事件中心 Storm 喷口从事件中心接收事件。 使用 Apache Storm，可以在承载于不同节点的多个进程间拆分事件。 事件中心与 Storm 集成后，通过使用风暴的 Zookeeper 安装以透明方式对事件使用进度执行检查点操作、管理持久检查点以及从事件中心并行接收，简化了事件使用。
+# <a name="receive-events-from-event-hubs-using-apache-storm"></a>使用 Apache Storm 从事件中心接收事件
+[Apache Storm](https://storm.incubator.apache.org) 是一个分布式实时计算系统，它简化了对未绑定的数据流进行可靠处理的过程。 本节演示如何使用 Azure 事件中心 Storm Spout 从事件中心接收事件。 使用 Apache Storm，可以在承载于不同节点的多个进程间拆分事件。 事件中心与 Storm 集成后，通过使用风暴的 Zookeeper 安装以透明方式对事件使用进度执行检查点操作、管理持久检查点以及从事件中心并行接收，简化了事件使用。
 
 有关事件中心接收模式的详细信息，请参阅[事件中心概述][Event Hubs overview]。
 
@@ -230,7 +231,7 @@ ms.openlocfilehash: 8db864801042170fcad947d5b40220eea9c1c307
     }
     ```
 
-    此类创建一个新的事件中心喷管，并使用配置文件中的属性对它进行实例化。 请务必注意：此示例创建喷管的数量与事件中心中分区的数量相同，以便使用该事件中心允许的最大并行度。
+    此类创建一个新的事件中心喷管，并使用配置文件中的属性对它进行实例化。 请务必注意，此示例创建 Spout 的数量与事件中心内分区的数量相同，以便使用该事件中心允许的最大并行度。
 
 ## <a name="next-steps"></a>后续步骤
 访问以下链接可以了解有关事件中心的详细信息：
@@ -247,8 +248,4 @@ ms.openlocfilehash: 8db864801042170fcad947d5b40220eea9c1c307
 <!-- Images -->
 
 [12]: ./media/event-hubs-get-started-receive-storm/create-storm1.png
-
-
-<!--HONumber=Feb17_HO1-->
-
 

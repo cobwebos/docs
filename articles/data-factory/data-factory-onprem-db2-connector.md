@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/12/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 59a83a62ddee89c44533060b811bc8fc2f144bee
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
+ms.openlocfilehash: 6d54203797ad970d590b853b171b383708dbcb5d
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -27,9 +27,9 @@ ms.lasthandoff: 03/30/2017
 数据工厂当前仅支持将数据从 DB2 数据库移到[支持的接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)，而不支持将数据从其他数据存储移到 DB2 数据库。
 
 ## <a name="prerequisites"></a>先决条件
-要使 Azure 数据工厂服务能够连接到本地 DB2 数据库，必须在托管数据库的同一计算机上或在单独的计算机上安装数据管理网关，以避免与数据库争用资源。 数据管理网关是一个以安全和托管的方式将本地数据源连接到云服务的组件。 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)一文。
+数据工厂支持通过数据管理网关连接到本地 DB2 数据库。 若要了解数据管理网关，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文，有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移动到云](data-factory-move-data-between-onprem-and-cloud.md)。
 
-必须使用网关连接到 DB2 数据库，即使数据库在云中托管（例如，在 Azure IaaS VM 上），也是如此。 只要网关能连接数据库，就可在托管数据库的同一 VM 上或单独的 VM 上安装网关。  
+即使 DB2 托管在 Azure IaaS VM 中，仍需要网关。 可在与数据存储相同的 IaaS VM 上或不同的 VM 上安装网关，只要网关能连接数据库即可。
 
 数据管理网关提供了内置 DB2 驱动程序，因此从 DB2 复制数据时，无需手动安装任何驱动程序。
 
@@ -46,6 +46,9 @@ ms.lasthandoff: 03/30/2017
 * IBM DB2 for LUW 11
 * IBM DB2 for LUW 10.5
 * IBM DB2 for LUW 10.1
+
+> [!TIP]
+> 如果遇到错误，指出“找不到与 SQL 语句执行请求对应的包。 SQLSTATE=51002 SQLCODE=-805”，具有高特权帐户（超级用户或管理员）的用户会运行一次复制活动，然后在复制过程中会自动创建所需的包。 之后，可以切换回正常用户，继续运行后续复制。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 DB2 数据存储移动数据。 

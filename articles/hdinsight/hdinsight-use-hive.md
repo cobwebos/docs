@@ -15,49 +15,71 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 04/14/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 2f37c2d635920dd286bf0cb5f9a74a01259a786a
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: db324cc8269a1f23613e5193f5a1dec1d26a62b1
+ms.lasthandoff: 04/18/2017
 
 
 ---
-# <a name="use-hive-and-hiveql-with-hadoop-in-hdinsight-to-analyze-a-sample-apache-log4j-file"></a>将 Hive 和 HiveQL 与 HDInsight 中的 Hadoop 配合使用以分析示例 Apache log4j 文件
-[!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
+# <a name="use-hive-and-hiveql-with-hadoop-in-hdinsight"></a>在 HDInsight 中将 Hive 和 HiveQL 与 Hadoop 配合使用
 
-在本教程中，你将学习如何在 HDInsight 上使用 Hadoop 中的 Apache Hive，以及选择如何运行 Hive 作业。 此外，你还将了解 HiveQL 以及如何分析一个示例 Apache log4j 文件。
+了解如何将 Hive 与 HDInsight 配合使用 使用下表找出将 Hive 与 HDInsight 配合使用的各种方法：
 
-## <a id="why"></a>什么是 Hive，为何要使用它？
-[Apache Hive](http://hive.apache.org/) 是适用于 Hadoop 的数据仓库系统，可让你使用 HiveQL（类似于 SQL 的查询语言）来进行数据汇总、查询和数据分析。 使用 Hive 能够以交互方式浏览数据，或者创建可重用的批处理作业。
+| **使用此方法**，如果你想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
+|:--- |:---:|:---:|:--- |:--- |
+| [Hive 视图](hdinsight-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任何（基于浏览器） |
+| [Beeline 命令](hdinsight-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X 或 Windows |
+| [REST API](hdinsight-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux 或 Windows |Linux、Unix、Mac OS X 或 Windows |
+| [查询控制台](hdinsight-hadoop-use-hive-query-console.md)（HDInsight 3.2 和 3.3） |&nbsp; |✔ |Windows |任何（基于浏览器） |
+| [用于 Visual Studio 的 HDInsight 工具](hdinsight-hadoop-use-hive-visual-studio.md) |&nbsp; |✔ |Linux 或 Windows |Windows |
+| [Windows PowerShell](hdinsight-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux 或 Windows |Windows |
+| [远程桌面](hdinsight-hadoop-use-hive-remote-desktop.md)（HDInsight 3.2 和 3.3） |✔ |✔ |Windows |Windows |
 
-Hive 允许你在很大程度上未结构化的数据上投影结构。 在定义结构后，你可以使用 Hive 来查询这些数据，而不需要具备 Java 或 MapReduce 的知识。 **HiveQL**（Hive 查询语言）可让你使用类似于 T-SQL 的语句编写查询。
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅[弃用 HDInsight 3.2 和 3.3](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
 
-Hive 知道如何处理结构化和半结构化数据，例如其中的字段以特定字符分隔的文本文件。 Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化程序/反序列化程序 (SerDe)**。 有关详细信息，请参阅[如何将自定义 JSON SerDe 与 HDInsight 配合使用](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx)。
+## <a id="why"></a>什么是 Hive
+
+[Apache Hive](http://hive.apache.org/) 是适用于 Hadoop 的数据仓库系统，支持数据汇总、查询和数据分析。 Hive 允许你在很大程度上未结构化的数据上投影结构。 在定义结构后，你可以使用 Hive 来查询这些数据，而不需要具备 Java 或 MapReduce 的知识。
+
+Hive 查询使用 HiveQL 编写，它是类似于 SQL 的查询语言。 使用 Hive 能够以交互方式浏览数据，或者创建可重用的批处理作业。
+
+Hive 知道如何处理结构化和半结构化数据，例如其中的字段以特定字符分隔的文本文件。 Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化程序/反序列化程序 (SerDe)**。 有关详细信息，请参阅[如何将自定义 JSON SerDe 与 HDInsight 配合使用](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx)文档。
 
 ## <a name="user-defined-functions-udf"></a>用户定义函数 (UDF)
-还可以通过**用户定义函数 (UDF)** 扩展 Hive。 UDF 允许你实现 HiveQL 中不容易建模的功能或逻辑。 有关将 UDF 与 Hive 配合使用的示例，请参阅：
 
-* [结合使用 Java 用户定义函数和 Hive](hdinsight-hadoop-hive-java-udf.md)
+还可以通过**用户定义函数 (UDF)** 扩展 Hive。 UDF 允许你实现 HiveQL 中不容易建模的功能或逻辑。 有关将 UDF 与 Hive 配合使用的示例，请参阅以下文档：
+
+* [将 Java 用户定义函数与 Hive 配合使用](hdinsight-hadoop-hive-java-udf.md)
+
 * [在 HDInsight 中将 Python 与 Hive 和 Pig 配合使用](hdinsight-python.md)
+
 * [在 HDInsight 中将 C# 与 Hive 和 Pig 配合使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
+
 * [如何将自定义 Hive UDF 添加到 HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+
 * [将日期/时间格式转换为 Hive 时间戳的自定义 Hive UDF 示例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
 ## <a name="hive-internal-tables-vs-external-tables"></a>Hive 内部表与外部表
+
 以下是你需要了解的有关 Hive 内部表和外部表的一些信息：
 
 * **CREATE TABLE** 命令创建内部表。 数据文件必须位于默认容器中。
-* **CREATE TABLE** 命令会将数据文件移到 /hive/warehouse/<TableName>文件夹中。
+
+* **CREATE TABLE** 命令将数据文件移动到群集默认存储的 `/hive/warehouse/<TableName>` 目录。
+
 * **CREATE EXTERNAL TABLE** 命令创建外部表。 数据文件可以位于默认容器以外的位置。
+
 * **CREATE EXTERNAL TABLE** 命令不移动数据文件。
-* **CREATE EXTERNAL TABLE** 命令不允许在 LOCATION 中有任何文件夹。 这是本教程生成 sample.log 文件的副本的原因。
 
 有关详细信息，请参阅 [HDInsight：Hive 内部和外部表简介][cindygross-hive-tables]。
 
-## <a id="data"></a>关于示例数据（一个 Apache log4j 文件）
-本示例使用 *log4j* 示例文件，该文件存储在 Blob 存储容器中的 **/example/data/sample.log** 处。 该文件中的每个日志都包含一行字段，其中包含一个 `[LOG LEVEL]` 字段，用于显示类型和严重性，例如：
+## <a id="data"></a>示例数据
+
+HDInsight 提供存储在 `/example/data` 和 `/HdiSamples` 目录中的各种示例数据集。 这些目录存在于群集的默认存储中。 本文档使用 `/example/data/sample.log` 文件。 此文件是 *log4j* 文件。 该文件中的每个日志都包含一行字段，其中包含一个 `[LOG LEVEL]` 字段，用于显示类型和严重性，例如：
 
     2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
 
@@ -65,53 +87,43 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 
 > [!NOTE]
 > 你也可以使用 [Apache Log4j](http://en.wikipedia.org/wiki/Log4j) 日志记录工具生成 log4j 文件，然后将该文件上传到 Blob 容器。 请参阅[将数据上传到 HDInsight](hdinsight-upload-data.md) 以获取相关说明。 有关如何将 Azure Blob 存储与 HDInsight 配合使用的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。
-> 
-> 
 
-示例数据存储在 HDInsight 用作默认文件系统的 Azure Blob 存储中。 HDInsight 可以使用 **wasb** 前缀来访问存储在 Blob 中的文件。 例如，若要访问 sample.log 文件，可使用以下语法：
+## <a id="job"></a>Hive 查询示例
 
-    wasbs:///example/data/sample.log
-
-由于 Azure Blob 存储是 HDInsight 的默认存储，因此你也可以使用 HiveQL 中的 **/example/data/sample.log** 访问该文件。
-
-> [!NOTE]
-> 语法 **wasbs:///** 用于访问存储在 HDInsight 群集的默认存储容器中的文件。 若在预配群集时指定了其他存储帐户，且想要访问存储在这些帐户的文件，可指定容器的名称和存储帐户地址（如 **wasbs://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log**）来访问数据。
-> 
-> 
-
-## <a id="job"></a>示例作业：将列投影到分隔的数据
-以下 HiveQL 语句将列投影到 **wasbs:///example/data** 目录中存储的分隔数据：
+以下 HiveQL 语句将各列投影到 `/example/data/sample.log` 文件上：
 
     set hive.execution.engine=tez;
     DROP TABLE log4jLogs;
     CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-    STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
+    STORED AS TEXTFILE LOCATION '/example/data/';
     SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
 在上例中，HiveQL 语句执行以下操作：
 
 * **set hive.execution.engine=tez;**：设置执行引擎以使用 Tez。 使用 Tez 而不是 MapReduce 可以提高查询性能。 有关 Tez 的详细信息，请参阅[使用 Apache Tez 提高性能](#usetez)部分。
-  
-  > [!NOTE]
-  > 只有在使用基于 Windows 的 HDInsight 群集时才需要该语句；Tez 是基于 Linux 的 HDInsight 的默认执行引擎。
-  > 
-  > 
-* **DROP TABLE**：删除表和数据文件（如果该表已存在）。
-* **CREATE EXTERNAL TABLE**：在 Hive 中创建新的**外部**表。 外部表只会在 Hive 中存储表定义；数据以原始格式保留在原始位置。
+
+    > [!NOTE]
+    > 仅在使用基于 Windows 的 HDInsight 群集时需要此语句。 Tez 是用于基于 Linux 的 HDInsight 的默认执行引擎。
+
+* **DROP TABLE**：如果该表已存在，则删除它。
+
+* **CREATE EXTERNAL TABLE**：在 Hive 中创建新的**外部**表。 外部表只会在 Hive 中存储表定义。 数据以原始格式的形式保留在原始位置中。
+
 * **ROW FORMAT**：告知 Hive 如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。
-* **STORED AS TEXTFILE LOCATION**：让 Hive 知道数据的存储位置（example/data 目录），并且数据已存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。
-* **SELECT**：选择 **t4** 列中包含值 **[ERROR]** 的所有行的计数。 这应会返回值 **3**，因为有三行包含此值。
-* **INPUT__FILE__NAME LIKE '%.log'** - 告诉 Hive，我们只应返回以 .log 结尾的文件中的数据。 此项将搜索限定于包含数据的 sample.log 文件，使搜索不会返回与所定义架构不符的其他示例数据文件中的数据。
+
+* **STORED AS TEXTFILE LOCATION**：告知 Hive 数据的存储位置（`example/data` 目录），以及数据已存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。
+
+* **SELECT**：选择 **t4** 列中包含值 **[ERROR]** 的所有行的计数。 此语句返回的值为 **3**，因为有三行包含此值。
+
+* **INPUT__FILE__NAME LIKE '%.log'** - 告诉 Hive，我们只应返回以 .log 结尾的文件中的数据。 此语句将搜索范围限制在包含该数据的 `sample.log` 文件之内。
 
 > [!NOTE]
-> 当你预期以外部源更新基础数据（例如自动化数据上传过程），或以其他 MapReduce 操作更新基础数据，但希望 Hive 查询始终使用最新数据时，必须使用外部表。
-> 
+> 如果希望通过外部源更新基础数据，应使用外部表。 例如，自动化数据上传过程或 MapReduce 操作。
+>
 > 删除外部表**不会**删除数据，只会删除表定义。
-> 
-> 
 
-创建外部表后，使用以下语句创**内部**表。
+若要创建**内部**表而非外部表，请使用以下 HiveQL：
 
     set hive.execution.engine=tez;
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -121,60 +133,63 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 
 这些语句将执行以下操作：
 
-* **CREATE TABLE IF NOT EXISTS**创建表（如果该表尚不存在）。 由于未使用 **EXTERNAL** 关键字，因此这是一个内部表，它存储在 Hive 数据仓库中并完全受 Hive 的管理。
+* **CREATE TABLE IF NOT EXISTS**：如果不存在表，则创建一个表。 由于未使用 **EXTERNAL** 关键字，所以此语句创建一个内部表，该表存储在 Hive 数据仓库中并完全受 Hive 管理。
+
 * **STORED AS ORC**：以优化行纵栏表 (ORC) 格式存储数据。 这是高度优化且有效的 Hive 数据存储格式。
+
 * **INSERT OVERWRITE ...SELECT**：从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。
 
 > [!NOTE]
 > 与外部表不同，删除内部表会同时删除基础数据。
-> 
-> 
 
 ## <a id="usetez"></a>使用 Apache Tez 提高性能
+
 [Apache Tez](http://tez.apache.org) 是可让数据密集型应用程序（例如 Hive）大规模高效运行的框架。 在最新版的 HDInsight 中，Hive 支持在 Tez 上运行。 基于 Linux 的 HDInsight 群集在默认情况下会启用 Tez。
 
 > [!NOTE]
 > 对于基于 Windows 的 HDInsight 群集来说，Tez 目前默认处于关闭状态，必须将其启用。 若要充分利用 Tez，你必须设置 Hive 查询的以下值：
-> 
-> ```set hive.execution.engine=tez;```
-> 
-> 你可为每个查询提交此值，只需将它放置在查询的开头即可。 你也可以在创建群集时设置配置值，而在群集上将此值默认为打开。 可以在[预配 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)中找到详细信息。
-> 
-> 
+>
+> `set hive.execution.engine=tez;`
+>
+> Tez 是用于基于 Linux 的 HDInsight 群集的默认引擎。
 
-[Hive on Tez 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含实现选项和优化配置的详细信息。
+[Hive on Tez 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含有关实现选项和优化配置的详细信息。
 
 为了帮助使用 Tez 调试运行的作业，HDInsight 提供了以下 Web UI，使你可以查看 Tez 作业的详细信息：
 
-* [在基于 Windows 的 HDInsight 上使用 Tez UI](hdinsight-debug-tez-ui.md)
 * [在基于 Linux 的 HDInsight 上使用 Ambari Tez 视图](hdinsight-debug-ambari-tez-view.md)
 
-## <a id="run"></a>选择如何运行 HiveQL 作业
+* [在基于 Windows 的 HDInsight 上使用 Tez UI](hdinsight-debug-tez-ui.md)
+
+## <a id="run"></a>如何运行 HiveQL 作业
+
 HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定哪种方法最适合你，然后按链接进行演练。
 
 | **使用此方法**，如果你想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
 |:--- |:---:|:---:|:--- |:--- |
 | [Hive 视图](hdinsight-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任何（基于浏览器） |
-| [Beeline 命令（从 SSH 会话）](hdinsight-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X 或 Windows |
-| [Hive 命令（从 SSH 会话）](hdinsight-hadoop-use-hive-ssh.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X 或 Windows |
-| [Curl](hdinsight-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux 或 Windows |Linux、Unix、Mac OS X 或 Windows |
-| [查询控制台](hdinsight-hadoop-use-hive-query-console.md) |&nbsp; |✔ |Windows |任何（基于浏览器） |
+| [Beeline 命令](hdinsight-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X 或 Windows |
+| [REST API](hdinsight-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux 或 Windows |Linux、Unix、Mac OS X 或 Windows |
+| [查询控制台](hdinsight-hadoop-use-hive-query-console.md)（HDInsight 3.2 和 3.3） |&nbsp; |✔ |Windows |任何（基于浏览器） |
 | [用于 Visual Studio 的 HDInsight 工具](hdinsight-hadoop-use-hive-visual-studio.md) |&nbsp; |✔ |Linux 或 Windows |Windows |
 | [Windows PowerShell](hdinsight-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux 或 Windows |Windows |
-| [远程桌面](hdinsight-hadoop-use-hive-remote-desktop.md) |✔ |✔ |Windows |Windows |
+| [远程桌面](hdinsight-hadoop-use-hive-remote-desktop.md)（HDInsight 3.2 和 3.3） |✔ |✔ |Windows |Windows |
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅[弃用 HDInsight 3.2 和 3.3](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
 
-## <a name="running-hive-jobs-on-azure-hdinsight-using-on-premises-sql-server-integration-services"></a>使用本地 SQL Server Integration Services 在 Azure HDInsight 上运行 Hive 作业
+## <a name="hive-jobs-and-sql-server-integration-services"></a>Hive 作业和 SQL Server Integration Services
+
 你也可以使用 SQL Server Integration Services (SSIS) 来运行 Hive 作业。 Azure Feature Pack for SSIS 提供适用于 HDInsight 上的 Hive 作业的以下组件。
 
 * [Azure HDInsight Hive 任务][hivetask]
+
 * [Azure 订阅连接管理器][connectionmanager]
 
 在[此处][ssispack]了解有关 Azure Feature Pack for SSIS 的详细信息。
 
 ## <a id="nextsteps"></a>后续步骤
+
 现在，你已了解什么是 Hive，以及如何将它与 HDInsight 中的 Hadoop 配合使用，请使用以下链接来学习 Azure HDInsight 的其他用法。
 
 * [将数据上传到 HDInsight][hdinsight-upload-data]
@@ -204,7 +219,7 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定�
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 

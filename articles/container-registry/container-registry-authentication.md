@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 774c844375df89864274e3376ed07dd565c8ecff
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: ae6af47c82a5c0425f6cd53b8ba1134797505e6c
+ms.lasthandoff: 04/18/2017
 
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
@@ -43,9 +43,16 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 >
 
 
-服务主体允许对注册表[基于角色的访问](../active-directory/role-based-access-control-configure.md)。 可用角色为读取器（仅限拉取的访问）、参与者（拉取和推送）以及所有者（拉取、推送和将角色分配给其他用户）。 可将多个服务主体分配到注册表中，这样就可为不同的用户或应用程序定义访问权限。 服务主体也在开发人员或 DevOps 方案中启用到注册表的“无外设”连接，如下所示：
+服务主体允许对注册表[基于角色的访问](../active-directory/role-based-access-control-configure.md)。 可用的角色如下：
+  * 读者（仅限拉取访问权限）。
+  * 参与者（拉取和推送）。
+  * 所有者（拉取、推送到其他用户并为其他用户分配角色）。
 
-  * 从注册表到业务流程系统的容器部署（包括 DC/OS、Docker Swarm 和 Kubernetes）。 还可将容器注册表拉取到相关 Azure 服务，例如[容器服务](../container-service/index.md)、[应用服务](../app-service/index.md)、[Batch](../batch/index.md) 和 [Service Fabric](../service-fabric/index.md)。
+匿名访问在 Azure 容器注册表上不可用。 对于公共映像，可以使用 [Docker 中心](https://docs.docker.com/docker-hub/)。
+
+可将多个服务主体分配到注册表中，这样就可为不同的用户或应用程序定义访问权限。 服务主体也在开发人员或 DevOps 方案中启用到注册表的“无外设”连接，如以下示例所示：
+
+  * 从注册表到业务流程系统的容器部署（包括 DC/OS、Docker Swarm 和 Kubernetes）。 还可将容器注册表拉取到相关 Azure 服务，例如[容器服务](../container-service/index.md)、[应用服务](../app-service/index.md)、[批处理](../batch/index.md)和 [Service Fabric](../service-fabric/index.md) 等。
 
   * 构建容器映像并将它们推送到注册表的持续集成和部署解决方案（例如 Visual Studio Team Services 或 Jenkins）。
 
@@ -54,10 +61,10 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 
 
 ## <a name="admin-account"></a>管理员帐户
-每创建一个注册表，将自动创建一个管理员帐户。 默认情况下，帐户已禁用，但可通过[门户](container-registry-get-started-portal.md#manage-registry-settings)或使用 [Azure CLI 2.0 命令](container-registry-get-started-azure-cli.md#manage-admin-credentials)等启用它并管理凭据。 如果已启用帐户，则可将用户名和密码传递到 `docker login` 命令，对注册表进行基本身份验证。 例如：
+每创建一个注册表，将自动创建一个管理员帐户。 默认情况下，帐户已禁用，但可通过[门户](container-registry-get-started-portal.md#manage-registry-settings)或使用 [Azure CLI 2.0 命令](container-registry-get-started-azure-cli.md#manage-admin-credentials)等启用它并管理凭据。 每个管理员帐户有两个密码，这两个密码都可以再生成。 使用这两个密码，可以在再生成一个密码时使用另一个密码保持与注册表的连接。 如果帐户已启用，则可将用户名和/或密码传递到 `docker login` 命令，以对注册表进行基本身份验证。 例如：
 
 ```
-docker login myregistry.azurecr.io -u myAdminName -p myPassword
+docker login myregistry.azurecr.io -u myAdminName -p myPassword1
 ```
 
 > [!IMPORTANT]

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 03/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 12e8ff02c72d90513868d43bc34c564f1da1ae43
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 93b36891c960582563a4ff9c622cd5ac3198dfeb
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/08/2017
 
 我们的客户希望在其后端应用程序（在本例中为 SharePoint 服务器）中获得最佳的 SSO 体验。 在这种常见的 Azure AD 方案中，用户只需执行身份验证一次，因为系统不会再次提示身份验证。
 
-对于需要或者使用 Windows 身份验证的本地应用程序，可以通过 Kerberos 身份验证协议以及一项称为 Kerberos 约束委派 (KCD) 的功能来实现 SSO。 KCD 在经过配置后，可让应用程序代理连接器获取用户的 Windows 票证/令牌，即使该用户尚未直接登录到 Windows。 若要了解有关 KCD 的详细信息，请参阅 [Kerberos 约束委派概述](https://technet.microsoft.com/en-us/library/jj553400.aspx)。
+对于需要或者使用 Windows 身份验证的本地应用程序，可以通过 Kerberos 身份验证协议以及一项称为 Kerberos 约束委派 (KCD) 的功能来实现 SSO。 KCD 在经过配置后，可让应用程序代理连接器获取用户的 Windows 票证/令牌，即使该用户尚未直接登录到 Windows。 若要了解有关 KCD 的详细信息，请参阅 [Kerberos 约束委派概述](https://technet.microsoft.com/library/jj553400.aspx)。
 
 若要为 SharePoint 服务器设置 KCD，请完成后面按顺序标记的部分的步骤。
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 03/08/2017
 5. 选择“注册新的托管帐户”。 创建帐户后，必须先设置“Web 应用程序池”，然后才能使用该帐户。
 
 > [!NOTE]
-需要为服务预先创建一个 Azure AD 帐户。 建议允许自动密码更改。 有关整套步骤和排查问题的详细信息，请参阅 [Configure automatic password change in SharePoint 2013](https://technet.microsoft.com/EN-US/library/ff724280.aspx)（在 SharePoint 2013 中配置自动密码更改）。
+需要为服务预先创建一个 Azure AD 帐户。 建议允许自动密码更改。 有关整套步骤和排查问题的详细信息，请参阅 [Configure automatic password change in SharePoint 2013](https://technet.microsoft.com/library/ff724280.aspx)（在 SharePoint 2013 中配置自动密码更改）。
 
 ### <a name="configure-sharepoint-for-kerberos"></a>为 Kerberos 配置 SharePoint
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 03/08/2017
 
 ### <a name="set-a-service-principal-name-for-the-sharepoint-service-account"></a>为 SharePoint 服务帐户设置服务主体名称
 
-在配置 KCD 之前，需要识别以配置的服务帐户运行的 SharePoint 服务。 为此，需设置 SPN。 有关详细信息，请参阅 [Service Principal Names](https://technet.microsoft.com/en-us/library/cc961723.aspx)（服务主体名称）。
+在配置 KCD 之前，需要识别以配置的服务帐户运行的 SharePoint 服务。 为此，需设置 SPN。 有关详细信息，请参阅 [Service Principal Names](https://technet.microsoft.com/library/cc961723.aspx)（服务主体名称）。
 
 SPN 格式为：
 
@@ -115,7 +115,7 @@ sharepoint.demo.o365identity.us
 HTTP/ sharepoint.demo.o365identity.us demo
 ```
 
-可能还需要为服务器上的特定站点设置 SPN。 有关详细信息，请参阅 [Configure Kerberos authentication](https://technet.microsoft.com/en-us/library/cc263449(v=office.12).aspx)（配置 Kerberos 身份验证）。 请重点查看“使用 Kerberos 身份验证为 Web 应用程序创建服务主体名称”部分。
+可能还需要为服务器上的特定站点设置 SPN。 有关详细信息，请参阅 [Configure Kerberos authentication](https://technet.microsoft.com/library/cc263449(v=office.12).aspx)（配置 Kerberos 身份验证）。 请重点查看“使用 Kerberos 身份验证为 Web 应用程序创建服务主体名称”部分。
 
 设置 SPN 的最简单方法是遵循站点现在可能已设置了的 SPN 格式。 复制这些 SPN，以便对服务帐户注册。 为此，请按以下步骤操作：
 
@@ -140,7 +140,7 @@ Klist
 
  请将 _http/sharepoint.demo.o365identity.us_ 替换为服务器的 SPN，将 _demo\sp_svc_ 替换为环境中的服务帐户。 Setspn 命令会先搜索 SPN，然后再添加它。 在这种情况下，可能会出现“SPN 值重复”错误。 如果看到此错误，请确保该值与服务帐户关联。
 
-可以结合 -l 选项运行 Setspn 命令，来验证是否已添加 SPN。 若要详细了解该命令，请参阅 [Setspn](https://technet.microsoft.com/en-us/library/cc731241.aspx)。
+可以结合 -l 选项运行 Setspn 命令，来验证是否已添加 SPN。 若要详细了解该命令，请参阅 [Setspn](https://technet.microsoft.com/library/cc731241.aspx)。
 
 ### <a name="ensure-that-the-connector-is-set-as-a-trusted-delegate-to-sharepoint"></a>确保连接器已设置为 SharePoint 的受信任委派
 
@@ -220,7 +220,7 @@ Klist
 
 ## <a name="next-steps"></a>后续步骤
 
-[如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)<br>
-[了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)<br>
-[使用 Azure AD 应用程序代理发布 SharePoint 2016 和 Office Online Server](https://blogs.technet.microsoft.com/dawiese/2016/06/09/publishing-sharepoint-2016-and-office-online-server-with-azure-ad-application-proxy/)
+- [如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)
+- [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
+- [使用 Azure AD 应用程序代理发布 SharePoint 2016 和 Office Online Server](https://blogs.technet.microsoft.com/dawiese/2016/06/09/publishing-sharepoint-2016-and-office-online-server-with-azure-ad-application-proxy/)
 

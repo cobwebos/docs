@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 02/21/2017
 ms.author: sethm;jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: 8ada071c9ef7c534f6e048e4804aa1b4b2b787e0
-ms.openlocfilehash: f9b28b177e83e49bd83328919efbd5887b46c7d4
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 934ac698c09f2d7c130fe787994dc6fa12abbd2f
+ms.lasthandoff: 04/19/2017
 
 ---
 
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中心中的可用性和一致性
 
 ## <a name="overview"></a>概述
-Azure 事件中心使用[分区模型](event-hubs-what-is-event-hubs.md#partitions)在单个事件中心中提高可用性和并行化。 例如，如果事件中心具有四个分区，并且其中一个分区要在负载均衡操作中从一台服务器移动到另一台服务器，则仍可以对其他三个分区进行发送和接收。 此外，通过更多分区可以让更多并发读取器处理数据，从而提高聚合吞吐量。 了解分布式系统中分区和排序的意义是解决方案设计的重要方面。
+Azure 事件中心使用[分区模型](event-hubs-what-is-event-hubs.md#partitions)在单个事件中心内提高可用性和并行化。 例如，如果事件中心具有四个分区，并且其中一个分区要在负载均衡操作中从一台服务器移动到另一台服务器，则仍可以通过其他三个分区进行发送和接收。 此外，通过更多分区可以让更多并发读取器处理数据，从而提高聚合吞吐量。 了解分布式系统中分区和排序的意义是解决方案设计的重要方面。
 
 为了帮助说明排序与可用性之间的权衡，请参阅 [CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)（也称为 Brewer 的定理）。 此定理指出必须在一致性、可用性和分区容差之间进行选择。
 
@@ -34,10 +34,10 @@ Brewer 的定理按如下所示定义一致性和可用性：
 * 一致性 - 读取保证针对给定客户端返回最新写入。
 
 ## <a name="partition-tolerance"></a>分区容差
-事件中心在分区数据模型的基础上构建。 可以在设置过程中配置事件中心中的分区数，但是以后无法更改此值。 由于必须对事件中心使用分区，因此只需在应用程序的可用性和一致性方面进行决策。
+事件中心在分区数据模型的基础上构建。 可以在设置过程中配置事件中心内的分区数，但以后无法更改此值。 由于必须对事件中心使用分区，因此只需在应用程序的可用性和一致性方面进行决策。
 
 ## <a name="availability"></a>可用性
-开始使用事件中心的最简单方法是使用默认行为。 如果创建新的 `EventHubClient` 对象并使用 `Send` 方法，则事件会自动在事件中心中的各个分区之间分布。 此行为可实现最大运行时间量。
+开始使用事件中心的最简单方法是使用默认行为。 如果创建新的 `EventHubClient` 对象并使用 `Send` 方法，会自动在事件中心内的各个分区之间分发这些事件。 此行为可实现最大运行时间量。
 
 对于需要最大运行时间的用例，此模型是首选模型。
 
@@ -59,7 +59,7 @@ data.Properties.Add("SequenceNumber", sequenceNumber);
 await eventHubClient.SendAsync(data);
 ```
 
-前面的示例将事件发送到事件中心中的一个可用分区，并从应用程序设置对应序号。 此解决方案要求处理应用程序保持状态，不过会为发送者提供更可能可用的终结点。
+前面的示例将事件发送到事件中心内的一个可用分区，并从应用程序设置对应序号。 此解决方案要求处理应用程序保持状态，不过会为发送者提供更可能可用的终结点。
 
 ## <a name="next-steps"></a>后续步骤
 访问以下链接可以了解有关事件中心的详细信息：

@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2df17cddf629cb72b7fa4d590dfaa69311c96aa4
-ms.openlocfilehash: 3e47a7e0382009a07b885a28c6e8d90f9bff9cfb
-ms.lasthandoff: 01/10/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 18dcb3a319f78639b27f9e70a2177423192e5958
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -28,7 +28,10 @@ Microsoft R Server on HDInsight 有权访问 Azure Blob，并且有权访问 [Az
 在 HDInsight 中创建 Hadoop 群集时，将指定 Azure 存储帐户或 Data Lake Store。 该帐户中的某个特定存储容器可为你所创建的群集保存文件系统（例如 Hadoop 分布式文件系统）。 出于性能目的，HDInsight 群集将在与你指定的主存储帐户相同的数据中心内创建。 有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md "Use Azure Blob storage with HDInsight")。   
 
 ## <a name="use-multiple-azure-blob-storage-accounts"></a>使用多个 Azure Blob 存储帐户
-如果需要，可以使用 HDI 群集访问多个 Azure 存储帐户或容器。 为此，需要在创建群集时在 UI 中指定其他存储帐户，并按照下列步骤进行操作，以在 R 中使用它们。  
+如果需要，可以使用 HDI 群集访问多个 Azure 存储帐户或容器。 为此，需要在创建群集时在 UI 中指定其他存储帐户，并按照下列步骤进行操作，以在 R 中使用它们。
+
+> [!WARNING]
+> 不支持在 HDInsight 群集之外的其他位置使用存储帐户。
 
 1. 使用存储帐户名 **storage1** 并使用名为 **container1** 的默认容器创建 HDInsight 群集。
 2. 指定名为 **storage2** 的另一个存储帐户。  
@@ -128,7 +131,7 @@ hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShar
 
 还可以在创建群集后，打开 Data Lake Store 的 Azure 门户条目并转到“数据资源管理器”>“访问权限”>“添加”，向一个或多个 Data Lake Store 添加群集访问权限。 
 
-有关向 Data Lake Store 添加 HDI 群集访问权限的其他详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#create-an-hdinsight-cluster-with-access-to-azure-data-lake-store)一文
+有关向 Data Lake Store 添加 HDI 群集访问权限的其他详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#create-an-hdinsight-cluster-with-access-to-azure-data-lake-store)一文
 
 ## <a name="use-the-data-lake-store-with-r-server"></a>在 R Server 中使用 Data Lake Store
 获取 Data Lake Store 访问权限后，便可以在 HDInsight 上的 R Server 中使用 Data Lake Store，其使用方式与使用辅助 Azure 存储帐户类似。 唯一的差别在于，前缀 **wasb://** 需更改为 **adl://**，如下所示：

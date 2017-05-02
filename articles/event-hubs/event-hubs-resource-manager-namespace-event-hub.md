@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 03/07/2017
 ms.author: sethm;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 271eca35ad18725306410d1e8b81bdf06712db1f
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 4a9a315f5b03e0fb5424713a3ff3757d928ba150
+ms.lasthandoff: 04/19/2017
 
 
 ---
-# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含事件中心和使用者组的事件中心命名空间
+# <a name="create-an-event-hubs-namespace-with-an-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含事件中心和使用者组的事件中心命名空间
 本文介绍如何使用 Azure Resource Manager 模板创建包含一个事件中心和一个使用者组的事件中心类型的命名空间。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
 
 有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/08/2017
 > 
 
 ## <a name="what-will-you-deploy"></a>你将部署什么内容？
-使用此模板，你将部署包含事件中心和使用者组的事件中心命名空间。
+使用此模板，将部署包含事件中心和使用者组的事件中心命名空间。
 
 [事件中心](event-hubs-what-is-event-hubs.md)是一种事件处理服务，用于向 Azure 提供大规模的事件与遥测数据入口，并且具有较低的延迟和较高的可靠性。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/08/2017
 ```
 
 ## <a name="resources-to-deploy"></a>要部署的资源
-创建包含事件中心和使用者组的类型 **EventHubs** 的命名空间。
+创建包含事件中心和使用者组的类型为 **EventHubs** 的命名空间。
 
 ```json
 "resources":[  
@@ -153,5 +153,5 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
-[Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/
+[Event hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/
 

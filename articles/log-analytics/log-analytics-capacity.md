@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/17/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: af4aa0c69587b6a0448c470892e566b7efec4858
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: a26b1f6c13b11d0fb6b47599fee43f955cbf7b7a
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -64,7 +64,7 @@ ms.lasthandoff: 03/30/2017
 
 如果 SCOM 管理组已连接到 OMS 工作区，则添加该解决方案时会在 SCOM 中安装以下管理包。 无需对这些管理包进行任何配置或维护。
 
-- Microsoft.IntelligencePacks.CapacityPerformance (Microsoft.IntelligencePacks.UpdateAssessment)
+- Microsoft.IntelligencePacks.CapacityPerformance
 
 1201 事件类似于：
 

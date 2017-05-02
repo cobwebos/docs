@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/27/2017
 ms.author: sethm;babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 8b0484b2d4f6474be728531fbda65896f30eccc4
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: bb8679b733e9ebd8d6a95a618d4ab8deab18ece4
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/29/2017
 事件中心会捕获两种类别的诊断日志：
 
 * **ArchivalLogs**：与事件中心存档相关（特别是与存档错误相关）的日志。
-* **OperationalLogs**：与事件中心操作期间发生的事件相关的信息，特别是包括事件中心创建在内的操作类型、所使用的资源和操作的状态。
+* **OperationalLogs** 关于事件中心操作期间发生的事件的信息，具体而言，包括事件中心创建在内的操作类型、所使用的资源和操作的状态。
 
 ## <a name="diagnostic-logs-schema"></a>诊断日志架构
 所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个日志项目均包含字符串字段，这些字段采用以下示例中所述的格式。

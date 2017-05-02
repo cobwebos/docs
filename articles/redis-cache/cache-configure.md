@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 03/27/2017
+ms.date: 04/11/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: fb9d9d06eb746e720a17d87d7ab45c29c6543e8f
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 031fa71b8f5aac558569eea7001e16df4cae917c
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/28/2017
     * [访问密钥](#access-keys)
     * [高级设置](#advanced-settings)
     * [Redis 缓存顾问](#redis-cache-advisor)
-    * [定价层](#pricing-tier)
+    * [缩放](#scale)
     * [Redis 群集大小](#cluster-size)
     * [Redis 数据持久性](#redis-data-persistence)
     * [计划更新](#schedule-updates)
@@ -100,7 +100,7 @@ ms.lasthandoff: 03/28/2017
 * [访问密钥](#access-keys)
 * [高级设置](#advanced-settings)
 * [Redis 缓存顾问](#redis-cache-advisor)
-* [定价层](#pricing-tier)
+* [缩放](#scale)
 * [Redis 群集大小](#cluster-size)
 * [Redis 数据持久性](#redis-data-persistence)
 * [计划更新](#schedule-updates)
@@ -190,11 +190,11 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 | 服务器负载 |[使用率图表 - Redis 服务器负载](cache-how-to-monitor.md#usage-charts) |
 | 内存使用率 |[缓存性能 - 大小](cache-faq.md#cache-performance) |
 
-若要升级缓存，请单击“立即升级”以更改[定价层](#pricing-tier)并缩放缓存。 有关选择定价层的详细信息，请参阅[应使用哪种 Redis 缓存产品和大小？](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
+若要升级缓存，请单击“立即升级”以更改定价层并[缩放](#scale)缓存。 有关选择定价层的详细信息，请参阅[应使用哪种 Redis 缓存产品和大小？](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
 
-### <a name="pricing-tier"></a>定价层
-单击“定价层”可查看或更改缓存的定价层。 有关缩放的详细信息，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)。
+### <a name="scale"></a>缩放
+单击“缩放”可查看或更改缓存的定价层。 有关缩放的详细信息，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)。
 
 ![Redis 缓存定价层](./media/cache-configure/pricing-tier.png)
 
@@ -452,6 +452,13 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
   * P2 (13 GB - 130 GB) - 最多支持 15,000 个连接
   * P3 (26 GB - 260 GB) - 最多支持 30,000 个连接
   * P4 (53 GB - 530 GB) — 最多支持 40,000 个连接
+
+> [!NOTE]
+> 虽然每个缓存大小*最多*允许一定数量的连接，但与 Redis 的每个连接都具有其关联的开销。 此类开销的一个示例是，由于 TLS/SSL 加密而导致的 CPU 和内存使用。 给定缓存大小的最大连接限制假定轻负载缓存。 如果连接开销的负载*和*客户端操作的负载超出了系统容量，那么即使未超出当前缓存大小的连接限制，缓存也可能会遇到容量问题。
+> 
+> 
+
+
 
 ## <a name="redis-commands-not-supported-in-azure-redis-cache"></a>Azure Redis 缓存中不支持 Redis 命令
 > [!IMPORTANT]

@@ -15,9 +15,9 @@ ms.workload: tbd
 ms.date: 02/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2dfc38070e5c9bbdfc4c74e2465894a221657564
-ms.openlocfilehash: 1ee20b8f546c43d0351a2065b0628bb9d6b31736
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: d8a767e9149c6c5eca5b22f094ae924135fa7a2d
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/24/2017
 ## <a name="event-publishers"></a>事件发布者
 使用 HTTP POST 或通过 AMQP 1.0 连接将事件发送到事件中心。 要选择使用哪种方式取决于要解决的特定方案。 AMQP 1.0 连接计量为服务总线中的中转连接计量，对于经常要以较高的消息量和较低的延迟传送消息的方案，适合选择此方式，因为它们提供持久的消息传递通道。
 
-使用 [NamespaceManager][] 类创建和管理事件中心。 使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) 和 [EventData][] 类。 [EventHubClient][] 提供 AMQP 通信通道，事件将通过该通道发送到事件中心。 [EventData][] 类表示一个事件，用于将消息发布到事件中心。 此类包括正文、一些元数据和有关事件的标头信息。 其他属性将在通过事件中心传递时添加到 [EventData][] 对象。
+使用 [NamespaceManager][] 类创建和管理事件中心。 使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) 和 [EventData][] 类。 [EventHubClient][] 提供 AMQP 信道，事件将通过该信道发送到事件中心。 [EventData][] 类表示一个事件，用于将消息发布到事件中心。 此类包括正文、一些元数据和有关事件的标头信息。 其他属性将在通过事件中心传递时添加到 [EventData][] 对象。
 
 ## <a name="get-started"></a>入门
 支持事件中心的 .NET 类在 Microsoft.ServiceBus.dll 程序集中提供。 引用服务总线 API 以及使用所有服务总线依赖项配置应用程序的最简单方法是下载 [服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)。 或者，你也可以在 Visual Studio 中使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 。 为此，请在 [“Package Manager Console”](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 窗口中发出以下命令：
@@ -85,7 +85,7 @@ var client = factory.CreateEventHubClient("MyEventHub");
 必须注意，从消息工厂实例创建的其他 [EventHubClient][] 对象将重复使用同一个基础 TCP 连接。 因此，这些对象将对吞吐量实施客户端限制。 [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) 方法重复使用单个消息工厂。 如果需要单个发送者具有极高的吞吐量，你可以创建多个消息工厂，并从每个消息工厂创建一个 [EventHubClient][] 对象。
 
 ## <a name="send-events-to-an-event-hub"></a>将事件发送到事件中心
-可通过以下方式将事件发送到事件中心：创建一个 [EventData][] 实例并通过 [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) 方法发送该实例。 此方法采用单个 [EventData][] 实例参数，并以同步方式将其发送至事件中心。
+可通过以下方式将事件发送到事件中心：创建一个 [EventData][] 实例并通过 [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) 方法发送该实例。 此方法采用单个 [EventData][] 实例参数，并将其同步发送到事件中心。
 
 ## <a name="event-serialization"></a>事件序列化
 [EventData][]  类具有[四个重载构造函数](/dotnet/api/microsoft.servicebus.messaging.eventdata#constructors_)，这些构造函数采用各种参数，例如对象和序列化程序、字节数组或流。 还可以实例化 [EventData][] 类，然后设置正文流。 将 JSON 与 [EventData][]类结合使用时，可以使用 **Encoding.UTF8.GetBytes()** 来检索 JSON 编码字符串的字节数组。
@@ -116,10 +116,10 @@ public void SendBatch(IEnumerable<EventData> eventDataList);
 请注意，单个批不能超过事件的 256 KB 限制。 此外，批中的每个消息都要使用相同的发布者标识。 发送者负责确保批不超过最大事件大小。 如果超过该限制，将会生成客户端 **Send** 错误。
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>异步发送和按比例发送
-你也可以通过异步方式将事件发送到事件中心。 以异步方式发送可以增大客户端发送事件的速率。 可以在异步版本中使用返回 [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) 对象的 [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) 和 [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) 方法。 尽管此方法可以提高吞吐量，但它也会导致即使事件中心服务施加了限制，客户端也仍会继续发送事件，并可能导致客户端在未正常实现时发生失败或丢失消息。 此外，你可以在客户端上使用 [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity#Microsoft_ServiceBus_Messaging_ClientEntity_RetryPolicy) 属性来控制客户端重试选项。
+也可以通过异步方式将事件发送到事件中心。 以异步方式发送可以增大客户端发送事件的速率。 可以在异步版本中使用返回 [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) 对象的 [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) 和 [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) 方法。 尽管此方法可以提高吞吐量，但它也会导致即使事件中心服务施加了限制，客户端也仍会继续发送事件，并可能导致客户端在未正常实现时发生失败或丢失消息。 此外，你可以在客户端上使用 [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity#Microsoft_ServiceBus_Messaging_ClientEntity_RetryPolicy) 属性来控制客户端重试选项。
 
 ## <a name="create-a-partition-sender"></a>创建分区发送者
-尽管最常见的做法是不使用分区键将事件发送到事件中心，但在某些情况下，可能需要将事件直接发送到给定的分区。 例如：
+尽管不使用分区键将事件发送到事件中心是最常见的情况，但在某些情况下，可能需要将事件直接发送到给定的分区。 例如：
 
 ```csharp
 var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[0]);
@@ -165,7 +165,7 @@ while(receive)
 * [CloseAsync](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor#Microsoft_ServiceBus_Messaging_IEventProcessor_CloseAsync_Microsoft_ServiceBus_Messaging_PartitionContext_Microsoft_ServiceBus_Messaging_CloseReason_)
 * [ProcessEventsAsync](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor#Microsoft_ServiceBus_Messaging_IEventProcessor_ProcessEventsAsync_Microsoft_ServiceBus_Messaging_PartitionContext_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__)
 
-若要开始处理事件，请实例化 [EventProcessorHost][]，并为事件中心提供适当的参数。 然后，调用 [RegisterEventProcessorAsync](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost#Microsoft_ServiceBus_Messaging_EventProcessorHost_RegisterEventProcessorAsync__1)，将 [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) 实现注册到运行时。 此时，主机将尝试使用“贪婪”算法获取事件中心内每个分区上的租约。 这些租约将持续指定的时限，然后你必须续订。 当新节点（本例中的工作线程实例）进入联机状态时，它们将保留租约，以后每次尝试获取更多租约时，负载将在节点之间转移。
+若要开始处理事件，请实例化 [EventProcessorHost][]，为事件中心提供适当的参数。 然后，调用 [RegisterEventProcessorAsync](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost#Microsoft_ServiceBus_Messaging_EventProcessorHost_RegisterEventProcessorAsync__1)，将 [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) 实现注册到运行时。 此时，主机将尝试使用“贪婪”算法获取事件中心内每个分区上的租约。 这些租约将持续指定的时限，然后你必须续订。 当新节点（本例中的工作线程实例）进入联机状态时，它们将保留租约，以后每次尝试获取更多租约时，负载将在节点之间转移。
 
 ![事件处理程序主机](./media/event-hubs-programming-guide/IC759863.png)
 
@@ -174,7 +174,7 @@ while(receive)
 [EventProcessorHost][] 类还实现了基于 Azure 存储空间的检查点机制。 此机制按分区存储偏移量，使每个使用者都能确定前一个使用者的最后一个检查点是什么。 当分区通过租约在节点之间转移时，正是这个同步机制在促进负载转移。
 
 ## <a name="publisher-revocation"></a>发布者吊销
-除了 [EventProcessorHost][]高级运行时功能以外，事件中心还支持吊销发布者，以阻止特定发布者向事件中心发送事件。 当发布者令牌已透露，或者软件更新导致发布者行为不当时，这些功能特别有用。 在这些情况下，可以阻止发布者的标识（其 SAS 令牌的一部分）发布事件。
+除了 [EventProcessorHost][] 的高级运行时功能外，事件中心还支持吊销发布者，以阻止特定发布者向事件中心发送事件。 当发布者令牌已透露，或者软件更新导致发布者行为不当时，这些功能特别有用。 在这些情况下，可以阻止发布者的标识（其 SAS 令牌的一部分）发布事件。
 
 有关发布者吊销以及如何以发布者身份向事件中心发送事件的详细信息，请参阅 [Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)（事件中心大规模安全发布）示例。
 

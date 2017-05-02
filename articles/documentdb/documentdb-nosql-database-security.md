@@ -13,19 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 04/19/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9cf87aa75b2ef65719a38e446a81086d265e7f4d
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: d04c670daac243119b47cece2df18335c7af972c
+ms.lasthandoff: 04/19/2017
 
 
 ---
 
 # <a name="documentdb-nosql-database-security"></a>DocumentDB NoSQL 数据库安全性
 
- 本文介绍 NoSQL 数据库安全最佳做法以及 Azure DocumentDB 提供的关键功能，帮助你防范、检测和应对数据库入侵。
+本文介绍 NoSQL 数据库安全最佳做法以及 Azure DocumentDB 提供的关键功能，帮助你防范、检测和应对数据库入侵。
+ 
+## <a name="whats-new-in-documentdb-security"></a>DocumentDB 新增了哪些安全性功能？
+
+现在，静态加密可用于所有 Azure 区域（政府区域、中国的 Azure 和德国的 Azure 除外）的 DocumentDB 中存储的文档。 下周将启用其余区域，还会备份静态加密。 对于这些区域中的新客户和现有客户，会自动应用静态加密。 无需进行任何配置；可获得与以前（即知道使用静态加密可确保数据安全之前）一样的出色延迟、吞吐量、可用性和功能。
 
 ## <a name="how-do-i-secure-my-nosql-database"></a>如何保护 NoSQL 数据库？ 
 
@@ -72,7 +76,7 @@ ms.lasthandoff: 04/03/2017
 |本地复制|即使是在单个数据中心内，DocumentDB 也会自动复制数据来实现高可用性，并允许选择[一致性级别](documentdb-consistency-levels.md)。 这可以保证  [99.99% 运行时间的可用性 SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) 并附带财务保证 - 其他 NoSQL 数据库服务无法提供这样的保证。|
 |自动联机备份|DocumentDB 数据库将定期备份并存储在异地冗余的存储中。 <br><br>在[使用 DocumentDB 进行自动联机备份和还原](documentdb-online-backup-and-restore.md)中了解详细信息。|
 |还原已删除的数据|可以使用自动联机备份来恢复大约 30 天内意外删除的数据。 <br><br>在[使用 DocumentDB 进行自动联机备份和还原](documentdb-online-backup-and-restore.md)中了解详细信息|
-|保护和隔离敏感数据|可将 PII 和其他机密数据隔离到特定的集合，并限制为只能由特定的用户进行读写或只读访问。|
+|保护和隔离敏感数据|[新增功能？](#whats-new)中列出的区域中的所有数据现已处于静态加密状态。<br><br>可将 PII 和其他机密数据隔离到特定的集合，并限制为只能由特定的用户进行读写或只读访问。|
 |监视攻击|使用审核日志和活动日志，可以监视帐户中的正常和异常活动。 可以查看针对资源执行了哪些操作、操作是谁发起的、操作是何时发生的、操作的状态，等等。<br><br>![Azure DocumentDB 的活动日志](./media/documentdb-nosql-database-security/nosql-database-security-application-logging.png)|
 |响应攻击|联系 Azure 支持部门举报潜在的攻击行为后，将启动由 5 个步骤构成的事件响应过程。 该 5 步骤过程的目的是在检测到问题并启动调查后，尽快将服务安全性和操作恢复正常。<br><br>在[云中的 Microsoft Azure 安全响应](https://aka.ms/securityresponsepaper)中了解详细信息。|
 |地域隔离|DocumentDB 确保符合主权区域（例如德国、中国和美国政府）的数据监管与符合性要求。|
@@ -87,3 +91,4 @@ ms.lasthandoff: 04/03/2017
 有关主密钥和资源令牌的详细信息，请参阅[保护对 DocumentDB 数据的访问](documentdb-secure-access-to-data.md)。
 
 有关 Microsoft 认证的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/en-us/support/trust-center/)。
+
