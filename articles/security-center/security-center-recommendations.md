@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/03/2017
+ms.date: 04/21/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: b16d8607ca0dbb08421b332df11e462267eb80f5
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 68d74cfde8146007930a4c340b7412fca00afc39
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -49,7 +49,7 @@ ms.lasthandoff: 04/03/2017
 
 若要查看每一项建议的详细信息：
 
-1. 单击“安全中心”边栏选项卡上的“建议”磁贴。 这将打开“建议”边栏选项卡。
+选择“安全中心”边栏选项卡上的“建议”磁贴。 这将打开“建议”边栏选项卡。
 
 建议将以表格形式显示，其中每一行都表示一个特定的建议。 此表的列有：
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 04/03/2017
 
 可筛选和取消建议。
 
-1. 单击“建议”边栏选项卡上的“筛选器”。 此时将打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
+1. 选择“建议”边栏选项卡上的“筛选器”。 此时将打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
 
     ![筛选器建议][2]
 2. 如果确定某个建议不适用，即可取消此建议，将其从视图中筛除。 有两种方法可取消建议。 一种方法是右键单击项目，然后选择“取消”。 另一种方法是将鼠标悬停在某个项目上，单击右侧显示的三个点，选择“取消”。 可以单击“筛选器”，选择“已取消”，查看已取消的建议。

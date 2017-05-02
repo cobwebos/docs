@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b7a74df9bfcf75b00af5aaf21e9f74610712ab47
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 9b31f0faeb6ee7b5e7b8fe3a1f2827133d6188e6
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -37,36 +38,52 @@ ms.openlocfilehash: b7a74df9bfcf75b00af5aaf21e9f74610712ab47
 ## <a name="to-create-a-hello-world-application"></a>创建 Hello World 应用程序
 首先，我们将从创建 Java 项目开始。
 
-* 启动 Eclipse。在 Eclipse 中的菜单上，依次单击“文件”、新建和“动态 Web 项目”。 （如果单击“文件”和“新建”后未看到“动态 Web 项目”作为可用项目列出，请执行下列操作：依次单击“文件”、“新建”和“项目...”，展开“Web”，再单击“动态 Web 项目”，然后单击“下一步”。）
-* 在本教程中，项目命名为 **MyHelloWorld**。 （请务必使用此名称，因为本教程中的后续步骤会将你的 WAR 文件命名为 MyHelloWorld）。 屏幕应与下图中所示类似： ![][ic589576]
-* 单击“完成” 。
-* 在 Eclipse 的项目资源管理器视图中，展开“MyHelloWorld”。 右键单击“WebContent”，单击“新建”，然后单击“JSP 文件”。
-* 在“新建 JSP 文件”对话框中，将文件命名为 **index.jsp**。 将父文件夹保留为 **MyHelloWorld/WebContent**，如下所示：  ![][ic659262]
-* 对于本教程，请在“选择 JSP 模板”对话框中选择“新建 JSP 文件(html)”，然后单击“完成”。
-* 在 Eclipse 中打开 index.jsp 文件后，添加文本以动态显示 **Hello World!** 在现有 `<body>` 元素中。 更新后的 `<body>` 内容应与下图中所示类似：
-  ```
-    <body>
-    <b><% out.println("Hello World!"); %></b>
-    </body>
-  ```
-* 保存 index.jsp。
+1. 启动 Eclipse。在 Eclipse 中的菜单上，依次单击“文件”、新建和“动态 Web 项目”。 （如果单击“文件”和“新建”后未看到“动态 Web 项目”作为可用项目列出，请执行下列操作：依次单击“文件”、“新建”和“项目...”，展开“Web”，再单击“动态 Web 项目”，然后单击“下一步”。）
+
+1. 在本教程中，项目命名为 **MyHelloWorld**。 （请务必使用此名称，因为本教程中的后续步骤会将你的 WAR 文件命名为 MyHelloWorld）。 你的屏幕应与下图中所示类似：
+
+   ![][ic589576]
+
+1. 单击“完成” 。
+
+1. 在 Eclipse 的项目资源管理器视图中，展开“MyHelloWorld”。 右键单击“WebContent”，单击“新建”，然后单击“JSP 文件”。
+
+1. 在“新建 JSP 文件”对话框中，将文件命名为 **index.jsp**。 将父文件夹保留为 **MyHelloWorld/WebContent**，如下所示：
+
+   ![][ic659262]
+
+1. 对于本教程，请在“选择 JSP 模板”对话框中选择“新建 JSP 文件(html)”，然后单击“完成”。
+
+1. 在 Eclipse 中打开 index.jsp 文件后，添加文本以动态显示 **Hello World!** 在现有 `<body>` 元素中。 更新后的 `<body>` 内容应与下图中所示类似：
+   ```
+   <body>
+   <b><% out.println("Hello World!"); %></b>
+   </body>
+   ```
+1. 保存 index.jsp。
 
 ## <a name="to-deploy-your-application-to-azure-the-quick-and-simple-way"></a>以快速简单的方式将应用程序部署到 Azure
 当你的 Java Web 应用程序准备好进行测试时，可立即使用以下快捷方式直接在 Azure 云上试用一下。
 
 1. 在 Eclipse 的项目资源管理器中，单击“MyHelloWorld”。
-2. 在 Eclipse 工具栏中，单击“发布”下拉按钮，然后单击“发布为 Azure 云服务”********
-    ![][publishDropdownButton]
+
+2. 在 Eclipse 工具栏中，单击“发布”下拉按钮，然后单击“发布为 Azure 云服务”
+
+   ![][publishDropdownButton]
+
 3. 如果你是首次将此应用程序发布到 Azure，并且以前尚未为此应用程序创建 Azure 部署项目，则将自动为你创建 Azure 部署项目。 你将看到以下提示，其中还列出了将自动部署的用于运行你的应用程序的 JDK 包和应用程序服务器。
-    ![][ic789598]
+
+   ![][ic789598]
    
-    使用此快捷方法可快速简便地在 Azure 中测试你的应用程序，而无需配置不同于默认设置的特定服务器或 JDK。 如果对默认设置感到满意，可以单击“确定”继续执行后续步骤。
-    但是，如果要更改要用于应用程序的 JDK 或应用程序服务器，则可以稍后通过编辑自动创建的 Azure 部署项目来执行该操作，也可以立即单击“取消”并阅读本教程的“关于 Azure 部署项目”部分。
+   使用此快捷方法可快速简便地在 Azure 中测试你的应用程序，而无需配置不同于默认设置的特定服务器或 JDK。 如果对默认设置感到满意，可以单击“确定”继续执行后续步骤。
+   但是，如果要更改要用于应用程序的 JDK 或应用程序服务器，则可以稍后通过编辑自动创建的 Azure 部署项目来执行该操作，也可以立即单击“取消”并阅读本教程的“关于 Azure 部署项目”部分。
+
 4. 在“发布到 Azure”对话框中执行以下操作：
+
    1. 如果“订阅”列表中还没有任何订阅可供选择，请按照下列步骤来导入订阅信息：
       1. 单击“从发布设置文件导入”。
       2. 在“导入订阅信息”对话框中，单击“下载发布设置文件”。 如果你尚未登录到 Azure 帐户，则系统将提示你登录。 然后系统将提示你保存 Azure 发布设置文件。 请将该文件保存到本地计算机。
-      3. 仍在“导入订阅信息”对话框中，单击“浏览”按钮，选择在上一步中保存到本地的发布设置文件，然后单击“打开”。 屏幕应与下图中所示类似： ![][ic644267]
+      3. 仍在“导入订阅信息”对话框中，单击“浏览”按钮，选择在上一步中保存到本地的发布设置文件，然后单击“打开”。 屏幕应与下图中所示类似：![][ic644267]
       4. 单击 **“确定”**。
    2. 对于“订阅”，请选择要用于部署的订阅。
    3. 对于“存储帐户”，请选择要使用的存储帐户，或者单击“新建”创建新的存储帐户。
@@ -74,15 +91,18 @@ ms.openlocfilehash: b7a74df9bfcf75b00af5aaf21e9f74610712ab47
    5. 对于“目标 OS”，请选择要用于部署的操作系统版本。
    6. 在本教程中，对于“目标环境”，请选择“过渡”。 （如果已准备好部署到生产站点，请将该选项更改为“生产”。）
    7. 可选：如果希望新部署自动覆盖以前的部署，请确保选中“覆盖以前的部署”。 启用了此选项后，在发布到同一位置时将不会遇到“409 冲突”问题。
-       请注意，“发布到 Azure”对话框包含“远程访问”部分。 默认情况下，未启用远程访问，我们将不会为此示例启用它。 若要启用远程访问，需输入远程登录时要使用的用户名和密码。 有关远程访问的详细信息，请参阅[在 Eclipse 中为 Azure 部署启用远程访问][Enabling Remote Access for Azure Deployments in Eclipse]。
-       “发布到 Azure”对话框将如下所示： ![][ic719488]
+      请注意，“发布到 Azure”对话框包含“远程访问”部分。 默认情况下，未启用远程访问，我们将不会为此示例启用它。 若要启用远程访问，需输入远程登录时要使用的用户名和密码。 有关远程访问的详细信息，请参阅[在 Eclipse 中为 Azure 部署启用远程访问][Enabling Remote Access for Azure Deployments in Eclipse]。
+      “发布到 Azure”对话框将如下所示：![][ic719488]
+
 5. 单击“发布”以发布到过渡环境。
-    当系统提示执行完全生成时，单击“是”。 第一次生成时可能需要花费几分钟时间。
-    “Azure 活动日志”将显示在 Eclipse 的选项卡式视图部分中。
-    ![][ic719489]
-    可以使用此日志以及“控制台”视图来查看部署进度。**** 一种替代方法是登录到 [Azure 管理门户][Azure Management Portal]，然后使用“云服务”部分来监视状态。
+
+   当系统提示执行完全生成时，单击“是”。 第一次生成时可能需要花费几分钟时间。
+   “Azure 活动日志”将显示在 Eclipse 的选项卡式视图部分中。
+   ![][ic719489] 可以使用此日志以及“控制台”视图来查看部署进度。 一种替代方法是登录到 [Azure 管理门户][Azure Management Portal]，然后使用“云服务”部分来监视状态。
+
 6. 部署成功后，“Azure 活动日志”将显示状态为“已发布”。 单击“已发布”（如下图所示），浏览器将打开部署实例。
-    ![][ic719490]
+
+   ![][ic719490]
 
 由于这是部署到过渡环境，DNS 名称将采用 http://&lt;*guid*&gt;.cloudapp.net 的格式，并且 URL 将包含 DNS 名称加上应用程序的后缀。 例如，http://447564652c20426f6220526f636b7321.cloudapp.net/MyHelloWorld。 （**MyHelloWorld** 部分区分大小写。）如果你在 Azure 平台管理门户中（在管理门户的“云服务”部分中）单击部署名称，也可以看到 DNS 名称。
 
@@ -98,7 +118,7 @@ ms.openlocfilehash: b7a74df9bfcf75b00af5aaf21e9f74610712ab47
 
 除了有关你的应用程序的信息外，Azure 部署项目还包含有关部署的其他关键组件的信息，其中最重要的是：用于运行 Web 应用程序的应用程序服务器容器和 Java 运行时。 Azure 支持大量可选择的 Java 运行时和 Java 应用程序服务器可供你从中选择。
 
-尽管出于教学目的此处使用的示例已极大地简化，但 Azure 部署项目还可以包含其他重要的配置信息，让你可以使用你的应用程序创建几乎任意复杂的可缩放、高度可用的多层云服务。 可以启用**会话相关性（“粘滞会话”）**、**快速缓存**、**远程调试**、**SSL 卸载**、**防火墙/端口路由**、**远程访问**以及其他很多强大功能。
+尽管出于教学目的此处使用的示例已极大地简化，但 Azure 部署项目还可以包含其他重要的配置信息，让你可以使用你的应用程序创建几乎任意复杂的可缩放、高度可用的多层云服务。 可以启用**会话相关性（“粘滞会话”）**、**快速缓存**、**SSL 卸载**、**防火墙/端口路由**、**远程访问**以及其他很多强大功能。
 
 如果已完成本教程上一节的内容（“以快速简单的方式将应用程序部署到 Azure”），现在将在项目资源管理器中看到自动生成的名为“**MyHelloWorld_onAzure**”的新 Azure 部署项目。
 
@@ -111,13 +131,17 @@ ms.openlocfilehash: b7a74df9bfcf75b00af5aaf21e9f74610712ab47
 若要在现有 Azure 部署项目中更改 JDK、应用程序服务器或应用程序列表，请执行以下操作：
 
 1. 在项目资源管理器中展开项目节点（例如 **MyHelloWorld_onAzure**）
+
 2. 右键单击“WorkerRole1”
+
 3. 展开上下文菜单中的“Azure”子菜单
+
 4. 单击“服务器配置”
 
 无论你是通过编辑现有的 Azure 部署项目（如上所示）还是通过从头开始创建新的 Azure 部署项目来开始这些服务器配置步骤，你都将看到相同类型的对话框，让你可以配置 JDK、服务器和应用程序组件。 若要详细了解如何更改这些对话框中的设置（例如，更改 JDK、应用程序服务器，以及在部署中添加或删除应用程序），请参阅 [服务器配置属性][Server configuration properties]一文。
 
 ## <a name="windows-only-to-deploy-your-application-to-the-compute-emulator"></a>仅限 Windows：将应用程序部署到计算模拟器
+
 > [!NOTE]
 > Azure 模拟器仅在 Windows 上可用。 如果你使用的是非 Windows 操作系统，请跳过本部分。
 > 
@@ -126,13 +150,21 @@ ms.openlocfilehash: b7a74df9bfcf75b00af5aaf21e9f74610712ab47
 如果已按前面所述步骤创建新的 Azure 部署项目（即，隐式地通过将应用程序发布到 Azure），则已为云（而非本地模拟）配置 JDK 和应用程序服务器。 若要准备在本地模拟器中测试你的项目，请执行以下步骤：
 
 1. 在 Eclipse 的项目资源管理器中，单击“MyHelloWorld_onAzure”。
+
 2. 右键单击“WorkerRole1”。
+
 3. 展开上下文菜单中的“Azure”子菜单。
+
 4. 单击“服务器配置”。
+
 5. 在“JDK”选项卡上，检查是否为工具包预先配置了默认的本地 JDK。 如果没有预先配置，或者想要更改假设的默认值，请确保选中“使用此文件路径中的 JDK 进行本地测试”复选框，并指定要使用的 JDK 安装位置。 如果想要更改此位置，请单击“浏览”按钮，然后使用浏览控件选择要使用的 JDK 的目录位置。
+
 6. 单击“服务器”选项卡。
+
 7. 在对话框底部的“本地服务器路径”文本框中，输入与对话框顶部“部署此类型的服务器”复选框下面选择的服务器类型和主要版本号匹配的本地安装服务器的路径。 如果你想要使用不同的应用程序服务器类型或主要版本，请先更改该复选框下面的选定内容。
+
 8. 单击 **“确定”**。
+
 9. 在 Eclipse 工具栏中，单击“在 Azure 模拟器中运行”按钮 ![][ic710879]。 如果“在 Azure 模拟器中运行”按钮未启用，请确保在 Eclipse 的项目资源管理器中选择了 **MyHelloWorld_onAzure**，并确保 Eclipse 的项目资源管理器作为当前窗口具有焦点。 这将首先开始完全生成你的项目，然后在计算模拟器中启动 Java Web 应用程序。 （请注意，根据你的计算机的性能特征，第一次生成可能需要几秒钟到几分钟时间，但后续生成的速度将变快。）在完成第一个生成步骤后，Windows 用户帐户控制 (UAC) 将提示你是否允许此命令对你的计算机进行更改。 单击 **“是”**。
 
 > [!IMPORTANT]
@@ -141,7 +173,10 @@ ms.openlocfilehash: b7a74df9bfcf75b00af5aaf21e9f74610712ab47
 > 
 
 1. 检查计算模拟器 UI 的输出，以确定你的项目是否存在任何问题。 根据部署的内容，你的应用程序可能需要几分钟时间才能在计算模拟器中完成启动。
-2. 启动浏览器并使用 URL `http://localhost:8080/MyHelloWorld` 作为地址（此 URL 的 `MyHelloWorld` 部分区分大小写）。 应会看到 MyHelloWorld 应用程序（index.jsp 的输出）与下图类似： ![][ic589579]
+
+2. 启动浏览器并使用 URL `http://localhost:8080/MyHelloWorld` 作为地址（此 URL 的 `MyHelloWorld` 部分区分大小写）。 应会看到 MyHelloWorld 应用程序（index.jsp 的输出）与下图类似：
+
+   ![][ic589579]
 
 准备使应用程序停止在计算模拟器中运行时，请在 Eclipse 工具栏中，单击“重置 Azure 模拟器”按钮 ![][ic710880]。
 
@@ -194,9 +229,4 @@ ms.openlocfilehash: b7a74df9bfcf75b00af5aaf21e9f74610712ab47
 [publishDropdownButton]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/publishDropdownButton.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690944.aspx -->
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

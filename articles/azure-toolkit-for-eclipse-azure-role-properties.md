@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: eb1f4c815618e866e683b3fe2e3adf93a151ff5a
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: cd734c64ba6d1394cb261bace92dee9dd579dd08
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/05/2017
 * [缓存属性](#caching_properties)
 * [证书属性](#certificates_properties)
 * [组件属性](#components_properties)
-* [调试属性](#debugging_properties)
+<!-- * [Debugging properties](#debugging_properties) -->
 * [终结点属性](#endpoints_properties)
 * [环境变量属性](#environment_variables_properties)
 * [负载均衡/会话相关性（即“粘滞会话”）属性](#session_affinity_properties)
@@ -175,14 +175,14 @@ ms.lasthandoff: 01/05/2017
 > 
 > 
 
-<a name="debugging_properties"></a> 
+<!-- <a name="debugging_properties"></a> -->
 
-### <a name="debugging-properties"></a>调试属性
-在 Eclipse 的项目资源管理器窗格中打开角色的上下文菜单，单击“Azure”，然后单击“调试”。 在此对话框中，你可以启用或禁用远程调试，并可以创建调试配置，如下图所示。
+<!-- ### Debugging properties -->
+<!-- Open the context menu for the role in Eclipse's Project Explorer pane, click **Azure**, and then click **Debugging**. Within this dialog, you have the ability to enable or disable remote debugging, as well as create debug configurations, as shown in the following image. -->
 
-![][ic719504]
+<!-- ![][ic719504] -->
 
-有关调试的信息，请参阅[在 Eclipse 中调试 Azure 应用程序][Debugging Azure Applications in Eclipse]。
+<!-- For related information about debugging, see [Debugging Azure Applications in Eclipse][Debugging Azure Applications in Eclipse]. -->
 
 <a name="endpoints_properties"></a> 
 
@@ -207,13 +207,13 @@ ms.lasthandoff: 01/05/2017
 
 对于设为自动的端口，如果需要确定在运行时实际使用哪个端口，应用程序可以使用 [com.microsoft.windowsazure.serviceruntime 包摘要][com.microsoft.windowsazure.serviceruntime package summary]中所述的 Azure 服务运行时 API。
 
-若要了解如何使用实例输入终结点来帮助调试多实例部署，请参阅[调试多实例部署中的特定角色实例][Debugging a specific role instance in a multi-instance deployment]。
+<!-- To see how instance input endpoints can be used to help with debugging a multi-instance deployment, see [Debugging a specific role instance in a multi-instance deployment][Debugging a specific role instance in a multi-instance deployment]. -->
 
 若要修改某个终结点，请在“终结点”属性页上选择该终结点，然后单击“编辑”按钮。 此时将打开一个对话框让你修改终结点名称、类型以及公用和专用端口。 按“确定”保存修改的终结点值。
 
 若要删除某个终结点，请在“终结点”属性页中选择该终结点并单击“删除”按钮，然后单击“是”确认删除。
 
-为了正确配置用户对角色启用的某些功能（例如缓存、远程调试、会话相关性或 SSL 卸载），该工具包可能会自动配置将与用户定义的终结点一起列出的特殊终结点。 只要启用了关联的功能，该工具包就会禁止用户编辑或删除此类自动生成的终结点。
+为了正确配置用户对角色启用的某些功能（例如缓存、会话相关性或 SSL 卸载），该工具包可能会自动配置将与用户定义的终结点一起列出的特殊终结点。 只要启用了关联的功能，该工具包就会禁止用户编辑或删除此类自动生成的终结点。
 
 <a name="environment_variables_properties"></a> 
 
@@ -252,7 +252,7 @@ ms.lasthandoff: 01/05/2017
 
 <a name="session_affinity_properties"></a> 
 
-### <a name="load-balancing--session-affinity-aka-sticky-sessions-properties"></a>负载平衡/会话相关性（即“粘滞会话”）属性
+### <a name="load-balancing--session-affinity-aka-sticky-sessions-properties"></a>负载均衡/会话相关性（即“粘滞会话”）属性
 在 Eclipse 的项目资源管理器窗格中打开角色的上下文菜单，单击“Azure”，然后单击“负载均衡”。 在此对话框中，你可以启用或禁用会话相关性，如下图所示。
 
 ![][ic719492]

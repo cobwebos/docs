@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/09/2017
 ms.author: sethm;jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: cbbef00cb4c54f4df2634fbe7b3dacbd34a175bd
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 2c9b6676c1a4cfe008235da6746d403555e1bf08
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -76,7 +76,7 @@ ms.lasthandoff: 04/07/2017
 
 虽然我们保留禁用在给定月份超过使用率配额的客户帐户的权利，但我们仍然会在采取任何措施前发送电子邮件通知并会多次尝试与客户联系。 超过这些配额的客户仍将负责超出配额的费用。
 
-至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 服务强制执行的使用率配额如下：
+至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 可以在[服务总线配额概述][Quotas overview]中找到有关这些配额的更多详细信息。
 
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Azure 服务总线 API 生成了哪些异常？建议采取什么操作？

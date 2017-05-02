@@ -1,6 +1,6 @@
 ---
 title: "通过 PowerShell 为 Azure 应用创建标识 | Microsoft Docs"
-description: "介绍如何使用 Azure PowerShell 创建 Active Directory 应用程序和服务主体，并通过基于角色的访问控制向其授予资源访问权限。 它演示如何使用密码或证书对应用程序进行身份验证。"
+description: "介绍如何使用 Azure PowerShell 创建 Azure Active Directory 应用程序和服务主体，并通过基于角色的访问控制向其授予资源访问权限。 它演示如何使用密码或证书对应用程序进行身份验证。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 04/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: db36f52f538905683b4cbc6db7cc41b56710db8c
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 775734ea55d1136e64afc713356b0f0bfc81ea9f
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 04/04/2017
 本主题介绍如何通过 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 为应用程序进行一切所需设置，使之能够使用自己的凭据和标识运行。
 
 ## <a name="required-permissions"></a>所需的权限
-若要完成本主题，必须在 Azure Active Directory 和 Azure 订阅中均具有足够的权限。 具体而言，必须能够在 Active Directory 中创建应用并向角色分配服务主体。 
+若要完成本主题，必须在 Azure Active Directory 和 Azure 订阅中均具有足够的权限。 具体而言，必须能够在 Azure Active Directory 中创建应用并向角色分配服务主体。 
 
 检查帐户是否有足够权限的最简方法是使用门户。 请参阅[检查所需的权限](resource-group-create-service-principal-portal.md#required-permissions)。
 
@@ -85,7 +85,7 @@ Param (
     $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
  }
 
- # Create Active Directory application with password
+ # Create Azure Active Directory application with password
  $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $ApplicationDisplayName) -Password $Password
 
  # Create Service Principal for the AD app
@@ -110,7 +110,7 @@ Param (
 * 仅当希望将角色分配范围限定为某个资源组时指定 ResourceGroup 参数。
 * 对于单租户应用程序，不会验证主页和标识符 URI。
 *  在此示例中，将服务主体添加到“参与者”角色。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。
-* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Active Directory。 如果脚本等待时长不足，将显示错误，称“PrincipalNotFound: 主体 {id} 不存在于目录中”。
+* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，将显示错误，称“PrincipalNotFound: 主体 {id} 不存在于目录中”。
 * 如果需要授予对更多订阅或资源组的服务主体访问权限，则再次针对不同的作用域运行 `New-AzureRMRoleAssignment` cmdlet。
 
 
@@ -194,7 +194,7 @@ Param (
 * 仅当希望将角色分配范围限定为某个资源组时指定 ResourceGroup 参数。
 * 对于单租户应用程序，不会验证主页和标识符 URI。
 *  在此示例中，将服务主体添加到“参与者”角色。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。
-* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Active Directory。 如果脚本等待时长不足，将显示错误，称“PrincipalNotFound: 主体 {id} 不存在于目录中”。
+* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，将显示错误，称“PrincipalNotFound: 主体 {id} 不存在于目录中”。
 * 如果需要授予对更多订阅或资源组的服务主体访问权限，则再次针对不同的作用域运行 `New-AzureRMRoleAssignment` cmdlet。
 
 如果未使用 **Windows 10 或 Windows Server 2016 Technical Preview**，需要从 Microsoft 脚本中心下载[自签名证书生成器](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/)。 解压其内容，并导入所需的 cmdlet。
@@ -212,7 +212,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>通过自动执行的 PowerShell 脚本提供证书
-以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Active Directory 的实例。 如果只有一个订阅，可以使用：
+以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Azure Active Directory 的实例。 如果只有一个订阅，可以使用：
 
 ```powershell
 Param (
@@ -302,11 +302,11 @@ Param (
 * 访问范围限定于订阅。
 * 对于单租户应用程序，不会验证主页和标识符 URI。
 *  在此示例中，将服务主体添加到“参与者”角色。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。
-* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Active Directory。 如果脚本等待时长不足，将显示错误，称“PrincipalNotFound: 主体 {id} 不存在于目录中”。
+* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，将显示错误，称“PrincipalNotFound: 主体 {id} 不存在于目录中”。
 * 如果需要授予对更多订阅或资源组的服务主体访问权限，则再次针对不同的作用域运行 `New-AzureRMRoleAssignment` cmdlet。
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>通过自动执行的 PowerShell 脚本提供证书
-以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Active Directory 的实例。
+以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Azure Active Directory 的实例。
 
 ```powershell
 Param (
@@ -390,7 +390,7 @@ Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
 
 创建服务主体时，可能会遇到以下错误：
 
-* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Active Directory 上注册应用[所需的权限](#required-permissions)，会收到此错误。 通常，当仅 Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会收到此错误。 请要求管理员向你分配管理员角色，或让用户能够注册应用。
+* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Azure Active Directory 上注册应用[所需的权限](#required-permissions)，会收到此错误。 通常，当仅 Azure Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会看到此错误。 请要求管理员向你分配管理员角色，或让用户能够注册应用。
 
 * 你的帐户“不具有对作用域‘/subscriptions/{guid}’执行操作‘Microsoft.Authorization/roleAssignments/write’的权限”。 - 当帐户不具有足够权限将角色分配给标识时，会看到此错误。 请要求订阅管理员将你添加到用户访问管理员角色。
 
@@ -425,6 +425,6 @@ Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
 ## <a name="next-steps"></a>后续步骤
 * 有关将应用程序集成到 Azure 以管理资源的详细步骤，请参阅 [Developer's guide to authorization with the Azure Resource Manager API](resource-manager-api-authentication.md)（使用 Azure Resource Manager API 进行授权的开发人员指南）。
 * 有关应用程序和服务主体的详细说明，请参阅 [Application Objects and Service Principal Objects](../active-directory/active-directory-application-objects.md)（应用程序对象和服务主体对象）。 
-* 有关 Active Directory 身份验证的详细信息，请参阅 [Authentication Scenarios for Azure AD](../active-directory/active-directory-authentication-scenarios.md)（Azure AD 的身份验证方案）。
+* 有关 Azure Active Directory 身份验证的详细信息，请参阅 [Authentication Scenarios for Azure AD](../active-directory/active-directory-authentication-scenarios.md)（Azure AD 的身份验证方案）。
 
 

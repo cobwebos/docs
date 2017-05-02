@@ -1,6 +1,6 @@
 ---
 title: "通过 Azure CLI 为 Azure 应用创建标识 | Microsoft Docs"
-description: "描述如何使用 Azure CLI 创建 Active Directory 应用程序和服务主体，并通过基于角色的访问控制授予其对资源的访问权限。 它演示如何使用密码或证书对应用程序进行身份验证。"
+description: "介绍如何使用 Azure CLI 创建 Azure Active Directory 应用程序和服务主体，并通过基于角色的访问控制授予其对资源的访问权限。 它演示如何使用密码或证书对应用程序进行身份验证。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4ea75e08a630ad777444ea3a3cb85f4bb0efe01f
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: c8a883dedee31d9efab6e2eb4c0ac67b467afe34
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 04/03/2017
 本文介绍如何使用 [Azure CLI 1.0](../cli-install-nodejs.md) 对应用程序进行设置，使之能够使用自己的凭据和标识运行。 安装最新版本的 [Azure CLI 1.0](../cli-install-nodejs.md) 以确保你的环境满足本文中的示例。
 
 ## <a name="required-permissions"></a>所需的权限
-若要完成本主题，必须在 Azure Active Directory 和 Azure 订阅中均具有足够的权限。 具体而言，必须能够在 Active Directory 中创建应用并向角色分配服务主体。 
+若要完成本主题，必须在 Azure Active Directory 和 Azure 订阅中均具有足够的权限。 具体而言，必须能够在 Azure Active Directory 中创建应用并向角色分配服务主体。 
 
 检查帐户是否有足够权限的最简方法是使用门户。 请参阅[在门户中检查所需的权限](resource-group-create-service-principal-portal.md#required-permissions)。
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 04/03/2017
      info:    ad sp create command OK
    ```
 
-3. 向服务主体授予对订阅的权限。 在此示例中，向“读取者”角色（授予读取订阅中所有资源的权限）添加服务主体。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。 对于 objectid 参数，请提供创建应用程序时使用的对象 ID。 运行此命令之前，必须留出一些时间将新的服务主体传遍 Active Directory。 手动运行这些命令时，任务之间通常已经过足够的时间。 在脚本中，应在命令间添加休眠步骤（如 `sleep 15`）。 如果看到错误称主体不存在于目录中，请重新运行该命令。
+3. 向服务主体授予对订阅的权限。 在此示例中，向“读取者”角色（授予读取订阅中所有资源的权限）添加服务主体。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。 对于 objectid 参数，请提供创建应用程序时使用的对象 ID。 运行此命令之前，必须留出一些时间让新服务主体传遍 Azure Active Directory。 手动运行这些命令时，任务之间通常已经过足够的时间。 在脚本中，应在命令间添加休眠步骤（如 `sleep 15`）。 如果看到错误称主体不存在于目录中，请重新运行该命令。
    
    ```azurecli
    azure role assignment create --objectId ff863613-e5e2-4a6b-af07-fff6f2de3f4e -o Reader -c /subscriptions/{subscriptionId}/
@@ -83,7 +83,7 @@ ms.lasthandoff: 04/03/2017
 ### <a name="provide-credentials-through-azure-cli"></a>通过 Azure CLI 提供凭据
 现在，需要以应用程序方式登录以执行相应操作。
 
-1. 以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Active Directory 的实例。 若要检索当前已经过身份验证的订阅的租户 ID，请使用：
+1. 以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Azure Active Directory 的实例。 若要检索当前已经过身份验证的订阅的租户 ID，请使用：
    
    ```azurecli
    azure account show
@@ -192,7 +192,7 @@ ms.lasthandoff: 04/03/2017
      data:                      https://www.contoso.org/example
      info:    ad sp create command OK
    ```
-6. 向服务主体授予对订阅的权限。 在此示例中，向“读取者”角色（授予读取订阅中所有资源的权限）添加服务主体。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。 对于 objectid 参数，请提供创建应用程序时使用的对象 ID。 运行此命令之前，必须留出一些时间将新的服务主体传遍 Active Directory。 手动运行这些命令时，任务之间通常已经过足够的时间。 在脚本中，应在命令间添加休眠步骤（如 `sleep 15`）。 如果看到错误称主体不存在于目录中，请重新运行该命令。
+6. 向服务主体授予对订阅的权限。 在此示例中，向“读取者”角色（授予读取订阅中所有资源的权限）添加服务主体。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。 对于 objectid 参数，请提供创建应用程序时使用的对象 ID。 运行此命令之前，必须留出一些时间让新服务主体传遍 Azure Active Directory。 手动运行这些命令时，任务之间通常已经过足够的时间。 在脚本中，应在命令间添加休眠步骤（如 `sleep 15`）。 如果看到错误称主体不存在于目录中，请重新运行该命令。
    
    ```azurecli
    azure role assignment create --objectId 7dbc8265-51ed-4038-8e13-31948c7f4ce7 -o Reader -c /subscriptions/{subscriptionId}/
@@ -201,7 +201,7 @@ ms.lasthandoff: 04/03/2017
 ### <a name="provide-certificate-through-automated-azure-cli-script"></a>通过自动执行的 Azure CLI 脚本提供证书
 现在，需要以应用程序方式登录以执行相应操作。
 
-1. 以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Active Directory 的实例。 若要检索当前已经过身份验证的订阅的租户 ID，请使用：
+1. 以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Azure Active Directory 的实例。 若要检索当前已经过身份验证的订阅的租户 ID，请使用：
    
    ```azurecli
    azure account show
@@ -263,7 +263,7 @@ ms.lasthandoff: 04/03/2017
    azure login --service-principal --tenant {tenant-id} -u 4fd39843-c338-417d-b549-a545f584a745 --certificate-file C:\certificates\examplecert.pem --thumbprint {thumbprint}
    ```
 
-现在，你已作为所创建 Active Directory 应用程序的服务主体进行身份验证。
+现在，你已作为所创建 Azure Active Directory 应用程序的服务主体进行身份验证。
 
 ## <a name="change-credentials"></a>更改凭据
 
@@ -285,7 +285,7 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 
 创建服务主体时，可能会遇到以下错误：
 
-* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Active Directory 上注册应用[所需的权限](#required-permissions)，会收到此错误。 通常，当仅 Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会收到此错误。 请要求管理员向你分配管理员角色，或让用户能够注册应用。
+* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Azure Active Directory 上注册应用[所需的权限](#required-permissions)，会收到此错误。 通常，当仅 Azure Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会看到此错误。 请要求管理员向你分配管理员角色，或让用户能够注册应用。
 
 * 你的帐户“不具有对作用域‘/subscriptions/{guid}’执行操作‘Microsoft.Authorization/roleAssignments/write’的权限”。 - 当帐户不具有足够权限将角色分配给标识时，会看到此错误。 请要求订阅管理员将你添加到用户访问管理员角色。
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 7a9b8037967f0180d2f7d2a7d100d0cc3ad9e4a2
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 519f035b411f254e8412ba9a8868b226c63cccb6
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -228,7 +228,7 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 没有对每个订阅可创建的实验室数量进行限定。 但对每个订阅使用的资源进行了限定。 可参阅[对 Azure 订阅施加的限制和配额](../azure-subscription-service-limits.md)和[如何增加这些限制](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)。
 
 ### <a name="how-many-vms-can-i-create-per-lab"></a>每个实验室可以创建多少个 VM？
-没有对每个实验室可创建的 VM 数量进行限定。 但是，目前实验室仅支持大约 40 个 VM 同时在标准存储中运行，25 个 VM 同时在高级存储中运行。 我们目前正努力提高这些限制。
+没有对每个实验室可创建的 VM 数量进行限定。 但对每个订阅使用的资源（例如，VM 核心数、公共 IP 等）进行了限制。 可参阅[对 Azure 订阅施加的限制和配额](../azure-subscription-service-limits.md)和[如何增加这些限制](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)。
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>如何向我的实验室共享直接链接？
 若要将直接链接共享给实验室用户，可执行以下步骤：

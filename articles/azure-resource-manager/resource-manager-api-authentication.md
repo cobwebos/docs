@@ -1,6 +1,6 @@
 ---
-title: "Active Directory 身份验证和 Resource Manager | Microsoft Docs"
-description: "指导开发人员使用 Azure Resource Manager API 和 Active Directory 进行身份验证，将应用集成到其他 Azure 订阅。"
+title: "Azure Active Directory 身份验证和 Resource Manager | Microsoft Docs"
+description: "指导开发人员使用 Azure Resource Manager API 和 Azure Active Directory 进行身份验证，将应用集成到其他 Azure 订阅。"
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 12/27/2016
 ms.author: dugill;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: de1355a8dc4b0099dca3efc2109ccfb9facf7269
-ms.lasthandoff: 04/05/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 8a8a28e6491855434c4445bedd5644d7da109f8a
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -71,7 +71,7 @@ Web 应用：
 ## <a name="register-application"></a>注册应用程序
 在开始编写代码之前，请先使用 Azure Active Directory (AD) 注册 Web 应用。 应用注册将在 Azure AD 中为你的应用创建一个中心标识。 该标识保留有关应用程序的基本信息，例如应用程序用来进行身份验证和访问 Azure Resource Manager API 的 OAuth 客户端 ID、回复 URL 和凭据。 应用注册还会记录应用程序在代表用户访问 Microsoft API 时所需的各种委派权限。
 
-由于应用访问其他订阅，必须将它配置为多租户应用程序。 为了通过验证，请提供与 Active Directory 关联的域。 若要查看与 Active Directory 关联的域，请登录[经典门户](https://manage.windowsazure.com)。 选择 Active Directory，然后选择“域”。
+由于应用访问其他订阅，必须将它配置为多租户应用程序。 若要通过验证，请提供与 Azure Active Directory 关联的域。 若要查看与 Azure Active Directory 关联的域，请登录[经典门户](https://manage.windowsazure.com)。 选择 Azure Active Directory，然后选择“域”。
 
 以下示例演示如何使用 Azure PowerShell 注册应用。 必须拥有最新版本（2016 年 8 月）Azure PowerShell 才能正常运行此命令。
 
@@ -93,7 +93,7 @@ Azure AD 还支持应用程序的证书凭据：创建自签名证书、保留�
 若要了解如何使用证书创建 AD 应用，请参阅[使用 Azure PowerShell 创建服务主体来访问资源](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)或[使用 Azure CLI 创建服务主体来访问资源](resource-group-authenticate-service-principal-cli.md#create-service-principal-with-certificate)。
 
 ## <a name="get-tenant-id-from-subscription-id"></a>从订阅 ID 获取租户 ID
-若要请求可用于调用 Resource Manager 的令牌，应用程序需要知道托管 Azure 订阅的 Azure AD 租户的租户 ID。 用户可能知道其订阅 ID，但不知道其用于 Active Directory 的租户 ID。 若要获取用户的租户 ID，请让用户提供订阅 ID。 发送有关订阅的请求时，请提供该订阅 ID：
+若要请求可用于调用 Resource Manager 的令牌，应用程序需要知道托管 Azure 订阅的 Azure AD 租户的租户 ID。 用户很可能知道其订阅 ID，但可能不知道其用于 Azure Active Directory 的租户 ID。 若要获取用户的租户 ID，请让用户提供订阅 ID。 发送有关订阅的请求时，请提供该订阅 ID：
 
     https://management.azure.com/subscriptions/{subscription-id}?api-version=2015-01-01
 

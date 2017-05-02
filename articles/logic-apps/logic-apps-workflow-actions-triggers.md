@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 3a240ff317e1b3ea450703965629c08053668856
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: ff86340f18a2d3d13d55b7e0bcd4122d9b85ccd9
+ms.lasthandoff: 04/20/2017
 
 ---
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/22/2017
 
 逻辑应用由触发器和操作构成。 有六种类型的触发器。 每种类型有不同的接口和不同的行为。 也可以查看[工作流定义语言](logic-apps-workflow-definition-language.md)来了解其他详细信息。  
   
-请继续阅读，详细了解触发器和操作，以及如何使用它们来构建逻辑应用以提高业务流程和工作流。  
+请继续阅读，详细了解触发器和操作，以及如何使用它们来构建逻辑应用以改进业务流程和工作流。  
   
 ### <a name="triggers"></a>触发器  
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 03/22/2017
   
 |元素名称|必选|说明|  
 |----------------|------------|---------------|  
-|schema|否|用于验证传入请求的 JSON 架构。 有帮助让后续工作流步骤知道要引用哪些属性。|
+|schema|否|用于验证传入请求的 JSON 架构。 可用于帮助后续工作流步骤了解要引用哪些属性。|
 
 若要调用此终结点，需要调用 *listCallbackUrl* API。 请参阅[工作流服务 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。  
   
@@ -151,7 +151,7 @@ HTTP 触发器要求 HTTP API 符合特定的模式，这样它才能与逻辑�
   
 |响应|说明|  
 |------------|---------------|  
-|状态代码|如果状态代码为 200 \(OK\)，则运行触发器。 如果是其他任何状态代码，都不会运行触发器。|  
+|状态代码|状态代码为 200 \(OK\) 则运行。 其他任何状态代码均不能引发运行。|  
 |Retry\-after 标头|逻辑应用再次轮询终结点之前所要经过的秒数。|  
 |Location 标头|在下一个轮询间隔要调用的 URL。 如果未指定，将使用原始 URL。|  
   
@@ -161,7 +161,7 @@ HTTP 触发器要求 HTTP API 符合特定的模式，这样它才能与逻辑�
 |-----------------|----------------|------------|  
 |200|\(无\)|不是有效的触发器。必须指定 Retry\-After，否则引擎永远不会轮询下一个请求。|  
 |202|60|不会触发工作流。 下一次尝试将在一分钟后发生。|  
-|200|10|在 10 秒后运行工作流，并再次检查其他内容。|  
+|200|10|运行工作流，并在 10 秒后再次检查是否有其他内容。|  
 |400|\(无\)|错误的请求，不会运行工作流。 如果未定义**重试策略**，将使用默认策略。 达到重试次数后，触发器将不再有效。|  
 |500|\(无\)|服务器错误，不会运行工作流。  如果未定义**重试策略**，将使用默认策略。 达到重试次数后，触发器将不再有效。|  
   
@@ -211,7 +211,7 @@ API 连接触发器在基本功能上类似于 HTTP 触发器。 但是，用于
 |元素名称|必选|说明|  
 |----------------|------------|---------------|  
 |api runtimeUrl|是|托管 API 的终结点。|  
-|connection name||必须对名为 `$connection` 的参数的引用，并且是工作流使用的托管 API 连接的名称。|
+|connection name||必须是对名为 `$connection` 的参数的引用，并且是工作流使用的托管 API 连接的名称。|
   
 API 连接触发器的输出为：
   
@@ -267,7 +267,7 @@ Webhook 的属性如下所示：
   
     若要支持此调用，可使用以下新函数：`@listCallbackUrl()`。 此函数返回此工作流中此特定触发器的唯一 URL。 此 URL 表示使用服务 REST 的终结点的唯一标识符。  
   
--   当操作显示此触发器无效时，将调用 **Unsubscribe**，包括：  
+-   **Unsubscribe** 在操作使此触发器失效时调用，包括：  
   
     -   删除或禁用触发器时  
   
@@ -317,9 +317,9 @@ Webhook 的属性如下所示：
 > [!NOTE]  
 > 当任何表达式\(以任何方式\)引用触发器的状态代码时，将替换默认行为“仅当状态代码为 200 \(OK\) 时才触发”。\(\) 例如，如果希望在状态代码为 200 和 201 时均触发，必须包含 `@or(equals(triggers().code, 200),equals(triggers().code,201))` 作为条件。  
   
-## <a name="start-multiple-runs-for-a-request"></a>启动一个请求的多个运行
+## <a name="start-multiple-runs-for-a-request"></a>为一个请求启动多个运行
 
-若要启动单个请求的多个运行，可以使用 `splitOn`。例如，可以在不同的轮询间隔期间轮询可能包含多个新项的终结点。
+若要启动单个请求的多个运行，可以使用 `splitOn`。例如，要轮询可能在不同的轮询间隔期之间包含多个新项的终结点时。
   
 使用 `splitOn` 可以在包含项数组的响应有效负载中指定属性，并使用其中的每个项来启动触发器的运行。 例如，假设某个 API 返回以下响应：  
   
@@ -374,7 +374,7 @@ Webhook 的属性如下所示：
   
 ## <a name="single-run-instance"></a>单个运行实例
 
-可以配置使用重复属性的触发器，以便仅在已完成所有活动的运行时才激发触发器。 如果某个运行正在工作时发生计划的重复行为，触发器将跳过执行，并等到下一个计划的重复间隔再次检查状态。
+可以通过配置触发器的重复属性，使其仅在已完成所有活动的运行时才激发触发器。 如果计划的重复出现在某个运行正在进行时，触发器将跳过执行，并等到下一个计划的重复间隔才再次进行检查。
 
 可以通过操作选项配置此设置：
 
@@ -403,9 +403,11 @@ Webhook 的属性如下所示：
   
 -   **Response** \- 此操作定义传入调用的响应。  
   
--   **Wait** \- 这个简单的操作会等待固定的时间长度，或等到特定的时间结束。  
+-   **Wait** \- 这个简单的操作会等待固定的时间长度，或等到特定的时间。  
   
 -   **Workflow** \- 此操作表示嵌套的工作流。  
+
+-   **Function** \- 此操作表示 Azure 函数。
 
 ### <a name="collection-actions"></a>集合操作
 
@@ -453,7 +455,7 @@ HTTP 操作\(和 API 连接\)操作支持重试策略。 重试策略适用于�
     "type": "http",
     "inputs": {
         "method": "GET",
-        "uri": "uri": "https://mynews.example.com/latest",
+        "uri": "https://mynews.example.com/latest",
         "retryPolicy" : {
             "type": "fixed",
             "interval": "PT30S",
@@ -464,7 +466,7 @@ HTTP 操作\(和 API 连接\)操作支持重试策略。 重试策略适用于�
 ```
 ### <a name="asynchronous-patterns"></a>异步模式
 
-默认情况下，所有基于 HTTP 的操作都支持标准异步操作模式。 因此，如果远程服务器指出已接受处理的请求并返回 202 \(Accepted\) 响应，则逻辑应用程序引擎将不断轮询响应 location 标头中指定的 URL，直到终端状态\(不是\- 202 响应\)为止。  
+默认情况下，所有基于 HTTP 的操作都支持标准异步操作模式。 因此，如果远程服务器指示已接受待处理的请求并返回 202 \(Accepted\) 响应，则逻辑应用程序引擎将不断轮询响应 location 标头中指定的 URL，直到终端状态\(不是 202 响应\)为止。  
   
 若要禁用上述异步行为，请在操作输入中设置 `DisableAsyncPattern` 选项。 在本例中，操作的输出取决于来自服务器的初始 202 响应。  
   
@@ -500,7 +502,7 @@ API 连接是引用 Microsoft 托管连接器的操作。
 
 |元素名称|必选|类型|说明|  
 |----------------|------------|--------|---------------|  
-|主机|是|对象|表示如连接器信息，例如 runtimeUrl 以及对连接对象的引用|
+|主机|是|对象|表示连接器信息，例如 runtimeUrl 以及对连接对象的引用|
 |方法|是|String|可为以下 HTTP 方法之一：**GET**、**POST**、**PUT**、**DELETE**、**PATCH** 或 **HEAD**|  
 |path|是|String|API 操作的路径。|  
 |查询|否|对象|表示要添加到 URL 的查询参数。 例如，`"queries" : { "api-version": "2015-02-01" }` 将 `?api-version=2015-02-01` 添加到 URL。|  
@@ -566,7 +568,7 @@ API 连接是引用 Microsoft 托管连接器的操作。
   
 ## <a name="response-action"></a>Response 操作  
 
-此操作类型包含 HTTP 请求中的整个响应有效负载，以及 statusCode、正文和标头：  
+此操作类型包含 HTTP 请求中的整个响应有效负载，包括 statusCode、正文和标头：  
   
 ```json
 "myresponse" : {
@@ -588,9 +590,9 @@ API 连接是引用 Microsoft 托管连接器的操作。
   
 response 操作包含一些不适用于其他操作的特殊限制。 具体而言：  
   
--   Response 操作不能与定义并存，因为对于传入的请求必须提供确定性的响应。  
+-   Response 操作不能在定义中并存，因为对于传入的请求必须提供确定性的响应。  
   
--   如果传入的请求收到响应后才执行 response 操作，该操作将被视为造成失败的\(冲突\)，因此，运行状态将变成 `Failed`。  
+-   如果 response 操作出现在传入的请求收到响应后，该操作将被视为失败\(冲突\)，运行将因此`Failed`。  
   
 -   使用 Response 操作的工作流不能在其触发器中包含 `splitOn`，因为一次调用会导致多次运行。 因此，当流量为 PUT 并导致“错误的请求”时，应验证此工作流。  
   
@@ -624,7 +626,7 @@ response 操作包含一些不适用于其他操作的特殊限制。 具体而�
 ```
   
 > [!NOTE]  
-> 可以使用 **interval** 对象或 **until** 对象指定等待持续时间，但不能使用这两个对象来指定。  
+> 可以使用 **interval** 对象或 **until** 对象指定等待持续时间，但不能同时使用这两个对象来指定。  
   
 |Name|必选|类型|说明|  
 |--------|------------|--------|---------------|  
@@ -657,6 +659,28 @@ response 操作包含一些不适用于其他操作的特殊限制。 具体而�
 |--------|------------|--------|---------------|
 |from|是|Array|源数组。|
 |其中|是|String|要应用到源数组的每个元素的条件。|
+
+## <a name="select-action"></a>选择操作
+
+通过 `select` 操作，可以将数组的每个元素投影到一个新值。
+例如，若要将数字数组转换为对象数组，可以使用：
+
+```json
+"SelectNumbers" : {
+    "type": "select",
+    "inputs": {
+        "from": [ 1, 3, 0, 5, 4, 2 ],
+        "select": { "number": "@item()" }
+    }
+}
+```
+
+`select` 操作的输出是一个数组，该数组具有与输入数组相同的基数并且每个元素按 `select` 属性定义的方式进行转换。 如果输入数组为空，则输出数组也为空。
+
+|Name|必选|类型|说明|
+|--------|------------|--------|---------------|
+|from|是|Array|源数组。|
+|选择|是|任意|要应用到源数组的每个元素的投影。|
 
 ## <a name="terminate-action"></a>Terminate 操作
 
@@ -704,6 +728,71 @@ Terminate 操作停止执行工作流运行，中止正在进行的所有操作�
 > [!NOTE]
 > **Compose** 操作可用于构造任何输出，包括对象、数组，以及逻辑应用原生支持的其他任何类型，例如 XML 和二进制数据。
 
+## <a name="table-action"></a>表操作
+
+`table` 允许将一个项数组转换为 **CVS** 或 **HTML** 表。
+
+假设 @triggerBody() 为
+
+```json
+[{
+  "id": 0,
+  "name": "apples"
+},{
+  "id": 1, 
+  "name": "oranges"
+}]
+```
+
+允许操作如下定义
+
+```json
+"ConvertToTable" : {
+    "type": "table",
+    "inputs": {
+        "from": "@triggerBody()",
+        "format": "html"
+    }
+}
+```
+
+上述操作会生成
+
+<table><thead><tr><th>id</th><th>名称</th></tr></thead><tbody><tr><td>0</td><td>apples</td></tr><tr><td>1</td><td>oranges</td></tr></tbody></table>"
+
+若要自定义表，可以显式指定列。 例如：
+
+```json
+"ConvertToTable" : {
+    "type": "table",
+    "inputs": {
+        "from": "@triggerBody()",
+        "format": "html",
+        "columns": [{
+          "header": "produce id",
+          "value": "@item().id"
+        },{
+          "header": "description",
+          "value": "@concat('fresh ', item().name)"
+        }]
+    }
+}
+```
+
+上述操作会生成
+
+<table><thead><tr><th>produce id</th><th>description</th></tr></thead><tbody><tr><td>0</td><td>fresh apples</td></tr><tr><td>1</td><td>fresh oranges</td></tr></tbody></table>"
+
+如果 `from` 属性值为空数组，输出将为空表。
+
+|Name|必选|类型|说明|
+|--------|------------|--------|---------------|
+|from|是|Array|源数组。|
+|格式|是|String|格式可以为 **CVS**，也可以为 **HTML**。|
+|列|否|Array|列。 允许替代该表的默认形状。|
+|column header|否|String|列标题。|
+|column value|是|String|列的值。|
+
 ## <a name="workflow-action"></a>Workflow 操作   
 
 |Name|必选|类型|说明|  
@@ -741,6 +830,47 @@ Terminate 操作停止执行工作流运行，中止正在进行的所有操作�
 将在工作流中（\(更具体地说，是触发器中\)）执行访问检查，这意味着，你需要访问工作流。  
   
 `workflow` 操作的输出基于在子工作流的 `response` 操作中定义的设置。 如果未定义任何 `response` 操作，则输出为空。  
+
+## <a name="function-action"></a>函数操作   
+
+|Name|必选|类型|说明|  
+|--------|------------|--------|---------------|  
+|函数 ID|是|String|要调用的函数的资源 ID。|  
+|方法|否|String|用于调用函数的 HTTP 方法。 未指定时，默认情况下，它是 `POST`。|  
+|查询|否|对象|表示要添加到 URL 的查询参数。 例如，`"queries" : { "api-version": "2015-02-01" }` 将 `?api-version=2015-02-01` 添加到 URL。|  
+|headers|否|对象|表示要发送到请求的每个标头。 例如，若要在请求中设置语言和类型：`"headers" : { "Accept-Language": "en-us" }`。|  
+|body|否|对象|表示发送到终结点的有效负载。|  
+
+```json
+"myfunc" : {
+    "type" : "Function",
+    "inputs" : {
+        "function" : {
+            "id" : "/subscriptions/xxxxyyyyzzz/resourceGroups/rg001/providers/Microsoft.Web/sites/myfuncapp/functions/myfunc"
+        },
+        "queries" : {
+            "extrafield" : "specialValue"
+        },  
+        "headers" : {
+            "x-ms-date" : "@utcnow()"
+        },
+        "method" : "POST",
+    "body" : {
+            "contentFieldOne" : "value100",
+            "anotherField" : 10.001
+        }
+    },
+    "runAfter": {}
+}
+```
+
+保存逻辑应用时，我们会对所引用的函数执行一些检查：
+-   你需要有权访问该函数。
+-   仅允许使用标准 HTTP 触发器或泛型 JSON webhook 触发器。
+-   它不应定义任何路由。
+-   仅允许“函数”和“匿名”授权级别。
+
+在运行时检索、缓存和使用触发器 URL。 因此，如果任何操作使缓存的 URL 失效，则此操作将在运行时失败。 若要解决此问题，请重新保存逻辑应用，这将导致逻辑应用重新检索并缓存触发器 URL。
 
 ## <a name="collection-actions-scopes-and-loops"></a>集合操作（范围和循环）
 
@@ -897,3 +1027,4 @@ Terminate 操作停止执行工作流运行，中止正在进行的所有操作�
 ## <a name="next-steps"></a>后续步骤
 
 [工作流服务 REST API](https://docs.microsoft.com/rest/api/logic/workflows)
+

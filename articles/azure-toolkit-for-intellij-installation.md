@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 349252e6629c0eda4d603399345206903d530578
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: bf11a8580500f78c4a96a02953f221501eeffe6c
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -80,13 +81,15 @@ ms.openlocfilehash: 349252e6629c0eda4d603399345206903d530578
 有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
 
 * [用于 Eclipse 的 Azure 工具包]
-  * [安装用于 Eclipse 的 Azure 工具包]
-  * [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
   * [用于 Eclipse 的 Azure 工具包的新增功能]
+  * [安装用于 Eclipse 的 Azure 工具包]
+  * [用于 Eclipse 的 Azure 工具包的登录说明]
+  * [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
 * [用于 IntelliJ 的 Azure 工具包]
-  * *安装用于 IntelliJ 的 Azure 工具包（本文）*
-  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
   * [用于 IntelliJ 的 Azure 工具包的新增功能]
+  * *安装用于 IntelliJ 的 Azure 工具包（本文）*
+  * [用于 IntelliJ 的 Azure 工具包的登录说明]
+  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]。
 
@@ -98,6 +101,8 @@ ms.openlocfilehash: 349252e6629c0eda4d603399345206903d530578
 [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [安装用于 Eclipse 的 Azure 工具包]: ./azure-toolkit-for-eclipse-installation.md
 [Installing the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[用于 Eclipse 的 Azure 工具包的登录说明]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[用于 IntelliJ 的 Azure 工具包的登录说明]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [用于 Eclipse 的 Azure 工具包的新增功能]: ./azure-toolkit-for-eclipse-whats-new.md
 [用于 IntelliJ 的 Azure 工具包的新增功能]: ./azure-toolkit-for-intellij-whats-new.md
 
@@ -114,9 +119,4 @@ ms.openlocfilehash: 349252e6629c0eda4d603399345206903d530578
 [05]: ./media/azure-toolkit-for-intellij-installation/05-restart-intellij.png
 [06]: ./media/azure-toolkit-for-intellij-installation/06-intellij-settings-dialog.png
 [07]: ./media/azure-toolkit-for-intellij-installation/07-restart-intellij.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

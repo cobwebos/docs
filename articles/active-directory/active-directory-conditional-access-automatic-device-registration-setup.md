@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 96fb170e7a079fbb4bcfb4a6b1e98970a709406f
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 6028116d18207d13729d1816f64ad192d4cdb491
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -418,7 +418,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
     ]
     => issue(
         Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", 
-        Value = "http://<verified-domain-name>/adfs/services/trust/"
+        Value = "http://' + $oneOfVerifiedDomainNames + '/adfs/services/trust/"
     );'
     }
 
@@ -461,7 +461,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
         => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)",  "http://${domain}/adfs/services/trust/")); 
 
-- 如果已颁发用户帐户的 **ImmutableID** 声明，请在脚本中将 **$oneOfVerifiedDomainNames** 的值设置为 **$true**。
+- 如果已颁发用户帐户的 **ImmutableID** 声明，请在脚本中将 **$immutableIDAlreadyIssuedforUsers** 的值设置为 **$true**。
 
 ## <a name="step-3-enable-windows-down-level-devices"></a>步骤 3：启用 Windows 下层设备
 

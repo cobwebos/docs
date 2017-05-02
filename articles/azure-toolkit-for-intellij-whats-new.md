@@ -1,6 +1,6 @@
 ---
-title: "Azure Toolkit for IntelliJ 中的新增功能 | Microsoft Docs"
-description: "了解 Azure Toolkit for IntelliJ 中的最新功能。"
+title: "用于 IntelliJ 的 Azure 工具包中的新增功能 | Microsoft Docs"
+description: "了解用于 IntelliJ 的 Azure 工具包中的最新功能。"
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -12,22 +12,32 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm;asirveda;martinsawicki
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: a2006dbcf0d63ef38651a0859dc654d531fd875a
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 23714856f0f778be04cf321e0726b53ade430f57
+ms.lasthandoff: 04/22/2017
 
 
 ---
-# <a name="whats-new-in-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ 中的新增功能
-## <a name="azure-toolkit-for-intellij-releases"></a>Azure Toolkit for IntelliJ 版本
-本文包含有关 Azure Toolkit for IntelliJ 的不同版本和最新更新的信息。
+# <a name="whats-new-in-the-azure-toolkit-for-intellij"></a>用于 IntelliJ 的 Azure 工具包中的新增功能
+## <a name="azure-toolkit-for-intellij-releases"></a>用于 IntelliJ 的 Azure 工具包版本
+本文包含有关用于 IntelliJ 的 Azure 工具包的不同版本和最新更新的信息。
 
 > [!NOTE]
-> 另外还有 Azure Toolkit for Eclipse IDE。 有关详细信息，请参阅[用于 Eclipse 的 Azure 工具包]。
+> 另外还有用于 Eclipse IDE 的 Azure 工具包。 有关详细信息，请参阅[用于 Eclipse 的 Azure 工具包]。
 > 
 > 
+
+### <a name="april-14-2017"></a>2017 年 4 月 14 日
+用于 IntelliJ 的 Azure 工具包 - 2017 年 4 月版包含以下增强功能：
+
+* **改进了 Azure 登录体验**：用于 IntelliJ 的 Azure 工具包现在支持以两种方式登录到 Azure 帐户：*交互式*和*自动*。 有关详细信息，请参阅[用于 IntelliJ 的 Azure 工具包的 Azure 登录说明]。
+* **使用 Docker 容器发布**：现在可以使用用于 IntelliJ 的 Azure 工具包将 Web 应用程序发布为 Docker 容器。 有关详细信息，请参阅[如何使用用于 IntelliJ 的 Azure 工具包将 Web 应用发布为 Docker 容器]。
+* **存储帐户管理**：用于 IntelliJ 的 Azure 工具包现在支持从 Azure 资源管理器视图管理存储帐户。 有关详细信息，请参阅[使用用于 IntelliJ 的 Azure 资源管理器管理存储帐户]。
+* **虚拟机管理**：用于 IntelliJ 的 Azure 工具包现在支持从“Azure 资源管理器”工具窗口管理虚拟机。 有关详细信息，请参阅[使用用于 IntelliJ 的 Azure 资源管理器管理虚拟机]。
+* **删除了远程调试支持**。 在 Azure 应用服务中对 Java Web 应用进行远程调试的功能已从用于 IntelliJ 的 Azure 工具包中删除；这是为了解决客户在使用该工具包时遇到的问题所必需的。
 
 ### <a name="august-26-2016"></a>2016 年 8 月 26 日
 用于 IntelliJ 的 Azure 工具包 - 2016 年 8 月版包含以下增强功能：
@@ -61,13 +71,15 @@ Azure Toolkit for IntelliJ - 2016 年 4 月版包含以下增强功能：
 有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
 
 * [用于 Eclipse 的 Azure 工具包]
+  * [用于 Eclipse 的 Azure 工具包的新增功能]
   * [安装用于 Eclipse 的 Azure 工具包]
   * [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
-  * [用于 Eclipse 的 Azure 工具包的新增功能]
+  * [用于 Eclipse 的 Azure 工具包的登录说明]
 * [用于 IntelliJ 的 Azure 工具包]
-  * [安装用于 IntelliJ 的 Azure 工具包]
-  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
   * *Azure Toolkit for IntelliJ 中的新增功能（本文）*
+  * [安装用于 IntelliJ 的 Azure 工具包]
+  * [用于 IntelliJ 的 Azure 工具包的登录说明]
+  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]。
 
@@ -79,15 +91,17 @@ Azure Toolkit for IntelliJ - 2016 年 4 月版包含以下增强功能：
 [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [安装用于 Eclipse 的 Azure 工具包]: ./azure-toolkit-for-eclipse-installation.md
 [安装用于 IntelliJ 的 Azure 工具包]: ./azure-toolkit-for-intellij-installation.md
+[用于 Eclipse 的 Azure 工具包的登录说明]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[用于 IntelliJ 的 Azure 工具包的登录说明]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [用于 Eclipse 的 Azure 工具包的新增功能]: ./azure-toolkit-for-eclipse-whats-new.md
 [What's New in the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+
+[用于 IntelliJ 的 Azure 工具包的 Azure 登录说明]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[如何使用用于 IntelliJ 的 Azure 工具包将 Web 应用发布为 Docker 容器]: ./azure-toolkit-for-intellij-publish-as-docker-container.md
+[使用用于 IntelliJ 的 Azure 资源管理器管理存储帐户]: ./azure-toolkit-for-intellij-managing-storage-accounts-using-azure-explorer.md
+[使用用于 IntelliJ 的 Azure 资源管理器管理虚拟机]: ./azure-toolkit-for-intellij-managing-virtual-machines-using-azure-explorer.md
 
 [Azure Java 开发人员中心]: http://go.microsoft.com/fwlink/?LinkID=699547
 
 [用于 IntelliJ 的 HDInsight 工具插件]: ./hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

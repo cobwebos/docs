@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: a740813b013e75a098836290ad8e9ebe76d33b37
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: bf4e400e30cc93ca8fa0cc727ada0f1b224b05cb
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -83,7 +83,7 @@ ms.lasthandoff: 04/19/2017
 | 内容审查器 |是 | | | |
 | 域注册 | 是 | [域注册](/rest/api/appservice/domains) | [域注册资源](/azure/templates/microsoft.domainregistration/domains)  |
 | Function App |是 | [Function App REST](/rest/api/appservice) | [Web 资源](/azure/templates/microsoft.web/sites) |
-| Logic Apps |是 |[逻辑应用 REST](/rest/api/logic) |[逻辑应用资源](/azure/templates/microsoft.logic/workflows) |
+| 逻辑应用 |是 |[逻辑应用 REST](/rest/api/logic) |[逻辑应用资源](/azure/templates/microsoft.logic/workflows) |
 | 移动应用 |是 | [应用服务 REST](/rest/api/appservice) | [Web 资源](/azure/templates/microsoft.web/sites) |
 | Mobile Engagement |是 |[Mobile Engagement REST](https://msdn.microsoft.com/library/azure/mt683754.aspx) | |
 | 搜索 |是 |[搜索 REST](/rest/api/searchservice) | [搜索资源](/azure/templates/microsoft.search/searchservices) |
@@ -125,14 +125,14 @@ ms.lasthandoff: 04/19/2017
 | 服务总线 |是 |[服务总线 REST](/rest/api/servicebus) |[服务总线资源](/azure/templates/microsoft.servicebus/namespaces) |
 
 ## <a name="identity--access-management"></a>标识和访问管理
-Azure Active Directory 可以使用 Resource Manager 为订阅启用基于角色的访问控制。 若要了解如何使用基于角色的访问控制和 Active Directory，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
+Azure Active Directory 可以使用 Resource Manager 为订阅启用基于角色的访问控制。 若要了解如何使用基于角色的访问控制和 Azure Active Directory，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
 
 ## <a name="developer-services"></a>开发人员服务
 | 服务 | 已启用资源管理器 | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | 监视 |是 |[监视器 REST](/rest/api/monitor) |[Insights 资源](/azure/templates/microsoft.insights/alertrules) |
 | 必应地图 |是 | | |
-| DevTest Labs |是 | [开发测试实验室 REST](/rest/api/dtl) |[开发测试实验室资源](/azure/templates/microsoft.devtestlab/labs) |
+| 开发测试实验室 |是 | [开发测试实验室 REST](/rest/api/dtl) |[开发测试实验室资源](/azure/templates/microsoft.devtestlab/labs) |
 | Visual Studio 帐户 |是 | |[Visual Studio 架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-02-26/microsoft.visualstudio.json) |
 
 ## <a name="management-and-security"></a>管理和安全性

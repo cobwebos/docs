@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 148bc76b7f3e09745cbecfa41710a5e949704948
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: d9410448952438d6b9d437b7ca8823d4f196a2d6
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -72,6 +72,14 @@ ms.lasthandoff: 03/08/2017
 
 **答：**我们将 SMB 共享装入 \home\ 目录。 这将替代此处的所有内容。
 
+**问：**专用注册服务器 URL 的格式是什么？
+
+**答：**需要输入完整注册 URL（包括“http://”或“https://”）。
+
+**问：**专用注册选项中的映像名称的格式是什么？
+
+**答：**需要添加完整映像名称，包括专用注册 URL（例如， myacr.azurecr.io/dotnet:latest）
+
 **问：**我想在自定义容器映像上公开多个端口。 可以吗？
 
 **答：**目前不支持此操作。
@@ -87,6 +95,10 @@ ms.lasthandoff: 03/08/2017
 **问：**我的自定义容器侦听除端口 80 以外的端口。 如何配置我的应用将请求路由到该端口？
 
 **答：**可以指定名为 **PORT** 的应用程序设置，并为其提供所需的端口号值。
+
+**问：**是否需要在自定义容器中实现 HTTPS。
+
+**答：**否，平台会处理共享前端上的 HTTPS 终止。
 
 ## <a name="pricing-and-sla"></a>定价和 SLA
 

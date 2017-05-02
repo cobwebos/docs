@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: a8c4987066e0439f8775d823e91666a006a9fca9
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 872930fd127729e0f444942ad1ee6fa11465ceb9
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>在 Azure 机器学习中使用 IoT 中心的传感器数据进行天气预报
 
-![传感器、IoT 设备、IoT 中心、流分析作业、Azure 机器学习和 Blob 存储之间的连接](media/iot-hub-weather-forecast-machine-learning/1_Connection-azure-machine-learning-iot-hub.png)
+![端到端关系图](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="what-you-need"></a>所需条件
 
-- 满足已完成的教程[将 ESP8266 连接到 Azure IoT 中心](iot-hub-arduino-huzzah-esp8266-get-started.md)所述的以下要求：
+- 已完成教程[设置设备](iot-hub-raspberry-pi-kit-node-get-started.md)，其中涵盖以下要求：
   - 一个有效的 Azure 订阅。
   - 已在订阅中创建一个 Azure IoT 中心。
   - 一个可向 Azure IoT 中心发送消息的客户端应用程序。
@@ -75,16 +75,7 @@ ms.lasthandoff: 04/12/2017
 
 1. 打开 Excel 工作簿，记下“WEB 服务 URL”和“访问密钥”。
 
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
-
-应用程序使用使用者组从 Azure IoT 中心读取数据。 在本课程中，你将创建一个使用者组，供 Web 服务用来从 IoT 中心读取数据。
-
-若要将使用者组添加到 IoT 中心，请执行以下步骤：
-
-1. 在 [Azure 门户](https://ms.portal.azure.com/)中打开 IoT 中心。
-1. 在左窗格中单击“终结点”，在中间窗格中选择“事件”，在右窗格的“使用者组”下面输入名称，然后单击“保存”。
-
-   ![将使用者组添加到 IoT 中心](media/iot-hub-weather-forecast-machine-learning/6_add-consumer-group-iot-hub-azure.png)
+[!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
 ## <a name="create-configure-and-run-a-stream-analytics-job"></a>创建、配置和运行流分析作业
 

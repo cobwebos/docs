@@ -16,9 +16,9 @@ ms.workload: identity
 ms.date: 01/07/2017
 ms.author: patricka
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9a3fca0c81f44b456b8d0201201ffb73b904a0a5
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 45e899364f467404c9a817825e157ba12494a2fa
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -34,7 +34,7 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
 在图形 API 中，若要访问要对其执行 CRUD 操作的目录数据和对象（即资源或实体），可以使用基于开放数据 (OData) 协议的 URL。 在图形 API 中使用的 URL 包括四个主要部分：服务根、租户标识符、资源路径和查询字符串选项：`https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`。 以下面的 URL 为例：`https://graph.windows.net/contoso.com/groups?api-version=1.6`。
 
 * **服务根**：在 Azure AD 图形 API 中，服务根始终是 https://graph.windows.net。
-* **租户标识符**：可以是已验证（注册）的域名，在以上示例中为 contoso.com。 也可以是租户对象 ID 或者“myorganiztion”或“me”别名。 有关详细信息，请参阅[对图形 API 中的实体和操作进行寻址](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)。
+* **租户标识符**：可以是已验证（注册）的域名，在以上示例中为 contoso.com。 也可以是租户对象 ID 或者“myorganization”或“me”别名。 有关详细信息，请参阅[对图形 API 中的实体和操作进行寻址](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)。
 * **资源路径**：URL 的此部分标识要交互的资源（用户、组、特定用户或特定组，等等）。在以上示例中，它是用于对资源集寻址的顶级“组”。 你也可以对特定的实体寻址，例如“users/{objectId}”或“users/userPrincipalName”。
 * **查询参数**：? 用于分隔资源路径部分与查询参数部分。 需要对图形 API 中的所有请求提供“Api 版本”查询参数。 图形 API 还支持以下 OData 查询选项：**$filter**、**$orderby**、**$expand**、**$top** 和 **$format**。 当前不支持以下查询选项：**$count**、**$inlinecount** 和 **$skip**。 有关详细信息，请参阅 [Azure AD 图形 API 支持的查询、筛选和分页选项](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)。
 
