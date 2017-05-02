@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 04/03/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 34919221a82a024bd3a1d09c1def6040ff6c55e1
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 3dba9ebc8eb23be00f9b52907ba4bc565eeb5688
+ms.lasthandoff: 04/15/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成 - 公共预览版
@@ -36,6 +36,14 @@ ms.lasthandoff: 03/23/2017
 
 ![身份验证流示意图](./media/multi-factor-authentication-nps-extension/auth-flow.png)
 
+## <a name="plan-your-deployment"></a>规划部署
+
+NPS 扩展自动处理冗余，因此无需特殊配置。 
+
+可以根据需要创建任意数量的已启用 Azure 多重身份验证的 NPS 服务器。 如果确实安装了多个服务器，应该为其中每个服务器使用不同的客户端证书。 为每个服务器创建证书意味着，可单独更新每个证书，不必担心所有服务器出现停机。 
+
+VPN 服务器会路由身份验证请求，因此它们需要留意已启用新 Azure MFA 的 NPS 服务器。 
+
 ## <a name="prerequisites"></a>先决条件
 
 NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满足以下先决条件。
@@ -46,10 +54,11 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 
 ### <a name="software"></a>软件
 
-已启用 NPS 组件的 Windows Server 2008 R2 SP1 或更高版本。
+Windows Server 2008 R2 SP1 或更高版本。
 
 ### <a name="libraries"></a>库
 
+这些库将自动随扩展一同安装。 
 -    [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
 -    [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
@@ -57,22 +66,62 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 
 使用 NPS 扩展的任何用户必须使用 Azure AD Connect 同步到 Azure Active Directory，并且必须启用 MFA。
 
-安装该扩展时，需要使用 Azure AD 租户的目录 ID 和管理员凭据。 可在 [Azure 门户](https://portal.azure.com)中找到该目录 ID。 以管理员身份登录，在左侧选择“Azure Active Directory”图标，然后选择“属性”即可。 复制“目录 ID”框中的 GUID 并保存。
+安装该扩展时，需要使用 Azure AD 租户的目录 ID 和管理员凭据。 可在 [Azure 门户](https://portal.azure.com)中找到该目录 ID。 以管理员身份登录，在左侧选择“Azure Active Directory”图标，然后选择“属性”即可。 复制“目录 ID”框中的 GUID 并保存。 安装 NPS 扩展时，将使用此 GUID 作为租户 ID。
 
 ![在 Azure Active Directory 属性下找到目录 ID](./media/multi-factor-authentication-nps-extension/find-directory-id.png)
+
+## <a name="prepare-your-environment"></a>准备环境
+
+在安装 NPS 扩展之前，需要准备环境来处理身份验证流量。 
+
+### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>在已加入域的服务器上启用 NPS 角色
+
+NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份验证。 为此角色选择一台服务器。 我们建议选择一台不处理来自其他服务的请求的服务器，因为对于不是 RADIUS 的任何请求，NPS 扩展都会引发错误。
+
+1. 在服务器上，从“服务器管理器快速入门”菜单中打开“添加角色和功能向导”。
+2. 为安装类型选择“基于角色或基于功能的安装”。
+3. 选择“网络策略和访问服务”服务器角色。 可能会弹出窗口，以通知运行此角色所需的功能。
+4. 继续完成该向导，直到出现“确认”页。 选择“安装”。 
+
+既然已为 NPS 指定了服务器，还应配置此服务器以处理来自 VPN 解决方案的传入 RADIUS 请求。 
+
+### <a name="configure-your-vpn-solution-to-communicate-with-the-nps-server"></a>将 VPN 解决方案配置为与 NPS 服务器通信
+
+根据使用的 VPN 解决方案，配置 RADIUS 身份验证策略的步骤会有所不同。 将此策略配置为指向 RADIUS NPS 服务器。 
+
+### <a name="sync-domain-users-to-the-cloud"></a>将域用户同步到云
+
+此步骤可能已在租户上完成，但最好仔细检查 Azure AD Connect 最近是否已同步数据库。 
+
+1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+2. 依次选择“Azure Active Directory” > “Azure AD Connect”
+3. 确认同步状态是“已启用”，并确认上次同步时间是在不到一小时前。
+
+如果需要启动新一轮的同步，可使用 [Azure AD Connect 同步：计划程序](../active-directory/connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler)中的说明。
+
+### <a name="enable-users-for-mfa"></a>允许用户使用 MFA
+
+在部署完整的 NPS 扩展前，需要为想要执行双重验证的用户启用 MFA。 更直接的是，若要在部署扩展时测试扩展，则至少需要一个已针对多重身份验证进行完全注册的测试帐户。 
+
+使用以下步骤以启动一个测试帐户：
+1. [针对 MFA 启用帐户](multi-factor-authentication-get-started-user-states.md)。
+2. 转到任何网站以启动 Azure AD 身份验证，如 https://portal.azure.com。
+3. [针对双重验证进行注册](./end-user/multi-factor-authentication-end-user-first-time.md)。
 
 ## <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
 > [!IMPORTANT]
 > 在不同于 VPN 接入点的服务器上安装 NPS 扩展。 
 
-若要安装适用于 Azure MFA 的 NPS 扩展，请执行以下操作：
+### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>针对 Azure MFA 下载并安装 NPS 扩展 
 
-1.    从 Microsoft 下载中心[下载 NPS 扩展](https://aka.ms/npsmfa)
-2.    将二进制文件复制到想要配置的网络策略服务器
-3.    运行 *setup.exe* 并遵照安装说明操作
+1.    从 Microsoft 下载中心[下载 NPS 扩展](https://aka.ms/npsmfa)。
+2.    将二进制文件复制到要配置的网络策略服务器。
+3.    运行 *setup.exe* 并按照安装说明操作。 如果发生错误，请仔细检查先决条件部分的两个库是否已成功安装。
 
-完成安装后，安装程序将在以下位置创建 PowerShell 脚本：`C:\Program Files\Microsoft\AzureMfa\Config`（其中，C:\ 是安装驱动器）。 此 PowerShell 脚本执行以下操作：
+### <a name="run-the-powershell-script"></a>运行 PowerShell 脚本
+
+安装程序将在以下位置创建 PowerShell 脚本：`C:\Program Files\Microsoft\AzureMfa\Config`（其中，C:\ 是安装驱动器）。 此 PowerShell 脚本执行以下操作：
 
 -    创建自签名证书。
 -    将证书的公钥关联到 Azure AD 上的服务主体。
@@ -80,7 +129,20 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 -    向网络用户授予对证书私钥的访问权限。
 -    重新启动 NPS。
 
-除非你想要使用自己的证书（而不是 PowerShell 脚本生成的自签名证书），否则请运行该 PowerShell 脚本来完成安装。 如果在多台服务器上安装扩展，则每个服务器都应有自己的证书，以便在续订证书时不会有停机时间。 
+除非你想要使用自己的证书（而不是 PowerShell 脚本生成的自签名证书），否则请运行该 PowerShell 脚本来完成安装。 如果在多台服务器上安装扩展，则每个服务器都应有自己的证书。
+
+1. 以管理员身份运行 Windows PowerShell。
+2. 更改目录。
+
+   `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
+
+3. 运行安装程序创建的 PowerShell 脚本。
+
+   `.\AzureMfaNpsExtnConfigSetup.ps1`
+
+4. PowerShell 会提示输入租户 ID。 使用在先决条件部分中从 Azure 门户复制的目录 ID GUID。 
+5. 以管理员身份登录到 Azure AD。
+6. 脚本完成后，PowerShell 会显示一条成功消息。  
 
 ## <a name="configure-your-nps-extension"></a>配置 NPS 扩展
 
@@ -88,8 +150,7 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 
 ### <a name="configurations-limitations"></a>配置限制
 
-- NPS 扩展适用于新部署，而不用于与现有部署配合工作。 因此，适用于 Azure MFA 的 NPS 扩展不包含用于将用户和设置从 MFA 服务器迁移到云的工具。
-
+- Azure MFA 的 NPS 扩展不包含用于将用户和设置从 MFA 服务器迁移到云的工具。 出于此原因，我们建议将扩展用于新部署，而非现有部署。 如果在现有部署上使用扩展，用户必须重新进行证明才能在云中填充其 MFA 详细信息。  
 - NPS 扩展使用本地 Active Directory 中的 UPN 来标识 Azure MFA 中的用户，以便执行辅助身份验证。 无法将该扩展配置为使用其他标识符，例如备用登录 ID，或者除 UPN 以外的自定义 AD 字段。  
 
 ### <a name="control-radius-clients-that-require-mfa"></a>控制需要 MFA 的 RADIUS 客户端
@@ -106,13 +167,13 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 
 此项设置的目的是确定当某个用户未注册 MFA 时要执行哪个操作。 如果该键不存在、未设置或设置为 TRUE，并且用户未注册，则该扩展将通不过 MFA 质询。 如果该键设置为 FALSE 并且用户未注册，身份验证将会继续且不执行 MFA。
 
-可以在登记用户的过程中选择创建此键，并将其设置为 FALSE。 由于设置此键会允许未注册 MFA 的用户登录，并且系统不会向其提出质询，因此，在转到生产环境之前应删除此键。
+可以在登记用户的过程中选择创建此键，并将其设置为 FALSE。 由于设置密钥会允许未注册 MFA 的用户登录，因此在转到生产环境前应删除此密钥。
 
 ## <a name="troubleshooting"></a>故障排除
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>如何验证是否已按预期安装了客户端证书？
 
-请在证书存储中查找安装程序创建的自签名证书，然后检查私钥中是否包含授予“网络服务”用户的权限。 该证书的使用者名称为 **CN \<tenantid\>，OU 为 Microsoft NPS Extension**
+请在证书存储中查找安装程序创建的自签名证书，然后检查私钥中是否包含授予“网络服务”用户的权限。 证书的使用者名称为 **CN \<tenantid\>，OU = Microsoft NPS Extension**
 
 -------------------------------------------------------------
 
@@ -121,9 +182,9 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 打开 PowerShell 命令提示符并运行以下命令：
 
 ```
-> import-module MSOnline
-> Connect-MsolService
-> Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 
+import-module MSOnline
+Connect-MsolService
+Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 
 ```
 
 这些命令会在 PowerShell 会话中列显所有可将你的租户与 NPS 扩展实例相关联的证书。 通过将客户端证书导出为不带私钥的“Base-64 编码 X.509(.cer)”文件来找到你的证书，并将它与 PowerShell 中的列表进行比较。

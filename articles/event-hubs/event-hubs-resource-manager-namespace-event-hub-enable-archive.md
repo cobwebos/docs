@@ -1,6 +1,6 @@
 ---
 title: "使用模板创建 Azure 事件中心命名空间并启用存档 | Microsoft Docs"
-description: "使用 Azure Resource Manager 模板创建包含事件中心的事件中心命名空间并启用存档"
+description: "使用 Azure Resource Manager 模板创建包含一个事件中心的 Azure 事件中心命名空间并启用存档"
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 03/07/2017
 ms.author: shvija;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: cab8a4de9d8d98d77094da5d73f29237829e743a
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 62094629d899f27f56b3afc87bc08c96371acea8
+ms.lasthandoff: 04/19/2017
 
 
 ---
-# <a name="create-an-event-hubs-namespace-with-event-hub-and-enable-archive-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含事件中心的事件中心命名空间并启用存档
-本文介绍如何使用 Azure Resource Manager 模板创建包含一个事件中心的事件中心类型命名空间，并在事件中心上启用存档功能。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
+# <a name="create-an-event-hubs-namespace-with-an-event-hub-and-enable-archive-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含事件中心的事件中心命名空间并启用存档
+本文介绍如何使用 Azure Resource Manager 模板创建包含一个事件中心实例的事件中心类型的命名空间，并在事件中心上启用存档功能。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
 
 有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
 
@@ -68,13 +68,13 @@ ms.lasthandoff: 03/08/2017
 "eventHubName":{  
     "type":"string",
     "metadata":{  
-        "description":"Name of the Event Hub"
+        "description":"Name of the event hub"
     }
 }
 ```
 
 ### <a name="messageretentionindays"></a>messageRetentionInDays
-要在事件中心中保留消息的天数。 
+事件中心内消息的保留天数。 
 
 ```json
 "messageRetentionInDays":{
@@ -83,13 +83,13 @@ ms.lasthandoff: 03/08/2017
     "minValue":"1",
     "maxValue":"7",
     "metadata":{
-       "description":"How long to retain the data in Event Hub"
+       "description":"How long to retain the data in event hub"
      }
  }
 ```
 
 ### <a name="partitioncount"></a>partitionCount
-要在事件中心中创建的分区数。
+事件中心内创建的分区数。
 
 ```json
 "partitionCount":{
@@ -114,7 +114,7 @@ ms.lasthandoff: 03/08/2017
     "false",
     "true"],
     "metadata":{
-        "description":"Enable or disable the Archive for your Event Hub"
+        "description":"Enable or disable the Archive for your event hub"
     }
  }
 ```
@@ -274,7 +274,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
-[Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
+[Event hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
 [Azure Resources Naming Conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
-[Event Hub and enable Archive template]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
+[Event hub and enable Archive template]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
 

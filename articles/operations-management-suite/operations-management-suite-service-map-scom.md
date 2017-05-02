@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 389c01234acff068dc90f3cdfdc4916a9d76d244
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 1937462eef4647b273dfa029c8f18c80d3443ae8
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -50,7 +50,7 @@ Operations Management Suite (OMS) 服务映射可自动发现 Windows 和 Linux 
 
     ![SCOM 配置向导](media/oms-service-map/scom-configuration.png)
 
-3. 向导中的第一步是在其中输入 Azure 服务主体的信息的连接配置。 输入服务主体的租户名称或 ID、应用程序 ID（或者用户名或 ClientID）和密码。  [有关创建服务主体的详细信息](#creating-a-service-principal)。
+3. 向导中的第一步是在其中输入 Azure 服务主体的信息的连接配置。 请输入服务主体的租户名称或 ID、应用程序 ID（也称为“用户名”或 ClientID）和密码。  [有关创建服务主体的详细信息](#creating-a-service-principal)。
 
     ![SCOM 配置 SPN](media/oms-service-map/scom-config-spn.png)
 
@@ -77,8 +77,8 @@ Operations Management Suite (OMS) 服务映射可自动发现 Windows 和 Linux 
 ![SCOM 监视](media/oms-service-map/scom-monitoring.png)
 
 “服务映射”文件夹包含三个节点：
-### <a name="all-alerts"></a>所有警报：
-显示 SCOM 与 OMS 中服务映射解决方案之间的通信的所有相关警报。
+### <a name="active-alerts"></a>活动警报：
+显示 SCOM 与 OMS 中服务映射解决方案之间的通信的所有相关活动警报。
 
 **注意：**这些警报不是 SCOM 中显示的 OMS 警报。
 ### <a name="servers"></a>服务器：
@@ -108,7 +108,7 @@ Operations Management Suite (OMS) 服务映射可自动发现 Windows 和 Linux 
 
 ## <a name="known-issueslimitations"></a>已知问题/限制：
 在当前设计中：
-1. 尽管用户可以通过创作窗格手动将服务器添加到“服务映射服务器组”，但只会在下一个同步周期（默认值为&60; 分钟。 用户可以重写同步计时），从服务映射同步这些服务器的映射。 
+1. 尽管用户可以通过创作窗格手动将服务器添加到“服务映射服务器组”，但只会在下一个同步周期（默认值为 60 分钟。 用户可以重写同步计时），从服务映射同步这些服务器的映射。 
 2. 用户可以连接到单个 OMS 工作区。
 
 ## <a name="creating-a-service-principal"></a>创建服务主体

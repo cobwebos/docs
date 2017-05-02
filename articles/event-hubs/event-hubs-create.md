@@ -1,5 +1,5 @@
 ---
-title: "创建 Azure 事件中心 | Microsoft 文档"
+title: "创建 Azure 事件中心 | Microsoft Docs"
 description: "使用 Azure 门户创建 Azure 事件中心命名空间和事件中心"
 services: event-hubs
 documentationcenter: na
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/25/2017
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: ca5c8b489345dcd0523897895de346509db08a28
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 23df3a3a11d8f065d6ce2a4f14ba175d6c781ee9
+ms.lasthandoff: 04/19/2017
 
 ---
 
@@ -44,20 +45,20 @@ ms.openlocfilehash: ca5c8b489345dcd0523897895de346509db08a28
 1. 在边栏选项卡顶部，单击“添加事件中心” 。
    
     ![](./media/event-hubs-create/create-event-hub4.png)
-1. 为事件中心键入名称，然后单击“创建” 。
+1. 为事件中心键入名称，然后单击“创建”。
    
     ![](./media/event-hubs-create/create-event-hub5.png)
-1. 在“事件中心”列表中，单击新创建的事件中心名称。 
+1. 在事件中心列表中，单击新创建的事件中心名称。 
     
-     ![](./media/event-hubs-create/create-event-hub6.png)
-1. 返回命名空间边栏选项卡（不是特定的事件中心边栏选项卡），单击“共享访问策略”，然后单击“RootManageSharedAccessKey”。
+    ![](./media/event-hubs-create/create-event-hub6.png)
+1. 返回命名空间边栏选项卡（不是特定的事件中心边栏选项卡），单击“共享的访问策略”，然后单击“RootManageSharedAccessKey”。
     
-     ![](./media/event-hubs-create/create-event-hub7.png)
+    ![](./media/event-hubs-create/create-event-hub7.png)
 1. 单击复制按钮，将 **RootManageSharedAccessKey** 连接字符串复制到剪贴板。 保存该连接字符串，以便本教程以后使用。
     
-     ![](./media/event-hubs-create/create-event-hub8.png)
+    ![](./media/event-hubs-create/create-event-hub8.png)
 
-现在，你的事件中心就创建好了，你已经有了收发事件所需的连接字符串。
+现在已创建事件中心，你已具有收发事件所需的连接字符串。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关事件中心的详细信息，请访问以下链接：
@@ -66,8 +67,3 @@ ms.openlocfilehash: ca5c8b489345dcd0523897895de346509db08a28
 * [事件中心 API 概述](event-hubs-api-overview.md)
 
 [Azure portal]: https://portal.azure.com/
-
-
-<!--HONumber=Feb17_HO1-->
-
-

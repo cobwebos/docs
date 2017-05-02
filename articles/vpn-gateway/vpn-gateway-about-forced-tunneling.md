@@ -13,36 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2016
+ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 5183fc3b4e7ec3fe6060a6a9551656332300995f
-ms.openlocfilehash: 75cd2b7073d5cda6fc90aa963a9ad321e6992743
+ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
+ms.openlocfilehash: 326d09de70e00463df554f27d754ef6999da21d1
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用经典部署模型配置强制隧道
+
+借助强制隧道，你可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。 这是很多企业 IT 策略的关键安全要求。 没有强制隧道，来自 Azure 中虚拟机的 Internet 绑定流量会始终通过 Azure 网络基础设施直接连接到 Internet。没有该选项，您无法对流量进行检查或审核。 未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞
+
+[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+本文将逐步演示如何配置虚拟网络（使用经典部署模型创建）的强制隧道。 强制隧道可以使用 PowerShell（不通过门户）来配置。 如果想要配置用于资源管理器部署模型的强制隧道，请通过下面的下拉列表选择与经典模型相关的文章：
+
 > [!div class="op_single_selector"]
 > * [PowerShell - 经典](vpn-gateway-about-forced-tunneling.md)
 > * [PowerShell - 资源管理器](vpn-gateway-forced-tunneling-rm.md)
 > 
 > 
-
-借助强制隧道，你可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。 这是很多企业 IT 策略的关键安全要求。 
-
-没有强制隧道，来自 Azure 中虚拟机的 Internet 绑定流量会始终通过 Azure 网络基础设施直接连接到 Internet。没有该选项，您无法对流量进行检查或审核。 未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞。
-
-本文将引导你配置虚拟网络（通过使用经典部署模型创建）的强制隧道。 
-
-**关于 Azure 部署模型**
-
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
-
-**强制隧道的部署模型和工具**
-
-可为经典部署模型和 Resource Manager 部署模型配置强制隧道连接。 有关详细信息，请参阅下表。 我们将在由可用于此配置的新文章、新部署模型和其他工具时更新此表。 当有文章可用时，我们将从表中直接链接到该文章。
-
-[!INCLUDE [vpn-gateway-forcedtunnel](../../includes/vpn-gateway-table-forcedtunnel-include.md)]
 
 ## <a name="requirements-and-considerations"></a>要求和注意事项
 在 Azure 中，可通过虚拟网络用户定义路由配置强制隧道 (UDR)。 将流量重定向到本地站点，这是 Azure VPN 网关的默认路由。 以下部分列出了 Azure 虚拟网络路由和路由表的当前限制：
@@ -74,7 +66,8 @@ ms.openlocfilehash: 75cd2b7073d5cda6fc90aa963a9ad321e6992743
 ## <a name="configure-forced-tunneling"></a>配置强制隧道
 以下过程将帮助您为虚拟网络指定强制隧道。 配置步骤与 VNet 网络配置文件相对应。
 
-    <VirtualNetworkSite name="MultiTier-VNet" Location="North Europe">
+```
+<VirtualNetworkSite name="MultiTier-VNet" Location="North Europe">
      <AddressSpace>
       <AddressPrefix>10.1.0.0/16</AddressPrefix>
         </AddressSpace>
@@ -109,60 +102,81 @@ ms.openlocfilehash: 75cd2b7073d5cda6fc90aa963a9ad321e6992743
         </Gateway>
       </VirtualNetworkSite>
     </VirtualNetworkSite>
+```
 
 在本示例中，虚拟网络“MultiTier-VNet”具有三个子网：*前端*、*中间层*和*后端*子网，并且具有四个跨界连接：一个 *DefaultSiteHQ* 和三个 *Branches*。 
 
 以下步骤将 *DefaultSiteHQ* 设置为使用强制隧道的默认站点连接，并将中间层和后端子网配置为使用强制隧道。
 
 1. 创建一个路由表。 使用以下 cmdlet 创建路由表。
-   
-        New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
+
+  ```powershell
+  New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
+  ```
 2. 将默认路由添加到路由表中。 
    
     下面的示例将默认路由添加到在步骤 1 中创建的路由表。 请注意，唯一支持的路由是“0.0.0.0/0”到“VPN 网关”下一跃点的目标前缀。
-   
-        Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
+
+  ```powershell
+  Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
+  ```
 3. 将路由表关联到子网。 
    
     创建路由表并添加路由后，可以使用以下示例将路由表添加到 VNet 子网，或将路由表与 VNet 子网关联。 下面的示例将“MyRouteTable”路由表添加到 VNet MultiTier-VNet 的中间层和后端子网。
-   
-        Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
-   
-        Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
+
+  ```powershell
+  Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
+  Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
+  ```
 4. 为强制隧道指定默认站点。 
    
     在前面的步骤中，示例 cmdlet 脚本创建了路由表，并将路由表关联到两个 VNet 子网。 剩下的步骤是在虚拟网络的多站点连接中，选择一个本地站点作为默认站点或隧道。
-   
-        $DefaultSite = @("DefaultSiteHQ")
-        Set-AzureVNetGatewayDefaultSite –VNetName "MultiTier-VNet" –DefaultSite "DefaultSiteHQ"
+
+  ```powershell
+  $DefaultSite = @("DefaultSiteHQ")
+  Set-AzureVNetGatewayDefaultSite –VNetName "MultiTier-VNet" –DefaultSite "DefaultSiteHQ"
+  ```
 
 ## <a name="additional-powershell-cmdlets"></a>其他 PowerShell cmdlet
 ### <a name="to-delete-a-route-table"></a>删除路由表
-    Remove-AzureRouteTable -Name <routeTableName>
 
+```powershell
+Remove-AzureRouteTable -Name <routeTableName>
+```
+  
 ### <a name="to-list-a-route-table"></a>列出路由表
-    Get-AzureRouteTable [-Name <routeTableName> [-DetailLevel <detailLevel>]]
+
+```powershell
+Get-AzureRouteTable [-Name <routeTableName> [-DetailLevel <detailLevel>]]
+```
 
 ### <a name="to-delete-a-route-from-a-route-table"></a>从路由表中删除路由
-    Remove-AzureRouteTable –Name <routeTableName>
+
+```powershell
+Remove-AzureRouteTable –Name <routeTableName>
+```
 
 ### <a name="to-remove-a-route-from-a-subnet"></a>从子网中删除路由
-    Remove-AzureSubnetRouteTable –VirtualNetworkName <virtualNetworkName> -SubnetName <subnetName>
+
+```powershell
+Remove-AzureSubnetRouteTable –VirtualNetworkName <virtualNetworkName> -SubnetName <subnetName>
+```
 
 ### <a name="to-list-the-route-table-associated-with-a-subnet"></a>列出与子网关联的路由表
-    Get-AzureSubnetRouteTable -VirtualNetworkName <virtualNetworkName> -SubnetName <subnetName>
+
+```powershell
+Get-AzureSubnetRouteTable -VirtualNetworkName <virtualNetworkName> -SubnetName <subnetName>
+```
 
 ### <a name="to-remove-a-default-site-from-a-vnet-vpn-gateway"></a>从 VNet VPN 网关中删除默认站点
-    Remove-AzureVnetGatewayDefaultSite -VNetName <virtualNetworkName>
+
+```powershell
+Remove-AzureVnetGatewayDefaultSite -VNetName <virtualNetworkName>
+```
 
 
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -13,31 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 04/14/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 693e3aebad339b1a9b5e0afbe7770197ea70dcf6
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: c27e6c19f44d9f0fa60ae31d0cda756dcd032f02
+ms.lasthandoff: 04/18/2017
 
 
 ---
 # <a name="ports-and-uris-used-by-hdinsight"></a>HDInsight 使用的端口和 URI
+
 本文档提供在基于 Linux 的 HDInsight 群集上运行的 Hadoop 服务使用的端口列表。 此外，还提供了用于通过 SSH 连接到群集的端口的信息。
 
 ## <a name="public-ports-vs-non-public-ports"></a>公共端口与非公共端口
+
 基于 Linux 的 HDInsight 群集只在 Internet 上公开三个端口：22、23 和 443。 使用这些端口可以通过 SSH 安全访问群集，以及访问通过安全 HTTPS 协议公开的服务。
 
-在内部，HDInsight 由 Azure 虚拟网络上运行的多个 Azure 虚拟机（群集内节点）实现。 从虚拟网络内部可以访问不是通过 Internet 公开的端口。 例如，如果你使用 SSH 连接到某个头节点，则可以从该头节点直接访问群集节点上运行的服务。
+在内部，HDInsight 由在 Azure 虚拟网络上运行的多个 Azure 虚拟机（群集内的节点）实现。 从虚拟网络内部可以访问不是通过 Internet 公开的端口。 例如，如果你使用 SSH 连接到某个头节点，则可以从该头节点直接访问群集节点上运行的服务。
 
 > [!IMPORTANT]
-> 在创建 HDInsight 群集时，如果你未将 Azure 虚拟网络指定为配置选项，则系统会创建一个虚拟网络；但是，无法将其他计算机（例如其他 Azure 虚拟机或客户端开发计算机）添加到这个自动创建的虚拟网络。 
-> 
-> 
+> 如果尚未指定某个 Azure 虚拟网络作为 HDInsight 的配置选项，系统将自动创建一个 Azure 虚拟网络。 但无法将其他计算机（例如其他 Azure 虚拟机或客户端开发计算机）加入到此虚拟网络中。
+
 
 若要将其他计算机添加到虚拟网络，必须先创建虚拟网络，然后在创建 HDInsight 群集时指定该网络。 有关详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)
 
 ## <a name="public-ports"></a>公共端口
+
 HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从 Internet 访问。 使用公共网关可以通过 Internet 访问以下端口（在所有 HDInsight 群集类型中很常见）。
 
 | 服务 | 端口 | 协议 | 说明 |
@@ -60,23 +62,24 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 | Storm |443 |HTTPS |Storm |Storm Web UI。 请参阅[在 HDInsight 上部署和管理 Storm 拓扑](hdinsight-storm-deploy-monitor-topology-linux.md) |
 
 ### <a name="authentication"></a>身份验证
+
 在 Internet 上公开的所有服务都必须经过身份验证：
 
 | 端口 | 凭据 |
 | --- | --- |
 | 22 或 23 |在创建群集期间指定的 SSH 用户凭据 |
-| 443 |在创建群集期间设置的登录名称（默认为 admin）和密码 |
+| 443 |在创建群集期间设置的登录名（默认为 admin）和密码 |
 
 ## <a name="non-public-ports"></a>非公共端口
+
 > [!NOTE]
 > 某些服务仅适用于特定的群集类型。 例如，HBase 仅适用于 HBase 群集类型。
-> 
-> 
 
 ### <a name="hdfs-ports"></a>HDFS 端口
-| 服务 | 节点 | 端口 | 协议 | 说明 |
+
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
-| NameNode Web UI |头节点 |30070 |HTTPS |用于查看当前状态的 Web UI |
+| NameNode Web UI |头节点 |30070 |HTTPS |用于查看状态的 Web UI |
 | NameNode 元数据服务 |头节点 |8020 |IPC |文件系统元数据 |
 | DataNode |所有辅助角色节点 |30075 |HTTPS |用于查看状态、日志等的 Web UI |
 | DataNode |所有辅助角色节点 |30010 |&nbsp; |数据传输 |
@@ -84,7 +87,8 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 | 辅助 NameNode |头节点 |50090 |HTTP |NameNode 元数据检查点 |
 
 ### <a name="yarn-ports"></a>YARN 端口
-| 服务 | 节点 | 端口 | 协议 | 说明 |
+
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | Resource Manager Web UI |头节点 |8088 |HTTP |Resource Manager 的 Web UI |
 | Resource Manager Web UI |头节点 |8090 |HTTPS |Resource Manager 的 Web UI |
@@ -97,38 +101,44 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 | Timeline Web UI |头节点 |8181 |HTTP |Timeline 服务 Web UI |
 
 ### <a name="hive-ports"></a>Hive 端口
-| 服务 | 节点 | 端口 | 协议 | 说明 |
+
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |头节点 |10001 |Thrift |用于以编程方式连接到 Hive 的服务 (Thrift/JDBC) |
 | HiveServer |头节点 |10000 |Thrift |用于以编程方式连接到 Hive 的服务 (Thrift/JDBC) |
 | Hive 元存储 |头节点 |9083 |Thrift |用于以编程方式连接到 Hive 元数据的服务 (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat 端口
-| 服务 | 节点 | 端口 | 协议 | 说明 |
+
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | WebHCat 服务器 |头节点 |30111 |HTTP |位于 HCatalog 和其他 Hadoop 服务顶层的 Web API |
 
 ### <a name="mapreduce-ports"></a>MapReduce 端口
-| 服务 | 节点 | 端口 | 协议 | 说明 |
+
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | JobHistory |头节点 |19888 |HTTP |MapReduce JobHistory Web UI |
 | JobHistory |头节点 |10020 |&nbsp; |MapReduce JobHistory 服务器 |
 | ShuffleHandler |&nbsp; |13562 |&nbsp; |将中间映射输出传输到请求化简器 |
 
 ### <a name="oozie"></a>Oozie
-| 服务 | 节点 | 端口 | 协议 | 说明 |
+
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | Oozie 服务器 |头节点 |11000 |HTTP |Oozie 服务的 URL |
 | Oozie 服务器 |头节点 |11001 |HTTP |Oozie 管理端口 |
 
 ### <a name="ambari-metrics"></a>Ambari 指标
-| 服务 | 节点 | 端口 | 协议 | 说明 |
+
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | TimeLine（应用程序历史记录） |头节点 |6188 |HTTP |TimeLine 服务 Web UI |
 | TimeLine（应用程序历史记录） |头节点 |30200 |RPC |TimeLine 服务 Web UI |
 
 ### <a name="hbase-ports"></a>HBase 端口
-| 服务 | 节点 | 端口 | 协议 | 说明 |
+
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | HMaster |头节点 |16000 |&nbsp; |&nbsp; |
 | HMaster 信息 Web UI |头节点 |16010 |HTTP |HBase 主控 Web UI 的端口 |
@@ -136,7 +146,8 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 | &nbsp; |&nbsp; |2181 |&nbsp; |客户端用来连接 ZooKeeper 的端口 |
 
 ### <a name="kafka-ports"></a>Kafka 端口
-| 服务 | 节点 | 端口 | 协议 | 说明 |
+
+| 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | 代理 |辅助角色节点 |9092 |[Kafka Wire Protocol](http://kafka.apache.org/protocol.html)（Kafka 线路协议） |用于客户端通信 |
 | &nbsp; |Zookeeper 节点 |2181 |&nbsp; |客户端用来连接 Zookeeper 的端口 |

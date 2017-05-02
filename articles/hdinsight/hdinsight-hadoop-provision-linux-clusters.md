@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: bc047ba2aacbbea6d47d3870ee70d9d9a068f83a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 1b7772fbf719013d82e5baed1bbbf229d6f2946c
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -41,7 +41,7 @@ Hadoop 群集由用于对群集中的任务进行分布式处理的多个虚拟�
 | [Storm](hdinsight-storm-overview.md) |实时事件处理 |
 | [Spark](hdinsight-apache-spark-overview.md) |内存中处理、交互式查询、微批流处理 |
 | [交互式 Hive（预览版）](hdinsight-hadoop-use-interactive-hive.md) |更快的交互式 Hive 查询的内存中缓存 |
-| [R Server on Spark（预览版）](hdinsight-hadoop-r-server-overview.md) |各种不同的大数据统计信息、预测模型和机器学习功能 |
+| [Spark 上的 R Server](hdinsight-hadoop-r-server-overview.md) |各种不同的大数据统计信息、预测模型和机器学习功能 |
 | [Kafka（预览版）](hdinsight-apache-kafka-introduction.md) | 分布式流式处理平台，可用于构建实时流数据管道和应用程序 |
 
 每个群集类型在群集中具有自身的节点数目、在群集中使用自身的节点术语，对每个节点类型具有默认的 VM 大小。 下表中的括号内列出了每个节点类型的节点数目。
@@ -237,7 +237,7 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 | Standard_D13_v2 |8 |56 GB |8 |临时磁盘 (SSD) = 400 GB |16 |16x500 |
 | Standard_D14_v2 |16 |112 GB |8 |临时磁盘 (SSD) = 800 GB |32 |32x500 |
 
-有关在计划使用这些资源时要考虑的部署注意事项，请参阅[虚拟机的大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。   
+有关在计划使用这些资源时要考虑的部署注意事项，请参阅[虚拟机的大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。   
 
 > [!IMPORTANT]
 > 如果计划使用 32 个以上的工作节点（在创建群集时配置或者是在创建之后通过扩展群集来配置），必须选择至少具有 8 个核心和 14 GB RAM 的头节点大小。
@@ -252,6 +252,9 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 创建 HDInsight 群集时或创建群集后，可以添加存储帐户。  请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 有关辅助 Azure 存储帐户的详细信息，请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。 有关辅助 Data Lake Storage 的详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
+
+> [!WARNING]
+> 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
 
 ## <a name="use-hiveoozie-metastore"></a>使用 Hive/Oozie 元存储
 如果想要在删除 HDInsight 群集后保留 Hive 表，建议使用自定义元存储。 这样，便可以将该元存储附加到另HDInsight 群集。

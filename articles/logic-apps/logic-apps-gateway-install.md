@@ -15,25 +15,28 @@ ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 23b806556667539156ee399e90c7bd4af808804f
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: b9971117d5f61669a5161a28c96b11b2fd600b61
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="install-an-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
-本地数据网关支持以下数据源连接：
+本地数据网关支持以下连接：
 
 *   BizTalk Server
-*    DB2  
+*   DB2  
 *   文件系统
 *   Informix
 *   MQ
-*    Oracle Database 
+*   MySQL
+*   Oracle Database 
 *   SAP Application Server 
 *   SAP Message Server
-*    SQL Server
+*   仅限适用于 HTTP（而非 HTTPS）的 SharePoint
+*   SQL Server
+*   Teradata
 
 有关这些连接的详细信息，请参阅 [Connectors for Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list)（适用于 Azure 逻辑应用的连接器）。
 
@@ -61,7 +64,7 @@ ms.lasthandoff: 03/10/2017
 
 * 只能在 Azure 中使用工作或学校电子邮件地址，以便将本地数据网关与基于 Azure Active Directory 的帐户相关联。
 
-    如果使用 Microsoft 帐户（例如 @outlook.com），可以使用 Azure 帐户  [创建工作或学校电子邮件地址](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)。
+    如果使用 Microsoft 帐户（例如 @outlook.com），可以使用 Azure 帐户  [创建工作或学校电子邮件地址](../virtual-machines/windows/create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)。
 
 ### <a name="install-the-gateway"></a>安装网关
 

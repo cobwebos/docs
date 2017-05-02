@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/12/2017
 ms.author: cenkd;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 7d980e14776cade574fc9ef4e63aea5c91fb8fdf
-ms.openlocfilehash: a5867566afc80fe7ae57b5027b5578e3144f7f07
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: d6e3ea06106463367eb03498ef8d9bc47d83c694
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -35,11 +35,11 @@ ms.lasthandoff: 02/15/2017
 
 从媒体服务 2.10 版开始，创建频道时，可以指定频道接收输入流的方式。 还可以指定是否想要频道对流执行实时编码。 可以使用两个选项：
 
-* **无**：如果计划使用将多比特率流（直通流）作为输出的本地实时编码器，请指定此值。 在这种情况下，传入流无需任何编码即可传递到输出。 这是 2.10 版以前的频道行为。 本主题提供有关如何使用这种频道的详细信息。
-* **标准**：如果计划使用媒体服务将单比特率实时流编码为多比特率流，请选择此值。 请注意，使实时编码频道处于“正在运行”状态将产生帐单费用。 建议在实时传送视频流事件完成之后立即停止正在运行的频道，以避免产生额外的小时费用。 媒体服务会将流传送给请求它的客户。
+* **直通**：如果计划使用将多比特率流（直通流）作为输出的本地实时编码器，请指定此值。 在这种情况下，传入流无需任何编码即可传递到输出。 这是 2.10 版以前的频道行为。 本主题提供有关如何使用这种频道的详细信息。
+* **实时编码**：如果计划使用媒体服务将单比特率实时流编码为多比特率流，请选择此值。 请注意，使实时编码频道处于“正在运行”状态将产生帐单费用。 建议在实时传送视频流事件完成之后立即停止正在运行的频道，以避免产生额外的小时费用。 媒体服务会将流传送给请求它的客户。
 
 > [!NOTE]
-> 本主题讨论未启用执行实时编码（**无**编码类型）的频道的属性。 若要了解如何使用执行实时编码的频道，请参阅[使用 Azure 媒体服务创建多比特率流的实时传送视频流](media-services-manage-live-encoder-enabled-channels.md)。
+> 本主题讨论未启用执行实时编码的频道的属性。 若要了解如何使用执行实时编码的频道，请参阅[使用 Azure 媒体服务创建多比特率流的实时传送视频流](media-services-manage-live-encoder-enabled-channels.md)。
 >
 >
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 02/15/2017
 
 ![实时工作流][live-overview]
 
-## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>常见实时传送视频流方案
+## <a id="scenario"></a>常见实时传送视频流方案
 以下步骤介绍创建常见的实时传送视频流应用程序时涉及的任务。
 
 1. 将视频摄像机连接到计算机。 启动并配置输出多比特率 RTMP 或分段 MP4（平滑流式处理）流的本地实时编码器。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](http://go.microsoft.com/fwlink/?LinkId=532824)。
@@ -79,9 +79,9 @@ ms.lasthandoff: 02/15/2017
 
 10. 删除节目（并选择性地删除资产）。     
 
-## <a name="a-idchanneladescription-of-a-channel-and-its-related-components"></a><a id="channel"></a>频道及其相关组件的说明
-### <a name="a-idchannelinputachannel-input-ingest-configurations"></a><a id="channel_input"></a>通道输入（引入）配置
-#### <a name="a-idingestprotocolsaingest-streaming-protocol"></a><a id="ingest_protocols"></a>引入流式传输协议
+## <a id="channel"></a>频道及其相关组件的说明
+### <a id="channel_input"></a>通道输入（引入）配置
+#### <a id="ingest_protocols"></a>引入流式传输协议
 媒体服务通过使用多比特率分片 MP4 和多比特率 RTMP 作为流式处理协议支持引入实时源。 选择了 RTMP 引入流式传输协议时，会为频道创建两个引入（输入）终结点：
 
 * **主 URL**：指定频道的主 RTMP 引入终结点的完全限定 URL。
@@ -95,7 +95,7 @@ ms.lasthandoff: 02/15/2017
 
 - 多个编码器中的每个编码器推送到专用点：
 
-    此方案提供编码器以及引入冗余。 在此方案中，编码器&1; 推送到主 URL，而编码器&2; 则推送到辅助 URL。 当一个编码器失败时，其他编码器可以继续发送数据。 由于媒体服务不会同时断开主 URL 和辅助 URL 的连接，因此可保持数据冗余。 此方案假定编码器已同步时间，并提供完全相同的数据。  
+    此方案提供编码器以及引入冗余。 在此方案中，编码器 1 推送到主 URL，而编码器 2 则推送到辅助 URL。 当一个编码器失败时，其他编码器可以继续发送数据。 由于媒体服务不会同时断开主 URL 和辅助 URL 的连接，因此可保持数据冗余。 此方案假定编码器已同步时间，并提供完全相同的数据。  
 
 - 多个编码器双推送到主和辅助 URL：
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 02/15/2017
 
 可以选择通过 SSL 连接引入分片 MP4（平滑流式处理）实时流。 若要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。 当前，无法通过 SSL 摄取 RTMP。
 
-#### <a name="a-idkeyframeintervalakeyframe-interval"></a><a id="keyframe_interval"></a>关键帧间隔
+#### <a id="keyframe_interval"></a>关键帧间隔
 当使用本地实时编码器生成多比特率流时，关键帧间隔指定外部编码器使用的帧组 (GOP) 的持续时间。 当频道收到此传入流后，你可以通过下列任意格式将实时流传送到客户端播放应用程序：平滑流式处理、Dynamic Adaptive Streaming over HTTP (DASH) 和 HTTP Live Streaming (HLS)。 当执行实时传送视频流时，HLS 始终是动态打包的。 默认情况下，媒体服务根据从实时编码器收到的关键帧间隔自动计算 HLS 段打包比率（每段的片数）。
 
 下表显示了段持续时间是如何计算的：
@@ -169,7 +169,7 @@ ms.lasthandoff: 02/15/2017
 
 即使你停止并删除了节目，在删除资产之前，用户可以按需将已存档内容作为视频进行流式传输。 如果希望保留已存档内容但不希望其可供流式传输，请删除流式传输定位符。
 
-## <a name="a-idstatesachannel-states-and-billing"></a><a id="states"></a>频道状态和计费
+## <a id="states"></a>频道状态和计费
 频道的当前状态的可能值包括：
 
 * **已停止**：这是频道在创建后的初始状态。 在此状态下，可以更新频道属性，但不允许进行流式传输。
@@ -187,7 +187,7 @@ ms.lasthandoff: 02/15/2017
 | **正在停止** |**正在停止** |否（暂时状态） |
 | **已停止** |**已停止** |否 |
 
-## <a name="a-idccandadsaclosed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>隐藏式字幕和广告插入
+## <a id="cc_and_ads"></a>隐藏式字幕和广告插入
 下表展示了支持的隐藏式字幕和广告插入标准。
 
 | 标准 | 说明 |
@@ -196,7 +196,7 @@ ms.lasthandoff: 02/15/2017
 | .ismt 内的 TTML（平滑流式处理文本轨道） |媒体服务动态打包功能允许客户端对下列任何格式的内容进行流式传输：DASH、HLS 或平滑流式处理。 但是，如果你引入了 .ismt 内带有字幕（平滑流式处理文本轨道）的分片 MP4（平滑流式处理），则只能将该流传送到平滑流式处理客户端。 |
 | SCTE-35 |SCTE-35 是用来提示广告插入的数字信号系统。 下游接收器使用该信号来将广告接合到流中并使其占用规定的时间。 SCTE-35 在输入流中必须作为稀疏轨道进行发送。<p><p>当前唯一受支持的可以携带广告信号的输入流格式是分片 MP4（平滑流式处理）。 唯一受支持的输出格式也是 Smooth Streaming. |
 
-## <a name="a-idconsiderationsaconsiderations"></a><a id="considerations"></a>注意事项
+## <a id="considerations"></a>注意事项
 当使用本地实时编码器将多比特率流发送到频道时，以下限制将适用：
 
 * 确保你有足够的空闲 Internet 连接来将数据发送到引入点。

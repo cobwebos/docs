@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: sethm;babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: 9c1756d2c2c4dd73c60a71b24bfb4606cab289ed
-ms.openlocfilehash: 8e718e74443e3d51dc54edaf667e34875bc67c5d
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: fa0d49498db74ec81c98f3df9317d42cdd31ab46
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -37,9 +37,9 @@ ms.lasthandoff: 02/21/2017
 | 使用者组 | 1 - 默认值 | 20 | 20 |
 | 消息重播 | 是 | 是 | 是 |
 | 最大吞吐量单位 | 20 | 20（可灵活调整至 100）    | 1 CU≈200 |
-| 中转连接 | 包括&100; | 包括&1000; | 包括&100; K |
+| 中转连接 | 包括 100 | 包括 1000 | 包括 100 K |
 | 其他中转连接 | 不适用 | 是 | 是 |
-| 消息保留 | 包括&1; 天 | 包括&1; 天 | 包括最长 7 天 |
+| 消息保留 | 包括 1 天 | 包括 1 天 | 包括最长 7 天 |
 | 存档（预览版） | 不适用    | 按每小时支付 | 附送 |
 
 ## <a name="benefits-of-event-hubs-dedicated-capacity"></a>专用事件中心容量的优点
@@ -52,7 +52,7 @@ ms.lasthandoff: 02/21/2017
 * 有保障的容量，满足迸发需求。
 * 容量单位 (CU) 可在 1 至 8 之间缩放 - 提供每秒高达两百万个入口事件。
   * 容量单位 (CU) 管理专用事件中心的规模，其中，每个 CU 约可提供相当于 200 个吞吐量单位 (TU)。
-* 零维护：由我们负责管理负载平衡、操作系统更新、安全修补程序及分区。
+* 零维护：由我们负责管理负载均衡、操作系统更新、安全修补程序及分区。
 * 固定的月度定价。
 
 专用事件中心还会删除一些标准产品的吞吐量限制。 基本层和标准层的吞吐量可达每秒 1000 个事件，或每 TU 1 MBps 的入口量，以及两倍的出口量。 专用规模产品对入口和出口事件计数不设限制。 这些限制仅由购买的事件中心处理容量管理。

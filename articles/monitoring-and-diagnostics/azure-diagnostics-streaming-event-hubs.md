@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/28/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 7e6053c8a737674f0e8d9816d3ee228c118a722e
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 97ed0ae7cf9f741155c57053bc8b34a0246d0586
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -151,7 +151,7 @@ Visual Studio 提供最简单的路径供你部署应用程序和事件中心接
 ## <a name="view-hot-path-data"></a>查看热路径数据
 如前文所述，侦听和处理事件中心数据有许多用例。
 
-一种简单的方法是创建小型测试控制台应用程序用于侦听事件中心并列显输出流。 可在控制台应用程序中插入以下代码（[事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)中已详细说明）。  
+一种简单的方法是创建小型测试控制台应用程序，用于侦听事件中心并打印输出流。 可在控制台应用程序中插入以下代码（[事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)中已详细说明）。  
 
 请注意，控制台应用程序必须包含[事件处理器主机 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)。  
 
@@ -218,7 +218,7 @@ namespace EventHubListener
         static void Main(string[] args)
         {
             string eventHubConnectionString = "Endpoint= <your connection string>”
-            string eventHubName = "<Event Hub name>";
+            string eventHubName = "<Event hub name>";
             string storageAccountName = "<Storage account name>";
             string storageAccountKey = "<Storage account key>”;
             string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);

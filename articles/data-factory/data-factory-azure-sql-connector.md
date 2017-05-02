@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 04/14/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: beec132956ed4d382517379a47da57db983e7b54
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: c2616c6ff91a8fe78d60ed3bbae90b0739a6c104
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -25,6 +25,9 @@ ms.lasthandoff: 03/30/2017
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure SQL 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。  
 
 可将数据从任一支持的源数据存储复制到 Azure SQL 数据库，或从 Azure SQL 数据库复制到任一支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。
+
+## <a name="supported-authentication-type"></a>支持的身份验证类型
+Azure SQL 数据库连接器支持基本身份验证。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出 Azure SQL 数据库。
@@ -49,7 +52,7 @@ Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 下表�
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | type |类型属性必须设置为：**AzureSqlDatabase** |是 |
-| connectionString |为 connectionString 属性指定连接到 Azure SQL 数据库实例所需的信息。 |是 |
+| connectionString |为 connectionString 属性指定连接到 Azure SQL 数据库实例所需的信息。 仅支持基本身份验证。 |是 |
 
 > [!IMPORTANT]
 > 配置 [Azure SQL 数据库防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)数据库服务器以[允许 Azure 服务访问该服务器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 此外，如果将数据从 Azure 外部（包括配有数据工厂网关的本地数据源）复制到 Azure SQL 数据库，请针对将数据发送到 Azure SQL 数据库的计算机配置适当 IP 地址范围。
@@ -81,7 +84,7 @@ Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 下表�
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 示例：`select * from MyTable`。 |否 |
-| sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 |否 |
+| sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 存储过程中的最后一条 SQL 语句必须是 SELECT 语句。 |否 |
 | storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 
 如果为 SqlSource 指定 **sqlReaderQuery**，则复制活动针对 Azure SQL 数据库源运行此查询可获取数据。 此外，也可以通过指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 来指定存储过程（如果存储过程使用参数）。
@@ -105,6 +108,7 @@ Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 下表�
     }
 }
 ```
+
 **存储过程定义：**
 
 ```SQL

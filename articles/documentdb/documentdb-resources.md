@@ -17,9 +17,9 @@ ms.date: 03/14/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 0c62fc01947e0f2e4b0e45d176d5af04c6250fa8
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: ec64215bfa3b812cddbed290d343c2d99fb70257
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -408,7 +408,7 @@ DocumentDB 查询模型尝试在功能、效率和简单性之间取得平衡。
 尽管上面的代码段演示了通过 [DocumentDB JavaScript SDK](https://github.com/Azure/azure-documentdb-js) 注册 (POST)、取消注册 (PUT)、读取/列出 (GET) 和执行 (POST)，但也可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 或其他[客户端 SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。 
 
 ## <a name="documents"></a>文档
-你可以插入、替换、删除、读取、枚举和查询集合中的任意 JSON 文档。 DocumentDB 不强制要求任何架构，并且对集合中的文档进行查询也不需要辅助索引的支持。 默认情况下，文档的最大大小为 2 MB。   
+你可以插入、替换、删除、读取、枚举和查询集合中的任意 JSON 文档。 DocumentDB 不强制要求任何架构，并且对集合中的文档进行查询也不需要辅助索引的支持。 文档的最大大小为 2 MB。   
 
 作为一种真正的开放式数据库服务，DocumentDB 不创建任何专用的数据类型（例如日期时间）或用于 JSON 文档的特定编码。 请注意，DocumentDB 不需要任何特殊的 JSON 约定来对各种文档之间的关系进行编码；DocumentDB 的 SQL 语法提供了非常强大的分层和关系查询运算符以查询和投影文档，而无需任何特殊的注释，也不需要使用可分辨属性对文档间的关系进行编码。  
 
