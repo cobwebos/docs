@@ -245,7 +245,7 @@ ms.lasthandoff: 02/16/2017
 ## <a name="create-a-t-sql-script-for-execution-across-databases"></a>创建 T-SQL 脚本用于跨数据库执行
 创建要执行的 T-SQL 脚本时，强烈建议将其构建为[幂等](https://en.wikipedia.org/wiki/Idempotence)模式，以便灵活地应对各种故障。 每当执行发生失败时，不论失败的分类，弹性数据库作业将重试执行脚本。
 
-使用 [**New-AzureSqlJobContent cmdlet**](https://msdn.microsoft.com/library/mt346085.aspx) 创建并保存执行脚本，然后设置 **-ContentName **和 **-CommandText** 参数。
+使用 [**New-AzureSqlJobContent cmdlet**](https://msdn.microsoft.com/library/mt346085.aspx) 创建并保存执行脚本，然后设置 **-ContentName**和 **-CommandText** 参数。
 
     $scriptName = "Create a TestTable"
 
@@ -328,7 +328,7 @@ ms.lasthandoff: 02/16/2017
     Write-Output $jobExecution
 
 ## <a name="to-retrieve-the-state-of-a-single-job-execution"></a>检索单个作业的执行状态
-使用 [**Get-AzureSqlJobExecution cmdlet**](https://msdn.microsoft.com/library/mt346058.aspx) 并设置 **JobExecutionId **参数以查看作业的执行状态。
+使用 [**Get-AzureSqlJobExecution cmdlet**](https://msdn.microsoft.com/library/mt346058.aspx) 并设置 **JobExecutionId**参数以查看作业的执行状态。
 
     $jobExecutionId = "{Job Execution Id}"
     $jobExecution = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId
@@ -560,7 +560,7 @@ ms.lasthandoff: 02/16/2017
     Write-Output $jobExecution
 
 ## <a name="to-schedule-a-job-execution-trigger"></a>计划作业执行触发器
-以下 PowerShell 脚本可用于创建重复计划。 此脚本使用分钟间隔，但是 [**New-AzureSqlJobSchedule **](https://msdn.microsoft.com/library/mt346068.aspx)也支持 -DayInterval、-HourInterval、-MonthInterval 和 -WeekInterval 参数。 可以通过传递 -OneTime 来创建仅执行一次的计划。
+以下 PowerShell 脚本可用于创建重复计划。 此脚本使用分钟间隔，但是 [**New-AzureSqlJobSchedule**](https://msdn.microsoft.com/library/mt346068.aspx)也支持 -DayInterval、-HourInterval、-MonthInterval 和 -WeekInterval 参数。 可以通过传递 -OneTime 来创建仅执行一次的计划。
 
 创建新计划：
 
