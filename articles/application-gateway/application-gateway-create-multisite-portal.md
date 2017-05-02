@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 90b7e2f7f5327684f173bd7e10f21e65bea8fbe7
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 84bd62ae17b7f7ba4cd815ef1f9880679607ebce
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 90b7e2f7f5327684f173bd7e10f21e65bea8fbe7
 > 
 > 
 
-托管多个站点可以让你在同一应用程序网关上部署多个 Web 应用程序。 系统会通过传入 HTTP 请求中存在的主机标头来确定接收流量的侦听器。 然后，侦听器会根据网关规则定义中的配置将流量定向到适当的后端池。 在启用了 SSL 的 Web 应用程序中，应用程序网关将根据服务器名称指示 (SNI) 扩展来选择 Web 流量的适当侦听器。 通常会通过托管多个站点将不同 Web 域的请求负载平衡到不同的后端服务器池。 同样还可以将同一根域的多个子域托管到同一应用程序网关。
+托管多个站点可以让你在同一应用程序网关上部署多个 Web 应用程序。 系统会通过传入 HTTP 请求中存在的主机标头来确定接收流量的侦听器。 然后，侦听器会根据网关规则定义中的配置将流量定向到适当的后端池。 在启用了 SSL 的 Web 应用程序中，应用程序网关将根据服务器名称指示 (SNI) 扩展来选择 Web 流量的适当侦听器。 通常会通过托管多个站点将不同 Web 域的请求负载均衡到不同的后端服务器池。 同样还可以将同一根域的多个子域托管到同一应用程序网关。
 
 ## <a name="scenario"></a>方案
 
@@ -52,7 +53,7 @@ ms.openlocfilehash: 90b7e2f7f5327684f173bd7e10f21e65bea8fbe7
 * **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，然后重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。 对于启用了多个站点的应用程序网关，还会添加主机名和 SNI 指示器。
-* **规则：**规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。
+* **规则：**规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 规则按其列出的顺序进行处理，并且流量通过匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。 
 * **证书：**每个侦听器都需要唯一的证书。在此示例中，为多站点创建了 2 个侦听器。 需要为侦听器创建两个 .pfx 证书和密码。
 
 ## <a name="create-back-end-pools-for-each-site"></a>为每个站点创建后端池
@@ -140,9 +141,4 @@ ms.openlocfilehash: 90b7e2f7f5327684f173bd7e10f21e65bea8fbe7
 [9]: ./media/application-gateway-create-multisite-portal/figure9.png
 [10]: ./media/application-gateway-create-multisite-portal/figure10.png
 [multisite]: ./media/application-gateway-create-multisite-portal/multisite.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

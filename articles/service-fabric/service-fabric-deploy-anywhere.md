@@ -15,14 +15,16 @@ ms.workload: NA
 ms.date: 03/08/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
-ms.openlocfilehash: 140bee520dd8de0d9303a7d80e10cae407c8b10d
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 8e487cd33bef73ac66e1b1b6ee614b5a1376d772
+ms.lasthandoff: 04/21/2017
 
 
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>在 Windows Server 或 Linux 上创建 Service Fabric 群集
-使用 Azure Service Fabric 可在运行 Windows Server 或 Linux 的任何 VM 或计算机上创建 Service Fabric 群集。 这意味着，可以在包含一组互连 Windows Server 或 Linux 计算机（无论是本地计算机、Microsoft Azure 计算机还是任何云提供商的计算机）的任何环境中部署和运行 Service Fabric 应用程序。
+Azure Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，你的微服务将在其中部署和管理。 群集中的计算机或 VM 称为群集节点。 群集可以扩展到数千个节点。 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡服务分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。
+
+使用 Service Fabric 可在运行 Windows Server 或 Linux 的任何 VM 或计算机上创建 Service Fabric 群集。 这意味着，可以在包含一组互连 Windows Server 或 Linux 计算机（无论是本地计算机、Microsoft Azure 计算机还是任何云提供商的计算机）的任何环境中部署和运行 Service Fabric 应用程序。
 
 ## <a name="create-service-fabric-clusters-on-azure"></a>在 Azure 上创建 Service Fabric 群集
 应该通过资源模型模板或 Azure 门户在 Azure 上创建群集。 有关详细信息，请参阅[使用 Resource Manager 模板创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)或[在 Azure 门户中创建 Service Fabric 群集](service-fabric-cluster-creation-via-portal.md)。

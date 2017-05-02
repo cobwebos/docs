@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
-ms.openlocfilehash: 469f37362fa0ebe39367a66df8a27e71e762a9d5
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: ce1291261cd8f65d44873217345ae6efaa515534
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -26,7 +26,7 @@ Azure Service Fabric 能够保护群集中以不同用户帐户运行的应用�
 
 默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 Service Fabric 还可让你使用应用程序清单中指定的本地用户帐户或本地系统帐户运行应用程序。 受支持的本地系统帐户类型为 **LocalUser**、**NetworkService**、**LocalService** 和 **LocalSystem**。
 
- 当使用独立安装程序在数据中心中的 Windows Server 上运行 Service Fabric 时，可以使用 Active Directory 域帐户。
+ 使用独立安装程序在数据中心中的 Windows Server 上运行 Service Fabric 时，可以使用 Active Directory 域帐户，包括组托管服务帐户。
 
 可以定义和创建用户组，以便将一个或多个要统一管理的用户添加到每个组。 如果不同的服务入口点有多个用户，而且这些用户需要拥有可在组级别使用的某些常用权限，则这种做法特别有用。
 
@@ -290,7 +290,44 @@ Echo "Test console redirection which writes to the application log folder on the
 </Policies>
 <Certificates>
 ```
+### <a name="use-a-group-managed-service-account"></a>使用组托管服务帐户。
+对于使用独立安装程序在 Windows Server 上安装的 Service Fabric 实例，可以以组托管服务帐户 (gMSA) 身份来运行服务。 注意：这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。 使用 gMSA 时，没有密码或加密密码存储在 `Application Manifest` 中。
 
+以下示例演示如何创建一个名为 *svc-Test$* 的 gMSA 帐户；如何将该托管服务帐户部署到群集节点；以及如何配置用户主体。
+
+##### <a name="prerequisites"></a>先决条件。
+- 域需要 KDS 根密钥。
+- 域必须位于 Windows Server 2012 或更高功能级别上。
+
+##### <a name="example"></a>示例
+1. 让 active directory 域管理员使用 `New-ADServiceAccount` commandlet 创建组托管服务帐户，并确保 `PrincipalsAllowedToRetrieveManagedPassword` 包括所有 service fabric 群集节点。 请注意， `AccountName`、`DnsHostName` 和 `ServicePrincipalName` 必须是唯一的。
+```
+New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
+```
+2. 在每个 service fabric 群集节点（例如 `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`）上，安装并测试 gMSA。
+```
+Add-WindowsFeature RSAT-AD-PowerShell
+Install-AdServiceAccount svc-Test$
+Test-AdServiceAccount svc-Test$
+```
+3. 配置用户主体，并配置 RunAsPolicy 以引用用户。
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="MyServiceTypePkg" ServiceManifestVersion="1.0.0" />
+      <ConfigOverrides />
+      <Policies>
+         <RunAsPolicy CodePackageRef="Code" UserRef="DomaingMSA"/>
+      </Policies>
+   </ServiceManifestImport>
+  <Principals>
+    <Users>
+      <User Name="DomaingMSA" AccountType="ManagedServiceAccount" AccountName="domain\svc-Test$"/>
+    </Users>
+  </Principals>
+</ApplicationManifest>
+```
 
 ## <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>为 HTTP 和 HTTPS 终结点分配安全访问策略
 如果向服务应用 RunAs 策略务，而服务清单声明具有 HTTP 协议的终结点资源，则必须指定 **SecurityAccessPolicy**，以确保分配给这些终结点的端口都已针对用来运行服务的 RunAs 用户帐户正确列入访问控制列表中。 否则，**http.sys** 将无权访问服务，并且将无法从客户端调用。 以下示例将 Customer3 帐户应用到名为 **ServiceEndpointName** 的终结点，并向它授予完全访问权限。

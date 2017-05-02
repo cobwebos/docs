@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: e20f7349f30c309059c2867d7473fa6fdefa9b61
-ms.openlocfilehash: d46c87480fd198bf4f09e48f4d2ea838a350190c
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: d42efa7d359f5c87c14afbfd138328b37c8ae6c2
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: d46c87480fd198bf4f09e48f4d2ea838a350190c
 > * [Azure 门户](application-gateway-create-multisite-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 
-托管多个站点可以让你在同一应用程序网关上部署多个 Web 应用程序。 系统会通过传入 HTTP 请求中存在的主机标头来确定接收流量的侦听器。 然后，侦听器会根据网关规则定义中的配置将流量定向到适当的后端池。 在启用了 SSL 的 Web 应用程序中，应用程序网关将根据服务器名称指示 (SNI) 扩展来选择 Web 流量的适当侦听器。 通常会通过托管多个站点将不同 Web 域的请求负载平衡到不同的后端服务器池。 同样还可以将同一根域的多个子域托管到同一应用程序网关。
+托管多个站点可以让你在同一应用程序网关上部署多个 Web 应用程序。 系统会通过传入 HTTP 请求中存在的主机标头来确定接收流量的侦听器。 然后，侦听器会根据网关规则定义中的配置将流量定向到适当的后端池。 在启用了 SSL 的 Web 应用程序中，应用程序网关将根据服务器名称指示 (SNI) 扩展来选择 Web 流量的适当侦听器。 通常会通过托管多个站点将不同 Web 域的请求负载均衡到不同的后端服务器池。 同样还可以将同一根域的多个子域托管到同一应用程序网关。
 
 ## <a name="scenario"></a>方案
 
@@ -45,7 +46,7 @@ ms.openlocfilehash: d46c87480fd198bf4f09e48f4d2ea838a350190c
 * **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，然后重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。 对于启用了多个站点的应用程序网关，还会添加主机名和 SNI 指示器。
-* **规则：**规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。
+* **规则：**规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 规则按其列出的顺序进行处理，并且流量通过匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -177,7 +178,7 @@ $pool2 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool02 -BackendIP
 
 ### <a name="step-3"></a>步骤 3
 
-为后端池中进行了负载平衡的网络流量配置应用程序网关设置“poolsetting01”和“poolsetting02”。 在本示例中，将为后端池配置不同的后端池设置。 每个后端池可有自身的后端池设置。
+为后端池中进行了负载均衡的网络流量配置应用程序网关设置“poolsetting01”和“poolsetting02”。 在本示例中，将为后端池配置不同的后端池设置。 每个后端池可有自身的后端池设置。
 
 ```powershell
 $poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
@@ -281,10 +282,5 @@ DnsSettings              : {
 ## <a name="next-steps"></a>后续步骤
 
 通过[应用程序网关 - Web 应用程序防火墙](application-gateway-webapplicationfirewall-overview.md)了解如何保护网站
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Linux 中的 Service Fabric 和部署容器 | Microsoft 文档"
-description: "介绍 Service Fabric，以及如何使用 Docker 容器部署微服务应用程序。 本文介绍 Service Fabric 为容器提供的功能，以及如何在群集中部署容器映像"
+description: "介绍 Service Fabric，以及如何使用 Linux 容器部署微服务应用程序。 本文介绍 Service Fabric 为容器提供的功能，以及如何在群集中部署 Linux 容器映像"
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 3/24/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 01c0d7e8430df758749f7a524dd3b7771b24fac1
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: fb73507ed596a65607d60f59d6834cc8bf5734f7
+ms.lasthandoff: 04/26/2017
 
 
 ---
-# <a name="deploy-a-docker-container-to-service-fabric"></a>将 Docker 容器部署到 Service Fabric
+# <a name="deploy-a-linux-container-to-service-fabric"></a>将 Linux 容器部署到 Service Fabric
 > [!div class="op_single_selector"]
 > * [部署 Windows 容器](service-fabric-deploy-container.md)
-> * [部署 Docker 容器](service-fabric-deploy-container-linux.md)
+> * [部署 Linux 容器](service-fabric-deploy-container-linux.md)
 >
 >
 

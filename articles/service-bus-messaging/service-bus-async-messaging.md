@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/13/2017
+ms.date: 04/19/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 3142bea414e54e321e3dc9ae13aca110049ee105
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
+ms.openlocfilehash: 95d6f295ba145a55fe4ed3fc7c6f627c9d419a3c
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>异步消息传送模式和高可用性
+
 可以通过多种不同的方式实现异步消息传送。 对于队列、主题和订阅，Azure 服务总线通过存储和转发机制支持异步。 在正常（同步）操作中，会将消息发送到队列和主题，并从队列和主题接收消息。 你编写的应用程序依赖于这些始终可用的实体。 当实体运行状况因各种环境而发生变化时，你需要一种能够提供满足大多数需求的缩减功能实体的方式。
 
 应用程序通常使用异步消息传送模式来实现大量通信方案。 你可以构建一些应用程序，以便客户端在其中可以向服务发送消息（即使该服务未运行）。 对于将经历大量通信的应用程序，队列可以通过提供缓冲通信的场所，帮助对负载进行分级。 最后，你可以获得一个简单而高效的负载均衡器，从而在多台计算机间分发消息。
@@ -131,25 +132,25 @@ if (sendAvailabilityOptions.BacklogQueueCount < 1)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-了解服务总线中的异步消息传送的基本信息后，可阅读有关[成对命名空间][paired namespaces]的详细信息。
+了解服务总线中的异步消息传送的基础知识后，可阅读有关[成对命名空间][paired namespaces]的详细信息。
 
-[ServerBusyException]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.serverbusyexception
+[ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx
-[MessagingException]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingexception
+[MessagingException]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
-[Microsoft.ServiceBus.Messaging.MessagingFactory]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[MessageReceiver]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagereceiver
-[QueueClient]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queueclient
-[TopicClient]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicclient
-[Microsoft.ServiceBus.Messaging.PairedNamespaceOptions]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.pairednamespaceoptions
-[MessagingFactory]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[SendAvailabilityPairedNamespaceOptions]:https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
-[NamespaceManager]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager
-[PairNamespaceAsync]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PairNamespaceAsync_Microsoft_ServiceBus_Messaging_PairedNamespaceOptions_
-[EnableSyphon]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_EnableSyphon
+[Microsoft.ServiceBus.Messaging.MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
+[MessageReceiver]: /dotnet/api/microsoft.servicebus.messaging.messagereceiver
+[QueueClient]: /dotnet/api/microsoft.servicebus.messaging.queueclient
+[TopicClient]: /dotnet/api/microsoft.servicebus.messaging.topicclient
+[Microsoft.ServiceBus.Messaging.PairedNamespaceOptions]: /dotnet/api/microsoft.servicebus.messaging.pairednamespaceoptions
+[MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
+[SendAvailabilityPairedNamespaceOptions]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
+[NamespaceManager]: /dotnet/api/microsoft.servicebus.namespacemanager
+[PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PairNamespaceAsync_Microsoft_ServiceBus_Messaging_PairedNamespaceOptions_
+[EnableSyphon]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_EnableSyphon
 [System.TimeSpan.Zero]: https://msdn.microsoft.com/library/system.timespan.zero.aspx
-[IsTransient]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingexception#Microsoft_ServiceBus_Messaging_MessagingException_IsTransient
+[IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception#Microsoft_ServiceBus_Messaging_MessagingException_IsTransient
 [UnauthorizedAccessException]: https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx
-[BacklogQueueCount]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_BacklogQueueCount
+[BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_BacklogQueueCount
 [paired namespaces]: service-bus-paired-namespaces.md
 

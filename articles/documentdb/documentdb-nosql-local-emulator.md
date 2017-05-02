@@ -13,19 +13,32 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/06/2017
+ms.date: 04/21/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 767698f12a5cb58fafc70c58e3d36a65194c2999
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 260208e7c7a08110eb3c885ef86ec4c18ff42fc9
+ms.openlocfilehash: 87486f94bee474b13680e9a90716f09399a95e16
+ms.lasthandoff: 04/23/2017
 
 
 ---
 # <a name="use-the-azure-documentdb-emulator-for-development-and-testing"></a>将 Azure DocumentDB 模拟器用于开发和测试
 
-[**下载模拟器**](https://aka.ms/documentdb-emulator)
-
+<table>
+<tr>
+  <td><strong>二进制文件</strong></td>
+  <td>[下载 MSI](https://aka.ms/documentdb-emulator)</td>
+</tr>
+<tr>
+  <td><strong>Docker</strong></td>
+  <td>[Docker 中心](https://hub.docker.com/r/microsoft/azure-documentdb-emulator/)</td>
+</tr>
+<tr>
+  <td><strong>Docker 源</strong></td>
+  <td>[Github](https://github.com/azure/azure-documentdb-emulator-docker)</td>
+</tr>
+</table>
+  
 为方便进行开发，Azure DocumentDB 模拟器提供了一个模拟 Azure DocumentDB 服务的本地环境。 利用 DocumentDB 模拟器，可在本地开发和测试应用程序，无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在 DocumentDB Emulator 中的工作情况感到满意，可以改为在云中使用 Azure DocumentDB 帐户。
 
 我们建议通过观看以下视频来入门，Kirill Gavrylyuk 在视频中演示了如何开始使用 DocumentDB 模拟器。
@@ -56,7 +69,7 @@ DocumentDB 模拟器具有以下硬件和软件要求：
 安装了[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 之后，可以通过从喜爱的 shell（cmd.exe、PowerShell 等）运行以下命令，从 Docker 中心请求模拟器映像。
 
 ```      
-docker pull mominag/documentdb_emulator 
+docker pull microsoft/azure-documentdb-emulator 
 ```
 若要启动映像，请运行以下命令。
 

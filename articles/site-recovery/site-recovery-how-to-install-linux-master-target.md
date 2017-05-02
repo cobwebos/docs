@@ -15,9 +15,9 @@ ms.workload:
 ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: c75a3a2477f113f17aab7a3e1969f15a4ec88a02
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 22a86001fe93dcb11e180dbdd75045b49b85b58f
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -37,13 +37,14 @@ ms.lasthandoff: 03/31/2017
 * 主目标应在可与进程服务器和配置服务器通信的网络中。
 * 主目标版本应该低于或等于进程服务器和配置服务器的版本。 例如，如果配置服务器版本为 9.4，则主目标的版本可以是 9.4 或 9.3，而不能是 9.5。
 * 主目标只能是 VMware 虚拟机，而不能是物理服务器。
-* 主目标需要遵循以下大小调整指南
+
+## <a name="master-target-sizing-guideline"></a>主目标调整大小准则
+
+主目标需要使用以下调整大小准则创建
     * RAM：6GB 或更多
-    * 操作系统磁盘大小：50GB 或更多（用于安装 CentOS6.6）
+    * OS 磁盘大小：100GB 或更多（用于安装 CentOS6.6）
     * 保留驱动器的附加磁盘大小：1TB
     * CPU 核心数：4 个核心或更多
-
-
 
 
 ## <a name="steps-to-deploy-the-master-target-server"></a>部署主目标服务器的步骤

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/14/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 203648d999032d86dca10f9b47c40a2208ab79e9
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 746fefab12aae11774a7d582e39ac2bc7eb9c88b
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -58,7 +58,7 @@ DocumentDB 设计有基于策略的地理围栏功能。 地理围栏是保障�
 DocumentDB 允许在任何时间点向数据库帐户添加（关联）或删除（取消关联）区域（请参阅[前图](#UnlimitedRegionsPerAccount)）。 通过跨分区并行复制数据，DocumentDB 可确保新的区域上线后 30 分钟内即可在全球任何位置使用 DocumentDB（最多 100 TB）。 
 
 ### <a id="FailoverPriorities"></a>故障转移优先级
-为了在出现多个区域性故障时精确控制区域故障转移的序列，DocumentDB 允许将优先级关联到与数据库帐户关联的各个区域（见下图）。 DocumentDB 确保自动故障转移序列以指定的优先级顺序发生。
+为了在出现多个区域性故障时精确控制区域故障转移的序列，DocumentDB 允许将优先级关联到与数据库帐户关联的各个区域（见下图）。 DocumentDB 确保自动故障转移序列以指定的优先级顺序发生。 有关区域故障转移的详细信息，请参阅 [DocumentDB 中的自动区域故障转移以实现业务连续性](documentdb-regional-failovers.md)。
 
 **DocumentDB 的租户可对与数据库帐户关联的区域配置故障转移优先级顺序（右窗格）**
 

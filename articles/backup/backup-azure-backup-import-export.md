@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2016
+ms.date: 4/20/2017
 ms.author: saurse;nkolli;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 2876f3a7e8e83dc05801d914c7582a4f1fd92e98
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 4f5e58713d925d2f7477dc072ecec455dec70792
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -48,7 +49,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/stor
   * 已在 Windows Server/Windows 客户端或 System Center Data Protection Manager 服务器上安装 Azure 备份代理，并已向 Azure 备份保管库注册计算机。
 * 在打算备份数据的计算机上，[下载 Azure 发布文件设置](https://manage.windowsazure.com/publishsettings)。
 * 准备一个暂存位置，这可能是网络共享或计算机上的其他驱动器。 暂存位置是暂时性的存储，在执行此工作流期间暂时使用。 确保临时位置具有足够的磁盘空间来保存你的初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少。）
-* 确定使用受支持的驱动器。 只支持对 3.5 英寸 SATA II/III 硬盘驱动器使用导入/导出服务。 不支持大于 8 TB 的硬盘驱动器。 可以使用 SATA II/III USB 适配器在外部将 SATA II/III 磁盘连接到大多数计算机。 查看 Azure 导入/导出文档，了解服务支持的最新驱动器集。
+* 确定使用受支持的驱动器。 只支持将 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II/III 内部硬盘驱动器用于导入/导出服务。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/storage-import-export-service.md#hard-disk-drives)，了解服务支持的最新驱动器集。
 * 在 SATA 驱动器写入器连接到的计算机上启用 BitLocker。
 * 将 [Azure 导入/导出工具下载](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)到 SATA 驱动器写入器连接到的计算机上。 如果已下载并安装 Azure 备份 2016 年 8 月更新版（或更高版本），则不需要执行此步骤。
 
@@ -209,9 +210,4 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
 ## <a name="next-steps"></a>后续步骤
 * 如有任何关于 Azure 导入/导出工作流的问题，请参阅 [Use the Microsoft Azure Import/Export service to transfer data to Blob storage](../storage/storage-import-export-service.md)（使用 Microsoft Azure 导入/导出服务可将数据传输到 Blob 存储中）。
 * 如有工作流方面的任何问题，请参阅 Azure 备份 [FAQ](backup-azure-backup-faq.md)（常见问题）的“脱机备份”部分。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
+ms.date: 04/24/2017
 ms.author: dekapur
 translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 5421cf66449892bb7bbc46cd8727a0642b7d66f3
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 29dd21511b23e6dffdb1daf8b75ece28989c16e7
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -30,13 +30,13 @@ ms.lasthandoff: 01/24/2017
 
 监视、检测、诊断和故障排除允许服务继续运行，同时对用户体验造成最小中断。 虽然监视和诊断在实际部署的生产环境中相当重要，但是效率将取决于在服务开发过程中采用类似的模型，以便在你移到实际安装时能确保其正常工作。 Service Fabric 使服务开发人员能够轻松实现可以跨单个计算机本地开发安装和实际生产群集安装无缝工作的诊断。
 
-## <a name="the-benefits-of-event-tracing-for-windows"></a>Windows 事件跟踪的优势
-[Windows 事件跟踪](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 是推荐的用于跟踪 Service Fabric 中的消息的技术。 这是因为：
+## <a name="event-tracing-for-windows"></a>Windows 事件跟踪
+[Windows 事件跟踪](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 是推荐的用于跟踪 Service Fabric 中的消息的技术。 使用 ETW 的一些好处包括：
 
 * **ETW 速度很快。** 它是作为一种对代码执行时间影响最小的跟踪技术而构建的。
 * **ETW 跟踪可以跨本地开发环境和实际群集安装无缝工作。** 这意味着当你准备好将你的代码部署到实际群集时，无需重新编写跟踪代码。
 * **Service Fabric 系统代码也使用 ETW 进行内部跟踪。** 这可让你查看与 Service Fabric 系统跟踪交错的应用程序跟踪。 同时帮助你更轻松地了解基础系统中应用程序代码与事件之间的序列和相互关系。
-* **Service Fabric Visual Studio 工具中有内置支持，可以查看 ETW 事件。**
+* **Service Fabric Visual Studio 工具中有内置支持，可以查看 ETW 事件。** 使用 Service Fabric 正确配置 Visual Studio 后，ETW 事件将出现在 Visual Studio 的“诊断事件”视图中。 
 
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>在 Visual Studio 中查看 Service Fabric 系统事件
 Service Fabric 发出 ETW 事件以帮助应用程序开发人员了解平台中发生的情况。 如果你还没有这么做，请继续遵循[在 Visual Studio 中创建第一个应用程序](service-fabric-create-your-first-application-in-visual-studio.md)中的步骤。 此信息将帮助你启动应用程序，并运行可显示跟踪消息的诊断事件查看器。

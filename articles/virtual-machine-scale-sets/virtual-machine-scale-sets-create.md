@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 56a460fa8132d310352fbb7e085091c3ee7fa848
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 9c9135e200cd1676b01895af4611bc71d5d27c4a
+ms.lasthandoff: 04/21/2017
 
 ---
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ba85ab354d051990d0a9bae089e45c8df7ade4ea
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 626b152b8511995413af39a41161c29c88429605
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 04/12/2017
 ## <a name="checklist-before-moving-resources"></a>移动资源前需查看的清单
 移动资源之前需执行的一些重要步骤。 验证这些条件可以避免错误。
 
-1. 源订阅与目标订阅必须在同一个 [Active Directory 租户](../active-directory/active-directory-howto-tenant.md)中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 Azure PowerShell 或 Azure CLI。
+1. 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../active-directory/active-directory-howto-tenant.md)中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 Azure PowerShell 或 Azure CLI。
 
   对于 Azure PowerShell，请使用：
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/12/2017
   az account show --subscription "Example Subscription" --query tenantId
   ```
 
-  如果源和目标订阅的租户 ID 不相同，则可以尝试更改订阅的目录。 但是，此选项仅可用于使用 Microsoft 帐户（而非组织帐户）登录的服务管理员。 若要尝试更改目录，请登录到[经典门户](https://manage.windowsazure.com/)，选择“设置”，然后选择订阅。 如果“编辑目录”图标可用，请选择它以更改关联的 Active Directory。 
+  如果源和目标订阅的租户 ID 不相同，则可以尝试更改订阅的目录。 但是，此选项仅可用于使用 Microsoft 帐户（而非组织帐户）登录的服务管理员。 若要尝试更改目录，请登录到[经典门户](https://manage.windowsazure.com/)，选择“设置”，然后选择订阅。 如果“编辑目录”图标可用，请选择它以更改关联的 Azure Active Directory。 
 
   ![编辑目录](./media/resource-group-move-resources/edit-directory.png) 
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 04/12/2017
 
 有以下需要时，请致电支持人员：
 
-* 将资源移到新 Azure 帐户（和 Active Directory 租户）。
+* 将资源移到新 Azure 帐户（和 Azure Active Directory 租户）。
 * 移动经典资源时遇到限制方面的问题。
 
 ## <a name="services-that-enable-move"></a>可移动的服务
@@ -93,7 +93,7 @@ ms.lasthandoff: 04/12/2017
 * IoT 中心
 * 密钥保管库 
 * 负载均衡器
-* Logic Apps
+* 逻辑应用
 * 机器学习
 * 媒体服务
 * Mobile Engagement
@@ -141,13 +141,13 @@ ms.lasthandoff: 04/12/2017
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 无法在订阅之间移动从应用商店资源创建的虚拟机。 需要在当前订阅中取消设置资源，并在新的订阅中再次部署资源
 
-## <a name="app-service-limitations"></a>App Service 限制
-使用 App Service 应用时，你不能只移动 App Service 计划。 若要移动 App Service 应用，可以使用以下选项：
+## <a name="app-service-limitations"></a>应用服务限制
+使用应用服务应用时，你不能只移动应用服务计划。 若要移动应用服务应用，可以使用以下选项：
 
-* 将该资源组中的 App Service 计划以及所有其他 App Service 资源移到尚无 App Service 资源的新资源组。 这一要求意味着，与应用服务计划不关联的应用服务资源也必须移动。 
-* 将应用移到另一个资源组中，但保留原始资源组中的所有 App Service 计划。
+* 将该资源组中的应用服务计划以及所有其他应用服务资源移到尚无应用服务资源的新资源组。 这一要求意味着，与应用服务计划不关联的应用服务资源也必须移动。 
+* 将应用移到另一个资源组中，但保留原始资源组中的所有应用服务计划。
 
-如果原始资源组还包括 Application Insights 资源，则不能移动该资源，因为 Application Insights 目前不支持移动操作。 如果在移动应用服务应用时包括了 Application Insights 资源，则整个移动操作会失败。 不过，即使 Application Insights 和 App Service 计划不与应用位于同一资源组中，应用也可以正常运行。
+如果原始资源组还包括 Application Insights 资源，则不能移动该资源，因为 Application Insights 目前不支持移动操作。 如果在移动应用服务应用时包括了 Application Insights 资源，则整个移动操作会失败。 不过，即使 Application Insights 和应用服务计划不与应用位于同一资源组中，应用也可以正常运行。
 
 例如，如果你的资源组包含：
 
@@ -161,9 +161,9 @@ ms.lasthandoff: 04/12/2017
 * 移动 **web-a**
 * 移动 **web-b**
 
-所有其他的组合都涉及移动不能移动的资源类型 (Application Insights)，或保留在移动 App Service 计划时不能保留的资源类型（任何 App Service 资源类型）。
+所有其他的组合都涉及移动不能移动的资源类型 (Application Insights)，或保留在移动应用服务计划时不能保留的资源类型（任何应用服务资源类型）。
 
-如果你的 Web 应用与其 App Service 计划位于不同的资源组中，而你想要将二者都移到新的资源组，则必须分两步执行移动操作。 例如：
+如果你的 Web 应用与其应用服务计划位于不同的资源组中，而你想要将二者都移到新的资源组，则必须分两步执行移动操作。 例如：
 
 * **web-a** 位于 **web-group** 中
 * **plan-a** 位于 **plan-group** 中

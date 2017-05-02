@@ -15,9 +15,9 @@ ms.workload:
 ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7b7177faa9fa571d3a62ee15b4a0fbfdab3a097f
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: a655c7bf1ea5ca1439d4353df5067c0e07f2d49f
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/24/2017
         * Windows 虚拟机需要 Windows 主目标服务器。 可以重复使用本地进程服务器和主目标计算机。
 * 执行故障回复时，本地需有配置服务器。 故障回复期间，虚拟机必须位于配置服务器数据库中。 否则，故障回复不会成功。 请确保定期计划服务器备份。 如果发生灾难，需要使用相同的 IP 地址还原服务器，让故障回复正常工作。
 * 请确保在 VMware 的主目标虚拟机的配置参数中设置 disk.EnableUUID=true。 如果此行不存在，请添加此行。 若要为虚拟机磁盘 (VMDK) 提供一致的 UUID，以便能够正确进行装载，则必须指定此设置。
-* *不能对主目标服务器使用存储 vMaster*。 这会导致故障回复失败。 虚拟机不会启动，因为无法向其提供磁盘。
+* *不能对主目标服务器使用存储 vMotion*。 这会导致故障回复失败。 虚拟机不会启动，因为无法向其提供磁盘。 若要防止出现此情况，请从 vMotion 列表中排除主目标服务器。
 * 需要将一个新驱动器添加到主目标服务器。 此驱动器称为保留驱动器。 添加新磁盘并格式化驱动器。
 * 主目标具有[在重新保护前要在主目标上检查的公共事项](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server)中列出的其他先决条件。
 
@@ -76,6 +76,11 @@ ms.lasthandoff: 03/24/2017
 
 详细了解如何安装 [Azure 进程服务器](site-recovery-vmware-setup-azure-ps-resource-manager.md)。
 
+> [!TIP]
+> 我们始终建议在故障回复期间使用基于 Azure 的进程服务器。 如果进程服务器离复制虚拟机（Azure 中进行故障转移的计算机）较近，则复制性能较高。 但是，在验证概念或演示期间，可以将本地进程服务器与专用对等互连的 ExpressRoute 一起使用以更快地完成 POC。
+
+
+
 ### <a name="what-are-the-ports-to-be-open-on-different-components-so-that-reprotect-can-work"></a>要使重新保护正常工作，需要在不同的组件上打开哪些端口？
 
 ![用于故障转移-故障回复的所有端口](./media/site-recovery-failback-azure-to-vmware-classic/Failover-Failback.png)
@@ -94,9 +99,12 @@ ms.lasthandoff: 03/24/2017
 
 * 如果虚拟机在 vCenter 服务器本地，主目标服务器需要访问本地虚拟机的 VMDK。 需要分配向虚拟机磁盘写入复制数据的访问权限。 确保在具有读写访问权限的主目标主机上装载本地虚拟机的数据存储。
 
-* 如果虚拟机不在 vCenter 服务器本地，则需要在重新保护过程中创建新的虚拟机。 将在要在其上创建主目标的 ESX 主机上创建此虚拟机。 请谨慎选择 ESX 主机，以便将故障回复虚拟机创建在所需的主机上。
+* 如果虚拟机不在 vCenter 服务器本地，则 Site Recovery 服务需要在重新保护过程中创建新的虚拟机。 将在要在其上创建主目标的 ESX 主机上创建此虚拟机。 请谨慎选择 ESX 主机，以便将故障回复虚拟机创建在所需的主机上。
 
 * *不能对主目标服务器使用存储 vMotion*。 这会导致故障回复失败。 虚拟机不会启动，因为无法向其提供磁盘。
+
+> [!WARNING]
+> 如果主目标受到存储 vMotion 的后期重新保护，则附加到主目标的受保护虚拟机磁盘将迁移到 vMotion 的目标。 如果尝试在此之后进行故障回复，分离磁盘将失败，指出“未找到磁盘”。 此后，将很难查找存储帐户中的磁盘。 你将需要手动找到磁盘，并将它们附加到虚拟机。 在此之后，可以启动本地虚拟机。
 
 * 需要将一个新驱动器添加到现有的 Windows 主目标服务器。 此驱动器称为保留驱动器。 添加新磁盘并格式化驱动器。 保留驱动器用于停止虚拟机复制回本地站点的时间点。 下面是保留驱动器的部分条件，如果不符合这些条件，将不会为主目标服务器列出该驱动器。
 
@@ -113,6 +121,11 @@ ms.lasthandoff: 03/24/2017
    * Windows 的默认保留卷是 R 卷。
 
    * Linux 的默认保留卷是 /mnt/retention。
+   
+   > [!IMPORTANT]
+   > 如果使用的是 CS+PS 计算机或规模计算机或 PS+MT 计算机，则需要添加一个新驱动器。 新驱动器应满足上述要求。 如果保留驱动器不存在，则将不会在门户上的选择下拉列表中列出任何内容。 将驱动器添加到本地主目标后，驱动器将需要最多十五分钟才能在门户上的选择项中反映出来。 如果 15 分钟后未显示该驱动器，你还可以刷新配置服务器。
+
+
 
 * Linux 故障转移虚拟机需要 Linux 主目标服务器。 Windows 故障转移虚拟机需要 Windows 主目标服务器。
 

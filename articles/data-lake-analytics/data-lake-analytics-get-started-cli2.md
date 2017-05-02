@@ -111,8 +111,8 @@ Azure 门户提供一个用户界面，可将一些示例数据复制到默认 D
 若要使用 CLI 2.0 上载文件，请使用以下命令：
 
 ```azurecli
-az dls file upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
-az dls file list --account "<Data Lake Store Account Name>" --path "<Path>"
+az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
+az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
 
 Data Lake Analytics 还可以访问 Azure Blob 存储。  有关将数据上传到 Azure Blob 存储的详细信息，请参阅 [将 Azure CLI 用于 Azure 存储](../storage/storage-azure-cli.md)。
