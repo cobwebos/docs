@@ -16,13 +16,15 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ef5d4af5d5dad2b548ab01be5ba9c4769b21416a
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: bed8e0c2b5d4d42fb0510f6b55cfab7404c01b11
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="save-iot-hub-messages-that-contain-information-like-sensor-data-to-azure-table-storage"></a>将包含传感器数据等信息的 IoT 中心消息保存到 Azure 表存储
+
+![端到端关系图](media/iot-hub-get-started-e2e-diagram/3.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -38,7 +40,7 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="what-you-will-need"></a>所需的项目
 
-- 满足已完成的教程[将 ESP8266 连接到 Azure IoT 中心](iot-hub-arduino-huzzah-esp8266-get-started.md)所述的以下要求：
+- 已完成教程[设置设备](iot-hub-raspberry-pi-kit-node-get-started.md)，其中涵盖以下要求：
   - 一个有效的 Azure 订阅。
   - 已订阅中创建一个 Azure IoT 中心。
   - 一个可向 Azure IoT 中心发送消息的正常运行的应用程序。

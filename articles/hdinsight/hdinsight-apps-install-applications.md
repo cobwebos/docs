@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 04/25/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 3b2a18232a9ab8c1b587cfa4fa14ced0c3b515ba
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: cb9753500dc9ed13ef10a757b247b703bc7f1644
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -34,8 +34,8 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 * **DATAIKU DDS on HDInsight**：Dataiku DSS (Data Science Studio) 是一个软件，数据专家（数据科学家、业务分析师、开发人员...）可以使用它对针对性很强的服务进行原型、生成和部署方面的操作，将原始数据转换成有影响力的业务预测。
 * **Datameer**： [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) 提供一种交互方式，让分析师发现、分析和可视化大数据的结果。 轻松拉进其他数据源，以发现新的关系并迅速获取所需的答案。
 * **Streamsets Data Collector for HDnsight** 提供了一个全面集成的开发环境 (IDE)，可让你在其中设计、测试、部署和管理汇合流和批处理数据的全面互通引入管道，并提供各种流中转换 - 所有这一切都无需编写自定义代码。 
-* **Cask CDAP 3.5 for HDInsight** 为大数据提供首个统一的集成平台，可将数据应用程序和数据湖的生产时间缩短 80%。 此应用程序仅支持标准 HBase 3.4 群集。
-
+* Cask CDAP 3.5/4.0/4.1 for HDInsight 为大数据提供首个统一的集成平台，可将数据应用程序和数据湖的生产时间缩短 80%。 此应用程序仅支持标准 HBase 3.4 群集。
+* H2O Artificial Intelligence for HDInsight (Beta) H2O Sparkling Water 支持以下分布式算法：GLM、Naïve Bayes、分布式随机森林、梯度提升机、深层神经网络、深度学习、K 平均值、PCA、通用化低级别模型、异常检测和自动编码器。
 
 本文提供的说明将使用 Azure 门户。 也可以从门户导出 Azure Resource Manager 模板或从供应商处获取 Resource Manage 模板的副本，然后使用 Azure PowerShell 和 Azure CLI 部署模板。  请参阅 [使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 

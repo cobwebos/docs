@@ -12,127 +12,125 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
-ms.author: rachelap
+ms.date: 04/23/2017
+ms.author: rachelap, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: b7334f68e4526b716210b28388afcd0ee6e48940
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: e6f5798b260c4923452dcc96c18d4839f5c34bfc
+ms.lasthandoff: 04/25/2017
 
 
 ---
-# <a name="how-to-configure-azure-function-app-settings"></a>如何配置 Azure Function App 设置
-## <a name="settings-overview"></a>设置概述
-可在门户左下角单击“Function App 设置”链接来管理 Azure Function App 设置。 Azure Function App 设置适用于应用中的所有函数。
+# <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 
 
-1. 转到 [Azure 门户](http://portal.azure.com)，然后使用你的 Azure 帐户登录。
-2. 在门户左下角单击“Function App 设置”。 此操作将显示多个可供选择的配置选项。 
+在 Azure Functions 中，Function App 提供各个函数的执行上下文。 Function App 行为适用于由给定 Function App 托管的所有函数。 本主题介绍如何在 Azure 门户中配置和管理 Function App。
 
-![Azure Function App 设置](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+若要开始，请转到 [Azure 门户](http://portal.azure.com)，然后使用 Azure 帐户登录。 在门户顶端的搜索栏中，键入 Function App 的名称，并从列表中将其选中。 选择 Function App 后，将看到以下页面：
 
-## <a name="develop"></a>开发
-### <a name="app-service-editor"></a>应用服务编辑器
-应用服务编辑器是一种高级的门户内编辑器，可用于修改诸如 JSON 配置文件和代码文件等内容。 选择此选项会启动单独的浏览器选项卡和基本编辑器。 借此，可与 GitHub 集成、运行和调试代码，并可修改 Function App 设置。
+![Azure 门户中 Function App 的概述](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+
+## <a name="manage-app-service-settings"></a>Function App 设置边栏选项卡
+
+![Azure 门户中 Function App 的概述。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+
+可在“设置”选项卡中更新 Function App 使用的 Functions 运行时版本。 也可在其中管理用于限制对 Function App 托管的所有函数的 HTTP 访问的主机密钥。
+
+Functions 支持消耗托管计划和应用服务托管计划。 有关详细信息，请参阅[为 Azure Functions 选择正确的服务计划](functions-scale.md)。 为获得消耗计划更好的预测性，Functions 允许通过设置每日使用配额（以千兆字节/秒为单位），从而限制平台使用。 一旦达到每日使用配额，Function App 就会停止运行。 可在设置每日支出配额的同一上下文中重新启用因达到支出配额而停止的 Function App。 有关计费的详细信息，请参阅 [Azure Functions 定价页](http://azure.microsoft.com/pricing/details/functions/)。   
+
+## <a name="platform-features-tab"></a>平台功能选项卡
+
+![Function App 平台功能选项卡。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
+
+Function App 运行于 Azure 应用服务平台，并由该平台维护。 在这种情况下，Function App 有权访问 Azure 核心 Web 托管平台的大多数功能。 可在“平台功能”选项卡中访问应用服务平台中许多可用于 Function App 的功能。 
+
+> [!NOTE]
+> Function App 运行于消耗托管计划中时，并非所有应用服务功能均可用。
+
+本主题的其余部分侧重于 Azure 门户中以下可用于 Functions 的应用服务功能：
+
++ [应用服务编辑器](#editor)
++ [应用程序设置](#settings) 
++ [Console](#console)
++ [高级工具 (Kudu)](#kudu)
++ [部署选项](#deployment)
++ [CORS](#cors)
++ [身份验证](#auth)
++ [API 定义](#swagger)
+
+若要深入了解如何使用应用服务设置，请参阅[配置 Azure 应用服务设置](../app-service-web/web-sites-configure.md)。
+
+### <a name="editor"></a>应用服务编辑器
+
+| | |
+|-|-|
+| ![Function App 应用服务编辑器。](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | 应用服务编辑器是一种高级的门户内编辑器，可用于修改诸如 JSON 配置文件和代码文件等内容。 选择此选项会启动单独的浏览器选项卡和基本编辑器。 借此，可与 Git 存储库集成、运行和调试代码，并可修改 Function App 设置。 同默认 Function App 边栏选项卡相比，此编辑器为 Functions 提供了增强的开发环境。    |
 
 ![应用服务编辑器](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-### <a name="application-settings"></a>应用程序设置
-管理环境变量、Framework 版本，远程调试、应用设置、连接字符串、默认文档等。这些设置特定于 Function App。 
+### <a name="settings"></a>应用程序设置
 
-若要配置应用设置，请单击“配置应用设置”链接。 
+| | |
+|-|-|
+| ![Function App 应用程序设置。](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | 可在应用服务“应用程序设置”边栏选项卡中配置和管理框架版本、远程调试、应用设置和连接字符串。 将 Function App 与其他 Azure 和第三方服务集成时，可在此处修改这些设置。 |
 
-![配置应用设置](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
+![配置应用程序设置](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 
-### <a name="dev-console"></a>开发人员控制台
-可以使用 Azure 函数门户内控制台执行 DOS 样式命令。 常见命令包括创建和导航目录与文件，以及执行批处理文件和脚本。 
+### <a name="console"></a>控制台
 
-> [!NOTE]
-> 可以上传脚本，但首先必须在 Azure 函数的“高级设置”中配置 FTP 客户端 。
-> 
-> 
+| | |
+|-|-|
+| ![Azure 门户中的 Function App 控制台](./media/functions-how-to-use-azure-function-app-settings/function-app-console.png) | 要从命令行与 Function App 交互时，门户内控制台就是非常合适的开发人员工具。 常见命令包括创建和导航目录与文件，以及执行批处理文件和脚本。 |
 
-若要打开门户内控制台，请单击“打开开发人员控制台”。
+![Function App 控制台](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
-![配置函数应用内存大小](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
+### <a name="kudu"></a>高级工具 (Kudu)
 
-> [!NOTE]
-> 在内附 ASCII 图文的控制台中工作，可增添酷炫感。
-> 
-> 
-
-## <a name="deploy"></a>部署
-### <a name="continuous-integration"></a>持续集成
-可将函数应用与 GitHub、Visual Studio Team Services 等集成。
-
-1. 单击“配置持续集成”链接。 这将打开包含选项的“部署”窗格。
-2. 请在“部署”窗格中单击“安装”以显示“部署源”窗格，它包含一个选项：单击“选择源”以显示可用源。 
-3. 选择任何可用的部署源：通过单击选择 Visual Studio Team Services、OneDrive、本地 Git 存储库、GitHub、Bitbucket、DropBox 或外部存储库。 
-   
-    ![配置函数应用的 CI](./media/functions-how-to-use-azure-function-app-settings/configure-function-ci.png)
-4. 按不同部署源的提示，输入凭据和信息。 所需凭据和信息可能因选中的源而略有不同。 
-
-设置 CI 后，推送到到已配置源的连接代码会自动部署到此函数应用。
-
-### <a name="kudu"></a>Kudu
-通过 Kudu 可访问 Function App 的高级管理功能。
-
-若要打开 Kudu，请单击“转到 Kudu”。 此操作将打开具有 Kudu Web 管理的全新浏览器窗口。
-
-> [!NOTE]
-> 或者在函数 URL 中插入“scm”来启动 **Kudu**，如下所示：```https://<YourFunctionName>.scm.azurewebsites.net/```
-> 
-> 
-
-从 Kudu 网页中，可以查看和管理系统信息、应用设置、环境变量、HTTP 标头、服务器变量等信息。
+| | |
+|-|-|
+| ![Azure 门户中的 Function App Kudu](./media/functions-how-to-use-azure-function-app-settings/function-app-advanced-tools.png) | 应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 `https://<myfunctionapp>.scm.azurewebsites.net/`），启动 Kudu |
 
 ![配置 Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-## <a name="manage-app-service-settings"></a>管理：应用服务设置
-如同管理任何其他 App Service 实例一样管理你的 Function App。 通过此选项可访问上述所有设置和其他几项设置。  
 
-若要打开高级设置，请单击“高级设置”链接。 
+### <a name="a-namedeploymentdeployment-options"></a><a name="deployment">部署选项
 
-![配置应用服务设置](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-settings.png)
+| | |
+|-|-|
+| ![Azure 门户中的 Function App 部署选项](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Functions 允许在本地计算机上开发函数代码。 然后，可将本地 Function App 项目上传到 Azure。 除了传统的 FTP 上传外，Functions 还允许使用 GitHub、VSTS、Dropbox、Bitbucket 等常用的持续集成解决方案部署 Function App。 有关详细信息，请参阅 [Azure Functions 的连续部署](functions-continuous-deployment.md)。 若要使用 FTP 或本地 Git 进行手动上传，还需[配置部署凭据](functions-continuous-deployment.md#credentials)。 |
 
-有关如何配置应用服务设置的详细信息，请参阅 [配置 Azure 应用服务设置](../app-service-web/web-sites-configure.md)。
 
-## <a name="manage-cors"></a>管理：CORS
-通常情况下，出于安全考虑，不允许从外部源对主机（域）调用（例如通过浏览器的 Ajax 调用）。 否则会发送并在后端上执行恶意代码。 最安全的路由是将所有代码源列入阻止列表（信任的代码除外）。 可以通过配置跨域资源共享 (CORS) 来配置接受来自 Azure 函数调用的源。 通过 CORS，可列出特定域，这些域是可在 Azure Function App 中调用函数的 JavaScript 源。 
+### <a name="cors"></a>CORS
 
-1. 若要配置 CORS，请单击“配置 CORS”链接。 
-2. 输入要列入允许列表的域。
+| | |
+|-|-|
+| ![Azure 门户中的 Function App CORS](./media/functions-how-to-use-azure-function-app-settings/function-app-cors.png) | 为了防止在服务中执行破坏性代码，应用服务将阻止从外部源调用 Function App。 Functions 支持跨源资源共享 (CORS)，以便定义允许源的“允许列表”，函数可接受来自该允许源的远程请求。  |
 
 ![配置函数应用的 CORS](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-## <a name="manage-authenticationauthorization"></a>管理：身份验证/授权
-对于使用 HTTP 触发器的函数，可以要求对调用进行身份验证。
+### <a name="auth"></a>身份验证
 
-1. 若要配置身份验证，请单击“配置身份验证”链接。
-2. 将“应用服务身份验证”按钮切换为“打开”。
+| | |
+|-|-|
+| ![Azure 门户中的 Function App 身份验证](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | 函数使用 HTTP 触发器时，可以要求首先对调用进行身份验证。 应用服务支持 Azure Active Directory 身份验证和使用社交提供程序登录，如 Facebook、Microsoft 和 Twitter。 有关配置特定身份验证提供程序的详细信息，请参阅 [Azure 应用服务身份验证概述](../app-service/app-service-authentication-overview.md)。 |
 
-![配置函数应用的 CI](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
+![配置 Function App 的身份验证](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
-大多数身份验证提供程序均需 API 密钥/客户端 ID 和密码；但 Microsoft 帐户和 Facebook 选项还允许用户定义作用域（特定的授权凭据）。 Active Directory 具有可以设置的几个快速或高级配置设置。
 
-有关配置特定身份验证提供程序的详细信息，请参阅 [Azure 应用服务身份验证概述](../app-service/app-service-authentication-overview.md)。
+### <a name="swagger"></a>API 定义
 
-## <a name="manage-api-definition"></a>管理：API 定义
-允许客户更轻松地使用 HTTP 触发的函数。
-
-1. 若要设置 API，请单击“配置 API 元数据”。 
-2. 输入指向 Swagger json 文件的 URL。
+| | |
+|-|-|
+| ![Azure 门户中的 Function App API Swagger 定义](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions 支持 Swagger，以便使客户更轻松地使用 HTTP 触发的函数。 有关使用 Swagger 创建 API 定义的详细信息，请访问 [开始使用 Azure 中的 API 应用、ASP.NET 和 Swagger](../app-service-api/app-service-api-dotnet-get-started.md)。 还可以使用函数代理来定义多个函数的单个 API 图面。 有关详细信息，请参阅[使用 Azure Functions 代理](functions-proxies.md)。 |
 
 ![配置函数应用的 API](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
 
-有关使用 Swagger 创建 API 定义的详细信息，请访问 [开始使用 Azure 中的 API 应用、ASP.NET 和 Swagger](../app-service-api/app-service-api-dotnet-get-started.md)。
 
-## <a name="daily-usage-quota"></a>每日使用配额
-
-使用 Azure Functions，可通过设置每日支出配额预见性地限制平台使用情况。 一旦达到每日支出配额，Function App 就会停止运行。 可在设置每日支出配额的同一上下文中重新启用因达到支出配额而停止的 Function App。 支出配额的单位为计费单位：GB-s（GB/秒）；有关计费模型的详细信息，请参阅 [Azure Functions 定价页](http://azure.microsoft.com/pricing/details/functions/)。 
-
-![配置函数应用内存大小](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-quota.png)
 
 ## <a name="next-steps"></a>后续步骤
+
++ [配置 Azure 应用服务设置](../app-service-web/web-sites-configure.md)
++ [Azure Functions 的连续部署](functions-continuous-deployment.md)
+
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
 

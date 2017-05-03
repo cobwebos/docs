@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: c041802cd86f9e8b07771413f867691d76b01abf
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: b94b8b84ae2cf26a1680f816460cc86c4d79e885
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="provision-the-linux-data-science-virtual-machine"></a>预配 Linux 数据科研虚拟机
-Linux 数据科学虚拟机是 Azure 虚拟机，附带一组预安装的工具。 这些工具通常用于进行数据分析和机器学习。 所含关键软件组件包括：
+Linux 数据科学虚拟机是基于 CentOS 的 Azure 虚拟机，附带一组预安装的工具。 这些工具通常用于进行数据分析和机器学习。 所含关键软件组件包括：
 
 * Microsoft R Server Developer Edition
 * Anaconda Python 分发版（2.7 和 3.5 版），包括常用数据分析库
@@ -53,6 +53,9 @@ Linux 数据科学虚拟机是 Azure 虚拟机，附带一组预安装的工具�
 Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始分析项目。 它支持处理各种语言版本的任务，包括 R、Python、SQL、Java 和 C++。 Eclipse 提供 IDE，可开发易于使用的代码并对其进行测试。 使用 VM 中包含的 Azure SDK，可在适用于 Microsoft 云平台的 Linux 上使用各种服务来生成应用程序。 此外，还可以访问其他预安装语言，如 Ruby、Perl、PHP 和 node.js。
 
 此数据科学 VM 映像不产生软件费用。 只需根据使用该 VM 映像预配的虚拟机大小，支付相应的 Azure 硬件使用费。 有关计算费用的更多详细信息，请访问 [Azure 应用商店上的 VM 列表页](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)。
+
+## <a name="other-versions-of-the-data-science-virtual-machine"></a>其他版本的数据科学虚拟机
+[Ubuntu](machine-learning-data-science-dsvm-ubuntu-intro.md) 映像同样可用，它包含多种与 CentOS 映像相同的工具以及加深度学习框架。 [Windows](machine-learning-data-science-provision-vm.md) 映像同样可用。
 
 ## <a name="prerequisites"></a>先决条件
 创建 Linux 数据科学虚拟机之前，必须具备以下条件：

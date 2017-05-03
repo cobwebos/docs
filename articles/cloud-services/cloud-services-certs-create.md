@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 04/19/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 885180e9759d0702d4e0988a7a1b4eb9097d4433
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 7e68a738feff2eb2330b74d942b0a7f42d07df78
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -58,8 +58,10 @@ Azure 使用的证书可以包含一个私钥或公钥。 证书具有指纹，�
 * X.509 证书。
 * 包含私钥。
 * 为密钥交换（.pfx 文件）而创建。
-* 使用者名称必须与用于访问云服务的域匹配。 
+* 使用者名称必须与用于访问云服务的域匹配。
+
     > 你无法获取 cloudapp.net 域（或与 Azure 相关的任何域）的 SSL 证书；该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，**contoso.net**，而不是 **contoso.cloudapp.net**。
+
 * 至少为 2048 位加密。
 * **仅服务证书**：客户端证书必须驻留在*个人*证书存储区。
 
@@ -77,8 +79,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 
 > [!NOTE]
 > 如果要将此证书用于某个 IP 地址而不是域，请在 -DnsName 参数中使用该 IP 地址。
-> 
-> 
+
 
 如果要将此[证书用于管理门户](../azure-api-management-certs.md)，请将其导出到 **.cer** 文件：
 
@@ -98,11 +99,6 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ## <a name="next-steps"></a>后续步骤
 [将服务证书上载到 Azure 经典门户](cloud-services-configure-ssl-certificate.md)（或 [Azure 门户](cloud-services-configure-ssl-certificate-portal.md)）。
 
-将[管理 API 证书](../azure-api-management-certs.md)上载到 Azure 经典门户。
-
-> [!NOTE]
-> Azure 门户不使用管理证书来访问 API，而是使用用户帐户。
-> 
-> 
+将[管理 API 证书](../azure-api-management-certs.md)上载到 Azure 经典门户。 Azure 门户不使用管理证书进行身份验证。
 
 

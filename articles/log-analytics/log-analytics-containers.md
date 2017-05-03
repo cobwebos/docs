@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/24/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 45b07f5dd29b7e920ac2abe6765020e0337ecf95
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: f5c5abc988cd363cafe8c07f83eb2686a83ee1a2
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -43,6 +43,10 @@ ms.lasthandoff: 03/11/2017
 
 
 可以在 [GitHub](https://github.com/Microsoft/OMS-docker) 上查看容器主机支持的 Docker 和 Linux 操作系统版本。
+
+如果你的某个 Kubernetes 群集 使用 Azure 容器服务，请前往[使用 Microsoft Operations Management Suite (OMS) 监视 Azure 容器服务群集](../container-service/container-service-kubernetes-oms.md)了解详细信息。
+
+如果你拥有 Azure 容器服务 DC/OS 群集，请前往[通过 Operations Management Suite 监视 Azure 容器服务 DC/OS 群集](../container-service/container-service-monitoring-oms.md)了解详细信息。
 
 请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。
 
@@ -160,7 +164,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 
 | 数据类型 | 日志搜索中的数据类型 | 字段 |
 | --- | --- | --- |
-| 主机和容器的性能 | `Type=Perf` | 计算机、ObjectName、CounterName、处理器时间百分比、磁盘读取 MB、磁盘写入 MB、内存使用 MB、网络接收字节数、网络发送字节数、处理器使用描述、网络、CounterValue、TimeGenerated、CounterPath、SourceSystem |
+| 主机和容器的性能 | `Type=Perf` | 计算机、ObjectName、CounterName、处理器时间百分比、磁盘读取 MB、磁盘写入 MB、内存使用 MB、网络接收字节数、网络发送字节数、处理器使用秒数、网络、CounterValue、TimeGenerated、CounterPath、SourceSystem |
 | 容器库存 | `Type=ContainerInventory` | TimeGenerated、计算机、容器名称、ContainerHostname、映像、ImageTag、ContinerState、ExitCode、EnvironmentVar、命令、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
 | 容器映像库存 | `Type=ContainerImageInventory` | TimeGenerated、计算机、映像、ImageTag、ImageSize、VirtualSize、正在运行、暂停、停止、失败、SourceSystem、ImageID、TotalContainer |
 | 容器日志 | `Type=ContainerLog` | TimeGenerated、计算机、映像 ID、容器名称、LogEntrySource、LogEntry、SourceSystem、ContainerID |
@@ -174,7 +178,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 该磁贴概述了你在环境中拥有多少个容器以及它们是失败、正在运行还是已停止。
 
 ### <a name="using-the-containers-dashboard"></a>使用容器仪表板
-单击“**容器**”磁贴。 你将在磁贴中看到按以下内容组织的视图：
+单击“容器”磁贴。 你将在磁贴中看到按以下内容组织的视图：
 
 * 容器事件
 * 错误
@@ -182,7 +186,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 * 容器映像库存
 * CPU 和内存性能
 
-仪表板中的每个窗格都是以收集的数据为基础的搜索可视表示形式。
+仪表板中的每个窗格都是以可视化形式表示的对收集的数据执行的搜索。
 
 ![容器仪表板](./media/log-analytics-containers/containers-dash01.png)
 
@@ -214,7 +218,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
    `Type=ContainerInventory <ImageID>` 此时将显示日志。 你可以滚动查看失败的容器。  
    ![失败的容器](./media/log-analytics-containers/containers-failed04.png)
 
-## <a name="search-logs-for-container-data"></a>搜索容器数据的日志
+## <a name="search-logs-for-container-data"></a>在日志中搜索容器数据
 当你解决特定错误时，它可以帮助你查看环境中发生错误的位置。 以下日志类型将帮助你创建查询以返回所需的信息。
 
 * **ContainerInventory** – 当你需要有关容器位置、容器名称和容器中运行的映像的信息时，请使用此类型。
@@ -230,7 +234,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 
 **查看性能信息**
 
-当你开始构造查询时，它有助于查看首先构造什么查询。 例如，若要查看所有性能数据，请输入以下搜索查询，以尝试广泛的查询。
+开始构造查询时，最好首先了解哪些查询可以实现。 例如，若要查看所有性能数据，请输入以下搜索查询，以尝试广泛的查询。
 
 ```
 Type=Perf
@@ -238,11 +242,11 @@ Type=Perf
 
 ![容器性能](./media/log-analytics-containers/containers-perf01.png)
 
-当你在结果中单击**指标**一词时，可以更图形化的形式查看此结果。
+当你在结果中单击**指标**一词时，可以更加图形化的形式查看此结果。
 
 ![容器性能](./media/log-analytics-containers/containers-perf02.png)
 
-你可以通过在查询右侧键入特定容器的名称，将看到的性能数据分配到特定容器。
+你可以通过在查询右侧键入特定容器的名称，将性能数据的显示范围限定到特定容器。
 
 ```
 Type=Perf <containerName>
@@ -258,7 +262,7 @@ Type=Perf <containerName>
 ![容器查询](./media/log-analytics-containers/containers-queries.png)
 
 ## <a name="saving-log-search-queries"></a>保存日志搜索查询
-保存查询是 Log Analytics 中的一项标准功能。 通过保存这些查询，你将拥有那些你觉得有用的查询以便日后使用。
+保存查询是 Log Analytics 中的一项标准功能。 通过保存这些查询，你日后可以方便地使用你觉得有用的查询。
 
 创建一个对你有用的查询后，单击“日志搜索”页底部的“**收藏夹**”对其进行保存。 稍后可以从“**我的仪表板**”页轻松访问它。
 

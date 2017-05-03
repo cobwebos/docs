@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 04/20/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: f819992125f77897545ce3194870b1eadf400852
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: fc6e4eaa34694e2b20cb53b3e457803c59bf76b9
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -609,6 +609,85 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | me
     Type=Event | Dedup EventID | sort TimeGenerated DESC
 
 此示例针对每个 EventID 返回一个事件（最新的事件）。
+
+### <a name="join"></a>Join
+联接两个查询的结果，组成一个结果集。  支持下表所述的多种联接类型。
+  
+| 联接类型 | 说明 |
+|:--|:--|
+| 内部 | 只返回两个查询中值相匹配的记录。 |
+| 外部 | 返回两个查询中的所有记录。  |
+| 左侧  | 返回左侧查询中的所有记录，返回右侧查询中匹配的记录。 |
+
+
+- 联接当前不支持包含“IN”关键字或“Measure”命令的查询。
+- 当前，一个联接中只能包含单个字段。
+- 单个搜索不能包含多个联接。
+
+**语法**
+
+```
+<left-query> | JOIN <join-type> <left-query-field-name> (<right-query>) <right-query-field-name>
+```
+
+**示例**
+
+为说明不同的联接类型，请考虑联接一个收集自名为 MyBackup_CL 的自定义日志的数据类型，其中每台计算机都具有检测信号。  这些数据类型具有下列数据。
+
+`Type = MyBackup_CL`
+
+| TimeGenerated | 计算机 | LastBackupStatus |
+|:---|:---|:---|
+| 2017/4/20 凌晨 01:26:32.137 | srv01.contoso.com | 成功 |
+| 2017/4/20 凌晨 02:13:12.381 | srv02.contoso.com | 成功 |
+| 2017/4/20 凌晨 02:13:12.381 | srv03.contoso.com | 失败 |
+
+`Type = Hearbeat`（仅显示字段的子集）
+
+| TimeGenerated | 计算机 | ComputerIP |
+|:---|:---|:---|
+| 2017/4/21 中午 12:01:34.482 | srv01.contoso.com | 10.10.100.1 |
+| 2017/4/21 中午 12:02:21.916 | srv02.contoso.com | 10.10.100.2 |
+| 2017/4/21 中午 12:01:47.373 | srv04.contoso.com | 10.10.100.4 |
+
+#### <a name="inner-join"></a>内部联接
+
+`Type=MyBackup_CL | join inner Computer (Type=Heartbeat) Computer`
+
+返回下列记录，其中计算机字段与两种数据类型都匹配。
+
+| 计算机| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
+|:---|:---|:---|:---|:---|:---|
+| srv01.contoso.com | 2017/4/20 凌晨 01:26:32.137 | 成功 | 2017/4/21 中午 12:01:34.482 | 10.10.100.1 | 检测信号 |
+| srv02.contoso.com | 2017/4/20 凌晨 02:13:12.381 | 成功 | 2017/4/21 中午 12:02:21.916 | 10.10.100.2 | 检测信号 |
+
+
+#### <a name="outer-join"></a>外部联接
+
+`Type=MyBackup_CL | join outer Computer (Type=Heartbeat) Computer`
+
+为两种数据类型返回下列记录。
+
+| 计算机| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
+|:---|:---|:---|:---|:---|:---|
+| srv01.contoso.com | 2017/4/20 凌晨 01:26:32.137 | 成功  | 2017/4/21 中午 12:01:34.482 | 10.10.100.1 | 检测信号 |
+| srv02.contoso.com | 2017/4/20 凌晨 02:14:12.381 | 成功  | 2017/4/21 中午 12:02:21.916 | 10.10.100.2 | 检测信号 |
+| srv03.contoso.com | 2017/4/20 凌晨 01:33:35.974 | 失败  | 2017/4/21 中午 12:01:47.373 | | |
+| srv04.contoso.com |                           |          | 2017/4/21 中午 12:01:47.373 | 10.10.100.2 | 检测信号 |
+
+
+
+#### <a name="left-join"></a>左侧联接
+
+`Type=MyBackup_CL | join left Computer (Type=Heartbeat) Computer`
+
+从 MyBackup_CL 返回下列记录，其中包含任何来自检测信号的匹配字段。
+
+| 计算机| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
+|:---|:---|:---|:---|:---|:---|
+| srv01.contoso.com | 2017/4/20 凌晨 01:26:32.137 | 成功 | 2017/4/21 中午 12:01:34.482 | 10.10.100.1 | 检测信号 |
+| srv02.contoso.com | 2017/4/20 凌晨 02:13:12.381 | 成功 | 2017/4/21 中午 12:02:21.916 | 10.10.100.2 | 检测信号 |
+| srv03.contoso.com | 2017/4/20 凌晨 02:13:12.381 | 失败 | | | |
 
 
 ### <a name="extend"></a>Extend

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/03/2017
+ms.date: 04/21/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 514319dfcb532ab3708352b2467c095d7775b714
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 30edf20d7fc742da9b42d3ea9baafcce31141259
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -33,8 +33,8 @@ Azure Data Lake 存储是与 HDFS 兼容的云存储服务，可为数据提供�
 
 在 HDInsight 看来，Data Lake Store 是一种兼容 HDFS 的文件系统，因此可以通过 Storm-HDFS Bolt 向其写入内容。 通过 HDInsight 使用 Azure Data Lake 时，可以使用 `adl://` 文件方案。
 
-* 如果 Data Lake Storage 是群集的主存储器，则使用 `adl:///`。 这是群集存储器在 Azure Data Lake 中的根路径。 该路径在你的 Data Lake Storage 帐户中可能转换为路径 /clusters/CLUSTERNAME。
-* 如果 Data Lake Storage 是群集的辅助存储器，则使用 `adl://DATALAKEACCOUNT.azuredatalakestore.net/`。 此 URI 指定数据写入到的 Data Lake Storage 帐户。 数据从 Data Lake Store 的根目录处开始写入。
+* 如果 Data Lake Store 是群集的主存储器，则使用 `adl:///`。 这是群集存储器在 Azure Data Lake 中的根路径。 该路径在你的 Data Lake Store 帐户中可能转换为路径 /clusters/CLUSTERNAME。
+* 如果 Data Lake Store 是群集的附加存储器，则使用 `adl://DATALAKEACCOUNT.azuredatalakestore.net/`。 此 URI 指定数据写入到的 Data Lake Store 帐户。 数据从 Data Lake Store 的根目录处开始写入。
 
     > [!NOTE]
     > 你也可以使用此 URI 格式将数据保存到包含群集主存储器的 Data Lake Store 帐户。 这样一来，就可以将数据保存在包含 HDInsight 的目录路径外。

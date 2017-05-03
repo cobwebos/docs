@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1d1eec1457917baef1acab27f7c60bdb048837a9
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: f3bb01da7764e467963a47d3d5485679411c9167
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-azure-web-apps"></a>使用 Azure Web 应用可视化 Azure IoT 中心的实时传感器数据
 
-![传感器、IoT 设备、IoT 中心与 Azure Web 应用之间的连接](media/iot-hub-live-data-visualization-in-web-apps/1_sensor-iot-device-azure-iot-hub-web-app-connection.png)
+![端到端关系图](media/iot-hub-get-started-e2e-diagram/5.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="what-you-need"></a>所需条件
 
-- 满足已完成的教程[将 ESP8266 连接到 Azure IoT 中心](iot-hub-arduino-huzzah-esp8266-get-started.md)所述的以下要求：
+- 已完成教程[设置设备](iot-hub-raspberry-pi-kit-node-get-started.md)，其中涵盖以下要求：
   - 一个有效的 Azure 订阅。
   - 已在订阅中创建一个 Azure IoT 中心。
   - 一个可向 Azure IoT 中心发送消息的客户端应用程序。
@@ -57,16 +57,7 @@ ms.lasthandoff: 04/12/2017
 
    ![创建 Azure Web 应用](media/iot-hub-live-data-visualization-in-web-apps/2_create-web-app-azure.png)
 
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
-
-应用程序使用使用者组从 Azure IoT 中心提取数据。 在本课程中，你将创建一个使用者组，供 Web 应用程序用来从 IoT 中心读取数据。
-
-若要将使用者组添加到 IoT 中心，请执行以下步骤：
-
-1. 在 [Azure 门户](https://ms.portal.azure.com/)中打开 IoT 中心。
-1. 在左窗格中单击“终结点”，在中间窗格中选择“事件”，在右窗格的“使用者组”下面输入名称，然后单击“保存”。
-
-   ![在 Azure IoT 中心内创建使用者组](media/iot-hub-live-data-visualization-in-web-apps/3_add-consumer-group-iot-hub-azure.png)
+[!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
 ## <a name="configure-the-web-app-to-read-data-from-your-iot-hub"></a>将 Web 应用配置为从 IoT 中心读取数据
 
@@ -75,8 +66,8 @@ ms.lasthandoff: 04/12/2017
 
    | 键                                   | 值                                                        |
    |---------------------------------------|--------------------------------------------------------------|
-   | Azure.IoT.IoTHub.ConnectionString     | 从 IoT 中心资源管理器获取                               |
-   | Azure.IoT.IoTHub.DeviceId             | 从 IoT 中心资源管理器获取                               |
+   | Azure.IoT.IoTHub.ConnectionString     | 从 iothub-explorer 获取                                |
+   | Azure.IoT.IoTHub.DeviceId             | 从 iothub-explorer 获取                                |
    | Azure.IoT.IoTHub.ConsumerGroup        | 添加到 IoT 中心的使用者组的名称  |
 
    ![将包含键值对的设置添加到 Azure Web 应用](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)

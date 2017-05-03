@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4e890582e790ad9187287e1323159098e19d7325
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: c2d14be5f27a775a14039bd63c5ccb5cd7b10f9a
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -40,7 +40,7 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
 | Oracle Linux | 5、6 和 7 |
 | Red Hat Enterprise Linux Server | 5、6 和 7 |
 | Debian GNU/Linux | 6、7 和 8 |
-| Ubuntu | 12.04 LTS、14.04 LTS、15.04 |
+| Ubuntu | 12.04 LTS、14.04 LTS、15.04、15.10 和 16.04 LTS |
 | SUSE Linux Enterprise Server | 11 和 12 |
 
 ### <a name="internet-connectivity"></a>Internet 连接
@@ -49,7 +49,7 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 OMS 代理扩展的架构。 此扩展需要目标 OMS 工作区的工作区 ID 和工作区密钥，可以在 OMS 门户中找到此 ID 和密钥。 由于工作区密钥应视为敏感数据，因此它应存储在受保护的设置配置。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
+以下 JSON 显示 OMS 代理扩展的架构。 此扩展需要目标 OMS 工作区的工作区 ID 和工作区密钥，这些值在 OMS 门户中提供。 由于工作区密钥应视为敏感数据，因此它应存储在受保护的设置配置。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
 
 ```json
 {
@@ -63,7 +63,7 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.3",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -81,7 +81,7 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
 | apiVersion | 2015-06-15 |
 | 发布者 | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
-| typeHandlerVersion | 1.0 |
+| typeHandlerVersion | 1.3 |
 | workspaceId (e.g) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (e.g) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
@@ -106,7 +106,7 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.3",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -131,7 +131,7 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.3",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -148,7 +148,7 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
 
 ```azurecli
 azure vm extension set myResourceGroup myVM \
-  OmsAgentForLinux Microsoft.EnterpriseCloud.Monitoring 1.0 \
+  OmsAgentForLinux Microsoft.EnterpriseCloud.Monitoring 1.3 \
   --public-config-path public.json  \
   --private-config-path protected.json
 ```
@@ -168,6 +168,30 @@ azure vm extension get myResourceGroup myVM
 ```
 /opt/microsoft/omsagent/bin/stdout
 ```
+
+### <a name="error-codes-and-their-meanings"></a>错误代码及其含义
+
+| 错误代码 | 含义 | 可能的操作 |
+| :---: | --- | --- |
+| 2 | 提供给 shell 捆绑包的无效选项 | |
+| 3 | 未向 shell 捆绑包提供选项 | |
+| 4 | 无效的包类型 | |
+| 5 | 必须将 shell 捆绑包作为根目录执行 | |
+| 6 | 无效的包体系结构 | |
+| 10 | VM 已连接至 OMS 工作区 | 要将 VM 连接到扩展架构中指定的工作区，请在公共设置中将“stopOnMultipleConnections”设置为 false，或删除该属性。 连接到工作区后，此 VM 立即开始计费。 |
+| 11 | 提供给扩展的无效配置 | 按上述示例设置部署所需的所有属性值。 |
+| 20 | SCX/OMI 安装失败 | |
+| 21 | SCX/Provider 工具包安装失败 | |
+| 22 | 捆版包安装失败 | |
+| 23 | SCX 或 OMI 包已安装 | |
+| 30 | 内部捆绑错误 | |
+| 51 | VM 的操作系统不支持此扩展 | |
+| 60 | 不支持的 OpenSSL 版本 | 安装满足[程序包要求](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#package-requirements)的 OpenSSL 版本。 |
+| 61 | 缺少 Python ctypes 库 | 安装 Python ctypes 库或程序包 (python-ctypes)。 |
+| 62 | 缺少 tar 程序 | 安装 tar。 |
+| 63 | 缺少 sed 程序 | 安装 sed。 |
+
+有关其他故障排除信息，可查看 [OMS-Agent-for-Linux 故障排除指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#)。
 
 ### <a name="support"></a>支持
 
