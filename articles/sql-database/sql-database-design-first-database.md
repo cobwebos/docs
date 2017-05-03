@@ -17,9 +17,9 @@ ms.workload:
 ms.date: 03/30/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 933b262f3c587229a194c3259fc5c13b75ecd050
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 0d02954829ebac9275c014f7dac7e1ec423b0fc1
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -30,11 +30,11 @@ ms.lasthandoff: 04/13/2017
 
 若要完成本教程，请确保已安装最新版的 [ SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)。 
 
-## <a name="step-1-log-in-to-the-azure-portal"></a>步骤 1：登录 Azure 门户
+## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/)。
 
-## <a name="step-2-create-a-blank-sql-database-in-azure"></a>步骤 2：在 Azure 中创建空的 SQL 数据库
+## <a name="create-a-blank-sql-database-in-azure"></a>在 Azure 中创建空的 SQL 数据库
 
 创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](sql-database-service-tiers.md)。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库逻辑服务器](sql-database-features.md)中创建。 
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 04/13/2017
     ![通知](./media/sql-database-get-started-portal/notification.png)
 
 
-## <a name="step-3-create-a-server-level-firewall-rule"></a>步骤 3：创建服务器级防火墙规则
+## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
 Azure SQL 数据库受防火墙保护。 默认情况下，将拒绝与服务器和服务器内数据库的所有连接。 按照以下步骤为你的服务器创建 [SQL 数据库服务器级防火墙规则](sql-database-firewall-configure.md)，以允许从客户端的 IP 地址进行连接。 
 
@@ -92,7 +92,7 @@ Azure SQL 数据库受防火墙保护。 默认情况下，将拒绝与服务器
 > 通过端口 1433 进行的 SQL 数据库通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非你的 IT 部门打开了端口 1433。
 >
 
-## <a name="step-4---get-connection-information"></a>步骤 4 - 获取连接信息
+## <a name="get-connection-information"></a>获取连接信息
 
 请在 Azure 门户中获取 Azure SQL 数据库服务器的完全限定服务器名称。 请使用 SQL Server Management Studio 通过完全限定的服务器名称连接到服务器。
 
@@ -102,7 +102,7 @@ Azure SQL 数据库受防火墙保护。 默认情况下，将拒绝与服务器
 
     ![连接信息](./media/sql-database-connect-query-ssms/connection-information.png) 
 
-## <a name="step-5---connect-to-your-database-using-sql-server-management-studio"></a>步骤 5 - 使用 SQL Server Management Studio 连接数据库
+## <a name="connect-to-your-database-using-sql-server-management-studio"></a>使用 SQL Server Management Studio 连接数据库
 
 使用 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) 建立到 Azure SQL 数据库服务器的连接。
 
@@ -128,7 +128,7 @@ Azure SQL 数据库受防火墙保护。 默认情况下，将拒绝与服务器
 
    ![数据库对象](./media/sql-database-connect-query-ssms/connected.png)  
 
-## <a name="step-6---create-tables-in-the-database"></a>步骤 6 - 在数据库中创建表 
+## <a name="create-tables-in-the-database"></a>在数据库中创建表 
 
 使用 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) 创建具有 4 个表格的数据库架构，这些表格是大专院校的学生管理系统的模型：
 
@@ -199,7 +199,7 @@ Azure SQL 数据库受防火墙保护。 默认情况下，将拒绝与服务器
 
    ![创建的 ssms 表](./media/sql-database-design-first-database/ssms-tables-created.png)
 
-## <a name="step-7---load-data-into-the-tables"></a>步骤 7：将数据加载到表
+## <a name="load-data-into-the-tables"></a>将数据加载到表
 
 1. 在“下载”文件夹中创建名为 **SampleTableData** 的文件夹，为数据库存储示例数据。 
 
@@ -223,7 +223,7 @@ Azure SQL 数据库受防火墙保护。 默认情况下，将拒绝与服务器
 
 现已将示例数据加载到了之前创建的表中。
 
-## <a name="step-8---query-the-tables"></a>步骤 8 - 查询表
+## <a name="query-the-tables"></a>查询表
 
 执行以下查询，从数据库表中检索信息。 有关写入 SQL 查询的详细信息，请参阅[写入 SQL 查询](https://technet.microsoft.com/library/bb264565.aspx)。 第一个查询将联接所有 4 个表，以查找由“Dominick Pope”授课的班级中分数高于 75% 的所有学生。 第二个查询将联接所有 4 个表，以查找“Noe Coleman”注册过的所有课程。
 
@@ -260,7 +260,7 @@ Azure SQL 数据库受防火墙保护。 默认情况下，将拒绝与服务器
         AND person.LastName = 'Coleman'
    ```
 
-## <a name="step-9---restore-a-database-to-a-previous-point-in-time"></a>步骤 9 - 将数据库还原到以前的时间点 
+## <a name="restore-a-database-to-a-previous-point-in-time"></a>将数据库还原到以前的时间点 
 
 假设你意外删除了某个表。 这是你不能轻易还原的内容。 借助 Azure SQL 数据库，可返回到最近 35 天内的任意时间点并将此时间点还原到新的数据库。 可以通过此数据库恢复已删除的数据。 以下步骤将示例数据库还原到添加这些表之前的时间点。
 

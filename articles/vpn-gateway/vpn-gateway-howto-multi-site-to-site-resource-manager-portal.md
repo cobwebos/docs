@@ -1,5 +1,5 @@
 ---
-title: "如何使用 Azure 门户将多个 VPN 网关站点到站点连接添加到 Resource Manager 部署模型的虚拟网络 | Microsoft 文档"
+title: "向 VNet 添加多个 VPN 网关站点到站点连接：Azure 门户：Resource Manager | Microsoft Docs"
 description: "将多站点 S2S 连接添加到包含现有连接的 VPN 网关"
 services: vpn-gateway
 documentationcenter: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 04/20/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9906602e0a154c2dc3d6e458179c7e9346df2852
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: bbe76873c94aea0db7843af36d8a8d44d7565bbb
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -28,9 +29,7 @@ ms.openlocfilehash: 9906602e0a154c2dc3d6e458179c7e9346df2852
 > 
 > 
 
-本文逐步讲解如何使用 Azure 门户，将站点到站点 (S2S) 连接添加到已有连接的 VPN 网关。 这种类型的连接通常称为“多站点”配置。 
-
-可以参考本文将 S2S 连接添加到已有 S2S 连接、点到站点连接或 VNet 到 VNet 连接的 VNet。 添加连接时，请注意一些限制。 在开始之前，请查看本文的[开始之前](#before)部分检查配置。 
+本文逐步讲解如何使用 Azure 门户，将站点到站点 (S2S) 连接添加到已有连接的 VPN 网关。 这种类型的连接通常称为“多站点”配置。 可将 S2S 连接添加到已有 S2S 连接、点到站点连接或 VNet 到 VNet 连接的 VNet。 添加连接时，请注意一些限制。 在开始之前，请查看本文的[开始之前](#before)部分检查配置。 
 
 本文适用于使用 Resource Manager 部署模型创建的、具有 RouteBased VPN 网关的 VNet。 本文中的步骤不适用于 ExpressRoute/站点到站点共存连接配置。 有关共存连接的信息，请参阅 [ExpressRoute/S2S 共存连接](../expressroute/expressroute-howto-coexist-resource-manager.md)。
 
@@ -41,7 +40,7 @@ ms.openlocfilehash: 9906602e0a154c2dc3d6e458179c7e9346df2852
 
 [!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
 
-## <a name="a-namebeforeabefore-you-begin"></a><a name="before"></a>准备工作
+## <a name="before"></a>准备工作
 确认以下各项：
 
 * 创建的不是 ExpressRoute/S2S 共存连接。
@@ -51,7 +50,7 @@ ms.openlocfilehash: 9906602e0a154c2dc3d6e458179c7e9346df2852
 * 有一台兼容的 VPN 设备，并且可对其进行配置。 请参阅 [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 如果不熟悉 VPN 设备的配置，或者不熟悉本地网络配置中的 IP 地址范围，则需咨询能够为你提供此类详细信息的人员。
 * VPN 设备有一个面向外部的公共 IP 地址。 此 IP 地址不得位于 NAT 之后。
 
-## <a name="a-namepart1apart-1---configure-a-connection"></a><a name="part1"></a>第 1 部分 - 配置连接
+## <a name="part1"></a>第 1 部分 - 配置连接
 1. 从浏览器导航到 [Azure 门户](http://portal.azure.com)，并在必要时用 Azure 帐户登录。
 2. 单击“**所有资源**”，从资源列表中找到“**虚拟网络网关**”并单击它。
 3. 在“**虚拟网络网关**”边栏选项卡中，单击“**连接**”。
@@ -67,7 +66,7 @@ ms.openlocfilehash: 9906602e0a154c2dc3d6e458179c7e9346df2852
      
      ![“添加连接”边栏选项卡](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Add connection blade")<br>
 
-## <a name="a-namepart2apart-2---add-a-local-network-gateway"></a><a name="part2"></a>第 2 部分 - 添加本地网络网关
+## <a name="part2"></a>第 2 部分 - 添加本地网络网关
 1. 单击“**本地网络网关**”“***选择本地网络网关***”。 此时将打开“**选择本地网络网关**”边栏选项卡。
    
     ![选择本地网络网关](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Choose local network gateway")<br>
@@ -81,23 +80,17 @@ ms.openlocfilehash: 9906602e0a154c2dc3d6e458179c7e9346df2852
    * **地址空间：**要路由到新本地网络站点的地址空间。
 4. 在“**创建本地网络网关**”边栏选项卡中，单击“**确定**”保存更改。
 
-## <a name="a-namepart3apart-3---add-the-shared-key-and-create-the-connection"></a><a name="part3"></a>第 3 部分 - 添加共享密钥并创建连接
+## <a name="part3"></a>第 3 部分 - 添加共享密钥并创建连接
 1. 在“**添加连接**”边栏选项卡中，添加用于创建连接的共享密钥。 可以从 VPN 设备获取共享密钥，或者在此边栏选项卡中创建一个共享密钥，然后将 VPN 设备配置为使用这个共享密钥。 重要的一点是，这两个密钥必须完全相同。
    
     ![共享密钥](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "Shared key")<br>
 2. 单击边栏选项卡底部的“**确定**”创建连接。
 
-## <a name="a-namepart4apart-4---verify-the-vpn-connection"></a><a name="part4"></a>第 4 部分 - 验证 VPN 连接
-你可以在门户中或使用 PowerShell 验证 VPN 连接。
+## <a name="part4"></a>第 4 部分 - 验证 VPN 连接
 
-[!INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
+
+[!INCLUDE [vpn-gateway-verify-connection-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅虚拟机 [学习路径](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) 。
 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅虚拟机 [学习路径](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) 。

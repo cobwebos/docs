@@ -9,15 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 14aef891-7a37-4cf1-8f7d-ca923565c783
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 35a6c06bc4850f3fcfc6221d62998465f3b38251
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 1a7dabcbfdc1977e747fd30cfc0383d6c5f7f5a0
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -58,14 +60,10 @@ HDInsight 应用程序使用 *自带许可 (BYOL)* 模型，其中，应用程�
 | tiers |与应用程序兼容的群集层。 |Standard、Premium（或两者） |
 | versions |与应用程序兼容的 HDInsight 群集类型。 |3.4 |
 
-## <a name="package-application"></a>打包应用程序
-创建一个 zip 文件，其中包含安装 HDInsight 应用程序时所需的全部文件。 在 [发布应用程序](#publish-application)时需要此 zip 文件。
-
-* [createUiDefinition.json](#define-application)。
-* mainTemplate.json。 请参阅 [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)中的示例。
-  
+## <a name="application-install-script"></a>应用程序安装脚本
+每当在现有群集或新群集上安装应用程序时，都将创建一个边缘节点，并将在其上运行应用程序安装脚本。
   > [!IMPORTANT]
-  > 应用程序安装脚本的名称对于特定群集而言必须唯一，并采用以下格式。 此外，任何安装和卸载脚本操作都应是幂等的，这意味着生成相同的结果时可重复调用这些脚本。
+  > 应用程序安装脚本的名称对于特定群集而言必须唯一，并采用以下格式。
   > 
   > name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
   > 
@@ -77,12 +75,22 @@ HDInsight 应用程序使用 *自带许可 (BYOL)* 模型，其中，应用程�
   > 
   > 示例如上，结果为持久化脚本操作列表中的 hue-install-v0-4wkahss55hlas。 有关示例 JSON 有效负载，请参阅 [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json)。
   > 
-  > 
+安装脚本必须具有以下特点：
+1. 确保脚本是幂等的。 对脚本的多个调用应生成相同的结果。
+2. 脚本版本设置应正确。 升级或测试更改时要使用不同位置的脚本，这样才不会影响正在尝试安装应用程序的客户。 
+3. 在每个点上将适当的日志记录添加脚本中。 脚本日志通常是调试应用程序安装问题的唯一方法。
+4. 确保对外部服务或资源的调用进行了充分的重试，以便安装不会受暂时性网络问题的影响。
+5. 如果脚本正在节点上启动服务，请确保对该服务进行监视和配置，以便在发生节点重新启动时能够自动启动服务。
+
+## <a name="package-application"></a>打包应用程序
+创建一个 zip 文件，其中包含安装 HDInsight 应用程序时所需的全部文件。 在 [发布应用程序](#publish-application)时需要此 zip 文件。
+
+* [createUiDefinition.json](#define-application)。
+* mainTemplate.json。 请参阅 [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)中的示例。
 * 所有必需的脚本。
 
 > [!NOTE]
 > 应用程序文件（包括 Web 应用程序文件，如果有）可以位于任何可公开访问的终结点上。
-> 
 > 
 
 ## <a name="publish-application"></a>发布应用程序
@@ -104,10 +112,5 @@ HDInsight 应用程序使用 *自带许可 (BYOL)* 模型，其中，应用程�
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
 * [使用 Azure Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)：了解如何调用 Resource Manager 模板创建 HDInsight 群集。
 * [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集、测试 HDInsight 应用程序以及托管 HDInsight 应用程序。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

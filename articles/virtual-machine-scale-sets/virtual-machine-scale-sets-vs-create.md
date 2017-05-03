@@ -17,9 +17,9 @@ ms.date: 03/13/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 89db91d7ab8dc4340484054986b35583ed23b343
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 5f02d36bfc5aa390bba345f084ce530c27bb6520
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -91,7 +91,7 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
 
 ![云资源管理器][cloud_explorer]
 
- 该门户提供了使用 Web 浏览器直观管理 Azure 基础结构的最佳方式，而 Azure 资源浏览器则通过在“实例视图”中提供窗口，并且还针对要查看的资源显示 PowerShell 命令，提供了方便地浏览和调试 Azure 资源的方式。 虚拟机规模集处于预览状态时，资源浏览器将显示虚拟机规模集的大部分详细信息。
+ 该门户提供了使用 Web 浏览器直观管理 Azure 基础结构的最佳方式，而 Azure 资源浏览器则通过在“实例视图”中提供窗口，并针对要查看的资源显示 PowerShell 命令，提供了轻松浏览和调试 Azure 资源的方式。 虚拟机规模集处于预览状态时，资源浏览器将显示虚拟机规模集的大部分详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 通过 Visual Studio 成功部署虚拟机规模集后，便可进一步自定义项目以满足应用程序需求。 例如，通过添加 **Insights** 资源，将独立 VM 等基础结构添加到模板，或使用自定义脚本扩展部署应用程序来配置自动缩放。 可以在 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates) GitHub 存储库中（搜索“vmss”）找到很好的示例模板。

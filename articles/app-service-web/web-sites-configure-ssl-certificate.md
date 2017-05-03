@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: f7a2066f43219e8748b5c5356ff6c81535b7842a
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 0d909f6272cc9dcfd13bd9c18affa8d1e249efe4
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/17/2017
 
 本文将演示如何为 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)中使用自定义域名的 Web 应用、移动应用后端或 API 应用启用 HTTPS。 仅限服务器的身份验证。 若需相互身份验证（包括客户端身份验证），请参阅[如何为应用服务配置 TLS 相互身份验证](app-service-web-configure-tls-mutual-auth.md)。
 
-若要使用 HTTPS 保护拥有自定义域名的应用，可为该域名添加证书。 默认情况下，Azure 使用单个 SSL 证书保护 **\*.azurewebsites.net** 通配符域的安全，因此客户端可能已在 **https://*&lt;appname>*.azurewebsites.net**处访问了应用。但若想使用**contoso.com**、**www.contoso.com**和**\*.contoso.com** 等自定义域，则默认证书不能提供保护。 此外，与所有[通配符证书](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)一样，默认证书不如使用定义域和该自定义域的证书安全。   
+若要使用 HTTPS 保护拥有自定义域名的应用，可为该域名添加证书。 默认情况下，Azure 使用单个 SSL 证书保护 \*.azurewebsites.net 通配符域的安全，因此客户端可能已在 https://&lt;appname>.azurewebsites.net** 处访问了应用。 但若想使用 contoso.com、www.contoso.com 和 \*.contoso.com 等自定义域，默认证书无法提供保护。 此外，与所有[通配符证书](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)一样，默认证书不如使用定义域和该自定义域的证书安全。   
 
 > [!NOTE]
 > 可随时在 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的帮助。 有关更加个性化的支持，请转到 [Azure 支持](https://azure.microsoft.com/support/options/)，然后单击“获取支持”。
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/17/2017
 若要使用 HTTPS 保护自定义域名，需将自定义 SSL 证书绑定到 Azure 中的该自定义域。 绑定自定义证书之前，需执行以下操作：
 
 * **配置自定义域** - 应用服务只允许向应用中已配置的域名添加证书。 相关说明，请参阅[将自定义域名映射到 Azure 应用](web-sites-custom-domain-name.md)。 
-* **向上缩放到基本层或更高层** 较低定价层中的应用服务计划不支持自定义 SSL 证书。 相关说明，请参阅[向上缩放 Azure 中的应用](web-sites-scale.md)。 
+* 向上缩放到基本层或更高层 - 较低定价层中的应用服务计划不支持自定义 SSL 证书。 相关说明，请参阅[向上缩放 Azure 中的应用](web-sites-scale.md)。 
 * **获取 SSL 证书** - 如果还没有证书，需先从受信任的[证书颁发机构](http://en.wikipedia.org/wiki/Certificate_authority) (CA) 获取证书。 证书必须满足下列所有要求：
   
   * 由受信任的 CA（而非私人 CA 服务器）签名。

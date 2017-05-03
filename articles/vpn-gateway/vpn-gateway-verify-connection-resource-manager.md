@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b5bad71095e4b7e3b26df15780467526200ffa10
-ms.openlocfilehash: 68d94a6402b1497f65c4d03fb987ba800e86c2a3
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 0e9fa1b1397c60985de9d2e60b3f01146036801f
+ms.lasthandoff: 04/26/2017
 
 
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>验证 VPN 网关连接
-可以使用门户和 PowerShell 验证虚拟网络 VPN 网关连接。 本文包含适用于 Resource Manager 与经典部署模型的步骤。
+
+本文介绍如何验证 Resource Manager 和经典部署模型的 VPN 网关连接。
 
 ## <a name="verify-using-the-azure-portal"></a>使用 Azure 门户验证
 
@@ -52,7 +53,34 @@ ms.lasthandoff: 01/31/2017
 
 ### <a name="verify-your-connection"></a>验证连接
 
-[!INCLUDE [Powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+
+## <a name="verify-using-the-azure-cli"></a>使用 Azure CLI 进行验证
+
+若要使用 Azure CLI 进行验证，请安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅 [Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（安装 Azure CLI 2.0）。
+
+### <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
+
+1. 使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+
+  ```azurecli
+  az login
+  ```
+2. 如果有多个 Azure 订阅，请列出该帐户的订阅。
+
+  ```azurecli
+  Az account list --all
+  ```
+3. 指定要使用的订阅。
+
+  ```azurecli
+  Az account set --subscription
+  <replace_with_your_subscription_id>
+  ```
+
+### <a name="verify-your-connection"></a>验证连接
+
+[!INCLUDE [CLI](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 ## <a name="verify-using-the-azure-portal-classic"></a>使用 Azure 门户（经典）验证
 [!INCLUDE [Azure portal](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]

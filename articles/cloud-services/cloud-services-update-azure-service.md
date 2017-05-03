@@ -12,17 +12,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 04/19/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: b159d3583c24e36c2803d7d02deca1415669d054
-ms.openlocfilehash: ebc5461177df5b5a16ab9b5668f5fda890ee11a4
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 2ba9676ed2afce7f18446642527971f5001b5ca7
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新云服务
-## <a name="overview"></a>概述
-从较高的层面讲，更新云服务（包括其角色和来宾 OS）是包括三个步骤的过程。 首先，必须上载新云服务或 OS 版本的二进制文件和配置文件。 其次，Azure 会根据新云服务版本的要求，保留云服务的计算资源和网络资源。 最后，Azure 将执行滚动升级，以增量方式将租户更新到新版本或来宾 OS，同时保留可用性。 本文将介绍最后一个步骤 - 滚动升级的详细信息。
+
+三步操作进行云服务更新（包括其角色和来宾 OS）。 首先，必须上载新云服务或 OS 版本的二进制文件和配置文件。 其次，Azure 会根据新云服务版本的要求，保留云服务的计算资源和网络资源。 最后，Azure 将执行滚动升级，以增量方式将租户更新到新版本或来宾 OS，同时保留可用性。 本文将介绍最后一个步骤 - 滚动升级的详细信息。
 
 ## <a name="update-an-azure-service"></a>更新 Azure 服务
 Azure 将你的角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD) 是角色实例的逻辑集，将以组方式进行更新。  Azure 每次更新一个 UD 的一个云服务，使其他 UD 中的实例能够继续处理流量。
@@ -66,7 +67,7 @@ Azure 将你的角色实例划分为称为升级域 (UD) 的逻辑组。 升级�
 | 更改现有证书 |是 |是 |是 |
 | 部署新代码 |是 |是 |是 |
 
-<sup>1</sup>大小更改限制为可用于云服务的大小的子集。
+<sup>1</sup>限制为仅云服务可用的大小的子集可进行大小更改。
 
 <sup>2</sup>需要 Azure SDK 1.5 或更高版本。
 
@@ -178,7 +179,7 @@ Azure 在设置的升级域数之间平均分配角色的实例，可以将升�
 
 下图演示了在服务定义了两个升级域时，如何分配包含两个角色的服务。 该服务运行 8 个 Web 角色实例和 9 个辅助角色实例。
 
-![升级域的分配](media/cloud-services-update-azure-service/IC345533.png "Distribution of Upgrade Domains")
+![分发升级域](media/cloud-services-update-azure-service/IC345533.png "Distribution of Upgrade Domains")
 
 > [!NOTE]
 > 请注意 Azure 控制如何在升级域之间分配实例。 无法指定将哪个实例分配给哪个域。
@@ -189,9 +190,4 @@ Azure 在设置的升级域数之间平均分配角色的实例，可以将升�
 [如何管理云服务](cloud-services-how-to-manage.md)  
 [如何监视云服务](cloud-services-how-to-monitor.md)  
 [如何配置云服务](cloud-services-how-to-configure.md)  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

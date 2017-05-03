@@ -16,9 +16,9 @@ ms.date: 02/09/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 4af4d30a3378e1aea66309a1d757be1c1da2ea0d
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: e23c5849cb89d0d72052e3ebaace14a55f9c6f71
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -28,7 +28,7 @@ Azure DocumentDB 可通过提供完全托管的[多区域数据库帐户](docume
 Azure DocumentDB 支持显式和策略驱动型故障转移，方便用户在发生故障时控制端到端系统行为。 本文介绍：
 
 * 如何在 DocumentDB 中进行手动故障转移？
-* 如何在 DocumentDB 中进行自动故障转移？
+* 如何在 DocumentDB 中进行自动故障转移，以及数据中心不可用时会发生什么情况？
 * 如何在应用程序体系结构中使用手动故障转移？
 
 还可以通过 Azure Friday 视频，与 Scott Hanselman 和工程（主管）经理 Karthik Raman 一起，了解区域故障转移的相关信息。
@@ -72,7 +72,7 @@ Azure DocumentDB 支持显式和策略驱动型故障转移，方便用户在发
 现在，让我们看看 DocumentDB 服务如何通过自动故障转移处理区域性故障。 
 
 ## <a id="AutomaticFailovers"></a>自动故障转移
-在极少数情况下，当出现 Azure 区域性中断时，DocumentDB 会自动触发故障转移，对存在于受影响区域的所有 DocumentDB 帐户进行转移。 
+在极少的情况下出现 Azure 区域性中断或数据中心中断时，DocumentDB 会自动触发故障转移，转移受影响区域中存在的所有 DocumentDB 帐户。 
 
 **某个读取区域中断时会发生什么情况？**
 
@@ -112,7 +112,7 @@ Azure DocumentDB 支持显式和策略驱动型故障转移，方便用户在发
 
 **服务更新**：某些全局分布式应用程序的部署可能需要在计划内服务更新期间通过流量管理器将流量重新路由到其他区域。 现在，此类应用程序部署可以使用手动故障转移，将写入状态保留给在服务更新时段会有活动流量的区域。
 
-**业务连续性和灾难恢复 (BCDR) 演练**：大多数企业应用程序在开发和发布过程中都会进行业务连续性测试。 BCDR 测试通常是进行遵从性认证的重要一步，并可确保在发生区域性中断时服务的可用性。 可以对使用 DocumentDB 进行存储的应用程序实施 BCDR 就绪性测试，方法是：触发对 DocumentDB 帐户的手动故障转移，以及/或者动态添加和删除某个区域。
+业务连续性和灾难恢复 (BCDR) 以及高可用性和灾难恢复 (HADR) 演练：大多数企业应用程序在开发和发布过程中都会进行业务连续性测试。 BCDR 和 HADR 测试通常是进行符合性认证的重要一步，并可确保在发生区域性中断时服务的可用性。 可以对使用 DocumentDB 进行存储的应用程序实施 BCDR 就绪性测试，方法是：触发对 DocumentDB 帐户的手动故障转移，以及/或者动态添加和删除某个区域。
 
 本文探讨了如何在 Azure DocumentDB 中使用手动和自动故障转移，以及如何配置 DocumentDB 帐户和应用程序才能让其全局可用。 可以利用 Azure DocumentDB 的全局复制支持改善端到端延迟情况，确保即使在发生区域故障的情况下，也可以顺利使用这些帐户和应用程序。 
 

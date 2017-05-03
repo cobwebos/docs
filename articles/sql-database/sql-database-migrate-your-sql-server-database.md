@@ -4,7 +4,7 @@ description: "了解如何将 SQL Server 数据库迁移至 Azure SQL 数据库�
 services: sql-database
 documentationcenter: 
 author: janeng
-manager: jstrauss
+manager: jhubbard
 editor: 
 tags: 
 ms.assetid: 
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 04/04/2017
+ms.date: 04/20/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 842ca29e46aefbd58638ac642f000ef39c1202d1
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: c6d965351f6f131ee342cea672fc4fa8771f8ede
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 04/13/2017
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA)。
 - 要迁移的数据库。 本教程在 SQL Server 2008R2 或更高版本的实例上使用 [SQL Server 2008R2 AdventureWorks OLTP 数据库](https://msftdbprodsamples.codeplex.com/releases/view/59211)，但你可以使用你选择的任何数据库。 
 
-## <a name="step-1---prepare-for-migration"></a>步骤 1 - 准备迁移
+## <a name="prepare-for-migration"></a>准备迁移
 
 你已做好准备进行迁移。 按照以下步骤使用 **[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595)** 来评估你的数据库迁移到 Azure SQL 数据库的准备情况。
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 04/13/2017
 10. 或者，单击“导出报表”将报表另存为 JSON 文件。
 11. 关闭 Data Migration Assistant。
 
-## <a name="step-2---export-to-bacpac-file"></a>步骤 2 - 导出到 BACPAC 文件 
+## <a name="export-to-bacpac-file"></a>导出到 BACPAC 文件 
 
 BACPAC 文件是扩展名为 BACPAC 的 ZIP 文件，其中包含来自 SQL Server 数据库的元数据和数据。 BACPAC 文件可以存储在 Azure Blob 存储或本地存储中，以进行存档或迁移（例如从 SQL Server 到 Azure SQL 数据库的迁移）。 若要使导出在事务上保持一致，必须确保在导出期间不会发生任何写入活动。
 
@@ -103,11 +103,11 @@ BACPAC 文件是扩展名为 BACPAC 的 ZIP 文件，其中包含来自 SQL Serv
 
 执行完成后，生成的 BCPAC 文件将存储在 sqlpackage 可执行文件所在的目录中。 在此示例中为 C:\Program Files (x86)\Microsoft SQL Server\130\DAC\bin。 
 
-## <a name="step-3-log-in-to-the-azure-portal"></a>步骤 3：登录 Azure 门户
+## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/)。 从运行 SQLPackage 命令行实用工具的计算机登录有助于步骤 5 中的防火墙规则创建。
 
-## <a name="step-4-create-a-sql-database-logical-server"></a>步骤 4：创建 SQL 数据库逻辑服务器
+## <a name="create-a-sql-database-logical-server"></a>创建 SQL 数据库逻辑服务器
 
 [Azure SQL 数据库逻辑服务器](sql-database-features.md)充当多个数据库的中心管理点。 按照以下步骤创建 SQL 数据库逻辑服务器以包含已迁移的 AdventureWorks OLTP SQL Server 数据库。 
 
@@ -133,7 +133,7 @@ BACPAC 文件是扩展名为 BACPAC 的 ZIP 文件，其中包含来自 SQL Serv
 
 5. 单击“创建”以预配逻辑服务器。 预配需要数分钟。 
 
-## <a name="step-5-create-a-server-level-firewall-rule"></a>步骤 5：创建服务器级防火墙规则
+## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
 SQL 数据库服务[在服务器级别创建一个防火墙](sql-database-firewall-configure.md)。除非创建了防火墙规则来为特定的 IP 地址打开防火墙，否则会阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 按照以下步骤为运行 SQLPackage 命令行实用工具的计算机的 IP 地址创建 SQL 数据库服务器级防火墙规则。 这使 SQLPackage 能够通过 Azure SQL 数据库防火墙连接到 SQL 数据库逻辑服务器。 
 
@@ -155,7 +155,7 @@ SQL 数据库服务[在服务器级别创建一个防火墙](sql-database-firewa
 > 通过端口 1433 进行的 SQL 数据库通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非你的 IT 部门打开了端口 1433。
 >
 
-## <a name="step-6---import-bacpac-file-to-azure-sql-database"></a>步骤 6 - 将 BACPAC 文件导入 Azure SQL 数据库 
+## <a name="import-bacpac-file-to-azure-sql-database"></a>将 BACPAC 文件导入 Azure SQL 数据库 
 
 SQLPackage 命令行实用工具的最新版本支持在指定[服务层和性能级别](sql-database-service-tiers.md)创建 Azure SQL 数据库。 为了在导入过程中获得最佳性能，请选择一个较高的服务层和性能级别，然后在导入后降低级别（如果此服务层和性能级别高于当前所需级别）。
 
@@ -173,7 +173,7 @@ SQLPackage 命令行实用工具的最新版本支持在指定[服务层和性�
 > Azure SQL 数据库逻辑服务器在端口 1433 上进行侦听。 如果尝试在企业防火墙内连接到 Azure SQL 数据库逻辑服务器，则必须在企业防火墙中打开此端口，否则无法成功进行连接。
 >
 
-## <a name="step-7---connect-using-sql-server-management-studio-ssms"></a>步骤 7 - 使用 SQL Server Management Studio (SSMS) 连接
+## <a name="connect-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接
 
 使用 SQL Server Management Studio 建立到 Azure SQL 数据库服务器和新迁移的数据库的连接。 如果你不在运行 SQLPackage 的计算机上运行 SQL Server Management Studio，请使用前面过程中的步骤为此计算机创建防火墙规则。
 
@@ -192,7 +192,7 @@ SQLPackage 命令行实用工具的最新版本支持在指定[服务层和性�
 
 4. 在对象资源管理器中展开“数据库”，然后展开 **myMigratedDatabase**，查看示例数据库中的对象。
 
-## <a name="step-8---change-database-properties"></a>步骤 8 - 更改数据库属性
+## <a name="change-database-properties"></a>更改数据库属性
 
 可以使用 SQL Server Management Studio 更改服务层、性能级别和兼容级别。
 

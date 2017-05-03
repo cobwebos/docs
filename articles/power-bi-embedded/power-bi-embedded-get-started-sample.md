@@ -16,9 +16,9 @@ ms.workload: powerbi
 ms.date: 03/02/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: beadcbfa4907d68a687ec5144136132d8b0439e1
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: c3cb1763f807220a4a829f410d7eb77974b25776
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -44,16 +44,17 @@ ms.lasthandoff: 03/29/2017
 2. 在 Visual Studio 中打开 **PowerBI-embedded.sln**。 可能需要在 NuGET 程序包管理器控制台中执行 **Update-Package** 命令来更新此解决方案中使用的程序包。
 3. 生成解决方案。
 4. 运行 **ProvisionSample** 控制台应用。 在示例控制台应用中，预配一个工作区并导入 PBIX 文件。
-5. 若要预配新的“工作区”，请选择选项 2“报表管理”，然后选择选项 3“将 PBIX 桌面文件导入到工作区”。
+5. 若要预配新的工作区，请选择选项 1“收集管理”，然后选择选项 6“预配新的工作区”
+6. 若要导入新的“报表”，请选择选项 2“报表管理”，然后选择选项 3“将 PBIX 桌面文件导入到工作区”。
 
-6. 输入**工作区集合**名称和**访问密钥**。 可以通过 **Azure 门户**获取这些信息。 若要了解有关如何获取**访问密钥**的详细信息，请参阅“Microsoft Power BI Embedded 入门”中的[查看 Power BI API 访问密钥](power-bi-embedded-get-started.md#view-power-bi-api-access-keys)。
+7. 输入**工作区集合**名称和**访问密钥**。 可以通过 **Azure 门户**获取这些信息。 若要了解有关如何获取**访问密钥**的详细信息，请参阅“Microsoft Power BI Embedded 入门”中的[查看 Power BI API 访问密钥](power-bi-embedded-get-started.md#view-power-bi-api-access-keys)。
 
     ![](media/powerbi-embedded-get-started-sample/azure-portal.png)
-7. 复制并保存新创建的**工作区 ID** 以便在本文后面部分使用。 创建**工作区 ID** 之后，可以在 **Azure 门户**中找到该数据。
+8. 复制并保存新创建的**工作区 ID** 以便在本文后面部分使用。 创建**工作区 ID** 之后，可以在 **Azure 门户**中找到该数据。
 
     ![](media/powerbi-embedded-get-started-sample/workspace-id.png)
-8. 若要将 PBIX 文件导入到**工作区**，请选择选项 6**。**“将 PBIX 文件导入到现有工作区”。 如果没有现有的 PBIX 文件，则可以下载 [Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX）。
-9. 如果出现提示，请为**数据集**输入一个易记的名称。
+9. 若要将 PBIX 文件导入到**工作区**，请选择选项 6**。**“将 PBIX 文件导入到现有工作区”。 如果没有现有的 PBIX 文件，则可以下载 [Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX）。
+10. 如果出现提示，请为**数据集**输入一个易记的名称。
 
 应该会看到如下所示的响应：
 

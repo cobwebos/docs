@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 03/19/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 1a462b8d557ad23bda912ddf9431195a8cfe909e
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 284b239860481cf76f647d78f6a7b5e2b7cf9a3b
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/31/2017
 
 **如果从现有的 VHD（大小为 80 GB）创建标准托管磁盘，需要多少费用？**
 
-从 80 GB VHD 创建的标准托管磁盘被视为下一个可用的高级磁盘大小（S10 磁盘）。 将根据 S10 磁盘定价收费。 有关详细信息，请查看[定价页](https://azure.microsoft.com/pricing/details/storage)。
+从 80 GB VHD 创建的标准托管磁盘被视为下一个可用的标准磁盘大小（S10 磁盘）。 将根据 S10 磁盘定价收费。 有关详细信息，请查看[定价页](https://azure.microsoft.com/pricing/details/storage)。
 
 **标准托管磁盘是否存在任何事务成本？**
 
@@ -121,6 +121,11 @@ ms.lasthandoff: 03/31/2017
 
 Azure 托管磁盘当前仅支持本地冗余存储 (LRS)。
 
+能否收缩/缩小托管磁盘？
+否。 目前，不支持此功能。 
+
+在使用专用（未经过 sysprep 处理或通用化）OS 磁盘预配 VM 时能否更改计算机名称属性？否。 无法更新计算机名称属性。 新 VM 将从创建 OS 磁盘时所用的父 VM 继承该属性。 
+
 ## <a name="managed-disks-and-port-8443"></a>托管磁盘和端口 8443
 
 **为何客户必需使用 Azure 托管磁盘在端口 8443 上为 VM 解除阻止出站流量？**
@@ -189,8 +194,13 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4000 IOPS，以及�
 
 本地 SSD 是托管磁盘 VM 随附的临时存储。 临时存储不需要额外的成本。 建议不要使用此本地 SSD 来存储应用程序数据，因为这些数据不会永久保存在 Azure Blob 存储中。
 
+在高级磁盘上使用 TRIM 是否有任何影响？
+
+在高级或标准磁盘的 Azure 磁盘上使用 TRIM 没有负面影响。
+
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 
 如果未在此处找到相关问题，请联系我们获取帮助。 可将问题发布在本文末尾的评论中或 MSDN [Azure 存储论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)中，围绕本文内容，与 Azure 存储团队和其他社区成员展开探讨。
 
 若要提出功能请求，请将请求和想法提交到 [Azure 存储反馈论坛](https://feedback.azure.com/forums/217298-storage)。
+

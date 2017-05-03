@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: milanga;juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: adaf2a71e022d6d29493ab0a679bd593ea40195e
-ms.openlocfilehash: acb3b4d4a14ea546e94ccc38806251460e21a6bc
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 5a604f3538a0749f7f951926f451cc91504255d6
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -85,14 +85,14 @@ ms.lasthandoff: 02/10/2017
     {
       "version":"1.0",
       "options":{
-          "TrackingMode": "Faster"
+          "TrackingMode": "Fast"
       }
     }
 
 #### <a name="attribute-descriptions"></a>属性说明
 | 属性名称 | 说明 |
 | --- | --- |
-| Mode |较快：处理速度较快，但准确度较低（默认）。 <br/>质量：跟踪精度较好，但耗时较长。 |
+| Mode |快速 - 处理速度快，但准确度较低（默认）。|
 
 
 ### <a name="json-output"></a>JSON 输出

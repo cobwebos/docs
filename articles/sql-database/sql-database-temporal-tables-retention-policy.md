@@ -16,9 +16,9 @@ ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 8687603e7dbb91d60520be8952a78128595d9f46
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 3870a6ddb8c40a619e3aa6ed1a040f2070e2598c
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -118,7 +118,7 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 当工作负荷快速生成大量的历史数据时，优异的数据压缩和高效的保留数据清理使得聚集列存储索引成为完美的选择。 使用临时表进行更改跟踪和审核、趋势分析或 IoT 数据引入的密集型[事务处理工作负荷](https://msdn.microsoft.com/library/mt631669.aspx)往往使用该模式。
 
 ## <a name="index-considerations"></a>索引注意事项
-针对具有行存储聚集索引的表的清理任务要求索引的开头为对应于 SYSTEM_TIME 期限结束时间的列。 如果不存在这样的索引，则无法配置有限保留期：
+针对具有行存储聚集索引的表的清理任务要求索引的开头为对应于 SYSTEM_TIME 期限结束时间的列。 若没有此类索引，则无法配置有限保留期：
 
 *消息 13765，级别 16，状态 1 <br></br>在版本由系统控制的临时表 'temporalstagetestdb.dbo.WebsiteUserInfo' 中设置有限保留期失败，因为历史记录表 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' 不包含所需的聚集索引。请考虑在历史记录表中创建聚集列存储，或者创建开头为与 SYSTEM_TIME 期限结束时间匹配的列的 B 树索引。*
 
