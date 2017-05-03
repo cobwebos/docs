@@ -17,8 +17,3 @@
 
 ![StorSimple 虚拟设备在线阶段](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

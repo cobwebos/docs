@@ -4,8 +4,3 @@
 | **Azure 门户** |不支持 |不支持 |
 | **PowerShell** |[文章](../articles/expressroute/expressroute-howto-coexist-classic.md) |[文章](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-
