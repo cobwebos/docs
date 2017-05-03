@@ -12,7 +12,3 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 > 不必拥有域名即可在 Azure DNS 中以该域名创建 DNS 区域。 但是，需要拥有域才能通过域名注册机构将 Azure DNS 名称服务器配置为域名的正确名称服务器。
 > 
 > 有关详细信息，请参阅 [向 Azure DNS 委派域](../articles/dns/dns-domain-delegation.md)。
-
-<!--HONumber=Jan17_HO1-->
-
-

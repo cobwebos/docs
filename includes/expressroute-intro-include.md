@@ -3,8 +3,3 @@ Microsoft Azure ExpressRoute 可让你通过连接服务提供商所提供的专
 
 ![](./media/expressroute-intro-include/expressroute-basic.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-
