@@ -12,9 +12,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 503d92b694bf57381e7949b0bd379c52916b308a
-ms.lasthandoff: 04/22/2017
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: bc2036c18615e855234885cc0937c16d43eb80dc
+ms.lasthandoff: 04/28/2017
 
 ---
 <div class="content">
@@ -144,7 +144,8 @@ ms.lasthandoff: 04/22/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server工具</a></h3>
+                        <h3>SQL Server 工具</h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server工具</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p>
                         <p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p>
@@ -161,7 +162,8 @@ ms.lasthandoff: 04/22/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server 驱动程序</a></h3>
+                        <h3>SQL Server 驱动程序</h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server 驱动程序</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>
