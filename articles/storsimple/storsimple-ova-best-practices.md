@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 05/01/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f04cf73d9cb651bf97aff855bf7d19e296796e50
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 6d5563d06d9097134715f8885521c85e987a3acd
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -27,13 +27,13 @@ Microsoft Azure StorSimple 虚拟阵列是一个集成式存储解决方案，�
 
 本文介绍在 StorSimple 虚拟阵列初始设置、部署和管理期间实施的最佳实践。 这些最佳实践提供经过验证的指导原则，让用户了解如何设置和管理虚拟阵列。 本文面向想要在数据中心内部署和管理虚拟阵列的 IT 管理员。
 
-建议定期评审这些最佳实践，帮助确保在对设置或操作流程做出更改后，设备仍符合法规。 如果对虚拟阵列实施这些最佳实践时遇到任何问题，请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)获得帮助。
+建议定期评审这些最佳实践，帮助确保在对设置或操作流程做出更改后，设备仍符合法规。 如果对虚拟阵列实施这些最佳实践时遇到任何问题，请[联系 Microsoft 支持部门](storsimple-virtual-array-log-support-ticket.md)获得帮助。
 
 ## <a name="configuration-best-practices"></a>配置最佳实践
 这些最佳实践涵盖初始设置和部署虚拟阵列时遵循的指导原则。 其中包括与虚拟机预配、组策略设置、调整大小、设置网络、配置存储帐户以及创建虚拟阵列的共享和卷相关的最佳实践。 
 
 ### <a name="provisioning"></a>设置
-StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 VMware）上预配的虚拟机 (VM)。 预配虚拟机时，请确保主机能够提供足够的资源。 有关详细信息，请转到预配阵列所要满足的[最低资源要求](storsimple-ova-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)。 
+StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 VMware）上预配的虚拟机 (VM)。 预配虚拟机时，请确保主机能够提供足够的资源。 有关详细信息，请转到预配阵列所要满足的[最低资源要求](storsimple-virtual-array-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements)。
 
 预配虚拟阵列时，请实施以下最佳实践：
 
@@ -61,13 +61,13 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 以下示例说明如何根据要求调整虚拟阵列的大小。
 
 #### <a name="example-1"></a>示例 1：
-在虚拟阵列上，你希望能够： 
+在虚拟阵列上，你希望能够：
 
 * 预配 2 TB 的分层卷或共享。
 * 预配 1 TB 的分层卷或共享。
 * 预配 300 GB 的本地固定卷或共享。
 
-针对上述卷或共享，我们计算一下本地层的空间要求。 
+针对上述卷或共享，我们计算一下本地层的空间要求。
 
 首先，对于每个分层卷/共享，本地保留空间等于卷/共享大小的 12%。 对于本地固定卷/共享，本地保留空间等于卷/共享大小的 10%。 在本示例中，需要
 
@@ -86,11 +86,10 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 
 > [!NOTE]
 > 我们也建议精简预配本地磁盘。 建议的依据是只在还原已超过 5 天的数据时，才需要还原空间。 对于项级恢复，不需要额外的还原空间就可以还原过去 5 天的数据。
-> 
-> 
+
 
 #### <a name="example-2"></a>示例 2：
-在虚拟阵列上，你希望能够： 
+在虚拟阵列上，你希望能够：
 
 * 预配 2 TB 分层卷
 * 预配 300 GB 本地固定卷
@@ -102,9 +101,9 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 
 本地层所需的总空间是：240 GB + 330 GB = 570 GB
 
-还原所需的最小本地空间是 330 GB。 
+还原所需的最小本地空间是 330 GB。
 
-15% 的总磁盘空间用于存储快照，因此可供使用的空间只有 85%。 因此，磁盘大小是 (900&ast;(1/0.85)) = 1.06 TB ~ 1.25 TB（四舍五入为最接近的四分位数） 
+15% 的总磁盘空间用于存储快照，因此可供使用的空间只有 85%。 因此，磁盘大小是 (900&ast;(1/0.85)) = 1.06 TB ~ 1.25 TB（四舍五入为最接近的四分位数）
 
 将意外增长考虑进来后，可以预配 1.25 至 1.5 TB 本地磁盘。
 
@@ -115,29 +114,29 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 
 因此，我们建议：
 
-* 确保虚拟阵列位于其自身的 Active Directory 组织单位 (OU) 中。 
+* 确保虚拟阵列位于其自身的 Active Directory 组织单位 (OU) 中。
 * 确保没有对虚拟阵列应用组策略对象 (GPO)。 可以阻止继承，确保虚拟阵列（子节点）不会自动继承父节点的任何 GPO。 有关详细信息，请转到[阻止继承](https://technet.microsoft.com/library/cc731076.aspx)。
 
 ### <a name="networking"></a>网络
-虚拟阵列的网络配置是通过本地 Web UI 完成的。 虚拟网络接口是通过虚拟阵列预配所在的虚拟机监控程序启用的。 使用 [网络设置](storsimple-ova-deploy3-fs-setup.md) 页可以配置虚拟网络接口的 IP 地址、子网和网关。  此外，可为设备配置主要和辅助 DNS 服务器、时间设置和可选的代理设置。 大多数网络配置都是一次性的设置。 在部署虚拟阵列之前，请查看 [StorSimple 网络要求](storsimple-ova-system-requirements.md#networking-requirements)。
+虚拟阵列的网络配置是通过本地 Web UI 完成的。 虚拟网络接口是通过虚拟阵列预配所在的虚拟机监控程序启用的。 使用 [网络设置](storsimple-virtual-array-deploy3-fs-setup.md) 页可以配置虚拟网络接口的 IP 地址、子网和网关。  此外，可为设备配置主要和辅助 DNS 服务器、时间设置和可选的代理设置。 大多数网络配置都是一次性的设置。 在部署虚拟阵列之前，请查看 [StorSimple 网络要求](storsimple-ova-system-requirements.md#networking-requirements)。
 
 部署虚拟阵列时，建议遵循以下最佳实践：
 
-* 确保部署虚拟阵列的网络始终有能力提供 5 Mbps（或更高）的 Internet 带宽。 
+* 确保部署虚拟阵列的网络始终有能力提供 5 Mbps（或更高）的 Internet 带宽。
   
   * 根据工作负荷特征和数据更改率，所需的 Internet 带宽有所不同。
-  * 可以处理的数据更改与 Internet 带宽成正比。 举例来说，在备份时，5 Mbps 的带宽可以在 8 小时内应对大约 18 GB 的数据更改。 带宽提高 4 倍时（20 Mbps），可以处理大 4 倍的数据更改（72 GB）。 
+  * 可以处理的数据更改与 Internet 带宽成正比。 举例来说，在备份时，5 Mbps 的带宽可以在 8 小时内应对大约 18 GB 的数据更改。 带宽提高 4 倍时（20 Mbps），可以处理大 4 倍的数据更改（72 GB）。
 * 确保随时都可以连接到 Internet。 设备的 Internet 连接如果断断续续或不可靠，可能导致无法访问云数据，并可能导致配置不受支持。
-* 如果打算将设备部署为 iSCSI 服务器： 
+* 如果打算将设备部署为 iSCSI 服务器：
   
-  * 建议禁用“自动获取 IP 地址”选项 (DHCP)。 
+  * 建议禁用“自动获取 IP 地址”选项 (DHCP)。
   * 配置静态 IP 地址。 必须配置主要和辅助 DNS 服务器。
   * 如果在虚拟阵列上定义多个网络接口，只有第一个网络接口（默认情况下，此接口是**以太网**接口）可以连接到云。 若要控制流量类型，可以在虚拟阵列上创建多个虚拟网络接口（配置为 iSCSI 服务器），并将这些接口连接到不同的子网。
-* 若只要限制云带宽（由虚拟阵列使用），可以在路由器或防火墙中配置限制。 如果在虚拟机监控程序中定义限制，它会限制所有协议（包括 iSCSI 和 SMB），而不只是限制云带宽。 
+* 若只要限制云带宽（由虚拟阵列使用），可以在路由器或防火墙中配置限制。 如果在虚拟机监控程序中定义限制，它会限制所有协议（包括 iSCSI 和 SMB），而不只是限制云带宽。
 * 确保启用虚拟机监控程序的时间同步。 如果使用 Hyper-V，请在 Hyper-V 管理器选择你的虚拟阵列，转到“设置”&gt;“集成服务”，并确保已选中“时间同步”。
 
 ### <a name="storage-accounts"></a>存储帐户
-StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以是自动生成的存储帐户、位于服务所在的同一订阅中的帐户，也可以是与另一个订阅相关的存储帐户。 有关详细信息，请参阅有关如何[管理虚拟阵列的存储帐户](storsimple-ova-manage-storage-accounts.md)的主题。
+StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以是自动生成的存储帐户、位于服务所在的同一订阅中的帐户，也可以是与另一个订阅相关的存储帐户。 有关详细信息，请参阅有关如何[管理虚拟阵列的存储帐户](storsimple-virtual-array-manage-storage-accounts.md)的主题。
 
 针对与虚拟阵列关联的存储帐户遵循以下建议。
 
@@ -161,7 +160,7 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 * 创建卷时，请将预期的数据使用量以及将来的增长量包含考虑。 稍后将无法扩展卷。
 * 创建卷后，无法缩小 StorSimple 上的卷大小。
 * 在写入 StorSimple 上的分层卷时，如果卷数据达到特定的阈值（相对于保留给卷的本地空间），IO 将受到限制。 继续写入此卷会让 IO 明显变慢。 尽管可以写入已超过预配容量的分层卷（系统不会主动阻止用户写入超出预配容量的数据），但会看到警报通知，指出已超过订阅量。 在看到该警报后，请务必采取补救措施，例如删除卷数据（目前不支持扩展卷）。
-* 对于灾难恢复用例，可允许的共享/卷数为 16 个，可并行处理的共享/卷数上限也是 16 个，因此共享/卷数并不影响 RPO 和 RTO。 
+* 对于灾难恢复用例，可允许的共享/卷数为 16 个，可并行处理的共享/卷数上限也是 16 个，因此共享/卷数并不影响 RPO 和 RTO。
 
 #### <a name="volumeshare-type"></a>卷/共享类型
 根据用途，StorSimple 支持两种类型的卷/共享：本地固定和分层。 本地固定卷/共享是丰富预配的，分层卷/共享是精简预配的。 
@@ -190,7 +189,7 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 为 StorSimple 卷配置 ACR 时，请遵循以下最佳实践：
 
 * 始终将至少一个 ACR 关联到卷。
-* 只在群集环境中定义多个 ACR。
+
 * 将多个 ACR 分配到卷时，请确保卷在公开时，不允许多个非群集主机并发访问。 如果已将多个 ACR 分配到卷，将弹出一条警告消息用于检查配置。
 
 ### <a name="data-security-and-encryption"></a>数据安全与加密
@@ -205,7 +204,7 @@ StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机
 操作最佳实践是指在虚拟阵列的日常管理或操作期间应遵循的指导原则。 这些最佳实践涵盖特定的管理任务，例如备份、从备份集还原、执行故障转移、禁用和删除阵列、监视系统使用情况和运行状况，以及在虚拟阵列上运行病毒扫描。
 
 ### <a name="backups"></a>备份
-虚拟阵列上的数据通过两种方式备份到云：默认在每天 22:30 自动启动的全设备备份，或者手动按需备份。 默认情况下，设备会自动创建其上所有数据的每日云快照。 有关详细信息，请转到 [back up your StorSimple Virtual Array](storsimple-ova-backup.md)（备份 StorSimple 虚拟阵列）。
+虚拟阵列上的数据通过两种方式备份到云：默认在每天 22:30 自动启动的全设备备份，或者手动按需备份。 默认情况下，设备会自动创建其上所有数据的每日云快照。 有关详细信息，请转到 [back up your StorSimple Virtual Array](storsimple-virtual-array-backup.md)（备份 StorSimple 虚拟阵列）。
 
 与默认备份关联的频率和保留期无法更改，但可以配置每天启动每日备份的时间。 在配置自动备份的开始时间时，我们建议：
 
@@ -213,7 +212,7 @@ StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机
 * 在打算执行设备故障转移时或维护前，先启动手动按需备份保护虚拟阵列上的数据。
 
 ### <a name="restore"></a>还原
-从备份集还原的方法有两种：还原到另一个卷或共享，或执行项级恢复（仅适用于配置为文件服务器的虚拟阵列）。 使用项级恢复可从 StorSimple 设备上的所有共享的云备份对文件和文件夹进行粒度恢复。 有关详细信息，请转到[从备份还原](storsimple-ova-restore.md)。
+从备份集还原的方法有两种：还原到另一个卷或共享，或执行项级恢复（仅适用于配置为文件服务器的虚拟阵列）。 使用项级恢复可从 StorSimple 设备上的所有共享的云备份对文件和文件夹进行粒度恢复。 有关详细信息，请转到[从备份还原](storsimple-virtual-array-clone.md)。
 
 执行还原时，请记住以下指导原则：
 
@@ -225,7 +224,7 @@ StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机
 ### <a name="failover-and-disaster-recovery"></a>故障转移和灾难恢复
 使用设备故障转移可将数据中心内的*源*设备数据迁移到位于相同或不同地理位置的另一个*目标*设备。 设备故障转移适用于整个设备。 在故障转移期间，源设备的云数据将所有权更改为目标设备云数据。
 
-对于 StorSimple 虚拟阵列，只能故障转移到同一 StorSimple Manager 服务管理的另一个虚拟阵列。 不允许故障转移到 8000 系列设备或不同 StorSimple Manager 服务（非源设备的服务）管理的阵列。 有关故障转移注意事项的详细信息，请转到 [prerequisites for the device failover](storsimple-ova-failover-dr.md)（设备故障转移的先决条件）。
+对于 StorSimple 虚拟阵列，只能故障转移到同一 StorSimple Manager 服务管理的另一个虚拟阵列。 不允许故障转移到 8000 系列设备或不同 StorSimple Manager 服务（非源设备的服务）管理的阵列。 有关故障转移注意事项的详细信息，请转到 [prerequisites for the device failover](storsimple-virtual-array-failover-dr.md)（设备故障转移的先决条件）。
 
 对虚拟阵列执行故障转移时，请记住以下事项：
 
@@ -239,7 +238,7 @@ StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机
   * 故障转移已完成，随后删除了源设备，但目标设备有问题，无法访问任何数据。 云中的数据仍保持安全，只要创建另一个虚拟阵列，然后将它用作 DR 的目标设备，即可轻松检索数据。
 
 ### <a name="deactivate"></a>停用
-停用 StorSimple 虚拟阵列时，将会断开设备与相应 StorSimple Manager 服务之间的连接。 停用是不可撤消的**永久性**操作。 停用的设备不再能够注册到 StorSimple Manager 服务。 有关详细信息，请转到 [deactivate and delete your StorSimple Virtual Array](storsimple-deactivate-and-delete-device.md)（停用和删除 StorSimple 虚拟阵列）。
+停用 StorSimple 虚拟阵列时，将会断开设备与相应 StorSimple Manager 服务之间的连接。 停用是不可撤消的**永久性**操作。 停用的设备不再能够注册到 StorSimple Manager 服务。 有关详细信息，请转到 [deactivate and delete your StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md)（停用和删除 StorSimple 虚拟阵列）。
 
 停用虚拟阵列时，请记住以下最佳实践：
 
@@ -250,7 +249,7 @@ StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机
 ### <a name="monitoring"></a>监视
 为确保 StorSimple 虚拟阵列持续处于正常状态，需要监视该阵列，确保能够收到系统传来的信息，包括警报。 若要监视虚拟阵列的整体运行状况，请实施以下最佳实践：
 
-* 配置监视功能来跟踪虚拟阵列的数据磁盘以及 OS 磁盘的使用情况。 如果运行 Hyper-V，可以结合使用 System Center Virtual Machine Manager (SCVMM) 和 System Center Operations Manager (SCOM) 来监视虚拟化主机。   
+* 配置监视功能来跟踪虚拟阵列的数据磁盘以及 OS 磁盘的使用情况。 如果运行 Hyper-V，可以结合使用 System Center Virtual Machine Manager (SCVMM) 和 System Center Operations Manager (SCOM) 来监视虚拟化主机。
 * 在虚拟阵列上配置电子邮件通知，以便在达到特定的使用级别时发送警报。                                                                                                                                                                                                
 
 ### <a name="index-search-and-virus-scan-applications"></a>索引搜索和病毒扫描应用程序
@@ -285,6 +284,6 @@ StorSimple 虚拟阵列可以自动将数据从本地层分层到 Microsoft Azur
 * 可以在一个分布式文件系统命名空间中部署多个虚拟阵列（如果配置为文件服务器或 iSCSI 服务器）。 有关详细步骤，请转到 [Distributed File System Namespace Solution with Hybrid Cloud Storage Deployment Guide](https://www.microsoft.com/download/details.aspx?id=45507)（使用混合云存储的分布式文件系统命名空间解决方案部署指南）。 目前不建议将分布式文件系统复制用于虚拟阵列。 
 
 ## <a name="see-also"></a>另请参阅
-了解如何通过 StorSimple Manager 服务[管理 StorSimple 虚拟阵列](storsimple-ova-manager-service-administration.md)。
+了解如何通过 StorSimple Manager 服务[管理 StorSimple 虚拟阵列](storsimple-virtual-array-manager-service-administration.md)。
 
 

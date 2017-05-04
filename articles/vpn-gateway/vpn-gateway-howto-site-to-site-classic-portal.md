@@ -6,7 +6,7 @@ documentationcenter: na
 author: cherylmc
 manager: timlt
 editor: 
-tags: azure-resource-manager
+tags: azure-service-management
 ms.assetid: 
 ms.service: vpn-gateway
 ms.devlang: na
@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: fd7c834e8e061ba51b116ade88769dde05abcf9a
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: e5dcf957ea88175be02bce21929c43151417d0e3
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -48,7 +48,7 @@ ms.lasthandoff: 04/25/2017
 * 一台兼容的 VPN 设备和能够对其进行配置的人员。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 一个用于 VPN 设备的面向外部的公共 IPv4 IP 地址。 此 IP 地址不得位于 NAT 之后。
 * 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够为你提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
-* 目前需要使用 PowerShell 来指定共享密钥和创建 VPN 网关连接。 安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 使用 PowerShell 进行此配置时，请确保以管理员身份运行。 
+* 目前需要使用 PowerShell 来指定共享密钥和创建 VPN 网关连接。 安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 使用 PowerShell 进行此配置时，请确保以管理员身份运行。 
 
 ### <a name="values"></a>此练习的示例配置值
 

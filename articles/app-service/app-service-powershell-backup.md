@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/10/2016
 ms.author: nicking
 translationtype: Human Translation
-ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
-ms.openlocfilehash: 172b55a68662dd98c4af946d51f3ece51f7835e1
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0d1c323155aae90e8a92d7a3b92b5ca1482e1ef5
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/16/2017
         $sasUrl = New-AzureStorageContainerSASToken -Name $blobContainerName -Permission rwdl -Context $context -ExpiryTime (Get-Date).AddMonths(1) -FullUri
 
 ## <a name="install-azure-powershell-132-or-greater"></a>安装 Azure PowerShell 1.3.2 或更高版本
-有关安装并使用 Azure PowerShell 的说明，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](/powershell/azureps-cmdlets-docs)。
+有关安装并使用 Azure PowerShell 的说明，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](/powershell/azure/overview)。
 
 ## <a name="create-a-backup"></a>创建备份
 使用 New-AzureRmWebAppBackup cmdlet 创建 Web 应用的备份。

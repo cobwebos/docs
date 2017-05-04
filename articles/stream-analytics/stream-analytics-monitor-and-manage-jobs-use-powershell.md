@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 69a976f1f019cb89780d00c6bc730fae30e92378
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: ad872828443dd795dd6c45bd2957bbf0f48f6cdd
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/08/2016
 了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。
 
 ## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>针对流分析运行 Azure PowerShell cmdlet 的先决条件
-* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)；  
+* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)；  
 
 Azure PowerShell 0.9.8：  
 
@@ -451,7 +451,7 @@ Azure PowerShell 1.0：
 此 PowerShell 命令测试 StreamingJob 中输出 Output 的连接状态。  
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。 
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。 
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: 9b0912edc5adf804e7a3e6dcc6b440fc165d3673
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 647e3de08dd8d3b520705f0d52ba2bb674eda0bf
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 9b0912edc5adf804e7a3e6dcc6b440fc165d3673
 PowerShell 提供了一种最灵活的方法来管理 Azure CDN 配置文件和终结点。  可以使用 PowerShell 以交互方式或通过编写脚本来自动执行管理任务。  本教程演示了使用 PowerShell 可以完成的几个最常见的任务来管理 Azure CDN 配置文件和终结点。
 
 ## <a name="prerequisites"></a>先决条件
-若要使用 PowerShell 管理 Azure CDN 配置文件和终结点，必须已安装 Azure PowerShell 模块。  若要了解如何安装 Azure PowerShell 以及使用 `Login-AzureRmAccount` cmdlet 连接到 Azure，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+若要使用 PowerShell 管理 Azure CDN 配置文件和终结点，必须已安装 Azure PowerShell 模块。  若要了解如何安装 Azure PowerShell 以及使用 `Login-AzureRmAccount` cmdlet 连接到 Azure，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 > [!IMPORTANT]
 > 执行 Azure PowerShell cmdlet 之前，必须使用 `Login-AzureRmAccount` 登录。
@@ -168,7 +169,7 @@ Else { Write-Host "No, that endpoint name is not available." }
 `New-AzureRmCdnCustomDomain` 会将自定义域名添加到现有的终结点。
 
 > [!IMPORTANT]
-> 必须按[如何将自定义域映射到内容交付网络 (CDN) 终结点](cdn-map-content-to-custom-domain.md)中所述，通过 DNS 提供商设置 CNAME。  你可以先测试映射，然后使用 `Test-AzureRmCdnCustomDomain` 修改终结点。
+> 必须按[如何将自定义域映射到内容交付网络 (CDN) 终结点](cdn-map-content-to-custom-domain.md)中所述，通过 DNS 提供商设置 CNAME。  在使用 `Test-AzureRmCdnCustomDomain` 修改终结点之前可以测试映射 。
 > 
 > 
 
@@ -244,10 +245,5 @@ Remove-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG
 了解如何通过 [.NET](cdn-app-dev-net.md) 或 [Node.js](cdn-app-dev-node.md) 实现 Azure CDN 的自动化。
 
 要了解有关 CDN 功能的信息，请参阅 [CDN 概述](cdn-overview.md)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

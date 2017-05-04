@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 96ab414f6fb58908f253e9f1cf29ab3a57ca2a90
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d34bb4a285f77f5c21a4af2d544bda3221d59e8d
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/15/2017
 ## <a name="prerequisites"></a>先决条件
 
 * 该脚本只能在装有 Azure Resource Manager 模块 2.01 和更高版本的 Windows 10 与 Windows Server 2016 上运行。 在 Windows 的早期版本中不受支持。
-* Azure PowerShell 1.0 和更高版本。 有关 PowerShell 1.0 版本的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* Azure PowerShell 1.0 和更高版本。 有关 PowerShell 1.0 版本的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * 在以下 PowerShell 脚本中作为 *–AutomationAccountName* 和 *-ApplicationDisplayName* 参数值引用的自动化帐户。
 
 若要获取 *SubscriptionID*、*ResourceGroup* 和 *AutomationAccountName* 的值（脚本的必需参数），请执行以下操作：
@@ -271,3 +271,4 @@ ms.lasthandoff: 04/15/2017
 ## <a name="next-steps"></a>后续步骤
 * 有关服务主体的详细信息，请参阅 [Application Objects and Service Principal Objects](../active-directory/active-directory-application-objects.md)（应用程序对象和服务主体对象）。
 * 有关证书和 Azure 服务的详细信息，请参阅 [Azure 云服务证书概述](../cloud-services/cloud-services-certs-create.md)。
+

@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 0664888dbb14aaa353d5d126cdf799b62711d71f
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 834d01a446c77e69c325058fa00ed5860a82d891
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/12/2017
 * 请阅读 [教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 了解教程概述，并完成 **先决条件** 步骤。
 * Visual Studio 2012、2013 或 2015
 * 下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)
-* Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
+* Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
 创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，然后将其分配到 **数据工厂参与者** 角色。

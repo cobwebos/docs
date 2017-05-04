@@ -15,15 +15,15 @@ ms.workload: required
 ms.date: 03/27/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: ba801c69cf2d0d542bebf54e99ef981854284ab0
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 3bd182a775377f912914c0c7a63fe41811146e1a
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>将 VMware 虚拟机和物理服务器故障回复到本地站点
 > [!div class="op_single_selector"]
-> * [来自 Azure 的 VMware 虚拟机/物理计算机](site-recovery-failback-azure-to-vmware.md)
+> * [来自 Azure 的 VMware 虚拟机/物理计算机](site-recovery-how-to-failback-azure-to-vmware.md)
 > * [来自 Azure 的 Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
 
 本文介绍如何将 Azure 虚拟机从 Azure 故障回复到本地站点。 使用此[参考](site-recovery-how-to-reprotect.md)重新保护计算机后，可以故障回复 VMware 虚拟机或 Windows/Linux 物理服务器时，请按照此处的说明进行故障回复。

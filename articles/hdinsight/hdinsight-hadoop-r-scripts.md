@@ -17,13 +17,14 @@ ms.date: 02/28/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 8b74f2e4169ac97e09da12d5ed85e0e24b50e150
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 48a606b796ab87a44d8139039953da2fdb8be180
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 R
+
 了解如何使用 R 通过脚本操作来自定义基于 Windows 的 HDInsight 群集，以及如何在 HDInsight 群集上使用 R。 [HDInsight 产品/服务](https://azure.microsoft.com/pricing/details/hdinsight/)包括作为 HDInsight 群集一部分的 R Server。 它允许 R 脚本使用 MapReduce 和 Spark 来运行分布式计算。 有关详细信息，请参阅 [开始使用 HDInsight 上的 R Server](hdinsight-hadoop-r-server-get-started.md)。 有关在基于 Linux 的群集中使用 R 的信息，请参阅[在 HDInsight Hadoop 群集 (Linux) 上安装并使用 R](hdinsight-hadoop-r-scripts-linux.md)。
 
 可以使用*脚本操作*，在 Azure HDInsight 的任何一种群集（Hadoop、Storm、HBase、Spark）上安装 R。 用于在 HDInsight 群集上安装 R 的示例脚本可通过 [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1) 上的只读 Azure 存储 Blob 获得。
@@ -31,7 +32,7 @@ ms.lasthandoff: 12/08/2016
 **相关文章**
 
 * [在 HDInsight Hadoop 群集 (Linux) 上安装并使用 R](hdinsight-hadoop-r-scripts-linux.md)
-* [在 HDInsight 中创建 Hadoop 群集](hdinsight-provision-clusters.md)：有关如何创建 HDInsight 群集的一般信息
+* [在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)：有关如何创建 HDInsight 群集的一般信息
 * [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关使用脚本操作自定义 HDInsight 群集的一般信息
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions.md)
 
@@ -102,7 +103,7 @@ R 与 Azure Blob 存储 (WASB) 兼容，这样，存储在此的数据可以在 
 
 ## <a name="see-also"></a>另请参阅
 * [在 HDInsight Hadoop 群集 (Linux) 上安装并使用 R](hdinsight-hadoop-r-scripts-linux.md)
-* [在 HDInsight 中创建 Hadoop 群集](hdinsight-provision-clusters.md)：有关如何创建 HDInsight 群集的一般信息
+* [在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)：有关如何创建 HDInsight 群集的一般信息
 * [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关使用脚本操作自定义 HDInsight 群集的一般信息
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions.md)
 * [在 HDInsight 群集上安装并使用 Spark][hdinsight-install-spark]：有关安装 Spark 的脚本操作示例

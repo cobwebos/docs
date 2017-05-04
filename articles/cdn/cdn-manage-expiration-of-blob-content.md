@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 7c6ca3789e9a5dcde799d9ef40b58bd2f3c8966c
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f44119d651767881cfd999808925b0066a5e502b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/21/2017
 本教程演示可以为 Azure 存储中的 blob 设置 TTL 的几种方式。  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azureps-cmdlets-docs) 是管理 Azure 服务的最快、 最强大的方式之一。  使用 `Get-AzureStorageBlob`cmdlet 来获取对 blob 的引用，然后设置 `.ICloudBlob.Properties.CacheControl` 属性。 
+[Azure PowerShell](/powershell/azure/overview) 是管理 Azure 服务的最快、 最强大的方式之一。  使用 `Get-AzureStorageBlob`cmdlet 来获取对 blob 的引用，然后设置 `.ICloudBlob.Properties.CacheControl` 属性。 
 
 ```powershell
 # Create a storage context

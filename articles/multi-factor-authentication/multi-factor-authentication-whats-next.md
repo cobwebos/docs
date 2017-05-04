@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 04/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: df4340ce5185405334f08f6098590f84b067dafd
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 2e7c1ddedaa11fb614f2e8cf6d1644ae2a2beae3
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -86,7 +86,7 @@ ms.lasthandoff: 03/22/2017
 3. 结束通话。
 
 ### <a name="view-fraud-reports"></a>查看欺诈报告
-1. 登录到 [Azure 经典门户](https://portal.azure.com/)。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 在左侧选择“Active Directory”。
 3. 在顶部选择“多重身份验证提供程序”。 此时将显示多重身份验证提供程序列表。
 4. 选择你的多重身份验证提供程序，然后单击页面底部的“管理”。 Azure 多重身份验证管理门户随即打开。
@@ -98,7 +98,7 @@ ms.lasthandoff: 03/22/2017
 “免验证一次”允许用户在不执行双重验证的情况下进行身份验证，不过只会免除一次。 免验证是暂时性的，将在指定的秒数后过期。 在移动应用或电话无法接收通知或来电的情况下，你可以启用“免验证一次”，使用户能够访问所需的资源。
 
 ### <a name="create-a-one-time-bypass"></a>创建免验证一次
-1. 登录到 [Azure 经典门户](https://portal.azure.com/)。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 根据此页顶部的说明导航到 MFA 管理门户。
 3. 在 Azure 多重身份验证管理门户中，如果在左侧看到租户或 Azure MFA 提供程序的名称旁边有一个 **+**，则单击 **+** 可查看不同的 MFA 服务器复制组以及 Azure 默认组。 选择合适的组。
 4. 在“用户管理”下，选择“免验证一次”。
@@ -110,7 +110,7 @@ ms.lasthandoff: 03/22/2017
 7. 时间限制将立即生效，因此，用户需要在免验证一次过期前登录。 
 
 ### <a name="view-the-one-time-bypass-report"></a>查看免验证一次报告
-1. 登录到 [Azure 经典门户](https://portal.azure.com/)。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 在左侧选择“Active Directory”。
 3. 在顶部选择“多重身份验证提供程序”。 此时将显示多重身份验证提供程序列表。
 4. 选择你的多重身份验证提供程序，然后单击页面底部的“管理”。 Azure 多重身份验证管理门户随即打开。
@@ -134,7 +134,7 @@ ms.lasthandoff: 03/22/2017
 若要上载自定义消息，请执行以下操作：
 
 1. 使用支持的文件格式之一创建自定义语音消息。
-2. 登录到 [Azure 经典门户](https://portal.azure.com/)。
+2. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 3. 根据此页顶部的说明导航到 MFA 管理门户。
 4. 在 Azure 多重身份验证管理门户中，单击“配置”部分下的“语音消息”。
 5. 在“配置: 语音消息”页上，单击“新建语音消息”。
@@ -164,7 +164,7 @@ ms.lasthandoff: 03/22/2017
 到 Azure AD 的登录并未打算使用缓存。
 
 ### <a name="set-up-caching"></a>设置缓存 
-1. 登录到 [Azure 经典门户](https://portal.azure.com/)。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 根据此页顶部的说明导航到 MFA 管理门户。
 3. 在 Azure 多重身份验证管理门户中，单击“配置”部分下的“缓存”。
 4. 在“配置缓存”页上，单击“新建缓存”。
@@ -193,7 +193,7 @@ ms.lasthandoff: 03/22/2017
 无论是否启用了“受信任的 IP”，浏览器流都要求进行双重验证，较旧的丰富客户端应用都要求提供应用密码。 
 
 ### <a name="to-enable-trusted-ips"></a>启用受信任的 IP
-1. 登录到 [Azure 经典门户](https://portal.azure.com/)。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 按照本文开头的说明导航到“MFA 服务设置”页。
 3. 在“服务设置”页上，在“受信任的 IP”下有两个选项：
    
@@ -255,7 +255,7 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 ### <a name="allow-app-password-creation"></a>允许创建应用密码
 默认情况下，用户无法创建应用密码。 为此，必须启用此功能。 若要允许用户创建应用密码，请使用以下过程：
 
-1. 登录到 [Azure 经典门户](https://portal.azure.com/)。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 按照本文开头的说明导航到“MFA 服务设置”页。
 3. 选中“允许用户创建用于登录到非浏览器应用的应用密码”旁边的单选按钮。
 
@@ -283,7 +283,7 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 >当用户通过 Azure MFA 服务器或第三方 MFA 解决方案向 AD FS 执行双重验证时，此功能与 AD FS 的“使我保持登录”功能不兼容。 如果用户在 AD FS 上选择“使我保持登录”，并且还将其设备标记为“受信任，可以跳过 MFA”，则在“记住 MFA”天数期满后，他们将不能验证。 Azure AD 将请求全新双重验证，但 AD FS 将返回包含原始 MFA 声明和日期的令牌，而不是重新执行双重验证。 这将引发 Azure AD 和 AD FS 之间的验证循环。 
 
 ### <a name="enable-remember-multi-factor-authentication"></a>启用“记住多重身份验证”
-1. 登录到 [Azure 经典门户](https://portal.azure.com/)。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 按照本文开头的说明导航到“MFA 服务设置”页。
 3. 在“服务设置”页上，在“管理用户设备设置”下，选中“允许用户在其信任的设备上记住多重身份验证”复选框。
    ![记住设备](./media/multi-factor-authentication-whats-next/remember.png)
@@ -310,7 +310,7 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 | 通过移动应用发送验证码 |Microsoft Authenticator 应用每隔三十秒会生成一个新的 OATH 验证码。 用户将此验证码输入到登录界面中。<br>Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。 |
 
 ### <a name="how-to-enabledisable-authentication-methods"></a>如何启用/禁用身份验证方法
-1. 登录到 [Azure 经典门户](https://portal.azure.com/)。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 按照本文开头的说明导航到“MFA 服务设置”页。
 3. 在“服务设置”页上的验证选项下，选择/取消选择要使用的选项。
    ![验证选项](./media/multi-factor-authentication-whats-next/authmethods.png)

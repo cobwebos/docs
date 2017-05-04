@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 04/10/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 4c7a92352d4fef6a0e55b608bf5c957cd2c40332
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e6c6b4acbc48cfbb8c26d09852f8b4c86fd6ea27
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -57,7 +57,7 @@ FabricClient fabricClient = new FabricClient();
 假设你在 Visual Studio 中生成并打包名为 *MyApplication* 的应用。 默认情况下，ApplicationManifest.xml 中列出的应用程序类型名称为“MyApplicationType”。  应用程序包（其中包含必需的应用程序清单、服务清单以及代码/配置/数据包）位于 *C:\Users\username\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug* 中。
 
 上载应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。
-如果要在本地验证应用程序包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) cmdlet。
+如果要在本地验证应用程序包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) cmdlet。
 
 [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) 方法可将应用程序包上传到群集映像存储。 
 

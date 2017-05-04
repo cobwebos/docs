@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
-ms.openlocfilehash: 8963764915bf918fd701e067832c88ea1a84b8d7
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 1e35b589f61d47c2746ba920fb5959bdae5b746c
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -194,7 +194,7 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
     Command(s) completed successfully.
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

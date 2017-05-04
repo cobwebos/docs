@@ -16,9 +16,9 @@ ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: e1e915e07591ed104a30e9194ec6228b04519b8c
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e391dc0f88bd7e065f968a490b3c1ddb1fa75978
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -56,7 +56,7 @@ ms.lasthandoff: 04/12/2017
 ### <a name="alerts"></a>警报
 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md)通过[日志搜索](#log-searches)来搜索存储库中的数据，从而确定问题。  警报会通知用户，或者自动运行某个操作作为响应。 你应该为应用程序确定不同的警报条件，并且让相应的警报规则包括在解决方案文件中。
 
-如果有可能通过自动化过程纠正问题，则通常应在 Azure 自动化中创建一个 runbook 来执行该纠正操作。  大多数 Azure 服务可以通过 [cmdlet](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) 进行管理，runbook 也可以利用后者来执行此类功能。
+如果有可能通过自动化过程纠正问题，则通常应在 Azure 自动化中创建一个 runbook 来执行该纠正操作。  大多数 Azure 服务可以通过 [cmdlet](/powershell/azure/overview) 进行管理，runbook 也可以利用后者来执行此类功能。
 
 如果解决方案需要外部功能来响应警报，则可使用 [webhook 响应](../log-analytics/log-analytics-alerts-actions.md)，  以便调用外部 Web 服务，发送警报中的信息。
 

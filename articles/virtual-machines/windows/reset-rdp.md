@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 47de68f137226c79882632e26e83805ff6d6ea36
-ms.lasthandoff: 04/05/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e6cb3a0e259d0889ad8934211152e6832449f67b
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>如何在 Windows VM 中重置远程桌面服务或其登录密码
-如果无法连接到 Windows 虚拟机 (VM)，可以重置本地管理员密码或远程桌面服务配置。 可以使用 Azure 门户或 Azure PowerShell 中的 VM 访问扩展重置密码。 如果使用 PowerShell，请务必[安装和配置最新的 PowerShell 模块](/powershell/azureps-cmdlets-docs)，并登录到 Azure 订阅。 也可以对[使用经典部署模型创建的 VM 执行这些步骤](reset-rdp.md)。
+如果无法连接到 Windows 虚拟机 (VM)，可以重置本地管理员密码或远程桌面服务配置。 可以使用 Azure 门户或 Azure PowerShell 中的 VM 访问扩展重置密码。 如果使用 PowerShell，请务必[安装和配置最新的 PowerShell 模块](/powershell/azure/overview)，并登录到 Azure 订阅。 也可以对[使用经典部署模型创建的 VM 执行这些步骤](reset-rdp.md)。
 
 ## <a name="ways-to-reset-configuration-or-credentials"></a>重置配置或凭据的方式
 可以根据需要，通过多种不同的方式重置远程桌面服务和凭据：
@@ -54,10 +54,10 @@ ms.lasthandoff: 04/05/2017
 
 
 ## <a name="vmaccess-extension-and-powershell"></a>VMAccess 扩展和 PowerShell
-请务必[安装和配置最新的 PowerShell 模块](/powershell/azureps-cmdlets-docs)，并使用 `Login-AzureRmAccount` cmdlet 登录到 Azure 订阅。
+请务必[安装和配置最新的 PowerShell 模块](/powershell/azure/overview)，并使用 `Login-AzureRmAccount` cmdlet 登录到 Azure 订阅。
 
 ### <a name="reset-the-local-administrator-account-password"></a>**重置本地管理员帐户密码**
-使用 [Set-AzureRmVMAccessExtension](https://msdn.microsoft.com/library/mt619447.aspx) PowerShell cmdlet 重置管理员密码或用户名。 按如下所示创建帐户凭据：
+使用 [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell cmdlet 重置管理员密码或用户名。 按如下所示创建帐户凭据：
 
 ```powershell
 $cred=Get-Credential
@@ -75,7 +75,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
 ```
 
 ### <a name="reset-the-remote-desktop-service-configuration"></a>**重置远程桌面服务配置**
-使用 [Set-AzureRmVMAccessExtension](https://msdn.microsoft.com/library/mt619447.aspx) PowerShell cmdlet 重置对 VM 的远程访问。 以下示例在名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 上重置名为 `myVMAccess` 的访问扩展：
+使用 [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell cmdlet 重置对 VM 的远程访问。 以下示例在名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 上重置名为 `myVMAccess` 的访问扩展：
 
 ```powershell
 Set-AzureRmVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" `

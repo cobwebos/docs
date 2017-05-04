@@ -1,23 +1,11 @@
 ---
-title: "（已弃用）正态分布 Web 服务套件 - Azure | Microsoft Docs"
-description: "（已弃用）正态分布 Web 服务套件"
-services: machine-learning
-documentationcenter: 
-author: ireiter
-manager: jhubbard
-editor: cgronlun
-ms.assetid: aab7b92e-953b-43d8-b0af-031394406bfe
-ms.service: machine-learning
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: deprecated
-ms.date: 01/06/2017
-ms.author: ireiter
+
 ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: https://gallery.cortanaintelligence.com/
 translationtype: Human Translation
-ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
-ms.openlocfilehash: da7b70171d13c82e9269064069e69a35b9b2daaa
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 28d39639e687dd0b768d0d4c780a24f7b727efa6
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -272,10 +260,5 @@ ms.openlocfilehash: da7b70171d13c82e9269064069e69a35b9b2daaa
 [2]: ./media/machine-learning-r-csharp-normal-distribution/normal-img2.png
 [3]: ./media/machine-learning-r-csharp-normal-distribution/normal-img3.png
 [4]: ./media/machine-learning-r-csharp-normal-distribution/normal-img4.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

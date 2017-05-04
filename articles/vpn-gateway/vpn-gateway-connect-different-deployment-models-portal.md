@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 3c49af42332dc62db80889f1625b243473559cd1
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9e0dbb028c668aad182e2c1c54fb397ffe99a0a0
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,13 +34,13 @@ ms.lasthandoff: 04/25/2017
 
 将经典 VNet 连接到 Resource Manager VNet 类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。 可以在位于不同订阅、不同区域中的 VNet 之间创建连接。 您还可以连接已连接到本地网络的 VNet，只要它们配置的网关是动态或基于路由的。 有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet常见问题解答](#faq)。 
 
-如果 VNet 位于同一区域，可能需考虑改为使用 VNet 对等互连进行连接。 VNet 对等互连不使用 VPN 网关。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。 
+如果 VNet 位于同一区域中，可能需考虑改为使用 VNet 对等互连进行连接。 VNet 对等互连不使用 VPN 网关。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。 
 
 ### <a name="prerequisites"></a>先决条件
 
 * 这些步骤假定已创建了两个 VNet。 如果你使用本文进行练习并且还没有 VNet，相关步骤中的链接可以帮助你创建它们。
 * 请确认两个 VNet 的地址范围不相互重叠，也不与网关可能连接到的其他连接的任何范围重叠。
-* 为 Resource Manager 和服务管理（经典）安装最新的 PowerShell cmdlet。 本文中同时使用 Azure 门户和 PowerShell。 要创建从经典 VNet 到 Resource Manager VNet 的连接，必须使用 PowerShell。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 
+* 为 Resource Manager 和服务管理（经典）安装最新的 PowerShell cmdlet。 本文中同时使用 Azure 门户和 PowerShell。 要创建从经典 VNet 到 Resource Manager VNet 的连接，必须使用 PowerShell。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 
 
 ### <a name="values"></a>示例设置
 
@@ -262,3 +262,4 @@ Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
 ## <a name="faq"></a>VNet 到 VNet 常见问题解答
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+

@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 translationtype: Human Translation
-ms.sourcegitcommit: bdde0988bbaa3868c4acadfec0b81a2413e8a14b
-ms.openlocfilehash: f9a687ce5dd381e27ed9b784c3644528f000de2d
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 243c1cd5ebf34f2d8a8fda234fa3875298390336
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -78,7 +79,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 
 1.    **DDoS 保护**：DDoS 保护是一个 Azure 物理网络层，可防范 Azure 平台本身受到大规模的基于 Internet 的攻击。 这些攻击利用多个“傀儡”节点尝试瘫痪 Internet 服务。 Azure 使用一个强大的 DDoS 保护网来保护所有入站、出站和跨 Azure 区域连接。 此 DDoS 保护层没有用户可配置的属性，客户也无法对其进行访问。 DDoS 保护层保护 Azure 平台免受大规模攻击，并监视出站流量和跨 Azure 区域流量。 使用 VNet 上的网络虚拟设备，可以通过客户配置其他弹性层，防止受到规模较小且不会妨碍平台级保护的攻击。 举一个进行 DDoS 攻击的例子：如果某个面向 Internet 的 IP 地址遭受大规模的 DDoS 攻击，Azure 会检测攻击源，清理带攻击性的流量，阻止其访问预期的目标。 在几乎所有情况下，受攻击的终结点不会受攻击的影响。 在极少数情况下，如果某个终结点受影响，则只影响到受攻击终结点的流量，到其他终结点的流量不受影响。 因此，其他客户和服务也不会受该攻击的影响。 必须注意的是，Azure DDoS 仅监视大规模攻击。 可能会出现平台级保护阈值尚未超出，而特定服务却已不堪重负的情况。 例如，在 Azure 平台级 DDoS 保护将某个威胁记录在册之前，DDoS 攻击可能已导致单个 A0 IIS 服务器上的网站脱机。
 
-2.  **公共 IP 地址**：使用公共 IP 地址（通过服务终结点、公共 IP 地址、应用程序网关以及其他 Azure 功能启用，以便将路由到用户资源的公共 IP 地址呈现给 Internet），云服务或资源组就可以公开公共 Internet IP 地址和端口。 终结点使用网络地址转换 (NAT) 将流量路由到 Azure 虚拟网络上的内部地址和端口。 此路径是外部流量进入虚拟网络的主要方式。 可以对公共 IP 地址进行配置，确定可以传入哪种流量、如何在虚拟网络上转换该流量以及要将它路由到何处。
+2.    **公共 IP 地址**：使用公共 IP 地址（通过服务终结点、公共 IP 地址、应用程序网关以及其他 Azure 功能启用，以便将路由到用户资源的公共 IP 地址呈现给 Internet），云服务或资源组就可以公开公共 Internet IP 地址和端口。 终结点使用网络地址转换 (NAT) 将流量路由到 Azure 虚拟网络上的内部地址和端口。 此路径是外部流量进入虚拟网络的主要方式。 可以对公共 IP 地址进行配置，确定可以传入哪种流量、如何在虚拟网络上转换该流量以及要将它路由到何处。
 
 流量进入虚拟网络后，有许多功能将派上用场。 Azure 虚拟网络是客户连接其工作负荷的基础，也是应用基本网络层安全性的所在之处。 它是客户在 Azure 中的专用网络（虚拟网络覆盖），并具有以下功能和特性：
 
@@ -174,7 +175,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 * 使用 Azure 中的本机功能和/或网络虚拟设备
 * 使用本地网络上的物理设备
 
-在纯粹的 Azure 网络上，选项包括本机 Azure 功能（例如 Azure Load Balancer），或由丰富的合作伙伴生态系统提供的网络虚拟设备（例如检查点防火墙）。
+在纯粹的 Azure 网络上，选项包括本机 Azure 功能（例如 Azure 负载均衡器），或由丰富的合作伙伴生态系统提供的网络虚拟设备（例如检查点防火墙）。
 
 如果 Azure 与本地网络之间需要边界，安全设备可以位于连接的任何一端（或两端）。 因此，必须确定安全设备的位置。
 
@@ -385,7 +386,7 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 #### <a name="firewall-rules-description"></a>防火墙规则描述
 在上面的逻辑图中，安全子网没有显示，因为防火墙是该子网上的唯一资源。 此图显示的是防火墙规则以及这些规则在逻辑上是如何允许或拒绝流量的流动，而不是实际的路由路径。 此外，针对 RDP 流量选择的外部端口均为较高范围的端口 (8014-8026)，并且选择时大致遵循了本地 IP 地址的最后两个八位字节以方便阅读（例如，本地服务器地址 10.0.1.4 与外部端口 8014 相关联）。 不过可以使用任何更高的无冲突端口。
 
-在此示例中，我们需要&7; 种类型的规则：
+在此示例中，我们需要 7 种类型的规则：
 
 * 外部规则（针对入站流量）：
   1. 防火墙管理规则：此应用重定向规则允许流量传递到网络虚拟设备的管理端口。
@@ -514,7 +515,7 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 ## <a name="references"></a>参考
 ### <a name="helpful-websites-and-documentation"></a>有用的网站和文档
 * 使用 Azure Resource Manager 访问 Azure
-* 使用 PowerShell 访问 Azure：[https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azureps-cmdlets-docs)
+* 使用 PowerShell 访问 Azure：[https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azure/overview)
 * 虚拟网络文档：[https://docs.microsoft.com/azure/virtual-network/](https://docs.microsoft.com/azure/virtual-network/)
 * 网络安全组文档：[https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/virtual-networks-nsg.md)
 * 用户定义的路由文档：[https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
@@ -551,9 +552,4 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 [Example6]: ./virtual-network/virtual-networks-hybrid-expressroute-asm.md
 [Example7]: ./virtual-network/virtual-networks-vnet2vnet-direct-asm.md
 [Example8]: ./virtual-network/virtual-networks-vnet2vnet-transit-asm.md
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

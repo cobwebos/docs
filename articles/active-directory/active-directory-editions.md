@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: f29c3ed47c772609cfeca0ad2b5078001b6d0737
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 59e12d70d46d45fb7dc4244ac2968838cb29dbec
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -145,7 +145,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 **更多详细信息：**
 
-* [如何更新自己的密码](active-directory-passwords-update-your-own-password.md#reset-my-password)
+* [如何更新自己的密码](active-directory-passwords-update-your-own-password.md#reset-or-unlock-my-password-for-a-work-or-school-account)
 
 #### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>Connect（将本地目录扩展到 Azure Active Directory 的同步引擎）
 **类型：**常用功能

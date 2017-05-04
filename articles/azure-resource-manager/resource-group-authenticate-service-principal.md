@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 04/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 775734ea55d1136e64afc713356b0f0bfc81ea9f
-ms.lasthandoff: 04/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: eb6bddbe4220418f7c525985ab6a15524589829e
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/21/2017
 * 将权限分配给应用标识，这些权限不同于你自己的权限。 通常情况下，这些权限仅限于应用需执行的操作。
 * 执行无人参与的脚本时，使用证书进行身份验证。
 
-本主题介绍如何通过 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 为应用程序进行一切所需设置，使之能够使用自己的凭据和标识运行。
+本主题介绍如何通过 [Azure PowerShell](/powershell/azure/overview) 为应用程序进行一切所需设置，使之能够使用自己的凭据和标识运行。
 
 ## <a name="required-permissions"></a>所需的权限
 若要完成本主题，必须在 Azure Active Directory 和 Azure 订阅中均具有足够的权限。 具体而言，必须能够在 Azure Active Directory 中创建应用并向角色分配服务主体。 
@@ -345,7 +345,7 @@ Param (
 
 ## <a name="change-credentials"></a>更改凭据
 
-若要更改 AD 应用的凭据（为了保障安全或由于凭据过期的缘故），请使用 [Remove-AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) 和 [New-AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/new-azurermadappcredential) cmdlet。
+若要更改 AD 应用的凭据（为了保障安全或由于凭据过期的缘故），请使用 [Remove-AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) 和 [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential) cmdlet。
 
 若要删除应用程序的所有凭据，请使用：
 

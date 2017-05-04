@@ -16,9 +16,9 @@ ms.date: 04/12/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 04bab3024474ae521090a8693b6c095e1704d4dc
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 350aa79cf1f41084c33e16b6fcf2ada971b22626
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -74,9 +74,9 @@ ms.lasthandoff: 03/15/2017
 * 有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs)。
 
 ### <a name="enable-diagnostics-with-powershell"></a>使用 PowerShell 启用诊断
-需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) 的 2016 年 11 月版 (v2.3.0) 或更高版本。
+需要 [Azure PowerShell](/powershell/azure/overview) 的 2016 年 11 月版 (v2.3.0) 或更高版本。
 
-下面的 PowerShell 示例演示如何使用 [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/resourcemanager/azurerm.insights/v2.3.0/set-azurermdiagnosticsetting) 对网络安全组启用诊断。 同一方法适用于所有受支持的资源 - 将 `$resourceId` 设置为要为其启用诊断的资源的资源 ID。
+下面的 PowerShell 示例演示如何使用 [Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) 对网络安全组启用诊断。 同一方法适用于所有受支持的资源 - 将 `$resourceId` 设置为要为其启用诊断的资源的资源 ID。
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"

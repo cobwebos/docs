@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: efdec32e565bf1d11b562d283e56bd8ed5d292b9
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a0ce5cf6a48d3dfd68e1696d93aac7c55a442900
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 03/24/2017
 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。  
 
 ### <a name="step-2-install-the-latest-versions-of-the-azure-service-management-sm-powershell-modules"></a>步骤 2. 安装最新版本的 Azure 服务管理 (SM) PowerShell 模块
-有关如何配置计算机以使用 Azure PowerShell 模块的分步指导，请遵循 [Azure PowerShell cmdlet 入门](/powershell/azureps-cmdlets-docs)中的说明。
+有关如何配置计算机以使用 Azure PowerShell 模块的分步指导，请遵循 [Azure PowerShell cmdlet 入门](/powershell/azure/overview)中的说明。
 
 ### <a name="step-3-log-in-to-your-azure-account-and-select-a-subscription"></a>步骤 3. 登录到 Azure 帐户并选择订阅
 1. 使用提升的权限打开 PowerShell 控制台，然后连接到帐户。 使用下面的示例来帮助连接：

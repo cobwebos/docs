@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 04/07/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: d2887e255e59c164bb6d733988053f514a118c7b
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 35a86a91ee60a81b5c743067fcd97da0f2dcc8f1
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -359,7 +359,7 @@ Azure 磁盘加密管理解决方案可以解决以下业务需求：
  ```
 
 #### <a name="set-up-the-key-vault-access-policy-for-the-azure-ad-application"></a>为 Azure AD 应用程序设置 Key Vault 访问策略
-Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用 [`Set-AzureKeyVaultAccessPolicy`](https://msdn.microsoft.com/library/azure/dn903607.aspx) cmdlet，并将客户端 ID（注册应用程序时生成）用作 _–ServicePrincipalName_ 参数值，即可向应用程序授予权限。 若要了解详细信息，请参阅博客文章 [Azure Key Vault - Step by Step](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)（Azure Key Vault - 分步指南）。 以下是有关如何通过 PowerShell 执行此任务的示例：
+Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用 [`Set-AzureKeyVaultAccessPolicy`](/powershell/module/azure/set-azurekeyvaultaccesspolicy?view=azuresmps-3.7.0) cmdlet，并将客户端 ID（注册应用程序时生成）用作 _–ServicePrincipalName_ 参数值，即可向应用程序授予权限。 若要了解详细信息，请参阅博客文章 [Azure Key Vault - Step by Step](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)（Azure Key Vault - 分步指南）。 以下是有关如何通过 PowerShell 执行此任务的示例：
 
     $keyVaultName = '<yourKeyVaultName>'
     $aadClientID = '<yourAadAppClientID>'
@@ -382,7 +382,7 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用 
 | CLI | 请参阅 [Azure 命令行接口](../cli-install-nodejs.md)。 |
 | DM-Crypt |[DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 是基于 Linux 的透明磁盘加密子系统，用于在 Linux IaaS VM 上启用磁盘加密。 |
 | KEK | 密钥加密密钥是非对称密钥 (RSA 2048)，用于在需要时保护或包装机密。 可提供硬件安全模块 (HSM) 保护的密钥或软件保护的密钥。 有关详细信息，请参阅 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 文档。 |
-| PS cmdlet | 请参阅 [Azure PowerShell cmdlet](/powershell/azureps-cmdlets-docs)。 |
+| PS cmdlet | 请参阅 [Azure PowerShell cmdlet](/powershell/azure/overview)。 |
 
 ### <a name="set-up-and-configure-your-key-vault-for-azure-disk-encryption"></a>设置和配置 Azure 磁盘加密的 Key Vault
 Azure 磁盘加密有助于保护 Key Vault 中的磁盘加密密钥和机密。 若要设置 Azure 磁盘加密的 Key Vault，请完成以下每个部分中的步骤。
@@ -391,7 +391,7 @@ Azure 磁盘加密有助于保护 Key Vault 中的磁盘加密密钥和机密。
 若要创建 Key Vault，请使用以下选项之一：
 
 * ["101-Key-Vault-Create" Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-* [Azure PowerShell Key Vault cmdlet](https://msdn.microsoft.com/library/dn868052.aspx)
+* [Azure PowerShell Key Vault cmdlet](/powershell/module/azurerm.keyvault/#key_vault)
 * Azure 资源管理器
 * 如何[保护 Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault)
 
@@ -401,7 +401,7 @@ Azure 磁盘加密有助于保护 Key Vault 中的磁盘加密密钥和机密。
 ![Azure 密钥保管库](./media/azure-security-disk-encryption/keyvault-portal-fig1.png)
 
 #### <a name="set-up-a-key-encryption-key-optional"></a>设置密钥加密密钥（可选）
-如果想要使用 KEK 为 BitLocker 加密密钥增强安全性，请将 KEK 添加到 Key Vault。 使用 [`Add-AzureKeyVaultKey`](https://msdn.microsoft.com/library/dn868048.aspx) cmdlet 在 Key Vault 中创建密钥加密密钥。 还可从本地密钥管理 HSM 导入 KEK。 有关详细信息，请参阅 [Key Vault 文档](https://azure.microsoft.com/documentation/services/key-vault/)。
+如果想要使用 KEK 为 BitLocker 加密密钥增强安全性，请将 KEK 添加到 Key Vault。 使用 [`Add-AzureKeyVaultKey`](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) cmdlet 在 Key Vault 中创建密钥加密密钥。 还可从本地密钥管理 HSM 导入 KEK。 有关详细信息，请参阅 [Key Vault 文档](https://azure.microsoft.com/documentation/services/key-vault/)。
 
     Add-AzureKeyVaultKey [-VaultName] <string> [-Name] <string> -Destination <string> {HSM | Software}
 
@@ -494,7 +494,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 | vmName | IaaS VM 的名称。 |
 
 #### <a name="using-powershell-cmdlets"></a>使用 PowerShell cmdlet
-可通过 PowerShell cmdlet [`Set-AzureRmVMOSDisk`](https://msdn.microsoft.com/library/azure/mt603746.aspx) 在加密 VHD 上启用磁盘加密。  
+可通过 PowerShell cmdlet [`Set-AzureRmVMOSDisk`](/powershell/module/azurerm.compute/set-azurermvmosdisk) 在加密 VHD 上启用磁盘加密。  
 
 #### <a name="using-cli-commands"></a>使用 CLI 命令
 若要使用 CLI 命令为此方案启用磁盘加密，请执行以下步骤：
@@ -630,7 +630,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
  ```
 
 ### <a name="get-the-encryption-status-of-an-encrypted-iaas-vm"></a>获取已加密 IaaS VM 的加密状态
-可以使用 Azure Resource Manager、[PowerShell cmdlets](https://msdn.microsoft.com/library/azure/mt622700.aspx) 或 CLI 命令获取加密状态。 以下部分将说明如何使用 Azure 经典门户和 CLI 命令来获取加密状态。
+可以使用 Azure Resource Manager、[PowerShell cmdlets](/powershell/azure/overview) 或 CLI 命令获取加密状态。 以下部分将说明如何使用 Azure 经典门户和 CLI 命令来获取加密状态。
 
 #### <a name="get-the-encryption-status-of-an-encrypted-windows-vm-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 获取已加密 Windows VM 的加密状态
 可通过以下步骤从 Azure Resource Manager 获取 IaaS VM 的加密状态：
@@ -713,7 +713,7 @@ OSVolumeEncrypted 和 DataVolumesEncrypted 设置值为“Encrypted”，表明�
 | sequenceVersion | BitLocker 操作的序列版本。 每当在同一个 VM 上执行磁盘解密操作时，此版本号便会递增。 |
 
 ##### <a name="disable-encryption-on-an-existing-or-running-iaas-vm"></a>在现有或正在运行的 IaaS VM 上禁用加密
-若要使用 PowerShell cmdlet 在现有或正在运行的 IaaS VM 上禁用加密，请参阅 [`Disable-AzureRmVMDiskEncryption`](https://msdn.microsoft.com/library/azure/mt715776.aspx)。 此 cmdlet 同时支持 Windows 和 Linux VM。 为禁用加密，此 cmdlet 将在虚拟机上安装一个扩展。 如果未指定 _Name_ 参数，将创建默认名称为“AzureDiskEncryption for Windows VMs”的扩展。
+若要使用 PowerShell cmdlet 在现有或正在运行的 IaaS VM 上禁用加密，请参阅 [`Disable-AzureRmVMDiskEncryption`](/powershell/module/azurerm.compute/disable-azurermvmdiskencryption)。 此 cmdlet 同时支持 Windows 和 Linux VM。 为禁用加密，此 cmdlet 将在虚拟机上安装一个扩展。 如果未指定 _Name_ 参数，将创建默认名称为“AzureDiskEncryption for Windows VMs”的扩展。
 
 在 Linux VM 上，使用 AzureDiskEncryptionForLinux 扩展。
 
@@ -1149,7 +1149,7 @@ to
 
 
 #### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>未使用 KEK 加密的磁盘加密机密
-使用 [Set-AzureKeyVaultSecret](https://msdn.microsoft.com/library/dn868050.aspx) 在 Key Vault 中设置机密。 对于 Windows 虚拟机，需将 bek 文件编码为 base64 字符串，然后使用 `Set-AzureKeyVaultSecret` cmdlet 将其上传到 Key Vault。 对于 Linux，需将密码编码为 base64 字符串，然后将其上传到 Key Vault。 此外，请确保在 Key Vault 中创建机密时设置以下标记。
+使用 [Set-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret) 在 Key Vault 中设置机密。 对于 Windows 虚拟机，需将 bek 文件编码为 base64 字符串，然后使用 `Set-AzureKeyVaultSecret` cmdlet 将其上传到 Key Vault。 对于 Linux，需将密码编码为 base64 字符串，然后将其上传到 Key Vault。 此外，请确保在 Key Vault 中创建机密时设置以下标记。
 
     # This is the passphrase that was provided for encryption during the distribution installation
     $passphrase = "contoso-password"
@@ -1165,7 +1165,7 @@ to
 在下一步中使用 `$secretUrl` 以便[在不使用 KEK 的情况下附加 OS 磁盘](#without-using-a-kek)。
 
 #### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>使用 KEK 加密的磁盘加密机密
-将机密上传到 Key Vault 之前，可根据需要使用密钥加密密钥对其进行加密。 先使用包装 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 加密使用密钥加密密钥的机密。 此包装操作的输出是 base64 URL 编码的字符串，可以使用 [`Set-AzureKeyVaultSecret`](https://msdn.microsoft.com/library/dn868050.aspx) cmdlet 将其作为机密上传。
+将机密上传到 Key Vault 之前，可根据需要使用密钥加密密钥对其进行加密。 先使用包装 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 加密使用密钥加密密钥的机密。 此包装操作的输出是 base64 URL 编码的字符串，可以使用 [`Set-AzureKeyVaultSecret`](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret) cmdlet 将其作为机密上传。
 
     # This is the passphrase that was provided for encryption during the distribution installation
     $passphrase = "contoso-password"

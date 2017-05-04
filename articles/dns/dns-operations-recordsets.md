@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
-ms.openlocfilehash: 51ed9893aa0a49b2bde5069cfcad222b0bae4fdc
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1d7f24b8a65347bc54b273d08c06b22320cbeb2c
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -385,5 +385,5 @@ Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -Resourc
 <br>
 了解如何在使用 Azure DNS 时[保护区域和记录](dns-protect-zones-recordsets.md)。
 <br>
-查看 [Azure DNS PowerShell 参考文档](/powershell/resourcemanager/azurerm.dns/v2.3.0/azurerm.dns)。
+查看 [Azure DNS PowerShell 参考文档](/powershell/module/azurerm.dns)。
 

@@ -14,9 +14,9 @@ ms.workload: identity
 ms.date: 04/12/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: d85c99b43aa82e67bacbfe564c0bf61d967e9de2
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0e2bbb2a94986ca93035aa553db0f9b54af635d5
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -65,7 +65,7 @@ ms.lasthandoff: 04/13/2017
 作为最佳做法，你应该使用有关如何获取用户证书的说明来更新 ADFS 错误页。  
 有关更多详细信息，请参阅[自定义 AD FS 登录页面](https://technet.microsoft.com/library/dn280950.aspx)。  
 
-某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“*prompt=login*”。 默认情况下，Azure AD 会在请求中为 ADFS 将其转换为“*wauth=usernamepassworduri*”（要求 ADFS 执行 U/P 身份验证）和“*wfresh=0*”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 只需将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”即可。 可使用 [MSOLDomainFederationSettings](https://docs.microsoft.com/en-us/powershell/msonline/v1/set-msoldomainfederationsettings) cmdlet 执行此任务：
+某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“*prompt=login*”。 默认情况下，Azure AD 会在请求中为 ADFS 将其转换为“*wauth=usernamepassworduri*”（要求 ADFS 执行 U/P 身份验证）和“*wfresh=0*”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 只需将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”即可。 可使用 [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 执行此任务：
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 

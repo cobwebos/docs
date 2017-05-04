@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 78117fd3947be922e339931a0f8f31040ebf79fe
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 19fe97eb41be3222a846f86b2a390bf86157884f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 02/03/2017
   2. 获取**客户端 ID** 和**机密密钥**。
   3. 获取 **租户 ID**。
   4. 将 **ADFGetStartedApp** 应用程序分配到“数据工厂参与者”角色。
-* 安装 [Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* 安装 [Azure PowerShell](/powershell/azure/overview)。
 * 启动 **PowerShell** 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
   1. 运行 **Login-AzureRmAccount** 并输入用于登录 Azure 门户的用户名和密码。
   2. 运行 **Get-AzureRmSubscription** ，查看此帐户的所有订阅。

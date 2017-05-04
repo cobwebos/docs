@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 66848eee215732803a1070e13d56f35b17e54975
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8165147d9ff811b26f7fe2626c892f2aba5bb4f8
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/07/2017
 > 
 
 ## <a name="set-up-powershell"></a>设置 PowerShell
-如果尚未安装，请在你的计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azureps-cmdlets-docs)。
+如果尚未安装，请在你的计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。
 
 ## <a name="examples-in-this-article"></a>本文中的示例
 本文中的示例演示了如何使用 Azure 监视器 cmdlet。 还可以在 [Azure 监视器 (Insights) Cmdlet](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx) 上查看 Azure 监视器 PowerShell cmdlet 的完整列表。

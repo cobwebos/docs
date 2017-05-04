@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: bc39944e9232dffbc7dd02e2a300a90a23ec5273
-ms.lasthandoff: 04/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c000669f4a45c7c4292154ce537c451dc70766e7
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -60,7 +60,7 @@ ms.lasthandoff: 04/22/2017
 
 * 每个本地位置都有兼容的 VPN 硬件。 查看[关于用于虚拟网络连接的 VPN 设备](vpn-gateway-about-vpn-devices.md)，以确认你要使用的设备是否是已知兼容的设备。
 * 每个 VPN 设备都有一个面向外部的公共 IPv4 IP 地址。 该 IP 地址不能位于 NAT 后面， 必须满足这一要求。
-* 你需要安装 Azure PowerShell cmdlet 的最新版本。 请确保同时安装了 Resource Manager 版本和服务管理 (SM) 版本。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* 你需要安装 Azure PowerShell cmdlet 的最新版本。 请确保同时安装了 Resource Manager 版本和服务管理 (SM) 版本。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * 有人能够熟练地配置 VPN 硬件。 你必须非常了解如何配置 VPN 设备，或者与具有此能力的人员合作。
 * 要用于虚拟网络（如果尚未创建）的 IP 地址范围。
 * 要连接到的每个本地网络站点的 IP 地址范围。 需确保要连接到的每个本地网络站点的 IP 地址范围不重叠。 否则，门户或 REST API 将拒绝上传配置。<br>例如，如果两个本地网络站点都包含 IP 地址范围 10.2.3.0/24，并且某个包包含目标地址 10.2.3.3，则 Azure 将不知道你要将该包发送到哪个站点，因为地址范围是重叠的。 为了防止路由问题，Azure 不允许你上载具有重叠范围的配置文件。

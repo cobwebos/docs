@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 62586434f233b1d40b8a9efd539d1fcdca3bdec7
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: b60105297fb84ce1240a33d576653f5fa7c950e9
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -60,7 +60,15 @@ ms.lasthandoff: 04/12/2017
 使用数据管理网关还可将数据移出/移入托管在 Azure IaaS 虚拟机 (VM) 上的受支持数据存储。 在此情况下，可在数据存储本身所在 VM 上或在可访问此数据存储的其他 VM 上安装数据管理网关。
 
 ## <a name="supported-data-stores-and-formats"></a>支持的数据存储和格式
+数据工厂中的复制活动可以将数据从源数据存储复制到接收器数据存储。 数据工厂支持以下数据存储。 来自任何源的数据都可以写入到任何接收器。 单击某个数据存储即可了解如何将数据复制到该存储，以及如何从该存储复制数据。
+
+> [!NOTE] 
+> 如需将数据移入/移出复制活动不支持的数据存储，可通过自己的逻辑使用数据工厂内的**自定义活动**来复制/移动数据。 有关创建和使用自定义活动的详细信息，请参阅[在 Azure数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)。
+
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
+
+> [!NOTE]
+> 带 * 的数据存储既可位于本地，也可位于 Azure IaaS 上，需要用户在本地/Azure IaaS 计算机上安装[数据管理网关](data-factory-data-management-gateway.md)。
 
 ### <a name="supported-file-formats"></a>支持的文件格式
 可使用“复制活动”在两个基于文件的数据存储之间“按原样复制文件”，可以同时在输入和输出数据集定义中跳过[格式部分](data-factory-create-datasets.md)。 无需任何序列化/反序列化操作即可有效复制数据。
@@ -180,7 +188,7 @@ JSON 属性（例如名称、说明、输入和输出表，以及策略）可用
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，其中介绍了影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素。 还列出了在内部测试期间观察到的性能，并讨论了优化复制活动性能的多种方法。
 
 ## <a name="scheduling-and-sequential-copy"></a>计划和按顺序复制
-若要详细了解如何在数据工厂中计划和执行活动，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。 可以按顺序或以有序的方式依次运行多个复制操作。 请参阅[按顺序复制](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)部分。
+若要详细了解如何在数据工厂中计划和执行活动，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。 可以按顺序或以有序的方式依次运行多个复制操作。 请参阅[按顺序复制](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)部分。
 
 ## <a name="type-conversions"></a>类型转换
 不同数据存储具有不同本机类型系统。 复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换：

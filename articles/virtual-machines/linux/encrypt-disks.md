@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 03/23/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 814f6c9df0dea145e27a2bf5cc43649bc88e070a
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 62122105288d9d625079c385edb9760be31071dd
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -123,10 +123,10 @@ Linux VM 上的虚拟磁盘是使用 [dm-crypt](https://wikipedia.org/wiki/Dm-cr
 ## <a name="encryption-process"></a>加密过程
 磁盘加密依赖于以下附加组件：
 
-* **Azure 密钥保管库** - 用于保护磁盘加密/解密过程中使用的加密密钥和机密。 
+* **Azure 密钥保管库** - 用于保护磁盘加密/解密过程中使用的加密密钥和机密。
   * 可以使用现有的 Azure 密钥保管库（如果有）。 不需要专门使用某个密钥保管库来加密磁盘。
   * 若要将管理边界和密钥可见性隔离开来，可以创建专用的密钥保管库。
-* **Azure Active Directory** - 处理所需加密密钥的安全交换，以及对请求的操作执行的身份验证。 
+* **Azure Active Directory** - 处理所需加密密钥的安全交换，以及对请求的操作执行的身份验证。
   * 通常，可以使用现有的 Azure Active Directory 实例来容装应用程序。
   * 服务主体提供了安全机制，可用于请求和获取相应的加密密钥。 实际并不需要开发与 Azure Active Directory 集成的应用程序。
 
@@ -149,7 +149,7 @@ Linux VM 上的虚拟磁盘是使用 [dm-crypt](https://wikipedia.org/wiki/Dm-cr
 
 在整个命令示例中，请将所有示例参数替换为自己的名称、位置和密钥值。 以下示例使用 `myResourceGroup`、`myKey`、`myVM` 等的约定。
 
-第一步是创建用于存储加密密钥的 Azure 密钥保管库。 Azure 密钥保管库可以存储能够在应用程序和服务中安全实现的密钥、机密或密码。 对于虚拟磁盘加密，可以使用密钥保管库来存储用于加密或解密虚拟磁盘的加密密钥。 
+第一步是创建用于存储加密密钥的 Azure 密钥保管库。 Azure 密钥保管库可以存储能够在应用程序和服务中安全实现的密钥、机密或密码。 对于虚拟磁盘加密，可以使用密钥保管库来存储用于加密或解密虚拟磁盘的加密密钥。
 
 在 Azure 订阅中使用 [az provider register](/cli/azure/provider#register) 启用 Azure Key Vault 提供程序，并使用 [az group create](/cli/azure/group#create) 创建一个资源组。 以下示例在 `WestUS` 位置创建资源组名称 `myResourceGroup`：
 
@@ -166,7 +166,7 @@ az keyvault create --name $keyvault_name --resource-group myResourceGroup \
   --location WestUS --enabled-for-disk-encryption True
 ```
 
-可以使用软件或硬件安全模型 (HSM) 保护来存储加密密钥。 使用 HSM 时需要高级密钥保管库。 与用于存储受软件保护的密钥的标准密钥保管库不同，创建高级密钥保管库会产生额外的费用。 若要创建高级密钥保管库，请在前一步骤中，将 `--sku Premium` 添加到命令。 由于我们创建的是标准密钥保管库，以下示例使用了受软件保护的密钥。 
+可以使用软件或硬件安全模型 (HSM) 保护来存储加密密钥。 使用 HSM 时需要高级密钥保管库。 与用于存储受软件保护的密钥的标准密钥保管库不同，创建高级密钥保管库会产生额外的费用。 若要创建高级密钥保管库，请在前一步骤中，将 `--sku Premium` 添加到命令。 由于我们创建的是标准密钥保管库，以下示例使用了受软件保护的密钥。
 
 对于这两种保护模型，在启动 VM 解密虚拟磁盘时，都需要向 Azure 平台授予请求加密密钥的访问权限。 使用 [az keyvault key create](/cli/azure/keyvault/key#create) 在 Key Vault 中创建加密密钥。 以下示例创建名为 `myKey` 的密钥：
 
@@ -278,7 +278,6 @@ az vm encryption enable --resource-group myResourceGroup --name myVM \
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关管理 Azure 密钥保管库的详细信息，包括删除加密密钥和保管库，请参阅 [Manage Key Vault using CLI](../../key-vault/key-vault-manage-with-cli.md)（使用 CLI 管理密钥保管库）。
+* 有关管理 Azure 密钥保管库的详细信息，包括删除加密密钥和保管库，请参阅 [Manage Key Vault using CLI](../../key-vault/key-vault-manage-with-cli2.md)（使用 CLI 管理密钥保管库）。
 * 有关磁盘加密的详细信息，例如准备要上载到 Azure 的已加密自定义 VM，请参阅 [Azure Disk Encryption](../../security/azure-security-disk-encryption.md)（Azure 磁盘加密）。
-
 

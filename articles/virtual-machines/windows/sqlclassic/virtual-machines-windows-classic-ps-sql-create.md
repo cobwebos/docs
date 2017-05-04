@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 02/02/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: e2e751886407a1fceffa0c09b6f7fb5664c03b1d
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1e3b1e39eff0676e06985f212e33e2e9754f5523
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/31/2017
 
 ### <a name="install-and-configure-powershell"></a>安装和配置 PowerShell：
 1. 如果你没有 Azure 帐户，请访问 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-2. [下载和安装最新 Azure PowerShell 命令](/powershell/azureps-cmdlets-docs)。
+2. [下载和安装最新 Azure PowerShell 命令](/powershell/azure/overview)。
 3. 启动 Windows PowerShell，并通过 **Add-AzureAccount** 命令将其连接到 Azure 订阅。
    
         Add-AzureAccount

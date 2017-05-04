@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2017
+ms.date: 05/01/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 2eaf642d3d6617c8500aee283809209a5f31ef88
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 89049688ab60842910f1bab8e56c349029dd17a7
+ms.lasthandoff: 05/02/2017
 
 ---
 
@@ -28,7 +28,7 @@ Azure 事件中心示例演示了 [Azure 事件中心](/azure/event-hubs/)内的
 在撰写本文时，事件中心示例位于多个不同的位置：
 
 - [MSDN 开发人员代码示例](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
-- [GitHub](https://github.com/Azure/azure-event-hubs-dotnet/tree/master/samples)
+- [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
 有关 .NET Framework 的不同版本的详细信息，请参阅[框架和目标](/dotnet/articles/standard/frameworks)。
 
@@ -40,11 +40,11 @@ Azure 事件中心示例演示了 [Azure 事件中心](/azure/event-hubs/)内的
 
 ### <a name="send-events"></a>发送事件 
 
-[发送入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender)示例演示如何编写将事件发送到事件中心的 .NET Core 控制台应用程序。
+[发送入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender)示例演示如何编写将事件发送到事件中心的 .NET Core 控制台应用程序。
 
 ### <a name="receive-events"></a>接收事件 
 
-[使用事件处理器主机接收入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver)示例是一个使用 `Event Processor Host` 从事件中心接收消息的 .NET Core 控制台应用程序。
+[使用事件处理器主机接收入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)示例是一个使用 `Event Processor Host` 从事件中心接收消息的 .NET Core 控制台应用程序。
 
 ## <a name="net-framework"></a>.NET framework    
 

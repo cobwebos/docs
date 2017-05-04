@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 translationtype: Human Translation
-ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
-ms.openlocfilehash: 2ac7c119e0706f0c5d479aa04a3afc34cc55cf22
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: cbc33fa15d069b55844cc6e4356ca5a01b40c199
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -211,7 +211,7 @@ StorSimple 提供以下优势：
 -   在 StorSimple 卷上禁用 Windows Server 碎片整理。
 -   在 StorSimple 卷上禁用 Windows Server 索引编制。
 -   在源主机上运行防病毒扫描（不是针对 StorSimple 卷）。
--   在任务管理器中关闭默认的 [Windows Server 维护](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)。 通过以下方式之一执行此操作：
+-   在任务管理器中关闭默认的[Windows Server 维护](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)。 通过以下方式之一执行此操作：
     - 在 Windows 任务计划程序中关闭“维护”配置器。
     - 通过 Windows Sysinternals 下载 [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx)。 下载 PsExec 后，以管理员身份运行 Windows PowerShell，键入：
       ```powershell
@@ -236,7 +236,7 @@ StorSimple 提供以下优势：
 
 ## <a name="retention-policies"></a>保留策略
 
-最常用的备份保留策略类型之一为祖父、父和子 (GFS) 策略。 在 GSF 策略中，增量备份每日执行，完整备份每周和每月执行。 此策略会导致生成&6; 个 StorSimple 分层卷：一个卷包含每周、每月和每年完整备份；另外&5; 个卷存储每日增量备份。
+最常用的备份保留策略类型之一为祖父、父和子 (GFS) 策略。 在 GSF 策略中，增量备份每日执行，完整备份每周和每月执行。 此策略会导致生成 6 个 StorSimple 分层卷：一个卷包含每周、每月和每年完整备份；另外 5 个卷存储每日增量备份。
 
 以下示例使用 GFS 轮转。 该示例的假设条件如下：
 
@@ -252,11 +252,11 @@ StorSimple 提供以下优势：
 | 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
 | 每周完整备份 | 1 | 4  | 4 |
-| 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用&2; 个以提高配额） |
+| 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用 2 个以提高配额） |
 | 每月完整备份 | 1 | 12 | 12 |
 | 每年完整备份 | 1  | 10 | 10 |
 | GFS 要求 |   | 38 |   |
-| 提高的配额  | 4  |   | 总共&42;，满足 GFS 要求  |
+| 提高的配额  | 4  |   | 总共 42，满足 GFS 要求  |
 \* GFS 乘数是需要根据备份策略要求保护和保留的副本数。
 
 ## <a name="set-up-netbackup-storage"></a>设置 NetBackup 存储
@@ -419,7 +419,7 @@ StorSimple 提供以下优势：
 
 由于 NetBackup 提供众多的存储和媒体管理选项，因此，我们建议咨询 Veritas 或 NetBackup 架构师来正确评估存储生命周期策略 (SLP) 要求。
 
-定义初始磁盘池后，需要额外定义&3; 个存储生命周期策略，因此总共有&4; 个策略：
+定义初始磁盘池后，需要额外定义 3 个存储生命周期策略，因此总共有 4 个策略：
 * LocalRAIDVolume
 * StorSimpleWeek2-4
 * StorSimpleMonthlyFulls
@@ -469,11 +469,11 @@ StorSimple 提供以下优势：
 | 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
 | 每周完整备份 |  1  |  4 | 4  |
-| 每日增量备份  | 0.5  | 20（周期等于每月的周数） | 12（使用&2; 个以提高配额） |
+| 每日增量备份  | 0.5  | 20（周期等于每月的周数） | 12（使用 2 个以提高配额） |
 | 每月完整备份  | 1 | 12 | 12 |
 | 每年完整备份 | 1  | 10 | 10 |
 | GFS 要求  |     |     | 38 |
-| 提高的配额  | 4  |    | 总共&42;，满足 GFS 要求 |
+| 提高的配额  | 4  |    | 总共 42，满足 GFS 要求 |
 \* GFS 乘数是需要根据备份策略要求保护和保留的副本数。
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple 云快照
@@ -503,7 +503,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>启动或删除云快照
 
-1.  [安装 Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/#install-and-configure)。
+1.  [安装 Azure PowerShell](/powershell/azure/overview)。
 2.  [下载并导入发布设置和订阅信息](https://msdn.microsoft.com/library/dn385850.aspx)。
 3.  在 Azure 经典门户中获取资源名称和 [StorSimple Manager 服务的注册密钥](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)。
 4.  在运行脚本的服务器上，以管理员身份运行 PowerShell。 键入以下命令：

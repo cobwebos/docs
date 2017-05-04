@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 18156086ca3eaf3ee99dfeb61096bc1eee49458b
-ms.openlocfilehash: 3d32518bed64ebe3dd1790bb511949624b5dcac1
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: deb528faa29a1e547286b0560d0f2b8decf3f90a
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -118,7 +118,7 @@ Canonical 物联网 (IoT) 方案具有传感器的大量遥测或数据。 客�
 
    * **事件序列化程序格式**：JSON
    * **编码**：UTF8
-7. 单击相应“勾选”按钮以添加此源，并验证流分析是否可以成功连接到事件中心。
+7. 单击“检查”按钮以添加此源并验证流分析是否可以成功连接到事件中心。
 
 ### <a name="specify-job-query"></a>指定作业查询
 流分析支持简单的声明性查询模型，用于描述实时处理的转换。 若要了解有关语言的详细信息，请参阅 [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/dn834998.aspx)。 本教程将帮助你创作和测试多个可通过实时调用数据流完成的查询。
@@ -222,7 +222,7 @@ Canonical 物联网 (IoT) 方案具有传感器的大量遥测或数据。 客�
 ![欺诈行为检测：实时查看欺诈性事件](./media/stream-analytics-real-time-fraud-detection/stream-ananlytics-view-real-time-fraudent-events.png)
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

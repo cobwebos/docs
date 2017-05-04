@@ -14,9 +14,9 @@ ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 146fe63ba2c9efd8b734eb8cc8cb5dee82a94f2a
-ms.openlocfilehash: 97757f2cc78dc02f4efdcb3c09cee7741504448b
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e0aa7db15451bd3ea868932455127e000619aa5d
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -53,13 +53,13 @@ ms.lasthandoff: 02/21/2017
 
 ## <a name="compiling-a-dsc-configuration-with-windows-powershell"></a>使用 Windows PowerShell 编译 DSC 配置
 
-可以在 Windows PowerShell 中使用 [`Start-AzureRmAutomationDscCompilationJob`](https://msdn.microsoft.com/library/mt244118.aspx) 开始编译。 以下示例代码启动名为 **SampleConfig** 的 DSC 配置编译。
+可以在 Windows PowerShell 中使用 [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) 开始编译。 以下示例代码启动名为 **SampleConfig** 的 DSC 配置编译。
 
 ```powershell
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig"
 ```
 
-`Start-AzureRmAutomationDscCompilationJob` 返回可用于跟踪作业状态的编译作业对象。 接下来，可使用此编译作业对象与 [`Get-AzureRmAutomationDscCompilationJob`](https://msdn.microsoft.com/library/mt244120.aspx) 来确定编译作业的状态，并使用 [`Get-AzureRmAutomationDscCompilationJobOutput`](https://msdn.microsoft.com/library/mt244103.aspx) 查看其流（输出）。 以下示例代码启动 **SampleConfig** 配置的编译，并在编译完成后显示其流。
+`Start-AzureRmAutomationDscCompilationJob` 返回可用于跟踪作业状态的编译作业对象。 接下来，可使用此编译作业对象与 [`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob) 来确定编译作业的状态，并使用 [`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput) 查看其流（输出）。 以下示例代码启动 **SampleConfig** 配置的编译，并在编译完成后显示其流。
 
 ```powershell
 $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig"
@@ -268,7 +268,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ### <a name="importing-a-node-configuration-with-powershell"></a>使用 PowerShell 导入节点配置
 
-可以使用 [Import-AzureRmAutomationDscNodeConfiguration](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.automation/v1.0.12/import-azurermautomationdscnodeconfiguration) cmdlet 将节点配置导入自动化帐户。
+可以使用 [Import-AzureRmAutomationDscNodeConfiguration](/powershell/module/azurerm.automation/import-azurermautomationdscnodeconfiguration) cmdlet 将节点配置导入自动化帐户。
 
 ```powershell
 Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName "MyAutomationAccount" -ResourceGroupName "MyResourceGroup" -ConfigurationName "MyNodeConfiguration" -Path "C:\MyConfigurations\TestVM1.mof"

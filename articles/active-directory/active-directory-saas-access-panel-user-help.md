@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: ff38f1536bf92911c18e0766ee655583c4d913d6
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 53ec54def52a6d0659dc12286148213d88e9ae24
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 04/14/2017
 
 用户访问此页面可能是因为在使用 MyApps 门户时遇到了问题。 虽然有些情况需要用户联系支持人员或管理员才能解决问题，但大部分情况下，用户可以先自行尝试一下我们在本主题中提供的针对常见问题的步骤。
 
-如果需要与密码管理相关的帮助，可尝试阅读[此文](active-directory-passwords-update-your-own-password.md#reset-my-password)。
+如果需要与密码管理相关的帮助，可尝试阅读[此文](active-directory-passwords-update-your-own-password.md)。
 
 
 ## <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
@@ -49,7 +49,7 @@ MyApps 是一个 Web 门户，用于：
 3.    键入旧密码，然后键入新密码并确认。
 4.    单击“提交”。
 
-有关详细信息，请参阅[如何更新自己的密码](active-directory-passwords-update-your-own-password.md#reset-my-password)。
+有关详细信息，请参阅[如何更新自己的密码](active-directory-passwords-update-your-own-password.md)。
 
 
 ## <a name="how-do-i-setup-password-reset"></a>如何设置密码重置？
@@ -58,7 +58,7 @@ MyApps 是一个 Web 门户，用于：
 2.    在“管理帐户”下，单击“设置自助服务密码重置”。
 3.    按照对话框中的步骤进行操作并提交。
 
-有关详细信息，请参阅[如何重置密码](active-directory-passwords-update-your-own-password.md#reset-my-password)。
+有关详细信息，请参阅[如何重置密码](active-directory-passwords-update-your-own-password.md)。
 
 
 ## <a name="how-can-i-add-a-new-app"></a>如何添加新的应用？

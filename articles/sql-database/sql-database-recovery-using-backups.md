@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 04/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: abf5a373bc74483944b86bafb00c8a64df792dbe
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 295de55b311efe078fc9512ee886abc7a9ca6118
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -109,10 +109,10 @@ SQL 数据库使用[自动数据库备份](sql-database-automated-backups.md)和
 ### <a name="powershell"></a>PowerShell
 | Cmdlet | 说明 |
 | --- | --- |
-| [Get-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabase) |获取一个或多个数据库。 |
-| [Get-AzureRMSqlDeletedDatabaseBackup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | 获取可以还原的已删除数据库。 |
-| [Get-AzureRmSqlDatabaseGeoBackup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup) |获取数据库的异地冗余备份。 |
-| [Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) |还原 SQL 数据库。 |
+| [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |获取一个或多个数据库。 |
+| [Get-AzureRMSqlDeletedDatabaseBackup](/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | 获取可以还原的已删除数据库。 |
+| [Get-AzureRmSqlDatabaseGeoBackup](/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup) |获取数据库的异地冗余备份。 |
+| [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) |还原 SQL 数据库。 |
 |  | |
 
 ### <a name="rest-api"></a>REST API

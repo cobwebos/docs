@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 74fe2d241dfcd6e572f0f20714f91c6aff970f34
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0caac0c7ad76df7e7fa657227339d1df8b4a3c77
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -100,13 +100,13 @@ Azure CLI 是一个跨平台工具，可用于管理 Azure 服务。 使用以�
 >
 
 ### <a id="powershell"></a>Azure PowerShell
-Azure PowerShell 是一个脚本编写环境，可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 有关配置工作站以运行 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+Azure PowerShell 是一个脚本编写环境，可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 有关配置工作站以运行 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
 **将本地文件上传到 Azure Blob 存储**
 
-1. 根据[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的说明打开 Azure PowerShell 控制台。
+1. 根据[安装和配置 Azure PowerShell](/powershell/azure/overview) 中的说明打开 Azure PowerShell 控制台。
 2. 设置以下脚本中前五个变量的值：
 
         $resourceGroupName = "<AzureResourceGroupName>"

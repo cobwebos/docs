@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 903f5bc3ea4bfd4087fecb030703d31fc42582ae
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 43d66a9bb791f81f6468a7a22d71141b4b528114
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/17/2016
    ![Azure 门户流式处理作业进度](./media/stream-analytics-run-a-job/6-stream-analytics-run-a-job.png)  
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: 89e517a17417475f975dbaa0cee8517145a7c6c3
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c024d8d47ab9b78399d8eb8b4df1f764f2877339
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 89e517a17417475f975dbaa0cee8517145a7c6c3
 3. 使用 [Add-AzureAccount](https://msdn.microsoft.com/library/dn495128.aspx) 登录。
 
    > [!NOTE]
-   > 有关安装 Azure PowerShell cmdlet 和连接到 Azure 订阅的更多说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+   > 有关安装 Azure PowerShell cmdlet 和连接到 Azure 订阅的更多说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
    >
    >
 4. 使用 **New-AzureService** cmdlet 创建一个空的 Azure 云服务容器。
@@ -52,9 +53,4 @@ Get-help New-AzureService
 ### <a name="next-steps"></a>后续步骤
 * 若要管理云服务部署，请参阅 [Get-AzureService](https://msdn.microsoft.com/library/azure/dn495131.aspx)、[Remove-AzureService](https://msdn.microsoft.com/library/azure/dn495120.aspx) 和 [Set-AzureService](https://msdn.microsoft.com/library/azure/dn495242.aspx) 命令。 有关更多信息，还可以参阅[如何配置云服务](cloud-services-how-to-configure.md)。
 * 若要将云服务项目发布到 Azure，请参阅**在 Azure 中持续交付云服务**中的 [PublishCloudService.ps1](cloud-services-dotnet-continuous-delivery.md) 代码示例。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

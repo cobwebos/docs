@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 79c6ef627d20be52b6067d1f6dfea2a53505c590
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 554931e96e073ec2f2f68df2297e1ee21f5eda87
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -66,7 +66,7 @@ ms.lasthandoff: 03/18/2017
 启用用户后，应通过电子邮件通知他们。 下次用户尝试登录时，将需要注册帐户进行双重验证。 一旦开始使用双重验证，还需设置应用密码，以避免被锁在非浏览器应用之外。
 
 ## <a name="use-powershell-to-automate-turning-on-two-step-verification"></a>使用 PowerShell 自动开启双重验证
-若要使用 [Azure AD PowerShell](/powershell/azureps-cmdlets-docs) 更改[状态](multi-factor-authentication-whats-next.md)，可以使用以下代码。  可以将 `$st.State` 更改为以下状态之一：
+若要使用 [Azure AD PowerShell](/powershell/azure/overview) 更改[状态](multi-factor-authentication-whats-next.md)，可以使用以下代码。  可以将 `$st.State` 更改为以下状态之一：
 
 * Enabled
 * 强制

@@ -46,7 +46,7 @@
 ### [排查应用程序网关中的错误](application-gateway-troubleshooting-502.md)
 ### [诊断日志记录和指标](application-gateway-diagnostics.md)
 # 引用
-## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
+## [PowerShell](/powershell/azure/overview)
 ## [Azure CLI 2.0](/cli/azure/network/application-gateway)
 ## [.NET](/dotnet/api)
 ## [Java](/java/api/com.microsoft.azure.management.network)

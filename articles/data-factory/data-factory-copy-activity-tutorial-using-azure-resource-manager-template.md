@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: f45c21e682f93de4dbe34b4ce07745225d548cb0
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d14b4a638868f0206542825f05dd9473fd5e6c95
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,7 +43,7 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="prerequisites"></a>先决条件
 * 通读[教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，完成**先决条件**步骤。
-* 遵循 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。 本教程使用 PowerShell 部署数据工厂实体。 
+* 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。 本教程使用 PowerShell 部署数据工厂实体。 
 * （可选）若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../azure-resource-manager/resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
 
 ## <a name="in-this-tutorial"></a>本教程的内容
@@ -592,3 +592,4 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 | [管道](data-factory-create-pipelines.md) |帮助了解 Azure 数据工厂中的管道和活动 |
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
 | [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
+

@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 7552f95c1c62aaa59dbe4a8e986a56ad036e0d1a
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2cbd8461cb8e50765c988c64de03acf92936cc86
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/31/2017
   * 确保 VM 配置为通过 DHCP 提取 IP 地址和 DNS 设置。 这可以确保服务器在启动时获得 VNet 中的 IP 地址。 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
-如果尚未安装 Azure PowerShell 1.4 或更高版本，请阅读 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell）。
+如果尚未安装 Azure PowerShell 1.4 或更高版本，请阅读 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）。
 
 1. 打开 Azure PowerShell 并登录到 Azure 帐户。 此时将打开一个弹出窗口让输入 Azure 帐户凭据。
    
@@ -86,7 +86,7 @@ Get-AzureRmStorageAccount
     New-AzureRmResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. 使用 [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) cmdlet 在此资源组中创建名为 **mystorageaccount** 的存储帐户：
+2. 使用 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet 在此资源组中创建名为 **mystorageaccount** 的存储帐户：
    
     ```powershell
     New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -102,7 +102,7 @@ Get-AzureRmStorageAccount
    * **Premium_LRS** - 高级本地冗余存储。 
 
 ## <a name="upload-the-vhd-to-your-storage-account"></a>将 VHD 上载到存储帐户
-使用 [Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) cmdlet 将映像上载到存储帐户中的容器： 本示例将文件 **myVHD.vhd** 从 `"C:\Users\Public\Documents\Virtual hard disks\"` 上载到 **myResourceGroup** 资源组中名为 **mystorageaccount** 的存储帐户。 该文件将放入名为 **mycontainer** 的容器，新文件名为 **myUploadedVHD.vhd**。
+使用 [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) cmdlet 将映像上载到存储帐户中的容器： 本示例将文件 **myVHD.vhd** 从 `"C:\Users\Public\Documents\Virtual hard disks\"` 上载到 **myResourceGroup** 资源组中名为 **mystorageaccount** 的存储帐户。 该文件将放入名为 **mycontainer** 的容器，新文件名为 **myUploadedVHD.vhd**。
 
 ```powershell
 $rgName = "myResourceGroup"

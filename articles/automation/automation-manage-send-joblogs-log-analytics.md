@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 5cfbd39d2f66fb6632495eb7cd789ed39b0cc309
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2c25403a4bb2acd81061cc5dfdfd460c48a244bc
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/30/2017
 ## <a name="prerequisites-and-deployment-considerations"></a>先决条件和部署注意事项
 要开始将自动化日志发送到 Log Analytics，需要准备：
 
-1. 2016 年 11 月或之后发布的 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0) 版本。
+1. 2016 年 11 月或之后发布的 [Azure PowerShell](/powershell/azure/overview) (v2.3.0) 版本。
 2. Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)。
 3. Azure 自动化帐户的 ResourceId
 

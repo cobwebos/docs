@@ -21,7 +21,7 @@
 ### [出站身份验证](scheduler-outbound-authentication.md)
 
 # 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.scheduler/v0.11.1/azurerm.scheduler)
+## [PowerShell](/powershell/module/azurerm.scheduler)
 ## [REST](/rest/api/scheduler)
 
 # 资源

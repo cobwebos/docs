@@ -16,9 +16,9 @@ ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: ca5b67043843185ac40d02030f26fab8639a1f9f
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: bf507fb21b314a6811db1c1e45a4356381caada1
+ms.lasthandoff: 05/03/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为文件服务器
@@ -102,7 +102,7 @@ ms.lasthandoff: 04/25/2017
     4. 单击“应用” 。 此时会验证并应用配置的时间设置。
 11. 配置设备的云设置。 此步骤需完成本地设备配置，然后将设备注册到 StorSimple Device Manager 服务。
     
-    1. 输入在[步骤 2：获取服务注册密钥](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key)（适用于 StorSimple 虚拟阵列）中获得的“服务注册密钥”。
+    1. 输入在[步骤 2：获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)（适用于 StorSimple 虚拟阵列）中获得的“服务注册密钥”。
     2. 如果这是注册到此服务的第一个设备，则会向你提供“服务数据加密密钥”。 复制此密钥并将其保存到一个安全位置。 向 StorSimple Device Manager 服务注册其他设备时，需要此密钥以及该服务注册密钥。 
        
        如果这不是注册到此服务的第一个设备，则需提供服务数据加密密钥。 有关详细信息，请参阅本地 Web UI 上的[获取服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。

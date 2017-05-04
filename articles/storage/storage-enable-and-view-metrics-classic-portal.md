@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 3c3c7924655f5b932be2a3d947a4df786fc0630d
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b37b71888dc823f1de0ccc773c7402dbaf6ddc7b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/06/2017
 * ServiceType 的可能值为 Blob、Queue 和 Table。
 * MetricsLevel，可能值是 None（相当于 Azure 经典门户中的“关”）、Service（相当于 Azure 经典门户中的“最小”）和 ServiceAndApi（相当于 Azure 经典门户中的“详细”）。
 
-例如，以下命令在保留期设为&5; 天的情况下，在默认存储帐户中为 Blob 服务打开分钟度量值：
+例如，以下命令在保留期设为 5 天的情况下，在默认存储帐户中为 Blob 服务打开分钟度量值：
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5
@@ -57,7 +57,7 @@ Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -Me
 ```powershell
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
-若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>如何以编程方式启用存储度量值
 下面的 C# 代码段演示了如何使用 .NET 的存储客户端库为 Blob 服务启用度量值和日志记录：
@@ -191,3 +191,4 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 
 ## <a name="next-steps"></a>后续步骤：
 [Enabling Storage Analytics Logging and Accessing Log Data](https://msdn.microsoft.com/library/dn782840.aspx)（启用存储分析日志记录和访问日志数据）
+

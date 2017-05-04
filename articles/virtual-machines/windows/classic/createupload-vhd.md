@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 07/21/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 8cae78052a4433f0a26d774a7085c110e32911c9
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 62c428215c5bd89789ae65bd420281a2f16f33a1
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/27/2017
 本文假定已具备以下条件：
 
 * **Azure 订阅** - 如果没有，可以[免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
-* **[Microsoft Azure PowerShell](/powershell/azureps-cmdlets-docs)** - 已安装 Microsoft Azure PowerShell 模块并将其配置为使用订阅。
+* **[Microsoft Azure PowerShell](/powershell/azure/overview)** - 已安装 Microsoft Azure PowerShell 模块并将其配置为使用订阅。
 * **.VHD file** - 存储在 .vhd 文件中并附加到虚拟机的受支持 Windows 操作系统。 检查 Sysprep 是否支持 VHD 上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
 
     > [!IMPORTANT]
@@ -88,7 +88,7 @@ ms.lasthandoff: 03/27/2017
     ```
 
 ## <a name="step-3-upload-the-vhd-file"></a>步骤 3：上载 .vhd 文件
-使用 [Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) 上载 VHD。
+使用 [Add-AzureVhd](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevhd) 上载 VHD。
 
 在上一步骤使用的 Azure PowerShell 窗口中键入以下命令，并将 &lsaquo; 和 &rsaquo; 括号中的变量替换为自己的信息。
 
@@ -97,7 +97,7 @@ Add-AzureVhd -Destination "https://<StorageAccountName>.blob.core.windows.net/<C
 ```
 
 ## <a name="step-4-add-the-image-to-your-list-of-custom-images"></a>步骤 4：将映像添加到自定义映像列表
-使用 [Add-AzureVMImage](https://msdn.microsoft.com/library/mt589167.aspx) cmdlet 将映像添加到自定义映像列表。
+使用 [Add-AzureVMImage](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevmimage) cmdlet 将映像添加到自定义映像列表。
 
 ```powershell
 Add-AzureVMImage -ImageName <ImageName> -MediaLocation "https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/<vhdName>.vhd" -OS "Windows"

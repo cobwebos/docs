@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 344391589a926cad5d06bf8dff095a97565ca123
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 78936ac34cc582684e938efa74133426f1b53741
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -115,7 +115,7 @@ ms.lasthandoff: 03/22/2017
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>通过单击部署方式部署模板
 公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 若要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR)，单击“部署至 Azure”，如有必要，请替换默认参数值，然后按照门户中的说明进行操作。
 
-1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
 2. 运行以下命令来创建资源组：
 
     ```powershell

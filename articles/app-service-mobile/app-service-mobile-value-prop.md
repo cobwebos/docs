@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 43ad434b21fd358b8d72702445126dea5ce179cb
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 8ce0a0e7b06f85090c07052056ddd67b97b2ee8b
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -82,7 +83,7 @@ Azure App Service 是面向专业开发人员的完全托管型 [平台即服务
 [Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [入门]: app-service-mobile-ios-get-started.md
-[Azure 表存储]: ../storage/storage-getting-started-guide.md
+[Azure 表存储]: ../storage/storage-dotnet-how-to-use-tables.md
 [DocumentDB]: ../documentdb/documentdb-get-started.md
 [身份验证功能]: ./app-service-mobile-auth.md
 [数据功能]: ./app-service-mobile-offline-data-sync.md
@@ -101,9 +102,4 @@ Azure App Service 是面向专业开发人员的完全托管型 [平台即服务
 [ExpressRoute]: ../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md
 [应用服务环境]: ../app-service-web/app-service-app-service-environment-intro.md
 [学习路线图]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

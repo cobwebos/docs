@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 99292dedfd83c0adde6b7352e08e7ae3b0b14513
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e2e10d3531fbbe2ed09dc34a6c3b14ff5df1a937
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -247,7 +247,7 @@ ms.lasthandoff: 04/03/2017
 ![后端资源组](./media/virtual-network-deploy-multinic-arm-template/Figure2.png)
 
 ## <a name="deploy-the-template-by-using-powershell"></a>使用 PowerShell 部署模板
-若要使用 PowerShell 部署下载的模板，请通过完成[安装和配置 PowerShell](/powershell/azureps-cmdlets-docs) 一文中的步骤来安装并配置 PowerShell，然后完成以下步骤：
+若要使用 PowerShell 部署下载的模板，请通过完成[安装和配置 PowerShell](/powershell/azure/overview) 一文中的步骤来安装并配置 PowerShell，然后完成以下步骤：
 
 运行 **`New-AzureRmResourceGroup`** cmdlet 以使用模板创建资源组。
 

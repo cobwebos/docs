@@ -17,9 +17,9 @@ ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 6215abf064227f0d75a50e866b09ca2083a269d6
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 32a25a0ed80c31c366bf63d61d5c78267ba0f3c8
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -38,7 +38,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 ## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>如何为前端子网创建 NSG
 若要基于上述方案创建名为 *NSG-FrontEnd* 的 NSG，请完成以下步骤：
 
-1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
 2. 创建允许从 Internet 访问端口 3389 的安全规则。
 
     ```powershell

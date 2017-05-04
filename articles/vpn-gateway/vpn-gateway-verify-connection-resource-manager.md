@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 0e9fa1b1397c60985de9d2e60b3f01146036801f
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a67ea630cc8b5a3e9deab7733aa5cd2055949ec0
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/26/2017
 
 ## <a name="verify-using-powershell"></a>使用 PowerShell 验证
 
-若要使用 PowerShell 进行验证，请安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 有关使用 Resource Manager cmdlet 的详细信息，请参阅[将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+若要使用 PowerShell 进行验证，请安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 有关使用 Resource Manager cmdlet 的详细信息，请参阅[将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
 
 ### <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
 1. 使用提升的权限打开 PowerShell 控制台，然后连接到帐户。
@@ -87,7 +87,7 @@ ms.lasthandoff: 04/26/2017
 
 
 ## <a name="verify-using-powershell-classic"></a>使用 PowerShell（经典）验证
-若要使用 PowerShell 进行验证，请安装最新版本的 Azure PowerShell cmdlet。 请务必同时下载并安装 Resource Manager 和服务管理 (SM) 版本。 有关安装 PowerShell cmdlet 的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 
+若要使用 PowerShell 进行验证，请安装最新版本的 Azure PowerShell cmdlet。 请务必同时下载并安装 Resource Manager 和服务管理 (SM) 版本。 有关安装 PowerShell cmdlet 的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 
 
 ### <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
 1. 使用提升的权限打开 PowerShell 控制台，然后连接到帐户。

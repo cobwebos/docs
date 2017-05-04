@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: e1f7b85308d7482e0066809737749e73029cd758
-ms.openlocfilehash: eed133ba2f0a5e1665afd39b2122d3aacd3cc40a
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 58ee6e9cc14b01f10e20dfc3f289bfc6cc386e2a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -72,7 +73,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 我们支持的最小子网为 /29，最大为 /8（使用 CIDR 子网定义）。
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>是否可以使用 VNet 将 VLAN 引入 Azure 中？
-不能。 VNet 是第&3; 层重叠。 Azure 不支持任何第&2; 层语义。
+不能。 VNet 是第 3 层重叠。 Azure 不支持任何第 2 层语义。
 
 ### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>是否可以在 VNet 和子网上指定自定义路由策略？
 是的。 可以使用用户定义路由 (UDR)。 有关 UDR 的详细信息，请访问[用户定义的路由和 IP 转发](virtual-networks-udr-overview.md)。
@@ -213,11 +214,6 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间完�
 ### <a name="is-there-tooling-support-for-vnets"></a>是否有 VNet 的工具支持？
 是的。 详细了解以下操作：
 - 使用 Azure 门户通过 [Azure Resource Manager](virtual-networks-create-vnet-arm-pportal.md) 和[经典](virtual-networks-create-vnet-classic-pportal.md)部署模型部署 VNet。
-- 使用 PowerShell 来管理通过 [Resource Manager](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network.md) 和[经典](/powershell/servicemanagement/azure.networking/v3.1.0/azure.networking)部署模型部署的 VNet。
+- 使用 PowerShell 来管理通过 [Resource Manager](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network.md) 和[经典](/powershell/module/azure/?view=azuresmps-3.7.0)部署模型部署的 VNet。
 - 使用 [Azure 命令行接口 (CLI)](../virtual-machines/azure-cli-arm-commands.md#azure-network-commands-to-manage-network-resources) 来管理通过这两种部署模型部署的 VNet。  
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

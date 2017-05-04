@@ -15,10 +15,6 @@ NC 实例采用 NVIDIA 的 Tesla K80 卡。 通过将 CUDA 用于能源勘探应
 
 1 GPU = 半块 M60 卡。
 
-**受支持的操作系统**
-
-* Windows Server 2016、Windows Server 2012 R2 - 请参阅[适用于 Windows 的 N 系列驱动程序安装](../articles/virtual-machines/windows/n-series-driver-setup.md)
-
 ## <a name="nc-instances"></a>NC 实例
 
 | 大小 | CPU 核心数 | 内存：GiB | 本地 SSD：GiB | GPU |
@@ -32,10 +28,4 @@ NC 实例采用 NVIDIA 的 Tesla K80 卡。 通过将 CUDA 用于能源勘探应
 
 *支持 RDMA
 
-**受支持的操作系统**
-
-* Windows Server 2016、Windows Server 2012 R2 - 请参阅[适用于 Windows 的 N 系列驱动程序安装](../articles/virtual-machines/windows/n-series-driver-setup.md)
-* Ubuntu 16.04 LTS - 请参阅[适用于 Linux 的 N 系列驱动程序安装](../articles/virtual-machines/linux/n-series-driver-setup.md)
-
-<br>
 

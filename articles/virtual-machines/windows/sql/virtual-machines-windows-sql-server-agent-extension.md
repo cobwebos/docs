@@ -17,9 +17,9 @@ ms.date: 04/24/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 27064b6b5c65e5ecd0ef6931bd8f333469419839
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 328b7cff01b485a908be65f52425ff4e81a96b53
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>使用 SQL Server 代理扩展 (Resource Manager) 在 Azure 虚拟机上自动完成管理任务
@@ -61,7 +61,7 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 
 **Azure PowerShell**：
 
-* [下载和配置最新 Azure PowerShell 命令](/powershell/azureps-cmdlets-docs)
+* [下载和配置最新 Azure PowerShell 命令](/powershell/azure/overview)
 
 ## <a name="installation"></a>安装
 当你预配某个 SQL Server 虚拟机库映像时，系统会自动安装 SQL Server IaaS 代理扩展。

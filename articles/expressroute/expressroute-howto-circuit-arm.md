@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 15c08c950bc1dcd620f2943885e427991585d817
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7254217bc6a7b782eb19c8f062c46923dc5e7506
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/13/2017
 本文介绍如何使用 PowerShell cmdlet 和 Azure Resource Manager 部署模型创建 Azure ExpressRoute 线路。 本文还介绍如何查看线路状态，以及如何更新、删除和取消预配线路。
 
 ## <a name="before-you-begin"></a>开始之前
-* 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关详细信息，请参阅 [Azure PowerShell 概述](/powershell/azureps-cmdlets-docs)。
+* 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关详细信息，请参阅 [Azure PowerShell 概述](/powershell/azure/overview)。
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
 

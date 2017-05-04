@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 993404815b557452898d045910a80fe1e87a4924
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: a5083a5216efbfd76fd912ec48c2f0ec3b30c4a1
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -31,8 +31,8 @@ ms.lasthandoff: 03/31/2017
 > [!NOTE]
 > 1. 为了让密钥保管库能与 Azure Resource Manager 虚拟机搭配使用，必须将密钥保管库上的 **EnabledForDeployment** 属性设置为 true。 你可以在各种客户端中执行此操作。
 > 2. 需要在与虚拟机相同的订阅和位置中创建密钥保管库。
-> 
-> 
+>
+>
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>使用 PowerShell 设置密钥保管库
 若要使用 PowerShell 创建密钥保管库，请参阅 [Azure 密钥保管库入门](../../key-vault/key-vault-get-started.md#vault)。
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/31/2017
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 ## <a name="us-cli-to-set-up-key-vault"></a>使用 CLI 设置密钥保管库
-若要使用命令行接口 (CLI) 创建密钥保管库，请参阅[使用 CLI 管理密钥保管库](../../key-vault/key-vault-manage-with-cli.md#create-a-key-vault)。
+若要使用命令行接口 (CLI) 创建密钥保管库，请参阅[使用 CLI 管理密钥保管库](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)。
 
 使用 CLI 时，必须先创建密钥保管库，然后分配部署策略。 可以使用以下命令来执行此操作：
 
@@ -68,5 +68,4 @@ ms.lasthandoff: 03/31/2017
     }
 
 有关使用模板创建密钥保管库时可以配置的其他选项，请参阅[创建密钥保管库](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)。
-
 

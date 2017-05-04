@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: c00aa4a2e79522a6817a135965f6c218b08e26f8
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: bdb06783d0ec7db867381504d89e76db179be78d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -41,7 +41,7 @@ ms.lasthandoff: 04/06/2017
 在开始阅读本教程前，你必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="authentication"></a>身份验证
 本文对 Data Lake Store 使用一种较为简单的身份验证方法，其中会提示输入 Azure 帐户凭据。 系统会根据登录用户的访问级别监管对 Data Lake Store 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Store 中进行身份验证，即**最终用户身份验证**或**服务到服务身份验证**。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。

@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 0ba5baf71176e8d5967775dae50b6577f8b5c54c
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: d4fae06cb240c1687b059ae991b8d09f94e2ffc3
+ms.lasthandoff: 05/01/2017
 
 ---
 
@@ -241,7 +241,7 @@ SentimentScore | Sentiment140 的观点分数
 
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

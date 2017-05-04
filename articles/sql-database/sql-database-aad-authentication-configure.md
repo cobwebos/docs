@@ -17,9 +17,9 @@ ms.workload: data-management
 ms.date: 01/23/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
-ms.openlocfilehash: d7eef61b28d63b794235d82fdbbabb13b4cd3372
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 763ec017cef58b91ba12b616870cb9d830448749
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/16/2017
 ## <a name="create-and-populate-an-azure-ad"></a>创建并填充 Azure AD
 创建 Azure AD 并在其中填充用户和组。 创建初始域 Azure AD 托管的域。 Azure AD 也可以是本地 Active Directory 域服务，该服务可以与 Azure AD 联合。
 
-有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../active-directory/active-directory-aadconnect.md)、[将自己的域名添加到 Azure AD](../active-directory/active-directory-add-domain.md)、[Microsoft Azure 现在支持与 Windows Server Active Directory 联合](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[管理 Azure AD 目录](https://msdn.microsoft.com/library/azure/hh967611.aspx)、[使用 Windows PowerShell 管理 Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx) 和[混合标识所需端口和协议](../active-directory/active-directory-aadconnect-ports.md)。
+有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../active-directory/active-directory-aadconnect.md)、[将自己的域名添加到 Azure AD](../active-directory/active-directory-add-domain.md)、[Microsoft Azure 现在支持与 Windows Server Active Directory 联合](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[管理 Azure AD 目录](https://msdn.microsoft.com/library/azure/hh967611.aspx)、[使用 Windows PowerShell 管理 Azure AD](/powershell/azure/overview?view=azureadps-2.0) 和[混合标识所需端口和协议](../active-directory/active-directory-aadconnect-ports.md)。
 
 ## <a name="optional-associate-or-change-the-active-directory-that-is-currently-associated-with-your-azure-subscription"></a>可选：关联或更改当前与 Azure 订阅关联的 Active Directory
 若要将数据库与组织的 Azure AD 目录相关联，请允许该目录成为托管数据库的 Azure 订阅的一个受信任目录。 有关详细信息，请参阅 [Azure 订阅与 Azure AD 的关联方式](https://msdn.microsoft.com/library/azure/dn629581.aspx)。
@@ -95,7 +95,7 @@ ms.lasthandoff: 02/16/2017
 之后若要删除管理员，请在“Active Directory 管理员”边栏选项卡顶部，单击“删除管理员”，然后单击“保存”。
 
 ### <a name="powershell"></a>PowerShell
-若要运行 PowerShell cmdlet，需要已安装并运行 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+若要运行 PowerShell cmdlet，需要已安装并运行 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 若要预配 Azure AD 管理员，请执行以下 Azure PowerShell 命令：
 
@@ -106,9 +106,9 @@ ms.lasthandoff: 02/16/2017
 
 | Cmdlet 名称 | 说明 |
 | --- | --- |
-| [Set-AzureRmSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt603544.aspx) |为 Azure SQL Server 或 Azure SQL 数据仓库预配 Azure Active Directory 管理员。 （必须来自当前订阅。） |
-| [Remove-AzureRmSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt619340.aspx) |为 Azure SQL Server 或 Azure SQL 数据仓库删除 Azure Active Directory 管理员。 |
-| [Get-AzureRmSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt603737.aspx) |返回有关为 Azure SQL Server 或 Azure SQL 数据仓库配置的当前 Azure Active Directory 管理员的信息。 |
+| [Set-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/set-azurermsqlserveractivedirectoryadministrator) |为 Azure SQL Server 或 Azure SQL 数据仓库预配 Azure Active Directory 管理员。 （必须来自当前订阅。） |
+| [Remove-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/remove-azurermsqlserveractivedirectoryadministrator) |为 Azure SQL Server 或 Azure SQL 数据仓库删除 Azure Active Directory 管理员。 |
+| [Get-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/get-azurermsqlserveractivedirectoryadministrator) |返回有关为 Azure SQL Server 或 Azure SQL 数据仓库配置的当前 Azure Active Directory 管理员的信息。 |
 
 使用 PowerShell 命令 get-help 可查看有关其中每个命令的更多详细信息，例如 ``get-help Set-AzureRmSqlServerActiveDirectoryAdministrator``。
 

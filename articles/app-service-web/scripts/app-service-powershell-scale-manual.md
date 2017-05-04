@@ -16,9 +16,9 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 7eb6698b6dab3714bfa7844b7d7a29f9755c2f35
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 963b1de38d4f81e1f2a7045d56e05d9ea8014f37
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/21/2017
 
 在此方案中，你将了解如何创建资源组、应用服务计划和 Web 应用。 然后，将应用服务计划从单个实例扩展到多个实例。
 
-必要时，请使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)中的说明安装 Azure PowerShell，然后运行 `Login-AzureRmAccount` 创建与 Azure 的连接。
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，然后运行 `Login-AzureRmAccount` 创建与 Azure 的连接。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -46,14 +46,14 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 | 命令 | 说明 |
 |---|---|
-| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Resources/v3.5.0/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
-| [New-AzureRmAppServicePlan](https://docs.microsoft.com/powershell/resourcemanager/azurerm.websites/v2.5.0/new-azurermappserviceplan) | 创建应用服务计划。 |
-| [New-AzureRmWebApp](https://docs.microsoft.com/powershell/resourcemanager/azurerm.websites/v2.5.0/new-azurermwebapp) | 创建 Web 应用。 |
-| [Set-AzureRmWebApp](https://docs.microsoft.com/powershell/resourcemanager/azurerm.websites/v2.5.0/set-azurermwebapp) | 修改 Web 应用的配置。 |
+| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
+| [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | 创建应用服务计划。 |
+| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | 创建 Web 应用。 |
+| [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | 修改 Web 应用的配置。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
 
 可以在 [Azure PowerShell 示例](../app-service-powershell-samples.md)中找到 Azure 应用服务 Web 应用的其他 Azure Powershell 示例。
 

@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 38e8320c09c5aa870018081a29911611f09a3e3a
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 31cdfdcb5c0e5a1c467b871dca72a8a1da58a00e
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/24/2017
 
 ## <a name="prerequisites"></a>先决条件
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
-* 遵循 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
+* 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
 * 若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../azure-resource-manager/resource-group-authoring-templates.md) （创作 Azure Resource Manager 模板）。 
 
 ## <a name="in-this-tutorial"></a>本教程的内容

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 4/12/2017
 ms.author: dstefan
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 03b7e184d26ceccd12f40b4935d7c451b7eee01e
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b6f26a338450619cef012467bf78b9469622ba08
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -395,7 +395,7 @@ ms.lasthandoff: 04/14/2017
 | 提供在步骤 2 中配置的自助密码重置数据 | http://aka.ms/ssprsetup |
 | 关闭浏览器 |  |
 | 以步骤 4 中使用的辅助角色身份启动登录过程 |  |
-| 重置密码 | [更新自己的密码：重置我的密码](active-directory-passwords-update-your-own-password.md#reset-my-password) |
+| 重置密码 | [更新自己的密码：重置我的密码](active-directory-passwords-update-your-own-password.md) |
 | 尝试使用新密码登录到 Azure AD 和本地资源 |  |
 
 ### <a name="considerations"></a>注意事项

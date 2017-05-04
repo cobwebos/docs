@@ -16,9 +16,9 @@ ms.custom: manage
 ms.date: 03/30/2017
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: adbd994022f7585676bcbd0c4e4b040e9160c679
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 3107e918a12ba17e72dbbe3660d42527e9e9f051
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -56,7 +56,7 @@ ms.lasthandoff: 04/07/2017
 | 消息 40847：无法执行操作，因为服务器将超过 45000 这一允许的数据库事务单元配额。 |请减少要尝试创建的数据库的 [DWU][DWU]，或者[请求增加配额][request a quota increase]。 |
 | 调查空间使用率 |请参阅[表大小][Table sizes]，了解系统的空间使用率。 |
 | 管理表的帮助 |有关管理表的帮助，请参阅[表概述][Overview]一文。  本文还包含指向更详细主题的链接，如[表数据类型][Data types]、[分布表][Distribute]、[为表编制索引][Index]、[将表分区][Partition]、[维护表统计信息][Statistics]和[临时表][Temporary]。 |
-|在 Azure 门户中，透明数据加密 (TDE) 进度栏不更新|可以通过 [powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption?view=azurermps-3.7.0) 查看 TDE 的状态。|
+|在 Azure 门户中，透明数据加密 (TDE) 进度栏不更新|可以通过 [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption) 查看 TDE 的状态。|
 
 ## <a name="polybase"></a>Polybase
 | 问题 | 解决方法 |

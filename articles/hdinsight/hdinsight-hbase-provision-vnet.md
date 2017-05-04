@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
-ms.openlocfilehash: 6dd149808a89ccf7da2989751788e074d5340d5c
-ms.lasthandoff: 12/22/2016
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: fbd5c31a4ca1fa26d14001ba5765adfc91142a10
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/22/2016
 通过虚拟网络集成，可以将 HBase 群集部署到应用程序所在的虚拟网络，以便应用程序直接与 HBase 进行通信。 优点包括：
 
 * 将 Web 应用程序直接连接到 HBase 群集节点，以通过 HBase Java 远程过程调用 (RPC) API 实现通信。
-* 提高性能，因为流量不必通过多个网关和负载平衡器。
+* 提高性能，因为流量不必通过多个网关和负载均衡器。
 * 能够以更安全的方式处理敏感信息，而无需公开公共终结点。
 
 ### <a name="prerequisites"></a>先决条件
@@ -248,7 +248,7 @@ ms.lasthandoff: 12/22/2016
 * [HDInsight 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)
 * [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-replication.md)
-* [在 HDInsight 中创建 Hadoop 群集](hdinsight-provision-clusters.md)
+* [在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [开始在 HDInsight 中将 HBase 与 Hadoop 配合使用](hdinsight-hbase-tutorial-get-started.md)
 * [在 HDInsight 中使用 HBase 分析 Twitter 观点](hdinsight-hbase-analyze-twitter-sentiment.md)
 * [虚拟网络概述][vnet-overview]
@@ -282,7 +282,7 @@ ms.lasthandoff: 12/22/2016
 
 
 [hdinsight-customize-cluster]: hdinsight-hadoop-customize-cluster.md
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage-powershell]: ../hdinsight-hadoop-use-blob-storage.md#powershell
 [hdinsight-analyze-flight-delay-data]: hdinsight-analyze-flight-delay-data.md

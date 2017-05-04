@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 393bc1ad782b072f3b27eeeb3e4149ec8ab64252
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 74301d651ae96588e5fd076900aada198c76deb0
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -91,7 +91,7 @@ ms.lasthandoff: 04/12/2017
     John, Doe
     Jane, Doe
     ```
-2. 使用 [Azure 存储资源管理器](https://azurestorageexplorer.codeplex.com/)等工具创建 **adftutorial** 容器，将 **emp.txt** 文件上载到该容器。
+2. 使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具创建 **adftutorial** 容器，将 **emp.txt** 文件上载到该容器。
 
     ![Azure 存储空间资源管理器下载。 将数据从 Blob 存储复制到 SQL 数据库](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
 3. 使用以下 SQL 脚本在 Azure SQL 数据库中创建 **emp** 表。  
@@ -112,6 +112,7 @@ ms.lasthandoff: 04/12/2017
 
     如果不允许客户端访问 Azure SQL Server，则需要将 Azure SQL Server 的防火墙配置为允许从计算机（IP 地址）访问。 请参阅 [此文](../sql-database/sql-database-configure-firewall-settings.md) 中的步骤，为 Azure SQL Server 配置防火墙。
 
+## <a name="create-a-data-factory"></a>创建数据工厂
 你已完成此先决条件。 可使用以下方法之一来创建数据工厂。 单击顶部下拉列表中的其中一个选项或以下链接来执行此教程。     
 
 * [复制向导](data-factory-copy-data-wizard-tutorial.md)
@@ -126,3 +127,4 @@ ms.lasthandoff: 04/12/2017
 > 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成第一个使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
 > 
 > 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。 
+

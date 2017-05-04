@@ -15,8 +15,9 @@ ms.workload: required
 ms.date: 02/06/2017
 ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 44b6ff6e588d529fd833a4a7fdd61df7e933ddd8
-ms.openlocfilehash: b4105e98323b5161a22fa65707d376a7155611d6
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c91a1210e84d215449b98aae14bda490aa2cb156
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -90,7 +91,7 @@ Azure 自动化使用 Azure PowerShell 连接到订阅，并对该处的项目�
 
 ![](media/site-recovery-runbook-automation/11.png)
 
-若要详细了解如何通过 PowerShell 连接订阅，请单击[此处](/powershell/azureps-cmdlets-docs)。
+若要详细了解如何通过 PowerShell 连接订阅，请单击[此处](/powershell/azure/overview)。
 
 接下来，你将要在 Azure 自动化中创建一个 Runbook，用于在故障转移后为前端虚拟机添加终结点。
 
@@ -278,9 +279,4 @@ ASR 会将上下文变量传递给 Runbook，以帮助你编写确定性的脚�
 [Azure 自动化概述](http://msdn.microsoft.com/library/azure/dn643629.aspx "Azure 自动化概述")
 
 [Azure 自动化脚本示例](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure 自动化脚本示例")
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

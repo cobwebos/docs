@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 5dee922184f0160d21da58b4aac321011df76ee9
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5fea9dfcd323ecf497742173a66119be4f734909
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -154,7 +154,7 @@ ms.lasthandoff: 04/12/2017
 
 ### <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
-使用 [New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault?view=azurermps-3.7.0) 创建恢复服务保管库。
+使用 [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) 创建恢复服务保管库。
 
 > [!IMPORTANT]
 > 保管库必须位于与 Azure SQL 逻辑服务器相同的区域，并且必须使用与逻辑服务器相同的资源组。
@@ -173,7 +173,7 @@ Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedu
 
 ### <a name="set-your-server-to-use-the-recovery-vault-for-its-long-term-retention-backups"></a>将服务器设置为使用其长期保留备份的恢复保管库
 
-使用 [Set-AzureRmSqlServerBackupLongTermRetentionVault](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/set-azurermsqlserverbackuplongtermretentionvault) cmdlet 将先前创建的恢复服务保管库与特定 Azure SQL 服务器关联。
+使用 [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) cmdlet 将先前创建的恢复服务保管库与特定 Azure SQL 服务器关联。
 
 ```PowerShell
 # Set your server to use the vault to for long-term backup retention 
@@ -183,10 +183,10 @@ Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGro
 
 ### <a name="create-a-retention-policy"></a>创建保留策略
 
-保留策略用于设置数据库备份的保留时间。 使用 [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) cmdlet 获取默认保留策略，以用作策略创建的模板。 此模板中，保留期设置为 2 年。 接下来，运行 [New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/new-azurermrecoveryservicesbackupprotectionpolicy) 来最终创建策略。 
+保留策略用于设置数据库备份的保留时间。 使用 [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) cmdlet 获取默认保留策略，以用作策略创建的模板。 此模板中，保留期设置为 2 年。 接下来，运行 [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) 来最终创建策略。 
 
 > [!NOTE]
-> 某些 cmdlet 要求在运行 ([Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices/v2.3.0/set-azurermrecoveryservicesvaultcontext)) 之前设置保管库上下文，因此会在多个相关的代码片段中看到此 cmdlet。 设置上下文是因为策略是保管库的一部分。 可以为每个保管库创建多个保留策略，然后将所需策略应用到特定数据库。 
+> 某些 cmdlet 要求在运行 ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)) 之前设置保管库上下文，因此会在多个相关的代码片段中看到此 cmdlet。 设置上下文是因为策略是保管库的一部分。 可以为每个保管库创建多个保留策略，然后将所需策略应用到特定数据库。 
 
 
 ```PowerShell
@@ -208,7 +208,7 @@ $policy
 
 ### <a name="configure-a-database-to-use-the-previously-defined-retention-policy"></a>将数据库配置为使用以前定义的保留策略
 
-使用 [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/set-azurermsqldatabasebackuplongtermretentionpolicy) cmdlet 将新策略应用到特定数据库。
+使用 [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) cmdlet 将新策略应用到特定数据库。
 
 ```PowerShell
 # Enable long-term retention for a specific SQL database
@@ -225,9 +225,9 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resource
 
 使用以下 cmdlet 查看备份信息：
 
-- [Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupcontainer)
-- [Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupitem)
-- [Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackuprecoverypoint)
+- [Get-AzureRmRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)
+- [Get-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)
+- [Get-AzureRmRecoveryServicesBackupRecoveryPoint](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)
 
 ```PowerShell
 #$resourceGroupName = "{resource-group-name}"
@@ -252,7 +252,7 @@ $availableBackups
 
 ### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention"></a>从长期备份保留中的备份还原数据库
 
-从长期备份保留还原使用 [Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/restore-azurermsqldatabase) cmdlet。
+从长期备份保留还原使用 [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) cmdlet。
 
 ```PowerShell
 # Restore the most recent backup: $availableBackups[0]

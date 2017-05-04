@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4387dc52b756e919c482deacf826ebafd3709126
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e2ccb78da419b12a9845d720efb5b0229d4f455b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,7 +59,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>在现有 VM 上安装 Deep Security Agent
 若要在现有 VM 上安装代理，需要以下各项：
 
-* 在本地计算机上安装 Azure PowerShell 模块 0.8.2 版或更高版本。 可以使用 **Get-Module azure | format-table version** 命令查看已安装的 Azure PowerShell 的版本。 有关说明以及指向最新版本的链接，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 使用 `Add-AzureAccount` 登录到 Azure 订阅。
+* 在本地计算机上安装 Azure PowerShell 模块 0.8.2 版或更高版本。 可以使用 **Get-Module azure | format-table version** 命令查看已安装的 Azure PowerShell 的版本。 有关说明以及指向最新版本的链接，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 使用 `Add-AzureAccount` 登录到 Azure 订阅。
 * 在目标虚拟机上安装 VM 代理。
 
 首先，请验证是否已安装 VM 代理。 填写云服务名称和虚拟机名称，然后在管理员级别的 Azure PowerShell 命令提示符下运行以下命令。 替换引号内的所有内容，包括 < and > 字符。

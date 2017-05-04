@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2038ffd2651be7f8dc3653a58673f33e6f32d3db
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b011f51e7b5aa921c43c906fb36fa3020a2dc7e6
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -165,7 +165,7 @@ ms.lasthandoff: 04/03/2017
 可通过以下方式获取最新的 API 版本：
 
 - REST API - [列出所有资源提供程序](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
-- PowerShell - [Get-AzureRmResourceProvider](https://docs.microsoft.com/powershell/resourcemanager/Azurerm.Resources/v3.1.0/Get-AzureRmResourceProvider?redirectedfrom=msdn)
+- PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
 - Azure CLI 2.0 - [az provider show](https://docs.microsoft.com/cli/azure/provider#show)
 
 ## <a name="parameters-and-variables"></a>参数和变量
@@ -461,3 +461,4 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 - 参考[创作 Azure Resource Manager 模板](../../resource-group-authoring-templates.md)创建自己的模板。
 - 参考[使用 Resource Manager 模板创建 Windows 虚拟机](ps-template.md)部署创建的模板。
 - 查看[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](ps-manage.md)，了解如何管理创建的 VM。
+

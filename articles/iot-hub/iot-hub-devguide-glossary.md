@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 05/02/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 408dfd655db7a4a5fa33920e0c8bc8b7a065e886
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: d47a28b31569d26a7752fc830989e8050153be46
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/21/2017
 [Microsoft Azure 门户](https://portal.azure.com)是一个中心位置，可在其中预配和管理 Azure 资源。 该门户使用_边栏选项卡_组织其内容。 在某些 IoT 中心教程中，可能要求使用 [Azure 经典门户](https://manage.windowsazure.com)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azureps-cmdlets-docs) 是一个 cmdlet 集合，可用于通过 Windows PowerShell 管理 Azure。 你可以使用 cmdlet 来创建、测试、部署和管理通过 Azure 平台传送的解决方案和服务。
+[Azure PowerShell](/powershell/azure/overview) 是一个 cmdlet 集合，可用于通过 Windows PowerShell 管理 Azure。 你可以使用 cmdlet 来创建、测试、部署和管理通过 Azure 平台传送的解决方案和服务。
 
 ## <a name="azure-resource-manager"></a>Azure 资源管理器
 可以使用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 以组的方式处理解决方案中的资源。 可以通过一个协调操作为解决方案部署、更新或删除资源。
@@ -257,3 +257,4 @@ Azure 订阅是发生计费的地方。 创建的每个 Azure 资源或使用的
 
 ## <a name="x509-client-certificate"></a>X.509 客户端证书
 设备可以使用 X.509 证书在 [IoT 中心](#iot-hub)进行身份验证。 使用 X.509 证书是使用 [SAS 令牌](#shared-access-signature)的替代方案。
+

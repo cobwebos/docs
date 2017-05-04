@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 079986e9457a4185bae273818fbc852307974638
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: cd6db44f7776859d1e6a893543cf0666182ca41a
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -68,7 +68,7 @@ ms.lasthandoff: 03/04/2017
 5. 导航到域注册机构的网站，找到创建 DNS 记录的部分。 可能会在“**域名**”、“**DNS**”或“**名称服务器管理**”等部分中找到此页。
 6. 找到用于管理 CNAME 的部分。 你可能需要转至高级设置页面，并找到“**CNAME**”、“**别名**”或“**子域**”字样。
 7. 创建一个新的 CNAME 记录，并且提供包含 **cdnverify** 子域的子域别名。 例如，指定的子域将采用 **cdnverify.www** 或 **cdnverify.cdn** 格式。 然后提供主机名，这是你的 CDN 终结点，格式为 **cdnverify.&lt;终结点名称 >. azureedge.net**。 DNS 映射如下所示：`cdnverify.www.consoto.com   CNAME   cdnverify.consoto.azureedge.net`  
-8. 返回到“**添加自定义域**”边栏选项卡，在对话框中输入自定义域（包括子域）。 例如，按格式 `www.contoso.com` 或 `cdn.contoso.com` 输入域名。 请注意在此步骤中，无需为子域添加前缀 **cdncverify**。  
+8. 返回到“**添加自定义域**”边栏选项卡，在对话框中输入自定义域（包括子域）。 例如，按格式 `www.contoso.com` 或 `cdn.contoso.com` 输入域名。 请注意在此步骤中，你无需为子域添加前缀 **cdnverify**。  
    
     Azure 会验证你所输入的 cdnverify 域名是否存在 CNAME 记录。
 9. 此时，你的自定义域已由 Azure 进行了验证，但传输到你的域的流量尚未路由到你的 CDN 终结点。 在等待足够长的时间以允许自定义域设置传播到 CDN 边缘节点（对于**来自 Verizon 的 Azure CDN**，这需要 90 分钟，对于**来自 Akamai 的 Azure CDN**，这需要 1-2 分钟）后，返回到 DNS 注册机构网站，并创建另一个 CNAME 记录，将子域映射到 CDN 终结点。 例如，可将子域指定为 **www** 或 **cdn**，并将主机名指定为 **&lt;终结点名称>.azureedge.net**。 完成此步骤后，也就完成了你的自定义域的注册。

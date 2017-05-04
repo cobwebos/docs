@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/16/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 41d9476d4ce6b7afc2ba9c757e96db7e8e72d5ae
-ms.openlocfilehash: a77354d0719240e5916b5ec945dad75e534802d3
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 3b3162c335be43c9bf2a3d1c14b86cdd9b5d46b9
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,7 +43,7 @@ ms.lasthandoff: 02/21/2017
 
 ## <a name="powershell"></a>PowerShell
 
-1. 若要安装 Azure PowerShell，请参阅 [Azure PowerShell cmdlet 入门](/powershell/azureps-cmdlets-docs)。
+1. 若要安装 Azure PowerShell，请参阅 [Azure PowerShell cmdlet 入门](/powershell/azure/overview)。
 
 2. 若要快速开始进行部署，请使用以下 cmdlets：
 

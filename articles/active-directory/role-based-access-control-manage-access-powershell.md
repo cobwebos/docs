@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 03/02/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 32c6224b36c73394c6bbd2aa5f6439f54f39f306
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5de7b134d99a0b7887acb9d7f87991056e4d608a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,8 +31,8 @@ ms.lasthandoff: 03/04/2017
 
 在使用 PowerShell 管理 RBAC 之前，必须具备以下先决条件：
 
-* Azure PowerShell 0.8.8 版或更高版本。 若要安装最新版本并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
-* Azure Resource Manager cmdlets。 在 PowerShell 中安装 [Azure Resource Manager cmdlet](https://msdn.microsoft.com/library/mt125356.aspx)。
+* Azure PowerShell 0.8.8 版或更高版本。 若要安装最新版本并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* Azure Resource Manager cmdlets。 在 PowerShell 中安装 [Azure Resource Manager cmdlet](/powershell/azure/overview)。
 
 ## <a name="list-roles"></a>列出角色
 ### <a name="list-all-available-roles"></a>列出所有可用的角色
@@ -87,7 +87,7 @@ Get-AzureRmRoleAssignment -SignInName sameert@aaddemo.com -ExpandPrincipalGroups
 ### <a name="search-for-object-ids"></a>搜索对象 ID
 若要分配角色，需要标识对象（用户、组或应用程序）和范围。
 
-如果不知道订阅 ID，可以在 Azure 门户的“订阅”边栏选项卡中查找。 若要了解如何查询订阅 ID，请参阅 MSDN 上的 [Get-AzureSubscription](https://msdn.microsoft.com/library/dn495302.aspx)。
+如果不知道订阅 ID，可以在 Azure 门户的“订阅”边栏选项卡中查找。 若要了解如何查询订阅 ID，请参阅 MSDN 上的 [Get-AzureSubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0)。
 
 若要获取 Azure AD 组的对象 ID，请使用：
 

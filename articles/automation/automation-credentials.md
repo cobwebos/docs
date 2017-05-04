@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 17b4dc2223d30ef13877efc650b56268b707c4bd
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6a62f7f70982a07646248188da8293c88fbe1b52
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -28,14 +28,14 @@ ms.lasthandoff: 04/15/2017
 > Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥由主证书加密，并存储在 Azure 自动化中。 在存储安全资产之前，会先使用主证书来解密自动化帐户的密钥，然后使用该密钥来加密资产。  
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell cmdlet
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azureps-cmdlets-docs)已随附了这些 cmdlet。
+下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
 | Cmdlet | 说明 |
 |:--- |:--- |
-| [Get-AzureAutomationCredential](http://msdn.microsoft.com/library/dn913781.aspx) |检索有关凭据资产的信息。 只能从 **Get-AutomationPSCredential** 活动中检索凭据本身。 |
-| [New-AzureAutomationCredential](http://msdn.microsoft.com/library/azure/jj554330.aspx) |创建新的自动化凭据。 |
-| [Remove- AzureAutomationCredential](http://msdn.microsoft.com/library/azure/jj554330.aspx) |删除自动化凭据。 |
-| [Set- AzureAutomationCredential](http://msdn.microsoft.com/library/azure/jj554330.aspx) |设置现有自动化凭据的属性。 |
+| [Get-AzureAutomationCredential](/powershell/module/azure/get-azureautomationcredential?view=azuresmps-3.7.0) |检索有关凭据资产的信息。 只能从 **Get-AutomationPSCredential** 活动中检索凭据本身。 |
+| [New-AzureAutomationCredential](/powershell/module/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |创建新的自动化凭据。 |
+| [Remove- AzureAutomationCredential](/powershell/module/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |删除自动化凭据。 |
+| [Set- AzureAutomationCredential](/powershell/module/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |设置现有自动化凭据的属性。 |
 
 ## <a name="runbook-activities"></a>Runbook 活动
 下表中的活动用于在 Runbook 和 DSC 配置中访问凭据。

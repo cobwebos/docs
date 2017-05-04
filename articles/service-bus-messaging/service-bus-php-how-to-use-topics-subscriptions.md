@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 04/27/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: add228c8a24fbd36ab05f55570abf1374f519822
-ms.openlocfilehash: 28b6a2432219b1de7751b6311339ae0ec4c9e018
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 7dc72dbdf944432fff7635665c8a1d27def3aa94
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -155,7 +156,7 @@ catch(ServiceException $e){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>创建具有筛选器的订阅
-还可以设置筛选器，以指定发送到主题的哪些消息应该在特定主题订阅中显示。 订阅支持的最灵活的一种筛选器是 [SqlFilter](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter)，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关 SqlFilters 的详细信息，请参阅 [SqlFilter.SqlExpression 属性][sqlfilter]。
+还可以设置筛选器，以指定发送到主题的哪些消息应该在特定主题订阅中显示。 订阅支持的最灵活的一种筛选器是 [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter)，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关 SqlFilters 的详细信息，请参阅 [SqlFilter.SqlExpression 属性][sqlfilter]。
 
 > [!NOTE]
 > 有关订阅的每个规则单独处理传入消息，并将其结果消息添加到订阅。 此外，每个新订阅的筛选器具有一个默认**规则**对象，该对象包含一个将主题中的所有消息添加到订阅的筛选器。 若要仅接收与您的筛选器的消息，您必须删除默认规则。 可以使用 `ServiceBusRestProxy->deleteRule` 方法删除默认规则。
@@ -290,7 +291,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何：处理应用程序崩溃和不可读消息
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，它可以对收到的消息调用 `unlockMessage` 方法（而不是 `deleteMessage` 方法）。 这将导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
+服务总线提供了相关功能来帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，它可以对收到的消息调用 `unlockMessage` 方法（而不是 `deleteMessage` 方法）。 这将导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
 
 还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线将自动解锁该消息并使它可再次被接收。
 
@@ -336,12 +337,7 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 
 [BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[sqlfilter]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
+[sqlfilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter
 [require-once]: http://php.net/require_once
 [Service Bus quotas]: service-bus-quotas.md
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

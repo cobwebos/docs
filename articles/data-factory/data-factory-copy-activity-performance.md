@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: bf864e0d9922e8e842945db9964899d602fd7eed
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 0637fb4d7c6cb8c3cfd4aab5d06571bd83f59683
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -234,7 +234,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ## <a name="performance-tuning-steps"></a>性能优化步骤
 我们建议采用以下步骤，通过复制活动调整数据工厂服务的性能：
 
-1. **建立基准**。 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 可使用数据工厂[切片模型](data-factory-scheduling-and-execution.md#time-series-datasets-and-data-slices)来限制处理的数据量。
+1. **建立基准**。 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 可使用数据工厂[切片模型](data-factory-scheduling-and-execution.md)来限制处理的数据量。
 
    使用**监视和管理应用**收集执行时间和性能特征。 在数据工厂主页上选择“监视和管理”。 在树视图中，选择“输出数据集”。 在“活动窗口”列表中，选择复制活动运行。 **活动窗口**列出了复制活动持续时间和所复制的数据大小。 **活动窗口资源管理器**中列出了吞吐量。 有关此应用的详细信息，请参阅[使用监视和管理应用来监视和管理 Azure 数据工厂管道](data-factory-monitor-manage-app.md)。
 

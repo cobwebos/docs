@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: f4729e9daf788220358e7cca2508c820a1f2006a
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1ce08606aa5ad44dfd80f94f73a37a3b8976e6c5
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/21/2017
 
 此示例脚本使用其相关资源，在应用服务中创建 Web 应用，然后使用 FTP（通过 [WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx)）部署 Web 应用代码。
 
-必要时，请使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)中的说明安装 Azure PowerShell，然后运行 `Login-AzureRmAccount` 创建与 Azure 的连接。
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，然后运行 `Login-AzureRmAccount` 创建与 Azure 的连接。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -45,14 +45,14 @@ Remove-AzureRmResourceGroup -Name $webappname -Force
 
 | 命令 | 说明 |
 |---|---|
-| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Resources/v3.5.0/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
-| [New-AzureRmAppServicePlan](https://docs.microsoft.com/powershell/resourcemanager/azurerm.websites/v2.5.0/new-azurermappserviceplan) | 创建应用服务计划。 |
-| [New-AzureRmWebApp](https://docs.microsoft.com/powershell/resourcemanager/azurerm.websites/v2.5.0/new-azurermwebapp) | 创建 Web 应用。 |
-| [Get-AzureRmWebAppPublishingProfile](https://docs.microsoft.com/powershell/resourcemanager/azurerm.websites/v2.5.0/get-azurermwebapppublishingprofile) | 获取 Web 应用的发布配置文件。 |
+| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
+| [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | 创建应用服务计划。 |
+| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | 创建 Web 应用。 |
+| [Get-AzureRmWebAppPublishingProfile](/powershell/module/azurerm.websites/get-azurermwebapppublishingprofile) | 获取 Web 应用的发布配置文件。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
 
 可以在 [Azure PowerShell 示例](../app-service-powershell-samples.md)中找到 Azure 应用服务 Web 应用的其他 Azure Powershell 示例。
 

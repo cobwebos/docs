@@ -71,8 +71,8 @@
 ### [常见错误疑难解答](automation-troubleshooting-automation-errors.md)
 ### [对混合 Runbook 辅助角色进行故障排除](automation-troubleshooting-hybrid-runbook-worker.md)
 # 引用
-## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
-## [PowerShell（经典）](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
+## [PowerShell](/powershell/module/azurerm.automation)
+## [PowerShell（经典）](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST](/rest/api/automation)
 ## [REST（经典）](https://msdn.microsoft.com/library/azure/mt163781)

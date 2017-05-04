@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 5b6782bbcf7c02d1e34b40ffaab7baf60df104e4
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6dd7c03220e08741c9b6a65c148f247bf56c0979
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -52,7 +52,7 @@ ms.lasthandoff: 04/06/2017
 ## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>步骤2：安装最新版本的 Azure PowerShell
 安装 Azure PowerShell 可以通过两个主要的选项：[PowerShell 库](https://www.powershellgallery.com/profiles/azure-sdk/)或 [Web 平台安装程序 (WebPI)](http://aka.ms/webpi-azps)。 WebPI 接收每月的更新。 PowerShell 库会持续接收更新。 本文基于 Azure PowerShell 2.1.0 版。
 
-如需安装说明，请参阅 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell）。
+如需安装说明，请参阅 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）。
 
 <br>
 

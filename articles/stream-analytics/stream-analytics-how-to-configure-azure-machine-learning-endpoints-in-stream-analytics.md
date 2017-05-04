@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
-ms.openlocfilehash: e99bf516c7a700d15eaefe046f0a2086f4c16a39
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 1f8af4fa220b30de2ba04d4088a57ffc6a8d624b
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -196,7 +196,7 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

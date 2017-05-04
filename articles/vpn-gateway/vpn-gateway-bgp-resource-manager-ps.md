@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 61d0532a5750b3ef71ca557eec0ab705e370473b
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 12df0d2afeb4abef4d22f7341c9b25ce504121c0
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -50,7 +50,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 ### <a name="before-you-begin"></a>开始之前
 * 确保你拥有 Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-* 你需要安装 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
+* 你需要安装 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
 
 ### <a name="step-1---create-and-configure-vnet1"></a>步骤 1 - 创建并配置 VNet1
 #### <a name="1-declare-your-variables"></a>1.声明变量

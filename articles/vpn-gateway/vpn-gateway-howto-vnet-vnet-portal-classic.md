@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 3a3734fba72c42ee4e6f14069faf2d3396c06dd1
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: de39e768697425b98fb615697e57918c8c5d3853
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -65,7 +65,7 @@ ms.lasthandoff: 04/25/2017
 
 ### <a name="before-you-begin"></a>开始之前
 
-开始本练习之前，请下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 使用门户即可执行大部分步骤，但必须使用 PowerShell 创建 VNet 之间的连接。 无法使用 Azure 门户创建此连接。
+开始本练习之前，请下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 使用门户即可执行大部分步骤，但必须使用 PowerShell 创建 VNet 之间的连接。 无法使用 Azure 门户创建此连接。
 
 ## <a name="step1"></a>步骤 1 - 规划 IP 地址范围
 
@@ -202,7 +202,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 
 在下面的步骤中，你将连接到 Azure 帐户并下载和查看网络配置文件来获取你的连接所需的值。
 
-1. 下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+1. 下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 2. 使用提升的权限打开 PowerShell 控制台，然后连接到帐户。 使用下面的示例来帮助连接：
 
@@ -278,3 +278,4 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 
 ## <a name="next-steps"></a>后续步骤
 验证你的连接。 请参阅[验证 VPN 网关连接](vpn-gateway-verify-connection-resource-manager.md)。
+
