@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 813217567c7e1fa5fc9ac11492933ad0c34553d1
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: cf652f1ba6b7d3aa0717a2e3a54000a4aebccc78
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -79,12 +79,12 @@ ms.lasthandoff: 04/19/2017
 ![Service Fabric Explorer][service-fabric-explorer]
 
 ## <a name="connect-to-the-cluster-using-powershell"></a>使用 PowerShell 连接到群集
-使用 PowerShell 进行连接，验证群集是否正在运行。  ServiceFabric PowerShell 模块与 [Service Fabric SDK](service-fabric-get-started.md) 一起安装。  [Connect-ServiceFabricCluster](/powershell/module/ServiceFabric/Connect-ServiceFabricCluster) cmdlet 可建立到群集的连接。   
+使用 PowerShell 进行连接，验证群集是否正在运行。  ServiceFabric PowerShell 模块与 [Service Fabric SDK](service-fabric-get-started.md) 一起安装。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 可建立到群集的连接。   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 ```
-有关如何连接到群集的其他示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。 连接到群集以后，请使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) cmdlet 显示群集中节点的列表，以及每个节点的状态信息。 每个节点的 **HealthState** 应该为“正常”。
+有关如何连接到群集的其他示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。 连接到群集以后，请使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet 显示群集中节点的列表，以及每个节点的状态信息。 每个节点的 **HealthState** 应该为“正常”。
 
 ```powershell
 PS C:\> Get-ServiceFabricNode |Format-Table
@@ -119,3 +119,4 @@ Service Fabric 群集由群集资源本身以及其他 Azure 资源组成。 因
 [cluster-status]: ./media/service-fabric-get-started-azure-cluster/clusterstatus.png
 [service-fabric-explorer]: ./media/service-fabric-get-started-azure-cluster/sfx.png
 [cluster-delete]: ./media/service-fabric-get-started-azure-cluster/delete.png
+

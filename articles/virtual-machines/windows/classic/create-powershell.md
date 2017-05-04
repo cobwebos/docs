@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: d9b713460f98104017ae73ea27f30b0d8d1ca7ee
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8b823c42743bc477dceaa3270836de8ebd92c28f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/27/2017
 
 这些步骤采用填空方法来创建 Azure PowerShell 命令集。 如果你不熟悉 PowerShell 或只想知道为成功的配置指定什么值，则此方法很有用。 高级 PowerShell 用户可以使用命令并将变量（以“$”开头的行）替换为他们自己的值。
 
-如果尚未这样做，请按[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的说明在本地计算机上安装 Azure PowerShell。 然后，打开 Windows PowerShell 命令提示符。
+如果尚未这样做，请按[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 中的说明在本地计算机上安装 Azure PowerShell。 然后，打开 Windows PowerShell 命令提示符。
 
 ## <a name="step-1-add-your-account"></a>步骤 1：添加帐户
 1. 在 PowerShell 命令提示处，键入 **Add-AzureAccount** 并单击“Enter”。 
@@ -122,7 +122,7 @@ ms.lasthandoff: 03/27/2017
     $domacctdomain="<domain of the account that has permission to add the machine to the domain>"
     $vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $domacctdomain -DomainUserName $cred2.Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domaindns
 
-有关基于 Windows 的虚拟机的其他预配置选项，请参阅 [Add-AzureProvisioningConfig](https://msdn.microsoft.com/library/azure/dn495299.aspx) 中 **Windows** 和 **WindowsDomain** 参数集的语法。
+有关基于 Windows 的虚拟机的其他预配置选项，请参阅 [Add-AzureProvisioningConfig](/powershell/module/azure/add-azureprovisioningconfig) 中 **Windows** 和 **WindowsDomain** 参数集的语法。
 
 （可选）为虚拟机分配一个特定 IP 地址（称为静态 DIP）。
 

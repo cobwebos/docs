@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: d68c2f496cfdfa52c33243542ee141c44639e5c0
-ms.openlocfilehash: 7b4fda3ffb269c6a9de407bbd9af32d90768504f
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 86eec91025ae8ae553fa1f76a687e440784e7855
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/16/2017
 
 若要使用 Resource Manager 模板创建 VNet 对等互连，请完成以下步骤：
 
-1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
 
    > [!NOTE]
    > 用于管理 VNet 对等互连的 PowerShell cmdlet 随附于 [Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0)

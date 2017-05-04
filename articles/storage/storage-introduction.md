@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 44f40aebe8418b0cfcf2c2708469d586d1dd4c4c
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: eec53d5dea1255572d515f1ab2796da681579d19
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -32,7 +32,9 @@ Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客�
 * 如何通过冗余和复制确保 Azure 存储数据的持久性
 * 接下来要到何处去构建你的第一个 Azure 存储应用程序
 
-若要快速启动并运行 Azure 存储，请参阅 [在 5 分钟内开始使用 Azure 存储](storage-getting-started-guide.md)。
+<!-- after our quick starts are available, replace this link with a link to one of those. 
+Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!-- To get up and running with Azure Storage quickly, see [Get started with Azure Storage in five minutes](storage-getting-started-guide.md). -->
 
 有关可配合 Azure 存储空间使用的工具、库和其他资源的详细信息，请参阅下面的 [后续步骤](#next-steps) 。
 
@@ -185,12 +187,12 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 * [适用于 PHP 的存储空间客户端库](https://azure.microsoft.com/develop/php/)
 * [适用于 Ruby 的存储空间客户端库](https://azure.microsoft.com/develop/ruby/)
 * [适用于 Python 的存储空间客户端库](https://azure.microsoft.com/develop/python/)
-* [适用于 PowerShell 1.0 的存储空间 Cmdlet](https://msdn.microsoft.com/library/azure/mt269418.aspx)
+* [适用于 PowerShell 1.0 的存储空间 Cmdlet](/powershell/module/azurerm.storage/#storage)
 
 ### <a name="azure-storage-management-services"></a>Azure 存储管理服务
 * [存储资源提供程序 REST API 参考](/rest/api/storagerp/)
 * [适用于 .NET 的存储资源提供程序客户端库](/dotnet/api/microsoft.azure.management.storage)
-* [适用于 PowerShell 1.0 的存储资源提供程序 Cmdlet](/powershell/storage/)
+* [适用于 PowerShell 1.0 的存储资源提供程序 Cmdlet](/powershell/module/azure.storage)
 * [存储服务管理 REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### <a name="azure-storage-data-movement-services"></a>Azure 存储数据移动服务
@@ -202,7 +204,7 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 * [Azure 存储客户端工具](storage-explorers.md)
 * [Azure SDK 和工具](https://azure.microsoft.com/tools/)
 * [Azure 存储模拟器](http://www.microsoft.com/download/details.aspx?id=43709)
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell](/powershell/azure/overview)
 * [AzCopy 命令行实用程序](http://aka.ms/downloadazcopy)
 
 ## <a name="next-steps"></a>后续步骤
@@ -211,7 +213,11 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 ### <a name="documentation"></a>文档
 * [Azure 存档文档](https://azure.microsoft.com/documentation/services/storage/)
 * [创建存储帐户](storage-create-storage-account.md)
-* [Azure 存储五分钟快速入门](storage-getting-started-guide.md)
+
+<!-- after our quick starts are available, replace this link with a link to one of those. 
+Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
+-->
 
 ### <a name="for-administrators"></a>面向管理员
 * [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)

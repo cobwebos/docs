@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: a78fc57d264e9f8074c94b334b24bbf1b7871d08
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ee3a2e0fe4c8a554d763befc466d7fc0638964ce
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,10 +32,10 @@ ms.lasthandoff: 03/25/2017
 
 你可以通过远程桌面访问在 Azure 中运行的角色的桌面。 你可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
 
-本文介绍如何使用 PowerShell 在云服务角色上启用远程桌面。 有关本文所需的先决条件，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 PowerShell 使用远程桌面扩展，使用户能够在部署应用程序之后启用远程桌面。
+本文介绍如何使用 PowerShell 在云服务角色上启用远程桌面。 有关本文所需的先决条件，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 PowerShell 使用远程桌面扩展，使用户能够在部署应用程序之后启用远程桌面。
 
 ## <a name="configure-remote-desktop-from-powershell"></a>从 PowerShell 配置远程桌面
-使用 [Set-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495117.aspx) cmdlet 可以在云服务部署的指定角色或所有角色上启用远程桌面。 该 cmdlet 允许通过接受 PSCredential 对象的 *Credential* 参数为远程桌面用户指定用户名和密码。
+使用 [Set-AzureServiceRemoteDesktopExtension](/powershell/module/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) cmdlet 可以在云服务部署的指定角色或所有角色上启用远程桌面。 该 cmdlet 允许通过接受 PSCredential 对象的 *Credential* 参数为远程桌面用户指定用户名和密码。
 
 如果以交互方式使用 PowerShell，可通过调用 [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) cmdlet 轻松设置 PSCredential 对象。
 
@@ -60,7 +60,7 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 
 若要从安全密码文件创建凭据对象，你必须读取该文件的内容并使用 [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx) 将其转换回安全字符串。
 
-[Set-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495117.aspx) cmdlet 还接受 *Expiration* 参数，用以指定用户帐户过期的**日期时间**。 例如，可以将帐户设置为在当前日期和时间的几天后过期。
+[Set-AzureServiceRemoteDesktopExtension](/powershell/module/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) cmdlet 还接受 *Expiration* 参数，用以指定用户帐户过期的**日期时间**。 例如，可以将帐户设置为在当前日期和时间的几天后过期。
 
 以下 PowerShell 示例显示如何在云服务上设置远程桌面扩展：
 
@@ -77,7 +77,7 @@ Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $cr
 远程桌面扩展与部署相关联。 如果为服务创建新部署，必须对该部署启用远程桌面。 若要始终启用远程桌面，应考虑将 PowerShell 脚本集成到部署工作流中。
 
 ## <a name="remote-desktop-into-a-role-instance"></a>通过远程桌面连接到角色实例
-使用 [Get-AzureRemoteDesktopFile](https://msdn.microsoft.com/library/azure/dn495261.aspx) cmdlet 通过远程桌面连接到云服务的特定角色实例。 可以使用 *LocalPath* 参数将 RDP 文件下载到本地。 也可以使用 *Launch* 参数直接启动“远程桌面连接”对话框来访问云服务角色实例。
+使用 [Get-AzureRemoteDesktopFile](/powershell/module/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) cmdlet 通过远程桌面连接到云服务的特定角色实例。 可以使用 *LocalPath* 参数将 RDP 文件下载到本地。 也可以使用 *Launch* 参数直接启动“远程桌面连接”对话框来访问云服务角色实例。
 
 ```
 Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
@@ -85,7 +85,7 @@ Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -L
 
 
 ## <a name="check-if-remote-desktop-extension-is-enabled-on-a-service"></a>检查是否在服务上启用了远程桌面扩展
-[Get-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495261.aspx) cmdlet 显示是对服务部署启用还是禁用了远程桌面。 该 cmdlet 将返回启用了远程桌面扩展的远程桌面用户和角色的用户名。 默认情况下，这种情况发生在部署槽上，可以选择改用过渡槽。
+[Get-AzureServiceRemoteDesktopExtension](/powershell/module/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) cmdlet 显示是对服务部署启用还是禁用了远程桌面。 该 cmdlet 将返回启用了远程桌面扩展的远程桌面用户和角色的用户名。 默认情况下，这种情况发生在部署槽上，可以选择改用过渡槽。
 
 ```
 Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
@@ -94,7 +94,7 @@ Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 ## <a name="remove-remote-desktop-extension-from-a-service"></a>从服务中删除远程桌面扩展
 如果已对部署启用远程桌面扩展并需要更新远程桌面设置，请先删除该扩展， 然后使用新设置将它重新启用。 例如，要为远程用户帐户或已过期的帐户设置新密码。 在这种情况下，需要在已启用远程桌面扩展的现有部署上执行此操作。 对于新部署，只需直接应用该扩展。
 
-若要从部署中删除远程桌面扩展，可以使用 [Remove-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495280.aspx) cmdlet。 你还可以选择指定要从中删除远程桌面扩展的部署槽和角色。
+若要从部署中删除远程桌面扩展，可以使用 [Remove-AzureServiceRemoteDesktopExtension](/powershell/module/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) cmdlet。 你还可以选择指定要从中删除远程桌面扩展的部署槽和角色。
 
 ```
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration

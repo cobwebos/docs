@@ -15,14 +15,15 @@ ms.workload: TBD
 ms.date: 11/18/2016
 ms.author: alkohli@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 562e20d274079d221360d45302ff288190c1cd6e
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f9e97bb2352231b46bdf66b1165bf22ec639fddf
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
 ## <a name="overview"></a>概述
-Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure StorSimple 设备的命令行接口。 顾名思义，该命令行接口是内置于某个受约束运行空间的一个基于 Windows PowerShell 的命令行接口。 在命令行上从用户的角度看，受约束运行空间显示为受限制的 Windows PowerShell 版本。 此命令行接口在保持 Windows PowerShell 的某些基本功能的同时，还提供附加的专用 cmdlet，它们都是专门针对管理 Microsoft Azure StorSimple 设备而设计的。 
+Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure StorSimple 设备的命令行接口。 顾名思义，该命令行接口是内置于某个受约束运行空间的一个基于 Windows PowerShell 的命令行接口。 对于命令行，从用户的角度看，所谓限制的运行空间就好像是受限制的 Windows PowerShell 版本。 此命令行接口在保持 Windows PowerShell 的某些基本功能的同时，还提供附加的专用 cmdlet，它们都是专门针对管理 Microsoft Azure StorSimple 设备而设计的。 
 
 本文介绍 Windows PowerShell for StorSimple 功能，其中包括如何连接到此命令行接口；本文还包含一些指向使用此命令行接口可以执行的循序渐进步骤或工作流的链接。 这些工作流包括：如何注册设备，配置设备上的网络接口，安装要求设备处于维护模式下的更新，更改设备状态，以及解决可能会遇到的任何问题。
 
@@ -34,7 +35,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 > [!NOTE]
 > * 使用 Windows PowerShell for StorSimple cmdlet，你可以从某个串行控制台或通过 Windows PowerShell 远程处理以远程方式管理 StorSimple 设备。 有关可以在此命令行接口中使用的各个 cmdlet 的详细信息，请参阅 [Windows PowerShell for StorSimple 的 cmdlet 参考](https://technet.microsoft.com/library/dn688168.aspx)。
-> * Azure PowerShell StorSimple cmdlet 不同于使你能够自动从命令行执行 StorSimple 服务级别和迁移任务的 cmdlet 集合。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请参阅 [Azure StorSimple cmdlet 参考](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple)。
+> * Azure PowerShell StorSimple cmdlet 是一个不同的 cmdlet 集合，可让你从命令行实现 StorSimple 服务级任务和迁移任务的自动化。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请参阅 [Azure StorSimple cmdlet 参考](/powershell/module/azure/?view=azuresmps-3.7.0)。
 > 
 > 
 
@@ -156,7 +157,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 #### <a name="to-get-help-for-a-cmdlet"></a>获取关于 cmdlet 的帮助信息
 * 若要获取关于任何 cmdlet 或函数的帮助信息，请使用以下命令︰`Get-Help <cmdlet-name>`
 * 若要获取关于任何 cmdlet 的在线帮助信息，请在上面的 cmdlet 命令中加上`-Online`参数︰`Get-Help <cmdlet-name> -Online`
-* 若要获完整的帮助信息，可以使用 `–Full` 参数，例如，使用 `–Examples` 参数。
+* 若要获取完整的帮助信息，可以使用 `–Full` 参数，例如，使用 `–Examples` 参数。
 
 #### <a name="to-update-help"></a>更新帮助信息
 在 Windows PowerShell 界面中更新帮助信息很容易。 执行以下步骤就可以更新你的系统上的帮助信息。
@@ -174,10 +175,5 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 ## <a name="next-steps"></a>后续步骤
 如果执行上述工作流之一时，你的 StorSimple 设备遇到任何问题，请参阅[用于解决 StorSimple 部署问题的工具](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

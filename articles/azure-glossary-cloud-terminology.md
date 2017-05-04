@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: monicar
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1842d55e2275560581cf2766cdf74e0939e68c98
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1cf6be168c3e87bfd567c216679f608593673340
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -47,8 +47,8 @@ Azure 术语以及上述两份参考文档提供了适用于 Azure 和云行业�
 一个[命令行接口](cli-install-nodejs.md)，可用于从 Windows、OSX 和 Linux 电脑管理 Azure 服务。
 
 ### <a name="powershell"></a>Azure PowerShell
-一个[命令行接口](/powershell/azureps-cmdlets-docs)，可用于通过命令行从 Windows 电脑管理 Azure 服务。 某些服务或服务功能只能通过 PowerShell 或 CLI 来管理。 适用于每个 Azure 资源的指导详细说明了可以使用哪些模型来部署资源。   
-另请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)
+一个[命令行接口](/powershell/azure/overview)，可用于通过命令行从 Windows 电脑管理 Azure 服务。 某些服务或服务功能只能通过 PowerShell 或 CLI 来管理。 适用于每个 Azure 资源的指导详细说明了可以使用哪些模型来部署资源。   
+另请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)
 
 ### <a name="arm-model"></a>Azure Resource Manager 部署模型
 用于在 Microsoft Azure 中部署资源的两个[部署模型](resource-manager-deployment-model.md)中的一个（另一个是经典部署模型）。 可以将一些 Azure 资源部署在其中一个模型中，并将另一些资源部署在这两个模型中。 适用于单个 Azure 资源的指导详细说明了可以使用哪些模型来部署资源。

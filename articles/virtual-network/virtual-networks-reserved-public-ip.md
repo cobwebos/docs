@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 12811b5cbfc6072075395d8542b79d10d2873286
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 120ae95fe12daa8fc213d0062ca446d5c1b10134
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -58,7 +58,7 @@ Azure 中的 IP 地址分为两类：动态 IP 地址和保留 IP 地址。 由 
 
 ## <a name="manage-reserved-vips"></a>管理保留 VIP
 
-确保已根据[安装和配置 PowerShell](/powershell/azureps-cmdlets-docs) 一文中的步骤安装和配置 PowerShell。 
+确保已根据[安装和配置 PowerShell](/powershell/azure/overview) 一文中的步骤安装和配置 PowerShell。 
 
 在使用保留 IP 之前，必须先将其添加到订阅。 若要从*美国中部*位置提供的公共 IP 地址池创建保留 IP，请运行以下命令：
 

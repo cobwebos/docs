@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 4c3f32cd6159052f17557c51e08e7e3f611aa338
-ms.openlocfilehash: 7a1e705e40cd8f7b260c38f41e81e2f199555059
-ms.lasthandoff: 01/06/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 976e765a906896c236497d074ca2a8c5fb1f1c53
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -503,7 +503,7 @@ GROUP BY
 **说明**：此查询每隔 5 秒生成事件，并输出前面收到的最后一个事件。 [跳跃窗口](https://msdn.microsoft.com/library/dn835041.aspx "跳跃窗口 - Azure 流分析")持续时间确定多久后查询将查找最新事件（在本例中为 300 秒）。
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

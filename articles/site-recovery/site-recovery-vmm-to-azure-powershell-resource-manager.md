@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 2c070a6f46e41023ecd2ff7fb5c39b0d021aaef0
-ms.openlocfilehash: 0a900d4ddf6a751a4bf54720d3b62cf9e59e0a71
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 933cb8692abea1f66192605208ddd9c0b9057235
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -103,9 +103,9 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 * [如何在 Azure 中配置和监视虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)
 
 ### <a name="powershell-prerequisites"></a>PowerShell 必决条件
-确保已将 Azure PowerShell 准备就绪。 如果你已使用 PowerShell，则升级到 0.8.10 或更高版本。 有关设置 PowerShell 的信息，请参阅 [Guide to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（Azure PowerShell 安装和配置指南）。 安装并配置 PowerShell 后，可在[此处](https://msdn.microsoft.com/library/dn850420.aspx)查看该服务的所有可用 cmdlet。
+确保已将 Azure PowerShell 准备就绪。 如果你已使用 PowerShell，则升级到 0.8.10 或更高版本。 有关设置 PowerShell 的信息，请参阅 [Guide to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（Azure PowerShell 安装和配置指南）。 安装并配置 PowerShell 后，可在[此处](/powershell/azure/overview)查看该服务的所有可用 cmdlet。
 
-若要获取有关使用 cmdlet 的帮助提示（如在 Azure PowerShell 中通常如何处理参数值、输入和输出），请参阅 [Azure Cmdlet 入门指南](https://msdn.microsoft.com/library/azure/jj554332.aspx)。
+若要获取有关使用 cmdlet 的帮助提示（如在 Azure PowerShell 中通常如何处理参数值、输入和输出），请参阅 [Azure Cmdlet 入门指南](/powershell/azure/get-started-azureps)。
 
 ## <a name="step-1-set-the-subscription"></a>步骤 1：设置订阅
 1. 从 Azure powershell 登录到你的 Azure 帐户：使用以下 cmdlet
@@ -286,7 +286,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -AzureVMNetworkId <string>  
 
-## <a name="a-namemonitora-monitor-activity"></a><a name=monitor></a>监视活动
+## <a name=monitor></a>监视活动
 使用以下命令来监视活动。 请注意，必须在执行不同的作业之前等待处理完成。
 
     Do
@@ -307,5 +307,5 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解](https://msdn.microsoft.com/library/azure/mt637930.aspx) Azure Site Recovery 和 Azure Resource Manager PowerShell cmdlet。
+[详细了解](/powershell/module/azurerm.recoveryservices.backup/#recovery) Azure Site Recovery 和 Azure Resource Manager PowerShell cmdlet。
 

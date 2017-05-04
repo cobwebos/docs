@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/22/2017
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 0bcde69385b74fa62a629159abfff4bb16d9da89
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 4e76a20c7c7eef9a51c6c0373785fd810c09e34a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -394,7 +394,7 @@ SharePoint 部署在 Azure 虚拟机上，并且该应用程序不依赖企业�
 
 VM 在启动时或名称发生更改时自动注册其 DNS 名称。
 
-有关此示例和另一个展示如何预配第一个 VM 并在它上面安装 AD DS 的示例的详细信息，请参阅[在 Microsoft Azure 上安装新 Active Directory 林](active-directory-new-forest-virtual-machine.md)。 有关使用 Windows PowerShell 的详细信息，请参阅[安装 Azure PowerShell](/powershell/azureps-cmdlets-docs) 和 [Azure Management Cmdlets](https://msdn.microsoft.com/library/azure/jj152841)（Azure 管理 Cmdlet）。
+有关此示例和另一个展示如何预配第一个 VM 并在它上面安装 AD DS 的示例的详细信息，请参阅[在 Microsoft Azure 上安装新 Active Directory 林](active-directory-new-forest-virtual-machine.md)。 有关使用 Windows PowerShell 的详细信息，请参阅[安装 Azure PowerShell](/powershell/azureps-cmdlets-docs) 和 [Azure Management Cmdlets](/powershell/module/azurerm.compute/#virtual_machines)（Azure 管理 Cmdlet）。
 
 ### <a name="BKMK_DistributedDCs"></a>地理分散的 DC
 在不同的虚拟网络上托管多个 DC 时，Azure 具有以下优点：

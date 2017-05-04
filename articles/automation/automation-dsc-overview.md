@@ -15,8 +15,9 @@ ms.workload: TBD
 ms.date: 02/02/2017
 ms.author: magoedte;eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: f0d3a5c1929bb6dafef735ae3f4291e329861cc9
-ms.openlocfilehash: b750878703baf143a2e8247bdd01f358e462e598
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 852284ce7e82d782c31bb085d4878de25412411a
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure 自动化 DSC 概述
@@ -115,13 +116,8 @@ Azure 自动化 DSC 中的编译作业是配置的编译实例，用于创建一
 
 * [载入用于根据 Azure 自动化 DSC 管理的计算机](automation-dsc-onboarding.md)
 * [在 Azure 自动化 DSC 中编译配置](automation-dsc-compile.md)
-* [Azure 自动化 DSC cmdlet](https://msdn.microsoft.com/library/mt244122.aspx)
+* [Azure 自动化 DSC cmdlet](/powershell/module/azurerm.automation/#automation)
 * [Azure 自动化 DSC 定价](https://azure.microsoft.com/pricing/details/automation/)
 * [使用 Azure 自动化 DSC 和 Chocolatey 向 IaaS VM 持续部署](automation-dsc-cd-chocolatey.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

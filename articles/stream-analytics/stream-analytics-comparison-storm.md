@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 9dcac84fdc33515ef12ab5b8154f700bb8618290
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 627f9dccb48712fced81f2c6dc694043f7162205
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -125,7 +125,7 @@ ms.lasthandoff: 03/18/2017
 流分析通过处理的数据量以及流式处理单位的数目（作业每小时运行的）来定价。
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/en-us/pricing/details/stream-analytics/">更多定价信息可在此处找到。</a>
+                    <a href="http://azure.microsoft.com/pricing/details/stream-analytics/">更多定价信息可在此处找到。</a>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -133,7 +133,7 @@ ms.lasthandoff: 03/18/2017
 就 Apache Storm on HDInsight 来说，采购单位是根据群集计算的，而收费则根据群集所运行的时间来计算，与部署的作业无关。
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/en-us/pricing/details/hdinsight/">更多定价信息可在此处找到。</a>
+                    <a href="http://azure.microsoft.com/pricing/details/hdinsight/">更多定价信息可在此处找到。</a>
                 </p>
             </td>
         </tr>

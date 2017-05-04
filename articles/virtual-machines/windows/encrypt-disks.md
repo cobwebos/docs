@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 04/24/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: fe53a68e2858df87c4b93348dfc426f9cd346121
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 84cdc5eec5567c9c6905eee285afd2426607ff08
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -65,7 +65,7 @@ Windows VM 上的虚拟磁盘使用 Bitlocker 进行静态加密。 加密 Azure
 * 与本地密钥管理服务集成。
 
 ## <a name="create-azure-key-vault-and-keys"></a>创建 Azure Key Vault 和密钥
-在开始之前，请确保已安装了 Azure PowerShell 模块的最新版本。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 在整个命令示例中，请将所有示例参数替换为自己的名称、位置和密钥值。 以下示例使用 `myResourceGroup`、`myKeyVault`、`myVM` 等的约定。
+在开始之前，请确保已安装了 Azure PowerShell 模块的最新版本。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 在整个命令示例中，请将所有示例参数替换为自己的名称、位置和密钥值。 以下示例使用 `myResourceGroup`、`myKeyVault`、`myVM` 等的约定。
 
 第一步是创建用于存储加密密钥的 Azure 密钥保管库。 Azure 密钥保管库可以存储能够在应用程序和服务中安全实现的密钥、机密或密码。 对于虚拟磁盘加密，可以创建 Key Vault 来存储用于加密或解密虚拟磁盘的加密密钥。 
 
@@ -190,3 +190,4 @@ ProgressMessage            : OsVolume: Encrypted, DataVolumes: Encrypted
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Key Vault 管理的详细信息，请参阅[为虚拟机设置 Key Vault](key-vault-setup.md)。
 * 有关磁盘加密的详细信息，例如准备要上载到 Azure 的已加密自定义 VM，请参阅 [Azure Disk Encryption](../../security/azure-security-disk-encryption.md)（Azure 磁盘加密）。
+

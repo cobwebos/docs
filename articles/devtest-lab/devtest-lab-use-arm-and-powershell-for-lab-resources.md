@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 8f54553bc60d6ba374462d87285dfaf4ca6395c5
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 8ee0301a48265b91f951c96c3339a3c3e3bdb1cb
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/19/2017
 本文有助于指导用户完成使用这些模板和脚本自动创建、修改和部署实验室的过程。 本文还介绍在哪里可以找到关于如何在开发测试实验室中使用 PowerShell 执行一些常见任务的详细信息。
 
 ## <a name="step-1-gather-your-templates-and-scripts"></a>步骤 1：收集模板和脚本
-可以在公共 [Github 存储库](https://github.com/Azure/azure-devtestlab)中找到预制的 [Azure Resource Manager 模板](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)和 [PowerShell 脚本](https://github.com/Azure/azure-devtestlab/tree/master/Scripts)。 按原样使用它们，或对它们进行自定义以满足需求，然后将它们存储在[专用 Git 存储库](devtest-lab-add-repo.md)中。 
+可以在公共 [Github 存储库](https://github.com/Azure/azure-devtestlab)中找到预制的 [Azure Resource Manager 模板](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)和 [PowerShell 脚本](https://github.com/Azure/azure-devtestlab/tree/master/Scripts)。 按原样使用它们，或对它们进行自定义以满足需求，然后将它们存储在[专用 Git 存储库](devtest-lab-add-artifact-repo.md)中。 
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>步骤 2：修改 Azure Resource Manager 模板
 [使用 Azure Resource Manager 模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)演示了如何在开发测试实验室中使用 Azure Resource Manager 模板定义 Azure 解决方案的基础结构和配置，以及如何在一致的状态中重复部署多个 VM。
@@ -49,6 +49,6 @@ ms.lasthandoff: 04/19/2017
 * [使用 PowerShell 创建实验室自定义角色](devtest-lab-grant-user-permissions-to-specific-lab-policies.md#creating-a-lab-custom-role-using-powershell)
 
 ### <a name="next-steps"></a>后续步骤
-* 了解如何创建存储自定义模板或脚本的[专用 Git 存储库](devtest-lab-add-repo.md)。
+* 了解如何创建存储自定义模板或脚本的[专用 Git 存储库](devtest-lab-add-artifact-repo.md)。
 * 浏览 [Azure 快速入门模板库中的 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates)。
 

@@ -12,12 +12,12 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: ae8c26069503a24f3ba17a86160801c60a68d668
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2c4a3ee9ec97dac78485e0f275fbb78412e7cb98
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -52,7 +52,7 @@ ms.lasthandoff: 03/31/2017
 * [注册](https://azure.microsoft.com/services/remoteapp/) Azure RemoteApp。
 * 在 Active Directory 中创建要用作 Azure RemoteApp 服务帐户的用户帐户。 限制此帐户的权限，使其只可以将计算机加入到域。
 * 收集有关你的本地网络的信息：IP 地址信息和 VPN 设备详细信息。
-* 安装 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 模块。
+* 安装 [Azure PowerShell](/powershell/azure/overview) 模块。
 * 收集有关你想要授予访问权限的用户的信息。 需要每个用户的 Azure Active Directory 用户主体名称（例如，name@contoso.com）。 请确保 UPN 在 Azure AD 和 Active Directory 之间匹配。
 * 选择模板映像。 Azure RemoteApp 模板映像包含你希望为用户发布的应用和程序。 有关详细信息，请参阅 [Azure RemoteApp 映像选项](remoteapp-imageoptions.md)。
 * 想要使用 Office 365 ProPlus 映像？ 请查看[此处](remoteapp-officesubscription.md)的信息。

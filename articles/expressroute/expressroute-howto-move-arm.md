@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 6d11b75fdd33260be3d975d9bc25fdac3cf22b49
-ms.openlocfilehash: 73f42b25d667f07205e7e67556c367f1a0e6e215
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7f04ac92d7a9eff9db49ff493cdaa8693ce188c6
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 73f42b25d667f07205e7e67556c367f1a0e6e215
 若要在经典部署模型和 Resource Manager 部署模型中使用 ExpressRoute 线路，必须将该线路转移到 Resource Manager 部署模型。 下列各部分将引导你完成使用 PowerShell 转移线路的步骤。
 
 ## <a name="before-you-begin"></a>开始之前
-* 确认具有最新版本的 Azure PowerShell 模块（至少 1.0 版）。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* 确认具有最新版本的 Azure PowerShell 模块（至少 1.0 版）。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 * 查看[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-move.md)中提供的信息。 请确保你完全了解限制和局限性。
 * 验证该线路是否在经典部署模型中完全正常运行。
@@ -125,10 +126,5 @@ ms.openlocfilehash: 73f42b25d667f07205e7e67556c367f1a0e6e215
 
 * [创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-arm.md)
 * [将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

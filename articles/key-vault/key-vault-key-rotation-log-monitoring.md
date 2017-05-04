@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
 translationtype: Human Translation
-ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
-ms.openlocfilehash: cc872e8d9bc0662f46d5f394f9c98885e34fe67a
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 38c342802ed687985ac6f84f5a590a1a0dcc6c6a
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/20/2017
 本文介绍了一个使用 Azure 密钥保管库存储机密的示例；在本例中，为应用程序将访问的 Azure 存储帐户密钥。 还介绍了该存储帐户密钥的计划轮替的实现。 最后，介绍了如何监视密钥保管库审核日志，并在收到意外请求时发出警报。
 
 > [!NOTE]
-> 本教程不详细说明密钥保管库的初始设置。 有关这方面的信息，请参阅 [Get started with Azure Key Vault](key-vault-get-started.md)（Azure 密钥保管库入门）。 有关跨平台命令行接口说明，请参阅[使用 CLI 管理密钥保管库](key-vault-manage-with-cli.md)。
+> 本教程不详细说明密钥保管库的初始设置。 有关这方面的信息，请参阅 [Get started with Azure Key Vault](key-vault-get-started.md)（Azure 密钥保管库入门）。 有关跨平台命令行接口说明，请参阅[使用 CLI 管理密钥保管库](key-vault-manage-with-cli2.md)。
 >
 >
 

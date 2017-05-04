@@ -30,6 +30,7 @@
 ### [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 ### [服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)
 ### [最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)
+### [加密](data-lake-store-encryption.md)
 
 ## 性能
 ### [Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-guidance.md)
@@ -58,7 +59,7 @@
 ### [高可用性规划](data-lake-store-troubleshooting-guidance.md)
 
 # 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.datalakestore/v3.1.0/azurerm.datalakestore)
+## [PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datalake.store)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)

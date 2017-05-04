@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: cf202a605e5141e7d1fd54790bf6597617c9b97c
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 097f0f7df8db8ec06d91e598cedcfb92a4cc160c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/22/2017
 ## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>如何为前端子网创建 NSG
 若要基于上述方案创建名为 **NSG-FrontEnd** 的 NSG，请执行下面的步骤：
 
-1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
 2. 创建名为 **NSG-FrontEnd** 的网络安全组。
    
         New-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" -Location uswest `

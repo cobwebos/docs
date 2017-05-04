@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: b0ccde30b93214b161558daf8e2b4e37e58711da
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d340210d799f995cb10a20cf48a9245bbd3bc8d3
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -68,7 +68,7 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="before-beginning"></a>开始之前
 * 确保你拥有 Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
-* 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 
+* 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 
 
 ## <a name="declare"></a>第 1 部分 - 登录并设置变量
 在本部分中，将登录并声明用于此配置的值。 声明的值将在示例脚本中使用。 更改这些值以反映自己的环境。 也可以使用声明的值完成这些步骤作为练习。
@@ -245,7 +245,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 如果想要从另一台客户端计算机（而不是用于生成客户端证书的计算机）创建 P2S 连接，需要安装客户端证书。 安装客户端证书时，需要使用导出客户端证书时创建的密码。
 
 1. 找到 *.pfx* 文件并将其复制到客户端计算机。 在客户端计算机上，双击 *.pfx* 文件以进行安装。 将“存储位置”保留为“当前用户”，然后单击“下一步”。
-2. 在“要导入的**文件**”页上，不要进行任何更改。 单击“资源组名称” 的 Azure 数据工厂。
+2. 在“要导入的**文件**”页上，不要进行任何更改。 单击“下一步”。
 3. 在“私钥保护”页上，输入证书的密码，或验证安全主体是否正确，然后单击“下一步”。
 4. 在“**证书存储**”页上，保留默认位置，然后单击“**下一步**”。
 5. 单击“**完成**”。 在证书安装的“**安全警告**”上，单击“**是**”。 可随时单击“是”，因为证书已生成。 现已成功导入证书。
@@ -284,7 +284,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 ## <a name="connectVM"></a>连接到虚拟机
 
-1. 连接到 VNet 后，即可通过 P2S 连接连接到 VM。 若要连接到 VM，需要虚拟机的专用 IP 地址。 以下示例演示了如何通过 [Get-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkinterface?view=azurermps-3.7.0) 获取专用 IP 地址。 结果返回一个列表，其中包含所有资源组中的 VM 和相应的专用 IP 地址。 
+1. 连接到 VNet 后，即可通过 P2S 连接连接到 VM。 若要连接到 VM，需要虚拟机的专用 IP 地址。 以下示例演示了如何通过 [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) 获取专用 IP 地址。 结果返回一个列表，其中包含所有资源组中的 VM 和相应的专用 IP 地址。 
 
   ```powershell   
   $vms = get-azurermvm
@@ -424,3 +424,4 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 ## <a name="next-steps"></a>后续步骤
 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。
+

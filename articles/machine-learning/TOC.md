@@ -173,7 +173,7 @@
 
 # 引用
 
-## [PowerShell 模块（新式）](/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning)
+## [PowerShell 模块（新式）](/powershell/module/azurerm.machinelearning)
 ## [PowerShell 模块（经典）](machine-learning-powershell-module.md)
 ## [算法和模块参考](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 ## [REST API 参考](/rest/api/machinelearning)

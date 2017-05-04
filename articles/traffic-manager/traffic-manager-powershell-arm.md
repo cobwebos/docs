@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: c2fb44817f168eee8303d0c07473f043ae30d350
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a2a6ca04ca8043bc0ed142310ad3e7b55100d228
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -36,7 +36,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 这些说明使用 Microsoft Azure PowerShell。 下文介绍了如何安装和配置 Azure PowerShell。
 
-* [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
 
 本文中的示例假设你具备现有的资源组。 可以使用以下命令创建资源组：
 

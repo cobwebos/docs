@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: kyliel
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5311274867de6e0d863ac532a5b3a31cf964351e
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2d44a2d9a247ffce8bcf35152170562ac0b86710
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -177,7 +177,7 @@ ms.lasthandoff: 04/03/2017
 
    有关详细信息，请参阅 [Azure cmdlet 入门](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx)。
 
-   有关安装和配置 PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+   有关安装和配置 PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="step-4-upload-the-vhd-file"></a>步骤 4：上传 .vhd 文件
 在上载 .vhd 文件时，你可以将该文件放置在 Blob 存储中的任何位置。 以下是上载该文件时将使用的一些术语：

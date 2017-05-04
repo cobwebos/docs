@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
-ms.openlocfilehash: d11f023f263b0bb504e2ecb0ff69bb0cc726618b
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a712baabf2674bda0a53de63e7c204b08ba9d105
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -94,7 +94,7 @@ ms.lasthandoff: 01/24/2017
    * SQL
 2. **应使用什么工具进行数据分析？**
    
-   * [Microsoft Azure Powershell](/powershell/azureps-cmdlets-docs) - 用于管理脚本语言中 Azure 资源的一种脚本语言。
+   * [Microsoft Azure Powershell](/powershell/azure/overview) - 用于管理脚本语言中 Azure 资源的一种脚本语言。
    * [Azure 机器学习工作室](machine-learning-what-is-ml-studio.md)
    * [Revolution Analytics](http://www.revolutionanalytics.com/revolution-r-open)
    * [RStudio](http://www.rstudio.com)

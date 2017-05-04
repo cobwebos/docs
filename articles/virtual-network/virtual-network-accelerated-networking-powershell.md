@@ -17,9 +17,9 @@ ms.date: 09/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5edba79e5c65f0e9411a418ac1a121fd938feff2
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 16ea28d13ccbe559d7988032e162581cde363157
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -61,7 +61,7 @@ ms.lasthandoff: 03/31/2017
 当这些限制有变化时，我们会通过 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/accelerated-networking-in-preview)页发出通告。
 
 ## <a name="create-a-windows-vm-with-accelerated-networking"></a>创建具有加速网络的 Windows VM
-1. 打开 PowerShell 命令提示符，在单个 PowerShell 会话中完成本部分余下的步骤。 如果尚未安装并配置 PowerShell，请先完成[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 一文中所述的步骤。
+1. 打开 PowerShell 命令提示符，在单个 PowerShell 会话中完成本部分余下的步骤。 如果尚未安装并配置 PowerShell，请先完成[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文中所述的步骤。
 2. 若要注册预览版，请向[加速网络订阅](mailto:axnpreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e)发送一封包含订阅 ID 和目标用途的电子邮件。 只有在收到一封告知允许你使用预览版的电子邮件之后，才完成剩余的步骤。
 3. 输入以下命令，将该功能注册到订阅：
    

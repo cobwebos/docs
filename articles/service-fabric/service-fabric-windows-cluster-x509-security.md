@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 2bca90f45e994752ddc3569635ea053f9ef1adaf
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 51ed17ab8f036f00b285232500dc9f606f2a7e2f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -271,7 +271,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-然后可运行其他 PowerShell 命令来处理此群集。 例如，运行 [Get-ServiceFabricNode](/powershell/servicefabric/vlatest/get-servicefabricnode.md) 可显示此安全群集上的节点列表。
+然后可运行其他 PowerShell 命令来处理此群集。 例如，运行 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode.md?view=azureservicefabricps) 可显示此安全群集上的节点列表。
 
 
 若要删除群集，请连接到已下载 Service Fabric 程序包的群集上的节点、打开命令行，然后导航到程序包文件夹。 现在，运行以下命令：

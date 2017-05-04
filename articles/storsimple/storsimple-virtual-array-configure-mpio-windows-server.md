@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 05/01/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: 24c2670394c2873b333f41c081a8134710d16d54
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: c75c6ed40754aee964e2b68f4f569dc1422507f2
+ms.lasthandoff: 05/03/2017
 
 ---
 # <a name="configure-multipath-io-on-windows-server-host-for-the-storsimple-virtual-array"></a>在 Windows Server 主机上为 StorSimple Virtual Array 配置多路径 I/O
@@ -46,12 +46,12 @@ Windows Server 中的 MPIO 功能可以帮助构建具有高可用性的可容�
 ### <a name="on-storsimple-virtual-array"></a>在 StorSimple 虚拟阵列上
 * 应当将虚拟阵列配置为 iSCSI 服务器。 若要了解详细信息，请参阅[将虚拟阵列设置为 iSCSI 服务器](storsimple-virtual-array-deploy3-iscsi-setup.md)。 应当在阵列上启用一个或多个网络接口。   
 * 应当可以从 Windows Server 主机访问虚拟阵列上的网络接口。
-* 应当在 StorSimple Virtual Array 上创建一个或多个卷。 若要了解详细信息，请参阅“在 StorSimple 虚拟阵列上[添加卷](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume)”。 在此过程中，我们在虚拟阵列上创建了 3 个卷（1 个本地固定卷和 2 个分层卷，如下所示）。
+* 应当在 StorSimple Virtual Array 上创建一个或多个卷。 若要了解详细信息，请参阅“在 StorSimple 虚拟阵列上[添加卷](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)”。 在此过程中，我们在虚拟阵列上创建了 3 个卷（1 个本地固定卷和 2 个分层卷，如下所示）。
   
     ![MPIO0](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio0.png)
 
 ### <a name="hardware-configuration-for-storsimple-virtual-array"></a>StorSimple 虚拟阵列的硬件配置
-下图显示了此过程中为实现 Windows Server 主机和 StorSimple 虚拟阵列的高可用性和负载平衡多路径而使用的硬件配置。
+下图显示了此过程中为实现 Windows Server 主机和 StorSimple 虚拟阵列的高可用性和负载均衡多路径而使用的硬件配置。
 
 ![MPIO 硬件配置](./media/storsimple-virtual-array-configure-mpio-windows-server/1200hardwareconfig.png)
 

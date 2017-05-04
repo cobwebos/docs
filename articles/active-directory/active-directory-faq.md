@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 025e8c9e575123a3ad9863a35061ebd0af212486
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 521169d52d37e644ba416e27c9adc8587868ab40
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>访问 Azure 和 Azure Active Directory
-**问：尝试在 Azure 经典门户(https://manage.windowsazure.com)中访问 Azure AD 时，为何收到“找不到订阅”？**
+**问：尝试在 Azure 经典门户 \(https://manage.windowsazure.com\) 中访问 Azure AD 时，为何收到“找不到订阅”？**
 
 **答：**若要访问 Azure 经典门户，每个用户都需要 Azure 订阅的权限。 如果订阅为付费型 Office 365 订阅或 Azure AD 订阅，请访问 [http://aka.ms/accessAAD](http://aka.ms/accessAAD)，了解一次性激活步骤。 否则需激活免费型 [Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)或某个付费型订阅。
 
@@ -134,7 +134,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 - [在 Azure 门户中重置帐户](active-directory-users-reset-password-azure-portal.md)
 - [在经典门户中重置帐户](active-directory-create-users-reset-password.md)
-- [使用 PowerShell](https://docs.microsoft.com/en-us/powershell/msonline/v1/Set-MsolUserPassword?redirectedfrom=msdn)
+- [使用 PowerShell](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
 
 
 - - -

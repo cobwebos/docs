@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 326d09de70e00463df554f27d754ef6999da21d1
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 568d8a31306b7065765ea73e831697c9de7e60e6
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -61,7 +61,7 @@ ms.lasthandoff: 04/12/2017
 
 * Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * 已配置虚拟网络。 
-* 最新版本的 Azure PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
+* 最新版本的 Azure PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
 
 ## <a name="configure-forced-tunneling"></a>配置强制隧道
 以下过程将帮助您为虚拟网络指定强制隧道。 配置步骤与 VNet 网络配置文件相对应。

@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 13ffe90e03dbe99366fb4f6e2788ba7a3c968a30
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b067278389a364514067bcef7045542486e113c9
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,7 +45,7 @@ ms.openlocfilehash: 13ffe90e03dbe99366fb4f6e2788ba7a3c968a30
 ## <a name="detailed-troubleshooting-steps"></a>详细故障排除步骤
 完成以下步骤排查 VM 的 NSG 问题：
 
-1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉如何使用 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 一文。
+1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉如何使用 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文。
 2. 输入以下命令，返回对资源组 *RG1* 中名为 *VM1-NIC1* 的 NIC 应用的所有 NSG 规则：
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -197,10 +198,5 @@ ms.openlocfilehash: 13ffe90e03dbe99366fb4f6e2788ba7a3c968a30
 * 如果已创建对等互连的 VNet，则默认情况下，VIRTUAL_NETWORK 标记会自动扩展，包含对等互连的 VNet 的前缀。 可以在 **ExpandedAddressPrefix** 列表中查看这些前缀，排查与 VNet 对等连接相关的任何问题。 
 * 只有当 NSG 与 VM 的 NIC 和/或子网关联时，才会显示有效安全规则。 
 * 如果没有任何 NSG 与 NIC 或子网关联，并且向 VM 分配了公共 IP 地址，则会打开所有端口以便进行入站和出站访问。 如果 VM 使用公共 IP 地址，我们强烈建议对 NIC 或子网应用 NSG。  
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

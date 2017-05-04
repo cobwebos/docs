@@ -46,7 +46,7 @@
 ###[使用 Redis 群集进行缩减/扩展](cache-how-to-premium-clustering.md)
 
 # 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.rediscache/v2.3.0/azurerm.rediscache)
+## [PowerShell](/powershell/module/azurerm.rediscache)
 ## [Azure CLI 2.0 预览版](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)
 ## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)

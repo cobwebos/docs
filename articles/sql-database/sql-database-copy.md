@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 569809fdb4c94f13549359ca2eacfbd469ce61c8
-ms.lasthandoff: 04/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: af953e16103951fe2fd283898b3c466a1ebe91fd
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +48,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="copy-a-database-by-using-powershell"></a>使用 PowerShell 复制数据库
 
-若要使用 PowerShell 复制数据库，请使用 [`New-AzureRmSqlDatabaseCopy`](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabasecopy) cmdlet。 
+若要使用 PowerShell 复制数据库，请使用 [`New-AzureRmSqlDatabaseCopy`](/powershell/module/azurerm.sql/new-azurermsqldatabasecopy) cmdlet。 
 
 ```PowerShell
 New-AzureRmSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `

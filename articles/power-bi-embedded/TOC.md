@@ -24,7 +24,7 @@
 ### [Power BI Embedded 的行级别安全性](power-bi-embedded-rls.md)
 
 # 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded)
+## [PowerShell](/powershell/module/azurerm.powerbiembedded)
 ## [.NET Azure Resource Manager](/dotnet/api/microsoft.azure.management.powerbiembedded)
 ## [.NET SDK 下载](https://www.nuget.org/profiles/powerbi)
 ## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript/wiki)

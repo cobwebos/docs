@@ -17,9 +17,9 @@ ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: edc3cf6906bb535aec6e5203a5b306e33cd51599
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7f86fb57d9082e19b506c42737aaa020d474d599
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 04/03/2017
 * **MPI**：Microsoft MPI (MS-MPI) 2012 R2 或更高版本、Intel MPI Library 5.x
 
   支持的 MPI 实现使用 Microsoft Network Direct 接口在实例之间通信。 
-* **HpcVmDrivers VM 扩展** - 在具有 RDMA 功能的 VM 上，必须添加 HpcVmDrivers 扩展才能安装 RDMA 连接所需的 Windows 网络设备驱动程序。 （在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。）如果需要将 VM 扩展添加到 VM，可使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) cmdlet。 
+* **HpcVmDrivers VM 扩展** - 在具有 RDMA 功能的 VM 上，必须添加 HpcVmDrivers 扩展才能安装 RDMA 连接所需的 Windows 网络设备驱动程序。 （在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。）如果需要将 VM 扩展添加到 VM，可使用 [Azure PowerShell](/powershell/azure/overview) cmdlet。 
 
   
   例如，若要在 Resource Manager 部署模型中部署的、支持 RDMA 的现有 VM（名为 myVM）上安装最新版本 1.1 HpcVMDrivers 扩展：

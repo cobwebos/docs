@@ -19,9 +19,9 @@ ROBOTS: NOINDEX
 redirect_url: /azure/automation/automation-offering-get-started
 redirect_document_id: TRUE
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: fbca3d195290551d37606e231b997a40a602351f
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 90570886b3a1ae0c48683691cb438b5a61195d76
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -245,7 +245,7 @@ ms.lasthandoff: 03/29/2017
 该脚本要求满足以下先决条件：
 
 * 该脚本只能在装有 Azure Resource Manager 模块 2.01 和更高版本的 Windows 10 与 Windows Server 2016 上运行。 在 Windows 的早期版本中不受支持。
-* Azure PowerShell 1.0 和更高版本。 有关 PowerShell 1.0 版本的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* Azure PowerShell 1.0 和更高版本。 有关 PowerShell 1.0 版本的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * 在以下 PowerShell 脚本中作为 *–AutomationAccountName* 和 *-ApplicationDisplayName* 参数值引用的自动化帐户。
 
 若要获取 *SubscriptionID*、*ResourceGroup* 和 *AutomationAccountName* 的值（脚本的必需参数），请执行以下操作：
@@ -515,7 +515,7 @@ ms.lasthandoff: 03/29/2017
          }
     }
 
-为了帮助你轻松地在多个订阅之间执行操作，该脚本包含两行额外的代码来支持引用订阅上下文。 名为 *SubscriptionId* 的变量资产包含订阅的 ID。 在 `Add-AzureRmAccount` cmdlet 语句的后面，使用参数集 *-SubscriptionId* 声明 [`Set-AzureRmContext`](https://msdn.microsoft.com/library/mt619263.aspx) cmdlet。 如果变量名称太过普通，可以修改它，使其包含前缀或使用其他命名约定，让名称更易于识别。 或者，可对相应的变量资产使用参数集 *-SubscriptionName* 而不是 *-SubscriptionId*。
+为了帮助你轻松地在多个订阅之间执行操作，该脚本包含两行额外的代码来支持引用订阅上下文。 名为 *SubscriptionId* 的变量资产包含订阅的 ID。 在 `Add-AzureRmAccount` cmdlet 语句的后面，使用参数集 *-SubscriptionId* 声明 [`Set-AzureRmContext`](/powershell/module/azurerm.profile/set-azurermcontext) cmdlet。 如果变量名称太过普通，可以修改它，使其包含前缀或使用其他命名约定，让名称更易于识别。 或者，可对相应的变量资产使用参数集 *-SubscriptionName* 而不是 *-SubscriptionId*。
 
 Runbook 中用于身份验证的 cmdlet `Add-AzureRmAccount` 使用 *ServicePrincipalCertificate* 参数集。 它使用服务主体证书而不是用户凭据进行身份验证。
 

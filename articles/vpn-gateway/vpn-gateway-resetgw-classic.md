@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: c63af2de6272604f4d2d1ee694ccc4272192ef9a
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0065a4a73ddd7eb9877359626bac231ec3fdef7c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -61,7 +61,7 @@ ms.lasthandoff: 04/13/2017
 
 ### <a name="resource-manager-deployment-model"></a>Resource Manager 部署模型
 
-需要安装最新版本的 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 用于重置网关的 PowerShell Resource Manager cmdlet 为 `Reset-AzureRmVirtualNetworkGateway`。 以下示例重置资源组“TestRG1”中的 Azure VPN 网关“VNet1GW”。
+需要安装最新版本的 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 用于重置网关的 PowerShell Resource Manager cmdlet 为 `Reset-AzureRmVirtualNetworkGateway`。 以下示例重置资源组“TestRG1”中的 Azure VPN 网关“VNet1GW”。
 
 ```powershell
 $gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroup TestRG1
@@ -70,7 +70,7 @@ Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
 
 ### <a name="resetclassic"></a>经典部署模型
 
-需要安装最新版本的 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 用于重置 Azure VPN 网关的 PowerShell cmdlet 是 **Reset-AzureVNetGateway**。 下面的示例为名为“ContosoVNet”的虚拟网络重置了 Azure VPN 网关。
+需要安装最新版本的 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 用于重置 Azure VPN 网关的 PowerShell cmdlet 是 **Reset-AzureVNetGateway**。 下面的示例为名为“ContosoVNet”的虚拟网络重置了 Azure VPN 网关。
 
 ```powershell
 Reset-AzureVNetGateway –VnetName “ContosoVNet”

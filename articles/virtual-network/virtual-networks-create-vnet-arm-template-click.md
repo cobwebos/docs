@@ -17,9 +17,9 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1a1488215a654a3a07b6cd8be02eaa0cdf8ebf28
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a179f184b7d6a425d0fed4b58551b08bb937ea87
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -112,7 +112,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
 通过使用 PowerShell 完成部署下载的模板的步骤：
 
-1. 请按[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 文章中的步骤安装和配置 Azure PowerShell。
+1. 请按[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 文章中的步骤安装和配置 Azure PowerShell。
 2. 运行以下命令来创建新资源组：
 
     ```powershell

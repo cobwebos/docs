@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 04/24/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 5a648173e8088b58ac5a38f4a3c9d3df06157c58
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: dcb7b326cbb4ed18769010d8061f80dc9f941c87
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 04/26/2017
 
 **Azure PowerShell**：
 
-- 如果打算使用 PowerShell 配置自动备份，请[安装最新的 Azure PowerShell 命令](/powershell/azureps-cmdlets-docs)。
+- 如果打算使用 PowerShell 配置自动备份，请[安装最新的 Azure PowerShell 命令](/powershell/azure/overview)。
 
 > [!NOTE]
 > 自动备份依赖 SQL Server IaaS 代理扩展。 当前的 SQL 虚拟机库映像默认添加此扩展。 有关详细信息，请参阅 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。

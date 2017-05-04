@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: fdc53ee24c623218e218cdda1c24dffbbec50bc5
-ms.openlocfilehash: e7c7e9504985fa98185286ee9a28cec80fb87df6
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9fc3b38b22c3a092dc2d932d2d7471872f5ba66d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/05/2017
 
 这些步骤采用填空方法来创建 Azure PowerShell 命令集。 如果不熟悉 PowerShell 或想知道指定什么值可成功配置，则此方法很有用。 高级 PowerShell 用户可以使用命令并将变量（以“$”开头的行）替换为他们自己的值。
 
-如果尚未这样做，请按[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的说明在本地计算机上安装 Azure PowerShell。 然后，打开 Windows PowerShell 命令提示符。
+如果尚未这样做，请按[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 中的说明在本地计算机上安装 Azure PowerShell。 然后，打开 Windows PowerShell 命令提示符。
 
 ## <a name="step-1-add-your-account"></a>步骤 1：添加帐户
 1. 在 PowerShell 命令提示处，键入 **Add-AzureAccount** 并单击“Enter”。

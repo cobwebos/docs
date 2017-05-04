@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: e2d70bbb2af4231a9ba7e4d9a843593ff5d9f7d3
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ec3c593c0fb6a92b65284285b330e20f788b84c5
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/14/2017
 
 本文的剩余部分提供完成所有 NIC 相关任务的步骤。 每个部分列出了：
 - 在 Azure 门户中完成任务的步骤。 若要完成这些步骤，必须登录到 [Azure 门户](http://portal.azure.com)。 如果你没有帐户，可注册一个[免费试用帐户](https://azure.microsoft.com/free)。
-- 用于通过 Azure PowerShell 完成任务的命令，以及相关命令的命令参考链接。 请按照[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文中的步骤完成 PowerShell 的安装和配置。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
+- 用于通过 Azure PowerShell 完成任务的命令，以及相关命令的命令参考链接。 请按照[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文中的步骤完成 PowerShell 的安装和配置。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
 - 用于通过 Azure 命令行接口 (CLI) 完成任务的命令，以及相关命令的命令参考链接。 请完成[如何安装和配置 Azure CLI 2.0](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文中的步骤安装 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> -h`。
 
 ## <a name="nics"></a>网络接口
@@ -78,7 +78,7 @@ Azure 门户将创建使用专用 IP 地址的、名为 **ipconfig1** 的主 IP 
 |**工具**|**命令**|
 |:---|:---|
 |**CLI**|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|**PowerShell**|[New-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/new-azurermnetworkinterface/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
+|**PowerShell**|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/nic)|
 
 ### <a name="view-nics"></a>查看和更改网络接口与设置
 
@@ -100,7 +100,7 @@ Azure 门户将创建使用专用 IP 地址的、名为 **ipconfig1** 的主 IP 
 |**工具**|**命令**|
 |---|---|
 |**CLI**|使用 [az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#list) 可查看订阅中的 NIC；使用 [az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#show) 可查看 NIC 的设置|
-|**PowerShell**|使用 [Get-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/get-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) 可查看订阅中的 NIC，或 NIC 的设置|
+|**PowerShell**|使用 [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) 可查看订阅中的 NIC，或 NIC 的设置|
 
 ### <a name="dns"></a>更改 NIC 的 DNS 设置
 
@@ -116,7 +116,7 @@ Azure 门户将创建使用专用 IP 地址的、名为 **ipconfig1** 的主 IP 
 |**工具**|**命令**|
 |---|---|
 |**CLI**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ### <a name="ip-forwarding"></a>更改 NIC 的 IP 转发
 
@@ -136,7 +136,7 @@ IP 转发使 NIC 附加到的 VM 能够：
 |**工具**|**命令**|
 |---|---|
 |**CLI**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ### <a name="subnet"></a>更改 NIC 连接到的子网
 
@@ -153,7 +153,7 @@ IP 转发使 NIC 附加到的 VM 能够：
 |**工具**|**命令**|
 |---|---|
 |**CLI**|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 
 ### <a name="delete-nic"></a>删除网络接口
@@ -169,7 +169,7 @@ IP 转发使 NIC 附加到的 VM 能够：
 |**工具**|**命令**|
 |---|---|
 |**CLI**|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|**PowerShell**|[Remove-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.1.0/remove-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
 ## <a name="ip-configs"></a>IP 配置
 每个 NIC 至少有一个 IP 配置，称为**主**配置。 NIC 还可有一个或多个关联的*辅助* IP 配置。 可分配到 NIC 的 IP 地址数有限制。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文。 每个 IP 配置：
@@ -205,7 +205,7 @@ Azure DHCP 服务器将 NIC 主 IP 配置的专用 IP 地址分配到 VM 操作�
 |**工具**|**命令**|
 |---|---|
 |**CLI**|[az network nic ip-config create](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|**PowerShell**|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
 
 ### <a name="change-ip-config"></a>更改 IP 配置
 
@@ -225,7 +225,7 @@ Azure DHCP 服务器将 NIC 主 IP 配置的专用 IP 地址分配到 VM 操作�
 |**工具**|**命令**|
 |---|---|
 |**CLI**|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 ### <a name="delete-ip-config"></a>从 NIC 中删除辅助 IP 配置
 
@@ -239,7 +239,7 @@ Azure DHCP 服务器将 NIC 主 IP 配置的专用 IP 地址分配到 VM 操作�
 |**工具**|**命令**|
 |---|---|
 |**CLI**|[az network nic ip-config delete](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|**PowerShell**|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
 
 
 ## <a name="nsgs"></a>网络安全组
@@ -259,7 +259,7 @@ Azure DHCP 服务器将 NIC 主 IP 配置的专用 IP 地址分配到 VM 操作�
 |**工具**|**命令**|
 |---|---|
 |**CLI**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="vms"></a>在虚拟机中附加和分离 NIC
 
@@ -286,7 +286,7 @@ Azure DHCP 服务器将 NIC 主 IP 配置的专用 IP 地址分配到 VM 操作�
 无法使用 Azure 门户将现有 NIC 附加到新的 VM，或创建具有多个 NIC 的 VM。 创建 VM 时，可使用以下 Azure CLI 或 PowerShell 命令附加一个或多个现有 NIC：
 
 - **CLI：**[az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#create)
-- **PowerShell：**[New-AzureRmVM](/powershell/resourcemanager/azurerm.compute/v2.5.0/new-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- **PowerShell：**[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)
 
 ### <a name="vm-view-nic"></a>查看已附加到虚拟机的 NIC
 
@@ -298,21 +298,21 @@ Azure DHCP 服务器将 NIC 主 IP 配置的专用 IP 地址分配到 VM 操作�
 |**工具**|**命令**|
 |---|---|
 |**CLI**|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#show)|
-|**PowerShell**|[Get-AzureRmVM](/powershell/resourcemanager/azurerm.compute/v1.3.4/get-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|**PowerShell**|[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm)|
 
 ### <a name="vm-attach-nic"></a>将 NIC 附加到现有的虚拟机
 
 要将 NIC 附加到的 VM 必须支持多个 NIC 并处于停止（解除分配）状态。 无法使用 Azure 门户将 NIC 附加到现有的 VM。 可使用以下 Azure CLI 或 PowerShell 命令将 NIC 附加到 VM：
 
 - **CLI：**[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#add)
-- **PowerShell：**[Add-AzureRmVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/v2.5.0/add-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- **PowerShell：**[Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface)
 
 ### <a name="vm-detach-nic"></a>从现有的虚拟机中分离 NIC
 
 要从中分离 NIC 的 VM 必须处于停止（解除分配）状态，并且当前必须至少有两个附加的 NIC。 可以分离任何 NIC，但 VM 必须始终至少有一个附加的 NIC。 如果分离主 NIC，Azure 会将主属性分配给附加到 VM 时间最长的某个剩余 NIC。 你也可以自行将任何 NIC 指定为主 NIC。 无法使用 Azure 门户从 VM 中分离 NIC 或者设置 NIC 的主属性，但可以使用 CLI 或 PowerShell 完成这两项操作。 可使用以下 Azure CLI 或 PowerShell 命令从 VM 中分离 NIC：
 
 - **CLI：**[az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#remove)
-- **PowerShell：**[Remove-AzureRMVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/v2.5.0/remove-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- **PowerShell：**[Remove-AzureRMVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface)
 
 ## <a name="next-steps"></a>后续步骤
 若要使用脚本创建具有多个 NIC 或 IP 配置的 VM，请参阅以下文章：

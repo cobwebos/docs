@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2b020004762125aad201cf7eb454da5cf73288ae
-ms.openlocfilehash: bc8b93d59b53e17eff4b7448f5c6b445894f47e9
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5834ad4e35894f9417d0319f120c8b74b69b3355
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -76,7 +77,7 @@ A 记录将域（例如 **contoso.com** 或 **www.contoso.com**）*或通配符�
        ![显示站点 URL 的速览部分][csurl]
      
        **或**  
-   * 安装并配置 [Azure Powershell](/powershell/azureps-cmdlets-docs)，然后使用以下命令：
+   * 安装并配置 [Azure Powershell](/powershell/azure/overview)，然后使用以下命令：
      
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -111,7 +112,7 @@ A 记录将域（例如 **contoso.com** 或 **www.contoso.com**）*或通配符�
        ![显示 VIP 的速览部分][vip]
      
        **或**  
-   * 安装并配置 [Azure Powershell](/powershell/azureps-cmdlets-docs)，然后使用以下命令：
+   * 安装并配置 [Azure Powershell](/powershell/azure/overview)，然后使用以下命令：
      
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
@@ -156,9 +157,4 @@ A 记录将域（例如 **contoso.com** 或 **www.contoso.com**）*或通配符�
 [Validate Custom Domain dialog box]: http://i.msdn.microsoft.com/dynimg/IC544437.jpg
 [vip]: ./media/cloud-services-custom-domain-name/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name/csurl.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

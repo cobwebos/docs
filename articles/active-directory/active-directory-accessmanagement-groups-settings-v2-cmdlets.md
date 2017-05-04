@@ -13,12 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
-ms.author: curtand
+ms.date: 04/26/2017
+ms.author: curtand;rodejo
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: f4aeeaf13604443e0902112b4cc998ae1dcce4c2
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 9342ecff33ca60d39c55042238ea563dd1a82da6
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 03/08/2017
     ---------- -------    ----                                ----------------
     Binary     1.1.146.0  azureadpreview                      {Add-AzureADAdministrati...}
 
-现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅[联机参考文档](https://docs.microsoft.com/en-us/powershell/azuread/)。
+现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅[联机参考文档](/powershell/azure/install-adv2?view=azureadps-2.0)。
 
 ## <a name="connecting-to-the-directory"></a>连接到目录
 在开始使用 Azure AD PowerShell cmdlet 管理组之前，必须将 PowerShell 会话连接到要管理的目录。 为此，请使用以下命令：
@@ -226,7 +226,7 @@ ms.lasthandoff: 03/08/2017
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
 
 ## <a name="next-steps"></a>后续步骤
-如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](https://docs.microsoft.com/en-us/powershell/azuread/)。
+如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0)。
 
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)

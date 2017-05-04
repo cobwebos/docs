@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: cc8942dacee60d6243e91a3b4360c0c07956fa66
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 65c9d6c2b7a7c994a262d463d6a32b41c7e5c33a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,14 +26,14 @@ ms.lasthandoff: 02/28/2017
 
 通过 Azure Batch PowerShell cmdlet，你可以执行许多与通过 Batch API、Azure 门户和 Azure 命令行界面执行的相同任务并为它们编写脚本。 本文将简要介绍可用于管理 Batch 帐户和处理 Batch 资源（例如池、作业和任务）的 cmdlet。
 
-如需 Batch cmdlet 的完整列表和详细的 cmdlet 语法，请参阅 [Azure Batch cmdlet 参考](https://msdn.microsoft.com/library/azure/mt125957.aspx)。
+如需 Batch cmdlet 的完整列表和详细的 cmdlet 语法，请参阅 [Azure Batch cmdlet 参考](/powershell/module/azurerm.batch/#batch)。
 
 本文基于 Azure PowerShell 3.0.0 版本中的 cmdlet。 建议你经常更新 Azure PowerShell 以利用服务更新和增强功能。
 
 ## <a name="prerequisites"></a>先决条件
 执行以下操作，使用 Azure PowerShell 来管理批处理资源。
 
-* [安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [安装和配置 Azure PowerShell](/powershell/azure/overview)
 * 运行 **Login-AzureRmAccount** cmdlet 连接到订阅（Azure Resource Manager 模块中随附了 Azure 批处理 cmdlet）：
   
     `Login-AzureRmAccount`
@@ -43,7 +43,7 @@ ms.lasthandoff: 02/28/2017
 
 ## <a name="manage-batch-accounts-and-keys"></a>管理批处理帐户和密钥
 ### <a name="create-a-batch-account"></a>创建批处理帐户
-**New-AzureRmBatchAccount** 可在指定的资源组中创建批处理帐户。 如果你没有资源组，可以运行 [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt603739.aspx) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。 例如：
+**New-AzureRmBatchAccount** 可在指定的资源组中创建批处理帐户。 如果你没有资源组，可以运行 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。 例如：
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
@@ -237,7 +237,7 @@ OData 筛选器的替代方法是使用 **Id** 参数。 若要查询 ID 为“m
 > 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关详细的 cmdlet 语法和示例，请参阅 [Azure Batch cmdlet reference](https://msdn.microsoft.com/library/azure/mt125957.aspx)（Azure Batch cmdlet 参考）。
+* 有关详细的 cmdlet 语法和示例，请参阅 [Azure Batch cmdlet reference](/powershell/module/azurerm.batch/#batch)（Azure Batch cmdlet 参考）。
 * 可以在[使用 Azure 批处理应用程序包部署应用程序](batch-application-packages.md)中找到有关批处理中应用程序和应用程序包的详细信息。
 
 

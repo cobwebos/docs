@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/24/2017
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: b55ad97235a05bd579177c7ef944bca801a6aaae
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: fed612a354d45f34619f2a66bd40d78740c43ac7
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/03/2017
 - [Azure CLI 2.0](../windows/key-vault-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - 适用于资源管理部署模型的下一代 CLI
 
 ## <a name="use-cli-10-to-set-up-key-vault"></a>使用 CLI 1.0 设置密钥保管库
-若要使用命令行接口 (CLI) 创建密钥保管库，请参阅[使用 CLI 管理密钥保管库](../../key-vault/key-vault-manage-with-cli.md#create-a-key-vault)。
+若要使用命令行接口 (CLI) 创建密钥保管库，请参阅[使用 CLI 管理密钥保管库](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)。
 
 使用 CLI 1.0 时，必须先创建密钥保管库，然后分配部署策略。 然后可以使用以下命令分配策略：
 
@@ -54,5 +54,4 @@ ms.lasthandoff: 04/03/2017
     }
 
 有关使用模板创建密钥保管库时可以配置的其他选项，请参阅[创建密钥保管库](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)。
-
 

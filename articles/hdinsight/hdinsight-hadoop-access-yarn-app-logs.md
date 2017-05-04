@@ -17,9 +17,9 @@ ms.date: 02/06/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 059fd9c1578cb987aec09a2f72099a0472c9b119
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 736801cd7afce0fced9943e26c98e73ef471e7d4
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/11/2017
 
 
 ### <a name="prerequisites"></a>先决条件
-* 基于 Windows 的 HDInsight 群集。  请参阅[在 HDInsight 中创建基于 Windows 的 Hadoop 群集](hdinsight-provision-clusters.md)。
+* 基于 Windows 的 HDInsight 群集。  请参阅[在 HDInsight 中创建基于 Windows 的 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 ## <a name="yarn-timeline-server"></a>YARN Timeline Server
 <a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a> 通过两个不同的接口提供已完成之应用程序的相关泛型信息，以及架构特定应用程序信息。 具体而言：

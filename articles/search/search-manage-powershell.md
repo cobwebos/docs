@@ -16,9 +16,9 @@ ms.tgt_pltfrm: powershell
 ms.date: 08/15/2016
 ms.author: seasa
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 76077d39f17df63abe6c08f91991095c53f5dbb8
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a635b214fcc9b37ac426df227420b643e2a02cc7
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/31/2017
 这些命令与 [Azure 搜索管理 REST API](http://msdn.microsoft.com/library/dn832684.aspx) 中的可用管理选项并行使用。
 
 ## <a name="prerequisites"></a>先决条件
-* 必须安装 Azure PowerShell 1.0 或更高版本。 有关说明，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* 必须安装 Azure PowerShell 1.0 或更高版本。 有关说明，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * 必须按如下所述，在 PowerShell 中登录到 Azure 订阅。
 
 首先，必须使用以下命令登录到 Azure：

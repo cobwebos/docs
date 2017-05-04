@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: d011223dbb1ad7b5752875e94a4822be1b6cbe6e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7a9ef4098fec7b464e654a429c8c854ed4bb73fd
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/25/2017
 1. 创建一个 Azure 虚拟机。 请参阅[创建运行 Windows Server 的虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[在 Visual Studio 中创建和管理 Azure 虚拟机](../virtual-machines/windows/classic/manage-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 2. 在 [Azure 经典门户页](http://go.microsoft.com/fwlink/p/?LinkID=269851)上的虚拟机仪表板中，查看虚拟机的“**RDP 证书指纹**”。 扩展配置中的 `ServerThumbprint` 值将使用此值。
 3. 根据 [Azure 云服务的证书概述](cloud-services-certs-create.md)中所述创建客户端证书（保留 .pfx 和 RDP 证书指纹）。
-4. 根据[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中所述安装 Azure Powershell（0.7.4 或更高版本）。
+4. 根据[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 中所述安装 Azure Powershell（0.7.4 或更高版本）。
 5. 运行以下脚本以启用 RemoteDebug 扩展。 将路径和个人数据替换为你自己的数据，例如，你的订阅名称、服务名称和指纹。
    
    > [!NOTE]

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/07/2017
 ms.author: cherylmc;ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 4880d63223055026a4fb1a906fb15f263d2a16df
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 2e6c204a1b520f5994c30c518f7ced11d77bde24
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -32,9 +32,6 @@ ms.lasthandoff: 03/24/2017
 
 本文介绍如何使用 Azure 门户和 Azure Resource Manager 部署模型创建 Azure ExpressRoute 线路。 以下步骤还说明如何查看线路状态，以及如何更新、删除和取消预配线路。
 
-**关于 Azure 部署模型**
-
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。

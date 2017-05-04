@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 5d32a695c14ebe01d1ad8cf4b789bf2edc8c30ce
-ms.lasthandoff: 04/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 674404b135d2e512840505ee0927db98824aa8b1
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,7 +43,7 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="get-started-with-azure-powershell"></a>Azure PowerShell 入门
 
-如果未安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+如果未安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 如果过去安装了 Azure PowerShell，但最近未更新它，请考虑安装最新版本。 可通过用于安装的方法更新版本。 例如，如果使用 Web 平台安装程序，请再次启动它以查找更新。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 04/21/2017
 Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 ```
 
-本主题已针对版本 3.3.0 更新。 如果使用更旧的版本，体验可能与本主题中所示步骤不完全相同。 有关此版本中 cmdlet 的文档，请参阅 [AzureRM.Resources 模块](/en-us/powershell/resourcemanager/azurerm.resources/v3.3.0/azurerm.resources)。
+本主题已针对版本 3.3.0 更新。 如果使用更旧的版本，体验可能与本主题中所示步骤不完全相同。 有关此版本中 cmdlet 的文档，请参阅 [AzureRM.Resources 模块](/powershell/module/azurerm.resources)。
 
 ## <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
 处理解决方案之前，必须登录到帐户。

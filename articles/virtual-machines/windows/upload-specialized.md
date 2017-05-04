@@ -17,9 +17,9 @@ ms.date: 02/05/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6349aadc17ec974750537223531a3cf4c82479ed
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0abff0e82aeb02b73ab21cd297abd1178e49944d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/31/2017
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
-有关详细信息，请参阅 [Azure PowerShell 版本控制](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)。
+有关详细信息，请参阅 [Azure PowerShell 版本控制](/powershell/azure/overview)。
 
 
 ## <a name="prepare-the-vm"></a>准备 VM
@@ -59,7 +59,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
   * 请先关闭 VM，再继续操作。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
-如果尚未安装 Azure PowerShell 1.4 或更高版本，请阅读 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell）。
+如果尚未安装 Azure PowerShell 1.4 或更高版本，请阅读 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）。
 
 1. 打开 Azure PowerShell 并登录到 Azure 帐户。 此时将打开一个弹出窗口让输入 Azure 帐户凭据。
    
@@ -104,7 +104,7 @@ Get-AzureRmStorageAccount
     New-AzureRmResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. 使用 [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) cmdlet 在此资源组中创建名为 **mystorageaccount** 的存储帐户：
+2. 使用 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet 在此资源组中创建名为 **mystorageaccount** 的存储帐户：
    
     ```powershell
     New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -121,7 +121,7 @@ Get-AzureRmStorageAccount
 
 ## <a name="upload-the-vhd-to-your-storage-account"></a>将 VHD 上载到存储帐户
 
-使用 [Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 **myVHD.vhd** 从 `"C:\Users\Public\Documents\Virtual hard disks\"` 上载到 **myResourceGroup** 资源组中名为 **mystorageaccount** 的存储帐户。 该文件将放入名为 **mycontainer** 的容器，新文件名为 **myUploadedVHD.vhd**。
+使用 [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 **myVHD.vhd** 从 `"C:\Users\Public\Documents\Virtual hard disks\"` 上载到 **myResourceGroup** 资源组中名为 **mystorageaccount** 的存储帐户。 该文件将放入名为 **mycontainer** 的容器，新文件名为 **myUploadedVHD.vhd**。
 
 ```powershell
 $rgName = "myResourceGroup"

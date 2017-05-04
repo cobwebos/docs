@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: c2a9a14891f197ae442c41668229d4a7610ba248
-ms.openlocfilehash: 17270815b6278ec6b36a134c313cd543622dd9f4
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 76f59384db37967a9210ba5efa49b25788d21cdc
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -77,13 +78,13 @@ ms.openlocfilehash: 17270815b6278ec6b36a134c313cd543622dd9f4
 
 - 如果想要将静态 IP 地址用于生产槽，也必须为过渡槽保留一个静态 IP 地址。 否则，交换将失败。
 
-- 执行交换前，你的角色的所有实例必须都在运行。 可以在 Azure 经典门户中或使用 [Windows PowerShell 中的 Get-AzureRole 命令](https://docs.microsoft.com/en-us/powershell/servicemanagement/azure.service/v3.1.0/get-azurerole)检查实例的状态。
+- 执行交换前，你的角色的所有实例必须都在运行。 可以在 Azure 经典门户中或使用 [Windows PowerShell 中的 Get-AzureRole 命令](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0)检查实例的状态。
 
 请注意，来宾 OS 更新和服务修复操作也会导致部署交换失败。 有关详细信息，请参阅[排查云服务部署问题](cloud-services-troubleshoot-deployment-problems.md)。
 
 **应用程序的交换是否会导致停机？应如何处理它？**
 
-如在上一部分中所述，部署交换通常非常快，因为它只更改 Azure Load Balancer 中的配置。 但是，在某些情况下，它会需要&10; 秒或更长时间并导致暂时性连接故障。 若要减少对客户的影响，请考虑实施[客户端重试逻辑](../best-practices-retry-general.md)。
+如在上一部分中所述，部署交换通常非常快，因为它只更改 Azure 负载均衡器中的配置。 但是，在某些情况下，它会需要 10 秒或更长时间并导致暂时性连接故障。 若要减少对客户的影响，请考虑实施[客户端重试逻辑](../best-practices-retry-general.md)。
 
 ## <a name="how-to-link-a-resource-to-a-cloud-service"></a>如何：将资源链接到云服务
 要显示云服务对其他资源的依赖性，可将 Azure SQL 数据库实例或存储帐户链接到云服务。 可以在“链接的资源”页上链接和取消链接资源，然后在云服务仪表板上监视其使用情况。 如果链接的存储帐户启用了监视，可在云服务仪表板上监视“请求总数”。
@@ -108,7 +109,7 @@ ms.openlocfilehash: 17270815b6278ec6b36a134c313cd543622dd9f4
 
     “链接资源”向导随即启动。
 
-    ![链接页&1;](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png)
+    ![链接页 1](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png)
 
 4. 单击“创建新资源”或“链接现有资源”。
 5. 选择要链接的资源类型。 在 [Azure 经典门户](http://manage.windowsazure.com/)中，单击“SQL 数据库”。 （预览版 Azure 经典门户不支持将存储帐户链接到云服务。）
@@ -153,9 +154,4 @@ ms.openlocfilehash: 17270815b6278ec6b36a134c313cd543622dd9f4
 * 了解如何[部署云服务](cloud-services-how-to-create-deploy.md)。
 * 配置[自定义域名](cloud-services-custom-domain-name.md)。
 * 配置 [SSL 证书](cloud-services-configure-ssl-certificate.md)。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -16,9 +16,9 @@ ms.workload: billing
 ms.date: 04/18/2017
 ms.author: mobandyo;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: eca1b3865fed9a00935a0e48ce70354d3440a0b2
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d3e1dd894c1548b44257bcc02c12cfafe364d5eb
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/26/2017
 ## <a name="azure-invoice-download-api-preview"></a>Azure 发票下载 API（预览版）
 [完成选择加入](billing-manage-access.md#opt-in)后，请使用[发票 API](/rest/api/billing) 预览版下载发票。 具体功能包括：
 
-* **Azure 基于角色的访问控制** - 在 [Azure 门户](https://portal.azure.com)上或通过 [Azure PowerShell cmdlet](/powershell/azureps-cmdlets-docs) 配置访问策略，指定哪些用户或应用程序有权访问订阅的用量数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+* **Azure 基于角色的访问控制** - 在 [Azure 门户](https://portal.azure.com)上或通过 [Azure PowerShell cmdlet](/powershell/azure/overview) 配置访问策略，指定哪些用户或应用程序有权访问订阅的用量数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 * 日期筛选 - 使用 `$filter` 参数，在发票周期结束日期前按倒序顺序获取所有发票。 
 
 > [!NOTE]
@@ -38,7 +38,7 @@ ms.lasthandoff: 04/26/2017
 ## <a name="azure-resource-usage-api-preview"></a>Azure 资源使用状况 API（预览）
 使用 Azure [资源用量 API](https://msdn.microsoft.com/library/azure/mt219003) 获取预估的 Azure 耗用数据量。 该 API 包括：
 
-* **Azure 基于角色的访问控制** - 在 [Azure 门户](https://portal.azure.com)上或通过 [Azure PowerShell cmdlet](/powershell/azureps-cmdlets-docs) 配置访问策略，指定哪些用户或应用程序有权访问订阅的用量数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+* **Azure 基于角色的访问控制** - 在 [Azure 门户](https://portal.azure.com)上或通过 [Azure PowerShell cmdlet](/powershell/azure/overview) 配置访问策略，指定哪些用户或应用程序有权访问订阅的用量数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 * **每小时或每日聚合** - 调用方可以指定 Azure 使用状况数据是以每小时存储桶为单位，还是以每日存储桶为单位。 默认值为每日聚合。
 * **实例元数据（包括资源标记）**- 获取实例级详细信息，例如完全限定的资源 URI (/subscriptions/{subscription-id}/..)，以及资源组信息和资源标记。 此元数据可帮助你明确以编程方式按标记分配用量。
 * **资源元数据** - 资源详细信息（如测定仪名称、测定仪类别、测定仪子类别、计价单位和区域）让调用方更好地了解消耗量。 我们还致力于在跨 Azure 门户、Azure 使用状况 CSV、EA 计费 CSV 和其他面向公众的体验的情况下保持资源元数据术语的一致性，从而让你能够跨体验关联数据。
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/26/2017
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure 资源价目表 API（预览）
 使用 [Azure 资源 RateCard API](https://msdn.microsoft.com/library/azure/mt219005) 获取可用 Azure 资源的列表，以及每个资源的估计定价信息。 该 API 包括：
 
-* **Azure 基于角色的访问控制** - 在 [Azure 门户](https://portal.azure.com)上或通过 [Azure PowerShell cmdlet](/powershell/azureps-cmdlets-docs) 配置访问策略，指定哪些用户或应用程序有权访问 RateCard 数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
+* **Azure 基于角色的访问控制** - 在 [Azure 门户](https://portal.azure.com)上或通过 [Azure PowerShell cmdlet](/powershell/azure/overview) 配置访问策略，指定哪些用户或应用程序有权访问 RateCard 数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
 * **支持即用即付、MSDN、货币承诺和货币信用额产品（不支持 EA）**- 此 API 提供了 Azure 产品级费率信息。  此 API 的调用方必须传入产品/服务信息，才能获取资源详细信息和费率。 由于 EA 产品按注册自定义费率，因此我们暂时无法提供 EA 费率。 
 
 ## <a name="scenarios"></a>方案

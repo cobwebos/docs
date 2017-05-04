@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2961d05d0a81ab30296e084dd40618828b960bd2
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: fc71abada25c6f52859f68bca47396850ed59ed1
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -201,7 +201,7 @@ FROM Input
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 你已经了解了 Azure 中针对流分析作业的数据连接选项。 若要了解流分析的更多内容，请参阅：

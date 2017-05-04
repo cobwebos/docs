@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 5ea7af4744876f1085e14de800d599e001c3f3dd
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 452a50ef4a01ac328c4c2de8767181107eb57cd6
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -269,7 +269,7 @@ ms.lasthandoff: 03/27/2017
 * [ARMClient - 设置从 GitHub 到站点的发布](https://github.com/projectKudu/ARMClient/wiki/Setup-GitHub-publishing-to-Site)
 * [Git 分支 - 基本分支和合并](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 * [David Ebbo 的博客](http://blog.davidebbo.com/)
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell](/powershell/azure/overview)
 * [Azure 跨平台命令行工具](../cli-install-nodejs.md)
 * [在 Azure AD 中创建或编辑用户](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 * [项目 Kudu Wiki](https://github.com/projectkudu/kudu/wiki)

@@ -12,12 +12,12 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 04/26/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: c5b87c3a814b816e8bdc28d3e22b64c2197579af
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 976c918c6553f050d77814438fc45ee65147013a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -56,7 +56,7 @@ Azure RemoteApp 使用 Windows Server 2012 R2 模板映像托管所有要与用�
 * [注册](https://azure.microsoft.com/services/remoteapp/) RemoteApp。
 * 在 Active Directory 中创建要用作 RemoteApp 服务帐户的用户帐户。 限制此帐户的权限，以便它可以仅将计算机加入到域。 请参阅 [为 RemoteApp 配置 Azure Active Directory](remoteapp-ad.md) 了解详细信息。
 * 收集有关你的本地网络的信息︰IP 地址信息和 VPN 设备详细信息。
-* 安装 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 模块。
+* 安装 [Azure PowerShell](/powershell/azure/overview) 模块。
 * 收集有关你想要授予访问权限的用户的信息。 这可以是用户的 Microsoft 帐户信息，或 Active Directory 工作帐户信息。
 
 ## <a name="create-a-template-image"></a>创建模板映像

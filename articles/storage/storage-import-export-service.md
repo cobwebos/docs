@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: b83d44399960137c07494e8fe97ec96fa74df3fb
-ms.lasthandoff: 04/26/2017
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 132c1cf6b06924b8d23d696ea732856886be975d
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -119,6 +119,7 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 * 日本东部
 * 印度中部
 * 印度南部
+* 印度西部
 * 加拿大中部
 * 加拿大东部
 * 巴西南部

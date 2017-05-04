@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 5e33ffc313e7edfcf7243f1113e07b215dc5b10b
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 01fc643ce3fe82cd664cfca5ac02851611d7058e
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -34,10 +34,6 @@ ms.lasthandoff: 03/24/2017
 > 
 
 本文将指导你执行相关步骤，以便使用 Azure 门户和 Resource Manager 部署模型创建和管理 ExpressRoute 线路的路由配置。
-
-**关于 Azure 部署模型**
-
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>配置先决条件
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)页、[路由要求](expressroute-routing.md)页和[工作流](expressroute-workflows.md)页。

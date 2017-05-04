@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: magoedte;paulomarquesc
 translationtype: Human Translation
-ms.sourcegitcommit: 00d348306f76194bb44e5252be5c956a48192768
-ms.openlocfilehash: 69f05a8c0fc88201fc365546870585de5a419f1d
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: af0bc6b24a403bd09092ac0a099c500d651d15b7
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -103,7 +104,7 @@ Runbook 将使用附加的计划循环访问虚拟机，并检查应执行什么
 
    ![PowerShell 中的 GetSystemTimeZones](./media/automation-scenario-start-stop-vm-wjson-tags/automation-get-timzone-powershell.png)
 
-   * 星期几使用数字值&0; 到&6; 表示。 0 值等于星期日。
+   * 星期几使用数字值 0 到 6 表示。 0 值等于星期日。
    * 开始时间使用 **S** 属性来表示，它的值采用 24 小时格式。
    * 结束或关闭时间使用 **E** 属性来表示，它的值采用 24 小时格式。
 
@@ -145,7 +146,7 @@ Runbook 将使用附加的计划循环访问虚拟机，并检查应执行什么
 ### <a name="tag-from-powershell"></a>从 PowerShell 进行标记
 所有导入的 Runbook 均在脚本的开头包含帮助信息，以说明如何直接从 PowerShell 执行 Runbook。 可以从 PowerShell 调用 Add-ScheduleResource 和 Update-ScheduleResource Runbook。 为此，请传递必需的参数，以便在门户外部的 VM 或资源组上创建或更新 Schedule 标记。
 
-若要通过 PowerShell 创建、添加和删除标记，首先需要[为 Azure 设置 PowerShell 环境](/powershell/azureps-cmdlets-docs)。 完成设置后，可以继续执行以下步骤。
+若要通过 PowerShell 创建、添加和删除标记，首先需要[为 Azure 设置 PowerShell 环境](/powershell/azure/overview)。 完成设置后，可以继续执行以下步骤。
 
 ### <a name="create-a-schedule-tag-with-powershell"></a>使用 PowerShell 创建 schedule 标记
 1. 打开 PowerShell 会话。 然后参考以下示例使用运行方式帐户进行身份验证并指定订阅：
@@ -241,9 +242,4 @@ Runbook 将使用附加的计划循环访问虚拟机，并检查应执行什么
 * 有关 PowerShell 脚本支持功能的详细信息，请参阅 [Azure 自动化中的本机 PowerShell 脚本支持](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)。
 * 若要了解有关 Runbook 日志记录和输出的详细信息，请参阅 [Azure 自动化中的 Runbook 输出和消息](automation-runbook-output-and-messages.md)。
 * 若要了解有关 Azure 运行方式帐户以及如何使用它进行 Runbook 身份验证的详细信息，请参阅[使用 Azure 运行方式帐户进行 Runbook 身份验证](automation-sec-configure-azure-runas-account.md)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

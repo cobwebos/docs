@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 788021a5b5715524a534ce3e9ff9019310450f4a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e8d6f7c41287f5f785a52ae82bb156008d7e2699
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -90,7 +90,7 @@ ms.lasthandoff: 03/25/2017
 > 
 > 
 
- 随时可以选择将群集的可靠性从一个层更新为另一个层。 这样做会触发更改系统服务副本集计数所需的群集升级。 等待升级完成，然后对群集做出其他任何更改，如添加节点，等等。可以在 Service Fabric Explorer 中运行 [Get-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt126012.aspx) 来监视升级进度
+ 随时可以选择将群集的可靠性从一个层更新为另一个层。 这样做会触发更改系统服务副本集计数所需的群集升级。 等待升级完成，然后对群集做出其他任何更改，如添加节点，等等。可以在 Service Fabric Explorer 中运行 [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) 来监视升级进度
 
 
 ## <a name="primary-node-type---capacity-guidance"></a>主节点类型 - 容量指导

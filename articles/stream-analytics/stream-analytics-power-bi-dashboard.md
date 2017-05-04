@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 3dbc49d35def6d7b12ade529d1dd1156dee9d75b
-ms.openlocfilehash: 09c54f8cce119c1cbe6a08e969236612447d9e17
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 278f73d9ee3f64727b34b3674cd38eaf5301e675
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -177,7 +177,7 @@ Power BI 同时采用并行性和吞吐量约束，如[有关 Power BI 的此页
 使用 Power BI 刷新授权后，授权区域中会出现一条绿色通知，指出问题已解决。
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 02a978402c8067105900ac50a2796000f8eef67f
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9f1997175a8a0cf2adbcae1123de55894d3931ac
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -171,7 +171,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>在创建群集期间从 Azure 门户使用脚本操作
 
-1. 根据[在 HDInsight 中创建 Hadoop 群集](hdinsight-provision-clusters.md)中的说明开始创建群集。
+1. 根据[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)中的说明开始创建群集。
 2. 在“脚本操作”边栏选项卡的“可选配置”下，单击“添加脚本操作”以提供有关脚本操作的详细信息，如下所示：
 
     ![使用脚本操作自定义群集](./media/hdinsight-hadoop-customize-cluster-linux/HDI.CreateCluster.8.png)
@@ -195,7 +195,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 #### <a name="before-you-begin"></a>开始之前
 
-* 有关配置工作站以运行 HDInsight Powershell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* 有关配置工作站以运行 HDInsight Powershell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * 有关如何创建模板的说明，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 * 如果你以前没有对 Resource Manager 使用过 Azure PowerShell，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)。
 
@@ -405,7 +405,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>在创建群集期间从 Azure PowerShell 使用脚本操作
 
-本部分使用 [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) cmdlet 通过脚本操作来调用脚本，以自定义群集。 在继续前，确保你已安装并配置 Azure PowerShell。 有关配置工作站以运行 HDInsight PowerShell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+本部分使用 [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) cmdlet 通过脚本操作来调用脚本，以自定义群集。 在继续前，确保你已安装并配置 Azure PowerShell。 有关配置工作站以运行 HDInsight PowerShell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 执行以下步骤：
 
@@ -513,7 +513,7 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>从 Azure PowerShell 将脚本操作应用到正在运行的群集
 
-在继续前，确保你已安装并配置 Azure PowerShell。 有关配置工作站以运行 HDInsight PowerShell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+在继续前，确保你已安装并配置 Azure PowerShell。 有关配置工作站以运行 HDInsight PowerShell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 1. 打开 Azure PowerShell 控制台并使用以下命令登录到 Azure 订阅，然后声明一些 PowerShell 变量：
 

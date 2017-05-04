@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 519f035b411f254e8412ba9a8868b226c63cccb6
-ms.lasthandoff: 04/21/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: e7dad0f943375f1bf2996564558e313416506506
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -136,7 +136,7 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 * [在现有 Azure 开发测试实验室中从 VSTS 部署新 VM](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 * [使用 VSTS 发布管理对 Azure 开发测试实验室进行连续部署](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-对于其他 CI/CD 工具链，上述所有可通过 VSTS 任务扩展完成的方案同样可使用 [Azure PowerShell cmdlets](../azure-resource-manager/resource-group-template-deploy.md) 和 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) 通过部署[Azure Resource Manager 模板](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)完成。 还可使用 [用于开发测试实验室的 REST API](http://aka.ms/dtlrestapis) 与你的工具链进行集成。  
+对于其他 CI/CD 工具链，上述所有可通过 VSTS 任务扩展完成的方案同样可使用 [Azure PowerShell cmdlets](../azure-resource-manager/resource-group-template-deploy.md) 和 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) 通过部署[Azure Resource Manager 模板](https://aka.ms/dtlquickstarttemplate)完成。 还可使用 [用于开发测试实验室的 REST API](http://aka.ms/dtlrestapis) 与你的工具链进行集成。  
 
 ### <a name="why-cant-i-see-certain-vms-in-the-azure-virtual-machines-blade-that-i-see-within-azure-devtest-labs"></a>为什么我无法在 Azure 虚拟机边栏选项卡上看到可在 Azure 开发测试实验室中看到的某些 VM？
 在 Azure 开发测试实验室中创建 VM 时，会授予访问该 VM 的权限。 可在实验室边栏选项卡和“虚拟机”边栏选项卡中查看它。 开发测试实验室角色中的用户可查看所有在实验室中通过实验室的“所有虚拟机”边栏选项卡创建的虚拟机。 但是，不会自动授予开发测试实验室角色中的用户对他人创建的 VM 资源的读取访问权限。 因此，这些虚拟机不会显示在“虚拟机”边栏选项卡中。
@@ -145,7 +145,7 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 自定义映像是 VHD（虚拟硬盘），而公式为可使用其他设置（可保存和再现）配置的映像。 若要使用同一基本、不可变的映像快速创建多个环境，选择自定义映像可能会更好。 若要使用最新位、虚拟网络/子网或特定大小再现 VM 的配置，选择公式可能会更好。 有关更深入的说明，请参阅文章[比较实验室中的自定义映像和公式](devtest-lab-comparing-vm-base-image-types.md)。
 
 ### <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>如何一次性从同一模板创建多个 VM？
-创建 VM 和[从 Windows PowerShell 部署 Azure Resource Manager 模板](../azure-resource-manager/resource-group-template-deploy.md)时，可使用 [VSTS 任务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)或[生成 Azure Resource Manager 模板](devtest-lab-add-vm-with-artifacts.md#save-azure-resource-manager-template)。
+创建 VM 和[从 Windows PowerShell 部署 Azure Resource Manager 模板](../azure-resource-manager/resource-group-template-deploy.md)时，可使用 [VSTS 任务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)或[生成 Azure Resource Manager 模板](devtest-lab-add-vm.md#save-azure-resource-manager-template)。
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-azure-devtest-labs-lab"></a>如何将现有 Azure VM 移到 Azure 开发测试实验室？
 我们正设计解决方案，直接将 VM 移动到 Azure 开发测试实验室，但目前你可以将现有 VM 复制到 Azure 开发测试实验室，如下所示：
@@ -219,7 +219,7 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 项目是用于将最新位或开发工具部署到 VM 的可自定义元素。 仅需单击几次即可在创建期间将其附加到你的 VM 中，且预配 VM 后，项目将部署和配置你的 VM。 我们的[公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)中有各种预先存在的项目，但你也可轻松[创作自己的项目](devtest-lab-artifact-author.md)。
 
 ### <a name="how-do-i-create-a-lab-from-an-azure-resource-manager-template"></a>如何从 Azure Resource Manager 模板创建实验室？
-我们提供了 [实验室 Azure Resource Manager 模板的 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)，你可对其按原样部署，或对其进行修改以为你的实验室创建自定义模板。 其中每个模板都提供了链接，可单击链接在自己的 Azure 订阅下按原样部署实验室，或[使用 PowerShell 或 Azure CLI](../azure-resource-manager/resource-group-template-deploy.md) 自定义模板和部署。
+我们提供了 [实验室 Azure Resource Manager 模板的 GitHub 存储库](https://aka.ms/dtlquickstarttemplate)，你可对其按原样部署，或对其进行修改以为你的实验室创建自定义模板。 其中每个模板都提供了链接，可单击链接在自己的 Azure 订阅下按原样部署实验室，或[使用 PowerShell 或 Azure CLI](../azure-resource-manager/resource-group-template-deploy.md) 自定义模板和部署。
 
 ### <a name="why-are-my-vms-created-in-different-resource-groups-with-arbitrary-names-can-i-rename-or-modify-these-resource-groups"></a>为什么我的 VM 创建于具有随机名称的不同资源组？ 我能重新命名或修改这些资源组吗？
 以这种方式创建资源组以便 Azure 开发测试实验室管理用户权限和访问虚拟机。 虽然你可以将 VM 移动到具有所需名称的另一资源组，但不推荐此操作。 我们正努力改善该体验，允许更大的灵活性。   

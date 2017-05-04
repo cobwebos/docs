@@ -79,7 +79,7 @@
 ## [Linux VM 的应用程序一致性备份](backup-azure-linux-app-consistent.md)
 
 # 引用
-## [PowerShell](/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/azurerm.recoveryservices.backup)
+## [PowerShell](/powershell/module/azurerm.recoveryservices.backup)
 ## [.NET](/dotnet/api/microsoft.azure.management.recoveryservices.backup)
 
 # 资源

@@ -17,9 +17,9 @@ ms.topic: support-article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 82515c2ee27e4866a167619f193620786b72cedf
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 25e19b14e1cad41a365ee88ed317078bf551c36a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -114,12 +114,12 @@ ms.lasthandoff: 04/03/2017
 如果仍遇到 RDP 问题，可以[开具支持请求](https://azure.microsoft.com/support/options/)或阅读[更详细的 RDP 故障排除概念和步骤](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="troubleshoot-using-azure-powershell"></a>使用 Azure PowerShell 进行故障排除
-如果尚未执行该操作，请[安装并配置最新的 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+如果尚未执行该操作，请[安装并配置最新的 Azure PowerShell](/powershell/azure/overview)。
 
 以下示例使用 `myResourceGroup`、`myVM`、`myVMAccessExtension` 之类的变量。 将这些变量名称和位置替换为自己的值。
 
 > [!NOTE]
-> 使用 [Set-AzureRmVMAccessExtension](https://msdn.microsoft.com/library/mt619447.aspx) PowerShell cmdlet 重置用户凭据和 RDP 配置。 在以下示例中，`myVMAccessExtension` 是过程中所指定的名称。 如果以前使用过 VMAccessAgent，可以使用 `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` 检查 VM 的属性，从而获取现有的扩展名称。 若要查看名称，请在输出的“Extensions”部分下查找。
+> 使用 [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell cmdlet 重置用户凭据和 RDP 配置。 在以下示例中，`myVMAccessExtension` 是过程中所指定的名称。 如果以前使用过 VMAccessAgent，可以使用 `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` 检查 VM 的属性，从而获取现有的扩展名称。 若要查看名称，请在输出的“Extensions”部分下查找。
 > 
 > 
 

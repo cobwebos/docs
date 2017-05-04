@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 4437c8cb9f428bea54505dc4949410d361f77c11
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 57063b17dd122509cefd1d215cfa2a9234b103bc
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/31/2017
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1.安装最新的 PowerShell cmdlet。
 
-下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ### <a name="2-connect-to-your-azure-account"></a>2.连接到你的 Azure 帐户。 
 
@@ -180,3 +180,4 @@ ms.lasthandoff: 03/31/2017
      OperationDescription        OperationId                      OperationStatus                                                
      --------------------        -----------                      ---------------                                                
      Set-AzureVNetConfig        e0ee6e66-9167-cfa7-a746-7casb9    Succeeded
+
