@@ -2,7 +2,7 @@
 title: "解决数据管理网关问题 | Microsoft Docs"
 description: "提供解决数据管理网关相关问题的提示。"
 services: data-factory
-author: linda33wj
+author: nabhishek
 manager: jhubbard
 editor: monicar
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
@@ -11,8 +11,8 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
-ms.author: jingwang
+ms.date: 05/04/2017
+ms.author: abnarain
 published: true
 translationtype: Human Translation
 ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
