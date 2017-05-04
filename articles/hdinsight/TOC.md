@@ -105,6 +105,7 @@
 ### [配置 Hive 策略](hdinsight-domain-joined-run-hive.md)
 ## 使用 Kafka（预览版）
 ### [复制 Kafka 数据](hdinsight-apache-kafka-mirroring.md)
+### [与虚拟网络配合使用](hdinsight-apache-kafka-connect-vpn-gateway.md)
 ### [与 Spark 配合使用](hdinsight-apache-spark-with-kafka.md)
 ### [与 Storm 配合使用](hdinsight-apache-storm-with-kafka.md)
 ## 开发

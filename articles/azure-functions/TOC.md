@@ -2,7 +2,7 @@
 ## [什么是 Azure Functions？](functions-overview.md)
 # 入门
 ## [创建第一个函数](functions-create-first-azure-function.md)
-## [创建 Webhook 函数](functions-create-a-web-hook-or-api-function.md)
+## [创建 webhook 触发的函数](functions-create-github-webhook-triggered-function.md)
 ## [创建连接到 Azure 的函数](functions-create-an-azure-connected-function.md)
 ## [创建事件处理函数](functions-create-an-event-processing-function.md)
 # 如何

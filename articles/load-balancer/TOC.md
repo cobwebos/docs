@@ -44,8 +44,10 @@
 ### [使用多个 IP 配置 (PowerShell)](load-balancer-multiple-ip-powershell.md)
 ## [Azure 负载均衡器的 Log Analytics](load-balancer-monitor-log.md)
 ## [为 Linux VM 配置 DHCPv6](load-balancer-ipv6-for-linux.md)
+## 故障排除
+### [对 Azure 负载平衡器进行故障排除](load-balancer-troubleshoot.md)
 
-# 参考
+# 引用
 ## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network)
 ## [Azure CLI 2.0](/cli/azure/network/lb)
 ## [.NET](/dotnet/api/microsoft.azure.management.network.models)
