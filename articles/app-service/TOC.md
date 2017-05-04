@@ -79,7 +79,8 @@
 #### [在流量管理器中使用自定义域](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ### [克隆现有应用](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [本地连接](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
+### [混合连接](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
+### [混合连接 v2](app-service-hybrid-connections.md)
 ### [Azure 虚拟网络](../app-service-web/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [高级配置](../app-service-web/web-sites-transform-extend.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [资源组](../app-service-web/app-service-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json)

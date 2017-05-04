@@ -1,6 +1,8 @@
 # 概述
 ## [什么是 Azure DNS？](dns-overview.md)
 ## [DNS 区域和记录](dns-zones-records.md)
+## [使用 Azure DNS 进行 DNS 委派](dns-domain-delegation.md)
+## [DNS 常见问题](dns-faq.md)
 
 # 入门
 
@@ -10,7 +12,7 @@
 ### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 ### [Azure CLI 2.0](dns-getstarted-cli.md)
 
-## [将域委托给 Azure DNS](dns-domain-delegation.md)
+## [将域委托给 Azure DNS](dns-delegate-domain-azure-dns.md)
 ## [为 Web 应用创建自定义 DNS 记录](dns-web-sites-custom-domain.md)
 
 # 如何

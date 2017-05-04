@@ -12,16 +12,30 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: d6358d1a44b85a475cdf2d489112244152f64395
-ms.lasthandoff: 04/08/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 631eb4c8aa3a41e03cf623fcc5610d3e84f18ec4
+ms.lasthandoff: 04/22/2017
 
 ---
 <div class="content">
     <h1>Windows 虚拟机文档</h1>
-    <p style="padding-bottom: 0px; max-width: 1050px;">Azure Windows 虚拟机使用 Windows Server 按需提供具有高可伸缩性并且十分安全的虚拟化基础结构。 使用我们的快速入门、教程和示例了解如何创建、配置、管理和缩放 Windows VM。</p>
-<h2 style="margin-top: 36px; margin-bottom: 0px;">快速入门</h2>
-<p style="margin-top: 6px; margin-bottom: 6px;">使用以下工具创建 Windows VM：</p>
+    <div class="introHolder" style="justify-content: space-between;">
+        <div class="intro" style="min-width: 200px">
+            <p>Azure Windows 虚拟机使用 Windows Server 按需提供具有高可伸缩性并且十分安全的虚拟化基础结构。 使用我们的快速入门、教程和示例了解如何创建、配置、管理和缩放 Windows VM。</p>
+        </div>
+        <a href="https://azure.microsoft.com/en-us/resources/videos/create-windows-server-virtual-machine/">
+            <div class="calloutHolder" style="max-width: 250px">
+                <div>
+                    <img src="media/index/create-windows-server-virtual-machine.png" style="width: 250px" />
+                </div>
+                <div>
+                    <p style="margin-top: 0; color: #6e6e6e">创建 Windows Server 虚拟机。 (3:58)</p>
+                </div>
+            </div>
+        </a>
+    </div>
+<h2 style="margin-top: 0px; margin-bottom: 0px;">5 分钟快速入门</h2>
+<p style="margin-top: 6px; margin-bottom: 6px;">了解如何在运行 Windows Server 2016 的虚拟机中部署 IIS Web 服务器：</p>
 <div class="ico48Case">
     <div class="ico48Link">
         <a href="/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
@@ -42,37 +56,82 @@ ms.lasthandoff: 04/08/2017
         </a>
     </div>
 </div>
-<div class="columnHolder">
-    <div class="column50">
-        <h2 style="margin-top: 36px">教程</h2>
-        <p>构建和部署 Windows 虚拟机。</p>
-        <ul class="spaced">
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-tutorial-manage-vm?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">创建和管理 Windows VM</a></li>
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-load-balanced-iis-tutorial?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">对高度可用的 VM 进行负载均衡</a></li>
-        </ul>
-        <h2>示例</h2>
-        <p>将你的第一个应用程序部署到 Azure。</p>
-        <ul class="spaced">
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure CLI</a></li>
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure PowerShell</a></li>
-        </ul>
-    </div>
-    <div class="column50" style="max-width: 400px">
-        <h2 style="margin-top: 36px">免费视频培训</h2>
-        <a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-infrastructure.png" width="400" alt="" />
-            <p style="margin-top: 0px">免费 Pluralsight 视频培训 - 管理基础结构</a></p>
-            <p style="margin-top: 36px"></p>
-                <a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-vms.png" width="400" alt="" />
-            <p style="margin-top: 0px">免费 Pluralsight 视频培训 – 虚拟机入门</a></p>
-        <p style="margin-top: 36px"></p>
-        <a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-iaas-monitoring.png" width="400" alt="" />
-            <p style="margin-top: 0px">免费 Pluralsight 视频培训 – IaaS 监视入门</a></p>
-    </div>
-</div>
-<hr />
+
+<h2 style="margin-top: 36px">分步教程</h2>
+<p>了解如何在 Azure 上部署、管理和监视 Windows VM</p>
+<ol>
+   <li><a href="/azure/virtual-machines/windows/tutorial-manage-vm">创建和管理 Windows VM</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">创建和管理 VM 磁盘</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">自动执行 VM 配置</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-load-balancer">对 VM 进行负载均衡</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-virtual-network">管理 VM 网络</a></li>
+</ol>
+
+<h2 style="margin-top: 36px">免费 PluralSight 视频培训</h2>
+<ul class="panelContent cardsW">
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-infrastructure.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>管理基础结构</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-vms.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>虚拟机入门</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-iaas-monitoring.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>IaaS 监视入门</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
+
+<h2>示例</h2>
+<p>将你的第一个应用程序部署到 Azure。</p>
+<ul class="spaced">
+    <li><a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure CLI</a></li>
+    <li><a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure PowerShell</a></li>
+</ul>
+
 <h2 style="margin-top: 36px">引用</h2>
 <ul class="panelContent cardsW">
     <li>

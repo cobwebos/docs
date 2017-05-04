@@ -8,17 +8,18 @@
 ## [观看简介](https://azure.microsoft.com/resources/videos/index/?services=site-recovery)
 
 # 入门
-## [将 VMWare VM 复制到 Azure](site-recovery-vmware-to-azure.md)
-## [在多租户部署中将 VMware VM 复制到 Azure (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
+## [将 VMware VM 复制到 Azure](site-recovery-vmware-to-azure.md)
+## [将物理服务器复制到 Azure](site-recovery-physical-servers-to-azure.md) 
 ## [将 Hyper-V VM 复制到 Azure（包含 VMM）](site-recovery-vmm-to-azure.md)
 ## [将 Hyper-V VM 复制到 Azure](site-recovery-hyper-v-site-to-azure.md)
-## [将 VMware VM 和物理服务器复制到辅助站点](site-recovery-vmware-to-vmware.md)
 ## [将 Hyper-V VM 复制到辅助站点（包含 VMM）](site-recovery-vmm-to-vmm.md)
+## [将 VMware VM 和物理服务器复制到辅助站点](site-recovery-vmware-to-vmware.md)
+## [在多租户部署中将 VMware VM 复制到 Azure (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
 
 # 如何
 ## 计划
 ### [部署先决条件](site-recovery-prereq.md)
-### [网络基础结构注意事项](site-recovery-network-design.md)
+### [规划网络基础结构](site-recovery-network-design.md)
 ### [规划容量以及缩放 VMware 在 Azure 中的复制](site-recovery-plan-capacity-vmware.md)
 ### [用于将 VMware 复制到 Azure 的 Deployment Planner](site-recovery-deployment-planner.md)
 ### [用于 Hyper-V 复制的 Capacity Planner](site-recovery-capacity-planner.md)

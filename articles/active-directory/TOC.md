@@ -69,6 +69,7 @@
 #### [识别和解决组的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
+#### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
 ### [设置自助服务组](active-directory-accessmanagement-self-service-group-management.md)
 ### [故障排除](active-directory-accessmanagement-troubleshooting.md)
 

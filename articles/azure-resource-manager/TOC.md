@@ -10,6 +10,12 @@
 ## [创建第一个模板](resource-manager-create-first-template.md)
 ## [Visual Studio 与 Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
+# 示例
+## PowerShell
+### [部署模板](resource-manager-samples-powershell-deploy.md)
+## Azure CLI
+### [部署模板](resource-manager-samples-cli-deploy.md)
+
 # 如何
 ## 创建模板
 ### [模板最佳实践](resource-manager-template-best-practices.md)
@@ -26,8 +32,12 @@
 ### [在链接模板之间共享状态](best-practices-resource-manager-state.md)
 ### [模板设计模式](best-practices-resource-manager-design-templates.md)
 ## 部署
-### [PowerShell](resource-group-template-deploy.md)
-### [Azure CLI](resource-group-template-deploy-cli.md)
+### PowerShell
+#### [部署模板](resource-group-template-deploy.md)
+#### [使用 SAS 令牌部署专用模板](resource-manager-powershell-sas-token.md)
+### Azure CLI
+#### [部署模板](resource-group-template-deploy-cli.md)
+#### [使用 SAS 令牌部署专用模板](resource-manager-cli-sas-token.md)
 ### [门户](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [与 Visual Studio Team Services 的持续集成](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
