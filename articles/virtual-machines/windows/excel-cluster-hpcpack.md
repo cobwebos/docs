@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 04/11/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: b37aecc5ac13210234efee624018ae783dea7820
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8c40a0d44463c75e92444b393336db1daf270ee1
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -91,7 +91,7 @@ HPC Pack IaaS 部署脚本提供了另一种通用的方法来部署 HPC Pack �
 
 **其他先决条件**
 
-* **Azure PowerShell** - [ - 在客户端计算机上安装并配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)（版本 0.8.10 或更高版本）。
+* **Azure PowerShell** - [ - 在客户端计算机上安装并配置 Azure PowerShell](/powershell/azure/overview)（版本 0.8.10 或更高版本）。
 * **HPC Pack IaaS 部署脚本** - 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=44949)下载并解压缩最新版本的脚本。 通过运行 `New-HPCIaaSCluster.ps1 –Version` 检查脚本的版本。 本文基于版本 4.5.0 或更高版本的脚本。
 
 **创建配置文件**
