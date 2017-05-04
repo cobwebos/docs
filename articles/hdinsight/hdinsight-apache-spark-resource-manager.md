@@ -85,7 +85,7 @@ ms.lasthandoff: 01/24/2017
 以下代码片段演示如何更改 Jupyter 中运行的应用程序的配置。
 
     %%configure
-    {"executorMemory": "3072M", "executorCores": 4, “numExecutors”:10}
+    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 
 配置参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。
 

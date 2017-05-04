@@ -13,7 +13,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2017
+ms.date: 05/04/2017
 ms.author: abnarain
 translationtype: Human Translation
 ms.sourcegitcommit: e1d44f85b36d08944351a79d7a4b39cc8de61201
@@ -220,7 +220,7 @@ ms.lasthandoff: 11/17/2016
             }
         }
     }     
-    ```     
+    ```       
    请注意以下几点：
 
    * **type** 设置为 **SqlServerTable**。
