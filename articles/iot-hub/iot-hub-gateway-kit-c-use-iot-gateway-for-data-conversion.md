@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 04/07/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ca5631755fd9c46c4ee7a0f837dcbf4d75a99c25
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: d7897f1a7eee5fbb04cf43da0d0156a6b8fb11f6
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -48,7 +48,7 @@ IoT 网关的一个目的是在将收集的数据发送到云之前，先处理�
   * [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
   * [使用 IoT 网关将事项连接到云 - SensorTag 到 Azure IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 * 在主计算机上运行的 SSH 客户端。 建议在 Windows 上使用 PuTTY。 Linux 和 macOS 已附带 SSH 客户端。
-* 用于从 SSH 客户端访问网关的IP 地址、用户名和密码。
+* IP 地址以及访问 SSH 客户端网关的用户名和密码。
 * Internet 连接。
 
 ## <a name="create-a-module"></a>创建模块
@@ -146,4 +146,5 @@ sed -i -e "s/\r$\/\/" build.sh
 ## <a name="next-steps"></a>后续步骤
 
 已成功使用 IoT 网关将消息从 SensorTag 转换为 .json 格式。
-如果希望了解关于 Azure IoT 网关模块的详细信息，可以在以下位置找到更多模块示例：https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules。
+
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
