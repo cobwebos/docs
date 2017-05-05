@@ -75,7 +75,7 @@ adfgetstarted/partitioneddata/year=2016/month=2/000000_0
 adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 ```
 
-如上所示的示例行中，第行（具有 2016-01-01）会写入 month = 1 文件夹中的 000000_0 文件。 同样，第二行会写入 month =&2; 文件夹中的文件，第三行会写入 month =&3; 文件夹中的文件。  
+如上所示的示例行中，第行（具有 2016-01-01）会写入 month = 1 文件夹中的 000000_0 文件。 同样，第二行会写入 month = 2 文件夹中的文件，第三行会写入 month = 3 文件夹中的文件。  
 
 ## <a name="prerequisites"></a>先决条件
 开始本教程之前，必须具有以下先决条件：
