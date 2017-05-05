@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/18/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 77e48af7ba59ed1e5b2ebcda0760e0eda1f407df
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 37a22be9fba7b245b2c1ea3ca6e495601d63b611
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -52,7 +52,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 **标准存储磁盘：**可将标准存储磁盘附加到所有 Azure VM，包括与高级存储配合使用的 VM 系列，如 DSv2 和 GS 系列。 标准存储磁盘只能附加到一个 VM。 但可以将一个或多个此类磁盘附加到 VM，最多为该 VM 大小定义的最大磁盘计数。 在下一部分标准存储的可伸缩性和性能目标中将详细介绍规范。 
 
-**标准页 blob**：标准页 blob 用于保留 VM 的永久磁盘，也可通过 REST 直接访问它（这与其他类型的 Azure Blob 类似）。 [页 blob](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) 是 512 字节页的集合，已针对随机读写操作优化。 
+**标准页 blob**：标准页 blob 用于保留 VM 的永久磁盘，也可通过 REST 直接访问它（这与其他类型的 Azure Blob 类似）。 [页 blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) 是 512 字节页的集合，已针对随机读写操作优化。 
 
 **存储复制：**在大多数区域中，标准存储帐户中的数据可以在本地复制，或跨多个数据中心实现异地复制。 可用的四种复制类型包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。 标准存储中的托管磁盘目前仅支持本地冗余存储 (LRS)。 有关详细信息，请参阅[存储复制](storage-redundancy.md)。
 
@@ -99,11 +99,11 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 可以为非托管标准磁盘创建[增量快照](storage-incremental-snapshots.md)，这与对标准存储使用快照的方式相同。 如果源磁盘是本地冗余存储帐户，则建议创建快照，并将那些快照复制到地域冗余的标准存储帐户。 有关详细信息，请参阅 [Azure 存储冗余选项](storage-redundancy.md)。
 
-如果磁盘已附加到 VM，则磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 后，无法在该 Blob 上执行 [Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob)（复制 Blob）操作。 此时，必须先使用 [Snapshot Blob](/rest/api/storageservices/fileservices/Snapshot-Blob)（快照 Blob）REST API 方法创建该 Blob 的快照，然后对该快照执行 [Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob)（复制 Blob）以复制附加的磁盘。 或者，可以中断附加磁盘，然后执行任何必要的操作。
+如果磁盘已附加到 VM，则磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 后，无法在该 Blob 上执行 [Copy Blob](/rest/api/storageservices/Copy-Blob)（复制 Blob）操作。 此时，必须先使用 [Snapshot Blob](/rest/api/storageservices/Snapshot-Blob)（快照 Blob）REST API 方法创建该 Blob 的快照，然后对该快照执行 [Copy Blob](/rest/api/storageservices/Copy-Blob)（复制 Blob）以复制附加的磁盘。 或者，可以中断附加磁盘，然后执行任何必要的操作。
 
-若要维护快照的异地冗余副本，可以使用 AzCopy 或“复制 Blob”将本地冗余存储帐户中的快照复制到异地冗余的标准存储帐户。 有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)和 [Copy Blob](/rest/api/storageservices/fileservices/Copy-Blob)（复制 Blob）。
+若要维护快照的异地冗余副本，可以使用 AzCopy 或“复制 Blob”将本地冗余存储帐户中的快照复制到异地冗余的标准存储帐户。 有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)和 [Copy Blob](/rest/api/storageservices/Copy-Blob)（复制 Blob）。
 
-有关在标准存储帐户中针对页 blob 执行 REST 操作的详细信息，请参阅 [Azure 存储服务 REST API](/rest/api/storageservices/fileservices/Azure-Storage-Services-REST-API-Reference)。
+有关在标准存储帐户中针对页 blob 执行 REST 操作的详细信息，请参阅 [Azure 存储服务 REST API](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)。
 
 ### <a name="managed-disks"></a>托管磁盘
 
@@ -125,7 +125,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 **托管磁盘：**托管磁盘按预配大小计费。 如果磁盘预配为 10 GB，即使只使用了 5 GB，也还是要为预配的 10 GB 大小付费。
 
-**快照**：对标准磁盘的快照使用的额外容量计费。 有关快照的详细信息，请参阅 [Creating a Snapshot of a Blob](/rest/api/storageservices/fileservices/Creating-a-Snapshot-of-a-Blob)（创建 Blob 的快照）。
+**快照**：对标准磁盘的快照使用的额外容量计费。 有关快照的详细信息，请参阅 [Creating a Snapshot of a Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)（创建 Blob 的快照）。
 
 **出站数据传输**：[出站数据传输](https://azure.microsoft.com/pricing/details/data-transfers/)（Azure 数据中心送出的数据）会产生带宽使用费。
 
