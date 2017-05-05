@@ -12,8 +12,3 @@
 
 ILB 只能在具有区域范围的虚拟网络上配置。 已配置关联组的现有虚拟网络无法使用 ILB。 有关详细信息，请参阅[内部负载均衡器](../articles/load-balancer/load-balancer-internal-overview.md)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 0b404af5b638ec2d543ce98b562b7df538652f70
-ms.openlocfilehash: 39ee9cc1027958d85b2af2781adab0fe06c9a433
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5489762a7a392e4e4098d85cba22d560e9858267
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 39ee9cc1027958d85b2af2781adab0fe06c9a433
 
 在开始之前，请特别注意以下几点：
 
-1. 本教程使用 PowerShell，因此请确保 Azure PowerShell 已安装并已准备就绪。 有关设置 Azure PowerShell 的帮助，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+1. 本教程使用 PowerShell，因此请确保 Azure PowerShell 已安装并已准备就绪。 有关设置 Azure PowerShell 的帮助，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 2. AD 域控制器和 Web/辅助角色实例需要在 VNet 中。
 
 请遵循以下分步指南，如果你遇到任何问题，请在下面留言。 我们将回复你（没错，我们真的会阅读留言）。
@@ -155,9 +156,4 @@ Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-na
 help Set-AzureServiceADDomainExtension
 help New-AzureServiceADDomainExtensionConfig
 ```
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

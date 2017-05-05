@@ -1,5 +1,5 @@
 ---
-title: "自动缩放最佳实践 | Microsoft 文档"
+title: "自动缩放的最佳做法 | Microsoft Docs"
 description: "了解有效自动缩放虚拟机、虚拟机规模集和云服务的原理。"
 author: kamathashwin
 manager: carmonm
@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2016
+ms.date: 04/20/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: cc557c7139561345a201fa0cd45c803af3751acd
-ms.openlocfilehash: 25fa8749d4b23d3619829fa179a7c91da311bbd0
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 6dad42f94d263d9dacedf145bf4e5d487d0aed77
+ms.lasthandoff: 04/21/2017
 
 
 ---
-# <a name="best-practices-autoscaling-virtual"></a>虚拟机自动缩放最佳实践
+# <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
 本文讲解 Azure 中自动缩放的最佳实践。 内容与虚拟机、虚拟机规模集和云服务相关。  其他 Azure 服务使用不同的缩放方法。
 
 ## <a name="autoscale-concepts"></a>自动缩放概念
@@ -149,9 +150,4 @@ ms.openlocfilehash: 25fa8749d4b23d3619829fa179a7c91da311bbd0
 * 自动缩放服务无法使用指标进行缩放决策。
 * 指标再次可用（恢复）于进行缩放决策。
   除了以上条件，还可以配置电子邮件或 webhook 通知，以获得有关成功缩放操作的通知。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

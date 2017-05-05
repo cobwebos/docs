@@ -16,9 +16,9 @@ ms.date: 02/23/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
-ms.openlocfilehash: b8c5e53ed5fe86ed099e37644d405080477f8c27
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 0bd6fce848c6d174eb519f8ef8a14f9ead5fa5ce
+ms.lasthandoff: 04/13/2017
 
 ---
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 03/01/2017
 * 停止并重启 Oozie、YARN、MapReduce2 和 HDFS 服务，以便用户选取新的存储帐户信息。
 
 > [!WARNING]
-> 如果存储帐户与 HDInsight 群集位于不同的区域，则可能会遇到性能低下问题。 访问不同区域中的数据会在区域 Azure 数据中心之外和公共 Internet 上发送网络流量，这会导致延迟。 此外，从区域数据中心发送数据成本可能更高，因为数据离开数据中心时将产生出口费用。
+> 不支持在 HDInsight 群集之外的其他位置使用存储帐户。
 
 ## <a name="the-script"></a>脚本
 

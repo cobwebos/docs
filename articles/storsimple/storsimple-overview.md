@@ -15,9 +15,9 @@ ms.workload: TBD
 ms.date: 10/05/2016
 ms.author: v-sharos@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
-ms.openlocfilehash: 3575e4f22e17608de7f3b66e9dd577a1d4a4c148
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 27231cef19e7f624c2c09b0aae2ea3d503fb8e3d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -65,7 +65,7 @@ Microsoft Azure StorSimple 解决方案包括以下组件：
 * **StorSimple 虚拟设备** – 这是 StorSimple 设备的软件版本，复制了物理混合存储设备的体系结构和多数功能。 StorSimple 虚拟设备在 Azure 虚拟机中的单个节点上运行。 Update 2 及更高版本中提供了高级虚拟设备，可充分利用 Azure 高级存储性能。
 * **StorSimple Manager 服务** – Azure 经典门户的扩展，让你能够从单个 Web 界面管理 StorSimple 设备或 StorSimple 虚拟设备。 你可以使用 StorSimple 管理器服务来创建和管理服务、查看和管理设备、查看警报、管理卷以及查看和管理备份策略和备份目录。
 * **Windows PowerShell for StorSimple** – 一个命令行接口，可用于管理 StorSimple 设备。 Windows PowerShell for StorSimple 具有多种功能，让你能够注册 StorSimple 设备、配置设备上的网络接口、安装特定类型的更新、通过访问支持会话为设备排除故障，以及更改设备状态。 可以通过连接到串行控制台或通过使用 Windows PowerShell 远程处理来访问 Windows PowerShell for StorSimple。
-* **Azure PowerShell StorSimple cmdlet** - Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](https://msdn.microsoft.com/library/dn920427.aspx)。
+* **Azure PowerShell StorSimple cmdlet** - Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/azure/?view=azuresmps-3.7.0#azure)。
 * **StorSimple Snapshot Manager** – 一个 MMC 管理单元，它使用卷组和 Windows 卷影复制服务来生成应用程序一致性备份。 此外，你还可以使用 StorSimple 快照管理器来创建备份计划，并克隆或还原卷。 
 * **StorSimple Adapter for SharePoint** – 一种工具，可将 Microsoft Azure StorSimple 存储和数据保护透明地扩展到 SharePoint 服务器场，同时让用户能够从 SharePoint 中心管理门户查看和管理 StorSimple 存储。
 
@@ -134,7 +134,7 @@ Windows PowerShell for StorSimple 提供一个命令行界面，你可以使用�
 有关详细信息，请转到[使用 Windows PowerShell for StorSimple 管理设备](storsimple-windows-powershell-administration.md)。
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple cmdlet
-Azure PowerShell StorSimple cmdlet 是 Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple)。
+Azure PowerShell StorSimple cmdlet 是 Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/azure/?view=azuresmps-3.7.0)。
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple 快照管理器
 StorSimple 快照管理器是 Microsoft 管理控制台 (MMC) 管理单元，可用于创建本地数据和云数据的一致时间点备份副本。 该管理单元在基于 Windows Server 的主机上运行。 可以使用 StorSimple 快照管理器执行以下操作：

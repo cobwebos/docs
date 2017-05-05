@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 04/21/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: d95aaf81ee4d9c19549a57dd1af0f79a1e1bffdd
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 04ac94a1c07c3ad2a9384f5cf5fca1341ebfa0d8
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -84,8 +84,8 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 | 字段 | 说明 |
 | --- | --- |
-| BasePath | **[必需]**<br/>此参数的值表示要导入的值所在的来源。此工具将以递归方式复制位于此路径下的所有数据。<br><br/>**允许的值**：这必须是本地计算机上的有效路径或者是有效的共享路径，并且应当可以供用户访问。 目录路径必须是绝对路径（而不是相对路径）。如果路径以“\\”结尾，则表示目录；如果路径不以“\\”结尾，则表示文件。<br/>不允许在此字段中指定正则表达式。 如果路径包含空格，请将其输入在 "" 中。<br><br/>**示例**："c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory 1"  |
-| DstBlobPathOrPrefix | **[必需]**<br/> Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。 如果不存在，则导入/导出服务会创建一个。<br/><br/>在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅 [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/fileservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 与元数据）。如果仅指定根，则源的目录结构将目标 Blob 容器中复制。如果所需的目录结构不同于源中的目录结构，可在 CSV 中包含多个映射行<br/><br/>可以指定容器，或者指定类似于 music/70s/ 的 Blob 前缀。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br/><br/>当目标容器为根容器时，必须显式指定包含正斜杠的根容器，例如 $root/。 由于根容器下的 Blob 的名称中不能包含“/”，因此当目标目录为根容器时，将不会复制源目录中的任何子目录。<br/><br/>**示例**<br/>如果目标 blob 路径是 https://mystorageaccount.blob.core.windows.net/video，则此字段的值可以为 video/  |
+| BasePath | **[必需]**<br/>此参数的值表示要导入的值所在的来源。此工具将以递归方式复制位于此路径下的所有数据。<br><br/>**允许的值**：这必须是本地计算机上的有效路径或者是有效的共享路径，并且应当可以供用户访问。 目录路径必须是绝对路径（而不是相对路径）。如果路径以“\\”结尾，则表示目录；如果路径不以“\\”结尾，则表示文件。<br/>不允许在此字段中指定正则表达式。 如果路径包含空格，请将其输入在 "" 中。<br><br/>**示例**："c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
+| DstBlobPathOrPrefix | **[必需]**<br/> Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。 如果不存在，则导入/导出服务会创建一个。<br/><br/>在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅 [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 与元数据）。如果仅指定根，则源的目录结构将目标 Blob 容器中复制。如果所需的目录结构不同于源中的目录结构，可在 CSV 中包含多个映射行<br/><br/>可以指定容器，或者指定类似于 music/70s/ 的 Blob 前缀。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br/><br/>当目标容器为根容器时，必须显式指定包含正斜杠的根容器，例如 $root/。 由于根容器下的 Blob 的名称中不能包含“/”，因此当目标目录为根容器时，将不会复制源目录中的任何子目录。<br/><br/>**示例**<br/>如果目标 blob 路径是 https://mystorageaccount.blob.core.windows.net/video，则此字段的值可以为 video/  |
 | /BlobType | **[可选]** block &#124; page<br/>导入/导出服务当前支持 2 种 Blob。 页 Blob 和块 Blob。默认情况下，所有文件将以块 Blob 的形式导入。 \*.vhd 和 \*.vhdx 将以页 Blob 的形式导入。块 Blob 和页 Blob 的允许大小有限制。 有关详细信息，请参阅 [Storage scalability targets](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files)（存储可伸缩性目标）。  |
 | Disposition | **[可选]** rename &#124; no-overwrite &#124; overwrite <br/> 此字段指定导入期间 （也就是将数据从磁盘上载到存储帐户时）的复制行为。可用选项为：rename&#124;overwite&#124;no-overwrite。如果未指定任何值，则默认为“rename”。 <br/><br/>**Rename**：如果存在同名的对象，则在目标中创建一个副本。<br/>Overwrite：将文件覆盖为较新的文件。 最后修改的文件优先。<br/>**No-overwrite**：如果文件已存在，则跳过写入该文件。|
 | MetadataFile | **[可选]** <br/>此字段的值是用户需要保留对象的元数据或者提供自定义元数据时可提供的元数据文件。 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md) |

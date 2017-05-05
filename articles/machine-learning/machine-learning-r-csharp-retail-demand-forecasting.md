@@ -1,23 +1,11 @@
 ---
-title: "（已弃用）预测 - ETS + STL - Azure | Microsoft Docs"
-description: "（已弃用）预测 - ETS + STL"
-services: machine-learning
-documentationcenter: 
-author: xueshanz
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 153eab4d-6293-45e1-9871-ec339e810dd9
-ms.service: machine-learning
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: deprecated
-ms.date: 01/06/2017
-ms.author: yijichen
+
 ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: https://gallery.cortanaintelligence.com/
 translationtype: Human Translation
-ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
-ms.openlocfilehash: cdf6661a36e38bf7a6fca241682be796712bd5d9
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 813a1fcedc7a421568aff6514474957057b5deb9
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -144,10 +132,5 @@ ms.openlocfilehash: cdf6661a36e38bf7a6fca241682be796712bd5d9
 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 5b623c78f8b8eac846c5ca244f1e0b25ee4f400f
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 45405c7bb9993d1fd529b25b599c3cd7f459843c
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 04/19/2017
 
 在开始之前，请确保已安装最新版 [Visual Studio Code](https://code.visualstudio.com/Download) 并加载 [mssql 扩展](https://aka.ms/mssql-marketplace)。 有关 mssql 扩展的安装指南，请参阅 [Install VS Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code)（安装 VS Code）和 [mssql for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)（适用于 Visual Studio Code 的 mssql）。 
 
-## <a name="configure-vs-code-mac-os-only"></a>配置 VS Code（仅 Mac OS）
+## <a name="configure-vs-code"></a>配置 VS Code 
 
 ### <a name="mac-os"></a>**Mac OS**
 对于 macOS，需安装 OpenSSL，这是 mssql 扩展所使用的 DotNet Core 的先决条件。 打开终端并输入以下命令，以便安装 **brew** 和 **OpenSSL**。 
@@ -49,9 +49,17 @@ ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ```
 
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+
+无需特殊配置。
+
+### <a name="windows"></a>**Windows**
+
+无需特殊配置。
+
 ## <a name="get-connection-information"></a>获取连接信息
 
-请在 Azure 门户中获取 Azure SQL 数据库服务器的完全限定服务器名称。 请使用 Visual Studio Code 通过完全限定的服务器名称连接到服务器。
+获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
@@ -108,7 +116,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="query-data"></a>查询数据
 
-使用 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句查询 Azure SQL 数据库中的数据。
+通过以下代码使用 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句，以便按类别查询前 20 个产品。
 
 1. 在“编辑器”窗口的空查询窗口中，输入以下查询：
 
@@ -125,7 +133,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="insert-data"></a>插入数据
 
-使用 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句将数据插入 Azure SQL 数据库。
+通过以下代码使用 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品插入到 SalesLT.Product 表中。
 
 1. 在“编辑器”窗口中删除以前的查询，然后输入以下查询：
 
@@ -153,7 +161,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="update-data"></a>更新数据
 
-使用 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句更新 Azure SQL 数据库中的数据。
+通过以下代码使用 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句，以便更新此前添加的新产品。
 
 1.  在“编辑器”窗口中删除以前的查询，然后输入以下查询：
 
@@ -167,7 +175,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="delete-data"></a>删除数据
 
-使用 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句删除 Azure SQL 数据库中的数据。
+通过以下代码使用 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句，以便删除此前添加的新产品。
 
 1. 在“编辑器”窗口中删除以前的查询，然后输入以下查询：
 

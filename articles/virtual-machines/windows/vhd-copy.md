@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 1e897d98f561b24eafb95dfb620c3b5c7622ba0a
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1b2b013fb29c66817aab2ea5e63917b59726b4e8
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,8 +31,8 @@ ms.lasthandoff: 03/31/2017
 ## <a name="before-you-begin"></a>开始之前
 请确保：
 
-* 获取有关**源和目标存储帐户**的信息。 对于源 VM，需要具有存储帐户和容器名称。 通常，容器名称为 **vhds**。 还需要获取目标存储帐户。 如果尚未拥有存储帐户，可以使用门户（“更多服务”>“存储帐户”>“添加”）或使用 [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) cmdlet 创建一个存储帐户。 
-* 已安装 Azure [PowerShell 1.0](/powershell/azureps-cmdlets-docs)（或更高版本）。
+* 获取有关**源和目标存储帐户**的信息。 对于源 VM，需要具有存储帐户和容器名称。 通常，容器名称为 **vhds**。 还需要获取目标存储帐户。 如果尚未拥有存储帐户，可以使用门户（“更多服务”>“存储帐户”>“添加”）或使用 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet 创建一个存储帐户。 
+* 已安装 Azure [PowerShell 1.0](/powershell/azure/overview)（或更高版本）。
 * 已下载并安装 [AzCopy 工具](../../storage/storage-use-azcopy.md)。 
 
 ## <a name="deallocate-the-vm"></a>解除分配 VM

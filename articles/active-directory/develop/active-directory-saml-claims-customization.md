@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/26/2016
 ms.author: asmalser
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: e9ab491639485950b17de4be190b6797c1660530
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: d3952e65aaf3ca89f83e99409e196840dd692a01
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -31,7 +32,7 @@ Azure Active Directory 目前支持 Azure AD 应用库中数千个预先集成�
 
 ![][1]
 
-你可能出于两个原因编辑 SAML 令牌中颁发的声明：•被写入的应用程序需要一组不同的声明 URI 或声明值 •应用程序的部署方式需要 NameIdentifier 声明不同于存储在 Azure Active Directory 中的用户名（也称为用户主体名称）。 
+可能出于两个原因编辑 SAML 令牌中颁发的声明：•被写入的应用程序需要一组不同的声明 URI 或声明值 •应用程序的部署方式需要 NameIdentifier 声明不同于存储在 Azure Active Directory 中的用户名（也称为用户主体名称）。 
 
 可以编辑任一默认声明值，方法是将鼠标光标移到 SAML 令牌属性表中的某个行上，然后单击显示在右侧的铅笔图标。 还可使用 **X** 图标删除声明（NameIdentifier 除外），并使用“添加用户属性”按钮添加新声明。
 
@@ -42,7 +43,7 @@ Azure Active Directory 目前支持 Azure AD 应用库中数千个预先集成�
 
 在“属性值”菜单中，选择“user.mail”以将 NameIdentifier 声明设置为目录中用户的电子邮件地址，或选择“user.onpremisessamaccountname”以设置为从本地 Azure AD 同步的用户 SAM 帐户名称。 
 
-还可以使用特殊的 ExtractMailPrefix() 函数删除电子邮件地址或用户主体名称的域后缀，使得只有用户名的第一个部分可以通过（例如“joesmith”而不是 joesmith@contoso.com)。
+还可以使用特殊的 ExtractMailPrefix() 函数删除电子邮件地址或用户主体名称的域后缀，使得只有用户名的第一个部分可以通过（例如“joesmith”而不是 joesmith@contoso.com）。
 
 ![][3]
 
@@ -63,13 +64,7 @@ Azure Active Directory 目前支持 Azure AD 应用库中数千个预先集成�
 * [排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md)
 
 <!--Image references-->
-[1]: ./media/active-directory-saml-claims-customization/claimscustomization1.png
-[2]: ./media/active-directory-saml-claims-customization/claimscustomization2.png
-[3]: ./media/active-directory-saml-claims-customization/claimscustomization3.png
-[4]: ./media/active-directory-saml-claims-customization/claimscustomization4.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+[1]: ../media/active-directory-saml-claims-customization/claimscustomization1.png
+[2]: ../media/active-directory-saml-claims-customization/claimscustomization2.png
+[3]: ../media/active-directory-saml-claims-customization/claimscustomization3.png
+[4]: ../media/active-directory-saml-claims-customization/claimscustomization4.png

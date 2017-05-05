@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 76acf42e80de445ff897ca59e34a35e8057ec843
-ms.openlocfilehash: 0535676070fdc83c115c63ec69f09a31fa712740
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 642f3369bedc54c9067ae5520bc94da97b5e36b2
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -36,25 +37,25 @@ ms.openlocfilehash: 0535676070fdc83c115c63ec69f09a31fa712740
 | <b>平面文件（CSV 或 TSV 格式）</b> |<a href="#bulk-insert-sql-query">批量插入 SQL 查询 |
 | <b>本地 SQL Server</b> |1.<a href="#export-flat-file">导出到平面文件<br> 2.<a href="#insert-tables-bcp">SQL 数据库迁移向导<br> 3.<a href="#db-migration">数据库备份和还原<br> 4.<a href="#adf">Azure 数据工厂 |
 
-## <a name="a-nameprereqsaprerequisites"></a><a name="prereqs"></a>先决条件
+## <a name="prereqs"></a>先决条件
 此处所述的过程要求具有：
 
 * **Azure 订阅帐户**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)。
 * 访问 **Azure SQL 数据库**。 如果必须设置 Azure SQL 数据库，可在 [Microsoft Azure SQL 数据库入门](../sql-database/sql-database-get-started.md)中找到相关信息，了解如何设置 Azure SQL 数据库的新实例。
-* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 **数据**：使用 [NYC 出租车数据集](http://chriswhong.com/open-data/foil_nyc_taxi/)演示迁移过程。 NYC 出租车数据集包含行程数据和费用的相关信息，且可用于 Azure Blob 存储：[NYC 出租车数据](http://www.andresmh.com/nyctaxitrips/)。 [NYC 出租车行程数据集说明](machine-learning-data-science-process-sql-walkthrough.md#dataset)中介绍了这些文件的示例和说明。
 
 可将此处描述的流程调整为一组自己的数据，或者通过使用 NYC 出租车数据集来按照所述的步骤进行操作。 若要将 NYC 出租车数据集上传到本地 SQL Server 数据库中，请按照[将数据批量导入 SQL Server 数据库](machine-learning-data-science-process-sql-walkthrough.md#dbload)中概述的过程进行操作。 这些说明适用于 Azure 虚拟机上的 SQL Server，但是上传到本地 SQL Server 的过程是相同的。
 
-## <a name="a-namefile-to-azure-sql-databasea-moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>将数据从平面文件源移动到 Azure SQL 数据库
+## <a name="file-to-azure-sql-database"></a>将数据从平面文件源移动到 Azure SQL 数据库
 可以使用批量插入 SQL 查询将平面文件（CSV 或 TSV 格式）中的数据移动到 Azure SQL 数据库。
 
-### <a name="a-namebulk-insert-sql-querya-bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a> 批量插入 SQL 查询
+### <a name="bulk-insert-sql-query"></a> 批量插入 SQL 查询
 使用批量插入 SQL 查询过程的步骤类似于将数据从平面文件源移到 Azure VM 上的 SQL Server 部分中所述的步骤。 有关详细信息，请参阅[批量插入 SQL 查询](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery)。
 
-## <a name="a-namesql-on-prem-to-sazure-sql-databasea-moving-data-from-on-premise-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>将数据从本地 SQL Server 移动到 Azure SQL 数据库
+## <a name="sql-on-prem-to-sazure-sql-database"></a>将数据从本地 SQL Server 移动到 Azure SQL 数据库
 如果源数据存储在本地 SQL Server 中，则有多种方式可将数据移动到 Azure SQL 数据库：
 
 1. [导出到平面文件](#export-flat-file)
@@ -64,22 +65,17 @@ ms.openlocfilehash: 0535676070fdc83c115c63ec69f09a31fa712740
 
 前三种方式的步骤非常类似于[将数据移动到 Azure 虚拟机上的 SQL Server](machine-learning-data-science-move-sql-server-virtual-machine.md) 中涵盖相同过程的部分中所述的步骤。 以下说明提供了该主题中相应部分的链接。
 
-### <a name="a-nameexport-flat-fileaexport-to-flat-file"></a><a name="export-flat-file"></a>导出到平面文件
+### <a name="export-flat-file"></a>导出到平面文件
 导出到平面文件的此步骤类似于[导出到平面文件](machine-learning-data-science-move-sql-server-virtual-machine.md#export-flat-file)中所述的步骤。
 
-### <a name="a-nameinsert-tables-bcpasql-database-migration-wizard"></a><a name="insert-tables-bcp"></a>SQL 数据库迁移向导
+### <a name="insert-tables-bcp"></a>SQL 数据库迁移向导
 使用 SQL 数据库迁移向导的步骤类似于 [SQL 数据库迁移向导](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-migration)中所述的步骤。
 
-### <a name="a-namedb-migrationadatabase-back-up-and-restore"></a><a name="db-migration"></a>数据库备份和还原
+### <a name="db-migration"></a>数据库备份和还原
 使用数据库备份和恢复的步骤类似于[数据库备份和恢复](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-backup)中所述的步骤。
 
-### <a name="a-nameadfaazure-data-factory"></a><a name="adf"></a>Azure 数据工厂
+### <a name="adf"></a>Azure 数据工厂
 [使用 Azure 数据工厂将数据从本地 SQL 服务器转移到 SQL Azure](machine-learning-data-science-move-sql-azure-adf.md) 主题中提供了使用 Azure 数据工厂 (ADF) 将数据移动到 Azure SQL 数据库的过程。 本主题演示如何使用 ADF，通过 Azure Blob 存储，将数据从本地 SQL Server 数据库移入 Azure SQL 数据库。
 
 请在以下情况考虑使用 ADF：在可访问本地和云资源的混合方案中，需要连续迁移数据；需要处理或修改数据；或者已在迁移期间添加业务逻辑。 ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定期管理数据移动。 ADF 还具有其他功能，例如支持复杂操作。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

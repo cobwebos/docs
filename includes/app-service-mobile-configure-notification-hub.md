@@ -9,8 +9,3 @@ Azure 应用服务的移动应用功能使用 [Azure 通知中心]发送推送�
 
 [Azure 门户]: https://portal.azure.com/
 [Azure 通知中心]: https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-push-notification-overview/
-
-
-<!--HONumber=Dec16_HO2-->
-
-

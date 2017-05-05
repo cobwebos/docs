@@ -136,7 +136,7 @@ ms.lasthandoff: 03/28/2017
 |"@@"|返回包含“@”的、由 1 个字符构成的字符串。|  
 |" @"|返回包含“@”的、由 2 个字符构成的字符串。|  
   
-如果使用*字符串内插*，表达式还可以显示在 `@{ ... }` 中包装表达式的字符串内。 例如： <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName'}"`
+如果使用*字符串内插*，表达式还可以显示在 `@{ ... }` 中包装表达式的字符串内。 例如： <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 
 结果始终是一个字符串，因此，此功能类似于 `concat` 函数。 假设将 `myNumber` 定义为 `42`，将 `myString` 定义为 `sampleString`：  
   

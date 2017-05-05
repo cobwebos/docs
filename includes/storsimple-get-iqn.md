@@ -7,8 +7,3 @@
     ![iSCSI 发起程序属性](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)
 3. 保存此字符串。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

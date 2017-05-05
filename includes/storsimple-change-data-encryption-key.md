@@ -66,8 +66,3 @@
     `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 3. 提供在[步骤 2：使用 Windows PowerShell for StorSimple 启动服务数据加密密钥更改](#to-initiate-the-service-data-encryption-key-change)中所获取的服务数据加密密钥。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

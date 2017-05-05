@@ -12,12 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 04/19/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 407e9a1e4a50b875fa65e61d3e9aae245dd907e5
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 674404b135d2e512840505ee0927db98824aa8b1
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -30,19 +30,20 @@ ms.lasthandoff: 03/04/2017
 >
 >
 
-本主题介绍如何使用 Azure PowerShell 和 Azure Resource Manager 管理解决方案。 如果不熟悉 Resource Manager，请参阅 [Resource Manager 概述](resource-group-overview.md)。 本主题重点介绍管理任务。 用户将能够：
+本文介绍如何使用 Azure PowerShell 和 Azure Resource Manager 管理解决方案。 如果不熟悉 Resource Manager，请参阅 [Resource Manager 概述](resource-group-overview.md)。 本主题重点介绍管理任务。 用户将能够：
 
 1. 创建资源组
 2. 将资源添加到资源组
 3. 向资源添加标记
 4. 根据名称或标记值查询资源
 5. 向资源应用和删除锁
-6. 从资源组创建 Resource Manager 模板
-7. 删除资源组
+6. 删除资源组
+
+本文不演示如何将 Resource Manager 模板部署到订阅。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](resource-group-template-deploy.md)。
 
 ## <a name="get-started-with-azure-powershell"></a>Azure PowerShell 入门
 
-如果未安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+如果未安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 如果过去安装了 Azure PowerShell，但最近未更新它，请考虑安装最新版本。 可通过用于安装的方法更新版本。 例如，如果使用 Web 平台安装程序，请再次启动它以查找更新。
 
@@ -52,7 +53,7 @@ ms.lasthandoff: 03/04/2017
 Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 ```
 
-本主题已针对版本 3.3.0 更新。 如果使用更旧的版本，体验可能与本主题中所示步骤不完全相同。 有关此版本中 cmdlet 的文档，请参阅 [AzureRM.Resources 模块](/en-us/powershell/resourcemanager/azurerm.resources/v3.3.0/azurerm.resources)。
+本主题已针对版本 3.3.0 更新。 如果使用更旧的版本，体验可能与本主题中所示步骤不完全相同。 有关此版本中 cmdlet 的文档，请参阅 [AzureRM.Resources 模块](/powershell/module/azurerm.resources)。
 
 ## <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
 处理解决方案之前，必须登录到帐户。
@@ -142,7 +143,7 @@ Get-AzureRmResourceGroup
 ## <a name="add-resources-to-a-resource-group"></a>将资源添加到资源组
 若要将资源添加到资源组中，可使用 **New-AzureRmResource** cmdlet 或特定于要创建的资源类型的 cmdlet（例如 **New-AzureRmStorageAccount**）。 使用特定于资源类型的 cmdlet 可能更轻松，因为它包含新资源组所需属性的参数。 若要使用 **New-AzureRmResource**，必须了解将不会提示而设置所有属性。
 
-但是，通过 cmdlet 添加资源可能导致将来出现混乱，因为新的资源不存在于 Resource Manager 模板中。 Microsoft 建议在 Resource Manager 模板中定义 Azure 解决方案的基础结构。 通过模板，可以可靠地重复部署解决方案。 本主题不演示如何将 Resource Manager 模板部署到订阅。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](resource-group-template-deploy.md)。 本主题使用 PowerShell cmdlet 创建存储帐户，但稍后从资源组生成模板。
+但是，通过 cmdlet 添加资源可能导致将来出现混乱，因为新的资源不存在于 Resource Manager 模板中。 Microsoft 建议在 Resource Manager 模板中定义 Azure 解决方案的基础结构。 通过模板，可以可靠地重复部署解决方案。 本主题使用 PowerShell cmdlet 创建存储帐户，但稍后从资源组生成模板。
 
 以下 cmdlet 可创建存储帐户。 请勿使用示例所示的名称，而是为存储帐户提供唯一名称。 此名称必须为 3 到 24 个字符，只能使用数字和小写字母。 如果使用示例所示名称，将收到错误，因为该名称被使用。
 
@@ -221,25 +222,6 @@ Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -Re
 ```
 
 有关设置锁的详细信息，请参阅[使用 Azure Resource Manager 锁定资源](resource-group-lock-resources.md)。
-
-## <a name="export-resource-manager-template"></a>导出 Resource Manager 模板
-对于现有的资源组（通过 PowerShell 或门户等其他方法部署），可以查看资源组的 Resource Manager 模板。 导出模板有两个好处：
-
-1. 由于模板中定义了所有基础结构，因此将来可以轻松地自动完成解决方案的部署。
-2. 可以查看代表解决方案的 JavaScript 对象表示法 (JSON)，以此熟悉模板语法。
-
-> [!NOTE]
-> 导出模板功能处于预览状态，并非所有的资源类型目前都支持导出模板。 尝试导出模板时，你可能会看到一个错误，指出未导出某些资源。 如果需要，你可以在下载模板之后，在模板中手动定义这些资源。
->
->
-
-若要查看资源组的模板，请运行 **Export-AzureRmResourceGroup** cmdlet。
-
-```powershell
-Export-AzureRmResourceGroup -ResourceGroupName TestRG1 -Path c:\Azure\Templates\Downloads\TestRG1.json
-```
-
-可使用许多选项和方案导出 Resource Manager 模板。 有关详细信息，请参阅[从现有资源导出 Azure Resource Manager 模板](resource-manager-export-template.md)。
 
 ## <a name="remove-resources-or-resource-group"></a>删除资源或资源组
 可以删除资源或资源组。 删除资源组时，还会删除该资源组中的所有资源。

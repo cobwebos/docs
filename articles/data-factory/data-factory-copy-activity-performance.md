@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 04/14/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: c3d96d11894f0009db004b1089c05559cafd2d43
-ms.openlocfilehash: ee79612cc30f1dfefcf7dcd8af7aed7836dd528c
-ms.lasthandoff: 01/06/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 0637fb4d7c6cb8c3cfd4aab5d06571bd83f59683
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 本文将介绍：
 
 * 支持的源和接收器数据存储的[性能参考数字](#performance-reference)，可帮助用户规划项目；
-* 可在不同情况下提高复制吞吐量的功能，包括[并行复制](#parallel-copy)、[云数据移动单元](#cloud-data-movement-units)和[暂存复制](#staged-copy)；
+* 可在不同情况下提高复制吞吐量的功能，包括[云数据移动单元](#cloud-data-movement-units)、[并行复制](#parallel-copy)和[暂存复制](#staged-copy)；
 * 有关如何优化性能和调整影响复制性能的关键因素的[性能优化指南](#performance-tuning-steps)。
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ![性能矩阵](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
 > [!NOTE]
-> 可通过利用比默认最大 DMU 更多的数据移动单元 (DMU) 来实现更高的吞吐量，对于云到云复制活动运行来说，默认最大的 DMU 为 8。 例如，使用 100 个 DMU，可将数据以 **1.0GBps** 的速率从 Azure Blob 复制到 Azure Data Lake Store 中。 请参阅[云数据移动单位](#cloud-data-movement-units)部分，了解有关此功能和受支持方案的相关详细信息。 要请求更多 DMU，请联系[支持](https://azure.microsoft.com/support/)。
+> 可通过利用比默认最大 DMU 还要多的数据移动单元 (DMU) 来实现更高的吞吐量，对于云到云复制活动运行来说，默认的最大 DMU 为 32。 例如，使用 100 个 DMU，可将数据以 **1.0GBps** 的速率从 Azure Blob 复制到 Azure Data Lake Store 中。 请参阅[云数据移动单位](#cloud-data-movement-units)部分，了解有关此功能和受支持方案的相关详细信息。 要请求更多 DMU，请联系[支持](https://azure.microsoft.com/support/)。
 >
 >
 
@@ -85,6 +85,38 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 在此示例中，当**并发**值设置为 2 时，**活动运行 1** 和 **活动运行 2****并发**从两个活动时段复制数据，以提高数据移动性能。 但是，如果多个文件与活动运行 1 相关联，则数据移动服务一次只会将一个文件从源复制到目标位置。
 
+### <a name="cloud-data-movement-units"></a>云数据移动单位
+**云数据移动单位 (DMU)** 是一种度量单位，代表单个单位在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 DMU 可用于云到云复制操作，但不能用于混合复制。
+
+默认情况下，数据工厂使用单个云 DMU 来执行单个复制活动运行。 若要替代此默认值，请如下所示指定 **cloudDataMovementUnits** 属性的值。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
+
+```json
+"activities":[  
+    {
+        "name": "Sample copy activity",
+        "description": "",
+        "type": "Copy",
+        "inputs": [{ "name": "InputDataset" }],
+        "outputs": [{ "name": "OutputDataset" }],
+        "typeProperties": {
+            "source": {
+                "type": "BlobSource",
+            },
+            "sink": {
+                "type": "AzureDataLakeStoreSink"
+            },
+            "cloudDataMovementUnits": 32
+        }
+    }
+]
+```
+**cloudDataMovementUnits** 属性的**允许值**为 1（默认值）、2、4、8、16 和 32。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。
+
+> [!NOTE]
+> 如果需要更多云 DMU 以获得更高的吞吐量，请联系 [Azure支持](https://azure.microsoft.com/support/)。 目前仅在**将多个文件从 Blob 存储/Data Lake Store/Amazon S3/云 FTP 复制到 Blob 存储/Data Lake Store/Azure SQL 数据库**时，才能设置为 8 或更高的值。
+>
+>
+
 ### <a name="parallelcopies"></a>parallelCopies
 可使用 **parallelCopies** 属性指示要让“复制活动”使用的并行度。 可将此属性视为复制活动内，可从源并行读取或并行写入接收器数据存储的最大线程数。
 
@@ -121,50 +153,18 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 需要注意的要点：
 
 * 在基于文件的存储之间复制数据时，**parallelCopies** 确定文件级别的并行度。 单个文件内的区块化会自动透明地在文件下进行，它旨在对给定源数据存储类型使用最佳区块大小，以并行和正交方式将数据加载到 parallelCopies。 数据移动服务在运行时用于复制操作的并行复制的实际数量不超过所拥有的文件数。 如果复制行为是 **mergeFile**，复制活动无法利用文件级别的并行度。
-* 为 ** parallelCopies ** 属性指定值时，请考虑源和接收器数据存储上的负载会增加，如果是混合复制，则网关的负载会增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种情况。 如果注意到数据存储或网关负载过重，请降低 **parallelCopies ** 值以减轻负载。
-* 将数据从不基于文件的存储复制到基于文件的存储时，数据移动服务将忽略 ** parallelCopies ** 属性。 即使指定了并行性，在此情况下也不适用。
+* 为  **parallelCopies**  属性指定值时，请考虑源和接收器数据存储上的负载会增加，如果是混合复制，则网关的负载会增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种情况。 如果注意到数据存储或网关负载过重，请降低 **parallelCopies**  值以减轻负载。
+* 将数据从不基于文件的存储复制到基于文件的存储时，数据移动服务将忽略  **parallelCopies**  属性。 即使指定了并行性，在此情况下也不适用。
 
 > [!NOTE]
 > 在进行混合复制时，必须使用数据管理网关版本 1.11 或更高版本才能使用 **parallelCopies** 功能。
 >
 >
 
-### <a name="cloud-data-movement-units"></a>云数据移动单位
-**云数据移动单位 (DMU)** 是一种度量单位，代表单个单位在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 DMU 可用于云到云复制操作，但不能用于混合复制。
-
-默认情况下，数据工厂使用单个云 DMU 来执行单个复制活动运行。 若要替代此默认值，请如下所示指定 **cloudDataMovementUnits** 属性的值。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
-
-```json
-"activities":[  
-    {
-        "name": "Sample copy activity",
-        "description": "",
-        "type": "Copy",
-        "inputs": [{ "name": "InputDataset" }],
-        "outputs": [{ "name": "OutputDataset" }],
-        "typeProperties": {
-            "source": {
-                "type": "BlobSource",
-            },
-            "sink": {
-                "type": "AzureDataLakeStoreSink"
-            },
-            "cloudDataMovementUnits": 4
-        }
-    }
-]
-```
-**cloudDataMovementUnits** 属性**允许的值**为 1（默认值）、2、4 和 8。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。
-
-> [!NOTE]
-> 如果需要更多云 DMU 以获得更高的吞吐量，请联系 [Azure支持](https://azure.microsoft.com/support/)。 目前仅在**将多个文件从 Blob 存储/Data Lake Store/Amazon S3/云 FTP 复制到 Blob 存储/Data Lake Store/Azure SQL 数据库**，且每个文件的大小大于或等于 16 MB 时，设置为 8 或更高才会有效。
->
->
-
 若要更好地使用这两个属性，并提高数据移动吞吐量，请参阅[示例用例](#case-study-use-parallel-copy)。 无需配置 **parallelCopies** 即可利用默认行为。 如果已配置且 **parallelCopies** 太小，则可能不能充分利用多个云 DMU。  
 
 ### <a name="billing-impact"></a>计费影响
-请**务必**记住，将根据复制操作的总时间向你收费。 如果复制作业过去使用 1 个云单元花费 1 小时，现在使用 4 个单元花费 15 分钟，则总费用几乎相同。 例如，你使用&4; 个云单元。 第一个云单元花费 10 分钟，第二个花费 10 分钟，第三个花费 5 分钟，第四个花费 5 分钟，这些都属于一个复制活动运行。 将对总复制（数据移动）时间进行收费，即 10 + 10 + 5 + 5 = 30 分钟。 使用 **parallelCopies** 不会影响计费。
+请**务必**记住，将根据复制操作的总时间向你收费。 如果复制作业过去使用 1 个云单元花费 1 小时，现在使用 4 个单元花费 15 分钟，则总费用几乎相同。 例如，你使用 4 个云单元。 第一个云单元花费 10 分钟，第二个花费 10 分钟，第三个花费 5 分钟，第四个花费 5 分钟，这些都属于一个复制活动运行。 将对总复制（数据移动）时间进行收费，即 10 + 10 + 5 + 5 = 30 分钟。 使用 **parallelCopies** 不会影响计费。
 
 ## <a name="staged-copy"></a>暂存复制
 将数据从源数据存储复制到接收器数据存储时，可能会选择使用 Blob 存储作为过渡暂存存储。 暂存在以下情况下特别有用：
@@ -234,7 +234,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ## <a name="performance-tuning-steps"></a>性能优化步骤
 我们建议采用以下步骤，通过复制活动调整数据工厂服务的性能：
 
-1. **建立基准**。 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 可使用数据工厂[切片模型](data-factory-scheduling-and-execution.md#time-series-datasets-and-data-slices)来限制处理的数据量。
+1. **建立基准**。 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 可使用数据工厂[切片模型](data-factory-scheduling-and-execution.md)来限制处理的数据量。
 
    使用**监视和管理应用**收集执行时间和性能特征。 在数据工厂主页上选择“监视和管理”。 在树视图中，选择“输出数据集”。 在“活动窗口”列表中，选择复制活动运行。 **活动窗口**列出了复制活动持续时间和所复制的数据大小。 **活动窗口资源管理器**中列出了吞吐量。 有关此应用的详细信息，请参阅[使用监视和管理应用来监视和管理 Azure 数据工厂管道](data-factory-monitor-manage-app.md)。
 
@@ -303,7 +303,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
   * 如果为每个复制活动运行配置 **sqlWriterCleanupScript** 属性，该服务将触发脚本，然后使用大容量复制 API 插入数据。 例如，若要使用最新数据覆盖整个表，可指定一个脚本，先删除所有记录，再从源大容量加载新数据。
 * **数据模式和批大小**：
   * 表架构会影响复制吞吐量。 复制相同数据量时，较大行大小会比较小行大小提供更好的性能，因为数据库可以更有效地提交较少的数据批次。
-  * 复制活动以一系列批次插入数据。 可使用 ** writeBatchSize** 属性设置批中的行数。 如果数据的行较小，可设置具有更高值的 **writeBatchSize **属性，从更低的批开销和更高的吞吐量获益。 如果数据的行大小较大，请谨慎增加 ** writeBatchSize**。 较高的值可能会导致复制失败（因为数据库负载过重）。
+  * 复制活动以一系列批次插入数据。 可使用  **writeBatchSize** 属性设置批中的行数。 如果数据的行较小，可设置具有更高值的 **writeBatchSize** 属性，从更低的批开销和更高的吞吐量获益。 如果数据的行大小较大，请谨慎增加  **writeBatchSize**。 较高的值可能会导致复制失败（因为数据库负载过重）。
 * 对于需要使用**数据管理网关**的**本地关系数据库**（如 SQL Server 和 Oracle），请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
 
 ### <a name="nosql-stores"></a>NoSQL 存储
@@ -337,7 +337,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 **注意事项**：若要在本地存储和云之间复制大量数据，请考虑搭配使用过渡 Blob 存储与压缩。 当公司网络和 Azure 服务的带宽是限制因素，并希望输入数据集和输出数据集都处于未压缩形式时，使用过渡存储将非常有用。 更具体地说，可将单个复制活动分为两个复制活动。 第一个复制活动以压缩形式从源复制到过渡或暂存 blob。 第二个复制活动从暂存复制已压缩的数据，然后在写入接收器时进行解压缩。
 
 ## <a name="considerations-for-column-mapping"></a>列映射注意事项
-可在复制活动中设置 ** columnMappings ** 属性，将全部或部分输入列映射到输出列。 数据移动服务从源读取数据后，它需要先对数据执行列映射，再将数据写入接收器。 这一额外处理会降低复制吞吐量。
+可在复制活动中设置  **columnMappings**  属性，将全部或部分输入列映射到输出列。 数据移动服务从源读取数据后，它需要先对数据执行列映射，再将数据写入接收器。 这一额外处理会降低复制吞吐量。
 
 如果源数据存储为可查询，例如，如果存储是关系存储（如 SQL 数据库或 SQL Server），或者是 NoSQL 存储（如表存储或 DocumentDB），请考虑将列筛选和重排序逻辑推送到**查询**属性，而不使用列映射。 这样，当数据移动服务从源数据存储读取数据时将发生投影，使效率更高。
 

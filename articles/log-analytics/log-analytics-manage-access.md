@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 0a6b5115a4eebfcce14094d82cdcc9579f80def6
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 5b4a2b7646a2ead1df459c5d9a17d125821c86a5
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -94,13 +94,15 @@ ms.lasthandoff: 04/15/2017
 
 旧式 Log Analytics 用户角色仅控制对 [Log Analytics 门户](https://mms.microsoft.com)中执行的活动的访问权限。
 
-Log Analytics 门户中的以下活动也需要 Azure 权限：
+以下活动也需要 Azure 权限：
 
 | 操作                                                          | 所需 Azure 权限 | 说明 |
 |-----------------------------------------------------------------|--------------------------|-------|
-| 添加和删除管理解决方案                        | 资源组写入 <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| 添加和删除管理解决方案                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
 | 更改定价层                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | 查看*备份* 和 *Site Recovery* 解决方案磁贴中的数据 | 管理员/共同管理员 | 访问通过经典部署模型部署的资源 |
+| 在 Azure 门户中创建工作区                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
+
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>使用 Azure 权限管理对 Log Analytics 的访问
 若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[使用角色分配来管理对 Azure 订阅资源的访问权限](../active-directory/role-based-access-control-configure.md)中的步骤。

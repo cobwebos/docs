@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 716d2d95b5d68dbb7fdd2ef50d220a8c8c2c9f5e
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: bf8cd0d645d8a5992864c8a3820ac2049a3ff630
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,7 +44,7 @@ ms.openlocfilehash: 716d2d95b5d68dbb7fdd2ef50d220a8c8c2c9f5e
 ### <a name="one-time-setup-using-script"></a>一次性设置（使用脚本）
 应遵循以下说明，使用 PowerShell 脚本执行安装程序，这会花费最少的时间进行安装，但会使用最多允许的默认值。 或者，你可以按照[手动安装](mobile-engagement-api-authentication-manual.md)中的说明，直接从 Azure 门户执行此操作，并进行优化配置。 
 
-1. 从[此处](http://aka.ms/webpi-azps)获取最新版本的 Azure PowerShell。 有关下载说明的详细信息，可以访问此[链接](/powershell/azureps-cmdlets-docs)。  
+1. 从[此处](http://aka.ms/webpi-azps)获取最新版本的 Azure PowerShell。 有关下载说明的详细信息，可以访问此[链接](/powershell/azure/overview)。  
 2. 安装 Azure PowerShell 后，使用以下命令以确保你已安装 **Azure 模块**：
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 请确保 Azure PowerShell 模块可在可用模块列表中找到。 
@@ -150,10 +151,5 @@ ms.openlocfilehash: 716d2d95b5d68dbb7fdd2ef50d220a8c8c2c9f5e
 [4]: ./media/mobile-engagement-api-authentication/ad-app-creation.png
 
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

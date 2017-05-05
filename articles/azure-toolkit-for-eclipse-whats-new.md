@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm;asirveda;martinsawicki
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 80f25488b6573579d980880cb4aaadf7fc59c5e7
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 71c4f2d2298ea54f18e9ed64b246966b470a4ff4
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -28,6 +29,15 @@ ms.openlocfilehash: 80f25488b6573579d980880cb4aaadf7fc59c5e7
 > 另外还有 Azure Toolkit for IntelliJ IDE。 有关详细信息，请参阅[用于 IntelliJ 的 Azure 工具包]。
 > 
 > 
+
+### <a name="april-14-2017"></a>2017 年 4 月 14 日
+用于 Eclipse 的 Azure 工具包 - 2017 年 4 月版包含以下增强功能：
+
+* **改进了 Azure 登录体验**：用于 Eclipse 的 Azure 工具包现在支持以两种方式登录到 Azure 帐户：*交互式*和*自动*。 有关详细信息，请参阅 [用于 Eclipse 的 Azure 工具包的 Azure 登录说明]。
+* **使用 Docker 容器发布**：现在可以使用用于 Eclipse 的 Azure 工具包将 Web 应用程序发布为 Docker 容器。 有关详细信息，请参阅[如何使用用于 Eclipse 的 Azure 工具包将 Web 应用发布为 Docker 容器]。
+* **存储帐户管理**：用于 Eclipse 的 Azure 工具包现在支持从 Azure 资源管理器视图管理存储帐户。 有关详细信息，请参阅[使用用于 Eclipse 的 Azure 资源管理器管理存储帐户]。
+* **虚拟机管理**：用于 Eclipse 的 Azure 工具包现在支持从 Azure 资源管理器视图管理虚拟机。 有关详细信息，请参阅[使用用于 Eclipse 的 Azure 资源管理器管理虚拟机]。
+* **删除了远程调试支持**。 在 Azure 应用服务中对 Java Web 应用进行远程调试的功能已从用于 Eclipse 的 Azure 工具包中删除；这是为了解决客户在使用该工具包时遇到的问题所必需的。
 
 ### <a name="august-26-2016"></a>2016 年 8 月 26 日
 用于 Eclipse 的 Azure 工具包 - 2016 年 8 月版包含以下增强功能：
@@ -48,7 +58,7 @@ Azure Toolkit for Eclipse — 2016 年 6 月版包含以下增强功能：
 * **支持 Azure SDK v2.9.1**。 最新版 Azure SDK 现在是 Azure Toolkit for Eclipse 的最低必备组件。
 * **集成示例**。 Azure Toolkit for Eclipse 目前精选了数个示例应用程序，可帮助开发人员快速入门。
 * **HDInsight 工具集成**。 Azure 的 HDInsight 工具现在随附于 Azure Toolkit for Eclipse。 有关详细信息，请参阅 [HDInsight Tools Plugin for Eclipse]（用于 Eclipse 的 HDInsight 工具插件）。
-* **远程调试 Java Web 应用**。 Azure Toolkit for Eclipse 现在支持对 Azure App Service 上的 Java Web Apps 进行远程调试。
+* **远程调试 Java Web 应用**。 Azure Toolkit for Eclipse 现在支持对 Azure 应用服务上的 Java Web 应用进行远程调试。
 * **支持 Eclipse Luna 版本。** 新的最低所需 Eclipse IDE 版本为 Luna。
 
 ### <a name="april-12-2016"></a>2016 年 4 月 12 日
@@ -303,13 +313,15 @@ Azure Plugin for Eclipse - 2011 年 12 月 CTP 已发布。新功能包括： �
 有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
 
 * [用于 Eclipse 的 Azure 工具包]
+  * *用于 Eclipse 的 Azure 工具包的新增功能（本文）*
   * [安装用于 Eclipse 的 Azure 工具包]
   * [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
-  * *用于 Eclipse 的 Azure 工具包的新增功能（本文）*
+  * [用于 Eclipse 的 Azure 工具包的登录说明]
 * [用于 IntelliJ 的 Azure 工具包]
-  * [安装用于 IntelliJ 的 Azure 工具包]
-  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
   * [用于 IntelliJ 的 Azure 工具包的新增功能]
+  * [安装用于 IntelliJ 的 Azure 工具包]
+  * [用于 IntelliJ 的 Azure 工具包的登录说明]
+  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]。
 
@@ -321,8 +333,15 @@ Azure Plugin for Eclipse - 2011 年 12 月 CTP 已发布。新功能包括： �
 [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [安装用于 Eclipse 的 Azure 工具包]: ./azure-toolkit-for-eclipse-installation.md
 [安装用于 IntelliJ 的 Azure 工具包]: ./azure-toolkit-for-intellij-installation.md
+[用于 Eclipse 的 Azure 工具包的登录说明]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[用于 IntelliJ 的 Azure 工具包的登录说明]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [What's New in the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
 [用于 IntelliJ 的 Azure 工具包的新增功能]: ./azure-toolkit-for-intellij-whats-new.md
+
+[用于 Eclipse 的 Azure 工具包的 Azure 登录说明]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[如何使用用于 Eclipse 的 Azure 工具包将 Web 应用发布为 Docker 容器]: ./azure-toolkit-for-eclipse-publish-as-docker-container.md
+[使用用于 Eclipse 的 Azure 资源管理器管理存储帐户]: ./azure-toolkit-for-eclipse-managing-storage-accounts-using-azure-explorer.md
+[使用用于 Eclipse 的 Azure 资源管理器管理虚拟机]: ./azure-toolkit-for-eclipse-managing-virtual-machines-using-azure-explorer.md
 
 [Azure Java 开发人员中心]: http://go.microsoft.com/fwlink/?LinkID=699547
 
@@ -359,9 +378,4 @@ Azure Plugin for Eclipse - 2011 年 12 月 CTP 已发布。新功能包括： �
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694270.aspx -->
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

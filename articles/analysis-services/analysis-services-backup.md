@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 8ded51e2e34aa1583b249af11a260eaa4304f79f
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: fb660384f2f9f569bcfbe7fa7d5c1f7ce772cacd
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -83,6 +83,9 @@ ms.lasthandoff: 04/19/2017
 使用 [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) cmdlet。
 
 ## <a name="restore"></a>还原
+还原时，备份文件必须在已为服务器配置的存储帐户中。 如果需要将备份文件从本地位置移到存储帐户，请使用 [Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)或 [AzCopy](../storage/storage-use-azcopy.md) 命令行实用工具。 
+
+如果要从本地 SQL Server Analysis Services 服务器还原表格 1200 模型数据库，必须先从该模型的角色中删除所有域用户，然后再将这些用户作为 Azure Active Directory 用户重新添加到这些角色。 角色将是相同的。
 
 ### <a name="to-restore-by-using-ssms"></a>使用 SSMS 还原
 
@@ -103,5 +106,8 @@ ms.lasthandoff: 04/19/2017
 
 
 ## <a name="related-information"></a>相关信息
-[Azure 存储帐户](../storage/storage-create-storage-account.md)   
+
+[Azure 存储帐户](../storage/storage-create-storage-account.md)  
+[高可用性](analysis-services-bcdr.md)     
 [管理 Azure Analysis Services](analysis-services-manage.md)
+

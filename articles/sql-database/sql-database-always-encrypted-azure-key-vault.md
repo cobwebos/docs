@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: bc60fde6c299bc98aa4ee3a207cd57b6b050765f
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 15db9db72a80dc95c615e52b889f6470b2e6eed0
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/15/2017
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 版本 13.0.700.242 或更高版本。
 * [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) 或更高版本（在客户端计算机上）。
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)，版本 1.0 或更高版本。 键入 **(Get-Module azure -ListAvailable).Version** 可查看所运行的 PowerShell 版本。
+* [Azure PowerShell](/powershell/azure/overview)，版本 1.0 或更高版本。 键入 **(Get-Module azure -ListAvailable).Version** 可查看所运行的 PowerShell 版本。
 
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>使客户端应用程序可以访问 SQL 数据库服务
 首先必须通过设置所需的身份验证并获取在下面的代码中对应用程序进行身份验证所需的 *ClientId* 和 *Secret*，使客户端应用程序可以访问 SQL 数据库服务。

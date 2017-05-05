@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 566a8d7fc595975e065c5a8a42c7f7c94997821b
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: d7006a50d35412021f7e475df526661854b23dc8
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/19/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="step-1---download-the-sample"></a>步骤 1 - 下载示例
+## <a name="download-the-sample"></a>下载示例
 此步骤中已下载示例 ASP.NET 应用程序。
 
 ### <a name="get-the-sample-project"></a>获取示例项目
@@ -65,7 +65,7 @@ ms.lasthandoff: 04/19/2017
 
 数据库上下文使用名为 `MyDbConnection` 的连接字符串。 此连接字符串在 `Web.config` 中定义，并在 `Models\MyDatabaseContext.cs` 中引用。 稍后，当将 Azure Web 应用连接到 Azure SQL 数据库时，只需要使用该连接字符串名称。 
 
-## <a name="step-2---publish-to-azure-with-sql-database"></a>步骤 2 - 使用 SQL 数据库发布到 Azure
+## <a name="publish-to-azure-with-sql-database"></a>使用 SQL 数据库发布到 Azure
 
 在“解决方案资源管理器”中，右键单击 “DotNetAppSqlDb”项目，然后选择“发布”。
 
@@ -168,7 +168,7 @@ Azure Web 应用还需要一个_应用服务计划_。
 
 祝贺你！ 数据驱动 ASP.NET 应用程序当前在 Azure 应用服务中实时运行。
 
-## <a name="step-3---access-the-sql-database-locally"></a>步骤 3 - 本地访问 SQL 数据库
+## <a name="access-the-sql-database-locally"></a>本地访问 SQL 数据库
 
 使用 Visual Studio 可在“SQL Server 对象资源管理器”中轻松浏览和管理自己的新 SQL 数据库。
 
@@ -204,7 +204,7 @@ Visual Studio 成功为 SQL Server 实例创建防火墙设置后，连接将立
 
 ![探索 SQL 数据库对象](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
-## <a name="step-4---update-app-with-code-first-migrations"></a>步骤 4 - 使用 Code First 迁移更新应用
+## <a name="update-app-with-code-first-migrations"></a>使用 Code First 迁移更新应用
 
 此步骤中将使用实体框架中的 Code First 迁移对数据库架构进行更改，并将其发布至 Azure。
 
@@ -329,7 +329,7 @@ public ActionResult Create([Bind(Include = "id,Description,CreatedDate,Done")] T
 >
 >
 
-## <a name="step-6---stream-application-logs"></a>步骤 6 - 流应用程序日志
+## <a name="stream-application-logs"></a>流式传输应用程序日志
 
 可直接通过 Azure Web 应用将跟踪消息流式传输到 Visual Studio。
 
@@ -389,7 +389,7 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ![停止日志流式传输](./media/app-service-web-tutorial-dotnet-sqldatabase/stop-streaming.png)
 
-## <a name="step-7---manage-your-azure-web-app"></a>步骤 7 - 管理 Azure Web 应用
+## <a name="manage-your-azure-web-app"></a>管理 Azure Web 应用
 
 转到 Azure 门户查看已创建的 Web 应用。 
 

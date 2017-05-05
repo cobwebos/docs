@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 7ce5ba3c1a844104b4c14c73e05843becd69eb5f
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 53cb04a042288fe9ad0c3945717c8d7121912752
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/11/2017
 * 一个 **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个 **Azure 存储帐户**。 在本教程中，你将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，你将需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)。
 * 在 **Azure 虚拟机上置备了 SQL Server**。 有关说明，请参阅[将 Azure SQL Server 虚拟机设置为用于高级分析的 IPython Notebook 服务器](machine-learning-data-science-setup-sql-server-virtual-machine.md)。
-* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="filesource_to_sqlonazurevm"></a>将数据从平面文件源移动到 Azure 虚拟机上的 SQL Server
 如果数据位于平面文件中（以行/列格式排列），则可以通过以下方法将它移到 Azure 上的 SQL Server 虚拟机：

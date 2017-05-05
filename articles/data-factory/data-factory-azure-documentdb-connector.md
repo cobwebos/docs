@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 04/19/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: e0cd1eb986e137e1e8877286b2efe9a6924da931
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: d5e13e6a96828e7c303e4d870ee170b90a0c4308
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/27/2017
 > 数据管理网关版本 2.1 和更高版本支持将数据从本地/Azure IaaS 数据存储复制到 Azure DocumentDB，反之亦然。
 
 ## <a name="supported-versions"></a>支持的版本
-此 DocumentDB 连接器支持从/向 DocumentDB 单分区集合和已分区集合复制数据。 不支持 [MongoDB 的 DocDB](../documentdb/documentdb-protocol-mongodb.md)。
+此 DocumentDB 连接器支持从/向 DocumentDB 单分区集合和已分区集合复制数据。 不支持 [MongoDB 的 DocDB](../documentdb/documentdb-protocol-mongodb.md)。 若要向/从 JSON 文件或另一 DocumentDB 集合原样复制数据，请参阅[导入/导出 JSON 文档](#importexport-json-documents)。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出 Azure DocumentDB。
@@ -115,6 +115,17 @@ ms.lasthandoff: 03/27/2017
 | nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>在上述示例中：输出表中的 `Name.First` 在 DocumentDB 文档中生成以下 JSON 结构：<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |用于分隔嵌套级别的字符。<br/><br/>默认值为 `.`（点）。 |用于分隔嵌套级别的字符。 <br/><br/>默认值为 `.`（点）。 |
 | writeBatchSize |向 DocumentDB 服务发送创建文档的并行请求数。<br/><br/>将数据复制到 DocumentDB 以及从其中复制数据时，可使用此属性对性能进行微调。 当增加 writeBatchSize 时，由于会 DocumentDB 发送更多的并行请求，因此可以获得更好的性能。 但是，需要避免可能会引发“请求速率大”的错误消息的限制。<br/><br/>限制由多种因素决定，包括文档大小、文档中的术语数、目标集合的索引策略等。对于复制操作，可以使用更好的集合（例如 S3）以实现最大的吞吐量（2,500 请求单位/秒）。 |Integer |否（默认值：5） |
 | writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
+
+## <a name="importexport-json-documents"></a>导入/导出 JSON 文档
+使用此 DocumentDB 连接器，可以轻松地
+
+* 将各种源中的 JSON 文档导入 DocumentDB，包括 Azure Blob、Azure Data Lake、本地文件系统或 Azure 数据工厂所支持的其他基于文件的存储。
+* 将 JSON 文档从 DocumentDB 集合导出到各种基于文件的存储。
+* 在两个 DocumentDB 集合之间按原样迁移数据。
+
+若要实现此类“架构不可知”复制： 
+* 使用复制向导时，勾选“原样导出到 JSON 文件或 DocumentDB 集合”选项。
+* 使用 JSON 编辑时，请勿指定 DocumentDB 数据集中的“结构”部分，也不要指定复制活动中 DocumentDB 源/接收器的“nestingSeparator”属性。 若要导出到 JSON 文件或从此文件中导入，请在文件存储数据集中指定格式类型为“JsonFormat”，配置“filePattern”并跳过剩余格式设置，详情请参阅 [JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)部分。
 
 ## <a name="json-examples"></a>JSON 示例
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 这些示例演示了如何将数据复制到 Azure DocumentDB 和 Azure Blob 存储，以及如何从中复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
@@ -450,15 +461,6 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 }
 ```
 DocumentDB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 Azure 数据工厂允许用户通过 **nestingSeparator** 来表示层次结构，即“.” 来实现。 通过该分隔符，复制活动将根据表定义中的“Name.First”、“Name.Middle”和“Name.Last”生成包含三个子元素（First、Middle 和 Last）的“Name”对象。
-
-## <a name="importexport-json-documents"></a>导入/导出 JSON 文档
-使用此 DocumentDB 连接器，可以轻松地
-
-* 将各种源中的 JSON 文档导入 DocumentDB，包括 Azure Blob、Azure Data Lake、本地文件系统或 Azure 数据工厂所支持的其他基于文件的存储。
-* 将 JSON 文档从 DocumentDB 集合导出到各种基于文件的存储。
-* 在两个 DocumentDB 集合之间按原样迁移数据。
-
-若要实现此架构不可知的复制，请勿指定输入数据集中的“结构”部分或复制活动中 DocumentDB 源/接收器的“nestingSeparator”属性。 有关 JSON 格式配置的详细信息，请参阅相应的基于文件的连接器主题中“指定格式”部分。
 
 ## <a name="appendix"></a>附录
 1. **问题：**

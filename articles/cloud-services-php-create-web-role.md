@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
-ms.openlocfilehash: b6b802092165926cdfeab67849df26167ad96ebf
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 89092e75d10ece044be61ceba0baf16c9e1599be
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,7 +31,7 @@ Azure 提供了三种计算模型以运行应用程序：Azure 应用服务、Az
 有关这些选项的详细信息，请参阅 [Azure 提供的计算托管选项](cloud-services/cloud-services-choose-me.md)。
 
 ## <a name="download-the-azure-sdk-for-php"></a>下载 Azure SDK for PHP
-[用于 PHP 的 Azure SDK] 由多个组件构成。 本文将使用其中两个：Azure PowerShell 和 Azure 模拟器。 可以通过 Microsoft Web 平台安装程序安装这两个组件。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+[用于 PHP 的 Azure SDK] 由多个组件构成。 本文将使用其中两个：Azure PowerShell 和 Azure 模拟器。 可以通过 Microsoft Web 平台安装程序安装这两个组件。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="create-a-cloud-services-project"></a>创建云服务项目
 创建 PHP Web 角色和辅助角色的第一步是创建 Azure 服务项目。 Azure 服务项目用作 Web 角色和辅助角色的逻辑容器，包含项目的[服务定义 (.csdef)] 和[服务配置 (.cscfg)] 文件。
@@ -201,7 +201,7 @@ Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署�
     PS C:\MyProject> Stop-AzureEmulator
 
 ## <a name="publish-your-application"></a>发布应用程序
-若要发布应用程序，需要先使用 [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) cmdlet 导入发布设置。 然后使用 [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) cmdlet 发布应用程序。 有关登录的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+若要发布应用程序，需要先使用 [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) cmdlet 导入发布设置。 然后使用 [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) cmdlet 发布应用程序。 有关登录的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [PHP 开发人员中心](/develop/php/)。

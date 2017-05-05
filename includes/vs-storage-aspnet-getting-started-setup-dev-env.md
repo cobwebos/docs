@@ -29,8 +29,3 @@
     ![“连接的服务”对话框](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
 1. 在“Azure 存储”对话框中，选择需要使用的 Azure 存储帐户，然后选择“添加”。
-
-
-<!--HONumber=Dec16_HO3-->
-
-

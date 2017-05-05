@@ -10,8 +10,3 @@
 
 * <sup>1</sup>54400 GB 限制不适用于 IaaS VM 备份。
 
-
-
-<!--HONumber=Jan17_HO3-->
-
-

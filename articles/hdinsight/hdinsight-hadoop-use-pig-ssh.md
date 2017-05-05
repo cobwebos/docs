@@ -14,118 +14,106 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 04/14/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 22862d87562e9d9ec9d509eab2f65c850f4aa6d6
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: edda959693061850248ba97795c2390a592cbb21
+ms.lasthandoff: 04/18/2017
 
 
 ---
 # <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>使用 Pig 命令 (SSH) 在基于 Linux 的群集上运行 Pig 作业
+
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-在本文档中，你将要演练使用安全外壳 (SSH) 连接到基于 Linux 的 Azure HDInsight 群集，然后使用 Pig 命令以交互方式或以批处理作业形式运行 Pig Latin 语句的过程。
+了解如何以交互方式从 HDInsight 群集的 SSH 连接中运行 Pig 作业。 可以使用 Pig Latin 编程语言来描述应用到输入数据以生成所需输出的转换。
 
-可以使用 Pig Latin 编程语言来描述应用到输入数据以生成所需输出的转换。
-
-> [!NOTE]
-> 如果已熟悉如何使用基于 Linux 的 Hadoop 服务器，但刚接触 HDInsight，请参阅[基于 Linux 的 HDInsight 提示](hdinsight-hadoop-linux-information.md)。
-
-
-## <a id="prereq"></a>先决条件
-若要完成本文中的步骤，你将需要：
-
-* 基于 Linux 的 HDInsight（HDInsight 上的 Hadoop）群集。
-
-  > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
-
-* SSH 客户端。 SSH 客户端上应该装有 Linux、Unix 和 Mac OS。 Windows 用户必须下载 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 之类的客户端。
+> [!IMPORTANT]
+> 本文档中的步骤要求使用基于 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
 
 ## <a id="ssh"></a>使用 SSH 进行连接
-使用 SSH 命令连接到 HDInsight 群集的完全限定域名 (FQDN)。 FQDN 是你为群集指定的名称，后接 **.azurehdinsight.net**。 例如，以下命令将连接到名为 **myhdinsight** 的群集。
 
-    ssh admin@myhdinsight-ssh.azurehdinsight.net
+使用 SSH 连接到 HDInsight 群集。 以下示例连接到名为 **myhdinsight** 的群集，以作为名为 **sshuser** 的帐户：
+
+    ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 
 如果创建 HDInsight 群集时**提供了 SSH 身份验证的证书密钥**，则可能需要指定客户端系统上的私钥位置。
 
-    ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
+    ssh sshuser@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
 
-如果你在创建 HDInsight 群集时**提供了 SSH 身份验证的密码**，则需要根据提示提供该密码。
+如果在创建 HDInsight 群集时**提供了 SSH 身份验证密码**，请在系统提示时提供该密码。
 
 有关将 SSH 与 HDInsight 配合使用的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a id="pig"></a>使用 Pig 命令
-1. 连接后，请使用以下命令启动 Pig 命令行界面 (CLI)。
+
+1. 连接后，请使用以下命令启动 Pig 命令行接口 (CLI)：
 
         pig
 
     稍后，你应该会看到 `grunt>` 提示符。
-2. 输入以下语句。
 
-        LOGS = LOAD 'wasbs:///example/data/sample.log';
+2. 输入以下语句：
 
-    此命令会将 sample.log 文件的内容载入到 LOGS。 可以使用以下方法查看该文件的内容。
+        LOGS = LOAD '/example/data/sample.log';
+
+    此命令会将 sample.log 文件的内容载入到 LOGS。 可以使用以下语句查看该文件的内容：
 
         DUMP LOGS;
-3. 接下来，应用正则表达式以使用以下命令来只提取每条记录的日志记录级别，从而转换数据。
+
+3. 接下来，应用正则表达式以使用以下语句仅提取每条记录的日志记录级别，从而转换数据：
 
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
 
     转换后，可以使用 **DUMP** 来查看数据。 在这种情况下，使用 `DUMP LEVELS;`。
-4. 使用以下语句继续应用转换。 使用 `DUMP` 查看每个步骤后的转换结果。
 
-    <table>
-    <tr>
-    <th>语句</th><th>作用</th>
-    </tr>
-    <tr>
-    <td>FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;</td><td>删除包含日志级别 Null 值的行，并将结果存储到 FILTEREDLEVELS。</td>
-    </tr>
-    <tr>
-    <td>GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;</td><td>按日志级别对行进行分组，并将结果存储到 GROUPEDLEVELS。</td>
-    </tr>
-    <tr>
-    <td>FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;</td><td>创建一组新的数据，其中包含每个唯一日志级别值和其发生次数。 此数据将存储到 FREQUENCIES。</td>
-    </tr>
-    <tr>
-    <td>RESULT = order FREQUENCIES by COUNT desc;</td><td>按计数为日志级别排序（降序），并存储到 RESULT。</td>
-    </tr>
-    </table>
-5. 你也可以使用 `STORE` 语句保存转换结果。 例如，以下语句将 `RESULT` 保存到群集的默认存储容器上的 **/example/data/pigout** 目录。
+4. 使用下表中的语句继续应用转换：
 
-        STORE RESULT into 'wasbs:///example/data/pigout';
+    | Pig Latin 语句 | 语句的作用 |
+    | ---- | ---- |
+    | `FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;` | 删除包含日志级别 null 值的行，并将结果存储到 `FILTEREDLEVELS` 中。 |
+    | `GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;` | 按日志级别对行进行分组，并将结果存储到 `GROUPEDLEVELS` 中。 |
+    | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | 创建包含每个唯一日志级别值及其发生次数的数据集。 该数据集将存储到 `FREQUENCIES` 中。 |
+    | `RESULT = order FREQUENCIES by COUNT desc;` | 按计数为日志级别排序（降序），并存储到 `RESULT` 中。 |
+
+    > [!TIP]
+    > 使用 `DUMP` 查看每个步骤后的转换结果。
+
+5. 你也可以使用 `STORE` 语句保存转换结果。 例如，以下语句将 `RESULT` 保存到群集的默认存储的 `/example/data/pigout` 目录：
+
+        STORE RESULT into '/example/data/pigout';
 
    > [!NOTE]
-   > 数据将存储到指定目录中名为 **part-nnnnn** 的文件中。 如果该目录已存在，则你会收到错误。
-   >
-   >
-6. 若要退出 grunt 提示符，请输入以下语句。
+   > 该数据存储在名为 `part-nnnnn` 的文件的指定目录中。 如果该目录已存在，则将收到错误。
+
+6. 若要退出 grunt 提示符，请输入以下语句：
 
         QUIT;
 
 ### <a name="pig-latin-batch-files"></a>Pig Latin 批处理文件
+
 你也可以使用 Pig 命令运行文件中包含的 Pig Latin。
 
-1. 退出 grunt 提示符之后，请使用以下命令将 STDIN 输送到名为 **pigbatch.pig** 的文件中。 将会在用于登录以建立 SSH 会话的帐户的主目录中创建此文件。
+1. 退出 grunt 提示符之后，请使用以下命令将 STDIN 发送到名为 `pigbatch.pig` 的文件中。 此文件创建于 SSH 用户帐户的主目录中。
 
         cat > ~/pigbatch.pig
+
 2. 输入或粘贴以下行，然后在完成后按 Ctrl+D。
 
-        LOGS = LOAD 'wasbs:///example/data/sample.log';
+        LOGS = LOAD '/example/data/sample.log';
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
         FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
         GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
         FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
         RESULT = order FREQUENCIES by COUNT desc;
         DUMP RESULT;
-3. 使用以下命令，以使用 Pig 命令运行 **pigbatch.pig** 文件。
+
+3. 使用以下命令，以使用 Pig 命令运行 `pigbatch.pig` 文件。
 
         pig ~/pigbatch.pig
 
-    批处理作业完成后，你应该会看到以下输出，而输出应该会与先前步骤中使用 `DUMP RESULT;` 时相同。
+    批处理作业完成后，将看到以下输出：
 
         (TRACE,816)
         (DEBUG,434)
@@ -134,15 +122,14 @@ ms.lasthandoff: 04/12/2017
         (ERROR,6)
         (FATAL,2)
 
-## <a id="summary"></a>摘要
-如你所见，Pig 命令可让你使用 Pig Latin 以交互方式运行 MapReduce 作业，以及运行批处理文件中存储的语句。
 
 ## <a id="nextsteps"></a>后续步骤
-有关 HDInsight 中的 Pig 的一般信息。
+
+有关 HDInsight 中 Pig 的常规信息，请参阅以下文档：
 
 * [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 
-有关 HDInsight 上的 Hadoop 的其他使用方法的信息。
+有关使用 HDInsight 上 Hadoop 的其他方式的详细信息，请参阅以下文档：
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)

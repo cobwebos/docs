@@ -15,8 +15,3 @@
 4. 提供 Outlook 的凭据并登录：![](./media/connectors-create-api-outlook/office365-outlook-2.png)  
    就这么简单。 现在已完成创建与 Outlook 的连接。 可在你创建的任何其他逻辑应用中使用此连接。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

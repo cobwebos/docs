@@ -16,9 +16,9 @@ ms.date: 04/12/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 4cc1f60820861913f43ae449b20381036fd49bdf
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 7899df8a09b6f5c8bc916bb6ad872afa3844e425
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -75,37 +75,37 @@ Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremark
 
 | 管理解决方案                                                                        | 产品                                                                     | 定价层<sup>1</sup>                                                    | 说明 |
 | ---                                                                                        | ---                                                                       | ---                                                                                                       | ---   |
-| 活动 Log Analytics                                                                     | <ul><li>见解与分析&nbsp;&nbsp;</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 90 天内数据免费使用<br>数据不受免费层资源占用限额的约束 |
+| [活动 Log Analytics](log-analytics-activity.md)                                                                     | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 90 天内数据免费使用<br>数据不受免费层资源占用限额的约束 |
 | [AD 评估](log-analytics-ad-assessment.md)                                              | <ul><li>见解与分析&nbsp;&nbsp;</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
-| [AD 复制状态](log-analytics-ad-replication-status.md)                              | <ul><li>见解与分析&nbsp;&nbsp;</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
-| 代理运行状况                                                                                  | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 数据不受免费层资源占用限额的约束 |
-| [警报管理](log-analytics-solution-alert-management.md)                              | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
+| [AD 复制状态](log-analytics-ad-replication-status.md)                              | <ul><li>见解与分析&nbsp;&nbsp;</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 无法从 Azure 门户/应用商店添加。 |
+| 代理运行状况                                                                                  | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 数据不受免费层资源占用限额的约束<br> 无法从 Azure 门户/应用商店添加。 |
+| [警报管理](log-analytics-solution-alert-management.md)                              | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 无法从 Azure 门户/应用商店添加。 |
 | Application Insights 连接器 <br>（预览版）                                                 | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>    | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | 自动化混合辅助角色                                                                     | <ul><li>自动化与控制</li></ul>                                    | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                            | 需要将 Log Analytics 工作区链接到自动化帐户 |
 | [Azure 应用程序网关分析](log-analytics-azure-networking-analytics.md)      | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | [Azure 网络安全组分析](log-analytics-azure-networking-analytics.md)      | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | [Azure SQL Analytics（预览版）](log-analytics-azure-sql.md)                                                          | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br>按&nbsp;节点&nbsp;(OMS)                                                                             | 需要将 Log Analytics 工作区链接到自动化帐户|
-| 备份                                                                                    | <ul><li>见解与分析</li></ul>                                     | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                            | 需要经典备份保管库 |
+| 备份                                                                                    | <ul><li>见解与分析</li></ul>                                     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)                                                                            | 需要经典备份保管库。<br> 无法从 Azure 门户/应用商店添加。 |
 | 容量和性能 <br>（预览版）                                                     | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | [更改跟踪](log-analytics-change-tracking.md)                                         | <ul><li>自动化与控制</li></ul>                                    | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                            | 需要将 Log Analytics 工作区链接到自动化帐户 |
 | [容器](log-analytics-containers.md)                                                  | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | HDInsight HBase 监视 <br>（预览版）                                                     | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | [密钥保管库分析](log-analytics-azure-key-vault.md)                      | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
-| 逻辑应用 B2B                      | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
+| 逻辑应用 B2B                      | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 无法从 Azure 门户/应用商店添加。 |
 | [恶意软件评估](log-analytics-malware.md)                                             | <ul><li>安全与合规性</li></ul>                                    | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                               | |
 | [网络性能监视器](log-analytics-network-performance-monitor.md) <br>（预览版）    | <ul><li>见解与分析</li></ul>                                     | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                         | |
 | Office 365 分析 <br>（预览版）                                                        | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | [安全和审核](../operations-management-suite/oms-security-getting-started.md)        | <ul><li>安全&nbsp;与&nbsp;合规性</li></ul>                        | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                               | 需要通过此解决方案来收集安全事件日志 |
 | [Service Fabric 分析](log-analytics-service-fabric.md) <br>（预览版）                    | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | [服务地图](../operations-management-suite/operations-management-suite-service-map.md) <br>（预览版）| <ul><li>见解与分析</li></ul>                         | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                         | 在美国东部和欧洲西部可用     |
-| 站点恢复                                                                                | <ul><li>见解与分析</li></ul>                                     | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                            | 需要经典 Site Recovery 保管库 |
+| 站点恢复                                                                                | <ul><li>见解与分析</li></ul>                                     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)                                                                            | 需要经典 Site Recovery 保管库。<br> 无法从 Azure 门户/应用商店添加。 |
 | [SQL 评估](log-analytics-sql-assessment.md)                                            | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | 在非工作时间启动/停止 VM<br>（预览版）                                                 | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                         | 需要将 Log Analytics 工作区链接到自动化帐户 |
-| [SurfaceHub](log-analytics-surface-hubs.md)                                                    | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
+| [SurfaceHub](log-analytics-surface-hubs.md)                                                    | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 无法从 Azure 门户/应用商店添加。 |
 | [System Center Operations Manager 评估](log-analytics-scom-assessment.md) <br>（预览版） | <ul><li>见解与分析</li><li>Log Analytics</li></ul>         | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | 更新管理                                                                               | <ul><li>自动化与控制</li></ul>                                    | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                            | 需要将 Log Analytics 工作区链接到自动化帐户 |
-| [更新符合性](https://technet.microsoft.com/en-us/itpro/windows/manage/update-compliance-get-started) <br>（预览版）                                                             | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 数据或节点免费<br>数据不受免费层资源占用限额的约束 |
-| [升级准备情况](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-readiness)                                                             | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 数据或节点免费<br>数据不受免费层资源占用限额的约束 |
+| [更新符合性](https://technet.microsoft.com/en-us/itpro/windows/manage/update-compliance-get-started) <br>（预览版）                                                             | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 数据或节点免费<br>数据不受免费层资源占用限额的约束。<br> 无法从 Azure 门户/应用商店添加。 |
+| [升级准备情况](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-readiness)                                                             | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | 数据或节点免费<br>数据不受免费层资源占用限额的约束。<br> 无法从 Azure 门户/应用商店添加。 |
 | [VMware 监视](log-analytics-vmware.md) <br>（预览版）                                 | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>     | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | 传输数据 2.0<br>（预览版）                                                                   | <ul><li>见解与分析</li></ul>                                      | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                         | 在美国东部和欧洲西部可用 |
 
@@ -203,7 +203,7 @@ Log Analytics Windows 代理和 System Center Operations Manager 代理实质上
 | 数据源 | 平台 | Microsoft Monitoring Agent | Operations Manager 代理 | Azure 存储空间 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ETW |Windows |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |5 分钟 |
-| IIS 日志 |Windows |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |5 分钟 |
+| IIS Logs |Windows |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |5 分钟 |
 | 网络应用程序网关 |Windows |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |10 分钟 |
 | 网络安全组 |Windows |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |10 分钟 |
 | 性能计数器 |Windows |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![是](./media/log-analytics-add-solutions/oms-bullet-green.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |![否](./media/log-analytics-add-solutions/oms-bullet-red.png) |根据计划，最小值为 10 秒 |
@@ -222,7 +222,7 @@ Log Analytics Windows 代理和 System Center Operations Manager 代理实质上
 
 我们的目标是快速尝试操作，以便可以找到哪些适用，哪些不适用。 我们将遍历此过程，直到个人预览版客户的反馈通知我们可以准备公开预览版为止。
 
-在公开预览版期间，我们提供的功能或解决方案可供所有用户获得更多反馈并验证我们的拓展和效率。 在此阶段中：
+在公开预览版期间，我们提供的功能或解决方案可供所有用户使用，以获得更多反馈并验证我们的拓展和效率。 在此阶段中：
 
 * 预览版功能显示在“设置”选项卡中，可以由任何用户启用。
 * 通过库或使用脚本来添加预览版解决方案。
@@ -235,7 +235,7 @@ Log Analytics Windows 代理和 System Center Operations Manager 代理实质上
 通过门户启用预览功能时，你将看到一条警告，提醒你该功能处于预览中。
 
 #### <a name="for-both-private-and-public-preview"></a>对于*个人*和*公共*预览
-以下内容适用于公开版和个人版预览：
+以下内容适用于公开预览版和个人预览版：
 
 * 事情并不始终如愿。
   * 问题范围可能从一点小麻烦发展到根本不工作。

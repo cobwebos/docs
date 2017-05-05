@@ -15,8 +15,3 @@
    
    ![确认已设置新的 DNS 标签](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -17,9 +17,9 @@ ms.date: 02/27/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1fc13142d3e4f54e0945032a404eb497746ee5a0
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 985f14ce7b8249c8e80deb1851cfee8c89651786
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>在 HDInsight 中通过 Hive 和 Pig 使用 Python 用户定义的函数 (UDF)
@@ -268,10 +268,10 @@ def create_structure(input):
 
 ### <a name="powershell"></a>PowerShell
 
-这些步骤使用 Azure PowerShell。 有关如何使用 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+这些步骤使用 Azure PowerShell。 有关如何使用 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 1. 使用 Python 示例 [streaming.py](#streamingpy) 和 [pig_python.py](#jythonpy) 在开发计算机上创建文件的本地副本。
-2. 使用以下 PowerShell 脚本将 **streaming.py** 和 **pig\_python.py** 文件上传到服务器。 在脚本的前三行中，替换 Azure HDInsight 群集的名称，以及 **streaming.py** 和 **pig\_python.py** 文件的路径。
+2. 使用以下 PowerShell 脚本将 **streaming.py** 和 **pig\_python.py**  文件上传到服务器。 在脚本的前三行中，替换 Azure HDInsight 群集的名称，以及 **streaming.py** 和 **pig\_python.py** 文件的路径。
 
    ```powershell
     # Login to your Azure subscription

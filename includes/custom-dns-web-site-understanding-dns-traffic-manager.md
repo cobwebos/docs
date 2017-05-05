@@ -23,8 +23,3 @@ CNAME 记录将*特定的* DNS 名称（例如 **mail.contoso.com** 或 **www.co
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

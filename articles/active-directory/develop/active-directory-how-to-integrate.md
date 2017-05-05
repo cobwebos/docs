@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
-ms.author: mbaldwin
+ms.date: 04/27/2017
+ms.author: bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: e8a092bc398e314a111973b6978012909aedc16e
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 32c236c7082e48990f41a1a9069cea53d0cab96f
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -77,13 +78,8 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 **全球数据库中均已部署 Azure AD，且受到全天候的管理和监视。**  Azure AD 是一款面向 Microsoft Azure 和 Office 365 的标识管理系统，已在全球 28 个数据中心进行部署。  我们保证至少将目录数据复制到三个数据中心。  全局负载均衡器确保用户访问包含其数据的最靠近 Azure AD 副本，如果检测到问题，会自动将请求重新路由到其他数据中心。
 
 ## <a name="next-steps"></a>后续步骤
-[开始编写代码](active-directory-developers-guide.md#getting-started)。
+[开始编写代码](active-directory-developers-guide.md#get-started)。
 
 [使用 Azure AD 登录用户](active-directory-authentication-scenarios.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

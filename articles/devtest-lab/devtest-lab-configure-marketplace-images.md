@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d5606c538d7ee5afc6b2c3cfcfae0a6aca341c7f
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 0779371b10e64a12ef994c63ee0fba724be88c4a
+ms.lasthandoff: 04/15/2017
 
 
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置 Azure 应用商店映像设置
-开发测试实验室支持基于 Azure 应用商店映像创建 VM，具体取决于配置的 Azure 应用商店映像在实验室中的使用方式。 本文演示如何指定在实验室中创建 VM 时可使用哪些 Azure 应用商店映像（如果有的话）。
+开发测试实验室支持基于 Azure 应用商店映像创建 VM，具体取决于配置的 Azure 应用商店映像在实验室中的使用方式。 本文演示如何指定在实验室中创建 VM 时可使用哪些 Azure 应用商店映像（如果有的话）。 这可确保你的团队仅有权访问所需的应用商店映像。 
 
 ## <a name="select-which-azure-marketplace-images-are-allowed-when-creating-a-vm"></a>选择允许使用的 Azure 应用商店映像（创建 VM 时）
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
@@ -49,10 +50,5 @@ ms.openlocfilehash: d5606c538d7ee5afc6b2c3cfcfae0a6aca341c7f
 
 ## <a name="next-steps"></a>后续步骤
 配置创建 VM 时允许使用的 Azure 应用商店映像后，下一步便是[将 VM 添加到你的实验室](devtest-lab-add-vm-with-artifacts.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

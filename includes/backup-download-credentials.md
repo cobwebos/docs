@@ -24,8 +24,3 @@
 * 保管库凭据文件在 48 小时后过期，可从门户下载。
 * 如有工作流方面的任何问题，请参阅 Azure 备份[常见问题解答](../articles/backup/backup-azure-backup-faq.md)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

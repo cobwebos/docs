@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/21/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 8e113a78519444fd1e0a9da89ec95aa0dccebb2b
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 4eaae725c62f66de1b50fd2c7094f3e6e89281be
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/27/2017
 Azure.NET SDK 2.0 版和更高版本支持服务总线的 SAS 身份验证。 SAS 支持 [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。 允许将连接字符串作为参数的所有 API 都支持 SAS 连接字符串。
 
 ## <a name="acs-authentication"></a>ACS 身份验证
-使用 ACS 的服务总线身份验证通过随附的“-sb”ACS 命名空间进行管理。 如果要为服务总线命名空间创建随附 ACS 命名空间，则不能使用 Azure 经典门户创建服务总线命名空间，而必须使用 [New-AzureSBNamespace](/powershell/servicemanagement/azure.compute/v1.6.1/New-AzureSBNamespace) PowerShell cmdlet 来创建命名空间。 例如：
+使用 ACS 的服务总线身份验证通过随附的“-sb”ACS 命名空间进行管理。 如果要为服务总线命名空间创建随附 ACS 命名空间，则不能使用 Azure 经典门户创建服务总线命名空间，而必须使用 [New-AzureSBNamespace](/powershell/module/azure/new-azuresbnamespace?view=azuresmps-3.7.0) PowerShell cmdlet 来创建命名空间。 例如：
 
 ```powershell
 New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $true

@@ -12,7 +12,7 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 05/04/2017
 ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
@@ -384,7 +384,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [img-lifecycle]: ./media/iot-hub-devguide-messaging/lifecycle.png
 [img-eventhubcompatible]: ./media/iot-hub-devguide-messaging/eventhubcompatible.png
 
-[lnk-resource-provider-apis]: https://msdn.microsoft.com/library/mt548492.aspx
+[lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-gateway-guidance]: iot-hub-devguide-endpoints.md#field-gateways
 [lnk-guidance-scale]: iot-hub-scaling.md
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md

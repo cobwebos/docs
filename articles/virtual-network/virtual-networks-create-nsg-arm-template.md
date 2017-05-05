@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9c36ed4ed16b53a7cca2d2eba93ad5063e60569b
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 87246de343f5c810bf765b467ba0d131934f8526
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -104,7 +104,7 @@ ms.lasthandoff: 03/21/2017
 ## <a name="deploy-the-arm-template-by-using-powershell"></a>使用 PowerShell 部署 ARM 模板
 若要使用 PowerShell 部署下载的 ARM 模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure PowerShell，请按[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的说明操作，安装和配置 Azure PowerShell。
+1. 如果你从未使用过 Azure PowerShell，请按[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 中的说明操作，安装和配置 Azure PowerShell。
 2. 运行 **`New-AzureRmResourceGroup`** cmdlet 以使用模板创建资源组。
 
     ```powershell

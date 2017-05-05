@@ -10,8 +10,3 @@
 6. 在右侧选择“选择值”，然后输入 *ExtractMeFirst*。 在本示例中，ExtractMeFirst 应该位于有权访问 SFTP 文件夹的用户的某个文件中，该文件表示应该提取的存档文件。  
    ![SFTP 条件图像 5](./media/connectors-create-api-sftp/condition-5.png)   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

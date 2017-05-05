@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 658480c7827e8a703fb25d3062197fedcbe30520
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0a4c7df2ef385b8bdec467859af64fc243241d77
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用诊断扩展从运行 Windows 的 Azure 虚拟机 (VM) 中收集诊断数据（例如应用程序日志或性能计数器）。 本文介绍如何使用 Windows PowerShell 为 VM 启用诊断扩展。 有关本文所需的先决条件，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用诊断扩展从运行 Windows 的 Azure 虚拟机 (VM) 中收集诊断数据（例如应用程序日志或性能计数器）。 本文介绍如何使用 Windows PowerShell 为 VM 启用诊断扩展。 有关本文所需的先决条件，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>在使用 Resource Manager 部署模型的情况下启用诊断扩展
 通过 Azure Resource Manager 部署模型创建 Windows VM 时，只需将诊断扩展配置添加到 Resource Manager 模板，即可启用该扩展。 请参阅 [Create a Windows virtual machine with monitoring and diagnostics by using the Azure Resource Manager template](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机）。
 
-若要在通过 Resource Manager 部署模型创建的现有 VM 上启用诊断扩展，可按如下所示使用 [Set-AzureRMVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt603499.aspx) PowerShell cmdlet。
+若要在通过 Resource Manager 部署模型创建的现有 VM 上启用诊断扩展，可按如下所示使用 [Set-AzureRMVMDiagnosticsExtension](/powershell/module/azurerm.compute/set-azurermvmdiagnosticsextension) PowerShell cmdlet。
 
     $vm_resourcegroup = "myvmresourcegroup"
     $vm_name = "myvm"
@@ -48,7 +48,7 @@ Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的�
 
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 
-在 VM 上启用诊断扩展后，可以使用 [Get-AzureRMVmDiagnosticsExtension](https://msdn.microsoft.com/library/mt603678.aspx) cmdlet 获取当前设置。
+在 VM 上启用诊断扩展后，可以使用 [Get-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/get-azurermvmdiagnosticsextension) cmdlet 获取当前设置。
 
     Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
@@ -59,17 +59,17 @@ Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的�
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
 
-可以使用 [Remove-AzureRMVmDiagnosticsExtension](https://msdn.microsoft.com/library/mt603782.aspx) cmdlet 从 VM 中删除该诊断扩展。  
+可以使用 [Remove-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/remove-azurermvmdiagnosticsextension) cmdlet 从 VM 中删除该诊断扩展。  
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>在使用经典部署模型的情况下启用诊断扩展
-在通过经典部署模型创建的 VM 上，可以使用 [Set-AzureVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt589189.aspx) cmdlet 启用诊断扩展。 以下示例演示如何通过经典部署模型创建启用诊断扩展的新 VM。
+在通过经典部署模型创建的 VM 上，可以使用 [Set-AzureVMDiagnosticsExtension](/powershell/module/azure/set-azurevmdiagnosticsextension) cmdlet 启用诊断扩展。 以下示例演示如何通过经典部署模型创建启用诊断扩展的新 VM。
 
     $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
     $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzureVM -Location $Location -ServiceName $Service_Name -VM $VM
 
-若要在通过典型部署模型创建的现有 VM 上启用诊断扩展，请先使用 [Get-AzureVM](https://msdn.microsoft.com/library/mt589152.aspx) cmdlet 获取 VM 配置。 然后，使用 [Set-AzureVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt589189.aspx) cmdlet 更新 VM 配置，使其包含诊断扩展。 最后，使用 [Update-AzureVM](https://msdn.microsoft.com/library/mt589121.aspx) 将更新的配置应用到 VM。
+若要在通过典型部署模型创建的现有 VM 上启用诊断扩展，请先使用 [Get-AzureVM](/powershell/module/azure/get-azurevm) cmdlet 获取 VM 配置。 然后，使用 [Set-AzureVMDiagnosticsExtension](/powershell/module/azure/set-azurevmdiagnosticsextension) cmdlet 更新 VM 配置，使其包含诊断扩展。 最后，使用 [Update-AzureVM](/powershell/module/azure/update-azurevm) 将更新的配置应用到 VM。
 
     $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context

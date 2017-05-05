@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 14b7900a8b4fbf86e8a814def6fa8c7915832376
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6af34cf24a8fb7d2dd8f4c44392e0e6c3ed46b1a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -95,7 +95,12 @@ ms.lasthandoff: 04/12/2017
 假设管道要捆绑所有相关的活动。 如果管道之外的任何其他活动都未使用连接它们的数据集，则可以将活动保留在一个管道中。 这样，就不需要链接管道有效期间，使其彼此对齐。 此外，更新管道时，也会更好地保留管道内部表中的数据完整性。 实际上，管道更新会停止、删除并重新创建管道内的所有活动。 从创作角度来看，可能也比较容易看出管道的某个 JSON 文件中相关活动内的数据流。
 
 ### <a name="what-are-the-supported-data-stores"></a>支持的数据存储有哪些？
+数据工厂中的复制活动可以将数据从源数据存储复制到接收器数据存储。 数据工厂支持以下数据存储。 来自任何源的数据都可以写入到任何接收器。 单击某个数据存储即可了解如何将数据复制到该存储，以及如何从该存储复制数据。
+
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
+
+> [!NOTE]
+> 带 * 的数据存储既可位于本地，也可位于 Azure IaaS 上，需要用户在本地/Azure IaaS 计算机上安装[数据管理网关](data-factory-data-management-gateway.md)。
 
 ### <a name="what-are-the-supported-file-formats"></a>支持的文件格式有哪些？
 [!INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]
@@ -151,7 +156,7 @@ Pipeline 1: dataset4->activity4->dataset5
 如果 external 属性设置正确，请验证输入数据是否存在于输入数据集定义中指定的位置。
 
 ### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>当每天生成切片时，如何在午夜以外的其他时间运行切片？
-请使用“offset”属性来指定要生成切片的时间。 如需此属性的详细信息，请参阅[数据集可用性](data-factory-create-datasets.md#Availability)部分。 下面是一个简短的示例：
+请使用“offset”属性来指定要生成切片的时间。 如需此属性的详细信息，请参阅[数据集可用性](data-factory-create-datasets.md#dataset-availability)部分。 下面是一个简短的示例：
 
 ```json
 "availability":
@@ -188,7 +193,7 @@ Pipeline 1: dataset4->activity4->dataset5
 6. 你应该会看到“持续时间”字段包含一个值。 该值就是处理切片所花费的时间。   
 
 ### <a name="how-to-stop-a-running-slice"></a>如何停止正在运行的切片？
-如需停止执行管道，可以使用 [Suspend-AzureRmDataFactoryPipeline](https://msdn.microsoft.com/library/mt603721.aspx) cmdlet。 目前，挂起管道不会停止正在进行中的切片执行。 一旦完成正在进行中的执行，就不会再选取任何额外的切片。
+如需停止执行管道，可以使用 [Suspend-AzureRmDataFactoryPipeline](/powershell/module/azurerm.datafactories/suspend-azurermdatafactorypipeline) cmdlet。 目前，挂起管道不会停止正在进行中的切片执行。 一旦完成正在进行中的执行，就不会再选取任何额外的切片。
 
 如果确实想要立即停止所有执行，唯一的方法就是删除管道，然后再重新创建。 如果选择删除管道，“不”需要删除该管道所使用的表和链接服务。
 

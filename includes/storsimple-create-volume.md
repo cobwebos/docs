@@ -30,8 +30,3 @@
 
 若要观看如何创建 StorSimple 卷的演示视频，请单击 [此处](https://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/)。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

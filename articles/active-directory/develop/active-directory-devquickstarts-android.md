@@ -15,16 +15,19 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: xerners
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 9ae8852c02361ff11c302f86cb5c53e01a48068a
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 590e2bc759567cf3d679e261592dff1e699ba295
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="integrate-azure-ad-into-an-android-app"></a>将 Azure AD 集成到 Android 应用中
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+> [!TIP]
+> 欢迎试用新的[开发人员门户](https://identity.microsoft.com/Docs/Android)预览版，只需花费几分钟时间，它就能帮助你开始使用 Azure AD。 在开发人员门户中，可以逐步完成注册应用并将 Azure AD 集成到代码的整个过程。 完成上述过程后，你将获得一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌并执行验证的后端。
+>
+>
 
 如果要开发桌面应用程序，Azure Active Directory (Azure AD) 可让你简单直接地使用用户的本地 Active Directory 帐户对其进行身份验证。 它还可以让应用程序安全地使用 Azure AD 保护的任何 Web API，例如 Office 365 API 或 Azure API。
 
@@ -35,11 +38,6 @@ ms.lasthandoff: 03/18/2017
 * 将用户注销。
 
 若要开始，你需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。 如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
-
-> [!TIP]
-> 欢迎试用新的[开发人员门户](https://identity.microsoft.com/Docs/Android)预览版，只需花费几分钟时间，它就能帮助你开始使用 Azure AD。 在开发人员门户中，可以逐步完成注册应用并将 Azure AD 集成到代码的整个过程。 完成上述过程后，你将获得一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌并执行验证的后端。
->
->
 
 ## <a name="step-1-download-and-run-the-nodejs-rest-api-todo-sample-server"></a>步骤 1：下载并运行 Node.js REST API TODO 示例服务器
 Node.js REST API TODO 示例是为了与用于生成 Azure AD 的单租户待办事项 REST API 的现有示例配合使用而专门编写的。 这是本快速入门教程的先决条件。

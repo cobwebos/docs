@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 79f0c9297c4be70f705f325274f3d9241ea4bc3f
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 3aea60bc21bfb0650a336f6674005bbab47201fe
+ms.lasthandoff: 04/21/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/30/2017
 
 本文将逐步引导你完成使用 Azure 门户创建你的第一个 DNS 区域和记录的步骤。 也可以使用 Azure PowerShell 或跨平台 Azure CLI 执行这些步骤。
 
-DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后将在此 DNS 区域内为每个 DNS 记录创建域。 最后，若要将 DNS 区域发布到 Internet，需要为域配置名称服务器。 以下描述了上述每一个步骤。
+DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后将在此 DNS 区域内为每个 DNS 记录创建域。 最后，若要将 DNS 区域发布到 Internet，需要为域配置名称服务器。 以下步骤介绍每个此类步骤。
 
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
@@ -41,41 +41,36 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 
     ![DNS 区域](./media/dns-getstarted-portal/openzone650.png)
 
-4. 在“**创建 DNS 区域**”边栏选项卡上，命名你的 DNS 区域。 例如，*contoso.com*。
- 
-    ![创建区域](./media/dns-getstarted-portal/newzone250.png)
+4. 在“创建 DNS 区域”边栏选项卡上，输入以下值，然后单击“创建”：
 
-5. 接下来，指定你想要使用的资源组。 可以创建新的资源组，也可以选择已存在的资源组。 如果选择创建新的资源组，则使用“位置”下拉列表来指定资源组的位置。 请注意，此设置指的是资源组的位置，对 DNS 区域没有影响。 DNS 区域位置始终是“全局”，并且不会显示。
 
-6. 如果想要在仪表板上轻松找到新区域，则可以选中“**固定到仪表板**”。 然后单击“创建” 。
+   | **设置** | **值** | **详细信息** |
+   |---|---|---|
+   |**Name**|contoso.com|DNS 区域的名称|
+   |**订阅**|[你的订阅]|选择要在其中创建应用程序网关的订阅。|
+   |**资源组**|**新建：**contosoDNSRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 这篇概述文章。|
+   |**位置**|美国西部||
 
-    ![固定到仪表板](./media/dns-getstarted-portal/pindashboard150.png)
-
-7. 单击“创建”后，你将看到仪表板上正在配置的新区域。
-
-    ![正在创建](./media/dns-getstarted-portal/creating150.png)
-
-8. 创建新区域后，将在仪表板上打开新区域的边栏选项卡。
-
+> [!NOTE]
+> 资源组指的是资源组的位置，对 DNS 区域没有影响。 DNS 区域位置始终是“全局”，并且不会显示。
 
 ## <a name="create-a-dns-record"></a>创建 DNS 记录
 
 以下示例将指导你完成创建新的 A 记录的过程。 若要了解其他记录类型并修改现有记录，请参阅[使用 Azure 门户管理 DNS 记录和记录集](dns-operations-recordsets-portal.md)。 
 
+1. 创建 DNS 区域以后，在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击“contoso.com”DNS 区域。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“contoso.com”， 轻松访问 DNS 区域。
 
 1. 在“DNS 区域”边栏选项卡顶部，选择“+ 记录集”以打开“添加记录集”边栏选项卡。
 
-    ![新建记录集](./media/dns-getstarted-portal/newrecordset500.png)
+1. 在“添加记录集”边栏选项卡中，输入以下值，然后单击“确定”。 在此示例中，你将创建一个 A 记录。
 
-4. 在“**添加记录集**”边栏选项卡中，命名你的记录集。 例如，可将你的记录集命名为“**www**”。
-
-    ![添加记录集](./media/dns-getstarted-portal/addrecordset500.png)
-
-5. 选择想要创建的记录的类型。 对于此示例，请选择“A”。
-6. 设置 **TTL**。 默认生存时间为一小时。
-7. 添加记录的 IP 地址。
-8. 单击边栏选项卡底部的“确定”以创建 DNS 记录。
-
+   |**设置** | **值** | **详细信息** |
+   |---|---|---|
+   |**Name**|www|记录的名称|
+   |**类型**|A| 要创建的 DNS 记录的类型，可接受的值为 A、AAAA、CNAME、MX、NS、SRV、TXT 和 PTR。  有关记录类型的详细信息，请访问 [DNS 区域和记录](dns-zones-records.md)|
+   |**TTL**|1|DNS 请求的生存时间。|
+   |**TTL 单位**|小时|TTL 值的时间度量。|
+   |**IP 地址**|{ipAddressValue| 此值是 DNS 记录解析的 IP 地址。|
 
 ## <a name="view-records"></a>查看记录
 
@@ -92,7 +87,15 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 
 ![区域](./media/dns-getstarted-portal/viewzonens500.png)
 
-这些名称服务器应当配置有域名注册机构（你向其购买域名的机构）。 域名注册机构将提供选项来为域设置名称服务器。 有关详细信息，请参阅[将域委派给 Azure DNS](dns-domain-delegation.md)。
+这些名称服务器应当配置有域名注册机构（你向其购买域名的机构）。 域名注册机构提供选项来为域设置名称服务器。 有关详细信息，请参阅[将域委派给 Azure DNS](dns-domain-delegation.md)。
+
+## <a name="delete-all-resources"></a>删除所有资源
+
+若要删除在本文中创建的所有资源，请完成以下步骤：
+
+1. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击“MyResourceGroup”资源组。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“MyResourceGroup”， 轻松访问资源组。
+1. 在“MyResourceGroup”边栏选项卡中，单击“删除”按钮。
+1. 门户会要求用户键入资源组的名称，以便确认用户需要删除它。 单击“删除”，键入“MyResourceGroup”作为资源组名称，然后单击“删除”。 删除资源组会删除资源组中的所有资源，因此在删除资源组之前，请确保始终确认其内容。 门户会先删除包含在资源组中的所有资源，然后删除资源组本身。 此过程需要几分钟。
 
 
 ## <a name="next-steps"></a>后续步骤

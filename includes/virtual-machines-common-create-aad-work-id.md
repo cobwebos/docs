@@ -115,8 +115,3 @@
     data:    Tags:
     data:
     info:    group create command OK
-
-
-<!--HONumber=Nov16_HO3-->
-
-

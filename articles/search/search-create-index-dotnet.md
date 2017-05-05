@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 01/13/2017
+ms.date: 04/21/2017
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
-ms.openlocfilehash: 3a5131323f438109d94137cb4f577054ec13227f
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 52dcb10495c564c5d8058b9c786b4cd331b6ae18
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -35,7 +35,10 @@ ms.lasthandoff: 02/16/2017
 
 按照本指南创建索引之前，应已经 [创建 Azure 搜索服务](search-create-service-portal.md)。
 
-请注意，本文中的所有示例代码均用 C# 编写。 可以在 [GitHub](http://aka.ms/search-dotnet-howto)上找到完整的源代码。
+> [!NOTE]
+> 本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](http://aka.ms/search-dotnet-howto)找到完整的源代码。 也可参阅 [Azure 搜索 .NET SDK](search-howto-dotnet-sdk.md)，以便更详细地了解示例代码。
+>
+>
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>确定 Azure 搜索服务的管理 API 密钥
 现在，已预配 Azure 搜索服务，差不多可以使用 .NET SDK 向服务终结点发出请求了。 首先，需要获取已为预配的搜索服务生成的其中一个管理 API 密钥。 每次向服务发出请求时，NET SDK 都会发送这个 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
@@ -90,6 +93,9 @@ SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, n
 此示例中，索引命名为“hotels”，并使用模型类来定义字段。 模型类的每个属性都具有一些特性，这些特性决定了相应索引字段的与搜索相关的行为。 模型类定义如下：
 
 ```csharp
+// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
+// It ensures that Pascal-case property names in the model class are mapped to camel-case
+// field names in the index.
 [SerializePropertyNamesAsCamelCase]
 public partial class Hotel
 {
@@ -131,8 +137,6 @@ public partial class Hotel
 
     [IsFilterable, IsSortable]
     public GeographyPoint Location { get; set; }
-
-    // ToString() method omitted for brevity...
 }
 ```
 

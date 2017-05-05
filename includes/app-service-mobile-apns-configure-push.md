@@ -6,8 +6,3 @@
 现在，服务已配置为在 iOS 上使用通知中心。
 
 [1]: ./media/app-service-mobile-apns-configure-push/mobile-push-notification-hub.png
-
-
-<!--HONumber=Dec16_HO2-->
-
-

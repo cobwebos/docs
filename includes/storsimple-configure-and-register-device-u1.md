@@ -11,7 +11,7 @@
    
     ![StorSimple 注册设备 2](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice2_U1-include.png)
    
-     完成步骤 5-12 以配置设备的最低要求的网络设置。 **需要在该设备的主动控制器上执行这些配置步骤。**  串行控制台菜单指示标题消息中的控制器状态。 如果你未连接到主动控制器，请断开连接，然后连接到主动控制器。
+     完成步骤 5-12 以配置设备的最低要求的网络设置。 **需要在该设备的主动控制器上执行这些配置步骤。** 串行控制台菜单指示标题消息中的控制器状态。 如果你未连接到主动控制器，请断开连接，然后连接到主动控制器。
 5. 在命令提示符处，键入你的密码。 默认设备密码为 **Password1**。
 6. 键入以下命令： `Invoke-HcsSetupWizard`。 
 7. 此时将出现安装向导，帮助配置设置的网络设置。 提供以下信息： 
@@ -62,9 +62,4 @@
         如果几分钟后设备仍处于脱机状态，需要确保防火墙网络已按 [StorSimple 设备的网络要求](../articles/storsimple/storsimple-system-requirements.md)中所述进行配置。 
        
         确认端口 9354 已对出站通信打开，因为这将用于 StorSimple Manager 服务之间通信的服务总线。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

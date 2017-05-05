@@ -17,9 +17,9 @@ ms.date: 01/03/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: d229d6add2c06952eaf662bdacc92a5163b1e945
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e0fb1e3fc87e3a3a93d42f9f2722696e0f9aae57
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -46,7 +46,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
 若要使用 PowerShell 创建虚拟网络，请完成以下步骤：
 
-1. 请按[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 文章中的步骤安装和配置 Azure PowerShell。
+1. 请按[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 文章中的步骤安装和配置 Azure PowerShell。
 
 2. 如有必要，创建一个新的资源组，如下所示。 对于此方案，创建一个名为 *TestRG*的资源组。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
 

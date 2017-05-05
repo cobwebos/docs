@@ -40,8 +40,3 @@
 现在，可以测试逻辑应用：在 Salesforce 中，创建一个符合所创建条件的新潜在顾客。  如果完全按照本演练操作，只需创建一个电子邮件地址包含 *amazon.com* 的新潜在顾客即可。 几秒钟后，应会触发该逻辑应用，结果将如下所示：  
 ![Salesforce 操作图像 9](./media/connectors-create-api-salesforce/action-9.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

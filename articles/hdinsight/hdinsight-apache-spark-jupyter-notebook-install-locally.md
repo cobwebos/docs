@@ -88,7 +88,7 @@ ms.lasthandoff: 01/24/2017
           }
         }
 
-4. 将 **{USERNAME}**、**{CLUSTERDNSNAME} **和**{BASE64ENCODEDPASSWORD}** 替换为适当的值。 你可以使用许多以你偏好的编程语言编写的实用工具或联机实用工具，来生成 base64 编码的密码作为实际密码。 下面是从命令提示符运行的简单 Python 代码片段：
+4. 将 **{USERNAME}**、**{CLUSTERDNSNAME}**和**{BASE64ENCODEDPASSWORD}** 替换为适当的值。 你可以使用许多以你偏好的编程语言编写的实用工具或联机实用工具，来生成 base64 编码的密码作为实际密码。 下面是从命令提示符运行的简单 Python 代码片段：
 
         python -c "import base64; print(base64.b64encode('{YOURPASSWORD}'))"
 

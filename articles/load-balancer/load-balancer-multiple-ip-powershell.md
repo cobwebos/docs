@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: fb6a74ba476d410f7545a3cfcbaf23190f0bd402
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 70cf84918898a65560ecd40d501b5fdc3775b0f6
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/31/2017
 
 按照以下步骤来实现本文所概述的场景：
 
-1. 安装 Azure PowerShell 中的说明进行操作。 有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+1. 安装 Azure PowerShell 中的说明进行操作。 有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 2. 使用以下设置创建资源组：
 
     ```powershell

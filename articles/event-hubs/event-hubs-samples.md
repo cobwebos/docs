@@ -1,6 +1,6 @@
 ---
 title: "Azure 事件中心示例 | Microsoft 文档"
-description: "事件中心示例"
+description: "Azure 事件中心示例"
 services: event-hubs
 documentationcenter: na
 author: jtaubensee
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2017
+ms.date: 05/01/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: f3c8f6e52b8713bcdb58d55e8bbc2301a7c316e4
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 89049688ab60842910f1bab8e56c349029dd17a7
+ms.lasthandoff: 05/02/2017
 
 ---
 
 # <a name="event-hubs-samples"></a>事件中心示例 
 
-事件中心示例演示了 [Azure 事件中心](/azure/event-hubs/)中的主要功能。 本文分类并介绍了可用的示例，每个示例均具有链接。
+Azure 事件中心示例演示了 [Azure 事件中心](/azure/event-hubs/)内的主要功能。 本文分类并介绍了可用的示例，每个示例均具有链接。
 
 在撰写本文时，事件中心示例位于多个不同的位置：
 
 - [MSDN 开发人员代码示例](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
-- [GitHub](https://github.com/Azure/azure-event-hubs-dotnet/tree/master/samples)
+- [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
 有关 .NET Framework 的不同版本的详细信息，请参阅[框架和目标](/dotnet/articles/standard/frameworks)。
 
@@ -40,11 +40,11 @@ ms.lasthandoff: 03/09/2017
 
 ### <a name="send-events"></a>发送事件 
 
-[发送入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleSender)示例演示如何编写可将事件发送到事件中心的 .NET Core 控制台应用程序。
+[发送入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender)示例演示如何编写将事件发送到事件中心的 .NET Core 控制台应用程序。
 
 ### <a name="receive-events"></a>接收事件 
 
-[使用事件处理程序主机接收入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver)示例是一个使用 `Event Processor Host` 从事件中心接收消息的 .NET Core 控制台应用程序。
+[使用事件处理器主机接收入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)示例是一个使用 `Event Processor Host` 从事件中心接收消息的 .NET Core 控制台应用程序。
 
 ## <a name="net-framework"></a>.NET framework    
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/09/2017
 
 ### <a name="get-started-with-event-hubs"></a>事件中心入门 
 
-[事件中心入门](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097)示例演示事件中心的基本功能，如如何创建事件中心、将事件发送到事件中心，以及使用[事件处理器主机](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)处理事件。
+[事件中心入门](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097)示例演示事件中心的基本功能，例如如何创建事件中心、将事件发送到事件中心，以及使用[事件处理器主机](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)处理事件。
 
 ### <a name="scale-out-event-processing"></a>扩大事件处理 
 

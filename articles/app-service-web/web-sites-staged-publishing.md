@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 8ec4e8699eb2f2e060db264634b04abfacf40e34
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a51be4038ef6f9890645a71cd10cc86cb58929f3
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -187,7 +187,7 @@ ms.lasthandoff: 03/27/2017
 ## <a name="azure-powershell-cmdlets-for-deployment-slots"></a>适用于部署槽的 Azure PowerShell cmdlet
 Azure PowerShell 是一个模块，可提供通过 Windows PowerShell 管理 Azure 的 cmdlet，包括对管理 Azure App Service 的部署槽的支持。
 
-* 有关安装和配置 Azure PowerShell 的信息以及使用 Azure 订阅对 Azure PowerShell 进行身份验证的信息，请参阅[如何安装和配置 Microsoft Azure PowerShell](/powershell/azureps-cmdlets-docs)。  
+* 有关安装和配置 Azure PowerShell 的信息以及使用 Azure 订阅对 Azure PowerShell 进行身份验证的信息，请参阅[如何安装和配置 Microsoft Azure PowerShell](/powershell/azure/overview)。  
 
 - - -
 ### <a name="create-a-web-app"></a>创建 Web 应用

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 03/06/2017
+ms.date: 04/19/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: a8a9d6efb299d0958d4024e62b2b24a76d768ddf
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: a022e7fc34cac85cb26cc6ca86a6941b1ccbfb95
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/15/2017
 Azure SQL 数据库提供了四个[服务层](sql-database-service-tiers.md)：基本、标准、高级和高级 RS。 每个服务层可严格隔离你的 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化你的应用程序以充分利用 Azure SQL 数据库。
 
 > [!NOTE]
-> 本文侧重于 Azure SQL 数据库中单一数据库的性能指南。 有关弹性池的性能指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。 不过，请注意，你也可以将本文中的多项优化建议应用于弹性池中的数据库，获得类似的性能优势。
+> 本文侧重于 Azure SQL 数据库中单一数据库的性能指南。 有关弹性池的性能指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)。 不过，请注意，你也可以将本文中的多项优化建议应用于弹性池中的数据库，获得类似的性能优势。
 >
 >
 
@@ -58,7 +58,7 @@ SQL 数据库所需的服务级别取决于每个资源维度的峰值负载要�
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
 > [!IMPORTANT]
-> 使用 P11 和 P15 性能级别的客户最多可以使用 4 TB 的包含存储，而无需额外付费。 此 4 TB 选项目前在以下区域中处于公共预览状态：美国东部 2、美国西部、西欧、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。
+> 使用 P11 和 P15 性能级别的客户最多可以使用 4 TB 的包含存储，而无需额外付费。 此 4 TB 选项目前在以下区域中可用：美国东部 2、美国西部、西欧、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。
 >
 
 ### <a name="maximum-in-memory-oltp-storage"></a>最大内存中 OLTP 存储
@@ -435,5 +435,5 @@ SQL Server 用户经常将许多功能集中在单一数据库内。 例如，�
 ## <a name="next-steps"></a>后续步骤
 * 有关服务层的详细信息，请参阅 [SQL 数据库选项和性能](sql-database-service-tiers.md)
 * 有关弹性池的详细信息，请参阅[什么是 Azure 弹性池？](sql-database-elastic-pool.md)
-* 有关性能和弹性池的信息，请参阅[何时考虑弹性池](sql-database-elastic-pool-guidance.md)
+* 有关性能和弹性池的信息，请参阅[何时考虑弹性池](sql-database-elastic-pool.md)
 

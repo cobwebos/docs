@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f2449ffda80ec7cb7a73a6eac229d09c3a4a96cc
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 047d9191e2c844a591c35279ff7b143906087f56
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -105,7 +105,7 @@ Azure 备份提供的选项不仅可以备份整个 VM，而且还能通过备�
 
 ![已使用 **start-azurestorageblobcopy** PowerShell 命令复制所有相关的 VHD](media/sap-hana-backup-file-level/image031.png)
 
-备份到本地软件 RAID 的过程完成后，已使用 **start-azurestorageblobcopy** PowerShell 命令复制所有相关的 VHD（请参阅 [Start-AzureStorageBlobCopy](/powershell/storage/azure.storage/v2.1.0/start-azurestorageblobcopy)）。 此命令只影响用于保存备份文件的专用文件系统，因此，我们无需担心磁盘上 SAP HANA 数据或日志文件的一致性。 此命令的优点是可以在 VM 保持联机时运行。 为确保不会有任何进程向备份带区集写入数据，请务必在执行 blob copy 之前卸载带区集，事后再次装入。 或者，可以采用适当的方式来&quot;冻结&quot;文件系统。 例如，对 XFS 文件系统运行 xfs\_freeze。
+备份到本地软件 RAID 的过程完成后，已使用 **start-azurestorageblobcopy** PowerShell 命令复制所有相关的 VHD（请参阅 [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy)）。 此命令只影响用于保存备份文件的专用文件系统，因此，我们无需担心磁盘上 SAP HANA 数据或日志文件的一致性。 此命令的优点是可以在 VM 保持联机时运行。 为确保不会有任何进程向备份带区集写入数据，请务必在执行 blob copy 之前卸载带区集，事后再次装入。 或者，可以采用适当的方式来&quot;冻结&quot;文件系统。 例如，对 XFS 文件系统运行 xfs\_freeze。
 
 ![此屏幕截图显示 Azure 门户上 vhds 容器中的 Blob 列表](media/sap-hana-backup-file-level/image032.png)
 

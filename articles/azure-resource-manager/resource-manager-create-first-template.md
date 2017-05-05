@@ -11,13 +11,13 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/21/2017
+ms.date: 04/18/2017
 ms.topic: get-started-article
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: f861f2ba0376f00ff21e03cbb81a04a266f38630
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 3c5520f30b75c0e0a2b1aee890f79d01d325d543
+ms.lasthandoff: 04/20/2017
 
 ---
 
@@ -288,7 +288,9 @@ VS Code 会再次帮助你，为你建议可用的函数。
 
 4. 保存文件。
 
-模板现在如下所示：
+## <a name="final-template"></a>最终模板
+
+完成本文中的步骤以后，模板将如下所示：
 
 ```json
 {

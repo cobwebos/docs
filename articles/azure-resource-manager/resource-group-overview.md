@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6d88b7c5ad96a1c7cfb60bde3c9d952b654adb9f
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 4b7192b22d1583be2b2ab027b040c9a2fce8a293
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -256,7 +256,7 @@ Azure 还提供多个特定于资源的角色。 常见的此类角色有：
 
 * [使用 Azure PowerShell 创建服务主体来访问资源](resource-group-authenticate-service-principal.md)
 * [使用 Azure CLI 创建服务主体来访问资源](resource-group-authenticate-service-principal-cli.md)
-* [使用门户创建可访问资源的 Active Directory 应用程序和服务主体](resource-group-create-service-principal-portal.md)
+* [使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](resource-group-create-service-principal-portal.md)
 
 你可以显式锁定关键资源，以防止用户删除或修改这些资源。 有关详细信息，请参阅 [使用 Azure Resource Manager 锁定资源](resource-group-lock-resources.md)。
 

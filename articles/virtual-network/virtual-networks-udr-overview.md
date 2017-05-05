@@ -16,9 +16,9 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1657f7c772b7039707a67c4abc788479cc08bdd0
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 93920075a8ad8de4fd650d9cbbfd13b7bc18bf52
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/03/2017
 ![Azure 中的系统路由](./media/virtual-networks-udr-overview/Figure2.png)
 
 > [!IMPORTANT]
-> 用户定义的路由将仅应用于离开子网的流量。 例如，无法创建路由以指定流量如何从 Internet 流入子网。 此外，流量所转发到的设备不能与流量来源设备位于同一子网中。 始终为你的设备创建单独的子网。 
+> 用户定义的路由适用于从子网中的任意资源（例如附加到 VM 的网络接口）离开子网的流量。 例如，无法通过创建路由来指定流量如何从 Internet 进入子网。 流量所转发到的设备不能与流量来源设备位于同一子网中。 始终为你的设备创建单独的子网。 
 > 
 > 
 

@@ -11,7 +11,3 @@
 5. 若要查看有关连接的详细信息，请单击连接名称打开“站点到站点 VPN 连接”边栏选项卡。
 
     ![连接状态详细信息](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "连接状态详细信息")
-
-<!--HONumber=Jan17_HO5-->
-
-

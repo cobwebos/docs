@@ -13,58 +13,99 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/25/2017
+ms.date: 04/21/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 757e91c3c702a62fb143f45a3144069400c5a757
-ms.openlocfilehash: e2c2611d6f1094d2c1ba2bdb2398b0b17723af8a
-ms.lasthandoff: 01/28/2017
+ms.sourcegitcommit: 260208e7c7a08110eb3c885ef86ec4c18ff42fc9
+ms.openlocfilehash: 40552b5d3cea5b04826c08e7b4b1d046a9fcefba
+ms.lasthandoff: 04/23/2017
 
 
 ---
 # <a name="introduction-to-azure-data-factory-service-a-data-integration-service-in-the-cloud"></a>Azure 数据工厂服务（云中的数据集成服务）简介
 ## <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
-数据工厂是一项基于云的数据集成服务，可对数据**移动**和**转换**进行安排并使其自动化。 可以使用数据工厂服务创建数据集成解决方案，从各种数据存储引入数据、转换/处理数据，并将结果数据发布到数据存储。
-
-在数据工厂服务中可以创建数据管道来移动和转换数据，然后按指定的计划（每小时、每日、每周等）运行管道。 该服务还提供丰富的可视化效果来显示数据管道之间的历史记录和依赖项，用户可以通过单个统一视图监视管道，轻松查明问题和设置监视警报。
+在大数据时代，如何充分利用现有的商业数据？ 是否可以使用本地数据源或其他不同数据源中的引用数据来扩充云中生成的数据？ 若要解决此问题，需要一个平台来聚合和处理各种源的数据。 Azure 数据工厂是一项基于云的数据集成服务，可对数据的转移和转换进行调整并自动完成相关操作。 你可以创建数据集成解决方案，从不同的数据存储引入输入数据，对数据进行转换/处理，然后将输出数据发布到其他数据存储。 
 
 ![示意图：数据工厂（数据集成服务）概述](./media/data-factory-introduction/what-is-azure-data-factory.png)
 
-**图&1;.** 从各种数据源引入数据，准备、转换和分析数据，然后发布随时可用的数据。
+**图 1.** 从各种数据源引入数据，准备、转换和分析数据，然后发布随时可用的数据。
 
-## <a name="pipelines-and-activities"></a>管道和活动
-在数据工厂解决方案中，可以创建一个或多个数据**管道**。 管道是活动的逻辑分组。 它们用于将活动分组成一个单位，共同执行某项任务。
 
-**活动**定义对数据执行的操作。 例如，可以使用“复制”活动将数据从一个数据存储复制到另一个数据存储。 同样，可能使用在 Azure HDInsight 群集上运行 Hive 查询的“Hive”活动来转换或分析数据。 数据工厂支持两种类型的活动：数据移动活动和数据转换活动。
+## <a name="what-does-it-offer"></a>它提供哪些功能？ 
+传统意义上，数据集成项目一直关注的是如何创建提取-转换-加载 (ETL) 过程，以便从组织中的各种数据源提取数据，根据企业数据仓库 (EDW) 的目标架构对数据进行转换，然后将数据加载到 EDW 中，如下图所示。 然后，即可将该 EDW 作为 BI 分析解决方案的唯一可靠数据源进行访问。
 
-## <a name="data-movement-activities"></a>数据移动活动
+![传统 ETL](media/data-factory-introduction/traditional-etl.png)
+**传统 ETL**
+
+从目前的企业数据格局来看，在量、种类和复杂性方面仍呈指数性增长，如下图所示。 不管是在本地还是在云中，数据生成的形式和速度都今非昔比，更为多元化。 数据处理必须跨地理位置进行，并且组合使用开源软件、商业解决方案和自定义处理服务，既价格昂贵，又难以集成和维护。 必须具有足够的灵活性才能适应当今不断变化的大数据格局，这同时也是一个将传统 EDW 与现代信息生产系统所需功能进行融合的机会。 Azure 数据工厂是一个组合平台，可以应对传统 EDW 和不断变化的数据格局的要求，让企业能够充分利用所有可用数据进行数据驱动型决策。
+
+![新的大数据格局](media/data-factory-introduction/new-big-data-landscape.png)
+**新的大数据格局**
+
+Azure 数据工厂服务可以提供一个平台，**将数据处理、存储和移动服务组合到信息生产管道中**并对可信数据资产进行管理，从而让企业能够充分利用这种多元性。
+
+使用 Azure 数据工厂服务，你可以：
+- **轻松使用各种数据存储和处理系统**。 
+
+    企业有不同类型的数据，位于不同的源中。 构建信息生产系统时，第一步是连接到所有必需的数据源（例如 SaaS 服务、文件共享、FTP、Web 服务），然后根据需要将数据移至中央位置进行后续处理。
+
+    没有数据工厂，企业就必须生成自定义数据移动组件或编写自定义服务，以便集成这些数据源并进行处理。 这样做代价高昂，并且难以集成和维护此类系统，通常缺乏企业级监视和报警，也没有完全托管型服务所能提供的控制。
+
+    而有了数据工厂，你就可以在数据管道中使用复制活动，将数据从本地和云的源数据存储移到云的集中数据存储进行进一步的分析。 例如，可以先将数据收集在 Azure Data Lake Store 中，在以后再使用 Azure Data Lake Analytics 计算服务对数据进行转换。 也可以将数据收集在 Azure Blob 存储中，在以后再使用 Azure HDInsight Hadoop 群集对数据进行转换。
+- **将数据转换为可信信息**。 
+
+    数据存在于云中的集中式数据存储以后，需创作并部署数据管道，以便通过可维护且可控制的计划可靠地生产已转换数据，为生产环境馈送可信数据。 Azure 数据工厂中的数据转换是通过各种转换活动完成的，其中包括 Hive、Pig、MapReduce、Azure 机器学习批处理，以及自定义 C# 活动，这些活动在 Azure HDInsight Hadoop 群集、Azure 机器学习 VM 或包含 VM 的 Azure 批处理池中运行。
+- **在一个位置监视数据管道**。
+
+    对于多样化的数据组合，需可靠且全面地了解存储、处理和数据移动服务，这十分重要。 数据工厂可帮助你快速访问端到端数据管道运行状况、查明问题并在需要时执行纠正操作。 可跨任何源直观地跟踪数据沿袭以及数据之间的关系。 从单个监视仪表板查看作业执行、系统运行状况和依赖项的完整历史核算。
+
+## <a name="how-does-it-work"></a>工作原理 
+Azure 数据工厂中存在三个信息生产阶段：
+
+![三个信息生产阶段](media/data-factory-introduction/three-information-production-stages.png)
+
+- **连接和收集**：此阶段在一个位置收集来自各种数据源的数据。
+- **转换和扩充**：此阶段处理或转换收集的数据。
+- **发布**。 此阶段发布可供 BI 工具、分析工具以及其他应用程序使用的数据。
+
+## <a name="key-components"></a>关键组件
+一个 Azure 订阅可能有多个数据工厂，或者有一个或多个 Azure 数据工厂实例。 Azure 数据工厂由四个关键组件组成，这些组件组合起来提供一个平台，供你在上面为数据流编写从简单到复杂的数据移动和转换业务流程。
+
+### <a name="activity"></a>活动
+活动定义对数据执行的操作。 例如，可以使用“复制”活动将数据从一个数据存储复制到另一个数据存储。 同样，可能使用在 Azure HDInsight 群集上运行 Hive 查询的“Hive”活动来转换或分析数据。 数据工厂支持两种类型的活动：数据移动活动和数据转换活动。
+
+每个活动使用零个或零个以上的数据集作为输入，生成一个或一个以上的数据集作为输出。 
+
+
+### <a name="data-movement-activities"></a>数据移动活动
+数据工厂中的复制活动可以将数据从源数据存储复制到接收器数据存储。 数据工厂支持以下数据存储。 来自任何源的数据都可以写入到任何接收器。 单击某个数据存储即可了解如何将数据复制到该存储，以及如何从该存储复制数据。
+
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
 有关详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)一文。
 
-## <a name="data-transformation-activities"></a>数据转换活动
+### <a name="data-transformation-activities"></a>数据转换活动
 [!INCLUDE [data-factory-transformation-activities](../../includes/data-factory-transformation-activities.md)]
 
 有关详细信息，请参阅[数据转换活动](data-factory-data-transformation-activities.md)一文。
 
 如果需要将数据移入/移出复制活动不支持的数据存储，或要使用自己的逻辑转换数据，可以创建**自定义 .NET 活动**。 有关创建和使用自定义活动的详细信息，请参阅[在 Azure数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)。
 
-## <a name="linked-services"></a>链接服务
-链接服务定义数据工厂连接到外部资源时所需的信息（示例：Azure 存储、本地 SQL Server、Azure HDInsight）。 数据工厂中的链接服务有两个用途：
+### <a name="pipeline"></a>管道
+管道是一组活动。 管道中的活动可以共同执行一项任务。 例如，一个管道可能包含一组活动，这些活动从 Azure Blob 引入数据，然后在 HDInsight 群集上运行 Hive 查询，以便对日志数据分区。 这样做的好处是，可以通过管道以集而非单独的形式管理活动。 例如，你可以部署和计划管道，而不需单独对活动进行操作。
+
+### <a name="datasets"></a>数据集
+数据集代表数据存储中的数据结构，这些结构直接指向你需要在活动中使用的数据，或者将其作为输入或输出引用。 例如，Azure Blob 数据集可在 Azure Blob 存储中指定供管道读取数据的 Blob 容器和文件夹。 
+
+### <a name="linked-services"></a>链接服务
+链接服务非常类似于连接字符串，用于定义数据工厂连接到外部资源所需的连接信息。 不妨这样考虑：数据集代表数据的结构，而链接服务则定义到数据源的连接。  数据工厂中的链接服务有两个用途：
 
 * 代表**数据存储**，包括但不限于本地 SQL Server、Oracle 数据库、文件共享或 Azure Blob 存储帐户。 有关支持的数据存储列表，请参阅[数据移动活动](#data-movement-activities)部分。
 * 代表可托管活动执行的**计算资源**。 例如，HDInsightHive 活动在 HDInsight Hadoop 群集上运行。 有关支持的计算环境列表，请参阅[数据转换活动](#data-transformation-activities)部分。
 
-## <a name="datasets"></a>数据集
-链接服务将数据存储链接到 Azure 数据工厂。 数据集代表数据存储中的数据结构。 例如，Azure 存储链接服务提供连接信息让数据工厂连接到 Azure 存储帐户。 Azure Blob 数据集在 Azure Blob 存储中指定管道要从中读取数据的 Blob 容器和文件夹。 同理，Azure SQL 链接服务提供 Azure SQL 数据库的连接信息，Azure SQL 数据集指定包含数据的表。   
-
-## <a name="relationship-between-data-factory-entities"></a>数据工厂实体之间的关系
-数据工厂使用几个协作的主要实体来定义输入和输出数据、处理事件，以及执行所需数据流而要使用的计划和资源。
-
+### <a name="relationship-between-data-factory-entities"></a>数据工厂实体之间的关系
 ![示意图：数据工厂（云数据集成服务）- 重要概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 **图 2.** 数据集、活动、管道与链接服务之间的关系
-
-了解链接服务、数据集、活动和管道这四个简单的概念之后，便可以开始实践了！ [构建第一个管道](data-factory-build-your-first-pipeline.md)。
 
 ## <a name="supported-regions"></a>支持的区域
 目前可在**美国西部**、**美国东部**和**北欧**区域创建数据工厂。 但是，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。

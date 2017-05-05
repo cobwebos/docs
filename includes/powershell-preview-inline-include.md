@@ -4,8 +4,3 @@ Azure PowerShell 目前提供两个版本 - 1.0 和 0.9.8。 如果你暂时不�
 
 新功能只会添加到 1.0 版本。 有关 1.0 版的信息，包括如何安装和卸载该版本，请参阅 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

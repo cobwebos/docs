@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 569a8db4266182122e9da175840484473e9106e5
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d244905089605bb8608085d3e0132590c927ef6f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -67,7 +67,7 @@ ms.lasthandoff: 04/11/2017
 
 6.  添加正在使用 Visual Studio 的 [ASP.net 身份验证方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[连接的服务](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)开发的应用程序时。
 
-7.  使用 [Azure AD PowerShell 模块](https://docs.microsoft.com/powershell/azuread/v2/azureactivedirectory)创建服务主体对象时。
+7.  使用 [Azure AD PowerShell 模块](/powershell/azure/install-adv2?view=azureadps-2.0)创建服务主体对象时。
 
 8.  以管理员身份[同意某应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)使用租户中的数据时。
 

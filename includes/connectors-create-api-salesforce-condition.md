@@ -16,8 +16,3 @@
    ![Salesforce 条件图像 7](./media/connectors-create-api-salesforce/condition-7.png)  
 8. 保存逻辑应用。  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

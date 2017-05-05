@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 9601ff3152e62baf95794919fdc5a7fc43204d52
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c30f58079c9d8b8077b65881517178fa0ae0e598
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/24/2017
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>配置先决条件
-1. 你需要最新版本的 Azure PowerShell 模块。 可以从 [Azure 下载页](https://azure.microsoft.com/downloads/)的 PowerShell 部分下载最新 PowerShell 模块。 有关如何配置计算机以使用 Azure PowerShell 模块的分步指导，请遵循[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的说明。
+1. 你需要最新版本的 Azure PowerShell 模块。 可以从 [Azure 下载页](https://azure.microsoft.com/downloads/)的 PowerShell 部分下载最新 PowerShell 模块。 有关如何配置计算机以使用 Azure PowerShell 模块的分步指导，请遵循[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 中的说明。
 2. 在开始配置之前，需要查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 3. 你必须有一个活动的 ExpressRoute 线路。
    * 请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)，并让连接提供商启用该线路。

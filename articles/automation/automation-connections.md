@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/13/2017
 ms.author: magoedte; bwren
 translationtype: Human Translation
-ms.sourcegitcommit: c86ec1d328d3cbf62c1a563766574a006299b232
-ms.openlocfilehash: 8bbd077108ba6ca6df67b64ab3fa24c81bf0ab00
-ms.lasthandoff: 01/14/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: bfb479020238bb4c2763f439c744aeddf97c8908
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -32,14 +32,14 @@ ms.lasthandoff: 01/14/2017
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell Cmdlet
 
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。 可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azureps-cmdlets-docs)已随附了这些 cmdlet。
+下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。 可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
 |Cmdlet|说明|
 |:---|:---|
-|[Get-AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/get-azurermautomationconnection)|检索连接。 包括一个哈希表，其中包括连接的字段的值。|
-|[New-AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/new-azurermautomationconnection)|创建新连接。|
-|[Remove-AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/remove-azurermautomationconnection)|删除现有连接。|
-|[Set-AzureRmAutomationConnectionFieldValue](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/Set-AzureRmAutomationConnectionFieldValue?redirectedfrom=msdn)|设置现有连接的一个特定字段的值。|
+|[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|检索连接。 包括一个哈希表，其中包括连接的字段的值。|
+|[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|创建新连接。|
+|[Remove-AzureRmAutomationConnection](/powershell/module/azurerm.automation/remove-azurermautomationconnection)|删除现有连接。|
+|[Set-AzureRmAutomationConnectionFieldValue](/powershell/module/azurerm.automation/set-azurermautomationconnectionfieldvalue)|设置现有连接的一个特定字段的值。|
 
 ## <a name="activities"></a>活动
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/14/2017
 
 |活动|说明|
 |---|---|
-|[Get-AutomationConnection](https://docs.microsoft.com/powershell/servicemanagement/azure.automation/v1.6.1/Get-AzureAutomationConnection?redirectedfrom=msdn)|获取要使用的连接。 返回包括该连接属性的哈希表。|
+|[Get-AutomationConnection](/powershell/module/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|获取要使用的连接。 返回包括该连接属性的哈希表。|
 
 >[!NOTE] 
 >应避免在 **Get- AutomationConnection** 的 -Name 参数中使用变量，因为这可能会使设计时发现 Runbook 或 DSC 配置与连接资产之间的依赖关系变得复杂化。
@@ -72,7 +72,7 @@ ms.lasthandoff: 01/14/2017
 
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>使用 Windows PowerShell 创建新连接
 
-使用 Windows PowerShell 通过 [New-AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/new-azurermautomationconnection) cmdlet 创建新连接。 此 cmdlet 有一个名为 **ConnectionFieldValues** 的参数，预期为一个[哈希表](http://technet.microsoft.com/library/hh847780.aspx)，用于为连接类型定义的每个属性定义值。
+使用 Windows PowerShell 通过 [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) cmdlet 创建新连接。 此 cmdlet 有一个名为 **ConnectionFieldValues** 的参数，预期为一个[哈希表](http://technet.microsoft.com/library/hh847780.aspx)，用于为连接类型定义的每个属性定义值。
 
 如果熟悉自动化的[运行方式帐户](automation-sec-configure-azure-runas-account.md)（可使用服务主体对 Runbook 进行身份验证），则可使用 PowerShell 脚本（在从门户创建运行方式帐户时作为替代方法提供）通过以下示例命令创建新的连接资产。  
 
@@ -108,3 +108,4 @@ ms.lasthandoff: 01/14/2017
 - 查看[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)，了解如何引导和控制 Runbook 中的逻辑流。  
 
 - 若要详细了解 Azure 自动化如何使用 PowerShell 模块，以及如何根据最佳实践创建你自己的 PowerShell 模块（充当 Azure 自动化中的集成模块），请参阅[集成模块](automation-integration-modules.md)。  
+

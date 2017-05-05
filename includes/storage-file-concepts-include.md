@@ -30,8 +30,3 @@
   `http://samples.file.core.windows.net/logs/CustomLogs/Log1.txt`
 
 有关如何命名共享、目录和文件的详细信息，请参阅 [命名和引用共享、目录、文件和元数据](http://msdn.microsoft.com/library/azure/dn167011.aspx)。
-
-
-<!--HONumber=Nov16_HO3-->
-
-

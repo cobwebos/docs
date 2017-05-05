@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: c62f8d077906ce8ad1b5501864a21ee369b2314a
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 0635120c4e16f3b8531039eee4c6651e7cdeca40
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -261,15 +261,17 @@ Linux 分发尚不支持 SMB 3.0 中的加密功能。 在某些分发中，如�
 
 在某些方案中，serverino 装载选项可能导致 ls 命令针对每个目录条目运行 stat，该行为会导致在列出大目录时性能降低。 可在“/etc/fstab”条目中检查装载选项：
 
-`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+`//<storage-account-name>.file.core.windows.net/<file-share-name> <mount-point> cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-还可以通过运行 **sudo mount | grep cifs** 命令并查看其输出来检查是否正在使用正确的选项：
+还可以通过直接运行 `sudo mount | grep cifs` 命令（示例输出如下所示）来检查所使用的选项是否正确。
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs
-(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
-dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//<storage-account-name>.file.core.windows.net/<file-share-name> on <mount-point> type cifs
+(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,
+noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
+dir_mode=0777,persistenthandles,nounix,serverino,
+mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)中的装载命令卸载并再次装载 Azure 文件，然后重新检查“/etc/fstab”条目是否具有正确选项。
+如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)中的装载命令卸载并再次装载 Azure 文件，然后重新检查“/etc/fstab”条目所使用的选项是否正确。
 
 <a id="ubuntumounterror"></a>
 ## <a name="mount-error11-resource-temporarily-unavailable-when-mounting-to-ubuntu-48-kernel"></a>装载错误(11)：装载到 Ubuntu 4.8+ 内核时资源暂时不可用

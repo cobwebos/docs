@@ -12,8 +12,3 @@
 [xamarin-android-get-started-users]: ../articles/app-service-mobile/app-service-mobile-xamarin-android-get-started-users.md
 [ios-get-started-users]: ../articles/app-service-mobile/app-service-mobile-ios-get-started-users.md
 [xamarin-forms-get-started-users]: ../articles/app-service-mobile/app-service-mobile-xamarin-forms-get-started-users.md
-
-
-<!--HONumber=Nov16_HO3-->
-
-

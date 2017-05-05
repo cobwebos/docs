@@ -6,8 +6,3 @@
 > * [从本地 SQL 数据库](../articles/machine-learning/machine-learning-use-data-from-an-on-premises-sql-server.md)
 >  
 
-
-
-<!--HONumber=Dec16_HO2-->
-
-

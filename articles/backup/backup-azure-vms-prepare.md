@@ -13,12 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/10/2017
+ms.date: 4/25/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2eb88bd81a46dbff9842887976c59d150ae4dad6
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 045dfff9a439674c220a962907d2fe91f2fe0b35
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -83,7 +83,7 @@ ms.lasthandoff: 04/03/2017
 | 选项 | 优点 | 缺点 |
 | --- | --- | --- |
 | 将 IP 范围加入允许列表 |无额外成本。<br><br>若要在 NSG 中打开访问权限，请使用 <i>Set-AzureNetworkSecurityRule</i> cmdlet。 |管理起来很复杂，因为受影响的 IP 范围会不断变化。<br><br>允许访问整个 Azure，而不只是存储。 |
-| HTTP 代理 |允许在代理中对存储 URL 进行精细控制。<br>对 VM 进行单点 Internet 访问。<br>不受 Azure IP 地址变化的影响。 |通过代理软件运行 VM 带来的额外成本。 |
+| HTTP 代理 |允许在代理中对存储 URL 进行精细控制。 若要在代理中设置精细控制，需要将 https://\*.blob.core.windows.net/\* URL 模式加入允许列表。 若要仅将 VM 使用的存储帐户加入允许列表，需要将 https://\<storageAccount\>.blob.core.windows.net/\* URL 模式加入允许列表。 <br>对 VM 进行单点 Internet 访问。<br>不受 Azure IP 地址变化的影响。 |通过代理软件运行 VM 带来的额外成本。 |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>将 Azure 数据中心 IP 范围加入允许列表
 若要将 Azure 数据中心 IP 范围加入允许列表，请参阅 [Azure 网站](http://www.microsoft.com/en-us/download/details.aspx?id=41653)，获取有关 IP 范围的详细信息和说明。

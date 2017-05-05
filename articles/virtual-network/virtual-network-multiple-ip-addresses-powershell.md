@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: e37c2d1591fbb4a0fbc198697846e2bce73b085b
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7c93a02f7a290aab3d451da72dabd431f9d40b0c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/27/2017
 
 下面的步骤说明如何根据方案中所述，创建具有多个 IP 地址的示例 VM。 根据实现的需要，更改变量值。
 
-1. 打开 PowerShell 命令提示符，在单个 PowerShell 会话中完成本部分余下的步骤。 如果尚未安装并配置 PowerShell，请先完成[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文中所述的步骤。
+1. 打开 PowerShell 命令提示符，在单个 PowerShell 会话中完成本部分余下的步骤。 如果尚未安装并配置 PowerShell，请先完成[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文中所述的步骤。
 2. 使用 `login-azurermaccount` 命令登录你的帐户。
 3. 将 myResourceGroup 和 westus 替换为所选名称和位置。 创建资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
@@ -197,7 +197,7 @@ ms.lasthandoff: 03/27/2017
 
 完成以下步骤即可将专用和公共 IP 地址添加到 NIC。 以下部分中的示例假定用户的 VM 已完成本文[方案](#Scenario)中描述的三项 IP 配置，但这不是必需的。
 
-1. 打开 PowerShell 命令提示符，在单个 PowerShell 会话中完成本部分余下的步骤。 如果尚未安装并配置 PowerShell，请先完成[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文中所述的步骤。
+1. 打开 PowerShell 命令提示符，在单个 PowerShell 会话中完成本部分余下的步骤。 如果尚未安装并配置 PowerShell，请先完成[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文中所述的步骤。
 2. 将以下 $Variable 的“值”分别更改为要向其添加 IP 地址的 NIC 名称，以及 NIC 所在的资源组和位置：
 
     ```powershell

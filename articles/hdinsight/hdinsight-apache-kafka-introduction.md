@@ -8,15 +8,17 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: f284b6e3-5f3b-4a50-b455-917e77588069
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2d744e753224e4ce98680d3228914fd89e87eba4
-ms.openlocfilehash: 28d213fa23d480635fd4376e22ff54a5e6374350
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: a3ceca6cd0f470a5cd6849c345867f094b870a85
+ms.lasthandoff: 04/20/2017
 
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>Apache Kafka on HDInsight（预览版）简介
@@ -31,7 +33,7 @@ Kafka 提供以下功能：
 
 * 流处理：Kafka 通常与 Apache Storm 或 Spark 配合使用，以实现实时流式处理。 Kafka 0.10.0.0（HDInsight 版本 3.5）引入了流式处理 API，可用于构建流式处理解决方案，而无需使用 Storm 或 Spark。
 
-* 水平规模：Kafka 分区可对 HDInsight 群集中节点进行流式处理。 使用者进程可与单个分区关联，以便在使用记录时提供负载平衡。
+* 水平规模：Kafka 分区可对 HDInsight 群集中节点进行流式处理。 使用者进程可与单个分区关联，以便在使用记录时提供负载均衡。
 
 * 按顺序传递：在每个分区中，记录按照被接收的顺序存储在流中。 通过为每个分区关联一个使用者进程，可保证按顺序处理记录。
 
@@ -63,9 +65,4 @@ Kafka 提供以下功能：
 
 * [将 Apache Spark 与 Kafka on HDInsight 结合使用](hdinsight-apache-spark-with-kafka.md)
 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+* [通过 Azure 虚拟网络连接到 Kafka](hdinsight-apache-kafka-connect-vpn-gateway.md)

@@ -5,8 +5,3 @@
 
 [![在几分钟内开始使用 Azure 开发测试实验室](./media/devtest-lab-try-it-out/get-started.png)](http://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

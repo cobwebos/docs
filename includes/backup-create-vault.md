@@ -36,8 +36,3 @@ GRS 维护你的数据的六个副本。 使用 GRS 时，你的数据将在主�
 
 ![LRS](./media/backup-create-vault/lrs.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

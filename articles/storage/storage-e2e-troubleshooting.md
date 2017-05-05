@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: acf807538c8c9efdadb95c4b66db9a9d5d1f7a6d
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d1709c2c28505e66a88cfbbcf4dc88c8ccca841f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -103,9 +103,9 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 
 **通过 PowerShell**
 
-若要开始使用 Azure 适用的 PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+若要开始使用 Azure 适用的 PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
-1. 通过 [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) cmdlet，将 Azure 用户帐户添加到 PowerShell 窗口中：
+1. 通过 [Add-AzureAccount](/powershell/module/azure/add-azureaccount?view=azuresmps-3.7.0) cmdlet，将 Azure 用户帐户添加到 PowerShell 窗口中：
    
     ```powershell
     Add-AzureAccount
@@ -374,3 +374,4 @@ Message Analyzer 将查找并选择搜索条件匹配客户端请求 ID 的第�
 * [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
 * [Microsoft Message Analyzer Operating Guide](http://technet.microsoft.com/library/jj649776.aspx)（Microsoft Message Analyzer 操作指南）
+

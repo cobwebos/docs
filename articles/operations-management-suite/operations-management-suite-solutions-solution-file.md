@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/17/2017
+ms.date: 04/30/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
@@ -44,7 +44,7 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 
     {
        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "",
+       "contentVersion": "1.0",
        "parameters": {  },
        "variables": {  },
        "resources": [  ],
@@ -144,6 +144,7 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
                 "category": "Schedule"
             }
         }
+    }
 
 
 请参阅解决方案的其他元素中语法为 **parameters('parameter name')** 的参数值。  例如，若要访问工作区名称，将使用 **parameters('workspaceName')**

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/30/2017
+ms.date: 04/21/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 7c1532db4d58673add9b8076154c471554810614
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 1d712ef6987a4af2014bedb54378f288bcf535a8
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -48,10 +48,10 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 ![创建 Web 应用](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "创建 Web 应用")
 
-## <a name="step-2-get-client-id-client-secret-and-tenant-id"></a>步骤 2：获取客户端 ID、客户端密码和租户 ID
+## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>步骤 2：获取应用程序 ID、身份验证密钥和租户 ID
 以编程方式登录时，需要应用程序的 ID。 如果应用程序在其自己的凭据下运行，则还需要身份验证密钥。
 
-* 若要了解如何检索应用程序的客户端 ID 和客户端密钥，请参阅[获取应用程序 ID 和身份验证密钥](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)。
+* 若要了解如何检索应用程序的应用程序 ID 和身份验证密钥（也称为客户端密码），请参阅[获取应用程序 ID 和身份验证密钥](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)。
 
 * 有关如何检索租户 ID 的说明，请参阅[获取租户 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)。
 
@@ -90,8 +90,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 4. 从终结点列表中，复制 OAuth 2.0 令牌终结点。
 
-
-     ![OAuth 令牌终结点](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 令牌终结点")   
+    ![OAuth 令牌终结点](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 令牌终结点")   
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，创建了一个 Azure AD Web 应用程序，并使用 .NET SDK、Java SDK 等在创作的客户端应用程序中收集了所需的信息。现在可以转到以下文章，它们讨论了如何使用 Azure AD Web 应用程序先进行 Data Lake Store 身份验证，再在存储中执行其他操作。

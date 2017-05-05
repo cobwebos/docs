@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 4d7476156b51ca82b1f119becb1576a97d2bd457
-ms.lasthandoff: 03/23/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 87b8b91fc5970bd127dfdc47e24d99a19471aa8c
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -54,10 +54,10 @@ ms.lasthandoff: 03/23/2017
 
 ## <a name="download-the-code"></a>下载代码
 
-本教程的代码在 [GitHub](https://github.com/Azure-Samples/b2c-dotnet-webapp-and-webapi) 上维护。 可运行以下命令来克隆示例：
+本教程的代码在 [GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) 上维护。 可运行以下命令来克隆示例：
 
 ```console
-git clone https://github.com/Azure-Samples/b2c-dotnet-webapp-and-webapi.git
+git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
 下载示例代码后，打开 Visual Studio .sln 文件开始处理。 解决方案文件包含两个项目：`TaskWebApp` 和 `TaskService`。 `TaskWebApp` 是用户交互的 MVC Web 应用程序。 `TaskService` 是应用的后端 Web API，存储每个用户的待办事项列表。 本文仅讨论 `TaskWebApp` 应用程序。 若要了解如何使用 Azure AD B2C 构建 `TaskService`，请参阅 [.NET Web 应用教程](active-directory-b2c-devquickstarts-api-dotnet.md)。

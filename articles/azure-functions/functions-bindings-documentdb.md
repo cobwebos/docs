@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/10/2016
+ms.date: 04/18/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2ac78606f851068fa0fb7dcab3bac1c629b9cdb3
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: e38c9187be42946df1e8059ba44f10f76d32d984
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -37,34 +37,27 @@ ms.lasthandoff: 04/03/2017
 ## <a name="documentdb-input-binding"></a>DocumentDB 输入绑定
 DocumentDB 输入绑定检索 DocumentDB 文档，并将其传递给函数的命名输入参数。 可根据调用函数的触发器确定文档 ID。 
 
-函数的 DocumentDB 输入使用 function.json 的 `bindings` 数组中的下列 JSON 对象：
+function.json 中，DocumentDB 输入绑定具有以下属性：
 
-```json
-{
-  "name": "<Name of input parameter in function signature>",
-  "type": "documentDB",
-  "databaseName": "<Name of the DocumentDB database>",
-  "collectionName": "<Name of the DocumentDB collection>",
-  "id": "<Id of the DocumentDB document - see below>",
-  "connection": "<Name of app setting with connection string - see below>",
-  "direction": "in"
-},
-```
+- `name`：在文档的函数代码中使用的标识符名称
+- `type`：必须设置为“documentdb”
+- `databaseName`：包含文档的数据库
+- `collectionName`：包含文档的集合
+- `id`：要检索的文档的 ID。 此属性支持绑定参数；请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)一文中的[绑定到绑定表达式中的自定义输入属性](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)。
+- `sqlQuery`：用于检索多个文档的 DocumentDB SQL 查询。 该查询支持运行时绑定。 例如： `SELECT * FROM c where c.departmentId = {departmentId}`
+- `connection`：内含 DocumentDB 连接字符串的应用设置的名称
+- `direction`：必须设置为 `"in"`。
 
-注意以下事项：
+无法同时指定属性 `id` 和 `sqlQuery`。 如果 `id` 和 `sqlQuery` 均未设置，则检索整个集合。
 
-* `id` 支持类似 `{queueTrigger}` 的绑定，它使用队列消息的字符串值作为文档 ID。
-* `connection` 必须是某个应用设置的名称，该设置指向 DocumentDB 帐户的终结点（包含值 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`）。 如果通过函数门户 UI 创建 DocumentDB 帐户，则帐户创建过程会创建一个应用设置。 若要使用现有 DocumentDB 帐户，需要[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
-* 若未找到指定文档，则函数的命名输入参数设置为 `null`。 
+## <a name="using-a-documentdb-input-binding"></a>使用 DocumentDB 输入绑定
 
-## <a name="input-usage"></a>输入使用情况
-本部分演示如何在函数代码中使用 DocumentDB 输入绑定。
-
-在 C# 函数和 F# 函数中，函数成功退出后，对输入文档（命名输入参数）所做的任何更改都将自动发送回集合。 在 Node.js 函数中，输入绑定中的文档更新不会发送回集合。 但是，可以使用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 更新输入文档。 在 [Node.js 示例](#innodejs)中查看如何实现。
+* 在 C# 函数和 F# 函数中，函数成功退出后，通过命名输入参数对输入文档所做的任何更改都将自动进行。 
+* 在 JavaScript 函数中，函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 [JavaScript 示例](#injavascript)。
 
 <a name="inputsample"></a>
 
-## <a name="input-sample"></a>输入示例
+## <a name="input-sample-for-single-document"></a>单个文档的的输入示例
 假设在 function.json 的 `bindings` 数组中有以下 DocumentDB 输入绑定：
 
 ```json
@@ -83,12 +76,13 @@ DocumentDB 输入绑定检索 DocumentDB 文档，并将其传递给函数的命
 
 * [C#](#incsharp)
 * [F#](#infsharp)
-* [Node.js](#innodejs)
+* [JavaScript](#injavascript)
 
 <a name="incsharp"></a>
 ### <a name="input-sample-in-c"></a>C 中的输入示例# #
 
 ```cs
+// Change input document contents using DocumentDB input binding 
 public static void Run(string myQueueItem, dynamic inputDocument)
 {   
   inputDocument.text = "This has changed.";
@@ -99,12 +93,13 @@ public static void Run(string myQueueItem, dynamic inputDocument)
 ### <a name="input-sample-in-f"></a>F 中的输入示例# #
 
 ```fsharp
+(* Change input document contents using DocumentDB input binding *)
 open FSharp.Interop.Dynamic
 let Run(myQueueItem: string, inputDocument: obj) =
   inputDocument?text <- "This has changed."
 ```
 
-需要添加指定 `FSharp.Interop.Dynamic` 和 `Dynamitey` NuGet 依赖关系的 `project.json` 文件：
+此示例要求具有指定 `FSharp.Interop.Dynamic` 和 `Dynamitey` NuGet 依赖关系的 `project.json` 文件：
 
 ```json
 {
@@ -121,11 +116,12 @@ let Run(myQueueItem: string, inputDocument: obj) =
 
 若要添加 `project.json` 文件，请参阅 [F# 包管理](functions-reference-fsharp.md#package)。
 
-<a name="innodejs"></a>
+<a name="injavascript"></a>
 
-### <a name="input-sample-in-nodejs"></a>Node.js 中的输入示例
+### <a name="input-sample-in-javascript"></a>JavaScript 中的输入示例
 
 ```javascript
+// Change input document contents using DocumentDB input binding, using context.bindings.inputDocumentOut
 module.exports = function (context) {   
   context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
   context.bindings.inputDocumentOut.text = "This was updated!";
@@ -133,29 +129,66 @@ module.exports = function (context) {
 };
 ```
 
-## <a id="docdboutput"></a>DocumentDB 输出绑定
-DocumentDB 输出绑定允许将新文档写入 Azure DocumentDB 数据库。 
+## <a name="input-sample-with-multiple-documents"></a>多个文档的输入示例
 
-输出绑定在 function.json 的 `bindings` 数组中使用以下 JSON 对象： 
+假设要检索 SQL 查询中指定的多个文档，请使用队列触发器自定义查询参数。 
 
-```json
+在此示例中，队列触发器提供 `departmentId` 参数。`{ "departmentId" : "Finance" }` 队列消息将返回财务部门的所有记录。 在 function.json 中使用以下代码：
+
+```
 {
-  "name": "<Name of output parameter in function signature>",
-  "type": "documentDB",
-  "databaseName": "<Name of the DocumentDB database>",
-  "collectionName": "<Name of the DocumentDB collection>",
-  "createIfNotExists": <true or false - see below>,
-  "connection": "<Value of AccountEndpoint in Application Setting - see below>",
-  "direction": "out"
+    "name": "documents",
+    "type": "documentdb",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
+    "connection": "DocumentDBConnection"
 }
 ```
 
-注意以下事项：
+### <a name="input-sample-with-multiple-documents-in-c"></a>C 中多个文档的输入示例#
 
-* 将 `createIfNotExists` 设置为 `true` 以创建数据库和集合（如果不存在）。 默认值为 `false`。 新集合使用保留的吞吐量进行创建，具有定价方面的隐含意义。 有关详细信息，请参阅 [DocumentDB 定价](https://azure.microsoft.com/pricing/details/documentdb/)。
-* `connection` 必须是某个应用设置的名称，该设置指向 DocumentDB 帐户的终结点（包含值 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>`）。 如果通过函数门户 UI 创建 DocumentDB 帐户，则帐户创建过程会创建一个新应用设置。 若要使用现有 DocumentDB 帐户，需要[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
+```csharp
+public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
+{   
+    foreach (var doc in documents)
+    {
+        // operate on each document
+    }    
+}
 
-## <a name="output-usage"></a>输出使用情况
+public class QueuePayload
+{
+    public string departmentId { get; set; }
+}
+```
+
+### <a name="input-sample-with-multiple-documents-in-javascript"></a>JavaScript 中多个文档的输入示例
+
+```javascript
+module.exports = function (context, input) {    
+    var documents = context.bindings.documents;
+    for (var i = 0; i < documents.length; i++) {
+        var document = documents[i];
+        // operate on each document
+    }        
+    context.done();
+};
+```
+
+## <a id="docdboutput"></a>DocumentDB 输出绑定
+DocumentDB 输出绑定允许将新文档写入 Azure DocumentDB 数据库。 在 function.json 中，该输出绑定具有以下属性：
+
+- `name`：在新文档的函数代码中使用的标识符
+- `type`：必须设置为 `"documentdb"`
+- `databaseName`：包含将在其中创建新文档的集合的数据库。
+- `collectionName`：将在其中创建新文档的集合。
+- `createIfNotExists`：一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*。 其原因是新集合使用保留吞吐量进行创建，这会影响定价。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/documentdb/)。
+- `connection`：内含 DocumentDB 连接字符串的应用设置的名称
+- `direction`：必须设置为 `"out"`
+
+## <a name="using-a-documentdb-output-binding"></a>使用 DocumentDB 输出绑定
 本部分演示如何在函数代码中使用 DocumentDB 输出绑定。
 
 当写入函数中的输出参数时，默认情况下数据库中将生成一个新文档，并以自动生成的 GUID 作为文档 ID。 可以通过在输出参数中指定 `id` JSON 属性，来指定输出文档的文档 ID。 
@@ -163,27 +196,11 @@ DocumentDB 输出绑定允许将新文档写入 Azure DocumentDB 数据库。
 >[!Note]  
 >如果指定现有文档的 ID，它会被新的输出文档覆盖。 
 
-可使用以下任意类型写入到输出：
-
-* 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 有助于 JSON 序列化。
-  如果声明自定义输出类型（例如 `out FooType paramName`），Azure Functions 将尝试将对象序列化为 JSON。 如果函数退出时输出参数为 null，则 Functions 运行时将创建一个 blob 作为 null 对象。
-* 字符串 - (`out string paramName`) 适用于文本 blob 数据。 Functions 运行时仅在函数退出时字符串参数为非 null 才创建 blob。
-
-在 C# 函数中，还可输出到以下任意类型：
-
-* `TextWriter`
-* `Stream`
-* `CloudBlobStream`
-* `ICloudBlob`
-* `CloudBlockBlob` 
-* `CloudPageBlob` 
-
 若要输出多个文档，还可以绑定到 `ICollector<T>` 或 `IAsyncCollector<T>`，其中 `T` 是受支持的类型之一。
-
 
 <a name="outputsample"></a>
 
-## <a name="output-sample"></a>输出示例
+## <a name="documentdb-output-binding-sample"></a>DocumentDB 输出绑定示例
 假设在 function.json 的 `bindings` 数组中有以下 DocumentDB 输出绑定：
 
 ```json
@@ -223,7 +240,7 @@ DocumentDB 输出绑定允许将新文档写入 Azure DocumentDB 数据库。
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
-* [Node.js](#outnodejs)
+* [JavaScript](#outjavascript)
 
 <a name="outcsharp"></a>
 
@@ -276,7 +293,7 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
       address = employee?address }
 ```
 
-需要添加指定 `FSharp.Interop.Dynamic` 和 `Dynamitey` NuGet 依赖关系的 `project.json` 文件：
+此示例要求具有指定 `FSharp.Interop.Dynamic` 和 `Dynamitey` NuGet 依赖关系的 `project.json` 文件：
 
 ```json
 {
@@ -293,9 +310,9 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
 
 若要添加 `project.json` 文件，请参阅 [F# 包管理](functions-reference-fsharp.md#package)。
 
-<a name="outnodejs"></a>
+<a name="outjavascript"></a>
 
-### <a name="output-sample-in-nodejs"></a>Node.js 中的输出示例
+### <a name="output-sample-in-javascript"></a>JavaScript 中的输出示例
 
 ```javascript
 module.exports = function (context) {

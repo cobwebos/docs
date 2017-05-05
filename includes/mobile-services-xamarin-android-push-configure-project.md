@@ -39,8 +39,3 @@
 
 **ToDoActivity** 现已准备就绪，可以添加推送通知了。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

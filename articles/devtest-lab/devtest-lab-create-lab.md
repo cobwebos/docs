@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 开发测试实验室中创建实验室 | Microsoft 文档"
+title: "在 Azure 开发测试实验室中创建实验室 | Microsoft Docs"
 description: "在 Azure 开发测试实验室中创建适用于虚拟机的实验室"
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 09/12/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 29c4c2a2818468a2fa8360eebd4b653bdcbbde19
-ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 75188a8f74b08d28b92259348626d5734ed4ce6c
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -40,9 +41,11 @@ ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
    2. 选择要与实验室关联的“订阅”  。
    3. 选择用于存储实验室的“位置”  。
    4. 选择“自动关机”  ，指定是否要自动关闭所有实验室的 VM 以及为其指定参数。 
-   5. 选择“创建” 。
-      
-      ![创建实验室边栏选项卡](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+   5. 如果想要在门户仪表板上显示实验室的快捷方式，请选择“固定到仪表板”。
+   6. 请选择“自动化选项”，以便获取适用于配置自动化的 Azure Resource Manager 模板。 
+   7. 选择“创建” 。
+    
+    ![创建实验室边栏选项卡](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
@@ -54,10 +57,5 @@ ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
 * [创建实验室模板](devtest-lab-create-template.md)。
 * [创建适用于 VM 的自定义项目](devtest-lab-artifact-author.md)。
 * [将含有项目的 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

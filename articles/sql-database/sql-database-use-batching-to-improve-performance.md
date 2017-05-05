@@ -16,18 +16,14 @@ ms.workload: data-management
 ms.date: 07/12/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 62e8e0299aff517f45c89349ed836ec8a6dabd2b
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: b62097f945bc5c595c0893d16bb2c1d9bbfd7a07
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>如何使用批处理来改善 SQL 数据库应用程序的性能
 对 Azure SQL 数据库执行批处理操作可以大幅改善应用程序的性能和缩放性。 为了帮助你了解优点，本文的第一部分包含一些示例测试结果用于比较对 SQL 数据库发出的顺序请求和分批请求。 本文的余下部分介绍了帮助你在 Azure 应用程序中成功使用批处理的方法、方案和注意事项。
-
-**作者**：Jason Roth、Silvano Coriani、Trent Swanson (Full Scale 180 Inc)
-
-**审校**：Conor Cunningham、Michael Thomassy
 
 ## <a name="why-is-batching-important-for-sql-database"></a>为什么批处理对 SQL 数据库很重要？
 对远程服务的批处理调用是提高性能和可伸缩性的常用策略。 对于任何与远程服务的交互（如序列化、网络传输和反序列化），都有固定的处理开销。 将很多单独的事务打包为一个批处理操作可最大限度降低这些成本。
@@ -623,6 +619,6 @@ OrderID 表中的 PurchaseOrderDetail 列必须引用 PurchaseOrder 表的订单
 * 请考虑对大小和时间进行缓冲，为更多方案实现批处理。
 
 ## <a name="next-steps"></a>后续步骤
-本文着重于与批处理相关的数据库设计和代码编写技术，以及如何改善应用程序的性能和缩放性。 但这只是整体策略中的一个因素。 有关其他可改善性能和缩放性的方式，请参阅 [Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md)及[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
+本文着重于与批处理相关的数据库设计和代码编写技术，以及如何改善应用程序的性能和缩放性。 但这只是整体策略中的一个因素。 有关其他可改善性能和缩放性的方式，请参阅 [Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md)及[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)。
 
 

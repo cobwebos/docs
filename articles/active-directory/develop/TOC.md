@@ -1,10 +1,11 @@
 # 概述
+## [与 Azure AD 集成](active-directory-how-to-integrate.md)
 ## [开发人员指南](active-directory-developers-guide.md)
 ## [应用和 Azure Active Directory](active-directory-how-applications-are-added.md)
 ## [开发人员术语表](active-directory-dev-glossary.md)
-## [AAD 图形 API](active-directory-graph-api.md)
+## [Azure AD 图形 API](active-directory-graph-api.md)
 # 快速入门
-## [如何获取 AAD 租户](active-directory-howto-tenant.md)
+## [如何获取 Azure AD 租户](active-directory-howto-tenant.md)
 ## [将应用与 AAD 集成](active-directory-integrating-applications.md)
 ## 移动应用和电脑应用
 ### [iOS](active-directory-devquickstarts-ios.md)
@@ -23,9 +24,9 @@
 ## Web API
 ### [Web API 和 .NET](active-directory-devquickstarts-webapi-dotnet.md)
 ### [NodeJS](active-directory-devquickstarts-webapi-nodejs.md)
-## [AAD 图形 API](active-directory-graph-api-quickstart.md)
+## [Azure AD 图形 API](active-directory-graph-api-quickstart.md)
 # 指南
-## [身份验证模式](active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad.md)
+## [身份验证模式](active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad)
 ### [本机应用](active-directory-authentication-scenarios.md#native-application-to-web-api)
 ### [Web 应用](active-directory-authentication-scenarios.md#web-application-to-web-api)
 ### [Web API](active-directory-authentication-scenarios.md#web-application-to-web-api)
@@ -45,7 +46,7 @@
 ### [单一登录 SAML 协议](active-directory-single-sign-on-protocol-reference.md)
 ### [单一注销 SAML 协议](active-directory-single-sign-out-protocol-reference.md)
 ## 使用 Visual Studio
-### [开始使用 Azure Active Directory 和 Visual Studio 连接服务（MVC Projects.md）](vs-active-directory-dotnet-getting-started.md)
+### [开始使用 Visual Studio 连接的服务 (MVC Projects.md)](vs-active-directory-dotnet-getting-started.md)
 ### [身份验证检测期间的错误](vs-active-directory-error.md)
 ### [WebApi 入门](vs-active-directory-webapi-getting-started.md)
 ### [我的 Web API 项目发生了什么情况](vs-active-directory-webapi-what-happened.md)

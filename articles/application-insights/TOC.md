@@ -18,6 +18,7 @@
 ### [Web 应用 - 运行时](app-insights-java-live.md)
 ### [Docker 应用](app-insights-docker.md)
 
+
 ## 监视网页
 ### [JavaScript](app-insights-javascript.md)
 
@@ -75,6 +76,7 @@
 #### [仪表板](app-insights-dashboards.md)
 #### [搜索](app-insights-diagnostic-search.md)
 #### [指标](app-insights-metrics-explorer.md)
+#### [实时流](app-insights-live-stream.md)
 
 #### [应用程序映射](app-insights-app-map.md)
 #### [HockeyApp 数据](app-insights-hockeyapp-bridge-app.md)
@@ -132,6 +134,14 @@
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [REST](https://dev.applicationinsights.io/)
+## [数据模型](application-insights-data-model.md)
+### [请求](application-insights-data-model-request-telemetry.md)
+### [依赖项](application-insights-data-model-dependency-telemetry.md)
+### [异常](application-insights-data-model-exception-telemetry.md)
+### [跟踪](application-insights-data-model-trace-telemetry.md)
+### [事件](application-insights-data-model-event-telemetry.md)
+### [指标](application-insights-data-model-metric-telemetry.md)
+## [遥测关联](application-insights-correlation.md)
 
 # 资源
 

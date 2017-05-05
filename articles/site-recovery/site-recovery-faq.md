@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 3807e51d47927ce94a62b943b85be67a247420b8
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 63f2cf1617bf9c265273c6a8e91703542b9eb8d4
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -171,7 +171,7 @@ Azure 具有复原能力。 站点恢复已经能够根据需要故障转移到�
 可以从辅助站点触发非计划的故障转移。 站点恢复不需要来自主站点的连接即可执行故障转移。
 
 ### <a name="is-failover-automatic"></a>故障转移是自动发生的吗？
-故障转移不是自动的。 你可以在门户中单击一下来启动故障转移，或者使用[站点恢复 PowerShell](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery) 来触发故障转移。 在站点恢复门户中可以轻松进行故障回复。
+故障转移不是自动的。 你可以在门户中单击一下来启动故障转移，或者使用[站点恢复 PowerShell](/powershell/module/azurerm.siterecovery) 来触发故障转移。 在站点恢复门户中可以轻松进行故障回复。
 
 若要自动化，你可以使用本地 Orchestrator 或 Operations Manager 来检测虚拟机故障，然后使用 SDK 来触发故障转移。
 

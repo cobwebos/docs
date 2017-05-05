@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
-ms.openlocfilehash: 15b4e8d2de44b71ec0fd65a9c78879b5613bb748
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 2f034718730f112ba85865ae032fb7bd07045b16
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -37,7 +37,7 @@ RecoveryManager 类是[弹性数据库客户端库](sql-database-elastic-databas
 
 GSM 和 LSM 可能因以下原因变得不同步：
 
-1. 删除其范围被认为不再被使用的分片，或重命名分片。 删除分片导致**孤立的分片映射**。 类似地，重命名的数据库同样可能会造成孤立的分片映射。 分片可能需要删除或分片位置需要更新，具体取决于更改的目的。 若要恢复已删除的数据库，请参阅[还原已删除的数据库](sql-database-restore-deleted-database-portal.md)。
+1. 删除其范围被认为不再被使用的分片，或重命名分片。 删除分片导致**孤立的分片映射**。 类似地，重命名的数据库同样可能会造成孤立的分片映射。 分片可能需要删除或分片位置需要更新，具体取决于更改的目的。 若要恢复已删除的数据库，请参阅[还原已删除的数据库](sql-database-recovery-using-backups.md)。
 2. 发生异地故障转移事件。 若要继续，必须有人更新服务器名称和应用程序中分片映射管理器的数据库名称，然后更新分片映射中所有分片的分片映射详细信息。 如果存在异地故障转移，此类恢复逻辑应该在故障转移工作流中自动化。 自动化修复操作可为异地冗余的数据库启用顺畅的管理，并避免人工操作。 若要了解在出现数据中心中断时用于恢复数据库的选项，请参阅[业务连续性](sql-database-business-continuity.md)和[灾难恢复](sql-database-disaster-recovery.md)。
 3. 分片或 ShardMapManager 数据库将还原到较早的时间点。 若要了解使用备份的时点恢复，请参阅[使用备份恢复](sql-database-recovery-using-backups.md)。
 
@@ -77,7 +77,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
    rm.DetachShard(s.Location, customerMap);
    ``` 
 
-在删除分片前，先映射 GSM 中的分片位置。 由于已删除分片，假设这是特意的，而且分片键范围已不再使用中。 如果不是这种情况，则可以执行时间点还原。 以从较早的时间点还原分片。 （在这种情况下，请查看以下部分了解如何检测分片的不一致性。）若要恢复，请参阅[时点恢复](sql-database-point-in-time-restore-portal.md)。
+在删除分片前，分片映射反映了 GSM 中的分片位置。 由于已删除分片，假设这是特意的，而且分片键范围已不再使用中。 如果不是这种情况，则可以执行时间点还原。 以从较早的时间点还原分片。 （在这种情况下，请查看以下部分了解如何检测分片的不一致性。）若要恢复，请参阅[时点恢复](sql-database-recovery-using-backups.md)。
 
 由于假设数据库删除操作是有意而为的，最终的管理清理操作是删除分片映射管理器中分片的条目。 这可以防止应用程序无意中将信息写入到非预期的范围。
 

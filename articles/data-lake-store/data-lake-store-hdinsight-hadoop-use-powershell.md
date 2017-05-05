@@ -14,9 +14,9 @@ ms.workload: big-data
 ms.date: 02/14/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 230cbb12830793ca4e6b9679c5c37c4733c00f02
-ms.lasthandoff: 04/05/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: eb92706201760c2682d7b45a51a518c40aba3bd4
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -53,7 +53,7 @@ ms.lasthandoff: 04/05/2017
 在开始阅读本教程前，你必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * **Windows SDK**。 可从[此处](https://dev.windows.com/en-us/downloads)进行安装。 可使用它来创建安全证书。
 * **Azure Active Directory 服务主体**。 本教程中的步骤用于指导如何在 Azure AD 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 Azure AD 管理员可以跳过此先决条件，继续阅读本教程。
 

@@ -6,8 +6,3 @@
 > * 如果使用的是 Mac 或 Linux，请从 [http://nodejs.org](http://nodejs.org) 安装 Node.js。 Windows 安装程序已包括 Node.js。
 > 
 > 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -17,6 +17,7 @@ ms.author: hawong
 translationtype: Human Translation
 ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
 ms.openlocfilehash: 7bef38eaea90d950c195dee0d741750cf65870df
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -42,7 +43,7 @@ ms.openlocfilehash: 7bef38eaea90d950c195dee0d741750cf65870df
 
 * Azure 订阅。 Azure 是基于订阅的平台。  有关获取订阅的详细信息，请参阅[购买选项](https://azure.microsoft.com/pricing/purchase-options/)、[成员优惠](https://azure.microsoft.com/pricing/member-offers/)或[免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="a-idcreatedbastep-1-download-the-template-files"></a><a id="CreateDB"></a>步骤 1：下载模板文件
+## <a id="CreateDB"></a>步骤 1：下载模板文件
 让我们从下载模板文件开始，我们将在本教程中使用这些文件。
 
 1. 将[创建 DocumentDB 帐户、Web 应用和部署演示应用程序示例](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json)模板下载到本地文件夹（例如 C:\DocumentDBTemplates）。 此模板将部署 DocumentDB 帐户、App Service Web 应用和 Web 应用程序。  它还会自动配置 Web 应用程序，以连接到 DocumentDB 帐户。
@@ -84,7 +85,7 @@ ms.openlocfilehash: 7bef38eaea90d950c195dee0d741750cf65870df
    ![示例待办事项应用程序](./media/documentdb-create-documentdb-website/image2.png)
 9. 继续在 Web 应用中创建几个任务，然后返回到 Azure 门户中的资源组边栏选项卡。 单击“资源”列表中的“DocumentDB 帐户”资源，然后单击“查询浏览器”。
     ![屏幕截图：突出显示 myotherdocumentdbwebapp web 应用的“摘要”可重用功能区](./media/documentdb-create-documentdb-website/TemplateDeployment8.png)  
-10. 运行默认查询“SELECT * FROM c”，并检查结果。请注意，查询已检索你在上面的步骤 7 中创建的待办事项的 JSON 表示形式。随意尝试查询；例如，尝试运行 SELECT * FROM c WHERE c.isComplete = true，以返回所有标记为完成的待办事项。
+10. 运行默认查询“SELECT *FROM c”，并检查结果。请注意，查询已检索你在上面的步骤 7 中创建的待办事项的 JSON 表示形式。随意尝试查询；例如，尝试运行 SELECT* FROM c WHERE c.isComplete = true，以返回所有标记为完成的待办事项。
     
     ![屏幕截图：显示查询结果的“查询资源管理器”和“结果”边栏选项卡](./media/documentdb-create-documentdb-website/image5.png)
 11. 任意体验 DocumentDB 门户，或修改示例待办事项应用程序。  当你准备好时，让我们来部署另一个模板。
@@ -144,10 +145,5 @@ ms.openlocfilehash: 7bef38eaea90d950c195dee0d741750cf65870df
 > 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -12,8 +12,3 @@
 5. 单击顶部的“Cloud Messaging”选项卡。 
 6. 记下“服务器密钥”和“发送者 ID”，这二项以后会在“Android 清单文件”中用到。  
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

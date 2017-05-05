@@ -17,9 +17,9 @@ ms.date: 01/18/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 4082fe7baad4f9d40746410024e071f34f458a40
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 49dd3d64b8f6bc8e0dc40d40db909648f287a068
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>使用 SQL Server 代理扩展在 Azure 虚拟机上自动完成管理任务（经典）
@@ -56,7 +56,7 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 * SQL Server 2016
 
 ### <a name="azure-powershell"></a>Azure PowerShell：
-[下载和配置最新 Azure PowerShell 命令](/powershell/azureps-cmdlets-docs)。
+[下载和配置最新 Azure PowerShell 命令](/powershell/azure/overview)。
 
 启动 Windows PowerShell，并通过 **Add-AzureAccount** 命令将其连接到 Azure 订阅。
 

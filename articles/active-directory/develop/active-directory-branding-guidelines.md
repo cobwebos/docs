@@ -3,7 +3,7 @@ title: "适用于应用程序的品牌准则 | Microsoft Docs"
 description: "介绍面向开发人员的 Azure Active Directory 资源的综合性指南"
 services: active-directory
 documentationcenter: dev-center-name
-author: msmbaldwin
+author: bryanla
 manager: mbaldwin
 editor: 
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
@@ -12,8 +12,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
-ms.author: mbaldwin
+ms.date: 04/27/2017
+ms.author: bryanla
 translationtype: Human Translation
 ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
 ms.openlocfilehash: 316f073019abef03227b741d9349d0ca75dda6bd

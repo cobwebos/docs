@@ -25,8 +25,3 @@
 4. 双击 Info.plist 打开它，然后在“后台模式”下启用“远程通知”。
 
 [Xamarin 设备预配]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
-
-
-<!--HONumber=Dec16_HO2-->
-
-

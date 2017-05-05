@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: f1a03a0553bc1acd013918f527458603d08cb0f7
-ms.openlocfilehash: 8d213455ad9c771d54c2334e4d31eb4f84c9ec15
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1549eb40b0ca79522cc5475057c3af7ff4c7fd1c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 8d213455ad9c771d54c2334e4d31eb4f84c9ec15
 
 以下是先决条件：
 * [安装 Azure Active Directory V2 PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/2.0.0.30)。
-* [安装 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* [安装 Azure PowerShell](/powershell/azure/overview)。
 * 若要运行以下命令，需要具有在 Azure Active Directory 租户中创建/编辑组的权限。 如果没有权限，则可能需要与 Azure Active Directory 管理员联系。
 
 接下来，在 PowerShell 中运行以下命令。
@@ -57,9 +58,4 @@ Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.
 ## <a name="next-steps"></a>后续步骤
 
 深入了解如何[保护密钥保管库](key-vault-secure-your-key-vault.md)。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

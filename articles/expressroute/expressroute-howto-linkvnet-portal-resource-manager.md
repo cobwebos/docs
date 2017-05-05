@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2017
+ms.date: 04/12/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b3c0cca9a6d5171b1248b0f463cbbb26641fc5f2
-ms.openlocfilehash: a1a689dbfc35107b52f9b84f74ac8bfac0727a0e
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 4d86910acca16299627c4202ef073c526bd4fc26
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -33,22 +33,18 @@ ms.lasthandoff: 02/10/2017
 
 本文将帮助你使用 Resource Manager 部署模型和 Azure 门户将虚拟网络 (VNet) 链接到 Azure ExpressRoute 线路。 虚拟网络可以在同一个订阅中，也可以属于另一个订阅。
 
-**关于 Azure 部署模型**
-
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
-
-## <a name="configuration-prerequisites"></a>配置先决条件
-* 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
+## <a name="before-you-begin"></a>开始之前
+* 在开始配置之前，请先查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 * 你必须有一个活动的 ExpressRoute 线路。
   
-  * 请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)，并通过连接提供商启用该线路。
+  * 请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-portal-resource-manager.md)，并通过连接提供商启用该线路。
   * 请确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](expressroute-howto-routing-portal-resource-manager.md)一文。
   * 确保配置 Azure 专用对等互连并运行你的网络和 Microsoft 之间的 BGP 对等互连，以便启用端到端连接。
-  * 确保已创建并完全预配一个虚拟网络和一个虚拟网络网关。 请按说明创建 [VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)（仅遵循步骤 1-5）。
+  * 确保已创建并完全预配一个虚拟网络和一个虚拟网络网关。 按照说明[创建 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。 ExpressRoute 虚拟网络网关使用的 GatewayType 是“ExpressRoute”而非 VPN。
 
 * 最多可以将 10 个虚拟网络链接到一条标准 ExpressRoute 线路。 使用标准 ExpressRoute 线路时，所有虚拟网络必须都位于同一地缘政治区域。 
-
 * 如果已启用 ExpressRoute 高级外接程序，则可以链接 ExpressRoute 线路的地缘政治区域外部的虚拟网络，或者将更多虚拟网络连接到 ExpressRoute 线路。 有关高级外接程序的更多详细信息，请参阅[常见问题](expressroute-faqs.md)。
+* 为了更好地了解这些步骤，可以在开始之前[观看视频](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)。
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>将同一订阅中的虚拟网络连接到线路
 
@@ -87,14 +83,15 @@ ms.lasthandoff: 02/10/2017
     > 
     >
 
-### <a name="administration"></a>管理
-线路所有者是 ExpressRoute 线路资源的已授权超级用户。 线路所有者可以创建可由线路用户兑换的授权。 线路用户是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。 线路用户可以兑现授权（每个虚拟网络需要一个授权）。
+### <a name="administration---circuit-owners-and-circuit-users"></a>管理 - 线路所有者和线路用户
+
+“线路所有者”是 ExpressRoute 线路资源的已授权超级用户。 线路所有者可以创建可由线路用户兑换的授权。 线路用户是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。 线路用户可以兑现授权（每个虚拟网络需要一个授权）。
 
 线路所有者有权随时修改和撤消授权。 撤消授权将导致从撤消了访问权限的订阅中删除所有链路连接。
 
 ### <a name="circuit-owner-operations"></a>线路所有者操作
 
-#### <a name="creating-an-authorization"></a>创建授权
+**若要创建连接授权**
 
 线路所有者创建授权。 这样即可创建授权密钥，供线路用户用来将其虚拟网络网关连接到 ExpressRoute 线路。 一个授权只可用于一个连接。
 
@@ -106,19 +103,15 @@ ms.lasthandoff: 02/10/2017
 
     ![授权密钥](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
-#### <a name="deleting-authorizations"></a>删除授权
+**若要删除连接授权**
 
 可以通过选择连接的边栏选项卡上的“删除”图标来删除连接。
 
 ### <a name="circuit-user-operations"></a>线路用户操作
 
-   > [!NOTE]
-   > 线路用户需有资源 ID 以及线路所有者提供的授权密钥。 
+线路用户需有资源 ID 以及线路所有者提供的授权密钥。 
 
-#### <a name="redeeming-connection-authorizations"></a>兑现连接授权
-
-
-在“基本信息”选项卡中填写详细信息，然后单击“确定”。
+**若要兑换连接授权**
 
 1.    单击“+新建”按钮。
 
@@ -143,7 +136,8 @@ ms.lasthandoff: 02/10/2017
 
 7. 在“摘要”边栏选项卡中检查信息，然后单击“确定”。
 
-#### <a name="releasing-connection-authorizations"></a>释放连接授权
+
+**若要释放连接授权**
 
 可以通过删除 ExpressRoute 线路与虚拟网络之间的连接释放授权。
 

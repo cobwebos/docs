@@ -1,7 +1,6 @@
 # 概述
-## [什么是开发测试实验室？](devtest-lab-overview.md)
-## [为何选择开发测试实验室？](devtest-lab-why.md)
-## [开发测试实验室概念](devtest-lab-concepts.md)
+## [关于 Azure 开发测试实验室](devtest-lab-overview.md)
+## [概念](devtest-lab-concepts.md)
 
 # 入门
 ## [创建实验室](devtest-lab-create-lab.md)

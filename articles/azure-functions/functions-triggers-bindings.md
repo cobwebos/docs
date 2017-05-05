@@ -3,7 +3,7 @@ title: "使用 Azure Functions 中的触发器和绑定 | Microsoft 文档"
 description: "了解如何使用 Azure Functions 中的触发器和绑定将代码执行连接到联机事件和基于云的服务。"
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: lindydonna
 manager: erikre
 editor: 
 tags: 
@@ -14,125 +14,288 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/23/2017
-ms.author: chrande
+ms.date: 04/14/2017
+ms.author: donnam
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: a56d71d437814ed08b2e0a05d9acc8448f6b9ae5
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: ed0ade96cc1cf6afc82787133d3fbcf874c43e0f
+ms.lasthandoff: 04/19/2017
 
 
 ---
 
-# <a name="learn-how-to-work-with-triggers-and-bindings-in-azure-functions"></a>了解如何使用 Azure Functions 中的触发器和绑定 
-本主题介绍如何使用 Azure Functions 中的触发器和绑定将代码连接到各种触发器和 Azure 服务以及其他基于云的服务。 其中专门介绍了一些受所有绑定类型支持的高级绑定功能和语法。  
-
-有关使用特定类型的触发器或绑定的详细信息，请参阅以下参考主题之一：
-
-| | | | |  
-| --- | --- | --- | --- |  
-| [HTTP/Webhook](functions-bindings-http-webhook.md) | [计时器](functions-bindings-timer.md) | [移动应用](functions-bindings-mobile-apps.md) | [服务总线](functions-bindings-service-bus.md)  |  
-| [DocumentDB](functions-bindings-documentdb.md) |  [存储 Blob](functions-bindings-storage-blob.md) | [存储队列](functions-bindings-storage-queue.md) |  [存储表](functions-bindings-storage-table.md) |  
-| [事件中心](functions-bindings-event-hubs.md) | [通知中心](functions-bindings-notification-hubs.md) | [SendGrid](functions-bindings-sendgrid.md) | [Twilio](functions-bindings-twilio.md) |   
-| | | | |  
-
-这些文章假定用户已阅读了 [Azure Functions 开发人员参考](functions-reference.md)、[C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md) 或 [Node.js](functions-reference-node.md) 开发人员参考文章。
+# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
+借助 Azure Functions，可以编写通过“触发器”和“绑定”响应 Azure 中的事件和其他服务的代码。 本文是所有支持编程语言的触发器和绑定的概念性概述。 此处介绍所有绑定通用的功能。
 
 ## <a name="overview"></a>概述
-触发器是用于触发自定义代码的事件响应。 触发器使用户能够在 Azure 平台或本地之间响应事件。 绑定表示将代码连接到所需触发器或相关的联输入/输出数据的必要元数据。 每个函数的 *function.json* 文件包含所有相关绑定。 一个函数可以拥有的输入和输出绑定数量没有限制。 但是，每个函数仅支持单个触发器绑定。  
 
-若要深入了解其他可与 Azure Function 应用集成的绑定，请参考下表。
+触发器和绑定是一种声明性方式，用于定义函数的调用方式以及函数要使用的数据。 “触发器”定义函数的调用方式。 一个函数必须只有一个触发器。 触发器具有关联数据，该数据通常是触发函数的有效负载。 
 
-[!INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
+输入和输出“绑定”提供从代码内连接到数据的声明性方式。 与触发器类似，可在函数配置中指定连接字符串和其他属性。 绑定是可选项，一个函数可以有多个输入和输出绑定。 
 
-为了总体上更好地了解触发器和绑定，假定要执行某些代码来处理放入到 Azure 存储队列中的新项。 Azure Functions 提供了 Azure 队列触发器以支持此操作。 监视队列需要以下信息：
+使用触发器和绑定，可以编写更通用的代码，不会对与代码交互的服务细节进行硬编码。 服务提供的数据只是函数代码的输入值。 若要将数据输出到其他服务（例如在 Azure 表存储中创建新行），可使用该方法的返回值。 或者，如果需要输出多个值，可使用帮助器对象。 触发器和绑定有 **name** 属性，该属性是代码中用于访问绑定的标识符。
 
-* 队列所在的存储帐户。
-* 队列名称。
-* 代码引用放入到队列中的新项所使用的的变量名称。  
+可以在 Azure Functions 门户的“集成”选项卡中配置触发器和绑定。 实际上，UI 会修改函数目录中名为“function.json”的文件。 可以通过转到“高级编辑器”来编辑此文件。
 
-队列触发器绑定包含一个 Azure 函数的此信息。 下面是包含一个队列触发器的 function.json 示例。 
+下表显示受 Azure Functions 支持的触发器和绑定。 
 
-```json
-{
-  "bindings": [
-    {
-      "name": "myNewUserQueueItem",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "queue-newusers",
-      "connection": "MY_STORAGE_ACCT_APP_SETTING"
-    }
-  ],
-  "disabled": false
-}
-```
+[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-代码可能会发送不同类型的输出，发送的类型具体取决于处理新队列项的方式。 例如，用户可能想要将新的记录写入 Azure 存储表。  若要执行此操作，请创建到 Azure 存储表的输出绑定。 下面是一个示例 function.json，其中包含可用于队列触发器的存储表输出绑定。 
+### <a name="example-queue-trigger-and-table-output-binding"></a>示例：队列触发器和表输出绑定
 
-```json
-{
-  "bindings": [
-    {
-      "name": "myNewUserQueueItem",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "queue-newusers",
-      "connection": "MY_STORAGE_ACCT_APP_SETTING"
-    },
-    {
-      "type": "table",
-      "name": "myNewUserTableBinding",
-      "tableName": "newUserTable",
-      "connection": "MY_TABLE_STORAGE_ACCT_APP_SETTING",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
+假设你希望在 Azure 队列存储中显示一条新消息时就将一个新行写入 Azure 表存储。 使用 Azure 队列触发器和表输出绑定接口即可实现此方案。 
 
-下面的 C# 函数会响应放入队列的新项，并将新用户条目写入 Azure 存储表。
+队列触发器需要“集成”选项卡中的以下信息：
+
+* 包含队列存储帐户连接字符串的应用设置的名称
+* 队列名称
+* 代码中用于读取队列消息内容的标识符，如 `order`。
+
+若要写入 Azure 表存储，请使用含有以下详细信息的输出绑定：
+
+* 包含表存储帐户连接字符串的应用设置的名称
+* 表名称
+* 代码中用于创建输出项的标识符，或函数的返回值。
+
+绑定使用连接字符串的应用设置，以强制执行 *function.json* 不包含服务密钥的最佳做法。
+
+然后，使用提供的标识符以在代码中与 Azure 存储集成。
 
 ```cs
 #r "Newtonsoft.Json"
 
-using System;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-public static async Task Run(string myNewUserQueueItem, IAsyncCollector<Person> myNewUserTableBinding, 
-                                TraceWriter log)
+// From an incoming queue message that is a JSON object, add fields and write to Table Storage
+// The method return value creates a new row in Table Storage
+public static Person Run(JObject order, TraceWriter log)
 {
-    // In this example the queue item is a JSON string representing an order that contains the name, 
-    // address and mobile number of the new customer.
-    dynamic order = JsonConvert.DeserializeObject(myNewUserQueueItem);
-
-    await myNewUserTableBinding.AddAsync(
-        new Person() { 
-            PartitionKey = "Test", 
-            RowKey = Guid.NewGuid().ToString(), 
-            Name = order.name,
-            Address = order.address,
-            MobileNumber = order.mobileNumber }
-        );
+    return new Person() { 
+            PartitionKey = "Orders", 
+            RowKey = Guid.NewGuid().ToString(),  
+            Name = order["Name"].ToString(),
+            MobileNumber = order["MobileNumber"].ToString() };  
 }
-
+ 
 public class Person
 {
     public string PartitionKey { get; set; }
     public string RowKey { get; set; }
     public string Name { get; set; }
-    public string Address { get; set; }
     public string MobileNumber { get; set; }
 }
 ```
 
-有关更多代码示例和支持的 Azure 存储类型的更多具体信息，请参阅[适用于 Azure 存储的 Azure Functions 触发器和绑定](functions-bindings-storage.md)。
+```javascript
+// From an incoming queue message that is a JSON object, add fields and write to Table Storage
+// The second parameter to context.done is used as the value for the new row
+module.exports = function (context, order) {
+    order.PartitionKey = "Orders";
+    order.RowKey = generateRandomId(); 
 
-若要在 Azure 门户中使用更高级的绑定功能，请单击函数“集成”选项卡上的“高级编辑器”选项。 通过高级编辑器，可直接在门户中编辑 function.json。
+    context.done(null, order);
+};
 
-## <a name="random-guids"></a>随机 GUID
-Azure Functions 向绑定提供语法来生成随机 GUID。 下面的绑定语法将输出写入到存储容器中具有唯一名称的新 BLOB： 
+function generateRandomId() {
+    return Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15);
+}
+```
+
+以下是与上述代码对应的 *function.json*。 请注意，可以使用相同的配置，无需考虑函数实现所用的语言。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "order",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "myqueue-items",
+      "connection": "MY_STORAGE_ACCT_APP_SETTING"
+    },
+    {
+      "name": "$return",
+      "type": "table",
+      "direction": "out",
+      "tableName": "outTable",
+      "connection": "MY_TABLE_STORAGE_ACCT_APP_SETTING"
+    }
+  ]
+}
+```
+若要在 Azure 门户中查看和编辑 *function.json* 的内容，请单击函数“集成”选项卡上的“高级编辑器”选项。
+
+有关与 Azure 存储集成的更多代码示例和详细信息，请参阅[适用于 Azure 存储的 Azure Functions 触发器和绑定](functions-bindings-storage.md)。
+
+### <a name="binding-direction"></a>绑定方向
+
+所有触发器和绑定都有 `direction` 属性：
+
+- 对于触发器，方向始终为 `in`
+- 输入和输出绑定使用 `in` 和 `out`
+- 某些绑定支持特殊方向 `inout`。 如果使用 `inout`，则“集成”选项卡中仅“高级编辑器”可用。
+
+## <a name="using-the-function-return-type-to-return-a-single-output"></a>使用函数返回类型以返回单个输出
+
+上述示例演示如何使用函数返回值向绑定提供输出，这通过使用特殊名称参数 `$return` 来实现。 （仅受提供返回值的语言支持，如 C#、JavaScript 和 F#。）如果函数有多个输出绑定，`$return` 只可用于其中一个输出绑定。 
+
+```json
+// excerpt of function.json
+{
+    "name": "$return",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{id}"
+}
+```
+
+以下示例演示如何在 C#、JavaScript 和 F# 中将返回类型与输出绑定结合使用。
+
+```cs
+// C# example: use method return value for output binding
+public static string Run(WorkItem input, TraceWriter log)
+{
+    string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
+    log.Info($"C# script processed queue message. Item={json}");
+    return json;
+}
+```
+
+```cs
+// C# example: async method, using return value for output binding
+public static Task<string> Run(WorkItem input, TraceWriter log)
+{
+    string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
+    log.Info($"C# script processed queue message. Item={json}");
+    return json;
+}
+```
+
+```javascript
+// JavaScript: return a value in the second parameter to context.done
+module.exports = function (context, input) {
+    var json = JSON.stringify(input);
+    context.log('Node.js script processed queue message', json);
+    context.done(null, json);
+}
+```
+
+```fsharp
+// F# example: use return value for output binding
+let Run(input: WorkItem, log: TraceWriter) =
+    let json = String.Format("{{ \"id\": \"{0}\" }}", input.Id)   
+    log.Info(sprintf "F# script processed queue message '%s'" json)
+    json
+```
+
+## <a name="resolving-app-settings"></a>解析应用设置
+作为最佳做法，应使用应用设置（而不是配置文件）来管理密钥和连接字符串。 这会限制对这些密钥的访问，并可在公共源代码控制存储库中安全地存储 *function.json*。
+
+应用设置在想要根据环境更改配置时也很有用。 例如，在测试环境中，可能想要监视不同的队列或 blob 存储容器。
+
+只要一个值用百分号括起来（如 `%MyAppSetting%`），就会解析应用设置。 请注意，触发器和绑定的 `connection` 属性是一种特殊情况，该属性会自动将值解析为应用设置。 
+
+以下示例是一个队列触发器，该触发器使用应用设置 `%input-queue-name%` 定义要触发的队列。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "order",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "%input-queue-name%",
+      "connection": "MY_STORAGE_ACCT_APP_SETTING"
+    }
+  ]
+}
+```
+
+## <a name="trigger-metadata-properties"></a>触发器元数据属性
+
+除了触发器提供的数据负载（如触发函数的队列消息），许多触发器还会提供其他元数据值。 这些值可用作 C# 和 F# 中的输入参数，或用作 JavaScript 中 `context.bindings` 对象的属性。 
+
+例如，队列触发器支持以下属性：
+
+* QueueTrigger - 如果字符串有效，将触发消息内容
+* DequeueCount
+* ExpirationTime
+* ID
+* InsertionTime
+* NextVisibleTime
+* PopReceipt
+
+相应参考主题中会详细介绍每种触发器的元数据属性。 在门户“集成”选项卡的绑定配置区域下方的“文档”部分中，还提供了文档。  
+
+例如，由于 blob 触发器有一些延迟，因此可以使用队列触发器运行函数（请参阅 [Blob 存储触发器](functions-bindings-storage-blob.md#storage-blob-trigger)）。 队列消息将包含要触发的 blob 文件名。 使用 `queueTrigger` 元数据属性，可以全部在配置（而不是代码）中指定此行为。
+
+```json
+  "bindings": [
+    {
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnection",
+    },
+    {
+      "name": "myInputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "direction": "in",
+      "connection": "MyStorageConnection"
+    }
+  ]
+```
+
+触发器的元数据属性还可以用于其他绑定的*绑定表达式*，如以下部分中所述。
+
+## <a name="binding-expressions-and-patterns"></a>绑定表达式和模式
+
+触发器和绑定的最强大功能之一是*绑定表达式*。 在绑定内，可定义稍后可以在其他绑定或代码中使用的模式表达式。 触发器元数据还可以用于绑定表达式，如上述部分中的示例所示。
+
+例如，假设想要重设特定 blob 存储容器中的图像大小，类似于“新建函数”页中的“图像调整器”模板。 转到“新建函数”-> 语言“C#”-> 方案“示例” -> “ImageResizer-CSharp”。 
+
+以下是 *function.json* 的定义：
+
+```json
+{
+  "bindings": [
+    {
+      "name": "image",
+      "type": "blobTrigger",
+      "path": "sample-images/{filename}",
+      "direction": "in",
+      "connection": "MyStorageConnection"
+    },
+    {
+      "name": "imageSmall",
+      "type": "blob",
+      "path": "sample-images-sm/{filename}",
+      "direction": "out",
+      "connection": "MyStorageConnection"
+    }
+  ],
+}
+```
+
+请注意，`filename` 参数既可以在 blob 触发器定义中使用，也可以在 blob 输出绑定中使用。 此参数还可以用于函数代码。
+
+```csharp
+// C# example of binding to {filename}
+public static void Run(Stream image, string filename, Stream imageSmall, TraceWriter log)  
+{
+    log.Info($"Blob trigger processing: {filename}");
+    // ...
+} 
+```
+
+<!--TODO: add JavaScript example -->
+<!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
+
+
+### <a name="random-guids"></a>随机 GUID
+Azure Functions 为在绑定中通过 `{rand-guid}` 绑定表达式生成 GUID 提供了一种便捷语法。 以下示例使用此语法生成唯一的 blob 名称： 
 
 ```json
 {
@@ -143,248 +306,91 @@ Azure Functions 向绑定提供语法来生成随机 GUID。 下面的绑定语�
 }
 ```
 
+## <a name="bind-to-custom-input-properties-in-a-binding-expression"></a>绑定到绑定表达式中的自定义输入属性
 
-## <a name="returning-a-single-output"></a>返回单个输出
-在函数代码返回单个输出的情况下，可使用名为 `$return` 的输出绑定在代码中保留更自然的函数签名。 这仅可用于支持返回值的语言（C#、Node.js、F#）。 绑定与以下用于队列触发器的 blob 输出绑定相类似。
+绑定表达式还可以引用在触发器负载本身中定义的属性。 例如，可能想要通过 webhook 中提供的文件名动态绑定到 blob 存储文件。
+
+例如，以下 *function.json* 使用触发器负载中名为 `BlobName` 的属性：
 
 ```json
 {
   "bindings": [
     {
-      "type": "queueTrigger",
-      "name": "input",
+      "name": "info",
+      "type": "httpTrigger",
       "direction": "in",
-      "queueName": "test-input-node"
+      "webHookType": "genericJson",
     },
     {
+      "name": "blobContents",
       "type": "blob",
-      "name": "$return",
-      "direction": "out",
-      "path": "test-output-node/{id}"
+      "direction": "in",
+      "path": "strings/{BlobName}",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
     }
   ]
 }
 ```
 
-下面的 C# 代码会更自然地返回输出，无需在函数签名中使用 `out` 参数。
+若要在 C# 和 F# 中实现此目的，必须定义 POCO，它用于定义将在触发器负载中执行反序列化的字段。
 
-```cs
-public static string Run(WorkItem input, TraceWriter log)
+```csharp
+using System.Net;
+
+public class BlobInfo
 {
-    string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
-    log.Info($"C# script processed queue message. Item={json}");
-    return json;
+    public string BlobName { get; set; }
+}
+  
+public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, string blobContents)
+{
+    if (blobContents == null) {
+        return req.CreateResponse(HttpStatusCode.NotFound);
+    } 
+
+    return req.CreateResponse(HttpStatusCode.OK, new {
+        data = $"{blobContents}"
+    });
 }
 ```
 
-异步示例：
-
-```cs
-public static Task<string> Run(WorkItem input, TraceWriter log)
-{
-    string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
-    log.Info($"C# script processed queue message. Item={json}");
-    return json;
-}
-```
-
-
-以下演示了 Node.js 的同一方法：
+在 JavaScript 中，将自动执行 JSON 反序列化，然后可以直接使用属性。
 
 ```javascript
-module.exports = function (context, input) {
-    var json = JSON.stringify(input);
-    context.log('Node.js script processed queue message', json);
-    context.done(null, json);
-}
-```
-
-下面是 F# 的示例：
-
-```fsharp
-let Run(input: WorkItem, log: TraceWriter) =
-    let json = String.Format("{{ \"id\": \"{0}\" }}", input.Id)   
-    log.Info(sprintf "F# script processed queue message '%s'" json)
-    json
-```
-
-通过使用 `$return` 指定单个输出，还可将其用于多个输出参数。
-
-## <a name="resolving-app-settings"></a>解析应用设置
-最佳做法是使用应用设置将敏感信息存储为运行时环境的一部分。 通过将敏感信息与应用的配置文件隔离，在使用公共存储库存储应用文件时可限制信息暴露。  
-
-应用设置名称包含在百分号中（即 `%your app setting%`）时，Azure Functions 运行时会将应用设置解析为值。 下面的 [Twilio 绑定](functions-bindings-twilio.md)在绑定的 `from` 字段中使用名为 `TWILIO_ACCT_PHONE` 的应用设置。 
-
-```json
-{
-  "type": "twilioSms",
-  "name": "$return",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "{mobileNumber}",
-  "from": "%TWILIO_ACCT_PHONE%",
-  "body": "Thank you {name}, your order was received Node.js",
-  "direction": "out"
-},
-```
-
-
-
-## <a name="parameter-binding"></a>参数绑定
-可将设置配置为动态绑定到触发器的输入绑定一部分的数据，而不是对输出绑定属性使用静态配置设置。 请考虑使用 Azure 存储队列处理新订单的情况。 每个新的队列项是至少包含以下属性的 JSON 字符串：
-
-```json
-{
-  "name" : "Customer Name",
-  "address" : "Customer's Address",
-  "mobileNumber" : "Customer's mobile number in the format - +1XXXYYYZZZZ."
-}
-```
-
-你可能会使用 Twilio 帐户向客户发送短信，告知客户已收到订单。  可将 Twilio 输出绑定的 `body` 和 `to` 字段配置为动态绑定到作为此输出一部分的 `name` 和 `mobileNumber`，如下所示。
-
-```json
-{
-  "name": "myNewOrderItem",
-  "type": "queueTrigger",
-  "direction": "in",
-  "queueName": "queue-newOrders",
-  "connection": "orders_STORAGE"
-},
-{
-  "type": "twilioSms",
-  "name": "$return",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "{mobileNumber}",
-  "from": "%TWILIO_ACCT_PHONE%",
-  "body": "Thank you {name}, your order was received",
-  "direction": "out"
-},
-```
-
-现在，函数代码仅需初始化输出参数，如下所示。 执行期间，输出属性会绑定到所需的输入数据。
-
-```cs
-#r "Newtonsoft.Json"
-#r "Twilio.Api"
-
-using System;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Twilio;
-
-public static async Task<SMSMessage> Run(string myNewOrderItem, TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myNewOrderItem}");
-
-    dynamic order = JsonConvert.DeserializeObject(myNewOrderItem);    
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the SMSMessage variable.
-    SMSMessage smsText = new SMSMessage();
-
-    // The following isn't needed since we use parameter binding for this
-    //string msg = "Hello " + order.name + ", thank you for your order.";
-    //smsText.Body = msg;
-    //smsText.To = order.mobileNumber;
-
-    return smsText;
-}
-```
-
-Node.js：
-
-```javascript
-module.exports = function (context, myNewOrderItem) {    
-    context.log('Node.js queue trigger function processed work item', myNewOrderItem);    
-
-    // No need to set the properties of the text, we use parameters in the binding. We do need to 
-    // initialize the object.
-    var smsText = {};    
-
-    context.done(null, smsText);
-}
-```
-
-## <a name="advanced-binding-at-runtime-imperative-binding"></a>运行时高级绑定（命令性绑定）
-
-使用 function.json 的标准输入和输出绑定模式称为[*声明性*](https://en.wikipedia.org/wiki/Declarative_programming)绑定，其中绑定由 JSON 声明定义。 但是，可使用[命令性](https://en.wikipedia.org/wiki/Imperative_programming)绑定。 通过此模式，可动态绑定到函数代码中受支持的任意数量的输入和输出绑定。
-在绑定路径计算或其他输入在函数中需要在运行时（而不是在设计时）发生的情况下，可能需要命令式绑定。 
-
-如下所示定义命令性绑定：
-
-- 对于所需的命令性绑定，**不要**包含 function.json 中的条目。
-- 传递输入参数 [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) 或 [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。 
-- 使用下面的 C# 模式执行数据绑定。
-
-```cs
-using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
-{
-    ...
-}
-```
-
-其中，`BindingTypeAttribute` 是定义绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 也不能是 `out` 参数类型 （例如 `out JObject`）。 例如，移动应用表输出绑定支持 [6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于 `T`，可仅使用 [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
-    
-下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob.md#storage-blob-output-binding)，然后将字符串写入此 blob。
-
-```cs
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
-
-public static async Task Run(string input, Binder binder)
-{
-    using (var writer = await binder.BindAsync<TextWriter>(new BlobAttribute("samples-output/path")))
-    {
-        writer.Write("Hello World!!");
+module.exports = function (context, info) {
+    if ('BlobName' in info) {
+        context.res = {
+            body: { 'data': context.bindings.blobContents }
+        }
     }
-}
-```
-
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) 是支持的输出绑定类型。
-以其原本方式，此代码会获取存储帐户连接字符串（即 `AzureWebJobsStorage`）的默认应用设置。 通过添加 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) 和将属性数组传递到 `BindAsync<T>()`，可指定要使用的自定义应用设置。 例如，
-
-```cs
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
-
-public static async Task Run(string input, Binder binder)
-{
-    var attributes = new Attribute[]
-    {    
-        new BlobAttribute("samples-output/path"),
-        new StorageAccountAttribute("MyStorageAccount")
-    };
-
-    using (var writer = await binder.BindAsync<TextWriter>(attributes))
-    {
-        writer.Write("Hello World!");
+    else {
+        context.res = {
+            status: 404
+        };
     }
+    context.done();
 }
 ```
-
-下表显示了对于每个绑定类型要使用的相应 .NET 属性和要引用的包。
-
-> [!div class="mx-codeBreakAll"]
-| 绑定 | 属性 | 添加引用 |
-|------|------|------|
-| DocumentDB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.DocumentDB"` |
-| 事件中心 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
-| Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
-| 通知中心 | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
-| 服务总线 | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
-| 存储队列 | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-| 存储 blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-| 存储表 | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-| Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
-
-
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅以下资源：
+有关特定绑定的详细信息，请参阅以下文章：
 
-* [测试函数](functions-test-a-function.md)
-* [扩展函数](functions-scale.md)
-
+- [HTTP 和 webhook](functions-bindings-http-webhook.md)
+- [计时器](functions-bindings-timer.md)
+- [队列存储](functions-bindings-storage-queue.md)
+- [Blob 存储](functions-bindings-storage-blob.md)
+- [表存储](functions-bindings-storage-table.md)
+- [事件中心](functions-bindings-event-hubs.md)
+- [服务总线](functions-bindings-service-bus.md)
+- [DocumentDB](functions-bindings-documentdb.md)
+- [SendGrid](functions-bindings-sendgrid.md)
+- [Twilio](functions-bindings-twilio.md)
+- [通知中心](functions-bindings-notification-hubs.md)
+- [移动应用](functions-bindings-mobile-apps.md)
+- [外部文件](functions-bindings-external-file.md)
 

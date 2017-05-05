@@ -18,9 +18,9 @@ ms.date: 02/06/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: e1933c5bf65f3e28d952213317413d0f65309c5b
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: caf50732ce19ded5016c6d5368f8b53b6ca3646f
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="increase-vm-availability-by-creating-an-azure-availability-set"></a>通过创建 Azure 可用性集增加 VM 可用性 
@@ -71,7 +71,7 @@ ms.lasthandoff: 03/31/2017
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
-有关详细信息，请参阅 [Azure PowerShell 版本控制](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)。
+有关详细信息，请参阅 [Azure PowerShell 版本控制](/powershell/azure/overview)。
 
 
 如果为 VM 使用托管磁盘，请键入：
@@ -88,7 +88,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
     -Name "myAvailabilitySet" -Location "West US" 
 ```
 
-有关详细信息，请参阅 [New-AzureRmAvailabilitySet](/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermavailabilityset)。
+有关详细信息，请参阅 [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset)。
 
 ## <a name="troubleshooting"></a>故障排除
 * 创建 VM 时，如果所需的可用性集不在门户的下拉列表中，则表示可能已在不同的资源组中创建该可用性集。 如果不知道可用性集所属的资源组，请转到中心菜单并单击“浏览”>“可用性集”，以查看可用性集及其所属资源组的列表。

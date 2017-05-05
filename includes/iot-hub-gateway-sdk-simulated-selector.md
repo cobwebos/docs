@@ -67,7 +67,3 @@
 [模拟设备云上载示例]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/simulated_device_cloud_upload/README.md
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md
-
-<!--HONumber=Feb17_HO1-->
-
-

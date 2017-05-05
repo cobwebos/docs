@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
-ms.openlocfilehash: 9eb581e6180a7ae6a5f24b3a991376264b0ecef9
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: f2c67bb0629c8a37e557d4813e3efa459f3c82ad
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -318,7 +318,7 @@ Datetime | String | String |  Datetime | String
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 我们已经向你介绍了流分析，这是一种托管服务，适用于对物联网的数据进行流式分析。 若要了解有关此服务的详细信息，请参阅：

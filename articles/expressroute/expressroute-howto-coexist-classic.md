@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7e866a218c003390e0281f1adce7c0d843d006c0
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 594dee64f49e83949403fc85903ec66f9cf0d996
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -82,7 +82,7 @@ ms.lasthandoff: 03/24/2017
 ## <a name="new"></a>创建新的虚拟网络和并存连接
 本过程将指导你创建 VNet，以及创建将共存的站点到站点连接和 ExpressRoute 连接。
 
-1. 你需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
+1. 你需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
 2. 创建虚拟网络的架构。 有关配置架构的详细信息，请参阅 [Azure 虚拟网络配置架构](https://msdn.microsoft.com/library/azure/jj157100.aspx)。
    
     在创建架构时，请确保使用以下值：
@@ -195,7 +195,7 @@ ms.lasthandoff: 03/24/2017
 > 
 > 
 
-1. 你需要安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
+1. 你需要安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
 2. 删除现有的 ExpressRoute 或站点到站点 VPN 网关。 使用下面的 cmdlet，并将值替换为你自己的值。
    
         Remove-AzureVNetGateway –VnetName MyAzureVNET

@@ -16,7 +16,7 @@
    3. 计划保留时间。 保留选择取决于备份频率。 例如，对于每日策略，以周为单位指定保留；对于每月策略，则以月为单位指定。
    4. 选择备份策略的开始时间和日期。
    5. 选择“启用”  复选框启用备份策略。 
-   6. 单击选中图标  ![check-icon](./media/storsimple-take-backup/HCS_CheckIcon-include.png)  保存策略。
+   6. 单击选中图标  ![check-icon](./media/storsimple-take-backup/HCS_CheckIcon-include.png) 保存策略。
       
       ![Add-backup-policy](./media/storsimple-take-backup/HCS_AddBackupPolicyWizard2M-include.png)
       
@@ -27,9 +27,4 @@
 ![可用视频](./media/storsimple-take-backup/Video_icon.png) **可用视频**
 
 若要观看如何执行 StorSimple 备份的演示视频，请单击 [此处](https://azure.microsoft.com/documentation/videos/take-a-storsimple-backup/)。
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

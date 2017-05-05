@@ -17,9 +17,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 3366348e6ea3ae296bc249090e75c16ebe9fc1fb
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 90761317944b935b76df65d25a2035bfabe71c09
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -143,19 +143,25 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果计划继续使用后续的快速入门，请勿清除在本快速入门中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤，删除通过此快速入门创建的所有资源。
+本教程系列中的其他快速入门教程是在本文的基础上制作的。 
+
+> [!TIP]
+> 如果计划继续使用后续的快速入门，请勿清除在本快速入门中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤，删除通过此快速入门创建的所有资源。
+>
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击“myResourceGroup”。 
 2. 在资源组页上单击“删除”，在文本框中键入 **myResourceGroup**，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
-- 若要使用 Visual Studio Code 进行连接和查询，请参阅[使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
-- 若要使用 .NET 进行连接和查询，请参阅[使用 .NET 进行连接和查询](sql-database-connect-query-dotnet.md)。
-- 若要使用 PHP 进行连接和查询，请参阅[使用 PHP 进行连接和查询](sql-database-connect-query-php.md)。
-- 若要使用 Node.js 进行连接和查询，请参阅[使用 Node.js 进行连接和查询](sql-database-connect-query-nodejs.md)。
-- 若要使用 Java 进行连接和查询，请参阅[使用 Java 进行连接和查询](sql-database-connect-query-java.md)。
-- 若要使用 Python 进行连接和查询，请参阅[使用 Python 进行连接和查询](sql-database-connect-query-python.md)。
-- 若要使用 Ruby 进行连接和查询，请参阅[使用 Ruby 进行连接和查询](sql-database-connect-query-ruby.md)。
+有了数据库以后，即可使用偏好的工具进行连接和查询。 若要了解详细信息，请选择下面的工具：
+
+- [SQL Server Management Studio](sql-database-connect-query-ssms.md)
+- [Contact.java](sql-database-connect-query-vscode.md)
+- [.NET](sql-database-connect-query-dotnet.md)
+- [PHP](sql-database-connect-query-php.md)
+- [Node.js](sql-database-connect-query-nodejs.md)
+- [Java](sql-database-connect-query-java.md)
+- [Python](sql-database-connect-query-python.md)
+- [Ruby](sql-database-connect-query-ruby.md)
 

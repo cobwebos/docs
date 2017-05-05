@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 4036c994cb5be68b372a4f244f65a17ce173ecc2
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 78bb4826a8c487576a06b3fd3c9fab333be72ace
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -62,7 +62,7 @@ Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -Me
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
 
-若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>如何以编程方式启用存储度量值
 下面的 C# 代码段演示了如何使用 .NET 的存储客户端库为 Blob 服务启用度量值和日志记录：
@@ -215,3 +215,4 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 
 ## <a name="next-steps"></a>后续步骤
 [启用存储日志记录和访问日志数据](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)
+

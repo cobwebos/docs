@@ -17,6 +17,7 @@ ms.author: mazha
 translationtype: Human Translation
 ms.sourcegitcommit: eb46368541551feff1b28642f9343e508ef47b95
 ms.openlocfilehash: b035c232bb58d653960190d4974cc3789d55a51d
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -68,17 +69,12 @@ ms.openlocfilehash: b035c232bb58d653960190d4974cc3789d55a51d
     ![“清除”按钮](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> 对于**来自 Verizon 的 Azure CDN**（标准和高级），清除请求需要 2-3 分钟的时间来处理；对于**来自 Akamai 的 Azure CDN **，大约需要 7 分钟。  在任何给定时间，Azure CDN 都有最多 50 个并发清除请求的限制。 
+> 对于**来自 Verizon 的 Azure CDN**（标准和高级），清除请求需要 2-3 分钟的时间来处理；对于**来自 Akamai 的 Azure CDN**，大约需要 7 分钟。  在任何给定时间，Azure CDN 都有最多 50 个并发清除请求的限制。 
 > 
 > 
 
 ## <a name="see-also"></a>另请参阅
 * [在 Azure CDN 终结点上预加载资产](cdn-preload-endpoint.md)
 * [Azure CDN REST API 参考 - 清除或预加载终结点](https://msdn.microsoft.com/library/mt634451.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

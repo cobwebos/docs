@@ -1,6 +1,6 @@
 ---
 title: "安装用于 Eclipse 的 Azure 工具包 | Microsoft Docs"
-description: "了解如何安装 Azure Toolkit for Eclipse。"
+description: "了解如何安装用于 Eclipse 的 Azure 工具包。"
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -12,40 +12,41 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 5bb67803be0c9cb2fa21545eaee1d26b85bae3c5
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 31582a87354bf915f058090add02d837f835a77c
+ms.lasthandoff: 04/22/2017
 
 
 ---
-# <a name="installing-the-azure-toolkit-for-eclipse"></a>安装 Azure Toolkit for Eclipse
-使用 Azure Toolkit for Eclipse 提供的模板和功能，可轻松地利用 Eclipse 开发环境创建、开发、测试和部署 Azure 应用程序。 Azure Toolkit for Eclipse 是一个开放源代码项目，其源代码可从 GitHub 上项目站点的 MIT 许可证下获取，URL 为：
+# <a name="installing-the-azure-toolkit-for-eclipse"></a>安装用于 Eclipse 的 Azure 工具包
+使用用于 Eclipse 的 Azure 工具包提供的模板和功能，可轻松地利用 Eclipse 开发环境创建、开发、测试和部署 Azure 应用程序。 用于 Eclipse 的 Azure 工具包是一个开放源代码项目，其源代码可从 GitHub 上项目站点的 MIT 许可证下获取，URL 为：
 
 <https://github.com/microsoft/azure-tools-for-java>
 
-以下步骤说明如何安装 Azure Toolkit for Eclipse。
+以下步骤说明如何安装用于 Eclipse 的 Azure 工具包。
 
 [!INCLUDE [azure-toolkit-for-eclipse-prerequisites](../includes/azure-toolkit-for-eclipse-prerequisites.md)]
 
-## <a name="to-install-the-azure-toolkit-for-eclipse"></a>安装 Azure Toolkit for Eclipse
+## <a name="to-install-the-azure-toolkit-for-eclipse"></a>安装用于 Eclipse 的 Azure 工具包
 1. 启动 Eclipse。
-2. Eclipse 打开后，单击 “帮助”菜单，然后单击“安装新软件”，如下图所示。
+2. Eclipse 打开后，单击“帮助”菜单，然后单击“安装新软件”，如下图所示。
    
-    ![安装 Azure Toolkit for Eclipse][01]
+    ![安装用于 Eclipse 的 Azure 工具包][01]
 3. 在“可用软件”对话框的“使用”文本框中，键入 **http://dl.microsoft.com/eclipse**，然后按 **Enter** 键。
 4. 在“名称”窗格中，选中“用于 Eclipse 的 Azure 工具包”，并取消选中“在安装过程中访问所有更新站点以查找所需的软件”。 你的屏幕应与下图中所示类似：
    
-    ![安装 Azure Toolkit for Eclipse][02]
+    ![安装用于 Eclipse 的 Azure 工具包][02]
 5. 如果展开“用于 Eclipse 的 Azure 工具包”，可以看到以下项：
    
    * **用于 Java 的 Application Insights 插件**：使用此组件可将 Azure 的遥测日志记录和分析服务用于应用程序和服务器实例。
    * **Azure 访问控制服务筛选器**：此组件对以下情况提供支持：向 Azure ACS 验证应用程序用户的身份，启用单一登录方案，以及从应用程序具体化标识逻辑。
    * **Azure 常用插件**：此组件提供其他工具包组件所需的常见功能。
    * **用于 Eclipse 的 Azure 资源管理器**：此组件提供其他工具包组件所需的常见功能。
-   * **Azure Plugin for Eclipse with Java**：此组件对以下情况提供支持：在 Eclipse 中，通过命令行开发可帮助构建、测试和部署适用于 Microsoft Azure 云的 Java 应用程序的项目。
-   * **Azure Web Apps Plugin with Java**：此组件在将 Java Web 应用程序部署到 Microsoft Azure Web 应用容器时提供支持。
+   * **用于 Eclipse 且支持 Java 的 Azure 插件**：此组件对以下情况提供支持：在 Eclipse 中，通过命令行开发可帮助构建、测试和部署适用于 Microsoft Azure 云的 Java 应用程序的项目。
+   * **支持 Java 的 Azure Web 应用插件**：此组件在将 Java Web 应用程序部署到 Microsoft Azure Web 应用容器时提供支持。
    * **Microsoft JDBC Driver 4.2 for SQL Server**：此组件提供适用于 SQL Server 的 JDBC API 以及适用于 Java Platform Enterprise Edition 8 的 Microsoft Azure SQL 数据库。
    * **Apache Qpid JMS 客户端库包**：此组件提供 Apache Qpid 项目中的 JMS 客户端组件，以允许应用程序在 Microsoft Azure 中使用 AMQP 消息传送。
    * **Microsoft Azure Java 库包**：此组件提供用于访问 Microsoft Azure 服务（例如存储、服务总线、服务运行时等等）的 API。
@@ -65,16 +66,18 @@ ms.openlocfilehash: 5bb67803be0c9cb2fa21545eaee1d26b85bae3c5
     ![重新启动提示][06]
 
 ## <a name="see-also"></a>另请参阅
-有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
+有关用于 Java IDE 的 Azure 工具包的详细信息，请参阅以下链接：
 
 * [用于 Eclipse 的 Azure 工具包]
-  * *安装用于 Eclipse 的 Azure 工具包（本文）*
-  * [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
   * [用于 Eclipse 的 Azure 工具包的新增功能]
+  * *安装用于 Eclipse 的 Azure 工具包（本文）*
+  * [用于 Eclipse 的 Azure 工具包的登录说明]
+  * [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
 * [用于 IntelliJ 的 Azure 工具包]
-  * [安装用于 IntelliJ 的 Azure 工具包]
-  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
   * [用于 IntelliJ 的 Azure 工具包的新增功能]
+  * [安装用于 IntelliJ 的 Azure 工具包]
+  * [用于 IntelliJ 的 Azure 工具包的登录说明]
+  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]。
 
@@ -86,6 +89,8 @@ ms.openlocfilehash: 5bb67803be0c9cb2fa21545eaee1d26b85bae3c5
 [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Installing the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md
 [安装用于 IntelliJ 的 Azure 工具包]: ./azure-toolkit-for-intellij-installation.md
+[用于 Eclipse 的 Azure 工具包的登录说明]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[用于 IntelliJ 的 Azure 工具包的登录说明]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [用于 Eclipse 的 Azure 工具包的新增功能]: ./azure-toolkit-for-eclipse-whats-new.md
 [用于 IntelliJ 的 Azure 工具包的新增功能]: ./azure-toolkit-for-intellij-whats-new.md
 
@@ -101,9 +106,4 @@ ms.openlocfilehash: 5bb67803be0c9cb2fa21545eaee1d26b85bae3c5
 [06]: ./media/azure-toolkit-for-eclipse-installation/eclipse-installation-06.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690946.aspx -->
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

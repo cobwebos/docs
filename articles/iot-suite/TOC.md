@@ -8,6 +8,7 @@
 ## [预配置的解决方案入门](iot-suite-getstarted-preconfigured-solutions.md)
 ## [azureiotsuite.com 权限](iot-suite-permissions.md)
 ## [前瞻性维护解决方案概述](iot-suite-predictive-overview.md)
+## [已连接的工厂解决方案概述](iot-suite-connected-factory-overview.md)
 ## [远程监视解决方案演练](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [前瞻性维护解决方案演练](iot-suite-predictive-walkthrough.md)
 
@@ -21,6 +22,7 @@
 ## [在远程监视解决方案中使用动态遥测](iot-suite-dynamic-telemetry.md)
 ## [在远程监视解决方案中创建自定义规则](iot-suite-custom-rule.md)
 ## [远程监视解决方案中的设备信息](iot-suite-remote-monitoring-device-info.md)
+## [为已连接的工厂部署网关](iot-suite-connected-factory-gateway-deployment.md)
 
 # 引用
 ## [安全体系结构](iot-security-architecture.md)
@@ -39,10 +41,5 @@
 ## [IoT 套件学习路径](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 
 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

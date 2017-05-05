@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: 1bd099ee9154e920fef5b99e27d2a9711c1d75d1
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 10840ee4ff070436e2c21d51846ea6363825abac
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -66,10 +67,13 @@ ms.openlocfilehash: 1bd099ee9154e920fef5b99e27d2a9711c1d75d1
 ## <a name="create-a-new-sql-vm"></a>创建新的 SQL VM
 以下部分提供了有关 SQL Server 虚拟机库映像到 Azure 门户的直接链接。 根据你所选的映像，可以基于分钟支付 SQL Server 许可费用，或者可以自带许可 (BYOL)。
 
-在本教程中查找该过程的分步指南：[在 Azure 门户中预配 SQL Server 虚拟机](virtual-machines-windows-portal-sql-server-provision.md)。 另外，请查看 [SQL Server VM 的性能最佳实践](virtual-machines-windows-sql-performance.md)，其中介绍了如何选择适当的虚拟机大小和预配期间其他可用的功能。
+在以下教程中查找创建新 SQL VM 的分步指南：[在 Azure 门户中预配 SQL Server 虚拟机](virtual-machines-windows-portal-sql-server-provision.md)。 另外，请查看 [SQL Server VM 的性能最佳实践](virtual-machines-windows-sql-performance.md)，其中介绍了如何选择适当的虚拟机大小和预配期间其他可用的功能。
 
 ## <a name="option-1-create-a-sql-vm-with-per-minute-licensing"></a>选项 1：创建具有每分钟许可的 SQL 虚拟机
 下表提供了虚拟机库中最新 SQL Server 映像的矩阵。 单击任何链接，即可开始创建具有指定版本和操作系统的新 SQL VM。 
+
+> [!TIP]
+> 若要了解这些映像的 VM 和 SQL 定价，请参阅 [SQL Server Azure VM 的定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
 | 版本 | 操作系统 | 版本 |
 | --- | --- | --- |
@@ -80,8 +84,11 @@ ms.openlocfilehash: 1bd099ee9154e920fef5b99e27d2a9711c1d75d1
 
 除了此列表，也可使用 SQL Server 版本和操作系统的其他组合。 在 Azure 门户中通过应用商店搜索查找其他映像。 
 
-## <a name="a-idbyola-option-2-create-a-sql-vm-with-an-existing-license"></a><a id="BYOL"></a> 选项 2：使用现有许可创建 SQL VM
+## <a id="BYOL"></a> 选项 2：使用现有许可创建 SQL VM
 你也可以自带许可 (BYOL)。 在此方案中，你只需支付 VM 费用，SQL Server 许可不需要任何额外的费用。 若要使用自己的许可证，请参考下面的 SQL Server 版本和操作系统对照表。 在门户中，这些映像名称带有 **{BYOL}**前缀。
+
+> [!TIP]
+> 自带许可证长时间会节省资金，因为可以持续使用生产型工作负荷。 有关详细信息，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
 | 版本 | 操作系统 | 版本 |
 | --- | --- | --- |
@@ -92,8 +99,7 @@ ms.openlocfilehash: 1bd099ee9154e920fef5b99e27d2a9711c1d75d1
 除了此列表，也可使用 SQL Server 版本和操作系统的其他组合。 在 Azure 门户中通过应用商店搜索查找其他映像（搜索“{BYOL} SQL Server”）。
 
 > [!IMPORTANT]
-> 若要使用 BYOL VM 映像，必须具有包含 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)的企业协议。 此外，还需要有所要使用的 SQL Server 版本的有效许可证。 必须在预配 VM 的 [10](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf) 天内 **向 Microsoft 提供必要的 BYOL 信息** 。
-> 
+> 若要使用 BYOL VM 映像，必须具有包含 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)的企业协议。 此外，还需要有所要使用的 SQL Server 版本的有效许可证。 必须在预配 VM 的 [10](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf) 天内 **向 Microsoft 提供必要的 BYOL 信息** 。 
 
 > [!NOTE]
 > 无法更改按分钟付费的 SQL Server VM 的许可模式来使用自己的许可证。 若要使用自己的许可证，必须创建新的 BYOL VM，并将数据库迁移到新 VM。 
@@ -126,13 +132,8 @@ Azure VM 可以使用 [自动修补](virtual-machines-windows-sql-automated-patc
 ## <a name="next-steps"></a>后续步骤
 [探索学习路径](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) ：Azure 虚拟机上的 SQL Server。
 
-有关定价的问题，请参阅[定价](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。 在“OS/软件”列表中选择 SQL Server 的目标版本。 然后，查看不同大小虚拟机的价格。 
+有关定价的问题，请参阅 [SQL Server Azure VM 的定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)和 [Azure 定价页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。 在“OS/软件”列表中选择 SQL Server 的目标版本。 然后，查看不同大小虚拟机的价格。
 
 其他问题？ 请先参阅 [Azure 虚拟机中的 SQL Server 常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md)。 同时将你的问题或看法添加在任何 SQL VM 主题的底部，以便与 Microsoft 和社区互动。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -55,8 +55,3 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 ## <a name="configuration-file"></a>配置文件
 部署脚本的配置文件是一个 XML 文件。 架构文件 HPCIaaSClusterConfig.xsd 位于 HPC Pack IaaS 部署脚本文件夹中。 **IaaSClusterConfig** 是配置文件的根元素，其中包含部署脚本文件夹中 Manual.rtf 文件详细描述的子元素。
 
-
-
-<!--HONumber=Jan17_HO2-->
-
-

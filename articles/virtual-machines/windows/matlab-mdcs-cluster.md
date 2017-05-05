@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 3b946c9c482015483c929127ff3b42b6059f5e52
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b86f13f49c6390a90609bba9141564d2ac69246d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="prerequisites"></a>先决条件
 * **客户端计算机** - 部署后，需要使用一台基于 Windows 的客户端计算机来与 Azure 和 MATLAB 分布式计算服务器群集通信。
-* **Azure PowerShell** - 请参阅 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell），在客户端计算机上安装该软件。
+* **Azure PowerShell** - 请参阅 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell），在客户端计算机上安装该软件。
 * **Azure 订阅** - 如果没有订阅，只需要花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。 对于较大的群集，请考虑即用即付订阅或其他购买选项。
 * **核心配额** - 可能需要增大核心配额才能部署大型群集或多个 MATLAB 分布式计算服务器群集。 若要增加配额，可免费[建立联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
 * **MATLAB、并行计算工具箱和 MATLAB 分布式计算服务器许可证** - 脚本假设所有许可证都使用 [MathWorks Hosted License Manager](http://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/)。  

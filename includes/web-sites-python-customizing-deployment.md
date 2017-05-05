@@ -28,8 +28,3 @@
 这些文件不存在时，Azure 创建一个临时部署脚本然后运行此脚本。  它等同于使用以上命令创建的脚本。
 
 [Azure 命令行接口]: http://azure.microsoft.com/downloads/
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -16,9 +16,9 @@ ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: c7090940192d9bd07fce96ad475b2239f5e9f2e8
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 23dfe112411ebc6f47e6a3f09baaf1aa746e6987
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -73,11 +73,12 @@ ms.lasthandoff: 04/06/2017
 
 可以通过 [Azure 门户](batch-account-create-portal.md)或编程方式（例如使用[批处理管理 .NET 库](batch-management-dotnet.md)）创建 Azure 批处理帐户。 创建帐户时，可以关联 Azure 存储帐户。
 
-批处理支持两种帐户配置，二者都基于“池分配模式”属性。 这两种配置为你提供不同的选项，用于通过批处理服务进行身份验证，以及预配和管理批处理[池](#pool)（参见本文后面部分）。 
+批处理支持两种帐户配置，二者都基于“池分配模式”属性。 这两个配置允许你访问与批处理[池](#pool)相关的不同功能（见本文后面部分）。 
 
 
-* **批处理服务**（默认）：可以通过共享密钥身份验证或 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API。 在 Azure 托管帐户中，批处理计算资源是在后台分配的。   
-* **用户订阅**：可以使用 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API。 批处理计算资源是在 Azure 订阅中直接分配的。 此模式具有更大的灵活性，适合配置计算节点以及集成其他服务。 此模式要求你为批处理帐户设置额外的 Azure 密钥保管库。
+* **批处理服务**：这是默认选项，将批处理池 VM 分配到 Azure 托管的订阅的幕后。 如果云服务池是必需的，则必须使用此帐户配置；但如果虚拟机池是必须的，而这些池是从自定义 VM 映像创建的，或者使用虚拟网络，则不能使用此帐户配置。 可以通过共享密钥身份验证或 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API。 
+
+* **用户订阅**：如果虚拟机池是必须的，而这些池是从自定义 VM 映像创建的，或者使用虚拟网络，则必须使用此帐户配置。 只能使用 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API，云服务池不受支持。 批处理计算 VM 是在 Azure 订阅中直接分配的。 此模式要求你为批处理帐户设置 Azure 密钥保管库。
  
 
 ## <a name="compute-node"></a>计算节点

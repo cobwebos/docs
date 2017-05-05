@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 05/03/2017
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 25dd25d8f8f0388ed7ef11bb26344ad7199fde2e
-ms.openlocfilehash: 3f0487fba592426c835d81a46a752697ecf34d8b
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 5e37870f932ce775293b913504f2530d1d8935e1
+ms.lasthandoff: 04/19/2017
 
 
 ---
 # <a name="event-hubs-archive-walkthrough-python"></a>事件中心存档演练：Python
-事件中心存档是事件中心的一项新功能，用户 可借助此自动将事件中心中的流数据传送到所选的 Azure Blob 存储帐户。 这样易于对实时流数据执行批处理操作。 本文介绍如何通过 Python 使用事件中心存档功能。 有关事件中心存档的详细信息，请参阅[概述文章](event-hubs-archive-overview.md)。
+事件中心存档是事件中心的一项新功能，用户可借助该功能自动将事件中心内的流数据传递到所选的 Azure Blob 存储帐户。 这样易于对实时流数据执行批处理操作。 本文介绍如何通过 Python 使用事件中心存档功能。 有关事件中心存档的详细信息，请参阅[概述文章](event-hubs-archive-overview.md)。
 
-此示例使用 [Azure Python SDK](https://azure.microsoft.com/develop/python/) 来演示存档功能。 Sender.py 程序以 JSON 格式将模拟的环境遥测数据发送到事件中心。 事件中心已配置为使用存档功能将此数据成批地写入到 blob 存储。 然后 archivereader.py 应用读取这些 blob，为每个设备创建一个附加文件，然后将数据写入到 .csv 文件中。
+此示例使用 [Azure Python SDK](https://azure.microsoft.com/develop/python/) 来演示存档功能。 Sender.py 程序以 JSON 格式将模拟的环境遥测数据发送到事件中心。 事件中心配置为使用存档功能将此数据成批地写入到 Blob 存储。 然后 archivereader.py 应用读取这些 blob，为每个设备创建一个附加文件，然后将数据写入到 .csv 文件中。
 
 将要完成的任务
 

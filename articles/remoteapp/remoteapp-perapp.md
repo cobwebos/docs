@@ -15,9 +15,9 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: piotrci
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 20f9e9b31498f20c2a27f0d82d434abad73d2454
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7970fb624fcf76d9cba6e60c9766e39b63f175ba
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -50,7 +50,7 @@ Azure RemoteApp 最初只启用了一种“发布”应用程序的方式：管�
 ## <a name="how-to-get-azure-remoteapp-powershell-cmdlets"></a>如何获取 Azure RemoteApp PowerShell cmdlet
 若要试用新的预览版功能，需要使用 Azure PowerShell cmdlet。 目前不能使用 Azure 管理门户启用新的应用程序发布模式。
 
-首先，请确保已安装 [Azure PowerShell 模块](/powershell/azureps-cmdlets-docs) 。
+首先，请确保已安装 [Azure PowerShell 模块](/powershell/azure/overview) 。
 
 然后在管理员模式下启动 PowerShell 控制台并运行以下 cmdlet：
 

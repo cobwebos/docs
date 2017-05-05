@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 868026150e81347aa3a7914f63bc19c3a878c586
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c65a932d0bf9bfb00f138997babc1bd642bcf879
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,7 +59,7 @@ ms.lasthandoff: 04/03/2017
 若要使用 HPC Pack IaaS 部署脚本部署群集，还要满足其他先决条件：
 
 * **客户端计算机** - 需要基于 Windows 的客户端计算机，以便运行群集部署脚本。
-* **Azure PowerShell** - [ - 在客户端计算机上安装并配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)（版本 0.8.10 或更高版本）。
+* **Azure PowerShell** - [ - 在客户端计算机上安装并配置 Azure PowerShell](/powershell/azure/overview)（版本 0.8.10 或更高版本）。
 * **HPC Pack IaaS 部署脚本** - 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=44949)下载并解压缩最新版本的脚本。 可以通过运行 `.\New-HPCIaaSCluster.ps1 –Version` 检查脚本的版本。 本文基于版本 4.4.1 或更高版本的脚本。
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>部署选项 1。 使用 Resource Manager 模板
@@ -87,7 +87,7 @@ ms.lasthandoff: 04/03/2017
 下面是使用 HPC Pack IaaS 部署脚本部署群集需要满足其他先决条件：
 
 * **客户端计算机** - 需要基于 Windows 的客户端计算机，以便运行群集部署脚本。
-* **Azure PowerShell** - [ - 在客户端计算机上安装并配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)（版本 0.8.10 或更高版本）。
+* **Azure PowerShell** - [ - 在客户端计算机上安装并配置 Azure PowerShell](/powershell/azure/overview)（版本 0.8.10 或更高版本）。
 * **HPC Pack IaaS 部署脚本** - 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=44949)下载并解压缩最新版本的脚本。 可以通过运行 `.\New-HPCIaaSCluster.ps1 –Version` 检查脚本的版本。 本文基于版本 4.4.1 或更高版本的脚本。
 
 **XML 配置文件**

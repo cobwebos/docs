@@ -16,13 +16,17 @@ ms.workload: iaas-sql-server
 ms.date: 04/05/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: dbf4b04ad92d9339b15d7f247b947dd58b17daa5
-ms.lasthandoff: 04/06/2017
-
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: e7e14b0243f82c672392d5ab4bb6aca01156465b
+ms.lasthandoff: 04/26/2017
 
 ---
+
 # <a name="automated-backup-v2-for-sql-server-2016-azure-virtual-machines-resource-manager"></a>适用于 SQL Server 2016 Azure 虚拟机 (Resource Manager) 的自动备份 v2
+
+> [!div class="op_single_selector"]
+> * [SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
+> * [SQL Server 2016](virtual-machines-windows-sql-automated-backup-v2.md)
 
 自动备份 v2 在运行 SQL Server 2016 Standard、Enterprise 或 Developer 版本的 Azure VM 上自动为所有现有数据库和新数据库配置[向 Microsoft Azure 的托管备份](https://msdn.microsoft.com/library/dn449496.aspx)。 这样，你便可以配置使用持久 Azure Blob 存储的定期数据库备份。 自动备份 v2 依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
 
@@ -47,10 +51,9 @@ ms.lasthandoff: 04/06/2017
 
 **数据库配置**：
 
-- 目标数据库必须使用完整恢复模式。
+- 目标数据库必须使用完整恢复模式。 有关对备份使用完整恢复模型产生的影响的详细信息，请参阅 [Backup Under the Full Recovery Model](https://technet.microsoft.com/library/ms190217.aspx)（使用完整恢复模型的备份）。
 - 系统数据库不需要使用完整恢复模型。 但是，如果需要为模型或 MSDB 创建日志备份，则必须使用完整恢复模型。
-
-有关对备份使用完整恢复模型产生的影响的详细信息，请参阅 [Backup Under the Full Recovery Model](https://technet.microsoft.com/library/ms190217.aspx)（使用完整恢复模型的备份）。
+- 目标数据库必须位于默认 SQL Server 实例上。 SQL Server IaaS 扩展不支持命名的实例。
 
 **Azure 部署模型**：
 
@@ -122,9 +125,11 @@ ms.lasthandoff: 04/06/2017
 > 计划每日备份时，建议安排一个较宽的时段，确保在此时间范围内可以备份所有数据库。 有大量的数据要备份时，这种设置尤其重要。
 
 ## <a name="configuration-in-the-portal"></a>门户中的配置
-可以在预配期间或针对现有的 SQL Server 2016 VM 使用 Azure 门户来配置自动备份 v2。 
+
+可以在预配期间或针对现有的 SQL Server 2016 VM 使用 Azure 门户来配置自动备份 v2。
 
 ### <a name="new-vms"></a>新的 VM
+
 在 Resource Manager 部署模型中创建新的 SQL Server 2016 虚拟机时，可以使用 Azure 门户配置自动备份 v2。 
 
 在“SQL Server 设置”边栏选项卡中，选择“自动备份”。 下面的 Azure 门户屏幕截图显示了“SQL 自动备份”边栏选项卡。
@@ -137,6 +142,7 @@ ms.lasthandoff: 04/06/2017
 若要了解上下文，请参阅有关[在 Azure 中预配 SQL Server 虚拟机](virtual-machines-windows-portal-sql-server-provision.md)的完整主题。
 
 ### <a name="existing-vms"></a>现有 VM
+
 对于现有的 SQL Server 虚拟机，请选择你的 SQL Server 虚拟机。 然后选择“设置”边栏选项卡的“SQL Server 配置”部分。
 
 ![现有 VM 的 SQL 自动备份](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration.png)
@@ -150,6 +156,7 @@ ms.lasthandoff: 04/06/2017
 当你首次启用自动备份时，Azure 将在后台配置 SQL Server IaaS 代理。 在此期间，Azure 门户可能不会显示自动备份已配置。 请等待几分钟，以便安装和配置代理。 之后，Azure 门户将反映新设置。
 
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 进行配置
+
 可以使用 PowerShell 来配置自动备份 v2。 开始之前，必须：
 
 - [下载并安装最新的 Azure PowerShell](http://aka.ms/webpi-azps)。
@@ -176,7 +183,7 @@ Set-AzureRmVMSqlServerExtension -VMName $vmname `
     -Version "1.2" -Location $region 
 ```
 
-### <a name="a-idverifysettings-verify-current-settings"></a><a id="verifysettings">验证当前设置
+### <a id="verifysettings"></a> 验证当前设置
 如果在预配期间启用了自动备份，可以使用 PowerShell 检查当前配置。 运行 **Get-AzureRmVMSqlServerExtension** 命令并检查 **AutoBackupSettings** 属性：
 
 ```powershell

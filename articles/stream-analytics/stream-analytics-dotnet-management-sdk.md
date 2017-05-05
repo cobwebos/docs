@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/06/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: b2729dfdb6bf85e6d254b08669eeb259f4ab59d5
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: c1904b90e2e076c5e204a348b5882c7200bbace3
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -34,7 +34,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 * 安装 Visual Studio 2017 或 2015。
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
-* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)；  
+* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)；  
 
         # Log in to your Azure account
         Add-AzureAccount
@@ -295,7 +295,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
     LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 你已经学习了使用 .NET SDK 来创建和运行分析作业的基础知识。 若要了解更多信息，请参阅下列文章：

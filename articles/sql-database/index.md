@@ -12,16 +12,30 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 1092d5963cd1b9e21796809374be2534df39e437
-ms.lasthandoff: 04/08/2017
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: bc2036c18615e855234885cc0937c16d43eb80dc
+ms.lasthandoff: 04/28/2017
 
 ---
 <div class="content">
     <h1>SQL 数据库文档</h1>
-    <p style="padding-bottom: 0px; max-width: 1050px;">Azure SQL 数据库是使用 Microsoft SQL Server 引擎的关系数据库即服务。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。</p>
-<h2 style="margin-top: 36px; margin-bottom: 0px;">快速入门</h2>
-<p style="margin-top: 6px; margin-bottom: 6px;">使用以下工具创建 SQL DB：</p>
+    <div class="introHolder" style="justify-content: space-between;">
+        <div class="intro" style="min-width: 200px">
+            <p>Azure SQL 数据库是使用 Microsoft SQL Server 引擎的关系数据库即服务。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。</p>
+        </div>
+        <a href="https://azure.microsoft.com/en-us/resources/videos/create-sql-database-on-azure/">
+            <div class="calloutHolder" style="max-width: 250px">
+                <div>
+                    <img src="media/index/create-sql-database-on-azure.png" style="width: 250px;" />
+                </div>
+                <div>
+                    <p style="margin-top: 0; color: #6e6e6e">在 Azure 上创建 SQL 数据库。 (3:12)</p>
+                </div>
+            </div>
+        </a>
+    </div>
+<h2 style="margin-top: 18px; margin-bottom: 0px;">5 分钟快速入门</h2>
+<p style="margin-top: 6px; margin-bottom: 6px;">了解如何创建 SQL 数据库、使用 SQL Management Studio 管理该数据库以及采用 C#、Java、Python、Node.js 和 Ruby 通过该数据库进行开发：</p>
 <div class="ico48Case">
     <div class="ico48Link">
         <a href="/azure/sql-database/sql-database-get-started-portal">
@@ -43,30 +57,41 @@ ms.lasthandoff: 04/08/2017
     </div>
 </div>
 
-<div class="columnHolder">
-    <div class="column50">
-        <h2 style="margin-top: 36px">教程</h2>
-        <p>构建和部署 SQL 数据库应用程序。</p>
-        <ul class="spaced">
-            <li><a href="/azure/sql-database/sql-database-design-first-database">设计数据库</a></li>
-            <li><a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">迁移数据库</a></li>
-        </ul>
-        <h2>示例</h2>
-        <p>查找脚本来管理常见任务。</p>
-        <ul class="spaced">
-            <li><a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a></li>
-            <li><a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a></li>
-        </ul>
-    </div>
-    <div class="column50" style="max-width: 400px">
-        <h2 style="margin-top: 36px">免费视频培训</h2>
-        <a href="https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-dotnet.png" width="400" alt="">
-            <p style="margin-top: 0px">免费 Pluralsight 视频培训 - 使用 .NET 进行开发</a></p>
-    </div>
-</div>
+<h2 style="margin-top: 36px">分步教程</h2>
+<p>了解如何使用 SQL DB 创建、管理和迁移数据库</p>
+<ol>
+    <li><a href="/azure/sql-database/sql-database-design-first-database">创建和设计新 SQL 数据库的架构</a></li>
+    <li><a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">迁移现有 SQL Server 数据库以使用 Azure SQL 数据库</a></li>
+</ol>
 
-<hr />
+<h2 style="margin-top: 36px">免费 PluralSight 视频培训</h2>
+<ul class="panelContent cardsW">
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-dotnet.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>使用 .NET 进行开发</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
+
+<h2 style="margin-top: 36px">示例</h2>
+<p>查找脚本来管理常见任务</p>
+<ul class="spaced">
+    <li><a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a></li>
+    <li><a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a></li>
+</ul>
 
 <h2 style="margin-top: 36px">引用</h2>
 <ul class="panelContent cardsW">
@@ -119,7 +144,8 @@ ms.lasthandoff: 04/08/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server工具</a></h3>
+                        <h3>SQL Server 工具</h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server工具</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p>
                         <p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p>
@@ -136,7 +162,8 @@ ms.lasthandoff: 04/08/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server 驱动程序</a></h3>
+                        <h3>SQL Server 驱动程序</h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server 驱动程序</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>
@@ -147,3 +174,4 @@ ms.lasthandoff: 04/08/2017
     </li>
 </ul>
 </div>
+

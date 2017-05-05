@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 04/06/2017
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 32f115a4d901a43abf1bf69d1c0c72b65ec7368c
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2bc3e4573ff4f202c3c8492e8110dc35c7e8ff2a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/07/2017
 在开始阅读本教程前，你必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **配备 Azure PowerShell 的工作站**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* **配备 Azure PowerShell 的工作站**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="create-data-lake-analytics-account"></a>创建 Data Lake Analytics 帐户
 在运行任何作业之前，首先必须拥有 Data Lake Analytics 帐户。 若要创建 Data Lake Analytics 帐户，必须指定以下各项：

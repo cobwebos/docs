@@ -13,12 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 04/19/2017
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: e26a37fbe783c2ca95679b5bdcc9b0ba0beec76b
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 2450eada5a49763542c95799a381f2029fec7575
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -71,9 +71,10 @@ ms.lasthandoff: 04/03/2017
 * [媒体服务](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [移动服务](#mobile-services-limits)
-* [监视](#monitoring-limits)
+* [监视](#monitor-limits)
 * [多重身份验证](#multi-factor-authentication)
 * [网络](#networking-limits)
+* [网络观察程序](#network-watcher-limits)
 * [通知中心服务](#notification-hub-service-limits)
 * [资源组](#resource-group-limits)
 * [计划程序](#scheduler-limits)
@@ -124,6 +125,9 @@ ms.lasthandoff: 04/03/2017
 #### <a name="application-gateway-limits"></a>应用程序网关限制
 [!INCLUDE [application-gateway-limits](../includes/application-gateway-limits.md)]
 
+#### <a name="network-watcher-limits"></a>网络观察程序限制
+[!INCLUDE [network-watcher-limits](../includes/network-watcher-limits.md)]
+
 #### <a name="traffic-manager-limits"></a>流量管理器限制
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
 
@@ -158,8 +162,8 @@ ms.lasthandoff: 04/03/2017
 ### <a name="cloud-services-limits"></a>云服务限制
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
-### <a name="app-service-limits"></a>App Service 限制
-以下 App Service 限制包括 Web Apps、Mobile Apps、API Apps 和 Logic Apps 的限制。
+### <a name="app-service-limits"></a>应用服务限制
+以下应用服务限制包括 Web 应用、移动应用、API 应用和逻辑应用的限制。
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
@@ -206,7 +210,7 @@ DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行
 ### <a name="mobile-services-limits"></a>移动服务限制
 [!INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
 
-### <a name="monitoring-limits"></a>监视限制
+### <a name="monitor-limits"></a>监视限制
 [!INCLUDE [monitoring-limits](../includes/monitoring-limits.md)]
 
 ### <a name="notification-hub-service-limits"></a>通知中心服务限制
@@ -263,7 +267,7 @@ DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行
 ### <a name="key-vault-limits"></a>密钥保管库限制
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication"></a>多重身份验证
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>自动化限制

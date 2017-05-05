@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 04/20/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6e71fd9eda822478fa0555aa44908a4094fe8de2
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 04338b62d942774368149b27e8b35713b77f8d7c
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -31,83 +31,53 @@ ms.lasthandoff: 03/31/2017
 
 常见要求是资源组中的所有资源都有特定的标记和值。 跟踪部门开支时通常需要此要求。 必须满足以下条件：
 
-* 将所需标记和值附加到当前未带任何标记的新资源和更新的资源上。
-* 将所需标记和值附加到带其他标记但未带所需标记和值的新资源和更新的资源上。
+* 将所需标记和值追加到未带该标记的新资源和更新的资源上。
 * 不能从任何现有资源中删除所需标记和值。
 
-可向资源组应用以下 3 项策略来实现此要求：
+可通过将两个内置策略应用于资源组来实现此要求。
 
-* [附加标记](#append-tag) 
-* [在其他标记上附加标记](#append-tag-with-other-tags)
-* [需要标记和值](#require-tag-and-value)
+| ID | 说明 |
+| ---- | ---- |
+| 2a0e14a6-b0a6-4fab-991a-187a4f81c498 | 用户未指定时，将应用所需的标记及其默认值。 |
+| 1e30110a-5ceb-460c-a204-c1c3969c6d62 | 强制执行所需的标记及其值。 |
 
-### <a name="append-tag"></a>附加标记
+### <a name="powershell"></a>PowerShell
 
-如果不存在任何标记，以下策略规则将附加具有预定义值的 costCenter 标记：
+以下 PowerShell 脚本将两个内置策略定义分配给资源组。 在运行脚本前，请将所有所需的标记分配给资源组。 资源组中的每个标记是组中的资源所必需的。 若要分配到订阅中的所有资源组，获取资源组时请不要提供 `-Name` 参数。
 
-```json
+```powershell
+$appendpolicy = Get-AzureRmPolicyDefinition | Where-Object {$_.Name -eq '2a0e14a6-b0a6-4fab-991a-187a4f81c498'}
+$denypolicy = Get-AzureRmPolicyDefinition | Where-Object {$_.Name -eq '1e30110a-5ceb-460c-a204-c1c3969c6d62'}
+
+$rgs = Get-AzureRMResourceGroup -Name ExampleGroup
+
+foreach($rg in $rgs)
 {
-  "if": {
-    "field": "tags",
-    "exists": "false"
-  },
-  "then": {
-    "effect": "append",
-    "details": [
-      {
-        "field": "tags",
-        "value": {"costCenter":"myDepartment" }
-      }
-    ]
-  }
-}
-```
-
-### <a name="append-tag-with-other-tags"></a>在其他标记上附加标记
-
-如果存在标记，但未定义 costCenter 标记，以下策略规则将附加具有预定义值的 costCenter 标记：
-
-```json
-{
-  "if": {
-    "allOf": [
-      {
-        "field": "tags",
-        "exists": "true"
-      },
-      {
-        "field": "tags.costCenter",
-        "exists": "false"
-      }
-    ]
-  },
-  "then": {
-    "effect": "append",
-    "details": [
-      {
-        "field": "tags.costCenter",
-        "value": "myDepartment"
-      }
-    ]
-  }
-}
-```
-
-### <a name="require-tag-and-value"></a>需要标记和值
-
-以下策略规则拒绝更新或创建未将 costCenter 标记分配给预定义值的资源。
-
-```json
-{
-  "if": {
-    "not": {
-      "field": "tags.costCenter",
-      "equals": "myDepartment"
+    $tags = $rg.Tags
+    foreach($key in $tags.Keys){
+        $key 
+        $tags[$key]
+        New-AzureRmPolicyAssignment -Name ("append"+$key+"tag") -PolicyDefinition $appendpolicy -Scope $rg.ResourceId -tagName $key -tagValue  $tags[$key]
+        New-AzureRmPolicyAssignment -Name ("denywithout"+$key+"tag") -PolicyDefinition $denypolicy -Scope $rg.ResourceId -tagName $key -tagValue  $tags[$key]
     }
-  },
-  "then": {
-    "effect": "deny"
-  }
+}
+```
+
+分配策略后，可以触发对所有现有资源的更新，以强制执行已添加的标记策略。 以下脚本会保留资源上存在的任何其他标记：
+
+```powershell
+$group = Get-AzureRmResourceGroup -Name "ExampleGroup" 
+
+$resources = Find-AzureRmResource -ResourceGroupName $group.ResourceGroupName 
+
+foreach($r in $resources)
+{
+    try{
+        $r | Set-AzureRmResource -Tags ($a=if($r.Tags -eq $NULL) { @{}} else {$r.Tags}) -Force -UsePatchSemantics
+    }
+    catch{
+        Write-Host  $r.ResourceId + "can't be updated"
+    }
 }
 ```
 
@@ -150,26 +120,6 @@ ms.lasthandoff: 03/31/2017
   "then" : {
     "effect" : "deny"
   }
-}
-```
-
-## <a name="trigger-updates-to-existing-resources"></a>触发现有资源更新
-
-以下 PowerShell 脚本将触发对现有资源的更新，从而强制实施添加的标记策略。
-
-```powershell
-$group = Get-AzureRmResourceGroup -Name "ExampleGroup" 
-
-$resources = Find-AzureRmResource -ResourceGroupName $group.ResourceGroupName 
-
-foreach($r in $resources)
-{
-    try{
-        $r | Set-AzureRmResource -Tags ($a=if($_.Tags -eq $NULL) { @{}} else {$_.Tags}) -Force -UsePatchSemantics
-    }
-    catch{
-        Write-Host  $r.ResourceId + "can't be updated"
-    }
 }
 ```
 

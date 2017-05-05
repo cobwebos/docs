@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 04/11/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 5e32f1e534057b5e8e0ed6d5c0a4631f9fefbca5
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a96150a6a7f83d1c220e0450f7704634a1f6ed1b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -50,12 +50,12 @@ Service Fabric 提供了一个安装程序包，用于创建独立的 Service Fa
 在创建群集时自动下载和安装 Service Fabric 运行时包。
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
-你的三节点开发群集现在正运行。 ServiceFabric PowerShell 模块与运行时一起安装。  可以通过 Service Fabric 运行时来验证：群集是从同一计算机运行的，还是从远程计算机运行的。  [Connect-ServiceFabricCluster](/powershell/module/ServiceFabric/Connect-ServiceFabricCluster) cmdlet 可建立到群集的连接。   
+你的三节点开发群集现在正运行。 ServiceFabric PowerShell 模块与运行时一起安装。  可以通过 Service Fabric 运行时来验证：群集是从同一计算机运行的，还是从远程计算机运行的。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 可建立到群集的连接。   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 ```
-有关如何连接到群集的其他示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。 连接到群集以后，请使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) cmdlet 显示群集中节点的列表，以及每个节点的状态信息。 每个节点的 **HealthState** 应该为“正常”。
+有关如何连接到群集的其他示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。 连接到群集以后，请使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet 显示群集中节点的列表，以及每个节点的状态信息。 每个节点的 **HealthState** 应该为“正常”。
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
@@ -95,3 +95,4 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion ConfigVersio
 * [使用 PowerShell 部署应用](service-fabric-deploy-remove-applications.md)
 
 [service-fabric-explorer]: ./media/service-fabric-get-started-standalone-cluster/sfx.png
+

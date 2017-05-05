@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 51732acdad74dd6dbfc47fae62efc87df6ce5c15
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 924fce8245a88fd7c12636182336e503237fe4dc
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -35,11 +35,11 @@ ms.lasthandoff: 03/14/2017
 请借助本教程开始使用 Azure 密钥保管库日志记录，并创建存储帐户，启用日志记录，以及解释收集到的日志信息。  
 
 > [!NOTE]
-> 本教程不包含有关如何创建密钥保管库、密钥或机密的说明。 有关这方面的信息，请参阅 [Get started with Azure Key Vault](key-vault-get-started.md)（Azure 密钥保管库入门）。 或者，有关跨平台命令行接口说明，请参阅 [此对应教程](key-vault-manage-with-cli.md)。
-> 
+> 本教程不包含有关如何创建密钥保管库、密钥或机密的说明。 有关这方面的信息，请参阅 [Get started with Azure Key Vault](key-vault-get-started.md)（Azure 密钥保管库入门）。 或者，有关跨平台命令行接口说明，请参阅 [此对应教程](key-vault-manage-with-cli2.md)。
+>
 > 目前，无法在 Azure 门户中配置 Azure 密钥保管库。 请改用这些 Azure PowerShell 说明。
-> 
-> 
+>
+>
 
 有关 Azure 密钥保管库的概述信息，请参阅 [什么是 Azure 密钥保管库？](key-vault-whatis.md)
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/14/2017
 若要完成本教程，你必须准备好以下各项：
 
 * 你正在使用的现有密钥保管库。  
-* Azure PowerShell， **最低版本为 1.0.1**。 若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 如果你已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。  
+* Azure PowerShell， **最低版本为 1.0.1**。 若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 如果你已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。  
 * 足够的 Azure 存储空间用于保存密钥保管库日志。
 
 ## <a id="connect"></a>连接到订阅
@@ -66,11 +66,11 @@ ms.lasthandoff: 03/14/2017
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
 > [!NOTE]
-> 这是很重要的一步，在你有多个订阅与帐户相关联的情况下特别有用。 如果跳过此步骤，则在注册 Microsoft.Insights 时可能会出错。 
+> 这是很重要的一步，在你有多个订阅与帐户相关联的情况下特别有用。 如果跳过此步骤，则在注册 Microsoft.Insights 时可能会出错。
 >   
 >
 
-有关配置 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+有关配置 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a id="storage"></a>为日志创建新的存储帐户
 尽管你可以使用现有的存储帐户来保存日志，但我们将专门创建一个新的存储帐户来保存密钥保管库日志。 为方便起见，在稍后遇到必须指定此帐户的情况时，我们会将详细信息存储到名为 **sa**的变量中。
@@ -82,8 +82,8 @@ ms.lasthandoff: 03/14/2017
 
 > [!NOTE]
 > 如果你决定使用现有存储帐户，则必须使用与密钥保管库相同的订阅，此外还必须使用资源管理器部署模型而不是经典部署模型。
-> 
-> 
+>
+>
 
 ## <a id="identify"></a>标识用于保存日志的密钥保管库
 在入门教程中，密钥保管库名为 **ContosoKeyVault**，因此继续使用该名称，并将详细信息存储到名为 **kv** 的变量中：
@@ -168,13 +168,13 @@ ms.lasthandoff: 03/14/2017
 若要选择性地下载 Blob，请使用通配符。 例如：
 
 * 如果你有多个密钥保管库，并只想要下载其中名为 CONTOSOKEYVAULT3 的密钥保管库的日志：
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
 * 如果你有多个资源组，并只想要下载其中某个资源组的日志，请使用 `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`：
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
 * 如果你要下载 2016 年 1 月份的所有日志，请使用 `-Blob '*/year=2016/m=01/*'`：
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 
 现在你已准备就绪，可以开始查看日志中的内容。 但在开始之前，可能还需要了解 Get-AzureRmDiagnosticSetting 的另外两个参数：
@@ -272,8 +272,7 @@ ms.lasthandoff: 03/14/2017
 
 有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](key-vault-developers-guide.md)。
 
-有关 Azure 密钥保管库的 Azure PowerShell 1.0 cmdlet 列表，请参阅 [Azure 密钥保管库 Cmdlet](https://msdn.microsoft.com/library/azure/dn868052.aspx)。
+有关 Azure 密钥保管库的 Azure PowerShell 1.0 cmdlet 列表，请参阅 [Azure 密钥保管库 Cmdlet](/powershell/module/azurerm.keyvault/#key_vault)。
 
 有关使用 Azure 密钥保管库进行密钥轮替和日志审核的教程，请参阅 [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md)（如何使用端到端密钥轮替和审核设置密钥保管库）。
-
 

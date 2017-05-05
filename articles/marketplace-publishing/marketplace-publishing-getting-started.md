@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9d7176b018d25b2a60b2175c289dde7490f8d101
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 49ffe988867ba70df5bd7757a64edc9aa813071d
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -87,7 +87,6 @@ ms.lasthandoff: 04/03/2017
 * [如何将计费模型还原为生产值](marketplace-publishing-vm-image-post-publishing.md#9-how-to-revert-billing-model-to-production-values)
 * [如何将列出的 SKU 的可见性设置还原为生产值](marketplace-publishing-vm-image-post-publishing.md#10-how-to-revert-visibility-setting-of-a-listed-sku-to-the-production-value)
 * [如何更改云解决方案提供商分销商激励](marketplace-publishing-csp-incentive.md)
-* [了解卖方 Insight 报表](marketplace-publishing-report-seller-insights.md)
 * [了解付款报表](marketplace-publishing-report-payout.md)
 * [作为发布者获取支持](marketplace-publishing-get-publisher-support.md)
 

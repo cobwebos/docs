@@ -32,8 +32,3 @@
 
 稍后会将该密钥保管库 URL 分配给 PowerShell 脚本中的 **$akvURL** 参数，以启用 Azure 密钥保管库集成。
 
-
-
-<!--HONumber=Dec16_HO1-->
-
-

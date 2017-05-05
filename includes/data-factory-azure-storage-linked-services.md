@@ -53,8 +53,3 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 * 需要适当设置**过期时间**。 确保 Azure 存储对象的访问权限不会在管道的活动期限内过期。
 * 应该根据需要在正确的容器/Blob 或表级别创建 URI。 数据工厂服务可以使用 Azure Blob 的 SAS URI 访问特定的 Blob。 数据工厂服务可以使用 Azure Blob 容器的 SAS URI 迭代该容器中的 Blob。 如果稍后需要提供更多/更少对象的访问权限或需要更新 SAS URI，请记得使用新 URI 更新链接服务。   
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

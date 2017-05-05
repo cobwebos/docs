@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 3602a1a5f281bec79937dc20e44f447527be8377
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 8ef393e414559ed6c7a2a3b41a0c8cf060f8d4da
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 04/12/2017
 
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)根据存于 Azure blob 存储中的 BACPAC 文件创建 Azure SQL 数据库。 使用 Azure 门户进行的导入操作仅支持从 Azure blob 存储导入 BACPAC 文件。
 
-若要使用 Azure 门户导入数据库，请打开数据库页，并在工具栏上单击“导入”。 指定 *.bacpac 文件名，为 bacpac 提供 Azure 存储帐户和容器，并提供用于连接到源数据库的凭据。  
+若要使用 Azure 门户导入数据库，请打开数据库页，并在工具栏上单击“导入”。 指定存储帐户和容器，并选择要导入的 *.bacpac 文件。 选择新数据库的大小（通常与源数据库相同）并提供目标 SQL Server 凭据。  
 
    ![数据库导入](./media/sql-database-import/import.png)
 
@@ -75,7 +75,7 @@ SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.
    ![sqlpackage 导入](./media/sql-database-migrate-your-sql-server-database/sqlpackage-import.png)
 
 > [!IMPORTANT]
-> Azure SQL 数据库逻辑服务器侦听端口 1433。 如果尝试在企业防火墙内连接到 Azure SQL 数据库逻辑服务器，则必须在企业防火墙中打开此端口，否则无法成功进行连接。
+> Azure SQL 数据库逻辑服务器在端口 1433 上进行侦听。 如果尝试在企业防火墙内连接到 Azure SQL 数据库逻辑服务器，则必须在企业防火墙中打开此端口，否则无法成功进行连接。
 >
 
 ## <a name="powershell"></a>PowerShell

@@ -1,6 +1,8 @@
 # 概述
 ## [什么是 Azure DNS？](dns-overview.md)
 ## [DNS 区域和记录](dns-zones-records.md)
+## [使用 Azure DNS 进行 DNS 委派](dns-domain-delegation.md)
+## [DNS 常见问题](dns-faq.md)
 
 # 入门
 
@@ -10,7 +12,7 @@
 ### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 ### [Azure CLI 2.0](dns-getstarted-cli.md)
 
-## [将域委托给 Azure DNS](dns-domain-delegation.md)
+## [将域委托给 Azure DNS](dns-delegate-domain-azure-dns.md)
 ## [为 Web 应用创建自定义 DNS 记录](dns-web-sites-custom-domain.md)
 
 # 如何
@@ -37,7 +39,7 @@
 ### [故障排除指南](dns-troubleshoot.md)
 
 # 引用
-## [PowerShell](/powershell/resourcemanager/azurerm.dns/v2.3.0/azurerm.dns)
+## [PowerShell](/powershell/module/azurerm.dns)
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
 ## [Java](/java/api/com.microsoft.azure.management.dns)
@@ -59,3 +61,4 @@
 ## [定价](https://azure.microsoft.com/pricing/details/dns/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [网络博客](http://azure.microsoft.com/blog/topics/networking)
+## [功能请求](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)

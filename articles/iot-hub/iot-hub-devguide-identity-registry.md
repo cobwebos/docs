@@ -12,7 +12,7 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 05/04/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
@@ -155,7 +155,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-sdks]: iot-hub-devguide-sdks.md
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-resource-provider-apis]: https://msdn.microsoft.com/library/mt548492.aspx
+[lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-guidance-provisioning]: iot-hub-devguide-identity-registry.md#device-provisioning
 [lnk-guidance-heartbeat]: iot-hub-devguide-identity-registry.md#device-heartbeat
 [lnk-rfc7232]: https://tools.ietf.org/html/rfc7232

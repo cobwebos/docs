@@ -4,7 +4,6 @@
 
 # 入门
 
-## [快速入门指南](storage-getting-started-guide.md)
 ## [创建存储帐户](storage-create-storage-account.md)
 
 ## Blob 存储
@@ -166,7 +165,7 @@
 #### [备份驱动器清单](storage-import-export-backing-up-drive-manifests.md)
 #### [导入/导出作业的诊断和错误恢复](storage-import-export-diagnostics-and-error-recovery.md)
 # 引用
-## [PowerShell](/powershell/storage)
+## [PowerShell](/powershell/module/azure.storage)
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
 ### [资源管理器](/dotnet/api/microsoft.azure.management.storage)
@@ -180,7 +179,7 @@
 ## [iOS](http://azure.github.io/azure-storage-ios/)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST
-### [Blob、队列、表和文件](/rest/api/storageservices/azure-storage-services-rest-api-reference)
+### [Blob、队列、表和文件](/rest/api/storageservices)
 ### [资源提供程序](/rest/api/storagerp)
 ### [导入/导出](/rest/api/storageimportexport)
 

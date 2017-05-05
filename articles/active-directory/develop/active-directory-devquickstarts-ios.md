@@ -15,16 +15,19 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: xerners
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: c74e63621d422f8fa13bc1dd2730ec2c3325a46a
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7ea7008495225b384be3e4728524393bf8c9ba6e
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="integrate-azure-ad-into-an-ios-app"></a>将 Azure AD 集成到 iOS 应用程序中
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+> [!TIP]
+> 欢迎试用新的[开发人员门户](https://identity.microsoft.com/Docs/iOS)预览版，只需花费几分钟时间，它就能帮助你开始使用 Azure Active Directory！  在开发人员门户中，可以逐步完成注册应用并将 Azure AD 集成到代码的整个过程。  完成上述过程后，将会创建一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌和执行验证的后端。 
+> 
+> 
 
 对于需要访问受保护资源的 iOS 客户端，Azure AD 提供 Active Directory 身份验证库 (ADAL)。  在本质上，ADAL 的唯一用途就是方便应用程序获取访问令牌。  为了演示这种简便性，我们生成了一个 Objective C 待办事项列表应用程序，其中包括：
 
@@ -38,11 +41,6 @@ ms.lasthandoff: 01/18/2017
 3. 使用 ADAL 从 Azure AD 获取令牌。
 
 若要开始，请[下载应用框架](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)。  你还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。  如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
-
-> [!TIP]
-> 欢迎试用新的[开发人员门户](https://identity.microsoft.com/Docs/iOS)预览版，只需花费几分钟时间，它就能帮助你开始使用 Azure Active Directory！  在开发人员门户中，可以逐步完成注册应用并将 Azure AD 集成到代码的整个过程。  完成上述过程后，将会创建一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌和执行验证的后端。 
-> 
-> 
 
 ## <a name="1-determine-what-your-redirect-uri-will-be-for-ios"></a>1.确定用于 iOS 的重定向 URI
 为了安全地在特定 SSO 方案中启动应用程序，我们需要以特定格式创建**重定向 URI**。 重定向 URI 可确保将令牌返回给需要它们的正确应用程序。

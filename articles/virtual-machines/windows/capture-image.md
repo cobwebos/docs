@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 114e97bcd38fc69d62960c3305dc7f75ce13b66b
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7316782a1884f4affe5041bf767aa0e32946fbe0
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/03/2017
 
 ## <a name="prerequisites"></a>先决条件
 * 必须已[通用化 VM](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 通用化 VM 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 还可以使用 `sudo waagent -deprovision+user` 通用化 Linux VM，然后使用 PowerShell 捕获该 VM。 有关使用 CLI 捕获 VM 的信息，请参阅[如何使用 Azure CLI 对 Linux 虚拟机进行通用化和捕获](../linux/capture-image.md)
-* 需要安装 Azure PowerShell 1.0.x 版或更新版本。 如果尚未安装 PowerShell，请参阅 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell）了解安装步骤。
+* 需要安装 Azure PowerShell 1.0.x 版或更新版本。 如果尚未安装 PowerShell，请参阅 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）了解安装步骤。
 
 ## <a name="log-in-to-azure-powershell"></a>登录到 Azure PowerShell
 1. 打开 Azure PowerShell 并登录到 Azure 帐户。

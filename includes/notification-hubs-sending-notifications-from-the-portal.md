@@ -11,8 +11,3 @@
 
 在本教程的下一部分中，你将了解如何使用 [通知中心 REST 接口](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx) 直接在应用程序中发送通知消息。 所有已注册的设备将接收任何设备发送的通知。  
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

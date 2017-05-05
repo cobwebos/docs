@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 51e4665b6372859021237144a0bf7f6763a2638b
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: b7b5f92c0093faa96a367fc95d459b1babd99789
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -64,7 +64,7 @@ Azure Active Directory 域服务需要凭据哈希的格式适用于 NTLM 和 Ke
 更改密码后，新密码数分钟后将在 Azure Active Directory 域服务中可用。 再过几分钟后（通常情况下，大约为 20 分钟），你就可以使用新更改的密码登录到已加入托管域的计算机了。
 
 ## <a name="next-steps"></a>后续步骤
-* [如何更新自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md#reset-my-password)
+* [如何更新自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md)
 * [Azure AD 中的密码管理入门](../active-directory/active-directory-passwords-getting-started.md)
 * [对已同步的 Azure AD 租户启用 Azure Active Directory 域服务密码同步](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [管理 Azure Active Directory 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)

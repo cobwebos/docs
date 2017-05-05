@@ -15,9 +15,9 @@ ms.workload:
 ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: b054245de2c5bf6019c2cb29409289f2ac8766ec
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 6629666eaa913321db3855438bb66d349d5c52bf
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -93,6 +93,12 @@ ms.lasthandoff: 03/31/2017
 
 如果选择应用程序一致恢复点，则单个虚拟机故障回复将恢复到其最新的可用应用程序一致恢复点。 如果恢复计划具有复制组，则每个复制组都将恢复到其公共的可用恢复点。
 请注意，应用程序一致恢复点在时间上可能会落后，并且可能会有数据丢失。
+
+### <a name="what-happens-to-vmware-tools-post-failback"></a>故障回复后，VMware 工具会发生什么情况？
+
+在故障转移到 Azure 的过程中，VMware 工具无法在 Azure 虚拟机上运行。 对于 Windows 虚拟机，ASR 在故障转移过程中禁用 VMware 工具。 对于 Linux 虚拟机，ASR 在故障转移过程中卸载 VMware 工具。 
+
+在 Windows 虚拟机故障回复期间，VMware 工具将在故障回复时重新启用。 同样，对于 linux 虚拟机，VMware 工具会在故障回复期间重新安装在计算机上。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 04/07/2017
 ms.author: xerners
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 7fcc00df80ef61f99f6044cd338cbdd16fde0117
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 5f10f6dc878d92337a37bbc4b16edf3962d53cc6
+ms.lasthandoff: 04/26/2017
 
 
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>如何使用 ADAL 在 iOS 上启用跨应用 SSO
 提供单一登录 (SSO)，以便用户只需一次输入其凭据并使这些凭据自动跨工作是现在所需的客户应用程序。 在小屏幕上，通常时间加上的其他因素 (2FA)，如电话呼叫或发送短代码中，输入其用户名和密码的难度导致快速不满，如果用户必须执行此操作一次以上为你的产品。
 
-此外，如果你应用其他应用程序可以使用的标识平台（例如 Microsoft 帐户或 Office365 中的工作帐户），则客户希望不管供应商是谁，他们都可以在所有应用程序中使用这些凭据。
+此外，如果应用其他应用程序可以使用的标识平台（例如 Microsoft 帐户或 Office365 中的工作帐户），则客户希望不管供应商是谁，他们都可以在所有应用程序中使用这些凭据。
 
 Microsoft 标识平台以及 Microsoft 标识 SDK 能够为你完成所有这些繁琐的工作，并可让你使用 SSO 在自己的应用程序套件中让客户感到满意，或者使用中转站功能和验证器应用程序在整个设备上提供良好的用户体验。
 
@@ -83,15 +83,15 @@ Microsoft 为每个移动平台提供了应用程序，可在来自不同供应�
 ```
 
 #### <a name="broker-assisted-logins"></a>中转站辅助的登录
-中转站辅助的登录是一种发生在中转站应用程序中的登录体验，它使用中转站的存储和安全性在设备上应用 Microsoft 标识平台的所有应用程序间共享凭据。 这意味着，应用程序依赖于中转站才能将用户登录。 在 iOS 和 Android 上，这些中转站通过可下载的应用程序提供，客户可以独立安装这些应用程序，也可以由负责管理其用户的设备的公司将这些应用程序推送到设备。 这种类型的应用程序示例是 iOS 上的 Azure 验证器应用程序。 在 Windows 内置于操作系统，已知技术作为 Web 身份验证中转站帐户选择器提供此功能。
+中转站辅助的登录是一种发生在中转站应用程序中的登录体验，它使用中转站的存储和安全性在设备上应用 Microsoft 标识平台的所有应用程序间共享凭据。 这意味着，应用程序依赖于中转站才能将用户登录。 在 iOS 和 Android 上，这些中转站通过可下载的应用程序提供，客户可以独立安装这些应用程序，也可以由负责管理其用户的设备的公司将这些应用程序推送到设备。 这种类型的应用程序示例是 iOS 上的 Microsoft Authenticator 应用程序。 在 Windows 内置于操作系统，已知技术作为 Web 身份验证中转站帐户选择器提供此功能。
 体验因平台而异，如果未正确管理，有时会给用户带来麻烦。 如果你已安装 Facebook 应用程序并在另一个应用程序中使用 Facebook Connect，则可能很熟悉这种模式。 Microsoft 标识平台使用相同的模式。
 
-对于 iOS，这会导致“过渡”动画，其中，应用程序将发送到后台，而 Azure 验证器应用程序将发送到前台，让用户选择他们登录时使用的帐户。  
+对于 iOS，这会导致“过渡”动画，其中，你的应用程序将发送到后台，而 Microsoft Authenticator 应用程序将发送到前台，让用户选择他们登录时使用的帐户。  
 
 对于 Android 和 Windows 帐户选择器将在对用户中断较小的基础上显示应用程序。
 
 #### <a name="how-the-broker-gets-invoked"></a>如何调用中转站
-如果在设备上安装了 Azure 验证器应用程序等兼容的中转站，当用户指出他们希望在 Microsoft 标识平台上使用任何帐户登录时，Microsoft 标识 SDK 将自动为你调用中转站。 此帐户可以是个人 Microsoft 帐户、工作或学校帐户，也可以是由你提供并使用我们的 B2C 和 B2B 产品托管在 Azure 中的帐户。 
+如果在设备上安装了 Microsoft Authenticator 应用程序等兼容的中转站，当用户指出他们希望在 Microsoft 标识平台上使用任何帐户登录时，Microsoft 标识 SDK 将自动为你调用中转站。 此帐户可以是个人 Microsoft 帐户、工作或学校帐户，也可以是由你提供并使用我们的 B2C 和 B2B 产品托管在 Azure 中的帐户。 
 
  #### <a name="how-we-ensure-the-application-is-valid"></a>我们如何确保应用程序有效
  

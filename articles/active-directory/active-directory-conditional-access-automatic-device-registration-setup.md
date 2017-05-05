@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 96fb170e7a079fbb4bcfb4a6b1e98970a709406f
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0fb7e8fe778c8d6f7e12b1c8a75c95941da3d4d9
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="how-to-configure-automatic-registration-of-windows-domain-joined-devices-with-azure-active-directory"></a>如何配置已加入域的 Windows 设备的 Azure Active Directory 自动注册
 
-若要使用 [Azure Active Directory 基于设备的条件性访问](active-directory-conditional-access-azure-portal.md)，必须向 Azure Active Directory (Azure AD) 注册计算机。 可以使用 [Azure Active Directory PowerShell 模块](https://docs.microsoft.com/en-us/powershell/msonline/)中的 [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) cmdlet 获取组织中已注册设备的列表。 
+若要使用 [Azure Active Directory 基于设备的条件性访问](active-directory-conditional-access-azure-portal.md)，必须向 Azure Active Directory (Azure AD) 注册计算机。 可以使用 [Azure Active Directory PowerShell 模块](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中的 [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) cmdlet 获取组织中已注册设备的列表。 
 
 这篇文章提供有关如何在组织中将已加入域的 Windows 设备配置为自动注册到 Azure AD 的步骤。
 
@@ -302,7 +302,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 
 有关已验证的域名的详细信息，请参阅 [Add a custom domain name to Azure Active Directory](active-directory-add-domain.md)（向 Azure Active Directory 添加自定义域名）。  
-若要获取已验证的公司域的列表，可以使用 [Get-MsolDomain](https://docs.microsoft.com/powershell/msonline/v1/get-msoldomain) cmdlet。 
+若要获取已验证的公司域的列表，可以使用 [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) cmdlet。 
 
 ![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
 
@@ -418,7 +418,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
     ]
     => issue(
         Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", 
-        Value = "http://<verified-domain-name>/adfs/services/trust/"
+        Value = "http://' + $oneOfVerifiedDomainNames + '/adfs/services/trust/"
     );'
     }
 
@@ -461,7 +461,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
         => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)",  "http://${domain}/adfs/services/trust/")); 
 
-- 如果已颁发用户帐户的 **ImmutableID** 声明，请在脚本中将 **$oneOfVerifiedDomainNames** 的值设置为 **$true**。
+- 如果已颁发用户帐户的 **ImmutableID** 声明，请在脚本中将 **$immutableIDAlreadyIssuedforUsers** 的值设置为 **$true**。
 
 ## <a name="step-3-enable-windows-down-level-devices"></a>步骤 3：启用 Windows 下层设备
 
@@ -565,7 +565,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 ## <a name="step-5-verify-registered-devices"></a>步骤 5：验证已注册的设备
 
-可以使用 [Azure Active Directory PowerShell 模块](https://docs.microsoft.com/en-us/powershell/msonline/)中的 [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) cmdlet 检查是否在组织中成功注册了设备。
+可以使用 [Azure Active Directory PowerShell 模块](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中的 [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) cmdlet 检查是否在组织中成功注册了设备。
 
 此 cmdlet 的输出显示设备已在 Azure AD 中注册。 若要获取所有设备，请使用 **-All** 参数，然后使用 **deviceTrustType** 属性筛选结果。 已加入域的设备具有 **Domain Joined** 值。
 

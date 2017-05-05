@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 96560927bd9dd93c9313be7392e0cea427a50980
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 88541f6054df1476866d68fdc1c9690a73ada83c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 96560927bd9dd93c9313be7392e0cea427a50980
 
 执行大多数涉及到在规模集中管理虚拟机的任务时，要求知道要管理的虚拟机的实例 ID。 可使用 [Azure 资源浏览器](https://resources.azure.com)查找规模集中的虚拟机的实例 ID。 此外还可以使用资源浏览器来验证完成任务的状态。
 
-有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="display-information-about-a-scale-set"></a>显示有关规模集的信息
 可获取有关规模集的常规信息，也称为实例视图。 或者，可以获取更多特定信息，如规模集中资源的信息。
@@ -212,10 +213,5 @@ ms.openlocfilehash: 96560927bd9dd93c9313be7392e0cea427a50980
     Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
 
 如果要从规模集中删除虚拟机，则首先将删除 ID 最高的虚拟机。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

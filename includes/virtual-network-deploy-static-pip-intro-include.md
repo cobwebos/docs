@@ -2,8 +2,3 @@
 
 在 VM 中实现静态公共 IP 之前，有必要了解何时可以使用静态公共 IP，以及如何使用它们。 阅读 [IP 寻址概述](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md)，了解有关 Azure 中 IP 寻址的详细信息。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 831ce961992747de87706c3dde24b812a281c23a
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: cbd764b3c6ce912c825aa2756ac6f35c23d047bf
+ms.lasthandoff: 04/26/2017
 
 
 ---
@@ -70,6 +70,7 @@ ms.lasthandoff: 04/12/2017
 * [如何制定基准和测试缓存性能？](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * [有关线程池增长的重要详细信息](#important-details-about-threadpool-growth)
 * [启用服务器 GC，以便在使用 StackExchange.Redis 时在客户端上获取更多吞吐量](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
+* [围绕连接的性能注意事项](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>监视和故障排除常见问题
 本部分中的常见问题包括常见的监视和故障排除问题。 有关 Azure Redis 缓存实例监视和故障排除的详细信息，请参阅 [How to monitor Azure Redis Cache](cache-how-to-monitor.md)（如何监视 Azure Redis 缓存）以及 [How to troubleshoot Azure Redis Cache](cache-how-to-troubleshoot.md)（如何排查 Azure Redis 缓存问题）。
@@ -405,6 +406,13 @@ CLR 线程池具有两种类型的线程 —“辅助角色”和“I/O 完成�
 * [若要启用服务器 GC](https://msdn.microsoft.com/library/ms229357.aspx)
 * [垃圾回收基础](https://msdn.microsoft.com/library/ee787088.aspx)
 * [垃圾回收和性能](https://msdn.microsoft.com/library/ee851764.aspx)
+
+
+### <a name="performance-considerations-around-connections"></a>围绕连接的性能注意事项
+
+每个定价层都有不同的客户端连接、内存和带宽的限制。 虽然每个缓存大小*最多*允许一定数量的连接，但与 Redis 的每个连接都具有其关联的开销。 此类开销的一个示例是，由于 TLS/SSL 加密而导致的 CPU 和内存使用。 给定缓存大小的最大连接限制假定轻负载缓存。 如果连接开销的负载*和*客户端操作的负载超出了系统容量，那么即使未超出当前缓存大小的连接限制，缓存也可能会遇到容量问题。
+
+有关每个层的不同连接限制的详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。 有关连接和其他默认配置的详细信息，请参阅[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。
 
 <a name="cache-monitor"></a>
 

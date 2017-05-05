@@ -11,7 +11,3 @@
     "logicAppName": {
         "type": "string"
     }
-
-<!--HONumber=Nov16_HO3-->
-
-

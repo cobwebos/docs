@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: ca695dd140af0a6f9b13f75e0402e1675b9e79d7
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c8ed83c6c0219995030408f276d4ef7d83703c7c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/31/2017
 
 本文介绍常见的管理任务，用户可以在 Azure 虚拟机上执行这些任务。
 
-有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 > [!NOTE]
 > 可能需要重新安装 Azure PowerShell 才能使用本文中的功能。 版本 3.5 和更高版本提供托管磁盘功能。

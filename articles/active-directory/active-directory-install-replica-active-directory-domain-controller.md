@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6e03b6072b5244aca2810f704c485384de5aedf8
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7b267f11a2989b1e621906a46ea4e3bf7f58ca2b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -70,7 +70,7 @@ DC 将使用 Active Directory 复制功能在彼此之间以及与本地 DC 相�
    |  **虚拟机配置** |<p>选择“安装 VM 代理”，以及所需的任何其他扩展。<b></b></p> |
 2. 将磁盘附加到要运行 DC 服务器角色的每个 VM。 需要提供额外的磁盘来存储 AD 数据库、日志和 SYSVOL。 指定磁盘的大小（例如 10 GB）并将“主机缓存首选项”设置为“无”。 有关步骤，请参阅[如何将数据磁盘附加到 Windows 虚拟机](../virtual-machines/windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 3. 在首次登录 VM 之后，请打开“服务器管理器” > “文件和存储服务”，使用 NTFS 在该磁盘上创建一个卷。
-4. 为要运行 DC 角色的 VM 保留静态 IP 地址。 若要保留静态 IP 地址，请下载 Microsoft Web 平台安装程序，[安装 Azure PowerShell](/powershell/azureps-cmdlets-docs) 并运行 Set-AzureStaticVNetIP cmdlet。 例如：
+4. 为要运行 DC 角色的 VM 保留静态 IP 地址。 若要保留静态 IP 地址，请下载 Microsoft Web 平台安装程序，[安装 Azure PowerShell](/powershell/azure/overview) 并运行 Set-AzureStaticVNetIP cmdlet。 例如：
 
     'Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
 
@@ -96,7 +96,7 @@ DC 将使用 Active Directory 复制功能在彼此之间以及与本地 DC 相�
 
 若要使用 Windows PowerShell 而不是 UI 创建 VM，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
-有关如何使用 Windows PowerShell 的详细信息，请参阅 [Get Started with Azure Cmdlets](https://msdn.microsoft.com/library/azure/jj554332.aspx)（Azure Cmdlet 入门）和 [Azure Cmdlet 参考](https://msdn.microsoft.com/library/azure/jj554330.aspx)。
+有关如何使用 Windows PowerShell 的详细信息，请参阅 [Get Started with Azure Cmdlets](/powershell/azure/overview)（Azure Cmdlet 入门）和 [Azure Cmdlet 参考](/powershell/azure/get-started-azureps)。
 
 ## <a name="additional-resources"></a>其他资源
 * [在 Azure 虚拟机上部署 Windows Server Active Directory 的指南](https://msdn.microsoft.com/library/azure/jj156090.aspx)
@@ -105,8 +105,8 @@ DC 将使用 Active Directory 复制功能在彼此之间以及与本地 DC 相�
 * [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)
 * [Microsoft Azure IT Pro IaaS: (01) Virtual Machine Fundamentals](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)（Microsoft Azure IT Pro IaaS：(01) 虚拟机基础知识）
 * [Microsoft Azure IT Pro IaaS: (05) Creating Virtual Networks and Cross-Premises Connectivity](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)（Microsoft Azure IT Pro IaaS：(05) 创建虚拟网络和跨界连接）
-* [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
-* [Azure Management Cmdlets](https://msdn.microsoft.com/library/azure/jj152841)（Azure 管理 Cmdlet）
+* [Azure PowerShell](/powershell/azure/overview)
+* [Azure Management Cmdlets](/powershell/module/azurerm.compute/#virtual_machines)（Azure 管理 Cmdlet）
 
 <!--Image references-->
 [1]: ./media/active-directory-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png

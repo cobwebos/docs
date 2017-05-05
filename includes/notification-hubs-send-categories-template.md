@@ -61,8 +61,3 @@
 [为移动应用添加推送通知]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [如何通过 Java/PHP 使用通知中心]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
 [Microsoft.Azure.Notification Hubs NuGet 包]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
-
-
-<!--HONumber=Nov16_HO3-->
-
-

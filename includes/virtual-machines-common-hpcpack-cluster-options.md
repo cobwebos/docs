@@ -2,8 +2,3 @@
 
 有关在 Azure 中运行大规模并行、批量和 HPC 工作负荷的更多选项，请参阅[用于批量和高性能计算的技术资源](../articles/batch/big-compute-resources.md)。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

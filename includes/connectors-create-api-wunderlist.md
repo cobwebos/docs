@@ -16,8 +16,3 @@
 5. 最后，选择“授权”按钮  
    ![](./media/connectors-create-api-wunderlist/wunderlist-5.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

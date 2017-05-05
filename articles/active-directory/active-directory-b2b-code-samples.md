@@ -42,8 +42,7 @@ ms.lasthandoff: 04/13/2017
 3. 登录到租户
 
     ```
-    $cred = Get-Credential
-    Connect-MsolService -Credential $cred
+    Connect-AzureAd -tenantId <tenantId>
     ```
 
 4. 运行 PowerShell cmdlet

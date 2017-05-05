@@ -38,8 +38,3 @@
 
 可以看到，使用 SAS 时，不会在应用程序中公开帐户密钥。 可以查阅[共享访问签名：了解 SAS 模型](../articles/storage/storage-dotnet-shared-access-signature-part-1.md)，了解有关 SAS 和使用 SAS 的最佳实践的详细信息。
 
-
-
-<!--HONumber=Nov16_HO4-->
-
-

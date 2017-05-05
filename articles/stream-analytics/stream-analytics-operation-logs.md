@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e694eb8f4d658ff9410ae7be2bd4b69500ecbf20
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 7ac1a7f8e2f4f67aeb674f0720bc7108d44dad42
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -81,10 +81,10 @@ ms.lasthandoff: 11/17/2016
 
   ![操作详细信息](./media/stream-analytics-operation-logs/05-stream-analytics-operation-logs.png)  
 
-如果你需要联系[支持团队](https://azure.microsoft.com/support/options/)或通过 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)向团队提供信息，请注明操作详细信息，尤其是**相关性 ID**。 
+如果你需要联系[支持团队](https://azure.microsoft.com/support/options/)或通过 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)向团队提供信息，请注明操作详细信息，尤其是**相关性 ID**。 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

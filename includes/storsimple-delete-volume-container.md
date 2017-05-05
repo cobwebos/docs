@@ -7,8 +7,3 @@
 
 如果卷容器包含关联的卷，首先需要按照[使卷处于脱机状态](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline)中的步骤，使这些卷处于脱机状态。 卷处于脱机状态后，可以删除它们。 当卷容器没有关联的卷时，按上述方法删除卷容器。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

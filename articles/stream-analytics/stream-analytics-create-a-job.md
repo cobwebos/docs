@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 790ecf99acaf1d32a37b0f17757361b9d71778ff
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: e87157e822752c16fb3d25916efc8223d22b3812
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/17/2016
    ![Azure 门户 数据分析处理作业 作业状态](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

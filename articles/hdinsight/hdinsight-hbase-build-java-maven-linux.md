@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ce83fe64c4922b0e420f447e5b9db04c824412a6
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6b26945f4bbffc3dad81bdb267d008da259b47df
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/12/2017
 
 * **熟悉 SSH 和 SCP** 或 **Azure PowerShell**。 本文档提供有关运行此示例时使用 SSH/SCP 和 Azure PowerShell 的步骤。
 
-    有关安装 Azure PowerShell 的信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)。
+    有关安装 Azure PowerShell 的信息，请参阅 [Azure PowerShell 入门](/powershell/azure/overview)。
 
     有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 

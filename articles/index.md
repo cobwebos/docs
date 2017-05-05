@@ -4,9 +4,9 @@ hide_bc: true
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 11c880885b501f402413dec9175c8b2659f65bf3
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: d67c4bda1cea82c95bbc29c7c3b260296603391b
+ms.lasthandoff: 04/22/2017
 
 ---
 <div id="main" class="v2">
@@ -654,6 +654,12 @@ ms.lasthandoff: 04/19/2017
                                             <a href="/azure/azure-government/">
                                                 <img src="media/index/azure-government.svg" alt="" />
                                                 <p>Azure 美国政府版</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/germany/">
+                                                <img src="media/index/azure-germany.svg" alt="" />
+                                                <p>Azure Germany</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2516,6 +2522,25 @@ ms.lasthandoff: 04/19/2017
                                                 <div class="cardText">
                                                     <h3>Microsoft Azure 美国政府版</h3>
                                                     <p>在专用的 Azure 实例中构建并托管美国政府任务应用程序</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/germany/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-germany.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Microsoft Azure Germany</h3>
+                                                    <p>在符合德国法规及主要国际标准并受到数据受托人其他控制的情况下，构建和托管应用程序</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -31,8 +31,3 @@
    > 
 2. 安装新的 StorSimple Adapter for SharePoint。 新适配器将自动识别以前已为 RBS 启用或禁用的内容数据库，并使用以前的设置。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 03/30/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: b4b0a8139b69a31e4af40e1f8231d4d7772fee0b
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 864526efd2bc90bdd4beeb4c81173e85eee6f34b
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,12 +43,13 @@ ms.lasthandoff: 03/18/2017
 
 若要将数据移入/移出数据工厂不支持的数据存储，需使用自己的数据移动逻辑创建**自定义活动**，然后在管道中使用该活动。 同样，若要以数据工厂不支持的方式转换/处理数据，需使用自己的数据转换逻辑创建自定义活动，然后在管道中使用该活动。 
 
-可将自定义活动配置为在虚拟机的 **Azure 批处理**池或者 **Azure HDInsight** 群集中运行。 使用 Azure 批处理时，只能使用现有的 Azure 批处理池。 而在使用 HDInsight 时，可以使用现有的 HDInsight 群集，或者在运行时系统根据用户需要自动创建的群集。  
+可将自定义活动配置为在虚拟机的 **Azure 批处理**池或基于 Windows 的 **Azure HDInsight** 群集中运行。 使用 Azure 批处理时，只能使用现有的 Azure 批处理池。 而在使用 HDInsight 时，可以使用现有的 HDInsight 群集，或者在运行时系统根据用户需要自动创建的群集。  
 
 以下演练提供有关创建自定义 .NET 活动和在管道中使用自定义活动的分步说明。 本演练使用 **Azure 批处理**链接服务。 若要改用 Azure HDInsight 链接服务，请创建 **HDInsight** 类型的链接服务（你自己的 HDInsight 群集），或 **HDInsightOnDemand** 类型的链接服务（数据工厂将按需创建 HDInsight 群集）。 然后，将自定义活动配置为使用 HDInsight 链接服务。 有关使用 Azure HDInsight 运行自定义活动的详细信息，请参阅[使用 Azure HDInsight 链接服务](#use-hdinsight-compute-service)部分。
 
-> [!NOTE]
-> 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。   
+> [!IMPORTANT]
+> - 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure 批处理池（而不是使用 HDInsight 群集）来运行自定义活动。
+> - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。   
 
 ## <a name="walkthrough"></a>演练
 ### <a name="prerequisites"></a>先决条件
@@ -62,7 +63,7 @@ ms.lasthandoff: 03/18/2017
 
 1. 使用 [Azure 门户](http://portal.azure.com)创建 **Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
 2. 记下 Azure 批处理帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure 批处理链接服务。
-    1. 在 Azure 批处理帐户的主页上，可以看到采用以下格式的 **URL**：**https://myaccount.westus.batch.azure.com**。 在本示例中，**myaccount** 是 Azure 批处理帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如：**https://westus.batch.azure.com**。
+    1. 在 Azure 批处理帐户的主页上，可以看到采用以下格式的 **URL**：`https://myaccount.westus.batch.azure.com`。 在本示例中，**myaccount** 是 Azure 批处理帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如：`https://westus.batch.azure.com`。
     2. 在左侧菜单中单击“密钥”并复制“主访问密钥”。
     3. 若要使用现有池，请在菜单中单击“池”，然后记下该池的 **ID**。 如果没有池，将转到下一步。     
 2. 创建 **Azure Batch 池**。
@@ -71,7 +72,7 @@ ms.lasthandoff: 03/18/2017
    2. 选择 Azure Batch 帐户，打开“Batch 帐户”边栏选项卡。
    3. 单击“池”磁贴。
    4. 在“池”边栏选项卡中，单击工具栏上的“添加”按钮以添加池。
-      1. 输入池的 ID（“池 ID”）。 请记下“池的 ID”；创建数据工厂解决方案时需要使用。
+      1. 输入池的 ID（池 ID）。 请记下“池的 ID”；创建数据工厂解决方案时需要使用。
       2. 为操作系统系列设置指定 **Windows Server 2012 R2**。
       3. 选择**节点定价层**。
       4. 输入 **2** 作为“目标专用”设置的值。
@@ -419,12 +420,18 @@ test custom activity Microsoft test custom activity Microsoft
    1. 单击左侧菜单上的“新建”。
    2. 单击“新建”边栏选项卡中的“数据 + 分析”。
    3. 单击“数据分析”边栏选项卡中的“数据工厂”。
+   
+    ![“新建 Azure 数据工厂”菜单](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
 2. 在“新建数据工厂”边栏选项卡中，输入 **CustomActivityFactory** 作为“名称”。 Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“CustomActivityFactory”不可用**，请更改数据工厂名称（例如改为 **yournameCustomActivityFactory**），并再次尝试创建。
+
+    ![“新建 Azure 数据工厂”边栏选项卡](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. 单击“资源组名称”，并选择现有资源组或创建资源组。
 4. 验证是否正在使用正确**订阅**，并验证想在其中创建数据工厂的**区域**是否正确。
 5. 在“新建数据工厂”边栏选项卡中单击“创建”。
 6. 此时可在 Azure 门户的“仪表板”中看到正在创建数据工厂。
 7. 成功创建数据工厂后，将看到“数据工厂”边栏选项卡，其中显示数据工厂的内容。
+    
+    ![“数据工厂”边栏选项卡](media/data-factory-use-custom-activities/data-factory-blade.png)
 
 ### <a name="step-2-create-linked-services"></a>步骤 2：创建链接服务
 链接服务将数据存储或计算服务链接到 Azure 数据工厂。 在此步骤中，将 Azure 存储帐户和 Azure Batch 帐户链接到数据工厂。
@@ -432,22 +439,26 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 1. 在 **CustomActivityFactory** 的“数据工厂”边栏选项卡上，单击“作者和部署”磁贴。 随即显示“数据工厂编辑器”。
 2. 单击命令栏上的“新建数据存储”，并选择“Azure 存储”。 在编辑器中，应会看到用于创建 Azure 存储链接服务的 JSON 脚本。
+    
+    ![新建数据存储 - Azure 存储](media/data-factory-use-custom-activities/new-data-store-menu.png)
+3. 将 `<accountname>` 替换为 Azure 存储帐户的名称，将 `<accountkey>` 替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../storage/storage-create-storage-account.md#manage-your-storage-account)（查看、复制和重新生成存储访问密钥）。
 
-3. 将 **account name** 替换为 Azure 存储帐户名，将 **account key** 替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../storage/storage-create-storage-account.md#manage-your-storage-account)（查看、复制和重新生成存储访问密钥）。
-
+    ![Azure 存储链接服务](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. 单击命令栏上的“部署”，部署链接服务。
 
 #### <a name="create-azure-batch-linked-service"></a>创建 Azure Batch 链接服务
-1. 在数据工厂编辑器中，单击命令栏的“新建计算”，并从菜单中选择“Azure Batch”。
+1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”**，单击“新建计算”，然后从菜单中选择“Azure 批处理”。
+
+    ![新建计算 - Azure 批处理](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. 对 JSON 脚本进行以下更改：
 
-   1. 指定 **accountName** 属性的 Azure Batch 帐户名称。 **Azure Batch 帐户边栏选项卡**中的 **URL** 采用以下格式：http://**accountname**.region.batch.azure.com。 对于 JSON 中的 **batchUri** 属性，需要在 URL 中**删除“accountname.”**， 并对 **accountName** JSON 属性使用 **accountname**。
+   1. 指定 **accountName** 属性的 Azure Batch 帐户名称。 “Azure 批处理帐户”边栏选项卡的 **URL** 采用以下格式：`http://accountname.region.batch.azure.com`。 对于 JSON 中的 **batchUri** 属性，需要从 URL 中删除 `accountname.`，并将 `accountname` 用于 `accountName` JSON 属性。
    2. 指定 **accessKey** 属性的 Azure Batch 帐户密钥。
    3. 指定作为 **poolName** 属性先决条件一部分所创建的池的名称。 也可指定池 ID 而非池名称。
-   4. 指定 **batchUri** 属性的 Azure Batch URI。 示例：https://westus.batch.azure.com。  
+   4. 指定 **batchUri** 属性的 Azure Batch URI。 示例：`https://westus.batch.azure.com`。  
    5. 指定 **linkedServiceName** 属性的 **AzureStorageLinkedService**。
 
-        ```JSON
+        ```json
         {
          "name": "AzureBatchLinkedService",
          "properties": {
@@ -473,10 +484,10 @@ test custom activity Microsoft test custom activity Microsoft
 在此步骤中，创建表示输入和输出数据的数据集。
 
 #### <a name="create-input-dataset"></a>创建输入数据集
-1. 在数据工厂的“编辑器”中，单击工具栏上的“新建数据集”按钮，然后在下拉菜单中单击“Azure Blob 存储”。
+1. 在数据工厂的“编辑器”中，单击命令栏上的“...**更多”**，单击“新建数据集”，然后从下拉菜单中选择“Azure Blob 存储”。
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段：
 
-    ```JSON
+    ```json
     {
      "name": "InputDataset",
      "properties": {
@@ -506,7 +517,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 单击工具栏上的“部署”，创建并部署 **InputDataset**。 确认编辑器标题栏中显示了“已成功创建表”消息。
 
 #### <a name="create-an-output-dataset"></a>创建输出数据集
-1. 在“数据工厂编辑器”中，单击“新建数据集”，然后单击命令栏中的“Azure Blob 存储”。
+1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”**，单击“新建数据集”，然后选择“Azure Blob 存储”。
 2. 将右窗格中的 JSON 脚本替换为以下 JSON 脚本：
 
     ```JSON
@@ -553,7 +564,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 若要部署 **OutputDataset**，请在命令栏上单击“部署”。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>创建并运行使用自定义活动的管道
-1. 在数据工厂编辑器中，单击命令栏上的“新建管道”。 如果未显示命令，请单击“...（省略号）”查看。
+1. 在“数据工厂编辑器”中，单击“...**更多”**，然后在命令栏上选择“新建管道”。 
 2. 将右窗格中的 JSON 替换为以下 JSON 脚本：
 
     ```JSON
@@ -696,7 +707,7 @@ test custom activity Microsoft test custom activity Microsoft
     生成项目。 从 bin\Debug 文件夹中删除 4.3.0 版本以上的 Azure.Storage 程序集。 创建包含二进制代码的 zip 文件和 PDB 文件。 使用 blob 容器 (customactivitycontainer) 中的此文件替换旧的 zip 文件。 重新运行失败的切片（右击切片，然后单击“运行”）。   
 8. 自定义活动不使用包中的 **app.config** 文件。 因此，如果代码从配置文件读取任何连接字符串，其在运行时无效。 使用 Azure Batch 时的最佳做法是在 **Azure KeyVault** 中保存所有机密，使用基于证书的服务主体来保护 **keyvault**，并将该证书分发到 Azure Batch 池。 然后，.NET 自定义活动可以在运行时从 KeyVault 访问机密。 该解决方案是一种通用解决方法，可以延伸到任何类型的机密，而不仅仅是连接字符串。
 
-   有一个更容易的解决方法（但非最佳做法）：可通过连接字符串设置创建 **Azure SQL 链接服务**，再创建使用该链接服务的数据集，并将作为虚拟输入数据集的数据集链接到自定义 .NET 活动。 然后，可访问自定义活动代码中的链接服务连接字符串，并且它应在运行时正常运行。  
+   有一个更容易的解决方法（但非最佳做法）：可通过连接字符串设置创建 **Azure SQL 链接服务**，再创建使用该链接服务的数据集，并将作为虚拟输入数据集的数据集链接到自定义 .NET 活动。 然后，可访问自定义活动代码中的链接服务连接字符串。  
 
 ## <a name="update-custom-activity"></a>更新自定义活动
 如果要更新自定义活动的代码，请生成该代码，然后将包含新二进制文件的 zip 文件上传到 blob 存储。
@@ -721,7 +732,7 @@ test custom activity Microsoft test custom activity Microsoft
 ```
 
 
-本示例中有两个扩展属性：**SliceStart** 和 **DataFactoryName**。 SliceStart 的值基于 SliceStart 系统变量。 有关受支持的系统变量列表，请参阅[系统变量](data-factory-scheduling-and-execution.md#data-factory-functions-and-system-variables)。 DataFactoryName 的值硬编码为 CustomActivityFactory。
+本示例中有两个扩展属性：**SliceStart** 和 **DataFactoryName**。 SliceStart 的值基于 SliceStart 系统变量。 有关受支持的系统变量列表，请参阅[系统变量](data-factory-functions-variables.md)。 DataFactoryName 的值硬编码为 CustomActivityFactory。
 
 若要访问 **Execute** 方法中的这些扩展属性，请使用如下类似代码：
 
@@ -740,20 +751,18 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ```
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure 批处理的自动缩放
-还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量通过 0 专用的 VM 和自动缩放公式创建 Azure Batch 池：
+还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。 
 
-一次为每个挂起的任务分配一个 VM（例如：5 个挂起任务-> 5 个 VM）：
+此处的示例公式实现以下行为：最初创建池时，它从 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
 
-```
-pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
-$TargetDedicated = max(pendingTaskSampleVector);
-```
+自动缩放公式：
 
-每次最多一个 VM，不考虑挂起的任务数：
-
-```
-pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
-$TargetDedicated = (max(pendingTaskSampleVector)>0)?1:0;
+``` 
+startingNumberOfVMs = 1;
+maxNumberofVMs = 25;
+pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
+pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 * TimeInterval_Second));
+$TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 ```
 
 有关详细信息，请参阅 [Automatically scale compute nodes in an Azure Batch pool](../batch/batch-automatic-scaling.md)（自动缩放 Azure Batch 池中的计算节点）。
@@ -761,7 +770,11 @@ $TargetDedicated = (max(pendingTaskSampleVector)>0)?1:0;
 如果池使用默认 [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)，则在运行自定义活动之前，Batch 服务可能需要 15-30 分钟准备 VM。  如果池使用其他 autoScaleEvaluationInterval，则 Batch 服务可能需要 autoScaleEvaluationInterval + 10 分钟。
 
 ## <a name="use-hdinsight-compute-service"></a>使用 HDInsight 计算服务
-在本演练中，使用 Azure Batch 计算运行自定义活动。 也可以使用自己的 HDInsight 群集或使用数据工厂创建按需 HDInsight 群集，并在 HDInsight 群集上运行自定义活动。 以下是用于使用 HDInsight 群集的高级步骤。  
+在本演练中，使用 Azure Batch 计算运行自定义活动。 也可以使用自己的基于 Windows 的 HDInsight 群集或使用数据工厂创建按需基于 Windows 的 HDInsight 群集，并在 HDInsight 群集上运行自定义活动。 以下是用于使用 HDInsight 群集的高级步骤。
+
+> [!IMPORTANT]
+> 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure 批处理池（而不是使用 HDInsight 群集）来运行自定义活动。
+ 
 
 1. 创建 Azure HDInsight 链接服务。   
 2. 使用 HDInsight 链接服务代替管道 JSON 中的 **AzureBatchLinkedService**。
@@ -800,6 +813,10 @@ Azure 数据工厂服务支持创建按需群集，并使用它处理输入，�
            }
         }
         ```
+
+    > [!IMPORTANT]
+    > 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure 批处理池（而不是使用 HDInsight 群集）来运行自定义活动。
+
 4. 单击命令栏上的“部署”，部署链接服务。
 
 ##### <a name="to-use-your-own-hdinsight-cluster"></a>使用自己的 HDInsight 群集：
@@ -862,6 +879,247 @@ Azure 数据工厂服务支持创建按需群集，并使用它处理输入，�
 }
 ```
 
+## <a name="create-a-custom-activity-by-using-net-sdk"></a>使用 .NET SDK 创建自定义活动
+以下代码使用 .NET SDK 按照本文中的演练创建数据工厂。 可在[此文](data-factory-copy-activity-tutorial-using-dotnet-api.md)中找到有关使用 SDK 以编程方式创建管道的更多详细信息
+
+```csharp
+using System;
+using System.Configuration;
+using System.Collections.ObjectModel;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Microsoft.Azure;
+using Microsoft.Azure.Management.DataFactories;
+using Microsoft.Azure.Management.DataFactories.Models;
+using Microsoft.Azure.Management.DataFactories.Common.Models;
+
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.Collections.Generic;
+
+namespace DataFactoryAPITestApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // create data factory management client
+
+            // TODO: replace ADFTutorialResourceGroup with the name of your resource group.
+            string resourceGroupName = "ADFTutorialResourceGroup";
+
+            // TODO: replace APITutorialFactory with a name that is globally unique. For example: APITutorialFactory04212017
+            string dataFactoryName = "APITutorialFactory";
+
+            TokenCloudCredentials aadTokenCredentials = new TokenCloudCredentials(
+                ConfigurationManager.AppSettings["SubscriptionId"],
+                GetAuthorizationHeader().Result);
+
+            Uri resourceManagerUri = new Uri(ConfigurationManager.AppSettings["ResourceManagerEndpoint"]);
+
+            DataFactoryManagementClient client = new DataFactoryManagementClient(aadTokenCredentials, resourceManagerUri);
+
+            Console.WriteLine("Creating a data factory");
+            client.DataFactories.CreateOrUpdate(resourceGroupName,
+                new DataFactoryCreateOrUpdateParameters()
+                {
+                    DataFactory = new DataFactory()
+                    {
+                        Name = dataFactoryName,
+                        Location = "westus",
+                        Properties = new DataFactoryProperties()
+                    }
+                }
+            );
+
+            // create a linked service for input data store: Azure Storage
+            Console.WriteLine("Creating Azure Storage linked service");
+            client.LinkedServices.CreateOrUpdate(resourceGroupName, dataFactoryName,
+                new LinkedServiceCreateOrUpdateParameters()
+                {
+                    LinkedService = new LinkedService()
+                    {
+                        Name = "AzureStorageLinkedService",
+                        Properties = new LinkedServiceProperties
+                        (
+                            // TODO: Replace <accountname> and <accountkey> with name and key of your Azure Storage account.
+                            new AzureStorageLinkedService("DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>")
+                        )
+                    }
+                }
+            );
+
+            // create a linked service for output data store: Azure SQL Database
+            Console.WriteLine("Creating Azure Batch linked service");
+            client.LinkedServices.CreateOrUpdate(resourceGroupName, dataFactoryName,
+                new LinkedServiceCreateOrUpdateParameters()
+                {
+                    LinkedService = new LinkedService()
+                    {
+                        Name = "AzureBatchLinkedService",
+                        Properties = new LinkedServiceProperties
+                        (
+                            // TODO: replace <batchaccountname> and <yourbatchaccountkey> with name and key of your Azure Batch account
+                            new AzureBatchLinkedService("<batchaccountname>", "https://westus.batch.azure.com", "<yourbatchaccountkey>", "myazurebatchpool", "AzureStorageLinkedService")
+                        )
+                    }
+                }
+            );
+
+            // create input and output datasets
+            Console.WriteLine("Creating input and output datasets");
+            string Dataset_Source = "InputDataset";
+            string Dataset_Destination = "OutputDataset";
+
+            Console.WriteLine("Creating input dataset of type: Azure Blob");
+            client.Datasets.CreateOrUpdate(resourceGroupName, dataFactoryName,
+
+                new DatasetCreateOrUpdateParameters()
+                {
+                    Dataset = new Dataset()
+                    {
+                        Name = Dataset_Source,
+                        Properties = new DatasetProperties()
+                        {
+                            LinkedServiceName = "AzureStorageLinkedService",
+                            TypeProperties = new AzureBlobDataset()
+                            {
+                                FolderPath = "adftutorial/customactivityinput/",
+                                Format = new TextFormat()
+                            },
+                            External = true,
+                            Availability = new Availability()
+                            {
+                                Frequency = SchedulePeriod.Hour,
+                                Interval = 1,
+                            },
+
+                            Policy = new Policy() { }
+                        }
+                    }
+                });
+
+            Console.WriteLine("Creating output dataset of type: Azure Blob");
+            client.Datasets.CreateOrUpdate(resourceGroupName, dataFactoryName,
+                new DatasetCreateOrUpdateParameters()
+                {
+                    Dataset = new Dataset()
+                    {
+                        Name = Dataset_Destination,
+                        Properties = new DatasetProperties()
+                        {
+                            LinkedServiceName = "AzureStorageLinkedService",
+                            TypeProperties = new AzureBlobDataset()
+                            {
+                                FileName = "{slice}.txt",
+                                FolderPath = "adftutorial/customactivityoutput/",
+                                PartitionedBy = new List<Partition>()
+                                {
+                                    new Partition()
+                                    {
+                                        Name = "slice",
+                                        Value = new DateTimePartitionValue()
+                                        {
+                                            Date = "SliceStart",
+                                            Format = "yyyy-MM-dd-HH"
+                                        }
+                                    }
+                                }
+                            },
+                            Availability = new Availability()
+                            {
+                                Frequency = SchedulePeriod.Hour,
+                                Interval = 1,
+                            },
+                        }
+                    }
+                });
+
+            Console.WriteLine("Creating a custom activity pipeline");
+            DateTime PipelineActivePeriodStartTime = new DateTime(2017, 3, 9, 0, 0, 0, 0, DateTimeKind.Utc);
+            DateTime PipelineActivePeriodEndTime = PipelineActivePeriodStartTime.AddMinutes(60);
+            string PipelineName = "ADFTutorialPipelineCustom";
+
+            client.Pipelines.CreateOrUpdate(resourceGroupName, dataFactoryName,
+                new PipelineCreateOrUpdateParameters()
+                {
+                    Pipeline = new Pipeline()
+                    {
+                        Name = PipelineName,
+                        Properties = new PipelineProperties()
+                        {
+                            Description = "Use custom activity",
+
+                            // Initial value for pipeline's active period. With this, you won't need to set slice status
+                            Start = PipelineActivePeriodStartTime,
+                            End = PipelineActivePeriodEndTime,
+                            IsPaused = false,
+
+                            Activities = new List<Activity>()
+                            {
+                                new Activity()
+                                {
+                                    Name = "MyDotNetActivity",
+                                    Inputs = new List<ActivityInput>()
+                                    {
+                                        new ActivityInput() {
+                                            Name = Dataset_Source
+                                        }
+                                    },
+                                    Outputs = new List<ActivityOutput>()
+                                    {
+                                        new ActivityOutput()
+                                        {
+                                            Name = Dataset_Destination
+                                        }
+                                    },
+                                    LinkedServiceName = "AzureBatchLinkedService",
+                                    TypeProperties = new DotNetActivity()
+                                    {
+                                        AssemblyName = "MyDotNetActivity.dll",
+                                        EntryPoint = "MyDotNetActivityNS.MyDotNetActivity",
+                                        PackageLinkedService = "AzureStorageLinkedService",
+                                        PackageFile = "customactivitycontainer/MyDotNetActivity.zip",
+                                        ExtendedProperties = new Dictionary<string, string>()
+                                        {
+                                            { "SliceStart", "$$Text.Format('{0:yyyyMMddHH-mm}', Time.AddMinutes(SliceStart, 0))"}
+                                        }
+                                    },
+                                    Policy = new ActivityPolicy()
+                                    {
+                                        Concurrency = 2,
+                                        ExecutionPriorityOrder = "OldestFirst",
+                                        Retry = 3,
+                                        Timeout = new TimeSpan(0,0,30,0),
+                                        Delay = new TimeSpan()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+        }
+
+        public static async Task<string> GetAuthorizationHeader()
+        {
+            AuthenticationContext context = new AuthenticationContext(ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] + ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+            ClientCredential credential = new ClientCredential(
+                ConfigurationManager.AppSettings["ApplicationId"],
+                ConfigurationManager.AppSettings["Password"]);
+            AuthenticationResult result = await context.AcquireTokenAsync(
+                resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+                clientCredential: credential);
+
+            if (result != null)
+                return result.AccessToken;
+
+            throw new InvalidOperationException("Failed to acquire token");
+        }
+    }
+}
+```
+
+
 ## <a name="examples"></a>示例
 | 示例 | 自定义活动的功能 |
 | --- | --- |
@@ -869,6 +1127,8 @@ Azure 数据工厂服务支持创建按需群集，并使用它处理输入，�
 | [Twitter 情绪分析示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |调用 Azure ML 模型和进行观点分析、评分、预测等。 |
 | [运行 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)。 |通过在已安装 R 的 HDInsight 群集上运行 RScript.exe 来调用 R 脚本。 |
 | [跨 AppDomain .NET 活动](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |使用不同于数据工厂启动器使用的程序集版本 |
+| [在 Azure Analysis Services 中重新处理模型](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  在 Azure Analysis Services 中重新处理模型。 |
+| [本地调试自定义活动](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFCustomActivityRunner) | 自定义活动运行程序可让你使用管道中配置的信息，单步执行和调试 Azure 数据工厂 (ADF) 自定义 .NET 活动。 | 
 
 
 [batch-net-library]: ../batch/batch-dotnet-get-started.md

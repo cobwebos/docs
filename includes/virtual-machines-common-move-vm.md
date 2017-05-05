@@ -27,8 +27,3 @@
    
     ![“移动资源”边栏选项卡的屏幕截图。](./media/virtual-machines-common-move-vm/move-rg-list.png)
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

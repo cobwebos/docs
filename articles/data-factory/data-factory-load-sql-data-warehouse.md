@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 04/19/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9e61eeb9ec7895b4f436534a1fd8b2cb608cf613
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: d0aea6ffc04792e7e70a15accf92de05c553ff46
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -177,13 +177,11 @@ ms.lasthandoff: 11/17/2016
 
     ![复制向导 - 表映射页](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. 接受列映射的默认设置，然后单击“下一步”。
-
-    ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/schema-mapping.png)
+4. 在架构映射页中，保留“应用列映射”选项的未勾选状态，然后单击“下一步”。
 
 ## <a name="step-4-performance-settings"></a>步骤 4：性能设置
 
-默认选中“允许 polybase”。  单击“资源组名称” 的 Azure 数据工厂。
+默认选中“允许 polybase”。  单击“下一步”。
 
 ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 

@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/14/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: d52054de2ac5119db39e1cd3c927a790db7524aa
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: b44deb773b2159cba1d5d957455409f10fc49334
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -27,14 +28,23 @@ ms.openlocfilehash: d52054de2ac5119db39e1cd3c927a790db7524aa
 
 ## <a name="to-display-javadoc-content-in-eclipse-for-the-azure-libraries-for-java"></a>在 Eclipse 中显示 Azure Libraries for Java 的 Javadoc 内容
 * 在 Eclipse 的项目资源管理器内，在项目的“引用库”部分中，打开 Azure Library for Java JAR 的上下文菜单。 例如 **microsoft-windowsazure-api-0.1.0.jar**（根据安装的版本，版本号可能不同）。
+
 * 单击“属性”。
+
 * 在“属性”对话框中的左窗格内，单击“Javadoc 位置”。 此时将显示“Javadoc 位置”对话框。
+
 * 可以指定“Javadoc URL”或“存档中的 Javadoc”。
-  * 如果选择指定 **Javadoc URL**，请使用类似于 **http://dl.windowsazure.com/javadoc** 或 **http://dl.windowsazure.com/storage/javadoc** 的 URL。
-  * 如果选择使用“存档中的 Javadoc”，可以指定外部文件或工作区文件。
-    做出选择并根据需要浏览/验证。 以下示例会将 Azure Libraries for Java 关联到已本地下载到名为 **c:\MyAzureJARs** 的文件夹的相应 Javadoc JAR。
-    ![][ic553487]
-* *可选*：单击“验证”。 此处可能会显示 Javadoc JAR 的潜在问题。
+
+   * 如果选择指定 **Javadoc URL**，请使用类似于 **http://dl.windowsazure.com/javadoc** 或 **http://dl.windowsazure.com/storage/javadoc** 的 URL。
+
+   * 如果选择使用“存档中的 Javadoc”，可以指定外部文件或工作区文件。
+
+   做出选择并根据需要浏览/验证。 以下示例会将 Azure Libraries for Java 关联到已本地下载到名为 **c:\MyAzureJARs** 的文件夹的相应 Javadoc JAR。
+
+   ![][ic553487]
+
+* *可选步骤*：单击“验证”。 此处可能会显示 Javadoc JAR 的潜在问题。
+
 * 单击 **“确定”**。
 
 与库关联后，Javadoc 内容应会显示在 Eclipse IDE 中。 例如，如果 `blob` 在代码中定义为 `CloudBlockBlob` 类型，则当你在代码中键入 `blob.acquireLease` 时，会显示以下示例 Javadoc 内容：
@@ -63,9 +73,4 @@ ms.openlocfilehash: d52054de2ac5119db39e1cd3c927a790db7524aa
 [ic553488]: ./media/azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries/ic553488.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh698319.aspx -->
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

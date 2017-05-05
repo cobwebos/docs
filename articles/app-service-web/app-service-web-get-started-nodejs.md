@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/28/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 22966659db3951316dca11fd555e07a183114062
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: c32cb52e4bb7bacde20e21820f277b4e86877e74
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="create-a-nodejs-application-on-web-app"></a>在 Web 应用中创建 Node.js 应用程序
@@ -148,7 +148,7 @@ az appservice plan create --name quickStartPlan --resource-group myResourceGroup
 
 创建应用服务计划后，请在 `quickStartPlan` 应用服务计划中创建 Web 应用。 该 Web 应用提供托管空间用于部署代码，并提供一个 URL 用于查看已部署的应用程序。 使用 [az appservice web create](/cli/azure/appservice/web#create) 命令创建该 Web 应用。
 
-在以下命令中，请将出现的 <app_name> 占位符替换为你自己的唯一应用名称。 <app_name> 将用作 Web 应用的默认 DNS 站点，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 稍后，可以先将任何自定义 DNS 条目映射到 Web 应用，然后向用户公开该条目。
+在以下命令中，请将出现的 `<app_name>` 占位符替换为你自己的唯一应用名称。 `<app_name>` 将用作 Web 应用的默认 DNS 站点，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 稍后，可以先将任何自定义 DNS 条目映射到 Web 应用，然后向用户公开该条目。
 
 ```azurecli
 az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
@@ -321,3 +321,4 @@ git push azure master
 ## <a name="next-steps"></a>后续步骤
 
 浏览预先创建的 [Web 应用 CLI 脚本](app-service-cli-samples.md)。
+

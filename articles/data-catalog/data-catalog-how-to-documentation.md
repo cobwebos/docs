@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/19/2017
+ms.date: 05/03/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: a869c52c3e3574e4ffc958a82daaa12b2f6cb6c1
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -51,9 +52,4 @@ ms.openlocfilehash: a869c52c3e3574e4ffc958a82daaa12b2f6cb6c1
 
 ## <a name="summary"></a>摘要
 使用 **Azure 数据目录**记录数据源可以根据需要尽可能详细地叙述数据资产。  通过使用链接，可以链接到现有内容存储库中存储的内容，将现有文档和数据资产结合起来。 用户发现合适的数据资产后，就可以获取一组完整的文档。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

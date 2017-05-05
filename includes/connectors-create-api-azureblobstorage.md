@@ -26,8 +26,3 @@
    
     ![Azure Blob 存储连接创建步骤](./media/connectors-create-api-azureblobstorage/azureblobstorage-3.png)  
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
-ms.openlocfilehash: d5fed9feb2292002a06c426cdd9e4e18f67bd3ec
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 51065a48c2f797b0ab764bf1b57425bd0696e2bd
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -77,9 +77,9 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 * 具有在故障转移后复制的虚拟机可以连接到的 Azure 网络。 你将在故障转移时选择此网络。 此网络应与 Azure Site Recovery 订阅位于同一区域中。
 
 ### <a name="powershell-prerequisites"></a>PowerShell 必决条件
-确保已将 Azure PowerShell 准备就绪。 如果你已使用 PowerShell，则升级到 0.8.10 或更高版本。 如需设置 PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 安装并配置 PowerShell 后，可在[此处](https://msdn.microsoft.com/library/dn850420.aspx)查看该服务的所有可用 cmdlet。
+确保已将 Azure PowerShell 准备就绪。 如果你已使用 PowerShell，则升级到 0.8.10 或更高版本。 如需设置 PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 安装并配置 PowerShell 后，可在[此处](/powershell/azure/overview)查看该服务的所有可用 cmdlet。
 
-若要获取有关使用 cmdlet 的帮助提示（如在 Azure PowerShell 中通常如何处理参数值、输入和输出），请参阅 [Azure Cmdlet 入门](https://msdn.microsoft.com/library/azure/jj554332.aspx)。
+若要获取有关使用 cmdlet 的帮助提示（如在 Azure PowerShell 中通常如何处理参数值、输入和输出），请参阅 [Azure Cmdlet 入门](/powershell/azure/get-started-azureps)。
 
 ## <a name="step-1-set-the-subscription"></a>步骤 1：设置订阅
 在 PowerShell 中运行以下 cmdlet：
@@ -383,7 +383,7 @@ marsagentinstaller.exe /q /nu
         $jobIDResult = Start-AzureSiteRecoveryTestFailoverJob -RecoveryPlan $RPObject -Direction PrimaryToRecovery;
 
 
-## <a name="a-namemonitora-monitor-activity"></a><a name=monitor></a>监视活动
+## <a name=monitor></a>监视活动
 使用以下命令来监视活动。 请注意，必须在执行不同的作业之前等待处理完成。
 
     Do
@@ -404,5 +404,5 @@ marsagentinstaller.exe /q /nu
 
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解](https://msdn.microsoft.com/library/dn850420.aspx) Azure Site Recovery PowerShell cmdlet。 </a>。
+[详细了解](/powershell/azure/overview) Azure Site Recovery PowerShell cmdlet。 </a>。
 

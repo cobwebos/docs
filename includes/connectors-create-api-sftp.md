@@ -12,8 +12,3 @@
 3. 请注意，连接已创建，现在可以随时在逻辑应用中继续执行其他步骤：   
    ![SFTP Online 连接图像 3](./media/connectors-create-api-sftp/sftp-3.png) 
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

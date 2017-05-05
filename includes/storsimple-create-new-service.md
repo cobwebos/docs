@@ -25,8 +25,3 @@
 
 若要观看如何新建 StorSimple Manager 服务的演示视频，请单击 [此处](https://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/)。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

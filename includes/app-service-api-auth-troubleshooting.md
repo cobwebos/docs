@@ -19,8 +19,3 @@
 * 对于 .NET API 应用，启动[远程调试会话](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)，并检查传递给后列代码的变量的值：使用 ADAL 来获取持有者令牌的代码，或对照预期服务主体 ID 进行声明检查的代码。 请注意，你的代码可以获取来自许多不同源的配置值，因此通过这种方式很可能会发现意外内容。 例如，配置 Azure 应用服务环境设置时，如果将 `ida:ClientId` 错误地键入为 `ida:ClientID`，代码可能会获取其在 Web.config 文件中寻找的 `ida:ClientId` 值，并忽略 Azure App Service 设置。 
 * 如果一切尝试在正常的 Internet Explorer 窗口中不起作用，可能是现有登录正在造成干扰；请尝试 InPrivate，然后尝试 Chrome 或 Firefox。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

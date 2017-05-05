@@ -20,8 +20,3 @@
    > 
 9. 在同一个“IP 地址”属性窗口中，更改“ IP 地址名称”。 该 IP 地址名称将用于 PowerShell 脚本的 **$IPResourceName** 变量中。 如果你的解决方案跨越多个 Azure Vnet，请为每个 IP 资源重复此步骤。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -15,8 +15,9 @@ ms.workload: storage
 ms.date: 01/23/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
-ms.openlocfilehash: dc466ed5dbd7ad14dd1c84760d9205b940acf504
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: dd11ad70efd8f78805e74ad193fb9000abf6a3a8
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -27,9 +28,12 @@ ms.openlocfilehash: dc466ed5dbd7ad14dd1c84760d9205b940acf504
 ## <a name="azure-code-samples-library"></a>Azure 代码示例库
 [Azure 代码示例](https://azure.microsoft.com/documentation/samples/?service=storage)库中提供了可下载和可在本地运行的 Azure 存储示例。 代码示例库提供的示例代码格式为 .zip。 或者，可浏览和克隆其 GitHub 存储库来了解每个示例。
 
-## <a name="getting-started-samples"></a>入门示例
-* [Azure 存储五分钟快速入门](storage-getting-started-guide.md)
-* [适用于 Azure 存储的 Visual Studio 快速入门](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts)
+<!--## Getting started samples-->
+<!-- after our quick starts are available, replace this link with a link to one of those. 
+Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
+* [Visual Studio Quick Starts for Azure Storage](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts)
+-->
 
 ## <a name="net-samples"></a>.NET 示例
 若要浏览 .NET 示例，请从 NuGet 下载 [.NET 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)。 [Azure SDK for .NET](https://azure.microsoft.com/downloads/) 中同时提供 .NET 存储客户端库。
@@ -76,10 +80,5 @@ ms.openlocfilehash: dc466ed5dbd7ad14dd1c84760d9205b940acf504
 ### <a name="c-resources"></a>C++ 资源
 * [C++ 存储客户端库的源代码](https://github.com/Azure/azure-storage-cpp)
 * [C++ 客户端库参考](http://azure.github.io/azure-storage-cpp/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

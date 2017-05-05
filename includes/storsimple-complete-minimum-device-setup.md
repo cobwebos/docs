@@ -37,8 +37,3 @@
 
 若要观看如何完成最低要求设备设置的演示视频，请单击 [此处](https://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/)。
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

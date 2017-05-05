@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
 translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: c83d39c87f789397116601e3e775a4f0ed3eac72
-ms.lasthandoff: 03/27/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9a2796c66fa49c543e52b654e583ade7625a7f31
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行各种�
 ## <a name="set-up-an-hpc-pack-cluster"></a>设置 HPC Pack 群集
 从[下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=44949)下载 HPC Pack IaaS 部署脚本，并在本地将其解压缩。
 
-Azure PowerShell 是必备组件。 如果未在本地计算机上配置 PowerShell，请阅读 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell）一文。
+Azure PowerShell 是必备组件。 如果未在本地计算机上配置 PowerShell，请阅读 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）一文。
 
 编写本文时，Azure 应用商店中的 Linux 映像（包含 Azure 的 InfiniBand 驱动程序）适用于 SLES 12、CentOS 6.5 和 CentOS 7.1。 本文假设使用的是 SLES 12。 若要检索应用商店中支持 HPC 的所有 Linux 映像的名称，可以运行以下 PowerShell 命令：
 

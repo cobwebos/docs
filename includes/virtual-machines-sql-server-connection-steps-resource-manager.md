@@ -27,8 +27,3 @@
    
     ![ssms 连接](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

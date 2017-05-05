@@ -151,7 +151,7 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
   <li> 单击“安全”  </li>
   <li> 单击“NT 服务\Azlog”，并检查帐户的权限。 如果此选项卡中没有帐户，或者如果当前未显示相应权限，可以在此选项卡中授予帐户权限。</li>
   </ol>
-3.请确保在运行命令 **Azlog source list** 时，会列出通过命令 **Azlog source add** 添加的存储帐户。
+3. 请确保在运行命令 **Azlog source list** 时，会列出通过命令 **Azlog source add** 添加的存储帐户。
 4. 转到“**事件查看器 > Windows 日志 > 应用程序**”以查看是否存在从 Azure 日志集成报告的任何错误。
 
 如果在安装和配置过程中遇到问题，请打开[支持请求](../azure-supportability/how-to-create-azure-support-request.md)，选择“日志集成”作为需要请求支持的服务。

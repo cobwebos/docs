@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 003a32f2ef67f8aa63ed7be2553fa0f0c3afc08a
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f4d2535e929996101f6e22ffbd0b2105e8fbf2a8
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -49,7 +49,7 @@ ms.lasthandoff: 04/12/2017
   2. 获取**客户端 ID** 和**机密密钥**。 
   3. 获取 **租户 ID**。 
   4. 将 **ADFCopyTutorialApp** 应用程序分配给**数据工厂参与者**角色。  
-* 安装 [Azure PowerShell](/powershell/azureps-cmdlets-docs)。  
+* 安装 [Azure PowerShell](/powershell/azure/overview)。  
 * 启动 **PowerShell** 并执行以下步骤。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
   
   1. 运行以下命令并输入用于登录 Azure 门户的用户名和密码：

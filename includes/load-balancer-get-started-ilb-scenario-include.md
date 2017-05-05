@@ -9,8 +9,3 @@
 * 2 台分别名为 DB1 和 DB2 的虚拟机
 * 终结点
 * Internal Load Balancer
-
-
-<!--HONumber=Nov16_HO2-->
-
-

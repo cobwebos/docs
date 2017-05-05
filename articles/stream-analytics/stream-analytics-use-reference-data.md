@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: eec8c82857ef9e2806c953ae996f9e7970e64392
-ms.openlocfilehash: 4d6bfebd9faa4e37de148539e7248f88e711bf43
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 74d33505b777925a19830d1eda2eca9776ecaf61
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -99,7 +99,7 @@ ms.lasthandoff: 02/07/2017
 3. 有时，作业必须按时返回，因此不能变更或删除引用数据 blob。
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 我们已经向你介绍了流分析，这是一种托管服务，适用于对物联网的数据进行流式分析。 若要了解有关此服务的详细信息，请参阅：

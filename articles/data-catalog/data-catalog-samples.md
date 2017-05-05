@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/19/2017
+ms.date: 05/03/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 2e84eb020b46fe89426e547b389715d6190fc03c
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -35,10 +36,5 @@ ms.openlocfilehash: 2e84eb020b46fe89426e547b389715d6190fc03c
 * [导入/导出工具](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-import-export/)
   
   此示例演示如何使用数据目录 REST API 从 Azure 数据目录中提取资产，并将它们序列化到某文件。 还会演示如何采用序列化为 JSON 的资产并将它们推送到目录。 它支持使用搜索查询导出目录的子集。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

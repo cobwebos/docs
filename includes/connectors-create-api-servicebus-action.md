@@ -15,8 +15,3 @@
 8. 保存对工作流所做的更改。   
    ![服务总线操作图像 4](./media/connectors-create-api-servicebus/action-4.png)     
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -12,19 +12,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 04/18/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: 8ee846e659d0a47a5fb39d6baa3235f59e19d653
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 97b634b10f75dd10c9cf4b61a5b9674f7ee73e00
+ms.lasthandoff: 04/20/2017
 
 
 ---
 # <a name="how-to-create-a-documentdb-collection-and-database-using-the-azure-portal"></a>如何使用 Azure 门户创建 DocumentDB 集合和数据库
 若要使用 Microsoft Azure DocumentDB，则必须拥有 [DocumentDB 帐户](documentdb-create-account.md)、数据库、集合和文档。 本主题说明如何在 Azure 门户中创建 DocumentDB 集合。
 
-不确定集合是什么？ 请参阅[什么是 DocumentDB 集合？](#what-is-a-documentdb-collection)
+不确定集合是什么？ 请参阅[什么是 DocumentDB 集合？](#what-is-a-documentdb-collection)。
+
+可采用两种方式在门户中创建集合：通过使用“添加集合”按钮，或使用[数据资源管理器（预览版）](#data-explorer)。
+
+## <a name="create-a-colletion-using-add-collection-button"></a>使用“添加集合”按钮创建集合
 
 1. 在 [Azure 门户](https://portal.azure.com/)的跳转栏中，单击“DocumentDB (NoSQL)”，然后在“DocumentDB (NoSQL)”边栏选项卡中，选择要添加集合的帐户。 如果没有任何列出的帐户，则需要[创建一个 DocumentDB 帐户](documentdb-create-account.md)。
 
@@ -54,6 +58,14 @@ ms.lasthandoff: 02/23/2017
 10. **可选：**若要在门户中修改集合的吞吐量，请在“资源”菜单上单击“缩放”。
 
     ![资源菜单的屏幕截图，其中已选择“缩放”](./media/documentdb-create-collection/docdb-collection-creation-scale.png)
+
+<a id="data-explorer"></a>
+## <a name="create-a-collection-by-using-data-explorer-preview"></a>使用数据资源管理器（预览版）创建集合
+
+在门户中创建集合的另一方法是使用数据资源管理器。 若要打开数据资源管理器，请在门户中的导航栏中单击“数据资源管理器(预览版)”，然后单击“新建集合”按钮，如以下截图中所示。
+
+ ![显示门户中“新建集合”按钮的屏幕截图](./media/documentdb-create-collection/azure-documentdb-data-explorer.png)
+
 
 ## <a name="what-is-a-documentdb-collection"></a>什么是 DocumentDB 集合？
 集合是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。 集合是一个计费实体，其中[成本](documentdb-performance-levels.md)由集合的预配吞吐量确定。 集合可以跨一个或多个分区/服务器，并且能伸缩以处理几乎无限制增长的存储或吞吐量。

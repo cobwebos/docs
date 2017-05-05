@@ -26,8 +26,3 @@ Azure 表存储服务可存储大量结构化数据。 该服务是一个 NoSQL 
 
 [Table1]: ./media/storage-table-concepts-include/table1.png
 [OData.org]: http://www.odata.org/
-
-
-<!--HONumber=Nov16_HO2-->
-
-

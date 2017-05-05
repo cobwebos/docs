@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Active Directory 中分配管理员角色 | Microsoft 文档"
+title: "在 Azure Active Directory 中分配管理员角色 | Microsoft Docs"
 description: "介绍 Azure Active Directory 提供的管理员角色，以及如何分配这些角色。"
 services: active-directory
 documentationcenter: 
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 05/04/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 9f513cfb976848960c2164165994dd5b9fcc4fc1
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: fdb4ed95b25519fb7ff319fe20a0dc5c54506506
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -40,17 +40,17 @@ ms.lasthandoff: 03/03/2017
   >
   >
 
-* **符合性管理员**：拥有此角色的用户具有 Office 365 安全与合规中心和 Exchange 管理中心的管理权限，以及读取 Office 365 管理中心审核记录的权限。 有关详细信息，请参阅“[关于 Office 365 管理员角色](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1)”。
+* **符合性管理员**：拥有此角色的用户具有 Office 365 安全与合规中心和 Exchange 管理中心的管理权限，以及读取 Office 365 管理中心审核记录的权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 
-* **CRM 服务管理员**：具有此角色的用户在 Microsoft CRM Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)（关于 Office 365 管理员角色）。
-* **客户密码箱访问审批人**：如果启用了密码箱服务，具有此角色的用户可以审批 Microsoft 工程师访问公司信息的请求。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)（关于 Office 365 管理员角色）。
+* **CRM 服务管理员**：具有此角色的用户在 Microsoft CRM Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
+* **客户密码箱访问审批人**：如果启用了密码箱服务，具有此角色的用户可以审批 Microsoft 工程师访问公司信息的请求。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 * **设备管理员**：具有此角色的用户将成为已加入 Azure Active Directory 的所有 Windows 10 设备上的管理员。
 * **目录读取者**：这是一个遗留的角色，分配给不支持[同意框架](active-directory-integrating-applications.md)的应用程序。 不应将它分配给任何用户。
 * **目录同步帐户**：请勿使用。 此角色自动分配给 Azure AD Connect 服务，不可用于其他任何用途。
 * **目录写入者**：这是一个遗留的角色，分配给不支持[同意框架](active-directory-integrating-applications.md)的应用程序。 不应将它分配给任何用户。
-* **Exchange 服务管理员**：具有此角色的用户在 Microsoft Exchange Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)（关于 Office 365 管理员角色）。
-* **Intune 服务管理员**：具有此角色的用户在 Microsoft Intune Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)（关于 Office 365 管理员角色）。
-* **Skype for Business 服务管理员**：具有此角色的用户在 Microsoft Skype for Business（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)（关于 Office 365 管理员角色）。 此角色以前称为 **Lync 服务管理员**角色。
+* **Exchange 服务管理员**：具有此角色的用户在 Microsoft Exchange Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
+* **Intune 服务管理员**：具有此角色的用户在 Microsoft Intune Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
+* **Skype for Business 服务管理员**：具有此角色的用户在 Microsoft Skype for Business（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。 此角色以前称为 **Lync 服务管理员**角色。
 * **来宾邀请者**：此角色中的用户可以管理来宾邀请。 它不包括任何其他权限。
 * **邮箱管理员**：此角色仅用于 RIM Blackberry 设备的 Exchange Online 电子邮件支持。 如果你的组织不在 RIM Blackberry 设备上使用 Exchange Online 电子邮件，请勿使用此角色。
 * **合作伙伴层 1 支持**：请勿使用。 此角色已弃用，并将从 Azure AD 中删除。 此角色仅供少数 Microsoft 转售合作伙伴使用，不适用于一般用途。
@@ -64,7 +64,7 @@ ms.lasthandoff: 03/03/2017
 
 * **Power BI 服务管理员**：具有此角色的用户在 Microsoft Power BI（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [Making It Easier To Administer Power BI](https://powerbi.microsoft.com/en-us/blog/making-it-easier-to-administer-power-bi/)（更轻松地管理 Power BI）。
 * **特权角色管理员**：具有此角色的用户可以管理 Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) 以及更新其他用户的角色分配。
-* **SharePoint 服务管理员**：具有此角色的用户在 Microsoft SharePoint Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)（关于 Office 365 管理员角色）。
+* **SharePoint 服务管理员**：具有此角色的用户在 Microsoft SharePoint Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 * **服务管理员**：管理服务请求并监视服务运行状况。
 
   > [!NOTE]

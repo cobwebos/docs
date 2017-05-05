@@ -15,26 +15,28 @@ ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: ef7df25d8080cae41235dffb287906508d4a652d
-ms.lasthandoff: 03/30/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 3e9b95e6e9e84f8c2b615f43783d9fec5a2c09b6
+ms.lasthandoff: 04/14/2017
 
 
 ---
 # <a name="connect-to-on-premises-data-from-logic-apps"></a>从逻辑应用连接到本地数据
 
-若要访问本地数据，可与受支持的 Azure 逻辑应用连接器的本地数据网关建立连接。 以下步骤逐步说明如何安装和设置本地数据网关，以便能够使用逻辑应用。
-本地数据网关支持以下数据源连接：
+若要访问本地数据，可与受支持的 Azure 逻辑应用连接器的本地数据网关建立连接。 以下步骤逐步说明如何安装和设置本地数据网关，以便能够使用逻辑应用。 本地数据网关支持以下连接：
 
 *   BizTalk Server
-*    DB2  
+*   DB2  
 *   文件系统
 *   Informix
 *   MQ
-*    Oracle Database 
+*   MySQL
+*   Oracle Database 
 *   SAP Application Server 
 *   SAP Message Server
-*    SQL Server
+*   仅限适用于 HTTP（而非 HTTPS）的 SharePoint
+*   SQL Server
+*   Teradata
 
 有关这些连接的详细信息，请参阅 [Connectors for Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list)（适用于 Azure 逻辑应用的连接器）。
 
@@ -42,7 +44,7 @@ ms.lasthandoff: 03/30/2017
 
 * 必须在 Azure 中使用工作或学校电子邮件地址将本地数据网关与帐户（基于 Azure Active Directory 的帐户）相关联。
 
-* 如果使用 Microsoft 帐户（例如 @outlook.com），可以使用 Azure 帐户[创建工作或学校电子邮件地址](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)。
+* 如果使用 Microsoft 帐户（例如 @outlook.com），可以使用 Azure 帐户[创建工作或学校电子邮件地址](../virtual-machines/windows/create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)。
 
 * 必须事先[在本地计算机上安装本地数据网关](logic-apps-gateway-install.md)。
 
@@ -59,7 +61,7 @@ ms.lasthandoff: 03/30/2017
 安装网关后，必须将 Azure 订阅与网关相关联。
 
 > [!IMPORTANT] 
-> 确保在逻辑应用所在的同一 Azure 区域中创建网关资源。 如果未将该资源部署到同一区域，则无法在应用逻辑中访问该资源。 
+> 确保在逻辑应用所在的同一 Azure 区域中创建网关资源。 如果不将网络资源部署到同一区域，逻辑应用将无法访问网关。 
 > 
 
 1. 使用安装网关期间使用的同一工作或学校电子邮件地址登录到 Azure。
@@ -85,10 +87,13 @@ ms.lasthandoff: 03/30/2017
 
 现已配置可供逻辑应用使用的连接。
 
-## <a name="data-gateway-connection-modifications"></a>数据网关连接修改
-将数据网关连接添加到逻辑应用后，可能需要修改它以调整特定于该连接的设置。 可以在以下两个位置中找到该连接：
-* 在逻辑应用的主边栏选项卡上的“开发工具”部分中应看到“API 连接”的面板。 选择该面板将显示与逻辑应用关联的所有 API 连接，其中之一是数据网关连接。 选择该连接则可以查看和修改与该连接关联的设置。
-* 选择“API 连接”主边栏选项卡将显示订阅中的所有 API 连接。 此列表中有数据网关连接。 选择该连接可以查看和修改与该连接关联的设置。
+## <a name="edit-your-data-gateway-connection-settings"></a>编辑数据网关连接设置
+
+将数据网关连接添加到逻辑应用后，可能需要进行相应的更改，以调整特定于该连接的设置。 可以在以下两个位置中找到该连接：
+
+* 在“逻辑应用”边栏选项卡的“开发工具”下，选择“API 连接”。 此列表显示与逻辑应用关联的所有 API 连接，包括数据网关连接。 若要查看和修改该连接的设置，请选择该连接。
+
+* 在“API 连接”主边栏选项卡上，可以找到与 Azure 订阅关联的所有 API 连接，包括数据网关连接。 若要查看和修改连接设置，请选择该连接。
 
 ## <a name="next-steps"></a>后续步骤
 

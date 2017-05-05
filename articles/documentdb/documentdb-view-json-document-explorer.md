@@ -13,17 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 04/18/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 81c569c5130869e6d8c9dc79feca592aecc44e61
-ms.openlocfilehash: edccbbb72649c5a443fefd7f1d97a8c01a4daff2
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 4338fc03664175b7c27a48f1ab682179c1035313
+ms.lasthandoff: 04/21/2017
 
 
 ---
-# <a name="view-edit-create-and-upload-json-documents-using-documentdb-document-explorer"></a>使用 DocumentDB 文档资源管理器查看、编辑、创建和上传 JSON 文档
-本文概述了 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 文档资源管理器，这是一个 Azure 门户工具，它使用 DocumentDB 查看、编辑、创建、上传和筛选 JSON 文档。 
+# <a name="view-edit-create-and-upload-json-documents"></a>查看、编辑、创建和上传 JSON 文档 
+
+本文概述了在门户中创建、编辑和查询文档的两种方式：[文档资源管理器](#launch-document-explorer)和[数据资源管理器（预览版）](#data-explorer)。
 
 > [!NOTE]
 > 具有 MongoDB 协议支持的 DocumentDB 帐户未启用文档资源管理器。 启用此功能后，此页将会更新。
@@ -147,6 +148,13 @@ ms.lasthandoff: 02/15/2017
    
     ![文档资源管理器批量引入结果的屏幕截图](./media/documentdb-view-JSON-document-explorer/uploaddocument3.png)
 5. 操作完成后，你可以选择另外最多 100 个文档进行上传。
+
+<a id="data-explorer"></a>
+## <a name="create-a-document-by-using-data-explorer-preview"></a>使用数据资源管理器（预览版）
+
+在门户中创建、编辑和查询文档的另一方法是使用数据资源管理器。 要打开数据资源管理器，请单击门户里导航栏上的“数据资源管理器（预览版）”，然后依次展开数据库名称和集合名称，依次单击“文档”和“新建文档”，如下方屏幕截图所示。
+
+![显示门户中“新建集合”按钮的屏幕截图](./media/documentdb-view-JSON-document-explorer/azure-documentdb-data-explorer.png)
 
 ## <a name="work-with-json-documents-outside-the-portal"></a>在门户外使用 JSON 文档
 Azure 门户中的文档资源管理器只是在 DocumentDB 中使用文档的一种方法。 也可以通过 [REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) 或[客户端 SDK](documentdb-sdk-dotnet.md) 来处理文档。 有关代码示例，请参阅 [.NET SDK 文档示例](documentdb-dotnet-samples.md#document-examples)和 [Node.js SDK 文档示例](documentdb-nodejs-samples.md#document-examples)。

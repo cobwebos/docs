@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: b835b04d6ef6d06e35add4f503e6800099e97383
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e773fd4917c7a96201d94d31b2098a3486d27900
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -119,7 +119,7 @@ ms.lasthandoff: 04/07/2017
 也可以使用 Azure PowerShell 来创建和管理文件共享。
 
 ### <a name="install-the-powershell-cmdlets-for-azure-storage"></a>为 Azure 存储空间安装 PowerShell cmdlet
-若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
+若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
 
 > [!NOTE]
 > 建议你下载并安装最新的 Azure PowerShell 模块或升级到最新模块。

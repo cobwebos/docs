@@ -16,9 +16,9 @@ ms.date: 02/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: bb8d390a6ab045dc418bf80ec4fc218e0a35282b
-ms.lasthandoff: 04/11/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 73c38182f4caa92f5aa561b10a30c60efc8cfdae
+ms.lasthandoff: 04/26/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
@@ -40,6 +40,7 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | [备份参与者](#backup-contributor) | 可管理恢复服务保管库中的备份 |
 | [备份操作员](#backup-operator) | 可管理恢复服务保管库中的备份（但无法删除备份） |
 | [备份读取器](#backup-reader) | 可查看所有备份管理服务  |
+| [计费读者](#billing-reader) | 可以查看所有计费信息  |
 | [BizTalk 参与者](#biztalk-contributor) |可管理 BizTalk 服务 |
 | [ClearDB MySQL DB 参与者](#cleardb-mysql-db-contributor) |可管理 ClearDB MySQL 数据库 |
 | [参与者](#contributor) |可管理除访问权限以外的一切内容。 |
@@ -215,6 +216,15 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | 读取对保管库的已注册项执行的操作结果 |
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | 读取保管库的已注册项 |
 | Microsoft.RecoveryServices/Vaults/usages/read  |  读取恢复服务保管库的使用情况 |
+
+## <a name="billing-reader"></a>计费读者
+可以查看所有计费信息
+
+| **操作** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |读取角色和角色分配 |
+| Microsoft.Billing/*/read |读取计费信息 |
+| Microsoft.Support/* |创建和管理支持票证 |
 
 ### <a name="biztalk-contributor"></a>BizTalk 参与者
 可管理 BizTalk 服务

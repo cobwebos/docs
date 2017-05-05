@@ -11,27 +11,27 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 04/19/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: e75099e1ca7e3bbfc427883a8c343d773f3923ae
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 3879eb3d0c6fa9d74fff01b07f5c07d3991dfbbd
+ms.lasthandoff: 04/21/2017
 
 
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>适用于机器学习作业的 Azure 批处理服务
 
-机器学习批处理池处理使用 [Azure 批处理服务](../batch/batch-technical-overview.md)为 Azure 机器学习批处理执行服务提供客户管理的缩放。 经典批处理发生在多租户环境中，限制了可以提交的并发作业的数目，作业按先进先出的原则排队处理。 这种不确定性意味着无法准确地预测作业何时会运行。
+机器学习批处理池处理为 Azure 机器学习批处理执行服务提供客户管理的缩放。 适用于机器学习的经典批处理发生在多租户环境中，限制了可以提交的并发作业的数目，作业按先进先出的原则排队处理。 这种不确定性意味着无法准确地预测作业何时会运行。
 
-可以通过批处理池处理创建 Azure 批处理池，在其中提交批处理作业。 可以控制池的大小以及作业所提交到的具体池。 BES 作业在自己的处理空间运行，因此处理性能可以预测，并且可以创建与所提交的处理负载相对应的资源池。
+可以通过批处理池处理创建池，在其中提交批处理作业。 可以控制池的大小以及作业所提交到的具体池。 BES 作业在自己的处理空间运行，因此处理性能可以预测，并且可以创建与所提交的处理负载相对应的资源池。
 
 ## <a name="how-to-use-batch-pool-processing"></a>如何使用批处理池处理
 
-若要使用批处理池处理，必须具备以下条件：
+当前不可通过 Azure 门户对批处理池处理进行配置。 若要使用批处理池处理，必须：
 
--   具有池服务 URL 和授权密钥的批处理池帐户
--   基于新建 Resource Manager 的 Web 服务和计费计划
+-   调用 CSS 来创建批处理池帐户，并获取池服务 URL 和授权密钥
+-   创建基于新 Resource Manager 的 Web 服务和计费计划
 
 若要创建帐户，请致电 Microsoft 客户服务和支持 (CSS) 并提供订阅 ID。 CSS 会与你一起确定适合你方案的容量。 然后，CSS 会使用你可以创建的最大数目的池以及你可以置于每个池中的最大数目的虚拟机 (VM) 配置你的帐户。 配置帐户以后，会为你提供池服务 URL 和授权密钥。
 

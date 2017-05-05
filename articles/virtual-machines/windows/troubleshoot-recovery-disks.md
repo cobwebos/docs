@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 12/13/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 50e9982fbf33a39b69effed193a4bd137c07a14d
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 36de0375cef661dddb384f9f7651e3faf8df793c
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/31/2017
 4. 从故障排除 VM 卸载并分离虚拟硬盘。
 5. 使用原始虚拟硬盘创建 VM。
 
-确保已安装[最新 Azure PowerShell](/powershell/azureps-cmdlets-docs) 并登录到订阅：
+确保已安装[最新 Azure PowerShell](/powershell/azure/overview) 并登录到订阅：
 
 ```powershell
 Login-AzureRMAccount
@@ -208,3 +208,4 @@ Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
 如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[对 Windows VM 上的应用程序连接问题进行故障排除](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+

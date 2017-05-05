@@ -1,10 +1,9 @@
 # 概述
 ## [Azure 数据工厂简介](data-factory-introduction.md)
 ## 概念
-### [数据集](data-factory-create-datasets.md)
 ### [管道和活动](data-factory-create-pipelines.md)
-### [计划和执行](data-factory-scheduling-and-execution.md)
-### [计算链接服务](data-factory-compute-linked-services.md)
+### [数据集](data-factory-create-datasets.md)
+### [Scheduling and execution](data-factory-scheduling-and-execution.md)
 
 # 入门
 ## [教程：创建复制数据的管道](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -21,6 +20,7 @@
 ### [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 ### [Azure Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
 ### [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
+## [教程：在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)
 ## [常见问题](data-factory-faq.md)
 
 # 如何
@@ -29,6 +29,7 @@
 ### [数据工厂复制向导](data-factory-azure-copy-wizard.md)
 #### [在 15 分钟内加载 1 TB 数据](data-factory-load-sql-data-warehouse.md)
 ### [性能和优化指南](data-factory-copy-activity-performance.md)
+### [安全注意事项](data-factory-data-movement-security-considerations.md)
 ### 连接器
 #### [Amazon Redshift](data-factory-amazon-redshift-connector.md)
 #### [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
@@ -60,7 +61,7 @@
 #### [Teradata](data-factory-onprem-teradata-connector.md)
 #### [Web 表](data-factory-web-table-connector.md)
 ### [数据管理网关](data-factory-data-management-gateway.md)
-### [在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)
+
 
 ## [转换数据](data-factory-data-transformation-activities.md)
 ### [HDInsight Hive 活动](data-factory-hive-activity.md)
@@ -75,6 +76,7 @@
 ### [.NET 自定义活动](data-factory-use-custom-activities.md)
 ### [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 ### [在 Azure Analysis Services 中重新处理模型](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample)
+### [计算链接服务](data-factory-compute-linked-services.md)
 
 ## 开发
 ### [Azure Resource Manager 模板](data-factory-how-to-use-resource-manager-templates.md)
@@ -90,7 +92,7 @@
 ### [解决数据管理网关的使用问题](data-factory-troubleshoot-gateway-issues.md)
 
 # 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
+## [PowerShell](/powershell/module/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [REST](/rest/api/datafactory/)
 ## [JSON](data-factory-json-scripting-reference.md)

@@ -15,9 +15,9 @@ ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 6041c627d87f0223b9c718f3883a709ff81c28e1
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d5e9a300dcea137bf0d3db2da2dfb5c2e6a152af
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/06/2017
 
 无需使用 Azure SDK 就能为 Web 项目生成脚本。 此功能适用于 Web 项目，而不适用于云服务中的 Web 角色。
 
-* Azure PowerShell 0.7.4 或更高版本。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* Azure PowerShell 0.7.4 或更高版本。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * [Windows PowerShell 3.0](http://go.microsoft.com/?linkid=9811175) 或更高版本。
 
 ## <a name="additional-tools"></a>其他工具
@@ -47,7 +47,7 @@ Visual Studio 将生成名为 **PublishScripts** 的解决方案级文件夹，�
 发布脚本包含有关部署到网站或虚拟机的特定发布步骤。 针对 Windows PowerShell 开发，Visual Studio 提供语法颜色设置。 其中还提供了函数的帮助，并且你可以自由编辑脚本中的函数，以满足不断变化的要求。
 
 ### <a name="windows-powershell-module"></a>Windows PowerShell 模块
-Visual Studio 生成的 Windows PowerShell 模块包含发布脚本使用的函数。 不应修改这些 Azure PowerShell 函数。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+Visual Studio 生成的 Windows PowerShell 模块包含发布脚本使用的函数。 不应修改这些 Azure PowerShell 函数。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ### <a name="json-configuration-file"></a>JSON 配置文件
 JSON 文件是在 **Configurations** 文件夹中创建的，其中包含的配置数据用于确切指定要将哪些资源部署到 Azure。 Visual Studio 生成的文件的名称为 project-name-WAWS-dev.json（如果创建的是网站），或 project name-VM-dev.json（如果创建的是虚拟机）。 以下是当你创建网站时生成的 JSON 配置文件的示例。 大多数值的含义都一目了然。 网站名称由 Azure 生成，因此，它可能与你的项目名称不匹配。
@@ -168,7 +168,7 @@ JSON 文件是在 **Configurations** 文件夹中创建的，其中包含的配�
 
     出现提示时，请提供你的用户名和密码。
 
-    请注意，当自动编写脚本时，这一提供 Azure 凭据的方法不起作用。 应使用 .publishsettings 文件提供凭据。 仅限一次使用 **Get-AzurePublishSettingsFile** 命令从 Azure 下载文件，此后则使用 **Import-AzurePublishSettingsFile** 导入该文件。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+    请注意，当自动编写脚本时，这一提供 Azure 凭据的方法不起作用。 应使用 .publishsettings 文件提供凭据。 仅限一次使用 **Get-AzurePublishSettingsFile** 命令从 Azure 下载文件，此后则使用 **Import-AzurePublishSettingsFile** 导入该文件。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 4. （可选）如果希望创建虚拟机、数据库和网站等 Azure 资源，而不发布你的 Web 应用程序，请使用 **Publish-WebApplication.ps1** 命令以及设置为 JSON 配置文件的 **-Configuration** 参数。 此命令行使用 JSON 配置文件来确定要创建的资源。 由于它的其他命令行参数使用默认设置，因此它会创建资源，但不发布你的 Web 应用程序。 -Verbose 选项可为你提供有关运行情况的更多信息。
 

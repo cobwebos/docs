@@ -14,7 +14,7 @@
    
     ![](./media/mobile-engagement-android-send-push/api-key.png)
 
-## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>向应用发送通知
+## <a id="send"></a>向应用发送通知
 我们现在创建一个简易的推送通知市场活动，将推送通知发送到应用。
 
 1. 导航到 Mobile Engagement 门户中的“市场宣传”  选项卡。
@@ -41,9 +41,4 @@
 6. 最后一步：单击“激活”  激活市场活动，发送推送通知。
    
     ![](./media/mobile-engagement-android-send-push/campaign-activate.png)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

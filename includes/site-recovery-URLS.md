@@ -2,11 +2,9 @@
 ``time.nist.gov`` 和 ``time.windows.com``：用于检查系统时间与全球时间之间的时间同步
 <br/><br/>
 
-Microsoft Azure 政府云的 URL：<br/>
+Microsoft Azure 政府云的 URL：
 
-<ul>
-<li>*.ugv.hypervrecoverymanager.windowsazure.us</li>
-<li>*.ugv.backup.windowsazure.us</li>
-<li>*.ugi.hypervrecoverymanager.windowsazure.us</li>
-<li>*.ugi.backup.windowsazure.us</li>
-</ul>
+- \*\.ugv.hypervrecoverymanager.windowsazure.us
+- \*\.ugv.backup.windowsazure.us
+- \*\.ugi.hypervrecoverymanager.windowsazure.us
+- \*\.ugi.backup.windowsazure.us

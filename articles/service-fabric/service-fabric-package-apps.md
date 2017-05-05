@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 3/24/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: bc87185c56b2dc45f041136474b9fb1bf6afebc3
-ms.lasthandoff: 04/13/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 15b6f6c85c5a5accbd31225c277de87346a2e16f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -74,7 +74,7 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 ```
 
 ## <a name="test-the-package"></a>测试包
-可以使用 [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) 命令，通过 PowerShell 在本地验证包结构。
+可以使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) 命令，通过 PowerShell 在本地验证包结构。
 此命令会检查是否存在清单分析问题，并验证所有引用。 此命令只验证包中目录与文件结构的正确性。
 它不验证任何代码或数据包内容，而只检查所有必要的文件是否存在。
 
@@ -111,7 +111,7 @@ True
 PS D:\temp>
 ```
 
-如果应用程序已定义[应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)，则可以将参数传递到 [Test-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) 中进行适当验证。
+如果应用程序已定义[应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)，则可以将参数传递到 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) 中进行适当验证。
 
 如果知道在其中部署应用程序的群集，则建议将参数传递到映像存储区连接字符串。 在这种情况下，还需要针对已在群集中运行的前一应用程序版本对包进行验证。 例如，验证可检测是否部署了版本相同但内容不同的包。  
 
@@ -124,9 +124,9 @@ PS D:\temp>
 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
 压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。 
 
-可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
+可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
 
-以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 `SkipCopy` 标志的 [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) 将压缩的包复制到一个或多个 Service Fabric 群集中。 包中现在包括 `code`、`config` 和 `data` 包的压缩文件。 不会压缩应用程序清单和服务清单，因为许多内部操作（例如，包共享、应用程序类型名称和某些验证的版本提取）均需要使用它们。
+以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 `SkipCopy` 标志的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 将压缩的包复制到一个或多个 Service Fabric 群集中。 包中现在包括 `code`、`config` 和 `data` 包的压缩文件。 不会压缩应用程序清单和服务清单，因为许多内部操作（例如，包共享、应用程序类型名称和某些验证的版本提取）均需要使用它们。
 压缩清单会使这些操作无效。
 
 ```
@@ -162,7 +162,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ```
 
-或者，也可以使用 [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) 一步压缩并复制包。
+或者，也可以使用 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 一步压缩并复制包。
 如果包较大，请提供足够的超时时间，以为包压缩和上传到群集预留时间。
 ```
 PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400

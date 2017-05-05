@@ -4,8 +4,3 @@
 
 > [!NOTE]
 > 如果你没有 Azure 帐户，需要获取一个。 可以 [在此处注册免费试用帐户](../articles/active-directory/sign-up-organization.md)。
-
-
-<!--HONumber=Dec16_HO1-->
-
-

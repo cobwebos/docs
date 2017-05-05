@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: e1563db23e687f772eaff2e90ce9853c9d8b87de
-ms.openlocfilehash: f87df28a5a44b7ab3c1d9a48d43c8d1354c48830
-ms.lasthandoff: 11/23/2016
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 8df9fbf4b09cb63cafc9d43592edc68068a28f14
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -47,6 +47,9 @@ Microsoft 数据科研虚拟机是一种 Azure 虚拟机 (VM) 映像，其上已
 Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各种语言版本的任务，包括 R、Python、SQL 和 C#。 Visual Studio 提供 IDE，可开发易于使用的代码并对其进行测试。 使用 VM 中包含的 Azure SDK，可在 Microsoft 云平台上使用各种服务来生成应用程序。 
 
 此数据科研 VM 映像不产生软件费用。 只需根据预配的虚拟机大小支付 Azure 使用费。 可在[数据科研虚拟机页面](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/)上的“定价详细信息”部分找到有关计算费的详细信息。 
+
+## <a name="other-versions-of-the-data-science-virtual-machine"></a>其他版本的数据科学虚拟机
+[CentOS](machine-learning-data-science-linux-dsvm-intro.md) 映像同样可用，它包含多种与 Windows 映像相同的工具。 [Ubuntu](machine-learning-data-science-dsvm-ubuntu-intro.md) 映像同样可用，它包含多种相同的工具和深度学习框架。
 
 ## <a name="prerequisites"></a>先决条件
 创建 Microsoft 数据科研虚拟机之前，必须满足以下条件：

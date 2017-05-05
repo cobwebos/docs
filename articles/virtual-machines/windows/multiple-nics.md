@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 03/14/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 0095c9aeea3ab118fc212ee1ccbb71dcd84aae29
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f04ac382521c7268d0eb03d1b3bfc78ee0b07d40
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/31/2017
 可以在 Azure 中创建附有多个虚拟网络接口 (NIC) 的虚拟机 (VM)。 一种常见方案是为前端和后端连接使用不同的子网，或者为监视或备份解决方案使用一个专用网络。 本文提供用于创建附有多个 NIC 的 VM 的快速命令。 有关详细信息，包括如何在自己的 PowerShell 脚本中创建多个 NIC，请阅读[部署具有多个 NIC 的 VM](../../virtual-network/virtual-network-deploy-multinic-arm-ps.md)。 不同的 [VM 大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
 
 ## <a name="create-core-resources"></a>创建核心资源
-确保[已安装并配置最新的 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 登录到你的 Azure 帐户：
+确保[已安装并配置最新的 Azure PowerShell](/powershell/azure/overview)。 登录到你的 Azure 帐户：
 
 ```powershell
 Login-AzureRmAccount

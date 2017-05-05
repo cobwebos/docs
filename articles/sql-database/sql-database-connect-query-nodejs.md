@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: lbosq
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 7365945818c56279bd5945fee8d0048ef425bfc7
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 4de9eb8f55bfda8b223417f5c1ed4e71b0f063c6
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -32,6 +32,8 @@ ms.lasthandoff: 04/19/2017
 - [创建 DB - CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-nodejs"></a>安装 Node.js 
+
+本部分中的步骤假定你熟悉使用 Node.js 开发，但不熟悉如何使用 Azure SQL 数据库。 如果你不熟悉如何使用 Node.js 进行开发，请转到[使用 SQL Server 生成应用](https://www.microsoft.com/en-us/sql-server/developer-get-started/)并选择 **Node.js**，然后选择操作系统。
 
 ### <a name="mac-os"></a>**Mac OS**
 输入以下命令安装 **brew**（适用于 Mac OS X 和 **Node.js** 的易用程序包管理器）。
@@ -63,7 +65,7 @@ npm install tedious
 
 ## <a name="get-connection-information"></a>获取连接信息
 
-在 Azure 门户中获取连接字符串。 请使用连接字符串连接到 Azure SQL 数据库。
+获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
@@ -75,7 +77,7 @@ npm install tedious
     
 ## <a name="select-data"></a>选择数据
 
-使用以下代码来查询 Azure SQL 数据库。 首先从 tedious 驱动程序库中导入驱动程序连接和请求类。 之后，创建配置对象，并将 **username**、**password**、**server** 和 **database** 变量替换为之前使用 AdventureWorksLT 示例数据创建数据库时指定的值。 使用指定的 `config` 对象创建 `Connection` 对象。 之后，定义 `connection` 对象的 `connect` 事件的回调，以执行 `queryDatabase()` 函数。
+使用以下代码在 Azure SQL 数据库中按类别查询前 20 个产品。 首先从 tedious 驱动程序库中导入驱动程序连接和请求类。 之后，创建配置对象，并将 **username**、**password**、**server** 和 **database** 变量替换为之前使用 AdventureWorksLT 示例数据创建数据库时指定的值。 使用指定的 `config` 对象创建 `Connection` 对象。 之后，定义 `connection` 对象的 `connect` 事件的回调，以执行 `queryDatabase()` 函数。
 
 ```js
 var Connection = require('tedious').Connection;
@@ -125,7 +127,7 @@ function queryDatabase(){
 ```
 
 ## <a name="insert-data-into-the-database"></a>将数据插入数据库
-使用以下代码将新产品插入 SalesLT.Product 表。 将 **username**、**password**、**server** 和 **database** 替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。 此时，在 `insertIntoDatabase()` 函数中使用 **INSERT 语句**。
+通过以下代码使用 `insertIntoDatabase()` 函数和 [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL 语句来将新产品插入到 SalesLT.Product 表中。 将 **username**、**password**、**server** 和 **database** 替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。 
 
 ```js
 var Connection = require('tedious').Connection;
@@ -167,7 +169,7 @@ function insertIntoDatabase(){
 ```
 
 ## <a name="update-data-in-the-database"></a>更新数据库中的数据
-使用以下代码来更新数据库中的数据。 将 **username**、**password**、**server** 和 **database** 替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。 此时，在 `updateInDatabase()` 函数中使用 **UPDATE 语句**。 此示例中使用了在上一示例中插入的产品名称。
+通过以下代码使用 `updateInDatabase()` 函数和 [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL 语句来删除之前添加的新产品。 将 **username**、**password**、**server** 和 **database** 替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。 此示例中使用了在上一示例中插入的产品名称。
 
 ```js
 var Connection = require('tedious').Connection;

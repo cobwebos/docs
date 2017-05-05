@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: cbf4f1a3bce53844e032c49637d4cfd9dd722679
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 56f4245b63cecd51bf81863e15e4e72d73e671d6
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +48,7 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 
 ### <a name="prerequisites"></a>先决条件
 * 需要 Azure 订阅。 如果没有，可创建为期一个月的[免费试用](https://azure.microsoft.com/pricing/free-trial/)订阅或访问 [Azure 定价](https://azure.microsoft.com/pricing/)获取更多选择。
-* 若要执行 PowerShell cmdlet，将需要 Microsoft Azure PowerShell 模块。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
+* 若要执行 PowerShell cmdlet，将需要 Microsoft Azure PowerShell 模块。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
 * 计划使用在高级存储上运行的 Azure VM 时，需要使用支持高级存储的 VM。 可在支持高级存储的 VM 上使用标准和高级存储磁盘。 在将来，会有更多的 VM 类型提供高级存储磁盘。 有关所有可用 Azure VM 磁盘类型和大小的详细信息，请参阅[虚拟机大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[云服务大小](../cloud-services/cloud-services-sizes-specs.md)。
 
 ### <a name="considerations"></a>注意事项

@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 中不到 5 分钟创建你的第一个 ASP.NET Web 应用 | Microsoft 文档"
+title: "在 Azure 中不到 5 分钟创建你的第一个 ASP.NET Web 应用 | Microsoft Docs"
 description: "了解如何通过部署一个简单的 ASP.NET 应用程序，轻松在应用服务中运行 Web 应用。"
 services: app-service\web
 documentationcenter: 
@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 24ddf0d81e52960bd582861d324585b8ba0ca357
-ms.lasthandoff: 04/19/2017
+ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
+ms.openlocfilehash: 24e9f1d7bdf4401d009ba04fb62351b6abda6079
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -132,7 +132,7 @@ URL 使用前面指定的 Web 应用名称，其格式为 `http://<app_name>.azu
 
 ## <a name="update-the-app-and-redeploy"></a>更新应用并重新部署
 
-将更新重新部署到 Azure 的过程非常简单。 让我们对主页进行更新。
+在 Azure 中进行更新和重新部署非常简单。 让我们对主页进行更新。
 
 在“解决方案资源管理器”中打开“Views\Home\Index.cshtml”。
 

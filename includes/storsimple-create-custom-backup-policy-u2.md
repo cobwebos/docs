@@ -18,8 +18,3 @@
 4. 单击选中图标  ![选中图标](./media/storsimple-add-backup-policy-u2/HCS_CheckIcon-include.png) 完成。
 5. 将返回到“备份策略”页。 备份策略的表格式列表将更新为显示自定义策略。
 
-
-
-<!--HONumber=Nov16_HO3-->
-
-
