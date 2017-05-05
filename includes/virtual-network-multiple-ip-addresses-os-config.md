@@ -1,4 +1,4 @@
-## <a name="a-nameos-configaadd-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>将 IP 地址添加到 VM 操作系统
+## <a name="os-config"></a>将 IP 地址添加到 VM 操作系统
 
 连接并登录到使用多个专用 IP 地址创建的 VM。 必须手动添加 VM 中的所有专用 IP 地址（包括主要地址）。 根据 VM 操作系统完成以下步骤：
 
@@ -176,8 +176,3 @@ ip route add default via 10.0.0.1 dev eth2 table custom
     - **10.0.0.5** 替换为专用 IP 地址，该地址有一个与之关联的公共 IP 地址。
     - **10.0.0.1** 替换为默认网关
     - **eth2** 替换为辅助 NIC 的名称
-
-
-<!--HONumber=Feb17_HO2-->
-
-
