@@ -118,7 +118,7 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
 ![创建工作区](./media/machine-learning-data-science-move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2.使用 Hive 编辑器提交 Hive 查询
-此外，还可以通过在 Web 浏览器中输入 URL 来使用查询控制台（Hive 编辑器），该 URL 的格式为 *https://<Hadoop 群集名称>.azurehdinsight.net/Home/HiveEditor*。 必须先登录才能查看此控制台，因此需要使用 Hadoop 群集凭据进行登录。
+此外，还可以通过在 Web 浏览器中输入 URL 来使用查询控制台（Hive 编辑器），该 URL 的格式为 *https://&#60;Hadoop 群集名称>.azurehdinsight.net/Home/HiveEditor*。 必须先登录才能查看此控制台，因此需要使用 Hadoop 群集凭据进行登录。
 
 ### <a name="ps"></a> 3.使用 Azure PowerShell 命令提交 Hive 查询
 也可以使用 PowerShell 来提交 Hive 查询。 有关说明，请参阅[使用 PowerShell 提交 Hive 作业](../hdinsight/hdinsight-hadoop-use-hive-powershell.md)。
@@ -143,11 +143,11 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 
 以下是需要插入的字段以及其他配置的说明：
 
-* **<database name>**：要创建的数据库的名称。 如果只想使用默认数据库，则可以省略 *create database...* 查询。
-* **<table name>**：要在指定数据库中创建的表的名称。 如果要使用默认数据库，*<table name>* 可以直接引用表，而无需 <database name>。
-* **<field separator>**：在要上传到 Hive 表的数据文件中分隔字段的分隔符。
-* **<line separator>**：在数据文件中分隔行的分隔符。
-* **<storage location>**：保存 Hive 表的数据的 Azure 存储位置。 如果不指定 *LOCATION <storage location>*，数据库和表将默认存储在 Hive 群集的默认容器的 *hive/warehouse/* 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 必须将此位置引用为与群集的默认容器的相对位置，格式为 *'wasb:///<directory 1>/'* 或 *'wasb:///<directory 1>/<directory 2>/'* 等。执行查询后，相对目录会创建在默认容器中。
+* **&#60;database name>**：要创建的数据库的名称。 如果只想使用默认数据库，则可以省略 *create database...* 查询。
+* **&#60;table name>**：要在指定数据库中创建的表的名称。 如果要使用默认数据库，*&#60;table name>* 可以直接引用表，而无需 &#60;database name>。
+* **&#60;field separator>**：在要上传到 Hive 表的数据文件中分隔字段的分隔符。
+* **&#60;line separator>**：在数据文件中分隔行的分隔符。
+* **&#60;storage location>**：保存 Hive 表的数据的 Azure 存储位置。 如果不指定 *LOCATION &#60;storage location>*，数据库和表将默认存储在 Hive 群集的默认容器的 *hive/warehouse/* 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 必须将此位置引用为与群集的默认容器的相对位置，格式为 *'wasb:///&#60;directory 1>/'* 或 *'wasb:///&#60;directory 1>/&#60;directory 2>/'* 等。执行查询后，相对目录会创建在默认容器中。
 * **TBLPROPERTIES("skip.header.line.count"="1")**：如果数据文件具有标题行，则必须在 *create table* 查询的**末尾处**添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
 
 ## <a name="load-data"></a>将数据加载到 Hive 表
@@ -155,7 +155,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **<path to blob data>**：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器中，*<path to blob data>* 的格式则应该是 *'wasb:///<directory in this container>/<blob file name>'*。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下，*&#60;path to blob data>* 的格式应该为 *'wasb://&#60;container name>@&#60;storage account name>.blob.core.windows.net/&#60;blob file name>'*。
+* **&#60;path to blob data>**：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器中，*&#60;path to blob data>* 的格式则应该是 *'wasb:///&#60;directory in this container>/&#60;blob file name>'*。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下，*&#60;path to blob data>* 的格式应该为 *'wasb://&#60;container name>@&#60;storage account name>.blob.core.windows.net/&#60;blob file name>'*。
 
   > [!NOTE]
   > 要上传到 Hive 表的 blob 数据必须位于 Hadoop 群集存储帐户的默认或其他容器中。 否则，*LOAD DATA* 查询将失败，并声称它无法访问数据。
@@ -222,7 +222,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> 如果 TEXTFILE 表 *<database name>.<external textfile table name>* 具有分区，在步骤 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令将选择分区变量作为返回数据集中的字段。 将其插入到 *<database name>.<ORC table name>* 的操作失败，因为 *<database name>.<ORC table name>* 没有作为表架构中的字段的分区变量。 在这种情况下，需要特意选择要插入到 *<database name>.<ORC table name>* 的字段，如下所示：
+> 如果 TEXTFILE 表 *&#60;database name>.&#60;external textfile table name>* 具有分区，在步骤 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令将选择分区变量作为返回数据集中的字段。 将其插入到 *&#60;database name>.&#60;ORC table name>* 的操作失败，因为 *&#60;database name>.&#60;ORC table name>* 没有作为表架构中的字段的分区变量。 在这种情况下，需要特意选择要插入到 *&#60;database name>.&#60;ORC table name>* 的字段，如下所示：
 >
 >
 
@@ -231,7 +231,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-在所有数据已插入到 *<database name>.<ORC table name>* 之后使用以下查询时，可安全地删除 *<external textfile table name>*：
+在所有数据已插入到 *&#60;database name>.&#60;ORC table name>* 之后使用以下查询时，可安全地删除 *&#60;external textfile table name>*：
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
