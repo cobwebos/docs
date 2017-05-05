@@ -33,7 +33,3 @@
 [connection-info]: ./media/service-bus-create-namespace-portal/connection-info.png
 [connection-string]: ./media/service-bus-create-namespace-portal/connection-string.png
 [Azure portal]: https://portal.azure.com
-
-<!--HONumber=Feb17_HO2-->
-
-
