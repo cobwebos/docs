@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: spelluru
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
 ms.openlocfilehash: 864526efd2bc90bdd4beeb4c81173e85eee6f34b
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 
@@ -120,7 +121,7 @@ public IDictionary<string, string> Execute(
      <li>对于“位置”<b></b>，选择“C:\ADFGetStarted”<b></b>。</li>
      <li><b></b> 。</li>
    </ol>
-2. 单击“工具”****，指向“NuGet 包管理器”****，然后单击“包管理器控制台”****。
+2. 单击 **工具** ，指向 **NuGet 包管理器”** ，然后单击 **包管理器控制台”** 。
 3. 在“包管理器控制台”中，执行以下命令导入 **Microsoft.Azure.Management.DataFactories**。
 
     ```PowerShell
