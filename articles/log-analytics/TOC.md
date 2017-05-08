@@ -48,6 +48,7 @@
 ### [警报管理解决方案](log-analytics-solution-alert-management.md)
 ## 使用解决方案
 ### [解决方案概述](log-analytics-add-solutions.md)
+### [目标解决方案](../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [活动 Log Analytics](log-analytics-activity.md)
 ### [AD 评估](log-analytics-ad-assessment.md)
 ### [AD 复制状态](log-analytics-ad-replication-status.md)
@@ -57,6 +58,8 @@
 ### [更改跟踪](log-analytics-change-tracking.md)
 ### [容器](log-analytics-containers.md)
 ### [DNS 分析](log-analytics-dns.md)
+### [OMS 中的 IT 服务管理连接器](log-analytics-itsmc-overview.md)
+#### [OMS 中的 IT 服务管理连接](log-analytics-itsmc-connections.md)
 ### [密钥保管库](log-analytics-azure-key-vault.md)
 ### 逻辑应用 B2B 消息
 #### [逻辑应用 B2B 消息解决方案](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
@@ -84,7 +87,7 @@
 ### [警报 API](log-analytics-api-alerts.md)
 
 # 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+## [PowerShell](/powershell/module/azurerm.operationalinsights)
 ## [REST](/rest/api/loganalytics)
 
 # 资源

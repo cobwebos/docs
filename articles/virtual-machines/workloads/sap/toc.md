@@ -8,19 +8,19 @@
 ## [与 SAP Netweaver 集成](../../../active-directory/active-directory-saas-sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [与 SAP Business ByDesign 集成](../../../active-directory/active-directory-saas-sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 # Azure 上的 SAP 解决方案
-## SAP HANA
+## SAP HANA 大型实例
 ### [概述和体系结构](hana-overview-architecture.md)
 ### [基础结构和连接](hana-overview-infrastructure-connectivity.md)
 ### [安装 SAP HANA](hana-installation.md)
 ### [高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)
 ### [故障排除和监视](troubleshooting-monitoring.md)
+## 虚拟机上的 SAP HANA
 ### [单实例 SAP HANA](hana-get-started.md)
 ### [S/4 HANA 或 BW/4 HANA 部署指南](cal-s4h.md)
-### 备份
-#### [概述](sap-hana-backup-guide.md)
-#### [文件级别备份](sap-hana-backup-file-level.md)
-#### [存储快照](sap-hana-backup-storage-snapshots.md)
-
+### [VM 中的高可用性] (sap-hana-high-availability.md)
+### [备份概述](sap-hana-backup-guide.md)
+### [文件级别备份](sap-hana-backup-file-level.md)
+### [存储快照备份](sap-hana-backup-storage-snapshots.md)
 ## SAP Netweaver
 ### [概述和体系结构](suse-quickstart.md)
 ### [规划和实施](planning-guide.md)

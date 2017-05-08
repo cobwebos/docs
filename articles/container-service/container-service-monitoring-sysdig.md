@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 08/08/2016
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: 5da28eecf2df764f71906897450ebe67b3048b3f
-ms.openlocfilehash: d57212a8c858c4fb53cc619a578b59da92176bb2
+ms.sourcegitcommit: 3f6bc85230b57d7b9523a87f90783c27039ef820
+ms.openlocfilehash: cee1bac89c30cae65790bd86498f0adec30da87d
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -55,9 +56,4 @@ Sysdig 是允许监视群集中容器的监视服务。 大家都知道 Sysdig �
 安装该程序包后，请导航回 Sysdig UI，然后你就可以浏览容器在群集中的不同使用情况指标。 
 
 还可以通过[新仪表板向导](https://app.sysdigcloud.com/#/dashboards/new)安装 Mesos 和 Marathon 特定的仪表板。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

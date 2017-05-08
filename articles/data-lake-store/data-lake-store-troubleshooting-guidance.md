@@ -9,14 +9,15 @@ editor: cgronlun
 ms.assetid: bf7fd555-3e30-43ce-b28c-c3ad0a241fdb
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a3629845014cb401df96d2d8bf7b9801a0664150
-ms.openlocfilehash: 2f184f5289b9394572023fe9d1aec2d28a73c4f7
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 258e2a4957178d60c8c691d8a29878b2f1b8e799
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -48,10 +49,5 @@ Azure Data Lake Store 帐户中的数据可通过自动化副本，弹性应对�
 ## <a name="next-steps"></a>后续步骤
 * [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -15,19 +15,20 @@ ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 32039e6c9291879a4151cd12dfa5dac11a153ee0
+ms.sourcegitcommit: 69f7b49fd82e4d34b1d54718cfbd2f4dedd2ae47
+ms.openlocfilehash: e50a308a897878d0985f2a8f1baa044e5c82335f
+ms.lasthandoff: 05/05/2017
 
 
 ---
 # <a name="determine-directory-synchronization-requirements"></a>确定目录同步要求
 同步就是基于用户的本地标识向用户提供一个云中的标识。 无论用户是否会将已同步的帐户用于身份验证或联合身份验证，用户仍需要具有一个云中的标识。  需要定期维护和更新此标识。  可以进行多种形式的更新（从标题更改到密码更改）。  
 
-首先评估组织的本地标识解决方案和用户要求。 必须对定义如何在云中创建和维护用户标识的技术要求进行评估。  对于大多数组织，Active Directory 位于本地，并且将成为用户将进行同步的来源本地目录；但在某些情况下，会与上述情形不同。  
+首先评估组织的本地标识解决方案和用户要求。 必须对定义如何在云中创建和维护用户标识的技术要求进行评估。  大多数组织的 Active Directory 位于本地，并且是用户进行同步的本地源目录；但在某些情况下，也会有所不同。  
 
 务必回答以下问题：
 
-* 有一个 AD 林、多个 AD 林，还是一个 AD 林也没有？
+* 你有一个 AD 林还是多个 AD 林？还是一个也没有？
   
   * 将同步到多个 Azure AD 目录？
     
@@ -35,17 +36,17 @@ ms.openlocfilehash: 32039e6c9291879a4151cd12dfa5dac11a153ee0
     2. 是否计划使用多个 Azure AD Connect 服务器？
 * 当前是否具有本地同步工具？
   
-  * 如果是，用户（如果存在用户）是否具有标识的虚拟目录/集成？
-* 是否具有想要同步的任何其他本地目录（如LDAP 目录、HR 数据库等）？
+  * 如果是，用户有没有标识的虚拟目录/集成？
+* 是否有其他本地目录（如 LDAP 目录、HR 数据库等）要同步？
   * 是否会执行任何 GALSync？
   * 当前，UPN 在组织中处于何种状态？ 
   * 是否具有要对用户进行身份验证的其他目录？
   * 贵公司是否使用 Microsoft Exchange？
     * 是否计划进行 Exchange 混合部署？
 
-现在，你对同步要求有所了解，需要确定哪一种工具满足了这些要求。  Microsoft 提供了可完成目录集成和同步的多种工具。  有关详细信息，请参阅[混合标识目录集成工具比较表](active-directory-hybrid-identity-design-considerations-tools-comparison.md)。 
+你已经了解了同步要求，现在该确定哪一种工具才能满足这些要求了。  Microsoft 提供了可完成目录集成和同步的多种工具。  有关详细信息，请参阅[混合标识目录集成工具比较表](active-directory-hybrid-identity-design-considerations-tools-comparison.md)。 
 
-现在，你有了同步要求以及为你的公司实现此目的的工具，需要对使用这些目录服务的应用程序进行评估。 必须对定义用于将这些应用程序集成到云的技术要求进行评估。 务必回答以下问题：
+现在，你有了同步要求以及为你的公司实现此目的的工具，需要对使用这些目录服务的应用程序进行评估。 这一步非常重要，只有通过评估才能确定将这些应用程序集成到云的技术要求。 务必回答以下问题：
 
 * 是否会将这些应用程序迁移到云以及它们是否会使用目录？
 * 是否存在需要同步到云的特殊属性，以便这些应用程序可以成功地使用它们？
@@ -73,10 +74,5 @@ ms.openlocfilehash: 32039e6c9291879a4151cd12dfa5dac11a153ee0
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

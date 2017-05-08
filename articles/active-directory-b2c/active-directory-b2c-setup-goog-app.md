@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
 ms.openlocfilehash: dbc544ad4dbb651aeb24faf2f89074c7aa59cf2a
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -58,10 +59,5 @@ ms.openlocfilehash: dbc544ad4dbb651aeb24faf2f89074c7aa59cf2a
 5. 单击“标识提供者类型”，选择“Google”，然后单击“确定”。
 6. 单击“设置此标识提供者”，并输入之前创建的 Google+ 应用程序的客户端 ID 和客户端密码。
 7. 单击“确定”，然后单击“创建”以保存 Google+ 配置。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

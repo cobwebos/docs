@@ -2,6 +2,7 @@
 ## [安全的特许访问权限](active-directory-securing-privileged-access.md)
 ## [什么是 Azure AD PIM？](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [角色](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Privileged Identity Management 审批工作流](azure-ad-pim-approval-workflow.md)
 
 # 入门
 ## [订阅要求](subscription-requirements.md)

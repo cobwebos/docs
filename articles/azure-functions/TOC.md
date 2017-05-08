@@ -30,6 +30,7 @@
 #### [通知中心](functions-bindings-notification-hubs.md)
 #### [移动应用](functions-bindings-mobile-apps.md)
 #### [外部文件](functions-bindings-external-file.md)
+#### [外部表](functions-bindings-external-table.md)
 ### [定义 Functions 代理](functions-proxies.md)
 ### [通过 Azure 门户创建 Function App](functions-create-function-app-portal.md)
 ### [执行计划的清理任务](functions-scenario-database-table-cleanup.md)

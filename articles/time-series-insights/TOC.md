@@ -7,6 +7,13 @@
 ## [创建事件源](time-series-insights-add-event-source.md)
 ## [发送事件](time-series-insights-send-events.md)
 
+# 如何
+## [创建事件中心事件源](time-series-insights-how-to-add-an-event-source-eventhub.md)
+## [创建 IoT 中心事件源](time-series-insights-how-to-add-an-event-source-iothub.md)
+## [缩放环境](time-series-insights-how-to-scale-your-environment.md)
+## [诊断并解决问题](time-series-insights-diagnose-and-solve-problems.md)
+## [使用 C# 查询数据](time-series-insights-query-data-csharp.md)
+
 # 引用
 ## [查询 API](/rest/api/time-series-insights/time-series-insights-reference-queryapi)
 ## [查询语法](/rest/api/time-series-insights/time-series-insights-reference-query-syntax)

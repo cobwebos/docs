@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
 ms.openlocfilehash: 866d2b54b0b517cb9984fd5e98840fe3a6c69965
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -59,10 +60,5 @@ ms.openlocfilehash: 866d2b54b0b517cb9984fd5e98840fe3a6c69965
 5. 单击“标识提供者类型”，选择“Microsoft 帐户”，然后单击“确定”。
 6. 单击“设置此标识提供者”，输入之前创建的 Microsoft 帐户应用程序的应用程序 Id 和密码。
 7. 单击“确定”，然后单击“创建”以保存 Microsoft 帐户配置。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
