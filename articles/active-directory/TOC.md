@@ -1,9 +1,9 @@
 # 概述
 ## [什么是 Azure Active Directory？](active-directory-whatis.md)
 ## [选择版本](active-directory-editions.md)
-## [关于 Azure 标识管理](fundamentals-identity.md)
-## [预览 Azure AD 门户体验](active-directory-preview-explainer.md)
 
+## [关于 Azure 标识管理](identity-fundamentals.md)
+## [预览 Azure 门户体验](active-directory-preview-explainer.md)
 
 # 入门
 ## [获取 Azure AD 租户](active-directory-howto-tenant.md)
@@ -58,6 +58,7 @@
 ### [查看所有组](active-directory-groups-view-azure-portal.md)
 ### [启用专用组](active-directory-accessmanagement-dedicated-groups.md)
 ### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
+### [还原已删除的 Office 365 组](active-directory-groups-restore-azure-portal.md)
 ### 管理组设置
 #### [Azure 门户](active-directory-groups-settings-azure-portal.md)
 #### [Cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
@@ -110,24 +111,27 @@
 ##### [未知源](active-directory-reporting-sign-ins-from-unknown-sources.md)
 ##### [异常登录](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
-## [管理密码](active-directory-manage-passwords.md)
-### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
-### [注册自助密码重置](active-directory-passwords-reset-register.md)
-### [管理员启用自助密码重置](active-directory-passwords.md)
-### [了解密码管理](active-directory-passwords-how-it-works.md)
-### [了解策略和限制](active-directory-passwords-policy.md)
-### 重置密码
+## [管理密码](active-directory-passwords.md)
+### 用户文档
+#### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
+#### [注册自助密码重置](active-directory-passwords-reset-register.md)
+### [快速入门：自助密码重置](active-directory-passwords-getting-started.md)
+### [许可 SSPR](active-directory-passwords-licensing.md)
+### [部署 SSPR](active-directory-passwords-best-practices.md)
+### IT 管理员：重置密码
 #### [Azure 门户](active-directory-users-reset-password-azure-portal.md)
-#### [经典门户](active-directory-create-users-reset-password.md)
-### [设置过期策略](active-directory-passwords-set-expiration-policy.md)
-### 启用密码管理
-#### [入门](active-directory-passwords-getting-started.md)
-#### [部署](active-directory-passwords-best-practices.md)
-#### [自定义](active-directory-passwords-customize.md)
-#### [查看报告](active-directory-passwords-get-insights.md)
-#### [了解详细信息](active-directory-passwords-learn-more.md)
-#### [常见问题](active-directory-passwords-faq.md)
-#### [故障排除](active-directory-passwords-troubleshoot.md)
+#### [Azure 经典门户](active-directory-create-users-reset-password.md)
+### [了解 SSPR 策略](active-directory-passwords-policy.md)
+### [了解密码重置](active-directory-passwords-how-it-works.md)
+### [自定义 SSPR](active-directory-passwords-customize.md)
+### [SSPR 使用的数据](active-directory-passwords-data.md)
+### [针对 SSPR 进行报告](active-directory-passwords-reporting.md)
+### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [密码写回](active-directory-passwords-writeback.md)
+### [密码哈希同步](./connect/active-directory-aadconnectsync-implement-password-synchronization.md#how-password-synchronization-works)
+### [故障排除](active-directory-passwords-troubleshoot.md)
+### [常见问题](active-directory-passwords-faq.md)
+
 
 ## 管理设备
 ### [注册设备](active-directory-device-registration-overview.md)
@@ -289,6 +293,7 @@
 ##### [PowerShell](role-based-access-control-manage-access-powershell.md)
 ##### [REST](role-based-access-control-manage-access-rest.md)
 #### [故障排除](role-based-access-control-troubleshooting.md)
+#### [资源提供程序操作](role-based-access-control-resource-provider-operations.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 
 ## 保护标识
@@ -341,7 +346,7 @@
 
 
 # 引用
-## [PowerShell cmdlets](/powershell/ )
+## [PowerShell cmdlets](/powershell/azure/overview)
 ## [Java API 参考](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
 ## [服务限制和局限性](active-directory-service-limits-restrictions.md)

@@ -67,6 +67,7 @@
 ### [同步过程中出错](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [对象不同步](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [密码同步](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
+### [userCertificate 导致的 LargeObject 错误](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)
 ### [如何从 LocalDB 10 GB 的限制恢复](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # 引用

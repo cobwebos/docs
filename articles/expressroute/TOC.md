@@ -12,7 +12,6 @@
 ## [先决条件](expressroute-prerequisites.md)
 ## [工作流](expressroute-workflows.md)
 ## [路由要求](expressroute-routing.md)
-## [NAT 要求](expressroute-nat.md)
 ## [QoS 要求](expressroute-qos.md)
 ## [关于将线路从经典部署移动到 Resource Manager 部署](expressroute-move.md)
 
@@ -38,8 +37,9 @@
 
 ## 最佳实践
 ### [网络安全和云服务最佳实践](../best-practices-network-security.md)
-## [优化路由](expressroute-optimize-routing.md)
+### [优化路由](expressroute-optimize-routing.md)
 ### [非对称路由](expressroute-asymmetric-routing.md)
+### [用于 ExpressRoute 的 NAT](expressroute-routing-nat.md)
 
 ## 故障排除
 ### [验证 ExpressRoute 连接](expressroute-troubleshooting-expressroute-overview.md)
@@ -47,7 +47,7 @@
 ### [获取 ARP 表（经典）](expressroute-troubleshooting-arp-classic.md)
 
 # 参考
-## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network)
+## [PowerShell](/powershell/module/azurerm.network)
 ## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST（经典）](https://msdn.microsoft.com/library/azure/dn606310)
 

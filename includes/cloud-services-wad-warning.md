@@ -13,8 +13,3 @@
 >
 > 部署更新的角色后，可以通过 Azure 门户或 PowerShell 重新启用扩展。
 >
-
-
-<!--HONumber=Jan17_HO3-->
-
-

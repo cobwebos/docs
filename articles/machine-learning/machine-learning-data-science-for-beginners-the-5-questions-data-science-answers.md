@@ -18,7 +18,7 @@ ms.author: cgronlun;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 50d1f8dfc7ce2d8bf4b04cff68698eafd56ce9c2
 ms.openlocfilehash: 518a7d2b5e43d8133d54ab583e4545a3ee9b3cba
-ms.lasthandoff: 02/10/2017
+ms.lasthandoff: 05/05/2017
 
 
 ---
