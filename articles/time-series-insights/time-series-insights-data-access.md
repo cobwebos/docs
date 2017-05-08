@@ -5,7 +5,7 @@ keywords:
 services: time-series-insights
 documentationcenter: 
 author: op-ravi
-manager: santoshb
+manager: jhubbard
 editor: cgronlun
 ms.assetid: 
 ms.service: time-series-insights
@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 05/01/2017
 ms.author: omravi
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 5e9ee102c0375c8c1ac0e0ff6bc93989115b7cfa
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 143d48b9fc551ade0d0fd043cdb0cf1f3340a9af
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 ---
 
 # <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>使用 Azure 门户授予对时序见解环境的数据访问权限
 
-时序见解环境有两个独立的访问策略类型：
+Time Series Insights 环境有两个独立的访问策略类型：
 
 * 管理访问策略
 * 数据访问策略
@@ -39,6 +40,7 @@ ms.lasthandoff: 04/26/2017
 
 两类策略都可以清楚地区分环境管理访问权限和环境中数据的访问权限。 例如，可以对环境进行设置，从数据访问权限中删除环境的所有者/创建者。 此外，用户可以读取环境中的数据，但可能无法访问环境的配置。
 
+## <a name="grant-data-access"></a>授予数据访问权限
 以下步骤演示如何为用户主体授予数据访问权限：
 
 1.    登录到 [Azure 门户](https://portal.azure.com)。

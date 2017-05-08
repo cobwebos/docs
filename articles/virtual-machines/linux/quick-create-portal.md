@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/13/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: ab29f01980bc7c3a8f12aaa55ff35baa3bf3f9fb
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 8bfc4892343dd62c958ce6937c4879a2b029cb88
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -68,10 +69,10 @@ ssh-keygen -t rsa -b 2048
 默认情况下，仅允许通过 SSH 连接登录到 Azure 中部署的 Linux 虚拟机。 如果此 VM 将用作 Web 服务器，则需要为 Web 流量打开端口 80。 此步骤将介绍如何创建网络安全组 (NSG) 规则，以允许端口 80 上的入站连接。
 
 1. 在虚拟机边栏选项卡的“基本信息”部分，单击**资源组**的名称。
-2. 在资源组的边栏选项卡中，单击资源列表中的“网络安全组”。 NSG 名称应为 VM 名称后面追加“-nsg”。
+2. 在资源组的边栏选项卡中，单击资源列表中的“网络安全组”。 NSG 名称应为 VM 名称后面追加 *-nsg*。
 3. 单击“入站安全规则”标题，打开入站规则列表。 此时列表中应会出现一条适用于 RDP 的规则。
 4. 单击“+ 添加”，打开“添加入站安全规则”边栏选项卡。
-5. 在“名称”中，键入 **nginx**。 请确保将“端口范围”设置为 80，将“操作”设置为“允许”。 单击 **“确定”**。
+5. 在“名称”中，键入 *nginx*。 请确保将“端口范围”设置为 80，将“操作”设置为“允许”。 单击 **“确定”**。
 
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
@@ -104,7 +105,7 @@ apt-get -y install nginx
 
 ## <a name="view-the-ngix-welcome-page"></a>查看 NGIX 欢迎页
 
-NGINX 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 请务必使用所记录的 `publicIpAddress` 访问默认页面。 
+NGINX 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 从 VM 的边栏选项卡中获取*公共 IP 地址*，并使用它访问默认网页。
 
 ![NGINX 默认站点](./media/quick-create-cli/nginx.png) 
 ## <a name="delete-virtual-machine"></a>删除虚拟机

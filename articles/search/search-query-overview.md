@@ -11,11 +11,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 12/08/2016
+ms.date: 04/26/2017
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 1e18f20e202c199036ff2012dcc6d415898cac7f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a6e9e504f4ccb8fb1e0a151dcfe76339fcc8051a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -28,7 +30,7 @@ ms.openlocfilehash: 1e18f20e202c199036ff2012dcc6d415898cac7f
 > 
 > 
 
-提交 Azure 搜索的搜索请求时，可同时指定许多参数，并可指定在应用程序的搜索框中键入的实际的字。 通过这些查询参数，可以更深层次地控制全文搜索体验。
+提交 Azure 搜索的搜索请求时，可同时指定许多参数，并可指定在应用程序的搜索框中键入的实际的字。 通过这些查询参数，可以更深层次地控制[全文搜索体验](search-lucene-query-architecture.md)。
 
 下面的列表简要介绍了 Azure 搜索中查询参数的常见用法。 有关查询参数及其行为的完整信息，请参阅 [REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters#microsoft_azure_search_models_searchparameters#properties_summary) 的详细页面。
 
@@ -59,10 +61,5 @@ Azure 搜索可轻松对搜索结果进行分页。 使用 `top` 和 `skip` 参�
 
 ## <a name="hit-highlighting"></a>突出显示
 在 Azure 搜索中，使用 `highlight`、`highlightPreTag` 和 `highlightPostTag` 参数可轻松强调搜索结果中与搜索查询相匹配的确切部分。 可以指定应强调其匹配文本的可搜索字段，还可指定要附加到 Azure 搜索所返回匹配文本的开头和结尾的精确字符串标记。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

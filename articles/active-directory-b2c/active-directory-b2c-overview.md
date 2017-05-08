@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 851319639f1443c062b87305bbde351f41846433
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 2f64c905d2304bfc94415e871012a783cd2cf328
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -57,7 +58,7 @@ Azure Active Directory B2C 是一个综合性的云标识管理解决方案，�
 * 请参阅 [Azure Active Directory B2C 定价信息](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。
 * 查看我们提供的适用于 Azure Active Directory B2C 的[代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c)。 
 * 使用 [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c) 标记获取有关 Stack Overflow 的帮助。
-* 使用 [用户之声](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)反馈你的看法 — 我们希望听到这些！
+* 使用[用户之声](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)反馈你的看法 — 我们希望听到这些！
 * 查看 [Azure AD B2C 协议参考](active-directory-b2c-reference-protocols.md)。
 * 查看 [Azure AD B2C 令牌参考](active-directory-b2c-reference-tokens.md)。
 * 参阅 [Azure Active Directory B2C 常见问题解答](active-directory-b2c-faqs.md)。

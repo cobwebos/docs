@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/13/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 8a86cf64dcd65e74285a1073f7494eba0708ddcd
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: df6f1b86b706d58a5c07a4f3de43a1872da61511
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -57,10 +58,10 @@ ms.lasthandoff: 04/15/2017
 若要允许 IIS 的流量，需要为 Web 流量打开端口 80。 此步骤将介绍如何创建网络安全组 (NSG) 规则，以允许端口 80 上的入站连接。
 
 1. 在虚拟机边栏选项卡的“基本信息”部分，单击**资源组**的名称。
-2. 在资源组的边栏选项卡中，单击资源列表中的“网络安全组”。 NSG 名称应为 VM 名称后面追加“-nsg”。
+2. 在资源组的边栏选项卡中，单击资源列表中的“网络安全组”。 NSG 名称应为 VM 名称后面追加 *-nsg*。
 3. 单击“入站安全规则”标题，打开入站规则列表。 此时列表中应会出现一条适用于 RDP 的规则。
 4. 单击“+ 添加”，打开“添加入站安全规则”边栏选项卡。
-5. 在“名称”中，键入 **IIS**。 请确保将“端口范围”设置为 80，将“操作”设置为“允许”。 单击 **“确定”**。
+5. 在“名称”中，键入 *IIS*。 请确保将“端口范围”设置为 80，将“操作”设置为“允许”。 单击 **“确定”**。
 
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
@@ -88,7 +89,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>查看 IIS 欢迎页
 
-IIS 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 你可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页。 从 VM 的边栏选项卡中获取**公共 IP 地址**，并使用它访问默认网页。 
+IIS 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 你可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页。 从 VM 的边栏选项卡中获取*公共 IP 地址*，并使用它访问默认网页。 
 
 ![IIS 默认站点](./media/quick-create-powershell/default-iis-website.png) 
 

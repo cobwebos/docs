@@ -1,4 +1,7 @@
 ## <a name="provision-the-solution"></a>预配解决方案
+
+如果尚未在帐户中预配远程监视预配置解决方案，请执行以下步骤：
+
 1. 使用 Azure 帐户凭据登录 [azureiotsuite.com][lnk-azureiotsuite]，然后单击“+”创建解决方案。
 2. 单击“远程监视”磁贴上的“选择”。
 3. 为远程监视预配置解决方案输入“解决方案名称”  。

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/13/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: bf245d8885e6d6628f182e36e0a9c99a4854873a
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: bf5b1c0a6e76f712e0be1f16ed1a6b2ac78d68de
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -36,13 +37,9 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 这将允
 > 本文档中的步骤假设使用密码。
 
 
-### <a name="access-control-requirements"></a>访问控制要求
-
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
-
 ## <a name="automated-cluster-creation"></a>自动创建群集
 
-可以使用 ARM 模板、SDK 和 PowerShell 自动创建 HDInsight R Server。
+可以使用 Azure Resource Manager 模板、SDK 和 PowerShell 自动创建 HDInsight R Server。
 
 * 若要使用 Azure 资源管理模板创建 R Server，请参阅 [Deploy an R-server HDInsight cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/)（部署 R-server HDInsight 群集）。
 * 若要使用 .NET SDK 创建 R Server，请参阅[使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)。
@@ -589,7 +586,7 @@ remoteLogin(
 )
 ```
 
-## <a name="how-to-scale-microsoft-r-server-operationalization-compute-nodes-on-hdinsight-worker-nodes"></a>如何在 HDInsight 辅助节点上缩放 Microsoft R Server 操作化计算节点？
+## <a name="how-to-scale-microsoft-r-server-operationalization-compute-nodes-on-hdinsight-worker-nodes"></a>如何在 HDInsight 辅助节点上缩放 Microsoft R Server 操作化计算节点
 
 
 ### <a name="decommission-the-worker-nodes"></a>解除辅助节点的授权
@@ -629,6 +626,10 @@ Microsoft R Server 当前未通过 Yarn 管理。 如果辅助节点未解除授
 * 查看“URI”部分，并添加辅助节点的 IP 和端口详细信息。
 
 ![通过命令行解除辅助节点的授权](./media/hdinsight-hadoop-r-server-get-started/get-started-op-cmd.png)
+
+## <a name="troubleshoot"></a>故障排除
+
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
 
 ## <a name="next-steps"></a>后续步骤
 
