@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d2d7b2f5feefc4d25c36a5fd30ca1d666b904f58
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -290,7 +292,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> 在上面的示例中，字符串 `/*` 表示我想清除终结点路径根目录中的所有内容。  这相当于在 Azure 门户的“清除”对话框中勾选“**清除所有**”。 在 `CreateCdnProfile` 方法中，我使用代码 `Sku = new Sku(SkuName.StandardVerizon)` 创建了 **Verizon 中的 Azure CDN ** 配置文件。  但是，**Akamai 中的 Azure CDN** 配置文件不支持“**清除所有**”功能，因此如果我在本教程中使用 Akamai 配置文件，则需要包含特定的清除路径。
+> 在上面的示例中，字符串 `/*` 表示我想清除终结点路径根目录中的所有内容。  这相当于在 Azure 门户的“清除”对话框中勾选“**清除所有**”。 在 `CreateCdnProfile` 方法中，我使用代码 `Sku = new Sku(SkuName.StandardVerizon)` 创建了 **Verizon 中的 Azure CDN** 配置文件。  但是，**Akamai 中的 Azure CDN** 配置文件不支持 **清除所有** 功能，因此如果我在本教程中使用 Akamai 配置文件，则需要包含特定的清除路径。
 > 
 > 
 
@@ -340,10 +342,5 @@ private static void PromptDeleteCdnProfile(CdnManagementClient cdn)
 要查找与适用于 .NET 的 Azure CDN 管理库有关的其他文档，请查看 [MSDN 参考](https://msdn.microsoft.com/library/mt657769.aspx)。
 
 使用 [PowerShell](cdn-manage-powershell.md) 管理 CDN 资源。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
