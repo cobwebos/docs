@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/24/2017
+ms.date: 05/01/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 4ec11ffeae94b4a8e5a65566f0f0c067f45a0134
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: f485dc6a52488b44bbd0e68432d3fd2bcdb060a9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -48,7 +49,7 @@ ms.lasthandoff: 04/25/2017
 * 一台兼容的 VPN 设备和能够对其进行配置的人员。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 一个用于 VPN 设备的面向外部的公共 IPv4 地址。 此 IP 地址不得位于 NAT 之后。
 * 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够为你提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
-* 最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
+* 最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
 
 ### <a name="example-values"></a>示例值
 
@@ -76,23 +77,8 @@ ConnectionName          = myGWConnection
 ```
 
 ## <a name="Login"></a>1.连接到订阅
-确保切换到 PowerShell 模式，以便使用资源管理器 cmdlet。 有关详细信息，请参阅 [将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
-1. 打开 PowerShell 控制台并连接到你的帐户。 使用下面的示例来帮助连接：
-
-  ```powershell
-  Login-AzureRmAccount
-  ```
-2. 检查该帐户的订阅。
-
-  ```powershell
-  Get-AzureRmSubscription
-  ```
-3. 指定要使用的订阅。
-
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+[!INCLUDE [vpn-gateway-ps-login](../../includes/vpn-gateway-ps-login-include.md)]
 
 ## <a name="VNet"></a>2.创建虚拟网络和网关子网
 
@@ -173,17 +159,16 @@ New-AzureRmResourceGroup -Name testrg -Location 'West US'
 
 ## <a name="PublicIP"></a>4.请求公共 IP 地址
 
-请求一个公共 IP 地址，该地址将分配给虚拟网络 VPN 网关。 这是 IP 地址，你将 VPN 设备配置为连接到该地址。
+VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，然后在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 VPN 网关当前仅支持动态公共 IP 地址分配。 不能请求静态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
 
-Resource Manager 部署模型的虚拟网关目前使用动态分配方法，仅支持公共 IP 地址。 但是，这并不意味着 IP 地址会更改。 VPN 网关 IP 地址只在删除或重新创建网关时更改。 虚拟网关公共 IP 地址不会因为重新调整大小、重置或其他 VPN 网关内部维护/升级而更改。
-
-使用以下 PowerShell 示例：
+请求一个公共 IP 地址，该地址将分配给虚拟网络 VPN 网关。
 
 ```powershell
 $gwpip= New-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName testrg -Location 'West US' -AllocationMethod Dynamic
 ```
 
 ## <a name="GatewayIPConfig"></a>5.创建网关 IP 寻址配置
+
 网关配置定义要使用的子网和公共 IP 地址。 使用以下示例创建网关配置：
 
 ```powershell
@@ -210,7 +195,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ## <a name="ConfigureVPNDevice"></a>7.配置 VPN 设备
 
-[!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
+[!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 若要使用 PowerShell 查找虚拟网关的公共 IP 地址，请使用以下示例：
 
@@ -219,6 +204,7 @@ Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
 ```
 
 ## <a name="CreateConnection"></a>8.创建 VPN 连接
+
 接下来，将在虚拟网络网关和 VPN 设备之间创建站点到站点 VPN 连接。 请务必替换为你自己的值。 共享密钥必须与你用于 VPN 设备配置的值匹配。 请注意，站点到站点的“-ConnectionType”为 *IPsec*。
 
 1. 设置变量。
@@ -239,17 +225,25 @@ Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
 ## <a name="toverify"></a>9.验证 VPN 连接
 VPN 连接有几种不同的验证方式。
 
-[!INCLUDE [vpn-gateway-verify-connection-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [Verify connection](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+
+## <a name="connectVM"></a>连接到虚拟机
+
+[!INCLUDE [Connect to VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
+
 
 ## <a name="modify"></a>修改本地网关的 IP 地址前缀
-如果需要更改局域网网关的前缀，请使用以下说明。 提供了两套说明。 要选择哪套说明取决于您是否已创建了网关连接。
 
-[!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
+如果需要路由到本地位置的 IP 地址前缀更改，则可修改本地网关。 提供了两套说明。 要选择哪套说明取决于您是否已创建了网关连接。
+
+[!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
 ## <a name="modifygwipaddress"></a>修改本地网关的 IP 地址
-[!INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
+
+[!INCLUDE [Modify gw IP](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
 *  连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
 * 有关 BGP 的信息，请参阅 [BGP 概述](vpn-gateway-bgp-overview.md)和[如何配置 BGP](vpn-gateway-bgp-resource-manager-ps.md)。
 

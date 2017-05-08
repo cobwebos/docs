@@ -12,6 +12,6 @@ customEvents
 ```
 
  > [!NOTE]
- > 与所属遥测项关联的自定义度量值。 这些度量值可以通过遥测项（包含这些度量值）采样。 使用[指标遥测](#metric-telemetry)跟踪其值独立于其他遥测类型的度量值。 
+ > 与所属遥测项关联的自定义度量值。 这些度量值可以通过遥测项（包含这些度量值）采样。 使用[指标遥测](../articles/application-insights/app-insights-api-custom-events-metrics.md#send-metrics)跟踪其值独立于其他遥测类型的度量值。
 
 最大密钥长度：150

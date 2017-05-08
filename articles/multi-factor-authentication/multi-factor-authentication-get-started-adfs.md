@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 04/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 00ee90b6d264c1aee4b488cd1c2a5447809a1e3c
-ms.openlocfilehash: 0981be75b9caffb29b10c70ce528209984986ce2
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 28aede545c738137ff04257214e4a3f42792d85c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -40,7 +42,7 @@ ms.openlocfilehash: 0981be75b9caffb29b10c70ce528209984986ce2
 * 使用云身份验证验证应用密码，因此将绕过联合。 仅当设置应用密码时，才主动使用联合。
 * 应用密码不遵循“本地客户端访问控制”设置。
 * 使用应用密码时，无法使用本地身份验证日志记录功能。
-* 帐户禁用/删除可能需要长达&3; 小时才能实现目录同步，从而延迟了云标识中应用密码的禁用/删除。
+* 帐户禁用/删除可能需要长达 3 小时才能实现目录同步，从而延迟了云标识中应用密码的禁用/删除。
 
 ## <a name="next-steps"></a>后续步骤
 有关设置 Azure 多重身份验证或具有 AD FS 的 Azure 多重身份验证服务器的信息，请参阅以下文章：
@@ -48,9 +50,4 @@ ms.openlocfilehash: 0981be75b9caffb29b10c70ce528209984986ce2
 * [使用 Azure Multi-Factor Authentication 和 Azure AD 保护云资源](multi-factor-authentication-get-started-adfs-cloud.md)
 * [将 Azure Multi-Factor Authentication 服务器与 Windows Server 2012 R2 AD FS 配合使用来保护云和本地资源](multi-factor-authentication-get-started-adfs-w2k12.md)
 * [将 Azure Multi-Factor Authentication 服务器与 AD FS 2.0 配合使用来保护云和本地资源](multi-factor-authentication-get-started-adfs-adfs2.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

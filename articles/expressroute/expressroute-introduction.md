@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 2fc966e7c93e44007f15c3129fbe709beddb21af
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 43f18fb3ce873eef5c2d96a89ab41fc6efc443d8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -97,6 +98,10 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。 
   * 提高 Azure 公共和 Azure 专用对等互连的路由限制，从4,000 路由提升至 10,000 路由。
   * 服务的全球连接。 在任何区域（国家/地区云除外）创建的 ExpressRoute 线路都将能够访问位于全球其他区域的资源。 例如，创建于欧洲西部的虚拟网络可以通过在硅谷设置的 ExpressRoute 线路进行访问。
   * 增加了每个 ExpressRoute 线路的 VNet 链接数量，从 10 增加至更大的限制，具体取决于线路的带宽。
+
+## <a name="faq"></a>常见问题
+
+有关 ExpressRoute 的常见问题，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

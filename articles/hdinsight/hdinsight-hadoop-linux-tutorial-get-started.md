@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 24bb7e2ffd212594f50bab735e86d74ab95d8c62
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: bef6754f5ffd2b004af01a2e26edeeed63793b6e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -28,13 +29,11 @@ ms.lasthandoff: 03/29/2017
 了解如何在 HDInsight 中创建 [Hadoop](http://hadoop.apache.org/) 群集，以及如何在 HDInsight 中运行 Hive 作业。 [Apache Hive](https://hive.apache.org/) 是 Hadoop 生态系统中最热门的组件。 目前，HDInsight 随附六种不同类型的群集：[Hadoop](hdinsight-hadoop-introduction.md)、[Spark](hdinsight-apache-spark-overview.md)、[HBase](hdinsight-hbase-overview.md)、[Storm](hdinsight-storm-overview.md)、[交互式 Hive（预览版）](hdinsight-hadoop-use-interactive-hive.md)和 [R Server](hdinsight-hadoop-r-server-overview.md)。  每个群集类型都支持一组不同的组件。 所有六种群集类型都支持 Hive。 有关 HDInsight 中受支持组件的列表，请参阅 [HDInsight 提供的 Hadoop 群集版本中有哪些新功能？](hdinsight-component-versioning.md)  
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ## <a name="prerequisites"></a>先决条件
 开始学习本教程之前，必须做好以下准备：
 
 * **Azure 订阅**：若要创建一个月的免费试用帐户，请访问 [azure.microsoft.com/free](https://azure.microsoft.com/free)。
-
-### <a name="access-control-requirements"></a>访问控制要求
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-cluster"></a>创建群集
 
@@ -123,6 +122,10 @@ ms.lasthandoff: 03/29/2017
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在门户仪表板中，单击显示了创建群集时所用资源组名称的磁贴。
 3. 在资源边栏选项卡中单击“删除”，删除包含群集和默认存储帐户的资源组；或者，在“资源”磁贴中单击群集名称，然后在群集边栏选项卡中单击“删除”。 请注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
+
+## <a name="troubleshoot"></a>故障排除
+
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
 
 ## <a name="next-steps"></a>后续步骤
 本教程已介绍如何使用 Resource Manager 模板创建基于 Linux 的 HDInsight 群集，以及如何执行基本 Hive 查询。

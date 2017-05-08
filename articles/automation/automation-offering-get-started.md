@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/14/2017
+ms.date: 05/02/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 0f80ac93e3ff1ee95477e4fa5dbe21d61ddf8ead
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 8a04fda8eaf6e14a278941e7bb55b23012f67850
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -98,8 +99,6 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 基于角色的访问控制在 Azure Resource Manager 中可用，向 Azure AD 用户帐户和运行方式帐户授予允许的操作，并对该服务主体进行身份验证。  请阅读 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)一文，详细了解如何开发自动化权限管理模型。  
 
-
-
 #### <a name="authentication-methods"></a>身份验证方法
 下表总结了 Azure 自动化所支持的每个环境的不同身份验证方法。
 
@@ -136,6 +135,13 @@ Azure 自动化 DSC 可用于管理各种计算机：
 | 澳大利亚东南部 |ase-jobruntimedata-prod-su1.azure-automation.net |
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net |
 | 美国政府弗吉尼亚州 | usge-jobruntimedata-prod-su1.azure-automation.us |
+
+有关 IP 地址列表（非名称列表），请从 Microsoft 下载中心下载 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653) xml 文件并进行查看。 
+
+> [!NOTE]
+> 此文件包含在 Microsoft Azure 数据中心中使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布已更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 文件中显示的新范围至少在一周内不会用于数据中心。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 快速路由用户可能会注意到用于在每个月的第一周更新 Azure 空间中 BGP 播发的此文件。 
+> 
+
 
 ## <a name="implementation"></a>实现
 
@@ -191,27 +197,6 @@ Azure 自动化 DSC 可用于管理各种计算机：
 8. 单击“创建”，继续载入自动化和 OMS 工作区。 系统将验证所有设置，然后尝试在订阅中部署该服务。  此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。 
 
 载入该服务以后，即可开始创建 Runbook，运行已启用的管理解决方案，或者开始使用 [Log Analytics](https://docs.microsoft.com/azure/log-analytics) 收集云或本地环境中的资源所生成的数据。   
-
-### <a name="resources-included"></a>包含的资源
-成功创建自动化帐户后，系统将自动为你创建几个资源。 以下两个表格汇总了这些资源：<br>
-
-#### <a name="run-as-account-resources"></a>运行方式帐户资源
-
-| 资源 | 说明 |
-| --- | --- |
-| AzureAutomationTutorial Runbook | 一个示例图形 Runbook，演示如何使用运行方式帐户进行身份验证并获取所有 Resource Manager 资源。 |
-| AzureAutomationTutorialScript Runbook | 一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证并获取所有 Resource Manager 资源。 |
-| AzureRunAsCertificate | 在创建自动化帐户时自动创建的，或针对现有帐户使用以下 PowerShell 脚本创建的证书资产。 使用该证书可向 Azure 进行身份验证，以便通过 Runbook 管理 Azure Resource Manager 资源。 该证书的有效期为一年。 |
-| AzureRunAsConnection | 在创建自动化帐户时自动创建的，或针对现有帐户使用 PowerShell 脚本创建的连接资产。 |
-
-#### <a name="classic-run-as-account-resources"></a>经典运行方式帐户资源
-
-| 资源 | 说明 |
-| --- | --- |
-| AzureClassicAutomationTutorial Runbook | 一个示例图形 Runbook，它使用经典运行方式帐户（证书）获取订阅中使用经典部署模型中创建的所有 VM，然后写入 VM 名称和状态。 |
-| AzureClassicAutomationTutorial 脚本 Runbook | 一个示例 PowerShell Runbook，它使用经典运行方式帐户（证书）获取订阅中的所有经典 VM，然后写入 VM 名称和状态。 |
-| AzureClassicRunAsCertificate | 自动创建的证书资产，用于向 Azure 进行身份验证，以便从 Runbook 管理 Azure 经典资源。 该证书的有效期为一年。 |
-| AzureClassicRunAsConnection | 自动创建的连接资产，用于向 Azure 进行身份验证，以便从 Runbook 管理 Azure 经典资源。|
 
 ## <a name="next-steps"></a>后续步骤
 * 可以参阅[测试 Azure 自动化运行方式帐户身份验证](automation-verify-runas-authentication.md)一文，确认新的自动化帐户能否针对 Azure 资源进行身份验证。

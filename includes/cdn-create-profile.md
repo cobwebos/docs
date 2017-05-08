@@ -1,6 +1,6 @@
 **创建新的 CDN 配置文件**
 
-1. 在 [Azure 门户](https://portal.azure.com)的左上角，单击“新建”。  在“新建”边栏选项卡中，选择“媒体 + CDN”，然后选择“CDN”。
+1. 在 [Azure 门户](https://portal.azure.com)的左上角，单击“新建”。  在“新建”边栏选项卡中，选择“Web + 移动”，然后选择“CDN”。
    
     此时将显示新的 CDN 配置文件边栏选项卡。
    

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 11ecfc993f17c89d4ac4431e9a835000d30afe76
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 8a0eb841b1a41a14e443b6ce93e6b8fb8985a803
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -107,7 +108,7 @@ Azure 资源管理器要求所有资源组指定一个位置。 此位置将用�
 > [!NOTE]
 > 若需为应用程序网关配置自定义探测，请访问：[使用 PowerShell 创建带自定义探测的应用程序网关](application-gateway-create-probe-ps.md)。 有关详细信息，请查看 [custom probes and health monitoring](application-gateway-probe-overview.md) （自定义探测和运行状况监视）。
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
+## <a name="create-a-virtual-network-and-a-subnet"></a>创建虚拟网络和子网
 
 以下示例演示如何使用 Resource Manager 创建虚拟网络。 该示例创建适用于应用程序网关的 VNET。 应用程序网关需要其自己的子网，因此，为应用程序网关创建的子网小于 VNET 地址空间。 由于使用较小的子网，因此可以在同一 VNET 中配置其他资源（包括但不限于 Web 服务器）。
 
@@ -135,7 +136,7 @@ $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -L
 $subnet=$vnet.Subnets[0]
 ```
 
-## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>创建前端配置的公共 IP 地址
+## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
 在 West US 区域的 **appgw-rg** 资源组中创建公共 IP 资源 **publicIP01**。 应用程序网关可以使用公共 IP 地址和/或内部 IP 地址来接收负载均衡请求。  此示例仅使用公共 IP 地址。 在以下示例中，没有为创建公共 IP 地址而配置任何 DNS 名称。  应用程序网关不支持在公共 IP 地址上使用自定义 DNS 名称。  如果公共终结点需要自定义名称，则应创建一个 CNAME 记录，使之指向针对公共 IP 地址自动生成的 DNS 名称。
 
@@ -219,7 +220,7 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 > [!NOTE]
 > **InstanceCount** 的默认值为 2，最大值为 10。 **GatewaySize** 的默认值为 Medium。 可以在 **Standard_Small**、**Standard_Medium** 和 **Standard_Large** 之间进行选择。
 
-## <a name="create-an-application-gateway-by-using-new-azurermapplicationgateway"></a>使用 New-AzureRmApplicationGateway 创建应用程序网关
+## <a name="create-the-application-gateway"></a>创建应用程序网关
 
 创建包含上述步骤中所有配置项的应用程序网关。 在此示例中，应用程序网关名为 **appgwtest**。
 
@@ -233,7 +234,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 Get-AzureRmPublicIpAddress -Name publicIP01 -ResourceGroupName appgw-rg  
 ```
 
-## <a name="delete-an-application-gateway"></a>删除应用程序网关
+## <a name="delete-the-application-gateway"></a>删除应用程序网关
 
 若要删除应用程序网关，请执行以下步骤：
 
@@ -296,6 +297,14 @@ IpConfiguration          : {
 DnsSettings              : {
                                 "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
                             }
+```
+
+## <a name="delete-all-resources"></a>删除所有资源
+
+若要删除在本文中创建的所有资源，请完成以下步骤：
+
+```powershell
+Remove-AzureRmResourceGroup -Name appgw-RG
 ```
 
 ## <a name="next-steps"></a>后续步骤

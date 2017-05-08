@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: 71c6c5ffacf49b907e3e9f488789f31928b25823
-ms.openlocfilehash: e01a9ef7d223e7a5a06475cf419b73959baa803f
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: b76020e3e5855a63c416851d9b9adefdbdc5874a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 02/22/2017
 
 
 
-在 Azure 容器服务中，Kubernetes 需要 [Azure Active Directory 服务主体](../active-directory/active-directory-application-objects.md)作为服务帐户才能与 Azure API 交互。 需要服务主体才能动态管理相关资源，例如用户定义路由和第 4 层 Azure Load Balancer。
+在 Azure 容器服务中，Kubernetes 需要 [Azure Active Directory 服务主体](../active-directory/active-directory-application-objects.md)作为服务帐户才能与 Azure API 交互。 需要服务主体才能动态管理相关资源，例如[用户定义路由](../virtual-network/virtual-networks-udr-overview.md)和[第 4 层 Azure 负载均衡器](../load-balancer/load-balancer-overview.md)。
 
 本文介绍用于为 Kubernetes 群集指定服务主体的不同选项。 例如，如果已安装并设置 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2)，则可运行 [`az acs create`](https://docs.microsoft.com/en-us/cli/azure/acs#create) 命令，以便同时创建 Kubernetes 群集和服务主体。
 

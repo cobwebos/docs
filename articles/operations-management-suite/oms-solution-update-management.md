@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/20/2017
+ms.date: 05/02/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: b0624bde9ab53231768beb0c832a4a49b21a8975
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 03a6c1f20632691c08f5de4afe74eacc6f79608e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -87,9 +88,14 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 不过，只要将同一个帐户同时用于解决方案和混合 Runbook 辅助角色组成员身份，即可将 Windows 计算机添加到自动化帐户的混合 Runbook 辅助角色组，为自动化 Runbook 提供支持。  此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。  
 
 ## <a name="configuration"></a>配置
-执行以下步骤，将“更新管理”解决方案添加到 OMS 工作区并确认代理正在进行报告。 Windows 代理会自动添加，无额外配置。 
+执行以下步骤，将“更新管理”解决方案添加到 OMS 工作区并确认代理正在进行报告。 已连接到工作区的 Windows 代理会自动添加，无额外配置。 
 
-可以通过三种不同的方式来添加此解决方案：通过 Azure 门户中的 Azure 应用商店来选择“自动化与控制”产品/服务或“更新管理”解决方案，或者通过 OMS 工作区中的 OMS 解决方案库来执行相关操作。  如果已在同一资源组和区域中将自动化帐户和 OMS 工作区关联到一起，则选择“自动化与控制”时会对配置进行验证，仅安装该解决方案并在两项服务中对其进行配置。  从 Azure 应用商店选择“更新管理”解决方案会产生相同的行为。  如果订阅中没有部署任一服务，则请执行“创建新的解决方案”边栏选项卡中的步骤，确认你需要安装其他预先选定的建议解决方案。  （可选）可以使用解决方案库中[添加 OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)一文所述步骤，将“更新管理”解决方案添加到 OMS 工作区。  
+可以使用下述方法部署解决方案：
+
+* Azure 门户中的 Azure 应用商店：选择“自动化与控制”服务或“更新管理”解决方案
+* OMS 工作区中的 OMS 解决方案库
+
+如果已在同一资源组和区域中将自动化帐户和 OMS 工作区关联到一起，则选择“自动化与控制”时会对配置进行验证，仅安装该解决方案并在两项服务中对其进行配置。  从 Azure 应用商店选择“更新管理”解决方案会产生相同的行为。  如果订阅中没有部署任一服务，则请执行“创建新的解决方案”边栏选项卡中的步骤，确认你需要安装其他预先选定的建议解决方案。  （可选）可以使用解决方案库中[添加 OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)一文所述步骤，将“更新管理”解决方案添加到 OMS 工作区。  
 
 ### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>确认 OMS 代理和 Operations Manager 管理组已连接到 OMS
 
@@ -144,7 +150,7 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 > [!NOTE]
 > 默认情况下，从 Azure 应用商店部署的 Windows VM 设置为从 Windows 更新服务接收自动更新。  将此解决方案或 Windows VM 添加到工作区后，该行为不会改变。  如果你不主动通过此解决方案管理更新，系统会应用默认行为（即自动应用更新）。  
 
-对于从 Azure 应用商店中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/linux/update-infrastructure-redhat.md)。  对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。  
+对于从 Azure 应用商店中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。  对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。  
 
 ### <a name="viewing-update-deployments"></a>查看更新部署
 单击“更新部署” 磁贴以查看现有的更新部署列表。  这些对象按状态分组 – **已计划**、**正在运行**和 **已完成**。<br><br> ![更新部署计划页](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
