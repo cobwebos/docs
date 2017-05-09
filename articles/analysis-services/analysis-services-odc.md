@@ -15,9 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 04/18/2017
 ms.author: owend
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 194910a3e4cb655b39a64d2540994d90d34a68e4
 ms.openlocfilehash: 90a0cfb7c7cd7d3364ff42559dd7fdc7b2951abf
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
 
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 02/16/2017
 
     *   在 **Initial Catalog=database** 中，**将 database** 更改为你数据库的名称。
 
-3. 在 **&lt;odc:CommandText>Model&lt;/odc:CommandText>** 中，**将 Model**更改为模型或透视图的名称。 
+3. 在 **&lt;odc:CommandText>Model&lt;/odc:CommandText>** 中，**将 Model* *更改为模型或透视图的名称。 
 
 4. 将具有 **.odc** 扩展名的文件保存到 C:\Users\\username\Documents\My Data Sources 文件夹。
 
