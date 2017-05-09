@@ -15,9 +15,10 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 12079f8dbc409afe5acc274fa08bda878c90b76e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/13/2017
 
 ---
@@ -117,7 +118,7 @@ ms.lasthandoff: 04/13/2017
 
 3. 在 StorSimple Device Manager 服务中，转到“管理”>“设备”。 在“设备”边栏选项卡中，选择并单击源设备。
 
-4. 在“设备仪表板”****边栏选项卡中，单击“停用”。
+4. 在 **设备仪表板** 边栏选项卡中，单击 **停用** 。
 
 5. 在“停用”边栏选项卡中，系统将提示你进行确认。 设备停用是不可撤消的*永久性*过程。 还将提醒你使主机上的共享/卷脱机。 键入设备名称以确认，然后单击“停用”。
    
