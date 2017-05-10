@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2017
 ms.author: negat
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 3b978f5448c2cfbba4d02e3efd730dea7c7813c3
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="review-the-template"></a>查看模板
 
-使用 GitHub 查看最小可行规模集模板 [azuredeploy.json](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json).。
+使用 GitHub 查看最小可行规模集模板 [azuredeploy.json](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)。
 
 本教程中，我们检查差异 (`git diff master minimum-viable-scale-set`) 来逐个创建最小可行规模集模板。
 

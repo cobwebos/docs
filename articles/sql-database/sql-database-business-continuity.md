@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/13/2016
+ms.date: 04/07/2017
 ms.author: sashan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
 ms.openlocfilehash: 2ddbe1766a978f9849c310a72086f95cbb68cd83
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/14/2017
 
 
@@ -68,8 +69,7 @@ SQL 数据库每周自动执行完整数据库备份，每小时自动执行差�
 
 > [!IMPORTANT]
 > 若要使用活动异地复制和自动故障转移组，必须是订阅所有者或在 SQL Server 中拥有管理权限。 可通过订阅的权限使用 Azure 门户、PowerShell 或 REST API 进行配置和故障转移，也可以通过 SQL Server 中的权限使用 Transact-SQL 进行配置和故障转移。
->
->
+> 
 
 如果应用程序符合以下任意条件，就使用活动异地复制：
 
@@ -131,8 +131,8 @@ Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅�
 如果使用活动异地复制和自动故障转移组作为恢复机制，则可以配置自动故障转移策略，或使用[手动故障转移](sql-database-disaster-recovery.md#failover-to-geo-replicated-secondary-database)。 一旦启用，辅助数据库通过故障转移提升为新的主数据库，它可以记录新事务并响应查询 - 仅丢失极少尚未复制的数据。 有关设计故障转移过程的信息，请参阅[设计用于云灾难恢复的应用程序](sql-database-designing-cloud-solutions-for-disaster-recovery.md)。
 
 > [!NOTE]
-> 当数据中心恢复联机，旧主数据库自动重新连接至新主数据库，且其自身转为辅助数据库。 如果需要将主数据库重定位至原始区域，可以手动启动计划的故障转移（故障回复）。
->
+> 当数据中心恢复联机，旧主数据库自动重新连接至新主数据库，且其自身转为辅助数据库。 如果需要将主数据库重定位至原始区域，可以手动启动计划的故障转移（故障回复）。 
+> 
 
 ### <a name="perform-a-geo-restore"></a>执行异地还原
 如果将自动备份和异地冗余存储复制搭配作为恢复机制，请[使用异地还原启动数据库恢复](sql-database-disaster-recovery.md#recover-using-geo-restore)。 恢复通常在 12 小时内进行 — 最多丢失 1 小时的数据，具体取决于最后一次每小时差异备份的执行和复制时间。 在恢复完成之前，数据库无法记录任何事务或响应任何查询。
