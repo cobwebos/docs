@@ -4,7 +4,7 @@ description: "有了 Azure 安全中心 Power BI 内容包，即可根据为报�
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 0ded6bc7-52e8-43b4-8940-0bee137526e3
 ms.service: security-center
@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 05/09/2017
 ms.author: yurid
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
@@ -32,7 +32,7 @@ Azure 安全中心仪表板还可用于访问 Power BI 报表。 按照以下步
 
 1. 在“Azure 安全中心”仪表板中，单击“Power BI”按钮。
 
-    ![使用 Power BI 连接到 Azure 安全中心](./media/security-center-powerbi/security-center-powerbi-fig1-newUI-2017.png)
+    ![使用 Power BI 连接到 Azure 安全中心](./media/security-center-powerbi/security-center-powerbi-fig1-1-newUI-2017.png)
 2. 此时会在右侧打开“Power BI”边栏选项卡，如以下屏幕所示： 
 
     ![使用 Power BI 连接到 Azure 安全中心](./media/security-center-powerbi/security-center-powerbi-fig1-new11-2017.png)

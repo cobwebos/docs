@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
 ms.openlocfilehash: e9da636d5dbe95ea7d0bd8cf186af30247ca8bd8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/18/2017
 
 
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 协议 — OAuth 2.0 授权代码流
 OAuth 2.0 授权代码授予可用于设备上所安装的应用中，以访问受保护的资源，例如 Web API。  使用应用模型 v2.0 的 OAuth 2.0 实现，可以将登录名及 API 访问添加到移动应用和桌面应用。  本指南与语言无关，介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
-
-<!-- TODO: Need link to libraries -->
 
 > [!NOTE]
 > v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。  若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
@@ -303,10 +303,5 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | correlation_id |帮助跨组件诊断的请求唯一标识符。 |
 
 有关错误代码的描述和建议的客户端操作，请参阅[令牌终结点错误的错误代码](#error-codes-for-token-endpoint-errors)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

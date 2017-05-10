@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/01/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
 ms.openlocfilehash: 4a71d02d37e55ae08035632c323283438b3f66c6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -36,7 +38,6 @@ ms.openlocfilehash: 4a71d02d37e55ae08035632c323283438b3f66c6
 完成了吗？ 你现在应该看一下你的 Microsoft 应用列表，该列表有可能一片空白。  让我们改变这点。
 
 单击“添加应用”，并为它命名。  门户将向应用分配全局唯一的应用程序 ID，以便稍后在你的代码中使用。  如果应用包含的服务器端组件需要用来调用 API（例如：Office、Azure 或你自己的 Web API）的访问令牌，则你还需要在此处创建**应用程序密码**。
-<!-- TODO: Link for app secrets -->
 
 接下来，添加应用将使用的平台。
 
@@ -54,10 +55,5 @@ ms.openlocfilehash: 4a71d02d37e55ae08035632c323283438b3f66c6
 你现在已有 Microsoft 应用，你可以完成我们提供的其中一个 v2.0 快速启动教程。  以下是一些建议：
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
