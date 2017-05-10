@@ -16,10 +16,11 @@ ms.date: 04/05/2017
 ms.author: raynew
 ROBOTS: NOINDEX, NOFOLLOW
 redirect_url: site-recovery-vmware-to-azure
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 5c597e94f524a7ecbb9e4269adbbbd735a90aa14
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 88c0e4d02f13d3dcc8824ed1cba8fecd3c5cfa77
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -228,7 +229,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 ## <a name="step-3-install-the-vmware-components"></a>步骤 3：安装 VMware 组件
 如果想要复制 VMware 虚拟机，请在管理服务器上执行以下步骤：
 
-1. [下载](https://developercenter.vmware.com/tool/vsphere_powercli/6.0)和安装 VMware vSphere PowerCLI 6.0。
+1. [下载](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1)和安装 VMware vSphere PowerCLI 6.0。
 2. 重新启动服务器。
 
 ## <a name="step-4-download-a-vault-registration-key"></a>步骤 4：下载保管库注册密钥

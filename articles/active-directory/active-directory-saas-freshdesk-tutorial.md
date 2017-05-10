@@ -13,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: f35da063fc637f315b52ea38b63d2c8222cecd21
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 0a8f2de60ab60b980b29c4dbc78045bd20693b9d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -197,29 +198,29 @@ ms.lasthandoff: 04/05/2017
 1. 登录到“Freshdesk”租户。
 2. 在顶部菜单中，单击“管理员”。
    
-       ![Admin](./media/active-directory-saas-freshdesk-tutorial/IC776772.png "Admin")
+   ![管理员](./media/active-directory-saas-freshdesk-tutorial/IC776772.png "管理员")
 
 3. 在“常规设置”选项卡上，单击“代理”。
    
-       ![Agents](./media/active-directory-saas-freshdesk-tutorial/IC776773.png "Agents")
+   ![代理](./media/active-directory-saas-freshdesk-tutorial/IC776773.png "Agents")
 
 4. 单击“新建代理”。
    
-       ![New Agent](./media/active-directory-saas-freshdesk-tutorial/IC776774.png "New Agent")
+    ![新建代理](./media/active-directory-saas-freshdesk-tutorial/IC776774.png "New Agent")
 
 5. 在“代理信息”对话框中，执行以下步骤：
    
-       ![Agent Information](./media/active-directory-saas-freshdesk-tutorial/IC776775.png "Agent Information")
+   ![代理信息](./media/active-directory-saas-freshdesk-tutorial/IC776775.png "Agent Information")
    
-       a. In the **Full Name** textbox, type the name of the Azure AD account you want to provision.
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“完整名称”文本框中，键入要预配的 Azure AD 帐户的名称。
 
-       b. In the **Email** textbox, type the Azure AD email address of the Azure AD account you want to provision.
+   b. 在“电子邮件”文本框中，键入要预配的 Azure AD 帐户的 Azure AD 电子邮件地址。
 
-       c. In the **Title** textbox, type the title of the Azure AD account you want to provision.
+   c. 在“名称”文本框中，键入要预配的 Azure AD 帐户的名称。
 
-       d. Select **Agents role**, and then click **Assign**.
+   d. 选择“代理角色”，然后单击“分配”。
        
-       e. Click **Save**.     
+   e. 单击“保存” 。     
    
     >[!NOTE]
     >Azure AD 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。 
