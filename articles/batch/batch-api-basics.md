@@ -16,10 +16,10 @@ ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d05739a4d9f0712c2b4b47432bff97594a11b121
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: c3ed30ec43128c4e2b0e3d7e4b5dd61670e6bb52
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/03/2017
 
 这篇 Azure Batch 服务核心组件的概述将介绍 Batch 开发人员可用来构建大规模并发计算解决方案的主要服务功能和资源。
 
-不管是在开发可发出直接 [REST API][batch_rest_api] 调用的分布式计算应用程序或服务，还是使用某个 [Batch SDK](batch-apis-tools.md#batch-development-apis)，都可以使用本文中介绍的多种资源和功能。
+不管是在开发可发出直接 [REST API][batch_rest_api] 调用的分布式计算应用程序或服务，还是使用某个 [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)，都可以使用本文中介绍的多种资源和功能。
 
 > [!TIP]
 > 有关 Batch 服务的更全面介绍，请参阅 [Basics of Azure Batch](batch-technical-overview.md)（Azure Batch 基础知识）。
@@ -74,13 +74,13 @@ ms.lasthandoff: 05/03/2017
 
 可以通过 [Azure 门户](batch-account-create-portal.md)或编程方式（例如使用[批处理管理 .NET 库](batch-management-dotnet.md)）创建 Azure 批处理帐户。 创建帐户时，可以关联 Azure 存储帐户。
 
-批处理支持两种帐户配置，二者都基于“池分配模式”属性。 这两个配置允许你访问与批处理[池](#pool)相关的不同功能（见本文后面部分）。 
+批处理支持两种帐户配置，二者都基于“池分配模式”属性。 这两个配置允许你访问与批处理[池](#pool)相关的不同功能（见本文后面部分）。
 
 
-* **批处理服务**：这是默认选项，将批处理池 VM 分配到 Azure 托管的订阅的幕后。 如果云服务池是必需的，则必须使用此帐户配置；但如果虚拟机池是必须的，而这些池是从自定义 VM 映像创建的，或者使用虚拟网络，则不能使用此帐户配置。 可以通过共享密钥身份验证或 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API。 
+* **批处理服务**：这是默认选项，将批处理池 VM 分配到 Azure 托管的订阅的幕后。 如果云服务池是必需的，则必须使用此帐户配置；但如果虚拟机池是必须的，而这些池是从自定义 VM 映像创建的，或者使用虚拟网络，则不能使用此帐户配置。 可以通过共享密钥身份验证或 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API。
 
 * **用户订阅**：如果虚拟机池是必须的，而这些池是从自定义 VM 映像创建的，或者使用虚拟网络，则必须使用此帐户配置。 只能使用 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API，云服务池不受支持。 批处理计算 VM 是在 Azure 订阅中直接分配的。 此模式要求你为批处理帐户设置 Azure 密钥保管库。
- 
+
 
 ## <a name="compute-node"></a>计算节点
 计算节点是专门用于处理一部分应用程序工作负荷的 Azure 虚拟机 (VM)。 节点大小确定了 CPU 核心数目、内存容量，以及分配给节点的本地文件系统大小。 可以使用 Azure 云服务或虚拟机应用商店映像创建的 Windows 或 Linux 节点池。 有关这些选项的详细信息，请参阅下面的 [池](#pool) 部分。
@@ -336,7 +336,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 * VNet 应该具有足够的可用 **IP 地址**以适应池的 `targetDedicated` 属性。 如果子网没有足够的可用 IP 地址，批处理服务将分配池中的部分计算节点，并返回调整大小错误。
 
-* 指定的子网必须允许来自批处理服务的通信，才能在计算节点上计划任务。 如果与 VNet 关联的**网络安全组 (NSG)** 拒绝与计算节点通信，则批处理服务会将计算节点的状态设置为“不可用”。 
+* 指定的子网必须允许来自批处理服务的通信，才能在计算节点上计划任务。 如果与 VNet 关联的**网络安全组 (NSG)** 拒绝与计算节点通信，则批处理服务会将计算节点的状态设置为“不可用”。
 
 * 如果指定的 VNet 具有关联的 NSG，则必须启用入站通信。 对于 Linux 池和 Windows 池，必须启用端口 29876 和 29877。 可以分别为 Linux 池的 SSH 或 Windows 池的 RDP 选择性地启用（或选择性地筛选）端口 22 或 3389。
 
@@ -345,7 +345,7 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 ### <a name="vnets-for-pools-provisioned-in-the-batch-service"></a>在批处理服务中预配的池的 VNet
 
 在批处理服务分配模式下，只能为**云服务配置**池分配 VNet。 另外，指定的 VNet 必须是**经典** VNet。 不支持使用 Azure Resource Manager 部署模型创建的 VNet。
-   
+
 
 
 * *MicrosoftAzureBatch* 服务主体必须为指定的 VNet 提供[经典虚拟机参与者](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor)基于角色的访问控制 (RBAC) 角色。 在 Azure 门户中：
@@ -368,7 +368,7 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 
 可通过编写 [自动缩放公式](batch-automatic-scaling.md#automatic-scaling-formulas) 并将该公式与池相关联，来启用自动缩放。 Batch 服务使用该公式来确定池中下一个缩放间隔（可配置的间隔）的目标节点数目。 可以在创建池时指定池的自动缩放设置，或稍后在池上启用缩放。 还可以更新已启用缩放的池上的缩放设置。
 
-例如，也许某个作业需要提交大量任务以执行。 你可以将缩放公式分配到池，以根据当前的排队任务数和作业中任务的完成率来调整池中的节点数目。 Batch 服务将定期评估公式，并根据工作负荷和其他公式设置来调整池的大小。 该服务在有大量排队的任务时按需添加节点，在没有排队的任务或正在运行的任务时删除节点。 
+例如，也许某个作业需要提交大量任务以执行。 你可以将缩放公式分配到池，以根据当前的排队任务数和作业中任务的完成率来调整池中的节点数目。 Batch 服务将定期评估公式，并根据工作负荷和其他公式设置来调整池的大小。 该服务在有大量排队的任务时按需添加节点，在没有排队的任务或正在运行的任务时删除节点。
 
 缩放公式可以基于以下度量值：
 

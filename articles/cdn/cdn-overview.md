@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: rli
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 8809f35e992d528224fc14e0de01a61d396c082b
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: ede96c450e1aa5e87d4dd2c1131cefec7cf3493c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -63,7 +64,7 @@ Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布�
 | [快速清除](cdn-purge-endpoint.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [资产预加载](cdn-preload-endpoint.md) | |**&#x2713;** |**&#x2713;** |
 | [核心分析](cdn-analyze-usage-patterns.md) | |**&#x2713;** |**&#x2713;** |
-| [HTTP/2 支持](https://msdn.microsoft.com/library/mt762901.aspx) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [HTTP/2 支持](cdn-http2.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [高级 HTTP 报告](cdn-advanced-http-reports.md) | | |**&#x2713;** |
 | [实时统计信息](cdn-real-time-stats.md) | | |**&#x2713;** |
 | [实时警报](cdn-real-time-alerts.md) | | |**&#x2713;** |
