@@ -13,9 +13,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/22/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: e7b71bec34aa9507d312eead52060d2c4b774432
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 
@@ -74,8 +75,7 @@ ms.lasthandoff: 04/03/2017
 
 **若要配置单一登录，请执行以下步骤：**
 
-1. 在 Azure 经典门户中，在 **Lynda.com** 应用程序集成页上，单击“配置单一登录”****，以打开“配置单一登录”对话框。****
-
+1. 在 Azure 经典门户中，在 **Lynda.com** 应用程序集成页上，单击“配置单一登录”，以打开“配置单一登录”对话框。
    
    ![配置单一登录](./media/active-directory-saas-lynda-tutorial/IC777526.png "配置单一登录")
 2. 在“你希望用户如何登录到 Lynda.com”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
