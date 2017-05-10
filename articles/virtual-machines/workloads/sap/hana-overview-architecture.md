@@ -14,10 +14,11 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 758c9112539ebaedc6c8180b7e6642d5d26fa16d
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 18501fc0fdb3174b3ec74e3dde3422b27898bf10
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -27,11 +28,11 @@ ms.lasthandoff: 04/12/2017
 
 本指南的五个部分涵盖以下主题：
 
-- [概述和体系结构](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA 安装](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [故障排除和监视](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 上的 SAP HANA（大型实例）概述和体系结构](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [如何安装和配置 Azure 上的 SAP HANA（大型实例）](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 上的 SAP HANA（大型实例）的故障排除和监视](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="definitions"></a>定义
 
@@ -132,7 +133,7 @@ Azure 大型实例模具本身包含以下组件：
 - 与 Azure 不同，Azure 上的 SAP HANA（大型实例）服务器专用于特定客户。 重新启动或关闭服务器不会导致操作系统和 SAP HANA 被部署在另一台服务器上。 （唯一的例外是当服务器可能遇到了问题并且需要在另一台刀片服务器上重新部署时。）
 - 在 Azure 中，主机处理器类型是根据最佳性价比选择的，与之不同，为 Azure 上的 SAP HANA（大型实例）选择的处理器类型是 Intel E7v3 处理器系列中性能最高的类型。
 
-将有多个客户部署到 Azure 上的 SAP HANA（大型实例）硬件上，并且他们部署到其自己的 VLAN 中，因而他们之间是相互屏蔽的。 为了将 HANA 大型实例连接到 Azure 虚拟网络 (VNet)，已就位的网络组件将在硬件基础结构中的 Azure VNet IP 地址范围与 VLAN IP 地址空间之间执行网络地址转换 (NAT)。
+将有多个客户部署到 Azure 上的 SAP HANA（大型实例）硬件上，并且他们部署到其自己的 VLAN 中，因而他们之间是相互屏蔽的。 若要将 HANA 大型实例连接到 Azure 虚拟网络 (VNet)，本地网络组件需将租户 HANA 大型实例单元以隔离方式连接到租户 Azure 订阅的 Azure VNet。 
 
 ## <a name="operations-model-and-responsibilities"></a>操作模型和责任
 
@@ -179,11 +180,11 @@ HANA 大型实例的底层基础结构提供了用于备份和还原 OS 卷的�
 
 为 HANA 大型实例调整大小与为一般 HANA 调整大小没有什么不同。 对于现有的已部署系统，你可能希望从其他 RDBMS 迁移到 HANA，SAP 提供了许多在现有 SAP 系统上运行的报告。 它们检查数据，并计算将数据库移动到 HANA 时表的内存需求。 请阅读以下 SAP 说明来获取有关如何运行这些报告以及如何获取其最新修补程序/版本的详细信息：
 
-- SAP 说明 #1793345 - 为 HANA 上的 SAP 套件调整大小
-- SAP 说明 #1872170 - HANA 和 S/4 HANA 上的套件的大小调整报告
-- SAP 说明 #2121330 - 常见问题：HANA 上的 SAP BW 的大小调整报告
-- SAP 说明 #1736976 - 适用于 HANA 上的 BW 的大小调整报告
-- SAP 说明 #2296290 - 新的适用于 HANA 上的 BW 的大小调整报告
+- [SAP 说明 #1793345 - 为 HANA 上的 SAP 套件调整大小](https://launchpad.support.sap.com/#/notes/1793345)
+- [SAP 说明 #1872170 - HANA 和 S/4 HANA 上的套件的大小调整报告](https://launchpad.support.sap.com/#/notes/1872170)
+- [SAP 说明 #2121330 - 常见问题解答：HANA 上的 SAP BW 的大小调整报告](https://launchpad.support.sap.com/#/notes/2121330)
+- [SAP 说明 #1736976 - 适用于 HANA 上的 BW 的大小调整报告](https://launchpad.support.sap.com/#/notes/1736976)
+- [SAP 说明 #2296290 - 新的适用于 HANA 上的 BW 的大小调整报告](https://launchpad.support.sap.com/#/notes/2296290)
 
 为实现绿色的字段实施，可以使用 SAP Quick Sizer 来计算在 HANA 的基础上实施 SAP 软件时的内存需求。
 
@@ -217,7 +218,9 @@ HANA 的内存需求将随数据量增长而增加，因此，你需要了解当
 > Microsoft 提供的操作系统未向 Red Hat 注册，也未连接到 Red Hat 订阅管理器实例。
 
 - 在 Azure 中的 Azure VM 上部署的 Red Hat 订阅管理器。 这使得 Azure 上的 SAP HANA（大型实例）能够由 Red Hat 进行注册并相应地进行更新（因为 Azure 大型实例模具上部署的租户内没有直接 Internet 访问）。
-- 与 Linux 提供商的服务和支持协定，隐式包含在特定 Linux 版本订阅或其他服务和支持协定中，涵盖所用的特定 Linux 版本，并满足 SAP 的条件。
+- SAP 要求你拥有支持与你 Linux 提供程序的协定。 此要求不清除 HANA 大型实例或这一事实的解决方案，你在 Azure 中的运行的 Linux。 与不同的 Linux Azure 库映像，一些服务费未包含在 HANA 大型实例解决方案产品/服务。 它是 SAP 的在你的客户可以满足要求支持与 Linux 分发服务器的协定。   
+   - 对于 SUSE Linux，请查看 [SAP 说明 #1984787 - SUSE LINUX Enterprise Server 12：安装说明](https://launchpad.support.sap.com/#/notes/1984787)和 [SAP 说明 #1056161 - SUSE 优先支持 SAP 应用程序](https://launchpad.support.sap.com/#/notes/1056161)中的支持合同要求。
+   - 对于 Red Hat Linux，需要具有正确的订阅级别，包括支持和服务（HANA 大型实例的操作系统的更新。 Red Hat 建议方面支持和服务中获取“RHEL 的 SAP 业务应用程序”的订阅。 有关详细信息，请查看 [SAP 说明 #2002167 - Red Hat Enterprise Linux 7.x：安装和升级](https://launchpad.support.sap.com/#/notes/2002167)和 [SAP 说明 #1496410 - Red Hat Enterprise Linux 6.x：安装和升级](https://launchpad.support.sap.com/#/notes/1496410)。
 
 **数据库：**
 
@@ -235,6 +238,19 @@ HANA 的内存需求将随数据量增长而增加，因此，你需要了解当
 - 通过了 SAP HANA 安装技能认证的人员。
 - 针对 SAP HANA 设计高可用性和灾难恢复解决方案的 SAP 架构技能。
 
+
+## <a name="storage"></a>存储
+
+Azure SAP HANA（大型实例）的存储布局可通过 Azure SAP HANA 服务管理按 SAP 建议的最佳实践进行配置，详见 [SAP HANA Storage Requirements](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)（SAP HANA 存储要求）白皮书。
+
+HANA 大型实例通常附带有 4 倍内存卷作为存储卷。 单位由其目的是用于存储 HANA 日志备份的卷。 有关详细信息，请参阅[如何在 Azure 上安装和配置 SAP HANA（大型实例）](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+客户可以选择利用备份/还原和灾难恢复目的的存储快照。 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中介绍了有关此主题的详细信息。
+
+### <a name="encryption-of-data-at-rest"></a>静态数据加密
+用于 HANA 大型实例存储允许数据透明加密存储在磁盘上。 在部署时为 HANA 大型实例单元必须让这种启用加密的选项。 还可以选择已在部署后将更改为加密卷。 将从非加密移动到加密卷是透明的并且不需要停机时间。 
+
+
 ## <a name="networking"></a>网络
 
 Azure 网络的体系结构是成功部署 SAP 应用程序的关键组件。 通常，Azure 上的 SAP HANA（大型实例）部署具有较大的 SAP 布局和多种不同的 SAP 解决方案，其中具有可变的数据库大小、CPU 资源消耗和内存利用。 这些 SAP 系统中很可能只有一两个基于 SAP HANA，因此，SAP 布局可能是混合式的，它利用以下各项：
@@ -251,23 +267,26 @@ Azure 中部署的 SAP 系统的上下文中的 Azure 网络并不复杂。 它�
 - Azure 虚拟网络 (VNet) 需要连接到与本地网络相连的 Azure ExpressRoute 线路。
 - ExpressRoute 线路的带宽通常应当为 1 Gbps 或更高。 这将有足够的带宽用来在本地系统与在 Azure VM 上运行的系统之间（以及通过从本地最终用户到 Azure 系统的连接）传输数据。
 - 需要在 Azure VNet 中设置 Azure 中的所有 SAP 系统以使其相互通信。
-- 本地承载的 Active Directory 和 DNS 通过 ExpressRoute 扩展到 Azure 中。
+- 本地承载的 Active Directory 和 DNS 通过 ExpressRoute 从本地扩展到 Azure 中。
 
-**建议：**在 Azure 上的单个 Azure 订阅中部署完整的 SAP 布局。 SAP 布局中的许多过程要求在 SAP 开发、测试和生产实例之间具有透明且尽可能少的网络连接，并且 SAP NetWeaver 体系结构中有许多自动机制依赖于这些不同实例之间的这一透明网络。 因此，强烈建议将整个 SAP 布局放置在单个 Azure 订阅中，即使布局是跨多个 Azure 区域部署的也是如此。
-
-与 Azure 上的 SAP HANA（大型实例）相关的体系结构和进程都是基于以上建议构建的。
 
 > [!NOTE] 
 > 单个 Azure 订阅只能链接到特定 Azure 区域中的大型实例模具中的单个租户，反过来，单个大型实例模具租户只能链接到单个 Azure 订阅。
 
-将 Azure 上的 SAP HANA（大型实例）部署在两个不同的 Azure 区域中会导致在大型实例模具中部署单独的租户。 不过，两个租户将位于同一 Azure 订阅中，只要这些实例是同一 SAP 布局的一部分。
+将 Azure 上的 SAP HANA（大型实例）部署在两个不同的 Azure 区域中会导致在大型实例模具中部署单独的租户。 不过，可在同一 Azure 订阅下运行这两个实例，只要这些实例属于同一 SAP 布局即可。 
 
 > [!IMPORTANT] 
 > Azure 上的 SAP HANA（大型实例）仅支持 Azure Resource Manager 部署。
 
+### <a name="internet-connectivity-of-hana-large-instances"></a>HANA 大型实例的 Internet 连接
+HANA 大型实例未建立直接 Internet 连接。 这会限制例如直接向操作系统供应商注册 OS 映像的能力。 因此，可能需要使用本地 SLES SMT 服务器或 RHEL 订阅管理器
+
+### <a name="data-encryption-between-azure-vms-and-hana-large-instances"></a>Azure VM 与 HANA 大型实例之间的数据加密
+在 HANA 大型实例与 Azure VM 之间传输的数据不会加密。 但是，仅仅是用于 HANA DBMS 端和基于 JDBC/ODBC 应用程序之间的交换，可以启用加密的流量。 请参考 [SAP 提供的此文档](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)  
+
 ### <a name="additional-azure-vnet-information"></a>Azure VNet 的其他信息
 
-若要将 Azure VNet 连接到 ExpressRoute，必须创建 Azure 网关（请参阅[关于 ExpressRoute 的虚拟网络网关](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。 Azure 网关可以与位于 Azure 外部的基础结构的 ExpressRoute（或者是 Azure 大型实例模具的 ExpressRoute）一起使用，也可以连接在 Azure VNet 之间（请参阅[使用 PowerShell 为 Resource Manager 配置 VNet 到 VNet 连接](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。 可以将 Azure 网关连接到最多四个不同的 ExpressRoute 连接，只要这些连接来自不同的 MS Enterprise Exchange (MSEE) 即可。
+若要将 Azure VNet 连接到 ExpressRoute，必须创建 Azure 网关（请参阅[关于 ExpressRoute 的虚拟网络网关](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。 Azure 网关可以与位于 Azure 外部的基础结构的 ExpressRoute（或者是 Azure 大型实例模具的 ExpressRoute）一起使用，也可以连接在 Azure VNet 之间（请参阅[使用 PowerShell 为 Resource Manager 配置 VNet 到 VNet 连接](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。 可以将 Azure 网关连接到最多四个不同的 ExpressRoute 连接，只要这些连接来自不同的 MS Enterprise Edges (MSEE) 即可。  有关更多详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
 
 > [!NOTE] 
 > 对于两种用例，Azure 网关提供的吞吐量不同（请参阅[关于 VPN 网关](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。 使用 ExpressRoute 连接时，通过 VNet 网关可以获得的最大吞吐量为 10 Gbps。 请注意，在位于 Azure VNet 中的 Azure VM 与本地系统之间复制文件（使用单一复制流）不会获得各种网关 SKU 的完整吞吐量。 要利用 VNet 网关的完整带宽，必须使用多个流，或者采用单一文件的并行流复制各个文件。
@@ -296,7 +315,12 @@ Azure 中部署的 SAP 系统的上下文中的 Azure 网络并不复杂。 它�
 
 ### <a name="multiple-sap-systems-or-large-sap-systems"></a>多个 SAP 系统或大型 SAP 系统
 
-如果部署了连接到 Azure 上的 SAP HANA（大型实例）的多个 SAP 系统或大型 SAP 系统，则 HighPerformance VNet 网关 SKU 的吞吐量可能会成为瓶颈。 在这种情况下，请选择 UltraPerformance SKU（如果可用）。 不过，如果只有 HighPerformance SKU（最高 2 Gbps）可用，或者 UltraPerformance SKU（最高 10 Gbps）的潜力不足，则需要将应用程序层拆分到多个 Azure VNet 中。
+如果部署了连接到 Azure 上的 SAP HANA（大型实例）的多个 SAP 系统或大型 SAP 系统，则 HighPerformance VNet 网关 SKU 的吞吐量可能会成为瓶颈。 在这种情况下，请选择 UltraPerformance SKU（如果可用）。 不过，如果只有 HighPerformance SKU（最高 2 Gbps）可用，或者 UltraPerformance SKU（最高 10 Gbps）的潜力不足，则需要将应用程序层拆分到多个 Azure VNet 中。 我们还建议针对以下案例创建用于连接到 HANA 大型实例的特殊 VNet：
+
+- 为承载 NFS 共享的 Azure 中的 VM 直接从 HANA 大型实例中的 HANA 实例执行备份
+- 将从 HANA 大型实例单位大的备份或其他文件复制到在 Azure 中管理的磁盘空间。
+
+使用托管用于管理存储的 VM 的独立 VNet 可以避免在为运行 SAP 应用程序层的 VM 提供服务的 Azure VNet 网关上从 HANA 大型实例传输到 Azure 的大型文件或数据的影响。 
 
 要获得缩放性更好的网络体系结构，请采取以下措施：
 
@@ -307,51 +331,23 @@ Azure 中部署的 SAP 系统的上下文中的 Azure 网络并不复杂。 它�
 
 ![跨多个 Azure VNet 部署 SAP 应用程序层](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-如果跨多个 Azure VNet 部署 SAP 应用程序层或组件（如上所示），可能会引入在托管在这些 Azure VM 中的应用程序之间进行通信时产生的不可避免的延迟开销。 默认情况下，位于不同 VNet 中的 Azure VM 之间的网络流量将通过此配置中的 MSEE 路由器进行传输。 但是，自 2016 年 9 月以后可以避免和优化此问题。 优化并降低两个 VNet 之间的通信延迟的方法是将同一区域内的 Azure VNet 对等互连。 即使这些 VNet 在不同订阅中，也是如此。 通过 Azure VNet 对等互连，两个不同 Azure Vnet 中的 VM 可以使用 Azure 网络主干来直接相互通信。 从而显示类似的延迟，就像这些 VM 在同一 VNet 中一样。 而发送到通过 Azure VNet 网关连接的 IP 地址范围的流量则通过单独的 VNet 网关进行路由。 可以在 [VNet 对等互连](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)一文中获取有关 Azure VNet 对等互连的详细信息。
-### <a name="minimal-deployment"></a>最小部署
+如果跨多个 Azure VNet 部署 SAP 应用程序层或组件（如上所示），可能会在这些 Azure VNet 中的应用程序之间通信时产生不可避免的延迟开销。 默认情况下，位于不同 VNet 中的 Azure VM 之间的网络流量将通过此配置中的 MSEE 路由器进行传输。 但是，自 2016 年 9 月以后可以避免和优化此问题。 优化并降低两个 VNet 之间的通信延迟的方法是将同一区域内的 Azure VNet 对等互连。 即使这些 VNet 在不同订阅中，也是如此。 通过 Azure VNet 对等互连，两个不同 Azure VNet 中的 VM 可以使用 Azure 网络主干来直接相互通信。 从而显示类似的延迟，就像这些 VM 在同一 VNet 中一样。 而发送到通过 Azure VNet 网关连接的 IP 地址范围的流量则通过单独的 VNet 网关进行路由。 可以在 [VNet 对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)一文中获取有关 Azure VNet 对等互连的详细信息。
 
-对于小型 SAP 系统（最小部署），Azure VM 将 SAP 应用程序层承载在本机 Azure 中（在单个 VNet 内），并且通过 ExpressRoute 连接到大型实例模具。 请执行以下步骤使 Azure 上的 SAP HANA（大型实例）就绪可用：
-
-- 收集与四个不同的 IP 地址范围相关的特定信息：
-
-  1. P2P 连接的 /29 地址范围，用于 ExpressRoute 线路。
-  
-  2. /24（推荐）唯一 CIDR 块，用于为 Azure 上的 SAP HANA（大型实例）分配所需的特定 IP 地址。
-  3. 一个或多个 /24（推荐）CIDR 块，用于 Azure VNet 租户子网。 这些是客户的 Azure 订阅中的子网，与 SAP 相关的 Azure VM 将位于其中；允许使用此类地址访问 Azure 上的 SAP HANA（大型实例）。 每个子网应当有一个租户地址块，并且如果这些块是连续的并且在同一 VNet 中，则它们可以聚合。
-  4. VNet 网关子网的 /28 地址范围（如果需要 P2S 网络，则必须使用 /27）。
-
-  - 前两个范围是必需的（分别用于 Azure 订阅和区域）。 第 3 项和第 4 项中陈述的 IP 地址范围是每个 Azure VNet 所需的最小范围，并且如果 VNet 中需要有多个子网/租户，则应当为第 3 项指定多个范围。
-![Azure 上的 SAP HANA（大型实例）最小部署中必需的 IP 地址范围](./media/hana-overview-architecture/image5-ip-address-range-a.png)
-
-  -  如果在 Azure VNet 中配置多个租户子网：![其中包含用于 Azure VNet 的连续地址空间的 IP 地址范围](./media/hana-overview-architecture/image6-ip-address-range-b.png)
-
-> [!IMPORTANT] 
-> 上面指定的每个 IP 地址范围都不得与任何其他范围重叠；每个都必须是离散的并且不能是任何其他范围的子网。 只有第 3 项和第 4 项中定义的地址应当应用于 Azure VNet，所有其他地址用于大型实例连接和路由。 此外，作为最佳做法，地址空间地址范围应当与子网范围相匹配，并且不应具有空的或未分配的空间。 如果在第 1 项和第 2 项中定义的范围与第 3 项和第 4 项中定义的范围之间存在重叠，则 Azure VNet 将不会连接到 ExpressRoute 线路。
-
-- Express Route 线路是由 Microsoft 在你的订阅与大型实例模具之间创建的。
-- 请在大型实例模具上创建网络租户。
-- 在 Azure 上的 SAP HANA（大型实例）基础结构中配置网络以接受在 Azure VNet 中指定的范围中的 IP 地址，将通过这些地址与 HANA 大型实例进行通信。
-- 在大型实例模具的客户租户中设置网络地址转换 (NAT)（以便将租户内部 IP 地址映射为由 Azure 的租户定义的 IP 地址）。
-- 根据所购买的具体的 Azure 上的 SAP HANA（大型实例）SKU，在租户网络中分配一个计算单元，分配并装载存储，然后安装操作系统（SUSE 或 RedHat Linux）。
-
-Azure 上的 SAP HANA（大型实例）网络体系结构的最小部署：
-
-![包含 IP 地址范围的最小部署](./media/hana-overview-architecture/image7-minimal-deployment.png)
 
 ### <a name="routing-in-azure"></a>Azure 中的路由
 
 对于 Azure 上的 SAP HANA（大型实例），有两个重要的网络路由注意事项：
 
-1. Azure 上的 SAP HANA（大型实例）只能由 Azure VM 通过专用 ExpressRoute 连接进行访问，不能从本地直接访问。 因此，需要进行直接访问的管理客户端和任何应用程序（例如在本地运行的 SAP Solution Manager）都无法连接到 SAP HANA 数据库。
+1. Azure 上的 SAP HANA（大型实例）只能由 Azure VM 通过专用 ExpressRoute 连接进行访问，不能从本地直接访问。 需要进行直接访问的某些管理客户端和任何应用程序（例如在本地运行的 SAP Solution Manager）都无法连接到 SAP HANA 数据库。
 
-2. Azure 上的 SAP HANA（大型实例）有一个来自所定义的 NAT 池的已分配 IP 地址。 可以通过 Azure 订阅和 ExpressRoute 访问此 IP 地址。 因为该 IP 地址是 NAT 池的一部分，因此你需要在环境中执行额外的网络配置。 有关详细信息，请参阅与 SAP HANA 安装相关的文章。
+2. 在 Azure 上的 SAP HANA（大型实例）单元具有分配中的 IP 地址的服务器 IP 池地址范围你作为提交客户（有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。  可通过 Azure 订阅以及用于将 Azure VNet 连接到 Azure 上的 HANA（大型实例）的 ExpressRoute 访问此 IP 地址。 从该服务器 IP 池地址范围中分配的 IP 地址将直接分配给硬件单元，而不会经过 NAT 转换；在此解决方案的第一个部署中也存在这种情况。 
 
 > [!NOTE] 
-> 在某个_数据仓库_方案中，应用程序和/或最终用户需要连接到 SAP HANA 数据库（直接运行），在这种情况下，如果需要连接到 Azure 上的 SAP HANA（大型实例），则必须使用另一个网络组件：使用一个反向代理来往返路由数据。 例如，使用 Azure 中部署的带流量管理器的 F5 BIG-IP 作为虚拟防火墙/流量路由解决方案。
+> 在某个_数据仓库_方案中，应用程序和/或最终用户需要连接到 SAP HANA 数据库（直接运行），在这种情况下，如果需要连接到 Azure 上的 SAP HANA（大型实例），则必须使用另一个网络组件：使用一个反向代理来往返路由数据。 例如，使用 Azure 中部署的带流量管理器的 F5 BIG-IP、NGINX 作为虚拟防火墙/流量路由解决方案。
 
 ### <a name="leveraging-in-multiple-regions"></a>在多个区域中利用
 
-除了灾难恢复之外，可能还有其他原因需要你在多个 Azure 区域中部署 Azure 上的 SAP HANA（大型实例）。 你可能希望从各个区域中的不同 VNet 中部署的每个 VM 访问 HANA 大型实例。 由于不同 HANA 大型实例服务器的 NAT 转换后地址不会跨越（通过其网关直接连接到实例的）Azure VNet 进行传播，因此对上面介绍的 VNet 设计进行了细微的更改：Azure VNet 网关可以处理来自不同 MSEE 的四个不同的 ExpressRoute 线路，连接到其中一个大型实例模具的每个 VNet 都可以连接到另一 Azure 区域中的大型实例模具。
+除了灾难恢复之外，可能还有其他原因需要你在多个 Azure 区域中部署 Azure 上的 SAP HANA（大型实例）。 你可能希望从各个区域中的不同 VNet 中部署的每个 VM 访问 HANA 大型实例。 由于分配给不同 HANA 大型实例单元的 IP 地址不会跨越（通过其网关直接连接到实例的）Azure VNet 进行传播，因此对上面介绍的 VNet 设计进行了细微的更改：Azure VNet 网关可以处理来自不同 MSEE 的四个不同的 ExpressRoute 线路，连接到其中一个大型实例模具的每个 VNet 都可以连接到另一 Azure 区域中的大型实例模具。
 
 ![连接到了不同 Azure 区域中的 Azure 大型实例模具的 Azure VNet](./media/hana-overview-architecture/image8-multiple-regions.png)
 
