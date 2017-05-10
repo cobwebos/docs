@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 59e12d70d46d45fb7dc4244ac2968838cb29dbec
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 9d10ebf9d7bd07bd126302a6ecf442d809e00196
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -367,20 +368,9 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 * [企业状态漫游](active-directory-windows-enterprise-state-roaming-overview.md)
 
-## <a name="azure-ad-preview-features"></a>Azure AD 预览功能
-除 Free、Basic 和 Premium（P1 和 P2）版正式推出的功能外，Azure AD 还提供一系列预览功能。 你可以通过预览功能了解不久的将来可用的功能，并判断这些功能能否帮助改善你的环境。
-
-**可用的预览功能：**
-
-* [B2B 协作](active-directory-b2b-collaboration-overview.md)
-* [管理单元](active-directory-administrative-units-management.md)
-* [HR 应用程序集成](active-directory-saas-workday-inbound-tutorial.md)
-* [iOS 上基于证书的身份验证](active-directory-certificate-based-authentication-ios.md)
-* [Android 上基于证书的身份验证](active-directory-certificate-based-authentication-android.md)
-
 ## <a name="next-steps"></a>后续步骤
 * [Azure Active Directory 高级版入门](active-directory-get-started-premium.md)
-* [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding.md)
+* [在登录页和访问面板页中添加公司品牌](active-directory-add-company-branding.md)
 * [查看访问和使用情况报告](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->

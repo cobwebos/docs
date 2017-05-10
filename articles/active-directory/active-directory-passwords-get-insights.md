@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: b010891a177f27eef99bd65e0d940c83375aa5ec
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 7375d2d3c237c3b1c2dcdab44b2fcb0000ff961c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -202,16 +203,12 @@ ms.lasthandoff: 04/27/2017
 4. 查看“活动日志”部分的下面。
 5. 选择“密码重置活动报告”或“密码重置注册活动”报告。
 
-   ![][001]
-
 ## <a name="view-password-reset-registration-activity-in-the-classic-portal"></a>在经典门户中查看密码重置注册活动
 密码重置注册活动报告显示你的组织中已发生的所有密码重置注册。  对于已在密码重置注册门户 ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)) 成功注册身份验证信息的所有用户，密码重置注册都显示在此报告中。
 
 * **最大时间范围**：30 天
 * **最大行数**：75,000
 * **可下载**：是，通过 CSV 文件
-
-    ![][002]
 
 ### <a name="description-of-report-columns"></a>报告列的说明
 以下列表详细说明每个报告列：
@@ -234,8 +231,6 @@ ms.lasthandoff: 04/27/2017
 * **最大时间范围**：30 天
 * **最大行数**：75,000
 * **可下载**：是，通过 CSV 文件
-
-    ![][003]
 
 ### <a name="description-of-report-columns"></a>报告列的说明
 以下列表详细说明每个报告列：
@@ -308,8 +303,4 @@ ms.lasthandoff: 04/27/2017
 * [**常见问题**](active-directory-passwords-faq.md) - 获取常见问题的解答
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何快速排查服务的问题
 * [**了解详细信息**](active-directory-passwords-learn-more.md) - 深入探索服务工作原理的技术详细信息
-
-[001]: ./media/active-directory-passwords-get-insights/001.jpg "Image_001.jpg"
-[002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
-[003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
 

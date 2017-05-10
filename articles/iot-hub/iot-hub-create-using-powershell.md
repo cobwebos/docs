@@ -11,12 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 05/04/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5c6ab3a8fdacb43546801518b76a15314d0b4b0f
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 7914b9f1f747d246f58c19b7faf56357bd39a201
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -34,8 +35,7 @@ ms.lasthandoff: 03/21/2017
 若要完成本教程，需要以下各项：
 
 * 有效的 Azure 帐户。 <br/>如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
-* [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
-* [Azure Resource Manager cmdlet][lnk-rm-install]。
+* [Azure PowerShell cmdlet][lnk-powershell-install]。
 
 ## <a name="connect-to-your-azure-subscription"></a>连接到 Azure 订阅
 在 PowerShell 命令提示符中，输入以下命令以登录你的 Azure 订阅：
@@ -115,10 +115,9 @@ Remove-AzureRmResourceGroup -Name MyIoTRG1
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-powershell-install]: /powershell/azureps-cmdlets-docs
-[lnk-iothub-cmdlets]: /powershell/resourcemanager/azurerm.iothub/v1.3.0/azurerm.iothub
-[lnk-rm-install]: /powershell/resourcemanager/
-[lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[lnk-iothub-cmdlets]: https://docs.microsoft.com/powershell/module/azurerm.iothub/
+[lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
