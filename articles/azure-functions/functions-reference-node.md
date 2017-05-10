@@ -1,6 +1,6 @@
 ---
 title: "Azure Functions JavaScript 开发人员参考 | Microsoft 文档"
-description: "了解如何使用 JavaScript 开发 Azure Functions。"
+description: "了解如何使用 JavaScript 开发函数。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/06/2017
 ms.author: chrande, glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 060e1145246952c18f89e1088ed28ffb0036e6c5
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: ff8a92c66303c81075c8a42baaa841301d65daf1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/06/2017
 > 
 > 
 
-Azure Functions 的 JavaScript 体验可以轻松地导出一个传递 `context` 对象的函数，该对象可用于与运行时通信，以及通过绑定接收和发送数据。
+Azure Functions 的 JavaScript 体验可以轻松导出一个函数，可以将该函数作为 `context` 对象进行传递，用以与运行时进行通信，以及用以通过绑定来接收和发送数据。
 
 本文假定已阅读 [Azure Functions 开发人员参考](functions-reference.md)。
 
@@ -52,16 +53,16 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-`direction === "in"` 的绑定作为函数参数传递，这意味着可以使用 [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 动态处理新输入（例如，通过使用 `arguments.length` 循环访问所有输入）。 如果你只有一个没有其他输入的触发器，则此功能非常方便，因为你可以在不引用 `context` 对象的情况下可预见地访问触发器数据。
+`direction === "in"` 的绑定作为函数参数传递，这意味着可以使用 [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 动态处理新输入（例如，通过使用 `arguments.length` 循环访问所有输入）。 如果你只有一个触发器并且没有其他输入，则此功能非常方便，因为你可以在不引用 `context` 对象的情况下可预见地访问触发器数据。
 
 参数总是以其在 function.json 中出现的顺序传递给函数，即使没有在 exports 语句中指定它们。 例如，如果具有 `function(context, a, b)` 并将其更改为 `function(context, a)`，仍然可以通过参考 `arguments[3]` 获取函数代码中的值 `b`。
 
-所有绑定，无论方向如何，也在 `context` 对象上传递（见下文）。 
+所有绑定，无论方向如何，也在 `context` 对象上传递（请参阅下面的脚本）。 
 
 ## <a name="context-object"></a>上下文对象
 运行时使用 `context` 对象将数据传入和传出函数，并能与其进行通信。
 
-上下文对象始终是函数的第一个参数，必须包含在函数中，因为它具有正确使用运行时所需的 `context.done` 和 `context.log` 等方法。 可以按喜好为对象命名（如 `ctx` 或 `c`）。
+上下文对象始终是函数的第一个参数，必须包含在函数中，因为它具有正确使用运行时所需的 `context.done` 和 `context.log` 等方法。 可以按个人喜好为对象命名（例如 `ctx` 或 `c`）。
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -87,7 +88,7 @@ context.bindings
 ```
 
 ```javascript
-// myInput contains the input data which may have properties such as "name"
+// myInput contains the input data, which may have properties such as "name"
 var author = context.bindings.myInput.name;
 // Similarly, you can set your output data
 context.bindings.myOutput = { 
@@ -134,7 +135,7 @@ context.log(message)
 ```javascript
 context.log.warn("Something has happened."); 
 ```
-可以在 host.json 文件中为日志记录设置跟踪级别阈值或者将其关闭。  有关如何向日志进行写入的详细信息，请参阅下一部分。
+可以在 host.json 文件中为日志记录设置跟踪级别阈值或者将其关闭。  有关如何向日志进行写入的详细信息，请参阅下一节。
 
 ## <a name="writing-trace-output-to-the-console"></a>将跟踪输出写入到控制台 
 
@@ -146,7 +147,7 @@ context.log.warn("Something has happened.");
 context.log({hello: 'world'});  
 ```
 
-这等效于以下代码：
+前面的代码等效于以下代码：
 
 ```javascript
 context.log.info({hello: 'world'});  
@@ -177,7 +178,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>为控制台日志记录配置跟踪级别
 
-Functions 允许你定义用于向控制台进行写入的阈值跟踪级别。 这样，可以很容易地控制从你的函数向控制台写入跟踪的方式。 在 host.json 文件中使用 `tracing.consoleLevel` 属性来为写入到控制台的所有跟踪设置阈值。 此设置应用于你的 Function App 中的所有函数。 以下示例设置跟踪阈值来启用详细日志记录：
+Functions 允许你定义向控制台进行写入时使用的阈值跟踪级别，这使得你可以轻松控制从函数向控制台写入跟踪的方式。 若要针对写入到控制台的所有跟踪设置阈值，请在 host.json 文件中使用 `tracing.consoleLevel` 属性。 此设置应用于你的 Function App 中的所有函数。 以下示例设置跟踪阈值来启用详细日志记录：
 
 ```json
 { 
@@ -221,9 +222,9 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 ### <a name="accessing-the-request-and-response"></a>访问请求和响应 
 
-使用 HTTP 触发器时，有三种方式可用来访问 HTTP 响应和请求对象：
+使用 HTTP 触发器时，可采用三种方式来访问 HTTP 响应和请求对象：
 
-+ 通过已命名的输入和输出绑定。 采用此方式时，HTTP 触发器和绑定的工作方式与其他绑定相同。 以下示例使用已命名的 `response` 绑定设置响应对象。 
++ 通过已命名的输入和输出绑定。 采用此方式时，HTTP 触发器和绑定的工作方式与其他绑定相同。 以下示例使用已命名的 `response` 绑定设置响应对象： 
 
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
@@ -232,13 +233,13 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 + 通过 `context` 对象的 `req` 和 `res` 属性。 采用此方式时，你可以使用传统模式通过上下文对象访问 HTTP 数据，而不必使用完整的 `context.bindings.name` 模式。 以下示例展示了如何访问 `context` 上的 `req` 和 `res` 对象：
 
     ```javascript
-    // You can access your http request off of the context ...
+    // You can access your http request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
     // and also set your http response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ 调用 `context.done()`。 有一种特殊的 HTTP 绑定，它返回传递到 `context.done()` 方法的响应。 以下 HTTP 输出绑定定义了一个 `$return` 输出参数：
++ 通过调用 `context.done()`。 有一种特殊的 HTTP 绑定可返回传递到 `context.done()` 方法的响应。 以下 HTTP 输出绑定定义了一个 `$return` 输出参数：
 
     ```json
     {
@@ -247,7 +248,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
       "name": "$return"
     }
     ``` 
-    此输出绑定需要你在如下所示调用 `done()` 时提供响应：
+    此输出绑定要求你在调用 `done()` 时提供响应，如下所示：
 
     ```javascript
      // Define a valid response object.
@@ -255,22 +256,22 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
     context.done(null, res);   
     ```  
 
-## <a name="node-version--package-management"></a>节点版本和包管理
+## <a name="node-version-and-package-management"></a>节点版本和包管理
 当前节点版本被锁定为 `6.5.0`。 我们正在调查添加对更多版本的支持，并使其可配置。
 
 可以通过以下步骤在你的 Function App 中包括包： 
 
-1. 导航到：`https://<function_app_name>.scm.azurewebsites.net`。
+1. 转到 `https://<function_app_name>.scm.azurewebsites.net`。
 
-2. 单击“调试控制台”，选择“CMD”。
+2. 单击“调试控制台”，选择“CMD”。 > 
 
-3. 导航到 `D:\home\site\wwwroot`，然后将 package.json 文件拖到页面上半部分中的 **wwwroot** 文件夹上。  
+3. 转到 `D:\home\site\wwwroot`，然后将 package.json 文件拖到页面上半部分中的 **wwwroot** 文件夹上。  
+    还可采用其他方式将文件上传到 Function App。 有关详细信息，请参阅[如何更新 Function App 文件](functions-reference.md#a-idfileupdatea-how-to-update-function-app-files)。 
 
-    还有其他方式可用来将文件上载到 Function App。 有关详细信息，请参阅[如何更新 Function App 文件](functions-reference.md#a-idfileupdatea-how-to-update-function-app-files)。 
+4. 上载 package.json 文件后，在 **Kudu 远程执行控制台**中运行 `npm install` 命令。  
+    此操作将下载 package.json 文件中指定的包并重新启动 Function App。
 
-4. 上载 package.json 文件后，在 **Kudu 远程执行控制台**中运行 `npm install` 命令。 这将下载 package.json 文件中指定的包并重新启动 Function App。
-
-安装了所需的包后，可以通过调用 `require('packagename')` 将它们导入到函数中，如以下示例中所示。
+安装了所需的包后，可以通过调用 `require('packagename')` 将它们导入到函数中，如以下示例中所示：
 
 ```javascript
 // Import the underscore.js library
@@ -283,7 +284,7 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-你应当在  Function App 的根目录下定义一个 `package.json` 文件。 这允许应用中的所有函数共享所缓存的相同包，从而获得最佳性能。 当存在版本冲突时，可以通过在特定函数的文件夹中添加一个 `package.json` 文件来解决冲突。  
+你应当在  Function App 的根目录下定义一个 `package.json` 文件。 定义该文件将允许应用中的所有函数共享所缓存的相同包，从而获得最佳性能。 如果发生版本冲突，可以通过在具体函数的文件夹中添加一个 `package.json` 文件来解决冲突。  
 
 ## <a name="environment-variables"></a>环境变量
 若要获取环境变量或应用设置值，请使用 `process.env`，如以下代码示例所示：
@@ -306,14 +307,14 @@ function GetEnvironmentVariable(name)
 ```
 ## <a name="considerations-for-javascript-functions"></a>JavaScript 函数的注意事项
 
-使用 JavaScript 函数时，应当注意以下事项。
+使用 JavaScript 函数时，请注意以下两节中的注意事项。
 
 ### <a name="choose-single-core-app-service-plans"></a>选择单核心应用服务计划
 
 创建使用应用服务计划的 Function App 时，建议你选择单核心计划，不要选择具有多个核心的计划。 目前，Functions 在单核心 VM 上运行 JavaScript 函数更为高效；使用较大的 VM 不会产生预期的性能提高。 需要时，可以通过添加更多单核心 VM 实例来手动扩大，也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)。    
 
-### <a name="typescriptcoffeescript-support"></a>TypeScript/CoffeeScript support
-但是，还没有通过运行时自动编译 TypeScript/CoffeeScript 的任何直接支持，因此所有这些都需要在运行时外，即在部署时，进行处理。 
+### <a name="typescript-and-coffeescript-support"></a>TypeScript 和 CoffeeScript 支持
+因为目前还不能直接支持通过运行时自动编译 TypeScript 或 CoffeeScript，因此需要在部署时在运行时外部处理此类支持。 
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下资源：
