@@ -18,7 +18,9 @@
 
 # 如何
 ## 规划和设计
+### [了解 Azure AD 体系结构](active-directory-architecture.md)
 ### [部署混合标识解决方案](active-directory-hybrid-identity-design-considerations-overview.md)
+
 #### 确定要求
 ##### [标识](active-directory-hybrid-identity-design-considerations-business-needs.md)
 ##### [目录同步](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
@@ -91,6 +93,7 @@
 ###    以编程方式访问
 #### [审核参考](active-directory-reporting-api-audit-reference.md)
 #### [审核示例](active-directory-reporting-api-audit-samples.md)
+#### [获取数据](active-directory-reporting-api-with-certificates.md)
 #### [先决条件](active-directory-reporting-api-prerequisites.md)
 #### [登录参考](active-directory-reporting-api-sign-in-activity-reference.md)
 #### [登录示例](active-directory-reporting-api-sign-in-activity-samples.md)
@@ -114,6 +117,7 @@
 ## [管理密码](active-directory-passwords.md)
 ### 用户文档
 #### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
+#### [密码最佳做法](active-directory-secure-passwords.md)
 #### [注册自助密码重置](active-directory-passwords-reset-register.md)
 ### [快速入门：自助密码重置](active-directory-passwords-getting-started.md)
 ### [许可 SSPR](active-directory-passwords-licensing.md)
@@ -159,33 +163,37 @@
 #### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
-### [授予对应用的远程访问权限](active-directory-application-proxy-get-started.md)
-#### [启用应用代理](active-directory-application-proxy-enable.md)
-#### [了解连接器](application-proxy-understand-connectors.md)
-#### [发布应用](application-proxy-publish-azure-portal.md)
-#### [安全性](application-proxy-security-considerations.md)
-#### [网络](application-proxy-network-topology-considerations.md)
-#### [远程桌面](application-proxy-publish-remote-desktop.md)
-#### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-#### [在单独的网络上发布](active-directory-application-proxy-connectors-azure-portal.md)
-#### [代理服务器](application-proxy-working-with-proxy-servers.md)
-#### [自定义域](active-directory-application-proxy-custom-domains.md)
-#### [访问应用](active-directory-appssoaccess-whatis.md)
-##### [Azure 门户](application-proxy-sso-azure-portal.md)
-#### [使用 KCD 执行 SSO](active-directory-application-proxy-sso-using-kcd.md)
-#### [使用标头执行 SSO](application-proxy-ping-access.md)
-#### [声明感知应用](active-directory-application-proxy-claims-aware-apps.md)
-#### [本机客户端应用](active-directory-application-proxy-native-client.md)
-#### [自定义主页](application-proxy-office365-app-launcher.md)
-#### [条件性访问](active-directory-application-proxy-conditional-access.md)
-#### [无提示安装](active-directory-application-proxy-silent-installation.md)
-#### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
+### [使用应用代理远程访问应用](active-directory-application-proxy-get-started.md)
+#### 入门
+##### [启用应用代理](active-directory-application-proxy-enable.md)
+##### [发布应用](application-proxy-publish-azure-portal.md)
+##### [自定义域](active-directory-application-proxy-custom-domains.md)
+#### [SSO 访问](active-directory-appssoaccess-whatis.md)
+##### [使用 KCD 执行 SSO](active-directory-application-proxy-sso-using-kcd.md)
+##### [使用标头执行 SSO](application-proxy-ping-access.md)
+##### [将 SSO 与密码保管配合使用](application-proxy-sso-azure-portal.md)
+#### 了解最佳做法
+##### [连接器](application-proxy-understand-connectors.md)
+##### [安全性](application-proxy-security-considerations.md)
+##### [网络](application-proxy-network-topology-considerations.md)
+#### 
+#### 高级配置
+##### [在单独的网络上发布](active-directory-application-proxy-connectors-azure-portal.md)
+##### [代理服务器](application-proxy-working-with-proxy-servers.md)
+##### [声明感知应用](active-directory-application-proxy-claims-aware-apps.md)
+##### [本机客户端应用](active-directory-application-proxy-native-client.md)
+##### [无提示安装](active-directory-application-proxy-silent-installation.md)
+##### [自定义主页](application-proxy-office365-app-launcher.md)
+#### 发布演练
+##### [远程桌面](application-proxy-publish-remote-desktop.md)
+##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+##### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [故障排除](active-directory-application-proxy-troubleshoot.md)
 #### 使用经典门户
 ##### [下载连接器](application-proxy-enable-classic-portal.md)
 ##### [发布应用](active-directory-application-proxy-publish.md)
 ##### [使用连接器](active-directory-application-proxy-connectors.md)
-
+##### [条件性访问](active-directory-application-proxy-conditional-access.md)
 
 ### 管理企业应用
 #### [分配用户](active-directory-coreapps-assign-user-azure-portal.md)
@@ -297,14 +305,18 @@
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 
 ## 保护标识
-### [条件性访问](active-directory-conditional-access.md)
-#### [入门](active-directory-conditional-access-azuread-connected-apps.md)
+### [条件性访问](active-directory-conditional-access-azure-portal.md)
+#### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [支持的应用](active-directory-conditional-access-supported-apps.md)
 #### [了解设备策略](active-directory-conditional-access-device-policies.md)
 #### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
+#### [技术参考](active-directory-conditional-access-technical-reference.md)
 #### [常见问题](active-directory-conditional-faqs.md)
-#### [故障排除](active-directory-conditional-access-device-remediation.md)
-#### [参考](active-directory-conditional-access-technical-reference.md)
+#### [补救方法](active-directory-conditional-access-device-remediation.md)
+#### [经典门户](active-directory-conditional-access.md)
+##### [入门](active-directory-conditional-access-azuread-connected-apps.md)
+
+
 ### Windows Hello
 #### [无密码身份验证](active-directory-azureadjoin-passport.md)
 #### [启用 Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)

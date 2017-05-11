@@ -11,10 +11,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 260208e7c7a08110eb3c885ef86ec4c18ff42fc9
-ms.openlocfilehash: e4fede90a5df7c4a74c1e1d41ecbe669d731a1b5
-ms.lasthandoff: 04/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 57ed1bac9af92f56e418d9ddca7a5d7f4752d7ac
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 ---
 <div class="content">
@@ -67,7 +68,12 @@ ms.lasthandoff: 04/23/2017
     <li><a href="/azure/virtual-machines/linux/tutorial-availability-sets">创建高度可用的 VM</a></li>
     <li><a href="/azure/virtual-machines/linux/tutorial-create-vmss">创建 VM 规模集</a></li>
     <li><a href="/azure/virtual-machines/linux/tutorial-load-balancer">对 VM 进行负载均衡</a></li>
-    <li><a href="/azure/virtual-machines/linux/tutorial-virtual-network">管理 VM 网络</a></li>
+    <li><a href="/azure/virtual-machines/linux/tutorial-virtual-network">管理 VM 和虚拟网络</a></li>
+    <li><a href="/azure/virtual-machines/linux/tutorial-backup-vms">备份 VM</a></li>
+    <li><a href="/azure/virtual-machines/linux/tutorial-monitoring">监视 VM</a></li>
+    <li><a href="/azure/virtual-machines/linux/tutorial-azure-security">管理 VM 上的安全性</a></li>
+    <li><a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">使用 Jenkins、Docker 和 GitHub 创建 CI/CD 基础结构</a></li>
+    
 </ol>
 
 <h2 style="margin-top: 36px">免费 PluralSight 视频培训</h2>
