@@ -15,9 +15,10 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: iainfou
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
 ms.openlocfilehash: 65ff0e03af6b43478f645274adfeb46d28418894
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/07/2017
 
 ---
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/07/2017
 az login
 ```
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 需要使用 [](/cli/azure/group#create) 创建一个资源组才能创建任何其他 Azure 资源。 以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组：
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 需要使用 [az group create](/cli/azure/group#create) 创建一个资源组才能创建任何其他 Azure 资源。 以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location westus
