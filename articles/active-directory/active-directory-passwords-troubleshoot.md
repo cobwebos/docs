@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 90846b3bd83b65a3fdfef2a1c8183b7143b5b247
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 4dae8b87904fff2f2f8665d235bf790fb1e073d0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 05/03/2017
 | --- | --- |
 | Azure 门户中的“Azure AD”下面未显示“密码重置”部分 | 如果未向执行该操作的管理员分配 Azure AD Premium 或 Basic 许可证，可能会发生这种情况。 <br> 参考[分配、验证和解决许可证问题](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses)一文向相关管理员帐户分配许可证即可解决此问题。 |
 | 未看到某个特定的配置选项 | UI 的许多元素都是隐藏的，直到需要它们时才会显示。 如果你希望看到它们，请尝试启用所有选项。 |
-| 未看到“本地集成”选项卡 | 仅当你已下载 Azure AD Connect 并配置了密码写回时，此选项才可见。 有关此主题的详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](/connect/active-directory-aadconnect-get-started-express.md) 一文。 |
+| 未看到“本地集成”选项卡 | 仅当你已下载 Azure AD Connect 并配置了密码写回时，此选项才可见。 有关此主题的详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md) 一文。 |
 
 ## <a name="troubleshoot-password-reset-reporting"></a>排查密码重置报告问题
 
@@ -226,16 +226,16 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-以下链接提供有关使用 Azure AD 进行密码重置的其他信息
+以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助密码管理 
+* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
 * [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
 * [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
 * [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
 * [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
 * [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
 * [**密码写回**](active-directory-passwords-writeback.md) - 如何对本地目录使用密码写回
-* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能、在何时在何处访问
+* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
 * [**深入技术探究**](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
 * [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 始终要问的问题的答案
 
