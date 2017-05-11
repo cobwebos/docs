@@ -46,7 +46,9 @@
 ### [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [为点到站点连接创建自签名证书](vpn-gateway-certificates-point-to-site.md)
+## 为点到站点连接创建自签名证书
+### [PowerShell](vpn-gateway-certificates-point-to-site.md)
+### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ## [配置 VPN 网关（经典）](vpn-gateway-configure-vpn-gateway-mp.md)
 ## 故障排除
 ### [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
