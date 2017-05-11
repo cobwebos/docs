@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d53fb9003ed3b6805c3ee5cfda966e556844e0ff
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: f9dc195040d0fa1321dff9ec97d9ca1e4770d325
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="password-writeback-overview"></a>密码写回概述
 
-使用此功能，可将 Azure AD 配置为将密码写回本地 Active Directory。 有了此功能，你无需再设置和管理复杂的本地自助服务密码重置解决方案。此功能提供了一种基于云的便利方法，让你的用户能够在任何位置重置本地密码。 密码写回是一个 [Azure Active Directory Connect](connect/active-directory-aadconnect.md) 组件，[Azure Active Directory Premium](active-directory-editions.md) 的当前订户可以启用和使用该组件。
+使用此功能，可将 Azure AD 配置为将密码写回本地 Active Directory。 有了此功能，你无需再设置和管理复杂的本地自助服务密码重置解决方案。此功能提供了一种基于云的便利方法，让你的用户能够在任何位置重置本地密码。 密码写回是一个 [Azure Active Directory Connect](./connect/active-directory-aadconnect.md) 组件，[Azure Active Directory Premium](active-directory-editions.md) 的当前订户可以启用和使用该组件。
 
 密码写回提供以下功能
 
 * **零延迟反馈** - 密码写回是一项同步操作。 如果用户的密码不符合策略或因某种原因而无法重置或更改，用户会立即收到通知。
 * **支持使用 AD FS 或其他联合技术的用户重置密码** - 使用密码写回功能，只要联合用户帐户同步到你的 Azure AD 租户，用户就能够从云中管理他们的本地 AD 密码。
-* **支持使用[密码哈希同步](/connect/active-directory-aadconnectsync-implement-password-synchronization.md)的用户重置密码** - 当密码重置服务检测到同步用户帐户已启用密码哈希同步时，我们会同时重置此帐户的本地密码和云密码。
+* **支持使用[密码哈希同步](./connect/active-directory-aadconnectsync-implement-password-synchronization.md)的用户重置密码** - 当密码重置服务检测到同步用户帐户已启用密码哈希同步时，我们会同时重置此帐户的本地密码和云密码。
 * **支持从访问面板和 Office 365 更改密码** - 当联合或密码同步用户更改其过期或未过期的密码时，我们将这些密码写回到你的本地 AD 环境。
 * **支持管理员从 Azure 门户重置密码时写回密码** - 无论何时管理员在 [Azure 门户](https://portal.azure.com)中重置用户的密码，只要该用户已联合或密码已同步，我们便还会设置管理员在本地 AD 上选择的密码。 Office 管理门户当前不支持此功能。
 * **实施本地 AD 密码策略** - 当用户重置其密码时，在将重置提交到该目录之前，我们要确保它符合你的本地 AD 策略。 这包括历史记录、复杂性、年龄、密码筛选器以及你在本地 AD 中定义的所有其他密码限制。
@@ -76,7 +76,7 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="scenarios-supported-for-password-writeback"></a>密码写回支持的方案
 
-如果你要使用密码写回，我们始终建议使用 [Azure AD Connect](/connect/active-directory-aadconnect-get-started-express.md) 的自动更新功能。
+如果你要使用密码写回，我们始终建议使用 [Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md) 的自动更新功能。
 
 有关 [DirSync 和 Azure AD Sync 支持生命周期](connect/active-directory-aadconnect-dirsync-deprecated.md)的其他信息
 
@@ -170,17 +170,17 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-以下链接提供有关使用 Azure AD 进行密码重置的其他信息
+以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助密码管理 
+* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
 * [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
 * [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
 * [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
 * [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
 * [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
-* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能、在何时在何处访问
+* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
 * [**深入技术探究**](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
-* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 始终要问的问题的答案
+* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
 
 
