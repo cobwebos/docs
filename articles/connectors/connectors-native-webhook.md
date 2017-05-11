@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan; LADocs
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: fbfef291334109c6dcfcde80741874549fb7929f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/10/2017
 
 
@@ -89,7 +90,7 @@ ms.lasthandoff: 04/10/2017
 #### <a name="http-webhook"></a>HTTP Webhook
 
 将回调 URL 订阅到可调用该 URL 的服务以按需触发逻辑应用。
-* 表示必填字段。
+\* 表示必填字段。
 
 | 显示名称 | 属性名称 | 说明 |
 | --- | --- | --- |
@@ -125,7 +126,7 @@ Webhook 请求
 #### <a name="http-webhook"></a>HTTP Webhook
 
 将回调 URL 订阅到可调用该 URL 的服务以按需恢复工作流步骤。
-* 表示必填字段。
+\* 表示必填字段。
 
 | 显示名称 | 属性名称 | 说明 |
 | --- | --- | --- |
