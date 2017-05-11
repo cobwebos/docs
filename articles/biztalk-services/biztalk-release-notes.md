@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
 ms.openlocfilehash: 84ad965ed6ef1711fda983220cf004fdd48d290d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -134,7 +136,7 @@ BizTalk 适配器服务功能中的 BizTalk 适配器包适配器可利用用户
 > 
 
 ### <a name="restarting-the-biztalk-adapter-service-web-site"></a>重启 BizTalk 适配器服务网站
-通过安装 **BizTalk 适配器服务运行时***，会在 IIS 中创建包含 **BAService** 应用程序的 **BizTalk 适配器服务**网站。**BAService** 应用程序在内部使用中继绑定将本地服务终结点的工作范围扩展到云中。 对于本地托管的服务，仅在该本地服务启动时，才在服务总线上注册相应的中继终结点。  
+通过安装 **BizTalk 适配器服务运行时** *，会在 IIS 中创建包含 **BAService* *应用程序的* *BizTalk 适配器服务** 网站。**BAService** 应用程序在内部使用中继绑定将本地服务终结点的工作范围扩展到云中。 对于本地托管的服务，仅在该本地服务启动时，才在服务总线上注册相应的中继终结点。  
 
 如果停止后再启动应用程序，系统不会接受用于自动启动应用程序的配置。 因此，停止 **BAService** 后，必须始终改为重启 **BizTalk 适配器服务**网站。 请勿启动或停止 **BAService** 应用程序。
 
@@ -218,10 +220,5 @@ Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和�
 
 ### <a name="concepts"></a>概念
 [BizTalk 服务](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
