@@ -20,6 +20,7 @@
 ## [在本地群集上部署应用](service-fabric-get-started-with-a-local-cluster.md)
 ## [在 Azure 上创建第一个群集](service-fabric-get-started-azure-cluster.md)
 ## [创建第一个独立群集](service-fabric-get-started-standalone-cluster.md)
+## [创建第一个容器应用](service-fabric-get-started-containers.md)
 
 # 如何
 ## 构建应用程序
@@ -50,14 +51,19 @@
 #### 概念
 ##### [Reliable Services 生命周期 - C#](service-fabric-reliable-services-lifecycle.md)
 ##### [Reliable Services 生命周期 - Java](service-fabric-reliable-services-lifecycle-java.md)
+
+#### Reliable Collections
 ##### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
+##### [Reliable Collection 指导原则和建议](service-fabric-reliable-services-reliable-collections-guidelines.md)
+##### [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
+##### [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+##### [可靠状态管理器和 Reliable Collection 内部](service-fabric-reliable-services-reliable-collections-internals.md)
 
 #### 入门
 ##### [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
 ##### [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
 
 #### Reliable Services 生命周期
-#### [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
 #### [配置](service-fabric-reliable-services-configuration.md)
 #### [发送通知](service-fabric-reliable-services-notifications.md)
 #### [备份和还原](service-fabric-reliable-services-backup-restore.md)

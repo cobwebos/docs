@@ -80,6 +80,16 @@
 ### [定价](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [用量计量](logic-apps-pricing.md)
 
+# 无服务器
+## 概述
+### [Azure 中的无服务器产品/服务](logic-apps-serverless-overview.md)
+## 入门
+### [在 Visual Studio 中创建无服务器应用](logic-apps-serverless-get-started-vs.md)
+## 方案和演练
+### [收集客户反馈](logic-apps-scenario-social-serverless.md)
+### [发送自动电子邮件](https://channel9.msdn.com/Blogs/Microsoft-Integration/Build-and-Deploy-Serverless-Part-1)
+### [B2B/EDI 订单处理](logic-apps-enterprise-integration-overview.md)
+
 # 引用
 ## [工作流定义语言](logic-apps-workflow-definition-language.md)
 ## [工作流操作和触发器](logic-apps-workflow-actions-triggers.md)

@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 642f9469722dfe701db8e353f4aa2b17edc00081
-ms.openlocfilehash: 67fdc8b9b4db5d311a8247995d7f8f626b90e5c5
-ms.lasthandoff: 02/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 8b7d2e7825fce74fad391e52dd423dec8f9a0e17
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 ---
 # <a name="cdn-documentation"></a>CDN 文档
@@ -52,7 +53,7 @@ ms.lasthandoff: 02/09/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure 批处理视频库</h3>
+                        <h3>Azure CDN 视频库</h3>
                     </div>
                 </div>
             </div>
