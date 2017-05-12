@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 376b61037de8b1af657095b8b32ee16568af8894
 ms.openlocfilehash: 0df8932668a954cc60a1db9b745019decb98d1e9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -72,7 +74,7 @@ ms.openlocfilehash: 0df8932668a954cc60a1db9b745019decb98d1e9
 
 7. 你的用户/安全组现在具有 Azure Data Lake Store 帐户访问权限。 如要向特定用户提供访问权限，可将其添加到安全组。 同样，如要撤消用户的访问权限，可将其从安全组删除。 可向一个帐户分配多个安全组。 
 
-## <a name="a-namefilepermissionsaassign-users-or-security-group-as-acls-to-the-azure-data-lake-store-file-system"></a><a name="filepermissions"></a>将用户或安全组作为 ACL 分配给 Azure Data Lake Store 文件系统
+## <a name="filepermissions"></a>将用户或安全组作为 ACL 分配给 Azure Data Lake Store 文件系统
 通过将用户/安全组分配给 Azure Data Lake 文件系统，可对 Azure Data Lake Store 中存储的数据设置访问控制。
 
 1. 在 Data Lake Store 帐户边栏选项卡中，单击“数据资源管理器” 。
@@ -146,10 +148,5 @@ Azure Data Lake Store 允许进一步在网络级别锁定访问权限。 可启
 * [ PowerShell 实现 Data Lake Store 入门](data-lake-store-get-started-powershell.md)
 * [通过 .NET SDK 实现 Data Lake Store 入门](data-lake-store-get-started-net-sdk.md)
 * [获取 Data Lake Store 的诊断日志](data-lake-store-diagnostic-logs.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

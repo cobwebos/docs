@@ -3,8 +3,8 @@ title: "监视、诊断和排查存储问题 | Microsoft Docs"
 description: "使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。"
 services: storage
 documentationcenter: 
-author: jasonnewyork
-manager: tadb
+author: fhryo-msft
+manager: jahogg
 editor: tysonn
 ms.assetid: da57e844-705d-449d-8ed5-5607d2a6170b
 ms.service: storage
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: jahogg
+ms.author: fhryo-msft
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 84ecd480b57a8ef12440f5e5cd98a78c4bf09059

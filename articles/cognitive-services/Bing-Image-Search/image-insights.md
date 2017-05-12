@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 30c0b80c40cd556b645d5d5917f107b54c072b20
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5b8e73dced65d1dec301ee719c21af8ce34cf411
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="get-insights-about-an-image"></a>Get Insights about an Image
+# <a name="get-insights-about-an-image"></a>Get insights about an image
 
 Each image includes an insights token that you can use to get information about the image. For example, you can get a collection of related images, web pages that include the image, or a list of merchants where you can buy the product shown in the image.  
   
@@ -54,7 +54,7 @@ Host: api.cognitive.microsoft.com
 ``` 
 
 > [!NOTE]
-> Version 7 Preview changes to insights request.
+> V7 Preview changes to insights request.
 >
 > To get insights call the /images/details endpoint. 
 >
@@ -72,7 +72,7 @@ Host: api.cognitive.microsoft.com
 
 
 
-## <a name="getting-insights-of-a-known-image"></a>Getting Insights of a Known Image
+## <a name="getting-insights-of-a-known-image"></a>Getting insights of a known image
 
 If you have the URL to an image that you want to get insights of, use the [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#imgurl) query parameter instead of the [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#insightstoken) parameter to specify the image. Or, if you have the image file, you may send the binary of the image in the body of a POST request. If you use a POST request, the Content-Type header must be set to multipart/data-form. With either option, the size of the image may not exceed 1 MB.  
   
@@ -89,7 +89,7 @@ Host: api.cognitive.microsoft.com
 ``` 
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```
 > GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=sailing+dinghy&imgUrl=https%3A%2F%2Fwww.mydomain.com%2Fimages%2Fsunflower.png&modules=All&mkt=en-us HTTP/1.1  
@@ -102,7 +102,7 @@ Host: api.cognitive.microsoft.com
 > ``` 
 
   
-## <a name="getting-all-image-insights"></a>Getting All Image Insights  
+## <a name="getting-all-image-insights"></a>Getting all image insights  
 
 To request all insights of an image, set the [modulesRequested](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#modulesrequested) query parameter to All. To get related searches, the request must include the user's query string. This example shows using the [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#insightstoken) to specify the image.  
   
@@ -197,7 +197,7 @@ The following is the response to the previous request. The top-level object is a
 
 
 > [!NOTE]
-> Version 7 Preview changes to insights request.
+> V7 Preview changes to insights request.
 >
 > To get insights call the /images/details endpoint.
 >
@@ -302,7 +302,7 @@ The following is the response to the previous request. The top-level object is a
 >```
 
 
-## <a name="recognizing-entities-in-an-image"></a>Recognizing Entities in an Image  
+## <a name="recognizing-entities-in-an-image"></a>Recognizing entities in an image  
 
 The entity recognition feature identifies entities in an image, such as people. To identify entities in an image, set the [modulesRequested](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#modulesrequested) query parameter to RecognizedEntities.  
   
@@ -436,7 +436,7 @@ The following shows the response to the previous request. Because the image cont
 ```  
 
 > [!NOTE]
-> Version 7 Preview changes to recognized entities insights request.
+> V7 Preview changes to recognized entities insights request.
 >
 > To get insights call the /images/details endpoint.
 >
@@ -499,7 +499,7 @@ You can use the region that Bing returns in subsequent insights calls. For examp
 -   Bottom maps to [cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#cab)  
 
 
-## <a name="finding-visually-similar-images"></a>Finding Visually Similar Images  
+## <a name="finding-visually-similar-images"></a>Finding visually similar images  
 
 To find images that are visually similar to the original image, set the [modulesRequested](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#modulesrequested) query parameter to SimilarImages.  
   
@@ -550,7 +550,7 @@ The following shows the response to the previous request.
 ```  
 
 > [!NOTE]
-> Version 7 Preview changes to visually similar insights request.
+> V7 Preview changes to visually similar insights request.
 >
 > To get insights call the /images/details endpoint.
 >
@@ -586,7 +586,7 @@ The following shows the response to the previous request.
 >    }
 >```
   
-## <a name="cropping-images-to-use-with-visually-similar-and-entity-recognition-modules"></a>Cropping Images to use with Visually Similar and Entity Recognition Modules  
+## <a name="cropping-images-to-use-with-visually-similar-and-entity-recognition-modules"></a>Cropping images to use with visually similar and entity recognition modules  
 
 To specify the region of the image that Bing uses to determine whether images are visually similar or to perform entity recognition, use the [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#cal), [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#cat), [cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#cab), and [car](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#car) query parameters. By default, Bing uses the entire image.  
   
@@ -605,7 +605,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```
 > GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=RecognizedEntities&imgurl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.M0cbee6fadb43f35b2344e53da7a23ec1o0%26pid%3DApi&mkt=en-us HTTP/1.1  
@@ -679,7 +679,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Version 7 Preview request:
+> V7 Preview request:
 >
 > ```
 > GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?cal=0.5&cat=0.0&car=1.0&cab=1.0&modules=RecognizedEntities&imgurl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.M0cbee6fadb43f35b2344e53da7a23ec1o0%26pid%3DApi&mkt=en-us HTTP/1.1    
@@ -724,7 +724,7 @@ The response shows one recognized entity.
   
 ```  
   
-## <a name="finding-visually-similar-products"></a>Finding Visually Similar Products  
+## <a name="finding-visually-similar-products"></a>Finding visually similar products  
 
 To find images that contain products that are visually similar to the products found in the original image, set the [modulesRequested](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#modulesrequested) query parameter to SimilarProducts.  
   
@@ -784,7 +784,7 @@ The following shows the response to the previous request. The response contains 
 ```  
 
 > [!NOTE]
-> Version 7 Preview changes to visually similar product insights request.
+> V7 Preview changes to visually similar product insights request.
 >
 > To get insights call the /images/details endpoint.
 >
@@ -867,7 +867,7 @@ The following is the response to the previous request.
 
 
 > [!NOTE]
-> Version 7 Preview changes to shopping sources insights request.
+> V7 Preview changes to shopping sources insights request.
 >
 > To get insights call the /images/details endpoint.
 >
