@@ -67,6 +67,7 @@
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
 ### [Oauth](active-directory-protocols-oauth-code.md)
 ### [服务到服务调用](active-directory-protocols-oauth-service-to-service.md)
+### [代理流](active-directory-protocols-oauth-on-behalf-of.md)
 ### [支持的令牌和声明类型](active-directory-token-and-claims.md)
 ### [签名密钥滚动更新](active-directory-signing-key-rollover.md)
 ### [联合元数据](active-directory-federation-metadata.md)
@@ -104,4 +105,5 @@
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
 #### [隐式流](active-directory-v2-protocols-implicit.md)
 #### [OAuth 2.0 客户端凭据](active-directory-v2-protocols-oauth-client-creds.md)
+#### [Oauth 2.0 代理流](active-directory-v2-protocols-oauth-on-behalf-of.md)
 ### [范围](active-directory-v2-scopes.md)

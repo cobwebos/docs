@@ -31,7 +31,11 @@
     href: tutorial-load-balancer.md
   - name: "8 - 管理网络"
     href: tutorial-virtual-network.md
-  - name: "9 - 管理 VM 安全性"
+  - name: "9 - 备份虚拟机"
+    href: tutorial-backup-vms.md
+  - name: "10 - 监视虚拟机"
+    href: tutorial-monitoring.md
+  - name: "11 - 管理 VM 安全性"
     href: tutorial-azure-security.md
 
 - name: "示例"
@@ -126,7 +130,7 @@
       href: creation-choices.md
     - name: "使用模板创建 VM"
       href: ps-template.md
-    - name: "使用 C 创建 VM#"
+    - name: "使用 C# 创建 VM"
       href: csharp.md
     - name: "使用 C# 和模板创建 VM"
       href: csharp-template.md
@@ -159,7 +163,7 @@
       href: cli-manage.md
     - name: "使用 CLI 管理 VM"
       href: cli-deploy-templates.md
-    - name: "使用 C 管理 VM#"
+    - name: "使用 C# 管理 VM"
       href: csharp-manage.md
   - name: "使用 RDP 连接"
     items:

@@ -1,4 +1,4 @@
-# [概述](security-get-started-overview.md)
+# [概述](azure-security.md)
 ## [网络安全](security-network-overview.md)
 ## [存储安全](security-storage-overview.md)
 ## [计算安全](security-virtual-machines-overview.md)
@@ -6,6 +6,10 @@
 ## [标识管理](security-identity-management-overview.md)
 ## [IoT 安全性](../iot-suite/iot-security-architecture.md#security-in-iot)
 ## [安全体系结构](azure-security-architecture-overview.md)
+### [运营安全性](azure-operational-security.md)
+### [高级威胁检测](azure-threat-detection.md)
+### [日志记录和审核](azure-log-audit.md)
+### [公有云中的隔离](azure-isolation.md)
 
 # 入门
 ## [Azure 安全入门](azure-security-getting-started.md)

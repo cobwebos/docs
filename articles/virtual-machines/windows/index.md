@@ -11,10 +11,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 631eb4c8aa3a41e03cf623fcc5610d3e84f18ec4
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: f319bcba8a4eb5f6adfbfb22f99055ea3de13309
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 ---
 <div class="content">
@@ -63,8 +64,15 @@ ms.lasthandoff: 04/22/2017
    <li><a href="/azure/virtual-machines/windows/tutorial-manage-vm">创建和管理 Windows VM</a></li>
     <li><a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">创建和管理 VM 磁盘</a></li>
     <li><a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">自动执行 VM 配置</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-custom-images">创建自定义 VM 映像</a></li> 
+    <li><a href="/azure/virtual-machines/windows/tutorial-availability-sets">创建高度可用的 VM</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-create-vmss">创建 VM 规模集</a></li>
     <li><a href="/azure/virtual-machines/windows/tutorial-load-balancer">对 VM 进行负载均衡</a></li>
-    <li><a href="/azure/virtual-machines/windows/tutorial-virtual-network">管理 VM 网络</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-virtual-network">使用虚拟网络管理 VM</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-backup-vms">备份 VM</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-monitoring">监视 VM</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-azure-security">管理 VM 上的安全性</a></li>
+    
 </ol>
 
 <h2 style="margin-top: 36px">免费 PluralSight 视频培训</h2>

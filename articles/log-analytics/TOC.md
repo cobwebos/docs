@@ -5,7 +5,6 @@
 # 入门
 ## [注册 Log Analytics](log-analytics-get-started.md)
 ## [管理访问权限](log-analytics-manage-access.md)
-## [代理和防火墙](log-analytics-proxy-firewall.md)
 ## [使用情况数据](log-analytics-usage.md)
 ## [Log Analytics 常见问题解答](log-analytics-faq.md)
 ## [服务提供商](log-analytics-service-providers.md)
@@ -14,7 +13,7 @@
 ## 收集数据
 ### 连接的源
 #### [Windows 代理](log-analytics-windows-agents.md)
-#### [Linux 代理](log-analytics-linux-agents.md)
+#### [Linux 代理](log-analytics-agent-linux.md)
 #### [Azure 虚拟机](log-analytics-azure-vm-extension.md)
 #### [Azure 资源](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
@@ -23,8 +22,12 @@
 ### 数据源
 #### [数据源概述](log-analytics-data-sources.md)
 #### [Windows 事件](log-analytics-data-sources-windows-events.md)
+#### [自定义 JSON 数据](log-analytics-data-sources-json.md)
+#### [Collectd 性能数据](log-analytics-data-sources-collectd.md)
+#### [Nagios 和 Zabbix 警报](log-analytics-data-sources-alerts-nagios-zabbix.md)
 #### [Syslog](log-analytics-data-sources-syslog.md)
 #### [性能计数器](log-analytics-data-sources-performance-counters.md)
+#### [Linux 应用程序性能](log-analytics-data-sources-linux-applications.md)
 #### [IIS 日志](log-analytics-data-sources-iis-logs.md)
 #### [自定义日志](log-analytics-data-sources-custom-logs.md)
 #### [自定义字段](log-analytics-custom-fields.md)
@@ -32,6 +35,7 @@
 ### [日志搜索概述](log-analytics-log-searches.md)
 ### [搜索参考](log-analytics-search-reference.md)
 #### [正则表达式](log-analytics-log-searches-regex.md)
+### [从搜索结果执行操作](log-analytics-log-search-takeaction.md)
 ### [计算机组](log-analytics-computer-groups.md)
 ## 分析数据
 ### [仪表板](log-analytics-dashboards.md)

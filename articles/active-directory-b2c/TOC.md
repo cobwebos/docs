@@ -44,6 +44,7 @@
 ## [可扩展策略框架](active-directory-b2c-reference-policies.md)
 ## [身份验证协议](active-directory-b2c-reference-protocols.md)
 ## [令牌](active-directory-b2c-reference-tokens.md)
+## [语言自定义](active-directory-b2c-reference-language-customization.md)
 
 ## [威胁管理](active-directory-b2c-reference-threat-management.md)
 
