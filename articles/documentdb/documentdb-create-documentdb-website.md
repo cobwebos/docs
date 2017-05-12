@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: hawong
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
 ms.openlocfilehash: 7bef38eaea90d950c195dee0d741750cf65870df
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/24/2017
 
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 01/24/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，单击“新建”并搜索“模板部署”。
     ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
-2. 选择模板部署项目，然后单击“创建”****
+2. 选择模板部署项目，然后单击 **创建**
     ![模板部署 UI 的屏幕快照](./media/documentdb-create-documentdb-website/TemplateDeployment2.png)
 3. 单击“编辑模板”，粘贴 DocDBWebsiteTodo.json 模板文件的内容，然后单击“保存”。
    ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment3.png)
@@ -85,7 +86,7 @@ ms.lasthandoff: 01/24/2017
    ![示例待办事项应用程序](./media/documentdb-create-documentdb-website/image2.png)
 9. 继续在 Web 应用中创建几个任务，然后返回到 Azure 门户中的资源组边栏选项卡。 单击“资源”列表中的“DocumentDB 帐户”资源，然后单击“查询浏览器”。
     ![屏幕截图：突出显示 myotherdocumentdbwebapp web 应用的“摘要”可重用功能区](./media/documentdb-create-documentdb-website/TemplateDeployment8.png)  
-10. 运行默认查询“SELECT *FROM c”，并检查结果。请注意，查询已检索你在上面的步骤 7 中创建的待办事项的 JSON 表示形式。随意尝试查询；例如，尝试运行 SELECT* FROM c WHERE c.isComplete = true，以返回所有标记为完成的待办事项。
+10. 运行默认查询“SELECT  *FROM c”，并检查结果。请注意，查询已检索你在上面的步骤 7 中创建的待办事项的 JSON 表示形式。随意尝试查询；例如，尝试运行 SELECT*  FROM c WHERE c.isComplete = true，以返回所有标记为完成的待办事项。
     
     ![屏幕截图：显示查询结果的“查询资源管理器”和“结果”边栏选项卡](./media/documentdb-create-documentdb-website/image5.png)
 11. 任意体验 DocumentDB 门户，或修改示例待办事项应用程序。  当你准备好时，让我们来部署另一个模板。
@@ -102,7 +103,7 @@ ms.lasthandoff: 01/24/2017
 
 1. 在 [Azure 门户](https://portal.azure.com)中，单击“新建”并搜索“模板部署”。
     ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
-2. 选择模板部署项目，然后单击“创建”****
+2. 选择模板部署项目，然后单击 **创建**
     ![模板部署 UI 的屏幕快照](./media/documentdb-create-documentdb-website/TemplateDeployment2.png)
 3. 单击“编辑模板”，粘贴 DocDBWebSite.json 模板文件的内容，然后单击“保存”。
    ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment3.png)
@@ -121,7 +122,7 @@ ms.lasthandoff: 01/24/2017
    ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
 7. 部署完成后，将会打开“资源组”边栏选项卡。
    ![资源组边栏选项卡的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)  
-8. 单击“资源”列表中的“Web 应用”资源，然后单击“应用程序设置”****
+8. 单击“资源”列表中的“Web 应用”资源，然后单击 **应用程序设置**
     ![资源的快照](./media/documentdb-create-documentdb-website/TemplateDeployment9.png)  
 9. 注意出现的 DocumentDB 终结点和每个 DocumentDB 主密钥的应用程序设置。
 
