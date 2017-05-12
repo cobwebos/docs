@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 65bfb0a759a624c98a19f3c2c9c72aa5a6780df7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/18/2017
 
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 04/18/2017
 
 若要安装访问面板浏览器扩展，请按照以下步骤操作：
 
-1.  在某个支持的浏览器中打开“访问面板”[](https://myapps.microsoft.com)，并在 Azure AD 中以“用户”身份登录。
+1.  在某个支持的浏览器中打开[访问面板](https://myapps.microsoft.com)，并在 Azure AD 中以“用户”身份登录。
 
 2.  单击访问面板中的“密码 - SSO 应用程序”。
 
