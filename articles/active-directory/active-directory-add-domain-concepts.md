@@ -1,9 +1,9 @@
 ---
 title: "Azure Active Directory 中自定义域名的概念性概述 | Microsoft Docs"
-description: "介绍在 Azure Active Directory 中使用自定义域名的概念性框架，其中包括用于实现单一登录的联合"
+description: "介绍了在 Azure Active Directory 中使用自定义域名的概念性框架，其中包括用于实现单一登录的联盟"
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: fd0c5def-0da2-43af-81bc-76f4cfe86afd
@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 05/04/2017
 ms.author: curtand;jeffsta
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2faa2c270b192a9b3476fa911333f6abfabb1ee9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 028c1cab4f0229a06d37d2f325b384ee78a2b8f9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -55,16 +57,11 @@ Azure AD 通过在域名的域名服务 (DNS) 区域文件中查找特定的条�
 Azure Web 应用使用其自身的机制来验证域的所有权。 域必须经过验证才能用于 Azure AD，即使该域之前已经过验证以供依赖该 Azure AD 的订阅中的 Azure Web 应用使用也是如此。 Azure Web 应用可使用在保护 Web 应用的目录以外的目录中进行过验证的域名。
 
 ## <a name="managing-domain-names"></a>管理域名
-可以在 Azure 经典门户和 PowerShell 中完成域管理任务。 许多任务可使用 Azure AD 图形 API（公共预览版）来完成。
+可以在 Azure 经典门户和 PowerShell 中完成域管理任务。 许多任务可使用 Azure AD Graph API 来完成。
 
 * [添加和验证自定义域名](active-directory-add-domain.md)
 * [在 Azure 经典门户中管理域](active-directory-add-manage-domain-names.md)
 * [使用 PowerShell 管理 Azure AD 中的域名](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [使用 Azure AD 图形 API 管理 Azure AD 中的域名](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
