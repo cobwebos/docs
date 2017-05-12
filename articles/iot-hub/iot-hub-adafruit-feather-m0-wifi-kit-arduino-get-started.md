@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: e2d44f821635ce9d91b67ecdc0653e2ba9c99b01
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/13/2017
 
 
@@ -163,7 +164,7 @@ ms.lasthandoff: 04/13/2017
 
 1. 依次单击“工具” > “开发板” > “Adafruit M0 WiFi”。
 
-1. 安装驱动程序（仅限 Windows），插入 Feather 时可能需要安装驱动程序，单击“此处”[](https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/1.1/adafruit_drivers.exe)下载驱动程序安装程序。
+1. 安装驱动程序（仅限 Windows），插入 Feather 时可能需要安装驱动程序，单击[此处](https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/1.1/adafruit_drivers.exe)下载驱动程序安装程序。
    按照以下步骤安装所需的驱动程序。
 
 ### <a name="install-necessary-libraries"></a>安装所需的库
