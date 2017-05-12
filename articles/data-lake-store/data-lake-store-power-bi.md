@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
 ms.openlocfilehash: f965e3a5067dd8dd2ac6dc29446c7f5b50cdd450
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -99,10 +101,5 @@ ms.openlocfilehash: f965e3a5067dd8dd2ac6dc29446c7f5b50cdd450
 
 ## <a name="see-also"></a>另请参阅
 * [使用 Data Lake Analytics 分析 Data Lake Store 中的数据](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 
