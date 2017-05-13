@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 316a3b6bd0ff32213df4baa9f722ff36ecc41d22
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: c9c45305d75be59f7840941b1e626e62e93f1758
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -56,12 +57,12 @@ ms.lasthandoff: 04/11/2017
      ![Azure 门户浏览群集按钮](./media/hdinsight-administer-use-management-portal/azure-portal-browse-button.png)
 
 ## <a name="create-clusters"></a>创建群集
-有关使用门户创建群集的说明，请参阅创建 [HDInsight 群集](hdinsight-provision-clusters.md)。
+有关使用门户创建群集的说明，请参阅创建 [HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件的列表，请参阅 [Azure HDInsight 包含哪个版本的 Hadoop？](hdinsight-component-versioning.md)。 可使用以下选项之一自定义 HDInsight：
 
 * 使用脚本操作来运行可以自定义群集的自定义脚本，以更改群集配置或安装 Giraph 或 Solr 等自定义组件。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md)。
-* 在群集创建期间使用 HDInsight .NET SDK 或 Azure PowerShell 中的群集自定义参数。 这样，这些配置更改将在群集的整个生存期内保留，并且不受 Azure 平台在维护时定期执行的群集节点重置映像影响。 有关使用群集自定义参数的详细信息，请参阅[创建 HDInsight 群集](hdinsight-provision-clusters.md)。
+* 在群集创建期间使用 HDInsight .NET SDK 或 Azure PowerShell 中的群集自定义参数。 这样，这些配置更改将在群集的整个生存期内保留，并且不受 Azure 平台在维护时定期执行的群集节点重置映像影响。 有关使用群集自定义参数的详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 * 一些本机 Java 组件（如 Mahout 和 Cascading）可以在群集上作为 JAR 文件运行。 可以通过 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure Blob 存储，并提交到 HDInsight 群集。 有关详细信息，请参阅[以编程方式提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)。
 
   > [!NOTE]
@@ -88,14 +89,14 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
    * **仪表板**、**群集仪表板**和 **URL：这些是访问群集仪表板（即可用于基于 Linux 群集的 Ambari Web）的所有途径。-**安全 Shell**：显示使用安全 Shell (SSH) 连接与群集建立连接的说明。
    * **缩放群集**：可更改此群集的辅助角色节点数。
    * **删除**：删除群集。
-   * **快速启动![（](./media/hdinsight-administer-use-portal-linux/quickstart.png)云和闪电图标 = 快速启动**）：显示可帮助开始使用 HDInsight 的信息。
-   * **用户![（](./media/hdinsight-administer-use-portal-linux/users.png)用户图标**）：用于设置 Azure 订阅上其他用户对此群集的门户管理权限。
+   * **快速启动**：显示可帮助你开始使用 HDInsight 的信息。
+   * **用户：用于设置 Azure 订阅上其他用户对此群集的*门户管理*权限。
 
      > [!IMPORTANT]
      > 这只会影响在 Azure 门户中对此群集的访问和权限，对于连接到 HDInsight 群集或将作业提交到其上的用户并没有影响。
      >
      >
-   * **标记（![标记图标](./media/hdinsight-administer-use-portal-linux/tags.png)）**：通过标记可设置键/值对，定义云服务的自定义分类。 例如，可以创建名为 **project** 的键，然后对与特定项目关联的所有服务使用一个公用值。
+   * **标记**：标记可让你设置键/值对，以定义云服务的自定义分类。 例如，可以创建名为 **project** 的键，然后对与特定项目关联的所有服务使用一个公用值。
    * **Ambari 视图**：Ambari Web 的链接。
 
      > [!IMPORTANT]
@@ -320,7 +321,7 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 若要使用 Yarn 用户界面，请单击 HDInsight 查询控制台中的“Yarn UI”。 请参阅[打开 HDInsight 查询控制台](#open-hdinsight-query-console)。
 
 ## <a name="connect-to-clusters-using-rdp"></a>使用 RDP 连接到群集
-通过你在创建群集时提供的凭据，可以访问群集上的服务，但无法通过远程桌面访问群集本身。 在预配群集时或在预配群集后，你可以启用“远程桌面访问”。 有关在创建时启用远程桌面的说明，请参阅[创建 HDInsight 群集](hdinsight-provision-clusters.md)。
+通过你在创建群集时提供的凭据，可以访问群集上的服务，但无法通过远程桌面访问群集本身。 在预配群集时或在预配群集后，你可以启用“远程桌面访问”。 有关在创建时启用远程桌面的说明，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 **启用远程桌面**
 
@@ -371,7 +372,7 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 
 * [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)
 * [使用 Azure CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)
-* [创建 HDInsight 群集](hdinsight-provision-clusters.md)
+* [创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [以编程方式提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)
 * [Azure HDInsight 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [Azure HDInsight 包含哪个版本的 Hadoop？](hdinsight-component-versioning.md)

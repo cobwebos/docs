@@ -12,31 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2017
+ms.date: 04/27/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 7fe9111061fed4af6aa720d0b158e5b4f2becd90
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: e74f3f7ed4ab0a7a37047b1277e76b6695f3884f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 Microsoft Azure 包括可靠的网络基础结构以支持你的应用程序和服务连接要求。 Azure 中的资源之间、本地资源与 Azure 托管的资源之间以及 Internet 与 Azure 之间都可能存在网络连接。
 
-本文旨在让你更轻松地了解 Microsoft Azure 在网络安全领域内必须要提供的内容。 此处我们提供了核心网络安全概念和要求的基本说明。 我们还提供了 Azure 在每个领域内必须要提供的内容的相关信息。 另外，还有许多其他内容的链接，通过这些链接你将能够深入了解你所感兴趣的领域。
+本文旨在让你更轻松地了解 Microsoft Azure 在网络安全领域内必须要提供的内容。 此处我们提供了核心网络安全概念和要求的基本说明。 我们还向你提供有关 Azure 必须在其中每个区域中提供的内容的信息以及链接，以帮助你进一步了解感兴趣的区域。
 
-此 Azure 网络安全概述文章将重点介绍以下内容：
+此 Azure 网络安全概述文章将重点介绍以下区域：
 
 * Azure 网络
-* Azure 网络观察程序
 * 网络访问控制
 * 安全远程访问和跨界连接
 * 可用性
-* 日志记录
 * 名称解析
 * DMZ 体系结构
-* Azure 安全中心
+* 监视和威胁检测
+
 
 ## <a name="azure-networking"></a>Azure 网络
 虚拟机需要网络连接。 若要支持该要求，Azure 要求将虚拟机连接到 Azure 虚拟网络。 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑 Azure 虚拟网络都独立于所有其他 Azure 虚拟网络。 这可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
@@ -45,29 +45,18 @@ Microsoft Azure 包括可靠的网络基础结构以支持你的应用程序和�
 
 * [虚拟网络概述](../virtual-network/virtual-networks-overview.md)
 
-## <a name="azure-network-watcher"></a>Azure 网络观察程序
-Azure 网络观察程序包括大量有助于问题故障排除的网络监视功能，还提供一整套全新的工具来帮助识别安全问题。
-
-[安全组视图](/network-watcher/network-watcher-security-group-view-overview.md)有助于虚拟机的审核和安全符合性检查，并可用于以编程方式执行比较组织定义的基线策略和每个 VM 的有效规则的审核。 这有助于识别任何配置偏移。
-
-通过[数据包捕获](/network-watcher/network-watcher-packet-capture-overview.md)可以捕获流向和流出虚拟机的网络流量。 除在网络统计信息收集和应用程序问题排查方面提供帮助外，数据包捕获在网络入侵调查中也非常有用。 此功能还可与 Azure Functions 一起使用，使其根据特定 Azure 警报启动网络捕获。
-
-若要深入了解 Azure 网络观察程序以及如何开始测试实验室中的一些功能，请参阅 [Azure 网络观察程序监视概述](/network-watcher/network-watcher-monitoring-overview.md)
-
->[!NOTE]
-Azure 网络观察程序仍以公共预览版提供，因此其可用性和可靠性与正式发布版本中的相应服务可能不在同一级别。 某些功能可能不受支持，能力可能会受约束，并且可能不是在所有 Azure 位置都可用。 有关此服务可用性和状态方面的最新通知，请参阅 [Azure 更新页](https://azure.microsoft.com/updates/?product=network-watcher)
 
 ## <a name="network-access-control"></a>网络访问控制
-网络访问控制是限制 Azure 虚拟网络内特定设备或子网之间的连接的行为。 网络访问控制旨在确保你的虚拟机和服务仅让你指定可访问的用户和设备进行访问。 访问控制基于虚拟机或服务之间的连接的允许或拒绝决策。
+网络访问控制是限制 Azure 虚拟网络内特定设备或子网之间的连接的行为。 网络访问控制的目的是将对虚拟机和服务的访问权限限制为仅授予已批准的用户和设备。 访问控制基于虚拟机或服务之间的连接的允许或拒绝决策。
 
-Azure 支持多种类型的网络访问控制。 其中包括：
+Azure 支持多种类型的网络访问控制，例如：
 
 * 网络层控制
 * 路由控制和强制隧道
 * 虚拟网络安全设备
 
 ### <a name="network-layer-control"></a>网络层控制
-任何安全部署都需要一定程度的网络访问控制。 网络访问控制旨在确保你的虚拟机以及在这些虚拟机上运行的网络服务可以仅与需要与其通信的其他联网设备进行通信，并且阻止所有其他连接尝试。
+任何安全部署都需要一定程度的网络访问控制。 网络访问控制的目的是将虚拟机通信限制为必要的系统，而其他通信尝试将被阻止。
 
 如果你需要基本的网络级别访问控制（基于 IP 地址和 TCP 或 UDP 协议），则可以使用网络安全组。 网络安全组 (NSG) 是基本的静态数据包筛选防火墙，它使你能够基于 [5 元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问。 NSG 不提供应用程序层检查或经过身份验证的访问控制。
 
@@ -76,9 +65,9 @@ Azure 支持多种类型的网络访问控制。 其中包括：
 * [网络安全组](../virtual-network/virtual-networks-nsg.md)
 
 ### <a name="route-control-and-forced-tunneling"></a>路由控制和强制隧道
-在 Azure 虚拟网络上控制路由行为的能力是关键的网络安全和访问控制功能。 如果路由配置不正确，你的虚拟机上托管的应用程序和服务可能会连接到你不希望其连接到的设备，其中包括潜在攻击者所拥有或操作的设备。
+在 Azure 虚拟网络上控制路由行为的能力是关键的网络安全和访问控制功能。 如果路由配置不正确，你的虚拟机上托管的应用程序和服务可能会连接到未授权的设备，其中包括潜在攻击者所拥有或操作的系统。
 
-Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为的功能。 这样你便可以更改 Azure 虚拟网络中的默认路由表条目。 通过控制路由行为，可帮助你确保来自特定设备或一组设备的所有流量通过特定位置进入或离开你的 Azure 虚拟网络。
+Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为的功能。 这样你便可以更改 Azure 虚拟网络中的默认路由表条目。 通过控制路由行为，可帮助你确保来自特定设备或设备组的所有流量通过特定位置进入或离开你的虚拟网络。
 
 例如，你的 Azure 虚拟网络上可能有虚拟网络安全设备。 你想要确保与你的 Azure 虚拟网络之间的所有流量都通过该虚拟安全设备。 你可以通过在 Azure 中配置[用户定义的路由](../virtual-network/virtual-networks-udr-overview.md)实现此操作。
 
@@ -128,7 +117,7 @@ Azure 网络支持以下安全远程访问方案：
 * [使用 PowerShell 配置与虚拟网络的点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ### <a name="connect-your-on-premises-network-to-an-azure-virtual-network-with-a-vpn"></a>通过 VPN 将你的本地网络连接到 Azure 虚拟网络
-你可能想要将整个企业网络或其中的某些部分连接到 Azure 虚拟网络。 这是常见的混合 IT 方案，通过该方案公司可以[将其本地数据中心扩展到 Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)。 在许多情况下，公司会将服务的某些部分托管在 Azure 中而其他部分托管在本地，例如一个解决方案包括 Azure 中的前端 Web 服务器和本地的后端数据库。 这样的“跨界”连接还使得位于 Azure 的资源的管理更加安全，并且能够启用方案，如将 Active Directory 域控制器扩展到 Azure 中。
+你可能想要将整个企业网络或其中的某些部分连接到 Azure 虚拟网络。 这是常见的混合 IT 方案，通过该方案公司可以[将其本地数据中心扩展到 Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)。 在许多情况下，公司会将服务的某些部分托管在 Azure 中而其他部分托管在本地，例如一个解决方案包括 Azure 中的前端 Web 服务器和本地的后端数据库。 这些类型的“跨界”连接还使得位于 Azure 的资源的管理更加安全，并且能够启用方案，如将 Active Directory 域控制器扩展到 Azure 中。
 
 完成此操作的一种方法是使用 [site-to-site VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn)（站点到站点 VPN）。 站点到站点 VPN 和点到站点 VPN 之间的区别是，点到站点 VPN 将一台设备连接到 Azure 虚拟网络，而站点到站点 VPN 将整个网络（如你的本地网络）连接到 Azure 虚拟网络。 到 Azure 虚拟网络的站点到站点 VPN 使用高度安全的 IPsec 隧道模式 VPN 协议。
 
@@ -141,7 +130,7 @@ Azure 网络支持以下安全远程访问方案：
 点到站点和站点到站点 VPN 连接对启用跨界连接有效。 但是，有些组织认为它们具有以下缺点：
 
 * VPN 连接通过 Internet 移动数据，这会将这些连接暴露给通过公用网络移动数据所涉及的潜在安全问题。 此外，不能保证 Internet 连接的可靠性和可用性。
-* 到 Azure 虚拟网络的 VPN 连接可能会针对某些应用程序和目的考虑受限的带宽，因为它们达到的最高极限约为 200Mbps。
+* 与 Azure 虚拟网络的 VPN 连接对于某些应用程序和目的来说可能会被认为带宽受限，因为它们达到的最高极限约为 200 Mbps。
 
 对于其跨界连接需要最高级别的安全性和可用性的组织通常使用专用的 WAN 链路连接到远程站点。 Azure 为你提供了使用专用的 WAN 链路将本地网络连接到 Azure 虚拟网络的功能。 此功能通过 Azure ExpressRoute 启用。
 
@@ -214,19 +203,6 @@ Azure 网络支持以下安全远程访问方案：
 
 * [什么是流量管理器？](../traffic-manager/traffic-manager-overview.md)
 
-## <a name="logging"></a>日志记录
-对任何网络安全方案而言，网络级别的日志记录都是一项关键功能。 在 Azure 中，你可以记录针对网络安全组获得的信息，以获取网络级别的日志记录信息。 使用 NSG 日志记录，你可以从以下日志中获取信息：
-
-* [活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) - 这些日志用于查看提交到 Azure 订阅的所有操作。 这些日志默认情况下启用，并且可以在 Azure 门户中使用。 这些日志以前称为“审核日志”或“运行日志”。
-* 事件日志 – 这些日志提供有关应用了哪些 NSG 规则的信息。
-* 计数器日志 – 通过这些日志，你可以知道每个 NSG 规则拒绝或允许流量的次数。
-
-还可以使用功能强大的数据可视化工具 [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/)，以查看和分析这些日志。
-
-了解更多：
-
-* [网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md)
-
 
 ## <a name="name-resolution"></a>名称解析
 名称解析是在 Azure 中托管的所有服务的一个重要功能。 从安全角度看，名称解析功能的泄漏可能会导致攻击者将来自你的站点的请求重定向到攻击者的站点。 安全的名称解析是所有云托管的服务的要求。
@@ -270,8 +246,25 @@ Azure 以 Azure DNS 的形式为你提供一个高可用性且高性能的外部
 
 * [Microsoft 云服务和网络安全](../best-practices-network-security.md)
 
-## <a name="azure-security-center"></a>Azure 安全中心
-安全中心可帮助你预防、检测和响应威胁，同时提高对 Azure 资源的安全性的可见性和控制力度。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
+
+## <a name="monitoring-and-threat-detection"></a>监视和威胁检测
+
+Azure 提供相关功能来帮助你在此关键领域中进行早期检测、监视，并提供收集和查看网络流量的功能。
+
+### <a name="azure-network-watcher"></a>Azure 网络观察程序
+Azure 网络观察程序包括大量有助于故障排除的功能，还提供一整套全新的工具来帮助识别安全问题。
+
+[安全组视图](/network-watcher/network-watcher-security-group-view-overview.md)有助于虚拟机的审核和安全符合性检查，并可用于以编程方式执行比较组织定义的基线策略和每个 VM 的有效规则的审核。 这有助于识别任何配置偏移。
+
+通过[数据包捕获](/network-watcher/network-watcher-packet-capture-overview.md)可以捕获流向和流出虚拟机的网络流量。 除在网络统计信息收集和应用程序问题排查方面提供帮助外，数据包捕获在网络入侵调查中也非常有用。 此功能还可与 Azure Functions 一起使用，使其根据特定 Azure 警报启动网络捕获。
+
+若要深入了解 Azure 网络观察程序以及如何开始测试实验室中的一些功能，请参阅 [Azure 网络观察程序监视概述](/network-watcher/network-watcher-monitoring-overview.md)
+
+>[!NOTE]
+Azure 网络观察程序仍以公共预览版提供，因此其可用性和可靠性与正式发布版本中的相应服务可能不在同一级别。 某些功能可能不受支持，能力可能会受约束，并且可能不是在所有 Azure 位置都可用。 有关此服务可用性和状态方面的最新通知，请参阅 [Azure 更新页](https://azure.microsoft.com/updates/?product=network-watcher)
+
+### <a name="azure-security-center"></a>Azure 安全中心
+安全中心可帮助你预防、检测和响应威胁，同时提高对 Azure 资源的安全性的可见性和控制力度。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于大量的安全解决方案。
 
 Azure 安全中心通过以下方式来帮助优化和监视网络安全：
 
@@ -282,4 +275,18 @@ Azure 安全中心通过以下方式来帮助优化和监视网络安全：
 了解更多：
 
 * [Azure 安全中心简介](../security-center/security-center-intro.md)
+
+
+### <a name="logging"></a>日志记录
+对任何网络安全方案而言，网络级别的日志记录都是一项关键功能。 在 Azure 中，你可以记录针对网络安全组获得的信息，以获取网络级别的日志记录信息。 使用 NSG 日志记录，你可以从以下日志中获取信息：
+
+* [活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) - 这些日志用于查看提交到 Azure 订阅的所有操作。 这些日志默认情况下启用，并且可以在 Azure 门户中使用。 这些日志以前称为“审核日志”或“运行日志”。
+* 事件日志 – 这些日志提供有关应用了哪些 NSG 规则的信息。
+* 计数器日志 – 通过这些日志，你可以知道每个 NSG 规则拒绝或允许流量的次数。
+
+还可以使用功能强大的数据可视化工具 [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/)，以查看和分析这些日志。
+
+了解更多：
+
+* [网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md)
 

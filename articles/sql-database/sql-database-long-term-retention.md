@@ -16,10 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 043a1779ac694b0b3cbb5f1fd00117f716583669
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: e47c10c2c979622fba254757d3f7b9f19d3240f8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -99,10 +100,6 @@ Azure SQL 数据库的长期备份保留按 [Azure 备份服务定价费率](htt
 
 > [!NOTE]
 > 保管库中已有的备份不会受到影响。 恢复服务将在其保留期到期时将其自动删除。
-
-## <a name="removing-long-term-backup-retention-backups-from-the-azure-recovery-services-vault"></a>从 Azure 恢复服务保管库中删除长期备份保留备份
-
-若要从保管库中删除长期备份保留备份，请参阅[删除长期备份保留备份](sql-database-long-term-backup-retention-configure.md)
 
 ## <a name="long-term-backup-retention-faq"></a>长期备份保留常见问题：
 

@@ -1,84 +1,14 @@
 ---
-title: "创建事件处理函数 | Microsoft Docs"
-description: "使用 Azure Functions 创建基于事件计时器运行的 C# 函数。"
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 84bd0373-65e2-4022-bcca-2b9cd9e696f5
-ms.service: functions
-ms.devlang: multiple
-ms.topic: get-started-article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 09/25/2016
-ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 44e397c7521ba8f0ba11893c364f51177561bee4
-ms.openlocfilehash: df3d303ee10fcc982552ea9756eb59198c87b650
 
+ms.assetid: 84bd0373-65e2-4022-bcca-2b9cd9e696f5
+redirect_url: /azure/azure-functions/functions-create-scheduled-function
+ROBOTS: NOINDEX, NOFOLLOW
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7f503b2c8721f64204d6fcd4f5a0446a36192f5b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 ---
-# <a name="create-an-event-processing-azure-function"></a>创建事件处理 Azure 函数
-Azure Functions 提供事件驱动、按需计算体验，让你能够创建以各种编程语言实现的计划或触发代码单元。 若要了解有关 Azure Functions 的详细信息，请参阅 [Azure Functions 概述](functions-overview.md)。
-
-本主题将介绍如何通过 C# 创建基于事件计时器执行的新函数，以便将消息添加到存储队列中。 
-
-## <a name="prerequisites"></a>先决条件
-Function App 在 Azure 中托管函数的执行。 如果尚未创建 Azure 帐户，请查看[试用 Functions](https://functions.azure.com/try) 主题，或[免费创建一个 Azure 帐户](https://azure.microsoft.com/free/)。 
-
-## <a name="create-a-timer-triggered-function-from-the-template"></a>通过模板创建计时器触发的函数
-Function App 在 Azure 中托管函数的执行。 必须先具有一个有效的 Azure 帐户，然后才能创建函数。 如果还没有 Azure 帐户， [可以使用免费帐户](https://azure.microsoft.com/free/)。 
-
-1. 转到 [Azure Functions 门户](https://functions.azure.com/signin) ，然后使用你的 Azure 帐户登录。
-2. 如果存在要使用的现有 Function App，请从“函数应用”中选择它，然后单击“打开”。 若要创建新的 Function App，请为新的 Function App 键入唯一的**名称**或接受生成的名称，选择首选“区域”，然后单击“创建 + 开始使用”。 
-3. 在 Function App 中，单击“+ 新建函数” > “TimerTrigger - C#” > “创建”。 这样可以创建一个使用默认名称的函数，该函数按默认计划每隔一分钟运行一次。 
-   
-    ![创建新的计时器触发的函数](./media/functions-create-an-event-processing-function/functions-create-new-timer-trigger.png)
-4. 在新建函数中，单击“集成”选项卡>“新建输出” > “Azure 存储队列” > “选择”。
-   
-    ![创建新的计时器触发的函数](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding.png)
-5. 在“Azure 存储队列输出”中，选择现有的**存储帐户连接**或新建一个，然后单击“保存”。 
-   
-    ![创建新的计时器触发的函数](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding-2.png)
-6. 返回“开发”选项卡，将“代码”窗口中现有的 C# 脚本替换为以下代码：
-    ```cs   
-    using System;
-
-    public static void Run(TimerInfo myTimer, out string outputQueueItem, TraceWriter log)
-    {
-        // Add a new scheduled message to the queue.
-        outputQueueItem = $"Ping message added to the queue at: {DateTime.Now}.";
-
-        // Also write the message to the logs.
-        log.Info(outputQueueItem);
-    }
-    ```
-   
-    执行函数时，此代码将新消息添加到当前日期和时间的队列。
-7. 单击“保存”，观察下次执行函数时的“日志”窗口。
-8. （可选）导航到存储帐户并确认正将消息添加到队列。
-9. 返回“集成”选项卡并将“计划字段更改为 `0 0 * * * *`。 该函数现在每隔一小时运行一次。 
-
-这是非常简单的计时器触发器和存储队列输出绑定示例。 有关详细信息，请参阅 [Azure Functions 计时器触发器](functions-bindings-timer.md)以及 [Azure 存储的 Azure Functions 触发器和绑定](functions-bindings-storage.md)主题。
-
-## <a name="next-steps"></a>后续步骤
-请参阅以下主题，获取有关 Azure Functions 的详细信息。
-
-* [Azure Functions 开发人员参考](functions-reference.md)  
-  ，用于编码函数和定义触发器及绑定的程序员参考。
-* [测试 Azure Functions](functions-test-a-function.md)  
-   介绍可用于测试函数的各种工具和技巧。
-* [如何缩放 Azure Functions](functions-scale.md)  
-  讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。  
-
-[!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

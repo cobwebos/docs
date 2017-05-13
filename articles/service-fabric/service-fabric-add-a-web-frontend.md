@@ -1,9 +1,9 @@
 ---
-title: "使用 ASP.NET Core 创建应用程序的 Web 前端 | Microsoft 文档"
-description: "使用 ASP.NET Core Web API 项目和服务间通信，通过 ServiceProxy 将 Service Fabric 应用程序公开到 Web。"
+title: "使用 ASP.NET Core 创建 Azure Service Fabric 应用的 Web 前端 | Microsoft Docs"
+description: "使用 ASP.NET Core 项目和服务间通信，通过 Service Remoting 将 Service Fabric 应用程序公开到 Web。"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: vturecek
 manager: timlt
 editor: 
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
@@ -12,12 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/30/2017
-ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: d7084624b7242a8dfc60f49d38f1808116206b46
-ms.lasthandoff: 03/31/2017
+ms.date: 04/28/2017
+ms.author: vturecek
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 68ca454aebbad30d5ea2511b030f260a6a18b1ca
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -27,7 +28,10 @@ ms.lasthandoff: 03/31/2017
 在本教程中，我们将弥补[在 Visual Studio 中创建第一个应用程序](service-fabric-create-your-first-application-in-visual-studio.md)教程中遗留的内容，在有状态计数器服务的前面添加一个 Web 服务。 如果你尚未学习上述教程，应该返回并逐步完成该教程中的步骤。
 
 ## <a name="add-an-aspnet-core-service-to-your-application"></a>将 ASP.NET Core 服务添加到应用程序
-ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web UI 和 Web API。 让我们将 ASP.NET Web API 项目添加到现有的应用程序。
+ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web UI 和 Web API。 若要全面了解 ASP.NET Core 如何与 Service Fabric 集成，我们强烈建议通读 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 一文，但现在你可以按照本指南快速入门。
+
+让我们将 ASP.NET Web API 项目添加到现有的应用程序。
+
 
 > [!NOTE]
 > 本教程基于[用于 Visual Studio 2017 的 ASP.NET Core 工具](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/start-mvc)。 用于 Visual Studio 2015 的 .NET Core 工具不再更新。
@@ -47,7 +51,7 @@ ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web 
     创建 Web API 项目后，应用程序中会有两个服务。 随着你不断构建应用程序，将以完全相同的方式添加更多服务。 每个服务都可以单独进行版本控制和升级。
 
 > [!TIP]
-> 若要了解有关构建 ASP.NET Core 服务的详细信息，请参阅 [ASP.NET Core 文档](https://docs.microsoft.com/aspnet/core/)。
+> 若要了解有关 ASP.NET Core 的详细信息，请参阅 [ASP.NET Core 文档](https://docs.microsoft.com/aspnet/core/)。
 > 
 
 ## <a name="run-the-application"></a>运行应用程序
@@ -198,12 +202,11 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ## <a name="kestrel-and-weblistener"></a>Kestrel 和 WebListener
 
-默认的 ASP.NET Core Web 服务器称为 Kestrel，[目前尚不支持处理直接 Internet 流量](https://docs.asp.net/en/latest/fundamentals/servers.html#kestrel)。 因此，Service Fabric 的 ASP.NET 模板默认使用 [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener)。 
+默认的 ASP.NET Core Web 服务器称为 Kestrel，[目前尚不支持处理直接 Internet 流量](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel)。 因此，Service Fabric 的 ASP.NET Core 无状态服务模板默认使用 [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener)。 
 
-如果不用处理直接 Internet 流量，并且希望将 Kestrel 用作 Web 服务器，则可以在服务侦听器配置中更改它。 只需将 `return new WebHostBuilder().UseWebListener()` 替换为 `return new WebHostBuilder().UseKestrel()`。 Web 主机上的所有其他配置可以保持不变。
- 
+若要详细了解 Service Fabric 服务中的 Kestrel 和 WebListener，请参阅 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)。
 
-## <a name="what-about-actors"></a>执行组件的情况如何？
+## <a name="connecting-to-a-reliable-actors-service"></a>连接到 Reliable Actors 服务
 本教程着重介绍添加与有状态服务通信的 Web 前端。 但是你可以遵循十分类似的模型来与执行组件交流。 事实上，这比较简单。
 
 创建执行组件项目时，Visual Studio 将自动为你生成接口项目。 你可以使用该接口在 Web 项目中生成执行组件代理来与执行组件通信。 系统将自动提供通信通道。 因此您无需像本教程中所述的处理有状态服务一样创建 `ServiceRemotingListener`。
@@ -218,9 +221,11 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 若要了解如何针对不同环境配置不同的值，请参阅[管理多个环境的应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [在 Azure 中创建群集以便将应用程序部署到云中](service-fabric-cluster-creation-via-portal.md)
-* [详细了解如何与服务通信](service-fabric-connect-and-communicate-with-services.md)
-* [详细了解如何为有状态服务分区](service-fabric-concepts-partitioning.md)
+现在，你已使用 ASP.NET Core 为应用程序设置 Web 前端，请在 有关 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 的此文中，详细了解如何将 ASP.NET Core 与 Service Fabric 集成。
+
+接下来，通常[详细了解如何与服务通信](service-fabric-connect-and-communicate-with-services.md)可全面了解 Service Fabric 中服务通信的工作原理。
+
+很好地了解服务通信的工作原理后，请[在 Azure 中创建群集并将应用程序部署到云](service-fabric-cluster-creation-via-portal.md)。
 
 <!-- Image References -->
 
