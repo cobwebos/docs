@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
-ms.openlocfilehash: eb9e9ca5082559ee0e30ea67bf53229d38f81589
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 33988eaaf926dcd91a1e63ae766e815cda93cf03
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="about-azure-storage-accounts"></a>关于 Azure 存储帐户
 [!INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
 
-[!INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>概述
 Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存储空间数据对象。 存储帐户中的所有对象会作为组共同计费。 默认情况下，只有你，即帐户所有者，才能使用你的帐户中的数据。
@@ -127,7 +128,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 下面是轮换存储访问密钥的过程：
 
 1. 更新应用程序代码中的连接字符串以引用存储帐户的辅助访问密钥。
-2. 为你的存储帐户重新生成主访问密钥。 在“访问密钥”边栏选项卡上，单击“重新生成密钥&1;”，然后单击“是”以确认要生成新密钥。
+2. 为你的存储帐户重新生成主访问密钥。 在“访问密钥”边栏选项卡上，单击“重新生成密钥 1”，然后单击“是”以确认要生成新密钥。
 3. 更新代码中的连接字符串以引用新的主访问密钥。
 4. 以相同方式重新生成辅助访问密钥。
 
@@ -154,6 +155,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 有关详细信息，请参阅 [Azure 虚拟机文档](http://azure.microsoft.com/documentation/services/virtual-machines/)。
 
 ## <a name="next-steps"></a>后续步骤
+* [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
 * [Azure Blob 存储：不常访问和经常访问的层](storage-blob-storage-tiers.md)
 * [Azure 存储空间复制](storage-redundancy.md)
 * [配置 Azure 存储空间连接字符串](storage-configure-connection-string.md)
