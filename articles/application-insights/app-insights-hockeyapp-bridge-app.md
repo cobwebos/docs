@@ -13,9 +13,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: awills
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
 ms.openlocfilehash: 7ea28b4989ad889ff0427e221cc26ac5ebc41f93
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/07/2017
 
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/07/2017
 ## <a name="the-hockeyapp-bridge-app"></a>HockeyApp Bridge 应用
 HockeyApp Bridge 应用是一项核心功能，可让用户通过 Analytics 和连续导出功能来访问 Application Insights 中的 HockeyApp 自定义和跟踪遥测。 借助上述这些功能，可以访问在创建 HockeyApp Bridge 应用后由 HockeyApp 所收集的自定义和跟踪事件。 让我们了解如何设置其中一个 Bridge 应用。
 
-在 HockeyApp 中，打开“帐户设置”、“API 令牌”。[](https://rink.hockeyapp.net/manage/auth_tokens) 创建新令牌，或重复使用现有令牌。 所需的最低权限为“只读”。 创建 API 令牌的副本。
+在 HockeyApp 中，打开“帐户设置”、[API 令牌](https://rink.hockeyapp.net/manage/auth_tokens)。 创建新令牌，或重复使用现有令牌。 所需的最低权限为“只读”。 创建 API 令牌的副本。
 
 ![获取 HockeyApp API 令牌](./media/app-insights-hockeyapp-bridge-app/01.png)
 
