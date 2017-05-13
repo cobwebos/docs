@@ -24,7 +24,6 @@
 
 ## 自动化
 ### [Azure 自动化](automation-manage-key-vault.md)
-### [使用 CLI 进行创建和管理](key-vault-manage-with-cli.md)
 ### [使用 CLI 2.0 进行创建和管理](key-vault-manage-with-cli2.md)
 
 # 引用

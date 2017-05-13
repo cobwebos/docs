@@ -15,15 +15,16 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm;cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: e3d44bc4ff6ce7ebfcd510ef8b40fd0c614bc31e
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 66f4b7a5f8eb3f6f125c9420b40caffca3d43dd6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="create-and-connect-to-a-mysql-database-in-azure"></a>在 Azure 中创建 MySQL 数据库并连接到它
-本教程将演示如何在 [Azure 门户](https://portal.azure.com)中创建 MySQL 数据库（提供程序是 [ClearDB](http://www.cleardb.com/)），以及如何从 [Azure App Service](app-service/app-service-value-prop-what-is.md) 中运行的 PHP Web 应用连接到该数据库。
+本教程将演示如何在 [Azure 门户](https://portal.azure.com)中创建 MySQL 数据库（提供程序是 [ClearDB](http://www.cleardb.com/)），以及如何从 [Azure 应用服务](app-service/app-service-value-prop-what-is.md) 中运行的 PHP Web 应用连接到该数据库。
 
 > [!NOTE]
 > 还可以创建 MySQL 数据库作为[应用商店应用模板](app-service-web/app-service-web-create-web-app-from-marketplace.md)的一部分。
@@ -120,7 +121,6 @@ ms.lasthandoff: 04/11/2017
         azure site appsetting add DB_USERNAME=<USERNAME_from_properties_blade>
         azure site appsetting add DB_PASSWORD=<PASSWORD_from_properties_blade>
 
-    在[配置 Azure Web 应用](app-service-web/app-service-web-get-started-php.md#configure-to-use-php)中了解其工作方式。
 6. 接下来，将先前在运行 `php artisan make:auth` 时所做的本地更改提交并推送到 Azure。
 
         git add .

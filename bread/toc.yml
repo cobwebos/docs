@@ -30,7 +30,7 @@
   - name: "API 管理"
     tocHref: /azure/api-management/
     topicHref: /azure/api-management/
-  - name: "App Service"
+  - name: "应用服务"
     tocHref: /azure/app-service/
     topicHref: /azure/app-service/
     items:
@@ -73,7 +73,7 @@
   - name: "门户"
     tocHref: /azure/azure-portal/
     topicHref: /azure/azure-portal/
-  - name: "资源管理器"
+  - name: "Resource Manager"
     tocHref: /azure/azure-resource-manager/
     topicHref: /azure/azure-resource-manager/
   - name: "Azure Stack"
@@ -191,6 +191,9 @@
   - name: "网络观察程序"
     tocHref: /azure/network-watcher/
     topicHref: /azure/network-watcher/
+  - name: "联网"
+    tocHref: /azure/networking/
+    topicHref: /azure/networking/networking-overview
   - name: "通知中心"
     tocHref: /azure/notification-hubs/
     topicHref: /azure/notification-hubs/

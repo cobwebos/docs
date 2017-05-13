@@ -1,7 +1,7 @@
 # 概述
 ## [关于 VPN 网关](vpn-gateway-about-vpngateways.md)
 ## [VPN 网关常见问题](vpn-gateway-vpn-faq.md)
-## [订阅和服务限制](../azure-subscription-service-limits.md)
+## [订阅和服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # 入门
 ## [规划和设计 VPN 网关](vpn-gateway-plan-design.md)
