@@ -14,16 +14,17 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: e1df2fcf4478ef7f58c5686e85abd6ae94b5a2d3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 03f466cb08ed2ccbd2985471d0956af9e66d97f1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="how-to-use-azure-table-storage-from-ruby"></a>如何通过 Ruby 使用 Azure 表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>概述
 本指南演示如何使用 Azure 表服务执行常见任务。 相关示例是使用 Ruby API 编写的。 涉及的情景包括**创建和删除表、在表中插入和查询条目**。
@@ -170,14 +171,8 @@ azure_table_service.delete_table("testtable")
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关更复杂存储任务的信息，请访问下面的链接：
 
-* [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
 * GitHub 上的 [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

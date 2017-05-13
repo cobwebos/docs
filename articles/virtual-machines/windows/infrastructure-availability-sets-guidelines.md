@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 2d146d3a3bd2497a6c1d9b2b924d2e2cd00710de
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d8a586834034460932516e352560b570141d9cda
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -51,9 +52,9 @@ Azure 中的底层基础结构分为多个硬件群集。 每个硬件群集可�
 
 设计应用程序基础结构时，应规划使用的应用程序层。 将服务于同一目的的 VM 分为一组，放到可用性集中，例如用于容纳运行 IIS 的前端 VM 的可用性集。 为运行 SQL Server 的后端 VM 创建另一个可用性集。 目标是确保应用程序的每个组件都受可用性集保护，且其至少一个实例将始终保持运行。
 
-可对每个应用程序层利用负载平衡器，使其与可用性集一起工作，确保始终可将流量路由到正在运行的实例。 如果不使用负载均衡器，VM 可能会在计划内和计划外维护事件中继续运行；但如果主 VM 不可用，最终用户可能无法解决这些问题。
+可对每个应用程序层利用负载均衡器，使其与可用性集一起工作，确保始终可将流量路由到正在运行的实例。 如果不使用负载均衡器，VM 可能会在计划内和计划外维护事件中继续运行；但如果主 VM 不可用，最终用户可能无法解决这些问题。
 
-在存储层针对高可用性设计应用程序。 最佳做法是[为可用性集中的 VM 使用托管磁盘](../windows/manage-availability.md#use-managed-disks-for-vms-in-availability-set)。 如果当前使用的是未托管磁盘，我们强烈建议[在可用性集中转换 VM，以便使用托管磁盘](../windows/convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set)。
+在存储层针对高可用性设计应用程序。 最佳做法是[为可用性集中的 VM 使用托管磁盘](manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)。 如果当前使用的是未托管磁盘，我们强烈建议[在可用性集中转换 VM，以便使用托管磁盘](convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set)。
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
