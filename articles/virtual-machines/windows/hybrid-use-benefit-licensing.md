@@ -3,7 +3,7 @@ title: "适用于 Windows Server 和 Windows 客户端的 Azure 混合使用权�
 description: "了解如何充分利用 Windows 软件保障权益将本地许可证引入到 Azure 中"
 services: virtual-machines-windows
 documentationcenter: 
-author: george-moore
+author: kmouss
 manager: timlt
 editor: 
 ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 4/10/2017
-ms.author: georgem
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 04f5fab5a27a28a0881d59b93451f4c3615692b4
-ms.lasthandoff: 04/13/2017
+ms.date: 5/1/2017
+ms.author: kmouss
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0854ceddc473a362221140f32b24138221a6f175
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,13 +45,13 @@ ms.lasthandoff: 04/13/2017
 ```powershell
 Get-AzureRmVMImagesku -Location westus -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
-2016-Datacenter 版本 2016.127.20170406 或更高版本
+- 2016-Datacenter 版本 2016.127.20170406 或更高版本
 
-2012-R2-Datacenter 版本 4.127.20170406 或更高版本
+- 2012-R2-Datacenter 版本 4.127.20170406 或更高版本
 
-2012-Datacenter 版本 3.127.20170406 或更高版本
+- 2012-Datacenter 版本 3.127.20170406 或更高版本
 
-2008-R2-SP1 版本 2.127.20170406 或更高版本
+- 2008-R2-SP1 版本 2.127.20170406 或更高版本
 
 对于 Windows 客户端：
 ```powershell
@@ -61,7 +62,7 @@ Get-AzureRMVMImageSku -Location "West US" -Publisher "MicrosoftWindowsServer" `
 ## <a name="upload-a-windows-vhd"></a>上传 Windows VHD
 若要在 Azure 中部署 Windows VM，必须先创建包含基本 Windows 版本的 VHD。 必须先通过 Sysprep 妥善准备此 VHD，再将其上载到 Azure。 可以[阅读有关 VHD 要求和 Sysprep 进程](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)以及[针对服务器角色的 Sysprep 支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)的详细信息。 在运行 Sysprep 之前备份 VM。 
 
-确保[已安装并配置最新的 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 准备好 VHD 之后，即可使用 `Add-AzureRmVhd` cmdlet 将 VHD 上载到 Azure 存储帐户，如下所示：
+确保[已安装并配置最新的 Azure PowerShell](/powershell/azure/overview)。 准备好 VHD 之后，即可使用 `Add-AzureRmVhd` cmdlet 将 VHD 上载到 Azure 存储帐户，如下所示：
 
 ```powershell
 Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -216,6 +217,35 @@ New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm 
 ```powershell
 New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm -LicenseType "Windows_Client"
 ```
+
+## <a name="deploy-a-virtual-machine-scale-set-via-resource-manager-template"></a>通过 Resource Manager 模板部署虚拟机规模集
+在 VMSS Resource Manager 模板中，必须指定 `licenseType` 的附加参数。 可以阅读有关[创作 Azure Resource Manager 模板](../../resource-group-authoring-templates.md)的详细信息。 编辑 Resource Manager 模板以包括 licenseType 属性作为规模集 virtualMachineProfile 的一部分，并以标准方式部署模板 - 请参阅以下使用 2016 Windows Server 映像的示例：
+
+
+```json
+"virtualMachineProfile": {
+    "storageProfile": {
+        "osDisk": {
+            "createOption": "FromImage"
+        },
+        "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2016-Datacenter",
+            "version": "latest"
+        }
+    },
+    "licenseType": "Windows_Server",
+    "osProfile": {
+            "computerNamePrefix": "[parameters('vmssName')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "adminPassword": "[parameters('adminPassword')]"
+    }
+```
+
+> [!NOTE]
+> 通过 PowerShell 和其他 SDK 工具借助 AHUB 优势支持部署虚拟机规模集即将推出。
+>
 
 ## <a name="next-steps"></a>后续步骤
 阅读有关 [Azure 混合使用权益许可](https://azure.microsoft.com/pricing/hybrid-use-benefit/)的详细信息。

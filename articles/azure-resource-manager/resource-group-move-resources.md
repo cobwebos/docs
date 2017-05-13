@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 626b152b8511995413af39a41161c29c88429605
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: cc2a24b26b152671173770adfd4aefcfcb2512d4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -75,6 +76,7 @@ ms.lasthandoff: 04/21/2017
 
 * API 管理
 * 应用服务应用（Web 应用）- 请参阅[应用服务限制](#app-service-limitations)
+* Application Insights
 * 自动化
 * 批处理
 * 必应地图
@@ -124,7 +126,6 @@ ms.lasthandoff: 04/21/2017
 
 * AD 混合运行状况服务
 * 应用程序网关
-* Application Insights
 * BizTalk 服务
 * 容器服务
 * Express Route
@@ -147,12 +148,12 @@ ms.lasthandoff: 04/21/2017
 * 将该资源组中的应用服务计划以及所有其他应用服务资源移到尚无应用服务资源的新资源组。 这一要求意味着，与应用服务计划不关联的应用服务资源也必须移动。 
 * 将应用移到另一个资源组中，但保留原始资源组中的所有应用服务计划。
 
-如果原始资源组还包括 Application Insights 资源，则不能移动该资源，因为 Application Insights 目前不支持移动操作。 如果在移动应用服务应用时包括了 Application Insights 资源，则整个移动操作会失败。 不过，即使 Application Insights 和应用服务计划不与应用位于同一资源组中，应用也可以正常运行。
+即使应用服务计划不与应用位于同一资源组中，应用也可以正常运行。
 
 例如，如果你的资源组包含：
 
-* **web-a**，与 **plan-a** 和 **app-insights-a** 相关联
-* **web-b**，与 **plan-b** 和 **app-insights-b** 相关联
+* **web-a**，与 **plan-a** 相关联
+* **web-b**，与 **plan-b** 相关联
 
 你的选项包括：
 
@@ -161,7 +162,7 @@ ms.lasthandoff: 04/21/2017
 * 移动 **web-a**
 * 移动 **web-b**
 
-所有其他的组合都涉及移动不能移动的资源类型 (Application Insights)，或保留在移动应用服务计划时不能保留的资源类型（任何应用服务资源类型）。
+所有其他组合都涉及保留在移动应用服务计划时不能保留的资源类型（任何应用服务资源类型）。
 
 如果你的 Web 应用与其应用服务计划位于不同的资源组中，而你想要将二者都移到新的资源组，则必须分两步执行移动操作。 例如：
 

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 0506de98119576aae8f55cc6067f0bee95334c87
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1156135200e05f8a2585467f37805a72d67279ba
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -72,7 +73,7 @@ ms.lasthandoff: 03/31/2017
 >
 
 ### <a name="virtual-machines"></a>虚拟机
-将公共 IP 地址分配到其**网络接口**可以将其与 [Windows](../virtual-machines/windows/about.md) 或 [Linux](../virtual-machines/virtual-machines-linux-about.md) VM 相关联。 对于具有多个网络接口的 VM，只能将它分配到*主要*网络接口。 你可以向 VM 分配动态或静态公共 IP 地址。
+将公共 IP 地址分配到其**网络接口**可以将其与 [Windows](../virtual-machines/windows/overview.md) 或 [Linux](../virtual-machines/virtual-machines-linux-about.md) VM 相关联。 对于具有多个网络接口的 VM，只能将它分配到*主要*网络接口。 你可以向 VM 分配动态或静态公共 IP 地址。
 
 ### <a name="internet-facing-load-balancers"></a>面向 Internet 的负载均衡器
 可以将公共 IP 地址与 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) 相关联，只需将其分配给负载均衡器**前端**配置即可。 此公共 IP 地址充当负载均衡型虚拟 IP 地址 (VIP)。 你可以向负载均衡器前端分配动态或静态公共 IP 地址。 还可以向负载均衡器前端分配多个公共 IP 地址，这会启用[多 VIP](../load-balancer/load-balancer-multivip.md) 方案，如包含基于 SSL 的网站的多租户环境。
@@ -116,7 +117,7 @@ ms.lasthandoff: 03/31/2017
 * 其他应用/资源通过 IP 地址访问的资源。
 
 ### <a name="virtual-machines"></a>虚拟机
-可将专用 IP 地址分配到 [Windows](../virtual-machines/windows/about.md) 或 [Linux](../virtual-machines/virtual-machines-linux-about.md) VM 的**网络接口**。 对于多网络接口 VM，将为每个接口分配一个专用 IP 地址。 可将网络接口的分配方法指定为动态或静态。
+可将专用 IP 地址分配到 [Windows](../virtual-machines/windows/overview.md) 或 [Linux](../virtual-machines/virtual-machines-linux-about.md) VM 的**网络接口**。 对于多网络接口 VM，将为每个接口分配一个专用 IP 地址。 可将网络接口的分配方法指定为动态或静态。
 
 #### <a name="internal-dns-hostname-resolution-for-vms"></a>内部 DNS 主机名解析（针对 VM）
 所有 Azure VM 都默认配置了 [Azure 托管的 DNS 服务器](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution)，除非显式配置了自定义 DNS 服务器。 这些 DNS 服务器为驻留在同一个 VNet 内的 VM 提供内部名称解析。

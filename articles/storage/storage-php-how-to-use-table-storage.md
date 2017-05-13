@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: e9fd8855cf0c51df5f3ec4f80a733e778996fb82
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 15d3216ef5bb1d7ff312bd886837a3a7b0335afd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="how-to-use-table-storage-from-php"></a>如何通过 PHP 使用表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>概述
 本指南演示如何使用 Azure 表服务执行常见任务。 示例采用 PHP 编写并使用 [Azure SDK for PHP][download]。 涉及的方案包括**创建和删除表以及在表中插入、删除和查询实体**。 有关 Azure 表服务的详细信息，请参阅[后续步骤](#next-steps)部分。
@@ -484,9 +484,9 @@ catch(ServiceException $e){
 ## <a name="next-steps"></a>后续步骤
 现在，你已了解了 Azure 表服务的基础知识，单击下面的链接可了解有关更复杂的存储任务的详细信息。
 
-* 访问 [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
 
-有关详细信息，另请参阅 [PHP 开发人员中心](/develop/php/)。
+* [PHP 开发人员中心](/develop/php/)。
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
 [require_once]: http://php.net/require_once

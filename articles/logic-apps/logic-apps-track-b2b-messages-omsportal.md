@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2016
 ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 2aa32d692da81dc34fafbc9cb6ea72a806f31e5c
-ms.openlocfilehash: a4068c70a01f80086ff3fb55f8e101c7dce95dea
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 4d68fde29e85fcf9aa623b4d798262bcd486a8bb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -80,7 +81,7 @@ B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消�
 | 发送方 | 在接收设置中配置的来宾合作伙伴，或在 AS2 协议的发送设置中配置的主机合作伙伴。 |
 | 接收方 | 在接收设置中配置的主机合作伙伴，或在 AS2 协议的发送设置中配置的来宾合作伙伴。 |
 | 逻辑应用 | 其中配置了 AS2 操作的逻辑应用。 |
-| 状态 | AS2 消息状态 <br>成功 = 接收或发送了正确的 AS2 消息，未配置 MDN <br>成功 = 接收或发送了正确的 AS2 消息，MDN 已配置和接收，或者 MDN 已发送 <br>失败 = 接收了错误的 AS2 消息，未配置 MDN <br>挂起 = 接收或发送了正确的 AS2 消息，MDN 已配置，预计可以进行功能确认 |
+| 状态 | AS2 消息状态 <br>成功 = 接收或发送了正确的 AS2 消息，未配置 MDN <br>成功 = 接收或发送了正确的 AS2 消息，MDN 已配置和接收，或者 MDN 已发送 <br>失败 = 接收了错误的 AS2 消息，未配置 MDN <br>挂起 = 接收或发送了正确的 AS2 消息，MDN 已配置，预计会收到 MDN |
 | Ack | MDN 消息状态 <br>已接受 = 接收或发送了正面的 MDN <br>挂起 = 等待接收或发送 MDN <br>已拒绝 = 接收或发送了负面的 MDN <br>不需要 = 协议中未配置 MDN |
 | Direction | AS2 消息传送方向。 |
 | 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID。 |
