@@ -8,10 +8,10 @@ ms.author: cfowler
 ms.date: 04/27/2017
 ms.topic: functions
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: dc1b15d4e5c5ab0525b64e8844fe644cde3cb257
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 9d51c709f2afa051420a9faa24729fc922ade275
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 ---
 # <a name="create-an-app-service"></a>创建应用服务
@@ -24,6 +24,8 @@ ms.lasthandoff: 05/10/2017
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 ## <a name="sample-script"></a>示例脚本
+
+此示例创建 Azure Function app 并从 GitHub 部署函数代码。
 
 [!code-azurecli[主要](../../../cli_scripts/azure-functions/deploy-function-app-with-function-github-continuous/deploy-function-app-with-function-github-continuous.sh?highlight=3-4 "Azure 服务")]
 
