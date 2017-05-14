@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: cephalin
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
 ms.openlocfilehash: 0d909f6272cc9dcfd13bd9c18affa8d1e249efe4
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/21/2017
 
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/21/2017
 
 本文将演示如何为 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)中使用自定义域名的 Web 应用、移动应用后端或 API 应用启用 HTTPS。 仅限服务器的身份验证。 若需相互身份验证（包括客户端身份验证），请参阅[如何为应用服务配置 TLS 相互身份验证](app-service-web-configure-tls-mutual-auth.md)。
 
-若要使用 HTTPS 保护拥有自定义域名的应用，可为该域名添加证书。 默认情况下，Azure 使用单个 SSL 证书保护 \*.azurewebsites.net 通配符域的安全，因此客户端可能已在 https://&lt;appname>.azurewebsites.net** 处访问了应用。 但若想使用 contoso.com、www.contoso.com 和 \*.contoso.com 等自定义域，默认证书无法提供保护。 此外，与所有[通配符证书](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)一样，默认证书不如使用定义域和该自定义域的证书安全。   
+若要使用 HTTPS 保护拥有自定义域名的应用，可为该域名添加证书。 默认情况下，Azure 使用单个 SSL 证书保护 **\*.azurewebsites.net** 通配符域的安全，因此客户端可能已在 **https://*&lt;appname>*.azurewebsites.net** 处访问了应用。 但若想使用 **contoso.com** 、 **www.contoso.com** 和 **\*.contoso.com** 等自定义域，默认证书无法提供保护。 此外，与所有[通配符证书](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)一样，默认证书不如使用定义域和该自定义域的证书安全。   
 
 > [!NOTE]
 > 可随时在 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的帮助。 有关更加个性化的支持，请转到 [Azure 支持](https://azure.microsoft.com/support/options/)，然后单击“获取支持”。
@@ -116,7 +117,7 @@ ms.lasthandoff: 04/21/2017
     此命令将完成后的证书存储在 Windows 证书存储中。
 5. 如果 CA 使用中间证书，请先安装再继续操作。 这些证书通常从 CA 单独下载，会针对不同的 Web 服务器类型提供多种格式。 为 Microsoft IIS 选择版本。
    
-    下载证书后，在 Windows 资源管理器中右键单击每个证书，然后选择“安装证书”。 **** 使用“证书导入向导”中的默认值，然后继续选择“下一步”，直到完成导入。
+    下载证书后，在 Windows 资源管理器中右键单击每个证书，然后选择“安装证书”。 **** 使用 **证书导入向导** 中的默认值，然后继续选择 **下一步** ，直到完成导入。
 6. 若要从证书存储中导出 SSL 证书，请按 `Win`+`R` 并运行 **certmgr.msc** 以启动证书管理器。 
    选择“个人” > “证书”。 “颁发给”列应会显示一个条目，内附自定义域名和“颁发者”列中生成证书时所用的 CA。
    
@@ -145,7 +146,7 @@ ms.lasthandoff: 04/21/2017
 4. 如果 CA 使用中间证书，请先安装再继续操作。 这些证书通常从 CA 单独下载，会针对不同的 Web 服务器类型提供多种格式。 为 Microsoft IIS 选择版本。
    
     下载证书后，在 Windows 资源管理器中右键单击每个证书，然后选择“安装证书”。 
-    使用“证书导入向导”中的默认值，然后继续选择“下一步”，直到完成导入。
+    使用 **证书导入向导** 中的默认值，然后继续选择 **下一步** ，直到完成导入。
 5. 从 IIS 管理器导出 SSL 证书。 有关导出证书的详细信息，请参阅[导出服务器证书 (IIS 7)][exportcertiis]。 
    
    > [!IMPORTANT]
