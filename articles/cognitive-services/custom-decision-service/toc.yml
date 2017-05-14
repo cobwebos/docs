@@ -1,0 +1,14 @@
+- name: "自定义决策服务"
+  href: ../index.md
+- name: "概述"
+  href: custom-decision-service-overview.md
+- name: "入门"
+  items:
+  - name: "从浏览器调用 API"
+    href: custom-decision-service-get-started-browser.md
+  - name: "从应用调用 API"
+    href: custom-decision-service-get-started-app.md
+- name: "教程"
+  href: custom-decision-service-tutorial.md
+- name: "API 参考"
+  href: custom-decision-service-api-reference.md

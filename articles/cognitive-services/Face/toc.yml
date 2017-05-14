@@ -1,16 +1,19 @@
-- name: "Face API Documentation"
-  href: ../index.md
-- name: "Overview"
+- name: "人脸 API 文档"
+  href: index.md
+- name: "概述"
   href: Overview.md
-- name: "How to"
+- name: "如何"
   items:
-  - name: "Detect faces in image"
+  - name: "在图像中检测人脸"
     href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-  - name: "Identify faces in image"
+  - name: "在图像中识别人脸"
     href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
-  - name: "Analyze videos in real time"
+  - name: "添加人脸"
+    href: Face-API-How-to-Topics/face-how-to-add-faces.md
+  - name: "分析实时视频"
     href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
-- name: "Quickstarts"
+- name: "快速入门"
+  expanded: true
   items:
   - name: "cURL"
     href: QuickStarts/curl.md
@@ -26,19 +29,19 @@
     href: QuickStarts/Python.md
   - name: "Ruby"
     href: QuickStarts/Ruby.md
-- name: "Tutorials"
+- name: "教程"
   items:
   - name: "C#"
     href: Tutorials/FaceAPIinCSharpTutorial.md
-  - name: "Java for Android"
+  - name: "用于 Android 的 Java"
     href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
   - name: "Python"
     href: Tutorials/FaceAPIinPythonTutorial.md
-- name: "Reference"
-  items: 
-  - name: "Face API reference"
+- name: "引用"
+  items:
+  - name: "人脸 API 参考"
     href: APIReference.md
-  - name: "SDKs"
+  - name: "SDK"
     items:
     - name: "Android"
       href: https://github.com/Microsoft/Cognitive-Face-Android
@@ -48,13 +51,13 @@
       href: https://github.com/Microsoft/Cognitive-Face-Python
     - name: "Windows"
       href: https://github.com/Microsoft/Cognitive-Face-Windows
-- name: "Resources"
-  items: 
-    - name: "Samples"
+- name: "资源"
+  items:
+    - name: "示例"
       href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face
-    - name: "Glossary"
+    - name: "术语表"
       href: Glossary.md
-    - name: "FAQ"
+    - name: "常见问题"
       href: FAQ.md
-    - name: "Release notes"
+    - name: "发行说明"
       href: ReleaseNotes.md

@@ -78,32 +78,27 @@
 ## [服务限制](../active-directory-service-limits-restrictions.md)
 # v2.0 终结点
 ## [概述](active-directory-appmodel-v2-overview.md)
-### [差异](active-directory-v2-compare.md)
 ### [应用类型](active-directory-v2-flows.md)
 ### [限制](active-directory-v2-limitations.md)
-## 快速入门
-### 移动应用
-#### [iOS](active-directory-v2-devquickstarts-ios.md)
-#### [Windows Phone](active-directory-v2-devquickstarts-wpf.md)
-#### [Android](active-directory-v2-devquickstarts-android.md)
-### Web 应用和 API
-#### [AngularJS 与 Node JS](active-directory-v2-devquickstarts-angular-node.md)
-#### [Angular JS 与 .NET](active-directory-v2-devquickstarts-angular-dotnet.md)
-#### [.NET Web 应用](active-directory-v2-devquickstarts-dotnet-web.md)
-#### [.NET Web API](active-directory-v2-devquickstarts-dotnet-api.md)
-#### [NodeJS API](active-directory-v2-devquickstarts-node-api.md)
+### [v1-v2 比较](active-directory-v2-compare.md)
+## 入门
+### 移动应用和桌面应用
+#### [iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift)
+#### [Android](guidedsetups/active-directory-android.md)
+#### [Windows 桌面 .NET](guidedsetups/active-directory-windesktop.md)
+### Web 应用
+#### [Javascript SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+#### [ASP.NET Web 服务器](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS Web 应用](active-directory-v2-devquickstarts-node-web.md)
-#### [从 .NET Web 应用调用 Web API](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 ## 指南
 ### [注册应用](active-directory-v2-app-registration.md)
 ## 引用
-### [应用注册参考](active-directory-v2-registration-portal.md)
 ### [身份验证库](active-directory-v2-libraries.md)
 ### [v2.0 身份验证协议](active-directory-v2-protocols.md)
-#### [令牌参考](active-directory-v2-tokens.md)
-#### [OAuth 2.0 授权代码流](active-directory-v2-protocols-oauth-code.md)
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
-#### [隐式流](active-directory-v2-protocols-implicit.md)
-#### [OAuth 2.0 客户端凭据](active-directory-v2-protocols-oauth-client-creds.md)
+#### [OAuth 2.0 授权代码授予](active-directory-v2-protocols-oauth-code.md)
+#### [OAuth 2.0 隐式授予](active-directory-v2-protocols-implicit.md)
+#### [Oauth 2.0 客户端凭据授予](active-directory-v2-protocols-oauth-client-creds.md)
 #### [Oauth 2.0 代理流](active-directory-v2-protocols-oauth-on-behalf-of.md)
+#### [令牌参考](active-directory-v2-tokens.md)
 ### [范围](active-directory-v2-scopes.md)

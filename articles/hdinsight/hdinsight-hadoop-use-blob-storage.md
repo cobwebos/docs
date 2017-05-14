@@ -1,7 +1,7 @@
 ---
 title: "从 HDFS 兼容的 Azure 存储查询数据 | Microsoft Docs"
 description: "了解如何从 Azure 存储和 Azure Data Lake Store 查询数据，以存储分析结果。"
-keywords: "Blob 存储, hdfs, 结构化数据, 非结构化数据, Data Lake Store"
+keywords: "blob 存储,hdfs,结构化数据,非结构化数据,data lake store,Hadoop 输入,Hadoop 输出, hadoop 存储, hdfs 输入,hdfs 输出,hdfs 存储,wasb azure"
 services: hdinsight,storage
 documentationcenter: 
 tags: azure-portal
@@ -10,17 +10,18 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 1d2e65f2-16de-449e-915f-3ffbc230f815
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: f5c36624360b4a09819ea70f3ac23f943688c120
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: bc7707f3bbb6639699826550f39876d0096d6c03
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
