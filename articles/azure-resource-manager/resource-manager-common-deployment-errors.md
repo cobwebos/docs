@@ -11,15 +11,16 @@ keywords: "部署错误, azure 部署, 部署到 azure"
 ms.assetid: c002a9be-4de5-4963-bd14-b54aa3d8fa59
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: bfbb3356454b9ef8b1834d03e7b76de9860a12c9
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 7dfd3f7f0bebd0dbe20ffc9952d83cb8b4fcfe3e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -270,7 +271,7 @@ Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-如果尝试在模板中部署缺少的资源，请检查是否需要添加依赖关系。 如果可能，Resource Manager 将通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 **dependsOn** 元素创建与其他资源的依赖关系。 例如，在部署 Web 应用时，App Service 计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 通过在 Web 应用中设置依赖关系可避免此错误。
+如果尝试在模板中部署缺少的资源，请检查是否需要添加依赖关系。 如果可能，Resource Manager 将通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 **dependsOn** 元素创建与其他资源的依赖关系。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 通过在 Web 应用中设置依赖关系可避免此错误。
 
 ```json
 {
@@ -285,7 +286,7 @@ Message=Cannot find ServerFarm with name exampleplan.
 
 有关依赖项错误的故障诊断建议，请参阅[检查部署顺序](#check-deployment-sequence)。
 
-资源存在于另一资源组，而不是部署到的资源组时，也会看到此错误。 在这种情况下，请使用 [resourceId函数](resource-group-template-functions.md#resourceid)获取资源的完全限定名称。
+资源存在于另一资源组，而不是部署到的资源组时，也会看到此错误。 在这种情况下，请使用 [resourceId函数](resource-group-template-functions-resource.md#resourceid)获取资源的完全限定名称。
 
 ```json
 "properties": {
@@ -294,7 +295,7 @@ Message=Cannot find ServerFarm with name exampleplan.
 }
 ```
 
-如果尝试对无法解析的资源使用 [reference](resource-group-template-functions.md#reference) 或 [listKeys](resource-group-template-functions.md#listkeys) 函数，则会收到以下错误：
+如果尝试对无法解析的资源使用 [reference](resource-group-template-functions-resource.md#reference) 或 [listKeys](resource-group-template-functions-resource.md#listkeys) 函数，则会收到以下错误：
 
 ```
 Code=ResourceNotFound;
@@ -339,7 +340,7 @@ Code=StorageAccountAlreadyTaken
 Message=The storage account named mystorage is already taken.
 ```
 
-可将命名约定与 [uniqueString](resource-group-template-functions.md#uniquestring) 函数的结果连接起来创建一个唯一名称。
+可将命名约定与 [uniqueString](resource-group-template-functions-string.md#uniquestring) 函数的结果连接起来创建一个唯一名称。
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
@@ -349,7 +350,7 @@ Message=The storage account named mystorage is already taken.
 如果部署的存储帐户与订阅中的现有存储帐户名称相同，但提供一个不同的位置，则会收到一个错误消息，指示该存储帐户已存在于其他位置。 请删除现有存储帐户，或提供与现有存储帐户相同的位置。
 
 ### <a name="accountnameinvalid"></a>AccountNameInvalid
-尝试为存储帐户提供一个包含禁用字符的名称时，会看到 **AccountNameInvalid** 错误消息。 存储帐户名称长度必须为 3 到 24 个字符，并且只能使用数字和小写字母。 [uniqueString](resource-group-template-functions.md#uniquestring) 函数返回 13 个字符。 如果将前缀连接到 **uniqueString** 结果，请提供 11 个字符（或更少字符）的前缀。
+尝试为存储帐户提供一个包含禁用字符的名称时，会看到 **AccountNameInvalid** 错误消息。 存储帐户名称长度必须为 3 到 24 个字符，并且只能使用数字和小写字母。 [uniqueString](resource-group-template-functions-string.md#uniquestring) 函数返回 13 个字符。 如果将前缀连接到 **uniqueString** 结果，请提供 11 个字符（或更少字符）的前缀。
 
 ### <a name="badrequest"></a>BadRequest
 
@@ -496,7 +497,7 @@ Unit         : null
 在这种情况中，你应前往门户并提交一份支持问题以增加你在要部署区域内的配额。
 
 > [!NOTE]
-> 请记住，对于资源组，配额针对每个单独的区域，而不是针对整个订阅。 如果你需要在美国西部部署 30 个核心，则必须在美国西部寻求 30 个资源管理器核心。 如果需要在有权访问的任何区域内部署 30 个核心，则应在所有区域内请求 30 个 Resource Manager 核心。
+> 请记住，对于资源组，配额针对每个单独的区域，而不是针对整个订阅。 如果你需要在美国西部部署 30 个核心，则必须在美国西部寻求 30 个 Resource Manager 核心。 如果需要在有权访问的任何区域内部署 30 个核心，则应在所有区域内请求 30 个 Resource Manager 核心。
 >
 >
 
@@ -508,7 +509,7 @@ Code=InvalidContentLink
 Message=Unable to download deployment content from ...
 ```
 
-很可能尝试过链接到不可用的嵌套模板。 再次确认为嵌套模板提供的 URI。 如果模板存在于存储帐户中，请确保 URI 可访问。 可能需要传递 SAS 令牌。 有关详细信息，请参阅 [将链接的模板与 Azure 资源管理器配合使用](resource-group-linked-templates.md)。
+很可能尝试过链接到不可用的嵌套模板。 再次确认为嵌套模板提供的 URI。 如果模板存在于存储帐户中，请确保 URI 可访问。 可能需要传递 SAS 令牌。 有关详细信息，请参阅 [将链接的模板与 Azure Resource Manager 配合使用](resource-group-linked-templates.md)。
 
 ### <a name="requestdisallowedbypolicy"></a>RequestDisallowedByPolicy
 订阅包含阻止尝试在部署期间执行的操作的资源策略时，会收到此错误消息。 请在错误消息中查找策略标识符。
@@ -517,7 +518,7 @@ Message=Unable to download deployment content from ...
 Policy identifier(s): '/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition'
 ```
 
-在 **PowerShell** 中，提供该策略标识符作为 **Id** 参数，检索阻止部署的策略的详细信息。
+在 **PowerShell**  中，提供该策略标识符作为 **Id** 参数，检索阻止部署的策略的详细信息。
 
 ```powershell
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -626,7 +627,7 @@ az policy definition show --name regionPolicyAssignment
 
 如果以意外的顺序部署资源，可能发生许多部署错误。 依赖关系设置不当就会出现这些错误。 缺少必需的依赖项时，就会出现一项资源尝试使用另一资源的值，但后者却不存在的情况。 出现一个错误，指出找不到资源。 可能会间歇性地遇到此类错误，因为资源的部署时间各不相同。 例如，第一次尝试部署资源成功，因为所需资源偶然但却及时地完成了相关操作。 但是，第二次尝试却失败了，因为所需资源未及时完成相关操作。 
 
-不过，你想要避免设置不必要的依赖项。 存在不必要的依赖项时，会导致不互相依赖的资源无法并行部署，从而延长了部署时间。 此外，可能会创建阻止部署的循环依赖项。 [reference](resource-group-template-functions.md#reference) 函数可创建隐式依赖项，依赖于在函数中指定为参数的资源，前提是该资源部署在同一模板中。 因此，用户拥有的依赖项可以多于在 **dependsOn** 属性中指定的依赖项。 [resourceId](resource-group-template-functions.md#resourceid) 函数不创建隐式依赖项，也不验证资源是否存在。
+不过，你想要避免设置不必要的依赖项。 存在不必要的依赖项时，会导致不互相依赖的资源无法并行部署，从而延长了部署时间。 此外，可能会创建阻止部署的循环依赖项。 [reference](resource-group-template-functions-resource.md#reference) 函数可创建隐式依赖项，依赖于在函数中指定为参数的资源，前提是该资源部署在同一模板中。 因此，用户拥有的依赖项可以多于在 **dependsOn** 属性中指定的依赖项。 [resourceId](resource-group-template-functions-resource.md#resourceid) 函数不创建隐式依赖项，也不验证资源是否存在。
 
 遇到依赖项问题时，需了解资源部署顺序。 查看部署操作顺序的方法如下：
 

@@ -8,10 +8,11 @@ ms.author: byvinyal
 ms.date: 04/04/2017
 ms.topic: article
 ms.service: app-service-web
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 8d9b4a4fa3b62659fc7e2aa1c6329fdc5e01fe39
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 29df824062d00e01b786533033097948c008588f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 ---
 # <a name="monitor-app-service"></a>监视应用服务
@@ -24,15 +25,15 @@ ms.lasthandoff: 04/21/2017
 - 调试并解决问题。
 
 ## <a name="before-you-begin"></a>开始之前
-- 需要通过 Web 应用进行监视，并按下列步骤操作。 
+- 需要通过 Web 应用进行监视，并按下列步骤操作。
     - 可按[使用 SQL 数据库在 Azure 中创建 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)教程中所述步骤来创建应用程序。
 
-- 若要尝试对应用程序进行**远程调试**，则需要使用 Visual Studio。 
-    - 如果尚未安装 Visual Studio 2017，可以下载并使用免费的 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 
+- 若要尝试对应用程序进行**远程调试**，则需要使用 Visual Studio。
+    - 如果尚未安装 Visual Studio 2017，可以下载并使用免费的 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。
     - 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
 ## <a name="metrics"></a>步骤 1 - 查看指标
-**指标**有助于了解以下信息： 
+**指标**有助于了解以下信息：
 - 应用程序运行状况
 - 应用性能
 - 资源消耗
@@ -50,7 +51,7 @@ ms.lasthandoff: 04/21/2017
 > * 规模计数：一个、两个、三个实例，等等。
 > * SKU：免费、共享、基本、标准、高级，等等。
 
-若要查看 Web 应用的指标，请转到要监视的应用的“概述”边栏选项卡。 在此处，可以**监视磁贴**的形式查看应用的指标图表。 单击磁贴，对要查看的指标和要显示的时间范围进行编辑和配置。 
+若要查看 Web 应用的指标，请转到要监视的应用的“概述”边栏选项卡。 在此处，可以**监视磁贴**的形式查看应用的指标图表。 单击磁贴，对要查看的指标和要显示的时间范围进行编辑和配置。
 
 默认情况下，资源边栏选项卡提供过去一个小时的应用程序请求和错误视图。
 ![监视应用](media/app-service-web-tutorial-monitoring/app-service-monitor.png)
@@ -61,13 +62,13 @@ ms.lasthandoff: 04/21/2017
 > 要了解关于 Azure Monitor 的详细信息，请访问以下链接：
 > - [Azure Monitor 入门](..\monitoring-and-diagnostics\monitoring-overview.md)
 > - [Azure 指标](..\monitoring-and-diagnostics\monitoring-overview-metrics.md)
-> - [Azure Monitor 支持的指标](..\monitoring-and-diagnostics\monitoring-supported-metrics.md#microsoftwebsites-including-functions)
+> - [Azure Monitor 支持的指标](..\monitoring-and-diagnostics\monitoring-supported-metrics.md)
 > - [Azure 仪表板](..\azure-portal\azure-portal-dashboards.md)
 
 ## <a name="alerts"></a>步骤 2 - 配置警报
 可将**警报**配置为在应用出现特定的状态时触发。
 
-在[步骤 1 - 查看指标](#metrics)中，我们看到该应用程序生成了大量错误。 
+在[步骤 1 - 查看指标](#metrics)中，我们看到该应用程序生成了大量错误。
 
 让我们配置一个警报，以便在发生错误时自动接收通知。 在本例中，我们希望每当 HTTP 50X 错误数超过特定的阈值时，该警报就会发送电子邮件。
 
@@ -76,14 +77,14 @@ ms.lasthandoff: 04/21/2017
 ![警报](media/app-service-web-tutorial-monitoring/app-service-monitor-alerts.png)
 
 为警报配置提供值：
-- **资源：**要使用警报监视的站点。 
+- **资源：**要使用警报监视的站点。
 - **名称：**警报的名称，在本例中为 *High HTTP 50X*。
 - **说明：**描述此警报的监视内容的纯文本说明。
 - **警报依据：**警报可以监视指标或事件，在本示例中，我们要监视指标。
 - **指标：**要监视的指标，在本例中为“HTTP 服务器错误”。
 - **条件：**何时触发警报，本例选择了“大于”选项。
 - **阈值：**要监视的值，在本例中为 *400*。
-- **时间段：**警报针对指标的平均值运行。 时间段越小，生成的警报越灵敏。 在本例中，监视的时间段为“5 分钟”。 
+- **时间段：**警报针对指标的平均值运行。 时间段越小，生成的警报越灵敏。 在本例中，监视的时间段为“5 分钟”。
 - **电子邮件所有者和参与者：**在本例中设置为“已启用”。
 
 创建警报后，每当应用超过配置的阈值时，系统会发送一封电子邮件。 还可以在 Azure 门户中查看活动的警报。
@@ -115,7 +116,7 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="diagnose"></a>步骤 4 - 诊断并解决问题
 **诊断并解决问题**可帮助你将应用程序问题与平台问题区分开来。 它还可以建议可行的缓解措施，使 Web 应用恢复正常。
- 
+
 ![诊断并解决问题](media/app-service-web-tutorial-monitoring/app-service-monitor-diagnosis.png)
 
 沿用前面步骤中的示例，我们可以看到，应用程序一直存在可用性问题。 相比之下，平台可用性从未低于 100%。
@@ -128,7 +129,7 @@ ms.lasthandoff: 04/21/2017
 通过日志记录，可以为 Web 应用收集**应用程序诊断**和 **Web 服务器诊断**日志。
 
 ### <a name="application-diagnostics"></a>应用程序诊断
-应用程序诊断可以捕获在运行时由应用程序产生的跟踪。 
+应用程序诊断可以捕获在运行时由应用程序产生的跟踪。
 
 将跟踪添加到应用程序可以大大提高调试和查明问题的能力。
 
@@ -165,19 +166,19 @@ public ActionResult Delete(Guid? id)
  ### <a name="web-server-diagnostics"></a>Web 服务器诊断
 即使未检测应用，也会生成 Web 服务器日志。 应用服务可收集三种不同类型的服务器日志：
 
-- **Web 服务器日志记录** 
-    - 使用 [W3C 扩展日志文件格式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)的 HTTP 事务信息。 
+- **Web 服务器日志记录**
+    - 使用 [W3C 扩展日志文件格式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)的 HTTP 事务信息。
     - 这在确定整体站点指标（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
-- **详细错误日志记录** 
-    - 指示故障的 HTTP 状态代码（状态代码 400 或更大数字）的详细错误消息。 
+- **详细错误日志记录**
+    - 指示故障的 HTTP 状态代码（状态代码 400 或更大数字）的详细错误消息。
     - [了解详细错误日志记录](https://www.iis.net/learn/troubleshoot/diagnosing-http-errors/how-to-use-http-detailed-errors-in-iis)
-- **失败请求跟踪** 
-    - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 
+- **失败请求跟踪**
+    - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。
     - 失败请求日志在尝试隔离造成特定 HTTP 错误的因素时十分有用。
     - [详细了解失败请求跟踪](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing/troubleshooting-failed-requests-using-tracing-in-iis)
 
 启用服务器日志记录：
-- 请转到“监视” > “诊断日志”。 
+- 请转到“监视” > “诊断日志”。
 - 使用切换启用不同类型的 Web 服务器诊断。
 
 ![监视应用](media/app-service-web-tutorial-monitoring/app-service-monitor-serverlogs.png)
@@ -190,17 +191,17 @@ public ActionResult Delete(Guid? id)
 
 - **应用程序日志** - `%HOME%/LogFiles/Application/`。
     - 此文件夹包含一个或多个包含应用程序日志记录生成的信息的文本文件。
-- **失败请求跟踪** - `%HOME%/LogFiles/W3SVC#########/`。 
-    - 此文件夹包含一个 XSL 文件和一个或多个 XML 文件。 
-- **详细错误日志** - `%HOME%/LogFiles/DetailedErrors/`。 
+- **失败请求跟踪** - `%HOME%/LogFiles/W3SVC#########/`。
+    - 此文件夹包含一个 XSL 文件和一个或多个 XML 文件。
+- **详细错误日志** - `%HOME%/LogFiles/DetailedErrors/`。
     - 此文件夹包含一个或多个 .htm 文件，提供由应用生成的 HTTP 错误的详细信息。
-- **Web 服务器日志** - `%HOME%/LogFiles/http/RawLogs`。 
+- **Web 服务器日志** - `%HOME%/LogFiles/http/RawLogs`。
     - 此文件夹包含使用 W3C 扩展日志文件格式进行格式化的一个或多个文本文件。
 
 ## <a name="streaming"></a>步骤 6 - 日志流式处理
 使用流式处理日志调试应用程序十分便利，因为相较于通过 FTP [访问日志](#Accessing-Logs)，它更节省时间。
 
-应用服务可在生成**应用程序日志**和 **Web 服务器日志**时对其进行流式处理。 
+应用服务可在生成**应用程序日志**和 **Web 服务器日志**时对其进行流式处理。
 
 > [!TIP]
 > 在尝试流式处理日志前，请确保你已启用收集日志，如[日志记录](#logging)部分所述。
@@ -219,7 +220,7 @@ public ActionResult Delete(Guid? id)
 
 将调试程序附加到在云端运行的应用：
 
-- 使用 Visual Studio 2017，打开要进行调试的应用的解决方案 
+- 使用 Visual Studio 2017，打开要进行调试的应用的解决方案
 - 像在本地开发中操作的那样设置一些断点。
 - 打开“云资源管理器”（ctr + /，ctrl + x）。
 - 根据需要，使用 Azure 凭据登录。
@@ -241,7 +242,7 @@ Visual Studio 为应用程序配置远程调试，并启动一个导航至应用
 使用**进程资源管理器**来：
 
 - 枚举应用服务计划中不同实例之间的所有进程。
-- 向下钻取并查看与每个进程关联的句柄和模块。 
+- 向下钻取并查看与每个进程关联的句柄和模块。
 - 在进程级别查看 CPU、工作集和线程计数，以便确定失控进程数
 - 查找打开的文件句柄，甚至终止特定的进程实例。
 
@@ -251,11 +252,11 @@ Visual Studio 为应用程序配置远程调试，并启动一个导航至应用
 
 
 ## <a name="insights"></a>步骤 9 - Application Insights
-**Application Insights** 为应用提供了应用程序分析和高级监视功能。 
+**Application Insights** 为应用提供了应用程序分析和高级监视功能。
 
 使用 Application Insights 在 Web 应用中检测和诊断异常以及性能问题。
 
-在“监视” > “Application Insights”中可以为 Web 应用启用 Application Insights 
+在“监视” > “Application Insights”中可以为 Web 应用启用 Application Insights
 
 > [!NOTE]
 > Application Insights 可能会提示你安装 Application Insights 站点扩展，以开始收集数据。 安装站点扩展会导致应用程序重启。
@@ -269,3 +270,4 @@ Application Insights 拥有丰富的功能集，要了解详细信息，请参�
  - [什么是 Application Insights](..\application-insights\app-insights-overview.md)
  - [使用 Application Insights 监视 Azure Web 应用性能](..\application-insights\app-insights-azure-web-apps.md)
  - [使用 Application Insights 监视任何网站的可用性和响应能力](..\application-insights\app-insights-monitor-web-app-availability.md)
+

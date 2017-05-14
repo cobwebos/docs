@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 006d8e10acd6b4b756c0b78988176f71c3802080
-ms.lasthandoff: 03/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 5617f6453cb5dbb1c86ec41d7b9649356a3d9c78
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -29,7 +30,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 ## <a name="dependson"></a>dependsOn
 在模板中，使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 它的值可以是一个资源名称间采用逗号进行分隔的列表。 
 
-以下示例显示了一个虚拟机缩放集，该集依赖于负载均衡器、虚拟网络以及创建多个存储帐户的循环。 下面的示例中未显示其他这些资源，但它们需要存在于模板的其他位置。
+以下示例显示了一个虚拟机规模集，该集依赖于负载均衡器、虚拟网络以及创建多个存储帐户的循环。 下面的示例中未显示其他这些资源，但它们需要存在于模板的其他位置。
 
 ```json
 {
@@ -108,7 +109,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 ```
 
 ## <a name="reference-function"></a>引用函数
-[引用函数](resource-group-template-functions.md#reference)使表达式能够从其他 JSON 名值对或运行时资源中派生其值。 引用表达式隐式声明一个资源依赖于另一个资源。 常规格式为：
+[引用函数](resource-group-template-functions-resource.md#reference)使表达式能够从其他 JSON 名值对或运行时资源中派生其值。 引用表达式隐式声明一个资源依赖于另一个资源。 常规格式为：
 
 ```json
 reference('resourceName').propertyPath
@@ -133,7 +134,7 @@ reference('resourceName').propertyPath
 
 可以使用此元素或 dependsOn 元素来指定依赖关系，但不需要同时使用它们用于同一依赖资源。 只要可能，可使用隐式引用以避免添加不必要的依赖项。
 
-若要了解详细信息，请参阅[引用函数](resource-group-template-functions.md#reference)。
+若要了解详细信息，请参阅[引用函数](resource-group-template-functions-resource.md#reference)。
 
 ## <a name="recommendations-for-setting-dependencies"></a>关于设置依赖项的建议
 

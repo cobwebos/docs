@@ -76,7 +76,9 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 | 计算 |不关联的虚拟机磁盘。 | 迁移存储帐户时，将迁移这些磁盘后面的 VHD blob |
 | 计算 |虚拟机映像。 | 迁移存储帐户时，将迁移这些磁盘后面的 VHD blob |
 | 网络 |终结点 ACL。 | 删除终结点 ACL 并重试迁移。 |
-| 网络 |使用授权链接（请参阅常见问题）、应用程序网关的 ExpressRoute | 开始迁移之前请删除该网关，然后在迁移完成后重新创建该网关。 |
+| 网络 |使用 ExpressRoute 网关和 VPN 网关的虚拟网络  | 开始迁移之前请删除 VPN 网关，然后在迁移完成后重新创建 VPN 网关。 详细了解 [ExpressRoute 迁移](../articles/expressroute/expressroute-migration-classic-resource-manager.md)。|
+| 网络 |带授权链接的 ExpressRoute  | 在开始迁移之前，请删除 ExpressRoute 线路到虚拟网络的连接，在迁移完成后再重新创建该连接。 详细了解 [ExpressRoute 迁移](../articles/expressroute/expressroute-migration-classic-resource-manager.md)。 |
+| 网络 |应用程序网关 | 开始迁移之前请删除应用程序网关，然后在迁移完成后重新创建应用程序网关。 |
 | 网络 |使用 VNet 对等互连的虚拟网络。 | 将虚拟网络迁移到 Resource Manager，然后对等互连。 详细了解 [VNet 对等互连](../articles/virtual-network/virtual-network-peering-overview.md)。 | 
 
 ### <a name="unsupported-configurations"></a>不支持的配置

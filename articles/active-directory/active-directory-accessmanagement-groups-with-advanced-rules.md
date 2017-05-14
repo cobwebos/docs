@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
-ms.openlocfilehash: 00424292fbc5321a77a4e924530ade97739208d4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: d00375d9bc696b41a074eebe6d205e6907a54c4b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -26,13 +28,14 @@ ms.openlocfilehash: 00424292fbc5321a77a4e924530ade97739208d4
 当用户的任何属性发生更改时，系统将评估目录中的所有动态组规则，以查看用户的属性更改是否会触发任何组添加或删除。 如果用户满足组中的规则，他们将作为成员添加到该组。 如果他们不再满足所属组的规则，则会从该组中删除他们的身份身份。
 
 > [!NOTE]
-> 你可以为安全组或 Office 365 组中的动态成员身份设置规则。 目前不支持使用嵌套的组成员身份来对应用程序进行基于组的分配。
+> 你可以为安全组或 Office 365 组中的动态成员身份设置规则。 
 >
 > 动态组成员身份要求将 Azure AD Premium 许可证分配到
 >
 > * 管理组中规则的管理员
 > * 组的所有成员
 >
+> 请也不要（虽然可以）创建设备或用户的动态组，不能创建同时选择用户和设备对象的规则。 
 
 ## <a name="to-create-the-advanced-rule"></a>创建高级规则
 1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“Active Directory”，然后打开你的组织的目录。
@@ -105,7 +108,7 @@ user.mail –ne null
 | --- | --- | --- |
 | 错误: 不支持的属性。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/>属性应匹配[支持的属性列表](#supported-properties)中的一个属性。 |
 | 错误: 不支持对属性使用运算符。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/>属性为布尔值类型。 对布尔值类型使用上面列出的受支持运算符（-eq 或 -ne）。 |
-| 错误: 查询编译错误。 |(user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") |(user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>逻辑运算符应匹配上述受支持属性列表中的某个属性。(user.userPrincipalName - 匹配 ".*@domain.ext")or(user.userPrincipalName - 匹配正则表达式中的 "@domain.ext$")Error。 |
+| 错误: 查询编译错误。 |(user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") |(user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>逻辑运算符应匹配上述受支持属性列表中的一个属性。(user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$")正则表达式中有错误。 |
 | 错误: 二进制表达式的格式不正确。 |(user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>查询包含多个错误。 括号的位置不正确。 |
 | 错误: 在设置动态成员身份期间发生未知的错误。 |(user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>查询包含多个错误。 括号的位置不正确。 |
 
@@ -251,9 +254,4 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 * [用于配置组设置的 Azure Active Directory cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
