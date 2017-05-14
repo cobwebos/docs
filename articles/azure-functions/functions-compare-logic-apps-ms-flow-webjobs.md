@@ -1,6 +1,6 @@
 ---
 title: "在流、逻辑应用、函数和 Web 作业之间进行选择 | Microsoft Docs"
-description: "比较和对比来自 Microsoft 的&4; 个云集成服务，并决定应使用哪个服务。"
+description: "比较和对比来自 Microsoft 的 4 个云集成服务，并决定应使用哪个服务。"
 services: functions,app-service\logic
 documentationcenter: na
 author: cephalin
@@ -15,9 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/08/2016
 ms.author: chrande; glenga
-translationtype: Human Translation
-ms.sourcegitcommit: ee94e074c574bc2e6e1a52dbfd6bd0ae102cb342
-ms.openlocfilehash: 0d007bf2a0f5a40fcb7ac6dfe5beff05a4310701
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0f35d79870301bcba9f009f7dbc00696ce426458
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,7 +29,7 @@ ms.openlocfilehash: 0d007bf2a0f5a40fcb7ac6dfe5beff05a4310701
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
-* [Azure App Service WebJobs](../app-service-web/web-sites-create-web-jobs.md)
+* [Azure 应用服务 WebJobs](../app-service-web/web-sites-create-web-jobs.md)
 
 将分散的系统"粘附"在一起时，所有这些服务很有用。 它们都可以定义输入、操作、条件和输出。 你可以在日程安排或触发器中运行其中一个。 但是，每个服务中添加一组唯一的值，对它们进行比较不是“哪个服务最佳？”的问题， 而是“哪个服务最适合于这种情况？”问题。 通常，这些服务的组合是快速构建可扩展、全功能的集成解决方案的最佳方法。
 
@@ -56,9 +58,9 @@ ms.openlocfilehash: 0d007bf2a0f5a40fcb7ac6dfe5beff05a4310701
 <a name="function"></a>
 
 ## <a name="functions-vs-webjobs"></a>函数 vs.Web 作业
-我们可以一起讨论 Azure Functions 和 Azure App Service WebJobs，因为它们都是代码优先的集成服务，且是为开发人员设计的。 它们使你能够运行脚本或一段代码以响应各种事件，如[新存储 Blob](functions-bindings-storage.md) 或 [WebHook 请求](functions-bindings-http-webhook.md)。 以下是它们的相似之处： 
+我们可以一起讨论 Azure Functions 和 Azure 应用服务 WebJobs，因为它们都是代码优先的集成服务，且是为开发人员设计的。 它们使你能够运行脚本或一段代码以响应各种事件，如[新存储 Blob](functions-bindings-storage.md) 或 [WebHook 请求](functions-bindings-http-webhook.md)。 以下是它们的相似之处： 
 
-* 二者都是在 [Azure App Service](../app-service/app-service-value-prop-what-is.md) 上构建的，并享有[源控件](../app-service-web/app-service-continuous-deployment.md)[身份验证](../app-service/app-service-authentication-overview.md) 和 [监视](../app-service-web/web-sites-monitor.md)。
+* 二者都是在 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md) 上构建的，并享有[源控件](../app-service-web/app-service-continuous-deployment.md)[身份验证](../app-service/app-service-authentication-overview.md) 和 [监视](../app-service-web/web-sites-monitor.md)。
 * 二者均是专门针对开发人员的服务。
 * 二者均支持标准的脚本和编程语言。
 * 二者均具有 NuGet 和 NPM 支持。
@@ -79,7 +81,7 @@ ms.openlocfilehash: 0d007bf2a0f5a40fcb7ac6dfe5beff05a4310701
 | 扩展 |无配置缩放 |应用服务计划的缩放 |
 | 定价 |按使用或作为应用服务计划的部分付费 |应用服务计划的部分 |
 | 运行类型 |触发、计划（通过计时器触发器） |触发的、连续的、计划的 |
-| 触发事件 |[计时器](functions-bindings-timer.md)、[Azure DocumentDB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook （GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 通知中心](functions-bindings-notification-hubs.md)、[Azure 服务总线](functions-bindings-service-bus.md)、[Azure 存储](functions-bindings-storage.md) |[Azure 存储](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)、[Azure 服务总线](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
+| 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 通知中心](functions-bindings-notification-hubs.md)、[Azure 服务总线](functions-bindings-service-bus.md)、[Azure 存储](functions-bindings-storage.md) |[Azure 存储](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)、[Azure 服务总线](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
 | 浏览器开发 |x | |
 | Window 脚本 |实验 |x |
 | PowerShell |实验 |x |
@@ -113,15 +115,10 @@ ms.openlocfilehash: 0d007bf2a0f5a40fcb7ac6dfe5beff05a4310701
 
 或者，通过以下链接获取有关这些集成服务的详细信息：
 
-* [利用 Azure Functions 和 Azure App Service 实现集成方案，来自 Christopher Anderson](http://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
+* [利用 Azure Functions 和 Azure 应用服务实现集成方案，来自 Christopher Anderson](http://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
 * [集成简化，来自 Charles Lamanna](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [逻辑应用实时网络广播](http://aka.ms/logicappslive)
 * [Microsoft Flow 的常见问题](https://flow.microsoft.com/documentation/frequently-asked-questions/)
 * [Azure WebJobs 文档资源](../app-service-web/websites-webjobs-resources.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 05/09/2017
 ms.author: johnkem; magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: be27a3541caa1620af432dcff438f70cb9b1074b
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1978ecda9c635ace713b43f620300a06f4c609ba
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -181,20 +182,25 @@ ms.lasthandoff: 03/18/2017
 
 | 服务 | 架构和文档 |
 | --- | --- |
-| 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../load-balancer/load-balancer-monitor-log.md) |
-| 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md) |
+| API 管理 | 架构不可用。 |
 | 应用程序网关 |[应用程序网关的诊断日志记录](../application-gateway/application-gateway-diagnostics.md) |
-| 密钥保管库 |[Azure 密钥保管库日志记录](../key-vault/key-vault-logging.md) |
-| Azure 搜索 |[允许并使用搜索流量分析](../search/search-traffic-analytics.md) |
-| Data Lake Store |[访问 Azure Data Lake Store 的诊断日志](../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| 数据湖分析 |[访问 Azure Data Lake Analytics 的诊断日志](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
-| Logic Apps |[逻辑应用 B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
-| Azure 批处理 |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
 | Azure 自动化 |[Azure 自动化的 Log Analytics](../automation/automation-manage-send-joblogs-log-analytics.md) |
+| Azure 批处理 |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
+| Customer Insights | 架构不可用。 |
+| 内容传送网络 | 架构不可用。 |
+| 数据湖分析 |[访问 Azure Data Lake Analytics 的诊断日志](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
+| Data Lake Store |[访问 Azure Data Lake Store 的诊断日志](../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Express Route | 架构不可用。 |
 | 事件中心 |[Azure 事件中心诊断日志](../event-hubs/event-hubs-diagnostic-logs.md) |
-| 流分析 |[作业诊断日志](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| 密钥保管库 |[Azure 密钥保管库日志记录](../key-vault/key-vault-logging.md) |
+| 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../load-balancer/load-balancer-monitor-log.md) |
+| 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
+| 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md) |
+| 恢复服务 | 架构不可用。|
+| 搜索 |[允许并使用搜索流量分析](../search/search-traffic-analytics.md) |
+| 服务器管理 | 架构不可用。 |
 | 服务总线 |[Azure 服务总线诊断日志](../service-bus-messaging/service-bus-diagnostic-logs.md) |
-
+| 流分析 |[作业诊断日志](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
 |资源类型|类别|类别显示名称|
@@ -204,6 +210,8 @@ ms.lasthandoff: 03/18/2017
 |Microsoft.Automation/automationAccounts|JobStreams|作业流|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Dsc 节点状态|
 |Microsoft.Batch/batchAccounts|ServiceLog|服务日志|
+|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|获取终结点的指标，例如带宽、流出量等。|
+|Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataLakeAnalytics/accounts|审核|审核日志|
 |Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
@@ -216,13 +224,16 @@ ms.lasthandoff: 03/18/2017
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|集成帐户跟踪事件|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|网络安全组事件|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|网络安全组规则计数器|
-|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|网络安全组规则流事件|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|负载均衡器警报事件|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|负载均衡器探测运行状况|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|应用程序网关访问日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|应用程序网关性能日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|应用程序网关防火墙日志|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM 计数器表|
+|Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure 备份报告数据|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery 作业|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery 事件|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicatedItems|Azure Site Recovery 复制项|
 |Microsoft.Search/searchServices|OperationLogs|操作日志|
 |Microsoft.ServerManagement/nodes|RequestLogs|请求日志|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|运行日志|

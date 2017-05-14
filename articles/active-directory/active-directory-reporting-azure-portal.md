@@ -1,6 +1,7 @@
 ---
-title: "Azure Active Directory 报告（预览版）| Microsoft Docs"
-description: "列出 Azure Active Directory 预览的各种可用报表"
+
+title: "Azure Active Directory 报告 | Microsoft Docs"
+description: "列出 Azure Active Directory 的各种可用报告"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,19 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: be986fd7bb1745dcf43a1066dfabc1e1c699ab4c
-ms.openlocfilehash: b9cd11954a52600c1cd50155cb7ce9b7d2355cd3
-ms.lasthandoff: 01/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: c7fe995f097c72ab5275249538fe2bb65efac256
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="azure-active-directory-reporting---preview"></a>Azure Active Directory 报表 - 预览
+# <a name="azure-active-directory-reporting"></a>Azure Active Directory 报告
 
 
 *本文档是 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)的一部分。*
 
-通过 Azure Active Directory 预览中的报表，可以获取确定环境的运行状况所需的所有信息。 [预览包括哪些内容？](active-directory-preview-explainer.md)
+通过 Azure Active Directory (Azure AD) 中的报告，可以获取确定环境运行状况所需的信息。
 
 报表包含两个主要区域：
 

@@ -11,12 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 05/10/2017
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 229dd21f3ab1ae716cd49611e720450ae5939eb8
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 0a66567d7381f38787f9aa7652c944e4bb3aef82
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -99,20 +100,18 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ## <a name="data-rate"></a>数据速率
 发送数据时存在三种数量限值：
 
-* **每日上限。** 最大上限为 500 GB/天。 使用 Visual Studio 创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天）。 使用 Azure 门户创建 Application Insights 资源时，该值会设置为最大。 更改时请务必小心，因为达到上限将导致你在一天的剩余时间中丢失数据。 若要更改它，请使用从数据量管理边栏选项卡链接的每日数据量上限。
-* **[采样](app-insights-sampling.md)。** 此机制可减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。
-* **限制**：数据速率上限为每秒 32000 个事件，取 1 分钟的平均值。 
+* **采样：**可以使用此机制减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 这是你拥有的调整数据量的主要工具。 了解有关[采样功能](app-insights-sampling.md)的详细信息。 
+* **每日上限：**从 Azure 门户创建 Application Insights 资源时，此项设置为 500 GB/天。 从 Visual Studio 创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天），仅为了便于测试。 在这种情况下，可预期用户在将应用部署到生产环境之前，会提高每日上限。 除非你为高流量应用程序请求了更高的最大值，否则最大上限是 500 GB/天。 设置每日上限时要格外小心，因为你的意图应是**永远不达到每日上限**，因为达到了会在当天的剩余时间内丢失数据，并且无法监视应用程序。 若要更改它，请使用从“数据量管理”边栏选项卡链接的“每日数据量上限”边栏选项卡（参见下文）。 请注意，某些订阅类型具有无法用于 Application Insights 的信用额度。 如果订阅有支出限制，“每日上限”边栏选项卡将提供如何去除此限制，并使每日上限提高到超过 32.3 MB/天的说明。  
+* **限制**：此项将数据速率限制为每秒 32000 个事件，取 1 分钟的平均值。 
 
 
 *如果应用超过限制速率，会发生什么情况？*
 
-* 每分钟会评估一次应用发送的数据量。 如果超出一分钟内的平均每秒速率，服务器将拒绝某些请求。 SDK 会缓冲数据，然后尝试重新发送，导致数分钟内数据传输量激增。 如果应用连续以超出限制的速率发送数据，一些数据将被丢弃。 （ASP.NET、Java 和 JavaScript Sdk 会尝试以这种方式重新发送；其他 SDK 可能会丢弃超出限制的数据。）
+* 每分钟会评估一次应用发送的数据量。 如果超出一分钟内的平均每秒速率，服务器将拒绝某些请求。 SDK 会缓冲数据，然后尝试重新发送，导致数分钟内数据传输量激增。 如果应用连续以超出限制的速率发送数据，一些数据将被丢弃。 （ASP.NET、Java 和 JavaScript Sdk 会尝试以这种方式重新发送；其他 SDK 可能会丢弃超出限制的数据。）如果发生超出限制的情况，将会显示一个通知，警告发生了这种情况。
 
-如果发生超出限制的情况，将会显示一个通知，警告发生了这种情况。
+*如何知道我的应用正在发送的数据量？*
 
-*如何知晓应用发送了多少数据点？*
-
-* 打开“定价”边栏选项卡，查看“数据量”图表。
+* 打开“数据量管理”边栏选项卡查看每日数据量图表。 
 * 或在“指标资源管理器”中，添加新图表并选择“数据点量”作为其指标。 启用“分组”，并按**数据类型**分组。
 
 ## <a name="to-reduce-your-data-rate"></a>降低数据速率
@@ -130,7 +129,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 
 相反，请使用[采样](app-insights-sampling.md)将数据量调整到所需级别，将每日上限仅用作防止应用程序意外发送过多遥测数据量的“最后手段”。 
 
-若要更改每日上限，请打开“功能+定价”>“数据管理”。
+若要更改每日上限，请在 Application Insights 资源的“配置”部分中，依次单击“数据量管理”、“每日上限”。
 
 ![调整每日遥测数据量上限](./media/app-insights-pricing/daily-cap.png) 
 
@@ -149,10 +148,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ![单击“配额和定价”边栏选项卡中的“示例”磁贴，然后选择采样分数。](./media/app-insights-pricing/04.png)
 
 > [!WARNING]
-> “保留的样本”磁贴上显示的值仅指示为引入采样设置的值。 它不会显示应用中 SDK 处运行的采样率。 
-> 
-> 如果传入的遥测已在 SDK 处进行了采样，则不适用引入采样。
-> 
+> “数据采样”边栏选项卡仅控制引入采样的值。 它不反映 Application Insights SDK 在应用中应用的采样速率。 如果传入的遥测已在 SDK 处进行了采样，则不适用引入采样。
 > 
 
 若要查找实际采样率（无论是否已应用），请使用如下所示的[分析查询](app-insights-analytics.md)：

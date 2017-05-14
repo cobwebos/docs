@@ -1,71 +1,36 @@
-> [!NOTE]
-> 我们计划改进此体验，取消以下步骤。
 
-### <a name="create-an-administrator-credential-in-the-azure-ad-b2c-tenant"></a>在 Azure AD B2C 租户中创建管理员凭据。
+### <a name="add-signing-and-encryption-keys-to-your-b2c-tenant-for-use-by-custom-policies"></a>将签名和加密密钥添加到 B2C 租户，供自定义策略使用
 
-至于下一部分，你需要使用的凭据会使用 Azure AD B2C 租户的域。 为此，你需要使用此类凭据创建管理员帐户。 为此，请执行以下操作：
+1. 导航到 Azure AD B2C 租户设置中的“标识体验框架”边栏选项卡。
+1. 选择`Policy Keys`，以便查看租户中的可用密钥。 如果 `B2C_1A_TokenSigningKeyContainer` 存在，则跳过此密钥。
+1. 创建 `TokenSigningKeyContainer`  
+ * 单击`+Add`
+ * “选项”>`Generate`
+ * “名称”>`TokenSigningKeyContainer` 前缀 B2C_1A_ 可以自动添加。
+ * 密钥类型 > `RSA`
+ * 日期 - 使用默认值
+ * “密钥用法”>`Signature`
+1. 单击 `Create`
+1. 如果名为 `B2C_1A_TokenEncryptionKeyContainer` 的密钥存在，则跳过此密钥。
+1. 创建 `TokenEncryptionKeyContainer`。
+ * “选项”>`Generate`
+ * “名称”>`TokenSigningKeyContainer` 前缀 B2C_1A_ 可以自动添加。
+ * 密钥类型 > `RSA`
+ * 日期 - 使用默认值
+ * “密钥用法”>`Encryption`
+1. 单击 `Create`
 
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 Azure AD B2C 租户的上下文，然后打开 Azure AD B2C 边栏选项卡。 [显示操作方法。](..\articles\active-directory-b2c\active-directory-b2c-navigate-to-b2c-context.md)
-1. 选择“用户和组”。
-1. 选择“所有用户”。
-1. 单击“+ 新建用户”。
-    * 设置 **Name** = `Admin`。
-    * 设置 **Username** = `admin@{tenantName}.onmicrosoft.com`，其中 `{tenantName}` 是 Azure AD B2C 租户的名称。
-1. 在“目录角色”下，选择“全局管理员”并点击“确定”。
-1. 单击“创建”创建管理员用户。
-1. 选中“显示密码”，对密码进行复制。
 
-### <a name="set-up-the-key-container"></a>设置密钥容器
+[!TIP]
+若要向最终用户提供社交标识提供者或联合身份验证标识提供者，则后续步骤为可选。  若要了解如何通过自定义策略将外部标识提供者与 Azure AD B2C 配合使用，则不妨试试 Facebook。
 
-密钥容器用于存储密钥。 若要设置一个，请执行以下操作：
+1. 创建 `FacebookSecret`。  虽然此步骤为可选，但建议执行此步骤，轻松测试你能否进行外部联合身份验证。  这样可以为你将来使用其他标识提供者制定策略打下坚实的基础
+ * 单击`+Add`
+ * “选项”>`Manual`
+ * “名称”>`FacebookSecret` 前缀 B2C_1A_ 可以自动添加。
+ * “机密”> 输入 developers.facebook.com 提供的 FacebookSecret。  *这不是你的 Facebook 应用 ID*
+ * “密钥用法”>“签名”
+1. 单击`Create`确认创建，记下名称
 
-1. 打开新的 PowerShell 命令提示符。  一种方法是按 **Windows 徽标键 + R**，键入 `powershell`，然后按 Enter。
-1. 下载该存储库以获取 PowerShell ExploreAdmin 工具。
-
-    ```powershell
-    git clone https://github.com/Azure-Samples/active-directory-b2c-advanced-policies
-    ```
-
-1. 切换到包含 ExploreAdmin 工具的文件夹。
-
-    ```powershell
-    cd active-directory-b2c-advanced-policies\ExploreAdmin
-    ```
-
-1. 将 ExploreAdmin 工具导入 PowerShell。
-
-    ```powershell
-    Import-Module .\ExploreAdmin.dll
-    ```
-
-1. 确认 `b2c_1a_TokenSigningKeyContainer` 尚不存在。  将 `{tenantName}` 替换为租户的名称。
-
-    ```powershell
-    Get-CpimKeyContainer -TenantId {tenantName}.onmicrosoft.com -StorageReferenceId b2c_1a_TokenSigningKeyContainer -ForceAuthenticationPrompt
-    ```
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 显示登录提示时，请使用在上一部分创建的管理员帐户。
-
-    b.保留“数据库类型”设置，即设置为“共享”。 出现提示时，必须输入电话号码才能设置多重身份验证。
-
-    c. 出现提示时，请更改密码。
-
-    d. **预期会出现错误!**  此错误会指出找不到 `b2c_1a_TokenSigningKeyContainer`。  如果没有错误（因为你已完成这些步骤），请跳过本部分的其余内容。
-
-1. 创建 `b2c_1a_TokenSigningKeyContainer`。  将 `{tenantName}` 替换为租户的名称。
-
-    ```powershell
-    New-CpimKeyContainer {tenantName}.onmicrosoft.com  b2c_1a_TokenSigningKeyContainer  b2c_1a_TokenSigningKeyContainer rsa 2048 0 0
-    ```
-
-1. 创建 `b2c_1a_TokenEncryptionKeyContainer`。  将 `{tenantName}` 替换为租户的名称。
-
-    ```powershell
-    New-CpimKeyContainer {tenantName}.onmicrosoft.com b2c_1a_TokenEncryptionKeyContainer b2c_1a_TokenEncryptionKeyContainer rsa 2048 0 0
-    ```
-
-1. 创建 `b2c_1a_FacebookSecret`。  将 `{tenantName}` 替换为租户的名称。
-
-    ```powershell
-    New-CpimKeyContainer {tenantName}.onmicrosoft.com  b2c_1a_FacebookSecret  b2c_1a_FacebookSecret rsa 2048 0 0
-    ```
+[!NOTE]
+若要使用 Azure AD B2C 内置策略，则通常情况下，将对内置策略和自定义策略使用同一机密。 

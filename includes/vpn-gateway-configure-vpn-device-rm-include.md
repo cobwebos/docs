@@ -1,12 +1,7 @@
-通过站点到站点连接连接到本地网络需要 VPN 设备。 我们提供的配置步骤不是针对所有 VPN 设备的，你可以访问以下链接，获取有用的信息：
+请参阅以下链接，了解 VPN 设备配置信息：
 
 - 有关兼容 VPN 设备的信息，请参阅 [VPN 设备](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md)。 
 - 有关设备配置设置的链接，请参阅[已验证的 VPN 设备](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)。 我们会尽力提供各种设备配置链接。 如需最新的配置信息，最好是咨询设备制造商。
 - 若要了解如何编辑设备配置示例，请参阅[编辑示例](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#editing)。
 - 对于 IPsec/IKE 参数，请参阅[参数](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)。
 - 在配置 VPN 设备之前，对于要使用的 VPN 设备，请查看是否存在任何[已知的设备兼容性问题](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#known)。
-
-配置 VPN 设备时，需要以下项：
-
-- 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的可用密钥。
-- 虚拟网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。

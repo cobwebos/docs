@@ -14,10 +14,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: cephalin;robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 2673a9c0d91510756a97b2dba3801d2925905c9a
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 75e51ca45a899c6b6fa123346aa3c5860fd1600d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/21/2017
 
 [!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
 
-本快速入门帮助你在数分钟内将你的第一个 Java Web 应用部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 完成本教程后，即可在云中启动并运行简单的基于 Java 的 Web 应用。
+本快速入门帮助你在数分钟内将你的第一个 Java Web 应用部署到 [Azure App Service](../app-service/app-service-value-prop-what-is.md)。 完成本教程后，即可在云中启动并运行简单的基于 Java 的 Web 应用。
 
 ![浏览到 Web 应用](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
@@ -44,11 +45,9 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>在 Eclipse 中创建一个动态 Web 项目
 
-在 Eclipse IDE 中，依次单击“文件”、“新建”和“动态 Web 项目”。
+在 Eclipse 中，依次选择“文件”菜单、“新建”和“动态 Web 项目”。
 
-![新建动态 Web 项目](./media/app-service-web-get-started-java/file-new-dynamic-web-project-menu.png)
-
-显示“动态 Web 项目“对话框时，将应用程序命名为 **MyFirstJavaOnAzureWebApp**，然后单击“完成”。
+在“新建动态 Web 项目”对话框中，将项目命名为 **MyFirstJavaOnAzureWebApp**，然后选择“完成”。
    
 ![“动态 Web 项目”对话框](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
@@ -73,13 +72,11 @@ ms.lasthandoff: 04/21/2017
 
 ```jsp
 <body>
-<h1><% out.println("Java on Azure!"); %></h1>
+<h1><% out.println("Hello Azure!"); %></h1>
 </body>
 ```
 
 保存对页面所做的更改。
-
-![编辑 JSP 代码](./media/app-service-web-get-started-java/creating-index-jsp-page.png)
 
 ## <a name="publish-your-web-app-to-azure"></a>将 Web 应用发布到 Azure
 
@@ -183,14 +180,12 @@ Azure 工具包将开始创建新的应用服务，并在处理时显示一个�
 <title><% out.println(date.format(new Date())); %></title>
 </head>
 <body>
-<h1><% out.println("Java on Azure!"); %></h1>
+<h1><% out.println("Hello Azure!"); %></h1>
 </body>
 </html>
 ```
 
-![更新 JSP 代码](./media/app-service-web-get-started-java/updating-index-jsp-page.png)
-
-保存对页面所做的更改以后，请在 Eclipse 的“项目资源管理器”中右键单击项目，然后单击“Azure”，再单击“发布为 Azure Web 应用”。
+保存所做的更改以后，请在 Eclipse 的“项目资源管理器”中右键单击项目，然后单击“Azure”，再单击“发布为 Azure Web 应用”。
 
 ![发布更新的 Web 应用](./media/app-service-web-get-started-java/publish-updated-web-app-context-menu.png)
 
@@ -207,9 +202,9 @@ Azure 工具包将开始创建新的应用服务，并在处理时显示一个�
 
 ![浏览到 Web 应用](./media/app-service-web-get-started-java/browse-web-app-2.png)
 
-## <a name="deleting-your-web-app"></a>删除 Web 应用
+## <a name="clean-up-resources"></a>清理资源
 
-若要删除 Web 应用，可以使用 **Azure 资源管理器**，这是 Azure 工具包的一部分。 如果“Azure 资源管理器”视图尚未显示在 Eclipse 中，请通过以下步骤来显示它：
+若要删除 Web 应用，请使用 Azure 工具包随附的 **Azure 资源管理器**。 如果“Azure 资源管理器”视图尚未显示在 Eclipse 中，请通过以下步骤来显示它：
 
 1. 依次单击“窗口”、“显示视图”、“其他”。
 

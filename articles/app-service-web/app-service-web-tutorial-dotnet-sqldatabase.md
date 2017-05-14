@@ -1,5 +1,5 @@
 ---
-title: "使用 SQL 数据库在 Azure 中创建 ASP.NET | Microsoft Docs"
+title: "使用 SQL 数据库在 Azure 中构建 ASP.NET 应用 | Microsoft Docs"
 description: "了解如何在 Azure 中运行 ASP.NET 应用，同时使其连接到 SQL 数据库。"
 services: app-service\web
 documentationcenter: nodejs
@@ -12,22 +12,33 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/07/2017
+ms.date: 05/04/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: d7006a50d35412021f7e475df526661854b23dc8
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 6563d1520149ae5ced7e2de80686ef1624ebb651
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="create-an-aspnet-app-in-azure-with-sql-database"></a>使用 SQL 数据库在 Azure 中创建 ASP.NET
+# <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>使用 SQL 数据库在 Azure 中构建 ASP.NET 应用
 
 本教程演示如何在 Azure 中开发数据驱动的 ASP.NET Web 应用、如何将其连接到 Azure SQL 数据库，以及如何启用数据驱动功能。 完成此流程后，你将能在 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)中运行 ASP.NET 应用程序，并将其连接到 SQL 数据库。
 
 ![已在 Azure Web 应用中发布 ASP.NET 应用程序](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-## <a name="before-you-begin"></a>开始之前
+本教程介绍如何：
+
+> [!div class="checklist"]
+> * 在 Azure 中创建 SQL 数据库。
+> * 将 ASP.NET 应用连接到 SQL 数据库
+> * 将应用部署到 Azure
+> * 更新数据模型并重新部署应用
+> * 将日志从 Azure 流式传输到终端
+> * 在 Azure 门户中管理应用
+
+## <a name="prerequisites"></a>先决条件
 
 在运行此示例前，请[下载并安装免费 Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
@@ -40,7 +51,7 @@ ms.lasthandoff: 04/22/2017
 
 单击[此处](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)下载示例项目。
 
-将下载的 `dotnet-sqldb-tutorial-master.zip` 提取到工作目录中。
+将下载的 _dotnet-sqldb-tutorial-master.zip_ 解压缩到某个工作目录。
 
 > [!TIP]
 > 可通过克隆 GitHub 存储库获得相同的示例项目：
@@ -55,7 +66,7 @@ ms.lasthandoff: 04/22/2017
 
 ### <a name="run-the-application"></a>运行应用程序
 
-从提取的目录中，在 Visual Studio 2017 内启动 `dotnet-sqldb-tutorial-master\DotNetAppSqlDb.sln`。
+在 Visual Studio 2017 中，打开解压缩目录中的 _dotnet-sqldb-tutorial-master\DotNetAppSqlDb.sln_。
 
 打开示例解决方案后，键入 `F5` 以在浏览器中运行它。
 
@@ -63,7 +74,7 @@ ms.lasthandoff: 04/22/2017
 
 ![“新建 ASP.NET 项目”对话框](./media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
-数据库上下文使用名为 `MyDbConnection` 的连接字符串。 此连接字符串在 `Web.config` 中定义，并在 `Models\MyDatabaseContext.cs` 中引用。 稍后，当将 Azure Web 应用连接到 Azure SQL 数据库时，只需要使用该连接字符串名称。 
+数据库上下文使用名为 `MyDbConnection` 的连接字符串。 此连接字符串在 _Web.config_ 中定义，在 _Models\MyDatabaseContext.cs_ 中引用。 稍后，将 Azure Web 应用连接到 Azure SQL 数据库时，只需要使用该连接字符串名称。 
 
 ## <a name="publish-to-azure-with-sql-database"></a>使用 SQL 数据库发布到 Azure
 
@@ -134,6 +145,9 @@ Azure Web 应用还需要一个_应用服务计划_。
 
 若要准备进行下一步，请单击“浏览其他 Azure 服务”。
 
+> [!NOTE]
+> 暂时不要单击此对话框中的“创建”。 首先需要设置下一步中的 SQL 数据库。
+
 ![配置 Web 应用名称](./media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
 ### <a name="create-a-sql-server-instance"></a>创建 SQL Server 实例
@@ -142,7 +156,7 @@ Azure Web 应用还需要一个_应用服务计划_。
 
 在“配置 SQL 数据库”对话框中，单击“SQL Server”旁的“新建”。 
 
-在“服务器名称”中，键入唯一名称。 此名称将用作数据库服务器 (`<server_name>.database.windows.net`) 的默认 DNS 名称的一部分，因此，需要在 Azure 中的所有 SQL Server 实例之间保持唯一。 
+在“服务器名称”中，键入唯一名称。 此名称将用作数据库服务器 `<server_name>.database.windows.net` 的默认 DNS 名称的一部分，因此，需要在 Azure 中的所有 SQL Server 实例之间保持唯一。 
 
 按个人喜好配置剩余字段，然后单击“确定”。
 
@@ -150,9 +164,9 @@ Azure Web 应用还需要一个_应用服务计划_。
 
 ### <a name="configure-the-sql-database"></a>配置 SQL 数据库
 
-在“数据库名称”中，键入 `myToDoAppDb` 或任何喜欢的名称。
+在“数据库名称”中，键入 _myToDoAppDb_ 或任何喜欢的名称。
 
-在“连接字符串名称”中，键入 `MyDbConnection`。 此名称必须与 `Models\MyDatabaseContext.cs` 中引用的连接字符串相匹配。
+在“连接字符串名称”中，键入 _MyDbConnection_。 此名称必须与 _Models\MyDatabaseContext.cs_ 中引用的连接字符串相匹配。
 
 ![配置 SQL 数据库](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
@@ -174,7 +188,7 @@ Azure Web 应用还需要一个_应用服务计划_。
 
 ### <a name="create-a-database-connection"></a>创建数据库连接
 
-键入 `Ctrl`+`\`、`Ctrl`+`S`，以打开“SQL Server 对象资源管理器”。
+键入 `Ctrl`+`` ` ``、`Ctrl`+`S`，以打开“SQL Server 对象资源管理器”。
 
 在“SQL Server 对象资源管理器”顶部，单击“添加 SQL Server”按钮。
 
@@ -210,7 +224,7 @@ Visual Studio 成功为 SQL Server 实例创建防火墙设置后，连接将立
 
 ### <a name="update-your-data-model"></a>更新数据模型
 
-在代码编辑器中打开 `Models\Todo.cs`。 将以下属性添加到 `ToDo` 类：
+在代码编辑器中打开 _Models\Todo.cs_。 将以下属性添加到 `ToDo` 类：
 
 ```csharp
 public bool Done { get; set; }
@@ -248,7 +262,7 @@ Update-Database
 
 为了使用 `Done` 属性，需要对代码做一些更改。 简单起见，本教程中将仅更改 `Index` 和 `Create` 视图，以便在操作中查看属性。
 
-打开 `Controllers\TodosController.cs`。
+打开 _Controllers\TodosController.cs_。
 
 找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如下所示：
 
@@ -256,7 +270,7 @@ Update-Database
 public ActionResult Create([Bind(Include = "id,Description,CreatedDate,Done")] Todo todo)
 ```
 
-打开 `Views\Todos\Create.cshtml`。
+打开 _Views\Todos\Create.cshtml_。
 
 在 Razor 代码中，应依次看见使用 `model.Description` 的 `<div class="form-group">` 标记和使用 `model.CreatedDate` 的 `<div class="form-group">` 标记。 紧跟在这两个标记之后，添加另一个使用 `model.Done` 的 `<div class="form-group">` 标记，如下所示：
 
@@ -272,7 +286,7 @@ public ActionResult Create([Bind(Include = "id,Description,CreatedDate,Done")] T
 </div>
 ```
 
-打开 `Views\Todos\Index.cshtml`。
+打开 _Views\Todos\Index.cshtml_。
 
 搜索空的 `<th></th>` 标记。 在此标记的正上方，添加下列 Razor 代码：
 
@@ -320,7 +334,7 @@ public ActionResult Create([Bind(Include = "id,Description,CreatedDate,Done")] T
 
 在发布页中单击“发布”。
 
-请尝试再次创建新的待办事项并选择“完成”，然后，它们将作为已完成项显示在主页中。
+再次尝试添加待办事项并选择“完成”，然后，它们将作为已完成项显示在主页中。
 
 ![Code First 迁移后的 Azure Web 应用](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
@@ -333,7 +347,7 @@ public ActionResult Create([Bind(Include = "id,Description,CreatedDate,Done")] T
 
 可直接通过 Azure Web 应用将跟踪消息流式传输到 Visual Studio。
 
-打开 `Controllers\TodosController.cs`。
+打开 _Controllers\TodosController.cs_。
 
 请注意，每个操作都以 `Trace.WriteLine()` 方法开头。 添加此代码的目的是演示将跟踪消息添加至 Azure Web 应用非常简单。
 
@@ -413,6 +427,30 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 - 扩展和缩减
 - 添加用户身份验证
 
+## <a name="clean-up-resources"></a>清理资源
+ 
+如果不需要将这些资源用于其他教程（请参阅[后续步骤](#next)），则可通过运行以下命令将其删除： 
+  
+```azurecli 
+az group delete --name myResourceGroup 
+``` 
+
+<a name="next"></a>
+
 ## <a name="next-steps"></a>后续步骤
 
-浏览预先创建的 [Web 应用 PowerShell 脚本](app-service-powershell-samples.md)。
+本教程介绍了如何：
+
+> [!div class="checklist"]
+> * 在 Azure 中创建 SQL 数据库。
+> * 将 ASP.NET 应用连接到 SQL 数据库
+> * 将应用部署到 Azure
+> * 更新数据模型并重新部署应用
+> * 将日志从 Azure 流式传输到终端
+> * 在 Azure 门户中管理应用
+
+转到下一教程，了解如何向它映射自定义 DNS 名称。
+
+> [!div class="nextstepaction"]
+> [将现有的自定义 DNS 名称映射到 Azure Web 应用](app-service-web-tutorial-custom-domain.md)
+

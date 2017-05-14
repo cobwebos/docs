@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/26/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d138f4135d008c746bd5501680392b80a51786fa
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: b4d2819f51506651ebeb5b7b7c2d016c0cfc154d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -61,15 +61,15 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
 **你目前已为 Azure AD 租户配置 SSPR**。 你可以就此打住，也可以继续配置将密码同步到本地 AD 域这一功能。
 
 > [!NOTE]
-> 请使用用户而不是管理员来测试 SSPR，因为 Microsoft 对 Azure 管理员类型帐户强制实施强身份验证要求。 有关管理员密码策略的详细信息，请参阅我们的[深入分析文章](active-directory-passwords-how-it-works.md)。
+> 请使用用户而不是管理员来测试 SSPR，因为 Microsoft 对 Azure 管理员类型帐户强制实施强身份验证要求。 有关管理员密码策略的详细信息，请参阅[密码策略文章](active-directory-passwords-policy.md#administrator-password-policy-differences)。
 
 ## <a name="configure-synchronization-to-existing-identity-source"></a>配置到现有标识源的同步
 
-若要启用本地标识到 Azure AD 的同步，需在组织的服务器上安装并配置 [Azure AD Connect](/connect/active-directory-aadconnect.md)。 该应用程序负责将用户和组从现有的标识源同步到 Azure AD 域。
+若要启用本地标识到 Azure AD 的同步，需在组织的服务器上安装并配置 [Azure AD Connect](./connect/active-directory-aadconnect.md)。 该应用程序负责将用户和组从现有的标识源同步到 Azure AD 域。
 
-[通过快速设置开始使用 Azure AD Connect](/connect/active-directory-aadconnect-get-started-express.md)
+[通过快速设置开始使用 Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md)
 
-[从 DirSync 或 Azure AD Sync 升级到 Azure AD Connect](/connect/active-directory-aadconnect-dirsync-deprecated.md)
+[从 DirSync 或 Azure AD Sync 升级到 Azure AD Connect](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 
 ## <a name="disabling-self-service-password-reset"></a>禁用自助密码重置
 

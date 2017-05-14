@@ -12,12 +12,13 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/07/2017
+ms.date: 05/05/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 296f02dd7deb22fd4ca15478b7f90a7688b4304a
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: dea338477ca82eead9e272ed9a1709cb2643f743
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -116,7 +117,18 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
    
     ![故障转移之后的诊断事件查看器][diagnostic-events-viewer-detail-post-failover]
 
-## <a name="switch-cluster-mode"></a>切换群集模式
+## <a name="cleaning-up-the-local-cluster-optional"></a>清理本地群集（可选）
+结束之前，请务必记住该本地群集是真实的。 停止调试器会删除您的应用程序实例，并注销应用程序类型。 不过，群集将继续在后台运行。 可通过几个选项对群集进行管理：
+
+1. 若要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止本地群集”  。
+2. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”  。 此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。 仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才删除群集。
+
+## <a name="deploy-your-application-to-an-azure-cluster"></a>将应用程序部署到 Azure 群集
+在本地部署应用程序以后，即可将同一应用程序部署到 Azure。 [在 Azure 上创建你的第一个 Service Fabric 群集](service-fabric-get-started-azure-cluster.md)文档介绍了使用 Azure PowerShell 或门户的步骤。
+
+设置 Azure 群集以后，即可按照[发布到 Azure 群集](service-fabric-publish-app-remote-cluster.md)一文中的说明，将该应用程序从 Visual Studio 发布到 Azure。  
+
+## <a name="switch-cluster-mode-of-your-local-development-cluster"></a>切换本地开发群集的群集模式
 默认情况下，本地开发群集配置为一个 5 节点群集运行，这对于调试在多个节点中部署的服务很有用。 不过，将应用程序部署到 5 节点的开发群集中可能需要一些时间。 如果想要快速循环访问代码更改，而不需要在 5 个节点上运行应用，可以将开发群集切换到单节点模式。 若要在单节点群集上运行代码，请右键单击系统任务栏中的本地群集管理器，并选择“切换群集模式”->“1 个节点”。  
 
 ![切换群集模式][switch-cluster-mode]
@@ -136,11 +148,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
    
     ![群集设置输出][cluster-setup-success-1-node]
 
-## <a name="cleaning-up"></a>清理
-结束之前，请务必记住该本地群集是真实的。 停止调试器会删除您的应用程序实例，并注销应用程序类型。 不过，群集将继续在后台运行。 可通过几个选项对群集进行管理：
 
-1. 若要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止本地群集”  。
-2. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”  。 此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。 仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才删除群集。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[在 Azure 中创建群集](service-fabric-cluster-creation-via-portal.md)或[在 Windows 上创建独立群集](service-fabric-cluster-creation-for-windows-server.md)。

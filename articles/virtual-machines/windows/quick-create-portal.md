@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/13/2017
+ms.date: 05/03/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: df6f1b86b706d58a5c07a4f3de43a1872da61511
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 8d64ede4fd5f442cbfc88a61e2ad8388e0df2a7b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="create-a-windows-virtual-machine-with-the-azure-portal"></a>使用 Azure 门户创建 Windows 虚拟机
 
-可以通过 Azure 门户创建 Azure 虚拟机。 此方法提供一个基于浏览器的用户界面，用于创建和配置虚拟机和所有相关的资源。 此快速入门介绍了如何使用 Azure 门户创建虚拟机。 部署完成后，我们将连接到服务器并安装 IIS。
+可以通过 Azure 门户创建 Azure 虚拟机。 此方法提供一个基于浏览器的用户界面，用于创建和配置虚拟机和所有相关的资源。 本快速入门介绍了如何创建虚拟机并在 VM 上安装 webserver。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F) 。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -35,40 +35,30 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-2. 单击 Azure 门户左上角的“新建”按钮。
+1. 单击 Azure 门户左上角的“新建”按钮。
 
-3. 从“新建”边栏选项卡中选择“计算”，从“计算”边栏选项卡中选择“Windows Server 2016 Datacenter”，然后单击“创建”按钮。
+2. 选择“计算”，选择 **Windows Server 2016 Datacenter**，确保 **Resource Manager** 是选择的部署模型。 单击“创建”  按钮。 
 
-4. 填写虚拟机“基本信息”表单。 在此处输入的用户名和密码用于登录到虚拟机。 对于“资源组”，请创建一个新的资源组。 资源组是在其中创建并集中管理 Azure 资源的逻辑容器。 完成后，单击“确定”。
+3. 输入虚拟机信息。 在此处输入的用户名和密码用于登录到虚拟机。 完成后，单击“确定”。
 
     ![在门户边栏选项卡中输入 VM 的基本信息](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)  
 
-5. 为 VM 选择大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 
+4. 为 VM 选择大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 
 
     ![显示 VM 大小的屏幕截图](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
-6. 在“设置”边栏选项卡上，在“使用托管磁盘”下选择“是”，为其余设置保留默认值，然后单击“确定”。
+5. 在“设置”边栏选项卡上，在“使用托管磁盘”下选择“是”，为其余设置保留默认值，然后单击“确定”。
 
-7. 在摘要页上，单击“确定”以开始虚拟机部署。
+6. 在摘要页上，单击“确定”以开始虚拟机部署。
 
-8. 若要监视部署状态，请单击虚拟机。 可以在 Azure 门户仪表板上或者通过从左侧菜单中选择“虚拟机”来找到该 VM。 创建 VM 后，状态将从“正在部署”更改为“正在运行”。
-
-## <a name="open-port-80-for-web-traffic"></a>为 Web 流量打开端口 80 
-
-若要允许 IIS 的流量，需要为 Web 流量打开端口 80。 此步骤将介绍如何创建网络安全组 (NSG) 规则，以允许端口 80 上的入站连接。
-
-1. 在虚拟机边栏选项卡的“基本信息”部分，单击**资源组**的名称。
-2. 在资源组的边栏选项卡中，单击资源列表中的“网络安全组”。 NSG 名称应为 VM 名称后面追加 *-nsg*。
-3. 单击“入站安全规则”标题，打开入站规则列表。 此时列表中应会出现一条适用于 RDP 的规则。
-4. 单击“+ 添加”，打开“添加入站安全规则”边栏选项卡。
-5. 在“名称”中，键入 *IIS*。 请确保将“端口范围”设置为 80，将“操作”设置为“允许”。 单击 **“确定”**。
+7. VM 将固定到 Azure 门户仪表板。 完成部署后，VM 摘要边栏选项卡将自动打开。
 
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
-在部署完成后，创建到虚拟机的远程桌面连接。
+创建到虚拟机的远程桌面连接。
 
-1. 单击虚拟机边栏选项卡上的“连接”按钮。 此时会创建和下载远程桌面协议文件（.rdp 文件）。
+1. 单击虚拟机属性上的“连接”按钮。 此时会创建和下载远程桌面协议文件（.rdp 文件）。
 
     ![门户 9](./media/quick-create-portal/quick-create-portal/portal-quick-start-9.png) 
 
@@ -81,15 +71,29 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="install-iis-using-powershell"></a>使用 PowerShell 安装 IIS
 
-在虚拟机上打开 PowerShell 提示符并运行以下命令，以便安装 IIS 并启用本地防火墙规则，使之允许 Web 通信：
+在虚拟机上启动 PowerShell 会话，通过运行以下命令来安装 IIS。
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
+完成后，退出 RDP 会话，返回 Azure 门户中的 VM 属性。
+
+## <a name="open-port-80-for-web-traffic"></a>为 Web 流量打开端口 80 
+
+网络安全组 (NSG) 保护入站和出站流量的安全。 从 Azure 门户创建 VM 后，将会在进行 RDP 连接的端口 3389 上创建入站规则。 由于此 VM 托管 webserver，需为端口 80 创建 NSG 规则。
+
+1. 在虚拟机上，单击**资源组**的名称。
+2. 选择“网络安全组”。 可以通过“类型”列来标识 NSG。 
+3. 在左侧菜单的“设置”下，单击“入站安全规则”。
+4. 单击“添加”。
+5. 在“名称”中，键入 **http**。 请确保将“端口范围”设置为 80，将“操作”设置为“允许”。 
+6. 单击 **“确定”**。
+
+
 ## <a name="view-the-iis-welcome-page"></a>查看 IIS 欢迎页
 
-IIS 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 你可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页。 从 VM 的边栏选项卡中获取*公共 IP 地址*，并使用它访问默认网页。 
+安装 IIS 并向 VM 打开端口 80 以后，即可通过 Internet 访问 webserver。 打开 Web 浏览器，输入 VM 的公共 IP 地址。 该公共 IP 地址可以在 Azure 门户的 VM 边栏选项卡上找到。
 
 ![IIS 默认站点](./media/quick-create-powershell/default-iis-website.png) 
 
@@ -99,7 +103,8 @@ IIS 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 你可�
 
 ## <a name="next-steps"></a>后续步骤
 
-[安装角色和配置防火墙教程](hero-role.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+在本快速入门中，你部署了一台简单的虚拟机、一条网络安全组规则，并安装了一台 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Windows VM 的教程。
 
-[浏览 VM 部署 CLI 示例](cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> [!div class="nextstepaction"]
+> [Azure Windows 虚拟机教程](./tutorial-manage-vm.md)
 

@@ -3,8 +3,8 @@ title: "Microsoft Azure Data Lake Analytics 概述 | Microsoft 文档"
 description: "Data Lake Analytics 是一种 Azure 大数据服务，允许用户使用各种数据，借助基于云中数据收集的见解推动企业的发展，而不用考虑数据的大小和位置。"
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/28/2017
+ms.date: 05/06/2017
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 12d6fe834ed2b31a756123351288eec7ba2a72f7
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: cb2da3515cfe5fd460e16b019d3738f4a9a050bb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -37,7 +38,7 @@ Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数
     Data Lake Analytics 包含 U-SQL，这是一种查询语言，扩展了 SQL 的简单熟悉的声明性本质和 C# 的表现力。 U-SQL 语言基于在 Microsoft 内部支持大数据系统的同一分布式运行时。 现在，数以百万计的 SQL 和 .NET 开发人员可以凭借自身已有的技能处理和分析自己的数据。
 * **与你的 IT 投资无缝集成**
   
-    Data Lake Analytics 可以使用你现有的 IT 投资进行识别、管理、安全和数据仓库工作来应对这个挑战。 这样就简化了数据管理，使你当前的数据应用程序更容易扩展。 Data Lake Analytics 与适用于用户管理和权限的 Active Directory 集成且随附内置监视与审核功能。
+    Data Lake Analytics 可以使用你现有的 IT 投资进行识别、管理、安全和数据仓库工作来应对这个挑战。 此方法简化了数据管理，使当前的数据应用程序更容易扩展。 Data Lake Analytics 与适用于用户管理和权限的 Active Directory 集成且随附内置监视与审核功能。
 * **价格合理且经济高效**
   
     Data Lake Analytics 是用于运行大数据工作负荷的经济高效的解决方案。 处理数据时按每个作业付费。 无需硬件、许可证或服务特定的支持协议。 作业开始和完成时，系统自动缩放大小，这意味着你永远无需为你所需之外的东西付费。
@@ -53,24 +54,16 @@ Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数
   * [通过 Azure .NET SDK 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-net-sdk.md)
   * [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
   * [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)
-* U-SQL 和开发
-  
-  * [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
-  * [为 Data Lake Analytics 作业开发 U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+
 * 管理
   
   * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
   * [使用 Azure PowerShell 管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-powershell.md)
   * [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-  * [访问 Azure Data Lake Analytics 的诊断日志](data-lake-analytics-diagnostic-logs.md)
-* 端到端教程
-  
-  * [使用 Azure Data Lake Analytics 交互式教程](data-lake-analytics-use-interactive-tutorials.md)
-  * [使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)
+
 * 让我们知道你的想法
   
-  <!-- Fixing broken links for Azure content migration from ACOM to DOCS. I can't find a suitable substitute for what appears to be a link that is no longer available. I am commenting out for now. The author can investigate in the future. Hyperlink text: Comment on our documentation backlog. Referenced file: data-lake-analytics-documentation-backlog.md -->
   * [提交功能请求](http://aka.ms/adlafeedback)
-  * [在论坛中获得帮助](http://aka.ms/adlaforums)
+  * [在 MSDN 论坛中获得帮助](http://aka.ms/adlaforums)
 
 

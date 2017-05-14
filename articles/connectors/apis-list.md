@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 04/26/2017
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 851ccd5a429eeed7d20a02cb7e36c62ab24d0780
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 4f821602c3a48740cac3c220f47b7317e7896208
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -80,7 +80,7 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
 | | |
 |---|---|
-|<a name="1"></a>10to8 约会安排<br/><br/><a name="a"></a>Act!<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory<br/>Azure API 管理<br/>Azure 应用服务<br/>Azure 自动化<br/>[Azure Blob 存储][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure DocumentDB<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure 逻辑应用][nested-logic-appdoc]<br/>AzureML<br/>Azure 队列<br/>Azure Resource Manager<br/>[Azure SQL 数据库][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>Benchmark Email<br/>必应搜索<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Campfire<br/>Capsule CRM<br/>Chatter<br/>认知服务计算机视觉 API<br/>认知服务人脸 API<br/>认知服务 LUIS<br/>认知服务文本分析<br/>Common Data Service<br/>[自定义 API/Web 应用][api/web-appdoc]<br/><br/><a name="d"></a>数据操作<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[事件中心][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[文件系统][filesystemdoc]<br/>[平面文件][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google Calendar<br/>Google Contacts<br/>Google Drive<br/>Google Sheets<br/>Google Tasks<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP Webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>集成帐户<br/>Intercom | <a name="j"></a>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>中型<br/>Microsoft Translator<br/>MQ<br/>MSN 天气<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365 用户<br/>Office 365 视频<br/>OneDrive<br/>OneDrive for Business<br/>OneNote（企业）<br/>[Oracle 数据库][oracle-db-doc]<br/>Outlook 客户<br/>Outlook 任务<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[请求/响应][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP Application Server][sapconnector]<br/>[SAP Message Server][sapconnector]<br/>[计划][recurrencedoc]<br/>范围<br/>SendGrid<br/>[服务总线][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointdoc]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>Switch Case<br/>SurveyMonkey<br/><br/><a name="t"></a>Teradata<br/>Todoist<br/>Toodledo<br/>[转换 XML][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>变量<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML 验证][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
+|<a name="1"></a>10to8 约会安排<br/><br/><a name="a"></a>Act!<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory<br/>Azure API 管理<br/>Azure 应用服务<br/>Azure 自动化<br/>[Azure Blob 存储][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure DocumentDB<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure 逻辑应用][nested-logic-appdoc]<br/>AzureML<br/>Azure 队列<br/>Azure Resource Manager<br/>[Azure SQL 数据库][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>Benchmark Email<br/>必应搜索<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Campfire<br/>Capsule CRM<br/>Chatter<br/>认知服务计算机视觉 API<br/>认知服务人脸 API<br/>认知服务 LUIS<br/>认知服务文本分析<br/>Common Data Service<br/>[自定义 API/Web 应用][api/web-appdoc]<br/><br/><a name="d"></a>数据操作<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[事件中心][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[文件系统][filesystemdoc]<br/>[平面文件][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google Calendar<br/>Google Contacts<br/>Google Drive<br/>Google Sheets<br/>Google Tasks<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP Webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>集成帐户<br/>Intercom | <a name="j"></a>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>中型<br/>Microsoft Translator<br/>MQ<br/>MSN 天气<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365 用户<br/>Office 365 视频<br/>OneDrive<br/>OneDrive for Business<br/>OneNote（企业）<br/>[Oracle 数据库][oracle-db-doc]<br/>Outlook 客户<br/>Outlook 任务<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[请求/响应][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP Application Server][sapconnector]<br/>[SAP Message Server][sapconnector]<br/>[计划][recurrencedoc]<br/>范围<br/>SendGrid<br/>[服务总线][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointdoc]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>Switch Case<br/>SurveyMonkey<br/><br/><a name="t"></a>Teradata<br/>Todoist<br/>Toodledo<br/>[转换 XML][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>变量<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML 验证][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
 
 > [!TIP]
 > 若要在注册 Azure 帐户之前开始使用 Azure 逻辑应用，请转到[试用逻辑应用](https://tryappservice.azure.com/?appservice=logic)。 可立即创建短期的初学者逻辑应用。 你不需要使用信用卡，也不需要做出承诺。
@@ -111,12 +111,12 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
 | | |
 |---|---|
-| **编制** | 生成以后使用或在生成工作流时使用的值或对象。  例如，可以创作一个其值来自多个步骤的 JSON 对象，也可以计算一个在以后的逻辑应用运行中引用的常量。 |
+| **编制** | 生成以后使用或在生成工作流时使用的值或对象。 例如，可以创作一个其值来自多个步骤的 JSON 对象，也可以计算一个在以后的逻辑应用运行中引用的常量。 |
 | **创建 CSV 表**<br/>**创建 HTML 表** | 将数组结果集转换为 CSV 或 HTML 表。 例如，添加 CRM“列出记录”操作，以及为今天添加的记录添加筛选器。 然后，将结果作为电子邮件中的 HTML 表发送。 |
-| **筛选数组**（查询） | 从结果集中筛选出感兴趣的条目。  例如，使用 `#Azure` 搜索所有推文，然后对返回的推文进行“筛选”，仅返回 `Tweeted_by_followers > 50` 的结果。 |
-| **Join** | 通过某个分隔符来联接数组。  例如，“检测关键短语”操作返回包含关键短语的数组。  可以使用 `,` 或类似的符号来“联接”它们。 因此，请采用 `“Some, Phrase”` 格式，而不是 `[“Some”, “Phrase”]` 格式。 |
-| **分析 JSON** | 分析并访问设计器中的 JSON 对象提供的值。  例如，如果 Azure Function 返回 JSON 有效负载，则可对其进行分析，以便以后在另一步骤中访问 JSON 属性。 该操作还验证 JSON 是否与运行时的指定架构匹配。 | 
-| **Select** | 选择某个数组的特定属性进行进一步的处理。  如果从 SQL“列出记录”时返回了 15 个列，则只选择这些列的一部分进行进一步的处理（输出是只包含所选属性的数组）。 |
+| **筛选数组**（查询） | 从结果集中筛选出感兴趣的条目。 例如，使用 `#Azure` 搜索所有推文，然后对返回的推文进行“筛选”，仅返回 `Tweeted_by_followers > 50` 的结果。 |
+| **Join** | 通过某个分隔符来联接数组。 例如，“检测关键短语”操作返回包含关键短语的数组。 可以使用 `,` 或类似的符号来“联接”它们。 因此，请采用 `"Some, Phrase"` 格式，而不是 `["Some", "Phrase"]` 格式。 |
+| **分析 JSON** | 分析并访问设计器中的 JSON 对象提供的值。 例如，如果 Azure Function 返回 JSON 有效负载，则可对其进行分析，以便以后在另一步骤中访问 JSON 属性。 该操作还验证 JSON 是否与运行时的指定架构匹配。 | 
+| **Select** | 选择某个数组的特定属性进行进一步的处理。 如果从 SQL“列出记录”时返回了 15 个列，则只选择这些列的一部分进行进一步的处理（输出是只包含所选属性的数组）。 |
 
 ## <a name="custom-connectors-and-azure-certification"></a>自定义连接器和 Azure 认证 
 
@@ -128,7 +128,7 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
 若要提问、解答问题以及了解其他 Azure 逻辑应用用户的活动，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
 
-为了帮助我们改进逻辑应用和连接器，敬请在[逻辑应用用户反馈站点](http://aka.ms/logicapps-wish)上投票或发表看法。
+为了帮助我们改进 Azure 逻辑应用和连接器，敬请在[逻辑应用用户反馈站点](http://aka.ms/logicapps-wish)上投票或发表看法。
 
 ## <a name="next-steps"></a>后续步骤
 * [创建第一个逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)

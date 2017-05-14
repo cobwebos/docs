@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: mcollier
-translationtype: Human Translation
-ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
-ms.openlocfilehash: 6d66a8fa6eac5bc0ecdddc12b67697045556bf46
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: fcf9cc661da0d8e65b385bfddeded0a3e5d0d3e2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 本文说明如何执行身份验证，使代码能够遵循 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。         
 
-使用 Azure 监视器 API 能够以编程方式检索可用的默认指标定义（例如 CPU 时间、请求等指标类型）、粒度和指标值。 检索定义后，可将数据保存在独立的数据存储（例如 Azure SQL 数据库、DocumentDB 或 Azure Data Lake）中。 然后，可以根据需要从该处执行其他分析。
+使用 Azure 监视器 API 能够以编程方式检索可用的默认指标定义（例如 CPU 时间、请求等指标类型）、粒度和指标值。 检索定义后，可将数据保存在独立的数据存储（例如 Azure SQL 数据库、Azure Cosmos DB 或 Azure Data Lake）中。 然后，可以根据需要从该处执行其他分析。
 
 除了处理各种指标数据点以外，如本文中所示，使用监视 API 还能列出警报规则、查看活动日志以及执行其他许多操作。 有关可用操作的完整列表，请参阅 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
 
@@ -216,9 +218,4 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/provide
 * 查看 [Azure 监视器支持的指标](monitoring-supported-metrics.md)。
 * 查看 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
 * 查看 [Azure 管理库](https://msdn.microsoft.com/library/azure/mt417623.aspx)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
