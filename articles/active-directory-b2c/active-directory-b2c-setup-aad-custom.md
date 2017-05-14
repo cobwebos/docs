@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 29d30cacb29fee1b2c5b8ef523051fa543bee829
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: f520b46e9d37ac31c2ef5d78ef9044e62dd25a6f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -53,10 +53,10 @@ ms.lasthandoff: 04/28/2017
 1. 选择“新建应用程序注册”。
 1. 键入应用程序的**名称**（例如“Azure AD B2C 应用”）
 1. 选择“Web 应用/API”作为应用程序类型。
-1. 对于“登录 URL”，请输入以下 URL，其中的 `{tenantName}` 应替换为你的 Azure AD B2C 租户的名称（例如 fabrikamb2c.onmicrosoft.com）。
+1. 对于“登录 URL”，请输入以下 URL，其中的 `yourtenant` 应替换为你的 Azure AD B2C 租户的名称（例如 fabrikamb2c.onmicrosoft.com）。
 
     ```
-    https://login.microsoftonline.com/te/{tenantName}.onmicrosoft.com/oauth2/authresp
+    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 1. 保存**应用程序 ID**。
@@ -68,28 +68,18 @@ ms.lasthandoff: 04/28/2017
 
 需将 `contoso.com` 应用程序密钥存储在 Azure AD B2C 租户中。 为此，请按以下步骤操作：
 
-1. 打开 PowerShell 并导航到工作目录 `active-directory-b2c-advanced-policies`。
-1. 切换到包含 ExploreAdmin 工具的文件夹。
+1. 导航到你的 Azure AD B2C 租户，然后打开“B2C 设置”>“标识体验框架”>“策略密钥”
+1. 单击“+添加”
+1. 选项：
+ * 选择“选项”> `Manual`
+ * 名称：> `ContosoAppSecret` 选择与 Azure AD 租户名称匹配的名称。  前缀 B2C_1A_ 将自动添加到密钥名称。
+ * 将应用程序密钥粘贴到 `Secret` 文本框中
+ * 选择签名
+1. 单击 `Create`
+1. 确认已创建密钥：`B2C_1A_ContosoAppSecret`
 
-    ```powershell
-    cd active-directory-b2c-advanced-policies\ExploreAdmin
-    ```
+    运行该命令时，请确保使用 Azure AD B2C 租户本地的 onmicrosoft.com 管理员帐户登录。 如果出现错误，指出找不到“TokenSigningKeyContainer”或 `B2C_1A_TokenSigningKeyContainer`，请参阅[入门](active-directory-b2c-get-started-custom.md)指南。
 
-1. 将 ExploreAdmin 工具导入 PowerShell。
-
-    ```powershell
-    Import-Module .\ExploreAdmin.dll
-    ```
-
-1. 在以下命令中，请将 `tenantName` 替换为你的 Azure AD B2C 租户的名称（例如 fabrikamb2c.onmicrosoft.com），将 `SecretReferenceId` 替换为用于引用机密的名称（例如 ContosoAppSecret），将 `ClientSecret` 替换为 `contoso.com` 应用程序密钥。 运行命令。
-
-    ```PowerShell
-    Set-CpimKeyContainer -Tenant {tenantName} -StorageReferenceId {SecretReferenceId} -UnencodedAsciiKey {ClientSecret}
-    ```
-
-    运行该命令时，请确保使用 Azure AD B2C 租户本地的 onmicrosoft.com 管理员帐户登录。 如果出现错误，指出找不到“TokenSigningKeyContainer”，请参阅[入门](active-directory-b2c-get-started-custom.md)指南。
-
-1. 关闭 PowerShell。
 
 ## <a name="add-a-claims-provider-in-your-base-policy"></a>在基本策略中添加声明提供程序
 
@@ -121,7 +111,7 @@ ms.lasthandoff: 04/28/2017
             <Key Id="client_secret" StorageReferenceId="ContosoAppSecret"/>
             </CryptographicKeys>
             <OutputClaims>
-                <OutputClaim ClaimTypeReferenceId="userId" PartnerClaimType="oid"/>
+                <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="oid"/>
                 <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid"/>
                 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
                 <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
@@ -153,9 +143,9 @@ ms.lasthandoff: 04/28/2017
 1. 更新 `<Description>` 的值。
 1. Azure AD 使用 OpenID Connect 协议，因此请确保 `<Protocol>` 是“OpenIDConnect”。
 
-需要更新上述 XML 中的 `<Metdata>` 节，以反映特定 Azure AD 租户的配置设置。 在 XML 中，按如下所示更新元数据值：
+需要更新上述 XML 中的 `<Metadata>` 节，以反映特定 Azure AD 租户的配置设置。 在 XML 中，按如下所示更新元数据值：
 
-1. 将 `<Item Key="METADATA">` 设置为 `https://login.windows.net/{tenantName}/.well-known/openid-configuration`，其中，`tenantName` 是你的 Azure AD 租户名称（例如 contoso.com）。
+1. 将 `<Item Key="METADATA">` 设置为 `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`，其中，`yourAzureADtenant` 是你的 Azure AD 租户名称（例如 contoso.com）。
 1. 打开浏览器并导航到刚刚更新的 `Metadata` URL。
 1. 在浏览器中，找到“issuer”对象并复制其值。 该对象应与下面的 `https://sts.windows.net/{tenantId}/` 类似。
 1. 在 XML 中粘贴 `<Item Key="ProviderName">` 的值。
@@ -164,9 +154,9 @@ ms.lasthandoff: 04/28/2017
 1. 确保 `<Item Key="response_types">` 设置为 `id_token`。
 1. 确保 `<Item Key="UsePolicyInRedirectUri">` 设置为 `false`。
 
-还需要将 [Azure AD B2C 租户中注册的 Azure AD 机密](#add-the-azure-ad-key-to-azure-ad-b2c)链接到 Azure AD `<ClaimsProvider>`。
+还需要将 Azure AD B2C 租户中注册的 Azure AD 机密链接到 Azure AD `<ClaimsProvider>`。
 
-1. 在上述 XML 的 `<CryptographicKeys>` 节中，将 `StorageReferenceId` 的值更新为定义的机密的引用 ID（例如 ContosoAppSecret）。
+* 在上述 XML 的 `<CryptographicKeys>` 节中，将 `StorageReferenceId` 的值更新为定义的机密的引用 ID（例如 ContosoAppSecret）。
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
 
@@ -231,7 +221,6 @@ ms.lasthandoff: 04/28/2017
 测试刚刚上传的自定义策略：打开其边栏选项卡，然后单击“立即运行”。 如果发生失败，请参阅[故障排除](active-directory-b2c-troubleshoot-custom.md)方法。
 
 ## <a name="next-steps"></a>后续步骤
- 
-向 AADB2CPreview@microsoft.com 提供反馈。
 
+向 AADB2CPreview@microsoft.com 提供反馈。
 

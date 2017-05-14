@@ -13,12 +13,13 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/07/2017
 ms.author: andrela;carlrab;sstein
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 6ba2880b1ce9eed0f5c3b8e3ed4255c7e4ec7f29
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: defb32835971fe423e77a11817fce057fa7c929d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.lasthandoff: 04/21/2017
 本部分中的步骤假定你熟悉使用 Java 开发，但不熟悉如何使用 Azure SQL 数据库。 如果你不熟悉如何使用 Java 进行开发，请转到[使用 SQL Server 生成应用](https://www.microsoft.com/en-us/sql-server/developer-get-started/)并选择 **Java**，然后选择操作系统。
 
 ### <a name="mac-os"></a>**Mac OS**
-打开终端并导航到要在其中创建 Java 项目的目录。 输入以下命令安装 **brew** 和 **Maven**。 
+打开终端并导航到要在其中创建 Java 项目的目录。 输入以下命令安装 **brew** 和 **Maven**： 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -45,14 +46,14 @@ brew install maven
 ```
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
-打开终端并导航到要在其中创建 Java 项目的目录。 输入以下命令安装 **Maven**。 
+打开终端并导航到要在其中创建 Java 项目的目录。 输入以下命令安装 **Maven**：
 
 ```bash
 sudo apt-get install maven
 ```
 
 ### <a name="windows"></a>**Windows**
-使用官方安装程序安装 [Maven](https://maven.apache.org/download.cgi)。 可以使用 Maven 帮助管理依赖项、内部版本、测试和运行 Java 项目。 
+使用官方安装程序安装 [Maven](https://maven.apache.org/download.cgi)。 使用 Maven 帮助管理依赖项、内部版本、测试和运行 Java 项目。 
 
 ## <a name="get-connection-information"></a>获取连接信息
 
@@ -64,7 +65,7 @@ sudo apt-get install maven
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. 如果忘了 Azure SQL 数据库服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。
+4. 如果忘了服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。
 5. 单击“显示数据库连接字符串”。
 
 6. 查看完整 **JDBC** 连接字符串。
@@ -300,15 +301,8 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>后续步骤
-
-- [用于 SQL Server 的 Microsoft JDBC 驱动程序](https://github.com/microsoft/mssql-jdbc)的 GitHub 存储库。
-- [提出问题](https://github.com/microsoft/mssql-jdbc/issues)。
-- 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
-- 若要使用 Visual Studio 进行连接和查询，请参阅[使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
-- 若要使用 .NET 进行连接和查询，请参阅[使用 .NET 进行连接和查询](sql-database-connect-query-dotnet.md)。
-- 若要使用 PHP 进行连接和查询，请参阅[使用 PHP 进行连接和查询](sql-database-connect-query-php.md)。
-- 若要使用 Node.js 进行连接和查询，请参阅[使用 Node.js 进行连接和查询](sql-database-connect-query-nodejs.md)。
-- 若要使用 Python 进行连接和查询，请参阅[使用 Python 进行连接和查询](sql-database-connect-query-python.md)。
-- 若要使用 Ruby 进行连接和查询，请参阅[使用 Ruby 进行连接和查询](sql-database-connect-query-ruby.md)。
+- [设计第一个 Azure SQL 数据库](sql-database-design-first-database.md)
+- [用于 SQL Server 的 Microsoft JDBC 驱动程序](https://github.com/microsoft/mssql-jdbc)
+- [报告问题/提出问题](https://github.com/microsoft/mssql-jdbc/issues)
 
 

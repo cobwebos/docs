@@ -1,6 +1,7 @@
 ---
-title: "Azure Active Directory 门户中的“审核活动”报表 - 预览 | Microsoft Docs"
-description: "Azure Active Directory 门户预览中的审核活动报表简介"
+
+title: "Azure Active Directory 门户中的“审核活动”报告 | Microsoft Docs"
+description: "Azure Active Directory 门户中的审核活动报告简介"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,20 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d88f8bed0cbd14ee49986d6749396731a810034b
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 4065682658bdd99066266b8b4e5e4c4605ff3db9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="audit-activity-reports-in-the-azure-active-directory-portal---preview"></a>Azure Active Directory 门户中的“审核活动”报表 - 预览
+# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
-通过 Azure Active Directory [预览](active-directory-preview-explainer.md)中的报表，可以获取确定环境运行状况所需的所有信息。
+通过 Azure Active Directory (Azure AD) 中的报告，可以获取确定环境运行状况所需的信息。
 
-Azure Active Directory 中的报表体系结构由以下部分组成：
+Azure AD 中的报告体系结构由以下部分组成：
 
 - **活动** 
     - **登录活动** — 有关托管应用程序的使用和用户登录活动的信息

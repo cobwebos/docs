@@ -13,12 +13,13 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/07/2017
 ms.author: lbosq
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 4de9eb8f55bfda8b223417f5c1ed4e71b0f063c6
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 99c1ce93f30a54fcf0d76b1367c2f9545258c1f9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -254,14 +255,10 @@ function deleteFromDatabase(){
 
 
 ## <a name="next-steps"></a>后续步骤
+- [设计第一个 Azure SQL 数据库](sql-database-design-first-database.md)
+- [用于 SQL Server 的 Microsoft Node.js 驱动程序](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/)
+- [使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
+- [使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
 
-- 有关 [Microsoft Node.js Driver for SQL Server](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/) 的详细信息
-- 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
-- 若要使用 Visual Studio 进行连接和查询，请参阅[使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
-- 若要使用 .NET 进行连接和查询，请参阅[使用 .NET 进行连接和查询](sql-database-connect-query-dotnet.md)。
-- 若要使用 PHP 进行连接和查询，请参阅[使用 PHP 进行连接和查询](sql-database-connect-query-php.md)。
-- 若要使用 Java 进行连接和查询，请参阅[使用 Java 进行连接和查询](sql-database-connect-query-java.md)。
-- 若要使用 Python 进行连接和查询，请参阅[使用 Python 进行连接和查询](sql-database-connect-query-python.md)。
-- 若要使用 Ruby 进行连接和查询，请参阅[使用 Ruby 进行连接和查询](sql-database-connect-query-ruby.md)。
 
 

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/11/2017
+ms.date: 05/08/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: fcc43e5d98f75b34f2d65c9e1ce8eeba7762caaf
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 0ca7382ed64fd548f8a086893ea2e3187dd26929
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -80,8 +81,8 @@ ms.lasthandoff: 04/12/2017
    ![Azure 安全中心中的建议][5]
 2. 选择“建议”边栏选项卡上的建议，查看详细信息和/或采取操作来解决问题。
 
-### <a name="view-the-health-and-security-state-of-your-resources"></a>查看资源的运行状况和安全状态
-1. 返回“安全中心”边栏选项卡。 “资源安全运行状况”磁贴内包含虚拟机、网络、数据和应用程序的安全状态指示器。
+### <a name="view-the-security-state-of-your-resources"></a>查看资源的安全状态
+1. 返回“安全中心”边栏选项卡。 仪表板的“预防”部分包含虚拟机、网络、数据和应用程序的安全状态指示器。
 2. 选择“计算”以查看详细信息。 “计算”边栏选项卡将打开，显示三个选项卡：
 
   - **概览** - 包含有关监视和虚拟机的建议。

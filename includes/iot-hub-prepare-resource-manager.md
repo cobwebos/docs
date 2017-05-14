@@ -1,7 +1,7 @@
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>准备对 Azure Resource Manager 请求进行身份验证
 必须使用 [Azure Resource Manager][lnk-authenticate-arm] 配合 Azure Active Directory (AD) 来验证所有针对资源执行的操作。 最简单的配置方式是使用 PowerShell 或 Azure CLI。
 
-继续之前，应安装 [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
+在继续之前，请安装 [Azure PowerShell cmdlet][lnk-powershell-install]。
 
 以下步骤说明如何使用 PowerShell 设置 AD 应用程序的密码身份验证。 可以在标准 PowerShell 会话中运行这些命令。
 
@@ -10,7 +10,7 @@
     ```
     Login-AzureRmAccount
     ```
-2. 记下 **TenantId** 和 **SubscriptionId**。 稍后你将需要它们。
+2. 记下 **TenantId** 和 **SubscriptionId**。 稍后会需要它们。
 3. 使用以下命令并替换占位符，以创建新的 Azure Active Directory 应用程序：
    
    * **{Display name}**：应用程序的显示名称，例如 **MySampleApp**
@@ -21,7 +21,7 @@
      ```
      New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
      ```
-4. 请记下创建的应用程序的 **ApplicationId**。 稍后你将需要此项。
+4. 请记下创建的应用程序的 **ApplicationId**。 稍后会需要它。
 5. 使用以下命令（将 **{MyApplicationId}** 替换为上一步骤中的 **ApplicationId**）创建新的服务主体：
    
     ```
@@ -41,4 +41,4 @@
 * 密码
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-[lnk-powershell-install]: /powershell/azureps-cmdlets-docs
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps

@@ -1,6 +1,6 @@
 ---
-title: "在 Visual Studio Code 中创建 ASP.NET 5 Web 应用"
-description: "本教程演示了如何使用 Visual Studio Code 创建 ASP.NET 5 Web 应用。"
+title: "在 Visual Studio Code 中创建 ASP.NET Core Web 应用"
+description: "本教程演示了如何使用 Visual Studio Code 创建 ASP.NET Core Web 应用。"
 services: app-service\web
 documentationcenter: .net
 author: erikre
@@ -14,123 +14,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f1bf0f15a373dfe60d923f017a96784424d6563
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 46e3852dc84265de41bb358f482dec06608e7efa
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="create-an-aspnet-5-web-app-in-visual-studio-code"></a>在 Visual Studio Code 中创建 ASP.NET 5 Web 应用
+# <a name="create-an-aspnet-core-web-app-in-visual-studio-code"></a>在 Visual Studio Code 中创建 ASP.NET Core Web 应用
 ## <a name="overview"></a>概述
-本教程演示如何使用 [Visual Studio Code (VS Code)](http://code.visualstudio.com//Docs/whyvscode) 创建 ASP.NET Web 5 应用，并将其部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 
+本教程演示如何使用 [Visual Studio Code (VS Code)](http://code.visualstudio.com//Docs/whyvscode) 创建 ASP.NET Core Web 应用，并将其部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 
 
 > [!NOTE]
 > 尽管本文中指的是 Web 应用，但内容同样适用于 API 应用和移动应用。 
 > 
 > 
 
-ASP.NET 5 是大幅重新设计的 ASP.NET。 ASP.NET 5 是新的开源跨平台框架，用于通过 .NET 构建基于云的现代 Web 应用。 有关详细信息，请参阅 [ASP.NET 5 简介](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)。 有关 Azure 应用服务 Web 应用的信息，请参阅 [Web 应用概述](app-service-web-overview.md)。
+ASP.NET Core 是大幅重新设计的 ASP.NET。 ASP.NET Core 是新的开源跨平台框架，用于通过 .NET 构建基于云的现代 Web 应用。 有关详细信息，请参阅 [Introduction to ASP.NET Core](http://docs.asp.net/latest/conceptual-overview/aspnet.html)（ASP.NET Core 简介）。 有关 Azure 应用服务 Web 应用的信息，请参阅 [Web 应用概述](app-service-web-overview.md)。
 
 [!INCLUDE [app-service-web-try-app-service.md](../../includes/app-service-web-try-app-service.md)]
 
 ## <a name="prerequisites"></a>先决条件
 * 安装 [VS Code](http://code.visualstudio.com/Docs/setup)。
-* 安装 [Node.js](http://nodejs.org) - Node.js 是一个平台，用于通过 JavaScript 构建快速、可缩放的服务器应用程序。 Node 是运行时 (Node)，而 [npm](http://www.npmjs.com/) 是 Node 模块的程序包管理器。 在本教程中，你将使用 npm 创建 ASP.NET 5 Web 应用的基架。
 * 安装 Git - 可以从以下位置安装：[Chocolatey](https://chocolatey.org/packages/git) 或 [git-scm.com](http://git-scm.com/downloads)。 如果你是 Git 新手，请选择 [git-scm.com](http://git-scm.com/downloads)，并选择“从 Windows 命令提示符使用 Git”的选项。 安装 Git 后，还需要设置 Git 用户名和电子邮件，因为本教程稍后需要用到（从 VS Code 执行提交时）。  
 
-## <a name="install-aspnet-5-and-dnx"></a>安装 ASP.NET 5 和 DNX
-ASP.NET 5/DNX（.NET 执行环境）是精简的 .NET 堆栈，用于构建在 OS X、Linux 和 Windows 上运行的现代云应用及 Web 应用。 它已从头开始构建，可将优化的开发框架提供给已部署到云或本地运行的应用。 它由系统开销最低的模块化组件构成，因此你可以在构建解决方案时保持弹性。
+## <a name="install-aspnet-core"></a>安装 ASP.NET Core
+ASP.NET Core 是精简的 .NET 堆栈，用于构建在 OS X、Linux 和 Windows 上运行的现代云应用及 Web 应用。 它已从头开始构建，可将优化的开发框架提供给已部署到云或本地运行的应用。 它由系统开销最低的模块化组件构成，因此你可以在构建解决方案时保持弹性。
 
-本教程旨在帮助你使用最新开发版本的 ASP.NET 5 和 DNX 开始构建应用程序。 以下说明特定于 Windows。 有关 OS X、 Linux 和 Windows 的更详细安装说明，请参阅[安装 ASP.NET 5 和 DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)。 
+本教程旨在帮助你使用最新开发版本的 ASP.NET Core 开始构建应用程序。 以下说明特定于 Windows。 有关 OS X、Linux 和 Windows 的安装说明，请参阅 [Getting Started with ASP.NET Core](https://docs.microsoft.com/aspnet/core/getting-started)（ASP.NET Core 入门）。 
 
-1. 若要在 Windows 中安装 .NET 版本管理器 (DNVM)，请打开命令提示符并运行以下命令。
-   
-        @powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
-   
-    这将下载 DNVM 脚本，并将其放入你的用户配置文件目录。 
-2. **重新启动 Windows** 以完成 DNVM 安装。 
-   
-    重新启动 Windows 后，你可以打开命令提示符，通过输入以下内容来验证 DNVM 的位置：
-   
-        where dnvm
-   
-    命令提示符将显示如下所示的路径。
-   
-    ![dnvm 位置](./media/web-sites-create-web-app-using-vscode/00-where-dnvm.png)
-3. 安装 DNVM 后，必须使用它来下载 DNX 以运行应用程序。 在命令提示符下运行以下命令：
-   
-        dnvm upgrade
-   
-    验证你的 DNVM，并通过在命令提示符下输入以下命令，来查看活动的运行时：
-   
-        dnvm list
-   
-    命令提示符将显示活动运行时的详细信息。
-   
-    ![DNVM 位置](./media/web-sites-create-web-app-using-vscode/00b-dnvm-list.png)
-   
-    如果列出了多个 DNX 运行时，则可以选择在命令提示符下输入以下命令（或更新版本）来设置活动 DNX 运行时。 稍后在本教程中创建 Web 应用时，请将其设置为 ASP.NET 5 生成器使用的同一版本。 *如果活动的运行时已设置为最新的可用运行时，则可能不需要更改运行时。*
-   
-        dnvm use 1.0.0-update1 –p
 
 > [!NOTE]
-> 有关 OS X、 Linux 和 Windows 的更详细安装说明，请参阅[安装 ASP.NET 5 和 DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)。 
+> 有关 OS X、 Linux 和 Windows 的更详细安装说明，请参阅[安装 ASP.NET Core](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)。 
 > 
 > 
 
 ## <a name="create-the-web-app"></a>创建 Web 应用
-本部分说明如何创建新应用 ASP.NET Web 应用的基架。 你将使用 node 程序包管理器 (npm) 来安装 [Yeoman](http://yeoman.io/)（应用程序基架工具 - 相当于 Visual Studio“文件”>“新建项目”操作的 VS Code）、[Grunt](http://gruntjs.com/)（JavaScript 任务运行程序）和 [Bower](http://bower.io/)（客户端程序包管理器）。 
+本部分说明如何使用 .NET CLI 工具创建新应用 ASP.NET Web 应用的基架。 
 
-1. 以管理员权限打开命令提示符，并导航到你要在其中创建 ASP.NET 项目的位置。 例如，在 C: 根目录中创建一个 *vscodeprojects* 目录。
-2. 在命令提示符下输入以下命令以安装 Yeoman 和支持工具。
+1. 在命令提示符下输入以下命令，以创建项目文件夹，并创建应用的基架。
    
-        npm install -g yo grunt-cli generator-aspnet bower
+```terminal
+mkdir SampleWebApp
+cd SampleWebApp
+dotnet new mvc
+```
+![dotnet CLI - ASP.NET Core 生成器](./media/web-sites-create-web-app-using-vscode/dotnetcore-mvc-01.png)
+
+2. 若要还原所需的 NuGet 包，请运行以下命令：
    
-   > [!NOTE]
-   > 你可能会收到警告，提示你 npm 版本已过期。 此警告不会影响本教程。
-   > 
-   > 
-3. 在命令提示符下输入以下命令，以创建项目文件夹，并创建应用的基架。
-   
-        yo aspnet
-4. 使用箭头键从 ASP.NET 5 生成器菜单中选择“Web 应用程序基本”类型，然后按 **&lt;Enter>**。
-   
-    ![Yeoman - ASP.NET 5 生成器](./media/web-sites-create-web-app-using-vscode/01-yo-aspnet.png)
-5. 将新的 ASP.NET Web 应用的名称设置为 **SampleWebApp**。 由于整个教程中都使用此名称，因此如果选择了其他名称，则需要替换每个出现的 **SampleWebApp**。 当按 **&lt;Enter>** 时，Yeoman 将创建名为 **SampleWebApp** 的新文件夹，以及新应用的必要文件。
-6. 在命令提示符下，将目录更改为新的项目文件夹：
-   
-        cd SampleWebApp
-7. 此外，在命令提示符下，输入以下命令安装必要的 NuGet 包，以便运行应用程序：
-   
-        dnu restore
-8. 在命令提示符下输入以下命令打开 VS Code：
-   
-        code .
+    ```terminal
+    dotnet restore
+    ```
 
 ## <a name="run-the-web-app-locally"></a>在本地运行 Web 应用
 在创建 Web 应用并检索应用的所有 NuGet 包后，你可以在本地运行该 Web 应用。
 
-1. 在 VS Code 的“命令控制板”中，输入以下命令以显示可用的运行命令选项：
-   
-        dnx: Run Command
-   
-   > [!NOTE]
-   > 如果 Omnisharp 服务器当前未运行，则它将会启动。 重新输入上述命令。
-   > 
-   > 
-   
-    接下来，选择以下命令以运行你的 Web 应用：
-   
-        dnx web - (SampleWebApp)
-   
-    命令窗口将显示该应用程序已启动。 如果命令窗口未显示此消息，请检查 VS Code 左下角以找出项目中的错误。
-   
-   > [!NOTE]
-   > 从**命令控制板**发出命令需要在命令行的开头输入 **>** 字符。 可以在 *project.json* 文件中查看与 **web** 命令相关的详细信息。   
-   > 如果该命令未出现或不可用，你可能需要安装 C# 扩展。 运行 `>Extensions: Install Extension` 和 `ext install c#` 以安装 C# 扩展。
-   > 
-   > 
+1. 运行应用（过期时 `dotnet run` 命令将生成应用）：
+    ```terminal
+    dotnet run
+    ```
 2. 打开浏览器并导航到以下 URL。
    
     **http://localhost:5000**

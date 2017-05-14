@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 05/04/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: eb3af43b8a13eaaebfa9147848383ff889119d97
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 4e730b65a98af05ea00c5f8ebd9914e3367b66a7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -28,184 +29,203 @@ ms.lasthandoff: 04/03/2017
 # <a name="get-started-with-kubernetes-and-windows-containers-in-container-service"></a>容器服务中的 Kubernetes 和 Windows 容器入门
 
 
-本文介绍如何在包含 Windows 节点的 Azure 容器服务中创建 Kubernetes 群集，以运行 Windows 容器。 
+本文介绍如何在包含 Windows 节点的 Azure 容器服务中创建 Kubernetes 群集，以运行 Windows 容器。 首先使用 `az acs` Azure CLI 2.0 命令在 Azure 容器服务中创建 Kubernetes 群集。 然后借助 Kubernetes `kubectl` 命令行工具，开始使用从 Docker 映像生成的 Windows 容器。 
 
 > [!NOTE]
-> 对 Azure 容器服务中 Kubernetes 的 Windows 容器的支持处于预览状态。 使用 Azure 门户或 Resource Manager 模板来创建包含 Windows 节点的 Kubernetes 群集。 Azure CLI 2.0 当前不支持此功能。
+> 对 Azure 容器服务中 Kubernetes 的 Windows 容器的支持处于预览状态。 
 >
 
 
 
 下图显示 Azure 容器服务中 Kubernetes 群集的体系结构，包括一个 Linux 主节点和两个 Windows 代理节点。 
 
+![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-windows-walkthrough/kubernetes-windows.png)
+
 * Linux 主节点为 Kubernetes REST API 提供服务，可由 SSH 通过端口 22 访问，或者由 `kubectl` 通过端口 443 访问。 
 * Windows 代理节点分组在 Azure 可用性集中，运行用户的容器。 可以通过主节点经由 RDP SSH 隧道访问 Windows 节点。 Azure 负载均衡器规则根据公开的服务以动态方式添加到群集。
 
 
-![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-windows-walkthrough/kubernetes-windows.png)
 
 所有 VM 在相同的专用虚拟网络中，并完全可以相互访问。 所有 VM 都运行 kubelet、 Docker 和代理。
 
+如需更多背景知识，请参阅 [Azure 容器服务简介](container-service-intro.md)和 [Kubernetes documentation](https://kubernetes.io/docs/home/)（Kubernetes 文档）。
+
 ## <a name="prerequisites"></a>先决条件
+要使用 Azure CLI 2.0 创建 Azure 容器服务群集，用户必须：
+* 具有一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）
+* 已安装并登录到 [Azure CLI 2.0](/cli/azure/install-az-cli2)
+
+还需要为 Kubernetes 群集做好以下准备。 可以事先准备这些条目，也可以使用 `az acs create` 命令选项在群集部署过程中自动生成它们。 
+
+* **SSH RSA 公钥**：若要创建安全外壳 (SSH) RSA 密钥，请参阅 [macOS 和 Linux](../virtual-machines/linux/mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/linux/ssh-from-windows.md) 指南。 
+
+* **服务主体客户端 ID 和机密**：有关如何创建 Azure Active Directory 服务主体的步骤和其他信息，请参阅[关于 Kubernetes 群集的服务主体](container-service-kubernetes-service-principal.md)。
+
+本文中的命令示例自动生成 SSH 密钥和服务主体。
+  
+## <a name="create-your-kubernetes-cluster"></a>创建 Kubernetes 群集
+
+以下是用于创建群集的 Azure CLI 2.0 命令。 
+
+### <a name="create-a-resource-group"></a>创建资源组
+在 Azure 容器服务已[发布](https://azure.microsoft.com/regions/services/)的位置创建资源组。 以下命令在“westus”位置创建名为“myKubernetesResourceGroup”的资源组：
+
+```azurecli
+az group create --name=myKubernetesResourceGroup --location=westus
+```
+
+### <a name="create-a-kubernetes-cluster-with-windows-agent-nodes"></a>创建包含 Windows 代理节点的 Kubernetes 群集
+
+使用 `az acs create` 命令与 `--orchestrator-type=kubernetes` 和 `--windows` 代理选项，在资源组中创建 Kubernetes 群集。 有关命令语法，请参阅 `az acs create` [帮助](/cli/azure/acs#create)。
+
+以下命令为管理节点创建名为 *myKubernetesClusterName* 且 DNS 前缀为 *myPrefix* 的容器服务群集，以及访问 Windows 节点所需的指定凭据。 此版本的命令自动为 Kubernetes 群集生成 SSH RSA 密钥和服务主体。
 
 
-* **SSH RSA 公钥**：通过门户或某个 Azure 快速入门模板进行部署时需提供 SSH RSA 公钥，以便针对 Azure 容器服务虚拟机进行身份验证。 若要创建安全外壳 (SSH) RSA 密钥，请参阅 [OS X 和 Linux](../virtual-machines/linux/mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/linux/ssh-from-windows.md) 指南。 
+```azurecli
+az acs create --orchestrator-type=kubernetes \
+    --resource-group myKubernetesResourceGroup \
+    --name=myKubernetesClusterName \
+    --dns-prefix=myPrefix \
+    --agent-count=2 \
+    --generate-ssh-keys \
+    --windows --admin-username myWindowsAdminName \
+    --admin-password myWindowsAdminPassword
+```
 
-* **服务主体客户端 ID 和机密**：有关详细信息和指南，请参阅[关于 Kubernetes 群集的服务主体](container-service-kubernetes-service-principal.md)。
+数分钟后，命令完成，你会有一个可以运行的 Kubernetes 群集。
+
+> [!IMPORTANT]
+> 如果帐户没有创建 Azure AD 服务主体的权限，该命令会生成类似于`Insufficient privileges to complete the operation.`的错误。有关详细信息，请参阅[关于 Kubernetes 群集的服务主体](container-service-kubernetes-service-principal.md)。 
+> 
+
+## <a name="connect-to-the-cluster-with-kubectl"></a>使用 kubectl 连接到群集
+
+若要从客户端计算机连接到 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)。 
+
+如果尚未在本地安装 `kubectl`，可通过 `az acs kubernetes install-cli` 安装。 （也可从 [Kubernetes 站点](https://kubernetes.io/docs/tasks/kubectl/install/)下载。）
+
+**Linux 或 macOS**
+
+```azurecli
+sudo az acs kubernetes install-cli
+```
+
+**Windows**
+```azurecli
+az acs kubernetes install-cli
+```
+
+> [!TIP]
+> 默认情况下，此命令将 `kubectl` 二进制文件安装到 Linux 或 macOS 系统上的 `/usr/local/bin/kubectl`，或者 Windows 上的 `C:\Program Files (x86)\kubectl.exe`。 若要指定其他安装路径，请使用 `--install-location` 参数。
+>
+> 安装 `kubectl` 后，请确保其目录位于系统路径中，否则请将其添加到该路径。 
 
 
+然后运行以下命令，将主 Kubernetes 群集配置下载到本地 `~/.kube/config` 文件：
 
+```azurecli
+az acs kubernetes get-credentials --resource-group=myKubernetesResourceGroup --name=myKubernetesClusterName
+```
 
-## <a name="create-the-cluster"></a>创建群集
+此时可以从计算机访问群集。 可尝试运行：
 
-可以使用 Azure 门户[创建 Kubernetes 群集](container-service-deployment.md#create-a-cluster-by-using-the-azure-portal)（含 Windows 代理节点）。 创建群集时，请注意以下设置：
+```bash
+kubectl get nodes
+```
 
-* 在“基本信息”边栏选项卡的“Orchestrator”中，选择“Kubernetes”。 
+验证是否可以在群集中看到计算机列表。
 
-  ![选择 Kubernetes Orchestrator](media/container-service-kubernetes-windows-walkthrough/portal-select-kubernetes.png)
-
-* 在“主配置”边栏选项卡上，输入 Linux 主节点的用户凭据和服务主体凭据。 选择 1个、3 个或 5 个主节点。
-
-* 在“代理配置”边栏选项卡的“操作系统”中，选择“Windows (预览版)”。 输入 Windows 代理节点的管理员凭据。
-
-  ![选择 Windows 代理](media/container-service-kubernetes-windows-walkthrough/portal-select-windows.png)
-
-有关更多详细信息，请参阅[部署 Azure 容器服务群集](container-service-deployment.md)。
-
-## <a name="connect-to-the-cluster"></a>连接至群集
-
-使用 `kubectl` 命令行工具从本地计算机连接到 Kubernetes 群集的主节点。 有关安装和设置 `kubectl` 的步骤，请参阅[连接到 Azure 容器服务群集](container-service-connect.md#connect-to-a-kubernetes-cluster)。 可以使用 `kubectl` 命令来访问 Kubernetes Web UI，及创建和管理 Windows 容器工作负荷。
+![在 Kubernetes 群集中运行的节点](media/container-service-kubernetes-windows-walkthrough/kubectl-get-nodes.png)
 
 ## <a name="create-your-first-kubernetes-service"></a>创建第一个 Kubernetes 服务
 
-创建群集并与 `kubectl` 连接后，可以尝试启动基本的 Windows Web 应用，并将其公开到 Internet。 在此示例中，使用 YAML 文件指定容器资源，然后使用 `kubctl apply` 进行创建。
+创建群集并使用 `kubectl` 进行连接后，请尝试从 Docker 容器启动 Windows 应用，并将其公开到 Internet。 以下基本示例使用 JSON 文件指定 Microsoft Internet Information Server (IIS) 容器，然后使用 `kubctl apply` 来创建它。 
 
-1. 若要查看节点列表，请键入 `kubectl get nodes`。 若要获得节点的完整详细信息，请键入：  
+1. 创建名为 `iis.json` 的本地文件，并复制以下内容。 该文件告知 Kubernetes 在 Windows Server 2016 Server Core 上运行 IIS，使用 [Docker 中心](https://hub.docker.com/r/microsoft/iis/)提供的公共映像。 该容器使用端口 80，但最初只能在群集网络中访问。
 
-    ```
-    kubectl get nodes -o yaml
-    ```
+  ```JSON
+  {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "name": "iis",
+      "labels": {
+        "name": "iis"
+      }
+    },
+    "spec": {
+      "containers": [
+        {
+          "name": "iis",
+          "image": "microsoft/iis",
+          "ports": [
+            {
+            "containerPort": 80
+            }
+          ]
+        }
+      ],
+      "nodeSelector": {
+        "beta.kubernetes.io/os": "windows"
+      }
+    }
+  }
+  ```
+2. 若要启动该应用程序，请键入：  
+  
+  ```bash
+  kubectl apply -f iis.json
+  ```  
+3. 若要跟踪容器的部署，请键入：  
+  ```bash
+  kubectl get pods
+  ```
+  当容器正在进行部署时，其状态为 `ContainerCreating`。 
 
-2. 创建名为 `simpleweb.yaml` 的文件，并复制以下内容。 此文件使用 [Docker 中心](https://hub.docker.com/r/microsoft/windowsservercore/)的 Windows Server 2016 Server 核心基础 OS 映像来设置 Web 应用。  
+  ![处于 ContainerCreating 状态的 IIS 容器](media/container-service-kubernetes-windows-walkthrough/iis-pod-creating.png)   
 
-```yaml
-  apiVersion: v1
-  kind: Service
-  metadata:
-    name: win-webserver
-    labels:
-      app: win-webserver
-  spec:
-    ports:
-      # the port that this service should serve on
-    - port: 80
-      targetPort: 80
-    selector:
-      app: win-webserver
-    type: LoadBalancer
-  ---
-  apiVersion: extensions/v1beta1
-  kind: Deployment
-  metadata:
-    labels:
-      app: win-webserver
-    name: win-webserver
-  spec:
-    replicas: 1
-    template:
-      metadata:
-        labels:
-          app: win-webserver
-        name: win-webserver
-      spec:
-        containers:
-        - name: windowswebserver
-          image: microsoft/windowsservercore
-          command:
-          - powershell.exe
-          - -command
-          - "<#code used from https://gist.github.com/wagnerandrade/5424431#> ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add('http://*:80/') ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at http://*:80/') ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$_,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
-        nodeSelector:
-          beta.kubernetes.io/os: windows
+  考虑到 IIS 映像的大小，容器可能需要数分钟才能进入`Running`状态。
+
+  ![处于“正在运行”状态的 IIS 容器](media/container-service-kubernetes-windows-walkthrough/iis-pod-running.png)
+
+4. 若要将容器公开给全世界，请键入以下命令：
+
+  ```bash
+  kubectl expose pods iis --port=80 --type=LoadBalancer
   ```
 
-      
-> [!NOTE] 
-> 该配置包括 `type: LoadBalancer`。 此设置会让服务通过 Azure 负载均衡器在 Internet 上公开。 有关详细信息，请参阅[对 Azure 容器服务中 Kubernetes 群集内的容器进行负载均衡](container-service-kubernetes-load-balancing.md)。
->
+  有了此命令，Kubernetes 就可以使用公共 IP 地址创建 Azure 负载均衡器规则。 更改传播到负载均衡器需要几分钟时间。 有关详细信息，请参阅[对 Azure 容器服务中 Kubernetes 群集内的容器进行负载均衡](container-service-kubernetes-load-balancing.md)。
 
-## <a name="start-the-application"></a>启动应用程序
+5. 运行以下命令，以便查看服务的状态。
 
-1. 若要启动该应用程序，请键入：  
+  ```bash
+  kubectl get svc
+  ```
 
-    ```
-    kubectl apply -f simpleweb.yaml
-    ```  
+  IP 地址最初显示为`pending`：
+
+  ![挂起的外部 IP 地址](media/container-service-kubernetes-windows-walkthrough/iis-svc-expose.png)
+
+  几分钟后，IP 地址设置完毕：
   
-  
-2. 若要验证服务部署（需要大约 30 秒），请键入：  
-
-    ```
-    kubectl get pods
-    ```
-
-3. 该服务运行后，若要查看该服务的内部和外部 IP 地址，键入：
-
-    ```
-    kubectl get svc
-    ``` 
-  
-    ![Windows 服务的 IP 地址](media/container-service-kubernetes-windows-walkthrough/externalipa.png)
-
-    外部 IP 地址的添加需要几分钟时间。 负载均衡器配置外部地址之前，会显示为 `<pending>`。
-
-4. 外部 IP 地址可用后，可以在 Web 浏览器中访问该服务。
-
-    ![浏览器中的 Windows Server 应用](media/container-service-kubernetes-windows-walkthrough/wincontainerwebserver.png)
+  ![IIS 的外部 IP 地址](media/container-service-kubernetes-windows-walkthrough/iis-svc-expose-public.png)
 
 
-## <a name="access-the-windows-nodes"></a>访问 Windows 节点
-可通过远程桌面连接从本地 Windows 计算机访问 Windows 节点。 建议通过主节点经由 RDP SSH 隧道实现这一目的。 
+6. 外部 IP 地址可用后，即可在浏览器中浏览到它：
 
-有多种方法可在 Windows 上创建 SSH 隧道。 本部分介绍如何使用 PuTTY 创建隧道。
+  ![浏览到 IIS 的图像](media/container-service-kubernetes-windows-walkthrough/kubernetes-iis.png)  
 
-1. [将 PuTTY 下载](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)到 Windows 系统。
+7. 若要删除 IIS pod，请键入：
 
-2. 运行应用程序。
-
-3. 输入主机名 - 由群集管理员用户名和群集中第一个主机的公用 DNS 名组成。 “主机名”类似于 `adminuser@PublicDNSName`。 输入 22 作为“端口”。
-
-  ![PuTTY 配置 1](media/container-service-kubernetes-windows-walkthrough/putty1.png)
-
-4. 选择“SSH”>“身份验证”。 添加用于身份验证的专用密钥文件（.ppk 格式）的路径。 可以使用 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 等工具，通过用于创建群集的 SSH 密钥生成此文件。
-
-  ![PuTTY 配置 2](media/container-service-kubernetes-windows-walkthrough/putty2.png)
-
-5. 选择“SSH”>“隧道”并配置转发端口。 由于本地 Windows 计算机已使用端口 3389，因此建议使用以下设置来访问 Windows 节点 0 和 Windows 节点 1。 （其他 Windows 节点沿用此模式。）
-
-    **Windows 节点 0**
-
-    * **源端口：**3390
-    * **目标：**10.240.245.5:3389
-
-    **Windows 节点 1**
-
-    * **源端口：**3391
-    * **目标：**10.240.245.6:3389
-
-    ![Windows RDP 隧道的图像](media/container-service-kubernetes-windows-walkthrough/rdptunnels.png)
-
-6. 完成后，单击“会话”>“保存”保存连接配置。
-
-7. 若要连接到 PuTTY 会话，请单击“打开”。 完成主节点连接。
-
-8. 启动远程桌面连接。 若要连接到第一个 Windows 节点，对于“计算机”，请指定 `localhost:3390`，然后单击“连接”。 （若要连接到第二个 Windows 节点，指定 `localhost:3390`，依次类推。）若要完成连接，需提供在部署过程中配置的本地 Windows 管理员密码。
-
+  ```bash
+  kubectl delete pods iis
+  ```
 
 ## <a name="next-steps"></a>后续步骤
 
-以下是有关 Kubernetes 详细信息的一些推荐链接：
+* 若要使用 Kubernetes UI，请运行 `kubectl proxy` 命令。 然后，浏览到 http://localhost:8001/ui。
 
-* [Kubernetes 训练营](https://kubernetesbootcamp.github.io/kubernetes-bootcamp/index.html) - 介绍如何部署、伸缩、更新和调试容器化应用程序。
-* [Kubernetes 用户指南](http://kubernetes.io/docs/user-guide/) - 介绍如何在现有 Kubernetes 群集中运行程序。
-* [Kubernetes 示例](https://github.com/kubernetes/kubernetes/tree/master/examples) - 提供有关如何使用 Kubernetes 运行实际应用程序的示例。
+* 若要了解如何通过相关步骤来生成自定义 IIS 网站并在 Windows 容器中运行该网站，请参阅 [Docker 中心](https://hub.docker.com/r/microsoft/iis/)提供的指南。
+
+* 若要使用 PuTTy 通过通往主节点的 RDP SSH 隧道访问 Windows 节点，请参阅 [ACS-Engine 文档](https://github.com/Azure/acs-engine/blob/master/docs/ssh.md#create-port-80-tunnel-to-the-master)。 
+

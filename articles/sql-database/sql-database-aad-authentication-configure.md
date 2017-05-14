@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/23/2017
+ms.date: 05/05/2017
 ms.author: rickbyh
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 763ec017cef58b91ba12b616870cb9d830448749
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: f018e265d008cc06631034cea417109c71e7786f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证
 
 本文介绍如何创建和填充 Azure AD，以及之后如何通过 Azure SQL 数据库和 SQL 数据仓库使用 Azure AD。 有关概述，请参阅 [Azure Active Directory 身份验证](sql-database-aad-authentication.md)。
+
+>  [!NOTE]  
+>  不支持使用 Azure Active Directory 帐户连接到 Azure VM 上运行的 SQL Server。 请改用域 Active Directory 帐户。
 
 ## <a name="create-and-populate-an-azure-ad"></a>创建并填充 Azure AD
 创建 Azure AD 并在其中填充用户和组。 创建初始域 Azure AD 托管的域。 Azure AD 也可以是本地 Active Directory 域服务，该服务可以与 Azure AD 联合。

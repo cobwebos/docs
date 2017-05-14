@@ -17,14 +17,15 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: dariagrigoriu, glenga
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: cea92fe434288012a398f6821bc9cd7ab85b7d3e
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0feeca446a756a076461f381123f63079e0a13db
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="choose-the-correct-service-plan-for-azure-functions"></a>为 Azure Functions 选择正确的服务计划
+# <a name="choose-the-correct-hosting-plan-for-azure-functions"></a>为 Azure Functions 选择正确的托管计划
 
 ## <a name="introduction"></a>介绍
 
@@ -40,7 +41,7 @@ Azure Functions 有两个不同的服务计划：消耗量计划和应用服务�
 
 在“消耗量计划”中，将 Function App 分配给计算处理实例。 需要时，会动态添加或删除更多实例。 此外，函数并行运行，以最大程度地减少处理请求所需的总时间。 每个函数的执行时间由包含 Function App 汇总。 成本由内存大小和 Function App 中所有函数的总执行时间决定。 如果计算需求不连续或作业执行时间很短，请使用消耗计划。 通过此计划，只需为正在使用的计算资源付费。 下一部分详细介绍如何使用消耗量计划。
 
-### <a name="app-service-plan"></a>App Service 计划
+### <a name="app-service-plan"></a>应用服务计划
 
 在“应用服务计划”中，Function App 将在专用 VM 上运行，类似如今的 Web 应用用于基本、标准或高级 SKU。 专用 VM 将分配到应用服务应用和 Function App，并且无论是否正在主动执行代码，其始终可用。 如果具有已在运行其他代码的现有、未充分利用的 VM，或希望持续或几乎持续运行函数，这将是个不错的选择。 VM 将运行时和内容大小进行成本分离。 结果是，可以将许多长时间运行的函数的成本限制为运行函数的 VM 的成本。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
 

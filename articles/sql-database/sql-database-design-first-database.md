@@ -4,7 +4,7 @@ description: "了解如何设计你的第一个 Azure SQL 数据库。"
 services: sql-database
 documentationcenter: 
 author: janeng
-manager: jstrauss
+manager: jhubbard
 editor: 
 tags: 
 ms.assetid: 
@@ -14,19 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 03/30/2017
+ms.date: 05/07/2017
 ms.author: janeng
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 0d02954829ebac9275c014f7dac7e1ec423b0fc1
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: a78284276b600172ad9fd6de2f30702a6f05e79b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
 # <a name="design-your-first-azure-sql-database"></a>设计你的第一个 Azure SQL 数据库
 
-在本教程中，你将为大专院校建立一个数据库以跟踪学生成绩和选课情况。 本教程将演示如何使用 [Azure 门户](https://portal.azure.com/)和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) 在 Azure SQL 数据库逻辑服务器上创建 Azure SQL 数据库、将表添加到数据库、将数据加载到表，以及查询数据库。 它还将演示如何使用 SQL 数据库[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)功能将数据库还原到以前的时间点。
+Azure SQL 数据库是使用 Microsoft SQL Server 引擎的关系数据库即服务。 本教程介绍基本数据库任务，例如创建数据库和表、负载和查询数据和时间将数据库还原到以前的点。 你将学习如何： 
+
+> [!div class="checklist"]
+> * 创建数据库
+> * 设置防火墙规则。
+> * 使用 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) 连接到该数据库
+> * 创建表
+> * 批量加载数据
+> * 查询该数据
+> * 使用 SQL 数据库的[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)功能将数据库还原到上一个时间点
 
 若要完成本教程，请确保已安装最新版的 [ SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)。 
 
@@ -280,7 +290,19 @@ Azure SQL 数据库受防火墙保护。 默认情况下，将拒绝与服务器
 
 3. 单击“确定”，将数据库[还原到添加这些表之前的时间点](sql-database-recovery-using-backups.md#point-in-time-restore)。 将数据库还原到不同的时间点，在指定时间点（前提是在[服务层](sql-database-service-tiers.md)保留时间段内）原始数据库的服务器中创建一个备份数据库。
 
-## <a name="next-steps"></a>后续步骤 
 
-若要了解常见任务的 PowerShell 示例，请参阅 [SQL 数据库 PowerShell 示例](sql-database-powershell-samples.md)
+
+## <a name="next-steps"></a>后续步骤 
+本教程介绍了基本数据库任务，例如创建数据库和表、负载和查询数据和时间将数据库还原到以前的点。 你已了解如何：
+> [!div class="checklist"]
+> * 创建数据库
+> * 设置防火墙规则。
+> * 使用 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) 连接到该数据库
+> * 创建表
+> * 批量加载数据
+> * 查询该数据
+> * 使用 SQL 数据库的[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)功能将数据库还原到上一个时间点。请继续学习下一篇教程了解如何迁移数据。
+
+> [!div class="nextstepaction"]
+>[将 SQL Server 数据库迁移至 Azure SQL 数据库](sql-database-migrate-your-sql-server-database.md)
 

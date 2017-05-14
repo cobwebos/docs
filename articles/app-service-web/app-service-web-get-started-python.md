@@ -14,22 +14,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 9bd8db6c765f8f702a6e4ea5b17507269d3310d1
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 2916ee6ba4753efdb8823f93c951a4f678b08ae4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
 # <a name="create-a-python-application-on-web-app"></a>在 Web 应用中创建 Python 应用程序
 
-本快速入门教程逐步讲解如何开发 Python 应用并将其部署到 Azure。 我们将使用 Azure 应用服务运行该应用，再使用 Azure CLI 在其中创建并配置一个新的 Web 应用。 然后，我们使用 git 将该 Python 应用部署到 Azure。
+本快速入门教程逐步讲解如何开发 Python 应用并将其部署到 Azure。 我们将使用 Azure App Service 运行该应用，再使用 Azure CLI 在其中创建并配置一个新的 Web 应用。 然后，我们使用 git 将该 Python 应用部署到 Azure。
 
 ![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-可以在 Mac、Windows 或 Linux 计算机上遵循以下步骤。 大约 5 分钟内应可完成下面的所有步骤。
+可以在 Mac、Windows 或 Linux 计算机上执行以下步骤。 大约 5 分钟内应可完成下面的所有步骤。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="prerequisites"></a>先决条件
 
 运行本示例之前，请在本地安装以下必备组件：
 
@@ -107,7 +108,7 @@ az group create --name myResourceGroup --location westeurope
 
 ## <a name="create-an-azure-app-service"></a>创建 Azure 应用服务
 
-使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建基于 Linux 的应用服务计划。
+使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。
 
 > [!NOTE]
 > 应用服务计划表示用于托管应用的物理资源集合。 分配到应用服务计划的所有应用程序将共享该计划定义的资源，在托管多个应用时可以节省成本。
@@ -119,7 +120,7 @@ az group create --name myResourceGroup --location westeurope
 > * SKU（免费、共享、基本、标准、高级）
 >
 
-以下示例使用**免费**定价层在 Linux Workers 中创建名为 `quickStartPlan` 的应用服务计划。
+以下示例使用**免费**定价层创建名为 `quickStartPlan` 的应用服务计划。
 
 ```azurecli
 az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku FREE
@@ -290,7 +291,7 @@ http://<app_name>.azurewebsites.net
 
 此时，显示 Hello World 消息的页面正在使用作为 Azure 应用服务 Web 应用运行的 Python 代码运行。
 
-![]()
+![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
 ## <a name="updating-and-deploying-the-code"></a>更新和部署代码
 
@@ -309,7 +310,7 @@ git push azure master
 
 完成部署后，切换回在“浏览到应用步骤”中打开的浏览器窗口，然后点击“刷新”。
 
-![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
+![hello-azure-in-browser](media/app-service-web-get-started-python/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-web-app"></a>管理新 Azure Web 应用
 
@@ -319,13 +320,13 @@ git push azure master
 
 从左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
 
-![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-python/Python-docs-hello-world-app-service-list.png)
+![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-python/app-service-list.png)
 
 现已进入 Web 应用的_边栏选项卡_（水平打开的门户页）。
 
 默认情况下，Web 应用的边栏选项卡显示“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 边栏选项卡左侧的选项卡显示可以打开的不同配置页。
 
-![Azure 门户中的应用服务边栏选项卡](media/app-service-web-get-started-python/Python-docs-hello-world-app-service-detail.png)
+![Azure 门户中的应用服务边栏选项卡](media/app-service-web-get-started-python/app-service-detail.png)
 
 边栏选项卡中的这些选项卡显示了可添加到 Web 应用的许多强大功能。 以下列表只是列出了一部分可用的功能：
 
@@ -341,4 +342,6 @@ git push azure master
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览预先创建的 [Web 应用 CLI 脚本](app-service-cli-samples.md)。
+> [!div class="nextstepaction"]
+> [浏览示例 Web 应用 CLI 脚本](app-service-cli-samples.md)
+

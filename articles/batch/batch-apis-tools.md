@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: tamram
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9d523044f5107eea9dfbba17564cc15ec05076c5
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
+ms.openlocfilehash: 1c0f8f3fede88b6e0bace35372a2d54bb53e5182
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -33,14 +34,15 @@ ms.lasthandoff: 04/27/2017
 > 
 > 
 
-## <a name="azure-accounts-youll-need"></a>需要的 Azure 帐户
+## <a name="azure-accounts-for-batch-development"></a>用于批处理开发的 Azure 帐户
 开发 Batch 解决方案时，你将在 Microsoft Azure 中使用以下帐户。
 
 * **Azure 帐户和订阅** - 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益][msdn_benefits]或注册 [Azure 免费帐户][free_account]。 创建帐户时，系统为用户创建默认订阅。
 * **批处理帐户** - Azure 批处理资源（包括池、计算节点、作业和任务）与 Azure 批处理帐户相关联。 当应用程序针对批处理服务提出请求时，会使用 Azure 批处理帐户名称、帐户的 URL 以及访问密钥对请求进行身份验证。 可以在 Azure 门户中 [创建 Batch 帐户](batch-account-create-portal.md) 。
 * **存储帐户** - 批处理提供的内置支持允许处理 [Azure 存储][azure_storage]中的文件。 几乎每个批处理方案都使用 Azure Blob 存储来暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 若要创建存储帐户，请参阅 [关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
 
-## <a name="batch-development-apis"></a>Batch 开发 API
+## <a name="batch-service-apis"></a>批处理服务 API
+
 应用程序和服务可以发出直接 REST API 调用或使用一个或多个下述客户端库，以便运行和管理 Azure 批处理工作负荷。
 
 | API | API 参考 | 下载 | 教程 | 代码示例 | 更多信息 |
@@ -51,14 +53,7 @@ ms.lasthandoff: 04/27/2017
 | **批处理 Node.js** |[github.io][api_nodejs] |[npm][api_nodejs_npm] |- |- | [自述文件](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **批处理 Java** |[github.io][api_java] |[Maven][api_java_jar] |- |[自述文件][api_sample_java] | [自述文件](https://github.com/Azure/azure-batch-sdk-for-java)|
 
-## <a name="batch-command-line-tools"></a>批处理命令行工具
-
-通过开发 API 提供的功能也可通过命令行工具提供： 
-
-* [批处理 PowerShell cmdlet][batch_ps]：[Azure PowerShell](/powershell/azure/overview) 模块中的 Azure 批处理 cmdlet 可让用户使用 PowerShell 管理批处理资源。
-* [Azure CLI](/cli/azure/overview)：Azure 命令行接口 (Azure CLI) 是一个跨平台工具集，提供用来与许多 Azure 服务（包括 Batch）交互的 shell 命令。
-
-## <a name="batch-resource-management"></a>Batch 资源管理
+## <a name="batch-management-apis"></a>批处理管理 API
 
 适用于批处理的 Azure Resource Manager API 允许通过编程方式访问批处理帐户。 可以使用这些 API 通过编程方式管理批处理帐户、配额和应用程序包。  
 
@@ -67,13 +62,25 @@ ms.lasthandoff: 04/27/2017
 | **批处理 Resource Manager REST** |[docs.microsoft.com][api_rest_mgmt] |不适用 |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **批处理 Resource Manager .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet ][api_net_mgmt_nuget] | [教程](batch-management-dotnet.md) |[GitHub][api_sample_net] |
 
+## <a name="batch-command-line-tools"></a>批处理命令行工具
 
-## <a name="batch-tools"></a>Batch 工具
-以下是在生成和调试 Batch 应用程序和服务时可以使用的一些有用工具，虽然在使用 Batch 生成解决方案时并不需要这些工具。
+这些命令行工具提供的功能与批处理服务和批处理管理 API 相同： 
 
-* [Azure 门户][portal]：可以在 Azure 门户的批处理边栏选项卡中创建、监视和删除批处理池、作业和任务。 用户运行作业时，可以查看这些资源和其他资源的状态信息，甚至从池中的计算节点下载文件（例如，在进行故障排除时下载失败任务的 `stderr.txt` ）。 用户还可以下载可用于登录到计算节点的远程桌面 (RDP) 文件。
+* [批处理 PowerShell cmdlet][batch_ps]：[Azure PowerShell](/powershell/azure/overview) 模块中的 Azure 批处理 cmdlet 可让用户使用 PowerShell 管理批处理资源。
+* [Azure CLI](/cli/azure/overview)：Azure 命令行界面 (Azure CLI) 是一个跨平台工具集，提供用来与许多 Azure 服务（包括批处理服务和批处理管理服务）交互的 shell 命令。 请参阅[使用 Azure CLI 管理批处理资源](batch-cli-get-started.md)，详细了解如何将 Azure CLI 与批处理配合使用。
+
+## <a name="other-tools-for-application-development"></a>适合应用程序开发的其他工具
+
+下面是一些其他的工具，这些工具可能适合生成和调试批处理应用程序和服务：
+
+* [Azure 门户][portal]：可以在 Azure 门户的批处理边栏选项卡中创建、监视和删除批处理池、作业和任务。 用户运行作业时，可以查看这些资源和其他资源的状态信息，甚至从池中的计算节点下载文件。 例如，在进行故障排除时下载失败任务的 `stderr.txt`。 用户还可以下载可用于登录到计算节点的远程桌面 (RDP) 文件。
 * [Azure 批处理资源管理器][batch_explorer]：批处理资源管理器提供与 Azure 门户类似的批处理资源管理功能，但位于独立的 Windows Presentation Foundation (WPF) 客户端应用程序中。 [GitHub][github_samples] 上提供的一个批处理 .NET 示例应用程序，用户可以使用 Visual Studio 2015 或更高版本生成它，然后在开发和调试批处理解决方案时，使用它浏览和管理批处理帐户中的资源。 可以查看作业、池和任务详细信息，从计算节点下载文件，以及使用可通过 Batch Explorer 下载的远程桌面 (RDP) 文件以远程方式连接到节点。
 * [Microsoft Azure 存储资源管理器][storage_explorer]：严格地说，虽然存储资源管理器不算是 Azure 批处理工具，但却是开发和调试批处理解决方案时的另一个很有用的工具。
+
+## <a name="additional-resources"></a>其他资源
+
+- 若要了解批处理应用程序中的日志记录事件，请参阅[记录事件以用来对批处理解决方案进行诊断评估和监视](batch-diagnostics.md)。 如需参考批处理服务引发的事件，请参阅[批处理分析](batch-analytics.md)。
+- 若要了解计算节点的环境变量，请参阅 [Azure 批处理计算节点环境变量](batch-compute-node-environment-variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

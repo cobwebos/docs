@@ -4,7 +4,7 @@ description: "本文介绍如何开始使用 Azure 安全中心的监视功能�
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 05/09/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: d796566676e13b312832dd543f52d3475d877ef8
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: f7f50c305a5ae6ad7bba4e793f4cb6a0735b80b4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -28,18 +29,17 @@ ms.lasthandoff: 03/31/2017
 通常可以认为，监视就是指观察并等待某个事件的发生，以便采取应对措施。 安全监视是指制定前瞻性策略对资源进行审核，确定不符合组织标准或最佳规范的系统。
 
 ## <a name="monitoring-security-health"></a>监视安全运行状况
-用户为订阅的资源启用[安全策略](security-center-policies.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。 可立即提供有关网络配置的信息。 可能需要一小时或更长时间才能提供有关虚拟机配置的信息（例如安全更新状态和操作系统配置）。 在“资源安全运行状况”边栏选项卡中，可以查看资源的安全状态以及任何问题。 也可在“建议”边栏选项卡中查看此类问题的列表。
+用户为订阅的资源启用[安全策略](security-center-policies.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。 可立即提供有关网络配置的信息。 可能需要一小时或更长时间才能提供有关虚拟机配置的信息（例如安全更新状态和操作系统配置）。 在“预防”部分，可以查看资源的安全状态以及任何问题。 也可在“建议”磁贴中查看此类问题的列表。
 
 如需详细了解如何应用建议，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 
-在“资源安全运行状况”磁贴中，可以监视资源的安全状态。 在下面的示例中，可以看到许多问题严重级别为“高”和“中”，需要引起注意。 启用的安全策略会影响受监视控件的类型。
+在“预防”部分，可以监视资源的安全状态。 在以下示例中，可以看到每个资源的磁贴（“计算”、“网络”、“存储与数据”、“应用程序”）中都有已发现问题的总数。
 
-![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-new001-2017.png)
+![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-newUI-2017.png)
 
-如果安全中心确定需要解决的漏洞（例如虚拟机缺少安全更新，或者子网没有[网络安全组](/virtual-network/virtual-networks-nsg.md)），会将其列在此处。
 
 ### <a name="monitor-compute"></a>监视计算节点
-在“资源安全运行状况”磁贴中单击“计算”时，打开的“计算”边栏选项卡将显示三个选项卡：
+单击“计算”磁贴时，打开的“计算”边栏选项卡将显示三个选项卡：
 
 - **概述**：有关监视和虚拟机的建议。
 - **虚拟机**：列出所有虚拟机及其当前安全状态。
@@ -119,7 +119,7 @@ ms.lasthandoff: 03/31/2017
 ![云服务建议](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
 
 ### <a name="monitor-virtual-networks"></a>监视虚拟网络
-单击“资源安全运行状况”磁贴中的“网络”即可打开“网络”边栏选项卡，其中包含更多详细信息，如以下屏幕截图所示：
+单击“网络”磁贴即可打开“网络”边栏选项卡，其中包含更多详细信息，如以下屏幕截图所示：
 
 ![“网络”边栏选项卡](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
 
@@ -170,11 +170,11 @@ ms.lasthandoff: 03/31/2017
 
 此边栏选项卡底部为对此虚拟机的建议，与前述内容类似。 单击某个建议即可了解其详细信息或应用所需的安全控制或配置。
 
-### <a name="monitor-data"></a>监视数据
+### <a name="monitor-storage--data"></a>监视存储与数据
 
-在“资源安全运行状况”磁贴中单击“SQL 和数据”时，“数据资源”边栏选项卡将会打开，其中显示了有关 SQL 和存储的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读 [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md)（在 Azure 安全中心为 Azure 存储帐户启用加密）。
+在“预防”部分单击“存储与数据”时，“数据资源”边栏选项卡将会打开，其中显示了有关 SQL 和存储的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读 [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md)（在 Azure 安全中心为 Azure 存储帐户启用加密）。
 
-![数据资源](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
+![数据资源](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
 
 在“SQL 建议”下面，可以单击任一建议，获取有关进一步操作的更多详细信息来解决问题。 以下示例显示了“SQL 数据库的数据库审核与威胁检测”建议的补充说明。
 

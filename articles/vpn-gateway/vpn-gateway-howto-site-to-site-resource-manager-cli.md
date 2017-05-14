@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: af85e4921a2b81c71f1d132c6df591acbe5d3764
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 7132c83168efcebc9ac03b42afdec9f760e4fcbe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -156,12 +156,18 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --re
 
 ## <a name="VPNDevice"></a>8.配置 VPN 设备
 
-[!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
-  若要查找虚拟网关的公共 IP 地址，请使用 [az network public-ip list](/cli/azure/network/public-ip#list) 命令。 为了方便阅读，对输出进行了格式化，以表格式显示一系列公共 IP。
+通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步骤中，请配置 VPN 设备。 配置 VPN 设备时，需要以下项：
 
-```azurecli
-az network public-ip list --resource-group TestRG1 --output table
-```
+- 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的可用密钥。
+- 虚拟网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 若要查找虚拟网关的公共 IP 地址，请使用 [az network public-ip list](/cli/azure/network/public-ip#list) 命令。 为了方便阅读，对输出进行了格式化，以表格式显示一系列公共 IP。
+
+  ```azurecli
+  az network public-ip list --resource-group TestRG1 --output table
+  ```
+
+
+[!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
+
 
 ## <a name="CreateConnection"></a>9.创建 VPN 连接
 

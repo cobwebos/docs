@@ -1,6 +1,7 @@
 ---
-title: "Azure Active Directory 门户中的“有风险的登录”报表 - 预览 | Microsoft Docs"
-description: "了解 Azure Active Directory 门户中的“有风险的登录”报表 - 预览"
+
+title: "Azure Active Directory 门户中的“有风险的登录”报告 | Microsoft Docs"
+description: "了解 Azure Active Directory 门户中的“有风险的登录”报告"
 services: active-directory
 author: MarkusVi
 manager: femila
@@ -10,20 +11,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 349109e0c12a1394f96529a94ab884eeb451d242
-ms.openlocfilehash: 69b2166dcbc3e4abd99084b47907c90e157791de
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: e21b7733bc0f6b8625fbdcec3529ad603ce306c1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="risky-sign-ins-report-in-the-azure-active-directory-portal---preview"></a>Azure Active Directory 门户中的“有风险的登录”报表 - 预览
+# <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“有风险的登录”报告
 
-可以通过 Azure Active Directory [预览版](active-directory-preview-explainer.md)中的安全报告，了解你的环境中用户帐户泄露的可能性。 
+可以通过 Azure Active Directory (Azure AD) 中的安全报告，了解你的环境中用户帐户泄露的可能性。 
 
-Azure Active Directory 可以检测到与用户帐户相关的可疑操作。 每检测到一个可疑操作，就会创建一个名为“风险事件”的记录。 有关更多详细信息，请参阅 [Azure Active Directory 风险事件](active-directory-identity-protection-risk-events.md)。 
+Azure AD 可以检测到与用户帐户相关的可疑操作。 每检测到一个可疑操作，就会创建一个名为“风险事件”的记录。 有关更多详细信息，请参阅 [Azure Active Directory 风险事件](active-directory-identity-protection-risk-events.md)。 
 
 检测到的风险事件用于计算：
 
@@ -31,7 +33,7 @@ Azure Active Directory 可以检测到与用户帐户相关的可疑操作。 �
 
 - **已标记为存在风险的用户** - 风险用户是指可能已泄露的用户帐户。 有关更多详细信息，请参阅[已标记为存在风险的用户](active-directory-identityprotection.md#users-flagged-for-risk)。  
 
-在 Azure 门户中，可在“Azure Active Directory”边栏选项卡上的“安全”部分中找到安全报表。 
+在 [Azure 门户](https://portal.azure.com)中，可在“Azure Active Directory”边栏选项卡上的“安全”部分中找到安全报告。 
 
 ![有风险的登录](./media/active-directory-reporting-security-risky-sign-ins/10.png)
 
