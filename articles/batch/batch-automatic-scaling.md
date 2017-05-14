@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: multiple
-ms.date: 04/03/2017
+ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f1156572dece1dd59d5a258b670c8fb4f3e3d0e6
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 85a2fac77cf5beae6debad044df169301d43f4ca
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -108,6 +108,7 @@ $TargetDedicated=min(maxNumberofVMs, pendingTaskSamples);
 | $SucceededTasks |成功完成的任务数。 |
 | $FailedTasks |失败的任务数。 |
 | $CurrentDedicated |当前的专用计算节点数。 |
+| $PreemptedNodeCount | 池中处于预占状态的节点数。 |
 
 > [!TIP]
 > 上面所示的服务定义的只读变量是一些*对象*，它们提供了各种方法来访问与其相关的数据。 有关详细信息，请参阅下面的[获取样本数据](#getsampledata)。
