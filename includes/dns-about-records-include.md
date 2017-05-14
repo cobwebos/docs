@@ -2,7 +2,7 @@
 
 在 Azure DNS 中，记录使用相对名称指定。 完全限定的域名 (FQDN) 包括区域名称，而相对域名则不包括。 例如，“contoso.com”区域中的相对记录名称“www”会提供完全限定的记录名称“www.contoso.com”。
 
-顶点记录是位于 DNS 区域的根（或顶点）中的 DNS 记录。 例如，在 DNS 区域“contoso.com”中，顶点记录还具有完全限定的名称“contoso.com”（有时称为裸域）。  按照惯例，相对名称 '@' 用于表示顶点记录。
+顶点记录是位于 DNS 区域的根（或顶点）中的 DNS 记录。 例如，在 DNS 区域“contoso.com”中，顶点记录还具有完全限定的名称“contoso.com”（有时称为裸域）。  按照惯例，相对名称 @ 用于表示顶点记录。
 
 ### <a name="record-types"></a>记录类型
 
