@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/08/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: df5832478bf7049a7bb883eacac4be961ef65cf9
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: acb68b274228aa647dc7be5d36b2b077bd213c1b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/09/2017
 * [Service Fabric SDK 和工具](service-fabric-get-started.md)。
 *  适用于 Windows 的 Docker。  [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)（获取适用于 Windows 的 Docker CE（稳定版））。 安装并启动 Docker 以后，右键单击任务栏图标，然后选择“切换到 Windows 容器”。 这是运行基于 Windows 的 Docker 映像所必需的。
 
-一个 Windows 群集，其中至少有三个节点运行在包含容器的 Windows Server 2016 上 - [创建群集](service-fabric-get-started-azure-cluster.md)或[免费试用 Service Fabric](http://tryazureservicefabrictest.westus.cloudapp.azure.com/)。 
+一个 Windows 群集，其中至少有三个节点运行在包含容器的 Windows Server 2016 上 - [创建群集](service-fabric-get-started-azure-cluster.md)或[免费试用 Service Fabric](http://tryazureservicefabric.westus.cloudapp.azure.com/)。 
 
 一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。 
 
@@ -193,7 +193,7 @@ Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Servic
 4. 打开浏览器，导航到 http://containercluster.westus2.cloudapp.azure.com。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ## <a name="clean-up"></a>清理
-只要群集处于运行状态，就会产生费用。若要避免不必要的费用，可考虑[删除群集](service-fabric-get-started-azure-cluster.md#remove-the-cluster)。  [Party 群集](http://tryazureservicefabrictest.westus.cloudapp.azure.com/)会在数小时后自动删除。
+只要群集处于运行状态，就会产生费用。若要避免不必要的费用，可考虑[删除群集](service-fabric-get-started-azure-cluster.md#remove-the-cluster)。  [Party 群集](http://tryazureservicefabric.westus.cloudapp.azure.com/)会在数小时后自动删除。
 
 将映像推送到容器注册表以后，即可从开发计算机中删除本地映像：
 
