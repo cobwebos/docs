@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 05/08/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: bd2291129a1a61f69e83cb76748d00b9ede6eb6f
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ec658f4c74d54a11684460c0e634303793480152
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -66,7 +67,7 @@ ms.lasthandoff: 04/18/2017
    >
 9. 在“安全策略”边栏选项卡中，单击“启用”即可启用需要用在此订阅上的安全建议。 Click **Prevention policy** to see options like those in the following screenshot:
 
-    ![选择安全策略](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
+    ![选择安全策略](./media/security-center-policies/security-center-policies-fig4-newUI.png)
 
 若要了解每个选项，可使用下表作为参考：
 
@@ -82,6 +83,7 @@ ms.lasthandoff: 04/18/2017
 | SQL 审核和威胁检测 |建议允许审核对 Azure 数据库的访问权限，确保合规性；并启用高级威胁检测以便进行调查。 |
 | SQL 透明数据加密 |建议为 Azure SQL 数据库、关联的备份和事务日志文件启用静态加密。 即使数据被侵犯，入侵者也无法读取这些数据。 |
 | 漏洞评估 |建议在 VM 上安装漏洞评估解决方案。 |
+| 存储加密 |目前，此功能仅适用于 Azure Blob 和文件。 请注意，在启用存储服务加密以后，只会加密新数据，该存储帐户中的任何现有文件仍会保持不加密状态。 |
 
 配置所有选项以后，在包含建议的“安全策略”边栏选项卡中单击“确定”，然后在包含初始设置的“安全策略”边栏选项卡中单击“保存”。
 

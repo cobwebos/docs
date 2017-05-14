@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: fe52ced5e4dc829b5d1421bf0edcd58cffcaad19
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 24c2b27948e9373bc3957f706ed802cc36c04148
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.lasthandoff: 04/03/2017
 * Azure 应用服务的 Web 应用功能
 * SQL Server
 * Azure 密钥保管库
-* Azure Redis Cache
+* Azure Redis 缓存
 * Azure 批处理
 * Azure 流量管理器
 * Azure 搜索
@@ -48,7 +49,7 @@ ms.lasthandoff: 04/03/2017
 
 <sup>1</sup> 存储帐户名必须使用小写字母，包含 24 个或更少的字符，并且不包含任何连字符。
 
-如果为某个资源名称提供参数，必须在部署该资源时提供唯一的名称。 或者，可以改为创建使用 [uniqueString()](resource-group-template-functions.md#uniquestring) 函数的变量来生成名称。 
+如果为某个资源名称提供参数，必须在部署该资源时提供唯一的名称。 或者，可以改为创建使用 [uniqueString()](resource-group-template-functions-string.md#uniquestring) 函数的变量来生成名称。 
 
 可能还需要在 **uniqueString** 结果中添加一个前缀或后缀。 修改唯一的名称可以更方便地通过名称识别资源类型。 例如，可以使用以下变量生成存储帐户的唯一名称：
 
@@ -174,7 +175,7 @@ ms.lasthandoff: 04/03/2017
 使用变量时，以下信息可以提供帮助：
 
 * 针对需要在模板中多次使用的值使用变量。 如果一次只使用一个值，则硬编码值可使模板更易于阅读。
-* 不能在模板的 **variables** 节中使用 [reference](resource-group-template-functions.md#reference) 函数。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
+* 不能在模板的 **variables** 节中使用 [reference](resource-group-template-functions-resource.md#reference) 函数。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
 * 根据[资源名称](#resource-names)中所述，针对必须保持唯一的资源名称包含变量。
 * 可以将变量组合成复杂对象。 使用 **variable.subentry** 格式引用复杂对象中的值。 组合变量有助于跟踪相关的变量。 此外，还可以提高模板的可读性。 下面是一个示例：
    
