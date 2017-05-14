@@ -8,7 +8,7 @@
 | **软件** | |
 | 操作系统版本 | Windows Server 2012 R2 |
 | 操作系统区域设置 | 美国英语|
-| VMware vSphere PowerCLI 版本 | [PowerCLI 6.0](https://developercenter.vmware.com/tool/vsphere_powercli/6.0 "PowerCLI 6.0")|
+| VMware vSphere PowerCLI 版本 | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
 | Windows Server 角色 | 不要启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V |
 | **网络** | |
 | 网络接口卡类型 | VMXNET3 |
