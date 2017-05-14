@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: fe01be4f57766a556ff3a27a0cbba0293675cac7
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 7983ffa4bf7cb63f985d1a8f14d6dd834e679cf5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -49,7 +50,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 * 如果以下条件全部成立，则不能成功安装 Azure AD Connect 的此版本：
    1. 正在执行 DirSync 的就地升级或 Azure AD Connect 的全新安装。
    2. 使用的是本地化版本的 Windows Server，该服务器上的内置 Administrator 组的名称不是“Administrators”。
-   3. 使用的是随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，而不是你自己的完整 SQL。 
+   3. 使用的是随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，而不是你自己的完整 SQL。
 
 **已解决的问题：**
 
@@ -310,7 +311,7 @@ AD FS 管理
 **新的预览功能：**
 
 * [用于同步的 Azure AD Connect Health](../connect-health/active-directory-aadconnect-health-sync.md)。
-* 支持 [Azure AD 域服务](../active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords)密码同步。
+* 支持 [Azure AD 域服务](../active-directory-passwords-update-your-own-password.md)密码同步。
 
 **新的受支持方案：**
 

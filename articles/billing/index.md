@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 4a6b1a9e581904f7f7de2a6592dfb163ab2ec45e
-ms.openlocfilehash: 2284db5eaeba0bad709f7e2181ec357f58201d1e
-ms.lasthandoff: 02/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 53894809b679baef74c0d58f487afce676ba5bdd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 ---
 # <a name="azure-billing-documentation"></a>Azure 计费文档
@@ -102,6 +103,7 @@ ms.lasthandoff: 02/09/2017
                     <div class="cardText">
                         <h3>其他</h3>
                         <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-overview">API 概述</a></p>
+                        <p><a href="https://docs.microsoft.com/azure/billing/billing-enterprise-api">Enterprise 报告 API 概述</a></p>
                         <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudcruiser">合作伙伴解决方案：Cloud Cruiser</a></p>
                         <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudyn">合作伙伴解决方案：Cloudyn</a></p>
                     </div>
