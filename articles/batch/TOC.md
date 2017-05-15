@@ -19,6 +19,7 @@
 ### [高效列表查询](batch-efficient-list-queries.md)
 ### [作业准备与作业完成任务](batch-job-prep-release.md)
 ### [Linux 计算节点](batch-linux-nodes.md)
+### [低优先级 VM](batch-low-pri-vms.md)
 ### [使用批处理管理 .NET 来管理 Azure 批处理帐户](batch-management-dotnet.md)
 ### [持久性作业和任务输出](batch-task-output.md)
 ### [在批处理中运行 MPI 作业](batch-mpi.md)

@@ -18,6 +18,7 @@
 ### [Linux 上的 Java](service-fabric-create-your-first-linux-application-with-java.md)
 ### [Linux 上的 C#](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [在本地群集上部署应用](service-fabric-get-started-with-a-local-cluster.md)
+## [在容器中部署 .NET 应用](service-fabric-host-app-in-a-container.md)
 ## [在 Azure 上创建第一个群集](service-fabric-get-started-azure-cluster.md)
 ## [创建第一个独立群集](service-fabric-get-started-standalone-cluster.md)
 ## [创建第一个容器应用](service-fabric-get-started-containers.md)
@@ -28,6 +29,7 @@
 ### 概念
 #### [支持的编程模型](service-fabric-choose-framework.md)
 #### [应用程序模型](service-fabric-application-model.md)
+#### [托管模型](service-fabric-hosting-model.md)
 #### [服务清单资源](service-fabric-service-manifest-resources.md)
 #### [服务状态](service-fabric-concepts-state.md)
 #### [服务分区](service-fabric-concepts-partitioning.md)
@@ -45,6 +47,8 @@
 #### [概述](service-fabric-containers-overview.md)
 #### [部署 Windows 容器](service-fabric-deploy-container.md)
 #### [部署 Linux 容器](service-fabric-deploy-container-linux.md)
+#### [Docker Compose（预览）](service-fabric-docker-compose.md)
+#### [容器和服务的资源调控](service-fabric-resource-governance.md)
 
 ### 生成 Reliable Services 服务
 #### [概述](service-fabric-reliable-services-introduction.md)
@@ -57,6 +61,8 @@
 ##### [Reliable Collection 指导原则和建议](service-fabric-reliable-services-reliable-collections-guidelines.md)
 ##### [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
 ##### [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+##### [可靠的并发队列](service-fabric-reliable-services-reliable-concurrent-queue.md)
+##### [Reliable Collection 序列化](service-fabric-reliable-services-reliable-collections-serialization.md)
 ##### [可靠状态管理器和 Reliable Collection 内部](service-fabric-reliable-services-reliable-collections-internals.md)
 
 #### 入门
@@ -100,6 +106,7 @@
 
 ### 与服务进行通信
 #### [服务通信](service-fabric-connect-and-communicate-with-services.md)
+#### [DNS 服务](service-fabric-dnsservice.md)
 #### [反向代理](service-fabric-reverseproxy.md)
 
 ### [添加 Web 前端](service-fabric-add-a-web-frontend.md)
@@ -210,8 +217,8 @@
 ### [使用 Azure CLI 管理群集](service-fabric-azure-cli.md)
 
 ### 管理和协调群集资源
-#### [群集资源管理器概述](service-fabric-cluster-resource-manager-introduction.md)
-#### [群集资源管理器体系结构](service-fabric-cluster-resource-manager-architecture.md)
+#### [群集 Resource Manager 概述](service-fabric-cluster-resource-manager-introduction.md)
+#### [群集 Resource Manager 体系结构](service-fabric-cluster-resource-manager-architecture.md)
 #### [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)
 #### [应用程序组概述](service-fabric-cluster-resource-manager-application-groups.md)
 #### [配置群集资源管理器设置](service-fabric-cluster-resource-manager-configure-services.md)
