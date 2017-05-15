@@ -50,7 +50,7 @@ ms.lasthandoff: 05/10/2017
 
 ### <a name="create-a-linux-vm"></a>创建 Linux VM
 在新资源组中创建 Ubuntu VM。 Azure CLI 2.0 将创建 ssh 密钥并使用它们设置 VM。 <br>
-`az vm create -n my_vm_name -g MyRG --image UbuntuLTS`
+`az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
 > 默认情况下，用于对 VM 进行身份验证的公钥和私钥由 Azure CLI 2.0 置于 `/User/.ssh/id_rsa` 和 `/User/.ssh/id_rsa.pub` 中。 .ssh 文件夹保存在附加的 Azure 文件共享的 5 GB 映像中。

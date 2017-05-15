@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 05/01/2017
 ms.author: antisch
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
 ms.openlocfilehash: 228bde2aeffdf56b80fe3fa2a160d99971be1eb5
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/24/2017
 
 ---
@@ -37,4 +38,3 @@ ms.lasthandoff: 03/24/2017
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
-
