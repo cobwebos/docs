@@ -18,12 +18,13 @@
 ### [Web 应用 - 运行时](app-insights-java-live.md)
 ### [Docker 应用](app-insights-docker.md)
 
+## 监视 Node.js 应用
+### [Node.js](app-insights-nodejs.md)
 
 ## 监视网页
 ### [JavaScript](app-insights-javascript.md)
-
+ 
 ## 监视其他平台
-### [Node.js 应用](app-insights-nodejs.md)
 ### [SharePoint 站点](app-insights-sharepoint.md)
 ### [更多平台](app-insights-platforms.md)
 
@@ -32,7 +33,6 @@
 ## 规划和设计
 ### [对 Web 应用和服务进行深度诊断](app-insights-devops.md)
 ### [在 Web 应用程序中监视性能](app-insights-web-monitor-performance.md)
-### [Application Insights 使用分析](app-insights-web-track-usage.md)
 ### [分隔 Application Insights 资源](app-insights-separate-resources.md)
 ### [如何在 Application Insights 中执行...？](app-insights-how-do-i.md)
 
@@ -50,7 +50,7 @@
 #### [依赖项](app-insights-asp-net-dependencies.md)
 #### [版本注释](app-insights-annotations.md)
 #### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-
+#### [快照调试器](app-insights-snapshot-debugger.md)
 
 ### J2EE
 #### [日志跟踪](app-insights-java-trace-logs.md)
@@ -86,6 +86,11 @@
 #### [F5 Insights](app-insights-visual-studio.md)
 #### [趋势](app-insights-visual-studio-trends.md)
 #### [CodeLens](app-insights-visual-studio-codelens.md)
+
+### 使用情况
+#### [概述](app-insights-usage-overview.md)
+#### [保留](app-insights-usage-retention.md)
+#### [用户、会话、事件](app-insights-usage-segmentation.md)
 
 ### 分析
 
@@ -152,14 +157,14 @@
 ## 新闻
 
 ### [博客](https://azure.microsoft.com/blog/tag/application-insights/)
-### [服务更新](https://azure.microsoft.com/en-us/updates/?product=application-insights) 
+### [服务更新](https://azure.microsoft.com/updates/?product=application-insights) 
 ### [SDK 发行说明](app-insights-release-notes.md)
 ### [开发人员分析工具发行说明](app-insights-release-notes-vsix.md)
 
 ## [常见问题](app-insights-troubleshoot-faq.md)
 
 ## 帮助
-### [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
+### [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=ApplicationInsights)  
 ### [堆栈溢出](http://stackoverflow.com/questions/tagged/az-application-insights)
 ### [用户之声](https://visualstudio.uservoice.com/forums/357324-application-insights)
 ### [支持](https://azure.microsoft.com/support/)

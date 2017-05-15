@@ -53,6 +53,7 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [使用标记来组织资源](resource-group-using-tags.md)
 ### [将资源移到新组或订阅](resource-group-move-resources.md)
+### [创建 UI 定义](managed-application-createuidefinition-overview.md)
 ## 控制访问
 ### [使用 PowerShell 创建服务主体](resource-group-authenticate-service-principal.md)
 ### [使用 Azure CLI 2.0 创建服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -82,6 +83,7 @@
 ### [数值函数](resource-group-template-functions-numeric.md)
 ### [资源函数](resource-group-template-functions-resource.md)
 ### [字符串函数](resource-group-template-functions-string.md)
+## [UI 定义函数](managed-application-createuidefinition-functions.md)
 ## [PowerShell](/powershell/module/azurerm.resources)
 ## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)

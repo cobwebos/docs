@@ -16,6 +16,8 @@
 # 如何
 ## 开发
 ### [U-SQL 基础知识](data-lake-analytics-u-sql-get-started.md)
+### [U-SQL 目录](data-lake-analytics-u-sql-catalog.md)
+### [U-SQL 参数](data-lake-analytics-u-sql-parameterize_scripts.md)
 ### [U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
 ### [U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 ### [U-SQL Python 扩展](data-lake-analytics-u-sql-python-extensions.md)
