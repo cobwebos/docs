@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 05/08/2016
 ms.author: curtand
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ccfa8d72b51c43e04d924d2b096e3cbc407af043
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -49,10 +51,5 @@ ms.openlocfilehash: ccfa8d72b51c43e04d924d2b096e3cbc407af043
 * [使用自定义域名来简化用户登录体验](active-directory-add-domain.md)
 * [管理自定义域名](active-directory-add-manage-domain-names.md)
 * [了解 Azure AD 中的域管理概念](active-directory-add-domain-concepts.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

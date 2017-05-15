@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/21/2016
 ms.author: janeng
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2681dd3792a351fecc0c72eb7fe546113a451d24
 ms.openlocfilehash: 7b9b222be1a131d2a80d37404cbdd309b61785f3
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/13/2017
 
 

@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d04c670daac243119b47cece2df18335c7af972c
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 71668ceedca16647f814866ea9cf068f73e5daf6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -82,6 +83,7 @@ ms.lasthandoff: 04/19/2017
 |地域隔离|DocumentDB 确保符合主权区域（例如德国、中国和美国政府）的数据监管与符合性要求。|
 |受保护的设施|DocumentDB 中的数据存储在 Azure 的受保护数据中心内的 SSD 上。<br><br>在 [Microsoft 全球数据中心](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)中了解详细信息|
 |HTTPS/SSL/TLS 加密|从客户端到服务的所有 DocumentDB 交互都会实施 SSL/TLS 1.2。 此外，所有数据中心内部和跨数据中心的复制都会实施 SSL/TLS 1.2。|
+|静态加密|对存储在 DocumentDB 中的所有静态数据进行加密。 在 [DocumentDB 静态加密](.\documentdb-nosql-database-encryption-at-rest.md)中了解详细信息|
 |修补的服务器|作为一种托管的 NoSQL 数据库，在 DocumentDB 中无需管理和修补服务器，系统会自动完成这些操作。|
 |使用强密码的管理帐户|难以相信，我们竟然还要提到这项要求。但与我们的某些竞争产品不同，在 DocumentDB 中，不带密码的管理帐户是根本不受允许的。<br><br> DocumentDB 中默认融入了基于 SSL 和 HMAC 机密的身份验证安全性。|
 |安全和数据保护认证|DocumentDB 已通过 [ISO 27001](https://www.microsoft.com/en-us/TrustCenter/Compliance/ISO-IEC-27001)、[欧洲示范条款 (EUMC)](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses) 和 [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA) 认证。 其他认证正在审批中。|

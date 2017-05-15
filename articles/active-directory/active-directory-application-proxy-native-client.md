@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 164e3b0af47cd98f2d20fce7344230608e9fbe8c
-ms.openlocfilehash: 6762a5c88b7a3bbc0424729865ae312d74f9059f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 24396f7c82bcc0fb076c4fceca0ec4b0963d36e8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -28,14 +30,14 @@ Azure Active Directory 应用程序代理广泛用于发布浏览器应用程序
 发布此类应用程序的建议方法是使用 Azure AD 身份验证库，此库负责所有身份验证事宜，并且支持许多不同的客户端环境。 应用程序代理适合[本机应用程序到 Web API 方案](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)。 完成此目的的过程如下所示：
 
 ## <a name="step-1-publish-your-application"></a>步骤 1：发布应用程序
-像任何其他应用程序一样发布代理应用程序、配置用户并为他们提供高级或基本许可证。 有关详细信息，请参阅[使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
+像任何其他应用程序一样发布代理应用程序、分配用户并为他们提供高级或基本许可证。 有关详细信息，请参阅[使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
 
 ## <a name="step-2-configure-your-application"></a>步骤 2：配置应用程序
 按如下方式配置本机应用程序：
 
 1. 登录到 Azure 经典门户。
 2. 选择左侧菜单上的 Active Directory 图标，然后选择你的目录。
-3. 在顶部菜单中单击“应用程序”。 如果尚未将任何应用添加到你的目录，则此页只会显示“添加应用”链接。 单击该链接，或者单击命令栏上的“添加”按钮。
+3. 在顶部菜单中单击“应用程序”。 如果你的目录中尚未添加任何应用，则此页只会显示“添加应用”链接 。 单击该链接，或者单击命令栏上的“添加”按钮。
 4. 在“要执行什么操作”页上，单击“添加我的组织正在开发的应用程序”链接。
 5. 在“向我们说明你的应用程序”页上，指定应用程序名称，然后选择“本机客户端应用程序”。 单击箭头图标继续。
 6. 在“应用程序信息”页上，为本机客户端应用程序提供**重定向 URI**，然后单击复选标记完成。
@@ -51,7 +53,7 @@ Azure Active Directory 应用程序代理广泛用于发布浏览器应用程序
 ![针对其他应用程序的权限 - 添加应用程序](./media/active-directory-application-proxy-native-client/delegate_native_app.png)
 
 ## <a name="step-4-edit-the-active-directory-authentication-library"></a>步骤 4：编辑 Active Directory 身份验证库
-在 Active Directory 身份验证库 (ADAL) 的身份验证上下文中编辑本机应用程序代码，以包含以下内容：
+在 Active Directory 身份验证库 (ADAL) 的身份验证上下文中编辑本机应用程序代码，以包含以下文本：
 
         // Acquire Access Token from AAD for Proxy Application
         AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<TenantId>");
@@ -83,9 +85,4 @@ Azure Active Directory 应用程序代理广泛用于发布浏览器应用程序
 * [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
 
 有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

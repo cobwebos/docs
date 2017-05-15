@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/19/2017
+ms.date: 04/27/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: f8ce553dc528fa98fcffd42750da6bec72266129
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 54920f3b6665ce5d74bf8025d44d5e16bd8a54b4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 ---
 
 # <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>如何在 Azure 中自定义 Windows 虚拟机
 若要以快速一致的方式配置虚拟机 (VM)，通常需要某种形式的自动化。 自定义 Windows VM 的一种常用方法是使用[适用于 Windows 的自定义脚本扩展](extensions-customscript.md)。 本教程介绍如何使用自定义脚本扩展安装和配置 IIS 以运行基本网站。
 
-可使用最新版 [Azure PowerShell](/powershell/azureps-cmdlets-docs/) 模块完成本教程中的步骤。
+可使用最新版 [Azure PowerShell](/powershell/azure/overview) 模块完成本教程中的步骤。
 
 
 ## <a name="custom-script-extension-overview"></a>自定义脚本扩展概述
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/21/2017
 
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
-创建 VM 之前，需使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建资源组。 以下示例在 `westus` 位置创建名为 `myResourceGroupAutomate` 的资源组：
+创建 VM 之前，需使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建资源组。 以下示例在“westus”位置创建名为“myResourceGroupAutomate”的资源组：
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroupAutomate -Location westus
@@ -49,42 +50,75 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroupAutomate -Location we
 $cred = Get-Credential
 ```
 
-现在，可使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 创建 VM。 以下示例创建必需的虚拟网络组件、OS 配置，然后创建名为 `myVM` 的 VM：
+现在，可使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 创建 VM。 以下示例创建所需的虚拟网络组件、OS 配置，然后创建名为“myVM”的 VM：
 
 ```powershell
 # Create a subnet configuration
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+    -Name mySubnet `
+    -AddressPrefix 192.168.1.0/24
 
 # Create a virtual network
-$vnet = New-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAutomate -Location westus `
--Name myVnet -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$vnet = New-AzureRmVirtualNetwork `
+    -ResourceGroupName myResourceGroupAutomate `
+    -Location westus `
+    -Name myVnet `
+    -AddressPrefix 192.168.0.0/16 `
+    -Subnet $subnetConfig
 
 # Create a public IP address and specify a DNS name
-$publicIP = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroupAutomate -Location westus `
--AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "myPublicIP"
+$publicIP = New-AzureRmPublicIpAddress `
+    -ResourceGroupName myResourceGroupAutomate `
+    -Location westus `
+    -AllocationMethod Static `
+    -IdleTimeoutInMinutes 4 `
+    -Name "myPublicIP"
 
 # Create an inbound network security group rule for port 3389
-$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
--Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
--DestinationPortRange 3389 -Access Allow
+$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig `
+    -Name myNetworkSecurityGroupRuleRDP  `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 1000 `
+    -SourceAddressPrefix * `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389 `
+    -Access Allow
 
 # Create an inbound network security group rule for port 80
-$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleWWW  -Protocol Tcp `
--Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
--DestinationPortRange 80 -Access Allow
+$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig `
+    -Name myNetworkSecurityGroupRuleWWW  `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 1001 `
+    -SourceAddressPrefix * `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 80 `
+    -Access Allow
 
 # Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroupAutomate -Location westus `
--Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP,$nsgRuleWeb
+$nsg = New-AzureRmNetworkSecurityGroup `
+    -ResourceGroupName myResourceGroupAutomate `
+    -Location westus `
+    -Name myNetworkSecurityGroup `
+    -SecurityRules $nsgRuleRDP,$nsgRuleWeb
 
 # Create a virtual network card and associate with public IP address and NSG
-$nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGroupAutomate -Location westus `
--SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIP.Id -NetworkSecurityGroupId $nsg.Id
+$nic = New-AzureRmNetworkInterface `
+    -Name myNic `
+    -ResourceGroupName myResourceGroupAutomate `
+    -Location westus `
+    -SubnetId $vnet.Subnets[0].Id `
+    -PublicIpAddressId $publicIP.Id `
+    -NetworkSecurityGroupId $nsg.Id
 
 # Create a virtual machine configuration
 $vmConfig = New-AzureRmVMConfig -VMName myVM -VMSize Standard_DS2 | `
 Set-AzureRmVMOperatingSystem -Windows -ComputerName myVM -Credential $cred | `
-Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
+Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer `
+    -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
 Add-AzureRmVMNetworkInterface -Id $nic.Id
 
 New-AzureRmVM -ResourceGroupName myResourceGroupAutomate -Location westus -VM $vmConfig
@@ -94,7 +128,7 @@ New-AzureRmVM -ResourceGroupName myResourceGroupAutomate -Location westus -VM $v
 
 
 ## <a name="automate-iis-install"></a>自动安装 IIS
-使用 [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) 安装自定义脚本扩展。 该扩展运行 `powershell Add-WindowsFeature Web-Server` 以安装 IIS web 服务器，然后更新 `Default.htm` 页以显示 VM 的主机名：
+使用 [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) 安装自定义脚本扩展。 该扩展运行 `powershell Add-WindowsFeature Web-Server` 以安装 IIS Web 服务器，然后更新“Default.htm”页以显示 VM 的主机名：
 
 ```powershell
 Set-AzureRmVMExtension -ResourceGroupName myResourceGroupAutomate `
@@ -109,10 +143,12 @@ Set-AzureRmVMExtension -ResourceGroupName myResourceGroupAutomate `
 
 
 ## <a name="test-web-site"></a>测试网站
-使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的 `myPublicIP` 的 IP 地址：
+使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”的 IP 地址：
 
 ```powershell
-Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAutomate -Name myPublicIP | select IpAddress
+Get-AzureRmPublicIPAddress `
+    -ResourceGroupName myResourceGroupAutomate `
+    -Name myPublicIP | select IpAddress
 ```
 
 然后，可将公共 IP 地址输入 web 浏览器中。 随即显示网站，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
@@ -121,6 +157,8 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAutomate -Name myPu
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已了解如何使用自定义脚本扩展自定义 VM。 请转到下一教程，了解如何创建负载均衡的 IIS 网站。
 
-[均衡虚拟机负载](./tutorial-load-balancer.md)
+在本教程中，你学习了如何在首次启动时实现 VM 的自定义。 转到下一教程，了解如何创建自定义 VM 映像。
+
+[创建自定义 VM 映像](./tutorial-custom-images.md)
+

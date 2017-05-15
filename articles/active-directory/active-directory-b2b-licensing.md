@@ -15,9 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/12/2017
 ms.author: sasubram
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
 ms.openlocfilehash: 4e620f3d76caa25ac0e5afb134f37ffe263935f0
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/13/2017
 
 
@@ -52,7 +53,7 @@ B2B 来宾用户属于合作伙伴组织，并且被邀请与主机组织进行�
 1. 如果主机邀请员工使用使用者地址
   1. 这不符合我们的授权策略，并且当前不建议这样做。
 
-2.    如果主机组织从其他企业组织中添加用户
+2. 如果主机组织从其他企业组织中添加用户
   1. 这种情况下，用户受邀使用 B2B API，但这不是传统的 B2B。 理想情况下，应该让这些组织邀请其他组织的用户作为成员（API 允许这样操作）。 在这种情况下，必须向这些成员分配许可证，这样他们才能访问邀请组织中的资源。
 
   2. 一些组织可能希望通过策略的方式添加其他组织中即将被添加为“来宾”用户。 这时存在两种情况：

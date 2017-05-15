@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 58f4227fc6ac6ca1bd76c440d3d4441786693b3b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 69f7b49fd82e4d34b1d54718cfbd2f4dedd2ae47
+ms.openlocfilehash: 2b0ff24b692b9be7c7792d6f78e31ac2a7d8a97e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -54,7 +56,7 @@ ms.openlocfilehash: 58f4227fc6ac6ca1bd76c440d3d4441786693b3b
   * 如果是，审核日志必须位于何处？ 在本地，还是在云中？
 * 贵公司是否需要加密任何包含敏感数据（身份证号、信用卡号等）的电子邮件？
 * 贵公司是否需要加密与外部业务合作伙伴共享的所有文档/内容？
-* 贵公司是否需要对某些类型的电子邮件（不回复所有人、不转发）强制实施公司策略？
+* 贵公司是否需要对某些类型的电子邮件强制实施公司策略（不回复所有人、不转发）？
 
 > [!NOTE]
 > 务必记下每个答案并了解答案背后的依据。 [定义数据保护策略](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)会检查可用选项以及每个选项的优点/缺点。  回答了这些问题之后，就会挑选出最适合你的业务需求的选项。
@@ -66,10 +68,5 @@ ms.openlocfilehash: 58f4227fc6ac6ca1bd76c440d3d4441786693b3b
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "自定义 Azure Active Directory 预览版中的登录页 | Microsoft Docs"
+title: "自定义 Azure Active Directory 中的登录页 | Microsoft Docs"
 description: "了解如何在 Azure 登录页中添加公司品牌元素"
 services: active-directory
 documentationcenter: 
@@ -12,17 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 48f85fd7e50c1cb3ece7f8b75779fe7cde92c7da
-ms.lasthandoff: 12/29/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 27590c018ea55e9793246c7a4cab10f934ea502b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="add-company-branding-to-your-sign-in-page-in-the-azure-active-directory-preview"></a>在 Azure Active Directory 预览版的登录页中添加公司品牌元素
-许多公司想要在他们管理的所有网站和服务上应用一致的外观，以免用户感到困惑。 Azure Active Directory 预览版提供了此功能，允许用户使用自己的公司徽标和自定义的颜色方案来自定义登录页的外观。 [预览包括哪些内容？](active-directory-preview-explainer.md) 登录页是登录到 Office 365 或其他使用 Azure AD 作为标识提供者的基于 Web 的应用程序时显示的页面。 用户与此页进行交互以输入其凭据。
+# <a name="add-company-branding-to-your-sign-in-page-in-the-azure-active-directory"></a>在 Azure Active Directory 登录页中添加公司品牌元素
+许多公司想要在他们管理的所有网站和服务上应用一致的外观，以免用户感到困惑。 Azure Active Directory 提供了此功能，允许用户使用自己的公司徽标和自定义的颜色方案来自定义登录页外观。 登录页是登录到 Office 365 或其他使用 Azure AD 作为标识提供者的基于 Web 的应用程序时显示的页面。 用户与此页进行交互以输入其凭据。
 
 如果你要在此页上显示你公司的品牌、颜色和其他可自定义元素，请参阅下图以了解两种体验之间的差异。
 

@@ -12,12 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 05/04/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 08a83bf8dca71846dd06edb9aa253f69c24d253c
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 000440fb2c38eadc0ffdcab84a3c23bb034e834f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -27,20 +28,22 @@ ms.lasthandoff: 04/27/2017
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-本教程将演示三个常见方案，说明如何将两个 DNS 名称映射到应用服务中的某个应用：
+本教程介绍如何：
 
-- `www.contoso.com` - `contoso.com` 的子域。 你将使用 CNAME 记录将该域映射到应用。
-- `contoso.com` - 根域。 你将使用 A 记录将该域映射到应用。
-- `*.contoso.com` - 通配符域。 你将使用 CNAME 记录将该域映射到应用。
+> [!div class="checklist"]
+> * 使用 CNAME 记录映射子域（例如 `www.contoso.com`）
+> * 使用 A 记录映射根域（例如 `contoso.com`）
+> * 使用 CNAME 记录映射通配符域（例如 `*.contoso.com`）
+> * 使用脚本自动执行域映射
 
 可以使用 **CNAME 记录**或 **A 记录**将自定义 DNS 名称映射到应用服务。
 
 > [!NOTE]
-> 我们建议对除根域（例如 contoso.com）以外的所有自定义 DNS 名称使用 CNAME。 
+> 我们建议对除根域（例如 `contoso.com`）以外的所有自定义 DNS 名称使用 CNAME。 
 > 
 > 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要能够访问域提供商（例如 GoDaddy）的 DNS 注册表，并且有权编辑域的配置。 
 
@@ -195,6 +198,8 @@ DNS 记录页如以下屏幕截图所示：
 >
 >
 
+<a name="create-a"></a>
+
 ### <a name="create-the-a-record"></a>创建 A 记录
 
 若要将 A 记录映射到应用，应用服务通常需要**两个** DNS 记录：
@@ -325,8 +330,10 @@ DNS 记录页如以下屏幕截图所示：
 以下命令将配置的自定义 DNS 名称添加到应用服务应用。 
 
 ```bash 
-az appservice web config hostname add --webapp <app_name> --resource-group <resourece_group_name> \ 
---name <fully_qualified_domain_name> 
+az appservice web config hostname add \
+    --webapp <app_name> \
+    --resource-group <resourece_group_name> \ 
+    --name <fully_qualified_domain_name> 
 ``` 
 
 有关详细信息，请参阅[将自定义域映射到 Web 应用](scripts/app-service-cli-configure-custom-domain.md) 
@@ -336,13 +343,26 @@ az appservice web config hostname add --webapp <app_name> --resource-group <reso
 以下命令将配置的自定义 DNS 名称添加到应用服务应用。 
 
 ```PowerShell  
-Set-AzureRmWebApp -Name <app_name> -ResourceGroupName <resourece_group_name> ` 
--HostNames @(<fully_qualified_domain_name>,"<app_name>.azurewebsites.net") 
+Set-AzureRmWebApp `
+    -Name <app_name> `
+    -ResourceGroupName <resourece_group_name> ` 
+    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
 有关详细信息，请参阅[将自定义域分配到 Web 应用](scripts/app-service-powershell-configure-custom-domain.md)。
 
-## <a name="more-resources"></a>更多资源
+## <a name="next-steps"></a>后续步骤
 
-[在 Azure 应用服务中配置应用服务域](custom-dns-web-site-buydomains-web-app.md)
+本教程介绍了如何：
+
+> [!div class="checklist"]
+> * 使用 CNAME 记录映射子域
+> * 使用 A 记录映射根域
+> * 使用 CNAME 记录映射通配符域
+> * 使用脚本自动执行域映射
+
+转到下一教程，了解如何向它绑定自定义 SSL 证书。
+
+> [!div class="nextstepaction"]
+> [将现有的自定义 SSL 证书绑定到 Azure Web 应用](app-service-web-tutorial-custom-ssl.md)
 

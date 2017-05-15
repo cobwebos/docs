@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: garye;krishnan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
 ms.openlocfilehash: 62917bfb2124a2b8beb57e0ee38be93e8ca1c655
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/31/2017
 
 
@@ -93,8 +94,8 @@ ms.lasthandoff: 01/31/2017
     ![下载并注册数据网关](media/machine-learning-use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
 6. <span id="note-1" class="anchor"></span>如果尚未下载并安装 Microsoft 数据管理网关，则单击“下载数据管理网关”。 这会将你转到 Microsoft 下载中心，可以在其中选择所需网关版本、下载并安装它。 有关安装先决条件、安装步骤和故障排除提示的详细信息，请参阅[使用数据管理网关在本地资源和云之间移动数据](../data-factory/data-factory-move-data-between-onprem-and-cloud.md)一文的开头部分。
 7. 网关安装完成后，数据管理网关配置管理器将打开，还会显示“注册网关”对话框。 粘贴已复制到剪贴板的“网关注册密钥”，然后单击“注册”。
-8. 如果已安装网关，请运行数据管理网关配置管理器。 单击“更改密钥”、粘贴在上一步中已复制到剪贴板的“网关注册密钥” ****，然后单击“确定”。
-9. 安装完成后，将显示 Microsoft 数据管理网关配置管理器的“注册网关”对话框。 粘贴在上一步中已复制到剪贴板的“网关注册密钥”，然后单击“注册”。
+8. 如果已安装网关，请运行数据管理网关配置管理器。 单击 **更改密钥** 、粘贴在上一步中已复制到剪贴板的  **网关注册密钥** ，然后单击 **确定** 。
+9. 安装完成后，将显示 Microsoft 数据管理网关配置管理器的“注册网关”对话框。 粘贴在上一步中已复制到剪贴板的“网关注册密钥”，然后单击 **注册**。
 
     ![注册网关](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
 10. 在 Microsoft 数据管理网关配置管理器的“主页”选项卡上设置了以下值后，网关配置即完成：

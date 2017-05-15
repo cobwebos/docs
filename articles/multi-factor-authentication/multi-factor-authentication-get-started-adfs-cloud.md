@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 60e8bf883a09668100df8fb51572f9ce0856ccb3
 ms.openlocfilehash: 9eb32ac7936ad54d487dc15d3ef320ec279ce0bc
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/10/2017
 
 ---
@@ -30,11 +31,11 @@ ms.lasthandoff: 02/10/2017
 
 1. 打开“AD FS 管理”。
 2. 在左侧选择“信赖方信任”。
-3. 右键单击“Microsoft Office 365 标识平台”，然后选择“编辑声明规则...”
+3. 右键单击 **Microsoft Office 365 标识平台** ，然后选择 **编辑声明规则...**
 
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
 
-4. 在“颁发转换规则”上，单击“添加规则”。
+4. 在“颁发转换规则”上，单击 **添加规则**。
 
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
 
@@ -58,9 +59,9 @@ ms.lasthandoff: 02/10/2017
 
 1. 打开“AD FS 管理”。
 2. 在左侧选择“信赖方信任”。
-3. 右键单击“Microsoft Office 365 标识平台”****，然后选择“编辑声明规则...”****
+3. 右键单击 **Microsoft Office 365 标识平台** ，然后选择 **编辑声明规则...**
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
-4. 在“颁发转换规则”上，单击“添加规则”****。
+4. 在“颁发转换规则”上，单击 **添加规则。**
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
 5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，然后单击“下一步”。
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
@@ -68,7 +69,7 @@ ms.lasthandoff: 02/10/2017
 7. 从“传入声明类型”旁边的下拉列表中，选择“公司网络内部”。
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip4.png)
 8. 单击“完成” 。
-9. 在“颁发转换规则”上，单击“添加规则”。
+9. 在“颁发转换规则”上，单击 **添加规则**。
 10. 在“添加转换声明规则向导”上，从下拉列表中选择“使用自定义规则发送声明”，然后单击“下一步”。
 11. 在“声明规则名称”下的框中：输入“保持用户登录状态”。
 12. 在“自定义规则”框中，输入：
@@ -89,7 +90,7 @@ ms.lasthandoff: 02/10/2017
 3. 在目录中，选择要设置受信任的 IP 的目录。
 4. 在选择的目录上，单击“配置”。
 5. 在“多重身份验证”部分中，单击“管理服务设置”。
-6. 在“服务设置”页的“受信任的 IP”下，选择“跳过对于 Intranet 上联合用户的请求的多重身份验证”****。
+6. 在“服务设置”页的“受信任的 IP **下，选择“跳过对于 Intranet 上联合用户的请求的多重身份验证。**
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
 7. 单击“保存”。
 8. 应用更新后，单击“关闭”。

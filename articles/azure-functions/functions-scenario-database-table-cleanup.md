@@ -15,9 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2016
 ms.author: glenga
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b873a7d0ef9efa79c9a173a8bfd3522b12522322
 ms.openlocfilehash: c0b4a963275dae5bbf203388cb61086393803b15
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/29/2016
 
 
 ---
@@ -96,11 +98,6 @@ Function App 在 Azure 中托管函数的执行。 它是在 Function App 设置
 * [如何缩放 Azure Functions](functions-scale.md)  
   讨论 Azure Functions 可用的服务计划（包括消耗量计划）以及如何选择适当的计划。  
 
-[!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: fd3a08f227ade7589bbc7a17fa600e5a283d8054
-ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 4c9991baf3fbcf3b8ea01f8dd573e2336db88b68
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
   
-##  <a name="a-nameaccessrestrictionpoliciesa-access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> 访问限制策略  
+##  <a name="AccessRestrictionPolicies"></a> 访问限制策略  
   
 -   [检查 HTTP 标头](api-management-access-restriction-policies.md#CheckHTTPHeader) - 强制必须存在 HTTP 标头和/或强制采用 HTTP 标头的值。  
   
@@ -38,7 +40,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   [验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) - 强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。  
   
-##  <a name="a-namecheckhttpheadera-check-http-header"></a><a name="CheckHTTPHeader"></a> 检查 HTTP 标头  
+##  <a name="CheckHTTPHeader"></a> 检查 HTTP 标头  
  使用 `check-header` 策略强制请求具有指定的 HTTP 标头。 可以选择性地查看标头是否具有特定值，或者检查是否存在一系列允许的值。 如果检查失败，此策略会终止请求处理，并返回其所指定的 HTTP 状态代码和错误消息。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -81,7 +83,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namelimitcallratea-limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a> 按订阅限制调用速率  
+##  <a name="LimitCallRate"></a> 按订阅限制调用速率  
  `rate-limit` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个订阅的 API 使用量暴增。 触发此策略时，调用方会收到`429 Too Many Requests`响应状态代码。  
   
 > [!IMPORTANT]
@@ -127,7 +129,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |----------|-----------------|--------------|-------------|  
 |name|要对其应用速率限制的 API 的名称。|是|不适用|  
 |calls|在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。|是|不适用|  
-|renewal-period|过后将重置配额的时间段，以秒为单位。|是|不适用|  
+|renewal-period|在重置配额之前等待的时间长度，以秒为单位。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
@@ -136,8 +138,8 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **策略范围：**产品  
   
-##  <a name="a-namelimitcallratebykeya-limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a> 按密钥限制调用速率  
- `rate-limit-by-key` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个密钥的 API 使用量暴增。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定应在限制范围内的请求。 触发此策略时，调用方会收到`429 Too Many Requests`响应状态代码。  
+##  <a name="LimitCallRateByKey"></a> 按密钥限制调用速率  
+ `rate-limit-by-key` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个密钥的 API 使用量暴增。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定在决定是否到达限制值时应该进行计数的请求。 触发此策略时，调用方会收到`429 Too Many Requests`响应状态代码。  
   
  有关此策略的详细信息和示例，请参阅[使用 Azure API 管理进行高级请求限制](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)。  
   
@@ -185,7 +187,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |calls|在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。|是|不适用|  
 |counter-key|用于速率限制策略的密钥。|是|不适用|  
 |increment-condition|一个布尔表达式，指定是否应将请求计入配额 (`true`)。|否|不适用|  
-|renewal-period|过后将重置配额的时间段，以秒为单位。|是|不适用|  
+|renewal-period|在重置配额之前等待的时间长度，以秒为单位。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
@@ -194,7 +196,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namerestrictcalleripsa-restrict-caller-ips"></a><a name="RestrictCallerIPs"></a> 限制调用方 IP  
+##  <a name="RestrictCallerIPs"></a> 限制调用方 IP  
  `ip-filter` 策略筛选（允许/拒绝）来自特定 IP 地址和/或地址范围的调用。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -237,7 +239,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namesetusagequotaa-set-usage-quota-by-subscription"></a><a name="SetUsageQuota"></a> 按订阅设置使用量配额  
+##  <a name="SetUsageQuota"></a> 按订阅设置使用量配额  
  `quota` 策略允许根据订阅强制实施可续订或有生存期的调用量和/或带宽配额。  
   
 > [!IMPORTANT]
@@ -284,7 +286,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |name|要向其应用配额的 API 或操作的名称。|是|不适用|  
 |bandwidth|在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。|必须指定 `calls` 和/或 `bandwidth`。|不适用|  
 |calls|在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。|必须指定 `calls` 和/或 `bandwidth`。|不适用|  
-|renewal-period|过后将重置配额的时间段，以秒为单位。|是|不适用|  
+|renewal-period|在重置配额之前等待的时间长度，以秒为单位。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
@@ -293,7 +295,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **策略范围：**产品  
   
-##  <a name="a-namesetusagequotabykeya-set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a> 按密钥设置使用量配额  
+##  <a name="SetUsageQuotaByKey"></a> 按密钥设置使用量配额  
  `quota-by-key` 策略允许根据密钥强制实施可续订或有生存期的调用量和/或带宽配额。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定应在配额范围内的请求。  
   
  有关此策略的详细信息和示例，请参阅[使用 Azure API 管理进行高级请求限制](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)。  
@@ -345,7 +347,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |calls|在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。|必须指定 `calls` 和/或 `bandwidth`。|不适用|  
 |counter-key|用于配额策略的密钥。|是|不适用|  
 |increment-condition|一个布尔表达式，指定是否应将请求计入配额 (`true`)|否|不适用|  
-|renewal-period|过后将重置配额的时间段，以秒为单位。|是|不适用|  
+|renewal-period|在重置配额之前等待的时间长度，以秒为单位。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
@@ -354,7 +356,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 -   **策略范围：**全局、产品、API、操作  
   
-##  <a name="a-namevalidatejwta-validate-jwt"></a><a name="ValidateJWT"></a> 验证 JWT  
+##  <a name="ValidateJWT"></a> 验证 JWT  
  `validate-jwt` 策略强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。  
   
 > [!IMPORTANT]
@@ -419,7 +421,27 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 ```xml  
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">  
-    <openid-config url="https://login.windows.net/contoso.onmicrosoft.com/.well-known/openid-configuration" />  
+    <openid-config url="https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration" />  
+    <audiences>
+        <audience>25eef6e4-c905-4a07-8eb4-0d08d5df8b3f</audience>
+    </audiences>
+    <required-claims>  
+        <claim name="id" match="all">  
+            <value>insert claim here</value>  
+        </claim>  
+    </required-claims>  
+</validate-jwt>  
+```  
+
+  
+#### <a name="azure-active-directory-b2c-token-validation"></a>Azure Active Directory B2C 令牌验证  
+  
+```xml  
+<validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">  
+    <openid-config url="https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/b2c_1_signin/v2.0/.well-known/openid-configuration" />
+    <audiences>
+        <audience>d313c4e4-de5f-4197-9470-e509a2f0b806</audience>
+    </audiences>
     <required-claims>  
         <claim name="id" match="all">  
             <value>insert claim here</value>  
@@ -495,7 +517,7 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 |require-expiration-time|布尔值。 指定令牌中是否需要到期声明。|否|true|
 |require-scheme|令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。|否|不适用|
 |require-signed-tokens|布尔值。 指定令牌是否需要签名。|否|true|  
-|url|Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 对于 Azure Active Directory，请使用以下 URL：`https://login.windows.net/{tenant-name}/.well-known/openid-configuration`，代之以你的目录租户名称，例如 `contoso.onmicrosoft.com`。|是|不适用|  
+|url|Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以你的目录租户名称，例如 `contoso.onmicrosoft.com`。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
@@ -506,9 +528,4 @@ ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
   
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

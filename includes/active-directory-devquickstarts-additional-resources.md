@@ -5,8 +5,3 @@
 
 ## <a name="get-security-updates-for-our-products"></a>获取关于我们产品的安全更新
 建议访问 [Microsoft 技术安全通知的技术中心页](https://technet.microsoft.com/security/dd252948)，并订阅“安全公告通知”，以便在发生安全事件时获取相关通知。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

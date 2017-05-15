@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/31/2017
 ms.author: vakarand
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: a1190f0ab4caf749cce0b5c9ba45e55f7e6ca8ec
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: d270d7cc3ceeef29aaaf1c9f984e69984049f815
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -212,10 +213,10 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 * proxyAddresses
 
 ### <a name="possible-scenarios"></a>可能的方案
-1. Bob 的 userCertificate 属性存储了过多的分配给 Bob 的证书。 其中可能包括旧的或过期的证书。 硬限制为 15 个证书。
+1. Bob 的 userCertificate 属性存储了过多的分配给 Bob 的证书。 其中可能包括旧的或过期的证书。 硬限制为 15 个证书。 有关如何处理 userCertificate 属性导致的 LargeObject 错误的详细信息，请参阅[处理 userCertificate 属性导致的 LargeObject 错误](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)一文。
 2. Bob 的 userSMIMECertificate 属性存储了过多的分配给 Bob 的证书。 其中可能包括旧的或过期的证书。 硬限制为 15 个证书。
 3. 在 Active Directory 中为 Bob 设置的 thumbnailPhoto 过大，无法在 Azure AD 中同步。
-4. 在 Active Directory 中自动填充 ProxyAddresses 属性期间，为某个对象分配了 500 个以上的 ProxyAddresses。
+4. 在 Active Directory 中自动填充 ProxyAddresses 属性期间，为某个对象分配了太多 ProxyAddresses。
 
 ### <a name="how-to-fix"></a>如何解决
 1. 确保导致错误的属性在允许的限制范围内。

@@ -7,11 +7,14 @@
 ## [创建批处理帐户](batch-account-create-portal.md)
 ## [批处理 .NET 教程](batch-dotnet-get-started.md)
 ## [批处理 Python 教程](batch-python-tutorial.md)
+## [批处理 Node.js 教程](batch-nodejs-get-started.md)
 # 如何
 ## 开发
 ### [应用程序包](batch-application-packages.md)
 ### [自动缩放计算节点](batch-automatic-scaling.md)
-### [Azure AD 身份验证](batch-aad-auth.md)
+### Azure AD 身份验证
+#### [将 Azure AD 与批处理服务配合使用](batch-aad-auth.md)
+#### [将 Azure AD 与批处理管理配合使用](batch-aad-auth-management.md)
 ### [并发节点任务](batch-parallel-node-tasks.md)
 ### [高效列表查询](batch-efficient-list-queries.md)
 ### [作业准备与作业完成任务](batch-job-prep-release.md)
@@ -27,7 +30,7 @@
 ### [Azure CLI](batch-cli-get-started.md)
 
 # 引用
-## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)
+## [PowerShell](/powershell/module/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)

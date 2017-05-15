@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 02/13/2017
 ms.author: ruturajd
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: a655c7bf1ea5ca1439d4353df5067c0e07f2d49f
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 3156ca5b2b8ba836e94d79a97b28bf591c799b48
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -25,6 +26,10 @@ ms.lasthandoff: 04/25/2017
 
 ## <a name="overview"></a>概述
 本文介绍如何将 Azure 虚拟机从 Azure 重新保护到本地站点。 准备好根据[使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-failover.md) 将 VMware 虚拟机或 Windows/Linux 物理服务器从本地站点故障转移到 Azure 后，请遵循本文中的说明进行故障回复。
+
+> [!WARNING]
+> 如果已经[完成迁移](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)、已将虚拟机转移至另一资源组或已删除 Azure 虚拟机，则在上述操作之后无法进行故障回复。
+
 
 重新保护完成并且受保护的虚拟机正在复制后，可以在虚拟机上启动故障回复将其恢复到本地站点。
 
@@ -38,7 +43,10 @@ ms.lasthandoff: 04/25/2017
 下面是在准备进行重新保护时需要执行或考虑的几个先决条件步骤。
 
 * 若要故障回复到的虚拟机受 vCenter 服务器管理，需确保拥有在 vCenter 服务器上发现虚拟机所必需的权限。 [了解详细信息](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)。
-* 如果本地虚拟机上存在快照，则重新保护会失败。 可以先删除快照，然后再继续重新保护。
+
+> [!WARNING] 
+> 如果本地主目标或虚拟机上存在快照，则重新保护会失败。 可以先删除主目标上的快照，然后再继续重新保护。 在重新保护作业期间，虚拟机上的快照将自动合并。
+
 * 故障回复之前，你需要创建两个其他组件：
   * **创建进程服务器**。 进程服务器从 Azure 中受保护的虚拟机接收数据，将数据发送到本地站点。 在进程服务器与受保护虚拟机之间需要配置低延迟网络。 因此，如果使用 Azure ExpressRoute 连接，可以部署本地进程服务器；如果使用 VPN，可以部署 Azure 进程服务器。
   * **创建主目标服务器**：主目标服务器接收故障回复数据。 创建的本地管理服务器默认情况下已安装主目标服务器。 但是，可能需要创建单独的故障回复用主目标服务器，具体取决于故障回复流量。
@@ -176,6 +184,8 @@ To replicate back to on-premises, you will need a failback policy. This policy g
 > [!NOTE]
 > 应使用相同的主目标服务器重新保护复制组。 如果使用不同的主目标服务器重新保护复制组，服务器无法提供共同的时间点。
 
+> [!NOTE]
+> 在重新保护期间，本地虚拟机将关闭。 这是为了确保复制期间的数据一致性。 重新保护完成后，请勿打开虚拟机。
 
 重新保护成功后，虚拟机将进入受保护状态。
 

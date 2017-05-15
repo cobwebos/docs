@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f8b0917b6eb0295641360c4e0a80e81100809f6e
 ms.openlocfilehash: e3ce01d20f6b47c6fe68fdbfe31679cc2c92f2e7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -198,7 +200,7 @@ XPath 表达式将是 /foo/bar，因为 bar 节点是输出中的重复节点，
 ## <a name="property-node"></a>属性节点
 此节点包含记录的一个属性。
 
-可在 [http://msdn.microsoft.com/library/bb399546.aspx](http://msdn.microsoft.com/library/bb399546.aspx) 找到关于此节点的详细信息（必要时使用“其他版本”****下拉列表查看该文档。）*示例：*
+可在 [http://msdn.microsoft.com/library/bb399546.aspx](http://msdn.microsoft.com/library/bb399546.aspx) 找到关于此节点的详细信息（必要时使用 **其他版本** 下拉列表查看该文档。）*示例：*
         `<EntityType Name="MetaDataEntityType" d:Map="/MyXMLPath">
         <Property Name="Name"     Type="String" Nullable="true" d:Map="./Service/Name" d:IsPrimaryKey="true" DefaultValue=”Joe Doh” MaxLength="25" FixedLength="true" />
         ...
@@ -274,9 +276,4 @@ XPath 表达式将是 /foo/bar，因为 bar 节点是输出中的重复节点，
 * 如果你有兴趣了解全面的 OData 映射过程和用途，请阅读[数据服务 OData 映射](marketplace-publishing-data-service-creation-odata-mapping.md)一文以查看定义、结构和说明。
 * 如果你有兴趣查看示例，请阅读[数据服务 OData 映射示例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)一文以查看示例代码，了解代码的语法和上下文。
 * 若要返回到用于将数据服务发布到 Azure 应用商店的指定路径，请阅读这篇文章[数据服务发布指南](marketplace-publishing-data-service-creation.md)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

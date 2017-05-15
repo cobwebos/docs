@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/04/2016
+ms.date: 05/08/2016
 ms.author: curtand;jeffsta
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 77d34a6ebce12465a15de158b9160a03db58c48e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -64,10 +66,5 @@ ms.openlocfilehash: 77d34a6ebce12465a15de158b9160a03db58c48e
 * [了解 Azure AD 中的域管理概念](active-directory-add-domain-concepts.md)
 * [在用户登录时显示公司的品牌](active-directory-add-company-branding.md)
 * [使用 PowerShell 管理 Azure AD 中的域名](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -13,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: fe2596a7fed52118425c612ebf50c01134928bf6
-ms.lasthandoff: 03/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 0331a20d60fd856c0d852b26f125c47a3614f1ad
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -43,7 +44,7 @@ ms.lasthandoff: 03/16/2017
 有三种检测类型：
 
 * [智能检测 - 失败异常](app-insights-proactive-failure-diagnostics.md)。 我们使用机器学习，通过与负载和其他因素相关为应用设置预期的失败请求速率。 如果失败率超出预期的包络线，我们将发送警报。
-* [智能检测 - 性能异常](app-insights-proactive-performance-diagnostics.md)。 我们每天都会搜索响应时间和失败率中的异常模式。 我们将这些问题与属性关联，例如位置、浏览器、客户端操作系统、服务器实例和当天的时间。
+* [智能检测 - 性能异常](app-insights-proactive-performance-diagnostics.md)。 如果操作的响应时间或依赖关系的持续时间比历史基线慢，或者如果我们在响应时间或页面加载时间中识别到异常模式，你会收到通知。   
 * [智能检测 - Azure 云服务问题](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/)。 如果应用托管在 Azure 云服务并且角色实例出现启动故障、频繁回收或运行时崩溃，你将收到警报。
 
 （每个通知中的帮助链接可转到相关文章。）

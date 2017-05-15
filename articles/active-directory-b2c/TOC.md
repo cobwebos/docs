@@ -7,16 +7,16 @@
 ## [创建 Azure AD B2C 目录](active-directory-b2c-get-started.md)
 ## [注册应用程序](active-directory-b2c-app-registration.md)
 ## 快速入门指南
-### [构建 iOS 应用](active-directory-b2c-devquickstarts-ios.md)
-### [构建 Android 应用](active-directory-b2c-devquickstarts-android.md)
-### [构建 Node.Js Web API](active-directory-b2c-devquickstarts-api-node.md)
-### [构建 .NET Web 应用](active-directory-b2c-devquickstarts-web-dotnet.md)
-#### [注册和登录 ASP.NET Web 应用](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
-### [构建 .NET Web API](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [构建 Windows 桌面应用](active-directory-b2c-devquickstarts-native-dotnet.md)
-### [从 .NET Web 应用调用 Web API](active-directory-b2c-devquickstarts-web-api-dotnet.md)
+### [生成 iOS 应用](active-directory-b2c-devquickstarts-ios.md)
+### [生成 Android 应用](active-directory-b2c-devquickstarts-android.md)
+### 生成 .NET Web 应用
+#### [注册和登录 .NET Web 应用](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+#### [从 .NET Web 应用调用 Web API](active-directory-b2c-devquickstarts-web-api-dotnet.md)
+### [生成 .NET Web API](active-directory-b2c-devquickstarts-api-dotnet.md)
+### [生成 Node.Js Web 应用](active-directory-b2c-devquickstarts-web-node.md)
+### [生成 Node.Js Web API](active-directory-b2c-devquickstarts-api-node.md)
+### [生成 .NET 桌面应用](active-directory-b2c-devquickstarts-native-dotnet.md)
 ### [使用 Azure AD 图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md)
-### [向 Node.js Web 应用添加登录](active-directory-b2c-devquickstarts-web-node.md)
 ## [常见问题](active-directory-b2c-faqs.md)
 
 # 如何
@@ -44,6 +44,7 @@
 ## [可扩展策略框架](active-directory-b2c-reference-policies.md)
 ## [身份验证协议](active-directory-b2c-reference-protocols.md)
 ## [令牌](active-directory-b2c-reference-tokens.md)
+## [语言自定义](active-directory-b2c-reference-language-customization.md)
 
 ## [威胁管理](active-directory-b2c-reference-threat-management.md)
 
@@ -53,7 +54,7 @@
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
-## [Azure 反馈论坛](http://feedback.azure.com/forums/169401-azure-active-directory)
+## [Azure AD B2C 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
 ## [服务更新](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [支持](active-directory-b2c-support.md)

@@ -12,12 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/27/2017
+ms.date: 05/05/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 24e9f1d7bdf4401d009ba04fb62351b6abda6079
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 773d616b2a5815158971d63d005fae605450ac98
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/21/2017
 
 ![Azure 应用服务中的 ASP.NET Web 应用](./media/app-service-web-get-started-dotnet/updated-azure-web-app.png)
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="prerequisites"></a>先决条件
 
 本教程演示如何使用 Visual Studio 2017 构建 ASP.NET Web 应用并将其部署到 Azure。 如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="create-an-aspnet-web-app"></a>创建 ASP.NET Web 应用
 
-在 Visual Studio 中，使用 `Ctrl`+`Shift`+`N` 创建新项目。
+在 Visual Studio 中，使用 `Ctrl`+`Shift`+`N` 创建项目。
 
 在“新建项目”对话框中，单击“Visual C#”>“Web”>“ASP.NET Web 应用程序(.NET Framework)”。
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 04/21/2017
 首先需要一个_资源组_。 
 
 > [!NOTE] 
-> 资源组是在其中部署和管理 Azure 资源（例如 Web 应用、数据库和存储帐户）的逻辑容器。
+> 资源组是在其中部署和管理 Azure 资源（如 Web 应用、数据库和存储帐户）的逻辑容器。
 >
 >
 
@@ -110,7 +111,7 @@ Azure Web 应用还需要一个_应用服务计划_。
 
 单击 **“确定”**。
 
-![创建新的应用服务计划](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
+![创建应用服务计划](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
 ## <a name="create-and-publish-the-web-app"></a>创建并发布 Web 应用
 
@@ -165,11 +166,11 @@ URL 使用前面指定的 Web 应用名称，其格式为 `http://<app_name>.azu
 
 现已进入 Web 应用的_边栏选项卡_（水平打开的门户页）。 
 
-默认情况下，Web 应用的边栏选项卡显示“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 边栏选项卡左侧的选项卡显示可以打开的不同配置页。 
+默认情况下，Web 应用的边栏选项卡显示“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。  
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
-边栏选项卡中的这些选项卡显示了可添加到 Web 应用的许多强大功能。 以下列表只是列出了一部分可用的功能：
+边栏选项卡左侧的选项卡显示可以打开的不同配置页。 以下列表只是列出了一部分可用的功能：
 
 - 映射自定义 DNS 名称
 - 绑定自定义 SSL 证书
@@ -193,5 +194,9 @@ URL 使用前面指定的 Web 应用名称，其格式为 `http://<app_name>.azu
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览预先创建的 [Web 应用 PowerShell 脚本](app-service-powershell-samples.md)。
+> [!div class="nextstepaction"]
+> [了解如何使用 SQL 数据库在 Azure 中生成 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)
+
+> [!div class="nextstepaction"]
+> [浏览示例 Web 应用 PowerShell 脚本](app-service-powershell-samples.md)
 

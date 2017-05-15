@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b568a9bea9679a9edeb708a5f7fcc6d68854574f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 6efe6de6cc6d6d4c9788549048c5b50b03b3de42
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -57,7 +59,7 @@ ms.openlocfilehash: b568a9bea9679a9edeb708a5f7fcc6d68854574f
 ### <a name="view-effective-routes-for-a-network-interface"></a>查看网络接口的有效路由
 若要查看应用到网络接口的聚合路由，请完成以下步骤：
 
-1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉 Azure PowerShell，请阅读[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 一文。
+1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉 Azure PowerShell，请阅读[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文。
 2. 以下命令返回对资源组 *RG1* 中名为 *VM1-NIC1* 的网络接口应用的所有路由。
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -101,7 +103,7 @@ ms.openlocfilehash: b568a9bea9679a9edeb708a5f7fcc6d68854574f
        ---- ----- ------------- ----------- ----------------
        Active {10.9.0.0/16} VnetLocal {}
        Active {0.0.0.0/0} Internet {}
-3. 上一步骤的输出没有列出 *WestUS-VNet1*（前缀 10.9.0.0/16）* 到 *WestUS-VNet3* VNet（前缀 10.10.0.0/16）**的路由。 如下图所示，包含 *WestUS-VNet3* VNet 的 VNet 对等互连链接处于“*已断开*”状态。
+3. 上一步骤的输出没有列出 WestUS-VNet1（前缀 10.9.0.0/16）* 到 WestUS-VNet3 VNet（前缀 10.10.0.0/16）的路由。 如下图所示，包含 *WestUS-VNet3* VNet 的 VNet 对等互连链接处于“*已断开*”状态。
    
     ![](./media/virtual-network-routes-troubleshoot-portal/image4.png)
    
@@ -135,10 +137,5 @@ ms.openlocfilehash: b568a9bea9679a9edeb708a5f7fcc6d68854574f
 * 要使 VNet 对等互连流量正常工作，对等互连的 VNet 的前缀范围中必须存在 **nextHopType** 为 *VNetPeering* 的系统路由。 如果没有此类路由，并且 VNet 对等互连链接看起来正常：
   * 如果是新建立的对等互连链接，请等待几秒钟并重试。 有时需要花费较长的时间才能将路由传播到子网中的所有网络接口。
   * 网络安全组 (NSG) 规则可能会影响流量流。 有关详细信息，请参阅[排查网络安全组问题](virtual-network-nsg-troubleshoot-powershell.md)一文。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

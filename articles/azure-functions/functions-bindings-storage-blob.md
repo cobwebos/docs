@@ -16,14 +16,15 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/06/2017
 ms.author: chrande, glenga
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7b4ae9281bca20949c37b2c797e4a1a677665929
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b9cb2e6c15cbe217c57ddfe2910e8017bd61a67a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="azure-functions-storage-blob-bindings"></a>Azure Functions 存储 blob 绑定
+# <a name="azure-functions-blob-storage-bindings"></a>Azure Functions Blob 存储绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 本文介绍如何在 Azure Functions 中配置和编码 Azure 存储 blob 绑定。 Azure Functions 支持 Azure 存储 blob 的触发、输入以及输出绑定。
@@ -179,7 +180,7 @@ blob 可以反序列化为以下任何类型：
 
 <a name="triggercsharp"></a>
 
-### <a name="trigger-usage-in-c"></a>C 中触发器的使用情况# #
+### <a name="trigger-usage-in-c"></a>C# 中的触发器用法 #
 
 ```cs
 public static void Run(string myBlob, TraceWriter log)
@@ -290,7 +291,7 @@ blob 可以反序列化为以下任何类型：
 
 <a name="incsharp"></a>
 
-### <a name="input-usage-in-c"></a>C 中输入使用情况# #
+### <a name="input-usage-in-c"></a>C# 中的输入用法 #
 
 ```cs
 public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)

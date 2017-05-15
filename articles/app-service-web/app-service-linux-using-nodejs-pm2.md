@@ -1,6 +1,6 @@
 ---
-title: "在 Linux Web 应用中使用针对 Node.js 的 PM2 配置 | Microsoft Docs"
-description: "在 Linux Web 应用中使用针对 Node.js 的 PM2 配置"
+title: "在 Linux 上的 Azure Web 应用中使用针对 Node.js 的 PM2 配置 | Microsoft Docs"
+description: "在 Linux 上的 Azure Web 应用中使用针对 Node.js 的 PM2 配置"
 keywords: "azure 应用服务, web 应用, nodejs, pm2, linux, oss"
 services: app-service
 documentationcenter: 
@@ -15,15 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
-ms.openlocfilehash: c4af07e79ae066f916c15aa239cb5dfdd3fef2a8
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7ad48d42f8cc847ece199a2372c20430c4c8424e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="use-pm2-configuration-for-nodejs-in-web-apps-on-linux"></a>在 Linux Web 应用中使用针对 Node.js 的 PM2 配置
-如果将应用程序堆栈设置为 Linux Web 应用的 Node.js，则可选择设置 Node.js 启动文件，如下图所示：
+# <a name="use-pm2-configuration-for-nodejs-in-azure-web-app-on-linux"></a>在 Linux 上的 Azure Web 应用中使用针对 Node.js 的 PM2 配置
+
+[!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
+
+
+如果将应用程序堆栈设置为适用于 Linux 上 Azure Web 应用的 Node.js，则可选择设置 Node.js 启动文件，如下图所示：
 
 ![设置 Node.js 启动文件][1]
 
@@ -61,8 +66,8 @@ ms.lasthandoff: 02/17/2017
 * 对于“watch_options”，考虑到应用程序内容的装入方式，目前需将“usePolling”指定为 true。
 
 ## <a name="next-steps"></a>后续步骤
-* [什么是 Linux 应用服务？](app-service-linux-intro.md)
-* [Linux 上的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
+* [什么是 Linux 上的 Azure Web 应用？](app-service-linux-intro.md)
+* [Linux 上的 Azure App Service Web 应用常见问题解答](app-service-linux-faq.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-using-nodejs-pm2/nodejs-startup-file.png

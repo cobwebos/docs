@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
-ms.openlocfilehash: ac2730935d206ddf9079395384d46a43fdd740cb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: bc0b0b652312f6bcc27a981da766e19cded7bd6c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -32,7 +34,7 @@ Azure AD B2C 不能与 Microsoft Office 365 一起使用。 一般来说，它�
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>什么是 Azure AD B2C 中的本地帐户？ 它们与 Azure AD 中的工作或学校帐户有何不同？
 在 Azure AD 租户中，租户中的每个用户（使用现有 Microsoft 帐户的用户除外）都使用 `<xyz>@<tenant domain>` 形式的电子邮件地址登录，其中 `<tenant domain>` 是租户中的一个已验证域或初始 `<...>.onmicrosoft.com` 域。 此类型的帐户是工作或学校帐户。
 
-在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net,、bob@gmail.com,、sarah@contoso.com, 或jim@live.com)）登录。 此类型的帐户是本地帐户。 目前，我们还支持任意用户名（仅纯字符串）作为本地帐户（例如，joe、bob、sarah 或 jim）。 可以在 Azure AD B2C 服务中选择这两种本地帐户类型中的一种。
+在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net、bob@gmail.com、sarah@contoso.com 或 jim@live.com）登录。 此类型的帐户是本地帐户。 目前，我们还支持任意用户名（仅纯字符串）作为本地帐户（例如，joe、bob、sarah 或 jim）。 可以在 Azure AD B2C 服务中选择这两种本地帐户类型中的一种。
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>现在支持哪些社交标识提供者？ 计划在未来支持哪些？
 目前支持 Facebook、Google+、LinkedIn 和 Amazon。 我们将根据客户需求添加对其他流行社交标志提供者的支持。
@@ -80,7 +82,7 @@ Azure AD B2C 不能与 Microsoft Office 365 一起使用。 一般来说，它�
 不可以，Azure AD Connect 不是为与 Azure AD B2C 一起使用而设计的。 我们将在未来提供各种现成的迁移选项和工具。
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>我的应用是否可在 iFrame 中打开 Azure AD B2C 页？
-不可以，出于安全的考虑，在 `login.microsftonline.com` 域下提供的 Azure AD B2C 页无法在 iFrame 中打开。 始终必须重定向到 Azure AD B2C 才能使用所有客户体验。
+不可以，出于安全的考虑，无法在 iFrame 中打开 Azure AD B2C 页。  我们的服务将与浏览器通信以禁止此行为。  由于点击劫持的风险，安全社区和 OAUTH2 规范一般建议不要使用 iframe 进行标识体验。
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C 是否可以与 Microsoft Dynamics 之类的 CRM 系统一起使用？
 目前不可以。 集成这些系统在我们的计划之中。
@@ -92,7 +94,10 @@ Azure AD B2C 不能与 Microsoft Office 365 一起使用。 一般来说，它�
 请阅读有关[外部标识](../active-directory/active-directory-b2b-compare-external-identities.md)的文章，了解有关将适当功能应用于外部标识方案的详细信息。
 
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Azure AD B2C 提供哪些报告和审核功能？ 它们是否与 Azure AD Premium 中提供的功能相同？
-否，Azure AD B2C 不支持与 Azure AD Premium 相同的报告集。 Azure AD B2C 不久将发布基本报告和审核 API。
+否，Azure AD B2C 不支持与 Azure AD Premium 相同的报告集。 但是，有许多共性。  
+* 登录报告提供每次登录的记录以及简短的详细信息。  
+* 审核报告在 Azure 门户中的“Azure Active Directory”>“ACTIVITY-Audit日志”>“选择 B2C 并根据需要应用筛选器”下面提供。 其中包括管理活动和应用程序活动。 
+* 包括用户数、登录次数和 MFA 数量的使用情况报告在“使用情况报告 API”中提供[](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api)
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>我可以本地化 Azure AD B2C 所提供页面的 UI 吗？ 支持哪些语言？
 目前，Azure AD B2C 仅针对英语进行了优化。 我们计划尽快推出本地化功能。
@@ -123,10 +128,5 @@ Azure AD B2C 不能与 Microsoft Office 365 一起使用。 一般来说，它�
 
 ## <a name="more-information"></a>详细信息
 你可能也想要查看当前的[服务限制、制约和约束](active-directory-b2c-limitations.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -15,16 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: liamca
-translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 0f81ac0d19cd0f20c1f2214042eda391a3e68a7d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0740bc1f9e8b8be3c59518d9b23b8a1411c6d16a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 ---
 
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>在 Azure 搜索中生成查询的 Lucene 查询语法示例
 为 Azure 搜索构建查询时，可使用默认的[简单查询语法](https://msdn.microsoft.com/library/azure/dn798920.aspx)或备用的 [Azure 搜索中的 Lucene 查询分析器](https://msdn.microsoft.com/library/azure/mt589323.aspx)。 Lucene 查询分析器支持更复杂的查询构造，例如字段范围查询、模糊搜索、邻近搜索、术语提升以及正则表达式搜索。
 
-在本文中可逐步查看并排显示 Lucene 查询语法和结果的示例。 根据在 [JSFiddle](https://jsfiddle.net/)（这是测试脚本和 HTML 的在线代码编辑器）中的预加载搜索索引运行的示例。
+在本文中可逐步查看并排显示 Lucene 查询语法和结果的示例。 根据在 [JSFiddle](https://jsfiddle.net/)（这是测试脚本和 HTML 的在线代码编辑器）中的预加载搜索索引运行的示例。 有关查询处理的背景信息，请参阅 [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)。
 
 右键单击查询示例 URL，在单独的浏览器窗口中打开 JSFiddle。
 
@@ -113,16 +115,11 @@ ms.openlocfilehash: 0f81ac0d19cd0f20c1f2214042eda391a3e68a7d
 
 * [&queryType=full&$select=business_title&search=business_title:prog*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:prog*)
 
-不得将 * 或 ?  符号用作搜索的第一个字符。
+不得将 * 或 ? 符号用作搜索的第一个字符。
 
 ## <a name="next-steps"></a>后续步骤
 请尝试在代码中指定 Lucene 查询分析器。 以下链接介绍如何为 .NET 和 REST API 设置搜索查询。 链接使用默认的简单语法，因此需要应用从本文中所学知识指定 **queryType**。
 
 * [使用 .NET SDK 查询 Azure 搜索索引](search-query-dotnet.md)
 * [使用 REST API 查询 Azure 搜索索引](search-query-rest-api.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 04/20/2017
+ms.date: 05/07/2017
 ms.author: janeng
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: c6d965351f6f131ee342cea672fc4fa8771f8ede
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: cf128e84cfa69a259ff529caebb910840dcbaede
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>将 SQL Server 数据库迁移至 Azure SQL 数据库
 
-在本教程中，你将使用 Microsoft Data Migration Assistant 将现有 SQL Server 数据库迁移到 Azure SQL 数据库，并完成准备迁移、执行实际数据迁移、以及迁移完成后连接到已迁移数据库的所需步骤。 
+将 SQL Server 数据库移到 Azure SQL 数据库的过程由三个部分组成 - 准备、导出和导入数据库。 在本教程中，你将学习：
 
-> [!IMPORTANT]
-> 若要解决兼容性问题，请使用 [Visual Studio Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。 
->
+> [!div class="checklist"]
+> * 使用[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) 在 SQL Server 中准备要迁移到 Azure SQL 数据库的数据库
+> * 将数据库导出到 BACPAC 文件
+> * 将 BACPAC 文件导入 Azure SQL 数据库
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
-
-若要完成本教程，请确保你具有：
+在开始之前，请确保已做好以下准备：
 
 - 最新版本的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 安装 SSMS 就会安装最新版本的 SQLPackage，这是一个可用于自动执行一系列数据库开发任务的命令行实用工具。 
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA)。
-- 要迁移的数据库。 本教程在 SQL Server 2008R2 或更高版本的实例上使用 [SQL Server 2008R2 AdventureWorks OLTP 数据库](https://msftdbprodsamples.codeplex.com/releases/view/59211)，但你可以使用你选择的任何数据库。 
+- 要迁移的数据库。 本教程在 SQL Server 2008R2 或更高版本的实例上使用 [SQL Server 2008R2 AdventureWorks OLTP 数据库](https://msftdbprodsamples.codeplex.com/releases/view/59211)，但你可以使用你选择的任何数据库。 若要解决兼容性问题，请使用 [Visual Studio Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)
 
 ## <a name="prepare-for-migration"></a>准备迁移
 
@@ -222,15 +222,17 @@ SQLPackage 命令行实用工具的最新版本支持在指定[服务层和性�
    ![更改兼容级别](./media/sql-database-migrate-your-sql-server-database/compat-level.png)
 
 ## <a name="next-steps"></a>后续步骤 
+本教程已介绍如何准备、导出和导入数据库。 你已了解：
 
-- 有关迁移的概述，请参阅[数据库迁移](sql-database-cloud-migrate.md)。
-- 有关 T-SQL 差异的讨论，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](sql-database-transact-sql-information.md)。
-- 若要使用 Visual Studio Code 进行连接和查询，请参阅[使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
-- 若要使用 .NET 进行连接和查询，请参阅[使用 .NET 进行连接和查询](sql-database-connect-query-dotnet.md)。
-- 若要使用 PHP 进行连接和查询，请参阅[使用 PHP 进行连接和查询](sql-database-connect-query-php.md)。
-- 若要使用 Node.js 进行连接和查询，请参阅[使用 Node.js 进行连接和查询](sql-database-connect-query-nodejs.md)。
-- 若要使用 Java 进行连接和查询，请参阅[使用 Java 进行连接和查询](sql-database-connect-query-java.md)。
-- 若要使用 Python 进行连接和查询，请参阅[使用 Python 进行连接和查询](sql-database-connect-query-python.md)。
-- 若要使用 Ruby 进行连接和查询，请参阅[使用 Ruby 进行连接和查询](sql-database-connect-query-ruby.md)。
+> [!div class="checklist"]
+> * 在 SQL Server 中准备要迁移到 Azure SQL 数据库的数据库
+> * 将数据库导出到 BACPAC 文件
+> * 将 BACPAC 文件导入 Azure SQL 数据库
+
+请转到下一教程，了解如何保护数据库。
+
+> [!div class="nextstepaction"]
+> [保护 Azure SQL 数据库](sql-database-security-tutorial.md)。
+
 
 

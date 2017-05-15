@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 04/24/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 0f54fb7d2d8cf010baf79409bc6a528d34982500
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: d3c3f6ba0da73a8297f437a56f190f90274957ab
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -34,6 +35,7 @@ Azure AD 直通身份验证为这些组织提供一个简单的解决方案。 �
 - 易于使用
   - 无需复杂的本地部署或网络配置即可执行密码验证。
   - 它只利用用于侦听和响应密码验证请求的轻型本地连接器。
+  - 本地连接器具有自动更新功能，因此它可以自动接收功能改进和 bug 修复。
   - 它可以连同 [Azure AD Connect](active-directory-aadconnect.md) 一起进行配置。 轻型本地连接器安装在 Azure AD Connect 所在的同一台服务器上。
 - 安全
   - 本地密码永远不会以任何形式存储在云中。
@@ -63,7 +65,7 @@ Azure AD 直通身份验证为这些组织提供一个简单的解决方案。 �
 - 适用于 Windows 10 设备的 Azure AD Join。
 
 >[!IMPORTANT]
->当你启用直通身份验证时，默认还会启用密码同步，这样就可以实现直通身份验证目前尚不支持的方案（旧式 Office 客户端应用程序、Exchange ActiveSync 和适用于 Window 10 设备的 Azure AD Join）。 密码同步只在这些特定的方案中充当回退机制。 如果不需要密码同步，可以在 Azure AD Connect 中的“可选功能”页上将它关闭。[](active-directory-aadconnect-get-started-custom.md#optional-features)
+>当你启用直通身份验证时，默认还会启用密码同步，这样就可以实现直通身份验证功能目前尚不支持的方案（旧式 Office 客户端应用程序、Exchange ActiveSync 和适用于 Window 10 设备的 Azure AD Join）。 密码同步只在这些特定的方案中充当回退机制。 如果不需要密码同步，可以在 Azure AD Connect 向导中的“可选功能”页上将它关闭。[](active-directory-aadconnect-get-started-custom.md#optional-features)
 
 ## <a name="how-to-enable-azure-ad-pass-through-authentication"></a>如何启用 Azure AD 直通身份验证？
 
@@ -74,25 +76,27 @@ Azure AD 直通身份验证为这些组织提供一个简单的解决方案。 �
 - 一个 Azure AD 租户（你是该租户的全局管理员）。
 
 >[!NOTE]
->建议使用仅限云的全局管理员帐户，以便在本地服务出现故障或不可用时管理租户的配置。 可根据[此处](../active-directory-users-create-azure-portal.md)所示添加仅限云的全局管理员帐户。
+>强烈建议使用仅限云的全局管理员帐户，以便在本地服务出现故障或不可用时管理租户的配置。 可根据[此处](../active-directory-users-create-azure-portal.md)所示添加仅限云的全局管理员帐户。
 
-- Azure AD Connect 1.1.484.0 或更高版本。 建议使用[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
+- Azure AD Connect 版本 1.1.486.0 或更高版本。 建议使用[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
 - 运行 Windows Server 2012 R2 或更高版本的服务器，在其上可运行 Azure AD Connect。
   - 此服务器必须是需要验证其密码的用户所在的 AD 林的成员。
-  - 请注意，需要在 Azure AD Connect 所在的同一台服务器上安装连接器。
+  - 请注意，需要在 Azure AD Connect 所在的同一台服务器上安装直通身份验证连接器。 验证连接器版本是否为 1.5.58.0 或更高版本。
 
 >[!NOTE]
 >如果 AD 林之间存在信任关系并且正确配置了名称后缀路由，则可支持多林环境。
 
-- 若要获得高可用性，需在运行 Windows Server 2012 R2 或更高版本的其他服务器上安装独立的连接器。
+- 若要获得高可用性，需在运行 Windows Server 2012 R2 或更高版本的其他服务器上安装独立的连接器（版本需要为 1.5.58.0 或更高版本）。
 - 如果任何连接器与 Azure AD 之间存在防火墙，请确保：
     - 如果启用了 URL 筛选，请确保连接器能够与以下 URL 通信：
         -  \*.msappproxy.net
         -  \*.servicebus.windows.net
     - 连接器还与 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=41653)建立直接 IP 连接。
     - 确保当连接器使用客户端证书与 Azure AD 通信时，防火墙不执行 SSL 检查。
-    - 确保连接器可通过端口 80 和 443 向 Azure AD 发出 HTTPS (TCP) 请求。
+    - 确保连接器可通过端口 80 和 443 向 Azure AD 发出出站请求。
       - 如果防火墙根据发起用户强制实施规则，请针对来自作为网络服务运行的 Windows 服务的流量打开这些端口。
+      - 连接器通过端口 80 发出 HTTP 请求以下载 SSL 证书吊销列表。 自动更新功能要正常工作也需要完成此操作。
+      - 连接器通过端口 443 发出 HTTPS 请求以执行所有其他操作，例如启用和禁用功能、注册连接器、下载连接器更新和处理所有用户登录请求。
 
 >[!NOTE]
 >我们最近做了改进，减少了连接器与我们的服务通信时所需的端口数。 如果运行旧版 Azure AD Connect 和/或独立连接器，应继续保持打开这些附加端口（5671、8080、9090、9091、9350、9352、10100-10120）。
@@ -122,7 +126,7 @@ Azure AD 直通身份验证为这些组织提供一个简单的解决方案。 �
 
 此步骤在服务器中下载并安装连接器软件。
 
-1.    [下载](https://go.microsoft.com/fwlink/?linkid=837580)最新的连接器。
+1.    [下载](https://go.microsoft.com/fwlink/?linkid=837580)最新的连接器。 验证连接器版本是否为 1.5.58.0 或更高版本。
 2.    以管理员身份打开命令提示符。
 3.    运行以下命令（/q 表示静默安装 - 安装程序不会提示你接受最终用户许可协议）：
 
@@ -173,7 +177,7 @@ AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
 #### <a name="an-unexpected-error-occured"></a>发生了意外的错误
 
-从服务器[收集连接器日志](#how-to-collect-pass-through-authentication-connector-logs?)，然后联系 Microsoft 支持人员反映问题。
+从服务器[收集连接器日志](#collecting-pass-through-authentication-connector-logs)，然后联系 Microsoft 支持人员反映问题。
 
 ### <a name="issues-during-registration-of-connectors"></a>注册连接器期间遇到的问题
 
@@ -181,9 +185,13 @@ AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
 确保安装连接器的服务器能够与我们的服务 URL 和[此处](#pre-requisites)列出的端口通信。
 
+#### <a name="registration-of-the-connector-failed-due-to-token-or-account-authorization-errors"></a>由于令牌或帐户授权错误，连接器注册失败
+
+确保对所有 Azure AD Connect 或独立连接器安装和注册操作使用仅限云的全局管理员帐户。 已启用 MFA 的全局管理员帐户存在一个已知问题；作为解决方法，请暂时关闭 MFA（只是为了完成操作）。
+
 #### <a name="an-unexpected-error-occurred"></a>发生了意外的错误
 
-从服务器[收集连接器日志](#how-to-collect-pass-through-authentication-connector-logs?)，然后联系 Microsoft 支持人员反映问题。
+从服务器[收集连接器日志](#collecting-pass-through-authentication-connector-logs)，然后联系 Microsoft 支持人员反映问题。
 
 ### <a name="issues-during-un-installation-of-connectors"></a>卸载连接器期间遇到的问题
 
@@ -197,11 +205,15 @@ AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
 #### <a name="the-enabling-of-the-feature-failed-because-there-were-no-connectors-available"></a>由于没有可用的连接器，启用该功能失败
 
-必须至少有一个活动的连接器服务器才能在租户中启用直通身份验证。 可通过安装 Azure AD Connect 或安装独立的连接器来安装连接器。
+必须至少有一个活动的连接器才能在租户中启用直通身份验证。 可通过安装 Azure AD Connect 或独立连接器来安装连接器。
 
 #### <a name="the-enabling-of-the-feature-failed-due-to-blocked-ports"></a>由于端口被阻止，启用该功能失败
 
 确保安装 Azure AD Connect 的服务器能够与我们的服务 URL 和[此处](#pre-requisites)列出的端口通信。
+
+#### <a name="the-enabling-of-the-feature-failed-due-to-token-or-account-authorization-errors"></a>由于令牌或帐户授权错误，启用该功能失败
+
+启用该功能时，确保使用仅限云的全局管理员帐户。 已启用多重身份验证 (MFA) 的全局管理员帐户存在一个已知问题；作为解决方法，请暂时关闭 MFA（只是为了完成操作）。
 
 ### <a name="issues-while-operating-the-pass-through-authentication-feature"></a>操作直通身份验证功能期间遇到的问题
 
@@ -217,7 +229,7 @@ AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 |AADSTS80005|验证遇到了不可预知的 WebException|这可能是一个暂时性的错误。 重试请求。 如果持续失败，请与 Microsoft 支持人员联系。
 |AADSTS80007|与 Active Directory 通信时出错|检查连接器日志以了解更多信息，并验证 Active Directory 是否按预期方式运行。
 
-### <a name="how-to-collect-pass-through-authentication-connector-logs"></a>如何收集直通身份验证连接器日志？
+### <a name="collecting-pass-through-authentication-connector-logs"></a>收集直通身份验证连接器日志
 
 根据遇到的问题类型，需要在不同的位置查看直通身份验证连接器日志。
 

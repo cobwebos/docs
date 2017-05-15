@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ed685f0a4ed26fb8d1c766f87210a99d2b5270ac
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 13a2883c59092c964cf3c353e767839c5f9ef788
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,6 +44,8 @@ ms.lasthandoff: 04/12/2017
 如果需要停止或重新启动探查器，可在“Web 作业”中的“应用服务资源”内找到相应的选项。 若要删除探查器，请查看“扩展”下面的选项。
 
 如果使用 WebDeploy 将更改部署到 Web 应用程序，请确保排除 **App_Data** 文件夹，以防在部署期间将它删除。 否则，下一次将 Web 应用程序部署到 Azure 时，会删除探查器扩展文件。
+
+**[更新]** Application Insights 站点扩展从 2.3 版起已集成了探查器代理。 它将替换原来的 Application Insights 探查器站点扩展。 可以通过“配置”向导迁移到最新版本。
 
 ## <a name="viewing-profiler-data"></a>查看探查器数据
 
@@ -172,7 +175,7 @@ CPU 正忙于执行指令。
 2. 将“.Net Framework 版本”设置为 v4.6。
 3. 将“Always On”设置为“打开”。
 4. 添加应用设置“__APPINSIGHTS_INSTRUMENTATIONKEY__”，将值设置为 SDK 使用的同一检测密钥。
-5. 在“扩展”中，添加“Application Insights 探查器”。 安装需要 2 到 3 分钟。
+5. 在“扩展”中，添加“Application Insights”。 安装需要几分钟。
 
 ## <a id="aspnetcore"></a>ASP.NET Core 支持
 

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 05/02/2017
 ms.author: ganesr
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 945923d9858ec0ed31272c23268b263f77b5c7a4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7f8386b518ada850fc03e23c5cae3b159b3b213e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
 本文概述将 Azure ExpressRoute 线路从经典部署模型转移到 Azure Resource Manager 部署模型的效果。
-
-[!INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 可以使用一条 ExpressRoute 线路连接到在经典部署模型和 Resource Manager 部署模型中部署的虚拟网络。 无论 ExpressRoute 线路的创建方式为何，现在都可以链接到这两种部署模型中的虚拟网络。
 
@@ -87,11 +87,11 @@ ExpressRoute 线路相当于经典部署模型与 Resource Manager 部署模型�
 * 将 ExpressRoute 线路转移到 Resource Manager 部署模型后，只能使用 Resource Manager 部署模型来管理 ExpressRoute 线路的生命周期。 这意味着，某些操作（例如，添加/更新/删除对等互连，更新带宽、SKU 和计费类型等线路属性，以及删除线路）只能在 Resource Manager 部署模型中执行。
 * ExpressRoute 线路相当于经典部署模型与 Resource Manager 部署模型之间的桥梁。 经典部署模型的虚拟网络中的虚拟机与 Resource Manager 部署模型的虚拟网络中的虚拟机之间的流量将流经 ExpressRoute，前提是这两个虚拟网络链接到相同的 ExpressRoute 线路。
 * 经典部署模型和 Resource Manager 部署模型都支持跨订阅连接。
+* 将 ExpressRoute 线路从经典模型移到 Azure Resource Manager 模型后，即可[迁移链接到 ExpressRoute 线路的虚拟网络](expressroute-migration-classic-resource-manager.md)。
 
 ## <a name="whats-not-supported"></a>不支持的功能
 本部分介绍不可通过 ExpressRoute 线路执行的操作：
 
-* 将线路链接、网关和虚拟网络从经典部署模型转移到 Resource Manager 部署模型。
 * 从经典部署模型管理 ExpressRoute 线路的生命周期。
 * 针对经典部署模型的基于角色的访问控制 (RBAC) 支持。 无法对经典部署模型中的线路执行 RBAC 控制。 订阅的任何管理员/共同管理员都可以将虚拟网络链接到线路，也都可以取消此类链接。
 
@@ -99,16 +99,12 @@ ExpressRoute 线路相当于经典部署模型与 Resource Manager 部署模型�
 遵循 [将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-howto-move-arm.md)中所述的说明。
 
 ## <a name="next-steps"></a>后续步骤
+* [将链接到 ExpressRoute 线路的虚拟网络从经典模型迁移到 Azure Resource Manager 模型](expressroute-migration-classic-resource-manager.md)
 * 有关工作流信息，请参阅 [ExpressRoute 线路预配工作流和线路状态](expressroute-workflows.md)。
 * 配置 ExpressRoute 连接的步骤：
   
   * [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)
   * [配置路由](expressroute-howto-routing-arm.md)
   * [将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

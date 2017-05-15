@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/30/2016
+ms.date: 05/04/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: d7fe552e0c8856a8d7799ae8a7732e57a350fee3
-ms.openlocfilehash: 2a42605c75fe183d57030e4a3ff3f3218a7dbc2b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 526efc5b025f8050f40c49d0a07a9c2713509493
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -29,9 +31,7 @@ ms.openlocfilehash: 2a42605c75fe183d57030e4a3ff3f3218a7dbc2b
 Azure AD 应用程序代理可发布要通过 Internet 访问的本地应用程序，从而帮助你为远程辅助角色提供支持。 至此，你应该已 [在 Azure 经典门户中启用应用程序代理](active-directory-application-proxy-enable.md)。 本文将指导你完成发布要在本地网络上运行并提供从网络外部进行的安全远程访问的应用程序的步骤。 阅读完成这篇文章后，你将能够根据个性化信息或安全要求配置该应用程序。
 
 > [!NOTE]
-> 应用程序代理是一项仅当升级到高级版或基本版的 Azure Active Directory 才可用的功能。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
-> 
-> 
+> 应用程序代理是一项仅当升级到高级版或基本版的 Azure Active Directory 才可用的功能。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。 若要使用应用程序代理，可以[在 Azure 门户中发布应用程序](application-proxy-publish-azure-portal.md)。
 
 ## <a name="publish-an-app-using-the-wizard"></a>使用向导发布应用
 1. 在 [Azure 经典门户](https://manage.windowsazure.com/)中，以管理员身份进行登录。
@@ -102,10 +102,5 @@ Azure AD 应用程序代理可发布要通过 Internet 访问的本地应用程�
 * [使用声明感知应用程序](active-directory-application-proxy-claims-aware-apps.md)
 
 有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

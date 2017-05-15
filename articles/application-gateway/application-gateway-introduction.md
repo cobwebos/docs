@@ -13,38 +13,28 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 04/03/2017
+ms.date: 04/27/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: ba9c673676fd0b742eb8bd780b67930333b151b3
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: e9dfb5a744a7c63ef9805b1341236c4f3c57ec4d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="overview-of-application-gateway"></a>应用程序网关概述
 
-Microsoft Azure 应用程序网关是一个专用的虚拟设备，以服务形式提供应用程序传送控制器 (ADC)，为应用程序提供各种第 7 层负载均衡功能。 它由多个辅助角色实例组成，实现可伸缩性和高可用性。 它使客户能够通过将 CPU 密集型 SSL 终端的负载卸载到应用程序网关上来优化 Web 场生产率。 它还提供其他第 7 层路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 可以将应用程序网关配置为面向 Internet 的网关、仅内部网关或这两者的组合。 应用程序网关完全由 Azure 托管，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。 创建应用程序网关时，将与一个终结点（公共 VIP 或内部 ILB IP）相关联并将其用于流入网络流量。 此 VIP 或 ILB IP 由在传输层 (TCP/UDP) 工作并将所有传入的网络流量负载均衡到应用程序网关辅助角色实例的 Azure 负载均衡器提供。 然后，应用程序网关根据其配置（是虚拟机、云服务还是内部或外部 IP 地址）来路由 HTTP/HTTPS 流量。
+Microsoft Azure 应用程序网关是一个专用的虚拟设备，以服务形式提供应用程序传送控制器 (ADC)，为应用程序提供各种第 7 层负载均衡功能。 它使客户能够通过将 CPU 密集型 SSL 终端的负载卸载到应用程序网关上来优化 Web 场生产率。 它还提供其他第 7 层路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 应用程序网关 Web 应用程序防火墙 (WAF) SKU 中还随附 WAF，用于保护 Web 应用程序，使其免受常见 Web 漏洞和攻击的影响。 可以将应用程序网关配置为面向 Internet 的网关、仅内部网关或这两者的组合。 
 
-应用程序网关 Web 应用程序防火墙 (WAF) SKU 中还随附 WAF，用于保护 Web 应用程序，使其免受常见 Web 漏洞和攻击的影响。 Web 应用程序防火墙根据 [OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的规则执行此功能。
-
-## <a name="differences-between-application-gateway-skus"></a>应用程序网关 SKU 之间的差异
-
-应用程序网关有两个 SKU： 标准 SKU 和 Web 应用程序防火墙 (WAF) SKU。
-
-### <a name="standard"></a>标准
-
-标准 SKU 提供 SSL 终止、基于 Cookie 的会话相关性、轮循负载分发、基于内容的路由，以及托管多个网站和安全增强功能的能力。 应用程序网关提供的安全增强功能包括 SSL 策略管理、端到端 SSL 支持和 SSL 终止。
-
-### <a name="web-application-firewall-waf"></a>Web 应用程序防火墙 (WAF)
-
-WAF SKU 提供标准 SKU 所提供的全部功能，另外还包括 [Web 应用程序防火墙](application-gateway-web-application-firewall-overview.md)。 它提供攻击检测规则，防止 Web 应用程序受到常见 Web 漏洞和攻击的影响。
+![方案](./media/application-gateway-introduction/scenario.png)
 
 ## <a name="features"></a>功能
 
-应用程序网关当前支持具有以下功能的第 7 层应用程序传送：
+应用程序网关目前提供以下功能：
 
-* **[Web 应用程序防火墙](application-gateway-webapplicationfirewall-overview.md)** - Azure 应用程序网关中的 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序，使其免受常见 Web 攻击的威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。
+
+* **[Web 应用程序防火墙](application-gateway-webapplicationfirewall-overview.md)** - Azure 应用程序网关中的 Web 应用程序防火墙 (WAF) 保护 Web 应用程序免受基于 Web 的常见攻击，例如 SQL 注入、跨站点脚本攻击、会话劫持。
 * **HTTP 负载均衡** - 应用程序网关提供轮循机制负载均衡。 负载均衡在第 7 层完成，仅用于 HTTP(S) 流量。
 * **基于 Cookie 的会话相关性** - 想要在同一后端保留用户会话时，此功能十分有用。 借助受网关管理的 cookie，应用程序网关能够将来自用户会话的后续流量转到同一后端进行处理。 在会话状态是为用户会话而本地保存在后端服务器的情况下，此功能十分重要。
 * **[安全套接字层 (SSL) 卸载](application-gateway-ssl-arm.md)** - 此功能让 Web 服务器免于执行解密 HTTPS 流量的高成本任务。 通过在应用程序网关终止 SSL 连接，并将请求转发到未加密的服务器，Web 服务器不用承担解密的负担。  应用程序网关会重新加密响应，然后再将它发回客户端。 在后端与 Azure 中的应用程序网关位于同一安全虚拟网络中的情况下，此功能十分有用。
@@ -64,6 +54,9 @@ WAF SKU 提供标准 SKU 所提供的全部功能，另外还包括 [Web 应用�
 * 要求长时间运行的同一 TCP 连接上多个 HTTP 请求路由到或负载均衡到不同后端服务器的应用程序（例如内容交付网络）。
 * 支持 WebSocket 流量的应用程序
 * 保护 Web 应用程序，使其免受常见 Web 攻击的威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。
+* 根据不同的路由标准（例如 URL 路径或域标头）对流量进行逻辑分配。
+
+应用程序网关完全由 Azure 托管，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。 创建应用程序网关时，将与一个终结点（公共 VIP 或内部 ILB IP）相关联并将其用于流入网络流量。 此 VIP 或 ILB IP 由在传输层 (TCP/UDP) 工作并将所有传入的网络流量负载均衡到应用程序网关辅助角色实例的 Azure 负载均衡器提供。 然后，应用程序网关根据其配置（是虚拟机、云服务还是内部或外部 IP 地址）来路由 HTTP/HTTPS 流量。
 
 Azure 托管服务形式的应用程序网关负载均衡允许在 Azure 软件负载均衡器的后面预配第 7 层负载均衡器。 流量管理器可用于完成下图中所示的方案，其中流量管理器为到不同区域中的多个应用程序网关资源的流量提供重定向和可用性，而应用程序网关则提供跨区域第 7 层负载均衡。 此方案的示例可以在[在 Azure 云中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)中找到
 
@@ -104,6 +97,7 @@ Azure 应用程序网关会通过基本或自定义运行状况探测，自动�
 ## <a name="faq"></a>常见问题
 
 有关应用程序网关的常见问题，请参阅[应用程序网关常见问题](application-gateway-faq.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
 了解应用程序网关后，可以[创建应用程序网关](application-gateway-create-gateway-portal.md)，也可以[创建应用程序网关 SSL 卸载](application-gateway-ssl-arm.md)，以便对 HTTPS 连接进行负载均衡。

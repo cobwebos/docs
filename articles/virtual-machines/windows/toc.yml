@@ -21,10 +21,23 @@
     href: tutorial-manage-data-disk.md
   - name: "3 - 自动执行配置"
     href: tutorial-automate-vm-deployment.md
-  - name: "4 - 对 VM 进行负载均衡"
+  - name: "4 - 创建 VM 映像"
+    href: tutorial-custom-images.md
+  - name: "5 - 高度可用的 VM"
+    href: tutorial-availability-sets.md
+  - name: "6 - 创建 VM 规模集"
+    href: tutorial-create-vmss.md
+  - name: "7 - 对 VM 进行负载均衡"
     href: tutorial-load-balancer.md
-  - name: "5 - 管理网络"
+  - name: "8 - 管理网络"
     href: tutorial-virtual-network.md
+  - name: "9 - 备份虚拟机"
+    href: tutorial-backup-vms.md
+  - name: "10 - 监视虚拟机"
+    href: tutorial-monitoring.md
+  - name: "11 - 管理 VM 安全性"
+    href: tutorial-azure-security.md
+
 - name: "示例"
   items:
   - name: "PowerShell"
@@ -117,7 +130,7 @@
       href: creation-choices.md
     - name: "使用模板创建 VM"
       href: ps-template.md
-    - name: "使用 C 创建 VM#"
+    - name: "使用 C# 创建 VM"
       href: csharp.md
     - name: "使用 C# 和模板创建 VM"
       href: csharp-template.md
@@ -150,7 +163,7 @@
       href: cli-manage.md
     - name: "使用 CLI 管理 VM"
       href: cli-deploy-templates.md
-    - name: "使用 C 管理 VM#"
+    - name: "使用 C# 管理 VM"
       href: csharp-manage.md
   - name: "使用 RDP 连接"
     items:

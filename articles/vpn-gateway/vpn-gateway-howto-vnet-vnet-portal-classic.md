@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: de39e768697425b98fb615697e57918c8c5d3853
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 
@@ -151,7 +152,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 1. 在“新建 VPN 连接”边栏选项卡上，选中“立即创建网关”复选框。
 2. 单击“子网、大小和路由类型”。 在“网关配置”边栏选项卡上，单击“子网”。
 3. 网关子网名称自动以所需的名称“GatewaySubnet”进行填充。 “地址范围”包含分配给 VPN 网关服务的 IP 地址。 某些配置允许使用网关子网 /29，但最好使用 /28 或 /27 以适应将来可能需要为网关服务使用更多 IP 地址的配置。 在示例设置中，我们使用了 10.11.1.0/27。 调整地址空间，然后单击“确定”。
-4. 配置“网关大小”。 此设置指的是“网关 SKU”。[](vpn-gateway-about-vpngateways.md#gateway-skus)
+4. 配置“网关大小”。 此设置指的是[网关 SKU](vpn-gateway-about-vpngateways.md#gateway-skus)。
 5. 配置“路由类型”。 此配置的路由类型必须为“动态”。 无法更改路由类型，除非删除网关并创建一个新网关。
 6. 单击 **“确定”**。 
 7. 在“新建 VPN 连接”边栏选项卡上，单击“确定”以开始创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。

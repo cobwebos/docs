@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a7b3f8addbba21e60be0076784ae954f4cedb0b8
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: d29cf81747390fe153c3c6dc330ef738de0cd83a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +49,7 @@ Azure 公共对等互连路径可让你连接到托管于 Azure 中的所有服�
 > 
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Microsoft 对等互连的 NAT 要求
-Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等互连路径访问的 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 CRM Online。 Microsoft 有望在 Microsoft 对等互连上支持双向连接。 定向到 Microsoft 云服务的流量必须由 SNAT 转换成有效的公共 IPv4 地址才能进入 Microsoft 网络。 从 Microsoft 云服务定向到网络的流量必须经过 SNAT 转换才能进入网络。 下图提供了有关如何为 Microsoft 对等互连设置 NAT 的综合示意图。
+Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等互连路径访问的 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 CRM Online。 Microsoft 有望在 Microsoft 对等互连上支持双向连接。 定向到 Microsoft 云服务的流量必须由 SNAT 转换成有效的公共 IPv4 地址才能进入 Microsoft 网络。 从 Microsoft 云服务定向到网络的流量必须在 Internet 边缘进行 SNAT 转换，避免[非对称路由](expressroute-asymmetric-routing.md)。 下图提供了有关如何为 Microsoft 对等互连设置 NAT 的综合示意图。
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
@@ -63,7 +64,9 @@ Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等
 
 ### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>从 Microsoft 发起的，目标为你的网络的流量
 * 在某些情况下，需要由 Microsoft 对你网络中托管的服务终结点发起连接。 一个典型的示例就是从 Office 365 连接到你网络中托管的 ADFS 服务器。 在这种情况下，你必须将网络中相应的前缀透露给 Microsoft 对等互连。 
-* 你必须使用 SNAT 转换从 Microsoft 定向到你网络中 IP 地址的流量。 
+* 必须在 Internet 边缘为网络中的服务终结点进行 Microsoft 流量的 SNAT 转换，避免[非对称路由](expressroute-asymmetric-routing.md)。 只要目标 IP 地址与通过 ExpressRoute 接收的路由匹配，将始终通过 ExpressRoute 发送请求和回复。 如果请求是通过 Internet 接收的，而回复是通过 ExpressRoute 发送的，则会存在非对称路由。 在 Internet 边缘对传入的 Microsoft 流量进行 SNAT 转换 可以强制回复流量回到 Internet 边缘，从而解决此问题。
+
+![非对称路由与 ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[路由](expressroute-routing.md)和 [QoS](expressroute-qos.md) 的要求。

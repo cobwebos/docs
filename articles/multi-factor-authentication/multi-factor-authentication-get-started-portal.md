@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/04/2017
+ms.date: 04/24/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 1222223f8c45249402bfdd04c8754074f877e132
-ms.openlocfilehash: 1236489212b2a9c421972599a12511d5bc42efdf
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 97845748ef44469d1ec6a91ff8184288dc6350d9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
 # <a name="deploy-the-user-portal-for-the-azure-multi-factor-authentication-server"></a>为 Azure 多重身份验证服务器部署用户门户
-在用户门户中，管理员可以安装和配置 Azure 多重身份验证用户门户。 用户门户是一个 IIS 网站，可让用户注册 Azure 多重身份验证以及维护其帐户。 用户可以在下次登录期间更改其电话号码、更改其 PIN 码或选择绕过双重验证。
+用户门户是一个 IIS 网站，可让用户注册 Azure 多重身份验证以及维护其帐户。 用户可以在下次登录期间更改其电话号码、更改其 PIN 码或选择绕过双重验证。
 
 用户可使用其普通用户名和密码登录到用户门户，然后根据电话呼叫完成双重验证或回答安全问题，完成其身份验证。 如果允许用户注册，用户可在首次登录到用户门户时配置其电话号码和 PIN 码。
 
@@ -29,40 +31,46 @@ ms.openlocfilehash: 1236489212b2a9c421972599a12511d5bc42efdf
 
 <center>![设置](./media/multi-factor-authentication-get-started-portal/install.png)</center>
 
+>[!NOTE] 
+>用户门户仅适用于多重身份验证服务器。 如果在云中使用多重身份验证，则让用户参阅[设置双重验证帐户](./end-user/multi-factor-authentication-end-user-first-time.md)或[管理双重验证设置](./end-user/multi-factor-authentication-end-user-manage-settings.md)。
+
+
 ## <a name="deploy-the-user-portal-on-the-same-server-as-the-azure-multi-factor-authentication-server"></a>在与 Azure 多重身份验证服务器所在的同一台服务器上部署用户门户
 若要在与 Azure 多重身份验证服务器所在的同一台服务器上安装用户门户，必须满足以下先决条件：
 
 * 安装 IIS，包括 asp.net 和 IIS 6 元数据库兼容性（适用于 IIS 7 或更高版本）
-* 登录用户必须具有计算机和域的管理员权限（如果适用）。  这是因为帐户需有创建 Active Directory 安全组的权限。
+* 具有计算机和域的管理员权限的帐户（如果适用）。 帐户需有创建 Active Directory 安全组的权限。
 
-### <a name="to-deploy-the-user-portal"></a>部署用户门户
+若要部署该用户门户，请执行以下步骤：
+
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的“用户门户”图标，然后单击“安装用户门户”。
-2. 单击“资源组名称” 的 Azure 数据工厂。
+2. 单击“下一步”。
 3. 单击“下一步”。
 4. 如果计算机已加入域，但未将 Active Directory 配置为保护用户门户与 Azure 多重身份验证服务之间的通信，则会显示 Active Directory 步骤。 单击“下一步”按钮可自动完成此配置。
 5. 单击“下一步”。
-6. 单击“资源组名称” 的 Azure 数据工厂。
+6. 单击“下一步”。
 7. 单击“**关闭**”。
 8. 从任何计算机打开 Web 浏览器，然后导航到安装用户门户的 URL（例如 https://www.publicwebsite.com/MultiFactorAuth）。 确保未显示证书警告或错误。
 
 <center>![设置](./media/multi-factor-authentication-get-started-portal/portal.png)</center>
 
-## <a name="deploy-the-azure-multi-factor-authentication-server-user-portal-on-a-separate-server"></a>在不同的服务器上部署 Azure 多重身份验证服务器用户门户
-若要允许 Microsoft 验证器应用与用户门户通信，需满足以下要求： 
+## <a name="deploy-the-user-portal-on-a-separate-server"></a>在单独的服务器上部署用户门户
+如果运行 Azure 多重身份验证服务器的服务器不是面向 Internet 的，则应将用户门户安装在单独的面向 Internet 的服务器上。 
 
-* 必须使用 v6.0 或更高版本的 Azure Multi-Factor Authentication 服务器。
-* 用户门户必须安装在运行 Microsoft® Internet Information Services (IIS) 6.x、IIS 7.x 或更高版本的面向 Internet 的 Web 服务器上。
+如果组织使用 Microsoft Authenticator 应用作为验证方法之一，并且需要将用户门户部署在其自己的服务器上，则请完成下述要求的操作： 
+
+* 使用 v6.0 或更高版本的 Azure 多重身份验证服务器。
+* 将用户门户安装在面向 Internet 的 Web 服务器上，该服务器运行 Microsoft Internet Information Services (IIS) 6.x 或更高版本。
 * 使用 IIS 6.x 时，请确保 ASP.NET v2.0.50727 已安装、注册并设置为“允许”。
-* 使用 IIS 7.x 或更高版本时必需的角色服务包括 ASP.NET 和 IIS 6 元数据库兼容性。
-* 应使用 SSL 证书保护用户门户。
-* Azure 多重身份验证 Web 服务 SDK 必须安装在 Azure 多重身份验证服务器所安装的服务器上的 IIS 6.x、IIS 7.x 或更高版本中。
-* 必须使用 SSL 证书保护 Azure Multi-Factor Authentication Web 服务 SDK。
-* 用户门户必须能够通过 SSL 连接到 Azure 多重身份验证 Web 服务 SDK。
-* 用户门户必须能够使用“PhoneFactor 管理员”安全组中某个服务帐户的凭据，在 Azure 多重身份验证 Web 服务 SDK 中进行身份验证。 如果 Azure Multi-Factor Authentication 服务器运行在已加入域的服务器上，则此服务帐户和组存在于 Active Directory 中。 如果 Azure Multi-Factor Authentication 服务器未加入域，则此服务帐户和组存在于本地的该服务器上。
+* 使用 IIS 7.x 或更高版本时，ASP.NET 和 IIS 6 元数据库兼容性角色服务是必需的。
+* 请使用 SSL 证书保护用户门户。
+* 请使用 SSL 证书保护 Azure 多重身份验证 Web 服务 SDK。
+* 请确保用户门户能够通过 SSL 连接到 Azure 多重身份验证 Web 服务 SDK。
+* 请确保用户门户能够使用“PhoneFactor 管理员”安全组中某个服务帐户的凭据，在 Azure 多重身份验证 Web 服务 SDK 中进行身份验证。 如果 Azure Multi-Factor Authentication 服务器运行在已加入域的服务器上，则此服务帐户和组存在于 Active Directory 中。 如果 Azure Multi-Factor Authentication 服务器未加入域，则此服务帐户和组存在于本地的该服务器上。
 
 在除 Azure Multi-Factor Authentication 服务器以外的其他服务器上安装用户门户需要完成以下三个步骤：
 
-1. 安装 Web 服务 SDK
+1. 在多重身份验证服务器所在的服务器上安装 Web 服务 SDK
 2. 安装用户门户
 3. 在 Azure Multi-Factor Authentication 服务器中配置用户门户设置
 
@@ -82,12 +90,14 @@ ms.openlocfilehash: 1236489212b2a9c421972599a12511d5bc42efdf
     `<add key="SSL_REQUIRED" value="false"/>`
 
 #### <a name="to-install-the-user-portal"></a>安装用户门户
-1. 在运行 Azure 多重身份验证服务器的服务器上，打开 Windows 资源管理器，并导航到 Azure 多重身份验证服务器所安装到的文件夹（例如 C:\Program Files\Multi-Factor Authentication Server）。 为要安装用户门户的服务器相应地选择 32 位或 64 位版本的 MultiFactorAuthenticationUserPortalSetup 安装文件。 将安装文件复制到面向 Internet 的服务器。
-2. 在面向 Internet 的 Web 服务器上，必须使用管理员权限运行安装文件。 执行此操作的最简单方法是，以管理员身份打开命令提示符，并导航到安装文件所复制到的位置。
+1. 在安装 Azure MFA 服务器的服务器上打开 Windows 资源管理器并导航到 Azure 多重身份验证服务器安装在其中的文件夹（通常是 C:\Program Files\Multi-Factor Authentication Server）。 将 32 位或 64 位版本的 MultiFactorAuthenticationUserPortalSetup 安装文件复制到面向 Internet 的服务器。
+2. 在面向 Internet 的 Web 服务器上，使用管理员权限运行该文件。 执行此操作的最简单方法是，以管理员身份打开命令提示符，并导航到安装文件所复制到的位置。
 3. 运行 MultiFactorAuthenticationUserPortalSetup64 安装文件，并根据需要更改站点和虚拟目录的名称。
 4. 完成用户门户的安装后，请浏览到 C:\inetpub\wwwroot\MultiFactorAuth（或基于虚拟目录名称的相应目录）并编辑 web.config 文件。
-5. 找到 USE_WEB_SERVICE_SDK 键，并将值从 false 更改为 true。 找到 WEB_SERVICE_SDK_AUTHENTICATION_USERNAME 和 WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD 键，并将其值设为“PhoneFactor 管理员”安全组中服务帐户的用户名和密码（请参阅“要求”部分）。 请务必在行末引号之间输入用户名和密码 (value=""/>)。 应使用限定的用户名（例如“域\用户名”或“计算机\用户名”）。
-6. 找到“pfup_pfwssdk_PfWsSdk”设置，并将值从“http://localhost:4898/PfWsSdk.asmx”更改为在 Azure 多重身份验证服务器上运行的 Web 服务 SDK 的 URL（例如 https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx）。 由于此连接使用 SSL，而 SSL 证书是根据服务器名称颁发的，因此请按照服务器名称而不是 IP 地址引用 Web 服务 SDK。 如果服务器名称无法解析为面向 Internet 的服务器的 IP 地址，请在该服务器上的 hosts 文件中添加一个条目，以将 Azure Multi-Factor Authentication 服务器的名称映射到其 IP 地址。 进行更改之后，保存 web.config 文件。
+5. 找到 USE_WEB_SERVICE_SDK 键，并将值从 **false** 更改为 **true**。 
+6. 找到 WEB_SERVICE_SDK_AUTHENTICATION_USERNAME 项，将其值设置为“PhoneFactor 管理员”安全组中的服务帐户的用户名。 使用限定的用户名（例如“域\用户名”或“计算机\用户名”）。 
+7. 找到 WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD 项，将其值设置为“PhoneFactor 管理员”安全组中的服务帐户的密码。
+8. 找到“pfup_pfwssdk_PfWsSdk”设置，并将值从“http://localhost:4898/PfWsSdk.asmx”更改为在 Azure 多重身份验证服务器上运行的 Web 服务 SDK 的 URL（例如 https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx）。 由于此连接使用 SSL，而 SSL 证书是根据服务器名称颁发的，因此请按照服务器名称而不是 IP 地址引用 Web 服务 SDK。 如果服务器名称无法解析为面向 Internet 的服务器的 IP 地址，请在该服务器上的 hosts 文件中添加一个条目，以将 Azure 多重身份验证服务器的名称映射到其 IP 地址。 进行更改之后，保存 web.config 文件。
 
     有关编辑配置文件的详细信息，请参阅 [Secure your resources using Azure Multi-Factor Authentication Server with AD FS](multi-factor-authentication-get-started-adfs-w2k12.md#edit-the-multifactorauthenticationadfsadapterconfig-file)（使用 Azure 多重身份验证服务器与 AD FS 保护资源）。
 
@@ -119,30 +129,30 @@ Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项�
 ![用户门户设置](./media/multi-factor-authentication-get-started-portal/portalsettings.png)
 
 ### <a name="to-configure-the-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>在 Azure Multi-Factor Authentication 服务器中配置用户门户设置
-1. 在 Azure 多重身份验证服务器中，单击“用户门户”图标。 在“设置”选项卡上的“用户门户 URL”文本框中，输入用户门户的 URL。 此 URL 将插入发送给导入到 Azure 多重身份验证服务器的用户的电子邮件（如果已启用电子邮件功能）。
-2. 选择要在用户门户中使用的设置。 例如，如果允许用户控制其身份验证方法，请确保选中“允许用户选择方法”以及这些用户可以从中选择的方法。
+1. 在 Azure 多重身份验证服务器中，单击“用户门户”图标。 在“设置”选项卡上的“用户门户 URL”文本框中，输入用户门户的 URL。 如果已启用电子邮件功能，则会将此 URL 添加到电子邮件中，再将该电子邮件发送给导入到 Azure 多重身份验证服务器的用户。
+2. 选择要在用户门户中使用的设置。 例如，如果允许用户选择其身份验证方法，请确保选中“允许用户选择方法”以及这些用户可以从中选择的方法。
 3. 单击右上角的“帮助”链接，帮助了解显示的任何设置。
 
 <center>![设置](./media/multi-factor-authentication-get-started-portal/config.png)</center>
 
 
 ## <a name="administrators-tab"></a>“管理员”选项卡
-此选项只是让你添加具有管理权限的用户。  添加管理员时，可以精细调整他们可以获得的权限。 单击“添加”按钮，选择用户及其权限，然后单击“添加”即可。
+使用“管理员”选项卡可添加将获得管理权限的用户。  添加管理员时，可以精细调整他们可以获得的权限。 单击“添加”按钮，选择用户及其权限，然后单击“添加”即可。
 
 ![用户门户管理员](./media/multi-factor-authentication-get-started-portal/admin.png)
 
 ## <a name="security-questions"></a>安全提问
-如果选择了“使用安全提问进行回退”选项，可在此选项卡中指定用户必须回答的安全提问。  Azure 多重身份验证提供了可以使用的默认问题。 可以更改问题的顺序，或添加自己的问题。  添加自己的问题时，还可以指定用于显示这些问题的语言。
+如果选择了“使用安全提问进行回退”选项，则可使用“安全提问”选项卡指定用户必须回答的安全提问。  Azure 多重身份验证提供了可以使用的默认问题。 可以更改问题的顺序，或添加自己的问题。  添加自己的问题时，还可以指定用于显示这些问题的语言。
 
 ![用户门户安全提问](./media/multi-factor-authentication-get-started-portal/secquestion.png)
 
 ## <a name="saml"></a>SAML
-在此选项卡中可以配置用户门户，使用 SAML 接受来自标识提供者的声明。  可以指定超时会话、验证证书和注销重定向 URL。
+使用“SAML”选项卡可以配置用户门户，以便使用 SAML 接受来自标识提供者的声明。  可以指定超时会话、验证证书和注销重定向 URL。
 
 ![SAML](./media/multi-factor-authentication-get-started-portal/saml.png)
 
 ## <a name="trusted-ips"></a>受信任的 IP
-使用此选项卡可以指定单个 IP 地址或指定 IP 地址范围，当用户从其中一个地址登录时，就不需要完成双重验证。
+使用“受信任的 IP”选项卡可以指定单个 IP 地址或指定 IP 地址范围，当用户从其中一个地址登录时，就不需要完成双重验证。
 
 ![用户门户中受信任的 IP](./media/multi-factor-authentication-get-started-portal/trusted.png)
 
@@ -175,10 +185,5 @@ Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项�
 ![用户门户安全提问](./media/multi-factor-authentication-get-started-portal/secq.png)  
 
 现在，用户自我注册已完成，用户可登录到用户门户。  用户在以后可随时重新登录到用户门户，以更改其电话号码、PIN 码、身份验证方法和安全问题（如果其管理员允许）。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

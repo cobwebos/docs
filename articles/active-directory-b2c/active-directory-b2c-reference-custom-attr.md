@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
 ms.openlocfilehash: f7b21cc941f17d0815316dfe7013e9f97a95c223
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -54,10 +56,5 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置信息（属性
 ## <a name="notes"></a>说明
 * 除了注册策略，自定义属性还可用于登录策略和概况文件编辑策略。
 * 自定义属性具有一个已知的限制。 它只有在任何策略中第一次使用时才创建，而不是将其添加到“用户属性”列表时。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

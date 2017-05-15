@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c0a0959a5484111ee5426204e15434300cb6a438
-ms.lasthandoff: 12/08/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 66f4e43670ffe9c62e026eb1b56eea035a199d05
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -92,7 +93,7 @@ ms.lasthandoff: 12/08/2016
     FROM Step1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-此查询具有分组键，在这种情况下，相同的密钥需要由同一个查询实例进行处理。 我们可以使用与前面的查询相同的策略。 查询包含多个步骤。 是否每个步骤都包含 ** PartitionId** 的 **Partition By**？ 是的，因此我们没问题。 对于输出，我们需要如上文所述，将 **PartitionKey** 设置为 **PartitionId**，我们还可以看到它的分区数与输入的相同。 此拓扑是易并行。
+此查询具有分组键，在这种情况下，相同的密钥需要由同一个查询实例进行处理。 我们可以使用与前面的查询相同的策略。 查询包含多个步骤。 是否每个步骤都包含 **PartitionId** 的 Partition By？ 是的，因此我们没问题。 对于输出，我们需要如上文所述，将 **PartitionKey** 设置为 **PartitionId**，我们还可以看到它的分区数与输入的相同。 此拓扑是易并行。
 
 ## <a name="example-scenarios-that-are-not-embarrassingly-parallel"></a>非易并行的示例方案
 ### <a name="mismatched-partition-count"></a>分区计数不匹配
@@ -320,7 +321,7 @@ PowerBI 输出当前不支持分区。
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

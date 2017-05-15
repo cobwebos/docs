@@ -14,25 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
-ms.openlocfilehash: 36677be6bc5599f55f1f15bc145c59033ad20e0a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ca88b355416b4ae4785bc69244185a67756ca916
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
 # <a name="use-azure-data-lake-analytics-interactive-tutorials"></a>使用 Azure Data Lake Analytics 交互式教程
 Azure 门户为用户提供了学习 Data Lake Analytics 入门的互动式教程。 本文将介绍如何通过本教程学习来分析网站日志。
 
-> [!NOTE]
-> 如果想要通过使用 Visual Studio 完成同一个教程，请参阅 [使用 Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
-> 还有更多可添加到门户的交互式教程。
-> 
-> 
-
 其他相关教程，请参阅：
 
 * [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
-* [Get started with Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md)
+* [通过 Azure PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
 * [通过 .NET SDK 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-net-sdk.md)
 * [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md) 
 
@@ -87,10 +83,5 @@ Azure 门户为用户提供了学习 Data Lake Analytics 入门的互动式教�
 * [通过 Azure PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
 * [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 * [使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

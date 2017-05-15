@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2017
 ms.author: ryancraw
-translationtype: Human Translation
-ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
-ms.openlocfilehash: 3753846e955308a7607d92ed25648d75b9cc3a35
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 3a915f782eddaa91bcfcc3f2b2c32eee752c319c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -51,7 +52,7 @@ Azure 流分析可帮助快速开发和部署低成本分析解决方案，以�
    * **编码**：UTF8
    * **格式**：行分隔
 4. 单击“创建”按钮添加此源，并验证流分析是否可以成功连接到存储帐户。
-5. 在“查询”选项卡上，将当前查询替换为以下内容。 将 *[YOUR SERVICE BUS NAME]* 替换为步骤 3 中创建的输出名称。 
+5. 在“查询”选项卡上，将当前查询替换为以下内容。 将*[你的服务总线名称]*替换为步骤 3 中创建的输出名称。 
    
     ```    
    
@@ -188,7 +189,7 @@ Azure 流分析可帮助快速开发和部署低成本分析解决方案，以�
 
 如果你是 Microsoft Azure 的新用户，我们将邀请你通过注册一个 [Azure 免费试用帐户](https://azure.microsoft.com/pricing/free-trial/)，来试用它。 如果你不熟悉流分析，我们将邀请你[创建第一个流分析作业](stream-analytics-create-a-job.md)。
 
-如需任何帮助或有任何疑问，请在 [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) 或 [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics) 论坛中发布。 
+如需任何帮助或有任何疑问，请在 [MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics) 或 [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics) 论坛中发布。 
 
 也可以参阅以下资源：
 

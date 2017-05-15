@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 2b020004762125aad201cf7eb454da5cf73288ae
-ms.openlocfilehash: 7d509e9606c0a2f599f511c011ab775b2ea6f7b0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 55fc4e5c88568cca8a2842590dfd24e082139699
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -76,7 +78,7 @@ CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）�
        ![显示站点 URL 的速览部分][csurl]
      
        **或**
-   * 安装并配置 [Azure Powershell](/powershell/azureps-cmdlets-docs)，然后使用以下命令：
+   * 安装并配置 [Azure Powershell](/powershell/azure/overview)，然后使用以下命令：
      
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -97,7 +99,7 @@ CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）�
 > [!NOTE]
 > **www.contoso.com** 的访问者将不会看到真正的主机 (contoso.cloudapp.net)，因此，转发过程对最终用户不可见。
 > 
-> 上述示例仅适用于 **www** 子域的流量。 因为无法为 CNAME 记录使用通配符，所以必须为每个域/子域创建一个 CNAME。 如果希望将子域（例如 *.contoso.com）的流量定向到 cloudapp.net 地址，则可以在 DNS 设置中配置 **URL 重定向**或 **URL 转发*条目，或者创建一个 A 记录。
+> 上述示例仅适用于 **www** 子域的流量。 因为无法为 CNAME 记录使用通配符，所以必须为每个域/子域创建一个 CNAME。 如果希望将子域（例如 .*.contoso.com）的流量定向到 cloudapp.net 地址，则可以在 DNS 设置中配置“URL 重定向”或“URL 转发”条目，或者创建一条 A 记录。
 > 
 > 
 
@@ -111,7 +113,7 @@ CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）�
        ![显示 VIP 的速览部分][vip]
      
        **或**
-   * 安装并配置 [Azure Powershell](/powershell/azureps-cmdlets-docs)，然后使用以下命令：
+   * 安装并配置 [Azure Powershell](/powershell/azure/overview)，然后使用以下命令：
      
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
@@ -153,9 +155,4 @@ CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）�
 [Azure 门户]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

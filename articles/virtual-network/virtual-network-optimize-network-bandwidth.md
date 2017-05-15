@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2017
 ms.author: steveesp
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 50be31e179bf52e009596fbc68339dfb5a1aa1e4
 ms.openlocfilehash: d53b1cae9845be32bd053ef196203ea83df06b10
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/15/2017
 
 
@@ -100,7 +101,7 @@ sudo yum install microsoft-hyper-v
 
 若要获得优化功能，首先需更新到 2017 年 1 月以后的最新支持版本，该版本是：
 
-“发布者”：“RedHat”，“产品/服务”：“RHEL”，*“Sku”：“7.3”，“版本”：“7.3.20161104”
+“发布者”：“RedHat”，“产品/服务”：“RHEL”，“Sku”：“7.3”，“版本”：“7.3.20161104”
 
 更新完成后，安装最新 Linux Integration Services (LIS)。
 吞吐量优化功能在从 4.1.3 开始的 LIS 中。 输入以下命令下载并安装 LIS：

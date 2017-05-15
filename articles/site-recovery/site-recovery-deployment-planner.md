@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 431f73e1be45dec9aa0fe186cb22078f8d95588d
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 5c716069bdff2a23bf81b2d2d0793a8616cf9c83
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
-本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery 用户指南。
+本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。
 
 ## <a name="overview"></a>概述
 
@@ -36,7 +37,7 @@ Site Recovery Deployment Planner 公共预览版是一个命令行工具，目�
 
 **兼容性评估**
 
-* 根据磁盘数量、磁盘大小、IOPS 和变动量评估 VM 的合格性
+* 根据磁盘数量、磁盘大小、IOPS、变动量和启动类型 (EFI/BIOS) 评估 VM 的合格性
 * 增量复制所需的估计网络带宽
 
 **网络带宽需求与 RPO 评估**
@@ -90,9 +91,9 @@ Site Recovery Deployment Planner 公共预览版是一个命令行工具，目�
 
     示例：  
     将 .zip 文件复制到 E:\ 驱动器并将它解压缩。
-   E:\ASR Deployment Planner-Preview_v1.1.zip
+   E:\ASR Deployment Planner-Preview_v1.2.zip
 
-    E:\ASR Deployment Planner-Preview_v1.1\ ASR Deployment Planner-Preview_v1.1\ ASRDeploymentPlanner.exe
+    E:\ASR Deployment Planner-Preview_v1.2\ ASR Deployment Planner-Preview_v1.2\ ASRDeploymentPlanner.exe
 
 ## <a name="capabilities"></a>功能
 可使用以下三种模式之一运行该命令行工具 (ASRDeploymentPlanner.exe)：
@@ -145,6 +146,8 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 | -Password | （可选）用于连接到 vCenter 服务器/vSphere ESXi 主机的密码。 如果现在不指定密码，则在执行命令时，系统会提示你指定密码。|
 | -StorageAccountName | （可选）存储帐户名称，用于确定在将数据从本地复制到 Azure 时可实现的吞吐量。 该工具会将测试数据上载到此存储帐户来计算吞吐量。|
 | -StorageAccountKey | （可选）用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”> <*存储帐户名称*> >“设置”>“访问密钥”> 密钥 1（或经典存储帐户的主访问密钥）。 |
+| -Environment | （可选）这是你的目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府版或 Azure 中国云时，请使用此参数。 |
+
 
 我们建议你在分析 VM 时，至少分析 15 到 30 天。 在分析过程中，ASRDeploymentPlanner.exe 将保持运行。 该工具将取以天为单位的分析时间输入。 如果想要分析几小时或几分钟以便快速测试该工具，则需在公共预览版中将时间转换为相应的天数。 例如，若要分析 30 分钟，则输入必须为 30/(60*24) = 0.021 天。 允许的最短分析时间为 30 分钟。
 
@@ -202,6 +205,10 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_Pro
 | -StartDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的开始日期和时间。 “StartDate”必须与“EndDate”一起指定。 如果指定 StartDate，将会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
 | -EndDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的结束日期和时间。 “EndDate”必须与“StartDate”一起指定。 如果指定 EndDate，将会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
 | -GrowthFactor | （可选）增长系数，以百分比表示。 默认值为 30%。 |
+| -UseManagedDisks | （可选）UseManagedDisks - 是/否。 默认值为“是”。 可以放置到单个存储帐户的虚拟机数的计算取决于是否为故障转移/测试性故障转移选择了托管磁盘。 |
+
+对于单个存储帐户来说，放置数在计算时要考虑到：对虚拟机进行的故障转移/测试性故障转移是在托管磁盘而不是非托管磁盘上完成的。 |
+
 
 #### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>示例 1：当分析数据位于本地驱动器上时，使用默认值生成报告
 ```
@@ -281,11 +288,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com 
 
 |参数名称 | 说明 |
 |-|-|
-| -operation | GetThroughput |
+| -Operation | GetThroughput |
 | -Directory | （可选）UNC 或本地目录路径，其中存储了分析数据（在分析期间生成的文件）。 需要使用此数据来生成报告。 如果未指定目录名称，请使用“ProfiledData”目录。 |
 | -StorageAccountName | 存储帐户名称，用于确定在将数据从本地复制到 Azure 时消耗的带宽。 该工具会将测试数据上载到此存储帐户来确定消耗的带宽。 |
 | -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”> <存储帐户名称> >“设置”>“访问密钥”> 密钥 1（或经典存储帐户的主访问密钥）。 |
 | -VMListFile | 一个文件，其中包含一系列可以通过分析来计算所消耗带宽的 VM。 文件路径可以是绝对或相对路径。 此文件应该每行包含一个 VM 名称/IP 地址。 此文件中指定的 VM 名称应与 vCenter 服务器/vSphere ESXi 主机上的 VM 名称相同。<br>例如，VMList.txt 文件包含以下 VM：<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
+| -Environment | （可选）这是你的目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府版或 Azure 中国云时，请使用此参数。 |
 
 该工具将在指定的目录中创建多个 64 MB 的 asrvhdfile<#>.vhd 文件（其中“#”是文件编号）。 该工具会将这些文件上载到存储帐户来确定吞吐量。 测出吞吐量后，该工具会从存储帐户和本地服务器中删除所有这些文件。 如果该工具在计算吞吐量时因故被终止，它不会从存储或本地服务器中删除这些文件。 你需要手动删除这些文件。
 
@@ -477,6 +485,10 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 **NIC**：VM 上的 NIC 数。
 
+**启动类型**：即 VM 的启动类型。 它可以是 BIOS 或 EFI。 目前，Azure Site Recovery 仅支持 BIOS 启动类型。 所有 EFI 启动类型的虚拟机都列在“不兼容的 VM”工作表中。
+
+**OS 类型**：VM 的 OS 类型。 可以是 Windows、Linux 或其他。
+
 ## <a name="incompatible-vms"></a>不兼容的 VM
 
 ![包含不兼容 VM 的 Excel 电子表格](./media/site-recovery-deployment-planner/incompatible-vms.png)
@@ -486,6 +498,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 **VM 兼容性**：指示给定的 VM 为何无法与 Site Recovery 兼容使用。 将会针对 VM 的每个不兼容磁盘说明原因，而根据已发布的[存储限制](https://aka.ms/azure-storage-scalbility-performance)，这些原因不外乎：
 
 * 磁盘大小超出 1023 GB。 Azure 存储目前不支持大于 1 TB 的磁盘大小。
+* 启动类型是 EFI。 Azure Site Recovery 目前仅支持 BIOS 启动类型的虚拟机。
 
 * VM 总大小（复制 + TFO）超出系统支持的存储帐户大小限制 (35 TB)。 当 VM 中的单个磁盘的性能特征超出系统支持的适用于标准存储的 Azure 或 Site Recovery 最大限制时，通常会表现出这种不兼容性。 如果出现这种情况，则必须将 VM 置于高级存储区域。 但是，高级存储帐户支持的最大大小为 35 TB，并且无法跨多个存储帐户保护单个需要保护的 VM。 另请注意，在受保护 VM 上执行测试性故障转移时，该故障转移运行时所使用的存储帐户与进行复制时所使用的存储帐户相同。 在这种情况下，可以在设置时将磁盘大小加倍，既可进行复制，又可成功地进行测试性故障转移。
 * 源 IOPS 超出了每个磁盘支持的存储 IOPS 限制，即 5000。
@@ -508,6 +521,10 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 **内存(MB)**：VM 上的 RAM 量。
 
 **NIC**：VM 上的 NIC 数。
+
+**启动类型**：即 VM 的启动类型。 它可以是 BIOS 或 EFI。 目前，Azure Site Recovery 仅支持 BIOS 启动类型。 所有 EFI 启动类型的虚拟机都列在“不兼容的 VM”工作表中。
+
+**OS 类型**：VM 的 OS 类型。 可以是 Windows、Linux 或其他。
 
 
 ## <a name="site-recovery-limits"></a>站点恢复限制
@@ -546,6 +563,27 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 
 ## <a name="version-history"></a>版本历史记录
+
+### <a name="13"></a>1.3
+更新时间：2017 年 5 月 9 日
+
+添加了以下新功能：
+
+* 在报告生成时添加了托管磁盘支持。 可以放置到单个存储帐户的虚拟机数的计算取决于是否为故障转移/测试性故障转移选择了托管磁盘。        
+
+
+### <a name="12"></a>1.2
+更新时间：2017 年 4 月 7 日
+
+添加了以下修补程序：
+
+* 添加了针对每个虚拟机的启动类型（BIOS 或 EFI）检查，用于确定虚拟机是否兼容相应的保护措施。
+* 在“兼容的 VM”和“不兼容的 VM”工作表中添加了针对每个虚拟机的 OS 类型信息。
+* Microsoft Azure 美国政府版和中国区域版现在支持 GetThroughput 操作。
+* 添加了针对 vCenter 和 ESXi Server 的更多先决条件检查。
+* 将区域设置设置为非英语语言时，会生成不正确的报告。
+
+
 ### <a name="11"></a>1.1
 更新时间：2017 年 3 月 9 日
 

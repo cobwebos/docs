@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/14/2017
 ms.author: raynew
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9ab51cb8e11df43ba2157b11e25a1f29b19e4da9
 ms.openlocfilehash: e36f19e9c429c0e4b42e96b28b1ba995bd1bf167
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/15/2017
 
 
@@ -51,7 +52,7 @@ ms.lasthandoff: 02/15/2017
 可自定义和扩展恢复计划：
 
 - **添加新组** - 向默认组添加其他恢复计划组（最多 7 个），然后向这些组添加更多计算机或复制组。 组将按添加顺序进行编号。 虚拟机或复制组只能包含在一个恢复计划组中。
-- **添加手动操作**- 可以添加要在恢复计划组之前或之后运行的手动操作。 恢复计划运行时，会在手动操作的插入点停止。 将显示对话框，提示你指定该手动操作已完成。
+- **添加手动操作** - 可以添加要在恢复计划组之前或之后运行的手动操作。 恢复计划运行时，会在手动操作的插入点停止。 将显示对话框，提示你指定该手动操作已完成。
 - **添加脚本** - 可添加在恢复计划组前或后运行的脚本。 添加脚本时，将为该组添加一组新的操作。 例如，将使用以下名称创建组 1 的一组预先步骤：“组 1：预先步骤”。 该集中将列出所有预先步骤。 仅当已部署 VMM 服务器时，才能在主站点上添加脚本。
 - **添加 Azure Runbook** - 可通过 Azure Runbook 扩展恢复计划。 例如，自动执行任务或创建单步恢复。 [了解详细信息](site-recovery-runbook-automation.md)。
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 02/15/2017
 * 确保 VMM 部署中至少有一个库服务器。 VMM 服务器的库共享路径默认位于本地的 VMM 服务器，其文件夹名称为 MSCVMMLibrary。
     * 如果库共享路径在远程位置（或在本地，但不与 MSCVMMLibrary 共享），请按如下所示配置共享（例如使用 \\\libserver2.contoso.com\share\）：
       * 打开注册表编辑器并导航到 **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**。
-      * 编辑值 **ScriptLibraryPath**，将其设置为 \\libserver2.contoso.com\share\.。指定完整的 FQDN。 提供对共享位置的权限。
+      * 编辑值 **ScriptLibraryPath**，将其设置为 \\libserver2.contoso.com\share\. 指定完整的 FQDN。 提供对共享位置的权限。
       * 确保测试脚本时所用的用户帐户具有与 VMM 服务帐户相同的权限。 这将检查独立测试的脚本是否按其在恢复计划中的相同方式进行运行。 在 VMM 服务器上，将执行策略设置为绕过，如下所示：
         * 使用提升的权限打开 64 位 Windows PowerShell 控制台。
         * 键入：**Set-executionpolicy bypass**。 [了解详细信息](https://technet.microsoft.com/library/ee176961.aspx)。

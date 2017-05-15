@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
 ms.openlocfilehash: f3154968710384e3f6186b277c4cae33b25c77d2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -47,10 +49,5 @@ ms.openlocfilehash: f3154968710384e3f6186b277c4cae33b25c77d2
 5. 单击“标识提供者类型”，选择“Amazon”，然后单击“确定”。
 6. 单击“设置此标识提供者”，并输入之前创建的 Amazon 应用程序的客户端 ID 和客户端密码。
 7. 单击“确定”，然后单击“创建”以保存 Amazon 配置。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

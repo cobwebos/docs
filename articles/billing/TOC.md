@@ -33,6 +33,7 @@
 
 # 参考
 ## [API 概述](billing-usage-rate-card-overview.md)
+## [Enterprise 报告 API 概述](billing-enterprise-api.md)
 ## [发票 REST](/rest/api/billing)
 ## [使用情况和 RateCard REST](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
 ## [合作伙伴解决方案：Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)

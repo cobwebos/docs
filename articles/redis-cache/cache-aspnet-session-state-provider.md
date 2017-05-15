@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 03/22/2017
+ms.date: 05/01/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 56a55bc10c9cf16751c713da302dcd59362ab80f
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 0f3683939ac9646565a0669e19b4c82811d621fc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -83,7 +84,7 @@ Redis 会话状态提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
 * **throwOnError** - 如果希望在失败时引发异常，则为 true；如果希望操作以静默方式失败，则为 false。 可以通过检查静态 Microsoft.Web.Redis.RedisSessionStateProvider.LastException 属性来检查失败。 默认值为 true。
 * **retryTimeoutInMilliseconds** - 将在此时间间隔内重试失败的操作，以毫秒为单位指定。 首次重试在 20 毫秒后进行，然后重试每隔一秒进行，直到 retryTimeoutInMilliseconds 间隔到期。 在此时间间隔过后，将立即重试操作最后一次。 如果操作仍失败，则会将异常返回给调用方，具体取决于 throwOnError 设置。 默认值为 0，这意味着不重试。
 * **databaseId** - 指定要用于缓存输出数据的数据库。 如果未指定，则使用默认值 0。
-* **applicationName** - 密钥存储在 redis 中作为 `{<Application Name>_<Session ID>}_Data`。 此类命名架构使多个应用程序可以共享同一密钥。 此参数是可选的，如果未提供它，则使用默认值。
+* **applicationName** - 密钥存储在 redis 中作为 `{<Application Name>_<Session ID>}_Data`。 此命名架构使多个应用程序可以共享同一 Redis 实例。 此参数是可选的，如果未提供它，则使用默认值。
 * **connectionTimeoutInMilliseconds** - 此设置可替代 StackExchange.Redis 客户端中的 connectTimeout 设置。 如果未指定，则使用默认 connectTimeout 设置 5000。 有关详细信息，请参阅 [StackExchange.Redis 配置模型](http://go.microsoft.com/fwlink/?LinkId=398705)。
 * **operationTimeoutInMilliseconds** - 此设置可替代 StackExchange.Redis 客户端中的 syncTimeout 设置。 如果未指定，则使用默认 syncTimeout 设置 1000。 有关详细信息，请参阅 [StackExchange.Redis 配置模型](http://go.microsoft.com/fwlink/?LinkId=398705)。
 

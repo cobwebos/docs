@@ -3,8 +3,8 @@ title: "Azure Active Directory B2C：使用图形 API | Microsoft Docs"
 description: "如何通过使用应用程序标识自动执行该过程为 B2C 租户调用图形 API。"
 services: active-directory-b2c
 documentationcenter: .net
-author: dstrockis
-manager: mbaldwin
+author: gsacavdm
+manager: krassk
 editor: bryanla
 ms.assetid: f9904516-d9f7-43b1-ae4f-e4d9eb1c67a0
 ms.service: active-directory-b2c
@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: a932b617d57184ef714bf18f1e1e23599db52487
-ms.lasthandoff: 02/06/2017
+ms.date: 03/22/2017
+ms.author: gsacavdm
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 27a331562d659212dcd1b775ac06e1e1e4686517
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -34,63 +35,55 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 ## <a name="get-an-azure-ad-b2c-tenant"></a>获取 Azure AD B2C 租户
 租户中需要有一个 Azure AD B2C 租户和一个全局管理员帐户，才可创建应用程序或用户之前，或与 Azure AD 进行交互之前。 如果尚没有租户，请参阅 [Azure AD B2C 入门](active-directory-b2c-get-started.md)。
 
-## <a name="register-a-service-application-in-your-tenant"></a>在租户中注册服务应用程序
-拥有 B2C 租户后，需要使用 Azure AD PowerShell cmdlet 创建服务应用程序。
-首先，下载并安装 [Microsoft Online Services 登录助手](http://go.microsoft.com/fwlink/?LinkID=286152)。 然后下载并安装[用于 Windows PowerShell 的 64 位 Azure Active Directory 模块](http://go.microsoft.com/fwlink/p/?linkid=236297)。
+## <a name="register-your-application-in-your-tenant"></a>在租户中注册应用程序
+拥有 B2C 租户后，需要通过 [Azure 门户](https://portal.azure.com)注册你的应用程序。
 
 > [!IMPORTANT]
-> 若要搭配使用 B2C 租户与图形 API，需要使用 PowerShell 注册一个专用应用程序。 请遵循本文说明来执行此操作。 不能重复使用在 Azure 门户中注册的现有 B2C 应用程序。
-> 
-> 
+> 若要将 Graph API 用于 B2C 租户，需要使用 Azure 门户中的通用“应用注册”边栏选项卡（**而非** Azure AD B2C 的“应用程序”边栏选项卡）注册专用应用程序。 不能重复使用在 Azure AD B2C 的“应用程序”边栏选项卡中注册的现有 B2C 应用程序。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 通过在页面右上角选择帐户，选择你的 Azure AD B2C 租户。
+3. 在左侧导航窗格中，选择“更多服务”，单击“应用注册”，然后单击“添加”。
+4. 根据提示创建新的应用程序。 
+    1. 选择“Web 应用/API”作为应用程序类型。    
+    2. 提供**任何重定向 URI**（例如 https://B2CGraphAPI），因为它与此示例无关。  
+5. 应用程序现在将显示在应用程序列表中，单击它以获取**应用程序 ID**（也称为客户端 ID）。 复制它，因为将在后面的部分用到它。
+6. 在“设置”边栏选项卡中，单击“密钥”并添加新密钥（也称为客户端密码）。 也复制它以便在后面部分中使用。
+
+## <a name="configure-create-read-and-update-permissions-for-your-application"></a>为应用程序配置创建、读取和更新权限
+现在，需要配置应用程序，以获取所有所需的创建、读取、更新和删除用户的权限。
+
+1. 继续在 Azure 门户的“应用注册”边栏选项卡中，选择应用程序。
+2. 在“设置”边栏选项卡中，单击“所需的权限”。
+3. 在“所需的权限”边栏选项卡中，单击 **Windows Azure Active Directory**。
+4. 在“启用访问权限”边栏选项卡中，从“应用程序权限”中选择“读取和写入目录数据”权限，然后单击“保存”。
+5. 最后，返回“所需的权限”边栏选项卡，单击“授予权限”按钮。
+
+现在就有了一个有权限从你的 B2C 租户创建、读取和更新用户的应用程序。
+
+## <a name="configure-delete-permissions-for-your-application"></a>为应用程序配置删除权限
+目前，“读取和写入目录数据”权限**不**包括任何删除权限，如删除用户。 如果想要使应用程序能够删除用户，就需要执行涉及 PowerShell 的这些额外步骤，否则，可以跳到下一部分。
+
+首先，下载并安装 [Microsoft Online Services 登录助手](http://go.microsoft.com/fwlink/?LinkID=286152)。 然后下载并安装[用于 Windows PowerShell 的 64 位 Azure Active Directory 模块](http://go.microsoft.com/fwlink/p/?linkid=236297)。
 
 安装 PowerShell 模块后，打开 PowerShell 并连接到 B2C 租户。 运行 `Get-Credential` 后，系统将提示输入用户名和密码，输入 B2C 租户管理员帐户的用户名和密码。
 
-```
-> $msolcred = Get-Credential
-> Connect-MsolService -credential $msolcred
-```
+> [!IMPORTANT]
+> 需要使用 B2C 租户**本地**的 B2C 租户管理员帐户。 这些帐户如下所示：myusername@myb2ctenant.onmicrosoft.com。
 
-在创建应用程序之前，需要生成新的**客户端密码**。  应用程序将使用客户端密码向 Azure AD 验证并获取访问令牌。 可以在 PowerShell 中生成有效的密码：
-
-```
-> $bytes = New-Object Byte[] 32
-> $rand = [System.Security.Cryptography.RandomNumberGenerator]::Create()
-> $rand.GetBytes($bytes)
-> $rand.Dispose()
-> $newClientSecret = [System.Convert]::ToBase64String($bytes)
-> $newClientSecret
+```powershell
+Connect-MsolService
 ```
 
-最后一个命令应该会打印新的客户端密码。 将其复制到安全的地方。 稍后需要用到此信息。 现在，可以通过提供新的客户端密码作为应用凭据来创建应用程序：
+现在我们将在以下脚本中使用**应用程序 ID** 为应用程序分配用户帐户管理员角色，以允许应用程序删除用户。 这些角色具有已知的标识符，因此你只需在下面的脚本中输入**应用程序 ID**。
 
-```
-> New-MsolServicePrincipal -DisplayName "My New B2C Graph API App" -Type password -Value $newClientSecret
-
-DisplayName           : My New B2C Graph API App
-ServicePrincipalNames : {dd02c40f-1325-46c2-a118-4659db8a55d5}
-ObjectId              : e2bde258-6691-410b-879c-b1f88d9ef664
-AppPrincipalId        : dd02c40f-1325-46c2-a118-4659db8a55d5
-TrustedForDelegation  : False
-AccountEnabled        : True
-Addresses             : {}
-KeyType               : Password
-KeyId                 : a261e39d-953e-4d6a-8d70-1f915e054ef9
-StartDate             : 9/2/2015 1:33:09 AM
-EndDate               : 9/2/2016 1:33:09 AM
-Usage                 : Verify
+```powershell
+$applicationId = "<YOUR_APPLICATION_ID>"
+$sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId
+Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal
 ```
 
-如果成功创建应用程序，应该会打印出如上所示的应用程序属性。 你将需要 `ObjectId` 和 `AppPrincipalId`，因此也要复制这些值。
-
-在 B2C 租户中创建应用程序后，需要为其分配执行用户 CRUD 操作所需的权限。 为应用程序分配三个角色：目录读取器（用于读取用户）、目录编写器（用于创建和更新用户）和用户帐户管理员（用于删除用户）。 这些角色具有已知的标识符，因此可以将 `-RoleMemberObjectId` 参数替换为上述 `ObjectId`，并运行以下命令。 若要查看所有目录角色的列表，请尝试运行 `Get-MsolRole`。
-
-```
-> Add-MsolRoleMember -RoleObjectId 88d8e3e3-8f55-4a1e-953a-9b9898b8876b -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
-> Add-MsolRoleMember -RoleObjectId 9360feb5-f418-4baa-8175-e2a00bac4301 -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
-> Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
-```
-
-现在就有了一个有权限从你的 B2C 租户创建、读取、更新和删除用户的应用程序。
+现在，你的应用程序也具有从 B2C 租户中删除用户的权限。
 
 ## <a name="download-configure-and-build-the-sample-code"></a>下载、配置和构建示例代码
 首先，下载示例代码并运行。 下面将详细地查看该代码。  可以[将示例代码下载为 .zip 文件](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip)。 也可以将其克隆到所选择的目录中：
@@ -103,9 +96,9 @@ git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
 
 ```
 <appSettings>
-    <add key="b2c:Tenant" value="contosob2c.onmicrosoft.com" />
-    <add key="b2c:ClientId" value="{The AppPrincipalId from above}" />
-    <add key="b2c:ClientSecret" value="{The client secret you generated above}" />
+    <add key="b2c:Tenant" value="{Your Tenant Name}" />
+    <add key="b2c:ClientId" value="{The ApplicationID from above}" />
+    <add key="b2c:ClientSecret" value="{The Key from above}" />
 </appSettings>
 ```
 
@@ -356,7 +349,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 通过使用 `B2CGraphClient`，可以有一个能以编程方式管理 B2C 租户用户的服务应用程序。 `B2CGraphClient` 使用自己的应用程序标识，向 Azure AD 图形 API 进行验证。 它还会通过使用客户端密码获取令牌。 将此功能并入应用程序时，请记住 B2C 应用的几个要点：
 
 * 需要将租户中的适当权限授予应用程序。
-* 现在，需要使用 ADAL v2 获取访问令牌。 （也可以直接发送协议消息，而不使用库。）
+* 现在，需要使用 ADAL（而非 MSAL）获取访问令牌。 （也可以直接发送协议消息，而不使用库。）
 * 调用图形 API 时，请使用 `api-version=1.6`。
 * 创建和更新使用者用户时，需要几个属性，如上所述。
 

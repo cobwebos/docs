@@ -96,7 +96,7 @@ ms.lasthandoff: 02/03/2017
 
     ![部署按钮](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
-   成功部署链接服务后，“草稿&1;”窗口应会消失，左侧树视图中会显示“AzureStorageLinkedService”。
+   成功部署链接服务后，“草稿 1”窗口应会消失，左侧树视图中会显示“AzureStorageLinkedService”。
 
     ![菜单中的 Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)    
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 02/03/2017
 1. 在“数据工厂编辑器”中，单击“...更多”，单击“新建计算”，然后选择“按需 HDInsight 群集”。
 
     ![新建计算](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
-2. 将以下代码片段复制并粘贴到“草稿&1;”窗口。 该 JSON 代码片段描述用于创建按需 HDInsight 群集的属性。
+2. 将以下代码片段复制并粘贴到“草稿 1”窗口。 该 JSON 代码片段描述用于创建按需 HDInsight 群集的属性。
 
     ```JSON
     {
@@ -155,7 +155,7 @@ ms.lasthandoff: 02/03/2017
 1. 在“数据工厂编辑器”中，单击“...更多”（在命令栏上），单击“新建数据集”，然后选择“Azure Blob 存储”。
 
     ![新建数据集](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
-2. 将以下代码片段复制并粘贴到“草稿&1;”窗口。 在 JSON 代码片段中，创建名为 **AzureBlobInput** 的数据集，表示管道中活动的输入数据。 此外，指定将输入数据放在名为 **adfgetstarted** 的 Blob 容器及名为 **inputdata** 的文件夹中
+2. 将以下代码片段复制并粘贴到“草稿 1”窗口。 在 JSON 代码片段中，创建名为 **AzureBlobInput** 的数据集，表示管道中活动的输入数据。 此外，指定将输入数据放在名为 **adfgetstarted** 的 Blob 容器及名为 **inputdata** 的文件夹中
 
     ```JSON
     {
@@ -197,7 +197,7 @@ ms.lasthandoff: 02/03/2017
 现在，创建输出数据集来表示 Azure Blob 存储中存储的输出数据。
 
 1. 在“数据工厂编辑器”中，单击“...更多”（在命令栏上），单击“新建数据集”，然后选择“Azure Blob 存储”。  
-2. 将以下代码片段复制并粘贴到“草稿&1;”窗口。 在 JSON 代码片段中，创建名为 **AzureBlobOutput**的数据集，指定 Hive 脚本生成的数据结构。 此外，指定将结果存储在名为 **adfgetstarted** 的 Blob 容器及名为 **partitioneddata** 的文件夹中。 **availability** 节指定每月生成输出数据集一次。
+2. 将以下代码片段复制并粘贴到“草稿 1”窗口。 在 JSON 代码片段中，创建名为 **AzureBlobOutput**的数据集，指定 Hive 脚本生成的数据结构。 此外，指定将结果存储在名为 **adfgetstarted** 的 Blob 容器及名为 **partitioneddata** 的文件夹中。 **availability** 节指定每月生成输出数据集一次。
 
     ```JSON
     {
@@ -231,7 +231,7 @@ ms.lasthandoff: 02/03/2017
 1. 在“数据工厂编辑器”中，单击**省略号** (…)（更多命令），然后单击“新建管道”。
 
     ![新建管道按钮](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
-2. 将以下代码片段复制并粘贴到“草稿&1;”窗口。
+2. 将以下代码片段复制并粘贴到“草稿 1”窗口。
 
    > [!IMPORTANT]
    > 在 JSON 中，将 **storageaccountname** 替换为存储帐户名。

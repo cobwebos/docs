@@ -14,16 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2017
 ms.author: subramar
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 5faf7dc0b544f6fe2f83565cc368e218c6df35af
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 00c1f10f7df865344233143ce9cdf546e64acca0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>Linux 上的 Service Fabric（预览版）与 Windows 上的 Service Fabric（正式版）之间的差异
 
-由于 Linux 上的 Service Fabric 是预览版，因此某些在 Windows 上受支持的功能，在 Linux 上不受支持。 最终，当 Linux 上的 Service Fabric 公开发布时，这些功能集会一致。
+由于 Linux 上的 Service Fabric 是预览版，因此某些在 Windows 上受支持的功能，在 Linux 上尚不受支持。 最终，当 Linux 上的 Service Fabric 公开发布时，这些功能集会一致。
 
 * Linux 不支持 Reliable Collections（和 Reliable Stateful Services）。
 * ReverseProxy 在 Linux 上不可用。
@@ -38,7 +39,7 @@ ms.lasthandoff: 03/29/2017
 >[!NOTE]
 >即使在 Windows 上，也不支持在生产群集中进行控制台重定向。
 
-在 Windows 上使用 VisualStudio、Powershell、VSTS 和 ETW 以及在 Linux 上使用 Yeoman、Eclipse、Jenkins 和 LTTng 时，开发工具是不同的。
+Windows 和 Linux 的开发工具也不相同。 VisualStudio、Powershell、VSTS 和 ETW 用于 Windows，Yeoman、Eclipse、Jenkins 和 LTTng 用于 Linux。
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>不能对 Linux Service Fabric 群集使用的 Powershell cmdlet
 

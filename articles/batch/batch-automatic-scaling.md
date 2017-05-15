@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: multiple
-ms.date: 04/03/2017
+ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 0563f6c3aa4508ef2acac6b17dc85ecbf11bb154
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 85a2fac77cf5beae6debad044df169301d43f4ca
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -34,8 +35,8 @@ ms.lasthandoff: 04/07/2017
 
 > [!IMPORTANT]
 > 每个 Azure Batch 帐户都受限于可以用于处理的最大核心数（以及由此确定的计算节点数）。 Batch 服务只创建最多达到该核心数限制的新节点。 Batch 服务可能达不到自动缩放公式所指定的目标计算节点数。 请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)了解有关查看和提高帐户配额的信息。
-> 
-> 
+>
+>
 
 ## <a name="automatic-scaling-formulas"></a>自动缩放公式
 自动缩放公式是一个你定义的包含一个或多个语句的字符串值。 自动缩放公式会分配给池的 [autoScaleFormula][rest_autoscaleformula] 元素 (Batch REST) 或 [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] 属性 (Batch .NET)。 Batch 服务使用你的公式来确定池中可供下一个处理间隔使用的目标计算节点数。 公式是一个字符串，其大小不能超过 8 KB，最多可以包含 100 个以分号分隔的语句，可以包括换行符和注释。
@@ -107,11 +108,12 @@ $TargetDedicated=min(maxNumberofVMs, pendingTaskSamples);
 | $SucceededTasks |成功完成的任务数。 |
 | $FailedTasks |失败的任务数。 |
 | $CurrentDedicated |当前的专用计算节点数。 |
+| $PreemptedNodeCount | 池中处于预占状态的节点数。 |
 
 > [!TIP]
 > 上面所示的服务定义的只读变量是一些*对象*，它们提供了各种方法来访问与其相关的数据。 有关详细信息，请参阅下面的[获取样本数据](#getsampledata)。
-> 
-> 
+>
+>
 
 ## <a name="types"></a>类型
 公式支持以下**类型**。
@@ -121,7 +123,7 @@ $TargetDedicated=min(maxNumberofVMs, pendingTaskSamples);
 * doubleVecList
 * 字符串
 * timestamp--timestamp 是包含以下成员的复合结构：
-  
+
   * year
   * month (1-12)
   * day (1-31)
@@ -130,7 +132,7 @@ $TargetDedicated=min(maxNumberofVMs, pendingTaskSamples);
   * minute (00-59)
   * second (00-59)
 * timeinterval
-  
+
   * TimeInterval_Zero
   * TimeInterval_100ns
   * TimeInterval_Microsecond
@@ -253,8 +255,8 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 
 > [!IMPORTANT]
 > **强烈建议****不要仅依赖自动缩放公式中的 `GetSample(1)`**。 这是因为，`GetSample(1)` 基本上只是向 Batch 服务表明：“不论多久以前检索最后一个样本，请将它提供给我。” 由于它只是单个样本，而且可能是较旧的样本，因此可能无法代表最近任务或资源状态的全貌。 如果使用 `GetSample(1)`，请确保它是更大语句的一部分，而不是公式所依赖的唯一数据点。
-> 
-> 
+>
+>
 
 ## <a name="metrics"></a>度量值
 在定义公式时，可以同时使用**资源**和**任务**度量值。 可根据获取和求值的度量值数据对池中专用节点的目标数目进行调整。 有关每个指标的详细信息，请参见上面的[变量](#variables)部分。
@@ -367,12 +369,12 @@ pool.AutoScaleEvaluationInterval = TimeSpan.FromMinutes(30);
 pool.Commit();
 ```
 
-除了 Batch REST API 和 .NET SDK 之外，还可通过任何其他 [Batch SDK](batch-apis-tools.md#batch-development-apis)、[Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md) 和 [ Batch CLI ](batch-cli-get-started.md) 使用自动缩放。
+除了 Batch REST API 和 .NET SDK 之外，还可通过任何其他 [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md) 和 [ Batch CLI ](batch-cli-get-started.md) 使用自动缩放。
 
 > [!IMPORTANT]
 > 创建启用了自动缩放的池时，**请勿**指定 `targetDedicated` 参数。 另请注意，如果要手动调整启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePool][net_poolops_resizepool] 来调整），则必须先**禁用**该池的自动缩放功能，然后再调整池的大小。
-> 
-> 
+>
+>
 
 ### <a name="automatic-scaling-interval"></a>自动缩放间隔
 默认情况下，Batch 服务根据其自动缩放公式每隔 **15 分钟**调整池大小。 但是，可使用以下池属性配置此间隔：
@@ -384,8 +386,8 @@ pool.Commit();
 
 > [!NOTE]
 > 自动缩放目前不能以低于一分钟的时间响应更改，而只能在你运行工作负荷时逐步调整池大小。
-> 
-> 
+>
+>
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>启用现有池的自动缩放
 如果已通过使用 targetDedicated  参数创建了具有固定数量的计算节点的池，仍可在池上启用自动缩放。 每个 Batch SDK 都提供了“启用自动缩放”操作，例如：
@@ -397,14 +399,14 @@ pool.Commit();
 
 * 发出“启用自动缩放”请求时，如果池中的自动缩放**已禁用**，则*必须*在发出请求时指定有效的自动缩放公式。 可选择指定自动缩放评估时间间隔。 如果不指定时间间隔，则使用默认值 15 分钟。
 * 如果池中的自动缩放目前**已启用**，则可指定自动缩放公式和/或评估时间间隔。 不能省略这两个属性。
-  
+
   * 如果指定新的自动缩放评估时间间隔，将停止现有评估计划并开始新的计划。 新计划的开始时间是发出“启用自动缩放”请求的时间。
   * 如果省略自动缩放公式或评估时间间隔，则 Batch 服务将继续使用该设置的当前值。
 
 > [!NOTE]
 > 如果某个值是在创建池时为 targetDedicated 参数指定的，则会在评估自动缩放公式时忽略该值。
-> 
-> 
+>
+>
 
 此 C# 代码片段使用 [Batch.NET][net_api] 库启用现有池的自动缩放：
 
@@ -443,10 +445,10 @@ myBatchClient.PoolOperations.EnableAutoScale(
 若要评估自动缩放公式，必须先通过**有效的公式**对池**启用自动缩放**。 如果要在尚未启用自动缩放的池上测试公式，可以在首次启用自动缩放时使用单行公式 `$TargetDedicated = 0`。 然后使用以下方法之一来评估要测试的公式：
 
 * [BatchClient.PoolOperations.EvaluateAutoScale](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.evaluateautoscale.aspx) 或 [EvaluateAutoScaleAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.evaluateautoscaleasync.aspx)
-  
+
     这些 Batch.NET 方法需要现有池的 ID 和包含要评估的自动缩放公式的字符串。 评估结果包含在返回的 [AutoScaleEvaluation](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscaleevaluation.aspx) 实例中。
 * [评估自动缩放公式](https://msdn.microsoft.com/library/azure/dn820183.aspx)
-  
+
     在此 REST API 请求中，在 URI 中指定池 ID，并在请求正文的 autoScaleFormula 元素中指定自动缩放公式。 操作的响应包含任何可能与该公式相关的错误信息。
 
 在此 [Batch .NET][net_api] 代码片段中，先对公式进行评估，然后将其应用到 [CloudPool][net_cloudpool]。 如果池未启用自动缩放，先启用自动缩放。

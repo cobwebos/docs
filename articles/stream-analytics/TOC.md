@@ -32,23 +32,33 @@
 
 ## 管理
 ### [作业可靠性](stream-analytics-job-reliability.md)
-### [监视作业](stream-analytics-monitoring.md)
-### [诊断日志](stream-analytics-job-diagnostic-logs.md)
 ### [以编程方式监视作业](stream-analytics-monitor-jobs.md)
 ### [使用 PowerShell 监视作业](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 ### [通过扩展增大吞吐量](stream-analytics-scale-jobs.md)
 ### [机器学习功能缩放](stream-analytics-scale-with-machine-learning-functions.md)
 ### [轮转输入/输出凭据](stream-analytics-login-credentials-inputs-outputs.md)
 
+## 故障排除
+### [故障排除指南](stream-analytics-troubleshooting-guide.md)
+### [监视作业](stream-analytics-monitoring.md)
+### [“资源运行状况”边栏选项卡](stream-analytics-resource-health.md)
+### [作业关系图和指标](stream-analytics-job-diagram-with-metrics.md)
+### [测试查询](stream-analytics-test-query.md)
+### [示例输入数据](stream-analytics-sample-data-input.md)
+### [SELECT INTO 调试](stream-analytics-select-into.md)
+### [事件顺序处理](stream-analytics-out-of-order-and-late-events.md)
+### [事件中心读取器限制](stream-analytics-event-hub-consumer-groups.md)
+### [优化流单元](stream-analytics-streaming-unit-consumption.md)
+### [诊断日志](stream-analytics-job-diagnostic-logs.md)
+
 ## 自动化
 ### [一键式 PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytics)
+## [PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [查询语言](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST](/rest/api/streamanalytics)
-
 
 # 资源
 ## [发行说明](stream-analytics-release-notes.md)

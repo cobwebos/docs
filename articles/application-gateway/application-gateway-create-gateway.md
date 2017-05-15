@@ -15,10 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
-ms.openlocfilehash: 8b72a3f26e356af588e9f5c2039bcc525366ce11
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 79e373a69f3b899dea1f10ac447a0284931648f4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/01/2017
 > * [Azure Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Azure 应用程序网关是第&7; 层负载平衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载平衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
+Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
 
 本文将指导你完成创建、配置、启动和删除应用程序网关的步骤。
 
@@ -106,11 +107,11 @@ DnsName       :
 
 可以使用 XML 或配置对象配置应用程序网关。
 
-## <a name="configure-the-application-gateway-by-using-xml"></a>使用 XML 配置应用程序网关
+### <a name="configure-the-application-gateway-by-using-xml"></a>使用 XML 配置应用程序网关
 
 在以下示例中，使用 XML 文件配置所有应用程序网关设置，并将这些设置提交到应用程序网关资源。  
 
-### <a name="step-1"></a>步骤 1
+#### <a name="step-1"></a>步骤 1
 
 将以下文本复制到记事本中。
 
@@ -164,7 +165,7 @@ DnsName       :
 > [!IMPORTANT]
 > 协议项 Http 或 Https 区分大小写。
 
-以下示例演示如何使用配置文件设置应用程序网关。 该示例负载平衡公共端口 80 上的 HTTP 流量，并将网络流量发送到两个 IP 地址之间的后端端口 80。
+以下示例演示如何使用配置文件设置应用程序网关。 该示例负载均衡公共端口 80 上的 HTTP 流量，并将网络流量发送到两个 IP 地址之间的后端端口 80。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -211,7 +212,7 @@ DnsName       :
 </ApplicationGatewayConfiguration>
 ```
 
-### <a name="step-2"></a>步骤 2
+#### <a name="step-2"></a>步骤 2
 
 下一步，设置应用程序网关。 将 `Set-AzureApplicationGatewayConfig` cmdlet 与配置 XML 文件配合使用。
 
@@ -219,14 +220,14 @@ DnsName       :
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 ```
 
-## <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>使用配置对象配置应用程序网关
+### <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>使用配置对象配置应用程序网关
 
 以下示例演示如何使用配置对象配置应用程序网关。 必须单独配置所有配置项，然后将其添加到应用程序网关配置对象。 创建配置对象之后，使用 `Set-AzureApplicationGateway` 命令将配置提交到之前创建的应用程序网关资源。
 
 > [!NOTE]
 > 在为每个配置对象分配值之前，需要声明 PowerShell 用于存储的对象类型。 创建各项的第一行定义了所使用的 `Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)`。
 
-### <a name="step-1"></a>步骤 1
+#### <a name="step-1"></a>步骤 1
 
 创建每个配置项。
 
@@ -297,7 +298,7 @@ $rule.Listener = "listener1"
 $rule.BackendAddressPool = "pool1"
 ```
 
-### <a name="step-2"></a>步骤 2
+#### <a name="step-2"></a>步骤 2
 
 将每个配置项分配给应用程序网关配置对象 ($appgwconfig)。
 
@@ -385,9 +386,9 @@ Vip           : 138.91.170.26
 DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 ```
 
-## <a name="delete-an-application-gateway"></a>删除应用程序网关
+## <a name="delete-the-application-gateway"></a>删除应用程序网关
 
-若要删除应用程序网关，请执行以下操作：
+若要删除应用程序网关，请执行以下步骤：
 
 1. 使用 `Stop-AzureApplicationGateway` cmdlet 停止该网关。
 2. 使用 `Remove-AzureApplicationGateway` cmdlet 删除该网关。
@@ -438,11 +439,11 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 
 如果你要配置 SSL 卸载，请参阅 [Configure an application gateway for SSL offload](application-gateway-ssl.md)（配置应用程序网关以进行 SSL 卸载）。
 
-如果你想要将应用程序网关配置为与内部负载平衡器配合使用，请参阅 [Create an application gateway with an internal load balancer (ILB)](application-gateway-ilb.md)（创建具有内部负载平衡器 (ILB) 的应用程序网关）。
+如果你想要将应用程序网关配置为与内部负载均衡器配合使用，请参阅 [Create an application gateway with an internal Load Balancer (ILB)](application-gateway-ilb.md)（创建具有内部负载均衡器 (ILB) 的应用程序网关）。
 
-如需负载平衡选项的其他常规信息，请参阅：
+如需负载均衡选项的其他常规信息，请参阅：
 
-* [Azure 负载平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
 [scenario]: ./media/application-gateway-create-gateway/scenario.png

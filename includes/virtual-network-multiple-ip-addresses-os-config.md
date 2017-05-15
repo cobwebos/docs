@@ -1,4 +1,4 @@
-## <a name="a-nameos-configaadd-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>将 IP 地址添加到 VM 操作系统
+## <a name="os-config"></a>将 IP 地址添加到 VM 操作系统
 
 连接并登录到使用多个专用 IP 地址创建的 VM。 必须手动添加 VM 中的所有专用 IP 地址（包括主要地址）。 根据 VM 操作系统完成以下步骤：
 
@@ -32,7 +32,7 @@
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->如果在上面使用的专用 IP 地址有一个与之关联的公共 IP，则只能 ping 到 Internet。
+>对于辅助 IP 配置，仅当该配置存在关联的 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
@@ -161,7 +161,7 @@ ping -S 10.0.0.5 hotmail.com
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->如果在上面使用的专用 IP 地址有一个与之关联的公共 IP，则只能 ping 到 Internet。
+>对于辅助 IP 配置，仅当该配置存在关联的 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
 
 对于 Linux VM，在尝试验证来自辅助 NIC 的出站连接时，可能需要添加适当的路由。 可通过多种方式来执行此操作。 请参阅针对 Linux 分发的相应文档。 下面是实现此目的的一种方法：
 
@@ -176,8 +176,3 @@ ip route add default via 10.0.0.1 dev eth2 table custom
     - **10.0.0.5** 替换为专用 IP 地址，该地址有一个与之关联的公共 IP 地址。
     - **10.0.0.1** 替换为默认网关
     - **eth2** 替换为辅助 NIC 的名称
-
-
-<!--HONumber=Feb17_HO2-->
-
-

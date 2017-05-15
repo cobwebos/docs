@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 62bafc9bc58811cd9bd314639e3c2a609f4935d3
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ed9bfe928699d040aa4283da5a8690318932738c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -45,6 +46,9 @@ Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.micros
 ## <a name="resource-metrics"></a>资源指标
 资源会发出指标，这些指标随后通过规则进行处理。 指标通过不同方法发出。
 虚拟机规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和云服务的遥测则直接来自 Azure 基础结构。 一些常用的统计信息包括：CPU 使用率、内存使用情况、线程计数、队列长度和磁盘使用情况。 如需可用遥测数据的列表，请参阅[自动缩放常用指标](insights-autoscale-common-metrics.md)。
+
+## <a name="custom-metrics"></a>自定义指标
+还可以利用应用程序可以发出的你自己的自定义指标。 如果已将应用程序配置为向 Application Insights 发送指标，则可以利用这些指标来决定是否要进行缩放。 
 
 ## <a name="time"></a>时间
 基于计划的规则以 UTC 为基础。 设置规则时，必须正确设置时区。  

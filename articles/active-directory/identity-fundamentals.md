@@ -4,17 +4,18 @@ description:
 keywords: 
 author: jeffgilb
 manager: femila
-ms.date: 3/28/2017
+ms.date: 5/1/2017
 ms.topic: article
 ms.prod: 
 ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.reviewer: jsnow
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 222259e1f7c5a8796fd9f652cf5e050e75d4ce49
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: bc67058d026219d676430a55fe8cfdd3f09cf295
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -53,7 +54,8 @@ Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数
 
 Azure AD Premium 中的条件性访问系统允许你（企业管理员）为任何通过 Azure AD 连接的应用程序（SaaS 应用、运行在云中的自定义应用，或者本地 Web 应用程序）创建基于策略的访问规则。 Azure AD 实时评估这些策略，并在用户尝试访问应用程序时强制实施它们。 Azure 标识保护策略允许你在发现可疑活动的情况下自动采取行动（例如阻止高风险用户的访问权限），可强制实施多重身份验证，并可在凭据看起来已泄露的情况下重置密码。
 
-## <a name="azure-active-directory-privileged-identify-management"></a>Azure Active Directory Privileged Identify Management
+
+## <a name="azure-active-directory-privileged-identity-management"></a>Azure Active Directory Privileged Identity Management
 
 Azure Active Directory Premium P2 产品随附的 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) 用于发现、限制和监视管理帐户及其对 Azure Active Directory 和其他 Microsoft 联机服务中资源的访问权限。 它还可用于管理按需性的管理访问权限，具体时间段视需要而定。
 

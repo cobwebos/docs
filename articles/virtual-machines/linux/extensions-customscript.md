@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/22/2016
+ms.date: 04/26/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f06ec73f2b03dcdf5ac4069f28ee8653537f72f8
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 16d04d0f470dde3917f5a12f527ecceb493b2a57
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -63,33 +64,35 @@ ms.lasthandoff: 04/03/2017
 使用 Azure CLI 来运行自定义脚本扩展时，请创建一个或多个至少包含文件 URI 和脚本执行命令的配置文件。
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version --public-config-path /script-config.json
+az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-（可选）可以使用 `--public-config` 和 `--private-config` 选项来运行命令，这样，便可以在执行期间指定配置，而无需使用单独的配置文件。
+（可选）可以在命令中以 JSON 格式字符串的形式指定设置。 这样，便可以在执行期间指定配置，而无需使用单独的配置文件。
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version \
-  --public-config '{"fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],"commandToExecute": "./hello.sh"}'
+az vm extension set '
+  --resource-group exttest `
+  --vm-name exttest `
+  --name customScript `
+  --publisher Microsoft.Azure.Extensions `
+  --settings '{"fileUris": ["https://raw.githubusercontent.com/neilpeterson/test-extension/master/test.sh"],"commandToExecute": "./test.sh"}'
 ```
 
 ### <a name="azure-cli-examples"></a>Azure CLI 示例
+
 **示例 1** - 包含脚本文件的公共配置。
 
 ```json
 {
-  "fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],
-  "commandToExecute": "./hello.sh"
+  "fileUris": ["https://raw.githubusercontent.com/neilpeterson/test-extension/master/test.sh"],
+  "commandToExecute": "./test.sh"
 }
 ```
 
 Azure CLI 命令：
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version --public-config-path /public.json
+az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
 **示例 2** - 不包含脚本文件的公共配置。
@@ -103,8 +106,7 @@ azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensi
 Azure CLI 命令：
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version --public-config-path /public.json
+az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
 **示例 3** - 使用公共配置文件指定脚本文件 URI，使用受保护的配置文件指定要执行的命令。
@@ -128,8 +130,7 @@ azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensi
 Azure CLI 命令：
 
 ```azurecli
-azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
-  --auto-upgrade-minor-version --public-config-path ./public.json --private-config-path ./protected.json
+az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json --protected-settings
 ```
 
 ## <a name="resource-manager-template"></a>Resource Manager 模板
@@ -214,7 +215,7 @@ Azure 脚本扩展生成一个日志，位置如下。
 也可以使用 Azure CLI 来检索自定义脚本扩展的执行状态。
 
 ```azurecli
-azure vm extension get myResourceGroup myVM
+az vm extension list -g myResourceGroup --vm-name myVM
 ```
 
 输出类似于以下文本：

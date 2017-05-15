@@ -1,5 +1,5 @@
 ---
-title: "服务总线高级和标准消息传送定价层概述 | Microsoft Docs"
+title: "Azure 服务总线高级和标准消息传送定价层概述 | Microsoft Docs"
 description: "服务总线高级和标准消息传送层"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/19/2017
+ms.date: 04/28/2017
 ms.author: darosa;sethm;jotaub
-translationtype: Human Translation
-ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
-ms.openlocfilehash: 606838dbeec5e9762f67159ece1bbc8a78769420
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 72e4c59e1282d97cfc5aa5f55861c6f70d419ce8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -47,7 +48,7 @@ ms.lasthandoff: 04/20/2017
 
 ### <a name="partitioned-queues-and-topics"></a>分区的队列和主题
 
-分区的队列和主题在高级消息传送中受支持，但它们的工作方式不同于标准和基本层的服务总线消息传送方式。 高级消息传送不使用 SQL 作为数据存储，并且也不再具有与共享平台相关联的可能的资源竞争。 因此，不需要为提高性能而分区。 此外，分区计数已从标准消息传送的 16 个减少到高级中的 2 个分区。 使用两个分区可确保可用性并且更适合高级运行时环境所要求的分区数。 有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
+高级消息传送支持分区的队列和主题；实际上，这些实体始终分区（且不能禁用）。 但是，高级层中分区的队列和主题的工作方式不同于服务总线消息传送的标准层和基本层。 高级消息传送不使用 SQL 作为数据存储，并且也不再具有与共享平台相关联的可能的资源竞争。 因此，不需要为提高性能而分区。 此外，分区计数已从标准消息传送的 16 个减少到高级中的 2 个分区。 使用两个分区可确保可用性并且更适合高级运行时环境所要求的分区数。 有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
 
 ### <a name="express-entities"></a>快速实体
 

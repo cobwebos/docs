@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 65a7872e0880cc74a00ca1c05baae2b34b407a61
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: d082b37a2e070136178259c54ada8dc141f81e13
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -49,7 +50,7 @@ az vm availability-set create \
 
 ## <a name="create-vms-inside-an-availability-set"></a>在可用性集内创建 VM
 
-需要在可用性集内创建 VM，确保其正确分布在硬件中。 创建后，无法将现有 VM 添加到可用性集中。 
+需要在可用性集内创建 VM，以确保其正确地分布在硬件中。 创建后，无法将现有 VM 添加到可用性集中。 
 
 同一位置的硬件分为多个更新域和容错域。 更新域是一组可同时重启的 VM 和基础物理硬件。 同一个容错域内的 VM 共享公用存储，以及公用电源和网络交换机。 
 
@@ -73,7 +74,7 @@ done
 
 ## <a name="check-for-available-vm-sizes"></a>检查可用的 VM 大小 
 
-稍后可向可用性集添加更多 VM，但需了解在硬件上可用的 VM 大小。 使用 `az vm availability-set list-sizes` 列出可用性集的硬件群集上所有可用的大小。
+稍后可向可用性集添加更多 VM，但需了解在硬件上可用的 VM 大小。 使用 [az vm availability-set list-sizes](/cli/azure/availability-set#list-sizes) 列出可用性集的硬件群集上所有可用的大小。
 
 ```azurecli
 az vm availability-set list-sizes \

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: jotaub;sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 4b54ad027a7de02cba7821f2a9b7fd06ef3a825b
-ms.openlocfilehash: ca2767340cb232722def8f06277cc84d5c76c1bf
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7562fbee15e4450542c2c17d8ae2a763a556a44f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -49,8 +51,10 @@ ms.openlocfilehash: ca2767340cb232722def8f06277cc84d5c76c1bf
 
 请注意，示例中使用的价格仅适用于预览版期间，混合连接公开上市时的价格可能会有所变动。
 
-### <a name="how-are-wcf-relay-hours-calculated"></a>如何计算 WCF 中继小时数？
-将按每个服务总线中继处于“打开”状态的累积时间量对中继小时数收费。 当启用了中继的 WCF 服务（即“中继侦听器”）第一次连接到给定服务总线地址（服务命名空间 URL）时，中继将隐式实例化并在该地址中打开。 仅当最后一个侦听器从其地址断开连接时，该中继才会关闭。 因此，出于计费目的，在第一个中继侦听器连接到中继的服务总线地址到最后一个中继侦听器从该地址断开连接的这段时间内，该中继将被认为处于“打开”状态。
+### <a name="how-are-relay-hours-calculated"></a>如何计算中继小时数？
+将按每个服务总线中继处于“打开”状态的累积时间量对 WCF 中继和混合连接小时数收费。 当启用了中继的服务（即“中继侦听器”）第一次连接到给定服务总线地址（服务命名空间 URL）时，中继将隐式实例化并在该地址中打开。 仅当最后一个侦听器从其地址断开连接时，该中继才会关闭。 因此，出于计费目的，在第一个中继侦听器连接到中继的服务总线地址到最后一个中继侦听器从该地址断开连接的这段时间内，该中继将被认为处于“打开”状态。
+
+WCF 中继仅适用于标准层命名空间。 另外，中继的定价和[连接配额](../service-bus-messaging/service-bus-quotas.md)保持不变。 这意味着中继将继续根据消息数（而不是操作数）和中继小时数计费。 有关详细信息，请参阅定价详细信息页上的[混合连接和 WCF 中继](https://azure.microsoft.com/pricing/details/service-bus/)表。
 
 ### <a name="what-if-i-have-more-than-one-listener-connected-to-a-given-relay"></a>如果将多个侦听器连接到给定中继，会怎么样？
 在某些情况下，单个中继可能会有多个连接的侦听器。 当至少有一个中继侦听器连接到中继时，该中继都就将被视为“打开”状态。 将其他侦听器添加到打开的中继时，将不会增加中继小时数。 连接到中继的中继发送方（调用或将消息发送至中继的客户端）数量，也不会对中继小时数的计算产生影响。
@@ -107,9 +111,4 @@ ms.openlocfilehash: ca2767340cb232722def8f06277cc84d5c76c1bf
 * [创建命名空间](relay-create-namespace-portal.md)
 * [.NET 入门](relay-hybrid-connections-dotnet-get-started.md)
 * [节点入门](relay-hybrid-connections-node-get-started.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

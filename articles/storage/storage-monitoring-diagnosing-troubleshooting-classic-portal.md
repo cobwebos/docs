@@ -3,8 +3,8 @@ title: "监视、诊断和排查存储问题 | Microsoft Docs"
 description: "使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。"
 services: storage
 documentationcenter: 
-author: jasonnewyork
-manager: tadb
+author: fhryo-msft
+manager: jahogg
 editor: tysonn
 ms.assetid: da57e844-705d-449d-8ed5-5607d2a6170b
 ms.service: storage
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: jahogg
-translationtype: Human Translation
+ms.author: fhryo-msft
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 84ecd480b57a8ef12440f5e5cd98a78c4bf09059
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/06/2017
 
 
@@ -92,7 +93,7 @@ ms.lasthandoff: 04/06/2017
 * 为你提供必要的过程和工具来帮助你确定应用程序中的问题是否与 Azure 存储空间有关。
 * 为你提供用于解决与 Azure 存储空间相关的问题的可操作指南。
 
-### <a name="how-this-guide-is-organized">本指南的组织方式</a>
+### <a name="how-this-guide-is-organized"></a>本指南的组织方式
 “[监视存储服务]”一节介绍如何使用 Azure 存储分析度量值（存储度量值）监视 Azure 存储服务的运行状况和性能。
 
 “[诊断存储问题]”一节介绍如何使用 Azure 存储分析日志记录（存储日志记录）诊断问题。 它还介绍了如何使用其中一个客户端库（如 .NET 存储客户端库或 Azure SDK for Java）中的工具启用客户端日志记录。
@@ -589,7 +590,7 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 > 
 > 
 
-之所以发生这些错误是因为 Web 浏览器实施了“同源策略”安全限制，以防止网页调用与它来自的域不同的域中的 API。<a href="http://www.w3.org/Security/wiki/Same_Origin_Policy" target="_blank"></a>
+之所以发生这些错误是因为 Web 浏览器实施了 <a href="http://www.w3.org/Security/wiki/Same_Origin_Policy" target="_blank">同源策略</a> 安全限制，以防止网页调用与它来自的域不同的域中的 API。
 
 若要解决此 JavaScript 问题，可以为客户端访问的存储服务配置跨域资源共享 (CORS)。 有关详细信息，请参阅 MSDN 上的 <a href="http://msdn.microsoft.com/library/azure/dn535601.aspx" target="_blank">Azure 存储空间服务的跨域资源共享 (CORS) 支持</a>。
 
@@ -656,7 +657,7 @@ client.SetServiceProperties(sp);
 通常，虚拟机对 VHD 进行的每个单独的输入或输出操作都会转换为对基础页 Blob 进行的“Get 页”或“Put 页”操作。 因此，你可以根据应用程序的特定行为，对环境使用估计的 IOPS 以优化可以在单个存储帐户中设置的 VHD 数。 我们不建议在单个存储帐户中设置超过 40 个的磁盘。 有关存储帐户的当前可伸缩性目标的详细信息（尤其是您所用的存储帐户类型的总请求速率和总带宽），请参阅 <a href="http://msdn.microsoft.com/library/azure/dn249410.aspx" target="_blank">Azure 存储空间可伸缩性和性能目标</a>。
 如果你即将超过存储帐户的可伸缩性目标，则应将你的 VHD 放入多个不同的存储帐户中，以减少每个帐户中的活动。
 
-### <a name="your-issue-arises-from-using-the-storage-emulator">该问题是由于使用存储模拟器进行开发或测试而导致</a>
+### <a name="your-issue-arises-from-using-the-storage-emulator"></a>该问题是由于使用存储模拟器进行开发或测试而导致
 通常，在开发和测试过程中使用存储模拟器以避免需要 Azure 存储帐户。 使用存储模拟器时可能发生的常见问题包括：
 
 * [功能“X”在存储模拟器中无法正常工作]
@@ -795,7 +796,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 有关 Microsoft Message Analyzer 本地链路层跟踪的详细信息，请参阅 TechNet 上的 <a href="http://technet.microsoft.com/library/jj659264.aspx" target="_blank">PEF-NDIS-PacketCapture 提供程序</a>。
 
 ### <a name="appendix-4"></a>附录 4：使用 Excel 查看度量值和日志数据
-使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。 但是，您需要基于“存储分析日志格式”和“存储分析度量表架构”中的信息添加相应的列标题。<a href="http://msdn.microsoft.com/library/azure/hh343259.aspx" target="_blank"></a><a href="http://msdn.microsoft.com/library/azure/hh343264.aspx" target="_blank"></a>
+使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。 但是，您需要基于 <a href="http://msdn.microsoft.com/library/azure/hh343259.aspx" target="_blank">存储分析日志格式</a> 和 <a href="http://msdn.microsoft.com/library/azure/hh343264.aspx" target="_blank">存储分析度量表架构</a> 中的信息添加相应的列标题。
 
 若要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 

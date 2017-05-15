@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/24/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
 ms.openlocfilehash: b0c3c5dfd695b28b75bf44c9f835b34966413a9a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/18/2017
 
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/18/2017
    ![创建 MFA 提供程序](./media/multi-factor-authentication-get-started-auth-provider/authprovider1.png)
 4. 在底部单击“新建” 。
    ![创建 MFA 提供程序](./media/multi-factor-authentication-get-started-auth-provider/authprovider2.png)
-5. 在“应用服务”下选择“多重身份验证提供程序”****
+5. 在 应用服务 下选择 **多重身份验证提供程序**
    ![创建 MFA 提供程序](./media/multi-factor-authentication-get-started-auth-provider/authprovider3.png)
 6. 选择“快速创建”。
    ![创建 MFA 提供程序](./media/multi-factor-authentication-get-started-auth-provider/authprovider4.png)

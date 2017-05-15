@@ -12,24 +12,37 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2017
+ms.date: 04/30/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: c889a609b8d49474216fe1dcfba69a881edb4133
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 5a788f87693ebb09ed40cb71983fce4014c907f1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
 
-本主题介绍了如何将 [Azure CLI 2.0](/cli/azure/install-az-cli2) 与 Resource Manager 模板配合使用来将资源部署到 Azure。  你的模板可以是本地文件或是可通过 URI 访问的外部文件。
+本主题介绍了如何将 Azure CLI 2.0 与 Resource Manager 模板配合使用来将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。  
 
-可以从[创建你的第一个 Azure Resource Manager 模板](resource-manager-create-first-template.md#final-template)一文中获取这些示例中使用的模板 (storage.json)。 若要将该模板用于这些示例，请创建一个 JSON 文件并添加复制的内容。
+你部署的 Resource Manager 模板可以是计算机上的本地文件，也可以是位于 GitHub 等存储库中的外部文件。 本文中部署的模板可在[示例模板](#sample-template)部分中找到，也可在 [GitHub 中的存储帐户模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)中找到。
 
-## <a name="deploy-local-template"></a>部署本地模板
+[!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
-若要快速开始部署，请使用以下命令来部署具有内联参数的本地模板：
+<a id="deploy-local-template" />
+
+## <a name="deploy-a-template-from-your-local-machine"></a>从本地计算机部署模板
+
+将资源部署到 Azure 时，你执行以下操作：
+
+1. 登录到 Azure 帐户
+2. 创建用作已部署资源的容器的资源组
+3. 将定义了要创建的资源的模板部署到资源组
+
+模板可以包括可用于自定义部署的参数。 例如，你可以提供为特定环境（如开发环境、测试环境和生产环境）定制的值。 示例模板定义了存储帐户 SKU 的参数。 
+
+以下示例将创建一个资源组，并从本地计算机部署模板：
 
 ```azurecli
 az login
@@ -39,7 +52,7 @@ az group deployment create \
     --name ExampleDeployment \
     --resource-group ExampleGroup \
     --template-file storage.json \
-    --parameters "{\"storageNamePrefix\":{\"value\":\"contoso\"},\"storageSKU\":{\"value\":\"Standard_GRS\"}}"
+    --parameters "{\"storageAccountType\":{\"value\":\"Standard_GRS\"}}"
 ```
 
 部署可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息：
@@ -48,44 +61,43 @@ az group deployment create \
 "provisioningState": "Succeeded",
 ```
 
-前面的示例在默认订阅中创建了资源组。 若要使用其他订阅，请在登录后添加 [az account set](/cli/azure/account#set) 命令。
+## <a name="deploy-a-template-from-an-external-source"></a>从外部源部署模板
 
-## <a name="deploy-external-template"></a>部署外部模板
+你可能更愿意将 Resource Manager 模板存储在外部位置，而不是将它们存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
 
-若要部署外部模板，请使用 **template-uri** 参数。 模板可以在任何可公开访问的 URI（如存储帐户中的文件）中。
+若要部署外部模板，请使用 **template-uri** 参数。 使用示例中的 URI 从 GitHub 部署示例模板。
    
 ```azurecli
 az group deployment create \
     --name ExampleDeployment \
     --resource-group ExampleGroup \
-    --template-uri "https://raw.githubusercontent.com/exampleuser/MyTemplates/master/storage.json" \
-    --parameters "{\"storageNamePrefix\":{\"value\":\"contoso\"},\"storageSKU\":{\"value\":\"Standard_GRS\"}}"
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+    --parameters "{\"storageAccountType\":{\"value\":\"Standard_GRS\"}}"
 ```
 
-可以通过要求使用共享访问签名 (SAS) 令牌进行访问来保护模板。 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](resource-manager-cli-sas-token.md)。
+前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为你的模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 有关部署需要共享访问签名 (SAS) 令牌的模板的信息，请参阅[部署具有 SAS 令牌的专用模板](resource-manager-cli-sas-token.md)。
 
 ## <a name="parameter-files"></a>参数文件
 
-前面的示例介绍了如何将参数作为内联值传递。 可以在文件中指定参数值，然后在部署过程中传递该文件。 
-
-参数文件必须采用以下格式：
+与在脚本中以内联值的形式传递参数相比，你可能会发现使用包含参数值的 JSON 文件更为容易。 参数文件必须采用以下格式：
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-     "storageNamePrefix": {
-         "value": "contoso"
-     },
-     "storageSKU": {
+     "storageAccountType": {
          "value": "Standard_GRS"
      }
   }
 }
 ```
 
-若要传递本地参数文件，请使用：
+请注意，parameters 部分包含与你的模板中定义的参数匹配的参数名称 (storageAccountType)。 参数文件针对该参数包含了一个值。 此值在部署期间自动传递给模板。 可以针对不同部署方案创建多个参数文件，然后传入相应的参数文件。 
+
+复制上面的示例，并将其保存为名为 `storage.parameters.json` 的文件。
+
+若要传递本地参数文件，请使用 `@` 指定名为 storage.parameters.json 的本地文件。
 
 ```azurecli
 az group deployment create \
@@ -95,9 +107,9 @@ az group deployment create \
     --parameters @storage.parameters.json
 ```
 
-## <a name="test-a-deployment"></a>测试部署
+## <a name="test-a-template-deployment"></a>测试模板部署
 
-若要测试模板和参数值而不实际部署任何资源，请使用 [az group deployment validate](/cli/azure/group/deployment#validate)。 无论使用本地文件还是远程文件，它的选项都完全相同。
+若要测试模板和参数值而不实际部署任何资源，请使用 [az group deployment validate](/cli/azure/group/deployment#validate)。 
 
 ```azurecli
 az group deployment validate \
@@ -106,31 +118,45 @@ az group deployment validate \
     --parameters @storage.parameters.json
 ```
 
-## <a name="debug"></a>调试
-
-若要查看对失败部署执行的操作的信息，请使用：
-   
-```azurecli
-az group deployment operation list --resource-group ExampleGroup --name vmlinux --query "[*].[properties.statusMessage]"
-```
-
-有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
-
-
-## <a name="export-resource-manager-template"></a>导出 Resource Manager 模板
-对于现有的资源组（通过 Azure CLI 或门户等其他方法部署），可以查看资源组的 Resource Manager 模板。 导出模板有两个好处：
-
-1. 由于模板中定义了所有基础结构，因此将来可以轻松地自动完成解决方案的部署。
-2. 可以查看代表解决方案的 JavaScript 对象表示法 (JSON)，以此熟悉模板语法。
-
-若要查看资源组的模板，请运行 [az group export](/cli/azure/group#export) 命令。
+如果未检测到错误，则该命令将返回有关测试部署的信息。 需要特别注意的是，**error** 值为 null。
 
 ```azurecli
-az group export --name ExampleGroup
+{
+  "error": null,
+  "properties": {
+      ...
 ```
 
-有关详细信息，请参阅[从现有资源导出 Azure Resource Manager 模板](resource-manager-export-template.md)。
+如果检测到错误，则该命令将返回一条错误消息。 例如，如果尝试为存储帐户 SKU 传递不正确的值，将返回以下错误：
 
+```azurecli
+{
+  "error": {
+    "code": "InvalidTemplate",
+    "details": null,
+    "message": "Deployment template validation failed: 'The provided value 'badSKU' for the template parameter 
+      'storageAccountType' at line '13' and column '20' is not valid. The parameter value is not part of the allowed 
+      value(s): 'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.",
+    "target": null
+  },
+  "properties": null
+}
+```
+
+如果模板有语法错误，该命令将返回一个错误，指示它无法分析该模板。 该消息会指出分析错误的行号和位置。
+
+```azurecli
+{
+  "error": {
+    "code": "InvalidTemplate",
+    "details": null,
+    "message": "Deployment template parse failed: 'After parsing a value an unexpected character was encountered:
+      \". Path 'variables', line 31, position 3.'.",
+    "target": null
+  },
+  "properties": null
+}
+```
 
 [!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
 
@@ -142,13 +168,62 @@ az group deployment create \
     --mode Complete \
     --resource-group ExampleGroup \
     --template-file storage.json \
-    --parameters "{\"storageNamePrefix\":{\"value\":\"contoso\"},\"storageSKU\":{\"value\":\"Standard_GRS\"}}"
+    --parameters "{\"storageAccountType\":{\"value\":\"Standard_GRS\"}}"
 ```
 
+## <a name="sample-template"></a>示例模板
+
+本主题中的示例使用以下模板。 复制并将其另存为名为 storage.json 的文件。 若要了解如何创建此模板，请参阅[创建你的第一个 Azure Resource Manager 模板](resource-manager-create-first-template.md)。  
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    }
+  },
+  "variables": {
+    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "apiVersion": "2016-01-01",
+      "location": "[resourceGroup().location]",
+      "sku": {
+          "name": "[parameters('storageAccountType')]"
+      },
+      "kind": "Storage", 
+      "properties": {
+      }
+    }
+  ],
+  "outputs": {
+      "storageAccountName": {
+          "type": "string",
+          "value": "[variables('storageAccountName')]"
+      }
+  }
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
+* 本文中的示例将资源部署到你的默认订阅中的资源组。 若要使用其他订阅，请参阅[管理多个 Azure 订阅](/cli/azure/manage-azure-subscriptions-azure-cli)。
 * 有关用于部署模板的完整示例脚本，请参阅 [Resource Manager 模板部署脚本](resource-manager-samples-cli-deploy.md)。
-* 若要在模板中定义参数，请参阅[创作模板](resource-group-authoring-templates.md#parameters)。
+* 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](resource-group-authoring-templates.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
 * 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](resource-manager-cli-sas-token.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。

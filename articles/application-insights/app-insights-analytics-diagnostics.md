@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 74878cd8a5a7f1aa82281d3dc1118089f134bedc
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: bb836357af6d006c18db578164f02fa7bd043b45
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -81,4 +82,3 @@ ms.lasthandoff: 04/19/2017
 
  * [Analytics 教程](app-insights-analytics-tour.md)
  * 遇到性能问题时，[智能检测](app-insights-proactive-diagnostics.md)会自动向你发出警报。
-S

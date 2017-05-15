@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2017
+ms.date: 04/26/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 12b67d92fb955d9d20b0e86a38baa47a3717a333
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: d9fffa2058120f067c631a900eb8db4738f73778
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
@@ -71,9 +72,9 @@ ms.lasthandoff: 03/31/2017
 
 在某些情况下，是。 
 
-面向 Azure 管理员的多重身份验证免费提供一部分 Azure MFA 功能让管理员访问 Microsoft 在线服务，包括 Azure 和 Office 365 管理门户。 这项优惠适用于未通过 MFA 许可证、捆绑包或基于使用量的独立提供程序获得 Azure MFA 完整版本的 Azure Active Directory 实例中的 Azure 管理员。 如果管理员使用免费版本，而你创建了多重身份验证提供程序，则目录中已配置为使用多重身份验证的所有管理员和用户将获得完整版本的 Azure 多重身份验证。
+面向 Azure 管理员的多重身份验证免费提供一部分 Azure MFA 功能让管理员访问 Microsoft 在线服务，包括 Azure 和 Office 365 管理门户。 这项优惠适用于未通过 MFA 许可证、捆绑包或基于使用量的独立提供程序获得 Azure MFA 完整版本的 Azure Active Directory 实例中的全局管理员。 如果管理员使用免费版本，而你创建了多重身份验证提供程序，则目录中已配置为使用多重身份验证的所有管理员和用户将获得完整版本的 Azure 多重身份验证。
 
-面向 Office 365 用户的多重身份验证免费提供一部分 Azure MFA 功能让用户访问 Microsoft 在线服务，包括 Exchange Online、SharePoint Online 和其他 Office 365 服务。 如果 Azure Active Directory 的相应实例未通过 MFA 许可证、捆绑包或基于使用量的独立提供程序获得 Azure MFA 完整版本，这项优惠将适用于已获得 Office 365 许可证的用户。 
+面向 Office 365 用户的多重身份验证免费提供一部分 Azure MFA 功能让用户访问 Office 365 在线服务，包括 Exchange Online 和 SharePoint Online。 如果 Azure Active Directory 的相应实例未通过 MFA 许可证、捆绑包或基于使用量的独立提供程序获得 Azure MFA 完整版本，这项优惠将适用于已获得 Office 365 许可证的用户。 
 
 **问：组织是否可以随时在“按用户”和“按身份验证”使用量计费模式之间切换？**
 

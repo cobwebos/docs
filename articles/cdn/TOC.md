@@ -29,6 +29,7 @@
 ### [监视资源](cdn-resource-health.md)
 ### [用规则覆盖行为](cdn-rules-engine.md)
 ### [获取实时警报](cdn-real-time-alerts.md)
+### [HTTP/2 支持](cdn-http2.md)
 
 ## 分析
 ### [分析使用模式](cdn-analyze-usage-patterns.md)

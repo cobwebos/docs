@@ -1,6 +1,7 @@
 ---
-title: "Azure Active Directory 门户中的“登录活动”报表 - 预览 | Microsoft Docs"
-description: "Azure Active Directory 门户中的“登录活动”报表简介 - 预览"
+
+title: "Azure Active Directory 门户中的“登录活动”报告 | Microsoft Docs"
+description: "Azure Active Directory 门户中的“登录活动”报告简介"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,18 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: f6c0bb59d9eb16da6c7daea2e722e32ac7dbc2d7
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 19cd81c1e6020523d1bea3ec76c957ce22f931ca
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal---preview"></a>Azure Active Directory 门户中的“登录活动”报表 - 预览
+# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
-通过 Azure Active Directory [预览](active-directory-preview-explainer.md)中的报表，可以获取确定环境运行状况所需的所有信息。
+通过 [Azure 门户](https://portal.azure.com)中的 Azure Active Directory (Azure AD) 报告，可以获取确定环境运行状况所需的信息。
 
 Azure Active Directory 中的报表体系结构由以下部分组成：
 
@@ -44,7 +46,7 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 * 多少用户超过一周都有登录行为？
 * 这些登录的状态怎样？
 
-所有登录活动数据的第一个入口点为 Azure Active Directory 的“活动”部分中的“登录”。
+所有登录活动数据的第一个入口点为 Azure Active
 
 
 ![登录活动](./media/active-directory-reporting-activity-sign-ins/61.png "登录活动")

@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/05/2017
 ms.author: mfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 0e899225063e77ccef254e8aaacbf0390faa25e3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 0fb4cc7b3c071eeb0bff15f9a57fc7e2106d7ca7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric 概述
-Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 还解决了开发和管理云应用程序中的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。 Service Fabric 代表着用于生成和管理这些企业级第&1; 层云规模应用程序的下一代中间件平台。
+Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 还解决了开发和管理云应用程序中的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。 Service Fabric 代表着用于生成和管理这些企业级第 1 层云规模应用程序的下一代中间件平台。
 
 这段简短 Channel9 视频介绍了 Service Fabric 和微服务：<center><a target="_blank" href="https://aka.ms/servicefabricvideo">  
 <img src="./media/service-fabric-overview/OverviewVid.png" WIDTH="360" HEIGHT="244">  
@@ -60,7 +62,7 @@ Service Fabric 是跨计算机群集的微服务 [Orchestrator](service-fabric-c
 
 ![Service Fabric 平台][Image1]
 
-## <a name="stateless-and-stateful-micrososervices-for-service-fabric"></a>无状态和有状态 Service Fabric 微服务
+## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>无状态和有状态 Service Fabric 微服务
 Service Fabric 允许你构建包含微服务的应用程序。 无状态微服务（例如网关、Web 代理）不维护除请求及其来自服务的响应之外任何可变状态。 Azure 云服务辅助角色是无状态服务的一个示例。 有状态微服务（例如，用户帐户、数据库、设备、购物车、队列）维护除请求及其响应之外的可变、授权状态。 当今的 Internet 规模应用程序包含无状态和有状态微服务的组合。
 
 为何要将有状态和无状态的微服务一同使用？ 有以下两个主要原因：
@@ -118,9 +120,4 @@ Service Fabric 支持云应用程序的完整应用程序生命周期管理。 �
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

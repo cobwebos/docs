@@ -74,16 +74,60 @@
 ### [使用 Azure Functions 调用逻辑应用](logic-apps-scenario-function-sb-trigger.md)
 ### [添加错误和异常处理](logic-apps-scenario-error-and-exception-handling.md)
 ### [B2B 处理](logic-apps-enterprise-integration-b2b.md)
+### [如何处理具有 UNH2.5 段的 EDIFACT 文档](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
 
 ## 定价和计费
 ### [定价](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [用量计量](logic-apps-pricing.md)
 
+# 无服务器
+## 概述
+### [Azure 中的无服务器产品/服务](logic-apps-serverless-overview.md)
+## 入门
+### [在 Visual Studio 中创建无服务器应用](logic-apps-serverless-get-started-vs.md)
+## 方案和演练
+### [收集客户反馈](logic-apps-scenario-social-serverless.md)
+### [发送自动电子邮件](https://channel9.msdn.com/Blogs/Microsoft-Integration/Build-and-Deploy-Serverless-Part-1)
+### [B2B/EDI 订单处理](logic-apps-enterprise-integration-overview.md)
+
 # 引用
 ## [工作流定义语言](logic-apps-workflow-definition-language.md)
 ## [工作流操作和触发器](logic-apps-workflow-actions-triggers.md)
 ## [REST API](/rest/api/logic/)
-## [PowerShell](/powershell/resourcemanager/azurerm.logicapp/v2.3.0/azurerm.logicapp)
+## [PowerShell](/powershell/module/azurerm.logicapp)
+## 连接器：深入的主题
+### [AS2](logic-apps-enterprise-integration-as2.md)
+### [Azure Blob 存储](../connectors/connectors-create-api-azureblobstorage.md)
+### [Azure Functions](logic-apps-azure-functions.md)
+### [Azure 逻辑应用](logic-apps-http-endpoint.md)
+### [Azure SQL 数据库](../connectors/connectors-create-api-sqlazure.md)
+### [自定义 API/Web 应用](logic-apps-create-api-app.md)
+### [DB2](../connectors/connectors-create-api-db2.md)
+### [Dynamics 365 CRM Online](../connectors/connectors-create-api-crmonline.md)
+### [EDIFACT](logic-apps-enterprise-integration-edifact.md)
+### [事件中心](../connectors/connectors-create-api-azure-event-hubs.md)
+### [文件系统](logic-apps-using-file-connector.md)
+### [平面文件](logic-apps-enterprise-integration-flatfile.md)
+### [FTP](../connectors/connectors-create-api-ftp.md)
+### [HTTP](../connectors/connectors-native-http.md)
+### [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
+### [HTTP Webhook](../connectors/connectors-native-webhook.md)
+### [Informix](../connectors/connectors-create-api-informix.md)
+### [集成帐户](logic-apps-enterprise-integration-metadata.md)
+### [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)
+### [Oracle Database](../connectors/connectors-create-api-oracledatabase.md)
+### [请求/响应](../connectors/connectors-native-reqres.md)
+### [Salesforce](../connectors/connectors-create-api-salesforce.md)
+### [SAP](logic-apps-using-sap-connector.md)
+### [计划](../connectors/connectors-native-recurrence.md)
+### [服务总线](../connectors/connectors-create-api-servicebus.md)
+### [SharePoint Online](../connectors/connectors-create-api-sharepointonline.md)
+### [SharePoint Server](../connectors/connectors-create-api-sharepointonline.md)
+### [SQL Server](../connectors/connectors-create-api-sqlazure.md)
+### [转换 XML](logic-apps-enterprise-integration-transform.md)
+### [Twitter](../connectors/connectors-create-api-twitter.md)
+### [X12](logic-apps-enterprise-integration-x12.md)
+### [XML 验证](logic-apps-enterprise-integration-xml-validation.md)
 ## 架构历史记录
 ### [GA](logic-apps-schema-2016-04-01.md)
 ### [预览](logic-apps-schema-2015-08-01.md)

@@ -46,20 +46,22 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [模板](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### [网络接口](virtual-network-network-interface.md)
+### 网络接口
+#### [添加、更改或删除](virtual-network-network-interface.md)
+#### [添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)
 
 ### [公共 IP 地址](virtual-network-public-ip-address.md)
 
 ### 虚拟机
-
-#### 静态公共 IP 地址
+#### [添加或删除网络接口](virtual-network-network-interface-vm.md) 
+#### 创建具有静态公共 IP 地址的 VM
 ##### [门户](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 ##### [CLI](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [模板](virtual-network-deploy-static-pip-arm-template.md)
 ##### [PowerShell（经典）](virtual-networks-reserved-public-ip.md)
 
-#### 静态专用 IP 地址
+#### 创建具有静态专用 IP 地址的 VM
 ##### [门户](virtual-networks-static-private-ip-arm-pportal.md)
 ##### [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 ##### [CLI](virtual-networks-static-private-ip-arm-cli.md)
@@ -67,14 +69,13 @@
 ##### [PowerShell（经典）](virtual-networks-static-private-ip-classic-ps.md)
 ##### [CLI（经典）](virtual-networks-static-private-ip-classic-cli.md)
 
-#### 多个网络接口
-##### [PowerShell](virtual-network-deploy-multinic-arm-ps.md)
-##### [CLI](virtual-network-deploy-multinic-arm-cli.md)
-##### [模板](virtual-network-deploy-multinic-arm-template.md)
+#### 创建具有多个网络接口的 VM
+##### [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [PowerShell（经典）](virtual-network-deploy-multinic-classic-ps.md)
 ##### [CLI（经典）](virtual-network-deploy-multinic-classic-cli.md)
 
-#### 多个 IP 地址
+#### 创建具有多个 IP 地址的 VM
 ##### [Azure 门户](virtual-network-multiple-ip-addresses-portal.md)
 ##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 ##### [CLI](virtual-network-multiple-ip-addresses-cli.md)

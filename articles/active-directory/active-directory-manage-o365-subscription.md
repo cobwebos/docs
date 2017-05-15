@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
 ms.openlocfilehash: 2fda7dc07d01bcd0629d1fa80ec9262e80af4c5f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -65,9 +67,4 @@ ms.openlocfilehash: 2fda7dc07d01bcd0629d1fa80ec9262e80af4c5f
 
 ## <a name="next-steps"></a>后续步骤
 有关订阅与目录之间的关系的详细信息，请参阅 [订阅与目录的关联方式](active-directory-how-subscriptions-associated-directory.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

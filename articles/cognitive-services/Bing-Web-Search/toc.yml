@@ -1,0 +1,43 @@
+- name: "必应 Web 搜索文档"
+  href: ../index.md
+- name: "概述"
+  items:
+    - name: "搜索 Web"
+      href: search-the-web.md
+    - name: "从 v5 升级到 v7 预览"
+      href: bing-web-upgrade-guide-v5-to-v7.md
+    - name: "使用和显示要求"
+      href: UseAndDisplayRequirements.md
+- name: "快速入门"
+  expanded: true
+  items:
+  - name: "入门"
+    href: quick-start.md
+- name: "如何"
+  items:
+  - name: "筛选答案"
+    href: filter-answers.md
+  - name: "排名结果"
+    href: rank-results.md
+  - name: "处理搜索词突出显示"
+    href: hit-highlighting.md
+  - name: "网页"
+    href: paging-webpages.md
+  - name: "调整和裁剪缩略图"
+    href: resize-and-crop-thumbnails.md
+- name: "教程"
+  items:
+  - name: "C# 排名教程"
+    href: csharp-ranking-tutorial.md
+- name: "引用"
+  items:
+  - name: "REST v5"
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference
+  - name: "REST v7 预览"
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference
+- name: "资源"
+  items:
+  - name: "订阅密钥"
+    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api
+  - name: "试试看！"
+    href: https://dev.cognitive.microsoft.com/docs/services/56b43eeccf5ff8098cef3807/operations/56b4447dcf5ff8098cef380d

@@ -132,8 +132,9 @@
 ## 扩展群集
 ### [使用 Bootstrap 自定义群集](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [使用脚本操作自定义群集](hdinsight-hadoop-customize-cluster-linux.md)
-### [添加 Hive 库](hdinsight-hadoop-add-hive-libraries.md)
 ### [开发脚本操作](hdinsight-hadoop-script-actions-linux.md)
+### [安装或更新 Mono](hdinsight-hadoop-install-mono.md)
+### [添加 Hive 库](hdinsight-hadoop-add-hive-libraries.md)
 ### [使用 Giraph](hdinsight-hadoop-giraph-install-linux.md)
 ### [使用 Hue](hdinsight-hadoop-hue-linux.md)
 ### [使用 R](hdinsight-hadoop-r-scripts-linux.md)
@@ -165,6 +166,7 @@
 #### [使用 Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 ### [添加存储帐户](hdinsight-hadoop-add-storage.md)
 ### [上载 Hadoop 作业的数据](hdinsight-upload-data.md)
+### [将多个 HDInsight 群集与 Data Lake Store 配合使用](hdinsight-multiple-clusters-data-lake-store.md)
 ### [使用 Sqoop 导入和导出数据](hdinsight-use-sqoop.md)
 #### [使用 SSH 进行连接](hdinsight-use-sqoop-mac-linux.md)
 #### [使用 cURL 运行](hdinsight-hadoop-use-sqoop-curl.md)
@@ -190,7 +192,7 @@
 #### [Hive 查询性能](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight)
+## [PowerShell](/powershell/module/azurerm.hdinsight)
 ## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
 ## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
 ## [.NET (Avro)](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)

@@ -14,9 +14,10 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: yuaxu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 47063276d7bb6bb3b3aac0cca4290dfbea5488f7
 ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
+ms.contentlocale: zh-cn
 ms.lasthandoff: 12/01/2016
 
 
@@ -266,8 +267,8 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 5. 重新生成项目。
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>在 iOS 应用中测试推送通知
-1. 在 Visual Studio 中，确保已选择 **iOS** 作为部署目标，然后选择“设备”****
-   ，以便在已连接的 iOS 设备上运行。
+1. 在 Visual Studio 中，确保已选择 **iOS** 作为部署目标，然后选择 **设备**
+   ， 以便在已连接的 iOS 设备上运行。
 
     可以使用 iTunes 在已连接到电脑的 iOS 设备上运行。 iOS 模拟器不支持推送通知。
 

@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4491d7385b9cfc2105e83f0e1099b68cde75feec
-ms.lasthandoff: 12/29/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cfb4104dd58f2af8b3ffed7491c91ae6c6557ddc
+ms.openlocfilehash: f5006b6ce1b409fae5e540d8414e8e56651f9349
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的多重身份验证要求
 在充斥移动性的当下，用户访问云中和任何设备中的数据和应用程序，确保该信息安全变得尤为重要。  每天都会有关于安全漏洞的新闻头条。  尽管并不能保证避免此类漏洞，但多重身份验证提供了额外的安全层，可帮助防止利用这些漏洞。
-首先评估多重身份验证的组织要求。 即，组织要尝试保护的内容。  必须对定义为设置和支持组织用户进行多重身份验证的技术要求进行评估。
+首先评估多重身份验证的组织要求。 即，组织要尝试保护的内容。  在针对设置和启用组织用户的多重身份验证确定技术要求时，此评估非常重要。
 
 > [!NOTE]
 > 如果不熟悉 MFA 及其作用，强烈建议你阅读[什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)一文，然后再继续阅读本节。
@@ -46,13 +47,13 @@ ms.lasthandoff: 12/29/2016
 
 * 用户是否熟悉多重身份验证？
 * 某些使用是否需要提供额外的身份验证？  
-  * 如果是，始终、从外部网络访问时、访问特定应用程序，还是在其他情况下？
+  * 如果是，始终、从外部网络访问时、访问特定应用程序时，还是在其他情况下？
 * 用户是否需要培训如何设置和实施多重身份验证？
 * 什么是贵公司想要为其用户启用多重身份验证的关键方案？
 
-在回答完上述问题后，将能够了解本地是否存在已实施的多重身份验证。 必须对定义为设置和支持组织用户进行多重身份验证的技术要求进行评估。 务必回答以下问题：
+在回答完上述问题后，将能够了解本地是否存在已实施的多重身份验证。 在针对设置和启用组织用户的多重身份验证确定技术要求时，此评估非常重要。 务必回答以下问题：
 
-* 贵公司是否需要保护使用 MFA 的特权帐户？
+* 贵公司是否需要使用 MFA 保护特权帐户？
 * 贵公司出于合规性原因，是否需要为某些应用程序启用 MFA？
 * 贵公司是否需要为这些应用程序的所有合格用户或仅管理员启用 MFA？
 * 需要始终启用 MFA，还是仅当用户在公司网络之外登录时启用 MFA？

@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 18dcb3a319f78639b27f9e70a2177423192e5958
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/13/2017
 
 
@@ -123,9 +124,9 @@ hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShar
 可以使用与 HDInsight 群集关联的 Azure Active Directory (Azure AD) 服务主体来访问 Data Lake Store。
 
 ### <a name="to-add-a-service-principal"></a>添加服务主体
-1. 创建 HDInsight 群集时，请在“数据源”选项卡中选择“群集 AAD 标识”。
+1.创建 HDInsight 群集时，请在“数据源”选项卡中选择“群集 AAD 标识”。
 
-2. 在“群集 AAD 标识”对话框中的“选择 AD 服务主体”下，选择“新建”。
+2.在“群集 AAD 标识”对话框中的“选择 AD 服务主体”下，选择“新建”。
 
 为服务主体命名并创建密码后，单击“管理 ADLS 访问”将该服务主体与 Data Lake Store 相关联。
 

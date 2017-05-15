@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: bcb075b320bab942c6421be72ea1445d5fa3f603
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7a6f255c64a584e29801aacb40c79462751fe535
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/26/2017
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group#create) 命令创建资源组。 
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在 `westus` 区域中创建了名为 `myResourceGroupVM` 的资源组。 
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“westus”区域中创建了名为“myResourceGroupVM”的资源组。 
 
 ```azurecli
 az group create --name myResourceGroupVM --location westus
@@ -44,7 +45,7 @@ az group create --name myResourceGroupVM --location westus
 
 使用 [az vm create](https://docs.microsoft.com/cli/azure/vm#create) 命令创建虚拟机。 
 
-创建虚拟机时，可使用多个选项，例如操作系统映像、磁盘大小调整和管理凭据。 在此示例中，创建了一个名为 `myVM` 的运行 Ubuntu Server 的虚拟机。 
+创建虚拟机时，可使用多个选项，例如操作系统映像、磁盘大小调整和管理凭据。 在此示例中，创建了一个名为“myVM”的运行 Ubuntu Server 的虚拟机。 
 
 ```azurecli
 az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
@@ -81,7 +82,7 @@ exit
 
 ## <a name="understand-vm-images"></a>了解 VM 映像
 
-Azure 应用商店包括许多可用于新建 VM 的映像。 在之前的步骤中，使用 Ubuntu 映像创建了虚拟机。 在此步骤中，Azure CLI 用于在应用商店中搜索 CentOS 映像，此映像稍后将用于部署第二个虚拟机。  
+Azure 应用商店包括许多可用于创建 VM 的映像。 在之前的步骤中，使用 Ubuntu 映像创建了虚拟机。 在此步骤中，Azure CLI 用于在应用商店中搜索 CentOS 映像，此映像稍后将用于部署第二个虚拟机。  
 
 若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image#list) 命令。
 
@@ -107,7 +108,7 @@ Debian         credativ                8                   credativ:Debian:8:lat
 CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
 ```
 
-可以通过添加 `--all` 参数查看完整列表。 还可以按 `--publisher` 或 `–offer` 筛选映像列表。 在此示例中，已在列表中筛选出其产品与 `CentOS` 匹配的所有映像。 
+可以通过添加 `--all` 参数查看完整列表。 还可以按 `--publisher` 或 `–-offer` 筛选映像列表。 在此示例中，已在列表中筛选出其产品与“CentOS”匹配的所有映像。 
 
 ```azurecli
 az vm image list --offer CentOS --all --output table
@@ -126,7 +127,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309     
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-若要使用特定映像部署 VM，请记下 `Urn` 列中的值。 指定映像时，可将映像版本号替换为“latest”，这会选择最新的发行版。 在此示例中，`--image` 参数用于指定最新版本的 CentOS 6.5 映像。  
+若要使用特定映像部署 VM，请记下“Urn”列中的值。 指定映像时，可将映像版本号替换为“latest”，这会选择最新的发行版。 在此示例中，`--image` 参数用于指定最新版本的 CentOS 6.5 映像。  
 
 ```azurecli
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
@@ -138,7 +139,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 ### <a name="vm-sizes"></a>VM 大小
 
-下表将大小分类成了各个用例。  
+下表将大小分类成了多个用例。  
 
 | 类型                     | 大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
@@ -147,7 +148,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 | [内存优化](../virtual-machines-windows-sizes-memory.md)    | GS, G, DSv2, DS, Dv2, D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
 | [存储优化](../virtual-machines-windows-sizes-storage.md)      | LS                | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
 | [GPU](sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
-| [高性能](sizes-hpc.md) | H, A8-11          | 功能最强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 
+| [高性能](sizes-hpc.md) | H, A8-11          | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 
 
 
 ### <a name="find-available-vm-sizes"></a>查找可用的 VM 大小
@@ -186,7 +187,12 @@ az vm list-sizes --location westus --output table
 在前面的 VM 创建示例中未提供大小，因此会使用默认大小。 可以在创建时使用 [az vm create](/cli/azure/vm#create) 和 `--size` 参数选择 VM 大小。 
 
 ```azurecli
-az vm create --resource-group myResourceGroupVM --name myVM3 --image UbuntuLTS --size Standard_F4s --generate-ssh-keys
+az vm create \
+    --resource-group myResourceGroupVM \
+    --name myVM3 \
+    --image UbuntuLTS \
+    --size Standard_F4s \
+    --generate-ssh-keys
 ```
 
 ### <a name="resize-a-vm"></a>调整 VM 的大小
@@ -224,7 +230,7 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 ## <a name="vm-power-states"></a>VM 电源状态
 
-Azure VM 可能会处于多种电源状态之一。 从监控程序的角度来看，此状态表示 VM 的当前状态。 
+Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的角度来看，此状态表示 VM 的当前状态。 
 
 ### <a name="power-states"></a>电源状态
 
@@ -243,7 +249,10 @@ Azure VM 可能会处于多种电源状态之一。 从监控程序的角度来�
 若要检索特定 VM 的状态，请使用 [az vm get instance-view](/cli/azure/vm#get-instance-view) 命令。 请确保为虚拟机和资源组指定有效的名称。 
 
 ```azurecli
-az vm get-instance-view --name myVM --resource-group myResourceGroupVM --query instanceView.statuses[1] --output table
+az vm get-instance-view \
+    --name myVM \
+    --resource-group myResourceGroupVM \
+    --query instanceView.statuses[1] --output table
 ```
 
 输出：
@@ -288,6 +297,6 @@ az group delete --name myResourceGroupVM --no-wait --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解 VM 创建和管理的基本知识。 转到下一教程，了解 VM 磁盘。  
+在本教程中，你已了解 VM 创建和管理的基本知识。 请转到下一教程，了解 VM 磁盘。  
 
 [创建和管理 VM 磁盘](./tutorial-manage-disks.md)

@@ -12,19 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 04/23/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 3dba9ebc8eb23be00f9b52907ba4bc565eeb5688
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 58b289530e16c2a2e9bbe59b372c858ff22ad5ac
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/29/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成 - 公共预览版
 
 适用于 Azure MFA 的网络策略服务器 (NPS) 扩展可以使用现有的服务器将基于云的 MFA 功能添加到身份验证基础结构。 使用 NPS 扩展，可将电话呼叫、短信或电话应用验证添加到现有的身份验证流，而无需安装、配置和维护新服务器。 
- 
+
+此扩展是为想要保护 VPN 连接，但不部署 Azure MFA 服务器的组织创建的。 NPS 扩展充当 RADIUS 和基于云的 Azure MFA 之间的适配器，以为联合用户或已同步用户提供身份验证的第二个因素。 
+
 使用适用于 Azure MFA 的 NPS 扩展时，身份验证流包括以下组件： 
 
 1. **NAS/VPN 服务器**接收来自 VPN 客户端的请求，并将其转换为可发往 NPS 服务器的 RADIUS 请求。 
@@ -108,6 +111,8 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 2. 转到任何网站以启动 Azure AD 身份验证，如 https://portal.azure.com。
 3. [针对双重验证进行注册](./end-user/multi-factor-authentication-end-user-first-time.md)。
 
+用户还需要按照以下步骤注册，然后才能使用 NPS 扩展进行身份验证。
+
 ## <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
 > [!IMPORTANT]
@@ -144,6 +149,8 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 5. 以管理员身份登录到 Azure AD。
 6. 脚本完成后，PowerShell 会显示一条成功消息。  
 
+在要针对负载均衡设置的任何其他 NPS 服务器上重复这些步骤。 
+
 ## <a name="configure-your-nps-extension"></a>配置 NPS 扩展
 
 本部分包含一些设计注意事项和建议，帮助用户成功完成 NPS 扩展的部署。
@@ -167,7 +174,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 此项设置的目的是确定当某个用户未注册 MFA 时要执行哪个操作。 如果该键不存在、未设置或设置为 TRUE，并且用户未注册，则该扩展将通不过 MFA 质询。 如果该键设置为 FALSE 并且用户未注册，身份验证将会继续且不执行 MFA。
 
-可以在登记用户的过程中选择创建此键，并将其设置为 FALSE。 由于设置密钥会允许未注册 MFA 的用户登录，因此在转到生产环境前应删除此密钥。
+你可以选择在用户加入并且可能尚未所有用户都已注册 Azure MFA 时创建该键并将其设置为 FALSE。 但是，由于设置该键允许未注册 MFA 的用户登录，因此应在转到生产环境之前删除该键。
 
 ## <a name="troubleshooting"></a>故障排除
 

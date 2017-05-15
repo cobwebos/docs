@@ -24,15 +24,16 @@
 
 ## 自动化
 ### [Azure 自动化](automation-manage-key-vault.md)
-### [使用 CLI 进行创建和管理](key-vault-manage-with-cli.md)
 ### [使用 CLI 2.0 进行创建和管理](key-vault-manage-with-cli2.md)
 
 # 引用
 ## [PowerShell](/powershell/module/azurerm.keyvault)
-## [Azure CLI 2.0](/cli/azure/keyvault)
+## [Azure CLI 2](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
 ## [Java](/java/api/com.microsoft.azure.keyvault)
-## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+## Node.js
+### [保管库管理](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+### [保管库内容管理](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest)
 ## [REST](/rest/api/keyvault)
 
 # 相关内容

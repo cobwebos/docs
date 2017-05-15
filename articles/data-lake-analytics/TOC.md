@@ -15,11 +15,12 @@
 
 # 如何
 ## 开发
-### [U-SQL](data-lake-analytics-u-sql-get-started.md)
+### [U-SQL 基础知识](data-lake-analytics-u-sql-get-started.md)
 ### [U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
 ### [U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 ### [U-SQL Python 扩展](data-lake-analytics-u-sql-python-extensions.md)
-### [U-SQL 认知功能](data-lake-analytics-u-sql-cognitive.md)
+### [U-SQL R 扩展](data-lake-analytics-u-sql-r-extensions.md)
+### [U-SQL 认知扩展](data-lake-analytics-u-sql-cognitive.md)
 
 ## 创建解决方案
 ### [分析网站日志](data-lake-analytics-analyze-weblogs.md)
@@ -40,7 +41,7 @@
 ### [使用顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 
 # 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics)
+## [PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html)

@@ -1,5 +1,5 @@
 ---
-title: "Azure 监视和诊断文档 - 教程和 API 参考 | Microsoft 文档"
+title: "Azure Monitor 文档 - 教程和 API 参考 | Microsoft Docs"
 description: "了解如何使用监视和诊断服务来跟踪性能、维护安全性以及识别趋势。 API 参考、最佳实践和其他资源。"
 services: monitoring-and-diagnostics
 author: carolz
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 0d57ccb26a3dde16c50d2e837d392ab8e6fea979
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 475353f5a5abca1e9d6b5fdf4980d0cf33acc744
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 ---
-# <a name="monitoring-and-diagnostics-documentation"></a>监视和诊断文档
+# <a name="azure-monitor-documentation"></a>Azure Monitor 文档
 
 了解如何使用 Azure 监视和诊断服务来跟踪性能、维护安全性以及识别趋势。 教程、API 参考、最佳实践和其他文档可帮助你了解如何使用监视和诊断，以及如何规划和部署可缩放的可靠解决方案。
 

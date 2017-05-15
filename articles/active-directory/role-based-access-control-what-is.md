@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/03/2017
+ms.date: 04/13/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: aa31b373e67d4742f7697e2ec6958e108535f746
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 06daecfe8cd61cbb3ab9d2307acb07e30270d921
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Azure 门户中基于角色的访问控制入门
-面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，攻击者可轻松威胁帐户。 权限太少，员工无法有效完成其工作。 Azure 基于角色的访问控制 (RBAC) 通过对 Azure 提供细致的访问管理帮助解决此问题。
+面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成其工作。 Azure 基于角色的访问控制 (RBAC) 通过对 Azure 提供细致的访问管理帮助解决此问题。
 
 使用 RBAC，你可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对你的 Azure 订阅或资源的无限权限，你可以仅允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
 
@@ -42,7 +43,7 @@ Azure RBAC 有三种适用于所有资源类型的基本角色：
 * **参与者**可以创建和管理所有类型的 Azure 资源，但不能将访问权限授予其他用户。
 * **读取器**可以查看现有 Azure 资源。
 
-Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例如，虚拟机参与者角色允许用户创建和管理虚拟机。 它并不授予其访问虚拟机连接的虚拟网络或子网的权限。
+Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例如，虚拟机参与者角色允许用户创建和管理虚拟机。 它并不授予其访问虚拟机连接的虚拟网络或子网的权限。 
 
 [RBAC 内置角色](role-based-access-built-in-roles.md)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。 若要定义自己的角色以便进一步控制，请参阅如何生成 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)。
 
@@ -62,7 +63,7 @@ Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例
 仅 Azure 门户和新的 Azure Resource Manager API 支持 Azure RBAC。 分配了 RBAC 角色的用户和应用程序不能使用经典管理门户和 Azure 经典部署模型。
 
 ## <a name="authorization-for-management-vs-data-operations"></a>管理授权与数据操作
-Azure RBAC 仅支持 Azure 门户和 Azure Resource Manager API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，你可以授权某人管理存储帐户，但该用户不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
+Azure RBAC 仅支持 Azure 门户和 Azure Resource Manager API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，你可以授权某人管理存储帐户，但该人员不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 门户中基于角色的访问控制](role-based-access-control-configure.md)入门。

@@ -14,10 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 48ce80d2a25c6ad55e0520ea4cbdbc82db23f919
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: eac9c5b0d8d0f7802d88e6f4f27d9d23c406e025
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/04/2017
 
 本教程介绍如何扩展 Azure 中的 ASP.NET Web 应用，以最大化用户请求数。
 
-开始学习本教程之前，请确保在计算机上[安装 Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)。 此外，需要在运行示例应用程序的本地计算机上安装 [Visual Studio](https://www.visualstudio.com/vs/)。
+开始学习本教程之前，请确保在计算机上[安装 Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)。 此外，需要在本地计算机安装 [Visual Studio](https://www.visualstudio.com/vs/) 来运行示例应用程序。
 
 ## <a name="step-1---get-sample-application"></a>步骤 1 - 获取示例应用程序
 在此步骤中，你将设置本地 ASP.NET 项目。

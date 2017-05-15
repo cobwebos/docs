@@ -13,13 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/13/2017
+ms.date: 5/3/2017
 ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 2e981f0f45bc5b338937839b74114e12db960927
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 245a89f2576dc1bfed2f9078f1d8761f91caf561
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -112,10 +113,10 @@ Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 
 Azure 备份保护托管磁盘 VM。 使用托管磁盘，用户就不需要管理虚拟机的存储帐户，大大简化 VM 预配。
 
 ### <a name="back-up-managed-disk-vms"></a>备份托管磁盘 VM
-在托管磁盘上备份 VM 与备份 Resource Manager VM 并无不同。 在 Azure 门户中，可以直接从虚拟机视图或恢复服务保管库视图中配置备份作业。 通过基于托管磁盘的 RestorePoint 收集，可以在托管磁盘上备份 VM。 Azure 备份目前不支持备份使用 Azure 磁盘加密 (ADE) 加密的托管磁盘 VM。
+在托管磁盘上备份 VM 与备份 Resource Manager VM 并无不同。 在 Azure 门户中，可以直接从虚拟机视图或恢复服务保管库视图中配置备份作业。 通过基于托管磁盘的 RestorePoint 收集，可以在托管磁盘上备份 VM。 Azure 备份也支持备份使用 Azure 磁盘加密 (ADE) 加密的托管磁盘 VM。
 
 ### <a name="restore-managed-disk-vms"></a>还原托管磁盘 VM
-Azure 备份允许用户还原使用托管磁盘的完整 VM，或者将托管磁盘还原到 Resource Manager 存储帐户。 在还原过程中，Azure 管理托管磁盘。 你（客户）管理作为还原过程的一部分所创建的存储帐户。
+Azure 备份允许用户还原使用托管磁盘的完整 VM，或者将托管磁盘还原到 Resource Manager 存储帐户。 在还原过程中，Azure 管理托管磁盘。 你（客户）管理作为还原过程的一部分所创建的存储帐户。 若要还原托管的已加密 VM，则在还原之前，VM 的密钥和机密应已存在于密钥保管库中。
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>每个备份组件有哪些功能？
 以下各节提供了相关表格，总结了每个 Azure 备份组件中各种功能是否可用或受支持。 请参阅各表格后的额外支持信息或详细信息。

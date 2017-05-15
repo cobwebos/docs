@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b30ed9727229c082bff65023bfe4900640caa995
-ms.lasthandoff: 12/29/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: d05b4a34c5271b636400ed90ead76fabf0d911bd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 12/29/2016
 >
 >
 
-从中央管理员的角度来看，管理单元是可以创建并填充资源的目录对象。 **在此版本中，这些资源只能是用户。** 一旦创建并填充，管理单元即可作为只通过管理单元中所含资源限制授予的权限的范围。
+从中央管理员的角度来看，管理单元是可以创建并填充资源的目录对象。 **在此预览版中，这些资源只能是用户。** 一旦创建并填充，管理单元即可作为只通过管理单元中所含资源限制授予的权限的范围。
 
 ## <a name="managing-administrative-units"></a>管理管理单元
 在此预览版中，你可以使用 Windows PowerShell cmdlet 的 Azure Active Directory 模块创建和管理管理单元。

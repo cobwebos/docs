@@ -30,6 +30,7 @@
 
 ## 使用解决方案
 ### [管理解决方案](operations-management-suite-solutions.md)
+### [目标解决方案](operations-management-suite-solution-targeting.md)
 ### 见解与分析
 #### [AD 评估](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD 复制状态](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -58,6 +59,7 @@
 ### [自动化资源](operations-management-suite-solutions-resources-automation.md)
 ### [日志搜索和警报](operations-management-suite-solutions-resources-searches-alerts.md)
 ### [视图](operations-management-suite-solutions-resources-views.md)
+### [最佳实践](operations-management-suite-solutions-best-practices.md)
 
 ## [与 OMS 集成](operations-management-suite-integration.md)
 

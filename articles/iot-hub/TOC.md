@@ -81,6 +81,7 @@
 ### 使用直接方法
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-direct-methods.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-direct-methods.md)
+#### [Java 后端/Java 设备](iot-hub-java-java-direct-methods.md)
 ### 设备管理入门
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-device-management-get-started.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-device-management-get-started.md)
@@ -105,6 +106,7 @@
 ### 配置文件上载
 #### [使用门户](iot-hub-configure-file-upload.md)
 #### [使用 PowerShell](iot-hub-configure-file-upload-powershell.md)
+#### [使用 CLI 2.0](iot-hub-configure-file-upload-cli.md)
 ### [批量管理 IoT 设备](iot-hub-bulk-identity-mgmt.md)
 ### [使用指标](iot-hub-metrics.md)
 ### [操作监视](iot-hub-operations-monitoring.md)

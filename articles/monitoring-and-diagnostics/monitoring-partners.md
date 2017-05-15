@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/20/2017
+ms.date: 5/9/2017
 ms.author: johnkem
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: b2eb107d3d4279b5e2ac0612561f613fdb7ba006
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 18a45dd16e51e477758c3ba08f936a2e831dddb3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/21/2017
 | --- | --- | --- |
 | [![Partner Logo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![Partner Logo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![Partner Logo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
 | [![Partner Logo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] | [![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] |
-| [![Partner Logo][datadog-logo]<br/>**DataDog**][datadog-anchor] | [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] |
+| [![Partner Logo][datadog-logo]<br/>**Datadog**][datadog-anchor] | [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] |
 | [![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] | [![Partner Logo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] |
 | [![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
 
@@ -60,7 +61,7 @@ Cloudyn 可以管理和优化多平台混合云部署，帮助企业完全了解
 
 [查看相关文档。][cloudyn-doc]
 
-## <a name="datadog"></a>DataDog
+## <a name="datadog"></a>Datadog
 Datadog 是适用于云规模应用程序的全球领先监视服务，将服务器、数据库、工具和服务的数据整合，呈现整个堆栈的统一视图。 这些功能已在基于 SaaS 的数据分析平台上提供，使开发和运营团队可以协作，避免停机，解决性能问题，确保开发和部署周期按时完成。 通过将 Datadog 与 Azure 集成，可以从整个基础结构收集和查看指标，将 VM 指标与应用程序级的指标相互关联，使用属性与自定义标记的任意组合对指标进行分片和分解。
 
 [查看相关文档。][datadog-doc]
@@ -114,7 +115,7 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [cloudhealth-anchor]: #cloudhealth "CloudHealth"
 [cloudmonix-anchor]: #cloudmonix "CloudMonix"
 [cloudyn-anchor]: #cloudyn "Cloudyn"
-[datadog-anchor]: #datadog "DataDog"
+[datadog-anchor]: #datadog "Datadog"
 [dynatrace-anchor]: #dynatrace "Dynatrace"
 [newrelic-anchor]: #newrelic "NewRelic"
 [opsgenie-anchor]: #opsgenie "OpsGenie"
@@ -141,12 +142,12 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 
 <!--Partner Documentation-->
 [alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic 文档。"
-[appdynamics-doc]: https://docs.appdynamics.com/display/PRO42/Register+for+AppDynamics+for+Windows+Azure "AppDynamics 文档。"
+[appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics 文档。"
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "CloudMonix 简介。"
 [cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Cloudyn 简介。"
-[datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "DataDog 文档。"
+[datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Datadog 文档。"
 [dynatrace-doc]: https://blog.ruxit.com/ruxit-monitoring-azure-web-apps/ "Dynatrace 文档。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文档。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie 文档。"
