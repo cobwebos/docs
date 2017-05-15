@@ -15,10 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: bad95e1700c1f85d6b4764e8edc3af98f2f5f804
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: fcbaa0df29fac22917695046ebc4015f3abf108f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -29,14 +30,14 @@ ms.lasthandoff: 03/09/2017
 
 > [!TIP]
 > [适用于 Azure 移动应用的 .NET 服务器 SDK][2] 是 GitHub 上的开放源代码。 该存储库包含所有源代码，包括整个服务器 SDK 单元测试套件以及一些示例项目。
-> 
-> 
+>
+>
 
 ## <a name="reference-documentation"></a>参考文档
 服务器 SDK 的参考文档位于此处：[Azure Mobile Apps .NET Reference][1]（Azure 移动应用 .NET 参考）。
 
 ## <a name="create-app"></a>如何创建 .NET 移动应用后端
-如果要开始一个新项目，可以使用 [Azure 门户]或 Visual Studio 创建应用服务应用程序。 可以在本地运行应用服务应用程序，或将项目发布到基于云的应用服务移动应用。  
+如果要开始一个新项目，可以使用 [Azure 门户]或 Visual Studio 创建应用服务应用程序。 可以在本地运行应用服务应用程序，或将项目发布到基于云的应用服务移动应用。
 
 如果将移动功能添加到现有项目，请参阅[下载并初始化 SDK](#install-sdk) 部分。
 
@@ -64,7 +65,7 @@ ms.lasthandoff: 03/09/2017
 若要安装该 SDK，请在 Visual Studio 中右键单击服务器项目，选择“管理 NuGet 包”，搜索 [Microsoft.Azure.Mobile.Server] 包，然后单击“安装”。
 
 ### <a name="server-project-setup"></a>初始化服务器项目
-初始化 .NET 后端服务器项目的方式类似其他 ASP.NET 项目，可通过包含 OWIN 启动类来完成。 确保已引用 NuGet 包 `Microsoft.Owin.Host.SystemWeb`。 若要在 Visual Studio 中添加此类，请右键单击服务器项目，选择“添加”**** > 
+初始化 .NET 后端服务器项目的方式类似其他 ASP.NET 项目，可通过包含 OWIN 启动类来完成。 确保已引用 NuGet 包 `Microsoft.Owin.Host.SystemWeb`。 若要在 Visual Studio 中添加此类，请右键单击服务器项目，选择“添加”**** >
 “新建项”****，然后选择“Web”**** > “常规”**** > “OWIN Startup 类”****。  将生成具有以下属性的类：
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
@@ -123,31 +124,31 @@ Azure 门户中的服务器快速启动代码调用 **UseDefaultConfiguration()*
    包含用于处理数据和设置数据管道的类。 通过调用 **AddTables** 扩展方法添加到配置。
 * [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/)
     使实体框架能够访问 SQL 数据库中的数据。 通过调用 **AddTablesWithEntityFramework** 扩展方法添加到配置。
-* [Microsoft.Azure.Mobile.Server.Authentication] 启用身份验证，并设置用于验证令牌的 OWIN 中间件。 通过调用 **AddAppServiceAuthentication** 
+* [Microsoft.Azure.Mobile.Server.Authentication] 启用身份验证，并设置用于验证令牌的 OWIN 中间件。 通过调用 **AddAppServiceAuthentication**
    与 **IAppBuilder**.**UseAppServiceAuthentication** 扩展方法添加到配置。
 * [Microsoft.Azure.Mobile.Server.Notifications] 启用推送通知并定义推送注册终结点。 通过调用 **AddPushNotifications** 扩展方法添加到配置。
 * [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/)
    创建从移动应用向旧版 Web 浏览器提供数据的控制器。 通过调用   **MapLegacyCrossDomainController** 扩展方法添加到配置。
-* [Microsoft.Azure.Mobile.Server.Login] 通过 AppServiceLoginHandler.CreateToken() 方法，该方法为静态方法，在自定义身份验证方案下使用。   
+* [Microsoft.Azure.Mobile.Server.Login] 通过 AppServiceLoginHandler.CreateToken() 方法，该方法为静态方法，在自定义身份验证方案下使用。
 
 ## <a name="publish-server-project"></a>如何发布服务器项目
 本部分说明如何从 Visual Studio 发布 .NET 后端项目。 也可以使用 Git 或 [Azure App Service 部署文档](../app-service-web/web-sites-deploy.md)中介绍的任何其他方法部署后端项目。
 
 1. 在 Visual Studio 中，重新生成项目以还原 NuGet 包。
 2. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。 首次发布时，需要定义发布配置文件。 如果已定义配置文件，可以直接选择该配置文件，然后单击“发布”。
-3. 如果系统要求选择发布目标，请单击“Microsoft Azure App Service” > “下一步”，然后根据需要使用 Azure 凭据登录。 
+3. 如果系统要求选择发布目标，请单击“Microsoft Azure App Service” > “下一步”，然后根据需要使用 Azure 凭据登录。
    Visual Studio 将直接从 Azure 下载并安全存储发布设置。
-   
+
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-1.png)
 4. 选择“订阅”，从“视图”中选择“资源类型”，展开“移动应用”，单击移动应用后端，然后单击“确定”。
-   
+
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-2.png)
 5. 验证发布配置文件信息，然后单击“发布”。
-   
+
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-3.png)
-   
+
     成功发布移动应用后端后，可以看到表示成功的登录页。
-   
+
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
 ## <a name="define-table-controller"></a>如何定义表控制器
@@ -198,7 +199,7 @@ DTO 用于定义 SQL 数据库中的表。  若要创建数据库条目，请将
 
 快速启动服务器项目包含一个简单的 **TodoItemController** 示例。
 
-### <a name="how-to-adjust-the-table-paging-size"></a>如何调整表分页大小
+### <a name="adjust-pagesize"></a>如何调整表分页大小
 默认情况下，Azure 移动应用为每个请求返回 50 条记录。  分页可以确保客户端不会长时间占用其 UI 线程或服务器，从而提供良好的用户体验。 若要更改表分页大小，可增大服务器端“允许的查询大小”和客户端页面大小。服务器端“允许的查询大小”可使用 `EnableQuery` 属性进行调整：
 
     [EnableQuery(PageSize = 500)]
@@ -211,17 +212,17 @@ DTO 用于定义 SQL 数据库中的表。  若要创建数据库条目，请将
 1. 在 Visual Studio 中，右键单击“控制器”文件夹，单击“添加” > “控制器”，选择“Web API 2 控制器 &mdash; 空白”，然后单击“添加”。
 2. 提供**控制器名称**（例如 `CustomController`），然后单击“添加”。
 3. 在新控制器类文件中添加以下 using 语句：
-   
+
         using Microsoft.Azure.Mobile.Server.Config;
 4. 将 **[MobileAppController]** 属性应用到 API 控制器类定义，如以下示例中所示：
-   
+
         [MobileAppController]
         public class CustomController : ApiController
         {
               //...
         }
 5. 在 App_Start/Startup.MobileApp.cs 文件中添加对 **MapApiControllers** 扩展方法的调用，如以下示例中所示：
-   
+
         new MobileAppConfiguration()
             .MapApiControllers()
             .ApplyTo(config);
@@ -241,18 +242,18 @@ Azure 移动应用使用应用服务身份验证/授权保护移动后端。  �
 
 1. 在 Visual Studio 中，安装 [Microsoft.Azure.Mobile.Server.Authentication] 包。
 2. 在 Startup.cs 项目文件中 **Configuration** 方法的开头添加以下代码行：
-   
+
         app.UseAppServiceAuthentication(config);
-   
+
     此 OWIN 中间件组件验证由关联的应用服务网关颁发的令牌。
-3. 将 `[Authorize]` 属性添加到任何要求身份验证的控制器或方法。 
+3. 将 `[Authorize]` 属性添加到任何要求身份验证的控制器或方法。
 
 若要了解如何在移动应用后端对客户端进行身份验证，请参阅[向应用添加身份验证](app-service-mobile-ios-get-started-users.md)。
 
 ### <a name="custom-auth"></a>如何对应用程序使用自定义身份验证
 如果不想使用某个应用服务身份验证/授权提供程序，可以实现自己的登录系统。 安装 [Microsoft.Azure.Mobile.Server.Login] 包以协助生成身份验证令牌。  提供你自己的代码验证用户凭据。 例如，可以针对数据库中的加盐密码和哈希密码进行检查。 在以下示例中，`isValidAssertion()` 方法（在其他位置定义）负责这些检查。
 
-通过创建 ApiController 并公开 `register` 和 `login` 操作，可以公开自定义身份验证。 客户端应使用自定义 UI 从用户处收集信息。  随后再通过标准 HTTP POST 调用将信息提交到 API。 服务器验证断言后，便可以使用 `AppServiceLoginHandler.CreateToken()` 方法颁发令牌。  ApiController **不可**使用 `[MobileAppController]` 属性。 
+通过创建 ApiController 并公开 `register` 和 `login` 操作，可以公开自定义身份验证。 客户端应使用自定义 UI 从用户处收集信息。  随后再通过标准 HTTP POST 调用将信息提交到 API。 服务器验证断言后，便可以使用 `AppServiceLoginHandler.CreateToken()` 方法颁发令牌。  ApiController **不可**使用 `[MobileAppController]` 属性。
 
 示例 `login` 操作：
 
@@ -296,8 +297,8 @@ Azure 移动应用使用应用服务身份验证/授权保护移动后端。  �
 
 > [!TIP]
 > 使用 `loginAsync()` 方法可确保将身份验证令牌附加到后续对服务的所有调用。
-> 
-> 
+>
+>
 
 ### <a name="user-info"></a>如何检索经过身份验证的用户信息
 当应用服务对用户进行身份验证时，可以访问分配的用户 ID 和 .NET 后端代码中的其他信息。 用户信息可用于在后端作出授权决策。 可使用以下代码获取与某个请求关联的用户 ID：
@@ -351,26 +352,26 @@ SID 派生自提供程序特定的用户 ID，对于给定的用户和登录提�
 ## <a name="how-to-add-push-notifications-to-a-server-project"></a>如何将推送通知添加到服务器项目
 通过扩展 **MobileAppConfiguration** 对象并创建通知中心客户端，将推送通知添加到服务器项目。
 
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 `Microsoft.Azure.Mobile.Server.Notifications`，然后单击“安装”。 
+1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 `Microsoft.Azure.Mobile.Server.Notifications`，然后单击“安装”。
 2. 重复此步骤安装 `Microsoft.Azure.NotificationHubs` 包，其中包含通知中心客户端库。
 3. 在 App_Start/Startup.MobileApp.cs 中，于初始化期间添加对 **AddPushNotifications** 扩展方法的调用：
-   
+
         new MobileAppConfiguration()
             // other features...
             .AddPushNotifications()
             .ApplyTo(config);
 4. 添加以下代码用于创建通知中心客户端：
-   
+
         // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
         MobileAppSettingsDictionary settings =
             config.GetMobileAppSettingsProvider().GetMobileAppSettings();
-   
+
         // Get the Notification Hubs credentials for the Mobile App.
         string notificationHubName = settings.NotificationHubName;
         string notificationHubConnection = settings
             .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
-   
+
         // Create a new Notification Hub client.
         NotificationHubClient hub = NotificationHubClient
             .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
@@ -395,7 +396,7 @@ SID 派生自提供程序特定的用户 ID，对于给定的用户和登录提�
         }
     });
 
-创建安装时，后端将忽略客户端在推送通知注册期间提供的任何标记。 若要使客户端能够将标记添加到安装，必须创建一个自定义 API，此 API 可以使用上述模式添加标记。 
+创建安装时，后端将忽略客户端在推送通知注册期间提供的任何标记。 若要使客户端能够将标记添加到安装，必须创建一个自定义 API，此 API 可以使用上述模式添加标记。
 
 有关示例，请参阅应用服务移动应用的完整快速入门示例中的[客户端添加的推送通知标记][5]。
 
@@ -429,10 +430,10 @@ Azure 应用服务提供多种适用于 ASP.NET 应用程序的调试和故障�
 
 1. 遵循[如何启用诊断](../app-service-web/web-sites-enable-diagnostic-log.md#enablediag)中的步骤。
 2. 在代码文件中添加以下 using 语句：
-   
+
         using System.Web.Http.Tracing;
 3. 创建从 .NET 后端写入诊断日志的跟踪写入器，如下所示：
-   
+
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
 4. 重新发布服务器项目，并访问移动应用后端，结合日志记录执行代码路径。
@@ -453,12 +454,13 @@ Azure 应用服务提供多种适用于 ASP.NET 应用程序的调试和故障�
             TokenHandler = config.GetAppServiceTokenHandler()
         });
 
-在上例中，应使用 HTTPS 方案将 Web.config 文件中的 *authAudience* 和 *authIssuer* 应用程序设置配置为每个应用程序根目录的 URL。 同样，应将 *authSigningKey* 设置为应用程序的签名密钥值。 获取签名密钥：
+在上例中，应使用 HTTPS 方案将 Web.config 文件中的 *authAudience* 和 *authIssuer* 应用程序设置配置为每个应用程序根目录的 URL。 同样，应将 *authSigningKey* 设置为应用程序的签名密钥值。
+获取签名密钥：
 
-1. 在 [Azure 门户] 中导航到应用 
+1. 在 [Azure 门户] 中导航到应用
 2. 依次单击“工具”、“Kudu”、“转到”。
 3. 在 Kudu 管理站点中，单击“环境”。
-4. 查找 *WEBSITE\_AUTH\_SIGNING\_KEY* 的值。 
+4. 查找 *WEBSITE\_AUTH\_SIGNING\_KEY* 的值。
 
 在本地应用程序配置中，使用 *authSigningKey* 参数的签名密钥。  现在已配备移动后端，在本地运行时可以验证客户端从基于云的终结点获取的令牌。
 

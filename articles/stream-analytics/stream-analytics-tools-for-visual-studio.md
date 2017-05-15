@@ -4,27 +4,26 @@ description: "用于 Visual Studio 的 Azure 流分析工具入门教程"
 keywords: visual studio
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
-manager: jhubbard
-editor: cgronlun
+author: 
+manager: 
+editor: 
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: sujie
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: d0125dda4df69279e49a9fad4dc28dcbf6368322
-ms.lasthandoff: 03/29/2017
+ms.date: 
+ms.author: 
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: cbde312e1f58cb69a7c5edbd22543732a0781fdb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="use-azure-stream-analytics-tool-for-visual-studio"></a>使用用于 Visual Studio 的 Azure 流分析工具
-用于 Visual Studio 的 Azure 流分析工具现已推出正式版。 这些工具为流分析用户带来了更丰富的体验，可让他们进行故障排除以及编写复杂的查询，甚至可以在本地编写查询。 此外，还可让用户将流分析作业导出到 Visual Studio 项目中。
-
 ## <a name="introduction"></a>介绍
 本教程介绍如何使用用于 Visual Studio 的 Azure 流分析工具来创建、编写、本地测试、管理和调试 Azure 流分析作业。 
 
@@ -61,38 +60,38 @@ ms.lasthandoff: 03/29/2017
 2.    “输入别名”现在应为 **EntryStream**。 请注意，输入别名是要在查询脚本中使用的别名。 
 3.    “源类型”为“数据流”
 4.    源是**事件中心**。
-5.    “服务总线命名空间”应是下拉列表中的 **tollData** 命名空间。
+5.    “服务总线命名空间”应是下拉列表中的“tollData”命名空间。
 6.    事件中心名称应设置为 **entry**。
 7.    事件中心策略名称为 **RootManageSharedAccessKey**（默认值）。
 8.    选择“JSON”作为“事件序列化格式”，选择“UTF8”作为“编码”。
-   
-   设置看起来类似于：
-   
-   ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-01.png)
-   
+
+    设置看起来类似于：
+
+    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-01.png)
+ 
 9.    单击页面底部的“保存”，完成向导操作。 现在，可以添加另一个输入源来创建出口流。 右键单击输入节点，然后单击“新建项”。
-   
-   ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-02.png)
-   
+
+    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-02.png)
+ 
 10.    在弹出的窗口中选择“Azure 流分析输入”，将“名称”更改为 **ExitStream.json**。 单击 **“添加”**。
-   
-   ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-03.png)
-   
+
+    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-03.png)
+ 
 11.    在项目中双击“ExitStream.json”，然后遵循配置入口流时使用的相同步骤填写信息。 请确保按以下屏幕截图所示输入“事件中心名称”的值。
-   
-   ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-04.png)
-   
-   现已定义两个输入流。
-   
-   ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-05.png)
-   
-   接下来，为包含汽车注册数据的 blob 文件添加引用数据输入。
-   
-12.    在项目中右键单击“输入”节点，然后遵循配置流输入时使用的相同过程，但这次要选择“引用数据”而不是“数据流”，并且“输入别名”是 **Registration**。
-   
-   ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-06.png)
-   
-13.    选择包含 **tolldata** 的存储帐户。 容器名称应为 **tolldata**，**路径模式**应为 **registration.json**。 此文件名区分大小写，并且应该全为小写。
+
+    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-04.png)
+
+    现已定义两个输入流。
+
+    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-05.png)
+ 
+    接下来，为包含汽车注册数据的 blob 文件添加引用数据输入。
+
+12.    在项目中右键单击“输入”节点，然后遵循配置流输入时使用的相同过程，但这次要选择“引用数据”，而不是“数据流”，并且“输入别名”是“Registration”。
+
+    ![定义输入源](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-input-06.png)
+
+13.    选择包含 **tolldata** 的存储帐户。 容器名称应为 **tolldata**，**路径模式**应为 **registration.json**。 此文件名区分大小写，且应该全为小写。
 14.    单击“保存”完成向导操作。
 
 现在，已定义所有输入。
@@ -137,38 +136,41 @@ ms.lasthandoff: 03/29/2017
  
 ### <a name="testing-azure-stream-analytics-queries-locally"></a>在本地测试 Azure 流分析查询
 
-1. 首先可以编译查询，查看是否存在任何语法错误。 [TBD]
-2. 若要针对示例数据验证此查询，可以使用本地示例数据：右键单击输入并从上下文菜单中选择“添加本地输入”。
-   
-   ![添加本地输入](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-01.png)
-   
-   在弹出窗口中，从本地路径选择示例数据。 单击“保存” 。
-   
-   ![添加本地输入](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-02.png)
-   
-   名为 **local_EntryStream.json** 的文件将自动添加到输入文件夹。
-   
-   ![添加本地输入](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-03.png)
-   
-3. 在查询编辑器中单击“本地运行”， 或者按 F5。
-   
-   ![本地运行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-01.png)
-   
-   可在控制台输出中找到输出路径，按任意键可打开结果文件夹。
-   
-   ![本地运行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-02.png)
-   
-4. 检查本地文件夹中的结果。
-   
-   ![本地运行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-03.png)
-   
-   
+1.    可以首先右键单击项目，然后选择“生成”编译查询，以查看是否存在语法错误。 
+
+2.    若要针对示例数据验证此查询，可以使用本地示例数据：右键单击输入并从上下文菜单中选择“添加本地输入”。
+
+    ![添加本地输入](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-01.png)
+ 
+    在弹出窗口中，从本地路径选择样本数据。 单击“保存” 。
+
+    ![添加本地输入](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-02.png)
+ 
+    名为 **local_EntryStream.json** 的文件将自动添加到输入文件夹。
+
+    ![添加本地输入](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-03.png)
+ 
+3.    在查询编辑器中单击“本地运行”， 或者按 F5。
+
+    ![本地运行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-01.png)
+
+    ![本地运行](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-02.png)
+
+    在 Visual Studio 中，可以按任意键查看“ASA 本地运行结果”窗口中的输出。 
+
+    ![本地运行](./media/stream-analytics-tools-for-vs/local-testing-output.png)
+
+4.  可以打开结果文件夹查看 CSV 和 JSON 格式的输出文件。
+
+    ![本地运行](./media/stream-analytics-tools-for-vs/local-testing-files.png)
+ 
+
 ### <a name="sample-input"></a>示例输入
 还可以将输入源中的输入数据采样到本地文件。 右键单击输入配置文件并选择“数据采样”。 
 
 ![样本数据](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-sample-data-01.png)
 
-请注意，目前只能采样事件中心或 IoT 中心的数据。 其他输入源不受支持。  在弹出的对话框窗口中，填写用于保存样本数据的本地路径。 单击“采样”。
+请注意，目前只能采样事件中心或 IoT 中心的数据。 其他输入源不受支持。  在弹出的对话框窗口中，请填写用于保存样本数据的本地路径。 单击“采样”。
 
 ![样本数据](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-sample-data-02.png)
  
@@ -203,8 +205,8 @@ ms.lasthandoff: 03/29/2017
 1. 打开 Visual Studio 服务器资源管理器，然后右键单击“TollDataRefJoin”表。
 2. 单击“显示表数据”，查看作业的输出。
    
-   ![选择服务器资源管理器中的“显示表数据”](media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-check-results.jpg)
-   
+    ![选择服务器资源管理器中的“显示表数据”](media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-check-results.jpg)
+
 
 ### <a name="view-job-metrics"></a>查看作业指标
 可在“作业指标”中找到一些基本的作业统计信息。 
@@ -213,8 +215,7 @@ ms.lasthandoff: 03/29/2017
 
  
 ## <a name="list-job-in-server-explorer"></a>在服务器资源管理器中列出作业
-在“服务器资源管理器”中单击“流分析作业”，然后单击“刷新”。 “流分析作业”下面应会出现你的作业。
-
+在“服务器资源管理器”中单击“流分析作业”，然后单击“刷新”。 “流分析作业”下应会出现你的作业。
 ![列出作业](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-list-jobs-01.png)
 
 
@@ -226,26 +227,22 @@ ms.lasthandoff: 03/29/2017
 
 ## <a name="export-an-existing-job-to-a-project"></a>将现有作业导出到项目
 可使用两种方法将现有作业导出到项目。
-1. 在“服务器资源管理器”中的“流分析作业”节点下面右键单击作业节点。 在上下文菜单中单击“导出到新的流分析项目”。
-   
-   ![导出作业](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-01.png)
-   
-   “解决方案资源管理器”中会显示生成的项目。
-   
-   ![导出作业](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-02.png)
-   
+1. 在“服务器资源管理器”中的“流分析作业”节点下，右键单击作业节点。 在上下文菜单中单击“导出到新的流分析项目”。
+
+    ![导出作业](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-01.png)
+
+    “解决方案资源管理器”中会显示生成的项目。
+
+    ![导出作业](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-02.png)
+ 
 2. 在作业视图中，单击“生成项目”。
-   
-   ![导出作业](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-03.png)
-   
+
+    ![导出作业](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-03.png)
+
 ## <a name="known-issues-and-limitations"></a>已知问题和限制
  
-1. 如果查询包含地理空间函数，本地测试将无法运行。 
+1. 不支持 Power BI 输出和 ADLS 输出。
 2. 不支持在编辑器中添加或更改 JavaScript UDF。
-3. 本地测试不支持以 JSON 格式保存输出。 
-4. 不支持 Power BI 输出和 ADLS 输出。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
@@ -253,6 +250,4 @@ ms.lasthandoff: 03/29/2017
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
 

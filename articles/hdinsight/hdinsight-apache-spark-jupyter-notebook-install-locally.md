@@ -1,5 +1,5 @@
 ---
-title: "在本地安装 Jupyter 笔记本并连接到 Azure Spark 群集 | Microsoft Docs"
+title: "在本地安装 Jupyter 笔记本并将其连接到 Azure HDInsight Spark 群集 | Microsoft Docs"
 description: "了解如何在计算机上本地安装 Jupyter 笔记本并将其连接到 Azure HDInsight 上的 Apache Spark 群集。"
 services: hdinsight
 documentationcenter: 
@@ -14,18 +14,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 26cdaf4dc68876fa2bed4ca15d8bfb7fd3ac4b6d
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 689bcb86a5eb4476cb62516f623cd23702cd6bc9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-cluster-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark 群集
 
-在本文中，你将了解如何安装具有自定义 PySpark（适用于 Python）以及具有 Spark（适用于 Scala）内核和 Spark magic 的 Jupyter 笔记本，然后将笔记本连接到 HDInsight 群集。 在本地计算机上安装 Jupyter 的原因多种多样，同时这种安装也面临着多种难题。 有关原因和难题的列表，请参阅本文末尾的[为何要在计算机上安装 Jupyter](#why-should-i-install-jupyter-on-my-computer)。
+在本文中，你将了解如何安装具有自定义 PySpark（适用于 Python）以及具有 Spark（适用于 Scala）内核和 Spark magic 的 Jupyter 笔记本，然后将笔记本连接到 HDInsight 群集。 在本地计算机上安装 Jupyter 的原因多种多样，同时这种安装也面临着多种难题。 有关此方面的详细信息，请参阅本文末尾的[为何要在计算机上安装 Jupyter](#why-should-i-install-jupyter-on-my-computer)。
 
 在计算机上安装 Jupyter 和 Spark magic 包括三个重要步骤。
 
@@ -42,7 +43,8 @@ ms.lasthandoff: 01/24/2017
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>在计算机上安装 Jupyter 笔记本
-必须先安装 Python 才能安装 Jupyter 笔记本。 Python 和 Jupyter 都作为 [Ananconda分发版](https://www.continuum.io/downloads)的一部分提供。 当你安装 Anaconda 时，实际上安装的是某个 Python 分发版。 安装 Anaconda 之后，可通过运行一个命令来添加 Jupyter 安装。 本部分提供必须遵循的说明。
+
+必须先安装 Python 才能安装 Jupyter 笔记本。 Python 和 Jupyter 都作为 [Ananconda分发版](https://www.continuum.io/downloads)的一部分提供。 安装 Anaconda 时，安装的是某个 Python 发行版。 安装 Anaconda 之后，可通过运行相应命令来添加 Jupyter 安装。
 
 1. 下载适用于平台的 [Anaconda 安装程序](https://www.continuum.io/downloads)，然后运行安装程序。 运行安装向导时，请确保选择将 Anaconda 添加到 PATH 变量的选项。
 2. 运行以下命令来安装 Jupyter。
@@ -52,13 +54,15 @@ ms.lasthandoff: 01/24/2017
     有关安装 Jupyter 的详细信息，请参阅[使用 Anaconda 安装 Jupyter](http://jupyter.readthedocs.io/en/latest/install.html)。
 
 ## <a name="install-the-kernels-and-spark-magic"></a>安装内核和 Spark magic
-有关如何安装 Spark magic、PySpark 和 Spark 内核的说明，请参阅 GitHub 上的 [sparkmagic 文档](https://github.com/jupyter-incubator/sparkmagic#installation)。
 
-对于群集 v3.4，请通过执行 `pip install sparkmagic==0.2.3` 安装 sparkmagic 0.5.0。
+有关如何安装 Spark magic、PySpark 和 Spark 内核的说明，请参阅 GitHub 上的 [sparkmagic 文档](https://github.com/jupyter-incubator/sparkmagic#installation)中的安装说明。 Spark magic 文档中的第一步会要求你安装 Spark magic。 使用以下命令替换该链接中的第一步，具体取决于要连接到的 HDInsight 群集的版本。 之后，按照 Spark magic 文档中的剩余步骤进行操作。 如果要安装不同的内核，则必须执行 Spark magic 安装说明部分中的步骤 3。
 
-对于群集 v3.5，请通过执行 `pip install sparkmagic==0.8.4` 安装 sparkmagic 0.8.4。
+* 对于群集 v3.4，请通过执行 `pip install sparkmagic==0.2.3` 安装 sparkmagic 0.2.3
+
+* 对于群集 v3.5 和 v3.6，请通过执行 `pip install sparkmagic==0.11.2` 安装 sparkmagic 0.11.2
 
 ## <a name="configure-spark-magic-to-access-the-hdinsight-spark-cluster"></a>配置 Spark magic 以访问 HDInsight Spark 群集
+
 在本部分中，你将配置前面安装的 Spark magic，以连接到 Apache Spark 群集（必须事先在 Azure HDInsight 中创建）。
 
 1. Jupyter 配置信息通常存储在用户主目录中。 若要在任何 OS 平台上找到你的主目录，请键入以下命令。
@@ -88,19 +92,17 @@ ms.lasthandoff: 01/24/2017
           }
         }
 
-4. 将 **{USERNAME}**、**{CLUSTERDNSNAME}**和**{BASE64ENCODEDPASSWORD}** 替换为适当的值。 你可以使用许多以你偏好的编程语言编写的实用工具或联机实用工具，来生成 base64 编码的密码作为实际密码。 下面是从命令提示符运行的简单 Python 代码片段：
-
-        python -c "import base64; print(base64.b64encode('{YOURPASSWORD}'))"
+4. 将 **{USERNAME}**、**{CLUSTERDNSNAME}** 和**{BASE64ENCODEDPASSWORD}** 替换为适当的值。 可以使用许多以你偏好的编程语言编写的实用工具或联机实用工具，来生成 base64 编码的密码作为实际密码。
 
 5. 在 `config.json` 中配置相应的检测信号设置。 应以早前添加 `kernel_python_credentials` 和 `kernel_scala_credentials` 代码片段的等级添加这些设置。 有关添加该信号检测设置的方法和位置的示例，请参阅此[示例 config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)。
 
-    * 对于 `sparkmagic 0.5.0`（群集 v3.4），包括：
+    * 对于 `sparkmagic 0.2.3`（群集 v3.4），包括：
 
             "should_heartbeat": true,
             "heartbeat_refresh_seconds": 5,
             "heartbeat_retry_seconds": 1
 
-    * 对于 `sparkmagic 0.8.4`（群集 v3.5），包括：
+    * 对于 `sparkmagic 0.11.2`（群集 v3.5 和 v3.6），包括：
 
             "heartbeat_refresh_seconds": 5,
             "livy_server_heartbeat_timeout_seconds": 60,
@@ -115,19 +117,16 @@ ms.lasthandoff: 01/24/2017
 
 7. 验证是否可以使用 Jupyter 笔记本连接到群集，以及是否可以使用内核随附的 Spark magic。 执行以下步骤。
 
-   1. 创建新的笔记本。 在右下角单击“新建”。 用户应该会看到默认内核 **Python2** 和安装的两个新内核：**PySpark** 和 **Spark**。
+    a. 创建新的笔记本。 在右下角单击“新建”。 用户应该会看到默认内核 **Python2** 和安装的两个新内核：**PySpark** 和 **Spark**。 单击“PySpark”。
 
-       ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "创建新的 Jupyter 笔记本")
+    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "创建新的 Jupyter 笔记本")
 
-        单击“PySpark”。
+    b. 运行以下代码片段。
 
+        %%sql
+        SELECT * FROM hivesampletable LIMIT 5
 
-    2. 运行以下代码片段。
-
-            %%sql
-            SELECT * FROM hivesampletable LIMIT 5
-
-        如果可以成功检索输出，则表示与 HDInsight 群集的连接已经过测试。
+    如果可以成功检索输出，则表示与 HDInsight 群集的连接已经过测试。
 
     >[!TIP]
     >如果你想要更新笔记本配置以连接到不同的群集，请使用一组新值更新 config.json，如上述步骤 3 中所示。

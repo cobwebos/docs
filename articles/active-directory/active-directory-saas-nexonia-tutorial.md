@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 05/1/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: a6241afa7398684d9315ab401ecdb5b2abd824c5
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 1370fa64c2ddc25d3121c567ceea4828b1e50921
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/22/2017
 - 可使用户通过其 Azure AD 帐户自动登录 Nexonia（单一登录）
 - 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -117,7 +118,7 @@ ms.lasthandoff: 04/22/2017
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
 
     > [!NOTE] 
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 若要获取此值，请与 [Nexonia 支持团队](http://www.nexonia.com/contact-us/)联系。 
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 若要获取此值，请与 [Nexonia 支持团队](https://nexonia.zendesk.com/hc/requests/new)联系。 
 
 
 4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
@@ -132,7 +133,7 @@ ms.lasthandoff: 04/22/2017
 
     ![配置单一登录](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_configure.png) 
 
-7. 若要为应用程序配置 SSO，请联系 [Nexonia 支持团队](http://www.nexonia.com/contact-us/)，并向他们提供以下内容：
+7. 若要为应用程序配置 SSO，请联系 [Nexonia 支持团队](https://nexonia.zendesk.com/hc/requests/new)，并向他们提供以下内容：
 
     • 下载的 **证书**
 
@@ -180,7 +181,7 @@ ms.lasthandoff: 04/22/2017
  
 ### <a name="creating-a-nexonia-test-user"></a>创建 Nexonia 测试用户
 
-在本部分中，需在 Nexonia 中创建名为“Britta Simon”的用户。 请与 [Nexonia 支持团队](http://www.nexonia.com/contact-us/)协作，将用户添加到 Nexonia 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，需在 Nexonia 中创建名为“Britta Simon”的用户。 请与 [Nexonia 支持团队](https://nexonia.zendesk.com/hc/requests/new)协作，将用户添加到 Nexonia 平台中。 使用单一登录前，必须先创建并激活用户。
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户

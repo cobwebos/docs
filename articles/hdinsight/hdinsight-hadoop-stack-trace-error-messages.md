@@ -1,6 +1,6 @@
 ---
 title: "Hadoop 堆栈跟踪错误消息 | Microsoft Docs"
-description: "HDInsight 中的 Hadoop 堆栈跟踪错误消息的索引。 在列表中查找错误以查看故障排除信息。"
+description: "Azure HDInsight 中的 Hadoop 堆栈跟踪错误消息的索引。 在列表中查找错误以查看故障排除信息。"
 keywords: "堆栈跟踪, 错误消息"
 services: hdinsight
 documentationcenter: NA
@@ -14,12 +14,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: big-data
-ms.date: 02/22/2017
-ms.author: rashimg;jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 35e11e1f48abd9b8ed8dbc9a00c2d752533cdd75
-ms.lasthandoff: 11/17/2016
+ms.date: 04/26/2017
+ms.author: gao
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: bc6f7904e6307477eb90bb0ca74be19a9c76eb35
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 11/17/2016
 这些文章已按错误类型进行组织。
 
 ## <a name="out-of-memory-error"></a>内存不足错误
-* [使用 Hive 设置修复内存不足 (OOM) 错误](hdinsight-hadoop-hive-out-of-memory-error-oom.md)：修复来自 Hive 查询的内存不足错误 (OOM)。 客户方案包括跨多个大型表运行的查询。
+* [修复 HDInsight 中 Hive 内存不足错误](hdinsight-hadoop-hive-out-of-memory-error-oom.md)：修复来自 Hive 查询的内存不足错误 (OOM)。 客户方案包括跨多个大型表运行的查询。
 
 ## <a name="hive-query-performance"></a>Hive 查询性能
 * [在 HdInsight 中优化 Hadoop 的 Hive 查询](hdinsight-hadoop-optimize-hive-query.md)：本文介绍可对 Hive 查询应用的几种最常见 Hive 性能优化方法。

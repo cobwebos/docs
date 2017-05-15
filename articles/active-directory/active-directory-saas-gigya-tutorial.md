@@ -13,9 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/14/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
-ms.openlocfilehash: 96eb66f35a91e769418d179b0997cd32e02cdc97
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 21372b8554901594f6770ef1ad18467801ef5fea
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -125,35 +127,14 @@ ms.openlocfilehash: 96eb66f35a91e769418d179b0997cd32e02cdc97
    
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 
-为了使 Azure AD 用户能够登录 Gigya，必须对其进行预配才能使其登录 Gigya。  
-对于 Gigya，需要手动执行预配。
+Azure AD 用户首次登录到 Gigya 时将自动进行预配。
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
-1. 以管理员身份登录到 **Gigya** 公司站点。
-2. 转到“管理员”\>“管理用户”，然后单击“邀请用户”。
-   
-    ![管理用户](./media/active-directory-saas-gigya-tutorial/IC789535.png "管理用户")
-
-3. 在“邀请用户”对话框中，执行以下步骤：
-   
-    ![邀请用户](./media/active-directory-saas-gigya-tutorial/IC789536.png "邀请用户")
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“电子邮件”文本框中，键入要预配的有效 Azure Active Directory 帐户的电子邮件别名。
-    
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“邀请用户”。
-      
-    > [!NOTE]
-    > Azure Active Directory 帐户持有者将收到一封电子邮件，该邮件包含在激活帐户前要确认帐户的链接。
-    > 
-    > 
-
- 
 
 ## <a name="assigning-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向要允许其使用应用程序的 Azure AD 用户授予该应用程序的访问权限。
 
 ### <a name="to-assign-users-to-gigya-perform-the-following-steps"></a>若要将用户分配到 Gigya，请执行以下步骤：
-1. 在 Azure 经典门户中，创建测试帐户。
+1. 在 Azure 经典门户中，创建一个测试帐户。
 2. 在“Gigya”应用程序集成页上，单击“分配用户”。
    
     ![分配用户](./media/active-directory-saas-gigya-tutorial/IC789537.png "分配用户")
@@ -163,10 +144,5 @@ ms.openlocfilehash: 96eb66f35a91e769418d179b0997cd32e02cdc97
     ![是](./media/active-directory-saas-gigya-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

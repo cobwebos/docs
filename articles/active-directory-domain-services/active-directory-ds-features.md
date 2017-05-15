@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 76987a6e91ae688b3856567073a7d27472e5ba09
-ms.openlocfilehash: 34f84de82cbd6c15bd62abedd05e0eff6ce2dc2f
-ms.lasthandoff: 01/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 8005be7ded6ea005af086aeaf594963a5f2d4ac2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.lasthandoff: 01/28/2017
 * **使用企业凭据/密码：**Azure AD 租户中用户的密码可与 Azure AD 域服务配合使用。 用户可以使用其企业凭据将计算机加入域，以交互方式或通过远程桌面登录，以及针对托管域进行身份验证。
 * **LDAP 绑定和 LDAP 读取支持：**可以使用依赖于 LDAP 绑定的应用程序，在 Azure AD 域服务所服务的域中验证用户的身份。 此外，使用 LDAP 读取操作从目录查询用户/计算机属性的应用程序也可以针对 Azure AD 域服务正常运行。
 * **安全 LDAP (LDAPS)：**通过安全 LDAP (LDAPS) 启用对目录的访问。 默认情况下，可在虚拟网络中使用安全 LDAP 访问。 但是，也可以选择为 Internet 启用安全 LDAP 访问。
-* **组策略：**可为每个用户和计算机容器使用单个内置 GPO，针对用户帐户和已加入域的计算机强制实施符合所需安全策略的规范。 还可以创建自己的自定义 GPO 并将其分配到自定义组织单位来管理组策略。
+* **组策略：**可为每个用户和计算机容器使用单个内置 GPO，针对用户帐户和已加入域的计算机强制实施符合所需安全策略的规范。 还可以创建自己的自定义 GPO 并将其分配到自定义组织单位来[管理组策略](active-directory-ds-admin-guide-administer-group-policy.md)。
 * **管理 DNS：**“AAD DC 管理员”组的成员可以使用熟悉的 DNS 管理工具（例如“DNS 管理 MMC”管理单元）来管理托管域的 DNS。
 * **创建自定义的组织单位 (OU)：**“AAD DC 管理员”组的成员可以在托管域中创建自定义 OU。 这些用户已被授予自定义 OU 的完全管理权限，可以在这些自定义 OU 中添加或删除服务帐户、计算机、组等。
 * **可在多个 Azure 区域中使用：**请参阅[按区域列出的 Azure 服务](https://azure.microsoft.com/regions/#services/)页，了解已推出 Azure AD 域服务的 Azure 区域。

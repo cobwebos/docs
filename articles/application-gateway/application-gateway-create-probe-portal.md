@@ -13,78 +13,68 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/26/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 14b715013b4154a1fa079c0dc470e675d7cf4c1f
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a12e9d342daf41ee9f83cadb9e29ee867be055de
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>使用门户创建应用程序网关的自定义探测
+
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure 经典 PowerShell](application-gateway-create-probe-classic-ps.md)
 
-[!INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
+在本文中，将通过 Azure 门户向现有应用程序网关添加自定义探测。 如果应用程序包含特定运行状况检查页面。或者未在默认 Web 应用程序上提供成功的响应，那么它们非常适合使用自定义探测。
 
-## <a name="scenario"></a>方案
+## <a name="before-you-begin"></a>开始之前
 
-以下方案演示了如何在现有应用程序网关中创建自定义运行状况探测。
-该方案假定你已按相关步骤[创建应用程序网关](application-gateway-create-gateway-portal.md)。
+如果还没有应用程序网关，请访问[创建应用程序网关](application-gateway-create-gateway-portal.md)，创建要使用的应用程序网关。
 
-## <a name="a-namecreateprobeacreate-the-probe"></a><a name="createprobe"></a>创建探测
+## <a name="createprobe"></a>创建探测
 
 可通过门户分两步配置探测。 第一步是创建探测。 第二步是将探测添加到应用程序网关的后端 http 设置。
 
-### <a name="step-1"></a>步骤 1
+1. 登录到 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[一个月免费试用版](https://azure.microsoft.com/free)
 
-导航到 [Azure 门户](http://portal.azure.com)，然后选择现有的应用程序网关。
+1. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击应用程序网关。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“partners.contoso.net”， 轻松访问应用程序网关。
 
-![应用程序网关概述][1]
+1. 单击“探测”，然后单击“添加”按钮添加探测。
 
-### <a name="step-2"></a>步骤 2
+  ![添加填写了信息的“探测”边栏选项卡][1]
 
-单击“探测”，然后单击“添加”按钮添加探测。
+1. 在“添加运行状况探测”边栏选项卡上填写探测的必填信息，并在完成时单击“确定”。
 
-![添加填写了信息的“探测”边栏选项卡][2]
+  |**设置** | **值** | **详细信息**|
+  |---|---|---|
+  |**Name**|customProbe|此值是可在门户中访问的探测的友好名称。|
+  |**协议**|HTTP 或 HTTPS | 运行状况探测使用的协议。|
+  |**主机**|例如  contoso.com|此值是用于探测的主机名。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值与 VM 主机名不同。|
+  |**路径**|/或另一个路径|自定义探测的完整 URL 的其余部分。 有效路径以“/”开头。 对于 http://contoso.com 的默认路径，只需使用“/” |
+  |时间间隔(秒)|30|运行探测来检查运行状况的频率。 不建议将时间间隔设置为不到 30 秒。|
+  |超时(秒)|30|超时之前探测的等待时间。 超时间隔必须足够长，以便进行 http 调用，确保后端运行状况页可用。|
+  |**不正常阈值**|3|系统认为不正常的失败尝试次数。 阈值为 0 意味着，如果运行状况检查失败，则会立即将后端确定为不正常。|
 
-### <a name="step-3"></a>步骤 3
-
-填写探测的必需信息，完成时单击“确定”。
-
-* **名称** - 此值是可在门户中访问的探测的友好名称。
-* **主机** - 此值是用于探测的主机名。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值与 VM 主机名不同。
-* **路径** - 自定义探测的完整 URL 的其余部分。 有效路径以“/”开头
-* **时间间隔(秒)** - 运行探测来检查运行状况的频率。 不建议将时间间隔设置为不到 30 秒。
-* **超时(秒)** - 超时之前探测的等待时间。 超时间隔必须足够长，以便进行 http 调用，确保后端运行状况页可用。
-* **不正常阈值** - 系统认为不正常的失败尝试次数。 阈值为 0 意味着，如果运行状况检查失败，则会立即将后端确定为不正常。
-
-> [!IMPORTANT]
-> 主机名不同于服务器名。 此值是运行在应用程序服务器上的虚拟主机的名称。 探测发送到 http://(主机名):(httpsetting 中的端口)/urlPath
-
-![探测配置设置][3]
+  > [!IMPORTANT]
+  > 主机名不同于服务器名。 此值是运行在应用程序服务器上的虚拟主机的名称。 探测发送到 http://(主机名):(httpsetting 中的端口)/urlPath
 
 ## <a name="add-probe-to-the-gateway"></a>向网关添加探测
 
 创建探测以后，即可将其添加到网关。 探测设置在应用程序网关的后端 http 设置中设置。
 
-### <a name="step-1"></a>步骤 1
+1. 单机应用程序网关的“HTTP 设置”，然后单击窗口中列出的当前后端 http 设置，以便显示“配置”边栏选项卡。
 
-单击应用程序网关的“HTTP 设置”，然后单击窗口中当前的后端 http 设置，以便显示配置边栏选项卡。
+  ![https 设置窗口][2]
 
-![https 设置窗口][4]
+1. 在“appGatewayBackEndHttpSettings”设置边栏选项卡上，选中“使用自定义探测”复选框，然后在“自定义探测”下拉列表中选择在[创建探测](#createprobe)部分创建的探测。
+完成后，单击“保存”即可应用相关设置。
 
-### <a name="step-2"></a>步骤 2
-
-在 **appGatewayBackEndHttp** 设置边栏选项卡上，单击 **使用自定义探测** ，然后选择在 [创建探测](#createprobe) 部分创建的探测。
-完成后，单击“确定”即可应用相关设置。
-
-![appgatewaybackend 设置边栏选项卡][5]
-
-默认探测检查对 Web 应用程序的默认访问权限。 现在已创建自定义探测，因此应用程序网关可以使用定义的自定义路径来监视所选后端的运行状况。 应用程序网关根据所定义的条件检查探测中指定的文件。 如果调用 host:Port/path 时没有返回“Http 200 正常”状态响应，则在达到不正常阈值后，服务器将不再进行轮换。 将继续对不正常的实例进行探测，看其何时恢复正常。 将实例添加回正常的服务器池以后，其流量即可恢复，同时也会继续按用户指定的正常时间间隔对实例进行探测。
+默认探测检查对 Web 应用程序的默认访问权限。 现已创建自定义探测，因此应用程序网关可以使用定义的自定义路径来监视后端服务器的运行状况。 应用程序网关根据所定义的条件检查探测中指定的路径。 如果调用 host:Port/path 时没有返回 HTTP 200-299 状态响应，则在达到不正常阈值后，服务器将不再进行轮换。 将继续对不正常的实例进行探测，看其何时恢复正常。 将实例添加回正常的服务器池以后，其流量即可恢复，同时也会继续按用户指定的正常时间间隔对实例进行探测。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -92,7 +82,5 @@ ms.lasthandoff: 01/24/2017
 
 [1]: ./media/application-gateway-create-probe-portal/figure1.png
 [2]: ./media/application-gateway-create-probe-portal/figure2.png
-[3]: ./media/application-gateway-create-probe-portal/figure3.png
-[4]: ./media/application-gateway-create-probe-portal/figure4.png
-[5]: ./media/application-gateway-create-probe-portal/figure5.png
+
 

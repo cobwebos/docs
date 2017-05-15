@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2017
+ms.date: 05/02/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f09aa6cffbbaa2a3df7f84edee2d3e03aa23a719
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 483e77f598beaeb924197e3eb301a26da33a3f1f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -70,6 +71,25 @@ Azure Active Directory Identity Protection 不只是一个监视和报告工具�
 * 通过阻止登录或请求多重身份验证质询来缓解有风险登录的策略。
 * 阻止或保护有风险用户帐户的策略
 * 要求用户注册多重身份验证的策略
+
+
+
+## <a name="identity-protection-roles"></a>标识保护角色
+
+若要对围绕 Identity Protection 实现展开的管理活动进行负载均衡，可以分配多个角色。 Azure AD Identity Protection 支持 3 个目录角色：
+
+| 角色                         | 有权执行的操作                          | 无权执行的操作
+| :--                          | ---                                |  ---   |
+| 全局管理员         | 对 Identity Protection 具有完全访问权限、载入 Identity Protection| |
+| 安全管理员       | 对 Identity Protection 具有完全访问权限 | 载入 Identity Protection、重置用户密码 |
+| 安全读者              | 对 Identity Protection 具有只读访问权限 | 载入 Identity Protection、修改用户、配置策略、重置密码 |
+
+
+
+
+有关更多详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)
+
+
 
 ## <a name="detection"></a>检测
 

@@ -14,15 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 02/13/2017
 ms.author: ruturajd
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 6629666eaa913321db3855438bb66d349d5c52bf
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1c56a7f16361ac4fae97be6c9f21c959723b396c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>从 Azure 故障回复到本地站点
+
+> [!div class="op_single_selector"]
+> * [来自 Azure 的 VMware 虚拟机/物理计算机](site-recovery-failback-azure-to-vmware.md)
+> * [来自 Azure 的 Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
+
+
 本文介绍如何将虚拟机从 Azure 虚拟机故障回复到本地站点。 根据[使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-vmware-to-azure-classic.md) 教程将 VMware 虚拟机或 Windows/Linux 物理服务器从本地站点故障转移到 Azure 后，请遵循本文中的说明进行故障回复。
+
+> [!WARNING]
+> 如果已经[完成迁移](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)、已将虚拟机转移至另一资源组或已删除 Azure 虚拟机，则在上述操作之后无法进行故障回复。
+
+> [!NOTE]
+> 如果已故障转移 VMware 虚拟机，则无法故障回复到 Hyper-v 主机。
 
 ## <a name="overview-of-failback"></a>故障回复概述
 下面是故障回复的工作原理。 故障转移到 Azure 以后，可通过以下几个阶段故障回复到本地站点：
@@ -30,7 +43,7 @@ ms.lasthandoff: 04/25/2017
 1. [重新保护](site-recovery-how-to-reprotect.md)虚拟机，使其开始复制到本地站点中运行的 VMware 虚拟机。 在此过程中，还需要：
     1. 设置本地主目标：Windows 虚拟机的 Windows 主目标和 Linux 虚拟机的 [Linux 主目标](site-recovery-how-to-install-linux-master-target.md)。
     2. 设置[进程服务器](site-recovery-vmware-setup-azure-ps-resource-manager.md)。
-    3. 启动[重新保护](site-recovery-how-to-reprotect.md)。
+    3. 启动[重新保护](site-recovery-how-to-reprotect.md)。 这会关闭本地虚拟机，并将 Azure 虚拟机的数据与本地磁盘同步。
 5. 将 Azure 中的虚拟机复制到本地站点后，启动从 Azure 到本地站点的故障转移。
 
 故障回复数据后，重新保护已故障回复到的本地虚拟机，使其开始复制到 Azure。
@@ -41,6 +54,9 @@ ms.lasthandoff: 04/25/2017
 ### <a name="fail-back-to-the-original-or-alternate-location"></a>故障回复到原始或备用位置
 
 故障转移 VMware 虚拟机后，可以故障回复到同一个本地源虚拟机（如果仍然存在）。 在这种情况下，只会复制更改。 这种情况称为原始位置恢复。 如果本地虚拟机不存在，则此方案是一种备用位置恢复。
+
+> [!NOTE]
+> 仅可故障回复到原始 vCenter 和配置服务器。 无法部署新配置服务器并通过它进行故障回复。 此外，无法向现有配置服务器添加新 vCenter 并故障回复到新 vCenter。
 
 #### <a name="original-location-recovery"></a>原始位置恢复
 
@@ -74,7 +90,7 @@ ms.lasthandoff: 04/25/2017
 ## <a name="steps-to-fail-back"></a>故障回复的步骤
 
 > [!IMPORTANT]
-启动故障回复之前，请确保已完成重新保护虚拟机。 虚拟机在其运行状况为“正常”时应处于受保护状态。 若要重新保护虚拟机，请参阅[如何重新保护](site-recovery-how-to-reprotect.md)。
+> 启动故障回复之前，请确保已完成重新保护虚拟机。 虚拟机在其运行状况为“正常”时应处于受保护状态。 若要重新保护虚拟机，请参阅[如何重新保护](site-recovery-how-to-reprotect.md)。
 
 1. 在“复制的项”页中选择该虚拟机，然后右键单击并选择“非计划的故障转移”。
 2. 在“确认故障转移”中，验证故障转移方向（从 Azure 故障转移），然后选择要用于故障转移的恢复点（最新恢复点，或最新的应用一致性恢复点）。 应用一致性点将在最新的时间点之后，并将导致丢失部分数据。

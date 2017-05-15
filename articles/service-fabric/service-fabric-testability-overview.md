@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/01/2017
 ms.author: anmola
-translationtype: Human Translation
-ms.sourcegitcommit: e3dda1f6a0d513668aca252aa1855a93f3720247
-ms.openlocfilehash: 3bff3fb99f27985c24b5a2e677738595314242c4
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c05081685532aecbe29e9bf380f0278e775ad6b7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/02/2017
 操作指用于测试某个服务的单独故障。 服务开发人员可将这些操作用作构造块来编写复杂的方案。 例如：
 
 * 重新启动一个节点以模拟任意数量的重新启动计算机或 VM 的情形。
-* 移动有状态服务的一个副本以模拟负载平衡、故障转移或应用程序升级。
+* 移动有状态服务的一个副本以模拟负载均衡、故障转移或应用程序升级。
 * 在一个有状态服务上调用仲裁丢失以创建一种因为没有“足够”的“备份”或“辅助”副本来接收新的数据而无法继续写操作的情形。
 * 在一个有状态服务上调用数据丢失以创建一种所有内存中的状态都被完全清除的情形。
 

@@ -14,12 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 04/27/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 636d58cc3bda38c0fb49412b6bd4cbb96d235858
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 3c1021ec8c8dc4488f86ba89f6ae31d6ed75e9f5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -47,10 +48,31 @@ ms.lasthandoff: 04/19/2017
 
        如果没有看到 HDInsight 群集，请单击列表底部的“更多服务”，然后单击“智能 + 分析”部分下的“HDInsight 群集”。
 
+
 ## <a name="create-clusters"></a>创建群集
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件的列表，请参阅 [Azure HDInsight 包含哪个版本的 Hadoop？](hdinsight-component-versioning.md)。 有关创建群集的一般信息，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+
+### <a name="access-control-requirements"></a>访问控制要求
+
+在创建 HDInsight 群集时，必须指定 Azure 订阅。 可以在新的 Azure 资源组或现有的资源组中创建此群集。 可以使用以下步骤验证是否具有创建 HDInsight 群集的权限：
+
+- 使用现有资源组。
+
+    1. 登录到 [Azure 门户](https://portal.azure.com)。
+    2. 从左侧菜单中单击“资源组”以列出资源组。
+    3. 单击要用于创建 HDInsight 群集的资源组。
+    4. 单击“访问控制(IAM)”，并确认你（或你所属的组）至少对该资源组具有“参与者”访问权限。
+
+- 创建新的资源组
+
+    1. 登录到 [Azure 门户](https://portal.azure.com)。
+    2. 从左侧菜单中单击“订阅”。 它有一个黄色的密钥图标。 你会看到订阅列表。
+    3. 单击用于创建群集的订阅。 
+    4. 单击“我的权限”。  它显示你在订阅中的[角色](../active-directory/role-based-access-control-what-is.md#built-in-roles)。 至少需要具有“参与者”访问权限才能创建 HDInsight 群集。
+
+如果收到 NoRegisteredProviderFound 错误或 MissingSubscriptionRegistration 错误，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)。
 
 ## <a name="list-and-show-clusters"></a>列出并显示群集
 1. 登录到 [https://portal.azure.com](https://portal.azure.com)。
@@ -154,7 +176,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
     HDInsight 群集上提供了 Storm Web UI：
 
-    ![HDInsight Storm 规模重新平衡](./media/hdinsight-administer-use-portal-linux/hdinsight.portal.scale.cluster.storm.rebalance.png)
+    ![HDInsight Storm 规模重新平衡](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
     以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
 
@@ -171,7 +193,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 3. 单击“缩放群集”。
 4. 输入**辅助角色节点数**。 对群集节点数的限制不会因 Azure 订阅而有所不同。 若要增大限制，可联系计费支持人员。  成本信息将反映对节点数所做的更改。
 
-    ![HDInsight Hadoop HBase Storm Spark 缩放](./media/hdinsight-administer-use-portal-linux/hdinsight.portal.scale.cluster.png)
+    ![HDInsight Hadoop HBase Storm Spark 缩放](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster.png)
 
 ## <a name="pauseshut-down-clusters"></a>暂停/关闭群集
 
@@ -307,7 +329,7 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 
 * [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)
 * [使用 Azure CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)
-* [创建 HDInsight 群集](hdinsight-provision-clusters.md)
+* [创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [在 HDInsight 中使用 Hive](hdinsight-use-hive.md)
 * [在 HDInsight 中使用 Pig](hdinsight-use-pig.md)
 * [在 HDInsight 中使用 Sqoop](hdinsight-use-sqoop.md)

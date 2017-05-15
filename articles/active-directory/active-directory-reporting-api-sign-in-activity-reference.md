@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2016
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dce65678f9fc96d5802a7b705689cc63e6532c84
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 077c39d1a6f61aba7b184ee616a93f30cdb7d12c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,9 +35,18 @@ Azure AD 报告提供一个用于通过代码或相关工具访问登录活动�
 有关疑问、问题或反馈，请联系 [AAD 报告帮助](mailto:aadreportinghelp@microsoft.com)。
 
 ## <a name="who-can-access-the-api-data"></a>谁可以访问 API 数据？
-* 安全管理员或安全读者角色中的用户
+* “安全管理员”或“安全读者”角色中的用户和服务主体
 * 全局管理员
 * 有权访问 API 的任何应用（仅可根据全局管理员的权限设置应用授权）
+
+若要为应用程序配置访问安全 API（如登录事件）的权限，请使用以下 PowerShell 将应用程序服务主体添加到“安全读者”角色中
+
+```PowerShell
+Connect-MsolService
+$servicePrincipal = Get-MsolServicePrincipal -AppPrincipalId "<app client id>"
+$role = Get-MsolRole | ? Name -eq "Security Reader"
+Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal -RoleMemberObjectId $servicePrincipal.ObjectId
+```
 
 ## <a name="prerequisites"></a>先决条件
 若要通过报告 API 访问此报告，必须满足以下条件：
@@ -65,7 +75,7 @@ Azure AD 报告提供一个用于通过代码或相关工具访问登录活动�
 
 
 ## <a name="supported-filters"></a>支持的筛选器
-你可以在筛选器窗体中缩小 API 调用返回的记录数。  
+你可以缩小显示在筛选器窗体中的 API 调用所返回记录的范围。  
 对于与登录 API 相关的数据，支持以下筛选器：
 
 * **$top=\<要返回的记录数\>** - 限制返回的记录数。 此操作成本高昂。 如果你想要返回数以千计的对象，则不应使用此筛选器。  

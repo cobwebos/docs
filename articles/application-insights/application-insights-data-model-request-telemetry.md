@@ -10,18 +10,19 @@ ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f22b6dbdcc02b1182163f140d9ff13d2876dc0d8
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5036ce23e602c7723f5fafef60ab45d533c1fe7d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
-请求遥测表示外部触发的代码执行，用于封装逻辑代码执行。 每个请求执行由包含所有执行参数的唯一 `ID` 和 `url` 标识。 可以按逻辑 `name` 将请求分组，并定义此请求的 `source`。 代码执行的结果可能是 `success` 或 fail，并且具有特定的 `duration`。 可以进一步根据 `resultCode` 将成功和失败的执行分组。 请求遥测的开始时间在信封级别定义。
+[Application Insights](app-insights-overview.md) 中的请求遥测项表示由应用程序的外部请求触发的执行的逻辑序列。 每个请求执行由包含所有执行参数的唯一 `ID` 和 `url` 标识。 可以按逻辑 `name` 将请求分组，并定义此请求的 `source`。 代码执行的结果可能是 `success` 或 `fail`，并且具有特定的 `duration`。 可以进一步根据 `resultCode` 将成功和失败的执行分组。 请求遥测的开始时间在信封级别定义。
 
 请求遥测使用自定义的 `properties` 和 `measurements` 支持标准可扩展性模型。
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="id"></a>ID
 
-请求调用实例的标识符。 用于在请求与其他遥测项之间建立关联。 ID 应该全局唯一。 有关详细信息，请参阅[关联](/correlation)页。
+请求调用实例的标识符。 用于在请求与其他遥测项之间建立关联。 ID 应该全局唯一。 有关详细信息，请参阅[关联](application-insights-correlation.md)页。
 
 最大长度：128 个字符
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="source"></a>源
 
-请求的源。 示例包括调用方的检测密钥或调用方的 IP 地址。 有关详细信息，请参阅[关联](/correlation.md)页。
+请求的源。 示例包括调用方的检测密钥或调用方的 IP 地址。 有关详细信息，请参阅[关联](application-insights-correlation.md)页。
 
 最大长度：1024 个字符
 
@@ -81,7 +82,8 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](/application-insights-data-model.md)。
-- 了解如何使用 Application Insights [配置 ASP.NET Core](/app-insights-asp-net-core.md) 应用程序。
-- 查看 Application Insights 支持的[平台](/app-insights-platforms.md)。
+- [编写自定义请求遥测](app-insights-api-custom-events-metrics.md#trackrequest)
+- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
+- 了解如何使用 Application Insights [配置 ASP.NET Core](app-insights-asp-net.md) 应用程序。
+- 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
 

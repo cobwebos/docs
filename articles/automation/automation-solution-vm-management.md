@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 04/26/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: 5ae60cb8ba3d391d3babd1ab575b4f32e139a185
-ms.openlocfilehash: f2c9a5ef2a8f517b9b2072be57f4d8c51b7694c6
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2d6ef39ad4678d331eadd2c0bfd6ff93c99da501
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 02/15/2017
 
 - Runbook 使用 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)。  运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。  
 
-- 此解决方案只能管理与自动化帐户位于同一订阅和资源组中的 VM。  
+- 此解决方案只能管理与自动化帐户位于同一订阅中的 VM。  
 
 - 此解决方案只能部署到以下 Azure 区域：澳大利亚东南部、美国东部、东南亚和西欧。  管理 VM 计划的 Runbook 可以面向任何区域中的 VM。  
 

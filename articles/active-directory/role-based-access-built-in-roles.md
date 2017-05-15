@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 04/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 73c38182f4caa92f5aa561b10a30c60efc8cfdae
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b600b7d67de24eab5395f085a2a424159b14ff28
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
@@ -27,14 +28,21 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 ## <a name="roles-in-azure"></a>Azure 中的角色
 下表提供内置角色的简短说明。 单击角色名称可查看角色的“操作”和“不操作”的详细列表。 **操作**属性指定对 Azure 资源允许的操作。 操作字符串可以使用通配符。 **不操作**属性指定从允许的操作中排除的操作。
 
+操作定义可以对给定资源类型执行哪种类型的操作。 例如：
+- **Write** 使你可以执行 PUT、POST、PATCH 和 DELETE 操作。
+- **Read** 使你可以执行 GET 操作。 
+
+本文仅针对目前存在的各种角色。 不过，向用户分配角色时，你可以通过定义作用域进一步限制允许的操作。 如果想要将某人设为网站参与者，但只针对一个资源组，则此功能很有用。 
+
 > [!NOTE]
-> Azure 角色定义不断演化。 本文尽可能地保持处于最新状态，但你总是可在 Azure PowerShell 中找到最新的角色定义。 若适用，请使用 cmdlet `(get-azurermroledefinition "<role name>").actions` 或 `(get-azurermroledefinition "<role name>").notactions`。
->
->
+> Azure 角色定义不断演化。 本文尽可能地保持处于最新状态，但你总是可在 Azure PowerShell 中找到最新的角色定义。 使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) cmdlet 列出所有当前角色。 可以使用 `(get-azurermroledefinition "<role name>").actions` 或 `(get-azurermroledefinition "<role name>").notactions` 深入了解特定角色（如果适用）。 使用 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) 列出特定 Azure 资源提供程序的操作。 
+
 
 | 角色名称 | 说明 |
 | --- | --- |
-| [API 管理服务参与者](#api-management-service-contributor) |可管理 API 管理服务 |
+| [API 管理服务参与者](#api-management-service-contributor) |可管理 API 管理服务和 API |
+| [API 管理服务操作员角色](#api-management-service-operator-role) | 可管理 API 管理服务，但不能管理 API 本身 |
+| [API 管理服务读者角色](#api-management-service-reader-role) | 对 API 管理服务和 API 具有只读访问权限 |
 | [Application Insights 组件参与者](#application-insights-component-contributor) |可管理 Application Insights 组件 |
 | [自动化操作员](#automation-operator) |能够启动、停止、暂停和继续执行作业 |
 | [备份参与者](#backup-contributor) | 可管理恢复服务保管库中的备份 |
@@ -80,6 +88,40 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | **操作** |  |
 | --- | --- |
 | Microsoft.ApiManagement/Service/* |创建和管理 API 管理服务 |
+| Microsoft.Authorization/*/read |读取授权 |
+| Microsoft.Insights/alertRules/* |创建和管理警报规则 |
+| Microsoft.ResourceHealth/availabilityStatuses/read |读取资源的运行状况 |
+| Microsoft.Resources/deployments/* |创建和管理资源组部署 |
+| Microsoft.Resources/subscriptions/resourceGroups/read |读取角色和角色分配 |
+| Microsoft.Support/* |创建和管理支持票证 |
+
+### <a name="api-management-service-operator-role"></a>API 管理服务操作员角色
+可管理 API 管理服务
+
+| **操作** |  |
+| --- | --- |
+| Microsoft.ApiManagement/Service/*/read | 读取 API 管理服务实例 |
+| Microsoft.ApiManagement/Service/backup/action | 将 API 管理服务备份到用户提供的存储帐户中的指定容器 |
+| Microsoft.ApiManagement/Service/delete | 删除 API 管理服务实例 |
+| Microsoft.ApiManagement/Service/managedeployments/action | 更改 SKU/单位；添加或删除 API 管理服务的区域部署 |
+| Microsoft.ApiManagement/Service/read | 读取 API 管理服务实例的元数据 |
+| Microsoft.ApiManagement/Service/restore/action | 从用户提供的存储帐户中的指定容器还原 API 管理服务 |
+| Microsoft.ApiManagement/Service/updatehostname/action | 设置、更新或删除 API 管理服务的自定义域名 |
+| Microsoft.ApiManagement/Service/write | 创建 API 管理服务的新实例 |
+| Microsoft.Authorization/*/read |读取授权 |
+| Microsoft.Insights/alertRules/* |创建和管理警报规则 |
+| Microsoft.ResourceHealth/availabilityStatuses/read |读取资源的运行状况 |
+| Microsoft.Resources/deployments/* |创建和管理资源组部署 |
+| Microsoft.Resources/subscriptions/resourceGroups/read |读取角色和角色分配 |
+| Microsoft.Support/* |创建和管理支持票证 |
+
+### <a name="api-management-service-reader-role"></a>API 管理服务读者角色
+可管理 API 管理服务
+
+| **操作** |  |
+| --- | --- |
+| Microsoft.ApiManagement/Service/*/read | 读取 API 管理服务实例 |
+| Microsoft.ApiManagement/Service/read | 读取 API 管理服务实例的元数据 |
 | Microsoft.Authorization/*/read |读取授权 |
 | Microsoft.Insights/alertRules/* |创建和管理警报规则 |
 | Microsoft.ResourceHealth/availabilityStatuses/read |读取资源的运行状况 |

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/28/2016
+ms.date: 05/02/2017
 ms.author: amsriva
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 32ca2e4b1dcf5715602b8e1e1f3026cb785fbe0c
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 1164fc24355657af22b6befaad74685ebbc2b5cb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -40,7 +41,7 @@ Resource Manager 中的模型与经典模型不同，它由虚拟网络网关、
 
 不支持的方案包括︰  
 
-* 目前包含 ExpressRoute 网关的 Vnet 不支持迁移。 因此，目前不支持在同一 VNet 上与 ExpressRoute 网关共存。
+* 当前不支持使用 ExpressRoute 网关和 VPN 网关的 VNet。
 * VM 扩展连接到本地服务器的传输方案。 下面详细介绍了传输 VPN 连接限制。
 
 > [!NOTE]

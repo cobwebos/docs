@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c8463e68600edefecd0f3bdd19c13b13f676b82b
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: d9578aa13fc22a148f76d95a2c548b88b699e723
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 11/17/2016
 ## <a name="introduction-monitor-page"></a>简介：监视页
 可以设置警报，以便在指标达到指定的条件时触发警报。
 
-例如，“如果最近 15 分钟的输出事件数 <100，则向电子邮件 ID：xyz@company.com 发送电子邮件通知”。
+例如，“如果最近 15 分钟的输出事件数 < 100，则向电子邮件 ID：xyz@company.com 发送电子邮件通知”。
 
 可以通过门户对指标设置规则，也可以依据操作日志数据[通过编程方式](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)进行配置。
 
@@ -70,7 +71,7 @@ ms.lasthandoff: 11/17/2016
 有关在 Azure 门户中配置警报的详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。  
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

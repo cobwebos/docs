@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 58b3d4a84c06a17eee41385509aa80e820399716
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 0786e54c288f30b0039c1d0b88f5c5b5965eecef
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -74,10 +75,6 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
   | **wafMode** | Web 应用程序防火墙的模式。  可用选项有：“预防”或“检测”。|
   | **wafRuleSetType** | WAF 的规则集类型。  目前，OWASP 是唯一受支持的选项。 |
   | **wafRuleSetVersion** |规则集版本。 OWASP CRS 2.2.9 和 3.0 目前是支持的选项。 |
-
-
-  > [!IMPORTANT]
-  > 在 GitHub 中维护的 Azure Resource Manager 模板可能随着时间的推移发生变化。 请确保在使用该模板之前对其进行检查。
 
 1. 检查 **resources**下的内容，并注意以下属性：
 
@@ -136,102 +133,80 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>使用 PowerShell 部署 Azure Resource Manager 模板
 
-如果从未使用过 Azure PowerShell，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)，并按照说明进行操作，以登录到 Azure 并选择订阅。
+如果从未使用过 Azure PowerShell，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azure/overview)，并按照说明进行操作，以登录到 Azure 并选择订阅。
 
-### <a name="step-1"></a>步骤 1
+1. 登录 PowerShell
 
-```powershell
-Login-AzureRmAccount
-```
+    ```powershell
+    Login-AzureRmAccount
+    ```
 
-### <a name="step-2"></a>步骤 2
+1. 检查该帐户的订阅。
 
-检查该帐户的订阅。
+    ```powershell
+    Get-AzureRmSubscription
+    ```
 
-```powershell
-Get-AzureRmSubscription
-```
+    系统将提示用户使用凭据进行身份验证。
 
-系统将提示用户使用凭据进行身份验证。
+1. 选择要使用的 Azure 订阅。
 
-### <a name="step-3"></a>步骤 3
+    ```powershell
+    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    ```
 
-选择要使用的 Azure 订阅。
+1. 如有必要，请使用 **New-AzureResourceGroup** cmdlet 创建资源组。 在以下示例中，在“美国东部”位置创建名为 AppgatewayRG 的资源组。
 
-```powershell
-Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
-```
+    ```powershell
+    New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
+    ```
 
-### <a name="step-4"></a>步骤 4
-
-如有必要，请使用 **New-AzureResourceGroup** cmdlet 创建资源组。 在以下示例中，在“美国东部”位置创建名为 AppgatewayRG 的资源组。
-
-```powershell
-New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
-```
-
-运行 **New-AzureRmResourceGroupDeployment** cmdlet，使用在前面下载并修改的模板和参数文件部署新虚拟网络。
-
-```powershell
-New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
--TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
-```
+1. 运行 **New-AzureRmResourceGroupDeployment** cmdlet，使用在前面下载并修改的模板和参数文件部署新虚拟网络。
+    
+    ```powershell
+    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+    -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
+    ```
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-the-azure-cli"></a>使用 Azure CLI 部署 Azure Resource Manager 模板
 
 若要使用 Azure CLI 部署下载的 Azure Resource Manager 模板，请执行以下步骤：
 
-### <a name="step-1"></a>步骤 1
+1. 如果从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](/cli/azure/install-azure-cli) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 
-如果从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](/cli/azure/install-azure-cli) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如有必要，请运行 `az group create` 命令创建一个资源组，如以下代码片段中所示。 请注意命令的输出。 在输出后显示的列表说明了所用的参数。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
 
-### <a name="step-2"></a>步骤 2
+    ```azurecli
+    az group create --location westus --name appgatewayRG
+    ```
+    
+    **-n（或 --name）**。 新资源组的名称。 在本方案中为 *appgatewayRG*。
+    
+    **-l（或 --location）**。 将创建新资源组的 Azure 区域。 在本方案中为 *westus*。
 
-如有必要，请运行 `az group create` 命令创建一个资源组，如以下代码片段中所示。 请注意命令的输出。 在输出后显示的列表说明了所用的参数。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
+1. 运行 `az group deployment create` cmdlet，使用上述步骤中下载并修改的模板和参数文件部署新虚拟网络。 在输出后显示的列表说明了所用的参数。
 
-```azurecli
-az group create --location westus --name appgatewayRG
-```
-
-**-n（或 --name）**。 新资源组的名称。 在本方案中为 *appgatewayRG*。
-
-**-l（或 --location）**。 将创建新资源组的 Azure 区域。 在本方案中为 *westus*。
-
-### <a name="step-4"></a>步骤 4
-
-运行 `az group deployment create` cmdlet，使用上述步骤中下载并修改的模板和参数文件部署新虚拟网络。 在输出后显示的列表说明了所用的参数。
-
-```azurecli
-az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
-```
+    ```azurecli
+    az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
+    ```
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-click-to-deploy"></a>使用“单击部署”来部署 Azure Resource Manager 模板
 
 “单击部署”是另一种使用 Azure Resource Manager 模板的方式。 这是将模板与 Azure 门户配合使用的简便方法。
 
-### <a name="step-1"></a>步骤 1
+1. 转到[创建具有 Web 应用程序防火墙的应用程序网关](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/)。
 
-转到[创建具有 Web 应用程序防火墙的应用程序网关](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/)。
+1. 单击 **“部署到 Azure”**。
 
-### <a name="step-2"></a>步骤 2
+    ![部署到 Azure](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
+    
+1. 在门户上填写部署模板的参数，然后单击“确定” 。
 
-单击 **“部署到 Azure”**。
+    ![parameters](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
+    
+1. 选择“我同意上述条款和条件”，然后单击“购买”。
 
-![“部署到 Azure”](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
-
-### <a name="step-3"></a>步骤 3
-
-在门户上填写部署模板的参数，然后单击“确定” 。
-
-![parameters](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
-
-### <a name="step-4"></a>步骤 4
-
-选择“我同意上述条款和条件”，然后单击“购买”。
-
-### <a name="step-5"></a>步骤 5
-
-在“自定义部署”边栏选项卡上，单击“创建” 。
+1. 在“自定义部署”边栏选项卡上，单击“创建” 。
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>对 Resource Manager 模板提供证书数据
 
@@ -239,6 +214,22 @@ az group deployment create --resource-group appgatewayRG --name TestAppgatewayDe
 
 ```powershell
 [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("<certificate path and name>.pfx"))
+```
+
+## <a name="delete-all-resources"></a>删除所有资源
+
+若要删除在本文中创建的所有资源，请完成以下任一步骤：
+
+### <a name="powershell"></a>PowerShell
+
+```powershell
+Remove-AzureRmResourceGroup -Name appgatewayRG
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+```azurecli
+az group delete --name appgatewayRG
 ```
 
 ## <a name="next-steps"></a>后续步骤

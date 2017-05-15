@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: bed8e0c2b5d4d42fb0510f6b55cfab7404c01b11
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 4918648906212ea9708b6c6f0e89d1f4bb7bdcc5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -129,29 +130,15 @@ IoT 中心公开一个与事件中心兼容的内置终结点，使应用程序�
       ![在 Azure 门户中将表存储添加到 Function App](media\iot-hub-store-data-in-azure-table-storage\4_azure-portal-function-app-add-output-table-storage.png)
    1. 输入所需的信息。
 
+      **表参数名称**：使用 `outputTable` 作为名称，将在 Azure Functions 的代码中使用它。
+      
       **表名称**：使用 `deviceData` 作为名称。
 
-      **存储帐户连接**：单击“新建”，然后选择你的存储帐户。
+      **存储帐户连接**：单击“新建”，然后选择或输入存储帐户。
    1. 单击“保存” 。
 1. 在“触发器”下，单击“Azure 事件中心(myEventHubTrigger)”。
 1. 在“事件中心使用者组”下，输入创建的使用者组的名称，然后单击“保存”。
 1. 单击“开发”，然后单击“查看文件”。
-1. 单击“添加”添加名为 `package.json` 的新文件，粘贴以下信息，然后单击“保存”。
-
-   ```json
-   {
-      "name": "iothub_save_message_to_table",
-      "version": "0.0.1",
-      "private": true,
-      "main": "index.js",
-      "author": "Microsoft Corp.",
-      "dependencies": {
-         "azure-iothub": "1.0.9",
-         "azure-iot-common": "1.0.7",
-         "moment": "2.14.1"
-      }
-   }
-   ```
 1. 将 `index.js` 中的代码替换为以下内容，然后单击“保存”。
 
    ```javascript
@@ -159,34 +146,20 @@ IoT 中心公开一个与事件中心兼容的内置终结点，使应用程序�
 
    // This function is triggered each time a message is revieved in the IoTHub.
    // The message payload is persisted in an Azure Storage Table
-   var moment = require('moment');
-
+ 
    module.exports = function (context, iotHubMessage) {
-      context.log('Message received: ' + JSON.stringify(iotHubMessage));
-      context.bindings.outputTable = {
-      "partitionKey": moment.utc().format('YYYYMMDD'),
-         "rowKey": moment.utc().format('hhmmss') + process.hrtime()[1] + '',
-         "message": JSON.stringify(iotHubMessage)
-      };
-      context.done();
+    context.log('Message received: ' + JSON.stringify(iotHubMessage));
+    var date = Date.now();
+    var partitionKey = Math.floor(date / (24 * 60 * 60 * 1000)) + '';
+    var rowKey = date + '';
+    context.bindings.outputTable = {
+     "partitionKey": partitionKey,
+     "rowKey": rowKey,
+     "message": JSON.stringify(iotHubMessage)
+    };
+    context.done();
    };
    ```
-1. 单击“Function App 设置” > “打开开发控制台”。
-
-   应在 Function App 的 `wwwroot` 文件夹中操作。
-1. 运行以下命令转到函数文件夹：
-
-   ```bash
-   cd <your function name>
-   ```
-1. 运行以下命令安装 npm 包：
-
-   ```bash
-   npm install
-   ```
-
-   > [!Note]
-   > 安装可能需要一段时间才能完成。
 
 现已创建 Function App。 它将在 Azure 表存储中存储 IoT 中心收到的消息。
 
@@ -207,3 +180,4 @@ IoT 中心公开一个与事件中心兼容的内置终结点，使应用程序�
 现已成功创建 Azure 存储帐户，以及可将 IoT 中心收到的消息存储在 Azure 表存储中的 Azure Function App。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

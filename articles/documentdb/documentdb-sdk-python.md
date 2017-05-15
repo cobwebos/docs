@@ -12,13 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 10/30/2016
+ms.date: 05/01/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 84a04f71ffde07e9caa439c03b55920d0bb0ef16
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: af45d745bccb02ce9fd45320e83284a8b33d99bd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -51,6 +52,14 @@ ms.lasthandoff: 04/20/2017
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。
+* 添加了在对 DocumentDB 模拟器运行时禁用 SSL 验证的选项。
+* 删除了依赖请求模块精确是 2.10.0 的限制。
+* 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
+* 添加了在存储过程执行期间对启用脚本日志记录的支持。
+* 此版本中的 REST API 版本已升级到“2017-01-19”。
+
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
 * 对文档注释进行编辑更改。
 
@@ -114,6 +123,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |2017 年 5 月 1 日 |--- |
 | [2.0.1](#2.0.1) |2016 年 10 月 30 日 |--- |
 | [2.0.0](#2.0.0) |2016 年 9 月 29 日 |--- |
 | [1.9.0](#1.9.0) |2016 年 7 月 7 日 |--- |

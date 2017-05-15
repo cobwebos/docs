@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 84b5f28fcd0640fd85b5f8c9d655105790c70d62
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e652218e6579ef430a5dc49f77a26a7d97b8b966
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 02/16/2017
 
 试验是以有限数量的实际客户验证新功能或更改的部署过程，同时也是生产方案中的主要测试。 它类似于 beta 测试，有时也称为“受控试验”。 许多具有网站空间的大型企业在运用[敏捷开发](https://en.wikipedia.org/wiki/Agile_software_development)时，都采用此方法提前验证其应用更新。 Azure App Service 可让你通过持续性发布和 Application Insights 集成生产环境中的测试，以实现相同的 DevOps 方案。 此方法的优点包括：
 
-* 在更新发行到生产环境之前，**获取真正反馈**** - 在发行之前获得反馈的效果，仅次于在发行期间实时获得的反馈。 你可以在产品生命周期中，根据需要提前以实际的用户流量和行为来测试更新。
+* 在更新发行到生产环境之前，获取真正反馈 - 在发行后立即获得反馈的效果，仅次于在发行前获得反馈。 你可以在产品生命周期中，根据需要提前以实际的用户流量和行为来测试更新。
 * **增强[持续测试导向开发 (CTDD)](https://en.wikipedia.org/wiki/Continuous_test-driven_development)** - 通过 Application Insights 的持续集成和工具集成生产环境中的测试，用户验证将可在产品生命周期内提前进行。 这有助于减少在手动测试执行上投入的时间。
 * **优化测试工作流** - 通过持续监视工具将生产环境中的测试自动化，可让你在单个过程中达到不同测试类型的目标，例如[集成](https://en.wikipedia.org/wiki/Integration_testing)、[回归](https://en.wikipedia.org/wiki/Regression_testing)、[可用性](https://en.wikipedia.org/wiki/Usability_testing)、辅助功能、本地化、[性能](https://en.wikipedia.org/wiki/Software_performance_testing)、[安全性](https://en.wikipedia.org/wiki/Security_testing)和[接受度](https://en.wikipedia.org/wiki/Acceptance_testing)。
 
@@ -355,6 +356,6 @@ Azure 应用服务可让中小型企业轻松地在生产环境中测试其客�
 * [创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
 * [JSONLint - JSON 验证程序](http://jsonlint.com/)
 * [Git 分支 - 基本分支和合并](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell](/powershell/azure/overview)
 * [项目 Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 

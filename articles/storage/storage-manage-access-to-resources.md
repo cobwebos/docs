@@ -1,5 +1,5 @@
 ---
-title: "管理对容器和 Blob 的匿名读取访问 | Microsoft Docs"
+title: "启用对 Azure Blob 存储中容器和 blob 的公共读取访问 | Microsoft Docs"
 description: "了解如何使容器和 blob 可供匿名访问，以及如何对其进行程序式访问。"
 services: storage
 documentationcenter: 
@@ -12,47 +12,50 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 04/26/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 4fe41c3aabf5e6d9ae899cea0b9f9b6c9c305cf0
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c7b83667b58649c156a62fa68cebd854c13e2cba
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 ---
-# <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理对容器和 blob 的匿名读取访问
-## <a name="overview"></a>概述
-默认情况下，只有存储帐户的所有者可访问该帐户中的存储资源。 如果仅针对 Blob 存储，则可以设置容器的权限，允许对容器及其 Blob 进行匿名读取访问，这样即可授予对这些资源的访问权限，而无需共享帐户密钥。
 
-如果想要始终允许对某些 Blob 进行匿名读取访问，最好的方法是启用匿名访问。 若要进行更精细的控制，则可以创建一个共享访问签名，这样即可使用不同的权限在指定时间间隔内委派受限访问。 有关创建共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)。
+# <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理对容器和 blob 的匿名读取访问
+可以启用对 Azure Blob 存储中的容器及其 Blob 的匿名公共读取访问。 这样做可以授予对这些资源的只读访问权限，无需共享帐户密钥，也无需共享访问签名 (SAS)。
+
+如果想要始终允许对某些 Blob 进行匿名读取访问，最好的方法是启用公共读取访问。 可以创建共享访问签名，实现更精细的控制。 利用共享访问签名，可以针对特定时间段提供使用不同权限的受限访问。 有关创建共享访问签名的详细信息，请参阅[在 Azure 存储中使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)。
 
 ## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>授予对容器和 Blob 的匿名用户权限
 默认情况下，仅存储帐户的所有者能够访问容器以及其中的所有 Blob。 要授予匿名用户对容器及其 Blob 的读取权限，可以设置容器权限以允许公共访问。 匿名用户可以读取可公开访问的容器中的 Blob，而无需对请求进行身份验证。
 
-容器提供了下列用于管理容器访问的选项：
+可为容器配置以下权限：
 
-* **完全公共读取访问：**可通过匿名请求读取容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
-* **仅针对 Blob 的公共读取访问：**可通过匿名请求读取此容器中的 Blob 数据，但容器数据不可用。 客户端无法通过匿名请求枚举容器中的 Blob。
-* **无公共读取访问：**仅帐户所有者可读取容器和 Blob 数据。
+* 非公共读取访问：只有存储帐户所有者可以访问容器及其 Blob。 这是所有新容器的默认权限。
+* 仅针对 Blob 的公共读取访问：可通过匿名请求读取容器中的 Blob，但容器数据不可用。 匿名客户端无法枚举容器中的 Blob。
+* 完全公共读取访问：可通过匿名请求读取所有容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
 
 可以通过以下方式来设置容器权限：
 
-* 通过 [Azure 门户](https://portal.azure.com)。
-* 通过使用存储客户端库或 REST API 以编程方式设置。
-* 通过使用 PowerShell 设置。 若要了解如何通过 Azure PowerShell 设置容器权限，请参阅[对 Azure 存储使用 Azure PowerShell](storage-powershell-guide-full.md#how-to-manage-azure-blobs)。
+* [Azure 门户](https://portal.azure.com)
+* [Azure PowerShell](storage-powershell-guide-full.md#how-to-manage-azure-blobs)
+* [Azure CLI 2.0](storage-azure-cli.md#create-and-manage-blobs)
+* 通过使用一个存储客户端库或 REST API 以编程方式设置
 
-### <a name="setting-container-permissions-from-the-azure-portal"></a>通过 Azure 门户设置容器权限
-若要通过 [Azure 门户](https://portal.azure.com)设置容器权限，请按以下步骤操作：
+### <a name="set-container-permissions-in-the-azure-portal"></a>在 Azure 门户中设置容器权限
+若要在 [Azure 门户](https://portal.azure.com)中设置容器权限，请按以下步骤操作：
 
-1. 导航到存储帐户的仪表板。
-2. 从列表中选择容器名称。 单击名称会公开所选容器中的 Blob
-3. 从工具栏选择“访问策略”。
-4. 在“访问类型”字段中，选择所需的权限级别，如下面的屏幕截图中所示。
+1. 在门户中打开“存储帐户”边栏选项卡。 通过在主门户菜单边栏选项卡中选择“存储帐户”，可以查找存储帐户。
+1. 在“菜单”边栏选项卡的“BLOB 服务”下，选择“容器”。
+1. 在容器行上右键单击或选择省略号，打开容器的“上下文菜单”。
+1. 在上下文菜单中选择“访问策略”。
+1. 从下拉菜单中选择“访问类型”。
 
     ![编辑容器元数据对话框](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
-### <a name="setting-container-permissions-programmatically-using-net"></a>使用 .NET 通过编程方式设置容器权限
-若要使用 .NET 客户端库设置容器的权限，请先调用 **GetPermissions** 方法以检索容器的现有权限。 然后，设置 **GetPermissions** 方法返回的 **BlobContainerPermissions** 对象的 **PublicAccess** 属性。 最后，使用更新的权限调用 **SetPermissions** 方法。
+### <a name="set-container-permissions-with-net"></a>使用 .NET 设置容器权限
+若要使用 C# 和适用于 .NET 的存储客户端库设置容器的权限，请先调用 GetPermissions 方法以检索容器的现有权限。 然后，设置 **GetPermissions** 方法返回的 **BlobContainerPermissions** 对象的 **PublicAccess** 属性。 最后，使用更新的权限调用 **SetPermissions** 方法。
 
 以下示例将容器的权限设置为完全公共读取访问。 若要将权限设置为仅针对 blob 的公共读取访问，请将 **PublicAccess** 属性设置为 **BlobContainerPublicAccessType.Blob**。 若要删除匿名用户的所有权限，请将该属性设置为 **BlobContainerPublicAccessType.Off**。
 
@@ -104,7 +107,6 @@ public static void ListBlobsAnonymously()
 }
 ```
 
-
 ### <a name="reference-a-blob-anonymously"></a>以匿名方式引用 Blob
 如果拥有允许进行匿名访问的 Blob 的 URL，则可使用该 URL 来直接引用 Blob：
 
@@ -148,14 +150,9 @@ public static void DownloadBlobAnonymously()
 | 获取页面范围 |全部 |全部 |
 | 追加 Blob |仅所有者 |仅所有者 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
+
 * [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx)（Azure 存储服务的身份验证）
 * [使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)
 * [Delegating Access with a Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx)（使用共享访问签名委托访问）
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

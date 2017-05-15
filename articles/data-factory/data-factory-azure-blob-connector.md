@@ -13,41 +13,321 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/26/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 16a094b8a311c43658aad299e206d79e29bafed0
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 07916e9c05b06c6998daf54467ee97ba9d9d0a64
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据复制到 Azure Blob 存储或从 Azure Blob 存储中复制数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-可将数据从任一支持的源数据存储复制到 Azure Blob 存储，或从 Azure Blob 存储移动到任一支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。
+## <a name="overview"></a>概述
+可将数据从任一支持的源数据存储复制到 Azure Blob 存储，或从 Azure Blob 存储移动到任一支持的接收器数据存储。 下表列出了有关复制活动支持作为源或接收器的数据存储。 例如，可以将数据从 SQL Server 数据库或 Azure SQL 数据库移动到 Azure blob 存储中。 并且，你可以将数据从 Azure blob 存储复制到 Azure SQL 数据仓库或 Azure DocumentDB 集合中。 
 
-> [!IMPORTANT]
-> 复制活动支持从常规用途的 Azure 存储帐户和冷/热 Blob 存储中复制数据，以及将数据复制到常规用途的 Azure 存储帐户和冷/热 Blob 存储。 活动支持**从块 blob、追加 blob 或页 blob 进行读取**，但仅支持**对块 blob 写入**。 不支持将 Azure 高级存储用作接收器，因为它由页 Blob 支持。
->
-> 复制活动在源数据成功复制到目标位置后不会删除该数据。 如果需要在成功复制后删除源数据，请创建自定义活动以删除该数据，并在管道中使用该活动。
+[!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-## <a name="getting-started"></a>入门
-可以使用不同的工具/API 创建包含复制活动的管道，此管道将数据移入/移出 Azure Blob 存储。
+复制活动支持从常规用途的 Azure 存储帐户和冷/热 Blob 存储中复制数据，以及将数据复制到常规用途的 Azure 存储帐户和冷/热 Blob 存储。 活动支持**从块 blob、追加 blob 或页 blob 进行读取**，但仅支持**对块 blob 写入**。 不支持将 Azure 高级存储用作接收器，因为它由页 Blob 支持。
 
-创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+> [!NOTE]
+> 复制活动在源数据成功复制到目标位置后不会删除该数据。 如果需要在成功复制后删除源数据，请创建一个[自定义活动](data-factory-use-custom-activities.md)，以便删除数据并在管道中使用该活动。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>演练：使用“复制向导”将数据复制到 Blob 存储/从 Blob 存储复制数据
+让我们看一下如何快速将数据复制到 Azure Blob 存储/从 Azure Blob 存储复制数据。 在本演练中，源和目标数据存储都属于 Azure Blob 存储类型。 本演练中的管道将数据从一个文件夹复制到同一 blob 容器中的其他文件夹中。 本演练有意简单设计，以显示使用 Blob 存储作为源或接收器时的设置或属性。 
 
-无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
+### <a name="prerequisites"></a>先决条件
+1. 如果尚无 Azure 存储帐户，请创建一个通用 Azure 存储帐户。 在本演练中，使用 blob 存储同时作为源和目标数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
+2. 在存储帐户中创建名为 adfblobconnector 的 Blob 容器。 
+4. 在 adfblobconnector 容器中创建名为 input 的文件夹。
+5. 创建含以下内容且名为 emp.txt 的文件，并使用 [Azure 存储资源管理器](https://azurestorageexplorer.codeplex.com/)等工具将其上传到 input 文件夹
+    ```json
+    John, Doe
+    Jane, Doe
+    ```
+### <a name="create-the-data-factory"></a>创建数据工厂
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 单击左上角的“+ 新建”，单击“智能 + 分析”，然后单击“数据工厂”。
+3. 在“新建数据工厂”  边栏选项卡中：   
+    1. 输入 ADFBlobConnectorDF作为名称。 Azure 数据工厂的名称必须全局唯一。 如果收到错误“`*Data factory name “ADFBlobConnectorDF” is not available`”，请更改数据工厂的名称（例如改为 yournameADFBlobConnectorDF），然后重新尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
+    2. 选择 **Azure 订阅**。
+    3. 对于资源组，选择“使用现有”以选择现有资源组（或）选择“新建”以输入资源组的名称。
+    4. 选择数据工厂的**位置**。
+    5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。
+    6. 单击“创建” 。
+3. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：![数据工厂主页](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
-1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
-2. 创建**数据集**以表示复制操作的输入和输出数据。
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。
+### <a name="copy-wizard"></a>复制向导
+1. 在“数据工厂”主页上，单击“复制数据[预览]”磁贴，以在单独的选项卡上启动“复制数据向导”。    
+    
+    > [!NOTE]
+    >    如果 Web 浏览器卡在“正在授权...”处，请禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 **login.microsoftonline.com** 创建一个例外，然后尝试再次启动该向导。
+2. 在“属性”  页中：
+    1. 输入 CopyPipeline作为任务名称。 任务名称是数据工厂中管道的名称。
+    2. 输入任务的说明（可选）。
+    3. 对于任务频率或任务计划，请选中“按计划定期运行”选项。 如果只想运行该任务一次而不是按计划定期运行，请选择“立即运行一次”。 如果选择“立即运行一次”选项，将创建[一次性管道](data-factory-create-pipelines.md#onetime-pipeline)。 
+    4. 保存设置以用于“重复执行模式”。 此任务在下一步中指定的开始和结束时间之间每日运行。
+    5. 将开始日期时间更改为 2017/04/21。 
+    6. 将结束日期时间更改为 2017/04/25。 建议直接键入日期而不是浏览日历。     
+    8. 单击“下一步”。
+      ![复制工具 - 属性页](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
+3. 在“源数据存储”页上，单击“Azure Blob 存储”磁贴。 此页用于指定复制任务的源数据存储。 可使用现有的数据存储链接服务，或指定新的数据存储。 要使用现有链接服务，请选择“来自现有链接服务” ，并选择适当的链接服务。 
+    ![复制工具 - 源数据存储页](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
+4. 在“指定 Azure Blob 存储帐户”  页上：
+   1. 保留自动生成的名称作为连接名称。 连接名称是 Azure 存储类型的链接服务名称。 
+   2. 确认为“帐户选择方法”选择了“来自 Azure 订阅”。
+   3. 选择 Azure 订阅或针对 Azure 订阅选择“全选”。   
+   4. 从所选订阅的可用 Azure 存储帐户列表中，选择一个 **Azure 存储帐户**。 还可选择手动输入存储帐户设置，方法是在“帐户选择方法”中选择“手动输入”选项。
+   5. 单击“下一步”。 
+      ![复制工具 - 指定 Azure Blob 存储帐户](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
+5. 在“选择输入文件或文件夹”  页上：
+   1. 双击“adfblobcontainer”。
+   2. 选择“input”，然后单击“选择”。 在本演练中，选择输入文件夹。 也可以改为选择文件夹中的 emp.txt 文件。 
+      ![复制工具 - 选择输入文件或文件夹](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+6. 在“选择输入文件或文件夹” 页上：
+    1. 确认“文件或文件夹”已设置为 adfblobconnector/input。 如果文件位于子文件夹中，例如，2017/04/01、2017/04/02 依此类推，请输入 adfblobconnector/input/{年}/{月}/{日} 作为文件或文件夹。 在文本框外按 Tab 时，你会看到三个下拉列表，用于选择年 (yyyy)、月 (MM) 和日 (dd) 的格式。 
+    2. 请勿设置“以递归方式复制文件”。 选择此选项将以递归方式遍历文件夹，寻找要复制到目标的文件。 
+    3. 请勿选择“二进制复制”选项。 选择此选项将对源文件执行到目标的二进制复制。 请勿对此演练选择该选项，以便在下一页中看到更多选项。 
+    4. 确认“压缩类型”已设为“无”。 如果源文件使用支持的格式之一进行压缩，请为此选项选择一个值。 
+    5. 单击“下一步”。
+    ![复制工具 - 选择输入文件或文件夹](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
+7. 在“文件格式设置”页上，可以看到分隔符以及向导通过分析文件自动检测到的架构。 
+    1. 确认“文件格式”已设为“文本格式”。 可在下拉列表中看到所有支持的格式。 例如：JSON、Avro、ORC 和 Parquet。 
+    2. 确认“列分隔符”已设为 `Comma (,)`。 可在下拉列表中看到数据工厂支持的其他列分隔符。 还可以指定自定义分隔符。 
+    3. 确认“行分隔符”已设为 `Carriage Return + Line feed (\r\n)`。 可在下拉列表中看到数据工厂支持的其他行分隔符。 还可以指定自定义分隔符。 
+    4. 确认“跳过行计数”已设为“0”。 如果想要跳过文件顶部的几行，请在此处输入数字。 
+    5. 确认未设置“第一数据行包含列名称”。 如果源文件的第一行包含列名称，请选择此选项。 
+    6. 确认未设置“将空列值视为 null”选项。 
+    7. 展开“高级设置”以查看可用的高级选项。 
+    8. 在页面底部，查看 emp.txt 文件的数据的“预览”。 
+    9. 单击底部的“架构”选项卡，查看复制向导通过查看源文件中的数据推断出来的架构。 
+    10. 检查分隔符并预览数据之后，请单击“下一步”。
+    ![复制工具 - 文件格式设置](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)  
+8. 在“目标数据存储”页上，选择“Azure Blob 存储”，然后单击“下一步”。 在本演练中，使用 Azure blob 存储同时作为源和目标数据存储。    
+    ![复制工具 - 选择目标数据存储](media/data-factory-azure-blob-connector/select-destination-data-store.png)
+9. 在“指定 Azure Blob 存储帐户”页上：
+   1. 在“连接名称”字段中输入 AzureStorageLinkedService。
+   2. 确认为“帐户选择方法”选择了“来自 Azure 订阅”。
+   3. 选择 **Azure 订阅**。  
+   4. 选择 Azure 存储帐户。 
+   5. 单击“下一步”。     
+10. 在“选择输出文件或文件夹”页上： 
+    1. 指定“文件夹路径”为 adfblobconnector/output/{年}/{月}/{日}。 输入 TAB。 
+    2. 对于“年”，请选择“yyyy”。 
+    3. 对于“月”，请确认它已设为“MM”。 
+    4. 对于“日”，请确认它已设为“dd”。 
+    5. 确认“压缩类型”已设为“无”。 
+    6. 确认“复制行为”已设为“合并文件”。 如果已存在具有相同名称的输出文件，新内容将添加到相同文件的末尾。  
+    7. 单击“下一步”。 
+    ![复制工具 - 选择输出文件或文件夹](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+11. 在“文件格式设置”页上，查看设置，然后单击“下一步”。 可在此处选择“向输出文件添加标题”。 如果选择该选项，将添加一个标题行，包含源架构的列名称。 查看源的架构时，可以重命名默认列名称。 例如，可以将第一列改为“名字”，而第二列改为“姓氏”。 然后，将生成输出文件和标题，其中这些名称为列名称。 
+    ![复制工具 - 目标的文件格式设置](media/data-factory-azure-blob-connector/file-format-destination.png)
+12. 在“性能设置”页上，确认“云单位”和“并行副本”已设为“自动”，然后单击“下一步”。 有关这些设置的详细信息，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md#parallel-copy)。
+    ![复制工具 - 性能设置](media/data-factory-azure-blob-connector/copy-performance-settings.png) 
+14. 在“摘要”页上，查看所有设置（任务属性、源和目标的设置以及复制设置），然后单击“下一步”。
+    ![复制工具 -“摘要”页](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
+15. 在“摘要”页中检查信息，然后单击“完成”。 复制向导在数据工厂（即启动该向导的位置）中创建两个链接服务、两个数据集（输入和输出）和一个管道。
+    ![复制工具 -“部署”页](media/data-factory-azure-blob-connector/copy-tool-deployment-page.png)
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure Blob 存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。
+### <a name="monitor-the-pipeline-copy-task"></a>监视管道（复制任务）
 
-对于特定于 Azure Blob 存储的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
+1. 单击“部署”页中的链接`Click here to monitor copy pipeline`。 
+2. 将以单独的选项卡形式显示“监视和管理应用程序”。 
+    ![监视和管理应用](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+3. 将顶部的“开始”时间更改为 `04/19/2017`，“结束”时间改为 `04/27/2017`，然后单击“应用”。 
+4. “活动时段”列表中应会显示五个活动时段。 “WindowStart”时间应包含从管道开始到管道结束时间的所有日子。 
+5. 针对“活动时段”列表多次单击“刷新”按钮，直到看到所有活动时段均已设为“就绪”。 
+6. 现在，确认已在 adfblobconnector 容器的输出文件夹中生成输出文件。 输出文件夹中应包含以下文件夹结构： 
+    ```
+    2017/04/21
+    2017/04/22
+    2017/04/23
+    2017/04/24
+    2017/04/25    
+    ```
+有关监视和管理数据工厂的详细信息，请参阅[监视和管理数据工厂管道](data-factory-monitor-manage-app.md)一文。 
+ 
+### <a name="data-factory-entities"></a>数据工厂实体
+现在，切换回具有“数据工厂”主页的选项卡。 请注意，数据工厂中现在有两个链接服务、两个数据集和一个管道。 
+
+![“数据工厂”主页和实体](media/data-factory-azure-blob-connector/data-factory-home-page-with-numbers.png)
+
+单击“创作和部署”启动数据工厂编辑器。 
+
+![数据工厂编辑器](media/data-factory-azure-blob-connector/data-factory-editor.png)
+
+数据工厂中应包含以下“数据工厂”实体： 
+
+ - 两个链接服务。 一个用于源，另一个用于目标。 在本演练中，两个链接服务均指代同一 Azure 存储帐户。 
+ - 两个数据集。 一个输入数据集和一个输出数据集。 在本演练中，两个数据集使用相同的 blob 容器，但指代不同的文件夹（输入和输出文件夹）。
+ - 一个管道。 管道包含使用 blob 源和 blob 接收器将数据从 Azure blob 位置复制到另一个 Azure blob 位置的复制活动。 
+
+以下各节详细介绍了这些实体。 
+
+#### <a name="linked-services"></a>链接服务
+你应看到两项链接服务。 一个用于源，另一个用于目标。 在本演练中，这两个服务除名称不同外，定义看起来完全一样。 链接服务的“类型”已设为“AzureStorage”。 链接服务定义中最重要的属性是“connectionString”，数据工厂在运行时用其连接到 Azure 存储帐户。 忽略定义中的 hubName 属性。 
+
+##### <a name="source-blob-storage-linked-service"></a>源 blob 存储链接服务
+```json
+{
+    "name": "Source-BlobStorage-z4y",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=**********"
+        }
+    }
+}
+```
+
+##### <a name="destination-blob-storage-linked-service"></a>目标 blob 存储链接服务
+
+```json
+{
+    "name": "Destination-BlobStorage-z4y",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=**********"
+        }
+    }
+}
+```
+
+有关 Azure 存储链接服务的详细信息，请参阅[链接服务属性](#linked-service-properties)部分。 
+
+#### <a name="datasets"></a>数据集
+有两个数据集：一个输入数据集和一个输出数据集。 两个数据集的类型均已设为“AzureBlob”。 
+
+输入数据集指向 adfblobconnector blob 容器的输入文件夹。 此数据集的“external”属性已设为 true，因为该数据不是由包含将此数据集作为输入的复制活动的管道生成的。 
+
+输出数据集指向同一 blob 容器的输出文件夹。 输出数据集也使用 SliceStart 系统变量的年、月、日来动态计算输出文件的路径。 有关数据工厂支持的函数和系统变量列表，请参阅[数据工厂函数和系统变量](data-factory-functions-variables.md)。 “external”属性已设为 false（默认值），因为此数据集由管道生成。 
+
+有关 Azure Blob 数据集支持的属性的详细信息，请参阅[数据集属性](#dataset-properties)部分。
+
+##### <a name="input-dataset"></a>输入数据集
+
+```json
+{
+    "name": "InputDataset-z4y",
+    "properties": {
+        "structure": [
+            { "name": "Prop_0", "type": "String" },
+            { "name": "Prop_1", "type": "String" }
+        ],
+        "type": "AzureBlob",
+        "linkedServiceName": "Source-BlobStorage-z4y",
+        "typeProperties": {
+            "folderPath": "adfblobconnector/input/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
+            }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
+    }
+}
+```
+
+##### <a name="output-dataset"></a>输出数据集
+
+```json
+{
+    "name": "OutputDataset-z4y",
+    "properties": {
+        "structure": [
+            { "name": "Prop_0", "type": "String" },
+            { "name": "Prop_1", "type": "String" }
+        ],
+        "type": "AzureBlob",
+        "linkedServiceName": "Destination-BlobStorage-z4y",
+        "typeProperties": {
+            "folderPath": "adfblobconnector/output/{year}/{month}/{day}",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
+            },
+            "partitionedBy": [
+                { "name": "year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+                { "name": "month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+                { "name": "day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }
+            ]
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }
+}
+```
+
+#### <a name="pipeline"></a>管道
+管道只包含一个活动。 将活动的“类型”设为“复制”。  活动的类型属性有两个部分，一部分用于源，另一部分用于接收器。 源类型已设为“BlobSource”，因为活动从 blob 存储复制数据。 接收器类型已设为“BlobSink” ，因为活动将数据复制到 blob 存储。 复制活动采用 InputDataset-z4y 作为输入，采用OutputDataset-z4y 作为输出。 
+
+有关 BlobSource 和 BlobSink 支持的属性的详细信息，请参阅[复制活动属性](#copy-activity-properties)部分。 
+
+```json
+{
+    "name": "CopyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": false
+                    },
+                    "sink": {
+                        "type": "BlobSink",
+                        "copyBehavior": "MergeFiles",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset-z4y"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset-z4y"
+                    }
+                ],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 3,
+                    "longRetry": 0,
+                    "longRetryInterval": "00:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Activity-0-Blob path_ adfblobconnector_input_->OutputDataset-z4y"
+            }
+        ],
+        "start": "2017-04-21T22:34:00Z",
+        "end": "2017-04-25T05:00:00Z",
+        "isPaused": false,
+        "pipelineMode": "Scheduled"
+    }
+}
+```
 
 ## <a name="linked-service-properties"></a>链接服务属性
 有两种类型的链接服务，可用于将 Azure 存储链接到 Azure 数据工厂。 它们是：**AzureStorage** 链接服务和 **AzureStorageSas** 链接服务。 Azure 存储链接服务为数据工厂提供 Azure 存储的全局访问权限。 而 Azure 存储 SAS（共享访问签名）链接服务为数据工厂提供 Azure 存储的受限/有时限的访问。 这两种链接服务之间没有其他区别。 请选择适合你需求的链接服务。 以下各部分提供了有关这两种链接服务的详细信息。
@@ -152,13 +432,24 @@ ms.lasthandoff: 04/12/2017
 | false |flattenHierarchy |对于具有以下结构的源文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标文件夹 Folder1<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成名称<br/><br/><br/>不会选取包含 File3、File4 和 File5 的 Subfolder1。 |
 | false |mergeFiles |对于具有以下结构的源文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标文件夹 Folder1<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 的内容将合并到一个文件中，且自动生成文件名。 File1 的自动生成名称<br/><br/>不会选取包含 File3、File4 和 File5 的 Subfolder1。 |
 
-## <a name="supported-file-and-compression-formats"></a>支持的文件和压缩格式
-请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
+## <a name="toolssdks-to-create-a-pipeline"></a>用于创建管道的工具/SDK  
+可以使用不同的工具/API 创建包含复制活动的管道，此管道将数据移入/移出 Azure Blob 存储。
 
-## <a name="json-examples"></a>JSON 示例
+本文演示了如何在 Azure Blob 存储中将数据从一个文件夹复制到同一容器中的其他文件夹中。 有关如何创建管道将数据从 Azure Blob 存储复制到 Azure SQL Server 数据库中的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。 
+
+也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
+
+1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
+2. 创建**数据集**以表示复制操作的输入和输出数据。
+3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。
+
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  
+
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 这些示例演示了如何将数据复制到 Azure Blob 存储和 Azure SQL 数据库，以及如何从中复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
-## <a name="example-copy-data-from-blob-storage-to-sql-database"></a>示例：将数据从 Blob 存储复制到 SQL 数据库
+## <a name="json-example-copy-data-from-blob-storage-to-sql-database"></a>JSON 示例：将数据从 Blob 存储复制到 SQL 数据库
 以下示例显示：
 
 1. [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties) 类型的链接服务。
@@ -211,38 +502,10 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
       "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/",
       "fileName": "{Hour}.csv",
       "partitionedBy": [
-        {
-          "name": "Year",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "yyyy"
-          }
-        },
-        {
-          "name": "Month",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "MM"
-          }
-        },
-        {
-          "name": "Day",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "dd"
-          }
-        },
-        {
-          "name": "Hour",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "HH"
-          }
-        }
+        { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "HH" } }
       ],
       "format": {
         "type": "TextFormat",
@@ -334,7 +597,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
    }
 }
 ```
-## <a name="example-copy-data-from-azure-sql-to-azure-blob"></a>示例：将数据从 Azure SQL 复制到 Azure Blob
+## <a name="json-example-copy-data-from-azure-sql-to-azure-blob"></a>JSON 示例：将数据从 Azure SQL 复制到 Azure Blob
 以下示例显示：
 
 1. [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties) 类型的链接服务。
@@ -419,36 +682,10 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
       "partitionedBy": [
         {
           "name": "Year",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "yyyy"
-          }
-        },
-        {
-          "name": "Month",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "MM"
-          }
-        },
-        {
-          "name": "Day",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "dd"
-          }
-        },
-        {
-          "name": "Hour",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "HH"
-          }
-        }
+          "value": { "type": "DateTime",  "date": "SliceStart", "format": "yyyy" } },
+        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "HH" } }
       ],
       "format": {
         "type": "TextFormat",

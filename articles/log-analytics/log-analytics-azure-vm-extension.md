@@ -4,7 +4,7 @@ description: "对于在 Azure 中运行的 Windows 和 Linux 虚拟机，建议�
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
-manager: jochan
+manager: ewinner
 editor: 
 ms.assetid: ca39e586-a6af-42fe-862e-80978a58d9b1
 ms.service: log-analytics
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 04/27/2017
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 87e888bf3d7355b36c42e8787abe9bf1cb191fcd
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 1cab9d2f814e0c36dadcdd7bbc3cdc736de0af49
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -64,7 +65,7 @@ ms.lasthandoff: 04/03/2017
    ![已连接](./media/log-analytics-azure-vm-extension/oms-connect-azure-05.png)
 
 ## <a name="enable-the-vm-extension-using-powershell"></a>使用 PowerShell 启用 VM 扩展
-使用 PowerShell 配置虚拟机时，需要提供 **workspaceId** 和 **workspaceKey**。 请注意，json 配置中的属性名称**区分大小写**。
+使用 PowerShell 配置虚拟机时，需要提供 **workspaceId** 和 **workspaceKey**。 json 配置中的属性名称**区分大小写**。
 
 可以在 OMS 门户的“**设置**”页面，或按照上述示例所示使用 PowerShell 来查看 ID 和关键值。
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 04/03/2017
 
 对于经典虚拟机，使用以下 PowerShell 示例：
 
-```
+```PowerShell
 Add-AzureAccount
 
 $workspaceId = "enter workspace ID here"
@@ -90,9 +91,14 @@ $vm = Get-AzureVM –ServiceName $hostedService
 # Set-AzureVMExtension -VM $vm -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionName 'OmsAgentForLinux' -Version '1.*' -PublicConfiguration "{'workspaceId': '$workspaceId'}" -PrivateConfiguration "{'workspaceKey': '$workspaceKey' }" | Update-AzureVM -Verbose
 ```
 
+对于 Resource Manager Linux VM，使用以下 CLI
+```azurecli
+az vm extension set --resource-group myRGMonitor --vm-name myMonitorVM --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --version 1.3 --protected-settings ‘{"workspaceKey": "<workspace-key>"}’ --settings ‘{"workspaceId": "<workspace-id>"}’ 
+```
+
 对于资源管理器虚拟机，使用以下 PowerShell 示例：
 
-```
+```PowerShell
 Login-AzureRMAccount
 Select-AzureSubscription -SubscriptionId "**"
 
@@ -122,8 +128,9 @@ $location = $vm.Location
 
 ```
 
+
 ## <a name="deploy-the-vm-extension-using-a-template"></a>使用模板部署 VM 扩展
-使用 Azure 资源管理器可以创建一个简单的模板（采用 JSON 格式），用于定义应用程序的部署和配置。 此模板称为资源管理器模板，让你以声明性方式定义部署。 使用模板可以在整个应用程序生命周期内反复部署该应用程序，并确保以一致的状态部署资源。
+使用 Azure Resource Manager 可以创建一个模板（采用 JSON 格式），用于定义应用程序的部署和配置。 此模板称为资源管理器模板，让你以声明性方式定义部署。 使用模板可以在整个应用程序生命周期内反复部署该应用程序，并确保以一致的状态部署资源。
 
 通过将 Log Analytics 代理作为资源管理器模板的一部分，可以确保将每个虚拟机预配置为向 Log Analytics 工作区报告。
 
@@ -135,7 +142,7 @@ $location = $vm.Location
 * Microsoft.EnterpriseCloud.Monitoring 资源扩展部分
 * 查找 workspaceId 和 workspaceSharedKey 的输出
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -362,7 +369,7 @@ $location = $vm.Location
 
 可以使用以下 PowerShell 命令部署模板：
 
-```
+```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath
 ```
 
@@ -394,7 +401,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 3. 查看 `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent` 中的 Microsoft Monitoring Agent VM 扩展日志文件
 4. 确保虚拟机可以运行 PowerShell 脚本
 5. 确保 C:\Windows\temp 上的权限未被更改
-6. 通过在虚拟机上的 PowerShell 特权窗口中键入以下内容来查看 Microsoft Monitoring Agent 的状态：`  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
+6. 通过在虚拟机上提升权限的 PowerShell 窗口中键入以下命令来查看 Microsoft Monitoring Agent 的状态：`  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
 7. 查看 `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs` 中的 Microsoft Monitoring Agent 安装日志文件
 
 有关详细信息，请参阅 [Windows 扩展故障排除](../virtual-machines/windows/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
