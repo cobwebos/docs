@@ -1,5 +1,5 @@
 ---
-title: "PingAccess for Azure AD 应用程序代理 | Microsoft Docs"
+title: "使用 PingAccess for Azure AD 应用程序代理进行基于标头的身份验证 | Microsoft Docs"
 description: "使用 PingAccess 和应用代理发布应用程序，以支持基于标头的身份验证。"
 services: active-directory
 documentationcenter: 
@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 04/21/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 173607c481d0ba7ceece6310fcd131ff622a0677
-ms.lasthandoff: 03/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 8db76d1f83cdf1cf53ddd1e9c69c56400d04af2d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/29/2017
 
 ---
 
-# <a name="publish-applications-that-support-header-based-authentication-with-pingaccess-for-azure-ad"></a>使用 PingAccess for Azure AD 发布支持基于标头的身份验证的应用程序
+# <a name="publish-applications-that-support-header-based-authentication-with-azure-ad-application-proxy-and-pingaccess"></a>使用 Azure AD 应用程序代理和 PingAccess 发布支持基于标头的身份验证的应用程序
 
 将 Azure Active Directory 应用程序代理与 PingAccess 配合使用可让 Azure Active Directory 客户访问更多的应用程序。 PingAccess 扩展了[现有的应用程序代理产品](active-directory-application-proxy-get-started.md)，包含对使用标头进行身份验证的应用程序的远程访问功能。 
 

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d1be33680d91fd3179c7af84c9726592d6c91dd5
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: e0cd2a14b4102797024925a72783ecaf56919aec
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -27,14 +28,22 @@ ms.lasthandoff: 04/03/2017
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
+## <a name="supported-operating-systems"></a>支持的操作系统
+
+有关支持的操作系统和驱动程序要求，请参阅[适用于 Linux 的 N 系列驱动程序设置](n-series-driver-setup.md)。
+
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
+[!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
+
+* 我们不建议在 Ubuntu NC VM 上安装 X server 或使用 nouveau 驱动程序的其他系统。 在安装 NVIDIA GPU 驱动程序之前，需要禁用 nouveau 驱动程序。  
+
 ## <a name="other-sizes"></a>其他大小
-- [常规用途](../windows/sizes-general.md)
-- [计算优化](../windows/sizes-compute.md)
+- [常规用途](sizes-general.md)
+- [计算优化](sizes-compute.md)
 - [内存优化](sizes-memory.md)
 - [存储优化](sizes-storage.md)
 - [高性能计算](sizes-hpc.md)
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [Azure 计算单元 (ACU)](../windows/acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。

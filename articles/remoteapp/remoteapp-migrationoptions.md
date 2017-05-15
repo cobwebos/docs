@@ -11,12 +11,13 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 25ba53a1047863d01ba1fc2647af51fdd582feb1
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 11254a9bd82885701b457ba3b4ec0ef0aad710e6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -186,7 +187,7 @@ Citrix 服务提供商计划使得服务提供商为中小型企业提供虚拟�
 >   
 > Loughton, Essex IG10 3TQ
 >   
-> **电话：+44 (0) 20 8502 2155
+> 电话：+44 (0) 20 8502 2155
 > 
 > **新加坡**：
 >   
@@ -194,7 +195,7 @@ Citrix 服务提供商计划使得服务提供商为中小型企业提供虚拟�
 >   
 > The Globe, Singapore 069532
 > 
-> **电话：+65 6709 4933
+> 电话：+65 6709 4933
 >   
 > **北美**：
 >   
@@ -202,7 +203,7 @@ Citrix 服务提供商计划使得服务提供商为中小型企业提供虚拟�
 >   
 > Suite 200, Houston, TX 77098
 >   
-> **电话：+1 713 691 0800
+> 电话：+1 713 691 0800
 
 #### <a name="saasplaza"></a>**SaaSplaza**
 [SaaSplaza](http://www.saasplaza.com/) 提供完整的 Microsoft Dynamics 组合（NAV、AX、GP、SL、CRM）私有云和公有云 (Azure)。
@@ -217,7 +218,7 @@ Citrix 服务提供商计划使得服务提供商为中小型企业提供虚拟�
 > 
 > 提供基于会话的 RemoteApp 和桌面解决方案：是，两者
 > 
-> **欧洲、非洲和中东**
+> **欧洲、非洲和中东**：
 > 
 > Prins Mauritslaan 29-35
 > 
@@ -227,7 +228,7 @@ Citrix 服务提供商计划使得服务提供商为中小型企业提供虚拟�
 > 
 > 电话：+31 20 547 8060 
 > 
->  **美洲**
+>  **美洲**：
 > 
 > 171 Saxony Road, Suite 105
 > 
@@ -239,7 +240,7 @@ Citrix 服务提供商计划使得服务提供商为中小型企业提供虚拟�
 > 
 > 电话：+1 858 385 8900 
 > 
-> **APAC**
+> **APAC**：
 > 
 > 105 Cecil Street
 >    

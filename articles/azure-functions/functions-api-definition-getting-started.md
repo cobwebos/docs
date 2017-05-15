@@ -14,10 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: ad82c1a552d9d77259c44b938975eebc44933b86
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 9fd5b63259c7771d8b1e346ba3a6c10a4399532a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -119,6 +120,6 @@ ms.lasthandoff: 04/26/2017
   * 有关 OpenAPI 支持的详细信息，请阅读完整文档。
 * [Azure Functions 开发人员参考](functions-reference.md)  
   * ，用于编码函数和定义触发器及绑定的程序员参考。
-* [Azure Functions Github 存储库](https://github.com/Azure/Azure-Functions/)
-  * 查看 Functions Github，向我们提供有关 API 定义支持预览的反馈！ 为想要更新的任何内容制作一个 Github 发布。
+* [Azure Functions GitHub 存储库](https://github.com/Azure/Azure-Functions/)
+  * 查看 Functions GitHub，向我们提供有关 API 定义支持预览的反馈！ 为想要看到更新的任何内容制作一个 GitHub 发布。
 

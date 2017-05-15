@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 456c541be7aadcce494bbd54e97deb6f30d5141b
-ms.openlocfilehash: dc9af7e4ef9599886d1be6676f88f71f80c20474
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b9df2c3e7f49a47bfd714f28c5ab53590ca9a719
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,11 +50,11 @@ ms.openlocfilehash: dc9af7e4ef9599886d1be6676f88f71f80c20474
 ### <a name="enable-vnet-connection-using-powershell-cmdlets"></a>使用 PowerShell cmdlet 启用 VNET 连接
 还可以使用 PowerShell cmdlet 启用 VNET 连接。
 
-* **在 VNET 内创建 API 管理服务**：使用 cmdlet [New-AzureRmApiManagement](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.apimanagement/v3.1.0/new-azurermapimanagement) 在 VNET 内创建 Azure API 管理服务，并将其配置为使用内部 VNET 类型。
+* **在 VNET 内创建 API 管理服务**：使用 cmdlet [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) 在 VNET 内创建 Azure API 管理服务，并将其配置为使用内部 VNET 类型。
 
-* **在 VNET 内部署现有 API 管理服务**：使用 cmdlet [Update-AzureRmApiManagementDeployment](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.apimanagement/v3.1.0/update-azurermapimanagementdeployment) 将现有 Azure API 管理服务移到虚拟网络内，并将其配置为使用内部 VNET 类型。
+* **在 VNET 内部署现有 API 管理服务**：使用 cmdlet [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) 将现有 Azure API 管理服务移到虚拟网络内，并将其配置为使用内部 VNET 类型。
 
-## <a name="a-nameapim-dns-configurationadns-configuration"></a><a name="apim-dns-configuration"></a>DNS 配置
+## <a name="apim-dns-configuration"></a>DNS 配置
 在外部虚拟网络模式下使用 API 管理时，由 Azure 托管 DNS。 使用内部虚拟网络模式时，必须自行管理 DNS。
 
 > [!NOTE]
@@ -61,23 +63,23 @@ ms.openlocfilehash: dc9af7e4ef9599886d1be6676f88f71f80c20474
 ### <a name="access-on-default-host-names"></a>基于默认主机名的访问权限：
 在公共 Azure 云（例如“contoso”）中创建 API 管理服务时，将会默认配置以下服务终结点。
 
->   网关/代理 - contoso.azure-api.net
+>    网关/代理 - contoso.azure-api.net
 
 > 发布者门户和开发人员门户 - contoso.portal.azure-api.net
 
 > 直接管理终结点 - contoso.management.azure-api.net
 
->   GIT - contoso.scm.azure-api.net
+>    GIT - contoso.scm.azure-api.net
 
 若要访问这些 API 管理服务终结点，可以在连接到虚拟网络（其中部署了 API 管理）的子网中创建虚拟机。 假定服务的内部虚拟 IP 地址为 10.0.0.5，则可执行主机文件映射 (%SystemDrive%\drivers\etc\hosts)，如下所示：
 
-> 10.0.0.5    contoso.azure-api.net
+> 10.0.0.5      contoso.azure-api.net
 
-> 10.0.0.5    contoso.portal.azure-api.net
+> 10.0.0.5      contoso.portal.azure-api.net
 
-> 10.0.0.5    contoso.management.azure-api.net
+> 10.0.0.5      contoso.management.azure-api.net
 
-> 10.0.0.5    contoso.scm.azure-api.net
+> 10.0.0.5      contoso.scm.azure-api.net
 
 然后即可从创建的虚拟机访问所有服务终结点。 如果在虚拟网络中使用自定义 DNS 服务器，则还可创建 DNS 记录并从虚拟网络中的任何位置访问这些终结点。 
 
@@ -99,9 +101,4 @@ ms.openlocfilehash: dc9af7e4ef9599886d1be6676f88f71f80c20474
 
 [Create API Management service]: api-management-get-started.md#create-service-instance
 [Common Network Configuration Issues]: api-management-using-with-vnet.md#network-configuration-issues
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

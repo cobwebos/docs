@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/12/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: a1cf0b1c7be5e23046c4217965b2ca75ae4b313c
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 538b0064fef8d54c5cac9d4dd43f70ebf1772819
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/13/2017
 
 ## <a name="mono-compatibility-with-net"></a>Mono 与 .NET 的兼容性
 
-Mono 版本 4.2.1 包含在 HDInsight 版本 3.5 中。 有关包含在 HDInsight 中的 Mono 版本的详细信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。
+Mono 版本 4.2.1 包含在 HDInsight 版本 3.5 中。 有关包含在 HDInsight 中的 Mono 版本的详细信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。 若要安装 Mono 的特定版本，请参阅[安装或更新 Mono](hdinsight-hadoop-install-mono.md) 文档。
 
 有关 Mono 与 .NET 间兼容性的详细信息，请参阅 [Mono 兼容性 (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) 文档。
 

@@ -13,13 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 03/15/2017
+ms.date: 04/24/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f635bbd8652b97c1067473e56565bf7c6520a2ba
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: eafde9258222a2ab09ade2e366f9cc595a303dec
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -173,7 +174,7 @@ Batch 管理 .NET 库是 Azure 资源提供程序客户端，与 [Azure Resource
 
 删除新建的 Batch 帐户和资源组之前，可以在 [Azure 门户][azure_portal]中查看它们：
 
-若要成功运行示例应用程序，必须首先在 Azure 门户中将其注册到 Azure AD 租户，并向 Azure Resource Manager API 授予权限。 按照[使用 Azure AD 对 Batch 管理应用程序进行身份验证](batch-aad-auth.md#use-azure-ad-with-batch-service-solutions)中提供的步骤操作。
+若要成功运行示例应用程序，必须首先在 Azure 门户中将其注册到 Azure AD 租户，并向 Azure Resource Manager API 授予权限。 按照[使用 Azure AD 对 Batch 管理应用程序进行验证](batch-aad-auth-management.md)中提供的步骤操作。
 
 
 [aad_about]: ../active-directory/active-directory-whatis.md "什么是 Azure Active Directory？"

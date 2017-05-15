@@ -4,7 +4,7 @@ description: "适用于依赖项遥测的 Application Insights 数据模型"
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
-manager: azakonov-ms
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
@@ -12,16 +12,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: b86b1e1ff7c0370918b2509f98ad65265eb4186e
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e71730ffe7e42ce5658189baca92ced3a54d269d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 
-依赖项遥测表示受监视组件与远程组件（如 SQL 或 HTTP 终结点）的交互。
+[Application Insights](app-insights-overview.md) 中的依赖项遥测表示受监视组件与远程组件（如 SQL 或 HTTP 终结点）的交互。
 
 ## <a name="name"></a>Name
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="id"></a>ID
 
-依赖项调用实例的标识符。 用于与此依赖项调用所对应的请求遥测项关联。 有关详细信息，请参阅[关联](/correlation.md)页。
+依赖项调用实例的标识符。 用于与此依赖项调用所对应的请求遥测项关联。 有关详细信息，请参阅[关联](application-insights-correlation.md)页。
 
 ## <a name="data"></a>数据
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="target"></a>目标
 
-依赖项调用的目标站点。 示例包括服务器名称、主机地址。 有关详细信息，请参阅[关联](/correlation.md)页。
+依赖项调用的目标站点。 示例包括服务器名称、主机地址。 有关详细信息，请参阅[关联](application-insights-correlation.md)页。
 
 ## <a name="duration"></a>持续时间
 
@@ -66,8 +67,9 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[数据模型](/application-insights-data-model.md)，了解 Application Insights 的类型和数据模型。
-- 为 [.NET](/app-insights-asp-net-dependencies.md) 设置依赖项跟踪。
-- 为 [Java](/app-insights-java-agent.md) 设置依赖项跟踪。
-- 查看 Application Insights 支持的[平台](/app-insights-platforms.md)。
+- 为 [.NET](app-insights-asp-net-dependencies.md) 设置依赖项跟踪。
+- 为 [Java](app-insights-java-agent.md) 设置依赖项跟踪。
+- [编写自定义依赖项遥测](app-insights-api-custom-events-metrics.md#trackdependency)
+- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
+- 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
 

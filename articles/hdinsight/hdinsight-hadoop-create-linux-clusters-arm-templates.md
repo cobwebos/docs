@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/14/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: c974bd122fa2549f0d3e2d96fa70abfdd17ccc1d
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 1c095ece98c09290992ffeaca1f7b91a87a78818
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -38,13 +39,10 @@ ms.lasthandoff: 03/31/2017
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
-### <a name="access-control-requirements"></a>访问控制要求
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
-
 ### <a name="resource-manager-templates"></a>Resource Manager 模板
 通过 Resource Manager 模板，可轻松地通过单个协调操作为应用程序创建以下内容：
 * HDInsight 群集及其依赖资源（例如默认存储帐户）
-* 其他资源（例如要使用 Apache Sqoop 的 Azure SQL 数据库） 
+* 其他资源（例如要使用 Apache Sqoop 的 Azure SQL 数据库）
 
 在此模板中，定义应用程序所需的资源。 还可指定部署参数以输入不同环境的值。 模板中包含用于为部署构造值的 JSON 和表达式。
 
@@ -139,7 +137,7 @@ ms.lasthandoff: 03/31/2017
 
     PowerShell 脚本仅配置群集名称。 存储帐户名称在模板中进行硬编码。 系统提示输入群集用户密码。 （默认用户名为 **admin**。）系统还将提示输入 SSH 用户密码。 （默认 SSH 用户名为 **sshuser**。）  
 
-有关详细信息，请参阅[使用 PowerShell 进行部署](../azure-resource-manager/resource-group-template-deploy.md#deploy)。
+有关详细信息，请参阅[使用 PowerShell 进行部署](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template)。
 
 ## <a name="deploy-with-cli"></a>使用 CLI 进行部署
 如下示例使用 Azure 命令行接口 (CLI)。 它通过调用 Resource Manager 模板创建一个群集及其依赖的存储帐户和容器：
@@ -165,6 +163,10 @@ ms.lasthandoff: 03/31/2017
  使用 Visual Studio 创建一个资源组项目，并通过用户界面将其部署到 Azure。 选择要包含在项目中的资源类型。 这些资源会自动添加到 Resource Manager 模板。 该项目还提供了用于部署模板的 PowerShell 脚本。
 
 有关将 Visual Studio 用于资源组的简介，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+
+## <a name="troubleshoot"></a>故障排除
+
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已经学习了几种创建 HDInsight 群集的方法。 若要了解更多信息，请参阅下列文章：

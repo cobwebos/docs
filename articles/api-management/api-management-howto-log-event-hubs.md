@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
-ms.openlocfilehash: afecb15f36525c53a66f30047dffe8a3e8f36107
-ms.lasthandoff: 02/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a310236179677046ec49930b07cfdffdadc37974
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,9 +49,9 @@ ms.lasthandoff: 02/03/2017
 ![连接字符串][event-hub-connection-string]
 
 ## <a name="create-an-api-management-logger"></a>创建 API 管理记录器
-现在有了事件中心，下一步是在 API 管理服务中配置[记录器](https://msdn.microsoft.com/library/azure/mt592020.aspx)，以便它可以将事件记录到事件中心。
+现在有了事件中心，下一步是在 API 管理服务中配置[记录器](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)，以便它可以将事件记录到事件中心。
 
-使用 [API 管理 REST API](http://aka.ms/smapi) 配置 API 管理记录器。 在第一次使用 REST API 之前，查看[先决条件](https://msdn.microsoft.com/library/azure/dn776326.aspx#Prerequisites)并确保已[启用对 REST API 的访问](https://msdn.microsoft.com/library/azure/dn776326.aspx#EnableRESTAPI)。
+使用 [API 管理 REST API](http://aka.ms/smapi) 配置 API 管理记录器。 在第一次使用 REST API 之前，查看[先决条件](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#Prerequisites)并确保已[启用对 REST API 的访问](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI)。
 
 若要创建记录器，请使用以下 URL 模板发出 HTTP PUT 请求。
 
@@ -62,8 +63,8 @@ ms.lasthandoff: 02/03/2017
 将以下标头添加到请求。
 
 * 内容类型：应用程序/json
-* 授权：SharedAccessSignature uid=...
-  * 有关生成 `SharedAccessSignature` 的说明，请参阅 [Azure API 管理 REST API 身份验证](https://msdn.microsoft.com/library/azure/dn798668.aspx)。
+* 授权：SharedAccessSignature 58...
+  * 有关生成 `SharedAccessSignature` 的说明，请参阅 [Azure API 管理 REST API 身份验证](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication)。
 
 使用以下模板指定请求正文。
 
@@ -85,7 +86,7 @@ ms.lasthandoff: 02/03/2017
 发出请求时，如果创建记录器，则返回 `201 Created` 的状态代码。
 
 > [!NOTE]
-> 有关其他可能的返回代码及其原因，请参阅[创建记录器](https://msdn.microsoft.com/library/azure/mt592020.aspx#PUT)。 若要查看如何执行其他操作，如列表、更新和删除，请参阅[记录器](https://msdn.microsoft.com/library/azure/mt592020.aspx)实体文档。
+> 有关其他可能的返回代码及其原因，请参阅[创建记录器](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity#PUT)。 若要查看如何执行其他操作，如列表、更新和删除，请参阅[记录器](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)实体文档。
 >
 >
 
@@ -122,8 +123,8 @@ ms.lasthandoff: 02/03/2017
   * [使用 EventProcessorHost 接收消息](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)
 * 了解有关 API 管理和事件中心集成的详细信息
-  * [记录器实体引用](https://msdn.microsoft.com/library/azure/mt592020.aspx)
-  * [log-to-eventhub 策略引用](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
+  * [记录器实体引用](https://docs.microsoft.com/rest/api/apimanagement/loggers)
+  * [log-to-eventhub 策略引用](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [使用 Azure API 管理、事件中心和 Runscope 监视 API](api-management-log-to-eventhub-sample.md)    
 
 ## <a name="watch-a-video-walkthrough"></a>观看视频演练

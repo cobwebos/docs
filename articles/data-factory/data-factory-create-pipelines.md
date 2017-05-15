@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
-ms.openlocfilehash: 2e85e787d591f2c81ef4e54bc1e7ac111accbb16
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 6926b0a594b29cb3b3fff7a76a258d11bd82ded8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,6 +60,9 @@ ms.lasthandoff: 04/20/2017
 ### <a name="custom-net-activities"></a>自定义 .NET 活动 
 如果需要将数据移入/移出复制活动不支持的数据存储，或要使用自己的逻辑转换数据，可以创建自定义 .NET 活动。 有关创建和使用自定义活动的详细信息，请参阅[在 Azure数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)。
 
+## <a name="schedule-pipelines"></a>计划管道
+仅在开始时间和结束时间之间，管道才处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 若要了解如何在 Azure 数据工厂中计划和执行工作，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。
+
 ## <a name="pipeline-json"></a>管道 JSON
 让我们深入了解如何以 JSON 格式定义管道。 管道的泛型结构如下所示：
 
@@ -90,10 +94,10 @@ ms.lasthandoff: 04/20/2017
 | description | 指定描述管道用途的文本。 |是 |
 | 活动 | **activities** 节中可定义有一个或多个活动。 请参阅下一节，了解有关活动 JSON 元素的详细信息。 | 是 |  
 | start | 管道的开始日期-时间。 必须为 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如： `2016-10-14T16:32:41Z`。 <br/><br/>可指定本地时间，如 EST 时间。 示例如下：`2016-02-27T06:00:00-05:00`" 东部标准时间早上 6 点。<br/><br/>start 和 end 属性共同指定管道的活动期限。 仅在此活动期限内生成输出切片。 |否<br/><br/>如果要指定 end 属性值，必须指定 start 属性值。<br/><br/>创建管道时，开始和结束时间均可为空。 必须指定这两个值，才能设置管道运行的活动期限。 如果创建管道时未指定开始和结束时间，可稍后使用 Set-AzureRmDataFactoryPipelineActivePeriod cmdlet 进行设置。 |
-| end | 管道的结束日期-时间。 指定时必须采用 ISO 格式。 例如： `2016-10-14T17:32:41Z` <br/><br/>可指定本地时间，如 EST 时间。 下面是一个示例：`2016-02-27T06:00:00-05:00`（美国东部标准时间上午 6 点）。<br/><br/>若要无限期运行管道，请指定 9999-09-09 作为 end 属性的值。 |否 <br/><br/>如果指定 start 属性的值，必须指定 end 属性的值。<br/><br/>请参阅 **start** 属性的说明。 |
+| end | 管道的结束日期-时间。 指定时必须采用 ISO 格式。 例如： `2016-10-14T17:32:41Z` <br/><br/>可指定本地时间，如 EST 时间。 下面是一个示例：`2016-02-27T06:00:00-05:00`（美国东部标准时间上午 6 点）。<br/><br/>若要无限期运行管道，请指定 9999-09-09 作为 end 属性的值。 <br/><br/> 仅在开始时间和结束时间之间，管道才处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 若要了解如何在 Azure 数据工厂中计划和执行工作，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。 |否 <br/><br/>如果指定 start 属性的值，必须指定 end 属性的值。<br/><br/>请参阅 **start** 属性的说明。 |
 | isPaused | 若设为 true，则管道不运行。 它处于已暂停状态。 默认值 = false。 此属性可用于启用或禁用管道。 |否 |
-| pipelineMode | 针对管道计划运行的方式。 允许值为：已计划(默认)，一次性。<br/><br/>“Scheduled”表示管道根据管道活动期（开始和结束时间）按指定的时间间隔运行。 “Onetime”表示管道只运行一次。 当前，一次性管道创建后即无法修改/更新。 有关一次性设置的详细信息，请参阅[一次性管道](data-factory-scheduling-and-execution.md#onetime-pipeline)。 |否 |
-| expirationTime | 创建后的持续时间，在该时间内[一次性管道](data-factory-scheduling-and-execution.md#onetime-pipeline)需有效且保持预配状态。 如果管道不具有任何运行（活动、失败或挂起），则该管道在到期后将自动删除。 默认值：`"expirationTime": "3.00:00:00"`|否 |
+| pipelineMode | 针对管道计划运行的方式。 允许值为：已计划(默认)，一次性。<br/><br/>“Scheduled”表示管道根据管道活动期（开始和结束时间）按指定的时间间隔运行。 “Onetime”表示管道只运行一次。 当前，一次性管道创建后即无法修改/更新。 有关一次性设置的详细信息，请参阅[一次性管道](#onetime-pipeline)。 |否 |
+| expirationTime | 创建后的持续时间，在该时间内[一次性管道](#onetime-pipeline)需有效且保持预配状态。 如果管道不具有任何运行（活动、失败或挂起），则该管道在到期后将自动删除。 默认值：`"expirationTime": "3.00:00:00"`|否 |
 | datasets |数据集列表，这些数据集将由管道中定义的活动使用。 此属性可用于此管道特定的但未在数据工厂中定义的数据集。 此管道中定义的数据集仅可用于此管道且不可共享。 有关详细信息，请参阅[指定了作用域的数据集](data-factory-create-datasets.md#scoped-datasets)。 |否 |
 
 ## <a name="activity-json"></a>活动 JSON
@@ -132,7 +136,7 @@ ms.lasthandoff: 04/20/2017
 | linkedServiceName |活动使用的链接服务的名称。 <br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 |对 HDInsight 活动和 Azure 机器学习批处理评分活动是必需的 <br/><br/>对其他活动均非必需 |
 | typeProperties |typeProperties 部分中的属性取决于活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否 |
 | policy |影响活动运行时行为的策略。 如果未指定，将使用默认策略。 |否 |
-| scheduler | “scheduler”属性用于定义所需的活动计划。 其子属性与[数据集中可用性属性](data-factory-create-datasets.md#Availability)的子属性相同。 |否 |
+| scheduler | “scheduler”属性用于定义所需的活动计划。 其子属性与[数据集中可用性属性](data-factory-create-datasets.md#dataset-availability)的子属性相同。 |否 |
 
 
 ### <a name="policies"></a>策略
@@ -279,125 +283,6 @@ ms.lasthandoff: 04/20/2017
 
 有关详细信息，请参阅[计划和执行](#chaining-activities)。 
 
-### <a name="json-example-for-chaining-two-copy-activity-in-a-pipeline"></a>在管道中链接两个复制活动的 JSON 示例
-可以按顺序或以有序的方式依次运行多个复制操作。 例如，管道中的两个复制活动（CopyActivity1 和 CopyActivity2）可能具有以下输入数据输出数据集：   
-
-CopyActivity1
-
-输入：Dataset1。 输出：Dataset2。
-
-CopyActivity2
-
-输入：Dataset2。  输出：Dataset3。
-
-仅当 CopyActivity1 已成功运行且 Dataset2 可用时，CopyActivity2 才会运行。
-
-以下是示例管道 JSON：
-
-```json
-{
-    "name": "ChainActivities",
-    "properties": {
-        "description": "Run activities in sequence",
-        "activities": [
-            {
-                "type": "Copy",
-                "typeProperties": {
-                    "source": {
-                        "type": "BlobSource"
-                    },
-                    "sink": {
-                        "type": "BlobSink",
-                        "copyBehavior": "PreserveHierarchy",
-                        "writeBatchSize": 0,
-                        "writeBatchTimeout": "00:00:00"
-                    }
-                },
-                "inputs": [
-                    {
-                        "name": "Dataset1"
-                    }
-                ],
-                "outputs": [
-                    {
-                        "name": "Dataset2"
-                    }
-                ],
-                "policy": {
-                    "timeout": "01:00:00"
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                },
-                "name": "CopyFromBlob1ToBlob2",
-                "description": "Copy data from a blob to another"
-            },
-            {
-                "type": "Copy",
-                "typeProperties": {
-                    "source": {
-                        "type": "BlobSource"
-                    },
-                    "sink": {
-                        "type": "BlobSink",
-                        "writeBatchSize": 0,
-                        "writeBatchTimeout": "00:00:00"
-                    }
-                },
-                "inputs": [
-                    {
-                        "name": "Dataset2"
-                    }
-                ],
-                "outputs": [
-                    {
-                        "name": "Dataset3"
-                    }
-                ],
-                "policy": {
-                    "timeout": "01:00:00"
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                },
-                "name": "CopyFromBlob2ToBlob3",
-                "description": "Copy data from a blob to another"
-            }
-        ],
-        "start": "2016-08-25T00:00:00Z",
-        "end": "2016-08-25T05:00:00Z",
-        "isPaused": false
-    }
-}
-```
-
-请注意，示例中将第一个复制活动 (Dataset2) 的输出数据集指定为第二个活动的输入。 因此，仅当第一个活动的输出数据集准备就绪后，第二个活动才会运行。  
-
-每小时在管道开始和结束时间内生成输出数据集。 因此，此管道生成 5 个数据集切片，每个活动窗口一个（晚上 12 点 - 凌晨 1 点、凌晨 1 点 - 凌晨 2 点、凌晨 2 点 - 凌晨 3 点、凌晨 3 点 - 凌晨 4 点和凌晨 4 点 - 凌晨 5 点）。 
-
-
-在示例中，CopyActivity2 可以具有其他的输入，如 Dataset3，但由于将 Dataset2 指定为 CopyActivity2 的输入，因此该活动仅在 CopyActivity1 完成后才可运行。 例如：
-
-CopyActivity1
-
-输入：Dataset1。 输出：Dataset2。
-
-CopyActivity2
-
-输入：Dataset3、Dataset2。 输出：Dataset4。
-
-本例中，为第二个复制活动指定了两个输入数据集。 如果指定了多个输入，则仅将第一个输入数据集用于复制数据，其他数据集用作依赖项。 仅当满足以下条件后 CopyActivity2 才会启动：
-
-* CopyActivity1 已成功完成且 Dataset2 可用。 将数据复制到 Dataset4 时不会使用此数据集。 它仅可充当 CopyActivity2 的计划依赖项。   
-* Dataset3 可用。 此数据集表示复制到目标的数据。 
-
-## <a name="scheduling-and-execution"></a>计划和执行
-仅在开始时间和结束时间之间，管道才处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 事实上，执行的不是管道， 而是管道中的活动。 但是，这些活动是在整体管道环境中执行的。 
-
-若要了解如何在 Azure 数据工厂中计划和执行工作，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。
-
 ## <a name="create-and-monitor-pipelines"></a>创建和监视管道
 可使用下列某个工具或 SDK 创建管道。 
 
@@ -418,6 +303,53 @@ CopyActivity2
 
 - [使用 Azure 门户边栏选项卡监视和管理管道](data-factory-monitor-manage-pipelines.md)。
 - [使用“监视与管理”应用监视和管理管道](data-factory-monitor-manage-app.md)
+
+
+## <a name="onetime-pipeline"></a>一次性管道
+在管道定义中指定的开始和结束时间内，可创建一个管道并计划为定期运行（例如：每小时或每天）。 请参阅[计划活动](#scheduling-and-execution)了解详细信息。 还可以创建只运行一次的管道。 若要执行此操作，请将管道定义中的 **pipelineMode** 属性设置为 **onetime**，如以下 JSON 示例所示。 此属性的默认值是 **scheduled**。
+
+```json
+{
+    "name": "CopyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": false
+                    },
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset"
+                    }
+                ]
+                "name": "CopyActivity-0"
+            }
+        ]
+        "pipelineMode": "OneTime"
+    }
+}
+```
+
+注意以下事项：
+
+* 不指定管道的**开始**和**结束**时间。
+* 指定输入和输出数据集的 **Availability**（**frequency** 和 **interval**），尽管数据工厂不使用该值。  
+* “关系图”视图不显示一次性管道。 这是设计的行为。
+* 一次性管道无法更新。 可对一次性管道执行克隆、重命名、更新属性，还可以对其部署以生成另外一个一次性管道。
 
 
 ## <a name="next-steps"></a>后续步骤

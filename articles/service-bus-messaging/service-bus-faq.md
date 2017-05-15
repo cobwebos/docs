@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
+ms.date: 05/02/2017
 ms.author: sethm;jotaub
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 2c9b6676c1a4cfe008235da6746d403555e1bf08
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7f3ddc2d7036b9951d4796cf4664f870a0c5f4b6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -56,7 +57,11 @@ ms.lasthandoff: 04/26/2017
 * 快速实体
 
 ## <a name="pricing"></a>定价
-本部分回答了一些关于服务总线定价结构的常见问题。 你还可以访问 [Azure Support FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)（Azure 支持常见问题）了解一般的 Microsoft Azure 定价信息。 有关服务总线定价的完整信息，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
+本部分回答了一些关于服务总线定价结构的常见问题。
+
+[服务总线定价和计费](service-bus-pricing-billing.md)一文介绍了服务总线中的计费计量，有关服务总线定价选项的信息，请参阅[服务总线定价详细信息](https://azure.microsoft.com/pricing/details/service-bus/)。
+
+还可以访问 [Azure Support FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)（Azure 支持常见问题），了解一般的 Azure 定价信息。 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>服务总线如何收取费用？
 有关服务总线定价的完整信息，请参阅[服务总线定价详细信息][Pricing overview]。 除标示的价格外，你还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。

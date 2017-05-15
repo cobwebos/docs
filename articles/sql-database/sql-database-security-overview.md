@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: thmullan;jackr
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3efb68c12cd05fc0c4ac68497f8c20d1c671df82
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 957644b81d373ce8d60a8c57c1ba6431bbdf83cb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -71,7 +72,7 @@ SQL 数据库通过提供审核和威胁检测功能来保护数据。
 Azure SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到 Azure 存储帐户中的审核日志，帮助用户保持合规性。 使用审核可以了解正在进行的数据库活动，以及分析和调查历史活动，标识潜在威胁或可疑的滥用行为和安全违规。 有关更多信息，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。  
 
 ### <a name="threat-detection"></a>威胁检测
-威胁检测是审核的补充，它在 Azure SQL 数据库服务中提供一个内置的附加安全智能层。 它会全天候探查、分析和检测异常数据库活动。 出现可疑活动、潜在漏洞、 SQL 注入攻击和异常数据库访问模式时，它会发出警报。 用户可以遵照提供的参考说明与可行的说明对警报做出响应。 有关详细信息，请参阅 [SQL 数据库威胁检测入门](sql-database-threat-detection.md)。  
+威胁检测是审核的补充，它在 Azure SQL 数据库服务中提供一个内置的附加安全智能层，用于检测企图访问或使用数据库的异常的潜在有害尝试。 出现可疑活动、潜在漏洞、 SQL 注入攻击和异常数据库访问模式时，它会发出警报。 可在 [Azure 安全中心](https://azure.microsoft.com/en-us/services/security-center/)查看威胁检测警报，此警报提供可疑活动的详细信息以及如何调查和缓解威胁的建议操作。 威胁检测费用为每服务器每月 15 美元。 前 60 天可免费使用。有关详细信息，请参阅 [SQL 数据库威胁检测入门](sql-database-threat-detection.md)
  
 ### <a name="data-masking"></a>数据屏蔽 
 SQL 数据库动态数据屏蔽通过向无特权用户屏蔽敏感数据来控制此类数据的透漏。 动态数据屏蔽可自动发现 Azure SQL 数据库中潜在的敏感数据，提供可行的建议来屏蔽这些字段，对应用程序层造成的影响可忽略不计。 它的工作原理是在针对指定的数据库字段运行查询后返回的结果集中隐藏敏感数据，同时保持数据库中的数据不变。 有关详细信息，请参阅 [SQL 数据库动态数据屏蔽入门](sql-database-dynamic-data-masking-get-started.md)。

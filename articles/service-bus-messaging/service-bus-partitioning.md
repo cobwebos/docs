@@ -12,19 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2017
+ms.date: 04/28/2017
 ms.author: sethm;hillaryc
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 946f3ac069db436828427e575be5a14efac9dda9
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 3466bbd23cb20df826ad919b8c76289d89375f04
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="partitioned-queues-and-topics"></a>分区的队列和主题
-Azure 服务总线使用多个消息中转站来处理消息，并用多个消息传送存储来存储消息。 传统的队列或主题由单个消息中转站进行处理并存储在一个消息存储中。 服务总线分区还允许跨多个消息中转站和消息存储对队列或主题进行分区。 这意味着分区的队列或主题的总吞吐量不再受到单个消息中转站或消息存储的性能所限制。 此外，消息传送存储的临时中断不会导致分区的队列或主题不可用。 分区的队列和主题可以包含所有先进的服务总线功能，如事务和会话支持。
+Azure 服务总线使用多个消息中转站来处理消息，并用多个消息传送存储来存储消息。 传统的队列或主题由单个消息中转站进行处理并存储在一个消息存储中。 服务总线*分区*允许跨多个消息中转站和消息存储对队列和主题或*消息实体*进行分区。 这意味着分区实体的总吞吐量不再受单个消息中转站或消息存储的性能所限制。 此外，消息传送存储的临时中断不会导致分区的队列或主题不可用。 分区的队列和主题可以包含所有先进的服务总线功能，如事务和会话支持。
 
 有关服务总线内部的详细信息，请参阅[服务总线体系结构][Service Bus architecture]一文。
+
+默认情况下，创建实体时，对标准和高级消息传送中的所有队列和主题启用分区。 可以创建标准消息传送层实体而不进行分区，但高级命名空间中的队列和主题始终进行分区；无法禁用此选项。 
+
+无法更改标准或高级层中现有队列或主题的分区选项，只能在创建实体时设置此选项。
 
 ## <a name="how-it-works"></a>工作原理
 每个分区的队列或主题由多个片段构成。 每个片段存储在不同的消息传送存储中并由不同的消息中转站进行处理。 当向分区的队列或主题发送消息时，服务总线会将该消息分配到其中一个片段。 选择是通过服务总线或发送方可以指定的分区键随机完成的。
@@ -36,9 +41,19 @@ Azure 服务总线使用多个消息中转站来处理消息，并用多个消�
 ## <a name="enable-partitioning"></a>启用分区
 若要将分区队列和主题用于 Azure 服务总线，请使用 Azure SDK 2.2 版或更高版本，或在 HTTP 请求中指定 `api-version=2013-10`。
 
-你可以创建 1、2、3、4 或 5 GB 大小的服务总线队列和主题（默认值为 1 GB）。 启用分区时，服务总线将为指定的每份大小创建 16 个分区。 因此，如果创建了一个大小为 5 GB 的队列，共有 16 个分区，最大队列大小为 (5 \* 16) = 80 GB。 可通过在 [Azure 门户][Azure portal]中查看分区队列或主题的条目来了解该队列或主题的最大大小。
+### <a name="standard"></a>标准
 
-有多种方法可以创建分区的队列或主题。 从应用程序创建队列或主题时，可以通过分别将 [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning] 或 [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] 属性设置为 **true** 来启用队列或主题的分区。 这些属性必须在队列或主题创建时设置。 无法更改现有队列或主题上的这些属性。 例如：
+在标准消息传送层中，可以创建 1、2、3、4 或 5 GB 大小的服务总线队列和主题（默认值为 1 GB）。 已启用分区，服务总线为你指定的每个 GB 的实体创建 16 个副本（16 个分区）。 因此，如果创建了一个大小为 5 GB 的队列，共有 16 个分区，最大队列大小为 (5 \* 16) = 80 GB。 可通过在 [Azure 门户][Azure portal]中分区队列或主题的“概述”边栏选项卡中查看该实体的条目来了解该队列或主题的最大大小。
+
+### <a name="premium"></a>高级
+
+在高级层命名空间中，可以创建 1、2、3、4、5、10、20、40 或 80 GB 大小的服务总线队列和主题（默认值为 1 GB）。 默认情况下已启用分区，服务总线为每个实体创建两个分区。 可通过在 [Azure 门户][Azure portal]中分区队列或主题的“概述”边栏选项卡中查看该实体的条目来了解该队列或主题的最大大小。
+
+有关高级消息传送层中的分区的详细信息，请参阅[服务总线高级和标准消息传送层](service-bus-premium-messaging.md)。 
+
+### <a name="create-a-partitioned-entity"></a>创建分区实体
+
+有多种方法可以创建分区的队列或主题。 从应用程序创建队列或主题时，可以通过分别将 [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning] 或 [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] 属性设置为 **true** 来启用队列或主题的分区。 这些属性必须在队列或主题创建时设置。 如前面所述，无法更改现有队列或主题的这些属性。 例如：
 
 ```csharp
 // Create partitioned topic
@@ -48,7 +63,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-或者，可以在 Visual Studio 中或在 [Azure 门户][Azure portal]中创建分区的队列或主题。 在门户中创建队列或主题时，请将队列或主题“设置”窗口的“常规设置”边栏选项卡中的“启用分区”选项设置为“true”。 在 Visual Studio 中，单击“新队列”或“新主题”对话框中的“启用分区”复选框。
+或者，可以在 [Azure 门户][Azure portal]或 Visual Studio 中创建分区队列或主题。 在门户中创建队列或主题时，队列或主题的“创建”边栏选项卡中的“启用分区”选项是默认选中的。 只能在标准层实体中禁用此选项；在高级层中，始终启用分区。 在 Visual Studio 中，单击“新队列”或“新主题”对话框中的“启用分区”复选框。
 
 ## <a name="use-of-partition-keys"></a>使用分区键
 一条消息在分区队列或主题中排队时，服务总线检查是否存在分区键。 如果找到，它将选择基于该密钥的片段。 如果找不到分区密钥，它将选择基于内部算法的片段。

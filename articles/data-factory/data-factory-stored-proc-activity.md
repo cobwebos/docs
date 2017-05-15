@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 7faa27220bcc07fff0bb2a77e7b90c386cc5ae1e
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: db3645304ab1274da7cd312bf01bbdb0fd158beb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -199,7 +200,7 @@ ms.lasthandoff: 03/14/2017
    如需了解有关监视 Azure 数据工厂管道的详细信息，请参阅[监视管道](data-factory-monitor-manage-pipelines.md)。  
 
 > [!NOTE]
-> 在此示例中，SprocActivitySample 没有输入。 如果要链接此活动与活动上游（即先前处理），可以使用上游活动的输出作为此活动的输入。 在这种情况下，上游活动完成且能使用上游活动的输出（处于就绪状态）之前，此活动不会执行。 输入无法直接作为存储过程活动的参数
+> 在此示例中，SprocActivitySample 没有输入。 如果要链接此活动与活动上游（即先前处理），可以使用上游活动的输出作为此活动的输入。 在这种情况下，上游活动完成且能使用上游活动的输出（处于就绪状态）之前，此活动不会执行。 输入无法直接作为存储过程活动的参数。 有关链接管道中的活动的详细信息，请参阅[管道中的多个活动](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline)
 >
 >
 
@@ -232,7 +233,7 @@ ms.lasthandoff: 03/14/2017
 | description |描述活动用途的文本 |否 |
 | type | 必须设置为：**SqlServerStoredProcedure** | 是 |
 | inputs | 可选。 如果指定了输入数据集，则它必须可供使用（“就绪”状态），存储过程才能运行。 该输入数据集无法在存储过程中用作参数。 它仅用于在开始存储过程活动前检查依赖项。 |否 |
-| outputs | 必须指定存储过程活动的输出数据集。 输出数据集为存储过程活动指定**计划**（每小时、每周、每月等）。 <br/><br/>输出数据集必须使用**链接服务**，其指代 Azure SQL 数据库或 Azure SQL 数据仓库或要在其中运行存储过程的 SQL Server 数据库。 <br/><br/>输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 <br/><br/>在某些情况下，输出数据集可以是**虚拟数据集**，它仅用于指定运行存储过程活动的计划。 |是 |
+| outputs | 必须指定存储过程活动的输出数据集。 输出数据集为存储过程活动指定**计划**（每小时、每周、每月等）。 <br/><br/>输出数据集必须使用**链接服务**，其指代 Azure SQL 数据库或 Azure SQL 数据仓库或要在其中运行存储过程的 SQL Server 数据库。 <br/><br/>输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 <br/><br/>在某些情况下，输出数据集可以是**虚拟数据集**，它仅用于指定运行存储过程活动的计划。 |是 |
 | storedProcedureName |在 Azure SQL 数据库或 Azure SQL 数据仓库中指定存储过程的名称，用输出表使用的链接服务表示。 |是 |
 | storedProcedureParameters |指定存储过程的参数值。 如果需要为参数传递 null，请使用语法："param1": null（全部小写）。 请参阅以下示例了解如何使用此属性。 |否 |
 

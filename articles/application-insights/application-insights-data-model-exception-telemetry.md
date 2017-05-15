@@ -4,24 +4,25 @@ description: "适用于异常遥测的 Application Insights 数据模型"
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
-manager: azakonov-ms
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 17a39660fce598610ff9a95e886282e6b3faffe4
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 49d2429c01fe3fde2e51e4344904f55e43eea1cd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>异常遥测：Application Insights 数据模型
 
-异常实例表示在受监视应用程序的执行过程中出现的已处理或未处理的异常。
+在 [Application Insights](app-insights-overview.md) 中，异常实例表示在受监视应用程序的执行过程中出现的已处理或未经处理的异常。
 
 ## <a name="problem-id"></a>问题 ID
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="exception-details"></a>异常详细信息
 
-本部分的编写正在进行...
+（将进行扩展）
 
 ## <a name="custom-properties"></a>自定义属性
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[数据模型](/application-insights-data-model.md)，了解 Application Insights 的类型和数据模型。
-- 了解如何[使用 Application Insights 诊断 Web 应用中的异常](/app-insights-asp-net-exceptions.md)。
-- 查看 Application Insights 支持的[平台](/app-insights-platforms.md)。
+- 请参阅[数据模型](application-insights-data-model.md)，了解 Application Insights 的类型和数据模型。
+- 了解如何[使用 Application Insights 诊断 Web 应用中的异常](app-insights-asp-net-exceptions.md)。
+- 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
 

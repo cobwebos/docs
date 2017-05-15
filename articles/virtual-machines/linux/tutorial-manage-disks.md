@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 3e47c917774245f8b321b5cd94def24b7f523a94
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 84ce4b288c23c7005ac92f18ee26af70479deb8d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -32,9 +33,9 @@ ms.lasthandoff: 04/26/2017
 
 创建 Azure 虚拟机后，将自动向此虚拟机附加两个磁盘。 
 
-操作系统磁盘 - 操作系统磁盘大小可达 1 TB，并可托管 VM 操作系统。 默认情况下，OS 磁盘标记为 `/dev/sda`。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 由于此配置，OS 磁盘不应托管应用程序或数据。 对于应用程序和数据，请使用数据磁盘，本文后面会对其进行详细介绍。 
+操作系统磁盘 - 操作系统磁盘大小可达 1 TB，并可托管 VM 操作系统。 默认情况下，OS 磁盘标记为“/dev/sda”。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 由于此配置，OS 磁盘不应托管应用程序或数据。 对于应用程序和数据，请使用数据磁盘，本文后面会对其进行详细介绍。 
 
-临时磁盘- 临时磁盘使用 VM 所在的 Azure 主机上的固态驱动器。 临时磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 移动到新的主机，临时磁盘上存储的数据都将被删除。 临时磁盘的大小由 VM 大小决定。 临时磁盘标记为 `/dev/sdb`，且装载点为 `/mnt`。
+临时磁盘- 临时磁盘使用 VM 所在的 Azure 主机上的固态驱动器。 临时磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 移动到新的主机，临时磁盘上存储的数据都将被删除。 临时磁盘的大小由 VM 大小决定。 临时磁盘标记为“/dev/sdb”，且装载点为 /mnt。
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
 
@@ -93,7 +94,7 @@ Azure 提供两种类型的磁盘。
 使用 [az group create](https://docs.microsoft.com/cli/azure/group#create) 命令创建资源组。 
 
 ```azurecli
-az group create --name myResourceGroupDisk --location westus
+az group create --name myResourceGroupDisk --location eastus
 ```
 
 使用 [az vm create]( /cli/azure/vm#create) 命令创建 VM。 `--datadisk-sizes-gb` 参数用于指定应创建并附加到虚拟机的附加磁盘。 若要创建并附加多个磁盘，请使用空格分隔的磁盘大小值列表。 在以下示例中，创建的 VM 具有两个均为 128 GB 的数据磁盘。 因为磁盘大小为 128 GB，所以这两个磁盘都配置为 P10，每个磁盘最多提供 500 IOPS。
@@ -146,13 +147,13 @@ sudo mkfs -t ext4 /dev/sdc1
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-现在可以通过 `datadrive` 装载点访问磁盘，可运行 `df -h` 命令对此进行验证。 
+现在可以通过 datadrive 装载点访问磁盘，可运行 `df -h` 命令对此进行验证。 
 
 ```bash
 df -h
 ```
 
-输出显示新驱动器装载在 `/datadrive` 上。
+输出显示新驱动器装载在 /datadrive 上。
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
@@ -161,7 +162,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
-若要确保在重启后重新装载驱动器，必须将其添加到 `/stc/fstab` 文件。 为此，请使用 `blkid` 实用工具获取磁盘的 UUID。
+若要确保在重启后重新装载驱动器，必须将其添加到 /etc/fstab 文件。 为此，请使用 `blkid` 实用工具获取磁盘的 UUID。
 
 ```bash
 sudo -i blkid
@@ -173,7 +174,7 @@ sudo -i blkid
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
-在 `/etc/fstab` 文件中添加类似于以下内容的行。 另请注意，可使用 `barrier=0` 禁用写入屏障，此配置可提高磁盘性能。 
+在 /etc/fstab 文件中添加类似于以下内容的行。 另请注意，可使用 barrier=0 禁用写入屏障，此配置可提高磁盘性能。 
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail,barrier=0   1  2
@@ -192,7 +193,7 @@ exit
 增加磁盘大小之前，需要磁盘 ID 或名称。 使用 [az disk list](/cli/azure/vm/disk#list) 命令返回资源组中的所有磁盘。 记下要调整大小的磁盘名称。
 
 ```azurecli
- az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
+az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
 ```
 
 此外，必须解除分配 VM。 使用 [az vm deallocate]( /cli/azure/vm#deallocate) 命令停止和解除分配 VM。
@@ -201,7 +202,7 @@ exit
 az vm deallocate --resource-group myResourceGroupDisk --name myVM
 ```
 
-使用 [az disk update](/cli/azure/vm/disk#update) 命令调整磁盘大小。 本示例将名为 `myDataDisk` 的磁盘的大小调整为 1 TB。
+使用 [az disk update](/cli/azure/vm/disk#update) 命令调整磁盘大小。 本示例将名为“myDataDisk”的磁盘的大小调整为 1 TB。
 
 ```azurecli
 az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023
@@ -259,7 +260,7 @@ az vm create --resource-group myResourceGroupDisk --name myVM --attach-os-disk m
 
 需要将所有数据磁盘重新附加到虚拟机。
 
-先使用 [az disk list](https://docs.microsoft.com/cli/azure/disk#list) 命令找到数据磁盘名称。 此示例将磁盘名称放在名为 `datadisk` 的变量中，将在下一步中使用该变量。
+先使用 [az disk list](https://docs.microsoft.com/cli/azure/disk#list) 命令找到数据磁盘名称。 此示例将磁盘名称放在名为“datadisk”的变量中，将在下一步中使用该变量。
 
 ```azurecli
 datadisk=$(az disk list -g myResourceGroupDisk --query "[?contains(name,'myVM')].[name]" -o tsv)

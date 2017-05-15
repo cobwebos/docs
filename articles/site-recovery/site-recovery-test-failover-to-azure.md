@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: pratshar
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 2aed07ff82c33111ef1abc9c9cc6b0ba2a9d3718
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 0df4b3535449c88f11fa7a58811f68c82549558f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -71,6 +72,24 @@ ms.lasthandoff: 03/25/2017
 1. 先决条件检查：此步骤确保满足故障转移所需的所有条件
 1. 故障转移：此步骤处理并准备好数据，以便能够基于这些数据创建 Azure 虚拟机。 如果选择了“最新”恢复点，此步骤将基于发送到服务的数据创建恢复点。
 1. 开始：此步骤使用上一步骤中处理的数据创建 Azure 虚拟机。
+
+## <a name="time-taken-for-failover"></a>故障转移耗时
+
+在某些情况下，虚拟机的故障转移需要额外的中间步骤，中间步骤通常耗费约 8 到 10 分钟才能完成。 这些情况如下：
+
+* VMware 虚拟机所使用的移动服务版本早于 9.8
+* 物理服务器 
+* VMware Linux 虚拟机
+* 作为物理服务器受到保护的 Hyper-V 虚拟机
+* VMware 虚拟机，其中下列驱动程序不作为启动驱动程序 
+    * storvsc 
+    * vmbus 
+    * storflt 
+    * intelide 
+    * atapi
+* 未启用 DHCP 服务的 VMware 虚拟机（无论它们使用 DHCP 还是使用静态 IP 地址）
+
+在其他所有情况下，此中间步骤都非必需，因而故障转移的耗时将大大减少。 
 
 
 ## <a name="creating-a-network-for-test-failover"></a>创建用于测试故障转移的网络

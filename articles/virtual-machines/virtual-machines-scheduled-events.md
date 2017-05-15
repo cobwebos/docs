@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 18c7a013c01fee26c5455535af6d9fba2b98fac7
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 7f0613285bc548e1329be3c33c30939f5998f379
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -50,7 +51,12 @@ Azure 元数据服务使用 REST 终结点从 VM 中公开有关正在运行的�
 当虚拟机是在虚拟网络 (VNet) 中创建时，可以从不可路由的 IP 169.254.169.254 使用元数据服务。否则，在适用于云服务和经典 VM 的默认情况下，需要通过其他逻辑来发现要使用的终结点。 请参阅此示例，了解如何[发现主机终结点] (https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)
 
 ### <a name="versioning"></a>版本控制 
-元数据服务通过以下格式使用版本控制 API：http://{ip}/metadata/{version}/scheduledevents 建议你的服务使用以下网址提供的最新版本：http://{ip}/metadata/latest/scheduledevents
+已对实例元数据服务进行了版本控制。 版本是必需的，当前版本为 2017-03-01
+
+> [!NOTE] 
+> 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且将在未来被弃用。
+>
+
 
 ### <a name="using-headers"></a>使用标头
 查询元数据服务时，必须提供以下标头 *Metadata: true*。 
@@ -67,7 +73,8 @@ Azure 元数据服务使用 REST 终结点从 VM 中公开有关正在运行的�
 ### <a name="query-for-events"></a>查询事件
 只需进行以下调用即可查询计划事件
 
-    curl -H Metadata:true http://169.254.169.254/metadata/latest/scheduledevents
+    curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01
+
 
 响应包含计划事件的数组。 空数组表示目前没有计划事件。
 在有计划事件的情况下，响应包含事件数组： 
@@ -136,7 +143,7 @@ function HandleScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events uri for VNET enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/latest/scheduledevents' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-03-01' -f $localHostIP 
 
 
 # Get the document
@@ -170,7 +177,7 @@ foreach($event in $scheduledEvents.Events)
 
         public ScheduledEventsClient()
         {
-            scheduledEventsEndpoint = string.Format("http://{0}/metadata/latest/scheduledevents", defaultIpAddress);
+            scheduledEventsEndpoint = string.Format("http://{0}/metadata/scheduledevents?api-version=2017-03-01", defaultIpAddress);
         }
         /// Retrieve Scheduled Events 
         public string GetDocument()
@@ -293,7 +300,7 @@ import urllib2
 import socket
 import sys
 
-metadata_url="http://169.254.169.254/metadata/latest/scheduledevents"
+metadata_url="http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01"
 headers="{Metadata:true}"
 this_host=socket.gethostname()
 
@@ -329,4 +336,5 @@ if __name__ == '__main__':
 ```
 ## <a name="next-steps"></a>后续步骤 
 [Azure 中虚拟机的计划内维护](linux/planned-maintenance.md)
+[实例元数据服务](virtual-machines-instancemetadataservice-overview.md)
 

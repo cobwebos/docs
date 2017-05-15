@@ -1,3 +1,4 @@
+
 ---
 title: "Azure 数据工厂 - 客户案例研究 | Microsoft Docs"
 description: "了解一些客户是怎样使用 Azure 数据工厂的。"
@@ -14,9 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
-ms.openlocfilehash: 12edabc12d499bc07315d1cf103e5cc2fa149cdb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 0850b42e15e2daf4868560a1518f7906c7ae0800
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -44,9 +47,6 @@ ms.openlocfilehash: 12edabc12d499bc07315d1cf103e5cc2fa149cdb
 ## <a name="pier-1-imports"></a>Pier 1 Imports
 [通过云机器学习与客户更好地建立连接](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
 
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+## <a name="microsoft-studio"></a>Microsoft Studio
+[通过每天分析数千亿个游戏事件提供史诗般的 Xbox 体验故事](https://customers.microsoft.com/en-us/story/xboxunlimited)
 

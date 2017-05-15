@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 04/21/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: e45d704e68c17d36fd5b195179730b80d0f53e0c
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 9724ad2e460837157c7677d2c91493cebc8f7012
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,14 +60,14 @@ RD Web 和 RD 网关终结点必须位于同一台计算机上，并且有一个
 ### <a name="publish-the-rd-host-endpoint"></a>发布 RD 主机终结点
 
 1. 使用以下值[发布新的应用程序代理应用程序](application-proxy-publish-azure-portal.md)：
-   - 内部 URL：https://<rdhost>.com/，其中，<rdhost> 是 RD Web 和 RD 网关共享的共用根。 
+   - 内部 URL：https://\<rdhost\>.com/，其中，\<rdhost\> 是 RD Web 和 RD 网关共享的共用根。 
    - 外部 URL：系统会根据应用程序的名称自动填充此字段，但你可以修改它。 用户访问 RDS 时，将转到此 URL。 
    - 预身份验证方法：Azure Active Directory
    - 转换 URL 标头：否
 2. 将用户分配到已发布的 RD 应用程序。 确保这些用户也都有权访问 RDS。
 3. 将应用程序的单一登录方法保留为“已禁用 Azure AD 单一登录”。 用户必须在 Azure AD 和 RD Web 上各执行身份验证一次，但可以单一登录到 RD 网关。 
 4. 转到“Azure Active Directory” > “应用注册” > *你的应用程序* > “设置”。 
-5. 选择“属性”并将“主页 URL”字段更新为指向 RD Web 终结点（如 https://<rdhost>.com/RDWeb）。
+5. 选择“属性”并将“主页 URL”字段更新为指向 RD Web 终结点（如 https://\<rdhost\>.com/RDWeb）。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>将 RDS 流量定向到应用程序代理
 
@@ -82,7 +83,7 @@ RD Web 和 RD 网关终结点必须位于同一台计算机上，并且有一个
 
   ![RDS 上的“部署属性”屏幕](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-8. 针对每个集合运行以下命令。 请将 *<yourcollectionname>* 和 *<proxyfrontendurl>* 替换为自己的信息。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
+8. 针对每个集合运行以下命令。 用自己的信息替换 \<yourcollectionname\> 和 \<proxyfrontendurl\>。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s: <proxyfrontendurl> `n require pre-authentication:i:1"
@@ -103,3 +104,4 @@ RD Web 和 RD 网关终结点必须位于同一台计算机上，并且有一个
 
 [使用 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-enable-remote-access-sharepoint.md)  
 [使用 Azure AD 应用程序代理远程访问应用时的安全注意事项](application-proxy-security-considerations.md)
+

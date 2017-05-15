@@ -13,10 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: eslesar
-translationtype: Human Translation
-ms.sourcegitcommit: e2257730f0c62dbc0313ce7953fc5f953dae8ac3
-ms.openlocfilehash: f81536322ad1bb16e4af326e0b053da47690619c
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 7aaede3e93938553ee6d372478e3516e72885057
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -136,7 +137,7 @@ Azure 自动化 DSC 可让你使用 Azure 门户、Azure Resource Manager 模板
 
 ### <a name="powershell"></a>PowerShell
 
-可通过 PowerShell 使用 [Register-AzureRmAutomationDscNode](https://msdn.microsoft.com/library/mt603833.aspx) cmdlet 在 Azure 门户中登记虚拟机。
+可通过 PowerShell 使用 [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) cmdlet 在 Azure 门户中登记虚拟机。
 
 ## <a name="amazon-web-services-aws-virtual-machines"></a>Amazon Web Services (AWS) 虚拟机
 
@@ -161,7 +162,7 @@ Azure 自动化 DSC 可让你使用 Azure 门户、Azure Resource Manager 模板
 
 还可以通过几个简单的步骤，将本地 Linux 计算机和非 Azure 云中的 Linux 计算机登记到 Azure 自动化 DSC，前提是这些计算机可对 Internet 进行出站访问：
 
-1. 确保已在要登记到 Azure 自动化 DSC 的计算机上安装最新版本的 [DSC Linux 代理](http://www.microsoft.com/download/details.aspx?id=49150)。
+1. 确保已在希望载入到 Azure Automation DSC 的计算机上安装[适用于 Linux 的 PowerShell Desired State Configuration](https://github.com/Microsoft/PowerShell-DSC-for-Linux) 的最新版本。
 2. 如果 [PowerShell DSC 本地配置管理器默认值](https://msdn.microsoft.com/powershell/dsc/metaconfig4)与用例匹配，并且想要将计算机登记为**同时**从 Azure 自动化 DSC 提取并报告信息，则请执行以下操作：
 
    + 在要登记到 Azure 自动化 DSC 的每台 Linux 计算机上，使用 Register.py 来通过 PowerShell DSC 本地配置管理器默认值进行登记：
@@ -390,6 +391,6 @@ Azure 自动化 DSC 可让你轻松登记 Azure Windows VM 以进行配置管理
 ## <a name="related-articles"></a>相关文章
 
 * [Azure 自动化 DSC 概述](automation-dsc-overview.md)
-* [Azure 自动化 DSC cmdlet](https://msdn.microsoft.com/library/mt244122.aspx)
+* [Azure 自动化 DSC cmdlet](/powershell/module/azurerm.automation/#automation)
 * [ 定价](https://azure.microsoft.com/pricing/details/automation/)
 

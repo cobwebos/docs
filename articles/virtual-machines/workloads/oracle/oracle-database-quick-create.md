@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/17/2017
+ms.date: 04/26/2017
 ms.author: rclaus
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 3cf6625407afe5b4fb53a945f4a505338122aaec
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: ba55e2e4449737c4b759211cf0c429d42b961a38
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/29/2017
 
 ---
 
@@ -55,10 +56,14 @@ az group create --name myResourceGroup --location westus
 下面的示例创建一个名为 `myVM` 的 VM，并且在默认密钥位置中不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  
 
 ```azurecli
-az vm create --resource-group myResourceGroup --name myVM --image Oracle:Oracle-Database-Ee:12.1.0.2:latest --data-disk-sizes-gb 20 --size Standard_DS2_v2  --generate-ssh-keys
+az vm create --resource-group myResourceGroup \
+    --name myVM \
+    --image Oracle:Oracle-Database-Ee:12.1.0.2:latest \
+    --size Standard_DS2_v2 \
+    --generate-ssh-keys
 ```
 
-创建 VM 后，Azure CLI 将显示类似于以下示例的信息。 记下 `publicIpAddress`。 此地址用于访问 VM。
+创建 VM 后，Azure CLI 将显示类似于以下示例的信息：记下 `publicIpAddress`。 此地址用于访问 VM。
 
 ```azurecli
 {
@@ -86,8 +91,7 @@ ssh <publicIpAddress>
 Oracle 软件已在应用商店映像上安装，因此下一步是安装数据库。 第一步是以“oracle”超级用户的身份运行并初始化用于日志记录的侦听器：
 
 ```bash
-su oracle
-Password: <enter initial oracle password: xxxxxxxx >
+sudo su - oracle
 [oracle@myVM /]$ lsnrctl start
 Copyright (c) 1991, 2014, Oracle.  All rights reserved.
 
@@ -117,9 +121,12 @@ The command completed successfully
 下一步是创建数据库：
 
 ```bash
-[oracle@myVM /]$ dbca -silent -createDatabase \
+[oracle@myVM /]$ dbca -silent \
+   -createDatabase \
    -templateName General_Purpose.dbc \
-   -gdbname cdb1 -sid cdb1 -responseFile NO_VALUE \
+   -gdbname cdb1 \
+   -sid cdb1 \
+   -responseFile NO_VALUE \
    -characterSet AL32UTF8 \
    -sysPassword OraPasswd1 \
    -systemPassword OraPasswd1 \
@@ -161,10 +168,8 @@ Creating Pluggable Databases
 Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
 ```
 
-## <a name="set-up-connectivity"></a>设置连接 
-测试本地连接
-
-创建数据库后，需要设置 ORACLE_HOME 和 ORACLE_SID 环境变量。
+## <a name="preparing-for-connectivity"></a>准备进行连接 
+为了确保已正确初始化数据库，我们将测试本地连接。 执行此操作的最简单方法是使用 `sqlplus` 连接。  在连接之前，我们需要先设置一些环境变量 - 特别是 *ORACLE_HOME* 和 *ORACLE_SID* 环境变量。
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
@@ -172,9 +177,24 @@ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-现在可使用 sqlplus 进行连接：
+（可选）可以将 ORACLE_HOME 和 ORACLE_SID 添加到 .bashrc 文件，以便为将来登录保存这些设置。
+
+```
+# add oracle home
+export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
+
+# add oracle sid
+export ORACLE_SID=cdb1
+
+```
+
+## <a name="setup-connectivity-to-oracle-em-express"></a>设置与 Oracle EM Express 的连接
+
+我们将允许 Oracle EM Express 使用 GUI 管理工具浏览数据库。  若要连接到 Oracle EM Express，必须先在 Oracle 中配置端口。
 
 ```bash
+$ sudo su - oracle
+
 sqlplus / as sysdba
 
 SQL*Plus: Release 12.1.0.2.0 Production on Fri Apr 7 13:16:30 2017
@@ -186,11 +206,98 @@ Connected to:
 Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
 With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
 
-```
+SQL> select con_id, name, open_mode from v$pdbs;
 
-最后一步是配置外部终结点。 我们需要配置 Azure 网络安全组以保护 VM，因此应退出 VM 上的 SSH 会话。 使用 Azure CLI 执行此操作：
+    CON_ID NAME                           OPEN_MODE
+---------- ------------------------------ ----------
+         2 PDB$SEED                       READ ONLY
+         3 PDB1                           MOUNT
+
+SQL> alter session set container=pdb1;
+
+Session altered.
+
+SQL> alter database open;
+
+database opened.
+
+SQL> alter session set container=pdb1;
+
+Session altered.
+
+SQL> exec DBMS_XDB_CONFIG.SETHTTPSPORT(5502);
+
+PL/SQL procedure successfully completed.
+```
+## <a name="automating-database-startup-and-shutdown"></a>自动执行数据库启动和关闭
+
+创建 Oracle 实例后，它并未设置为在计算机启动时自动启动。  若要完成这些任务，需要以 root 用户身份登录，然后创建/更新某些系统文件。
 
 ```bash
+# sudo su -
+```
+
+将“/etc/oratab”文件从默认值“N”更新为“Y”
+
+```
+cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
+```
+
+接下来，创建“/etc/init.d/dbora”文件
+
+```bash
+#!/bin/sh
+# chkconfig: 345 99 10
+# description: Oracle auto start-stop script.
+#
+# Set ORA_HOME to be equivalent to the $ORACLE_HOME
+ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
+ORA_OWNER=oracle
+
+case "$1" in
+'start')
+    # Start the Oracle databases:
+    # The following command assumes that the oracle login
+    # will not prompt the user for any values
+    # Remove "&" if you don't want startup as a background process.
+    su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" &
+    touch /var/lock/subsys/dbora
+    ;;
+
+'stop')
+    # Stop the Oracle databases:
+    # The following command assumes that the oracle login
+    # will not prompt the user for any values
+    su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" &
+    rm -f /var/lock/subsys/dbora
+    ;;
+esac
+```
+
+更改权限
+
+```bash
+# chgrp dba /etc/init.d/dbora
+# chmod 750 /etc/init.d/dbora
+```
+创建用于启动和关闭的符号链接
+
+```bash
+# ln -s /etc/init.d/dbora /etc/rc.d/rc0.d/K01dbora
+# ln -s /etc/init.d/dbora /etc/rc.d/rc3.d/S99dbora
+# ln -s /etc/init.d/dbora /etc/rc.d/rc5.d/S99dbora
+```
+
+重启 VM 以进行测试
+```bash
+# reboot
+```
+
+## <a name="opening-the-ports-for-connectivity"></a>打开用于连接的端口
+
+最后一步是配置一些外部终结点。 为了配置 Azure 网络安全组以保护 VM，应退出 VM 上的 SSH 会话。 为了打开用于远程访问 Oracle DB 的终结点，将执行以下命令。 
+
+```azurecli
 az network nsg rule create --resource-group myResourceGroup\
     --nsg-name myVmNSG --name allow-oracle\
     --protocol tcp --direction inbound --priority 999 \
@@ -219,22 +326,42 @@ az network nsg rule create --resource-group myResourceGroup\
 }
 ```
 
-若要测试外部连接，请在远程电脑上运行 sqlplus。 连接之前，请在该电脑上创建一个“tnsnames.ora”文件：
+为了打开用于远程访问 Oracle EM Express 的终结点，将执行以下命令。
 
+```azurecli
+az network nsg rule create --resource-group myResourceGroup\
+    --nsg-name myVmNSG --name allow-oracle-EM\
+    --protocol tcp --direction inbound --priority 1001 \
+    --source-address-prefix '*' --source-port-range '*' \
+    --destination-address-prefix '*' --destination-port-range 5502 --access allow
 ```
-azure_pdb1=
-  (DESCRIPTION=
-    (ADDRESS=
-      (PROTOCOL=TCP)
-      (HOST=<vm-name>.cloudapp.net)
-      (PORT=1521)
-    )
-    (CONNECT_DATA=
-      (SERVER=dedicated)
-      (SERVICE_NAME=pdb1)
-    )
-  )
+
+结果应类似于以下响应：
+
+```azurecli
+{
+  "access": "Allow",
+  "description": null,
+  "destinationAddressPrefix": "*",
+  "destinationPortRange": "5502",
+  "direction": "Inbound",
+  "etag": "W/\"06c68b5e-1b3f-4ae0-bcf6-59b3b981d685\"",
+  "id": "/subscriptions/2dad32d6-b188-49e6-9437-ca1d51cec4dd/resourceGroups/kennyRG/providers/Microsoft.Network/networkSecurityGroups/kennyVM1NSG/securityRules/allow-oracle-EM",
+  "name": "allow-oracle-EM",
+  "priority": 1001,
+  "protocol": "Tcp",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "sourceAddressPrefix": "*",
+  "sourcePortRange": "*"
+}
 ```
+
+从浏览器连接 EM Express
+```
+https://<VM hostname>:5502/em
+```
+可以使用 SYS 帐户和安装过程中指定的密码登录
 
 
 ## <a name="delete-virtual-machine"></a>删除虚拟机

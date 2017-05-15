@@ -1,5 +1,5 @@
 ---
-title: " 管理在 Azure（经典）中运行的进程服务器 | Microsoft 文档s"
+title: " 管理在 Azure（经典）中运行的进程服务器 | Microsoft Docs"
 description: "本文介绍如何在 Azure 中设置故障回复进程服务器（经典）。"
 services: site-recovery
 documentationcenter: 
@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 2/2/2017
 ms.author: anoopkv
-translationtype: Human Translation
-ms.sourcegitcommit: bb24e1c79f6a77ec157fa05a8a212109ce8ae7ad
-ms.openlocfilehash: cc2d4d92f7d900f8dc231e11b65acf4b742ed893
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: cceda131fc9eaa74f6328c8dd68a8e3885877061
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 ---
 
@@ -28,7 +30,7 @@ ms.openlocfilehash: cc2d4d92f7d900f8dc231e11b65acf4b742ed893
 故障回复期间，如果 Azure 虚拟网络与本地网络之间存在高延迟，建议将进程服务器部署在 Azure 中。 本指南介绍如何设置、配置和管理在 Azure 中运行的进程服务器。
 
 > [!NOTE]
-> 如果在故障转移期间使用了 **Resource Manager** 部署模型作为虚拟机的部署模型，则要使用本文。 如果使用了**经典**部署模型作为部署模型，请按照[如何设置和配置故障回复进程服务器 (Resource Manager)](./site-recovery-vmware-setup-azure-ps-resource-manager.md) 中的步骤进行操作
+> 如果在故障转移期间使用了经典部署模型作为虚拟机的部署模型，则要使用本文。 如果使用了资源管理器部署模型作为部署模型，请按照[如何设置和配置故障回复进程服务器（资源管理器）](./site-recovery-vmware-setup-azure-ps-resource-manager.md)中的步骤进行操作
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,9 +62,4 @@ ms.openlocfilehash: cc2d4d92f7d900f8dc231e11b65acf4b742ed893
 ## <a name="unregistering-the-process-server-running-in-azure-from-a-configuration-server-running-on-premises"></a>将进程服务器（在 Azure 中运行）从配置服务器（在本地运行）中注销
 
 [!INCLUDE [site-recovery-vmware-upgrade-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

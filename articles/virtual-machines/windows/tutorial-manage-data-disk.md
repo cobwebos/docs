@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/21/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 6bc28290f5ae0466b8e1a260d411b7eab6f12439
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: d68fc54f3fd08b3d7d66a9cd1ddb91c340191468
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -26,15 +27,15 @@ ms.lasthandoff: 04/26/2017
 
 本教程介绍了不同类型的 VM 磁盘、如何选择磁盘配置，以及如何创建磁盘并将其附加到 Azure VM。 本教程还讲解了如何拍摄磁盘快照。  
 
-可使用最新版 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) 模块完成本教程中的步骤。
+可使用最新版 [Azure PowerShell](/powershell/azure/overview) 模块完成本教程中的步骤。
 
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
 
 创建 Azure 虚拟机后，将自动向此虚拟机附加两个磁盘。 
 
-操作系统磁盘 - 操作系统磁盘大小可达 1 TB，并可托管 VM 操作系统。  OS 磁盘默认分配有一个 `c:` 驱动器号。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 OS 磁盘不得承载应用程序或数据。 对于应用程序和数据，请使用数据磁盘，详情请参见本文稍后部分。
+操作系统磁盘 - 操作系统磁盘大小可达 1 TB，并可托管 VM 操作系统。  OS 磁盘默认分配有一个 c: 驱动器号。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 OS 磁盘不得承载应用程序或数据。 对于应用程序和数据，请使用数据磁盘，详情请参见本文稍后部分。
 
-临时磁盘- 临时磁盘使用 VM 所在的 Azure 主机上的固态驱动器。 临时磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 移动到新的主机，临时磁盘上存储的数据都将被删除。 临时磁盘的大小由 VM 大小决定。 临时磁盘默认分配有一个 `d:` 驱动器号。
+临时磁盘- 临时磁盘使用 VM 所在的 Azure 主机上的固态驱动器。 临时磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 移动到新的主机，临时磁盘上存储的数据都将被删除。 临时磁盘的大小由 VM 大小决定。 临时磁盘默认分配有一个 d: 驱动器号。
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
 
@@ -91,7 +92,7 @@ Azure 提供两种类型的磁盘。
 使用 [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) 创建初始配置。 以下示例配置大小为 128 GB 的磁盘。
 
 ```powershell
-$diskConfig = New-AzureRmDiskConfig -Location westus -CreateOption Empty -DiskSizeGB 128
+$diskConfig = New-AzureRmDiskConfig -Location EastUS -CreateOption Empty -DiskSizeGB 128
 ```
 
 使用 [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) 命令创建数据磁盘。
@@ -138,3 +139,4 @@ Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
 在本教程中，你已了解 VM 磁盘。 转到下一教程，了解如何自动配置 VM。
 
 [自动配置 VM](./tutorial-automate-vm-deployment.md)
+

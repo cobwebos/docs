@@ -12,12 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2017
+ms.date: 05/02/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c4eb1162edc42baafe96e6c33699805ffc121204
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: d71bf041585af101d6aa67ba2697f5192bdfd048
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -35,11 +36,10 @@ ms.lasthandoff: 04/20/2017
 
 在上述任一情况下，如果主服务器发生服务中断，都必须更改报表客户端中的连接字符串，以连接到不同区域数据中心中的服务器。 此更改应视为最后手段，仅在发生灾难性区域数据中心服务中断时适用。 很可能在更新所有客户端上的连接之前，托管主服务器的数据中心服务中断会恢复到联机状态。 
 
-在确定你的组织如何处理服务中断时，请考虑如何确保数据始终最新和安全。 
 
 
 ## <a name="related-information"></a>相关信息
-[备份和还原](analysis-services-backup.md) 
+[备份和还原](analysis-services-backup.md)   
 [管理 Azure Analysis Services](analysis-services-manage.md) 
 
 

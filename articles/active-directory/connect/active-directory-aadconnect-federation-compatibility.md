@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 05/01/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 5c7c6c8568115093f3a7568b6d318f985705691c
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 6f91f732b7579c9f14458dab9be49c027debfac1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -58,8 +59,8 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 * [Sailpoint IdentityNow](#sailpoint-identitynow)
 * [SecureAuth IdP 7.2.0](#secureauth-idp-720) 
 * [Sign&go 5.3](#signgo-53) 
-* [SoftBank](#softbank)
-* [VMware Identity Manager](#vmware-identity-manager)
+* [SoftBank Technology Online Service Gate](#softbank)
+* [VMware Workspace One](#vmware-workspace-one)
 * [VMware  Workspace Portal version 2.1](#vmware--workspace-portal-version-21) 
 
 
@@ -340,7 +341,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 
 Sign&go 5.3 支持通过配置 Kerberos 约定实现 Kerberos 身份验证。  如需此配置的帮助，请联系 Ilex 或查看[此处](http://www.ilex-international.com/docs/sign&go_wsfederation_en.pdf)的设置指南。
 
-## <a name="softbank"></a>SoftBank
+## <a name="softbank-technology-online-service-gate"></a>SoftBank Technology Online Service Gate
 
 下面是此单一登录体验的方案支持对照表：
 
@@ -350,9 +351,9 @@ Sign&go 5.3 支持通过配置 Kerberos 约定实现 Kerberos 身份验证。  �
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |不支持集成 Windows 身份验证 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关 BitGlass 的详细信息，请查看[此处](https://www.softbanktech.jp/service/list/osg-pro-ent/)。
+有关 SoftBank Technology Online Service Gate 的详细信息，请参阅[此处](https://www.softbanktech.jp/service/list/osg-pro-ent/)。
 
-## <a name="vmware-identity-manager"></a>VMware Identity Manager
+## <a name="vmware-workspace-one"></a>VMware Workspace One
 
 下面是此单一登录体验的方案支持对照表：
 

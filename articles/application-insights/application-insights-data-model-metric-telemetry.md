@@ -4,24 +4,25 @@ description: "适用于指标遥测的 Application Insights 数据模型"
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
-manager: azakonov-ms
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: e27301a4815d16396518ddfc7487b064892e7631
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1bedede1934141927a770c97b61aeb5218652b3e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
 
-Application Insights 支持两种类型的指标遥测 - 单个度量和预聚合指标。 单个度量只是一个名称和值。 预聚合指标指定在聚合时间间隔内指标的最小和最大值，以及它的标准偏差。
+[Application Insights](app-insights-overview.md) 支持两种类型的指标遥测：单个度量和预聚合指标。 单个度量只是一个名称和值。 预聚合指标指定在聚合时间间隔内指标的最小和最大值，以及它的标准偏差。
 
 预聚合指标遥测假定聚合期间为一分钟。
 
@@ -71,7 +72,7 @@ Application Insights 支持几个已知的指标名称。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[数据模型](/application-insights-data-model.md)，了解 Application Insights 的类型和数据模型。
-- 了解如何使用[用于处理自定义事件和指标的 Application Insights API](/app-insights-asp-net-dependencies.md)。
-- 查看 Application Insights 支持的[平台](/app-insights-platforms.md)。
+- 了解如何使用[用于处理自定义事件和指标的 Application Insights API](app-insights-api-custom-events-metrics.md#send-metrics)。
+- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
+- 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
 

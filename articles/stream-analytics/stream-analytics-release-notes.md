@@ -12,16 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/06/2017
+ms.date: 05/03/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 2fe28e7b52af579038ec145c028a6d2796d6cc6e
-ms.openlocfilehash: f47b719f7b1a78264e054ee15edacc32ca35aaf7
-ms.lasthandoff: 02/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 05c5476cbfd616ce47d6d93627c6e7dd4d8a0d6f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="stream-analytics-release-notes"></a>流分析发行说明
+
+## <a name="notes-for-05032017-update-of-stream-analytics"></a>流分析 05/03/2017 更新说明
+此更新适用于我们的故障排除文档版本。
+
+已发布[故障排除指南](stream-analytics-troubleshooting-guide.md)和其他文档。 请查看这些文档；同时，我们欢迎你提出任何反馈。
+
 ## <a name="notes-for-02012017-release-of-stream-analytics"></a>流分析 02/01/2017 版说明
 此版本包含以下更新。
 
@@ -136,7 +143,7 @@ ms.lasthandoff: 02/01/2017
 | PowerBI 数据集只能包含一个表 |PowerBI 不支持在给定数据集中设置多个表。 |
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

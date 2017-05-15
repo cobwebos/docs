@@ -4,32 +4,45 @@ description: "Application Insights 数据模型概述"
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
-manager: azakonov-ms
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 52f700bd18da87a9a38e0a791d0ec3496f201e0a
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 7dd240c4e1a6fcc9c89bf4418e635e7ef8ef0617
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights 遥测数据模型
 
-Application Insights 为应用程序性能管理 (APM) 定义遥测数据模型。 此模型可标准化数据收集，并让用户创建与平台和语言无关的监视方案。 Application Insights 收集的数据为典型的应用程序执行模式建模：
+[Azure Application Insights](app-insights-overview.md) 将遥测从 Web 应用程序发送到 Azure 门户，以便分析应用程序的性能和使用情况。 标准化遥测模型可以创建不依赖于平台和语言的监测。 
+
+Application Insights 收集的数据为典型的应用程序执行模式建模：
 
 ![Application Insights 应用程序模型](./media/application-insights-data-model/application-insights-data-model.png)
 
-有两种类型的应用程序：包含可以接收外部***请求***的终结点的应用程序（Web 应用程序），以及会定期“唤醒”以处理某个位置存储的数据的应用程序（Web 作业或函数）。 在这两种情况下，我们将唯一执行称为***操作***。 操作通过***异常***成功或失败，或者可能依赖于其他服务/存储来承载其业务逻辑。 为了反映这些概念，Application Insights 数据模型定义了三种遥测类型：[请求](./application-insights-data-model-request-telemetry.md)、[异常](/application-insights-data-model-exception-telemetry.md)和[依赖项](/application-insights-data-model-dependency-telemetry.md)。
+使用以下类型的遥测监视应用的执行情况。 Application Insights SDK 通常会从 Web 应用程序框架自动收集以下三种类型：
 
-通常，这些类型由应用程序框架定义，并由 SDK 自动收集。 `ASP.NET MVC` 定义某个请求执行在其模型-视图-控制器管道中的表示法 - 标记请求的开始和停止。 对 SQL 的依赖项调用由 `System.Data` 定义。 对 HTTP 终结点的调用由 `System.Net` 定义。 可以使用自定义属性和度量值扩展特定平台和框架收集的遥测类型。 但是，在某些情况下，你需要报告自定义遥测。 你可能需要使用某个熟悉的检测框架（例如 `Log4Net` 或 `System.Diagnostics`）实现诊断日志记录。 或者，你可能需要捕获用户与服务的交互以分析使用模式。 Application Insights 识别其他三种数据类型：[跟踪](/application-insights-data-model-trace-telemetry.md)、[事件](/application-insights-data-model-event-telemetry.md)和[指标](/application-insights-data-model-metric-telemetry.md)，可为这些方案建模。
+* [请求](application-insights-data-model-request-telemetry.md) - 生成该类型的遥测用以记录应用接收的请求。 例如，Application Insights Web SDK 会自动为 Web 应用接收到的每个 HTTP 请求生成请求遥测项。 
 
-Application Insights 遥测模型定义了将遥测与它所属的操作进行[关联](/correlation.md)的方式。 例如，请求可以发出 SQL 数据库调用并记录诊断信息。 可为那些要绑定回到请求遥测的遥测项设置关联上下文。
+    “操作”是处理请求的执行线程。 还可以[编写代码](app-insights-api-custom-events-metrics.md#trackrequest)监视其他类型的操作，例如 Web 作业或函数中定期处理数据的“唤醒”操作。  每个操作都有一个 ID，可用于将应用处理请求时生成的其他遥测分组在一起。 每个操作无论成功或失败都需要持续一段时间。
+* [异常](application-insights-data-model-exception-telemetry.md) - 通常表示导致操作失败的异常。
+* [依赖项](application-insights-data-model-dependency-telemetry.md) - 表示从应用到外部服务或存储（如 REST API 或 SQL）的调用。 在 ASP.NET 中，对 SQL 的依赖项调用由 `System.Data` 定义。 对 HTTP 终结点的调用由 `System.Net` 定义。 
+
+Application Insights 为自定义遥测提供了三种额外的数据类型：
+
+* [跟踪](application-insights-data-model-trace-telemetry.md) - 直接使用或通过适配器使用熟悉的检测框架（如 `Log4Net` 或 `System.Diagnostics`）实现诊断日志记录。
+* [事件](application-insights-data-model-event-telemetry.md) - 通常用于捕获用户与服务的交互，以分析使用模式。
+* [指标](application-insights-data-model-metric-telemetry.md) - 用于报告定期标量度量。
+
+Application Insights 遥测模型定义了将遥测与它所属的操作进行[关联](application-insights-correlation.md)的方式。 例如，请求可以发出 SQL 数据库调用并记录诊断信息。 可为那些要绑回请求遥测的遥测项设置关联上下文。
 
 ## <a name="schema-improvements"></a>架构改进
 
@@ -39,7 +52,8 @@ Application Insights 数据模型采用简单基本的结构，不过，它能�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看 Application Insights 支持的[平台](/app-insights-platforms.md)。
-- 了解如何[扩展和筛选遥测](/app-insights-api-filtering-sampling.md)。
-- 使用[采样](/app-insights-sampling.md)基于数据模型最小化遥测量。
+- [编写自定义遥测](app-insights-api-custom-events-metrics.md)
+- 了解如何[扩展和筛选遥测](app-insights-api-filtering-sampling.md)。
+- 使用[采样](app-insights-sampling.md)基于数据模型最小化遥测量。
+- 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
 

@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 04/26/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 1fcec43ad50b9c78443ada116b9ca444605c4730
-ms.openlocfilehash: fa2a2f8ee61b6edf92db8d1f92ab9aca8bc673c5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: b0454ad51a2d0edecb6f7e7748ec3b74eeefa1da
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 ---
 
@@ -25,7 +27,7 @@ ms.openlocfilehash: fa2a2f8ee61b6edf92db8d1f92ab9aca8bc673c5
 
 Azure Active Directory 应用程序代理还可以发布本地应用程序供远程员工进行安全访问，从而提高工作效率。 在 Azure 门户中，还可以设置针对这些应用的单一登录 (SSO)。 现在，用户只需使用 Azure AD 进行身份验证，然后不需再次登录即可访问企业应用程序。
 
-在本文中，我们将以基于密码的应用为例，介绍如何通过密码存储为用户提供简单的 SSO 体验。 
+在本文中，我们以基于密码的应用为例，介绍如何通过密码存储为用户提供简单的 SSO 体验。 
 
 你应该已经通过应用程序代理发布和测试了应用。 否则，请执行[使用 Azure AD 应用程序代理（公共预览版）发布应用程序](application-proxy-publish-azure-portal.md)中的步骤，然后再返回到此处。 
 
@@ -35,7 +37,7 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” > “企业应用程序” > “所有应用程序”。
-3. 从列表中选择要设置 SSO 的应用。 如果有大量应用，则可使用搜索框筛选正确的应用。  
+3. 从列表中选择要设置 SSO 的应用。 如果有许多应用，则可使用搜索框筛选正确的应用。  
 4. 在“管理”部分选择“单一登录”。
 
    ![选择“单一登录”](./media/application-proxy-sso-azure-portal/select-sso.png)
@@ -58,9 +60,4 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 ## <a name="next-steps"></a>后续步骤
 
 了解如何通过其他方式实现[通过应用程序代理进行的单一登录](active-directory-application-proxy-sso-using-kcd.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

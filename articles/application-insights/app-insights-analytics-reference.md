@@ -11,12 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 04/26/2017
 ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 7f6c71056bca7beebc02313409aabe386d191e23
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 93831bb163f67bbf40026faf3096ff5b7c581dfe
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -664,7 +665,7 @@ requests
            | where Name == "Stop"
            | project StopTime=timestamp, ActivityId)
         on ActivityId
-    | project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
+    | project City, ActivityId, StartTime, StopTime, Duration=StopTime-StartTime
 
 ```
 
@@ -2750,7 +2751,8 @@ substring("ABCD", 0, 2)       // AB
 * `parsejson('21')` - 包含数字的动态类型的单个值
 * `parsejson('"21"')` - 包含字符串的动态类型的单个值
 
-请注意，与 JavaScript 不同，JSON 要求使用双引号 (`"`) 括住字符串。 因此，使用单引号 (`'`) 括住 JSON 编码的字符串文本通常更简单。
+> ![注意] 必须使用双引号 (`"`) 括起 JSON 中的标签和字符串值。 因此，使用单引号 (`'`) 括住 JSON 编码的字符串文本通常更简单。
+> 
 
 此示例创建一个动态值，然后使用其字段：
 
@@ -2927,21 +2929,23 @@ arraylength(parsejson('21')) == null
 
 **示例**
 
-在以下示例中，如果 `context_custom_metrics` 是类似如下的 `string`： 
+在以下示例中，`customDimensions.person` 是如下所示的 `string`： 
 
 ```
-{"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
+"\"addresses\":[{\"postcode\":\"C789\",\"street\":\"high st\",\"town\":\"Cardigan\"},{\"postcode\":\"J456\",\"street\":\"low st\",\"town\":\"Jumper\"}],\"name\":\"Ada\""
 ```
 
 则以下片段将检索对象中 `duration` 槽的值，并从中检索两个槽，`duration.value` 和  `duration.min`（分别为 `118.0` 和 `110.0`）。
 
 ```AIQL
-T
-| ...
+customEvents
+| where name == "newMember"
 | extend d=parsejson(context_custom_metrics) 
 | extend duration_value=d.duration.value, duration_min=d["duration"]["min"]
 ```
 
+> ![注意] 必须使用双引号字符括起 JSON 中的标签和字符串值。 
+>
 
 
 ### <a name="range"></a>range

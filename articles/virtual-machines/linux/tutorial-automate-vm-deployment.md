@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/17/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 8f86f812cd708d8122ecc507d02fb2ec2c73689f
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 188c4758843a49ca38a151835d561c5f2d58d3a0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/21/2017
 ## <a name="cloud-init-overview"></a>Cloud-init 概述
 [Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 在初始启动期间运行 cloud-init 时，无需额外的步骤且无需代理来应用配置。
 
-Cloud-init 还支持不同的分发。 例如，请勿使用 `apt-get install` 或 `yum install` 安装程序包。 相反，可定义要安装的程序包的列表，cloud-init 将为所选发行版自动使用本机包管理工具。
+Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 相反，可定义要安装的程序包的列表，cloud-init 将为所选发行版自动使用本机包管理工具。
 
 我们正在与合作伙伴协作，将 cloud-init 纳入用户向 Azure 提供的映像中并使其在映像中正常运行。 下表概述了 cloud-init 当前在 Azure 平台映像上的可用性：
 
@@ -41,10 +42,10 @@ Cloud-init 还支持不同的分发。 例如，请勿使用 `apt-get install` �
 | CoreOS |CoreOS |CoreOS |Stable |最新 |
 
 
-## <a name="create-config-file"></a>创建 config 文件
+## <a name="create-cloud-init-config-file"></a>创建 cloud-init 配置文件
 若要运行 cloud-init，请创建一个 VM，该 VM 将安装 NGINX 并运行简单的“Hello World”Node.js 应用。 以下 cloud-init 配置会安装所需的程序包、创建 Node.js 应用，然后初始化并启动该应用。
 
-创建名为 `cloud-init.txt` 的文件并粘贴下面的配置：
+创建名为“cloud-init.txt”的文件并粘贴下面的配置：
 
 ```yaml
 #cloud-config
@@ -90,15 +91,14 @@ runcmd:
 
 有关 cloud-init 配置选项的详细信息，请参阅 [cloud-init 配置示例](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)]
 
-
 ## <a name="create-virtual-machine"></a>创建虚拟机
-使用 [az group create](/cli/azure/group#create) 创建资源组，然后才能创建 VM。 以下示例在 `westus` 位置创建名为 `myResourceGroupAutomate` 的资源组：
+使用 [az group create](/cli/azure/group#create) 创建资源组，然后才能创建 VM。 以下示例在“westus”位置创建名为“myResourceGroupAutomate”的资源组：
 
 ```azurecli
 az group create --name myResourceGroupAutomate --location westus
 ```
 
-现使用 [az vm create](/cli/azure/vm#create) 创建 VM。 使用 `--custom-data` 参数传递到 cloud-init 配置文件中。 若未将 `cloud-init.txt` 配置文件保存在现有工作目录，则提供该配置的完整路径。 以下示例创建一个名为 `myAutomatedVM` 的 VM：
+现使用 [az vm create](/cli/azure/vm#create) 创建 VM。 使用 `--custom-data` 参数传递到 cloud-init 配置文件中。 如果未将 cloud-init.txt 配置文件保存在现有工作目录中，请提供该文件的完整路径。 以下示例创建一个名为“myAutomatedVM”的 VM：
 
 ```azurecli
 az vm create \
@@ -119,7 +119,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
 ## <a name="test-web-app"></a>测试 Web 应用
-现可打开 Web 浏览器，并在地址栏中输入 `http://<publicIpAddress>`。 在 VM 创建过程中提供自己的公共 IP 地址。 Node.js 应用如下例所示：
+现在可以打开 Web 浏览器，并在地址栏中输入“http://<publicIpAddress>”。 在 VM 创建过程中提供自己的公共 IP 地址。 Node.js 应用如下例所示：
 
 ![查看运行中的 NGINX 站点](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -127,7 +127,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ## <a name="inject-certificates-from-key-vault"></a>插入 Key Vault 中的证书
 此可选部分展示了如何在 Azure Key Vault 中安全存储证书，并在 VM 部署期间将其插入。 此过程可确保首次启动时将最新的证书插入到 VM 中，而不是使用内置证书中随附的自定义映像。 在该过程中，证书永远不会离开 Azure 平台，也不会在脚本、命令行历史记录或模板中公开。
 
-Azure Key Vault 保护加密密钥和机密、此类证书或密码。 Key Vault 有助于简化密钥管理过程，让你能够持续掌控用于数据访问和加密的密钥。 此方案介绍了一些用于证书创建和使用的 Key Vault 概念，但未详尽概述如何使用 Key Vault。
+Azure Key Vault 保护加密密钥和机密，例如证书或密码。 Key Vault 有助于简化密钥管理过程，让你能够持续掌控用于数据访问和加密的密钥。 此方案介绍了一些用于证书创建和使用的 Key Vault 概念，但未详尽概述如何使用 Key Vault。
 
 以下步骤演示可如何：
 
@@ -137,11 +137,14 @@ Azure Key Vault 保护加密密钥和机密、此类证书或密码。 Key Vault
 - 创建 VM 并插入证书
 
 ### <a name="create-an-azure-key-vault"></a>创建 Azure Key Vault
-首先，使用 [az keyvault create](/cli/azure/keyvault#create) 创建 Key Vault，并在部署 VM 时启用该 Key Vault。 每个 Key Vault 均需具备唯一名称且全部小写。 将下例中的 `<mykeyvault>` 替换为自己的唯一 Key Vault 名称：
+首先，使用 [az keyvault create](/cli/azure/keyvault#create) 创建 Key Vault，并在部署 VM 时启用该 Key Vault。 每个 Key Vault 均需具备唯一名称且全部小写。 将下例中的 <mykeyvault> 替换为自己唯一的 Key Vault 名称：
 
 ```azurecli
 keyvault_name=<mykeyvault>
-az keyvault create --resource-group myResourceGroupAutomate --name $keyvault_name --enabled-for-deployment
+az keyvault create \
+    --resource-group myResourceGroupAutomate \
+    --name $keyvault_name \
+    --enabled-for-deployment
 ```
 
 ### <a name="generate-certificate-and-store-in-key-vault"></a>生成证书并存储在 Key Vault 中
@@ -168,9 +171,9 @@ vm_secret=$(az vm format-secret --secret "$secret")
 
 
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>创建 cloud-init 配置以保护 NGINX
-创建 VM 时，证书和密钥都存储在受保护的 `/var/lib/waagent/` 目录中。 若要将证书自动添加到 VM 并配置 NGINX，可展开上一示例中的 cloud-init 配置。
+创建 VM 时，证书和密钥都将存储在受保护的 /var/lib/waagent/ 目录中。 若要将证书自动添加到 VM 并配置 NGINX，可展开上一示例中的 cloud-init 配置。
 
-创建名为 `cloud-init-secured.txt` 的文件并粘贴下面的配置：
+创建名为“cloud-init-secured.txt”的一个文件并粘贴下面的配置：
 
 ```yaml
 #cloud-config
@@ -240,11 +243,14 @@ az vm create \
 若要使 VM 能使用安全的 Web 流量，请通过 [az vm open-port](/cli/azure/vm#open-port) 从 Internet 中打开端口 443：
 
 ```azurecli
-az vm open-port --port 443 --resource-group myResourceGroupAutomate --name myVMSecured
+az vm open-port \
+    --resource-group myResourceGroupAutomate \
+    --name myVMSecured \
+    --port 443
 ```
 
 ### <a name="test-secure-web-app"></a>测试 Web 应用是否安全
-现可打开 Web 浏览器，并在地址栏中输入 `https://<publicIpAddress>`。 在 VM 创建过程中提供自己的公共 IP 地址。 若使用自签名的证书，请接受安全警告：
+现在可以打开 Web 浏览器，并在地址栏中输入“https://<publicIpAddress>”。 在 VM 创建过程中提供自己的公共 IP 地址。 若使用自签名的证书，请接受安全警告：
 
 ![接受 Web 浏览器安全警告](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

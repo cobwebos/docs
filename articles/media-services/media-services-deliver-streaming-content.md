@@ -1,5 +1,5 @@
 ---
-title: "使用 .NET 发布 Azure 媒体服务内容"
+title: "使用 .NET 发布 Azure 媒体服务内容 | Microsoft Docs"
 description: "了解如何创建用于生成流 URL 的定位符。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。"
 author: juliako
 manager: erikre
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 5598a16511713a76193c13c4521e4884d8f5b75d
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 37f6cd3a25c36fe27c9c711a430a2fc11e50906e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -39,10 +40,10 @@ ms.lasthandoff: 03/14/2017
 
 你也可以使用 OnDemand 流式处理定位符生成指向可渐进式下载的 MP4 文件的 URL。  
 
-本主题说明如何创建 OnDemand 流式处理定位符，以发布资产及生成平滑流、MPEG DASH 和 HLS 流式处理 URL。 此外，还将示范如何生成渐进式下载 URL。 
+本主题说明如何创建按需流式处理定位符，以发布资产及生成平滑流、MPEG DASH 和 HLS 流式处理 URL。 此外，还将示范如何生成渐进式下载 URL。 
 
 ## <a name="create-an-ondemand-streaming-locator"></a>创建 OnDemand 流式处理定位符
-若要创建 OnDemand 流式处理定位符并获取 URL，你需要执行以下操作：
+若要创建按需流式处理定位符并获取 URL，需要执行以下操作：
 
 1. 如果内容已加密，则定义访问策略。
 2. 创建 OnDemand 流式处理定位符。
@@ -53,7 +54,7 @@ ms.lasthandoff: 03/14/2017
 
 
 >[!NOTE]
->不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的天数/访问权限，则使用相同的策略 ID。 例如，适用于需要长期保留使用的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 
 ### <a name="use-media-services-net-sdk"></a>使用媒体服务 .NET SDK
 生成流 URL 
@@ -95,7 +96,7 @@ ms.lasthandoff: 03/14/2017
         Console.WriteLine();
     }
 
-代码将输出：
+输出：
 
     URL to manifest for client streaming using Smooth Streaming protocol:
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
@@ -106,7 +107,7 @@ ms.lasthandoff: 03/14/2017
 
 
 > [!NOTE]
-> 你也可以通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 请注意，目前，AMS 对自定义域不支持 SSL。  
+> 你也可以通过 SSL 连接流式传输内容。 若要执行此方法，请确保流 URL 以 HTTPS 开头。 目前，AMS 对自定义域不支持 SSL。
 > 
 > 
 
@@ -140,7 +141,7 @@ ms.lasthandoff: 03/14/2017
             Console.WriteLine(originLocator.Path + pd.Name);
     }
 
-代码将输出：
+输出：
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
@@ -150,7 +151,7 @@ ms.lasthandoff: 03/14/2017
     . . . 
 
 ### <a name="use-media-services-net-sdk-extensions"></a>使用 Azure 媒体服务 .NET SDK 扩展
-以下代码将调用 .NET SDK 扩展方法，用于创建定位符，并为自适应流生成平滑流、HLS 和 MPEG-DASH URL。
+以下代码将调用 .NET SDK 扩展方法，以创建定位符，并为自适应流式处理生成平滑流式处理、HLS 和 MPEG-DASH URL。
 
     // Create a loctor.
     _context.Locators.Create(
@@ -175,8 +176,8 @@ ms.lasthandoff: 03/14/2017
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
-[下载资产](media-services-deliver-asset-download.md)
-[配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)
+## <a name="next-steps"></a>后续步骤
+* [下载资产](media-services-deliver-asset-download.md)
+* [配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)
 
 

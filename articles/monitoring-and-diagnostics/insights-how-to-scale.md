@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2015
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1e680679086d54a2c6b10be7635e997ac61bacd5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8f1c94ae5389739e03a7b1a70421e538516c873f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,10 +36,8 @@ ms.openlocfilehash: 1e680679086d54a2c6b10be7635e997ac61bacd5
 
 ## <a name="scaling-manually"></a>手动缩放
 1. 在 [Azure 门户](https://portal.azure.com/)中，单击“浏览”，然后导航到要缩放的资源（如“应用服务计划”）。
-2. “操作”中的“缩放”磁贴会告诉你缩放的状态：手动缩放时是“关闭”，通过一个或多个性能指标缩放时是“打开”。
-   
-    ![“缩放”磁贴](./media/insights-how-to-scale/Insights_UsageLens.png)
-3. 单击该磁贴会转到“缩放”边栏选项卡。 在“缩放”边栏选项卡顶部，可以查看服务的自动缩放操作历史记录。
+2. 单击“设置”>“扩大(应用服务计划)”。
+3. 在“缩放”边栏选项卡顶部，可以查看服务的自动缩放操作历史记录。
    
     ![“缩放”分页](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
    
@@ -129,10 +129,5 @@ ms.openlocfilehash: 1e680679086d54a2c6b10be7635e997ac61bacd5
 * 要确切了解代码在云中的执行情况时[监视应用程序性能](../application-insights/app-insights-azure-web-apps.md)。
 * [查看事件和活动日志](insights-debugging-with-events.md)，以了解服务中发生的所有事件。
 * 使用 Application Insights [监视任何网页的可用性和响应能力](../application-insights/app-insights-monitor-web-app-availability.md)，以便可以在页面出现故障时及时发现。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

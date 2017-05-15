@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 04/20/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: fc6e4eaa34694e2b20cb53b3e457803c59bf76b9
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 47fb74c608315b256e88dd774af7cb5260529607
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -620,7 +621,7 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | me
 | 左侧  | 返回左侧查询中的所有记录，返回右侧查询中匹配的记录。 |
 
 
-- 联接当前不支持包含“IN”关键字或“Measure”命令的查询。
+- 联接当前不支持包含 **IN** 关键字、**Measure** 命令或 **Extend** 命令的查询（如果它针对右侧查询中的字段）。
 - 当前，一个联接中只能包含单个字段。
 - 单个搜索不能包含多个联接。
 

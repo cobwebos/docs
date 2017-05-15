@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/03/2017
+ms.date: 04/27/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 8377c936e37b464c2d566f9482ebda63a1e374df
-ms.lasthandoff: 03/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 173869858ba7891fcea8a0207e9b192b81ae4840
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -41,10 +42,6 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **Azure 存储帐户**。 请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
 * **Visual Studio 2013、Visual Studio 2015 或 Visual Studio 2017**。
-
-### <a name="access-control-requirements"></a>访问控制要求
-
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-clusters"></a>创建群集
 
@@ -374,6 +371,10 @@ static void Main(string[] args)
     System.Console.ReadLine();
 }
 ```
+
+## <a name="troubleshoot"></a>故障排除
+
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
 
 ## <a name="next-steps"></a>后续步骤
 成功创建 HDInsight 群集后，请参考以下主题来了解如何使用群集。 

@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 3f6824ea9c306adf7279a473d5e3b0c886d29b60
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 6588d2865928a64f6e172d0779fd43d35e7d9a6a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -42,7 +43,7 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* HDInsight (Hadoop) 群集：有关创建群集的信息，请参阅[在 HDInsight 中配置 Hadoop 群集](hdinsight-provision-clusters.md)。
+* HDInsight (Hadoop) 群集：有关创建群集的信息，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 * Microsoft Excel 2013
 
   > [!NOTE]

@@ -14,12 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 6dde4684e4bbb8eb79c69b620c7f52e085cb40c6
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 51cef9d1fc41d8ece2c5ec82df5f6a889d4c57dc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -39,14 +40,12 @@ ms.lasthandoff: 04/06/2017
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
-* Oracle Java 开发工具包第 7 版和第 8 版。 
-  
-  * 由于 HDInsight 群集支持 Java 第 7 版，因此使用 **Java SDK 7** 来编译 Spark 项目。 可从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)下载 Java SDK 7。
+* Oracle Java 开发工具包版本 8。 
   * **Java SDK 8** 用于 Eclipse IDE 运行时。 可以从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)下载它。
 * Eclipse IDE。 本文使用 Eclipse Neon。 可以从[此处](https://www.eclipse.org/downloads/)安装。
 * Scala IDE for Eclipse。 
   
-  * **如果已安装 Eclipse IDE**，则可以转到“帮助” -> “安装新软件”来添加 Scala IDE 插件，然后将 [http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site](http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site) 添加为下载适用于 Eclipse 的 Scala 插件的来源。 
+  * **如果已安装 Eclipse IDE**，则可以转到“帮助” -> “安装新软件”来添加 Scala IDE 插件，然后将 [http://download.scala-ide.org/sdk/lithium/e46/scala211/stable/site](http://download.scala-ide.org/sdk/lithium/e46/scala211/stable/site) 添加为下载适用于 Eclipse 的 Scala 插件的来源。 
   * **如果没有安装 Eclipse IDE**，可以直接从[此处](http://scala-ide.org/download/sdk.html)安装 Scala IDE。 可以从此链接下载 .zip 文件，将其解压缩后，导航到 **/eclipse** 文件夹，然后从该文件夹运行 **eclipse.exe** 文件。
     
     > [!NOTE]
@@ -61,13 +60,15 @@ ms.lasthandoff: 04/06/2017
 
 ## <a name="log-into-your-azure-subscription"></a>登录到 Azure 订阅
 1. 启动 Eclipse IDE 并打开 Azure 资源管理器。 从 IDE 的“窗口”菜单中单击“显示视图”，然后单击“其他”。 从打开的对话框中展开“Azure”，单击“Azure 资源管理器”，然后单击“确定”。
-   
+
     ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/view-explorer-1.png)
-2. 在“Azure 资源管理器”中右键单击“Azure”节点，然后单击“管理订阅”。
-3. 在“管理订阅”对话框中，单击“登录”并输入 Azure 凭据。
+2. 在“Azure 资源管理器”中右键单击“Azure”节点，然后单击“登录”。
+3. 在“Azure 登录”对话框框中，选择“身份验证模式”，单击“登录”并输入 Azure 凭据。
    
     ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/view-explorer-2.png)
-4. 登录之后，“管理订阅”对话框会列出与凭据关联的所有 Azure 订阅。 单击对话框中的“关闭”。
+4. 登录之后，“选择订阅”对话框会列出与凭据关联的所有 Azure 订阅。 单击对话框中“选择”将其关闭。
+
+    ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 5. 在“Azure 资源管理器”选项卡中展开“HDInsight”，查看订阅下的 HDInsight Spark 群集。
    
     ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/view-explorer-3.png)
@@ -76,9 +77,10 @@ ms.lasthandoff: 04/06/2017
     ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/view-explorer-4.png)
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>为 HDInsight Spark 群集设置 Spark Scala 项目
+
 1. 从 Eclipse IDE 工作区中，依次单击“文件”、“新建”和“项目”。 
 2. 在“新建项目”向导中，展开“HDInsight”，选择“Spark on HDInsight (Scala)”，然后单击“下一步”。
-   
+
     ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 3. 在“新建 HDInsight Scala 项目”对话框中，输入/选择下图中所示的值，然后单击“下一步”。
    
@@ -86,38 +88,19 @@ ms.lasthandoff: 04/06/2017
    
    * 输入项目的名称。
    * 在“JRE”框中，确保“使用执行环境 JRE”已设置为“JavaSE-1.7”。
-   * 确保 Spark SDK 已设置为你下载 SDK 的位置。 下载位置的链接包含在本主题前面的[先决条件](#prerequisites)中。 你也可以从包含在此对话框中的链接下载 SDK，如上图所示。     
-4. 在下一个对话框中，单击“库”选项卡，然后双击“JRE 系统库[JavaSE-1.7]”。
+   * 确保 Spark SDK 已设置为你下载 SDK 的位置。 下载位置的链接包含在本主题前面的[先决条件](#prerequisites)中。 你也可以从包含在此对话框中的链接下载 SDK，如上图所示。    
+4.    在下一个对话框中，单击“库”选项卡，使它们保留默认值。 
    
     ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-4.png)
-5. 在“编辑库”对话框中，确保“执行环境”已设置为“JavaSE-1.7(jdk1.7.0_79)”。 如果没有此选项，请按照以下步骤操作。
-   
-   1. 选择“备用 JRE”选项，看是否有 **JavaSE-1.7(jdk1.7.0_79)**。
-   2. 如果没有，请单击“已安装的 JRE”按钮。
-      
-         ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-5.png)
-   3. 在“已安装的 JRE”对话框中单击“添加”。
-      
-         ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-6.png)    
-   4. 在“JRE 类型”对话框中，选择“标准 VM”，然后单击“下一步”
-      
-         ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-7.png)    
-   5. 在“JRE 定义”对话框中，单击“目录”，然后导航到 JDK 7 安装位置，并选择 **jdk1.7.0_79** 的根文件夹。
-      
-         ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-8.png)    
-   6. 单击“完成” 。 在“已安装的 JRE”对话框中，选择新添加的 JRE，然后单击“确定”。
-      
-          ![Create Spark Scala application](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-9.png)
-   7. 新添加的 JRE 应在“执行环境”下列出。 单击“完成” 。
-      
-            ![Create Spark Scala application](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-10.png)
-6. 返回“库”选项卡，双击“Scala 库容器[2.11.8]”。 在“编辑库”对话框中，选择“固定的 Scala 库容器:2.10.6”。 
-   
-    ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-11.png)
-   
+
     单击“完成”，直至退出项目设置对话框。
 
+    **在 ADLS 群集上运行 Spark Scala 应用程序** 如果要将应用程序提交到 ADLS，必须选择“交互”模式以进行日志记录。 
+
+    ![创建 Spark Scala 应用程序身份验证](./media/hdinsight-apache-spark-eclipse-tool-plugin/Interactive-Authentication.png)
+
 ## <a name="create-a-scala-application-for-hdinsight-spark-cluster"></a>为 HDInsight Spark 群集创建 Scala 应用程序
+
 1. 在已打开的 Eclipse IDE 中，从“包资源管理器”展开之前创建的项目，右键单击“src”，指向“新建”，然后单击“其他”。
 2. 在“选择向导”对话框中，展开“Scala 向导”，单击“Scala 对象”，然后单击“下一步”。
    

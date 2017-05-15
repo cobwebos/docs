@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d517f434fe81617061d37a5b60f4e49806948005
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 63818878e01dd52a988e10a6e4f624638ea1cfae
+ms.contentlocale: zh-cn
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -91,7 +93,7 @@ ms.openlocfilehash: d517f434fe81617061d37a5b60f4e49806948005
 
 作为托管目录的管理员，你可以添加一个域，而该域恰好有一个关联的非托管目录。
 
-假设你是 IT 管理员并且已有 Contoso.com（你的组织注册的域名）的托管目录。 发现组织中的用户使用电子邮件域名 user@contoso.co.uk,（组织拥有的另一个域名）自助注册了某个产品。 这些用户当前在 contoso.co.uk 的非托管目录中拥有帐户。
+假设你是 IT 管理员并且已有 Contoso.com（你的组织注册的域名）的托管目录。 发现组织中的用户使用电子邮件域名 user@contoso.co.uk（组织拥有的另一个域名）自助注册了某个产品。 这些用户当前在 contoso.co.uk 的非托管目录中拥有帐户。
 
 你不希望管理两个独立的目录，因此，你要将 contoso.co.uk 的非托管目录合并到 contoso.com 的现有 IT 托管目录。
 
@@ -193,19 +195,14 @@ ms.openlocfilehash: d517f434fe81617061d37a5b60f4e49806948005
 
 ![][1]
 
-有关示例和如何使用这些参数的详细信息，请参阅 [Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx)。
+有关示例和如何使用这些参数的详细信息，请参阅 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)。
 
 ## <a name="see-also"></a>另请参阅
-* [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)
-* [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
-* [Azure Cmdlet 参考](https://msdn.microsoft.com/library/azure/jj554330.aspx)
-* [Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx)
+* [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
+* [Azure PowerShell](/powershell/azure/overview)
+* [Azure Cmdlet 参考](/powershell/azure/get-started-azureps)
+* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
