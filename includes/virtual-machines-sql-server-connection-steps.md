@@ -35,7 +35,7 @@
 3. 在控制台窗格中，单击“MSSQLSERVER 的协议”（默认实例名称）。在详细信息窗格中，右键单击“TCP”，然后单击“启用”（如果尚未启用）。
    
     ![启用 TCP](./media/virtual-machines-sql-server-connection-steps/10Enable-TCP.png)
-4. 在控制台窗格中，单击“SQL Server 服务”。 在详细信息窗格中，右键单击 **SQL Server (*实例名* ) **（默认实例为** SQL Server (MSSQLSERVER) **），然后单击** 重新启动** 以停止并重新启动该 SQL Server 实例。
+4. 在控制台窗格中，单击“SQL Server 服务”。 在详细信息窗格中，右键单击 **SQL Server (*实例名*) **（默认实例为** SQL Server (MSSQLSERVER)**），然后单击** 重新启动** 以停止并重新启动该 SQL Server 实例。
    
     ![重新启动数据库引擎](./media/virtual-machines-sql-server-connection-steps/11Restart.png)
 5. 关闭 SQL Server 配置管理器。
