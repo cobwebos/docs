@@ -4,7 +4,7 @@ description: "为新的实时应用程序手动设置 Application Insights 监�
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
 ms.service: application-insights
 ms.workload: tbd
@@ -12,10 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
 ms.openlocfilehash: f73a24993fdeaced422b2f7a1283722a82c2be77
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/13/2016
 
 
 ---
@@ -58,7 +60,7 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
 
 SDK 包含无需编写任何代码即可发送遥测数据的标准模块。 若要跟踪用户操作或更细致地诊断问题，请[使用 API][api] 发送自己的遥测数据。
 
-## <a name="a-namemonitorasee-telemetry-data"></a><a name="monitor"></a>查看遥测数据
+## <a name="monitor"></a>查看遥测数据
 关闭快速启动边栏选项卡，返回到 Azure 门户中的应用程序边栏选项卡。
 
 单击“搜索”磁贴查看[诊断搜索][diagnostic]，其中显示了前几个事件。 
@@ -80,10 +82,5 @@ SDK 包含无需编写任何代码即可发送遥测数据的标准模块。 若
 [diagnostic]: app-insights-diagnostic-search.md
 [metrics]: app-insights-metrics-explorer.md
 [start]: app-insights-overview.md
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

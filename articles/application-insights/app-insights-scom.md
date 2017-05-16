@@ -4,7 +4,7 @@ description: "如果你是 SCOM 用户，请监视性能并诊断 Application In
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 606e9d03-c0e6-4a77-80e8-61b75efacde0
 ms.service: application-insights
 ms.workload: tbd
@@ -12,10 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2016
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
 ms.openlocfilehash: 68ec072b972e38d8cd020adda4dcc85cdaccfb76
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -98,10 +100,5 @@ ms.openlocfilehash: 68ec072b972e38d8cd020adda4dcc85cdaccfb76
 * [诊断性能问题](app-insights-detect-triage-diagnose.md)
 * [功能强大的分析查询](app-insights-analytics.md)
 * [可用性 Web 测试](app-insights-monitor-web-app-availability.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

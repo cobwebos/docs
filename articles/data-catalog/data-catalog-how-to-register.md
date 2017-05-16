@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 25c2b279487f099a0e688621e63faaa4ed265e6e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -84,9 +86,4 @@ ms.openlocfilehash: 25c2b279487f099a0e688621e63faaa4ed265e6e
 
 ## <a name="see-also"></a>另请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程提供有关如何注册数据源的分步详细说明。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
