@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 15e72950ef30b8540d0303292fb9882f500c875e
 ms.openlocfilehash: 646a7611f5680a4c08e9a5f5ff4e2a3e5631276f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/24/2017
 
 

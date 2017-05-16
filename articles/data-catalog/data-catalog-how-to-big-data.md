@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 8cf7ea7ca69753c12469dff9dc352d616c276ddd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -67,9 +69,4 @@ ms.openlocfilehash: 8cf7ea7ca69753c12469dff9dc352d616c276ddd
 
 ## <a name="summary"></a>摘要
 使用 **Azure 数据目录** 注册数据源使其更易发现和理解。 通过注册和批注代表逻辑数据集的大数据和目录，可帮助用户发现和使用所需大数据源。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

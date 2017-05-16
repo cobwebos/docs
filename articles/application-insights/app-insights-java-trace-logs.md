@@ -12,10 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 086091bb3be6659436ec8e371acbe4b8e86bfacb
 ms.openlocfilehash: 3ef5f6240d7e4704118b86fb0cfee8cf502859ff
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/13/2016
 
 
 ---
@@ -168,10 +170,5 @@ Application Insights 追加器可由配置的任何记录器（而不一定是�
 [diagnostic]: app-insights-diagnostic-search.md
 [java]: app-insights-java-get-started.md
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

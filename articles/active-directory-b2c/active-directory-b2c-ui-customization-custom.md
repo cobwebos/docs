@@ -126,7 +126,7 @@ ms.lasthandoff: 05/02/2017
 
 1. 导航到 http://test-cors.org/ 并将 URL 粘贴到 `Remote URL` 字段中。
 1. 单击“发送请求”
-1. 如果收到错误，请确保“CORS 设置”正确。[](#configure-cors)  可能还需要清除浏览器缓存，或尝试建立专用浏览会话 `CTRL-SHIFT-P`。
+1. 如果收到错误，请确保[CORS 设置](#configure-cors)正确。  可能还需要清除浏览器缓存，或尝试建立专用浏览会话 `CTRL-SHIFT-P`。
 
 ## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>修改注册或登录自定义策略
 
