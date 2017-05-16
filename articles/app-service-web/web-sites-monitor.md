@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: byvinyal
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: d779170030b61540de2c0459e574a72cdc77f342
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
 
 
@@ -136,10 +137,10 @@ ms.lasthandoff: 02/16/2017
 * **天**粒度级的度量值将保留 **90 天**
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 门户中监视配额和度量值。
-可以在 [Azure 门户](https://portal.azure.com)中查看影响应用程序的各种**配额**和**度量值**。
+可以在 [Azure 门户](https://portal.azure.com) 中查看影响应用程序的各种 **配额** 和 **度量值** 。
 
-可以在“设置”>“配额”****下找到![][quotas]
-**配额**。 用户体验允许查看：(1) 配额名称、(2) 配额重置时间间隔、(3) 配额当前限制和 (4) 当前值。
+可以在“设置”>**配额** 下找到 ![][quotas]
+**配额** 。 用户体验允许查看：(1) 配额名称、(2) 配额重置时间间隔、(3) 配额当前限制和 (4) 当前值。
 
 可以直接从资源边栏选项卡中访问![][metrics]
 **度量值**。 还可以通过以下操作自定义图表：(1) **单击**图表，然后选择 (2)“编辑图表”。
