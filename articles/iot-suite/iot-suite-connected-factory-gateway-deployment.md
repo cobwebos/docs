@@ -34,7 +34,7 @@ ms.lasthandoff: 04/21/2017
 
 ### <a name="install-docker"></a>安装 Docker
 
-在基于 Windows 的网关设备上安装[适用于 Windows 的 Docker]。 在 Windows Docker 安装过程中，选择主机上的驱动器，以与 Docker 共享。 以下屏幕截图显示正在共享 Windows 系统上的 D 驱动器：
+在基于 Windows 的网关设备上安装 [适用于 Windows 的 Docker] 。 在 Windows Docker 安装过程中，选择主机上的驱动器，以与 Docker 共享。 以下屏幕截图显示正在共享 Windows 系统上的 D 驱动器：
 
 ![安装 Docker][img-install-docker]
 
@@ -144,7 +144,7 @@ ms.lasthandoff: 04/21/2017
 [img-hub-connection]: ./media/iot-suite-connected-factory-gateway-deployment/image2.png
 [img-docker-share]: ./media/iot-suite-connected-factory-gateway-deployment/image3.png
 
-[适用于 Windows 的 Docker]: https://www.docker.com/docker-windows（适用于 Windows 的 Docker）
+[适用于 Windows 的 Docker]: https://www.docker.com/docker-windows
 [Azure IoT 设备目录]: https://catalog.azureiotsuite.com/?q=opc
 [Azure 门户]: http://portal.azure.com/
 [开源 OPC UA 客户端]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
