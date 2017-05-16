@@ -3,7 +3,6 @@
 ## [选择版本](active-directory-editions.md)
 
 ## [关于 Azure 标识管理](identity-fundamentals.md)
-## [预览 Azure 门户体验](active-directory-preview-explainer.md)
 
 # 入门
 ## [获取 Azure AD 租户](active-directory-howto-tenant.md)
@@ -82,7 +81,7 @@
 ### [有风险的用户](active-directory-reporting-security-user-at-risk.md)
 ### [有风险的登录](active-directory-reporting-security-risky-sign-ins.md)
 ### [风险事件](active-directory-reporting-risk-events.md)
-### [命名网络](active-directory-known-networks-azure-portal.md)
+### [命名位置](active-directory-named-locations.md)
 ### [报告迁移](active-directory-reporting-migration.md)
 ### [保留](active-directory-reporting-retention.md)
 ### [延迟](active-directory-reporting-latencies-azure-portal.md)

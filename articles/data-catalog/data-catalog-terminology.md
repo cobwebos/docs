@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: e9e1009bc20679a907e4bd2387865a6000b4a898
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -82,9 +84,4 @@ Azure 数据目录中的数据配置文件是已注册数据资产相关的表�
 ## <a name="see-also"></a>另请参阅
 * [什么是 Azure 数据目录？](data-catalog-what-is-data-catalog.md) - 本文概述了 Azure 数据目录服务、它所提供的价值以及所支持的方案。
 * [ Azure 数据目录入门](data-catalog-get-started.md) - 本文提供了介绍如何使用 Azure 数据目录进行数据源发现的端到端教程。  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

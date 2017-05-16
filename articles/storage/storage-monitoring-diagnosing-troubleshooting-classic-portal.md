@@ -752,7 +752,7 @@ WireShark 将在 **packetlist** 窗口中突出显示存在的任何错误。 �
 
 ![][7]
 
-还可以选择查看 TCP 数据（如果应用程序层看到该数据），方法是右键单击 TCP 数据，然后选择“跟踪 TCP 流”。 在不使用捕获筛选器捕获转储时，此方法特别有用。 有关详细信息，请参阅“此处”。<a href="http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html" target="_blank"></a>
+还可以选择查看 TCP 数据（如果应用程序层看到该数据），方法是右键单击 TCP 数据，然后选择“跟踪 TCP 流”。 在不使用捕获筛选器捕获转储时，此方法特别有用。 有关详细信息，请参阅 <a href="http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html" target="_blank">此处</a>。
 
 ![][8]
 

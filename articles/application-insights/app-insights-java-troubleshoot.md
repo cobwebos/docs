@@ -4,7 +4,7 @@ description: "故障排除指南 - 使用 Application Insights 监视实时 Java
 services: application-insights
 documentationcenter: java
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: ef602767-18f2-44d2-b7ef-42b404edd0e9
 ms.service: application-insights
 ms.workload: tbd
@@ -12,10 +12,11 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4fc4561516490b9b285220e7ae688bf97384fe6e
 ms.openlocfilehash: 9164a93308a4a2f3eed4ff6262942239df029dae
+ms.contentlocale: zh-cn
 ms.lasthandoff: 12/17/2016
 
 

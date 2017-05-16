@@ -1,5 +1,6 @@
 # 概述
-## [Azure 监视器概述](monitoring-overview.md)
+## [跨 Azure 的监视工具](monitoring-overview.md)
+## [Azure Monitor](monitoring-overview-azure-monitor.md)
 ## [指标](monitoring-overview-metrics.md)
 ## [警报](monitoring-overview-alerts.md)
 ## [自动缩放](monitoring-overview-autoscale.md)
@@ -7,12 +8,14 @@
 ## [操作组](monitoring-action-groups.md)
 ## [诊断日志](monitoring-overview-of-diagnostic-logs.md)
 ## [合作伙伴集成](monitoring-partners.md)
-## [Azure 诊断](azure-diagnostics.md)
+## [Azure 诊断扩展](azure-diagnostics.md)
 
 
 # 入门
 ## [Azure 监视器入门](monitoring-get-started.md)
+## [自动缩放入门](monitoring-autoscale-get-started.md)
 ## [角色权限和安全](monitoring-roles-permissions-security.md)
+
 
 # 如何
 ## 使用警报
@@ -24,6 +27,8 @@
 ## 使用自动缩放
 ### [自动缩放最佳实践](insights-autoscale-best-practices.md)
 ### [自动缩放的常用指标](insights-autoscale-common-metrics.md)
+### [常见的自动缩放模式](monitoring-autoscale-common-scale-patterns.md)
+### [使用自定义指标自动缩放](monitoring-autoscale-scale-by-custom-metric.md)
 ### [使用 Resource Manager 模板自动缩放 VM 规模集](insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [自动缩放虚拟机规模集中的虚拟机](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [针对自动缩放配置 webhook 和电子邮件通知](insights-autoscale-to-webhook-email.md)
@@ -48,7 +53,7 @@
 ### [使用 Resource Manager 模板启用诊断设置](monitoring-enable-diagnostic-logs-using-template.md)
 ## 使用 REST API
 ### [REST API 用法演练](monitoring-rest-api-walkthrough.md)
-## 使用 Azure 诊断
+## 使用 Azure 诊断扩展
 ### [发送到 Application Insights](azure-diagnostics-configure-application-insights.md)
 ### [发送到事件中心](azure-diagnostics-streaming-event-hubs.md)
 ### [故障排除](azure-diagnostics-troubleshooting.md)

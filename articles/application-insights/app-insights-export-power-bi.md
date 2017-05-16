@@ -4,7 +4,7 @@ description: "可以在 Power BI 中显示分析查询。"
 services: application-insights
 documentationcenter: 
 author: noamben
-manager: douge
+manager: carmonm
 ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
 ms.workload: tbd
@@ -12,10 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 24ccafb4df95e0010416485199e19f81e1ae31aa
 ms.openlocfilehash: 11017c7c0a761569892aebcd085d5d3fb2d67a69
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -88,10 +90,5 @@ ms.openlocfilehash: 11017c7c0a761569892aebcd085d5d3fb2d67a69
 ## <a name="next-steps"></a>后续步骤
 * [Power BI - 学习](http://www.powerbi.com/learning/)
 * [Analytics 教程](app-insights-analytics-tour.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

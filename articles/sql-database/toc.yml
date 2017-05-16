@@ -43,6 +43,24 @@
     href: sql-database-security-tutorial.md
   - name: "4 - 提高 SQL DB 性能"
     href: sql-database-performance-tutorial.md
+  - name: "5 - 实现多租户应用"
+    href: sql-database-multi-tenant-application.md
+  - name: "6 - 部署多租户应用"
+    href: sql-database-saas-tutorial.md
+  - name: "7 - 预配/编录新租户"
+    href: sql-database-saas-tutorial-provision-and-catalog.md
+  - name: "8 - 监视性能"
+    href: sql-database-saas-tutorial-performance-monitoring.md
+  - name: "9 - 还原单个租户"
+    href: sql-database-saas-tutorial-restore-single-tenant.md
+  - name: "10 - 管理租户架构"
+    href: sql-database-saas-tutorial-schema-management.md
+  - name: "11 - 运行即席分析"
+    href: sql-database-saas-tutorial-adhoc-analytics.md
+  - name: "12 - 使用 Log Anaytics 进行监视"
+    href: sql-database-saas-tutorial-log-analytics.md
+  - name: "13 - 管理租户分析"
+
 - name: "示例"
   items:
   - name: "Azure CLI"
@@ -144,7 +162,7 @@
       href: sql-database-long-term-retention.md
     - name: "数据库恢复"
       href: sql-database-recovery-using-backups.md
-    - name: "异地复制"
+    - name: "自动故障转移和异地复制"
       href: sql-database-geo-replication-overview.md
     - name: "登录"
       href: sql-database-geo-replication-security-config.md

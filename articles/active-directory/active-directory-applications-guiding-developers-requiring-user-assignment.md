@@ -3,7 +3,7 @@ title: "要求进行用户分配 - Azure AD | Microsoft 文档"
 description: "如何要求对 Azure 应用程序进行用户分配。"
 services: active-directory
 documentationcenter: 
-author: IHenkel
+author: kgremban
 manager: femila
 editor: 
 ms.assetid: 30b78cba-1e0f-472f-8314-f2250a9b91c3
@@ -13,11 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
-ms.author: inhenk
-translationtype: Human Translation
+ms.author: kgremban
+robots: noindex
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
 ms.openlocfilehash: f5804d258c609f2bf289dcf4d173dc67137e7691
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/07/2017
 
 ---
 # <a name="azure-ad-and-applications-require-user-assignment"></a>Azure AD 和应用程序：要求进行用户分配
@@ -35,9 +37,4 @@ ms.openlocfilehash: f5804d258c609f2bf289dcf4d173dc67137e7691
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
