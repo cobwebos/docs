@@ -17,10 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: cfowler;mahender;glenga
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: 045ec40811468eeffb25ed28ec5bfc84f074c19d
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7fcf35b99cc410655f2a3b9b6961f5e3bef3aeb5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -57,10 +58,10 @@ Functions 提供模板，以帮助用户从主要方案开始，包括以下模�
 
 Azure Functions 支持 *触发器*（用于启动代码执行）和*绑定*（用于简化针对输入和输出数据进行的编码）。 有关 Azure Functions 提供的触发器和绑定的详细说明，请参阅 [Azure Functions 触发器和绑定开发人员参考](functions-triggers-bindings.md)。
 
-## <a name="a-nameintegrationsaintegrations"></a><a name="integrations"></a>集成
+## <a name="integrations"></a>集成
 Azure Functions 可与各种 Azure 和第三方服务集成。 这些服务可以触发函数开始执行，或者可用作代码的输入和输出。 Azure Functions 支持以下服务集成。 
 
-* Azure DocumentDB
+* Azure Cosmos DB
 * Azure 事件中心 
 * Azure 移动应用（表）
 * Azure 通知中心
@@ -70,7 +71,7 @@ Azure Functions 可与各种 Azure 和第三方服务集成。 这些服务可�
 * 本地（使用服务总线）
 * Twilio（短信）
 
-## <a name="a-namepricingahow-much-does-functions-cost"></a><a name="pricing"></a>Functions 的费用是多少？
+## <a name="pricing"></a>Functions 的费用是多少？
 Azure Functions 具有以下两种定价计划，请选择最适合需要的一种： 
 
 * **使用计划** - 用户的函数运行时，Azure 提供所有所需的计算资源。 用户不必担心资源管理，只需为自己的代码运行的时间付费。 

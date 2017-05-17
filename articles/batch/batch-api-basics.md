@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 03/27/2017
+ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: c3ed30ec43128c4e2b0e3d7e4b5dd61670e6bb52
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f8279eb672e58c7718ffb8e00a89bc1fce31174f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -77,13 +77,12 @@ ms.lasthandoff: 05/08/2017
 批处理支持两种帐户配置，二者都基于“池分配模式”属性。 这两个配置允许你访问与批处理[池](#pool)相关的不同功能（见本文后面部分）。
 
 
-* **批处理服务**：这是默认选项，将批处理池 VM 分配到 Azure 托管的订阅的幕后。 如果云服务池是必需的，则必须使用此帐户配置；但如果虚拟机池是必须的，而这些池是从自定义 VM 映像创建的，或者使用虚拟网络，则不能使用此帐户配置。 可以通过共享密钥身份验证或 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API。
+* **批处理服务**：这是默认选项，将批处理池 VM 分配到 Azure 托管的订阅的幕后。 如果云服务池是必需的，则必须使用此帐户配置；但如果虚拟机池是必须的，而这些池是从自定义 VM 映像创建的，或者使用虚拟网络，则不能使用此帐户配置。 可以通过共享密钥身份验证或 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API。 可以在 Batch 服务帐户配置中使用池中的专用计算节点或低优先级计算节点。
 
-* **用户订阅**：如果虚拟机池是必须的，而这些池是从自定义 VM 映像创建的，或者使用虚拟网络，则必须使用此帐户配置。 只能使用 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API，云服务池不受支持。 批处理计算 VM 是在 Azure 订阅中直接分配的。 此模式要求你为批处理帐户设置 Azure 密钥保管库。
-
+* **用户订阅**：如果虚拟机池是必须的，而这些池是从自定义 VM 映像创建的，或者使用虚拟网络，则必须使用此帐户配置。 只能使用 [Azure Active Directory 身份验证](batch-aad-auth.md)访问批处理 API，云服务池不受支持。 批处理计算 VM 是在 Azure 订阅中直接分配的。 此模式要求你为批处理帐户设置 Azure 密钥保管库。 只能在用户订阅帐户配置中使用池中的专用计算节点。 
 
 ## <a name="compute-node"></a>计算节点
-计算节点是专门用于处理一部分应用程序工作负荷的 Azure 虚拟机 (VM)。 节点大小确定了 CPU 核心数目、内存容量，以及分配给节点的本地文件系统大小。 可以使用 Azure 云服务或虚拟机应用商店映像创建的 Windows 或 Linux 节点池。 有关这些选项的详细信息，请参阅下面的 [池](#pool) 部分。
+计算节点是专门用于处理一部分应用程序工作负荷的 Azure 虚拟机 (VM) 或云服务 VM。 节点大小确定了 CPU 核心数目、内存容量，以及分配给节点的本地文件系统大小。 可以使用 Azure 云服务或虚拟机应用商店映像创建的 Windows 或 Linux 节点池。 有关这些选项的详细信息，请参阅下面的 [池](#pool) 部分。
 
 节点可以运行节点操作系统环境支持的任何可执行文件或脚本。 这包括适用于 Windows 的 \*.exe、\*.cmd、\*.bat 和 PowerShell 脚本，以及适用于 Linux 的二进制文件、shell 和 Python 脚本。
 
@@ -117,6 +116,25 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
   * *OS 系列* 还确定了要与操作系统一起安装哪些版本的 .NET。
   * 与云服务中的辅助角色一样，可以指定 *OS 版本*（有关辅助角色的详细信息，请参阅 [Cloud Services overview](../cloud-services/cloud-services-choose-me.md)（云服务概述）中的 [Tell me about cloud services](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services)（介绍云服务）部分）。
   * 与辅助角色一样，对于 *OS 版本*，建议指定 `*`，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 *OS 版本*并安装新的操作系统映像 – 所有正在运行的任务将会中断并重新排队。
+
+* **计算节点类型**和**目标节点数**
+
+    创建池时，可以指定所需的计算节点类型和每种类型的目标节点数。 有两种类型的计算节点：
+
+    - **低优先级计算节点**。 低优先级节点利用 Azure 中的多余容量运行 Batch 工作负荷。 低优先级节点比专用节点更经济高效，可支持需要大量计算能力的工作负荷。 有关详细信息，请参阅[在 Batch 中使用低优先级 VM](batch-low-pri-vms.md)。
+
+        当 Azure 的多余容量不足时，低优先级计算节点可能会被抢占。 如果某个节点在运行任务时被抢占，这些任务将重新排队并在计算节点重新变为可用后，重新运行。 对于作业完成时间很灵活且工作分布在多个节点上的工作负荷来说，低优先级节点是一个很好选择。
+
+        低优先级计算节点仅适用于创建时将池分配模式设置为“Batch 服务”的 Batch 帐户。
+
+    - **专用计算节点**。 专用计算节点将为工作负荷保留。 它们比低优先级节点开销高，但可确保永远不会被抢占。    
+
+    在同一池中可同时有低优先级计算节点和专用计算节点。 每种类型的节点 &mdash; 低优先级节点和专用节点 &mdash; 都有其自己的目标设置，你可以为其指定所需的节点数。 
+        
+    计算节点数之所以称为*目标*，是因为在某些情况下，池可能无法达到所需的节点数。 例如，如果池先达到了 Batch 帐户的[核心配额](batch-quota-limit.md)，则该池可能达不到目标。 或者，如果已将限制最大节点数的自动缩放公式应用于池，则该池也可能达不到目标。
+
+    有关低优先级计算节点和专用计算节点的定价信息，请参阅 [Batch 定价](https://azure.microsoft.com/pricing/details/batch/)。
+
 * **节点大小**
 
     **Sizes for Cloud Services** （云服务的大小）中列出了 [云服务配置](../cloud-services/cloud-services-sizes-specs.md)计算节点大小。 批处理支持 `ExtraSmall`、`STANDARD_A1_V2`、`STANDARD_A2_V2` 以外的所有云服务大小。
@@ -126,12 +144,11 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
     选择计算节点大小时，请考虑要在节点上运行的应用程序的特征和要求。 考虑应用程序是否是多线程的以及其消耗的内存量等因素有助于确定最合适且经济高效的节点大小。 通常，选择节点大小时会假设某个任务要在节点上运行一次。 但是，在作业执行期间，可能有多个任务（因而有多个应用程序实例）在计算节点上[并行运行](batch-parallel-node-tasks.md)。 在此情况下，往往会选择较大的节点大小，以满足更高的并行任务执行需求。 有关详细信息，参阅[任务计划策略](#task-scheduling-policy)。
 
     池中所有节点的大小相同。 如果打算运行具有不同系统要求和/或负载级别的应用程序，建议使用不同的池。
-* **节点目标数目**
 
-    这是你要在池中部署的计算节点数目。 之所以称为 *目标* ，是因为在某些情况下，池可能无法达到所需的节点数目。 如果池已达到 Batch 帐户的 [核心配额](batch-quota-limit.md) ，或应用到池的自动缩放公式限制了最大节点数（请参阅下面的“缩放策略”部分），则池无法达到所需节点数目。
 * **缩放策略**
 
     对于动态工作负荷，可编写[自动缩放公式](#scaling-compute-resources)并将其应用到池中。 Batch 服务将定期计算该公式，并根据可以指定的各个池、作业、和任务参数，调整池中的节点数目。
+
 * **任务计划策略**
 
     [每个节点的最大任务数](batch-parallel-node-tasks.md) 配置选项确定了可以在池中每个计算节点上并行运行的最大任务数。
