@@ -14,10 +14,11 @@ ms.devlang: na
 ms.date: 04/18/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 3c5520f30b75c0e0a2b1aee890f79d01d325d543
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 745e115409a5b1e5e4f343ca0a5bb922272d3020
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -184,7 +185,7 @@ VS Code 会再次帮助你，为你建议可用的函数。
 
 ![显示函数](./media/resource-manager-create-first-template/show-functions.png)
 
-请注意，函数括在方括号中。 [resourceGroup](resource-group-template-functions.md#resourcegroup) 函数返回一个对象，其中包含的属性名为 `location`。 资源组包含解决方案的所有相关资源。 可以将 location 属性硬编码为某个值（例如 "Central US"），但这样就必须手动更改模板才能重新部署到其他位置。 使用 `resourceGroup` 函数，则可以方便地将该模板重新部署到其他位置的其他资源组。
+请注意，函数括在方括号中。 [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) 函数返回一个对象，其中包含的属性名为 `location`。 资源组包含解决方案的所有相关资源。 可以将 location 属性硬编码为某个值（例如 "Central US"），但这样就必须手动更改模板才能重新部署到其他位置。 使用 `resourceGroup` 函数，则可以方便地将该模板重新部署到其他位置的其他资源组。
 
 模板现在如下所示：
 
@@ -216,7 +217,7 @@ VS Code 会再次帮助你，为你建议可用的函数。
 ## <a name="add-parameters-and-variables"></a>添加参数和变量
 模板中只剩下两个可以设置的值 - **name** 和 **sku.name**。 对于这些属性，可以添加参数，以便在部署过程中自定义这些值。 
 
-存储帐户名称有多种限制，因此难以设置。 该名称必须为 3 到 24 个字符，只能使用数字和小写字母，而且必需唯一。 可以使用 [uniqueString](resource-group-template-functions.md#uniquestring) 函数生成一个哈希值，不必试着去猜测一个符合限制条件的唯一值。 为了让该哈希值看起来更有意义，可以添加一个前缀，以便在部署后能够将其标识为存储帐户。 
+存储帐户名称有多种限制，因此难以设置。 该名称必须为 3 到 24 个字符，只能使用数字和小写字母，而且必需唯一。 可以使用 [uniqueString](resource-group-template-functions-string.md#uniquestring) 函数生成一个哈希值，不必试着去猜测一个符合限制条件的唯一值。 为了让该哈希值看起来更有意义，可以添加一个前缀，以便在部署后能够将其标识为存储帐户。 
 
 1. 若要为名称传入一个符合命名约定的前缀，请转到模板的 **parameters** 节。 向模板添加一个接受存储帐户名称前缀的参数：
 
