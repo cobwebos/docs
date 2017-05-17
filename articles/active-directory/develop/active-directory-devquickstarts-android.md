@@ -3,7 +3,7 @@ title: "Azure AD Android 入门 | Microsoft 文档"
 description: "如何构建一个与 Azure AD 集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 Android 应用程序。"
 services: active-directory
 documentationcenter: android
-author: xerners
+author: brandwe
 manager: mbaldwin
 editor: 
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
@@ -14,9 +14,10 @@ ms.devlang: java
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: xerners
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 590e2bc759567cf3d679e261592dff1e699ba295
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 

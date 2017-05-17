@@ -4,7 +4,7 @@ description: "可从 Azure Active Directory 查看和下载的已审核事件"
 services: active-directory
 documentationcenter: 
 author: dhanyahk
-manager: mbaldwin
+manager: femila
 editor: 
 ms.assetid: 307eedf7-05bc-448d-a84d-bead5a4c5770
 ms.service: active-directory
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2016
+ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6950072b8970dfc1b80674efe0be6cb7496fd5ce
 ms.openlocfilehash: 2dda60160bbcaa729bc8e5cec4f47efc10d120cf
+ms.contentlocale: zh-cn
 ms.lasthandoff: 12/29/2016
 
 
