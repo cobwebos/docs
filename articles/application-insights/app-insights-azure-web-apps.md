@@ -11,12 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/30/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: c6f25b8cf8c133f44644db1507958b2176efa230
-ms.lasthandoff: 04/13/2017
+ms.date: 05/05/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: da09e09bb0605da583716e125f5d961bfb7af0c7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -40,9 +41,19 @@ ms.lasthandoff: 04/13/2017
 2. 安装 Application Insights 后，可以**检测 Web 应用**。 
    
     ![检测 Web 应用](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
+
+   为页面视图和用户遥测**启用客户端监视**。
+
+   * 选择“设置”>“应用程序设置”
+   * 在“应用设置”下添加新的键/值对： 
+   
+    键：`APPINSIGHTS_JAVASCRIPT_ENABLED` 
+    
+    值：`true`
+   * **保存**设置并**重新启动**应用。
 3. **监视应用**。  [浏览数据](#explore-the-data)。
 
-以后，可以根据需要使用 Application Insights 来生成和重新部署应用。
+以后，可以根据需要使用 Application Insights 生成应用。
 
 *如何删除 Application Insights 或改为发送到另一个资源？*
 
@@ -104,6 +115,7 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 
 ## <a name="next-steps"></a>后续步骤
 * [在实时应用上运行探查器](app-insights-profiler.md)。
+* [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 监视 Azure Functions
 * [将 Azure 诊断配置为](app-insights-azure-diagnostics.md)向 Application Insights 发送数据。
 * [监视服务运行状况指标](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且做出快速响应。
 * 每当操作事件发生或指标超过阈值时[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。

@@ -3,21 +3,21 @@ title: "通过 Azure 应用商店创建 Web 应用 | Microsoft Docs"
 description: "了解如何使用 Azure 门户从 Azure 应用商店创建新的 WordPress Web 应用。"
 services: app-service\web
 documentationcenter: 
-author: rmcmurray
+author: sunbuild
 manager: erikre
 editor: 
-ms.assetid: 972a296d-f927-470b-8534-0f2cb9eac223
 ms.service: app-service-web
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 04/25/2017
-ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: a04c7129cd2e16c129f3e4b8e8e40f76ff37114d
-ms.lasthandoff: 02/16/2017
+ms.topic: article
+ms.date: 05/10/2017
+ms.author: sunbuild
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 9515a2ff614161cd28ad80b26ff793f81e41b9a3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -26,144 +26,138 @@ ms.lasthandoff: 02/16/2017
 
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划开发的各种流行 Web 应用。 例如，WordPress、Umbraco CMS、Drupal 等。这些 Web 应用基于各种常用的框架，例如此 WordPress 示例中的 [PHP]，以及 [.NET]、[Node.js]、[Java]、[Python] 等。 若要从 Azure 应用商店创建 Web 应用，唯一需要的软件就是用于浏览 [Azure 门户]的浏览器。
+Azure 应用商店提供开放源代码软件社区开发的各种流行 Web 应用，例如 WordPress 和 Umbraco CMS。 在本教程中，你将了解如何通过 Azure 应用商店创建 WordPress 应用，
+具体而言，如何创建 Azure Web 应用和 MySQL 数据库。 
 
-在本教程中，你将了解如何：
+![示例 WordPress Web 应用仪表板](./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png)
 
-* 在 Azure App Service 中查找和创建基于 Azure 应用商店模板的 Web 应用。
-* 配置适用于新 Web 应用的 Azure App Service 设置。
-* 启动和管理 Web 应用。
+## <a name="before-you-begin"></a>开始之前 
 
-在本教程中，你将从 Azure 应用商店部署一个 WordPress 博客站点。 完成本教程中的步骤后，你将在云中启动并运行自己的 WordPress 站点。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-![示例 WordPress Wep 应用仪表板][WordPressDashboard1]
+## <a name="deploy-from-azure-marketplace"></a>从 Azure 应用商店部署
+遵循以下步骤通过 Azure 应用商店部署 WordPress。
 
-在本教程中部署的 WordPress 站点使用 MySQL 作为数据库。 如果想要改用 SQL 数据库作为数据库，请参阅 [Project Nami]（Nami 项目），Azure 应用商店中也提供了该项目。
+### <a name="sign-in-to-azure"></a>登录 Azure
+登录到 [Azure 门户](https://portal.azure.com)。
+
+### <a name="deploy-wordpress-template"></a>部署 WordPress 模板
+Azure 应用商店提供用于设置资源的模板。我们首先设置 [WordPress](https://portal.azure.com/#create/WordPress.WordPress) 模板。
+   
+输入以下信息部署 WordPress 应用及其资源。
+
+  ![WordPress 创建流](./media/app-service-web-create-web-app-from-marketplace/wordpress-portal-create.png)
+
+
+| 字段         | 建议的值           | 说明  |
+| ------------- |-------------------------|-------------|
+| 应用程序名称      | mywordpressapp          | 在“Web 应用名称”中输入唯一的应用名称。 此名称将用作应用 `<app_name>.azurewebsites.net` 的默认 DNS 名称的一部分，因此，需要在 Azure 中的所有应用之间保持唯一。 稍后，可以先将自定义域名映射到应用，然后向用户公开该域名 |
+| 订阅  | 即用即付             | 选择一个“订阅” 。 如果你有多个订阅，请选择适当的订阅。 |
+| 资源组| mywordpressappgroup                 |    输入一个**资源组**。 资源组是在其中部署和管理 Azure 资源（如 Web 应用和数据库）的逻辑容器。 可以创建一个资源组，或使用现有的资源组 |
+| 应用服务计划 | myappplan          | 应用服务计划代表用于托管应用的物理资源的集合。 选择“位置”和“定价层”。 有关价格的详细信息，请参阅[应用服务定价层](https://azure.microsoft.com/pricing/details/app-service/)。 |
+| 数据库      | mywordpressapp          | 为 MySQL 选择相应的数据库提供程序。 Web 应用支持 **ClearDB**、**用于 MySQL 的 Azure 数据库**和 **MySQL 应用内产品**。 有关详细信息，请参阅下面的[数据库配置](#database-config)部分。 |
+| Application Insights | “打开”或“关闭”          | 这是可选的。 如果单击“打开”，[Application Insights](https://azure.microsoft.com/en-us/services/application-insights/) 将为 Web 应用提供监视服务。|
+
+<a name="database-config"></a>
+
+### <a name="database-configuration"></a>数据库配置
+根据所选的 MySQL 数据库提供程序执行以下步骤。  建议将 Web 应用和 MySQL 数据库部署在同一位置。
+
+#### <a name="cleardb"></a>ClearDB 
+[ClearDB](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SuccessBricksInc.ClearDBMySQLDatabase?tab=Overview) 是适用于 Azure 中完全集成的 MySQL 服务的第三方解决方案。 若要使用 ClearDB 数据库，需要将信用卡关联到你的 [Azure 帐户](http://account.windowsazure.com/subscriptions)。 如果选择了 ClearDB 数据库提供程序，可以查看现有数据库的列表并从中选择数据库，或者单击“新建”按钮创建数据库。
+
+![ClearDB 创建](./media/app-service-web-create-web-app-from-marketplace/mysqldbcreate.png)
+
+#### <a name="azure-database-for-mysql-preview"></a>用于 MySQL 的 Azure 数据库（预览版）
+[用于 MySQL 的 Azure 数据库](https://azure.microsoft.com/en-us/services/mysql)提供针对应用开发和部署的托管数据库服务，可用于在最信任的云中数分钟内构建 MySQL 数据库并即时缩放。 通过组合定价模式，可获得所需的全部功能（如高可用性、安全性和恢复功能）- 功能均内置且无额外成本。 单击“定价层”选择其他[定价层](https://azure.microsoft.com/pricing/details/mysql)。 若要使用现有的数据库或现有的 MySQL 服务器，请使用服务器所在的现有资源组。 
+
+![配置 Web 应用的数据库设置](./media/app-service-web-create-web-app-from-marketplace/wordpress-azure-database.PNG)
 
 > [!NOTE]
-> 若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益][activate]，或[注册免费试用帐户][free trial]。
-> 
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [试用应用服务]。 在那里，可立刻在应用服务中创建短期的入门级 Web 应用 -- 无需信用卡，也无需做出承诺。
-> 
-> 
+>  用于 MySQL 的 Azure 数据库（预览版）和 Linux 上的 Web 应用（预览版）并未在所有区域推出。 详细了解[用于 MySQL 的 Azure 数据库（预览版）](https://docs.microsoft.com/en-us/azure/mysql)和 [Linux 上的 Web 应用](./app-service-linux-intro.md)限制。 
 
-## <a name="find-and-create-a-web-app-in-azure-app-service"></a>在 Azure App Service 中查找和创建 Web 应用
-1. 登录到 [Azure 门户]。
-2. 单击“新建” 。
-   
-    ![创建新的 Azure 资源][MarketplaceStart]
-3. 搜索“WordPress”，然后单击“WordPress”。 （如果想使用 SQL 数据库来代替 MySQL，则搜索“Project Nami”。）
-   
-    ![在应用商店中搜索 WordPress][MarketplaceSearch]
-4. 阅读完 WordPress 应用的说明后，单击“创建”。
-   
-    ![创建 WordPress Web 应用][MarketplaceCreate]
+#### <a name="mysql-in-app"></a>MySQL 应用内产品
+[MySQL 应用内产品](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)是应用服务的一项功能，可实现在平台本地运行 MySql。 该功能版本支持的核心功能：
 
-## <a name="configure-azure-app-service-settings-for-your-new-web-app"></a>配置适用于新 Web 应用的 Azure App Service 设置。
-1. 创建新的 Web 应用后，将显示 WordPress 设置边栏选项卡，你可以使用它来完成以下步骤：
-   
-    ![配置 WordPress Web 应用设置][ConfigStart]
-2. 在“Web 应用”框中输入 Web 应用的名称。
-   
-    该名称在 azurewebsites.net 域中必须是唯一的，因为 Web 应用的 URL 将是 *{name}*.azurewebsites.net。 如果你输入的名称不是唯一的，则会在文本框中显示一个红色的感叹号。
-   
-    ![配置 WordPress Web 应用名称][ConfigAppName]
-3. 如果你有多个订阅，请选择要使用的那一个。
-   
-    ![配置 Web 应用的订阅][ConfigSubscription]
-4. 选择“资源组”或新建一个。
-   
-    有关资源组的详细信息，请参阅 [Azure Resource Manager 概述][ResourceGroups]。
-   
-    ![配置 Web 应用的资源组][ConfigResourceGroup]
-5. 选择“应用服务计划/位置”或新建一个。
-   
-    有关应用服务计划的详细信息，请参阅 [Azure 应用服务计划概述][AzureAppServicePlans]。
-   
-    ![配置 Web 应用的服务计划][ConfigServicePlan]
-6. 单击“数据库”，然后在“新建 MySQL 数据库”边栏选项卡中提供配置 MySQL 数据库所需的值。
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 输入新名称或保留默认名称。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 保留“数据库类型”设置，即设置为“共享”。
-   
-    c. 选择的位置与你为 Web 应用选择的位置一样。
-   
-    d. 选择一个定价层。 **Mercury** - 免费提供最少数量的连接和最少容量的磁盘空间 - 对于本教程已足够。
-   
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。
-   
-    ![配置 Web 应用的数据库设置][ConfigDatabase]
-7. 在“WordPress”边栏选项卡中，接受法律条款，然后单击“创建”。
-   
-    ![完成 Web 应用设置并单击“确定”][ConfigFinished]
-   
-    Azure App Service 通常在不到一分钟内创建好 Web 应用。 你可以单击门户页顶部的铃铛图标来观看进度。
-   
-    ![进度指示器][ConfigProgress]
+- 托管站点的 Web 服务器与 MySQL 服务器在同一个实例上并行运行。 这可以大幅提升应用程序的性能。
+- 存储在 MySQL 和 Web 应用文件之间共享。 请注意，如果使用“免费”和“共享”计划，根据执行的操作，在使用站点时可能会达到配额限制。 请查看“免费”和“共享”计划的[配额限制](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)。
+- 可为 MySQL 启用慢速查询日志记录和常规日志记录。 请注意，这可能会影响站点性能，不应一直启用此选项。 日志记录功能可帮助调查任何应用程序问题。 
 
-## <a name="launch-and-manage-your-wordpress-web-app"></a>启动和管理你的 WordPress Web 应用
-1. 创建完 Web 应用以后，请在 Azure 门户中导航到你在其中创建了应用程序的资源组，你可以看到 Web 应用和数据库。
-   
-    带灯泡图标的额外资源是 [Application Insights][ApplicationInsights]，提供适用于 Web 应用的监视服务。
-2. 在“资源组”边栏选项卡中，单击 Web 应用行。
-   
-    ![选择 WordPress Web 应用][WordPressSelect]
-3. 在“Web 应用”边栏选项卡中，单击“浏览”。
-   
-    ![浏览到你的 WordPress Web 应用][WordPressBrowse]
-4. 如果系统提示你选择 WordPress 博客的语言，请选择所需的语言，然后单击“继续”。
-   
-    ![配置 WordPress Web 应用的语言][WordPressLanguage]
-5. 在 WordPress 的“欢迎”页中，输入 WordPress 所需的配置信息，然后单击“安装 WordPress”。
-   
-    ![配置 WordPress Web 应用的设置][WordPressConfigure]
-6. 使用在“欢迎”页中创建的凭据登录。  
-7. 随后将打开站点的“仪表板”页，其中显示了你提供的信息。    
-   
-    ![查看 WordPress 仪表板][WordPressDashboard2]
+有关详细信息，请查看[此文](https://blogs.msdn.microsoft.com/appserviceteam/2016/08/18/announcing-mysql-in-app-preview-for-web-apps/ )
+
+![MySQL 应用内管理](./media/app-service-web-create-web-app-from-marketplace/mysqlinappmanage.PNG)
+
+部署 WordPress 应用时，单击门户页顶部的铃铛图标可以观察进度。    
+![进度指示器](./media/app-service-web-create-web-app-from-marketplace/deploy-success.png)
+
+## <a name="manage-your-new-azure-web-app"></a>管理新 Azure Web 应用
+
+转到 Azure 门户，查看刚刚创建的 Web 应用。
+
+为此，请登录到 [https://portal.azure.com](https://portal.azure.com)。
+
+从左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
+
+![在门户中导航到 Azure Web 应用](./media/app-service-web-create-web-app-from-marketplace/nodejs-docs-hello-world-app-service-list.png)
+
+
+现已进入 Web 应用的_边栏选项卡_（水平打开的门户页）。
+
+默认情况下，Web 应用的边栏选项卡显示“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 边栏选项卡左侧的选项卡显示可以打开的不同配置页。
+
+![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-create-web-app-from-marketplace/nodejs-docs-hello-world-app-service-detail.png)
+
+边栏选项卡中的这些选项卡显示了可添加到 Web 应用的许多强大功能。 以下列表只是列出了一部分可用的功能：
+
+* 映射自定义 DNS 名称
+* 绑定自定义 SSL 证书
+* 配置持续部署
+* 扩展和缩减
+* 添加用户身份验证
+
+花费 5 分钟时间完成 WordPress 安装向导来安装一个正常运行的 WordPress 应用。 若要开发 Web 应用，请查看 [Wordpress 文档](https://codex.WordPress.org/)。
+
+![Wordpress 安装向导](./media/app-service-web-create-web-app-from-marketplace/wplanguage.png)
+
+## <a name="configuring-your-app"></a>配置应用 
+在将 WordPress 应用用于生产之前，需要执行多个涉及到管理该应用的步骤。 请遵循以下步骤来配置和管理 WordPress 应用：
+
+| 要执行以下操作... | 请使用以下方法... |
+| --- | --- |
+| **上载或存储大型文件** |[用于使用 Blob 存储的 WordPress 插件](https://wordpress.org/plugins/windows-azure-storage/)|
+| **发送电子邮件** |购买 [SendGrid](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SendGrid.SendGrid?tab=Overview) 电子邮件服务，并通过[用于使用 SendGrid 的 WordPress 插件](https://wordpress.org/plugins/sendgrid-email-delivery-simplified/)对其进行配置|
+| **自定义域名** |[在 Azure 应用服务中配置自定义域名](app-service-web-tutorial-custom-domain.md) |
+| **HTTPS** |[在 Azure 应用服务中为 Web 应用启用 HTTPS](app-service-web-tutorial-custom-ssl.md) |
+| **预生产验证** |[为 Azure 应用服务中的 Web 应用设置过渡和开发环境](web-sites-staged-publishing.md)|
+| **监视和故障排除** |[在 Azure 应用服务中启用 Web 应用的诊断日志](web-sites-enable-diagnostic-log.md)和[在 Azure 应用服务中监视 Web 应用](app-service-web-tutorial-monitoring.md) |
+| **部署站点** |[在 Azure 应用服务中部署 Web 应用](app-service-deploy-local-git.md) |
+
+
+## <a name="secure-your-app"></a>保护应用 
+在将 WordPress 应用用于生产之前，需要执行多个涉及到管理该应用的步骤。 请遵循以下步骤来配置和管理 WordPress 应用：
+
+| 要执行以下操作... | 请使用以下方法... |
+| --- | --- |
+| **强用户名和密码**|  经常更改密码。 不要使用常用的用户名，例如 *admin* 或 *wordpress* 等。强制所有 WordPress 用户使用唯一的用户名和强密码。 |
+| **保持最新状态** | 使 WordPress 的核心、主题和插件保持最新状态。 使用 Azure 应用服务中提供的最新 PHP 运行时 |
+| **更新 WordPress 安全密钥** | 更新 [WordPress 安全密钥](https://codex.wordpress.org/Editing_wp-config.php#Security_Keys)，改善 Cookie 中存储的加密数据|
+
+## <a name="improve-performance"></a>提高性能
+云中的性能主要通过缓存和横向扩展实现。 但是，还应考虑托管 Web 应用的内存、带宽和其他属性。
+
+| 要执行以下操作... | 请使用以下方法... |
+| --- | --- |
+| **了解应用服务实例功能** |[定价详细信息，包括应用服务层的功能](https://azure.microsoft.com/en-us/pricing/details/app-service/)|
+| **缓存资源** |用 [Azure Redis 缓存](https://azure.microsoft.com/en-us/services/cache/)，或 [Azure 应用商店](https://azuremarketplace.microsoft.com)中的其他缓存产品之一 |
+| **缩放应用程序** |需要缩放 [Azure 应用服务中的 Web 应用](web-sites-scale.md)和/或 MySQL 数据库。 MySQL 应用内产品不支持横向扩展，因此请选择 ClearDB 或用于 MySQL 的 Azure 数据库（预览版）。 [缩放用于 MySQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/en-us/pricing/details/mysql/)，如果使用 [ClearDB 高可用性路由](http://w2.cleardb.net/faqs/)，请扩展数据库 |
+
+## <a name="availability-and-disaster-recovery"></a>可用性和灾难恢复
+高可用性包括可保持业务连续性的灾难恢复。 针对云中的故障和灾难进行规划要求迅速识别故障。 这些解决方案可以帮助实施某种策略来实现高可用性。
+
+| 要执行以下操作... | 请使用以下方法... |
+| --- | --- |
+| **对站点进行负载均衡**或**对站点进行地理分配** |[使用 Azure 流量管理器路由流量](https://azure.microsoft.com/en-us/services/traffic-manager/) |
+| **备份和还原** |[在 Azure 应用服务中备份 Web 应用](web-sites-backup.md)和[在 Azure 应用服务中还原 Web 应用](web-sites-restore.md) |
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已了解如何从 Azure 应用商店创建和部署一个示例 Web 应用。
-
-有关如何使用应用服务 Web 应用的详细信息，请参阅页面左侧（针对宽屏浏览器窗口）或页面顶部（针对窄屏浏览器窗口）的链接。
-
-有关在 Azure 上开发 WordPress Web 应用的详细信息，请参阅[在 Azure 应用服务中开发 WordPress][WordPressOnAzure]。
-
-<!-- URL List -->
-
-[PHP]: https://azure.microsoft.com/develop/php/
-[.NET]: https://azure.microsoft.com/develop/net/
-[Node.js]: https://azure.microsoft.com/develop/nodejs/
-[Java]: https://azure.microsoft.com/develop/java/
-[Python]: https://azure.microsoft.com/develop/python/
-[activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
-[free trial]: https://azure.microsoft.com/pricing/free-trial/
-[试用应用服务]: https://azure.microsoft.com/try/app-service/
-[ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
-[AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
-[ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
-[Azure 门户]: https://portal.azure.com/
-[Project Nami]: http://projectnami.org/
-[WordPressOnAzure]: ./develop-wordpress-on-app-service-web-apps.md
-
-<!-- IMG List -->
-
-[MarketplaceStart]: ./media/app-service-web-create-web-app-from-marketplace/marketplacestart.png
-[MarketplaceSearch]: ./media/app-service-web-create-web-app-from-marketplace/marketplacesearch.png
-[MarketplaceCreate]: ./media/app-service-web-create-web-app-from-marketplace/marketplacecreate.png
-[ConfigStart]: ./media/app-service-web-create-web-app-from-marketplace/configstart.png
-[ConfigAppName]: ./media/app-service-web-create-web-app-from-marketplace/configappname.png
-[ConfigSubscription]: ./media/app-service-web-create-web-app-from-marketplace/configsubscription.png
-[ConfigResourceGroup]: ./media/app-service-web-create-web-app-from-marketplace/configresourcegroup.png
-[ConfigServicePlan]: ./media/app-service-web-create-web-app-from-marketplace/configserviceplan.png
-[ConfigDatabase]: ./media/app-service-web-create-web-app-from-marketplace/configdatabase.png
-[ConfigFinished]: ./media/app-service-web-create-web-app-from-marketplace/configfinished.png
-[ConfigProgress]: ./media/app-service-web-create-web-app-from-marketplace/configprogress.png
-[WordPressSelect]: ./media/app-service-web-create-web-app-from-marketplace/wpselect.png
-[WordPressBrowse]: ./media/app-service-web-create-web-app-from-marketplace/wpbrowse.png
-[WordPressLanguage]: ./media/app-service-web-create-web-app-from-marketplace/wplanguage.png
-[WordPressDashboard1]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard1.png
-[WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
-[WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
-
+了解[用于开发和缩放的各种应用服务功能](/app-service-web/)。

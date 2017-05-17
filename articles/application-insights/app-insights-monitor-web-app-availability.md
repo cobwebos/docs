@@ -3,7 +3,7 @@ title: "监视任何网站的可用性和响应能力 | Microsoft Docs"
 description: "在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
@@ -11,30 +11,29 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/12/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 5893f8126b0f18ac0d56e434a8e495380bd605d5
-ms.lasthandoff: 04/13/2017
+ms.date: 04/26/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0916c10afd526abaaf6c8e1e3aa311af5c7d84cd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
-将 Web 应用或网站部署到任何服务器之后，可以设置 Web 测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
+将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
 
-![Web 测试示例](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
+对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置可用性测试。 无需将任何内容添加到要测试的网站。 它甚至不一定是站点：可以测试你所依赖的 REST API 服务。
 
-对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置 Web 测试。 无需将任何内容添加到要测试的网站。 它甚至不一定是站点：可以测试你所依赖的 REST API 服务。
-
-Web 测试有两种类型：
+有两种类型的可用性测试：
 
 * [URL ping 测试](#create)：可以在 Azure 门户中创建的简单测试。
 * [多步骤 Web 测试](#multi-step-web-tests)：可以在 Visual Studio Enterprise 中创建并上载到门户的测试。
 
-对于每个应用程序资源，最多可以创建 10 个 Web 测试。
+对于每个应用程序资源，最多可以创建 25 个可用性测试。
 
-## <a name="create"></a>1.为 Web 测试报告打开资源
+## <a name="create"></a>1.为可用性测试报告打开资源
 
 **如果已配置 Application Insights**（针对 Web 应用），请在 [Azure 门户](https://portal.azure.com)中打开 Application Insights 资源。
 
@@ -45,12 +44,12 @@ Web 测试有两种类型：
 单击“所有资源”，打开新资源的“概述”边栏选项卡。
 
 ## <a name="setup"></a>2.创建 URL ping 测试
-打开“可用性”边栏选项卡，然后添加一个 Web 测试。
+打开“可用性”边栏选项卡，然后添加一个测试。
 
 ![至少填写网站的 URL](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
-* **URL** 可以是要测试的任何网页，但必须在公共 Internet 中可见。 URL 可以包含查询字符串 &#151; 例如，可以稍微训练一下数据库。 如果 URL 解析为重定向，最多可以跟踪 10 个重定向。
-* **分析从属请求**：如果选中此选项，则测试将请求图像、脚本、样式文件以及其他属于受测网页一部分的文件。 记录的响应时间包括获取这些文件所耗费的时间。 如果无法在超时期限内为整个测试成功下载所有这些资源，测试将会失败。 
+* **URL** 可以是要测试的任何网页，但必须在公共 Internet 中可见。 该 URL 可以包括查询字符串。 因此，例如，可以稍微训练一下数据库。 如果 URL 解析为重定向，最多可以跟踪 10 个重定向。
+* **分析从属请求**：如果选中此选项，则测试将请求图像、脚本、样式文件以及其他属于受测网页的文件。 记录的响应时间包括获取这些文件所耗费的时间。 如果无法在超时期限内为整个测试成功下载所有这些资源，测试将会失败。 
 
     如果不选中此选项，则测试只请求指定 URL 的文件。
 * **启用重试**：如果选中此选项，则测试失败时，将在短时间后重试。 仅当连续三次尝试失败时，才报告失败。 然后，将按照一般的测试频率执行后续测试。 重试将会暂停，直到下次成功为止。 可在每个测试位置单独应用此规则。 建议使用此选项。 平均大约有 80% 的失败可在重试后消除。
@@ -68,33 +67,41 @@ Web 测试有两种类型：
     可以设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)。 （但请注意，查询参数不会以“属性”的形式传递。）
 
 ### <a name="test-more-urls"></a>测试其他 URL
-添加更多测试。 例如，除了测试主页，还可以测试搜索 URL 来确保数据库正在运行。
+添加更多测试。 例如，除了测试主页外，还可以通过测试搜索 URL 来确保数据库正在运行。
 
 
-## <a name="monitor"></a>3.查看 Web 测试结果
+## <a name="monitor"></a>3.查看可用性测试结果
 
-5 分钟之后，单击“刷新”即可查看测试结果。 
+几分钟之后，单击“刷新”即可查看测试结果。 
 
-![主页边栏选项卡中的摘要结果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![主页边栏选项卡中的摘要结果](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
 
-单击摘要图表上的任何条形可以获取该时间段的更详细视图。
+散点图显示其中都诊断测试步骤详细信息的测试结果示例。 测试引擎存储已失败的测试的诊断详细信息。 对于成功的测试，将存储执行子集的诊断详细信息。 将鼠标悬停在任何绿点/红点上，可查看测试时间戳、测试持续时间、位置和测试名称。 单击散点图中的任何点可查看测试结果的详细信息。  
+
+选择特定测试、位置或减少时间段，可查看围绕感兴趣的时间段的更多结果。 使用搜索资源管理器以查看所有执行结果，或者使用分析查询以针对此数据运行自定义报告。
+
+除了原始结果外，指标资源管理器中还有两个可用性指标： 
+
+1. 可用性：已成功的测试占执行的所有测试的百分比。 
+2. 测试持续时间：执行的所有测试的平均测试持续时间。
+
+可以将筛选器应用于测试名称、位置以分析特定测试和/或位置的趋势。
 
 ## <a name="edit"></a> 检查和编辑测试
 
 从摘要页面选择特定的测试。 你可以在该处查看具体结果，对其进行编辑或者临时禁用它。
 
-![编辑或禁用 Web 测试](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![编辑或禁用 Web 测试](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
 
-对服务执行维护时，可能需要禁用 Web 测试。
-
+对服务执行维护时，你可能想要禁用可用性测试或与这些测试关联的警报规则。 
 
 ## <a name="failures"></a>如果看到失败
 单击红点。
 
-![单击红点](./media/app-insights-monitor-web-app-availability/open-instance.png)
+![单击红点](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
 
 
-从 Web 测试结果，可以：
+从可用性测试结果，可以：
 
 * 检查从服务器收到的响应。
 * 在处理失败的请求实例时将打开服务器应用发送的遥测。
@@ -104,7 +111,7 @@ Web 测试有两种类型：
 
 *看起来正常，但却报告为失败* 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。
 
-*没有相关项？* 这可能是因为正在进行[采样](app-insights-sampling.md)。
+*没有相关项？* 如果已为服务器端应用程序设置 Application Insights，则可能是因为[采样](app-insights-sampling.md)正在进行。 
 
 ## <a name="multi-step-web-tests"></a>多步骤 Web 测试
 可以监视涉及一连串 URL 的方案。 例如，如果正在监视销售网站，可以测试是否能够正常地将商品添加购物车。
@@ -149,7 +156,7 @@ Web 测试有两种类型：
     ![在 Visual Studio 中，打开 .webtest 文件并单击“运行”。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
 
 #### <a name="2-upload-the-web-test-to-application-insights"></a>2.将 Web 测试上载到 Application Insights
-1. 在 Application Insights 门户中创建新 Web 测试。
+1. 在 Application Insights 门户中创建 Web 测试。
 
     ![在 Web 测试边栏选项卡中选择“添加”。](./media/app-insights-monitor-web-app-availability/16-another-test.png)
 2. 选择多步骤测试并上载 .webtest 文件。
@@ -240,7 +247,7 @@ Web 测试插件提供时间参数化方式。
 测试完成时，将显示响应时间和成功率。
 
 ## <a name="automation"></a>自动化
-* [使用 PowerShell 脚本设置 Web 测试](app-insights-powershell.md#add-an-availability-test) 。
+* [使用 PowerShell 脚本自动设置可用性测试](app-insights-powershell.md#add-an-availability-test)。
 * 设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 。
 
 ## <a name="qna"></a>有疑问？ 遇到问题？
@@ -252,7 +259,7 @@ Web 测试插件提供时间参数化方式。
     支持 TLS 1.1 和 TLS 1.2。
 * *“Web 测试”与“可用性测试”之间是否有差异？*
 
-    这两个术语可以换用。
+    这两个术语可以互换引用。 可用性测试是更通用的术语，其中除了包含多步骤 Web 测试外，还包含单 URL ping 测试。
 * *如何在防火墙后面运行的内部服务器上使用可用性测试？*
 
     有两个可能的解决方案：
@@ -291,4 +298,3 @@ Web 测试插件提供时间参数化方式。
 [diagnostic]: app-insights-diagnostic-search.md
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-

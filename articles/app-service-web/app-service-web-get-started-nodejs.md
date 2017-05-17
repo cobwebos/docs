@@ -1,5 +1,5 @@
 ---
-title: "在 Web 应用中创建 Node.js 应用程序 | Microsoft Docs"
+title: "在 Azure Web 应用中创建 Node.js 应用程序 | Microsoft Docs"
 description: "在应用服务 Web 应用中快速部署第一个 Node.js Hello World 应用。"
 services: app-service\web
 documentationcenter: 
@@ -12,29 +12,30 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/28/2017
+ms.date: 05/05/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: c32cb52e4bb7bacde20e21820f277b4e86877e74
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ced6f54603120d8832ee417b02b6673f80a99613
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="create-a-nodejs-application-on-web-app"></a>在 Web 应用中创建 Node.js 应用程序
 
-本快速入门教程逐步讲解如何开发 Node.js 应用并将其部署到 Azure。 我们将使用基于 Linux 的 Azure 应用服务运行该应用，再使用 Azure CLI 在其中创建并配置一个新的 Web 应用。 然后，我们使用 git 将该 Node.js 应用部署到 Azure。
+本快速入门教程逐步讲解如何开发 Node.js 应用并将其部署到 Azure。 我们将使用 [Azure 应用服务计划](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)运行该应用，然后使用 Azure CLI 在其中创建并配置一个新的 Web 应用。 然后，我们使用 git 将该 Node.js 应用部署到 Azure。
 
 ![hello-world-in-browser](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-可以在 Mac、Windows 或 Linux 计算机上遵循以下步骤。 大约 5 分钟内应可完成下面的所有步骤。
+可以在 Mac、Windows 或 Linux 计算机上执行以下步骤。 大约 5 分钟内应可完成下面的所有步骤。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="prerequisites"></a>先决条件
 
-运行本示例之前，请在本地安装以下必备组件：
+创建此示例之前，请下载并安装以下项：
 
-1. [下载并安装 git](https://git-scm.com/)
-1. [下载并安装 Node.js 和 NPM](https://nodejs.org/)
-1. 下载并安装 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [Git](https://git-scm.com/)
+* [Node.js 和 NPM](https://nodejs.org/)
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,9 +46,6 @@ ms.lasthandoff: 04/25/2017
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
-
-> [!TIP]
-> 此外，也可以[下载示例](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) zip 文件并将其解压缩。
 
 切换到包含示例代码的目录。
 
@@ -83,20 +81,8 @@ http://localhost:1337
 az login
 ```
 
-## <a name="configure-a-deployment-user"></a>配置部署用户
-
-对于 FTP 和本地 Git 部署，需在服务器上配置一个部署用户，用于对部署进行身份验证。 创建部署用户是一次性的配置。请记下用户名和密码，因为要在下面的步骤中用到。
-
-> [!NOTE]
-> 在 Web 应用中进行 FTP 和本地 Git 部署时需要一个部署用户。
-> `username` 和 `password` 是帐户级别的凭据，因此不同于 Azure 订阅凭据。 只需创建这些凭据一次。
->
-
-使用 [az appservice web deployment user set](/cli/azure/appservice/web/deployment/user#set) 命令创建帐户级别的凭据。
-
-```azurecli
-az appservice web deployment user set --user-name <username> --password <password>
-```
+<!-- ## Configure a Deployment User -->
+[!INCLUDE [login-to-azure](../../includes/configure-deployment-user.md)]
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -106,32 +92,26 @@ az appservice web deployment user set --user-name <username> --password <passwor
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-an-azure-app-service"></a>创建 Azure 应用服务
+## <a name="create-an-azure-app-service-plan"></a>创建 Azure 应用服务计划
 
-使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建基于 Linux 的应用服务计划。
+使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建“免费”的[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
 
-> [!NOTE]
-> 应用服务计划表示用于托管应用的物理资源集合。 分配到应用服务计划的所有应用程序将共享该计划定义的资源，在托管多个应用时可以节省成本。
->
-> 应用服务计划定义：
-> * 区域（北欧、美国东部、东南亚）
-> * 实例大小（小、中、大）
-> * 规模计数（一个、两个、三个实例，等等）
-> * SKU（免费、共享、基本、标准、高级）
->
+<!--
+ An App Service plan represents the collection of physical resources used to ..
+-->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-以下示例使用**标准**定价层在 Linux Workers 中创建名为 `quickStartPlan` 的应用服务计划。
+以下示例使用**免费**定价层创建名为 `quickStartPlan` 的应用服务计划。
 
 ```azurecli
-az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku S1 --is-linux
+az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku FREE
 ```
 
-创建应用服务计划后，Azure CLI 将显示类似于以下示例的信息。
+创建应用服务计划后，Azure CLI 将显示类似于以下示例的信息：
 
 ```json
 {
     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/quickStartPlan",
-    "kind": "linux",
     "location": "West Europe",
     "sku": {
     "capacity": 1,
@@ -146,9 +126,13 @@ az appservice plan create --name quickStartPlan --resource-group myResourceGroup
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-创建应用服务计划后，请在 `quickStartPlan` 应用服务计划中创建 Web 应用。 该 Web 应用提供托管空间用于部署代码，并提供一个 URL 用于查看已部署的应用程序。 使用 [az appservice web create](/cli/azure/appservice/web#create) 命令创建该 Web 应用。
+创建应用服务计划后，请在 `quickStartPlan` 应用服务计划中创建一个 [Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview)。 该 Web 应用提供托管空间用于部署代码，并提供一个 URL 用于查看已部署的应用程序。 使用 [az appservice web create](/cli/azure/appservice/web#create) 命令创建该 Web 应用。
 
-在以下命令中，请将出现的 `<app_name>` 占位符替换为你自己的唯一应用名称。 `<app_name>` 将用作 Web 应用的默认 DNS 站点，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 稍后，可以先将任何自定义 DNS 条目映射到 Web 应用，然后向用户公开该条目。
+在以下命令中，请将出现的 `<app_name>` 占位符替换为你自己的唯一应用名称。 在默认 DNS 站点中，将 `<app_name>` 用于 Web 应用。 如果 `<app_name>` 不唯一，你将收到友好错误消息“具有给定名称 <app_name> 的网站已存在”。
+
+<!-- removed per https://github.com/Microsoft/azure-docs-pr/issues/11878
+You can later map any custom DNS entry to the web app before you expose it to your users.
+-->
 
 ```azurecli
 az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
@@ -182,18 +166,7 @@ http://<app_name>.azurewebsites.net
 
 ![app-service-web-service-created](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
-现在，我们已在 Azure 中创建一个空的新 Web 应用。 接下来，将 Web 应用配置为使用 Node.js 并将其部署到 Node.js 中。
-
-## <a name="configure-to-use-nodejs"></a>配置为使用 Node.js
-
-使用 [az appservice web config update](/cli/azure/app-service/web/config#update) 命令将 Web 应用配置为使用 Node.js 版本 `6.9.3`。
-
-> [!TIP]
-> 以这种方式设置 Node.js 版本会使用平台提供的默认容器。如果你想要使用自己的容器，请参阅 [az appservice web config container update](/cli/azure/appservice/web/config/container#update) 命令的 CLI 参考文章。
-
-```azurecli
-az appservice web config update --linux-fx-version "NODE|6.9.3" --startup-file process.json --name <app_name> --resource-group myResourceGroup
-```
+现在，我们已在 Azure 中创建一个空的新 Web 应用。
 
 ## <a name="configure-local-git-deployment"></a>配置本地 Git 部署
 
@@ -219,9 +192,9 @@ https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
 git remote add azure <paste-previous-command-output-here>
 ```
 
-推送到 Azure 远程功能以部署应用程序。 系统将提示你输入前面在创建部署用户期间提供的密码。
+推送到 Azure 远程功能以部署应用。 系统将提示你输入前面在创建部署用户时提供的密码。 请确保输入在[配置部署用户](#configure-a-deployment-user)中创建的密码，而不是用于登录到 Azure 门户的密码。
 
-```azurecli
+```bash
 git push azure master
 ```
 
@@ -286,7 +259,7 @@ git commit -am "updated output"
 git push azure master
 ```
 
-完成部署后，切换回在“浏览到应用步骤”中打开的浏览器窗口，然后点击“刷新”。
+完成部署后，切换回在“浏览到应用”步骤中打开的浏览器窗口，然后点击“刷新”。
 
 ![hello-world-in-browser](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -318,7 +291,6 @@ git push azure master
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>后续步骤
-
-浏览预先创建的 [Web 应用 CLI 脚本](app-service-cli-samples.md)。
+> [!div class="nextstepaction"]
+> [浏览示例 Web 应用 CLI 脚本](app-service-cli-samples.md)
 

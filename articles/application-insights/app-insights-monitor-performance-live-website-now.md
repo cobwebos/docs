@@ -11,12 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/08/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 88abdb41a403f9c1dc85e574c655c532ee9b1eb5
-ms.lasthandoff: 04/13/2017
+ms.date: 05/05/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 769377af7bf62d35c45c6e2e7b0ae3311b784894
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -59,6 +60,20 @@ ms.lasthandoff: 04/13/2017
     ![单击 Application Insights](./media/app-insights-monitor-performance-live-website-now/azure-web-view-more.png)
 
 [监视云和 VM 应用](app-insights-azure.md)。
+
+### <a name="enable-client-side-monitoring-in-azure"></a>在 Azure 中启用客户端监视
+
+如果已在 Azure 中启用 Application Insights，可以添加页面视图和用户遥测。
+
+1. 选择“设置”>“应用程序设置”
+2.  在“应用设置”下添加新的键/值对： 
+   
+    键：`APPINSIGHTS_JAVASCRIPT_ENABLED` 
+    
+    值：`true`
+3. **保存**设置并**重新启动**应用。
+
+Application Insights JavaScript SDK 现已注入到每个网页中。
 
 ## <a name="monitor-a-live-iis-web-app"></a>监视实时 IIS Web 应用
 
