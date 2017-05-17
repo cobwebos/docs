@@ -5,18 +5,20 @@ services: application-insights
 documentationcenter: 
 author: OlegAnaniev-MSFT
 editor: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 6e397752-c086-46e9-8648-a1196e8078c2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2016
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: a43eca9878881731f54dc1ec3bc8a9cd15bf2c5e
+ms.date: 05/3/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 52b5be98742c9bf0834c12136416e856af5d99cc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -75,6 +77,18 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://ww
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` - 跟踪辅助角色、Windows 服务和控制台应用程序的未经处理的异常。
 * [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet 包。
 
+### <a name="eventsource-tracking"></a>EventSource 跟踪
+通过 `EventSourceTelemetryModule` 可配置要作为跟踪发送到 Application Insights 的 EventSource 事件。 有关跟踪 EventSource 事件的信息，请参阅[使用 EventSource 事件](app-insights-asp-net-trace-logs.md#using-eventsource-events)。
+
+* `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
+* [Microsoft.ApplicationInsights.EventSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
+
+### <a name="etw-event-tracking"></a>ETW 事件跟踪
+通过 `EtwCollectorTelemetryModule` 可从 ETW 提供程序配置要作为跟踪发送到 Application Insights 的事件。 有关跟踪 ETW 事件的信息，请参阅[使用 ETW 事件](app-insights-asp-net-trace-logs.md#using-etw-events)。
+
+* `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
+* [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
+
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
 Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microsoft.com/library/mt420197.aspx)。 其他遥测模块使用此包，你也可以[使用它来定义自己的遥测](app-insights-api-custom-events-metrics.md)。
 
@@ -117,6 +131,8 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 * 对于包含从用户浏览器中运行的 Application Insights JavaScript 检测代码生成的 `ai_user` Cookie 提取的值的所有遥测项，`UserTelemetryInitializer` 将更新 `User` 上下文的 `Id` 和 `AcquisitionDate` 属性。
 * `WebTestTelemetryInitializer` 设置用户 ID、会话 ID，以及来自[可用性测试](app-insights-monitor-web-app-availability.md)的 HTTP 请求的综合源属性。
   `<Filters>` 设置请求的标识属性。
+
+对于在 Service Fabric 中运行的 .NET 应用程序，可包含 `Microsoft.ApplicationInsights.ServiceFabric` NuGet 包。 该包所含的 `FabricTelemetryInitializer` 会将 Service Fabric 属性添加到遥测项。 有关详细信息，请参阅[GitHub 页](https://go.microsoft.com/fwlink/?linkid=848457)，了解由此 NuGet 包所添加的属性。
 
 ## <a name="telemetry-processors-aspnet"></a>遥测处理器 (ASP.NET)
 将遥测数据从 SDK 发送到门户之前，遥测处理器可以筛选和修改每个遥测项。
@@ -261,9 +277,4 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 [new]: app-insights-create-new-resource.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

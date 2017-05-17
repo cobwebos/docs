@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/16/2016
-ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 7d666b81f6c836e161d3c97512767638c088d3c8
-ms.lasthandoff: 04/13/2017
+ms.date: 04/07/2017
+ms.author: sashan;carlrab
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4abcfa777c08cec25770dc92f38e530f1ddb1d89
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -34,16 +35,16 @@ ms.lasthandoff: 04/13/2017
 ## <a name="scenario-1-cost-sensitive-startup"></a>方案 1. 关注成本的创业公司
 <i>我们是一家创业公司，非常关注成本问题。我希望简化应用程序的部署和管理，并愿意为各个客户提供有限的 SLA。但是我希望确保应用程序整体不会脱机。</i>
 
-为满足简单性要求，应将所有租户数据库部署到所选的 Azure 区域中的一个弹性池中，同时将管理数据库部署为异地复制的单一数据库。 对于租户的灾难恢复，请使用异地还原，无需额外付费。 为确保管理数据库的可用性，应将数据库异地复制到另一区域（步骤 1）。 此方案中的灾难恢复配置持续成本等于辅助数据库的总成本。 下图说明了此配置。
+为满足简单性要求，应将所有租户数据库部署到所选的 Azure 区域中的一个弹性池中，同时将管理数据库部署为异地复制的单一数据库。 对于租户的灾难恢复，请使用异地还原，无需额外付费。 为确保管理数据库的可用性，应使用自动故障转移组将数据库异地复制到另一区域（步骤 1）。 此方案中的灾难恢复配置持续成本等于辅助数据库的总成本。 下图说明了此配置。
 
 ![图 1](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
 
 如果主要区域发生中断，可以使用下图中的恢复步骤恢复应用程序的在线状态。
 
-* 立即将管理数据库故障转移到 DR 区域 (2)。 
-* 更改应用程序的连接字符串，使其指向 DR 区域。 将在 DR 区域中创建所有新帐户和租户数据库。 现有客户的数据将暂时不可用。
-* 创建与原始池具有相同配置的弹性池 (3)。 
-* 使用异地还原来创建租户数据库的副本 (4)。 可以考虑通过最终用户连接或使用其他应用程序的特定优先级方案来触发单个还原。
+* 故障转移组启动管理数据库向 DR 区域的自动故障转移。 应用程序将自动重新连接到新的主要区域，将在 DR 区域中创建所有新帐户和租户数据库。 现有客户的数据将暂时不可用。
+* 创建与原始池具有相同配置的弹性池 (2)。
+* 使用异地还原来创建租户数据库的副本 (3)。 可以考虑通过最终用户连接或使用其他应用程序的特定优先级方案来触发单个还原。
+
 
 此时，应用程序便已在 DR 区域中恢复在线状态，但某些客户将在访问数据时遇到延迟。
 

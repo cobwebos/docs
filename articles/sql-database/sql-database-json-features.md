@@ -15,16 +15,18 @@ ms.author: jovanpop
 ms.workload: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-translationtype: Human Translation
-ms.sourcegitcommit: 76d06bd9e0b033a2fb993f6183900e42e5232665
-ms.openlocfilehash: 741095b0ec2ae2ce125b59dfc5d1112d0a92de43
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 57057bbdbbafff6843070336efc986286d84af36
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL 数据库中的 JSON 功能入门
 使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](http://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。
 
-JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据格式。 JSON 还用于将半结构化数据存储在日志文件或 NoSQL 数据库（例如 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)）中。 许多 REST Web 服务返回采用 JSON 文本格式的结果，或接受采用 JSON 格式的数据。 大多数 Azure 服务（例如 [Azure 搜索](https://azure.microsoft.com/services/search/)、 [Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)）都具有可返回或使用 JSON 的 REST 终结点。
+JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据格式。 JSON 还用于将半结构化数据存储在日志文件或 NoSQL 数据库（例如 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)）中。 许多 REST Web 服务返回采用 JSON 文本格式的结果，或接受采用 JSON 格式的数据。 大多数 Azure 服务（例如 [Azure 搜索](https://azure.microsoft.com/services/search/)、[Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)）都具有返回或使用 JSON 的 REST 终结点。
 
 使用 Azure SQL 数据库可以轻松处理 JSON 数据，将数据库与新式服务集成。
 
@@ -204,10 +206,5 @@ END
 * [第 9 频道视频](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
 若要了解将 JSON 集成到应用程序中的各种方案，请参阅这部第 [9 频道视频](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的演示，或者在 [JSON 博客文章](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)中查找与应用场合相符的方案。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2016
 ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: b521c3bb99c9a6980df46eacec4e1ebe72fb01a1
-ms.openlocfilehash: 00f6a7af021029d1795071c930e05f200578fa14
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6f1234381a6aad9632d88825aab1a5bf304a20fb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 02/23/2017
 可以根据性能指标阈值，按循环计划或按特定日期扩展和缩减虚拟机规模集。 还可以为缩放操作配置电子邮件和 webhook 通知。 本文演示了在 VM 规模集上使用 Resource Manager 模板配置以上所有对象的示例。
 
 > [!NOTE]
-> 尽管本文演示的是适用于 VM 规模集的步骤，但这些信息也同样适用于自动缩放云服务和 Web 应用。
+> 尽管本文演示的是适用于 VM 规模集的步骤，但这些信息也同样适用于自动缩放[云服务](https://azure.microsoft.com/services/cloud-services/)和[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)。
 > 有关根据简单的性能指标（如 CPU）在 VM 规模集上进行简单的缩小/扩大设置的相关信息，请参阅 [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) 和 [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) 文档
 >
 >

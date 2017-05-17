@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5fea9dfcd323ecf497742173a66119be4f734909
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: a293c06f2e9bca8790832ecb851c89b04e76bb24
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -33,10 +34,6 @@ ms.lasthandoff: 04/27/2017
 ### <a name="configure-the-vault-register-the-server-and-select-databases"></a>配置保管库、注册服务器，然后选择数据库
 
 可[配置 Azure 恢复服务保管库以保留自动备份](sql-database-long-term-retention.md)，使其保留期长于服务层。 
-
-> [!TIP]
-> 若要删除长期备份保留中的备份，请参阅[配置和使用长期备份保留](sql-database-long-term-backup-retention-configure.md)。
->
 
 1. 打开服务器的“SQL 服务器”页面。
 
@@ -216,9 +213,6 @@ $policyState = "enabled"
 Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -State $policyState -ResourceId $policy.Id
 ```
 
-> [!IMPORTANT]
-> 配置后，备份将在接下来的七天内显示在保管库中。 备份显示在保管库中后再继续本教程。
-
 ### <a name="view-backup-info-and-backups-in-long-term-retention"></a>查看长期保留的备份信息和备份
 
 在[长期备份保留](sql-database-long-term-retention.md)中查看有关数据库备份的信息。 
@@ -269,7 +263,7 @@ $restoredDb
 
 
 > [!NOTE]
-> 从此处，可使用 SQL Server Management Studio 连接到已还原的数据库，以执行所需任务，例如[从恢复的数据库中提取一部分数据，复制到现有数据库或删除现有数据库，并将已还原数据库的名称重命名为现有数据库名称](sql-database-recovery-using-backups.md#point-in-time-restore)。
+> 从此处，可使用 SQL Server Management Studio 连接到已还原的数据库，执行所需任务，例如从恢复的数据库中提取一部分数据，复制到现有数据库或删除现有数据库，并将已还原的数据库重命名为现有数据库名。 请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)。
 
 ## <a name="next-steps"></a>后续步骤
 
