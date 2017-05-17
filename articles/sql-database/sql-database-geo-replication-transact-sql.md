@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/13/2016
+ms.date: 04/14/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: 07593e7f1d92a9a5943714f662568fec10a8886a
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1005f776ae85a7fc878315225c45f2270887771f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 02/16/2017
 若要使用 Transact-SQL 启动故障转移，请参阅[使用 Transact-SQL 为 Azure SQL 数据库启动计划内或计划外故障转移](sql-database-geo-replication-failover-transact-sql.md)。
 
 > [!NOTE]
-> 活动异地复制（可读辅助数据库）现在可供所有服务层中的所有数据库使用。 非可读辅助类型将在 2017 年 4 月停用，现有的非可读数据库将自动升级到可读辅助数据库。
+> 将活动异地复制（可读辅助数据库）用于灾难恢复时，应为应用程序内所有数据库配置故障转移组，以启用自动和透明故障转移。 此功能为预览版。 有关详细信息，请参阅[自动故障转移组和异地复制](sql-database-geo-replication-overview.md)。
 > 
 > 
 
@@ -53,23 +54,6 @@ ms.lasthandoff: 02/16/2017
 > [!NOTE]
 > 如果指定的伙伴服务器上的数据库的名称与主数据库相同，该命令会失败。
 > 
-> 
-
-### <a name="add-non-readable-secondary-single-database"></a>添加不可读的辅助数据库（单一数据库）
-可以使用以下步骤将不可读的辅助数据库创建为单一数据库。
-
-1. 使用 13.0.600.65 或更高版本的 SQL Server Management Studio。
-   
-   > [!IMPORTANT]
-   > 下载[最新](https://msdn.microsoft.com/library/mt238290.aspx)版本的 SQL Server Management Studio。 建议始终使用最新版本的 Management Studio 以保持与 Azure 门户的更新同步。
-   > 
-   > 
-2. 打开“数据库”文件夹、展开“系统数据库”、右键单击“master”，然后单击“新建查询”。
-3. 使用以下 **ALTER DATABASE** 语句使本地数据库成为具有 MySecondaryServer1 上不可读辅助数据库的异地复制主数据库，其中，MySecondaryServer1 是服务器的友好名称。
-   
-        ALTER DATABASE <MyDB>
-           ADD SECONDARY ON SERVER <MySecondaryServer1> WITH (ALLOW_CONNECTIONS = NO);
-4. 单击“执行”运行查询。
 
 ### <a name="add-readable-secondary-single-database"></a>添加可读的辅助数据库（单一数据库）
 可以使用以下步骤将可读辅助数据库创建为单一数据库。
@@ -80,18 +64,6 @@ ms.lasthandoff: 02/16/2017
    
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer2> WITH (ALLOW_CONNECTIONS = ALL);
-4. 单击“执行”运行查询。
-
-### <a name="add-non-readable-secondary-elastic-pool"></a>添加不可读的辅助数据库（弹性池）
-可以使用以下步骤在弹性池中创建不可读的辅助数据库。
-
-1. 在 Management Studio 中，连接到你的 Azure SQL 数据库逻辑服务器。
-2. 打开“数据库”文件夹、展开“系统数据库”、右键单击“master”，然后单击“新建查询”。
-3. 使用以下 **ALTER DATABASE** 语句使本地数据库成为具有弹性池中辅助服务器上的不可读辅助数据库的异地复制主数据库。
-   
-        ALTER DATABASE <MyDB>
-           ADD SECONDARY ON SERVER <MySecondaryServer3> WITH (ALLOW_CONNECTIONS = NO
-           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1));
 4. 单击“执行”运行查询。
 
 ### <a name="add-readable-secondary-elastic-pool"></a>添加可读的辅助数据库（弹性池）
@@ -141,22 +113,6 @@ ms.lasthandoff: 02/16/2017
         SELECT * FROM sys.dm_operation_status where major_resource_id = 'MyDB'
         ORDER BY start_time DESC
 9. 单击“执行”运行查询。
-
-## <a name="upgrade-a-non-readable-secondary-to-readable"></a>将不可读辅助数据库升级为可读辅助数据库
-2017 年 4 月将停用非可读辅助类型数据库，现有的非可读数据库将自动升级到可读辅助数据库。 如果你目前使用的是不可读辅助数据库，而你想要将它们升级为可读辅助数据库，则可以针对每个辅助数据库执行下列简单步骤。
-
-> [!IMPORTANT]
-> 并没有自助升级方法能够将不可读辅助数据库就地升级为可读辅助数据库。 如果删除唯一的辅助数据库，主数据库将会维持未受保护的状态，直到新的辅助数据库完全同步为止。 如果你的应用程序 SLA 要求主数据库始终受到保护，你应该考虑在其他服务器中创建并行辅助数据库，然后再应用上述升级步骤。 请注意，每个主数据库最多可以有 4 个辅助数据库。
-> 
-> 
-
-1. 首先，连接到辅助服务器，然后删除不可读辅助数据库：  
-   
-        DROP DATABASE <MyNonReadableSecondaryDB>;
-2. 现在，连接到主服务器，然后添加新的可读辅助数据库
-   
-        ALTER DATABASE <MyDB>
-            ADD SECONDARY ON SERVER <MySecondaryServer> WITH (ALLOW_CONNECTIONS = ALL);
 
 ## <a name="next-steps"></a>后续步骤
 * 若要深入了解活动异地复制，请参阅[活动异地复制](sql-database-geo-replication-overview.md)

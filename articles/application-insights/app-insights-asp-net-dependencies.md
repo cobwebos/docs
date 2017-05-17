@@ -11,12 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 35817adde713995ec82eead033f058ee109bf900
-ms.lasthandoff: 03/16/2017
+ms.date: 05/04/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: c31abf49a05f7911d4ec82db59efa2724ab7b49b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 03/16/2017
   * SQL 数据库
   * 使用基于 HTTP 绑定的 ASP.NET Web 和 WCF 服务
   * 本地或远程 HTTP 调用
-  * Azure DocumentDb、表、Blob 存储和队列
+  * Azure Cosmos DB、表、Blob 存储和队列
 * 网页
   * AJAX 调用
 
@@ -119,9 +120,9 @@ ms.lasthandoff: 03/16/2017
 
 似乎在第一次依赖项调用后经过了一个较长的时间间隔，我们应在代码中调查原因是什么。
 
-### <a name="profiling-your-live-site"></a>分析实时站点
+### <a name="profile-your-live-site"></a>分析实时站点
 
-不知道时间花到哪去了？ Application Insights 探查器将跟踪对实时站点的 HTTP 调用，并显示代码中有哪些函数花费了最长的时间。 探查器目前受限预览版提供 - 欢迎[注册试用](https://aka.ms/AIProfilerPreview)。
+不知道时间花到哪去了？ [Application Insights 探查器](app-insights-profiler.md)将跟踪对实时站点的 HTTP 调用，并显示代码中有哪些函数花费了最长的时间。
 
 ## <a name="failed-requests"></a>失败的请求
 失败的请求还可能与依赖项的失败调用相关联。 同样，我们可以单击相应的项来跟踪问题。

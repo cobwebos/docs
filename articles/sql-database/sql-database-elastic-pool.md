@@ -11,15 +11,16 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 04/19/2017
+ms.date: 05/15/2017
 ms.author: ddove
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: cc81b842833942019d5afec9b9dc33813ac48964
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: 448bdbd2ae12d325781587846c812995cae33774
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -120,7 +121,7 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 1. 通过如下方式来估算池所需的 eDTU：
 
    MAX（<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>
-   <并发高峰数据库的数目** X 每一数据库的高峰 DTU 使用率**）
+   <*并发高峰数据库的数目* X *每一数据库的高峰 DTU 使用率* ）
 2. 通过将池内所有的数据库所需的字节数相加来估算池所需要的存储空间。 然后，确定提供此存储量的 eDTU 池的大小。 有关基于 eDTU 池大小的池存储限制，请参阅[弹性池和弹性数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)。
 3. 选择步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。
 4. 请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/pricing/details/sql-database/)，查找大于步骤 3 中估计值的最低 eDTU 池大小。
@@ -128,7 +129,7 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 
 ## <a name="edtu-and-storage-limits-for-elastic-pools"></a>弹性池的 eDTU 和存储限制
 
-下表描述了“基本”、“标准”、“高级”和“高级 RS”弹性池的特征。
+下表描述了弹性池的资源限制。  请注意，弹性池中各个数据库的资源限制通常与池外部基于 DTU 和服务层的各个数据库相同。  例如，S2 数据库的最大并发辅助进程数为 120 个。  因此，如果池中每个数据库的最大 DTU 是 50 个 DTU（这等效于 S2），则标准池中数据库的最大并发辅助进程数也是 120 个辅助进程。
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
@@ -167,3 +168,4 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 * 可以使用 [Azure 门户](sql-database-elastic-pool-manage-portal.md)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md)、[C#](sql-database-elastic-pool-manage-csharp.md) 和 REST API 创建和管理弹性池。
 * 有关视频，请参阅[有关 Azure SQL 数据库弹性功能的 Microsoft 虚拟大学视频课程](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 * 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅 [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
+
