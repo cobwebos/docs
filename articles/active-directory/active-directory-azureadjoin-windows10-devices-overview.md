@@ -14,11 +14,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/16/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: aa6e78feb7ffaefcb8bce9c7f2293421c4859898
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -35,10 +37,5 @@ Windows 10 使你可以利用 Azure Active Directory (Azure AD)。 可以将 Win
 | 入门 |[在工作区中使用 Windows 10 设备](active-directory-azureadjoin-windows10-devices.md) <br> <br> [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-overview.md) <br> <br> [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](active-directory-azureadjoin-passport.md) |
 | 部署 |[Azure AD Join 的使用方案和部署注意事项](active-directory-azureadjoin-deployment-aadjoindirect.md) <br><br> [体验 Windows 10 时将已加入域的设备连接到 Azure AD](active-directory-azureadjoin-devices-group-policy.md)<br><br>[在组织中启用 Microsoft Passport for Work](active-directory-azureadjoin-passport-deployment.md)<br><br> [启用 Windows 10 的企业状态漫游](active-directory-windows-enterprise-state-roaming-overview.md)<br><br> |
 | 用户任务 |[安装期间使用 Azure AD 设置新的 Windows 10 设备](active-directory-azureadjoin-user-frx.md) <br><br> [通过“设置”菜单使用 Azure AD 设置 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md) <br><br> [将个人 Windows 10 设备加入组织](active-directory-azureadjoin-personal-device.md) |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

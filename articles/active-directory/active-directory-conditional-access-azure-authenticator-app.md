@@ -12,12 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
 ms.openlocfilehash: 5dd6701f25c69f5e870d3add79c312f9aeec6bf4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -118,10 +120,5 @@ ms.openlocfilehash: 5dd6701f25c69f5e870d3add79c312f9aeec6bf4
 
 ## <a name="troubleshooting"></a>故障排除
 如果看到“密钥存储错误”，这可能是因为没有为锁屏界面设置 PIN。 若要解决此问题，请卸载 Azure 验证器应用，配置用于锁屏的 PIN，然后重新安装该应用。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
