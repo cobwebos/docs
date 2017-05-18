@@ -25,7 +25,7 @@
      * [自助密码重置](../articles/active-directory/active-directory-playbook-implementation.md#self-service-password-reset)
      * [对应用程序进行自助访问](../articles/active-directory/active-directory-playbook-implementation.md#self-service-access-to-applications)
 4. [构建基块](../articles/active-directory/active-directory-playbook-building-blocks.md)
-   * [执行组件目录](../articles/active-directory/active-directory-playbook-building-blocks.md#catalog-of-actors)
+   * [执行组件目录](../articles/active-directory/active-directory-playbook-building-blocks.md)
    * [所有构建基块的常见先决条件](../articles/active-directory/active-directory-playbook-building-blocks.md#common-prerequisites-for-all-building-blocks)
    * [目录同步 - 密码哈希同步 (PHS) - 新安装](../articles/active-directory/active-directory-playbook-building-blocks.md#directory-synchronization---password-hash-sync-phs---new-installation)
    * [品牌](../articles/active-directory/active-directory-playbook-building-blocks.md#branding)

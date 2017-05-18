@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/13/2017
 ms.author: cgronlun;tedway;olgali
-translationtype: Human Translation
-ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
-ms.openlocfilehash: 50963d47d030d43d1c98dfb9a5878af7b9e99d47
-ms.lasthandoff: 02/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 247c26b3988664bcf93fb5face6514a3dc74cebc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -51,7 +52,7 @@ Azure 机器学习具有在云中创建完整的预测分析解决方案所需�
 * 在 [Cortana Intelligence 库](machine-learning-gallery-how-to-use-contribute-publish.md)中，可以尝试其他人编写的分析解决方案，或者提供自己的解决方案。 在社区发表关于试验的问题或看法，或者通过 LinkedIn 和 Twitter 等社交网络分享试验的链接。
 
   ![在 Azure Cortana Intelligence 库中尝试运行预测试验，或者补充自己的试验](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
-* 在机器学习工作室中使用 [机器学习算法和模块](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) 大型库立即开始创建预测模型。 从示例试验、R 和 Python 包，以及 Xbox 和 Bing 等 Microsoft 业务的一流算法中选择。 使用自定义的 [R](machine-learning-r-quickstart.md) 和 [Python](machine-learning-execute-python-scripts.md) 脚本扩展工作室模块。
+* 在机器学习工作室中使用 [机器学习算法和模块](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) 大型库立即开始创建预测模型。 从示例试验、R 和 Python 包，以及 Xbox 和 Bing 等 Microsoft 业务的一流算法中选择。 使用自定义的 [R](machine-learning-extend-your-experiment-with-r.md) 和 [Python](machine-learning-execute-python-scripts.md) 脚本扩展工作室模块。
 
   ![什么是预测分析：Azure 机器学习工作室中的预测分析试验示例](./media/machine-learning-what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
 
