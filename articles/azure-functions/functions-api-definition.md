@@ -14,10 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 08063960d3956ca65dd32d9fe726c366799a2087
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: aac362f5123038cc39e0d2b32c10f7747a702cfe
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -34,10 +35,10 @@ ms.lasthandoff: 04/19/2017
 
 ## <a name="enable"></a>启用 OpenAPI 定义支持
 * 可以在 Function App 设置的 `API Definition (preview)` 页中配置所有 OpenAPI 设置。
-* 通过将 `API defintion source` 设置为 `Function`，可以启用托管的 OpenAPI 定义和快速定义生成。
+* 通过将 `API definition source` 设置为 `Function`，可以启用托管的 OpenAPI 定义和快速定义生成。
   * `External URL` 允许函数使用托管在其他位置的 OpenAPI 定义。
 
-## <a name="generate-defintion"></a>通过函数元数据生成 Swagger 框架
+## <a name="generate-definition"></a>通过函数元数据生成 Swagger 框架
 使用模板来开始编写第一个 OpenAPI 定义是一个不错的方法。 定义模板功能使用 function.json 中的所有元数据为每个 HTTP 触发器函数创建稀疏的 OpenAPI 定义。 **将需要按 [OpenAPI 规范](http://swagger.io/specification/)填写有关 API 的详细信息，如请求和响应模板。**
 
 [查看入门教程中的分步说明](./functions-api-definition-getting-started.md)

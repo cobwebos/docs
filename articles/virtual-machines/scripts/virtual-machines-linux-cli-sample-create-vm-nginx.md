@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: fc97b01c04be81b89cadf1f16c87dcb2069d7b64
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 12b4fda8a8805d49ad1318af3367a53e97ddf48b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/06/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[主要](../../../cli_scripts/virtual-machine/create-vm-nginx/create-vm-nginx.sh "快速创建 VM")]
+[!code-azurecli-interactive[主要](../../../cli_scripts/virtual-machine/create-vm-nginx/create-vm-nginx.sh "快速创建 VM")]
 
 ## <a name="custom-script-extension"></a>自定义脚本扩展
 

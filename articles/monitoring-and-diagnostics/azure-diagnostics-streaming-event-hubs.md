@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 97ed0ae7cf9f741155c57053bc8b34a0246d0586
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 492e0ca675f2a827b172c33fcd33226abc95dcec
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/13/2017
 
 
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>使用事件中心流式处理热路径中的 Azure 诊断数据
-Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) 的指标和日志，并将结果传输到 Azure 存储空间。 从 2016 年 3 月 (SDK 2.9) 这一时间范围开始，可以将诊断发送到自定义数据源，并使用 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)在数秒内传输热路径数据。
+Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) 的指标和日志，并将结果传输到 Azure 存储。 从 2016 年 3 月 (SDK 2.9) 这一时间范围开始，可以将诊断发送到自定义数据源，并使用 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)在数秒内传输热路径数据。
 
 支持的数据类型包括：
 
@@ -47,7 +48,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 * 在应用程序中使用 *.wadcfgx* 文件和以下任一方法的 Azure 诊断的现有配置：
   * Visual Studio：[为 Azure 云服务和虚拟机配置诊断](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
   * Windows PowerShell：[使用 PowerShell 在 Azure 云服务中启用诊断](../cloud-services/cloud-services-diagnostics-powershell.md)
-* 根据文章[事件中心入门] ((../event-hubs/event-hubs-csharp-ephcs-getstarted.md) 预配的事件中心命名空间
+* 根据文章[事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)预配的事件中心命名空间
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>将 Azure 诊断连接到事件中心接收器
 默认情况下，Azure 诊断始终将日志和指标发送到 Azure 存储帐户。 应用程序也可以将数据发送到事件中心，方法是在 *.wadcfgx* 文件的 **PublicConfig** / **WadCfg** 元素下添加一个新的 **Sinks** 节。 在 Visual Studio 中，*.wadcfgx* 文件存储在以下路径中：“云服务项目” > “角色” > “(RoleName)” > “diagnostics.wadcfgx”文件。

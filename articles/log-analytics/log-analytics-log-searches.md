@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 05/16/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: d4935af0647f0629cca327a7e87c29f1252af382
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: b005d0fb25483f3dce14133038d7759dff07fc7c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -148,7 +149,7 @@ EventLog=System TimeGenerated>NOW-24HOURS
 
 
 #### <a name="to-search-using-a-boolean-operator"></a>使用布尔运算符搜索
-* 在搜索查询字段中，键入 `EventLog=System TimeGenerated>NOW-24HOURS"`  
+* 在搜索查询字段中，键入 `EventLog=System TimeGenerated>NOW-24HOURS`  
     ![使用布尔值搜索](./media/log-analytics-log-searches/oms-search-boolean.png)
 
 尽管可以通过图形方式控制时间间隔（可能在大部分时候想执行此操作），但将时间筛选器直接包括在查询中具有优势。 例如，这非常适用于仪表板，你可以替代每个磁贴的时间，而无需考虑仪表板页面上的*全球*时间选择器）。 有关详细信息，请参阅 [仪表板中的时间问题](http://cloudadministrator.wordpress.com/2014/10/19/system-center-advisor-restarted-time-matters-in-dashboard-part-6/)。

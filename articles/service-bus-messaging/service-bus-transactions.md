@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
+ms.date: 05/17/2017
 ms.author: clemensv;sethm
-translationtype: Human Translation
-ms.sourcegitcommit: c39abad6c5e2a9e2ae7add9ecda48783f61bc736
-ms.openlocfilehash: 8d0f3818831a22550fb0eea9bcbc1f62b133003a
-ms.lasthandoff: 02/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: a88f2d81ab43e38c9363a67aaefc178b47bfb259
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
-本文将讨论 Azure 服务总线的事务功能。 很多讨论已在 [Atomic Transactions with Service Bus sample](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AtomicTransactions)（服务总线中的原子事务示例）中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式功能，虽然原子事务示例在作用域内更广泛且更复杂。
+本文将讨论 Azure 服务总线的事务功能。 很多讨论已在 [Atomic Transactions with Service Bus sample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)（服务总线中的原子事务示例）中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式功能，虽然原子事务示例在作用域内更广泛且更复杂。
 
 ## <a name="transactions-in-service-bus"></a>服务总线中的事务
-一个[事务](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AtomicTransactions#what-are-transactions)将两个或更多操作组合成执行作用域。 就本质而言，此类事务必须确保所有操作属于给定的操作组，无论联合成功还是失败。 在这方面，事务作为一个单元进行操作，通常称为原子性。 
+一个[事务](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions#what-are-transactions)将两个或更多操作组合成执行作用域。 就本质而言，此类事务必须确保所有操作属于给定的操作组，无论联合成功还是失败。 在这方面，事务作为一个单元进行操作，通常称为原子性。 
 
 服务总线是事务性消息代理，并确保针对其消息存储的所有内部操作的事务完整性。 服务总线内部的所有消息传输，如将消息移到 [dead-letter queue](service-bus-dead-letter-queues.md) 或在实体之间[自动转发](service-bus-auto-forwarding.md)消息，都是事务性的。 因此，如果服务总线接受一条消息，则该消息已存储并标有一个序列号。 从那时起，服务总线内的任何消息传输都是实体之间协调的操作，将从不会导致消息丢失（源成功而目标失败）或重复（源失败而目标成功）。
 
@@ -77,8 +78,8 @@ using (scope = new TransactionScope())
 有关服务总线队列的详细信息，请参阅以下文章：
 
 * [使用自动转发链接服务总线实体](service-bus-auto-forwarding.md)
-* [自动转发示例](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AutoForward)
-* [Atomic Transactions with Service Bus sample](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AtomicTransactions)（服务总线中的原子事务示例）
+* [自动转发示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
+* [Atomic Transactions with Service Bus sample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)（服务总线中的原子事务示例）
 * [Azure 队列和服务总线队列比较](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 * [如何使用服务总线队列](service-bus-dotnet-get-started-with-queues.md)
 
