@@ -224,7 +224,7 @@ Azure 工具包将开始创建新的应用服务，并在处理时显示一个�
 
 有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
 
-* 用于 Eclipse 的 Azure 工具包（本文）[](../azure-toolkit-for-eclipse.md)
+* [用于 Eclipse 的 Azure 工具包（本文）](../azure-toolkit-for-eclipse.md)
   * [用于 Eclipse 的 Azure 工具包的新增功能](../azure-toolkit-for-eclipse-whats-new.md)
   * [安装用于 Eclipse 的 Azure 工具包](../azure-toolkit-for-eclipse-installation.md)
   * [Sign In Instructions for the Azure Toolkit for Eclipse](https://go.microsoft.com/fwlink/?linkid=846174)（用于 Eclipse 的 Azure 工具包的登录说明）
