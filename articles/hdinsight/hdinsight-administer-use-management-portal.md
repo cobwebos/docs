@@ -188,7 +188,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
     HDInsight 群集上提供了 Storm Web UI：
 
-    ![hdinsight storm 缩放重新平衡](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
+    ![hdinsight storm 缩放重新平衡](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
     以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
 
