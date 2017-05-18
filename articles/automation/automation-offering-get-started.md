@@ -1,4 +1,4 @@
---- 
+---
 title: "Azure 自动化入门 | Microsoft Docs"
 description: "本文概述了 Azure 自动化服务，探讨了在准备载入 Azure 应用商店产品/服务过程中涉及的核心概念和实现细节。"
 services: automation
@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8a04fda8eaf6e14a278941e7bb55b23012f67850
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 9b4982ffece9283304ad3ab3c82a471ac1dbd463
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/11/2017
 
 ---
 
 ## <a name="getting-started-with-azure-automation"></a>Azure 自动化入门
 
-本入门指南介绍了与 Azure 自动化部署相关的核心概念。 不管你是 Azure 自动化的新手，还是已有自动化工作流软件（例如 System Center Orchestrator）的使用经验，都可以通过本指南了解相关概念和部署细节。 
+本入门指南介绍了与 Azure 自动化部署相关的核心概念。 不管你是 Azure 自动化的新手，还是已有自动化工作流软件（例如 System Center Orchestrator）的使用经验，都可以通过本指南了解相关概念和部署细节。
 
 ## <a name="key-concepts"></a>关键概念
 
@@ -83,14 +83,14 @@ Azure 自动化 DSC 可用于管理各种计算机：
 ## <a name="security"></a>“安全”
 可以通过 Azure 自动化，针对本地资源、Azure 资源以及其他云提供程序资源自动执行任务。  为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。  
 
-### <a name="automation-account"></a>自动化帐户 
+### <a name="automation-account"></a>自动化帐户
 所有使用 Azure 自动化中的 Azure cmdlet 针对资源执行的自动化任务在向 Azure 进行身份验证时，都使用基于 Azure Active Directory 组织标识凭据的身份验证。  自动化帐户独立于用来登录到门户，对 Azure 资源进行配置和使用的帐户。  
 
 每个自动化帐户的自动化资源与单个 Azure 区域相关联，但自动化帐户可以管理订阅中的所有资源。 如果策略要求将数据和资源隔离到特定的区域，请在不同区域中创建自动化帐户。
 
 > [!NOTE]
-> 无法在 Azure 经典门户中访问使用在 Azure 门户创建的自动化帐户及其包含的资源。 如果你想要使用 Windows PowerShell 来管理这些帐户或其资源，必须使用 Azure 资源管理器模块。
-> 
+> 无法在 Azure 经典门户中访问使用在 Azure 门户创建的自动化帐户及其包含的资源。 如果你想要使用 Windows PowerShell 来管理这些帐户或其资源，必须使用 Azure Resource Manager 模块。
+>
 
 在 Azure 门户中创建自动化帐户时，会自动创建两个身份验证实体：
 
@@ -102,17 +102,17 @@ Azure 自动化 DSC 可用于管理各种计算机：
 #### <a name="authentication-methods"></a>身份验证方法
 下表总结了 Azure 自动化所支持的每个环境的不同身份验证方法。
 
-| 方法 | 环境 
-| --- | --- | 
+| 方法 | 环境
+| --- | --- |
 | Azure 运行方式帐户和经典运行方式帐户 |Azure Resource Manager 部署和 Azure 经典部署 |  
 | Azure AD 用户帐户 |Azure Resource Manager 部署和 Azure 经典部署 |  
 | Windows 身份验证 |本地数据中心或使用混合 Runbook 辅助角色的其他云提供程序 |  
 | AWS 凭据 |Amazon Web Services |  
 
 **How to\Authentication and Security** 部分是支持文章，这些文章概述了如何通过专用于上述环境的现有帐户或新帐户为此类环境配置身份验证，并提供了相应的实现步骤。  [使用 PowerShell 更新自动化运行方式帐户](automation-update-account-powershell.md)主题适用于 Azure 运行方式和经典运行方式帐户，介绍了如何使用 PowerShell 将现有的自动化帐户更新为运行方式帐户（如果最初未为其配置运行方式或经典运行方式帐户）。   
- 
+
 ## <a name="network"></a>网络
-要使混合 Runbook 辅助角色连接并注册到 Microsoft Operations Management Suite (OMS)，必须让其有权访问下述端口号和 URL。  除了这些端口和 URL 以外，还需有权访问连接到 OMS 时 [Microsoft Monitoring Agent 需要的端口和 URL](../log-analytics/log-analytics-proxy-firewall.md#configure-settings-with-the-microsoft-monitoring-agent)。 如果使用代理服务器在代理与 OMS 服务之间通信，则需确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问。
+要使混合 Runbook 辅助角色连接并注册到 Microsoft Operations Management Suite (OMS)，必须让其有权访问下述端口号和 URL。  除了这些端口和 URL 以外，还需有权访问连接到 OMS 时 [Microsoft Monitoring Agent 需要的端口和 URL](../log-analytics/log-analytics-windows-agents.md)。 如果使用代理服务器在代理与 OMS 服务之间通信，则需确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问。
 
 下面的信息列出了混合 Runbook 辅助角色与自动化通信时所要使用的端口和 URL。
 
@@ -136,11 +136,11 @@ Azure 自动化 DSC 可用于管理各种计算机：
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net |
 | 美国政府弗吉尼亚州 | usge-jobruntimedata-prod-su1.azure-automation.us |
 
-有关 IP 地址列表（非名称列表），请从 Microsoft 下载中心下载 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653) xml 文件并进行查看。 
+有关 IP 地址列表（非名称列表），请从 Microsoft 下载中心下载 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653) xml 文件并进行查看。
 
 > [!NOTE]
-> 此文件包含在 Microsoft Azure 数据中心中使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布已更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 文件中显示的新范围至少在一周内不会用于数据中心。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 快速路由用户可能会注意到用于在每个月的第一周更新 Azure 空间中 BGP 播发的此文件。 
-> 
+> 此文件包含 Microsoft Azure 数据中心使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 快速路由用户可能会注意到用于在每个月的第一周更新 Azure 空间中 BGP 播发的此文件。
+>
 
 
 ## <a name="implementation"></a>实现
@@ -175,16 +175,16 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 4. 在阅读服务说明后，单击“创建”。  
 
-5. 在“自动化与控制”设置边栏选项卡上，选择“OMS 工作区”。  在“OMS 工作区”边栏选项卡上，选择一个 OMS 工作区（其关联到的 Azure 订阅正是自动化帐户所在的订阅），或者创建一个 OMS 工作区。  如果没有 OMS 工作区，请选择“新建工作区”，然后在“OMS 工作区”边栏选项卡上执行以下操作： 
+5. 在“自动化与控制”设置边栏选项卡上，选择“OMS 工作区”。  在“OMS 工作区”边栏选项卡上，选择一个 OMS 工作区（其关联到的 Azure 订阅正是自动化帐户所在的订阅），或者创建一个 OMS 工作区。  如果没有 OMS 工作区，请选择“新建工作区”，然后在“OMS 工作区”边栏选项卡上执行以下操作：
    - 指定新 **OMS 工作区**的名称。
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    - 对于“资源组”，可以创建资源组，也可以选择现有资源组。  
    - 选择“位置” 。  目前提供的位置只有“澳大利亚东南部”、“美国东部”、“东南亚”、“美国中西部”和“西欧”。
    - 选择“定价层” 。  该解决方案提供两种定价层：“免费”层和“按节点 (OMS)”层。  免费层的每日可收集数据量、保留期和 Runbook 作业运行时分钟数有限制。  “按节点 (OMS)”层对每日收集的数据量没有限制。  
-   - 选择“自动化帐户”。  若要创建新的 OMS 工作区，则还需创建一个与前面指定的新 OMS 工作区相关联的自动化帐户，其中包括 Azure 订阅、资源组和区域。  可以选择“创建自动化帐户”，然后在“自动化帐户”边栏选项卡上提供以下信息： 
+   - 选择“自动化帐户”。  若要创建新的 OMS 工作区，则还需创建一个与前面指定的新 OMS 工作区相关联的自动化帐户，其中包括 Azure 订阅、资源组和区域。  可以选择“创建自动化帐户”，然后在“自动化帐户”边栏选项卡上提供以下信息：
   - 在“名称”字段中输入自动化帐户的名称。
 
-    系统会根据所选的 OMS 工作区自动填充所有其他选项，无法修改这些选项。  Azure 运行方式帐户是此服务的默认身份验证方法。  单击“确定”后，系统会验证配置选项并创建自动化帐户。  可以在菜单中的“通知”下面跟踪操作进度。 
+    系统会根据所选的 OMS 工作区自动填充所有其他选项，无法修改这些选项。  Azure 运行方式帐户是此服务的默认身份验证方法。  单击“确定”后，系统会验证配置选项并创建自动化帐户。  可以在菜单中的“通知”下面跟踪操作进度。
 
     否则，请选择现有的自动化运行方式帐户。  选择的帐户不能已关联到另一 OMS 工作区，否则会在边栏选项卡中显示一条通知消息。  如果该帐户已进行关联，则需选择其他自动化运行方式帐户，或者创建一个。
 
@@ -194,7 +194,7 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 7. 在“自动化与控制”设置边栏选项卡上，确认你想要安装建议的预选解决方案。 如果取消选择某个解决方案，可以稍后单独进行安装。  
 
-8. 单击“创建”，继续载入自动化和 OMS 工作区。 系统将验证所有设置，然后尝试在订阅中部署该服务。  此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。 
+8. 单击“创建”，继续载入自动化和 OMS 工作区。 系统将验证所有设置，然后尝试在订阅中部署该服务。  此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。
 
 载入该服务以后，即可开始创建 Runbook，运行已启用的管理解决方案，或者开始使用 [Log Analytics](https://docs.microsoft.com/azure/log-analytics) 收集云或本地环境中的资源所生成的数据。   
 
@@ -202,5 +202,4 @@ Azure 自动化 DSC 可用于管理各种计算机：
 * 可以参阅[测试 Azure 自动化运行方式帐户身份验证](automation-verify-runas-authentication.md)一文，确认新的自动化帐户能否针对 Azure 资源进行身份验证。
 * 若要开始使用 PowerShell Runbook，请参阅[我的第一个 PowerShell Runbook](automation-first-runbook-textual-powershell.md)。
 * 若要了解有关图形创作的详细信息，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
-
 
