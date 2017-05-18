@@ -63,7 +63,7 @@ Azure 机器学习让用户能够生成、测试和部署预测分析解决方�
 ### <a name="deploy-the-predictive-experiment-as-a-new-web-service"></a>将预测实验部署为新 Web 服务
 现在，已准备好预测实验，可将其部署为新 Azure Web 服务。 使用 web 服务，用户可以将数据发送到模型，该模型将返回其预测。
 
-若要部署预测实验，请单击实验画布底部的“运行”。 实验运行完毕后，单击“部署 Web 服务”或 **部署 Web 服务[新]**。  将打开机器学习 Web 服务门户的部署页。
+若要部署预测实验，请单击实验画布底部的“运行”。 实验运行完毕后，单击“部署 Web 服务”或 **部署 Web 服务[全新]**。  将打开机器学习 Web 服务门户的部署页。
 
 > [!NOTE] 
 > 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。 

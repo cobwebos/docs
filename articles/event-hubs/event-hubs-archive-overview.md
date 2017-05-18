@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: darosa;sethm
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: f86336de4e1d5bda1eba12f0f95079b950963bde
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 03756c15d0cd46731e66df3d81c97099f13dcd17
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="azure-event-hubs-archive"></a>Azure 事件中心存档
-使用 Azure 事件中心存档，可以更灵活地将事件中心中的流数据自动传送到所选的 Blob 存储帐户，以指定所选的时间间隔或大小差异。 设置存档非常快速，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-what-is-event-hubs.md#capacity)自动进行缩放。 事件中心存档是在 Azure 中加载流数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
+使用 Azure 事件中心存档，可以更灵活地将事件中心中的流数据自动传送到所选的 Blob 存储帐户，以指定所选的时间间隔或大小差异。 设置存档非常快速，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-features.md#capacity)自动进行缩放。 事件中心存档是在 Azure 中加载流数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
 
 事件中心存档可让用户在同一个流上处理实时和基于批处理的管道。 这使用户能够构建随着时间的推移随用户的需要增长的解决方案。 无论用户现在正在构建基于 Batch 的系统并着眼于将来进行实时处理，还是要将高效的冷路径添加到现有的实时解决方案，事件中心存档都可以使流数据处理更加简单。
 
 ## <a name="how-event-hubs-archive-works"></a>事件中心存档的工作原理
-事件中心是遥测数据入口的时间保留持久缓冲区，类似于分布式日志。 缩小事件中心的关键在于[分区使用者模式](event-hubs-what-is-event-hubs.md#partitions)。 每个分区是独立的数据段，并单独使用。 根据可配置的保留期，随着时间的推移此数据会过时。 因此，给定的事件中心永远不会装得“太满”。
+事件中心是遥测数据入口的时间保留持久缓冲区，类似于分布式日志。 缩小事件中心的关键在于[分区使用者模式](event-hubs-features.md#partitions)。 每个分区是独立的数据段，并单独使用。 根据可配置的保留期，随着时间的推移此数据会过时。 因此，给定的事件中心永远不会装得“太满”。
 
 事件中心存档可让用户指定自己的 Azure Blob 存储帐户和容器（将用于存储已存档数据）。 此帐户可以与事件中心在同一区域中，也可以在另一个区域中，从而增加了事件中心存档功能的灵活性。
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/19/2017
 ```
 
 ### <a name="scaling-to-throughput-units"></a>缩放到吞吐量单位
-事件中心流量由[吞吐量单位](event-hubs-what-is-event-hubs.md#capacity)控制。 单个吞吐量单位允许 1 MB/秒或 1000 个入口事件/秒（是出口事件量的两倍）。 标准事件中心可以配置 1 到 20 个吞吐量单位，可以通过发出增加配额[支持请求][support request]来购买更多吞吐量单位。 使用在超出购买的吞吐量单位时将受到限制。 事件中心存档直接从内部事件中心存储复制数据，从而绕过吞吐量单位出口配额，为流分析或 Spark 等其他处理读取器节省了出口量。
+事件中心流量由[吞吐量单位](event-hubs-features.md#capacity)控制。 单个吞吐量单位允许 1 MB/秒或 1000 个入口事件/秒（是出口事件量的两倍）。 标准事件中心可以配置 1 到 20 个吞吐量单位，可以通过发出增加配额[支持请求][support request]来购买更多吞吐量单位。 使用在超出购买的吞吐量单位时将受到限制。 事件中心存档直接从内部事件中心存储复制数据，从而绕过吞吐量单位出口配额，为流分析或 Spark 等其他处理读取器节省了出口量。
 
 事件中心存档配置后，在用户发送第一个事件时，就立即自动运行。 它始终继续运行。 为了让下游处理更便于了解该进程正在运行，事件中心在没有数据时写入空文件。 这提供了可预测的频率以及可以供给 Batch 处理器的标记。
 
