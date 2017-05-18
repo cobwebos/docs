@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2016
+ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 90ba006f25c27e1dc24c85fdc4ef1d5e2a8d0e3d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -46,10 +48,5 @@ ms.openlocfilehash: 90ba006f25c27e1dc24c85fdc4ef1d5e2a8d0e3d
 * 想要知道可以使用哪些安全、审核和活动报告吗？ 请查看 [Azure AD 安全、审核和活动报告](active-directory-view-access-usage-reports.md)
 * [Azure Active Directory 高级版入门](active-directory-get-started-premium.md)
 * [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

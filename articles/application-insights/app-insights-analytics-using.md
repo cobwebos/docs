@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 8485fd9350672dd0f41e2d5dada57a1940c43f16
-ms.lasthandoff: 04/13/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6c8df6b9804d082c8044cdb2420cc5ea42b9774f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -123,6 +124,16 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 如果有多个正确类型的列，可以选择 x 和 y 轴以及一个维度列作为拆分结果的依据。
 
 默认情况下，结果最初以表的形式显示，你可以手动选择图表。 但也可以在查询末尾使用 [render 指令](app-insights-analytics-reference.md#render-directive)选择图表。
+
+### <a name="analytics-diagnostics"></a>Analytics Diagnostics
+
+
+时间图表中，如果数据出现突增或上了一个台阶，则可在图线中看到突出显示的点。 这表示 Analytics Diagnostics 已标识筛选出发生突然变化的属性组合。 单击相应的点可获取有关筛选器的详细信息以及查看筛选器版本。 这有助于确定导致出现变化的原因。 
+
+[详细了解 Analytics Diagnostics](app-insights-analytics-diagnostics.md)
+
+
+![Analytics Diagnostics](./media/app-insights-analytics-using/analytics-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>固定到仪表板
 可以将图表或表固定到某个[共享仪表板](app-insights-dashboards.md) - 单击“固定”即可。 （可能需要[升级应用的资费套餐](app-insights-pricing.md)才能启用此功能。） 

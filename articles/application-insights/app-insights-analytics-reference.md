@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
-ms.author: awills
+ms.date: 05/05/2017
+ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 93831bb163f67bbf40026faf3096ff5b7c581dfe
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3fb2464e3757d316367487506f0aca9f1c2e35cc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -35,13 +35,16 @@ ms.lasthandoff: 04/28/2017
 ## <a name="index"></a>索引
 **Let** [let](#let-clause) | [materialize](#materialize) 
 
-**查询和运算符** [as](#as-operator) | [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [getschema](#getschema-operator) | [join](#join-operator) | [limit](#limit-operator) | [make-series](#make-series-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render 指令](#render-directive) | [restrict 子句](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [table](#table-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
+**查询和运算符** [as](#as-operator) | [autocluster](#evaluate-autocluster) | [basket](#evaluate-basketv2) | [count](#count-operator) | [datatable](#datatable-operator) | [diffpatterns](#evaluate-diffpatterns) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [extractcolumns](#evaluate-extractcolumns) | [find](#find-operator) | [getschema](#getschema-operator) | [join](#join-operator) | [limit](#limit-operator) | [make-series](#make-series-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [table](#table-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
 
 **聚合** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
 **标量** [Boolean Literals](#boolean-literals) | [Boolean operators](#boolean-operators) | [Casts](#casts) | [Scalar comparisons](#scalar-comparisons) | [gettype](#gettype) | [hash](#hash) | [iff](#iff) | [isnotnull](#isnotnull) | [isnull](#isnull) | [notnull](#notnull) | [toscalar](#toscalar)
 
 **数字** [Arithmetic operators](#arithmetic-operators) | [Numeric literals](#numeric-literals) | [abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [gamma](#gamma) | [log](#log) | [rand](#rand) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+
+**数字序列** 
+[series_fir](#seriesfir) | [series\_fit\_line](#seriesfitline) | [series\_fit\_2lines](#seriesfit2lines) | [series_iir](#seriesiir) | [series_periods](#seriesperiods) | [series_stats](#seriesstats) | 
 
 **日期和时间** [Date and time expressions](#date-and-time-expressions) | [Date and time literals](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
@@ -315,10 +318,12 @@ datatable (Supplier: string, Fruit: string, Price:int)
 
 `evaluate` 必须是查询管道中的最后一个运算符（`render` 是最后一个运算符的情况除外）。 它不能出现在函数体中。
 
-[evaluate autocluster](#evaluate-autocluster) | [evaluate basket](#evaluate-basket) | [evaluate diffpatterns](#evaluate-diffpatterns) | [evaluate extractcolumns](#evaluate-extractcolumns)
+[evaluate autocluster](#evaluate-autocluster) | [evaluate basket](#evaluate-basketv2) | [evaluate diffpatterns](#evaluate-diffpatterns) | [evaluate extractcolumns](#evaluate-extractcolumns)
 
 #### <a name="evaluate-autocluster"></a>evaluate autocluster
      T | evaluate autocluster()
+
+Autocluster 可以快速发现一组数据的自然分组。 例如，可以从大量请求数据中快速发现，80% 的 404 失败都源自特定城市中某个客户端对特定 URL 发出的请求。
 
 AutoCluster 查找数据中离散属性（维度）的常见模式，并将原始查询的结果（无论是 100 行还是 10 万行）减少到数量较少的模式。 开发 AutoCluster 的目的是帮助分析故障（例如异常、崩溃），但也可能处理任何筛选的数据集。 
 
@@ -369,10 +374,11 @@ AutoCluster 返回一组模式（通常较小），这些模式跨多个离散�
   
     示例：`T | evaluate autocluster("weight_column=sample_Count")` 
 
-#### <a name="evaluate-basket"></a>evaluate basket
+#### <a name="evaluate-basket-deprecated"></a>evaluate basket（已弃用）
+
      T | evaluate basket()
 
-Basket 查找数据中离散属性（维度）的所有频繁模式，并返回原始查询中传递频率阈值的所有频繁模式。 Basket 能确保查找出数据中的所有频繁模式，但不能保证存在多项式运行时。 在行数方面，查询的运行时是线性的，但有些时候，在列数（维度）方面，它可能是指数的。 Basket 基于最初开发用于 basket 分析数据挖掘的 Apriori 算法。 
+此版本的 `basket` 已弃用。请使用 [basket_v2](#evaluate-basketv2)。
 
 **返回**
 
@@ -400,10 +406,55 @@ Basket 查找数据中离散属性（维度）的所有频繁模式，并返回�
   * `minimize` - 筛选出结果中仅含“*”的列。
   * `all` - 输入中的所有列均为输出。
 
+<a name="evaluate-basket"></a>
+#### <a name="evaluate-basketv2"></a>evaluate basket_v2
+
+     T | evaluate basket_v2()
+
+Basket 查找数据中离散属性（维度）的所有频繁模式，并返回原始查询中传递频率阈值的所有频繁模式。 Basket 能确保查找出数据中的所有频繁模式，但不能保证存在多项式运行时。 在行数方面，查询的运行时是线性的，但有些时候，在列数（维度）方面，它可能是指数的。 Basket 基于最初开发用于 basket 分析数据挖掘的 Apriori 算法。 
+
+替换弃用的 `evaluate basket` 语法。
+
+**返回**
+
+事件的多个指定小数（默认为 0.05）中显示的所有模式。 对于每个模式，未在该模式中设置（即未对特定值施加限制）的列将包含一个通配符值，该值在默认情况下为 null（请查看下面的参数部分，了解如何手动更改此值）。
+
+**参数（全部可选）**
+
+参数全部可选，但必须遵循以下顺序。 若要指示应使用默认值，请使用波形符“~”（请参阅下面的示例）。
+
+* 阈值：0.015 < double <1（默认值：0.05） 
+  
+    设置作为频繁行的最低比例（不会返回比例较低的模式）。
+  
+    示例：`T | evaluate basket(0.02)`
+* 权重列 itemCount
+  
+    用于将采样和指标预聚合纳入考虑范围。 每一行的权重都在此列中指定。 默认情况下，每一行的权重都是“1”。 这会计入每一行已嵌入数据的存储或聚合。
+  
+    示例：`T | evaluate basket('~', itemCount)`
+* 最大维度：1 < int（默认值：5）
+  
+    设置每个 basket 不相关维度的最大数量，默认情况下此数量不能减少查询运行时。
+
+    示例：`T | evaluate basket('~', '~', 3)`
+* 自定义通配符类型：每种类型可以是任何值
+  
+    为结果表中的特定类型设置通配符，表明当前模式对此列没有任何限制。 默认值为 null，字符串的默认值为空字符串。 如果默认值是可行数据值，应使用其他通配符值（例如 *）。
+
+    示例：`T | evaluate basket_v2('~', '~', '~', '*', int(-1), double(-1), long(0), datetime(1900-1-1))`
+
+**示例**
+
+``` AIQL
+requests 
+| evaluate basket_v2(0.7, itemCount)
+```
+
 #### <a name="evaluate-diffpatterns"></a>evaluate diffpatterns
      requests | evaluate diffpatterns("split=success")
 
-Diffpatterns 比较同一结构中的两个数据集，并查找区分两个数据集的离散属性（维度）的模式。 开发 diffpatterns 的目的是帮助分析故障（例如，比较给定时间范围内的故障和非故障），但也可查找出同一结构中任何两个数据集之间的差异。 
+Diffpatterns 可以识别相同结构的两个数据集（例如，发生事件时的请求日志和正常的请求日志）之间的差异。 开发 diffpatterns 的目的是帮助分析故障（例如，比较给定时间范围内的故障和非故障），但也可查找出同一结构中任何两个数据集之间的差异。 
 
 **语法**
 
@@ -2102,6 +2153,299 @@ true 或 false 具体取决于值是否为 null。
     tolong("  123  ")  // parse string
     tolong(a[0])       // cast from dynamic
     tolong(b.c)        // cast from dynamic
+
+## <a name="numeric-series"></a>数字序列
+
+[series_fir](#seriesfir) | [series\_fit\_line](#seriesfitline) | [series\_fit\_2lines](#seriesfit2lines) | [series_iir](#seriesiir) |  [series_periods](#seriesperiods) | [series_stats](#seriesstats)  
+
+### <a name="seriesfir"></a>series_fir
+series_fir() 函数会对序列（其表示形式为包含数值数组的动态列）应用[有限脉冲响应](https://wikipedia.org/wiki/Finite_impulse_response)滤波器。
+
+通过指定滤波器系数，该函数可用于计算移动平均值、进行修匀处理和检测更改等。
+
+该函数的输入列包含由滤波器系数组成的动态数组和静动态数组，并且该函数会对此输入列应用滤波器。 它会输出新的动态数组列，其中包括滤波后的输出。 
+
+**语法**
+
+`series_fir(x, filter [, normalize[, center]])`
+
+**参数**
+
+* x：动态数组单元格（数值数组），通常是 [make-series](#make-series-operator) 或 [makelist](#makelist-operator) 运算符生成的输出。
+* filter：一个可选布尔值，指示是否应将滤波器系数规范化（即除以总和）。 默认情况下，normalize 为 true。 如果滤波器包含负数，则不能自动进行规范化，并且必须将 normalize 显式设置为 false。
+* normalize：一个可选布尔值，指示是否应将滤波器规范化。 默认情况下，normalize 为 true。 如果滤波器包含负数，则必须将 normalize 指定为 false。 
+* center：一个可选布尔值，指示是对某个时段对称地（当前时间点之前和之后）应用滤波器，还是对当前时间点之前的时段应用滤波器。 默认情况下，center 为 false，适用于流式数据，只能对当前时间点以及之前的时间点应用滤波器；但是，也可将该参数设置为 true，使其与时间序列保持同步，实现即席处理（请参阅下面的示例）。 从技术上讲，此参数用于控制滤波器的群延迟。
+
+**示例**
+
+将 filter 设置为 [1,1,1,1,1]，并且将 normalize 设置为 true（默认值），可以计算 5 个时间点的移动平均值。 请注意将 center 分别设置为 false（默认值）和 true 的结果：
+
+```AIQL
+range t from bin(now(), 1h)-23h to bin(now(), 1h) step 1h
+| summarize t=makelist(t)
+| project id='TS', val=dynamic([0,0,0,0,0,0,0,0,0,10,20,40,100,40,20,10,0,0,0,0,0,0,0,0]), t
+| extend 5h_MovingAvg=series_fir(val, dynamic([1,1,1,1,1])),
+         5h_MovingAvg_centered=series_fir(val, dynamic([1,1,1,1,1]), true, true)
+| render timechart
+```
+
+此查询将返回：
+
+* 5h_MovingAvg：5 个时间点的移动平均值滤波器。 峰值经过了修匀处理，并且偏移了 (5-1)/2 = 2 小时。
+* 5h_MovingAvg_centered：结果同上，但是由于将 center 设置为 true，导致峰值保留在其原始位置。
+
+![查询结果](./media/app-insights-analytics-reference/series-fir-1.png)（若要查看多条线，请在图表控件中取消选择“拆分”。）
+
+通过将 filter 设置为 [1,-1]，可以计算某个时间点和其前一个时间点之间的差值：
+
+```AIQL
+range t from bin(now(), 1h)-11h to bin(now(), 1h) step 1h
+| summarize t=makelist(t)
+| project id='TS',t,value=dynamic([0,0,0,0,2,2,2,2,3,3,3,3])
+| extend diff=series_fir(value, dynamic([1,-1]), false, false)
+| render timechart
+```
+
+
+![查询结果](./media/app-insights-analytics-reference/series-fir-2.png)
+
+
+### <a name="seriesfitline"></a>series\_fit\_line
+series_fit_line() 函数将包含动态数值数组的列作为输入并执行线性回归，找出最拟合的直线。 应对时间序列数组使用此函数，拟合 make-series 运算符的输出。 它会生成一个包含以下字段的动态列：
+
+* slope：近似直线的斜率（即 `y=ax+b` 中的 `a`）。
+* interception：近似直线的截距（即 `y=ax+b` 中的 `b`）。
+* rsquare：相关系数平方是用于衡量拟合质量的标准。 它是 [0-1] 范围内的数字，其中 1 表示最拟合，0 表示数据完全无序，并且与任何直线均不拟合。
+* variance：输入数据的方差。
+* rvariance：剩余方差，即输入数据值和近似数据值之间的方差。
+* line_fit：数值数组，其中包含最拟合直线的一系列值。 序列长度等于输入数组的长度。 它主要用于绘制图表。
+
+使用此函数最便捷的方法是将其用于 make-series 运算符的结果。
+
+**语法**
+    
+    series_fit_line(x)
+
+**参数**
+
+* `x:` 数值的动态数组。 请注意，该函数要求所有行具有相同数量的数组元素。 否则将返回空结果。 
+
+**示例**
+
+```AIQL
+range x from 1 to 1 step 1
+| project id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,8,11,15,17,18,25,26,30,30])
+| extend (s,i,rs,v,rv,LineFit)=series_fit_line(y)
+| render timechart 
+```
+
+![查询结果](./media/app-insights-analytics-reference/series-fit-line.png)
+
+|Slope|Interception|RSquare|Variance|RVariance|LineFit|
+|---|---|---|---|---|---|
+|0.982|2.730|98.628|1.686|-1.666| 1.064、3.7945、6.526、9.256、11.987、14.718、17.449、20.180、22.910、25.641、28.371 |
+
+### <a name="seriesfit2lines"></a>series\_fit\_2lines
+
+series_fit_2lines() 函数对时间序列应用两段线性回归，识别和量化序列中的趋势变化。 该函数循环访问序列索引，并在每个循环中将序列拆分为两部分，每部分拟合一条单独的直线（使用 series_fit_line()），并计算总相关系数平方。 最好的拆分方式是最大限度提高相关系数平方值；函数将返回其参数：
+
+* rsquare：相关系数平方是用于衡量拟合质量的标准。 它是 [0-1] 范围内的数字，其中 1 表示最拟合，0 表示数据完全无序，并且与任何直线均不拟合
+* split_idx：拆分点的索引（从零开始）
+* variance：输入数据的方差
+* rvariance：剩余方差，即输入数据值和近似数据值之间的方差（按两个线段）。
+* line_fit：数值数组，其中包含最拟合直线的一系列值。 序列长度等于输入数组的长度。 它主要用于绘制图表。
+* right_rsquare：拆分点右侧直线的相关系数平方，请参阅 series_fit_line()
+* right_slope：右侧近似直线的斜率（即 y=ax+b 中的 a）
+* right_interception：左侧近似直线的截距（即 y=ax+b 中的 b）
+* right_variance：拆分点右侧输入数据的方差
+* right_rvariance：拆分点右侧输入数据的剩余方差
+* left_rsquare：拆分点左侧直线的相关系数平方，请参阅 series_fit_line()
+* left_slope：左侧近似直线的斜率（即 y=ax+b 中的 a）
+* left_interception：左侧近似直线的截距（即 y=ax+b 中的 b）
+* left_variance：拆分点左侧输入数据的方差
+* left_rvariance：拆分点左侧输入数据的剩余方差
+
+请注意，此函数将返回多个列，因此不能将其用作其他函数的自变量。
+
+**语法**
+
+    project series_fit_2lines(x)
+
+将返回上述所有列，使用的名称为：`series_fit_2lines_x_rsquare, series_fit_2lines_x_split_idx and etc.`
+
+    project (rs, si, v)=series_fit_2lines(x)
+
+将返回以下列：`rs (r-square), si (split index), v (variance)`，并且其他部分看起来将类似于：`series_fit_2lines_x_rvariance, series_fit_2lines_x_line_fit` 等。
+
+    extend (rs, si, v)=series_fit_2lines(x)
+
+将仅返回：rs（相关系数平方）、si（拆分索引）和 v（方差）。
+
+**参数**
+
+* x：数值的动态数组。 
+
+使用此函数最便捷的方法是将其用于 make-series 运算符的结果。
+
+**示例**
+
+```AIQL
+range x from 1 to 1 step 1
+| project id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([1,2.2, 2.5, 4.7, 5.0, 12, 10.3, 10.3, 9, 8.3, 6.2])
+| extend (Slope,Interception,RSquare,Variance,RVariance,LineFit)=series_fit_line(y), (RSquare2, SplitIdx, Variance2,RVariance2,LineFit2)=series_fit_2lines(y)
+| project id, x, y, LineFit, LineFit2
+| render timechart
+```
+
+
+![查询结果](./media/app-insights-analytics-reference/series-fit-2lines.png)
+
+### <a name="seriesiir"></a>series_iir
+
+series_fir() 函数会对序列（其表现形式为包含数值数组的动态列）应用无限脉冲响应滤波器。
+
+通过指定滤波器系数，该函数可用于对序列求和、应用修匀操作以及各种高通、带通和低通滤波器。
+
+该函数的输入列包含由滤波器的 a 系数和 b 系数组成的动态数组和两个静动态数组，并且该函数会对此输入列应用滤波器。 它会输出新的动态数组列，其中包括滤波后的输出。 
+
+**语法**
+
+    series_iir(x, b , a)
+
+**参数**
+
+
+* x：动态数组单元格（数值数组），通常是 make-series 或 makelist 运算符生成的输出。
+* b：一个常量表达式，其中包含滤波器的分子系数（存储为由数值组成的动态数组）。
+* a：一个常量表达式，例如 b。 包含滤波器的分母系数。
+
+    a 的第一个元素（即 a[0]）不得为零（为避免除以 0；请参阅下面的公式）。
+
+有关滤波器递归公式的其他信息
+
+假定输入数组为 X，系数数组 a 和 b 的长度分别为 `n_a` 和 `n_b`，滤波器的传递函数（将生成输出数组 Y）定义方式为（另请参阅 Wikipedia）： 
+
+    Y[i] = 1/a[0] * ( b[0]*X[i] + b[1]*X[i-1] + … 
+                 + b[n_b-1]*X[i-n_b-1] — a[1]*Y[i-1] – a[2]*Y[i-2] – …
+                 – a[n_a-1]*Y[i-n_a-1] )
+
+
+**示例**
+
+可以通过将 iir 滤波器的系数 a 设置为[1,-1]，b 设置为 [1] 进行求和： 
+
+```AIQL
+let x = range(1.0, 10, 1);
+range t from 1 to 1 step 1
+| project x=x, y = series_iir(x, dynamic([1]), dynamic([1,-1]))
+| mvexpand x, y
+```
+
+|x|y|
+|---|---|
+|1.0|1.0|
+|2.0|3.0|
+|3.0|6.0|
+|4.0|10.0|
+
+
+### <a name="seriesperiods"></a>series_periods
+
+series_periods() 函数可以找出一个时间序列中最重要的周期。
+
+例如，通常可以按照两个重要的周期来描述测量应用程序流量的指标：每周和每天。 在这类时间序列中，series_periods() 应检测这两个重要周期。
+
+该函数的输入列包括一个由时间序列组成的动态数组（通常是 make-series 运算符生成的输出）、两个用于定义最小和最大周期大小（即分箱数目，例如，对于 1 小时的分箱，每天这一周期的大小为 24）的实数，以及定义函数搜索的总周期数的一长串数字。 输出是一个动态数组，其中包含已找到周期的大小，按数据中周期的重要性进行排序。
+
+**语法**
+
+    series_periods(x, min_period, max_period, num_periods)`
+
+**参数**
+
+* x：动态数组单元格（数值数组），通常是 make-series 或 makelist 运算符生成的输出。
+* min_period：一个实数，指定要搜索的最小周期。
+* max_period：一个实数，指定要搜索的最大周期。
+* num_periods：一长串数字，指定所需最大周期数。 这将是输出动态数组的长度。
+
+重要事项
+
+* 要检测出一个周期，series\_periods() 后的算法内必须至少包含该周期内的 4 个点。 因此，min_period 的最小值为 4。 如果将 min_period 设置为更小的值，函数会将其替换为 4。
+* max_period 的最大值是输入序列长度的一半。 如果将 max_period 设置为更大的值，函数会将其修改为该值。
+* 如上所述，生成的周期以分箱为单位，这就是说，如果原始序列的周期为每日，并且按每小时分箱进行聚合，则输出中的每日周期为 24；如果数据按分钟聚合，则输出为 60*24=1440。
+* 设置的 min\_period 应略低于要在时间序列中查找的周期，而 max\_period 应略高于该周期。 例如，对于每小时聚合的信号，如果要查找每日和每周周期（分别是 24 和 168），则可以进行如下设置：min\_period=0.824、max\_period=1.2168。
+* 输出动态数组的长度为 num\_of\_periods；如果函数找到的周期数少于 num\_of\_periods 有效周期数，则数组项的其余部分将设为 0。
+* 输入时间序列必须有规律，即收集在常量箱中（使用 make-series 创建的时间序列始终满足此条件）。 否则，输出就没有意义。
+
+**示例**
+
+例如，下面的查询嵌入了应用程序某个月流量的快照，一天聚合两次（即每 12 小时一次）。
+
+```AIQL
+range x from 1 to 1 step 1
+| project y=dynamic([80,139,87,110,68,54,50,51,53,133,86,141,97,156,94,149,95,140,77,61,50,54,47,133,72,152,94,148,105,162,101,160,87,63,53,55,54,151,103,189,108,183,113,175,113,178,90,71,62,62,65,165,109,181,115,182,121,178,114,170])
+| project x=range(1, arraylength(y), 1), y  
+| render linechart
+```
+
+![查询结果](./media/app-insights-analytics-reference/series-periods1.png)
+
+对此序列运行 series_periods() 得住的周期为每周（长度为 14 个点）：
+
+```AIQL
+range x from 1 to 1 step 1
+| project y=dynamic([80,139,87,110,68,54,50,51,53,133,86,141,97,156,94,149,95,140,77,61,50,54,47,133,72,152,94,148,105,162,101,160,87,63,53,55,54,151,103,189,108,183,113,175,113,178,90,71,62,62,65,165,109,181,115,182,121,178,114,170])
+| project x=range(1, arraylength(y), 1), y  
+| project periods = series_periods(y, 4.0, 50.0, 2)
+```
+
+|periods|
+|---|
+|[14.0, 0.0]|
+
+### <a name="seriesstats"></a>series_stats
+
+series_stats() 函数将包含动态数值数组的列作为输入，并计算以下各列：
+
+* min：输入数组中的最小值
+* min_idx：输入数组中的最大值
+* max：输入数组中的最大值
+* max_idx：输入数组中的最大值
+* average：输入数组中的平均值
+* variance：输入数组中的样本方差
+* stdev：输入数组的样本标准差
+
+请注意，此函数将返回多个列，因此不能将其用作其他函数的自变量。
+
+**语法**
+
+    project series_stats(x)
+
+返回上述所有列，并使用以下名称：serie\_stats\_x\_min、series\_stats\_x\_min\_idx 等。
+
+    project (m, mi)=series_stats(x)
+
+返回以下列：`m (min), mi (min_idx)`，并且其他部分看起来将类似于：`series_stats_x_max, series_stats_x_line_max_idx` 等。
+
+    extend (m, mi)=series_stats(x)
+
+仅返回：m (min) 和 mi (min_idx)。
+
+**参数**
+
+* x：动态数组单元格（数值数组）。 
+
+**示例**
+
+对于以下输入：
+
+` [1,6,11,16,21,26,31,36,41,46,51,56,61,66,71,76,81,86,91,96]`
+
+series_stats() 返回：
+
+|min|min\_idx|max|max\_idx|average|variance|stdev|
+|---|---|---|---|---|---|---|
+|1.0|1|96.0|19|48.5|29.58039891549808|875.0|
 
 
 ## <a name="date-and-time"></a>日期和时间

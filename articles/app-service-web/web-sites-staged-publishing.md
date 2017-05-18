@@ -1,6 +1,6 @@
 ---
-title: "为 Azure App Service 中的 Web 应用设置过渡环境 | Microsoft Docs"
-description: "了解如何对 Azure App Service 中的 Web 应用使用分阶段发布。"
+title: "为 Azure 应用服务中的 Web 应用设置过渡环境 | Microsoft Docs"
+description: "了解如何对 Azure 应用服务中的 Web 应用使用分阶段发布。"
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a51be4038ef6f9890645a71cd10cc86cb58929f3
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: dd0382aaec0cdcbd6688d99f7bc0245fae5b963f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure App Service 中的过渡环境
+# <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
 
-将 Web 应用、移动后端和 API 应用部署到[应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)时，如果应用在“标准”或“高级”应用服务计划模式下运行，则可以部署到单独的部署槽而不是默认的生产槽。 部署槽实际上是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 将应用程序部署到部署槽具有以下优点：
+将 Web 应用、Linux 上的 Web 应用、移动后端和 API 应用部署到 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714)时，如果应用在“标准”或“高级”App Service 计划模式下运行，则可以部署到单独的部署槽而不是默认的生产槽。 部署槽实际上是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 将应用程序部署到部署槽具有以下优点：
 
 * 可以在分阶段部署槽中验证应用更改，然后将其与生产槽交换。
 * 首先将应用部署到槽，然后将其交换到生产，这确保槽的所有实例都已准备好，然后交换到生产。 部署应用时，这样可避免停机。 流量重定向是无缝的，且不会因交换操作而删除任何请求。 当不需要预交换验证时，可以通过配置[自动交换](#Auto-Swap)来自动化这整个工作流。
@@ -119,6 +120,9 @@ ms.lasthandoff: 04/27/2017
 带预览的交换（或多阶段交换）可简化特定于槽的配置元素（如连接字符串）的验证。
 对于任务关键型工作负荷，在应用生产槽的配置时，请验证应用的行为是否符合预期，并且必须在将应用交换到生产之前执行此验证。 带预览的交换正是你需要的。
 
+> [!NOTE]
+> Linux 上的 Web 应用不支持带预览的交换。
+
 如果使用“带预览的交换”选项（请参阅[交换部署槽](#Swap)），应用服务将执行以下操作：
 
 - 目标槽保持不变，该槽上的现有工作负荷（如生产）不会受影响。
@@ -140,6 +144,9 @@ ms.lasthandoff: 04/27/2017
 > 当你为某个槽启用自动交换时，请确保槽配置与针对目标槽（通常是生产槽）的配置完全相同。
 > 
 > 
+
+> [!NOTE]
+> Linux 上的 Web 应用中不支持自动交换。
 
 为槽配置自动交换很容易。 请遵循以下步骤进行配置：
 
@@ -185,7 +192,7 @@ ms.lasthandoff: 04/27/2017
 <a name="PowerShell"></a>
 
 ## <a name="azure-powershell-cmdlets-for-deployment-slots"></a>适用于部署槽的 Azure PowerShell cmdlet
-Azure PowerShell 是一个模块，可提供通过 Windows PowerShell 管理 Azure 的 cmdlet，包括对管理 Azure App Service 的部署槽的支持。
+Azure PowerShell 是一个模块，可提供通过 Windows PowerShell 管理 Azure 的 cmdlet，包括对管理 Azure 应用服务的部署槽的支持。
 
 * 有关安装和配置 Azure PowerShell 的信息以及使用 Azure 订阅对 Azure PowerShell 进行身份验证的信息，请参阅[如何安装和配置 Microsoft Azure PowerShell](/powershell/azure/overview)。  
 
@@ -236,7 +243,7 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服务部署槽的支持。
 
 * 有关安装和配置 Azure CLI 的说明（包括有关如何将 Azure CLI 连接到 Azure 订阅的信息），请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)。
-* 若要在 Azure CLI 中列出可用于 Azure App Service 的命令，请调用 `azure site -h`。
+* 若要在 Azure CLI 中列出可用于 Azure 应用服务的命令，请调用 `azure site -h`。
 
 > [!NOTE] 
 > 若要了解部署槽的 [Azure CLI 2.0](https://github.com/Azure/azure-cli) 命令，请参阅 [az appservice web 部署槽](/cli/azure/appservice/web/deployment/slot)。
@@ -276,8 +283,8 @@ Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服
 > 
 
 ## <a name="next-steps"></a>后续步骤
-[Azure App Service Web 应用 – 阻止对非生产部署槽的 Web 访问](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
-
+[Azure App Service Web App – block web access to non-production deployment slots](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)（Azure App Service Web 应用 – 阻止对非生产部署槽进行 Web 访问）
+[Linux 上的 App Service 简介](./app-service-linux-intro.md)
 [Microsoft Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)
 
 <!-- IMAGES -->

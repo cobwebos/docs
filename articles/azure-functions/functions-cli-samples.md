@@ -31,16 +31,11 @@ ms.lasthandoff: 05/10/2017
 |**创建应用**||
 | [创建可无服务器执行的 Function App](scripts/functions-cli-create-serverless.md) | 在消耗计划中创建 Function App。  |
 | [在应用服务计划中创建 Function App](scripts/functions-cli-create-app-service-plan.md) | 在专用应用服务计划中创建 Function App。 |
-
 | | |
-|-|-|
 |**集成**||
 | [创建 Function App 并连接到存储帐户](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | 创建 Function App 并将其连接到存储帐户。 |
 | [创建 Function App 并连接到 Azure Cosmos DB](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | 创建 Function App 并将其连接到 Azure Cosmos DB |
-
-
 | | |
-|-|-|
 |**配置应用**||
 | [将自定义域映射到 Function App](scripts/functions-cli-configure-custom-domain.md) | 定义函数的自定义域。  |
 | [将 SSL 证书绑定到 Function App](scripts/functions-cli-configure-ssl-certificate.md)  |  将函数的 SSL 证书上传到自定义域中。 |
@@ -50,3 +45,4 @@ ms.lasthandoff: 05/10/2017
 
 |**Connect app to resources**||
 -->
+

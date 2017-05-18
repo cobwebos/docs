@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 37b85ba4987f8f29e4e825a17f0a892ddabf9599
-ms.lasthandoff: 04/12/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e76a31a8eaa249ab064d180bfd7ed158ef32c85a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -86,19 +87,35 @@ ms.lasthandoff: 04/12/2017
 
 ![固定到仪表板](./media/app-insights-app-map/12.png)
 
+## <a name="error-pane"></a>错误窗格
+单击映射中的节点，将在右侧显示汇总该节点故障的错误窗格。 故障首先按操作 ID 分组，然后按问题 ID 分组。
+
+![错误窗格](./media/app-insights-app-map/error-pane.png)
+
+单击故障可转到该故障的最新实例。
+
+## <a name="resource-health"></a>资源运行状况
+对于某些资源类型，资源运行状况将显示在错误窗格的顶部。 例如，单击 SQL 节点将显示数据库运行状况和触发的任何警报。
+
+![资源运行状况](./media/app-insights-app-map/resource-health.png)
+
+可以单击资源名称，查看该资源的标准概述指标。
+
 ## <a name="end-to-end-system-app-maps"></a>端到端系统应用映射
+
+需要 SDK 2.3 或更高版本
 
 如果应用程序具有多个组件（例如，除 Web 应用外还有后端服务），则通过一个集成的应用映射将其全部显示。
 
 ![设置筛选器](./media/app-insights-app-map/multi-component-app-map.png)
 
-应用映射通过在当前资源组中查找所有 Application Insights 资源寻找服务器节点。 它还通过在资源组中跟进由 Application Insights 资源跟踪的任何依赖项调用来检测服务器节点。
+应用映射通过跟踪已安装 Application Insights SDK 的服务器之间进行的任何 HTTP 依赖项调用来查找服务器节点。 假定每个 Application Insights 资源包含一个服务器。
 
+### <a name="multi-role-app-map-preview"></a>多角色应用映射（预览版）
 
-### <a name="setting-up"></a>设置
+预览版多角色应用映射功能允许使用包含多个服务器的应用映射将数据发送到相同的 Application Insights 资源/检测密钥。 映射中的服务器由遥测项上的 cloud_RoleName 属性进行分段。 在“预览”边栏选项卡上，将“多角色应用程序映射”设置为“启用”以启用此配置。
 
-> [!NOTE] 
-> 端到端系统应用映射处于预览状态。 需要通过特殊版本的 SDK 检测组件，并需使用特殊 URL 查看应用映射。 [了解如何设置端到端系统应用映射](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-app-map-preview.md)。
+此方法可能适用于微服务应用程序，或需在单个 Application Insights 资源中跨多个服务器关联事件的方案。
 
 ## <a name="video"></a>视频
 

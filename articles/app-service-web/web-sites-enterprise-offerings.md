@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: anwestg
-translationtype: Human Translation
-ms.sourcegitcommit: 4d3b3096e42736fddd3bb5b9f39376271d193c58
-ms.openlocfilehash: 980eb9ff0990d532a77614be571e3f6d24a1dfee
-ms.lasthandoff: 12/07/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4d46654f42a3fd5c9b491f1b565c2acfa0dc52c4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -112,7 +113,7 @@ Web 应用现在在全球 24 个数据中心提供，且还在不断增长。 �
 
 迁移流程中的后续步骤是创建应用服务 Web 应用和 Azure SQL 数据库。 有多个具有不同 CPU 内核数量和 RAM 数量的各种规模的 Web 应用实例可供您根据 Web 应用程序需求选择。 有关详细信息和定价，请参阅 [https://azure.microsoft.com/pricing/details/app-service/](https://azure.microsoft.com/pricing/details/app-service/)。 同样，Microsoft Azure SQL 数据库适用于所有业务需求，可提供各种服务层和性能级别来满足需求。 可在 [https://azure.microsoft.com/pricing/details/sql-database/](https://azure.microsoft.com/pricing/details/sql-database/) 找到其他信息。 创建完成后，应用程序被上传到应用服务 Web 应用（通过 FTP 或 WebDeploy），然后再迁移到数据库。
 
-在这种迁移中，该解决方案使用了 Azure SQL 数据库，但是这不是 Azure 支持的唯一的数据库。 公司还可以通过外接程序（可在 [Azure 应用商店](/marketplace/partner-program/)购买）使用 MySQL、MongoDB、Azure DocumentDB 等数据库。
+在这种迁移中，该解决方案使用了 Azure SQL 数据库，但是这不是 Azure 支持的唯一的数据库。 公司还可以通过外接程序（可在 [Azure 应用商店](/marketplace/partner-program/)购买）使用 MySQL、MongoDB、Azure Cosmos DB 等数据库。
 
 在创建 Azure SQL 数据库时，可使用以下多种方法从本地服务器中导入现有数据库：从生成现有数据库的脚本到使用[数据层应用程序导出和导入](http://aka.ms/dacpac)。
 

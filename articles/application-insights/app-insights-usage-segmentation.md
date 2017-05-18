@@ -1,0 +1,75 @@
+---
+title: "在 Azure Application Insights 中进行用户、会话和事件分析 | Microsoft docs"
+description: "对你的 Web 应用的用户进行人口统计学分析。"
+services: application-insights
+documentationcenter: 
+author: botatoes
+manager: carmonm
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: multiple
+ms.topic: article
+ms.date: 05/03/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 912e3e25680034828aee93d23c6a725c2cec0d45
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
+
+---
+
+# <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
+
+查明人们何时使用你的 Web 应用，他们对哪些页面最感兴趣，你的用户在哪里以及他们使用什么浏览器和操作系统。 使用 [Azure Application Insights](app-insights-overview.md) 分析业务和使用情况遥测
+
+## <a name="get-started"></a>入门
+
+如果在 Application Insights 门户的“用户”、“会话”或“事件”边栏选项卡中没有看到数据，请[了解如何开始使用“使用情况”工具](app-insights-usage-overview.md)。
+
+## <a name="the-users-sessions-and-events-segmentation-tool"></a>用户、会话和事件分段工具
+
+三个使用情况边栏选项卡使用相同的工具从三个视角对来自 Web 应用的遥测进行切片和切块。 通过对数据进行筛选和拆分，你可以洞察不同页面和功能的相对使用情况。
+
+* **“用户”工具**：多少人使用了你的应用及其功能。  将使用浏览器 cookie 中存储的匿名 ID 对用户进行计数。 使用不同浏览器或计算机的单个用户会被计为多个用户。
+* **“会话”工具**：用户活动的多少会话包括了你的应用的特定页面和功能。 会话是在用户处于不活动状态半小时后或者在连续使用 24 小时后进行计数的。
+* **“事件”工具**：你的应用的特定页面和功能是以何频率使用的。 当浏览器加载了你的应用中的页面时将计入一次页面查看，前提是你已[检测到此操作](app-insights-javascript.md)。 
+
+    自定义事件表示应用中发生的某个事件的一次出现，通常是一项用户交互，例如单击按钮或某项任务完成。 可以在应用中插入代码来[生成自定义事件](app-insights-api-custom-events-metrics.md#trackevent)。
+
+![“使用情况”工具](./media/app-insights-usage-segmentation/users.png)
+
+## <a name="querying-for-certain-users"></a>查询特定用户 
+
+通过在“用户”工具的顶部调整查询选项来探究不同的用户组： 
+
+* 使用者：选择自定义事件和页面视图。 
+* 期间：选择一个时间范围。 
+* 依据：选择如何划分数据的存储段，可以按时间段或按其他属性（例如浏览器或城市）。 
+* 拆分依据：选择对数据进行拆分或分段时要依据的属性。 
+* 添加筛选器：将查询限制到特定的用户、会话或事件（根据其属性，例如浏览器或城市）。 
+ 
+## <a name="saving-and-sharing-reports"></a>保存和共享报表 
+你可以将用户报表保存为在“我的报表”部分中专供你使用的报表，或者将其保存为在“共享报表”部分中可供对此 Application Insights 资源具有访问权限的其他所有人访问的共享报表。  
+ 
+在保存报表或编辑其属性时，选择“当前相对时间范围”可保存带有持续刷新数据的报表，其最近刷新时间与当前时间会相差一个固定的时间量。  
+ 
+选择“当前绝对时间范围”可保存具有固定数据集的报表。 请记住，Application Insights 中的数据仅存储 90 天，因此，如果具有绝对时间范围的报表自保存后已过去了 90 多天，则报表将显示为空。 
+ 
+## <a name="example-instances"></a>示例实例
+
+“示例实例”部分显示与当前查询匹配的少数个体用户、会话或事件的相关信息。 除了聚合之外，考虑并探究个体的行为可以洞察人们使用你的应用的实际方式。 
+ 
+## <a name="insights"></a>洞察力 
+
+“洞察力”边栏选项卡显示具有共同属性的大型用户群集。 这些群集可以揭示人们对你的应用的使用方式方面的惊人趋势。 例如，所有使用你的应用的人中大约有 40% 都使用单项功能。  
+
+
+## <a name="next-steps"></a>后续步骤
+
+* [使用情况概述](app-insights-usage-overview.md)
+* [保留](app-insights-usage-retention.md)
+* [编写自定义事件](app-insights-api-custom-events-metrics.md)
+
+

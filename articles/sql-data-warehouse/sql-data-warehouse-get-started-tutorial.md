@@ -15,9 +15,10 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 9d3029817cae6570ff8871fbcb068250544595d7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/21/2017
 
 
@@ -507,7 +508,7 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
         s.request_id,
         r.status,
         count(distinct input_name) as nbr_files,
-        sum(s.bytes_processed)/1024/1024 as gb_processed
+        sum(s.bytes_processed)/1024/1024/1024 as gb_processed
     FROM 
         sys.dm_pdw_exec_requests r
         INNER JOIN sys.dm_pdw_dms_external_work s

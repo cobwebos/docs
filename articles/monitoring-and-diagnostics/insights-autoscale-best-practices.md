@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 6dad42f94d263d9dacedf145bf4e5d487d0aed77
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f1e4a60cd98d40794c63dc334f242415445e0d6d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
-本文讲解 Azure 中自动缩放的最佳实践。 内容与虚拟机、虚拟机规模集和云服务相关。  其他 Azure 服务使用不同的缩放方法。
+本文讲解 Azure 中自动缩放的最佳实践。 Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)和[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)。 其他 Azure 服务使用不同的缩放方法。
 
 ## <a name="autoscale-concepts"></a>自动缩放概念
 * 一个资源只能具有*一个*自动缩放设置
@@ -118,7 +119,7 @@ ms.lasthandoff: 04/21/2017
 
 同样，当自动缩放切换回默认配置文件时，它会首先检查是否符合最小值和最大值条件。 如果当时的实例数是 12，则它会缩小为 10（默认配置文件允许的最大值）。
 
-![自动缩放设置](./media/insights-autoscale-best-practices/insights-autoscale-best-practices.png)
+![自动缩放设置](./media/insights-autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>有关在配置文件中配置多个规则时进行自动缩放的注意事项
 在某些情况下可能必须在一个配置文件中设置多个规则。 设置了多个规则时，服务会使用以下自动缩放规则集。
