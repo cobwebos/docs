@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
 ms.openlocfilehash: c9f2e3beafd19e0d4d62e409a80da336be17b90b
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/03/2017
 
 
@@ -64,7 +65,7 @@ ms.lasthandoff: 02/03/2017
 6. 在“新建数据工厂”边栏选项卡中单击“创建”。
 
    > [!IMPORTANT]
-   > 只有订阅/资源组级别的“数据工厂参与者”角色成员才能创建数据工厂实例。[](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor)
+   > 只有订阅/资源组级别的 [数据工厂参与者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。
    >
    >
 7. 此时可在 Azure 门户的“启动板”中看到所创建的数据工厂，如下所示：    
