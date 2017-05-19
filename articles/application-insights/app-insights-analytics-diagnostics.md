@@ -3,7 +3,7 @@ title: "Azure Application Insights 中 Web 应用性能变化的智能诊断 | M
 description: "自动诊断 Web 应用中性能遥测的峰值或步骤。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

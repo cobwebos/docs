@@ -3,7 +3,7 @@ title: "Azure Application Insights 中的数据保留和存储 | Microsoft Docs"
 description: "保留和隐私政策声明"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: a6268811-c8df-42b5-8b1b-1d5a7e94cbca
 ms.service: application-insights

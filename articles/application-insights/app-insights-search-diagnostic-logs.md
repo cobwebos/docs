@@ -3,7 +3,7 @@ title: "Azure Application Insights 中的 ASP.NET 日志和诊断 | Microsoft Do
 description: "通过搜索使用 Trace、NLog 或 Log4Net 生成的请求、异常和日志诊断 ASP.NET Web 应用中的问题。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 99860c53-0324-4a3a-9aa9-83f5dffba835
 ms.service: application-insights

@@ -3,7 +3,7 @@ title: "从 Application Insights 连续导出遥测数据 | Microsoft Docs"
 description: "将诊断和使用情况数据导出到 Microsoft Azure 中的存储，然后从中下载这些数据。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
 ms.service: application-insights

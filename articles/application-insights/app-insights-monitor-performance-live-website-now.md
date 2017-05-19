@@ -3,7 +3,7 @@ title: "使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Micr
 description: "在不重新部署网站的情况下监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights

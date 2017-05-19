@@ -3,7 +3,7 @@ title: "用于创建 Application Insights 资源的 PowerShell 脚本 | Microsof
 description: "自动创建 Application Insights 资源。"
 services: application-insights
 documentationcenter: windows
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: f0082c9b-43ad-4576-a417-4ea8e0daf3d9
 ms.service: application-insights

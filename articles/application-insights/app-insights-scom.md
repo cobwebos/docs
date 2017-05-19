@@ -3,7 +3,7 @@ title: "SCOM 与 Application Insights 集成 | Microsoft 文档"
 description: "如果你是 SCOM 用户，请监视性能并诊断 Application Insights 的问题。 全面的仪表板、智能警报、功能强大的诊断工具和分析查询。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 606e9d03-c0e6-4a77-80e8-61b75efacde0
 ms.service: application-insights

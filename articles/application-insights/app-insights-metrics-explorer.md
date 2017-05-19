@@ -3,7 +3,7 @@ title: "在 Azure Application Insights 中浏览指标 | Microsoft Docs"
 description: "如何解释指标资源管理器上的图表，以及如何自定义指标资源管理器边栏选项卡。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
 ms.service: application-insights
