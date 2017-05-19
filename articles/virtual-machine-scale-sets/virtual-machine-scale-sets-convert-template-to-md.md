@@ -14,11 +14,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/25/2017
+ms.date: 5/18/2017
 ms.author: negat
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 01983ac7b60f7fdb237fba27f22cb31fcb3c1b7b
 ms.openlocfilehash: cd1e67ce89a856f325b66087f003b1a9a1ac6f6a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -148,10 +150,5 @@ ms.openlocfilehash: cd1e67ce89a856f325b66087f003b1a9a1ac6f6a
 有关使用规模集的示例 Resource Manager 模板，请在 [Azure 快速入门模板 github 存储库](https://github.com/Azure/azure-quickstart-templates)中搜索“vmss”。
 
 有关一般信息，请参阅[规模集的主要登陆页](https://azure.microsoft.com/services/virtual-machine-scale-sets/)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
