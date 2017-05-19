@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 0ceba4142fd7b0e6edc1b7a6c14470d21806004a
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 95691b6e59f5e21e7c6cff9f4222bcffade57973
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -101,7 +102,6 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
         "properties": {
         "type": "HDInsightOnDemand",
             "typeProperties": {
-                "version": "3.2",
                 "clusterSize": 1,
                 "timeToLive": "00:30:00",
                 "linkedServiceName": "AzureStorageLinkedService1"
@@ -114,7 +114,6 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     属性 | 说明
     -------- | ----------- 
-    版本 | 指定要创建的 HDInsight Hadoop 群集的版本。
     ClusterSize | 指定 HDInsight Hadoop 群集的大小。
     TimeToLive | 指定 HDInsight 群集在被删除之前的空闲时间。
     linkedServiceName | 指定一个存储帐户，用于存储 HDInsight Hadoop 群集生成的日志。 
