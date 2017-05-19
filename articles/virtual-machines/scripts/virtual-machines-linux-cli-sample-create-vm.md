@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 41bb2cc3d5b40ff6668cc5cd188bb4faaeb483c6
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: da28320c6735fb5c7e4810e228069596898b157c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/06/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[主要](../../../cli_scripts/virtual-machine/create-vm-detailed/create-vm-detailed.sh "快速创建 VM")]
+[!code-azurecli-interactive[主要](../../../cli_scripts/virtual-machine/create-vm-detailed/create-vm-detailed.sh "快速创建 VM")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 

@@ -1,6 +1,6 @@
 ---
 title: "将监视和诊断添加到 Azure 虚拟机 | Microsoft Docs"
-description: "使用 Azure 资源管理器模板新建具有 Azure 诊断扩展的 Windows 虚拟机。"
+description: "使用 Azure Resource Manager 模板新建具有 Azure 诊断扩展的 Windows 虚拟机。"
 services: virtual-machines-windows
 documentationcenter: 
 author: sbtron
@@ -16,18 +16,19 @@ ms.topic: article
 ms.date: 1/23/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2bba3084a27186a2d6f728d6030ec9fa8afd0658
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 52d83b21f2f2346bfeb8d469a9bfb1b64dd4ba23
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>将监视和诊断与 Windows VM 和 Azure Resource Manager 模板配合使用
-Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊断功能。 通过将该扩展纳入为 Azure 资源管理器模板的一部分，可以在虚拟机上启用这些功能。 有关将任何扩展纳入为虚拟机模板一部分的详细信息，请参阅[使用 VM 扩展创作 Azure Resource Manager 模板](extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 本文介绍如何将 Azure 诊断扩展添加到 Windows 虚拟机模板中。  
+Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊断功能。 通过将该扩展纳入为 Azure Resource Manager 模板的一部分，可以在虚拟机上启用这些功能。 有关将任何扩展纳入为虚拟机模板一部分的详细信息，请参阅[使用 VM 扩展创作 Azure Resource Manager 模板](extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 本文介绍如何将 Azure 诊断扩展添加到 Windows 虚拟机模板中。  
 
 ## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>将 Azure 诊断扩展添加到 VM 资源定义中
-若要在 Windows 虚拟机上启用诊断扩展，需要将该扩展添加为资源管理器模板中的 VM 资源。
+若要在 Windows 虚拟机上启用诊断扩展，需要将该扩展添加为 Resource Manager 模板中的 VM 资源。
 
 对于基于 Resource Manager 的简单虚拟机，请将扩展配置添加到该虚拟机的 *resources* 数组： 
 
@@ -167,7 +168,7 @@ MetricAggregation 值 *PT1H* 和 *PT1M* 表示一分钟的聚合和一小时的�
 
 ## <a name="next-steps"></a>后续步骤
 * 有关具有诊断扩展的 Windows 虚拟机的完整示例模板，请参阅 [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* 使用 [Azure PowerShell](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 或 [Azure 命令行](../linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)部署 Resource Manager 模板
+* 使用 [Azure PowerShell](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 或 [Azure 命令行](../linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)部署 Resource Manager 模板
 * 了解有关[创作 Azure Resource Manager 模板](../../resource-group-authoring-templates.md)的详细信息
 
 
