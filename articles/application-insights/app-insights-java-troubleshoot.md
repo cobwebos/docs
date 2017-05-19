@@ -3,7 +3,7 @@ title: "在 Java Web 项目中排查 Application Insights 问题"
 description: "故障排除指南 - 使用 Application Insights 监视实时 Java 应用。"
 services: application-insights
 documentationcenter: java
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: ef602767-18f2-44d2-b7ef-42b404edd0e9
 ms.service: application-insights

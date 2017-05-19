@@ -3,7 +3,7 @@ title: "使用 Azure Application Insights 诊断 Web 应用中的故障和异常
 description: "从 ASP.NET 应用中捕获异常以及请求遥测。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
 ms.service: application-insights

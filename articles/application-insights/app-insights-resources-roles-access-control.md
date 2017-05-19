@@ -3,7 +3,7 @@ title: "Azure Application Insights 中的资源、角色和访问控制 | Micros
 description: "组织的见解的所有者、参与者和读者。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
 ms.service: application-insights

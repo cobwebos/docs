@@ -3,7 +3,7 @@ title: "在 Java Web 应用中筛选 Azure Application Insights 遥测 |Microsof
 description: "筛选出无需监视的事件，减少遥测流量。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

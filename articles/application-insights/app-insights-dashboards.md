@@ -3,7 +3,7 @@ title: "Azure Application Insights 中的仪表板和导航 | Microsoft Docs"
 description: "创建关键 APM 图表和查询的视图。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 39b0701b-2fec-4683-842a-8a19424f67bd
 ms.service: application-insights

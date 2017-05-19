@@ -3,7 +3,7 @@ title: "监视 Azure Web 应用的性能 | Microsoft 文档"
 description: "Azure Web 应用的应用程序性能监视。 对负载和响应时间、依赖项信息绘制图表，并对性能设置警报。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: azure-portal

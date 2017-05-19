@@ -3,7 +3,7 @@ title: "使用 Application Insights 探查 Azure 上的实时 Web 应用 | Micro
 description: "使用一个精简的探查器识别 Web 服务器代码中的热路径。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

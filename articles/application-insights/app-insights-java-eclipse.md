@@ -3,7 +3,7 @@ title: "通过 Eclipse 中的 Java 开始使用 Azure Application Insights | Mic
 description: "在 Application Insights 中使用 Eclipse 插件为 Java 网站添加性能和使用情况监视功能"
 services: application-insights
 documentationcenter: java
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: e88c9f53-cd90-4abc-b097-1f170937908e
 ms.service: application-insights

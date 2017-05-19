@@ -3,7 +3,7 @@ title: "在 Azure Application Insights 中设置警报 | Microsoft Docs"
 description: "响应速度变慢、发生异常以及 Web 应用中出现其他性能或用法变化时接收通知。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
 ms.service: application-insights
