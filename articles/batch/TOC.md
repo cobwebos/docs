@@ -1,5 +1,5 @@
 # 概述
-## [什么是 Azure 批处理](batch-technical-overview.md)
+## [什么是 Azure Batch](batch-technical-overview.md)
 ## [功能概述](batch-api-basics.md)
 ## [API 和工具](batch-apis-tools.md)
 ## [配额和限制](batch-quota-limit.md)
@@ -29,6 +29,10 @@
 ## 管理
 ### [批处理 PowerShell cmdlet](batch-powershell-cmdlets-get-started.md)
 ### [Azure CLI](batch-cli-get-started.md)
+#### [创建批处理帐户](./scripts/batch-cli-sample-create-account.md)
+#### [添加应用程序](./scripts/batch-cli-sample-add-application.md)
+#### [管理池](./scripts/batch-cli-sample-manage-pool.md)
+#### [运行作业和任务](./scripts/batch-cli-sample-run-job.md)
 
 # 引用
 ## [PowerShell](/powershell/module/azurerm.batch)
@@ -48,7 +52,7 @@
 ### [任务启动事件](batch-task-start-event.md)
 ### [任务完成事件](batch-task-complete-event.md)
 ### [任务失败事件](batch-task-fail-event.md)
-## [Azure 批处理计算节点环境变量](batch-compute-node-environment-variables.md)
+## [Azure Batch 计算节点环境变量](batch-compute-node-environment-variables.md)
 
 # 相关内容
 ## [批处理 Shipyard](https://github.com/Azure/batch-shipyard)
@@ -63,7 +67,6 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-## [CLI 示例](batch-cli-samples.md)
 ## [大型计算资源](big-compute-resources.md)
 ## [博客](https://blogs.technet.microsoft.com/windowshpc/)
 

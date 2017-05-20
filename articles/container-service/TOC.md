@@ -29,6 +29,7 @@
 ### [DC/OS 中应用/用户特定的 Orchestrator](container-service-application-specific-marathon.md)
 ### [添加文件共享](container-service-dcos-fileshare.md)
 ### [使用 Azure 容器注册表](container-service-dcos-acr.md)
+### [将Canary 发布与 Vamp 配合使用](container-service-dcos-vamp-canary-release.md)
 ### 监视 DC/OS
 #### [使用 ELK 进行监视](container-service-monitoring-elk.md)
 #### [使用 OMS 进行监视](container-service-monitoring-oms.md)
