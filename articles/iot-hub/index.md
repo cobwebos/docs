@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 1895c271483ee17ded6022c049d41f87b49f93e3
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: d7f6274b6c72827c0f73da816a524bc35a30bb27
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 ---
 
-# <a name="iot-hub-documentation"></a>IoT 中心文档
+# <a name="iot-hub-documentation"></a>IoT 中心文档 
 
 了解如何使用 IoT 中心来连接、监视和控制数十亿个物联网资产。 教程、API 参考、视频和其他文档可帮助你在 IoT 设备与解决方案后端之间部署可靠的双向通信。 
 
@@ -163,7 +164,7 @@ ms.lasthandoff: 04/21/2017
                         <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iothub/1.1.9/index.html">Node（服务）</a></p>
                         <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iot-device/1.1.9/index.html">Node（设备）</a></p>
                         <p><a href="http://azure.github.io/azure-iot-sdks/">Azure IoT SDK</a></p>
-                        <p><a href="http://azure.github.io/azure-iot-gateway-sdk">网关 SDK</a></p>
+                        <p><a href="http://azure.github.io/iot-edge/">Azure IoT Edge</a></p>
                     </div>
                 </div>
             </div>

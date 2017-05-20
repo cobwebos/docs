@@ -12,6 +12,7 @@
 ### [已处于活动状态的 Web 应用](app-insights-monitor-performance-live-website-now.md)
 ### [Windows 服务](app-insights-windows-services.md)
 ### [Windows 桌面](app-insights-windows-desktop.md)
+### [ASP.NET Core](app-insights-asp-net-core.md)
 
 ## 监视 Java 应用
 ### [Web 应用](app-insights-java-get-started.md)
@@ -33,7 +34,8 @@
 ## 规划和设计
 ### [对 Web 应用和服务进行深度诊断](app-insights-devops.md)
 ### [在 Web 应用程序中监视性能](app-insights-web-monitor-performance.md)
-### [分隔 Application Insights 资源](app-insights-separate-resources.md)
+### [将开发、测试和生产隔开](app-insights-separate-resources.md)
+### [使用多个角色监视应用](app-insights-monitor-multi-role-apps.md)
 ### [如何在 Application Insights 中执行...？](app-insights-how-do-i.md)
 
 
@@ -112,7 +114,6 @@
 ### [自定义事件和指标 API](app-insights-api-custom-events-metrics.md)
 ### [筛选和预处理遥测数据](app-insights-api-filtering-sampling.md)
 ### [采样](app-insights-sampling.md)
-### [ASP.NET Core](app-insights-asp-net-core.md)
 
 ## 管理
 ### [管理定价和配额](app-insights-pricing.md)

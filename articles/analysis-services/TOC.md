@@ -1,11 +1,10 @@
 # 概述
-
 ## [什么是 Azure Analysis Services？](analysis-services-overview.md)
 
-# 入门
-## [创建服务器](analysis-services-create-server.md)
-## [部署到服务器](analysis-services-deploy.md)
-## [连接](analysis-services-connect.md)
+# 快速入门
+## [创建服务器 - 门户](analysis-services-create-server.md)
+## [部署模型 - SSDT](analysis-services-deploy.md)
+
 
 # 教程
 ## 创建和部署模型
@@ -31,6 +30,7 @@
 ## [管理服务器](analysis-services-manage.md)
 ## [管理用户](analysis-services-manage-users.md)
 ## [集成本地数据网关](analysis-services-gateway.md)
+## [连接到服务器](analysis-services-connect.md)
 ## [使用 Excel 进行连接](analysis-services-connect-excel.md)
 ## [使用 Power BI 进行连接](analysis-services-connect-pbi.md)
 ## [获取客户端库](analysis-services-data-providers.md)

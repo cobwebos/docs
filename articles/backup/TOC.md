@@ -71,9 +71,11 @@
 ### [在 Azure 备份中备份文件和文件夹时速度缓慢](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
 # 概念
+## [恢复服务保管库概述](backup-azure-recovery-services-vault-overview.md)
+## [将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)
+## [删除 Azure 备份保管库](backup-azure-delete-vault.md)
 ## [基于角色的访问控制](backup-rbac-rs-vault.md)
 ## [混合备份的安全性](backup-azure-security-feature.md)
-## [删除 Azure 备份保管库](backup-azure-delete-vault.md)
 ## [配置脱机备份](backup-azure-backup-import-export.md)
 ## [替换磁带库](backup-azure-backup-cloud-as-tape.md)
 ## [Linux VM 的应用程序一致性备份](backup-azure-linux-app-consistent.md)

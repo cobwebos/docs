@@ -70,9 +70,9 @@
 ##### [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
 
 #### Reliable Services 生命周期
-#### [配置](service-fabric-reliable-services-configuration.md)
-#### [发送通知](service-fabric-reliable-services-notifications.md)
-#### [备份和还原](service-fabric-reliable-services-backup-restore.md)
+##### [配置](service-fabric-reliable-services-configuration.md)
+##### [发送通知](service-fabric-reliable-services-notifications.md)
+##### [备份和还原](service-fabric-reliable-services-backup-restore.md)
 
 #### 与服务进行通信
 ##### [与 Reliable Services 通信](service-fabric-reliable-services-communication.md)
@@ -215,6 +215,7 @@
 ### [连接到安全群集](service-fabric-connect-to-secure-cluster.md)
 
 ### [使用 Azure CLI 管理群集](service-fabric-azure-cli.md)
+### [修补群集节点](service-fabric-patch-orchestration-application.md)
 
 ### 管理和协调群集资源
 #### [群集 Resource Manager 概述](service-fabric-cluster-resource-manager-introduction.md)
@@ -249,11 +250,13 @@
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
 ### [从服务进程收集日志](service-fabric-diagnostic-collect-logs-without-an-agent.md)
+### [监视 Windows Server 容器](service-fabric-diagnostics-containers-windowsserver.md)
 ### [有状态的 Reliable Services 中的诊断](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors 中的诊断](service-fabric-reliable-actors-diagnostics.md)
 ### [排查本地群集的故障](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # 引用
+## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
 ## [Java API](/java/api/)
 ## [.NET](/dotnet/api/)

@@ -17,14 +17,17 @@
 ### [网络安全组](virtual-networks-nsg.md)
 
 ## 部署
-### 虚拟网络
-#### [门户](virtual-networks-create-vnet-arm-pportal.md)
-#### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [CLI](virtual-networks-create-vnet-arm-cli.md)
-#### [模板](virtual-networks-create-vnet-arm-template-click.md)
-#### [门户 经典）](virtual-networks-create-vnet-classic-pportal.md)
-#### [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
-#### [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
+### 虚拟网络 (VNet)
+#### [创建、更改或删除 VNet](virtual-network-manage-network.md)
+#### [创建、更改或删除子网](virtual-network-manage-subnet.md)
+#### [创建 VNet - 多个子网](virtual-networks-create-vnet-arm-pportal.md) 
+##### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+##### [CLI](virtual-networks-create-vnet-arm-cli.md)
+##### [模板](virtual-networks-create-vnet-arm-template-click.md)
+#### 创建 VNet - 多个子网（经典）
+##### [门户](virtual-networks-create-vnet-classic-pportal.md)
+##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [CLI](virtual-networks-create-vnet-classic-cli.md)
 
 ### 网络安全组
 #### [门户](virtual-networks-create-nsg-arm-pportal.md)
@@ -46,8 +49,8 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [模板](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### 网络接口
-#### [添加、更改或删除](virtual-network-network-interface.md)
+### 网络接口 (NIC)
+#### [创建、更改或删除 NIC](virtual-network-network-interface.md)
 #### [添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)
 
 ### [公共 IP 地址](virtual-network-public-ip-address.md)
@@ -81,6 +84,8 @@
 ##### [CLI](virtual-network-multiple-ip-addresses-cli.md)
 ##### [模板](virtual-network-multiple-ip-addresses-template.md)
 
+#### [创建具有加速网络的 VM](virtual-network-create-vm-accelerated-networking.md)
+
 ### 连接方案
 #### [虚拟网络 (VNet) 到 VNet](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 #### [VNet (Resource Manager) 到 VNet（经典）](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -98,9 +103,6 @@
 ##### [示例应用程序](virtual-networks-sample-app.md)
 
 ## 配置
-### 适用于 VM 的加速网络
-#### [Azure 门户](virtual-network-accelerated-networking-portal.md)
-#### [PowerShell](virtual-network-accelerated-networking-powershell.md)
 ### [优化 VM 网络吞吐量](virtual-network-optimize-network-bandwidth.md)
 ### 访问控制列表
 #### [经典门户](virtual-networks-acl.md)
