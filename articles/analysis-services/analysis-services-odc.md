@@ -36,7 +36,7 @@ ms.lasthandoff: 02/16/2017
 
     *   在 **Initial Catalog=database** 中，**将 database** 更改为你数据库的名称。
 
-3. 在 **&lt;odc:CommandText>Model&lt;/odc:CommandText>** 中，**将 Model* *更改为模型或透视图的名称。 
+3. 在 **&lt;odc:CommandText>*Model*&lt;/odc:CommandText> **中，将* Model* 更改为模型或透视图的名称。 
 
 4. 将具有 **.odc** 扩展名的文件保存到 C:\Users\\username\Documents\My Data Sources 文件夹。
 
