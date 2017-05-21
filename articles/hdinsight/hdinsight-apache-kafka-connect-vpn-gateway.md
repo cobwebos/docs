@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/18/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9ddf19c008c35525419a357436b1a969a4b19205
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 9489fdc3c5388a7510bc4411b4abb05fa72fbf4f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -229,7 +230,7 @@ HDInsight 群集在 Azure 虚拟网络内部是安全的，且仅允许传入 SS
 
     出现提示时，使用群集的 HTTPS 用户名称密码。 将显示群集的 Ambari Web UI。
 
-2. 要查看 Kafka 的相关信息，请从左侧列表中选择“Kafka”。 
+2. 要查看 Kafka 的相关信息，请从左侧列表中选择“Kafka”。
 
     ![Kafka 突出显示的服务列表](./media/hdinsight-apache-kafka-connect-vpn-gateway/select-kafka-service.png)
 
@@ -271,7 +272,7 @@ HDInsight 群集在 Azure 虚拟网络内部是安全的，且仅允许传入 SS
 
 ## <a name="connect-to-the-vpn-gateway"></a>连接到 VPN 网关
 
-要从 Windows 客户端连接到 VPN 网关，请按[配置点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#a-nameconnectapart-7---connect-to-azure)文档中“连接到 Azure”部分进行操作。
+要从 Windows 客户端连接到 VPN 网关，请按[配置点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#a-nameclientcertificatea7---install-an-exported-client-certificate)文档中“连接到 Azure”部分进行操作。
 
 ## <a name="remote-kafka-client"></a>远程 Kafka 客户端
 
@@ -319,7 +320,7 @@ HDInsight 群集在 Azure 虚拟网络内部是安全的，且仅允许传入 SS
   ```
 
     使用本节步骤 1 中返回的 IP 地址替换 `'ip_address'` 条目。
-    
+
     > [!NOTE]
     > 此代码将字符串 `test message` 发送给主题 `testtopic`。 Kafka on HDInsight 的默认配置是创建主题（如果它尚不存在）。
 
