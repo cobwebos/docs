@@ -7,25 +7,24 @@
 ### [概述](active-directory-b2c-reference-oauth-code.md)
 ### iOS
 #### [使用 MSAL 的 iOS Swift](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal)
-#### [使用 AppAuth 的 iOS ObjC](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth)
+#### [使用 AppAuth 的 iOS ObjC](active-directory-b2c-devquickstarts-ios.md)
 ### Android
 #### [使用 MSAL 的 Android](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal)
-#### [使用 AppAuth 的 Android](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth)
+#### [使用 AppAuth 的 Android](active-directory-b2c-devquickstarts-android.md)
 ### [.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)
 ### [Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native)
 ## Web 应用
 ### [概述](active-directory-b2c-reference-oidc.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
-### [.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
-### [NodeJS](active-directory-b2c-devquickstarts-web-node.md)
+### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
+### [Node.js](active-directory-b2c-devquickstarts-web-node.md)
 ## 单页应用
 ### [概述](active-directory-b2c-reference-spa.md)
-### [JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
-### [.NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
-### [NodeJS](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
+### [使用 MSAL 的 JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+### [使用 Hello 的 JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 ## Web API
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [NodeJS](active-directory-b2c-devquickstarts-api-node.md)
+### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
 ### [调用 .NET Web API](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
 # 指南
@@ -48,9 +47,10 @@
 ## [自定义 UI](active-directory-b2c-reference-ui-customization.md)
 ### [用于自定义的帮助器工具](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [语言自定义](active-directory-b2c-reference-language-customization.md)
+## [使用报告 API](active-directory-b2c-refererence-usage-reporting-api.md)
 ## [设置自助服务密码重置](active-directory-b2c-reference-sspr.md)
 
-# 标识体验引擎
+# 标识体验框架
 ## [自定义策略](active-directory-b2c-overview-custom.md)
 ## 指南
 ### [入门](active-directory-b2c-get-started-custom.md)
@@ -70,7 +70,6 @@
 ## 引用
 ### [发行说明](active-directory-b2c-developer-notes-custom.md)
 
-
 # 引用
 ## 术语表
 ### [应用程序的类型](active-directory-b2c-apps.md)
@@ -78,6 +77,7 @@
 ### [内置策略](active-directory-b2c-reference-policies.md)
 ### [令牌](active-directory-b2c-reference-tokens.md)
 ## [上市区域和数据驻留](active-directory-b2c-reference-tenant-type.md)
+## [启用计费](active-directory-b2c-how-to-enable-billing.md)
 ## [威胁管理](active-directory-b2c-reference-threat-management.md)
 ## [限制和局限性](active-directory-b2c-limitations.md)
 ## [创建目录时出现的问题](active-directory-b2c-support-create-directory.md)
