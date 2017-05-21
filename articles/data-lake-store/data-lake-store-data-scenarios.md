@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 4792b3f602c416457d8a0ec14c2939f704a002f6
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: a1349e53774732ffbfacefc7bd8dcc493f78fbd6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -42,7 +43,7 @@ ms.lasthandoff: 03/25/2017
 | 数据源 | 引入方式 |
 | --- | --- |
 | 本地计算机 |<ul> <li>[Azure 门户](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure 跨平台 CLI](data-lake-store-get-started-cli.md)</li> <li>[使用适用于 Visual Studio 的 Data Lake 工具](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md#upload-source-data-files) </li></ul> |
-| Azure 存储 Blob |<ul> <li>[Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store)</li> <li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight 群集上运行的 DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
+| Azure 存储 Blob |<ul> <li>[Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)</li> <li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight 群集上运行的 DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>流数据
 这表示可由应用程序、设备、传感器等多种源生成的数据。此数据可通过各种工具引入到 Data Lake Store。 这些工具通常实时逐事件捕获和处理数据，然后批量将事件写入到 Data Lake Store，以便可使这些事件得到进一步处理。
@@ -74,7 +75,7 @@ ms.lasthandoff: 03/25/2017
 
 * [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
 * [AdlCopy 服务](data-lake-store-copy-data-azure-storage-blob.md)
-* [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store)
+* [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)
 
 ### <a name="data-stored-in-on-premise-or-iaas-hadoop-clusters"></a>存储在本地或 IaaS Hadoop 群集的数据
 使用 HDFS 可在本地计算机上的现有 Hadoop 群集中存储大量数据。 Hadoop 群集可能在本地部署或 Azure 上的 IaaS 群集中。 将此类数据以一次性或重复方式复制到 Azure Data Lake Store 可能存在一些要求。 实现此目的有多种可用选项。 以下是替代项和相关折衷方案的列表。
@@ -89,7 +90,7 @@ ms.lasthandoff: 03/25/2017
 对于上传兆兆字节范围内的数据集，使用上述方法可能有时速度慢且成本高。 这种情况下，可使用以下选项。
 
 * **使用 Azure ExpressRoute**。 Azure ExpressRoute 可允许在 Azure 数据中心与本地中的基础结构之间创建专有连接。 这对传输大量数据提供了可靠的选项。 有关详细信息，请参阅[ Azure ExpressRoute 文档](../expressroute/expressroute-introduction.md)。
-* **数据“离线上传”**。 如果由于任何原因而导致使用 Azure ExpressRoute 不可行，可使用 [Azure 导入/导出服务](../storage/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store)或 [AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)从 Azure 存储 Blob 复制数据到 Data Lake Store。
+* **数据“离线上传”**。 如果由于任何原因而导致使用 Azure ExpressRoute 不可行，可使用 [Azure 导入/导出服务](../storage/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)或 [AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)从 Azure 存储 Blob 复制数据到 Data Lake Store。
 
   > [!NOTE]
   > 使用此导入/导出服务时，发送到 Azure 数据中心的磁盘上的文件大小不可大于 195 GB。
