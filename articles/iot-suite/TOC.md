@@ -11,6 +11,7 @@
 ## [已连接的工厂解决方案概述](iot-suite-connected-factory-overview.md)
 ## [远程监视解决方案演练](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [前瞻性维护解决方案演练](iot-suite-predictive-walkthrough.md)
+## [已连接的工厂解决方案演练](iot-suite-connected-factory-sample-walkthrough.md)
 ## [连接 Raspberry Pi](iot-suite-raspberry-pi-kit-get-started.md)
 ### 使用 C
 #### [模拟数据](iot-suite-raspberry-pi-kit-c-get-started-simulator.md)

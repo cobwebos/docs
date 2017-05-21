@@ -1,6 +1,6 @@
 ---
-title: "防止关键 Azure 资源中的更改 | Microsoft Docs"
-description: "通过对所有用户和角色应用限制，来防止用户更新或删除特定的资源。"
+title: "锁定 Azure 资源以防止更改 | Microsoft Docs"
+description: "通过对所有用户和角色应用锁，来防止用户更新或删除关键 Azure 资源。"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -12,11 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 05/05/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: de8137a69ccc2028a7dcbff491573f36640bdc50
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 710d20d82b72938de6f6b54c2506276f408664d4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -26,21 +28,23 @@ ms.openlocfilehash: de8137a69ccc2028a7dcbff491573f36640bdc50
 * **CanNotDelete** 表示经授权的用户仍可读取和修改资源，但不能删除资源。 
 * **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”角色授予的权限。 
 
+## <a name="how-locks-are-applied"></a>锁的应用方式
+
+在父范围应用锁时，该范围内所有资源都将继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
+
+与基于角色的访问控制不同，你可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
+
 Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com` 的操作。 锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁将阻止删除或修改该数据库，但不会阻止创建、更新或删除该数据库中的数据。 允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
 
 应用 **ReadOnly** 可能会导致意外结果，因为看起来好像读取操作的某些操作实际上需要其他操作。 例如，在存储帐户上放置 **ReadOnly** 锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。 另举一例，在应用服务资源上放置 **ReadOnly** 锁将阻止 Visual Studio 服务器资源管理器显示资源文件，因为该交互需要写访问权限。
 
-与基于角色的访问控制不同，你可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
-
-在父范围应用锁时，该范围内所有资源都将继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
-
 ## <a name="who-can-create-or-delete-locks-in-your-organization"></a>谁可以在组织中创建或删除锁
 若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
 
-## <a name="creating-a-lock-through-the-portal"></a>通过门户创建锁
+## <a name="portal"></a>门户
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
-## <a name="creating-a-lock-in-a-template"></a>在模板上创建锁
+## <a name="template"></a>模板
 以下示例演示在存储帐户上创建锁的模板。 要对其应用锁的存储帐户将以参数形式提供。 锁名是通过将包含 **/Microsoft.Authorization/** 的资源名称与锁名连接起来创建的（本例中为 **myLock**）。
 
 提供的类型特定于资源类型。 对于存储，将类型设置为“Microsoft.Storage/storageaccounts/providers/locks”。
@@ -65,7 +69,86 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
       ]
     }
 
-## <a name="creating-a-lock-with-rest-api"></a>使用 REST API 创建锁
+## <a name="powershell"></a>PowerShell
+可以通过 Azure PowerShell 使用 [New-AzureRmResourceLock](/powershell/module/azurerm.resources/new-azurermresourcelock) 命令锁定已部署的资源。
+
+若要锁定某个资源，请提供该资源的名称、其资源类型及其资源组名称。
+
+```powershell
+New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockSite `
+  -ResourceName examplesite -ResourceType Microsoft.Web/sites `
+  -ResourceGroupName exampleresourcegroup
+```
+
+若要锁定某个资源组，请提供该资源组的名称。
+
+```powershell
+New-AzureRmResourceLock -LockName LockGroup -LockLevel CanNotDelete `
+  -ResourceGroupName exampleresourcegroup
+```
+
+若要获取有关某个锁的信息，请使用 [Get-AzureRmResourceLock](/powershell/module/azurerm.resources/get-azurermresourcelock)。 若要获取订阅中的所有锁，请使用：
+
+```powershell
+Get-AzureRmResourceLock
+```
+
+若要获取某个资源的所有锁，请使用：
+
+```powershell
+New-AzureRmResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites `
+  -ResourceGroupName exampleresourcegroup
+```
+
+若要获取某个资源组的所有锁，请使用：
+
+```powershell
+Get-AzureRmResourceLock -ResourceGroupName exampleresourcegroup
+```
+
+Azure PowerShell 还提供了用于处理锁的其他命令，例如，[Set-AzureRmResourceLock](/powershell/module/azurerm.resources/set-azurermresourcelock) 用于更新锁，[Remove-AzureRmResourceLock](/powershell/module/azurerm.resources/remove-azurermresourcelock) 用于删除锁。
+
+## <a name="azure-cli"></a>Azure CLI
+
+可以通过 Azure CLI 使用 [az lock create](/cli/azure/lock#create) 命令锁定已部署的资源。
+
+若要锁定某个资源，请提供该资源的名称、其资源类型及其资源组名称。
+
+```azurecli
+az lock create --name LockSite --lock-type CanNotDelete \
+  --resource-group exampleresourcegroup --resource-name examplesite \
+  --resource-type Microsoft.Web/sites
+```
+
+若要锁定某个资源组，请提供该资源组的名称。
+
+```azurecli
+az lock create --name LockGroup --lock-type CanNotDelete \
+  --resource-group exampleresourcegroup
+```
+
+若要获取有关某个锁的信息，请使用 [az lock list](/cli/azure/lock#list)。 若要获取订阅中的所有锁，请使用：
+
+```azurecli
+az lock list
+```
+
+若要获取某个资源的所有锁，请使用：
+
+```azurecli
+az lock list --resource-group exampleresourcegroup --resource-name examplesite \
+  --namespace Microsoft.Web --resource-type sites --parent ""
+```
+
+若要获取某个资源组的所有锁，请使用：
+
+```azurecli
+az lock list --resource-group exampleresourcegroup
+```
+
+Azure CLI 还提供了用于处理锁的其他命令，例如，[az lock update](/cli/azure/lock#update) 用于更新锁，[az lock delete](/cli/azure/lock#delete) 用于删除锁。
+
+## <a name="rest-api"></a>REST API
 可以使用[管理锁的 REST API](https://docs.microsoft.com/rest/api/resources/managementlocks) 锁定已部署的资源。 REST API 使您可以创建和删除锁，并且检索有关现有锁的信息。
 
 若要创建一个锁，请运行：
@@ -83,24 +166,11 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
       }
     } 
 
-
-## <a name="creating-a-lock-with-azure-powershell"></a>使用 Azure PowerShell 创建一个锁
-可以使用 **New-AzureRmResourceLock** 在 Azure PowerShell 中锁定已部署的资源，如以下示例中所示。
-
-    New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
-
-Azure PowerShell 提供了其他用于使用锁的命令，例如，**Set-AzureRmResourceLock** 用于更新锁，**Remove-AzureRmResourceLock** 用于删除锁。
-
 ## <a name="next-steps"></a>后续步骤
 * 有关使用资源锁的详细信息，请参阅[锁定 Azure 资源](http://blogs.msdn.com/b/cloud_solution_architect/archive/2015/06/18/lock-down-your-azure-resources.aspx)
 * 有关使用逻辑方式组织资源的信息，请参阅[使用标记来组织资源](resource-group-using-tags.md)
 * 若要更改资源位于哪个资源组，请参阅[将资源移到新的资源组](resource-group-move-resources.md)
 * 可以使用自定义策略对订阅应用限制和约定。 有关详细信息，请参阅 [使用策略来管理资源和控制访问](resource-manager-policy.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

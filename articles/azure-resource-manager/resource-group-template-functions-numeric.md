@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 05/08/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 5844540801a6f0ff593b3f404f6815473c65a52e
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 66984bef9e82df80818eea31bd37de524b567b33
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的数值函数
 
-资源管理器提供以下用于处理整数的函数：
+Resource Manager 提供以下用于处理整数的函数：
 
 * [add](#add)
 * [copyIndex](#copyindex)
@@ -91,7 +91,7 @@ ms.lasthandoff: 04/28/2017
 <a id="copyindex" />
 
 ## <a name="copyindex"></a>copyIndex
-`copyIndex(offset)`
+`copyIndex(loopName, offset)`
 
 返回一个迭代循环的索引。 
 
@@ -99,11 +99,16 @@ ms.lasthandoff: 04/28/2017
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
+| loopName | 否 | 字符串 | 用于获取迭代的循环的名称。 |
 | offset |否 |int |要添加到从零开始的迭代值的数。 |
 
 ### <a name="remarks"></a>备注
 
-此函数始终用于 **copy** 对象。 如果没有提供**偏移量**的值，则返回当前迭代值。 从零开始的迭代值。 有关如何使用 **copyIndex** 的完整说明，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
+此函数始终用于 **copy** 对象。 如果没有提供**偏移量**的值，则返回当前迭代值。 从零开始的迭代值。
+
+**loopName** 可用于指定 copyIndex 是引用资源迭代还是引用属性迭代。 如果没有为 **loopName** 提供值，则将使用当前的资源类型迭代。 当在属性上迭代时，请为 **loopName** 提供值。 
+ 
+有关如何使用 **copyIndex** 的完整说明，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
 
 ### <a name="examples"></a>示例
 
@@ -269,7 +274,7 @@ ms.lasthandoff: 04/28/2017
 
 ### <a name="examples"></a>示例
 
-以下示例演示如何将 min 用于整数数组和整数列表：
+以下示例演示如何对整数数组和整数列表使用 min：
 
 ```json
 {
@@ -314,7 +319,7 @@ ms.lasthandoff: 04/28/2017
 
 ### <a name="examples"></a>示例
 
-以下示例演示如何将 max 用于整数数组和整数列表：
+以下示例演示如何对整数数组和整数列表使用 max：
 
 ```json
 {

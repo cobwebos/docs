@@ -36,6 +36,7 @@
 ### [生成高级 HTTP 报告](cdn-advanced-http-reports.md)
 ### [查看实时统计信息](cdn-real-time-stats.md)
 ### [分析边缘节点性能](cdn-edge-performance.md)
+### [使用诊断日志导出指标](cdn-log-analysis.md)
 
 ## 开发
 ### [.NET](cdn-app-dev-net.md)
