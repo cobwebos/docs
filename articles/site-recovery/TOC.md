@@ -9,7 +9,7 @@
 
 # 入门
 ## [将 VMware VM 复制到 Azure](site-recovery-vmware-to-azure.md)
-## [将物理服务器复制到 Azure](site-recovery-physical-servers-to-azure.md) 
+## [将物理服务器复制到 Azure](site-recovery-physical-servers-to-azure.md)
 ## [将 Hyper-V VM 复制到 Azure（包含 VMM）](site-recovery-vmm-to-azure.md)
 ## [将 Hyper-V VM 复制到 Azure](site-recovery-hyper-v-site-to-azure.md)
 ## [将 Hyper-V VM 复制到辅助站点（包含 VMM）](site-recovery-vmm-to-vmm.md)
@@ -23,6 +23,7 @@
 ### [规划容量以及缩放 VMware 在 Azure 中的复制](site-recovery-plan-capacity-vmware.md)
 ### [用于将 VMware 复制到 Azure 的 Deployment Planner](site-recovery-deployment-planner.md)
 ### [用于 Hyper-V 复制的 Capacity Planner](site-recovery-capacity-planner.md)
+### [基于角色的访问控制](site-recovery-role-based-linked-access-control.md)
 
 ## 配置
 ### [设置源环境](site-recovery-set-up-vmware-to-azure.md)
