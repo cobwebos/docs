@@ -52,7 +52,7 @@ sql-database-service-tiers.md
 
 ### <a name="premium-elastic-pool-limits"></a>高级弹性池限制
 
-| 池大小 (eDTU)  | **125** | **250** | **500** | **1000** | **1500** | 
+| 池大小 (eDTU)  | **125** | **250** | **500** | **1000** | **1500** **| 
 |:---|---:|---:|---:| ---: | ---: | 
 | 每个池的最大数据存储空间* | 250 GB | 500 GB | 750 GB | 750 GB | 1.5 TB | 
 | 每个池的最大内存中 OLTP 存储 | 1 GB| 2 GB| 4 GB| 10 GB| 12 GB| 
@@ -67,7 +67,7 @@ sql-database-service-tiers.md
 
 ### <a name="premium-elastic-pool-limits-continued"></a>高级弹性池限制（续） 
 
-| 池大小 (eDTU)  |  **2000** | **2500** | **3000** | **3500** | **4000** |
+| 池大小 (eDTU)  |  **2000** **| **2500**  **| **3000**  **| **3500**  **| **4000**  **|
 |:---|---:|---:|---:| ---: | ---: | 
 | 每个池的最大数据存储空间* | 2 TB | 2.5 TB | 3 TB | 3.5 TB | 4 TB |
 | 每个池的最大内存中 OLTP 存储 | 16 GB | 20 GB | 24 GB | 28 GB | 32 GB |
@@ -96,5 +96,7 @@ sql-database-service-tiers.md
 ||||||||
 
 > [!IMPORTANT]
->\*入池数据库共享池存储空间，因此弹性池中的数据存储空间被限制为池的剩余存储空间或每个数据库的最大存储空间（取二者之中的较小者）。 对于 eDTU 至少为 1500 的高级池来说，每个池的默认最大数据存储为 750 GB。 若要提高每个池的最大数据存储大小，必须使用 Azure 门户或 [PowerShell](../articles/sql-database/sql-database-elastic-pool-manage-powershell.md#change-the-storage-limit-for-an-elastic-pool) 显式选择该大小。 存储超过 750 GB 的高级池目前在以下区域中处于公共预览状态：美国东部 2、美国西部、西欧、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 对于所有其他区域，每个池的最大存储上限目前为 750 GB。
+>\*入池数据库共享池存储空间，因此弹性池中的数据存储空间被限制为池的剩余存储空间或每个数据库的最大存储空间（取二者之中的较小者）。 
+>
+>\*\* 对于 eDTU 至少为 1500 的高级池来说，每个池的默认最大数据存储为 750 GB。 若要提高每个池的最大数据存储大小，必须使用 Azure 门户或 [PowerShell](../articles/sql-database/sql-database-elastic-pool-manage-powershell.md#change-the-storage-limit-for-an-elastic-pool) 显式选择该大小。 存储超过 750 GB 的高级池目前在以下区域中处于公共预览状态：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 对于所有其他区域，每个池的最大存储上限目前为 750 GB。
 >

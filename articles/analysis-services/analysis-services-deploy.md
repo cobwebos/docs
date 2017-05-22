@@ -1,6 +1,6 @@
 ---
-title: "部署到 Azure Analysis Services | Microsoft Docs"
-description: "了解如何将表格模型部署到 Azure Analysis Services 服务器。"
+title: "通过 SSDT 部署到 Azure Analysis Services | Microsoft Docs"
+description: "了解如何通过 SSDT 将表格模型部署到 Azure Analysis Services 服务器。"
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -10,35 +10,35 @@ tags:
 ms.assetid: 5f1f0ae7-11de-4923-a3da-888b13a3638c
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 04/17/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 766120913d419ec8090a4f25d304f2d3cf9b6693
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 04b809a6fdd7b993a048a67f66a9851c2a7bf3d2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="deploy-to-azure-analysis-services"></a>部署到 Azure Analysis Services
-在 Azure 订阅中创建服务器之后，便可以开始将表格模型数据库部署到其中。 SQL Server Data Tools (SSDT) 可用于生成和部署正在处理的表格模型项目。 或者，可以使用 SQL Server Management Studio (SSMS) 从 Analysis Services 实例部署现有的表格模型数据库。
+# <a name="deploy-a-model-from-ssdt"></a>从 SSDT 部署模型
+在 Azure 订阅中创建服务器之后，便可以开始将表格模型数据库部署到其中。 SQL Server Data Tools (SSDT) 可用于生成和部署正在处理的表格模型项目。 
 
 ## <a name="before-you-begin"></a>开始之前
 若要开始，您需要：
 
 * Azure 中的 **Analysis Services 服务器**。 若要了解详细信息，请参阅[在 Azure 中创建 Analysis Services](analysis-services-create-server.md)。
-* SSDT 中的**表格模型项目**或 Analysis Services 实例上兼容级别为 1200 的现有表格模型。 从未创建过？ 请尝试 [Adventure Works 教程](https://msdn.microsoft.com/library/hh231691.aspx)。
+* SSDT 中的**表格模型项目**或 Analysis Services 实例上兼容级别为 1200 或更高版本的现有表格模型。 从未创建过？ 请尝试 [Adventure Works 教程](https://msdn.microsoft.com/library/hh231691.aspx)。
 * **本地网关** - 如果你组织的网络中有一个或多个本地数据源，则需要安装[本地数据网关](analysis-services-gateway.md)。 网关对于云中的服务器是必需的，可帮助服务器连接到本地数据源，以在模型中处理和刷新数据。
-
-## <a name="to-deploy-a-tabular-model-from-ssdt"></a>从 SSDT 部署表格模型
-若要从 SSDT 部署，请务必使用[最新版本](https://msdn.microsoft.com/library/mt204009.aspx)。
 
 > [!TIP]
 > 在部署之前，请确保可以在表中处理数据。 在 SSDT 中，单击“模型” > “处理” > “全部处理”。 如果处理失败，则部署也将失败。
 > 
 > 
+
+## <a name="to-deploy-a-tabular-model-from-ssdt"></a>从 SSDT 部署表格模型
 
 1. 在部署之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，然后复制服务器名称。
    
@@ -56,9 +56,6 @@ ms.lasthandoff: 04/19/2017
 
 就是这么简单！
 
-## <a name="to-deploy-using-xmla-script"></a>使用 XMLA 脚本部署
-1. 在 SSMS 中，右键单击想要部署的表格模型数据库，单击“脚本” > “脚本数据库形式” > “创建到”，然后选择一个位置。
-2. 在想要向其部署的服务器实例上执行查询。 如果要部署到用同一服务器，则必须至少更改 XMLA 脚本中的**名称**属性。  
 
 ## <a name="but-something-went-wrong"></a>但是，出错了
 如果部署元数据时部署失败，可能是因为 SSDT 无法连接到服务器。 确保可以使用 SSMS 连接到服务器。 然后确保项目的“部署服务器”属性正确。
