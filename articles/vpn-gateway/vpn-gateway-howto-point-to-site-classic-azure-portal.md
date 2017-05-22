@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2017
+ms.date: 05/15/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: add8cf22430c9e7af47e6d3c242fbd25797dd099
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: e441f2a1535ab9544621ff47f28e11c3baf3cae2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -36,9 +36,19 @@ ms.lasthandoff: 05/05/2017
 >
 >
 
-通过点到站点 (P2S) 配置，可以使单台客户端计算机与虚拟网络建立安全的连接。 P2S 是基于 SSTP（安全套接字隧道协议）的 VPN 连接。 如果要从远程位置（例如，从家里或会议室）连接到 VNet，或者只有少数几台客户端计算机需要连接到虚拟网络，点到站点连接将非常有用。 P2S 连接不需要 VPN 设备或面向公众的 IP 地址。 可从客户端计算机建立 VPN 连接。 有关点到站点连接的详细信息，请参阅本文末尾的[点到站点常见问题解答](#faq)。
+通过点到站点 (P2S) 配置，可以使单台客户端计算机与虚拟网络建立安全的连接。 如果要从远程位置（例如，从家里或会议室）连接到 VNet，或者只有少数几台客户端计算机需要连接到虚拟网络，点到站点连接将非常有用。 P2S VPN 连接通过本机 Windows VPN 客户端从客户端计算机启动。 连接客户端使用证书进行身份验证。 
+
 
 ![点到站点连接示意图](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
+
+点到站点连接不需要 VPN 设备或面向公众的 IP 地址。 P2S 创建基于 SSTP（安全套接字隧道协议）的 VPN 连接。 在服务器端，我们支持 SSTP 1.0、1.1 和 1.2 版。 客户端决定要使用的版本。 对于 Windows 8.1 及更高版本，SSTP 默认使用 1.2。 有关点到站点连接的详细信息，请参阅本文末尾的[点到站点常见问题解答](#faq)。
+
+P2S 连接有以下要求：
+
+* 动态 VPN 网关。
+* 适用于根证书的公钥（.cer 文件），已上传到 Azure。 此证书被视为可信证书，用于身份验证。
+* 从根证书生成的客户端证书，安装在每个要连接的客户端计算机上。 此证书用于客户端身份验证。
+* 必须生成 VPN 客户端配置包，并将其安装在每个进行连接的客户端计算机上。 客户端配置包配置本机 VPN 客户端，该客户端已经位于操作系统中，具有连接到 VNet 所需的信息。
 
 ### <a name="example-settings"></a>示例设置
 
@@ -98,7 +108,7 @@ ms.lasthandoff: 05/05/2017
 3. 在“新建 VPN 连接”边栏选项卡中，选择“点到站点”。
 
   ![点到站点连接类型](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png)
-4. 对于“客户端地址空间”，请添加 IP 地址范围。 这是 VPN 客户端在连接时要从中接收 IP 地址的范围。 删除自动填充的范围，添加自己的范围。
+4. 对于“客户端地址空间”，请添加 IP 地址范围。 这是 VPN 客户端在连接时要从中接收 IP 地址的范围。 使用专用 IP 地址范围时，该范围不得与要通过其进行连接的本地位置重叠，也不得与要连接到其中的 VNet 重叠。 可以删除自动填充的范围，然后添加要使用的专用 IP 地址范围。
 
   ![客户端地址空间](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png)
 5. 选中“立即创建网关”复选框。
@@ -116,11 +126,11 @@ ms.lasthandoff: 05/05/2017
 9. 选择网关的“路由类型”。 P2S 配置需要“动态”路由类型。 在此边栏选项卡中完成配置后，请单击“确定”。
 
   ![配置路由类型](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png)
-10. 在“新建 VPN 连接”边栏选项卡中，单击底部的“确定”开始创建虚拟网络网关。 VPN 网关可能最多需要 45 分钟才能完成。
+10. 在“新建 VPN 连接”边栏选项卡中，单击底部的“确定”开始创建虚拟网络网关。 VPN 网关可能需要长达 45 分钟的时间才能完成，具体取决于所选网关 SKU。
 
 ## <a name="generatecerts"></a>第 2 部分 - 创建证书
 
-Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。
+Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请将根证书的公钥信息上传到 Azure， 然后即可将该公钥视为“可信”公钥。 必须根据可信根证书生成客户端证书，然后将其安装在每个客户端计算机的 Certificates-Current User/个人证书存储中。 当客户端启动到 VNet 的连接时，使用证书进行身份验证。 有关如何生成和安装证书的详细信息，请参阅[点到站点的证书](vpn-gateway-certificates-point-to-site.md)。
 
 ### <a name="cer"></a>第 1 部分：获取根证书的公钥 (.cer)
 
@@ -132,7 +142,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。
 
 ## <a name="upload"></a>第 3 部分：上传根证书 .cer 文件
 
-创建网关后，可以将受信任根证书的 .cer 文件上载到 Azure。 最多可以上载 20 个根证书的文件。 请勿将根证书私钥上传到 Azure。 上载 .Cer 文件后，Azure 将使用它来对连接到虚拟网络的客户端进行身份验证。
+创建网关后，即可为委托给 Azure 的根证书上传 .cer 文件（其中包含公钥信息）。 请勿将根证书私钥上传到 Azure。 上传 .cer 文件后，Azure 可以使用该文件对已安装客户端证书（根据可信根证书生成）的客户端进行身份验证。 可在以后根据需要上传更多的可信根证书文件（最多 20 个）。  
 
 1. 在 VNet 边栏选项卡的“VPN 连接”部分中，单击“客户端”图形打开“点到站点 VPN 连接”边栏选项卡。
 
@@ -149,9 +159,9 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。
 
 ## <a name="vpnclientconfig"></a>第 4 部分 - 配置客户端
 
-若要使用点到站点 VPN 连接到 VNet，每个客户端都必须安装 VPN 客户端配置包。 该包不安装 VPN 客户端。 只要版本与客户端的体系结构匹配，就可以在每台客户端计算机上使用相同的 VPN 客户端配置包。 有关支持的客户端操作系统列表，请参阅本文末尾的[点到站点连接常见问题解答](#faq)。
+若要通过点到站点 VPN 连接到 VNet，每个客户端都必须安装一个用于配置本机 Windows VPN 客户端的包。 配置包为本机 Windows VPN 客户端配置连接到虚拟网络所需的设置，在为 VNet 指定 DNS 服务器的情况下，它包含 DNS 服务器 IP 地址，客户端将使用该地址进行名称解析。 如果在以后更改指定的 DNS 服务器，则在生成客户端配置包以后，请确保生成新的客户端配置包，以便将其安装在客户端计算机上。
 
-配置包为本机 Windows VPN 客户端配置连接到虚拟网络所需的设置，在为 VNet 指定 DNS 服务器的情况下，它包含 DNS 服务器 IP 地址，客户端将使用该地址进行名称解析。 如果在以后更改指定的 DNS 服务器，则在生成客户端配置包以后，请确保生成新的客户端配置包，以便将其安装在客户端计算机上。
+只要版本与客户端的体系结构匹配，就可以在每台客户端计算机上使用相同的 VPN 客户端配置包。 有关支持的客户端操作系统列表，请参阅本文末尾的[点到站点连接常见问题解答](#faq)。
 
 ### <a name="part-1-generate-and-install-the-vpn-client-configuration-package"></a>第 1 部分 - 生成和安装 VPN 客户端配置包
 
