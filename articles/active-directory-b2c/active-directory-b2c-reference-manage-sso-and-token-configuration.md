@@ -56,6 +56,7 @@ ms.lasthandoff: 05/04/2017
 ```XML
 <Item Key="allow_infinite_rolling_refresh_token">True</Item>
 ```
+
 **颁发者 (iss) 声明**：若要更改颁发者 (iss) 声明，请修改包含 Key="IssuanceClaimPattern" 的 `<Item>` 中的值。  适用的值为 `AuthorityAndTenantGuid` 和 `AuthorityWithTfp`。
 
 **设置声明表示策略 ID**：用于设置此值的选项为 TFP（信任框架策略）和 ACR（身份验证上下文引用）。  
@@ -88,5 +89,8 @@ ms.lasthandoff: 05/04/2017
 </UserJourneyBehaviors>
 ```
 **单一登录 (SSO) 配置**：若要更改单一登录配置，需要修改 `<SingleSignOn>` 的值。  适用的值为 `Tenant`、`Application`、`Policy` 和 `Disabled`。 
+
 **Web 应用会话生存期(分钟)**：若要更改 Web 应用会话生存期，需要修改 `<SessionExpiryInSeconds>` 元素的值。  内置策略中的默认值为 86400 秒（1440 分钟）。
+
 **Web 应用会话超时**：若要更改 Web 应用会话超时，需要修改 `<SessionExpiryType>` 的值。  适用的值为 `Absolute` 和 `Rolling`。
+
