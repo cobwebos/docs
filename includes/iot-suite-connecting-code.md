@@ -4,7 +4,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
 
 1. 在 `#include` 语句之后添加以下变量声明。 将占位符值 [Device Id] 和 [Device Key] 替换为在远程监视解决方案仪表板中记下的设备值。 使用解决方案仪表板中的 IoT 中心主机名替换 [IoTHub Name]。 例如，如果 IoT 中心主机名是 **contoso.azure-devices.net**，则将 [IoTHub Name] 替换为 **contoso**：
    
-    ```
+    ```c
     static const char* deviceId = "[Device Id]";
     static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
     ```
@@ -17,7 +17,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
    - 可以接收和处理在 IoT 中心的设备孪生中设置的所需属性。
    - 可以响应通过解决方案门户调用的 **Reboot** 和 **InitiateFirmwareUpdate** 直接方法。 设备使用报告的属性发送有关其支持的直接方法的信息。
    
-    ```
+    ```c
     // Define the Model
     BEGIN_NAMESPACE(Contoso);
 
@@ -90,7 +90,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
 
 1. 添加以下函数，处理在解决方案仪表板中设置的所需属性。 模型中定义了这些所需属性：
 
-    ```
+    ```c
     void onDesiredTemperatureMeanValue(void* argument)
     {
       /* By convention 'argument' is of the type of the MODEL */
@@ -109,7 +109,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
 
 1. 添加以下函数，处理通过 IoT 中心调用的直接方法。 模型中定义了这些直接方法：
 
-    ```
+    ```c
     /* Handlers for direct methods */
     METHODRETURN_HANDLE Reboot(Thermostat* thermostat)
     {
@@ -132,7 +132,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
 
 1. 添加以下函数，向预配置解决方案发送消息：
    
-    ```
+    ```c
     /* Send data to IoT Hub */
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
     {
@@ -160,7 +160,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
 
 1. 添加以下回调处理程序，当设备向预配置解决方案发送新的报告属性值后将运行该处理程序：
 
-    ```
+    ```c
     /* Callback after sending reported properties */
     void deviceTwinCallback(int status_code, void* userContextCallback)
     {
@@ -180,7 +180,7 @@ IoT 中心序列化程序客户端库使用模型来指定设备与 IoT 中心�
     - 创建循环以便每秒发送遥测数据。
     - 取消初始化所有资源。
 
-      ```
+      ```c
       void remote_monitoring_run(void)
       {
         if (platform_init() != 0)
