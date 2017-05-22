@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/30/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 06f81b11205085357ba4ba4e2f0d2e1e4c0e940a
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: f36d5da78818410e028a73a36a502a758400e5a5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -74,9 +75,19 @@ ms.lasthandoff: 04/07/2017
 ## <a name="pages-under-the-section-sync"></a>“同步”部分下的页面
 
 ### <a name="connect-your-directories"></a>连接你的目录
-若要连接到你的 Active Directory 域服务，Azure AD Connect 工具需要使用具有足够权限的帐户的凭据。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\syncuser 或 fabrikam.com\syncuser。 此帐户可以是普通的用户帐户，因为该帐户只需默认的读取权限。 不过，根据你的方案，可能会需要更多权限。 有关详细信息，请参阅 [Azure AD Connect 帐户和权限](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)
+若要连接到 Active Directory 域服务，Azure AD Connect 工具需要使用具有足够权限的帐户的林名称和凭据。
 
-![连接目录](./media/active-directory-aadconnect-get-started-custom/connectdir.png)
+![连接目录](./media/active-directory-aadconnect-get-started-custom/connectdir01.png)
+
+在输入林名称并单击“添加目录”后，将会显示一个弹出对话框，提示你选择以下选项：
+
+| 选项 | 说明 |
+| --- | --- |
+| 使用现有帐户 | 如果需要提供一个现有的 AD DS 帐户，以便在目录同步期间用在 Azure AD Connect 中以连接到 AD 林，请选择此选项。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\syncuser 或 fabrikam.com\syncuser。 此帐户可以是普通的用户帐户，因为该帐户只需默认的读取权限。 不过，根据你的方案，可能会需要更多权限。 有关详细信息，请参阅 [Azure AD Connect 帐户和权限](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)。 |
+| 创建新帐户 | 如果需要使用 Azure AD Connect 向导创建一个 Azure AD Connect 需要的 AD DS 帐户，以便在目录同步期间连接到 AD 林，请选择此选项。 选择此选项时，请输入企业管理员帐户的用户名和密码。 Azure AD Connect 向导将使用提供的企业管理员帐户创建所需的 AD DS 帐户。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\administrator 或 fabrikam.com\administrator。 |
+
+![连接目录](./media/active-directory-aadconnect-get-started-custom/connectdir02.png)
+
 
 ### <a name="azure-ad-sign-in-configuration"></a>Azure AD 登录配置
 此页可让你查看本地 AD DS 中存在的 UPN 域，以及已在 Azure AD 中验证的 UPN 域。 此页还可让你配置要用于 userPrincipalName 的属性。
@@ -99,7 +110,7 @@ ms.lasthandoff: 04/07/2017
 ![DomainOU 筛选](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png)  
 向导中的此页面用于配置基于域和基于 OU 的筛选。 如果打算进行更改，请在更改之前参阅[基于域的筛选](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)和[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)。 某些 OU 对功能至关重要，不应取消选中。
 
-如果使用基于 OU 的筛选，以后添加的新 OU 默认会同步。 如果希望行为是不同步新 OU，可在向导完成后，使用[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)来配置此行为。
+如果将基于 OU 的筛选与 1.1.524.0 之前的 Azure AD Connect 版本配合使用，则会默认同步以后添加的新 OU。 如果希望行为是不同步新 OU，可在向导完成后，使用[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)来配置此行为。 对于 Azure AD Connect 1.1.524.0 或更高版本，可以指示是否需要同步新 OU。
 
 如果打算使用[基于组的筛选](#sync-filtering-based-on-groups)，请确保包含该组所在的 OU，而未使用 OU 筛选将该 OU 筛选掉。 OU 筛选将在基于组的筛选之前评估。
 
@@ -108,6 +119,8 @@ ms.lasthandoff: 04/07/2017
 如果你看到此警告，请确认确实无法访问这些域，并且该警报在你的意料之中。
 
 ### <a name="uniquely-identifying-your-users"></a>唯一标识你的用户
+
+#### <a name="select-how-users-should-be-identified-in-your-on-premises-directories"></a>选择应如何在本地目录中标识用户
 “跨林匹配”功能允许你定义如何在 Azure AD 中呈现你的 AD DS 林中的用户。 一个用户可以在所有林中只呈现一次，也可以使用已启用和已禁用帐户的组合。 在某些林中，用户还可以被表示为联系人。
 
 ![唯一](./media/active-directory-aadconnect-get-started-custom/unique.png)
@@ -120,7 +133,15 @@ ms.lasthandoff: 04/07/2017
 | sAMAccountName 和 MailNickName |此选项根据预期可以在其中找到用户登录 ID 的属性进行联接。 |
 | 特定的属性 |此选项允许你选择自己的属性。 **限制：** 确保选择已可在 Metaverse 中找到的属性。 如果你选择自定义属性（不在 Metaverse 中），向导将无法完成。 |
 
-**源定位点** - sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属性。 它是链接本地用户与 Azure AD 中用户的主密钥。 由于无法更改该属性，因此你必须规划好要使用的合适属性。 objectGUID 就是不错的候选项。 除非在林/域之间移动用户帐户，否则此属性不会更改。 在要在林间移动帐户的多林环境中，必须使用另一个属性，例如具有 employeeID 的属性。 避免某人结婚时会改变的属性，或会更改分配的属性。 由于不可以使用带有 @-sign 符号的属性，因此无法使用 email 和 userPrincipalName。 属性也区分大小写，因此在林间移动对象时，请务必保留大写/小写。 二进制属性采用 base64 编码，但其他属性类型会保留未编码状态。 在联合方案和某些 Azure AD 接口中，此属性也称为 immutableID。 可以在[设计概念](active-directory-aadconnect-design-concepts.md#sourceanchor)中找到有关源定位点的详细信息。
+#### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>选择应如何使用 Azure AD 标识用户 - 源定位点
+sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属性。 它是链接本地用户与 Azure AD 中用户的主密钥。
+
+| 设置 | 说明 |
+| --- | --- |
+| 让 Azure 为我管理源定位点 | 如果想要 Azure AD 为你选取属性，请选择此选项。 如果选择此选项，Azure AD Connect 向导会应用 sourceAnchor 属性选择逻辑，该逻辑在相关文章的 [Azure AD Connect: Design concepts - Using msDS-ConsistencyGuid as sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)（Azure AD Connect：设计概念 - 使用 msDS-ConsistencyGuid 作为 sourceAnchor）部分进行了说明。 自定义安装完成后，向导会通知你已选取哪个属性作为“源定位点”属性。 |
+| 特定的属性 | 如果希望指定现有的 AD 属性作为 sourceAnchor 属性，请选择此选项。 |
+
+由于无法更改该属性，因此你必须规划好要使用的合适属性。 objectGUID 就是不错的候选项。 除非在林/域之间移动用户帐户，否则此属性不会更改。 在要在林间移动帐户的多林环境中，必须使用另一个属性，例如具有 employeeID 的属性。 避免某人结婚时会改变的属性，或会更改分配的属性。 由于不可以使用带有 @-sign 符号的属性，因此无法使用 email 和 userPrincipalName。 属性也区分大小写，因此在林间移动对象时，请务必保留大写/小写。 二进制属性采用 base64 编码，但其他属性类型会保留未编码状态。 在联合方案和某些 Azure AD 接口中，此属性也称为 immutableID。 可以在[设计概念](active-directory-aadconnect-design-concepts.md#sourceanchor)中找到有关源定位点的详细信息。
 
 ### <a name="sync-filtering-based-on-groups"></a>根据组同步筛选
 根据组筛选功能可让你只同步一小部分的对象来进行试验。 若要使用此功能，请在本地 Active Directory 中针对此目的创建一个组。 然后添加应该以直属成员身份与 Azure AD 同步的用户和组。 稍后可以在此组中添加和删除用户，以维护应该要在 Azure AD 中显示的对象列表。 要同步的所有对象必须是组的直属成员。 用户、组、联系人和计算机/设备都必须是直属成员。 系统不会解析嵌套组成员身份。 当你添加某个组作为成员时，只会添加该组本身，而不添加其成员。
@@ -147,6 +168,7 @@ ms.lasthandoff: 04/07/2017
 | 可选功能 | 说明 |
 | --- | --- |
 | Exchange 混合部署 |Exchange 混合部署功能使 Exchange 邮箱能够在本地和 Office 365 中共存。 Azure AD Connect 将特定的[属性](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)集从 Azure AD 同步回到本地目录。 |
+| Exchange 邮件公用文件夹 | “Exchange 邮件公用文件夹”功能可以将支持邮件功能的公用文件夹对象从本地 Active Directory 同步到 Azure AD。 |
 | Azure AD 应用程序和属性筛选 |通过启用 Azure AD 应用和属性筛选，可以定制同步的属性集。 此选项将在向导中额外添加两个配置页。 有关详细信息，请参阅 [Azure AD 应用程序和属性筛选](#azure-ad-app-and-attribute-filtering)。 |
 | 密码同步 |如果你选择了联合作为登录解决方案，则可以启用此选项。 然后，可将密码同步用作备份选项。 有关更多信息，请参阅[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。 </br></br>如果选择了“传递身份验证”，则默认会启用此选项，确保支持旧客户端并可用作备份选项。 有关更多信息，请参阅[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。|
 | 密码写回 |通过启用密码写回，源自 Azure AD 的密码更改将写回到本地目录。 有关详细信息，请参阅[密码管理入门](../active-directory-passwords-getting-started.md)。 |

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 3aea60bc21bfb0650a336f6674005bbab47201fe
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 93b24e3d9fbb3fbb3ea995271fd63d1e82eb9c9e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -47,7 +48,7 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
    | **设置** | **值** | **详细信息** |
    |---|---|---|
    |**Name**|contoso.com|DNS 区域的名称|
-   |**订阅**|[你的订阅]|选择要在其中创建应用程序网关的订阅。|
+   |**订阅**|[你的订阅]|选择要在其中创建 DNS 区域的订阅。|
    |**资源组**|**新建：**contosoDNSRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 这篇概述文章。|
    |**位置**|美国西部||
 
@@ -70,7 +71,7 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
    |**类型**|A| 要创建的 DNS 记录的类型，可接受的值为 A、AAAA、CNAME、MX、NS、SRV、TXT 和 PTR。  有关记录类型的详细信息，请访问 [DNS 区域和记录](dns-zones-records.md)|
    |**TTL**|1|DNS 请求的生存时间。|
    |**TTL 单位**|小时|TTL 值的时间度量。|
-   |**IP 地址**|{ipAddressValue| 此值是 DNS 记录解析的 IP 地址。|
+   |**IP 地址**|ipAddressValue| 此值是 DNS 记录解析的 IP 地址。|
 
 ## <a name="view-records"></a>查看记录
 

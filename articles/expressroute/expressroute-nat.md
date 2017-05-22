@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 05/12/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: d29cf81747390fe153c3c6dc330ef738de0cd83a
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: d3de566ff2825ef0c41d88d4a86157dc23d9f46b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -49,7 +49,7 @@ Azure 公共对等互连路径可让你连接到托管于 Azure 中的所有服�
 > 
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Microsoft 对等互连的 NAT 要求
-Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等互连路径访问的 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 CRM Online。 Microsoft 有望在 Microsoft 对等互连上支持双向连接。 定向到 Microsoft 云服务的流量必须由 SNAT 转换成有效的公共 IPv4 地址才能进入 Microsoft 网络。 从 Microsoft 云服务定向到网络的流量必须在 Internet 边缘进行 SNAT 转换，避免[非对称路由](expressroute-asymmetric-routing.md)。 下图提供了有关如何为 Microsoft 对等互连设置 NAT 的综合示意图。
+Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等互连路径访问的 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Dynamics 365。 Microsoft 有望在 Microsoft 对等互连上支持双向连接。 定向到 Microsoft 云服务的流量必须由 SNAT 转换成有效的公共 IPv4 地址才能进入 Microsoft 网络。 从 Microsoft 云服务定向到网络的流量必须在 Internet 边缘进行 SNAT 转换，避免[非对称路由](expressroute-asymmetric-routing.md)。 下图提供了有关如何为 Microsoft 对等互连设置 NAT 的综合示意图。
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 

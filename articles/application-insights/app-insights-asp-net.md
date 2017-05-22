@@ -3,7 +3,7 @@ title: "使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | 
 description: "为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和使用情况分析。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: d0eee3c0-b328-448f-8123-f478052751db
 ms.service: application-insights
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/04/2017
+ms.date: 05/15/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 04bac05363f0f7468e41ccfd96a85e4bd7bf761c
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: af932e111ebc60ee86c823e65000d39fa6ea81cb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -52,7 +52,12 @@ ms.lasthandoff: 04/06/2017
 
 **a.** 选择用于访问 Azure 的帐户和订阅。
 
-**b.** 在 Azure 中，选择要在其中查看应用数据的资源。 通常需要为每个应用单独创建一个资源。 如果想要设置用于存储数据的资源组或位置，请单击“配置设置”。 资源组用于控制对数据的访问。 例如，如果有多个应用构成了同一个系统的一部分，可在同一个资源组中放置这些应用的 Application Insights 数据。
+**b.** 在 Azure 中，选择要在其中查看应用数据的资源。 通常请执行以下操作：
+
+* 使用单个应用程序的[不同组件的单个资源](app-insights-monitor-multi-role-apps.md)。 
+* 为不相关的应用程序创建独立的资源。
+ 
+如果想要设置用于存储数据的资源组或位置，请单击“配置设置”。 资源组用于控制对数据的访问。 例如，如果有多个应用构成了同一个系统的一部分，可在同一个资源组中放置这些应用的 Application Insights 数据。
 
 **c.** 为免费数据容量限制设置一个上限，避免付费。 只要不超过特定的遥测量，Application Insights 都是免费的。 创建资源后，可以通过在门户中打开“功能 + 定价” > “数据量管理” > “每日数量上限”，来更改选择。
 

@@ -1,10 +1,15 @@
 1. 将安装复制到服务器，然后打开安装程序。
-2. 在“准备工作”边栏选项卡上，选择“安装移动服务”。
+2. 在“安装选项”边栏选项卡上，选择“安装移动服务”。
 
-    ![移动服务](./media/site-recovery-install-mob-svc-gui/mobility3.png)
-3. 在“配置服务器详细信息”边栏选项卡中，输入配置服务器的 IP 地址和通行短语。
+    ![移动服务安装选项页 ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
+3. 选择安装位置，然后单击“安装”开始安装过程。
 
-    ![移动服务](./media/site-recovery-install-mob-svc-gui/mobility6.png)
-4. 在“安装位置”边栏选项卡中，保留默认设置，然后选择“下一步”开始安装。
-5. 在“安装进度”边栏选项卡中监视安装。 根据提示重新启动计算机。 安装服务后，可能需要 15 分钟才会在 Azure 门户中更新状态。
+    ![移动服务安装位置页 ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
+4. 可以使用“安装进度”页来监视安装程序的进度。
+    ![移动服务安装进度](./media/site-recovery-install-mob-svc-gui/mobility3.png)
 
+5. 安装完成后，单击“转到配置”按钮，将移动服务注册到配置服务器。
+    ![移动服务注册页](./media/site-recovery-install-mob-svc-gui/mobility4.png)
+
+6. 单击“注册”按钮完成注册。
+    ![移动服务注册页](./media/site-recovery-install-mob-svc-gui/mobility5.png)

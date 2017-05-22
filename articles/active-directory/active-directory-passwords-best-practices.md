@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 05/12/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 328537b2bfbe15a23a9199bbb3c07851eaa85390
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 6cc1589f2ebad9267334f70926be369b32c8e075
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -28,15 +28,16 @@ ms.lasthandoff: 05/03/2017
 
 1. [在目录中启用密码重置](active-directory-passwords-getting-started.md)
 2. [配置进行密码写回所需的本地 AD 权限](active-directory-passwords-how-it-works.md#active-directory-permissions)
-3. [分配并验证所需许可证](active-directory-passwords-licensing.md)
-4. 若要逐渐推出，可以选择仅限一组用户进行密码重置，以便在一段时间内缓慢推出该功能。 为此，请将“已启用自助密码重置”切换开关从“所有人”设置为“一个组”，然后选择一个允许其进行密码重置的安全组。 必须为该组的所有成员分配许可证，以便[根据组进行授权](active-directory-passwords-licensing.md#enable-group-or-user-based-licensing)。
-5. 根据策略填充最小的[身份验证数据](active-directory-passwords-data.md)集。
-6. 指导用户使用 SSPR，为其发送注册和重置说明。
+3. [配置密码写回](active-directory-passwords-writeback.md#configuring-password-writeback)，将密码从 Azure AD 写回到本地目录
+4. [分配并验证所需许可证](active-directory-passwords-licensing.md)
+5. 若要逐渐推出，可以选择仅限一组用户进行密码重置，以便在一段时间内缓慢推出该功能。 为此，请将“已启用自助密码重置”切换开关从“所有人”设置为“一个组”，然后选择一个允许其进行密码重置的安全组。 必须为该组的所有成员分配许可证，以便[根据组进行授权](active-directory-passwords-licensing.md#enable-group-or-user-based-licensing)。
+6. 根据策略填充最小的[身份验证数据](active-directory-passwords-data.md)集。
+7. 指导用户使用 SSPR，为其发送注册和重置说明。
     > [!NOTE]
     > 请使用用户而不是管理员来测试 SSPR，因为 Microsoft 对 Azure 管理员类型帐户强制实施强身份验证要求。 有关管理员密码策略的详细信息，请参阅我们的[深入分析文章](active-directory-passwords-how-it-works.md)。
 
-7. 你可以随时选择强制要求用户注册，并要求用户在特定时间过后重新确认其身份验证信息。 如果不要求用户必须注册，则可[在无需最终用户注册的情况下部署密码重置](active-directory-passwords-data.md)。
-8. 一段时间过后，可以通过查看 [Azure AD 提供的报告](active-directory-passwords-reporting.md)来了解用户注册和使用此功能的情况。
+8. 你可以随时选择强制要求用户注册，并要求用户在特定时间过后重新确认其身份验证信息。 如果不要求用户必须注册，则可[在无需最终用户注册的情况下部署密码重置](active-directory-passwords-data.md)。
+9. 一段时间过后，可以通过查看 [Azure AD 提供的报告](active-directory-passwords-reporting.md)来了解用户注册和使用此功能的情况。
 
 ## <a name="email-based-rollout"></a>基于电子邮件的启用
 
@@ -72,9 +73,9 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-以下链接提供有关使用 Azure AD 进行密码重置的其他信息
+以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助密码管理 
+* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
 * [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
 * [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
 * [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。

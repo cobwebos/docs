@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2017
+ms.date: 05/12/2017
 ms.author: osamam
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: e678062429605db34c1e6c835841aaf2508d81a3
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 0bb4999aa511e002d6088d69400ba4eececd8cf1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -72,7 +73,7 @@ a.b.c.d/29 拆分成 a.b.c.d/30 和 a.b.c.d+4/30 并通过预配 API 一路传�
 Azure 公共对等互连路径可让你连接到托管于 Azure 中的所有服务的公共 IP 地址。 其中包括 [ExpessRoute 常见问题](expressroute-faqs.md) 中列出的服务以及由 Microsoft Azure 上的 ISV 托管的任何服务。 始终从你的网络向 Microsoft 网络发起与公共对等互连中 Microsoft Azure 服务的连接。 必须使用公共 IP 地址才能将流量发往 Microsoft 网络。
 
 ### <a name="microsoft-peering"></a>Microsoft 对等互连
-Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等互连路径访问的 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 CRM Online。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
+Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等互连路径访问的 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Dynamics 365。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
 
 确保你的 IP 地址和 AS 号码已在下列其中一个注册表中注册。
 
@@ -180,7 +181,7 @@ ExpressRoute 不能配置为传输路由器。 你必须依赖连接服务提供
 | Exchange Online |12076:5010 |
 | SharePoint Online |12076:5020 |
 | Skype For Business Online |12076:5030 |
-| CRM Online |12076:5040 |
+| Dynamics 365 |12076:5040 |
 | 其他 Office 365 Online 服务 |12076:5100 |
 
 > [!NOTE]
@@ -207,7 +208,7 @@ ExpressRoute 不能配置为传输路由器。 你必须依赖连接服务提供
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype For Business Online |12076:5130 |
-| CRM Online |12076:5140 |
+| Dynamics 365 |12076:5140 |
 | 其他 Office 365 Online 服务 |12076:5200 |
 
 ## <a name="next-steps"></a>后续步骤

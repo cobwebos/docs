@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/12/2016
+ms.date: 05/12/2017
 ms.author: osamam
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: a97662819acbbbd4c4a331acac4fdec193242d80
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 5c039a80b24feda61da0793fa64b48cb4783c3f1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -82,7 +82,7 @@ Azure 公共对等互连路径可让你连接到托管于 Azure 中的所有服�
 
 ### <a name="microsoft-peering"></a>Microsoft 对等互连
 
-Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等互连路径访问的 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 CRM Online。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
+Microsoft 对等互连路径可让你连接到不支持通过 Azure 公共对等互连路径访问的 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Dynamics 365。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
 
 确保你的 IP 地址和 AS 号码已在下列其中一个注册表中注册。
 
@@ -193,7 +193,7 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 | **Exchange** |12076:5010 |
 | **SharePoint** |12076:5020 |
 | **Skype For Business** |12076:5030 |
-| **CRM Online** |12076:5040 |
+| **Dynamics 365** |12076:5040 |
 | **其他 Office 365 服务** |12076:5100 |
 
 > [!NOTE]

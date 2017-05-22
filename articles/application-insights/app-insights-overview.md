@@ -3,7 +3,7 @@ title: "什么是 Azure Application Insights？ | Microsoft Docs"
 description: "应用程序性能管理和实时 Web 应用程序的使用情况跟踪。  检测、会审和诊断问题，了解用户使用应用的方式。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 379721d1-0f82-445a-b416-45b94cb969ec
 ms.service: application-insights
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/07/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 4c47041bb729a3ee1f3fb4c7baf7f988db226677
-ms.lasthandoff: 04/12/2017
-
+ms.date: 05/14/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: e57912a197394fbb8ea8bc374a1f3934ae0ff464
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
@@ -64,14 +64,17 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 |  |  |
 | --- | --- |
+| [**智能检测和手动警报**](app-insights-proactive-diagnostics.md)<br/>当某些内容处于异常模式时，自动警报适应你的应用的遥测和触发器正常模式。 还可以在自定义或标准指标的特定级别上[设置警报](app-insights-alerts.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
 | [**应用程序映射**](app-insights-app-map.md)<br/>应用的组件，包含关键指标和警报。 |![应用程序映射](./media/app-insights-overview/appmap-tn.png)  |
+| [**探查器**](app-insights-profiler.md)<br/>检查抽样请求的执行配置文件。 |![探查器](./media/app-insights-overview/profiler.png) |
+| [**使用情况分析**](app-insights-usage-overview.md)<br/>分析用户细分和保留情况。|![留存情况工具](./media/app-insights-overview/retention.png) |
 | [**实例数据的诊断搜索**](app-insights-diagnostic-search.md)<br/>搜索和筛选事件，例如请求、异常、依赖项调用、日志跟踪和页面视图。  |![搜索遥测](./media/app-insights-overview/search-tn.png) |
 | [**聚合数据的指标资源管理器**](app-insights-metrics-explorer.md)<br/>浏览、筛选和细分聚合的数据，例如请求率、故障率和异常率；响应时间、页面加载时间。 |![度量值](./media/app-insights-overview/metrics-tn.png) |
 | [**仪表板**](app-insights-dashboards.md#dashboards)<br/>混合使用来自多个资源的数据并与他人共享。 对于多组件应用程序和在团队聊天室中连续显示很有用。 |![仪表板示例](./media/app-insights-overview/dashboard-tn.png) |
 | [**实时指标流**](app-insights-live-stream.md)<br/>部署新的生成时，观看这些准实时性能指示器，确保一切按预期工作。 |![实时指标示例](./media/app-insights-overview/live-metrics-tn.png) |
 | [**分析**](app-insights-analytics.md)<br/>使用此功能强大的查询语言，回答有关应用的性能和使用情况的疑难问题。 |![分析示例](./media/app-insights-overview/analytics-tn.png) |
-| [**自动和手动警报**](app-insights-alerts.md)<br/>当某些内容处于异常模式时，自动警报适应你的应用的遥测和触发器正常模式。 还可以在自定义或标准指标的特定级别上设置警报。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
 | [**Visual Studio**](app-insights-visual-studio.md)<br/>查看代码中的性能数据。 从堆栈跟踪转到代码。|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
+| [**快照调试器**](app-insights-snapshot-debugger.md)<br/>使用参数值调试从实时操作采样的快照。|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](app-insights-export-power-bi.md)<br/>将使用指标与其他商业智能集成。| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>编写代码以对指标和原始数据运行查询。| ![REST API](./media/app-insights-overview/rest-tn.png) |
 | [**连续导出**](app-insights-export-telemetry.md)<br/>原始数据到达后，立即将其批量导出到存储。 |![导出](./media/app-insights-overview/export-tn.png) |
@@ -90,10 +93,10 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 * 评估受到影响的的用户的数量。
 * 将失败与异常、依赖项调用和跟踪关联起来。
-* 检查堆栈转储和跟踪日志。
+* 检查探查器、快照、堆栈转储和跟踪日志。
 
 ### <a name="build-measure-learn"></a>生成、衡量、学习
-测量部署的每个新功能的有效性。
+[测量有效性](app-insights-usage-overview.md)（针对部署的每个新功能）。
 
 * 规划以衡量客户使用新的 UX 或业务功能的方式。
 * 将自定义遥测写入代码。

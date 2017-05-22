@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/31/2017
-ms.author: jehollan; estfan; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6634f0ee88e68f2fcb09fd7534a88677e8efa029
-ms.lasthandoff: 04/03/2017
+ms.author: LADocs; jehollan; estfan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 204bf123509729b60b55c306050cef54aa7fecc5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 ---
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 04/03/2017
     > [!TIP]
     > 如果你已注册个人 [Microsoft 帐户](https://account.microsoft.com/account)，则已经有了一个 Outlook.com 帐户。 如果你已注册 Azure 工作或学校帐户，则已有了一个 **Office 365 Outlook** 帐户。
 
-* 网站 RSS 源的链接。 本示例使用 [MSDN 第 9 频道网站](https://channel9.msdn.com/)的 RSS 源：`https://s.ch9.ms/Feeds/RSS`
+* 网站 RSS 源的链接。 此示例使用 [CNN.com 网站发布的头条新闻的 RSS 源](http://rss.cnn.com/rss/cnn_topstories.rss)：`http://rss.cnn.com/rss/cnn_topstories.rss`
 
 ## <a name="add-a-trigger-that-starts-your-workflow"></a>添加用于启动工作流的触发器
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 04/03/2017
      还可以更改“频率”和“间隔”。 
      这些设置确定逻辑应用检查新项的频率，并返回在该时间范围内找到的所有项。
 
-     在本示例中，我们将每天检查 MSDN 第 9 频道网站上发布的新项。
+     在本示例中，我们将每天检查发布到 CNN 网站的头条新闻。
 
      ![使用 RSS 源、频率和间隔设置触发器](media/logic-apps-create-a-logic-app/rss-trigger-setup.png)
 

@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/04/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: c9d5fdc2ff27454b2492751034b43658ee9d46c5
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: e7ed94a3aa24d401e073cf260453550b4c67f47e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20-preview"></a>通过 Azure CLI 2.0（预览版）开始使用 Azure Data Lake Store
+# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Azure Data Lake Store 入门（使用 Azure CLI 2.0）
 > [!div class="op_single_selector"]
 > * [门户](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -50,14 +51,6 @@ Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它
 ## <a name="authentication"></a>身份验证
 
 本文对 Data Lake Store 使用一种较为简单的身份验证方法，可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别监管对 Data Lake Store 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Store 中进行身份验证，即**最终用户身份验证**或**服务到服务身份验证**。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。
-
-## <a name="enable-data-lake-store-preview-in-azure-cli-20"></a>在 Azure CLI 2.0 中启用 Data Lake Store（预览版）
-
-Data Lake Store CLI 2.0 目前为预览版，在你安装 Azure CLI 2.0 时不会默认启用。 运行以下命令，启用 Data Lake Store CLI 2.0。
-
-```azurecli
-az component update --add dls
-```
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>登录到 Azure 订阅
