@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 05/12/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: a56749a5ac1098db3970140a76b71c77c1f74c07
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 679b6962633cd734a1b1e339e8422da5b9c4ddfd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/28/2017
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ## <a name="azure-account"></a>Azure 帐户
-* 使用中的有效 Microsoft Azure 帐户。 需有此帐户才能设置 ExpressRoute 线路。 ExpressRoute 线路是 Azure 订阅中的资源。 即使连接限于非 Azure Microsoft 云服务（例如 Office 365 服务和 CRM Online），Azure 订阅也是一个必要条件。
+* 使用中的有效 Microsoft Azure 帐户。 需有此帐户才能设置 ExpressRoute 线路。 ExpressRoute 线路是 Azure 订阅中的资源。 即使连接限于非 Azure Microsoft 云服务（例如 Office 365 服务和 Dynamics 365），Azure 订阅也是一个必要条件。
 * 激活 Office 365 订阅（如果要使用 Office 365 服务）。 有关详细信息，请参阅本文中的 [Office 365 的具体要求](#office-365-specific-requirements)部分。
 
 ## <a name="connectivity-provider"></a>连接服务提供商
@@ -53,10 +54,10 @@ ms.lasthandoff: 03/28/2017
 * [Office 365 与本地环境的集成](https://support.office.com/en-us/article/Office-365-integration-with-on-premises-environments-263faf8d-aa21-428b-aed3-2021837a4b65)
 * [Office 365 中的 ExpressRoute 高级培训视频](https://channel9.msdn.com/series/aer/)
 
-## <a name="crm-online"></a>CRM Online
-如果打算在 ExpressRoute 上启用 CRM Online，请参阅以下文档详细了解 CRM Online
+## <a name="dynamics-365"></a>Dynamics 365
+如果打算在 ExpressRoute 上启用 Dynamics 365，请参阅以下文档，详细了解 Dynamics 365
 
-* [CRM Online URLs](https://support.microsoft.com/kb/2655102) (CRM Online URL) 和 [IP address ranges](https://support.microsoft.com/kb/2728473)（IP 地址范围）
+* [Dynamics 365 URL](https://support.microsoft.com/kb/2655102) 和 [IP 地址范围](https://support.microsoft.com/kb/2728473)
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。

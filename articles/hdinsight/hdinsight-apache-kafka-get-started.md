@@ -1,6 +1,6 @@
 ---
-title: "Apache Kafka on HDInsight 入门 | Microsoft Docs"
-description: "了解在 HDInsight 上创建和使用 Kafka 的基础知识。"
+title: "Apache Kafka 入门 - Azure HDInsight | Microsoft Docs"
+description: "了解如何在 Azure HDInsight 上创建 Apache Kafka 群集。 了解如何创建主题、订阅服务器和使用者。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,31 +13,25 @@ ms.devlang:
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/14/2017
+ms.date: 05/16/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 695c6bd0a08e88be2d8e28eb15d903f3ae1eccaf
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: f92d71542a2aa797b84f8742f74a02fea895e25a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
-# <a name="get-started-with-apache-kafka-preview-on-hdinsight"></a>Apache Kafka on HDInsight（预览版）入门
+# <a name="start-with-apache-kafka-preview-on-hdinsight"></a>HDInsight 上的 Apache Kafka（预览版）入门
 
-[Apache Kafka](https://kafka.apache.org) 是开源分布式流式处理平台，可与 HDInsight 配合使用。 通常将其用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。 本文档将介绍如何创建 Kafka on HDInsight 群集，然后从 Java 应用程序发送和接收数据。
+了解如何在 Azure HDInsight 上创建和使用 [Apache Kafka](https://kafka.apache.org) 群集。 Kafka 是开源分布式流式处理平台，可与 HDInsight 配合使用。 通常将其用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。
 
 > [!NOTE]
 > 目前，有两个 Kafka 版本可用于 HDInsight；0.9.0 (HDInsight 3.4) 和 0.10.0 (HDInsight 3.5)。 本文档中的步骤假设使用 Kafka on HDInsight 3.5。
 
-## <a name="prerequisite"></a>先决条件
-
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-必须具备以下条件才能成功完成本 Apache Kafka 教程：
-
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-
-* **熟悉 SSH 和 SCP**。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
+## <a name="prerequisites"></a>先决条件
 
 * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 或类似程序，如 OpenJDK。
 
@@ -94,7 +88,7 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
 
-使用 SSH 从客户端连接到群集。 如果使用的是 Linux、Unix、MacOS 或 Windows 10 上的 Bash，请使用以下命令：
+使用 SSH 从客户端连接到群集：
 
 ```ssh SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net```
 
@@ -104,7 +98,7 @@ ms.lasthandoff: 05/03/2017
 
 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-##<a id="getkafkainfo"></a>获取 Zookeeper 主机和代理主机信息
+## <a id="getkafkainfo"></a>获取 Zookeeper 主机和代理主机信息
 
 使用 Kafka 时，必须了解两个主机值；Zookeeper 主机和代理主机。 这些主机配合 Kafka API 和 Kafka 随附的许多实用工具一起使用。
 
@@ -116,12 +110,12 @@ ms.lasthandoff: 05/03/2017
     sudo apt -y install jq
     ```
 
-2. 使用以下命令，通过从 Ambari 检索的信息设置环境变量。 使用 Kafka 群集的名称替换 __KAFKANAME__。 使用创建群集时使用的登录（管理员）密码替换 __PASSWORD__。
+2. 使用以下命令，通过从 Ambari 检索的信息设置环境变量。 将 __CLUSTERNAME__ 替换为 Kafka 群集的名称。 使用创建群集时使用的登录（管理员）密码替换 __PASSWORD__。
 
     ```bash
-    export KAFKAZKHOSTS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/KAFKANAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
+    export KAFKAZKHOSTS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
 
-    export KAFKABROKERS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/KAFKANAME/services/HDFS/components/DATANODE | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'`
+    export KAFKABROKERS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'`
 
     echo '$KAFKAZKHOSTS='$KAFKAZKHOSTS
     echo '$KAFKABROKERS='$KAFKABROKERS
@@ -136,8 +130,8 @@ ms.lasthandoff: 05/03/2017
     `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
    
     > [!WARNING]
-    > 不要期望从此会话中返回的信息始终准确。 若缩放群集，将添加或删除新的代理。 如果发生故障且替换节点，节点的主机名可能会改变。 
-    > 
+    > 不要期望从此会话中返回的信息始终准确。 若缩放群集，将添加或删除新的代理。 如果发生故障且替换节点，节点的主机名可能会改变。
+    >
     > 应在检索 Zookeeper 和中转站主机信息后尽快使用这些信息，确保信息有效。
 
 ## <a name="create-a-topic"></a>创建主题
@@ -176,7 +170,7 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic test --from-beginning
     ```
    
-    这样就会从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者从流的开头开始，以检索所有记录。
+    此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者从流的开头开始，以检索所有记录。
 
 3. 使用 __Ctrl + C__ 阻止使用者。
 
@@ -192,12 +186,12 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
 
     * **使用者** - 从主题中读取记录。
 
-2. 从开发环境中的命令行，将目录更改为该示例的 `Producer-Consumer` 目录位置，然后使用以下命令创建 jar 包：
-   
+2. 将目录更改为该示例的 `Producer-Consumer` 目录位置，然后使用以下命令创建 jar 包：
+
     ```
     mvn clean package
     ```
-   
+
     此命令创建一个名为 `target` 的目录，其中包含名为 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 的文件。
 
 3. 使用以下命令将 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 文件复制到 HDInsight 群集：
@@ -208,13 +202,13 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
    
     将 **SSHUSER** 替换为群集的 SSH 用户，并将 **CLUSTERNAME** 替换为群集的名称。 出现提示时，请输入 SSH 用户密码。
 
-4. `scp` 命令完成复制文件后，使用 SSH 连接到群集，然后使用以下步骤将记录写入之前创建的测试主题。
-   
+4. 等 `scp` 命令复制完文件以后，使用 SSH 连接到群集。 使用以下命令将记录写入测试主题：
+
     ```bash
     ./kafka-producer-consumer.jar producer $KAFKABROKERS
     ```
-   
-    此命令启动生成者，并写入记录。 将显示计数器，因此可查看写入的记录数量。
+
+    将显示计数器，因此可查看写入的记录数量。
 
     > [!NOTE]
     > 如果收到“权限被拒”错误，使用以下命令，使该文件成为可执行文件：```chmod +x kafka-producer-consumer.jar```
@@ -240,7 +234,7 @@ Kafka 的一个重要概念是使用者在读取记录时使用使用者组（�
     ```
 
     > [!NOTE]
-    > 由于这是一个新的 SSH 会话，因此必须使用[获取 Zookeeper 和中转站主机信息](#getkafkainfo)部分的命令设置 `$KAFKABROKERS`。
+    > 使用[获取 Zookeeper 和中转站主机信息](#getkafkainfo)部分的命令为该 SSH 会话设置 `$KAFKABROKERS`。
 
 2. 观察每个会话对从主题中收到的记录进行计数。 两个会话的总记录数应与之前从一个使用者中收到的记录数相同。
 
@@ -260,11 +254,11 @@ Kafka 的一个重要概念是使用者在读取记录时使用使用者组（�
     此项目仅包含一个类 `Stream`，该类从之前创建的 `test` 主题读取记录。 它会统计读取的字数，然后发出每个字，计数到名为 `wordcounts` 的主题。 `wordcounts` 主题在本部分之后的步骤中进行创建。
 
 2. 从开发环境中的命令行，将目录更改为 `Streaming` 目录的位置，然后使用以下命令创建 jar 包：
-   
-    ```
+
+    ```bash
     mvn clean package
     ```
-   
+
     此命令创建一个名为 `target` 的目录，其中包含名为 `kafka-streaming-1.0-SNAPSHOT.jar` 的文件。
 
 3. 使用以下命令将 `kafka-streaming-1.0-SNAPSHOT.jar` 文件复制到 HDInsight 群集：

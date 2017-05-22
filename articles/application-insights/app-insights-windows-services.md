@@ -3,7 +3,7 @@ title: "用于 Windows 服务器和辅助角色的 Azure Application Insights | 
 description: "手动将 Application Insights SDK 添加到 ASP.NET 应用程序，以分析使用情况、可用性和性能。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 106ba99b-b57a-43b8-8866-e02f626c8190
 ms.service: application-insights
@@ -11,66 +11,83 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 05/15/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 29598f052778759ed362e3aa4b997acb799717ef
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 274e8db8e35243dc4b7ef20c3e7085f47975bb1c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="manually-configure-application-insights-for-aspnet-applications"></a>为 ASP.NET 应用程序手动配置 Application Insights
-[Application Insights](app-insights-overview.md) 是为 Web 开发人员提供的可扩展工具，用于监视实时应用程序的性能和使用情况。 可以手动配置它以监视 Windows 服务器、辅助角色和其他 ASP.NET 应用程序。 对于 Web 应用，Visual Studio 提供手动配置作为 [自动设置](app-insights-asp-net.md) 的替代方法。
+# <a name="manually-configure-application-insights-for-net-applications"></a>为 .NET 应用程序手动配置 Application Insights
+
+可以对 [Application Insights](app-insights-overview.md) 进行配置，以便监视各种应用程序或应用程序角色、组件或微服务。 对于 Web 应用和服务，Visual Studio 提供[单步配置](app-insights-asp-net.md)。 对于其他类型的 .NET 应用程序，例如后端服务器角色或桌面应用程序，可以手动配置 Application Insights。
 
 ![性能监视图表示例](./media/app-insights-windows-services/10-perf.png)
 
 #### <a name="before-you-start"></a>开始之前
+
 你需要：
 
 * [Microsoft Azure](http://azure.com)订阅。 如果你的团队或组织拥有 Azure 订阅，则所有者可以使用你的 [Microsoft 帐户](http://live.com)将你加入其中。
 * Visual Studio 2013 或更高版本。
 
-## <a name="add"></a>1.创建 Application Insights 资源
+## <a name="add"></a>1.选择 Application Insights 资源
+
+“资源”是指收集数据并在 Azure 门户中显示的地方。 你需要决定，是创建新资源，还是共享现有资源。
+
+### <a name="part-of-a-larger-app-use-existing-resource"></a>更大型应用的一部分：使用现有资源
+
+如果 Web 应用程序有多个组件（例如，一个前端 Web 应用，以及一个或多个后端服务），则应将遥测从所有组件发送至同一资源。 这样可以让它们显示在单个“应用程序映射”中，从而跟踪从一个组件到另一个组件的请求。
+
+因此，如果已监视该应用的其他组件，则请直接使用同一资源。
+
+在 [Azure 门户](https://portal.azure.com/)中打开资源。 
+
+### <a name="self-contained-app-create-a-new-resource"></a>自包含应用：创建新资源
+
+如果新应用与其他应用程序无关，则应有其自己的资源。
+
 登录 [Azure 门户](https://portal.azure.com/)，创建新的 Application Insights 资源。 选择 ASP.NET 作为应用程序类型。
 
 ![依次单击“新建”、“Application Insights”](./media/app-insights-windows-services/01-new-asp.png)
 
-Azure 中的 [资源](app-insights-resources-roles-access-control.md) 是服务的实例。 将在此资源中分析并呈现来自应用的遥测。
+选择应用程序类型将会设置资源边栏选项卡的默认内容。
 
-应用程序类型的选择会设置资源边栏选项卡和 [指标资源管理器](app-insights-metrics-explorer.md)中可见属性的默认内容。
-
-#### <a name="copy-the-instrumentation-key"></a>复制检测密钥
-密钥可标识资源，很快将在 SDK 中安装它来将数据定向到资源。
+## <a name="2-copy-the-instrumentation-key"></a>2.复制检测密钥
+该密钥用于标识资源。 很快会在 SDK 中安装它，以便将数据定向到资源。
 
 ![单击“属性”，选择密钥，然后按 Ctrl+C](./media/app-insights-windows-services/02-props-asp.png)
 
-刚才执行的用于创建新资源的步骤是开始监视任何应用程序的好方法。 现在可以将数据发送给它。
+## <a name="sdk"></a>3.在应用程序中安装 Application Insights 程序包
+Application Insights 程序包的安装和配置因使用的平台而异。 
 
-## <a name="sdk"></a>2.在应用程序中安装 Application Insights 程序包
-Application Insights 程序包的安装和配置因使用的平台而异。 对于 ASP.NET 应用而言，这很容易。
-
-1. 在 Visual Studio 中，编辑 Web 应用项目的 NuGet 包。
+1. 在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。
    
     ![右键单击项目，然后选择“管理 NuGet 包”](./media/app-insights-windows-services/03-nuget.png)
-2. 安装适用于 Windows 服务器应用的 Application Insights 程序包。
+2. 安装适用于 Windows Server 应用的 Application Insights 包“Microsoft.ApplicationInsights.WindowsServer”。
    
     ![搜索“Application Insights”](./media/app-insights-windows-services/04-ai-nuget.png)
    
+    *哪个版本？*
+
+    若要尝试最新功能，请选中“包括预发行版”。 相关文档或博客会注明你是否需要预发行版。
+    
     *是否可以使用其他包？*
    
-    是的。 如果只想使用 API 发送自己的遥测，请选择 Core API (Microsoft.ApplicationInsights)。 Windows Server 包会自动包括 Core API 以及若干其他包，例如性能计数器集合和依赖项监视。 
+    是的。 如果只想使用 API 发送自己的遥测，请选择“Microsoft.ApplicationInsights”。 Windows Server 包会包括 API 以及若干其他包，例如性能计数器集合和依赖项监视。 
 
-#### <a name="to-upgrade-to-future-package-versions"></a>升级到未来的程序包版本
+### <a name="to-upgrade-to-future-package-versions"></a>升级到未来的程序包版本
 我们会不时发布 SDK 的新版本。
 
 若要升级到[程序包的新版本](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/)，请再次打开 NuGet 包管理器，然后筛选已安装的程序包。 选择“Microsoft.ApplicationInsights.WindowsServer”，然后选择“升级”。
 
 如果对 ApplicationInsights.config 执行了任何自定义操作，请在升级前保存相关副本，并在升级后将更改合并到新版本中。
 
-## <a name="3-send-telemetry"></a>3.发送遥测
-**如果只安装 Core API 包：**
+## <a name="4-send-telemetry"></a>4.发送遥测
+**如果只安装了 API 包：**
 
 * 在代码中设置检测密钥，例如，在 `main()`中： 
   
@@ -102,7 +119,7 @@ Application Insights 程序包的安装和配置因使用的平台而异。 对�
 
 单击任何图表以查看更详细的指标。 [了解有关指标的详细信息。](app-insights-web-monitor-performance.md)
 
-#### <a name="no-data"></a>没有数据？
+### <a name="no-data"></a>没有数据？
 * 使用应用程序打开不同的页面，以生成一些遥测。
 * 打开 [“搜索”](app-insights-diagnostic-search.md) 磁贴，查看每个事件。 有时，事件会需要较长的时间才能通过指标管道。
 * 请等待几秒钟，然后单击“刷新” 。 图表会定期刷新本身，但如果正在等待某些数据显示，则可以手动刷新。
@@ -115,14 +132,14 @@ Application Insights 程序包的安装和配置因使用的平台而异。 对�
 
 在调试模式下运行时，系统通过管道加速遥测，因此应该可以在数秒内看到数据。 以发布配置部署应用时，数据的累积速度会更慢。
 
-#### <a name="no-data-after-you-publish-to-your-server"></a>发布到服务器后却没有数据？
+### <a name="no-data-after-you-publish-to-your-server"></a>发布到服务器后却没有数据？
 在服务器的防火墙中打开出口流量的端口。 若要获取所需地址的列表，请参阅[此页](https://docs.microsoft.com/azure/application-insights/app-insights-ip-addresses) 
 
-#### <a name="trouble-on-your-build-server"></a>生成服务器遇到问题？
+### <a name="trouble-on-your-build-server"></a>生成服务器遇到问题？
 请参阅 [此疑难解答项](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)。
 
 > [!NOTE]
-> 如果应用生成大量遥测（且使用的是 ASP.NET SDK 版本 2.0.0-beta3 或更高版本），自适应采样模块将通过仅发送具有代表性的事件部分来自动减少发送到门户的量。 但是，将以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。 
+> 如果应用生成大量遥测，自适应采样模块将通过仅发送具有代表性的事件部分自动减少发送到门户的量。 但是，将以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。 
 > [了解采样](app-insights-sampling.md)。
 > 
 > 
