@@ -1,6 +1,6 @@
 ---
-title: "盒中的 SaaS（使用 Azure SQL 数据库的示例 SaaS 应用程序）| Microsoft Docs"
-description: "使用 SQL 数据库生成 SaaS 应用程序"
+title: "Azure SQL 数据库示例多租户应用 | Microsoft Docs"
+description: "Azure SQL 数据库示例 Wingtip 票证 (WTP) 应用简介"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bf5745a788cd9ab6bf2ea8d5d97b8c04f083fc5d
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 265eab8104d8af7c510a88dffb9d70a2b3b37631
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---

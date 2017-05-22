@@ -1,6 +1,6 @@
 ---
-title: "对所有租户（使用 Azure SQL 数据库的示例 SaaS 应用程序）运行即席分析查询 | Microsoft Docs"
-description: "对所有租户运行即席分析查询"
+title: "针对多个 Azure SQL 数据库运行即席分析查询 | Microsoft Docs"
+description: "在多租户应用程序中针对多个数据库运行即席分析查询"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c00c25116002c46fc94c5ea59acc101a2055b689
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: dd41e7f1f131f6c18e03d2434982c3d681342b8b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 05/10/2017
 
 若要完成本教程，请确保已完成以下先决条件：
 
-* WTP 应用已部署。 若要在五分钟内部署，请参阅[部署和浏览 WTP SaaS 应用程序](sql-database-saas-tutorial.md)
+* 已部署了 WTP 应用。 若要在五分钟内部署，请参阅[部署和浏览 WTP SaaS 应用程序](sql-database-saas-tutorial.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 
@@ -54,7 +54,7 @@ SaaS 应用程序提供的大好机会之一是使用集中存储在云中的大
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
-Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
+Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
 
 ## <a name="deploy-the-database-used-for-ad-hoc-analytics-queries"></a>部署用于即席分析查询的数据库
 

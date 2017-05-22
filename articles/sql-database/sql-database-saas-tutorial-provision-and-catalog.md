@@ -1,6 +1,6 @@
 ---
-title: "预配和编录新租户（使用 Azure SQL 数据库的示例 SaaS 应用程序）| Microsoft Docs"
-description: "预配和编录新租户"
+title: "在使用 Azure SQL 数据库的多租户应用中预配新租户 | Microsoft Docs"
+description: "在 Wingtip 票证 (WTP) 示例 SQL 数据库 SaaS 应用中预配新租户并将其编入目录"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 4eeada941f8615fa04624bc725efcb44f05d56c7
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: aae5d85a18f93b7821a6ef8fc7161dd9a6ebe533
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 05/10/2017
 
 若要完成本教程，请确保已完成以下先决条件：
 
-* WTP 应用已部署。 若要在五分钟内部署，请参阅[部署和浏览 WTP SaaS 应用程序](sql-database-saas-tutorial.md)
+* 已部署 WTP 应用。 若要在五分钟内进行部署，请参阅[部署和浏览 WTP SaaS 应用程序](sql-database-saas-tutorial.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 ## <a name="introduction-to-the-saas-catalog-pattern"></a>SaaS 目录模式简介
@@ -57,7 +57,7 @@ Wingtip SaaS 应用通过复制黄金数据库来预配新租户。
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
-Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
+Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
 
 ## <a name="provision-a-new-tenant"></a>预配新租户
 

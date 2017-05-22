@@ -1,6 +1,6 @@
 ---
-title: "部署和浏览 Wingtip 票证平台 (WTP) 应用程序（使用 Azure SQL 数据库的示例 SaaS 应用程序）| Microsoft Docs"
-description: "部署和浏览使用 Azure SQL 数据库的示例 SaaS 应用程序"
+title: "部署和浏览使用 Azure SQL 数据库的 SaaS 应用程序 | Microsoft Docs"
+description: "部署和浏览 Azure SQL 数据库示例 Wingtip 票证 (WTP) 应用"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ff4dc19bb6e24ea9ceeed9721cfb3a85b4d10965
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 04859fb8a9f4a8bf04d92e7139d9202885c52503
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -29,6 +29,8 @@ ms.lasthandoff: 05/10/2017
 本教程中将部署和浏览 Wingtip 票证平台 (WTP) SaaS 应用程序。 该应用程序使用租户各有数据库（一种 SaaS 应用程序模式）为多个租户提供服务。 该应用程序旨在展示支持 SaaS 方案和 SaaS 设计及管理模式的 Azure SQL 数据库功能。
 
 单击下面的“部署到 Azure”按钮之后五分钟，即可拥有使用 SQL 数据库、已启动且正在云中运行的多租户 SaaS 应用程序。 该应用程序随三个示例租户一起部署，每个租户都有自己的数据库，并且这三个租户均部署在 SQL 弹性池中。 该应用将部署到 Azure 订阅，提供检查和使用单个应用程序组件所需的完全访问权限。
+
+[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github 存储库中提供了脚本和应用程序源代码。
 
 本教程介绍以下内容：
 
@@ -97,7 +99,7 @@ WTP 应用程序使用 [Azure 流量管理器](https://docs.microsoft.com/azure/
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
-Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
+Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
 
 ## <a name="provision-a-new-tenant"></a>预配新租户
 

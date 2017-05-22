@@ -1,6 +1,6 @@
 ---
-title: "管理多个租户的架构（使用 Azure SQL 数据库的示例 SaaS 应用程序）| Microsoft Docs"
-description: "在使用 Azure SQL 数据库的 SaaS 应用程序中管理多个租户的架构"
+title: "在多租户应用中管理 Azure SQL 数据库架构 | Microsoft Docs"
+description: "在使用 Azure SQL 数据库的多租户应用程序中为多个租户管理架构"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 226cda254934fae30410e54148d5cc527e1c7881
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 19d02229781186053a0063af1c7e1a3280179f46
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---

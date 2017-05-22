@@ -1,6 +1,6 @@
 ---
-title: "对多个租户运行分析查询（使用 Azure SQL 数据库的示例 SaaS 应用程序）| Microsoft Docs"
-description: "对多个租户运行分析查询"
+title: "针对多个 Azure SQL 数据库运行分析查询 | Microsoft Docs"
+description: "针对多个 Azure SQL 数据库运行分布式查询"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -17,14 +17,14 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b512e2f7833be1947ef7674d6e0266879789ac5a
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: a0742a004b618dda304618bca21ae715552c16e6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
-# <a name="run-analytics-queries-against-multiple-tenants"></a>对多个租户运行分析查询
+# <a name="run-distributed-queries-across-multiple-azure-sql-databases"></a>针对多个 Azure SQL 数据库运行分布式查询
 
 在本教程中，可以针对目录中的每个租户运行分析查询。 已创建运行查询的弹性作业。 该作业检索数据并将其加载到在编录服务器上创建的独立分析数据库。 可以对数据库进行查询，以便提取隐藏在所有租户的日常运行数据中的见解。 将会从返回结果式查询（位于租户分析数据库中）中创建表，作为作业的输出。
 
