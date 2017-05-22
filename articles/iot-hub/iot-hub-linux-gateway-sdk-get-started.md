@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT 中心网关 SDK 入门 (Linux) | Microsoft 文档"
-description: "了解如何在 Linux 计算机上构建网关，以及 Azure IoT 网关 SDK 的重要概念，如模块和 JSON 配置文件。"
+title: "Azure IoT Edge 入门 (Linux) | Microsoft Docs"
+description: "了解如何在 Linux 计算机上构建网关，以及 Azure IoT Edge 的重要概念，如模块和 JSON 配置文件。"
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,14 +15,15 @@ ms.workload: na
 ms.date: 03/28/2017
 ms.author: andbuc
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 856ffeeeb8f9d8296ba972a9e070686171f7fde8
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: c401052d65cb9f06398fcf6597dc1de5e7451734
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="explore-the-iot-gateway-sdk-architecture-on-linux"></a>探索 Linux 上的 IoT 网关 SDK 体系结构
+# <a name="explore-azure-iot-edge-architecture-on-linux"></a>在 Linux 上浏览 Azure IoT Edge 体系结构
 
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
@@ -31,18 +32,18 @@ ms.lasthandoff: 03/31/2017
 开始之前，必须[设置开发环境][lnk-setupdevbox]，以便在 Linux 上使用 SDK。
 
 1. 打开 shell。
-1. 浏览到本地 **azure-iot-gateway-sdk** 存储库副本中的根文件夹。
-1. 运行 **tools/build.sh** 脚本。 此脚本使用 **cmake** 实用工具在 **azure-iot-gateway-sdk** 存储库本地副本的根文件夹中创建一个名为 **build** 的文件夹，并生成一个生成文件。 然后，该脚本将生成解决方案并跳过单元测试和端到端测试。 如果想要生成并运行单元测试，请添加 **--run-unittests** 参数。 如果想要生成并运行端到端测试，请添加 **--run-e2e-tests**。
+1. 浏览到本地 **iot-edge** 存储库副本中的根文件夹。
+1. 运行 **tools/build.sh** 脚本。 此脚本使用 **cmake** 实用工具在 **iot-edge** 存储库本地副本的根文件夹中创建一个名为 **build** 的文件夹，并生成一个生成文件。 然后，该脚本将生成解决方案并跳过单元测试和端到端测试。 如果想要生成并运行单元测试，请添加 **--run-unittests** 参数。 如果想要生成并运行端到端测试，请添加 **--run-e2e-tests**。
 
 > [!NOTE]
-> 每次运行 **build.sh** 脚本时，都会删除 **azure-iot-gateway-sdk** 存储库本地副本的根文件夹中的 **build** 文件夹并重新生成。
+> 每次运行 **build.sh** 脚本时，都会删除 **iot-edge** 存储库本地副本的根文件夹中的 **build** 文件夹并重新生成。
 
 ## <a name="how-to-run-the-sample"></a>如何运行示例
 
-1. **build.sh** 脚本在 **azure-iot-gateway-sdk** 存储库的本地副本内的 **build** 文件夹中生成输出。 该输出包括此示例中使用的两个模块。
+1. **build.sh** 脚本在 **iot-edge** 存储库的本地副本内的 **build** 文件夹中生成输出。 该输出包括此示例中使用的两个 IoT Edge 模块。
 
     生成脚本将 **liblogger.so** 放在 **build/modules/logger/** 文件夹中，将 **libhello\_world.so** 放在 **build/modules/hello_world/** 文件夹中。 按以下示例 JSON 设置文件中所示，将这些路径用于 **module path** 值。
-1. hello\_world\_sample 过程使用 JSON 配置文件的路径作为命令行参数。 以下示例 JSON 文件在 SDK 存储库的以下路径中提供：**samples/hello\_world/src/hello\_world\_lin.json**。 除非你修改了生成脚本，将模块或示例可执行文件放置在非默认位置，否则，此配置文件可按原样工作。
+1. hello\_world\_sample 过程使用 JSON 配置文件的路径作为命令行参数。 以下示例 JSON 文件在 SDK 存储库的以下路径中提供：**samples/hello\_world/src/hello\_world\_lin.json**。 除非修改了生成脚本，将 IoT Edge 模块或示例可执行文件放置在非默认位置，否则，此配置文件可按原样工作。
 
    > [!NOTE]
    > 模块路径相对于从中启动 hello\_world\_sample 可执行文件的当前工作目录，而不是可执行文件所在的目录。 示例 JSON 配置文件默认为在当前工作目录中写入“log.txt”。
@@ -89,5 +90,5 @@ ms.lasthandoff: 03/31/2017
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-code](../../includes/iot-hub-gateway-sdk-getstarted-code.md)]
 
 <!-- Links -->
-[lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
+[lnk-setupdevbox]: https://github.com/Azure/iot-edge/blob/master/doc/devbox_setup.md
 
