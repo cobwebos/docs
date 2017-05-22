@@ -1,6 +1,6 @@
 ---
-title: "对 WTP 应用程序（使用 Azure SQL 数据库的示例 SaaS 应用程序）进行性能监视 | Microsoft Docs"
-description: "监视使用 Azure SQL 数据库的示例 SaaS 应用程序的性能"
+title: "监视 SQL 数据库 SaaS 应用的性能 | Microsoft Docs"
+description: "监视和管理 Azure SQL 数据库示例 Wingtip 票证 (WTP) 应用的性能"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1698a06dc326b1d215bb635c40724f914ba82442
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: af9511978718af10c97bee6af3a2835c9d2c1ff4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -66,7 +66,7 @@ Wingtip 票证应用使用单租户数据模型，在该模型中，每个地点
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
-Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
+Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
 
 ## <a name="provision-additional-tenants"></a>预配其他租户
 

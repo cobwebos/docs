@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
-translationtype: Human Translation
-ms.sourcegitcommit: 6ab02779d65dfc1519b457486678ace5fafc9fb5
-ms.openlocfilehash: 60733f973e7b88389816c1ea7cc15532ba967693
-ms.lasthandoff: 12/08/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: e4c1c2b956b2cae673e60223ce777ba1096dce33
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -32,7 +33,7 @@ Microsoft Azure 门户是一个中心位置，你可以在其中预配和管理 
   ![熟悉 Azure 门户 UI][UIOrientation]
 
 ## <a name="before-you-get-started"></a>准备工作
-您必须拥有有效的 Azure 订阅，才能完整浏览本教程。  如果您没有，请立即 [注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) 。  拥有订阅后，即可访问门户 [https://portal.azure.com] 。
+您必须拥有有效的 Azure 订阅，才能完整浏览本教程。  如果您没有，请立即 [注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) 。  拥有订阅后，即可访问门户 <https://portal.azure.com>。
 
 ## <a name="how-to-create-a-resource"></a>如何创建资源
 Azure 应用商店提供数千商品，您可以在一个位置集中创建商品。  假设您要新建 Windows Server 2012 VM。  “+新”中心是您从应用商店进入特色类别的精选组的入口点。  每个类别都有少量的特色项目，以及指向完整应用商店（显示所有类别和搜索）的链接。 若要新建 Windows Server 2012 VM，请执行以下操作：  

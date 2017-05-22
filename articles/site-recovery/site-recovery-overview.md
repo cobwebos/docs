@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 03/14/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: d8e4e4bb7dd1e40d8c561adba04b8346fcb2127d
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 89921997f68bd72ee6086d2b635361eeeaba1c28
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -33,7 +34,7 @@ Azure 恢复服务有助于制定 BCDR 策略。 [Azure 备份](https://docs.mic
 
 - **云中的灾难恢复** - 可将 VM 和物理服务器上运行的工作负荷复制到 Azure，而不是复制到辅助站点上。 这消除了维护辅助数据中心的复杂性和产生的成本。
 - **混合环境中的灵活复制** - 可复制支持的本地 Hyper-V VM、VMware VM 和 Windows/Linux 物理服务器上运行的任何工作负荷。
-- **迁移** - 可使用 Site Recovery 将本地 AWS 实例迁移到 Azure VM，或在 Azure 区域之间迁移 Azure VM。
+- **迁移** - 可使用 Site Recovery 将 AWS 实例迁移到 Azure VM，或在 Azure 区域之间迁移 Azure VM。
 - **简化的 BCDR** - 可在 Azure 门户中从单个位置部署复制。  可以对单台和多台计算机运行简单的故障转移和故障回复。
 - **复原能力** - Site Recovery 会安排恢复和故障转移，且不会拦截应用程序数据。
 复制的数据存储在 Azure 存储中，可享用其提供的恢复能力。 发生故障转移时，会基于复制的数据创建 Azure VM。

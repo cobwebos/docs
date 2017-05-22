@@ -16,43 +16,49 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 10461bddeb4d5adf4a6e4f65159ba2653dbef8a4
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 1478a2eedad496d3113fef28920d10859d11b1ce
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
-#  <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中创建由计时器触发的函数
+# <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中创建由计时器触发的函数
 
-了解如何使用 Azure Functions 创建根据你定义的计划运行的函数。 
+了解如何使用 Azure Functions 创建根据你定义的计划运行的函数。
 
 ![在 Azure 门户中创建 Function App](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
-完成本主题中的所有步骤应该不需要五分钟。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="prerequisites"></a>先决条件 
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-[!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
+[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-在本主题中，将在现有 Function App 中创建计时器触发的函数。 
+## <a name="create-an-azure-function-app"></a>创建 Azure Function App
 
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)] 
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="create-function"></a>创建计时器触发的函数
+![已成功创建 Function App。](./media/functions-create-first-azure-function/function-app-create-success.png)
+
+接下来，在新的 Function App 中创建一个函数。
+
+<a name="create-function"></a>
+
+## <a name="create-a-timer-triggered-function"></a>创建计时器触发的函数
 
 1. 展开 Function App，依次单击“函数”旁边的 **+** 按钮、与所需语言相对应的 **TimerTrigger** 模板。 然后，使用表中指定的设置，并单击“创建”：
 
-    | 设置      |  建议的值   | 说明                              |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **为函数命名** | TimerTriggerCSharp1 | 定义计时器触发的函数的名称。
-    | **[计划](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 */1 * * * * | 六字段 [CRON 表达式](http://en.wikipedia.org/wiki/Cron#CRON_expression)，计划函数每分钟运行一次。 |
+| 设置 | 建议的值 | 说明 |
+|---|---|---|
+| **为函数命名** | TimerTriggerCSharp1 | 定义计时器触发的函数的名称。 |
+| **[计划](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 六字段 [CRON 表达式](http://en.wikipedia.org/wiki/Cron#CRON_expression)，计划函数每分钟运行一次。 |
 
-    将使用所选语言创建一个每分钟运行一次的函数。 
+将使用所选语言创建一个每分钟运行一次的函数。
 
-4. 通过查看写入日志的跟踪信息来验证执行情况。 
+1. 通过查看写入日志的跟踪信息来验证执行情况。
 
-    ![Azure 门户中的“函数日志”查看器。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
+![Azure 门户中的“函数日志”查看器。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
 现在，可以更改函数的计划，减少其运行频率，例如每小时运行一次。 
 
@@ -71,12 +77,9 @@ ms.lasthandoff: 05/10/2017
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
-已创建一个按计划运行的函数。 
+
+已创建一个按计划运行的函数。
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-有关计时器触发器的详细信息，请参阅[使用 Azure Functions 计划代码执行](functions-bindings-timer.md)。 
-
-
-
-
+有关计时器触发器的详细信息，请参阅[使用 Azure Functions 计划代码执行](functions-bindings-timer.md)。

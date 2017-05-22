@@ -1,8 +1,8 @@
 | 类别 | 数据存储 | 支持用作源 | 支持用作接收器 |
 |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob 存储](../articles/data-factory/data-factory-azure-blob-connector.md) |✓ |✓ |
+| &nbsp; |[Azure Cosmos DB (DocumentDB API)](../articles/data-factory/data-factory-azure-documentdb-connector.md) |✓ |✓ |
 | &nbsp; |[Azure Data Lake Store](../articles/data-factory/data-factory-azure-datalake-connector.md) |✓ |✓ |
-| &nbsp; |[Azure DocumentDB](../articles/data-factory/data-factory-azure-documentdb-connector.md) |✓ |✓ |
 | &nbsp; |[Azure SQL 数据库](../articles/data-factory/data-factory-azure-sql-connector.md) |✓ |✓ |
 | &nbsp; |[Azure SQL 数据仓库](../articles/data-factory/data-factory-azure-sql-data-warehouse-connector.md) |✓ |✓ |
 | &nbsp; |[Azure 搜索索引](../articles/data-factory/data-factory-azure-search-connector.md) | |✓ |
