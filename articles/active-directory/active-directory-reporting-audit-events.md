@@ -44,10 +44,10 @@ Azure Active Directory 审核报告可帮助客户识别其 Azure Active Directo
 | 更新用户凭据 |用户已更改密码 |
 | **组事件** | |
 | 添加组 |已在目录中创建组。 |
-| 更新组 |已在目录中更新组。 若要查看哪些组属性已更新，请参阅以下部分中的“已审核组属性”[](#update-group-attributes) |
+| 更新组 |已在目录中更新组。 若要查看哪些组属性已更新，请参阅以下部分中的 [已审核组属性](#update-group-attributes) |
 | 删除组 |已从目录中删除组。 |
 | CreateGroupSettings |已创建组设置 |
-| UpdateGroupSettings |已更新组设置。 若要查看哪些组设置已更新，请参阅以下部分中的“已审核组属性”[](#update-group-attributes) |
+| UpdateGroupSettings |已更新组设置。 若要查看哪些组设置已更新，请参阅以下部分中的 [已审核组属性](#update-group-attributes) |
 | DeleteGroupSettings |已删除组设置 |
 | SetGroupLicense |已设置组许可证。 |
 | SetGroupManagedBy |已设置要由用户管理的组 |
