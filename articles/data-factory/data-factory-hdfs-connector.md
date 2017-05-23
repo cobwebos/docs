@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: jingwang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: dc501a1c7c0d6a1d70ce368f86a967f889394dc7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/12/2017
 
 
@@ -425,7 +426,7 @@ ms.lasthandoff: 04/12/2017
               REALM.COM = .
              }
 
-        配置后**重新启动** KDC 服务。
+  配置后**重新启动** KDC 服务。
 
 2.    使用以下命令准备 KDC 服务器中名为 **krbtgt/REALM.COM@AD.COM** 的主体：
 
