@@ -13,10 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 6304f01fd5f97dd528054f8c4909593dd062e16b
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 258ccee349e07448ebebaebe64cd6fb6888d7ed4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/20/2017
 
 
 ---
@@ -206,30 +207,39 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
     sudo mkdir -p /hana/data
     sudo mkdir -p /hana/log
     sudo mkdir -p /hana/shared
-    # <a name="write-down-the-id-of-devvghanadatahanadata-devvghanaloghanalog-and-devvghanasharedhanashared"></a>记下 /dev/vg_hana_data/hana_data、/dev/vg_hana_log/hana_log 和 /dev/vg_hana_shared/hana_shared 的 ID
-    sudo blkid  </code></pre>
-        * 创建三个卷组的 fstab 条目  <pre><code>
-    sudo vi /etc/fstab  </code></pre>
-    将此行插入 /etc/fstab  <pre><code>
-    /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_data/hana_data&gt;</b> /hana/data xfs  defaults,nofail  0  2 /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_log/hana_log&gt;</b> /hana/log xfs  defaults,nofail  0  2 /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_shared/hana_shared&gt;</b> /hana/shared xfs  defaults,nofail  0  2  </code></pre>
-        * 装载新卷  <pre><code>
-    sudo mount -a  </code></pre>
+    # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+    sudo blkid
+    </code></pre>
+        * 创建三个逻辑卷的 fstab 条目
+    <pre><code>
+    sudo vi /etc/fstab
+    </code></pre>
+    将此行插入到 /etc/fstab
+    <pre><code>
+    /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_data/hana_data&gt;</b> /hana/data xfs  defaults,nofail  0  2
+    /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_log/hana_log&gt;</b> /hana/log xfs  defaults,nofail  0  2
+    /dev/disk/by-uuid/<b>&lt;UUID of /dev/vg_hana_shared/hana_shared&gt;</b> /hana/shared xfs  defaults,nofail  0  2
+    </code></pre>
+        * 装载新卷
+    <pre><code>
+    sudo mount -a
+    </code></pre>
     1. 无格式磁盘  
        对于小型或演示系统，可将 HANA 数据和日志文件放在一个磁盘上。 以下命令在 /dev/sdc 上创建一个分区，并使用 XFS 格式化该分区。
     ```bash
     sudo fdisk /dev/sdc
     sudo mkfs.xfs /dev/sdc1
     
-    # write down the id of /dev/sdc1
-    sudo /sbin/blkid
-    sudo vi /etc/fstab
+    # <a name="write-down-the-id-of-devsdc1"></a>记下 /dev/sdc1 的 ID
+    sudo /sbin/blkid  sudo vi /etc/fstab
     ```
 
-    将此行插入 /etc/fstab  <pre><code>
+    Insert this line to /etc/fstab
+    <pre><code>
     /dev/disk/by-uuid/<b>&lt;UUID&gt;</b> /hana xfs  defaults,nofail  0  2
     </code></pre>
 
-    创建目标目录并装载磁盘。
+    Create the target directory and mount the disk.
 
     ```bash
     sudo mkdir /hana
@@ -366,11 +376,13 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
     hdbsql -u system -i <b>03</b> 'ALTER USER <b>hdb</b>hasync DISABLE PASSWORD LIFETIME' 
     </code></pre>
 
-1. [A] 创建密钥存储条目（以 root 身份） <pre><code>
+1. [A] 创建密钥存储条目（以 root 身份）
+    <pre><code>
     PATH="$PATH:/usr/sap/<b>HDB</b>/HDB<b>03</b>/exe"
     hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
     </code></pre>
-1. [1] 备份数据库（以 root 身份） <pre><code>
+1. [1] 备份数据库（以 root 身份）
+    <pre><code>
     PATH="$PATH:/usr/sap/<b>HDB</b>/HDB<b>03</b>/exe"
     hdbsql -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')" 
     </code></pre>
