@@ -338,7 +338,7 @@ ms.lasthandoff: 05/08/2017
 ```
 
 ## <a name="localizing-your-html-content"></a>本地化 HTML 内容
-可通过打开“语言自定义”来本地化 HTML 内容。[](active-directory-b2c-reference-language-customization.md)  启用此选项可让 Azure AD B2C 将 OIDC 参数 `ui-locales` 转发到终结点。  可以使用此选项提供语言特定的自定义 UI 页面。  
+可通过打开 [语言自定义](active-directory-b2c-reference-language-customization.md) 来本地化 HTML 内容。  启用此选项可让 Azure AD B2C 将 OIDC 参数 `ui-locales` 转发到终结点。  可以使用此选项提供语言特定的自定义 UI 页面。  
 
 ## <a name="things-to-remember-when-building-your-own-content"></a>构建自己的内容时要注意的事项
 如果打算使用页面 UI 自定义功能，请查看以下最佳做法：
