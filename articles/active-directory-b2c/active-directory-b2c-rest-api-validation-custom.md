@@ -51,29 +51,29 @@ IEF 在声明中发送数据，同时也在声明中接收数据。  可将 API 
 
 我们已创建一个用于接收声明（预期为“playerTag”）并接收此声明是否存在的 Azure 函数。 可以在 [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples) 中访问完整的 Azure 函数代码。
 
-```
+```csharp
 if (requestContentAsJObject.playerTag == null)
+{
+  return request.CreateResponse(HttpStatusCode.BadRequest);
+}
+
+var playerTag = ((string) requestContentAsJObject.playerTag).ToLower();
+
+if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcottonmarcus")
+{
+  return request.CreateResponse<ResponseContent>(
+    HttpStatusCode.Conflict,
+    new ResponseContent
     {
-        return request.CreateResponse(HttpStatusCode.BadRequest);
-    }
+      version = "1.0.0",
+      status = (int) HttpStatusCode.Conflict,
+      userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
+    },
+    new JsonMediaTypeFormatter(),
+    "application/json");
+}
 
-    var playerTag = ((string) requestContentAsJObject.playerTag).ToLower();
-
-    if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcottonmarcus")
-    {
-        return request.CreateResponse<ResponseContent>(
-            HttpStatusCode.Conflict,
-            new ResponseContent
-            {
-                version = "1.0.0",
-                status = (int) HttpStatusCode.Conflict,
-                userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
-            },
-            new JsonMediaTypeFormatter(),
-            "application/json");
-    }
-
-    return request.CreateResponse(HttpStatusCode.OK);
+return request.CreateResponse(HttpStatusCode.OK);
 ```
 
 标识体验框架需要该 Azure 函数返回的 `userMessage` 声明。如果验证失败（例如，如果上面的示例返回 409 冲突状态），该声明将以字符串形式呈现给用户。
@@ -85,35 +85,30 @@ if (requestContentAsJObject.playerTag == null)
 > [!NOTE]
 > 请将下面所述的“Restful 提供程序，版本 1.0.0.0”视为要与外部服务交互的函数的协议。  可在 <!-- TODO: Link to RESTful Provider schema definition>--> 中找到架构的完整定义
 
-```
+```xml
 <ClaimsProvider>
-        <DisplayName>REST APIs</DisplayName>
-        <TechnicalProfiles>
-            <TechnicalProfile Id="AzureFunctions-CheckPlayerTagWebHook">
-
-                    <DisplayName>Check Player Tag Web Hook Azure Function</DisplayName>
-                    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-                    <Metadata>
-                        <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
-                        <Item Key="AuthenticationType">None</Item>
-                        <Item Key="SendClaimsIn">Body</Item>
-                    </Metadata>
-                    <InputClaims>
-                        <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
-                    </InputClaims>
-                    <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-            </TechnicalProfile>
-
-
-            <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
-
-                <ValidationTechnicalProfiles>       
-                    <ValidationTechnicalProfile ReferenceId="AzureFunctions-CheckPlayerTagWebHook" />       
-                </ValidationTechnicalProfiles>
-
-            </TechnicalProfile>
-        </TechnicalProfiles>
-    </ClaimsProvider>
+    <DisplayName>REST APIs</DisplayName>
+    <TechnicalProfiles>
+        <TechnicalProfile Id="AzureFunctions-CheckPlayerTagWebHook">
+            <DisplayName>Check Player Tag Web Hook Azure Function</DisplayName>
+            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+            <Metadata>
+                <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
+                <Item Key="AuthenticationType">None</Item>
+                <Item Key="SendClaimsIn">Body</Item>
+            </Metadata>
+            <InputClaims>
+                <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
+            </InputClaims>
+            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
+            <ValidationTechnicalProfiles>
+                <ValidationTechnicalProfile ReferenceId="AzureFunctions-CheckPlayerTagWebHook" />
+            </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+    </TechnicalProfiles>
+</ClaimsProvider>
 ```
 
 `InputClaims` 元素定义要从 IEE 发送到 REST 服务的声明。 在上面的示例中，声明 `givenName` 的内容将以 `playerTag` 的形式发送到 REST 服务。 在本示例中，IEE 不需要返回声明，而是等待 REST 服务的响应，并根据收到的状态代码采取操作。
