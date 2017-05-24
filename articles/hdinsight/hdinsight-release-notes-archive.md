@@ -1,6 +1,6 @@
 ---
-title: "Azure HDInsight 上的 Hadoop 组件发行说明存档 | Microsoft Docs"
-description: "Azure HDInsight 上的 Hadoop 组件发行说明和版本存档。"
+title: "发行说明存档 - Azure HDInsight 上的 Hadoop 组件 | Microsoft Docs"
+description: "Azure HDInsight 上的较旧版本的 Hadoop 组件的发行说明存档。"
 services: hdinsight
 documentationcenter: 
 editor: cgronlun
@@ -8,7 +8,7 @@ manager: jhubbard
 author: nitinme
 tags: azure-portal
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 4/06/2017
 ms.author: nitinme
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5e1538ae0d4b1270040bd593cae66c1dd1046201
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 7d8b691905c07b11543505ed1961d908ff4de654
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -61,7 +62,7 @@ ms.lasthandoff: 04/27/2017
 
 | 标题 | 说明 | 受影响区域（例如服务、组件或 SDK） | 群集类型（例如 Spark、Hadoop、HBase 或 Storm） | JIRA（如果适用） |
 | --- | --- | --- | --- | --- |
-| 对 HDInsight 3.4 群集的更改 |对以下 Hive 配置的默认值进行更改以获得更好的性能 <ul><li>`hive.vectorized.execution.reduce.enabled=true`</li><li>`hive.tez.min.partition.factor=1f`</li><li>`hive.tez.max.partition.factor=3f`</li><li>`tez.shuffle-vertex-manager.min-src-fraction=0.9`</li><li>`tez.shuffle-vertex-manager.max-src-fraction=0.95`</li><li>`tez.runtime.shuffle.connect.timeout= 30000`</li></ul> |服务 |全部 |不适用 |
+| 对 HDInsight 3.4 群集的更改 |为获得更好的性能，已更改了以下 Hive 配置的默认值 <ul><li>`hive.vectorized.execution.reduce.enabled=true`</li><li>`hive.tez.min.partition.factor=1f`</li><li>`hive.tez.max.partition.factor=3f`</li><li>`tez.shuffle-vertex-manager.min-src-fraction=0.9`</li><li>`tez.shuffle-vertex-manager.max-src-fraction=0.95`</li><li>`tez.runtime.shuffle.connect.timeout= 30000`</li></ul> |服务 |全部 |不适用 |
 | 此版本中包括下列修补程序 |HIVE-13632、HIVE-12897、HIVE-12907、HIVE-12908、HIVE-12988、HIVE-13510、HIVE-13572、HIVE-13716、HIVE-13726、HIVE-12505、HIVE-13632、HIVE-13661、HIVE-13705、HIVE-13743、HIVE-13810、HIVE-13857、HIVE-13902、HIVE-13911、HIVE-13933 |服务 |全部 |不适用 |
 
 ## <a name="notes-for-07142016-release-of-hdinsight"></a>HDInsight 2016/07/14 版发行说明
@@ -128,7 +129,7 @@ ms.lasthandoff: 04/27/2017
 
 | 标题 | 说明 | 受影响区域（例如服务、组件或 SDK） | 群集类型（例如 Spark、Hadoop、HBase 或 Storm） | JIRA（如果适用） |
 | --- | --- | --- | --- | --- |
-| Spark on HDInsight 现已正式发布 |此版本提高了开源 Apache Spark on HDInsight 的可用性、可伸缩性和效率。 <ul><li>行业领先的 99.9% 的可用性 SLA 使其非常适合高要求的企业工作负荷。</li><li>使用 Azure Data Lake Store 的可缩放存储层。</li><li>适用于每个数据探索和开发阶段的效率工具。 具有自定义 Spark 内核的 Jupyter 笔记本可进行交互式数据探索和与 BI 仪表板（如 Power BI）集成；Tableau 和 Qlik 非常适用于快速数据分享和连续报告；IntelliJ 插件是长期代码项目开发和调试的可靠的选择。</li></ul> |服务 |Spark |不适用 |
+| Spark on HDInsight 现已正式发布 |此版本提高了开源 Apache Spark on HDInsight 的可用性、可伸缩性和效率。 <ul><li>行业领先的 99.9% 的可用性 SLA 使其非常适合高要求的企业工作负荷。</li><li>使用 Azure Data Lake Store 的可缩放存储层。</li><li>适用于每个数据探索和开发阶段的工作提效工具。 具有自定义 Spark 内核的 Jupyter 笔记本可进行交互式数据探索和与 BI 仪表板（如 Power BI）集成；Tableau 和 Qlik 非常适用于快速数据分享和连续报告；IntelliJ 插件是长期代码项目开发和调试的可靠的选择。</li></ul> |服务 |Spark |不适用 |
 | 用于 IntelliJ 的 HDInsight 工具 |这是针对 HDInsight Spark 群集的 IntelliJ IDEA 插件。 它启用了以下功能。<ul><li>借助一流的创作支持（IntelliSense、自动套用格式、错误检查等），用 Scala 和 Java 轻松创建和写入 Spark 应用程序。</li><li>本地测试 Spark 应用程序。</li><li>将作业提交到 HDInsight Spark 群集并检索结果。</li><li>登录到 Azure 并访问与你的 Azure 订阅相关联的所有 Spark 群集。</li><li>导航 HDInsight Spark 群集的所有关联存储资源。</li><li>为你的 HDInsight Spark 群集导航所有作业历史记录和作业信息。</li><li>从你的台式计算机远程调试 Spark 作业。</li></ul> |工具 |Spark |不适用 |
 
 ## <a name="notes-for-05132016-release-of-hdinsight"></a>HDInsight 2016/05/13 版发行说明
@@ -166,10 +167,10 @@ ms.lasthandoff: 04/27/2017
 
 | 标题 | 说明 | 受影响区域（例如服务、组件或 SDK） | 群集类型（例如 Hadoop、HBase 或 STORM） | JIRA（如果适用） |
 | --- | --- | --- | --- | --- |
-| HDI 3.4 的自定义元存储升级问题 |如果使用的是之前在另一个较低版本的 HDInsight 群集上使用的自定义元存储，则群集创建会失败。 这是由于升级脚本错误造成的（现已修复） |群集创建 |全部 |不适用 |
+| HDI 3.4 的自定义元存储升级问题 |如果使用的是之前在另一个较低版本的 HDInsight 群集上使用的自定义元存储，则群集创建会失败。 这是由一个升级脚本错误（现已修复）造成的 |群集创建 |全部 |不适用 |
 | Livy 崩溃恢复 |通过 Livy 为所有提交的作业提供作业状态复原能力 |可靠性 |Linux 上的 Spark |不适用 |
 | Jupyter 内容 HA |能够在与群集关联的存储帐户中保存和加载 Jupyter 笔记本内容。 有关详细信息，请参阅 [Jupyter 笔记本的可用内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)。 |笔记本 |Linux 上的 Spark |不适用 |
-| 删除 Jupter 笔记本中的 hiveContext |使用 `%%sql` magic，而非 `%%hive` magic。 SqlContext 相当于 hiveContext。 有关详细信息，请参阅 [Jupyter 笔记本的可用内核](hdinsight-apache-spark-jupyter-notebook-kernels.md) |笔记本 |Linux 上的 Spark 群集 |不适用 |
+| 删除 Jupyter Notebook 中的 hiveContext |使用 `%%sql` magic，而非 `%%hive` magic。 SqlContext 相当于 hiveContext。 有关详细信息，请参阅 [Jupyter 笔记本的可用内核](hdinsight-apache-spark-jupyter-notebook-kernels.md) |笔记本 |Linux 上的 Spark 群集 |不适用 |
 | 弃用旧版 Spark |5 月 31 日会将旧版 Spark 1.3.1 从服务中删除 |服务 |Windows 上的 Spark 群集 |不适用 |
 
 ## <a name="notes-for-03292016-release-of-hdinsight"></a>HDInsight 2016/03/29 版发行说明
@@ -571,7 +572,7 @@ ms.lasthandoff: 04/27/2017
 </tr>
 <tr>
 <td>SCP.NET EventHub 支持</td>
-<td>HDInsight Storm 的更新群集包添加了 SCP.NET 的新功能。 你现在可以访问拓扑生成器中的新 API，并更轻松地使用 EventHubSpout 或 Java Spouts。 必须更新 SCP.NET 客户端 SDK 才能在合约更新后使用新群集。 有关新 API、用法和发行说明（包括 Bug 修复程序）的详细信息，请参阅 SCP.NET Nuget 包中的 Readme 文件。</td>
+<td>HDInsight Storm 的更新群集包添加了 SCP.NET 的新功能。 你现在可以访问拓扑生成器中的新 API，并更轻松地使用 EventHubSpout 或 Java Spouts。 必须更新 SCP.NET 客户端 SDK 才能在合约更新后使用新群集。 有关新 API、用法和发行说明（包括 Bug 修复程序）的详细信息，请参阅 SCP.NET NuGet 包中的 Readme 文件。</td>
 <td>VS 工具</td>
 <td>Storm HDInsight 3.2 群集</td>
 <td>不适用</td>
@@ -837,7 +838,7 @@ ms.lasthandoff: 04/27/2017
 <td>不适用</td>
 </tr>
 <tr>
-<td>Linux 上的 HDInsight（预览版）</td>
+<td>Linux 上的 HDInsightHDInsight（预览版）</td>
 <td>可以在 Ubuntu Linux 上部署和运行群集。 有关详细信息，请参阅 Linux 上的 HDInsight 入门。</td>
 <td>服务</td>
 <td>Hadoop</td>
@@ -871,8 +872,8 @@ ms.lasthandoff: 04/27/2017
 <td>Hadoop</td>
 <td>不适用</td>
 </tr>
-<td>Hadoop Connector for DocumentDB</td>
-<td>使用 Hadoop Connector for DocumentDB，你可以通过无架构 JSON 文档存储在 DocumentDB 集合之间或跨数据库帐户执行复杂的聚合、分析和操作。 有关详细信息和教程，请参阅使用 DocumentDB 和 HDInsight 运行 Hadoop 作业。</td>
+<td>用于 Azure Cosmos DB 的 Hadoop 连接器</td>
+<td>借助用于 Azure Cosmos DB 的 Hadoop 连接器，可以对在各个 Azure Cosmos DB 集合或数据库帐户中存储的无架构 JSON 文档执行复杂的聚合、分析和操作。 有关详细信息和教程，请参阅“使用 Azure Cosmos DB 和 HDInsight 运行 Hadoop 作业”。</td>
 <td>服务</td>
 <td>Hadoop</td>
 <td>不适用</td>
@@ -1101,7 +1102,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 * HDInsight 2.1.9.382.1169709（从 2014/11/14 后未更改）
 * HDInsight 3.0.5.382.1169709（从 2014/11/14 后未更改）
 * HDInsight 3.1.1.382.1169709（从 2014/11/14 后未更改）
-* HDINsight SDK 1.4.0
+* HDInsight SDK 1.4.0
 
 此版本包含以下组件更新。
 
@@ -1249,7 +1250,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 关于 Azure PowerShell 和 HDInsight SDK 错误消息：“群集未配置 HTTP 服务访问”：
 
 * 此错误是已知的[兼容性问题](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)，起因于 HDInsight SDK 或 Azure PowerShell 版本和群集版本的差异。 8 月 15 日或之后创建的群集支持虚拟网络的新配置功能。 但旧版的 SDK 或 Azure PowerShell 无法正确解释此功能。 结果造成某些作业提交操作失败。 如果你使用 HDInsight SDK API 或 Azure PowerShell cmdlet 来提交作业（**Use-AzureRmHDInsightCluster** 或 **Invoke-AzureRmHDInsightHiveJob**），这些作业可能失败并返回错误消息“群集 <clustername> 未配置 HTTP 服务访问”。 或者（根据具体的操作），你可能会收到其他错误消息，例如“无法连接到群集”。
-* 在最新版 HDInsight SDK 和 Azure PowerShell 中，这些兼容性问题均已解决。 我们建议将 HDInsight SDK 更新至 1.3.1.6 版本或更高版本，将 Azure PowerShell 工具更新至 0.8.8 版本或更高版本。 可以从 [Nuget](http://nuget.codeplex.com/wikipage?title=Getting%20Started) 获取最新的 HDInsight SDK，从[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 获取 Azure PowerShell 工具。
+* 在最新版 HDInsight SDK 和 Azure PowerShell 中，这些兼容性问题均已解决。 我们建议将 HDInsight SDK 更新至 1.3.1.6 版本或更高版本，将 Azure PowerShell 工具更新至 0.8.8 版本或更高版本。 可以从 [NugGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) 获取最新的 HDInsight SDK，从[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 获取 Azure PowerShell 工具。
 
 ## <a name="notes-for-9122014-release-of-hdinsight-31"></a>HDInsight 3.1 2014/9/12 版发行说明
 * 此版本基于 Hortonworks 数据平台 (HDP) 2.1.5。 有关此版本中修复的 bug 列表，请参阅 Hortonworks 站点上的[此版本中修复的问题](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html)页。

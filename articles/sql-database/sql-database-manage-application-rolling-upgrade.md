@@ -15,16 +15,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/16/2016
 ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: 66c37501b053cd9a8b4487c34e8914b75f3058ee
-ms.openlocfilehash: a99d3f9b8df5cfff98e76fe3931304221b2ca6f4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 4b59c8aa3dea3e8fba692ab66420295a09210d3b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
 > [!NOTE]
 > [活动异地复制](sql-database-geo-replication-overview.md)现在可供所有层中的所有数据库使用。
-> 
 > 
 
 了解如何使用 SQL 数据库中的[异地复制](sql-database-geo-replication-overview.md)来启用云应用程序的滚动升级。 由于升级是中断性操作，所以它应成为业务连续性规划和设计的一部分。 本文我们介绍了编排升级过程的两种不同方法，并讨论了每种方法的优点和缺点。 针对本文的目的，我们将使用一个简单的应用程序，该应用程序包含一个连接到作为其数据层的单一数据库的网站。 我们的目标是在不对最终用户体验产生任何显著影响的情况下将版本 1 的应用程序升级到版本 2。 
@@ -37,15 +38,14 @@ ms.openlocfilehash: a99d3f9b8df5cfff98e76fe3931304221b2ca6f4
 * 总的费用成本。  该成本包括升级过程使用的额外的冗余成本和临时组件的增量成本。 
 
 ## <a name="upgrading-applications-that-rely-on-database-backups-for-disaster-recovery"></a>升级依赖于数据库备份进行灾难恢复的应用程序
-如果你的应用程序依赖于自动的数据库备份，并且使用异地还原来实现灾难恢复，那么通常将它部署到单个 Azure 区域。 在此事例中升级过程包括创建升级所涉及的所有应用程序组件的备份部署。 要最小化对最终用户的干扰，你可以使用具有故障转移配置文件的 Azure 流量管理器 (WATM)。  下图说明了在升级过程开始前的操作环境。 终结点 <i>contoso-1.azurewebsites.net</i> 表示需要升级的应用程序的一个生产槽。 若要启用回滚升级功能，需要使用应用程序的完全同步副本创建过渡槽。 准备应用程序升级需要执行以下步骤：
+如果你的应用程序依赖于自动的数据库备份，并且使用异地还原来实现灾难恢复，那么通常将它部署到单个 Azure 区域。 在此事例中升级过程包括创建升级所涉及的所有应用程序组件的备份部署。 要最小化对最终用户的干扰，你可以使用具有故障转移配置文件的 Azure 流量管理器 (WATM)。  下图说明了在升级过程开始前的操作环境。 终结点 <i>contoso-1.azurewebsites.net</i> 表示需要升级的应用程序的一个生产槽。 若要启用对升级进行回滚的功能，需要使用应用程序的完全同步副本创建过渡槽。 准备应用程序升级需要执行以下步骤：
 
 1. 为升级创建过渡槽。 要执行此操作需要在同一 Azure 区域中创建一个辅助数据库 (1)，并部署相同的网站。 监视此辅助数据库以查看种子设定过程是否已完成。
 2. 使用作为联机终结点的 <i>contoso-1.azurewebsites.net</i> 和作为离线终结点的 <i>contoso-2.azurewebsites.net</i> 在 WATM 中创建故障转移配置文件。 
 
 > [!NOTE]
 > 请注意上述准备步骤不会影响生产槽中的应用程序，应用程序可以在完全访问模式下运行。
-> 
-> 
+>  
 
 ![SQL 数据库异地复制配置。 云灾难恢复。](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
 
@@ -78,7 +78,7 @@ ms.openlocfilehash: a99d3f9b8df5cfff98e76fe3931304221b2ca6f4
 
 ![SQL 数据库异地复制配置。 云灾难恢复。](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
 
-该升级方法的主要**优点**是你可以使用一系列简单步骤升级单个区域中的应用程序。 此升级的费用成本相对较低。 此方法的主要**缺点**在于，如果在升级过程中发生灾难性故障，那么恢复到升级前的状态将涉及在不同的区域重新部署应用程序，并且使用异地还原从备份中还原数据库。 此过程将导致大量的停机时间。   
+此选项的主要**优点**是你可以使用一系列简单步骤升级单个区域中的应用程序。 此升级的费用成本相对较低。 此方法的主要**缺点**在于，如果在升级过程中发生灾难性故障，那么恢复到升级前的状态将涉及在不同的区域重新部署应用程序，并且使用异地还原从备份中还原数据库。 此过程将导致大量的停机时间。   
 
 ## <a name="upgrading-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>升级依赖于数据库异地复制进行灾难恢复的应用程序
 如果应用程序利用异地复制来实现业务连续性，那么该应用程序至少部署到两个不同的区域，主要区域为活动部署，备份区域为备用部署。 除了前面提到的各个因素，此升级过程还必须保证：
@@ -86,7 +86,7 @@ ms.openlocfilehash: a99d3f9b8df5cfff98e76fe3931304221b2ca6f4
 * 在升级过程的任何时候都保护应用程序免受灾难性故障
 * 应用程序的地理冗余组件与活动组件一同升级
 
-为了实现这些目标，你将通过包含一个活动终结点和三个备份终结点的故障转移配置文件来使用 Azure 流量管理器 (WATM)。  下图说明了在升级过程开始前的操作环境。 网站 <i>contoso-1.azurewebsites.net</i> 和 <i>contoso-dr.azurewebsites.net</i> 代表具有完全地理冗余的应用程序的生产槽。 若要启用回滚升级功能，需要使用应用程序的完全同步副本创建过渡槽。 因为你需要确保在升级过程中发生灾难性故障时应用程序可以快速恢复，另外过渡槽必须也是地理冗余。 准备应用程序升级需要执行以下步骤：
+为了实现这些目标，你将通过包含一个活动终结点和三个备份终结点的故障转移配置文件来使用 Azure 流量管理器 (WATM)。  下图说明了在升级过程开始前的操作环境。 网站 <i>contoso-1.azurewebsites.net</i> 和 <i>contoso-dr.azurewebsites.net</i> 代表具有完全地理冗余的应用程序的生产槽。 若要启用对升级进行回滚的功能，需要使用应用程序的完全同步副本创建过渡槽。 因为你需要确保在升级过程中发生灾难性故障时应用程序可以快速恢复，另外过渡槽必须也是地理冗余。 准备应用程序升级需要执行以下步骤：
 
 1. 为升级创建过渡槽。 要执行此操作需要在同一 Azure 区域中创建一个辅助数据库 (1)，并部署相同的网站副本。 监视此辅助数据库以查看种子设定过程是否已完成。
 2. 通过将辅助数据库异地复制到备份区域（称为“链接异地复制”）在过渡槽中创建地理冗余的辅助数据库。 监视此备份的辅助数据库以查看种子设定过程是否已完成 (3)。
@@ -135,26 +135,10 @@ ms.openlocfilehash: a99d3f9b8df5cfff98e76fe3931304221b2ca6f4
 本文中所述的两种升级方法具有不同的复杂性和费用成本，但它们都关注于最小化最终用户仅限于执行只读操作的时间。 该时间由升级脚本的持续时间直接定义。 该时间不依赖于数据库大小、所选的服务层、网站配置和你无法轻松控制的其他因素。 这是因为所有准备步骤都从升级步骤中分离出来，可以在不影响生产应用程序的情况下完成。 升级脚本的效率是决定升级期间的最终用户体验的关键因素。 因此改进升级的最佳做法是致力于尽可能地提高升级脚本的效率。  
 
 ## <a name="next-steps"></a>后续步骤
-* 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
-* 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)
-* 若要了解如何使用自动备份进行恢复，请参阅[从自动备份中还原数据库](sql-database-recovery-using-backups.md)
-* 若要了解更快的恢复选项，请参阅[活动异地复制](sql-database-geo-replication-overview.md)  
-* 若要了解如何使用自动备份进行存档，请参阅[数据库复制](sql-database-copy.md)
+* 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)。
+* 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
+* 若要了解如何使用自动备份进行恢复，请参阅[从自动备份中还原数据库](sql-database-recovery-using-backups.md)。
+* 若要了解更快的恢复选项，请参阅[活动异地复制](sql-database-geo-replication-overview.md)。
 
-## <a name="additionale-resources"></a>其他资源
-以下页将有助于你了解执行升级工作流所需的具体操作：
-
-* [添加辅助数据库](https://msdn.microsoft.com/library/azure/mt603689.aspx) 
-* [将数据库故障转移到辅助数据库](https://msdn.microsoft.com/library/azure/mt619393.aspx)
-* [断开异地复制的辅助数据库的连接](https://msdn.microsoft.com/library/azure/mt603457.aspx)
-* [异地还原数据库](https://msdn.microsoft.com/library/azure/mt693390.aspx) 
-* [删除数据库](https://msdn.microsoft.com/library/azure/mt619368.aspx)
-* [复制数据库](https://msdn.microsoft.com/library/azure/mt603644.aspx)
-* [将数据库设置为只读或读写模式](https://msdn.microsoft.com/library/bb522682.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
