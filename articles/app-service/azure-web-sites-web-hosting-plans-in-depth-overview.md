@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: f15b3565d13436a54124e47be9d22bfe0789a922
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/19/2017
 
 
