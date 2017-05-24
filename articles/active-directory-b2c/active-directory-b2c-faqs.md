@@ -97,7 +97,7 @@ Azure AD B2C 不能与 Microsoft Office 365 一起使用。 一般来说，它�
 否，Azure AD B2C 不支持与 Azure AD Premium 相同的报告集。 但是，有许多共性。  
 * 登录报告提供每次登录的记录以及简短的详细信息。  
 * 审核报告在 Azure 门户中的“Azure Active Directory”>“ACTIVITY-Audit日志”>“选择 B2C 并根据需要应用筛选器”下面提供。 其中包括管理活动和应用程序活动。 
-* 包括用户数、登录次数和 MFA 数量的使用情况报告在“使用情况报告 API”中提供[](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api)
+* 包括用户数、登录次数和 MFA 数量的使用情况报告在 [使用情况报告 API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api) 中提供
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>我可以本地化 Azure AD B2C 所提供页面的 UI 吗？ 支持哪些语言？
 目前，Azure AD B2C 仅针对英语进行了优化。 我们计划尽快推出本地化功能。
