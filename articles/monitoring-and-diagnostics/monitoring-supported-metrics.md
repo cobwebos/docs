@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 5/10/2017
 ms.author: johnkem
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: c0e7eb271b7ab19131c500e139ea3b1f6b2e7479
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: ff47eaa27351f8d1685090edc54d90e5e91a1de0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -623,6 +623,63 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |AMLCalloutRequests|函数请求数|计数|总计|函数请求数|
 |AMLCalloutFailedRequests|失败的函数请求数|计数|总计|失败的函数请求数|
 |AMLCalloutInputEvents|函数事件数|计数|总计|函数事件数|
+
+## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
+
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|CpuPercentage|CPU 百分比|百分比|平均值|CPU 百分比|
+|MemoryPercentage|内存百分比|百分比|平均值|内存百分比|
+|DiskQueueLength|磁盘队列长度|计数|总计|磁盘队列长度|
+|HttpQueueLength|Http 队列长度|计数|总计|Http 队列长度|
+|BytesReceived|数据输入|字节|总计|数据输入|
+|BytesSent|数据输出|字节|总计|数据输出|
+
+## <a name="microsoftwebsites-including-functions"></a>Microsoft.Web/sites（包括 Functions）
+
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|CpuTime|CPU 时间|秒|总计|CPU 时间|
+|请求|请求|计数|总计|请求|
+|BytesReceived|数据输入|字节|总计|数据输入|
+|BytesSent|数据输出|字节|总计|数据输出|
+|Http101|Http 101|计数|总计|Http 101|
+|Http2xx|Http 2xx|计数|总计|Http 2xx|
+|Http3xx|Http 3xx|计数|总计|Http 3xx|
+|Http401|Http 401|计数|总计|Http 401|
+|Http403|Http 403|计数|总计|Http 403|
+|Http404|Http 404|计数|总计|Http 404|
+|Http406|Http 406|计数|总计|Http 406|
+|Http4xx|Http 4xx|计数|总计|Http 4xx|
+|Http5xx|Http 服务器错误|计数|总计|Http 服务器错误|
+|MemoryWorkingSet|内存工作集|字节|平均值|内存工作集|
+|AverageMemoryWorkingSet|平均内存工作集|字节|平均值|平均内存工作集|
+|AverageResponseTime|平均响应时间|秒|平均值|平均响应时间|
+|FunctionExecutionUnits|函数执行单位数|计数|平均值|函数执行单位数|
+|FunctionExecutionCount|函数执行计数|计数|平均值|函数执行计数|
+
+## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
+
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|CpuTime|CPU 时间|秒|总计|CPU 时间|
+|请求|请求|计数|总计|请求|
+|BytesReceived|数据输入|字节|总计|数据输入|
+|BytesSent|数据输出|字节|总计|数据输出|
+|Http101|Http 101|计数|总计|Http 101|
+|Http2xx|Http 2xx|计数|总计|Http 2xx|
+|Http3xx|Http 3xx|计数|总计|Http 3xx|
+|Http401|Http 401|计数|总计|Http 401|
+|Http403|Http 403|计数|总计|Http 403|
+|Http404|Http 404|计数|总计|Http 404|
+|Http406|Http 406|计数|总计|Http 406|
+|Http4xx|Http 4xx|计数|总计|Http 4xx|
+|Http5xx|Http 服务器错误|计数|总计|Http 服务器错误|
+|MemoryWorkingSet|内存工作集|字节|平均值|内存工作集|
+|AverageMemoryWorkingSet|平均内存工作集|字节|平均值|平均内存工作集|
+|AverageResponseTime|平均响应时间|秒|平均值|平均响应时间|
+|FunctionExecutionUnits|函数执行单位数|计数|平均值|函数执行单位数|
+|FunctionExecutionCount|函数执行计数|计数|平均值|函数执行计数|
 
 ## <a name="next-steps"></a>后续步骤
 * [了解 Azure 监视器中的指标](monitoring-overview-metrics.md)
