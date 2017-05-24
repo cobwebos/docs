@@ -16,9 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: 608cbc0fd1cc1d73d28056909ed06618457bd9c0
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/10/2017
 
 
