@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: joroja;parahk;gsacavdm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: b72db6a0eb8a8621be5f05da6028615d5d24ba1e
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 42824fe10e635257681f62ab1fec9b47abd4294a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/12/2017
 
 ---
 # <a name="azure-active-directory-b2c-getting-started-with-custom-policies"></a>Azure Active Directory B2C：自定义策略入门
@@ -78,7 +78,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
    * 应用程序类型：`Web app/API`
    * 登录 URL：`https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中，`yourtenant` 是你的 Azure AD B2C 租户域名。
 1. 单击“创建” 。
-1. 创建后，请选择新建的应用程序 `IdentityExperienceFramework`，单击“属性”，然后复制并保存应用程序 ID 供稍后使用。
+1. 创建后，请选择新建的应用程序 `IdentityExperienceFramework`，单击“属性”，然后复制应用程序 ID 并保存它供以后使用。
 
 ### <a name="create-the-proxy-identity-experience-framework-application"></a>创建标识体验框架代理应用程序
 
@@ -107,7 +107,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 
 * 策略的[基本文件](active-directory-b2c-overview-custom.md#policy-files)。 需要对基本文件进行少量的修改。
 * 策略的[扩展文件](active-directory-b2c-overview-custom.md#policy-files)。  大多数配置更改将在此文件中进行。
-* [信赖方文件](active-directory-b2c-overview-custom.md#policy-files)：应用程序针对特定任务调用的、特定于任务的文件。
+* [信赖方文件](active-directory-b2c-overview-custom.md#policy-files)：这些是应用程序调用的任务特定文件。
 
 >[!NOTE]
 >如果 XML 编辑器支持验证，你可能需要根据初学者包根文件夹中的 `TrustFrameworkPolicy_0.3.0.0.xsd` XML 架构文件验证文件。 XML 架构验证在上传之前会识别错误。
@@ -120,8 +120,8 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
     git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
     ```
 2. 打开 `SocialAndLocalAccounts` 文件夹。  此文件夹中的基本文件 (`TrustFrameworkBase.xml`) 包含本地帐户和社交/企业帐户所需的内容。 社交内容不会妨碍启动和运行本地帐户的步骤。
-3. 打开 `TrustFrameworkBase.xml`。  如果需要 XML 编辑器，请尝试[使用 Visual Studio Code](https://code.visualstudio.com/download)（一个轻型的跨平台编辑器）。
-4. 在 `TrustFrameworkPolicy` 根元素中更新 `TenantId` 和 `PublicPolicyUri` 属性，并将 `yourtenant.onmicrosoft.com` 替换为你的 Azure AD B2C 租户的域名：
+3. 打开 `TrustFrameworkBase.xml`。  如果需要 XML 编辑器，请[尝试使用 Visual Studio Code](https://code.visualstudio.com/download)（一个轻型的跨平台编辑器）。
+4. 在 `TrustFrameworkPolicy` 根元素中更新 `TenantId` 和 `PublicPolicyUri` 属性，并将 `yourtenant.onmicrosoft.com` 替换为 Azure AD B2C 租户的域名：
 
     ```xml
     <TrustFrameworkPolicy
@@ -139,7 +139,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 5. 保存文件。
 6. 打开 `TrustFrameworkExtensions.xml` 并将 `yourtenant.onmicrosoft.com` 替换为你的 Azure AD B2C 租户，以便完成两处相同的更改。 在 `<TenantId>` 元素中进行相同的替换，因此总共有 3 处更改。  保存文件。
 7. 打开 `SignUpOrSignIn.xml` 并将三处出现的 `yourtenant.onmicrosoft.com` 替换为你的 Azure AD B2C 租户，以便进行相同的更改。 保存文件。
-8. 打开密码机密和配置文件编辑文件，并将三处出现的 `yourtenant.onmicrosoft.com` 替换为你的 Azure AD B2C 租户，以便进行相同的更改。 保存文件。
+8. 打开密码重置文件和配置文件编辑文件，将每个文件中三处出现的 `yourtenant.onmicrosoft.com` 替换为 Azure AD B2C 租户，从而进行相同的更改。 保存文件。
 
 ### <a name="add-the-application-ids-to-your-custom-policy"></a>将应用程序 ID 添加到自定义策略
 将应用程序 ID 添加到扩展文件 (`TrustFrameworkExtensions.xml`)。
@@ -192,7 +192,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 ## <a name="next-steps"></a>后续步骤
 
 ### <a name="add-facebook-as-an-identity-provider"></a>将 Facebook 添加为标识提供者
-设置 Facebook：
+若要设置 Facebook，请执行以下操作：
 1. [在 developers.facebook.com 中配置 Facebook 应用程序](active-directory-b2c-setup-fb-app.md)
 2. [将 Facebook 应用程序机密添加到 Azure AD B2C 租户](#add-signing-and-encryption-keys-to-your-b2c-tenant-for-use-by-custom-policies)
 3. 在 `Item Key="client_id"` 中添加 TrustFrameworkExtensions 策略文件中的 Facebook 应用程序 ID：

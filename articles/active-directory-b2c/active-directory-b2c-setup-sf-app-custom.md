@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/30/2017
 ms.author: gsacavdm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: dee24deacbe69ada64519802c0eb1b83f565f57e
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 1d97c75f3130ea6fdacbc6335b6e70677b4d226e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -57,30 +57,16 @@ ms.lasthandoff: 05/09/2017
 1. 单击现在可用的“下载元数据”按钮，然后保存元数据文件供后面的步骤使用。
 
 ## <a name="add-a-saml-signing-certificate-to-azure-ad-b2c"></a>将 SAML 签名证书添加到 Azure AD B2C
-需要将 Salesforce 证书上传到 Azure AD B2C 租户。 为此，请按以下步骤操作：
+需要将一个要在为 Azure AD B2C 租户的请求签名时使用的 SAML 证书上传到该租户。 为此，请按以下步骤操作：
 
-1. 打开 PowerShell 并导航到工作目录 `active-directory-b2c-advanced-policies`。
-1. 切换到包含 ExploreAdmin 工具的文件夹。
-
-    ```powershell
-    cd active-directory-b2c-advanced-policies\ExploreAdmin
-    ```
-
-1. 将 ExploreAdmin 工具导入 PowerShell。
-
-    ```powershell
-    Import-Module .\ExploreAdmin.dll
-    ```
-
-1. 在以下命令中，请将 `tenantName` 替换为你的 Azure AD B2C 租户（例如 fabrikamb2c.onmicrosoft.com），将 `certificateId` 替换为稍后要在策略中用于引用证书的证书名称（例如 ContosoSalesforceCert），最后，将 `pathToCert` 和 `password` 替换为证书的路径和密码。 运行命令。
-
-    ```PowerShell
-    Set-CpimCertificate -TenantId {tenantName} -CertificateId {certificateId} -CertificateFileName {pathToCert} - CertificatePassword {password}
-    ```
-
-    运行该命令时，请确保使用 Azure AD B2C 租户本地的 onmicrosoft.com 管理员帐户登录。 
-
-1. 关闭 PowerShell。
+1. 导航到 Azure AD B2C 租户，然后打开“B2C 设置”>“标识体验框架”>“策略密钥”
+1. 单击“+添加”
+1. 选项：
+ * 选择“选项”>“上传”
+ * **名称**：> `ContosoIdpSamlCert`。  前缀 B2C_1A_ 将自动添加到密钥名称。 记下完整名称（带有 B2C_1A_），因为稍后将在策略中引用此名称。
+ * 使用“上传文件控件”以选择证书，并提供证书的密码（如果适用）。
+1. 单击“创建” 
+1. 确认已创建密钥：`B2C_1A_ContosoIdpSamlCert`
 
 ## <a name="create-the-salesforce-saml-claims-provider-in-your-base-policy"></a>在基本策略中创建 Salesforce SAML 声明提供程序
 
@@ -107,8 +93,8 @@ ms.lasthandoff: 05/09/2017
             </Item>
           </Metadata>       
           <CryptographicKeys>
-            <Key Id="SamlAssertionSigning" StorageReferenceId="ContosoIdpSamlCert"/>
-            <Key Id="SamlMessageSigning" StorageReferenceId="ContosoIdpSamlCert "/>
+            <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ContosoIdpSamlCert"/>
+            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_ContosoIdpSamlCert "/>
           </CryptographicKeys>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="userId"/>
@@ -219,12 +205,12 @@ ms.lasthandoff: 05/09/2017
     1. 在“实体 ID”字段中输入以下 URL，并确保替换 `tenantName`。 
     
         ```
-        https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_base
+        https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase
         ```
 
     1. 在“ACS URL”字段中输入以下 URL，并确保替换 `tenantName`。 
         ```
-        https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_base/samlp/sso/assertionconsumer
+        https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
         ```
 
     1. 将其他所有设置保留默认值
