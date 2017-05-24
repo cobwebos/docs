@@ -13,21 +13,27 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 04/18/2017
+ms.date: 05/02/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 6be49be9e4321075aa76b3abcf4695d0e7b45f6e
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 972c6f60c8963cad6f92b228e795a5027b838f00
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>在 Linux 上创建虚拟机规模集和部署高度可用的应用
-本教程介绍如何使用 Azure 中的虚拟机规模集快速缩放运行应用的虚拟机 (VM) 数目。 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据 CPU 使用率、内存需求或网络流量进行自动缩放。 若要查看虚拟机规模集的运作方式，可以生成一个跨多个 Linux VM 运行的 Node.js 应用。
+利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据 CPU 使用率、内存需求或网络流量进行自动缩放。 在本教程中，将在 Azure 中部署虚拟机规模集。 你将学习如何：
 
-可以使用最新的 [Azure CLI 2.0](/cli/azure/install-azure-cli) 来完成本教程中的步骤。
+> [!div class="checklist"]
+> * 使用 cloud-init 创建用于缩放的应用
+> * 创建虚拟机规模集
+> * 增加或减少规模集中的实例数
+> * 查看规模集实例的连接信息
+> * 在规模集中使用数据磁盘
 
+本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 还可以通过浏览器使用 [Cloud Shell](/azure/cloud-shell/quickstart)。
 
 ## <a name="scale-set-overview"></a>规模集概述
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 规模集使用的组件与前一教程[创建高度可用的 VM](tutorial-availability-sets.md) 中介绍的相同。 规模集中的 VM 在可用性集中创建，分布在逻辑容错域和更新域之间。
@@ -86,10 +92,10 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](/cli/azure/group#create) 创建资源组，然后才能创建规模集。 以下示例在“westus”位置创建名为“myResourceGroupScaleSet”的资源组：
+使用 [az group create](/cli/azure/group#create) 创建资源组，然后才能创建规模集。 以下示例在“eastus”位置创建名为“myResourceGroupScaleSet”的资源组：
 
 ```azurecli
-az group create --name myResourceGroupScaleSet --location westus
+az group create --name myResourceGroupScaleSet --location eastus
 ```
 
 现在，使用 [az vmss create](/cli/azure/vmss#create) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，使用 cloud-int 文件自定义 VM，然后生成 SSH 密钥（如果不存在）：
@@ -161,8 +167,8 @@ az vmss list-instances \
 ```azurecli
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup            VmId
 ------------  --------------------  ----------  ------------  -------------------  -----------------------  ------------------------------------
-           1  True                  westus      myScaleSet_1  Succeeded            MYRESOURCEGROUPSCALESET  c72ddc34-6c41-4a53-b89e-dd24f27b30ab
-           3  True                  westus      myScaleSet_3  Succeeded            MYRESOURCEGROUPSCALESET  44266022-65c3-49c5-92dd-88ffa64f95da
+           1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUPSCALESET  c72ddc34-6c41-4a53-b89e-dd24f27b30ab
+           3  True                  eastus      myScaleSet_3  Succeeded            MYRESOURCEGROUPSCALESET  44266022-65c3-49c5-92dd-88ffa64f95da
 ```
 
 
@@ -241,7 +247,16 @@ az vmss disk detach `
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习了如何创建虚拟机规模集。 请继续学习下一篇教程，详细了解虚拟机的负载均衡概念。
+在本教程中，已创建虚拟机规模集。 你已了解如何：
 
-[均衡虚拟机的负载](tutorial-load-balancer.md)
+> [!div class="checklist"]
+> * 使用 cloud-init 创建用于缩放的应用
+> * 创建虚拟机规模集
+> * 增加或减少规模集中的实例数
+> * 查看规模集实例的连接信息
+> * 在规模集中使用数据磁盘
 
+请继续学习下一篇教程，详细了解虚拟机的负载均衡概念。
+
+> [!div class="nextstepaction"]
+> [均衡虚拟机的负载](tutorial-load-balancer.md)

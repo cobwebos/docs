@@ -12,12 +12,12 @@ ms.custom: connection security
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/15/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 079e4234c7969b267e7e3a3a518cae570da77dfe
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: dd8b3d5b26f4a903f403e5c7e9dba645a14b3231
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/16/2017
 
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>配置 Azure Database for PostgreSQL 中的 SSL 连接
@@ -33,14 +33,14 @@ Azure Database for PostgreSQL 倾向于使用安全套接字层 (SSL) 将客户�
 ## <a name="configure-enforcement-of-ssl"></a>配置强制实施 SSL
 （可选）可以禁用强制实施 SSL 连接。 Microsoft Azure 建议始终启用“强制实施 SSL 连接”设置，以增强安全性。
 
-#### <a name="using-the-azure-portal"></a>使用 Azure 门户
+### <a name="using-the-azure-portal"></a>使用 Azure 门户
 访问 Azure Database for PostgreSQL 服务器，然后单击“连接安全性”。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置。 。 
 
 ![连接安全性 - 禁用强制实施 SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
 可以通过在“概述”页中查看“SSL 强制实施状态”指示器来确认设置。
 
-#### <a name="using-azure-cli"></a>使用 Azure CLI
+### <a name="using-azure-cli"></a>使用 Azure CLI
 可以通过在 Azure CLI 中分别使用 `Enabled` 或 `Disabled` 值来启用或禁用“ssl-enforcement”参数。
 
 ```azurecli
@@ -115,8 +115,12 @@ OpenSSL>x509 -inform DER -in BaltimoreCyberTrustRoot.cer -text -out root.crt
 ### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>连接到具有 SSL 证书身份验证的 Azure Database for PostgreSQL
 现已成功解码证书，可通过 SSL 安全连接到数据库服务器。 若要允许服务器证书验证，必须将证书放在用户主目录中的 ~/.postgresql/root.crt 文件中。 （在 Microsoft Windows 上，该文件的名称是 %APPDATA%\postgresql\root.crt.）。 下面说明如何连接到 Azure Database for PostgreSQL。
 
+> [!NOTE]
+> 目前，如果在连接到服务时使用“sslmode=verify-full”，存在已知问题，连接将失败并显示以下错误：_“&lt;区域&gt;.control.database.windows.net”的服务器证书（和 7 个其他名称）与主机名“&lt;servername&gt;.postgres.database.azure.com”不匹配。_
+> 如果需要“sslmode=verify-full”，请使用服务器命名约定 **&lt;servername&gt;.database.windows.net** 作为连接字符串主机名。 我们计划在将来删除此限制。 使用其他 [SSL 模式](https://www.postgresql.org/docs/9.6/static/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS)的连接应继续使用首选主机命名约定 **&lt;servername&gt;.postgres.database.azure.com**。
+
 #### <a name="using-psql-command-line-utility"></a>使用 psql 命令行实用工具
-下面的示例演示如何使用创建的 `root.crt` 文件和 `sslmode=verify-ca` 选项，通过 pgsql 命令行接口和使用 psql 命令行实用工具成功连接到 PostgreSQL 服务器。
+以下示例演示如何使用 psql 命令行实用程序成功连接到 PostgreSQL 服务器。 使用创建的 `root.crt` 文件和 `sslmode=verify-ca` 或 `sslmode=verify-full` 选项。
 
 使用 PostgreSQL 命令行接口执行以下命令：
 ```bash
@@ -136,9 +140,10 @@ postgres=>
 ```
 
 #### <a name="using-pgadmin-gui-tool"></a>使用 pgAdmin GUI 工具
-要将 pgAdmin 4 配置为通过 SSL 安全连接，需要对 `SSL mode = Verify-CA` 进行如下设置：
+要将 pgAdmin 4 配置为通过 SSL 安全连接，需要对 `SSL mode = Verify-CA` 或 `SSL mode = Verify-Full` 进行如下设置：
 
 ![pgAdmin - 连接 - SSL 模式要求的屏幕快照](./media/concepts-ssl-connection-security/2-pgadmin-ssl.png)
 
 ## <a name="next-steps"></a>后续步骤
 在 [Connection libraries for Azure Database for PostgreSQL](concepts-connection-libraries.md)（Azure Database for PostgreSQL 的连接库）中查看各种应用程序连接性选项
+

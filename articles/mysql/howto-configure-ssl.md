@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 96856fe2a9ce869eb63b7c857de614202ae43064
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 801806056b745be5663c0a10241795947d1dd036
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
@@ -123,7 +123,7 @@ OpenSSL>x509 -inform DER -in BaltimoreCyberTrustRoot.cer -out MyServerCACert.pem
 使用 MySQL 命令行接口，执行以下命令：
 
 ```dos
-mysql.exe -h yourserver. -uUsername@Servername -pYourPassword --ssl-ca=c:\ssl\MyServerCACert.pem
+mysql.exe -h yourservername.mysql.database.azure.com -uUsername@yourservername -pYourPassword --ssl-ca=c:\ssl\MyServerCACert.pem
 ```
 执行 mysql status 命令，验证是否已使用 SSL 连接到 MySQL 服务器：
 
@@ -151,9 +151,13 @@ Threads: 4  Questions: 26082  Slow queries: 0  Opens: 112  Flush tables: 1  Open
 --------------
 ```
 
+> [!NOTE]
+> 目前，在使用 mysql.exe 连接到服务时如果使用“--ssl-mode=VERIFY_IDENTITY”选项，存在已知问题，连接将失败并显示以下错误：_错误 2026 (HY000): SSL 连接错误：SSL 证书验证失败_，请降级到“--ssl-mode=VERIFY_CA”或更低 [SSL 模式](https://dev.mysql.com/doc/refman/5.7/en/secure-connection-options.html#option_general_ssl-mode)。 如果需要使用“--ssl-mode=VERIFY_IDENTITY”，则可以通过 ping 服务器名称来解析区域服务器名称（如 westeurope1-a.control.database.windows.net），并在连接中使用该区域服务器名称，直到此问题得到解决。 我们计划在将来删除此限制。 
+
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
 要将 MySQL Workbench 配置为通过 SSL 安全地连接，需要导航到 MySQL Workbench“设置新连接”对话框中的“SSL”选项卡，然后在“SSL CA 文件:”字段中输入 MyServerCACert.pem 文件的位置。
 ![保存自定义磁贴](./media/concepts-ssl-connection-security/mysql-workbench-ssl.png)
 
 ## <a name="next-steps"></a>后续步骤
 - 在 [Connection libraries for Azure Database for MySQL](concepts-connection-libraries.md)（Azure Database for MySQL 的连接库）中查看各种应用程序连接性选项
+

@@ -1,6 +1,7 @@
 ---
-title: "将不同的内核用于 Azure HDInsight Spark 群集上的 Jupyter 笔记本 | Microsoft 文档"
-description: "了解 HDInsight Linux 上的 Spark 群集所包含的 Jupyter 笔记本使用的 PySpark、PySpark3 和 Spark 内核。"
+title: "Azure HDInsight 中 Spark 群集上的 Jupyter 笔记本的内核 | Microsoft Docs"
+description: "了解 Azure HDInsight 上的 Spark 群集所提供的 Jupyter 笔记本的 PySpark、PySpark3 和 Spark 内核。"
+keywords: "spark 中的 jupyter 笔记本,jupyter spark"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -9,24 +10,24 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 0719e503-ee6d-41ac-b37e-3d77db8b121b
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/15/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 096fbc1d30e8c9df0c9008525e0fac3fd6e449cf
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: c5813341f0d70a3c04e915d243d2a9717cad1fc9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="jupyter-notebooks-kernels-with-apache-spark-clusters-in-hdinsight"></a>HDInsight 中 Apache Spark 群集所包含的 Jupyter 笔记本内核 
+# <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Spark 群集上的 Jupyter 笔记本的内核 
 
-HDInsight Spark 群集提供可在 Jupyter 笔记本中用于测试 Spark 应用程序的内核。 内核是可以运行和解释代码的程序。 这两个内核是：
+HDInsight Spark 群集提供可在 Spark 上的 Jupyter 笔记本中用于测试应用程序的内核。 内核是可以运行和解释代码的程序。 三个内核如下：
 
 - **PySpark** - 适用于以 Python2 编写的应用程序
 - **PySpark3** - 适用于以 Python3 编写的应用程序
@@ -38,18 +39,18 @@ HDInsight Spark 群集提供可在 Jupyter 笔记本中用于测试 Spark 应用
 
 * HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
-## <a name="create-a-jupyter-notebook"></a>创建 Jupyter 笔记本
+## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>在 Spark HDInsight 上创建 Jupyter 笔记本
 
 1. 从 [Azure 门户网站](https://portal.azure.com/)打开群集。  有关说明，请参阅[列出和显示群集](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。 将在新的门户边栏选项卡中打开群集。
 
 2. 在“快速链接”部分中，单击“群集仪表板”打开“群集仪表板”边栏选项卡。  如果没有看到“快速链接”，请从边栏选项卡上的左侧菜单中单击“概述”。
 
-    ![群集仪表板](./media/hdinsight-apache-spark-jupyter-notebook-kernels/hdinsight-azure-portal-cluster-dashboards.png "群集仪表板") 
+    ![Spark 中的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-notebook-kernels/hdinsight-jupyter-notebook-on-spark.png "Spark 中的 Jupyter 笔记本") 
 
 3. 单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
    
    > [!NOTE]
-   > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
+   > 也可以在浏览器中打开以下 URL 来访问 Spark 群集中的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    > 
@@ -57,13 +58,13 @@ HDInsight Spark 群集提供可在 Jupyter 笔记本中用于测试 Spark 应用
 
 3. 单击“新建”，然后单击“Pyspark”、“PySpark3”或“Spark”创建笔记本。 使用适用于 Scala 应用程序的 Spark 内核，适用于 Python2 应用程序的 PySpark 内核，以及适用于 Python3 应用程序的 PySpark3 内核。
    
-    ![创建 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "创建 Jupyter 笔记本") 
+    ![Spark 中 Jupyter 笔记本的内核](./media/hdinsight-apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 中 Jupyter 笔记本的内核") 
 
 4. 此时将打开使用所选内核的笔记本。
 
-## <a name="benefits-of-using-these-kernels"></a>使用这些内核的好处
+## <a name="benefits-of-using-the-kernels"></a>使用这些内核的好处
 
-下面是使用新内核的几项好处。
+以下是在 Spark HDInsight 群集中的 Jupyter 笔记本上使用新内核的几个好处。
 
 - **预设上下文**。 使用 **PySpark**、**PySpark3** 或 **Spark** 内核时，无需首先显式设置 Spark 或 Hive 上下文，即可开始使用应用程序。 这些上下文默认已提供。 这些上下文包括：
    
@@ -149,7 +150,7 @@ Jupyter 笔记本保存在与 **/HdiNotebooks** 文件夹下面的群集关联�
 
 ## <a name="supported-browser"></a>支持的浏览器
 
-Google Chrome 仅支持针对 HDInsight Spark 群集运行的 Jupyter 笔记本。
+Google Chrome 仅支持 Spark HDInsight 群集中的 Jupyter 笔记本。
 
 ## <a name="feedback"></a>反馈
 新内核正处于发展阶段，一段时间后将变得成熟。 这可能也意味着，API 可随着这些内核的成熟而改变。 如果在使用这些新内核时有任何反馈，我们将不胜感激。 这对于内核最终版本的定调会很有帮助。 可以在本文末尾的**意见**部分下面填写意见/反馈。

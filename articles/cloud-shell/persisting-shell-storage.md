@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9093bf30a67fd762b237faa61071137fd83d048f
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 540cd10066e055e2dc132445b9adba5a4112d63a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/16/2017
 
 ---
 
@@ -35,11 +35,14 @@ ms.lasthandoff: 05/10/2017
 此文件共享将装载为 $Home 目录下的 `clouddrive`。 此文件共享还用来存储所创建的一个 5-GB 映像，该映像自动更新并持久保存 $Home 目录。 这是一个一次性操作，对于后续会话会自动装载。
 
 ### <a name="cloud-shell-persists-files-with-both-methods-below"></a>Cloud Shell 通过以下两种方法来持久保存文件：
-1. 创建 $Home 目录的磁盘映像来持久保存 $Home 中的文件。 此磁盘映像将作为 `<User>.img` 保存在你指定的文件共享中，位于以下位置：`fileshare.storage.windows.net/fileshare/.cloudconsole/<User>.img`
+1. 创建 $Home 目录的磁盘映像来持久保存 $Home 中的文件。 此磁盘映像将作为 `acc_<User>.img` 保存在你指定的文件共享中，位于以下位置：`fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`
 
 2. 将指定的文件共享装载为 $Home 目录中的 `clouddrive` 以便直接进行文件共享交互。 
 `/Home/<User>/clouddrive` 映射到 `fileshare.storage.windows.net/fileshare`。
  
+> [!Note]
+> $Home 目录中的所有文件（如 SSH 密钥）将持久保存在已装载的文件共享中存储的用户磁盘映像中。 在 $Home 目录和已装载的文件共享中持久保存信息时，请应用最佳做法。
+
 ## <a name="using-clouddrive"></a>使用 clouddrive
 Cloud Shell 允许用户运行名为 `clouddrive` 的命令，该命令可用于手动更新装载到 Cloud Shell 的文件共享。
 ![](media/clouddrive-h.png)
@@ -110,26 +113,23 @@ shm                                                    65536       0      65536 
 justin@Azure:~$
 ```
 
-## <a name="upload-or-download-local-files"></a>上传或下载本地文件
-可以使用 Azure 门户来管理本地文件在文件共享中的传入或传出。
-从 Cloud Shell 中更新文件的结果将在刷新边栏选项卡时反映在文件存储 GUI 中。
+## <a name="transfer-local-files-to-cloud-shell"></a>将本地文件传输到 Cloud Shell
+`clouddrive` 目录将同步到 Azure 门户的存储边栏选项卡。 使用此目录将本地文件传输到文件共享或从文件共享传输本地文件。 从 Cloud Shell 中更新文件的结果将在刷新边栏选项卡时反映在文件存储 GUI 中。
 
-1. 导航到已装载的文件共享 ![](media/touch-txt-storage.png)
+### <a name="download-files"></a>下载文件
+![](media/download.gif)
+1. 导航到已装载的文件共享
 2. 在门户中选择目标文件
-3. 点击“下载”![](media/download-storage.png)
+3. 点击“下载”
 
-如果需要下载存在于 `clouddrive` 外部的文件，请执行以下操作：
-1. 将文件复制到 `/<User>/clouddrive` <br>
-2. 执行[前面的步骤](#upload-or-download-local-files) <br>
+### <a name="upload-files"></a>上载文件
+![](media/upload.gif)
+1. 导航到已装载的文件共享
+2. 选择“上传”
+3. 选择要上传的文件
+4. 确认上传
 
-## <a name="cloud-shell-tagging"></a>Cloud Shell 标记
-Cloud Shell 会使用以下格式向已装载的存储帐户添加一个“标记”： <br>
-
-| 键 | 值 |
-|:-------------:|:-------------:|
-|cloud-console-files-for-user@domain.com|fileshareName|
-
-可以使用这些标记来了解哪些用户映射到了特定的文件共享以及可以在何处找到特定的 $Home 映像。
+现在应在 Cloud Shell 的 clouddrive 目录中看到可访问的文件。
 
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 快速入门](quickstart.md) 
