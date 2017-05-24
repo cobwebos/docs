@@ -97,7 +97,7 @@ ms.lasthandoff: 03/16/2017
 ### <a name="docker-container-events"></a>Docker 容器事件
 ![示例](./media/app-insights-docker/13.png)
 
-若要调查单个事件，请单击“搜索”。[](app-insights-diagnostic-search.md) 通过搜索和筛选找到所需的事件。 单击任一事件可查看详细信息。
+若要调查单个事件，请单击 [搜索](app-insights-diagnostic-search.md)。 通过搜索和筛选找到所需的事件。 单击任一事件可查看详细信息。
 
 ### <a name="exceptions-by-container-name"></a>按容器名称列出的异常
 ![示例](./media/app-insights-docker/14.png)
