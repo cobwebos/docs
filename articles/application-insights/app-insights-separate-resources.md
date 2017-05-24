@@ -1,9 +1,9 @@
 ---
-title: "在 Azure Application Insights 中监视开发、测试和产品 | Microsoft Docs"
-description: "在开发的不同阶段监视应用程序的性能和使用情况"
+title: "在 Azure Application Insights 中分隔开发、测试和发布阶段的遥测 | Microsoft Docs"
+description: "为开发、测试和生产戳记直接遥测不同的资源。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
 ms.service: application-insights
@@ -11,59 +11,38 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 05/15/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 43fb1e764c929be14d42c3d214b051aeb5367d77
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 896bf83de9095007e4f189f50a5e13c216e6ebd2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/15/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="separating-application-insights-resources"></a>分隔 Application Insights 资源
-来自应用程序的不同组件和版本的遥测应该发送到不同的 Application Insights 资源，还是组合到一个资源中？ 本文介绍最佳做法和必要的技术。
+# <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
-首先，让我们了解问题。 从应用程序收到的数据由 Application Insights 在 Microsoft Azure *资源*中进行存储和处理。 每个资源都由*检测密钥* (iKey) 标识。 在应用中，此密钥提供给 Application Insights SDK，以便它将收集的数据发送到正确的资源。 该密钥可以在代码中或 ApplicationInsights.config 中提供。 通过在 SDK 中更改密钥，可以将数据定向到不同的资源。 
-
-在简单的案例中，将应用程序注册到 Application Insights 时，将在 Application Insights 中创建新资源。 在 Visual Studio 中，“配置 Application Insights”或“添加 Application Insights”对话框将为你执行此操作。
-
-如果它是大容量网站，则可能在多个服务器实例上部署它。
-
-在较复杂的方案中，系统由多个组件组成，例如一个网站和一个后端处理器。 
-
-## <a name="when-to-use-separate-ikeys"></a>何时使用单独的 iKey
-下面是一些一般准则：
-
-* 如果你有可单独部署的应用程序单元，并且该单元在一组可独立于其他组件放大/缩小的服务器实例上运行，则通常将该单元映射到单个资源，即，它将具有单个检测密钥 (iKey)。
-* 与此相反，使用单独 iKey 的原因包括：
-  * 从单独的组件轻松读取单独的指标。
-  * 使小容量遥测独立于大容量，以便对一个流的限制、配置和采样不会影响其他流。
-  * 单独的警报、导出和工作项配置。
-  * 扩散遥测配额、限制和 Web 测试计数之类的[限制](app-insights-pricing.md#limits-summary)。
-  * 正在开发和测试的代码应发送到单独的 iKey，而不是生产标记。  
-
-许多 Application Insights 门户体验在设计时考虑了这些准则。 例如，服务器视图按服务器实例分段，从而假设关于单个逻辑组件的遥测可能来自多个服务器实例。
-
-## <a name="single-ikey"></a>单个 iKey
-如果将来自多个组件的遥测发送到单个 iKey：
-
-* 向所有遥测添加属性，该属性允许对组件标识进行分段和筛选。 角色 ID 从服务器角色实例自动添加到遥测，但在其他情况下可使用[遥测初始值设定项](app-insights-api-filtering-sampling.md#add-properties)添加该属性。
-* 同时更新不同组件中的 Application Insights SDK。 单个 iKey 的遥测应源自同一版本的 SDK。
-
-## <a name="separate-ikeys"></a>单独 iKey
-如果对不同的应用程序组件具有多个 iKey：
-
-* 为逻辑应用程序中的关键遥测视图创建[仪表板](app-insights-dashboards.md)，从不同的应用程序组件组合而成。 仪表板可以共享，因此单个逻辑系统视图可供不同团队使用。
-* 在团队级别上组织[资源组](app-insights-resources-roles-access-control.md)。 访问权限按资源组分配，其中包括设置警报的权限。 
-* 使用 [Azure Resource Manager 模板和 Powershell](app-insights-powershell.md) 帮助管理警报规则和 Web 测试之类的项目。
-
-## <a name="separate-ikeys-for-devtest-and-production"></a>用于开发/测试和生产的单独 iKey
-若要使在发布应用时自动更改密钥更轻松，请在代码中（而不是在 ApplicationInsights.config 中）设置 iKey。
+部署 Web 应用程序的下一个版本时，你不希望将新版本和已发布的版本中的 [Application Insights](app-insights-overview.md) 遥测混合使用。 为避免混淆，请使用不同的检测密钥 (ikey) 将遥测数据从不同的开发阶段发送到不同的 Application Insights 资源。 为了在版本从一个阶段移动到另一个阶段时更轻松地更改检测密钥，在代码中而非在配置文件中设置 ikey 可能比较有用。 
 
 （如果系统是 Azure 云服务，有[另一种方法可以设置单独 ikey](app-insights-cloudservices.md)。）
 
-### <a name="dynamic-ikey"></a> 动态检测密钥
+## <a name="about-resources-and-instrumentation-keys"></a>关于资源和检测密钥
+
+为 Web 应用设置 Application Insights 监视时，你将在 Microsoft Azure 中创建 Application Insights *资源*。 为了查看和分析从你的应用收集的遥测数据，你将在 Azure 门户中打开此资源。 每个资源都由一个*检测密钥* (iKey) 予以标识。 在安装 Application Insights 程序包来监视你的应用时，你将为其配置检测密钥，以使其知道要将遥测数据发送到何处。
+
+在不同的方案中，你通常选择使用不同的资源或使用单个共享资源：
+
+* 不同的独立应用程序 - 为每个应用使用不同的资源和 ikey。
+* 单个业务应用程序的多个组件或角色 - 为所有组件应用使用[单个共享资源](app-insights-monitor-multi-role-apps.md)。 可以按 cloud_RoleName 属性对遥测数据进行筛选或分段。
+* 开发、测试和发布 - 在各个生产“戳记”或生产阶段中为系统的不同版本使用不同的资源和 ikey。
+* A | B 测试 - 使用单个资源 创建遥测初始值设定项来向遥测添加用于标识各个变体的属性。
+
+
+## <a name="dynamic-ikey"></a> 动态检测密钥
+
+为了在代码在不同生产阶段中移动时更轻松地更改 ikey，请在代码中而非在配置文件中设置 ikey。
+
 在初始化方法中设置密钥，如 ASP.NET 服务中的 global.aspx.cs：
 
 *C#*
@@ -94,8 +73,8 @@ ms.lasthandoff: 03/15/2017
     }) // ...
 
 
-## <a name="creating-an-additional-application-insights-resource"></a>创建其他 Application Insights 资源
-如果你决定为不同的应用程序组件或同一组件的不同标记（开发/测试/生产）分隔遥测，则必须创建新的 Application Insights 资源。
+## <a name="create-additional-application-insights-resources"></a>创建其他 Application Insights 资源
+若要为不同的应用程序组件或同一组件的不同戳记（开发/测试/生产）分隔遥测，则必须创建新的 Application Insights 资源。
 
 在 [portal.azure.com](https://portal.azure.com) 中，添加 Application Insights 资源：
 
@@ -111,11 +90,57 @@ ms.lasthandoff: 03/15/2017
 
 （可编写 [PowerShell 脚本](app-insights-powershell-script-create-resource.md)，自动创建资源。）
 
-## <a name="getting-the-instrumentation-key"></a>获取检测密钥
+### <a name="getting-the-instrumentation-key"></a>获取检测密钥
 检测密钥标识所创建的资源。 
 
 ![单击“Essentials”、单击“检测密钥，然后按“CTRL+C”](./media/app-insights-separate-resources/02-props.png)
 
 需要将向其发送数据的所有资源的检测密钥。
 
+## <a name="filter-on-build-number"></a>按版本号筛选
+发布新应用版本时，我们希望能够将不同版本的遥测数据分开。
 
+可以设置“应用程序版本”属性，这样便可以筛选[搜索](app-insights-diagnostic-search.md)和[指标资源管理器](app-insights-metrics-explorer.md)结果。
+
+![按属性进行筛选](./media/app-insights-separate-resources/050-filter.png)
+
+可通过多种不同的方法设置“应用程序版本”属性。
+
+* 直接设置：
+
+    `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
+* 在[遥测初始值设定项](app-insights-api-custom-events-metrics.md#defaults)中将该行换行，确保以一致的方式设置所有 TelemetryClient 实例。
+* [ASP.NET] 在 `BuildInfo.config` 中设置版本。 Web 模块将从 BuildLabel 节点选择版本。 在项目中包含此文件，并记得在解决方案资源管理器中设置“始终复制”属性。
+
+    ```XML
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <DeploymentEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
+      <ProjectName>AppVersionExpt</ProjectName>
+      <Build type="MSBuild">
+        <MSBuild>
+          <BuildLabel kind="label">1.0.0.2</BuildLabel>
+        </MSBuild>
+      </Build>
+    </DeploymentEvent>
+
+    ```
+* [ASP.NET] 在 MSBuild 中自动生成 BuildInfo.config。 为此，请在 `.csproj` 文件中添加以下几行：
+
+    ```XML
+
+    <PropertyGroup>
+      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+    </PropertyGroup>
+    ```
+
+    这会生成一个名为 *yourProjectName*.BuildInfo.config 的文件。 发布过程会将此文件重命名为 BuildInfo.config。
+
+    当使用 Visual Studio 生成时，生成标签包含一个占位符 (AutoGen_...)。 但是，在使用 MSBuild 生成时，标签中会填充正确的版本号。
+
+    若要允许 MSBuild 生成版本号，请在 AssemblyReference.cs 中设置类似于 `1.0.*` 的版本
+
+## <a name="next-steps"></a>后续步骤
+
+* [多个角色的共享资源](app-insights-monitor-multi-role-apps.md)
+* [创建遥测初始值设定项来区分 A|B 变体](app-insights-api-filtering-sampling.md#add-properties)
