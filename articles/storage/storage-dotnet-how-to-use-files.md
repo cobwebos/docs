@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: renash
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e773fd4917c7a96201d94d31b2098a3486d27900
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4e2422e8651d6fd17df2670e78606d1caeaf64ce
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -676,14 +676,11 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
     
     可以参考 [Azure 文件故障排除文章](storage-troubleshoot-file-connection-problems.md)了解有关端到端故障排除指南。               
 
-18. **如何针对 Azure 文件启用服务器端加密？**
-> [!NOTE]
-> 针对 Azure 文件的[服务器端加密](storage-service-encryption.md)目前提供预览版。 如果在预览期间出现问题，可联系 [SSEDiscussion](mailto:ssediscussions@microsoft.com)。
-
-    [Server Side Encryption](storage-service-encryption.md) for Azure Files is currently in preview. During preview, you can enable this feature only on new Azure Resource Manager storage accounts created by using the [Azure portal](https://portal.azure.com). There is no additional charge for enabling this feature. When you enable Storage Service Encryption for Azure File Storage, your data is automatically encrypted for you. 
+18. **如何为 Azure 文件存储启用服务器端加密？**
     
-    We plan to support enabling encryption for file storage with [Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage), [Azure CLI](storage-azure-cli.md), and the [Azure Storage Resource Provider REST API](/rest/api/storagerp/storageaccounts) in the future. 
-    See [Storage Service Encryption](storage-service-encryption.md) for more information about encryption at rest in Azure Storage, and you can contact ssediscussions@microsoft.com if you have questions during the preview.
+    Azure 文件存储服务的[服务器端加密](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)通常在所有区域和公共云及国内云中可用。 可以使用 [Azure 门户](https://ms.portal.azure.com/)、[Microsoft Azure 存储资源提供程序 API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts)、[Azure Powershell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx) 或 [Azure CLI](https://azure.microsoft.com/en-us/documentation/articles/storage-azure-cli/) 为文件存储服务启用 SSE。
+    
+    在 Azure 文件存储上启用 SSE 后，写入到该存储帐户中的任何新数据都将自动加密。 此功能可用于写入到现有或新存储帐户中的现有或新共享的所有新数据。 启用此功能不需额外付费。 详细了解[如何在 Azure 文件存储服务上启用 SSE](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。
