@@ -54,7 +54,7 @@ ms.lasthandoff: 04/27/2017
 4. 在顶部单击“用户”。
 5. 在页面底部，单击“管理多重身份验证”。 此时将打开新浏览器标签。
    ![单击目录](./media/multi-factor-authentication-get-started-cloud/manage1.png)
-6. 找到要为其启用双重验证的用户。 你可能需要在顶部切换视图。 确保状态为“已禁用”****。
+6. 找到要为其启用双重验证的用户。 你可能需要在顶部切换视图。 确保状态为**已禁用**。
    ![启用用户](./media/multi-factor-authentication-get-started-cloud/enable1.png)
 7. **勾选** 其名称旁边的框。
 8. 在右侧，单击“启用”。
