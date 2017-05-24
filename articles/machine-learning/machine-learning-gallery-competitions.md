@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6c76311b8ba36ea5dba1c2cd63ee05e1048ca9de
 ms.openlocfilehash: 6ceb50b05075ea9d056a873cf70b13ff85dc6094
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/21/2017
 
 
@@ -34,8 +35,8 @@ ms.lasthandoff: 02/21/2017
 
 ![从库主页中选择“竞争”](media/machine-learning-gallery-competitions/select-competitions-in-gallery.png)
 
- “[竞赛](https://gallery.cortanaintelligence.com/competitions)”****
-页显示最热门竞赛的列表。
+ “**[竞赛](https://gallery.cortanaintelligence.com/competitions)**
+” 页显示最热门竞赛的列表。
 单击“查看所有”查看所有竞赛。
 可在本页浏览库中的所有竞赛。 还可在页面左侧选择筛选条件并在顶部输入搜索词进行搜索。
 

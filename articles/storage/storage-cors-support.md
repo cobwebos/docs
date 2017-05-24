@@ -14,9 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/06/2017
 
 

@@ -13,9 +13,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2017
 ms.author: maburlik;chackdan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: f332193f9a53260173a1010b8bf9f08726bea427
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
 
@@ -104,8 +105,8 @@ ms.lasthandoff: 03/31/2017
 3. 所有群集节点计算机均不是域控制器。
 4. 如果要部署的群集是安全群集，需确保存在所需的安全先决条件，且已针对配置进行了正确配置。
 5. 如果群集计算机无法访问 Internet，请在群集配置中进行以下设置：
-* 禁用遥测：在“属性”下，设置““enableTelemetry”: false”  **
-* 禁用自动下载 Fabric 版本和禁用通知当前群集版本支持即将终止：在“属性”下，设置“"fabricClusterAutoupgradeEnabled": false”  **
+* 禁用遥测：在 *“属性”* 下，设置“   *“enableTelemetry”: false”*
+* 禁用自动下载 Fabric 版本和禁用通知当前群集版本支持即将终止：在 *“属性”* 下，设置“   *"fabricClusterAutoupgradeEnabled": false”*
 * 或者，如果网络 Internet 访问仅限于白名单中的域，则需要自动升级以下域：  go.microsoft.com   download.microsoft.com
 
 6. 设置适当的 Service Fabric 防病毒排除项：
