@@ -11,19 +11,19 @@ ms.service: mysql-database
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: portal
-ms.date: 05/10/2017
+ms.date: 05/17/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c09a6fa947d235189ab0137b074b6d7d9c925827
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c0029e025cf6d0af478d1f21dc6acc7860905a81
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 ---
 
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 本文介绍了在 Azure Database for MySQL 中备份和还原数据库的两种常见方式
 - 从命令行（使用 mysqldump）进行备份和还原 
-- 使用 PHPMyAdmin 进行备份和还原 
+- 使用 PHPMyAdmin 备份和还原 
 
 ## <a name="before-you-begin"></a>开始之前
 若要逐步执行本操作方法指南，需要具备以下条件：
@@ -65,9 +65,6 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 $ mysqldump -u root -p --all-databases > alldb_backup.sql 
 ```
-
-## <a name="upload-files"></a>上传文件
-使用 WinSCP，可以通过 SFTP 协议或 FTPS 协议（用于导出目的）轻松上传和管理本地现有 MySQL 环境（Azure 或非 Azure）文件的导入和转储。
 
 ## <a name="create-a-database-on-the-target-azure-mysql-server"></a>在目标 Azure MySQL 服务器上创建数据库
 必须在目标 Azure Database for MySQL 服务器（要在其中使用面向 MySQL 的 MySQL Workbench、Toad、Navicat 或任何第三方工具迁移数据）上创建一个空数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。

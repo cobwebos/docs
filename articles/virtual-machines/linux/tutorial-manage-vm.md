@@ -13,30 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 05/02/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 7a6f255c64a584e29801aacb40c79462751fe535
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: e22fa4ed45ffaed1a05292e9b86d5cebc0079117
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>使用 Azure CLI 创建和管理 Linux VM
 
-本教程介绍 Azure 虚拟机的基本创建项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 本教程还介绍了基本的管理操作，例如管理状态、删除 VM 和调整 VM 大小。
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 你将学习如何：
 
-可以使用最新的 [Azure CLI 2.0](/cli/azure/install-azure-cli) 来完成本教程中的步骤。
+> [!div class="checklist"]
+> * 创建并连接到 VM
+> * 选择并使用 VM 映像
+> * 查看和使用特定 VM 大小
+> * 调整 VM 的大小
+> * 查看并了解 VM 状态
+
+本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 还可以通过浏览器使用 [Cloud Shell](/azure/cloud-shell/quickstart)。
 
 ## <a name="create-resource-group"></a>创建资源组
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group#create) 命令创建资源组。 
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“westus”区域中创建了名为“myResourceGroupVM”的资源组。 
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroupVM”的资源组。 
 
 ```azurecli
-az group create --name myResourceGroupVM --location westus
+az group create --name myResourceGroupVM --location eastus
 ```
 
 创建或修改 VM 时指定资源组，本教程会对此进行演示。
@@ -57,7 +64,7 @@ az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --
 {
   "fqdns": "",
   "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
-  "location": "westus",
+  "location": "eastus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.4",
@@ -156,7 +163,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 若要查看在特定区域可用的 VM 大小的列表，请使用 [az vm list-sizes](/cli/azure/vm#list-sizes) 命令。 
 
 ```azurecli
-az vm list-sizes --location westus --output table
+az vm list-sizes --location eastus --output table
 ```
 
 部分输出：
@@ -297,6 +304,17 @@ az group delete --name myResourceGroupVM --no-wait --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解 VM 创建和管理的基本知识。 请转到下一教程，了解 VM 磁盘。  
+在本教程中，已学习 VM 创建和管理的基本知识，例如如何：
 
-[创建和管理 VM 磁盘](./tutorial-manage-disks.md)
+> [!div class="checklist"]
+> * 创建并连接到 VM
+> * 选择并使用 VM 映像
+> * 查看和使用特定 VM 大小
+> * 调整 VM 的大小
+> * 查看并了解 VM 状态
+
+请转到下一教程，了解 VM 磁盘。  
+
+> [!div class="nextstepaction"]
+> [创建和管理 VM 磁盘](./tutorial-manage-disks.md)
+

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 197e4c1873ecdc80c7eed3427449e2ea0d1605ba
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 62f674945745eb019c92173798b6eef43337c9f3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 05/10/2017
 * [Node.js](https://nodejs.org/)
 * [Sails.js](http://sailsjs.org/get-started)
 * [Git](http://www.git-scm.com/downloads)
-* [Azure CLI 2.0 预览版](/cli/azure/install-az-cli2)
+* [Azure CLI 2.0](/cli/azure/install-az-cli2)
 * 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
@@ -118,13 +118,13 @@ ms.lasthandoff: 05/10/2017
    
         az appservice web deployment user set --user-name <username> --password <password>
 
-3. 创建具有名称的[资源组](../azure-resource-manager/resource-group-overview.md)。 对于此 PHP 教程，实际上并不需要知道什么是资源组。
+3. 创建具有名称的[资源组](../azure-resource-manager/resource-group-overview.md)。 对于本 Node.js 教程，实际上并不需要知道什么是资源组。
 
         az group create --location "<location>" --name my-sailsjs-app-group
 
     若要查看可为 `<location>` 使用的可能值，请使用 `az appservice list-locations` CLI 命令。
 
-3. 创建具有名称的“免费”[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 对于此 PHP 教程，只需知道此计划中的 Web 应用不会产生费用。
+3. 创建具有名称的“免费”[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 对于本 Node.js 教程，只需知道此计划中的 Web 应用不会产生费用。
 
         az appservice plan create --name my-sailsjs-appservice-plan --resource-group my-sailsjs-app-group --sku FREE
 

@@ -1,6 +1,6 @@
 ---
-title: "使用 Visual Studio 和 C＃ 的 Apache Storm 拓扑 | Microsoft Docs"
-description: "了解如何使用 HDInsight Tools for Visual Studio 创建简单的单词计数拓扑，从而以 C# 语言创建 Storm 拓扑。"
+title: "使用 Visual Studio 和 C# 的 Apache Storm 拓扑 - Azure | Microsoft Docs"
+description: "了解如何在 Visual Studio 中使用针对 Visual Studio 的 Hadoop 工具创建简单的单词计数拓扑，从而以 C# 创建 Storm 拓扑。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,16 +16,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: cc6b16b559c4d1eafc570d0361c710487021f175
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 7b267ba427da276f53326c9068417521c8976e63
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="develop-c-topologies-for-apache-storm-on-hdinsight-using-hadoop-tools-for-visual-studio"></a>使用 Hadoop Tools for Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑
 
-了解如何使用 HDInsight Tools for Visual Studio 创建 C# Storm 拓扑。 本文档逐步说明在 Visual Studio 中创建 Storm 项目，在本地测试该项目，然后将它部署到 Apache Storm on HDInsight 群集的过程。
+了解如何使用针对 Visual Studio 的 Data Lake (Hadoop) 工具创建 C# Storm 拓扑。 本文档逐步说明在 Visual Studio 中创建 Storm 项目，在本地测试该项目，然后将它部署到 Apache Storm on HDInsight 群集的过程。
 
 还可了解如何创建使用 C# 和 Java 组件的混合拓扑。
 
@@ -53,10 +54,10 @@ ms.lasthandoff: 04/12/2017
 
 * Azure SDK 2.9.5 或更高版本
 
-* HDInsight Tools for Visual Studio：请参阅[开始使用 HDInsight Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md) 安装和配置 HDInsight Tools for Visual Studio。
+* 针对 Visual Studio 的 Data Lake 工具：若要安装和配置它们，请参阅[开始使用针对 Visual Studio 的 Data Lake 工具](hdinsight-hadoop-visual-studio-tools-get-started.md)。
 
   > [!NOTE]
-  > HDInsight Tools for Visual Studio 不支持 Visual Studio Express
+  > Visual Studio Express 不支持针对 Visual Studio 的 Data Lake 工具
 
 * Apache Storm on HDInsight 群集：请参阅 [Apache Storm on HDInsight 入门](hdinsight-apache-storm-tutorial-get-started.md) 了解创建群集的步骤。
 
@@ -65,14 +66,14 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="templates"></a>模板
 
-Visual Studio 的 HDInsight 工具提供以下模板：
+针对 Visual Studio 的 Data Lake 工具提供以下模板：
 
 | 项目类型 | 演示 |
 | --- | --- |
 | Storm 应用程序 |空的 Storm 拓扑项目 |
 | Storm Azure SQL 写入器示例 |如何写入 Azure SQL 数据库 |
-| Storm DocumentDB 读取器示例 |如何从 Azure DocumentDB 读取 |
-| Storm DocumentDB 写入器示例 |如何写入 Azure DocumentDB |
+| Storm Azure Cosmos DB 读取器示例 |如何从 Azure Cosmos DB 读取 |
+| Storm Azure Cosmos DB 写入器示例 |如何写入 Azure Cosmos DB |
 | Storm EventHub 读取器示例 |如何从 Azure 事件中心读取 |
 | Storm EventHub 写入器示例 |如何写入 Azure 事件中心 |
 | Storm HBase 读取器示例 |如何从 HDInsight 群集上的 HBase 读取 |
@@ -95,7 +96,7 @@ HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上�
 
 ## <a name="create-a-c-topology"></a>创建 C# 拓扑
 
-1. 如果你尚未安装最新版本的 HDInsight Tools for Visual Studio，请参阅[开始使用 HDInsight Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)。
+1. 如果尚未安装最新版本的针对 Visual Studio 的 Data Lake 工具，请参阅[开始使用针对 Visual Studio 的 Data Lake 工具](hdinsight-hadoop-visual-studio-tools-get-started.md)。
 
 2. 打开 Visual Studio，选择“文件” > “新建”，然后选择“项目”。
 
@@ -420,9 +421,9 @@ return topologyBuilder;
 
 如 **Storm 示例**项目中所示，在运行时，可以根据配置来设置组件是否为事务性。
 
-## <a name="hybrid-topology"></a>混合拓扑
+## <a name="hybrid-topology-with-c-and-java"></a>使用 C# 和 Java 的混合拓扑
 
-HDInsight Tools for Visual Studio 还可用于创建混合拓扑，其中某些组件采用 C# 编写，其他采用 Java 编写。
+针对 Visual Studio 的 Data Lake 工具还可用于创建混合拓扑，其中某些组件采用 C# 编写，其他采用 Java 编写。
 
 对于示例混合拓扑，请创建一个项目，然后选择“Storm 混合示例”。 此示例类型演示以下概念：
 
@@ -514,7 +515,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 > 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“管理 NuGet 包”。
 > 2. 使用“搜索”字段搜索 **Microsoft.SCP.Net.SDK**，然后将其添加到项目中。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting-common-issues-with-topologies"></a>排查使用拓扑的常见问题
 
 ### <a name="null-pointer-exceptions"></a>空指针异常
 

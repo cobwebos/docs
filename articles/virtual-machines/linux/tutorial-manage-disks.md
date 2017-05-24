@@ -13,21 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 05/02/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 84ce4b288c23c7005ac92f18ee26af70479deb8d
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 4453876c126289f922d6d08d321707e1d10004e3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="manage-azure-disks-with-the-azure-cli"></a>使用 Azure CLI 管理 Azure 磁盘
 
-本教程介绍不同类型的 VM 磁盘、如何选择磁盘配置，以及如何创建磁盘并将磁盘附加到 Azure VM。 本教程还讲解了如何拍摄磁盘快照。 
+Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 创建 VM 时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程介绍如何部署和管理 VM 磁盘。 学习内容：
 
-可使用最新版 [Azure CLI 2.0](/cli/azure/install-azure-cli) 完成本教程中的步骤。
+> [!div class="checklist"]
+> * OS 磁盘和临时磁盘
+> * 数据磁盘数
+> * 标准磁盘和高级磁盘
+> * 磁盘性能
+> * 附加和准备数据磁盘
+> * 调整磁盘大小
+> * 磁盘快照
+
+本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 还可以通过浏览器使用 [Cloud Shell](/azure/cloud-shell/quickstart)。
 
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
 
@@ -39,7 +48,7 @@ ms.lasthandoff: 05/03/2017
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
 
-| 类型 | VM 大小 | 临时磁盘大小上限 |
+| 类型 | VM 大小 | 临时磁盘大小上限 (GB) |
 |----|----|----|
 | [常规用途](sizes-general.md) | A 和 D 系列 | 800 |
 | [计算优化](sizes-compute.md) | F 系列 | 800 |
@@ -147,7 +156,7 @@ sudo mkfs -t ext4 /dev/sdc1
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-现在可以通过 datadrive 装载点访问磁盘，可运行 `df -h` 命令对此进行验证。 
+现在可以通过 datadrive 装入点访问磁盘，可运行 `df -h` 命令对此进行验证。 
 
 ```bash
 df -h
@@ -274,6 +283,19 @@ az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解 VM 磁盘。 转到下一教程，了解如何自动配置 VM。
+在本教程中，已学习了 VM 磁盘主题，例如：
 
-[自动配置 VM](./tutorial-automate-vm-deployment.md)
+> [!div class="checklist"]
+> * OS 磁盘和临时磁盘
+> * 数据磁盘数
+> * 标准磁盘和高级磁盘
+> * 磁盘性能
+> * 附加和准备数据磁盘
+> * 调整磁盘大小
+> * 磁盘快照
+
+转到下一教程，了解如何自动配置 VM。
+
+> [!div class="nextstepaction"]
+> [自动配置 VM](./tutorial-automate-vm-deployment.md)
+
