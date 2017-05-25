@@ -47,7 +47,7 @@
 ## [自定义 UI](active-directory-b2c-reference-ui-customization.md)
 ### [用于自定义的帮助器工具](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [语言自定义](active-directory-b2c-reference-language-customization.md)
-## [使用报告 API](active-directory-b2c-refererence-usage-reporting-api.md)
+## [使用报告 API](active-directory-b2c-reference-usage-reporting-api.md)
 ## [设置自助服务密码重置](active-directory-b2c-reference-sspr.md)
 
 # 标识体验框架
@@ -59,8 +59,8 @@
 ### 配置 SAML 提供程序
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### 集成 RESTful API
-#### [获取其他声明](active-directory-b2c-rest-api-step-custom.md)
 #### [验证用户输入](active-directory-b2c-rest-api-validation-custom.md)
+#### [获取其他声明](active-directory-b2c-rest-api-step-custom.md)
 ### 自定义登录
 #### [配置用户输入](active-directory-b2c-configure-signup-self-asserted-custom.md)
 #### [自定义 UI](active-directory-b2c-ui-customization-custom.md)
@@ -79,7 +79,6 @@
 ## [上市区域和数据驻留](active-directory-b2c-reference-tenant-type.md)
 ## [启用计费](active-directory-b2c-how-to-enable-billing.md)
 ## [威胁管理](active-directory-b2c-reference-threat-management.md)
-## [限制和局限性](active-directory-b2c-limitations.md)
 ## [创建目录时出现的问题](active-directory-b2c-support-create-directory.md)
 
 # 相关内容
