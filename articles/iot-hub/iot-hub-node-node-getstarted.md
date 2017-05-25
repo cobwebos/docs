@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 03/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: e5cfa4c0a6964c3722ecaa6727336f5497565885
-ms.lasthandoff: 03/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 259477f26686eb43c1a06d8a72544d4ca8a72c71
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -272,7 +273,7 @@ ms.lasthandoff: 03/17/2017
 
 * [连接你的设备][lnk-connect-device]
 * [设备管理入门][lnk-device-management]
-* [IoT 网关 SDK 入门][lnk-gateway-SDK]
+* [Azure IoT 边缘入门][lnk-gateway-SDK]
 
 若要了解如何扩展 IoT 解决方案和如何大规模处理设备到云的消息，请参阅 [Process device-to-cloud messages][lnk-process-d2c-tutorial]（处理设备到云的消息）教程。
 

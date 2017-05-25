@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/07/2017
+ms.date: 05/09/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 0dbf6a121c07d7d1340898f51a38c3572e57b3a2
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 74ea95349faa7ee3376050c22b4bb2375837b5c0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -63,20 +64,22 @@ ms.lasthandoff: 04/06/2017
    2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。
    3. 搜索并安装以下 NuGet 包：
 
-      * `Microsoft.Azure.Management.DataLake.Store` - 本教程使用 v1.0.4。
-      * `Microsoft.Azure.Management.DataLake.StoreUploader` - 本教程使用 v1.0.1-preview。
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.2.11。
+      * `Microsoft.Azure.Management.DataLake.Store` - 本教程使用 v2.1.3-预览版。
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.2.12。
 
-        ![添加 Nuget 源](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "创建新的 Azure Data Lake 帐户")
+        ![添加 Nuget 源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "创建新的 Azure Data Lake 帐户")
    4. 关闭“NuGet 包管理器” 。
 6. 打开“Program.cs” ，删除现有代码，然后包含以下语句，添加对命名空间的引用。
 
         using System;
         using System.IO;
-    使用 System.Security.Cryptography.X509Certificates；//仅在你是使用 Azure AD 应用程序（通过证书创建）的情况下需要      使用 System.Threading；
+        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+        using System.Threading;
 
         using Microsoft.Azure.Management.DataLake.Store;
-    使用 Microsoft.Azure.Management.DataLake.Store.Models；使用 Microsoft.Azure.Management.DataLake.StoreUploader；使用 Microsoft.IdentityModel.Clients.ActiveDirectory；使用 Microsoft.Rest.Azure.Authentication；
+        using Microsoft.Azure.Management.DataLake.Store.Models;
+        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+        using Microsoft.Rest.Azure.Authentication;
 
 7. 按如下所示声明变量，提供已存在的 Data Lake Store 名称和资源组名称的值。 此外，确保计算机中必须存在此处提供的本地路径和文件名。 在命名空间声明后，添加以下代码片段。
 
@@ -125,7 +128,7 @@ ms.lasthandoff: 04/06/2017
     var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"));
     var creds = UserTokenProvider.LoginWithPromptAsync(tenant_id, activeDirectoryClientSettings).Result;
 
-对于上述代码片段，需要注意几个问题。
+对于上述代码片段，需要注意几个问题：
 
 * 为了帮助读者更快完成本教程，此代码片段使用了为所有 Azure 订阅默认提供的 Azure AD 域和客户端 ID。 因此，可以**在应用程序中按原样使用此代码片段**。
 * 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，然后使用所创建的应用程序的 Azure AD 租户 ID、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序，以便使用 Data Lake Store 进行最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
@@ -197,13 +200,10 @@ ms.lasthandoff: 04/06/2017
     // Upload a file
     public static void UploadFile(string srcFilePath, string destFilePath, bool force = true)
     {
-        var parameters = new UploadParameters(srcFilePath, destFilePath, _adlsAccountName, isOverwrite: force);
-        var frontend = new DataLakeStoreFrontEndAdapter(_adlsAccountName, _adlsFileSystemClient);
-        var uploader = new DataLakeStoreUploader(parameters, frontend);
-        uploader.Execute();
+        _adlsFileSystemClient.FileSystem.UploadFile(_adlsAccountName, srcFilePath, destFilePath, overwrite:force);
     }
 
-`DataLakeStoreUploader` 支持在本地文件路径与 Data Lake Store 文件路径之间进行递归上载和下载。    
+SDK 支持在本地文件路径与 Data Lake Store 文件路径之间进行递归上载和下载。    
 
 ## <a name="get-file-or-directory-info"></a>获取文件或目录信息
 以下代码片段演示了 `GetItemInfo` 方法，使用该方法可以检索有关 Data Lake Store 中文件和目录的信息。
@@ -248,19 +248,15 @@ ms.lasthandoff: 04/06/2017
 下面的代片码段演示了 `DownloadFile` 方法，使用该方法可以从 Data Lake Store 帐户下载文件。
 
     // Download file
-    public static async Task DownloadFile(string srcPath, string destPath)
+       public static void DownloadFile(string srcFilePath, string destFilePath)
     {
-        using (var stream = await _adlsFileSystemClient.FileSystem.OpenAsync(_adlsAccountName, srcPath))
-        using (var fileStream = new FileStream(destPath, FileMode.Create))
-        {
-            await stream.CopyToAsync(fileStream);
-        }
+         _adlsFileSystemClient.FileSystem.DownloadFile(_adlsAccountName, srcFilePath, destFilePath);
     }
 
 ## <a name="next-steps"></a>后续步骤
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Data Lake Store .NET SDK 参考](https://msdn.microsoft.com/library/mt581387.aspx)
+* [Data Lake Store .NET SDK 参考](https://docs.microsoft.com/dotnet/api/?view=azuremgmtdatalakestore-2.1.0-preview&term=DataLake.Store)
 * [Data Lake Store REST 参考](https://msdn.microsoft.com/library/mt693424.aspx)
 

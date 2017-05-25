@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: a6b1df79f4fc6b09b681755f5adbb7f56faaf225
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 42f77fbea2ac9572940e8c428999c79d6b4b6e23
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -39,7 +40,7 @@ Azure 流分析是一种完全托管的、经济高效的实时事件处理引�
 * **低成本：** 作为一种云服务，流分析已经过优化，用户只需很少的成本即可运行和维护各种实时分析解决方案。 服务经过构建，让你可以根据流式处理单元使用量和系统处理的数据量实现现用现付。 使用情况取决于已处理事件的数量，以及在群集中预配的处理相应流分析作业所需的计算能力。  
 * **引用数据：** 用户可以通过流分析来指定和使用引用数据。 这些引用数据可以是历史数据，也可以只是在一段时间内更改次数较少的非流式处理数据。 系统简化了引用数据的使用，将其视同其他传入事件流，可以与其他实时引入的事件流进行联接以执行各种转换。  
 * **用户定义的函数：** 流分析通过与 Azure 机器学习集成定义机器学习服务中作为流分析查询的一部分的函数调用。 这将扩展流分析的功能，从而利用现有 Azure 机器学习解决方案。 关于这方面的详细信息，请参阅 [机器学习集成教程](stream-analytics-machine-learning-integration-tutorial.md)。
-* **连接性：** 流分析可以直接连接到 Azure 事件中心和 Azure IoT 中心进行流引入，并可以连接到 Azure Blob 服务进行历史数据引入。 结果可以从流分析写入 Azure 存储 Blob 或表、Azure SQL 数据库、Azure Data Lake Store、DocumentDB、事件中心、Azure 服务总线主题或队列和 Power BI，然后从中可以对结果进行可视化，用工作流进行进一步处理，通过 [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) 用于批量分析或者作为一系列事件再次处理。 使用事件中心时，可以将多个流分析与其他数据源和处理引擎组合在一起，而不会失去计算的流处理本质。  
+* **连接性：** 流分析可以直接连接到 Azure 事件中心和 Azure IoT 中心进行流引入，并可以连接到 Azure Blob 服务进行历史数据引入。 结果可以从流分析写入 Azure 存储 Blob 或表、Azure SQL 数据库、Azure Data Lake Store、Azure Cosmos DB、事件中心、Azure 服务总线主题或队列和 Power BI，然后从中可以对结果进行可视化，用工作流进行进一步处理，通过 [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) 用于批量分析或者作为一系列事件再次处理。 使用事件中心时，可以将多个流分析与其他数据源和处理引擎组合在一起，而不会失去计算的流处理本质。  
 
 ## <a name="get-help"></a>获取帮助
 如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/24/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: eec53d5dea1255572d515f1ab2796da681579d19
-ms.lasthandoff: 04/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e041a4d88d93b5ea9fcd792800c4a12a6a44ce36
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -90,7 +91,7 @@ Blob 存储提供三种类型的 Blob：块 Blob、追加 Blob 和页 Blob（磁
 对于网络限制使得通过线缆向 Blob 存储上传或从其下载数据不可行的每个大型数据集，你可以将硬盘驱动器发送到 Microsoft 以直接通过数据中心导入或导出数据。 请参阅 [使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](storage-import-export-service.md)。
 
 ## <a name="table-storage"></a>表存储
-与前几代的必需软件相比，现代应用程序通常要求数据存储具有更高的可伸缩性和灵活性。 表存储提供了具有高可用性且可大规模伸缩的存储，因此你的应用程序可以自动伸缩以满足用户需求。 表存储是 Microsoft 的 NoSQL 键/属性存储 - 它具有无模式的设计，使其不同于传统的关系数据库。 采用无模式的数据存储，可以很容易地随着你的应用程序需求的发展使数据适应存储。 表存储易于使用，因此开发人员可以快速创建应用程序。 对于所有类型的应用程序，都可以快速并经济高效地访问数据。  对于相似的数据量，表存储的成本通常显著低于传统的 SQL。
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)] 与前几代的必需软件相比，现代应用程序通常要求数据存储具有更高的可伸缩性和灵活性。 表存储提供了具有高可用性且可大规模伸缩的存储，因此你的应用程序可以自动伸缩以满足用户需求。 表存储是 Microsoft 的 NoSQL 键/属性存储 - 它具有无模式的设计，使其不同于传统的关系数据库。 采用无模式的数据存储，可以很容易地随着你的应用程序需求的发展使数据适应存储。 表存储易于使用，因此开发人员可以快速创建应用程序。 对于所有类型的应用程序，都可以快速并经济高效地访问数据。  对于相似的数据量，表存储的成本通常显著低于传统的 SQL。
 
 表存储是一种“键-属性”存储，这意味着表中的每个值都是随所键入的一个属性名称存储的。 属性名称可以用来筛选和指定选择条件。 属性集合及其值构成了实体。 因为表存储是无模式的，因此同一表中的两个实体可以包含不同的属性集合，并且这些属性可以属于不同的类型。
 
@@ -200,7 +201,7 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 * [适用于 .NET 的存储数据移动客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### <a name="tools-and-utilities"></a>工具和实用程序
-* [Azure 存储空间资源管理器](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
 * [Azure 存储客户端工具](storage-explorers.md)
 * [Azure SDK 和工具](https://azure.microsoft.com/tools/)
 * [Azure 存储模拟器](http://www.microsoft.com/download/details.aspx?id=43709)
