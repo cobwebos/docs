@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 03/06/2017
 ms.author: chrande, glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b9cb2e6c15cbe217c57ddfe2910e8017bd61a67a
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 198a8421636945bdf60c4ed519d065617a7fc287
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -58,7 +58,7 @@ ms.lasthandoff: 05/10/2017
 * 有关 `path`，请参阅[名称模式](#pattern)了解如何设置 blob 名称模式的格式。
 * `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
 
-基于消耗计划运行时，如果 Function App 处于空闲状态，则在处理新 Blob 时，可能会出现某天耗时长达 10 分钟的情况。 Function App 运行以后，Blob 处理速度会加快。 若要避免这种初始延迟，可以使用常规的应用服务计划并启用“始终可用”，或者使用其他机制来触发 Blob 处理，例如使用包含 Blob 名称的队列消息。 
+基于消耗计划运行时，如果 Function App 处于空闲状态，则在处理新 Blob 时，可能会出现长达 10 分钟的延迟。 Function App 运行以后，Blob 处理速度会加快。 若要避免这种初始延迟，可以使用常规的应用服务计划并启用“始终可用”，或者使用其他机制来触发 Blob 处理，例如使用包含 Blob 名称的队列消息。 
 
 另请参阅以下副标题以了解详细信息：
 
