@@ -1,6 +1,6 @@
 ---
-title: "创建用于连接到 Azure DocumentDB 的 Azure Function | Microsoft Docs"
-description: "Azure CLI 脚本示例 - 创建用于连接到 Azure DocumentDB 的 Azure Function"
+title: "创建用于连接到 Azure Cosmos DB 的 Azure Function | Microsoft Docs"
+description: "Azure CLI 脚本示例 - 创建用于连接到 Azure Cosmos DB 的 Azure Function"
 services: functions
 documentationcenter: functions
 author: rachelappel
@@ -10,19 +10,18 @@ tags: functions
 ms.assetid: 
 ms.service: functions
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 46e0fe827b7b34010d14a31ff377d4854ec62f6e
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: dbe02fbc71f04c67ab03a84845bf8666333ce621
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
-
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>创建用于连接到 Azure Cosmos DB 的 Azure Function
 
 此示例脚本创建 Azure Function App，并连接到 Azure Cosmos DB 数据库。
@@ -31,9 +30,9 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-创建应用示例
+此示例创建 Azure Function app，并将 Cosmos DB 终结点和访问密钥添加到应用设置。
 
-[!code-azurecli[主要](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "创建用于连接到 Azure Cosmos DB 的 Azure Function")]
+[!code-azurecli-interactive[主要](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "创建用于连接到 Azure Cosmos DB 的 Azure Function")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

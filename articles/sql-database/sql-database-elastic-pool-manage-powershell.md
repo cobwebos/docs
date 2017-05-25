@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: data-management
-ms.date: 04/10/2017
+wms.date: 05/14/2017
 ms.author: srinia
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: b84185d0f224352e7cf5449068bee359914bd4ed
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 907e15da90bcd82358a462f7d8a7d2ba4a34f371
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 05/16/2017
 
 ---
 
@@ -88,7 +87,7 @@ Set-AzureRmSqlElasticPool -ResourceGroupName “resourcegroup1” -ServerName �
 使用 [Set-AzureRmSqlElasticPool](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlelasticpool) cmdlet 设置 _-StorageMB_ 参数。 提供以 MB 为单位的存储限制（例如，2097152 将存储限制设置为 2 TB）。 有关该参数可能的值，请参阅 [eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)。
 
 > [!IMPORTANT]
-> 对于 eDTU 至少为 1500 的高级池来说，每个池的默认最大数据存储为 750 GB。 若要获得更高的_每个池的最大数据存储大小_，必须显式设置存储限制。 存储超过 750 GB 的高级池目前在以下区域中处于公共预览状态：美国东部 2、美国西部、西欧、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。
+> 对于 eDTU 至少为 1500 的高级池来说，每个池的默认最大数据存储为 750 GB。 若要获得更高的_每个池的最大数据存储大小_，必须显式设置存储限制。 存储超过 750 GB 的高级池目前在以下区域中处于公共预览状态：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。
 
 ```PowerShell
 Set-AzureRmSqlElasticPool -ServerName "server1" -ElasticPoolName “elasticpool1” -StorageMB 2097152

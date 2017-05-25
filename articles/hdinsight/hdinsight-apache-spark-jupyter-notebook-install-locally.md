@@ -1,5 +1,5 @@
 ---
-title: "在本地安装 Jupyter 笔记本并将其连接到 Azure HDInsight Spark 群集 | Microsoft Docs"
+title: "在本地安装 Jupyter 并将其连接到 Azure HDInsight Spark 群集 | Microsoft Docs"
 description: "了解如何在计算机上本地安装 Jupyter 笔记本并将其连接到 Azure HDInsight 上的 Apache Spark 群集。"
 services: hdinsight
 documentationcenter: 
@@ -17,14 +17,14 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 689bcb86a5eb4476cb62516f623cd23702cd6bc9
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: c2949fbda0503c779b117aebb14d4d7b76bae426
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-cluster-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark 群集
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark
 
 在本文中，你将了解如何安装具有自定义 PySpark（适用于 Python）以及具有 Spark（适用于 Scala）内核和 Spark magic 的 Jupyter 笔记本，然后将笔记本连接到 HDInsight 群集。 在本地计算机上安装 Jupyter 的原因多种多样，同时这种安装也面临着多种难题。 有关此方面的详细信息，请参阅本文末尾的[为何要在计算机上安装 Jupyter](#why-should-i-install-jupyter-on-my-computer)。
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 04/27/2017
 
 * 对于群集 v3.5 和 v3.6，请通过执行 `pip install sparkmagic==0.11.2` 安装 sparkmagic 0.11.2
 
-## <a name="configure-spark-magic-to-access-the-hdinsight-spark-cluster"></a>配置 Spark magic 以访问 HDInsight Spark 群集
+## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>配置 Spark magic 以连接到 HDInsight Spark 群集
 
 在本部分中，你将配置前面安装的 Spark magic，以连接到 Apache Spark 群集（必须事先在 Azure HDInsight 中创建）。
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 04/27/2017
 
     a. 创建新的笔记本。 在右下角单击“新建”。 用户应该会看到默认内核 **Python2** 和安装的两个新内核：**PySpark** 和 **Spark**。 单击“PySpark”。
 
-    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "创建新的 Jupyter 笔记本")
+    ![Jupyter 笔记本中的内核](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Jupyter 笔记本中的内核")
 
     b. 运行以下代码片段。
 

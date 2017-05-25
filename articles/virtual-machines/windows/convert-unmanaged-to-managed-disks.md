@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6530da96cd6e6ccd90714a9d3c9f00f88afe853e
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: b3a2bf688f1837a17312ec4bb5ca6b87209076cd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/03/2017
 如果你的现有 Azure VM 在存储帐户中使用非托管磁盘，但你希望能够利用[托管磁盘](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，则可以转换这些 VM。 这个过程会同时将 OS 磁盘和任何附加的数据磁盘，从在存储帐户中使用非托管磁盘转换为使用托管磁盘。 VM 将关闭并解除分配，然后，你可以使用 PowerShell 将 VM 转换为使用托管磁盘。 完成转换后，请重新启动 VM，然后它将开始使用托管磁盘。
 
 在开始之前，请确保已查看[规划迁移到托管磁盘](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)。
-在生产中执行迁移之前，请务必先通过迁移测试虚拟机来测试迁移过程，因为迁移过程是不可逆的。
+在生产中执行迁移之前，请务必先通过迁移测试虚拟机来测试迁移过程，因为迁移过程是不可逆的。 在迁移过程中将锁定 VM 的管理操作，因此在迁移完成前无法启动、停止或删除 VM。
 
 
 > [!IMPORTANT] 

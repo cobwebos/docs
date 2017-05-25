@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 02/07/2017
 ms.author: sashan;carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 0b53eb34293078ad2ce334583fee88a8c5ac5ccf
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 6ed02ead07c50b9a49e8868756b6f957d7b49b99
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -77,7 +78,7 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 与单一数据库不同的是，对弹性数据库使用[活动异地复制](sql-database-geo-replication-overview.md)对计费没有直接的影响。  你只需支付对每个池（主池和辅助池）预配的 eDTU 费用
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>使用审核功能将对我的帐单产生什么影响？
-审核功能是 SQL 数据库服务的内置功能，无需另行付费，基本、标准、高级和高级 RS 数据库均提供此功能。 但是，为了存储审核日志，审核功能将使用 Azure 存储帐户，而 Azure 存储空间中的表和队列费率根据审核日志的大小来应用。
+审核功能是 SQL 数据库服务的内置功能，无需另行付费，基本、标准、高级和高级 RS 数据库均提供此功能。 但是，为了存储审核日志，审核功能将使用 Azure 存储帐户，而 Azure 存储中的表和队列费率根据审核日志的大小来应用。
 
 ## <a name="how-do-i-find-the-right-service-tier-and-performance-level-for-single-databases-and-elastic-pools"></a>如何找到单一数据库和弹性池的正确服务层和性能级别？
 有几个工具可供使用。 

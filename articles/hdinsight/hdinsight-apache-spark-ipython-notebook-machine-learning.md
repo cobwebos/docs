@@ -1,6 +1,6 @@
 ---
-title: "在 Azure HDInsight 上使用 Apache Spark 生成机器学习应用程序 | Microsoft Docs"
-description: "逐步说明如何使用 Apache Spark 随附的笔记本生成计算机学习应用程序"
+title: "在 Azure HDInsight 上生成 Apache Spark 机器学习应用程序 | Microsoft Docs"
+description: "有关如何使用 Jupyter 笔记本在 HDInsight Spark 群集中生成 Apache Spark 机器学习应用程序的分步说明"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -17,36 +17,35 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 94c7aca175543b94742ad57af6949b3fcdda6356
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 2e70e40629126604cc7f29029d73aa578507e1a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="build-machine-learning-applications-to-run-on-apache-spark-clusters-on-hdinsight"></a>构建机器学习应用程序来运行 HDInsight 上的 Apache Spark 群集
+# <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上生成 Apache Spark 机器学习应用程序
 
-了解如何使用 HDInsight 中的 Apache Spark 群集生成机器学习应用程序。 本文说明如何使用群集随附的 Jupyter 笔记本来生成和测试应用程序。 应用程序使用所有群集默认提供的示例 HVAC.csv 数据。
+了解如何使用 HDInsight 中的 Spark 群集生成 Apache Spark 机器学习应用程序。 本文说明如何使用群集随附的 Jupyter 笔记本来生成和测试此应用程序。 应用程序使用所有群集默认提供的示例 HVAC.csv 数据。
 
 **先决条件：**
 
 必须满足以下条件：
 
-* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。 
 
-## <a name="data"></a>讲解数据
-在开始生成应用程序之前，我们先来了解数据的结构，以及要对数据执行的分析类型。 
+## <a name="data"></a>了解数据集
+在开始生成应用程序之前，我们先来了解要为其生成应用程序的数据的结构，以及要对数据执行的分析类型。 
 
 本文使用与 HDInsight 群集关联的 Azure 存储帐户中提供的示例 **HVAC.csv** 数据文件。 该文件位于存储帐户中的 **\HdiSamples\HdiSamples\SensorSampleData\hvac** 位置。 下载并打开该 CSV 文件，以获取数据的快照。  
 
-![HVAC 数据快照](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.png "HVAC 数据的快照")
+![用于 Spark 机器学习示例的数据的快照](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "用于 Spark 机器学习示例的数据的快照")
 
 该数据显示装有 HVAC 系统的建筑物的目标温度和实际温度。 我们假设 **System** 列代表系统 ID，**SystemAge** 列代表建筑物安装 HVAC 系统的年数。
 
 在指定系统 ID 和系统年数的情况下，我们可以使用这些数据来预测建筑物的温度比目标温度高还是低。
 
-## <a name="app"></a>使用 Spark MLlib 编写机器学习应用程序
+## <a name="app"></a>使用 Spark MLlib 编写 Spark 机器学习应用程序
 在此应用程序中，我们使用 Spark ML 管道来执行文档分类。 在管道中，我们将文档分割成单字、将单字转换成数字特征向量，最后使用特征向量和标签创建预测模型。 执行下列步骤创建应用程序。
 
 1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。   
@@ -60,10 +59,10 @@ ms.lasthandoff: 01/24/2017
    > 
 3. 创建新的笔记本。 单击“新建”，然后单击“PySpark”。
    
-    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.createnotebook.png "创建新的 Jupyter 笔记本")
+    ![创建用于 Spark 机器学习示例的 Jupyter 笔记本](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-create-notebook.png "创建用于 Spark 机器学习示例的 Jupyter 笔记本")
 4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
    
-    ![提供笔记本的名称](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.notebook.name.png "提供笔记本的名称")
+    ![提供用于 Spark 机器学习示例的笔记本名称](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-notebook-name.png "提供用于 Spark 机器学习示例的笔记本名称")
 5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。 
    
         from pyspark.ml import Pipeline
@@ -160,7 +159,7 @@ ms.lasthandoff: 01/24/2017
 
     返回并根据原始 CSV 文件验证输出。 例如，CSV 文件中第一行包含此数据：
 
-    ![HVAC 数据快照](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.first.row.png "HVAC 数据的快照")
+    ![Spark 机器学习示例的输出数据快照](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Spark 机器学习示例的输出数据快照")
 
     请注意，实际温度比目标温度低的情况表示建筑物处于低温状态。 因此在训练输出中，第一行中的 **label** 值为 **0.0**，表示建筑物并非处于高温状态。
 
@@ -196,7 +195,7 @@ ms.lasthandoff: 01/24/2017
    从预测中的第一行可以看出，对于 ID 为 20 且系统年数为 25 的 HVAC 系统，建筑物处于高温状态 (**prediction=1.0**)。 DenseVector (0.49999) 的第一个值对应于预测 0.0，第二个值 (0.5001) 对应于预测 1.0。 在输出中，即使第二个值只稍高一点，模型也仍旧显示 **prediction=1.0**。
 4. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这将会关闭笔记本。
 
-## <a name="anaconda"></a>使用机器学习 Anaconda scikit-learn 库
+## <a name="anaconda"></a>将 Anaconda scikit-learn 库用于 Spark 机器学习
 HDInsight 上的 Apache Spark 群集包含 Anaconda 库， 其中包括适用于机器学习的 **scikit-learn** 库。 该库还包含用于直接从 Jupyter 笔记本生成示例应用程序的各种数据集。 有关使用 scikit-learn 库的示例，请参阅 [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html)。
 
 ## <a name="seealso"></a>另请参阅

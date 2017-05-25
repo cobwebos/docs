@@ -1,5 +1,5 @@
 ---
-title: "调试 Azure HDInsight 中 Apache Spark 群集上运行的作业 | Microsoft Docs"
+title: "调试 Azure HDInsight 中运行的 Apache Spark 作业 | Microsoft Docs"
 description: "使用 YARN UI、Spark UI 和 Spark History Server 来跟踪和调试 Azure HDInsight 中的 Spark 群集上运行的作业"
 services: hdinsight
 documentationcenter: 
@@ -17,16 +17,16 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: d6d7c0d112778172633fa068a119ba075c0fd900
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: df647b77f5f826b7f852bea981bc92089852b35a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="track-and-debug-jobs-running-on-apache-spark-cluster-in-hdinsight"></a>跟踪和调试 HDInsight 中 Apache Spark 群集上运行的作业
+# <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>调试 Azure HDInsight 中运行的 Apache Spark 作业
 
-在本文中，你将了解如何使用 YARN UI、Spark UI 和 Spark History Server 来跟踪和调试 Spark 作业。 在本文中，将使用 Spark 群集中提供的笔记本启动 Spark 作业，相关信息请参阅 **Machine learning: Predictive analysis on food inspection data using MLLib**（机器学习：使用 MLLib 对食物检测数据进行预测分析）。 也可以执行以下步骤来跟踪使用任何其他方法（例如 **spark-submit**）提交的应用程序。
+在本文中，将了解如何使用 YARN UI、Spark UI 和 Spark History Server 来跟踪和调试 HDInsight 群集中运行的 Spark 作业。 在本文中，将使用 Spark 群集中提供的笔记本启动 Spark 作业，相关信息请参阅 **Machine learning: Predictive analysis on food inspection data using MLLib**（机器学习：使用 MLLib 对食物检测数据进行预测分析）。 也可以执行以下步骤来跟踪使用任何其他方法（例如 **spark-submit**）提交的应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 必须满足以下条件：
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/24/2017
     ![启动 YARN UI](./media/hdinsight-apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]
-   > 或者，也可以从 Ambari UI 启动 YARN UI。 若要启动 Ambari UI，请在群集边栏选项卡中单击“群集仪表板”，然后单击“HDInsight 群集仪表板”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的资源管理器和“ResourceManager UI”。    
+   > 或者，也可以从 Ambari UI 启动 YARN UI。 若要启动 Ambari UI，请在群集边栏选项卡中单击“群集仪表板”，然后单击“HDInsight 群集仪表板”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的 Resource Manager 和“ResourceManager UI”。    
    > 
    > 
 2. 由于 Spark 作业是使用 Jupyter 笔记本启动的，因此应用程序的名称为 **remotesparkmagics**（这是从笔记本启动的所有应用程序的名称）。 单击应用程序名称旁边的应用程序 ID，以获取有关该作业的详细信息。 此时将启动应用程序视图。

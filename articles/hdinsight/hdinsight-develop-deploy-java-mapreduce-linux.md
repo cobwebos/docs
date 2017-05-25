@@ -1,6 +1,6 @@
 ---
-title: "为基于 Linux 的 HDInsight 开发 Java MapReduce 程序 | Microsoft Docs"
-description: "了解如何开发 Java MapReduce 程序，以及如何将这些程序部署到基于 Linux 的 HDInsight。"
+title: "为 Hadoop 创建 Java MapReduce - Azure HDInsight | Microsoft Docs"
+description: "了解如何开发 Java MapReduce 程序，以及如何将这些程序部署到 HDInsight 上的 Hadoop。"
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -14,18 +14,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 05/17/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: a8623991dda4192d700d35ef3970d416e315c5c6
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: ce5661febe502e9da9682166af1b601b1fc0b965
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight-linux"></a>为 HDInsight Linux 上的 Hadoop 开发 Java MapReduce 程序
+# <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>为 HDInsight 上的 Hadoop 开发 Java MapReduce 程序
 
-了解如何使用 Apache Maven 创建基于 Java 的 MapReduce 应用程序，然后在 HDInsight 群集中基于 Linux 的 Hadoop 上部署和运行它。
+了解如何使用 Apache Maven 创建基于 Java 的 MapReduce 应用程序，然后使用 Azure HDInsight 中的 Hadoop 运行它。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,13 +37,8 @@ ms.lasthandoff: 03/25/2017
 
 * [Apache Maven](http://maven.apache.org/)
 
-* **Azure 订阅**
+## <a name="configure-development-environment"></a>配置开发环境
 
-* **Azure CLI**
-
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
-
-## <a name="configure-environment-variables"></a>配置环境变量
 可以在安装 Java 和 JDK 时设置以下环境变量。 不过，你应该检查它们是否存在并且包含系统的正确值。
 
 * `JAVA_HOME` - 应该指向已安装 Java 运行时环境 (JRE) 的目录。 例如，在 OS X、Unix 或 Linux 系统上，它的值应该类似于 `/usr/lib/jvm/java-7-oracle`。 在 Windows 中，它的值类似于 `c:\Program Files (x86)\Java\jre1.7`
@@ -61,17 +57,17 @@ ms.lasthandoff: 03/25/2017
 
 2. 使用随同 Maven 一起安装的 `mvn` 命令，为项目生成基架。
 
-   ```
+   ```bash
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    此命令将使用 **artifactID** 参数指定的名称（此示例中为 **wordcountjava**）创建目录。此目录包含以下项：
+    此命令将使用 `artifactID` 参数指定的名称（此示例中为 **wordcountjava**）创建目录。此目录包含以下项：
 
    * `pom.xml` - [项目对象模型 (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)，其中包含用于生成项目的信息和配置详细信息。
 
    * `src` - 包含应用程序的目录。
 
-3. 删除 `src/test/java/org/apache/hadoop/examples/apptest.java` 文件，因为此示例用不到该文件。
+3. 删除 `src/test/java/org/apache/hadoop/examples/apptest.java` 文件， 因为此示例用不到该文件。
 
 ## <a name="add-dependencies"></a>添加依赖项
 
@@ -81,19 +77,19 @@ ms.lasthandoff: 03/25/2017
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-mapreduce-examples</artifactId>
-        <version>2.5.1</version>
+        <version>2.7.3</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-mapreduce-client-common</artifactId>
-        <version>2.5.1</version>
+        <version>2.7.3</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-common</artifactId>
-        <version>2.5.1</version>
+        <version>2.7.3</version>
         <scope>provided</scope>
     </dependency>
    ```
@@ -101,6 +97,9 @@ ms.lasthandoff: 03/25/2017
     这会定义具有特定版本（在 &lt;version\> 中列出）的库（在 &lt;artifactId\> 中列出）。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可使用 [Maven 存储库搜索](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar)来查看详细信息。
    
     `<scope>provided</scope>` 告诉 Maven 这些依赖关系不应与此应用程序一起打包，因为它们会在运行时由 HDInsight 群集提供。
+
+    > [!IMPORTANT]
+    > 使用的版本应与群集上存在的 Hadoop 版本匹配。 有关版本的详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md)文档。
 
 2. 将以下内容添加到 `pom.xml` 文件中。 此文本必须位于文件中的 `<project>...</project>` 标记内；例如 `</dependencies>` 和 `</project>` 之间。
 
@@ -129,9 +128,10 @@ ms.lasthandoff: 03/25/2017
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.6.1</version>
             <configuration>
-            <source>1.7</source>
-            <target>1.7</target>
+            <source>1.8</source>
+            <target>1.8</target>
             </configuration>
         </plugin>
         </plugins>
@@ -255,11 +255,7 @@ ms.lasthandoff: 03/25/2017
 
     Replace __USERNAME__ with your SSH user name for the cluster. Replace __CLUSTERNAME__ with the HDInsight cluster name.
 
-此命令会将两个文件从本地系统复制到头节点。
-
-> [!NOTE]
-> 如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。 如果你使用了 SSH 密钥，你可能必须使用 `-i` 参数和私钥的路径。 例如，`scp -i /path/to/private/key wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`。
-
+此命令会将两个文件从本地系统复制到头节点。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 ## <a name="run"></a>运行 MapReduce 作业
 
@@ -271,7 +267,7 @@ ms.lasthandoff: 03/25/2017
    yarn jar wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /example/data/gutenberg/davinci.txt /example/data/wordcountout
    ```
    
-    此命令启动 WordCount MapReduce 应用程序。 输入文件是 **/example/data/gutenberg/davinci.txt**，输出存储在 **/example/data/wordcountout** 中。 输入文件和输出均存储到群集的默认存储中。
+    此命令启动 WordCount MapReduce 应用程序。 输入文件是 `/example/data/gutenberg/davinci.txt`，输出目录是 `/example/data/wordcountout`。 输入文件和输出均存储到群集的默认存储中。
 
 3. 作业完成后，使用以下命令查看结果：
    

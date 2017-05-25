@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: erihur;genli
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 6db1fedad08ee33f3468fb98f59071a1521921db
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: b5268239fb4c50e6bdea77323267a42e267268db
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -140,7 +141,9 @@ Microsoft Azure 订阅的费用因资费套餐而异。 某些资费套餐（如
 若要了解详细信息，请参阅 [Azure 计费和成本管理入门](billing-getting-started.md)。
 
 ## <a name="how-do-i-make-a-payment"></a>如何付款？
-如果已将信用卡或借记卡设置为付款方式，则将自动进行付款。 如果采用[发票付款方式](https://azure.microsoft.com/pricing/invoicing/)，可将付款寄送到发票底部列出的地点。 有关更多帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+如果已将信用卡或借记卡设置为付款方式，则将自动进行付款。 在信用卡对帐单上，行项会显示 **MSFT Azure**。
+
+如果采用[发票付款方式](https://azure.microsoft.com/pricing/invoicing/)，可将付款寄送到发票底部列出的地点。 有关更多帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>如何查看通过信用卡付款时的付款状态？
 [创建支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以询问付款状态。 

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
-ms.openlocfilehash: 774d5ac6f3d5d9d97120ab895157677e4a92bb05
-ms.lasthandoff: 01/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c22cb3a5436daf0296451f1f05a52d315ebc0416
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -71,9 +72,9 @@ UaaS 使 SaaS 客户能够使用他们以前未曾接触过的 Umbraco CMS 功�
    
    Azure 提供两个灾难恢复 (DR) 选项：活动异地复制和异地还原。 公司应该选择的 DR 选项取决于其[业务连续性目标](sql-database-business-continuity.md)。
    
-   活动异地复制可在发生停机时提供最快的响应。 通过活动异地复制，可以在不同区域的服务器上最多创建四个可读的辅助数据库，然后，可以在发生故障时故障转移到其中任何一个辅助数据库。
+   活动异地复制可在发生停机时提供最快级别的响应。 通过活动异地复制，可以在不同区域的服务器上最多创建四个可读的辅助数据库，然后，可以在发生故障时故障转移到其中任何一个辅助数据库。
    
-   Umbraco 不需要异地复制，但它利用了 Azure 异地还原来帮助确保发生中断时将停机时间缩到最短。 异地还原依赖于异地冗余 Azure 存储中的数据库备份。 这样，用户便可以在主要区域发生中断时，从备份副本还原。
+   Umbraco 不需要异地复制，但它利用了 Azure 异地还原来帮助确保发生服务中断时将停机时间缩到最短。 异地还原依赖于异地冗余 Azure 存储中的数据库备份。 这样，用户便可以在主要区域发生中断时，从备份副本还原。
 5. 取消预配
    
    删除项目环境时，将在 Azure 服务总线队列清理期间删除所有关联的数据库（开发、过渡或实时）。 此自动化过程将未使用的数据库还原到 Umbraco 的弹性数据库可用性池，这样既可充分利用这些数据库，又可将这些数据库用于将来的预配。

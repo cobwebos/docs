@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 02/18/2017
+ms.date: 05/15/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 5b77598e76de3508d90b35ce5a1f2ee338aca0c8
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 90b67cf3d136882d59ed7fe4210f93fb694e96a6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/25/2017
 [!INCLUDE [storage-cli-versions](../../includes/storage-cli-versions.md)]
 
 ## <a name="prerequisites"></a>先决条件
-本指南假定你了解 Azure 存储空间的基本概念。 本指南还假定，用户能够满足下面为 Azure 和存储服务指定的帐户创建要求。
+本指南假定你了解 Azure 存储的基本概念。 本指南还假定，用户能够满足下面为 Azure 和存储服务指定的帐户创建要求。
 
 ### <a name="accounts"></a>帐户
 * **Azure 帐户**：如果用户没有 Azure 订阅，可以[创建免费 Azure 帐户](https://azure.microsoft.com/free/)。
@@ -48,7 +49,7 @@ ms.lasthandoff: 04/25/2017
 
 ## <a name="working-with-the-cli"></a>使用 CLI
 
-安装 CLI 之后，可以在命令行界面（Bash、终端、命令提示符）中使用 `az` 命令访问 Azure CLI 命令。 键入 `az` 命令，然后应会显示类似于以下内容的输出：
+安装 CLI 之后，可以在命令行界面（Bash、终端、命令提示符）中使用 `az` 命令访问 Azure CLI 命令。 键入 `az` 命令以查看基本命令的完整列表（下面的示例输出已被截断）：
 
 ```
      /\
@@ -62,38 +63,15 @@ Welcome to the cool new Azure CLI!
 
 Here are the base commands:
 
-    account   : Commands to manage subscriptions.
-    acr       : Commands to manage Azure container registries.
-    acs       : Commands to manage Azure container services.
-    ad        : Synchronize on-premises directories and manage Azure Active Directory (AAD)
-                resources.
-    appservice: Commands to manage your Azure web apps and App Service plans.
-    cloud     : Manage the Azure clouds registered.
-    component : Commands to manage and update Azure CLI 2.0 components.
-    configure : Configure Azure CLI 2.0 or view your configuration. The command is
-                interactive, so just type `az configure` and respond to the prompts.
-    container : Set up automated builds and deployments for multi-container Docker applications.
-    disk      : Commands to manage 'Managed Disks'.
-    feature   : Commands to manage resource provider features, such as previews.
-    feedback  : Loving or hating the CLI?  Let us know!
-    group     : Commands to manage resource groups.
-    image     : Commands to manage custom virtual machine images based on managed disks/snapshots.
-    lock
-    login     : Log in to access Azure subscriptions.
-    logout    : Log out to remove access to Azure subscriptions.
-    network   : Manages Network resources.
-    policy    : Commands to manage resource policies.
-    provider  : Manage resource providers.
-    resource  : Generic commands to manage Azure resources.
-    role      : Use role assignments to manage access to your Azure resources.
-    snapshot  : Commands to manage snapshots.
-    storage   : Durable, highly available, and massively scalable cloud storage.
-    tag       : Manage resource tags.
-    vm        : Provision Linux and Windows virtual machines in minutes.
-    vmss      : Create highly available, auto-scalable Linux or Windows virtual machines.
+    account          : Manage subscriptions.
+    acr              : Manage Azure container registries.
+    acs              : Manage Azure Container Services.
+    ad               : Synchronize on-premises directories and manage Azure Active Directory
+                       resources.
+    ...
 ```
 
-在命令行界面中，执行命令 `az storage -h` 列出 `storage` 组命令及其子组。 子组说明概述了 Azure CLI 提供的用于使用存储资源的功能。
+在命令行接口中，执行命令 `az storage --help` 列出 `storage` 命令子组。 子组说明概述了 Azure CLI 提供的用于使用存储资源的功能。
 
 ```
 Group
@@ -103,14 +81,14 @@ Subgroups:
     account  : Manage storage accounts.
     blob     : Object storage for unstructured data.
     container: Manage blob storage containers.
-    cors     : Manage Storage service Cross-Orgin Resource Sharing (CORS).
+    cors     : Manage Storage service Cross-Origin Resource Sharing (CORS).
     directory: Manage file storage directories.
     entity   : Manage table storage entities.
     file     : File shares that use the standard SMB 3.0 protocol.
     logging  : Manage Storage service logging information.
     message  : Manage queue storage messages.
     metrics  : Manage Storage service metrics.
-    queue    : Effectively scale apps according to traffic using queues.
+    queue    : Use queues to effectively scale applications according to traffic.
     share    : Manage file shares.
     table    : NoSQL key-value storage using semi-structured datasets.
 ```
@@ -141,16 +119,16 @@ export file_to_upload=<file_to_upload>
 export destination_file=<destination_file>
 
 echo "Creating the container..."
-az storage container create -n $container_name
+az storage container create --name $container_name
 
 echo "Uploading the file..."
-az storage blob upload -f $file_to_upload -c $container_name -n $blob_name
+az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
 
 echo "Listing the blobs..."
-az storage blob list -c $container_name
+az storage blob list --container-name $container_name --output table
 
 echo "Downloading the file..."
-az storage blob download -c $container_name -n $blob_name -f $destination_file
+az storage blob download --container-name $container_name --name $blob_name --file $destination_file --output table
 
 echo "Done"
 ```
@@ -178,18 +156,19 @@ echo "Done"
 
 ```
 Creating the container...
-Success
----------
-True
-Uploading the file...                                           Percent complete: %100.0
+{
+  "created": true
+}
+Uploading the file...
+Percent complete: %100.0
 Listing the blobs...
-Name           Blob Type      Length  Content Type              Last Modified
--------------  -----------  --------  ------------------------  -------------------------
-test_blob.txt  BlockBlob         771  application/octet-stream  2016-12-21T15:35:30+00:00
+Name       Blob Type      Length  Content Type              Last Modified
+---------  -----------  --------  ------------------------  -------------------------
+README.md  BlockBlob        6700  application/octet-stream  2017-05-12T20:54:59+00:00
 Downloading the file...
 Name
--------------
-test_blob.txt
+---------
+README.md
 Done
 ```
 
@@ -203,12 +182,16 @@ Done
 若要使用 Azure 存储，用户需要一个存储帐户。 可以在将计算机配置为[连接到订阅](#connect-to-your-azure-subscription)之后，创建新的 Azure 存储帐户。
 
 ```azurecli
-az storage account create -l <location> -n <account_name> -g <resource_group> --sku <account_sku>
+az storage account create \
+    --location <location> \
+    --name <account_name> \
+    --resource-group <resource_group> \
+    --sku <account_sku>
 ```
 
-* `-l` [必填]：位置。 例如，“West US”。
-* `-n` [必填]：存储帐户名称。 名称长度必须为 3 到 24 个字符，并且名称只能包含小写字母数字字符。
-* `-g` [必填]：资源组的名称。
+* `--location` [必填]：位置。 例如，“West US”。
+* `--name` [必填]：存储帐户名称。 名称长度必须为 3 到 24 个字符，并且名称只能包含小写字母数字字符。
+* `--resource-group` [必填]：资源组的名称。
 * `--sku` [必填]：存储帐户 SKU。 允许的值：
   * `Premium_LRS`
   * `Standard_GRS`
@@ -227,13 +210,15 @@ export AZURE_STORAGE_ACCESS_KEY=<key>
 设置默认存储帐户的另一种方法是使用连接字符串。 首先，使用 `show-connection-string` 命令获取连接字符串：
 
 ```azurecli
-az storage account show-connection-string -n <account_name> -g <resource_group>
+az storage account show-connection-string \
+    --name <account_name> \
+    --resource-group <resource_group>
 ```
 
 然后复制输出连接字符串，并且设置 `AZURE_STORAGE_CONNECTION_STRING` 环境变量（可能需要将连接字符串括在引号中）：
 
 ```azurecli
-export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
+export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 ```
 
 > [!NOTE]
@@ -244,10 +229,10 @@ export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 Azure Blob 存储是用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 本部分假设你已熟悉 Azure Blob 存储概念。 有关详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)和 [Blob 服务概念](/rest/api/storageservices/blob-service-concepts)。
 
 ### <a name="create-a-container"></a>创建容器
-Azure 存储空间中的每个 Blob 都必须在容器中。 可以使用 `az storage container create` 命令创建容器：
+Azure 存储中的每个 Blob 都必须在容器中。 可以使用 `az storage container create` 命令创建容器：
 
 ```azurecli
-az storage container create -n <container_name>
+az storage container create --name <container_name>
 ```
 
 可以通过指定可选 `--public-access` 参数，为新容器设置读取访问权限的三个级别之一：
@@ -262,7 +247,10 @@ az storage container create -n <container_name>
 Azure Blob 存储支持块 Blob、追加 Blob 和页 Blob。 使用 `blob upload` 命令将 Blob 上载到容器：
 
 ```azurecli
-az storage blob upload -f <local_file_path> -c <container_name> -n <blob_name>
+az storage blob upload \
+    --file <local_file_path> \
+    --container-name <container_name> \
+    --name <blob_name>
 ```
 
  默认情况下，`blob upload` 命令将 *.vhd 文件上载到页 Blob 或块 Blob。 若要在上载 Blob 时指定另一种类型，可以使用 `--type` 参数，允许的值为 `append`、`block` 和 `page`。
@@ -273,7 +261,10 @@ az storage blob upload -f <local_file_path> -c <container_name> -n <blob_name>
 此示例演示如何从容器下载 Blob：
 
 ```azurecli
-az storage blob download -c mycontainer -n myblob.png -f ~/mydownloadedblob.png
+az storage blob download \
+    --container-name mycontainer \
+    --name myblob.png \
+    --file ~/mydownloadedblob.png
 ```
 
 ### <a name="copy-blobs"></a>复制 blob
@@ -282,20 +273,35 @@ az storage blob download -c mycontainer -n myblob.png -f ~/mydownloadedblob.png
 以下示例演示如何将一个存储帐户中的 Blob 复制到另一个存储帐户。 我们首先在另一个帐户中创建容器，指定其 Blob 为可公开访问、可匿名访问的 Blob。 接下来，我们将文件上载到该容器，最后，将 Blob 从该容器复制到当前帐户中的 **mycontainer** 容器。
 
 ```azurecli
-az storage container create -n mycontainer2 --account-name <accountName2> --account-key <accountKey2> --public-access blob
+# Create container in second account
+az storage container create \
+    --account-name <accountName2> \
+    --account-key <accountKey2> \
+    --name mycontainer2 \
+    --public-access blob
 
-az storage blob upload -f ~/Images/HelloWorld.png -c mycontainer2 -n myBlockBlob2 --account-name <accountName2> --account-key <accountKey2>
+# Upload blob to container in second account
+az storage blob upload \
+    --account-name <accountName2> \
+    --account-key <accountKey2> \
+    --file ~/Images/HelloWorld.png \
+    --container-name mycontainer2 \
+    --name myBlockBlob2
 
-az storage blob copy start -u https://<accountname2>.blob.core.windows.net/mycontainer2/myBlockBlob2 -b myBlobBlob -c mycontainer
+# Copy blob from second account to current account
+az storage blob copy start \
+    --source-uri https://<accountname2>.blob.core.windows.net/mycontainer2/myBlockBlob2 \
+    --destination-blob myBlobBlob \
+    --destination-container mycontainer
 ```
 
-源 Blob URL（由 `-u` 指定）必须可公开访问，或者包含共享访问签名 (SAS) 令牌。
+源 Blob URL（由 `--source-uri` 指定）必须可公开访问，或者包含共享访问签名 (SAS) 令牌。
 
 ### <a name="delete-a-blob"></a>删除 Blob
 若要删除 Blob，请使用 `blob delete` 命令：
 
 ```azurecli
-az storage blob delete -c <container_name> -n <blob_name>
+az storage blob delete --container-name <container_name> --name <blob_name>
 ```
 
 ## <a name="create-and-manage-file-shares"></a>创建和管理文件共享
@@ -305,17 +311,17 @@ Azure 文件存储使用服务器消息块 (SMB) 协议为应用程序提供共�
 Azure 文件共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在文件共享中创建。 一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到存储帐户的容量限制为止。 下面的示例创建名为 **myshare** 的文件共享。
 
 ```azurecli
-az storage share create -n myshare
+az storage share create --name myshare
 ```
 
 ### <a name="create-a-directory"></a>创建目录
-目录提供了进行 Azure 文件共享时可以选择的层次结构。 以下示例在文件共享中创建名为 **myDir** 的目录。
+目录提供了 Azure 文件共享中的层次结构。 以下示例在文件共享中创建名为 **myDir** 的目录。
 
 ```azurecli
-az storage directory create -n myDir -s myshare
+az storage directory create --name myDir --share-name myshare
 ```
 
-请注意，目录路径可以包括多个级别，*例如* **a/b**。 但是，必须确保所有父目录都存在。 例如，对于路径 **a/b**，必须先创建目录 **a**，然后创建目录 **b**。
+目录路径可以包括多个级别，例如 **dir1/dir2**。 但是，必须在创建子目录之前确保所有父目录都存在。 例如，对于路径 **dir1/dir2**，必须先创建目录 **dir1**，然后再创建目录 **dir2**。
 
 ### <a name="upload-a-local-file-to-a-share"></a>将本地文件上载到共享
 以下示例将文件从 **~/temp/samplefile.txt** 上载到 **myshare** 文件共享的根目录。 `--source` 参数指定要上载的现有本地文件。
@@ -337,13 +343,13 @@ az storage file upload --share-name myshare/myDir --source ~/temp/samplefile.txt
 
 ```azurecli
 # List the files in the root of a share
-az storage file list -s myshare
+az storage file list --share-name myshare --output table
 
 # List the files in a directory within a share
-az storage file list -s myshare/myDir
+az storage file list --share-name myshare/myDir --output table
 
 # List the files in a path within a share
-az storage file list -s myshare -p myDir/mySubDir/MySubDir2
+az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --output table
 ```
 
 ### <a name="copy-files"></a>复制文件        
