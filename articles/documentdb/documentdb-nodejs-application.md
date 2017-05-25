@@ -1,28 +1,29 @@
 ---
-title: "了解 Node.js - DocumentDB Node.js 教程 | Microsoft 文档"
-description: "了解 Node.js! 教程探讨了如何使用 Microsoft Azure DocumentDB 存储和访问托管在 Azure 网站上的 Node.js Express Web 应用程序中的数据。"
+title: "了解 Node.js - Azure Cosmos DB Node.js 教程 | Microsoft Docs"
+description: "了解 Node.js! 本教程探讨了如何使用 Microsoft Azure Cosmos DB 从 Azure 网站上托管的 Node.js Express Web 应用程序来存储和访问数据。"
 keywords: "应用程序开发, 数据库教程, 了解 node.js, node.js 教程, documentdb, azure, Microsoft azure"
-services: documentdb
+services: cosmosdb
 documentationcenter: nodejs
 author: syamkmsft
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9da9e63b-e76a-434e-96dd-195ce2699ef3
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 12/16/2016
 ms.author: syamk
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 6c84c21a0a61ab3e4d043e85d48780fc23f23a08
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 20b04f07581354144ef3dd3fc98da10cbff78e63
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="_Toc395783175"></a>使用 DocumentDB 生成 Node.js Web 应用程序
+# <a name="_Toc395783175"></a>构建使用 Azure Cosmos DB 的 Node.js Web 应用程序
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
 > * [适用于 MongoDB 的 .NET](documentdb-mongodb-application.md)
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/18/2017
 > 
 > 
 
-本 Node.js 教程介绍如何使用 Azure DocumentDB 存储和访问托管在 Azure 网站上的 Node.js Express 应用程序中的数据。 用户构建一个简单的基于 Web 的任务管理应用程序（即待办事项应用），用于创建、检索和完成任务。 任务存储为 Azure DocumentDB 中的 JSON 文档。 本教程演示如何创建和部署应用，并说明每个代码片段的功能。
+本 Node.js 教程展示了如何使用 Azure Cosmos DB 从 Azure 网站上托管的 Node.js Express 应用程序来存储和访问数据。 用户构建一个简单的基于 Web 的任务管理应用程序（即待办事项应用），用于创建、检索和完成任务。 任务存储为 Azure Cosmos DB 中的 JSON 文档。 本教程演示如何创建和部署应用，并说明每个代码片段的功能。
 
 ![在本 Node.js 教程中创建的 My Todo List 应用程序的屏幕截图](./media/documentdb-nodejs-application/image1.png)
 
@@ -50,13 +51,13 @@ ms.lasthandoff: 04/18/2017
 
    或
 
-   本地安装的 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)。
+   本地安装的 [Azure Cosmos DB 模拟器](documentdb-nosql-local-emulator.md)。
 * [Node.js][Node.js] v0.10.29 或更高版本。
 * [Express 生成器](http://www.expressjs.com/starter/generator.html)（可以通过 `npm install express-generator -g` 安装）
 * [Git][Git]。
 
-## <a name="_Toc395637761"></a>步骤 1：创建 DocumentDB 数据库帐户
-让我们首先创建 DocumentDB 帐户。 如果已有一个帐户，或者要在本教程中使用 DocumentDB Emulator，可以跳到[步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
+## <a name="_Toc395637761"></a>步骤 1：创建 Azure Cosmos DB 数据库帐户
+让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -116,8 +117,8 @@ ms.lasthandoff: 04/18/2017
    
     这将告知 Node（稍后告知 Azure），你的应用程序依赖于这些模块。
 
-## <a name="_Toc395783180"></a>步骤 4：在节点应用程序中使用 DocumentDB 服务
-这负责处理所有的初始安装和配置，现在让我们看看为什么要用这步，可以使用 Azure DocumentDB 编写一些代码。
+## <a name="_Toc395783180"></a>步骤 4：在 node 应用程序中使用 Azure Cosmos DB 服务
+这负责处理所有的初始安装和配置，现在让我们看看为什么要用这步，可以编写一些使用 Azure Cosmos DB 的代码。
 
 ### <a name="create-the-model"></a>创建模型
 1. 在项目目录中，在 package.json 文件所在的目录创建名为“models”的新目录。
@@ -194,7 +195,7 @@ ms.lasthandoff: 04/18/2017
    > [!TIP]
    > createCollection 采用一个用以指定集合 Offer 类型的可选 requestOptions 参数。 如果没有提供任何 requestOptions.offerType 值，则将使用默认 Offer 类型创建集合。
    > 
-   > 有关 DocumentDB 产品/服务类型的详细信息，请参阅 [DocumentDB 中的性能级别](documentdb-performance-levels.md) 
+   > 有关 Azure Cosmos DB 产品/服务类型的详细信息，请参阅 [Azure Cosmos DB 中的性能级别](documentdb-performance-levels.md)。 
    > 
    > 
 5. 保存并关闭 **docdbUtils.js** 文件。
@@ -214,7 +215,7 @@ ms.lasthandoff: 04/18/2017
         }
    
         module.exports = TaskDao;
-8. 然后添加以下代码以定义 Task 对象上的其他方法，该对象可与存储在 DocumentDB 中的数据进行交互。
+8. 然后添加以下代码以定义 Task 对象上的其他方法，该对象可与存储在 Azure Cosmos DB 中的数据进行交互。
    
         TaskDao.prototype = {
             init: function (callback) {
@@ -397,7 +398,7 @@ ms.lasthandoff: 04/18/2017
         config.collectionId = "Items";
    
         module.exports = config;
-3. 在 **config.js** 文件中，使用 [Microsoft Azure 门户](https://portal.azure.com)中 DocumentDB 帐户的“密钥”边栏选项卡中的值更新 HOST 和 AUTH_KEY 的值。
+3. 在 **config.js** 文件中，使用 [Microsoft Azure 门户](https://portal.azure.com)中 Azure Cosmos DB 帐户的“密钥”边栏选项卡中的值更新 HOST 和 AUTH_KEY 的值。
 4. 保存并关闭 **config.js** 文件。
 
 ### <a name="modify-appjs"></a>修改 app.js
@@ -427,7 +428,7 @@ ms.lasthandoff: 04/18/2017
         app.post('/addtask', taskList.addTask.bind(taskList));
         app.post('/completetask', taskList.completeTask.bind(taskList));
         app.set('view engine', 'jade');
-5. 这些行（使用从 **config.js** 中读取的值）定义 **TaskDao** 对象的新实例以及与 DocumentDB 的新连接，初始化该任务对象，然后将窗体操作与 **TaskList** 控制器上的方法绑定。 
+5. 这些行（使用从 **config.js** 中读取的值）定义 **TaskDao** 对象的新实例以及与 Azure Cosmos DB 的新连接，初始化该任务对象，然后将窗体操作与 **TaskList** 控制器上的方法绑定。 
 6. 最后，保存并关闭 **app.js** 文件，我们就快完成了。
 
 ## <a name="_Toc395783181"></a>步骤 5：构建用户界面
@@ -529,7 +530,7 @@ ms.lasthandoff: 04/18/2017
     > [!TIP]
     > 如果收到有关 layout.jade 文件或 index.jade 文件的缩进错误，请确保这两个文件中的头两行都已经左对齐，没有空格。 如果头两行之前留有空格，请删除这些空格，将这两个文件保存，然后刷新浏览器窗口。 
 
-2. 使用“项”、“项名”和“类别”字段输入新任务，然后单击“添加项”。 这样就会在 DocumentDB 中创建具有这些属性的文档。 
+2. 使用“项”、“项名”和“类别”字段输入新任务，然后单击“添加项”。 这将在 Azure Cosmos DB 中创建具有这些属性的文档。 
 3. 页面应更新为在 ToDo 列表中显示新建项。
    
     ![ToDo 列表中具有新的项的应用程序屏幕截图](./media/documentdb-nodejs-application/image19.png)
@@ -538,7 +539,7 @@ ms.lasthandoff: 04/18/2017
 5. 若要停止应用程序，可在终端窗口中按 CTRL+C 并单击“Y”终止批处理作业。
 
 ## <a name="_Toc395783182"></a>步骤 7：将应用程序开发项目部署到 Azure 网站
-1. 如果尚未部署，则启用 Azure 网站的 git 存储库。 可以在 [Local Git Deployment to Azure App Service](../app-service-web/app-service-deploy-local-git.md) （从本地 GIT 部署到 Azure App Service）主题中找到如何执行此操作的说明。
+1. 如果尚未部署，则启用 Azure 网站的 git 存储库。 可以在 [Local Git Deployment to Azure 应用服务](../app-service-web/app-service-deploy-local-git.md) （从本地 GIT 部署到 Azure 应用服务）主题中找到如何执行此操作的说明。
 2. 将 Azure 网站添加为 git 远程。
    
         git remote add azure https://username@your-azure-website.scm.azurewebsites.net:443/your-azure-website.git
@@ -547,16 +548,16 @@ ms.lasthandoff: 04/18/2017
         git push azure master
 4. 在几秒钟内，git 将完成 Web 应用程序发布并启动浏览器，你可从中查看在 Azure 中运行的简单作品！
 
-    祝贺你！ 你刚使用 Azure DocumentDB 构建第一个 Node.js Express Web 应用程序并将其发布到了 Azure 网站。
+    祝贺你！ 你刚才构建了第一个使用 Azure Cosmos DB 的 Node.js Express Web 应用程序并将其发布到了 Azure 网站。
 
     若需下载或参考本教程的完整参考应用程序，可从 [GitHub][GitHub] 下载。
 
 ## <a name="_Toc395637775"></a>后续步骤
 
-* 想要使用 DocumentDB 执行规模和性能测试？ 请参阅 [Performance and Scale Testing with Azure DocumentDB](documentdb-performance-testing.md)
-* 了解如何 [监视 DocumentDB 帐户](documentdb-monitor-accounts.md)。
+* 希望使用 Azure Cosmos DB 执行规模和性能测试？ 请参阅[使用 Azure Cosmos DB 执行规模和性能测试](documentdb-performance-testing.md)
+* 了解如何[监视 Azure Cosmos DB 帐户](documentdb-monitor-accounts.md)。
 * 在 [Query Playground](https://www.documentdb.com/sql/demo)中对示例数据集运行查询。
-* 浏览 [DocumentDB 文档](https://docs.microsoft.com/en-us/azure/documentdb/)。
+* 浏览 [Azure Cosmos DB 文档](https://docs.microsoft.com/azure/documentdb/)。
 
 [Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/

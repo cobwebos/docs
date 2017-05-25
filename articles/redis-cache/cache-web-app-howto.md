@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/27/2017
+ms.date: 05/09/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 076a85b7b965f163255e919eb61700aef0d1fc18
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f23f71cc01eccf17d36885f786de9a7517606803
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -190,7 +191,7 @@ ms.lasthandoff: 04/06/2017
 
     ```xml
     <connectionStrings>
-        <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
+        <add name="TeamContext" connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
     </connectionStrings>
     ```
 
@@ -203,10 +204,13 @@ ms.lasthandoff: 04/06/2017
         <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
       </configSections>
       <connectionStrings>
-        <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
+        <add name="TeamContext" connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
       </connectionStrings>
       ...
       ```
+
+    > [!NOTE]
+    > 你的连接字符串可能不同，具体取决于用来完成教程的 Visual Studio 和 SQL Server Express 版的版本。 web.config 模板应当配置为与你的安装相匹配，并且可以包含诸如 `(LocalDB)\v11.0`（来自 SQL Server Express 2012）或 `Data Source=(LocalDB)\MSSQLLocalDB`（来自 SQL Server Express 2014 和更高版本）的 `Data Source` 条目。 有关连接字符串和 SQL Express 版本的详细信息，请参阅 [SQL Server 2016 Express LocalDB](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-2016-express-localdb)。
 
 ### <a name="add-the-controller"></a>添加控制器
 1. 按“F6”  生成项目。 
@@ -337,7 +341,7 @@ ms.lasthandoff: 04/06/2017
    * 之前： `<appSettings>`
    * 之后： ` <appSettings file="C:\AppSecrets\WebAppPlusCacheAppSecrets.config">`
      
-   ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中的标记。 如果找不到指定的文件，运行时将忽略文件属性。 应用程序的源代码中将不包括你的机密（连接到缓存的连接字符串）。 将 Web 应用部署到 Azure 时，不会部署 `WebAppPlusCacheAppSecrests.config` 文件（这正是您所需要的）。 可以通过多种方式在 Azure 中指定这些机密，而在本教程中，当您在后续的教程步骤中 [预配 Azure 资源](#provision-the-azure-resources) 时，系统将为您自动配置这些机密。 有关如何在 Azure 中处理密钥的详细信息，请参阅 [将密码和其他敏感数据部署到 ASP.NET 和 Azure App Service 的最佳做法](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)。
+   ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中的标记。 如果找不到指定的文件，运行时将忽略文件属性。 应用程序的源代码中将不包括你的机密（连接到缓存的连接字符串）。 将 Web 应用部署到 Azure 时，不会部署 `WebAppPlusCacheAppSecrests.config` 文件（这正是您所需要的）。 可以通过多种方式在 Azure 中指定这些机密，而在本教程中，当您在后续的教程步骤中 [预配 Azure 资源](#provision-the-azure-resources) 时，系统将为您自动配置这些机密。 有关如何在 Azure 中处理密钥的详细信息，请参阅 [将密码和其他敏感数据部署到 ASP.NET 和 Azure 应用服务的最佳做法](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)。
 
 ### <a name="update-the-teamscontroller-class-to-return-results-from-the-cache-or-the-database"></a>更新 TeamsController 类，以便从缓存或数据库返回结果
 在此示例中，团队统计信息可以从数据库或缓存中检索。 团队统计信息以序列化 `List<Team>`的形式存储在缓存中，同时以排序集的形式按 Redis 数据类型存储。 从排序集检索项目时，可以检索部分项目或所有项目，也可以查询特定项目。 在此示例中，你将按胜利数在排序集中查询排名前 5 的团队。
@@ -698,7 +702,7 @@ ms.lasthandoff: 04/06/2017
 ## <a name="provision-the-azure-resources"></a>预配 Azure 资源
 若要在 Azure 中托管应用程序，必须先预配应用程序所需的 Azure 服务。 本教程中的示例应用程序使用以下 Azure 服务。
 
-* Azure Redis Cache
+* Azure Redis 缓存
 * 应用服务 Web 应用
 * SQL 数据库
 
@@ -736,7 +740,7 @@ ms.lasthandoff: 04/06/2017
 预配完成后，即可将你的应用程序从 Visual Studio 发布到 Azure。
 
 > [!NOTE]
-> 预配期间可能出现的任何错误都会显示在“ **Microsoft.Template** ”边栏选项卡上。 常见错误有：每个订阅的 SQL 服务器太多或免费 App Service 托管计划太多。 解决所有错误，然后单击“Microsoft.Template”边栏选项卡上的“重新部署”或本教程中的“部署到 Azure”按钮，重新启动此过程。
+> 预配期间可能出现的任何错误都会显示在“ **Microsoft.Template** ”边栏选项卡上。 常见错误有：每个订阅的 SQL 服务器太多或免费应用服务托管计划太多。 解决所有错误，然后单击“Microsoft.Template”边栏选项卡上的“重新部署”或本教程中的“部署到 Azure”按钮，重新启动此过程。
 > 
 > 
 
@@ -823,7 +827,7 @@ ms.lasthandoff: 04/06/2017
 * 有关在应用服务中创建 ASP.NET Web 应用的更多示例，请从 [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [演示](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)参阅[在 Azure 应用服务中创建和部署 ASP.NET Web 应用](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service)。
   * 有关 HealthClinic.biz 演示的多个快速入门，请参阅 [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)（Azure 开发人员工具快速入门）。
 * 详细了解 [对新数据库使用 Code First](https://msdn.microsoft.com/data/jj193542) 中介绍的本教程所用实体框架需要的方法。
-* 详细了解 [Azure App Service 中的 Web 应用](../app-service-web/app-service-web-overview.md)。
+* 详细了解 [Azure 应用服务中的 Web 应用](../app-service-web/app-service-web-overview.md)。
 * 了解如何在 Azure 门户中 [监视](cache-how-to-monitor.md) 缓存。
 * 了解 Azure Redis 缓存高级功能
   
