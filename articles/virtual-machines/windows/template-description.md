@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b011f51e7b5aa921c43c906fb36fa3020a2dc7e6
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 907e5b80aeeee4ab2eb0466490ba9ef9b0348144
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -460,5 +461,5 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 - 参考[创作 Azure Resource Manager 模板](../../resource-group-authoring-templates.md)创建自己的模板。
 - 参考[使用 Resource Manager 模板创建 Windows 虚拟机](ps-template.md)部署创建的模板。
-- 查看[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](ps-manage.md)，了解如何管理创建的 VM。
+- 通过查看[使用 Azure PowerShell 模块创建和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何管理创建的 VM。
 

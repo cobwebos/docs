@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 03/062/2016
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 64babace9ec5aa61acb396edf86f889e96a52c71
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c9376b95e4686f804d34f648e15cfcc0f2847718
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---

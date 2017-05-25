@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 存储中设置和检索对象的属性和元数据 | Microsoft Docs"
-description: "在 Azure 存储空间中存储对象的自定义元数据，并设置和检索系统属性。"
+title: "在 Azure 存储中设置和检索对象属性和元数据 | Microsoft Docs"
+description: "在 Azure 存储中存储对象的自定义元数据，并设置和检索系统属性。"
 services: storage
 documentationcenter: 
 author: mmacy
@@ -12,21 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/15/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 3868d36948342739eb78b013bb4b466df4381b4f
-ms.openlocfilehash: 7c1ca950c3ab1b8ffb754a74597d45b82777838c
-ms.lasthandoff: 02/15/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 6af66607478c58874f00bcf017a35abfc37888df
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>设置和检索属性与元数据
-## <a name="overview"></a>概述
-Azure 存储中的对象支持系统属性和用户定义的元数据，除了该数据以外，它们还包含：
 
-* **系统属性。** 系统属性存在于每个存储资源上。 其中一些属性是可以读取或设置的，而另一些属性是只读的。 事实上，有些系统属性与某些标准 HTTP 标头对应。 Azure 存储客户端库为您维护这些内容。
-* **用户定义的元数据。** 用户定义的元数据是在给定资源上以名称/值对的形式指定的元数据。 您可以使用元数据来存储存储资源其他值；这些值仅用于您个人目的，不会影响资源的行为方式。
+Azure 存储中的对象支持系统属性和用户定义的元数据，除了该数据以外，它们还包含： 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)管理系统属性和用户定义元数据。
+
+* **系统属性**：系统属性存在于每个存储资源上。 其中一些属性是可以读取或设置的，而另一些属性是只读的。 事实上，有些系统属性与某些标准 HTTP 标头对应。 Azure 存储客户端库为您维护这些内容。
+
+* **用户定义的元数据**：用户定义的元数据是在给定资源上以名称/值对的形式指定的元数据。 可以使用元数据存储存储资源的其他值。 这些其他元数据值仅用于你自己的目的，并不会影响资源的行为方式。
 
 检索资源的属性和元数据值的过程分为两步。 必须先调用 **FetchAttributes** 方法显式获取这些值，才能读取它们。
 
@@ -41,7 +42,7 @@ Azure 存储中的对象支持系统属性和用户定义的元数据，除了�
 
 若要在对象上设置属性，请指定属性值，然后调用 **SetProperties** 方法。
 
-以下代码示例创建容器并将它的一些属性值写入到控制台窗口：
+以下代码示例创建容器，然后将它的一些属性值写入到控制台窗口。
 
 ```csharp
 //Parse the connection string for the storage account.
@@ -105,8 +106,7 @@ public static void ListContainerMetadata(CloudBlobContainer container)
 }
 ```
 
-## <a name="see-also"></a>另请参阅
-* [适用于 .NET 的 Azure 存储客户端库参考](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
-* [适用于 .NET 包的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
-
+## <a name="next-steps"></a>后续步骤
+* [适用于 .NET 的 Azure 存储客户端库参考](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
+* [适用于 .NET NuGet 包的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 

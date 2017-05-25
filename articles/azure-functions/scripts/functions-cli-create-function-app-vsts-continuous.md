@@ -6,12 +6,13 @@ keywords:
 author: syntaxc4
 ms.author: cfowler
 ms.date: 04/28/2017
-ms.topic: functions
+ms.topic: sample
+ms.service: functions
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0ed5d2292180a1831255d45c13f4195120370c34
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 8e5d8bdf61746d3bda5acc7bed97b164c311a3c3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 # <a name="create-an-app-service"></a>创建应用服务
@@ -25,7 +26,9 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[主要](../../../cli_scripts/azure-functions/deploy-function-app-with-function-vsts/deploy-function-app-with-function-vsts.sh?highlight=3-4 "Azure 服务")]
+此示例创建 Azure Function app 并从 Visual Studio Team Services 部署函数代码。
+
+[!code-azurecli-interactive[主要](../../../cli_scripts/azure-functions/deploy-function-app-with-function-vsts/deploy-function-app-with-function-vsts.sh?highlight=3-4 "Azure 服务")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -45,3 +48,4 @@ ms.lasthandoff: 05/10/2017
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 
 可以在 [Azure Functions 文档](../functions-cli-samples.md)中找到其他 Azure Functions CLI 脚本示例。
+

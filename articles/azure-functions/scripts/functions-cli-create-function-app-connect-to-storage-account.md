@@ -1,6 +1,6 @@
 ---
-title: "创建用于连接到 Azure DocumentDB 的 Azure Function | Microsoft Docs"
-description: "Azure CLI 脚本示例 - 创建用于连接到 Azure DocumentDB 的 Azure Function"
+title: "创建用于连接到 Azure 存储的 Azure Function | Microsoft Docs"
+description: "Azure CLI 脚本示例 - 创建用于连接到 Azure 存储的 Azure Function"
 services: functions
 documentationcenter: functions
 author: rachelappel
@@ -10,30 +10,29 @@ tags: functions
 ms.assetid: 
 ms.service: functions
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a34793b6b16cce4031e9e871d8e3b143180593ae
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 3925c1a3d2c5a9fc3a82e8823dbdeffabeb38a3a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
-
 # <a name="integrate-function-app-into-azure-storage-account"></a>将 Function App 集成到 Azure 存储帐户中
 
-此示例脚本使用相关资源创建 Function App 和存储帐户。 
+此示例脚本创建 Function App 和存储帐户。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-## <a name="sample-script"></a>示例脚本 
+## <a name="sample-script"></a>示例脚本
 
-创建应用示例
+此示例创建 Azure Function app，并将存储连接字符串添加到应用设置。
 
-[!code-azurecli[主要](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "将 Function App 集成到 Azure 存储帐户中")]
+[!code-azurecli-interactive[主要](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "将 Function App 集成到 Azure 存储帐户中")]
 
 
 ## <a name="clean-up-deployment"></a>清理部署
@@ -59,3 +58,4 @@ ms.lasthandoff: 05/10/2017
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 
 可以在 [Azure Functions 文档](../functions-cli-samples.md)中找到其他 Azure Functions CLI 脚本示例。
+

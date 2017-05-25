@@ -13,20 +13,29 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/17/2017
+ms.date: 05/02/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 5ff735100132e8571871b41ac2309334662adb7f
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 079289f385266293ecfce7cd02b1673a774afbbe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
 # <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>如何在 Azure 中均衡 Linux 虚拟机负载以创建高可用性应用程序
-本教程介绍 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 若要查看实际运行中的负载均衡器，请生成在 3 台 Linux 虚拟机 (VM) 上运行的 Node.js 应用。
+负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 你将学习如何：
 
-可使用最新版 [Azure CLI 2.0](/cli/azure/install-azure-cli) 完成本教程中的步骤。
+> [!div class="checklist"]
+> * 创建 Azure 负载均衡器
+> * 创建负载均衡器运行状况探测
+> * 创建负载均衡器流量规则
+> * 使用 cloud-init 创建基本的 Node.js 应用
+> * 创建虚拟机并将其附加到负载均衡器
+> * 查看运行中的负载均衡器
+> * 从负载均衡器中添加和删除 VM
+
+本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 
 ## <a name="azure-load-balancer-overview"></a>Azure 负载均衡器概述
@@ -42,18 +51,18 @@ Azure 负载均衡器是位于第 4 层（TCP、UDP）的负载均衡器，通�
 
 
 ## <a name="create-azure-load-balancer"></a>创建 Azure 负载均衡器
-本部分详细介绍如何创建和配置负载均衡器的每个组件。 创建负载均衡器之前，需使用 [az group create](/cli/azure/group#create) 创建资源组。 以下示例在“westus”位置创建名为“myRGLoadBalancer”的资源组：
+本部分详细介绍如何创建和配置负载均衡器的每个组件。 创建负载均衡器之前，需使用 [az group create](/cli/azure/group#create) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroupLoadBalancer”的资源组：
 
 ```azurecli
-az group create --name myRGLoadBalancer --location westus
+az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>创建公共 IP 地址
-若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 使用 [az network public-ip create](/cli/azure/public-ip#create) 创建公共 IP 地址。 以下示例在“myRGLoadBalancer”资源组中创建名为“myPublicIP”的公共 IP 地址：
+若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 使用 [az network public-ip create](/cli/azure/public-ip#create) 创建公共 IP 地址。 以下示例在“myResourceGroupLoadBalancer”资源组中创建名为“myPublicIP”的公共 IP 地址：
 
 ```azurecli
 az network public-ip create \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --name myPublicIP
 ```
 
@@ -62,7 +71,7 @@ az network public-ip create \
 
 ```azurecli
 az network lb create \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --name myLoadBalancer \
     --frontend-ip-name myFrontEndPool \
     --backend-pool-name myBackEndPool \
@@ -78,7 +87,7 @@ az network lb create \
 
 ```azurecli
 az network lb probe create \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
@@ -92,7 +101,7 @@ az network lb probe create \
 
 ```azurecli
 az network lb rule create \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --lb-name myLoadBalancer \
     --name myLoadBalancerRule \
     --protocol tcp \
@@ -112,7 +121,7 @@ az network lb rule create \
 
 ```azurecli
 az network vnet create \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --name myVnet \
     --subnet-name mySubnet
 ```
@@ -121,7 +130,7 @@ az network vnet create \
 
 ```azurecli
 az network nsg create \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --name myNetworkSecurityGroup
 ```
 
@@ -129,7 +138,7 @@ az network nsg create \
 
 ```azurecli
 az network nsg rule create \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --nsg-name myNetworkSecurityGroup \
     --name myNetworkSecurityGroupRule \
     --priority 1001 \
@@ -142,7 +151,7 @@ az network nsg rule create \
 ```bash
 for i in `seq 1 3`; do
     az network nic create \
-        --resource-group myRGLoadBalancer \
+        --resource-group myResourceGroupLoadBalancer \
         --name myNic$i \
         --vnet-name myVnet \
         --subnet mySubnet \
@@ -206,7 +215,7 @@ runcmd:
 
 ```azurecli
 az vm availability-set create \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --name myAvailabilitySet \
     --platform-fault-domain-count 3 \
     --platform-update-domain-count 2
@@ -217,7 +226,7 @@ az vm availability-set create \
 ```bash
 for i in `seq 1 3`; do
     az vm create \
-        --resource-group myRGLoadBalancer \
+        --resource-group myResourceGroupLoadBalancer \
         --name myVM$i \
         --availability-set myAvailabilitySet \
         --nics myNic$i \
@@ -237,7 +246,7 @@ done
 
 ```azurecli
 az network public-ip show \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --name myPublicIP \
     --query [ipAddress] \
     --output tsv
@@ -258,7 +267,7 @@ az network public-ip show \
 
 ```azurecli
 az network nic ip-config address-pool remove \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --nic-name myNic2 \
     --ip-config-name ipConfig1 \
     --lb-name myLoadBalancer \
@@ -272,7 +281,7 @@ az network nic ip-config address-pool remove \
 
 ```azurecli
 az network nic ip-config address-pool add \
-    --resource-group myRGLoadBalancer \
+    --resource-group myResourceGroupLoadBalancer \
     --nic-name myNic2 \
     --ip-config-name ipConfig1 \
     --lb-name myLoadBalancer \
@@ -281,7 +290,19 @@ az network nic ip-config address-pool add \
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已了解如何为虚拟机创建负载均衡器。 请转到下一教程，深入了解 Azure 虚拟网络组件。
+在本教程中，已创建负载均衡器并已将 VM 附加到它。 你已了解如何：
 
-[管理 VM 网络](tutorial-virtual-network.md)
+> [!div class="checklist"]
+> * 创建 Azure 负载均衡器
+> * 创建负载均衡器运行状况探测
+> * 创建负载均衡器流量规则
+> * 使用 cloud-init 创建基本的 Node.js 应用
+> * 创建虚拟机并将其附加到负载均衡器
+> * 查看运行中的负载均衡器
+> * 从负载均衡器中添加和删除 VM
+
+请转到下一教程，深入了解 Azure 虚拟网络组件。
+
+> [!div class="nextstepaction"]
+> [管理 VM 和虚拟网络](tutorial-virtual-network.md)
 

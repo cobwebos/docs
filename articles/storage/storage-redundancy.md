@@ -12,17 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 72e07c4fd686feee5045ef3b9a504d2ea41f8675
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 6a5ba89d8b17e0646cd8a6185da6d1094fd64d12
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 ---
 # <a name="azure-storage-replication"></a>Azure 存储复制
-始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性。 复制可在同一数据中心内或向第二个数据中心复制你的数据，具体取决于所选的复制选项。 复制可保护数据，并在发生暂时性硬件故障时保留应用程序正常运行时间。 如果数据复制到第二个数据中心，它还可以保护数据，以免主要位置发送灾难性故障。
+
+始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性。 复制可在同一数据中心内或向第二个数据中心复制你的数据，具体取决于所选的复制选项。 复制可保护数据，并在发生暂时性硬件故障时保留应用程序正常运行时间。 如果数据复制到第二个数据中心，还可以保护数据，以免主要位置发生灾难性故障。
 
 即使面临故障时，复制也可确保存储帐户满足[存储的服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/storage/)的要求。 请参阅 SLA，了解有关 Azure 存储确保持续性和可用性的信息。
 
@@ -33,21 +34,20 @@ ms.lasthandoff: 04/12/2017
 * [异地冗余存储 (GRS)](#geo-redundant-storage)
 * [读取访问异地冗余存储 (RA-GRS)](#read-access-geo-redundant-storage)
 
-创建新存储帐户时，默认选项为读取访问异地冗余存储 (RA-GRS)。
+创建存储帐户时，默认选项为读取访问异地冗余存储 (RA-GRS)。
 
 下表简要概述了 LRS、ZRS、GRS 和 RA-GRS 之间的差异，而后续章节将详细介绍每种类型的复制。
 
 | 复制策略 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
 | 数据在多个数据中心之间进行复制。 |否 |是 |是 |是 |
-| 可以从次要位置和主位置读取数据。 |否 |否 |否 |是 |
+| 可以从辅助位置和主位置读取数据。 |否 |否 |否 |是 |
 | 在单独的节点上维护的数据副本数。 |3 |3 |6 |6 |
 
 有关不同冗余选项的定价信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 > [!NOTE]
 > 高级存储仅支持本地冗余存储 (LRS)。 有关高级存储的信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md)。
->
 >
 
 ## <a name="locally-redundant-storage"></a>本地冗余存储
@@ -61,7 +61,7 @@ LRS 是成本最低的选项，与其他选项相比，提供最小的持久性�
 
 * 提供 Azure 存储复制选项最高的最大带宽。
 * 如果应用程序存储可轻松重构的数据，则可以选择 LRS。
-* 由于数据治理需要，某些应用程序被限制为只能在一个国家/地区内复制数据。 配对的区域可以位于其他国家；请参阅 [Azure 区域](https://azure.microsoft.com/regions/)了解区域配对的信息。
+* 由于数据治理需要，某些应用程序被限制为只能在一个国家/地区内复制数据。 配对区域可以在另一个国家/地区中。 有关区域对的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。
 
 ## <a name="zone-redundant-storage"></a>区域冗余存储
 区域冗余存储空间 (ZRS) 除了存储类似于 LRS 的三个副本外，还在一个或两个区域内的数据中心之间异步复制数据，从而提供比 LRS 更高的持久性。 即使主数据中心不可用或不可恢复，存储在 ZRS 中的数据也是持久的。
@@ -140,7 +140,7 @@ LRS 是成本最低的选项，与其他选项相比，提供最小的持久性�
 * [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)
 * [有关 Azure 存储帐户](storage-create-storage-account.md)
 * [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)
-* [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)（Microsoft Azure 存储冗余选项和读取访问异地冗余存储）
-* [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储：具有高度一致性的高可用性云存储服务）
+* [Microsoft Azure Storage redundancy options and read access geo redundant storage ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)（Microsoft Azure 存储冗余选项和读取访问异地冗余存储）
+* [SOSP Paper - Azure Storage: A highly available cloud storage service with strong consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储：具有高度一致性的高可用性云存储服务）
 
 

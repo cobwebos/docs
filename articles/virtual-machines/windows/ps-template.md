@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: davidmu
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: acb8dda8819099595893f2ea65b23e76223507bd
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 67b023ccd761bc08b96c9ebda907c6451bfbe52f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -95,12 +96,12 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Templat
     DeploymentDebugLogLevel :
 
 > [!NOTE]
-> 你也可以从本地文件部署模板和参数。 有关详细信息，请参阅[对 Azure 存储空间使用 Azure PowerShell](../../storage/storage-powershell-guide-full.md)。
+> 你也可以从本地文件部署模板和参数。 有关详细信息，请参阅[对 Azure 存储使用 Azure PowerShell](../../storage/storage-powershell-guide-full.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 如果部署出现问题，后续措施是参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../../resource-manager-common-deployment-errors.md)。
 - 阅读[使用 Resource Manager 和 PowerShell 创建 Windows VM](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何使用 Azure PowerShell 创建虚拟机。
-- 查看[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何管理创建的虚拟机。
+- 通过查看[使用 Azure PowerShell 模块创建和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何管理创建的虚拟机。
 
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b53bd4d9db9c1ca030a770e56427f35204b90ab3
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: fbc5cc4a332877451867ca434db40d67ee623a0f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -44,15 +45,17 @@ ms.lasthandoff: 03/31/2017
 | [Enterprise 开发/测试](https://azure.microsoft.com/ofers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>检查 Azure 订阅
-如果不知道自己的产品 ID，可以通过 Azure 门户或帐户门户获取。
+如果不知道自己的产品 ID，可以使用以下两种方式之一通过 Azure 门户获取：  
 
-订阅产品 ID 显示在 Azure 门户的“订阅”边栏选项卡中：
+- 在“订阅”边栏选项卡上：
 
-![Azure 门户中的产品 ID 详细信息](./media/client-images/offer_id_azure_portal.png) 
+  ![Azure 门户中的产品 ID 详细信息](./media/client-images/offer-id-azure-portal.png) 
+
+- 或者，单击“计费”，然后单击订阅 ID。 产品 ID 将显示在“计费”边栏选项卡中。
 
 也可以从 Azure 帐户门户的 [订阅](http://account.windowsazure.com/Subscriptions) 选项卡查看产品 ID：
 
-![Azure 帐户门户中的产品 ID 详细信息](./media/client-images/offer_id_azure_account_portal.png) 
+![Azure 帐户门户中的产品 ID 详细信息](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>后续步骤
 现在，可以使用 [PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、[Resource Manager 模板](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或 [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) 部署 VM。

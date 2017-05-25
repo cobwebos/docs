@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure CLI 管理 Hadoop 群集 | Microsoft Docs"
-description: "如何使用 Azure CLI 管理 HDInsight 中的 Hadoop 群集"
+description: "了解如何使用 Azure 命令行接口管理 Azure HDInsight 中的 Hadoop 群集。 Azure CLI 适用于 Windows、Mac 和 Linux。"
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -9,17 +9,18 @@ tags: azure-portal
 documentationcenter: 
 ms.assetid: 4f26c79f-8540-44bd-a470-84722a9e4eca
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: e70e24951481c33525a852479c9c9647a45e71ac
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c8067e582dd7e20b4ca35771123303de6c4a4ef6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -42,7 +43,7 @@ ms.lasthandoff: 03/21/2017
         azure login
   
     有关使用工作或学校帐户进行身份验证的详细信息，请参阅 [从 Azure CLI 连接到 Azure 订阅](../xplat-cli-connect.md)。
-* 使用以下命令**切换到 Azure 资源管理器模式**：
+* 使用以下命令**切换到 Azure Resource Manager 模式**：
   
         azure config mode arm
 
@@ -50,8 +51,8 @@ ms.lasthandoff: 03/21/2017
 
     azure hdinsight cluster create -h
 
-## <a name="create-clusters"></a>创建群集
-请参阅[使用 Azure CLI 在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-azure-cli.md)。
+## <a name="create-clusters-with-the-cli"></a>使用 CLI 创建群集
+请参阅[使用 Azure CLI 在 HDInsight 中创建群集](hdinsight-hadoop-create-linux-clusters-azure-cli.md)。
 
 ## <a name="list-and-show-cluster-details"></a>列出并显示群集详细信息
 使用以下命令来列出和显示群集详细信息：
@@ -59,7 +60,7 @@ ms.lasthandoff: 03/21/2017
     azure hdinsight cluster list
     azure hdinsight cluster show <Cluster Name>
 
-![HDI.CLIListCluster][image-cli-clusterlisting]
+![群集列表的命令行视图][image-cli-clusterlisting]
 
 ## <a name="delete-clusters"></a>删除群集
 使用以下命令来删除群集：
@@ -107,5 +108,5 @@ ms.lasthandoff: 03/21/2017
 [image-cli-account-download-import]: ./media/hdinsight-administer-use-command-line/HDI.CLIAccountDownloadImport.png
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
-[image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "列出并显示群集"
+[image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/command-line-list-of-clusters.png "列出并显示群集"
 

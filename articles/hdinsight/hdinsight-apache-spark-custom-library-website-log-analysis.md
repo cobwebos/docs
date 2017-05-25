@@ -1,6 +1,6 @@
 ---
 title: "使用 Python 库分析 Azure Spark 群集中的网站日志 | Microsoft Docs"
-description: "将自定义库与 HDInsight Spark 群集配合使用以分析网站日志"
+description: "将自定义 Python 库与 HDInsight Spark 群集配合使用以分析网站日志"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -17,14 +17,14 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 3f5b7409c5245ee975b0208f812668a0c35ff1c3
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: d55005ecea7ba6b31c638af3d26c44932e3d12bc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/18/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="analyze-website-logs-using-a-custom-library-with-apache-spark-cluster-on-hdinsight"></a>将自定义库与 HDInsight 上的 Apache Spark 群集配合使用来分析网站日志
+# <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>将自定义 Python 库与 HDInsight 上的 Spark 群集配合使用来分析网站日志
 
 此笔记本演示如何将自定义库与 HDInsight 上的 Spark 配合使用来分析网站日志数据。 我们使用的自定义库是一个名为 **iislogparser.py** 的 Python 库。
 
@@ -57,10 +57,10 @@ ms.lasthandoff: 03/18/2017
    >
 3. 创建新的笔记本。 单击“新建”，然后单击“PySpark”。
 
-    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdispark.note.jupyter.createnotebook.png "创建新的 Jupyter 笔记本")
+    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "创建新的 Jupyter 笔记本")
 4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
 
-    ![提供笔记本的名称](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdispark.note.jupyter.notebook.name.png "提供笔记本的名称")
+    ![提供笔记本的名称](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "提供笔记本的名称")
 5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。
 
         from pyspark.sql import Row
@@ -188,7 +188,7 @@ ms.lasthandoff: 03/18/2017
 
    应该会显示如下输出：
 
-   ![SQL 查询输出](./media/hdinsight-apache-spark-custom-library-website-log-analysis/sql.output.png "SQL 查询输出")
+   ![SQL 查询输出](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL 查询输出")
 
    有关 `%%sql` magic 的详细信息，请参阅 [%%sql magic 支持的参数](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
 7. 现在可以使用 Matplotlib（用于构造数据可视化的库）来创建绘图。 因为必须从本地保存的 **averagetime** 数据帧中创建绘图，所以代码片段必须以 `%%local` magic 开头。 这可确保代码在 Jupyter 服务器上本地运行。
@@ -203,7 +203,7 @@ ms.lasthandoff: 03/18/2017
 
    应该会显示如下输出：
 
-   ![Matplotlib 输出](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdi-apache-spark-web-log-analysis-plot.png "Matplotlib 输出")
+   ![Matplotlib 输出](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib 输出")
 8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这将会关闭笔记本。
 
 ## <a name="seealso"></a>另请参阅

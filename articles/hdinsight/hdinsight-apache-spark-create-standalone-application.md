@@ -1,5 +1,5 @@
 ---
-title: "创建要在 Azure Spark 群集上运行的 Scala Maven 应用程序 | Microsoft Docs"
+title: "创建要在 Azure HDInsight Spark 群集上运行的 Scala 应用程序 | Microsoft Docs"
 description: "了解如何使用 Maven 创建要在 HDInsight Spark 群集中运行的独立 Spark 应用程序。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: c435e8ec21b568afcadaa1af95964753d36d0ccb
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 3cc921bdd6c9b374bda7bbfc3781f7a1327ae438
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -66,7 +66,7 @@ ms.lasthandoff: 04/06/2017
    * 指定“项目 SDK”。 单击“新建”并导航到 Java 安装目录，通常是 `C:\Program Files\Java\jdk1.8.0_66`。
    * 选择“从原型创建”选项。
    * 从原型列表中，选择“org.scala-tools.archetypes:scala-archetype-simple”。 这将创建适当的目录结构，并下载所需的默认依赖项来编写 Scala 程序。
-2. 提供 **GroupId**、**ArtifactId** 和 **Version** 的相关值。 单机“下一步”
+2. 提供 **GroupId**、**ArtifactId** 和 **Version** 的相关值。 单击“下一步”。
 3. 在下一个对话框中（在其中指定 Maven 主目录和其他用户设置），接受默认值，然后单击“下一步”。
 4. 在最后一个对话框中，指定项目名称和位置，然后单击“完成”。
 5. 删除位于 **src\test\scala\com\microsoft\spark\example** 的 **MySpec.Scala** 文件。 应用程序不需要此文件。
