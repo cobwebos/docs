@@ -46,7 +46,7 @@ ACU：180 - 240
 
 ACU：210 - 250
 
-| 大小 | CPU 核心数 | 内存：GiB | 本地 SSD：GiB | 最大数据磁盘数 | 缓存磁盘最大吞吐量：IOPS / MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大网卡数/网络带宽等级 |
+| 大小 | CPU 核心数 | 内存：GiB | 本地 SSD：GiB | 最大数据磁盘数 | 缓存和本地磁盘的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大网卡数/网络带宽等级 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2 |2 |14 |28 |4 |8,000 / 64 (72) |6,400 / 96 |2/高 |
 | Standard_DS12_v2 |4 |28 |56 |8 |16,000 / 128 (144) |12,800 / 192 |4/高 |
@@ -58,7 +58,7 @@ MBps = 每秒 10^6 字节，GiB = 1024^3 字节。
 
 *DSv2 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/storage/storage-premium-storage.md)。
 
-**某些区域为 Standard_DS15_v2 大小提供加速网络。 有关使用情况和可用性的详细信息，请参阅 [Accelerated Networking is in Preview](https://azure.microsoft.com/updates/accelerated-networking-in-preview/)（加速网络已推出预览版）和[虚拟机的加速网络](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md)。
+**某些区域为 Standard_DS15_v2 大小提供加速网络。 有关使用情况和可用性的详细信息，请参阅 [Accelerated Networking is in Preview](https://azure.microsoft.com/updates/accelerated-networking-in-preview/)（加速网络已推出预览版）和[虚拟机的加速网络](../articles/virtual-network/virtual-network-create-vm-accelerated-networking.md)。
 
 ***实例对于专用于单个客户的硬件独立。
 <br>
@@ -78,7 +78,7 @@ ACU：210 - 250
 | Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 32/32x500                       | 8/极高           |
 | Standard_D15_v2** | 20        | 140         | 1,000          | 60000/937/468                                        | 40/40x500                       | 8/极高*          |
 
-*某些区域为 Standard_D15_v2 大小提供加速网络。 有关使用情况和可用性的详细信息，请参阅 [Accelerated Networking is in Preview](https://azure.microsoft.com/updates/accelerated-networking-in-preview/)（加速网络已推出预览版）和[虚拟机的加速网络](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md)。
+*某些区域为 Standard_D15_v2 大小提供加速网络。 有关使用情况和可用性的详细信息，请参阅 [Accelerated Networking is in Preview](https://azure.microsoft.com/updates/accelerated-networking-in-preview/)（加速网络已推出预览版）和[虚拟机的加速网络](../articles/virtual-network/virtual-network-create-vm-accelerated-networking.md)。
 
 **实例对于专用于单个客户的硬件独立。
 
@@ -88,7 +88,7 @@ ACU：210 - 250
 
 ACU：160
 
-| 大小 | CPU 核心数 | 内存：GiB | 本地 SSD：GiB | 最大数据磁盘数 | 缓存磁盘最大吞吐量：IOPS / MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大网卡数/网络带宽等级 |
+| 大小 | CPU 核心数 | 内存：GiB | 本地 SSD：GiB | 最大数据磁盘数 | 缓存和本地磁盘的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大网卡数/网络带宽等级 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11 |2 |14 |28 |4 |8,000 / 64 (72) |6,400 / 64 |2/高 |
 | Standard_DS12 |4 |28 |56 |8 |16,000 / 128 (144) |12,800 / 128 |4/高 |
