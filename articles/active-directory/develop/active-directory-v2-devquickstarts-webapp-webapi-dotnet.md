@@ -14,9 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
 ms.openlocfilehash: c6cca8fda4ba6a26d5ee74b43e0bae37639865c5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -198,10 +201,5 @@ catch (MsalException ee)
 
 ## <a name="get-security-updates-for-our-products"></a>获取关于我们产品的安全更新
 建议发生安全事件时获取相关通知，方法是访问 [此页](https://technet.microsoft.com/security/dd252948) 并订阅“安全公告通知”。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

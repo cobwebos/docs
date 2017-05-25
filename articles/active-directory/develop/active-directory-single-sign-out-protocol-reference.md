@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: priyamo
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
 ms.openlocfilehash: 7be96ed59a148f7c622551eaa66279a94e2c83f1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -72,8 +75,3 @@ Azure AD 将此值设为 `https://login.microsoftonline.com/<TenantIdGUID>/`，�
 
 ### <a name="status"></a>状态
 Azure AD 使用 `Status` 元素中的 `StatusCode` 元素指示注销的成功或失败。 如果注销尝试失败，`StatusCode` 元素值还包含自定义错误消息。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

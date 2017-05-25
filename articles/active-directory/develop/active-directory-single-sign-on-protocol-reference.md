@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: priyamo
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
 ms.openlocfilehash: 12370f2c3367b69217d17228723b26b6a14d09ce
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -269,8 +272,3 @@ Azure AD 为断言签名以响应成功登录。 `Signature` 元素包含数字�
       </AuthnContext>
 </AuthnStatement>
 ```
-
-
-<!--HONumber=Feb17_HO2-->
-
-

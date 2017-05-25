@@ -14,9 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
 ms.author: mbaldwin
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 06d8cb3ce2fe4419a79a63b76d67cc476d205e08
 ms.openlocfilehash: 4e8c8539fdcab348aa91644baafae217bd5e863a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -130,9 +133,4 @@ ms.openlocfilehash: 4e8c8539fdcab348aa91644baafae217bd5e863a
 [Azure AD 图形 API 概念和参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 
 [Azure AD 图形 API 帮助程序库](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
