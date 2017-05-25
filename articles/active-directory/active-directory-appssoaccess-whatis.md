@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 05/23/2017
 ms.author: asmalser
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
 ms.openlocfilehash: cb41fbd7ca931df52ba8e5304459bb04298a108c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -204,9 +206,4 @@ Azure AD 还为支持基于密码单一登录、现有单一登录以及任何�
 [4]: ./media/active-directory-appssoaccess-whatis/officeapphub.png
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

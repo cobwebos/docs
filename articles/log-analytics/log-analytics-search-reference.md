@@ -3,7 +3,7 @@ title: "Azure Log Analytics 搜索参考 | Microsoft 文档"
 description: "Log Analytics 搜索参考介绍搜索语言并提供常规查询语法选项，可用于搜索数据和筛选表达式，以帮助缩小搜索范围。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: bwren
 manager: carmonm
 editor: 
 ms.assetid: 402615a2-bed0-4831-ba69-53be49059718
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
-ms.author: banders
+ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
@@ -613,7 +613,7 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | me
 
 ### <a name="join"></a>Join
 联接两个查询的结果，组成一个结果集。  支持下表所述的多种联接类型。
-  
+
 | 联接类型 | 说明 |
 |:--|:--|
 | 内部 | 只返回两个查询中值相匹配的记录。 |

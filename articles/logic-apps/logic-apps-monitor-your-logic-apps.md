@@ -12,16 +12,17 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: jehollan
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.date: 10/18/2016
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
 ms.openlocfilehash: d6840be7afc05d8d563215e370c59cf41a206e4f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
 
-
 ---
+
 # <a name="check-the-performance-and-start-diagnostic-logging-and-alerts-of-your-workflows-in-logic-apps"></a>在逻辑应用中检查性能并启动对工作流的日志记录和警报
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)之后，可以在 Azure 门户中查看其执行的完整历史记录。  还可以设置服务（如 Azure 诊断和 Azure 警报）以实时监视事件，以及针对“一小时内运行失败次数超过 5 次”的事件发出警报。
 

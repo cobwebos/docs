@@ -3,7 +3,7 @@ title: "在 Azure Log Analytics 中使用适用于 IIS 的 blob 存储和适用�
 description: "Log Analytics 可以读取将诊断写入到表存储或将 IIS 日志写入到 Blob 存储的 Azure 服务的日志。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
 ms.openlocfilehash: b40d7c0acd8cc6a672f25489b745561c24501482
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/28/2017
 
 

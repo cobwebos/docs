@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
-ms.author: estfan
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7884032fd4b5a72ca7e2f2dc2830b0a7c2220e94
 ms.openlocfilehash: 5d8ddd4449d3b160dbca7496c801e75dcf4a44e5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -58,11 +60,11 @@ ms.openlocfilehash: 5d8ddd4449d3b160dbca7496c801e75dcf4a44e5
 
 **确定此访问级别**
 
-1.  打开 **Azure 存储资源管理器**。 
+1.    打开 **Azure 存储资源管理器**。 
 
-2.  在“Blob 容器”下，选择所需的 blob 容器。 
+2.    在“Blob 容器”下，选择所需的 blob 容器。 
 
-3.  选择“安全性”、“访问级别”。
+3.    选择“安全性”、“访问级别”。
 
 如果 blob 安全访问级别为“公共”，请按下列步骤操作。
 
@@ -132,10 +134,5 @@ Azure 会显示一条消息，指示该架构已成功上载。
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "Learn about the enterprise integration pack")。  
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

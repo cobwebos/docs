@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2016
-ms.author: estfan
-translationtype: Human Translation
+ms.author: LADocs
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8dd90542440322e6d57406cd950fa0a13bd4fe1d
 ms.openlocfilehash: 1068b5bd5f2c86de0c82f5a96cb2718645c0a3d3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -76,9 +78,4 @@ ms.openlocfilehash: 1068b5bd5f2c86de0c82f5a96cb2718645c0a3d3
 
 ## <a name="next-steps"></a>后续步骤
 * [创建 AS2 协议](logic-apps-enterprise-integration-as2.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
