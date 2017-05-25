@@ -1,28 +1,29 @@
 ---
-title: "使用 DocumentDB 的 Java 应用程序开发教程 | Microsoft 文档"
-description: "此 Java Web 应用程序教程演示了如何使用 Azure DocumentDB 服务存储和访问托管在 Azure 网站上的 Java 应用程序中的数据。"
+title: "使用 Azure Cosmos DB 的 Java 应用程序开发教程 | Microsoft Docs"
+description: "本 Java Web 应用程序教程展示了如何使用 Azure Cosmos DB 服务从 Azure 网站上托管的 Java 应用程序来存储和访问数据。"
 keywords: "应用程序开发、数据库教程、Java 应用程序、Java Web 应用程序教程、documentdb、Azure、Microsoft Azure"
-services: documentdb
+services: cosmosdb
 documentationcenter: java
 author: dennyglee
 manager: jhubbard
 editor: mimig
 ms.assetid: 0867a4a2-4bf5-4898-a1f4-44e3868f8725
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 11/16/2016
 ms.author: denlee
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 6e315ea33fe4a493f1ab349482f9af3a732b3127
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a9ba49cb52fee446b7bffaa1579995f2cd095ead
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="build-a-java-web-application-using-documentdb"></a>使用 DocumentDB 生成一个 Java Web 应用程序
+# <a name="build-a-java-web-application-using-azure-cosmos-db"></a>构建使用 Azure Cosmos DB 的 Java Web 应用程序
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
 > * [适用于 MongoDB 的 .NET](documentdb-mongodb-application.md)
@@ -32,12 +33,12 @@ ms.lasthandoff: 04/18/2017
 > 
 > 
 
-此 Java Web 应用程序教程演示了如何使用 [Microsoft Azure DocumentDB](https://portal.azure.com/#gallery/Microsoft.DocumentDB) 服务存储和访问托管在 Azure 网站上的 Java 应用程序中的数据。 本主题介绍以下内容：
+本 Java Web 应用程序教程展示了如何使用 [Microsoft Azure Cosmos DB](https://portal.azure.com/#gallery/Microsoft.Azure Cosmos DB) 服务从 Azure 网站上托管的 Java 应用程序来存储和访问数据。 本主题介绍以下内容：
 
 * 如何在 Eclipse 中构建基本 JSP 应用程序。
-* 如何借助 [DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java)来使用 Azure DocumentDB 服务。
+* 如何使用 [Azure Cosmos DB Java SDK](https://github.com/Azure/azure-documentdb-java) 来处理 Azure Cosmos DB 服务。
 
-此 Java 应用程序教程演示了如何创建一个基于 web 的任务管理应用程序，你可以使用此应用程序创建、检索任务，以及将任务标记为已完成，如下图所示。 在 Azure DocumentDB 中，ToDo 列表中的每个任务都存储为 JSON 文档。
+此 Java 应用程序教程演示了如何创建一个基于 web 的任务管理应用程序，你可以使用此应用程序创建、检索任务，以及将任务标记为已完成，如下图所示。 ToDo 列表中的每个任务都存储为 Azure Cosmos DB 中的 JSON 文档。
 
 ![我的 ToDo 列表 Java 应用程序](./media/documentdb-java-application/image1.png)
 
@@ -53,15 +54,15 @@ ms.lasthandoff: 04/18/2017
 
     或
 
-    本地安装的 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)。
+    本地安装的 [Azure Cosmos DB 模拟器](documentdb-nosql-local-emulator.md)。
 * [Java 开发工具包 (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
 * [已启用 Java 运行时环境（例如 Tomcat 或 Jetty）的 Azure 网站。](../app-service-web/web-sites-java-get-started.md)
 
 如果你是首次安装这些工具，那么你可以参考 coreservlets.com 网站的 [教程：安装 TomCat7 并将其与 Eclipse 一起使用](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) 文章的 Quick Start 部分提供的安装过程演练。
 
-## <a id="CreateDB"></a>步骤 1：创建 DocumentDB 数据库帐户
-让我们首先创建 DocumentDB 帐户。 如果已有一个帐户，或者要在本教程中使用 DocumentDB Emulator，可以跳到[步骤 2：创建 Java JSP 应用程序](#CreateJSP)。
+## <a id="CreateDB"></a>步骤 1：创建 Azure Cosmos DB 数据库帐户
+让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建 Java JSP 应用程序](#CreateJSP)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -116,7 +117,7 @@ ms.lasthandoff: 04/18/2017
 6. 单击“确定”  ，Maven 将安装 DocumentDB Java SDK。
 7. 保存 pom.xml 文件。
 
-## <a id="UseService"></a>步骤 4：在 java 应用程序中使用 DocumentDB 服务
+## <a id="UseService"></a>步骤 4：在 Java 应用程序中使用 Azure Cosmos DB 服务
 1. 首先，让我们定义 TodoItem 对象：
    
         @Data
@@ -129,7 +130,7 @@ ms.lasthandoff: 04/18/2017
         }
    
     在此项目中，我们将使用 [项目 Lombok](http://projectlombok.org/) 生成构造函数、getter、setter 和一个生成器。 或者，你可以手动编写此代码，或使用 IDE 生成此代码。
-2. 若要调用 DocumentDB 服务，则必须实例化一个新的 **DocumentClient**。 一般情况下，最好是重用 **DocumentClient** -而不是为每个后续请求构造新的客户端。 我们可以通过在 **DocumentClientFactory**中包装客户端来重用此客户端。 你还需要在此处粘贴 [步骤 1](#CreateDB)中保存到剪贴板中的 URI 和 PRIMARY KEY 值。 将 [YOUR\_ENDPOINT\_HERE] 替换为你的 URI，将 [YOUR\_KEY\_HERE] 替换为你的主密钥。
+2. 若要调用 Azure Cosmos DB 服务，必须实例化一个新的 **DocumentClient**。 一般情况下，最好是重用 **DocumentClient** -而不是为每个后续请求构造新的客户端。 我们可以通过在 **DocumentClientFactory**中包装客户端来重用此客户端。 你还需要在此处粘贴 [步骤 1](#CreateDB)中保存到剪贴板中的 URI 和 PRIMARY KEY 值。 将 [YOUR\_ENDPOINT\_HERE] 替换为你的 URI，将 [YOUR\_KEY\_HERE] 替换为你的主密钥。
    
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
         private static final String MASTER_KEY = "[YOUR_KEY_HERE]";
@@ -140,7 +141,7 @@ ms.lasthandoff: 04/18/2017
         public static DocumentClient getDocumentClient() {
             return documentClient;
         }
-3. 现在让我们来创建数据访问对象 (DAO)，将 ToDo 项保存到 DocumentDB 的过程进行抽象。
+3. 现在让我们来创建数据访问对象 (DAO)，将 ToDo 项保存到 Azure Cosmos DB 的过程进行抽象。
    
     要将 ToDo 项保存到集合中，客户端需要知道保存到哪个数据库和集合（通过自链接引用） 通常，如果可能的话最好缓存数据库和集合，以避免额外的往返访问数据库。
    
@@ -153,7 +154,7 @@ ms.lasthandoff: 04/18/2017
             // The name of our collection.
             private static final String COLLECTION_ID = "TodoCollection";
    
-            // The DocumentDB Client
+            // The Azure Cosmos DB Client
             private static DocumentClient documentClient = DocumentClientFactory
                     .getDocumentClient();
    
@@ -257,7 +258,7 @@ ms.lasthandoff: 04/18/2017
    
             return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
         }
-5. 和 DocumentDB 数据库和集合一样，文档也是通过自链接来引用。 以下帮助器函数可以让我们通过另一个属性（例如“id”）来检索文档，而不是自链接：
+5. 与 Azure Cosmos DB 数据库和集合一样，文档也是通过自链接来引用。 以下帮助器函数可以让我们通过另一个属性（例如“id”）来检索文档，而不是自链接：
    
         private Document getDocumentById(String id) {
             // Retrieve the document using the DocumentClient.
@@ -334,7 +335,7 @@ ms.lasthandoff: 04/18/2017
    
         @Override
         public boolean deleteTodoItem(String id) {
-            // DocumentDB refers to documents by self link rather than id.
+            // Azure Cosmos DB refers to documents by self link rather than id.
    
             // Query for the document to retrieve the self link.
             Document todoItemDocument = getDocumentById(id);
@@ -464,7 +465,7 @@ ms.lasthandoff: 04/18/2017
         <head>
           <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
           <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
-          <title>Azure DocumentDB Java Sample</title>
+          <title>Azure Cosmos DB Java Sample</title>
    
           <!-- Bootstrap -->
           <link href="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -748,7 +749,7 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 7. 在“分支选择”屏幕上，确保已选择“master”，然后单击“下一步”。
 8. 在“本地目标”屏幕上，单击“浏览”选择要将存储库复制到的文件夹，然后单击“下一步”。
 9. 在“选择要用于导入项目的向导”屏幕上，确保已选择“导入现有项目”，然后单击“下一步”。
-10. 在“导入项目”屏幕上，取消选择“DocumentDB”项目，然后单击“完成”。 DocumentDB 项目包含 DocumentDB Java SDK，我们会将其添加为依赖项。
+10. 在“导入项目”屏幕上，取消选择“Azure Cosmos DB”项目，然后单击“完成”。 Azure Cosmos DB 项目包含 Azure Cosmos DB Java SDK，我们会将其添加为依赖项。
 11. 在“项目资源管理器”中，导航到 azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java，并将 HOST 和 MASTER_KEY 值替换为 DocumentDB 帐户的 URI 和主密钥，然后保存该文件。 有关更多信息，请参阅[步骤 1.创建一个 DocumentDB 数据库帐户](#CreateDB)。
 12. 在“项目资源管理器”中，右键单击“azure-documentdb-java-sample”，单击“生成路径”，然后单击“配置生成路径”。
 13. 在“Java 生成路径”屏幕上，在右侧窗格中，选择“库”选项卡，然后单击“添加外部 JAR”。 导航至 lombok.jar 文件的位置，单击“打开”，然后单击“确定”。

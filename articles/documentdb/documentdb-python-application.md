@@ -1,14 +1,14 @@
 ---
-title: "适用于 Azure DocumentDB 的 Python Flask Web 应用程序教程 | Microsoft 文档"
-description: "查看使用 DocumentDB 来存储和访问托管于 Azure 的 Python Flask Web 应用程序的数据的数据库教程。 查找应用程序开发解决方案。"
+title: "适用于 Azure Cosmos DB 的 Python Flask Web 应用程序教程 | Microsoft Docs"
+description: "查看一个数据库教程，其中介绍了使用 Azure Cosmos DB 从 Azure 上托管的 Python Flask Web 应用程序来存储和访问数据。 查找应用程序开发解决方案。"
 keywords: "应用程序开发, Python Flask, Python Web 应用程序, Python Web 开发"
-services: documentdb
+services: cosmosdb
 documentationcenter: python
 author: syamkmsft
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 20ebec18-67c2-4988-a760-be7c30cfb745
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: python
@@ -16,14 +16,15 @@ ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: syamk
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 4f05075efea0f0fd8ca4424f771d3991a65c6d67
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 68b3fd109291551294b58b3cda75fd6a9619b4b4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="build-a-python-flask-web-application-using-documentdb"></a>使用 DocumentDB 生成 Python Flask Web 应用程序
+# <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>构建使用 Azure Cosmos DB 的 Python Flask Web 应用程序
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
 > * [适用于 MongoDB 的 .NET](documentdb-mongodb-application.md)
@@ -33,13 +34,13 @@ ms.lasthandoff: 04/18/2017
 > 
 > 
 
-本教程演示了如何使用 Azure DocumentDB 来存储和访问托管于 Azure 的 Python Web 应用程序的数据，并假定你之前有过一些使用 Python 和 Azure 网站的经验。
+本教程演示了如何使用 Azure Cosmos DB 从 Azure 上托管的 Python Web 应用程序来存储和访问数据，并假定你之前有过一些使用 Python 和 Azure 网站的经验。
 
 本数据库教程涵盖以下内容：
 
-1. 创建和预配 DocumentDB 帐户。
+1. 创建并预配 Cosmos DB 帐户。
 2. 创建 Python MVC 应用程序。
-3. 从 Web 应用程序连接和使用 Azure DocumentDB。
+3. 从 Web 应用程序连接并使用 Cosmos DB。
 4. 将 Web 应用程序部署到 Azure 网站。
 
 通过学习本教程，你将可以构建一个可对轮询进行投票的简单投票应用程序。
@@ -53,7 +54,7 @@ ms.lasthandoff: 04/18/2017
  
     或 
 
-    本地安装的 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)。
+    本地安装的 [Azure Cosmos DB 模拟器](documentdb-nosql-local-emulator.md)。
 * [Visual Studio 2013](http://www.visualstudio.com/) 或更高版本，或者免费版 [Visual Studio Express]()。 本教程中的说明专为 Visual Studio 2015 所编写。 
 * 来自 [GitHub](http://microsoft.github.io/PTVS/)的 Python Tools for Visual Studio。 本教程使用的是 Python Tools for VS 2015。 
 * 2.4 版或更高版本 Azure Python SDK for Visual Studio 在 [azure.com](https://azure.microsoft.com/downloads/)上提供。 我们使用的是 Microsoft Azure SDK for Python 2.7。
@@ -68,8 +69,8 @@ ms.lasthandoff: 04/18/2017
 
 * 来自 [Microsoft 下载中心][3]的Microsoft Visual C++ Compiler for Python 2.7。
 
-## <a name="step-1-create-a-documentdb-database-account"></a>步骤 1：创建一个 DocumentDB 数据库帐户
-让我们首先创建 DocumentDB 帐户。 如果已有一个帐户，或者要在本教程中使用 DocumentDB Emulator，可以跳到[步骤 2：创建新的 Python Flask 应用程序](#step-2:-create-a-new-python-flask-web-application)。
+## <a name="step-1-create-an-azure-cosmos-db-database-account"></a>步骤 1：创建 Azure Cosmos DB 数据库帐户
+让我们首先创建一个 Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Python Flask 应用程序](#step-2:-create-a-new-python-flask-web-application)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -155,7 +156,7 @@ class VoteForm(Form):
 
 ### <a name="add-the-required-imports-to-viewspy"></a>将所需的导入添加到 views.py 中
 1. 在“解决方案资源管理器”中，展开 **tutorial** 文件夹并打开 **views.py** 文件。 
-2. 将以下导入语句添加到 **views.py** 文件的顶部，然后保存该文件。 这些语句将导入 DocumentDB 的 PythonSDK 和 Flask 包。
+2. 将以下导入语句添加到 **views.py** 文件的顶部，然后保存该文件。 这些语句将导入 Cosmos DB 的 PythonSDK 和 Flask 包。
    
     ```python
     from forms import VoteForm
@@ -202,7 +203,7 @@ def create():
 ```
 
 > [!TIP]
-> **CreateCollection** 方法采用可选的 **RequestOptions** 作为第三个参数。 这可以用于指定集合的产品/服务类型。 如果没有提供任何 offerType 值，则将使用默认的产品/服务类型创建集合。 有关 DocumentDB 产品/服务类型的详细信息，请参阅 [DocumentDB 中的性能级别](documentdb-performance-levels.md)。
+> **CreateCollection** 方法采用可选的 **RequestOptions** 作为第三个参数。 这可以用于指定集合的产品/服务类型。 如果没有提供任何 offerType 值，则将使用默认的产品/服务类型创建集合。 有关 Cosmos DB 产品/服务类型的详细信息，请参阅 [Azure Cosmos DB 中的性能级别](documentdb-performance-levels.md)。
 > 
 > 
 
@@ -314,7 +315,7 @@ def vote():
     ```html
     {% extends "layout.html" %}
     {% block content %}
-    <h2>Python + DocumentDB Voting Application.</h2>
+    <h2>Python + Azure Cosmos DB Voting Application.</h2>
     <h3>This is a sample DocumentDB voting application using PyDocumentDB</h3>
     <p><a href="{{ url_for('create') }}" class="btn btn-primary btn-large">Create/Clear the Voting Database &raquo;</a></p>
     <p><a href="{{ url_for('vote') }}" class="btn btn-primary btn-large">Vote &raquo;</a></p>
@@ -336,7 +337,7 @@ def vote():
     DOCUMENTDB_COLLECTION = 'voting collection'
     DOCUMENTDB_DOCUMENT = 'voting document'
     ```
-3. 在 [Azure 门户](https://portal.azure.com/)中，单击“浏览”、“DocumentDB 帐户”导航到“密钥”边栏选项卡，双击要使用的帐户名，然后单击“概要”区域中的“密钥”按钮。 在“密钥”边栏选项卡中，复制“URI”值并将其粘贴到 **config.py** 文件中，作为 **DOCUMENTDB\_HOST** 属性的值。 
+3. 在 [Azure 门户](https://portal.azure.com/)中，单击“浏览”、“Azure Cosmos DB 帐户”导航到“密钥”边栏选项卡，双击要使用的帐户名，然后单击“概要”区域中的“密钥”按钮。 在“密钥”边栏选项卡中，复制“URI”值并将其粘贴到 **config.py** 文件中，作为 **DOCUMENTDB\_HOST** 属性的值。 
 4. 返回到 Azure 门户，在“密钥”边栏选项卡中，复制“主密钥”或“辅助密钥”的值，并将其粘贴到 **config.py** 文件，作为 **DOCUMENTDB\_KEY** 属性的值。
 5. 在 **\_\_init\_\_.py** 文件中添加以下行。 
    
@@ -358,7 +359,7 @@ def vote():
 1. 按 **Ctrl**+**Shift**+**B** 生成解决方案。
 2. 生成成功后，按 **F5**启动网站。 你应会在屏幕上看到以下内容：
    
-    ![在 Web 浏览器中显示的 Python + DocumentDB 投票应用程序的屏幕截图](./media/documentdb-python-application/image16.png)
+    ![在 Web 浏览器中显示的 Python + Azure Cosmos DB 投票应用程序的屏幕截图](./media/documentdb-python-application/image16.png)
 3. 单击“创建/清除投票数据库”  以生成数据库。
    
     ![Web 应用程序 – 开发详细信息的创建页面的屏幕截图](./media/documentdb-python-application/image17.png)
@@ -371,17 +372,17 @@ def vote():
 6. 按 Shift+F5 停止调试该项目。
 
 ## <a name="step-5-deploy-the-web-application-to-azure-websites"></a>步骤 5：将 Web 应用程序部署到 Azure 网站
-现在，你拥有了针对 DocumentDB 正常工作的完整应用程序，我们打算将其部署到 Azure 网站。
+现在，你拥有了针对 Cosmos DB 正常工作的完整应用程序，我们打算将其部署到 Azure 网站。
 
 1. 右键单击解决方案资源管理器中的项目（确保不再在本地运行它），然后选择“发布” 。  
    
      ![解决方案资源管理器中选中的教程的屏幕截图，其中突出显示了“发布”选项](./media/documentdb-python-application/image20.png)
 2. 在“发布 Web”窗口中，选择“Microsoft Azure Web 应用”，然后单击“下一步”。
    
-    ![“发布 Web 窗口”的屏幕截图，其中突出显示了 Microsoft Azure Web Apps](./media/documentdb-python-application/image21.png)
+    ![“发布 Web 窗口”的屏幕截图，其中突出显示了 Microsoft Azure Web 应用](./media/documentdb-python-application/image21.png)
 3. 在“Microsoft Azure Web 应用窗口”窗口中，单击“新建”。
    
-    ![“Microsoft Azure Web Apps 窗口”窗口的屏幕截图](./media/documentdb-python-application/select-existing-website.png)
+    ![“Microsoft Azure Web 应用窗口”窗口的屏幕截图](./media/documentdb-python-application/select-existing-website.png)
 4. 在“在 Microsoft Azure 上创建站点”窗口中，输入“Web 应用名称”、“应用服务计划”、“资源组”和“区域”，然后单击“创建”。
    
     ![Microsoft Azure 窗口上“创建”站点的屏幕截图](./media/documentdb-python-application/create-site-on-microsoft-azure.png)
@@ -398,7 +399,7 @@ def vote():
 如果在投票页上收到了错误，并且已将项目命名为 **tutorial** 以外的名称，请确保 **\_\_init\_\_.py** 引用以下行中正确的项目名称：`import tutorial.view`。
 
 ## <a name="next-steps"></a>后续步骤
-祝贺你！ 你刚使用 Azure DocumentDB 完成了第一个 Python Web 应用程序并将其发布到了 Azure 网站。
+祝贺你！ 你刚才完成了你的第一个使用 Cosmos DB 的 Python Web 应用程序并将其发布到了 Azure 网站。
 
 我们将根据反馈经常更新并改进此主题。  完成该教程后，请使用此页面上顶部和底部的投票按钮，并确保包括有关你想要看到的改进的反馈意见。 如果你希望我们直接与你联系，欢迎将你的电子邮件地址附在评论中。
 

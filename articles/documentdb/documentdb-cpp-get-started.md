@@ -1,27 +1,28 @@
 ---
-title: "DocumentDB 的 NoSQL C++ 教程 | Microsoft 文档"
-description: "本 NoSQL C++ 教程使用 DocumentDB 认可的 C++ SDK 创建 C++ 数据库和控制台应用程序。 DocumentDB 是全球规模的 NoSQL 数据库服务。"
-services: documentdb
+title: "适用于 Azure Cosmos DB 的 C++ 教程 | Microsoft Docs"
+description: "本 C++ 教程使用 Azure Cosmos DB 认可的 C++ SDK 创建 C++ 数据库和控制台应用程序。 Azure Cosmos DB 是全球规模的数据库服务。"
+services: cosmosdb
 documentationcenter: cpp
 author: asthana86
 manager: jhubbard
 editor: 
 ms.assetid: b8756b60-8d41-4231-ba4f-6cfcfe3b4bab
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: hero-article
 ms.date: 12/25/2016
 ms.author: aasthan
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 78c3da6fd83a6fca0351a90846d10acd82924be3
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 17cf6de0256983f383a417573d02fddd81ccd104
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="nosql-c-tutorial-documentdb-c-console-application"></a>NoSQL C++ 教程：DocumentDB C++ 控制台应用程序
+# <a name="azure-cosmos-db-c-console-application-tutorial-for-the-documentdb-api"></a>Azure Cosmos DB：适用于 DocumentDB API 的 C++ 控制台应用程序教程
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -33,19 +34,19 @@ ms.lasthandoff: 04/18/2017
 > 
  
 
-欢迎学习 DocumentDB 认可的 C++ SDK 的 C++ 教程！ 完成本教程后，将会获得一个可以创建并查询 DocumentDB 资源（包括 C++ 数据库）的控制台应用程序。
+欢迎使用 Azure Cosmos DB DocumentDB API 认可的 C++ SDK 的 C++ 教程！ 完成本教程后，你将获得一个可以创建并查询 Azure Cosmos DB 资源（包括 C++ 数据库）的控制台应用程序。
 
 我们将介绍：
 
-* 创建并连接到 DocumentDB 帐户
+* 创建并连接到 Azure Cosmos DB 帐户
 * 设置应用程序
-* 创建 C++ DocumentDB 数据库
+* 创建 C++ Azure Cosmos DB 数据库
 * 创建集合
 * 创建 JSON 文档
 * 查询集合
 * 替换文档
 * 删除文档
-* 删除 C++ DocumentDB 数据库
+* 删除 C++ Azure Cosmos DB 数据库
 
 没有时间？ 不必担心！ 可在 [GitHub](https://github.com/stalker314314/DocumentDBCpp)上获取完整的解决方案。 有关快速说明，请参阅 [Get the complete solution](#GetSolution) （获取完整解决方案）。
 
@@ -61,8 +62,8 @@ ms.lasthandoff: 04/18/2017
 * 有效的 Azure 帐户。 如果你没有，可以注册 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * [Visual Studio](https://www.visualstudio.com/downloads/)，其中已安装 C++ 语言组件。
 
-## <a name="step-1-create-a-documentdb-account"></a>第 1 步：创建 DocumentDB 帐户
-让我们创建一个 DocumentDB 帐户。 如果已有一个可以使用的帐户，可以直接跳到[设置 C++ 应用程序](#SetupNode)。
+## <a name="step-1-create-an-azure-cosmos-db-account"></a>步骤 1：创建 Azure Cosmos DB 帐户
+让我们创建一个 Azure Cosmos DB 帐户。 如果已有一个可以使用的帐户，可以直接跳到[设置 C++ 应用程序](#SetupNode)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -81,12 +82,12 @@ ms.lasthandoff: 04/18/2017
    
     将包添加到项目后，可以开始编写一些代码。   
 
-## <a id="Config"></a>步骤 3：从 Azure 门户复制 DocumentDB 数据库的连接详细信息
-打开 [Azure 门户](https://portal.azure.com)，浏览到所创建的 NoSQL (DocumentDB) 数据库帐户。 在下一步骤中，需要使用 Azure 门户中的 URI 和主密钥从 C++ 代码片段建立连接。 
+## <a id="Config"></a>步骤 3：从 Azure 门户复制 Azure Cosmos DB 数据库的连接详细信息
+打开 [Azure 门户](https://portal.azure.com)，浏览到你创建的 Azure Cosmos DB 数据库帐户。 在下一步骤中，需要使用 Azure 门户中的 URI 和主密钥从 C++ 代码片段建立连接。 
 
-![Azure 门户中的 DocumentDB URI 和密钥](media/documentdb-cpp-get-started/nosql-tutorial-keys.png)
+![Azure 门户中的 Azure Cosmos DB URI 和密钥](media/documentdb-cpp-get-started/nosql-tutorial-keys.png)
 
-## <a id="Connect"></a>步骤 4：连接到 DocumentDB 帐户
+## <a id="Connect"></a>步骤 4：连接到 Azure Cosmos DB 帐户
 1. 在源代码中的 `#include "stdafx.h"` 后面添加以下标头和命名空间。
    
         #include <cpprest/json.h>
@@ -97,15 +98,15 @@ ms.lasthandoff: 04/18/2017
         using namespace documentdb;
         using namespace std;
         using namespace web::json;
-2. 接下来，将以下代码添加到 main 函数，并根据步骤 3 中的 DocumentDB 设置替换帐户配置和主密钥。 
+2. 接下来，将以下代码添加到 main 函数，并根据步骤 3 中的 Azure Cosmos DB 设置替换帐户配置和主密钥。 
    
         DocumentDBConfiguration conf (L"<account_configuration_uri>", L"<primary_key>");
         DocumentClient client (conf);
    
-    现已获得用于初始化 documentdb 客户端的代码，接下来让我们看看如何使用 DocumentDB 资源。
+    现已获得用于初始化 documentdb 客户端的代码，接下来让我们看看如何使用 Azure Cosmos DB 资源。
 
 ## <a id="CreateDBColl"></a>步骤 5：创建 C++ 数据库和集合
-在执行此步骤之前，让我们针对 DocumentDB 的新手回顾一下数据库、集合与文档之间的交互方式。 [数据库](documentdb-resources.md#databases)是跨集合分区的文档存储的逻辑容器。 [集合](documentdb-resources.md#collections)是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。 可以在 [DocumentDB 分层资源模型和概念](documentdb-resources.md)中了解 DocumentDB 分层资源模型和概念。
+在执行此步骤之前，让我们为 Azure Cosmos DB 的新手回顾一下数据库、集合与文档之间的交互方式。 [数据库](documentdb-resources.md#databases)是跨集合分区的文档存储的逻辑容器。 [集合](documentdb-resources.md#collections)是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。 可以在 [Azure Cosmos DB 分层资源模型和概念](documentdb-resources.md)中详细了解 Azure Cosmos DB 分层资源模型和概念。
 
 若要创建数据库和相应的集合，请将以下代码添加到 main 函数的末尾。 这会使用上一步骤中声明的客户端配置创建名为“FamilyRegistry”的数据库和名为“FamilyCollection”的集合。
 
@@ -118,7 +119,7 @@ ms.lasthandoff: 04/18/2017
 
 
 ## <a id="CreateDoc"></a>步骤 6：创建文档
-[文档](documentdb-resources.md#documents)是用户定义的（任意）JSON 内容。 现在，你可以将文档插入 DocumentDB。 将以下代码复制到 main 函数的末尾即可创建文档。 
+[文档](documentdb-resources.md#documents)是用户定义的（任意）JSON 内容。 现在，你可以将文档插入 Azure Cosmos DB 中。 将以下代码复制到 main 函数的末尾即可创建文档。 
 
     try {
       value document_family;
@@ -135,12 +136,12 @@ ms.lasthandoff: 04/18/2017
       wcout << ex.message();
     }
 
-总而言之，此代码将创建可在 Azure 门户中使用文档资源管理器查询的 DocumentDB 数据库、集合与文档。 
+总而言之，此代码将创建可在 Azure 门户中使用文档资源管理器查询的 Azure Cosmos DB 数据库、集合与文档。 
 
 ![C++ 教程 - 演示帐户、数据库、集合和文档之间的层次关系的示意图](media/documentdb-cpp-get-started/documentdbdocs.png)
 
-## <a id="QueryDB"></a>步骤 7：查询 DocumentDB 资源
-DocumentDB 支持对存储在每个集合中的 JSON 文档进行各种 [查询](documentdb-sql-query.md) 。 以下示例代码演示了一个使用 DocumentDB SQL 语法生成的查询，可以针对上一步骤中创建的文档运行该查询。
+## <a id="QueryDB"></a>步骤 7：查询 Azure Cosmos DB 资源
+Azure Cosmos DB 支持对存储在每个集合中的 JSON 文档进行[各种查询](documentdb-sql-query.md)。 以下示例代码演示了一个使用  SQL 语法生成的查询，可以针对上一步骤中创建的文档运行该查询。
 
 函数将会提取数据库、集合以及文档客户端的唯一标识符或资源 ID 作为参数。 请在 main 函数的前面添加此代码。
 
@@ -171,7 +172,7 @@ DocumentDB 支持对存储在每个集合中的 JSON 文档进行各种 [查询]
     }
 
 ## <a id="Replace"></a>步骤 8：替换文档
-DocumentDB 支持替换 JSON 文档，如以下代码中所示。 请 executesimplequery 函数的后面添加此代码。
+Azure Cosmos DB 支持替换 JSON 文档，如以下代码中所示。 请 executesimplequery 函数的后面添加此代码。
 
     void replacedocument(const DocumentClient &client, const wstring dbresourceid,
                          const wstring collresourceid,
@@ -191,7 +192,7 @@ DocumentDB 支持替换 JSON 文档，如以下代码中所示。 请 executesim
     }
 
 ## <a id="Delete"></a>步骤 9：删除文档
-DocumentDB 支持删除 JSON 文档，为此，可以复制以下代码并将其粘贴到 replacedocument 函数的后面。 
+Azure Cosmos DB 支持删除 JSON 文档，为此，可以复制以下代码并将其粘贴到 replacedocument 函数的后面。 
 
     void deletedocument(const DocumentClient &client, const wstring dbresourceid,
                         const wstring collresourceid, const wstring docresourceid) {
@@ -219,7 +220,7 @@ DocumentDB 支持删除 JSON 文档，为此，可以复制以下代码并将其
     }
 
 ## <a id="Run"></a>步骤 11：运行整个 C++ 应用程序！
-现在，我们已添加了用于创建、查询、修改和删除不同 DocumentDB 资源的代码。  接下来，让我们从 hellodocumentdb.cpp 中的 main 函数添加对这些不同函数的调用，配合一些诊断消息来运行整个应用程序。
+现在，我们已添加了用于创建、查询、修改和删除不同 Azure Cosmos DB 资源的代码。  接下来，让我们从 hellodocumentdb.cpp 中的 main 函数添加对这些不同函数的调用，配合一些诊断消息来运行整个应用程序。
 
 为此，可将应用程序的 main 函数替换为以下代码。 这会覆写在执行步骤 3 时复制到代码中的 account_configuration_uri 和 primary_key，因此，请保存该代码行，或者再次从门户中复制值。 
 
@@ -274,20 +275,20 @@ DocumentDB 支持删除 JSON 文档，为此，可以复制以下代码并将其
 
 你应该看到已启动应用的输出。 输出应与以下屏幕截图相符。
 
-![DocumentDB C++ 应用程序输出](media/documentdb-cpp-get-started/docdbconsole.png)
+![Azure Cosmos DB C++ 应用程序输出](media/documentdb-cpp-get-started/docdbconsole.png)
 
-祝贺你！ 现已完成 C++ 教程并已创建了第一个 DocumentDB 控制台应用程序！
+祝贺你！ 你已完成了 C++ 教程并创建了你的第一个 Azure Cosmos DB 控制台应用程序！
 
 ## <a id="GetSolution"></a>获取完整的 C++ 教程解决方案
 若要生成包含本文所有示例的 GetStarted 解决方案，需要做好以下准备：
 
-* [DocumentDB 帐户][documentdb-create-account]。
+* [Azure Cosmos DB 帐户][documentdb-create-account]。
 * GitHub 上提供的 [GetStarted](https://github.com/stalker314314/DocumentDBCpp) 解决方案。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何 [监视 DocumentDB 帐户](documentdb-monitor-accounts.md)。
+* 了解如何[监视 Azure Cosmos DB 帐户](documentdb-monitor-accounts.md)。
 * 在 [Query Playground](https://www.documentdb.com/sql/demo)中对示例数据集运行查询。
-* 在 [DocumentDB 文档页](https://azure.microsoft.com/documentation/services/documentdb/)的“Develop”（开发）部分中了解有关编程模型的详细信息。
+* 在 [Azure Cosmos DB 文档页](https://azure.microsoft.com/documentation/services/documentdb/)的“Develop”（开发）部分中了解有关编程模型的详细信息。
 
 [documentdb-create-account]: documentdb-create-account.md
 
