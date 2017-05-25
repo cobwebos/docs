@@ -1,6 +1,6 @@
 ---
 title: "Azure 搜索中的索引器 | Microsoft Docs"
-description: "对 Azure SQL 数据库、DocumentDB 或 Azure 存储爬网，提取可搜索的数据并填充 Azure 搜索索引。"
+description: "对 Azure SQL 数据库、Azure Cosmos DB 或 Azure 存储爬网，提取可搜索的数据并填充 Azure 搜索索引。"
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 4bcd31a200024a182ee3d5a21bcbcb621fed595f
-ms.openlocfilehash: fd46641709d260f8b468556972aae14205fdb515
-ms.lasthandoff: 01/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 52b154895fca9fc465a9c6cc2fb6bf2d5384b057
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -28,9 +29,9 @@ ms.lasthandoff: 01/19/2017
 > * [概述](search-indexer-overview.md)
 > * [门户](search-import-data-portal.md)
 > * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-> * [DocumentDB](search-howto-index-documentdb.md)
-> * [Blob 存储（预览版）](search-howto-indexing-azure-blob-storage.md)
-> * [表存储（预览版）](search-howto-indexing-azure-tables.md)
+> * [Azure Cosmos DB](search-howto-index-documentdb.md)
+> * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
+> * [Azure 表存储](search-howto-indexing-azure-tables.md)
 >
 >
 
@@ -41,7 +42,7 @@ Azure 搜索中的 **索引器** 是一种爬网程序，它从外部数据源�
 可以按需运行索引器，也可以采用每 15 分钟运行一次的定期数据刷新计划来运行索引器。 要进行更频繁的更新，则需要采用“推送模式”，便于同时更新 Azure 搜索和外部数据源中的数据。
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>创建及管理索引器的方法
-对于普遍可用的索引器（如 Azure SQL 或 DocumentDB），可以采用以下方法来创建和管理索引器：
+对于普遍可用的索引器（如 Azure SQL 或 Azure Cosmos DB），可以采用以下方法来创建和管理索引器：
 
 * [门户 > 导入数据向导](search-get-started-portal.md)
 * [服务 REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
@@ -57,7 +58,7 @@ Azure 搜索中的 **索引器** 是一种爬网程序，它从外部数据源�
 索引器从保存信息的 **数据源** （如连接字符串）拉取数据。 当前支持以下数据源：
 
 * [Azure SQL 数据库或 Azure 虚拟机上的 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-documentdb.md)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，用于提取 PDF、Office 文档、HTML 或 XML 中的文本
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 
@@ -70,9 +71,9 @@ Azure 搜索中的 **索引器** 是一种爬网程序，它从外部数据源�
 了解基本概念后，下一步是查看每种数据源特定的要求和任务。
 
 * [Azure SQL 数据库或 Azure 虚拟机上的 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-documentdb.md)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，用于提取 PDF、Office 文档、HTML 或 XML 中的文本
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
-* [使用 Azure 搜索 Blob 索引器（预览版）索引 CSV blob](search-howto-index-csv-blobs.md)
-* [使用 Azure 搜索 Blob 索引器（预览版）索引 JSON blob](search-howto-index-json-blobs.md)
+* [使用 Azure 搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)
+* [使用 Azure 搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)
 
