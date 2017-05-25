@@ -16,11 +16,12 @@ ms.topic: get-started-article
 ms.date: 04/06/2017
 ms.author: magoedte
 ROBOTS: NOINDEX
-redirect_url: /azure/automation/automation-offering-get-started
+redirect_url: /azure/automation/
 redirect_document_id: TRUE
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 90570886b3a1ae0c48683691cb438b5a61195d76
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 

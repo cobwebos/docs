@@ -3,7 +3,7 @@ title: "使用 OMS 网关将计算机连接到 OMS | Microsoft Docs"
 description: "使用 OMS 网关连接 OMS 管理的设备和 Operations Manager 监视的计算机，以便将数据发送到无法访问 Internet 的 OMS 服务。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
-ms.author: magoedte;banders
-translationtype: Human Translation
+ms.author: magoedte
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: ce2f9311775389366c66323070254f721f0896ab
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/22/2017
 
 ---
@@ -57,7 +58,7 @@ OMS 网关支持：
 * Windows 10、Windows 8.1 和 Windows 7
 * Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 和 Windows Server 2008
 * .Net Framework 4.5
-* 4 核处理器，8 GB 内存（最低要求） 
+* 4 核处理器，8 GB 内存（最低要求）
 
 ### <a name="language-availability"></a>语言可用性
 
@@ -102,7 +103,7 @@ OMS 网关提供了以下语言：
 若要安装网关，请执行以下步骤。  如果以前已安装某个版本（前称 *Log Analytics Forwarder*），该版本将升级到此版本。  
 
 1. 在目标文件夹中，双击“OMS Gateway.msi”。
-2. 在“欢迎”页面上，单击“下一步”。<br><br> ![网关安装向导](./media/log-analytics-oms-gateway/gateway-wizard01.png)<br> 
+2. 在“欢迎”页面上，单击“下一步”。<br><br> ![网关安装向导](./media/log-analytics-oms-gateway/gateway-wizard01.png)<br>
 3. 在“许可协议”页上，选择“我接受许可协议中的条款”表示同意 EULA，然后单击“下一步”。
 4. 在“端口和代理地址”页上执行以下操作：
    1. 键入网关使用的 TCP 端口号。 安装程序将在 Windows 防火墙中配置使用此端口号的入站规则。  默认值为 8080。
@@ -114,20 +115,20 @@ OMS 网关提供了以下语言：
 7. 在“准备安装”页上，单击“安装”。 此时可能会显示“用户帐户控制”，请求提供安装权限。 在此情况下，请单击“是”。
 8. 安装完成后，单击“完成”。 可以验证该服务是否正在运行，方法是打开 services.msc 管理单元，然后检查服务列表中是否出现“OMS 网关”并且其状态为“正在运行”。<br><br> ![服务 - OMS 网关](./media/log-analytics-oms-gateway/gateway-service.png)  
 
-## <a name="configure-network-load-balancing"></a>配置网络负载均衡 
+## <a name="configure-network-load-balancing"></a>配置网络负载均衡
 可以使用 Microsoft 网络负载均衡 (NLB) 或基于硬件的负载均衡器来配置网关，使其具有高可用性。  负载均衡器通过在其节点之间重定向 OMS 代理或 Operations Manager 管理服务器请求的连接来管理流量。 如果一台网关服务器出现故障，流量将重定向到其他节点。
 
 若要了解如何设计和部署 Windows Server 2016 网络负载均衡群集，请参阅[网络负载均衡](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing)。  以下步骤介绍如何配置 Microsoft 网络负载均衡群集。  
 
 1.  使用管理帐户登录到属于 NLB 群集的 Windows 服务器。  
 2.  在服务器管理器中打开网络负载均衡管理器，单击“工具”，然后单击“网络负载均衡管理器”。
-3. 若要连接装有 Microsoft Monitoring Agent 的 OMS 网关服务器，请右键单击群集的 IP 地址，然后单击“将主机添加到群集”。<br><br> ![网络负载均衡管理器 – 将主机添加到群集](./media/log-analytics-oms-gateway/nlb02.png)<br> 
-4. 输入要连接的网关服务器的 IP 地址。<br><br> ![网络负载均衡管理器 – 将主机添加到群集：连接](./media/log-analytics-oms-gateway/nlb03.png) 
-    
+3. 若要连接装有 Microsoft Monitoring Agent 的 OMS 网关服务器，请右键单击群集的 IP 地址，然后单击“将主机添加到群集”。<br><br> ![网络负载均衡管理器 – 将主机添加到群集](./media/log-analytics-oms-gateway/nlb02.png)<br>
+4. 输入要连接的网关服务器的 IP 地址。<br><br> ![网络负载均衡管理器 – 将主机添加到群集：连接](./media/log-analytics-oms-gateway/nlb03.png)
+
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>配置 OMS 代理和 Operations Manager 管理组
 以下部分包含有关如何使用 OMS 网关配置直接连接的 OMS 代理、Operations Manager 管理组或 Azure 自动化混合 Runbook 辅助角色，使其与 OMS 通信的步骤。  
 
-若要了解有关在直接连接到 OMS 的 Windows 计算机上如何安装 OMS 代理的要求和步骤，请参阅[将 Windows 计算机连接到 OMS](log-analytics-windows-agents.md)；对于 Linux 计算机，请参阅[将 Linux 计算机连接到 OMS](log-analytics-linux-agents.md)。 
+若要了解有关在直接连接到 OMS 的 Windows 计算机上如何安装 OMS 代理的要求和步骤，请参阅[将 Windows 计算机连接到 OMS](log-analytics-windows-agents.md)；对于 Linux 计算机，请参阅[将 Linux 计算机连接到 OMS](log-analytics-linux-agents.md)。
 
 ### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>将 OMS 代理和 Operations Manager 配置为使用 OMS 网关作为代理服务器
 
@@ -146,26 +147,26 @@ OMS 网关提供了以下语言：
 > 如果未指定网关的值，会将空值推送到所有代理。
 
 
-1. 打开 Operations Manager 控制台，在“Operations Management Suite”下面单击“连接”，然后单击“配置代理服务器”。<br><br> ![Operations Manager – 配置代理服务器](./media/log-analytics-oms-gateway/scom01.png)<br> 
-2. 选择“使用代理服务器访问 Operations Management Suite”，然后键入 OMS 网关服务器的 IP 地址或 NLB 的虚拟 IP 地址。 请务必首先键入 `http://` 前缀。<br><br> ![Operations Manager – 代理服务器地址](./media/log-analytics-oms-gateway/scom02.png)<br> 
+1. 打开 Operations Manager 控制台，在“Operations Management Suite”下面单击“连接”，然后单击“配置代理服务器”。<br><br> ![Operations Manager – 配置代理服务器](./media/log-analytics-oms-gateway/scom01.png)<br>
+2. 选择“使用代理服务器访问 Operations Management Suite”，然后键入 OMS 网关服务器的 IP 地址或 NLB 的虚拟 IP 地址。 请务必首先键入 `http://` 前缀。<br><br> ![Operations Manager – 代理服务器地址](./media/log-analytics-oms-gateway/scom02.png)<br>
 3. 单击“完成” 。 Operations Manager 服务器已连接到 OMS 工作区。
 
 ### <a name="configure-operations-manager---specific-agents-use-proxy-server"></a>配置 Operations Manager - 特定的代理使用代理服务器
 在大型或复杂环境中，你可能只希望特定的服务器（或组）使用 OMS 网关服务器。  对于这些服务器，无法直接更新 Operations Manager 代理，因为此值将被管理组的全局值覆盖。  应该重写用于推送这些值的规则。
 
-> [!NOTE] 
+> [!NOTE]
 > 可以利用与此相同的配置方法在环境中使用多个 OMS 网关服务器。  例如，可能需要根据每个区域指定特定的 OMS 网关服务器。
 
 1. 打开 Operations Manager 控制台并选择“创作”工作区。  
-2. 在“创作”工作区中选择“规则”，然后单击 Operations Manager 工具栏上的“范围”按钮。 如果此按钮不可用，请确保已在“监视”窗格中选择了一个对象而不是文件夹。 “范围管理包对象”对话框显示了通用目标类、组或对象的列表。 
+2. 在“创作”工作区中选择“规则”，然后单击 Operations Manager 工具栏上的“范围”按钮。 如果此按钮不可用，请确保已在“监视”窗格中选择了一个对象而不是文件夹。 “范围管理包对象”对话框显示了通用目标类、组或对象的列表。
 3. 在“查找”字段中键入“运行状况服务”，然后从列表中选择该服务。  单击 **“确定”**。  
 4. 在 Operations 控制台工具栏上搜索规则“顾问代理设置规则”，单击“重写”，然后指向“重写规则”>“针对类的特定对象: 运行状况服务”并从列表中选择特定的对象。  或者，可以创建一个自定义组并在其中包含要将此重写应用到的服务器的运行状况服务对象，然后向该组应用该重写。
 5. 在“重写属性”对话框中，勾选“WebProxyAddress”参数旁边的“重写”列。  在“重写值”字段中，输入 OMS 网关服务器的 URL，请确保以 `http://` 前缀开头。
    >[!NOTE]
    > 不需要启用该规则，因为面向 Microsoft System Center 顾问监视服务器组的 Microsoft System Center 顾问安全引用重写管理包中包含的某个重写会自动管理该规则。
-   > 
-6. 从“选择目标管理包”列表中选择一个管理包，或单击“新建”创建新的未密封管理包。 
-7. 完成更改后，单击“确定”。 
+   >
+6. 从“选择目标管理包”列表中选择一个管理包，或单击“新建”创建新的未密封管理包。
+7. 完成更改后，单击“确定”。
 
 ### <a name="configure-for-automation-hybrid-workers"></a>配置自动化混合辅助角色
 如果在环境中使用自动化混合 Runbook 辅助角色，可遵循以下步骤，通过手动的临时解决方法将网关配置为支持这些角色。
@@ -238,7 +239,7 @@ OMS 网关提供了以下语言：
 | `Set-OMSGatewayConfig` |密钥（必需） <br> 值 |更改服务的配置 |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |获取中继（上游）代理的地址 |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |地址<br> 用户名<br> 密码 |设置中继（上游）代理的地址（和凭据） |1.设置中继代理和凭据：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2.设置不需要身份验证的中继代理：`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3.清除中继代理设置：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
-| `Get-OMSGatewayAllowedHost` | |获取当前允许的主机（仅限本地配置的允许主机，不包括自动下载的允许主机） |`Get-OMSGatewayAllowedHost` | 
+| `Get-OMSGatewayAllowedHost` | |获取当前允许的主机（仅限本地配置的允许主机，不包括自动下载的允许主机） |`Get-OMSGatewayAllowedHost` |
 | `Add-OMSGatewayAllowedHost` |主机（必需） |将主机添加到允许列表 |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |主机（必需） |从允许列表中删除主机 |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
 | `Add-OMSGatewayAllowedClientCertificate` |使用者（必需） |将客户端证书使用者添加到允许列表 |`Add-OMSGatewayAllowed`<br>`ClientCertificate` <br> `-Subject mycert` |  

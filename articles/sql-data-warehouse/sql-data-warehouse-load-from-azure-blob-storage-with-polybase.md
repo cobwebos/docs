@@ -15,9 +15,10 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
 ms.openlocfilehash: 348605fed8101cf83cbcfb559c71f34407692f7a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/24/2017
 
 
@@ -230,7 +231,7 @@ GO
 
 ### <a name="42-load-the-data-into-new-tables"></a>4.2. 将数据载入新表
 若要从 Azure Blob 存储加载数据并将其保存到数据库中的某个表内，请使用 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 使用 CTAS 加载可以利用刚刚创建的强类型化外部表。若要将数据载入新表，请对每个表使用一个 [CTAS][CTAS] 语句。 
-
+ 
 CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果你选择了外部表中的所有列，新表将是外部表中的列和数据类型的副本。
 
 在此示例中，我们将以哈希分布表的形式创建维度表和事实表。 
@@ -262,7 +263,7 @@ SELECT
     s.request_id,
     r.status,
     count(distinct input_name) as nbr_files, 
-    sum(s.bytes_processed)/1024/1024 as gb_processed
+    sum(s.bytes_processed)/1024/1024/1024 as gb_processed
 FROM
     sys.dm_pdw_exec_requests r
     inner join sys.dm_pdw_dms_external_work s

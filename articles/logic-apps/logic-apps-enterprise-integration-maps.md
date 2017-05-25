@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: estfan
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7729890157900d0211b3a7ec05096ca315018875
 ms.openlocfilehash: 23d79fb83c1c4b103407c001dcafb8b1f3cfa5a7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -98,10 +100,5 @@ ms.openlocfilehash: 23d79fb83c1c4b103407c001dcafb8b1f3cfa5a7
 * [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
 * [了解有关协议的详细信息](../logic-apps/logic-apps-enterprise-integration-agreements.md "了解企业集成协议")  
 * [了解有关转换的详细信息](logic-apps-enterprise-integration-transform.md "了解企业集成转换")  
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

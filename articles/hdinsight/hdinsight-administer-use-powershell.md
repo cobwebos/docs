@@ -16,9 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
 ms.openlocfilehash: af9e0b7c0f7077b8d4e20ccafdc1fb4e1eb58505
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
 
 
@@ -43,7 +44,7 @@ Azure PowerShell 是一个功能强大的脚本编写环境，可用于在 Azure
 
     Get-Module *azure*
 
-若要卸载旧版本，请运行控制面板中的“程序和功能”。 
+若要卸载旧版本，请运行控制面板中的“程序和功能”。
 
 ## <a name="create-clusters"></a>创建群集
 请参阅[使用 Azure PowerShell 在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -72,40 +73,40 @@ Azure PowerShell 是一个功能强大的脚本编写环境，可用于在 Azure
 
 > [!NOTE]
 > 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果你不确定群集的版本，可以查看“属性”页。  请参阅[列出和显示群集](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。
-> 
-> 
+>
+>
 
 更改 HDInsight 支持的每种类型的群集所用数据节点数的影响：
 
 * Hadoop
-  
+
     你可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 你还可以在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
-  
+
     减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 这会导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，你可以在操作完成后重新提交这些作业。
 * HBase
-  
+
     你可以顺利地在 HBase 群集运行时对其添加或删除节点。 在完成缩放操作后的几分钟内，区域服务器就能自动平衡。 不过，也可以手动平衡区域服务器，方法是登录到群集的头节点，然后在命令提示符窗口中运行以下命令：
-  
+
         >pushd %HBASE_HOME%\bin
         >hbase shell
         >balancer
 * Storm
-  
+
     你可以顺利地在 Storm 群集运行时对其添加或删除数据节点。 但是，在缩放操作成功完成后，你需要重新平衡拓扑。
-  
+
     可以使用两种方法来完成重新平衡操作：
-  
+
   * Storm Web UI
   * 命令行界面 (CLI) 工具
-    
+
     有关详细信息，请参阅 [Apache Storm 文档](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
-    
+
     HDInsight 群集上提供了 Storm Web UI：
-    
-    ![hdinsight storm 缩放重新平衡](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
-    
+
+    ![hdinsight storm 缩放重新平衡](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.png)
+
     以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
-    
+
         ## Reconfigure the topology "mytopology" to use 5 worker processes,
         ## the spout "blue-spout" to use 3 executors, and
         ## the bolt "yellow-bolt" to use 10 executors
@@ -146,8 +147,8 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 > [!NOTE]
 > 授予/撤消访问权限时，你将重设群集用户的用户名和密码。
-> 
-> 
+>
+>
 
 也可以使用门户完成此操作。 请参阅[使用 Azure 门户管理 HDInsight][hdinsight-admin-portal]。
 
@@ -164,7 +165,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
     $defaultStorageAccountName = ($cluster.DefaultStorageAccount).Replace(".blob.core.windows.net", "")
     $defaultBlobContainerName = $cluster.DefaultStorageContainer
     $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName)[0].Value
-    $defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey 
+    $defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
 
 ## <a name="find-the-resource-group"></a>查找资源组
 在 Resource Manager 模式下，每个 HDInsight 群集都属于一个 Azure 资源组。  若要查找资源组：
@@ -180,7 +181,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 请参阅[在基于 Windows 的 HDInsight 中运行 Hadoop MapReduce 示例](hdinsight-run-samples.md)。
 
-**提交 Hive 作业** 
+**提交 Hive 作业**
 
 请参阅[使用 PowerShell 运行 Hive 查询](hdinsight-hadoop-use-hive-powershell.md)。
 

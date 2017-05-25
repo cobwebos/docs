@@ -141,9 +141,9 @@
     href: web-sites-deploy.md
     items:
     - name: 通过 FTP 进行部署
-      href: app-service-deploy-content-sync.md
+      href: app-service-deploy-ftp.md
     - name: 通过云同步进行部署
-      href: web-sites-deploy.md
+      href: app-service-deploy-content-sync.md
     - name: 持续部署
       href: app-service-continuous-deployment.md
     - name: 部署到过渡环境

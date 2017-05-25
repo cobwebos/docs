@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 05/23/2017
 ms.author: bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
 ms.openlocfilehash: 6e92a79c0b7ea35f110c779922255d6ddc93ed7c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -178,10 +180,5 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。 
 * 使用[自定义字段](log-analytics-custom-fields.md)将来自 syslog 记录的数据解析为单个字段。
 * [配置 Linux 代理](log-analytics-linux-agents.md)以收集其他类型的数据。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
