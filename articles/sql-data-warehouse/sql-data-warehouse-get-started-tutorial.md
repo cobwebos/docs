@@ -84,8 +84,8 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 
     **选择性能**：建议从标准的 400DWU 着手。
 
-4. 选择“固定到仪表板”
-   “固定到仪表板”**** ![](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png)
+4. 选择**“固定到仪表板”**
+    ![“固定到仪表板”](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png)
 
 5. 请稍候片刻，等待数据仓库部署完成！ 在正常情况下，完成此过程需要几分钟时间。 当数据仓库可供使用时，门户会发出通知。 
 
