@@ -38,7 +38,7 @@ Azure Active Directory 审核报告可帮助客户识别其 Azure Active Directo
 | 设置许可证属性 |已设置目录中用户的许可证属性。 |
 | 重置用户密码 |已重置目录中用户的密码。 |
 | 更改用户密码 |已更改目录中用户的密码。 |
-| 更改用户许可证 |已更改分配给目录中用户的许可证。 若要查看哪些许可证已更新，请查看下面的“更新用户”属性[](#update-user-attributes) |
+| 更改用户许可证 |已更改分配给目录中用户的许可证。 若要查看哪些许可证已更新，请查看下面的[更新用户](#update-user-attributes)属性 |
 | 更新用户 |已更新目录中的用户。 有关可更新的属性，请[参阅下文](#update-user-attributes)。 |
 | 设置强制更改用户密码 |已设置强制用户在登录时更改其密码的属性。 |
 | 更新用户凭据 |用户已更改密码 |
@@ -98,7 +98,7 @@ Azure Active Directory 审核报告可帮助客户识别其 Azure Active Directo
 | 创建活跃用户。 |已通过邀请兑换在 Azure AD 中为现有租户创建用户。 |
 | **管理单元（所有新事件）** | |
 | AddAdministrativeUnit |添加管理单元。 |
-| UpdateAdministrativeUnit |更新管理单元。 若要查看哪些管理单元属性已更新，请参阅以下部分中的“已审核管理单元属性”[](#update-administrative-unit-attributes) |
+| UpdateAdministrativeUnit |更新管理单元。 若要查看哪些管理单元属性已更新，请参阅以下部分中的[已审核管理单元属性](#update-administrative-unit-attributes) |
 | DeleteAdministrativeUnit |删除管理单元。 |
 | AddMemberToAdministrativeUnit |将成员添加到管理单元。 |
 | RemoveMemberFromAdministrativeUnit |从管理单元中删除成员。 |
@@ -108,7 +108,7 @@ Azure Active Directory 审核报告可帮助客户识别其 Azure Active Directo
 | DemotePartner |降级合作伙伴。 |
 | 将域添加到公司 |已将域添加到目录。 |
 | 从公司中删除域 |已从目录中删除域。 |
-| 更新域 |已更新目录中的域。 若要查看哪些域属性已更新，请参阅以下部分中的“已审核域属性”[](#update-domain-attributes) |
+| 更新域 |已更新目录中的域。 若要查看哪些域属性已更新，请参阅以下部分中的[已审核域属性](#update-domain-attributes) |
 | 设置域身份验证 |已更改公司的默认域设置。 |
 | 设置公司联系信息 |已设置公司级的联系方法首选项。 这包括营销电子邮件地址，以及有关 Microsoft Online Services 的技术通知。 |
 | 在域中设置联合设置 |已更新域的联合设置。 |
@@ -125,7 +125,7 @@ Azure Active Directory 审核报告可帮助客户识别其 Azure Active Directo
 | SetDirectoryFeatureOnTenant |在租户上设置目录功能。 |
 | SetTenantLicenseProperties |设置租户许可证属性。 |
 | CreateCompanySettings |创建公司设置 |
-| UpdateCompanySettings |更新公司设置。 若要查看哪些公司属性已更新，请参阅以下部分中的“已审核公司属性”[](#update-company-attributes) |
+| UpdateCompanySettings |更新公司设置。 若要查看哪些公司属性已更新，请参阅以下部分中的[已审核公司属性](#update-company-attributes) |
 | DeleteCompanySettings |删除公司设置 |
 | SetAccidentalDeletionThreshold |设置意外删除阈值。 |
 | SetRightsManagementProperties |设置 Rights Management 属性。 |

@@ -1,6 +1,6 @@
 ---
-title: "Azure 安全中心的 Linux VM 安全性 | Microsoft Docs"
-description: "教程 - Azure 安全中心的 VM 安全性"
+title: "Azure 安全中心和 Azure 中的 Linux 虚拟机 | Microsoft Docs"
+description: "通过 Azure 安全中心了解 Azure Linux 虚拟机的安全性。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -13,80 +13,102 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/01/2017
+ms.date: 05/07/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 4c680ee63e1c2d8e858c725adc42bbcbc49e4045
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 222cb9629e50e49ce08e0737d7f2570e9187317a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
-# <a name="monitor-vm-security-with-the-azure-security-center"></a>监视 Azure 安全中心的 VM 安全性
+# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>使用 Azure 安全中心监视虚拟机安全
 
-Azure 安全中心可帮助你深入了解与安全措施相关的 Azure 资源配置。 它还提供集成的安全性监视，可以检测到可能被忽略的威胁。 本教程提供 Azure 安全中心的简要概述，并说明如何将其用于 Azure 虚拟机。   
+Azure 安全中心可帮助你深入了解 Azure 资源的安全做法。 安全中心提供了集成的安全监视功能。 它可以检测到在其他方式下可能不会注意到的风险。 本教程介绍 Azure 安全中心，以及如何执行以下操作：
+ 
+> [!div class="checklist"]
+> * 设置数据收集
+> * 设置安全策略
+> * 查看和修复配置运行状况问题
+> * 查看检测到的威胁  
 
 ## <a name="security-center-overview"></a>安全中心概述
 
-Azure 安全中心可帮助识别潜在的 VM 配置问题和目标安全威胁。 例如识别 VM 的以下问题：缺少网络安全组、磁盘未加密以及 RDP 暴力攻击。 Azure 安全中心仪表板上易于阅读的图中提供了此信息。
+安全中心可帮助识别潜在的虚拟机 (VM) 配置问题和目标安全威胁。 这可能包括缺少网络安全组的 VM、未加密的磁盘以及暴力远程桌面协议 (RDP) 攻击。 安全中心仪表板上易于阅读的图中显示了此信息。
 
-若要访问 Azure 安全中心仪表板，可单击 Azure 门户左侧导航窗格中的“安全中心”。 仪表板提供资源运行状况、安全警报和配置建议的高级视图。 在此处可以查看 Azure 环境的安全性状况、查找当前建议的计数以及查看威胁警报的当前状态。 以上每种高级图表均可以展开，其中提供关注区域的更多详细信息。
+若要访问安全中心仪表板，请在 Azure 门户中的菜单上选择**安全中心**。 在仪表板上，可以查看 Azure 环境的安全状况、查找当前建议的计数以及查看威胁警报的当前状态。 可以展开每个高级别图表来查看更多详细信息。
 
-![ASC 仪表板](./media/tutorial-azure-security/asc-dash.png)
+![安全中心仪表板](./media/tutorial-azure-security/asc-dash.png)
 
-Azure 安全中心可针对检测到的问题提供建议，功能远不止数据发现。 例如，如果部署 VM 时没有附加网络安全组，则将生成包括修正步骤的建议。 这些建议还提供修正自动执行，无需离开 Azure 安全中心环境。  
+安全中心不仅可以执行数据发现，而且还能针对它检测到的问题提供建议。 例如，如果已部署某个 VM 但未在其上附加网络安全组，安全中心将显示建议并提供可以采取的补救步骤。 无需退出安全中心的上下文即可自动完成补救。  
 
 ![建议](./media/tutorial-azure-security/recommendations.png)
 
-## <a name="configure-data-collection"></a>配置数据收集
+## <a name="set-up-data-collection"></a>设置数据收集
 
-若要深入了解 VM 安全配置，首先需要配置 Azure 安全中心数据收集。 此过程涉及启用数据收集和创建用于保存收集数据的 Azure 存储帐户。 
+若要深入了解 VM 安全配置，首先需要设置安全中心数据收集。 此过程涉及启用数据收集并创建用于保存收集数据的 Azure 存储帐户。 
 
-1. 在 Azure 安全中心仪表板中，单击“安全策略”，然后选择你的订阅。 
-2. 在“数据收集”下选择“打开”。
-3. 单击“选择存储帐户”，然后新建存储帐户。 完成后选择“确定”。
-4. 单击“安全策略”边栏选项卡上的“保存”。 
+1. 在安全中心仪表板上单击“安全策略”，然后选择你的订阅。 
+2. 选择“数据收集”对应的“打开”。
+3. 若要创建存储帐户，请选择“选择存储帐户”。 然后选择“确定”。
+4. 在“安全策略”边栏选项卡上，选择“保存”。 
 
-完成此操作后，所有虚拟机上都将安装 Azure 安全中心数据收集代理，数据收集开始。 
+然后，将在所有 VM 上安装安全中心数据收集代理并开始收集数据。 
 
-## <a name="configure-security-policy"></a>配置安全策略
+## <a name="set-up-a-security-policy"></a>设置安全策略
 
-安全策略定义安全策略项，针对这些项进行数据收集和提出建议。 默认情况下，将针对所有策略项评估 Azure 资源。 可为所有 Azure 资源全局禁用各个策略项或按资源组进行禁用。 此配置可将不同的安全策略应用到不同的 Azure 资源集。 有关 Azure 安全中心安全策略的详细信息，请参阅[在 Azure 安全中心中设置安全策略](../../security-center/security-center-policies.md)。 
+安全策略用于定义安全中心要为哪些项收集数据并提供建议。 可将不同的安全策略应用到不同的 Azure 资源集。 尽管默认情况下会针对所有策略项评估 Azure 资源，但你可以针对所有 Azure 资源或某个资源组关闭单个策略项。 有关安全中心安全策略的详细信息，请参阅[在 Azure 安全中心设置安全策略](../../security-center/security-center-policies.md)。 
 
-为所有 Azure 资源配置安全策略：
+为所有 Azure 资源设置安全策略：
 
-1. 在 Azure 安全中心仪表板中，单击“安全策略”，然后选择你的订阅。 
-2. 单击“保护策略”。
-3. 启用或禁用需要应用于所有 Azure 资源的策略项。
-4. 完成后单击“确定”。
-5. 单击“安全策略”边栏选项卡上的“保存”。 
+1. 在安全中心仪表板上选择“安全策略”，然后选择你的订阅。
+2. 选择“保护策略”。
+3. 打开或关闭要应用到所有 Azure 资源的策略项。
+4. 完成选择设置后，请选择“确定”。
+5. 在“安全策略”边栏选项卡上，选择“保存”。 
 
-若要为特定资源组配置策略，请执行相同的步骤，但不要在“安全策略”边栏选项卡上选择订阅，而是选择资源组。 配置策略时，选择“继承”下的“唯一”。 如果要禁用特定资源组的数据收集，也可以在此处进行此配置。
+为特定的资源组设置策略：
 
-在下面的示例中，已为名为“myResoureGroup”的资源组创建唯一策略。 在此策略中，磁盘加密和 Web 应用程序防火墙建议均已禁用。
+1. 在安全中心仪表板上选择“安全策略”，然后选择资源组。
+2. 选择“保护策略”。
+3. 打开或关闭要应用到该资源组的策略项。
+4. 在“继承”下面，选择“唯一”。
+5. 完成选择设置后，请选择“确定”。
+6. 在“安全策略”边栏选项卡上，选择“保存”。  
+
+也可以在此页上针对特定的资源组关闭数据收集。
+
+在以下示例中，为名为 *myResoureGroup* 的资源组创建了唯一策略。 在此策略中，磁盘加密和 Web 应用程序防火墙建议已关闭。
 
 ![唯一策略](./media/tutorial-azure-security/unique-policy.png)
 
 ## <a name="view-vm-configuration-health"></a>查看 VM 配置运行状况
 
-启用数据收集并配置安全策略后，Azure 安全中心将开始提供警报和建议。 部署 VM 时，系统将安装数据收集代理并将这些新 VM 的数据填入 Azure 安全中心。 有关 VM 配置运行状况的详细信息，请参阅[保护 Azure 安全中心中的虚拟机](../../security-center/security-center-virtual-machine-recommendations.md)。 
+打开数据收集并设置安全策略后，安全中心将开始提供警报和建议。 部署 VM 时，将安装数据收集代理。 然后，安全中心内将填充新 VM 的数据。 有关 VM 配置运行状况的详细信息，请参阅[在安全中心保护 VM](../../security-center/security-center-virtual-machine-recommendations.md)。 
 
-收集数据时，每个 VM 和相关 Azure 资源的资源运行状况将聚合，并以易于读取的图表形式显示。 若要查看资源运行状况，请返回 Azure 安全中心仪表板。 在“资源安全性运行状况”下，单击“计算”。 最后，单击“计算”边栏选项卡上的“虚拟机”。 此视图提供所有 VM 配置状态的摘要。
+收集数据时，每个 VM 和相关 Azure 资源的资源运行状况将会聚合。 这些信息将以易于阅读的图表形式显示。 
+
+查看资源运行状况：
+
+1.  在安全中心仪表板上的“资源安全运行状况”下面，选择“计算”。 
+2.  在“计算”边栏选项卡上选择“虚拟机”。 此视图提供所有 VM 的配置状态摘要。
 
 ![计算运行状况](./media/tutorial-azure-security/compute-health.png)
 
-选择一个 VM 将显示针对该 VM 的所有建议。 本教程的下一节中将详细介绍建议。
+若要查看针对某个 VM 的所有建议，请选择该 VM。 本教程的下一部分更详细地介绍了建议和补救措施。
 
 ## <a name="remediate-configuration-issues"></a>修正配置问题
 
-配置数据开始填入 Azure 安全中心后，系统将针对配置的安全策略提供建议。 例如，如果配置 VM 时未关联网络安全组，将生成建议创建网络安全组的建议。 查看所有建议列表： 
+在安全中心内开始填充配置数据后，系统将会根据设置的安全策略生成建议。 例如，如果设置 VM 时未关联网络安全组，系统将生成有关创建网络安全组的建议。 
 
-1. 在 Azure 安全中心仪表板中，单击“建议”。
-3. 选择特定建议，随后将打开包含建议针对的所有资源的列表的边栏选项卡。
-4. 选择要处理的特定资源。
-5. 按照屏幕上的修正步骤说明进行操作。 
+查看所有建议列表： 
 
-在许多情况下，Azure 安全中心可提供解决建议的可操作步骤，并且无需离开 Azure 安全中心环境。 例如，在下面的示例中，系统检测到 NSG 的入站规则没有限制。 在此建议中，可以选择“编辑入站规则”按钮，这可提供修改规则所需的恰当 UI。 
+1. 在安全中心仪表板上选择“建议”。
+2. 选择特定的建议。 将显示该建议适用的所有资源的列表。
+3. 若要应用某项建议，请选择特定的资源。 
+4. 遵照补救措施的说明操作。 
+
+在许多情况下，安全中心会提供可行的步骤来遵照建议解决问题，并且无需退出安全中心。 在以下示例中，安全中心检测到一个具有不受限入站规则的网络安全组。 在建议页上，可以选择“编辑入站规则”按钮。 此时将显示用于修改规则的 UI。 
 
 ![建议](./media/tutorial-azure-security/remediation.png)
 
@@ -94,19 +116,37 @@ Azure 安全中心可针对检测到的问题提供建议，功能远不止数�
 
 ## <a name="view-detected-threats"></a>查看检测到的威胁
 
-除了资源配置建议外，Azure 安全中心还提供威胁检测警报。 安全警报功能聚合从每个 VM、Azure 网络日志和连接的合作伙伴解决方案中收集的数据，以便检测针对 Azure 资源的安全威胁。 有关 Azure 安全中心威胁检测功能的详细信息，请参阅 [Azure 安全中心检测功能](../../security-center/security-center-detection-capabilities.md)。
+除了资源配置建议外，安全中心还显示威胁检测警报。 安全警报功能聚合从每个 VM、Azure 网络日志和连接的合作伙伴解决方案中收集的数据，以便检测针对 Azure 资源的安全威胁。 有关安全中心威胁检测功能的详细信息，请参阅 [Azure 安全中心检测功能](../../security-center/security-center-detection-capabilities.md)。
 
-此安全警报功能要求 Azure 安全中心定价层从“免费”提升到“标准”。 执行此操作时，可使用 30 天免费试用版。 更改定价层：  
+安全警报功能要求将安全中心定价层从“免费”提升到“标准”。 过渡到这个更高的定价层后，可以**免费试用** 30 天。 
 
-1. 在 Azure 安全中心仪表板中，单击“安全策略”，然后选择你的订阅。
-2. 单击“定价层”。
-3. 选择新层，然后单击“选择”。
-5. 单击“安全策略”边栏选项卡上的“保存”。 
+更改定价层：  
 
-启用后，安全警报图表将在检测到安全威胁时开始填充。
+1. 在安全中心仪表板上单击“安全策略”，然后选择你的订阅。
+2. 选择“定价层”。
+3. 选择新层，然后选择“选择”。
+4. 在“安全策略”边栏选项卡上，选择“保存”。 
+
+更改定价层后，安全警报图表将在检测到安全威胁时开始填充。
 
 ![安全警报](./media/tutorial-azure-security/security-alerts.png)
 
-选择警报以查看信息，如威胁的描述、检测时间、威胁意图和建议的修正措施。 在此示例中，检测到 RDP 暴力攻击，294 次 RDP 尝试失败，并提供了建议的解决方法。
+选择一个警报可查看信息。 例如，可以看到威胁说明、检测时间、所有威胁企图和建议的补救措施。 在以下示例中，已检测到 RDP 暴力破解攻击，以及 294 次失败的 RDP 企图。 已提供建议的解决方法。
 
 ![RDP 攻击](./media/tutorial-azure-security/rdp-attack.png)
+
+## <a name="next-steps"></a>后续步骤
+在本教程中，你已设置 Azure 安全中心，然后在安全中心检查了 VM。 你已了解如何：
+
+> [!div class="checklist"]
+> * 设置数据收集
+> * 设置安全策略
+> * 查看和修复配置运行状况问题
+> * 查看检测到的威胁
+
+请继续学习下一教程，详细了解如何使用 Jenkins、GitHub 和 Docker 创建 CI/CD 管道。
+
+> [!div class="nextstepaction"]
+> [使用 Jenkins、GitHub 和 Docker 创建 CI/CD 基础结构](tutorial-jenkins-github-docker-cicd.md)
+
+

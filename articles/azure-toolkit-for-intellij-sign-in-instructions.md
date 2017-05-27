@@ -14,144 +14,145 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: d1be0432a54ed300bc135345b660b90f3efb3b39
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 4e2ed072bdaea0a71fef042c0c72b7656a42bbe8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
 
-# <a name="azure-sign-in-instructions-for-the-azure-toolkit-for-intellij"></a>用于 IntelliJ 的 Azure 工具包的 Azure 登录说明
+# <a name="sign-in-instructions-for-the-azure-toolkit-for-intellij"></a>用于 IntelliJ 的 Azure 工具包的登录说明
 
 用于 IntelliJ 的 Azure 工具包提供了两种用于登录到 Azure 帐户的方法：
 
-  * **交互式** - 如果使用此方法，每次登录 Azure 帐户时，都需要输入 Azure 凭据。
-  * **自动** - 如果使用此方法，你将创建一个包含服务主体数据的凭据文件，之后可以使用该凭据文件自动登录到 Azure 帐户。
+  * **交互式**：每次登录到 Azure 帐户时都要输入 Azure 凭据。
+  * **自动**：创建一个可用于自动登录到 Azure 帐户的凭据文件。
 
-以下部分中的步骤将介绍如何使用每个方法。
+以下部分介绍如何使用每种方法。
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="signing-into-your-azure-account-interactively"></a>以交互方式登录到 Azure 帐户
+## <a name="sign-in-to-your-azure-account-interactively"></a>以交互方式登录到 Azure 帐户
 
-以下步骤将说明如何通过手动输入 Azure 凭据登录到 Azure。
+若要通过手动输入 Azure 凭据登录到 Azure，请执行以下操作：
 
 1. 使用 IntelliJ IDEA 打开项目。
 
-1. 依次单击“工具”、“Azure”，然后单击“Azure 登录”。
+2. 单击“工具”，指向“Azure”，然后单击“Azure 登录”。
 
-   ![用于 Azure 登录的 IntelliJ 菜单][I01]
+   ![“IntelliJ Azure 登录”命令][I01]
 
-1. 显示“Azure 登录”对话框时，选择“交互式”，然后单击“登录”。
+3. 在“Azure 登录”窗口中选择“交互式”，然后单击“登录”。
 
-   ![“登录”对话框][I02]
+   ![已选择“交互式”的“Azure 登录”窗口][I02]
 
-1. 显示“Azure 登录”对话框时，输入 Azure 凭据，然后单击“登录”。
+4. 在显示的“Azure 登录”对话框中输入 Azure 凭据，然后单击“登录”。
 
-   ![“Azure 登录”对话框][I03]
+   ![“Azure 登录”对话框窗口][I03]
 
-1. 显示“选择订阅”对话框时，选择要使用的订阅，然后单击“确定”。
+5. 在“选择订阅”对话框中选择要使用的订阅，然后单击“确定”。
 
    ![“选择订阅”对话框][I04]
 
-## <a name="signing-out-of-your-azure-account-when-you-signed-in-interactively"></a>已以交互方式登录时，从 Azure 帐户中注销
+## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-interactively"></a>以交互方式登录后从 Azure 帐户注销
 
-按照上一部分中的步骤配置后，每次重新启动 IntelliJ IDEA 时，都将自动从 Azure 帐户中注销。 但是，如果要在不重新启动 IntelliJ IDEA 的情况下注销 Azure 帐户，请使用以下步骤。
+使用上述步骤配置帐户后，每次重新启动 IntelliJ IDEA 时，都将自动从 Azure 帐户中注销。 但是，如果要在*不*重新启动 IntelliJ IDEA 的情况下注销 Azure 帐户，请执行以下操作。
 
-1. 在 IntelliJ IDEA 中，依次单击“工具”、“Azure”，然后单击“Azure 注销”。
+1. 在 IntelliJ IDEA 的“工具”菜单中指向“Azure”，然后单击“Azure 注销”。
 
-   ![用于 Azure 注销的 IntelliJ 菜单][L01]
+   ![“IntelliJ Azure 注销”命令][L01]
 
-1. 显示“Azure 注销”对话框时，单击“是”。
+2. 在“Azure 注销”确认窗口中，单击“是”。
 
-   ![“注销”对话框][L02]
+   ![“Azure 注销”确认窗口][L02]
 
-## <a name="signing-into-your-azure-account-automatically-and-creating-a-credentials-file-to-use-in-the-future"></a>自动登录到 Azure 帐户并创建凭据文件，以便在将来使用
+## <a name="sign-in-to-your-azure-account-automatically"></a>自动登录到 Azure 帐户
 
-以下步骤将引导你完成创建一个包含服务主体数据的凭据文件。 完成这些步骤后，你每次打开项目时，Eclipse 都会自动使用凭据文件将你自动登录到 Azure。
+本部分逐步引导你创建一个包含服务主体数据的凭据文件。 完成此过程后，每次打开项目时，Eclipse 都会使用凭据文件将你自动登录到 Azure。
 
 1. 使用 IntelliJ IDEA 打开项目。
 
-1. 依次单击“工具”、“Azure”，然后单击“Azure 登录”。
+2. 在“工具”菜单中，指向“Azure”，然后单击“Azure 登录”。
 
-   ![用于 Azure 登录的 IntelliJ 菜单][A01]
+   ![“IntelliJ Azure 登录”命令][A01]
 
-1. 显示“Azure 登录”对话框时，选择“自动”，然后单击“新建”。
+3. 在“Azure 登录”窗口中选择“自动”，然后单击“新建”。
 
-   ![“登录”对话框][A02]
+   ![已选择“自动”的“Azure 登录”窗口][A02]
 
-1. 显示“Azure 登录”对话框时，输入 Azure 凭据，然后单击“登录”。
+4. 在“Azure 登录”对话框窗口中输入 Azure 凭据，然后单击“登录”。
 
-   ![“Azure 登录”对话框][A03]
+   ![“Azure 登录”对话框窗口][A03]
 
-1. 显示“创建身份验证文件”对话框时，选择要使用的订阅，选择目标目录，然后单击“启动”。
+5. 在“创建身份验证文件”窗口中选择要使用的订阅，选择目标目录，然后单击“启动”。
 
-   ![“Azure 登录”对话框][A04]
+   ![“创建身份验证文件”窗口][A04]
 
-1. 此时将显示“服务主体创建状态”对话框，成功创建文件后，单击“确定”。
+6. 成功创建文件后，请在“服务主体创建状态”对话框中单击“确定”。
 
    ![“服务主体创建状态”对话框][A05]
 
-1. 显示“Azure 登录”对话框时，单击“登录”。
+7. 在“Azure 登录”窗口中单击“登录”。
 
    ![“Azure 登录”对话框][A06]
 
-1. 显示“选择订阅”对话框时，选择要使用的订阅，然后单击“确定”。
+8. 在“选择订阅”对话框中选择要使用的订阅，然后单击“确定”。
 
    ![“选择订阅”对话框][A07]
 
-## <a name="signing-out-of-your-azure-account-when-you-signed-in-automatically"></a>已自动登录时，从 Azure 帐户中注销
+## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-automatically"></a>自动登录后从 Azure 帐户注销
 
-按照上一部分中的步骤配置后，每次重新启动 IntelliJ IDEA 时，Azure 工具包都会将你自动登录到 Azure 帐户。 但是，若要注销 Azure 帐户并禁止 Azure 工具包将你自动登录，请使用以下步骤。
+使用上述步骤配置帐户后，每次重新启动 IntelliJ IDEA 时，Azure 工具包会将你自动登录到 Azure 帐户。 但是，若要注销 Azure 帐户并禁止 Azure 工具包将你自动登录，请执行以下操作：
 
-1. 在 IntelliJ IDEA 中，依次单击“工具”、“Azure”，然后单击“Azure 注销”。
+1. 在 IntelliJ IDEA 的“工具”菜单中指向“Azure”，然后单击“Azure 注销”。
 
-   ![用于 Azure 注销的 IntelliJ 菜单][L01]
+   ![“IntelliJ Azure 注销”命令][L01]
 
-1. 显示“Azure 注销”对话框时，单击“是”。
+2. 在“Azure 注销”确认窗口中，单击“是”。
 
-   ![“注销”对话框][L03]
+   ![“Azure 注销”确认窗口][L03]
 
-## <a name="signing-into-your-azure-account-automatically-using-a-credentials-file-which-you-have-already-created"></a>使用已创建的凭据文件自动登录到 Azure 帐户
+## <a name="sign-in-to-your-azure-account-automatically-by-using-an-existing-credentials-file"></a>使用现有的凭据文件自动登录到 Azure 帐户
 
-如果在使用 IntelliJ IDEA 时从 Azure 中注销，则需要重新配置用于 Eclipse 的 Azure 工具包以使用已创建的凭据文件，然后才能自动登录到 Azure 帐户。 以下步骤将引导你完成配置 Azure 工具包以使用现有凭据文件。
+如果使用 IntelliJ IDEA 时从 Azure 帐户注销，必须使用现有的凭据文件才能自动重新登录到该帐户。 若要将用于 Eclipse 的 Azure 工具包配置为使用现有的凭据文件，请执行以下操作：
 
 1. 使用 IntelliJ IDEA 打开项目。
 
-1. 依次单击“工具”、“Azure”，然后单击“Azure 登录”。
+2. 在“工具”菜单中，指向“Azure”，然后单击“Azure 登录”。
 
-   ![用于 Azure 登录的 IntelliJ 菜单][A01]
+   ![“IntelliJ Azure 登录”命令][A01]
 
-1. 显示“Azure 登录”对话框时，选择“自动”，然后单击“浏览”。
+3. 在“Azure 登录”窗口中选择“自动”，然后单击“浏览”。
 
-   ![“登录”对话框][A02]
+   ![已选择“自动”的“Azure 登录”窗口][A02]
 
-1. 显示“选择身份验证文件”对话框时，选择先前创建的凭据文件，然后单击“选择”。
+4. 在“选择身份验证文件”对话框中，选择前面创建的凭据文件，然后单击“选择”。
 
-   ![“登录”对话框][A08]
+   ![“选择身份验证文件”对话框][A08]
 
-1. 显示“Azure 登录”对话框时，单击“登录”。
+5. 在“Azure 登录”窗口中单击“登录”。
 
-   ![“Azure 登录”对话框][A06]
+   ![已选择“自动”的“Azure 登录”窗口][A06]
 
-1. 显示“选择订阅”对话框时，选择要使用的订阅，然后单击“确定”。
+6. 在“选择订阅”对话框中选择要使用的订阅，然后单击“确定”。
 
    ![“选择订阅”对话框][A07]
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
 
 * [用于 Eclipse 的 Azure 工具包]
   * [用于 Eclipse 的 Azure 工具包的新增功能]
   * [安装用于 Eclipse 的 Azure 工具包]
   * [用于 Eclipse 的 Azure 工具包的登录说明]
-  * [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
+  * [在 Eclipse 中创建适用于 Azure 的 Hello World Web 应用]
 * [用于 IntelliJ 的 Azure 工具包]
   * [用于 IntelliJ 的 Azure 工具包的新增功能]
   * [安装用于 IntelliJ 的 Azure 工具包]
-  * *用于 IntelliJ 的 Azure 工具包的登录说明（本文）*
-  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
+  * *用于 IntelliJ 的 Azure 工具包的登录说明*（本文）
+  * [在 IntelliJ 中创建适用于 Azure 的 Hello World Web 应用]
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]和[用于 Visual Studio Team Services 的 Java 工具]。
 
@@ -160,11 +161,11 @@ ms.lasthandoff: 04/22/2017
 [用于 Eclipse 的 Azure 工具包]: ./azure-toolkit-for-eclipse.md
 [用于 IntelliJ 的 Azure 工具包]: ./azure-toolkit-for-intellij.md
 [在 Eclipse 中创建 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
-[在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[在 IntelliJ 中创建适用于 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [安装用于 Eclipse 的 Azure 工具包]: ./azure-toolkit-for-eclipse-installation.md
 [安装用于 IntelliJ 的 Azure 工具包]: ./azure-toolkit-for-intellij-installation.md
 [用于 Eclipse 的 Azure 工具包的登录说明]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Sign In Instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Sign-in instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [用于 Eclipse 的 Azure 工具包的新增功能]: ./azure-toolkit-for-eclipse-whats-new.md
 [用于 IntelliJ 的 Azure 工具包的新增功能]: ./azure-toolkit-for-intellij-whats-new.md
 
