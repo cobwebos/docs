@@ -3,7 +3,7 @@ title: "SQL 数据仓库数据集成合作伙伴 | Microsoft 文档"
 description: "其数据集成解决方案支持 Azure SQL 数据仓库的第三方合作伙伴列表。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: kevinvngo
 manager: jhubbard
 editor: 
 ms.assetid: 450730a8-87df-4b8f-917b-debe3c906283
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: partners
 ms.date: 01/30/2017
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: kevin;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: d9436796373af55a18c0b6fbfc036bd6616bbe4f
 ms.openlocfilehash: ea9c6be4dce0b0812ac780257732321444a57beb
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/31/2017
 
 

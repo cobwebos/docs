@@ -3,7 +3,7 @@ title: "SQL 数据仓库中表的数据类型 | Microsoft 文档"
 description: "Azure SQL 数据仓库表的数据类型入门。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: shivaniguptamsft
 manager: barbkess
 editor: 
 ms.assetid: d4a1f0a3-ba9f-44b9-95f6-16a4f30746d6
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: shigu;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 7757de96601c426ff07e94cfa0c12d4dec8f06f5
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/22/2017
 
 

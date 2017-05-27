@@ -3,7 +3,7 @@ title: "SQL 数据仓库容量限制 | Microsoft 文档"
 description: "SQL 数据仓库的连接、数据库、表和查询的最大值。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: kevinvngo
 manager: jhubbard
 editor: 
 ms.assetid: e1eac122-baee-4200-a2ed-f38bfa0f67ce
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
-ms.author: barbkess;jrj
-translationtype: Human Translation
+ms.author: kevin;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3a9ea64c464a74c70e75634a3e5c1e49862a74e7
 ms.openlocfilehash: c6b44392c0b3a241d41ae55bd6bb3f544d867e9e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/22/2017
 
 

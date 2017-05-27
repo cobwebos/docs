@@ -3,7 +3,7 @@ title: "对 Azure SQL 数据仓库进行身份验证 | Microsoft 文档"
 description: "对 Azure SQL 数据仓库进行的 Azure Active Directory (AAD) 和 SQL Server 身份验证。"
 services: sql-data-warehouse
 documentationcenter: 
-author: byham
+author: ronortloff
 manager: jhubbard
 editor: 
 tags: 
@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.custom: security
 ms.date: 03/21/2017
-ms.author: rickbyh;barbkess
-translationtype: Human Translation
+ms.author: rortloff;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 9f38d57029e962d1bbe8adae68232baa8a4c575d
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/22/2017
 
 

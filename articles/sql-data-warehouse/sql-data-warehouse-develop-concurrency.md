@@ -3,7 +3,7 @@ title: "SQL 数据仓库中的并发和工作负荷管理 | Microsoft 文档"
 description: "在开发解决方案之前，了解 SQL 数据仓库中的并发性和工作负荷管理。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: sqlmojo
 manager: jhubbard
 editor: 
 ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: joeyong;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: dd8c1b07262fc375678262a7617699c1f69c6090
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 

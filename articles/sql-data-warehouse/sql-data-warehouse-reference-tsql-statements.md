@@ -3,7 +3,7 @@ title: "SQL 数据仓库 Transact-SQL 参考 | Microsoft 文档"
 description: "SQL 数据仓库使用的 Transact-SQL 主题参考内容的链接。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: kevinvngo
 manager: jhubbard
 editor: 
 ms.assetid: 0abc5934-1e67-491a-b7d7-8b520d1ae98e
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: kevin;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 5aca3011fc67e009bc3d543235049a4d5dd3a69b
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 

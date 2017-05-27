@@ -3,7 +3,7 @@ title: "在 Azure SQL 数据仓库中监视用户查询 | Microsoft 文档"
 description: "在 Azure SQL 数据仓库中监视用户查询时的注意事项、最佳实践和任务的概述"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: sqlmojo
 manager: jhubbard
 editor: 
 ms.assetid: 1d0960db-5dcf-4a08-b1dc-6c5d3d5a616d
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: joeyong;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 54346a8e6f42fc81cd727db03c02f0e935db07d3
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 

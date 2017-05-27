@@ -3,7 +3,7 @@ title: "迁移：数据仓库迁移实用程序 | Microsoft 文档"
 description: "迁移到 SQL 数据仓库。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: sqlmojo
 manager: jhubbard
 editor: 
 ms.assetid: 4d7ad981-ef31-4513-b337-50bdc4709c09
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
 ms.date: 10/31/2016
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: joeyong;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 61adb7ae8fddc3cf423ee4558308eb9ded11fea3
+ms.contentlocale: zh-cn
 ms.lasthandoff: 12/08/2016
 
 

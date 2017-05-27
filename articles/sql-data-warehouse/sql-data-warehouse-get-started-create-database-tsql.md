@@ -3,7 +3,7 @@ title: "使用 TSQL 创建 SQL 数据仓库 | Microsoft Docs"
 description: "了解如何使用 TSQL 创建 Azure SQL 数据仓库"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: hirokib
 manager: jhubbard
 editor: 
 tags: azure-sql-data-warehouse
@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: create
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: elbutter;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
 ms.openlocfilehash: 836d72e32e54ecef9691b55214766a1fc3ff9701
+ms.contentlocale: zh-cn
 ms.lasthandoff: 12/07/2016
 
 

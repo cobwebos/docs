@@ -3,7 +3,7 @@ title: "SQL 数据仓库中的表概述 | Microsoft 文档"
 description: "Azure SQL 数据仓库表入门。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: shivaniguptamsft
 manager: jhubbard
 editor: 
 ms.assetid: 2114d9ad-c113-43da-859f-419d72604bdf
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
-ms.author: barbkess;jrj
-translationtype: Human Translation
+ms.author: shigu;jrj
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 914d85267e82ce6a2e60f3841889935046f17c87
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 
