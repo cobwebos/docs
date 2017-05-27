@@ -3,7 +3,7 @@ title: "管理 Azure SQL 数据仓库中的计算能力（Azure 门户）| Micro
 description: "用于管理计算能力的 Azure 门户任务。 通过调整 DWU 缩放计算资源。 或者，暂停和恢复计算资源来节省成本。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: hirokib
 manager: jhubbard
 editor: 
 ms.assetid: 233b0da5-4abd-4d1d-9586-4ccc5f50b071
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: elbutter;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
 ms.openlocfilehash: a86b041424ce1757fd45c7a39350f4c4e66ee265
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/20/2017
 
 

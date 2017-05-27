@@ -218,6 +218,8 @@ DNS 记录页应如以下屏幕截图所示：
 
 ![DNS 记录页](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
+<a name="enable-a"></a>
+
 ### <a name="enable-the-a-record-mapping-in-your-app"></a>在应用中启用 A 记录映射
 
 现在，可将配置的 DNS 名称添加到应用。

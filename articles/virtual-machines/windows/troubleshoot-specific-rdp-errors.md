@@ -4,7 +4,7 @@ description: "了解在你尝试使用远程桌面与 Azure 中 Windows 虚拟�
 keywords: "远程桌面错误,远程桌面连接错误,无法连接到 VM,远程桌面故障排除"
 services: virtual-machines-windows
 documentationcenter: 
-author: iainfoulds
+author: genlin
 manager: timlt
 editor: 
 tags: top-support-issue,azure-service-management,azure-resource-manager
@@ -14,11 +14,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 01/10/2017
-ms.author: iainfou
-translationtype: Human Translation
+ms.date: 05/26/2017
+ms.author: genli
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 4f2b70b79e52df902e0f659fc97158d446efdf50
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 

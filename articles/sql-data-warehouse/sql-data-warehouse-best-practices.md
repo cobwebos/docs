@@ -3,7 +3,7 @@ title: "Azure SQL 数据仓库最佳实践 | Microsoft Docs"
 description: "开发 Azure SQL 数据仓库解决方案时应了解的建议和最佳实践。 这些内容可帮助你取得成功。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: shivaniguptamsft
 manager: jhubbard
 editor: 
 ms.assetid: 7b698cad-b152-4d33-97f5-5155dfa60f79
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: shigu;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: aac6261cd3e8a8d6775c44dc6e3b279db4474ff8
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 

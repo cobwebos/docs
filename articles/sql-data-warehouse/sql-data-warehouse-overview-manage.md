@@ -3,7 +3,7 @@ title: "在 Azure SQL 数据仓库中管理数据库 | 文档"
 description: "管理 SQL 数据仓库数据库的概述。 包括管理工具、DWU 和向外扩展性能，对查询性能进行故障排除，建立良好的安全策略，以及从数据损坏或区域中断还原数据库。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: kevinvngo
 manager: jhubbard
 editor: 
 ms.assetid: 8576fdb3-71fe-4b3b-a4e0-5e8a7f148acf
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: kevin;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: 0056c458cc002cbdb1b8dabefe0d11a8abd61179
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/30/2017
 
 
