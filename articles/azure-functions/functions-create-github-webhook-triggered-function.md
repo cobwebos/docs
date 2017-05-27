@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 7423ef26a4a1c49245a1f8df79bbcaabea222596
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: d79ce0e047e71d9f6af7ca55f55bea405c280b1d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,8 +28,6 @@ ms.lasthandoff: 05/12/2017
 了解如何创建由带有 GitHub 特定有效负载的 HTTP webhook 请求触发的函数。
 
 ![Azure 门户中 Github Webhook 触发的函数](./media/functions-create-github-webhook-triggered-function/function-app-in-portal-editor.png)
-
-完成本主题中的所有步骤应该不需要五分钟。
 
 ## <a name="prerequisites"></a>先决条件
 

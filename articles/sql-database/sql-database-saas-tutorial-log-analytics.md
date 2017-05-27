@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 4ff4519ca40f036d58f82993db78fe08aa7d5733
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 813a947ce4deb0755b44f4d287e00ae5218abfc4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 05/12/2017
 
 若要完成本教程，请确保已完成以下先决条件：
 
-* 已部署了 WTP 应用。 若要在五分钟内部署，请参阅[部署和浏览 WTP SaaS 应用程序](sql-database-saas-tutorial.md)
+* 已部署 WTP 应用。 若要在五分钟内进行部署，请参阅[部署和浏览 WTP SaaS 应用程序](sql-database-saas-tutorial.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 请参阅[“性能监视和管理”教程](sql-database-saas-tutorial-performance-monitoring.md)，了解 SaaS 方案和模式及其对解决方案监视要求的影响。
@@ -134,7 +134,7 @@ Log Analytics 和 OMS 中的监视和警报功能基于工作区中的数据查�
 
 ## <a name="additional-resources"></a>其他资源
 
-* [基于初始 Wingtip 票证平台 (WTP) 应用程序部署编写的其他教程](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [基于初始 Wingtip 票证平台 (WTP) 应用程序部署编写的其他教程](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
 * [OMS](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)
 

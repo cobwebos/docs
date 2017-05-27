@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/24/2016
 ms.author: cabailey
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: dd53cbc0ec10700ebcd47f9d2f9d6cc358f68569
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: c45695129c1795b44b933a6d60e2f21a98542f7d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -55,10 +56,10 @@ ms.lasthandoff: 05/03/2017
 
     Get-Help Login-AzureRmAccount -Detailed
 
-还可阅读以下教程以熟悉如何在 Azure PowerShell 中使用 Azure 资源管理器：
+还可阅读以下教程以熟悉如何在 Azure PowerShell 中使用 Azure Resource Manager：
 
 * [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
-* [将 Azure PowerShell 用于资源管理器](../powershell-azure-resource-manager.md)
+* [将 Azure PowerShell 用于 Resource Manager](../powershell-azure-resource-manager.md)
 
 ## <a id="connect"></a>连接到订阅
 启动 Azure PowerShell 会话，然后使用以下命令登录你的 Azure 帐户：  
@@ -80,7 +81,7 @@ ms.lasthandoff: 05/03/2017
 有关配置 Azure PowerShell 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a id="resource"></a>创建新的资源组
-使用 Azure 资源管理器时，会在资源组中创建所有相关资源。 在本教程中，我们将创建名为 **ContosoResourceGroup** 的新资源组：
+使用 Azure Resource Manager 时，会在资源组中创建所有相关资源。 在本教程中，我们将创建名为 **ContosoResourceGroup** 的新资源组：
 
     New-AzureRmResourceGroup –Name 'ContosoResourceGroup' –Location 'East Asia'
 
@@ -105,7 +106,7 @@ ms.lasthandoff: 05/03/2017
 >
 
 ## <a id="add"></a>将密钥或机密添加到保管库
-如果希望 Azure 密钥保管库创建受软件保护的密钥，请使用 [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) cmdlet，并键入以下内容：
+如果希望 Azure 密钥保管库创建受软件保护的密钥，请使用 [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) cmdlet，并键入以下内容：
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 

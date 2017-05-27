@@ -12,10 +12,10 @@ ms.service: functions
 ms.devlang: azure-cli
 manager: erikre
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ef9d65ae5ad0792230e1b8c0d7ed123c129f0f59
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 3dc0e1b26c95ac6583dd3b1068b36deb54f7ac5a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 05/10/2017
 
 本快速入门教程逐步讲解如何使用 Azure Functions 建第一个函数。 使用 Azure CLI 创建 Function App（托管函数的无服务器基础结构）。 函数代码本身将从 GitHub 示例存储库部署。    
 
-可以使用 Mac、Windows 或 Linux 计算机执行以下步骤。 完成本主题中的所有步骤只需大约五分钟。
+可以使用 Mac、Windows 或 Linux 计算机执行以下步骤。 
 
 ## <a name="prerequisites"></a>先决条件 
 
