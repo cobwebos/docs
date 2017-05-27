@@ -57,7 +57,8 @@
     href: azure-vm-network-overview.md
   - name: VM 规模集
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
-  - name: 实例元数据服务 
+  - name: 实例元数据服务
+ 
     href: ../virtual-machines-instancemetadataservice-overview.md
   - name: 容器
     href: containers.md
@@ -296,6 +297,8 @@
       href: extensions-customscript.md
     - name: OMS 代理扩展
       href: extensions-oms.md
+    - name: Linux 诊断扩展
+      href: diagnostic-extension.md
   - name: 运行应用程序
     items:
     - name: Cloud Foundry
@@ -353,19 +356,24 @@
       href: migration-classic-resource-manager-faq.md
   - name: 故障排除
     items:
-    - name: 排查 SSH 连接问题
+    - name: SSH 连接
       href: troubleshoot-ssh-connection.md
       items:
       - name: 详细故障排除步骤
         href: detailed-troubleshoot-ssh-connection.md
-    - name: 应用程序访问疑难解答
+    - name: 启动诊断
+ 
+      href: boot-diagnostics.md
+    - name: 对应用程序的访问
       href: troubleshoot-app-connection.md
-    - name: 排查分配失败
+    - name: 分配失败
       href: allocation-failure.md
-    - name: 排查部署问题
+    - name: 部署问题
       href: troubleshoot-deployment-new-vm.md
     - name: 将 VM 重新部署到新的 Azure 节点
       href: redeploy-to-new-node.md
+    - name: 常见错误消息
+      href: error-messages.md
     - name: 附加虚拟硬盘以进行故障排除
       items:
       - name: Azure CLI

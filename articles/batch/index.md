@@ -1,6 +1,6 @@
 ---
-title: "Azure 批处理文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解如何使用批处理有效运行大规模并行和高性能计算应用程序。 教程、API 参考和其他文档。"
+title: "Azure Batch 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 Batch 有效运行大规模并行和高性能计算应用程序。 教程、API 参考和其他文档。"
 services: batch
 author: carolz
 manager: carolz
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 4d3ca2b9c1147c74644e9365f97ac3ed4e5c41f5
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 74a8742d95e69fb8d7ad962a7962f6ff41ff1919
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/19/2017
 
 ---
-#<a name="batch-documentation"></a>批处理文档
+#<a name="batch-documentation"></a>Batch 文档
 
-了解如何使用批处理在云中有效运行大规模并行和高性能计算应用程序。 教程、API 参考和其他文档介绍了如何定义 Azure 计算资源，以并行执行或大规模执行应用程序，而无需手动配置或管理基础结构。
+了解如何使用 Batch 在云中有效运行大规模并行和高性能计算应用程序。 教程、API 参考和其他文档介绍了如何定义 Azure 计算资源，以并行执行或大规模执行应用程序，而无需手动配置或管理基础结构。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -34,7 +35,7 @@ ms.lasthandoff: 04/26/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>了解批处理</h3>
+                        <h3>了解 Batch</h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +53,7 @@ ms.lasthandoff: 04/26/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure 批处理视频库</h3>
+                        <h3>Azure Batch 视频库</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +71,7 @@ ms.lasthandoff: 04/26/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>批处理入门</h3>
+                        <h3>Batch 入门</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +89,7 @@ ms.lasthandoff: 04/26/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>通过 .NET 开始使用批处理</h3>
+                        <h3>通过 .NET 开始使用 Batch</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +107,25 @@ ms.lasthandoff: 04/26/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>通过 Python 开始使用批处理</h3>
+                        <h3>通过 Python 开始使用 Batch</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+     <li>
+        <a href="/azure/batch/batch-nodejs-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="/media/logos/logo_nodejs.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>通过 Node.js 开始使用 Batch</h3>
                     </div>
                 </div>
             </div>
@@ -117,7 +136,7 @@ ms.lasthandoff: 04/26/2017
 
 ---
 
-<h2>参考</h2>
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -164,10 +183,10 @@ ms.lasthandoff: 04/26/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>批处理</h3>
-                        <p><a href="/azure/batch/batch-diagnostics">批处理诊断日志</a></p>
-                        <p><a href="/azure/batch/batch-analytics">批处理分析</a></p>
-                        <p><a href="/azure/batch/batch-compute-node-environment-variables">批处理计算节点环境变量</a></p>
+                        <h3>Batch</h3>
+                        <p><a href="/azure/batch/batch-diagnostics">Batch 诊断日志</a></p>
+                        <p><a href="/azure/batch/batch-analytics">Batch 分析</a></p>
+                        <p><a href="/azure/batch/batch-compute-node-environment-variables">Batch 计算节点环境变量</a></p>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@
   - name: 关于 Azure Cosmos DB
     href: introduction.md
   - name: 欢迎 DocumentDB 客户
-    href: welcome-documentdb-customers.md
+    href: https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/
 - name: 快速入门
   expanded: true
   items:
@@ -236,6 +236,12 @@
       href: ../documentdb/documentdb-online-backup-and-restore.md
     - name: 区域性故障转移
       href: ../documentdb/documentdb-regional-failovers.md
+    - name: 设置吞吐量
+      href: ../documentdb/documentdb-set-throughput.md
+    - name: 监视 SLA
+      href: ../documentdb/documentdb-monitor-accounts.md
+    - name: 管理密钥和一致性
+      href: ../documentdb/documentdb-manage-account.md
     - name: 自动化
       items:
       - name: Azure CLI 1.0 - 创建帐户
@@ -250,10 +256,14 @@
         href: ../documentdb/documentdb-nosql-database-encryption-at-rest.md
       - name: 防火墙支持
         href: ../documentdb/documentdb-firewall-support.md
+      - name: 确保对数据的访问安全
+        href: ../documentdb/documentdb-secure-access-to-data.md
   - name: 集成
     items:
     - name: 连接到 Spark
       href: ../documentdb/documentdb-spark-connector.md
+    - name: 连接到 Spark GraphX
+      href: spark-connector-graph.md      
     - name: 使用 Azure 应用服务部署网站
       href: ../documentdb/documentdb-create-documentdb-website.md
     - name: 使用逻辑应用进行应用程序日志记录

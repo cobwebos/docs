@@ -21,9 +21,13 @@
 ### [Azure 门户](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 ### [Azure 门户（经典）](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+### 为点到站点连接生成自签名证书
+#### [PowerShell](vpn-gateway-certificates-point-to-site.md)
+#### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ## 配置 VNet 到 VNet 连接
 ### [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+### [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 ### [Azure 门户（经典）](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 ## 配置部署模型之间的 VNet 到 VNet 连接
 ### [Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -46,9 +50,6 @@
 ### [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## 为点到站点连接创建自签名证书
-### [PowerShell](vpn-gateway-certificates-point-to-site.md)
-### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ## [配置 VPN 网关（经典）](vpn-gateway-configure-vpn-gateway-mp.md)
 ## 故障排除
 ### [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
@@ -56,9 +57,9 @@
 # 引用
 ## [PowerShell](/powershell/module/azurerm.network)
 ## [PowerShell（经典）](/powershell/module/azure/?view=azuresmps-3.7.0)
-## [REST](https://msdn.microsoft.com/library/mt163859)
+## [REST](https://docs.microsoft.com/rest/api/network/virtualnetworkgateways)
 ## [REST（经典）](https://msdn.microsoft.com/library/jj154113)
-## [Azure CLI](https://docs.microsoft.com/cli/azure/network)
+## [Azure CLI](https://docs.microsoft.com/cli/azure/network/vnet-gateway)
 
 # 相关内容
 ## [虚拟网络](/azure/virtual-network/)

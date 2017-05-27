@@ -39,9 +39,9 @@
       href: concepts-server-logs.md
   - name: 资源
     items:
-    - name: 服务层
+    - name: 定价层
       href: concepts-service-tiers.md
-    - name: 计算单元和存储单元
+    - name: 计算单位
       href: concepts-compute-unit-and-storage.md
     - name: 限制
       href: concepts-limits.md

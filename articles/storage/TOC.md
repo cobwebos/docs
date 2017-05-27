@@ -117,6 +117,7 @@
 #### [Java](storage-client-side-encryption-java.md)
 #### [Python](storage-client-side-encryption-python.md)
 ## 监视和故障排除
+### [排查存储资源管理器问题](storage-explorer-troubleshooting.md)
 ### 指标和日志记录
 #### [存储分析](storage-analytics.md)
 #### [启用和查看指标](storage-enable-and-view-metrics.md)

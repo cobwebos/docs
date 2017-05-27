@@ -45,12 +45,22 @@
     href: functions-create-serverless-api.md
 - name: 概念
   items:
-  - name: 托管计划
+  - name: 消耗计划和应用服务计划
     href: functions-scale.md
   - name: 触发器和绑定
     href: functions-triggers-bindings.md
+  - name: 语言
+    items:
+    - name: 'C# 函数概念'
+      href: functions-reference-csharp.md
+    - name: 'F# 函数概念'
+      href: functions-reference-fsharp.md
+    - name: JavaScript 函数概念
+      href: functions-reference-node.md    
 - name: 操作指南
   items:
+  - name: 开发人员指南
+    href: functions-reference.md
   - name: 测试 Azure Functions
     href: functions-test-a-function.md
   - name: 在本地开发和调试
@@ -65,15 +75,14 @@
     href: functions-monitoring.md
   - name: 安装 Functions 运行时
     href: functions-runtime-install.md
+  - name: 连接到 SQL 数据库
+    href: functions-scenario-database-table-cleanup.md
+  - name: 创建 Open API 2.0 定义
+    href: functions-api-definition-getting-started.md     
+  - name: Azure Functions 最佳做法
+    href: functions-best-practices.md     
 - name: 引用
   items:
-  - name: 开发函数应用
-    href: functions-reference.md
-    items:
-    - name: Open API 2.0
-      href: functions-api-definition.md
-  - name: Azure Functions 最佳做法
-    href: functions-best-practices.md
   - name: 绑定
     items:
     - name: Cosmos DB 绑定
@@ -106,14 +115,8 @@
       href: functions-bindings-timer.md
     - name: Twilio 输出绑定
       href: functions-bindings-twilio.md
-  - name: 框架
-    items:
-    - name: 'C#'
-      href: functions-reference-csharp.md
-    - name: 'F#'
-      href: functions-reference-fsharp.md
-    - name: JavaScript
-      href: functions-reference-node.md
+  - name: OpenAPI 参考
+    href: functions-api-definition.md     
 - name: 资源
   items:
   - name: 定价
