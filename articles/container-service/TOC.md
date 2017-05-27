@@ -10,7 +10,6 @@
 ## [部署群集 - 门户](container-service-deployment.md)
 ## [部署群集 - Azure CLI](container-service-create-acs-cluster-cli.md)
 ## [将 CI/CD 用于 Kubernetes 和 Jenkins](container-service-kubernetes-jenkins.md)
-## [将 CI/CD 用于 DC/OS 和 VSTS](container-service-setup-ci-cd.md)
 ## [将 CI/CD 用于 Docker Swarm 和 VSTS](container-service-docker-swarm-setup-ci-cd.md)
 
 # 概念
@@ -44,6 +43,7 @@
 #### [使用 OMS 进行监视](container-service-kubernetes-oms.md)
 #### [使用 Datadog 进行监视](container-service-kubernetes-datadog.md)
 #### [使用 Sysdig 进行监视](container-service-kubernetes-sysdig.md)
+#### [使用 CoScale 进行监视](container-service-kubernetes-coscale.md)
 ## 使用 Docker Swarm 进行管理
 ### [Docker 和 Docker Compose](container-service-docker-swarm.md)
 

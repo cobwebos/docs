@@ -1,30 +1,33 @@
-- name: "必应语音文档"
+- name: 必应语音文档
   href: ../index.md
-- name: "概述"
+- name: 概述
   href: Home.md
-- name: "入门"
+- name: 入门
   items:
-  - name: "C# (REST API)  "
+  - name: "C# (REST API)\_\_"
     href: GetStarted/GetStartedREST.md
-  - name: "JavaScript (Websocket API)   " 
+  - name: cURL(REST API)
+    href: GetStarted/GetStarted-cURL.md
+  - name: "JavaScript (Websocket API)\_\_\_"
+ 
     href: GetStarted/GetStartedJSWebsockets.md
-  - name: "C#（客户端库）"
+  - name: 'C#（客户端库）'
     href: GetStarted/GetStartedCSharpDesktop.md
-  - name: "C#（服务库）"
+  - name: 'C#（服务库）'
     href: GetStarted/GetStartedCSharpServiceLibrary.md
-  - name: "Objective C on iOS（客户端库）   "
+  - name: "Objective C on iOS（客户端库）\_\_\_"
     href: GetStarted/Get-Started-ObjectiveC-iOS.md
-  - name: "Java on Android（客户端库）"
+  - name: Java on Android（客户端库）
     href: GetStarted/GetStartedJavaAndroid.md
-- name: "引用"
+- name: 引用
   items: 
-  - name: "语音识别 API 参考"
+  - name: 语音识别 API 参考
     href: API-Reference-REST/BingVoiceRecognition.md
-  - name: "文本到语音 API 参考"
+  - name: 文本到语音 API 参考
     href: API-Reference-REST/BingVoiceOutput.md
-  - name: "Websocket 协议"
+  - name: Websocket 协议
     href: API-Reference-REST/websocketprotocol.md
-  - name: "SDK 和示例"
+  - name: SDK 和示例
     items:
-    - name: "JavaScript"
+    - name: JavaScript
       href: https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript

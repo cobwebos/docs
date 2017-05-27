@@ -35,7 +35,7 @@
 ### [对 Web 应用和服务进行深度诊断](app-insights-devops.md)
 ### [在 Web 应用程序中监视性能](app-insights-web-monitor-performance.md)
 ### [将开发、测试和生产隔开](app-insights-separate-resources.md)
-### [使用多个角色监视应用](app-insights-monitor-multi-role-apps.md)
+### [使用多个组件监视应用](app-insights-monitor-multi-role-apps.md)
 ### [如何在 Application Insights 中执行...？](app-insights-how-do-i.md)
 
 
@@ -139,7 +139,7 @@
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [REST](https://dev.applicationinsights.io/)
+## [数据访问 API](https://dev.applicationinsights.io/)
 ## [数据模型](application-insights-data-model.md)
 ### [请求](application-insights-data-model-request-telemetry.md)
 ### [依赖项](application-insights-data-model-dependency-telemetry.md)
@@ -147,6 +147,7 @@
 ### [跟踪](application-insights-data-model-trace-telemetry.md)
 ### [事件](application-insights-data-model-event-telemetry.md)
 ### [指标](application-insights-data-model-metric-telemetry.md)
+### [上下文](application-insights-data-model-context.md)
 ## [遥测关联](application-insights-correlation.md)
 
 # 资源

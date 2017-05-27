@@ -49,6 +49,7 @@
 #### [部署 Linux 容器](service-fabric-deploy-container-linux.md)
 #### [Docker Compose（预览）](service-fabric-docker-compose.md)
 #### [容器和服务的资源调控](service-fabric-resource-governance.md)
+#### [卷和日志记录驱动程序](service-fabric-containers-volume-logging-drivers.md)
 
 ### 生成 Reliable Services 服务
 #### [概述](service-fabric-reliable-services-introduction.md)
@@ -69,10 +70,9 @@
 ##### [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
 ##### [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
 
-#### Reliable Services 生命周期
-##### [配置](service-fabric-reliable-services-configuration.md)
-##### [发送通知](service-fabric-reliable-services-notifications.md)
-##### [备份和还原](service-fabric-reliable-services-backup-restore.md)
+#### [配置](service-fabric-reliable-services-configuration.md)
+#### [发送通知](service-fabric-reliable-services-notifications.md)
+#### [备份和还原](service-fabric-reliable-services-backup-restore.md)
 
 #### 与服务进行通信
 ##### [与 Reliable Services 通信](service-fabric-reliable-services-communication.md)
@@ -87,12 +87,12 @@
 ### 生成 Reliable Actor 服务
 #### [概述](service-fabric-reliable-actors-introduction.md)
 #### 概念
-#### [体系结构](service-fabric-reliable-actors-platform.md)
-#### [生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
-#### [状态管理](service-fabric-reliable-actors-state-management.md)
-#### [多形性](service-fabric-reliable-actors-polymorphism.md)
-#### [重新进入](service-fabric-reliable-actors-reentrancy.md)
-#### [类型序列化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+##### [体系结构](service-fabric-reliable-actors-platform.md)
+##### [生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
+##### [状态管理](service-fabric-reliable-actors-state-management.md)
+##### [多形性](service-fabric-reliable-actors-polymorphism.md)
+##### [重新进入](service-fabric-reliable-actors-reentrancy.md)
+##### [类型序列化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
 #### 入门
 ##### [Windows 上的 C#](service-fabric-reliable-actors-get-started.md)
@@ -108,6 +108,7 @@
 #### [服务通信](service-fabric-connect-and-communicate-with-services.md)
 #### [DNS 服务](service-fabric-dnsservice.md)
 #### [反向代理](service-fabric-reverseproxy.md)
+#### [配置反向代理以进行安全通信](service-fabric-reverseproxy-configure-secure-communication.md)
 
 ### [添加 Web 前端](service-fabric-add-a-web-frontend.md)
 

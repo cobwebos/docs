@@ -18,12 +18,13 @@
 
 # 如何
 ## 计划
-### [部署先决条件](site-recovery-prereq.md)
+### [Azure 复制的先决条件](site-recovery-prereq.md)
 ### [规划网络基础结构](site-recovery-network-design.md)
+### [规划网络映射](site-recovery-network-mapping.md)
 ### [规划容量以及缩放 VMware 在 Azure 中的复制](site-recovery-plan-capacity-vmware.md)
 ### [用于将 VMware 复制到 Azure 的 Deployment Planner](site-recovery-deployment-planner.md)
 ### [用于 Hyper-V 复制的 Capacity Planner](site-recovery-capacity-planner.md)
-### [基于角色的访问控制](site-recovery-role-based-linked-access-control.md)
+### [使用基于角色的访问权限控制 VM 复制](site-recovery-role-based-linked-access-control.md)
 
 ## 配置
 ### [设置源环境](site-recovery-set-up-vmware-to-azure.md)
@@ -53,6 +54,8 @@
 ### [RDS](site-recovery-workload.md#protect-rds)
 ### [Exchange](site-recovery-workload.md#protect-exchange)
 ### [SAP](site-recovery-workload.md#protect-sap)
+### [基于 IIS 的 Web 应用程序](site-recovery-iis.md)
+### [Citrix XenApp 和 XenDesktop](site-recovery-citrix-xenapp-and-xendesktop.md)
 ### [其他工作负荷](site-recovery-workload.md#workload-summary)
 ## 自动复制
 ### [将 Hyper-V 自动复制到 Azure（不包含 VMM）](site-recovery-deploy-with-powershell-resource-manager.md)
