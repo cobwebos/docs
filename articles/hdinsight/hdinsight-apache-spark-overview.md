@@ -18,10 +18,10 @@ ms.topic: get-started-article
 ms.date: 05/12/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 020cb0193e48b49524318df6e29c7613753a3863
+ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
+ms.openlocfilehash: 4dc9729f036c0c497dfd53342aa92c983126e7d1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 05/20/2017
 
 
 ---
@@ -30,8 +30,6 @@ ms.lasthandoff: 05/15/2017
 本文介绍 HDInsight 上的 Spark。 <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> 是一种开放源代码并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能。 HDInsight 上的 Spark 群集兼容 Azure 存储 (WASB) 和 Azure Data Lake Store，因此可以通过 Spark 群集轻松处理 Azure 中存储的现有数据。
 
 在 HDInsight 上创建 Spark 群集时，将会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集只需要约十分钟。 系统将要处理的数据存储在 Azure 存储或 Azure Data Lake Store 中。 请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。
-
-![什么是 HDInsight 上的 Apache Spark？](./media/hdinsight-apache-spark-overview/hdinsight-introduction-to-spark.png "HDInsight 上的 Spark 简介")
 
 **若要在 HDInsight 上创建 Spark 群集**，请参阅[快速入门：在 HDInsight 上使用 Jupyter 创建 Spark 群集并运行交互式查询](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
