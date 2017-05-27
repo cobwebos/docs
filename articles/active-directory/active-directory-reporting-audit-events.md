@@ -77,10 +77,10 @@ Azure Active Directory 审核报告可帮助客户识别其 Azure Active Directo
 | RemoveRoleScopedMemberFromRole |已从角色中删除带有范围的成员。 |
 | **设备事件（所有新事件）** | |
 | AddDevice |已添加设备。 |
-| UpdateDevice |已更新设备。 若要查看哪些设备属性已更新，请参阅以下部分中的“已审核设备属性”[](#update-device-attributes) |
+| UpdateDevice |已更新设备。 若要查看哪些设备属性已更新，请参阅以下部分中的[已审核设备属性](#update-device-attributes) |
 | DeleteDevice |已删除设备 |
 | AddDeviceConfiguration |已添加设备配置。 |
-| UpdateDeviceConfiguration |已更新设备配置。 若要查看哪些设备配置属性已更新，请参阅以下部分中的“已审核设备配置属性”[](#update-device-configuration-attributes) |
+| UpdateDeviceConfiguration |已更新设备配置。 若要查看哪些设备配置属性已更新，请参阅以下部分中的[已审核设备配置属性](#update-device-configuration-attributes) |
 | DeleteDeviceConfiguration |已删除设备配置。 |
 | AddRegisteredOwner |已将注册的所有者添加到设备。 |
 | AddRegisteredUsers |已将注册的用户添加到设备。 |
