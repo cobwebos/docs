@@ -12,19 +12,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 05/16/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 70c7e2334336be78d26784815fb988ce1d22eb12
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 25fca1ac29817fc6d72dd5ec5033a2962f3f0be4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出本地或 IaaS (Azure VM) 中的 SQL Server
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出本地 SQL Server 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
 
-可将数据从任一支持的源数据存储移到 SQL Server 数据库，或从 SQL Server 数据库移到任一支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 
+## <a name="supported-scenarios"></a>支持的方案
+可以将数据**从 SQL Server 数据库**复制到以下数据存储：
+
+[!INCLUDE [data-factory-supported-sink](../../includes/data-factory-supported-sinks.md)]
+
+可以将数据从以下数据存储复制**到 SQL Server 数据库**：
+
+[!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>支持的 SQL Server 版本
 此 SQL Server 连接器支持同时使用 SQL 身份验证和 Windows 身份验证，从/向本地或 Azure IaaS 中托管的以下版本的实例复制数据：SQL Server 2016、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008、SQL Server 2005
@@ -45,11 +53,12 @@ ms.lasthandoff: 04/12/2017
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
 
-1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
-2. 创建**数据集**以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
+1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。 
+2. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 SQL Server 数据库复制到 Azure Blob 存储，可创建两个链接服务，将 SQL Server 数据库和 Azure 存储帐户链接到数据工厂。 有关特定于 SQL Server 数据库的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。 
+3. 创建**数据集**以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 SQL Server 数据库中包含输入数据的 SQL 表。 创建了另一个数据集来指定 blob 容器和用于保存从 SQL Server 数据库复制的数据的文件夹。 有关特定于 SQL Server 数据库的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
+4. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，对复制活动使用 SqlSource 作为源，BlobSink 作为接收器。 同样，如果要从 Azure Blob 存储复制到 SQL Server 数据库，则在复制活动中使用 BlobSource 和 SqlSink。 有关特定于 SQL Server 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。 
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从本地 SQL Server 数据库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。 
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从本地 SQL Server 数据库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-from-and-to-sql-server)部分。 
 
 对于特定于 SQL Server 的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息： 
 
@@ -161,7 +170,7 @@ ms.lasthandoff: 04/12/2017
 | sqlWriterTableType |指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |表类型名称。 |否 |
 
 
-## <a name="json-examples"></a>JSON 示例
+## <a name="json-examples-for-copying-data-from-and-to-sql-server"></a>从/向 SQL Server 复制数据的 JSON 示例
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 以下示例演示如何将数据复制到 SQL Server 和 Azure Blob 存储，以及如何从 SQL Server 和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。     
 
 ## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>示例：将数据从 SQL Server 复制到 Azure Blob

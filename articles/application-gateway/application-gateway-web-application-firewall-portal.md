@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/03/2017
+ms.date: 05/03/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 9f16384a3944c3943dbfc094aaba37a24969e949
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 224aa0db2feb7a83bec5b4ec46140046d10f012e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -29,19 +30,17 @@ ms.lasthandoff: 03/30/2017
 > * [Azure 门户](application-gateway-web-application-firewall-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-web-application-firewall-powershell.md)
 
-Azure 应用程序网关中的 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序，使其免受常见 Web 攻击的威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。 Web 应用程序可以防止 OWASP 十大常见 Web 漏洞中的大部分漏洞。
+了解如何创建启用了 Web 应用程序防火墙的应用程序网关。
 
-Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。
-应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。
-若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
+Azure 应用程序网关中的 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序，使其免受常见 Web 攻击的威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。 Web 应用程序可以防止 OWASP 十大常见 Web 漏洞中的大部分漏洞。
 
 ## <a name="scenarios"></a>方案
 
 本文介绍两个方案：
 
-在第一个方案中，可了解如何[将 Web 应用程序防火墙添加到现有的应用程序网关](#add-web-application-firewall-to-an-existing-application-gateway)。
+在第一个方案中，了解如何[创建具有 Web 应用程序防火墙的应用程序网关](#create-an-application-gateway-with-web-application-firewall)
 
-在第二个方案中，可了解如何[创建具有 Web 应用程序防火墙的应用程序网关](#create-an-application-gateway-with-web-application-firewall)
+在第二个方案中，了解如何[将 Web 应用程序防火墙添加到现有的应用程序网关](#add-web-application-firewall-to-an-existing-application-gateway)。
 
 ![方案示例][scenario]
 
@@ -54,33 +53,31 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 
 ##<a name="add-web-application-firewall-to-an-existing-application-gateway"></a> 将 Web 应用程序防火墙添加到现有的应用程序网关
 
-此方案会更新现有的应用程序网关，以在阻止模式下支持 Web 应用程序防火墙。
+此示例会更新现有的应用程序网关，以在阻止模式下支持 Web 应用程序防火墙。
 
-### <a name="step-1"></a>步骤 1
+1. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击现有应用程序网关。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入名称， 轻松访问 DNS 区域。
 
-导航到 Azure 门户，然后选择现有的应用程序网关。
+   ![创建应用程序网关][1]
 
-![创建应用程序网关][1]
+1. 单击“Web 应用程序防火墙”并更新应用程序网关设置。 完成后，单击“保存”
 
-### <a name="step-2"></a>步骤 2
+    用于更新现有应用程序网关以支持 Web 应用程序防火墙的设置如下：
 
-单击“Web 应用程序防火墙”并更新应用程序网关设置。 完成后，单击“保存”
+   | **设置** | **值** | **详细信息**
+   |---|---|---|
+   |**升级到 WAF 层**| 已选中 | 这将应用程序网关的层设置为 WAF 层。|
+   |**防火墙状态**| Enabled | Enabled | 此设置在 WAF 上启用防火墙。|
+   |**防火墙模式** | 预防 | 此设置是指 Web 应用程序防火墙处理恶意流量的方式。 **检测**模式只记录事件，而**阻止**模式则会记录事件并停止恶意流量。|
+   |**规则集**|3.0|此设置确定用于保护后端池成员的[核心规则集](application-gateway-web-application-firewall-overview.md#core-rule-sets)。|
+   |**配置已禁用的规则**|多种多样|为了防止可能误报，此设置允许你禁用某些[规则和规则组](application-gateway-crs-rulegroups-rules.md)。|
 
-用于更新现有应用程序网关以支持 Web 应用程序防火墙的设置如下：
+    >[!NOTE]
+    > 将现有应用程序网关升级到 WAF SKU 时，SKU 大小将更改为“中型”。 配置完成后，可以重新配置此项。
 
-* **升级到 WAF 层** - 需要使用此设置配置 WAF。
-* **防火墙状态** - 此设置会禁用或启用 Web 应用程序防火墙。
-* **防火墙模式** - 此设置是指 Web 应用程序防火墙处理恶意流量的方式。 **检测**模式只记录事件，而**阻止**模式则会记录事件并停止恶意流量。
-* **规则集** - 此设置确定用于保护后端池成员的[核心规则集](application-gateway-web-application-firewall-overview.md#core-rule-sets)。
-* **配置已禁用的规则** - 为了防止可能误报，此设置允许你禁用某些[规则和规则组](application-gateway-crs-rulegroups-rules.md)。
+    ![显示基本设置的边栏选项卡][2-1]
 
->[!NOTE]
-> 将现有应用程序网关升级到 WAF SKU 时，SKU 大小将更改为“中型”。 配置完成后，可以重新配置此项。
-
-![显示基本设置的边栏选项卡][2]
-
-> [!NOTE]
-> 若要查看 Web 应用程序防火墙日志，必须启用诊断功能并选择 ApplicationGatewayFirewallLog。 进行测试时，可以选择 1 作为实例计数。 必须知道的是，2 以下的实例计数不受 SLA 支持，因此不建议使用。 使用 Web 应用程序防火墙时，无法使用小型网关。
+    > [!NOTE]
+    > 若要查看 Web 应用程序防火墙日志，必须启用诊断功能并选择 ApplicationGatewayFirewallLog。 进行测试时，可以选择 1 作为实例计数。 必须知道的是，2 以下的实例计数不受 SLA 支持，因此不建议使用。 使用 Web 应用程序防火墙时，无法使用小型网关。
 
 ## <a name="create-an-application-gateway-with-web-application-firewall"></a>创建具有 Web 应用程序防火墙的应用程序网关
 
@@ -91,97 +88,63 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 * 创建名为 Appgatewaysubnet 且使用 10.0.0.0/28 作为其 CIDR 块的子网。
 * 配置进行 SSL 卸载的证书。
 
-### <a name="step-1"></a>步骤 1
+1. 登录到 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[一个月免费试用版](https://azure.microsoft.com/free)
+1. 在门户的“收藏夹”窗格中，单击“新建”
+1. 在“新建”边栏选项卡中，单击“网络”。 在“网络”边栏选项卡中，单击“应用程序网关”，如下图所示：
+1. 导航到 Azure 门户，依次单击“新建” > “网络” > “应用程序网关”
 
-导航到 Azure 门户，依次单击“新建” > “网络” > “应用程序网关”
+    ![创建应用程序网关][1]
 
-![创建应用程序网关][1-1]
+1. 在显示的“基本信息”边栏选项卡中，输入以下值，然后单击“确定”：
 
-### <a name="step-2"></a>步骤 2
+   | **设置** | **值** | **详细信息**
+   |---|---|---|
+   |**Name**|AdatumAppGateway|应用程序网关的名称|
+   |**层**|WAF|可用值为标准和 WAF。 若要了解有关 WAF 的详细信息，请访问 [Web 应用程序防火墙](application-gateway-web-application-firewall-overview.md)。|
+   |**SKU 大小**|中型|选择标准层时，选项为小型、中型和大型。 选择 WAF 层时，选项只有中型和大型。|
+   |**实例计数**|2|实现高可用性时应用程序网关的实例数。 实例计数 1 仅应用于测试目的。|
+   |**订阅**|[你的订阅]|选择要在其中创建应用程序网关的订阅。|
+   |**资源组**|**新建：**AdatumAppGatewayRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#resource-groups) 这篇概述文章。|
+   |**位置**|美国西部||
 
-下一步，填写有关应用程序网关的基本信息。 请务必选择“WAF”作为层。 完成后，单击“确定”
+   ![显示基本设置的边栏选项卡][2-2]
 
-基本设置需要的信息如下：
+1. 在“虚拟网络”下的“设置”边栏选项卡中，单击“选择虚拟网络”。 这将打开“选择虚拟网络”边栏选项卡。  单击“新建”打开“创建虚拟网络”边栏选项卡。
 
-* **名称** - 应用程序网关的名称。
-* **层** - 应用程序网关的层，可用选项包括“标准”和“WAF”。 Web 应用程序防火墙仅在 WAF 层中提供。
-* **SKU 大小** - 此设置是指应用程序网关的大小，可用选项包括“中型”和“大型”。
-* **实例计数** - 实例的数目，此值应该是 **2** 到 **10** 之间的数字。
-* **资源组** - 用于保存应用程序网关的资源组，可以是现有资源组，也可以是新的资源组。
-* **位置** - 应用程序网关所在的区域，与资源组的位置相同。 *位置很重要，因为虚拟网络和公共 IP 必须与网关位于同一位置*。
+   ![选择虚拟网络][2]
 
-![显示基本设置的边栏选项卡][2-2]
+1. 在“创建虚拟网络”边栏选项卡中，输入以下值，然后单击“确定”。 这将关闭“创建虚拟网络”和“选择虚拟网络”边栏选项卡。 这也将用所选的子网填充“设置”边栏选项卡上的“子网”字段。
 
-> [!NOTE]
-> 进行测试时，可以选择 1 作为实例计数。 必须知道的是，2 以下的实例计数不受 SLA 支持，因此不建议使用。 Web 应用程序防火墙方案不支持小型网关。
+   |**设置** | **值** | **详细信息** |
+   |---|---|---|
+   |**Name**|AdatumAppGatewayVNET|应用程序网关的名称|
+   |**地址空间**|10.0.0.0/16| 这是用于虚拟网络的地址空间|
+   |**子网名称**|AppGatewaySubnet|应用程序网关子网的名称|
+   |**子网地址范围**|10.0.0.0/28| 此子网允许后端池成员的虚拟网络中存在多个附加子网|
 
-### <a name="step-3"></a>步骤 3
+1. 在“设置”边栏选项卡的“前端 IP 配置”下选择“公共”作为“IP 地址类型”
 
-定义基本设置以后，下一步是定义要使用的虚拟网络。 虚拟网络托管的应用程序也是通过应用程序网关进行负载均衡的应用程序。
+1. 在“设置”边栏选项卡的“公共 IP 地址”下，单击“选择一个公共 IP 地址”，这将打开“选择公共 IP 地址”边栏选项卡，然后单击“新建”。
 
-单击“选择虚拟网络”对虚拟网络进行配置。
+   ![选择公共 IP][3]
 
-![显示应用程序网关设置的边栏选项卡][3]
+1. 在“创建公共 IP 地址”边栏选项卡中，接受默认值，然后单击“确定”。 这将关闭“选择公共 IP 地址”边栏选项卡和“创建公共 IP 地址”边栏选项卡，并用所选的公共 IP 地址填充“公共 IP 地址”。
 
-### <a name="step-4"></a>步骤 4
+1. 在“设置”边栏选项卡的“侦听器配置”下，在“协议”下方单击“HTTP”。 若要使用“https”，需要提供证书。 需要提供证书的私钥，这样就需要提供证书的 .pfx 导出结果以及文件的密码。
 
-在“选择虚拟网络”边栏选项卡中，单击“新建”
+1. 配置 **WAF** 特定设置。
 
-虽然此方案未进行说明，但此时可选择现有的虚拟网络。  如果使用现有的虚拟网络，请务必了解，需要空的子网或只限应用程序网关资源的子网才能使用该虚拟网络。
+   |**设置** | **值** | **详细信息** |
+   |---|---|---|
+   |**防火墙状态**| Enabled| 此设置可打开或关闭 WAF。|
+   |**防火墙模式** | 预防| 此设置确定 WAF 对恶意流量采取的操作。 如果选择**检测**，只会记录流量。  如果选择“阻止”，会记录并停止流量，同时返回“403 未授权”响应。|
 
-![选择虚拟网络边栏选项卡][4]
 
-### <a name="step-5"></a>步骤 5
+1. 查看“摘要”页，然后单击“确定”。  现在会让应用程序网关排队，然后创建它。
 
-在“创建虚拟网络”边栏选项卡中填写网络信息，如前面的[方案](#scenario)说明中所述。
+1. 创建应用程序网关以后，可在门户中导航到该网关，然后继续进行配置。
 
-![使用输入的信息创建虚拟网络边栏选项卡][5]
-
-### <a name="step-6"></a>步骤 6
-
-创建虚拟网络后，下一步是定义应用程序网关的前端 IP。 此时，你可以为前端选择公共 IP 地址或专用 IP 地址。 具体选择取决于应用程序是面向 Internet 的还是仅供内部使用的。 本方案假定使用的是公共 IP 地址。 若要选择专用 IP 地址，可单击“专用”按钮。 此时系统会选择自动分配的 IP 地址，也可以单击“选择特定的专用 IP 地址”复选框手动输入一个。
-
-单击“选择公共 IP 地址”。 如果现有的公共 IP 地址可用，则此时可以选择该地址。在本方案中，你需要创建新的公共 IP 地址。 单击“新建”
-
-![选择公共 IP 地址边栏选项卡][6]
-
-### <a name="step-7"></a>步骤 7
-
-接下来为公共 IP 地址提供一个友好名称，然后单击“确定”
-
-![创建公共 IP 地址边栏选项卡][7]
-
-### <a name="step-8"></a>步骤 8
-
-接下来，设置侦听器配置。  如果使用的是“http”，不需进行任何配置，单击“确定”即可。 若要使用“https”，需要进一步配置。
-
-若要使用“https”，需要提供证书。 需要提供证书的私钥，这样就需要提供证书的 .pfx 导出结果以及文件的密码。
-
-单击“HTTPS”，然后单击“上载 PFX 证书”文本框旁边的“文件夹”图标。
-导航到文件系统中的 .pfx 证书文件。 选中该文件后，为证书提供一个友好名称，然后键入 .pfx 文件的密码。
-
-完成后，单击“确定”查看应用程序网关的设置。
-
-![“设置”边栏选项卡上的“侦听器配置”部分][8]
-
-### <a name="step-9"></a>步骤 9
-
-配置 **WAF** 特定设置。
-
-* **防火墙状态** - 此设置可打开或关闭 WAF。
-* **防火墙模式** - 此设置确定 WAF 对恶意流量采取的操作。 如果选择**检测**，只会记录流量。  如果选择“阻止”，会记录并停止流量，同时返回“403 未授权”响应。
-
-![Web 应用程序防火墙设置][9]
-
-### <a name="step-10"></a>步骤 10
-
-查看“摘要”页，然后单击“确定”。  现在会让应用程序网关排队，然后创建它。
-
-### <a name="step-11"></a>步骤 11
-
-创建应用程序网关以后，可在门户中导航到该网关，然后继续进行配置。
-
-![应用程序网关资源视图][10]
+    ![应用程序网关资源视图][10]
 
 这些步骤会创建基本的应用程序网关，提供侦听器、后端池、后端 http 设置以及规则的默认设置。 预配成功后，即可根据部署修改这些设置
 
@@ -199,15 +162,9 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 <!--Image references-->
 [1]: ./media/application-gateway-web-application-firewall-portal/figure1.png
 [2]: ./media/application-gateway-web-application-firewall-portal/figure2.png
-[1-1]: ./media/application-gateway-web-application-firewall-portal/figure1-1.png
+[2-1]: ./media/application-gateway-web-application-firewall-portal/figure2-1.png
 [2-2]: ./media/application-gateway-web-application-firewall-portal/figure2-2.png
 [3]: ./media/application-gateway-web-application-firewall-portal/figure3.png
-[4]: ./media/application-gateway-web-application-firewall-portal/figure4.png
-[5]: ./media/application-gateway-web-application-firewall-portal/figure5.png
-[6]: ./media/application-gateway-web-application-firewall-portal/figure6.png
-[7]: ./media/application-gateway-web-application-firewall-portal/figure7.png
-[8]: ./media/application-gateway-web-application-firewall-portal/figure8.png
-[9]: ./media/application-gateway-web-application-firewall-portal/figure9.png
 [10]: ./media/application-gateway-web-application-firewall-portal/figure10.png
 [scenario]: ./media/application-gateway-web-application-firewall-portal/scenario.png
 

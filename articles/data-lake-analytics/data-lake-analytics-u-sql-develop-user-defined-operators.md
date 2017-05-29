@@ -1,5 +1,5 @@
 ---
-title: "为 Azure Data Lake Analytics 作业开发 U-SQL 用户定义的运算符 | Microsoft Docs"
+title: "开发 U-SQL 用户定义的运算符 (UDO) | Microsoft Docs"
 description: "了解如何开发可在 Data Lake Analytics 作业中使用和重复使用的用户定义的运算符。 "
 services: data-lake-analytics
 documentationcenter: 
@@ -14,24 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ef0fa131cc665df68e13ee7be58330f571f3ac90
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ef310a094667f390addd5d0df3dc68d67100d2f4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="develop-u-sql-user-defined-operators-for-azure-data-lake-analytics-jobs"></a>为 Azure Data Lake Analytics 作业开发 U-SQL 用户定义的运算符
-了解如何开发可在 Data Lake Analytics 作业中使用和重复使用的用户定义的运算符。 你将开发一个转换国家/地区名称的自定义运算符。
+# <a name="develop-u-sql-user-defined-operators-udos"></a>开发 U-SQL 用户定义的运算符 (UDO)
+了解如何开发用户定义的运算符以处理 U-SQL 作业中的数据。
 
 有关为 U-SQL 开发通用程序集的说明，请参阅[为 Azure Data Lake Analytics 作业开发 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)
-
-## <a name="prerequisites"></a>先决条件
-* Visual Studio 2015、Visual Studio 2013 Update 4 或安装有 Visual C++ 的 Visual Studio 2012
-* 用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本。  可以使用 Web 平台安装程序安装它。
-* Data Lake Analytics 帐户。  请参阅[通过 Azure 门户实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)。
-* 请通读 [Get started with Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md)（Azure Data Lake Analytics U-SQL Studio 入门）教程。
-* 连接到 Azure。
-* 若要上传源数据，请参阅 [Get started with Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md)（Azure Data Lake Analytics U-SQL Studio 入门）。 
 
 ## <a name="define-and-use-user-defined-operator-in-u-sql"></a>在 U-SQL 中定义和使用用户定义的运算符
 **创建和提交 U-SQL 作业**
@@ -99,7 +93,7 @@ ms.openlocfilehash: ef0fa131cc665df68e13ee7be58330f571f3ac90
                 }
             }
         }
-6. 打开 Script.usql，然后粘贴以下 U-SQL 脚本：
+6. 打开 **Script.usql**，然后粘贴以下 U-SQL 脚本：
 
         @drivers =
             EXTRACT UserID      string,
@@ -128,13 +122,14 @@ ms.openlocfilehash: ef0fa131cc665df68e13ee7be58330f571f3ac90
         OUTPUT @drivers_CountryName
             TO "/Samples/Outputs/Drivers.csv"
             USING Outputters.Csv(Encoding.Unicode);
-7. 在“解决方案资源管理器”中，右键单击“Script.usql”，然后单击“生成脚本”。
-8. 在“解决方案资源管理器”中，右键单击“Script.usql”，然后单击“提交脚本”。
-9. 如果尚未连接到你的 Azure 订阅，将提示输入 Azure 帐户凭据。
-10. 单击“提交”。 完成提交后，“结果”窗口中会出现提交结果和作业链接。
-11. 必须单击“刷新”按钮才能看到最新的作业状态和刷新屏幕。
+7. 指定 Data Lake Analytics 帐户、数据库和架构。
+8. 在“解决方案资源管理器”中，右键单击“Script.usql”，然后单击“生成脚本”。
+9. 在“解决方案资源管理器”中，右键单击“Script.usql”，然后单击“提交脚本”。
+10. 如果尚未连接到 Azure 订阅，系统将提示输入 Azure 帐户凭据。
+11. 单击“提交”。 完成提交后，“结果”窗口中会出现提交结果和作业链接。
+12. 单击“刷新”按钮以查看最新的作业状态和刷新屏幕。
 
-**查看作业输出**
+**查看输出**
 
 1. 在“服务器资源管理器”中依次展开 “Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”，右键单击“默认存储”，然后单击“资源管理器”。
 2. 展开示例、展开输出，然后双击 “Drivers.csv”。
@@ -143,9 +138,4 @@ ms.openlocfilehash: ef0fa131cc665df68e13ee7be58330f571f3ac90
 * [通过 PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
 * [通过 Azure 门户实现 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
 * [使用适用于 Visual Studio 的工具开发 U-SQL 应用程序](data-lake-analytics-data-lake-tools-get-started.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

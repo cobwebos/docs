@@ -15,10 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: aca0e4cfdcfb3e3ed2e69ad8153b4c965b299806
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: cb2d789a53ee2fa16db8d2553086a18043d4976e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 
@@ -161,7 +162,7 @@ WITH
 使用 PolyBase 加载数据时将进行强类型化。 这意味着所引入的每行数据必须满足表架构定义。
 如果某个给定行不符合架构定义，则该行将被拒绝加载。
 
-使用 Reject Type 和 Reject Value 可以定义在最终表中必须存在的数据行数或数据的百分比。
+使用 REJECT_TYPE 和 REJECT_VALUE 可以定义在最终表中必须存在的数据行数或数据的百分比。
 在加载过程中，如果达到拒绝值，则加载将失败。 行被拒绝的最常见原因是架构定义不匹配。
 例如，当文件中的数据是字符串时，如果错误地为列指定了 int 的架构，则每一行都将无法加载。
 

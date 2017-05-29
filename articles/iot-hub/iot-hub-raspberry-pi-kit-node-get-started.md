@@ -18,10 +18,11 @@ ms.workload: na
 ms.date: 4/14/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 6f09d2244d0a1f6dbd7cff164c6d9e35379ee131
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: acd5221b5cef9f64d681af9cbe7ea431334948b5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -106,7 +107,7 @@ ms.lasthandoff: 04/19/2017
    ![在 Raspberry Pi 上启用 I2C 和 SSH](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-若要启用 SSH 和 I2C，可在 [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) 和 [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2) 中找到更多参考文档。
+若要启用 SSH 和 I2C，可在 [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) 和 [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c) 中找到更多参考文档。
 
 ### <a name="connect-the-sensor-to-pi"></a>将传感器连接到 Pi
 
@@ -132,18 +133,40 @@ ms.lasthandoff: 04/19/2017
 
 ![连接在一起的 Pi 和 BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
-通过使用微型 USB 电缆和电源为 Pi 通电。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/learning/software-guide/wifi/)将 Pi 连接到无线网络。
+### <a name="connect-pi-to-the-network"></a>将 Pi 连接到网络
+
+通过使用微型 USB 电缆和电源为 Pi 通电。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/learning/software-guide/wifi/)将 Pi 连接到无线网络。 将 Pi 成功连接到网络后，需要记下 [Pi 的 IP 地址](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)。
 
 ![已连接到有线网络](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
+> [!NOTE]
+> 请确保将 Pi 与计算机连接到同一网络。 例如，如果计算机连接到无线网络，而 Pi 连接到有线网络，则在 devdisco 输出中可能看不到 IP 地址。
 
 ## <a name="run-a-sample-application-on-pi"></a>在 Pi 上运行示例应用程序
 
 ### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>克隆示例应用程序，并安装必备组件包
 
 1. 使用主计算机的以下任一 SSH 客户端连接到 Raspberry Pi。
-    - [PuTTY](http://www.putty.org/) for Windows。
-    - Ubuntu 或 macOS 上的内置 SSH 客户端。
+    - [PuTTY](http://www.putty.org/) for Windows。 需要 Pi 的 IP 地址，以便通过 SSH 连接它。
+    - Ubuntu 或 macOS 上的内置 SSH 客户端。 可能需要运行 `ssh pi@<ip address of pi>`，以便通过 SSH 连接 Pi。
+
+   > [!NOTE] 
+   默认用户名是 `pi`，密码是 `raspberry`。
+
+1. 将 Node.js 和 NPM 安装到 Pi。
+   
+   首先应使用以下命令查看 Node.js 版本。 
+   
+   ```bash
+   node -v
+   ```
+
+   如果版本低于 4.x，或者 Pi 上没有 Node.js，则运行以下命令以安装或更新 Node.js。
+
+   ```bash
+   curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
+   sudo apt-get -y install nodejs
+   ```
 
 1. 通过运行以下命令，克隆示例应用程序：
 
@@ -154,8 +177,8 @@ ms.lasthandoff: 04/19/2017
 1. 通过运行以下命令，安装所有程序包。 它包括 Azure IoT 设备 SDK、BME280 传感器库和接线 Pi 库。
 
    ```bash
-   cd iot-hub-node-raspberry-pi-clientapp
-   npm install
+   cd iot-hub-node-raspberrypi-client-app
+   sudo npm install
    ```
    > [!NOTE] 
    完成此安装过程可能需要几分钟，具体取决于网络连接情况。
@@ -170,9 +193,9 @@ ms.lasthandoff: 04/19/2017
 
    ![配置文件](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
-   此文件中有两个可以配置的项。 第一个宏项是 `interval`，它确定发送到云的两条消息之间的时间间隔。 第二个宏项是 `simulatedData`，它是一个布尔值，指示是否使用模拟的传感器数据。
+   此文件中有两个可以配置的项。 第一个宏项是 `interval`，它确定发送到云的两条消息之间的时间间隔。 第二个是 `simulatedData`，它是一个布尔值，指示是否使用模拟的传感器数据。
 
-   如果**没有传感器**，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建并使用模拟的传感器数据。
+   如果没有传感器，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
 
 1. 通过按“Control-O”>“Enter”>“Control-X”保存并退出。
 
@@ -185,7 +208,7 @@ ms.lasthandoff: 04/19/2017
    ```
 
    > [!NOTE] 
-   请确保将设备连接字符串复制并粘贴到单引号中。
+   确保将设备连接字符串复制并粘贴到单引号中。
 
 
 应看到以下输出，该输出显示传感器数据和发送到 IoT 中心的消息。
@@ -194,6 +217,6 @@ ms.lasthandoff: 04/19/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-此时已运行收集传感器数据并将其发送到 IoT 中心的示例应用程序。
+此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

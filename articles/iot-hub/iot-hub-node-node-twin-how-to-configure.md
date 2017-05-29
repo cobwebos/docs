@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
-translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: f8a6705879905d5cf419fc8c5c2322cb5536d244
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -38,7 +40,7 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
 * Node.js 版本 0.10.x 或更高版本。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
-如果已按照[设备克隆入门][lnk-twin-tutorial]教程执行了操作，则你已经有一个 IoT 中心和一个名为 **myDeviceId** 的设备标识；你可以跳到[创建模拟设备应用][lnk-how-to-configure-createapp]部分。
+如果已按照[设备孪生入门][lnk-twin-tutorial]教程执行了操作，则你已经有一个 IoT 中心和一个名为 **myDeviceId** 的设备标识；你可以跳到[创建模拟设备应用][lnk-how-to-configure-createapp]部分。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -92,7 +94,7 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
             }
         });
    
-    **客户端**对象公开从设备与设备克隆进行交互所需的所有方法。 上面的代码在初始化 **Client** 对象后会检索 **myDeviceId** 的设备克隆，并在所需属性上附加用于更新的处理程序。 该处理程序通过比较 configId 验证是否有实际的配置更改，然后调用用于启动配置更改的方法。
+    **客户端**对象公开从设备与设备孪生进行交互所需的所有方法。 上面的代码在初始化 **Client** 对象后会检索 **myDeviceId** 的设备孪生，并在所需属性上附加用于更新的处理程序。 该处理程序通过比较 configId 验证是否有实际的配置更改，然后调用用于启动配置更改的方法。
    
     请注意，为了简单起见，上面的代码使用初始配置的硬编码默认值。 实际的应用可能会从本地存储加载该配置。
    
@@ -141,7 +143,7 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
             });
         };
    
-    **initConfigChange** 方法使用配置更新请求更新本地设备孪生对象的报告属性，并将状态设置为“等待中”，然后更新服务的设备孪生。 成功更新设备克隆后，它会模拟在执行 **completeConfigChange** 期间终止的长时间运行的进程。 此方法会更新本地设备克隆的报告属性，将状态设置为 **Success** 并删除 **pendingConfig** 对象。 然后，它会更新服务上的设备克隆。
+    **initConfigChange** 方法使用配置更新请求更新本地设备孪生对象的报告属性，并将状态设置为“等待中”，然后更新服务的设备孪生。 成功更新设备孪生后，它会模拟在执行 **completeConfigChange** 期间终止的长时间运行的进程。 此方法会更新本地设备孪生的报告属性，将状态设置为 **Success** 并删除 **pendingConfig** 对象。 然后，它会更新服务上的设备孪生。
    
     请注意，为了节省带宽，仅通过指定要修改的属性（在上述代码中名为 **patch**）而不是替换整个文档来更新报告属性。
    
@@ -156,7 +158,7 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
     你应该看到消息 `retrieved device twin`。 保持运行该应用。
 
 ## <a name="create-the-service-app"></a>创建服务应用
-在本部分中，你将创建一个 Node.js 控制台应用，它会使用新的遥测配置对象更新与 **myDeviceId** 关联的设备克隆的*所需属性*。 然后，它查询存储在 IoT 中心的设备克隆，并显示所需的设备配置与所报告的设备配置之间的差异。
+在本部分中，你将创建一个 Node.js 控制台应用，它会使用新的遥测配置对象更新与 **myDeviceId** 关联的设备孪生的*所需属性*。 然后，它查询存储在 IoT 中心的设备孪生，并显示所需的设备配置与所报告的设备配置之间的差异。
 
 1. 创建新的名为 **setdesiredandqueryapp** 的空文件夹。 在命令提示符处，使用以下命令在 **setdesiredandqueryapp** 文件夹中创建新的 package.json 文件。 接受所有默认值：
    
@@ -204,10 +206,10 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
             }
         });
 
-    **Registry** 对象公开从服务与设备克隆进行交互所需的所有方法。 前面的代码在初始化 **Registry** 对象后检索 **myDeviceId** 的设备克隆，并使用新的遥测配置对象更新其所需属性。 随后，它每 10 秒调用一次 **queryTwins** 函数。
+    **Registry** 对象公开从服务与设备孪生进行交互所需的所有方法。 前面的代码在初始化 **Registry** 对象后检索 **myDeviceId** 的设备孪生，并使用新的遥测配置对象更新其所需属性。 随后，它每 10 秒调用一次 **queryTwins** 函数。
 
     > [!IMPORTANT]
-    > 此应用程序每 10 秒查询一次 IoT 中心以用于说明目的。 使用查询跨多个设备生成面向用户的报表，而不检测更改。 如果解决方案需要设备事件的实时通知，请使用[“设备到云”消息][lnk-d2c]。
+    > 此应用程序每 10 秒查询一次 IoT 中心以用于说明目的。 使用查询跨多个设备生成面向用户的报表，而不检测更改。 如果解决方案需要设备事件的实时通知，请使用[孪生通知][lnk-twin-notifications]。
     > 
     >。
 
@@ -233,7 +235,7 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
             });
         };
    
-    前面的代码查询存储在 IoT 中心内的设备克隆，并打印所需遥测配置和报告遥测配置。 请参阅 [IoT 中心查询语言][lnk-query]以了解如何跨所有设备生成丰富的报告。
+    前面的代码查询存储在 IoT 中心内的设备孪生，并打印所需遥测配置和报告遥测配置。 请参阅 [IoT 中心查询语言][lnk-query]以了解如何跨所有设备生成丰富的报告。
 2. 在 **SimulateDeviceConfiguration.js** 运行的情况下，使用以下方法运行应用程序：
    
         node SetDesiredAndQuery.js 5m
@@ -241,7 +243,7 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
     你应该看到报告的配置从“**成功**”更改为“**挂起**”，再更改回“**成功**”，此时新的活动发送频率已变为五分钟而不是 24 小时。
    
    > [!IMPORTANT]
-   > 设备报告操作与查询结果之间最多存在一分钟的延迟。 这是为了使查询基础结构可以采用非常大的规模来工作。 若要检索单个设备克隆的一致视图，请使用 **Registry** 类中的 **getDeviceTwin** 方法。
+   > 设备报告操作与查询结果之间最多存在一分钟的延迟。 这是为了使查询基础结构可以采用非常大的规模来工作。 若要检索单个设备孪生的一致视图，请使用 **Registry** 类中的 **getDeviceTwin** 方法。
    > 
    > 
 
@@ -260,7 +262,7 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
 
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-query]: iot-hub-devguide-query-language.md
-[lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
+[lnk-twin-notifications]: iot-hub-devguide-device-twins.md#back-end-operations
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
@@ -268,16 +270,11 @@ ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
 [lnk-iothub-getstarted]: iot-hub-node-node-getstarted.md
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
 [lnk-how-to-configure-createapp]: iot-hub-node-node-twin-how-to-configure.md#create-the-simulated-device-app
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

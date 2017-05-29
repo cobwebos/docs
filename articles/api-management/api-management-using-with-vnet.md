@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 21cdfbbc457aad1cd3b1a5b20745eee4286a78bb
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: cf2a063acb2a36af2ff71f45159b2e23c9971b32
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -94,8 +94,7 @@ ms.lasthandoff: 04/27/2017
 * **自定义 DNS 服务器设置**：API 管理服务依赖于多项 Azure 服务。 当 API 管理托管在包含自定义 DNS 服务器的 VNET 中时，API 管理需要解析这些 Azure 服务的主机名。 请根据[此指南](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)进行自定义 DNS 设置。 有关参考信息，请参阅下面的端口表和其他网络要求。
 
 > [!IMPORTANT]
-> 如果对 VNET 使用自定义 DNS 服务器，建议在向其部署 API 管理服务**之前**完成该设置。 否则需要重启托管该服务的 CloudService，供其选取新的 DNS 服务器设置。
->
+> 如果对 VNET 使用自定义 DNS 服务器，建议在向其部署 API 管理服务**之前**完成该设置。 否则，需要每次通过运行[应用网络配置操作](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementservices#ApiManagementServices_ApplyNetworkConfigurationUpdates)更改 DNS 服务器时更新 API 管理服务
 
 * **API 管理所需的端口**：可以使用[网络安全组][Network Security Group]控制其中部署了 API 管理的子网的入站和出站流量。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。 在 VNET 中使用 API 管理时，另一个常见的错误配置问题是阻止了这些端口中的一个或多个。
 
@@ -109,13 +108,14 @@ ms.lasthandoff: 04/27/2017
 | * / 1433 |出站 |TCP |与 Azure SQL 的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
 | * / 11000 - 11999 |出站 |TCP |与 Azure SQL V12 的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
 | * / 14000 - 14999 |出站 |TCP |与 Azure SQL V12 的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
-| * / 9350 - 9354 |出站 |TCP |与服务总线的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
-| * / 5671 |出站 |AMQP |与事件中心策略日志记录的依赖项关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| * / 5671 |出站 |AMQP |事件中心策略日志和监视代理的依赖项 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
 | 6381 - 6383 / 6381 - 6383 |入站和出站 |UDP |与 Redis 缓存的依赖关系 |VIRTUAL_NETWORK/VIRTUAL_NETWORK |外部和内部 |-
 | * / 445 |出站 |TCP |与适用于 GIT 的 Azure 文件共享的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
 | * / * | 入站 |TCP |Azure 基础结构负载均衡器 | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK |外部和内部 |
 
 * **SSL 功能**：若要启用 SSL 证书链构建和验证，API 管理服务需要到 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 的出站网络连接。
+
+* **指标和运行状况监视**：出站网络连接到 Azure 监视终结点，以便在以下域下解析：global.metrics.nsatc.net、shoebox2.metrics.nsatc.net、prod3.metrics.nsatc.net。
 
 * **ExpressRoute 设置**：一种常见的客户配置是定义其自己的默认路由 (0.0.0.0/0)，以强制出站 Internet 流量改为流向本地。 此流量流一定会中断与 Azure API 管理的连接，因为已在本地阻止出站流量，或者已 NAT 到不再与各种 Azure 终结点一起工作的一组无法识别的地址。 解决方案是在包含 Azure API 管理的子网上定义一个（或多个）用户定义的路由 ([UDR][UDRs])。 UDR 定义了要遵循的子网特定路由，而不是默认路由。
   如果可能，建议使用以下配置：

@@ -12,19 +12,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 05/04/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: c2616c6ff91a8fe78d60ed3bbae90b0739a6c104
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 4bc3ab14d7b2960a0732743edc31e12eb320b5ad
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
 # <a name="move-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>使用 Azure Data Factory 将数据移入和移出 Azure SQL 数据库
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure SQL 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。  
 
-可将数据从任一支持的源数据存储复制到 Azure SQL 数据库，或从 Azure SQL 数据库复制到任一支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。
+## <a name="supported-scenarios"></a>支持的方案
+可以将数据**从 Azure SQL 数据库**复制到以下数据存储：
+
+[!INCLUDE [data-factory-supported-sinks](../../includes/data-factory-supported-sinks.md)]
+
+可以将数据从以下数据存储复制**到 Azure SQL 数据库**：
+
+[!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-authentication-type"></a>支持的身份验证类型
 Azure SQL 数据库连接器支持基本身份验证。
@@ -38,11 +46,12 @@ Azure SQL 数据库连接器支持基本身份验证。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
 
-1. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。
-2. 创建**数据集**以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
+1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。 
+2. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure SQL 数据库，可创建两个链接服务，将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂。 有关特定于 Azure SQL 数据库的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。 
+3. 创建**数据集**以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Azure SQL 数据库中用于保存从 Blob 存储复制的数据的 SQL 表。 有关特定于 Azure Data Lake Store 的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
+4. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，SqlSink 作为接收器。 同样，如果从 Azure SQL 数据库复制到 Azure Blob 存储，则在复制活动中使用 SqlSource 和 BlobSink。 有关特定于 Azure SQL 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure SQL 数据库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。 
+使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure SQL 数据库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-sql-database)部分。 
 
 对于特定于 Azure SQL 数据库的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息： 
 
@@ -158,10 +167,10 @@ GO
 }
 ```
 
-## <a name="json-examples"></a>JSON 示例
+## <a name="json-examples-for-copying-data-to-and-from-sql-database"></a>向/从 SQL 数据库复制数据的 JSON 示例
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何在 Azure SQL 数据库和 Azure Blob 存储中复制和粘贴数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
-## <a name="example-copy-data-from-azure-sql-database-to-azure-blob"></a>示例：将数据从 Azure SQL 数据库复制到 Azure Blob
+### <a name="example-copy-data-from-azure-sql-database-to-azure-blob"></a>示例：将数据从 Azure SQL 数据库复制到 Azure Blob
 此示例定义以下数据工厂实体：
 
 1. [AzureSqlDatabase](#linked-service-properties) 类型的链接服务。
@@ -353,7 +362,7 @@ GO
 
 有关 SqlSource 和 BlobSink 支持的属性列表，请参阅 [Sql Source](#sqlsource) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 部分。
 
-## <a name="example-copy-data-from-azure-blob-to-azure-sql-database"></a>示例：将数据从 Azure Blob 复制到 Azure SQL 数据库
+### <a name="example-copy-data-from-azure-blob-to-azure-sql-database"></a>示例：将数据从 Azure Blob 复制到 Azure SQL 数据库
 此示例定义以下数据工厂实体：  
 
 1. [AzureSqlDatabase](#linked-service-properties) 类型的链接服务。

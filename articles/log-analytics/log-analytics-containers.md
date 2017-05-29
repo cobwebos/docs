@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 05/08/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: f5c5abc988cd363cafe8c07f83eb2686a83ee1a2
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 05dfdc3491e6c7f838f5e7e2c16951bc1328e32b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -44,11 +45,10 @@ ms.lasthandoff: 04/25/2017
 
 可以在 [GitHub](https://github.com/Microsoft/OMS-docker) 上查看容器主机支持的 Docker 和 Linux 操作系统版本。
 
-如果你的某个 Kubernetes 群集 使用 Azure 容器服务，请前往[使用 Microsoft Operations Management Suite (OMS) 监视 Azure 容器服务群集](../container-service/container-service-kubernetes-oms.md)了解详细信息。
-
-如果你拥有 Azure 容器服务 DC/OS 群集，请前往[通过 Operations Management Suite 监视 Azure 容器服务 DC/OS 群集](../container-service/container-service-monitoring-oms.md)了解详细信息。
-
-请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。
+- 如果你的某个 Kubernetes 群集 使用 Azure 容器服务，请前往[使用 Microsoft Operations Management Suite (OMS) 监视 Azure 容器服务群集](../container-service/container-service-kubernetes-oms.md)了解详细信息。
+- 如果你拥有 Azure 容器服务 DC/OS 群集，请前往[通过 Operations Management Suite 监视 Azure 容器服务 DC/OS 群集](../container-service/container-service-monitoring-oms.md)了解详细信息。
+- 如果在 Service Fabric 中使用容器，请在 [Azure Service Fabric 概述](../service-fabric/service-fabric-overview.md)中了解更多信息。
+- 请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。
 
 > [!IMPORTANT]
 > 在你在容器主机上安装 [OMS Agent for Linux](log-analytics-linux-agents.md) **之前**，你的主机上必须运行 Docker。 如果你在安装 Docker 之前已经安装了代理，则需要重新安装 OMS Agent for Linux。 有关 Docker 的详细信息，请参阅 [Docker 网站](https://www.docker.com)。
@@ -59,15 +59,23 @@ ms.lasthandoff: 04/25/2017
 
 ## <a name="configure-settings-for-a-linux-container-host"></a>配置 Linux 容器主机的设置
 
+支持的 Linux 版本：
+
+- Docker 1.11 到 Docker 1.13
+- Docker CE 和 EE v17.03
+
+
 支持将以下 x64 Linux 分发用作容器主机：
 
 - Ubuntu 14.04 LTS、16.04 LTS
 - CoreOS(stable)
 - Amazon Linux 2016.09.0
 - openSUSE 13.2
-- CentOS 7
+- openSUSE LEAP 42.2
+- CentOS 7.2、7.3
 - SLES 12
-- RHEL 7.2
+- RHEL 7.2、7.3
+
 
 安装 Docker 之后，请使用以下容器主机设置来配置代理以供 Docker 使用。 你需要 [OMS 工作区 ID 和密钥](log-analytics-linux-agents.md)。
 
@@ -95,45 +103,43 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 ### <a name="docker-versions-supported-on-windows"></a>Windows 上支持的 Docker 版本
 
 - Docker 1.12 – 1.13
+- Docker 17.03.0 [稳定]
 
 ### <a name="preparation-before-installing-agents"></a>安装代理之前的准备
 
 在运行 Windows 的计算机上安装代理之前，需配置 Docker 服务。 配置允许 Windows 代理或 Log Analytics 虚拟机扩展使用 Docker TCP 套接字，因此代理能够远程访问 Docker 守护程序并捕获用于监视的数据。
 
-运行 Windows 的计算机不支持性能数据。
-
-若要详细了解如何在 Windows 上配置 Docker 守护程序，请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)。
-
 #### <a name="to-start-docker-and-verify-its-configuration"></a>启动 Docker 并验证其配置
 
-1.    在 Windows PowerShell 中，启用 TCP 管道和命名的管道。
+为 Windows Server 设置 TCP 命名管道需要执行以下步骤：
+
+1. 在 Windows PowerShell 中，启用 TCP 管道和命名的管道。
 
     ```
     Stop-Service docker
     dockerd --unregister-service
-    dockerd -H npipe:// -H 0.0.0.0:2375 --register-service
+    dockerd --register-service -H npipe:// -H 0.0.0.0:2375  
     Start-Service docker
     ```
 
-2.    使用 netstat 验证配置。 应该可以看到端口 2375。
+2. 使用 TCP 管道和命名管道的配置文件配置 Docker。 该配置文件位于 C:\ProgramData\docker\config\daemon.json。
+
+    在 daemon.json 文件中，需要以下项：
 
     ```
-    PS C:\Users\User1> netstat -a | sls 2375
-
-    TCP    127.0.0.1:2375         Win2016TP5:0           LISTENING
-    TCP    127.0.0.1:2375         Win2016TP5:49705       ESTABLISHED
-    TCP    127.0.0.1:2375         Win2016TP5:49706       ESTABLISHED
-    TCP    127.0.0.1:2375         Win2016TP5:49707       ESTABLISHED
-    TCP    127.0.0.1:2375         Win2016TP5:49708       ESTABLISHED
-    TCP    127.0.0.1:49705        Win2016TP5:2375        ESTABLISHED
-    TCP    127.0.0.1:49706        Win2016TP5:2375        ESTABLISHED
-    TCP    127.0.0.1:49707        Win2016TP5:2375        ESTABLISHED
-    TCP    127.0.0.1:49708        Win2016TP5:2375        ESTABLISHED
+    {
+    "hosts": ["tcp://0.0.0.0:2375", "npipe://"]
+    }
     ```
+
+若要详细了解用于 Windows 容器的 Docker 守护程序配置，请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)。
+
 
 ### <a name="install-windows-agents"></a>安装 Windows 代理
 
 若要启用 Windows 和 Hyper-V 容器监视，请在属于容器主机的 Windows 计算机上安装代理。 若要了解在本地环境中运行 Windows 的计算机，请参阅[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md)。 为使虚拟机在 Azure 中运行，请使用[虚拟机扩展](log-analytics-azure-vm-extension.md)将其连接到 Log Analytics。
+
+可以监视在 Service Fabric 上运行的 Windows 容器。 但是，目前 Service Fabric 仅支持[在 Azure 中运行的虚拟机](log-analytics-azure-vm-extension.md)和[在本地环境中运行 Windows 的计算机](log-analytics-windows-agents.md)。
 
 若要验证是否已正确设置容器解决方案，请执行以下步骤：
 
@@ -160,7 +166,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 | --- | --- | --- | --- | --- | --- | --- |
 | Azure |![是](./media/log-analytics-containers/oms-bullet-green.png) |![否](./media/log-analytics-containers/oms-bullet-red.png) |![否](./media/log-analytics-containers/oms-bullet-red.png) |![否](./media/log-analytics-containers/oms-bullet-red.png) |![否](./media/log-analytics-containers/oms-bullet-red.png) |每隔 3 分钟 |
 
-下表显示了容器解决方案收集的数据类型以及日志搜索和结果中使用的数据类型的示例。 但是，运行 Windows 的计算机尚不支持性能数据。
+下表显示了容器解决方案收集的数据类型以及日志搜索和结果中使用的数据类型的示例。
 
 | 数据类型 | 日志搜索中的数据类型 | 字段 |
 | --- | --- | --- |

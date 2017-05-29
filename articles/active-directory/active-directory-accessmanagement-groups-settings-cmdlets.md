@@ -12,23 +12,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2017
-ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 49ba7e6d5d67b109632b08ce936357804c80da40
-ms.lasthandoff: 04/27/2017
+ms.date: 05/04/2017
+ms.author: rodejo
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 81fdae033afd90b77d3725f8c39b8a6c6bbc3812
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
 > [!IMPORTANT]
-> 此内容仅适用于统一组，也称为 Office 365 组。 这些 cmdlet 当前处于公共预览状态。
+> 此内容仅适用于统一组，也称为 Office 365 组。 
 
 Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 一开始不会在目录中看到任何 Settings 对象。 这意味着目录配置了默认设置。 若要更改默认设置，必须使用设置模板创建新的设置对象。 设置模板由 Microsoft 定义。 有几个不同的设置模板。 若要配置目录的组设置，将使用名为“Group.Unified”的模板。 若要针对单个组配置组设置，可使用名为“Group.Unified.Guest”的模板。 此模板用于管理对组的来宾访问权限。 
 
-这些 Cmdlet 属于 Azure Active Directory PowerShell V2 模块。 有关此模块的详细信息以及有关如何在计算机上下载和安装此模块的说明，请参阅 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/azuread/)。 请注意，由于这些 cmdlet 现在处于公共预览状态，你需要安装此模块的预览版本（可在[此处](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.85)找到）。
+这些 Cmdlet 属于 Azure Active Directory PowerShell V2 模块。 有关此模块的详细信息以及有关如何在计算机上下载和安装此模块的说明，请参阅 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/azuread/)。 可以从[此处](https://www.powershellgallery.com/packages/AzureAD/)安装模块的版本 2 发行版。
+
+## <a name="retrieve-a-specific-settings-value"></a>检索特定的设置值
+如果知道要检索的设置的名称，可以使用以下 cmdlet 检索当前的设置值。 在此示例中，我们要检索名为“UsageGuidelinesUrl”的设置的值。 可以在本文的后面部分阅读有关目录设置及其名称的详细信息。
+
+```powershell
+(Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
+```
 
 ## <a name="create-settings-at-the-directory-level"></a>在目录级别创建设置
 这些步骤在目录级别创建设置，这些设置适用于目录中的所有统一组。

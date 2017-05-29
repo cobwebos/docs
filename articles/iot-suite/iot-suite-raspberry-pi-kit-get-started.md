@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/26/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 0235058d17a55562271c0a98c47b9b12f8d27be6
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 5efb78c2c514bd0b21be842ddee5465fe4e4dcf9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -30,9 +30,9 @@ ms.lasthandoff: 05/03/2017
 
 | 教程 | 说明 | 语言 |
 | -------- | ----- | --------- |
-| 模拟遥测（基本）| 模拟传感器数据。 使用独立 Raspberry Pi。 | [C][lnk-c-simulator] [Node.js][lnk-node-simulator] |
-| 实际传感器（中间） | 使用连接到 Raspberry Pi 的 BME280 传感器中的数据。 | [C][lnk-c-basic] [Node.js][lnk-node-basic] |
-| 实施固件更新（高级）| 使用连接到 Raspberry Pi 的 BME280 传感器中的数据。 在 Raspberry Pi 上启用远程固件更新。 | [C][lnk-c-advanced] [Node.js][lnk-node-advanced] |
+| 模拟遥测（基本）| 模拟传感器数据。 使用独立 Raspberry Pi。 | [C][lnk-c-simulator]、[Node.js][lnk-node-simulator] |
+| 实际传感器（中间） | 使用连接到 Raspberry Pi 的 BME280 传感器中的数据。 | [C][lnk-c-basic]、[Node.js][lnk-node-basic] |
+| 实施固件更新（高级）| 使用连接到 Raspberry Pi 的 BME280 传感器中的数据。 在 Raspberry Pi 上启用远程固件更新。 | [C][lnk-c-advanced]、[Node.js][lnk-node-advanced] |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 05/04/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a51fb6e5a10e09205822e055659794aea2f6a4fb
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 0b63c7d15ca7570033a889dc1b57ebd202f4627b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/18/2017
 
 为应用程序配置自动化预配后（包括验证提供给 Azure AD 以连接至该应用的应用凭据为有效凭据）。 为应用预配的用户和/或组由下列因素确定：
 
--   哪些用户和组已**分配**到应用程序。 有关分配的详细信息，请参阅[在 Azure Active Directory 预览版中向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)。
+-   哪些用户和组已**分配**到应用程序。 有关分配的详细信息，请参阅[在 Azure Active Directory 中向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)。
 
 -   **属性映射**是否已启用，并且是否经过配置，可将有效属性从 Azure AD 同步至应用。 有关属性映射的详细信息，请参阅[为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)。
 

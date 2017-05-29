@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2017
+ms.date: 05/08/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 3155990d977d8b0849c9e0be92db11ad6567cd6e
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: fd52bd8e14ca9bdcd06fc820e5e03fb5feccc72f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -112,10 +113,10 @@ ms.lasthandoff: 04/06/2017
 
 ![Azure 安全中心的安全建议][5]
 
-### <a name="resource-health"></a>资源运行状况
-“**资源安全运行状况**”磁贴中会按资源类型（包括 VM、Web 应用程序和其他资源）显示环境的总体安全状况。   
+### <a name="security-state-of-azure-resources"></a>Azure 资源的安全状态
+仪表板的“预防”部分会按资源类型（包括 VM、Web 应用程序和其他资源）显示环境的总体安全状况。   
 
-在“资源安全运行状况”磁贴上选择一种资源类型，以查看其详细信息（包括已发现的的潜在安全漏洞列表）。 （下面的示例中选择了“计算机”。）
+在“预防”下选择一种资源类型，以查看其详细信息（包括已发现的任何潜在安全漏洞列表）。 （下面的示例中选择了“计算机”。）
 
 ![资源运行状况磁贴][6]
 

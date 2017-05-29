@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 5cbe0b7f71f8dfd6f3a41fa6ff4b0c6ab5e6985d
-ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
-ms.lasthandoff: 01/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 1c3118bc66afe7ef4f04d86d9b598128d1aadf82
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 01/28/2017
 
 本主题对 **Media Encoder Standard** 和**媒体编码器高级工作流**的编码功能进行了比较。
 
-### <a name="a-idbillingabilling-meter-used-by-each-encoder"></a><a id="billing"></a>每个编码器使用的计费表
+### <a id="billing"></a>每个编码器使用的计费表
 | 媒体处理器名称 | 适用定价 | 说明 |
 | --- | --- | --- |
 | **Media Encoder Standard** |编码器 |将基于作为输出生成的所有媒体文件的总持续时间（以分钟为单位）对编码任务进行收费，按照“编码器”列下[此处][1]指定的费率。 |
@@ -106,7 +107,9 @@ ms.lasthandoff: 01/28/2017
 | Mpeg-2（最高支持 422 Profile 和 High Level；包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs® 和 D10 等变体） |否 |是 |
 | MPEG-1 |否 |是 |
 | Windows Media 视频/VC-1 |否 |是 |
-| JPEG 缩图创建 |否 |是 |
+| JPEG 缩图创建 |是 |是 |
+| PNG 缩略图创建 |是 |是 |
+| BMP 缩略图创建 |是 |否 |
 
 ### <a name="output-audio-codecs"></a>输出音频编解码器
 | 输出音频编解码器 | 媒体编码器标准版 | 媒体编码器高级工作流 |

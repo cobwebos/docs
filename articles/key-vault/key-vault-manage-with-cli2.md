@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 05/08/2017
 ms.author: ambapat
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: e53b45ef180362f7554c7819b9ae2eb3dbfe3300
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 5da9f5eceda71ac85259193e0f183c72813e1679
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/28/2017
 > [!NOTE]
 > 本教程未说明如何编写其中一个步骤所包括的 Azure 应用程序，但说明了如何授权应用程序使用密钥保管库中的密钥或机密。
 >
-> 本教程使用最新的 Azure CLI 2.0。 有关使用更低版本（基于 node.js）CLI 的说明，请参阅[此对应教程](key-vault-manage-with-cli.md)。
+> 本教程使用最新的 Azure CLI 2.0。
 >
 >
 
@@ -160,7 +160,11 @@ az keyvault secret set --vault-name 'ContosoKeyVault' --name 'SQLPassword' --val
 要在 Azure Active Directory 中注册应用程序，请执行以下操作：
 
 1. 登录到 Azure 门户。
-2. 单击左侧的“Azure Active Directory”，然后选择要在其中注册应用程序的目录。 <br> <br> 注意：必须选择包含用于创建密钥保管库的 Azure 订阅的相同目录。 如果你不知道是哪个目录，请单击“设置”，找到用于创建密钥保管库的订阅，并记下最后一列中显示的目录名称。
+2. 单击左侧的“Azure Active Directory”，然后选择要在其中注册应用程序的目录。 <br> <br> 
+
+> [!Note] 
+> 必须选择包含用于创建 Key Vault 的 Azure 订阅的相同目录。 如果你不知道是哪个目录，请单击“设置”，找到用于创建密钥保管库的订阅，并记下最后一列中显示的目录名称。
+
 3. 单击“应用程序” 。 如果目录中尚未添加任何应用，此页面将仅显示“添加应用”链接。 单击该链接，或者单击命令栏上的“添加”。
 4. 在“添加应用程序”向导的“要执行什么操作?”页面上，单击“添加我的组织正在开发的应用程序”。
 5. 在“向我们说明你的应用程序”页上，指定应用程序名称，然后选择“Web 应用程序和/或 Web API”（默认值）。 单击“下一步”图标。

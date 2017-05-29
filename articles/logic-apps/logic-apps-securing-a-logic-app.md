@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
-ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 86c293e735f766dbacc7d0b83574f254573d0de8
-ms.openlocfilehash: 3f119409e031ca2b88694a011916f52aa9ef5d36
-ms.lasthandoff: 02/15/2017
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
+ms.openlocfilehash: ac52924d928b293f4b1b58f0c25375f890c51837
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -264,7 +265,7 @@ POST
 
 #### <a name="on-premises-data-gateway"></a>本地数据网关
 
-使用逻辑应用中的多个托管连接器可以安全连接到本地系统，包括文件系统、SQL、SharePoint、 DB2，等等。  网关通过 Azure 服务总线利用加密的通道来中继本地数据，所有流量来源于网关代理的安全出站流量。  有关网关工作原理的详细信息，请参阅[此文](logic-apps-gateway-install.md#how-the-gateway-works)。
+使用逻辑应用的多个托管连接器可以安全连接到本地系统，包括文件系统、SQL、SharePoint、 DB2，等等。 网关通过 Azure 服务总线中继来自加密频道上的本地源的数据。 所有流量最初都是网关代理的安全出站流量。 详细了解[数据网关的工作原理](logic-apps-gateway-install.md#gateway-cloud-service)。
 
 #### <a name="azure-api-management"></a>Azure API 管理
 

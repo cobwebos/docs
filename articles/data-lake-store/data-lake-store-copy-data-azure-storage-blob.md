@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
-ms.openlocfilehash: 9f8635cd028d7d0d6a69faf6c2dc1de05dc5bb36
-ms.lasthandoff: 12/02/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: c7ccd172440ae36844c7a5863a9f9d55a05411f9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -175,6 +176,9 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 ## <a name="performance-considerations-for-using-adlcopy"></a>使用 AdlCopy 的性能注意事项
 
 AdlCopy 支持复制包含上千个文件和文件夹的数据。 但是，如果在复制大型数据集时遇到问题，可将文件/文件夹分配到较小的子文件夹中。 AdlCopy 专用于临时副本。 如果要尝试定期复制数据，应考虑使用 [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)，此工具提供与复制操作有关的完整管理功能。
+
+## <a name="release-notes"></a>发行说明
+* 1.0.13 - 如果要通过多个 adlcopy 命令将数据复制到同一 Azure Data Lake Store 帐户，则不再需要在每次运行时重新输入凭据。 现在，Adlcopy 会在多次运行之间缓存该信息。
 
 ## <a name="next-steps"></a>后续步骤
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)

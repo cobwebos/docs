@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 05/16/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 74f2fafdf7355bbce37cf2bf98a6e709ebb7986e
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 95ffafb276009f0acfa9cd96b9d4e575bd6a9d28
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -94,7 +95,7 @@ ms.lasthandoff: 04/12/2017
 | 日期 |StartOfDay(X) |X: DateTime |获取由参数 X 的日期号数部分表示的当天开始时间。<br/><br/>示例：2013/9/15 下午 05:10:23 的 StartOfDay 是 2013/9/15 午夜 12:00:00。 |
 | DateTime |From(X) |X: String |将字符串 X 解析成日期时间。 |
 | DateTime |Ticks(X) |X: DateTime |获取参数 X 的刻度属性。一刻度等于 100 纳秒。 此属性的值表示自 0001 年 1 月 1 日午夜 12:00:00 以来已经过的刻度数。 |
-| 文本 |Format(X) |X: String variable |设置文本的格式。 |
+| 文本 |Format(X) |X: String variable |设置文本格式（使用 `\\'` 组合转义 `'` 字符）。|
 
 > [!IMPORTANT]
 > 在一个函数中使用另一函数时，无需对内部函数使用 **$$** 前缀。 例如：$$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' 和 RowKey ge \\'{0:yyyy-MM-dd HH:mm:ss}\\''、Time.AddHours(SliceStart, -6))。 请注意，本例未对 **Time.AddHours** 函数使用 **$$** 前缀。 
@@ -125,8 +126,8 @@ ms.lasthandoff: 04/12/2017
                     "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
                     "scriptLinkedService": "StorageLinkedService",
                     "defines": {
-                        "Input": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0:yyyy}/monthno={0:%M}/dayno={0:%d}/', SliceStart)",
-                        "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:%M}/dayno={0:%d}/', SliceStart)"
+                        "Input": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0:yyyy}/monthno={0:MM}/dayno={0:dd}/', SliceStart)",
+                        "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:MM}/dayno={0:dd}/', SliceStart)"
                     },
                     "scheduler": {
                         "frequency": "Hour",
@@ -207,8 +208,8 @@ ms.lasthandoff: 04/12/2017
                     "scriptLinkedService": "StorageLinkedService",
                     "defines": {
                         "Year": "$$Text.Format('{0:yyyy}',WindowsStart)",
-                        "Month": "$$Text.Format('{0:%M}',WindowStart)",
-                        "Day": "$$Text.Format('{0:%d}',WindowStart)"
+                        "Month": "$$Text.Format('{0:MM}',WindowStart)",
+                        "Day": "$$Text.Format('{0:dd}',WindowStart)"
                     }
                 },
                 "scheduler": {

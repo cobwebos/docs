@@ -13,30 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/21/2017
+ms.date: 05/02/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 59d6d646d4ab236d1fffad0cd0ec3e9f3ae4c342
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: a26f33247710431d433f3309ecdaca20e605c75a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="create-and-manage-windows-vms-with-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建和管理 Windows VM
 
-本教程介绍 Azure 虚拟机的基本创建项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 本教程还介绍了基本的管理操作，例如管理状态、删除 VM 和调整 VM 大小。
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 你将学习如何：
 
-可使用最新版 [Azure PowerShell](/powershell/azure/overview) 模块完成本教程中的步骤。
+> [!div class="checklist"]
+> * 创建并连接到 VM
+> * 选择并使用 VM 映像
+> * 查看和使用特定 VM 大小
+> * 调整 VM 的大小
+> * 查看并了解 VM 状态
+
+本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 ## <a name="create-resource-group"></a>创建资源组
 
 使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 命令创建资源组。 
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“westus”区域中创建了名为“myResourceGroupVM”的资源组。 
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“EastUS”区域中创建了名为“myResourceGroupVM”的资源组。 
 
 ```powershell
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroupVM -Location westeurope
+New-AzureRmResourceGroup -ResourceGroupName myResourceGroupVM -Location EastUS
 ```
 
 创建或修改 VM 时指定资源组，本教程会对此进行演示。
@@ -60,7 +67,7 @@ $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
 ```powershell
 $vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName myResourceGroupVM `
-  -Location westeurope `
+  -Location EastUS `
   -Name myVnet `
   -AddressPrefix 192.168.0.0/16 ` 
   -Subnet $subnetConfig
@@ -72,7 +79,7 @@ $vnet = New-AzureRmVirtualNetwork `
 ```powershell
 $pip = New-AzureRmPublicIpAddress ` 
   -ResourceGroupName myResourceGroupVM `
-  -Location westeurope ` 
+  -Location EastUS ` 
   -AllocationMethod Static `
   -Name myPublicIPAddress
 ```
@@ -84,7 +91,7 @@ $pip = New-AzureRmPublicIpAddress `
 ```powershell
 $nic = New-AzureRmNetworkInterface `
   -ResourceGroupName myResourceGroupVM  `
-  -Location westeurope `
+  -Location EastUS `
   -Name myNic `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id
@@ -114,7 +121,7 @@ $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
 ```powershell
 $nsg = New-AzureRmNetworkSecurityGroup `
     -ResourceGroupName myResourceGroupVM `
-    -Location westeurope `
+    -Location EastUS `
     -Name myNetworkSecurityGroup `
     -SecurityRules $nsgRule
 ```
@@ -193,7 +200,7 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 创建虚拟机。
 
 ```powershell
-New-AzureRmVM -ResourceGroupName myResourceGroupVM -Location westeurope -VM $vm
+New-AzureRmVM -ResourceGroupName myResourceGroupVM -Location EastUS -VM $vm
 ```
 
 ## <a name="connect-to-vm"></a>连接到 VM
@@ -219,42 +226,42 @@ Azure 应用商店包括许多可用于新建虚拟机的虚拟机映像。 在�
 使用 [Get AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) 命令返回映像发布者的列表。  
 
 ```powersehll
-Get-AzureRmVMImagePublisher -Location "westus"
+Get-AzureRmVMImagePublisher -Location "EastUS"
 ```
 
 使用 [Get AzureRmVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer) 返回映像产品/服务的列表。 使用此命令，返回筛选了特定发布者的列表。 
 
 ```powershell
-Get-AzureRmVMImageOffer -Location "westus" -PublisherName "MicrosoftWindowsServer"
+Get-AzureRmVMImageOffer -Location "EastUS" -PublisherName "MicrosoftWindowsServer"
 ```
 
 ```powershell
 Offer             PublisherName          Location
 -----             -------------          -------- 
-Windows-HUB       MicrosoftWindowsServer westus 
-WindowsServer     MicrosoftWindowsServer westus   
-WindowsServer-HUB MicrosoftWindowsServer westus   
+Windows-HUB       MicrosoftWindowsServer EastUS 
+WindowsServer     MicrosoftWindowsServer EastUS   
+WindowsServer-HUB MicrosoftWindowsServer EastUS   
 ```
 
 然后，使用 [Get AzureRmVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) 命令对发布者和产品/服务名称进行筛选，以返回映像名称的列表。
 
 ```powershell
-Get-AzureRmVMImageSku -Location "westus" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
+Get-AzureRmVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
 ```
 
 ```powershell
 Skus                            Offer         PublisherName          Location
 ----                            -----         -------------          --------
-2008-R2-SP1                     WindowsServer MicrosoftWindowsServer westus  
-2008-R2-SP1-BYOL                WindowsServer MicrosoftWindowsServer westus  
-2012-Datacenter                 WindowsServer MicrosoftWindowsServer westus  
-2012-Datacenter-BYOL            WindowsServer MicrosoftWindowsServer westus  
-2012-R2-Datacenter              WindowsServer MicrosoftWindowsServer westus  
-2012-R2-Datacenter-BYOL         WindowsServer MicrosoftWindowsServer westus  
-2016-Datacenter                 WindowsServer MicrosoftWindowsServer westus  
-2016-Datacenter-Server-Core     WindowsServer MicrosoftWindowsServer westus  
-2016-Datacenter-with-Containers WindowsServer MicrosoftWindowsServer westus  
-2016-Nano-Server                WindowsServer MicrosoftWindowsServer westus
+2008-R2-SP1                     WindowsServer MicrosoftWindowsServer EastUS  
+2008-R2-SP1-BYOL                WindowsServer MicrosoftWindowsServer EastUS  
+2012-Datacenter                 WindowsServer MicrosoftWindowsServer EastUS  
+2012-Datacenter-BYOL            WindowsServer MicrosoftWindowsServer EastUS  
+2012-R2-Datacenter              WindowsServer MicrosoftWindowsServer EastUS  
+2012-R2-Datacenter-BYOL         WindowsServer MicrosoftWindowsServer EastUS  
+2016-Datacenter                 WindowsServer MicrosoftWindowsServer EastUS  
+2016-Datacenter-Server-Core     WindowsServer MicrosoftWindowsServer EastUS  
+2016-Datacenter-with-Containers WindowsServer MicrosoftWindowsServer EastUS  
+2016-Nano-Server                WindowsServer MicrosoftWindowsServer EastUS
 ```
 
 此信息可用于部署具有特定映像的 VM。 此示例为 VM 对象设置映像名称。 请参阅本教程前面的示例，了解完整的部署步骤。
@@ -291,7 +298,7 @@ $vm = Set-AzureRmVMSourceImage `
 若要查看在特定区域可用的 VM 大小的列表，请使用 [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) 命令。
 
 ```powershell
-Get-AzureRmVMSize -Location westus
+Get-AzureRmVMSize -Location EastUS
 ```
 
 ## <a name="resize-a-vm"></a>调整 VM 的大小
@@ -387,7 +394,17 @@ Remove-AzureRmResourceGroup -Name myResourceGroupVM -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解 VM 创建和管理的基本知识。 请转到下一教程，了解 VM 磁盘。  
+在本教程中，已学习 VM 创建和管理的基本知识，例如如何：
 
-[创建和管理 VM 磁盘](./tutorial-manage-data-disk.md)
+> [!div class="checklist"]
+> * 创建并连接到 VM
+> * 选择并使用 VM 映像
+> * 查看和使用特定 VM 大小
+> * 调整 VM 的大小
+> * 查看并了解 VM 状态
+
+请转到下一教程，了解 VM 磁盘。  
+
+> [!div class="nextstepaction"]
+> [创建和管理 VM 磁盘](./tutorial-manage-data-disk.md)
 
