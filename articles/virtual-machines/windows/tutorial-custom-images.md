@@ -13,21 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 05/08/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: ab19073735816ebb32a9840ec03b31b358ccb565
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 773b37ec8f775d68f1faca0d252f3064c7de0317
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>使用 PowerShell 创建 Azure VM 的自定义映像
 
-本教程介绍如何定义自己 Azure 虚拟机的自定义映像。 自定义映像使你能够使用已配置的映像创建 VM。 自定义映像可用于启动二进制文件和应用程序、应用程序配置、VM 数据磁盘定义以及其他 OS 配置的预加载。 创建自定义映像时，自定义的 VM 和所有附加磁盘均包括在映像中。
+自定义映像类似于应用商店映像，不同的是自定义映像的创建者是你自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，将创建自己的 Azure 虚拟机自定义映像。 你将学习如何：
 
-可使用最新版 [Azure PowerShell](/powershell/azure/overview) 模块完成本教程中的步骤。
+> [!div class="checklist"]
+> * 使用 Sysprep 通用化 VM
+> * 创建自定义映像
+> * 从自定义映像创建 VM
+> * 列出订阅中的所有映像
+> * 删除映像
+
+本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -169,11 +176,40 @@ New-AzureRmVM `
     -VM $vmConfig
 ```
 
+## <a name="image-management"></a>映像管理 
+
+下面是一些常见的管理映像任务示例，并说明如何使用 PowerShell 完成这些任务。
+
+按名称列出所有映像。
+
+```powershell
+$images = Find-AzureRMResource -ResourceType Microsoft.Compute/images 
+$images.name
+```
+
+删除映像。 此示例将从 *myResourceGroup* 中删除名为 *myOldImage* 的映像。
+
+```powershell
+Remove-AzureRmImage `
+    -ImageName myOldImage `
+    -ResourceGroupName myResourceGroup
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解如何创建自定义 VM 映像。 请转到下一教程，了解如何创建高度可用的虚拟机。
+在本教程中，已创建自定义 VM 映像。 你已了解如何：
 
-[创建高度可用的 VM](tutorial-availability-sets.md)
+> [!div class="checklist"]
+> * 使用 Sysprep 通用化 VM
+> * 创建自定义映像
+> * 从自定义映像创建 VM
+> * 列出订阅中的所有映像
+> * 删除映像
+
+请转到下一教程，了解如何创建高度可用的虚拟机。
+
+> [!div class="nextstepaction"]
+> [创建高度可用的 VM](tutorial-availability-sets.md)
 
 
 

@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 509c216b8d284d6f0aac2efbea70d254b9a2016b
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 90708ff93a86f0b0883f069b45ed4e17c9667014
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
-# <a name="manage-azure-virtual-machines-using-azure-resource-manager-and-c"></a>使用 Azure Resource Manager 与 C 来管理 Azure 虚拟机# #
+# <a name="manage-azure-virtual-machines-using-azure-resource-manager-and-c"></a>使用 Azure Resource Manager 与 C# 来管理 Azure 虚拟机 #
 
 本文中的任务显示了如何管理虚拟机，如启动、停止和更新。
 
@@ -34,14 +35,14 @@ ms.lasthandoff: 03/31/2017
 
 1. 如果尚未安装，请安装 [Visual Studio](https://www.visualstudio.com/)。
 2. 在 Visual Studio 中，单击“文件” > “新建” > “项目”。
-3. 在“模板” > “Visual C#”中，选择“控制台应用程序”，输入项目的名称和位置，然后单击“确定”。
+3. 在“模板” > “Visual C#”中，选择“控制台应用(.NET Framework)”，输入项目的名称和位置，然后单击“确定”。
 
 ### <a name="install-libraries"></a>安装库
 
 使用 NuGet 包可以最轻松地安装执行本文中的操作所需的库。 若要在 Visual Studio 中获取所需的库，请执行以下步骤：
 
-1. 在解决方案资源管理器中右键单击项目名称，然后依次单击“管理 NuGet 包”和“浏览”。
-2. 在搜索框中键入 *Microsoft.IdentityModel.Clients.ActiveDirectory*，单击“安装”，然后按照说明安装该包。
+1. 在解决方案资源管理器中右键单击项目名称，然后依次单击“管理解决方案的 NuGet 包”和“浏览”。
+2. 在搜索框中键入“Microsoft.IdentityModel.Clients.ActiveDirectory”，再选择项目，单击“安装”，然后按照说明安装该包。
 3. 在页面顶部，选择“包括预发行版”。 在搜索框中键入 *Microsoft.Azure.Management.Compute*，单击“安装”，然后按照说明安装该包。
 
 现在，你已准备好开始使用这些库来管理虚拟机。
@@ -50,7 +51,7 @@ ms.lasthandoff: 03/31/2017
 
 若要与 Azure Resource Manager 交互，请确保你能够访问 [Active Directory 服务主体](../../resource-group-authenticate-service-principal.md)。 从服务主体中，将获取对 Azure Resource Manager 请求进行身份验证的令牌。
 
-1. 打开你为项目创建的 Program.cs 文件，然后在该文件的顶部添加以下 using 语句：
+1. 为所创建的项目打开 Program.cs 文件，然后将这些 using 语句添加到文件顶部的现有语句：
 
     ```   
     using Microsoft.Azure;
@@ -75,8 +76,8 @@ ms.lasthandoff: 03/31/2017
     ```    
     private static async Task<AuthenticationResult> GetAccessTokenAsync()
     {
-      var cc = new ClientCredential("{client-id}", "{client-secret}");
-      var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
+      var cc = new ClientCredential("client-id", "client-secret");
+      var context = new AuthenticationContext("https://login.windows.net/tenant-id");
       var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
       if (token == null)
       {
@@ -88,9 +89,9 @@ ms.lasthandoff: 03/31/2017
 
     替换以下值：
     
-    - 将 *{client-id}* 替换为 Azure Active Directory 应用程序的标识符。 在 AD 应用程序的“属性”边栏选项卡上，可找到此标识符。 若要在 Azure 门户中查找 AD 应用程序，请在资源菜单中单击“Azure Active Directory”，然后单击“应用注册”。
-    - 将 *{client-secret}* 替换为 AD 应用程序的访问密钥。 在 AD 应用程序的“属性”边栏选项卡上，可找到此标识符。
-    - 将 *{tenant-id}* 替换为订阅的租户标识符。 在 Azure 门户中 Azure Active Directory 的“属性”边栏选项卡上，可找到租户标识符。 它被标记为目录 ID。
+    - 将 client-id 替换为 Azure Active Directory 应用程序的标识符。 在 AD 应用程序的“属性”边栏选项卡上，可找到此标识符。 若要在 Azure 门户中查找 AD 应用程序，请在资源菜单中单击“Azure Active Directory”，然后单击“应用注册”。
+    - 将 client-secret 替换为 AD 应用程序的访问密钥。 在 AD 应用程序的“属性”边栏选项卡上，可找到此标识符。
+    - 将 tenant-id 替换为订阅的租户标识符。 在 Azure 门户中 Azure Active Directory 的“属性”边栏选项卡上，可找到租户标识符。 它被标记为目录 ID。
 
 4. 若要调用前面添加的方法，请将以下代码添加到 Program.cs 文件中的 Main 方法：
    

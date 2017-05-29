@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/29/2016
+ms.date: 05/08/2017
 ms.author: kyliel
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 2d44a2d9a247ffce8bcf35152170562ac0b86710
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 7a92105f9d7be88311f2ecd89b22e35f3ad3bbac
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 本文说明如何创建和上载包含 FreeBSD 操作系统的虚拟硬盘 (VHD)。 将其上载后，可以使用它作为你自己的映像在 Azure 中创建虚拟机 (VM)。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Resource Manager 模型上载 VHD 的信息，请参阅[此处](../upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关使用 Resource Manager 模型上载 VHD 的信息，请参阅[此处](../upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="prerequisites"></a>先决条件
 本文假设拥有以下项目：
@@ -40,7 +41,7 @@ ms.lasthandoff: 04/27/2017
 >
 >
 
-此任务包括以下五个步骤。
+此任务包括以下五个步骤：
 
 ## <a name="step-1-prepare-the-image-for-upload"></a>步骤 1：准备要上载的映像
 在安装了 FreeBSD 操作系统的虚拟机中，完成以下过程：
@@ -51,12 +52,7 @@ ms.lasthandoff: 04/27/2017
         # service netif restart
 2. 启用 SSH。
 
-    从光盘安装后，将默认启用 SSH。 如果由于某种原因未启用它，或者如果直接使用 FreeBSD VHD，请键入以下命令：
-
-        # echo 'sshd_enable="YES"' >> /etc/rc.conf
-        # ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
-        # ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
-        # service sshd restart
+    请确保已安装 SSH 服务器且已将其配置为在引导时启动。 从 FreeBSD 光盘安装后，将默认启用它。 
 3. 设置串行控制台。
 
         # echo 'console="comconsole vidconsole"' >> /boot/loader.conf
@@ -66,16 +62,16 @@ ms.lasthandoff: 04/27/2017
     在 Azure 中禁用根帐户。 这意味着你需要通过无特权用户利用 sudo 使用提升的权限运行命令。
 
         # pkg install sudo
-   ;
+   
 5. Azure 代理的先决条件。
 
         # pkg install python27  
-        # pkg install Py27-setuptools27   
+        # pkg install Py27-setuptools  
         # ln -s /usr/local/bin/python2.7 /usr/bin/python   
         # pkg install git
 6. 安装 Azure 代理。
 
-    始终可以在 [github](https://github.com/Azure/WALinuxAgent/releases) 上找到 Azure 代理的最新版本。 2.0.10 + 版正式支持 FreeBSD 10 和 10.1，2.1.4 版正式支持 FreeBSD 10.2 和更高版本。
+    始终可以在 [github](https://github.com/Azure/WALinuxAgent/releases) 上找到 Azure 代理的最新版本。 2.0.10 + 版正式支持 FreeBSD 10 和 10.1，2.1.4 + 版（包括 2.2.x）正式支持 FreeBSD 10.2 和更高版本。
 
         # git clone https://github.com/Azure/WALinuxAgent.git  
         # cd WALinuxAgent  
@@ -108,8 +104,8 @@ ms.lasthandoff: 04/27/2017
         # waagent -version
         WALinuxAgent-2.1.4 running on freebsd 10.3
         Python: 2.7.11
-        # service –e | grep waagent
-        /etc/rc.d/waagent
+        # ps auxw | grep waagent
+        root   639   0.0  0.5 104620 17520 u0- I    05:17    0:00.20 python /usr/local/sbin/waagent -daemon (python2.7)
         # cat /var/log/waagent.log
 7. 取消预配系统。
 
@@ -154,7 +150,7 @@ ms.lasthandoff: 04/27/2017
    >
 
 ## <a name="step-3-prepare-the-connection-to-azure"></a>步骤 3：准备连接到 Azure
-首先需要在计算机和 Azure 订阅之间建立一个安全连接，然后才能上载 .vhd 文件。 你可以使用 Azure Active Directory (Azure AD) 方法或证书方法来执行此操作。
+首先需要在计算机和 Azure 订阅之间建立一个安全连接，然后才能上载 .vhd 文件。 可以使用 Azure Active Directory (Azure AD) 方法或证书方法来执行此操作。
 
 ### <a name="use-the-azure-ad-method-to-upload-a-vhd-file"></a>使用 Azure AD 方法上载 .vhd 文件
 1. 打开 Azure PowerShell 控制台。
@@ -169,7 +165,7 @@ ms.lasthandoff: 04/27/2017
 ### <a name="use-the-certificate-method-to-upload-a-vhd-file"></a>使用证书方法上载 .vhd 文件
 1. 打开 Azure PowerShell 控制台。
 2. 键入： `Get-AzurePublishSettingsFile`。
-3. 此时将打开一个浏览器窗口，并提示你下载 .publishsettings 文件。 此文件包含 Azure 订阅的信息和证书。
+3. 此时将打开一个浏览器窗口，并提示下载 .publishsettings 文件。 此文件包含 Azure 订阅的信息和证书。
 
     ![浏览器下载页面](./media/freebsd-create-upload-vhd/Browser_download_GetPublishSettingsFile.png)
 4. 保存 .publishsettings 文件。

@@ -13,13 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 05/04/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 6c92292a67d14ac43c0fe5dbe7e14672c74b216b
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: cf460eed4bd290fbdcb9670a4ec4999f4c96c275
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据
@@ -76,7 +77,7 @@ ms.lasthandoff: 04/11/2017
     unzip FILENAME.zip
     ```
 
-    此命令会提取大小约为 60 MB 的 .csv 文件。
+    此命令会提取约为 60 MB 的 .csv 文件。
 
 4. 使用以下命令在 HDInsight 存储上创建目录，然后将文件复制到该目录：
 
@@ -157,9 +158,9 @@ ms.lasthandoff: 04/11/2017
     FROM delays_raw;
     ```
 
-2. 使用 **Ctrl+X**，然后使用 **Y** 以保存该文件。
+2. 若要保存该文件，请使用 **Ctrl + X**，然后使用 **Y**。
 
-3. 使用以下命令启动 Hive 并运行 **flightdelays.hql** 文件：
+3. 若要启动 Hive 并运行 **flightdelays.hql** 文件，请使用以下命令：
 
     ```
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -f flightdelays.hql
@@ -194,7 +195,7 @@ ms.lasthandoff: 04/11/2017
 
 如果已具备 SQL 数据库，则必须获取服务器名称。 可通过选择“SQL 数据库”在 [Azure 门户](https://portal.azure.com)中找到服务器名称，然后筛选要使用的数据库的名称。 服务器名称在“SERVER”列中列出。
 
-如果还没有 SQL 数据库，请使用 [SQL 数据库教程：几分钟内即可创建 SQL 数据库](../sql-database/sql-database-get-started.md)中的信息创建一个。 需要保存数据库所使用的服务器名称。
+如果还没有 SQL 数据库，请使用 [SQL 数据库教程：几分钟内即可创建 SQL 数据库](../sql-database/sql-database-get-started.md)中的信息创建一个。 保存数据库所使用的服务器名称。
 
 ## <a name="create-a-sql-database-table"></a>创建 SQL 数据库表
 
@@ -237,16 +238,16 @@ ms.lasthandoff: 04/11/2017
     GO
     ```
 
-    输入 `GO` 语句后，将评估前面的语句。 这会创建一个名为 **delays** 且具有聚集索引的表。
+    输入 `GO` 语句后，将评估前面的语句。 此查询会创建一个名为 **delays** 且具有聚集索引的表。
 
-    使用以下命令验证是否已创建该表：
+    使用以下查询验证是否已创建该表：
 
     ```
     SELECT * FROM information_schema.tables
     GO
     ```
 
-    输出与下面类似：
+    输出与以下文本类似：
 
     ```
     TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE

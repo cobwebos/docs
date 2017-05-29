@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 05/05/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 7899df8a09b6f5c8bc916bb6ad872afa3844e425
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 00fb88afe9ee107543aa7557ff0953d066d05bfd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -69,7 +70,7 @@ Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremark
 
 ## <a name="offers-and-pricing-tiers"></a>产品和定价层
 
-下表标识了属于每个操作管理和安全产品的管理解决方案。
+下表列出了属于每个 Operations Management Suite 产品的管理解决方案。
 该表还标识了适合每个管理解决方案的定价层。
 下表中的所有解决方案都可从 Azure 门户和 Log Analytics 门户的解决方案库中获取。
 

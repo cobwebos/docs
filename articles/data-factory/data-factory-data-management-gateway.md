@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 05/04/2017
 ms.author: abnarain
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: dfa78d1773afd0094ff98a5761a771101016ee13
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 01f3ef6d0e8e43e702b8292a7c215d3df58817f2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -138,7 +139,7 @@ ms.lasthandoff: 03/27/2017
 | --- | --- | --- |
 | *.servicebus.windows.net |443, 80 |用于与数据移动服务后端进行通信 |
 | *.core.windows.net |443 |用于使用 Azure Blob 的暂存复制（如果已配置）|
-| *frontend.clouddatahub.net |443 |用于与数据移动服务后端进行通信 |
+| *.frontend.clouddatahub.net |443 |用于与数据移动服务后端进行通信 |
 
 
 在 windows 防火墙级别，通常启用了这些出站端口。 如果没有，可以在网关计算机上相应地配置域和端口。
@@ -425,7 +426,7 @@ ms.lasthandoff: 03/27/2017
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. 在 Azure PowerShell 中，切换到的文件夹：**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\**。运行与本地变量 **$Key** 关联的**RegisterGateway.ps1**，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
+1. 在 Azure PowerShell 中，切换到文件夹：**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\**。 运行与本地变量 **$Key** 关联的 **RegisterGateway.ps1**，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

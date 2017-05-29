@@ -13,20 +13,27 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 05/01/2017
+ms.date: 05/02/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: bbd4f044d85f2e22f27edc44b91fd42aef304ed2
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 8a5f6e8bf01c8bc38f3fd327acd0ddc8f9cdd7de
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>在 Windows 上创建虚拟机规模集和部署高度可用的应用
-本教程介绍如何使用 Azure 中的虚拟机规模集快速缩放运行应用的虚拟机 (VM) 数目。 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据 CPU 使用率、内存需求或网络流量进行自动缩放。 若要查看虚拟机规模集的运作方式，可以生成一个跨多个 Windows VM 运行的基本 IIS 网站。
+利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据 CPU 使用率、内存需求或网络流量进行自动缩放。 在本教程中，将在 Azure 中部署虚拟机规模集。 你将学习如何：
 
-可使用最新版 [Azure PowerShell](/powershell/azureps-cmdlets-docs/) 模块完成本教程中的步骤。
+> [!div class="checklist"]
+> * 使用自定义脚本扩展定义要缩放的 IIS 站点
+> * 为规模集创建负载均衡器
+> * 创建虚拟机规模集
+> * 增加或减少规模集中的实例数
+> * 创建自动缩放规则
+
+本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 
 ## <a name="scale-set-overview"></a>规模集概述
@@ -38,10 +45,10 @@ ms.lasthandoff: 05/03/2017
 
 
 ## <a name="create-an-app-to-scale"></a>创建用于缩放的应用
-创建规模集之前，需使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建资源组。 以下示例在“westus”位置创建名为“myResourceGroupAutomate”的资源组：
+创建规模集之前，需使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建资源组。 以下示例在“EastUS”位置创建名为“myResourceGroupAutomate”的资源组：
 
 ```powershell
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroupScaleSet -Location westus
+New-AzureRmResourceGroup -ResourceGroupName myResourceGroupScaleSet -Location EastUS
 ```
 
 在前面的教程中，你已了解如何使用自定义脚本扩展来[自动执行 VM 配置](tutorial-automate-vm-deployment.md)。 创建规模集配置，然后应用自定义脚本扩展，安装和配置 IIS：
@@ -49,7 +56,7 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroupScaleSet -Location we
 ```powershell
 # Create a config object
 $vmssConfig = New-AzureRmVmssConfig `
-    -Location WestUS `
+    -Location EastUS `
     -SkuCapacity 2 `
     -SkuName Standard_DS2 `
     -UpgradePolicyMode Automatic
@@ -78,7 +85,7 @@ Azure 负载均衡器是位于第 4 层（TCP、UDP）的负载均衡器，通�
 # Create a public IP address
 $publicIP = New-AzureRmPublicIpAddress `
   -ResourceGroupName myResourceGroupScaleSet `
-  -Location westus `
+  -Location EastUS `
   -AllocationMethod Static `
   -Name myPublicIP
 
@@ -92,7 +99,7 @@ $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name myBackEndPo
 $lb = New-AzureRmLoadBalancer `
   -ResourceGroupName myResourceGroupScaleSet `
   -Name myLoadBalancer `
-  -Location westus `
+  -Location EastUS `
   -FrontendIpConfiguration $frontendIP `
   -BackendAddressPool $backendPool
 
@@ -142,7 +149,7 @@ $subnet = New-AzureRmVirtualNetworkSubnetConfig `
 $vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName "myResourceGroupScaleSet" `
   -Name "myVnet" `
-  -Location "westus" `
+  -Location "EastUS" `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $subnet
 $ipConfig = New-AzureRmVmssIpConfig `
@@ -194,7 +201,7 @@ $scaleset = Get-AzureRmVmss `
   -VMScaleSetName myScaleSet
 
 # Loop through the instanaces in your scale set
-for ($i=0; $i -le ($set.Sku.Capacity - 1); $i++) {
+for ($i=0; $i -le ($scaleset.Sku.Capacity - 1); $i++) {
     Get-AzureRmVmssVM -ResourceGroupName myResourceGroupScaleSet `
       -VMScaleSetName myScaleSet `
       -InstanceId $i
@@ -284,6 +291,17 @@ Add-AzureRmAutoscaleSetting `
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习了如何创建虚拟机规模集。 请继续学习下一篇教程，详细了解虚拟机的负载均衡概念。
+在本教程中，已创建虚拟机规模集。 你已了解如何：
 
-[均衡虚拟机的负载](tutorial-load-balancer.md)
+> [!div class="checklist"]
+> * 使用自定义脚本扩展定义要缩放的 IIS 站点
+> * 为规模集创建负载均衡器
+> * 创建虚拟机规模集
+> * 增加或减少规模集中的实例数
+> * 创建自动缩放规则
+
+请继续学习下一篇教程，详细了解虚拟机的负载均衡概念。
+
+> [!div class="nextstepaction"]
+> [均衡虚拟机的负载](tutorial-load-balancer.md)
+

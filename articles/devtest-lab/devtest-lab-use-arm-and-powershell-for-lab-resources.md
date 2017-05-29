@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 8ee0301a48265b91f951c96c3339a3c3e3bdb1cb
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: cea4531175df2cc39790497dc049d27e23ffa0c6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -32,9 +33,9 @@ ms.lasthandoff: 04/27/2017
 可以在公共 [Github 存储库](https://github.com/Azure/azure-devtestlab)中找到预制的 [Azure Resource Manager 模板](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)和 [PowerShell 脚本](https://github.com/Azure/azure-devtestlab/tree/master/Scripts)。 按原样使用它们，或对它们进行自定义以满足需求，然后将它们存储在[专用 Git 存储库](devtest-lab-add-artifact-repo.md)中。 
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>步骤 2：修改 Azure Resource Manager 模板
-[使用 Azure Resource Manager 模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)演示了如何在开发测试实验室中使用 Azure Resource Manager 模板定义 Azure 解决方案的基础结构和配置，以及如何在一致的状态中重复部署多个 VM。
+如果之前从未创建过模板，则可以按照[创建第一个 Azure Resource Manager 模板](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template)中的步骤进行操作。
 
-例如，如果创建了新的虚拟网络并希望将它应用于全部现有实验室，可通过使用 Azure Resource Manager 模板快速实现此目的。
+此外，[创建 Azure Resource Manager 模板的最佳做法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)提供许多指导原则和建议，可帮助创建可靠且易用的 Azure Resource Manager 模板。 通常情况下，将使用所提供的方法或示例之一的变体，并根据需要修改模板。
 
 ## <a name="step-3-deploy-resources-with-powershell"></a>步骤 3：通过 PowerShell 部署资源
 自定义模板和脚本后，请遵循[通过 Resource Manager 模板和 Azure PowerShell 部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)的必需步骤操作。 本文提供关于将 Azure PowerShell 与 Azure Resource Manager 模板配合使用以将资源部署到 Azure 的常规信息。

@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2017
+ms.date: 05/04/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 9519719a63387cb8c341c72e262c2aeaacc3cd4a
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: a694d01281cfdc4559f779f18b92d0412d59cf45
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/12/2017
 ## <a name="what-are-dynamic-groups"></a>什么是动态组？
 Azure Active Directory (Azure AD) 的安全组成员身份动态配置在 [Azure 门户](https://portal.azure.com)中提供。 管理员可以设置规则以填充在 Azure Active Directory 中基于用户属性（如 userType、部门或国家/地区）创建的组。 这样便可基于成员属性的更改自动在安全组中添加或删除成员。 这些组可用于提供对应用程序或云资源（例如 SharePoint 站点和文档）的访问权限以及用于将许可证分配给成员。 在 [Azure Active Directory 中的专用组](active-directory-accessmanagement-dedicated-groups.md)中阅读有关动态组的详细信息。
 
-有了 AAD 高级 P1 或 P2 订阅，现在可以在 Azure 门户中创建高级规则来启用 Azure Active Directory 组的更复杂的基于属性的动态成员身份。 有关创建高级规则的详细信息，请参阅[在 Azure Active Directory 预览版中使用属性创建组成员身份的高级规则](active-directory-groups-dynamic-membership-azure-portal.md)。
+有了 AAD 高级 P1 或 P2 订阅，现在可以在 Azure 门户中创建高级规则来启用 Azure Active Directory 组的更复杂的基于属性的动态成员身份。 有关创建高级规则的详细信息，请参阅[在 Azure Active Directory 中使用属性创建组成员身份的高级规则](active-directory-groups-dynamic-membership-azure-portal.md)。
 
 ## <a name="what-are-the-built-in-dynamic-groups"></a>什么是内置动态组？
 “所有用户”动态组使租户管理员只需一次单击即可创建包含租户中所有用户的组。 默认情况下，“所有用户”组包含目录中的所有用户，其中包括成员和来宾。

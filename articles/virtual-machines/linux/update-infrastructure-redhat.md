@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/13/2017
 ms.author: borisb
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3ea6083425b9f881ba82077cfecbe24964304a79
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 07815d691ffe57f0349f7a90ced4a2fcc1ab834f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/03/2017
 > 
 
 ## <a name="rhui-azure-infrastructure-update"></a>RHUI Azure 基础结构更新
-自 2016 年 9 月起，Azure 拥有一组新的 Red Hat 更新基础结构 (RHUI) 服务器。 这些服务器使用 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)部署，因此任何 VM 都可以使用单一终结点 (rhui-1.micrsoft.com)，而无需考虑区域。 Azure 应用商店中的新 RHEL 即用即付 (PAYG) 映像（日期为 2016 年 9 月的版本或更高版本）指向新的 Azure RHUI 服务器，不需要执行任何其他操作。
+自 2016 年 9 月起，Azure 拥有一组新的 Red Hat 更新基础结构 (RHUI) 服务器。 这些服务器使用 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)部署，因此任何 VM 都可以使用单一终结点 (rhui-1.microsoft.com)，而无需考虑区域。 Azure 应用商店中的新 RHEL 即用即付 (PAYG) 映像（日期为 2016 年 9 月的版本或更高版本）指向新的 Azure RHUI 服务器，不需要执行任何其他操作。
 
 ### <a name="determine-if-action-is-required"></a>确定是否需要执行操作
 如果从 Azure RHEL PAYG VM 连接到 Azure RHUI 时遇到问题，请按照下列步骤操作

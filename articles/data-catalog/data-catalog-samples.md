@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/03/2017
+ms.date: 05/05/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2e84eb020b46fe89426e547b389715d6190fc03c
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 0c76287232e578df695f73e5d9792ee457266db9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -27,14 +28,18 @@ ms.lasthandoff: 11/17/2016
 
 以下是我们在 GitHub 的示例：
 
-* [Azure 数据目录入门](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-get-started/)
+* [Azure 数据目录入门](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-get-started/)
   
   此示例演示如何通过 Azure AD 进行身份验证，以使用数据目录 REST API 注册、搜索和删除数据资产。
-* [批量注册和批注](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/)
+* [批量注册和批注](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-excel-register-data-assets/)
   
   此示例演示如何使用数据目录 REST API 和 Open XML 从 Excel 工作簿批量注册数据资产。
-* [导入/导出工具](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-import-export/)
+* [导入/导出工具](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-import-export/)
   
   此示例演示如何使用数据目录 REST API 从 Azure 数据目录中提取资产，并将它们序列化到某文件。 还会演示如何采用序列化为 JSON 的资产并将它们推送到目录。 它支持使用搜索查询导出目录的子集。
+
+* [批量导入术语表术语](https://azure.microsoft.com/resources/samples/data-catalog-bulk-import-glossary/)
+
+    此示例演示如何从 CSV 文件将术语表术语导入到 ADC 术语表。
 
 

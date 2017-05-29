@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/02/2017
+ms.date: 05/08/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0053f93218e9fec4d72fb229bfb2c6159d8b5bc7
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: d129ea9e5f3e320ccd705028f9860188babe2fe4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -55,7 +56,7 @@ ms.lasthandoff: 04/27/2017
 ## <a name="create-a-data-lake-store-account"></a>创建 Data Lake Store 帐户
 若要创建 Data Lake Store 帐户，请执行以下操作：
 
-1. 在桌面上打开 PowerShell 窗口，然后输入以下代码片段：
+1. 在桌面上打开 PowerShell 窗口，然后输入以下代码片段。 出现登录的提示时，请以订阅管理员或所有者的身份登录： 
 
         # Sign in to your Azure account
         Login-AzureRmAccount
@@ -73,26 +74,42 @@ ms.lasthandoff: 04/27/2017
     > 如果在注册 Data Lake Store 资源提供程序时收到类似于 `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的错误，原因可能是你的订阅未列入 Data Lake Store 的允许列表。 若要在 Data Lake Store 公共预览版中启用你的 Azure 订阅，请遵循[通过 Azure 门户开始使用 Azure Data Lake Store](data-lake-store-get-started-portal.md) 中的说明。
     >
 
-2. 出现登录的提示时，请以订阅管理员或所有者的身份登录：
-3. Data Lake Store 帐户与 Azure 资源组关联。 首先请创建资源组。
+2. Data Lake Store 帐户与 Azure 资源组关联。 首先请创建资源组。
 
         $resourceGroupName = "<your new resource group name>"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
 
-    ![创建 Azure 资源组](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateResourceGroup.png "创建 Azure 资源组")
+    应看到如下输出：
+
+        ResourceGroupName : hdiadlgrp
+        Location          : eastus2
+        ProvisioningState : Succeeded
+        Tags              :
+        ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
+
 3. 创建 Data Lake Store 帐户。 指定的帐户名只能包含小写字母和数字。
 
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-    ![创建 Azure Data Lake 帐户](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateADLAcc.png "创建 Azure Data Lake 帐户")
-4. 验证是否已成功创建帐户。
+    你应该看到如下输出：
 
-        Test-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
+        ...
+        ProvisioningState           : Succeeded
+        State                       : Active
+        CreationTime                : 5/5/2017 10:53:56 PM
+        EncryptionState             : Enabled
+        ...
+        LastModifiedTime            : 5/5/2017 10:53:56 PM
+        Endpoint                    : hdiadlstore.azuredatalakestore.net
+        DefaultGroup                :
+        Id                          : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp/providers/Microsoft.DataLakeStore/accounts/hdiadlstore
+        Name                        : hdiadlstore
+        Type                        : Microsoft.DataLakeStore/accounts
+        Location                    : East US 2
+        Tags                        : {}
 
-    输出应该为 **True**。
-
-5. 若要将 Data Lake Store 用作默认存储，需要指定一个根路径，在创建群集过程中将复制此路径下的特定于群集的文件。 若要创建根路径（在代码片段中为 **/clusters/hdiadlcluster**），请使用以下 cmdlet：
+4. 若要将 Data Lake Store 用作默认存储，需要指定一个根路径，在创建群集过程中将复制此路径下的特定于群集的文件。 若要创建根路径（在代码片段中为 **/clusters/hdiadlcluster**），请使用以下 cmdlet：
 
         $myrootdir = "/"
         New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $myrootdir/clusters/hdiadlcluster
@@ -120,7 +137,7 @@ ms.lasthandoff: 04/27/2017
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
-    出现提示时，请输入前面指定的私钥密码。 为 **-po** 参数指定的值是与 .pfx 文件关联的密码。 成功完成该命令后，指定的证书目录中也应会出现 CertFile.pfx。
+    出现提示时，请输入前面指定的私钥密码。 为 **-po** 参数指定的值是与 .pfx 文件关联的密码。 成功完成该命令后，指定的证书目录中也应会出现 **CertFile.pfx**。
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>创建 Azure AD 和服务主体
 本部分将为 Azure AD 应用程序创建一个服务主体，将角色分配给该服务主体，然后通过提供证书来以服务主体的身份进行身份验证。 若要在 Azure AD 中创建应用程序，请运行以下命令：
@@ -172,7 +189,7 @@ ms.lasthandoff: 04/27/2017
         $location = "East US 2"
         $storageAccountName = $dataLakeStoreName                          # Data Lake Store account name
         $storageRootPath = "<Storage root path you specified earlier>" # E.g. /clusters/hdiadlcluster
-        $clusterName = $containerName                   # As a best practice, have the same name for the cluster and container
+        $clusterName = "<unique cluster name>"
         $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential

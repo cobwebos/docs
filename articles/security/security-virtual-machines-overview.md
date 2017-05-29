@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 05/04/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 70d22ae8d7f67f1e12a233e004f1eb749927e7d8
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 9307b1688ed9e3dc412d044e72bdf88b7bb4d1ec
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -48,7 +49,7 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
 * 合规性
 
 ## <a name="antimalware"></a>反恶意软件
-借助 Azure，你可以使用来自 Microsoft、Symantec、Trend Micro、McAfee 和 Kaspersky 等安全性供应商的恶意软件清除软件，以保护你的虚拟机免受恶意文件、广告软件和其他威胁的侵害。 请参阅下面的“了解更多”部分以查找有关合作伙伴解决方案的文章。
+借助 Azure，可以使用来自 Microsoft、Symantec、Trend Micro、McAfee 和 Kaspersky 等安全性供应商的恶意软件清除软件，以保护虚拟机免受恶意文件、广告软件和其他威胁的侵害。 请参阅下面的“了解更多”部分以查找有关合作伙伴解决方案的文章。
 
 适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。  Microsoft 反恶意软件提供了已知恶意或不需要的软件试图安装自身或在 Azure 系统上运行时的可配置警报。
 
@@ -73,7 +74,6 @@ Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的�
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](../virtual-machines/windows/classic/install-trend.md)
 * [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../virtual-machines/windows/classic/install-symantec.md)
-* [用于保护 Azure 虚拟机的新反恶意软件选项 – McAfee Endpoint Protection](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 * [Azure 应用商店中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
 
 ## <a name="hardware-security-module"></a>硬件安全模块
