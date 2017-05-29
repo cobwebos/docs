@@ -1,6 +1,7 @@
 ---
-title: "在 Azure Active Directory 预览版中查看所有现有组 | Microsoft 文档"
-description: "如何在 Azure Active Directory 预览版中查看或搜索组"
+
+title: "在 Azure Active Directory 中查看所有现有组 | Microsoft Docs"
+description: "如何在 Azure Active Directory 中查看或搜索组"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
-ms.openlocfilehash: 3546ae6951a514108e62f8840a601930aa1ac4c2
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 1cc8b9194433840df9ce16baf1a0ec2c3dd08ad9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
 # <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>在 Azure Active Directory 中查看或搜索用户组
-本文介绍如何在 Azure Active Directory (Azure AD) 预览版中查看所有组。 [预览包括哪些内容？](active-directory-preview-explainer.md) Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创建可用你的用户填充的组。 你可以使用组来执行管理任务，例如一次向多个用户分配许可证或权限。
+本文介绍如何在 Azure Active Directory (Azure AD) 中查看所有组。 Azure AD 用户管理的功能之一是可以使用组来执行管理任务，如一次将许可证或权限分配给多个用户。
 
 ## <a name="how-do-i-see-all-the-groups"></a>如何查看所有组？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 569777b7034ebeccddf6d9ef89ee2f9fb667cc3f
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 40eb1d80830818a492c78d5091aaa9cca8d48f16
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -68,7 +69,7 @@ Exchange 提供两种主要类型的协议。 查看以下选项，然后选择�
 * **旧版协议**。 可以使用 AD FS 阻止旧版协议。 这会阻止访问旧版的 Office 客户端，例如未启用新式身份验证的 Office 2013 和早期版本的 Office。
 
 ### <a name="use-ad-fs-to-block-legacy-protocol"></a>使用 AD FS 阻止旧版协议
-可使用以下示例规则在 AD FS 级别阻止旧版协议访问。 从两个常见配置中进行选择。
+可使用以下示例颁发授权规则在 AD FS 级别阻止旧版协议访问。 从两个常见配置中进行选择。
 
 #### <a name="option-1-allow-exchange-activesync-and-allow-legacy-apps-but-only-on-the-intranet"></a>选项 1：允许 Exchange ActiveSync，并允许旧版应用（仅限 Intranet 中）
 通过将以下三个规则应用于 Microsoft Office 365 标识平台的 AD FS 信赖方信任，就可允许 Exchange ActiveSync 流量以及浏览器和新式身份验证流量。 阻止来自 Extranet 的旧版应用。

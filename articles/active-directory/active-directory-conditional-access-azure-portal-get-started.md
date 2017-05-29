@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory 中的条件性访问入门 - 预览版 | Microsoft 文档"
+title: "Azure Active Directory 中的条件访问入门 | Microsoft Docs"
 description: "使用位置条件测试条件性访问。"
 services: active-directory
 keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: ae60cd810b4beb26f714e2ea2566e5354c482fa8
-ms.openlocfilehash: 3022f5e27ddaf125161bbf7132b41a27024f40b6
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 52b65b24867906d0c574a323904d980e126bcbd2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="get-started-with-conditional-access-in-azure-active-directory---preview"></a>Azure Active Directory 中的条件性访问入门 - 预览版
-
-本主题中所述的行为目前以[预览版](active-directory-preview-explainer.md)提供。
+# <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件访问入门
 
 条件性访问是 Azure Active Directory 的一项功能，用于定义在哪种条件下允许已授权的用户访问应用。 
 
@@ -160,10 +160,5 @@ ms.openlocfilehash: 3022f5e27ddaf125161bbf7132b41a27024f40b6
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关条件性访问的详细信息，请参阅 [Azure Active Directory 条件性访问](active-directory-conditional-access-azure-portal.md)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

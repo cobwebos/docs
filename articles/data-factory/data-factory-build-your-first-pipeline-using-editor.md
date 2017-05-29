@@ -1,27 +1,10 @@
 ---
-title: "构建第一个数据工厂（Azure 门户）| Microsoft 文档"
-description: "本教程使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。"
-services: data-factory
-documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
-ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
-ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
-ms.date: 04/17/2017
-ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: c9f2e3beafd19e0d4d62e409a80da336be17b90b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/03/2017
+title: 生成第一个数据工厂（Azure 门户）| Microsoft Docs description: 本教程介绍如何使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。
+services: data-factory documentationcenter: '' author: spelluru manager: jhubbard editor: monicar
 
+ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d ms.service: data-factory ms.workload: data-services ms.tgt_pltfrm: na ms.devlang: na ms.topic: hero-article ms.date: 04/17/2017 ms.author: spelluru
 
----
+---3
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-portal"></a>教程：使用 Azure 门户构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
@@ -37,7 +20,7 @@ ms.lasthandoff: 02/03/2017
 > [!NOTE]
 > 本教程中的数据管道可以转换输入数据，以便生成输出数据。 它不是将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 > 
-> 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。 
+> 本教程只使用“复制”类型的活动。 一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 ## <a name="prerequisites"></a>先决条件
 1. 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
@@ -62,13 +45,15 @@ ms.lasthandoff: 02/03/2017
    >
 4. 选择要在其中创建数据工厂的 **Azure 订阅** 。
 5. 选择现有的 **资源组** ，或创建资源组。 本教程创建名为 **ADFGetStartedRG**的资源组。
-6. 在“新建数据工厂”边栏选项卡中单击“创建”。
+6. 选择数据工厂的**位置**。 下拉列表中只显示数据工厂服务支持的区域。
+7. 选择“固定到仪表板”。 
+8. 在“新建数据工厂”边栏选项卡中单击“创建”。
 
    > [!IMPORTANT]
    > 只有订阅/资源组级别的 [数据工厂参与者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。
    >
    >
-7. 此时可在 Azure 门户的“启动板”中看到所创建的数据工厂，如下所示：    
+7. 在仪表板上，将会看到状态为“正在部署数据工厂”的以下磁贴。    
 
    ![正在创建数据工厂状态](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 8. 祝贺你！ 现已成功创建第一个数据工厂。 成功创建数据工厂后，将看到数据工厂页，其中显示了数据工厂的内容。     
@@ -115,7 +100,6 @@ ms.lasthandoff: 02/03/2017
       "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-          "version": "3.2",
           "clusterSize": 1,
           "timeToLive": "00:30:00",
           "linkedServiceName": "AzureStorageLinkedService"
@@ -128,7 +112,6 @@ ms.lasthandoff: 02/03/2017
 
    | 属性 | 说明 |
    |:--- |:--- |
-   | 版本 |指定所创建的 HDInsight 版本为 3.2。 |
    | ClusterSize |指定 HDInsight 群集的大小。 |
    | TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
    | linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户。 |
@@ -185,13 +168,16 @@ ms.lasthandoff: 02/03/2017
 
    | 属性 | 说明 |
    |:--- |:--- |
-   | type |type 属性设置为 AzureBlob，因为数据位于 Azure Blob 存储中。 |
-   | linkedServiceName |表示前面创建的 AzureStorageLinkedService。 |
-   | fileName |此属性是可选的。 如果省略此属性，将选择 folderPath 中的所有文件。 在这种情况下，只处理 input.log。 |
-   | type |日志文件采用文本格式，因此这里使用 TextFormat。 |
-   | columnDelimiter |日志中的列以逗号 (,) 分隔 |
-   | frequency/interval |frequency 设置为 Month，interval 为 1，表示每月获取输入切片。 |
-   | external |如果输入数据不是由数据工厂服务生成的，此属性设置为 true。 |
+   | type |type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。 |
+   | linkedServiceName |引用前面创建的 **AzureStorageLinkedService**。 |
+   | folderPath | 指定 Blob **容器**以及包含输入 Blob 的**文件夹**。 | 
+   | fileName |此属性是可选的。 如果省略此属性，将选择 folderPath 中的所有文件。 在本教程中，只处理 **input.log**。 |
+   | type |日志文件采用文本格式，因此这里使用 **TextFormat**。 |
+   | columnDelimiter |日志文件中的列以**逗号 (`,`)** 分隔 |
+   | frequency/interval |frequency 设置为 **Month**，interval 为 **1**，表示每月获取一次输入切片。 |
+   | external | 如果输入数据不是由该管道生成的，此属性设置为 **true**。 在本教程中，input.log 文件不是由该管道生成的，因此将此属性设置为 true。 |
+
+    有关这些 JSON 属性的详细信息，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md#dataset-properties)一文。
 3. 单击命令栏上的“部署”，部署新建的数据集。 左侧树视图中应会出现该数据集。
 
 ### <a name="create-output-dataset"></a>创建输出数据集
@@ -392,4 +378,3 @@ ms.lasthandoff: 02/03/2017
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
 | [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 | [使用监视应用监视和管理管道](data-factory-monitor-manage-app.md) |本文介绍如何使用监视和管理应用来监视、管理和调试管道。 |
-

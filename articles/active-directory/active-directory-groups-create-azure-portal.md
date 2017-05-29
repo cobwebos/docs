@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Active Directory 预览版中创建用户组 | Microsoft 文档"
+title: "在 Azure Active Directory 中创建用户组 | Microsoft Docs"
 description: "如何在 Azure Active Directory 中创建组并向该组添加成员"
 services: active-directory
 documentationcenter: 
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
-ms.openlocfilehash: 4b85a754dfa9632f27308a3d9234213533dea4c4
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 9636d26ec62bb83b30fdc4ae8b1701da8ab532e8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/01/2017
 >
 >
 
-本文介绍如何在 Azure Active Directory (Azure AD) 预览版中创建和填充新组。 [预览包括哪些内容？](active-directory-preview-explainer.md) 使用组来执行管理任务，例如一次向多个用户或设备分配许可证或权限。
+本文介绍如何在 Azure Active Directory 中创建和填充新组。 使用组来执行管理任务，例如一次向多个用户或设备分配许可证或权限。
 
 ## <a name="how-do-i-create-a-group"></a>如何创建组？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。

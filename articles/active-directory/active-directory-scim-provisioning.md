@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2016
+ms.date: 05/04/2017
 ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3349f890391aec7fc6361b149d148d828cbe3b97
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: c4e482e9f985553938ce132c617ba0b1a2128106
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -32,7 +34,7 @@ Azure Active Directory 可以使用 [SCIM 2.0](https://tools.ietf.org/html/draft
 Azure Active Directory 中的 SCIM 有两种使用方案：
 
 * **将用户和组预配到支持 SCIM 的应用程序** — 支持 SCIM 2.0 并使用 OAuth 持有者令牌进行身份验证的应用程序可直接与 Azure AD 配合工作。
-* **为支持其他基于 API 的预配的应用程序构建自己的预配解决方案** - 对于非 SCIM 应用程序，可以创建一个 SCIM 终结点用于在 Azure AD 的 SCIM 终结点与应用程序为用户预配支持的任何 API 之间进行转换。  为了帮助开发 SCIM 终结点，我们连同代码示例提供了 CLI 库，说明如何提供 SCIM 终结点和转换 SCIM 消息。  
+* **为支持其他基于 API 的预配的应用程序构建自己的预配解决方案** - 对于非 SCIM 应用程序，可以创建一个 SCIM 终结点用于在 Azure AD SCIM 终结点与应用程序为用户预配支持的任何 API 之间进行转换。  为了帮助开发 SCIM 终结点，我们连同代码示例提供了 CLI 库，说明如何提供 SCIM 终结点和转换 SCIM 消息。  
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>将用户和组预配到支持 SCIM 的应用程序
 Azure Active Directory 可配置为自动将已分配的用户和组预配到实现[跨域标识管理系统 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) Web 服务、并接受使用 OAuth 持有者令牌进行身份验证的应用程序。 在 SCIM 2.0 规范中，应用程序必须符合以下要求：
@@ -116,16 +118,16 @@ Azure Active Directory 可配置为自动将已分配的用户和组预配到实
 2. 浏览到“Active Directory”>“目录”> [你的目录] >“应用程序”，然后选择“添加”>“从库中添加应用程序”。
 3. 选择左侧的“自定义”选项卡，输入类似于“SCIM 测试应用”的名称，然后单击复选标记图标创建应用对象。 请注意，创建的应用程序对象代表要预配和实现登一登入的目标应用程序，而不只是 SCIM 终结点。
 
-![][2]
+  ![][2]
 
-1. 在出现的屏幕中，选择第二个“配置帐户预配”按钮。
+4. 在出现的屏幕中，选择第二个“配置帐户预配”按钮。
 2. 在对话框中，输入面向 Internet 的 URL 和 SCIM 终结点的端口。 这类似于 http://testmachine.contoso.com:9000 或 http://<ip-address>:9000/，其中 <ip-address> 是 Internet 公开的 IP 地址。  
-3. 单击“下一步”，然后单击“开始测试”按钮，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果尝试失败，将显示诊断信息。  
-4. 如果尝试连接到 Web 服务成功，请在余下的屏幕中单击“下一步”，然后单击“完成”以退出对话框。
-5. 在出现的屏幕中，选择第三个“分配帐户”按钮。 在出现的“用户和组”部分中，分配你要预配到应用程序的用户或组。
-6. 分配用户和组后，单击靠近屏幕顶部的“配置”选项卡。
-7. 在“帐户预配”下，确认“状态”设置为了“打开”。 
-8. 在“工具”下，单击“重新开始帐户预配”以开始预配过程。
+5. 单击“下一步”，然后单击“开始测试”按钮，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果尝试失败，将显示诊断信息。  
+6. 如果尝试连接到 Web 服务成功，请在余下的屏幕中单击“下一步”，然后单击“完成”以退出对话框。
+7. 在出现的屏幕中，选择第三个“分配帐户”按钮。 在出现的“用户和组”部分中，分配你要预配到应用程序的用户或组。
+8. 分配用户和组后，单击靠近屏幕顶部的“配置”选项卡。
+9. 在“帐户预配”下，确认“状态”设置为了“打开”。 
+10. 在“工具”下，单击“重新开始帐户预配”以开始预配过程。
 
 请注意，预配过程可能需要 5-10 分钟才能开始将请求发送到 SCIM 终结点。  应用程序的“仪表板”选项卡上提供了连接尝试的摘要，可以从目录的“报告”选项卡下载预配活动报告和任何预配错误。
 
@@ -678,9 +680,4 @@ Microsoft 提供的、用于实现 SCIM 服务的通用语言基础结构库将�
 [3]: ./media/active-directory-scim-provisioning/scim-figure-3.PNG
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

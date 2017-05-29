@@ -15,10 +15,11 @@ ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 704403704bd52ba1fe1815345708ab4d2d2547af
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: d47447007c3bac51dc9ee0a17948ef9a42377a22
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
