@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Active Directory 预览版中对企业应用禁用用户登录 | Microsoft Docs"
+title: "在 Azure Active Directory 中对企业应用禁用用户登录 | Microsoft Docs"
 description: "如何禁用企业应用程序，防止用户在 Azure Active Directory 中登录该程序"
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: c57505d037d991f3c0d720a481393ec2ae6b8069
-ms.openlocfilehash: ef6ae32c1d9b2e417d2a766207575f19aa06feaa
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 5d27046370eada0c371c94fb573fa1bcf536f7cf
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中对企业应用禁用用户登录
-可以轻松地禁用企业应用程序，防止用户在 Azure Active Directory (Azure AD) 预览版中登录该程序。 [预览包括哪些内容？](active-directory-preview-explainer.md) 用户必须具有相应的权限才能管理企业应用。 在当前预览版中，用户必须是目录的全局管理员。
+# <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中对企业应用禁用用户登录
+可以轻松地禁用企业应用程序，防止用户在 Azure Active Directory (Azure AD) 中登录该程序。 必须具有适当的权限才能管理企业应用，并且必须是目录的全局管理员。
 
 ## <a name="how-do-i-disable-user-sign-ins"></a>如何禁用用户登录？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
@@ -42,9 +44,4 @@ ms.openlocfilehash: ef6ae32c1d9b2e417d2a766207575f19aa06feaa
 * [向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md)
 * [删除企业应用的用户或组分配](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [更改企业应用的名称或徽标](active-directory-coreapps-change-app-logo-user-azure-portal.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

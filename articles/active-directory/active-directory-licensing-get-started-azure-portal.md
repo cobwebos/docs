@@ -1,6 +1,6 @@
 ---
 
-title: "Azure Active Directory 预览版中的许可入门 | Microsoft 文档"
+title: "Azure Active Directory 中的许可入门 | Microsoft Docs"
 description: "介绍 Azure Active Directory 许可及其工作原理、入门方法和最佳做法，涉及的产品包括 Office 365、Microsoft Intune 及 Azure Active Directory Premium 和 Basic 版本"
 services: active-directory
 keywords: "Azure AD 许可"
@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 05/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 3bad24f35cf7867f1e02e8470c602a7f6a9ce8fb
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 8e9d6900910f45b5f17600fc5608191871c5ab21
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
-# <a name="license-yourself-and-your-users-in-azure-active-directory-preview"></a>向你自己以及 Azure Active Directory 预览版中你的用户进行许可
+# <a name="license-yourself-and-your-users-in-azure-active-directory"></a>在 Azure Active Directory 中向自己及用户发放许可
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-licensing-get-started-azure-portal.md)
@@ -59,7 +60,7 @@ Azure Active Directory (Azure AD) 是 Microsoft 的标识即服务 (IDaaS) 解�
 
 只要获取了订阅，就能配置付费功能；但是，要使用 Azure AD 付费功能，就必须将许可证分发给适当的个人。 一般而言，应访问 Azure AD 付费功能或者通过 Azure AD 付费功能管理的人员都必须被分配许可证。 许可证分配是用户与购买的服务（例如 Azure AD Premium、Basic 或 Enterprise Mobility Suite）之间的映射。
 
-管理目录中哪些用户应该拥有许可证很简单。 只要通过在 Azure 门户中将许可证分配给组，或者通过门户、PowerShell 或 API 直接将许可证分配给适当的人员即可。 将许可证分配给组时，将对所有组成员分配许可证。 如果在组中添加或删除用户，则会相应地分配或删除其许可证。 组分配可以使用可用的任何组管理功能，而且与基于组的应用程序分配一致。 使用这种方法，你可以设置规则以便为目录中所有用户进行自动分配，确保有适当职务的每个人都获得许可证，甚至委派决策权给组织中的其他管理人员。 
+管理目录中哪些用户应该拥有许可证很简单。 只要通过在 Azure 门户中将许可证分配给组（此功能处于公共预览状态），或者通过门户、PowerShell 或 API 直接将许可证分配给适当的个人即可。 将许可证分配给组时，将对所有组成员分配许可证。 如果在组中添加或删除用户，则会相应地分配或删除其许可证。 组分配可以使用可用的任何组管理功能，而且与基于组的应用程序分配一致。 使用这种方法，你可以设置规则以便为目录中所有用户进行自动分配，确保有适当职务的每个人都获得许可证，甚至委派决策权给组织中的其他管理人员。 
 
 有关将许可证分配到组的详细介绍（包括高级方案和 Office 365 许可方案），请参阅[此文](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-assignment-azure-portal)。
 

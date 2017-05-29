@@ -1,5 +1,6 @@
 ---
-title: "在 Azure Active Directory 预览版中添加或更改用户的个人资料信息 | Microsoft Docs"
+
+title: "在 Azure Active Directory 中添加或更改用户的个人资料信息 | Microsoft Docs"
 description: "介绍如何在 Azure Active Directory 中添加用户个人资料，包括个人资料照片"
 services: active-directory
 documentationcenter: 
@@ -12,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/24/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 0dc1f1ef73334187fe76302ff3bd5a5446dec768
-ms.openlocfilehash: 21370f9c30ac1dcaa979ab9724155c91bda128f7
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: ccc6dfaf1653d5888541d78f5e9e20b183709574
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中添加或更改用户的个人资料信息
-本文介绍如何在 Azure Active Directory (Azure AD) 预览版中添加用户个人资料信息（例如，个人资料图片或电话和电子邮件身份验证信息）。 [预览包括哪些内容？](active-directory-preview-explainer.md) 有关添加组织中的新用户的信息，请参阅[将新用户添加到 Azure Active Directory](active-directory-users-create-azure-portal.md)。
+# <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>在 Azure Active Directory 中添加或更改用户的个人资料信息
+本文介绍如何在 Azure Active Directory (Azure AD) 中添加用户个人资料信息（例如，个人资料图片或电话和电子邮件身份验证信息）。 有关添加组织中的新用户的信息，请参阅[将新用户添加到 Azure Active Directory](active-directory-users-create-azure-portal.md)。
 
 ## <a name="to-change-profile-information"></a>更改个人资料信息
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
@@ -39,9 +41,9 @@ ms.lasthandoff: 02/27/2017
 6. 添加或更改个人资料信息。 然后在命令栏中，选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
-* [将新用户添加到 Azure Active Directory 预览版](active-directory-users-create-azure-portal.md)
-* [在 Azure Active Directory 预览版中重置用户的密码](active-directory-users-reset-password-azure-portal.md)
-* [在 Azure Active Directory 预览版中向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)
-* [在 Azure Active Directory 预览版中添加或更改用户的个人资料信息](active-directory-users-work-info-azure-portal.md)
-* [从 Azure Active Directory 预览版的目录中删除用户](active-directory-users-delete-user-azure-portal.md)
+* [向 Azure Active Directory 添加新用户](active-directory-users-create-azure-portal.md)
+* [在 Azure Active Directory 中重置用户的密码](active-directory-users-reset-password-azure-portal.md)
+* [在 Azure Active Directory 中向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)
+* [在 Azure Active Directory 中添加或更改用户的个人资料信息](active-directory-users-work-info-azure-portal.md)
+* [从 Azure Active Directory 的目录中删除用户](active-directory-users-delete-user-azure-portal.md)
 

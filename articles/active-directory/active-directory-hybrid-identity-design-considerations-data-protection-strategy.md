@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 05/04/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 82bc44b20158a22dfae0d6c8fbf5f1c1f4577c91
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 3d0508c5cc31ab9fda728596895aaab8e4cb7814
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -115,22 +116,22 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 
 图 X 中显示的每个交互分别代表一个可在 Azure AD 中引入的访问控制方案。 每种方案的说明如下：
 
-1.对在本地托管的应用程序的条件性访问：可以将已注册的设备与配置为将 AD FS 与 Windows Server 2012 R2 一起使用的应用程序的访问策略一起使用。 有关设置本地条件性访问的详细信息，请参阅 [使用 Azure Active Directory 设备注册设置本地条件性访问](active-directory-conditional-access.md)。
+1. 对在本地托管的应用程序的条件访问：可以将已注册的设备与配置为将 AD FS 与 Windows Server 2012 R2 一起使用的应用程序的访问策略一起使用。 有关设置本地条件性访问的详细信息，请参阅 [使用 Azure Active Directory 设备注册设置本地条件性访问](active-directory-conditional-access.md)。
 
-2. 对 Azure 管理门户的访问控制：Azure 还能使用 RBAC（基于角色的访问控制）来控制对管理门户的访问。 公司可以使用此方法限制有权访问 Azure 管理门户的个人可以执行的操作数量。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方式委派访问权限：
+2. 对 Azure 门户的访问控制：Azure 还允许通过使用基于角色的访问控制 (RBAC) 来控制对门户的访问。 公司可以使用此方法限制个人可以在 Azure 门户中执行的操作数量。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方法委派访问权限：
 
 * 基于组的角色分配：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这使你能够充分利用组织在工具和组管理过程中已有的现有投资。 你也可以使用 Azure AD 高级版中的委派组管理功能。
 * 充分利用 Azure 中的内置角色：可以使用三个角色 - 所有者、参与者和阅读人员，确保用户和组仅具有完成工作所需任务的权限。
 * 对资源的细致访问：针对特定的订阅、资源组或单独的 Azure 资源（例如，网站或数据库），可以将角色分配给用户和组。 这样，可以确保用户有权访问所有所需资源，并且无权访问不需要管理的资源。
 
 > [!NOTE]
-> 请阅读 [Azure 中基于角色的访问控制](https://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/)详细了解此功能。 构建应用程序并想要自定义其访问控制的开发人员可以使用 Azure AD 应用程序角色进行授权。 请参阅 [WebApp-RoleClaims-DotNet 示例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet)，了解如何构建使用此功能的应用。
+> 如果要构建应用程序并且要自定义其访问控制，还可以使用 Azure AD 应用程序角色进行授权。 请参阅 [WebApp-RoleClaims-DotNet 示例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet)，了解如何构建使用此功能的应用。
 >
 >
 
-3.使用 Microsoft Intune 的 Office 365 应用程序的条件性访问 ：IT 管理员可以预配条件性访问设备策略来保护公司资源，同时允许信息工作者在符合条件的设备上访问服务。 有关详细信息，请参阅 [Office 365 服务的条件性访问设备策略](active-directory-conditional-access-device-policies.md)。
+3. 使用 Microsoft Intune 的 Office 365 应用程序的条件访问：IT 管理员可以预配条件访问设备策略来保护公司资源，同时允许信息工作者在符合条件的设备上访问服务。 有关详细信息，请参阅 [Office 365 服务的条件性访问设备策略](active-directory-conditional-access-device-policies.md)。
 
-4.适用于 SaaS 应用的 Azure 条件性访问：使用[此功能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)可以配置基于应用程序的多重身份验证，以及阻止不在受信任网络中的用户的访问。 可以将多重身份验证规则应用于已分配给该应用程序的所有用户，或者仅应用于指定安全组中的用户。 如果用户是从组织网络内部的 IP 地址访问应用程序，则可能不需要进行多重身份验证。
+4. 适用于 SaaS 应用的条件访问：使用[此功能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)可以配置基于应用程序的多重身份验证访问规则，并可以阻止不在受信任网络中的用户的访问。 可以将多重身份验证规则应用于已分配给该应用程序的所有用户，或者仅应用于指定安全组中的用户。 如果用户是从组织网络内部的 IP 地址访问应用程序，则可能不需要进行多重身份验证。
 
 由于访问控制选项采用多层方式，因此在运行此任务时无法比较这些选项。 请确保针对每个要求控制资源访问权限的方案使用所有适用的选项。
 

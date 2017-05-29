@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2017
+ms.date: 05/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: a7240c52e9351a60e3cf577d8112862c7dc8d913
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: d4c509c43ff647f3d9b96ffd136073312a81049b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -115,8 +116,7 @@ ms.lasthandoff: 03/14/2017
 对于组许可证分配，任何没有指定使用位置的用户将继承该目录的位置。 如果用户位于不同的位置，请在将用户添加到具有许可证的组之前，在用户对象中正确反映这种状态。
 
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>使用 PowerShell 查看谁拥有继承的许可证和直接许可证
-
-在 Azure AD 版本预览期内，无法使用 PowerShell 来完全控制组许可证的分配。 但是，可以使用它来发现有关用户状态的基本信息，以及确定许可证是从组继承的还是直接分配的。 以下代码示例演示管理员如何生成有关许可证分配的基本报告。
+当基于组的许可处于公共预览状态时，无法使用 PowerShell 来完全控制组许可证的分配。 但是，可以使用它来发现有关用户状态的基本信息，以及确定许可证是从组继承的还是直接分配的。 以下代码示例演示管理员如何生成有关许可证分配的基本报告。
 
 1. 运行 `connect-msolservice` cmdlet 进行身份验证并连接到你的租户。
 

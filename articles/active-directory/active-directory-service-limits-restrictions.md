@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 服务限制和局限性"
-description: "Azure Active Directory 服务的使用限制和其他服务限制。"
+description: "Azure Active Directory 服务的使用限制和其他服务限制"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: ed2f15550626dc030733214564f7c9fa6da38d1c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 2ec65409287bf55f2892e573131739cfca49dd9d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -28,9 +30,4 @@ ms.openlocfilehash: ed2f15550626dc030733214564f7c9fa6da38d1c
 ## <a name="whats-next"></a>后续步骤
 * [以组织身份注册 Azure](sign-up-organization.md)
 * [Azure 订阅与 Azure AD 的关联方式](active-directory-how-subscriptions-associated-directory.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: f4e4cad55b8b2b6146e2ff709b3238715270a385
-ms.openlocfilehash: 8841da846c1483dbb011a17f76e4dfcfdfe46ea9
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 92de31c7bdb475b8d00551384842b0c5aa3fb4e0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="before-you-begin"></a>开始之前
 
-ARMclient 用于使用 PowerShell 调用 REST API。 按照 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 在 chocolatey 上找到 ARMClient
+ARMclient 用于使用 PowerShell 调用 REST API。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 
 此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
@@ -58,6 +59,15 @@ ARMclient 用于使用 PowerShell 调用 REST API。 按照 [Chocolatey 上的 A
 
 ```PowerShell
 armclient login
+```
+
+## <a name="register-insights-provider"></a>注册 Insights 提供程序
+
+要使流日志记录正常工作，必须注册 **Microsoft.Insights** 提供程序。 如果不确定 **Microsoft.Insights** 提供程序是否已注册，请运行以下脚本。
+
+```powershell
+$subscriptionId = "00000000-0000-0000-0000-000000000000"
+armclient post "https://management.azure.com//subscriptions/${subscriptionId}/providers/Microsoft.Insights/register?api-version=2016-09-01"
 ```
 
 ## <a name="enable-network-security-group-flow-logs"></a>启用网络安全组流日志

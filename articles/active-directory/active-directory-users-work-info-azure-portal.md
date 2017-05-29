@@ -1,5 +1,6 @@
 ---
-title: "在 Azure Active Directory 预览版中添加或更改用户的工作信息 | Microsoft Docs"
+
+title: "在 Azure Active Directory 中添加或更改用户的工作信息 | Microsoft Docs"
 description: "说明如何在 Azure Active Directory 中添加用户的电话号码、部门名称和其他工作信息"
 services: active-directory
 documentationcenter: 
@@ -12,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/04/2017
 ms.author: curtand;jeffsta
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b344136bdcfba22416933ced9a91ef2a82082d11
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: a7197ed0f08d38bb604641115a424b98ba5b5908
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="add-or-change-work-information-for-a-user-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中添加或更改用户的工作信息
-本文介绍如何在 Azure Active Directory (Azure AD) 预览版中添加或更改工作信息（如用户的电话号码或部门名称）。 [预览包括哪些内容？](active-directory-preview-explainer.md) 有关添加组织中的新用户的信息，请参阅[将新用户添加到 Azure Active Directory](active-directory-users-create-external-azure-portal.md)。
+# <a name="add-or-change-work-information-for-a-user-in-azure-active-directory"></a>在 Azure Active Directory 中添加或更改用户的工作信息
+本文介绍如何在 Azure Active Directory (Azure AD) 中添加或更改工作信息（如用户的电话号码或部门名称）。 有关添加组织中的新用户的信息，请参阅[将新用户添加到 Azure Active Directory](active-directory-users-create-external-azure-portal.md)。
 
 ## <a name="to-change-work-information"></a>更改工作信息
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
@@ -39,9 +41,9 @@ ms.lasthandoff: 11/17/2016
 6. 添加或更改工作信息。 然后在命令栏中，选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
-* [将新用户添加到 Azure Active Directory 预览版](active-directory-users-create-azure-portal.md)
-* [在 Azure Active Directory 预览版中重置用户的密码](active-directory-users-reset-password-azure-portal.md)
-* [为用户分配 Azure Active Directory 预览版中的管理员角色](active-directory-users-assign-role-azure-portal.md)
-* [在 Azure Active Directory 预览版中添加或更改用户的个人资料信息](active-directory-users-profile-azure-portal.md)
-* [从 Azure Active Directory 预览版的目录中删除用户](active-directory-users-delete-user-azure-portal.md)
+* [向 Azure Active Directory 添加新用户](active-directory-users-create-azure-portal.md)
+* [在 Azure Active Directory 中重置用户的密码](active-directory-users-reset-password-azure-portal.md)
+* [在 Azure Active Directory 中向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)
+* [在 Azure Active Directory 中添加或更改用户的个人资料信息](active-directory-users-profile-azure-portal.md)
+* [从 Azure Active Directory 的目录中删除用户](active-directory-users-delete-user-azure-portal.md)
 

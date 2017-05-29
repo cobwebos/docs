@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Active Directory 预览版中查看用户可以管理的所有企业应用 | Microsoft Docs"
+title: "在 Azure Active Directory 中查看可以管理的所有企业应用 | Microsoft Docs"
 description: "如何在 Azure Active Directory 中查看有权管理的企业应用的列表"
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 33b036537211e3bdeacba7f388aca334404385cb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 14b335d14d893640d469508d6f34b4e7ec6bee8b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中查看可以管理的所有企业应用
-可以在 Azure Active Directory (Azure AD) 预览版中管理企业应用程序。 [预览包括哪些内容？](active-directory-preview-explainer.md) 其中包括查看可管理应用、将用户或组分配到应用、维护应用的属性（例如应用程序名称/徽标），甚至包括禁用应用程序，防止用户登录。
+# <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>在 Azure Active Directory 中查看可以管理的所有企业应用
+可以在 Azure Active Directory (Azure AD) 中管理企业应用程序。 其中包括查看可管理应用、将用户或组分配到应用、维护应用的属性（例如应用程序名称/徽标），甚至包括禁用应用程序，防止用户登录。
 
 ## <a name="how-do-i-view-all-my-apps"></a>如何查看我的所有应用？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
@@ -36,9 +38,4 @@ ms.openlocfilehash: 33b036537211e3bdeacba7f388aca334404385cb
 * [删除企业应用的用户或组分配](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [禁用企业应用的用户登录](active-directory-coreapps-disable-app-azure-portal.md)
 * [更改企业应用的名称或徽标](active-directory-coreapps-change-app-logo-user-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

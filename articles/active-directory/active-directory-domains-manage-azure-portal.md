@@ -1,5 +1,5 @@
 ---
-title: "管理 Azure Active Directory 预览版中的自定义域名 | Microsoft Docs"
+title: "管理 Azure Active Directory 中的自定义域名 | Microsoft Docs"
 description: "用于管理 Azure Active Directory 中域名的管理概念和操作指南"
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 05/04/2017
 ms.author: curtand;jeffsta
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9dd64868be0899ebfc6414e0dc9e6e62d864e88e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: b483dcce0bec933e5dab6c990f4912cb596ebda0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="managing-custom-domain-names-in-your-azure-active-directory-preview"></a>管理 Azure Active Directory 预览版中的自定义域名
-域名是许多目录资源标识符的重要部分：它可能是用户的用户名或电子邮件地址的一部分、组地址的一部分，也可能是应用程序的应用 ID URI 的一部分。 Azure Active Directory (Azure AD) 预览版中的资源可能包含一个域名，该域名已确认属于包含该资源的目录所有。 [预览包括哪些内容？](active-directory-preview-explainer.md) 只有全局管理员才能在 Azure AD 中执行域管理任务。
+# <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
+域名是许多目录资源标识符的重要部分：它可能是用户的用户名或电子邮件地址的一部分、组地址的一部分，也可能是应用程序的应用 ID URI 的一部分。 Azure Active Directory (Azure AD) 中的资源可包含已验证为目录（包含该资源）所拥有的域名。 只有全局管理员才能在 Azure AD 中执行域管理任务。
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>设置 Azure AD 目录的主域名
 创建目录后，初始域名（例如“contoso.onmicrosoft.com”）也是主域名。 创建新用户时，主域名是新用户的默认域名。 这简化了管理员在门户中创建新用户的过程。 若要更改主域名，请执行以下操作：
@@ -59,17 +61,12 @@ ms.openlocfilehash: 9dd64868be0899ebfc6414e0dc9e6e62d864e88e
 必须更改或删除 Azure AD 目录中的任何此类资源，然后才能删除自定义域名。
 
 ## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>使用 PowerShell 或图形 API 管理域名
-针对 Azure Active Directory 中域名的大多数管理任务也可以使用 Microsoft PowerShell 或者使用 Azure AD 图形 API（公共预览版）以编程方式来完成。
+针对 Azure Active Directory 中域名的大多数管理任务也可以使用 Microsoft PowerShell 或者使用 Azure AD 图形 API 以编程方式来完成。
 
 * [使用 PowerShell 管理 Azure AD 中的域名](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [使用图形 API 管理 Azure AD 中的域名](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
 ## <a name="next-steps"></a>后续步骤
 * [添加自定义域名](active-directory-domains-add-azure-portal.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

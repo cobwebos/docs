@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 预览版中针对企业应用的用户预配管理 | Microsoft 文档"
-description: "了解如何通过 Azure Active Directory 预览版管理企业应用的用户帐户预配"
+title: "Azure Active Directory 中针对企业应用的用户预配管理 | Microsoft 文档"
+description: "了解如何通过 Azure Active Directory 管理企业应用的用户帐户预配"
 services: active-directory
 documentationcenter: 
 author: asmalser
@@ -12,23 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/12/2016
+ms.date: 05/04/2017
 ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 103eade46452d979705e06dd77441f42d7a514b8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 6cb0269e87f7ecffe7030b86237fb88fd58ef77b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="preview-managing-user-account-provisioning-for-enterprise-apps-in-the-new-azure-portal"></a>预览：在新的 Azure 门户中管理企业应用的用户帐户预配
-本文介绍如何使用 [Azure 门户](https://portal.azure.com)为支持用户帐户自动预配和取消预配功能的应用程序（尤其是已从 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)的“特色”类别添加的应用程序）管理该功能。 新 Azure 门户中的这种管理体验目前为公共预览版。本文介绍在预览期间提供的新功能以及一些临时限制。 [预览包括哪些内容？](active-directory-preview-explainer.md)
+# <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
+本文介绍如何使用 [Azure 门户](https://portal.azure.com)为支持用户帐户自动预配和取消预配功能的应用程序（尤其是已从 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)的“特色”类别添加的应用程序）管理该功能。 若要了解有关用户帐户自动预配及其工作原理的详细信息，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](active-directory-saas-app-provisioning.md)。
 
-若要了解有关用户帐户自动预配及其工作原理的详细信息，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](active-directory-saas-app-provisioning.md)。
-
-## <a name="finding-your-apps-in-the-new-portal"></a>在新门户中查找应用
-从 2016 年 9 月开始，所有已在目录中被目录管理员使用 [Azure 经典门户](https://manage.windowsazure.com)中的 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)进行过单一登录配置的应用程序均可在新的 Azure 门户中查看和管理。
-
-这些应用程序可在新 Azure 门户的“企业应用程序”部分查找，而新 Azure 门户则可在左侧导航区域通过“更多服务”菜单访问。 企业应用是已在组织中部署并且正由用户使用的应用。
+## <a name="finding-your-apps-in-the-portal"></a>在门户中查找应用
+所有由目录管理员在目录中使用 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)进行过单一登录配置的应用程序均可在 [Azure 门户](https://portal.azure.com)中查看和管理。 这些应用程序可在门户的“更多服务”&gt;“企业应用程序”部分中找到。 企业应用是在组织内部署和使用的应用。
 
 ![“企业应用程序”边栏选项卡][0]
 
@@ -59,11 +57,11 @@ ms.openlocfilehash: 103eade46452d979705e06dd77441f42d7a514b8
 
 ![“应用程序资源”边栏选项卡][2]
 
-首次预览期间支持的自定义项包括：
+支持的自定义项包括：
 
 * 启用和禁用特定对象的映射（例如从 Azure AD 用户对象映射到 SaaS 应用的用户对象）。
 * 编辑哪些属性从 Azure AD 用户对象转移到应用的用户对象。 有关属性映射的详细信息，请参阅[了解属性映射类型](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types)。
-* 筛选 Azure AD 应在目标应用程序上执行的预配操作，这是 Azure 门户的新功能。 可以限制所执行的操作，而不必让 Azure AD 完全同步对象。 例如，如果只选择“更新”，Azure AD 就只会更新应用程序中的现有用户帐户，而不会创建新的。 如果只选择“创建”，Azure 就只会创建新用户帐户，而不会更新现有的。 有了此功能，管理员就可以创建不同的映射来创建帐户，并更新工作流。 计划在预览期的后期提供为每个应用创建多个映射这一完整功能。
+* 筛选 Azure AD 对目标应用程序执行的预配操作。 可以限制所执行的操作，而不必让 Azure AD 完全同步对象。 例如，如果只选择“更新”，Azure AD 就只会更新应用程序中的现有用户帐户，而不会创建新的。 如果只选择“创建”，Azure 就只会创建新用户帐户，而不会更新现有的。 有了此功能，管理员就可以创建不同的映射来创建帐户，并更新工作流。
 
 ### <a name="settings"></a>设置
 管理员可以在此部分启动和停止所选应用程序的 Azure AD 预配服务，以及选择性地清除预配缓存并重新启动该服务。
@@ -79,12 +77,12 @@ ms.openlocfilehash: 103eade46452d979705e06dd77441f42d7a514b8
 
 提供了**预配活动报告**链接，该报告记录了在 Azure AD 和目标应用程序之间创建、更新和删除的所有用户和组；此外还提供了**预配错误报告**链接，该报告提供的错误消息更详细地描述了无法读取、创建、更新或删除的用户和组对象。 
 
+##<a name="feedback"></a>反馈
+
+我们希望你喜欢 Azure AD 体验。 敬请不时地向我们发送反馈！ 欢迎在[反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)的**管理员门户**版块中发表有关改进的意见和想法。  我们热衷于不断推出炫酷的新功能，确实遵从用户的指导来塑造和定义后续版本。
+
+
 [0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-blade.PNG
 [1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 
