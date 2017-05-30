@@ -1,10 +1,28 @@
 ---
-title: 生成第一个数据工厂（Azure 门户）| Microsoft Docs description: 本教程介绍如何使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。
-services: data-factory documentationcenter: '' author: spelluru manager: jhubbard editor: monicar
+title: "构建第一个数据工厂（Azure 门户）| Microsoft 文档"
+description: "本教程使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。"
+services: data-factory
+documentationcenter: 
+author: spelluru
+manager: jhubbard
+editor: monicar
+ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 04/17/2017
+ms.author: spelluru
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: c54a1ed648022875f489179a3321dedf2d290d7e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
-ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d ms.service: data-factory ms.workload: data-services ms.tgt_pltfrm: na ms.devlang: na ms.topic: hero-article ms.date: 04/17/2017 ms.author: spelluru
 
----3
+---
+
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-portal"></a>教程：使用 Azure 门户构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
@@ -15,12 +33,14 @@ ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d ms.service: data-factory ms.wor
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
-本教程介绍如何使用 [Azure 门户](https://portal.azure.com/) 创建第一个 Azure 数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。 
+本文章介绍如何使用 [Azure 门户](https://portal.azure.com/)创建第一个 Azure 数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。 
+
+本教程中的管道有一个活动：**HDInsight Hive 活动**。 该活动在 Azure HDInsight 群集上运行 Hive 脚本，通过转换输入数据来生成输出数据。 管道在指定的开始时间和结束时间范围内每月按计划运行一次。 
 
 > [!NOTE]
-> 本教程中的数据管道可以转换输入数据，以便生成输出数据。 它不是将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本教程中的数据管道可以转换输入数据，以便生成输出数据。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 > 
-> 本教程只使用“复制”类型的活动。 一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
+> 一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 ## <a name="prerequisites"></a>先决条件
 1. 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
@@ -378,3 +398,4 @@ ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d ms.service: data-factory ms.wor
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
 | [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 | [使用监视应用监视和管理管道](data-factory-monitor-manage-app.md) |本文介绍如何使用监视和管理应用来监视、管理和调试管道。 |
+
