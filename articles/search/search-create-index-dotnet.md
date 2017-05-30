@@ -13,12 +13,13 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 04/21/2017
+ms.date: 05/22/2017
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 52dcb10495c564c5d8058b9c786b4cd331b6ae18
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 0531b5c3b63a3fa54bb331f3d8d09c8119e789ea
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -59,13 +60,17 @@ ms.lasthandoff: 04/22/2017
 ## <a name="create-an-instance-of-the-searchserviceclient-class"></a>创建 SearchServiceClient 类的实例
 若要开始使用 Azure 搜索 .NET SDK，需要创建 `SearchServiceClient` 类的实例。 此类具有几个构造函数。 需要将搜索服务名称和 `SearchCredentials` 对象用作参数。 `SearchCredentials` 包装 API 密钥。
 
-以下代码使用应用程序配置文件（`app.config` 或 `web.config`）中存储的搜索服务名称和 API 密钥的值创建一个新 `SearchServiceClient`：
+以下代码使用应用程序配置文件（在使用[示例应用程序](http://aka.ms/search-dotnet-howto)时为 `appsettings.json`）中存储的搜索服务名称和 API 密钥的值创建一个新 `SearchServiceClient`：
 
 ```csharp
-string searchServiceName = ConfigurationManager.AppSettings["SearchServiceName"];
-string adminApiKey = ConfigurationManager.AppSettings["SearchServiceAdminApiKey"];
+private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
+{
+    string searchServiceName = configuration["SearchServiceName"];
+    string adminApiKey = configuration["SearchServiceAdminApiKey"];
 
-SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
+    SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
+    return serviceClient;
+}
 ```
 
 `SearchServiceClient` 具有 `Indexes` 属性。 此属性提供创建、列出、更新或删除 Azure 搜索索引所需的所有方法。
@@ -93,13 +98,19 @@ SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, n
 此示例中，索引命名为“hotels”，并使用模型类来定义字段。 模型类的每个属性都具有一些特性，这些特性决定了相应索引字段的与搜索相关的行为。 模型类定义如下：
 
 ```csharp
+using System;
+using Microsoft.Azure.Search;
+using Microsoft.Azure.Search.Models;
+using Microsoft.Spatial;
+using Newtonsoft.Json;
+
 // The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
 // It ensures that Pascal-case property names in the model class are mapped to camel-case
 // field names in the index.
 [SerializePropertyNamesAsCamelCase]
 public partial class Hotel
 {
-    [Key]
+    [System.ComponentModel.DataAnnotations.Key]
     [IsFilterable]
     public string HotelId { get; set; }
 

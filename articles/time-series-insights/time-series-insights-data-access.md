@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: omravi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 143d48b9fc551ade0d0fd043cdb0cf1f3340a9af
+ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
+ms.openlocfilehash: e975c6d8f217bc73948c0c046204b16b1a742bc7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/20/2017
 
 ---
 
@@ -36,7 +36,7 @@ Time Series Insights 环境有两个独立的访问策略类型：
 *    创建和删除环境、事件源、引用数据集，以及
 *    管理数据访问策略。
 
-数据访问策略授予的权限适用于：发出数据查询、操作环境中的引用数据，以及保存与环境关联的共享查询和透视。
+数据访问策略授予的权限适用于：发出数据查询、操作环境中的引用数据，以及共享已保存的与环境关联的查询和透视。
 
 两类策略都可以清楚地区分环境管理访问权限和环境中数据的访问权限。 例如，可以对环境进行设置，从数据访问权限中删除环境的所有者/创建者。 此外，用户可以读取环境中的数据，但可能无法访问环境的配置。
 

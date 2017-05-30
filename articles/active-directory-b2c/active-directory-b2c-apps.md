@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 7d582960e615962a3952dd2f58c74ed91e5c450d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 762af7e09342f1bb51352e6c3d104bd4d8944e65
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -120,7 +122,7 @@ Web API 可以从许多类型的客户端（包括 Web 应用、桌面和移动�
 ![本机应用泳道图像](./media/active-directory-b2c-apps/native.png)
 
 ## <a name="current-limitations"></a>当前限制
-Azure AD B2C 目前不支持以下类型的应用，但此项支持正在开发中。 [Limitations and restrictions](active-directory-b2c-limitations.md)（限制和局限性）中说明了与 Azure AD B2C 相关的其他限制和局限性。
+Azure AD B2C 目前不支持以下类型的应用，但此项支持正在开发中。 
 
 ### <a name="daemonsserver-side-apps"></a>守护程序/服务器端应用
 包含长时运行进程或不需要用户操作的应用还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用可以通过 OAuth 2.0 客户端凭据流，使用应用的标识（而不是用户的委派标识）来进行身份验证和获取令牌。
@@ -131,9 +133,4 @@ Azure AD B2C 目前不支持此流。 只有在发生交互式用户流之后，
 许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于包含 Web API 后端的本机客户端。 然后，此 Web API 将调用 Azure AD 图形 API 等 Microsoft 联机服务。
 
 可以使用 OAuth 2.0 JWT 持有者凭据授权（也称为“代理流”）来支持这种链接的 Web API 方案。  但是，Azure AD B2C 中目前尚未实现代理流。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

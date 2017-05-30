@@ -1,6 +1,6 @@
 ---
 title: "在使用 Azure SQL 数据库的多租户应用中预配新租户 | Microsoft Docs"
-description: "在 Wingtip 票证 (WTP) 示例 SQL 数据库 SaaS 应用中预配新租户并将其编入目录"
+description: "在 Wingtip SaaS 应用中预配和编录新租户"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/10/2017
-ms.author: billgib; sstein
+ms.date: 05/24/2017
+ms.author: sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: aae5d85a18f93b7821a6ef8fc7161dd9a6ebe533
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: cf2fa0950f9f9df833051979b02355236214c4ea
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
 # <a name="provision-new-tenants-and-register-them-in-the-catalog"></a>预配新租户并在目录中对其进行注册
 
-在本教程中，你将在 Wingtip 票证平台 (WTP) SaaS 应用程序中预配新租户。 你将创建租户、租户数据库，并将在目录中注册租户。 目录是一个数据库，用于保留 SaaS 应用程序的许多租户与其数据之间的映射。 使用这些脚本可以了解使用的预配和编录模式以及如何实现在目录中注册新租户。 对于将应用程序请求定向到正确的数据库，目录起着重要作用。
+在本教程中，你将在 Wingtip SaaS 应用程序中预配新租户。 你将创建租户、租户数据库，并将在目录中注册租户。 目录是一个数据库，用于保留 SaaS 应用程序的许多租户与其数据之间的映射。 使用这些脚本可以了解使用的预配和编录模式以及如何实现在目录中注册新租户。 对于将应用程序请求定向到正确的数据库，目录起着重要作用。
 
 本教程介绍如何：
 
@@ -37,18 +37,18 @@ ms.lasthandoff: 05/12/2017
 > * 逐步了解预配新租户以及将它们注册到目录的详细信息。
 
 
-若要完成本教程，请确保已完成以下先决条件：
+若要完成本教程，请确保已完成了以下先决条件：
 
-* 已部署 WTP 应用。 若要在五分钟内进行部署，请参阅[部署和浏览 WTP SaaS 应用程序](sql-database-saas-tutorial.md)
+* Wingtip SaaS 应用已部署。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip SaaS 应用程序](sql-database-saas-tutorial.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 ## <a name="introduction-to-the-saas-catalog-pattern"></a>SaaS 目录模式简介
 
-在支持数据库的多租户 SaaS 应用程序中，了解每个租户的信息存储位置非常重要。 在 SaaS 目录模式下，目录数据库用来保存租户与其数据的存储位置之间的映射。 WTP 应用使用单租户数据库体系结构，但无论使用多租户数据库还是单租户数据库，将租户到数据库的映射存储在目录中的基本模式都适用。
+在支持数据库的多租户 SaaS 应用程序中，了解每个租户的信息存储位置非常重要。 在 SaaS 目录模式下，目录数据库用来保存租户与其数据的存储位置之间的映射。 Wingtip SaaS 应用使用单租户数据库体系结构，但无论使用多租户数据库还是单租户数据库，将租户到数据库的映射存储在编录中的基本模式都适用。
 
-每个租户都分配有一个用于在目录中区分其数据的密钥。 在 WTP 应用程序中，该密钥根据租户名称的哈希构成。 此模式允许应用程序 URL 的租户名称部分用于构造密钥和检索特定租户的连接。 在不影响总体模式的情况下可以使用其他 ID 方案。
+每个租户都分配有一个用于在目录中区分其数据的密钥。 在 Wingtip SaaS 应用程序中，该密钥根据租户名称的哈希构成。 此模式允许应用程序 URL 的租户名称部分用于构造密钥和检索特定租户的连接。 在不影响总体模式的情况下可以使用其他 ID 方案。
 
-WTP 应用中的目录是使用[弹性数据库客户端库 (EDCL)](sql-database-elastic-database-client-library.md) 中的“分片管理”技术实现的。 EDCL 负责创建和管理支持数据库的目录，该目录中保留了分片映射。 该目录包含密钥（租户）与其数据库（分片）之间的映射。
+应用中的编录是使用[弹性数据库客户端库 (EDCL)](sql-database-elastic-database-client-library.md) 中的“分片管理”技术实现的。 EDCL 负责创建和管理支持数据库的目录，该目录中保留了分片映射。 该目录包含密钥（租户）与其数据库（分片）之间的映射。
 
 > [!IMPORTANT]
 > 可以在目录数据库中访问映射数据，但请勿编辑这些数据！ 请仅使用弹性数据库客户端库 API 编辑映射数据。 直接操作映射数据有损坏目录的风险，不受支持。
@@ -57,16 +57,16 @@ Wingtip SaaS 应用通过复制黄金数据库来预配新租户。
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
-Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
+Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 [下载 Wingtip SaaS 脚本的步骤](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
 
 ## <a name="provision-a-new-tenant"></a>预配新租户
 
-如果已在第一个 WTP 教程中创建了租户，可以跳到下一部分：[预配一批租户](#provision-a-batch-of-tenants)。
+如果已在[第一个 Wingtip SaaS 教程](sql-database-saas-tutorial.md)中创建了租户，可以跳到下一部分：[预配一批租户](#provision-a-batch-of-tenants)。
 
 运行 *Demo-ProvisionAndCatalog* 脚本以快速创建租户并将其注册在目录中：
 
 1. 在 PowerShell ISE 中打开 **Demo-ProvisionAndCatalog.ps1**，然后设置以下值：
-   * **$TenantName** = 新地点的名称（例如 *Bushwillow Blues*）。 
+   * **$TenantName** = 新地点的名称（例如 *Bushwillow Blues*）。
    * **$VenueType** = 预定义的地点类型之一：blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer。
    * **$DemoScenario** = 1，将此值保留为 _1_ 以**预配单个租户**。
 
@@ -79,7 +79,7 @@ Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.
 
 ## <a name="provision-a-batch-of-tenants"></a>预配一批租户
 
-本练习预配一批其他租户。 建议在完成其他 WTP 教程前执行此操作。
+本练习预配一批其他租户。 建议在完成其他 Wingtip SaaS 教程前执行此操作。
 
 1. 在 *PowerShell ISE* 中打开 \\Learning Modules\\Utilities\\*Demo-ProvisionAndCatalog.ps1*，然后设置以下值：
    * **$DemoScenario** = **3**，设置为**3** 以**预配一批租户**。
@@ -156,9 +156,9 @@ Resource Manager 模板位于 ...\\Learning Modules\\Common\\ 文件夹中：*te
 
 ## <a name="stopping-wingtip-saas-application-related-billing"></a>停止与 Wingtip SaaS 应用程序相关的计费
 
-如果不打算继续使用另一个教程，建议删除所有资源以暂停计费。 删除 WTP 应用程序已部署到的资源组，所有其资源也均将删除。
+如果不打算继续使用另一个教程，建议删除所有资源以暂停计费。 删除 Wingtip 应用程序部署到的资源组，其所有资源也均将删除。
 
-* 在门户中浏览到该应用程序的资源组，并将其删除以停止与此 WTP 部署相关的所有计费。
+* 在门户中浏览到该应用程序的资源组，并将其删除以停止与此 Wingtip 部署相关的所有计费。
 
 ## <a name="tips"></a>提示
 
@@ -180,7 +180,7 @@ Resource Manager 模板位于 ...\\Learning Modules\\Common\\ 文件夹中：*te
 
 ## <a name="additional-resources"></a>其他资源
 
-* [基于初始 Wingtip 票证平台 (WTP) 应用程序部署编写的其他教程](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* 其他[基于 Wingtip SaaS 应用程序编写的教程](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [弹性数据库客户端库](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library)
 * [如何在 Windows PowerShell ISE 中调试脚本](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
 

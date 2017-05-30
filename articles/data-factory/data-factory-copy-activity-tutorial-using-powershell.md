@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: b04bdb529b91369d89e8ff85a45c778757e19875
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 674a35f36af07e00c558948cbce5b4279eb7f9f8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -37,12 +37,14 @@ ms.lasthandoff: 05/17/2017
 
 本文介绍如何使用 PowerShell 创建数据工厂，以便通过管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 如果不熟悉 Azure 数据工厂，请在学习本教程之前，先通读 [Azure 数据工厂简介](data-factory-introduction.md)一文。   
 
-本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
+本教程将创建包含一个活动（复制活动）的管道。 复制活动可以将数据从支持的数据存储复制到支持的接收器数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。
 
-本教程只使用“复制”类型的活动。 一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
+一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[管道中的多个活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 > [!NOTE]
 > 本文不会介绍所有数据工厂 cmdlet。 有关这些 cmdlet 的综合文档，请参阅[数据工厂 cmdlet 参考](/powershell/module/azurerm.datafactories)。
+> 
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
 ## <a name="prerequisites"></a>先决条件
 - 完成[教程先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)一文中列出的先决条件步骤。
@@ -115,7 +117,7 @@ ms.lasthandoff: 05/17/2017
     ```
 * 只有 Azure 订阅的参与者或管理员才可以创建数据工厂实例。
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 可能会收到以下错误：“未注册订阅，无法使用命名空间 Microsoft.DataFactory”。 请执行以下操作之一，然后重试发布：
+* 可能会收到以下错误：“未注册订阅，无法使用命名空间 Microsoft.DataFactory”。**** 请执行以下操作之一，然后重试发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -215,14 +217,14 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
     ProvisioningState : Succeeded
     ```
 
-   确认为 SQL 数据库服务器启用了“允许访问 Azure 服务”设置。 若要验证并启用此设置，请执行以下步骤：
+   确认为 SQL 数据库服务器启用了“允许访问 Azure 服务”设置。**** 若要验证并启用此设置，请执行以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)
-    2. 单击左侧的“更多服务”，然后单击“数据库”类别中的“SQL Server”。
+    2. 单击左侧的“更多服务”，然后单击“数据库”类别中的“SQL Server”。****
     3. 在 SQL Server 列表中选择服务器。
-    4. 在 SQL Server 边栏选项卡上，单击“显示防火墙设置”链接。
-    5. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。
-    6. 单击工具栏上的“保存”。 
+    4. 在 SQL Server 边栏选项卡上，单击“显示防火墙设置”链接。****
+    5. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。****
+    6. 单击工具栏上的“保存”。**** 
 
 ## <a name="create-datasets"></a>创建数据集
 在上一步骤中，已创建用于将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂的链接服务。 本步骤定义两个名为 InputDataset 和 OutputDataset 的数据集，表示存储在数据存储中的输入和输出数据，这些数据存储分别由 AzureStorageLinkedService 和 AzureSqlLinkedService 引用。
@@ -566,6 +568,6 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-若要详细了解在复制向导中看到的数据存储的字段/属性，请单击表中数据存储的链接。 
+若要了解如何通过数据存储复制数据，请单击表中数据存储的链接。 
 
 
