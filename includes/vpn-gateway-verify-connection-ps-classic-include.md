@@ -1,4 +1,4 @@
-可以使用 **Get-AzureVNetConnection** 验证经典虚拟网关的连接。 
+可使用“Get-AzureVNetConnection”cmdlet 来验证连接是否已成功。
 
 1. 使用以下 cmdlet 示例，配置符合自己需要的值。 如果虚拟网络的名称包含空格，必须将该名称括在引号中。
 

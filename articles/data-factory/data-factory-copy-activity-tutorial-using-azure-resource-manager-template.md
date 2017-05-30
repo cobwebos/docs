@@ -1,6 +1,6 @@
 ---
 title: "教程：使用 Resource Manager 模板创建管道 | Microsoft 文档"
-description: "本教程使用 Azure Resource Manager 模板创建包含复制活动的 Azure 数据工厂管道。"
+description: "本教程使用 Azure Resource Manager 模板创建 Azure 数据工厂管道。 该管道将 Azure Blob 存储中的数据复制到 Azure SQL 数据库。"
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: d14b4a638868f0206542825f05dd9473fd5e6c95
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: aaa8758281f239ad0984d8d1de65f5ea8951d366
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-azure-resource-manager-template"></a>教程：使用 Azure Resource Manager 模板创建包含复制活动的管道
+# <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure Resource Manager 模板创建复制数据的数据工厂管道 
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
@@ -34,12 +35,14 @@ ms.lasthandoff: 04/27/2017
 > 
 > 
 
-本教程演示如何使用 Azure Resource Manager 模板创建和监视 Azure 数据工厂。 数据工厂中的管道将数据从 Azure Blob 存储复制到 SQL 数据库。
+本教程介绍如何使用 Azure Resource Manager 模板来创建 Azure 数据工厂。 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
-> [!NOTE]
-> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
-> 
-> 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。 
+本教程将创建包含一个活动（复制活动）的管道。 复制活动可以将数据从支持的数据存储复制到支持的接收器数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。
+
+一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[管道中的多个活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
+
+> [!NOTE] 
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 * 通读[教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，完成**先决条件**步骤。
@@ -183,7 +186,7 @@ ms.lasthandoff: 04/27/2017
                 }
               },
               "availability": {
-                "frequency": "Day",
+                "frequency": "Hour",
                 "interval": 1
               },
               "external": true
@@ -214,7 +217,7 @@ ms.lasthandoff: 04/27/2017
                 "tableName": "[parameters('targetSQLTable')]"
               },
               "availability": {
-                "frequency": "Day",
+                "frequency": "Hour",
                 "interval": 1
               }
             }
@@ -267,8 +270,8 @@ ms.lasthandoff: 04/27/2017
                   }
                 }
               ],
-              "start": "2016-10-02T00:00:00Z",
-              "end": "2016-10-03T00:00:00Z"
+              "start": "2017-05-11T00:00:00Z",
+              "end": "2017-05-12T00:00:00Z"
             }
           }
         ]
@@ -281,9 +284,9 @@ ms.lasthandoff: 04/27/2017
 创建名为 **ADFCopyTutorialARM-Parameters.json**、包含 Azure Resource Manager 模板参数的 JSON 文件。 
 
 > [!IMPORTANT]
-> 为 **storageAccountName** 和 **storageAccountKey** 参数指定 Azure 存储帐户的名称和密钥。  
+> 为 storageAccountName 和 storageAccountKey 参数指定 Azure 存储帐户的名称和密钥。  
 > 
-> 
+> 指定 Azure SQL Server、数据库、用户、sqlServerName 的密码、databaseName、sqlServerUserName 和 sqlServerPassword 参数。  
 
 ```json
 {
@@ -313,14 +316,17 @@ ms.lasthandoff: 04/27/2017
 ## <a name="create-data-factory"></a>创建数据工厂
 1. 启动 **Azure PowerShell** 并运行以下命令：
    * 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
+   
     ```PowerShell
     Login-AzureRmAccount       
     ```  
    * 运行以下命令查看此帐户的所有订阅。
+   
     ```PowerShell
     Get-AzureRmSubscription
     ```   
-   * 运行以下命令选择要使用的订阅。 
+   * 运行以下命令选择要使用的订阅。
+    
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext
     ```    
@@ -333,26 +339,22 @@ ms.lasthandoff: 04/27/2017
 ## <a name="monitor-pipeline"></a>监视管道
 
 1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中单击“数据工厂”；或者单击“更多服务”，然后单击“智能 + 分析”类别下面的“数据工厂”。
+2. 在左侧菜单中单击“数据工厂”；或者单击“更多服务”，然后单击“智能 + 分析”类别下面的“数据工厂”。****
    
     ![数据工厂菜单](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
-3. 在“数据工厂”页中，搜索并查找你的数据工厂。 
+3. 在“数据工厂”页中，搜索并查找数据工厂 (AzureBlobToAzureSQLDatabaseDF)。**** 
    
     ![搜索数据工厂](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
 4. 单击你的 Azure 数据工厂。 随后将显示该数据工厂的主页。
    
     ![数据工厂主页](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-5. 单击“图示”磁贴查看数据工厂的图示视图。
-   
-    ![数据工厂的图示视图](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-diagram-view.png)
-6. 在图示视图中，双击数据集 **SQLOutputDataset**。 随后将显示切片的状态。 完成复制操作后，状态将设置为“就绪”。
-   
-    ![输出切片处于就绪状态](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/output-slice-ready.png)
-7. 切片处于“就绪”状态后，检查数据是否已复制到 Azure SQL 数据库中的 **emp** 表。
+6. 按照[监视数据集和管道](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline)中的说明，监视在本教程中创建的管道和数据集。 目前，Visual Studio 不支持对数据工厂管道进行监视。
+7. 切片处于“就绪”状态后，验证数据是否已复制到 Azure SQL 数据库中的 emp 表。****
 
-有关如何使用 Azure 门户边栏选项卡监视本教程中所创建管道和数据集的说明，请参阅 [Monitor datasets and pipeline](data-factory-monitor-manage-pipelines.md) （监视数据集和管道）。
 
-也可以使用监视和管理应用来监视数据管道。 有关使用该应用程序的详细信息，请参阅 [Monitor and manage Azure Data Factory pipelines using Monitoring App](data-factory-monitor-manage-app.md) （使用监视应用来监视和管理 Azure 数据工厂管道）。
+若要详细了解如何使用 Azure 门户边栏选项卡监视本教程中创建的管道和数据集，请参阅[监视数据集和管道](data-factory-monitor-manage-pipelines.md)。
+
+若要详细了解如何使用“监视和管理”应用程序来监视数据管道，请参阅[使用监视应用监视和管理 Azure 数据工厂管道](data-factory-monitor-manage-app.md)。
 
 ## <a name="data-factory-entities-in-the-template"></a>模板中的数据工厂实体
 ### <a name="define-data-factory"></a>定义数据工厂
@@ -386,7 +388,7 @@ JSON 模板中定义了以下数据工厂实体：
 5. [包含复制活动的数据管道](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
-在本部分中指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息。请参阅 [Azure Storage linked service](data-factory-azure-blob-connector.md#azure-storage-linked-service)（Azure 存储链接服务）。 
+AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 你根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)创建了一个容器并将数据上传到该存储帐户。 在本部分中指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息。请参阅 [Azure Storage linked service](data-factory-azure-blob-connector.md#azure-storage-linked-service)（Azure 存储链接服务）。 
 
 ```json
 {
@@ -409,7 +411,7 @@ JSON 模板中定义了以下数据工厂实体：
 connectionString 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStroageLinkedService 和 dataFactoryName。 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL 数据库链接服务
-在本部分中指定 Azure SQL 服务器名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#linked-service-properties)（Azure SQL 链接服务）。  
+AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob 存储复制的数据存储在该数据库中。 你根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)在该数据库中创建了 emp 表。 在本部分中指定 Azure SQL 服务器名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#linked-service-properties)（Azure SQL 链接服务）。  
 
 ```json
 {
@@ -432,7 +434,7 @@ connectionString 使用 storageAccountName 和 storageAccountKey 参数。 可�
 connectionString 使用 sqlServerName、databaseName、sqlServerUserName 和 sqlServerPassword 参数，这些参数的值是使用配置文件传递的。 该定义还使用模板中的以下变量：azureSqlLinkedServiceName、dataFactoryName。
 
 #### <a name="azure-blob-dataset"></a>Azure Blob 数据集
-指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。 
+Azure 存储链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到 Azure 存储帐户。 在 Azure Blob 数据集定义中，请指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。 
 
 ```json
 {
@@ -465,7 +467,7 @@ connectionString 使用 sqlServerName、databaseName、sqlServerUserName 和 sql
             }
           },
           "availability": {
-            "frequency": "Day",
+            "frequency": "Hour",
             "interval": 1
           },
           "external": true
@@ -502,7 +504,7 @@ connectionString 使用 sqlServerName、databaseName、sqlServerUserName 和 sql
             "tableName": "[parameters('targetSQLTable')]"
           },
           "availability": {
-            "frequency": "Day",
+            "frequency": "Hour",
             "interval": 1
           }
     }
@@ -561,8 +563,8 @@ connectionString 使用 sqlServerName、databaseName、sqlServerUserName 和 sql
               }
         }
           ],
-          "start": "2016-10-02T00:00:00Z",
-          "end": "2016-10-03T00:00:00Z"
+          "start": "2017-05-11T00:00:00Z",
+          "end": "2017-05-12T00:00:00Z"
     }
 }
 ```
@@ -586,10 +588,10 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 可以重复使用该模板来执行重复的任务。 例如，你需要创建许多数据工厂，其中包含用于实现相同逻辑的一个或多个管道，但每个数据工厂使用不同的存储和 SQL 数据库帐户。 在这种情况下，可以在同一个环境（开发、测试或生产）中使用包含不同参数文件的同一个模板来创建数据工厂。   
 
-## <a name="see-also"></a>另请参阅
-| 主题 | 说明 |
-|:--- |:--- |
-| [管道](data-factory-create-pipelines.md) |帮助了解 Azure 数据工厂中的管道和活动 |
-| [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
-| [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
+## <a name="next-steps"></a>后续步骤
+在本教程中，你在复制操作中使用了 Azure Blob 存储作为源数据存储，使用了 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
+
+[!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
+
+若要了解如何通过数据存储复制数据，请单击表中数据存储的链接。
 

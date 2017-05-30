@@ -13,17 +13,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 05/23/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 21d2c20a3ac8dc4fee0680028d6c004c80a3ae38
-ms.openlocfilehash: 2835e4e8be2a11b659118f836d53c84a2c021263
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: bb4d64f799027c9af74fd50ab724449bdede7804
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习常见问题：计费、功能、限制和支持
 下面提供了一些有关 Azure 机器学习的常见问题 (FAQ) 和相应解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
+
+存在此处找不到的问题？
+
+Azure 机器学习在 MSDN 上设有论坛，数据科学社区的成员可以在那里咨询有关 Azure 机器学习的问题。 Azure 机器学习团队负责监管该论坛。 转到 [Azure 机器学习论坛](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)搜索答案，或者发布自己的新问题。
 
 ## <a name="general-questions"></a>一般问题
 **什么是 Azure 机器学习？**
@@ -48,7 +53,7 @@ Azure 机器学习是完全托管的服务，可用于创建、测试、操作�
 
 使用经典部署模型创建的 Web 服务和使用新 Azure Resource Manager 部署模型创建的 Web 服务列在 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/)门户中。
 
-此外，还在“Web 服务”选项卡上的[机器学习工作室](http://studio.azureml.net)中列出了经典 Web 服务。
+此外，还在“Web 服务”选项卡上的[机器学习工作室](http://studio.azureml.net)中列出了经典 Web 服务。****
 
 ## <a name="azure-machine-learning-questions"></a>Azure 机器学习问题
 **什么是 Azure 机器学习 Web 服务？**
@@ -443,9 +448,9 @@ API 计算小时数是使用机器学习计算资源运行 API 调用所花费�
 ### <a name="new-web-services-overages"></a>新的 Web 服务：超额
 **如何检查 Web 服务使用量是否超额？**
 
-可以在 Azure 机器学习 Web 服务门户的“计划”页中查看所有计划的使用量。 登录到门户，然后单击“计划”菜单选项。
+可以在 Azure 机器学习 Web 服务门户的“计划”页中查看所有计划的使用量。 登录到门户，然后单击“计划”菜单选项。****
 
-在表的“事务”和“计算”列中，可以看到计划的已包含数量和已用数量百分比。
+在表的“事务”和“计算”列中，可以看到计划的已包含数量和已用数量百分比。****
 
 **开发/测试定价层中的已包含数量用完时会发生什么情况？**
 
@@ -528,8 +533,8 @@ Azure 机器学习 API 服务根据它是经典 Web 服务还是新（基于 Res
 
 1. 登录到 Azure 机器学习工作室，确保免费工作区和标准工作区均在顶部导航栏的工作区选择器中可见。
 2. 如果当前处于标准工作区，请切换到免费工作区。
-3. 在试验列表视图中，选择要复制的试验，然后单击“复制”命令按钮。
-4. 在打开的对话框中选择标准工作区，然后单击“复制”按钮。
+3. 在试验列表视图中，选择要复制的试验，然后单击“复制”命令按钮。****
+4. 在打开的对话框中选择标准工作区，然后单击“复制”按钮。****
    所有关联数据集、定型模型等都会随试验一起复制到标准工作区。
 5. 需要在标准工作区重新运行试验并重新发布 Web 服务。
 
@@ -545,7 +550,7 @@ Azure 机器学习 API 服务根据它是经典 Web 服务还是新（基于 Res
 ### <a name="guest-access"></a>来宾访问
 **什么是对 Azure 机器学习工作室进行来宾访问？**
 
-来宾访问是受限的试用体验。 用户可以在 Azure 机器学习工作室中创建和运行试验，不需任何费用，也不需身份验证。 来宾会话是非永久性的（不可保存），并且时间限制为八小时。 其他限制包括缺少对 R 和 Python 的支持、不存在过渡 API，以及数据集大小和存储容量受限。 相比之下，选择使用 Microsoft 帐户登录的用户具有对上文描述的机器学习工作室免费层的完全访问权限，包括永久工作区和更完整的功能。 若要选择免费机器学习体验，可单击 [https://studio.azureml.net](https://studio.azureml.net) 上的“入门”，然后选择“来宾访问”或使用 Microsoft 帐户登录。
+来宾访问是受限的试用体验。 用户可以在 Azure 机器学习工作室中创建和运行试验，不需任何费用，也不需身份验证。 来宾会话是非永久性的（不可保存），并且时间限制为八小时。 其他限制包括缺少对 R 和 Python 的支持、不存在过渡 API，以及数据集大小和存储容量受限。 相比之下，选择使用 Microsoft 帐户登录的用户具有对上文描述的机器学习工作室免费层的完全访问权限，包括永久工作区和更完整的功能。 若要选择免费机器学习体验，可单击 [https://studio.azureml.net](https://studio.azureml.net) 上的“入门”，然后选择“来宾访问”或使用 Microsoft 帐户登录。****
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: portal
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 05/24/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 574299dd64120d75a1a36cb2ded0fdd269292570
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 9f78163e4ff1166a2abd94150d686256ee338286
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -29,13 +29,12 @@ ms.lasthandoff: 05/10/2017
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
-
 使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
 ```azurecli
 az login
 ```
-按照命令提示说明，在浏览器中打开 https://aka.ms/devicelog，然后输入**命令提示**中生成的代码。
+按照命令提示说明，在浏览器中打开 https://aka.ms/devicelog ，然后输入 **命令提示** 中生成的代码。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 使用 [az group create](https://docs.microsoft.com/cli/azure/group#create) 命令创建 [Azure 资源组](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
@@ -49,7 +48,7 @@ az group create --name mycliresource --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>为 MySQL 服务器创建 Azure 数据库
 使用 **az mysql server create** 命令为 MySQL 服务器创建 Azure 数据库。 一个服务器可以管理多个数据库。 通常，每个项目或每个用户使用一个单独的数据库。
 
-以下示例在资源组 `mycliresource` 中为位于 `westus`、名为 `mycliserver` 的 MySQL 服务器创建 Azure 数据库。 该服务器有一个名为 `myadmin` 的管理员登录名和密码 `Password01!`。 该服务器是使用**基本**性能层以及在该服务器中的所有数据库之间共享的 **50** 个计算单位创建的。 可以根据应用程序需求增加或减少计算和存储。
+以下示例在资源组 `mycliresource` 中的 `westus` 处创建名为 `mycliserver` 的 Azure Database for MySQL 服务器。 该服务器的管理员登录名为 `myadmin`，密码为 `Password01!`。 该服务器是使用基本性能层以及在该服务器中的所有数据库之间共享的 50 个计算单元创建的。 可以根据应用程序需求增加或减少计算和存储。
 
 ```azurecli
 az mysql server create --resource-group mycliresource --name mycliserver--location westus --user myadmin --password Password01! --performance-tier Basic --compute-units 50
@@ -87,7 +86,7 @@ az mysql server show --resource-group mycliresource --name mycliserver
 {
   "administratorLogin": "myadmin",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "mycliserver.database.windows.net",
+  "fullyQualifiedDomainName": "mycliserver.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mycliresource/providers/Microsoft.DBforMySQL/servers/mycliserver",
   "location": "westus",
   "name": "mycliserver",
@@ -114,7 +113,7 @@ az mysql server show --resource-group mycliresource --name mycliserver
 
 1. 使用 **mysql** 命令行工具连接到服务器：
 ```dos
- mysql -h mycliserver.database.windows.net -u myadmin@mycliserver -p
+ mysql -h mycliserver.mysql.database.azure.com -u myadmin@mycliserver -p
 ```
 
 2. 查看服务器状态：
@@ -124,7 +123,7 @@ az mysql server show --resource-group mycliresource --name mycliserver
 如果一切顺利，命令行工具应输出以下内容：
 
 ```dos
-C:\Users\v-chenyh>mysql -h mycliserver.database.windows.net -u myadmin@mycliserver -p
+C:\Users\v-chenyh>mysql -h mycliserver.mysql.database.azure.com -u myadmin@mycliserver -p
 Enter password: ***********
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 65512
@@ -149,7 +148,7 @@ SSL:                    Not in use
 Using delimiter:        ;
 Server version:         5.6.26.0 MySQL Community Server (GPL)
 Protocol version:       10
-Connection:             mycliserver.database.windows.net via TCP/IP
+Connection:             mycliserver.mysql.database.azure.com via TCP/IP
 Server characterset:    latin1
 Db     characterset:    latin1
 Client characterset:    gbk
@@ -175,16 +174,15 @@ mysql>
 |----------------|-----------------|
 |    *连接名称* | 指定此连接的名称（这可以是任何内容） |
 | *连接方法* | 选择“标准(TCP/IP)” |
-| *主机名* | mycliserver.database.windows.net（先前记下的服务器名称） |
+| *主机名* | mycliserver.mysql.database.azure.com（此前记下的服务器名称） |
 | *端口* | 3306 |
 | *用户名* | myadmin@mycliserver（先前记下的服务器管理员登录名） |
-| *密码* | 可以在保管库中存储管理员帐户密码 |
+| *密码* | 请存储管理员帐户密码 |
 
-![设置新连接](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
+   ![设置新连接](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
 
-3.    单击“测试连接”以测试是否所有参数均已正确配置。
-
-4.    现在，可以单击刚创建的连接，以便成功连接到服务器。
+单击“测试连接”以测试是否所有参数均已正确配置。
+现在，可以单击刚创建的连接，以便成功连接到服务器。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -197,5 +195,5 @@ az group delete --name mycliresource
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 Azure CLI 设计 MySQL 数据库](./tutorial-design-database-using-cli.md)。
+> [使用 Azure CLI 设计 MySQL 数据库](./tutorial-design-database-using-cli.md)
 

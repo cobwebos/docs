@@ -3,8 +3,8 @@ title: "通过 .NET SDK 开始使用 Azure Data Lake Analytics | Microsoft 文�
 description: "了解如何使用 .NET SDK 创建 Data Lake Analytics 帐户、创建 Data Lake Analytics 作业，以及提交使用 U-SQL 编写的作业。 "
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: 1dfcbc3d-235d-4074-bc2a-e96def8298b6
 ms.service: data-lake-analytics
@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/26/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 8e092e30c9c4186e4687efeacf9ea1f6b4bf431c
-ms.openlocfilehash: f617d997bc34d39f7635a87c4e5c88b1ebdc0ff8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: cef4219080d58f9f55fb10ce4d96e309b5891735
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -25,25 +27,21 @@ ms.openlocfilehash: f617d997bc34d39f7635a87c4e5c88b1ebdc0ff8
 
 了解如何使用 Azure.NET SDK 将 [U-SQL](data-lake-analytics-u-sql-get-started.md) 作业提交到 Data Lake Analytics。 有关 Data Lake Analytics 的详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
 
-本教程将开发一个用于提交 U-SQL 作业的 C# 控制台应用程序，该作业可以读取制表符分隔值 (TSV) 文件，并将其转换为逗号分隔值 (CSV) 文件。 若要通过其他支持的工具来完成此教程，请单击本文顶部的选项卡。
+本教程将开发一个用于提交 U-SQL 作业的 C# 控制台应用程序，该作业可以读取制表符分隔值 (TSV) 文件，并将其转换为逗号分隔值 (CSV) 文件。 
 
 ## <a name="prerequisites"></a>先决条件
-在开始阅读本教程前，你必须具有：
 
 * **Visual Studio 2015、Visual Studio 2013 Update 4 或安装有 Visual C++ 的 Visual Studio 2012**。
 * **用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本**。  可以使用 [Web 平台安装程序](http://www.microsoft.com/web/downloads/platform.aspx)安装它。
-* **一个 Azure Data Lake Analytics 帐户**。 请参阅[使用 Azure .NET SDK 管理 Data Lake Analytics](data-lake-analytics-manage-use-dotnet-sdk.md)。
+* **一个 Azure Data Lake Analytics 帐户**。 
 
-## <a name="create-console-application"></a>创建控制台应用程序
-本教程将处理一些搜索日志。  搜索日志可以存储在 Data Lake Store 或 Azure Blob 存储中。 
+## <a name="create-a-c-console-application"></a>创建 C# 控制台应用程序
 
 可在公共 Azure Blob 容器中找到示例搜索日志。 在应用程序中，将文件下载到工作站，然后将文件上载到 Data Lake Analytics 帐户的默认 Data Lake Store 帐户。
 
 **创建 U-SQL 脚本**
 
-Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 U-SQL 的详细信息，请参阅 [U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)和 [U-SQL 语言参考](http://go.microsoft.com/fwlink/?LinkId=691348)。
-
-创建包含以下 U-SQL 脚本的 **SampleUSQLScript.txt** 文件，并将该文件放在 **C:\temp\** 路径中。  该路径将在下一过程所要创建的 .NET 应用程序中硬编码。  
+创建包含以下 U-SQL 脚本的 SampleUSQLScript.usql 文本文件，并将该文件放在 `C:\temp\` 路径中。  该路径将在下一过程所要创建的 .NET 应用程序中硬编码。  
 
     @searchlog =
         EXTRACT UserId          int,
@@ -60,22 +58,9 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
         TO "/Output/SearchLog-from-Data-Lake.csv"
     USING Outputters.Csv();
 
-此 U-SQL 脚本通过 **Extractors.Tsv()** 读取源数据文件，然后通过 **Outputters.Csv()** 创建 csv 文件。 
+此 U-SQL 脚本通过 `Extractors.Tsv()` 读取源数据文件，然后通过 `Outputters.Csv()` 创建 csv 文件。 
 
-在 C# 程序中，需要准备 **/Samples/Data/SearchLog.tsv** 文件和 **/Output/** 文件夹。    
-
-对于存储在默认 Data Lake 帐户中的文件而言，使用相对路径更为简单。 也可使用绝对路径。  例如 
-
-    adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
-
-必须使用绝对路径来访问链接的存储帐户中的文件。  链接的 Azure 存储帐户中所储存文件的语法是：
-
-    wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
-
-> [!NOTE]
-> 目前 Azure Data Lake Service 存在一个已知问题。  如果示例应用程序中断或遇到错误，你可能需要手动删除该脚本创建的 Data Lake Store 和 Data Lake Analytics 帐户。  不熟悉 Azure 门户的用户可以通过[使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md) 指南来帮助自己入门。       
-> 
-> 
+在 C# 程序中，需准备 `/Samples/Data/SearchLog.tsv` 文件和 `/Output/` 文件夹。    
 
 **创建应用程序**
 
@@ -253,10 +238,5 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
 * 若要了解 U-SQL，请参阅 [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)（Azure Data Lake Analytics U-SQL 语言入门）和 [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348)（U-SQL 语言参考）。
 * 有关管理任务，请参阅 [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md)（使用 Azure 门户管理 Azure Data Lake Analytics）。
 * 有关 Data Lake Analytics 的概述，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

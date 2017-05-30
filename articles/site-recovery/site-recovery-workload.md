@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 05/08/2017
 ms.author: raynew
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 1e48b0848c9f286f3bb0b3758403135a4f280bc0
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 0ce6114073b80c1d9bb719654ab8cebc30dfefac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -153,9 +153,9 @@ Azure Site Recovery 可以将环境中的关键组件复制到冷远程站点或
 * 使用 Site Recovery 将 Citrix XenApp 和 XenDesktop 部署迁移到 Azure，从而简化云迁移。
 * 按需创建一个与生产类似的副本来进行测试和调试，从而简化 Citrix XenApp/XenDesktop 测试。
 * 此解决方案仅适用于 Windows Server 操作系统虚拟桌面，而不适用于客户端虚拟桌面，因为 Azure 中的授权尚不支持客户端虚拟桌面。 
-[了解](https://azure.microsoft.com/en-us/pricing/licensing-faq/) Azure 中的客户端/服务器桌面授权。
+[了解](https://azure.microsoft.com/pricing/licensing-faq/) Azure 中的客户端/服务器桌面授权。
 
-[了解](https://aka.ms/citrix-xenapp-xendesktop-with-asr)如何保护 Citrix XenApp 和 XenDesktop 部署。
+[了解](site-recovery-citrix-xenapp-and-xendesktop.md)如何保护 Citrix XenApp 和 XenDesktop 部署。 也可参阅 [Citrix 的白皮书](https://aka.ms/citrix-xenapp-xendesktop-with-asr)，其中提供了相同的详细信息。 
 
 ## <a name="next-steps"></a>后续步骤
 [检查先决条件](site-recovery-prereq.md) 

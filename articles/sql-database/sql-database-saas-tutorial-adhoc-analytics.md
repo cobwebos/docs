@@ -1,6 +1,6 @@
 ---
 title: "针对多个 Azure SQL 数据库运行即席分析查询 | Microsoft Docs"
-description: "在多租户应用程序中针对多个数据库运行即席分析查询"
+description: "在 Wingtip SaaS 多租户应用中对多个 SQL 数据库运行即席分析查询。"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -14,24 +14,24 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 05/22/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: dd41e7f1f131f6c18e03d2434982c3d681342b8b
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 31be50ca3f64cc183e516f1b0f06f5a4265f6103
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
-# <a name="run-ad-hoc-analytics-queries-across-all-wtp-tenants"></a>对所有 WTP 租户运行即席分析查询
+# <a name="run-ad-hoc-analytics-queries-across-all-wingtip-saas-tenants"></a>对所有 Wingtip SaaS 租户运行即席分析查询
 
 在本教程中，将创建即席分析数据库并对所有租户运行多个查询。 这些查询可以提取隐藏在 WTP 应用的日常操作数据中的信息。
 
-为了运行即席分析查询（对多个租户），WTP 应用使用[弹性查询](sql-database-elastic-query-overview.md)以及分析数据库。
+为了运行即席分析查询（对多个租户），Wingtip SaaS 应用使用[弹性查询](sql-database-elastic-query-overview.md)以及分析数据库。
 
 
-本教程介绍如何：
+本教程将介绍如何执行下列操作：
 
 > [!div class="checklist"]
 
@@ -40,31 +40,77 @@ ms.lasthandoff: 05/12/2017
 
 
 
-若要完成本教程，请确保已完成以下先决条件：
+若要完成本教程，请确保已完成了以下先决条件：
 
-* 已部署了 WTP 应用。 若要在五分钟内部署，请参阅[部署和浏览 WTP SaaS 应用程序](sql-database-saas-tutorial.md)
+* Wingtip SaaS 应用已部署。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip SaaS 应用程序](sql-database-saas-tutorial.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 
 ## <a name="ad-hoc-analytics-pattern"></a>即席分析模式
 
-SaaS 应用程序提供的大好机会之一是使用集中存储在云中的大量租户数据。 使用这些数据来深入了解应用程序的操作和使用情况、你的租户、其用户及其首选项和行为。 你找到的见解可指导应用和服务的功能开发、可用性改进和其他投资。
+SaaS 应用程序提供的大好机会之一是使用集中存储在云中的大量租户数据。 使用这些数据来深入了解应用程序的操作和使用情况、租户、租户的用户及其首选项和行为等。这些见解可指导应用和服务的功能开发、可用性改进和其他投资。
 
-在单个多租户数据库中访问此数据很简单，但当数据大规模分布在可能数千个数据库中时便不那么容易了。 一种方法是使用弹性查询，这样可以对具有常见架构的一组分布式数据库进行即席查询。 弹性查询使用单个*头*数据库，其中定义的外部表镜像分布式（租户）数据库中的表。 提交到此头数据库的查询将进行编译以生成分布式查询计划，其中的部分查询将根据需要向下推送到租户数据库。 弹性查询在目录数据库中使用分片映射提供租户数据库的位置。 设置和查询直接使用标准 T-SQL 进行，并支持从 Power BI 和 Excel 等工具进行即席查询。
+在单个多租户数据库中访问此数据很简单，但当数据大规模分布在可能数千个数据库中时便不那么容易了。 一种方法是使用弹性查询，这样可以对具有常见架构的一组分布式数据库进行即席查询。 弹性查询使用单个头数据库，其中定义的外部表会镜像分布式（租户）数据库中的表或视图。 提交到此头数据库的查询将进行编译以生成分布式查询计划，其中的部分查询将根据需要向下推送到租户数据库。 弹性查询在目录数据库中使用分片映射提供租户数据库的位置。 设置和查询直接使用标准 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) 进行，并支持从 Power BI 和 Excel 等工具进行即席查询。
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
-Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
+Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 [下载 Wingtip SaaS 脚本的步骤](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
+
+
+## <a name="explore-the-global-views-in-the-tenant-databases"></a>浏览租户数据库中的全局视图
+
+Wingtip SaaS 应用程序使用“一数据库一租户”模型生成，因此租户数据库架构是从单租户角度定义的。 特定于租户的信息存在于名为“Venue”的单个表中，该表始终只有一行，并且被进一步设计为堆栈，没有主键。**  架构中的其他表不需与 Venue 表相关联，因为在正常使用时，数据属于哪个租户是没有任何疑问的。**  但在跨所有数据库进行查询时，将数据库中表的数据关联到特定的租户变得很重要。 为了简化这一情况，可以向租户数据库添加一组视图，即提供每个租户的“全局”视图。 这些全局视图将一个租户 ID 投影到每个表中，以便进行全局查询。 这样就可以轻松标识来自每个租户的数据。 为了方便，已在所有租户数据库中预先创建了这些视图（此外还在 golden DB 中创建，以便在预配新租户时可以使用这些视图）。
+
+1. 打开 SSMS 并[连接到 tenants1-&lt;USER&gt; 服务器](sql-database-wtp-overview.md#explore-database-schema-and-execute-sql-queries-using-ssms)。
+1. 展开“数据库”，右键单击“contosoconcerthall”，然后选择“新建查询”。****
+1. 若要浏览全局视图，请运行以下查询：
+
+   ```T-SQL
+   -- This is the base Venue table, that has no VenueId associated.
+   SELECT * FROM Venue
+
+   -- Notice the plural name 'Venues'. This view projects a VenueId column.
+   -- In the sample database we calculated an integer id from a hash of the Venue name,
+   -- but any approach could be used to introduce a unique value.
+   -- This is similar to how we create the tenant key in the catalog,
+   -- but there is no requirement that the catalog key and this id be the same.
+   SELECT * FROM Venues
+
+   -- The base Events table which has no VenueId column.
+   SELECT * FROM Events
+
+   -- This view projects the VenueId retrieved from the Venues table.
+   SELECT * FROM VenueEvents
+   ```
+
+若要检查某个视图并查看其创建方式，请执行以下操作：
+
+1. 在“对象资源管理器”中，展开“contosoconcethall” > “视图”：
+
+   ![视图](media/sql-database-saas-tutorial-adhoc-analytics/views.png)
+
+1. 右键单击“dbo.Venues”。****
+1. 选择“将视图脚本编写为” > “CREATE TO” > “新建查询编辑器窗口”
+
+对任何视图执行此操作即可检查其创建方式。**
 
 ## <a name="deploy-the-database-used-for-ad-hoc-analytics-queries"></a>部署用于即席分析查询的数据库
 
-本练习部署即席分析数据库，该数据库包含的架构用于发出跨所有租户数据库的即席查询。
+本练习部署 adhocanalytics 数据库。** 该数据库包含用于跨所有租户数据库进行查询的架构。 该数据库部署到现有的编录服务器中，后者是包含所有管理相关数据库的服务器。
 
 1. 在 *PowerShell ISE* 中打开 .\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalytics.ps1* 并设置以下值：
    * **$DemoScenario** = 2，**部署即席分析数据库**。
 
-1. 按 **F5** 运行该脚本，为即席分析创建新的 SQL 数据库并将其添加到 WTP 目录。 将 TicketPurchases、Tickets 和 Venues 表添加为可以查询的外部表。
-   如果在此处遇到有关“RPC 服务器不可用”的警告，是正常的。
+1. 在脚本中向下滚动到包含数据库架构的 SQL 脚本。  查看脚本，注意以下内容：
+
+   1. 弹性查询使用数据库范围的凭据来访问每个租户数据库。 该凭据需要能够在所有数据库中使用，通常应向其授予启用这些即席查询所需的最小权限。
+   1. 外部数据源，已定义为在编录数据库中使用租户分片映射。  用此作为外部数据源，就可以在发出查询时将查询分发到在编录中注册的所有数据库。
+   1. 外部表，引用在上一部分介绍的全局视图。
+   1. 已创建并填充的本地表“VenueTypes”。**  由于此引用数据表在所有租户数据库中很常见，因此可以在这里将其作为本地表的代表。对于某些查询来说，它可以减少在租户数据库和 adhocanalytics 数据库之间移动的数据量。**
+
+1. 按 F5 运行脚本并创建 adhocanalytics 数据库。**
+
+   可以忽略此处的“RPC 服务器不可用”的警告。
 
 
 现在已有 *adhocanalytics* 数据库，可以使用它运行分布式查询，并对所有租户收集信息！
@@ -91,10 +137,10 @@ Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.
 > * 部署即席分析数据库
 > * 对所有租户数据库运行分布式查询
 
-[Log Analytics (OMS) 教程](sql-database-saas-tutorial-log-analytics.md)
+现在尝试[“租户分析”教程](sql-database-saas-tutorial-tenant-analytics.md)
 
 ## <a name="additional-resources"></a>其他资源
 
-* [基于初始 Wingtip 票证平台 (WTP) 应用程序部署编写的其他教程](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [基于初始 Wingtip SaaS 应用程序部署编写的其他教程](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [弹性查询](sql-database-elastic-query-overview.md)
 

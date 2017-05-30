@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/08/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: fd5e1083c65068c7f6b019838586b1bc7e37aa9f
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 63b6086b7bab5cb61ed6f4a229afd1ffa44cc31e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -52,7 +52,7 @@ IoT 套件已连接好的工厂[预配置解决方案][lnk-preconfigured-solutio
 
 模拟工作站和模拟制造执行系统 (MES) 构成了工厂生产线。 模拟设备和 OPC 发布服务器模块基于 OPC Foundation 发布的 [OPC UA .NET 标准][lnk-OPC-UA-NET-Standard]。
 
-OPC 代理和 OPC 发布服务器实现为基于 [Azure IoT Edge][lnk-Azure-IoT-Gateway] 的模块。 每条模拟生产线都附加了一个指定的网关。
+OPC 代理和 OPC 发布服务器以基于 [Azure IoT Edge][lnk-Azure-IoT-Gateway] 的模块方式实现。 每条模拟生产线都附加了一个指定的网关。
 
 所有模拟组件都在 Azure Linux VM 中托管的 Docker 容器中运行。 默认情况下，模拟配置为运行八条模拟生产线。
 
@@ -130,5 +130,5 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
-[lnk-Azure-IoT-Gateway]: https://github.com/azure/azure-iot-gateway-sdk
+[lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
 [lnk-permissions]: iot-suite-permissions.md
