@@ -1,28 +1,29 @@
 ---
 
-redirect_url: https://azure.microsoft.com/services/documentdb/
+redirect_url: https://azure.microsoft.com/services/cosmos-db/
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 7023e7e7f5857db345c47c9a3aa00a816e027a96
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2bb9fa3c151b0e36f73ba0c1432529499ee7062b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 
 ---
-# <a name="how-to-partition-data-using-client-side-support-in-documentdb"></a>如何在 DocumentDB 中使用客户端支持对数据分区
-Azure DocumentDB 支持[对集合自动分区](documentdb-partition-data.md)。 但是，也存在对分区行为进行精细控制更有利的用例。 为了减少分区任务所需的重复代码，我们在 .NET、Node.js 和 Java SDK 中添加了相应的功能，可使构建跨多个集合扩大构大的应用程序变得更为简单。
+# <a name="how-to-partition-data-using-client-side-support-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中使用客户端支持对数据分区
+Azure Cosmos DB 支持[对集合自动分区](documentdb-partition-data.md)。 但是，也存在对分区行为进行精细控制更有利的用例。 为了减少分区任务所需的重复代码，我们在 .NET、Node.js 和 Java SDK 中添加了相应的功能，可使构建跨多个集合扩大构大的应用程序变得更为简单。
 
 在本文中，我们将了解 .NET SDK 中的类和接口，以及如何使用它们来开发已分区的应用程序。 Java、Node.js 和 Python 等其他 SDK 支持使用类似方法和接口进行客户端侧分区。
 
-## <a name="client-side-partitioning-with-the-documentdb-sdk"></a>使用 DocumentDB SDK 进行客户端分区
-在深入了解分区之前，我们来简要概括一些与分区相关的基本 DocumentDB 概念。 每个 Azure DocumentDB 数据库帐户都包含一组数据库，每个数据库都包含多个集合，而每个集合可包含存储过程、触发器、UDF、文档及相关附件。 集合本身可以是一个分区或已分区，并且具有以下属性：
+## <a name="client-side-partitioning-with-the-sdk"></a>使用 SDK 进行客户端分区
+在深入了解分区之前，我们来简要概括一些与分区相关的基本 Cosmos DB 概念。 每个 Azure Cosmos DB 数据库帐户都包含一组数据库，每个数据库都包含多个集合，而每个集合可包含存储过程、触发器、UDF、文档及相关附件。 集合本身可以是一个分区或已分区，并且具有以下属性：
 
 * 集合提供性能隔离。 因此，整理同一集合内的相似文档时有性能优势。 例如，对于时序数据，你可能想将上个月频繁查询的数据置于预配的吞吐量较高的集内，而将较早的数据置于预配的吞吐量较低的集合内。
 * ACID 事务（即存储过程和触发器）不能跨越集合。 事务的作用域在集合内的单个分区键值内。
 * 集合不强制实施架构，因此它们可以用于相同类型或不同类型的 JSON 文档。
 
-从 [Azure DocumentDB SDK 1.5.x](documentdb-sdk-dotnet.md) 版本开始，可以直接对数据库进行文档操作。 在内部，[DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) 使用为数据库指定的 PartitionResolver 将请求路由到相应的集合。
+从 [Azure Cosmos DB SDK 1.5.x](documentdb-sdk-dotnet.md) 版本开始，可以直接对数据库进行文档操作。 在内部，[DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) 使用为数据库指定的 PartitionResolver 将请求路由到相应的集合。
 
 > [!NOTE]
 > REST API 2015-12-16 和 SDKs 1.6.0+ 中引入的[服务器端分区](documentdb-partition-data.md)弃用了用于简单用例的客户端分区解析程序。 但是，客户端分区更灵活，并可让你跨分区键控制性能隔离，在读取多个分区中的结果时控制并行度，并使用范围/空间分区方法与哈希。
@@ -89,7 +90,7 @@ foreach (UserProfile activeUser in query)
 ```
 
 ## <a name="hash-partition-resolver"></a>哈希分区解析程序
-使用哈希分区，将基于哈希函数的值分配分配，这可让你跨大量分区均衡分配请求和数据。 这种方法通常用于对在大量不同客户端中生成或使用的数据进行分区，对存储用户配置文件、目录项和 IoT（物联网）遥测数据非常有用。 集合内的 DocumentDB 服务器端分区支持也使用哈希分区。
+使用哈希分区，将基于哈希函数的值分配分配，这可让你跨大量分区均衡分配请求和数据。 这种方法通常用于对在大量不同客户端中生成或使用的数据进行分区，对存储用户配置文件、目录项和 IoT（物联网）遥测数据非常有用。 集合内的 Cosmos DB 服务器端分区支持也使用哈希分区。
 
 **哈希分区：**
 ![说明哈希分区如何跨分区均衡分配请求的关系图](media/documentdb-sharding/partition-hash.png)
@@ -122,17 +123,17 @@ foreach (UserProfile activeUser in query)
 * 如何将 PartitionResolver 状态序列化和反序列化为 JSON，以便能在进程之间和关闭时进行共享。 你可以将这些内容保存在配置文件甚至是 DocumentDB 集合中。
 * [DocumentClientHashPartitioningManager](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Util/DocumentClientHashPartitioningManager.cs) 类，用于根据一致哈希在分区数据库中动态添加和删除分区。 在内部，它使用 [TransitionHashPartitionResolver](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Partitioners/TransitionHashPartitionResolver.cs) 在迁移期间使用四种模式（从旧的分区方案读取 (ReadCurrent)、从新的方案读取 (ReadNext)、合并两个方案的结果 (ReadBoth) 或在迁移期间不可用 (None)）中的一种，来路由读取和写入。
 
-这些示例是开放源代码的，并且我们鼓励你提交可让其他 DocumentDB 开发人员获益的相关拉取请求。 有关如何做出贡献的指导，请参考 [Contribution guidelines](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)（贡献准则）。  
+这些示例是开放源代码的，并且我们鼓励你提交可让其他 Cosmos DB 开发人员获益的相关拉取请求。 有关如何做出贡献的指导，请参考 [Contribution guidelines](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)（贡献准则）。  
 
 > [!NOTE]
-> 创建集合的速度受到 DocumentDB 的限制，因此此处显示的一些示例方法可能需要几分钟才能完成。
+> 创建集合的速度受到 Cosmos DB 的限制，因此此处显示的一些示例方法可能需要几分钟才能完成。
 > 
 > 
 
 ## <a name="faq"></a>常见问题
-**DocumentDB 支持服务器端分区吗？**
+**Cosmos DB 支持服务器端分区吗？**
 
-是的，DocumentDB 支持[服务器端分区](documentdb-partition-data.md)。 DocumentDB 还支持通过客户端分区解析程序进行客户端分区，以实现更高级的用例。
+是的，Cosmos DB 支持[服务器端分区](documentdb-partition-data.md)。 Cosmos DB 还支持通过客户端分区解析程序进行客户端分区，以实现更高级的用例。
 
 **服务器端分区和客户端分区分别在什么情况下使用？**
 对于大多数用例，建议使用服务器端分区，因为它可处理分区数据和路由请求的管理任务。 但是，如果需要范围分区，或使用专用用例实现对不同分区键值间的性能隔离，那么客户端分区可能是最好的方法。
@@ -150,8 +151,8 @@ foreach (UserProfile activeUser in query)
 你可以通过实现在内部使用一个或多个现有解析程序的 IPartitionResolver 来链接 PartitionResolver。 有关示例，请查看 TransitionHashPartitionResolver 示例项目。
 
 ## <a name="references"></a>参考
-* [DocumentDB 中的服务器端分区](documentdb-partition-data.md)
-* [DocumentDB 集合和性能级别](documentdb-performance-levels.md)
+* [Cosmos DB 中的服务器端分区](documentdb-partition-data.md)
+* [Azure Cosmos DB 集合和性能级别](documentdb-performance-levels.md)
 * [GitHub 上的分区代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)
 * [DocumentDB .NET SDK Documentation at MSDN](https://msdn.microsoft.com/library/azure/dn948556.aspx)（MSDN 中的 DocumentDB .NET SDK 文档）
 * [DocumentDB .NET samples](https://github.com/Azure/azure-documentdb-net)（DocumentDB .NET 示例）

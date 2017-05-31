@@ -1,32 +1,35 @@
 ---
-title: "DocumentDB 自动化 - 管理区域 | Microsoft Docs"
-description: "使用 Azure CLI 1.0 和 Azure Resource Manager 管理 DocumentDB 数据库帐户中的区域。 DocumentDB 是用于 JSON 数据的云端 NoSQL 数据库。"
-services: documentdb
+title: "Azure Cosmos DB 自动化 - 管理区域 | Microsoft Docs"
+description: "使用 Azure CLI 1.0 和 Azure Resource Manager 管理 Azure Cosmos DB 数据库帐户中的区域。"
+services: cosmosdb
 author: dmakwana
 manager: jhubbard
 editor: 
 tags: azure-resource-manager
 documentationcenter: 
 ms.assetid: 7f765c17-8549-4108-9475-46394fc3a218
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: dimakwan
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 809941992e719ea2eb85cc900063ea218e8fccbb
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 961336e94dca6672dfd6751c4ba27c3997058377
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="automate-documentdb-account-region-management-using-azure-cli-10-and-azure-resource-manager-templates"></a>使用 Azure CLI 1.0 和 Azure Resource Manager 模板自动管理 DocumentDB 帐户区域
+# <a name="automate-azure-cosmos-db-account-region-management-using-azure-cli-10-and-azure-resource-manager-templates"></a>使用 Azure CLI 1.0 和 Azure Resource Manager 模板自动管理 Azure Cosmos DB 帐户区域
 
-本文说明了如何使用 Azure CLI 1.0 命令和 Azure Resource Manager 模板在 Azure DocumentDB 帐户中添加/删除区域。 也可通过 [Azure 门户](documentdb-portal-global-replication.md)实现区域管理。 请注意，以下教程中的命令不可更改各个区域的故障转移优先级。 只可添加或删除读取区域。 不能添加或删除数据库帐户中的写入区域（故障转移优先级为 0）。
+本文说明如何使用 Azure CLI 1.0 命令和 Azure Resource Manager 模板在 Azure Cosmos DB DocumentDB API 帐户中添加/删除区域。 也可通过 [Azure 门户](../cosmos-db/tutorial-global-distribution-documentdb.md)实现区域管理。 请注意，以下教程中的命令不可更改各个区域的故障转移优先级。 只可添加或删除读取区域。 不能添加或删除数据库帐户中的写入区域（故障转移优先级为 0）。
 
-DocumentDB 数据库帐户是目前唯一可以使用 [Azure Resource Manager 模板和 Azure CLI 1.0](documentdb-automation-resource-manager-cli.md) 创建或修改的 DocumentDB 资源。
+Azure Cosmos DB 数据库帐户是目前唯一可以使用 [Azure Resource Manager 模板和 Azure CLI 1.0](documentdb-automation-resource-manager-cli.md) 创建或修改的 Azure Cosmos DB 资源。 
+
+若要使用 CLI 2.0 创建 Azure Cosmos DB DocumentDB API、表 API、图形 API 或 Mongo DB 帐户，请参阅[使用 Azure CLI 创建 Azure DocumentDB 帐户](documentdb-automation-resource-manager-cli.md)。
 
 ## <a name="getting-ready"></a>做好准备
 
@@ -95,7 +98,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 [Azure Resource Manager �
 
 ### <a name="create-or-retrieve-your-resource-group"></a>创建或检索资源组
 
-若要创建 DocumentDB 帐户，首先需要一个资源组。 如果已知道要使用的资源组名称，请跳到[步骤 2](#create-documentdb-account-cli)。 
+若要创建 Azure Cosmos DB 帐户，首先需要一个资源组。 如果已知道要使用的资源组名称，请跳到[步骤 2](#create-documentdb-account-cli)。 
 
 若要查看列有你当前所有的资源组的列表，请运行下列命令，并记下你想要使用的资源组名称： 
 
@@ -106,7 +109,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 [Azure Resource Manager �
     azure group create <resourcegroupname> <resourcegrouplocation>
 
  - `<resourcegroupname>` 只能使用字母数字字符、句点、下划线、“-”字符和括号，且不能以句点结尾。 
- - `<resourcegrouplocation>` 必须是已正式推出 DocumentDB 的区域之一。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
+ - `<resourcegrouplocation>` 必须是已正式推出 Azure Cosmos DB 的区域之一。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
 
 输入示例：
 
@@ -130,22 +133,22 @@ DocumentDB 数据库帐户是目前唯一可以使用 [Azure Resource Manager �
 
 ## <a name="understanding-azure-resource-manager-templates-and-resource-groups"></a>了解 Azure Resource Manager 模板和资源组
 
-大多数应用程序是通过不同资源类型的组合（例如，一个或多个 DocumentDB 帐户或存储帐户、一个虚拟网络或内容传送网络）构建而成的。 默认 Azure 服务管理 API 和 Azure 门户使用基于服务的方法代表这些项。 这种方法需要你单独部署和管理各个服务（或查找其他具备相同功能的工具），而不是当作单个逻辑部署单元。
+大多数应用程序是使用不同资源类型的组合（例如，一个或多个 Azure Cosmos DB 帐户或存储帐户、一个虚拟网络或内容交付网络）生成的。 默认 Azure 服务管理 API 和 Azure 门户使用基于服务的方法代表这些项。 这种方法需要你单独部署和管理各个服务（或查找其他具备相同功能的工具），而不是当作单个逻辑部署单元。
 
 可以利用 Azure Resource Manager 模板将这些不同的资源声明为一个逻辑部署单元，然后进行部署和管理。 请不要以命令方式告知 Azure 逐一部署命令，而应该在 JSON 文件中描述整个部署 - 所有资源及关联的设置以及部署参数 - 然后告诉 Azure 将这些资源视为一个组进行部署。
 
 可在 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)中了解有关 Azure 资源组及其功能的详细信息。 若要了解如何创作模板，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 
-## <a id="add-region-documentdb-account"></a>任务：将区域添加到 DocumentDB 帐户
+## <a id="add-region-documentdb-account"></a>任务：在 Azure Cosmos DB DocumentDB API 帐户中添加区域
 
-DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions/#services)[全局分发数据][distribute-globally]。 此部分中的说明介绍如何使用 Azure CLI 1.0 和Resource Manager 模板向现有 DocumentDB 帐户添加读取区域。 可以在 Azure CLI 1.0 中使用或不使用 Resource Manager 模板完成此任务。
+Azure Cosmos DB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions/#services)[全球分发数据][distribute-globally]。 本部分中的说明介绍如何使用 Azure CLI 1.0 和 Resource Manager 模板向现有 Azure Cosmos DB 帐户添加读取区域。 可以在 Azure CLI 1.0 中使用或不使用 Resource Manager 模板完成此任务。
 
-### <a id="add-region-documentdb-account-cli"></a>使用 Azure CLI 1.0 但不使用 Resource Manager 模板将区域添加到 DocumentDB 帐户
+### <a id="add-region-documentdb-account-cli"></a>使用 Azure CLI 1.0 但不使用 Resource Manager 模板将区域添加到 Azure Cosmos DB 帐户
 
-在命令提示符处输入下列命令，将区域添加到新的或现有的资源组中的现有 DocumentDB 帐户。 请注意，“位置”数组应反映 DocumentDB 帐户中的当前区域配置（要添加的新区域除外）。 以下示例显示的命令可将第二个区域添加到帐户。
+在命令提示符处输入下列命令，将区域添加到新的或现有的资源组中的现有 Azure Cosmos DB 帐户。 请注意，“位置”数组应反映 Azure Cosmos DB 帐户中的当前区域配置（要添加的新区域除外）。 以下示例显示的命令可将第二个区域添加到帐户。
 
-将故障转移优先级值与现有配置相匹配。 其中一个区域的 failoverPriority 值必须为 0，表示此区域将作为 [该 DocumentDB 帐户的写入区域][scaling-globally]。 故障转移优先级值在各个位置中必须唯一，最高故障转移优先级值必须小于区域总数。 新区域将是“读取”区域，且其故障转移优先级值必须大于 0。
+将故障转移优先级值与现有配置相匹配。 其中一个区域的 failoverPriority 值必须为 0，表示此区域将保留为[该 Azure Cosmos DB 帐户的写入区域][scaling-globally]。 故障转移优先级值在各个位置中必须唯一，最高故障转移优先级值必须小于区域总数。 新区域将是“读取”区域，且其故障转移优先级值必须大于 0。
 
 > [!TIP]
 > 如果在 Azure PowerShell 或 Windows PowerShell 中运行此命令，将收到关于意外的令牌的错误。 请改为在 Windows 命令提示符处运行此命令。
@@ -154,13 +157,13 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
  - `<resourcegroupname>` 只能使用字母数字字符、句点、下划线、“-”字符和括号，且不能以句点结尾。
  - `<resourcegrouplocation>` 是当前资源组的区域。
- - `<ip-range-filter>` 指定 CIDR 格式的 IP 地址集或 IP 地址范围，将这些地址纳入给定数据库帐户所允许的客户端 IP 列表内。 IP 地址/范围必须以逗号分隔，且不能包含空格。 有关详细信息，请参阅 [DocumentDB 防火墙支持](documentdb-firewall-support.md)
+ - `<ip-range-filter>` 指定 CIDR 格式的 IP 地址集或 IP 地址范围，将这些地址纳入给定数据库帐户所允许的客户端 IP 列表内。 IP 地址/范围必须以逗号分隔，且不能包含空格。 有关详细信息，请参阅 [Azure Cosmos DB 防火墙支持](documentdb-firewall-support.md)
  - `<databaseaccountname>` 只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。
- - `<databaseaccountlocation>` 必须是已正式推出 DocumentDB 的区域之一。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
- - `<newdatabaseaccountlocation>` 是要添加的新区域，它必须是已正式推出 DocumentDB 的区域之一。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
+ - `<databaseaccountlocation>` 必须是已正式推出 Azure Cosmos DB 的区域之一。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
+ - `<newdatabaseaccountlocation>` 是要添加的新区域，它必须是已正式推出 Azure Cosmos DB 的区域之一。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
 
 
-若要在 DocumentDB 帐户中添加“美国东部”区域作为其读取区域，则示例输入如下： 
+若要在 Azure Cosmos DB 帐户中添加“美国东部”区域作为其读取区域，则示例输入如下： 
 
     azure resource create -g new_res_group -n samplecliacct -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08 -l westus -p "{\"databaseAccountOfferType\":\"Standard\",\"ipRangeFilter\":\"\",\"locations\":["{\"locationName\":\"westus\",\"failoverPriority\":\"0\"},{\"locationName\":\"eastus\",\"failoverPriority\":\"1\"}"]}"
 
@@ -182,15 +185,15 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
 如果遇到错误，请参阅[故障排除](#troubleshooting)。 
 
-在此命令返回之后，在帐户更改为“联机”状态以准备好可供使用之前，该帐户将会进入“正在创建”状态数分钟的时间。 可以在 [Azure 门户](https://portal.azure.com)中的“DocumentDB 帐户”边栏选项卡上检查帐户的状态。
+在此命令返回之后，在帐户更改为“联机”状态以准备好可供使用之前，该帐户将会进入“正在创建”状态数分钟的时间。 用户可在 [Azure 门户](https://portal.azure.com)中的“Azure Cosmos DB 帐户”边栏选项卡上检查帐户的状态。****
 
-### <a id="add-region-documentdb-account-cli-arm"></a>使用 Azure CLI 1.0 且使用 Resource Manager 模板将区域添加到 DocumentDB 帐户
+### <a id="add-region-documentdb-account-cli-arm"></a>使用 Azure CLI 1.0 和 Resource Manager 模板将区域添加到 Azure Cosmos DB 帐户
 
-本部分中的说明介绍如何使用 Azure Resource Manager 模板和可选参数文件（这两者都是 JSON 文件）将区域添加到现有 DocumentDB 帐户。 使用模板可以准确描述所需的信息，并可重复使用而不会出现任何错误。
+本部分中的说明介绍如何使用 Azure Resource Manager 模板和可选参数文件（两者都是 JSON 文件）将区域添加到现有 Azure Cosmos DB 帐户。 使用模板可以准确描述所需的信息，并可重复使用而不会出现任何错误。
 
-将故障转移优先级值与现有配置相匹配。 其中一个区域的 failoverPriority 值必须为 0，表示此区域将作为 [该 DocumentDB 帐户的写入区域][scaling-globally]。 故障转移优先级值在各个位置中必须唯一，最高故障转移优先级值必须小于区域总数。 新区域将是“读取”区域，且其故障转移优先级值必须大于 0。
+将故障转移优先级值与现有配置相匹配。 其中一个区域的 failoverPriority 值必须为 0，表示此区域将保留为[该 Azure Cosmos DB 帐户的写入区域][scaling-globally]。 故障转移优先级值在各个位置中必须唯一，最高故障转移优先级值必须小于区域总数。 新区域将是“读取”区域，且其故障转移优先级值必须大于 0。
 
-创建与下面类似的本地模板文件，该文件与当前的 DocumentDB 区域配置相匹配。 “位置”数组应包含数据库帐户中的所有现有区域以及要添加的新区域。 将文件命名为 azuredeploy.json。
+创建与下面类似的本地模板文件，该文件与当前的 Azure Cosmos DB 区域配置相匹配。 “位置”数组应包含数据库帐户中的所有现有区域以及要添加的新区域。 将文件命名为 azuredeploy.json。
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -238,7 +241,7 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
         ]
     }
 
-以上模板文件演示的示例将新区域添加到已有 2 个区域的 DocumentDB 帐户。
+以上模板文件演示的示例将新区域添加到已有 2 个区域的 Azure Cosmos DB 帐户。
 
 可以在命令行中输入参数值，或创建参数文件来指定值。
 
@@ -263,9 +266,9 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
         }
     }
 
-在 azuredeploy.parameters.json 文件中，将 `"databaseAccountName"` 的值字段更新为要使用的数据库名称，然后保存该文件。 `"databaseAccountName"` 只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。 将 `"locationName1"` 和 `"locationName2"` 值字段更新为 DocumentDB 帐户所在的区域。 将 `"newLocationName"` 值字段更新为要添加的区域。
+在 azuredeploy.parameters.json 文件中，将 `"databaseAccountName"` 的值字段更新为要使用的数据库名称，然后保存该文件。 `"databaseAccountName"` 只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。 将 `"locationName1"` 和 `"locationName2"` 值字段更新为 Azure Cosmos DB 帐户所在的区域。 将 `"newLocationName"` 值字段更新为要添加的区域。
 
-若要在资源组中创建 DocumentDB 帐户，请运行下列命令，并提供模板文件的路径、参数文件的路径或参数值、要部署于其中的资源组名称，以及部署名称（-n 可选）。 
+若要在资源组中创建 Azure Cosmos DB 帐户，请运行以下命令，并提供模板文件的路径、参数文件的路径或参数值、要在其中部署的资源组的名称，以及部署名称（-n 为可选）。 
 
 使用参数文件：
 
@@ -273,7 +276,7 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
  - `<PathToTemplate>` 是步骤 1 中创建的 azuredeploy.json 文件的路径。 如果路径名称含有空格，请使用双引号括住此参数。
  - `<PathToParameterFile>` 是步骤 1 中创建的 azuredeploy.parameters.json 文件的路径。 如果路径名称含有空格，请使用双引号括住此参数。
- - `<resourcegroupname>` 是要在其中添加 DocumentDB 数据库帐户的现有资源组的名称。 
+ - `<resourcegroupname>` 是要在其中添加 Azure Cosmos DB 数据库帐户的现有资源组的名称。 
  - `<deploymentname>` 是部署的可选名称。
 
 输入示例： 
@@ -300,7 +303,7 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
     + Waiting for deployment to complete
     + 
     + 
-    info:    Resource 'new_res_group' of type 'Microsoft.DocumentDb/databaseAccounts' provisioning status is Running
+    info:    Resource 'new_res_group' of type 'Microsoft.Azure Cosmos DB/databaseAccounts' provisioning status is Running
     + 
     info:    Resource 'new_res_group' of type 'Microsoft.DocumentDb/databaseAccounts' provisioning status is Succeeded
     data:    DeploymentName     : azuredeploy
@@ -320,17 +323,17 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
 如果遇到错误，请参阅[故障排除](#troubleshooting)。  
 
-在此命令返回之后，在帐户更改为“联机”状态以准备好可供使用之前，该帐户将会进入“正在创建”状态数分钟的时间。 可以在 [Azure 门户](https://portal.azure.com)中的“DocumentDB 帐户”边栏选项卡上检查帐户的状态。
+在此命令返回之后，在帐户更改为“联机”状态以准备好可供使用之前，该帐户将会进入“正在创建”状态数分钟的时间。 用户可在 [Azure 门户](https://portal.azure.com)中的“Azure Cosmos DB 帐户”边栏选项卡上检查帐户的状态。****
 
-## <a id="remove-region-documentdb-account"></a>任务：将区域从 DocumentDB 帐户中删除
+## <a id="remove-region-documentdb-account"></a>任务：从 Azure Cosmos DB 帐户中删除区域
 
-DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions/#services)[全局分发数据][distribute-globally]。 本部分中的说明介绍了如何使用 Azure CLI 1.0 和 Resource Manager 模板删除现有 DocumentDB 帐户中的某个区域。 可以在 Azure CLI 1.0 中使用或不使用 Resource Manager 模板完成此任务。
+Azure Cosmos DB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions/#services)[全球分发数据][distribute-globally]。 本部分中的说明介绍如何使用 Azure CLI 1.0 和 Resource Manager 模板从现有 Azure Cosmos DB 帐户中删除某个区域。 可以在 Azure CLI 1.0 中使用或不使用 Resource Manager 模板完成此任务。
 
-### <a id="remove-region-documentdb-account-cli"></a> 使用 Azure CLI 1.0 但不使用 Resource Manager 模板将区域从 DocumentDB 帐户中删除
+### <a id="remove-region-documentdb-account-cli"></a>使用 Azure CLI 1.0 但不使用 Resource Manager 模板将区域从 Azure Cosmos DB 帐户中删除
 
-若要删除现有 DocumentDB 帐户中的某个区域，可以使用 Azure CLI 1.0 执行以下命令。 “位置”数组应只包含删除该区域后帐户中所保留的区域。 **将从 DocumentDB 帐户中删除省略位置**。 在命令提示符中输入以下命令。
+若要从现有 Azure Cosmos DB 帐户中删除某个区域，可以使用 Azure CLI 1.0 执行以下命令。 “位置”数组应只包含删除该区域后帐户中所保留的区域。 **将从 Azure Cosmos DB 帐户中删除省略位置**。 在命令提示符中输入以下命令。
 
-其中一个区域的 failoverPriority 值必须为 0，表示此区域将作为 [该 DocumentDB 帐户的写入区域][scaling-globally]。 故障转移优先级值在各个位置中必须唯一，最高故障转移优先级值必须小于区域总数。 
+其中一个区域的 failoverPriority 值必须为 0，表示此区域将保留为[该 Azure Cosmos DB 帐户的写入区域][scaling-globally]。 故障转移优先级值在各个位置中必须唯一，最高故障转移优先级值必须小于区域总数。 
 
 > [!TIP]
 > 如果在 Azure PowerShell 或 Windows PowerShell 中运行此命令，将收到关于意外的令牌的错误。 请改为在 Windows 命令提示符处运行此命令。
@@ -339,9 +342,9 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
  - `<resourcegroupname>` 只能使用字母数字字符、句点、下划线、“-”字符和括号，且不能以句点结尾。
  - `<resourcegrouplocation>` 是当前资源组的区域。
- - `<ip-range-filter>` 指定 CIDR 格式的 IP 地址集或 IP 地址范围，将这些地址纳入给定数据库帐户所允许的客户端 IP 列表内。 IP 地址/范围必须以逗号分隔，且不能包含空格。 有关详细信息，请参阅 [DocumentDB 防火墙支持](documentdb-firewall-support.md)
+ - `<ip-range-filter>` 指定 CIDR 格式的 IP 地址集或 IP 地址范围，将这些地址纳入给定数据库帐户所允许的客户端 IP 列表内。 IP 地址/范围必须以逗号分隔，且不能包含空格。 有关详细信息，请参阅 [Azure Cosmos DB 防火墙支持](documentdb-firewall-support.md)
  - `<databaseaccountname>` 只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。
- - `<databaseaccountlocation>` 必须是已正式推出 DocumentDB 的区域之一。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
+ - `<databaseaccountlocation>` 必须是已正式推出 Azure Cosmos DB 的区域之一。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
 
 输入示例： 
 
@@ -365,15 +368,15 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
 如果遇到错误，请参阅[故障排除](#troubleshooting)。 
 
-此命令返回后，在帐户将处于“正在更新”状态数分钟，然后更改为“联机”状态，准备好可供使用。 可以在 [Azure 门户](https://portal.azure.com)中的“DocumentDB 帐户”边栏选项卡上检查帐户的状态。
+此命令返回后，在帐户将处于“正在更新”状态数分钟，然后更改为“联机”状态，准备好可供使用。 用户可在 [Azure 门户](https://portal.azure.com)中的“Azure Cosmos DB 帐户”边栏选项卡上检查帐户的状态。****
 
-### <a id="remove-region-documentdb-account-cli-arm"></a> 搭配使用 Azure CLI 1.0 和 Resource Manager 模板将区域从 DocumentDB 帐户中删除
+### <a id="remove-region-documentdb-account-cli-arm"></a>使用 Azure CLI 1.0 和 Resource Manager 模板将区域从 Azure Cosmos DB 帐户中删除
 
-本部分中的说明介绍如何使用 Azure Resource Manager 模板和可选参数文件（这两者都是 JSON 文件）将区域从现有 DocumentDB 帐户中删除。 使用模板可以准确描述所需的信息，并可重复使用而不会出现任何错误。
+本部分中的说明介绍如何使用 Azure Resource Manager 模板和可选参数文件（两者都是 JSON 文件）从现有 Azure Cosmos DB 帐户中删除区域。 使用模板可以准确描述所需的信息，并可重复使用而不会出现任何错误。
 
-其中一个区域的 failoverPriority 值必须为 0，表示此区域将作为 [该 DocumentDB 帐户的写入区域][scaling-globally]。 故障转移优先级值在各个位置中必须唯一，最高故障转移优先级值必须小于区域总数。 
+其中一个区域的 failoverPriority 值必须为 0，表示此区域将保留为[该 Azure Cosmos DB 帐户的写入区域][scaling-globally]。 故障转移优先级值在各个位置中必须唯一，最高故障转移优先级值必须小于区域总数。 
 
-创建与下面类似的本地模板文件，该文件与当前的 DocumentDB 区域配置相匹配。 “位置”数组应只包含删除该区域后帐户中所保留的区域。 **将从 DocumentDB 帐户中删除省略位置**。 将文件命名为 azuredeploy.json。
+创建与下面类似的本地模板文件，该文件与当前的 Azure Cosmos DB 区域配置相匹配。 “位置”数组应只包含删除该区域后帐户中所保留的区域。 **将从 Azure Cosmos DB 帐户中删除省略位置**。 将文件命名为 azuredeploy.json。
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -424,9 +427,9 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
         }
     }
 
-在 azuredeploy.parameters.json 文件中，将 `"databaseAccountName"` 的值字段更新为要使用的数据库名称，然后保存该文件。 `"databaseAccountName"` 只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。 将 `"locationName1"` 值字段更新为希望在删除区域后其中仍然存在 DocumentDB 帐户的区域。
+在 azuredeploy.parameters.json 文件中，将 `"databaseAccountName"` 的值字段更新为要使用的数据库名称，然后保存该文件。 `"databaseAccountName"` 只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。 将 `"locationName1"` 值字段更新为希望在删除区域后其中仍然存在 Azure Cosmos DB 帐户的区域。
 
-若要在资源组中创建 DocumentDB 帐户，请运行下列命令，并提供模板文件的路径、参数文件的路径或参数值、要部署于其中的资源组名称，以及部署名称（-n 可选）。 
+若要在资源组中创建 Azure Cosmos DB 帐户，请运行以下命令，并提供模板文件的路径、参数文件的路径或参数值、要在其中部署的资源组的名称，以及部署名称（-n 为可选）。 
 
 使用参数文件：
 
@@ -434,7 +437,7 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
  - `<PathToTemplate>` 是步骤 1 中创建的 azuredeploy.json 文件的路径。 如果路径名称含有空格，请使用双引号括住此参数。
  - `<PathToParameterFile>` 是步骤 1 中创建的 azuredeploy.parameters.json 文件的路径。 如果路径名称含有空格，请使用双引号括住此参数。
- - `<resourcegroupname>` 是要在其中添加 DocumentDB 数据库帐户的现有资源组的名称。 
+ - `<resourcegroupname>` 是要在其中添加 Azure Cosmos DB 数据库帐户的现有资源组的名称。 
  - `<deploymentname>` 是部署的可选名称。
 
 输入示例： 
@@ -479,14 +482,14 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
 如果遇到错误，请参阅[故障排除](#troubleshooting)。  
 
-此命令返回后，在帐户将处于“正在更新”状态数分钟，然后更改为“联机”状态，准备好可供使用。 可以在 [Azure 门户](https://portal.azure.com)中的“DocumentDB 帐户”边栏选项卡上检查帐户的状态。
+此命令返回后，在帐户将处于“正在更新”状态数分钟，然后更改为“联机”状态，准备好可供使用。 用户可在 [Azure 门户](https://portal.azure.com)中的“Azure Cosmos DB 帐户”边栏选项卡上检查帐户的状态。****
 
 ## <a name="troubleshooting"></a>故障排除
 
 如果在创建资源组或数据库帐户时收到错误（例如 `Deployment provisioning state was not successful`），有几个故障排除选项可供使用。 
 
 > [!NOTE]
-> 在数据库帐户名称中提供不正确的字符，或提供无法使用 DocumentDB 的位置将导致部署错误。 数据库帐户名称只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)上列出了所有有效的数据库帐户位置。
+> 在数据库帐户名中提供不正确的字符，或提供无法使用 Azure Cosmos DB 的位置将导致部署错误。 数据库帐户名称只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)上列出了所有有效的数据库帐户位置。
 
 - 如果输出包含以下 `Error information has been recorded to C:\Users\wendy\.azure\azure.err`，请查看 azure.err 文件中的错误信息。
 
@@ -504,24 +507,23 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已经有了 DocumentDB 帐户，下一步是创建 DocumentDB 数据库。 你可以使用下面其中一项来创建数据库：
+现在已拥有一个 Azure Cosmos DB 帐户，接下来的步骤是创建 Azure Cosmos DB 数据库。 你可以使用下面其中一项来创建数据库：
 
-- Azure 门户，如[使用 Azure 门户创建 DocumentDB 集合和数据库](documentdb-create-collection.md)中所述。
+- Azure 门户，如[使用 Azure 门户创建 Azure Cosmos DB 集合和数据库](documentdb-create-collection.md)中所述。
 - C# .NET 示例，位于 GitHub 上 [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) 存储库的 [DatabaseManagement](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/DatabaseManagement) 项目中。
-- [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。 DocumentDB 有 .NET、Java、Python、Node.js 和 JavaScript API SDK。 
+- [Azure Cosmos DB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。 Azure Cosmos DB DocumentDB API 拥有 .NET、Java、Python、Node.js 和 JavaScript API SDK。 
 
 创建数据库后，必须向数据库[添加一个或多个集合](documentdb-create-collection.md)，然后向集合[添加文档](documentdb-view-json-document-explorer.md)。 
 
-当集合中有文档后，可以使用门户中的[查询资源管理器](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 或某个 [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)针对文档使用 [DocumentDB SQL](documentdb-sql-query.md) [执行查询](documentdb-sql-query.md#ExecutingSqlQueries)。
+集合中存在文档时，可以利用门户中的[查询资源管理器](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 或某个 [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) 来针对文档使用 [SQL](documentdb-sql-query.md) [执行查询](documentdb-sql-query.md#ExecutingSqlQueries)。
 
-若要详细了解 DocumentDB，请浏览以下资源：
+若要了解有关 Azure Cosmos DB 的详细信息，请参阅以下资源：
 
--    [DocumentDB 学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
--    [DocumentDB 资源模型和概念](documentdb-resources.md)
+-    [Azure Cosmos DB 简介](../cosmos-db/introduction.md)
 
 有关可用的其他模板，请参阅 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates/)。
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[distribute-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally
-[scaling-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally/#scaling-across-the-planet
+[distribute-globally]: https://azure.microsoft.com/documentation/articles/documentdb-distribute-data-globally
+[scaling-globally]: https://azure.microsoft.com/documentation/articles/documentdb-distribute-data-globally/#scaling-across-the-planet
 

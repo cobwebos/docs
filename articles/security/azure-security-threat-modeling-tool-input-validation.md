@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: rodsan
-translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 19b03b14dc3b04472cd2ae59d38422edce47ef35
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 59f92f94bcd9e01aeaedf7df01ac194c774e5f8d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 03/15/2017
 | Web 应用程序 | <ul><li>[使用不受信任样式表针对所有转换禁用 XSLT 脚本](#disable-xslt)</li><li>[确保可能包含用户可控内容的每个页面能够选择不使用自动 MIME 探查](#out-sniffing)</li><li>[强化或禁用 XML 实体解析](#xml-resolution)</li><li>[使用 http.sys 的应用程序执行 URL 规范化验证](#app-verification)</li><li>[确保接受用户的文件时实施适当的控制](#controls-users)</li><li>[确保在 Web 应用程序中使用类型安全的参数进行数据访问](#typesafe)</li><li>[使用单独的模型绑定类或绑定筛选列表来防止 MVC 大规模分配漏洞](#binding-mvc)</li><li>[在呈现之前为不受信任的 Web 输出编码](#rendering)</li><li>[针对所有字符串类型的 Model 属性执行输入验证和筛选](#typemodel)</li><li>[应该针对接受所有字符的窗体字段（例如 RTF 编辑器）应用净化](#richtext)</li><li>[不要将 DOM 元素分配到没有内置编码的接收器](#inbuilt-encode)</li><li>[验证应用程序中的所有重定向是否闭合且安全](#redirect-safe)</li><li>[针对 Controller 方法接受的所有字符串类型参数实施输入验证](#string-method)</li><li>[针对正则表达式处理设置超时上限，防止由于正则表达式错误而出现 DoS](#dos-expression)</li><li>[避免在 Razor 视图中使用 Html.Raw](#html-razor)</li></ul> | 
 | 数据库 | <ul><li>[不要在存储过程中使用动态查询](#stored-proc)</li></ul> | 
 | Web API | <ul><li>[确保针对 Web API 方法执行模型验证](#validation-api)</li><li>[针对 Web API 方法接受的所有字符串类型参数实施输入验证](#string-api)</li><li>[确保在 Web API 中使用类型安全的参数进行数据访问](#typesafe-api)</li></ul> | 
-| Azure Document DB | <ul><li>[对 DocumentDB 使用参数化 SQL 查询](#sql-docdb)</li></ul> | 
+| Azure Document DB | <ul><li>[对 Azure Cosmos DB 使用参数化 SQL 查询](#sql-docdb)</li></ul> | 
 | WCF | <ul><li>[通过架构绑定执行 WCF 输入验证](#schema-binding)</li><li>[WCF - 通过参数检查器执行输入验证](#parameters)</li></ul> | 
 
 ## <a id="disable-xslt"></a>使用不受信任样式表针对所有转换禁用 XSLT 脚本
@@ -654,7 +655,7 @@ myCommand.Fill(userDataset);
 ```
 在上面的代码示例中，输入值不能超过 11 个字符。 如果数据不符合该参数定义的类型或长度，SqlParameter 类将引发异常。 
 
-## <a id="sql-docdb"></a>对 DocumentDB 使用参数化 SQL 查询
+## <a id="sql-docdb"></a>对 Cosmos DB 使用参数化 SQL 查询
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
@@ -662,8 +663,8 @@ myCommand.Fill(userDataset);
 | SDL 阶段               | 构建 |  
 | 适用的技术 | 泛型 |
 | 属性              | 不适用  |
-| 参考              | [宣布推出 DocumentDB 中的 SQL 参数化](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
-| 步骤 | 尽管 DocumentDB 仅支持只读查询，但如果查询是通过串联用户输入构造的，则仍有可能会发生 SQL 注入。 用户可能会通过编写恶意 SQL 查询，获取对同一集合中他们本应无权访问的数据的访问权限。 如果查询是基于用户输入构造的，请使用参数化 SQL 查询。 |
+| 参考              | [宣布推出 Cosmos DB 中的 SQL 参数化](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
+| 步骤 | 尽管 Cosmos DB 仅支持只读查询，但如果查询是通过串联用户输入构造的，则仍有可能会发生 SQL 注入。 用户可能会通过编写恶意 SQL 查询，获取对同一集合中他们本应无权访问的数据的访问权限。 如果查询是基于用户输入构造的，请使用参数化 SQL 查询。 |
 
 ## <a id="schema-binding"></a>通过架构绑定执行 WCF 输入验证
 

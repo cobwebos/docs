@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/24/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 627f9dccb48712fced81f2c6dc694043f7162205
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5b5aa75756d2a7061d531d50a59a2c52dfb75cbe
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -333,7 +334,7 @@ UDF 可以使用 C#、Java 或用户选择的语言进行编写。
             </td>
             <td width="246" valign="top">
                 <p>
-拓扑中支持多种输出，每种输出都可以有进行下游处理的自定义逻辑。 Storm 默认提供的连接器适用于 PowerBI、Azure 事件中心、Azure Blob 存储、Azure DocumentDB、SQL 和 HBase。 不支持的连接器可通过自定义代码来实现。
+拓扑中支持多种输出，每种输出都可以有进行下游处理的自定义逻辑。 开箱即用的 Storm 提供的连接器适用于 PowerBI、Azure 事件中心、Azure Blob 存储、Azure Cosmos DB、SQL 和 HBase。 不支持的连接器可通过自定义代码来实现。
                 </p>
             </td>
         </tr>
@@ -569,7 +570,7 @@ Azure Blob（带有最大大小为 100 MB 的内存中查找缓存）提供引�
             </td>
             <td width="246" valign="top">
                 <p>
-数据大小没有限制。 连接器适用于 HBase、DocumentDB、SQL Server 和 Azure。 不支持的连接器可通过自定义代码来实现。
+数据大小没有限制。 连接器适用于 HBase、Azure Cosmos DB、SQL Server 和 Azure。 不支持的连接器可通过自定义代码来实现。
                 </p>
                 <p>
 引用数据的刷新必须由自定义代码处理。

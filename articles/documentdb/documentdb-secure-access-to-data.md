@@ -1,13 +1,13 @@
 ---
-title: "了解如何保护对 DocumentDB 中数据的访问 |Microsoft Docs"
-description: "了解有关 DocumentDB 中的访问控制概念，包括主密钥、只读密钥、用户和权限。"
-services: documentdb
+title: "了解如何保护对 Azure Cosmos DB 中数据的访问 | Microsoft Docs"
+description: "了解有关 Azure Cosmos DB 中的访问控制概念，包括主密钥、只读密钥、用户和权限。"
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 8641225d-e839-4ba6-a6fd-d6314ae3a51c
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 7ab474747c74295a5dba9a6f3ad32000a7551a9c
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 88a30be874fb6890c9c56a16f1dad2318a571fbb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="securing-access-to-documentdb-data"></a>保护对 DocumentDB 数据的访问
-本文概述了如何保护对 [Microsoft Azure DocumentDB 中存储的数据的访问](https://azure.microsoft.com/services/documentdb/)。
+# <a name="securing-access-to-azure-cosmos-db-data"></a>保护对 Azure Cosmos DB 数据的访问
+本文概述了如何保护对 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 中存储的数据的访问。
 
-DocumentDB 使用两种类型的密钥来验证用户身份并提供其数据和资源的访问权限。 
+Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供对其数据和资源的访问权限。 
 
 |密钥类型|资源|
 |---|---|
@@ -44,7 +44,7 @@ DocumentDB 使用两种类型的密钥来验证用户身份并提供其数据和
 
 每个帐户包括两个主密钥：主要密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。 
 
-DocumentDB 帐户除了有两个主密钥以外，还有两个只读密钥。 这些只读密钥只允许针对帐户执行读取操作。 只读密钥不提供对资源的读取权限。
+Cosmos DB 帐户除了有两个主密钥以外，还有两个只读密钥。 这些只读密钥只允许针对帐户执行读取操作。 只读密钥不提供对资源的读取权限。
 
 可以使用 Azure 门户检索和重新生成主要、辅助、只读和读写主密钥。 有关说明，请参阅[查看、复制和重新生成访问密钥](documentdb-manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys)。
 
@@ -56,11 +56,11 @@ DocumentDB 帐户除了有两个主密钥以外，还有两个只读密钥。 �
 
 ### <a name="code-sample-to-use-a-master-key"></a>有关使用主密钥的代码示例
 
-以下代码示例演示如何使用 DocumentDB 帐户终结点和主密钥来实例化 DocumentClient 并创建数据库。 
+以下代码示例演示如何使用 Cosmos DB 帐户终结点和主密钥来实例化 DocumentClient 并创建数据库。 
 
 ```csharp
 //Read the DocumentDB endpointUrl and authorization keys from config.
-//These values are available from the Azure portal on the NOSQL (DocumentDB) account blade under "Keys".
+//These values are available from the Azure portal on the Azure Cosmos DB account blade under "Keys".
 //NB > Keep these values in a safe and secure location. Together they provide Administrative access to your DocDB account.
 
 private static readonly string endpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -87,33 +87,33 @@ Database database = await client.CreateDatabaseAsync(
 - 使用专门针对用户、资源和权限构造的哈希资源令牌。
 - 生存期受到可自定义的有效期的约束。 默认的有效期限为一小时。 但是，可将令牌生存期显式指定为最长五个小时。
 - 可以安全替代主密钥。 
-- 使客户端能够根据它们的权限读取、写入和删除 DocumentDB 帐户中的资源。
+- 使客户端能够根据授予的权限读取、写入和删除 Cosmos DB 帐户中的资源。
 
-如果想要为不能通过主密钥得到信任的客户端提供对 DocumentDB 帐户中资源的访问权限，你可以使用资源令牌（通过创建 DocumentDB 用户和权限）。  
+如果想要为不能通过主密钥得到信任的客户端提供对 Cosmos DB 帐户中资源的访问权限，可以使用资源令牌（通过创建 Cosmos DB 用户和权限获取）。  
 
-DocumentDB 资源令牌提供一种安全的替代方案，使客户端能够根据授予的权限读取、写入和删除 DocumentDB 帐户中的资源，而无需主密钥或只读密钥。
+Cosmos DB 资源令牌提供一种安全的替代方案，使客户端能够根据授予的权限读取、写入和删除 Cosmos DB 帐户中的资源，而无需主密钥或只读密钥。
 
 以下是典型的设计模式，通过它可以请求、生成资源令牌并将其提供给客户端：
 
 1. 设置中间层服务，以用于移动应用程序共享用户照片。 
-2. 中间层服务拥有 DocumentDB 帐户的主密钥。
+2. 中间层服务拥有 Cosmos DB 帐户的主密钥。
 3. 照片应用安装在最终用户移动设备上。 
 4. 登录时，照片应用使用中间层服务建立用户的标识。 这种标识建立机制完全由应用程序决定。
 5. 一旦建立标识，中间层服务就会基于标识请求权限。
 6. 中间层服务将资源令牌发送回手机应用。
-7. 手机应用可以继续使用该资源令牌以该资源令牌定义的权限按照该资源令牌允许的间隔直接访问 DocumentDB 资源。 
+7. 手机应用可以继续使用该资源令牌，以该资源令牌定义的权限，按照该资源令牌允许的间隔直接访问 Cosmos DB 资源。 
 8. 资源令牌到期后，后续请求将收到 401 未经授权的异常。  此时，手机应用会重新建立标识，并请求新的资源令牌。
 
-    ![DocumentDB 资源令牌工作流](./media/documentdb-secure-access-to-data/resourcekeyworkflow.png)
+    ![Azure Cosmos DB 资源令牌工作流](./media/documentdb-secure-access-to-data/resourcekeyworkflow.png)
 
-资源令牌的生成和管理由本机 DocumentDB 客户端库处理；但是，如果使用 REST，必须构造请求/身份验证标头。 有关为 REST 创建身份验证标头的详细信息，请参阅 [DocumentDB 资源的访问控制](https://docs.microsoft.com/en-us/rest/api/documentdb/access-control-on-documentdb-resources)或 [SDK 源代码](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js)。
+资源令牌的生成和管理由本机 Cosmos DB 客户端库处理；但是，如果使用 REST，必须构造请求/身份验证标头。 有关为 REST 创建身份验证标头的详细信息，请参阅 [Cosmos DB 资源的访问控制](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources)或 [SDK 源代码](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js)。
 
 有关用于生成或代理资源令牌的中间层服务的示例，请参阅 [ResourceTokenBroker 应用](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
 
 <a id="users"></a>
 
 ## <a name="users"></a>用户
-DocumentDB 用户与 DocumentDB 数据库关联。  每个数据库可以包含零个或多个 DocumentDB 用户。  以下代码示例演示如何创建 DocumentDB 用户资源。
+Cosmos DB 用户与 Cosmos DB 数据库关联。  每个数据库可以包含零个或多个 Cosmos DB 用户。  以下代码示例演示如何创建 Cosmos DB 用户资源。
 
 ```csharp
 //Create a user.
@@ -126,21 +126,21 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 ```
 
 > [!NOTE]
-> 每个 DocumentDB 用户具有 PermissionsLink 属性，该属性可用于检索与该用户关联的[权限](#permissions)的列表。
+> 每个 Cosmos DB 用户具有一个 PermissionsLink 属性，该属性可用于检索与该用户关联的[权限](#permissions)列表。
 > 
 > 
 
 <a id="permissions"></a>
 
 ## <a name="permissions"></a>权限
-DocumentDB 权限资源与 DocumentDB 用户关联。  每个用户可能包含零个或多个 DocumentDB 权限。  权限资源提供对用户在尝试访问某个特定应用程序资源时需要的安全令牌的访问权限。
+Cosmos DB 权限资源与 Cosmos DB 用户关联。  每个用户可能包含零个或多个 Cosmos DB 权限。  权限资源提供对用户在尝试访问某个特定应用程序资源时需要的安全令牌的访问权限。
 权限资源提供两种可用的访问级别：
 
 * 所有：用户对资源拥有完全权限。
 * 只读：用户只能读取资源的内容，但无法对资源执行写入、更新或删除操作。
 
 > [!NOTE]
-> 为了运行 DocumentDB 存储过程，用户必须具有对存储过程将在其中运行的集合的所有权限。
+> 为了运行 Cosmos DB 存储过程，用户必须具有对将在其中运行存储过程的集合的所有权限。
 > 
 > 
 
@@ -165,7 +165,7 @@ Console.WriteLine(docPermission.Id + " has token of: " + docPermission.Token);
 
 ### <a name="code-sample-to-read-permissions-for-user"></a>有关读取用户权限的代码示例
 
-为了方便地获取与特定用户关联的所有权限资源，DocumentDB 使权限源对每个用户对象均可用。  下面的代码片段演示如何检索与上面创建的用户关联的权限、构造权限列表以及代表用户实例化新 DocumentClient。
+为了方便地获取与特定用户关联的所有权限资源，Cosmos DB 使权限源对每个用户对象均可用。  下面的代码片段演示如何检索与上面创建的用户关联的权限、构造权限列表以及代表用户实例化新 DocumentClient。
 
 ```csharp
 //Read a permission feed.
@@ -182,7 +182,7 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 若要详细了解 DocumentDB 数据库安全性，请参阅 [DocumentDB：NoSQL 数据库安全性](documentdb-nosql-database-security.md)。
-* 若要了解如何管理主密钥和只读密钥，请参阅[如何管理 DocumentDB 帐户](documentdb-manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys)。
-* 若要了解如何构造 DocumentDB 授权令牌，请参阅 [DocumentDB 资源的访问控制](https://docs.microsoft.com/en-us/rest/api/documentdb/access-control-on-documentdb-resources)。
+* 若要详细了解 Cosmos DB 数据库安全性，请参阅 [Cosmos DB：数据库安全性](documentdb-nosql-database-security.md)。
+* 若要了解如何管理主密钥和只读密钥，请参阅[如何管理 Azure Cosmos DB 帐户](documentdb-manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys)。
+* 若要了解如何构造 Azure Cosmos DB 授权令牌，请参阅 [Azure Cosmos DB 资源的访问控制](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources)。
 

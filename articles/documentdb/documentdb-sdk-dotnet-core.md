@@ -1,24 +1,25 @@
 ---
 title: "Azure DocumentDB .NET Core API、SDK 和资源 | Microsoft 文档"
 description: "了解有关 .NET Core API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB .NET Core SDK 各版本之间的更改。"
-services: documentdb
+services: cosmosdb
 documentationcenter: .net
 author: rnagpal
 manager: jhubbard
 editor: cgronlun
 ms.assetid: f899b314-26ac-4ddb-86b2-bfdf05c2abf2
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/19/2017
+ms.date: 05/10/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: d5552615bfa663f4604e29839ecf8f5fc25c328f
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: cb53a57be75f89390312473a2c80923514b295c2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/21/2017
 > * [Node.js](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
 > * [Python](documentdb-sdk-python.md)
-> * [REST](https://docs.microsoft.com/en-us/rest/api/documentdb/)
+> * [REST](https://docs.microsoft.com/rest/api/documentdb/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
@@ -56,6 +57,15 @@ DocumentDB .NET Core SDK 具有与最新版 [DocumentDB.NET SDK](documentdb-sdk-
 
 > [!NOTE] 
 > DocumentDB .NET Core SDK 与通用 Windows 平台 (UWP) 应用尚不兼容。 如果不支持 UWP 应用的 .NET Core SDK 感兴趣，请向 [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) 发送电子邮件。
+
+### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
+
+*    添加了对每分钟请求单位 (RU/m) 功能的支持。
+*    添加了对名为 ConsistentPrefix 的新一致性级别的支持。
+*    添加了对单独分区的查询指标的支持。
+*    添加了对限制查询的继续令牌大小的支持。
+*    添加了对失败请求的详情跟踪的支持。
+*    改进了 SDK 中的一些性能。
 
 ### <a name="a-name122122"></a><a name="1.2.2"/>1.2.2
 
@@ -107,6 +117,7 @@ DocumentDB .NET Core 预览版 SDK 与最新版 [DocumentDB.NET SDK](documentdb-
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.3.0](#1.3.0) |2017 年 5 月 10 日 |--- |
 | [1.2.2](#1.2.2) |2017 年 4 月 19 日 |--- |
 | [1.2.1](#1.2.1) |2017 年 3 月 29 日 |--- |
 | [1.2.0](#1.2.0) |2017 年 3 月 25 日 |--- |
@@ -117,6 +128,6 @@ DocumentDB .NET Core 预览版 SDK 与最新版 [DocumentDB.NET SDK](documentdb-
 | [0.1.0-preview](#0.1.0-preview) |2016 年 11 月 15 日 |2016 年 12 月 31 日 |
 
 ## <a name="see-also"></a>另请参阅
-要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服务页。 
+若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 服务页。 
 
 

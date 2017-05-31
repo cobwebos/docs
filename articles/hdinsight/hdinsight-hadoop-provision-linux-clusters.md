@@ -1,6 +1,7 @@
 ---
 title: "在 Azure HDInsight 中创建 Hadoop、HBase、Kafka、Storm 或 Spark 群集 | Microsoft Docs"
 description: "了解如何使用浏览器、Azure CLI、Azure PowerShell、REST 或 SDK 在 Linux 上创建适用于 HDInsight 的 Hadoop、HBase、Storm 或 Spark 群集。"
+keywords: "hadoop 群集设置, kafka 群集设置, spark 群集设置, hbase 群集设置, storm 群集设置, 什么是 hadoop 群集"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -17,10 +18,10 @@ ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 9fc96db2b832f1e57813bebd2d46e4b78ed04677
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: ed0a5cfc02572d537f4b179ad612ad153a2db1d4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -177,22 +178,35 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
 有关辅助 Azure 存储帐户的详细信息，请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。 有关辅助 Data Lake Storage 的详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
 
 
-#### <a name="use-hiveoozie-metastore"></a>Hive/Oozie 元存储
+#### <a name="use-hiveoozie-metastore"></a>Hive 元存储
+
 如果想要在删除 HDInsight 群集后保留 Hive 表，建议使用自定义元存储。 这样，便可以将该元存储附加到另HDInsight 群集。
 
 > [!IMPORTANT]
 > 为一个 HDInsight 群集版本创建的 HDInsight 元存储不能在不同的 HDInsight 群集版本之间共享。 有关 HDInsight 版本的列表，请参阅[支持的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
->
->
 
-元存储包含 Hive 和 Oozie 元数据，例如 Hive 表、分区、架构和列。 元存储可帮助保留 Hive 和 Oozie 元数据，因此在创建新群集时，不需要重新创建 Hive 表或 Oozie 作业。 默认情况下，Hive 使用嵌入的 Azure SQL 数据库存储此信息。 删除群集时，嵌入式数据库无法保留元数据。 在配置了 Hive 元存储的 HDInsight 群集中创建 Hive 表时，使用相同的 Hive 元存储重新创建群集会保留这些表。
+元存储包含 Hive 元数据，例如 Hive 表、分区、架构和列。 元存储可帮助保留 Hive 元数据，因此在创建新群集时，不需要重新创建 Hive 表。 默认情况下，Hive 使用嵌入的 Azure SQL 数据库存储此信息。 删除群集时，嵌入式数据库无法保留元数据。 在配置了 Hive 元存储的 HDInsight 群集中创建 Hive 表时，使用相同的 Hive 元存储重新创建群集会保留这些表。
 
-元存储配置不可用于 HBase 群集类型。
+元存储配置不可用于所有群集类型。 例如，不适用于 HBase 或 Kafka 群集。
 
 > [!IMPORTANT]
-> 创建自定义元存储时，请勿使用包含短划线或连字符的数据库名称。 否则可能导致群集创建过程失败。
->
->
+> 创建自定义元存储时，请勿使用包含短划线、连字符或空格的数据库名称。 否则可能导致群集创建过程失败。
+
+> [!WARNING]
+> Hive 元存储不支持 Azure SQL 仓库。
+
+
+#### <a name="oozie-metastore"></a>Oozie 元存储
+
+若要提高使用 Oozie 时的性能，请使用自定义元存储。 如果想在删除群集后，访问 Oozie 作业数据，也可使用自定义元存储。 如果不打算使用 Oozie，或仅间歇性使用 Oozie，无需创建自定义元存储。
+
+> [!IMPORTANT]
+> 无法重用自定义 Oozie 元存储。 若要使用自定义 Oozie 元存储，必须在创建 HDInsight 群集时提供一个空的 Azure SQL 数据库。
+
+元存储配置不可用于所有群集类型。 例如，不适用于 HBase 或 Kafka 群集。
+
+> [!WARNING]
+> Oozie 元存储不支持 Azure SQL 仓库。
 
 ## <a name="install-hdinsight-applications"></a>安装 HDInsight 应用程序
 

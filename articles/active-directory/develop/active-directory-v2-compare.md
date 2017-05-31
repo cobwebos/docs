@@ -12,11 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/01/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
-ms.openlocfilehash: 9f00013c4eb6c32707489d5f78a5e95b7419bcd2
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 16f2acc903aa85cf41d164dfe85b449a06314161
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -25,7 +28,6 @@ ms.openlocfilehash: 9f00013c4eb6c32707489d5f78a5e95b7419bcd2
 
 > [!NOTE]
 > v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。  若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
->
 >
 
 ## <a name="microsoft-accounts-and-azure-ad-accounts"></a>Microsoft 帐户和 Azure AD 帐户
@@ -36,27 +38,25 @@ v2.0 终结点允许开发人员编写可接受使用单一身份验证终结点
 将应用与 Microsoft 帐户和 Azure AD 帐户集成现在是一个简单的过程。  你可以使用一组终结点、单个资源库和单个应用注册来进入消费者和企业的世界。  若要深入了解 v2.0 终结点，请查看[概述](active-directory-appmodel-v2-overview.md)。
 
 ## <a name="new-app-registration-portal"></a>新的应用注册门户
-v2.0 终结点只能在以下新位置中注册：[apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)。  可以在这个门户获取应用程序 ID、自定义应用程序登录页面的外观等等。  访问门户时唯一需要的是 Microsoft 支持的帐户 — 个人帐户或工作/学校帐户。  
+若要注册使用 v2.0 终结点的应用，必须使用新的应用注册门户：[apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)。  可以在此门户获取应用程序 ID、自定义应用程序登录页面的外观等等。  访问门户时唯一需要的是 Microsoft 支持的帐户 — 个人帐户或工作/学校帐户。
 
-随着时间推移，我们会不断地将越来越多的功能添加到这个应用注册门户中。  此门户的用途是成为可用于管理与 Microsoft 应用程序相关的所有一切的新位置。
-
-## <a name="one-app-id-for-all-platforms"></a>所有平台使用一个应用 ID
-在原始的 Azure Active Directory 服务中，你可能已针对单个项目注册了多个不同的应用。  必须针对本机客户端和 Web 应用使用不同的应用注册：
+## <a name="one-app-id-for-all-platforms"></a>所有平台使用同一个应用 ID
+如果使用过 Azure Active Directory，可能已为一个项目注册多个不同应用。  例如，如果你同时构建了网站和 iOS 应用，就必须使用两个不同的应用程序 ID 分别注册它们。 以前，Azure AD 应用注册门户强制用户在注册过程中作出以下区分：
 
 ![旧的应用程序注册 UI](../../media/active-directory-v2-flows/old_app_registration.PNG)
 
-例如，如果你同时构建了网站和 iOS 应用，就必须使用两个不同的应用程序 ID 分别注册它们。  如果你有网站和后端 Web API，则可能已在 Azure AD 中将每个 API 注册为不同的应用程序。  如果你有 iOS 应用程序和 Android 应用程序，则还可能已注册两个不同的应用程序。  
+类似地，如果用户有网站和后端 Web API，则可能已在 Azure AD 中将每个 API 注册为单独的应用。  或者，如果用户有 iOS 应用和 Android 应用，则还可能已注册两个不同的应用。  注册应用程序的每个组件会为开发人员及其客户带来某些意外行为：
 
-<!-- You may have even registered different apps for each of your build environments - one for dev, one for test, and one for production. -->
+* 每个组件在每个客户的 Azure Active Directory 租户中显示为单独的应用。
+* 当租户管理员需要向应用程序应用策略、管理应用程序访问权限或删除应用程序时，必须对应用程序的每个组件执行这些操作。
+* 客户同意应用程序时，每个组件会作为不同的应用程序显示在“同意”屏幕中。
 
-现在，每个项目只需要单个应用程序注册和单一应用程序 ID。  你可以将多个“平台”添加到每个项目，并为添加的每个平台提供相应的数据。  当然，你可以根据需要创建任意数量的应用程序，但在大多数的情况下应该只需要一个应用程序 ID。
-
-<!-- You can also label a particular platform as "production-ready" when it is ready to be published to the outside world, and use that same Application Id safely in your development environments. -->
+现在借助 v2.0 终结点，可将项目的所有组件注册为单个应用注册，并为整个项目使用同一个应用程序 ID。  你可以将多个“平台”添加到每个项目，并为添加的每个平台提供相应的数据。  当然，你可以根据需要创建任意数量的应用程序，但在大多数的情况下应该只需要一个应用程序 ID。
 
 我们的目标是促成更简化的应用程序管理及开发经验，并且为可能正在处理的单个项目创建更加集成的视图。
 
 ## <a name="scopes-not-resources"></a>范围而非资源
-在原始 Azure AD 服务中，应用可充当**资源**或令牌接收者。  资源可定义它所了解的许多**范围**或 **oAuth2Permissions**，让客户端应用得以针对一组特定范围请求该资源的令牌。  请考虑以 Azure AD 图形 API 作为资源的示例：
+在 Azure Active Directory 中，应用可充当资源或令牌接收者。  资源可定义它所了解的许多**范围**或 **oAuth2Permissions**，让客户端应用得以针对一组特定范围请求该资源的令牌。  请考虑以 Azure AD 图形 API 作为资源的示例：
 
 * 资源标识符，或 `AppID URI`：`https://graph.windows.net/`
 * 范围，或 `OAuth2Permissions`：`Directory.Read`、`Directory.Write` 等等。  
@@ -82,7 +82,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 其中 **scope** 参数指示应用请求授权的资源和权限。 所需的资源仍是请求中最新的 - 它只包含在 scope 参数的每个值中。  以此方式使用 scope 参数可让 v2.0 终结点更符合 OAuth 2.0 规范，并且更贴近常见的行业实践。  它还可让应用执行下一节中所述的[增量同意](#incremental-and-dynamic-consent)。
 
 ## <a name="incremental-and-dynamic-consent"></a>增量同意和动态同意
-在正式版 Azure AD 服务中注册的应用程序必须于应用程序创建时在 Azure 门户中指定其所需的 OAuth 2.0 权限：
+以前，在 Azure AD 中注册的应用需要在应用创建时，在 Azure 门户中指定其所需的 OAuth 2.0 权限：
 
 ![权限注册 UI](../../media/active-directory-v2-flows/app_reg_permissions.PNG)
 
@@ -107,14 +107,14 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 
 ## <a name="well-known-scopes"></a>已知的范围
 #### <a name="offline-access"></a>脱机访问
-v2.0 终结点可能需要针对应用使用新的已知权限 — `offline_access` 范围。  如果应用程序需要长期表示用户访问资源，则所有应用程序都需要请求此权限，即使用户可能不主动使用此应用程序亦然。  在同意对话框中，`offline_access` 范围对用户显示为“脱机访问数据”，而用户必须同意。  请求 `offline_access` 权限可让 Web 应用从 v2.0 终结点接收 OAuth 2.0 refresh_tokens。  Refresh_tokens 属于长效令牌，可用于交换新的 OAuth 2.0 access_tokens 以延长访问期间。  
+使用 v2.0 终结点的应用可能需要针对应用使用新的已知权限 - `offline_access` 范围。  如果应用程序需要长期表示用户访问资源，则所有应用程序都需要请求此权限，即使用户可能不主动使用此应用程序亦然。  在同意对话框中，`offline_access` 范围对用户显示为“脱机访问数据”，而用户必须同意。  请求 `offline_access` 权限可让 Web 应用从 v2.0 终结点接收 OAuth 2.0 refresh_tokens。  Refresh_tokens 属于长效令牌，可用于交换新的 OAuth 2.0 access_tokens 以延长访问期间。  
 
 如果应用未请求 `offline_access` 范围，则收不到 refresh_tokens。  这意味着，在 OAuth 2.0 授权代码流中兑换 authorization_code 时，只从 `/token` 终结点接收 access_token。  该 access_token 短时间维持有效（通常是一小时），但最后终将过期。  到时，应用必须将用户重定向回到 `/authorize` 终结点以检索新的 authorization_code。  在此重定向期间，根据应用程序的类型，用户或许无需再次输入其凭据或重新同意权限。
 
 若要深入了解 OAuth 2.0、refresh_token 和 access_token，请查看 [v2.0 协议参考](active-directory-v2-protocols.md)。
 
 #### <a name="openid-profile-and-email"></a>OpenID、个人资料和电子邮件
-在原始 Azure Active Directory 服务中，最基本的 OpenID Connect 登录流在生成的 id_token 中提供丰富的用户相关信息。  id_token 中的声明可以包含用户的名称、首选用户名、电子邮件地址和对象 ID 等等。
+从历史上看，使用 Azure Active Directory 的最基本的 OpenID Connect 登录流在生成的 id_token 中提供丰富的用户相关信息。  id_token 中的声明可以包含用户的名称、首选用户名、电子邮件地址和对象 ID 等等。
 
 我们现在限制 `openid` 范围允许应用访问的信息。  “openid”范围只允许应用将用户登录，并接收用户的应用特定标识符。  如果你想要获取有关应用程序中的用户的个人标识信息 (PII)，应用程序必须向用户请求其他权限。  我们引入了两个新范围（`email` 和 `profile` 范围）让你执行这项操作。
 
@@ -123,15 +123,8 @@ v2.0 终结点可能需要针对应用使用新的已知权限 — `offline_acce
 这样，便可以最低泄漏的方式编码应用 - 只可以向用户请求应用执行其作业所需的信息集。  有关这些范围的详细信息，请参阅 [v2.0 范围参考](active-directory-v2-scopes.md)。
 
 ## <a name="token-claims"></a>令牌声明
-v2.0 终结点颁发的令牌中的声明与正式版 Azure AD 终结点颁发的令牌不同 - 迁移到新服务的应用程序不应假设特定的声明存在于 id_tokens 或 access_tokens 中。   v2.0 终结点颁发的令牌与 OAuth 2.0 和 OpenID Connect 规范兼容，但可能遵循与正式版 Azure AD 服务不同的语义。
-
-若要了解 v2.0 令牌中发出的特定声明，请参阅 [v2.0 令牌参考](active-directory-v2-tokens.md)。
+v2.0 终结点颁发的令牌中的声明与正式版 Azure AD 终结点颁发的令牌不同 - 迁移到新服务的应用程序不应假设特定的声明存在于 id_tokens 或 access_tokens 中。 若要了解 v2.0 令牌中发出的特定声明，请参阅 [v2.0 令牌参考](active-directory-v2-tokens.md)。
 
 ## <a name="limitations"></a>限制
 使用 v2.0 终结点时有一些要注意的限制。  请参阅 [v2.0 限制文档](active-directory-v2-limitations.md)，了解特定方案是否存在任何限制。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

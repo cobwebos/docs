@@ -3,8 +3,8 @@ title: "了解如何在逻辑应用中使用 Twitter 连接器 | Microsoft Docs"
 description: "使用 REST API 参数的 Twitter 连接器概述"
 services: 
 documentationcenter: 
-author: msftman
-manager: erikre
+author: MandiOhlinger
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
@@ -14,10 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
-ms.author: deonhe
-translationtype: Human Translation
-ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
-ms.openlocfilehash: 13ecb8936484b1c86938a16c7dd6da8000d4ffec
+ms.author: mandia; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7b4e14ff2e7e6575574e9da412d29cc2c228990f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -31,7 +33,7 @@ ms.openlocfilehash: 13ecb8936484b1c86938a16c7dd6da8000d4ffec
 若要使用 [任何连接器](apis-list.md) ，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md) 开始操作。  
 
 ## <a name="connect-to-twitter"></a>连接到 Twitter
-需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  
+在逻辑应用访问任何服务之前，必须先创建到该服务的*连接*。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  
 
 ### <a name="create-a-connection-to-twitter"></a>创建到 Twitter 的连接
 > [!INCLUDE [Steps to create a connection to Twitter](../../includes/connectors-create-api-twitter.md)]
@@ -80,9 +82,9 @@ ms.openlocfilehash: 13ecb8936484b1c86938a16c7dd6da8000d4ffec
    ![Twitter 条件图 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
 
 ## <a name="use-a-twitter-action"></a>使用 Twitter 操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
+操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
 
-现已添加触发器，按照以下步骤添加操作，该操作将发布带有该触发器找到的推文内容的新推文。 在本演练中，将仅发布来自具有多于 50 个关注者的用户推文。  
+现已添加触发器，按照以下步骤添加操作，该操作将发布带有该触发器找到的推文内容的新推文。 在本演练中，将仅发布关注者超过 50 个的用户的推文。  
 
 在下一步中，将添加一个 Twitter 操作，该操作将使用具有多于 50 个关注者的用户所发布的每条推文的某些属性发布推文。  
 
@@ -98,297 +100,11 @@ ms.openlocfilehash: 13ecb8936484b1c86938a16c7dd6da8000d4ffec
    ![Twitter 操作图 3](../../includes/media/connectors-create-api-twitter/action-3.png)   
 7. 保存工作，然后发送带有 #Seattle 井号标签的推文以激活工作流。  
 
-## <a name="technical-details"></a>技术详细信息
-下面详细介绍了此连接支持的触发器、操作和响应：
 
-## <a name="twitter-triggers"></a>Twitter 触发器
-Twitter 连接器具有以下触发器：  
-
-| 触发器 | 说明 |
-| --- | --- |
-| [发布新推文时](connectors-create-api-twitter.md#when-a-new-tweet-is-posted) |此操作在发布与给定搜索查询匹配的新推文时触发流。 |
-
-## <a name="twitter-actions"></a>Twitter 操作
-Twitter 连接器具有以下操作：
-
-| 操作 | 说明 |
-| --- | --- |
-| [获取用户时间线](connectors-create-api-twitter.md#get-user-timeline) |此操作获取给定用户发布的最新推文列表。 |
-| [获取主页时间线](connectors-create-api-twitter.md#get-home-timeline) |此操作获取我和我的关注者发布的最新推文和转推。 |
-| [搜索推文](connectors-create-api-twitter.md#search-tweets) |此操作获取与搜索查询匹配的相关推文列表。 |
-| [获取关注者](connectors-create-api-twitter.md#get-followers) |此操作获取关注给定用户的用户列表。 |
-| [获取我的关注者](connectors-create-api-twitter.md#get-my-followers) |此操作获取正在关注我的用户列表。 |
-| [获取关注](connectors-create-api-twitter.md#get-following) |此操作获取给定用户关注的人员列表。 |
-| [获取我的关注](connectors-create-api-twitter.md#get-my-following) |此操作获取我正在关注的用户列表。 |
-| [获取用户](connectors-create-api-twitter.md#get-user) |此操作获取给定用户的个人资料详细信息，如用户名、说明、关注者计数等。 |
-| [发布推文](connectors-create-api-twitter.md#post-a-tweet) |此操作发布新推文。 |
-
-## <a name="action-details"></a>操作详细信息
-下面详细介绍了此连接器的操作和触发器及其响应：
-
-### <a name="get-user-timeline"></a>获取用户时间线
-此操作获取给定用户发布的最新推文列表。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| userName* |用户名 |用户的 Twitter 句柄 |
-| maxResults |最大结果 |要返回的最大推文数 |
-
-* 指示属性是必需的
-
-#### <a name="output-details"></a>输出详细信息
-TweetModel：推文对象的表示形式
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| TweetText |字符串 |推文的文本内容 |
-| TweetId |字符串 |推文的 ID |
-| CreatedAt |字符串 |发布推文的时间 |
-| RetweetCount |integer |推文的转推总次数 |
-| TweetedBy |字符串 |发布推文的用户名称 |
-| MediaUrls |数组 |与推文一起发布的媒体的 URL |
-| TweetLanguageCode |字符串 |推文的语言代码 |
-| TweetInReplyToUserId |字符串 |当前推文回复的推文创作者的用户 ID |
-| Favorited |布尔值 |指示推文是否标记为收藏 |
-| UserMentions |数组 |推文中提到的用户列表 |
-| OriginalTweet |未定义 |当前推文所转推自的原始推文 |
-| UserDetails |未定义 |发布推文的用户详细信息 |
-
-### <a name="get-home-timeline"></a>获取主页时间线
-此操作获取我和我的关注者发布的最新推文和转推。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| maxResults |最大结果 |要返回的最大推文数 |
-
-* 指示属性是必需的
-
-#### <a name="output-details"></a>输出详细信息
-TweetModel：推文对象的表示形式
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| TweetText |字符串 |推文的文本内容 |
-| TweetId |字符串 |推文的 ID |
-| CreatedAt |字符串 |发布推文的时间 |
-| RetweetCount |integer |推文的转推总次数 |
-| TweetedBy |字符串 |发布推文的用户名称 |
-| MediaUrls |数组 |与推文一起发布的媒体的 URL |
-| TweetLanguageCode |字符串 |推文的语言代码 |
-| TweetInReplyToUserId |字符串 |当前推文回复的推文创作者的用户 ID |
-| Favorited |布尔值 |指示推文是否标记为收藏 |
-| UserMentions |数组 |推文中提到的用户列表 |
-| OriginalTweet |未定义 |当前推文所转推自的原始推文 |
-| UserDetails |未定义 |发布推文的用户详细信息 |
-
-### <a name="search-tweets"></a>搜索推文
-此操作获取与搜索查询匹配的相关推文列表。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| searchQuery* |搜索文本 |搜索词，如“欢乐时刻”、#haiku、喜欢或讨厌 |
-| maxResults |最大结果 |要返回的最大推文数 |
-
-* 指示属性是必需的
-
-#### <a name="output-details"></a>输出详细信息
-TweetModel：推文对象的表示形式
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| TweetText |字符串 |推文的文本内容 |
-| TweetId |字符串 |推文的 ID |
-| CreatedAt |字符串 |发布推文的时间 |
-| RetweetCount |integer |推文的转推总次数 |
-| TweetedBy |字符串 |发布推文的用户名称 |
-| MediaUrls |数组 |与推文一起发布的媒体的 URL |
-| TweetLanguageCode |字符串 |推文的语言代码 |
-| TweetInReplyToUserId |字符串 |当前推文回复的推文创作者的用户 ID |
-| Favorited |布尔值 |指示推文是否标记为收藏 |
-| UserMentions |数组 |推文中提到的用户列表 |
-| OriginalTweet |未定义 |当前推文所转推自的原始推文 |
-| UserDetails |未定义 |发布推文的用户详细信息 |
-
-### <a name="get-followers"></a>获取关注者
-此操作获取关注给定用户的用户列表。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| userName* |用户名 |用户的 Twitter 句柄 |
-| maxResults |最大结果 |要返回的最大用户数 |
-
-* 指示属性是必需的
-
-#### <a name="output-details"></a>输出详细信息
-UserDetailsModel：Twitter 用户详细信息
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| FullName |字符串 |用户的名称 |
-| 位置 |字符串 |用户的位置 |
-| ID |integer |用户的 Twitter ID |
-| UserName |字符串 |用户的屏幕名称 |
-| FollowersCount |integer |关注者数量 |
-| 说明 |字符串 |用户说明 |
-| StatusesCount |integer |用户状态计数 |
-| FriendsCount |integer |好友数量 |
-| FavouritesCount |integer |用户已收藏的推文数量 |
-| ProfileImageUrl |字符串 |个人资料图像的 URL |
-
-### <a name="get-my-followers"></a>获取我的关注者
-此操作获取正在关注我的用户列表。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| maxResults |最大结果 |要获取的最大用户数 |
-
-* 指示属性是必需的
-
-#### <a name="output-details"></a>输出详细信息
-UserDetailsModel：Twitter 用户详细信息
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| FullName |字符串 |用户的名称 |
-| 位置 |字符串 |用户的位置 |
-| ID |integer |用户的 Twitter ID |
-| UserName |字符串 |用户的屏幕名称 |
-| FollowersCount |integer |关注者数量 |
-| 说明 |字符串 |用户说明 |
-| StatusesCount |integer |用户状态计数 |
-| FriendsCount |integer |好友数量 |
-| FavouritesCount |integer |用户已收藏的推文数量 |
-| ProfileImageUrl |字符串 |个人资料图像的 URL |
-
-### <a name="get-following"></a>获取关注
-此操作获取给定用户关注的人员列表。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| userName* |用户名 |用户的 Twitter 句柄 |
-| maxResults |最大结果 |要返回的最大用户数 |
-
-* 指示属性是必需的
-
-#### <a name="output-details"></a>输出详细信息
-UserDetailsModel：Twitter 用户详细信息
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| FullName |字符串 |用户的名称 |
-| 位置 |字符串 |用户的位置 |
-| ID |integer |用户的 Twitter ID |
-| UserName |字符串 |用户的屏幕名称 |
-| FollowersCount |integer |关注者数量 |
-| 说明 |字符串 |用户说明 |
-| StatusesCount |integer |用户状态计数 |
-| FriendsCount |integer |好友数量 |
-| FavouritesCount |integer |用户已收藏的推文数量 |
-| ProfileImageUrl |字符串 |个人资料图像的 URL |
-
-### <a name="get-my-following"></a>获取我的关注
-此操作获取我正在关注的用户列表。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| maxResults |最大结果 |要返回的最大用户数 |
-
-* 指示属性是必需的
-
-#### <a name="output-details"></a>输出详细信息
-UserDetailsModel：Twitter 用户详细信息
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| FullName |字符串 |用户的名称 |
-| 位置 |字符串 |用户的位置 |
-| ID |integer |用户的 Twitter ID |
-| UserName |字符串 |用户的屏幕名称 |
-| FollowersCount |integer |关注者数量 |
-| 说明 |字符串 |用户说明 |
-| StatusesCount |integer |用户状态计数 |
-| FriendsCount |integer |好友数量 |
-| FavouritesCount |integer |用户已收藏的推文数量 |
-| ProfileImageUrl |字符串 |个人资料图像的 URL |
-
-### <a name="get-user"></a>获取用户
-此操作获取给定用户的个人资料详细信息，如用户名、说明、关注者计数等。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| userName* |用户名 |用户的 Twitter 句柄 |
-
-* 指示属性是必需的
-
-#### <a name="output-details"></a>输出详细信息
-UserDetailsModel：Twitter 用户详细信息
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| FullName |字符串 |用户的名称 |
-| 位置 |字符串 |用户的位置 |
-| ID |integer |用户的 Twitter ID |
-| UserName |字符串 |用户的屏幕名称 |
-| FollowersCount |integer |关注者数量 |
-| 说明 |字符串 |用户说明 |
-| StatusesCount |integer |用户状态计数 |
-| FriendsCount |integer |好友数量 |
-| FavouritesCount |integer |用户已收藏的推文数量 |
-| ProfileImageUrl |字符串 |个人资料图像的 URL |
-
-### <a name="post-a-tweet"></a>发布推文
-此操作发布新推文。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| tweetText |推文文本 |要发布的推文 |
-| body |媒体 |要发布的媒体 |
-
-* 指示属性是必需的
-
-#### <a name="output-details"></a>输出详细信息
-TweetResponseModel：表示已发布推文的模型
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| TweetId |字符串 |检索到的推文的 ID |
-
-### <a name="when-a-new-tweet-is-posted"></a>发布新推文时
-此操作在发布与给定搜索查询匹配的新推文时触发流。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| searchQuery* |搜索文本 |搜索词，如“欢乐时刻”、#haiku、喜欢或讨厌 |
-
-* 指示属性是必需的
-
-#### <a name="output-details"></a>输出详细信息
-TriggerBatchResponse[TweetModel]
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| value |数组 |
-
-## <a name="http-responses"></a>HTTP 响应
-上述操作和触发器可以返回以下一个或多个 HTTP 状态代码： 
-
-| Name | 说明 |
-| --- | --- |
-| 200 |确定 |
-| 202 |已接受 |
-| 400 |错误的请求 |
-| 401 |未授权 |
-| 403 |禁止 |
-| 404 |未找到 |
-| 500 |内部服务器错误。 发生未知错误。 |
-| default |操作失败。 |
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/twitterconnector/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

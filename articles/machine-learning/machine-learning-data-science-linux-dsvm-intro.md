@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: b94b8b84ae2cf26a1680f816460cc86c4d79e885
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d8ae05316b424af7d87c3c5ebdac575bcc04998d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -252,9 +253,9 @@ VM 上安装有以下 Azure 工具：
 * **Microsoft Azure 存储资源管理器**：Microsoft Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 可以通过键入 **StorageExplorer** 从 shell 提示符调用。 需从 X2Go 客户端登录，或者安装 X11 转发。
 * **Azure 库**：以下是一些预安装库。
   
-  * **Python**： Python 中的已安装 Azure 相关库包括 **azure****azureml**、**pydocumentdb** 和 **pyodbc**。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure DocumentDB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
+  * **Python**： Python 中的已安装 Azure 相关库包括 **azure****azureml**、**pydocumentdb** 和 **pyodbc**。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
   * **R**：R 中的已安装 Azure 相关库包括 **AzureML** 和 **RODBC**。
-  * **Java**：可在 VM 上的 **/dsvm/sdk/AzureSDKJava** 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、DocumentDB 和 JDBC 驱动程序。  
+  * **Java**：可在 VM 上的 **/dsvm/sdk/AzureSDKJava** 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
 
 可以从预安装的 Firefox 浏览器访问 [Azure 门户](https://portal.azure.com)。 在 Azure 门户中，可以创建、管理和监视 Azure 资源。
 

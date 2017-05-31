@@ -1,6 +1,6 @@
 ---
 title: "在逻辑应用中添加 Azure Blob 存储连接器 | Microsoft Docs"
-description: "使用 REST API 参数的 Azure Blob 存储连接器概述"
+description: "入门并在逻辑应用中配置 Azure Blob 存储连接器"
 services: 
 documentationcenter: 
 author: MandiOhlinger
@@ -13,29 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 10/18/2016
-ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
-ms.openlocfilehash: 6b7c73576e09af3d1b3c886efa88044846e91494
-ms.lasthandoff: 01/20/2017
+ms.date: 05/02/2017
+ms.author: mandia; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a52cc8d5685fad849bf8ea2a4c4f8fde3f340bde
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="get-started-with-the-azure-blob-storage-connector"></a>Azure Blob 存储连接器入门
-Azure Blob 存储是一项用于存储大量非结构化数据的服务。 在 Azure Blob 存储中执行各种操作，例如上传、更新、获取和删除 Blob。 
+# <a name="use-the-azure-blob-storage-connector-in-a-logic-app"></a>在逻辑应用中使用 Azure Blob 存储连接器
+使用 Azure Blob 存储连接器上传、更新、获取和删除存储帐户中的 Blob，一切操作皆在逻辑应用中完成。  
 
 通过 Azure Blob 存储，你可以：
 
 * 通过上传新项目或获取最近更新的文件生成你的工作流。
 * 使用获取文件元数据、删除文件、复制文件等各项操作。 例如，在 Azure 网站中更新某个工具时（触发器），更新 Blob 存储中的文件（操作）。 
 
-本主题演示了如何在逻辑应用中使用 Blob 存储连接器，还列出了相关操作。
+本主题介绍如何在逻辑应用中使用 Blob 存储连接器。
 
-> [!NOTE]
-> 此文章版本适用于逻辑应用通用版本 (GA)。 
-> 
-> 
+若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)和[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)和[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
@@ -44,8 +42,6 @@ Azure Blob 存储是一项用于存储大量非结构化数据的服务。 在 A
 
 #### <a name="create-the-connection"></a>创建连接
 > [!INCLUDE [Create a connection to Azure blob storage](../../includes/connectors-create-api-azureblobstorage.md)]
-> 
-> 
 
 ## <a name="use-a-trigger"></a>使用触发器
 此连接器没有任何触发器。 使用其他触发器启动逻辑应用，例如重复触发器、HTTP Webhook 触发器、可用于其他连接器的触发器等。 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)提供了一个示例。
@@ -68,238 +64,16 @@ Azure Blob 存储是一项用于存储大量非结构化数据的服务。 在 A
    
    > [!NOTE]
    > 在此示例中，我们将获取文件的元数据。 若要查看元数据，请使用其他连接器添加可新建文件的其他操作。 例如根据元数据添加可新建“test”文件的 OneDrive 操作。 
-   > 
-   > 
+
+
 5. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
 
 > [!TIP]
 > [存储资源管理器](http://storageexplorer.com/)是用于管理多个存储帐户的出色工具。
-> 
-> 
 
-## <a name="technical-details"></a>技术详细信息
-## <a name="storage-blob-actions"></a>存储 Blob 操作
-| 操作 | 说明 |
-| --- | --- |
-| [获取文件元数据](connectors-create-api-azureblobstorage.md#get-file-metadata) |此操作可使用文件 ID 获取文件元数据。 |
-| [更新文件](connectors-create-api-azureblobstorage.md#update-file) |此操作可更新文件。 |
-| [删除文件](connectors-create-api-azureblobstorage.md#delete-file) |此操作可删除文件。 |
-| [使用路径获取文件元数据](connectors-create-api-azureblobstorage.md#get-file-metadata-using-path) |此操作可使用路径获取文件元数据。 |
-| [使用路径获取文件内容](connectors-create-api-azureblobstorage.md#get-file-content-using-path) |此操作可使用路径获取文件内容。 |
-| [获取文件内容](connectors-create-api-azureblobstorage.md#get-file-content) |此操作可使用 ID 获取文件内容。 |
-| [创建文件](connectors-create-api-azureblobstorage.md#create-file) |此操作可上传文件。 |
-| [复制文件](connectors-create-api-azureblobstorage.md#copy-file) |此操作可将文件复制到 Azure Blob 存储。 |
-| [将存档提取到文件夹](connectors-create-api-azureblobstorage.md#extract-archive-to-folder) |此操作将存档文件提取到文件夹中（示例：.zip）。 |
+## <a name="view-the-swagger"></a>查看 Swagger
 
-### <a name="action-details"></a>操作详细信息
-在此部分中，查看有关每项操作的具体详细信息，包括任何必需或可选的输入属性以及与连接器相关联的任何相应输出。
-
-#### <a name="get-file-metadata"></a>获取文件元数据
-此操作可使用文件 ID 获取文件元数据。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| ID* |文件 |选择文件 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-BlobMetadata
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ID |字符串 |
-| Name |字符串 |
-| DisplayName |字符串 |
-| 路径 |字符串 |
-| LastModified |字符串 |
-| 大小 |integer |
-| MediaType |字符串 |
-| IsFolder |布尔值 |
-| ETag |字符串 |
-| FileLocator |字符串 |
-
-#### <a name="update-file"></a>更新文件
-此操作可更新文件。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| ID* |文件 |选择文件 |
-| body* |文件内容 |要更新的文件内容 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-BlobMetadata
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ID |字符串 |
-| Name |字符串 |
-| DisplayName |字符串 |
-| 路径 |字符串 |
-| LastModified |字符串 |
-| 大小 |integer |
-| MediaType |字符串 |
-| IsFolder |布尔值 |
-| ETag |字符串 |
-| FileLocator |字符串 |
-
-#### <a name="delete-file"></a>删除文件
-此操作可删除文件。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| ID* |文件 |选择文件 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-无。
-
-#### <a name="get-file-metadata-using-path"></a>使用路径获取文件元数据
-此操作可使用路径获取文件元数据。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| path* |文件路径 |选择文件 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-BlobMetadata
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ID |字符串 |
-| Name |字符串 |
-| DisplayName |字符串 |
-| 路径 |字符串 |
-| LastModified |字符串 |
-| 大小 |integer |
-| MediaType |字符串 |
-| IsFolder |布尔值 |
-| ETag |字符串 |
-| FileLocator |字符串 |
-
-#### <a name="get-file-content-using-path"></a>使用路径获取文件内容
-此操作可使用路径获取文件内容。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| path* |文件路径 |选择文件 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-无。
-
-#### <a name="get-file-content"></a>获取文件内容
-此操作可使用 ID 获取文件内容。  
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| ID* |字符串 |选择文件 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-无。
-
-#### <a name="create-file"></a>创建文件
-此操作可上传文件。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| folderPath* |文件夹路径 |选择文件夹 |
-| name* |文件名 |要上传的文件的名称 |
-| body* |文件内容 |要上传的文件内容 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-BlobMetadata
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ID |字符串 |
-| Name |字符串 |
-| DisplayName |字符串 |
-| 路径 |字符串 |
-| LastModified |字符串 |
-| 大小 |integer |
-| MediaType |字符串 |
-| IsFolder |布尔值 |
-| ETag |字符串 |
-| FileLocator |字符串 |
-
-#### <a name="copy-file"></a>复制文件
-此操作可将文件复制到 Azure Blob 存储。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| source* |源 URL |指定源文件的 URL |
-| destination* |目标文件路径 |指定目标文件路径，包括目标文件名 |
-| overwrite |覆盖？ |是否应覆盖现有目标文件 (true/false)？ |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-BlobMetadata
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ID |字符串 |
-| Name |字符串 |
-| DisplayName |字符串 |
-| 路径 |字符串 |
-| LastModified |字符串 |
-| 大小 |integer |
-| MediaType |字符串 |
-| IsFolder |布尔值 |
-| ETag |字符串 |
-| FileLocator |字符串 |
-
-#### <a name="extract-archive-to-folder"></a>将存档提取到文件夹
-此操作将存档文件提取到文件夹中（示例：.zip）。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| source* |源存档文件路径 |选择存档文件 |
-| destination* |目标文件夹路径 |选择要提取的内容 |
-| overwrite |覆盖？ |是否应覆盖现有目标文件 (true/false)？ |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-BlobMetadata
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ID |字符串 |
-| Name |字符串 |
-| DisplayName |字符串 |
-| 路径 |字符串 |
-| LastModified |字符串 |
-| 大小 |integer |
-| MediaType |字符串 |
-| IsFolder |布尔值 |
-| ETag |字符串 |
-| FileLocator |字符串 |
-
-## <a name="http-responses"></a>HTTP 响应
-调用不同的操作时，可能会收到特定响应。 下表概述了这些响应及其说明：  
-
-| Name | 说明 |
-| --- | --- |
-| 200 |确定 |
-| 202 |已接受 |
-| 400 |错误的请求 |
-| 401 |未授权 |
-| 403 |禁止 |
-| 404 |未找到 |
-| 500 |内部服务器错误。 发生未知错误 |
-| default |操作失败。 |
+请参阅 [Swagger 详细信息](/connectors/azureblobconnector/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。

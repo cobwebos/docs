@@ -1,47 +1,49 @@
 ---
-title: "监视 DocumentDB 请求和存储 | Microsoft Docs"
-description: "了解如何监视你的 DocumentDB 帐户的性能指标（如请求和服务器错误）以及使用情况指标（如存储消耗）。"
-services: documentdb
+title: "监视 Azure Cosmos DB 请求和存储 | Microsoft Docs"
+description: "了解如何监视你的 Azure Cosmos DB 帐户的性能指标（如请求和服务器错误）以及使用情况指标（如存储消耗）。"
+services: cosmosdb
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 4c6a2e6f-6e78-48e3-8dc6-f4498b235a9e
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: aabca8fd228b1fc7c60d295a9502dece29db1b68
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b0158d0f9f0a8f66ae6dda44476efb7b1914c599
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="monitor-documentdb-requests-usage-and-storage"></a>监视 DocumentDB 请求、使用情况和存储
-可以在 [Azure 门户](https://portal.azure.com/)中监视 Azure DocumentDB 帐户。 对于每个 DocumentDB 帐户，性能指标（如请求和服务器错误）和使用情况指标（如存储消耗）都可用。
+# <a name="monitor-azure-cosmos-db-requests-usage-and-storage"></a>监视 Azure Cosmos DB 请求、使用情况和存储
+可以在 [Azure 门户](https://portal.azure.com/)中监视 Azure Cosmos DB 帐户。 对于每个 Azure Cosmos DB 帐户，性能指标（如请求和服务器错误）和使用情况指标（如存储消耗）都可用。
 
 可在“帐户”边栏选项卡、新的“指标”边栏选项卡或 Azure Monitor.查看指标。
 
 ## <a name="view-performance-metrics-on-the-metrics-blade"></a>在“指标”边栏选项卡上查看性能指标
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“更多服务”，滚动到“数据库”，单击“NoSQL (DocumentDB)”，然后单击要查看其性能指标的 DocumentDB 帐户的名称。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“更多服务”，滚动到“数据库”，单击“Azure Cosmos DB”，然后单击要查看其性能指标的 Azure Cosmos DB 帐户的名称。
 2. 在资源菜单的“监视”下，单击“指标”。
 
-此时将打开“指标”边栏选项卡，可以选择要查看的集合。 可以查看“可用性”、“请求”、“吞吐量”和“存储”指标，并将其与 DocumentDB SLA 进行比较。
+此时将打开“指标”边栏选项卡，可以选择要查看的集合。 可以查看“可用性”、“请求”、“吞吐量”和“存储”指标，并将其与 Azure Cosmos DB SLA 进行比较。
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>使用 Azure Monitor 查看性能指标
 1. 在 [Azure 门户](https://portal.azure.com/)中，单击跳转栏上的“监视器”。
 2. 在资源菜单中，单击“指标”。
-3. 在“监视器 - 指标”窗口的“资源组”下拉菜单中，选择与想要监视的 DocumentDB 帐户关联的资源组。 
+3. 在“监视器 - 指标”窗口的“资源组”下拉菜单中，选择与想要监视的 Azure Cosmos DB 帐户关联的资源组。 
 4. 在“资源”下拉菜单中，选择要监视的数据库帐户。
 5. 在“可用指标”列表中，选择要显示的指标。 使用 Ctrl 按钮进行多选。 
 
     指标在“绘图”窗口中显示。 
 
 ## <a name="view-performance-metrics-on-the-account-blade"></a>在帐户边栏选项卡上查看性能指标
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“更多服务”，滚动到“数据库”，单击“NoSQL (DocumentDB)”，然后单击要查看其性能指标的 DocumentDB 帐户的名称。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“更多服务”，滚动到“数据库”，单击“Azure Cosmos DB”，然后单击要查看其性能指标的 Azure Cosmos DB 帐户的名称。
 2. 默认情况下，“监视”可重用功能区显示以下磁贴：
    
    * 当天的请求总数。
@@ -79,7 +81,7 @@ Azure 门户使你能够创建并排的指标图表。
     ![请求总数图表和过去一小时新的请求总数的屏幕截图](./media/documentdb-monitor-accounts/madocdb8.png)  
 
 ## <a name="set-up-alerts-in-the-portal"></a>在门户中设置警报
-1. 在 [Azure 门户](https://portal.azure.com/)中单击“更多服务”、“DocumentDB (NoSQL)”，然后单击要设置性能指标警报的 DocumentDB 帐户的名称。
+1. 在 [Azure 门户](https://portal.azure.com/)中单击“更多服务”、“Azure Cosmos DB”，然后单击要设置性能指标警报的 Azure Cosmos DB 帐户的名称。
 2. 在资源菜单中，单击“警报规则”以打开“警报规则”边栏选项卡。  
    ![所选的警报规则部件的屏幕截图](./media/documentdb-monitor-accounts/madocdb10.5.png)
 3. 在“警报规则”边栏选项卡中，单击“添加警报”。  
@@ -94,7 +96,7 @@ Azure 门户使你能够创建并排的指标图表。
    * 警报通知的其他电子邮件地址。  
      ![“添加警报规则”边栏选项卡的屏幕截图](./media/documentdb-monitor-accounts/madocdb12.png)
 
-## <a name="monitor-documentdb-programatically"></a>以编程方式监视 DocumentDB
+## <a name="monitor-azure-cosmos-db-programatically"></a>以编程方式监视 Azure Cosmos DB
 门户中可用的帐户级别指标（如帐户存储使用情况和请求总数）不可通过 DocumentDB API 使用。 但是，你可以使用 DocumentDB API 在集合级别检索使用情况数据。 若要检索集合级别的数据，请执行以下操作：
 
 * 若要使用 REST API，请[对集合执行 GET](https://msdn.microsoft.com/library/mt489073.aspx)。 集合的配额和使用情况信息将返回到响应中的 x-ms-resource-quota 和 x-ms-resource-usage 标头中。
@@ -122,11 +124,6 @@ Azure 门户使你能够创建并排的指标图表。
    ![更新后的过去一小时请求总数磁贴的屏幕截图](./media/documentdb-monitor-accounts/documentdb-no-available-data-fixed.png)
 
 ## <a name="next-steps"></a>后续步骤
-若要深入了解 DocumentDB 容量规划，请参阅 [DocumentDB Capacity Planner 计算器](https://www.documentdb.com/capacityplanner)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
+若要深入了解 Azure Cosmos DB 容量规划，请参阅 [Azure Cosmos DB Capacity Planner 计算器](https://www.documentdb.com/capacityplanner)。
 
 

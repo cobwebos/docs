@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 03/03/2017
 ms.author: maroche
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: ef4517191084148ff3810226c927ee45a61b2c49
-ms.lasthandoff: 03/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 9f9754aef4f1e933163cd80862c84ba8281def80
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/03/2017
 截至 2016 年 9 月 16 日所在周，已添加到 Azure 数据目录的功能如下：
 
 * 支持 IBM DB2 数据源。 现在，用户可以注册和发现 DB2 数据库、表和视图。
-* 支持 Azure DocumentDB 数据源。 现在，用户可以注册和发现 Azure DocumentDB 数据库和集合。
+* 支持 Azure Cosmos DB 数据源。 现在，用户可以注册和发现 Cosmos DB 数据库和集合。
 * 支持数据目录门户中的自定义目录名称。 目录管理员现在可以提供显示在门户标题中的文本，如组织名称。
 
 ## <a name="whats-new-for-the-week-of-august-26-2016-release"></a>2016 年 8 月 26 日所在周版本的新增功能

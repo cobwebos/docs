@@ -1,13 +1,13 @@
 ---
-title: "使用索引器连接 DocumentDB 和 Azure 搜索 | Microsoft Docs"
-description: "本文介绍如何将 Azure 搜索索引器与 DocumentDB 作为数据源联合使用。"
-services: documentdb
+title: "使用索引器连接 Azure Cosmos DB 和 Azure 搜索 | Microsoft Docs"
+description: "本文介绍如何将 Azure 搜索索引器与 Azure Cosmos DB 作为数据源联合使用。"
+services: cosmosdb
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: fdef3d1d-b814-4161-bdb8-e47d29da596f
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,21 +16,23 @@ ms.date: 01/10/2017
 ms.author: mimig
 redirect_url: https://docs.microsoft.com/azure/search/search-howto-index-documentdb
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: 9a5416b1c26d1e8eaecec0ada79d357f32ca5ab1
-ms.openlocfilehash: c318d7133e26ec3a39d6fc97b0693b44d742d456
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b3a62c693ff672458955789cde9d5be96cac9c58
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="connecting-documentdb-with-azure-search-using-indexers"></a>使用索引器连接 DocumentDB 和 Azure 搜索
-如果你希望对 DocumentDB 数据实现强大的搜索体验，请对 DocumentDB 使用 Azure 搜索索引器！ 在本文中，我们将展示如何将 Azure DocumentDB 与 Azure 搜索进行集成且无需编写代码以保持索引编制基础结构。
+# <a name="connecting-azure-cosmos-db-with-azure-search-using-indexers"></a>使用索引器连接 Azure Cosmos DB 和 Azure 搜索
+如果你希望实现对 Cosmos DB 数据强大的搜索体验，请对 Cosmos DB 使用 Azure 搜索索引器！ 在本文中，我们将展示如何将 Azure Cosmos DB 与 Azure 搜索进行集成且无需编写代码以保持编制基础结构的索引！
 
-要对此进行设置，需要[设置 Azure 搜索帐户](../search/search-create-service-portal.md)（无需升级到标准搜索），然后调用 [Azure 搜索 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) 以创建 DocumentDB **数据源**和用于该数据源的**索引器**。
+要对此进行设置，需要[设置 Azure 搜索帐户](../search/search-create-service-portal.md)（无需升级到标准搜索），然后调用 [Azure 搜索 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) 以创建 Cosmos DB 数据源和用于该数据源的索引器。
 
 为了发送请求以与 REST API 交互，可以使用 [Postman](https://www.getpostman.com/)、[Fiddler](http://www.telerik.com/fiddler)，或你喜欢的任何工具。
 
-## <a name="a-idconceptsaazure-search-indexer-concepts"></a><a id="Concepts"></a>Azure 搜索索引器概念
-Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这些数据源操作的索引器。
+## <a id="Concepts"></a>Azure 搜索索引器概念
+Azure 搜索支持创建和管理数据源（包括 Cosmos DB）以及针对这些数据源操作的索引器。
 
 **数据源**指定需要编制索引的数据、用于访问数据的凭据，以及用于启用 Azure 搜索的策略，以便有效地标识数据中的更改（如集合内已修改或已删除的文档）。 数据源定义为独立的资源，以便它可以被多个索引器使用。
 
@@ -40,7 +42,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 * 在计划上同步索引与数据源中的更改。 计划是索引器定义的一部分。
 * 根据需要调用对索引的按需更新。
 
-## <a name="a-idcreatedatasourceastep-1-create-a-data-source"></a><a id="CreateDataSource"></a>步骤 1：创建数据源
+## <a id="CreateDataSource"></a>步骤 1：创建数据源
 发出一个 HTTP POST 请求以在你的 Azure 搜索服务中创建新的数据源，包括以下请求标头。
 
     POST https://[Search service name].search.windows.net/datasources?api-version=[api-version]
@@ -51,22 +53,22 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 
 请求正文包含数据源定义，其中应包括以下字段：
 
-* **名称**：选择任何名称来表示 DocumentDB 数据库。
+* 名称：选择任意名称来表示 Cosmos DB 数据库。
 * **类型**：使用 `documentdb`。
 * **凭据**：
   
-  * **connectionString**：必需。 采用以下格式指定连接信息到 Azure DocumentDB 数据库：`AccountEndpoint=<DocumentDB endpoint url>;AccountKey=<DocumentDB auth key>;Database=<DocumentDB database id>`
+  * **connectionString**：必需。 采用以下格式指定 Azure Cosmos DB 数据库的连接信息：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`
 * **容器**：
   
-  * **名称**：必需。 指定要编制索引的 DocumentDB 集合的 ID。
+  * **名称**：必需。 指定要编制索引的 DocumentDB API 集合的 ID。
   * **查询**：可选。 你可以指定一个查询来将一个任意 JSON 文档平整成 Azure 搜索可编制索引的平面架构。
 * **dataChangeDetectionPolicy**：可选。 请参阅下面的[数据更改检测策略](#DataChangeDetectionPolicy)。
 * **dataDeletionDetectionPolicy**：可选。 请参阅下面的[数据删除检测策略](#DataDeletionDetectionPolicy)。
 
 请参阅下面的[请求正文示例](#CreateDataSourceExample)。
 
-### <a name="a-iddatachangedetectionpolicyacapturing-changed-documents"></a><a id="DataChangeDetectionPolicy"></a>捕获已更改的文档
-数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一支持的策略是 DocumentDB 提供的使用 `_ts` 上次修改时间戳属性的 `High Water Mark` 策略，它按如下所示指定：
+### <a id="DataChangeDetectionPolicy"></a>捕获已更改的文档
+数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一支持的策略是 Cosmos DB 提供的使用 `_ts` 上次修改时间戳属性的 `High Water Mark` 策略，它按如下所示指定：
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -77,7 +79,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 
     SELECT s.id, s.Title, s.Abstract, s._ts FROM Sessions s WHERE s._ts >= @HighWaterMark
 
-### <a name="a-iddatadeletiondetectionpolicyacapturing-deleted-documents"></a><a id="DataDeletionDetectionPolicy"></a>捕获已删除的文档
+### <a id="DataDeletionDetectionPolicy"></a>捕获已删除的文档
 在源表中删除行时，你也应该从搜索索引中删除这些行。 数据删除检测策略旨在有效识别已删除的数据项。 目前，唯一支持的策略是 `Soft Delete` 策略（删除标有某种类型的标志），它按如下所示指定：
 
     {
@@ -91,8 +93,8 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 > 
 > 
 
-### <a name="a-idleveagingqueriesaleveraging-queries"></a><a id="LeveagingQueries"></a>利用查询
-除了捕获已更改和已删除的文档外，还可以通过指定 DocumentDB 查询来平展嵌套的属性、展开数组、投影 json 属性以及筛选要编制索引的数据。 操作要编制索引的数据可以提高 Azure 搜索索引器的性能。
+### <a id="LeveagingQueries"></a>利用查询
+除了捕获已更改和已删除的文档外，还可以通过指定 DocumentDB API 查询来平展嵌套的属性、展开数组、投影 json 属性以及筛选要编制索引的数据。 操作要编制索引的数据可以提高 Azure 搜索索引器的性能。
 
 示例文档：
 
@@ -127,7 +129,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
     SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark
 
 
-### <a name="a-idcreatedatasourceexamplearequest-body-example"></a><a id="CreateDataSourceExample"></a>请求正文示例
+### <a id="CreateDataSourceExample"></a>请求正文示例
 下面的示例创建具有自定义查询和策略提示的数据源：
 
     {
@@ -154,7 +156,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 ### <a name="response"></a>响应
 如果成功创建数据源，你将收到 HTTP 201 已创建响应。
 
-## <a name="a-idcreateindexastep-2-create-an-index"></a><a id="CreateIndex"></a>步骤 2：创建索引
+## <a id="CreateIndex"></a>步骤 2：创建索引
 如果你还没有目标 Azure 搜索索引，请创建一个。 可以从 [Azure 门户 U](../search/search-create-index-portal.md)I 或使用[创建索引 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) 来执行此操作。
 
     POST https://[Search service name].search.windows.net/indexes?api-version=[api-version]
@@ -181,7 +183,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 | GeoJSON 对象，如 { "type": "Point", "coordinates": [ long, lat ] } |Edm.GeographyPoint |
 | 其他 JSON 对象 |不适用 |
 
-### <a name="a-idcreateindexexamplearequest-body-example"></a><a id="CreateIndexExample"></a>请求正文示例
+### <a id="CreateIndexExample"></a>请求正文示例
 下面的示例创建带有 ID 和描述字段的索引：
 
     {
@@ -204,7 +206,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 ### <a name="response"></a>响应
 如果成功创建索引，你将收到 HTTP 201 创建的响应。
 
-## <a name="a-idcreateindexerastep-3-create-an-indexer"></a><a id="CreateIndexer"></a>步骤 3：创建索引器
+## <a id="CreateIndexer"></a>步骤 3：创建索引器
 可以通过使用具有以下标头的 HTTP POST 请求来在 Azure 搜索服务中创建新的索引器。
 
     POST https://[Search service name].search.windows.net/indexers?api-version=[api-version]
@@ -218,13 +220,13 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 * **targetIndexName**：必需。 现有索引的名称。
 * **计划**：可选。 请参阅下面的[索引计划](#IndexingSchedule)。
 
-### <a name="a-idindexingschedulearunning-indexers-on-a-schedule"></a><a id="IndexingSchedule"></a>按计划运行索引器
+### <a id="IndexingSchedule"></a>按计划运行索引器
 一个索引器可以选择指定一个计划。 如果存在计划，则索引器将按计划定期运行。 计划具有以下属性：
 
 * **间隔**：必需。 指定索引器运行的间隔或时段的持续时间值。 允许的最小间隔为 5 分钟；最长为一天。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 它的模式为：`P(nD)(T(nH)(nM))`。 示例：`PT15M` 为每隔 15 分钟，`PT2H` 为每隔 2 小时。
 * **startTime**：必需。 指定索引器应何时开始运行的 UTC 日期时间。
 
-### <a name="a-idcreateindexerexamplearequest-body-example"></a><a id="CreateIndexerExample"></a>请求正文示例
+### <a id="CreateIndexerExample"></a>请求正文示例
 下面的示例创建可一个索引器，该索引器按计划（从 2015 年 1 月 1 日 UTC 开始，每小时运行一次），将数据从 `myDocDbDataSource` 数据源引用的集合复制到 `mySearchIndex` 索引。
 
     {
@@ -237,7 +239,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 ### <a name="response"></a>响应
 如果成功创建索引器，你将收到 HTTP 201 已创建响应。
 
-## <a name="a-idrunindexerastep-4-run-an-indexer"></a><a id="RunIndexer"></a>步骤 4：运行索引器
+## <a id="RunIndexer"></a>步骤 4：运行索引器
 除按计划定期运行以外，也可以通过发出以下 HTTP POST 请求来按需调用索引器：
 
     POST https://[Search service name].search.windows.net/indexers/[indexer name]/run?api-version=[api-version]
@@ -246,7 +248,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 ### <a name="response"></a>响应
 如果成功调用索引器，你将收到 HTTP 202 已接受的响应。
 
-## <a name="a-namegetindexerstatusastep-5-get-indexer-status"></a><a name="GetIndexerStatus"></a>步骤 5：获取索引器状态
+## <a name="GetIndexerStatus"></a>步骤 5：获取索引器状态
 你可以发出 HTTP GET 请求来检索索引器的当前状态和执行历史记录：
 
     GET https://[Search service name].search.windows.net/indexers/[indexer name]/status?api-version=[api-version]
@@ -285,15 +287,10 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 
 执行历史记录包含最多 50 个最近完成的执行，它们被按反向时间顺序排序（因此，最新执行出现在响应中的第一个）。
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>后续步骤
-祝贺你！ 你已学习了如何使用 DocumentDB 索引器将 Azure DocumentDB 与 Azure 搜索进行集成。
+## <a name="NextSteps"></a>后续步骤
+祝贺你！ 你已学习了如何使用 Azure Cosmos DB 索引器将 Cosmos DB 与 Azure 搜索进行集成。
 
-* 若要了解有关 Azure DocumentDB 的详细信息，请参阅 [DocumentDB 服务页](https://azure.microsoft.com/services/documentdb/)。
+* 若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 服务页](https://azure.microsoft.com/services/documentdb/)。
 * 若要了解有关 Azure 搜索的详细信息，请参阅[搜索服务页](https://azure.microsoft.com/services/search/)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

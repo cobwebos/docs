@@ -1,24 +1,25 @@
 ---
 title: "Azure DocumentDB .NET SDK 和资源 | Microsoft 文档"
 description: "了解有关 .NET API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB.NET SDK 各版本之间的更改。"
-services: documentdb
+services: cosmosdb
 documentationcenter: .net
 author: rnagpal
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 8e239217-9085-49f5-b0a7-58d6e6b61949
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/19/2017
+ms.date: 05/10/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: b0e43aa89dbed801e5e212279582223b09eb9854
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 772af5812941ff12e64665ec4fb505ef7d41462c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/21/2017
 > * [Node.js](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
 > * [Python](documentdb-sdk-python.md)
-> * [REST](https://docs.microsoft.com/en-us/rest/api/documentdb/)
+> * [REST](https://docs.microsoft.com/rest/api/documentdb/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
@@ -45,12 +46,26 @@ ms.lasthandoff: 04/21/2017
 
 <tr><td>**入门**</td><td>[开始使用 DocumentDB .NET SDK](documentdb-get-started.md)</td></tr>
 
-<tr><td>**Web 应用教程**</td><td>[使用 DocumentDB 开发 Web 应用程序](documentdb-dotnet-application.md)</td></tr>
+<tr><td>**Web 应用教程**</td><td>[使用 Azure Cosmos DB 进行 Web 应用程序开发](documentdb-dotnet-application.md)</td></tr>
 
 <tr><td>**当前受支持的框架**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
+*    添加了对每分钟请求单位 (RU/m) 功能的支持。
+*    添加了对名为 ConsistentPrefix 的新一致性级别的支持。
+*    添加了对单独分区的查询指标的支持。
+*    添加了对限制查询的继续令牌大小的支持。
+*    添加了对失败请求的详情跟踪的支持。
+*    改进了 SDK 中的一些性能。
+
+### <a name="a-name11341134"></a><a name="1.13.4"/>1.13.4
+* 与 1.13.4 功能相同。 进行了一些内部更改。
+
+### <a name="a-name11331133"></a><a name="1.13.3"/>1.13.3
+* 与 1.13.2 功能相同。 进行了一些内部更改。
 
 ### <a name="a-name11321132"></a><a name="1.13.2"/>1.13.2
 * 修复了忽略 FeedOptions 中为聚合查询提供的 PartitionKey 值的问题。
@@ -192,7 +207,7 @@ ms.lasthandoff: 04/21/2017
   * DocumentCollection.IndexingPolicy 现在是可变的
 * 添加了对空间索引和查询的支持
   * 用于序列化/反序列化空间类型（如点和多边形）的新 Microsoft.Azure.Documents.Spatial 命名空间
-  * 用于索引存储在 DocumentDB 中的 GeoJSON 数据的新 SpatialIndex 类
+  * 用于索引存储在 Cosmos DB 中 GeoJSON 数据的新 SpatialIndex 类
 * **[已修复]**：linq 表达式生成的不正确的 SQL 查询[#38](https://github.com/Azure/azure-documentdb-net/issues/38)
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
@@ -220,12 +235,15 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
 
-使用已停用的 SDK 对 DocumentDB 发出的任何请求都将被服务拒绝。
+使用已停用的 SDK 对 Cosmos DB 发出的任何请求都将被服务拒绝。
 
 <br/>
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.14.0](#1.14.0) |2017 年 5 月 10 日 |--- |
+| [1.13.4](#1.13.4) |2017 年 5 月 9 日 |--- |
+| [1.13.3](#1.13.3) |2017 年 5 月 6 日 |--- |
 | [1.13.2](#1.13.2) |2017 年 4 月 19 日 |--- |
 | [1.13.1](#1.13.1) |2017 年 3 月 29 日 |--- |
 | [1.13.0](#1.13.0) |2017 年 3 月 24 日 |--- |
@@ -262,6 +280,6 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 [!INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅
-要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服务页。 
+若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 服务页。 
 
 

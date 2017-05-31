@@ -9,15 +9,15 @@ editor: cgronlun
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 8df9fbf4b09cb63cafc9d43592edc68068a28f14
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1469e7a2f5f41ef52c0ff77e6e70378951594135
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -159,7 +159,7 @@ VM 上安装了多个 Azure 工具：
 * **AzCopy**：用于将数据移入和移出 Microsoft Azure 存储帐户。 若要查看用法，请在命令提示符下键入 **Azcopy**。 
 * **Microsoft Azure 存储资源管理器**：用于浏览存储在 Azure 存储帐户中的对象，以及将数据移入和移出 Azure 存储。 若要访问此工具，可在搜索中键入“存储资源管理器”或者在 Windows“开始”菜单中查找。 
 * **Adlcopy**：用于将数据移入 Azure Data Lake。 若要查看用法，请在命令提示符下键入 **adlcopy**。 
-* **dtui**：用于将数据移入和移出 Azure DocumentDB（云中的 NoSQL 数据库）。 请在命令提示符下键入 **dtui**。 
+* **dtui**：用于将数据移入和移出 Azure Cosmos DB（云中的 NoSQL 数据库）。 请在命令提示符下键入 **dtui**。 
 * **Microsoft 数据管理网关**：可在本地数据源与云之间移动数据。 它在 Azure 数据工厂等工具中使用。 
 * **Microsoft Azure Powershell**：VM 上还安装了一个用于管理以 Powershell 脚本语言编写的 Azure 资源的工具。 
 

@@ -14,12 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/17/2017
+ms.date: 05/09/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 67663af0913a03f2001b4cce6f9f49ee91195026
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: bb58cd7a00bc8eb5eaf2ea5a7a8f7641b0502ed9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -236,7 +237,7 @@ Repeat these steps on the second SQL Server.
 
    使用“创建共享文件夹向导”创建共享。
 
-1. 在“文件夹路径”上，单击“浏览”并找到或创建一个数据库备份共享文件夹路径。 单击“资源组名称” 的 Azure 数据工厂。
+1. 在“文件夹路径”上，单击“浏览”并找到或创建一个数据库备份共享文件夹路径。 单击“下一步”。
 
 1. 在“名称、说明和设置”中核对共享名称和路径。 单击“下一步”。
 
@@ -274,7 +275,7 @@ Repeat these steps on the second SQL Server.
 
     ![启动新建可用性组向导](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
 
-2. 在“简介”页上，单击“下一步”。 在“指定可用性组名称”页的“可用性组名称”中，键入可用性组的名称，例如“AG1”。 单击“资源组名称” 的 Azure 数据工厂。
+2. 在“简介”页上，单击“下一步”。 在“指定可用性组名称”页的“可用性组名称”中，键入可用性组的名称，例如“AG1”。 单击“下一步”。
 
     ![新建可用性组向导，指定可用性组名称](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
 
@@ -297,7 +298,7 @@ Repeat these steps on the second SQL Server.
 
     ![新建可用性组向导，选择初始数据同步](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 **\\\\\<第一个 SQL Server\>\Backup\**。 单击“资源组名称” 的 Azure 数据工厂。
+8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 **\\\\\<第一个 SQL Server\>\Backup\**。 单击“下一步”。
 
    >[!NOTE]
    >完全同步对 SQL Server 第一个实例上的数据库进行完整备份，并将其还原到第二个实例。 对于大型数据库，不建议使用完全同步，因为这可能要花费很长时间。 可以通过使用 `NO RECOVERY` 对数据库进行手动备份和还原来降低该时间。 如果配置可用性组之前，已在 SQL Server 上使用 `NO RECOVERY` 对数据库进行还原，请选择“仅联接”。 若想在配置可用性组之后进行备份，请选择“跳过初始数据同步”。
@@ -355,7 +356,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
    | 设置 | 字段 |
    | --- | --- |
    | **Name** |为负载均衡器使用文本名称，例如“sqlLB”。 |
-   | **方案** |内部 |
+   | **类型** |内部 |
    | **虚拟网络** |使用 Azure 虚拟网络的名称。 |
    | **子网** |使用虚拟机所在的子网的名称。  |
    | **IP 地址分配** |静态 |
@@ -382,6 +383,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
    | 设置 | 说明 | 示例
    | --- | --- |---
    | **Name** | 键入文本名称 | SQLLBBE
+   | **Associated to** | 从列表中选取 | 可用性集
    | **可用性集** | 使用 SQL Server VM 所在的可用性集的名称 | sqlAvailabilitySet |
    | **虚拟机** |两个 SQL Server VM 名称 | sqlserver-0、sqlserver-1
 
@@ -391,9 +393,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
 
 1. 关于可用性集，请选择 SQL Server 所在的可用性集。
 
-1. 关于虚拟机，请同时包括两个 SQL Server。 请勿包括文件共享见证服务器。 所做选择应与下图所示类似：
-
-   ![在资源组中找到负载均衡器](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/88-configurebepool.png)
+1. 关于虚拟机，请同时包括两个 SQL Server。 请勿包括文件共享见证服务器。
 
 1. 单击“确定”创建后端池。
 
@@ -469,7 +469,7 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
 1. 使用 **sqlcmd** 实用工具测试连接。 例如，以下脚本通过侦听器与 Windows 身份验证来与主副本建立 **sqlcmd** 连接：
 
     ```
-    sqlmd -S <listenerName> -E
+    sqlcmd -S <listenerName> -E
     ```
 
     如果侦听器使用的端口不是默认端口 (1433)，请在连接字符串中指定该端口。 例如，以下 sqlcmd 命令连接到位于端口 1435 的侦听器：
