@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/12/2017
 ms.author: raynew
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7be3471cd5cd22b5d05aed6e2cb51840a20bb89b
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: b7b7347fef8ea6f6bf643e98bbcc0a6292c083ed
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -224,10 +224,11 @@ Site Recovery 将使用指定的设置连接到 VMware 服务器，并且将发�
 
 开始之前：
 
+- Azure 用户帐户需要具有某些[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)，才能启用新的虚拟机到 Azure 的复制。
 - 添加或修改 VM 时，可能需要 15 分钟或更长时间，更改才会生效并显示在门户中。
 - 可以在“配置服务器” > “上次联系位置”查看上次发现 VM 的时间。
 - 若要添加 VM 而不想要等待执行计划的发现，请突出显示配置服务器（不要单击它），然后单击“刷新”。
-* 如果已为推送安装准备了 VM，那么在启用复制时，进程服务器将自动安装移动服务。
+- 如果已为推送安装准备了 VM，那么在启用复制时，进程服务器将自动安装移动服务。
 
 
 ### <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
@@ -298,7 +299,20 @@ Site Recovery 将使用指定的设置连接到 VMware 服务器，并且将发�
      - 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机将有两个适配器。 如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。     
    - 如果虚拟机有多个网络适配器，它们将全部连接到同一个网络。
    - 如果虚拟机有多个网络适配器，列表中显示的第一个适配器将成为 Azure 虚拟机中的*默认*网络适配器。
-5. 在“磁盘”中，可以看到 VM 操作系统，以及将要复制的数据磁盘。
+4. 在“磁盘”中，可以看到 VM 操作系统，以及将要复制的数据磁盘。
+
+#### <a name="managed-disks"></a>托管磁盘
+
+如果要在故障转移到 Azure 时将托管磁盘附加到虚拟机上，可以在“计算和网络” > “计算属性”中，将 VM 的“使用托管磁盘”设置设为“是”。 托管磁盘通过管理与 VM 磁盘关联的存储帐户简化了 Azure IaaS VM 的磁盘管理。 [详细了解托管磁盘](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview)。
+
+   - 仅在故障转移到 Azure 时创建托管磁盘并将其附加到虚拟机上。 启用保护时，本地计算机中的数据将继续复制到存储帐户。  只能为使用 Resource Manager 部署模型部署的虚拟机创建托管磁盘。  
+
+   - 将“使用托管磁盘”设置为“是”时，资源组中只有“使用托管磁盘”设置为“是”的可用性集可供选择。 这是因为使用托管磁盘的虚拟机只能属于“使用托管磁盘”属性设置为“是”的可用性集。 请确保基于想要在故障转移时使用托管磁盘的意图，创建设置了“使用托管磁盘”属性的可用性集。  同样，将“使用托管磁盘”设置为“否”时，资源组中只有“使用托管磁盘”属性设置为“否”的可用性集可供选择。 [详细了解托管磁盘和可用性集](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set)。
+
+  > [!NOTE]
+  > 如果用于复制的存储帐户已在任何时间点使用存储服务加密进行加密，则在故障转移期间创建托管磁盘将失败。 可以将“使用托管磁盘”设置为“否”并重试故障转移，或者对虚拟机禁用保护并将虚拟机保护到在任何时间点均未启用存储服务加密的存储帐户。
+  > [详细了解存储服务加密和托管磁盘](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption)。
+
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 

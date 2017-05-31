@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: d47a28b31569d26a7752fc830989e8050153be46
-ms.lasthandoff: 05/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 2fad3e3fb88d447b377ccfce052035640c1360c3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -37,8 +38,8 @@ ms.lasthandoff: 05/02/2017
 ## <a name="azure-iot-device-sdks"></a>Azure IoT 设备 SDK
 提供了多种语言的_设备 SDK_，方便用户创建与 IoT 中心交互的[设备应用](#device-app)。 IoT 中心教程介绍了如何使用这些设备 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关设备 SDK 的源代码和更多信息。
 
-## <a name="azure-iot-gateway-sdk"></a>Azure IoT 网关 SDK
-用户可以使用此 SDK 编写应用程序，使连接到网关的设备能够与 [IoT 中心](#iot-hub)通信。 IoT 中心网关教程介绍了如何使用此 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-gateway-sdk)中找到有关 Azure IoT 网关 SDK 的源代码和进一步信息。
+## <a name="azure-iot-edge"></a>Azure IoT Edge
+可以使用 TIoT Edge 编写应用程序，使连接到网关的设备能够与 [IoT 中心](#iot-hub)通信。 IoT Edge 教程介绍了如何使用此服务。 可以在此 GitHub [存储库](https://github.com/Azure/iot-edge)中找到有关 Azure IoT Edge 的源代码和更多信息。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT 服务 SDK
 提供了多种语言的_服务 SDK_，方便用户创建与 IoT 中心交互的[后端应用](#back-end-app)。 IoT 中心教程介绍了如何使用这些服务 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关服务 SDK 的源代码和进一步信息。
@@ -49,13 +50,13 @@ ms.lasthandoff: 05/02/2017
 ## <a name="azure-powershell"></a>Azure PowerShell
 [Azure PowerShell](/powershell/azure/overview) 是一个 cmdlet 集合，可用于通过 Windows PowerShell 管理 Azure。 你可以使用 cmdlet 来创建、测试、部署和管理通过 Azure 平台传送的解决方案和服务。
 
-## <a name="azure-resource-manager"></a>Azure 资源管理器
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 可以使用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 以组的方式处理解决方案中的资源。 可以通过一个协调操作为解决方案部署、更新或删除资源。
 
 ## <a name="azure-service-bus"></a>Azure 服务总线
 通过[服务总线](../service-bus/index.md)，可在云端使用企业消息传递进行通信，也可采用中继进行通信，帮助将本地解决方案与云端连接。 某些 IoT 中心教程使用服务总线[队列](../service-bus-messaging/service-bus-messaging-overview.md)。
 
-## <a name="azure-storage"></a>Azure 存储空间
+## <a name="azure-storage"></a>Azure 存储
 [Azure 存储](../storage/storage-introduction.md)是一种云存储解决方案。 它包含可用于存储非结构化的对象数据的 Blob 存储服务。 某些 IoT 中心教程使用 blob 存储。
 
 ## <a name="back-end-app"></a>后端应用
@@ -79,7 +80,7 @@ ms.lasthandoff: 05/02/2017
 可在 IoT 中心创建自定义[终结点](iot-hub-devguide-endpoints.md)传递由[路由规则](#routing-rules)调度的消息。 自定义终结点直接连接事件中心、服务总线队列或服务总线主题。
 
 ## <a name="custom-gateway"></a>自定义网关
-网关使不能直接连接到 [IoT 中心](#iot-hub)的设备能建立连接。 可以使用 [Azure IoT 网关 SDK](#azure-iot-gateway-sdk) 生成自定义网关，以便使用自定义逻辑处理消息和自定义协议转换。
+网关使不能直接连接到 [IoT 中心](#iot-hub)的设备能建立连接。 可以使用 [Azure IoT Edge](#azure-iot-gateway-sdk) 生成自定义网关，以便使用自定义逻辑处理消息、自定义协议转换和进行边缘上的其他处理。
 
 ## <a name="data-point-message"></a>数据点消息
 数据点消息是指[设备到云](#device-to-cloud)的消息，其中包含[遥测](#telemetry)数据（例如风速或温度）。
@@ -190,7 +191,7 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 使用[作业 REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) 可以管理 IoT 中心内运行的[作业](#job)。
 
 ## <a name="module"></a>模块
-在 [Azure IoT 网关 SDK](iot-hub-linux-gateway-sdk-get-started.md) 中，[模块](iot-hub-linux-gateway-sdk-get-started.md#azure-iot-gateway-sdk-concepts)是执行特定任务的组件。 任务可能包括从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 中转站负责在模块之间转发消息。 Azure IoT 网关 SDK 包括一组示例模块。 用户还可以创建自己的自定义模块。
+在 [Azure IoT Edge](iot-hub-linux-gateway-sdk-get-started.md) 中，[模块](iot-hub-linux-gateway-sdk-get-started.md)是执行特定任务的组件。 任务可能包括从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 中转站负责在模块之间转发消息。 Azure IoT Edge 包括一组示例模块。 用户还可以创建自己的自定义模块。
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) 是 [IoT 中心](#iot-hub)支持与设备进行通信的消息传递协议之一。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。

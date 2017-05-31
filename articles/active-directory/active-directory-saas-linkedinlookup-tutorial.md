@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: f343d8dbbd80de1a50b625e949377aa7c48d0cae
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: a4160a89c6a06222a9239d996fcca822e1a50382
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/29/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -122,7 +122,7 @@ ms.lasthandoff: 04/29/2017
 
     ![配置单一登录](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedInlookup_url.png)
 
-    a. 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
 
     b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者访问(ACS) URL”
 
@@ -145,13 +145,13 @@ ms.lasthandoff: 04/29/2017
     | --- | --- |    
     | department| user.department |
 
-       ![Creating an Azure AD test user](./media/active-directory-saas-LinkedInlookup-tutorial/userattribute.png)
+   ![创建 Azure AD 测试用户](./media/active-directory-saas-LinkedInlookup-tutorial/userattribute.png)
 
-       a. Click **Add attribute** to open the attribute details page add the department attribute as shown below-
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加属性”，打开属性详细信息页，添加如下所示的 department 属性
 
-       ![Creating an Azure AD test user](./media/active-directory-saas-LinkedInlookup-tutorial/adduserattribute.png)
+   ![创建 Azure AD 测试用户](./media/active-directory-saas-LinkedInlookup-tutorial/adduserattribute.png)
    
-       b. Click **Ok** to save the attribute.
+   b. 单击“确定”保存属性。
 
 10. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
 
@@ -202,7 +202,7 @@ ms.lasthandoff: 04/29/2017
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建” 。
+    d.单击“下一步”。 单击“创建” 。
  
 ### <a name="creating-an-linkedin-lookup-test-user"></a>创建 LinkedIn Lookup 测试用户
 
@@ -251,7 +251,7 @@ Linked Lookup 应用程序支持适时用户 (JIT) 预配，且进行身份验�
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问与单一登录？](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "将物理设备与 Azure IoT 网关 SDK 配合使用 | Microsoft Docs"
-description: "如何使用 Texas Instruments SensorTag 设备通过 Raspberry Pi 3 设备上运行的网关将数据发送到 IoT 中心。 该网关使用 Azure IoT 网关 SDK 生成。"
+title: "将物理设备与 Azure IoT Edge 配合使用 | Microsoft Docs"
+description: "如何使用 Texas Instruments SensorTag 设备通过 Raspberry Pi 3 设备上运行的 IoT Edge 网关将数据发送到 IoT 中心。 该网关使用 Azure IoT Edge 生成。"
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2017
 ms.author: andbuc
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 962092622e6bbfcfc2376d0885e6806be9cb5abf
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 6cf31f57da5d903efc0e522ca606957f09b28bd6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="use-the-azure-iot-gateway-sdk-to-send-device-to-cloud-messages-with-a-physical-device-linux"></a>使用 Azure IoT 网关 SDK，通过物理设备发送设备到云的消息 (Linux)
+# <a name="use-azure-iot-edge-to-send-device-to-cloud-messages-with-a-physical-device-linux"></a>使用 Azure IoT Edge，通过物理设备发送设备到云的消息 (Linux)
 
-此[蓝牙低功耗示例][lnk-ble-samplecode]的演练演示如何使用 [Azure IoT 网关 SDK] [ lnk-sdk] 执行以下操作：
+此[蓝牙低功耗示例][lnk-ble-samplecode]的演练演示如何使用 [Azure IoT Edge][lnk-sdk] 执行以下操作：
 
 * 将“设备到云”遥测从物理设备转发到 IoT 中心。
 * 将命令从 IoT 中心路由到物理设备。
@@ -35,16 +36,16 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="architecture"></a>体系结构
 
-本演练演示了如何在运行 Raspbian Linux 的 Raspberry Pi 3 上生成和运行 IoT 网关。 该网关是使用 IoT 网关 SDK 生成的。 此示例使用 Texas Instruments SensorTag 蓝牙低功耗 (BLE) 设备收集温度数据。
+本演练演示了如何在运行 Raspbian Linux 的 Raspberry Pi 3 上生成和运行 IoT Edge 网关。 该网关使用 IoT Edge 生成。 此示例使用 Texas Instruments SensorTag 蓝牙低功耗 (BLE) 设备收集温度数据。
 
-当你运行网关时，它：
+运行 IoT Edge 网关时，它：
 
 * 使用蓝牙低功耗 (BLE) 协议连接到 SensorTag 设备。
 * 使用 HTTP 协议连接到 IoT 中心。
 * 从 SensorTag 设备将遥测转发到 IoT 中心。
 * 从 IoT 中心将命令路由到 SensorTag 设备。
 
-该网关包含以下模块：
+该网关包含以下 IoT Edge 模块：
 
 * *BLE 模块*，与 BLE 设备相连接，从设备接收温度数据并将命令发送到设备。
 * *BLE 云到设备模块*，用于为 *BLE 模块*将来自云的 JSON 消息转换为 BLE 指令。
@@ -211,52 +212,52 @@ BLE 模块通过 BlueZ 堆栈与蓝牙硬件进行通信。 需要 BlueZ 5.37 �
     [CHG] Device A0:E6:F8:B5:F6:00 Connected: no
     ```
 
-现在可以在 Raspberry Pi 3 上运行 BLE 网关示例了。
+现在可以在 Raspberry Pi 3 上运行 BLE IoT Edge 示例了。
 
-## <a name="run-the-ble-gateway-sample"></a>运行 BLE 网关示例
+## <a name="run-the-iot-edge-ble-sample"></a>运行 IoT Edge BLE 示例
 
-若要运行 BLE 示例，需要完成三个任务：
+若要运行 IoT Edge BLE 示例，需要完成三个任务：
 
 * 在 IoT 中心中配置两个示例设备。
-* 在 Raspberry Pi 3 设备上生成 IoT 网关 SDK。
+* 在 Raspberry Pi 3 设备上生成 IoT Edge。
 * 在 Raspberry Pi 3 设备上配置并运行 BLE 示例。
 
-撰写本文时，IoT 网关 SDK 仅支持在 Linux 上使用 BLE 模块的网关。
+编写本文时，IoT Edge 仅支持在 Linux 上使用 BLE 模块的网关。
 
 ### <a name="configure-two-sample-devices-in-your-iot-hub"></a>在 IoT 中心中配置两个示例设备
 
 * 若要在 Azure 订阅中[创建 IoT 中心][lnk-create-hub]，需要使用中心的名称来完成本演练。 如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
 * 将名为 **SensorTag_01** 的设备添加到 IoT 中心，记下其 ID 和设备密钥。 可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具将此设备添加至上一步中创建的 IoT 中心，然后检索其密钥。 配置网关时，可将此设备映射到 SensorTag 设备。
 
-### <a name="build-the-azure-iot-gateway-sdk-on-your-raspberry-pi-3"></a>在 Raspberry Pi 3 上生成 Azure IoT 网关 SDK
+### <a name="build-azure-iot-edge-on-your-raspberry-pi-3"></a>在 Raspberry Pi 3 上生成 Azure IoT Edge
 
-安装 Azure IoT 网关 SDK 的依赖项：
+安装 Azure IoT Edge 的依赖项：
 
 `sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev`
 
-使用以下命令将 IoT 网关 SDK 及其所有子模块克隆到主目录：
+使用以下命令将 IoT Edge 及其所有子模块克隆到主目录：
 
 `cd ~`
 
-`git clone --recursive https://github.com/Azure/azure-iot-gateway-sdk.git`
+`git clone --recursive https://github.com/Azure/iot-edge.git`
 
-`cd azure-iot-gateway-sdk`
+`cd iot-edge`
 
 `git submodule update --init --recursive`
 
-Raspberry Pi 3 上有 IoT 网关 SDK 存储库的完整副本时，可以从包含该 SDK 的文件夹使用以下命令生成它：
+Raspberry Pi 3 上有 IoT Edge 存储库的完整副本时，可以从包含该 SDK 的文件夹使用以下命令生成它：
 
 `./tools/build.sh`
 
 ### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>在 Raspberry Pi 3 上配置并运行 BLE 示例
 
-若要启动和运行示例，必须配置参与网关的每个模块。 在 JSON 文件中提供了此配置，必须配置所有五个参与模块。 存储库中有一个名为 **gateway\_sample.json** 的示例 JSON 文件，可将它用作自行生成配置文件的起点。 此文件位于 IoT 网关 SDK 存储库的本地副本的 **samples/ble_gateway/src** 文件夹中。
+若要启动和运行示例，必须配置参与网关的每个 IoT Edge 模块。 在 JSON 文件中提供了此配置，必须配置所有五个参与 IoT Edge 模块。 存储库中有一个名为 **gateway\_sample.json** 的示例 JSON 文件，可将它用作自行生成配置文件的起点。 此文件位于 IoT Edge 存储库本地副本的 **samples/ble_gateway/src** 文件夹中。
 
-以下各部分介绍了如何编辑 BLE 示例的此配置文件，并假设 IoT 网关 SDK 存储库位于 Raspberry Pi 3 的 **/home/pi/azure-iot-gateway-sdk/** 文件夹中。 如果存储库在其他位置，需相应地调整路径。
+以下各部分介绍了如何编辑 BLE 示例的此配置文件，并假设 IoT Edge 存储库位于 Raspberry Pi 3 的 **/home/pi/iot-edge/** 文件夹中。 如果存储库在其他位置，需相应地调整路径。
 
 #### <a name="logger-configuration"></a>记录器配置
 
-假设网关存储库位于 **/home/pi/azure-iot-gateway-sdk/** 文件夹中，如下所示配置记录器模块：
+假设网关存储库位于 **/home/pi/iot-edge/** 文件夹中，如下所示配置记录器模块：
 
 ```json
 {
@@ -411,7 +412,7 @@ BLE 设备的示例配置假定使用 Texas Instruments SensorTag 设备。 任�
 
 #### <a name="routing-configuration"></a>路由配置
 
-以下配置可确保模块间的以下路由：
+以下配置可确保 IoT Edge 模块间的以下路由：
 
 * **Logger** 模块接收并记录所有消息。
 * **SensorTag** 模块将消息发送到 **mapping** 和 **BLE Printer** 模块。
@@ -432,7 +433,7 @@ BLE 设备的示例配置假定使用 Texas Instruments SensorTag 设备。 任�
  ]
 ```
 
-若要运行示例，请将 JSON 配置文件的路径作为参数传递到 **ble\_gateway** 二进制文件。 以下命令假设你正在使用 **gateway_sample.json** 配置文件。 在 Raspberry Pi 上从 **azure-iot-gateway-sdk** 文件夹执行此命令：
+若要运行示例，请将 JSON 配置文件的路径作为参数传递到 **ble\_gateway** 二进制文件。 以下命令假设你正在使用 **gateway_sample.json** 配置文件。 在 Raspberry Pi 上从 **iot-edge** 文件夹执行此命令：
 
 ```
 ./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_sample.json
@@ -440,7 +441,7 @@ BLE 设备的示例配置假定使用 Texas Instruments SensorTag 设备。 任�
 
 在运行示例前，可能需要按 SensorTag 设备上的小按钮，使其可被发现。
 
-运行示例时，可使用[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)或 [iothub-explorer](https://github.com/Azure/iothub-explorer) 工具来监视网关从 SensorTag 设备转发的消息。
+运行示例时，可使用[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)或 [iothub-explorer](https://github.com/Azure/iothub-explorer) 工具来监视 IoT Edge 网关从 SensorTag 设备转发的消息。
 
 ## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
 
@@ -502,19 +503,19 @@ BLE 模块还支持从 IoT 中心向设备发送命令。 可使用[设备资源
 
 ## <a name="next-steps"></a>后续步骤
 
-如果想要深入了解 IoT 网关 SDK 并尝试一些代码示例，请访问以下开发人员教程和资源：
+如果想要深入了解 IoT Edge 并尝试一些代码示例，请访问以下开发人员教程和资源：
 
-* [Azure IoT 网关 SDK][lnk-sdk]
+* [Azure IoT Edge][lnk-sdk]
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [IoT 中心开发人员指南][lnk-devguide]
 
 <!-- Links -->
-[lnk-ble-samplecode]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/ble_gateway
+[lnk-ble-samplecode]: https://github.com/Azure/iot-edge/tree/master/samples/ble_gateway
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-explorer-tools]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md
-[lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
+[lnk-sdk]: https://github.com/Azure/iot-edge/
 [lnk-noobs]: https://www.raspberrypi.org/documentation/installation/noobs.md
 [lnk-raspbian]: https://www.raspberrypi.org/downloads/raspbian/
 

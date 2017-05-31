@@ -11,12 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 05/16/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: cf62f0676740c82d58d5ac5644ceffb8daf1a4f2
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 220ccc8b94797880d335385046001c5f3b17c862
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -31,6 +32,9 @@ ms.lasthandoff: 03/30/2017
 若要启用与 SAP BW 实例的连接，请安装以下组件：
 - **数据管理网关**：数据工厂服务支持使用称为“数据管理网关”的组件连接到本地数据存储（包括 SAP Business Warehouse）。 若要了解数据管理网关和设置网关的分步说明，请参阅[在本地数据存储与云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 即使 SAP Business Warehouse 托管在 Azure IaaS 虚拟机 (VM) 中，也需要网关。 只要网关能连接数据库，即可在与数据存储相同的 VM 上或不同的 VM 上安装网关。
 - 网关计算机上的 **SAP NetWeaver 库**。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”获取最新版本的下载位置。 确保 SAP NetWeaver 库（32 位或 64 位）的体系结构与安装的网关匹配。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
+
+> [!TIP]
+> 将从 NetWeaver RFC SDK 中提取的 dll 放入 system32 文件夹。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 

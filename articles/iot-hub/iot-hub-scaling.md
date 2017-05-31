@@ -16,10 +16,10 @@ ms.date: 09/19/2016
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4a860f5aaa03ccfa73f1508548ca8b1344679c38
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 03eeecc575be3073066a203cdd4ec6944bb23afc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -57,11 +57,11 @@ Azure IoT 中心可支持多达一百万台设备同时连接。 有关详细信
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [IoT 中心开发人员指南][lnk-devguide]
-* [使用 IoT 网关 SDK 模拟设备][lnk-gateway]
+* [使用 Azure IoT Edge 模拟设备][lnk-iotedge]
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
 [IoT Hub quotas and throttles]: iot-hub-devguide-quotas-throttling.md
 
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

@@ -14,23 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 0fbe1af87594aacd2eee4f706429e3674548d3fd
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 0b402602ed80d9eef5313fb29ba2bd05644f11f8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
 
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板创建多 VM 环境和 PaaS 资源
 
-使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)可以轻松地[在实验室中创建和添加 VM](./devtest-lab-add-vm-with-artifacts.md)。 这种方法非常适合用于一次创建一个 VM。 但是，如果环境包含多个 VM，则必须单独创建每个 VM。 对于多层 Web 应用或 SharePoint 场等情况，需要使用某种机制以单个步骤创建多个 VM。 现在，可以使用 Azure Resource Manager 模板定义 Azure 解决方案的基础结构和配置，以一致的状态重复部署多个 VM。 此功能提供以下优势：
+使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)可以轻松地[在实验室中创建和添加 VM](https://docs.microsoft.com/en-us/azure/devtest-lab/devtest-lab-add-vm)。 这种方法非常适合用于一次创建一个 VM。 但是，如果环境包含多个 VM，则必须单独创建每个 VM。 对于多层 Web 应用或 SharePoint 场等情况，需要使用某种机制以单个步骤创建多个 VM。 现在，可以使用 Azure Resource Manager 模板定义 Azure 解决方案的基础结构和配置，以一致的状态重复部署多个 VM。 此功能提供以下优势：
 
 - Azure Resource Manager 模板是从源代码管理存储库（GitHub 或 Team Services Git）直接加载的。
 - 配置后，用户可以在 Azure 门户中通过选择 Azure Resource Manager 模板来创建环境，就像创建其他类型的 [VM 库](./devtest-lab-comparing-vm-base-image-types.md)一样。
 - 除了 IaasS VM 以外，还可以通过 Azure Resource Manager 模板在环境中预配 Azure PaaS 资源。
 - 除了其他类型的库创建的单个 VM 以外，还可以在实验室中跟踪环境的成本。
 - 对于环境，用户可以实施他们针对单实验室 VM 所实施的相同 VM 策略控制。
+
+> [!NOTE]
+> 此体验尚不支持通过 ARM 模板部署资源类型 Microsoft.DevTestLab/labs（或其嵌套的资源类型，例如 Microsoft.DevTestLab/labs/virtualmachines）。 若要部署 VM，请确保使用 Microsoft.Compute/virtualmachines。 更多 ARM 模板示例可以在 [Azure 快速入门模板库](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-customdata/azuredeploy.json)中找到。
+>
+>
 
 ## <a name="configure-azure-resource-manager-template-repositories"></a>配置 Azure Resource Manager 模板存储库
 

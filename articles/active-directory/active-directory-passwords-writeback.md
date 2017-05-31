@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/12/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f9dc195040d0fa1321dff9ec97d9ca1e4770d325
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: fde08bfc3a73c54ee53b5d8efffd3001894416b3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -74,11 +74,23 @@ ms.lasthandoff: 05/08/2017
 
     我们对于许多这类情况都有一个特定消息，并告知用户他们可以执行哪些操作来解决问题。
 
-## <a name="scenarios-supported-for-password-writeback"></a>密码写回支持的方案
+## <a name="configuring-password-writeback"></a>配置密码写回
 
 如果你要使用密码写回，我们始终建议使用 [Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md) 的自动更新功能。
 
-有关 [DirSync 和 Azure AD Sync 支持生命周期](connect/active-directory-aadconnect-dirsync-deprecated.md)的其他信息
+DirSync 和 Azure AD Sync 不再支持启用密码写回，详见文章[从 DirSync 和 Azure AD Sync 升级](connect/active-directory-aadconnect-dirsync-deprecated.md)以帮助你转换。
+
+以下步骤假定已在环境中使用[快速](./connect/active-directory-aadconnect-get-started-express.md)或[自定义](./connect/active-directory-aadconnect-get-started-custom.md)设置配置 Azure AD Connect。
+
+1. 若要配置和启用密码写回，请登录到 Azure AD Connect 服务器并启动“Azure AD Connect”配置向导。
+2. 在“欢迎”屏幕中，单击“配置”。
+3. 在“其他任务”屏幕上，单击“自定义同步选项”，然后选择“下一步”。
+4. 在“连接到 Azure AD”屏幕上输入全局管理员凭据，然后选择“下一步”。
+5. 在“连接目录”和“域和 OU 筛选”屏幕上，可以选择“下一步”。
+6. 在“可选功能”屏幕上，选中“密码写回”旁边的框，然后单击“下一步”。
+   ![在 Azure AD Connect 中启用密码写回][Writeback]
+7. 在“准备配置”屏幕上，单击“配置”并等待进程完成。
+8. 看到配置完成后，可以单击“退出”
 
 ## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
 
@@ -183,4 +195,4 @@ ms.lasthandoff: 05/08/2017
 * [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
 
-
+[Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "在 Azure AD Connect 中启用密码写回"

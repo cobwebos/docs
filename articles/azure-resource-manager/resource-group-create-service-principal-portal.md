@@ -12,22 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2017
+ms.date: 05/15/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 0b1d7bb2cbbeed2b41c22f19c1db49e81dadd4d7
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: c66c895eb9b905ea265341783c153a9554bd1259
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体
-> [!div class="op_single_selector"]
-> * [PowerShell](resource-group-authenticate-service-principal.md)
-> * [Azure CLI](resource-group-authenticate-service-principal-cli.md)
-> * [门户](resource-group-create-service-principal-portal.md)
->
->
 
 当应用程序需要访问或修改资源时，必须设置 Azure Active Directory (AD) 应用程序，并为其分配所需的权限。 与使用用户自己的凭据运行应用相比，此方法更优，原因在于：
 
@@ -207,5 +202,5 @@ ms.lasthandoff: 04/19/2017
 ## <a name="next-steps"></a>后续步骤
 * 若要设置多租户应用程序，请参阅[使用 Azure Resource Manager API 进行授权的开发人员指南](resource-manager-api-authentication.md)。
 * 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。  
-
+* 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure Resource Manager 资源提供程序操作](../active-directory/role-based-access-control-resource-provider-operations.md)。
 

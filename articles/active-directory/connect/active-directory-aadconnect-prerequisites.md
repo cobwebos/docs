@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: bb6f3a7710c52a210ea8014430285ba8917cc895
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 0ce1dbf9f2baf9369875370866690010fe8e9e37
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -29,8 +30,8 @@ ms.lasthandoff: 04/07/2017
 
 ### <a name="azure-ad"></a>Azure AD
 * Azure 订阅或 [Azure 试用版订阅](https://azure.microsoft.com/pricing/free-trial/)。 此订阅仅用来访问 Azure 门户，不用于使用 Azure AD Connect。 如果使用 PowerShell 或 Office 365，则无需 Azure 订阅即可使用 Azure AD Connect。 如果你有 Office 365 许可证，则还可以使用 Office 365 门户。 使用付费的 Office 365 许可证，还可以从 Office 365 门户访问 Azure 门户。
-  * 还可以使用 [Azure 门户](https://portal.azure.com)中的 Azure AD 预览版功能。 此门户不需要 Azure 许可证。
-* [添加并验证要在 Azure AD 中使用的域](../active-directory-add-domain.md)。 例如，如果计划让用户使用 contoso.com，请确保此域已经过验证，并且不是直接使用 contoso.onmicrosoft.com 默认域。
+  * 还可以使用 [Azure 门户](https://portal.azure.com)。 此门户不需要 Azure AD 许可证。
+* [添加并验证要在 Azure AD 中使用的域](../active-directory-domains-add-azure-portal.md)。 例如，如果计划让用户使用 contoso.com，请确保此域已经过验证，并且不是直接使用 contoso.onmicrosoft.com 默认域。
 * 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制将增加到 30 万个对象。 如果在 Azure AD 中需要更多的对象，则需要开具支持案例来请求增大此限制。 如果需要 50 万个以上的对象，则需要购买 Office 365、Azure AD Basic、Azure AD Premium 或企业移动性和安全性等许可证。
 
 ### <a name="prepare-your-on-premises-data"></a>准备本地数据
@@ -53,6 +54,7 @@ ms.lasthandoff: 04/07/2017
 * 如果打算使用**密码同步**功能，则必须在 Windows Server 2008 R2 SP1 或更高版本上安装 Azure AD Connect 服务器。
 * 如果打算使用**组托管服务帐户**，则 Azure AD Connect 服务器必须位于 Windows Server 2012 或更高版本上。
 * Azure AD Connect 服务器必须安装 [.NET Framework 4.5.1](#component-prerequisites) 或更高版本和 [Microsoft PowerShell 3.0](#component-prerequisites) 或更高版本。
+* Azure AD Connect 服务器不得启用 PowerShell 脚本组策略。
 * 如果正在部署 Active Directory 联合身份验证服务，则要安装 AD FS 或 Web 应用程序代理的服务器必须是 Windows Server 2012 R2 或更高版本。 必须在这些服务器上启用 [Windows 远程管理](#windows-remote-management)才能进行远程安装。
 * 若要部署 Active Directory 联合身份验证服务，需要使用 [SSL 证书](#ssl-certificate-requirements)。
 * 若要部署 Active Directory 联合身份验证服务，需要配置[名称解析](#name-resolution-for-federation-servers)。
@@ -103,6 +105,8 @@ ms.lasthandoff: 04/07/2017
         </defaultProxy>
     </system.net>
 ```
+
+* 当 Azure AD Connect 在目录同步过程中将 Web 请求发送到 Azure AD 时，Azure AD 可能需要 5 分钟才能响应。 代理服务器具有连接空闲超时配置很常见。 请确保配置设置为至少 6 分钟或更长时间。
 
 有关[默认代理元素](https://msdn.microsoft.com/library/kd3cf2ex.aspx)的详细信息，请参阅 MSDN。  
 有关遇到连接问题时的详细信息，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。

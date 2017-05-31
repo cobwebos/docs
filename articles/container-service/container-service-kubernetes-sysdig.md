@@ -16,14 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
-translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: daabc3ccda51cfd165e2ae6e1d329e866b3ebbcb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 0a344f3254802f787472a6d7cf91d658259955dc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
 
-# <a name="monitor-an-azure-container-service-kubenrnetes-cluster-using-sysdig"></a>使用 Sysdig 监视 Azure 容器服务 Kubenrnetes 群集
+# <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>使用 Sysdig 监视 Azure 容器服务 Kubernetes 群集
 
 ## <a name="prerequisites"></a>先决条件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
@@ -89,9 +91,4 @@ $ kubectl create -f sysdig-daemonset.yaml
 代理安装完毕并开始运行后，应该将数据发送回 Sysdig。  返回到 [sysdig 仪表板](https://app.sysdigcloud.com)应该可以看到有关容器的信息。
 
 还可以通过[新仪表板向导](https://app.sysdigcloud.com/#/dashboards/new)安 Kubernetes 特定的仪表板。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

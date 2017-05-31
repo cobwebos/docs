@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/28/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: feb6e388a98cd6e133d010cada97f895140c3f4f
-ms.openlocfilehash: ee9a3b605c5445007f880a37e96c2326dd7c9b89
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: fe7f508ed1c4eb57663f7e252d286719af03dbb1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -45,7 +46,7 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 
 若在运行此 cmdlet 时看到“此同步命令或 cmdlet 不可用”，则 PowerShell 模块未加载。 如果你在 PowerShell 限制级别高于默认设置的域控制器或服务器上运行 Azure AD Connect，则可能会发生这种问题。 如果你看到此错误，则运行 `Import-Module ADSync` 可使该 cmdlet 可用。
 
-* **AllowedSyncCycleInterval**。 Azure AD 允许同步发生时的最大频率时间间隔。 你不能比这种设置更频繁地同步，但仍会支持。
+* **AllowedSyncCycleInterval**。 Azure AD 允许的同步周期间的最短时间间隔。 你不能比这种设置更频繁地同步，但仍会支持。
 * **CurrentlyEffectiveSyncCycleInterval**。 当前生效的计划。 如果它不比 AllowedSyncInterval 更频繁，它具有与 CustomizedSyncInterval 相同的值（如果已设置）。 如果使用早于 1.1.281 的版本，且更改了 CustomizedSyncCycleInterval，该更改将在下一个同步周期后生效。 从版本 1.1.281 开始，更改将立即生效。
 * **CustomizedSyncCycleInterval**。 如果你希望计划程序以默认 30 分钟以外的任何其他频率运行，则可配置此设置。 在上图中，计划程序已改为设置为每隔一小时运行一次。 如果你将此项设置为低于 AllowedSyncInterval 的值，则将使用后者。
 * **NextSyncCyclePolicyType**。 Delta 或 Initial。 定义下次运行是只应处理增量更改，还是应执行完全导入和同步。 后者将重新处理任何新的或更改的规则。

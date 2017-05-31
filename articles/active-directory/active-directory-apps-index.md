@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 564dd782834898709f89f85e10627d07b17138ce
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 3f6ae31f577eb1bc70a06e183518aadbc6279159
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -138,7 +139,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 | 了解其工作原理，并查找常见问题的解答 |[在 SaaS 应用中自动预配和取消预配用户](active-directory-saas-app-provisioning.md) |
 | 配置如何在 Azure AD 与 SaaS 应用程序之间映射信息 |[自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)<br><br>[为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
 | 如何对支持 SCIM 协议的任何应用启用自动化预配 |[对启用 SCIM 的任何应用设置自动化用户预配](active-directory-scim-provisioning.md) |
-| 获取有关预配失败的通知 |[预配通知](active-directory-saas-account-provisioning-notifications.md) |
+| 如何针对用户预配进行报告和故障排除 |[针对自动用户预配进行报告](active-directory-saas-provisioning-reporting.md)<br><br>[预配通知](active-directory-saas-account-provisioning-notifications.md)<br><br>[对用户预配进行故障排除](active-directory-application-provisioning-content-map.md) |
 | 根据应用程序的属性值限制可以预配应用程序的人员 |[范围筛选器](active-directory-saas-scoping-filters.md) |
 
 自动化用户预配适用于所有版本的 Azure AD，每个用户最多十个应用程序。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) 或 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来管理要预配哪些用户](#managing-access-to-applications)。
@@ -168,16 +169,16 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 基于组的应用程序访问管理适用于 [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/)。 自助组管理、自助应用程序管理以及动态组是 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 功能。
 
 ### <a name="b2b-collaboration-enable-partner-access-to-applications"></a>B2B 协作：启用应用程序的合作访问
-如果你的公司与其他公司合作，可能需要管理公司应用程序的合作访问。 Azure Active Directory B2B 协作提供简单且安全的方式来与合作伙伴共享应用程序。 此功能目前处于预览状态。
+如果你的公司与其他公司合作，可能需要管理公司应用程序的合作访问。 Azure Active Directory B2B 协作提供简单且安全的方式来与合作伙伴共享应用程序。
 
 | 文章指南 |  |
 |:---:| --- |
 | 不同 Azure AD 功能的概述，帮助管理外部用户，例如合作伙伴、客户等。 |[比较 Azure AD 中用于管理外部标识的功能](active-directory-b2b-compare-external-identities.md) |
-| B2B 协作预览版简介及其入门方法 |[与 Azure AD 的简单、安全云合作伙伴集成](active-directory-b2b-what-is-azure-ad-b2b.md)<br /><br />[Azure Active Directory B2B 协作](active-directory-b2b-collaboration-overview.md) |
-| 深入探讨 Azure AD B2B 协作及其用法 |[B2B 协作：工作原理](active-directory-b2b-how-it-works.md)<br /><br />[Azure AD B2B 协作预览的当前限制](active-directory-b2b-current-preview-limitations.md)<br /><br />[使用 Azure AD B2B 协作预览的详细演练](active-directory-b2b-detailed-walkthrough.md) |
+| B2B 协作简介及其入门方法 |[与 Azure AD 的简单、安全云合作伙伴集成](active-directory-b2b-what-is-azure-ad-b2b.md)<br /><br />[Azure Active Directory B2B 协作](active-directory-b2b-collaboration-overview.md) |
+| 深入探讨 Azure AD B2B 协作及其用法 |[B2B 协作：工作原理](active-directory-b2b-how-it-works.md)<br /><br />[Azure AD B2B 协作的当前限制](active-directory-b2b-current-limitations.md)<br /><br />[使用 Azure AD B2B 协作的详细演练](active-directory-b2b-detailed-walkthrough.md) |
 | 有关 Azure AD B2B 协作工作原理的技术详细信息参考文章 |[添加合作伙伴用户的 CSV 文件格式](active-directory-b2b-references-csv-file-format.md)<br /><br />[受 Azure AD B2B 协作影响的用户属性](active-directory-b2b-references-external-user-object-attribute-changes.md)<br /><br />[合作伙伴用户的用户令牌格式](active-directory-b2b-references-external-user-token-format.md) |
 
-B2B 协作预览版目前适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。
+B2B 协作目前适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ### <a name="access-panel-a-portal-for-accessing-apps-and-self-service-features"></a>访问面板：用于访问应用和自助功能的门户
 用户可以在 Azure AD 访问面板上启动应用程序和访问自助功能，而自助功能可让用户管理自己的应用程序和组成员资格。 除了访问面板外，以下列表还包括其他用于访问启用 SSO 的应用程序的选项。

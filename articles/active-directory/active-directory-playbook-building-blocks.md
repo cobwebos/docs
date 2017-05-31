@@ -1,31 +1,33 @@
 ---
-title: "Azure Active Directory PoC 操作手册构建基块| Microsoft Docs"
+
+title: "Azure Active Directory 概念证明操作手册：构建基块 | Microsoft Docs"
 description: "研究并快速实现标识和访问管理方案"
 services: active-directory
 keywords: "azure active directory 操作手册, 概念证明, PoC"
 documentationcenter: 
 author: dstefanMSFT
-manager: asuthar
+manager: femila
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/12/2017
+ms.date: 05/04/2017
 ms.author: dstefan
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b6f26a338450619cef012467bf78b9469622ba08
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 9c81bc0c702d559eee8b5fbf2a0508697f4276a0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
-## <a name="catalog-of-actors"></a>执行组件目录
+## <a name="catalog-of-roles"></a>角色的目录
 
-| 执行组件 | 说明 | PoC 责任 |
+| 角色 | 说明 | 概念证明 (PoC) 责任 |
 | --- | --- | --- |
 | **标识体系结构/开发团队** | 此团队通常负责设计解决方案、实现原型、推动审批但最终不涉及运营 | 他们提供环境，并从可管理性角度评估不同的方案 |
 | **本地标识运营团队** | 管理不同的本地标识源：Active Directory 林、LDAP 目录、HR 系统和联合身份验证标识提供程序。 | 提供 PoC 方案所需的对本地资源的访问权限。<br/>他们应尽量少涉及|
@@ -184,7 +186,7 @@ ms.lasthandoff: 04/27/2017
 | 步骤 | 资源 |
 | --- | --- |
 | 安装浏览器扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| 从库中配置应用程序 | [Azure Active Directory 中企业应用程序管理的新增功能：新增和改进的应用程序库](active-directory-enterprise-apps-whats-new-azure-portal.md#the-new-and-improved-application-gallery) |
+| 从库中配置应用程序 | [Azure Active Directory 中企业应用程序管理的新增功能：新增和改进的应用程序库](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
 | 配置密码 SSO | [在新的 Azure 门户中管理企业应用的单一登录：基于密码的登录](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
 | 将应用分配给在先决条件中标识的组 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 以具有访问权限的测试用户身份登录到 https://myapps.microsoft.com/ |  |
@@ -210,7 +212,7 @@ ms.lasthandoff: 04/27/2017
 | 先决条件 | 资源 |
 | --- | --- |
 | 提前准备应用程序列表和确切的登录 URL。 可以使用 Twitter 作为示例。 | [Microsoft Azure 应用商店上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[注册 Twitter](https://twitter.com/signup?lang=en) |
-| 此 SaaS 应用程序的共享凭据。 | [使用 Azure AD 共享帐户](active-directory-sharing-accounts.md)<br/>[适用于 Facebook、Twitter 和 LinkedIn 的 Azure AD 自动密码回滚现在提供预览版！- 企业移动性和安全性博客](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
+| 此 SaaS 应用程序的共享凭据。 | [使用 Azure AD 共享帐户](active-directory-sharing-accounts.md)<br/>[适用于 Facebook、Twitter 和 LinkedIn 的 Azure AD 自动密码滚动更新现在提供预览版！ - 企业移动性和安全性博客] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
 | 至少两位将访问同一帐户的团队成员的凭据。 两位成员必须都属于安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
@@ -219,7 +221,7 @@ ms.lasthandoff: 04/27/2017
 | 步骤 | 资源 |
 | --- | --- |
 | 安装浏览器扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| 从库中配置应用程序 | [Azure Active Directory 中企业应用程序管理的新增功能：新增和改进的应用程序库](active-directory-enterprise-apps-whats-new-azure-portal.md#the-new-and-improved-application-gallery) |
+| 从库中配置应用程序 | [Azure Active Directory 中企业应用程序管理的新增功能：新增和改进的应用程序库](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
 | 配置密码 SSO | [在新的 Azure 门户中管理企业应用的单一登录：基于密码的登录](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
 | 分配凭据时将应用分配给在先决条件中标识的组 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 使用其他的用户身份登录，该用户可以使用**相同共享帐户**访问应用。  |  |
@@ -287,7 +289,7 @@ ms.lasthandoff: 04/27/2017
 | 添加泛型 LDAP 连接器 | [泛型 LDAP 连接器技术参考：创建新连接器](./connect/active-directory-aadconnectsync-connector-genericldap.md#create-a-new-connector) |
 | 为已创建的连接器创建运行配置文件（完全导入、增量导入、完全同步、增量同步、导出） | [创建管理代理运行配置文件](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [将连接器与 Azure AD Connect Sync Service Manager 配合使用](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
 | 运行完全导入配置文件，并验证在连接器空间中是否存在对象 | [搜索连接器空间对象](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[将连接器与 Azure AD Connect Sync Service Manager 配合使用：搜索连接器空间](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
-| 创建同步规则，使 Metaverse 中的对象具有工作负荷的所需属性 | [Azure AD Connect 同步：有关更改默认配置的最佳实践：同步规则的更改](/connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect 同步：了解声明性预配](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect Sync：了解声明性预配表达式](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
+| 创建同步规则，使 Metaverse 中的对象具有工作负荷的所需属性 | [Azure AD Connect 同步：有关更改默认配置的最佳实践：同步规则的更改](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect 同步：了解声明性预配](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect Sync：了解声明性预配表达式](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
 | 启动完全同步周期 | [Azure AD Connect 同步：计划程序：启动计划程序](./connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler) |
 | 发生问题时执行故障排除 | [排查对象无法同步到 Azure AD 的问题](./connect/active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) |
 | 确认 LDAP 用户可以登录并访问应用程序 | https://myapps.microsoft.com |
@@ -381,8 +383,8 @@ ms.lasthandoff: 04/27/2017
 | 先决条件 | 资源 |
 | --- | --- |
 | 在租户中启用自助密码管理。 | [Azure Active Directory 中针对 IT 管理员的密码重置](active-directory-passwords.md) |
-| 启用密码写回，以便在本地管理密码。 请注意，此操作需要特定的 Azure AD Connect 版本 | [密码写回先决条件](active-directory-passwords-getting-started.md#writeback-prerequisites) |
-| 标识将使用此功能的 PoC 用户，并确保这些用户是安全组的成员。 这些用户不能是管理员，这样才能完全展示此功能 | [自定义：Azure AD 密码管理：限制对密码重置的访问](active-directory-passwords-customize.md#restrict-access-to-password-reset) |
+| 启用密码写回，以便在本地管理密码。 请注意，此操作需要特定的 Azure AD Connect 版本 | [密码写回先决条件](active-directory-passwords-writeback.md) |
+| 标识将使用此功能的 PoC 用户，并确保这些用户是安全组的成员。 这些用户不能是管理员，这样才能完全展示此功能 | [自定义：Azure AD 密码管理：限制对密码重置的访问](active-directory-passwords-writeback.md) |
 
 
 ### <a name="steps"></a>步骤

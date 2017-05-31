@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2017
+ms.date: 05/15/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 093a63504843f63e25adb8b0247ebe82bc331061
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 48e2f606ff676ca1c3217ac4fcca75db0d283616
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -34,13 +34,13 @@ ms.lasthandoff: 05/02/2017
 
 ## <a name="deploy-a-template-from-your-local-machine"></a>从本地计算机部署模板
 
-将资源部署到 Azure 时，执行以下操作：
+将资源部署到 Azure 时，你执行以下操作：
 
 1. 登录到 Azure 帐户
-2. 创建用作已部署资源的容器的资源组
-3. 将用于定义要创建的资源的模板部署到资源组
+2. 创建用作已部署资源的容器的资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 它不能以句点结尾。
+3. 将定义了要创建的资源的模板部署到资源组
 
-模板可以包括可用于自定义部署的参数。 例如，可以提供为特定环境（如开发环境、测试环境和生产环境）定制的值。 示例模板定义存储帐户 SKU 的参数。
+模板可以包括可用于自定义部署的参数。 例如，你可以提供为特定环境（如开发环境、测试环境和生产环境）定制的值。 示例模板定义了存储帐户 SKU 的参数。
 
 以下示例将创建一个资源组，并从本地计算机部署模板：
 
@@ -60,7 +60,7 @@ ProvisioningState       : Succeeded
 
 ## <a name="deploy-a-template-from-an-external-source"></a>从外部源部署模板
 
-不是将 Resource Manager 模板存储在本地计算机上，你可能更愿意将它们存储在外部位置。 可以将模板存储在源控件存储库（例如 GitHub）中。 或者，可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
+你可能更愿意将 Resource Manager 模板存储在外部位置，而不是将它们存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 或者，可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
 
 若要部署外部模板，请使用 **TemplateUri** 参数。 使用示例中的 URI 从 GitHub 部署示例模板。
 
@@ -70,11 +70,11 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
   -storageAccountType Standard_GRS
 ```
 
-前面的示例需要模板的 URI 可公开访问，它适用于大多数情况，因为模板不应包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 有关部署需要共享访问签名 (SAS) 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](resource-manager-powershell-sas-token.md)。
+前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为你的模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 有关部署需要共享访问签名 (SAS) 令牌的模板的信息，请参阅[部署具有 SAS 令牌的专用模板](resource-manager-powershell-sas-token.md)。
 
 ## <a name="parameter-files"></a>参数文件
 
-不是在脚本中以内联值的形式传递参数，你可能会发现使用包含参数值的 JSON 文件会更轻松。 参数文件必须采用以下格式：
+与在脚本中以内联值的形式传递参数相比，你可能会发现使用包含参数值的 JSON 文件更为容易。 参数文件必须采用以下格式：
 
 ```json
 {
@@ -88,7 +88,7 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 }
 ```
 
-请注意，参数节包含与模板中定义的参数 (storageAccountType) 匹配的参数名称。 参数文件包含参数的值。 此值在部署期间自动传递给模板。 可以针对不同部署方案创建多个参数文件，然后传入相应参数文件。 
+请注意，parameters 部分包含与你的模板中定义的参数匹配的参数名称 (storageAccountType)。 参数文件针对该参数包含了一个值。 此值在部署期间自动传递给模板。 可以针对不同部署方案创建多个参数文件，然后传入相应的参数文件。 
 
 复制上面的示例，然后将其保存为名为 `storage.parameters.json` 的文件。
 
@@ -123,7 +123,7 @@ Test-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName E
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
-如果没有检测到错误，该命令在没有响应的情况下完成。 如果检测到错误，则该命令将返回一条错误消息。 例如，如果尝试传递不正确的存储帐户 SKU 值，将返回以下错误：
+如果没有检测到错误，该命令在没有响应的情况下完成。 如果检测到错误，则该命令将返回一条错误消息。 例如，如果尝试为存储帐户 SKU 传递不正确的值，将返回以下错误：
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
@@ -136,7 +136,7 @@ Message : Deployment template validation failed: 'The provided value 'badSku' fo
 Details :
 ```
 
-如果模板有语法错误，该命令将返回一个错误，指示它无法分析该模板。 该消息指示分析错误的行号和位置。
+如果模板有语法错误，该命令将返回一个错误，指示它无法分析该模板。 该消息会指出分析错误的行号和位置。
 
 ```powershell
 Test-AzureRmResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
@@ -154,7 +154,7 @@ New-AzureRmResourceGroupDeployment -Mode Complete -Name ExampleDeployment `
 
 ## <a name="sample-template"></a>示例模板
 
-本主题中的示例使用以下模板。 复制并将其另存为名为 storage.json 的文件。 若要了解如何创建此模板，请参阅[创建第一个 Azure Resource Manager 模板](resource-manager-create-first-template.md)。  
+本主题中的示例使用以下模板。 复制并将其另存为名为 storage.json 的文件。 若要了解如何创建此模板，请参阅[创建你的第一个 Azure Resource Manager 模板](resource-manager-create-first-template.md)。  
 
 ```json
 {
@@ -202,7 +202,7 @@ New-AzureRmResourceGroupDeployment -Mode Complete -Name ExampleDeployment `
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 本文中的示例将资源部署到默认订阅中的资源组。 若要使用其他订阅，请参阅[管理多个 Azure 订阅](/powershell/azure/manage-subscriptions-azureps)。
+* 本文中的示例将资源部署到你的默认订阅中的资源组。 若要使用其他订阅，请参阅[管理多个 Azure 订阅](/powershell/azure/manage-subscriptions-azureps)。
 * 有关用于部署模板的完整示例脚本，请参阅 [Resource Manager 模板部署脚本](resource-manager-samples-powershell-deploy.md)。
 * 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](resource-group-authoring-templates.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。

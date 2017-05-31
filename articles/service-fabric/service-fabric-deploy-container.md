@@ -12,16 +12,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/17/2017
+ms.date: 5/16/2017
 ms.author: msfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 47b3fffb2d5c24b7473884e490be19ff17b61b61
-ms.openlocfilehash: 97b0cb7a5f04f2c5c547cb4b70d87273aa8f2383
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 17e9f4f81c60d86f804d1d9e6df2014dd4568d75
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="preview-deploy-a-windows-container-to-service-fabric"></a>预览：将 Windows 容器部署到 Service Fabric
+# <a name="deploy-a-windows-container-to-service-fabric"></a>将 Windows 容器部署到 Service Fabric
 > [!div class="op_single_selector"]
 > * [部署 Windows 容器](service-fabric-deploy-container.md)
 > * [部署 Docker 容器](service-fabric-deploy-container-linux.md)
@@ -29,10 +30,6 @@ ms.lasthandoff: 02/21/2017
 > 
 
 本文将指导完成在 Windows 容器中构建容器化服务的过程。
-
-> [!NOTE]
-> 此功能在 Windows Server 2016 中以预览版提供。
->  
 
 Service Fabric 提供多种容器功能，可帮助你构建由容器化的微服务组成的应用程序。 
 
@@ -83,7 +80,7 @@ Visual Studio 提供 Service Fabric 服务模板，可帮助用户将容器部�
 "vmImageSku": { "defaultValue": "2016-Datacenter-with-Containers","type": "string"     },
 "vmImageVersion": { "defaultValue": "latest","type": "string"     },  
 ```
-还可以使用[此处的&5; 节点 ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)创建群集。 此外，请阅读[此处的 Leok 博客文章](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html)，了解如何使用 Service Fabric 和 Windows 容器。
+还可以使用[此处的 5 节点 ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)创建群集。 此外，请阅读[此处的 Leok 博客文章](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html)，了解如何使用 Service Fabric 和 Windows 容器。
 
 <a id="manually"></a>
 

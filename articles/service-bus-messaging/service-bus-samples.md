@@ -1,6 +1,6 @@
 ---
-title: "服务总线消息传送示例概述 | Microsoft 文档"
-description: "分类并介绍相互链接的服务总线消息传送示例。"
+title: "Azure 服务总线消息传送示例概述 | Microsoft Docs"
+description: "介绍服务总线消息传送示例并提供每个示例的链接"
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -12,97 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2016
+ms.date: 05/15/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 719403ca2ef90cdcf5f76fe15f7a33095e71a74c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 0cf21ea9a820de0396b54dd26a625a046de39291
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="service-bus-messaging-samples"></a>服务总线消息传送示例
-服务总线消息传送示例演示了[服务总线消息传送](https://azure.microsoft.com/services/service-bus/)（云服务）和 [Service Bus for Windows Server](https://msdn.microsoft.com/library/dn282144.aspx)（Windows Server 服务总线）中的主要功能。 本文分类并介绍了可用的示例，每个示例均具有链接。
 
-> [!NOTE]
-> 服务总线示例未安装 SDK。 若要获取这些示例，请访问 [Azure SDK 示例页](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5)。
-> 
-> 另外，[此处](https://github.com/Azure-Samples/azure-servicebus-messaging-samples)提供一组已更新的服务总线消息传送示例（撰写本文时未介绍这些示例）。  
-> 
-> 
+服务总线消息传送示例演示[服务总线消息传送](https://azure.microsoft.com/services/service-bus/)中的关键功能。 目前，可以在两个位置找到这些示例：
 
-有关中继示例，请参阅 [服务总线中继示例](../service-bus-relay/service-bus-relay-samples.md)。
+- [GitHub 上的服务总线消息传送示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet)：GitHub 上托管的一组较新示例。 有关这些 .NET 示例的说明，请参阅存储库中的[自述文件](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.ServiceBus.Messaging/README.md)。 这些示例会不断更新，因此请经常返回查看是否有更新。
+- [MSDN 示例页](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5)：存在于 MSDN 代码库中的较旧示例。 虽然这些示例仍能使用，但不会保留，并且对于当前建议的编程做法可能会过时。
+ 
+## <a name="service-bus-explorer"></a>服务总线资源管理器
 
-## <a name="service-bus-messaging"></a>服务总线消息传送
-下面的示例说明了如何编写使用服务总线消息传送的应用程序。
-
-请注意，消息传送示例需要一个连接字符串以访问服务总线命名空间。
-
-### <a name="to-obtain-a-connection-string-for-azure-service-bus"></a>获取 Azure 服务总线的连接字符串
-1. 登录到 [Azure 门户](http://portal.azure.com)。
-2. 在左侧列中，单击“服务总线”。
-3. 在列表中，单击命名空间的名称。
-4. 在命名空间边栏选项卡中，单击“共享访问策略”。
-5. 在“共享访问策略”边栏选项卡中，单击“RootManageSharedAccessKey”。
-6. 将连接字符串复制到剪贴板。
-
-### <a name="to-obtain-a-connection-string-for-service-bus-for-windows-server"></a>获取 Windows Server 服务总线的连接字符串
-1. 运行以下 Azure Powershell cmdlet：
-   
-    ```
-    get-sbClientConfiguration
-    ```
-2. 将连接字符串粘贴到示例的 App.config 文件中。
-
-### <a name="getting-started-samples"></a>入门示例
-这些示例描述了基本的消息传送功能。
-
-| 示例名称 | 说明 | 最低 SDK 版本 | 可用性 |
-| --- | --- | --- | --- |
-| [Getting Started: Messaging with Queues](http://code.msdn.microsoft.com/Getting-Started-Brokered-aa7a0ac3)（入门：使用队列传送消息） |演示如何使用 Microsoft Azure 服务总线发送和接收来自队列的消息。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Getting Started: Messaging With Topics](http://code.msdn.microsoft.com/Getting-Started-Brokered-614d42e5)（入门：使用主题传送消息） |演示如何使用 Microsoft Azure 服务总线发送和接收来自包含多个订阅的主题的消息。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-
-### <a name="exploring-features"></a>探索功能
-下面的示例演示了服务总线的各种功能。
-
-| 示例名称 | 说明 | 最低 SDK 版本 | 可用性 |
-| --- | --- | --- | --- |
-| [HTTP 令牌提供程序](http://code.msdn.microsoft.com/Service-Bus-HTTP-Token-38f2cfc5) |演示对服务总线的 HTTP/REST 客户端进行身份验证的不同方法。 |2.1 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Service Bus HTTP Client](http://code.msdn.microsoft.com/Service-Bus-HTTP-client-fe7da74a)（服务总线 HTTP 客户端） |演示如何通过 HTTP/REST 将消息发送到服务总线和接收来自服务总线的消息。 |2.3 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Service Bus Autoforwarding](http://code.msdn.microsoft.com/Service-Bus-Autoforwarding-b9df470b)（服务总线自动转发） |演示如何将队列、订阅或死信队列的消息自动转发到另一个队列或主题。 它还演示如何通过传输队列将消息发送到队列或主题。 |2.3 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: WCF Channel Session Sample](http://code.msdn.microsoft.com/Brokered-Messaging-WCF-0a526451)（中转消息传送：WCF 通道会话示例） |演示如何通过 Windows Communication Foundation (WCF) 通道使用 Microsoft Azure 服务总线。 此示例演示了如何使用 WCF 通道来通过服务总线队列发送和接收消息。 此示例演示了通过服务总线进行的会话和非会话通信。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Transactions](http://code.msdn.microsoft.com/Brokered-Messaging-8cd41d1e)（中转消息传送：事务） |演示如何使用事务范围内的 Microsoft Azure 服务总线消息传送功能来确保消息传送操作的批处理是以原子方式提交的。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Management Operations Using REST](http://code.msdn.microsoft.com/Brokered-Messaging-569cff88)（中转消息传送：使用 REST 管理操作） |演示如何使用 REST 在服务总线上执行管理操作。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Resource Provider REST APIs](http://code.msdn.microsoft.com/Service-Bus-Resource-5d887203)（资源提供程序 REST API） |演示如何使用新的服务总线 RDFE REST API 来管理命名空间和消息传送实体。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: WCF Service Session Sample](http://code.msdn.microsoft.com/Brokered-Messaging-WCF-db4262c2)（中转消息传送：WCF 服务会话示例） |演示如何通过 WCF 服务模型来使用Microsoft Azure 服务总线。 此示例演示了通过服务总线队列使用 WCF 服务模型完成基于会话的通信。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Request Response](http://code.msdn.microsoft.com/Brokered-Messaging-Request-2b4ff5d8)（中转消息传送：请求响应） |演示如何使用 Microsoft Azure 服务总线和请求/响应功能。 此示例演示了通过服务总线队列通信的简单客户端和服务器。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Dead Letter Queue](http://code.msdn.microsoft.com/Brokered-Messaging-Dead-22536dd8)（中转消息传送：死信队列） |演示如何使用 Microsoft Azure 服务总线和消息传送“死信队列”功能。 此示例演示了通过服务总线队列通信的发送方和接收方。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Deferred Messages](http://code.msdn.microsoft.com/Brokered-Messaging-ccc4f879)（中转消息传送：延迟消息） |演示如何使用 Microsoft Azure 服务总线的消息延迟功能。 此示例演示了通过服务总线队列通信的发送方和接收方。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Session Messages](http://code.msdn.microsoft.com/Brokered-Messaging-Session-41c43fb4)（中转消息传送：会话消息） |演示如何使用 Microsoft Azure 服务总线和消息传送会话功能。 此示例演示了通过服务总线队列通信的发送方和接收方。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Request Response Topic](http://code.msdn.microsoft.com/Brokered-Messaging-Request-6759a36e)（中转消息传送：请求响应主题） |演示如何使用 Microsoft Azure 服务总线主题和订阅实现请求/响应模式。 此示例演示了通过服务总线主题通信的简单客户端和服务器。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Request Response Queue](http://code.msdn.microsoft.com/Brokered-Messaging-Request-0ce8fcaf)（中转消息传送：请求响应队列） |演示如何使用 Microsoft Azure 服务总线和请求/响应功能。 此示例演示了通过两个服务总线队列进行通信的简单客户端和服务器。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Duplicate Detection](http://code.msdn.microsoft.com/Brokered-Messaging-c0acea25)（中转消息传送：重复检测） |演示如何通过队列使用 Microsoft Azure 服务总线重复消息检测。 它创建两个队列，一个启用了重复检测，另一个未启用重复检测。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Async Messaging](http://code.msdn.microsoft.com/Brokered-Messaging-Async-211c1e74)（中转消息传送：异步消息传送） |演示如何使用 Microsoft Azure 服务总线异步发送和接收来自队列的消息。 队列提供了发送方和任意数量的接收方（此处为一个接收方）之间的分离式异步通信。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Advanced Filters](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)（中转消息传送：高级筛选器） |演示如何使用 Microsoft Azure 服务总线发布/订阅高级筛选器。 它创建了具有不同的筛选器定义的 1 个主题和 3 个订阅中，将消息发送到主题，并从订阅接收所有消息。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [Brokered Messaging: Messages Prefetch](http://code.msdn.microsoft.com/Brokered-Messaging-be2dac1d)（中转消息传送：消息预提取） |演示如何使用 Microsoft Azure 服务总线预提取功能。 演示了如何在接收时使用消息预提取功能。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-
-## <a name="service-bus-reference-tools"></a>服务总线参考工具
-下面的示例演示了服务的各种功能。
-
-| 示例名称 | 说明 | 最低 SDK 版本 | 可用性 |
-| --- | --- | --- | --- |
-| [服务总线资源管理器](http://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a) |服务总线资源管理器允许用户连接到服务总线服务命名空间并以一种简单的方式管理消息传送实体。 该工具提供了各种高级功能，例如导入/导出功能以及测试消息实体和中继服务的功能。 |1.8 |Microsoft Azure 服务总线；Windows Server 服务总线 |
-| [授权：SBAzTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93) |此示例演示了如何在 Microsoft Azure Active Directory（也称为访问控制服务或 ACS）中创建和管理服务标识，以便使用服务总线。 |不适用 |Microsoft Azure Service Bus |
+此外， [服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)是在 GitHub 上托管的示例，可用于连接到服务总线服务命名空间并轻松管理消息实体。 该工具提供了各种高级功能，例如导入/导出功能以及测试消息实体和中继服务的功能。 可以在 [GitHub](https://github.com/paolosalvatori/ServiceBusExplorer) 上找到完整的服务总线资源管理器源代码和文档。
 
 ## <a name="next-steps"></a>后续步骤
+
+示例位置在此处：
+
+- [GitHub 示例](https://github.com/Azure/azure-service-bus/tree/master/samples)
+- [服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)
+
 请参阅以下主题了解服务总线的概念性概述。
 
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [服务总线体系结构](service-bus-architecture.md)
 * [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: kdotchko
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: c09caf68b4acf90b5a76d2d715e07fc3a522f18c
-ms.openlocfilehash: 7b9b7e558a95de88dedcb744e2a4b3c18cde35cc
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 94389b06fda751716e1d593a85232ce37dae0b57
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -209,7 +210,7 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [IoT 中心开发人员指南][lnk-devguide]
-* [使用 IoT 网关 SDK 模拟设备][lnk-gateway]
+* [使用 Azure IoT Edge 模拟设备][lnk-iotedge]
 
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-mqtt-org]: http://mqtt.org/
@@ -229,7 +230,7 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 [lnk-compare]: iot-hub-compare-event-hubs.md
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-messaging]: iot-hub-devguide-messaging.md

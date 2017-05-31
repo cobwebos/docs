@@ -13,27 +13,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 05/15/2017
 ms.author: corywink
-translationtype: Human Translation
-ms.sourcegitcommit: 4c2de5227388a1f23af84048a83564816ae329bd
-ms.openlocfilehash: 6f7e787f18a9ffa77430c86931196c638f000cc8
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: bdf4cd89d5ad0392337dfe761108608d506adf18
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
 # <a name="customize-a-preconfigured-solution"></a>自定义预配置解决方案
+
 Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何协力提供端到端解决方案。 从这个起点开始，有好几个地方可以针对特定应用场景扩展和自定义解决方案。 以下各节描述了这些常见的自定义点。
 
 ## <a name="find-the-source-code"></a>查找源代码
+
 预配置解决方案的源代码可在以下 GitHub 存储库获得：
 
 * 远程监视：[https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
 * 预见性维护：[https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
+* 已连接的工厂：[https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
 
 提供预配置解决方案源代码的目的，在于演示实现使用 Azure IoT 套件的 IoT 解决方案的端到端功能时所采用的模式和做法。 你可以找到有关如何在 GitHub 存储库中生成和部署解决方案的详细信息。
 
 ## <a name="change-the-preconfigured-rules"></a>更改预配置规则
+
 远程监视解决方案包含三个 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)作业，这些作业可处理针对解决方案中的设备信息、遥测数据及规则逻辑。
 
 [远程监视预配置解决方案演练](iot-suite-remote-monitoring-sample-walkthrough.md)深入介绍了这三个流分析作业及其语法。 
@@ -51,26 +56,29 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 
 > [!NOTE]
 > 远程监视仪表板依赖特定数据，因此更改作业可能会导致仪表板出现故障。
-> 
-> 
 
 ## <a name="add-your-own-rules"></a>添加自己的规则
+
 除了更改预配置的 Azure 流分析作业，也可以使用 Azure 门户添加新作业或添加对现有作业的新查询。
 
 ## <a name="customize-devices"></a>自定义设备
+
 最常见的扩展活动之一是使用方案特定的设备。 使用设备的方法有数种。 这些方法包括更改模拟设备以符合你的方案，或使用 [IoT 设备 SDK][IoT Device SDK] 将物理设备连接到解决方案。
 
 有关添加设备的分步指南，请参阅 [Iot 套件连接设备](iot-suite-connecting-devices.md)一文和[远程监视 C SDK 示例](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring)。 本示例旨在配合远程监视预配置解决方案使用。
 
 ### <a name="create-your-own-simulated-device"></a>创建自己的模拟设备
+
 [远程监视解决方案源代码](https://github.com/Azure/azure-iot-remote-monitoring)中包含了一个 .NET 模拟器。 此模拟器是解决方案中预配的模拟器，可以对其进行更改以发送不同的元数据、遥测数据和响应不同的命令和方法。
 
 远程监视预配置解决方案模拟器中的预配置模拟器是发出温度和湿度遥测的冷却设备。 分叉 GitHub 存储库后，可以在 [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) 项目中修改模拟器。
 
 ### <a name="available-locations-for-simulated-devices"></a>模拟设备的可用位置
+
 默认的位置集为美国华盛顿州西雅图/雷德蒙德。 可以 [SampleDeviceFactory.cs][lnk-sample-device-factory] 中更改这些位置。
 
 ### <a name="add-a-desired-property-update-handler-to-the-simulator"></a>将所需的属性更新处理程序添加到模拟器
+
 可在解决方案门户中设置设备所需属性的值。 当设备检索所需的属性值时，由设备负责处理属性更改请求。 若要通过所需的属性添加属性值更改支持，需要将一个处理程序添加到模拟器。
 
 模拟器包含 **SetPointTemp** 和**TelemetryInterval** 的处理程序，可以通过在解决方案门户中设置所需值来更新这些属性。
@@ -100,6 +108,7 @@ _desiredPropertyUpdateHandlers.Add(SetPointTempPropertyName, OnSetPointTempUpdat
 请注意，**SetPointTempPropertyName** 是定义为“Config.SetPointTemp”的常量。
 
 ### <a name="add-support-for-a-new-method-to-the-simulator"></a>将新方法支持添加到模拟器
+
 可以自定义模拟器，以添加对新[方法（直接方法）][lnk-direct-methods]的支持。 需要执行两个重要步骤：
 
 - 模拟器必须在预配置解决方案中向 IoT 中心告知方法的详细信息。
@@ -118,7 +127,7 @@ _desiredPropertyUpdateHandlers.Add(SetPointTempPropertyName, OnSetPointTempUpdat
 
 方法签名采用以下格式：`<method name>--<parameter #0 name>-<parameter #1 type>-...-<parameter #n name>-<parameter #n type>`。 例如，若要指定 **InitiateFirmwareUpdate** 方法需要名为 **FwPackageURI** 的字符串参数，请使用以下方法签名：
 
-```
+```json
 InitiateFirmwareUpate--FwPackageURI-string: "description of method"
 ```
 
@@ -128,8 +137,6 @@ InitiateFirmwareUpate--FwPackageURI-string: "description of method"
 
 > [!NOTE]
 > 从设备接收*设备信息*消息时，解决方案后端只会更新有关受支持方法的信息。
-> 
-> 
 
 以下代码示例摘自 Common 项目中的 **SampleDeviceFactory** 类，演示如何将方法添加到设备发送的报告属性中的 **SupportedMethods** 列表：
 
@@ -206,19 +213,25 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 - 立即返回“FirmwareUpdate 已接受”消息，指出设备已接受请求。
 
 ### <a name="build-and-use-your-own-physical-device"></a>构建并使用自己的（物理）设备
+
 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) 提供用于将各种设备类型（语言和操作系统）连接到 IoT 解决方案中的库。
 
 ## <a name="modify-dashboard-limits"></a>修改仪表板限制
+
 ### <a name="number-of-devices-displayed-in-dashboard-dropdown"></a>仪表板下拉列表中显示的设备数
+
 默认值为 200。 可以在 [DashboardController.cs][lnk-dashboard-controller] 中更改此数字。
 
 ### <a name="number-of-pins-to-display-in-bing-map-control"></a>必应地图控件中显示的图钉数
+
 默认值为 200。 可以在 [TelemetryApiController.cs][lnk-telemetry-api-controller-01] 中更改此数字。
 
 ### <a name="time-period-of-telemetry-graph"></a>遥测图形的时间段
+
 默认值为 10 分钟。 可以在 [TelmetryApiController.cs][lnk-telemetry-api-controller-02] 中更改此值。
 
 ## <a name="manually-set-up-application-roles"></a>手动设置应用程序角色
+
 以下过程描述如何将 **Admin** 和 **ReadOnly** 应用程序角色添加到预配置解决方案中。 请注意，从 azureiotsuite.com 站点预配的预配置解决方案已经包含 **Admin** 和 **ReadOnly** 角色。
 
 **ReadOnly** 角色的成员可以看到仪表板和设备列表，但不能添加设备、更改设备属性或发送命令。  **Admin** 角色的成员具有对解决方案中所有功能的完全访问权限。
@@ -231,13 +244,13 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 6. 在页面底部，单击“**管理清单**”，然后单击“**下载清单**”。
 7. 此过程会将一个 .json 文件下载到本地计算机。 在所选的文本编辑器中打开此文件进行编辑。
 8. 在 .json 文件的第三行，可看到：
-   
-   ```
+
+   ```json
    "appRoles" : [],
    ```
    将此行替换为以下代码：
-   
-   ```
+
+   ```json
    "appRoles": [
    {
    "allowedMemberTypes": [
@@ -260,20 +273,24 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
    "value": "ReadOnly"
    } ],
    ```
+
 9. 保存更新后的 .json 文件（可以覆盖现有文件）。
 10. 在 Azure 经典门户中，选择页面底部的“管理清单”，然后选择“上传清单”上传在上一步保存的 .json 文件。
 11. 现在已将 **Admin** 和 **ReadOnly** 角色添加到应用程序中。
 12. 若要将其中一个角色分配给目录中的用户，请参阅 [azureiotsuite.com 站点上的权限][lnk-permissions]。
 
 ## <a name="feedback"></a>反馈
+
 本文档是否涵盖你感兴趣的自定义内容？ 请在“用户之声”[](https://feedback.azure.com/forums/321918-azure-iot)中添加功能建议，或写下对本文的评语。 
 
 ## <a name="next-steps"></a>后续步骤
+
 若要详细了解自定义预配置解决方案的选项，请参阅：
 
 * [将逻辑应用连接到 Azure IoT 套件远程监视预配置解决方案][lnk-logicapp]
 * [配合使用动态遥测和远程监视预配置解决方案][lnk-dynamic]
 * [远程监视预配置解决方案中的设备信息元数据][lnk-devinfo]
+* [自定义连接工厂解决方案显示 OPC UA 服务器中的数据的方式][lnk-cf-customize]
 
 [lnk-logicapp]: iot-suite-logic-apps-tutorial.md
 [lnk-dynamic]: iot-suite-dynamic-telemetry.md
@@ -287,3 +304,4 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-classic-portal]: https://manage.windowsazure.com
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
+[lnk-cf-customize]: iot-suite-connected-factory-customize.md

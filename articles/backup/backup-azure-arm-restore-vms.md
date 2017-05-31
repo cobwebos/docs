@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/12/2017
 ms.author: markgal;trinadhk;
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 61f09a6f103b9cedaf19f1128a21fa8d5df974a1
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: ff505246bef15d180e3844558d68a425df60c35f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -102,7 +103,7 @@ ms.lasthandoff: 03/31/2017
    * 还原完整虚拟机
    * 还原备份磁盘
 
-门户针对已还原的 VM 提供“快速创建”选项。 如果想要自定义在创建新 VM 过程中创建的资源的 VM 配置或名称，请使用 PowerShell 或门户还原已备份的磁盘，然后使用 PowerShell 命令将它们附加到所选的 VM 配置，或者使用还原磁盘随附的模板来自定义已还原的 VM。 有关如何还原使用多个 NIC 或负载均衡器的 VM 的详细信息，请参阅[还原采用特殊网络配置的 VM](#restoring-vms-with-special-network-configurations)。 
+门户针对已还原的 VM 提供“快速创建”选项。 如果想要自定义在创建新 VM 过程中创建的资源的 VM 配置或名称，请使用 PowerShell 或门户还原已备份的磁盘，然后使用 PowerShell 命令将它们附加到所选的 VM 配置，或者使用还原磁盘随附的模板来自定义已还原的 VM。 有关如何还原使用多个 NIC 或负载均衡器的 VM 的详细信息，请参阅[还原采用特殊网络配置的 VM](#restoring-vms-with-special-network-configurations)。 如果 Windows VM 使用 [HUB 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，则需要还原磁盘并使用下面指定的 PowerShell/模板创建 VM，确保在创建 VM 时将 LicenseType 指定为“Windows_Server”以利用还原的 VM 上的 HUB 好处。 
  
 ## <a name="create-a-new-vm-from-restore-point"></a>从还原点创建新的 VM
 如果尚未执行此操作，请[选择一个还原点](#restoring-vms-with-special-network-configurations)，然后继续从还原点创建新的 VM。 选择还原点后，请在“还原配置”边栏选项卡中，输入或选择以下每个字段的值：
@@ -194,6 +195,7 @@ ms.lasthandoff: 03/31/2017
 * 将会安装存在于备份配置期间的扩展，但不会启用这些扩展。 如果发现任何问题，请重新安装扩展。 
 * 如果备份的 VM 具有静态 IP，则还原的 VM 将具有动态 IP 以避免在创建还原的 VM 时发生冲突。 详细了解如何[向还原的 VM 添加静态 IP](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
 * 还原的 VM 将不会设置可用性值。 使用已还原的磁盘从 PowerShell 或模板创建 VM 时，建议使用还原磁盘选项和[添加可用性集](../virtual-machines/windows/create-availability-set.md#use-powershell-to-create-an-availability-set)。 
+
 
 ## <a name="backup-for-restored-vms"></a>备份还原的 VM
 如果将 VM 还原到的资源组与最初备份 VM 时所在的资源组同名，则还原之后，会继续备份该 VM。 如果将 VM 还原到了不同的资源组或者为还原的 VM 指定了不同的名称，则系统会将此 VM 视为新 VM，因此需要为还原的 VM 设置备份。

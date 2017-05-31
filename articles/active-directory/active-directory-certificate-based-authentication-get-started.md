@@ -10,12 +10,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2017
+ms.date: 05/17/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e0adbb9f7c427c08e59841a598b4f0fc99e43f26
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c32f2ca2c799332652d38d882a4d6337bade4f93
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -124,12 +125,13 @@ ms.lasthandoff: 04/27/2017
 
 ### <a name="add"></a>添加
 
-若要创建受信任的证书颁发机构，请使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet： 
+若要创建受信任的证书颁发机构，请使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet，并将 **crlDistributionPoint** 属性设为正确的值： 
    
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]" 
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation 
     $new_ca.AuthorityType=0 
     $new_ca.TrustedCertificate=$cert 
+    $new_ca.crlDistributionPoint=”<CRL Distribution URL>”
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca 
 
 

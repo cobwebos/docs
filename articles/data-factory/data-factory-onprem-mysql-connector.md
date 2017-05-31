@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2017
+ms.date: 05/15/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 6320331adc80998f1f64cdfa56839d940708bdc4
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 05159bfd98977d0b57b43fbc02e4579439f7ce4c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -35,7 +36,10 @@ ms.lasthandoff: 03/30/2017
 > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
 
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
-为使数据管理网关连接到 MySQL 数据库，需要在数据管理网关所在的系统上安装[用于 Microsoft Windows 的 MySQL 连接器/Net 6.6.5](http://go.microsoft.com/fwlink/?LinkId=278885) 或更高版本。 支持 5.1 和更高版本的 MySQL。
+为使数据管理网关连接到 MySQL 数据库，需要在数据管理网关所在的系统上安装[用于 Microsoft Windows 的 MySQL 连接器/Net ](https://dev.mysql.com/downloads/connector/net/)（版本 6.6.5 或更高版本）。 支持 5.1 和更高版本的 MySQL。
+
+> [!TIP]
+> 如果遇到“身份验证失败，因为远程方已关闭传输流”错误，请考虑将 MySQL 连接器/Net 升级到更高版本。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 

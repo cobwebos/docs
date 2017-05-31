@@ -12,17 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 05/10/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: c579c0866387a5eff17b4dbfe25a6cb7d1d47700
-ms.openlocfilehash: 4adf15e4767344d450b7411733a5d2f09cb9f06b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 7288f8fa173f8018570cd17aa7274f56a4eead41
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
-重视安全的大型组织都希望迁移到 Office 365 等云服务中，但需要知道，他们不应该允许其用户访问未批准的资源。 在传统上，公司在想要管理访问权限时，会限制域名或 IP 地址。 如果 SaaS 应用在公有云中托管并在类似于 outlook.office.com 和 login.microsoftonline.com 的共享域名中运行，则这种做法将会失败。 阻止这些地址会导致用户完全无法访问 Web 上的 Outlook，而不只是将他们能够访问的内容局限于批准的标识和资源。
+重视安全的大型组织都希望迁移到 Office 365 等云服务中，但需要知道，其用户只能访问已批准的资源。 在传统上，公司在想要管理访问权限时，会限制域名或 IP 地址。 如果 SaaS 应用在公有云中托管并在类似于 outlook.office.com 和 login.microsoftonline.com 的共享域名中运行，则这种做法将会失败。 阻止这些地址会导致用户完全无法访问 Web 上的 Outlook，而不只是将他们能够访问的内容局限于批准的标识和资源。
 
 为了解决这个难题，Azure Active Directory 推出了一项称作“租户限制”的功能。 租户限制可让组织根据应用程序用于单一登录的 Azure AD 租户来控制对 SaaS 云应用程序的访问。 例如，你可能希望允许用户访问你所在组织的 Office 365 应用程序，同时阻止他们访问其他组织中这些应用程序的实例。  
 
@@ -30,7 +32,7 @@ ms.openlocfilehash: 4adf15e4767344d450b7411733a5d2f09cb9f06b
 
 本文重点介绍 Office 365 的租户限制，但该功能应该也适用于结合 Azure AD 使用新式身份验证协议进行单一登录的任何 SaaS 云应用。 如果你的 SaaS 应用使用的 Azure AD 租户不同于 Office 365 使用的租户，请确保允许全部所需的租户。 有关 SaaS 云应用的详细信息，请参阅 [Active Directory Marketplace](https://azure.microsoft.com/en-us/marketplace/active-directory/)（Active Directory 应用商店）。
 
-## <a name="how-does-it-work"></a>工作原理
+## <a name="how-it-works"></a>工作原理
 
 总体解决方案由以下组件构成： 
 
@@ -101,7 +103,7 @@ Restricted-Access-Context 租户的管理员可以使用此报告来查看由于
 
 与使用 Azure 门户中的其他报告时一样，可以使用筛选器来指定报告的范围。 可以根据特定的用户、应用程序、客户端或时间间隔进行筛选。
 
-## <a name="office-365-support-for-tenant-restrictions"></a>Office 365 对租户限制的支持
+## <a name="office-365-support"></a>Office 365 支持
 
 Office 365 应用程序必须满足两个条件才能完全支持租户限制：
 
@@ -112,7 +114,7 @@ Office 365 应用程序必须满足两个条件才能完全支持租户限制：
 
 Office 365 基于浏览器的应用程序（Office 门户、Yammer、SharePoint 网站、Outlook 网页版等）目前支持租户限制。 胖客户端（Outlook、Skype for Business、Word、Excel、 PowerPoint 等）仅当使用新式身份验证时，才能实施租户限制。  
 
-支持新式身份验证的 Outlook 和 Skype for Business 客户端仍可针对未启用新式身份验证的租户使用传统协议，从而有效绕过租户限制。 对于 Windows 上的 Outlook，客户可能选择实施限制来阻止最终用户将未经批准的邮件帐户添加到其配置文件。 有关示例，请参阅[阻止添加非默认 Exchange 帐户](http://gpsearch.azurewebsites.net/default.aspx?ref=1)组策略设置。 对于非 Windows 平台上的 Outlook 以及所有平台上的 Skype for Business，如果已启用新式身份验证作为整个服务的默认身份验证方法，则应该完全支持租户限制。
+支持新式身份验证的 Outlook 和 Skype for Business 客户端仍可针对未启用新式身份验证的租户使用传统协议，从而有效绕过租户限制。 对于 Windows 上的 Outlook，客户可能选择实施限制来阻止最终用户将未经批准的邮件帐户添加到其配置文件。 有关示例，请参阅[阻止添加非默认 Exchange 帐户](http://gpsearch.azurewebsites.net/default.aspx?ref=1)组策略设置。 对于非 Windows 平台上的 Outlook 和所有平台上的 Skype for Business，对租户限制的完全支持当前不可用。
 
 ## <a name="testing"></a>测试
 
@@ -122,20 +124,15 @@ Office 365 基于浏览器的应用程序（Office 门户、Yammer、SharePoint 
 
 Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS 流量，包括插入 HTTP 标头。 若要配置 Fiddler 来测试租户限制，请执行以下步骤：
 
-1.  [下载并安装 Fiddler](http://www.telerik.com/fiddler)。
-2.  根据 [Fiddler 的帮助文档](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)，配置 Fiddler 来解密 HTTPS 流量。
-3.  配置 Fiddler，使用自定义规则插入 *Restrict-Access-To-Tenants* 和 *Restrict-Access-Context* 标头：
+1.    [下载并安装 Fiddler](http://www.telerik.com/fiddler)。
+2.    根据 [Fiddler 的帮助文档](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)，配置 Fiddler 来解密 HTTPS 流量。
+3.    配置 Fiddler，使用自定义规则插入 *Restrict-Access-To-Tenants* 和 *Restrict-Access-Context* 标头：
   1. 在 Fiddler Web 调试器工具中选择“规则”菜单，然后选择“自定义规则...” 打开 CustomRules 文件。
   2. 在 *OnBeforeRequest* 函数的开头添加以下行。 将 \<tenant domain\> 替换为已注册到租户的域，例如 contoso.onmicrosoft.com。 将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。
 
   ```
-  if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){
-      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";
-      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";
-  }
+  if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
   ```
-  >[!NOTE]
-  > 上面的代码片段不可换行。 右括号之前不能有回车符。
 
   如果需要允许多个租户，请使用逗号分隔租户名称。 例如：
 
@@ -151,8 +148,8 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
 
 根据代理基础结构的功能，有时可以分阶段向用户部署设置。 请考虑下面几个高级选项：
 
-1.  使用 PAC 文件将测试用户指向测试代理基础结构，普通用户可继续使用生产代理基础结构。
-2.  某些代理服务器可以使用组来支持不同的配置。
+1.    使用 PAC 文件将测试用户指向测试代理基础结构，普通用户可继续使用生产代理基础结构。
+2.    某些代理服务器可以使用组来支持不同的配置。
 
 有关具体细节，请参阅代理服务器文档。
 
@@ -161,9 +158,4 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
 - 阅读 [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)（更新的 Office 365 新式身份验证）
 
 - 查看 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

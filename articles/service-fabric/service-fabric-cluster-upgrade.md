@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: 0231c3148d03ffef0a518a68bb79398462da2605
-ms.openlocfilehash: 89721efbb9f05871716ca1b16ad0d54eaf1ffd62
-ms.lasthandoff: 12/07/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 0b63228e5b09f5d22fc55818986a0a2eb1204278
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -168,31 +169,31 @@ Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们将�
 ![显示 Azure 门户中证书指纹的屏幕截图。][CertificateUpgrade]
 
 ### <a name="application-ports"></a>应用程序端口
-可以通过更改与节点类型关联的负载平衡器资源属性来更改应用程序端口。 可以使用门户或者直接使用 Resource Manager PowerShell。
+可以通过更改与节点类型关联的负载均衡器资源属性来更改应用程序端口。 可以使用门户或者直接使用 Resource Manager PowerShell。
 
 若要在某个节点类型中的所有 VM 上打开新端口，请执行以下操作：
 
-1. 将新探测添加到相应的负载平衡器。
+1. 将新探测添加到相应的负载均衡器。
    
-    如果群集是使用门户部署的，则负载均衡器将命名为“资源组 NodeTypename 的 LB 名称”，每个节点类型各有一个负载均衡器。 由于负载平衡器名称只是在资源组中唯一，因此最好在特定资源组下搜索名称。
+    如果群集是使用门户部署的，则负载均衡器将命名为“资源组 NodeTypename 的 LB 名称”，每个节点类型各有一个负载均衡器。 由于负载均衡器名称只是在资源组中唯一，因此最好在特定资源组下搜索名称。
    
-    ![显示如何在门户中向负载平衡器添加探测的屏幕截图。][AddingProbes]
-2. 将新规则添加到负载平衡器。
+    ![显示如何在门户中向负载均衡器添加探测的屏幕截图。][AddingProbes]
+2. 将新规则添加到负载均衡器。
    
-    使用在上一个步骤中创建的探测，向同一负载平衡器添加新规则。
+    使用在上一个步骤中创建的探测，向同一负载均衡器添加新规则。
    
-    ![在门户中向负载平衡器添加新规则。][AddingLBRules]
+    ![在门户中向负载均衡器添加新规则。][AddingLBRules]
 
 ### <a name="placement-properties"></a>放置属性
 对于每个节点类型，可以添加要在应用程序中使用的自定义放置属性。 NodeType 是无需显式添加即可使用的默认属性。
 
 > [!NOTE]
-> 有关使用放置约束、节点属性以及如何定义它们的详细信息，请参阅 Service Fabric 群集资源管理器文档[描述群集](service-fabric-cluster-resource-manager-cluster-description.md)中的“放置约束和节点属性”部分。
+> 有关使用放置约束、节点属性以及如何定义它们的详细信息，请参阅 Service Fabric 群集 Resource Manager 文档[描述群集](service-fabric-cluster-resource-manager-cluster-description.md)中的“放置约束和节点属性”部分。
 > 
 > 
 
 ### <a name="capacity-metrics"></a>容量度量值
-对于每个节点类型，可以添加要在应用程序中用于报告负载的自定义容量度量值。 有关使用容量指标来报告负载的详细信息，请参阅 Service Fabric 群集资源管理器文档[描述群集](service-fabric-cluster-resource-manager-cluster-description.md)，以及[指标和负载](service-fabric-cluster-resource-manager-metrics.md)。
+对于每个节点类型，可以添加要在应用程序中用于报告负载的自定义容量度量值。 有关使用容量指标来报告负载的详细信息，请参阅 Service Fabric 群集 Resource Manager 文档[描述群集](service-fabric-cluster-resource-manager-cluster-description.md)，以及[指标和负载](service-fabric-cluster-resource-manager-metrics.md)。
 
 ### <a name="fabric-upgrade-settings---health-polices"></a>Fabric 升级设置 - 运行状况策略
 可以为结构升级指定自定义运行状况策略。 如果已将群集设置为自动结构升级，则这些策略会应用到自动结构升级的阶段 1 中。
@@ -206,7 +207,7 @@ Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们将�
 请参阅 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)了解可以如何自定义这些设置。
 
 ### <a name="os-patches-on-the-vms-that-make-up-the-cluster"></a>构成群集的 VM 上的操作系统修补
-此功能即将作为自动化功能推出。 但目前你需要负责修补 VM。 必须每次修补一个 VM，以便不会同时关闭多个 VM。
+请参考可部署在群集上的[修补业务流程应用程序](service-fabric-patch-orchestration-application.md)，以便以协调一致的方式从 Windows 更新安装修补程序，从而使服务始终可用。 
 
 ### <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>构成群集的 VM 上的操作系统升级
 如果你必须升级群集虚拟机上的操作系统映像，必须一次升级一个 VM。 你需要自行负责这种升级 - 目前没有自动化的功能用于实现此目的。
