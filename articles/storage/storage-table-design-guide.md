@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 02/28/2017
 ms.author: jahogg
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 9da543dbebe8f35178233d91492b0aff21f10986
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5ddb234cc97b3113ec865f97195c871b9f2f40d3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure 存储表设计指南：设计可伸缩的高性能表
-## <a name="overview"></a>概述
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+
 要设计可伸缩的高性能表，必须考虑许多因素（如性能、可伸缩性和成本）。 如果你以前已为关系数据库设计过架构，这些注意事项对你来说将会很熟悉，尽管 Azure 表服务存储模型与关系模型之间有一些相似之处，但也有许多重大差异。 这些差异通常会导致非常不同的设计，这些设计对于熟悉关系数据库的人来说可能看起来不直观或是错误的，但如果你正在设计 Azure 表服务等 NoSQL 键/值存储，就会体会到这些设计是很合理的。 许多设计差异将反映这样一个事实：表服务旨在支持云级别应用程序，这些应用程序可包含数十亿个实体（相当于关系数据库术语中的行）的数据，或者用于必须支持非常高事务量的数据集：因此，你需要以不同方式考虑如何存储数据，并了解表服务的工作原理。 相对于使用关系数据库的解决方案而言，设计良好的 NoSQL 数据存储可以使你的解决方案更进一步的扩展（以更低的成本）。 本指南中将介绍这些主题。  
 
 ## <a name="about-the-azure-table-service"></a>关于 Azure 表服务
@@ -261,7 +263,7 @@ EGT 还为你引入了潜在的权衡以便在设计中进行评估：使用更�
 
 * [内分区的第二索引模式](#intra-partition-secondary-index-pattern) - 利用同一分区中的 RowKey 值存储每个实体的多个副本，实现快速、高效的查询并借助不同的 RowKey 值替换排序顺序。  
 * [内分区的第二索引模式](#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 RowKey 值替换排序顺序。
-* [日志结尾模式](#log-tail-pattern) - 利用按日期和时间倒序方式排序的 **RowKey** 值，检索最近添加到分区中的 *n* 个实体。  
+* [日志结尾模式](#log-tail-pattern) - 利用按日期和时间倒序方式排序的 RowKey 值，检索最近添加到分区中的 n 个实体。  
 
 ## <a name="design-for-data-modification"></a>针对数据修改的设计
 本部分重点介绍优化插入、更新和删除的设计注意事项。 在某些情况下，你将需要在针对查询优化的设计与针对数据修改优化的设计之间进行权衡，就像你在设计关系数据库时要做的那样（尽管在关系数据库中，管理设计权衡的方法是不同的）。 [表设计模式](#table-design-patterns)部分介绍了一些详细的表服务设计模式，着重阐释了其中的部分权衡。 在实践中，你会发现许多针对查询实体优化的设计对于修改实体也能很好地工作。  
@@ -296,7 +298,7 @@ EGT 还为你引入了潜在的权衡以便在设计中进行评估：使用更�
 [表设计模式](#table-design-patterns)部分中的以下模式针对的是设计实现高效查询和设计实现高效数据修改之间的折衷方案：  
 
 * [复合键模式](#compound-key-pattern) - 通过复合 **RowKey** 值，客户端可使用单个点查询查找相关数据。  
-* [日志结尾模式](#log-tail-pattern) - 利用按日期和时间倒序方式排序的 **RowKey** 值，检索最近添加到分区中的 *n* 个实体。  
+* [日志结尾模式](#log-tail-pattern) - 利用按日期和时间倒序方式排序的 RowKey 值，检索最近添加到分区中的 n 个实体。  
 
 ## <a name="encrypting-table-data"></a>对表数据进行加密
 .NET Azure 存储客户端库支持对插入和替换操作的字符串实体属性进行加密。 加密的字符串作为二进制属性存储在服务中，并在解密之后转换回字符串。    
@@ -718,10 +720,10 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 * [最终一致的事务模式](#eventually-consistent-transactions-pattern)  
 
 ### <a name="log-tail-pattern"></a>记录结尾模式
-通过按日期时间倒序方式排序的 **RowKey** 值，检索最近添加到分区中的 *n* 个实体。  
+使用按日期和时间倒序排列的 RowKey 值，检索最近添加到分区的 n 个实体。  
 
 #### <a name="context-and-problem"></a>上下文和问题
-一个常见的需求是能够检索最近创建的实体，例如某个员工提交的最近 10 个费用报销单。 表查询支持 **$top** 查询操作，可返回一个集中的前 n 个实体：没有可返回集中最后 *n* 个实体的等效查询操作。  
+一个常见的需求是能够检索最近创建的实体，例如某个员工提交的最近 10 个费用报销单。 表查询支持 $top 查询操作，可返回一个集中的前 n 个实体：没有可返回集中最后 n 个实体的等效查询操作。  
 
 #### <a name="solution"></a>解决方案
 利用按日期/时间倒序顺序自然排序的 **RowKey** 存储实体，由此使最新条目始终显示为表格中的第一条。  

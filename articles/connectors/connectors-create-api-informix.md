@@ -4,7 +4,7 @@ description: "使用 REST API 参数的 Informix 连接器概述"
 services: 
 documentationcenter: 
 author: gplarsen
-manager: erikre
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: ca2393f0-3073-4dc2-8438-747f5bc59689
@@ -14,15 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
-ms.author: plarsen
-translationtype: Human Translation
-ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
-ms.openlocfilehash: 614400a8787fdd2081fa8e981c0fc6b6dd794a58
+ms.author: plarsen; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ca7a62338740e39647b39f2221bc5ac7321ba4fd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="get-started-with-the-informix-connector"></a>Informix 连接器入门
-Microsoft Informix 连接器可将逻辑应用连接到在 IBM Informix 数据库中存储的资源。 Informix 连接器包括要在 TCP/IP 网络上与远程 Informix 服务器计算机通信的 Microsoft 客户端。 这包括云数据库（如在 Azure 虚拟化中运行的 Windows IBM Informix）和使用本地数据网关的本地数据库。 请参阅 IBM Informix 平台和版本（在本主题中）的[受支持列表](connectors-create-api-informix.md#supported-informix-platforms-and-versions)。
+Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix 数据库中的资源。 Informix 连接器包括要在 TCP/IP 网络上与远程 Informix 服务器计算机通信的 Microsoft 客户端。 这包括云数据库（如在 Azure 虚拟化中运行的 Windows IBM Informix）和使用本地数据网关的本地数据库。 请参阅 IBM Informix 平台和版本（在本主题中）的[受支持列表](connectors-create-api-informix.md#supported-informix-platforms-and-versions)。
 
 > [!NOTE]
 > 此文章版本适用于逻辑应用通用版本 (GA)。 
@@ -64,7 +66,7 @@ Microsoft Informix 连接器可将逻辑应用连接到在 IBM Informix 数据�
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”、选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。  
+3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。  
 4. 选择“+ 新步骤”框，然后选择“添加操作”。
 5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 获取表(预览)”。
    
@@ -134,7 +136,7 @@ Microsoft Informix 连接器可将逻辑应用连接到在 IBM Informix 数据�
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”、选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
+3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
 4. 选择“+ 新步骤”框，然后选择“添加操作”。
 5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 获取行(预览)”。
 6. 在“获取行(预览)”操作中，选择“更改连接”。
@@ -171,7 +173,7 @@ Microsoft Informix 连接器可将逻辑应用连接到在 IBM Informix 数据�
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”、选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
+3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
 4. 选择“+ 新步骤”框，然后选择“添加操作”。
 5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 插入行(预览)”。
 6. 在“获取行(预览)”操作中，选择“更改连接”。 
@@ -198,7 +200,7 @@ Microsoft Informix 连接器可将逻辑应用连接到在 IBM Informix 数据�
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”、选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
+3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
 4. 选择“+ 新步骤”框，然后选择“添加操作”。
 5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 获取行(预览)”。
 6. 在“获取行(预览)”操作中，选择“更改连接”。 
@@ -226,7 +228,7 @@ Microsoft Informix 连接器可将逻辑应用连接到在 IBM Informix 数据�
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”、选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
+3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
 4. 选择“+ 新步骤”框，然后选择“添加操作”。
 5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 更新行(预览)”。
 6. 在“获取行(预览)”操作中，选择“更改连接”。 
@@ -253,7 +255,7 @@ Microsoft Informix 连接器可将逻辑应用连接到在 IBM Informix 数据�
 ### <a name="add-a-trigger-and-action"></a>添加触发器和操作
 1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
 2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”、选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
+3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
 4. 选择“+ 新步骤”框，然后选择“添加操作”。
 5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，然后选择“Informix - 删除行(预览)”。
 6. 在“获取行(预览)”操作中，选择“更改连接”。 
@@ -270,145 +272,16 @@ Microsoft Informix 连接器可将逻辑应用连接到在 IBM Informix 数据�
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
 
-## <a name="technical-details"></a>技术详细信息
-## <a name="actions"></a>操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 Informix 数据库连接器包括以下操作。 
-
-| 操作 | 说明 |
-| --- | --- |
-| [GetRow](connectors-create-api-informix.md#get-row) |从 Informix 表中检索单个行 |
-| [GetRows](connectors-create-api-informix.md#get-rows) |从 Informix 表中检索多个行 |
-| [InsertRow](connectors-create-api-informix.md#insert-row) |在 Informix 表中插入一个新行 |
-| [DeleteRow](connectors-create-api-informix.md#delete-row) |从 Informix 表中删除行 |
-| [GetTables](connectors-create-api-informix.md#get-tables) |从 Informix 数据库中检索表 |
-| [UpdateRow](connectors-create-api-informix.md#update-row) |更新 Informix 表中的现有行 |
-
-### <a name="action-details"></a>操作详细信息
-在此部分中，查看有关每项操作的具体详细信息，包括任何必需或可选的输入属性以及与连接器相关联的任何相应输出。
-
-#### <a name="get-row"></a>获取行
-从 Informix 表中检索单个行。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| table * |表名称 |Informix 表的名称 |
-| id * |行 ID |要检索的行的唯一标识符 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-项目
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ItemInternalId |字符串 |
-
-#### <a name="get-rows"></a>获取行
-从 Informix 表中检索多个行。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| table* |表名称 |Informix 表的名称 |
-| $skip |跳过计数 |要跳过的项数（默认值 = 0） |
-| $top |最大获取计数 |要检索的最大项数（默认值 = 256） |
-| $filter |筛选查询 |要限制项数的 ODATA 筛选查询 |
-| $orderby |排序依据 |用于指定项顺序的 ODATA orderBy 查询 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-ItemsList
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| value |数组 |
-
-#### <a name="insert-row"></a>插入行
-在 Informix 表中插入一个新行。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| table* |表名称 |Informix 表的名称 |
-| item* |行 |要插入 Informix 的指定表中的行 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-项目
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ItemInternalId |字符串 |
-
-#### <a name="delete-row"></a>删除行
-从 Informix 表中删除行。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| table* |表名称 |Informix 表的名称 |
-| ID* |行 ID |要删除的行的唯一标识符 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-无。
-
-#### <a name="get-tables"></a>获取表
-从 Informix 数据库中检索表。  
-
-此调用没有任何参数。 
-
-##### <a name="output-details"></a>输出详细信息
-TablesList
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| value |数组 |
-
-#### <a name="update-row"></a>更新行
-更新 Informix 表中的现有行。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| table* |表名称 |Informix 表的名称 |
-| ID* |行 ID |要更新的行的唯一标识符 |
-| item* |行 |具有已更新值的行 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-项目
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ItemInternalId |字符串 |
-
-### <a name="http-responses"></a>HTTP 响应
-调用不同的操作时，可能会收到特定响应。 下表概述了这些响应及其说明：  
-
-| Name | 说明 |
-| --- | --- |
-| 200 |确定 |
-| 202 |已接受 |
-| 400 |错误的请求 |
-| 401 |未授权 |
-| 403 |禁止 |
-| 404 |未找到 |
-| 500 |内部服务器错误。 发生未知错误 |
-| default |操作失败。 |
-
 ## <a name="supported-informix-platforms-and-versions"></a>支持的 Informix 平台和版本
 当配置为支持分布式关系数据库结构 (DRDA) 客户端连接时，此连接器支持以下 IBM Informix 版本。
 
 * IBM Informix 12.1
 * IBM Informix 11.7
 
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/informix/)。 
+
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

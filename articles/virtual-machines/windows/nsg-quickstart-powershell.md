@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 744563dc54edd5d38d9cb311d5679d744a0235eb
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0168bbc466f80c8603dda46ded56b7524e4e5e91
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
-# <a name="opening-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>在 Azure 中使用 PowerShell 打开 VM 的端口和终结点
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>如何在 Azure 中使用 PowerShell 打开 VM 的端口和终结点
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>快速命令
-若要创建网络安全组和 ACL 规则，需要[安装最新版本的 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 还可以[使用 Azure 门户执行这些步骤](nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要创建网络安全组和 ACL 规则，需要[安装最新版本的 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 还可以[使用 Azure 门户执行这些步骤](nsg-quickstart-portal.md)。
 
 登录到你的 Azure 帐户：
 
@@ -33,42 +34,55 @@ ms.lasthandoff: 03/31/2017
 Login-AzureRmAccount
 ```
 
-在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 `myResourceGroup`、`myNetworkSecurityGroup` 和 `myVnet`。
+在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括了 myResourceGroup、myNetworkSecurityGroup 和 myVnet。
 
-创建规则。 以下示例创建一个名为 `myNetworkSecurityGroupRule` 的规则，以允许端口 80 上的 TCP 流量：
+使用 [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) 创建规则。 以下示例创建一个名为 myNetworkSecurityGroupRule 的规则，以允许端口 80 上的 tcp 流量：
 
 ```powershell
-$httprule = New-AzureRmNetworkSecurityRuleConfig -Name "myNetworkSecurityGroupRule" `
-    -Description "Allow HTTP" -Access "Allow" -Protocol "Tcp" -Direction "Inbound" `
-    -Priority "100" -SourceAddressPrefix "Internet" -SourcePortRange * `
-    -DestinationAddressPrefix * -DestinationPortRange 80
+$httprule = New-AzureRmNetworkSecurityRuleConfig `
+    -Name "myNetworkSecurityGroupRule" `
+    -Description "Allow HTTP" `
+    -Access "Allow" `
+    -Protocol "Tcp" `
+    -Direction "Inbound" `
+    -Priority "100" `
+    -SourceAddressPrefix "Internet" `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 80
 ```
 
-接下来，创建网络安全组，并按以下步骤分配刚刚创建的 HTTP 规则。 以下示例创建一个名为 `myNetworkSecurityGroup` 的网络安全组：
+接下来，使用 [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) 创建网络安全组，并按以下步骤分配刚刚创建的 HTTP 规则。 以下示例创建名为 myNetworkSecurityGroup 的网络安全组：
 
 ```powershell
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
-    -Location "WestUS" -Name "myNetworkSecurityGroup" -SecurityRules $httprule
+$nsg = New-AzureRmNetworkSecurityGroup `
+    -ResourceGroupName "myResourceGroup" `
+    -Location "EastUS" `
+    -Name "myNetworkSecurityGroup" `
+    -SecurityRules $httprule
 ```
 
-现在我们将网络安全组分配给子网。 以下示例为变量 `$vnet` 指定名为 `myVnet` 的现有虚拟网络：
+现在我们将网络安全组分配给子网。 以下示例使用 [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) 向变量 $vnet 分配名为 myVnet 的现有虚拟网络：
 
 ```powershell
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" `
+$vnet = Get-AzureRmVirtualNetwork `
+    -ResourceGroupName "myResourceGroup" `
     -Name "myVnet"
 ```
 
-将网络安全组与子网相关联。 以下示例将名为 `mySubnet` 的子网与网络安全组相关联：
+使用 [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 将网络安全组关联到子网。 以下示例将名为 mySubnet 的子网与网络安全组相关联：
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}
 
-Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name "mySubnet" `
+Set-AzureRmVirtualNetworkSubnetConfig `
+    -VirtualNetwork $vnet `
+    -Name "mySubnet" `
     -AddressPrefix $subnetPrefix.AddressPrefix `
     -NetworkSecurityGroup $nsg
 ```
 
-最后，更新虚拟网络以使做出的更改生效：
+最后，使用 [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) 更新虚拟网络，使更改生效：
 
 ```powershell
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet

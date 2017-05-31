@@ -14,10 +14,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 1d7f24b8a65347bc54b273d08c06b22320cbeb2c
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 54389c0b6dfbe5483106ca74e379dff9091fb907
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -303,13 +304,17 @@ Set-AzureRmDnsRecordSet -RecordSet $rs
 
 ### <a name="to-modify-ns-records-at-the-zone-apex"></a>修改区域顶点处的 NS 记录
 
-不能在区域顶点的自动创建的 NS 记录集（`-Name "@"`，包括引号）中添加、删除或修改记录。 允许的更改仅限修改记录集 TTL 和元数据。
+在每个 DNS 区域自动创建区域顶点处的 NS 记录集。 其中包含分配给该区域的 Azure DNS 名称服务器名称。
 
-下面的示例演示如何更改 NS 记录集的 TTL 属性：
+可向此 NS 记录集添加其他名称服务器，从而支持与多个 DNS 提供商共同托管域。 还可修改此记录集的 TTL 和元数据。 但是，无法删除或修改预填充的 Azure DNS 名称服务器。
+
+请注意，这仅适用于区域顶点处的 NS 记录集。 区域中的其他 NS 记录集（用于委派子区域）不受约束，可进行修改。
+
+以下示例展示如何向区域顶点处的 NS 记录集添加其他名称服务器：
 
 ```powershell
 $rs = Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
-$rs.Ttl = 300
+Add-AzureRmDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
 Set-AzureRmDnsRecordSet -RecordSet $rs
 ```
 

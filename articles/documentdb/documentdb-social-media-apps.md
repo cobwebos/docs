@@ -1,28 +1,31 @@
 ---
-title: "DocumentDB 设计模式：社交媒体应用 |Microsoft Docs"
-description: "利用 DocumentDB 的存储灵活性和其他 Azure 服务了解社交网络的设计模式。"
+title: "Azure Cosmos DB 设计模式：社交媒体应用 |Microsoft Docs"
+description: "利用 Azure Cosmos DB 的存储灵活性和其他 Azure 服务了解社交网络的设计模式。"
 keywords: "社交媒体应用"
-services: documentdb
+services: cosmosdb
 author: ealsur
 manager: jhubbard
 editor: 
 documentationcenter: 
 ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 05/10/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: a49021d7887ee91da902e5c3dea8cbc6cb3de29d
-ms.lasthandoff: 03/17/2017
+redirect_url: https://aka.ms/acdbusecases
+ROBOTS: NOINDEX, NOFOLLOW
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: cdafca45ef6230af4a8730f0e2b7e41b237fa830
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="going-social-with-documentdb"></a>使用 DocumentDB 进行社交
+# <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 生活在大规模互连的社会，这意味着有时候你也会成为**社交网络**中的一部分。 我们使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
 
 作为工程师或开发人员，我们可能想知道这些网络如何存储数据以及如何将这些数据相互联系起来，甚至有可能被要求自行为特定的间隙市场创建或构建新的社交网络。 这时就会产生一个大问题：所有这些数据是如何存储的？
@@ -44,7 +47,7 @@ ms.lasthandoff: 03/17/2017
 当然，我们也可以使用一个功能足够强大的超大 SQL 实例来解决数以千计的查询，其中可以使用许多这些连接来为我们提供内容，但当已经有一个更简单的解决方案存在时，我们为什么还要选择这种呢？
 
 ## <a name="the-nosql-road"></a>NoSQL 加载
-有许多特殊图形数据库可以[在 Azure 上运行](http://neo4j.com/developer/guide-cloud-deployment/#_windows_azure)，但它们成本较高且需要 IaaS 服务（基础结构即服务，主要是虚拟机）和维护。 本文介绍的成本更低的解决方案适用于在 Azure 的 NoSQL 数据库 [DocumentDB](https://azure.microsoft.com/services/documentdb/) 上运行的大多数方案。 使用 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) 方法以 JSON 格式存储数据并应用[非规范化](https://en.wikipedia.org/wiki/Denormalization)，就可以将我们以前的复杂帖子转换为单个[文档](https://en.wikipedia.org/wiki/Document-oriented_database)：
+有许多特殊图形数据库可以[在 Azure 上运行](http://neo4j.com/developer/guide-cloud-deployment/#_windows_azure)，但它们成本较高且需要 IaaS 服务（基础结构即服务，主要是虚拟机）和维护。 本文介绍的成本较低的解决方案适用于在 Azure 的 NoSQL 数据库 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 上运行的大多数方案。 使用 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) 方法以 JSON 格式存储数据并应用[非规范化](https://en.wikipedia.org/wiki/Denormalization)，就可以将我们以前的复杂帖子转换为单个[文档](https://en.wikipedia.org/wiki/Document-oriented_database)：
 
     {
         "id":"ew12-res2-234e-544f",
@@ -103,13 +106,13 @@ Azure DocumentDB 可确保所有属性通过其自动索引功能进行索引，
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。 一旦我们获得其中一个列表之后，我们就可以使用 [IN 运算符](documentdb-sql-query.md#WhereClause) 向 DocumentDB 发布单个查询以一次性获取帖子的所有页面。
+我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。 在获得其中一个列表之后，使用 [IN 运算符](documentdb-sql-query.md#WhereClause) 向 Cosmos DB 发布单个查询以一次性获取帖子的所有页面。
 
-可以使用 [Azure App Service](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service-web/web-sites-create-web-jobs.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储空间](https://azure.microsoft.com/services/storage/) [队列](../storage/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。 
+可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service-web/web-sites-create-web-jobs.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储空间](https://azure.microsoft.com/services/storage/) [队列](../storage/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。 
 
 通过使用这种相同的技术创建最终一致性环境还可以以延迟方式处理评分和点赞。
 
-至于关注者，则需要有更多的技巧来处理。 DocumentDB 具有文档大小限制，而且读取/写入大型文档会影响应用程序的可伸缩性。 因此，可考虑使用以下结构，以文档形式存储关注者：
+至于关注者，则需要有更多的技巧来处理。 Cosmos DB 具有文档大小限制，而且读取/写入大型文档会影响应用程序的可伸缩性。 因此，可考虑使用以下结构，以文档形式存储关注者：
 
     {
         "id":"234d-sd23-rrf2-552d",
@@ -134,7 +137,7 @@ Azure DocumentDB 可确保所有属性通过其自动索引功能进行索引，
         "totalPoints":11342
     }
 
-然后使用一个[扩展](https://github.com/richorama/AzureStorageExtensions#azuregraphstore)，将实际的关注者图形存储在 Azure 存储表中，以允许进行简单的“A 关注 B”存储和检索。 这样，我们就可以将确切的关注者列表的检索过程（当我们需要它时）委托给 Azure 存储表，但为了快速查找数字，我们仍继续使用 DocumentDB。
+然后使用一个[扩展](https://github.com/richorama/AzureStorageExtensions#azuregraphstore)，将实际的关注者图形存储在 Azure 存储表中，以允许进行简单的“A 关注 B”存储和检索。 通过这种方式，可以将确切的关注者列表的检索过程（在需要时）委托给 Azure 存储表，但为了快速查找数字，仍继续使用 Cosmos DB。
 
 ## <a name="the-ladder-pattern-and-data-duplication"></a>“阶梯”模式和数据重复
 你可能已注意到，在引用帖子的 JSON 文档中，某个用户出现了多次。 而且你猜得没错，这意味着如果应用此非规范化，则表示用户的这一信息可以显示在多个地方。
@@ -165,7 +168,7 @@ Azure DocumentDB 可确保所有属性通过其自动索引功能进行索引，
 
 最简单的一步称为 UserChunk，这是标识用户的最小信息块并可用于数据重复。 通过减少重复数据的大小直到只留下我们将要“显示”的信息，可以降低大规模更新的可能性。
 
-中间步骤被称为用户，这是将在 DocumentDB 上的大多数依赖性能查询上使用的完整数据，也是最常访问和最重要的数据。 它包括由 UserChunk 表示的信息。
+中间步骤被称为用户，这是将在 Cosmos DB 上的大多数依赖性能查询上使用的完整数据，也是最常访问和最重要的数据。 它包括由 UserChunk 表示的信息。
 
 最复杂的一步是扩展用户。 它包括所有重要的用户信息以及并不需要快速读取的其他数据，或者它的使用情况就是最终结果（就像登录过程一样）。 此数据可以存储在 DocumentDB 外、Azure SQL 数据库或 Azure 表存储中。
 
@@ -221,11 +224,11 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 另一个可用的选项是使用 [Microsoft 认知服务](https://www.microsoft.com/cognitive-services) 分析用户内容：不仅可以更好地理解它们（通过分析使用 [文本分析 API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)编写的内容），而且还可以检测不需要或不成熟的内容，然后使用[计算机构想 API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api)解决相关问题。 认知服务包括大量不需要使用任何一种机器学习知识的现成的可用解决方案。
 
 ## <a name="a-planet-scale-social-experience"></a>全球范围内的社交体验
-最后，还必须说明一个非常重要的主题：**可伸缩性**。 在设计体系结构时，因为需要处理更多的数据和/或希望拥有更大的地理覆盖范围，所以每个组件的自行可伸缩性至关重要。 幸运的是，通过使用 DocumentDB 完成此类复杂任务是一种**统包体验**。
+最后，还必须说明一个非常重要的主题：**可伸缩性**。 在设计体系结构时，因为需要处理更多的数据和/或希望拥有更大的地理覆盖范围，所以每个组件的自行可伸缩性至关重要。 幸运的是，通过使用 Cosmos DB 完成此类复杂任务是一种统包体验。
 
-DocumentDB 根据给定的**分区键**（定义为文档中的一个属性）自动创建分区，从而支持现成可用的[动态分区](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)。 必须在设计时定义正确的分区键，并记住可用的[最佳做法](documentdb-partition-data.md#designing-for-partitioning)；对于社交体验，分区策略必须与查询（需要在同一分区内进行读取）和写入（通过在多个分区上分散写入来避免“热点”）方式保持一致。 一些相关选项是：基于临时键（日/月/周）的分区，按内容类别、地理区域和用户进行划分；这一切都取决于查询数据并将其显示在社交体验中的方式。 
+Cosmos DB 根据给定的分区键（定义为文档中的一个属性）自动创建分区，从而支持现成可用的[动态分区](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)。 必须在设计时定义正确的分区键，并记住可用的[最佳做法](../cosmos-db/partition-data.md#designing-for-partitioning)；对于社交体验，分区策略必须与查询（需要在同一分区内进行读取）和写入（通过在多个分区上分散写入来避免“热点”）方式保持一致。 一些相关选项是：基于临时键（日/月/周）的分区，按内容类别、地理区域和用户进行划分；这一切都取决于查询数据并将其显示在社交体验中的方式。 
 
-值得一提的有趣的一点是，DocumentDB 将以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），无需在数据增长过程中添加任何逻辑。
+值得一提的有趣的一点是，Cosmos DB 将以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），无需在数据增长过程中添加任何逻辑。
 
 一段时间后，最终流量会增加，资源消耗（通过 [RU](documentdb-request-units.md) 即“请求单位”进行度量）也会增加。 随着用户群的增长，读取和写入操作会更加频繁，用户将开始创建和读取更多内容；**缩放吞吐量**的能力至关重要。 增加 RU 非常容易，可以通过在 Azure 门户中单击几次或[通过 API 发出命令](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer)来实现。
 
@@ -235,7 +238,7 @@ DocumentDB 根据给定的**分区键**（定义为文档中的一个属性）�
 
 但是你很快会意识到他们在平台的体验并不理想；他们与运营区域相距太远，延迟问题非常严重，你显然不希望他们因此退出平台。 如果有一种简单的方法可以**扩展全球覆盖范围**就好了······确实有！
 
-通过 DocumentDB，只需单击数次即可通过透明方式[全局复制数据](documentdb-portal-global-replication.md)，并从[客户端代码](documentdb-developing-with-multiple-regions.md)中自动选择可用区域。 这也意味着可以拥有[多个故障转移区域](documentdb-regional-failovers.md)。 
+通过 Cosmos DB，只需单击数次即可通过透明方式[全局复制数据](../cosmos-db/tutorial-global-distribution-documentdb.md)，并从[客户端代码](../cosmos-db/tutorial-global-distribution-documentdb.md)中自动选择可用区域。 这也意味着可以拥有[多个故障转移区域](documentdb-regional-failovers.md)。 
 
 全局复制数据时，需确保客户端可以利用该数据。 如果要使用 Web 前端或从移动客户端访问 API，则可以部署 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)并在所有所需区域克隆 Azure 应用服务（方法是通过使用[性能配置](../app-service-web/web-sites-traffic-manager.md)支持扩展的全球覆盖范围）。 客户端访问前端或 API 时，将被路由到最近的应用服务，而该应用服务将连接到本地的 DocumentDB 副本。
 
@@ -246,11 +249,7 @@ DocumentDB 根据给定的**分区键**（定义为文档中的一个属性）�
 
 ![社交网络中各 Azure 服务之间的交互关系图](./media/documentdb-social-media-apps/social-media-apps-azure-solution.png)
 
-事实上，对于此类方案并没有万能方法，而需结合各种卓越的服务共同创建，才能提供绝佳的体验：Azure DocumentDB 的速度和自由性，可用于提供绝佳的社交应用程序；一流搜索解决方案后的智能操作，Azure 搜索；Azure App Service 的灵活性，不仅可以托管与语言无关的应用程序，甚至还可以托管功能强大的后台处理程序；Azure 存储空间和 Azure SQL 数据库的可扩展性，可用于存储大量数据；Azure 机器学习的分析功能，可创建能够为我们的进程提供反馈，并且有助于我们向合适的用户提供合适的内容的知识和智能。
+事实上，对于此类方案并没有万能方法，而需结合各种卓越的服务共同创建，才能提供绝佳的体验：Azure Cosmos DB 的速度和自由性，可用于提供绝佳的社交应用程序；一流搜索解决方案后的智能操作，Azure 搜索；Azure 应用服务的灵活性，不仅可以托管与语言无关的应用程序，甚至还可以托管功能强大的后台处理程序；Azure 存储和 Azure SQL 数据库的可扩展性，可用于存储大量数据；Azure 机器学习的分析功能，可创建能够为我们的进程提供反馈，并且有助于我们向合适的用户提供合适的内容的知识和智能。
 
 ## <a name="next-steps"></a>后续步骤
-阅读[为 DocumentDB 中的数据建模](documentdb-modeling-data.md)一文，了解有关数据建模的详细信息。 如需了解 DocumentDB 其他用例信息，请参阅 [DocumentDB 的常见用例](documentdb-use-cases.md)。
-
-或遵照 [DocumentDB 学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)了解有关 DocumentDB 的详细信息。
-
-
+若要了解有关 Cosmos DB 用例的详细信息，请参阅 [Cosmos DB 常见用例](documentdb-use-cases.md)。

@@ -1,6 +1,6 @@
 ---
 title: "Resource Manager 支持的服务 | Microsoft Docs"
-description: "介绍支持资源管理器的资源提供程序及其架构和可用 API 版本，以及可托管资源的区域。"
+description: "介绍支持 Resource Manager 的资源提供程序及其架构和可用 API 版本，以及可托管资源的区域。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: bf4e400e30cc93ca8fa0cc727ada0f1b224b05cb
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 70a598c9a5bf514f62baa0c5275b2e44cd9776b8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="resource-manager-providers-regions-api-versions-and-schemas"></a>资源管理器提供程序、区域、 API 版本和架构
+# <a name="resource-manager-providers-regions-api-versions-and-schemas"></a>Resource Manager 提供程序、区域、 API 版本和架构
 本主题提供支持 Azure Resource Manager 的资源提供程序列表。
 
 部署资源时，你还需要知道哪些区域支持这些资源，以及哪些 API 版本可用于资源。 [支持的区域](#supported-regions)部分说明了如何找出哪些区域支持相应的订阅和资源。 [支持的 API 版本](#supported-api-versions)部分说明了如何判断可以使用哪些 API 版本。
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/21/2017
 下表列出哪些 Microsoft 服务可通过 Resource Manager 支持部署和管理，哪些 Microsoft 服务不可以。 还有许多第三方资源提供程序支持 Resource Manager。 可在[资源提供程序和类型](#resource-providers-and-types)部分中了解如何查看所有资源提供程序。
 
 ## <a name="compute"></a>计算
-| 服务 | 已启用资源管理器 | REST API | 模板格式 |
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | 批处理 |是 |[批处理 REST](/rest/api/batchservice) |[Batch 资源](/azure/templates/microsoft.batch/batchaccounts) |
 | 容器注册表 |是 |[容器注册表 REST](/rest/api/containerregistry) |[容器注册表资源](/azure/templates/microsoft.containerregistry/registries) |
@@ -44,12 +45,12 @@ ms.lasthandoff: 04/21/2017
 | 远程应用 |否 |- |- |
 | 云服务（经典） |有限（参阅下文） |- |- |
 
-虚拟机（经典）是指已通过经典部署模型部署的资源，而不是通过资源管理器部署模型部署的资源。 一般而言，这些资源不支持资源管理器操作，但已启用某些操作。 有关这些部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](resource-manager-deployment-model.md)。 
+虚拟机（经典）是指已通过经典部署模型部署的资源，而不是通过 Resource Manager 部署模型部署的资源。 一般而言，这些资源不支持 Resource Manager 操作，但已启用某些操作。 有关这些部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](resource-manager-deployment-model.md)。 
 
 云服务（经典）可与其他经典资源配合使用。 但是，经典资源不能充分利用所有 Resource Manager 功能，并且不太适合未来的解决方案。 应该考虑将你的应用程序基础结构更改为使用 Microsoft.Compute、Microsoft.Storage 和 Microsoft.Network 命名空间中的资源。
 
 ## <a name="networking"></a>联网
-| 服务 | 已启用资源管理器 | REST API | 模板格式 |
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | 应用程序网关 |是 |[应用程序网关 REST](https://msdn.microsoft.com/library/azure/mt684939.aspx) | [应用程序网关资源](/azure/templates/microsoft.network/applicationgateways) |
 | DNS |是 |[DNS REST](/rest/api/dns) |[DNS 资源](/azure/templates/microsoft.network/dnszones) |
@@ -60,22 +61,22 @@ ms.lasthandoff: 04/21/2017
 | 网关 |是 |[网络网关 REST](https://msdn.microsoft.com/library/azure/mt163859.aspx) | [连接资源](/azure/templates/microsoft.network/connections) <br /> [本地网关资源](/azure/templates/microsoft.network/localnetworkgateways) <br /> [虚拟网关资源](/azure/templates/microsoft.network/virtualnetworkgateways) |
 
 ## <a name="storage"></a>存储
-| 服务 | 已启用资源管理器 | REST API | 模板格式 |
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- | --- |
 | 导入/导出 | 是 | [导入/导出 REST](/rest/api/storageimportexport/) | [导入/导出资源](/azure/templates/microsoft.importexport/jobs) |
 | 存储 |是 |[存储 REST](/rest/api/storagerp) |[存储资源](/azure/templates/microsoft.storage/storageaccounts) |
 | StorSimple |是 | | |
 
 ## <a name="databases"></a>数据库
-| 服务 | 已启用资源管理器 | REST API | 模板格式 |
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- | --- |
-| DocumentDB |是 |[DocumentDB REST](/rest/api/documentdbresourceprovider) |[DocumentDB 资源](/azure/templates/microsoft.documentdb/databaseaccounts) |
+| Azure Cosmos DB |是 |[Azure Cosmos DB REST](/rest/api/documentdbresourceprovider) |[Azure Cosmos DB 资源](/azure/templates/microsoft.documentdb/databaseaccounts) |
 | Redis 缓存 |是 | [Redis 缓存 REST](/rest/api/redis) |[Redis 资源](/azure/templates/microsoft.cache/redis) |
 | SQL 数据库 |是 |[SQL 数据库 REST](/rest/api/sql) |[SQL 数据库资源](/azure/templates/microsoft.sql/servers) |
 | SQL 数据仓库 |是 | | |
 
 ## <a name="web--mobile"></a>Web 和移动
-| 服务 | 已启用资源管理器 | REST API | 模板格式 |
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | API 应用 |是 | [应用服务 REST](/rest/api/appservice) |[Web 资源](/azure/templates/microsoft.web/sites) |
 | API 管理 |是 |[API 管理 REST](/rest/api/apimanagement) |[API 管理资源](/azure/templates/microsoft.apimanagement/service) |
@@ -90,7 +91,7 @@ ms.lasthandoff: 04/21/2017
 | Web 应用 |是 | [Web 应用 REST](/rest/api/appservice/webapps) | [Web 资源](/azure/templates/microsoft.web/sites) |
 
 ## <a name="intelligence--analytics"></a>智能 + 分析
-| 服务 | 已启用资源管理器 | REST API | 模板格式 | 
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 | 
 | --- | --- | --- | --- |
 | Analysis Services | 是 | [Analysis Service REST](/rest/api/analysisservices) | [Analysis Services 资源](/azure/templates/microsoft.analysisservices/servers) |
 | 认知服务 |是 | [认知服务 REST](/rest/api/cognitiveservices) |[认知服务资源](/azure/templates/microsoft.cognitiveservices/accounts) |
@@ -105,20 +106,20 @@ ms.lasthandoff: 04/21/2017
 
 
 ## <a name="internet-of-things"></a>物联网
-| 服务 | 已启用资源管理器 | REST API | 模板格式 |
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | 事件中心 |是 |[事件中心 REST](/rest/api/eventhub) |[事件中心资源](/azure/templates/microsoft.eventhub/namespaces) |
 | IoTHubs |是 |[IoT 中心 REST](/rest/api/iothub) |[IoT 中心资源](/azure/templates/microsoft.devices/iothubs) |
 | 通知中心 |是 |[通知中心 REST](/rest/api/notificationhubs) |[通知中心资源](/azure/templates/microsoft.notificationhubs/namespaces) |
 
 ## <a name="media--cdn"></a>媒体和 CDN
-| 服务 | 已启用资源管理器 | REST API | 模板格式 |
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | CDN |是 |[CDN REST](/rest/api/cdn) |[CDN 资源](/azure/templates/microsoft.cdn/profiles) |
 | 媒体服务 |是 |[媒体服务 REST](/rest/api/media) |[媒体资源](/azure/templates/microsoft.media/mediaservices) |
 
 ## <a name="enterprise-integration"></a>企业集成
-| 服务 | 已启用资源管理器 | REST API | 模板格式 |
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | BizTalk 服务 |是 | |[BizTalk 架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) |
 | 中继 | 是 |  | [中继资源](/azure/templates/microsoft.relay/namespaces) |
@@ -128,7 +129,7 @@ ms.lasthandoff: 04/21/2017
 Azure Active Directory 可以使用 Resource Manager 为订阅启用基于角色的访问控制。 若要了解如何使用基于角色的访问控制和 Azure Active Directory，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
 
 ## <a name="developer-services"></a>开发人员服务
-| 服务 | 已启用资源管理器 | REST API | 模板格式 |
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | 监视 |是 |[监视器 REST](/rest/api/monitor) |[Insights 资源](/azure/templates/microsoft.insights/alertrules) |
 | 必应地图 |是 | | |
@@ -136,7 +137,7 @@ Azure Active Directory 可以使用 Resource Manager 为订阅启用基于角色
 | Visual Studio 帐户 |是 | |[Visual Studio 架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-02-26/microsoft.visualstudio.json) |
 
 ## <a name="management-and-security"></a>管理和安全性
-| 服务 | 已启用资源管理器 | REST API | 模板格式 |
+| 服务 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- |
 | 顾问 | 是 | [顾问 REST](/rest/api/advisor/) | - |
 | 自动化 |是 |[自动化 REST](https://msdn.microsoft.com/library/azure/mt662285.aspx) |[自动化资源](/azure/templates/microsoft.automation/automationaccounts) |
@@ -148,8 +149,8 @@ Azure Active Directory 可以使用 Resource Manager 为订阅启用基于角色
 | “安全” |是 |[安全 REST](https://msdn.microsoft.com/library/azure/mt704034.aspx) | |
 | 服务器管理 | 是 | [服务器管理 REST](/rest/api/servermanagement/) | [服务器管理资源](/azure/templates/microsoft.servermanagement/gateways) |
 
-## <a name="resource-manager"></a>资源管理器
-| 功能 | 已启用资源管理器 | REST API | 模板格式 |
+## <a name="resource-manager"></a>Resource Manager
+| 功能 | 已启用 Resource Manager | REST API | 模板格式 |
 | --- | --- | --- | --- | --- |
 | 授权 |是 |[授权 REST](/rest/api/authorization) |[授权资源](/azure/templates/microsoft.authorization/locks) |
 | 资源 |是 |[资源 REST](/rest/api/resources) |[部署资源](/azure/templates/microsoft.resources/deployments) |
@@ -207,7 +208,7 @@ az provider register --namespace Microsoft.ServiceBus
 ```
 
 ## <a name="supported-regions"></a>支持的区域
-部署资源时，通常需要指定资源的区域。 所有区域都支持资源管理器，但部署的资源可能无法在所有区域中受到支持。 此外，订阅可能存在一些限制，以防止用户使用某些支持该资源的区域。 这些限制可能与所在国家/地区的税务问题有关，或者与由订阅管理员所放置，只能使用特定区域的策略结果有关。 
+部署资源时，通常需要指定资源的区域。 所有区域都支持 Resource Manager，但部署的资源可能无法在所有区域中受到支持。 此外，订阅可能存在一些限制，以防止用户使用某些支持该资源的区域。 这些限制可能与所在国家/地区的税务问题有关，或者与由订阅管理员所放置，只能使用特定区域的策略结果有关。 
 
 有关所有 Azure 服务的所有支持的区域的完整列表，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/#services)。 但是，此列表可能包含你的订阅不支持的区域。 可以通过门户、REST API、PowerShell 或 Azure CLI 来确定订阅支持的特定资源类型所在的区域。
 

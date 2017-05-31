@@ -1,24 +1,25 @@
 ---
-title: "DocumentDB 的 .NET NoSQL 示例 | Microsoft Docs"
-description: "在 github 上查找用于 DocumentDB 中的常见任务的 C# .NET NoSQL 示例，包括针对 NoSQL 数据库中的 JSON 文档执行的 CRUD 操作。"
+title: "Azure Cosmos DB：DocumentDB API 的 .NET 示例| Microsoft Docs"
+description: "在 github 上查找用于 DocumentDB 中的常见任务的 C# .NET 示例，包括 CRUD 操作。"
 keywords: "NoSQL 示例"
-services: documentdb
+services: cosmosdb
 author: rnagpal
 manager: jhubbard
 editor: monicar
 documentationcenter: .net
 ms.assetid: d824d517-903e-4d82-ab0a-09fc3b984c84
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 1581ee526ba9fa296fbb433672d8e8389d852519
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5198492ff713f3756037dd8634778f53c5a1eb33
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -31,14 +32,14 @@ ms.lasthandoff: 03/22/2017
 > 
 > 
 
-[azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) GitHub 存储库中包含可对 Azure DocumentDB 资源执行 CRUD 操作和其他常见操作的最新示例解决方案。 本文将提供：
+[azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) GitHub 存储库中包含可对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的最新示例解决方案。 本文将提供：
 
 * 每个示例 C# 项目文件中各项任务的链接。 
 * 指向相关的 API 参考内容的链接。
 
 **先决条件**
 
-1. 你必须要有 Azure 帐户才能使用这些 NoSQL 示例：
+1. 必须要有 Azure 帐户才能使用这些示例：
    * 可以 [免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，你仍可以保留帐户和使用免费的 Azure 服务（如网站）。 你的信用卡将永远不会付费，除非你显式更改设置并要求付费。
      * 可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)：Visual Studio 订阅每月为用户提供可用来试用付费版 Azure 服务的信用额度。
 2. 你也需要 [Microsoft.Azure.DocumentDB NuGet 程序包](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)。 
@@ -114,7 +115,7 @@ IndexManagement 项目示例的 [RunIndexDemo](https://github.com/Azure/azure-do
 | [对现有集合启用地理空间索引](https://github.com/Azure/azure-documentdb-dotnet/blob/7b09c085817e850d683bc59bd864c2f6b552d275/samples/code-samples/Geospatial/Program.cs#L312-L336) |[DocumentClient.ReplaceDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replacedocumentcollectionasync.aspx)<br>[DocumentCollection.IndexingPolicy](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.documentcollection.indexingpolicy.aspx#P:Microsoft.Azure.Documents.DocumentCollection.IndexingPolicy) |
 | [验证点和多边形数据](https://github.com/Azure/azure-documentdb-dotnet/blob/7b09c085817e850d683bc59bd864c2f6b552d275/samples/code-samples/Geospatial/Program.cs#L223-L265) |[ST_ISVALID](documentdb-sql-query.md#BuiltinFunctions)<br>[ST_ISVALIDDETAILED](documentdb-sql-query.md#BuiltinFunctions)<br>[GeometryOperationExtensions.IsValid](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.spatial.geometryoperationextensions.isvalid.aspx)<br>[GeometryOperationExtensions.IsValidDetailed](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.spatial.geometryoperationextensions.isvaliddetailed.aspx) |
 
-有关使用地理空间数据的详细信息，请参阅[使用 Azure DocumentDB 中的地理空间数据](documentdb-geospatial.md)。  
+有关使用地理空间数据的详细信息，请参阅[使用 Azure Cosmos DB 中的地理空间数据](documentdb-geospatial.md)。  
 
 ## <a name="query-examples"></a>查询示例
 查询文档文件 [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) 演示如何通过 SQL 查询语法以及使用查询和 Lambda 的 LINQ 提供程序执行以下各项任务。
@@ -151,7 +152,7 @@ IndexManagement 项目示例的 [RunIndexDemo](https://github.com/Azure/azure-do
 | [创建后触发器](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L329) |[DocumentClient.CreateTriggerAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createtriggerasync.aspx) |
 | [创建用户定义函数 (UDF)](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L389) |[DocumentClient.CreateUserDefinedFunctionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createuserdefinedfunctionasync.aspx) |
 
-有关服务器端编程的详细信息，请参阅 [DocumentDB 服务器端编程：存储过程、数据库触发器和 UDF](documentdb-programming.md)。
+有关服务器端编程的详细信息，请参阅 [Azure Cosmos DB 服务器端编程：存储过程、数据库触发器和 UDF](documentdb-programming.md)。
 
 ## <a name="user-management-examples"></a>用户管理示例
 用户管理文件 [azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs) 演示如何执行以下任务。

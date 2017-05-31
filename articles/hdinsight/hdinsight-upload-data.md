@@ -1,6 +1,7 @@
 ---
 title: "在 HDInsight 中上传 Hadoop 作业的数据 | Microsoft Docs"
 description: "了解如何使用 Azure CLI、Azure 存储资源管理器、Azure PowerShell、Hadoop 命令行或 Sqoop 在 HDInsight 中上载和访问 Hadoop 作业的数据。"
+keywords: "etl hadoop, 将数据引入 hadoop, hadoop 加载数据"
 services: hdinsight,storage
 documentationcenter: 
 tags: azure-portal
@@ -9,17 +10,18 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 56b913ee-0f9a-4e9f-9eaf-c571f8603dd6
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/12/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0caac0c7ad76df7e7fa657227339d1df8b4a3c77
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 134afd3495c555f85e8838cbe0344a3a48534950
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -187,7 +189,7 @@ AzCopy 语法为：
 
 1. 运行 Azure 存储空间资源管理器。 如果是第一次运行存储资源管理器，系统将提示输入“存储帐户名”和“存储帐户密钥”。 如果以前运行过存储资源管理器，请使用“添加”按钮添加一个新的存储帐户名和密钥。
 
-    输入 HDinsight 群集使用的存储帐户的名称和密钥，然后选择“保存并打开”。
+    输入 HDInsight 群集使用的存储帐户的名称和密钥，然后选择“保存并打开”。
 
     ![HDI.AzureStorageExplorer][image-azure-storage-explorer]
 2. 在界面左侧的容器列表中，单击与你的 HDInsight 群集关联的容器名称。 默认情况下，这是 HDInsight 群集的名称，但如果你在创建群集时输入了特定的名称，则该名称可能不同。

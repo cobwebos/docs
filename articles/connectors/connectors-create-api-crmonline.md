@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: f09dd58f17b228d6381af95c40c5391886bbb8f1
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 845dd16c703362e9e64f02832a35c90e7e77e264
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -167,164 +168,9 @@ ms.lasthandoff: 04/05/2017
 
 若要深入了解如何解决逻辑应用的故障，请参阅[诊断逻辑应用的故障](../logic-apps/logic-apps-diagnosing-failures.md)。
 
-## <a name="technical-details"></a>技术详细信息
-## <a name="triggers"></a>触发器
-| 触发器 | 说明 |
-| --- | --- |
-| 创建记录时 |在 Dynamics 365 中创建对象时，触发流。 |
-| 更新记录时 |在 Dynamics 365 中修改对象时，触发流。 |
-| 删除记录时 |在 Dynamics 365 中删除对象时，触发流。 |
+## <a name="view-the-swagger"></a>查看 Swagger
 
-## <a name="actions"></a>操作
-| 操作 | 说明 |
-| --- | --- |
-| 列出记录 |此操作可获取实体的记录。 |
-| 新建记录 |此操作可创建新的实体记录。 |
-| 获取记录 |此操作可获取实体的指定记录。 |
-| 删除记录 |此操作可从实体集合中删除记录。 |
-| 更新记录 |此操作可更新实体的现有记录。 |
-
-### <a name="trigger-and-action-details"></a>触发器和操作详细信息
-在此部分中，查看有关每个触发器和每项操作的具体详细信息，包括任何必需或可选的输入属性以及与连接器相关联的任何相应输出。
-
-#### <a name="when-a-record-is-created"></a>创建记录时
-在 Dynamics 365 中创建对象时，触发流。
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| dataset* |组织名称 |Dynamics 365 组织的名称（如 Contoso） |
-| table* |实体名称 |实体的名称 |
-| $filter |筛选查询 |用于对返回项进行限制的 ODATA 筛选查询 |
-| $orderby |排序依据 |用于指定项顺序的 ODATA orderBy 查询 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-ItemsList
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| value |数组 |
-
-#### <a name="when-a-record-is-updated"></a>更新记录时
-在 Dynamics 365 中修改对象时，触发流。
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| dataset* |组织名称 |Dynamics 365 组织的名称（如 Contoso） |
-| table* |实体名称 |实体的名称 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-ItemsList
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| value |数组 |
-
-#### <a name="when-a-record-is-deleted"></a>删除记录时
-在 Dynamics 365 中删除对象时，触发流。
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| dataset* |组织名称 |Dynamics 365 组织的名称（如 Contoso） |
-| table* |实体名称 |实体的名称 |
-
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-ItemsList
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| value |数组 |
-
-#### <a name="list-records"></a>列出记录
-此操作可获取实体的记录。
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| dataset* |组织名称 |Dynamics 365 组织的名称（如 Contoso） |
-| table* |实体名称 |实体的名称 |
-| $filter |筛选查询 |用于对返回项进行限制的 ODATA 筛选查询 |
-| $orderby |排序依据 |用于指定项顺序的 ODATA orderBy 查询 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-ItemsList
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| value |数组 |
-
-#### <a name="create-a-new-record"></a>新建记录
-此操作可创建新的实体记录。
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| dataset* |组织名称 |Dynamics 365 组织的名称（如 Contoso） |
-| table* |实体名称 |实体的名称 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-无。
-
-#### <a name="get-record"></a>获取记录
-此操作可获取实体的指定记录。
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| dataset* |组织名称 |Dynamics 365 组织的名称（如 Contoso） |
-| table* |实体名称 |实体的名称 |
-| ID* |项目标识符 |指定记录的标识符 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-无。
-
-#### <a name="delete-a-record"></a>删除记录
-此操作可从实体集合中删除记录。
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| dataset* |组织名称 |Dynamics 365 组织的名称（如 Contoso） |
-| table* |实体名称 |实体的名称 |
-| ID* |项目标识符 |指定记录的标识符 |
-
-星号 (*) 表示该属性是必需的。
-
-#### <a name="update-a-record"></a>更新记录
-此操作可更新实体的现有记录。
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| dataset* |组织名称 |Dynamics 365 组织的名称（如 Contoso） |
-| table* |实体名称 |实体的名称 |
-| ID* |记录标识符 |指定记录的标识符 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-无。
-
-## <a name="http-responses"></a>HTTP 响应
-操作和触发器可以返回以下一个或多个 HTTP 状态代码：
-
-| Name | 说明 |
-| --- | --- |
-| 200 |确定 |
-| 202 |已接受 |
-| 400 |错误的请求 |
-| 401 |未授权 |
-| 403 |禁止 |
-| 404 |未找到 |
-| 500 |内部服务器错误。 发生未知错误。 |
-| default |操作失败。 |
+请参阅 [Swagger 详细信息](/connectors/crm/)。 
 
 ## <a name="next-steps"></a>后续步骤
 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。

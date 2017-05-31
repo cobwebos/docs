@@ -1,31 +1,32 @@
 ---
-title: "DocumentDB 中的性能级别 | Microsoft Docs"
-description: "了解 DocumentDB 中的性能级别如何让你能够在每个集合的基础上保留吞吐量。"
-services: documentdb
+title: "DocumentDB API 性能级别 | Microsoft Docs"
+description: "了解如何借助 DocumentDB API 性能级别在每个容器的基础上保留吞吐量。"
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 7dc21c71-47e2-4e06-aa21-e84af52866f4
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 659d6bd63ea996af7b7b172f998884354e5d5858
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2f67166e95da9f47133f8856be4c7902da75b886
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="retiring-the-s1-s2-and-s3-performance-levels-in-documentdb"></a>停用 DocumentDB 中的 S1、S2 和 S3 性能级别
+# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>停用 S1、S2 和 S3 性能级别
 
 > [!IMPORTANT] 
-> 本文中所述的 S1、S2 和 S3 性能级别即将停用，到时不再适用于新的 DocumentDB 集合。
+> 本文中所述的 S1、S2 和 S3 性能级别即将停用，到时不再适用于新的 DocumentDB API 帐户。
 >
 
 本文概述 S1、S2 和 S3 性能级别，并介绍在 2017 年 8 月 1 日，使用这些性能级别的集合将如何迁移到单分区集合。 阅读本文之后，你将能够回答以下问题：
@@ -45,7 +46,7 @@ ms.lasthandoff: 03/07/2017
 
 ## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>为何要停用 S1、S2 和 S3 性能级别？
 
-S1、S2 和 S3 性能级别无法提供 DocumentDB 单分区集合具备的灵活性。 使用 S1、S2、S3 性能级别时，吞吐量和存储容量都是预设的。 现在，DocumentDB 可让用户自定义吞吐量和存储，随着需求的变化，他们能够以大幅提高的灵活性进行缩放。
+S1、S2 和 S3 性能级别无法提供 DocumentDB API 集合具备的灵活性。 使用 S1、S2、S3 性能级别时，吞吐量和存储容量都是预设的，不具有弹性。 现在，Azure Cosmos DB 可让用户自定义吞吐量和存储，随着需求的变化，它们能够以大幅提高的灵活性进行缩放。
 
 <a name="compare"></a>
 
@@ -66,7 +67,7 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB 单分区集合具备的灵�
 
 ## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>我需要做些什么才能确保不间断地访问我的数据？
 
-什么也不需要做，DocumentDB 会代你处理迁移。 如果你正在使用 S1、S2 或 S3 集合，当前集合将在 2017 年 7 月 31 日迁移到单分区集合。 
+什么也不需要做，Cosmos DB 会代你处理迁移。 如果你正在使用 S1、S2 或 S3 集合，当前集合将在 2017 年 7 月 31 日迁移到单分区集合。 
 
 <a name="collection-change"></a>
 
@@ -78,7 +79,7 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB 单分区集合具备的灵�
 
 如果你正在使用 S3 集合，该集合将迁移到吞吐量为 2.5 K RU/秒的单分区集合。 你不会察觉到吞吐量级别有变化。
 
-对于上面的每种情况，在迁移集合后，便可以根据需要自定义吞吐量级别，或者将它调高和调低，向用户提供低延迟的访问。 迁移集合后若要更改吞吐量级别，只需在 Azure 门户中打开你的 DocumentDB 帐户，单击“缩放”，选择你的集合，然后如以下屏幕截图中所示调整吞吐量级别：
+对于上面的每种情况，在迁移集合后，便可以根据需要自定义吞吐量级别，或者将它调高和调低，向用户提供低延迟的访问。 若要在迁移集合后更改吞吐量级别，只需在 Azure 门户中打开 Cosmos DB 帐户，单击“缩放”，选择集合，然后如以下屏幕截图中所示调整吞吐量级别：
 
 ![如何在 Azure 门户中缩放吞吐量](./media/documentdb-performance-levels/azure-documentdb-portal-scale-throughput.png)
 
@@ -94,7 +95,7 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB 单分区集合具备的灵�
 
 ## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>如果需要 10 GB 以上的存储该怎么办？
 
-无论使用的是 S1、S2 或 S3 性能级别的集合还是单分区集合，它们的可用存储都是 10 GB。可以使用 DocumentDB 数据迁移工具将数据迁移到分区集合，它们的存储空间几乎无限。 有关分区集合的优势的信息，请参阅 [Azure DocumentDB 中的分区和缩放](documentdb-partition-data.md)。 有关如何将 S1、S2、S3 或单分区集合迁移到分区集合的信息，请参阅[从单分区集合迁移到分区集合](documentdb-partition-data.md#migrating-from-single-partition)。 
+无论使用的是 S1、S2 或 S3 性能级别的集合还是单分区集合，它们的可用存储都是 10 GB。可以使用 Cosmos DB 数据迁移工具将数据迁移到分区集合，它们的存储空间几乎无限。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](documentdb-partition-data.md)。 有关如何将 S1、S2、S3 或单分区集合迁移到分区集合的信息，请参阅[从单分区集合迁移到分区集合](documentdb-partition-data.md#migrating-from-single-partition)。 
 
 <a name="change-before"></a>
 
@@ -106,7 +107,7 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB 单分区集合具备的灵�
 
 ## <a name="how-will-i-know-when-my-collection-has-migrated"></a>如何知道我的集合已迁移？
 
-迁移将在 2017 年 7 月 31 日进行。 如果你的某个集合使用 S1、S2 或 S3 性能级别，在发生迁移之前，DocumentDB 团队将通过电子邮件与你联系。 2017 年 8 月 1 日完成迁移后，Azure 门户将显示你的集合使用的是标准定价。
+迁移将在 2017 年 7 月 31 日进行。 如果某个集合使用 S1、S2 或 S3 性能级别，发生迁移之前，Cosmos DB 团队将通过电子邮件与你联系。 2017 年 8 月 1 日完成迁移后，Azure 门户将显示你的集合使用的是标准定价。
 
 ![如何确认集合已迁移到标准定价层](./media/documentdb-performance-levels/documentdb-portal-standard-pricing-applied.png)
 
@@ -118,11 +119,11 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB 单分区集合具备的灵�
 
 **使用 Azure 门户迁移到单分区集合**
 
-1. 在 [**Azure 门户**](https://portal.azure.com)中，单击“NoSQL (DocumentDB)”，然后选择要修改的 DocumentDB 帐户。 
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“Azure Cosmos DB”，然后选择要修改的 Cosmos DB 帐户。 
  
-    如果跳转栏上没有“NoSQL (DocumentDB)”，请单击 >，滚动到“数据库”，选择“NoSQL (DocumentDB)”，然后选择 DocumentDB 帐户。  
+    如果跳转栏上没有“Azure Cosmos DB”，请单击 >，滚动到“数据库”，选择“Azure Cosmos DB”，然后选择 DocumentDB 帐户。  
 
-2. 在资源菜单中的“集合”下面单击“缩放”，从下拉列表中选择要修改的集合，然后单击“定价层”。 使用预定义吞吐量的帐户拥有定价层 S1、S2 或 S3。  在“选择定价层”边栏选项卡中，单击“标准”以更改为用户定义的吞吐量，然后单击“选择”保存更改。
+2. 在资源菜单中的“容器”下单击“缩放”，从下拉列表中选择要修改的集合，然后单击“定价层”。 使用预定义吞吐量的帐户拥有定价层 S1、S2 或 S3。  在“选择定价层”边栏选项卡中，单击“标准”以更改为用户定义的吞吐量，然后单击“选择”保存更改。
 
     ![显示在何处更改吞吐量值的“设置”边栏选项卡屏幕截图](./media/documentdb-performance-levels/documentdb-change-performance-set-thoughput.png)
 
@@ -174,9 +175,9 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB 单分区集合具备的灵�
 EA 客户在结束其当前合同之前，价格受到保护。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解更多有关 Azure DocumentDB 的定价和管理数据的信息，请浏览以下资源：
+若要详细了解 Azure Cosmos DB 的定价和管理数据的相关信息，请浏览以下资源：
 
-1.    [将 DocumentDB 中的数据分区](documentdb-partition-data.md)。 了解单分区集合与分区集合之间的差别，以及有关实施分区策略以进行无缝缩放的提示。
-2.    [DocumentDB 定价](https://azure.microsoft.com/pricing/details/documentdb/)。 了解吞吐量预配费用和存储使用费用。
+1.    [Cosmos DB 中的分区数据](documentdb-partition-data.md)。 了解单分区容器与分区容器之间的差别，以及有关实施分区策略以进行无缝缩放的提示。
+2.    [Cosmos DB 定价](https://azure.microsoft.com/pricing/details/documentdb/)。 了解吞吐量预配费用和存储使用费用。
 3.    [请求单位](documentdb-request-units.md)。 了解不同操作类型（例如读取、写入和查询）的吞吐量消耗。
-4.    [为 DocumentDB 中的数据建模](documentdb-modeling-data.md)。 了解如何为 DocumentDB 的数据建模。
+

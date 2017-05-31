@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/10/2017
+ms.date: 5/09/2017
 ms.author: negat
 ms.custom: na
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1c7b4c4b7675bfc33e102c9abb4f942a1dd33ad4
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: de67dba5e615db8138957420a1db89d444a37d67
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -64,11 +64,11 @@ ms.lasthandoff: 04/12/2017
 
 ### <a name="should-i-autoscale-by-using-host-based-metrics-or-a-diagnostics-extension"></a>应该使用基于主机的指标还是使用诊断扩展来执行自动缩放？
 
-可以在 VM 上创建自动缩放设置来使用主机级指标，也可以使用基于来宾 OS 的指标。
+可以在 VM 上创建自动缩放设置，以使用主机级指标或基于来宾 OS 的指标。
 
-对于受支持的指标列表，请参阅 [Azure Monitor 自动缩放常用指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics)。 
+关于受支持的指标列表，请参阅 [Azure Monitor 自动缩放常用指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics)。 
 
-对于虚拟机规模集的完整示例，请参阅[使用虚拟机规模集的 Resource Manager 模板的高级自动缩放配置](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets)。 
+关于虚拟机规模集的完整示例，请参阅[使用虚拟机规模集的 Resource Manager 模板的高级自动缩放配置](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets)。 
 
 此示例使用主机级 CPU 指标和消息计数指标。
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 04/12/2017
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>如何对虚拟机规模集设置警报规则？
 
-通过 PowerShell 或 Azure CLI，可以为虚拟机规模集创建指标警报。 有关详细信息，请参阅 [Azure Monitor PowerShell 快速入门示例](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules)和 [Azure Monitor跨平台 CLI 快速入门示例](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)。
+通过 PowerShell 或 Azure CLI，可以为虚拟机规模集创建指标警报。 有关详细信息，请参阅 [Azure Monitor PowerShell 快速入门示例](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules)和 [Azure Monitor 跨平台 CLI 快速入门示例](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)。
 
 虚拟机规模集的 TargetResourceId 如下所示： 
 
@@ -97,18 +97,22 @@ ms.lasthandoff: 04/12/2017
 
 为了将证书安全地传送到 VM，可以将客户证书从客户的密钥保管库直接安装到 Windows 证书存储中。
 
-使用以下值 JSON：
+使用以下 JSON：
 
 ```json
-        "secrets": [ {
-              "sourceVault": {
-                      "id": "/subscriptions/{subscriptionid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1"
-          },
-          "vaultCertificates": [ {
-                      "certificateUrl": "https://mykeyvault1.vault.azure.net/secrets/{secretname}/{secret-version}",
-                  "certificateStore": "certificateStoreName"
-          } ]
-        } ]
+"secrets": [
+    {
+        "sourceVault": {
+            "id": "/subscriptions/{subscriptionid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1"
+        },
+        "vaultCertificates": [
+            {
+                "certificateUrl": "https://mykeyvault1.vault.azure.net/secrets/{secretname}/{secret-version}",
+                "certificateStore": "certificateStoreName"
+            }
+        ]
+    }
+]
 ```
 
 该代码支持 Windows 和 Linux。
@@ -122,42 +126,42 @@ ms.lasthandoff: 04/12/2017
 
     使用以下 PowerShell 命令：
 
-  ```powershell
-  Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
+    ```powershell
+    Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
-  Login-AzureRmAccount
+    Login-AzureRmAccount
 
-  Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
-  ```
+    Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
+    ```
 
-  此命令将提供 Azure Resource Manager 模板的输入。
+    此命令将提供 Azure Resource Manager 模板的输入。
 
-  有关如何在密钥保管库中创建自签名证书的示例，请参阅[Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)。
+    有关如何在密钥保管库中创建自签名证书的示例，请参阅[Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)。
 
 2.  更改 Resource Manager 模板。
 
-  将此属性作为虚拟机规模集资源的一部分添加到 **virtualMachineProfile**：
+    将此属性作为虚拟机规模集资源的一部分添加到 **virtualMachineProfile**：
 
-  ```json 
-  "osProfile": {
-              "computerNamePrefix": "[variables('namingInfix')]",
-              "adminUsername": "[parameters('adminUsername')]",
-              "adminPassword": "[parameters('adminPassword')]",
-              "secrets": [
-                {
-                  "sourceVault": {
+    ```json 
+    "osProfile": {
+        "computerNamePrefix": "[variables('namingInfix')]",
+        "adminUsername": "[parameters('adminUsername')]",
+        "adminPassword": "[parameters('adminPassword')]",
+        "secrets": [
+            {
+                "sourceVault": {
                     "id": "[resourceId('KeyVault', 'Microsoft.KeyVault/vaults', 'MikhegnVault')]"
-                  },
-                  "vaultCertificates": [
+                },
+                "vaultCertificates": [
                     {
-                      "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
-                      "certificateStore": "My"
+                        "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
+                        "certificateStore": "My"
                     }
-                  ]
-                }
-              ]
+                ]
             }
-  ```
+        ]
+    }
+    ```
   
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>是否可以通过 Resource Manager 模板指定一个 SSH 密钥对，用于对 Linux 虚拟机规模集进行 SSH 身份验证？  
@@ -168,20 +172,20 @@ ms.lasthandoff: 04/12/2017
 
 ```json 
 "osProfile": {
-          "computerName": "[variables('vmName')]",
-          "adminUsername": "[parameters('adminUserName')]",
-          "linuxConfiguration": {
-            "disablePasswordAuthentication": "true",
-            "ssh": {
-              "publicKeys": [
+    "computerName": "[variables('vmName')]",
+    "adminUsername": "[parameters('adminUserName')]",
+    "linuxConfiguration": {
+        "disablePasswordAuthentication": "true",
+        "ssh": {
+            "publicKeys": [
                 {
-                  "path": "[variables('sshKeyPath')]",
-                  "keyData": "[parameters('sshKeyData')]"
+                    "path": "[variables('sshKeyPath')]",
+                    "keyData": "[parameters('sshKeyData')]"
                 }
-              ]
-            }
-          }
+            ]
         }
+    }
+}
 ```
  
 bpt id="p1" xmlns="urn:oasis:names:tc:xliff:document:1.2"> [</bpt>101-vm-sshkey GitHub 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json) 中使用了此 JSON 块。
@@ -193,7 +197,7 @@ bpt id="p1" xmlns="urn:oasis:names:tc:xliff:document:1.2"> [</bpt>101-vm-sshkey 
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>如何删除已弃用的证书？ 
 
-若要删除已弃用的证书，请从保管库证书列表中删除旧证书。 在列表中留下想要在计算机上保留的所有证书。 这不会删除所有虚拟机中的证书。 也不会向虚拟机规模集中创建的新 VM 添加证书。 
+若要删除已弃用的证书，请从保管库证书列表中删除旧证书。 在列表中留下想要在计算机上保留的所有证书。 这不会从所有虚拟机中删除此证书。 也不会向虚拟机规模集中创建的新 VM 添加证书。 
 
 若要从现有 VM 中删除证书，需要编写一个自定义脚本扩展，从证书存储中手动删除证书。
  
@@ -204,13 +208,15 @@ bpt id="p1" xmlns="urn:oasis:names:tc:xliff:document:1.2"> [</bpt>101-vm-sshkey 
 可以在创建 Linux VM 时以明文形式提供 SSH 公钥：
 
 ```json
-"linuxConfiguration": {  
-          "ssh": {  
-            "publicKeys": [ {  
-              "path": "path",
-              "keyData": "publickey"
-            } ]
-          }
+"linuxConfiguration": {
+    "ssh": {
+        "publicKeys": [
+            {
+                "path": "path",
+                "keyData": "publickey"
+            }
+        ]
+    }
 ```
  
 linuxConfiguration 元素名称 | 必选 | 类型 | 说明
@@ -224,13 +230,13 @@ keyData | 是 | String | 指定 base64 编码的 SSH 公钥
  
 ### <a name="when-i-run-update-azurermvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>添加同一个密钥保管库中的多个证书后，运行 `Update-AzureRmVmss` 时看到以下消息：
  
-  Update-AzureRmVmss: 列表机密包含 /subscriptions/<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev 的重复实例，这是不允许的。
+>Update-AzureRmVmss: 列表机密包含 /subscriptions/<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev 的重复实例，这是不允许的。
  
-如果尝试重新添加同一保管库，而不是使用现有源保管库的新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzureRmVmssSecret` 命令将无法正常运行。
+如果尝试重新添加同一保管库，而不是对现有源保管库使用新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzureRmVmssSecret` 命令将无法正常运行。
  
 若要添加同一密钥保管库中的其他机密，请更新 $vmss.properties.osProfile.secrets[0].vaultCertificates 列表。
  
-对于预期的输入结构，请参阅[创建或更新虚拟机集](https://msdn.microsoft.com/library/azure/mt589035.aspx)。
+关于预期的输入结构，请参阅[创建或更新虚拟机集](https://msdn.microsoft.com/library/azure/mt589035.aspx)。
  
 在密钥保管库中的虚拟机规模集对象中找到该机密。 然后，将证书引用（URL 以及机密存储名称）添加到与保管库关联的列表中。
 
@@ -242,7 +248,7 @@ keyData | 是 | String | 指定 base64 编码的 SSH 公钥
  
 ### <a name="can-i-push-certificates-to-the-virtual-machine-scale-set-without-providing-the-password-when-the-certificate-is-in-the-secret-store"></a>如果证书位于机密存储中，是否可以在不提供密码的情况下将证书推送到虚拟机规模集？
 
-你不需要对脚本中的密码进行硬编码。 可以使用运行部署脚本的权限来动态检索密码。 如果某个脚本可移动机密存储密钥保管库的证书，机密存储 `get certificate` 命令也会输出 pfx 文件的密码。
+你不需要在脚本中对密码进行硬编码。 可以使用运行部署脚本的权限来动态检索密码。 如果某个脚本可移动机密存储密钥保管库的证书，机密存储 `get certificate` 命令也会输出 pfx 文件的密码。
  
 ### <a name="how-does-the-secrets-property-of-virtualmachineprofileosprofile-for-a-virtual-machine-scale-set-work-why-do-i-need-the-sourcevault-value-when-i-have-to-specify-the-absolute-uri-for-a-certificate-by-using-the-certificateurl-property"></a>虚拟机规模集的 virtualMachineProfile.osProfile 的 Secrets 属性的工作原理是什么？ 使用 certificateUrl 属性指定证书的绝对 URI 时，为什么需要 sourceVault 值？ 
 
@@ -250,7 +256,7 @@ Windows 远程管理 (WinRM) 证书引用必须在 OS 配置文件的 Secrets �
 
 指示源保管库的目的在于强制实施访问控制列表 (ACL) 策略，该策略存在于用户的 Azure 云服务模型中。 如果源保管库未指定，无权在密钥保管库中部署或访问机密的用户可以通过计算资源提供程序 (CRP) 实现此目的。 即使是不存在的资源，它们也有 ACL。
 
-如果提供错误的源保管库 ID 但提供有效的保管库 URL，轮询操作时系统会报告错误。
+如果提供错误的源保管库 ID 但提供有效的密钥保管库 URL，轮询操作时系统会报告错误。
  
 ### <a name="if-i-add-secrets-to-an-existing-virtual-machine-scale-set-are-the-secrets-injected-into-existing-vms-or-only-into-new-ones"></a>如果将机密添加到现有虚拟机规模集，机密会注入到现有 VM 中，还是仅注入到新 VM 中？ 
 
@@ -284,7 +290,7 @@ CRP 组件不会持久保留客户机密。 如果对虚拟机规模集中的所
 
 扩大时不会遇到此问题，因为（单 Fabric 租户模型中的）Azure Service Fabric 中存在机密的缓存副本。
  
-### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>如 [Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)中所示，为什么必须指定证书 URL 的准确位置 (https://<name of the vault>.vault.azure.net:443/secrets/<exact location>)？
+### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>为什么必须如 [Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)中所示，指定证书 URL 的准确位置 (https://<name of the vault>.vault.azure.net:443/secrets/<exact location>)？
  
 根据 Azure Key Vault 文档，在未指定版本的情况下，Get Secret REST API 应返回最新版本的机密。
  
@@ -292,7 +298,7 @@ CRP 组件不会持久保留客户机密。 如果对虚拟机规模集中的所
 --- | ---
 GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
 
-请将 {secret-name} 替换为该名称，将 {secret-version} 替换为要检索的机密的版本。 机密版本可能被排除。 在这种情况下，将检索当前的版本。
+请将 {secret-name} 替换为具体名称，将 {secret-version} 替换为要检索的机密的版本。 机密版本可能被排除。 在这种情况下，将检索当前的版本。
   
 ### <a name="why-do-i-have-to-specify-the-certificate-version-when-i-use-key-vault"></a>使用 Key Vault 时，为什么需要指定证书版本？
 
@@ -361,7 +367,7 @@ Update-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vms
    
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>扩展似乎在虚拟机规模集上并行运行。 这导致我的自定义脚本扩展失败。 如何进行修复？
 
-若要了解虚拟机规模集中的扩展序列，请参阅 [Extension sequencing in Azure virtual machine scale sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)（Azure 虚拟机规模集中的扩展序列）。
+若要了解虚拟机规模集中的扩展排序，请参阅 [Extension sequencing in Azure virtual machine scale sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)（Azure 虚拟机规模集中的扩展排序）。
  
  
 ### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>如何对虚拟机规模集中的 VM 重置密码？
@@ -393,7 +399,7 @@ Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -Virtua
   
 ### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected-that-is-will-the-vms-not-match-the-virtual-machine-scale-set-model-or-are-they-ignored-when-an-existing-machine-is-service-healed-or-reimaged-are-the-scripts-that-are-currently-configured-on-the-virtual-machine-scale-set-executed-or-are-the-scripts-that-were-configured-when-the-vm-was-first-created-used"></a>如果更新与现有虚拟机规模集关联的扩展，是否会影响现有的 VM？ （即，VM 是否会不匹配虚拟机规模集模型？）或者，是否会忽略 VM？ 如果对现有计算机执行服务修复或重置映像操作，是否会执行当前在虚拟机规模集上配置的脚本，或者，是否会使用最初创建 VM 时配置的脚本？
 
-如果更新虚拟机规模中的扩展定义，且将 upgradePolicy 属性设置为“自动”，则会更新 VM。 如果 upgradePolicy 属性设置为“手动”，扩展会标记为不匹配模型。 
+如果更新虚拟机规模集模型中的扩展定义，且将 upgradePolicy 属性设置为“自动”，则会更新 VM。 如果 upgradePolicy 属性设置为“手动”，扩展会标记为不匹配模型。 
 
 如果对现有 VM 执行服务修复，这种行为类似于重新启动，因此不会重新运行扩展。 如果重置映像，则类似于将 OS 驱动器替换为源映像。 在这种情况下，将运行最新模型中的任何专用设置（如扩展）。
  
@@ -404,28 +410,28 @@ Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -Virtua
 若要定义扩展，请使用 JsonADDomainExtension 属性：
 
 ```json
-                    "extensionProfile": {
-                        "extensions": [
-                            {
-                                "name": "joindomain",
-                                "properties": {
-                                    "publisher": "Microsoft.Compute",
-                                    "type": "JsonADDomainExtension",
-                                    "typeHandlerVersion": "1.3",
-                                    "settings": {
-                                        "Name": "[parameters('domainName')]",
-                                        "OUPath": "[variables('ouPath')]",
-                                        "User": "[variables('domainAndUsername')]",
-                                        "Restart": "true",
-                                        "Options": "[variables('domainJoinOptions')]"
-                                    },
-                                    "protectedsettings": {
-                                        "Password": "[parameters('domainJoinPassword')]"
-                                    }
-                                }
-                            }
-                        ]
-                    }
+"extensionProfile": {
+    "extensions": [
+        {
+            "name": "joindomain",
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "JsonADDomainExtension",
+                "typeHandlerVersion": "1.3",
+                "settings": {
+                    "Name": "[parameters('domainName')]",
+                    "OUPath": "[variables('ouPath')]",
+                    "User": "[variables('domainAndUsername')]",
+                    "Restart": "true",
+                    "Options": "[variables('domainJoinOptions')]"
+                },
+                "protectedsettings": {
+                    "Password": "[parameters('domainJoinPassword')]"
+                }
+            }
+        }
+    ]
+}
 ```
  
 ### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot-for-example-commandtoexecute-powershellexe--executionpolicy-unrestricted-install-windowsfeature-name-fs-resource-manager-includemanagementtools"></a>虚拟机规模集扩展尝试安装需要重新启动的内容。 例如，"commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted Install-WindowsFeature –Name FS-Resource-Manager –IncludeManagementTools"
@@ -461,22 +467,57 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 
 
 
-## <a name="networking"></a>网络
+## <a name="networking"></a>联网
  
+### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-will-apply-to-all-the-vm-nics-in-the-set"></a>是否可以将网络安全组 (NSG) 分配给规模集，以便将其应用于集中的所有 VM NIC？
+
+是的。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 示例：
+
+```json
+"networkProfile": {
+    "networkInterfaceConfigurations": [
+        {
+            "name": "nic1",
+            "properties": {
+                "primary": "true",
+                "ipConfigurations": [
+                    {
+                        "name": "ip1",
+                        "properties": {
+                            "subnet": {
+                                "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/virtualNetworks/', variables('vnetName'), '/subnets/subnet1')]"
+                            }
+                "loadBalancerInboundNatPools": [
+                                {
+                                    "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/loadBalancers/', variables('lbName'), '/inboundNatPools/natPool1')]"
+                                }
+                            ],
+                            "loadBalancerBackendAddressPools": [
+                                {
+                                    "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/loadBalancers/', variables('lbName'), '/backendAddressPools/addressPool1')]"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "networkSecurityGroup": {
+                    "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
+                }
+            }
+        }
+    ]
+}
+```
+
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>如何针对同一订阅和同一区域中的虚拟机规模集执行 VIP 交换？
 
-若要针对同一订阅和同一区域中的虚拟机规模集执行 VIP 交换，请参阅[VIP 交换：Azure Resource Manager 中的蓝绿色部署](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)。
- 
-  
-### <a name="what-is-the-resourceguid-property-on-a-nic-used-for"></a>NIC 上的 resourceGuid 属性有什么作用？
-
-网络接口卡 (NIC) 上的 resourceGuid 属性是唯一的 ID.。 在将来的某个时间，较低的层将记录此 ID。 
+若要针对同一订阅和同一区域中的虚拟机规模集执行 VIP 交换，请参阅 [VIP 交换：Azure Resource Manager 中的蓝绿色部署](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)。
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>如何为静态专用 IP 地址分配指定专用 IP 地址范围？
 
 IP 地址是从指定的子网中选择的。 
 
-虚拟机规模集 IP 地址的分配方法始终为“动态”，但这并不意味着可以更改这些 IP 地址。 在这种情况下，“动态”仅意味不在 PUT 请求中指定 IP 地址。 通过使用子网设置静态集。 
+虚拟机规模集 IP 地址的分配方法始终为“动态”，但这并不意味着可以更改这些 IP 地址。 在这种情况下，“动态”仅意味不在 PUT 请求中指定 IP 地址。 使用子网设置静态集。 
     
 ### <a name="how-do-i-deploy-a-virtual-machine-scale-set-to-an-existing-azure-virtual-network"></a>如何将虚拟机规模集部署到现有的 Azure 虚拟网络？ 
 
@@ -494,7 +535,7 @@ IP 地址是从指定的子网中选择的。
 
 创建包含少于两个 VM 的虚拟机规模集的原因之一为需要使用虚拟机规模集的弹性属性。 例如，可以部署不包含任何 VM 的虚拟机规模集来定义基础结构，这样就无需支付 VM 运行费。 然后，在准备好部署 VM 后，将虚拟机规模集的“容量”提高到生产实例计数。
 
-可能创建包含少于两个 VM 的虚拟机规模集的另一个原因为，相比于使用离散 VM 的可用性集，不必担心可用性的问题。 此外，可以借助虚拟机规模集来使用可替代的无差别计算单元。 这种一致性是虚拟机规模集相比可用性集存在的一项重要优势。 许多无状态工作负载不跟踪单个单元。 如果工作负载下降，可以减少到一个计算单元，如果工作负载上升，可以增加到多个计算单元。
+创建包含少于两个 VM 的虚拟机规模集的另一个原因可能是，相比于使用离散 VM 的可用性集，不必担心可用性的问题。 此外，可以借助虚拟机规模集来使用可替代的无差别计算单元。 这种均一性是虚拟机规模集与可用性集的一项重要差别。 许多无状态工作负载不跟踪单个单元。 如果工作负载下降，可以减少到一个计算单元，如果工作负载上升，可以增加到多个计算单元。
 
 ### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>如何更改虚拟机规模集中的 VM 数目？
 
@@ -502,37 +543,42 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-do-i-define-custom-alerts-for-when-certain-thresholds-are-reached"></a>如何定义达到特定阈值时触发的自定义警报？
 
-可以灵活处理指定阈值的警报。 例如，可以定义自定义的 webhook。 以下 webhook 示例取自 Resource Manager 模板：
+可以在一定程度上灵活处理指定阈值的警报。 例如，可以定义自定义的 webhook。 以下 webhook 示例取自 Resource Manager 模板：
 
 ```json
-   {
-         "type": "Microsoft.Insights/autoscaleSettings",
-           "apiVersion": "[variables('insightsApi')]",
-                 "name": "autoscale",
-                   "location": "[parameters('resourceLocation')]",
-                     "dependsOn": [
-                         "[concat('Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]"
-                 ],
-                 "properties": {
-                         "name": "autoscale",
-                     "targetResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/',  resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
-                     "enabled": true,
-                     "notifications": [{
-                               "operation": "Scale",
-                              "email": {
-                                     "sendToSubscriptionAdministrator": true,
-                                     "sendToSubscriptionCoAdministrators": true,
-                                     "customEmails": [
-                                        "youremail@address.com"
-                                     ]},
-                              "webhooks": [{
-                                    "serviceUri": "https://events.pagerduty.com/integration/0b75b57246814149b4d87fa6e1273687/enqueue",
-                                    "properties": {
-                                        "key1": "custommetric",
-                                        "key2": "scalevmss"
-                                    }
-                                    }
-                              ]}],
+{
+    "type": "Microsoft.Insights/autoscaleSettings",
+    "apiVersion": "[variables('insightsApi')]",
+    "name": "autoscale",
+    "location": "[parameters('resourceLocation')]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]"
+    ],
+    "properties": {
+        "name": "autoscale",
+        "targetResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/',  resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
+        "enabled": true,
+        "notifications": [
+            {
+                "operation": "Scale",
+                "email": {
+                    "sendToSubscriptionAdministrator": true,
+                    "sendToSubscriptionCoAdministrators": true,
+                    "customEmails": [
+                        "youremail@address.com"
+                    ]
+                },
+                "webhooks": [
+                    {
+                        "serviceUri": "https://events.pagerduty.com/integration/0b75b57246814149b4d87fa6e1273687/enqueue",
+                        "properties": {
+                            "key1": "custommetric",
+                            "key2": "scalevmss"
+                        }
+                    }
+                ]
+            }
+        ],
 ```
 
 在此示例中，达到阈值时，警报将转到 Pagerduty.com。
@@ -568,12 +614,12 @@ IP 地址是从指定的子网中选择的。
 若要启用启动诊断，首先，创建存储帐户。 然后，将此 JSON 块放在虚拟机规模集  **virtualMachineProfile** 中，并更新虚拟机规模集：
 
 ```json
-      "diagnosticsProfile": {
-        "bootDiagnostics": {
-          "enabled": true,
-          "storageUri": "http://yourstorageaccount.blob.core.windows.net"
-        }
-      }
+"diagnosticsProfile": {
+    "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "http://yourstorageaccount.blob.core.windows.net"
+    }
+}
 ```
 
 创建新 VM 时，VM 的 InstanceView 属性将显示屏幕截图的详细信息等等。 下面是一个示例：
@@ -588,7 +634,7 @@ IP 地址是从指定的子网中选择的。
 
 ## <a name="virtual-machine-properties"></a>虚拟机属性
 
-### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>如何在不发出多个调用的情况下获取每个 VM 的属性信息？ 例如，对于虚拟机规模集中的 100 个 VM，如何获取每个 VM 的的容错域？
+### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>如何在不发出多个调用的情况下获取每个 VM 的属性信息？ 例如，对于虚拟机规模集中的 100 个 VM，如何获取每个 VM 的容错域？
 
 若要在不发出多个调用的情况下获取每个 VM 的属性信息，通过在以下资源 URI 上执行 REST API `GET`调用 `ListVMInstanceViews`：
 
@@ -596,7 +642,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>是否可将不同的扩展参数传递给虚拟机规模集中的不同 VM？
 
-不可以将不同的扩展参数传递给虚拟机规模集中的不同 VM。 但是，扩展可以根据它们运行所在的 VM 的唯一属性（例如计算机名）运行。 扩展还可以在 http://169.254.169.254 上查询实例元数据来获取更多关于 VM 的信息。
+不可以将不同的扩展参数传递给虚拟机规模集中的不同 VM。 但是，扩展可以根据运行它们的 VM 的唯一属性（例如计算机名）运行。 扩展还可以在 http://169.254.169.254 上查询实例元数据来获取更多关于 VM 的信息。
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>虚拟机规模集 VM 计算机名和 VM ID 为什么不是连续的？ 例如：0，1，3...
 
@@ -606,7 +652,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>删除虚拟机规模集中的 VM 与解除分配 VM 有什么区别？ 如何在这两种做法之间做出选择？
 
-删除虚拟机规模集中的 VM 与解除分配 VM 的主要区别在于 `deallocate` 不会删除虚拟硬盘 (VHD)。 运行 `stop deallocate` 会产生存储费用。 采用其中一种做法可能是由于以下原因之一：
+删除虚拟机规模集中的 VM 与解除分配 VM 的主要区别在于 `deallocate` 不会删除虚拟硬盘 (VHD)。 运行 `stop deallocate` 会产生存储费用。 基于以下某种原因，可能会采用其中一种做法：
 
 - 不再想要支付计算费用，但要保留 VM 的磁盘状态。
 - 想要更快速地启动一组 VM，而不是扩大虚拟机规模集。

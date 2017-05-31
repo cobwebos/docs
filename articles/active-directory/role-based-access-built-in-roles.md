@@ -16,10 +16,10 @@ ms.date: 04/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b600b7d67de24eab5395f085a2a424159b14ff28
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a0a3b7ad7757439b5f73c38e759761f671ca2e17
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
@@ -55,7 +55,7 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | [数据工厂参与者](#data-factory-contributor) |可创建和管理数据工厂，以及它们包含的子资源。 |
 | [实验室用户](#devtest-labs-user) |可查看一切内容，并可连接、启动、重启和关闭虚拟机 |
 | [DNS 区域参与者](#dns-zone-contributor) |可以管理 DNS 区域和记录 |
-| [DocumentDB 帐户参与者](#documentdb-account-contributor) |可管理 DocumentDB 帐户 |
+| [Azure Cosmos DB 帐户参与者](#documentdb-account-contributor) |可管理 Azure Cosmos DB 帐户 |
 | [智能系统帐户参与者](#intelligent-systems-account-contributor) |可管理 Intelligent Systems 帐户 |
 | [监视查阅者](#monitoring-reader) |可以读取所有监视数据 |
 | [监视参与者](#monitoring-contributor) |可以读取监视数据和编辑监视设置 |
@@ -365,8 +365,8 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.Resources/subscriptions/resourceGroups/read |读取资源组 |
 | Microsoft.Support/\* |创建和管理支持票证 |
 
-### <a name="documentdb-account-contributor"></a>DocumentDB 帐户参与者
-可管理 DocumentDB 帐户
+### <a name="azure-cosmos-db-account-contributor"></a>Azure Cosmos DB 帐户参与者
+可管理 Azure Cosmos DB 帐户
 
 | **操作** |  |
 | --- | --- |

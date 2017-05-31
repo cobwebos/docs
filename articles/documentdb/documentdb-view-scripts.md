@@ -1,34 +1,35 @@
 ---
-title: "Azure DocumentDB 门户工具：脚本资源管理器 | Microsoft Docs"
-description: "DocumentDB 脚本资源管理器是一种 Azure 门户工具，用于管理 DocumentDB 服务器端编程项目，包括 JavaScript 存储过程、触发器和用户定义的函数。"
+title: "Azure Cosmos DB 门户工具：脚本资源管理器 | Microsoft Docs"
+description: "Azure Cosmos DB 脚本资源管理器是一种 Azure 门户工具，用于管理 Azure Cosmos DB 服务器端编程项目，包括 JavaScript 存储过程、触发器和用户定义的函数。"
 keywords: "javascript 编辑器"
-services: documentdb
+services: cosmosdb
 author: kirillg
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 9d0620da-2449-4c17-82a4-24aaa46e9b3e
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: kirillg
-translationtype: Human Translation
-ms.sourcegitcommit: 429687c6e5a196a3b489dc4dd79ae886b7ad9c38
-ms.openlocfilehash: ccff673996d53d2b3b2c177bfb6fff01613b7097
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e9c3e92dd1c35ff6893565e61f7e7b940b6ede7e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="create-and-run-stored-procedures-triggers-and-user-defined-functions-using-the-documentdb-script-explorer"></a>使用 DocumentDB 脚本资源管理器创建并运行存储过程、触发器和用户定义的函数。
-本文概述了 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 脚本资源管理器，它是 Azure 门户中的 JavaScript 编辑器，用于查看和执行 DocumentDB 服务器端的编程项目，包括存储过程、触发器和用户定义的函数。 阅读[存储过程、数据库触发器和 UDF](documentdb-programming.md) 一文中有关 DocumentDB 服务器端编程的详细信息。
+# <a name="create-and-run-stored-procedures-triggers-and-user-defined-functions-using-the-azure-cosmos-db-script-explorer"></a>使用 Azure Cosmos DB 脚本资源管理器创建并运行存储过程、触发器和用户定义的函数
+本文概述 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 脚本资源管理器，它是 Azure 门户中的 JavaScript 编辑器，用于查看和执行 Cosmos DB 服务器端的编程项目，包括存储过程、触发器和用户定义的函数。 阅读[存储过程、数据库触发器和 UDF](documentdb-programming.md) 一文中有关 Cosmos DB 服务器端编程的详细信息。
 
 ## <a name="launch-script-explorer"></a>启动脚本资源管理器
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击 ![Azure DocumentDB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“NoSQL (DocumentDB)”。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航栏中，单击 ![Azure Cosmos DB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“Azure Cosmos DB”。 
 
-    如果“NoSQL (DocumentDB)”不可见，请单击底部的“更多服务”，然后单击 ![Azure DocumentDB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“NoSQL (DocumentDB)”。
+    如果未显示 Azure Cosmos DB，单击底部的“更多服务”，然后单击 ![Azure Cosmos DB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“Azure Cosmos DB”。
 2. 在资源菜单中，单击“脚本资源管理器”。
    
     ![脚本资源管理器命令的屏幕截图](./media/documentdb-view-scripts/scriptexplorercommand.png)
@@ -47,7 +48,7 @@ ms.lasthandoff: 02/15/2017
     ![脚本资源管理器“刷新”命令的屏幕截图](./media/documentdb-view-scripts/scriptexplorerrefresh.png)
 
 ## <a name="create-view-and-edit-stored-procedures-triggers-and-user-defined-functions"></a>创建、查看和编辑存储过程、触发器和用户定义的函数
-脚本资源管理器让你可以对 DocumentDB 服务器端的编程项目轻松执行 CRUD 操作。  
+使用脚本资源管理器，可以对 Cosmos DB 服务器端的编程项目轻松执行 CRUD 操作。  
 
 * 若要创建脚本，只需单击脚本资源管理器中相应的创建命令，提供一个 id，输入脚本内容，然后单击“保存”即可。
   
@@ -109,6 +110,5 @@ Azure 门户中的脚本资源管理器只是在 DocumentDB 中使用存储过�
 ## <a name="next-steps"></a>后续步骤
 在[存储过程、数据库触发器和 UDF](documentdb-programming.md) 一文中了解有关 DocumentDB 服务器端编程的详细信息。
 
-[学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)也是一项有用的资源，它可以指导你了解关于 DocumentDB 的更多信息。  
 
 

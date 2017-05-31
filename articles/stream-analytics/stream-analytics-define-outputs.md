@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: f2c67bb0629c8a37e557d4813e3efa459f3c82ad
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 693a4a0dbe7e067492040a12c6cb3b003bbcc54e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -301,15 +302,15 @@ Datetime | String | String |  Datetime | String
 | 编码 |如果是 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 
-## <a name="documentdb"></a>DocumentDB
-[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 是完全托管的 NoSQL 文档数据库服务，提供针对无架构数据的查询和事务、可预测且可靠的性能，以及快速开发。
+## <a name="azure-cosmos-db"></a>Azure Cosmos DB
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 是一种完全托管的 NoSQL 文档数据库服务，提供针对无架构数据的查询和事务、可预测且可靠的性能，实现快速开发。
 
-以下列表详细介绍了用于创建 DocumentDB 输出的属性名称和属性。
+以下列表详细介绍了用于创建 Azure Cosmos DB 输出的属性名称和属性。
 
 * **输出别名** - 用于在 ASA 查询中引用此输出的别名  
-* **帐户名** - DocumentDB 帐户的名称或终结点 URI。  
-* **帐户密钥** - DocumentDB 帐户的共享访问密钥。  
-* **数据库** - DocumentDB 数据库名称。  
+* 帐户名 - Cosmos DB 帐户的名称或终结点 URI。  
+* 帐户密钥 - Cosmos DB 帐户的共享访问密钥。  
+* 数据库 - Cosmos DB 数据库名称。  
 * **集合名称模式** - 要使用的集合的集合名称或其模式。 可以使用可选的 {partition} 令牌（其中分区从 0 开始）构造集合名称格式。 以下是有效输入示例：  
   1\) MyCollection - 必须存在一个名为“MyCollection”的集合。  
   2\) MyCollection{partition} – 此类集合必须存在 –“MyCollection0”、“MyCollection1”、“MyCollection2”等。  

@@ -1,27 +1,29 @@
 ---
-title: "DocumentDB 的 NoSQL Node.js 示例 | Microsoft Docs"
-description: "在 github 上找到 NoSQL Node.js 示例用于执行 DocumentDB 中的常见任务，包括 NoSQL 数据库中 JSON 文档的 CRUD 操作。"
+title: "用于 Azure Cosmos DB 的 Node.js 示例 | Microsoft Docs"
+description: "在 github 上查找用于 Azure Cosmos DB 中常见任务的 Node.js 示例，包括 CRUD 操作。"
 keywords: "Node.js 示例"
-services: documentdb
+services: cosmosdb
 author: moderakh
 manager: jhubbard
 editor: monicar
 documentationcenter: nodejs
 ms.assetid: d87d97be-47a5-4928-8d46-a541fbb33213
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2017
 ms.author: moderakh
-translationtype: Human Translation
-ms.sourcegitcommit: 6d3872dfa5187ea4e0570fdfd0ed3804f461af3f
-ms.openlocfilehash: bc3350a094361817f68e31de6561d050a3295f61
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5415bef7706f1a621429f76fb451ff459693b0e9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="documentdb-nodejs-examples"></a>DocumentDB Node.js 示例
+# <a name="azure-cosmos-db-nodejs-examples"></a>Azure Cosmos DB Node.js 示例
 > [!div class="op_single_selector"]
 > * [.NET 示例](documentdb-dotnet-samples.md)
 > * [Node.js 示例](documentdb-nodejs-samples.md)
@@ -30,7 +32,7 @@ ms.openlocfilehash: bc3350a094361817f68e31de6561d050a3295f61
 > 
 > 
 
-对 Azure DocumentDB 资源执行 CRUD 操作和其他常见操作的示例解决方案包含在 [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) GitHub 存储库中。 本文将提供：
+对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的示例解决方案包含在 [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) GitHub 存储库中。 本文将提供：
 
 * 指向每个 Node.js 示例项目文件中任务的链接。
 * 指向相关的 API 参考内容的链接。
@@ -100,7 +102,7 @@ ms.openlocfilehash: bc3350a094361817f68e31de6561d050a3295f61
 | [在字符串路径上创建范围索引](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L349-L425) |[IndexKind.Range](http://azure.github.io/azure-documentdb-node/global.html#IndexKind)，[IndexingPolicy](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy)，[DocumentClient.queryDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#queryDocument) |
 | [使用默认 indexPolicy 创建集合，然后联机进行更新](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L519-L614) |[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection)<br> [DocumentClient.replaceCollection#replaceCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html) |
 
-有关索引的详细信息，请参阅 [DocumentDB 索引策略](documentdb-indexing-policies.md)。
+有关索引的详细信息，请参阅 [Azure Cosmos DB 索引策略](documentdb-indexing-policies.md)。
 
 ## <a name="server-side-programming-examples"></a>服务器端编程示例
 [ServerSideScripts](https://github.com/Azure/azure-documentdb-node/tree/master/samples/ServerSideScripts) 项目的 [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/ServerSideScripts/app.js) 文件演示如何执行以下任务。
@@ -110,7 +112,7 @@ ms.openlocfilehash: bc3350a094361817f68e31de6561d050a3295f61
 | [创建存储过程](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.ServerSideScripts/app.js#L44-L71) |[DocumentClient.createStoredProcedure](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createStoredProcedure) |
 | [执行存储过程](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.ServerSideScripts/app.js#L73-L90) |[DocumentClient.executeStoredProcedure](http://azure.github.io/azure-documentdb-node/DocumentClient.html#executeStoredProcedure) |
 
-有关服务器端编程的详细信息，请参阅 [DocumentDB 服务器端编程：存储过程、数据库触发器和 UDF](documentdb-programming.md)。
+有关服务器端编程的详细信息，请参阅 [Azure Cosmos DB 服务器端编程：存储过程、数据库触发器和 UDF](documentdb-programming.md)。
 
 ## <a name="partitioning-examples"></a>分区示例
 [Partitioning](https://github.com/Azure/azure-documentdb-node/tree/master/samples/Partitioning) 项目的 [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/Partitioning/app.js) 文件演示如何执行以下任务。
@@ -119,11 +121,6 @@ ms.openlocfilehash: bc3350a094361817f68e31de6561d050a3295f61
 | --- | --- |
 | [使用 HashPartitionResolver](https://github.com/Azure/azure-documentdb-node/blob/ce0fc3c4e70b0279091a1e03620a668d93a14fc2/samples/Partitioning/app.js#L53-L103) |[HashPartitionResolver](http://azure.github.io/azure-documentdb-node/HashPartitionResolver.html) |
 
-有关在 DocumentDB 中对数据进行分区的详细信息，请参阅[对 DocumentDB 中的数据进行分区和扩展](documentdb-partition-data.md)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
+有关在 Azure Cosmos DB 中对数据进行分区的详细信息，请参阅[在 Azure Cosmos DB 中对数据进行分区和缩放](documentdb-partition-data.md)。
 
 

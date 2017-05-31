@@ -13,21 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/21/2017
+ms.date: 05/02/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d68fc54f3fd08b3d7d66a9cd1ddb91c340191468
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: a7511a35a7b186fc424088e7ff5cbc933d325712
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
 # <a name="manage-azure-disks-with-powershell"></a>使用 PowerShell 管理 Azure 磁盘
 
-本教程介绍了不同类型的 VM 磁盘、如何选择磁盘配置，以及如何创建磁盘并将其附加到 Azure VM。 本教程还讲解了如何拍摄磁盘快照。  
+Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 创建 VM 时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程介绍如何部署和管理 VM 磁盘。 学习内容：
 
-可使用最新版 [Azure PowerShell](/powershell/azure/overview) 模块完成本教程中的步骤。
+> [!div class="checklist"]
+> * OS 磁盘和临时磁盘
+> * 数据磁盘数
+> * 标准磁盘和高级磁盘
+> * 磁盘性能
+> * 附加和准备数据磁盘
+
+本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
 
@@ -39,7 +46,7 @@ ms.lasthandoff: 05/03/2017
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
 
-| 类型 | VM 大小 | 临时磁盘大小上限 |
+| 类型 | VM 大小 | 临时磁盘大小上限 (GB) |
 |----|----|----|
 | [常规用途](sizes-general.md) | A 和 D 系列 | 800 |
 | [计算优化](sizes-compute.md) | F 系列 | 800 |
@@ -136,7 +143,17 @@ Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解 VM 磁盘。 转到下一教程，了解如何自动配置 VM。
+本教程中介绍了以下 VM 磁盘主题：
 
-[自动配置 VM](./tutorial-automate-vm-deployment.md)
+> [!div class="checklist"]
+> * OS 磁盘和临时磁盘
+> * 数据磁盘数
+> * 标准磁盘和高级磁盘
+> * 磁盘性能
+> * 附加和准备数据磁盘
+
+转到下一教程，了解如何自动配置 VM。
+
+> [!div class="nextstepaction"]
+> [自动配置 VM](./tutorial-automate-vm-deployment.md)
 

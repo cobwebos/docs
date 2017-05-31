@@ -16,10 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9a8073baea9a6ff2ecf443b516665adb10de4815
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: a2307f7055966ec7146b5da0b4daf1ad469abe2b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 ---
 # <a name="about-h-series-and-compute-intensive-a-series-vms-for-linux"></a>关于适用于 Linux 的 H 系列和计算密集型 A 系列 VM
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="access-to-the-rdma-network"></a>RDMA 网络访问权限
 可以创建支持 RDMA 的 Linux VM 群集来运行以下受支持的 Linux HPC 分发版和受支持的 MPI 实现之一，以利用 Azure RDMA 网络。 有关部署选项和示例配置步骤，请参阅 [Set up a Linux RDMA cluster to run MPI applications](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（设置 Linux RDMA 群集以运行 MPI 应用程序）。
 
-* **分发版** - 必须从 Azure 应用商店中支持 RDMA 的 SUSE Linux Enterprise Server (SLES) 或基于 OpenLogic CentOS 的 HPC 映像部署 VM。 以下应用商店映像支持 RDMA 连接：
+* 分发版 - 必须从 Azure 应用商店中支持 RDMA 的 SUSE Linux Enterprise Server (SLES) 或基于 Rogue Wave Software（之前为 OpenLogic） CentOS 的 HPC 映像部署 VM。 以下应用商店映像支持 RDMA 连接：
   
     * SLES 12 SP1 for HPC、SLES 12 SP1 for HPC（高级）
     

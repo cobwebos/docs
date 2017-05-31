@@ -15,10 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8429ee543d8cf838765ff9e8624390746474ee0d
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 7b1bfcc8163d7166831123524f3ec53f4a3dfe09
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -36,7 +37,7 @@ ms.lasthandoff: 04/03/2017
 - 使用 [az vm disk attach](/cli/azure/vm/disk#attach) 将复制的 VHD 附加到具有托管磁盘的正在运行中的 VM。
 
 ## <a name="convert-vm-to-azure-managed-disks"></a>将 VM 转换为 Azure 托管磁盘
-本节介绍如何将现有的 Azure VM 从非托管磁盘转换为托管磁盘。 可以通过此过程，将高级 (SDD) 非托管磁盘转换为高级托管磁盘，或将标准 (HDD) 非托管磁盘转换为标准托管磁盘。
+本节介绍如何将现有的 Azure VM 从非托管磁盘转换为托管磁盘。 可通过此过程，将高级 (SSD) 非托管磁盘转换为高级托管磁盘，或将标准 (HDD) 非托管磁盘转换为标准托管磁盘。
 
 > [!IMPORTANT]
 > 执行下列过程后，默认 vhds 容器中将保留一个块 blob。 文件的名称是“VMName.xxxxxxx.status”。 请勿删除此剩余的状态对象。 将来应能解决此问题。

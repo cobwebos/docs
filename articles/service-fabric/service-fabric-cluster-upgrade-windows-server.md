@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 6196cb7fa13cf664faa72b7f5f5e0645e4402739
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0c62f84993c83619cd55f9081450deaf0b21c090
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -112,6 +113,10 @@ ms.lasthandoff: 03/30/2017
 > 如果运行的群集无法连接到 Internet，则必须关注 Service Fabric 团队博客来了解新版本的信息。 系统不会显示任何群集运行状况警告来提醒你有新版本可用。  
 >
 >
+
+#### <a name="auto-provisioning-vs-manual-provisioning"></a>自动预配 vs 手动预配
+若要为最新代码版本启用自动下载和注册，请设置 Service Fabric 更新服务。 请参阅[独立包](service-fabric-cluster-standalone-package-contents.md)中的 Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt 获取相关说明。
+对于手动步骤，请根据以下说明操作。
 
 在启动配置升级之前，请修改群集配置，将以下属性设置为 false。
 

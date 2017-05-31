@@ -12,18 +12,19 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/01/2016
+ms.date: 05/01/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
-ms.openlocfilehash: 801a9d0e92a248d2e9843f13cfce74b948cf0d4b
-ms.lasthandoff: 01/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 356ceb98106d080d8c24dedc3547bee33750156e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="indexer-operations-azure-search-service-rest-api-2015-02-28-preview"></a>索引器操作（Azure 搜索服务 REST API：2015-02-28-Preview）
 > [!NOTE]
-> 本文介绍了 [2015-02-28-Preview REST API](search-api-2015-02-28-preview.md) 中的索引器。 此 API 版本添加了具有文档提取的 Azure Blob 存储索引器和 Azure 表存储索引器的预览版本以及其他改进。 API 还支持公开上市 (GA) 的索引器，包括适用于 Azure SQL 数据库、Azure VM 上的 SQL Server 和 Azure DocumentDB 的索引器。
+> 本文介绍了 [2015-02-28-Preview REST API](search-api-2015-02-28-preview.md) 中的索引器。 此 API 版本添加了具有文档提取的 Azure Blob 存储索引器和 Azure 表存储索引器的预览版本以及其他改进。 API 还支持公开发布 (GA) 的索引器，包括适用于 Azure SQL 数据库、Azure VM 上的 SQL Server 和 Azure Cosmos DB 的索引器。
 > 
 > 
 
@@ -43,7 +44,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 当前支持以下数据源：
 
 * **Azure SQL 数据库**和 **Azure VM 上的 SQL Server**。 若要获取有针对性的演练，请参阅[本文](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)。 
-* **Azure DocumentDB**。 若要获取有针对性的演练，请参阅[本文](search-howto-index-documentdb.md)。 
+* Azure Cosmos DB。 若要获取有针对性的演练，请参阅[本文](search-howto-index-documentdb.md)。 
 * **Azure Blob 存储**，包括以下文档格式：PDF、Microsoft Office（DOCX/DOC、XSLX/XLS、PPTX/PPT、MSG）、HTML、XML、ZIP 和纯文本文件（包括 JSON）。 若要获取有针对性的演练，请参阅[本文](search-howto-indexing-azure-blob-storage.md)。
 * **Azure 表存储**。 若要获取有针对性的演练，请参阅[本文](search-howto-indexing-azure-tables.md)。
 
@@ -124,13 +125,13 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 * `description`：可选说明。 
 * `type`：必需。 必须是支持的数据源类型之一：
   * `azuresql` - Azure SQL 数据库或 Azure VM 上的 SQL Server
-  * `documentdb` - Azure DocumentDB
+  * `documentdb` - Azure Cosmos DB
   * `azureblob` - Azure Blob 存储
   * `azuretable` - Azure 表存储
 * `credentials`：
   * 必需 `connectionString` 属性指定数据源的连接字符串。 连接字符串的格式取决于数据源类型： 
     * 对于 Azure SQL，这是常用的 SQL Server 连接字符串。 如果你要使用 Azure 门户检索连接字符串，请使用 `ADO.NET connection string` 选项。
-    * 对于 DocumentDB，连接字符串必须采用以下格式：`"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"`。 所有值都是必需的。 可以在 [Azure 门户](https://portal.azure.com/)中找到这些值。  
+    * 对于 Azure Cosmos DB，连接字符串必须采用以下格式：`"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"`。 所有值都是必需的。 可以在 [Azure 门户](https://portal.azure.com/)中找到这些值。  
     * 对于 Azure Blob 和表存储，这是存储帐户连接字符串。 格式如[此处](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/)所述。 HTTPS 终结点协议是必需的。  
 * `container`（必需）：指定要使用 `name` 和 `query` 属性编制索引的数据： 
   * `name`（必需）：
@@ -168,7 +169,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
         "highWaterMarkColumnName" : "[a row version or last_updated column name]" 
     } 
 
-在使用 DocumentDB 数据源时，你必须使用 DocumentDB 提供的 `_ts` 属性。 
+在使用 Azure Cosmos DB 数据源时，你必须使用 Azure Cosmos DB 提供的 `_ts` 属性。 
 
 在使用 Azure Blob 数据源时，Azure 搜索基于 blob 的上次修改时间戳自动使用高使用标记更改检测策略；你无需自行指定此类策略。   
 
@@ -413,7 +414,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 * `maxFailedItems`：索引器运行被视为失败前，允许索引失败的项目数。 默认值为 0。 [获取索引器状态](#GetIndexerStatus)操作将返回有关失败的项目的信息。 
 * `maxFailedItemsPerBatch`：索引器运行被视为失败前，每批中允许索引失败的项目数。 默认值为 0。
 * `base64EncodeKeys`：指定是否对文档密钥进行 base-64 编码。 Azure 搜索会对出现在文档密钥中的字符施加限制。 但是，你的源数据中的值可能包含无效的字符。 如果有必要将此类值的索引编制为文档密钥，可以将此标志设置为 true。 默认值为 `false`。
-* `batchSize`：指定从数据源读取并将索引编制为单个批处理以提高性能的项数。 默认值取决于数据源类型：对于 Azure SQL 和 DocumentDB，默认值为 1000；对于 Azure Blob 存储，默认值为 10。
+* `batchSize`：指定从数据源读取并将索引编制为单个批处理以提高性能的项数。 默认值取决于数据源类型：对于 Azure SQL 和 Azure Cosmos DB，默认值为 1000；对于 Azure Blob 存储，默认值为 10。
 
 **字段映射**
 

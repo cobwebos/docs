@@ -1,6 +1,6 @@
 ---
 title: "流分析的 JSON 输出 | Microsoft Docs"
-description: "了解流分析如何针对 Azure DocumentDB 进行 JSON 输出，以实现对非结构化 JSON 数据进行数据存档和低延迟查询。"
+description: "了解流分析如何针对 Azure Cosmos DB 进行 JSON 输出，以实现对非结构化 JSON 数据进行数据存档和低延迟查询。"
 keywords: "JSON 输出"
 documentationcenter: 
 services: stream-analytics,documentdb
@@ -15,40 +15,41 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: ed5589600f536b92312317e97a8fb375869e35ef
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 01bf4188c40abb424c654a733c6d626f3bd694ba
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="target-azure-documentdb-for-json-output-from-stream-analytics"></a>从流分析针对 Azure DocumentDB 进行 JSON 输出
-流分析可以针对 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档介绍有关实现此配置的一些最佳做法。
+# <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>从流分析针对 Azure Cosmos DB 进行 JSON 输出
+流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档介绍有关实现此配置的一些最佳做法。
 
-不熟悉 DocumentDB 的人员可以看一下 [DocumentDB 的学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)开始入门。
+不熟悉 Cosmos DB 的人员可以查看 [Azure Cosmos DB 的学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)开始上手。
 
-## <a name="basics-of-documentdb-as-an-output-target"></a>作为输出目标的 DocumentDB 的基础知识
-使用流分析中的 Azure DocumentDB 输出可以将流处理结果作为 JSON 输出写入到 DocumentDB 集合中。 流分析不会在数据库中创建集合，而需要你预先创建这些集合。 这是为了让你清除了解 DocumentDB 集合的计费成本，以便可以直接使用 [DocumentDB API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 调整集合的性能、一致性和容量。 我们建议对每个流式处理作业使用一个 DocumentDB 数据库，以便在逻辑上为流式处理作业划分集合。
+## <a name="basics-of-cosmos-db-as-an-output-target"></a>作为输出目标的 Cosmos DB 基础知识
+使用流分析中的 Azure Cosmos DB 输出可以将流处理结果作为 JSON 输出写入到 Cosmos DB 集合中。 流分析不会在数据库中创建集合，而需要你预先创建这些集合。 这是为了让用户清楚地了解 Cosmos DB 集合的计费成本，以便可直接使用 [Cosmos DB API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 调整集合的性能、一致性和容量。 建议对每个流式处理作业使用一个 Cosmos DB 数据库，以便在逻辑上为流式处理作业划分集合。
 
-下面详细介绍一些 DocumentDB 集合选项。
+下面详细介绍一些 Cosmos DB 集合选项。
 
 ## <a name="tune-consistency-availability-and-latency"></a>调整一致性、可用性和延迟
-为了满足应用程序的要求，DocumentDB 允许你微调数据库和集合并在一致性、可用性和延迟之间进行权衡。 根据你的方案针对读写延迟需要什么级别的读取一致性，你可以在数据库帐户上选择一致性级别。 另外，默认情况下，DocumentDB 对集合的每个 CRUD 操作启用了同步索引。 这是另一个有用选项，可以控制 DocumentDB 中的读/写性能。 有关本主题的更多信息，请参阅[更改数据库和查询的一致性级别](../documentdb/documentdb-consistency-levels.md)文章。
+为了满足应用程序的要求，Cosmos DB 允许微调数据库和集合，并在一致性、可用性和延迟之间进行权衡。 根据你的方案针对读写延迟需要什么级别的读取一致性，你可以在数据库帐户上选择一致性级别。 另外，默认情况下，Cosmos DB 对集合的每个 CRUD 操作启用了同步索引。 这是另一个有用选项，可控制 Cosmos DB 中的读/写性能。 有关本主题的更多信息，请参阅[更改数据库和查询的一致性级别](../documentdb/documentdb-consistency-levels.md)文章。
 
 ## <a name="upserts-from-stream-analytics"></a>从流分析进行 Upsert 操作
-由于流分析与 DocumentDB 集成，因此可以在 DocumentDB 集合中基于给定的文档 ID 列插入或更新记录。 这也称为 *Upsert*。
+由于流分析与 Cosmos DB 集成，因此可以在 Cosmos DB 集合中基于给定的文档 ID 列插入或更新记录。 这也称为 *Upsert*。
 
 流分析利用了乐观 Upsert 方法，即仅当由于文档 ID 冲突而插入失败时才进行更新。 此更新由流分析以修补程序的形式执行，因此它使得对文档的部分更新（即添加新属性或替换现有属性）以增量方式执行。 请注意，JSON 文档中数组属性的值的更改会导致整个数组被覆盖，即不会合并数组。
 
-## <a name="data-partitioning-in-documentdb"></a>DocumentDB 中的数据分区
-建议使用 DocumentDB [分区集合](../documentdb/documentdb-partition-data.md#single-partition-and-partitioned-collections)进行数据分区。 
+## <a name="data-partitioning-in-cosmos-db"></a>Cosmos DB 中的数据分区
+建议使用 Cosmos DB [分区集合](../documentdb/documentdb-partition-data.md#single-partition-and-partitioned-collections)对数据进行分区。 
 
-对于单一 DocumentDB 集合，流分析仍允许用户根据应用程序的查询模式和性能需求对数据进行分区。 每个集合最多可包含 10GB 的数据（最大值），并且当前无法向上扩展（或溢出）集合。 若要向外扩展，流分析允许你写入到具有给定前缀的多个集合（请参见下面的用法详细信息）。 流分析根据用户提供的 PartitionKey 列，使用一致的[哈希分区解析程序](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)对其输出记录进行分区。 流式处理作业开始时具有给定前缀的集合数将用作输出分区计数，作业将并行写入到这些集合（DocumentDB 集合数 = 输出分区数）。 对于延迟索引仅执行插入的单个集合，可以预期大约 0.4 MB/秒的写入吞吐量。 使用多个集合，可以允许你实现更高的吞吐量和更大的容量。
+对于单一 Cosmos DB 集合，用户仍然可以使用流分析根据应用程序的查询模式和性能需求对数据进行分区。 每个集合最多可包含 10GB 的数据（最大值），并且当前无法向上扩展（或溢出）集合。 若要向外扩展，流分析允许你写入到具有给定前缀的多个集合（请参见下面的用法详细信息）。 流分析根据用户提供的 PartitionKey 列，使用一致的[哈希分区解析程序](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)对其输出记录进行分区。 流式处理作业开始时，具有给定前缀的集合数将用作输出分区计数，作业将并行写入到这些集合（Cosmos DB 集合数 = 输出分区数）。 对于延迟索引仅执行插入的单个集合，可以预期大约 0.4 MB/秒的写入吞吐量。 使用多个集合，可以允许你实现更高的吞吐量和更大的容量。
 
-如果你想要在将来增加分区计数，则可能需要停止作业，将现有集合中的数据重新划分为新的集合，然后重新启动流分析作业。 有关使用 PartitionResolver 和重新分区的更多详细信息以及示例代码将在后续帖子中提供。 [DocumentDB 中的分区和缩放](../documentdb/documentdb-partition-data.md)一文中也提供了有关此内容的详细信息。
+如果你想要在将来增加分区计数，则可能需要停止作业，将现有集合中的数据重新划分为新的集合，然后重新启动流分析作业。 有关使用 PartitionResolver 和重新分区的更多详细信息以及示例代码将在后续帖子中提供。 [Cosmos DB 中的分区和缩放](../documentdb/documentdb-partition-data.md)一文中也提供了有关此内容的详细信息。
 
-## <a name="documentdb-settings-for-json-output"></a>JSON 输出的 DocumentDB 设置
-创建 DocumentDB 作为流分析中的输出时，会生成如下所示的信息提示。 本部分提供属性定义的说明。
+## <a name="cosmos-db-settings-for-json-output"></a>JSON 输出的 Cosmos DB 设置
+创建 Cosmos DB 作为流分析中的输出时，会生成如下所示的信息提示。 本部分提供属性定义的说明。
 
 已分区集合 | 多个“单一分区”集合
 ---|---
@@ -60,9 +61,9 @@ ms.lasthandoff: 03/21/2017
 > **多个“单一分区”集合**方案需要一个分区键，是一种受支持的配置。 
 
 * **输出别名** - 用于在 ASA 查询中引用此输出的别名  
-* **帐户名** - DocumentDB 帐户的名称或终结点 URI。  
-* **帐户密钥** - DocumentDB 帐户的共享访问密钥。  
-* **数据库** - DocumentDB 数据库名称。  
+* 帐户名 - Cosmos DB 帐户的名称或终结点 URI。  
+* 帐户密钥 - Cosmos DB 帐户的共享访问密钥。  
+* 数据库 - Cosmos DB 数据库名称。  
 * **集合名称模式** - 要使用的集合的集合名称或其模式。 可以使用可选的 {partition} 令牌（其中分区从 0 开始）构造集合名称格式。 以下是有效输入示例：  
   1\) MyCollection - 必须存在一个名为“MyCollection”的集合。  
   2\) MyCollection{partition} – 此类集合必须存在 –“MyCollection0”、“MyCollection1”、“MyCollection2”等。  

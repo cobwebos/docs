@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/08/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b3eebdd714b38ffd9432404944829d05ef3c3dc6
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2601850f99188445cf63a6a4f185bdc4ebb92c29
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -44,6 +44,12 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）为登录到�
 
 ![无缝单一登录](./media/active-directory-aadconnect-sso/sso1.png)
 
+无缝 SSO 的其他功能如下所示：
+
+- 如果 Azure AD 登录请求包括 `domain_hint` 或 `login_hint` 参数（由租户中的应用程序发起），则无缝 SSO 将利用它，并且用户将可免于输入其用户名和密码。
+- 无缝 SSO 支持本地默认用户名（通常为“userPrincipalName”）的用户名，或是在 Azure AD Connect 中配置的另一个属性（称为“备用 ID”）。
+- 无缝 SSO 是个机会型功能，这意味着，如果由于任何原因失败，用户登录体验将回退到其常规行为 - 即，用户将需要在登录页面上输入其密码。
+
 ## <a name="whats-available-during-preview"></a>预览版提供哪些功能？
 
 >[!NOTE]
@@ -63,8 +69,6 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）为登录到�
 
 >[!NOTE]
 >对于 Windows 10，建议使用 [Azure AD join](../active-directory-azureadjoin-overview.md)，以获得最佳的 Azure AD 体验。
-
-如果 Azure AD 登录请求包括 `domain_hint` 或 `login_hint` 参数（由租户中的应用程序发起），则无缝 SSO 将利用它，并且用户将可免于输入其用户名和密码。
 
 ## <a name="how-does-azure-ad-seamless-sso-work"></a>Azure AD 无缝 SSO 的工作原理
 
@@ -102,8 +106,8 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）为登录到�
 如果要结合密码同步启用无缝 SSO，并且 Azure AD Connect 与 Azure AD 之间有防火墙，请确保：
 
 - Azure AD Connect 服务器可与 `*.msappproxy.net` URL 通信。
-- Azure AD Connect（版本 1.1.484.0 或更高）可以通过端口 443 向 Azure AD 发出 HTTPS 请求。 此条件仅适用于启用该功能，而不适用于实际用户登录。
-- Azure AD Connect 还可以与 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=41653)建立直接 IP 连接。 同样，这仅用于启用该功能。
+- Azure AD Connect（版本 1.1.484.0 或更高）可以通过端口 443 向 Azure AD 发出 HTTPS 请求。 此条件仅用于启用该功能，而不适用于实际用户登录。
+- Azure AD Connect 还可以与 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)建立直接 IP 连接。 同样，这仅用于启用该功能。
 
 >[!NOTE]
 > 旧版 Azure AD Connect（版本低于 1.1.484.0）需要能够通过端口 9090 与 Azure AD 通信。
@@ -120,9 +124,9 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）为登录到�
 
 ![Azure AD Connect - 更改用户登录](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
-在安装向导中继续操作，直到出现“启用单一登录”页。 需要提供与 Azure AD 同步的（通过 Azure AD Connect）的每个 AD 林以及要启用无缝 SSO 的用户的域管理员凭据。 请注意，域管理员凭据不会存储在 Azure AD Connect 或 Azure AD 中，而只会用于创建计算机帐户和配置 Kerberos SPN，如前所述。
+在向导中继续操作，直到出现“启用单一登录”页。 需要提供与 Azure AD 同步的（通过 Azure AD Connect）的每个 AD 林以及要启用无缝 SSO 的用户的域管理员凭据。 请注意，域管理员凭据不会存储在 Azure AD Connect 或 Azure AD 中，而只会用于创建计算机帐户和配置 Kerberos SPN，如前所述。
 
-此时，已在租户中启用无缝 SSO。 请注意，只有在完成下一步部分中的步骤之后，你的用户才可以利用此功能。
+完成向导后，租户即启用了无缝 SSO。 请注意，只有在完成下一步部分中的步骤之后，你的用户才可以利用此功能。
 
 ## <a name="rolling-the-feature-out-to-your-users"></a>向用户实施该功能
 
@@ -142,10 +146,10 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）为登录到�
 ![单一登录](./media/active-directory-aadconnect-sso/sso6.png)  
 4. 启用策略，并在对话框中输入以下值/数据。 这是 Kerberos 票证要发送到的 Azure AD URL。
 
-        Value: https://autologon.microsoftazuread-sso.com  
-        Data: 1  
-        Value: https://aadg.windows.net.nsatc.net  
-        Data: 1  
+        Value: https://autologon.microsoftazuread-sso.com
+        Data: 1
+        Value: https://aadg.windows.net.nsatc.net
+        Data: 1
 5. 请单击两次“确定”。
 
 它看起来应该如下所示：
@@ -155,29 +159,26 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）为登录到�
 >[!NOTE]
 >默认情况下，Chrome 使用和 Internet Explorer 相同的一组受信任的站点 URL。 如果为 Chrome 配置了不同的设置，需要单独更新这些设置。
 
-## <a name="troubleshooting-seamless-sso"></a>排查无缝 SSO 问题
+## <a name="disabling-azure-ad-seamless-sso"></a>禁用 Azure AD 无缝 SSO
 
-使用以下查检表排查无缝 SSO 的问题：
+可通过 Azure AD Connect 禁用 Azure AD 无缝 SSO。
 
-1. 在 Azure AD Connect 工具中检查是否已在租户中启用无缝 SSO 功能。 如果无法启用该功能（例如，由于端口被阻止），请确保事先满足所有[先决条件](#pre-requisites)。 如果启用该功能时仍出现问题，请联系 Microsoft 支持部门。
-2. 已将两个服务 URL（https://autologon.microsoftazuread-sso.com 和 https://aadg.windows.net.nsatc.net）定义为 Intranet 区域设置的一部分。
-3. 确保企业桌面已加入 AD 域。
-4. 确保用户使用 AD 域帐户登录到桌面。
-5. 确保用户的帐户来自已设置无缝 SSO 的 AD 林。
-6. 确保已在企业网络中连接该桌面。
-7. 确保桌面的时间与 Active Directory 同步，并且各域控制器的时间偏差不超过 5 分钟。
-8. 从用户的桌面中清除现有的 Kerberos 票证。 为此，可以在命令提示符下运行 **klist purge** 命令。
-9. 查看浏览器的控制台日志（在“开发人员工具”下）来帮助确定潜在问题。
+运行 Azure AD Connect，选择“更改用户登录页”，然后单击“下一步”。 然后取消选中“启用单一登录”选项。 在向导中继续操作。 完成向导后，租户即禁用了无缝 SSO。 但是，屏幕上会显示以下消息：
 
-### <a name="domain-controller-logs"></a>域控制器日志
+“单一登录现已禁用，但可执行其他手动步骤以完成清理。 了解详细信息”
 
-如果在域控制器上成功启用审核，则每当用户使用无缝 SSO 登录时，将在事件日志中记录一个安全条目（与计算机帐户 **AzureADSSOAcc$** 关联的事件 4769）。 可以使用以下查询来查找这些安全事件：
+以下是需要执行的手动步骤：
 
-```
-    <QueryList>
-      <Query Id="0" Path="Security">
-    <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
-      </Query>
-    </QueryList>
-```
+- 获取已在其中启用无缝 SSO 的 AD 林的列表
+  - 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此操作应可提供一个弹出窗口，用于输入 Azure AD 租户管理员凭据。
+  - 调用 `Get-AzureADSSOStatus`。 这将提供已在其中启用此功能的 AD 林（请参阅“域”列表）的列表。
+- 从上面列出的每个 AD 林中手动删除 AZUREADSSOACCT 计算机帐户。
+
+## <a name="next-steps"></a>后续步骤
+
+- 阅读我们的[故障排除指南](active-directory-aadconnect-troubleshoot-sso.md)，了解如何解决 Azure AD 无缝 SSO 的常见问题。
+
+## <a name="feedback"></a>反馈
+
+你的反馈对我们非常重要。 如果有疑问，请使用下面的评论部分。 使用我们的 [UserVoice 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)发布新功能请求。
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: markvi;andkjell
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 9238141fc56abcb618d71e4bfd1eccb77f282c71
-ms.lasthandoff: 03/08/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 08df9939eb31c224d62d96a0d034d1cda10ba270
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -102,6 +103,7 @@ ms.lasthandoff: 03/08/2017
 | msExchAuditOwner |X | | | |
 | msExchBlockedSendersHash |X |X | | |
 | msExchBypassAudit |X | | | |
+| msExchBypassModerationLink | | |X |在 Azure AD Connect 版本 1.1.524.0 中可用 |
 | msExchCoManagedByLink | | |X | |
 | msExchDelegateListLink |X | | | |
 | msExchELCExpirySuspensionEnd |X | | | |
@@ -430,6 +432,18 @@ ms.lasthandoff: 03/08/2017
 | msExchUCVoiceMailSettings |X | | |启用统一消息传送 (UM) - 在线语音邮件：供 Microsoft Lync Server 集成用于向 Lync Server 本地表示用户在在线服务中有语音邮件。 |
 | msExchUserHoldPolicies |X | | |诉讼数据保留：启用云服务来标识哪些用户正处于诉讼数据保留状态。 |
 | proxyAddresses |X |X |X |只插入 Exchange Online 中的 x500 地址。 |
+
+## <a name="exchange-mail-public-folder"></a>Exchange 邮件公用文件夹
+如果选择启用 Exchange 邮件公用文件夹，这些属性将从本地 Active Directory 同步到 Azure AD。
+
+| 属性名称 | PublicFolder | 注释 |
+| --- | :---:| --- |
+| displayName | X |  |
+| mail | X |  |
+| msExchRecipientTypeDetails | X |  |
+| objectGUID | X |  |
+| proxyAddresses | X |  |
+| targetAddress | X |  |
 
 ## <a name="device-writeback"></a>设备写回
 设备对象是在 Active Directory 中创建的。 这些对象可以是加入 Azure AD 的设备，或加入域的 Windows 10 计算机。

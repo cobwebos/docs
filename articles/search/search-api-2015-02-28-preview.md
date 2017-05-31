@@ -12,11 +12,13 @@ ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: search
-ms.date: 09/07/2016
+ms.date: 05/01/2017
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 524d3300e621d8e383833198c14c2e2e8461683b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ea3fc801074bb6d7e7c32574bc94702c79a61185
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -1119,7 +1121,7 @@ Azure 搜索中的建议功能是提前键入或自动完成查询功能，提�
 ## <a name="document-operations"></a>文档操作
 在 Azure 搜索中，索引存储在云中，并使用上传到服务的 JSON 文档填充。 上传的所有文档构成了搜索数据的语料库。 文档包含字段，其中某些字段在上传时标记化为搜索词。 Azure 搜索 API 中的 `/docs` URL 段表示索引中的文档集合。 对集合执行的所有操作（如上传、合并、删除或查询文档）都发生在单个索引的上下文中，因此这些操作的 URL 对于给定索引名称将始终以 `/indexes/[index name]/docs` 开头。
 
-应用程序代码必须生成 JSON 文档才能上传到 Azure 搜索，或者，如果数据源是 Azure SQL 数据库或 DocumentDB，可以使用[索引器](https://msdn.microsoft.com/library/dn946891.aspx)加载文档。 通常，从提供的单个数据集填充索引。
+应用程序代码必须生成 JSON 文档才能上传到 Azure 搜索，或者，如果数据源是 Azure SQL 数据库或 Azure Cosmos DB，则可以使用[索引器](https://msdn.microsoft.com/library/dn946891.aspx)加载文档。 通常，从提供的单个数据集填充索引。
 
 应计划为要搜索的每个项目使用一个文档。 电影租赁应用程序可能为每部电影使用一个文档，店铺应用程序可能为每个 SKU 使用一个文档，在线课件应用程序可能为每个课程使用一个文档，研究公司可能为其存储库中的每个学术论文使用一个文档，等等。
 
@@ -1968,9 +1970,4 @@ Azure 搜索可能返回延续标记的原因特定于实现并且可能随时�
       "top": 5,
       "suggesterName": "sg"
     }
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

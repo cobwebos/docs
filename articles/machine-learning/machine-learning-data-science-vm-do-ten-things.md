@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: gokuma;weig;bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 3b608f341278ceaef9dd112cea38f138be69ee44
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: c35d1548262f25e65c391c927919b8acf1411e10
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>数据科研虚拟机的十大功能
-Microsoft 数据科研虚拟机 (DSVM) 是一个功能强大的数据科研开发环境，使你可以执行各种数据探索和建模任务。 该环境中附带了内置和捆绑的多款主流分析工具，便于你针对本地、云或混合部署快速开始分析。 DSVM 与许多 Azure 服务密切合作，能够读取并处理已存储在 Azure、Azure SQL 数据仓库、Azure Data Lake、Azure 存储或 DocumentDB 中的数据。 它还可以利用 Azure 机器学习和 Azure 数据工厂等其他分析工具。
+Microsoft 数据科研虚拟机 (DSVM) 是一个功能强大的数据科研开发环境，使你可以执行各种数据探索和建模任务。 该环境中附带了内置和捆绑的多款主流分析工具，便于你针对本地、云或混合部署快速开始分析。 DSVM 与许多 Azure 服务密切合作，能够读取并处理已存储在 Azure、Azure SQL 数据仓库、Azure Data Lake、Azure 存储或 Azure Cosmos DB 中的数据。 它还可以利用 Azure 机器学习和 Azure 数据工厂等其他分析工具。
 
 在本文中，我们将介绍如何使用 DSVM 执行各种数据科研任务，并与其他 Azure 服务交互。 可以在 DSVM 上执行的操作如下所示：
 
@@ -32,7 +33,7 @@ Microsoft 数据科研虚拟机 (DSVM) 是一个功能强大的数据科研开�
 4. 使用 Azure 门户或 PowerShell 管理 Azure 资源
 5. 通过将 Azure 文件存储创建为可在 DSVM 上装载的驱动器，即可扩展你的存储空间并跨整个团队共享大型数据集/代码
 6. 使用 GitHub 与你的团队共享代码，使用预安装的 Git 客户端访问你的存储库 - Git Bash、Git GUI。
-7. 访问各种 Azure 数据和分析服务，如 Azure Blob 存储、Azure Data Lake、Azure HDInsight (Hadoop)、Azure DocumentDB、Azure SQL 数据仓库和数据库
+7. 访问各种 Azure 数据和分析服务，如 Azure Blob 存储、Azure Data Lake、Azure HDInsight (Hadoop)、Azure Cosmos DB、Azure SQL 数据仓库和数据库
 8. 使用 DSVM 上预安装的 Power BI Desktop 生成报表和仪表板，然后将它们部署到云中
 9. 动态缩放 DSVM 即可满足项目需求
 10. 在虚拟机上安装其他工具   
@@ -798,22 +799,22 @@ Azure SQL 数据仓库是一项弹性数据仓库即服务，具有企业级 SQL
 
 可以按照本[文章](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)中提供的说明设置 Azure SQL 数据仓库。 完成设置 Azure SQL 数据仓库后，即可使用此[演练](machine-learning-data-science-process-sqldw-walkthrough.md)，来使用 SQL 数据仓库中的数据执行数据上传、探索和建模。
 
-#### <a name="azure-documentdb"></a>Azure DocumentDB
-Azure DocumentDB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文档，还允许你存储和查询文档。
+#### <a name="azure-cosmos-db"></a>Azure Cosmos DB
+Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文档，还允许你存储和查询文档。
 
-若要从 DSVM 访问 DocumentDB，需要执行以下每个必要步骤。
+若要从 DSVM 访问 Azure Cosmos DB，需要执行以下每个必要步骤。
 
 1. 安装 DocumentDB Python SDK（在命令提示符下运行 ```pip install pydocumentdb```）
-2. 在 [Azure 门户](https://portal.azure.com)中，创建 DocumentDB 帐户和 DocumentDB 数据库。
-3. 从[此处](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)下载“DocumentDB 迁移工具”，然后解压缩到所选目录
-4. 使用迁移工具（安装 DocumentDB 迁移工具所在目录中的 dtui.exe）的以下命令参数将[公共 Blob](https://cahandson.blob.core.windows.net/samples/volcano.json) 上存储的 JSON 数据（火山数据）导入 DocumentDB。 输入以下源和目标位置参数。
+2. 在 [Azure 门户](https://portal.azure.com)中，创建 Azure Cosmos DB 帐户和 DocumentDB 数据库
+3. 从[此处](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)下载“Azure Cosmos DB 迁移工具”，然后解压缩到所选目录
+4. 使用迁移工具（安装 Cosmos DB 迁移工具所在目录中的 dtui.exe）的以下命令参数将[公共 blob](https://cahandson.blob.core.windows.net/samples/volcano.json) 上存储的 JSON 数据（火山数据）导入 Cosmos DB。 输入以下源和目标位置参数。
    
     /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
 
 导入数据后，可以转到 Jupyter 并打开标题为 *DocumentDBSample* 的 Notebook，其中包含用于访问 DocumentDB 和执行一些基本查询的 python 代码。 通过访问 DocumentDB 的[文档页](https://azure.microsoft.com/documentation/learning-paths/documentdb/)可以了解有关该服务的详细信息。
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.使用 Power BI Desktop 生成报表和仪表板
-让我们在 Power BI 中可视化我们在上述 DocumentDB 示例中看到的火山 JSON 文件，以获取对数据的视觉洞察。 [Power BI 文章](../documentdb/documentdb-powerbi-visualize.md)中提供了详细步骤。 大致步骤如下所示：
+让我们在 Power BI 中可视化我们在上述 Cosmos DB 示例中看到的火山 JSON 文件，以获取对数据的视觉洞察。 [Power BI 文章](../documentdb/documentdb-powerbi-visualize.md)中提供了详细步骤。 大致步骤如下所示：
 
 1. 打开 Power BI Desktop 并执行“获取数据”。 指定如下 URL：https://cahandson.blob.core.windows.net/samples/volcano.json
 2. 应该将导入的 JSON 记录看作列表
