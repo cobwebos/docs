@@ -3,7 +3,7 @@ title: "Azure 中 Linux VM 的 VM 重启维护 | Microsoft Docs"
 description: "Linux 虚拟机的 VM 重启维护。"
 services: virtual-machines-linux
 documentationcenter: 
-author: 
+author: zivr
 manager: timlt
 editor: 
 tags: azure-service-management,azure-resource-manager
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
-ms.author: 
-translationtype: Human Translation
+ms.author: zivr
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: c02b2878462afb107c81317c9ea0a317cb9ce838
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/19/2017
 
 

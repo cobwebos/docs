@@ -15,9 +15,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 02/08/2017
 ms.author: heidist
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 08682b7986cc2210ed21f254e2a9a63b5355e583
 ms.openlocfilehash: bfed40417d800e86de7ef437c42162b1e1a0d886
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/24/2017
 
 ---
@@ -75,7 +76,7 @@ ms.lasthandoff: 02/24/2017
 
 Azure 搜索的服务级别协议 (SLA) 针对查询操作，以及由文档添加、更新或删除操作构成的索引更新。
 
-### <a name="index-availability-during-a-rebuild"></a>重建期间的索引可用性###
+### <a name="index-availability-during-a-rebuild"></a>重建期间的索引可用性
 
 Azure 搜索的高可用性与查询以及不涉及重建索引的索引更新相关。 如果删除字段、更改数据类型或重命名字段，则需要重建索引。 若要重建索引，必须删除该索引，重新创建该索引，然后重新加载数据。
 

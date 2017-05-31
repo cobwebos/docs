@@ -1,13 +1,13 @@
 ---
 title: "适用于 Azure Cosmos DB 的 Azure PowerShell 示例 | Microsoft Docs"
 description: "Azure PowerShell 示例 - 这些脚本可帮助你创建和管理 Azure Cosmos DB 帐户。"
-services: cosmosdb
+services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: na
 ms.topic: article

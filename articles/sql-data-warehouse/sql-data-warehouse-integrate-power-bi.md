@@ -3,7 +3,7 @@ title: "将 Power BI 与 SQL 数据仓库配合使用 | Microsoft 文档"
 description: "有关在开发解决方案时将 Power BI 与 Azure SQL 数据仓库配合使用的技巧。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: mlee3gsd
 manager: jhubbard
 editor: 
 ms.assetid: b12bee87-2268-40c2-81bf-ab27588b32e8
