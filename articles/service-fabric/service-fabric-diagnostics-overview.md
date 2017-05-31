@@ -12,75 +12,112 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/9/2017
+ms.date: 05/10/2017
 ms.author: dekapur
-translationtype: Human Translation
-ms.sourcegitcommit: ebbb29ee031fb477ce284f7a0d27c1522317f4f0
-ms.openlocfilehash: 46a35fa4ec341561ab234f7ec19fb20658fcb2c4
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 9c1a3bb6de8756c37903e5f1b9dcf3fdc1ef6a11
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
-# <a name="monitor-and-diagnose-azure-service-fabric-applications"></a>监视和诊断 Azure Service Fabric 应用程序
+# <a name="monitoring-and-diagnostics-in-azure-service-fabric"></a>在 Azure Service Fabric 中进行监视和诊断
 
-在实际生产环境中，监视和诊断至关重要。 在开发服务的过程中，可以借助 Azure Service Fabric 来实施监视和诊断，确保该服务可在单一计算机、本地开发环境和实际生产群集设置中无缝运行。
+监控和诊断对于在生产环境中开发、测试和成功部署至关重要。 若从最初即实施监视和诊断，Service Fabric 解决方案可发挥最大作用，有助于确保服务在本地开发环境和现实生产群集设置中无缝工作。
 
-在开发服务的过程中，可以借助监视和诊断来实现以下目的：
-* 尽量减少对客户造成的干扰。
-* 提供业务见解。
-* 监视资源使用情况。
-* 检测硬件和软件故障或性能问题。
-* 诊断潜在的服务问题。
+监视和诊断的主要目标是：
+* 检测和诊断硬件和基础结构问题
+* 检测软件和应用问题，减少服务停机时间
+* 了解资源消耗情况，帮助推动运营决策
+* 优化应用程序、服务和基础结构性能
+* 生成业务见解并确定改进区域
 
-“监视”是一个泛指的术语，具体包括以下任务：
-* 检测代码
-* 收集检测日志
-* 分析数据
-* 根据日志数据可视化见解
-* 根据日志值和见解设置警报
-* 监视基础结构
-* 检测和诊断对客户造成了影响的问题
 
-本文概述如何使用 Microsoft .NET Framework 来监视在 Azure 或本地托管的，或者在 Windows 或 Linux 上部署的 Service Fabric 群集。 我们将探讨监视和诊断的三个重要方面：
-- 检测代码或基础结构
-- 收集生成的事件
-- 存储、聚合、可视化和分析
+若要确保一切按预期进行，实施监视和诊断很重要，在应对出现的情况时，二者可将对服务的影响降到最低。 
 
-尽管有些产品能够解决上述所有三个方面的问题，但许多客户倾向于选择不同的技术来满足每个监视要素。 重要的是，必须将每个组成部分对接在一起才能为应用程序提供端到端的监视解决方案。
+监视和诊断的整体工作流程分为三个步骤： 
+1. 事件生成：这同时包括基础结构（群集）级别和应用程序/服务级别的事件（日志、跟踪、自定义事件） 
+2. 事件聚合：需要先收集和聚合生成的事件才能显示这些事件。 可通过由 Microsoft Azure 诊断设置的存储表或创建 EventFlow 管道实现此操作
+3. 分析：需可视化事件并能够以某种格式访问事件，以便按需进行分析和显示。 可选择使用 ApplicationInsights、Operations Management Suite、Kibana 等工具
 
-## <a name="monitoring-infrastructure"></a>监视基础结构
+尽管有些产品能够解决上述所有三个方面的问题，但许多客户倾向于为每个方面选择不同的技术。 重要的是，需将所有部分组合起来协同工作，才能为应用程序提供端到端的监视解决方案。
 
-在基础结构发生故障期间 Service Fabric 可帮助保持应用程序运行，但你需要了解错误是在应用程序中还是底层基础结构中发生的。 规划容量时也需要监视基础结构，以了解何时添加或删除基础结构。 构成 Service Fabric 部署的基础结构和应用程序对于监视和故障排除过程非常重要。 即使客户可以使用应用程序，基础结构也仍可能遇到问题。
+可根据自己的需求进一步扩展诊断和监视，将自动化警报和缓解包括在其中，这些功能通常内置于用户可能选择使用的分析工具中。 
 
-### <a name="azure-monitor"></a>Azure 监视器
+## <a name="event-generation"></a>事件生成
 
-可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 来监视构建 Service Fabric 群集时所在的许多 Azure 资源。 系统会自动收集[虚拟机规模集](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)和每个[虚拟机](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines)的一组指标并将其显示在 Azure 门户中。 若要在 Azure 门户中查看收集的信息，请选择包含 Service Fabric 群集的资源组。 然后，选择要查看的虚拟机规模集。 在“监视”部分中，选择“指标”可查看值的图表。
+可从基础结构层（群集、计算机或 Service Fabric 操作中的任何内容）或应用程序层（添加到部署于群集的应用程序和服务的任何工具）生成事件、日志和跟踪。
 
-![Azure 门户视图：收集的指标信息](./media/service-fabric-diagnostics-overview/azure-monitoring-metrics.PNG)
+### <a name="infrastructure-monitoring-the-cluster"></a>基础结构：监视群集
 
-若要自定义图表，请遵照 [Metrics in Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)（Microsoft Azure 中的指标）中的说明。 还可以根据 [Create alerts in Azure Monitor for Azure services](../monitoring-and-diagnostics/insights-alerts-portal.md)（在 Azure Monitor 中为 Azure 服务创建警报）中所述，基于这些指标创建警报。 可以根据 [Configure a web hook on an Azure metric alert](../monitoring-and-diagnostics/insights-webhooks-alerts.md)（针对 Azure 指标警报配置 Webhook）中所述，使用 Webhook 将警报发送到通知服务。 Azure Monitor 仅支持一个订阅。 如果需要监视多个订阅或者需要其他功能，Microsoft Operations Management Suite 中的 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 为本地基础结构和基于云的基础结构提供了全方位的 IT 管理解决方案。 可将来自 Azure 监视的数据直接路由到 Log Analytics，以便在一个位置查看整个环境的指标和日志。
+在基础结构发生故障期间 Service Fabric 可帮助保持应用程序运行，但用户仍需要了解错误是在应用程序中还是底层基础结构中发生。 规划容量时也需要监视基础结构，以了解何时添加或删除基础结构。 构成 Service Fabric 部署的基础结构和应用程序对于监视和故障排除过程非常重要。 即使客户可使用应用程序，基础结构也仍可能出现问题。 为确保群集按预期工作，Service Fabric 为用户设置了 5 个不同的现成日志记录通道：
 
-建议使用 Operations Management Suite 来监视本地基础结构，但是，也可以使用组织用来监视基础结构的任何现有解决方案。
+1. 操作通道：由 Service Fabric 和群集执行的高级操作，包括出现节点事件、部署新应用程序或 SF 升级回滚等。 
+2. 客户信息渠道：运行状况报告和负载均衡决策
+3. Reliable Services 事件：特定于编程模型的事件
+4. Reliable Actors 事件：特定于编程模型事件和性能计数器
+5. 支持日志：Service Fabric 生成的系统日志，仅当我们提供支持时使用
 
-### <a name="service-fabric-support-logs"></a>Service Fabric 支持日志
+强烈建议在创建群集时启用“诊断”。 可在门户中完成此操作（如下所示）或通过使用包含诊断的 Azure Resource Manager 模板完成此操作。 
+
+![在启用诊断的情况下创建 Azure 门户群集](./media/service-fabric-diagnostics-overview/azure-enable-diagnostics.png)
+
+如上图所示，还存在一个用于添加 Application Insights (AppInsights) 检测密钥的可选字段。 如果选择使用 AppInsights 进行所有事件分析（AppInsights 是推荐的一个解决方案），请在此处添加 AppInsights 资源instrumentationKey（GUID）。
+
+#### <a name="service-fabric-support-logs"></a>Service Fabric 支持日志
 
 如需联系 Microsoft 支持部门来获取 Azure Service Fabric 群集方面的帮助，几乎始终都需要提供支持日志。 如果群集托管在 Azure 中，则会自动配置支持日志，并在创建群集的过程中收集这些日志。 日志存储在群集资源组中的专用存储帐户内。 该存储帐户没有固定的名称，但在其中可以看到以 *fabric* 开头的 Blob 容器和表。 有关为独立群集设置日志收集的信息，请参阅 [Create and manage a standalone Azure Service Fabric cluster](service-fabric-cluster-creation-for-windows-server.md)（创建和管理独立 Azure Service Fabric 群集）以及 [Configuration settings for a standalone Windows cluster](service-fabric-cluster-manifest.md)（Windows 独立群集的配置设置）。 对于独立的 Service Fabric 实例，应该将日志发送到本地文件共享。 **必须**提供这些日志才能获得支持，但是，这些日志只能由 Microsoft 客户支持团队使用。
 
-## <a name="instrument-your-code"></a>检测代码
+#### <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric 运行状况和负载报告
 
-对于服务监视的其他大多数环节，检测代码是一个基本要求。 我们只能通过检测来判断是否出错以及诊断需要解决哪些问题。 尽管在技术上可将调试器连接到生产服务，但这种做法并不常见。 因此，提供详细的检测数据非常重要。 生成这种量级的信息时，从本地节点传送所有事件可能会消耗大量资源。 许多服务使用由两个部分构成的策略来处理检测数据量：
-1.  将所有事件短期保存在本地滚动更新的日志文件中，只在需要调试时才收集。 通常，详细诊断所需的事件保存在节点上，以降低成本和资源利用率
-2.  指示服务运行状况的所有事件将发送到中心存储库，可在其中用来针对不正常的服务发出警报。 服务运行状况事件包括错误事件、检测信号事件和性能事件。
+Service Fabric 具有自身的运行状况模型，以下文章对此做了详细介绍：
+- [Service Fabric 运行状况监视简介](service-fabric-health-introduction.md)
+- [报告并检查服务运行状况](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+- [添加自定义 Service Fabric 运行状况报告](service-fabric-report-health.md)
+- [查看 Service Fabric 运行状况报告](service-fabric-view-entities-aggregated-health.md)
+
+运行状况监视对于运行服务的多个方面至关重要。 当 Service Fabric 执行命名应用程序升级时，运行状况监视尤为重要。 服务的每个升级域都已升级并且提供给客户使用后，升级域必须先通过运行状况检查，然后部署才能转到下一个升级域。 如果无法实现良好的运行状况，部署将会回滚，使应用程序保持一种已知正常的状态。 尽管在回滚服务之前某些客户可能会受到影响，但大多数客户不会遇到问题。 此外，问题的解决速度相对较快，无需等待操作员的人工操作。 在代码中合并的运行状况检查越多，服务应对部署问题的弹性就越高。
+
+服务运行状况的另一个方面是从服务报告指标。 指标在 Service Fabric 中非常重要，因为它们用于均衡资源使用量。 指标还可用作系统运行状况的指示器。 例如，假设某个应用程序包含许多服务，每个实例报告每秒请求数 (RPS) 指标。 如果一个服务使用的资源比另一个服务要多，Service Fabric 会围绕群集移动服务实例，尽量使资源利用率保持均衡。 有关资源利用的工作原理的详细说明，请参阅 [Manage resource consumption and load in Service Fabric with metrics](service-fabric-cluster-resource-manager-metrics.md)（在 Service Fabric 中使用指标管理资源消耗和负载）。
+
+使用指标还能洞察服务的执行情况。 在不同的时间，都可以使用指标来检查服务是否根据所需的参数运行。 例如，如果趋势表明星期一上午 9 点的平均 RPS 为 1,000，则可以设置一份运行状况报告，在 RPS 低于 500 或高于 1,500 时发出警报。 尽管一切看上去可能正常，但还是值得执行一番检查，确保客户获得优越的体验。 服务可以定义一组可在执行运行状况检查时报告的指标，同时避免对群集的资源均衡造成影响。 为此，可将指标权重设置为零。 建议一开始为所有指标使用零权重，只有在确定指标加权会对群集的资源均衡产生何种影响时，才增大权重。
+
+> [!TIP]
+> 不要使用过多的加权指标， 否则可能难以了解服务实例为何会出于均衡目的而被移动， 并且某些指标可能会持续很长时间！
+
+可以指明应用程序的运行状况和性能的任何信息都是指标和运行状况报告的候选项。 CPU 性能计数器可以告知节点的利用情况，但不会指明特定的服务是否正常，因为单个节点上可能运行了多个服务。 但是，RPS、已处理的项数和请求延迟等指标都可以指明特定服务的运行状况。
+
+若要报告运行状况，请使用如下所示的代码：
+
+  ```csharp
+    if (!result.HasValue)
+    {
+        HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
+        this.Partition.ReportInstanceHealth(healthInformation);
+    }
+  ```
+
+若要报告指标，请使用如下所示的代码：
+
+  ```csharp
+    this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
+  ```
+
+
+### <a name="application-instrumenting-code-for-custom-events"></a>应用程序：自定义事件的检测代码
+
+对于服务监视的其他大多数环节，检测代码是一个基本要求。 我们只能通过检测来判断是否出错以及诊断需要解决哪些问题。 尽管在技术上可将调试器连接到生产服务，但这种做法并不常见。 因此，提供详细的检测数据非常重要。 
 
 某些产品可自动检测代码。 尽管这些解决方案能够正常运行，但几乎始终都要执行手动检测。 最后，必须提供足够的信息来对应用程序进行取证式的调试。 后续部分将介绍检测代码的不同方法，以及如何在不同的方法之间做出选择。
 
-### <a name="eventsource"></a>EventSource
+#### <a name="eventsource"></a>EventSource
 
 在 Visual Studio 中通过模板创建 Service Fabric 解决方案时，将生成 **EventSource** 派生类（**ServiceEventSource** 或 **ActorEventSource**）。 将会创建一个模板，可将应用程序或服务的事件添加到其中。 **EventSource** 名称**必须**唯一，应该将它重命名，不要使用默认的模板字符串 MyCompany-&lt;solution&gt;-&lt;project&gt;。 使用多个同名的 **EventSource** 定义会导致运行时出现问题。 每个定义的事件必须具有唯一标识符。 如果标识符不唯一，将发生运行时失败。 某些组织为标识符预先分配了值范围，避免不同的开发团队之间发生冲突。 有关详细信息，请参阅 [Vance 的博客](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)或 [MSDN 文档](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx)。
 
-#### <a name="using-structured-eventsource-events"></a>使用结构化 EventSource 事件
+##### <a name="using-structured-eventsource-events"></a>使用结构化 EventSource 事件
 
-本部分的代码示例中的每个事件是针对特定的用例（例如，注册某个服务类型时）定义的。 如果按用例定义消息，可以连同错误文本一起打包数据，同时可以根据指定属性的名称或值更方便地执行搜索和筛选。 将检测输出结构化可使其变得更易于使用，但需要花费更多的精力和时间来为每种用例定义新的事件。 某些事件定义可在整个应用程序中共享。 例如，可在应用程序中的多个服务之间重复使用方法启动或停止事件。 特定于域的服务（例如订单系统）可以包含 **CreateOrder** 事件，该事件包含自身的唯一事件。 这种方法可能会生成大量的事件，并可能需要在项目团队之间协调标识符。 有关 Service Fabric 中 **EventSource** 事件结构的完整示例，请参阅“合作群集”示例中的 **PartyCluster.ApplicationDeployService** 事件。
+本部分的代码示例中的每个事件是针对特定的用例（例如，注册某个服务类型时）定义的。 如果按用例定义消息，可以连同错误文本一起打包数据，同时可以根据指定属性的名称或值更方便地执行搜索和筛选。 将检测输出结构化可使其变得更易于使用，但需要花费更多的精力和时间来为每种用例定义新的事件。 某些事件定义可在整个应用程序中共享。 例如，可在应用程序中的多个服务之间重复使用方法启动或停止事件。 特定于域的服务（例如订单系统）可以包含 **CreateOrder** 事件，该事件包含自身的唯一事件。 这种方法可能会生成大量的事件，并可能需要在项目团队之间协调标识符。 
 
 ```csharp
     [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -110,7 +147,7 @@ ms.lasthandoff: 02/27/2017
         }
 ```
 
-#### <a name="using-eventsource-generically"></a>一般情况下使用 EventSource
+##### <a name="using-eventsource-generically"></a>一般情况下使用 EventSource
 
 由于特定的事件可能难以定义，许多用户都会使用一组常用的参数来定义少量的事件，这些参数通常以字符串的形式输出其信息。 因此，大部分结构化信息已丢失，使结果搜索和筛选变得更加困难。 使用此方法时，将会定义一些通常对应于日志记录级别的事件。 以下代码片段定义调试和错误消息：
 
@@ -142,11 +179,11 @@ ms.lasthandoff: 02/27/2017
 
 也可以混合使用结构化检测和常规检测方法。 结构化检测用于报告错误和指标。 常规事件可用于详细日志记录，工程师在排除故障时可以使用这些日志信息。
 
-### <a name="aspnet-core-logging"></a>ASP.NET Core 日志记录
+#### <a name="aspnet-core-logging"></a>ASP.NET Core 日志记录
 
 必须认真规划如何检测代码。 适当的检测计划有助于避免代码基变得不稳定，从而需要重新检测代码。 为了降低风险，可以选择一个检测库，例如，Microsoft ASP.NET Core 中包含的 [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)。 ASP.NET Core 提供一个可在所选提供程序中使用的 [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) 接口，同时尽量减轻对现有代码的影响。 可以在 Windows 和 Linux 上的 ASP.NET Core 中以及整个 .NET Framework 中使用代码，从而将检测代码标准化。
 
-#### <a name="using-microsoftextensionslogging-in-service-fabric"></a>在 Service Fabric 中使用 Microsoft.Extensions.Logging
+##### <a name="using-microsoftextensionslogging-in-service-fabric"></a>在 Service Fabric 中使用 Microsoft.Extensions.Logging
 
 1. 将 Microsoft.Extensions.Logging NuGet 包添加到要检测的项目。 此外，请添加所有提供程序包（有关第三方包，请参阅以下示例）。 有关详细信息，请参阅 [Logging in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)（ASP.NET Core 中的日志记录）。
 2. 在服务文件中添加一条针对 Microsoft.Extensions.Logging 的 **using** 指令。
@@ -216,20 +253,20 @@ ms.lasthandoff: 02/27/2017
   > [!NOTE]
   > 不建议在上面的示例中使用静态 Log.Logger。 Service Fabric 可在单个进程中托管同一服务类型的多个实例。 如果使用静态 Log.Logger，属性扩充器的最后一个写入者会显示所有正在运行的实例的值。 这是 _logger 变量为何是服务类的专用成员变量的原因之一。 另外，必须将 _logger 提供给可跨服务使用的通用代码使用。
 
-### <a name="choosing-a-logging-provider"></a>选择日志记录提供程序
+#### <a name="choosing-a-logging-provider"></a>选择日志记录提供程序
 
-如果应用程序对性能的依赖程度很高，则最好使用 **EventSource**。 与 ASP.NET Core 日志记录或任何可用的第三方解决方案相比，**EventSource** 使用的资源*通常*更少，并且性能更佳。  对于许多服务来说这并不是一个问题，但如果服务以性能为中心，则 **EventSource** 可能是更好的选择。 若要获得与结构化日志记录相同的优势，**EventSource** 要求工程团队做出大笔投资。 若要确定要为项目使用哪种方法，请根据每种选项快速制作一个原型，然后选择最符合需要的选项。
+如果应用程序对性能的依赖程度很高，则最好使用 **EventSource**。 与 ASP.NET Core 日志记录或任何可用的第三方解决方案相比，**EventSource** 使用的资源*通常*更少，并且性能更佳。  对于许多服务来说这并不是一个问题，但如果服务以性能为中心，则 **EventSource** 可能是更好的选择。 若要获得与结构化日志记录相同的优势，EventSource 要求工程团队做出大笔投资。 若要确定要为项目使用哪种方法，请根据每种选项快速制作一个原型，然后选择最符合需要的选项。
 
-## <a name="event-and-log-collection"></a>事件和日志收集
+## <a name="event-aggregation-and-collection"></a>事件聚合和集合
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
 除了 Azure Monitor 提供的信息以外，Azure 还在一个中心位置从每个服务收集事件。 有关详细信息，请参阅有关如何为 [Windows](service-fabric-diagnostics-how-to-setup-wad.md) 和 [Linux](service-fabric-diagnostics-how-to-setup-lad.md) 配置事件收集的文章。 这些文章说明了如何收集事件数据并将其发送到 Azure 存储。 可以通过在 Azure 门户或 Azure Resource Manager 模板中启用诊断来实现此目的。 Azure 诊断可收集 Service Fabric 自动生成的一些事件源：
 
+- ETW 事件作为操作通道的一部分发出
 - 使用 Reliable Actor 编程模型时生成的 **EventSource** 事件和性能计数器。 [Diagnostics and performance monitoring for Reliable Actors](service-fabric-reliable-actors-diagnostics.md)（Reliable Actors 的诊断和性能监视）中列举了这些事件。
 - 使用 Reliable Services 编程模型时生成的 **EventSource** 事件。 [Diagnostic functionality for stateful Reliable Services](service-fabric-reliable-services-diagnostics.md)（有状态 Reliable Services 的诊断功能）中列举了这些事件。
-- 系统事件以 Windows 事件跟踪 (ETW) 事件的形式发出。 从 Service Fabric 发出的许多事件都属于此类别，包括服务位置和启动/停止事件。 查看发出的事件的最佳方式是在本地计算机上使用 [Visual Studio 诊断事件查看器](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)。 由于这些事件属于本机 ETW 事件，因此其收集方式存在一些限制。
-- 从 Service Fabric 版本 5.4 开始，将会公开运行状况和负载指标事件。 这样，便可以使用事件收集来提供历史报告和发出警报。 这些事件也属于本机 ETW 事件，因此其收集方式存在一些限制。
+
 
 经过配置后，事件将显示在创建群集时创建的某个 Azure 存储帐户中（假设已启用诊断）。 表命名为 WADServiceFabricReliableActorEventTable、WADServiceFabricReliableServiceEventTable 和 WADServiceFabricSystemEventTable。 默认不会添加运行状况事件；必须修改 Resource Manager 模板才能添加这些事件。 有关详细信息，请参阅[使用 Azure 诊断收集日志](service-fabric-diagnostics-how-to-setup-wad.md)。
 
@@ -352,7 +389,7 @@ Azure 诊断仅适用于部署到 Azure 的 Service Fabric 群集， 包括 Wind
 
 若要在 Azure Application Insights 中查看事件，请在 Azure 门户中转到你的 Application Insights 资源。 若要查看事件，请选中“搜索”框。
 
-![Application Insights 中的事件搜索视图](./media/service-fabric-diagnostics-overview/ai-search-events.PNG)
+![Application Insights 中的事件搜索视图](./media/service-fabric-diagnostics-overview/ai-search-events.png)
 
 在上面的屏幕截图底部可以看到跟踪。 其中只显示了两个事件，因为调试级事件已被 EventFlow 删除。 位于跟踪前面的请求条目是第三个 `_logger` 检测行。 该行显示该事件已转换成 Application Insights 中的请求指标。
 
@@ -360,48 +397,44 @@ Azure 诊断仅适用于部署到 Azure 的 Service Fabric 群集， 包括 Wind
 
 如果某个独立群集出于策略原因无法连接到基于云的解决方案，可以使用 Elasticsearch 作为输出。 但是，可以写入其他输出。我们建议使用提取请求。 ASP.NET Core 日志记录的某些第三方提供程序提供支持本地安装的解决方案。
 
-## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric 运行状况和负载报告
-
-Service Fabric 具有自身的运行状况模型，以下文章对此做了详细介绍：
-- [Service Fabric 运行状况监视简介](service-fabric-health-introduction.md)
-- [报告并检查服务运行状况](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-- [添加自定义 Service Fabric 运行状况报告](service-fabric-report-health.md)
-- [查看 Service Fabric 运行状况报告](service-fabric-view-entities-aggregated-health.md)
-
-运行状况监视对于运行服务的多个方面至关重要。 当 Service Fabric 执行命名应用程序升级时，运行状况监视尤为重要。 服务的每个升级域都已升级并且提供给客户使用后，升级域必须先通过运行状况检查，然后部署才能转到下一个升级域。 如果无法实现良好的运行状况，部署将会回滚，使应用程序保持一种已知正常的状态。 尽管在回滚服务之前某些客户可能会受到影响，但大多数客户不会遇到问题。 此外，问题的解决速度相对较快，无需等待操作员的人工操作。 在代码中合并的运行状况检查越多，服务应对部署问题的弹性就越高。
-
-服务运行状况的另一个方面是从服务报告指标。 指标在 Service Fabric 中非常重要，因为它们用于均衡资源使用量。 指标还可用作系统运行状况的指示器。 例如，假设某个应用程序包含许多服务，每个实例报告每秒请求数 (RPS) 指标。 如果一个服务使用的资源比另一个服务要多，Service Fabric 会围绕群集移动服务实例，尽量使资源利用率保持均衡。 有关资源利用的工作原理的详细说明，请参阅 [Manage resource consumption and load in Service Fabric with metrics](service-fabric-cluster-resource-manager-metrics.md)（在 Service Fabric 中使用指标管理资源消耗和负载）。
-
-使用指标还能洞察服务的执行情况。 在不同的时间，都可以使用指标来检查服务是否根据所需的参数运行。 例如，如果趋势表明星期一上午 9 点的平均 RPS 为 1,000，则可以设置一份运行状况报告，在 RPS 低于 500 或高于 1,500 时发出警报。 尽管一切看上去可能正常，但还是值得执行一番检查，确保客户获得优越的体验。 服务可以定义一组可在执行运行状况检查时报告的指标，同时避免对群集的资源均衡造成影响。 为此，可将指标权重设置为零。 建议一开始为所有指标使用零权重，只有在确定指标加权会对群集的资源均衡产生何种影响时，才增大权重。
-
-> [!TIP]
-> 不要使用过多的加权指标， 否则可能难以了解服务实例为何会出于均衡目的而被移动， 并且某些指标可能会持续很长时间！
-
-可以指明应用程序的运行状况和性能的任何信息都是指标和运行状况报告的候选项。 CPU 性能计数器可以告知节点的利用情况，但不会指明特定的服务是否正常，因为单个节点上可能运行了多个服务。 但是，RPS、已处理的项数和请求延迟等指标都可以指明特定服务的运行状况。
-
-若要报告运行状况，请使用如下所示的代码：
-
-  ```csharp
-    if (!result.HasValue)
-    {
-        HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
-        this.Partition.ReportInstanceHealth(healthInformation);
-    }
-  ```
-
-若要报告指标，请使用如下所示的代码：
-
-  ```csharp
-    this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
-  ```
-
-## <a name="watchdogs"></a>监视器
-
-监视器是一个独立的服务，可以监视各个服务的运行状况和负载，并报告运行状况模型层次结构中任何组件的运行状况。 这有助于防止出现基于单个服务的视图所检测不到的错误。 此外，监视器也是一个不错的代码托管位置，它可以针对已知状态执行补救措施，而无需用户交互。
-
 ## <a name="visualization-analysis-and-alerts"></a>可视化、分析和警报
 
-监视的最后一个部分是可视化事件流、针对服务性能提供报告，以及在检测到问题时发出警报。 可以使用不同的解决方案实现监视的这个层面。 可以使用 Azure Application Insights 和 Operations Management Suite 来基于事件流发出警报。 可以使用 Microsoft Power BI 或第三方解决方案（如 [Kibana](https://www.elastic.co/products/kibana) 或 [Splunk](https://www.splunk.com/)）来可视化数据。
+监视的最后一个部分是可视化事件流、针对服务性能提供报告，以及在检测到问题时发出警报。 可以使用不同的解决方案实现监视的这个层面。 AppInsights 和 Operations Management Suite (OMS) 用于基于事件流发出警报。 可以使用 Microsoft Power BI 或第三方解决方案（如 [Kibana](https://www.elastic.co/products/kibana) 或 [Splunk](https://www.splunk.com/)）来可视化数据。
+
+### <a name="appinsights"></a>AppInsights
+
+AppInsights 是推荐的一个应用程序和服务监控工具。 更新的 AI.SDK 在处理 Service Fabric 事件方面表现出色，除提供优秀的数据可视化和查询工具（通过 AppInsights Analytics）外，它还能创建准确的 AppMap，帮助用户跟踪应用程序或群集中进程间的依赖关系。
+
+通过在 Azure 应用商店中搜索“Application Insights”，设置 AppInsights 资源。 创建后，请转到“属性”，查找 AI 检测密钥（GUID 形式）。 其用途：
+* 集成 AppInsights，在创建群集时，直接通过 Azure Resource Manager 模板或通过 Azure 门户从 Service Fabric 群集接收基础结构级事件（假设已启用“诊断”）
+* 配置 EventFlow (eventFlowConfig.json)，将数据输出到 Application Insights（如上所述）
+
+### <a name="oms"></a>OMS
+
+OMS 是另一个推荐的 Service Fabric 群集诊断和监视工具。 可将 Service Fabric 解决方案添加到任何工作区，它具有显示不同 Service Fabric 事件类型的仪表板。 OMS 工作区在 Log Analytics 中还有一个强大的日志查询工具。
+
+若要配置 OMS 工作区，请确认已为群集启用“诊断”。 将“Service Fabric 分析”从 Azure 应用商店添加到现有 OMS 工作区或新建一个工作区。 配置工作区数据源，以连接到群集正在向其中写入事件的 Azure 存储表。 
+
+为使 OMS 能够提取自定义事件，还必须确保添加到应用程序的工具也写入到同一存储表或任何其他已配置为工作区源的存储表。 
+
+如需监视和诊断容器，也推荐将 OMS 作为数据可视化和分析路径，因为用户可将容器解决方案添加到适用于 Service Fabric 安排的容器的工作区中。 若要查看有关此设置的简短指南，请转到[此处](service-fabric-diagnostics-containers-windowsserver.md)。
+
+### <a name="azure-monitor"></a>Azure 监视器
+
+可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 来监视构建 Service Fabric 群集时所在的许多 Azure 资源。 系统会自动收集[虚拟机规模集](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)和每个[虚拟机](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines)的一组指标并将其显示在 Azure 门户中。 若要在 Azure 门户中查看收集的信息，请选择包含 Service Fabric 群集的资源组。 然后，选择要查看的虚拟机规模集。 在“监视”部分中，选择“指标”可查看值的图表。
+
+![Azure 门户视图：收集的指标信息](./media/service-fabric-diagnostics-overview/azure-monitoring-metrics.png)
+
+若要自定义图表，请遵照 [Metrics in Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)（Microsoft Azure 中的指标）中的说明。 还可以根据 [Create alerts in Azure Monitor for Azure services](../monitoring-and-diagnostics/insights-alerts-portal.md)（在 Azure Monitor 中为 Azure 服务创建警报）中所述，基于这些指标创建警报。 可以根据 [Configure a web hook on an Azure metric alert](../monitoring-and-diagnostics/insights-webhooks-alerts.md)（针对 Azure 指标警报配置 Webhook）中所述，使用 Webhook 将警报发送到通知服务。 Azure Monitor 仅支持一个订阅。 如果需要监视多个订阅或者需要其他功能，Microsoft Operations Management Suite 中的 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 为本地基础结构和基于云的基础结构提供了全方位的 IT 管理解决方案。 可将来自 Azure 监视的数据直接路由到 Log Analytics，以便在一个位置查看整个环境的指标和日志。
+
+建议使用 Operations Management Suite 来监视本地基础结构，但是，也可以使用组织用来监视基础结构的任何现有解决方案。
+
+## <a name="additional-steps"></a>其他步骤
+
+### <a name="watchdogs"></a>监视器
+
+监视器是一个独立的服务，可以监视各个服务的运行状况和负载，并报告运行状况模型层次结构中任何组件的运行状况。 这有助于防止出现基于单个服务的视图所检测不到的错误。 此外，监视器也是一个不错的代码托管位置，它可以针对已知状态执行补救措施，而无需用户交互。 可在[此处](https://github.com/Azure-Samples/service-fabric-watchdog-service)获取监视软件服务实现示例。
+
 
 ## <a name="next-steps"></a>后续步骤
 

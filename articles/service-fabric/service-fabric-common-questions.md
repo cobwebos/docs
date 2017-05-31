@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2017
+ms.date: 05/10/2017
 ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6c0c6b24f9d669e7ed45e6b2acf2e75390e5e1f4
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 2bfbb3b8f7282ec8ae8abe9597230a3485221ecf
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -44,13 +45,13 @@ OS 更新的难题在于，它们通常需要重新启动计算机，而这会�
 
 在此期间，我们[提供脚本](https://blogs.msdn.microsoft.com/azureservicefabric/2017/01/09/os-patching-for-vms-running-service-fabric/)，群集管理器可使用该脚本，以安全的方式手动启动每个节点的修补程序。
 
-### <a name="can-i-use-large-virtual-scale-sets-in-my-sf-cluster"></a>是否可以在我的 SF 群集中使用大型虚拟规模集？ 
+### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>是否可以在我的 SF 群集中使用大型虚拟机规模集？ 
 
 **简短解答** - 否。 
 
-**详细解答** - 尽管大型虚拟规模集 (VMSS) 允许你将 VMSS 扩展到最多 1000 个 VM 实例，但它是通过使用放置组 (PG) 实现的。 容错域 (FD) 和升级域 (UD) 仅在使用 FD 和 UD 来为你的服务副本/服务实例做出放置决策的放置组 Service Fabric 中保持一致。 因为 FD 和 UD 仅在放置组中可比较，因此 SF 无法使用它。 例如，如果 PG1 中的 VM1 具有一个 FD=0 的拓扑，并且 PG2 中的 VM9 具有一个 FD=4 的拓扑，这并不意味着 VM1 和 VM2 在两个不同的硬件机架上，因此在这种情况下 SF 无法使用 FD 值做出放置决策。
+详细解答 - 尽管通过大型虚拟机规模集可将虚拟机规模集扩展至多达 1000 个 VM 实例，但这是通过使用放置组 (PG) 实现的。 容错域 (FD) 和升级域 (UD) 仅在使用 FD 和 UD 来为你的服务副本/服务实例做出放置决策的放置组 Service Fabric 中保持一致。 因为 FD 和 UD 仅在放置组中可比较，因此 SF 无法使用它。 例如，如果 PG1 中的 VM1 具有一个 FD=0 的拓扑，并且 PG2 中的 VM9 具有一个 FD=4 的拓扑，这并不意味着 VM1 和 VM2 在两个不同的硬件机架上，因此在这种情况下 SF 无法使用 FD 值做出放置决策。
 
-当前，大型 VMSS 还有其他问题，例如缺少 level-4 负载均衡支持。 请参考[有关大型 VMSS 的详细信息](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)
+当前，大型虚拟机规模集还存在其他问题，例如缺少 level-4 负载均衡支持。 请参考[有关大型规模集的详细信息](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)
 
 
 
@@ -76,6 +77,17 @@ OS 更新的难题在于，它们通常需要重新启动计算机，而这会�
 
 如果在部署应用程序之前想要创建群集来测试应用程序，我们建议将这些群集动态创建为[持续集成/持续部署管道](service-fabric-set-up-continuous-integration.md)的一部分。
 
+## <a name="container-support"></a>容器支持
+
+### <a name="why-are-my-containers-that-are-deployed-to-sf-are-unable-to-resolve-dns-addresses"></a>为什么部署到 SF 的容器无法解析 DNS 地址？
+
+已在 5.6.204.9494 版本的群集上报告了此问题 
+
+缓解措施：按[此文档](service-fabric-dnsservice.md)中的说明在群集中启用 DNS Service Fabric 服务。
+
+修复：升级到支持的群集版本（版本可用时），该版本需高于 5.6.204.9494。 如果群集设置为自动升级，则群集将自动升级到已解决此问题的版本。
+
+  
 ## <a name="application-design"></a>应用程序设计
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>跨 Reliable Collection 分区查询数据的最佳方法是什么？
@@ -104,7 +116,7 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 
 请注意，这种计算还基于以下假设：
 
-- 跨分区的数据分布大致是均匀的，或者你可以向群集资源管理器报告负载指标。 默认情况下，Service Fabric 会根据副本计数执行负载均衡。 在上述示例中，群集中的每个节点上将会放置 10 个主副本和 20 个辅助副本。 对于均匀分布在分区之间的负载而言，这是没有问题的。 如果负载不均衡，则必须报告负载，使资源管理器能够将较小的副本打包在一起，让较大的副本消耗单个节点上的更多内存。
+- 跨分区的数据分布大致是均匀的，或者可向群集 Resource Manager 报告负载指标。 默认情况下，Service Fabric 会根据副本计数执行负载均衡。 在上述示例中，群集中的每个节点上将会放置 10 个主副本和 20 个辅助副本。 对于均匀分布在分区之间的负载而言，这是没有问题的。 如果负载不均衡，必须报告负载，使 Resource Manager 能够将较小副本打包在一起，增加较大副本在单个节点上占用的内存。
 
 - 只有在群集中存储状态的 Reliable Service 才受到影响。 由于可将多个服务部署到群集，因此需要注意每个服务所要运行的资源，并管理服务的状态。
 

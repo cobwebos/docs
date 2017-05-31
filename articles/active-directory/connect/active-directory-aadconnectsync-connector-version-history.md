@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2017
+ms.date: 05/11/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 244ca634cfd47ee37e3845380ac05dc68d406621
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 3c91cb00d6535a4bc01a3b95547ef940cbff7fcb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -38,11 +39,35 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 * [PowerShell 连接器](active-directory-aadconnectsync-connector-powershell.md)参考文档
 * [Lotus Domino 连接器](active-directory-aadconnectsync-connector-domino.md)参考文档
 
+## <a name="115220"></a>1.1.522.0
+
+### <a name="enhancements"></a>增强功能：
+
+* 泛型 SQL：
+  * 方案：重新实现：“*”功能
+  * 解决方案说明：更改用于[多值引用属性处理](active-directory-aadconnectsync-connector-genericsql.md)的方法。
+
+
+### <a name="fixed-issues"></a>已解决的问题：
+
+* 泛型 Web 服务：
+  * 如果存在 WebService 连接器，则无法导入服务器配置
+  * WebService 连接器无法处理多个 Web 服务
+
+* 泛型 SQL：
+  * 没有列出单值引用属性的对象类型
+  * 从多值表中删除值时，更改跟踪策略上的增量导入会删除对象
+  * GSQL 连接器（DB2 在 AS/400 上）中的 OverflowException
+
+Lotus：
+  * 添加了选项，用于在打开 GlobalParameters 页之前启用/禁用搜索 OU
+
 ## <a name="114430"></a>1.1.443.0
 
 发布时间：2017 年 3 月
 
 ### <a name="enhancements"></a>增强功能
+
 * 泛型 SQL：</br>
   **情景症状：**我们仅允许引用一个对象类型，并要求对成员使用交叉引用，这是一个已知的 SQL 连接器限制。 </br>
   **解决方法说明：**如果选择了“*”选项，在执行引用的处理步骤时，对象类型的所有组合将返回给同步引擎。

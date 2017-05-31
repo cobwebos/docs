@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/20/2016
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: 3074bf378f809a9857c7ea72521961368a14772c
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 307b327e4c04a0461e39930114eb193791cbda9a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -221,8 +222,6 @@ azure network dns record-set add-record MyResourceGroup contoso.com www A -a 5.6
 azure network dns record-set delete-record MyResourceGroup contoso.com www A -a 1.2.3.4
 ```
 
-不能在区域顶点的自动创建的 NS 记录集（`-Name "@"`，包括引号）中添加、删除或修改记录。 对于此记录集，允许的更改仅限修改记录集 TTL 和元数据。
-
 ### <a name="to-modify-a-cname-record"></a>修改 CNAME 记录
 
 若要修改 CNAME 记录，请使用 `azure network dns record-set add-record` 添加新的记录值。 与其他记录类型不同，一个 CNAME 记录集只能包含一条记录。 因此，添加新记录时会*替换*现有记录，因此不需要单独删除现有记录。  系统会提示你是否接受这种替换。
@@ -241,6 +240,21 @@ azure network dns record-set add-record MyResourceGroup contoso.com www CNAME --
 
 ```azurecli
 azure network dns record-set set-soa-record rg1 contoso.com --email admin.contoso.com
+```
+
+
+### <a name="to-modify-ns-records-at-the-zone-apex"></a>修改区域顶点处的 NS 记录
+
+在每个 DNS 区域自动创建区域顶点处的 NS 记录集。 其中包含分配给该区域的 Azure DNS 名称服务器名称。
+
+可向此 NS 记录集添加其他名称服务器，从而支持与多个 DNS 提供商共同托管域。 还可修改此记录集的 TTL 和元数据。 但是，无法删除或修改预填充的 Azure DNS 名称服务器。
+
+请注意，这仅适用于区域顶点处的 NS 记录集。 区域中的其他 NS 记录集（用于委派子区域）不受约束，可进行修改。
+
+以下示例展示如何向区域顶点处的 NS 记录集添加其他名称服务器：
+
+```azurecli
+azure network dns record-set add-record MyResourceGroup contoso.com "@" --nsdname ns1.myotherdnsprovider.com 
 ```
 
 ### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>修改现有记录集的 TTL

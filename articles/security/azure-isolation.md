@@ -16,21 +16,21 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 0a83f249bbaba0ae3fd6ebf10863abc398859200
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: a167f15b1c885c51c9a85c501a9a9a60992cdf5d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
 
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
-## <a name="10-introduction"></a>1.0 简介
-### <a name="11-overview"></a>1.1 概述
+##  <a name="introduction"></a>介绍
+### <a name="overview"></a>概述
 为了协助当前和潜在的 Azure 客户了解和利用 Azure 平台中和围绕 Azure 平台提供的各种安全相关的功能，Microsoft 制定了一系列白皮书、安全概述、最佳实践以及清单。
 这些主题涵盖各类不同宽度和深度的内容，并且定期更新。 本文档属于下面摘要部分中总结的系列的一部分。
 
-### <a name="12-azure-platform"></a>1.2 Azure 平台
+### <a name="azure-platform"></a>Azure 平台
 Azure 是一种开放灵活的云服务平台，支持多种操作系统、编程语言、框架、工具、数据库和设备。 例如，你可以：
 - 使用 Docker 集成运行 Linux 容器；
 - 使用 JavaScript、Python、.NET、PHP、Java 和 Node.js 生成应用；还可以生成
@@ -42,20 +42,20 @@ Microsoft Azure 支持数百万开发人员和 IT 专业人士依赖并信任的
 
 Azure 的基础结构（从设备到应用程序）经过设计，可同时托管数百万的客户，并为企业提供可靠的基础，使之能够满足其安全需求。 此外，Azure 还提供广泛的可配置安全选项以及对这些选项进行控制的功能，方便你自定义安全措施来满足部署的独特要求。 本文档可帮助满足这些要求。
 
-### <a name="13-abstract"></a>1.3 摘要
+### <a name="abstract"></a>摘要
 
 通过使用 Microsoft Azure，可在共享物理基础结构上运行应用程序和虚拟机 (VM)。 在云环境中运行应用程序的一个主要经济动机是可由多个客户分摊共享资源的成本。 这种多租户的做法在不同客户间多路复用资源，提高了效率并降低了成本。 遗憾的是，这种做法也带来了风险，会导致通过共享物理服务器和其他基础结构资源来运行敏感应用程序和 VM，而这些 VM 可能属于任意或潜在恶意用户。
 
 Microsoft Azure 同时针对恶意和非恶意用户提供了隔离，并向架构师提供了多种隔离选项作为构建云解决方案的指引，本文对这些情况进行了介绍。 此白皮书重点介绍 Azure 平台和面向客户的安全控制技术，而未尝试解决 SLA、定价模型以及 DevOps 实践注意事项。
 
-## <a name="20-tenant-level-isolation"></a>2.0 租户级别隔离
+## <a name="tenant-level-isolation"></a>租户级别隔离
 云计算的一个主要优势是同时跨多位客户使用共享的通用基础结构的概念，可带来规模效益。 这种概念称为多租户。 Microsoft 始终致力于确保 Microsoft Cloud Azure 的多租户体系结构支持安全、保密性、隐私、完整性和可用性标准。
 
 在启用云的工作区中，可以将“租户”定义为拥有并管理该云服务的特定实例的客户端或组织。 使用 Microsoft Azure 提供的标识平台，租户只是组织在注册 Microsoft 云服务时接收并拥有的 Azure Active Directory (Azure AD) 专用实例。
 
 每个 Azure AD 目录都是独特的，独立于其他 Azure AD 目录。 就像公司办公大楼是你的组织特有的安全资产一样，根据设计，Azure AD 目录也是仅供你的组织使用的安全资产。 Azure AD 体系结构隔离了客户数据和身份信息，避免混合存放。 这意味着，一个 Azure AD 目录的用户和管理员不可能意外或恶意性地访问另一目录中的数据。
 
-### <a name="21-azure-tenancy"></a>2.1 Azure 租户
+### <a name="azure-tenancy"></a>Azure 租户
 Azure 租户（Azure 订阅）是指 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 中的“客户/账单”关系和唯一的[租户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)。 Microsoft Azure 中的租户级别隔离是使用 Azure Active Directory 及其提供的[基于角色的控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)实现的。 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。
 
 该目录中的用户、组和应用程序可以管理 Azure 订阅中的资源。 可以使用 Azure 门户、Azure 命令行工具及 Azure 管理 API 来分配这些访问权限。 从逻辑上讲，Azure AD 租户是使用安全边界隔离的，这样，任何客户都不能访问或入侵联合租户，而无论其行为是恶意的还是偶然的。 在“裸机”服务器上运行的 Azure AD 是在分隔的网络段中隔离的，主机级别数据包筛选和 Windows 防火墙在该网络段中阻止不需要的连接和流量。
@@ -83,7 +83,7 @@ Azure Active Directory 在其自己受保护的容器中托管每个租户，使
 
 即使多个 Azure Active Directory 租户的元数据存储在同一个物理磁盘中，除目录服务定义的容器外，各容器之间仍没有任何关系，而目录服务是由租户管理员指定的。
 
-### <a name="22-azure-role-based-access-control-rbac"></a>2.2 Azure 基于角色的访问控制 (RBAC)
+### <a name="azure-role-based-access-control-rbac"></a>Azure 基于角色的访问控制 (RBAC)
 [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) 提供针对 Azure 的精细访问权限管理，有助于共享 Azure 订阅中提供的各种组件。 借助 Azure RBAC，可分隔组织内的职责，并根据用户进行作业的需求授予访问权限。 可以仅允许某些操作，而不是向每个人提供对 Azure 订阅或资源不受限制的权限。
 
 Azure RBAC 有三种适用于所有资源类型的基本角色：
@@ -103,7 +103,7 @@ Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例
 Azure Active Directory 的其他部分功能包括:
 - 使用 Azure AD 即可对 SaaS 应用程序启用 SSO，不管这些应用程序在何处托管。 某些应用程序会与 Azure AD 联合起来进行身份验证，其他应用程序则使用密码 SSO。 联合应用程序还可以支持用户预配和[密码存储](https://www.techopedia.com/definition/31415/password-vault)。
 
-- 对 [Azure 存储空间](https://azure.microsoft.com/services/storage/)中的数据进行访问可以通过身份验证来控制。 每个存储帐户都有一个主密钥（[存储帐户密钥](https://docs.microsoft.com/azure/storage/storage-create-storage-account)，简称 SAK）和一个辅助密钥（共享访问签名，简称 SAS）。
+- 对 [Azure 存储](https://azure.microsoft.com/services/storage/)中的数据进行访问可以通过身份验证来控制。 每个存储帐户都有一个主密钥（[存储帐户密钥](https://docs.microsoft.com/azure/storage/storage-create-storage-account)，简称 SAK）和一个辅助密钥（共享访问签名，简称 SAS）。
 
 - Azure AD 通过联合身份验证（使用 [Active Directory 联合身份验证服务](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-azure-adfs)）、同步以及本地目录复制方式提供标识即服务。
 
@@ -113,7 +113,7 @@ Azure Active Directory 的其他部分功能包括:
 
 - [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) 提供高度可用的全局性标识管理服务，该服务适用于面向用户且可通过缩放来处理数以亿计的标识的应用程序。 它可以跨移动平台和 Web 平台进行集成。 使用者只需使用现有社交帐户或创建凭据，即可通过可自定义的体验登录到所有应用程序。
 
-### <a name="23-isolation-from-microsoft-administrators--data-deletion"></a>2.3 与 Microsoft 管理员和数据删除隔离
+### <a name="isolation-from-microsoft-administrators--data-deletion"></a>与 Microsoft 管理员和数据删除隔离
 Microsoft 采取强硬措施保护数据免受不适当的访问或未经授权的用户使用。 这些操作过程和控制由[联机服务条款](http://aka.ms/Online-Services-Terms)提供支持，该条款提供有关管理数据访问权限的合同承诺。
 
 -    Microsoft 工程师没有访问云端数据的默认权限。 而是在必要时在管理监督下获取访问权限。 将谨慎控制并记录该访问权限，并在不再需要时撤回。
@@ -126,10 +126,10 @@ Microsoft 采取强硬措施保护数据免受不适当的访问或未经授权�
 
 如果用于存储的磁盘驱动器发生硬件故障，在 Microsoft 将其送回给制造商进行更换或修复前，将安全[擦除或销毁](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data)该磁盘驱动器上的数据。 驱动器上的数据将被覆盖，以确保无法通过任何方式恢复数据。
 
-## <a name="30-compute-isolation"></a>3.0 计算隔离
+## <a name="compute-isolation"></a>计算隔离
 Microsoft Azure 提供各种基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动增加或减少。 这些计算实例和服务提供多个级别的隔离来保护数据，且不会降低客户所需配置的灵活性。
 
-### <a name="31-hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>3.1 根 VM 和来宾 VM 之间的 Hyper-V 和根 OS 隔离
+### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>根 VM 和来宾 VM 之间的 Hyper-V 和根 OS 隔离
 Azure 的计算平台以计算机虚拟化为基础，这意味着所有客户代码都在 Hyper-V 虚拟机中执行。 在每个 Azure 节点（或网络终结点）上，都有一个虚拟机监控程序在硬件上直接运行，并将节点分为数目不定的来宾虚拟机 (VM)。
 
 
@@ -144,10 +144,10 @@ Azure 平台使用虚拟化环境。 用户实例以单独的虚拟机方式运�
 
 Azure 的虚拟机监控程序相当于微内核，可将所有硬件访问请求从来宾虚拟机传递到主机，以便使用名为 VMBus 的共享内存界面进行处理。 这样可以防止用户获取对系统的原始读取/写入/执行访问权限，减轻共享系统资源的风险。
 
-### <a name="32-advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>3.2 高级 VM 布局算法和侧信道攻击防护
+### <a name="advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>高级 VM 布局算法和侧信道攻击防护
 任何跨 VM 攻击都包括两个步骤：在同一主机上放置一个攻击者控制的 VM 作为牺牲品 VM 之一，然后破坏隔离边界以窃取敏感的牺牲品信息，或者故意或因贪婪影响其性能。 Microsoft Azure 通过使用高级 VM 布局算法同时针对这两个步骤提供保护，并防止所有已知侧信道攻击，包括干扰性邻居 VM。
 
-### <a name="33-the-azure-fabric-controller"></a>3.3 Azure 结构控制器
+### <a name="the-azure-fabric-controller"></a>Azure 结构控制器
 Azure 结构控制器负责将基础结构资源分配到租户工作负荷，并管理从主机到虚拟机的单向通信。 Azure 结构控制器的 VM 布局算法高度复杂，并且作为物理主机级别几乎不可能预测。
 
 ![Azure 结构控制器](./media/azure-isolation/azure-isolation-fig5.png)
@@ -171,7 +171,7 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 虚拟机监控程序和主机 OS 提供了网络数据包筛选器，可帮助确保不受信任的虚拟机无法产生欺骗性流量或接收并非发送给它们的流量，也无法将流量定向到受保护的基础结构终结点，或发送/接收不适当的广播流量。
 
 
-### <a name="34-additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>3.4 结构控制器代理为隔离 VM 而配置的其他规则
+### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>结构控制器代理为隔离 VM 而配置的其他规则
 默认情况下，在创建虚拟机时，会阻止所有流量，然后结构控制器代理会配置数据包筛选器，添加规则和例外以允许经授权的流量。
 
 进行编程的规则有两类：
@@ -180,7 +180,7 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 -    **角色配置文件**：根据租户的服务模型定义入站访问控制列表 (ACL)。
 
-### <a name="35-vlan-isolation"></a>3.5 VLAN 隔离
+### <a name="vlan-isolation"></a>VLAN 隔离
 每个群集中有三个 VLAN：
 
 ![VLAN 隔离](./media/azure-isolation/azure-isolation-fig8.jpg)
@@ -194,12 +194,12 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 允许从 FC VLAN 到主 VLAN 的通信，但不能启动从主 VLAN 到 FC VLAN 的通信。 还会阻止从主 VLAN 到设备 VLAN 的通信。 这可确保即使运行客户代码的节点遭到破坏， FC 或设备 VLAN 上的节点也不会受到攻击。
 
-## <a name="40-storage-isolation"></a>4.0 存储隔离
-### <a name="41-logical-isolation-between-compute-and-storage"></a>4.1 计算和存储之间的逻辑隔离
+## <a name="storage-isolation"></a>存储隔离
+### <a name="logical-isolation-between-compute-and-storage"></a>计算和存储之间的逻辑隔离
 作为其基本设计的一部分，Microsoft Azure 将基于 VM 的计算与存储分隔开。 这种分隔可实现计算和存储的自主扩展，使提供多租户和隔离变得更简单。
 
 因此，Azure 存储在单独的硬件上运行，且没有与 Azure 计算建立网络连接，从逻辑上讲时例外。 [这](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)意味着，创建虚拟磁盘后，不会针对整体容量分配磁盘空间。 而是会创建一个表格，用于将虚拟磁盘上的地址映射到物理磁盘上的区域中，且该表最初为空。 **客户首次在虚拟磁盘上写入数据时，将分配物理磁盘上的空间，且指向它的指针将位于表中。**
-### <a name="42-isolation-using-storage-access-control"></a>4.2 使用存储访问控制的隔离
+### <a name="isolation-using-storage-access-control"></a>使用存储访问控制的隔离
 **Azure 存储中的访问控制**具有简单的访问控制模型。 每个 Azure 订阅都可以创建一个或多个存储帐户。 每个存储帐户都具有一个密钥，用于控制对该存储帐户中所有数据的访问权限。
 
 ![使用存储访问控制的隔离](./media/azure-isolation/azure-isolation-fig9.png)
@@ -208,18 +208,18 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
 
-### <a name="43-ip-level-storage-isolation"></a>4.3 IP 级别存储隔离
+### <a name="ip-level-storage-isolation"></a>IP 级别存储隔离
 可以为受信任客户端建立防火墙，定义 IP 地址范围。 使用 IP 地址范围，只有 IP 地址在定义范围内的客户端才可以连接到 [Azure 存储](https://docs.microsoft.com/azure/storage/storage-security-guide)。
 
 可通过网络机制防止未经授权的用户访问 IP 存储数据，该机制用于分配到 IP 存储的专用流量或专用流量隧道。
 
-### <a name="44-encryption"></a>4.4 加密
+### <a name="encryption"></a>加密
 Azure 提供了以下加密类型来保护数据：
 -    传输中加密
 
 -    静态加密
 
-#### <a name="441-encryption-in-transit"></a>4.4.1 传输中加密
+#### <a name="encryption-in-transit"></a>传输中加密
 传输中加密是通过网络传输数据时用于保护数据的一种机制。 在 Azure 存储中，可以使用以下加密方式来保护数据：
 
 -    [传输级别加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
@@ -228,7 +228,7 @@ Azure 提供了以下加密类型来保护数据：
 
 -    [客户端加密](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
 
-#### <a name="442-encryption-at-rest"></a>4.4.2 静态加密
+#### <a name="encryption-at-rest"></a>静态加密
 对许多组织而言，[静态数据加密](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、合规性和数据所有权的必要措施。 有三项 Azure 功能可提供“静态”数据加密：
 
 -    [存储服务加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
@@ -237,7 +237,7 @@ Azure 提供了以下加密类型来保护数据：
 
 -    [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
 
-#### <a name="443-azure-disk-encryption"></a>4.4.3 Azure 磁盘加密
+#### <a name="azure-disk-encryption"></a>Azure 磁盘加密
 适用于虚拟机 (VM) 的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)通过使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中控制的密钥和策略加密 VM 磁盘（包括引导磁盘和数据磁盘），帮助解决企业的安全和符合性要求。
 
 适用于 Windows 的磁盘加密解决方案是基于 [Microsoft BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)技术，Linux 解决方案基于 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
@@ -277,10 +277,10 @@ Azure 提供了以下加密类型来保护数据：
 
 -    Azure 文件（文件共享系统）、网络文件系统 (NFS)、动态卷，以及配置了基于软件的 RAID 系统的 Windows VM
 
-## <a name="50-sql-azure-database-isolation"></a>5.0 SQL Azure 数据库隔离
+## <a name="sql-azure-database-isolation"></a>SQL Azure 数据库隔离
 SQL 数据库是 Microsoft 云中的关系数据库服务，它基于行业领先的 Microsoft SQL Server 引擎，能够处理任务关键型工作负荷。 SQL 数据库在联网时基于地理位置/区域提供帐户级别的可预测数据隔离，几乎不用人工管理。
 
-### <a name="51-sql-azure-application-model"></a>5.1 SQL Azure 应用程序模型
+### <a name="sql-azure-application-model"></a>SQL Azure 应用程序模型
 
 [Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) 数据库是一项基于云的关系数据库服务，是根据 SQL Server 技术构建的。 它提供由 Microsoft 在云端托管的多租户数据库服务，该服务高度可用并且可缩放。
 
@@ -306,7 +306,7 @@ SQL Azure 服务器不是物理实例或 VM 实例，而是数据库、共享管
 
 从客户的角度看，逻辑服务器是在某个地理区域中创建的，而服务器实际上是在该区域内的一个群集中创建的。
 
-### <a name="52-isolation-through-network-topology"></a>5.2 通过网络拓扑实现的隔离
+### <a name="isolation-through-network-topology"></a>通过网络拓扑实现的隔离
 
 创建逻辑服务器并注册其 DNS 名称后，该 DNS 名称指向该服务器所在的特定数据中心内所谓的“网关 VIP”地址。
 
@@ -325,10 +325,10 @@ SQL Azure 服务器不是物理实例或 VM 实例，而是数据库、共享管
 
 通常，作为安全预防措施，后端系统不会与其他系统进行出站通信。 这将保留到前端（网关）层中的系统。 作为深层防御机制，网关层计算机对后端计算机具有有限的特权，可最大限度减少攻击。
 
-### <a name="53-isolation-by-machine-function-and-access"></a>5.3 按计算机功能和访问权限的隔离
+### <a name="isolation-by-machine-function-and-access"></a>按计算机功能和访问权限的隔离
 SQL Azure（由针对不同计算机功能运行的服务组成。 按照流量在后端只进不出的一般原则，SQL Azure 分为“后端”云数据库和“前端”（网关/管理）环境。 前端环境可与其他服务外部进行通信，而在后端只有有限的权限（足以调用进行调用所需的入口点）。
 
-## <a name="60-networking-isolation"></a>6.0 网络隔离
+## <a name="networking-isolation"></a>网络隔离
 Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的各种网络隔离层。 这些层同时属于 Azure 平台本身的本机功能和客户定义的功能。 对于来自 Internet 的入站流量，Azure DDoS 提供针对 Azure 的大规模攻击的隔离。 下一层隔离是客户定义的公共 IP 地址（终结点），可以根据这些终结点确定哪些流量可以通过云服务进入虚拟网络。 本机 Azure 虚拟网络隔离可确保与其他所有网络完全隔离，而且流量只能流经用户配置的路径和方法。 这些路径和方法就是下一个安全层，在该层中，可以使用 NSG、UDR 和网络虚拟设备来创建隔离边界，以保护受保护网络中的应用程序部署。
 
 ![网络隔离](./media/azure-isolation/azure-isolation-fig13.png)

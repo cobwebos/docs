@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d6215d316cfd4979d63f8bdb81741e1d0291b681
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: b95a8c3067b9bfd0a9995b26608c117a29ed8b4c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -76,7 +77,7 @@ Azure 默认提供单个虚拟网络内包含的所有 VM 的 DNS 名称解析�
   * 启动 dnsmasq 服务（“systemctl start dnsmasq.service”） 
   * 编辑“/etc/sysconfig/network/config”，并将 NETCONFIG_DNS_FORWARDER="" 更改为“dnsmasq”
   * 更新 resolv.conf（“netconfig update”），以将缓存设置为本地 DNS 解析程序
-* **OpenLogic（使用 NetworkManager）**：
+* Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）：
   * 安装 dnsmasq 包（“sudo yum install dnsmasq”）
   * 启用 dnsmasq 服务（“systemctl enable dnsmasq.service”）
   * 启动 dnsmasq 服务（“systemctl start dnsmasq.service”）
@@ -107,7 +108,7 @@ resolv.conf 文件是自动生成的，不应进行编辑。  添加“options�
 * **SUSE**（使用 netconf）：
   * 将“timeout:1 attempts:5”添加到“/etc/sysconfig/network/config”中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 参数 
   * 运行“netconfig update”以更新
-* **OpenLogic**（使用 NetworkManager）：
+* Rogue Wave Software 的 CentOS（之前为 OpenLogic）（使用 NetworkManager）：
   * 将“echo "options timeout:1 attempts:5"”添加到“/etc/NetworkManager/dispatcher.d/11-dhclient” 
   * 运行“service network restart”以更新
 

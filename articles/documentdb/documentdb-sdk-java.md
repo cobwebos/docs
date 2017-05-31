@@ -1,24 +1,25 @@
 ---
 title: "Azure DocumentDB Java API、SDK 和资源 | Microsoft 文档"
 description: "了解有关 Java API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB Java SDK 各版本之间所做的更改。"
-services: documentdb
+services: cosmosdb
 documentationcenter: java
 author: rnagpal
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 7861cadf-2a05-471a-9925-0fec0599351b
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 05/10/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 40ea65f692d1e2cbc39a6c65b2f8b255282e34cc
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 11fb5aa52a99414d8b7052d2a9904c260d4cdc9a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/20/2017
 > * [Node.js](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
 > * [Python](documentdb-sdk-python.md)
-> * [REST](https://docs.microsoft.com/en-us/rest/api/documentdb/)
+> * [REST](https://docs.microsoft.com/rest/api/documentdb/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
@@ -51,6 +52,11 @@ ms.lasthandoff: 04/20/2017
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
+* 添加了对每分钟请求单位 (RU/m) 功能的支持。
+* 添加了对名为 ConsistentPrefix 的新一致性级别的支持。
+* 修复了在会话模式下读取集合时的 bug。
 
 ### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
 * 启用了对吞吐量低至 2,500 RU/秒并且缩放增量为 100 RU/秒的分区集合的支持。
@@ -150,7 +156,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议你始终尽早升级到最新 SDK 版本。
 
-使用已停用的 SDK 对 DocumentDB 发出的任何请求都将被服务拒绝。
+使用已停用的 SDK 对 Cosmos DB 发出的任何请求都将被服务拒绝。
 
 > [!WARNING]
 > Azure DocumentDB SDK for Java 在 **1.0.0** 版之前的所有版本都将在 **2016 年 2 月 29 日**停用。
@@ -161,6 +167,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.11.0](#1.11.0) |2017 年 5 月 10 日 |--- |
 | [1.10.0](#1.10.0) |2017 年 3 月 11 日 |--- |
 | [1.9.6](#1.9.6) |2017 年 2 月 21 日 |--- |
 | [1.9.5](#1.9.5) |2017 年 1 月 31 日 |--- |
@@ -193,6 +200,6 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 [!INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅
-要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服务页。
+若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 服务页。
 
 

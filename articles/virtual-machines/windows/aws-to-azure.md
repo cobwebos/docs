@@ -13,19 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 05/10/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a6549999003d4b1c8e2b8a8e2a2fafef942bce43
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: e940a5653d81852c6440829010ec86bcadeadca7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
 
 # <a name="migrate-from-amazon-web-services-aws-to-azure-managed-disks"></a>从 Amazon Web Services (AWS) 迁移到 Azure 托管磁盘
 
-可通过上传 VHD 将 Amazon Web Services (AWS) EC2 实例迁移到 Azure。 如果要从同一映像在 Azure 中创建多个 VM，则必须首先通用化 VM，然后将通用 VHD 导出到本地目录。 上传 VHD 后，可以创建使用[托管磁盘](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行存储的新 Azure VM。 Azure 托管磁盘不需要为 Azure IaaS VM 管理存储帐户。 仅需指定类型（高级或标准）以及所需的磁盘大小，Azure 将为你创建和管理磁盘。 
+可通过上传虚拟硬盘 (VHD ) 将 Amazon Web Services (AWS) EC2 实例迁移到 Azure。 如果要从同一映像在 Azure 中创建多个虚拟机 (VM)，则必须首先通一般化 VM，然后将通用 VHD 导出到本地目录。 上传 VHD 后，可以创建使用[托管磁盘](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行存储的新 Azure VM。 Azure 托管磁盘不需要为 Azure IaaS VM 管理存储帐户。 必须仅指定所需类型（高级或标准）和磁盘大小，Azure 将为你创建和管理磁盘。 
 
 开始此过程之前，请确保已查看[规划迁移到托管磁盘](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)。
 
@@ -40,7 +41,7 @@ Install-Module AzureRM.Compute -MinimumVersion 2.6.0
 有关详细信息，请参阅 [Azure PowerShell 版本控制](/powershell/azure/overview)。
 
 
-## <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 通用化 Windows VM
+## <a name="generalize-the-vm"></a>一般化 VM
 
 使用 Sysprep 通用化 VM 可从 VHD 中删除任何特定于计算机的信息和个人帐户信息，并准备将计算机用作映像。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](http://technet.microsoft.com/library/bb457073.aspx)。
 
@@ -62,7 +63,7 @@ Install-Module AzureRM.Compute -MinimumVersion 2.6.0
 
 
 
-## <a name="export-the-vhd-from-an-ec2-instance"></a>从 EC2 实例导出 VHD
+## <a name="export-the-vhd-from-aws"></a>从 AWS 导出 VHD
 
 1.    如果使用 Amazon Web Services (AWS)，请将 EC2 实例导出到 Amazon S3 存储桶中的 VHD。 按照 Amazon 文档导出 Amazon EC2 实例中所述的步骤安装 Amazon EC2 命令行接口 (CLI) 工具，然后运行 create-instance-export-task 命令将 EC2 实例导出到 VHD 文件。 运行 create-instance-export-task 命令时，请务必对 DISK_IMAGE_FORMAT 变量使用 VHD。 导出的 VHD 文件将保存在该过程中指定的 Amazon S3 存储桶中。
 
@@ -75,7 +76,12 @@ Install-Module AzureRM.Compute -MinimumVersion 2.6.0
 
 
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="upload-the-vhd"></a>上传 VHD
+
+需登录到 Azure，创建一个存储帐户并将 VHD 上传到存储帐户，然后才能创建映像。 
+
+### <a name="log-in-to-azure"></a>登录 Azure
+
 如果尚未安装 PowerShell 版本，请阅读[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 1. 打开 Azure PowerShell 并登录到 Azure 帐户。 此时将打开一个弹出窗口让输入 Azure 帐户凭据。
@@ -94,10 +100,10 @@ Install-Module AzureRM.Compute -MinimumVersion 2.6.0
     Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-## <a name="get-the-storage-account"></a>获取存储帐户
+### <a name="get-the-storage-account"></a>获取存储帐户
 需要在 Azure 中创建一个存储帐户用于存储上载的 VM 映像。 你可以使用现有存储帐户，也可以创建新的存储帐户。 
 
-如果将使用 VHD 为 VM 创建托管磁盘，存储帐户位置必须与要创建 VM 的位置相同。
+如果使用 VHD 为 VM 创建托管磁盘，存储帐户位置必须与创建 VM 的位置相同。
 
 若要显示可用的存储帐户，请键入：
 
@@ -136,9 +142,9 @@ Get-AzureRmStorageAccount
    * **Standard_RAGRS** - 读取访问权限异地冗余存储。 
    * **Premium_LRS** - 高级本地冗余存储。 
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>将 VHD 上载到存储帐户
+### <a name="upload-the-vhd"></a>上传 VHD 
 
-使用 [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 **myVHD.vhd** 从 `"C:\Users\Public\Documents\Virtual hard disks\"` 上载到 **myResourceGroup** 资源组中名为 **mystorageaccount** 的存储帐户。 该文件将放入名为 **mycontainer** 的容器，新文件名为 **myUploadedVHD.vhd**。
+使用 [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 **myVHD.vhd** 从 `"C:\Users\Public\Documents\Virtual hard disks\"` 上载到 **myResourceGroup** 资源组中名为 **mystorageaccount** 的存储帐户。 该文件会放入名为 mycontainer 的容器，新文件名为 myUploadedVHD.vhd。
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -178,9 +184,9 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
     如果估计上传时间大于 7 天，则建议使用“导入/导出服务”。 可使用 [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) 根据数据大小和传输单位估计所需时间。 
 
-    导入/导出可用于复制到标准存储帐户。 需要使用 AzCopy 等工具从标准存储复制到高级存储帐户。
+    导入/导出可用于复制到标准存储帐户。 若要使用高级存储，需使用 AzCopy 等工具从标准存储复制到高级存储帐户。
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>从上传的 VHD 中创建托管映像 
+## <a name="create-an-image"></a>创建映像 
 
 使用通用化的 OS VHD 创建托管映像。
 
@@ -203,7 +209,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
     $image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ```
 
-## <a name="setup-some-variables-for-the-image"></a>设置映像的某些变量
+## <a name="create-vm-from-image"></a>从映像创建 VM
 
 首先需要收集有关映像的基本信息并创建映像的变量。 此示例使用**美国中西部**位置中 **myResourceGroup** 资源组中的托管 VM 映像，名为 **myImage**。 
 
@@ -214,7 +220,7 @@ $imageName = "myImage"
 $image = Get-AzureRMImage -ImageName $imageName -ResourceGroupName $rgName
 ```
 
-## <a name="create-a-virtual-network"></a>创建虚拟网络
+### <a name="create-a-virtual-network"></a>创建虚拟网络
 创建[虚拟网络](../../virtual-network/virtual-networks-overview.md)的 vNet 和子网。
 
 1. 创建子网。 此示例创建名为 **mySubnet** 的子网，其地址前缀为 **10.0.0.0/24**。  
@@ -231,7 +237,7 @@ $image = Get-AzureRMImage -ImageName $imageName -ResourceGroupName $rgName
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
 
-## <a name="create-a-public-ip-address-and-network-interface"></a>创建公共 IP 地址和网络接口
+### <a name="create-a-public-ip-and-nic"></a>创建公共 IP 地址和 NIC
 
 若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
 
@@ -250,7 +256,7 @@ $image = Get-AzureRMImage -ImageName $imageName -ResourceGroupName $rgName
         -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-## <a name="create-the-network-security-group-and-an-rdp-rule"></a>创建网络安全组和 RDP 规则
+### <a name="create-nsg"></a>创建 NSG
 
 若要使用 RDP 登录到 VM，需要创建一个允许在端口 3389 上进行 RDP 访问的网络安全规则 (NSG)。 
 
@@ -269,7 +275,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 ```
 
 
-## <a name="create-a-variable-for-the-virtual-network"></a>为虚拟网络创建变量
+### <a name="create-network-variables"></a>创建网络变量
 
 为完成的虚拟网络创建变量。 
 
@@ -278,15 +284,15 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 
 ```
 
-## <a name="get-the-credentials-for-the-vm"></a>获取 VM 的凭据
+### <a name="get-the-credentials"></a>获取凭据 
 
-以下 cmdlet 将打开一个窗口，需在其中输入远程访问 VM 所用的本地管理员帐户的新用户名和密码。 
+以下 cmdlet 打开一个窗口，需在其中输入远程访问 VM 所用的本地管理员帐户的新用户名和密码。 
 
 ```powershell
 $cred = Get-Credential
 ```
 
-## <a name="set-variables-for-the-vm-name-computer-name-and-the-size-of-the-vm"></a>设置 VM 名称和计算机名称的变量以及 VM 的大小
+### <a name="set-vm-variables"></a>设置 VM 变量 
 
 1. 创建 VM 名称与计算机名称的变量。 此示例将 VM 名称设置为 **myVM**，将计算机名称设置为 **myComputer**。
 
@@ -306,7 +312,7 @@ $cred = Get-Credential
 $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 ```
 
-## <a name="set-the-vm-image-as-source-image-for-the-new-vm"></a>将 VM 映像设置为新 VM 的源映像
+### <a name="set-the-vm-image"></a>设置 VM 映像 
 
 使用托管 VM 映像的 ID 设置源映像。
 
@@ -314,7 +320,7 @@ $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 $vm = Set-AzureRmVMSourceImage -VM $vm -Id $image.Id
 ```
 
-## <a name="set-the-os-configuration-and-add-the-nic"></a>设置 OS 配置并添加 NIC。
+### <a name="set-the-os-configuration"></a>设置“OS 配置” 
 
 输入 OS 磁盘的存储类型（PremiumLRS 或 StandardLRS）和大小。 此示例将帐户类型设置为 **PremiumLRS**，将磁盘大小设置为 **128 GB**，将磁盘缓存设置为 **ReadWrite**。
 
@@ -328,15 +334,15 @@ $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $computerName 
 $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 ```
 
-## <a name="create-the-vm"></a>创建 VM
+### <a name="create-the-vm"></a>创建 VM
 
-使用在 **$vm** 变量中生成和存储的配置创建新 VM。
+使用在 $vm 变量中生成和存储的配置创建新 VM。
 
 ```powershell
 New-AzureRmVM -VM $vm -ResourceGroupName $rgName -Location $location
 ```
 
-## <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
+## <a name="verify-the-vm"></a>验证 VM
 完成后，应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：
 
 ```powershell

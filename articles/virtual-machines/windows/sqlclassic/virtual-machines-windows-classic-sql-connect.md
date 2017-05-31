@@ -1,5 +1,5 @@
 ---
-title: "连接到 SQL Server 虚拟机（经典）| Microsoft Docs"
+title: "连接到 Azure 上的 SQL Server 虚拟机（经典部署）| Microsoft Docs"
 description: "了解如何连接到 Azure 中虚拟机上运行的 SQL Server。 本主题使用经典部署模型。 方案根据网络配置和客户端位置的不同而异。"
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,16 +14,19 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: jroth
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: edc013dee657cbda7c0d9020b6ff4ccda0580dcd
-ms.lasthandoff: 03/25/2017
+experimental: true
+experimental_id: d51f3cc6-753b-4e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 4218b6d274abbeda542c1507aec998ba56f5c145
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/12/2017
 
 
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>连接到 Azure 上的 SQL Server 虚拟机（经典部署）
 > [!div class="op_single_selector"]
-> * [资源管理器](../sql/virtual-machines-windows-sql-connect.md)
+> * [Resource Manager](../sql/virtual-machines-windows-sql-connect.md)
 > * [经典](../classic/sql-connect.md)
 > 
 > 
@@ -32,7 +35,7 @@ ms.lasthandoff: 03/25/2017
 本主题介绍如何连接到 Azure 中虚拟机上运行的 SQL Server 实例。 介绍一些[常规连接方案](#connection-scenarios)，并提供[在 Azure VM 中配置 SQL Server 连接的详细步骤](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 如果使用的是 Resource Manager VM，请参阅[使用 Resource Manager 连接到 Azure 上的 SQL Server 虚拟机](../sql/virtual-machines-windows-sql-connect.md)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 如果使用的是 Resource Manager VM，请参阅[使用 Resource Manager 连接到 Azure 上的 SQL Server 虚拟机](../sql/virtual-machines-windows-sql-connect.md)。
 
 ## <a name="connection-scenarios"></a>连接方案
 客户端连接虚拟机上运行的 SQL Server 的方式取决于客户端的位置与计算机/网络配置。 这些方案包括：

@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 05/11/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 7185ab62ee0e4383a7128fe731bd68da0ae87e66
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: b7e99f8a4d7bc1cd30c71ce08ad38c13203f8b69
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -121,6 +122,7 @@ ms.lasthandoff: 03/14/2017
 * 不列出多值属性和布尔属性。
 * DN 和定位点不能使用相同的属性，除非已在“连接”页面上选择“DN 是定位点”。
 * 如果已在“连接”页面上选择“DN 是定位点”，此页面只需要 DN 属性。 此属性也用作定位点属性。
+
   ![schema3b](./media/active-directory-aadconnectsync-connector-genericsql/schema3b.png)
 
 ### <a name="schema-4-define-attribute-type-reference-and-direction"></a>架构 4（定义属性类型、引用和方向）
@@ -130,7 +132,8 @@ ms.lasthandoff: 03/14/2017
 
 * **DataType**：用于将属性类型映射到同步引擎所知的属性类型。 默认使用在 SQL 架构中检测到的相同类型，但 DateTime 和 Reference 不容易检测。 因此，需要指定 **DateTime** 或 **Reference**。
 * **Direction**：可以设置 Import、Export 或 ImportExport 的属性方向。 ImportExport 是默认值。
-  ![schema4b](./media/active-directory-aadconnectsync-connector-genericsql/schema4b.png)
+
+![schema4b](./media/active-directory-aadconnectsync-connector-genericsql/schema4b.png)
 
 说明：
 
@@ -150,6 +153,12 @@ ms.lasthandoff: 03/14/2017
 
 ![globalparameters3](./media/active-directory-aadconnectsync-connector-genericsql/any-option.png)
 
+>[!IMPORTANT]
+ 自 2017 年 5 月起，更改了 “*”（即“任何选项”），以支持导入和导出流。 如果要使用此选项，多值表/视图须具有一个包含对象类型的属性。
+
+![](./media/active-directory-aadconnectsync-connector-genericsql/any-02.png)
+
+ </br> 如果选择了 “*”，则还必须指定包含对象类型的列的名称。</br> ![](./media/active-directory-aadconnectsync-connector-genericsql/any-03.png)
 
 导入后，将看到类似于下图所示的内容：
 
@@ -162,8 +171,7 @@ ms.lasthandoff: 03/14/2017
 
 ![globalparameters1](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters1.png)
 
->[!IMPORTANT]
- 导出/删除操作期间不能使用“*”（也称为“任何选项”**）。
+
 
 泛型 SQL 连接器支持使用以下增量导入方法：
 

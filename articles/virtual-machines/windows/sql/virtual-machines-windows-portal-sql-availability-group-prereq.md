@@ -14,12 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/17/2017
+ms.date: 05/09/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 071b354ab1ac0c2b8bc1f6e0735638d2c69f295f
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0def8177e124b5d3ba39f1ae65ab3b41d5827e4a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -89,6 +90,7 @@ Azure 将创建资源组，并在门户中固定资源组的快捷方式。
    | **子网名称** |管理员 |
    | **子网地址范围** |10.33.0.0/29 |
    | **订阅** |指定要使用的订阅。 如果只有一个订阅，“订阅”字段将是空白的。 |
+   | **资源组** |选择“使用现有项”，然后选择资源组的名称。 |
    | **位置** |指定 Azure 位置。 |
 
    地址空间和子网地址范围可能与此表中有所不同。 门户将根据具体的订阅建议可用的地址空间和相应的子网地址范围。 如果没有足够的地址空间，请使用不同的订阅。
@@ -108,8 +110,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
     如果看不到 SQL-HA-RG，请单击“资源组”并根据资源组名称筛选进行查找。
 2. 单击资源列表中的 **autoHAVNET**。 Azure 将打开网络配置边栏选项卡。
-3. 在 autoHAVNET 虚拟网络边栏选项卡中，单击“所有设置”。
-4. 在“设置”边栏选项卡中，单击“子网”。
+3. 在“autoHAVNET”虚拟网络边栏选项卡中的“设置”下，单击“子网”。
 
     请记下已创建的子网。
 
@@ -177,6 +178,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
 | **字段** | 值 |
 | --- | --- |
+| **Name** |第一个域控制器：*ad-primary-dc*。</br>第二个域控制器 *ad-secondary-dc*。 |
 | **VM 磁盘类型** |SSD |
 | **用户名** |DomainAdmin |
 | **密码** |Contoso!0000 |
@@ -184,12 +186,12 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 | **资源组** |SQL-HA-RG |
 | **位置** |用户所在的位置 |
 | **大小** |DS1_V2 |
-| **存储帐户** |*自动创建* |
+| **存储** | **使用托管磁盘** - **是** |
 | **虚拟网络** |autoHAVNET |
 | **子网** |admin |
 | **公共 IP 地址** |*与 VM 同名* |
 | **网络安全组** |*与 VM 同名* |
-| **可用性集** |adavailabilityset |
+| **可用性集** |adavailabilityset </br>**容错域**:2</br>**更新域**:2|
 | **诊断** |Enabled |
 | **诊断存储帐户** |*自动创建* |
 
@@ -253,6 +255,17 @@ Azure 将创建虚拟机。
 
 记下此服务器的专用 IP 地址。
 
+### <a name="configure-the-virtual-network-dns"></a>配置虚拟网络 DNS
+在创建第一个域控制器并在第一台服务器上启用 DNS 后，将虚拟网络配置为将此服务器用作 DNS。
+
+1. 在 Azure 门户中单击虚拟网络。
+
+2. 在“设置”下，单击“DNS 服务器”。
+
+3. 单击“自定义”，键入主域控制器的专用 IP 地址。
+
+4. 单击“保存” 。
+
 ### <a name="configure-the-second-domain-controller"></a>配置第二个域控制器
 在主域控制器重新启动之后，可以配置第二个域控制器。 此可选步骤适用于实现高可用性。 遵循以下步骤配置第二个域控制器：
 
@@ -292,6 +305,10 @@ Azure 将创建虚拟机。
 22. 单击“下一步”，直到出现“必备项检查”对话框。 上提出。
 
 服务器完成配置更改后，请重启服务器。
+
+### <a name="add-the-private-ip-address-to-the-second-domain-controller-to-the-vpn-dns-server"></a>将第二个域控制器的专用 IP 地址添加到 VPN DNS 服务器中
+
+在 Azure 门户的虚拟网络下更改 DNS 服务器，以包含辅助域控制器的 IP 地址。 这样可实现 DNS 服务冗余。
 
 ### <a name=DomainAccounts></a>配置域帐户
 
@@ -333,15 +350,29 @@ Azure 将创建虚拟机。
 现已完成 Active Directory 和用户对象的配置，接下来请创建两个 SQL Server VM 和 1 个见证服务器 VM。 然后，将这三个 VM 加入域中。
 
 ## <a name="create-sql-server-vms"></a>创建 SQL Server VM
+
+再创建三个虚拟机。 该解决方案需要两个具有 SQL Server 实例的虚拟机。 第三个虚拟机充当见证服务器。 Windows Server 2016 可以使用[云见证服务器](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)，但是为了与旧版操作系统保持一致，本文档使用虚拟机作为见证服务器。  
+
+在继续操作之前，请考虑以下设计决策。
+
+* **存储：Azure 托管磁盘**
+
+   将 Azure 托管磁盘用作虚拟机存储。 Microsoft 建议为 SQL Server 虚拟机使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关其他信息，请参阅 [Azure 托管磁盘概述](../../../storage/storage-managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)。
+
+* **网络：生产环境中的专用 IP 地址**
+
+   本教程对虚拟机使用公共 IP 地址。 这样一来，就可以通过 Internet 直接远程连接到虚拟机，从而使配置过程更加轻松。 在生产环境中，Microsoft 建议仅使用专用 IP 地址，以减少 SQL Server 实例 VM 资源的漏洞涉及面。
+
 ### <a name="create-and-configure-the-sql-server-vms"></a>创建并配置 SQL Server VM
 接下来请创建 3 个 VM，包括 2 个 SQL Server VM 和 1 个用于其他群集节点的 VM。 若要创建每个 VM，请返回到 SQL-HA-RG 资源组，单击“添加”，搜索相应的库项，然后依次单击“虚拟机”和“从库中”。 参考下表中的信息创建 VM：
+
 
 | Page | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
 | 选择相应的库项 |**Windows Server 2016 Datacenter** |**Windows Server 2016 上的 SQL Server 2016 SP1 Enterprise** |**Windows Server 2016 上的 SQL Server 2016 SP1 Enterprise** |
 | 虚拟机配置**基本信息** |**名称** = cluster-fsw<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 所在的 Azure 位置 |**名称** = sqlserver-0<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 所在的 Azure 位置 |**名称** = sqlserver-1<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 所在的 Azure 位置 |
-| 虚拟机配置**大小** |大小 = DS1\_V2（单核，3.5 GB） |**大小** = DS2\_V2（双核，7 GB） |**大小** = DS2\_V2（双核，7 GB） |
-| 虚拟机配置**设置** |**存储** = 高级 (SSD)<br/>**网络子网** = autoHAVNET<br/>**存储帐户** = 使用自动生成的存储帐户<br/>**子网** = sqlsubnet(10.1.1.0/24)<br/>**公共 IP 地址** = 无<br/>**网络安全组** = 无<br/>**监视诊断** = 已启用<br/>**诊断存储帐户** = 使用自动生成的存储帐户<br/>**可用性集** = sqlAvailabilitySet<br/> |**存储** = 高级 (SSD)<br/>**网络子网** = autoHAVNET<br/>**存储帐户** = 使用自动生成的存储帐户<br/>**子网** = sqlsubnet(10.1.1.0/24)<br/>**公共 IP 地址** = 无<br/>**网络安全组** = 无<br/>**监视诊断** = 已启用<br/>**诊断存储帐户** = 使用自动生成的存储帐户<br/>**可用性集** = sqlAvailabilitySet<br/> |**存储** = 高级 (SSD)<br/>**网络子网** = autoHAVNET<br/>**存储帐户** = 使用自动生成的存储帐户<br/>**子网** = sqlsubnet(10.1.1.0/24)<br/>**公共 IP 地址** = 无<br/>**网络安全组** = 无<br/>**监视诊断** = 已启用<br/>**诊断存储帐户** = 使用自动生成的存储帐户<br/>**可用性集** = sqlAvailabilitySet<br/> |
+| 虚拟机配置**大小** |大小 = DS1\_V2（单核，3.5 GB） |**大小** = DS2\_V2（双核，7 GB）</br>大小必须支持 SSD 存储（高级磁盘支持。 ） |**大小** = DS2\_V2（双核，7 GB） |
+| 虚拟机配置**设置** |**存储**：使用托管磁盘。<br/>**虚拟网络** = autoHAVNET<br/>**子网** = sqlsubnet(10.1.1.0/24)<br/>自动生成**公共 IP 地址**。<br/>**网络安全组** = 无<br/>**监视诊断** = 已启用<br/>**诊断存储帐户** = 使用自动生成的存储帐户<br/>**可用性集** = sqlAvailabilitySet<br/> |**存储**：使用托管磁盘。<br/>**虚拟网络** = autoHAVNET<br/>**子网** = sqlsubnet(10.1.1.0/24)<br/>自动生成**公共 IP 地址**。<br/>**网络安全组** = 无<br/>**监视诊断** = 已启用<br/>**诊断存储帐户** = 使用自动生成的存储帐户<br/>**可用性集** = sqlAvailabilitySet<br/> |**存储**：使用托管磁盘。<br/>**虚拟网络** = autoHAVNET<br/>**子网** = sqlsubnet(10.1.1.0/24)<br/>自动生成**公共 IP 地址**。<br/>**网络安全组** = 无<br/>**监视诊断** = 已启用<br/>**诊断存储帐户** = 使用自动生成的存储帐户<br/>**可用性集** = sqlAvailabilitySet<br/> |
 | 虚拟机配置 **SQL Server 设置** |不适用 |**SQL 连接** = 专用（虚拟网络内部）<br/>**端口** = 1433<br/>**SQL 身份验证** = 禁用<br/>**存储配置** = 常规<br/>**自动修补** = 星期日 2:00<br/>**自动备份** = 已禁用</br>**Azure 密钥保管库集成** = 已禁用 |**SQL 连接** = 专用（虚拟网络内部）<br/>**端口** = 1433<br/>**SQL 身份验证** = 禁用<br/>**存储配置** = 常规<br/>**自动修补** = 星期日 2:00<br/>**自动备份** = 已禁用</br>**Azure 密钥保管库集成** = 已禁用 |
 
 <br/>
@@ -352,29 +383,6 @@ Azure 将创建虚拟机。
 >
 
 预配完 3 个 VM 后，需将其加入到 corp.contoso.com 域中，并向这些计算机授予 CORP\Install 管理权限。
-
-### <a name="set-dns-on-each-server"></a>在每台服务器上设置 DNS
-首先，请更改每个成员服务器的首选 DNS 服务器地址。 执行以下步骤:
-
-1. 在门户中打开 **SQL-HA-RG** 资源组，然后选择 **sqlserver-0** 计算机。 在“sqlserver-0”边栏选项卡中，单击“连接”，打开用于执行远程桌面访问的 RDP 文件。
-2. 使用已配置的管理员帐户 (\DomainAdmin) 和密码 (Contoso!0000) 登录。
-3. 默认情况下，应显示“服务器管理器”仪表板。 单击左窗格中的“本地服务器”。
-4. 选择“由 DHCP 分配的启用 IPv6 的 IPv4 地址”链接。
-5. 在“网络连接”窗口中，选择网络图标。
-6. 在命令栏中，单击“更改此连接的设置”。 若未看到此选项，请单击双右箭头。
-7. 选择“Internet 协议版本 4 (TCP/IPv4)”，然后单击“属性”。
-8. 选择“使用以下 DNS 服务器地址”，并在“首选 DNS 服务器”中指定主域控制器的地址。
-
-   >[!TIP]
-   >若要获取服务器的 IP 地址，请使用 `nslookup`。<br/>
-   >在命令提示符下，键入 `nslookup ad-primary-dc`。
-
-9. 单击“确定”，然后单击“关闭”提交更改。
-
-   >[!IMPORTANT]
-   >如果在更改 DNS 设置后与远程桌面断开了连接，请转到 Azure 门户并重新启动虚拟机。
-
-针对所有服务器重复上述步骤。
 
 ### <a name="joinDomain"></a>将服务器加入域
 
@@ -418,7 +426,7 @@ Azure 将创建虚拟机。
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>在每个 SQL Server VM 上创建安装帐户的登录名
 
-使用安装帐户配置可用性组。 此帐户需是每个 SQL Server VM 上的 sysadmin 固定服务器角色的成员。 以下步骤将创建安装帐户的登录名：
+使用安装帐户 (CORP\install) 配置可用性组。 此帐户需是每个 SQL Server VM 上的 sysadmin 固定服务器角色的成员。 以下步骤将创建安装帐户的登录名：
 
 1. 使用 \<MachineName\>\DomainAdmin 帐户通过远程桌面协议 (RDP) 连接到服务器。
 
@@ -446,7 +454,7 @@ Azure 将创建虚拟机。
 
 若要添加故障转移群集功能，请在两个 SQL Server VM 上执行以下操作：
 
-1. 通过远程桌面连接到辅助域控制器，打开“服务器管理器仪表板”。
+1. 使用 *CORP\install* 帐户通过远程桌面协议 (RDP) 连接到 SQL Server 虚拟机。 打开“服务器管理器仪表板”。
 2. 单击仪表板上的“添加角色和功能”链接。
 
     ![服务器管理器 - 添加角色](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/22-addfeatures.png)

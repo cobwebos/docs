@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 738ff9882cffc428f571ab6aea96c0927d2ce443
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 7bed1e96cec49e8b62d671952976025453da6787
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -35,14 +36,14 @@ ms.lasthandoff: 03/31/2017
 
 1. 如果尚未安装，请安装 [Visual Studio](https://www.visualstudio.com/)。
 2. 在 Visual Studio 中，单击“文件” > “新建” > “项目”。
-3. 在“模板” > “Visual C#”中，选择“控制台应用程序”，输入项目的名称和位置，然后单击“确定”。
+3. 在“模板” > “Visual C#”中，选择“控制台应用(.NET Framework)”，输入项目的名称和位置，然后单击“确定”。
 
 ## <a name="step-2-install-libraries"></a>步骤 2：安装库
 
 使用 NuGet 包可以最轻松地安装完成这些步骤所需的库。 需要 Azure Resource Manager 库和 Active Directory 身份验证库以创建资源。 若要在 Visual Studio 中获取这些库，请执行以下步骤：
 
-1. 在解决方案资源管理器中右键单击项目名称，然后依次单击“管理 NuGet 包”和“浏览”。
-2. 在搜索框中键入 *Microsoft.IdentityModel.Clients.ActiveDirectory*，单击“安装”，然后按照说明安装该包。
+1. 在解决方案资源管理器中右键单击项目名称，然后依次单击“管理解决方案的 NuGet 包...”和“浏览”。
+2. 在搜索框中键入 Microsoft.IdentityModel.Clients.ActiveDirectory，再选择项目，单击“安装”，然后按照说明安装该包。
 3. 在页面顶部，选择“包括预发行版”。 在搜索框中键入 *Microsoft.Azure.Management.ResourceManager*，单击“安装”，然后按照说明安装该包。
 
 现在，你可以开始使用这些库来创建应用程序了。
@@ -51,7 +52,7 @@ ms.lasthandoff: 03/31/2017
 
 在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../resource-group-authenticate-service-principal.md)。 从服务主体中，将获取对 Azure Resource Manager 请求进行身份验证的令牌。
 
-1. 打开你为项目创建的 Program.cs 文件，然后在该文件的顶部添加以下 using 语句：
+1. 为所创建的项目打开 Program.cs 文件，然后将这些 using 语句添加到文件顶部的现有语句：
 
     ```
     using Microsoft.Azure;
@@ -67,8 +68,8 @@ ms.lasthandoff: 03/31/2017
     ```
     private static async Task<AuthenticationResult> GetAccessTokenAsync()
     {
-      var cc = new ClientCredential("{client-id}", "{client-secret}");
-      var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
+      var cc = new ClientCredential("client-id", "client-secret");
+      var context = new AuthenticationContext("https://login.windows.net/tenant-id");
       var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
       if (token == null)
       {
@@ -80,9 +81,9 @@ ms.lasthandoff: 03/31/2017
 
     替换以下值：
     
-    - 将 *{client-id}* 替换为 Azure Active Directory 应用程序的标识符。 在 AD 应用程序的“属性”边栏选项卡上，可找到此标识符。 若要在 Azure 门户中查找 AD 应用程序，请在资源菜单中单击“Azure Active Directory”，然后单击“应用注册”。
-    - 将 *{client-secret}* 替换为 AD 应用程序的访问密钥。 在 AD 应用程序的“属性”边栏选项卡上，可找到此标识符。
-    - 将 *{tenant-id}* 替换为订阅的租户标识符。 在 Azure 门户中 Azure Active Directory 的“属性”边栏选项卡上，可找到租户标识符。 它被标记为目录 ID。
+    - 将 client-id 替换为 Azure Active Directory 应用程序的标识符。 在 AD 应用程序的“属性”边栏选项卡上，可找到此标识符。 若要在 Azure 门户中查找 AD 应用程序，请在资源菜单中单击“Azure Active Directory”，然后单击“应用注册”。
+    - 将 client-secret 替换为 AD 应用程序的访问密钥。 在 AD 应用程序的“属性”边栏选项卡上，可找到此标识符。
+    - 将 tenant-id 替换为订阅的租户标识符。 在 Azure 门户中 Azure Active Directory 的“属性”边栏选项卡上，可找到租户标识符。 它被标记为目录 ID。
 
 3. 若要调用刚刚添加的方法，请将以下代码添加到 Main 方法：
 
@@ -102,7 +103,7 @@ ms.lasthandoff: 03/31/2017
     ```
     var groupName = "myResourceGroup";
     var subscriptionId = "subsciptionId";
-    var deploymentName = "deploymentName;
+    var deploymentName = "deploymentName";
     var location = "location";
     ```
 

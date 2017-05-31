@@ -14,113 +14,135 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f8631c5fe566762862f64b47843e154b68bb8031
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 9784e8af9c530078afee06f08a23403a44b0762f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/12/2017
 
 
 ---
 
-# <a name="managing-virtual-machines-using-the-azure-explorer-for-eclipse"></a>使用用于 Eclipse 的 Azure 资源管理器管理虚拟机
+# <a name="manage-virtual-machines-by-using-the-azure-explorer-for-eclipse"></a>使用用于 Eclipse 的 Azure 资源管理器管理虚拟机
 
-Azure 资源管理器是用于 Eclipse 的 Azure 工具包的一部分，它为 Java 开发人员提供易用的解决方案，用于从 Eclipse IDE 内部管理其 Azure 帐户中的虚拟机。
+Azure 资源管理器是用于 Eclipse 的 Azure 工具包的一部分，它为 Java 开发人员提供易用的解决方案，用于从 Eclipse 集成开发环境 (IDE) 内部管理其 Azure 帐户中的虚拟机。
 
 [!INCLUDE [azure-toolkit-for-eclipse-prerequisites](../includes/azure-toolkit-for-eclipse-prerequisites.md)]
 
 [!INCLUDE [azure-toolkit-for-eclipse-show-azure-explorer](../includes/azure-toolkit-for-eclipse-show-azure-explorer.md)]
 
-## <a name="creating-a-virtual-machine-in-eclipse"></a>在 Eclipse 中创建虚拟机
+## <a name="create-a-virtual-machine-in-eclipse"></a>在 Eclipse 中创建虚拟机
 
-以下步骤将引导你完成使用 Azure 资源管理器创建虚拟机的步骤。
+若要使用 Azure 资源管理器创建虚拟机，请执行以下操作：
 
-1. 遵循[用于 Eclipse 的 Azure 工具包的登录说明]一文中的步骤登录到 Azure 帐户。
+1. 按照[用于 Eclipse 的 Azure 工具包的登录说明]中的步骤登录到 Azure 帐户。
 
-1. 在“Azure 资源管理器”视图中，展开 Azure 节点，右键单击“虚拟机”，然后单击“创建 VM”。
-   ![“创建 VM”菜单][CR01]
+2. 在“Azure 资源管理器”视图中，展开 Azure 节点，右键单击“虚拟机”，然后单击“创建 VM”。
 
-1. 显示“新建虚拟机”向导时，选择订阅，然后单击“下一步”。
-   ![“新建虚拟机”向导][CR02]
+   创建 VM 命令![][CR01]  
+   此时将打开“新建虚拟机”向导。
 
-1. 在该向导的下一屏幕上，指定以下选项，然后单击“下一步”： ![“新建虚拟机”向导][CR03]
+3. 在“选择订阅”窗口中选择你的订阅，然后单击“下一步”。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **位置**：指定将创建虚拟机的位置；例如“美国西部”。
+   ![“选择订阅”窗口][CR02]
 
-   b.保留“数据库类型”设置，即设置为“共享”。 **发布者**：指定创建了用于创建虚拟机的映像的发布者，例如“Microsoft”。
+4. 在“选择虚拟机映像”窗口中输入以下信息：
 
-   c. **产品/服务**：指定要使用哪一个从所选发布者提供的虚拟机；例如“JDK”。
+   * 位置：指定将创建虚拟机的位置（例如“美国西部”）。
 
-   d.单击“下一步”。 **Sku**：从所选产品/服务中指定要使用的*库存单位 (SKU)*；例如“JDK_8”。
+   * 发布者：指定创建了将用于创建虚拟机的映像的发布者（例如“Microsoft”）。
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **版本号**：从所选 SKU 中指定要使用哪个版本。
+   * 产品/服务：指定要使用哪一个从所选发布者提供的虚拟机（例如“JDK”）。
 
-1. 在该向导的下一屏幕上，指定以下选项，然后单击“下一步”：![“新建虚拟机”向导][CR04]
+   * Sku：从所选产品/服务中指定要使用的库存单位 (SKU)（例如“JDK_8”）。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **虚拟机名称**：指定新虚拟机的名称，该名称必须以字母开头并仅包含字母、数字和连字符。
+   * 版本号：从所选 SKU 中指定要使用哪个版本。
 
-   b. **大小**：指定要为虚拟机分配的内核数和内存。
+    ![“选择虚拟机映像”窗口][CR03]
 
-   c. **用户名**：指定要创建的用于管理虚拟机的管理员帐户。
+5. 单击“下一步”。
 
-   d.单击“下一步”。 **密码**和**确认**：指定管理员帐户的密码。
+6. 在“虚拟机基本设置”窗口中输入以下信息：
 
-1. 在向导的最后一个屏幕中指定以下选项：
+   * **虚拟机名称**：指定新虚拟机的名称，该名称必须以字母开头并仅包含字母、数字和连字符。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **资源组**：为虚拟机指定资源组；需要选择以下选项之一：
-      * **新建**：指定要创建新的资源组。
-      * **使用现有**：指定将从列表中选择与 Azure 帐户关联的资源组。
+   * **大小**：指定要为虚拟机分配的内核数和内存。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 **存储帐户**：指定要用于存储虚拟机的存储帐户，可以选择现有存储帐户，也可以创建新帐户。 如果选择“&lt;&lt;新建&gt;&gt;”，将显示以下对话框：
+   * **用户名**：指定要创建的用于管理虚拟机的管理员帐户。
 
-      ![“新建存储帐户”对话框][CR05]
+   * **密码**和**确认**：指定管理员帐户的密码。
 
-   c. **虚拟网络**和**子网**：指定虚拟机将连接到的虚拟网络和子网；可以选择现有网络和子网以用于虚拟机，也可以创建新的网络和子网。 如果选择“&lt;&lt;新建&gt;&gt;”，将显示以下对话框：<br/>
+    ![“虚拟机基本设置”窗口][CR04]
+
+7. 单击“下一步”。
+
+8. 在“创建新存储帐户”窗口输入以下信息：
+
+   * 资源组：指定虚拟机的资源组。 选择以下选项之一：
+      * 新建：指定要创建新的资源组。
+      * 使用现有资源：指定选择已与 Azure 帐户关联的资源组。
+
+      ![“创建新存储帐户”对话框][CR05]
+
+   * 存储帐户：指定用于存储虚拟机的存储帐户。 可使用现有存储帐户，也可以创建新帐户。
+
+   * 虚拟网络和子网：指定虚拟机将连接到的虚拟网络和子网。 可使用现有网络和子网，也可以创建新网络和子网。 如果选择“新建”，将显示以下对话框：
 
       ![“新建虚拟网络”对话框][CR06]
 
-   d.单击“下一步”。 **公共 IP 地址**：为虚拟机指定面向外部的 IP 地址；可以选择创建新的 IP 地址，也可以选择“(无)”（如果虚拟机将不具有公共 IP 地址）。
+9. 在“关联的资源”窗口输入以下信息：
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **网络安全组**：指定虚拟机将使用的可选网络防火墙；可以选择现有防火墙，也可以选择“(无)”（如果虚拟机将不使用网络防火墙）。
+   * 公共 IP 地址：为虚拟机指定面向外部的 IP 地址。 可选择创建新 IP 地址，也可以选择“(无)”（如果虚拟机将不具有公共 IP 地址）。
 
-   f. **可用性集**：指定虚拟机可能属于的可选可用性集；可以选择现有的可用性集，也可以创建新的可用性集，或选择“(无)”（如果虚拟机将不属于可用性集）。
+   * 网络安全组：指定虚拟机的可选网络防火墙。 可以选择现有防火墙，也可以选择“(无)”（如果虚拟机不使用网络防火墙）。
 
-1. 输入上面列出的所有选项后，请单击“完成”：![“创建新虚拟机”向导][CR07]
+   * **可用性集**：指定虚拟机可能属于的可选可用性集。 可选择现有可用性集，或创建新可用性集，也可选择“(无)”（如果虚拟机将不属于可用性集）。
 
-1. 完成上述步骤后，将在“Azure 资源管理器”工具窗口中显示新的虚拟机。
+   ![“关联的资源”窗口][CR07]
+
+9. 单击“完成” 。  
+  新虚拟机显示在“Azure 资源管理器”工具窗口中。
+
    ![新建虚拟机][CR08]
 
-## <a name="restarting-a-virtual-machine-in-eclipse"></a>在 Eclipse 中重新启动虚拟机
+## <a name="restart-a-virtual-machine-in-eclipse"></a>在 Eclipse 中重启虚拟机
 
-若要在 Eclipse 中使用 Azure 资源管理器重新启动虚拟机，请使用以下步骤：
+若要在 Eclipse 中使用 Azure 资源管理器重启虚拟机，请执行以下操作：
 
 1. 在“Azure 资源管理器”视图中，右键单击虚拟机，然后选择“重新启动”。
-   ![重新启动虚拟机][RE01]
 
-1. 出现提示时，单击“是”重新启动虚拟机。
-   ![重新启动虚拟机][RE02]
+   ![“重新启动虚拟机”命令][RE01]
 
-## <a name="shutting-down-a-virtual-machine-in-eclipse"></a>在 Eclipse 中关闭虚拟机
+2. 在确认窗口中，单击“是”。
 
-若要在 Eclipse 中使用 Azure 资源管理器关闭正在运行的虚拟机，请使用以下步骤：
+   ![“重启”确认窗口][RE02]
+
+## <a name="shut-down-a-virtual-machine-in-eclipse"></a>在 Eclipse 中关闭虚拟机
+
+若要在 Eclipse 中使用 Azure 资源管理器关闭正在运行的虚拟机，请执行以下操作：
 
 1. 在“Azure 资源管理器”视图中，右键单击虚拟机，然后选择“关闭”。
-   ![关闭虚拟机][SH01]
 
-1. 出现提示时，单击“是”关闭虚拟机。
-   ![关闭虚拟机][SH02]
+   ![“关闭虚拟机”命令][SH01]
 
-## <a name="deleting-a-virtual-machine-in-eclipse"></a>在 Eclipse 中删除虚拟机
+2. 在确认窗口中，单击“是”。
 
-若要在 Eclipse 中使用 Azure 资源管理器删除虚拟机，请使用以下步骤：
+   ![“关闭虚拟机”确认窗口][SH02]
+
+## <a name="delete-a-virtual-machine-in-eclipse"></a>在 Eclipse 中删除虚拟机
+
+若要在 Eclipse 中使用 Azure 资源管理器删除虚拟机，请执行以下操作：
 
 1. 在“Azure 资源管理器”视图中，右键单击虚拟机，然后选择“删除”。
-   ![删除虚拟机][DE01]
 
-1. 出现提示时，单击“是”删除虚拟机。
-   ![删除虚拟机][DE02]
+   ![“删除虚拟机”命令][DE01]
 
-## <a name="see-also"></a>另请参阅
-有关 Azure 虚拟机大小和定价的详细信息，请参阅以下链接：
+2. 在确认窗口中，单击“是”。
+
+   ![“删除虚拟机”确认窗口][DE02]
+
+## <a name="next-steps"></a>后续步骤
+有关 Azure 虚拟机大小和定价的详细信息，请参阅以下资源：
 
 * Azure 虚拟机大小
   * [Azure 中 Windows 虚拟机的大小]
@@ -129,18 +151,18 @@ Azure 资源管理器是用于 Eclipse 的 Azure 工具包的一部分，它为 
   * [Windows 虚拟机定价]
   * [Linux 虚拟机定价]
 
-有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
+有关用于 Java IDE 的 Azure 工具包的详细信息，请参阅以下资源：
 
 * [用于 Eclipse 的 Azure 工具包]
   * [用于 Eclipse 的 Azure 工具包的新增功能]
   * [安装用于 Eclipse 的 Azure 工具包]
   * [用于 Eclipse 的 Azure 工具包的登录说明]
-  * [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
+  * [在 Eclipse 中创建适用于 Azure 的 Hello World Web 应用]
 * [用于 IntelliJ 的 Azure 工具包]
   * [用于 IntelliJ 的 Azure 工具包的新增功能]
   * [安装用于 IntelliJ 的 Azure 工具包]
   * [用于 IntelliJ 的 Azure 工具包的登录说明]
-  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
+  * [在 IntelliJ 中创建适用于 Azure 的 Hello World Web 应用]
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]和[用于 Visual Studio Team Services 的 Java 工具]。
 
@@ -148,8 +170,8 @@ Azure 资源管理器是用于 Eclipse 的 Azure 工具包的一部分，它为 
 
 [用于 Eclipse 的 Azure 工具包]: ./azure-toolkit-for-eclipse.md
 [用于 IntelliJ 的 Azure 工具包]: ./azure-toolkit-for-intellij.md
-[在 Eclipse 中创建 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
-[在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[在 Eclipse 中创建适用于 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
+[在 IntelliJ 中创建适用于 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [安装用于 Eclipse 的 Azure 工具包]: ./azure-toolkit-for-eclipse-installation.md
 [安装用于 IntelliJ 的 Azure 工具包]: ./azure-toolkit-for-intellij-installation.md
 [用于 Eclipse 的 Azure 工具包的登录说明]: ./azure-toolkit-for-eclipse-sign-in-instructions.md

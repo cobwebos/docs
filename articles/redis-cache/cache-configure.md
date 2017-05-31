@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 05/02/2017
+ms.date: 05/11/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 031fa71b8f5aac558569eea7001e16df4cae917c
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: fefa78f7e0ba4bd40e6c0985080403237d6eb916
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -482,11 +483,7 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 可以使用 **Redis 控制台**向 Azure Redis 缓存实例安全地发布命令，此操作适用于标准缓存和高级缓存。
 
 > [!IMPORTANT]
-> Redis 控制台无法使用 VNET、群集和数据库（数据库 0 除外）。 
-> 
-> * [VNET](cache-how-to-premium-vnet.md) - 如果缓存是 VNET 的一部分，则只有 VNET 中的客户端可以访问缓存。 Redis 控制台使用的 redis cli.exe 客户端承载于不属于 VNET 的 VM 上，因此该控制台无法连接到你的缓存。
-> * [群集](cache-how-to-premium-clustering.md) - Redis 控制台使用目前不支持群集的 redis-cli.exe 客户端。 GitHub 上 Redis 存储库的[不稳定](http://redis.io/download)分支中的 redis-cli 实用程序在使用 `-c` 开关启动时，会实现基本支持。 有关详细信息，请参阅 [http://redis.io](http://redis.io) 上 [Redis cluster tutorial](http://redis.io/topics/cluster-tutorial)（Redis 群集教程）中的[Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)（操作群集）。
-> * 每次提交命令时，Redis 控制台都会新建一个与数据库 0 的连接。 不能使用 `SELECT` 命令选择其他数据库，因为每当有命令时数据库都将重置为 0。 有关运行 Redis 命令（包括更改为不同的数据库）的信息，请参阅[如何运行 Redis 命令？](cache-faq.md#how-can-i-run-redis-commands)
+> Redis 控制台不处理 [VNET](cache-how-to-premium-vnet.md)。 如果缓存是 VNET 的一部分，则只有 VNET 中的客户端可以访问缓存。 由于 Redis 控制台在本地浏览器中运行（这在 VNET 的外部），因此它无法连接到缓存。
 > 
 > 
 

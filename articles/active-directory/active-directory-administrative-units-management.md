@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 05/04/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: d05b4a34c5271b636400ed90ead76fabf0d911bd
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 5bf0e7f631a86a9d413415ab73e03fa00a0e9325
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -30,12 +30,12 @@ ms.lasthandoff: 05/05/2017
 > [!IMPORTANT]
 > 你只能在启用 Azure Active Directory Premium 的情况下创建和使用管理单元。 有关详细信息，请参阅 [Azure AD Premium 入门](active-directory-get-started-premium.md)。
 >
->
+
 
 从中央管理员的角度来看，管理单元是可以创建并填充资源的目录对象。 **在此预览版中，这些资源只能是用户。** 一旦创建并填充，管理单元即可作为只通过管理单元中所含资源限制授予的权限的范围。
 
 ## <a name="managing-administrative-units"></a>管理管理单元
-在此预览版中，你可以使用 Windows PowerShell cmdlet 的 Azure Active Directory 模块创建和管理管理单元。
+在此预览版中，你可以使用 Windows PowerShell cmdlet 的 Azure Active Directory 模块创建和管理管理单元。 若要深入了解如何执行此操作，请参阅[使用管理单元](https://docs.microsoft.com/en-us/powershell/azure/working-with-administrative-units?view=azureadps-2.0)
 
 有关软件要求和安装 Azure AD 模块的详细信息，以及有关用于管理管理单元的 Azure AD 模块 cmdlet 的信息（包括语法、参数说明和示例），请参阅[使用 Windows PowerShell 管理 Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx)。
 

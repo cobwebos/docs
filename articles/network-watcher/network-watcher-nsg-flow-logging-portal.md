@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: d716f11818bc0ad6dd9e5f93951b011dd6774c7b
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: b059cfdcf21d8b61589a5edf3bd1832070e564e3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -34,7 +35,13 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="before-you-begin"></a>开始之前
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此方案还假定要使用的是存在有效虚拟机的资源组。
+此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此方案还假定要使用的包含有效虚拟机的资源组已存在。
+
+## <a name="register-insights-provider"></a>注册 Insights 提供程序
+
+若要使流日志记录正常工作，必须注册 **Microsoft.Insights** 提供程序。 若要注册该提供程序，请导航到“订阅”，选择要启用流日志的订阅。 在“订阅”边栏选项卡上，选择“资源提供程序”。 导航提供程序列表，确认是否已注册 **microsoft.insights** 提供程序。 如果未注册，则单击“注册”。
+
+![查看提供程序][providers]
 
 ## <a name="enable-flow-logs"></a>启用流日志
 
@@ -93,4 +100,4 @@ ms.lasthandoff: 03/22/2017
 [4]: ./media/network-watcher-nsg-flow-logging-portal/figure4.png
 [5]: ./media/network-watcher-nsg-flow-logging-portal/figure5.png
 [6]: ./media/network-watcher-nsg-flow-logging-portal/figure6.png
-
+[providers]: ./media/network-watcher-nsg-flow-logging-portal/providers.png
