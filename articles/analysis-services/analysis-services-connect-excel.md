@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 05/09/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a83e313413d87179b89e78d2b90a08a9bcc92fa1
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 88d0c2495a13ccf02f7d0e56ce7158ac80dcc2d5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.lasthandoff: 04/18/2017
 
 1. 在 Excel 2016 的“数据”功能区上，单击“获取外部数据” > “从其他源获取” > “从 Analysis Services 获取”。
 
-2. 在“数据连接向导”的“服务器名称”中，从剪贴板粘贴服务器名称。 然后，在“登录凭据”中，选择“使用以下用户名和密码”，然后键入组织的用户名（例如 nancy@adventureworks.com）和密码。
+2. 在“数据连接向导”的“服务器名称”中，输入服务器名称，包括协议和 URI。**** 然后，在“登录凭据”中，选择“使用以下用户名和密码”，然后键入组织的用户名（例如 nancy@adventureworks.com）和密码。
 
     ![“从 Excel 中连接”登录](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 

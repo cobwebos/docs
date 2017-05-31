@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 5733592fc1633d8722905c33dd267b4cbe1fe184
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; mandia
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 09a2373585f49a39192a841072d86e395ff311db
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/10/2017
 下面是需要准备好的项：
 
 * 已定义的、与你的 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)
-* 在集成帐户中至少已定义两个[合作伙伴](logic-apps-enterprise-integration-partners.md)，并且在“企业标识”下面配置了这些合作伙伴的 AS2 限定符
+* 在集成帐户中至少已定义两个[合作伙伴](logic-apps-enterprise-integration-partners.md)，并且在“企业标识”下面配置了这些合作伙伴的 AS2 限定符****
 
 > [!NOTE]
 > 创建协议时，协议文件中的内容必须与协议类型匹配。    
@@ -41,14 +42,14 @@ ms.lasthandoff: 03/10/2017
 
 1.    登录 [Azure 门户](http://portal.azure.com "Azure portal")。  
 
-2.    在左侧菜单中，选择“更多服务”。 在搜索框中，输入“集成”作为筛选器。 在结果列表中，选择“集成帐户”。
+2.    在左侧菜单中，选择“更多服务”。**** 在搜索框中，输入“集成”作为筛选器。**** 在结果列表中，选择“集成帐户”。****
 
     > [!TIP]
-    > 如果未看到“更多服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
+    > 如果未看到“更多服务”，可能需要先展开菜单。**** 在折叠的菜单顶部，选择“显示菜单”。****
 
     ![在“更多服务”中筛选“集成”，选择“集成帐户”](./media/logic-apps-enterprise-integration-agreements/overview-1.png)
 
-3. 在打开的“集成帐户”边栏选项卡中，选择要在其中创建协议的集成帐户。
+3. 在打开的“集成帐户”边栏选项卡中，选择要在其中创建协议的集成帐户。****
 如果未看到任何集成帐户，请[先创建一个集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "有关集成帐户的详细信息")。  
 
     ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-overview/overview-3.png)
@@ -57,11 +58,11 @@ ms.lasthandoff: 03/10/2017
 
     ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-5. 在打开的“协议”边栏选项卡中，选择“添加”。
+5. 在打开的“协议”边栏选项卡中，选择“添加”。****
 
     ![选择“添加”](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-6. 在“添加”下面，输入协议的**名称**。 对于“协议类型”，请选择“AS2”。 为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。
+6. 在“添加”下面，输入协议的**名称**。**** 对于“协议类型”，请选择“AS2”。**** 为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。****
 
     ![提供协议详细信息](./media/logic-apps-enterprise-integration-agreements/agreement-3.png)  
 
@@ -80,26 +81,26 @@ ms.lasthandoff: 03/10/2017
 
 设置协议属性后，可以配置此协议如何识别和处理从合作伙伴接收的传入消息。
 
-1.    在“添加”下面，选择“接收设置”。
+1.    在“添加”下面，选择“接收设置”。****
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
     ![配置“接收设置”](./media/logic-apps-enterprise-integration-agreements/agreement-4.png)
 
-2. 或者，可以选择“替代消息属性”来替代传入消息的属性。
+2. 或者，可以选择“替代消息属性”来替代传入消息的属性。****
 
-3. 如需对所有传入消息进行签名，请选择“应对消息进行签名”。 在“证书”列表中，选择现有的[来宾合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)来验证消息的签名。 如果没有该证书，可以创建一个。
+3. 如需对所有传入消息进行签名，请选择“应对消息进行签名”。**** 在“证书”列表中，选择现有的[来宾合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)来验证消息的签名。**** 如果没有该证书，可以创建一个。
 
-4.    如果要对所有传入消息进行加密，请选择“应对消息进行加密”。 在“证书”列表中，选择现有的[宿主合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)来解密传入的消息。 如果没有该证书，可以创建一个。
+4.    如果要对所有传入消息进行加密，请选择“应对消息进行加密”。**** 在“证书”列表中，选择现有的[宿主合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)来解密传入的消息。**** 如果没有该证书，可以创建一个。
 
-5. 若要压缩消息，请选择“应对消息进行压缩”。
+5. 若要压缩消息，请选择“应对消息进行压缩”。****
 
-6. 如需为接收的消息发送同步消息处置通知 (MDN)，请选择“发送 MDN”。
+6. 如需为接收的消息发送同步消息处置通知 (MDN)，请选择“发送 MDN”。****
 
-7. 如需为接收的消息发送已签名 MDN，请选择“发送已签名的 MDN”。
+7. 如需为接收的消息发送已签名 MDN，请选择“发送已签名的 MDN”。****
 
-8. 如需为接收的消息发送异步 MDN，请选择“发送异步 MDN”。
+8. 如需为接收的消息发送异步 MDN，请选择“发送异步 MDN”。****
 
-9. 完成后，请务必选择“确定”保存设置。
+9. 完成后，请务必选择“确定”保存设置。****
 
 协议现已准备就绪，可以处理符合所选设置的传入消息。
 
@@ -120,29 +121,29 @@ ms.lasthandoff: 03/10/2017
 
 可以配置此协议如何识别和处理发送给合作伙伴的传出消息。
 
-1.    在“添加”下面，选择“发送设置”。
+1.    在“添加”下面，选择“发送设置”。****
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
     ![设置“发送设置”属性](./media/logic-apps-enterprise-integration-agreements/agreement-5.png)
 
-2. 若要将签名的消息发送到合作伙伴，请选择“启用消息签名”。 若要对消息签名，请在“MIC 算法”列表中，选择“宿主合作伙伴专用证书 MIC 算法”。 在“证书”列表中，选择现有的[宿主合作伙伴专用证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。
+2. 若要将签名的消息发送到合作伙伴，请选择“启用消息签名”。**** 若要对消息签名，请在“MIC 算法”列表中，选择“宿主合作伙伴专用证书 MIC 算法”。** 在“证书”列表中，选择现有的[宿主合作伙伴专用证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。****
 
-3. 若要将加密的消息发送到合作伙伴，请选择“启用消息加密”。 若要加密消息，请在“加密算法”列表中，选择*来宾合作伙伴公共证书算法*。
-在“证书”列表中，选择现有的[来宾合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。
+3. 若要将加密的消息发送到合作伙伴，请选择“启用消息加密”。**** 若要加密消息，请在“加密算法”列表中，选择*来宾合作伙伴公共证书算法*。****
+在“证书”列表中，选择现有的[来宾合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。****
 
-4. 若要压缩消息，请选择“启用消息压缩”。
+4. 若要压缩消息，请选择“启用消息压缩”。****
 
-5. 若要将 HTTP 内容类型标头展开为单个行，请选择“展开 HTTP 标头”。
+5. 若要将 HTTP 内容类型标头展开为单个行，请选择“展开 HTTP 标头”。****
 
-6. 若要接收所发送消息的同步 MDN，请选择“请求 MDN”。
+6. 若要接收所发送消息的同步 MDN，请选择“请求 MDN”。****
 
-7. 若要接收所发送消息的已签名 MDN，请选择“请求已签名的 MDN”。
+7. 若要接收所发送消息的已签名 MDN，请选择“请求已签名的 MDN”。****
 
-8. 若要接收所发送消息的异步 MDN，请选择“请求异步 MDN”。 如果选择此选项，请输入要将 MDN 发送到的 URL。
+8. 若要接收所发送消息的异步 MDN，请选择“请求异步 MDN”。**** 如果选择此选项，请输入要将 MDN 发送到的 URL。
 
-9. 若要启用回执的不可否认性，请选择“启用 NRR”。
+9. 若要启用回执的不可否认性，请选择“启用 NRR”。****
 
-10. 完成后，请务必选择“确定”保存设置。
+10. 完成后，请务必选择“确定”保存设置。****
 
 协议现已准备就绪，可以处理符合所选设置的传出消息。
 
@@ -164,13 +165,16 @@ ms.lasthandoff: 03/10/2017
 
 ## <a name="find-your-created-agreement"></a>查找创建的协议
 
-1.    设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。
+1.    设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。****
 
-    新添加的协议随即会出现在“协议”列表中。
+    新添加的协议随即会出现在“协议”列表中。****
 
-2.    还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，然后选择“协议”磁贴。 
+2.    还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，然后选择“协议”磁贴。**** 
 
     ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-agreements/agreement-6.png)
+
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/as2/)。 
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  

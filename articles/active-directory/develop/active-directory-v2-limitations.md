@@ -12,21 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/01/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 5d1ceabeeee8cef0170b928703488845f70656ef
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: bd24c8ba65277b224869351e261e365d699b56e3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>我是否应使用 v2.0 终结点？
-构建与 Azure Active Directory (Azure AD) 集成的应用程序时，需确定 v2.0 终结点和身份验证协议是否满足需求。 原始 Azure AD 终结点仍完全受到支持，并且在某些方面比 v2.0 的功能更丰富。 但是，v2.0 终结点为开发人员[带来了极大的好处](active-directory-v2-compare.md)。 这些好处可能会吸引你使用新的编程模型。
+构建与 Azure Active Directory 集成的应用程序时，需确定 v2.0 终结点和身份验证协议是否满足需求。 Azure Active Directory 的原始终结点仍完全受支持，并且在某些方面比 v2.0 的功能更丰富。 但是，v2.0 终结点为开发人员[带来了极大的好处](active-directory-v2-compare.md)。
 
-下面是我们对现在使用 v2.0 终结点的建议：
+下面是目前为开发人员提供的几点建议：
 
-* 如果要在应用程序中支持个人 Microsoft 帐户，请使用 v2.0 终结点。 执行操作前，请确保了解本文讨论的限制，尤其是那些适用于工作和学校帐户的限制。
-* 如果应用程序仅需要支持工作和学校帐户，请使用[原始 Azure AD 终结点](active-directory-developers-guide.md)。
+* 如果必须在应用程序中支持个人 Microsoft 帐户，请使用 v2.0 终结点。 执行操作前，请确保了解本文讨论的限制。
+* 如果应用程序只需支持 Microsoft 工作和学校帐户，则不要使用 v2.0 终结点。 请改为参阅我们的 [Azure AD 开发人员指南](active-directory-developers-guide.md)。
 
 随着时间推移，v2.0 终结点将会逐步移除此处列出的限制，因此你只需要使用 v2.0 终结点。 在此同时，本文旨在帮助你判断 v2.0 终结点是否对你适用。 我们将持续更新本文，以反映 v2.0 终结点当前的状态。 可返回查看，重新评估对 v2.0 功能的要求。
 
@@ -40,25 +43,17 @@ v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型�
 
 若要了解如何构建从应用程序 ID 相同的客户端接受令牌的 Web API，请参阅[入门](active-directory-appmodel-v2-overview.md#getting-started)部分中的 v2.0 终结点 Web API 示例。
 
-### <a name="web-api-on-behalf-of-flow"></a>Web API 代理流
-许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 v2.0 终结点的保护。 此情况常见于具有 Web API 后端的本机客户端，该后端反过来调用 Microsoft Online Services 的实例或另一个支持 Azure AD 的自定义构建的 Web API。
-
-可以使用 OAuth 2.0 JSON Web 令牌 (JWT) 持有者凭据授权（也称为“代理流”）创建此方案。 但是，v2.0 终结点目前不支持代理流。 若要查看此流在正式版 Azure AD 服务中的工作原理，请参阅 [GitHub 上的代理代码示例](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)。
-
 ## <a name="restrictions-on-app-registrations"></a>应用注册限制
 目前，对于每个想要与 v2.0 终结点集成的应用，必须在新的 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)中创建应用注册。 现有的 Azure AD 或 Microsoft 帐户应用与 v2.0 终结点不兼容。 在应用程序注册门户以外的任何门户中注册的应用均与 v2.0 终结点不兼容。 未来，我们计划提供一种方法，将现有应用程序用作 v2.0 应用。 但是目前没有使现有应用配合 v2.0 终结点使用的迁移路径。
 
-在应用注册门户中注册的应用将无法配合原有 Azure AD 身份验证终结点使用。 但是，可以使用在应用程序注册门户中创建的应用，以成功与 Microsoft 帐户身份验证终结点 `https://login.live.com` 集成。
-
 此外，在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)中创建的应用注册具有以下注意事项：
 
-* 不支持**主页**属性（也称为*登录 URL*）。 在没有主页的情况下，这些应用程序不会在 Office MyApps 面板中出现。
-* 当前每个应用程序 ID 只允许有两个应用密码。
-* 应用注册只能由一个开发人员帐户查看和管理。 不能在多个开发人员之间共享。
+* 每个应用程序 ID 只允许有两个应用密码。
+* 对于用户使用个人 Microsoft 帐户注册的应用注册，只能使用一个开发人员帐户进行查看和管理。 不能在多个开发人员之间共享。  如果希望多名开发人员共享应用注册，可以通过使用 Azure AD 帐户登录注册门户来创建应用程序。
 * 允许的重定向 URI 格式存在一些限制。 有关重定向 URI 的详细信息，请参阅下一节。
 
 ## <a name="restrictions-on-redirect-uris"></a>重定向 URI 的限制
-在应用程序注册门户中注册的应用目前限制为一组有限的重定向 URI 值。 Web 应用和服务的重定向 URI 必须以方案 `https` 开头，并且所有重定向 URI 值必须共享一个 DNS 域。 例如，无法注册具有以下定向 URI 的 Web 应用：
+在应用程序注册门户中注册的应用目前限制为一组有限的重定向 URI 值。 Web 应用和服务的重定向 URI 必须以方案 `https` 开头，并且所有重定向 URI 值必须共享一个 DNS 域。 例如，不能注册具有以下重定向 URI 的 Web 应用：
 
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`
@@ -103,38 +98,21 @@ v2.0 终结点目前支持登录所有已在应用程序注册门户中注册的
 当前，对 v2.0 终结点的库支持有所限制。 如果想要在生产应用程序中使用 v2.0 终结点，可使用以下选项：
 
 * 如果要构建 Web 应用程序，可以放心使用 Microsoft 正式版服务器端中间件来执行登录和令牌验证。 其中包括适用于 ASP.NET 的 OWIN Open ID Connect 中间件和 Node.js Passport 插件。 有关使用 Microsoft 中间件的代码示例，请参阅[入门](active-directory-appmodel-v2-overview.md#getting-started)一节。
-* 对于其他平台以及本机与移动应用程序，可以通过直接在应用程序代码中发送和接收协议消息来与 v2.0 终结点进行集成。 v2.0 OpenID Connect 和 OAuth 协议[有明确的说明文档](active-directory-v2-protocols.md)，可帮助执行此类集成。
+* 如果要构建桌面或移动应用程序，可以使用一个预览版 Microsoft 身份验证库 (MSAL)。  这些库当前是支持生产的预览版，因此可在生产应用程序中放心使用。 有关预览版和可用库的术语的详细信息，请阅读[身份验证库参考](active-directory-v2-libraries.md)中的内容。
+* 对于 Microsoft 库不支持的平台，可以通过直接在应用程序代码中发送和接收协议消息来与 v2.0 终结点进行集成。 v2.0 OpenID Connect 和 OAuth 协议[有明确的说明文档](active-directory-v2-protocols.md)，可帮助执行此类集成。
 * 最后，可以使用开源 Open ID Connect 和 OAuth 库来与 v2.0 终结点集成。 v2.0 协议应与许多开源协议库兼容，不需要进行重大更改。 这些类型的库的可用性根据语言和平台而有所差异。 [Open ID Connect](http://openid.net/connect/) 和 [OAuth 2.0](http://oauth.net/2/) 网站将维护一份热门实现列表。 有关详细信息和经过 v2.0 终结点检验的开放源代码客户端库和示例列表，请参阅 [Azure Active Directory v2.0 身份验证库](active-directory-v2-libraries.md)。
 
-我们发布了仅用于 .NET 的 [Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) 的初始预览版。 欢迎在 .NET 客户端和服务器应用程序中试用此库，但作为预览库，它不具备正式版 (GA) 质量支持。
-
 ## <a name="restrictions-on-protocols"></a>协议限制
-v2.0 终结点仅支持 Open ID Connect 和 OAuth 2.0。 但是，并非每个协议的所有特性与功能都已合并到 v2.0 终结点中。
+v2.0 终结点不支持 SAML 或 WS 联合身份验证；它仅支持 Open ID Connect 和 OAuth 2.0。  并非每个 OAuth 协议的所有特性与功能都已合并到 v2.0 终结点中。 以下协议的特性和功能目前在 v2.0 终结点中不可用：
 
-这些典型协议的特性和功能目前在 v2.0 终结点中不可用：
-
-* v2.0 终结点不提供允许应用结束用户会话的 OpenID Connect `end_session_endpoint` 参数。
-* v2.0 终结点签发的 ID 令牌只包含用户的成对标识符。 这意味着两个不同的应用程序针对同一用户将收到不同 ID。 请注意，通过查询 Microsoft Graph `/me` 终结点，能够获得用户可跨应用程序使用的相关 ID。
 * 即使从用户获取了查看其电子邮件的权限，v2.0 终结点颁发的 ID 令牌也不包含该用户的 `email` 声明。
 * 未在 v2.0 终结点上实现 OpenID Connect UserInfo 终结点。 但是，在该终结点上可能收到的所有用户配置文件数据都可从 Microsoft Graph `/me` 终结点获取。
 * v2.0 终结点不支持在 ID 令牌中发布角色或组声明。
+* v2.0 终结点不支持 [OAuth 2.0 资源所有者密码凭据授予](https://tools.ietf.org/html/rfc6749#section-4.3)。
+
+此外，v2.0 终结点不支持任何形式的 SAML 或 WS 联合身份验证协议。
 
 若要进一步了解 v2.0 终结点支持的协议功能范围，请阅读 [OpenID Connect 和 OAuth 2.0 协议参考](active-directory-v2-protocols.md)。
 
 ## <a name="restrictions-for-work-and-school-accounts"></a>工作和学校帐户限制
-v2.0 终结点尚不支持某些特定于 Microsoft 企业用户的功能。 有关详细信息，请阅读后面各节。
-
-### <a name="device-based-conditional-access-native-and-mobile-apps-and-microsoft-graph"></a>基于设备的条件访问、本机和移动应用，以及 Microsoft Graph
-v2.0 终结点尚不支持针对移动和本机应用程序的设备身份验证，如在 iOS 或 Android 上运行的本机应用。 对某些组织而言，这可能会阻止本机应用程序调用 Microsoft Graph。 如果管理员在应用程序上设置了基于设备的条件性访问策略，则需要设备身份验证。 对于 v2.0 终结点，基于设备的条件访问最可能的情形是管理员要对 Microsoft Graph，例如 Outlook API 中的一个资源设置策略。 如果管理员设置了此策略，并且本机应用程序向 Microsoft Graph 请求令牌，则请求最终将失败，因为尚不支持设备身份验证。 但是，如果配置了基于设备的策略，则支持向 Microsoft Graph 请求令牌的 Web 应用程序。 在 Web 应用场景中，通过用户的 Web 浏览器来执行设备身份验证。
-
-作为开发人员，很可能无法控制何时对 Microsoft Graph 资源设置策略。 甚至可能不知道是何时进行的设置。 如果要为工作和学校用户生成应用程序，那么在 v2.0 终结点支持设备身份验证之前，都应使用[原始 Azure AD 终结点](active-directory-developers-guide.md)。 可以了解更多 [Azure AD 中基于设备的条件访问](../active-directory-conditional-access.md#device-based-conditional-access)的相关信息。
-
-### <a name="windows-integrated-authentication-for-federated-tenants"></a>针对联合租户的 Windows 集成身份验证
-如果已在 Windows 应用程序中使用 Active Directory 身份验证库 (ADAL)（通过原始 Azure AD 终结点），则可能已利用所谓的安全断言标记语言 (SAML) 断言授予。 通过此授予，联合 Azure AD 租户的用户可以使用其本地 Active Directory 实例以无提示方式进行身份验证，而无需输入凭据。 v2.0 终结点当前不支持 SAML 断言授予。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+如果已在 Windows 应用程序中使用了 Active Directory 身份验证库 (ADAL)，则可能已利用了使用安全断言标记语言 (SAML) 断言授予的 Windows 集成身份验证。 通过此授予，联合 Azure AD 租户的用户可以使用其本地 Active Directory 实例以无提示方式进行身份验证，而无需输入凭据。 v2.0 终结点当前不支持 SAML 断言授予。

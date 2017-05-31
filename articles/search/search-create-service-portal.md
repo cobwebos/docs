@@ -11,12 +11,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 03/05/2017
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 379bc2e80a89b6d46db3bd536737583d51029328
-ms.lasthandoff: 03/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 58f4eab190e40e16ed261c165ffdfc8155eeb434
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -48,7 +49,7 @@ ms.lasthandoff: 03/06/2017
    * 不能使用连续的短划线（“--”）
 
 ## <a name="select-a-subscription"></a>选择一个订阅
-如果有多个订阅，则选择一个同样具有数据或文件存储服务的订阅。 Azure 搜索可以自动检测 Azure 表和 Blob 存储、SQL 数据库和 DocumentDB，以通过索引器编制索引，但仅限于同一订阅中的服务。
+如果有多个订阅，则选择一个同样具有数据或文件存储服务的订阅。 Azure 搜索可以自动检测 Azure 表和 Blob 存储、SQL 数据库和 Azure Cosmos DB，以通过索引器编制索引，但仅限于同一订阅中的服务。
 
 ## <a name="select-a-resource-group"></a>选择资源组
 资源组是结合使用的 Azure 服务和资源的集合。 例如，如果使用 Azure 搜索编制 SQL 数据库索引，则这两个服务应属于同一资源组。
@@ -71,7 +72,7 @@ ms.lasthandoff: 03/06/2017
 ![](./media/search-create-service-portal/new-service2.png)
 
 ## <a name="scale-your-service"></a>扩展你的服务
-创建服务可能需要几分钟（至少&15; 分钟，具体取决于层）。 预配服务后，你可以对其进行扩展以满足你的需求。 由于为 Azure 搜索服务选择标准层，因此可采用两个维度扩展服务：副本和分区。 如果你已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
+创建服务可能需要几分钟（至少 15 分钟，具体取决于层）。 预配服务后，你可以对其进行扩展以满足你的需求。 由于为 Azure 搜索服务选择标准层，因此可采用两个维度扩展服务：副本和分区。 如果你已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
 
 ***分区***允许你的服务存储和搜索更多文档。
 

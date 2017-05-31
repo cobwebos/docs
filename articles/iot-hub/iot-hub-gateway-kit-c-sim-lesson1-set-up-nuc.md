@@ -17,10 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
-ms.openlocfilehash: 399ac2d571b65503da7d9cc47d2dec9aa5e4c3d7
-ms.lasthandoff: 01/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b87974be9570f7d03fe84ae0a1d1fa7e346ff189
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 01/25/2017
 ## <a name="what-you-will-do"></a>执行的操作
 
 - 将 Intel NUC 设置为 IoT 网关。
-- 在 Intel NUC 上安装 Azure IoT 网关 SDK 包。
+- 在 Intel NUC 上安装 Azure IoT Edge 包。
 - 在 Intel NUC 上运行“hello_world”示例应用程序，验证网关功能。
 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-sim-troubleshooting.md)上查找解决方案。
 
@@ -86,9 +87,9 @@ ms.lasthandoff: 01/25/2017
    通过主计算机在 Intel NUC 上执行操作更高效。 需要 IP 地址、用户名和密码才能通过 SSH 客户端连接 NUC。 下面是在 macOS 上使用 SSH 客户端的示例。
    ![在 macOS 上运行的 SSH 客户端](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)
 
-## <a name="install-the-azure-iot-gateway-sdk-package"></a>安装 Azure IoT 网关 SDK 包
+## <a name="install-the-azure-iot-edge-package"></a>安装 Azure IoT Edge 包
 
-Azure IoT 网关 SDK 包中包含 SDK 及其依赖项的预编译二进制文件。 这些二进制文件包括 Azure IoT 网关 SDK、Azure IoT SDK 和相应的工具。 该包还包含用于验证网关功能的“hello_world”示例应用程序。 SDK 是网关的核心部分。 若要安装包，请执行以下步骤：
+Azure IoT Edge 包中包含 SDK 及其依赖项的预编译二进制文件。 这些二进制文件包括 Azure IoT Edge、Azure IoT SDK 和相应的工具。 该包还包含用于验证网关功能的“hello_world”示例应用程序。 IoT Edge 是网关的核心部分。 若要安装包，请执行以下步骤：
 
 1. 在终端窗口中运行以下命令，添加 IoT 云存储库：
 
@@ -115,9 +116,9 @@ Azure IoT 网关 SDK 包中包含 SDK 及其依赖项的预编译二进制文件
 
    安装此包后，Intel NUC 应可用作网关。
 
-## <a name="run-the-azure-iot-gateway-sdk-helloworld-sample-application"></a>运行 Azure IoT 网关 SDK“hello_world”示例应用程序
+## <a name="run-the-azure-iot-edge-helloworld-sample-application"></a>运行 Azure IoT Edge“hello_world”示例应用程序
 
-转到 `azureiotgatewaysdk/samples` 并运行“hello_world”示例应用程序。 此示例应用程序通过 `hello_world.json` 文件创建网关，并使用 Azure IoT 网关 SDK 体系结构的基本组件每隔 5 秒将“hello world”消息记录到文件。
+转到 `azureiotgatewaysdk/samples` 并运行“hello_world”示例应用程序。 此示例应用程序通过 `hello_world.json` 文件创建网关，并使用 Azure IoT Edge 体系结构的基本组件每隔 5 秒将“hello world”消息记录到文件。
 
 运行以下命令，运行“hello_world”示例应用程序：
 

@@ -1,60 +1,61 @@
 ---
-title: "创建 DocumentDB 数据库和集合 | Microsoft Docs"
-description: "了解如何使用在线服务门户为 Azure DocumentDB（基于云的文档数据库）创建 NoSQL 数据库和 JSON 文档集合。 立即获取免费试用版。"
-services: documentdb
+title: "创建 Azure Cosmos DB 数据库和集合 | Microsoft Docs"
+description: "了解如何使用 Azure Cosmos DB（一个基于云的文档数据库）的在线服务门户创建数据库和容器。 立即获取免费试用版。"
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: b81ad2f6-df7f-4c6d-8ca9-f8a9982d647e
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2017
+ms.date: 05/10/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 97b634b10f75dd10c9cf4b61a5b9674f7ee73e00
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 596a4ce9d315e7c6c41a43860469c339c7e96ac5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="how-to-create-a-documentdb-collection-and-database-using-the-azure-portal"></a>如何使用 Azure 门户创建 DocumentDB 集合和数据库
-若要使用 Microsoft Azure DocumentDB，则必须拥有 [DocumentDB 帐户](documentdb-create-account.md)、数据库、集合和文档。 本主题说明如何在 Azure 门户中创建 DocumentDB 集合。
+# <a name="how-to-create-an-azure-cosmos-db-collection-and-database-using-the-azure-portal"></a>如何使用 Azure 门户创建 Azure Cosmos DB 集合和数据库
+若要使用 Microsoft Azure Cosmos DB，必须拥有 [Azure Cosmos DB 帐户](documentdb-create-account.md)、数据库、集合和文档。 本主题说明如何在 Azure 门户中创建 Azure Cosmos DB 集合。
 
-不确定集合是什么？ 请参阅[什么是 DocumentDB 集合？](#what-is-a-documentdb-collection)。
+不确定集合是什么？ 请参阅[什么是 Azure Cosmos DB 集合？](#what-is-a-documentdb-collection)。
 
 可采用两种方式在门户中创建集合：通过使用“添加集合”按钮，或使用[数据资源管理器（预览版）](#data-explorer)。
 
 ## <a name="create-a-colletion-using-add-collection-button"></a>使用“添加集合”按钮创建集合
 
-1. 在 [Azure 门户](https://portal.azure.com/)的跳转栏中，单击“DocumentDB (NoSQL)”，然后在“DocumentDB (NoSQL)”边栏选项卡中，选择要添加集合的帐户。 如果没有任何列出的帐户，则需要[创建一个 DocumentDB 帐户](documentdb-create-account.md)。
+1. 在 [Azure 门户](https://portal.azure.com/)的跳转栏中，单击“Azure Cosmos DB”，然后在“Azure Cosmos DB”边栏选项卡中，选择要添加集合的帐户。**** 如果没有任何列出的帐户，则需要[创建一个 DocumentDB 帐户](documentdb-create-account.md)。
 
-   ![屏幕截图：突出显示跳转栏中的“DocumentDB 帐户”、“DocumentDB 帐户”边栏选项卡中的帐户以及“DocumentDB 帐户”边栏选项卡上的“数据库”可重用功能区中的数据库](./media/documentdb-create-collection/docdb-database-creation-1-2.png)
+   ![屏幕截图：突出显示跳转栏中的“Azure Cosmos DB 帐户”、“Azure Cosmos DB 帐户”边栏选项卡中的帐户以及“Azure Cosmos DB 帐户”边栏选项卡上的“数据库”可重用功能区中的数据库](./media/documentdb-create-collection/docdb-database-creation-1-2.png)
 
-   如果跳转栏中未显示“DocumentDB (NoSQL)”，请单击“更多服务”，再单击“DocumentDB (NoSQL)”。 如果没有任何列出的帐户，则需要[创建一个 DocumentDB 帐户](documentdb-create-account.md)。
-2. 在所选帐户的“DocumentDB 帐户”边栏选项卡中，单击“添加集合”。
+   如果跳转栏中未显示“Azure Cosmos DB”，请单击“更多服务”，再单击“Azure Cosmos DB”。**** 如果没有任何列出的帐户，则需要[创建一个 DocumentDB 帐户](documentdb-create-account.md)。
+2. 在所选帐户的“Azure Cosmos DB 帐户”边栏选项卡中，单击“添加集合”。****
 
-    ![屏幕截图：突出显示跳转栏中的“DocumentDB 帐户”、“DocumentDB 帐户”边栏选项卡中的帐户以及“DocumentDB 帐户”边栏选项卡上的“数据库”可重用功能区中的数据库](./media/documentdb-create-collection/docdb-database-creation-3.png)
+    ![屏幕截图：突出显示跳转栏中的“Azure Cosmos DB 帐户”、“Azure Cosmos DB 帐户”边栏选项卡中的帐户以及“Azure Cosmos DB 帐户”边栏选项卡上的“数据库”可重用功能区中的数据库](./media/documentdb-create-collection/docdb-database-creation-3.png)
 3. 在“添加集合”边栏选项卡的“集合 ID”框中，输入新集合的 ID。 集合名称的长度必须为 1 到 255 个字符，且不能包含 `/ \ # ?` 或尾随空格。 对名称进行验证后，ID 框中会出现一个绿色的复选标记。
 
-    ![屏幕截图：突出显示“数据库”边栏选项卡上的“添加集合”按钮、“添加集合”边栏选项卡上的设置以及“确定”按钮 — 用于 DocumentDB 的 Azure 门户 — 用于 NoSQL JSON 数据库的云端数据库创建程序](./media/documentdb-create-collection/docdb-collection-creation-5-8.png)
-4. “存储容量”默认设置为“250 GB”以处理分区集合。
+    ![屏幕截图：突出显示“数据库”边栏选项卡上的“添加集合”按钮、“添加集合”边栏选项卡上的设置以及“确定”按钮 - 用于 Azure Cosmos DB 的 Azure 门户 - 用于 NoSQL JSON 数据库的云端数据库创建程序](./media/documentdb-create-collection/docdb-collection-creation-5-8.png)
+4. “存储容量”默认设置为“无限制”以处理分区集合。****
 
     如果需要[单分区集合](documentdb-partition-data.md#single-partition-and-partitioned-collections)，且吞吐量级别为 400-10,000 请求单位/秒（RU/秒），则将存储容量设置为“10 GB”。 一个 RU 相当于读取 1KB 文档的吞吐量。 有关请求单位的详细信息，请参阅[请求单位](documentdb-request-units.md)。
 
-    如果需要可缩放的[已分区集合](documentdb-partition-data.md#single-partition-and-partitioned-collections)以处理多个分区不限容量的存储，且吞吐量级别最低可为 2,500 RU/秒，则将存储容量设置为“250 GB”。
+    如果需要可缩放以处理多个分区间不限量存储空间的[分区集合](documentdb-partition-data.md#single-partition-and-partitioned-collections)，请将存储容量设置为“无限制”，这时可拥有最低 2,500 RU/s 的吞吐量级别。****
 
-    如需设置除 10 GB 或 250 GB 以外的容量，则将存储容量设置为“自定义”。 DocumentDB 规模几近无限，因此请在支持请求中包含请求的存储大小和吞吐量值。
+    如需设置除 10 GB 或 250 GB 以外的容量，则将存储容量设置为“自定义”。 Azure Cosmos DB 规模几近无限，因此请在支持请求中包含请求的存储空间大小和吞吐量值。
 
-6. 在“分区键”框中，输入集合的分区键。 此项对分区集合必需，对单分区集合可选。 选择正确的分区键对于创建高性能集合而言很重要。 有关选择分区键的详细信息，请参阅[设计分区](documentdb-partition-data.md#designing-for-partitioning)。
+6. 在“分区键”框中，输入集合的分区键。 此项对分区集合必需，对单分区集合可选。 选择正确的分区键对于创建高性能集合而言很重要。 有关选择分区键的详细信息，请参阅[设计分区](../cosmos-db/partition-data.md#designing-for-partitioning)。
 7. 在“数据库”边栏选项卡中，创建新数据库或使用现有数据库。 数据库名称的长度必须为 1 到 255 个字符，不能包含 `/ \ # ?` 或尾随空格。 若要验证名称，请单击文本框外部。 验证名称后，框中会出现一个绿色的复选标记。
 8. 单击屏幕底部的“确定”，以创建新的集合。
 9. 新集合现在会出现在“概述”边栏选项卡上的“集合”可重用功能区中。
 
-    ![屏幕截图：数据库边栏选项卡中的新集合 — 用于 DocumentDB 的 Azure 门户 — 用于 NoSQL JSON 数据库的云端数据库创建程序](./media/documentdb-create-collection/docdb-collection-creation-9.png)
+    ![屏幕截图：“数据库”边栏选项卡中的新集合 - 用于 Azure Cosmos DB 的 Azure 门户 - 用于 NoSQL JSON 数据库的云端数据库创建程序](./media/documentdb-create-collection/docdb-collection-creation-9.png)
 10. **可选：**若要在门户中修改集合的吞吐量，请在“资源”菜单上单击“缩放”。
 
     ![资源菜单的屏幕截图，其中已选择“缩放”](./media/documentdb-create-collection/docdb-collection-creation-scale.png)
@@ -67,14 +68,14 @@ ms.lasthandoff: 04/20/2017
  ![显示门户中“新建集合”按钮的屏幕截图](./media/documentdb-create-collection/azure-documentdb-data-explorer.png)
 
 
-## <a name="what-is-a-documentdb-collection"></a>什么是 DocumentDB 集合？
+## <a name="what-is-an-azure-cosmos-db-collection"></a>什么是 Azure Cosmos DB 集合？
 集合是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。 集合是一个计费实体，其中[成本](documentdb-performance-levels.md)由集合的预配吞吐量确定。 集合可以跨一个或多个分区/服务器，并且能伸缩以处理几乎无限制增长的存储或吞吐量。
 
-DocumentDB 自动将集合分区到一个或多个物理服务器。 创建集合时，你可以指定预配吞吐量（根据每秒的请求单位数）和分区键属性。 DocumentDB 会使用此属性的值将文档分布于分区和路由请求（例如查询）之间。 分区键值还可作为存储过程和触发器的事务边界。 每个集合都有该集合特定的保留吞吐量，且不会与相同帐户中的其他集合共享。 因此，你可以在存储和吞吐量方面扩大你的应用程序。
+Azure Cosmos DB 自动将集合分区到一个或多个物理服务器。 创建集合时，你可以指定预配吞吐量（根据每秒的请求单位数）和分区键属性。 Azure Cosmos DB 会使用此属性的值在分区间分步文档以及路由查询等请求。 分区键值还可作为存储过程和触发器的事务边界。 每个集合都有该集合特定的保留吞吐量，且不会与相同帐户中的其他集合共享。 因此，你可以在存储和吞吐量方面扩大你的应用程序。
 
-集合与关系数据库中的表不同。 集合不强制使用架构；事实上，DocumentDB 不强制使用任何架构，它是无架构的数据库。 因此，你可以在同一集合中存储具有不同架构的不同类型的文档。 你可以选择使用集合来存储单一类型的对象，就像你对表所做的一样。 最佳模型仅取决于数据一起出现在查询和事务中的方式。
+集合与关系数据库中的表不同。 集合不强制使用架构；事实上，Azure Cosmos DB 不强制使用任何架构，它是无架构的数据库。 因此，你可以在同一集合中存储具有不同架构的不同类型的文档。 你可以选择使用集合来存储单一类型的对象，就像你对表所做的一样。 最佳模型仅取决于数据一起出现在查询和事务中的方式。
 
-## <a name="other-ways-to-create-a-documentdb-collection"></a>创建 DocumentDB 集合的其他方法
+## <a name="other-ways-to-create-an-azure-cosmos-db-collection"></a>创建 Azure Cosmos DB 集合的其他方法
 集合不一定要使用门户来创建，也可使用 [DocumentDB SDK](documentdb-sdk-dotnet.md) 和 REST API 来创建集合。
 
 * 有关 C# 代码示例，请参阅 [C# 集合示例](documentdb-dotnet-samples.md#collection-examples)。

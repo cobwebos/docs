@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 04/05/2017
+ms.date: 05/01/2017
 ms.author: betorres
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: ab273c56fe9818ea65979376ec829032f67f04ed
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 16cb5a1e16a59200f0e731622398efcf24c3f777
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -62,11 +63,11 @@ Azure 搜索针对三种不同指标收集数据：
 >
 
 ### <a name="using-the-rest-api"></a>使用 REST API
-Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。  如果要使用[索引器](https://msdn.microsoft.com/library/azure/dn946891.aspx)从 Azure SQL 数据库或 DocumentDB 加载索引，可使用一个额外的 API 获取所需数字。
+Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。  如果要使用[索引器](https://msdn.microsoft.com/library/azure/dn946891.aspx)从 Azure SQL 数据库或 Azure Cosmos DB 加载索引，可使用一个额外的 API 获取所需数字。
 
-* [获取索引统计信息](https://msdn.microsoft.com/library/azure/dn798942.aspx)
-* [计数文档](https://msdn.microsoft.com/library/azure/dn798924.aspx)
-* [获取索引器状态](https://msdn.microsoft.com/library/azure/dn946884.aspx)
+* [获取索引统计信息](/rest/api/searchservice/get-index-statistics)
+* [计数文档](/rest/api/searchservice/count-documents)
+* [获取索引器状态](/rest/api/searchservice/get-indexer-status)
 
 ## <a name="how-to-export-logs-and-metrics"></a>如何导出日志和指标
 

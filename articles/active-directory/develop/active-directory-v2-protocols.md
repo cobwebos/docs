@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
-ms.openlocfilehash: 02bf4191e60bfe7a49a37eed10f7571e08502150
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b665f45c66b35ab93e19ed1b54a6e215c93dcf57
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -26,8 +29,8 @@ v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 
 
 > [!NOTE]
 > v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。  若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
-> 
-> 
+>
+>
 
 ## <a name="the-basics"></a>基础知识
 几乎在所有的 OAuth 和 OpenID Connect 流中，都有四个参与交换的对象：
@@ -79,12 +82,5 @@ OAuth 2.0 和 OpenID Connect 的 v2.0 实现广泛使用了持有者令牌，包
 * [使用 OpenID Connect 构建 Web 应用](active-directory-v2-protocols-oidc.md)
 * [使用 OAuth 2.0 隐式流构建单页应用](active-directory-v2-protocols-implicit.md)
 * [使用 OAuth 2.0 客户端凭据流构建守护程序或服务器端进程](active-directory-v2-protocols-oauth-client-creds.md)
-* 使用 OAuth 2.0 代理流在 Web API 中获取令牌（敬请期待）
-
-<!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* [使用 OAuth 2.0 代理流在 Web API 中获取令牌](active-directory-v2-protocols-oauth-on-behalf-of.md)
 

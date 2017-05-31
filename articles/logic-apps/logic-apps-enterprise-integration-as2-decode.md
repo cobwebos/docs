@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
-ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: da3fc08cc5c506dba02ccda16940a28a4600a288
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b92cfff10dc0f10ebd4554d1614a23fb7dc46a37
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/10/2017
 
 ## <a name="before-you-start"></a>开始之前
 
-下面是需要具备的项：
+需要具有以下各项：
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
 * 已定义的与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 AS2 消息连接器。
@@ -53,9 +54,9 @@ ms.lasthandoff: 03/10/2017
     | 属性 | 详细信息 |
     | --- | --- |
     | 连接名称 * |为连接输入任何名称。 |
-    | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用在同一 Azure 位置。 |
+    | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-5.    完成后，连接详细信息应如此示例所示。 若要完成创建连接，请选择“创建”。
+5.    完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
 
     ![集成连接详细信息](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage3.png)
 
@@ -86,6 +87,9 @@ ms.lasthandoff: 03/10/2017
 ## <a name="try-this-sample"></a>尝试此示例
 
 若要尝试部署完全正常运行的逻辑应用和示例 AS2 方案，请参阅 [AS2 逻辑应用模板和方案](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)。
+
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/as2/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md) 

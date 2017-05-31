@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/17/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: e90efe810084939280b392c470e14e76d35aff01
-ms.openlocfilehash: e628143db9ceba5e159022d2eefe3e6dd9f4bf22
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0753be48514bd2087b52fc85d27754c28dbcd58b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -46,7 +47,7 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 
 有两种类型的服务：
 
-* **无状态：**当服务的持久状态存储在 Azure 存储空间、Azure SQL 数据库、Azure DocumentDB 等外部存储服务中时，请使用无状态服务。 当服务根本没有永久性存储时，请使用无状态服务。 以计算器服务为例，首先要将值传递给该服务，然后服务使用这些值执行计算并返回结果。
+* **无状态：**服务的持久状态存储在 Azure 存储、Azure SQL 数据库、Azure Cosmos DB 等外部存储服务中时，请使用无状态服务。 当服务根本没有永久性存储时，请使用无状态服务。 以计算器服务为例，首先要将值传递给该服务，然后服务使用这些值执行计算并返回结果。
 * **有状态：**如果你要让 Service Fabric 通过其 Reliable Collections 或 Reliable Actors 编程模型管理服务状态，请使用有状态服务。 创建命名服务时，请指定您希望将状态分布于其中的分区的数量（实现可伸缩性）。 此外，指定跨节点复制状态的次数（实现可靠性）。 每个命名服务都有一个主副本和多个辅助副本。 通过写入主要副本修改命名服务的状态。 然后，Service Fabric 会将此状态复制到所有次要副本以使状态保持同步。 当主要副本失败时，Service Fabric 会自动检测到此状态，并将现有的次要副本升级为主要副本。 然后，Service Fabric 会创建新的次要副本。  
 
 **服务包**：一个磁盘目录，其中包含服务类型的 `ServiceManifest.xml` 文件。 此文件引用服务类型的代码、静态数据和配置包。 应用程序类型的 `ApplicationManifest.xml` 文件引用服务包目录中的文件。 例如，服务包可能引用构成数据库服务的代码、静态数据和配置包。

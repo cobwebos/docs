@@ -14,17 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 02/15/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: 0841744b806f3dba38dddee21fb7fe881e07134f
-ms.openlocfilehash: 51c9d9afb6c2ed460abd4c47a6afbc404b97a85e
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 54b8e16504e1170058dd021f7f7e2fba7b99bba7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 ---
 
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>使用索引器将 Azure SQL 数据库连接到 Azure 搜索
 Azure 搜索服务是一项托管的云搜索服务，可以轻松地提供强大的搜索体验。 需要先使用你的数据填充 Azure 搜索索引，然后才能进行搜索。 如果数据驻留在 Azure SQL 数据库中，新 **Azure SQL 数据库的 Azure 搜索索引器**（或简称 **Azure SQL 索引器**）可自动执行索引过程。 这意味着你要编写的代码和关注的基础结构都较少。
 
-本文介绍了使用索引器的机制，但还介绍了仅适用于 Azure SQL 数据库的功能（如集成的更改跟踪）。 Azure 搜索还支持其他数据源，如 Azure DocumentDB、Blob 存储和表存储。 如果想要查看对其他数据源的支持，请在 [Azure 搜索反馈论坛](https://feedback.azure.com/forums/263029-azure-search/)上提供你的反馈。
+本文介绍了使用索引器的机制，但还介绍了仅适用于 Azure SQL 数据库的功能（如集成的更改跟踪）。 Azure 搜索还支持其他数据源，如 Azure Cosmos DB、Blob 存储和表存储。 如果想要查看对其他数据源的支持，请在 [Azure 搜索反馈论坛](https://feedback.azure.com/forums/263029-azure-search/)上提供你的反馈。
 
 ## <a name="indexers-and-data-sources"></a>索引器和数据源
 可使用以下内容设置和配置 Azure SQL 索引器：

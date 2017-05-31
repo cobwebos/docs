@@ -8,13 +8,13 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 04/21/2017
+ms.date: 05/10/2017
 ms.author: bruceper
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 0a319f25149c41fcdde0722ce232b3e229b95d0d
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: b046e95e2167009727f6ea8f3dd237619c61434f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,6 +29,15 @@ ms.lasthandoff: 04/28/2017
 
 有关 Azure 密钥保管库的更多常规信息，请参阅[什么是密钥保管库](key-vault-whatis.md)。
 
+## <a name="public-preview---may-10-2017"></a>公共预览版 - 2017 年 5 月 10 日
+
+>[!NOTE]
+>在此预览版 Azure Key Vault 中，只有“软删除”功能处于预览状态。**** Azure Key Vault 作为一个整体，是完整的生产服务。
+
+此预览版包括全新软删除功能、Key Vault 和 Key Vault 对象的可恢复删除，以及更新的开发人员界面；[.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/) 和 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/)。 
+
+有关全新软删除功能的详细信息，请参阅 [Azure Key Vault 软删除概述](key-vault-ovw-soft-delete.md)。
+
 ## <a name="videos"></a>视频
 
 此视频介绍如何创建你自己的密钥保管库以及如何使用从“Hello Key Vault”示例应用程序使用它。
@@ -42,7 +51,7 @@ ms.lasthandoff: 04/28/2017
 
 ## <a name="creating-and-managing-key-vaults"></a>创建和管理密钥保管库
 
-在代码中使用 Azure 密钥保管库之前，可以通过 REST、资源管理器模板、PowerShell 或 CLI 创建和管理保管库，如以下文章中所述：
+在代码中使用 Azure 密钥保管库之前，可以通过 REST、Resource Manager 模板、PowerShell 或 CLI 创建和管理保管库，如以下文章中所述：
 
 - [使用 REST 创建和管理密钥保管库](https://docs.microsoft.com/rest/api/keyvault/)
 - [使用 PowerShell 创建和管理密钥保管库](key-vault-get-started.md)
@@ -108,6 +117,11 @@ ms.lasthandoff: 04/28/2017
 - [Azure 磁盘加密](../security/azure-security-disk-encryption.md)利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) 提供了对帐户中存储的数据进行加密的选项。 对于密钥管理，Data Lake Store 提供两种用于管理主加密密钥 (MEK) 的模式，这两种模式可用于解密在 Data Lake Store 中存储的任何数据。 可以让 Data Lake Store 代为管理 MEK，或选择使用 Azure 密钥保管库帐户保留 MEK 所有权。 创建 Data Lake Store 帐户时可以指定密钥管理模式。 
 - [Azure 信息保护](/information-protection/plan-design/plan-implement-tenant-key)允许你管理自己的租户密钥。 例如，不是由 Microsoft 管理你的租户密钥（默认设置），你可以管理自己的租户密钥，以遵守适用于你的组织的具体规定。 管理自己的租户密钥也称为自带密钥（简称 BYOK）。
+
+## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
+
+- [Key Vault 安全体系](key-vault-ovw-security-worlds.md)
+- [Key Vault 软删除](key-vault-ovw-soft-delete.md)
 
 ## <a name="social"></a>社交
 

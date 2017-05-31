@@ -1,14 +1,15 @@
 ---
 redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-change-feed-hl7-fhir-logic-apps
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 1b5ec3cb1c2aba86570c6f1753d9142c0d0349ce
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 58c0ea0bd8bda994c8314d2866304cb3ab367bfd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="notifications-for-new-or-changed-documentdb-resources-using-logic-apps"></a>使用逻辑应用针对新增或已更改的 DocumentDB 资源发送通知
+# <a name="notifications-for-new-or-changed-azure-cosmos-db-resources-using-logic-apps"></a>使用逻辑应用针对新增或已更改的 Azure Cosmos DB 资源发送通知
 这篇文章的灵感来自我在某一个 Azure DocumentDB 社区论坛上看到的一个问题。 这个问题是 **DocumentDB 是否支持针对已修改的资源发送通知？**
 
 我已使用 BizTalk 服务器许多年，这是使用 [WCF LOB](https://msdn.microsoft.com/library/bb798128.aspx) 适配器时非常常见的案例。 因此，我决定试试看能否在 DocumentDB 中对新增和/或已修改的文档重现此功能。
@@ -18,7 +19,7 @@ ms.lasthandoff: 03/29/2017
 ## <a name="use-case"></a>使用案例
 下列案例是本文的使用案例。
 
-DocumentDB 是 Health Level Seven International (HL7) Fast Healthcare Interoperability Resources (FHIR) 文档的存储库。 假设你的 DocumentDB 数据库与你的 API 和逻辑应用一起构成 HL7 FHIR Server。  医疗保健机构会将患者的数据存储在 DocumentDB 的“Patients”数据库中。 患者数据库中有数个集合：Clinical、Identification 等等。患者信息属于身份信息。  你有一个名为“Patient”的集合。
+Azure Cosmos DB 是 Health Level Seven International (HL7) Fast Healthcare Interoperability Resources (FHIR) 文档的存储库。 假设你的 Azure Cosmos DB 数据库与你的 API 和逻辑应用一起构成了 HL7 FHIR Server。  医疗保健机构会将患者的数据存储在 Azure Cosmos DB 的“Patients”数据库中。 患者数据库中有数个集合：Clinical、Identification 等等。患者信息属于身份信息。  你有一个名为“Patient”的集合。
 
 心脏病科会跟踪个人健康和锻炼数据。 搜索新增或已修改的患者记录相当耗时。 他们询问 IT 部门是否有办法让他们收到新增或已修改患者记录的通知。  
 
@@ -1113,7 +1114,4 @@ emailBody 会将查询所返回的文档数目（可能是“0”或更多）与
 
 ## <a name="next-steps"></a>后续步骤
 请下载并使用 [GitHub](https://github.com/HEDIDIN/DocDbNotifications) 上提供的逻辑应用代码。 竭诚邀请你在该应用程序基础上进行构建，并将更改提交到存储库。 
-
-若要详细了解 DocumentDB，请访问[学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)。
-
 

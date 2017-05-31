@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: d0d283f21caf53406c51670e75bf2796a175be51
-ms.lasthandoff: 03/25/2017
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 291fb1bb3a8925ccc39d846d23328f028cb826b8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -54,7 +55,7 @@ ms.lasthandoff: 03/25/2017
 
 ### <a name="parse-json-action"></a>“Parse JSON”操作
 
-可以使用 `Parse JSON` 操作将 JSON 内容分析成适合在逻辑应用中使用的令牌。 此操作与请求触发器类似，可让你为要分析的内容输入或生成 JSON 架构。 此工具为使用服务总线、DocumentDB 等的数据提供了很大的方便。
+可以使用 `Parse JSON` 操作将 JSON 内容分析成适合在逻辑应用中使用的令牌。 此操作与请求触发器类似，可让你为要分析的内容输入或生成 JSON 架构。 此工具为使用服务总线、Azure Cosmos DB 等的数据提供了很大的方便。
 
 ![分析 JSON](./media/logic-apps-content-type/ParseJSON.png)
 

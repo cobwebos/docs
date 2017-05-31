@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 安全中心中添加 web 应用程序防火墙 | Microsoft 文档"
-description: "本文档介绍如何实现 Azure 安全中心建议**添加 web 应用程序防火墙**和**完成应用程序保护**。"
+description: "本文档演示如何实现 Azure 安全中心建议“添加 web 应用程序防火墙”和完成应用程序保护”。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 05/09/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 2286437f4ab13384f895e906ccda48ac1b4c553d
-ms.openlocfilehash: b44a0373ceca84b423984e01eee1e57a67d97cdd
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d04a07237029953d8a9b20704d85e852ce45d867
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -40,7 +42,9 @@ ms.openlocfilehash: b44a0373ceca84b423984e01eee1e57a67d97cdd
 3. 可选择使用现有的 web 应用程序防火墙（如果可用）或创建新的防火墙。 此示例中没有任何现有可用的 WAF，因此需要创建 WAF。
 4. 若要创建 WAF，请从集成合作伙伴列表中选择一个解决方案。 在此示例中，选择“Barracuda Web 应用程序防火墙”。
 5. “Barracuda Web 应用程序防火墙”边栏选项卡会打开，提供有关该合作伙伴解决方案的信息。 在信息边栏选项卡选择“创建”。
+
    ![防火墙信息边栏选项卡][3]
+
 6. 会打开“Web 应用程序防火墙”边栏选项卡，可在其中执行“VM 配置”步骤和提供“WAF 信息”。 选择“VM 配置”。
 7. 在“VM 配置”边栏选项卡中输入启动要运行此 WAF 的虚拟机所需的信息。
    ![VM 配置][4]
@@ -48,9 +52,12 @@ ms.openlocfilehash: b44a0373ceca84b423984e01eee1e57a67d97cdd
 
 ## <a name="finalize-application-protection"></a>完成应用程序保护
 1. 返回到“建议”边栏选项卡。 创建此 WAF 后，会生成一个名为“完成应用程序保护”的新条目。 通过此条目，可知道需要完成将此 WAF 连接在 Azure 虚拟网络内的过程才可使其保护此应用程序。
+
    ![完成应用程序保护][5]
+
 2. “完成应用程序保护”。 此时会打开一个新的边栏选项卡。 可看到有一个 web 应用程序需要路由其流量。
 3. 选择此 web 应用程序。 会打开一个边栏选项卡，提供完成此 web 应用程序防火墙设置的步骤。 完成这些步骤，然后选择“限制”。 然后，安全中心会进行连接。
+
    ![限制流量][6]
 
 > [!NOTE]
@@ -60,7 +67,7 @@ ms.openlocfilehash: b44a0373ceca84b423984e01eee1e57a67d97cdd
 
 此 WAF 的日志现已完整集成。 安全中心可开始自动收集和分析这些日志，以便显示重要的安全警报。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 本文档演示了如何实现安全中心建议“添加 web 应用程序”。 若要了解有关配置 web 应用程序防火墙的详细信息，请参阅以下内容：
 
 * [为应用服务环境配置 Web 应用程序防火墙 (WAF)](../app-service-web/app-service-app-service-environment-web-application-firewall.md)
@@ -81,9 +88,4 @@ ms.openlocfilehash: b44a0373ceca84b423984e01eee1e57a67d97cdd
 [4]: ./media/security-center-add-web-application-firewall/select-vm-config.png
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

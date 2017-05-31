@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: cdc50ec4bf98d7924ad5bf97c9a757f0bac01173
-ms.lasthandoff: 03/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b0b2e8f375fa0b80e4f933515e1e8a689478483e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -74,7 +75,7 @@ IoT 中心需要这些服务终结点的写入权限，以便使用消息路由�
 ## <a name="field-gateways"></a>现场网关
 在 IoT 解决方案中，*现场网关*位于你的设备和 IoT 中心终结点之间。 它通常位于靠近设备的位置。 设备使用设备支持的协议，直接与现场网关通信。 现场网关使用 IoT 中心支持的协议连接到 IoT 中心终结点。 现场网关可以是高度专业化的硬件，也可以是运行软件的低功率计算机，只需能够完成网关所适用的端到端方案即可。
 
-可以使用 [Azure IoT 网关 SDK][lnk-gateway-sdk]实现现场网关。 此 SDK 提供特定功能，例如可从多台设备向同一 IoT 中心连接多路复用通信。
+可使用 [Azure IoT Edge][lnk-gateway-sdk]实现现场网关。 IoT Edge 提供特定功能，例如可从多台设备向同一 IoT 中心连接多路复用通信。
 
 ## <a name="next-steps"></a>后续步骤
 此 IoT 中心开发人员指南中的其他参考主题包括：
@@ -83,7 +84,7 @@ IoT 中心需要这些服务终结点的写入权限，以便使用消息路由�
 * [配额和限制][lnk-devguide-quotas]
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]
 
-[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
+[lnk-gateway-sdk]: https://github.com/Azure/iot-edge
 
 [img-endpoints]: ./media/iot-hub-devguide-endpoints/endpoints.png
 [lnk-amqp]: https://www.amqp.org/

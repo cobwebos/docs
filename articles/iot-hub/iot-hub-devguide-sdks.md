@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: ff08ea2b6231b2344244b14e44bcfd9acd065508
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1cb65f738bd77179a7ed379e3c1664c5eb232a68
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/27/2017
 
 * **服务 SDK** 用于管理 IoT 中心，并可以选择向 IoT 设备发送消息。
 
-* **网关 SDK** 用于构建网关以启用不使用某一受支持协议的设备，或者当你需要在边界处理消息时构建所需的网关。
+* Azure IoT Edge 用于构建网关，启用不使用某一受支持协议的设备，或者用于在用户需要在边界处理消息时构建所需的网关。
 
 提供 SDK 以支持多种编程语言。
 
@@ -70,11 +71,11 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 > [!NOTE]
 > 有关使用语言和平台特定的程序包管理器在开发计算机上安装二进制文件和依赖项的信息，请参阅 GitHub 存储库中的自述文件。
 
-## <a name="azure-iot-gateway-sdks"></a>Azure IoT 网关 SDK
+## <a name="azure-iot-edge"></a>Azure IoT Edge
 
-此 Azure IoT 网关 SDK 包含创建 IoT 网关解决方案的基础结构和模块。 你可以扩展此 SDK 来创建适用于任何端到端场景的网关。
+Azure IoT Edge 包含用于创建 IoT 网关解决方案的基础结构和模块。 可以扩展 IoT Edge，创建适用于任何端到端方案的网关。
 
-可以从 GitHub 下载 [Azure IoT 网关 SDK][lnk-gateway-sdk]。
+可以从 GitHub 下载 [Azure IoT Edge][lnk-gateway-sdk]。
 
 ## <a name="online-api-reference-documentation"></a>联机 API 参考文档
 
@@ -87,7 +88,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 * [适用于 Java 的 Azure IoT 服务 SDK][lnk-java-service-ref]
 * [适用于 Node.js 的 Azure IoT 设备 SDK][lnk-node-ref]
 * [适用于 Node.js 的 Azure IoT 服务 SDK][lnk-node-service-ref]
-* [Azure IoT 网关 SDK][lnk-gateway-ref]
+* [Azure IoT Edge][lnk-gateway-ref]
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -110,7 +111,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 [lnk-python-device-sdk]: https://github.com/Azure/azure-iot-sdk-python/tree/master/device
 [lnk-python-service-sdk]: https://github.com/Azure/azure-iot-sdk-python/tree/master/service
 [lnk-certified]: https://catalog.azureiotsuite.com/
-[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
+[lnk-gateway-sdk]: https://github.com/Azure/iot-edge
 
 [lnk-dotnet-ref]: https://docs.microsoft.com/dotnet/api/microsoft.azure.devices
 [lnk-c-ref]: https://azure.github.io/azure-iot-sdk-c/index.html
@@ -119,7 +120,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 [lnk-rest-ref]: https://docs.microsoft.com/rest/api/iothub/
 [lnk-java-service-ref]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.auth
 [lnk-node-service-ref]: https://azure.github.io/azure-iot-sdk-node/azure-iothub/1.1.9/index.html
-[lnk-gateway-ref]: http://azure.github.io/azure-iot-gateway-sdk/api_reference/c/html/
+[lnk-gateway-ref]: http://azure.github.io/iot-edge/api_reference/c/html/
 
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
