@@ -3,7 +3,7 @@ title: "使用 Power BI 可视化 SQL 数据仓库数据 | Microsoft Azure"
 description: "使用 Power BI 可视化 SQL 数据仓库数据"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: mlee3gsd
 manager: jhubbard
 editor: 
 ms.assetid: d7fb89d1-da1d-4788-a111-68d0e3fda799

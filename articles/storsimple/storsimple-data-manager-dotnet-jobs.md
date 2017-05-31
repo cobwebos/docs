@@ -53,10 +53,10 @@ ms.lasthandoff: 05/08/2017
 
 
 2. 此脚本输出以下值：
-    - 客户端 ID
-    - 租户 ID
-    - Active Directory 密钥（与上面输入的密钥相同）
-    - 订阅 ID
+    * 客户端 ID
+    * 租户 ID
+    * Active Directory 密钥（与上面输入的密钥相同）
+    * 订阅 ID
 
 3. 使用 Visual Studio 2012、2013 或 2015 创建 C# .NET 控制台应用程序。
 

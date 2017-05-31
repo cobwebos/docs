@@ -3,7 +3,7 @@ title: "使用 SQL 数据仓库构建集成解决方案 | Microsoft 文档"
 description: "用于集成 SQL 数据仓库的工具以及提供相应解决方案的合作伙伴。 "
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: mlee3gsd
 manager: jhubbard
 editor: 
 ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67f

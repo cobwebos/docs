@@ -1,13 +1,13 @@
 ---
 title: "Azure Cosmos DB：使用 Spark 和 Apache TinkerPop Gremlin 执行图形分析 | Microsoft Docs"
 description: "提供设置说明，说明如何通过 Azure Cosmos DB 和 Spark GraphX 来设置和运行图形分析与并行计算"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: khdang
 manager: shireest
 editor: 
 ms.assetid: 89ea62bb-c620-46d5-baa0-eefd9888557c
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -46,11 +46,11 @@ Azure Cosmos DB 和 Spark 都有了以后，即可使用 Gremlin 执行 OLTP 和
 
 首先，使用图形 API 创建数据库帐户。
 
-[!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="add-a-collection"></a>添加集合
 
-[!INCLUDE [cosmosdb-create-collection](../../includes/cosmosdb-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 ## <a name="get-apache-tinkerpop"></a>获取 Apache TinkerPop
 

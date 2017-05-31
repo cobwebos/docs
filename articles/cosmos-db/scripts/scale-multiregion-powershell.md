@@ -1,14 +1,14 @@
 ---
 title: "Azure PowerShell 脚本 - Azure Cosmos DB 的多区域复制 | Microsoft Docs"
 description: "Azure PowerShell 脚本示例 - Azure Cosmos DB 的多区域复制"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: PowerShell
 ms.topic: article

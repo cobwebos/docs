@@ -1,14 +1,14 @@
 ---
 title: "Azure CLI 脚本 - 为 Azure Cosmos DB 创建防火墙 | Microsoft Docs"
 description: "Azure CLI 脚本示例 - 为 Azure Cosmos DB 创建防火墙"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: azurecli
 ms.topic: sample

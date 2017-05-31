@@ -1,14 +1,14 @@
 ---
 title: "Azure CLI 脚本 - 重新生成 Azure Cosmos DB 帐户密钥 | Microsoft Docs"
 description: "Azure CLI 脚本示例 - 重新生成 Azure Cosmos DB 帐户密钥"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: azurecli
 ms.topic: sample
