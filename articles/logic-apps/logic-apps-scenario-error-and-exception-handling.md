@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
-ms.author: b-hoedid
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: b996ed1889ec39de78dcee9bbcb18a5982fc5f7f
-ms.lasthandoff: 04/04/2017
+ms.author: LADocs; b-hoedid
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f68b27e007ad2de9e880f1fe0736d403f74dc80b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -46,12 +47,12 @@ ms.lasthandoff: 04/04/2017
 
 ## <a name="how-we-solved-the-problem"></a>我们如何解决问题
 
-我们选择 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") 作为日志和错误记录的存储库（DocumentDB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
+我们选择 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") 作为日志和错误记录的存储库（Cosmos DB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
 
-另一个要求是清除特定日期之后的记录。 DocumentDB 具有一个名为[生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "生存时间") (TTL) 的属性，通过它可以为每个记录或集合设置“生存时间”值。 这样便无需在 DocumentDB 中手动删除记录。
+另一个要求是清除特定日期之后的记录。 Cosmos DB 具有一个名为[生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) 的属性，使用该属性可以为每个记录或集合设置“生存时间”值。**** 这样便无需在 Cosmos DB 中手动删除记录。
 
 > [!IMPORTANT]
-> 若要完成本教程，需要创建一个 DocumentDB 数据库和两个集合（日志记录和错误）。
+> 若要完成本教程，需要创建一个 Cosmos DB 数据库和两个集合（日志记录和错误）。
 
 ## <a name="create-the-logic-app"></a>创建逻辑应用
 
@@ -258,7 +259,7 @@ ms.lasthandoff: 04/04/2017
 }             
 ```
 
-#### <a name="insert-error-into-documentdb--request"></a>将错误插入到 DocumentDB 中 - 请求
+#### <a name="insert-error-into-cosmos-db--request"></a>将错误插入 Cosmos DB 中 - 请求
 
 ``` json
 
@@ -281,7 +282,7 @@ ms.lasthandoff: 04/04/2017
 }
 ```
 
-#### <a name="insert-error-into-documentdb--response"></a>将错误插入到 DocumentDB 中 - 响应
+#### <a name="insert-error-into-cosmos-db--response"></a>将错误插入 Cosmos DB 中 - 响应
 
 ``` json
 {
@@ -399,16 +400,16 @@ ms.lasthandoff: 04/04/2017
 ```
 
 
-## <a name="documentdb-repository-and-portal"></a>DocumentDB 存储库和门户
+## <a name="cosmos-db-repository-and-portal"></a>Cosmos DB 存储库和门户
 
-我们的解决方案通过引入 [DocumentDB](https://azure.microsoft.com/services/documentdb) 新增了多项功能。
+我们的解决方案通过引入 [Cosmos DB](https://azure.microsoft.com/services/documentdb) 新增了多项功能。
 
 ### <a name="error-management-portal"></a>错误管理门户
 
-若要查看这些错误，可以创建 MVC web 应用，以显示来自 DocumentDB 的错误记录。 当前版本包含“列表”、“详细信息”、“编辑”和“删除”操作。
+若要查看这些错误，可以创建 MVC Web 应用，显示来自 Cosmos DB 的错误记录。 当前版本包含“列表”、“详细信息”、“编辑”和“删除”操作。
 
 > [!NOTE]
-> “编辑”操作：DocumentDB 对整个文档进行替换。 **列表**和**详细信息**视图中显示的记录只是示例。 它们不是实际的患者约会记录。
+> “编辑”操作：Cosmos DB 对整个文档进行替换。 **列表**和**详细信息**视图中显示的记录只是示例。 它们不是实际的患者约会记录。
 
 下面是使用前面所述的方法创建的 MVC 应用详细信息的示例。
 
@@ -492,3 +493,4 @@ DocumentDB 中的每个文档都必须具有唯一 ID。 我们使用 `PatientId
 * [查看更多逻辑应用示例和方案](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [了解如何监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [为逻辑应用创建自动部署模板](../logic-apps/logic-apps-create-deploy-template.md)
+

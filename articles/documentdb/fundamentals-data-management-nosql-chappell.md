@@ -1,9 +1,11 @@
 ---
-redirect_url: https://azure.microsoft.com/services/documentdb/
+redirect_url: https://azure.microsoft.com/services/cosmos-db/
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
-ms.openlocfilehash: 48380d1fd5394cc32b4e868a82f456497bc4a915
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 28af0300f7027ccce8207d0f767490bddd4bf532
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 
@@ -18,13 +20,8 @@ ms.openlocfilehash: 48380d1fd5394cc32b4e868a82f456497bc4a915
   
   * 区分由应用程序读取和写入的操作数据与用于提供商业智能 (BI) 的分析数据，以帮助确定符合你需求的技术。
   * 关系技术的简要概述。
-  * 每种 Azure NoSQL 技术的简介：DocumentDB、表存储、HBase 和 HDInsight。
+  * 介绍各项 Azure NoSQL 技术：Azure Cosmos DB、表存储、HBase 和 HDInsight。
   * NoSQL 技术与 Azure SQL 数据库的比较。 
-  * 何时使用 Azure DocumentDB、表存储、HBase、HDInsight 与 SQL 数据库。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
+  * 何时使用 Azure Cosmos DB、表存储、HBase、HDInsight 与 SQL 数据库。
 
 

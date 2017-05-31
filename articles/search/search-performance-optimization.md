@@ -12,12 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/02/2017
+ms.date: 05/01/2017
 ms.author: liamca
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 56eeed7634fca840172ab828be5f202d80f3f4fb
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -80,7 +81,7 @@ ms.lasthandoff: 04/07/2017
 有两个选项可让你的分布式搜索服务保持同步，包括使用 [Azure 搜索索引器](search-indexer-overview.md)或推送 API（也称为 [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。  
 
 ### <a name="azure-search-indexers"></a>Azure 搜索索引器
-如果你正在使用 Azure 搜索索引器，那么就已经在从诸如 Azure SQL DB 或 DocumentDB 等中央数据存储导入数据更改。 当创建新的搜索服务时，针对指向此相同数据存储的服务，你只需要创建一个新 Azure 搜索索引器即可。 这样一来，每当数据存储中出现新的更改，它们接着就将通过各种索引器被编入索引。  
+如果正在使用 Azure 搜索索引器，则已经在从 Azure SQL DB 或 Azure Cosmos DB 等中央数据存储中导入数据更改。 当创建新的搜索服务时，针对指向此相同数据存储的服务，你只需要创建一个新 Azure 搜索索引器即可。 这样一来，每当数据存储中出现新的更改，它们接着就将通过各种索引器被编入索引。  
 
 下面的示例显示该体系结构的样子。
 

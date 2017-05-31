@@ -1,20 +1,21 @@
 ---
-redirect_url: https://azure.microsoft.com/services/documentdb/
+redirect_url: https://azure.microsoft.com/services/cosmos-db/
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: ad15b1695ad4697aebc38ac39723a1dd1647c466
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a6b0cd10c13622bf0d5af5d5871457204de37eb1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 
 ---
-# <a name="how-to-create-a-database-for-documentdb-using-the-azure-portal"></a>如何使用 Azure 门户创建 DocumentDB 数据库
-若要使用 Microsoft Azure DocumentDB，则必须拥有 [DocumentDB 帐户](documentdb-create-account.md)、数据库、集合和文档。 现在，在 Azure 门户中创建集合的同时，会创建 DocumentDB 数据库。 
+# <a name="how-to-create-a-database-for-azure-cosmos-db-using-the-azure-portal"></a>如何使用 Azure 门户创建 Azure Cosmos DB 数据库
+若要使用 Microsoft Azure Cosmos DB，必须拥有 [Azure Cosmos DB 帐户](documentdb-create-account.md)、数据库、集合和文档。 现在，在 Azure 门户中创建集合的同时，会创建 Azure Cosmos DB 数据库。 
 
-若要在门户中创建 DocumentDB 数据库和集合，请参阅[如何使用 Azure 门户创建 DocumentDB 集合](documentdb-create-collection.md)。
+若要使用 Azure 门户创建 Azure Cosmos DB 数据库和集合，请参阅[如何使用 Azure 门户创建 Azure Cosmos DB 集合](documentdb-create-collection.md)。
 
-## <a name="other-ways-to-create-a-documentdb-database"></a>创建 DocumentDB 数据库的其他方法
+## <a name="other-ways-to-create-an-azure-cosmos-db-database"></a>创建 Azure Cosmos DB 数据库的其他方法
 不一定要使用门户来创建数据库，也可以使用 [DocumentDB SDK](documentdb-sdk-dotnet.md) 或 [REST API](https://msdn.microsoft.com/library/mt489072.aspx) 来创建数据库。 有关使用 .NET SDK 处理数据库的信息，请参阅 [.NET 数据库示例](documentdb-dotnet-samples.md#database-examples)。 有关使用 Node.js SDK 处理数据库的信息，请参阅 [Node.js 数据库示例](documentdb-nodejs-samples.md#database-examples)。 
 
 ## <a name="next-steps"></a>后续步骤

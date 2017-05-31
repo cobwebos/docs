@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: b41d906d6948f0f9e3cdb38b4a478b39f55ce219
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 88628fb2c07ad72c646f7e3ed076e7a4b1519200
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -40,8 +41,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 > 在使用 Data Lake Analytics U-SQL 活动创建管道之前，先创建 Azure Data Lake Analytics 帐户。 若要了解 Azure Data Lake Analytics，请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 > 
 > 查看[生成首个管道教程](data-factory-build-your-first-pipeline.md)，了解创建数据工厂、链接服务、数据集和管道的详细步骤。 通过数据工厂编辑器或 Visual Studio 或 Azure PowerShell 使用 JSON 代码段创建数据工厂实体。
-> 
-> 
+
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
 创建 **Azure Data Lake Analytics** 链接服务将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂。 管道中的 Data Lake Analytics U-SQL 活动是指此链接服务。 
@@ -84,7 +84,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 | 不由 Azure Active Directory 管理的用户帐户（@hotmail.com、@live.com，等等） |12 小时 |
 | 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的 14 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
-若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用以下部分中的代码以编程方式生成 **sessionId** 和 **authorization** 属性的值。 
+若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用以下部分中的代码以编程方式生成 **sessionId** 和 **authorization** 属性的值：
 
 ### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>以编程方式生成 sessionId 和 authorization 值
 
@@ -176,12 +176,14 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | type |type 属性必须设置为 **DataLakeAnalyticsU SQL**。 |是 |
 | scriptPath |包含 U-SQL 脚本的文件夹路径。 文件的名称区分大小写。 |否（如果使用脚本） |
 | scriptLinkedService |将包含脚本的存储链接到数据工厂的链接服务 |否（如果使用脚本） |
-| 脚本 |指定内联脚本，而不是指定 scriptPath 和 scriptLinkedService。 例如："script": "CREATE DATABASE test"。 |否（如果使用 scriptPath 和 scriptLinkedService） |
+| 脚本 |指定内联脚本，而不是指定 scriptPath 和 scriptLinkedService。 例如： `"script": "CREATE DATABASE test"`。 |否（如果使用 scriptPath 和 scriptLinkedService） |
 | degreeOfParallelism |同时用于运行作业的最大节点数。 |否 |
 | priority |确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 |否 |
 | parameters |U-SQL 脚本的参数 |否 |
+| runtimeVersion | 要使用的 U-SQL 引擎的运行时版本 | 否 | 
+| compilationMode | <p>U-SQL 编译模式。 必须是这些值之一：</p> <ul><li>Semantic：只执行语义检查和必要的健全性检查。****</li><li>Full：执行完整编译，包括语法检查、优化、代码生成等。****</li><li>SingleBox：执行完整编译，且 TargetType 设置为 SingleBox。****</li></ul><p>如果该属性未指定值，则服务器将确定最佳编译模式。 </p>| 否 | 
 
-有关脚本定义，请参阅 [SearchLogProcessing.txt 脚本定义](#script-definition)。 
+有关脚本定义，请参阅 [SearchLogProcessing.txt 脚本定义](#sample-u-sql-script)。 
 
 ## <a name="sample-input-and-output-datasets"></a>输入和输出数据集示例
 ### <a name="input-dataset"></a>输入数据集

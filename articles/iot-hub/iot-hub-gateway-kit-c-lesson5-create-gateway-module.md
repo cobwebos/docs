@@ -17,15 +17,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 027597c73d7282ef929363bab904e7d3d423d3d4
-ms.openlocfilehash: db2757015cf8e821cffcfe39bcbd1559c23fc7ed
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5e28422158684c3aaf0ac3fdf5b19c80fbccfb02
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="lesson-5-create-your-first-azure-iot-gateway-module"></a>第 5 课：创建你的第一个 Azure IoT 网关模块
-虽然网关 SDK 允许用户生成以 Java、.NET 或 Node.js 编写的模块，但本教程分步介绍的是如何使用 C 生成模块。
+虽然 Azure IoT Edge 允许用户生成以 Java、.NET 或 Node.js 编写的模块，但本教程演示的使用 C 生成模块的步骤。
 
 ## <a name="what-you-will-do"></a>执行的操作
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 02/23/2017
 
 ## <a name="what-you-need"></a>所需条件
 
-主机计算机上已安装了 Azure IoT 网关 SDK。
+主机计算机上已安装了 Azure IoT Edge。
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -103,7 +104,7 @@ ms.lasthandoff: 02/23/2017
 
 以下步骤将引导你创建一个新模块并在 Intel NUC 上编译该模块。 该模块在收到带时间戳的消息时将输出这些消息。 在本部分中，你将创建你的第一个自定义网关模块。
 
-任何 Azure IoT 网关 SDK 模块都必须实现以下接口：
+任何 Azure IoT Edge 模块都必须实现以下接口：
 
    ```C
    pfModule_ParseConfigurationFromJson Module_ParseConfigurationFromJson

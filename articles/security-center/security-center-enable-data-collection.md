@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 05/09/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: b942f934ecb25083d779096dc628e342870edc26
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 360073c0ed75552e62e69ce72b225ba35a2a3e09
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -30,19 +31,17 @@ ms.lasthandoff: 04/13/2017
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 选择“安全中心”边栏选项卡上的“建议”磁贴。  这将打开“建议”边栏选项卡。
-   ![“安全中心”边栏选项卡][1]
-2. 在“建议”边栏选项卡，选择“启用订阅的数据收集”。  这会打开“启用数据收集”边栏选项卡。
+1. 在“建议”边栏选项卡中，选择“启用订阅的数据收集”。  这会打开“启用数据收集”边栏选项卡。
    ![“建议”边栏选项卡][2]
-3. 在“启用数据收集”边栏选项卡，选择你的订阅。 将打开该订阅的“安全策略”边栏选项卡。
-4. 在“安全策略”边栏选项卡，选择“数据收集”下方的“打开”以自动收集日志。 通过打开数据收集，将对订阅中的所有当前和新支持的 VM 设置监视扩展。
+2. 在“启用数据收集”边栏选项卡，选择你的订阅。 将打开该订阅的“安全策略”边栏选项卡。
+3. 在“安全策略”边栏选项卡，选择“数据收集”下方的“打开”以自动收集日志。 通过打开数据收集，将对订阅中的所有当前和新支持的 VM 设置监视扩展。
 
    ![安全策略边栏选项卡][3]
 
-5. 选择“保存”。
-6. 选择“选择每个区域的存储帐户”。 对于每个有虚拟机运行的区域，可选择相应的存储帐户存储从这些虚拟机收集的数据。 如果未对每个区域选择一个存储帐户，则系统将为你创建存储帐户并将其置于 securitydata 资源组中。 在此示例中，选择 **newstoracct**。 通过返回到订阅的安全策略并选择不同的存储帐户，可以稍后更改存储帐户。
+4. 选择“保存”。
+5. 选择“选择每个区域的存储帐户”。 对于每个有虚拟机运行的区域，可选择相应的存储帐户存储从这些虚拟机收集的数据。 如果未对每个区域选择一个存储帐户，则系统将为你创建存储帐户并将其置于 securitydata 资源组中。 在此示例中，选择 **newstoracct**。 通过返回到订阅的安全策略并选择不同的存储帐户，可以稍后更改存储帐户。
    ![选择存储帐户][4]
-7. 选择“确定”。
+6. 选择“确定”。
 
 > [!NOTE]
 > 建议启用数据收集，并首先选择订阅级别的存储帐户。 虽然可以在 Azure 订阅级别和资源组级别设置安全策略，但只能在订阅级别配置数据收集和存储帐户。
@@ -80,7 +79,6 @@ ms.lasthandoff: 04/13/2017
 * [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/) - 获取最新的 Azure 安全新闻和信息。
 
 <!--Image references-->
-[1]: ./media/security-center-enable-data-collection/security-center-blade.png
 [2]: ./media/security-center-enable-data-collection/recommendations.png
 [3]: ./media/security-center-enable-data-collection/data-collection.png
 [4]: ./media/security-center-enable-data-collection/storage-account.png

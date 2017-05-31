@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2017
-ms.author: deli; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 9eab48d40c3d9db896724d3bdb574d89fdab2796
-ms.lasthandoff: 04/04/2017
+ms.author: LADocs; deli
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3faa238b882c88f1a0eb59a4e7a2f8bb6d6e6b9b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/04/2017
 
 ## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>添加用于连接到文件系统的触发器和操作
 
-1. 创建一个逻辑应用，然后添加此 Dropbox 触发器：“创建文件时” 
+1. 创建一个逻辑应用，然后添加此 Dropbox 触发器：“创建文件时”**** 
 2. 在该触发器下，选择“下一步” > “添加操作”。 
 3. 在搜索框中，输入 `file system`，以便可查看所有支持的文件系统连接器操作。
 
@@ -86,6 +87,9 @@ ms.lasthandoff: 04/04/2017
 - 使用路径获取文件元数据
 - 列出根文件夹中的文件
 - 更新文件
+
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/fileconnector/)。 
 
 ## <a name="get-help"></a>获取帮助
 

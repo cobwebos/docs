@@ -1,14 +1,14 @@
 ---
-title: "Azure DocumentDB 的服务器端 JavaScript 编程 | Microsoft 文档"
-description: "了解如何使用 DocumentDB 以 JavaScript 编写存储过程、数据库触发器和用户定义的函数 (UDF) 获取数据库编程提示以及更多内容。"
+title: "Azure Cosmos DB 的服务器端 JavaScript 编程 | Microsoft Docs"
+description: "了解如何通过 Azure Cosmos DB 使用 JavaScript 编写存储过程、数据库触发器和用户定义的函数 (UDF)。 获取数据库编程提示以及更多内容。"
 keywords: "数据库触发器, 存储过程, 存储过程, 数据库程序, sproc, DocumentDB, Azure, Microsoft Azure"
-services: documentdb
+services: cosmosdb
 documentationcenter: 
 author: aliuy
 manager: jhubbard
 editor: mimig
 ms.assetid: 0fba7ebd-a4fc-4253-a786-97f1354fbf17
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 11/11/2016
 ms.author: andrl
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 3e15914ab5bd549f3583f5261a88eb74b95f56af
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1c128d182da8245dd9a2aa8f0ce8fcca94aea0fa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="documentdb-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>DocumentDB 服务器端编程：存储过程、数据库触发器和 UDF
-了解 Azure DocumentDB 语言集成、JavaScript 的事务执行如何让开发人员以 JavaScript 本机编写 **存储过程**、**触发器**和**用户定义的函数 (UDF)**。 这让你能够编写可以在数据库存储分区上直接传送和执行的数据库程序应用程序逻辑。 
+# <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB 服务器端编程：存储过程、数据库触发器和 UDF
+了解 Azure Cosmos DB 如何以集成方式对 JavaScript 语言进行事务执行，让开发人员使用 JavaScript 在本机编写**存储过程**、**触发器**和**用户定义的函数 (UDF)**。 这让你能够编写可以在数据库存储分区上直接传送和执行的数据库程序应用程序逻辑。 
 
-我们建议通过观看下面的视频入门，该视频中 Andrew Liu 简单介绍了 DocumentDB 服务器端数据库编程模型。 
+我们建议从观看下面的视频入手，Andrew Liu 在该视频中简要介绍了 Cosmos DB 的服务器端数据库编程模型。 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Demo-A-Quick-Intro-to-Azure-DocumentDBs-Server-Side-Javascript/player]
 > 
@@ -35,27 +35,27 @@ ms.lasthandoff: 04/27/2017
 然后，返回到本文，你将在其中了解以下问题的答案：  
 
 * 如何使用 JavaScript 编写存储过程、触发器或 UDF？
-* DocumentDB 如何保证 ACID？
-* 事务在 DocumentDB 中如何工作？
+* Cosmos DB 如何保证 ACID？
+* 事务在 Cosmos DB 中如何工作？
 * 什么是预触发器和后触发器，以及如何编写它们？
 * 如何通过使用 HTTP 以 RESTful 方式注册并执行存储过程、触发器或 UDF？
-* 可用什么 DocumentDB SDK 来创建和执行存储过程、触发器和 UDF？
+* 哪些 Cosmos DB SDK 可用于创建和执行存储过程、触发器和 UDF？
 
 ## <a name="introduction-to-stored-procedure-and-udf-programming"></a>存储过程和 UDF 编程简介
 这种“将 JavaScript 用作新式 T-SQL”的方法让应用程序开发人员摆脱了类型系统不匹配和对象关系映射技术的复杂性。 它还具有许多可利用以构建丰富应用程序的内在优势：  
 
 * **过程逻辑：**作为一种高级编程语言，JavaScript 具有丰富且熟悉的界面来表达业务逻辑。 你可以执行与数据更接近的操作的复杂序列。
-* **原子事务：**DocumentDB 保证在单个存储过程或触发器内执行的数据库操作是原子事务。 这使得应用程序能在单个批处理中合并相关操作，因此要么它们全部成功，要么全部不成功。 
-* **性能：**本质上将 JSON 映射到 Javascript 语言类型系统且它还是 DocumentDB 中存储的基本单位，这一事实允许大量优化，如缓冲池中 JSON 文档的延迟具体化和使其按需对执行代码可用。 还有更多与传送业务逻辑到数据库相关的性能优点：
+* **原子事务：**Cosmos DB 保证在单个存储过程或触发器内执行的数据库操作是原子事务。 这使得应用程序能在单个批处理中合并相关操作，因此要么它们全部成功，要么全部不成功。 
+* **性能：**JSON 在本质上映射到 Javascript 语言类型系统且 JSON 是 Cosmos DB 中的存储基本单位，这一事实让许多优化成为可能，例如缓冲池中 JSON 文档的滞后具体化以及根据需要向执行代码提供这些文档。 还有更多与传送业务逻辑到数据库相关的性能优点：
   
   * 批处理 – 开发人员可以分组操作（如插入）并批量提交它们。 用于创建单独事务的网络流量延迟成本和存储开销显著降低。 
-  * 预编译 – DocumentDB 预编译存储过程、触发器和用户定义的函数 (UDF) 以避免每次调用产生的 JavaScript 编译成本。 对于过程逻辑生成字节代码的开销被摊销为最小值。
+  * 预编译：Cosmos DB 预编译存储过程、触发器和用户定义的函数 (UDF)，以节省每次调用产生的 JavaScript 编译成本。 对于过程逻辑生成字节代码的开销被摊销为最小值。
   * 序列化 – 很多操作需要可能涉及执行一个或多个次要存储操作的副作用（“触发器”）。 除了原子性之外，当移动到服务器时，它的性能也更高。 
 * **封装：**可使用存储过程在同一位置对业务逻辑进行分组。 这样做有两个优点：
   * 它会在原始数据之上添加抽象层，这使得数据架构师能够从数据独立发展他们的应用程序。 当数据无架构时，如果他们必须直接处理数据，则由于可能需要兼并到应用程序中的脆性假设，使得这样做尤其有益。  
   * 这种抽象使企业通过从脚本简化访问来保证他们的数据安全。  
 
-数据库触发器、存储过程和自定义查询运算符的创建和执行通过许多平台（包括 .NET、Node.js 和 JavaScript）中的 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) 和[客户端 SDK](documentdb-sdk-dotnet.md) 得到支持。
+数据库触发器、存储过程和自定义查询运算符的创建和执行通过 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[Azure Cosmos DB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) 和[客户端 SDK](documentdb-sdk-dotnet.md) 在许多平台（包括 .NET、Node.js 和 JavaScript）中得到支持。
 
 本教程使用[具有 Q Promises 的 Node.js SDK](http://azure.github.io/azure-documentdb-node-q/) 来阐明存储过程、触发器和 UDF 的语法和用法。   
 
@@ -98,12 +98,12 @@ ms.lasthandoff: 04/27/2017
         });
 
 
-上下文对象提供对所有可在 DocumentDB 存储上执行的操作的访问，以及对请求和响应对象的访问。 在本例中，我们使用响应对象来设置发送回客户端的响应的主体。 有关更多详细信息，请参阅 [DocumentDB JavaScript 服务器 SDK 文档](http://azure.github.io/azure-documentdb-js-server/)。  
+上下文对象提供对所有可在 Cosmos DB 存储上执行的操作的访问，以及对请求和响应对象的访问。 在本例中，我们使用响应对象来设置发送回客户端的响应的主体。 有关更多详细信息，请参阅 [Azure Cosmos DB JavaScript 服务器 SDK 文档](http://azure.github.io/azure-documentdb-js-server/)。  
 
 让我们扩展此示例，并将更多数据库相关的功能添加到存储过程中。 存储过程可以创建、更新、读取、查询和删除集合内部的文档和附件。    
 
 ### <a name="example-write-a-stored-procedure-to-create-a-document"></a>示例：编写创建文档的存储过程。
-下一个代码段将演示如何使用上下文对象与 DocumentDB 资源进行交互。
+下一个代码片段演示如何使用上下文对象与 Cosmos DB 资源进行交互。
 
     var createDocumentStoredProc = {
         id: "createMyDocument",
@@ -122,7 +122,7 @@ ms.lasthandoff: 04/27/2017
     }
 
 
-此存储过程将 documentToCreate 作为输入，它是要在当前集合中创建的文档的主体。 所有此类操作均是异步操作且依赖 JavaScript 函数回调。 回调函数具有两个参数，一个用于错误对象（假如操作失败），另一个用于已创建的对象。 在回调内部，用户可以处理异常或引发错误。 如果未提供回调而又存在错误，则 DocumentDB 运行时将引发错误。   
+此存储过程将 documentToCreate 作为输入，它是要在当前集合中创建的文档的主体。 所有此类操作均是异步操作且依赖 JavaScript 函数回调。 回调函数具有两个参数，一个用于错误对象（假如操作失败），另一个用于已创建的对象。 在回调内部，用户可以处理异常或引发错误。 如果未提供回调而又存在错误，则 Azure Cosmos DB 运行时将引发错误。   
 
 在上面的示例中，如果操作失败，回调将引发错误。 否则，它会将已创建文档的 ID 设置为对客户端的响应的主体。 此为该存储过程如何使用输入参数进行执行。
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 04/27/2017
     });
 
 
-请注意，可以修改该存储过程以将文档主体的数组作为输入并在同一存储过程执行中创建它们全部，而不用执行多个网络请求以单独创建它们中的每一个。 这可以用来执行 DocumentDB 的有效批量导入程序（之后会在本教程中讨论）。   
+请注意，可以修改该存储过程以将文档主体的数组作为输入并在同一存储过程执行中创建它们全部，而不用执行多个网络请求以单独创建它们中的每一个。 这可以用来实现 Cosmos DB 的高效批量导入程序（本教程稍后会进行讨论）。   
 
 所述的示例演示了如何使用存储过程。 稍后我们将在教程中介绍触发器和用户定义的函数 (UDF)。
 
@@ -159,7 +159,7 @@ ms.lasthandoff: 04/27/2017
 
 简单地说，原子性保证所有在一个事物内部执行的工作被视为单个单元，其中要么全部工作都提交，要么都不提交。 一致性确保数据始终在各个事务间处于良好内部状态。 隔离保证没有两个互相干扰的事务存在 – 一般来说，大多数商业系统都提供多个可以基于应用程序需求而使用的隔离级别。 持续性确保数据库中提交的任何更改将始终存在。   
 
-在 DocumentDB 中，JavaScript 被托管在与数据库相同的内存空间中。 因此，在存储过程和触发器内提出的请求将在相同范围的数据库会话中执行。 这让 DocumentDB 能够保证所有属于单个存储过程/触发器的操作的 ACID。 考虑以下存储过程定义：
+在 Cosmos DB 中，JavaScript 被托管在与数据库相同的内存空间中。 因此，在存储过程和触发器内提出的请求将在相同范围的数据库会话中执行。 这让 Cosmos DB 能够保证所有属于单个存储过程/触发器的操作的 ACID。 考虑以下存储过程定义：
 
     // JavaScript source code
     var exchangeItemsSproc = {
@@ -226,22 +226,22 @@ ms.lasthandoff: 04/27/2017
 
 此存储过程使用游戏应用内的事务在单个操作中的两个玩家之间交易项。 该存储过程尝试读取两个分别与作为参数传递的玩家 ID 对应的文档。 如果两个玩家文档都被找到，那么存储过程将通过交换它们的项来更新文档。 如果在此过程中遇到了任何错误，它将引发隐式终止事务的 JavaScript 异常。
 
-如果存储过程针对其注册的集合是单区集合，那么该事务的范围为该集合内的所有文档。 如果集合已分区，那么存储过程将在单个分区键的事务范围中执行。 每个存储过程执行必须包含对应于事务在其下运行的范围的分区键值。 有关更多详细信息，请参阅 [DocumentDB 分区](documentdb-partition-data.md)。
+如果存储过程针对其注册的集合是单区集合，那么该事务的范围为该集合内的所有文档。 如果集合已分区，那么存储过程将在单个分区键的事务范围中执行。 每个存储过程执行必须包含对应于事务在其下运行的范围的分区键值。 有关更多详细信息，请参阅 [Azure Cosmos DB 分区](documentdb-partition-data.md)。
 
 ### <a name="commit-and-rollback"></a>提交和回滚
-事务将在本机深入集成到 DocumentDB 的 JavaScript 编程模型中。 在 JavaScript 函数内，所有操作都在单个事务下自动包装。 如果 JavaScript 在没有任何异常的情况下完成，将提交针对数据库的操作。 实际上，关系数据库中的“BEGIN TRANSACTION”和“COMMIT TRANSACTION”语句在 DocumentDB 中是隐式的。  
+事务将在本机深入集成到 Cosmos DB 的 JavaScript 编程模型中。 在 JavaScript 函数内，所有操作都在单个事务下自动包装。 如果 JavaScript 在没有任何异常的情况下完成，将提交针对数据库的操作。 实际上，关系数据库中的“BEGIN TRANSACTION”和“COMMIT TRANSACTION”语句在 Cosmos DB 中是隐式的。  
 
-如果存在任何传播自脚本的异常，DocumentDB 的 JavaScript 运行时将回滚整个事务。 正如之前的示例中所示，引发异常实际上等同于 DocumentDB 中的“ROLLBACK TRANSACTION”。
+如果存在任何传播自脚本的异常，Cosmos DB 的 JavaScript 运行时将回退整个事务。 如之前示例中所示，引发异常实际上等同于 Cosmos DB 中的“ROLLBACK TRANSACTION”。
 
 ### <a name="data-consistency"></a>数据一致性
 存储过程和触发器始终在 DocumentDB 集合的主要副本上执行。 这确保了从存储过程内部的读取提供强一致性。 使用用户定义的函数的查询可以在主要或任何次要副本上执行，但通过选择合适的副本我们可以确保满足所要求的一致性级别。
 
 ## <a name="bounded-execution"></a>绑定的执行
-所有 DocumentDB 操作必须在服务器指定的请求超时持续时间内完成。 此约束也适用于 JavaScript 函数（存储过程、触发器和用户定义的函数）。 如果某个操作未在时间限制内完成，则将回滚事务。 JavaScript 函数必须在时间限制内完成，或实施一个基于延续的模型以批处理/继续执行过程。  
+所有 Cosmos DB 操作都必须在服务器指定的请求超时持续时间内完成。 此约束也适用于 JavaScript 函数（存储过程、触发器和用户定义的函数）。 如果某个操作未在时间限制内完成，则将回滚事务。 JavaScript 函数必须在时间限制内完成，或实施一个基于延续的模型以批处理/继续执行过程。  
 
 为了简化存储过程和触发器的开发以处理时间限制，集合对象内的所有函数（文档和附件的创建、读取、替换和删除）返回表示该操作是否完成的布尔值。 如果该值为 false，则表示时间限制将要过期且该过程必须完成执行。  如果存储过程及时完成且没有任何更多请求在排队的话，将保证完成排在第一个拒绝存储操作之前的操作。  
 
-JavaScript 函数也被绑定在资源消耗量上。 DocumentDB 基于预配的数据库帐户大小按集合保留吞吐量。 吞吐量按照规范化单位的 CPU、内存和 IO 消耗量（称为请求单位或 RU）来表示。 JavaScript 函数可能在短时间内耗尽大量的 RU，如果达到了集合的限制，则可能受到速率限制。 资源密集型存储过程还可能被隔离以确保原始数据库操作的可用性。  
+JavaScript 函数也被绑定在资源消耗量上。 Cosmos DB 基于预配的数据库帐户大小按集合保留吞吐量。 吞吐量按照规范化单位的 CPU、内存和 IO 消耗量（称为请求单位或 RU）来表示。 JavaScript 函数可能在短时间内耗尽大量的 RU，如果达到了集合的限制，则可能受到速率限制。 资源密集型存储过程还可能被隔离以确保原始数据库操作的可用性。  
 
 ### <a name="example-bulk-importing-data-into-a-database-program"></a>示例：将数据批量导入到数据库程序中
 下面是一个编写以批量导入文档到集合的存储过程的示例。 请注意存储过程通过检查来自 createDocument 的布尔返回值，然后使用插入在每次存储过程调用中的文档的计数以在批处理之间跟踪和恢复进度，从而处理绑定执行的方式。
@@ -297,7 +297,7 @@ JavaScript 函数也被绑定在资源消耗量上。 DocumentDB 基于预配的
 
 ## <a id="trigger"></a>数据库触发器
 ### <a name="database-pre-triggers"></a>数据库预触发器
-DocumentDB 提供通过文档中的操作执行或触发的触发器。 例如，当创建文档时你可以指定预触发器 – 此预触发器将在文档创建之前运行。 下面就是如何使用预触发器来验证正在创建的文档的属性的示例：
+Cosmos DB 提供通过文档中的操作执行或触发的触发器。 例如，当创建文档时你可以指定预触发器 – 此预触发器将在文档创建之前运行。 下面就是如何使用预触发器来验证正在创建的文档的属性的示例：
 
     var validateDocumentContentsTrigger = {
         id: "validateDocumentContents",
@@ -436,10 +436,10 @@ DocumentDB 提供通过文档中的操作执行或触发的触发器。 例如�
 
 此触发器查询元数据文档并在其中更新新建文档的详细信息。  
 
-务必要注意的一点是 DocumentDB 中触发器的**事务**执行。 此后触发器作为与原始文档的创建相同的事务的一部分运行。 因此，如果我们从后触发器引发异常（假设我们无法更新元数据文档），那么整个事务都将失败并回滚。 不会创建文档，而将返回异常。  
+务必要注意的一点是 Cosmos DB 中触发器的**事务**执行。 此后触发器作为与原始文档的创建相同的事务的一部分运行。 因此，如果我们从后触发器引发异常（假设我们无法更新元数据文档），那么整个事务都将失败并回滚。 不会创建文档，而将返回异常。  
 
 ## <a id="udf"></a>用户定义的函数
-将用户定义的函数 (UDF) 用来扩展 DocumentDB SQL 查询语言语法和实现自定义业务逻辑。 它们只能从查询内部调用。 它们不具有对上下文对象的访问权限且旨在被用作仅计算的 JavaScript。 因此，UDF 可以在 DocumentDB 服务的次要副本上运行。  
+用户定义的函数 (UDF) 用于扩展 DocumentDB API SQL 查询语言语法和实现自定义业务逻辑。 它们只能从查询内部调用。 它们不具有对上下文对象的访问权限且旨在被用作仅计算的 JavaScript。 因此，UDF 可以在 Cosmos DB 服务的次要副本上运行。  
 
 以下示例创建 UDF 来计算基于各种收入档次的税率的所得税，然后在查询内部使用它查找所有支付税款超过 $20,000 的人。
 
@@ -707,7 +707,7 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
         });
 
 
-以下示例演示如何创建用户定义的函数 (UDF) 并在 [DocumentDB SQL 查询](documentdb-sql-query.md)中使用它。
+以下示例演示如何创建用户定义的函数 (UDF) 并在 [DocumentDB API SQL 查询](documentdb-sql-query.md)中使用它。
 
     UserDefinedFunction function = new UserDefinedFunction()
     {

@@ -1,24 +1,25 @@
 ---
-title: "Azure DocumentDB 门户工具：文档资源管理器 | Microsoft Docs"
-description: "DocumentDB 文档资源管理器是一个 Azure 门户工具，使用 NoSQL 文档数据库 DocumentDB 查看 JSON、编辑、创建和上传 JSON 文档。"
+title: "Azure Cosmos DB 门户工具：文档资源管理器 | Microsoft Docs"
+description: "了解 Azure Cosmos DB 文档资源管理器 - 一种可查看、编辑、创建和上传 JSON文档的 Azure 门户工具。"
 keywords: "查看 JSON"
-services: documentdb
+services: cosmosdb
 author: kirillg
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 029d81b3-6382-4799-a1bd-0dcbccd9968d
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: kirillg
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 4338fc03664175b7c27a48f1ab682179c1035313
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 77f8512d9fa47eee25596aa3c407fd6889edbe0e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,14 +28,14 @@ ms.lasthandoff: 04/21/2017
 本文概述了在门户中创建、编辑和查询文档的两种方式：[文档资源管理器](#launch-document-explorer)和[数据资源管理器（预览版）](#data-explorer)。
 
 > [!NOTE]
-> 具有 MongoDB 协议支持的 DocumentDB 帐户未启用文档资源管理器。 启用此功能后，此页将会更新。
+> 具有 MongoDB 协议支持的 Azure Cosmos DB 帐户中未启用文档资源管理器。 启用此功能后，此页将会更新。
 
 <a id="launch-document-explorer"></a>
 
 ## <a name="launch-document-explorer-in-the-azure-portal"></a>在 Azure 门户中启动文档资源管理器
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击 ![Azure DocumentDB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“NoSQL (DocumentDB)”。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航栏中，单击 ![Azure Cosmos DB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“Azure Cosmos DB”。 
 
-    如果“NoSQL (DocumentDB)”不可见，请单击底部的“更多服务”，然后单击 ![Azure DocumentDB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“NoSQL (DocumentDB)”。
+    如果未显示 Azure Cosmos DB，单击底部的“更多服务”，然后单击 ![Azure Cosmos DB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“Azure Cosmos DB”。
 2. 选择帐户名称。 
 3. 在资源菜单中，单击“文档资源管理器”。 
    
@@ -58,7 +59,7 @@ ms.lasthandoff: 04/21/2017
    > 
    > 
    
-    如果已有来自 JSON 文件、MongoDB、SQL Server、CSV 文件、Azure 表存储、Amazon DynamoDB、HBase 或其他 DocumentDB 集合的数据，可以使用 DocumentDB 的[数据迁移工具](documentdb-import-data.md)快速导入数据。
+    如果已有来自 JSON 文件、MongoDB、SQL Server、CSV 文件、Azure 表存储、Amazon DynamoDB、HBase 或其他 DocumentDB API 集合的数据，可以使用 DocumentDB API 的[数据迁移工具](documentdb-import-data.md)快速导入数据。
 
 ## <a name="edit-a-json-document"></a>编辑 JSON 文档
 1. [启动文档资源管理器](#launch-document-explorer)。
@@ -70,7 +71,7 @@ ms.lasthandoff: 04/21/2017
    
     ![文档资源管理器“放弃”命令的屏幕截图](./media/documentdb-view-JSON-document-explorer/discardedit.png)
 
-## <a name="delete-a-document-from-documentdb"></a>删除 DocumentDB 中的文档
+## <a name="delete-a-document-from-cosmos-db"></a>删除 Cosmos DB 中的文档
 1. [启动文档资源管理器](#launch-document-explorer)。
 2. 在“文档资源管理器”选择文档，单击“删除”，然后确认删除。 确认后，将立即从“文档资源管理器”列表中删除该文档。
    
@@ -107,7 +108,7 @@ ms.lasthandoff: 04/21/2017
    
    ![文档资源管理器“设置”边栏选项卡的屏幕截图](./media/documentdb-view-JSON-document-explorer/documentexplorerfiltersettings2.png)
    
-   文档资源管理器将自动刷新与筛选查询匹配的文档结果。 在 [SQL 查询和 SQL 语法](documentdb-sql-query.md)一文中阅读有关 DocumentDB SQL 语法的信息，或打印 [SQL 查询备忘单](documentdb-sql-query-cheat-sheet.md)的副本。
+   文档资源管理器将自动刷新与筛选查询匹配的文档结果。 有关 DocumentDB API SQL 语法的详细信息，请阅读 [SQL 查询和 SQL 语法](documentdb-sql-query.md)一文，或打印 [SQL 查询速查表](documentdb-sql-query-cheat-sheet.md)的副本。
    
    可使用“数据库”和“集合”下拉列表框轻松更改当前查看其中文档的集合，而无需关闭并重新启动文档资源管理器。  
    
@@ -157,18 +158,18 @@ ms.lasthandoff: 04/21/2017
 ![显示门户中“新建集合”按钮的屏幕截图](./media/documentdb-view-JSON-document-explorer/azure-documentdb-data-explorer.png)
 
 ## <a name="work-with-json-documents-outside-the-portal"></a>在门户外使用 JSON 文档
-Azure 门户中的文档资源管理器只是在 DocumentDB 中使用文档的一种方法。 也可以通过 [REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) 或[客户端 SDK](documentdb-sdk-dotnet.md) 来处理文档。 有关代码示例，请参阅 [.NET SDK 文档示例](documentdb-dotnet-samples.md#document-examples)和 [Node.js SDK 文档示例](documentdb-nodejs-samples.md#document-examples)。
+Azure 门户中的文档资源管理器只是在 Cosmos DB 中处理文档的一种方法。 也可以通过 [REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) 或[客户端 SDK](documentdb-sdk-dotnet.md) 来处理文档。 有关代码示例，请参阅 [.NET SDK 文档示例](documentdb-dotnet-samples.md#document-examples)和 [Node.js SDK 文档示例](documentdb-nodejs-samples.md#document-examples)。
 
-如果需要从其他源（JSON 文件、MongoDB、SQL Server、CSV 文件、Azure 表存储、Amazon DynamoDB 或 HBase）导入或迁移文件，可以使用 DocumentDB 的[数据迁移工具](documentdb-import-data.md)将数据快速导入到 DocumentDB。
+如果需要从其他源（JSON 文件、MongoDB、SQL Server、CSV 文件、Azure 表存储、Amazon DynamoDB 或 HBase）导入或迁移文件，可以使用 Cosmos DB 的[数据迁移工具](documentdb-import-data.md)将数据快速导入到 Cosmos DB。
 
 ## <a name="troubleshoot"></a>故障排除
 **症状**：文档资源管理器返回“未找到文档”。
 
 **解决方案**：确保已选择正确的订阅、已插入文档的数据库和集合。 另外，请检查以确保在吞吐量配额内运行。 如果在最大吞吐量级别运行并受到限制，请减少应用程序使用量，以便在集合的最大吞吐量配额下运行。
 
-**说明**：门户是一个应用程序，就像任何其他应用程序一样，对 DocumentDB 数据库和集合进行调用。 如果当前由于从单独的应用程序进行调用，请求受到限制，门户可能也同样受到限制，导致资源未显示在门户中。 若要解决此问题，需解决高吞吐量使用率的原因，然后刷新门户边栏选项卡。 有关如何测量和降低吞吐量使用率的信息，请参阅[性能提示](documentdb-performance-tips.md#throughput)一文的[吞吐量](documentdb-performance-tips.md)部分。
+**说明**：门户是一种应用程序，就像任何其他应用程序一样，对 Cosmos DB 数据库和集合进行调用。 如果当前由于从单独的应用程序进行调用，请求受到限制，门户可能也同样受到限制，导致资源未显示在门户中。 若要解决此问题，需解决高吞吐量使用率的原因，然后刷新门户边栏选项卡。 有关如何测量和降低吞吐量使用率的信息，请参阅[性能提示](documentdb-performance-tips.md#throughput)一文的[吞吐量](documentdb-performance-tips.md)部分。
 
 ## <a name="next-steps"></a>后续步骤
-有关文档资源管理器中支持的 DocumentDB SQL 语法的详细信息，请参阅 [SQL 查询和 SQL 语法](documentdb-sql-query.md)一文或打印 [SQL 查询备忘单](documentdb-sql-query-cheat-sheet.md)。
+若要详细了解文档资源管理器中支持的 DocumentDB API SQL 语法，请参阅 [SQL 查询和 SQL 语法](documentdb-sql-query.md)一文或打印 [SQL 查询备忘单](documentdb-sql-query-cheat-sheet.md)。
 
 

@@ -1,5 +1,5 @@
 ---
-title: "为点到站点连接创建自签名证书：PowerShell：Azure | Microsoft 文档"
+title: "为点到站点连接创建和导出证书：PowerShell：Azure | Microsoft Docs"
 description: "本文包含使用 PowerShell 在 Windows 10 上创建自签名根证书、导出公钥和生成客户端证书的步骤。"
 services: vpn-gateway
 documentationcenter: na
@@ -13,33 +13,43 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/24/2017
+ms.date: 05/04/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 72fc6eb93c77dd5a0a7ce55897f4c06fb98c0721
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: 1bfcb8683669770d6dd927cbde53a683bbc1d56e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="create-a-self-signed-root-certificate-for-point-to-site-connections-using-powershell"></a>使用 PowerShell 为点到站点连接创建自签名根证书
+# <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell"></a>使用 PowerShell 为点到站点连接生成并导出证书
 
-点到站点连接使用证书进行身份验证。 配置点到站点连接时，需要将根证书的公钥（.cer 文件）上载到 Azure。 必须从根证书生成客户端证书，并将其安装在连接到 VNet 的每台客户端计算机上。 客户端证书允许客户端进行身份验证。 本文将说明创建自签名根证书、导出公钥，以及生成客户端证书。 本文不包含点到站点配置说明或点到站点常见问题解答。 可以通过从以下列表中选择一篇文章来查找该信息：
+本文说明了如何创建自签名根证书以及生成客户端证书。 本文不包含点到站点配置说明或点到站点常见问题解答。 可以通过从以下列表中选择其中一篇“配置点到站点”文章来查找该信息：
 
 > [!div class="op_single_selector"]
-> * [创建自签名证书](vpn-gateway-certificates-point-to-site.md)
+> * [创建自签名证书 - PowerShell](vpn-gateway-certificates-point-to-site.md)
+> * [创建自签名证书 - Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 > * [配置点到站点 - Resource Manager - Azure 门户](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [配置点到站点 - Resource Manager - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [配置点到站点 - 经典 - Azure 门户](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 > 
 > 
 
+点到站点连接使用证书进行身份验证。 配置点到站点连接时，需要将根证书的公钥（.cer 文件）上载到 Azure。 此外，必须从根证书生成客户端证书，并将其安装在连接到 VNet 的每台客户端计算机上。 客户端证书允许客户端进行身份验证。
+
+
+> [!NOTE]
+> 必须在运行 Windows 10 的计算机上执行本文中的步骤。 生成证书所需的 PowerShell cmdlet 是 Windows 10 操作系统的一部分，并且在其他版本的 Windows 上不起作用。 生成证书只需要这些 cmdlet。 生成证书后，可以在任何支持的客户端操作系统上安装它们。 如果无权访问 Windows 10 计算机，则可以使用 Makecert 生成证书。 但是，使用 Makecert 生成的证书虽然与点到站点连接兼容，但不是 SHA-2。 有关 Makecert 说明，请参阅[使用 Makecert 创建证书](vpn-gateway-certificates-point-to-site-makecert.md)。 使用 PowerShell 或 Makecert 创建的证书可以安装在任何[支持的客户端操作系统](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)上，而不仅仅是用于创建这些证书的操作系统上。
+> 
+>
+
 ## <a name="rootcert"></a>创建自签名根证书
 
-以下步骤将引导你完成在 Windows 10 上使用 PowerShell 创建自签名根证书的过程。 这些步骤中使用的 cmdlet 和参数是 Windows 10 操作系统的一部分，而不是 PowerShell 版本的一部分。 这并不意味着，所创建的证书只能在 Windows 10 上安装。 有关支持的客户端的信息，请参阅[点到站点常见问题解答](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)。
+以下步骤演示如何在 Windows 10 上使用 PowerShell 创建自签名根证书。 这些步骤中使用的 cmdlet 和参数是 Windows 10 操作系统的一部分，而不是 PowerShell 版本的一部分。 这并不意味着，所创建的证书只能在 Windows 10 上安装。 可以在任何支持的客户端上安装它们。 有关支持的客户端的信息，请参阅[点到站点常见问题解答](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)。
 
 1. 在运行 Windows 10 的计算机上，使用提升的特权打开 Windows PowerShell 控制台。
-2. 使用以下示例创建自签名根证书。 以下示例创建名为“P2SRootCert”、将自动安装在“Certificates-Current User\Personal\Certificates”中的自签名根证书。 打开 *certmgr.msc* 即可查看该证书。
+2. 使用以下示例创建自签名根证书。 以下示例创建名为“P2SRootCert”、将自动安装在“Certificates-Current User\Personal\Certificates”中的自签名根证书。 打开“certmgr.msc”或“管理用户证书”，即可查看证书。
 
   ```powershell
   $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -48,17 +58,13 @@ ms.lasthandoff: 04/25/2017
   -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
   ```
 
-### <a name="cer"></a>获取公钥
+### <a name="cer"></a>导出公钥 (.cer)
 
-点到站点连接要求将公钥 (.cer) 上载到 Azure。 以下步骤可帮助你导出自签名根证书的 .cer 文件：
+[!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
-1. 若要获取证书 .cer 文件，请打开“管理用户证书”。 找到自签名根证书（通常位于“Certificates - Current User\Personal\Certificates”中），然后右键单击。 单击“所有任务”，然后单击“导出”。 此操作将打开“证书导出向导”。
-2. 在向导中，单击“下一步”。 选择“否，不导出私钥”，然后单击“下一步”。
-3. 在“导出文件格式”页上，选择“Base-64 编码的 X.509 (.CER)”，然后单击“下一步”。 
-4. 在“要导出的文件”中，“浏览”到要将证书导出的目标位置。 在“文件名”中，为证书文件命名。 然后单击“下一步”。
-5. 单击“完成”导出证书。 会看到“导出成功”。 单击“确定”关闭向导。
+必须将 exported.cer 文件上传到 Azure。 有关说明，请参阅[配置点到站点连接](vpn-gateway-howto-point-to-site-rm-ps.md#upload)。
 
-### <a name="to-export-a-self-signed-root-certificate-optional"></a>导出自签名根证书（可选）
+### <a name="export-the-self-signed-root-certificate-and-public-key-to-store-it-optional"></a>导出自签名根证书和公钥以将其存储（可选）
 
 你可能想要导出自签名根证书并将它存储在安全位置。 如果需要，可以稍后在另一台计算机上安装此自签名证书，然后生成更多客户端证书，或导出另一个 .cer 文件。 若要将自签名根证书导出为 .pfx，请选择该根证书，然后使用[导出客户端证书](#clientexport)中所述的步骤导出。
 
@@ -125,24 +131,12 @@ New-SelfSignedCertificate -Type Custom -KeySpec Signature `
 
 ## <a name="clientexport"></a>导出客户端证书   
 
-生成客户端证书时，该证书会自动安装在用于生成它的计算机上。 如果想要在另一台客户端计算机上安装客户端证书，需要导出生成的客户端证书。                              
-
-1. 若要导出客户端证书，请打开“管理用户证书”。 生成的客户端证书默认位于“Certificates - Current User\Personal\Certificates”中。 右键单击要导出的客户端证书，单击“所有任务”，然后单击“导出”打开“证书导出向导”。
-2. 在向导中，单击“**下一步**”，选择“**是，导出私钥**”，然后单击“**下一步**”。
-3. 在“导出文件格式”页上，保留选择默认值。 请务必选中“包括证书路径中的所有证书(如果可能)”。 选择此项也会导出成功身份验证所需的根证书信息。 然后单击“下一步”。
-4. 在“**安全性**”页上，必须保护私钥。 如果选择使用密码，请务必记下或牢记为此证书设置的密码。 然后单击“下一步”。
-5. 在“要导出的文件”中，“浏览”到要将证书导出的目标位置。 在“文件名”中，为证书文件命名。 然后单击“下一步”。
-6. 单击“完成”导出证书。    
+[!INCLUDE [Export client certificate](../../includes/vpn-gateway-certificates-export-client-cert-include.md)]
+    
 
 ## <a name="install"></a>安装已导出的客户端证书
 
-如果想要从另一台客户端计算机（而不是用于生成客户端证书的计算机）创建 P2S 连接，需要安装客户端证书。 安装客户端证书时，需要使用导出客户端证书时创建的密码。
-
-1. 找到 *.pfx* 文件并将其复制到客户端计算机。 在客户端计算机上，双击 *.pfx* 文件以进行安装。 将“存储位置”保留为“当前用户”，然后单击“下一步”。
-2. 在“要导入的**文件**”页上，不要进行任何更改。 单击“下一步”。
-3. 在“私钥保护”页上，输入证书的密码，或验证安全主体是否正确，然后单击“下一步”。
-4. 在“**证书存储**”页上，保留默认位置，然后单击“**下一步**”。
-5. 单击“**完成**”。 在证书安装的“**安全警告**”上，单击“**是**”。 可随时单击“是”，因为证书已生成。 现已成功导入证书。
+[!INCLUDE [Install client certificate](../../includes/vpn-gateway-certificates-install-client-cert-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

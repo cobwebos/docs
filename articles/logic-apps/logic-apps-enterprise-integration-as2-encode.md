@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: a80c051d17eefd394ff5cd0d12e99b16ca3ae28c
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 82d64d159412af6ff2bba1d625af66cdd18a4616
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.lasthandoff: 03/10/2017
 
 2. 编码 AS2 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加一个触发器，然后向逻辑应用中添加一个操作。
 
-3.    在搜索框中，输入“AS2”作为筛选器。 选择“AS2 - 编码 AS2 消息”。
+3.    在搜索框中，输入“AS2”作为筛选器。 选择“AS2 - 编码 AS2 消息”。****
    
     ![搜索“AS2”](./media/logic-apps-enterprise-integration-as2-encode/as2decodeimage1.png)
 
@@ -75,6 +76,9 @@ ms.lasthandoff: 03/10/2017
 ## <a name="try-this-sample"></a>尝试此示例
 
 若要尝试部署完全正常运行的逻辑应用和示例 AS2 方案，请参阅 [AS2 逻辑应用模板和方案](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)。
+
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/as2/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 

@@ -17,10 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
-ms.openlocfilehash: 06161c2950fbe99d2e4f9c1b416695a5f9f18ca4
-ms.lasthandoff: 01/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 916fa40d9ac857dfa72197b40c232834593d3891
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -38,16 +39,16 @@ ms.lasthandoff: 01/25/2017
 ***
 
 ## <a name="lesson-1-configure-your-nuc"></a>第 1 课：配置 NUC
-![第&1; 课端到端示意图](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson1.png)
+![第 1 课端到端示意图](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson1.png)
 
-本课介绍如何将工具包中的 Intel NUC（下一代计算单元，Next Unit of Computing）设置为 Azure IoT 网关、在 NUC 上安装 Azure IoT 网关 SDK 包，以及运行示例应用验证网关功能。
+本课介绍如何将工具包中的 Intel NUC（下一代计算单元）设置为 Azure IoT 网关、在 NUC 上安装 Azure IoT Edge 包，以及运行示例应用验证网关功能。
 
 *估计完成时间：15 分钟*
 
 转到[将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)
 
 ## <a name="lesson-2-create-your-iot-hub"></a>第 2 课：创建 IoT 中心
-![第&2; 课端到端示意图](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson2.png)
+![第 2 课端到端示意图](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson2.png)
 
 本课介绍如何在主计算机上安装工具和软件。 然后，创建免费的 Azure 帐户，预配 Azure IoT 中心，并在 IoT 中心创建第一个设备。
 
@@ -68,7 +69,7 @@ ms.lasthandoff: 01/25/2017
 转到[创建 IoT 中心并注册设备](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
 
 ## <a name="lesson-3-receive-messages-from-the-simulated-device-and-read-messages-from-your-iot-hub"></a>第 3 课：从模拟设备接收消息以及从 IoT 中心读取消息
-本课介绍如何使用脚本在网关中自动配置和执行模拟设备应用。 模拟设备应用生成示例温度数据，并将其发送到 IoT 中心模块。 IoT 中心模块打包接收的数据，并通过 Azure IoT 网关 SDK 中提供的网关框架将数据发送到 IoT 中心。
+本课介绍如何使用脚本在网关中自动配置和执行模拟设备应用。 模拟设备应用生成示例温度数据，并将其发送到 IoT 中心模块。 IoT 中心模块打包接收的数据，并通过 Azure IoT Edge 中提供的网关框架将数据发送到 IoT 中心。
 
 ![第 3 课端到端关系图](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson3.png)
 

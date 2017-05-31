@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/06/2017
 ms.author: msfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: a2a72da08ccff17407fcdd98783137b091651b47
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 77eb843f83bd2d246dd4943e52c1e8b2ac07a5ab
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -129,7 +131,7 @@ ms.openlocfilehash: a2a72da08ccff17407fcdd98783137b091651b47
 运行状况与诊断不同。 运行状况是指微服务报告其当前状态，以便采取适当的措施。 一个很好的例子便是使用升级和部署机制来保持可用性。 虽然当前服务可能由于进程崩溃或计算机重新启动而状况不正常，但服务可能仍可运行。 不应该执行升级而让情况恶化。 最好是先进行调查，或让微服务有时间恢复。 微服务中的运行状况事件可以帮助我们制定明智的决策，并且实际上也有助于创建自愈服务。
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric 作为微服务平台
-Microsoft 从提供盒装产品（通常是单一式）转换到提供服务后，Azure Service Fabric 横空问世。 Azure SQL 数据库和 Azure DocumentDB 等大型服务的生成和运营经验造就了 Service Fabric。 该平台随着越来越多服务采用它而不断发展变化。 重要的是，Service Fabric 不仅要在 Azure 中运行，还要在独立的 Windows Server 部署中运行。
+Microsoft 从提供盒装产品（通常是单一式）转换到提供服务后，Azure Service Fabric 横空问世。 构建和运营 Azure SQL 数据库和 Azure Cosmos DB 等大型服务的经验造就了 Service Fabric。 该平台随着越来越多服务采用它而不断发展变化。 重要的是，Service Fabric 不仅要在 Azure 中运行，还要在独立的 Windows Server 部署中运行。
 
 ***Service Fabric 旨在解决构建和运行服务方面的难题，并有效地利用基础结构资源，使团队可以使用微服务方法来解决业务问题。***
 
@@ -153,9 +155,4 @@ Service Fabric 的目标是将使用微服务方法构建应用程序时的复�
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

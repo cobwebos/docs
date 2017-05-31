@@ -14,18 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: ecc6f4a1a8cbb07d9f610e8f6fb5ca66b7532513
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 198a325e02aac97d659d74b090414f7d6f074f14
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="get-started-with-device-management-node"></a>设备管理入门 (Node)
 ## <a name="introduction"></a>介绍
-IoT 云应用程序可以使用 Azure IoT 中心中的基元（即设备克隆和直接方法）远程启动和监视设备上的设备管理操作。 此文章提供有关 IoT 云应用程序和设备如何使用 IoT 中心协同工作来启动和监视远程设备重新启动的指导和代码。
+IoT 云应用程序可以使用 Azure IoT 中心中的基元（即设备孪生和直接方法）远程启动和监视设备上的设备管理操作。 此文章提供有关 IoT 云应用程序和设备如何使用 IoT 中心协同工作来启动和监视远程设备重新启动的指导和代码。
 
-若要从基于云的后端应用远程启动和监视设备上的设备管理操作，请使用 Azure IoT 中心内的基元，例如[设备克隆][lnk-devtwin]和[直接方法][lnk-c2dmethod]。 本教程说明后端应用和设备如何协同工作，实现从 IoT 中心启动和监视远程设备重新启动。
+若要从基于云的后端应用远程启动和监视设备上的设备管理操作，请使用 Azure IoT 中心内的基元，例如[设备孪生][lnk-devtwin]和[直接方法][lnk-c2dmethod]。 本教程说明后端应用和设备如何协同工作，实现从 IoT 中心启动和监视远程设备重新启动。
 
 使用直接方法可从云中的后端应用启动设备管理操作，例如重新启动、恢复出厂设置以及固件更新。 设备负责以下操作：
 
@@ -61,7 +62,7 @@ IoT 云应用程序可以使用 Azure IoT 中心中的基元（即设备克隆�
 
 * 创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法
 * 触发模拟设备重新启动
-* 通过报告的属性，设备克隆查询可标识设备及设备上次重新启动的时间
+* 通过报告的属性，设备孪生查询可标识设备及设备上次重新启动的时间
 
 1. 创建名为 **manageddevice** 的空文件夹。  在 **manageddevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
    
@@ -256,7 +257,7 @@ IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设�
 
 若要了解如何扩展 IoT 解决方案以及在多个设备上计划方法调用，请参阅[计划和广播作业][lnk-tutorial-jobs]教程。
 
-若要继续完成 IoT 中心入门内容，请参阅 [IoT 网关 SDK 入门][lnk-gateway-SDK]。
+若要继续完成 IoT 中心入门内容，请参阅 [Azure IoT Edge 入门][lnk-gateway-SDK]。
 
 <!-- images and links -->
 [img-output]: media/iot-hub-get-started-with-dm/image6.png

@@ -1,6 +1,6 @@
 ---
-title: "通过 Azure IoT 网关 SDK 在 IoT 网关上进行数据转换 | Microsoft Docs"
-description: "通过 Azure IoT 网关 SDK 的一个自定义模块，使用 IoT 网关转换传感器数据的格式。"
+title: "通过 Azure IoT Edge 在 IoT 网关上进行数据转换 | Microsoft Docs"
+description: "通过 Azure IoT Edge 的自定义模块，使用 IoT 网关转换传感器数据的格式。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,21 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: d7897f1a7eee5fbb04cf43da0d0156a6b8fb11f6
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7bf9e64db91cb0fec37ff242bea94dbbd0833054
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-gateway-sdk"></a>通过 Azure IoT 网关 SDK，使用 IoT 网关进行传感器数据转换
+# <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge"></a>通过 Azure IoT Edge，使用 IoT 网关进行传感器数据转换
 
 > [!NOTE]
 > 在开始本教程之前，请确保已按顺序完成以下课程：
 > * [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 > * [使用 IoT 网关将事项连接到云 - SensorTag 到 Azure IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 
-IoT 网关的一个目的是在将收集的数据发送到云之前，先处理这些数据。 Azure IoT 网关 SDK 引入了可创建并组合形成数据处理工作流的模块。 模块接收消息，对其执行某些操作，然后将其转手供其他模块处理。
+IoT 网关的一个目的是在将收集的数据发送到云之前，先处理这些数据。 Azure IoT Edge 引入了可创建并组合形成数据处理工作流的模块。 模块接收消息，对其执行某些操作，然后将其转手供其他模块处理。
 
 ## <a name="what-you-learn"></a>学习内容
 
@@ -39,7 +40,7 @@ IoT 网关的一个目的是在将收集的数据发送到云之前，先处理�
 
 * 创建一个模块，将收到的消息转换为 .json 格式。
 * 编译该模块。
-* 通过 Azure IoT 网关 SDK，将模块添加到 BLE 示例应用程序。
+* 通过 Azure IoT Edge，将模块添加到 BLE 示例应用程序。
 * 运行示例应用程序。
 
 ## <a name="what-you-need"></a>所需条件
@@ -61,7 +62,7 @@ IoT 网关的一个目的是在将收集的数据发送到云之前，先处理�
    git clone https://github.com/Azure-Samples/iot-hub-c-intel-nuc-gateway-customized-module.git
    ```
 
-   这是采用 C 编程语言编写的本机 Azure 网关 SDK 模块。 该模块将收到的消息转换为以下格式：
+   这是采用 C 编程语言编写的本机 Azure Edge 模块。 该模块将收到的消息转换为以下格式：
 
    ```json
    {"deviceId": "Intel NUC Gateway", "messageId": 0, "temperature": 0.0}
