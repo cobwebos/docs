@@ -13,23 +13,24 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 05/02/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 9068e0e92e15491d3377a1b8f42071b56373396e
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 37f26e8af09c9ff77fad7f275769e90b82596881
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
-使用脚本操作可以通过指定群集配置设置，或者在群集上安装额外的服务、工具或其他软件，来自定义 Azure HDInsight 群集。 你可以在创建群集期间或者在运行中的群集上使用脚本操作。
+了解如何使用 Bash 脚本自定义 HDInsight 群集。 在创建群集期间和之后，可以通过脚本操作自定义 HDInsight。
 
 > [!IMPORTANT]
-> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
 
-## <a name="what-are-script-actions"></a>什么是脚本操作？
+## <a name="what-are-script-actions"></a>什么是脚本操作
 
 脚本操作是 Azure 在群集节点上运行的以进行配置更改或安装软件的 Bash 脚本。 脚本操作以 root 身份执行，提供对群集节点的完全访问权限。
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 04/12/2017
 * [使用重试逻辑从暂时性错误中恢复](#bps9)
 
 > [!IMPORTANT]
-> 脚本操作必须在 60 分钟内完成，否则将会超时。 在节点预配期间，脚本将与其他安装和配置进程一同运行。 争用 CPU 时间和网络带宽等资源可能导致完成脚本所需的时间要长于在开发环境中所需的时间。
+> 脚本操作必须在 60 分钟内完成。 否则脚本将会失败。 在节点预配期间，脚本将与其他安装和配置进程一同运行。 争用 CPU 时间和网络带宽等资源可能导致完成脚本所需的时间要长于在开发环境中所需的时间。
 
 ### <a name="bPS1"></a>选择目标 Hadoop 版本
 
@@ -69,11 +70,11 @@ ms.lasthandoff: 04/12/2017
 
 ### <a name="bps10"></a>选择目标 OS 版本
 
-基于 Linux 的 HDInsight 取决于 Ubuntu Linux 分发。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会影响脚本的行为方式。 例如，HDInsight 3.4 及更早版本取决于使用 Upstart 的 Ubuntu 版本。 版本 3.5 取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 依赖不同的命令，因此编写的脚本应该同时使用两者。
+基于 Linux 的 HDInsight 取决于 Ubuntu Linux 分发。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更早版本取决于使用 Upstart 的 Ubuntu 版本。 版本 3.5 取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 依赖不同的命令，因此编写的脚本应该同时使用两者。
 
 HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在指向 Java 8。
 
-可以通过使用 `lsb_release` 来检查 OS 版本。 Upstart 安装脚本中的以下代码片段将演示如何确定脚本是否在 Ubuntu 14 或 16 上运行：
+可以通过使用 `lsb_release` 来检查 OS 版本。 以下代码演示如何确定脚本是在 Ubuntu 14 还是 16 上运行：
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -112,7 +113,7 @@ fi
 
 ### <a name="bPS2"></a>提供指向脚本资源的可靠链接
 
-应确保在群集的整个生存期内，脚本使用的脚本和资源都保持可用，并且这些文件的版本在此持续时间内不会更改。 如果在缩放操作期间将新节点添加到了群集，将需要用到这些资源。
+在群集的整个生存期内，脚本和关联的资源必须保持可用。 如果在缩放操作期间将新节点添加到了群集，将需要用到这些资源。
 
 最佳做法是下载订阅上 Azure 存储帐户中的所有内容并将其存档。
 
@@ -123,34 +124,36 @@ fi
 
 ### <a name="bPS4"></a>使用预编译的资源
 
-若要减少运行脚本所花费的时间，请避免使用从源代码编译资源的操作。 应预编译这些资源，并将二进制文件存储在 Azure Blob 存储中，以便能够通过脚本快速将其下载到群集中。
+若要减少运行脚本所花费的时间，请避免使用从源代码编译资源的操作。 请预编译这些资源，并将其存储在 Azure Blob 存储中，以便能够快速下载。
 
 ### <a name="bPS3"></a>确保群集自定义脚本是幂等的
 
-必须将脚本设计为具有幂等性，也就是说，如果多次运行脚本，应确保群集在每次运行时都会返回到相同状态。
+脚本必须是幂等的。 如果脚本多次运行，它应每次将群集返回到相同的状态。
 
-例如，如果自定义脚本在其首次运行时在 /usr/local/bin 上安装了应用程序，则在重新制作映像时，该脚本应检查应用程序是否已在 /usr/local/bin 位置存在，然后才能继续在该脚本中执行其他步骤。
+例如，修改配置文件的脚本如果运行多次，不应添加重复的项。
 
 ### <a name="bPS5"></a>确保群集体系结构的高可用性
 
-基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作将针对这两个节点运行。 如果安装的组件预期只有一个头节点，则必须将脚本设计为只在群集中两个头节点之一上安装组件。
+基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作将针对这两个节点运行。 如果安装的组件只有一个头节点，请不要在两个头节点上安装组件。
 
 > [!IMPORTANT]
-> 安装为 HDInsight 一部分的默认服务旨在根据需要在两个头节点之间故障转移，但是此功能未扩展到通过脚本操作安装的自定义组件。 如果需要让通过脚本操作安装的组件高度可用，则必须实现自己的、使用两个可用头节点的故障转移机制。
+> 作为 HDInsight 一部分提供的服务旨在根据需要在两个头节点之间故障转移。 此功能未扩展到通过脚本操作安装的自定义组件。 如果需要为自定义组件提供高可用性，必须实现自己的故障转移机制。
 
 ### <a name="bPS6"></a>配置自定义组件以使用 Azure Blob 存储
 
-在群集上安装的组件可能具有使用 Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 HDInsight 使用 Azure Blob 存储 (WASB) 作为默认存储。 这可以提供与 HDFS 兼容的文件系统，即使删除了群集，也能保存数据。 应将安装的组件配置为使用 WASB 而不是 HDFS。
+在群集上安装的组件可能具有使用 Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 HDInsight 使用 Azure 存储或 Data Lake Store 作为默认存储。 两者可以提供与 HDFS 兼容的文件系统，即使删除了群集，也能保存数据。 可能需要将安装的组件配置为使用 WASB 或 ADL，而不是 HDFS。
 
-例如，以下脚本将 giraph-examples.jar 文件从本地文件系统复制到 WASB：
+对于大多数操作，不需要指定文件系统。 例如，以下脚本将 giraph-examples.jar 文件从本地文件系统复制到群集存储：
 
 ```bash
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
+在此示例中，`hdfs` 命令以透明方式使用默认群集存储。 对于某些操作，可能需要指定 URI。 例如，为 Data Lake Store 指定 `adl:///example/jars`，或者为 Azure 存储指定 `wasb:///example/jars`。
+
 ### <a name="bPS7"></a>将信息写入 STDOUT 和 STDERR
 
-系统将会记录脚本执行期间写入 STDOUT 和 STDERR 的信息，你可以使用 Ambari Web UI 来查看这些信息。
+HDInsight 会记录已写入 STDOUT 和 STDERR 的脚本输出。 可以使用 Ambari Web UI 查看这些信息。
 
 > [!NOTE]
 > 只有在成功创建群集之后，才能使用 Ambari。 如果在群集创建期间使用脚本操作但创建失败，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)的故障排除部分，以了解访问所记录信息的其他方式。
@@ -167,13 +170,13 @@ echo "Getting ready to install Foo"
 >&2 echo "An error occurred installing Foo"
 ```
 
-这会将发送到 STDOUT（1，这是默认设置，因此未在此处列出）的信息重定向到 STDERR (2)。 有关 IO 重定向的详细信息，请参阅 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)。
+这会将写入 STDOUT 的信息改为重定向到 STDERR (2)。 有关 IO 重定向的详细信息，请参阅 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)。
 
 有关查看脚本操作记录的信息的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
 ### <a name="bps8"></a>将文件另存为包含 LF 行尾的 ASCII
 
-应将 Bash 脚本存储为 ASCII 格式，该格式以 LF 作为行尾。 如果将文件存储为 UTF-8，文件开头可能包含字节顺序标记，或者以 CRLF 作为行尾，这对于 Windows 编辑器很常见，在这种情况下，脚本将会失败并返回如下所示的错误：
+应将 Bash 脚本存储为 ASCII 格式，该格式以 LF 作为行尾。 存储为 UTF-8 或者使用 CRLF 作为行尾的文件可能失败并返回以下错误：
 
 ```
 $'\r': command not found
@@ -184,7 +187,7 @@ line 1: #!/usr/bin/env: No such file or directory
 
 下载文件、使用 apt-get 安装包或者执行通过 Internet 传输数据的其他操作时，可能会由于暂时性网络错误而失败。 例如，与你通信的远程资源可能正在故障转移到备份节点。
 
-若要使脚本能够从暂时性错误中恢复，可以实现重试逻辑。 下面是一个示例函数，它将运行任何传入的命令，并且在命令失败时最多重试三次。 每两次重试的间隔时间为两秒。
+若要使脚本能够从暂时性错误中恢复，可以实现重试逻辑。 以下示例函数演示如何实现重逻辑。 它在失败之前重试操作三次。
 
 ```bash
 #retry
@@ -210,7 +213,7 @@ retry() {
 }
 ```
 
-下面是使用此函数的示例。
+以下示例演示如何使用此函数。
 
 ```bash
 retry ls -ltr foo
@@ -220,14 +223,14 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helpermethods"></a>自定义脚本的帮助器方法
 
-脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法在 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 中定义，可以使用以下语法将其包括在你的脚本中：
+脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法包含在 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 脚本中。 使用以下命令下载这些方法并在脚本中使用：
 
 ```bash
 # Import the helper method module.
 wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
 ```
 
-这样，便可以在你的脚本中使用以下帮助器：
+可在脚本中使用以下帮助器：
 
 | 帮助器用法 | 说明 |
 | --- | --- |
@@ -248,25 +251,25 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 ### <a name="passing-parameters-to-a-script"></a>将参数传递给脚本
 
-在某些情况下，脚本可能需要参数。 例如，你可能需要群集的管理员密码，以从 Ambari REST API 检索信息。
+在某些情况下，脚本可能需要参数。 例如，使用 Ambari REST API 时，可能需要群集的管理员密码。
 
 传递给脚本的参数称为“位置参数”，将分配到 `$2` 作为第一个参数，分配到 `$1` 作为第二个参数，依此类推。 `$0` 包含该脚本本身的名称。
 
-传递给脚本作为参数的值应加上单引号 (')，以便传递的值被视为文本，并且不对包含的特殊字符（例如“!”）进行特殊处理。
+作为参数传递给脚本的值应括在单引号 (') 中。 这样可以确保将传递的值视为文本。
 
 ### <a name="setting-environment-variables"></a>设置环境变量
 
-按如下所示设置环境变量：
+以下语句设置环境变量：
 
     VARIABLENAME=value
 
-其中，VARIABLENAME 是变量的名称。 若要访问其后面的变量，请使用 `$VARIABLENAME`。 例如，若要将位置参数提供的值指定为名为 PASSWORD 的环境变量，请使用以下语句：
+其中，VARIABLENAME 是变量的名称。 若要访问变量，请使用 `$VARIABLENAME`。 例如，若要将位置参数提供的值指定为名为 PASSWORD 的环境变量，请使用以下语句：
 
     PASSWORD=$1
 
 对信息进行后续访问时可以使用 `$PASSWORD`。
 
-在脚本中设置的环境变量只在脚本范围内存在。 在某些情况下，可能需要添加整个系统的环境变量，这些变量在脚本完成之后仍会保存。 通常，这就是为何通过 SSH 连接到群集的用户可以使用脚本所安装的组件的原因。 可以通过将环境变量添加 `/etc/environment` 来实现此目的。 例如，以下语句添加了 **HADOOP\_CONF\_DIR**：
+在脚本中设置的环境变量只在脚本范围内存在。 在某些情况下，可能需要添加整个系统的环境变量，这些变量在脚本完成之后仍会保存。 若要添加系统范围的环境变量，请将变量添加到 `/etc/environment`。 例如，以下语句添加 `HADOOP_CONF_DIR`：
 
 ```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
@@ -276,20 +279,20 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 用于自定义群集的脚本需要存储在以下位置之一：
 
-* 群集的__默认存储帐户__。
+* 与群集关联的 __Azure 存储帐户__。
 
 * 与群集关联的__其他存储帐户__。
 
-* __可公开读取的 URI__，例如 OneDrive、Dropbox 等。
+* __可公开读取的 URI__。 例如，在 OneDrive、Dropbox 或其他文件托管服务中存储的数据的 URL。
 
 * 与 HDInsight 群集关联的 __Azure Data Lake Store 帐户__ 。 有关将 Azure Data Lake Store 与 HDInsight 配合使用的详细信息，请参阅[创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
 
     > [!NOTE]
     > 用于访问 Data Lake Store 的服务主体 HDInsight 必须具有对脚本的读取访问权限。
 
-如果你的脚本访问位于其他位置的资源，则这些资源还需要具有公共可访问性（至少是公共只读性）。 例如，可能需要使用 `download_file` 将文件下载到群集。
+脚本使用的资源也必须公开。
 
-将文件存储在群集可访问的 Azure 存储帐户（例如默认存储帐户）中可以提供快速访问，因为此存储在 Azure 网络内。
+与在 Azure 网络中一样，在 Azure 存储帐户或 Azure Data Lake Store 中存储文件可提供快速访问。
 
 > [!NOTE]
 > 用于引用脚本的 URI 格式取决于正在使用的服务。 对于与 HDInsight 群集关联的存储帐户，请使用 `wasb://` 或 `wasbs://`。 对于可公开读取的 URI，请使用 `http://` 或 `https://`。 对于 Data Lake Store，请使用 `adl://`。
@@ -298,7 +301,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 HDInsight 的不同版本取决于 Ubuntu 的特定版本。 不同 OS 版本之间存在不同，必须在脚本中检查。 例如，可能需要安装与 Ubuntu 版本相关的二进制文件。
 
-若要查看 OS 版本，请使用 `lsb_release`。 例如，以下内容演示如何根据 OS 版本引用不同的 tar 文件：
+若要查看 OS 版本，请使用 `lsb_release`。 例如，以下脚本演示如何根据 OS 版本引用特定的 tar 文件：
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -315,26 +318,30 @@ fi
 
 下面是我们在准备部署这些脚本时执行的步骤：
 
-* 将包含自定义脚本的文件放置在群集节点在部署期间可访问的位置中。 这可能是在部署群集时指定的任何默认或其他存储帐户，或任何其他可公共访问的存储容器。
-* 向脚本中添加检查，以确保这些脚本可以幂等方式执行，从而使脚本可在同一节点上多次执行。
+* 将包含自定义脚本的文件放置在群集节点在部署期间可访问的位置中。 例如，群集的默认存储。 还可以将文件存储在可公开读取的托管服务中。
+* 验证脚本是否幂等。 这样，便可以在同一个节点上执行脚本多次。
 * 使用临时文件目录 /tmp 来保存脚本使用的下载文件，并在执行脚本后将其清除。
-* 如果 OS 级设置或 Hadoop 服务配置文件发生更改，则你可能需要重新启动 HDInsight 服务，使其可以选取任何 OS 级设置，例如脚本中设置的环境变量。
+* 如果更改了 OS 级别设置或 Hadoop 服务配置文件，可能需要重新启动 HDInsight 服务。
 
 ## <a name="runScriptAction"></a>如何运行脚本操作
 
-可以使用脚本操作通过 Azure 门户、Azure PowerShell、Azure Resource Manager 模板或 HDInsight .NET SDK 来自定义 HDInsight 群集。 有关说明，请参阅[如何使用脚本操作](hdinsight-hadoop-customize-cluster-linux.md)。
+可以使用以下方法通过脚本操作自定义 HDInsight 群集：
+
+* Azure 门户
+* Azure PowerShell
+* Azure Resource Manager 模板
+* HDInsight .NET SDK。
+
+有关使用每种方法的详细信息，请参阅[如何使用脚本操作](hdinsight-hadoop-customize-cluster-linux.md)。
 
 ## <a name="sampleScripts"></a>自定义脚本示例
 
-Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 示例脚本以及有关如何使用这些脚本的说明可以在以下链接上找到：
+Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅以下链接了解更多示例脚本操作。
 
 * [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)
-* [在 HDInsight Hadoop 群集上安装并使用 R](hdinsight-hadoop-r-scripts-linux.md)
 * [在 HDInsight 群集上安装并使用 Solr](hdinsight-hadoop-solr-install-linux.md)
-* [在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md)  
-
-> [!NOTE]
-> 上面链接的文档针对基于 Linux 的 HDInsight 群集。 有关适用于基于 Windows 的 HDInsight 的脚本，请参阅[使用 HDInsight 进行脚本操作开发 (Windows)](hdinsight-hadoop-script-actions.md) 或使用每篇文章顶部提供的链接。
+* [在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md)
+* [在 HDInsight 群集上安装或升级 Mono](hdinsight-hadoop-install-mono.md)
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -354,19 +361,19 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 示例�
 | 命令 | 说明 |
 | --- | --- |
 | `unix2dos -b INFILE` |原始文件将以 .BAK 扩展名备份 |
-| `tr -d '\r' < INFILE > OUTFILE` |OUTFILE 将包含只带 LF 行尾的版本 |
-| `perl -pi -e 's/\r\n/\n/g' INFILE` |这将直接修改文件而不是创建新文件 |
-| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE 将包含只带 LF 行尾的版本。 |
+| `tr -d '\r' < INFILE > OUTFILE` |OUTFILE 包含只带 LF 行尾的版本 |
+| `perl -pi -e 's/\r\n/\n/g' INFILE` | 直接修改文件 |
+| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE 包含只带 LF 行尾的版本 |
 
 **错误**：`line 1: #!/usr/bin/env: No such file or directory`。
 
 *原因*：将脚本另存为包含字节顺序标记 (BOM) 的 UTF-8 时会发生此错误。
 
-*解决方法*：将文件另存为 ASCII，或者不带 BOM 的 UTF-8。 也可以在 Linux 或 Unix 系统上使用以下命令来创建不带 BOM 的新文件：
+*解决方法*：将文件另存为 ASCII，或者不带 BOM 的 UTF-8。 也可以在 Linux 或 Unix 系统上使用以下命令来创建不带 BOM 的文件：
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
-对于上述命令，请将 **INFILE** 替换为包含 BOM 的文件。 **OUTFILE** 应是新文件的名称，包含不带 BOM 的脚本。
+将 `INFILE` 替换为包含 BOM 的文件。 `OUTFILE` 应是新文件名，该文件包含不带 BOM 的脚本。
 
 ## <a name="seeAlso"></a>后续步骤
 

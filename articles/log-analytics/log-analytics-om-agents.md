@@ -4,7 +4,7 @@ description: "要保持 System Center Operations Manager 中的现有投资并�
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
 ms.service: log-analytics
@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2017
+ms.date: 05/08/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c0a988a11722cfefb242f573c5a3affe21e6b6b4
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 4fe2d97d14f89de264549be127810de81195bddb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 ---
 
@@ -39,11 +40,36 @@ ms.lasthandoff: 04/20/2017
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 OMS 网关，以根据启用的解决方案接收配置信息并发送收集的数据。  若要详细了解如何将 Operations Manager 管理组配置为通过 OMS 网关与 OMS 服务进行通信，请参阅[使用 OMS 网关将计算机连接到 OMS](log-analytics-oms-gateway.md)。  
 
 ## <a name="system-requirements"></a>系统要求
-开始之前，请查看以下详细信息来验证是否满足必要的先决条件。
+开始之前，请查看以下详细信息来验证是否满足先决条件。
 
 * OMS 仅支持 Operations Manager 2016、Operations Manager 2012 SP1 UR6 及更高版本，以及 Operations Manager 2012 R2 UR2 及更高版本。  Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
 * 所有 Operations Manager 代理必须满足最低支持要求。 确保代理达到最低更新，否则 Windows 代理流量将失败，Operations Manager 事件日志可能会出现许多错误。
 * 一个 OMS 订阅。  有关进一步的详细信息，请参阅 [Log Analytics入门](log-analytics-get-started.md)。
+
+### <a name="network"></a>网络
+下面的信息列出了 Operations Manager 代理、管理服务器和操作控制台与 OMS 进行通信时必需的代理和防火墙配置信息。  来自每个组件的流量将从网络传出到 OMS 服务。     
+
+|资源 | 端口号| 绕过 HTTP 检查|  
+|---------|------|-----------------------|  
+|**代理**|||  
+|\*.ods.opinsights.azure.com| 443 ||  
+|\*.oms.opinsights.azure.com| 443||  
+|\*.blob.core.windows.net| 443||  
+|**管理服务器**|||  
+|service.systemcenteradvisor.com| 443||  
+|\*.service.opinsights.azure.com| 443||  
+|\*.blob.core.windows.net| 443| 是|  
+|\*.ods.opinsights.azue.com| 443| 是|  
+|*.azure-automation.net | 443| 是|  
+|**Operations Manager 控制台到 OMS**|||  
+|service.systemcenteradvisor.com| 443||  
+|\*.service.opinsights.azure.com| 443||  
+|\*.live.com| 80 和 443||  
+|\*.microsoft.com| 80 和 443||  
+|\*.microsoftonline.com| 80 和 443||  
+|\*.mms.microsoft.com| 80 和 443||  
+|login.windows.net| 80 和 443||  
+
 
 ## <a name="connecting-operations-manager-to-oms"></a>将 Operations Manager 连接到 OMS
 执行以下一系列步骤来将 Operations Manager 管理组配置为连接到其中一个 OMS 工作区。
@@ -52,7 +78,7 @@ ms.lasthandoff: 04/20/2017
 2. 展开 Operations Management Suite 节点，然后单击“**连接**”。
 3. 单击“**向 Operations Management Suite 注册**”链接。
 4. 在“**Operations Management Suite 载入向导: 身份验证**”页面上，输入电子邮件地址或电话号码以及与 OMS 订阅关联的管理员帐户的密码，并单击“**登录**”。
-5. 成功进行身份验证后，在“**Operations Management Suite 载入向导:选择工作区**”页面上，系统将提示选择 OMS 工作区。  如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，然后单击“**下一步**”。
+5. 成功进行身份验证后，在“Operations Management Suite 载入向导: 选择工作区”页面上，系统将提示选择 OMS 工作区。  如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，然后单击“**下一步**”。
    
    > [!NOTE]
    > Operations Manager 一次仅支持一个 OMS 工作区。 连接以及通过上一个工作区注册到 OMS 的计算机将从 OMS 中删除。
@@ -67,9 +93,9 @@ ms.lasthandoff: 04/20/2017
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 2. 展开 Operations Management Suite 节点，然后单击“**连接**”。
 3. 在窗格右侧的“操作”标题下单击“**添加计算机/组**”链接。
-4. 在“**计算机搜索**”对话框中可以搜索 Operations Manager 监视的计算机或组。 选择要载入到 OMS 的计算机或组，单击“**添加**”，然后单击“**确定**”。
+4. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。 选择要载入到 OMS 的计算机或组，单击“**添加**”，然后单击“**确定**”。
 
-可以在 Operations 控制台“**管理**”工作区中的 Operations Management Suite 下，查看配置为从“受管理计算机”节点收集数据的计算机和组。  此处可根据需要添加或移除计算机和组。
+可以在 Operations 控制台“**管理**”工作区中的 Operations Management Suite 下，查看配置为从“受管理计算机”节点收集数据的计算机和组。  在此处，可根据需要添加或移除计算机和组。
 
 ### <a name="configure-oms-proxy-settings-in-the-operations-console"></a>在 Operations 控制台中配置 OMS 代理服务器设置
 如果内部代理服务器位于管理组和 OMS Web 服务之间，请执行以下步骤。  这些设置可通过管理组集中进行管理并分发到代理管理系统，这些代理管理系统包含在收集 OMS 数据的范围之中。  当某些解决方案绕过管理服务器并将数据直接发送到 OMS Web 服务时，这是很有用的。
@@ -84,37 +110,37 @@ ms.lasthandoff: 04/20/2017
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 2. 在“**运行方式配置**”下面，选择“**配置文件**”。
 3. 打开 **System Center Advisor Run As Profile Proxy** 配置文件。
-4. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以新建“[运行方式帐户](https://technet.microsoft.com/library/hh321655.aspx)”或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。
+4. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以创建一个[运行方式帐户](https://technet.microsoft.com/library/hh321655.aspx)或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。
 5. 若要设置管理的帐户，请选择“**选定的类、组或对象**”，单击“**选择...**” 然后单击“**组...**” 打开“**组搜索**”框。
 6. 搜索然后选择 **Microsoft System Center Advisor Monitoring Server Group**。  选择组后单击“**确定**”以关闭“**组搜索**”框。
 7. 单击“**确定**”以关闭“**添加运行方式帐户**”框。
 8. 单击“**保存**”以完成该向导并保存更改。
 
-创建连接和配置将收集数据并报告给 OMS 的代理后，会在管理组中应用以下配置（不一定按顺序）：
+在创建连接并配置将收集数据并将数据报告给 OMS 的代理后，会在管理组中应用以下配置（不一定按顺序）：
 
 * 运行方式帐户 **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** 随即创建。  它与运行方式配置文件 **Microsoft System Center Advisor Run As Profile Blob** 相关联且目标为两个类 - **收集服务器**和 **Operations Manager 管理组**。
 * 两个连接器已创建。  第一个命名为 **Microsoft.SystemCenter.Advisor.DataConnector**，可通过订阅自动配置，该订阅将把从管理组中所有类的实例生成的警报转发到 OMS Log Analytics。 第二个连接器是 **Advisor Connector**，此连接器负责与 OMS Web 服务通信和共享数据。
-* 你选择要收集管理组中数据的代理和组将添加到 **Microsoft System Center Advisor Monitoring Server Group**。
+* 你选择的要在管理组中收集数据的代理和组将添加到 **Microsoft System Center Advisor Monitoring Server Group**。
 
 ## <a name="management-pack-updates"></a>管理包更新
 配置完成后，Operations Manager 管理组会与 OMS 服务建立连接。  管理服务器将与 Web 服务同步，针对与 Operations Manager 集成的已启用解决方案，以管理包的形式接收更新的配置信息。   Operations Manager 将自动检查这些管理包的更新，并在更新可用时下载和导入。  特别是，有两个控制此行为的规则：
 
-* **Microsoft.SystemCenter.Advisor.MPUpdate** - 更新 OMS 基础管理包。 默认情况下，每十二 (12) 小时运行一次。
+* **Microsoft.SystemCenter.Advisor.MPUpdate** - 更新 OMS 基础管理包。 默认情况下，每 12 小时运行一次。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - 更新在工作区中启用的解决方案管理包。 默认情况下，每五 (5) 分钟运行一次。
 
 你可以重写这两个规则：通过禁用规则防止自动下载，或者修改管理服务器与 OMS 同步确定新管理包是否可用且是否应下载的频率。  请按照“[如何重写规则或监视器](https://technet.microsoft.com/library/hh212869.aspx)”的步骤，通过以秒为单位的值修改“**频率**”参数来更改同步计划，或修改“**已启用**”参数禁用规则。  锁定 Operations Manager 管理组类所有对象的替代项。
 
-如果想要继续按照现有更改控制过程控制生产管理组中的管理包版本，可以禁用规则并在允许更新的特定时间段内将其启用。 如果环境中有开发或 QA 管理组，并且已连接到 Internet，可以通过 OMS 工作区配置该管理组以支持此方案。  这样在将 OMS 管理包发布到生产管理组之前，就可以查看和评估其迭代版本。
+如果想要继续按照现有更改控制过程控制生产管理组中的管理包版本，可以禁用规则并在允许更新的特定时间段内将其启用。 如果环境中有开发或 QA 管理组，并且已连接到 Internet，可以通过 OMS 工作区配置该管理组以支持此方案。  这样，在将 OMS 管理包发布到生产管理组之前，就可以查看和评估其迭代版本。
 
 ## <a name="switch-an-operations-manager-group-to-a-new-oms-workspace"></a>将 Operations Manager 组切换到新 OMS 工作区中
-1. 登录到 OMS 订阅并在 [Microsoft Operations Management Suite](http://oms.microsoft.com/) 中新建工作区。
+1. 登录到 OMS 订阅并在 [Microsoft Operations Management Suite](http://oms.microsoft.com/) 中创建一个工作区。
 2. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 控制台，然后选择“**管理**”工作区。
 3. 展开 Operations Management Suite，然后选择“**连接**”。
 4. 在窗格中间选择“**重新配置 Operation Management Suite**”链接。
 5. 按照“**Operations Management Suite 载入向导**”操作，输入电子邮件地址或电话号码以及与新 OMS 工作区关联的管理员帐户的密码。
    
    > [!NOTE]
-   > “**Operations Management Suite 载入向导:选择工作区**”页面将显示使用中的现有工作区。
+   > “Operations Management Suite 载入向导：选择工作区”页面将显示使用中的现有工作区。
    > 
    > 
 
@@ -122,17 +148,17 @@ ms.lasthandoff: 04/20/2017
 有多种不同的方式可验证 OMS 与 Operations Manager 的集成是否成功。
 
 ### <a name="to-confirm-integration-from-the-oms-portal"></a>通过 OMS 门户确认集成
-1. 在 OMS 门户中，单击“**设置**”磁贴
+1. 在 OMS 门户中，单击“设置”磁贴。
 2. 选择“**相连的源**”。
 3. 在 System Center Operations Manager 部分下的表中，应该可看到列出管理组的名称，以及代理数量和最后一次收到数据的状态。
    
    ![oms-settings-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
-4. 请注意“设置”页面左下方的“**工作区 ID**”值。  将根据下面的 Operations Manager 管理组对它进行验证。  
+4. 请注意“设置”页面左下方的“**工作区 ID**”值。  根据下面的 Operations Manager 管理组对它进行验证。  
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>通过 Operations 控制台确认集成
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 2. 选择“**管理包**”，并在“**查找:**”文本框中键入 “**Advisor**”或“**Intelligence**”。
-3. 根据已启用的解决方案，将看到在搜索结果中列出相应的管理包。  例如，如果已启用警报管理解决方案，管理包 Microsoft System Center Advisor 警报管理将会在表中列出。
+3. 相应的管理包将在搜索结果中列出，具体取决于已启用的解决方案。  例如，如果已启用警报管理解决方案，管理包 Microsoft System Center Advisor 警报管理将会在表中列出。
 4. 从“**监视**”视图导航到“**Operations Management Suite\Health State**”视图。  选择“**管理服务器状态**”窗格下的一个管理服务器，然后在“**详细信息视图**”窗格确认“**身份验证服务 URI**”属性值与 OMS 工作区 ID 匹配。
    
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
@@ -145,7 +171,7 @@ ms.lasthandoff: 04/20/2017
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 命令外壳。
    
     > [!WARNING]
-    > 继续操作之前，确认所有自定义管理包的名称中均没有 Advisor 或 IntelligencePack 字样，否则通过以下步骤将把它们从管理组中删除。
+    > 继续操作之前，确认所有自定义管理包的名称中均没有 Advisor 或 IntelligencePack 字样，否则，以下步骤会将它们从管理组中删除。
     > 
 
 2. 在命令外壳提示下，键入 `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
@@ -161,21 +187,21 @@ ms.lasthandoff: 04/20/2017
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
-7. 在 OMS 门户中，单击“**设置**”磁贴。
+7. 在 OMS 门户中，单击“设置”磁贴。
 8. 选择“**相连的源**”。
 9. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。  在“**最后的数据**”列下，单击“**移除**”。  
    
     > [!NOTE]
-    > 如果没有从连接的管理组中检测到活动，“**移除**”链接在 14 天后才可用。  
+    > 如果没有从连接的管理组中检测到活动，“移除”链接在 14 天后才可用。  
     > 
 
 10. 将出现一个窗口，要求你确认是否继续进行移除。  单击“**是**”继续。 
 
-要删除两个连接器 - Microsoft.SystemCenter.Advisor.DataConnector 和 Advisor Connector，请将以下 PowerShell 脚本保存到计算机，并使用以下示例执行删除。
+要删除两个连接器 - Microsoft.SystemCenter.Advisor.DataConnector 和 Advisor Connector，请将以下 PowerShell 脚本保存到计算机，并使用以下示例执行删除：
 
 ```
     .\OM2012_DeleteConnector.ps1 “Advisor Connector” <ManagementServerName>
-    .\OM2012_DeleteConnectors.ps1 “Microsoft.SytemCenter.Advisor.DataConnector” <ManagementServerName>
+    .\OM2012_DeleteConnector.ps1 “Microsoft.SystemCenter.Advisor.DataConnector” <ManagementServerName>
 ```
 
 > [!NOTE]
@@ -184,7 +210,7 @@ ms.lasthandoff: 04/20/2017
 > 
 
 ```
-    `param(
+    param(
     [String] $connectorName,
     [String] $msName="localhost"
     )
@@ -272,7 +298,7 @@ ms.lasthandoff: 04/20/2017
 以后如果打算将管理组重新连接到 OMS 工作区，需要从应用于管理组的最新更新汇总中重新导入 `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` 管理包文件。  可以在 `%ProgramFiles%\Microsoft System Center 2012` 或 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 文件夹中找到此文件。
 
 ## <a name="next-steps"></a>后续步骤
-* [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
-* 如果组织使用代理服务器或防火墙，请[在 Log Analytics 中配置代理服务器和防火墙设置](log-analytics-proxy-firewall.md)以便代理可以与 Log Analytics 服务进行通信。
+若要添加功能并收集数据，请参阅[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)。
+
 
 
