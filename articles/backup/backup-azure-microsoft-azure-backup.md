@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/10/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: d8289128414bc67a7c064c827a9bec047f6f22bc
-ms.openlocfilehash: 1462ee0e247fb5d590a70d23ece5723a065b4140
-ms.lasthandoff: 01/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: e8838095d621957fe6b4ee50464154617e1c4740
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -69,9 +70,12 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 可以使用 Windows Server 重复数据删除来删除 DPM 存储中的重复数据。 了解有关在 Hyper-V VM 中部署时 [DPM 和重复数据删除](https://technet.microsoft.com/library/dn891438.aspx)如何配合工作的详细信息。
 
 > [!NOTE]
-> 不能在作为域控制器运行的计算机上安装 Azure 备份服务器。
->
->
+> Azure 备份服务器设计为在专用的单一用途服务器上运行。 不能在以下计算机上安装 Azure 备份服务器：
+> - 作为域控制器运行的计算机
+> - 安装了应用程序服务器角色的计算机
+> - 作为 System Center Operations Manager 管理服务器的计算机
+> - 运行 Exchange Server 的计算机
+> - 作为群集节点的计算机
 
 必须将 Azure 备份服务器加入域。 如果打算将服务器移到不同的域，建议在安装 Azure 备份服务器之前将服务器加入到新域。 部署之后，*不支持*将现有 Azure 备份服务器计算机移到新域中。
 
@@ -101,7 +105,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
    创建保管库后，它将在门户中打开。
 
 ### <a name="set-storage-replication"></a>设置存储复制
-存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果这是你的主要备份，请将选项保持设置为异地冗余存储。 如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储空间复制概述](../storage/storage-redundancy.md)部分，深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
+存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果这是你的主要备份，请将选项保持设置为异地冗余存储。 如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/storage-redundancy.md)部分，深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
 
 若要编辑存储复制设置，请执行以下操作：
 
@@ -195,12 +199,12 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
    >
 4. 提供 Microsoft Azure 备份服务器文件的安装位置，然后单击“**下一步**”。
 
-    ![Microsoft Azure 备份先决条件&2;](./media/backup-azure-microsoft-azure-backup/space-screen.png)
+    ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     备份到 Azure 需要有暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 在磁盘保护方面，安装完成之后需要配置独立的磁盘。 有关存储池的详细信息，请参阅[配置存储池和磁盘存储](https://technet.microsoft.com/library/hh758075.aspx)。
 5. 为受限的本地用户帐户提供强密码，然后单击“**下一步**”。
 
-    ![Microsoft Azure 备份先决条件&2;](./media/backup-azure-microsoft-azure-backup/security-screen.png)
+    ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
 6. 选择是否要使用 *Microsoft 更新*来检查更新，然后单击“**下一步**”。
 
    > [!NOTE]
@@ -208,15 +212,15 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
    >
    >
 
-    ![Microsoft Azure 备份先决条件&2;](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+    ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 7. 复查“*设置摘要*”，然后单击“**安装**”。
 
-    ![Microsoft Azure 备份先决条件&2;](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
+    ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 8. 安装将会分阶段进行。 第一个阶段，将在服务器上安装 Microsoft Azure 恢复服务代理。 向导还会检查 Internet 连接。 如果可以连接到 Internet，则你可以继续安装，否则需要提供代理详细信息以连接到 Internet。
 
     下一个步骤是配置 Microsoft Azure 恢复服务代理。 在配置过程中，必须提供保管库凭据，以向恢复服务保管库注册计算机。 还需要提供通行短语来加密/解密 Azure 与本地之间发送的数据。 你可以自动生成通行短语，或提供自己的通行短语（最少包含 16 个字符）。 请继续运行向导，直到代理已完成配置。
 
-    ![Azure 备份服务器先决条件&2;](./media/backup-azure-microsoft-azure-backup/mars/04.png)
+    ![Azure 备份服务器先决条件 2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Microsoft Azure 备份服务器注册成功完成后，整个安装向导将继续安装和配置 SQL Server 及 Azure 备份服务器的组件。 SQL Server 组件安装完成后，将安装 Azure 备份服务器组件。
 
     ![Azure 备份服务器](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)

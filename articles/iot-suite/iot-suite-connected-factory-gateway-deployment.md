@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/22/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: e6eaf4e7a3b0aa8241c026f66150d3f6e9d933d0
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: e8774cc290847d48ecdc5dcdac1f2533fdc7d072
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -26,6 +26,9 @@ ms.lasthandoff: 04/21/2017
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>在 Windows 或 Linux 上为已连接的工厂预配置解决方案部署网关
 
 本文中的步骤演示如何在 Windows 或 Linux 上使用 Docker 部署网关。 使用网关可以连接已连接的工厂预配置解决方案。
+
+> [!NOTE]
+> 在 Docker 容器中运行的网关软件是 [Azure IoT Edge]。
 
 ## <a name="windows-deployment"></a>Windows 部署
 
@@ -150,4 +153,4 @@ ms.lasthandoff: 04/21/2017
 [开源 OPC UA 客户端]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
 [安装 Docker]: https://www.docker.com/community-edition#/download
 [lnk-walkthrough]: iot-suite-overview.md
-
+[Azure IoT Edge]: https://github.com/Azure/iot-edge

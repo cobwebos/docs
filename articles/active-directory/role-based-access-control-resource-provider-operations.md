@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 3d32ded77382fe852682d63c96a66aacd141fdf6
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 95c6a1e9cfadeb19a0ec5a53fffb15ef220bfec0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -162,7 +162,7 @@ ms.lasthandoff: 05/01/2017
 |/service/authorizationServers/write|创建新的授权服务器，或更新现有授权服务器的详细信息|
 |/service/authorizationServers/delete|删除现有的授权服务器|
 |/service/reports/bySubscription/read|获取按订阅聚合的报告。|
-|/service/reports/byRequest/read|获取重新发布数据的请求|
+|/service/reports/byRequest/read|获取报告数据的请求|
 |/service/reports/byOperation/read|获取按操作聚合的报告|
 |/service/reports/byGeo/read|获取按地理区域聚合的报告|
 |/service/reports/byUser/read|获取按开发人员聚合的报告。|
@@ -2162,7 +2162,7 @@ ms.lasthandoff: 05/01/2017
 |/Microsoft.Web/apiManagementAccounts/<br>apis/apiAcls/Delete|删除 API ACL|
 |/serverfarms/Read|获取应用服务计划的属性|
 |/serverfarms/Write|创建新的或更新现有的应用服务计划。|
-|/serverfarms/Delete|删除现有的 App Service 计划|
+|/serverfarms/Delete|删除现有的应用服务计划|
 |/serverfarms/restartSites/Action|重新启动应用服务计划中的所有 Web 应用|
 |/serverfarms/operationresults/read|获取应用服务计划操作结果。|
 |/serverfarms/capabilities/read|获取应用服务计划功能。|

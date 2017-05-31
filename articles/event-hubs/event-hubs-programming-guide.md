@@ -1,6 +1,6 @@
 ---
 title: "Azure 事件中心编程指南 | Microsoft Docs"
-description: "介绍如何使用 Azure.NET SDK 进行 Azure 事件中心编程。"
+description: "使用 Azure.NET SDK 编写 Azure 事件中心代码。"
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -12,24 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/10/2017
+ms.date: 05/17/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d8a767e9149c6c5eca5b22f094ae924135fa7a2d
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 6d0a1501b97ddb2c819361b00a85ebec12f7b50e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="event-hubs-programming-guide"></a>事件中心编程指南
+
 本文介绍使用 Azure 事件中心和 Azure .NET SDK 编写代码时的一些常见情况。 内容假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-what-is-event-hubs.md)。
 
 ## <a name="event-publishers"></a>事件发布者
-使用 HTTP POST 或通过 AMQP 1.0 连接将事件发送到事件中心。 要选择使用哪种方式取决于要解决的特定方案。 AMQP 1.0 连接计量为服务总线中的中转连接计量，对于经常要以较高的消息量和较低的延迟传送消息的方案，适合选择此方式，因为它们提供持久的消息传递通道。
+
+使用 HTTP POST 或通过 AMQP 1.0 连接将事件发送到事件中心。 何时使用哪种方式的选择取决于要解决的特定方案。 AMQP 1.0 连接计量为服务总线中的中转连接计量，对于经常要以较高的消息量和较低的延迟传送消息的方案，适合选择此方式，因为它们提供持久的消息传递通道。
 
 使用 [NamespaceManager][] 类创建和管理事件中心。 使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) 和 [EventData][] 类。 [EventHubClient][] 提供 AMQP 信道，事件将通过该信道发送到事件中心。 [EventData][] 类表示一个事件，用于将消息发布到事件中心。 此类包括正文、一些元数据和有关事件的标头信息。 其他属性将在通过事件中心传递时添加到 [EventData][] 对象。
 
 ## <a name="get-started"></a>入门
+
 支持事件中心的 .NET 类在 Microsoft.ServiceBus.dll 程序集中提供。 引用服务总线 API 以及使用所有服务总线依赖项配置应用程序的最简单方法是下载 [服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)。 或者，你也可以在 Visual Studio 中使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 。 为此，请在 [“Package Manager Console”](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 窗口中发出以下命令：
 
 ```
@@ -171,7 +175,7 @@ while(receive)
 
 经过一段时间后，就会建立平衡。 通过这种动态功能，可以向使用者应用基于 CPU 的自动缩放，以实现向上扩展和向下缩减。 由于事件中心没有直接的消息计数概念，平均 CPU 利用率通常是度量后端或使用者规模的最佳机制。 如果发布者开始发布的事件数超过了使用者可以处理的数量，可以使用使用者的 CPU 增大功能来实现工作线程实例数的自动缩放。
 
-[EventProcessorHost][] 类还实现了基于 Azure 存储空间的检查点机制。 此机制按分区存储偏移量，使每个使用者都能确定前一个使用者的最后一个检查点是什么。 当分区通过租约在节点之间转移时，正是这个同步机制在促进负载转移。
+[EventProcessorHost][] 类还实现了基于 Azure 存储的检查点机制。 此机制按分区存储偏移量，使每个使用者都能确定前一个使用者的最后一个检查点是什么。 当分区通过租约在节点之间转移时，正是这个同步机制在促进负载转移。
 
 ## <a name="publisher-revocation"></a>发布者吊销
 除了 [EventProcessorHost][] 的高级运行时功能外，事件中心还支持吊销发布者，以阻止特定发布者向事件中心发送事件。 当发布者令牌已透露，或者软件更新导致发布者行为不当时，这些功能特别有用。 在这些情况下，可以阻止发布者的标识（其 SAS 令牌的一部分）发布事件。

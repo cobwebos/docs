@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/11/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 942e3b4fbc9a954eae0cc609e800d0fe0b882475
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 1436b39fdb9a66a00903442496cc5203b47c1bcb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="example-template"></a>示例模板
 
-若要将不同的资源作为目标，在部署期间必须使用嵌套的或链接的模板。 `Microsoft.Resources/deployments` 资源类型提供了一个 `resourceGroup` 参数，该参数允许你指定与父模板所用资源组不同的资源组。 在运行部署之前，所有资源组都必须存在。 下面的示例部署两个存储帐户 - 一个在部署期间指定的资源组中，另一个在名为 `crossResourceGroupDeployment` 的资源组中：
+若要将不同的资源作为目标，在部署期间必须使用嵌套的或链接的模板。 `Microsoft.Resources/deployments` 资源类型提供 `resourceGroup` 参数，使用该参数可以为嵌套部署指定不同资源组。 在运行部署之前，所有资源组都必须存在。 下面的示例部署两个存储帐户 - 一个在部署期间指定的资源组中，另一个在名为 `crossResourceGroupDeployment` 的资源组中：
 
 ```json
 {
@@ -123,3 +123,4 @@ az group deployment create \
 * 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](resource-group-authoring-templates.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
 * 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](resource-manager-powershell-sas-token.md)。
+

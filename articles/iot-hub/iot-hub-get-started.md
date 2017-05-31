@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/28/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: aeb0b665b8295bba30d8c6c47cc88e446693c91f
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 64b09448149b7e1efd8b76663a27b6c7ec1eb3c7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -28,9 +28,9 @@ ms.lasthandoff: 05/01/2017
 可以使用 Azure IoT 中心和 Azure IoT 设备 SDK 生成物联网 (IoT) 解决方案。
 
 * Azure IoT 中心是在云中完全托管的服务，可安全地连接、监视和管理 IoT 设备。 使用 Azure IoT 设备 SDK 实现 IoT 设备。
-* 在更复杂的 IoT 方案中使用 IoT 网关，在这些方案中需要考虑一些因素，例如旧设备、带宽成本、安全和隐私策略或边缘数据处理等。 在这些方案中，可以使用 Azure IoT 网关 SDK 生成用于将设备连接到 IoT 中心的网关设备。
+* 在更复杂的 IoT 方案中使用 IoT 网关，在这些方案中需要考虑一些因素，例如旧设备、带宽成本、安全和隐私策略或边缘数据处理等。 在这些方案中，可以使用 Azure IoT Edge 实现用于将设备连接到 IoT 中心的网关。
 
-## <a name="what-do-the-tutorials-cover"></a>教程涵盖内容
+## <a name="what-the-tutorials-cover"></a>教程涵盖内容
 
 这些教程介绍 Azure IoT 中心和设备 SDK。 这些教程介绍用于演示 IoT 中心功能的常见 IoT 方案。 这些教程还说明了如何将 IoT 中心与其他 Azure 服务和工具结合在一起，以构建更强大的 IoT 解决方案。 在这些教程中，可以选择是使用模拟 IoT 设备还是使用真实 IoT 设备。 此外，还可以了解如何使用网关使设备能够连接到 IoT 中心。
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 05/01/2017
 | Adafruit Feather M0             | [Arduino][M0_Ard]              |
 | 模拟设备                | [.NET][Sim_NET]、[Java][Sim_Jav]、[Node.js][Sim_Nd]、[Python][Sim_Pyth]              |
 
-此外，还可以使用网关使设备能够连接到 IoT 中心。
+此外，还可以使用 IoT Edge 网关使设备能够连接到 IoT 中心。
 
 | 网关设备               | 编程语言 | 平台         |
 |------------------------------|----------------------|------------------|
@@ -84,8 +84,8 @@ ms.lasthandoff: 05/01/2017
 [Sim_Nd]: iot-hub-node-node-getstarted.md
 [Sim_Pyth]: iot-hub-python-getstarted.md
 [NUC_Lnx]: iot-hub-gateway-kit-c-lesson1-set-up-nuc.md
-[Sim_Lnx]: iot-hub-linux-gateway-sdk-get-started.md
-[Sim_Win]: iot-hub-windows-gateway-sdk-get-started.md
+[Sim_Lnx]: iot-hub-linux-iot-edge-get-started.md
+[Sim_Win]: iot-hub-windows-iot-edge-get-started.md
 [Mg_IoT_Hub_Msg]: iot-hub-explorer-cloud-device-messaging.md
 [Mg_IoT_Dv]: iot-hub-device-management-iothub-explorer.md
 [Sv_IoT_Msg_Stor]: iot-hub-store-data-in-azure-table-storage.md

@@ -1,6 +1,6 @@
 ---
 title: "为 EDIFACT 消息解码 - Azure 逻辑应用 | Microsoft 文档"
-description: "使用 Enterprise Integration Pack 中的 EDIFACT 消息解码器为 Azure 逻辑应用验证 EDI 并为事务集生成 XML"
+description: "使用 Enterprise Integration Pack 中的 EDIFACT 消息解码器为 Azure 逻辑应用验证 EDI 并生成确认"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -13,18 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 176963837f4f3fc8b89e31000ef8722ef3258b11
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 39d9661adc90e6113e2152d844473f9f4caa755a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
 
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 EDIFACT 消息
 
-使用解码 EDIFACT 消息连接器，可以验证 EDI 和特定于合作伙伴的属性，为每个事务集生成 XML 文档并为处理的事务生成确认。 若要使用此连接器，必须将此连接器添加到你的逻辑应用中的现有触发器。
+使用解码 EDIFACT 消息连接器，可验证 EDI 和特定于合作伙伴的属性、将交换拆分为事务集或保留整个交换，以及为已处理的交易生成确认。 若要使用此连接器，必须将此连接器添加到你的逻辑应用中的现有触发器。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -72,28 +73,34 @@ ms.lasthandoff: 03/10/2017
 
 解码 EDIFACT 连接器执行以下任务： 
 
-* 通过将发送方限定符和标识符与接收方限定符和标识符进行匹配来解析协议
-* 将单个消息中的多个交换拆分为单独对象。
-* 针对贸易合作伙伴协议验证信封
+* 针对贸易合作伙伴协议验证信封。
+* 通过将发送方限定符和标识符与接收方限定符和标识符进行匹配来解析协议。
+* 当交换有多个基于协议的接收设置配置的事务时，将交换拆分为多个事务。
 * 分解交换。
-* 验证 EDI 和特定于合作伙伴的属性包括
-  * 交换信封结构的验证。
-  * 针对控制架构进行的信封架构验证。
-  * 针对消息架构进行的事务集数据元素架构验证。
+* 验证 EDI 和特定于合作伙伴的属性包括：
+  * 验证交换信封结构
+  * 针对控制架构对信封进行架构验证
+  * 针对消息架构对事务集数据元素进行架构验证
   * 对事务集数据元素执行的 EDI 验证
 * 验证交换、组和事务集控制编号不重复（如果已配置） 
   * 针对以前收到的交换检查交换控制编号。 
   * 针对交换中的其他组控制编号检查组控制编号。 
   * 针对该组中的其他事务集控制编号检查事务集控制编号。
-* 为每个事务集生成 XML 文档。
-* 将整个交换转换为 XML 
-  * 将交换拆分为事务集 - 出错时挂起事务集：将交换中的每个事务集分析为单独 XML 文档。 如果交换中的一个或多个事务集未能通过验证，则 EDIFACT 解码只挂起这些事务集。 
-  * 将交换拆分为事务集 - 出错时挂起交换：将交换中的每个事务集分析为单独 XML 文档。  如果交换中的一个或多个事务集未能通过验证，则 EDIFACT 解码会挂起整个交换。
-  * 保留交换 - 出错时挂起事务集：为整个批处理交换创建 XML 文档。 EDIFACT 解码只挂起未能通过验证的事务集，同时继续处理所有其他事务集
-  * 保留交换 - 出错时挂起交换：为整个批处理交换创建 XML 文档。 如果交换中的一个或多个事务集未能通过验证，则 EDIFACT 解码会挂起整个交换， 
+* 将交换拆分为事务集，或保留整个交换：
+  * 将交换拆分为事务集 - 出错时暂停事务集：将交换拆分为事务集并分析每个事务集。 
+  X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
+  * 将交换拆分为事务集 - 出错时暂停交换：将交换拆分为事务集并分析每个事务集。 
+  如果交换中的一个或多个事务集未能通过验证，X12 解码操作会将该交换中的所有事务集输出到 `badMessages`。
+  * 保留交换 - 出错时暂停事务集：保留交换并处理整个批量交换。 
+  X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
+  * 保留交换 - 出错时暂停交换：保留交换并处理整个批量交换。 
+  如果交换中的一个或多个事务集未能通过验证，X12 解码操作会将该交换中的所有事务集输出到 `badMessages`。
 * 生成技术（控制）和/或功能确认（如果已配置）。
   * 技术确认或 CONTRL ACK 报告收到的完整交换的语法检查结果。
   * 功能确认会确认接受或拒绝收到的交换或组
+
+## <a name="view-swagger-file"></a>查看 Swagger 文件
+若要查看 EDIFACT 连接器的 Swagger 详细信息，请参阅 [EDIFACT](/connectors/edifact/)。
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 

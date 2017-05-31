@@ -13,16 +13,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/17/2017
+ms.date: 05/16/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 466595773663d43ad8e25fa9ec0ec0163a3f5962
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 1782c7e5f7cd710d6e17a26197f9fcc84c967902
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="create-an-analysis-services-server"></a>创建 Analysis Services 服务器
+# <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>在 Azure 门户中创建 Azure Analysis Services 服务器
 本文指导如何在 Azure 订阅中创建 Analysis Services 服务器资源。
 
 ## <a name="before-you-begin"></a>开始之前
@@ -33,11 +34,11 @@ ms.lasthandoff: 03/24/2017
 * **资源组**：使用已有资源组，或[创建新组](../azure-resource-manager/resource-group-overview.md)。
 
 > [!NOTE]
-> 创建 Analysis Services 服务器可能会产生新的计费服务。 有关详细信息，请参阅 [Analysis Services 定价](https://azure.microsoft.com/pricing/details/analysis-services/)。
+> 创建服务器可能会导致新的计费服务。 有关详细信息，请参阅 [Analysis Services 定价](https://azure.microsoft.com/pricing/details/analysis-services/)。
 > 
 > 
 
-## <a name="create-an-analysis-services-server"></a>创建 Analysis Services 服务器
+## <a name="to-create-a-server-in-azure-portal"></a>在 Azure 门户中创建服务器
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“+ 新建” > “智能 + 分析” > “Analysis Services”。
 3. 在“Analysis Services”边栏选项卡中，填写必填字段，然后按“创建”。
@@ -48,19 +49,12 @@ ms.lasthandoff: 03/24/2017
    * **订阅**：选择此服务器计费的订阅。
    * **资源组**：这些容器旨在帮助管理 Azure 资源的集合。 有关详细信息，请参阅[资源组](../azure-resource-manager/resource-group-overview.md)。
    * **位置**：此 Azure 数据中心位置托管该服务器。 选择最接近最大用户群的位置。
-   * **定价层**：选择定价层。 支持最多 100 GB 的表格模型。 若要了解详细信息，请参阅 [Azure Analysis Services 定价](https://azure.microsoft.com/pricing/details/analysis-services/)。
+   * **定价层**：选择定价层。 最多支持 400 GB 的表格模型。 若要了解详细信息，请参阅 [Azure Analysis Services 定价](https://azure.microsoft.com/pricing/details/analysis-services/)。
 4. 单击“创建”。
 
 创建通常不超过一分钟，一般几秒钟便可完成。 如果选择“添加到门户”，请导航到门户查看新服务器。 或者，请导航到**更多服务** > **Analysis Services**，查看服务器是否就绪。
 
  ![仪表板](./media/analysis-services-create-server/aas-create-server-dashboard.png)
-
-## <a name="automate-server-creation"></a>自动执行服务器创建
-可使用 Azure 资源管理器模板文件自动执行运行状态下的服务器预配。 若要了解详细信息，请观看此帮助视频。
-
->[!VIDEO https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation/player]
->
->
 
 
 ## <a name="next-steps"></a>后续步骤

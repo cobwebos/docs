@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 4ef0118435020edc3a922c88a5a55400992cbc09
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 366c2c43ec50b0b6c47a25ea9b0e9d7109827429
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -66,7 +67,7 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 | 重置密码 |准备启用密码写回 |
 
 ## <a name="custom-settings-installation"></a>自定义设置安装
-使用自定义设置时，必须在安装之前创建用于连接 Active Directory 的帐户。 有关需授予该帐户的权限，可查看[创建 AD DS 帐户](#create-the-ad-ds-account)。
+以前，使用自定义设置时，必须在安装之前创建用于连接 Active Directory 的帐户。 有关需授予该帐户的权限，可查看[创建 AD DS 帐户](#create-the-ad-ds-account)。 使用 Azure AD Connect 版本 1.1.524.0 及更高版本，可以选择让 Azure AD Connect 向导为你创建帐户。
 
 | 向导页 | 收集的凭据 | 所需的权限 | 用途 |
 | --- | --- | --- | --- |
@@ -86,9 +87,11 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 
 | 功能 | 权限 |
 | --- | --- |
+| msDS-ConsistencyGuid 功能 |对[设计概念 - 使用 msDS-ConsistencyGuid 作为 sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor) 中所述的 msDS-ConsistencyGuid 属性的写入权限。 | 
 | 密码同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
 | Exchange 混合部署 |针对用户、组和联系人的属性的写入权限，详见[Exchange 混合写回](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)。 |
-| 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions)。 |
+| Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
+| 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../active-directory-passwords.md)。 |
 | 设备写回 |通过 PowerShell 脚本授予的权限，详见[设备写回](active-directory-aadconnect-feature-device-writeback.md)。 |
 | 组写回 |在分发组应该放置到的 OU 中读取、创建、更新和删除组对象。 |
 
@@ -179,11 +182,13 @@ VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使�
 
 ![AD 帐户](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount.png)
 
-使用该帐户的服务器名称可以根据用户名的第二个部分来识别。 在上图中，服务器名称为 FABRIKAMCON。 如果部署了暂存服务器，每个服务器都有自身的帐户。 Azure AD 将同步服务帐户数目限制为 10 个。
+使用该帐户的服务器名称可以根据用户名的第二个部分来识别。 在上图中，服务器名称为 FABRIKAMCON。 如果部署了暂存服务器，每个服务器都有自身的帐户。
 
 服务帐户带有永不过期的长复杂密码。 系统为其授予了特殊角色“目录同步帐户”，该角色仅可执行目录同步任务。 只可在 Azure AD Connect 向导中授予该特殊的内置角色，并且 Azure 门户会显示此帐户具有“用户”角色。
 
-![AD 帐户角色](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccountrole.png)
+Azure AD 将同步服务帐户数目限制为 20 个。 若要在 Azure AD 中获取现有 Azure AD 服务帐户的列表，请运行以下 Azure AD PowerShell cmdlet：`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+
+若要删除未使用的 Azure AD 服务帐户，请运行以下 Azure AD PowerShell cmdlet：`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](../active-directory-aadconnect.md)的详细信息。

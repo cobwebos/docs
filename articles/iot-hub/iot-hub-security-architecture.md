@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 9327750b35476fd2a6eca379061a06842daf8d47
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 235733b1480396df86f932f05a74b74247d47b40
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -27,14 +29,9 @@ ms.openlocfilehash: 9327750b35476fd2a6eca379061a06842daf8d47
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [使用 IoT 网关 SDK 模拟设备][lnk-gateway]
+* [使用 Azure IoT Edge 模拟设备][lnk-iotedge]
 
 [lnk-security-deployment]: iot-hub-security-deployment.md
 
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

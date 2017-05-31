@@ -3,7 +3,7 @@ title: "Log Analytics 日志搜索 REST API | Microsoft Docs"
 description: "本指南提供的基本教程介绍了如何使用 Operations Management Suite (OMS) 中的 Log Analytics 搜索 REST API，提供的示例向你演示如何使用这些命令。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: bwren
 manager: carmonm
 editor: 
 ms.assetid: b4e9ebe8-80f0-418e-a855-de7954668df7
@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
-ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: b12f823d723b013755fc868b883faefa2072eb75
-ms.openlocfilehash: 9b21fed003f96dbf7ebd72d6f46fff91acbf039e
-ms.lasthandoff: 12/02/2016
+ms.date: 05/12/2017
+ms.author: bwren
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: a0d26b594ddbdcc7f1e414ebe2a2e936751a3c02
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -135,13 +136,13 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager API
 
 | **属性** | **说明** |
 | --- | --- |
-| top |要返回的最大结果数。 |
+| top |返回结果的最大数量。 |
 | highlight |包含 pre 和 post 参数，通常用于突出显示匹配的字段 |
 | pre |将给定字符串作为前缀添加到匹配的字段。 |
 | post |将给定字符串追加到匹配的字段。 |
 | query |用于收集并返回结果的搜索查询。 |
-| start |要查找结果的开始时间窗口。 |
-| end |要查找结果的结束时间窗口。 |
+| start |结果查找操作的时间范围起点。 |
+| end |结果查找操作的时间范围终点。 |
 
 **响应：**
 
@@ -237,8 +238,11 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager API
 
 ```
     $savedSearchParametersJson = "{'properties': { 'Category': 'myCategory', 'DisplayName':'myDisplayName', 'Query':'* | measure Count() by Source', 'Version':'1'  }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisIsMyId?api-version=2015-03-20 $savedSearchParametersJson
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisismyid?api-version=2015-03-20 $savedSearchParametersJson
 ```
+
+> [!NOTE]
+> 所有已保存的搜索、计划和使用 Log Analytics API 创建的操作的名称必须小写。
 
 ### <a name="delete-saved-searches"></a>删除保存的搜索
 **请求：**
@@ -310,7 +314,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager API
 以下信息介绍了可用的可选参数。
 
 ### <a name="highlighting"></a>Highlighting
-“Highlight”参数是一个可选参数，可以使用它请求搜索子系统（会在其响应中包含一组标记）。
+“Highlight”参数是一个可选参数，可以使用它请求搜索子系统在其响应中包含一组标记。
 
 这些标记指示突出显示的开始和结束文本，这些文本与搜索查询中提供的术语匹配。
 可以指定搜索用于包含突出显示的术语的开始和结束标记。

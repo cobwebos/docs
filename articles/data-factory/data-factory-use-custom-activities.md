@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 864526efd2bc90bdd4beeb4c81173e85eee6f34b
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 44e0d7c920bc32bf3293ca5ab197b6d2332a43f8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -36,35 +36,34 @@ ms.lasthandoff: 04/27/2017
 > * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
-
 在 Azure 数据工厂管道中可使用两类活动。
 
 - [数据移动活动](data-factory-data-movement-activities.md)：在[支持的源与接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间移动数据。
-- [数据转换活动](data-factory-data-transformation-activities.md)：使用 Azure HDInsight、Azure 批处理和 Azure 机器学习等计算服务转换数据。 
+- [数据转换活动](data-factory-data-transformation-activities.md)：使用 Azure HDInsight、Azure Batch 和 Azure 机器学习等计算服务转换数据。 
 
 若要将数据移入/移出数据工厂不支持的数据存储，需使用自己的数据移动逻辑创建**自定义活动**，然后在管道中使用该活动。 同样，若要以数据工厂不支持的方式转换/处理数据，需使用自己的数据转换逻辑创建自定义活动，然后在管道中使用该活动。 
 
-可将自定义活动配置为在虚拟机的 **Azure 批处理**池或基于 Windows 的 **Azure HDInsight** 群集中运行。 使用 Azure 批处理时，只能使用现有的 Azure 批处理池。 而在使用 HDInsight 时，可以使用现有的 HDInsight 群集，或者在运行时系统根据用户需要自动创建的群集。  
+可将自定义活动配置为在虚拟机的 **Azure Batch**池或基于 Windows 的 **Azure HDInsight** 群集中运行。 使用 Azure Batch 时，只能使用现有的 Azure Batch 池。 而在使用 HDInsight 时，可以使用现有的 HDInsight 群集，或者在运行时系统根据用户需要自动创建的群集。  
 
-以下演练提供有关创建自定义 .NET 活动和在管道中使用自定义活动的分步说明。 本演练使用 **Azure 批处理**链接服务。 若要改用 Azure HDInsight 链接服务，请创建 **HDInsight** 类型的链接服务（你自己的 HDInsight 群集），或 **HDInsightOnDemand** 类型的链接服务（数据工厂将按需创建 HDInsight 群集）。 然后，将自定义活动配置为使用 HDInsight 链接服务。 有关使用 Azure HDInsight 运行自定义活动的详细信息，请参阅[使用 Azure HDInsight 链接服务](#use-hdinsight-compute-service)部分。
+以下演练提供有关创建自定义 .NET 活动和在管道中使用自定义活动的分步说明。 本演练使用 **Azure Batch**链接服务。 若要改用 Azure HDInsight 链接服务，请创建 **HDInsight** 类型的链接服务（你自己的 HDInsight 群集），或 **HDInsightOnDemand** 类型的链接服务（数据工厂将按需创建 HDInsight 群集）。 然后，将自定义活动配置为使用 HDInsight 链接服务。 有关使用 Azure HDInsight 运行自定义活动的详细信息，请参阅[使用 Azure HDInsight 链接服务](#use-hdinsight-compute-service)部分。
 
 > [!IMPORTANT]
-> - 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure 批处理池（而不是使用 HDInsight 群集）来运行自定义活动。
+> - 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure Batch 池（而不是使用 HDInsight 群集）来运行自定义活动。
 > - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。   
 
-## <a name="walkthrough"></a>演练
+## <a name="walkthrough-create-a-custom-activity"></a>演练：创建自定义活动
 ### <a name="prerequisites"></a>先决条件
 * Visual Studio 2012/2013/2015
 * 下载并安装 [Azure .NET SDK][azure-developer-center]
 
-### <a name="azure-batch-prerequisites"></a>Azure 批处理先决条件
-在本演练中，将 Azure Batch 用作计算资源运行自定义 .NET 活动。 **Azure 批处理**是一个平台服务，适用于在云中有效运行大规模并行和高性能计算 (HPC) 应用程序。 Azure 批处理可以计划要在托管的**虚拟机集合**上运行的计算密集型工作，并且可以缩放计算资源，使之符合作业的需求。 有关 Azure 批处理服务的详细概述，请参阅 [Azure 批处理基础知识][batch-technical-overview]一文。
+### <a name="azure-batch-prerequisites"></a>Azure Batch 先决条件
+在本演练中，将 Azure Batch 用作计算资源运行自定义 .NET 活动。 **Azure Batch**是一个平台服务，适用于在云中有效运行大规模并行和高性能计算 (HPC) 应用程序。 Azure Batch 可以计划要在托管的**虚拟机集合**上运行的计算密集型工作，并且可以缩放计算资源，使之符合作业的需求。 有关 Azure Batch 服务的详细概述，请参阅 [Azure Batch 基础知识][batch-technical-overview]一文。
 
-本教程将创建一个包含 VM 池的 Azure 批处理帐户。 下面是相关步骤：
+本教程将创建一个包含 VM 池的 Azure Batch 帐户。 下面是相关步骤：
 
 1. 使用 [Azure 门户](http://portal.azure.com)创建 **Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
-2. 记下 Azure 批处理帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure 批处理链接服务。
-    1. 在 Azure 批处理帐户的主页上，可以看到采用以下格式的 **URL**：`https://myaccount.westus.batch.azure.com`。 在本示例中，**myaccount** 是 Azure 批处理帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如：`https://westus.batch.azure.com`。
+2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
+    1. 在 Azure Batch 帐户的主页上，可以看到采用以下格式的 **URL**：`https://myaccount.westus.batch.azure.com`。 在本示例中，**myaccount** 是 Azure Batch 帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如：`https://<region>.batch.azure.com`。
     2. 在左侧菜单中单击“密钥”并复制“主访问密钥”。
     3. 若要使用现有池，请在菜单中单击“池”，然后记下该池的 **ID**。 如果没有池，将转到下一步。     
 2. 创建 **Azure Batch 池**。
@@ -89,7 +88,7 @@ ms.lasthandoff: 04/27/2017
 1. 创建包含简单数据转换/处理逻辑的自定义活动。
 2. 创建一个 Azure 数据工厂，其中包含一个使用自定义活动的管道。
 
-## <a name="create-a-custom-activity"></a>创建自定义活动
+### <a name="create-a-custom-activity"></a>创建自定义活动
 若要创建 .NET 自定义活动，请使用实现 **IDotNetActivity** 接口的类创建 **.NET 类库**项目。 此接口仅包含一个方法：[Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx)，其签名是：
 
 ```csharp
@@ -113,10 +112,10 @@ public IDictionary<string, string> Execute(
 ### <a name="procedure"></a>过程
 1. 创建 **.NET 类库**项目。
    <ol type="a">
-     <li>启动 <b>Visual Studio 2015</b> 或 <b>Visual Studio 2013</b> 或 <b>Visual Studio 2012</b>。</li>
+     <li>启动 <b>Visual Studio 2017</b> 或 <b>Visual Studio 2015</b> 或 <b>Visual Studio 2013</b> 或 <b>Visual Studio 2012</b>。</li>
      <li>单击“文件”，指向“新建”并单击“项目”。<b></b><b></b><b></b></li>
      <li>展开“模板”，然后选择“Visual C#”。<b></b><b></b> 此演练中使用的是 C#，但也可使用任何 .NET 语言开发自定义活动。</li>
-     <li>从右侧项目类型列表中选择“类库”<b></b>。</li>
+     <li>从右侧项目类型列表中选择“类库”<b></b>。 在 VS 2017 中，选择“类库 (.NET Framework)”<b></b> </li>
      <li>对于“名称”<b></b>，输入 <b>MyDotNetActivity</b>。</li>
      <li>对于“位置”<b></b>，选择“C:\ADFGetStarted”<b></b>。</li>
      <li><b></b> 。</li>
@@ -138,16 +137,27 @@ public IDictionary<string, string> Execute(
 5. 将以下 **using** 语句添加到项目中的源文件。
 
     ```csharp
-    using System.IO;
-    using System.Globalization;
-    using System.Diagnostics;
-    using System.Linq;
 
-    using Microsoft.Azure.Management.DataFactories.Models;
-    using Microsoft.Azure.Management.DataFactories.Runtime;
+// Comment these lines if using VS 2017
+using System.IO;
+using System.Globalization;
+using System.Diagnostics;
+using System.Linq;
+// --------------------
 
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
+// Comment these lines if using <= VS 2015
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// ---------------------
+
+using Microsoft.Azure.Management.DataFactories.Models;
+using Microsoft.Azure.Management.DataFactories.Runtime;
+
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
     ```
 6. 将**命名空间**名称更改为 **MyDotNetActivityNS**。
 
@@ -379,14 +389,13 @@ public IDictionary<string, string> Execute(
     > 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的**顶级**目录中。
 
     ![二进制输出文件](./media/data-factory-use-custom-activities/Binaries.png)
-14. 创建名为 **customactivitycontainer** 的 Blob 容器（如果不存在）。
+14. 创建名为 **customactivitycontainer** 的 Blob 容器（如果不存在）。    
 15. 将 MyDotNetActivity.zip 作为 Blob 上载到 AzureStorageLinkedService 引用的**通用** Azure Blob 存储（不是热/冷 Blob 存储）中的 customactivitycontainer。  
 
-> [!NOTE]
-> 若将此 .NET 活动项目添加到包含数据工厂项目的 Visual Studio 中的解决方案内，并从数据工厂应用程序项目添加对 .NET 活动项目的引用，则无需执行手动创建 zip 文件并将其上载到通用 Azure Blob 存储的最后两个步骤。 使用 Visual Studio 发布数据工厂实体时，发布过程将自动完成这些步骤。 若要了解如何使用 Visual Studio 创建和发布数据工厂实体，请参阅[使用 Visual Studio 生成第一个管道](data-factory-build-your-first-pipeline-using-vs.md)和[将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-activity-tutorial-using-visual-studio.md)。  
+> [!IMPORTANT]
+> 若将此 .NET 活动项目添加到包含数据工厂项目的 Visual Studio 中的解决方案内，并从数据工厂应用程序项目添加对 .NET 活动项目的引用，则无需执行手动创建 zip 文件并将其上载到通用 Azure Blob 存储的最后两个步骤。 使用 Visual Studio 发布数据工厂实体时，发布过程将自动完成这些步骤。 有关详细信息，请参阅 [Visual Studio 中的数据工厂项目](#data-factory-project-in-visual-studio)部分。
 
-
-## <a name="create-a-data-factory"></a>创建数据工厂 
+## <a name="create-a-pipeline-with-custom-activity"></a>创建包含自定义活动的管道
 现已创建自定义活动并将包含二进制的 zip 文件上载到**通用** Azure 存储帐户中的 Blob 容器。 在本部分，我们将创建一个 Azure 数据工厂，其中包含一个使用自定义活动的管道。
 
 自定义活动的输入数据集表示 Blob 存储中 adftutorial 容器的 customactivityinput 文件夹中的 Blob（文件）。 活动的输出数据集表示 Blob 存储中 adftutorial 容器的 customactivityoutput 文件夹中的输出 Blob。
@@ -409,7 +418,7 @@ test custom activity Microsoft test custom activity Microsoft
 以下是本部分中要执行的步骤：
 
 1. 创建**数据工厂**。
-2. 为运行自定义活动的 VM 的 Azure 批处理池以及用于保存输入/输出 Blob 的 Azure 存储创建**链接服务**。
+2. 为运行自定义活动的 VM 的 Azure Batch 池以及用于保存输入/输出 Blob 的 Azure 存储创建**链接服务**。
 3. 创建表示自定义活动的输入和输出的输入和输出**数据集**。
 4. 创建使用自定义活动的**管道**。
 
@@ -448,12 +457,12 @@ test custom activity Microsoft test custom activity Microsoft
 4. 单击命令栏上的“部署”，部署链接服务。
 
 #### <a name="create-azure-batch-linked-service"></a>创建 Azure Batch 链接服务
-1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”**，单击“新建计算”，然后从菜单中选择“Azure 批处理”。
+1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”**，单击“新建计算”，然后从菜单中选择“Azure Batch”。
 
-    ![新建计算 - Azure 批处理](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
+    ![新建计算 - Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. 对 JSON 脚本进行以下更改：
 
-   1. 指定 **accountName** 属性的 Azure Batch 帐户名称。 “Azure 批处理帐户”边栏选项卡的 **URL** 采用以下格式：`http://accountname.region.batch.azure.com`。 对于 JSON 中的 **batchUri** 属性，需要从 URL 中删除 `accountname.`，并将 `accountname` 用于 `accountName` JSON 属性。
+   1. 指定 **accountName** 属性的 Azure Batch 帐户名称。 “Azure Batch 帐户”边栏选项卡的 **URL** 采用以下格式：`http://accountname.region.batch.azure.com`。 对于 JSON 中的 **batchUri** 属性，需要从 URL 中删除 `accountname.`，并将 `accountname` 用于 `accountName` JSON 属性。
    2. 指定 **accessKey** 属性的 Azure Batch 帐户密钥。
    3. 指定作为 **poolName** 属性先决条件一部分所创建的池的名称。 也可指定池 ID 而非池名称。
    4. 指定 **batchUri** 属性的 Azure Batch URI。 示例：`https://westus.batch.azure.com`。  
@@ -651,8 +660,22 @@ test custom activity Microsoft test custom activity Microsoft
 
 有关监视数据集和管道的详细步骤，请参阅[监视和管理管道](data-factory-monitor-manage-pipelines.md)。      
 
-### <a name="data-factory-and-batch-integration"></a>数据工厂和 Batch 集成
-数据工厂服务在 Azure 批处理中创建一个作业，名称为：**adf-poolname: job-xxx**。 在左侧菜单中单击“作业”。 
+## <a name="data-factory-project-in-visual-studio"></a>Visual Studio 中的数据工厂项目  
+可以使用 Visual Studio（而非使用 Azure 门户）创建和发布数据工厂实体。 有关如何使用 Visual Studio 创建和发布数据工厂实体的详细信息，请参阅[使用 Visual Studio 生成第一个管道](data-factory-build-your-first-pipeline-using-vs.md)和[将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-activity-tutorial-using-visual-studio.md)。
+
+如果要在 Visual Studio 中创建数据工厂项目，请执行以下附加步骤：
+ 
+1. 将数据工厂项目添加到包含自定义活动项目的 Visual Studio 解决方案。 
+2. 从数据工厂项目添加对 .NET 活动项目的引用。 右键单击数据工厂项目，指向“添加”，然后单击“引用”。 
+3. 在“添加引用”对话框中，选择“MyDotNetActivity”项目，然后单击“确定”。
+4. 生成并发布解决方案。
+
+    > [!IMPORTANT]
+    > 发布数据工厂实体时，将自动创建 zip 文件并将其上传到 blob 容器：customactivitycontainer。 如果 blob 容器不存在，也将自动创建。  
+
+
+## <a name="data-factory-and-batch-integration"></a>数据工厂和 Batch 集成
+数据工厂服务在 Azure Batch 中创建一个作业，名称为：**adf-poolname: job-xxx**。 在左侧菜单中单击“作业”。 
 
 ![Azure 数据工厂 - Batch 作业](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
 
@@ -751,7 +774,7 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 }
 ```
 
-## <a name="auto-scaling-of-azure-batch"></a>Azure 批处理的自动缩放
+## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。 
 
 此处的示例公式实现以下行为：最初创建池时，它从 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
@@ -774,7 +797,7 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 在本演练中，使用 Azure Batch 计算运行自定义活动。 也可以使用自己的基于 Windows 的 HDInsight 群集或使用数据工厂创建按需基于 Windows 的 HDInsight 群集，并在 HDInsight 群集上运行自定义活动。 以下是用于使用 HDInsight 群集的高级步骤。
 
 > [!IMPORTANT]
-> 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure 批处理池（而不是使用 HDInsight 群集）来运行自定义活动。
+> 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure Batch 池（而不是使用 HDInsight 群集）来运行自定义活动。
  
 
 1. 创建 Azure HDInsight 链接服务。   
@@ -816,7 +839,7 @@ Azure 数据工厂服务支持创建按需群集，并使用它处理输入，�
         ```
 
     > [!IMPORTANT]
-    > 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure 批处理池（而不是使用 HDInsight 群集）来运行自定义活动。
+    > 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure Batch 池（而不是使用 HDInsight 群集）来运行自定义活动。
 
 4. 单击命令栏上的“部署”，部署链接服务。
 
@@ -881,7 +904,7 @@ Azure 数据工厂服务支持创建按需群集，并使用它处理输入，�
 ```
 
 ## <a name="create-a-custom-activity-by-using-net-sdk"></a>使用 .NET SDK 创建自定义活动
-以下代码使用 .NET SDK 按照本文中的演练创建数据工厂。 可在[此文](data-factory-copy-activity-tutorial-using-dotnet-api.md)中找到有关使用 SDK 以编程方式创建管道的更多详细信息
+在本文的演练中，将通过 Azure 门户使用包含自定义活动的管道创建数据工厂。 以下代码演示如何改用 .NET SDK 创建数据工厂。 可以在[使用 .NET API 创建包含复制活动的管道](data-factory-copy-activity-tutorial-using-dotnet-api.md)一文中找到有关使用 SDK 以编程方式创建管道的更多详细信息。 
 
 ```csharp
 using System;
@@ -1120,8 +1143,11 @@ namespace DataFactoryAPITestApp
 }
 ```
 
+## <a name="debug-custom-activity-in-visual-studio"></a>在 Visual Studio 中调试自定义活动
+GitHub 上的 [Azure 数据工厂 - 本地环境](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment)示例包括一个工具，可用于在 Visual Studio 中调试自定义 .NET 活动。  
 
-## <a name="examples"></a>示例
+
+## <a name="sample-custom-activities-on-github"></a>GitHub 上的示例自定义活动
 | 示例 | 自定义活动的功能 |
 | --- | --- |
 | [HTTP 数据下载程序](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample)。 |在数据工厂中使用自定义 C# 活动将数据从 HTTP 终结点下载到 Azure Blob 存储。 |
@@ -1129,8 +1155,6 @@ namespace DataFactoryAPITestApp
 | [运行 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)。 |通过在已安装 R 的 HDInsight 群集上运行 RScript.exe 来调用 R 脚本。 |
 | [跨 AppDomain .NET 活动](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |使用不同于数据工厂启动器使用的程序集版本 |
 | [在 Azure Analysis Services 中重新处理模型](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  在 Azure Analysis Services 中重新处理模型。 |
-| [本地调试自定义活动](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFCustomActivityRunner) | 自定义活动运行程序可让你使用管道中配置的信息，单步执行和调试 Azure 数据工厂 (ADF) 自定义 .NET 活动。 | 
-
 
 [batch-net-library]: ../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../batch/batch-account-create-portal.md

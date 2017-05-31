@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 2/17/2017
 ms.author: asgang
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 06ac75a40ed1dc97046836388bb7938dabd2b9ac
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: f78a857a795031f6188635091c76431cd5440d1c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -37,8 +38,9 @@ ms.lasthandoff: 04/12/2017
 
 ## <a name="enable-replication"></a>启用复制
 #### <a name="before-you-start"></a>开始之前
-如果要复制 VMware 虚拟机，请注意：
+复制 VMware 虚拟机时，请注意：
 
+* Azure 用户帐户需要具有某些[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)，才能启用新的虚拟机到 Azure 的复制。
 * 系统会每隔 15 分钟发现 VMware VM 一次。 在发现之后，可能需要 15 分钟或更长时间，虚拟机才会出现在门户中。 同样，当你添加新的 vCenter 服务器或 vSphere 主机时，发现可能要花费 15 分钟或更长时间。
 * 虚拟机上的环境更改（例如 VMware 工具安装）可能需要 15 分钟或更长时间才能在门户中更新。
 * 可以在“配置服务器”边栏选项卡上 vCenter 服务器/vSphere 主机的“上次联系时间”字段中检查上次发现 VMware VM 的时间。
@@ -62,7 +64,7 @@ ms.lasthandoff: 04/12/2017
 7. 选择要用于复制数据的 Azure 存储帐户。 请注意：
 
    * 可以选择高级或标准存储帐户。 如果选择高级帐户，则需要指定其他标准存储帐户来持续写入复制日志。 这些帐户必须位于与恢复服务保管库相同的区域中。
-   * 若要使用已有帐户以外的存储帐户，可以创建帐户*占位链接：使用资源管理器创建存储帐户（将在“入门”中介绍）*。 若要使用 Resource Manager 模型创建存储帐户，请单击“新建”。 如果想要使用经典模型创建存储帐户，请[在 Azure 门户中](../storage/storage-create-storage-account-classic-portal.md)执行该操作。
+   * 若要使用已有帐户以外的存储帐户，可以创建帐户*占位链接：使用 Resource Manager 创建存储帐户（将在“入门”中介绍）*。 若要使用 Resource Manager 模型创建存储帐户，请单击“新建”。 如果想要使用经典模型创建存储帐户，请[在 Azure 门户中](../storage/storage-create-storage-account-classic-portal.md)执行该操作。
 
 
 8. 选择 Azure VM 在故障转移后启动时所要连接的 Azure 网络和子网。 该网络必须位于与恢复服务保管库相同的区域中。 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 如果没有网络，需要[创建一个](#set-up-an-azure-network)。 若要使用 Resource Manager 创建网络，请单击“新建”。 如果想要使用经典模型创建网络，请[在 Azure 门户中](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)执行该操作。 选择适用的子网。 。
@@ -105,19 +107,20 @@ ms.lasthandoff: 04/12/2017
 ![启用复制](./media/site-recovery-vmware-to-azure/VMProperties_AVSET.png)
 
 *资源组*
-   
-  * 可以选择计算机会在故障转移后成为其中一部分的[资源组](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)。 在故障转移前，可以随时更改此设置。 
-  
+
+  * 可以选择计算机会在故障转移后成为其中一部分的[资源组](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)。 在故障转移前，可以随时更改此设置。
+
 > [!NOTE]
 > 在故障转移后，如果将计算机迁移到其他资源组，则计算机的保护设置会中断。
- 
+
 *可用性集*
 
-如果需要计算机在故障转移后成为某个[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)的一部分，可以选择一个。 选择可用性集时，请记住：
+如果需要计算机在故障转移后成为某个[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)的一部分，可以选择一个。
+选择可用性集时，请记住：
 
 * 仅会列出属于指定资源组的可用性集  
-* 具有不同虚拟网络的计算机不能属于同一可用性集 
-* 仅大小相同的虚拟机可以属于同一可用性集 
+* 具有不同虚拟网络的计算机不能属于同一可用性集
+* 仅大小相同的虚拟机可以属于同一可用性集
 
 *网络属性*
 

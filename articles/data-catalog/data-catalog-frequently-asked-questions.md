@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 76cc9c79851cc040e6a36c5499a77c0d95948154
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: c91f840077ccd9e55a403533c97a852542f0d326
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -108,7 +110,7 @@ Azure 数据目录的标准版最多支持 100,000 个已注册数据资产。
 我们当前正努力将更多数据源添加到 Azure 数据目录中。 如果你希望某个数据源收到支持，请在[Azure 数据目录论坛](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)中提出建议（如果已有人建议则可表达你的支持）。
 
 ## <a name="q-how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>问：Azure 数据目录与 Office 365 的 Power BI 中的数据目录有什么关系？
-你可将 Azure 数据目录看做数据目录的演进。 Azure 数据目录提供数据源发布和发现的类似功能，但其注重于更广泛的方案且不依赖于 Office 365。 Azure 数据目录发布正式版后，很快就会将这两个目录合并为单个服务。
+可将 Azure 数据目录看做 Power BI 中的数据目录的演进。 从 2017 年春天开始，Azure 数据目录用于在 Excel 2016 和 Power Query for Excel 中启用查询的共享和发现。 Excel 中的数据目录功能适用于具有 Power BI Pro 许可证的用户。
 
 ## <a name="q-what-permissions-does-a-user-need-to-register-assets-with-azure-data-catalog"></a>问：用户在 Azure 数据目录中注册资产时需要什么权限？
 运行 Azure 数据目录注册工具的用户需要数据源上的权限，允许其从数据源读取元数据。 如果用户还选择包括预览，则用户还必须具有允许其从正在注册的对象读取数据的权限。
@@ -127,9 +129,4 @@ Azure 数据目录是可用于云和本地数据源的云服务，提供混合�
 
 ## <a name="q-my-question-isnt-answered-here--what-should-i-do"></a>问：如果未在此处找到相关问题怎么办？
 转到 [Azure 数据目录论坛](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)。 将在此处找到提出的问题。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

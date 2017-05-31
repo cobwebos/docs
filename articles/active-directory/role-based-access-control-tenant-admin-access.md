@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 05/09/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: b9eb9c7f59d0936364bad788ed3b6635b2453739
-ms.openlocfilehash: 9bcad7aaf7f1bd8c51dbfa88381276a70a4def5c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 0fa44799a0bd49d3d96a1916f32e6452405abce8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -24,7 +26,7 @@ ms.openlocfilehash: 9bcad7aaf7f1bd8c51dbfa88381276a70a4def5c
 
 基于角色的访问控制帮助租户管理员获取临时的访问权限提升，以便其可以授予高于普通的权限。 需要时，租户管理员可将自己提升为用户访问管理员角色。 该角色让租户管理员有权在“/”范围内向自己或其他人授予角色。
 
-此功能非常重要，因为它允许租户管理员查看组织中存在的所有订阅。 它还允许自动化应用（如开票和审核）访问所有订阅，并从计费或资产管理角度提供有关组织状态的准确观点。  
+此功能非常重要，因为它允许租户管理员查看组织中存在的所有订阅。 它还允许自动化应用（如开票和审核）访问所有订阅，并针对计费或资产管理提供有关组织状态的准确观点。  
 
 ## <a name="how-to-use-elevateaccess-to-give-tenant-access"></a>如何使用 elevateAccess 提供租户访问权限
 
@@ -106,9 +108,4 @@ ms.openlocfilehash: 9bcad7aaf7f1bd8c51dbfa88381276a70a4def5c
 - 了解有关[使用 REST 管理基于角色的访问控制](role-based-access-control-manage-access-rest.md)的详细信息
 
 - 在 Azure 门户中[管理访问权限分配](role-based-access-control-manage-assignments.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

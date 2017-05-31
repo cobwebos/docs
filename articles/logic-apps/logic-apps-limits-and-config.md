@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
-ms.author: jehollan
+ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 2a270ba8ae17077c55c6b1473d4955dfb5f79ca1
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 859f9a1ca9dbe166fd514c8eba868b466dbc4d2c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -84,9 +84,10 @@ ms.lasthandoff: 05/03/2017
 |Name|限制|说明|
 |----|----|----|
 |每 5 分钟执行的操作数 |100,000|可以根据需要在多个应用之间分配工作负荷|
+|操作并发传出调用数 |~2,500|减少并发请求数，或根据需要减少持续时间|
+|运行时终结点并发传入调用数 |~1,000|减少并发请求数，或根据需要减少持续时间|
 |运行时终结点读取每 5 分钟调用一次 |60,000|可以根据需要在多个应用之间分配工作负荷|
 |运行时终结点调用每 5 分钟调用一次 |45,000|可以根据需要在多个应用之间分配工作负荷|
-|阻止并发调用的运行时终结点 |~1,000|减少并发请求数，或根据需要减少持续时间|
 
 如果你在正常处理中需要超过此限制，或想要运行在一段时间内可能超过此限制的负载测试，请[与我们联系](mailto://logicappsemail@microsoft.com)，以便我们可以帮助满足你的需求。
 
@@ -116,7 +117,8 @@ ms.lasthandoff: 05/03/2017
 |架构|8MB|可以使用 [blob URI](logic-apps-enterprise-integration-schemas.md) 上传大于 2 MB 的文件 |
 |映射（XSLT 文件）|2MB| |
 |运行时终结点读取每 5 分钟调用一次 |60,000|可以根据需要在多个帐户之间分配工作负荷|
-|运行时终结点调用每 5 分钟调用一次 |90,000|可以根据需要在多个帐户之间分配工作负荷|
+|运行时终结点调用每 5 分钟调用一次 |45,000|可以根据需要在多个帐户之间分配工作负荷|
+|运行时终结点每 5 分钟的跟踪调用数 |45,000|可以根据需要在多个帐户之间分配工作负荷|
 |阻止并发调用的运行时终结点 |~1,000|减少并发请求数，或根据需要减少持续时间|
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>B2B 协议（AS2、X12、EDIFACT）消息大小

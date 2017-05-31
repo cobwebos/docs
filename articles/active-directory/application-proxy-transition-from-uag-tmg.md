@@ -1,6 +1,6 @@
 ---
-title: "从 Microsoft Forefront 过渡到 Azure AD 应用程序代理 | Microsoft 文档"
-description: "介绍了有关如何从 Microsoft Forefront TMG 和 UAG 解决方案迁移到 Azure Active Directory 应用程序代理的基础知识。"
+title: "升级到 Azure AD 应用程序代理 | Microsoft Docs"
+description: "如果要从 Microsoft Forefront 或 Unified Access Gateway 升级，请选择哪个代理解决方案最佳。"
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/27/2017
 ms.author: kgremban
-ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 6e95e9abac988ae54a401927a92bdb397dd63eed
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: e9d5caa4d11012744ce9f26648166371f3aa17ba
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/13/2017
 
 ---
-# <a name="transition-to-azure-ad-application-proxies-from-microsoft-forefront"></a>从 Microsoft Forefront 过渡到 Azure AD 应用程序代理
+# <a name="upgrade-to-azure-ad-proxies-from-microsoft-forefront-or-unified-access-gateway"></a>从 Microsoft Forefront 或 Unified Access Gateway 升级到 Azure AD 代理
 
 本文介绍如何从 Microsoft Forefront Threat Management Gateway (TMG) 和 Unified Access Gateway (UAG) 解决方案迁移到 Azure AD 应用程序代理。
 
@@ -28,16 +28,16 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="functionality-details-for-the-conversion"></a>转换的功能详细信息
 
-|**TMG/UAG 功能**|**Web 应用程序代理/Azure AD 应用程序代理**|
+|**TMG/UAG 功能**|**现代解决方案**|
 |:-----|:-----|
-|适用于浏览器应用的选择性 HTTP 发布|在 Windows Server 2012 R2 中的 Web 应用程序代理中可用。 当前在 Azure AD 应用程序代理中可用。|
-|Active Directory 联合身份验证服务 (AD FS) 集成|在 Windows Server 2012 R2 中的 Web 应用程序代理中可用。 当前在 Azure AD 应用程序代理中可用。|
-|丰富协议发布（例如 Citrix、Lync、RDG）|在 Windows Server 2012 R2 中的 Web 应用程序代理中可用。 当前在 Azure AD 应用程序代理中可用。|
-|ActiveSync 的预身份验证 (HTTP Basic) 和 RDG|当前在 Web 应用程序代理和 Azure AD 应用程序代理中都不可用。|
-|门户|将 Intune 或 System Center 用于 Web 应用程序代理。 将 Azure AD 访问面板或 Office 365 应用启动器用于 Azure AD 应用程序代理。|
-|终结点运行状况检测|使用 Intune 或 System Center。|
-|SSL 隧道|使用 Windows SSL 或 VPN 功能。|
-|第 2/3 层防火墙|使用 Windows Server 功能。|
+|适用于浏览器应用的选择性 HTTP 发布|Azure AD 应用程序代理|
+|Active Directory 联合身份验证服务 (AD FS) 集成|Azure AD 应用程序代理|
+|丰富协议发布（例如 Citrix、Lync、RDG）|Azure AD 应用程序代理|
+|门户|用于 Azure AD 应用程序代理的 Azure AD 访问面板或 Office 365 应用启动器|
+|终结点运行状况检测|Intune 或 System Center|
+|SSL 隧道|Windows SSL 或 VPN|
+|第 2/3 层防火墙|Windows Server|
+|ActiveSync 的预身份验证 (HTTP Basic) 和 RDG|Microsoft 未提供最新解决方案|
 |Web 应用程序防火墙|Microsoft 当前未提供解决方案。|
 |安全 Web 网关（正向代理）|Microsoft 当前未提供解决方案。|
 

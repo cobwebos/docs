@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-=article
 ms.date: 04/05/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 8b0985ec5b4fec39e9277b81f7bbecc7d50065e1
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 7de37f106e33d425b3b497cec640bac3fa4afa74
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -38,7 +39,7 @@ ms.lasthandoff: 04/06/2017
 
 ## <a name="deployment-steps"></a>部署步骤
 
-按照本文操作，完成这些部署步骤：
+按照该文操作，完成以下部署步骤：
 
 
 1. [深入了解](site-recovery-components.md#hyper-v-to-azure)此部署的体系结构。 此外，[深入了解](site-recovery-hyper-v-azure-architecture.md) Hyper-V 复制在 Site Recovery 中的工作原理。
@@ -261,7 +262,7 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 4. 在“恢复点保留期”中，针对每个恢复点指定保留期的时长（以小时为单位）。 受保护的计算机可以恢复到某个时段内的任意时间点。
 5. 在“应用一致性快照频率” 中，指定创建包含应用程序一致性快照的恢复点的频率（1-12 小时）。 Hyper-V 使用两种类型的快照 — 标准快照，它提供整个虚拟机的增量快照；与应用程序一致的快照，它生成虚拟机内的应用程序数据的时间点快照。 与应用程序一致的快照使用卷影复制服务 (VSS) 来确保应用程序在拍摄快照时处于一致状态。 请注意，如果你启用了与应用程序一致的快照，它将影响在源虚拟机上运行的应用程序的性能。 请确保你设置的值小于你配置的额外恢复点的数目。
 6. 在“初始复制开始时间”中，指定开始初始复制的时间。 复制通过 Internet 带宽进行，因此你可能需要将它安排在非繁忙时间。
-7. 在“加密 Azure 上存储的数据”中，指定是否加密 Azure 存储空间中的静态数据。 。
+7. 在“加密 Azure 上存储的数据”中，指定是否加密 Azure 存储中的静态数据。 。
 
     ![复制策略](./media/site-recovery-vmm-to-azure/gs-replication2.png)
 8. 当创建新策略时，该策略自动与 VMM 云关联。 单击 **“确定”**。 可以在“复制”“策略名称”>“关联 VMM 云”中，将其他 VMM 云（及其中的 VM）与此复制策略相关联。
@@ -282,12 +283,14 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 
    ![容量计划](./media/site-recovery-vmm-to-azure/gs-capacity-planning.png)
 
-   深入了解[控制网络带宽](#network-bandwidth-considerations)
+   详细了解如何[控制网络带宽](#network-bandwidth-considerations)
 
 
 
 
 ## <a name="enable-replication"></a>启用复制
+
+在开始之前，请确保 Azure 用户帐户具有启用新的虚拟机到 Azure 的复制所需的[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
 
 现在，请按如下所述启用复制：
 
@@ -309,9 +312,9 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 7. 在“属性” > “配置属性”中，选择所选 VM 的操作系统和 OS 磁盘。
 
     - 验证 Azure VM 名称（目标名称）是否符合 [Azure 虚拟机要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。   
-    - 默认情况下，为复制选择了 VM 的所有磁盘，但可以清除磁盘已将其排除。
+    - 默认情况下，为复制选择了 VM 的所有磁盘，但可以通过清除磁盘将其排除。
 
-        - 可能要排除磁盘来减少复制带宽。 例如，可能不想要复制包含临时数据的磁盘，或包含每次重启计算机/应用时刷新的数据（例如 pagefile.sys 或 Microsoft SQL Server tempdb）的磁盘。 通过取消选中该磁盘，可从复制中排除磁盘。
+        - 可能要排除磁盘来减少复制带宽。 例如，可能不需要复制包含临时数据的磁盘，或包含每次重启计算机/应用时刷新的数据（例如 pagefile.sys 或 Microsoft SQL Server tempdb）的磁盘。 通过取消选中该磁盘，可从复制中排除磁盘。
         - 只能排除基本磁盘。 不能排除 OS 磁盘。
         - 建议不要排除动态磁盘。 Site Recovery 无法识别来宾 VM 内的虚拟硬盘是基本磁盘还是动态磁盘。 如果未排除所有相关动态卷磁盘，则受保护的动态磁盘将在故障转移 VM 时显示为故障磁盘，且该磁盘上的数据将无法访问。
         - 启用复制后，无法添加或删除要复制的磁盘。 如果要添加或排除磁盘，需要禁用 VM 保护，然后重启保护。
@@ -350,7 +353,25 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
      * 如果 VM 有多个网络适配器，它们将全部连接到同一个网络。
 
      ![启用复制](./media/site-recovery-vmm-to-azure/test-failover4.png)
+
 4. 在“磁盘”中，可以看到 VM 上将要复制的操作系统和数据磁盘。
+
+#### <a name="managed-disks"></a>托管磁盘
+
+如果要在迁移到 Azure 时将托管磁盘附加到虚拟机上，可以在“计算和网络” > “计算属性”中，将 VM 的“使用托管磁盘”设置设为“是”。 托管磁盘通过管理与 VM 磁盘关联的存储帐户简化了 Azure IaaS VM 的磁盘管理。 [详细了解托管磁盘](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview)。
+
+   - 仅在故障转移到 Azure 时创建托管磁盘并将其附加到虚拟机上。 启用保护时，本地计算机中的数据将继续复制到存储帐户。
+   只能为使用 Resource Manager 部署模型部署的虚拟机创建托管磁盘。  
+
+  > [!NOTE]
+  > 使用托管磁盘的虚拟机目前不支持从 Azure 故障回复到本地 Hyper-V 环境。 仅当想要将此虚拟机迁移到 Azure 时，才将“使用托管磁盘”设置为“是”。
+
+   - 将“使用托管磁盘”设置为“是”时，资源组中只有“使用托管磁盘”设置为“是”的可用性集可供选择。 这是因为使用托管磁盘的虚拟机只能属于“使用托管磁盘”属性设置为“是”的可用性集。 请确保基于想要在故障转移时使用托管磁盘的意图，创建设置了“使用托管磁盘”属性的可用性集。  同样，将“使用托管磁盘”设置为“否”时，资源组中只有“使用托管磁盘”属性设置为“否”的可用性集可供选择。 [详细了解托管磁盘和可用性集](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set)。
+
+  > [!NOTE]
+  > 如果用于复制的存储帐户已在任何时间点使用存储服务加密进行加密，则在故障转移期间创建托管磁盘将失败。 可以将“使用托管磁盘”设置为“否”并重试故障转移，或者对虚拟机禁用保护并将虚拟机保护到在任何时间点均未启用存储服务加密的存储帐户。
+  > [详细了解存储服务加密和托管磁盘](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption)。
+
 
 ## <a name="test-the-deployment"></a>测试部署
 

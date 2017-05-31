@@ -15,10 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f15654f621bafb2617bdb456bbda0233db656be5
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -66,9 +67,11 @@ CNAME 记录集不能与其他具有相同名称的记录集共存。 例如，�
 
 ### <a name="ns-records"></a>NS 记录
 
-NS 记录集在每个区域（名称 =“@”）的顶点处自动创建，并在删除该区域时自动删除（不能单独删除）。  用户可以修改此记录集的 TTL，但无法修改记录，该记录预配置为引用分配给该区域的 Azure DNS 名称服务器。
+区域顶点（名称“@”）处的 NS 记录集随每个 DNS 区域自动创建，并在删除该区域时自动删除（不能单独删除）。
 
-可以创建和删除该区域内（不在区域顶点处）的其他 NS 记录。  通过此操作可配置子区域（请参阅[在 Azure DNS 中委托子域](dns-domain-delegation.md)。）
+此记录集包含分配给该区域的 Azure DNS 名称服务器名称。 可向此 NS 记录集添加其他名称服务器，从而支持与多个 DNS 提供商共同托管域。 还可修改此记录集的 TTL 和元数据。 但是，无法删除或修改预填充的 Azure DNS 名称服务器。 
+
+请注意，这仅适用于区域顶点处的 NS 记录集。 区域中的其他 NS 记录集（用于委派子区域）不受约束，可进行创建、修改和删除。
 
 ### <a name="soa-records"></a>SOA 记录
 
@@ -113,7 +116,7 @@ Azure DNS 支持使用 DNS 区域资源上的 Azure Resource Manager 标记。  
 
 假设两个人或两个进程尝试同时修改一条 DNS 记录。 哪一个占先？ 占先方是否知道他们/它们覆盖了其他人/进程创建的更改？
 
-Azure DNS 使用 Etag 来安全地处理对同一资源的并发更改。 Etag 与 [Azure 资源管理器“标记”](#tags)不同。 每个 DNS 资源（区域或记录集）都有与其相关联的 Etag。 只要检索资源，就会检索其 Etag。 当更新资源时，可以选择传递回 Etag 的选项以便 Azure DNS 可以验证服务器上的 Etag 是否匹配。 由于对资源的每次更新都会导致重新生成 Etag，Etag 不匹配表示发生了并发更改。 当创建新的资源时也可以使用 Etag，以确保该资源不存在。
+Azure DNS 使用 Etag 来安全地处理对同一资源的并发更改。 Etag 与 [Azure Resource Manager “标记”](#tags)不同。 每个 DNS 资源（区域或记录集）都有与其相关联的 Etag。 只要检索资源，就会检索其 Etag。 当更新资源时，可以选择传递回 Etag 的选项以便 Azure DNS 可以验证服务器上的 Etag 是否匹配。 由于对资源的每次更新都会导致重新生成 Etag，Etag 不匹配表示发生了并发更改。 当创建新的资源时也可以使用 Etag，以确保该资源不存在。
 
 默认情况下，Azure DNS PowerShell 使用 Etag 来阻止对区域和记录集的并发更改。 可选 -Overwrite 开关可用于取消 Etag 检查，这种情况下会覆盖发生的所有并发更改。
 

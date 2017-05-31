@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 05/12/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 570a98aafca6babc5a7089880d4120c2a8f4a0d8
-ms.openlocfilehash: 5a275620639a801d7e60ef9ada1af29062dfe440
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -34,7 +36,7 @@ ms.openlocfilehash: 5a275620639a801d7e60ef9ada1af29062dfe440
    
    * 启用 Azure 专用对等互连 - 只有启用此对等互连才能连接到部署在虚拟网络中的 VM/云服务。
    * 启用 Azure 公共对等互连 - 如果你想要连接到托管在公共 IP 地址上的 Azure 服务，则必须启用 Azure 公共对等互连。 如果你已选择为 Azure 专用对等互连启用默认路由并想要访问 Azure 资源，则必须执行上述操作。
-   * 启用 Microsoft 对等互连 - 只有启用此对等互连才能访问 Office 365 和 CRM 联机服务。 
+   * 启用 Microsoft 对等互连 - 必须启用此对等互连才能访问 Office 365 和 Dynamics 365。 
      
      > [!IMPORTANT]
      > 必须确保使用独立的代理/边缘，而不是用于 Internet 的 代理/边缘来连接 Microsoft。 对 ExpressRoute 和 Internet 使用相同的边缘会导致路由不对称，并造成网络连接中断。
@@ -115,10 +117,5 @@ BGP 预配状态可让你知道 Microsoft 边缘是否已启用 BGP 会话。 �
   * [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)
   * [配置路由](expressroute-howto-routing-arm.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

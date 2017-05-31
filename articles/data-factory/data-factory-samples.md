@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 05/16/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 446a7b585ca1204d49d76f71106799cbd2b0aa70
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 3013607e62a3ac532cb0c035130fe35e503a345c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -40,6 +41,7 @@ ms.lasthandoff: 03/29/2017
 | [本地 Hortonworks Hadoop 的混合管道](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) |此示例将本地 Hadoop 群集用作在数据工厂中运行作业的计算目标，就好像要在云中添加基于 HDInsight 的 Hadoop 群集等其他计算目标一样。 |
 | [JSON 转换工具](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) |借助此工具，可将 JSON 从 2015-07-01-preview 之前的版本转换到最新版本或 2015-07-01-preview 版本（默认）。 |
 | [U-SQL 示例输入文件](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |此文件是 U-SQL 活动使用的示例文件。 |
+| [删除 blob 文件](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity) | 此示例展示可用作 ADF 自定义 .net 活动的一部分的 C# 文件，该文件用于在复制文件后从源 Azure Blob 位置中删除文件。|
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 可在 GitHub 上找到数据工厂的以下 Azure Resource Manager 模板。
@@ -101,7 +103,7 @@ ms.lasthandoff: 03/29/2017
    3. 选择要在其中创建数据工厂的 **Azure 订阅**。
    4. 为数据工厂选择**资源组**。
    5. 在“区域”中选择“美国西部”、“美国东部”或“北欧”。
-   6. 单击“资源组名称” 的 Azure 数据工厂。
+   6. 单击“下一步”。
 6. 在“配置数据存储”页上，指定现有的“Azure SQL 数据库”和“Azure 存储帐户”或创建数据库/存储，并单击“下一步”。
 7. 在“配置计算”页上，选择“默认”，然后单击“下一步”。
 8. 在“摘要”页上，查看所有设置，然后单击“下一步”。

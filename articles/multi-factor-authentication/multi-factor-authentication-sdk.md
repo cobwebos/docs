@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 05/03/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: e793478028cee273a07e3665d409a669bdadc758
-ms.openlocfilehash: 4f9456c479b76588adf5f5aecbdd6379ec0e9704
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 281f9c61a30a20027f69808600373aa272255ef6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -34,10 +36,10 @@ ms.openlocfilehash: 4f9456c479b76588adf5f5aecbdd6379ec0e9704
 > 即使拥有 Azure MFA、AAD 高级版或 EMS 许可证，若要下载 SDK，也需要创建 Azure 多重身份验证提供程序。 如果出于此目的而创建 Azure 多重身份验证提供程序且已拥有许可证，请务必使用**按启用的用户**模型创建提供程序。 然后，将该提供程序链接到包含 Azure MFA、Azure AD Premium 或 EMS 许可证的目录。 该配置将确保仅当使用 SDK 的唯一用户数大于你所拥有的许可证数时才进行计费。
 
 
-## <a name="download-the-azure-multi-factor-authentication-sdk"></a>下载 Azure 多重身份验证 SDK
+## <a name="download-the-sdk"></a>下载该 SDK
 下载 Azure 多重身份验证 SDK 需要 [Azure 多重身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)。  即使拥有 Azure MFA、Azure AD Premium 或企业移动性套件许可证，这还需要一个完整的 Azure 订阅。  若要下载 SDK，请导航到多重管理门户。 可以通过直接管理多重身份验证提供程序，或单击 MFA 服务设置页上的**“转到门户”**链接，导航到多重管理门户。
 
-### <a name="to-download-the-azure-multi-factor-authentication-sdk-from-the-azure-classic-portal"></a>从 Azure 经典门户下载 Azure 多重身份验证 SDK
+### <a name="download-from-the-azure-classic-portal"></a>从 Azure 经典门户下载
 1. 以管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com) 。
 2. 在左侧选择“Active Directory”。
 3. 在“Active Directory”页的顶部，单击“**多重身份验证提供程序**”
@@ -47,7 +49,7 @@ ms.openlocfilehash: 4f9456c479b76588adf5f5aecbdd6379ec0e9704
 6. 选择所需的语言，然后单击一个关联的下载链接。
 7. 保存下载的内容。
 
-### <a name="to-download-the-azure-multi-factor-authentication-sdk-via-the-service-settings"></a>通过服务设置下载 Azure 多重身份验证 SDK
+### <a name="download-from-the-service-settings"></a>从服务设置下载
 1. 以管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com) 。
 2. 在左侧选择“Active Directory”。
 3. 双击 Azure AD 的实例。
@@ -60,8 +62,8 @@ ms.openlocfilehash: 4f9456c479b76588adf5f5aecbdd6379ec0e9704
 8. 选择所需的语言，然后单击一个关联的下载链接。
 9. 保存下载的内容。
 
-## <a name="contents-of-the-azure-multi-factor-authentication-sdk"></a>Azure 多重身份验证 SDK 的内容
-在 SDK 中将出现以下项：
+## <a name="whats-in-the-sdk"></a>SDK 包括哪些内容？
+SDK 包括以下项：
 
 * **自述文件**。 解释如何在新应用程序或现有应用程序中使用 Multi-Factor Authentication API。
 * 用于多重身份验证的**源文件**
@@ -73,7 +75,7 @@ ms.openlocfilehash: 4f9456c479b76588adf5f5aecbdd6379ec0e9704
 > [!WARNING]
 > 客户端证书是专门为你生成的唯一私有证书。 请不要共享或丢失此文件。 它是确保你与 Multi-Factor Authentication 服务的通信安全性的关键所在。
 
-## <a name="code-sample-standard-mode-phone-verification"></a>代码示例：标准模式电话验证
+## <a name="code-sample"></a>代码示例
 此代码示例演示如何使用 Azure 多重身份验证 SDK 中的 API，为你的应用程序添加标准模式语音呼叫验证。 标准模式是用户通过按 # 键响应的电话呼叫。
 
 本例在包含 C# 服务器端逻辑的基本 ASP.NET 应用程序中使用了 C# .NET 2.0 多重身份验证 SDK，但此过程与其他语言相似。 由于该 SDK 包括源文件而非可执行文件，因此你可以生成并引用文件，或将文件直接包括在你的应用程序中。
@@ -184,9 +186,4 @@ ms.openlocfilehash: 4f9456c479b76588adf5f5aecbdd6379ec0e9704
 
         }
     }
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

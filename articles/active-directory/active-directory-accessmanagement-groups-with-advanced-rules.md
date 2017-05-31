@@ -1,6 +1,6 @@
 ---
-title: "使用属性创建高级规则 | Microsoft 文档"
-description: "如何为组创建高级规则，包括支持的表达式规则运算符和参数。"
+title: "基于 Azure Active Directory 中的用户属性动态填充组 | Microsoft Docs"
+description: "如何为组成员身份创建高级规则，包括支持的表达式规则运算符和参数。"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 05/14/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: d00375d9bc696b41a074eebe6d205e6907a54c4b
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: b0c8eb46b6c01662f0b53213843f8a7ad295e5aa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="using-attributes-to-create-advanced-rules"></a>使用属性创建高级规则
-你可以在 Azure 经典门户中创建高级规则来启用 Azure Active Directory (Azure AD) 组的更复杂的基于属性的动态成员身份。  
+# <a name="populate-groups-dynamically-based-on-user-attributes"></a>基于用户属性动态填充组 
+可以在 Azure 经典门户中启用 Azure Active Directory (Azure AD) 组的更复杂的基于属性的动态成员身份。  
 
 当用户的任何属性发生更改时，系统将评估目录中的所有动态组规则，以查看用户的属性更改是否会触发任何组添加或删除。 如果用户满足组中的规则，他们将作为成员添加到该组。 如果他们不再满足所属组的规则，则会从该组中删除他们的身份身份。
 

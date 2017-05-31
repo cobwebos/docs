@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 05/16/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 0637fb4d7c6cb8c3cfd4aab5d06571bd83f59683
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 183cb2ad4f2a80f9a0e1e7a33f1cacae006c0df4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -113,7 +114,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 **cloudDataMovementUnits** 属性的**允许值**为 1（默认值）、2、4、8、16 和 32。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。
 
 > [!NOTE]
-> 如果需要更多云 DMU 以获得更高的吞吐量，请联系 [Azure支持](https://azure.microsoft.com/support/)。 目前仅在**将多个文件从 Blob 存储/Data Lake Store/Amazon S3/云 FTP 复制到 Blob 存储/Data Lake Store/Azure SQL 数据库**时，才能设置为 8 或更高的值。
+> 如果需要更多云 DMU 以获得更高的吞吐量，请联系 [Azure支持](https://azure.microsoft.com/support/)。 目前仅在**将多个文件从 Blob 存储/Data Lake Store/Amazon S3/云 FTP/云 SFTP 复制到 Blob 存储/Data Lake Store/Azure SQL 数据库**时，才能设置为 8 或更高的值。
 >
 >
 
@@ -307,15 +308,15 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * 对于需要使用**数据管理网关**的**本地关系数据库**（如 SQL Server 和 Oracle），请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
 
 ### <a name="nosql-stores"></a>NoSQL 存储
-（包括表存储和 Azure DocumentDB）
+*（包括表存储和 Azure Cosmos DB）*
 
 * 对于**表存储**：
   * **分区**：将数据写入交错分区会显着降低性能。 按分区键对源数据进行排序，以有效率地将数据插入各个分区，或调整逻辑将数据写入单个分区。
-* 对于 **DocumentDB**：
-  * **批大小**：**writeBatchSize** 属性设置对 DocumentDB 服务的并行请求数以创建文档。 当增加 **writeBatchSize** 时，由于会向 DocumentDB 发送更多的并行请求，因此可以获得更好的性能。 但在写入 DocumentDB 时，请注意限制（错误消息为“请求速率高”）。 导致限制的因素很多，包括文档大小、文档中的术语数和目标集合的索引策略。 若要实现更高的复制吞吐量，请考虑使用更好的集合，例如 S3。
+* 对于 **Azure Cosmos DB**：
+  * **批大小**：**writeBatchSize** 属性设置对 Azure Cosmos DB 服务的并行请求数以创建文档。 当增加 **writeBatchSize** 时，由于会向 Azure Cosmos DB 发送更多的并行请求，因此可以获得更好的性能。 但在写入 Azure Cosmos DB 时，请注意限制（错误消息为“请求速率高”）。 导致限制的因素很多，包括文档大小、文档中的术语数和目标集合的索引策略。 若要实现更高的复制吞吐量，请考虑使用更好的集合，例如 S3。
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>序列化和反序列化注意事项
-输入数据集或输出数据集是文件时，可能会发生序列化和反序列化。 目前，复制活动支持 Avro 和文本（例如，CSV 和 TSV）数据格式。
+输入数据集或输出数据集是文件时，可能会发生序列化和反序列化。 有关复制活动支持的文件格式的详细信息，请参阅[支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)。
 
 **复制行为**：
 
@@ -339,7 +340,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ## <a name="considerations-for-column-mapping"></a>列映射注意事项
 可在复制活动中设置  **columnMappings**  属性，将全部或部分输入列映射到输出列。 数据移动服务从源读取数据后，它需要先对数据执行列映射，再将数据写入接收器。 这一额外处理会降低复制吞吐量。
 
-如果源数据存储为可查询，例如，如果存储是关系存储（如 SQL 数据库或 SQL Server），或者是 NoSQL 存储（如表存储或 DocumentDB），请考虑将列筛选和重排序逻辑推送到**查询**属性，而不使用列映射。 这样，当数据移动服务从源数据存储读取数据时将发生投影，使效率更高。
+如果源数据存储可查询，例如，如果存储是关系存储（如 SQL 数据库或 SQL Server），或者是 NoSQL 存储（如表存储或 Azure Cosmos DB），请考虑将列筛选和重排序逻辑推送到**查询**属性，而不使用列映射。 这样，当数据移动服务从源数据存储读取数据时将发生投影，使效率更高。
 
 ## <a name="considerations-for-data-management-gateway"></a>数据管理网关注意事项
 有关网关设置建议，请参阅[使用数据管理网关的注意事项](data-factory-data-management-gateway.md#considerations-for-using-gateway)。
@@ -406,7 +407,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * Azure 存储（包括 Blob 存储和表存储）：[Azure 存储可伸缩性目标](../storage/storage-scalability-targets.md)和 [Azure存储性能和可伸缩性清单](../storage/storage-performance-checklist.md)
 * Azure SQL 数据库：可[监视性能](../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位 (DTU) 百分比
 * Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量；请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
-* Azure DocumentDB：[DocumentDB 中的性能级别](../documentdb/documentdb-performance-levels.md)
+* Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../documentdb/documentdb-performance-levels.md)
 * 本地 SQL Server：[监视和优化性能](https://msdn.microsoft.com/library/ms189081.aspx)
 * 本地文件服务器：[Performance tuning for file servers](https://msdn.microsoft.com/library/dn567661.aspx)（文件服务器性能优化）
 

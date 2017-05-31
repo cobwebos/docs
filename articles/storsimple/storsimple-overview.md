@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/05/2016
 ms.author: v-sharos@microsoft.com
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 27231cef19e7f624c2c09b0aae2ea3d503fb8e3d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 8824568e9e4204a567cc08a10608cf835aa7164b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -188,13 +189,19 @@ StorSimple 会随着使用模式的变化调整和重新排列数据及存储分
 6. Microsoft Azure 在其数据中心和远程数据中心中创建多个数据副本，确保灾难发生时可以恢复数据。 
 7. 文件服务器请求存储在云中的数据时，StorSimple 将其无缝地返回，并将副本存储在 StorSimple 设备的 SSD 层。
 
+#### <a name="how-storsimple-manages-cloud-data"></a>StorSimple 如何管理云数据
+
+StorSimple 对所有快照中的客户数据和主数据（主机写入的数据）进行删除重复操作。 虽然删除重复数据非常有利于存储效率，但它使得“什么在云中”的问题复杂化。 分层主数据和快照数据相互重叠。 云中的单个数据块可用作分层主数据，并且也可以由多个快照引用。 每个云快照可确保在删除该快照之前，所有时间点数据的副本已锁定到云中。
+
+仅当对该数据没有任何引用时，才将该数据从云中删除。 例如，如果我们为 StorSimple 设备中的所有数据创建了云快照，然后删除一些主数据，我们将会看到_主数据_立即删除。 _云数据_（包括分层数据和备份）保持不变。 这是因为仍有快照引用云数据。 删除云快照（及引用相同数据的任何其他快照）后，云消耗将下降。 在删除云数据之前，应检查是否没有快照仍引用该数据。 此进程称为_垃圾回收_，是设备上运行的后台服务。 删除云数据并非立即执行，因为垃圾回收服务在删除数据前会检查是否存在对该数据的其他引用。 垃圾回收的速度取决于快照总数和总数据量。 通常情况下，云数据在不到一周的时间内已清除。
+
+
 ### <a name="thin-provisioning"></a>精简设置
-精简设置是一项虚拟化技术，可使可用存储看起来超过物理资源。 StorSimple 使用精简预配分配恰好满足当前需求的足够空间，而不是提前保留充足的存储。 云存储的弹性性质促进了这一方法的实施，因为 StorSimple 能够增加或减少云存储以满足不断变化的需求。 
+精简设置是一项虚拟化技术，可使可用存储看起来超过物理资源。 StorSimple 使用精简预配分配恰好满足当前需求的足够空间，而不是提前保留充足的存储。 云存储的弹性性质促进了这一方法的实施，因为 StorSimple 能够增加或减少云存储以满足不断变化的需求。
 
 > [!NOTE]
 > 未对本地固定卷进行精简设置。 创建卷时，将分配到仅本地卷的存储器作为一个整体进行设置。
-> 
-> 
+
 
 ### <a name="deduplication-and-compression"></a>删除重复和压缩
 Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减少存储需求。
@@ -203,8 +210,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 
 > [!NOTE]
 > 未对本地固定卷上的数据进行删除重复或压缩操作。 但对本地固定卷的备份进行了删除重复或压缩操作。
-> 
-> 
+
 
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作负荷摘要
 下表列出了受支持的 StorSimple 工作负荷摘要。
