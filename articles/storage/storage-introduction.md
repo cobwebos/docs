@@ -1,6 +1,6 @@
 ---
 title: "Azure 存储简介 | Microsoft 文档"
-description: "Microsoft 的云中在线数据存储 - Azure 存储空间的概述。 了解如何在应用程序中使用最佳的云存储解决方案。"
+description: "Microsoft 的云中在线数据存储 - Azure 存储的概述。 了解如何在应用程序中使用最佳的云存储解决方案。"
 services: storage
 documentationcenter: 
 author: mmacy
@@ -15,21 +15,21 @@ ms.topic: get-started-article
 ms.date: 02/24/2017
 ms.author: marsma
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e041a4d88d93b5ea9fcd792800c4a12a6a44ce36
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 1cab34785d6e4f7751245ebf77b29fa8dc3c685b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
-# <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure 存储空间简介
+# <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure 存储简介
 
 ## <a name="overview"></a>概述
-Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。 通过阅读本文章，开发人员、IT 专业人员和业务决策人员可以了解：
+Azure 存储是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。 通过阅读本文章，开发人员、IT 专业人员和业务决策人员可以了解：
 
-* 什么是 Azure 存储空间，以及如何在你的云、移动、服务器和桌面应用程序中利用它
-* 使用 Azure 存储空间服务可以存储哪种数据：Blob（对象）数据、NoSQL 表数据、队列消息和文件共享。
-* 在 Azure 存储空间中如何管理对你的数据的访问
+* 什么是 Azure 存储，以及如何在你的云、移动、服务器和桌面应用程序中利用它
+* 使用 Azure 存储服务可以存储哪种数据：Blob（对象）数据、NoSQL 表数据、队列消息和文件共享。
+* 在 Azure 存储中如何管理对你的数据的访问
 * 如何通过冗余和复制确保 Azure 存储数据的持久性
 * 接下来要到何处去构建你的第一个 Azure 存储应用程序
 
@@ -37,32 +37,32 @@ Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客�
 Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
 <!-- To get up and running with Azure Storage quickly, see [Get started with Azure Storage in five minutes](storage-getting-started-guide.md). -->
 
-有关可配合 Azure 存储空间使用的工具、库和其他资源的详细信息，请参阅下面的 [后续步骤](#next-steps) 。
+有关可配合 Azure 存储使用的工具、库和其他资源的详细信息，请参阅下面的 [后续步骤](#next-steps) 。
 
 ## <a name="what-is-azure-storage"></a>什么是 Azure 存储空间？
-对于需要为其数据使用可伸缩的、持久的且具有高可用性的存储的应用程序，云计算使其有了新的方案可供选择，这正是 Microsoft 开发 Azure 存储空间的原因。 除了使开发人员可以构建大型应用程序来支持新方案之外，Azure 存储空间还为 Azure 虚拟机提供了存储基础，进一步证明其可靠性。
+对于需要为其数据使用可伸缩的、持久的且具有高可用性的存储的应用程序，云计算使其有了新的方案可供选择，这正是 Microsoft 开发 Azure 存储的原因。 除了使开发人员可以构建大型应用程序来支持新方案之外，Azure 存储还为 Azure 虚拟机提供了存储基础，进一步证明其可靠性。
 
-Azure 存储空间可以大规模伸缩，因此你可以存储和处理数百 TB 的数据来支持科学、财务分析和媒体应用程序所需的大数据方案。 你也可以存储小型商业网站所需的少量数据。 当你的需求降低时，只需为当前存储的数据支付费用。 Azure 存储空间当前存储了数十万亿个唯一的客户对象，平均每秒处理数百万个请求。
+Azure 存储可以大规模伸缩，因此你可以存储和处理数百 TB 的数据来支持科学、财务分析和媒体应用程序所需的大数据方案。 你也可以存储小型商业网站所需的少量数据。 当你的需求降低时，只需为当前存储的数据支付费用。 Azure 存储当前存储了数十万亿个唯一的客户对象，平均每秒处理数百万个请求。
 
-Azure 存储空间是弹性的，因此你可以针对大量的全球受众设计应用程序，并根据需要伸缩这些应用程序 - 在存储的数据量和针对它发出的请求数两个方面。 你只需要为你使用的内容付费，并且只需要在你使用它时付费。
+Azure 存储是弹性的，因此你可以针对大量的全球受众设计应用程序，并根据需要伸缩这些应用程序 - 在存储的数据量和针对它发出的请求数两个方面。 你只需要为你使用的内容付费，并且只需要在你使用它时付费。
 
-Azure 存储空间使用了一个自动分区系统，它可以根据流量自动对你的数据进行负载均衡。 这意味着当你的应用程序上的需求增长时，Azure 存储空间会自动分配合适的资源来满足这些需求。
+Azure 存储使用了一个自动分区系统，它可以根据流量自动对你的数据进行负载均衡。 这意味着当你的应用程序上的需求增长时，Azure 存储会自动分配合适的资源来满足这些需求。
 
-可以从世界上的任何位置从任何类型的应用程序访问 Azure 存储，无论该应用程序是在云中、在桌面上、在本地服务器上运行还是在移动设备或平板电脑设备上运行。 你可以将 Azure 存储空间用于移动方案，在这类方案中，应用程序在设备上存储一部分数据，并将其与存储在云中的完整数据集进行同步。
+可以从世界上的任何位置从任何类型的应用程序访问 Azure 存储，无论该应用程序是在云中、在桌面上、在本地服务器上运行还是在移动设备或平板电脑设备上运行。 你可以将 Azure 存储用于移动方案，在这类方案中，应用程序在设备上存储一部分数据，并将其与存储在云中的完整数据集进行同步。
 
-Azure 存储空间支持使用各种操作系统（包括 Windows 和 Linux）及各种编程语言（包括 .NET、Java、Node.js、Python、Ruby、PHP、C++ 和移动编程语言）的客户端以方便开发。 Azure 存储空间还通过简单的 REST API 公开数据资源，这些 REST API 可供能够通过 HTTP/HTTPS 发送和接收数据的任何客户端使用。
+Azure 存储支持使用各种操作系统（包括 Windows 和 Linux）及各种编程语言（包括 .NET、Java、Node.js、Python、Ruby、PHP、C++ 和移动编程语言）的客户端以方便开发。 Azure 存储还通过简单的 REST API 公开数据资源，这些 REST API 可供能够通过 HTTP/HTTPS 发送和接收数据的任何客户端使用。
 
 Azure 高级存储提供高性能、低延迟的磁盘支持，适合在 Azure 虚拟机上运行的 I/O 密集型工作负载。 有了 Azure 高级存储，你就可以将多个持久性数据磁盘附加到虚拟机，并根据性能要求对其进行配置。 每个数据磁盘在 Azure 高级存储中都有一个后备 SSD 磁盘，以确保最高的 I/O 性能。 有关详细信息，请参阅 [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md) 。
 
 ## <a name="introducing-the-azure-storage-services"></a>Azure 存储服务简介
-Azure 存储空间提供以下四种服务：Blob 存储、表存储、队列存储和文件存储。
+Azure 存储提供以下四种服务：Blob 存储、表存储、队列存储和文件存储。
 
 * Blob 存储用于存储非结构化对象数据。 Blob 可以是任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。
 * 表存储用于存储结构化数据集。 表存储是一个 NoSQL“键-属性”数据存储，可以用于实现快速开发以及快速访问大量数据。
 * 队列存储为云服务的各个组件之间的工作流处理和通信提供可靠的消息传送。
 * 文件存储使用标准 SMB 协议为旧版应用程序提供共享存储。 Azure 虚拟机和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件服务 REST API 来访问共享中的文件数据。
 
-Azure 存储帐户是一个安全的帐户，它向你授予对 Azure 存储空间中服务的访问权限。 你的存储帐户为你的存储资源提供唯一的命名空间。 下图显示了存储帐户中各种 Azure 存储资源之间的关系：
+Azure 存储帐户是一个安全的帐户，它向你授予对 Azure 存储中服务的访问权限。 你的存储帐户为你的存储资源提供唯一的命名空间。 下图显示了存储帐户中各种 Azure 存储资源之间的关系：
 
 ![Azure 存储资源](./media/storage-introduction/storage-concepts.png)
 
@@ -91,7 +91,10 @@ Blob 存储提供三种类型的 Blob：块 Blob、追加 Blob 和页 Blob（磁
 对于网络限制使得通过线缆向 Blob 存储上传或从其下载数据不可行的每个大型数据集，你可以将硬盘驱动器发送到 Microsoft 以直接通过数据中心导入或导出数据。 请参阅 [使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](storage-import-export-service.md)。
 
 ## <a name="table-storage"></a>表存储
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)] 与前几代的必需软件相比，现代应用程序通常要求数据存储具有更高的可伸缩性和灵活性。 表存储提供了具有高可用性且可大规模伸缩的存储，因此你的应用程序可以自动伸缩以满足用户需求。 表存储是 Microsoft 的 NoSQL 键/属性存储 - 它具有无模式的设计，使其不同于传统的关系数据库。 采用无模式的数据存储，可以很容易地随着你的应用程序需求的发展使数据适应存储。 表存储易于使用，因此开发人员可以快速创建应用程序。 对于所有类型的应用程序，都可以快速并经济高效地访问数据。  对于相似的数据量，表存储的成本通常显著低于传统的 SQL。
+
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+
+与前几代的必需软件相比，现代应用程序通常要求数据存储具有更高的可伸缩性和灵活性。 表存储提供了具有高可用性且可大规模伸缩的存储，因此你的应用程序可以自动伸缩以满足用户需求。 表存储是 Microsoft 的 NoSQL 键/属性存储 - 它具有无模式的设计，使其不同于传统的关系数据库。 采用无模式的数据存储，可以很容易地随着你的应用程序需求的发展使数据适应存储。 表存储易于使用，因此开发人员可以快速创建应用程序。 对于所有类型的应用程序，都可以快速并经济高效地访问数据。  对于相似的数据量，表存储的成本通常显著低于传统的 SQL。
 
 表存储是一种“键-属性”存储，这意味着表中的每个值都是随所键入的一个属性名称存储的。 属性名称可以用来筛选和指定选择条件。 属性集合及其值构成了实体。 因为表存储是无模式的，因此同一表中的两个实体可以包含不同的属性集合，并且这些属性可以属于不同的类型。
 
@@ -120,7 +123,7 @@ Azure 文件存储提供了基于云的 SMB 文件共享，这样你可以将依
 
 在创建你的存储帐户时为其分配了两个用于身份验证的私有访问密钥。 设置两个密钥可以确保你的应用程序在你定期重新生成密钥（这是一种常用的安全密钥管理做法）时仍然保持可用。
 
-如果你不需要为你的存储资源实施用户受控访问，则可以创建一个共享访问签名。 共享访问签名是一个可以附加到 URL 的令牌，可以实现对存储资源的委托访问。 持有令牌的任何人都可以在令牌有效期间使用它指定的权限访问它指向的资源。 从 2015-04-05 版开始，Azure 存储空间支持两种类型的共享访问签名：服务 SAS 和帐户 SAS。
+如果你不需要为你的存储资源实施用户受控访问，则可以创建一个共享访问签名。 共享访问签名是一个可以附加到 URL 的令牌，可以实现对存储资源的委托访问。 持有令牌的任何人都可以在令牌有效期间使用它指定的权限访问它指向的资源。 从 2015-04-05 版开始，Azure 存储支持两种类型的共享访问签名：服务 SAS 和帐户 SAS。
 
 服务 SAS 只能委派对以下一个存储服务中的资源的访问权限：Blob、队列、表或文件服务。
 
@@ -150,7 +153,7 @@ Azure 文件存储提供了基于云的 SMB 文件共享，这样你可以将依
   > 在创建存储帐户并选择 ZRS 后，你无法将其转换为使用任何其他类型的复制，反之亦然。
   >
   >
-* **异地冗余存储 (GRS)**。 GRS 维护你的数据的六个副本。 使用 GRS 时，你的数据将在主区域内复制三次，并且还在离主区域数百英里的辅助区域中复制三次，从而提供最高级别的持久性。 当主区域中发生故障时，Azure 存储空间将故障转移到辅助区域。 GRS 在两个不同的区域中确保你的数据持久保存。
+* **异地冗余存储 (GRS)**。 GRS 维护你的数据的六个副本。 使用 GRS 时，你的数据将在主区域内复制三次，并且还在离主区域数百英里的辅助区域中复制三次，从而提供最高级别的持久性。 当主区域中发生故障时，Azure 存储将故障转移到辅助区域。 GRS 在两个不同的区域中确保你的数据持久保存。
 
     有关主配对和辅助配对（按区域）的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。
 * **读取访问异地冗余存储 (RA-GRS)**。 读取访问异地冗余存储将你的数据复制到一个辅助地理位置，同时提供对你在辅助位置中的数据的读取访问权限。 读取访问地域冗余存储允许你从主位置或辅助位置访问数据，以防其中一个位置不可用。 默认情况下，从创建存储帐户开始，读取访问异地冗余存储即是存储帐户的默认选项。
@@ -160,11 +163,11 @@ Azure 文件存储提供了基于云的 SMB 文件共享，这样你可以将依
   >
   >
 
-有关存储复制选项的其他详细信息，请参阅 [Azure 存储空间复制](storage-redundancy.md) 。
+有关存储复制选项的其他详细信息，请参阅 [Azure 存储复制](storage-redundancy.md) 。
 
-有关存储帐户复制的定价信息，请参阅 [Azure 存储空间定价](https://azure.microsoft.com/pricing/details/storage/)。 有关每个区域中提供了哪些服务的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services) 。
+有关存储帐户复制的定价信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。 有关每个区域中提供了哪些服务的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services) 。
 
-有关 Azure 存储空间持久性的体系结构详细信息，请参阅 [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储空间：具有高度一致性的高可用云存储服务）。
+有关 Azure 存储持久性的体系结构详细信息，请参阅 [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储空间：具有高度一致性的高可用云存储服务）。
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>将数据传输到和移出 Azure 存储
 你可以使用 AzCopy 命令行实用程序复制存储帐户内或跨存储帐户的 blob、文件和表数据。 有关详细信息，请参阅 [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md) 。
@@ -177,7 +180,7 @@ AzCopy 在 [Azure 数据移动库](https://www.nuget.org/packages/Microsoft.Azur
 [!INCLUDE [storage-account-billing-include](../../includes/storage-account-billing-include.md)]
 
 ## <a name="storage-apis-libraries-and-tools"></a>存储 API、库和工具
-Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行访问。 另外，Azure 存储空间还为多种主流语言提供了编程库。 这些库通过对细节进行处理简化了使用 Azure 存储空间的许多方面，这些细节包括同步和异步调用、操作的批处理、异常管理、自动重试、操作行为，等等。 这些库当前可供下列语言和平台以及正在筹备的其他语言和平台使用：
+Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行访问。 另外，Azure 存储还为多种主流语言提供了编程库。 这些库通过对细节进行处理简化了使用 Azure 存储的许多方面，这些细节包括同步和异步调用、操作的批处理、异常管理、自动重试、操作行为，等等。 这些库当前可供下列语言和平台以及正在筹备的其他语言和平台使用：
 
 ### <a name="azure-storage-data-services"></a>Azure 存储数据服务
 * [存储服务 REST API](http://msdn.microsoft.com/library/azure/dd179355.aspx)
@@ -209,7 +212,7 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 * [AzCopy 命令行实用程序](http://aka.ms/downloadazcopy)
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关 Azure 存储空间的详细信息，请参阅以下资源：
+若要了解有关 Azure 存储的详细信息，请参阅以下资源：
 
 ### <a name="documentation"></a>文档
 * [Azure 存档文档](https://azure.microsoft.com/documentation/services/storage/)
@@ -222,7 +225,7 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 
 ### <a name="for-administrators"></a>面向管理员
 * [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)
-* [将 Azure CLI 用于 Azure 存储空间](storage-azure-cli.md)
+* [将 Azure CLI 用于 Azure 存储](storage-azure-cli.md)
 
 ### <a name="for-net-developers"></a>面向 .NET 开发人员
 * [通过 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 4db7d45678c592749831c6b12d38363134da9e93
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: eeaa5641a4bcea0e8b46e85e40ff5b92113446c1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -35,41 +36,41 @@ ms.lasthandoff: 03/21/2017
 * **Azure CLI**。 请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md)。
   * 若要完成此演示，请下载并安装 **预发行版** [Azure CLI 工具](https://github.com/MicrosoftBigData/AzureDataLake/releases) 。
 * **身份验证**，请使用以下命令：
-  
+
         azure login
     有关使用公司或学校帐户进行身份验证的详细信息，请参阅 [从 Azure CLI 连接到 Azure 订阅](../xplat-cli-connect.md)。
-* 使用以下命令**切换到 Azure 资源管理器模式**：
-  
+* 使用以下命令**切换到 Azure Resource Manager 模式**：
+
         azure config mode arm
 
 ## <a name="create-data-lake-analytics-account"></a>创建 Data Lake Analytics 帐户
 在运行任何作业之前，首先必须拥有 Data Lake Analytics 帐户。 若要创建 Data Lake Analytics 帐户，必须指定以下各项：
 
 * **Azure 资源组**：必须在 Azure 资源组中创建一个 Data Lake 分析帐户。 使用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 能够以组的方式处理应用程序中的资源。 你可以通过一个协调的操作为应用程序部署、更新或删除所有资源。  
-  
+
     枚举订阅中的资源组：
-  
-        azure group list 
-  
+
+        azure group list
+
     若要创建新的资源组：
-  
+
         azure group create -n "<Resource Group Name>" -l "<Azure Location>"
 * **Data Lake Analytics 帐户名**
 * **位置**：支持 Data Lake Analytics 的 Azure 数据中心之一。
 * **默认 Data Lake 帐户**：每个 Data Lake Analytics 帐户都有一个默认 Data Lake 帐户。
-  
+
     列出现有 Data Lake 帐户：
-  
+
         azure datalake store account list
-  
+
     创建新的 Data Lake 帐户：
-  
+
         azure datalake store account create "<Data Lake Store Account Name>" "<Azure Location>" "<Resource Group Name>"
-  
+
   > [!NOTE]
   > Data Lake 帐户名必须仅包含小写字母和数字。
-  > 
-  > 
+  >
+  >
 
 **创建 Data Lake Analytics 帐户**
 
@@ -82,13 +83,13 @@ ms.lasthandoff: 03/21/2017
 
 > [!NOTE]
 > Data Lake Analytics 帐户名必须仅包含小写字母和数字。
-> 
-> 
+>
+>
 
 ## <a name="upload-data-to-data-lake-store"></a>将数据上传到 Data Lake Store
-在本教程中，用户将处理一些搜索日志。  搜索日志可以存储在 Data Lake Store 或 Azure Blob 存储中。 
+在本教程中，用户将处理一些搜索日志。  搜索日志可以存储在 Data Lake Store 或 Azure Blob 存储中。
 
-Azure 门户提供一个用户界面，可将一些示例数据复制到默认 Data Lake 帐户，包括搜索日志文件。 要将数据上传至默认 Data Lake Store 帐户，请参阅 [准备源数据](data-lake-analytics-get-started-portal.md#prepare-source-data) 。
+Azure 门户提供一个用户界面，可将一些示例数据复制到默认 Data Lake 帐户，包括搜索日志文件。 要将数据上传至默认 Data Lake Store 帐户，请参阅 [准备源数据](data-lake-analytics-get-started-portal.md) 。
 
 若要使用 CLI 上传文件，请使用以下命令：
 
@@ -103,7 +104,7 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
 **创建 Data Lake Analytics 作业脚本**
 
 * 使用下列 U-SQL 脚本创建文本文件，并将其保存至工作站：
-  
+
         @searchlog =
             EXTRACT UserId          int,
                     Start           DateTime,
@@ -114,27 +115,27 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
                     ClickedUrls     string
             FROM "/Samples/Data/SearchLog.tsv"
             USING Extractors.Tsv();
-  
+
         OUTPUT @searchlog   
             TO "/Output/SearchLog-from-Data-Lake.csv"
         USING Outputters.Csv();
-  
-    此 U-SQL 脚本通过 **Extractors.Tsv()** 读取源数据文件，然后通过 **Outputters.Csv()** 创建 csv 文件。 
-  
+
+    此 U-SQL 脚本通过 **Extractors.Tsv()** 读取源数据文件，然后通过 **Outputters.Csv()** 创建 csv 文件。
+
     除非将源文件复制到其他位置，否则不要修改这两条路径。  如果输出文件夹不存在，Data Lake Analytics 将创建一个。
-  
-    对于存储在默认 Data Lake 帐户中的文件而言，使用相对路径更为简单。 也可使用绝对路径。  例如 
-  
+
+    对于存储在默认 Data Lake 帐户中的文件而言，使用相对路径更为简单。 也可使用绝对路径。  例如
+
         adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
-  
+
     必须使用绝对路径来访问链接的存储帐户中的文件。  链接的 Azure 存储帐户中所储存文件的语法是：
-  
+
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
-  
+
   > [!NOTE]
   > 当前不支持对含公共 blob 的 Azure Blob 容器或公共容器的访问权限。      
-  > 
-  > 
+  >
+  >
 
 **提交作业**
 
@@ -162,5 +163,4 @@ azure datalake analytics job show "<Data Lake Analytics Account Name>" "<Job Id>
 * 若要了解 U-SQL，请参阅 [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)。
 * 有关管理任务，请参阅 [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)。
 * 有关 Data Lake Analytics 的概述，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
-
 

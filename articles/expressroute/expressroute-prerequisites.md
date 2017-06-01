@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 679b6962633cd734a1b1e339e8422da5b9c4ddfd
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 873a3b83bf85c7e2d6d299bd25ebb135c300aacb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -33,8 +33,8 @@ ms.lasthandoff: 05/15/2017
 
 ## <a name="connectivity-provider"></a>连接服务提供商
 
-* 可使用 [ExpressRoute 连接合作伙伴](expressroute-locations.md#partners) 连接到 Microsoft 云。 有 [三种方法](expressroute-introduction.md)可以在本地网络与 Microsoft 之间建立连接。 
-* 即使你的提供商不是 ExpressRoute 连接合作伙伴，你也可以通过 [云交换提供商](expressroute-locations.md#c1partners)连接到 Microsoft 云。
+* 可使用 [ExpressRoute 连接合作伙伴](expressroute-locations.md#partners) 连接到 Microsoft 云。 有 [三种方法](expressroute-introduction.md)可以在本地网络与 Microsoft 之间建立连接。
+* 即使你的提供商不是 ExpressRoute 连接合作伙伴，你也可以通过 [云交换提供商](expressroute-locations.md#connectivity-through-exchange-providers)连接到 Microsoft 云。
 
 ## <a name="network-requirements"></a>网络要求
 * **冗余连接**：对于你和提供商之间的物理连接，没有冗余方面的要求。 即使你只有 [一个到云交换的物理连接](expressroute-faqs.md#onep2plink)，Microsoft 也会要求在 Microsoft 的路由器和对等互连路由器之间建立冗余性的 BGP 会话。

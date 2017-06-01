@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/06/2017
 ms.author: edmaca, yanacai
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: c26ac89bd7ef494331ba309aacf87de03506ac4c
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 9be337c3e04959a1ad2152c989c8532383362521
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -38,10 +39,10 @@ U-SQL 是高度可缩放、高度可扩展的语言，用于准备、转换和�
 * **Data Lake Analytics 帐户和示例数据** Data Lake 工具不支持创建 Data Lake Analytics 帐户。 请使用 Azure 门户、Azure PowerShell、.NET SDK 或 Azure CLI 创建帐户。
 为方便起见，[附录 A：用于准备教程的 PowerShell 示例](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)部分中提供了用于创建 Data Lake Analytics 服务及上传源数据文件的 PowerShell 脚本。
 
-    也可浏览[通过 Azure 门户开始使用 Azure Data Lake Analytics ](data-lake-analytics-get-started-portal.md)中的以下两个部分，手动创建帐户和上载数据：
+    也可浏览[通过 Azure 门户开始使用 Azure Data Lake Analytics ](data-lake-analytics-get-started-portal.md)中的以下两个部分，手动创建帐户和上传数据：
 
     1. [创建 Azure Data Lake Analytics 帐户](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)。
-    2. [将 SearchLog.tsv 上载到默认的 Data Lake Storage 帐户](data-lake-analytics-get-started-portal.md#prepare-source-data)。
+    2. [将 SearchLog.tsv 上传到默认的 Data Lake Storage 帐户](data-lake-analytics-get-started-portal.md)。
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 **连接到 Data Lake Analytics**
@@ -51,27 +52,27 @@ U-SQL 是高度可缩放、高度可扩展的语言，用于准备、转换和�
 3. 右键单击“Azure”，单击“连接到 Microsoft Azure 订阅”，然后按照说明操作。
 4. 在“服务器资源管理器”中，展开“Azure”，然后展开“Data Lake Analytics”。 如果有 Data Lake Analytics 帐户，将看到其列表。 无法从 Visual Studio 创建 Data Lake Analytics 帐户。 若要创建帐户，请参阅[通过 Azure 门户开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md) 或[通过 Azure PowerShell 开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-powershell.md)。
 
-## <a name="upload-source-data-files"></a>上载源数据文件
-已在本教程前面的 **先决条件** 部分中上载了一些数据。  
+## <a name="upload-source-data-files"></a>上传源数据文件
+已在本教程前面的 **先决条件** 部分中上传了一些数据。  
 
-若要使用自己的数据，请执行以下步骤，以便从 Data Lake 工具上载数据。
+若要使用自己的数据，请执行以下步骤，以便从 Data Lake 工具上传数据。
 
-**将文件上载到依赖的 Azure Data Lake 帐户**
+**将文件上传到依赖的 Azure Data Lake 帐户**
 
 1. 在“服务器资源管理器”中依次展开“Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”。 应会看到默认的 Data Lake Storage 帐户、链接的 Data Lake Storage 帐户和链接的 Azure 存储帐户。 默认 Data Lake 帐户具有“默认存储帐户”标签。
 2. 右键单击默认的 Data Lake Storage 帐户，然后单击“资源管理器”。  此时将会打开“用于 Visual Studio 的 Data Lake 工具资源管理器”窗格。  左侧显示了树视图，右侧显示了内容视图。
-3. 浏览到要上载的文件所在的文件夹。
-4. 右键单击任何空白区域，然后单击“上载”。
+3. 浏览到要上传的文件所在的文件夹。
+4. 右键单击任何空白区域，然后单击“上传”。
 
     ![U-SQL Visual Studio 项目 U-SQL](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-upload-files.png)
 
-**将文件上载到链接的 Azure Blob 存储帐户**
+**将文件上传到链接的 Azure Blob 存储帐户**
 
 1. 在“服务器资源管理器”中依次展开“Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”。 应会看到默认的 Data Lake Storage 帐户、链接的 Data Lake Storage 帐户和链接的 Azure 存储帐户。
 2. 展开“Azure 存储帐户”。
-3. 右键单击文件要上载到的容器，然后单击“资源管理器”。 如果没有容器，必须先使用 Azure 门户、Azure PowerShell 或其他工具创建一个。
-4. 浏览到要上载的文件所在的文件夹。
-5. 右键单击任何空白区域，然后单击“上载”。
+3. 右键单击文件要上传到的容器，然后单击“资源管理器”。 如果没有容器，必须先使用 Azure 门户、Azure PowerShell 或其他工具创建一个。
+4. 浏览到要上传的文件所在的文件夹。
+5. 右键单击任何空白区域，然后单击“上传”。
 
 ## <a name="develop-u-sql-scripts"></a>开发 U-SQL 脚本
 Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 U-SQL 的详细信息，请参阅 [U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)和 [U-SQL 语言参考](http://go.microsoft.com/fwlink/?LinkId=691348)。
@@ -198,7 +199,7 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
 
 ## <a name="run-u-sql-locally"></a>在本地运行 U-SQL
 
-与在 Azure Data Lake 服务中一样，可以使用用于 Visual Studio 的 Azure Data Lake 工具和 Azure Data Lake U-SQL SDK 在工作站上运行 U-SQL 作业。 这两个本地运行功能可节省测试和调试 U-SQL 作业的时间。 
+与在 Azure Data Lake 服务中一样，可以使用用于 Visual Studio 的 Azure Data Lake 工具和 Azure Data Lake U-SQL SDK 在工作站上运行 U-SQL 作业。 这两个本地运行功能可节省测试和调试 U-SQL 作业的时间。
 
 * [使用本地运行和 Azure Data Lake U-SQL SDK 来测试及调试 U-SQL 作业](data-lake-analytics-data-lake-tools-local-run.md)
 
