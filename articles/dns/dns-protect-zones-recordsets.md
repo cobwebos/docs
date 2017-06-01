@@ -13,9 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
-ms.openlocfilehash: f5865e07df4e1f253079ac1c8b257e2525da5ef3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -221,11 +223,5 @@ New-AzureRmResourceLock -LockLevel DoNotDelete -LockName "<lock name>" -Resource
 
 * 有关使用 RBAC 的详细信息，请参阅 [Azure 门户中的访问管理入门](../active-directory/role-based-access-control-what-is.md)。
 * 有关使用资源锁的详细信息，请参阅[使用 Azure Resource Manager 锁定资源](../azure-resource-manager/resource-group-lock-resources.md)。
-* 有关保护 Azure 资源的详细信息，请参阅 [Azure Resource Manager 的安全注意事项](../best-practices-resource-manager-security.md)。
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

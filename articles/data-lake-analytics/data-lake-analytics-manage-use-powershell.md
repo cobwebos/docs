@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 4dc44ee33c7eee5baa3990ccbd754d3197d164e2
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 4dd1ba30101d364fa52738a4e1c3e07874c5ed1f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -253,26 +253,6 @@ Data Lake Analytics 当前支持以下数据源：
         -Account $adlAnalyticsAccountName `
         -ItemType Database `
         -Path "master"
-
-### <a name="create-catalog-secret"></a>创建目录机密
-    New-AzureRmDataLakeAnalyticsCatalogSecret  `
-            -Account $adlAnalyticsAccountName `
-            -DatabaseName "master" `
-            -Secret (Get-Credential -UserName "username" -Message "Enter the password")
-
-### <a name="modify-catalog-secret"></a>修改目录机密
-    Set-AzureRmDataLakeAnalyticsCatalogSecret  `
-            -Account $adlAnalyticsAccountName `
-            -DatabaseName "master" `
-            -Secret (Get-Credential -UserName "username" -Message "Enter the password")
-
-
-
-### <a name="delete-catalog-secret"></a>删除目录机密
-    Remove-AzureRmDataLakeAnalyticsCatalogSecret  `
-            -Account $adlAnalyticsAccountName `
-            -DatabaseName "master"
-
 
 ## <a name="use-azure-resource-manager-groups"></a>使用 Azure Resource Manager 组
 应用程序通常由许多组件构成，例如 Web 应用、数据库、数据库服务器、存储和第三方服务。 你可以使用 Azure 资源管理器 (ARM) 以组（称为 Azure 资源组）的方式处理应用程序中的资源。 你可以通过一个协调的操作为应用程序部署、更新、监视或删除所有资源。 你可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 你可以通过查看整个组的累积费用，明确了解组织的帐单开支。 有关详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。 

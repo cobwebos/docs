@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 50d82847fb629880f298f79f9ab791a13836f01c
-ms.openlocfilehash: 4fa34050a8039cebebe30842469c596c83744313
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 568f3060da372f4a08cec342e04359172522cb69
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -25,7 +26,8 @@ ms.lasthandoff: 03/31/2017
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-topology-powershell.md)
-> - [CLI](network-watcher-topology-cli.md)
+> - [CLI 1.0](network-watcher-topology-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-topology-cli.md)
 > - [REST API](network-watcher-topology-rest.md)
 
 网络观察程序的拓扑功能提供订阅中网络资源的可视表示形式。 在此门户中，将自动向你显示此可视化效果。 可以通过 PowerShell 检索此门户中拓扑视图背后的信息。
@@ -48,7 +50,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="before-you-begin"></a>开始之前
 
-在此方案中，检索拓扑信息。 ARMclient 用于使用 PowerShell 调用 REST API。 按照 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 在 chocolatey 上找到 ARMClient
+在此方案中，检索拓扑信息。 ARMclient 用于使用 PowerShell 调用 REST API。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 
 此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
@@ -116,6 +118,6 @@ s65qcto",
 
 ## <a name="next-steps"></a>后续步骤
 
-通过访问[使用 Power BI 直观地显示 NSG 流日志](network-watcher-visualize-nsg-flow-logs-power-bi.md)，了解如何使用 Power BI 直观地显示 NSG 流日志
+访问[使用 Power BI 可视化 NSG 流日志](network-watcher-visualize-nsg-flow-logs-power-bi.md)，了解如何使用 Power BI 可视化 NSG 流日志
 
 

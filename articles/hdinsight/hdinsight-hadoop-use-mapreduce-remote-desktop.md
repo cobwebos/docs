@@ -16,10 +16,11 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 76e8fc27c87a427d7cb2527c2c53a5b463798610
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 5e91fd06fb2ae22496832d7afedb3f003edf7ea6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/12/2017
 在本文中，你将学习如何通过使用远程桌面连接到 HDInsight 群集上的 Hadoop，然后通过使用 Hadoop 命令运行 MapReduce 作业。
 
 > [!IMPORTANT]
-> 远程桌面只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
+> 远程桌面只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 >
 > 有关 HDInsight 3.4 或更高版本，请参阅[将 MapReduce 与 SSH 配合使用](hdinsight-hadoop-use-mapreduce-ssh.md)，了解如何连接到 HDInsight 群集以及如何运行 MapReduce 作业。
 

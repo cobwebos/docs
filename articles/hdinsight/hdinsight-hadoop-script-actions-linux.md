@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/02/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 37f26e8af09c9ff77fad7f275769e90b82596881
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: aaa5134fafea387e63fc9c9819422d24de6baed0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/04/2017
 了解如何使用 Bash 脚本自定义 HDInsight 群集。 在创建群集期间和之后，可以通过脚本操作自定义 HDInsight。
 
 > [!IMPORTANT]
-> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 ## <a name="what-are-script-actions"></a>什么是脚本操作
 

@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 05/22/2017
 ms.author: cynthn
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: b3bb7d9d14293aae78c3a1c2ac6badcc48dcbe2c
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: bfa4135600cb94d3947323219969872c2da7912b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -36,7 +36,10 @@ ms.lasthandoff: 05/17/2017
 > * 在可用性集中创建 VM
 > * 检查可用的 VM 大小
 
-本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 也可以通过浏览器使用 [Cloud Shell](/azure/cloud-shell/quickstart)。
+本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
 
 ## <a name="availability-set-overview"></a>可用性集概述
 
@@ -53,7 +56,7 @@ ms.lasthandoff: 05/17/2017
 
 创建资源组。
 
-```azurecli
+```azurecli-interactive
 az group create --name myResourceGroupAvailability --location eastus
 ```
 

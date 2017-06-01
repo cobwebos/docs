@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 87bd4e1d2b51857526b9137c09b7013c5221c698
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 8fbf201343f6710d2781a4b56ae54833ed4c06cf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -91,16 +91,16 @@ ms.lasthandoff: 05/17/2017
 ## <a name="manage-your-solution"></a>管理解决方案
 通过参阅以下资源来管理解决方案：
 * [阅读虚拟机产品/服务后期制作指南](marketplace-publishing-vm-image-post-publishing.md)
-* [更新产品/服务或 SKU 的非技术详细信息](marketplace-publishing-vm-image-post-publishing.md#2-how-to-update-the-non-technical-details-of-an-offer-or-a-sku)
-* [更新产品/服务或 SKU 的技术详细信息](marketplace-publishing-vm-image-post-publishing.md#1-how-to-update-the-technical-details-of-a-sku)
-* [在已列出的产品/服务下添加新 SKU](marketplace-publishing-vm-image-post-publishing.md#3-how-to-add-a-new-sku-under-a-listed-offer)
-* [更改已列出 SKU 的数据磁盘计数](marketplace-publishing-vm-image-post-publishing.md#4-how-to-change-the-data-disk-count-for-a-listed-sku)
+* [更新产品/服务或 SKU 的非技术详细信息](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
+* [更新产品/服务或 SKU 的技术详细信息](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
+* [在已列出的产品/服务下添加新 SKU](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
+* [更改已列出 SKU 的数据磁盘计数](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
 * [从应用商店中删除已列出的产品/服务](marketplace-publishing-vm-image-post-publishing.md)
-* [从应用商店中删除已列出的 SKU](marketplace-publishing-vm-image-post-publishing.md#6-how-to-delete-a-listed-sku-from-the-azure-marketplace)
-* [从应用商店中删除已列出的 SKU 的当前版本](marketplace-publishing-vm-image-post-publishing.md#7-how-to-delete-the-current-version-of-a-listed-sku-from-the-azure-marketplace)
-* [将定价还原为生产值](marketplace-publishing-vm-image-post-publishing.md#8-how-to-revert-listing-price-to-production-values)
-* [将计费模型还原为生产值](marketplace-publishing-vm-image-post-publishing.md#9-how-to-revert-billing-model-to-production-values)
-* [将列出的 SKU 的可见性设置还原为生产值](marketplace-publishing-vm-image-post-publishing.md#10-how-to-revert-visibility-setting-of-a-listed-sku-to-the-production-value)
+* [从应用商店中删除已列出的 SKU](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
+* [从应用商店中删除已列出的 SKU 的当前版本](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
+* [将定价还原为生产值](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
+* [将计费模型还原为生产值](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
+* [将列出的 SKU 的可见性设置还原为生产值](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)
 * [更改云解决方案提供商经销商激励](marketplace-publishing-csp-incentive.md)
 * [了解付款报告](marketplace-publishing-report-payout.md)
 * [作为发布者获取支持](marketplace-publishing-get-publisher-support.md)

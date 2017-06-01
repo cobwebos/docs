@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 7b1bfcc8163d7166831123524f3ec53f4a3dfe09
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 6bab6cbd84c55e668f2caf9b9f94621eec982203
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -38,9 +38,6 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="convert-vm-to-azure-managed-disks"></a>将 VM 转换为 Azure 托管磁盘
 本节介绍如何将现有的 Azure VM 从非托管磁盘转换为托管磁盘。 可通过此过程，将高级 (SSD) 非托管磁盘转换为高级托管磁盘，或将标准 (HDD) 非托管磁盘转换为标准托管磁盘。
-
-> [!IMPORTANT]
-> 执行下列过程后，默认 vhds 容器中将保留一个块 blob。 文件的名称是“VMName.xxxxxxx.status”。 请勿删除此剩余的状态对象。 将来应能解决此问题。
 
 1. 使用 [az vm deallocate](/cli/azure/vm#deallocate) 解除分配 VM。 以下示例在名为 `myResourceGroup` 的资源组中解除分配名为 `myVM` 的 VM：
 

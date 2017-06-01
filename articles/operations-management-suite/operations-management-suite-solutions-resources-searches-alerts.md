@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2017
+ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 35264f1ec5df5a3e171f7631e0d3b46bf9c0b8e7
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 21c42a747a08c5386c65d10190baf0054a7adef8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -48,21 +49,24 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 ## <a name="saved-searches"></a>保存的搜索
 将[保存的搜索](../log-analytics/log-analytics-log-searches.md)纳入解决方案后，用户可查询由解决方案收集的数据。  保存的搜索将出现在 OMS 门户中的“收藏夹”下和 Azure 门户的“保存的搜索”下。  每个警报也需要一个保存的搜索。   
 
-[Log Analytics 保存的搜索](../log-analytics/log-analytics-log-searches.md)资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches` 且具有以下结构。 
+[Log Analytics 保存的搜索](../log-analytics/log-analytics-log-searches.md)资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches` 且具有以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
 
     {
-        "name": "<name-of-savedsearch>"
+        "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",
         "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
-        "apiVersion": "<api-version-of-resource>",
-        "dependsOn": []
-        "tags": {},
+        "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+        "dependsOn": [
+        ],
+        "tags": { },
         "properties": {
             "etag": "*",
-            "query": "<query-to-run>",
-            "displayName": "<saved-search-display-name>",
-            "category": ""<saved-search-category>"
+            "query": "[variables('SavedSearch').Query]",
+            "displayName": "[variables('SavedSearch').DisplayName]",
+            "category": "[variables('SavedSearch').Category]"
         }
     }
+
+
 
 下表描述了保存的搜索的每个属性。 
 
@@ -90,22 +94,25 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 ### <a name="schedule-resource"></a>计划资源
 
-保存的搜索可以拥有一个或多个计划，每个计划代表一个单独的警报规则。 计划定义搜索的运行频率和检索数据的时间间隔。  计划资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` 且具有以下结构。 
+保存的搜索可以拥有一个或多个计划，每个计划代表一个单独的警报规则。 计划定义搜索的运行频率和检索数据的时间间隔。  计划资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` 且具有以下结构。 这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
+
 
     {
-      "name": "<name-of-schedule-resource>",
-      "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
-      "apiVersion": "<api-version-of-resource>",
-      "dependsOn": [
-        "<name-of-saved-search>"
-      ],
-      "properties": {  
-        "etag": "*",               
-        "interval": <schedule-interval-in-minutes>,
-        "queryTimeSpan": <query-timespan-in-minutes>,
-        "enabled": <schedule-enabled>       
-      }
+        "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name)]",
+        "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
+        "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+        "dependsOn": [
+            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('SavedSearch').Name)]"
+        ],
+        "properties": {
+            "etag": "*",
+            "interval": "[variables('Schedule').Interval]",
+            "queryTimeSpan": "[variables('Schedule').TimeSpan]",
+            "enabled": "[variables('Schedule').Enabled]"
+        }
     }
+
+
 
 下表介绍了计划资源的属性。
 
@@ -127,43 +134,41 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 每个计划都将有一个 **Alert** 操作。  这可定义警报的详细信息，并选择性定义通知和修正操作的详细信息。  通知将一封电子邮件发送到一个或多个地址。  修正在 Azure 自动化中启动 runbook，尝试修正检测到的问题。
 
-警报操作具有以下结构。
+警报操作具有以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
+
+
 
     {
-        "name": "<name-of-the-action>",
+        "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Alert').Name)]",
         "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-        "apiVersion": "<api-version-of-resource>",
+        "apiVersion": "[variables('LogAnalyticsApiVersion')]",
         "dependsOn": [
-            <name-of-schedule>
+            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('SavedSearch').Name, '/schedules/', variables('Schedule').Name)]"
         ],
         "properties": {
             "etag": "*",
             "type": "Alert",
-            "name": "<display-name-of-alert>",
-            "description": "<description-of-alert>",
-            "severity": "<severity-of-alert>",
+            "name": "[variables('Alert').Name]",
+            "description": "[variables('Alert').Description]",
+            "severity": "[variables('Alert').Severity]",
             "threshold": {
-                "operator": "<threshold-operator>",
-                "value": "<threshold-value>"
+                "operator": "[variables('Alert').Threshold.Operator]",
+                "value": "[variables('Alert').Threshold.Value]",
                 "metricsTrigger": {
-                    "triggerCondition": "<trigger-condition>",
-                    "operator": "<trigger-operator>",
-                    "value": "<trigger-value>"
+                    "triggerCondition": "[variables('Alert').Threshold.Trigger.Condition]",
+                    "operator": "[variables('Alert').Trigger.Operator]",
+                    "value": "[variables('Alert').Trigger.Value]"
                 },
-            },
-            "throttling": {
-                "durationInMinutes": "<throttling-duration-in-minutes>"
             },
             "emailNotification": {
                 "recipients": [
-                    <mail-recipients>
+                    "[variables('Alert').Recipients]"
                 ],
-                "subject": "<mail-subject>",
-                "attachment": "None"
+                "subject": "[variables('Alert').Subject]"
             },
             "remediation": {
-                "runbookName": "<name-of-runbook>",
-                "webhookUri": "<runbook-uri>"
+                "runbookName": "[variables('Alert').Remedition.RunbookName]",
+                "webhookUri": "[variables('Alert').Remedition.WebhookUri]"
             }
         }
     }
@@ -232,20 +237,19 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 如果警报会调用 webhook，则除 **Alert** 操作资源外，还将需要一个类型为 **Webhook** 的操作资源。  
 
     {
-        "name": "<name-of-the-action>",
-        "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-        "apiVersion": "<api-version-of-resource>",
-        "dependsOn": [
-            <name-of-schedule>
-            <name-of-alert-action>
-        ],
-        "properties": {
-            "etag": "*",
-            "type": "Webhook",
-            "name": "<display-name-of-action>",
-            "severity": "<severity-of-alert>",
-            "customPayload": "<payload-to-send>"
-        }
+      "name": "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Webhook').Name)]",
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions/",
+      "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+      "dependsOn": [
+            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('SavedSearch').Name, '/schedules/', variables('Schedule').Name)]"
+      ],
+      "properties": {
+        "etag": "*",
+        "type": "[variables('Alert').Webhook.Type]",
+        "name": "[variables('Alert').Webhook.Name]",
+        "webhookUri": "[variables('Alert').Webhook.webhookUri]",
+        "customPayload": "[variables('Alert').Webhook.CustomPayLoad]"
+      }
     }
 
 下表介绍了 Webhook 操作资源的属性。

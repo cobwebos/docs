@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8928581d9636f571008f965185eeb61b414a16e7
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: da9e5f015f93090f4efb00f6c3af07ba2f5503bc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -135,7 +136,7 @@ ms.lasthandoff: 04/03/2017
 
     ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_05.png)
  1. 单击“下载证书”，然后将文件保存在计算机上。
- 2. 单击“资源组名称” 的 Azure 数据工厂。
+ 2. 单击“下一步”。
 
 5. 若要为应用程序配置 SSO，请使用管理员权限登录到 Atlassian 门户。
 
@@ -148,7 +149,7 @@ ms.lasthandoff: 04/03/2017
  2. 若要验证该域，请单击“验证”。 
 
     ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_08.png) 
-  3. 下载域验证 html 文件，将其上载到域网站的根文件夹，然后单击“验证域”。
+  3. 下载域验证 html 文件，将其上传到域网站的根文件夹，然后单击“验证域”。
     
     ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_09.png)
   4. 验证域后，“状态”字段的值将变为“已验证”。
@@ -208,7 +209,7 @@ ms.lasthandoff: 04/03/2017
     ![创建 Azure AD 测试用户](./media/active-directory-saas-atlassian-cloud-tutorial/create_aaduser_05.png) 
   1. 在“用户类型”中，选择“你的组织中的新用户”。
   2. 在“用户名”文本框中，键入“BrittaSimon”。
-  3. 单击“资源组名称” 的 Azure 数据工厂。
+  3. 单击“下一步”。
 
 6.  在“用户配置文件”对话框页上，执行以下步骤：
 
@@ -217,7 +218,7 @@ ms.lasthandoff: 04/03/2017
    2. 在“姓氏”文本框中，键入“Simon”。
    3. 在“显示名称”文本框中，键入“Britta Simon”。
    4. 在“角色”列表中，选择“用户”。
-   5. 单击“资源组名称” 的 Azure 数据工厂。
+   5. 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
 
@@ -252,7 +253,7 @@ ms.lasthandoff: 04/03/2017
  
 4. 单击“创建用户”按钮，随即会向该用户发送电子邮件邀请，接受邀请后，该用户将在系统中激活。 
 
-### <a name="assig-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Atlassian Cloud 的权限，允许她使用 Azure SSO。
 

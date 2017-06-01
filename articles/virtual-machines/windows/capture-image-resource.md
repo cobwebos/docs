@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c3f5a66605b1a7059a7820ddda9463cb4277f055
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 4ffbe7e28d8b4c7d421bec477455a94609cd127a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -27,9 +28,25 @@ ms.lasthandoff: 04/27/2017
 可以从在存储帐户中存储为托管磁盘或非托管磁盘的通用 VM 创建托管映像资源。 映像随后可用于创建多个使用托管磁盘进行存储的 VM。 
 
 
-## <a name="prerequisites"></a>先决条件
-必须已将[ VM 通用化](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，且停止\解除分配 VM。 通用化 VM 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。
+## <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 通用化 Windows VM
 
+Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](http://technet.microsoft.com/library/bb457073.aspx)。
+
+确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+
+> [!IMPORTANT]
+> 如果在首次将 VHD 上传到 Azure 之前运行 Sysprep，请确保先[准备好 VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，然后再运行 Sysprep。 
+> 
+> 
+
+1. 登录到 Windows 虚拟机。
+2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
+3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
+4. 在“关机选项”中选择“关机”。
+5. 单击 **“确定”**。
+   
+    ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
+6. Sysprep 在完成运行后会关闭虚拟机。 请勿重启 VM。
 
 
 ## <a name="create-a-managed-image-in-the-portal"></a>在门户中创建托管映像 

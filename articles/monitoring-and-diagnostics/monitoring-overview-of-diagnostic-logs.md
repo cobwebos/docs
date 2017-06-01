@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2017
+ms.date: 05/19/2017
 ms.author: johnkem; magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1978ecda9c635ace713b43f620300a06f4c609ba
+ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
+ms.openlocfilehash: c3e766b2e4c7bd372dc9c7b9d675a76c2d14a4cc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/20/2017
 
 
 ---
@@ -185,12 +185,11 @@ ms.lasthandoff: 05/10/2017
 | API 管理 | 架构不可用。 |
 | 应用程序网关 |[应用程序网关的诊断日志记录](../application-gateway/application-gateway-diagnostics.md) |
 | Azure 自动化 |[Azure 自动化的 Log Analytics](../automation/automation-manage-send-joblogs-log-analytics.md) |
-| Azure 批处理 |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
+| Azure Batch |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
 | Customer Insights | 架构不可用。 |
 | 内容传送网络 | 架构不可用。 |
 | 数据湖分析 |[访问 Azure Data Lake Analytics 的诊断日志](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[访问 Azure Data Lake Store 的诊断日志](../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| Express Route | 架构不可用。 |
 | 事件中心 |[Azure 事件中心诊断日志](../event-hubs/event-hubs-diagnostic-logs.md) |
 | 密钥保管库 |[Azure 密钥保管库日志记录](../key-vault/key-vault-logging.md) |
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../load-balancer/load-balancer-monitor-log.md) |
@@ -229,7 +228,6 @@ ms.lasthandoff: 05/10/2017
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|应用程序网关访问日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|应用程序网关性能日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|应用程序网关防火墙日志|
-|Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM 计数器表|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure 备份报告数据|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery 作业|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery 事件|

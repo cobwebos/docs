@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 25fec75615d2376f3e566b509536eadd03590c0e
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 2a3d63b3829e750b62658d720522ae1abf89cd86
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure"></a>在 Azure 中生成 Node.js 和 MongoDB Web 应用
@@ -221,7 +221,7 @@ db: {
 ```
 
 > [!NOTE] 
-> `ssl=true` 选项很重要，因为 [Cosmos DB 需要 SSL](../documentdb/documentdb-connect-mongodb-account.md#connection-string-requirements)。 
+> `ssl=true` 选项很重要，因为 [Cosmos DB 需要 SSL](../cosmos-db/connect-mongodb-account.md#connection-string-requirements)。 
 >
 >
 
@@ -269,16 +269,7 @@ MEAN.JS version: 0.5.0
 
 使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。 
 
-> [!NOTE] 
-> 应用服务计划表示用于托管应用的物理资源集合。 分配到应用服务计划的所有应用程序将共享该计划定义的资源，在托管多个应用时可以节省成本。 
-> 
-> 应用服务计划定义： 
-> 
-> * 区域（北欧、美国东部、东南亚） 
-> * 实例大小（小、中、大） 
-> * 规模计数（一个、两个、三个实例，等等） 
-> * SKU（免费、共享、基本、标准、高级） 
-> 
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 以下示例使用**免费**定价层创建名为 _myAppServicePlan_ 的应用服务计划：
 

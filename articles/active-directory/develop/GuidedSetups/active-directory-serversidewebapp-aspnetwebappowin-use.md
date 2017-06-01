@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fd09b1788d609f7ad51d9dd20e7643ebeb02562c
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 3b7d29e48c91f40e8782a5e32a52998b815fe331
 ms.contentlocale: zh-cn
 
 
@@ -28,8 +29,8 @@ ms.contentlocale: zh-cn
 
 1.    右键单击 `Controllers` 文件夹，然后选择`Add` > `Controller`
 2.    选择 `MVC (.NET version) Controller – Empty`。
-3.    单击“添加”**
-4.    将其命名为 `HomeController`，然后单击“添加”**
+3.    单击“添加”
+4.    将其命名为 `HomeController`，然后单击“添加”
 5.    向该类添加 OWIN 引用：
 
 ```csharp
@@ -117,7 +118,7 @@ else
 ```
 <!--start-collapse-->
 ### <a name="more-information"></a>更多信息
-> 此页以 SVG 形式添加登录按钮，背景为黑色：<br/>![使用 Microsoft 登录](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> 对于多个登录按钮，请转到[本页](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines)。
+> 此页以 SVG 形式添加登录按钮，背景为黑色：<br/>![使用 Microsoft 登录](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> 对于多个登录按钮，请转到[本页](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding guidelines")。
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
@@ -125,7 +126,7 @@ else
 
 1.    右键单击 `Controllers` 文件夹，然后选择`Add` > `Controller`
 2.    选择 `MVC {version} Controller – Empty`。
-3.    单击“添加”**
+3.    单击“添加”
 4.    将其命名为 `ClaimsController`
 5.    将控制器类的代码替换为下面的代码，这将 `[Authorize]` 属性添加到类：
 

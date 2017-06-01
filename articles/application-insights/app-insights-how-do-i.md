@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 2e2b59c89fdc91437f148d062e312204be994350
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 618fcfa3354ef5900d89546ffb7c222a852fe4f8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -164,21 +164,3 @@ ms.lasthandoff: 05/17/2017
 * 首先[添加一个新图表](app-insights-metrics-explorer.md)，然后查看计数器是否出现在提供的基本集内。
 * 如果没有，请[将计数器添加到性能计数器模块收集的集内](app-insights-performance-counters.md)。
 
-## <a name="version-and-release-tracking"></a>版本和发行版本跟踪
-若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在 .csproj 文件中，添加：  
-
-```XML
-
-    <PropertyGroup>
-      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
-    </PropertyGroup>
-```
-
-当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](app-insights-diagnostic-search.md)或[浏览指标](app-insights-metrics-explorer.md)时按版本进行筛选。
-
-但请注意，内部版本号只能由 Microsoft 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
-
-### <a name="release-annotations"></a>版本注释
-如果使用 Visual Studio Team Services，则可以在每次发布新版本时将[批注标记](app-insights-annotations.md)添加到图表中。 下图显示了此标记的形式。
-
-![图表中示例版本批注的屏幕截图](./media/app-insights-asp-net/release-annotation.png)
