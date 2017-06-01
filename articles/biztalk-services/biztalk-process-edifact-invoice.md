@@ -14,13 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: b7ad7b91c6b836f26b45959ef65a99666a4bf69a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>指南：使用 Azure BizTalk 服务处理 EDIFACT 发票
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 可使用 BizTalk 服务门户配置和部署 X12 和 EDIFACT 协议。 在本教程中，我们着重介绍如何创建用于贸易合作伙伴之间交换发票的 EDIFACT 协议。 本教程是围绕一个端到端业务解决方案编写的，该解决方案涉及两个互换 EDIFACT 消息的贸易合作伙伴（Northwind 和 Contoso）。  
 
 ## <a name="sample-based-on-this-tutorial"></a>基于本教程的示例
@@ -277,10 +282,5 @@ BizTalk 服务 EDI 桥还支持分批处理传出消息。 此功能对于希望
 [16]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-16.PNG  
 [17]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-17.PNG  
 [18]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-18.PNG
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

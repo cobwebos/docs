@@ -100,7 +100,7 @@ az vm extension set --resource-group myRGMonitor --vm-name myMonitorVM --name Om
 
 ```PowerShell
 Login-AzureRMAccount
-Select-AzureSubscription -SubscriptionId "**"
+Select-AzureRMSubscription -SubscriptionId "**"
 
 $workspaceName = "your workspace name"
 $VMresourcegroup = "**"

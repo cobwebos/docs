@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
 ms.openlocfilehash: 4fb13a158c660105a5fc8f79a92c67ba65c5356d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk 服务：颁发者名称和颁发者密钥
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Azure BizTalk 服务使用 Service Bus 颁发者名称和颁发者密钥以及 Access Control 颁发者名称和颁发者密钥。 具体而言：
 
 | 任务 | 哪个颁发者名称和颁发者密钥 |
@@ -97,10 +102,5 @@ Service Bus 颁发者名称和颁发者密钥由 BizTalk 适配器服务使用�
 * [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk 服务：备份和还原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [BizTalk 服务：限制](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

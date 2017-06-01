@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1013419f9283c3e81a6a6e8ed56a34d6ee5937ea
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>BizTalk 服务中的管理和开发任务列表
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 ## <a name="getting-started"></a>入门
 使用 Microsoft Azure BizTalk 服务时，需考虑多个本地和基于云的组件。 请按照以下流程图开始操作：  
 
@@ -53,10 +58,5 @@ ms.openlocfilehash: 1013419f9283c3e81a6a6e8ed56a34d6ee5937ea
 [了解并创建消息映射和转换](https://msdn.microsoft.com/library/azure/hh689905.aspx)  
 [使用 BizTalk 适配器服务 (BAS)](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
 [Azure BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=303664)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
