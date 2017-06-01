@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: priyamo
-translationtype: Human Translation
-ms.sourcegitcommit: 9904ec79782b1790ecb21f31b078fea9936c8380
-ms.openlocfilehash: 305b7ce52d1313ecde641c952db291588fabf01c
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: a2f3c2d97df37e067670af48b37cc2e2dd3a36cc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -40,7 +43,7 @@ Azure AD 会在 `https://login.microsoftonline.com/<TenantDomainName>/Federation
 
 对于**独立于租户的终结点**，`TenantDomainName` 为 `common`。 此文档仅列出了托管在 login.microsoftonline.com 上的所有 Azure AD 租户通用的联合元数据元素。
 
-例如，特定于租户的终结点可以是 `https:// login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 独立于租户的终结点是 [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 你可以在浏览器中键入此 URL 以查看联合元数据文档。
+例如，特定于租户的终结点可以是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 独立于租户的终结点是 [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 你可以在浏览器中键入此 URL 以查看联合元数据文档。
 
 ## <a name="contents-of-federation-metadata"></a>联合元数据的内容
 以下部分提供使用 Azure AD 颁发的令牌的服务所需的信息。
@@ -155,9 +158,4 @@ https://login.microsoftonline.com/common/wsfed
     <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://login.microsoftonline.com/common/saml2" />
   </IDPSSODescriptor>
 ```
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

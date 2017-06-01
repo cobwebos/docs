@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2017
+ms.date: 05/25/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 92d591054244ceb01adbfbd8ff027d47b04a6c83
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 02ecc95d97719908a18f615dc3e19af2a563cc73
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 05/17/2017
 * 熟悉基于 Linux 的 HDInsight 群集的创建过程。 有关详细信息，请参阅[在 HDInsight 上创建 Spark](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
   > [!IMPORTANT]
-  > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 3.3 弃用](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
+  > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 * Web 浏览器。
 
@@ -89,7 +89,9 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 3. 在页面上的第一个字段（称为“单元格”）中输入以下文本：
 
-        sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
+   ```python
+   sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
+   ```
 
     此代码将 Spark 配置为以递归方式访问输入数据的目录结构。 Application Insights 遥测数据将记录到类似于 `/{telemetry type}/YYYY-MM-DD/{##}/` 的目录结构中。
 
@@ -104,8 +106,10 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
         SparkContext and HiveContext created. Executing user code ...
 5. 在第一个单元格的下面创建一个新单元格。 在新单元格中输入以下文本。 将 `CONTAINER` 和 `STORAGEACCOUNT` 分别替换为包含 Application Insights 数据的 Azure 存储帐户名和 blob 容器名称。
 
-        %%bash
-        hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   ```python
+   %%bash
+   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   ```
 
     使用 **Shift+Enter** 执行此单元格中的命令。 将显示类似于以下文本的结果：
 
@@ -119,13 +123,17 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 6. 在下一个单元格中，输入以下代码：将 `WASB_PATH` 替换为上一步骤中的路径。
 
-        jsonFiles = sc.textFile('WASB_PATH')
-        jsonData = sqlContext.read.json(jsonFiles)
+   ```python
+   jsonFiles = sc.textFile('WASB_PATH')
+   jsonData = sqlContext.read.json(jsonFiles)
+   ```
 
     此代码从通过连续导出过程导出的 JSON 文件创建数据框架。 使用 **Shift+Enter** 运行此单元格中的命令。
 7. 在下一个单元格中输入并运行以下命令，查看 Spark 为 JSON 文件创建的架构：
 
-        jsonData.printSchema()
+   ```python
+   jsonData.printSchema()
+   ```
 
     每种类型的遥测的架构都不相同。 以下示例是为 Web 请求生成的架构（数据存储在 `Requests` 子目录中）：
 
@@ -191,8 +199,11 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
         |    |    |    |-- protocol: string (nullable = true)
 8. 使用以下命令将数据框架注册为临时表，然后针对数据运行查询：
 
-        jsonData.registerTempTable("requests")
-        sqlContext.sql("select context.location.city from requests where context.location.city is not null")
+   ```python
+   jsonData.registerTempTable("requests")
+   df = sqlContext.sql("select context.location.city from requests where context.location.city is not null")
+   df.show()
+   ```
 
     此查询会返回 context.location.city 不为 null 的前 20 条记录的 city 信息。
 
@@ -219,7 +230,9 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 2. 在 Jupyter 页面右上角选择“新建”，然后选择“Scala”。 此时将打开新的浏览器选项卡，其中包含基于 Scala 的 Jupyter Notebook。
 3. 在页面上的第一个字段（称为“单元格”）中输入以下文本：
 
-        sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
+   ```scala
+   sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
+   ```
 
     此代码将 Spark 配置为以递归方式访问输入数据的目录结构。 Application Insights 遥测数据将记录到类似于 `/{telemetry type}/YYYY-MM-DD/{##}/` 的目录结构中。
 
@@ -234,8 +247,10 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
         SparkContext and HiveContext created. Executing user code ...
 5. 在第一个单元格的下面创建一个新单元格。 在新单元格中输入以下文本。 将 `CONTAINER` 和 `STORAGEACCOUNT` 分别替换为包含 Application Insights 日志的 Azure 存储帐户名和 blob 容器名称。
 
-        %%bash
-        hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   ```scala
+   %%bash
+   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   ```
 
     使用 **Shift+Enter** 执行此单元格中的命令。 将显示类似于以下文本的结果：
 
@@ -249,13 +264,19 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 6. 在下一个单元格中，输入以下代码：将 `WASB\_PATH` 替换为上一步骤中的路径。
 
-        jsonFiles = sc.textFile('WASB_PATH')
-        jsonData = sqlContext.read.json(jsonFiles)
+   ```scala
+   var jsonFiles = sc.textFile('WASB_PATH')
+   val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+   var jsonData = sqlContext.read.json(jsonFiles)
+   ```
 
     此代码从通过连续导出过程导出的 JSON 文件创建数据框架。 使用 **Shift+Enter** 运行此单元格中的命令。
+
 7. 在下一个单元格中输入并运行以下命令，查看 Spark 为 JSON 文件创建的架构：
 
-        jsonData.printSchema
+   ```scala
+   jsonData.printSchema
+   ```
 
     每种类型的遥测的架构都不相同。 以下示例是为 Web 请求生成的架构（数据存储在 `Requests` 子目录中）：
 
@@ -319,10 +340,13 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
         |    |    |    |-- hashTag: string (nullable = true)
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
+
 8. 使用以下命令将数据框架注册为临时表，然后针对数据运行查询：
 
-        jsonData.registerTempTable("requests")
-        var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
+   ```scala
+   jsonData.registerTempTable("requests")
+   var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
+   ```
 
     此查询会返回 context.location.city 不为 null 的前 20 条记录的 city 信息。
 

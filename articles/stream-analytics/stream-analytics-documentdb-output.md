@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 01bf4188c40abb424c654a733c6d626f3bd694ba
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: cb85dff7f8bf8a8715aaa9ecd02da59b9108915c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 05/10/2017
 流分析利用了乐观 Upsert 方法，即仅当由于文档 ID 冲突而插入失败时才进行更新。 此更新由流分析以修补程序的形式执行，因此它使得对文档的部分更新（即添加新属性或替换现有属性）以增量方式执行。 请注意，JSON 文档中数组属性的值的更改会导致整个数组被覆盖，即不会合并数组。
 
 ## <a name="data-partitioning-in-cosmos-db"></a>Cosmos DB 中的数据分区
-建议使用 Cosmos DB [分区集合](../documentdb/documentdb-partition-data.md#single-partition-and-partitioned-collections)对数据进行分区。 
+建议使用 Cosmos DB [分区集合](../cosmos-db/partition-data.md)对数据进行分区。 
 
 对于单一 Cosmos DB 集合，用户仍然可以使用流分析根据应用程序的查询模式和性能需求对数据进行分区。 每个集合最多可包含 10GB 的数据（最大值），并且当前无法向上扩展（或溢出）集合。 若要向外扩展，流分析允许你写入到具有给定前缀的多个集合（请参见下面的用法详细信息）。 流分析根据用户提供的 PartitionKey 列，使用一致的[哈希分区解析程序](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)对其输出记录进行分区。 流式处理作业开始时，具有给定前缀的集合数将用作输出分区计数，作业将并行写入到这些集合（Cosmos DB 集合数 = 输出分区数）。 对于延迟索引仅执行插入的单个集合，可以预期大约 0.4 MB/秒的写入吞吐量。 使用多个集合，可以允许你实现更高的吞吐量和更大的容量。
 

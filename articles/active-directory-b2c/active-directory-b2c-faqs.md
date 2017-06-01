@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: bc0b0b652312f6bcc27a981da766e19cded7bd6c
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 1b62ab8fe4f8a736821eb9da3d77fe2f654de745
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -126,7 +126,5 @@ Azure AD B2C 不能与 Microsoft Office 365 一起使用。 一般来说，它�
 ### <a name="how-do-i-report-issues-with-azure-ad-b2c"></a>如何报告 Azure AD B2C 存在的问题？
 请参阅[提出针对 Azure Active Directory B2C 的支持请求](active-directory-b2c-support.md)。
 
-## <a name="more-information"></a>详细信息
-你可能也想要查看当前的[服务限制、制约和约束](active-directory-b2c-limitations.md)。
 
 

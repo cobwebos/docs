@@ -14,9 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/30/2016
 ms.author: dastrock; vittorib
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 52a4c326c7618b9a31df539c8b0eb0ced44ce609
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: d0602a61b0335ef2bb92e27051c286852bc08d35
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -47,7 +50,7 @@ v2.0 终结点可让你快速地将身份验证添加桌面应用，同时支持
 * 复制分配给应用的**应用程序 ID**，稍后将要用到。
 * 为应用添加**移动**平台。
 
-## <a name="install-configure-msal"></a>安装并配置 MSAL
+## <a name="install--configure-msal"></a>安装并配置 MSAL
 现在有了已向 Microsoft 注册的应用，可以安装 MSAL 并编写与标识相关的代码。  为了使 MSAL 能够与 v2.0 终结点通信，需要提供一些与应用注册相关的信息。
 
 * 首先，使用包管理器控制台将 MSAL 添加到 TodoListClient 项目。
@@ -259,10 +262,5 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 
 ## <a name="get-security-updates-for-our-products"></a>获取关于我们产品的安全更新
 建议发生安全事件时获取相关通知，方法是访问 [此页](https://technet.microsoft.com/security/dd252948) 并订阅“安全公告通知”。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

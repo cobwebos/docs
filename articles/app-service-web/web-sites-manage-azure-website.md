@@ -1,6 +1,6 @@
 ---
-title: "管理 Azure App Service 中的 Web 应用"
-description: "用于管理 Azure App Service 中 Web 应用的资源链接。"
+title: "管理 Azure 应用服务中的 Web 应用"
+description: "用于管理 Azure 应用服务中 Web 应用的资源链接。"
 services: app-service\web
 documentationcenter: 
 author: erikre
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: rachelap
-translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 50630084a3df9bc1fed27efb41bc557d0e03916f
-ms.lasthandoff: 12/06/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 08a84ace63465e7c058add69a25687fe46c7ea07
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
-# <a name="manage-a-web-app-in-azure-app-service"></a>管理 Azure App Service 中的 Web 应用
+# <a name="manage-a-web-app-in-azure-app-service"></a>管理 Azure 应用服务中的 Web 应用
 本主题包含用于管理 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中 Web 应用的资源链接。 管理包括维持 Web 应用平稳运行的所有任务。 
 
 在整个 Web 应用使用期内，您将执行各种管理任务，从初始部署到正常操作、维护与更新。
@@ -45,8 +46,8 @@ Azure 应用服务在五个层中提供：免费、共享、基本、标准和�
 
 除了这些基本配置设置，可能还需要进行下列配置：
 
-* **安全套接字层 (SSL)** 加密。 若要使用带有自定义域名的 SSL，必须获取 SSL 证书并配置 Web 应用。 请参阅[为 Azure 应用服务中的 Web 应用启用 HTTPS](web-sites-configure-ssl-certificate.md)。
-* **自定义域名。** Web 应用在 azurewebsites.net 下自动具有一个子域。 可以关联自定义域名（如 contoso.com ）。 请参阅[在 Azure 应用服务中配置自定义域名](web-sites-custom-domain-name.md)。
+* **安全套接字层 (SSL)** 加密。 若要使用带有自定义域名的 SSL，必须获取 SSL 证书并配置 Web 应用。 请参阅[为 Azure 应用服务中的 Web 应用启用 HTTPS](app-service-web-tutorial-custom-ssl.md)。
+* **自定义域名。** Web 应用在 azurewebsites.net 下自动具有一个子域。 可以关联自定义域名（如 contoso.com ）。 请参阅[在 Azure 应用服务中配置自定义域名](app-service-web-tutorial-custom-domain.md)。
 
 特定于语言的配置：
 

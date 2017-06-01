@@ -14,13 +14,13 @@ ms.devlang: PowerShell
 ms.topic: article
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 03/07/2017
+ms.date: 05/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 294ba61b23e8cc1ef1ecf1bf538934393a4f9768
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 3f62371eb84df1ba0f29ef2c6fe0da82674ed069
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 05/27/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/18/2017
 
 ## <a name="sample-scripts"></a>示例脚本
 
-[!code-powershell[主要](../../../powershell_scripts/sql-database/setup-geodr-and-failover-pool/setup-geodr-and-failover-pool.ps1 "为弹性池设置活动异地复制")]
+[!code-powershell[主要](../../../powershell_scripts/sql-database/setup-geodr-and-failover-pool/setup-geodr-and-failover-pool.ps1?highlight=16-19 "为弹性池设置活动异地复制")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

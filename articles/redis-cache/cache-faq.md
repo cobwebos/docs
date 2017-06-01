@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 05/25/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: cbd764b3c6ce912c825aa2756ac6f35c23d047bf
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: eeddc0da23192a0082f2fcddbb0cc5f3e4a72074
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -76,15 +77,13 @@ ms.lasthandoff: 04/26/2017
 本部分中的常见问题包括常见的监视和故障排除问题。 有关 Azure Redis 缓存实例监视和故障排除的详细信息，请参阅 [How to monitor Azure Redis Cache](cache-how-to-monitor.md)（如何监视 Azure Redis 缓存）以及 [How to troubleshoot Azure Redis Cache](cache-how-to-troubleshoot.md)（如何排查 Azure Redis 缓存问题）。
 
 * [如何监视缓存的运行状况和性能？](#how-do-i-monitor-the-health-and-performance-of-my-cache)
-* [缓存诊断存储帐户的设置为何会更改？](#my-cache-diagnostics-storage-account-settings-changed-what-happened)
-* [为何有些新缓存启用了诊断，但其他一些缓存却未启用诊断？](#why-are-diagnostics-enabled-for-some-new-caches-but-not-others)
 * [为何会出现超时？](#why-am-i-seeing-timeouts)
 * [客户端为何与缓存断开连接？](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>以前的缓存产品常见问题
 * [哪种 Azure 缓存产品适合我？](#which-azure-cache-offering-is-right-for-me)
 
-### <a name="what-is-azure-redis-cache"></a>什么是 Azure Redis Cache？
+### <a name="what-is-azure-redis-cache"></a>什么是 Azure Redis 缓存？
 Azure Redis 缓存基于流行的开放源代码 [Redis 缓存](http://redis.io)。 这使用户可以访问安全、专用的 Redis 缓存，该缓存由 Microsoft 托管并可从 Azure 内的任何应用程序进行访问。 有关更详细的概述，请参阅 Azure.com 上的 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)产品页。
 
 ### <a name="how-can-i-get-started-with-azure-redis-cache"></a>使用 Azure Redis 缓存？
@@ -427,12 +426,6 @@ Redis 缓存**资源菜单**中还包含了用于对缓存进行监视和故障�
 
 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。 有关详细信息，请参阅[如何配置 Azure Redis 缓存](cache-configure.md)的“支持和故障排除设置”部分。
 
-### <a name="my-cache-diagnostics-storage-account-settings-changed-what-happened"></a>缓存诊断存储帐户的设置为何会更改？
-同一区域和订阅中的缓存共享诊断存储设置，当配置更改（诊断启用/禁用或更改存储帐户）时，它将应用于订阅中位于该区域的所有缓存。 如果缓存的诊断设置已更改，请检查同一订阅和区域中其他缓存的诊断设置是否也已更改。 检查方法之一是查看 `Write DiagnosticSettings` 事件的缓存审核日志。 有关使用审核日志的详细信息，请参阅[查看事件和审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)以及[使用 Resource Manager 执行审核操作](../azure-resource-manager/resource-group-audit.md)。 有关监视 Azure Redis 缓存事件的详细信息，请参阅[操作和警报](cache-how-to-monitor.md#operations-and-alerts)。
-
-### <a name="why-are-diagnostics-enabled-for-some-new-caches-but-not-others"></a>为何有些新缓存启用了诊断，但其他一些缓存却未启用诊断？
-在同一区域和订阅中，缓存共享相同的诊断存储设置。 如果有其他缓存已启用诊断，并在与该缓存相同的区域和订阅中创建新缓存，将在新缓存中使用相同的设置来启用诊断。
-
 <a name="cache-timeouts"></a>
 
 ### <a name="why-am-i-seeing-timeouts"></a>为何会出现超时？
@@ -462,7 +455,7 @@ Redis 缓存**资源菜单**中还包含了用于对缓存进行监视和故障�
 >
 >
 
-### <a name="azure-redis-cache"></a>Azure Redis Cache
+### <a name="azure-redis-cache"></a>Azure Redis 缓存
 Azure Redis 缓存已正式发布，最大大小为 53 GB，且其可用性 SLA 为 99.9%。 全新[高级级别](cache-premium-tier-intro.md)提供的最大大小为 530 GB，且支持群集、VNET 和持久性，并附带 99.9% SLA。
 
 Azure Redis 缓存使客户能够使用 Microsoft 管理的安全专用 Redis 缓存。 有了此产品，你可以利用 Redis 提供的丰富功能集和生态系统，并可以从 Microsoft 获得可靠的托管和监控。

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/14/2017
+ms.date: 05/24/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 78b8902927977c3b7dca3bd6e24633858ef8e6e9
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 9ab6d3e5e41f155b1404cee8a555078409c09c60
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 05/11/2017
 ```json
 "resources": [ 
   { 
-      "apiVersion": "2015-01-01", 
+      "apiVersion": "2017-05-10", 
       "name": "linkedTemplate", 
       "type": "Microsoft.Resources/deployments", 
       "properties": { 
@@ -53,7 +53,7 @@ ms.lasthandoff: 05/11/2017
 与其他资源类型一样，可在链接的模板和其他资源间设置依赖关系。 因此，其他资源需要从链接的模板获取输出值时，可确保在其之前部署链接的模板。 或者，链接的模板依赖于其他资源时，可确保在其之前部署其他资源。 可使用以下语法从链接的模板检索值：
 
 ```json
-"[reference('linkedTemplate').outputs.exampleProperty]"
+"[reference('linkedTemplate').outputs.exampleProperty.value]"
 ```
 
 Resource Manager 服务必须能够访问链接的模板。 无法为链接的模板指定本地文件或者只能在本地网络中访问的文件。 只能提供包含 **http** 或 **https** 的 URI 值。 一种做法是将链接的模板放在存储帐户中并对该项使用 URI，如以下示例中所示：
@@ -75,7 +75,7 @@ Resource Manager 服务必须能够访问链接的模板。 无法为链接的�
 },
 "resources": [
     {
-        "apiVersion": "2015-01-01",
+        "apiVersion": "2017-05-10",
         "name": "linkedTemplate",
         "type": "Microsoft.Resources/deployments",
         "properties": {
@@ -101,7 +101,7 @@ Resource Manager 会将每个链接的模板作处理为单独的部署。 在�
 ```json
 "resources": [ 
   { 
-     "apiVersion": "2015-01-01", 
+     "apiVersion": "2017-05-10", 
      "name": "linkedTemplate", 
      "type": "Microsoft.Resources/deployments", 
      "properties": { 
@@ -142,116 +142,6 @@ Resource Manager 会将每个链接的模板作处理为单独的部署。 在�
 }
 ```
 
-## <a name="conditionally-linking-to-templates"></a>按条件链接到模板
-可以通过传入用于构造链接模板 URI 的参数值链接到不同的模板。 如果在部署期间需指定要使用的链接模板，则此方法很有效。 例如，可为现有存储帐户指定一个要使用的模板，为新的存储帐户指定另一个要使用的模板。
-
-以下示例显示了存储帐户名的参数，以及用于指定存储帐户是新帐户还是现有帐户的参数。
-
-```json
-"parameters": {
-    "storageAccountName": {
-        "type": "String"
-    },
-    "newOrExisting": {
-        "type": "String",
-        "allowedValues": [
-            "new",
-            "existing"
-        ]
-    }
-},
-```
-
-为模板 URI 创建变量，其中包含新参数或现有参数的值。
-
-```json
-"variables": {
-    "templatelink": "[concat('https://raw.githubusercontent.com/exampleuser/templates/master/',parameters('newOrExisting'),'StorageAccount.json')]"
-},
-```
-
-将该变量值提供给部署资源。
-
-```json
-"resources": [
-    {
-        "apiVersion": "2015-01-01",
-        "name": "linkedTemplate",
-        "type": "Microsoft.Resources/deployments",
-        "properties": {
-            "mode": "incremental",
-            "templateLink": {
-                "uri": "[variables('templatelink')]",
-                "contentVersion": "1.0.0.0"
-            },
-            "parameters": {
-                "StorageAccountName": {
-                    "value": "[parameters('storageAccountName')]"
-                }
-            }
-        }
-    }
-],
-```
-
-URI 将解析成名为 **existingStorageAccount.json** 或 **newStorageAccount.json** 的模板。 为这些 URI 创建模板。
-
-以下示例显示了 **existingStorageAccount.json** 模板。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountName": {
-      "type": "String"
-    }
-  },
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "storageAccountInfo": {
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')),providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]",
-      "type" : "object"
-    }
-  }
-}
-```
-
-下一个示例显示了 **newStorageAccount.json** 模板。 可以看到，与现有存储帐户模板一样，存储帐户对象已在输出中返回。 主控模板能够与任一链接模板配合运行。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountName": {
-      "type": "string"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[parameters('StorageAccountName')]",
-      "apiVersion": "2016-01-01",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {
-      }
-    }
-  ],
-  "outputs": {
-    "storageAccountInfo": {
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('StorageAccountName')),providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]",
-      "type" : "object"
-    }
-  }
-}
-```
-
 ## <a name="complete-example"></a>完整示例
 下面的示例模板显示了简化布置的链接模板以说明本文中的几个概念。 它假定模板已添加到公共访问权限已关闭的存储帐户中的同一个容器。 链接模板将一个值传递回 **outputs** 节中的主模板。
 
@@ -266,7 +156,7 @@ URI 将解析成名为 **existingStorageAccount.json** 或 **newStorageAccount.j
   },
   "resources": [
     {
-      "apiVersion": "2015-01-01",
+      "apiVersion": "2017-05-10",
       "name": "linkedTemplate",
       "type": "Microsoft.Resources/deployments",
       "properties": {

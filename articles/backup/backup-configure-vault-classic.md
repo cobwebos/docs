@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2017
 ms.author: markgal;trinadhk;
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: a7b55e3949cf8406f7c62e9dfd6cc1567d3a5996
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 52b7360230efd0a63e411339fe32f929a905391d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -33,7 +34,7 @@ ms.lasthandoff: 03/14/2017
 
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：Resource Manager 模型和经典模型。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：Resource Manager 模型和经典模型。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 >
 >
 
@@ -44,13 +45,11 @@ ms.lasthandoff: 03/14/2017
 若要从服务器或客户端备份文件和文件夹，你需要在要存储数据的地理区域内创建一个备份保管库。
 
 > [!IMPORTANT]
-> 从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。 现有备份保管库仍然受支持，并且可以[使用 Azure PowerShell 创建备份保管库](./backup-client-automation-classic.md#create-a-backup-vault)。 不过，Microsoft 建议你为所有部署创建恢复服务保管库，因为将来只会对恢复服务保管库进行增强。
+> 从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。 仍支持现有备份保管库，并且可以[使用 Azure PowerShell 创建备份保管库](./backup-client-automation-classic.md#create-a-backup-vault)。 不过，Microsoft 建议你为所有部署创建恢复服务保管库，因为将来只会对恢复服务保管库进行增强。
 
 
 ## <a name="download-the-vault-credential-file"></a>下载保管库凭据文件
 本地计算机需要先在备份保存库中通过身份验证才能将数据备份到 Azure。 身份验证是通过*保管库凭据*实现的。 从经典门户通过安全通道下载保管库凭据文件。 证书私钥不会在门户或服务中持久保存。
-
-详细了解[如何使用保管库凭据向备份服务进行身份验证](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file)。
 
 ### <a name="to-download-the-vault-credential-file-to-a-local-machine"></a>将保管库凭据文件下载到本地计算机
 1. 在左侧导航窗格中单击“**恢复服务**”，然后选择你创建的备份保管库。
@@ -116,7 +115,7 @@ ms.lasthandoff: 03/14/2017
 3. 在计划备份向导的“开始使用”页上，单击“**下一步**”。
 4. 在“选择要备份的项”页上，单击“**添加项**”。
 5. 选择要备份的文件和文件夹，然后单击“**确定**”。
-6. 单击“资源组名称” 的 Azure 数据工厂。
+6. 单击“下一步”。
 7. 在“**指定备份计划**”页上指定**备份计划**，然后单击“**下一步**”。
 
     可以计划每日（频率为一天最多三次）或每周备份。

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: fb2fe0efe00a7ef7fd1c22ca94c76b2d5f4c5510
-ms.openlocfilehash: 9366bce634fd3855080d267c797e2fecb8ab4ce9
-ms.lasthandoff: 02/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 71a839d9c076d33c404a56bf0544666dc86eaa4d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -30,14 +31,6 @@ ms.lasthandoff: 02/11/2017
 * 访问数据的用户列表。
 * 数据被访问的频率。
 * 在帐户中存储的数据量。
-
-## <a name="prerequisites"></a>先决条件
-
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-
-* **启用 Azure 订阅**进行 Data Lake Analytics 公共预览。 请参阅[说明](data-lake-analytics-get-started-portal.md)。
-
-* **Azure Data Lake Analytics 帐户**。 遵循[通过 Azure 门户实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)中的说明。
 
 ## <a name="enable-logging"></a>启用日志记录
 

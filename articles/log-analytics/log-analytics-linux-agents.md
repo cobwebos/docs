@@ -3,7 +3,7 @@ title: "将 Linux 计算机连接到 Azure Log Analytics | Microsoft 文档"
 description: "使用 Log Analytics，可以帮助收集和分析处理从 Linux 计算机生成的数据。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: ab5b76d8-9ab5-406e-8768-76fb0632d830
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
-ms.author: banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: b01b0d3d61168c1eec52f3fd040b829e0c51a878
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 10da54ebce28dfdcd0f793b1c717e738150b72ae
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -276,7 +277,7 @@ Rsyslog：/etc/rsyslog.d/rsyslog-oms.conf
 
 Syslog-ng：/etc/syslog-ng/syslog-ng.conf
 
-默认的 OMS 代理 syslog 配置从所有设施上载带有警告或更高严重性的 syslog 事件。
+默认的 OMS 代理 syslog 配置从所有设施上传带有警告或更高严重性的 syslog 事件。
 
 > [!NOTE]
 > 如果编辑 syslog 配置，必须重新启动 syslog 守护程序才能使更改生效。
@@ -653,7 +654,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * 使用正确的工作区 ID 和工作区密钥重新载入。 有关详细信息，请参阅[使用命令行载入](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)。
 
 ### <a name="a-500-error-or-404-error-appears-in-the-log-file-after-onboarding"></a>载入后在日志文件中显示 500 错误或 404 错误
-这是第一次将 Linux 数据上载到 OMS 工作区的过程中发生的已知问题。 这不会影响发送的数据或产生其他问题。 可以忽略最初载入时的错误。
+这是第一次将 Linux 数据上传到 OMS 工作区的过程中发生的已知问题。 这不会影响发送的数据或产生其他问题。 可以忽略最初载入时的错误。
 
 ### <a name="nagios-data-does-not-appear-in-the-oms-portal"></a>Nagios 数据未显示在 OMS 门户中
 #### <a name="probable-causes"></a>可能的原因
@@ -750,7 +751,7 @@ sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/oms
 ### <a name="azure-diagnostics"></a>Azure 诊断
 对于在 Azure 中运行的 Linux 虚拟机，可能需要附加步骤以允许由 Azure 诊断和 Operations Management Suite 收集数据。 为了与 OMS Agent for Linux 兼容，需要安装**版本 2.2** 的 Linux 诊断扩展。
 
-有关安装和配置 Linux 诊断扩展的详细信息，请参阅[使用 Azure CLI 命令启用 Linux 诊断扩展](../virtual-machines/linux/classic/diagnostic-extension.md#use-the-azure-cli-command-to-enable-the-linux-diagnostic-extension)。
+有关安装和配置 Linux 诊断扩展的详细信息，请参阅[使用 Azure CLI 命令启用 Linux 诊断扩展](../virtual-machines/linux/classic/diagnostic-extension-v2.md#use-the-azure-cli-command-to-enable-the-linux-diagnostic-extension)。
 
 **将 Linux 诊断扩展从 2.0 升级到 2.2 Azure CLI ASM：**
 

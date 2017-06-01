@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 05/20/2017
 ms.author: TomSh
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 931105183156efc958d4daef50a6858ea36ea3bb
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 616a29b3f7db817e63a3a3673b845cc86752af77
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/13/2017
 
 ## <a name="overview"></a>概述
 
-Azure 日志集成是一种免费的解决方案，可用于将原始日志从 Azure 资源集成到本地安全信息和事件管理 (SIEM) 系统。 
+Azure 日志集成是一种免费的解决方案，可用于将原始日志从 Azure 资源集成到本地安全信息和事件管理 (SIEM) 系统。
 
 Azure 日志集成从 Windows 事件查看器频道，以及来自 Azure 资源的 [Azure 活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)、[Azure 安全中心警报](../security-center/security-center-intro.md)和 [Azure 诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)收集 Windows 事件。 此集成帮助 SIEM 解决方案为本地或云中的所有资产提供统一的仪表板，以便你可以针对安全事件进行聚合、关联、分析和发出警报。
 
@@ -57,7 +58,7 @@ Azure 日志集成目前支持集成 Azure 活动日志、Azure 订阅中 Window
 >[!NOTE]
 虽然 Azure 日志集成解决方案免费，但由于日志文件信息存储，将会产生 Azure 存储费用。
 
-通过 [Azure 日志集成 MSDN 论坛](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)可以获得社区帮助。 在此论坛中，AzLog 社区可以对如何充分利用 Azure 日志集成相互提问和回答，并提供提示和技巧。 此外，Azure 日志集成团队也会关注此论坛，并尽可能地提供帮助。 
+通过 [Azure 日志集成 MSDN 论坛](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)可以获得社区帮助。 在此论坛中，AzLog 社区可以对如何充分利用 Azure 日志集成相互提问和回答，并提供提示和技巧。 此外，Azure 日志集成团队也会关注此论坛，并尽可能地提供帮助。
 
 你也可以打开[支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 若要执行此操作，请选择“日志集成”作为需要请求支持的服务。
 
