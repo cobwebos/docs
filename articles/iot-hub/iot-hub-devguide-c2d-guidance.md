@@ -12,11 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/09/2017
+ms.date: 05/25/2017
 ms.author: elioda
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 65a9815525c612bdfac569e5ec56a1db53d82c78
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/10/2017
 
 
@@ -50,7 +51,7 @@ IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-jobs]: iot-hub-devguide-jobs.md
-[lnk-c2d]: iot-hub-devguide-messaging.md#cloud-to-device-messages
+[lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-twin-properties]: iot-hub-node-node-twin-how-to-configure.md
