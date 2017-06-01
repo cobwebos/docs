@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: nepeters
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: c2a595f07a51223368f00d6a8bf905249a391342
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 48f428b89b298c75200db5553d40dea6f51d41f2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -108,7 +109,8 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 IIS 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 你可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页。 请务必使用前面记录的公共 IP 地址访问默认页面。 
 
 ![IIS 默认站点](./media/quick-create-powershell/default-iis-website.png) 
-## <a name="delete-virtual-machine"></a>删除虚拟机
+
+## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除。
 

@@ -9,9 +9,9 @@ NC 实例采用 NVIDIA 的 Tesla K80 卡。 通过将 CUDA 用于能源勘探应
 
 | 大小 | CPU 核心数 | 内存：GiB | 本地 SSD：GiB | GPU | 最大数据磁盘数 |
 | --- | --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |380 | 1 | 64 |
-| Standard_NV12 |12 |112 |680 | 2 | 64 |
-| Standard_NV24 |24 |224 |1440 | 4 | 64 |
+| Standard_NV6 |6 |56 |380 | 1 | 8 |
+| Standard_NV12 |12 |112 |680 | 2 | 16 |
+| Standard_NV24 |24 |224 |1440 | 4 | 32 |
 
 1 GPU = 半块 M60 卡。
 
@@ -19,10 +19,10 @@ NC 实例采用 NVIDIA 的 Tesla K80 卡。 通过将 CUDA 用于能源勘探应
 
 | 大小 | CPU 核心数 | 内存：GiB | 本地 SSD：GiB | GPU | 最大数据磁盘数 |
 | --- | --- | --- | --- | --- | --- |
-| Standard_NC6 |6 |56 | 380 | 1 | 12 |
-| Standard_NC12 |12 |112 | 680 | 2 | 24 |
-| Standard_NC24 |24 |224 | 1440 | 4 | 48 |
-| Standard_NC24r* |24 |224 | 1440 | 4 | 48 |
+| Standard_NC6 |6 |56 | 380 | 1 | 8 |
+| Standard_NC12 |12 |112 | 680 | 2 | 16 |
+| Standard_NC24 |24 |224 | 1440 | 4 | 32 |
+| Standard_NC24r* |24 |224 | 1440 | 4 | 32 |
 
 1 GPU = 半块 K80 卡。
 

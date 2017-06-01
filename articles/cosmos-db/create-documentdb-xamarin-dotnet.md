@@ -1,13 +1,13 @@
 ---
 title: "Azure Cosmos DB：构建使用 Xamarin 和 Facebook 身份验证的 Web 应用 | Microsoft Docs"
 description: "演示一个可以用来连接和查询 Azure Cosmos DB 的 .NET 代码示例"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 80aa96973799584118125829f9479fbd14431ac0
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: c8e2e688a7a8b99272c304df37ceff0f9ec52b19
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 
 Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
-本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户、文档数据库和集合。 然后，构建并部署一个基于 [DocumentDB .NET API](../documentdb/documentdb-sdk-dotnet.md)、[Xamarin](https://www.xamarin.com/) 和 Azure Cosmos DB 授权引擎的待办事项列表 Web 应用。 该待办事项列表 Web 应用实现基于用户的数据模式，使用户能够使用 Facebook 身份验证登录并管理其自己的待办事项。
+本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户、文档数据库和集合。 然后，构建并部署一个基于 [DocumentDB .NET API](documentdb-sdk-dotnet.md)、[Xamarin](https://www.xamarin.com/) 和 Azure Cosmos DB 授权引擎的待办事项列表 Web 应用。 该待办事项列表 Web 应用实现基于用户的数据模式，使用户能够使用 Facebook 身份验证登录并管理其自己的待办事项。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,11 +37,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
-[!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="add-a-collection"></a>添加集合
 
-[!INCLUDE [cosmosdb-create-collection](../../includes/cosmosdb-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -114,7 +114,7 @@ Xamarin 文件夹中的代码包含：
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -128,5 +128,5 @@ Xamarin 文件夹中的代码包含：
 本快速入门教程已介绍如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建集合，以及构建和部署控制台应用。 现在可将其他数据导入 Cosmos DB 帐户。 
 
 > [!div class="nextstepaction"]
-> [将数据导入 Azure Cosmos DB](../documentdb/documentdb-import-data.md)
+> [将数据导入 Azure Cosmos DB](import-data.md)
 
