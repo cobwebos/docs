@@ -12,7 +12,9 @@
 ## [创建 IoT 中心事件源](time-series-insights-how-to-add-an-event-source-iothub.md)
 ## [缩放环境](time-series-insights-how-to-scale-your-environment.md)
 ## [诊断并解决问题](time-series-insights-diagnose-and-solve-problems.md)
-## [使用 C# 查询数据](time-series-insights-query-data-csharp.md)
+## 开发
+### [身份验证和授权](time-series-insights-authentication-and-authorization.md)
+### [使用 C# 查询数据](time-series-insights-query-data-csharp.md)
 
 # 引用
 ## [查询 API](/rest/api/time-series-insights/time-series-insights-reference-queryapi)

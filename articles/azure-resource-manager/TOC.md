@@ -64,7 +64,6 @@
 #### [门户](resource-group-create-service-principal-portal.md)
 ### [用于访问订阅的身份验证 API](resource-manager-api-authentication.md)
 ### [锁定资源](resource-group-lock-resources.md)
-### [安全注意事项](best-practices-resource-manager-security.md)
 
 ## 设置资源策略
 ### [什么是资源策略？](resource-manager-policy.md)
