@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: juanpere
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 8990464037baca23882b14dfa8dc2009b0f41371
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 85f87cb0b7de40c9425d7f752f968a529ad555fa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -68,7 +68,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
 
 1. 在“解决方案资源管理器”中，右键单击“ScheduleJob”项目，然后单击“管理 NuGet 包...”。
-1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。**** 此步骤将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
+1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 此步骤将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
 
     ![“NuGet 包管理器”窗口][img-servicenuget]
 1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
@@ -236,7 +236,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请参阅[教程：如何更新固件][lnk-fwupdate]。
 
-若要继续完成 IoT 中心入门内容，请参阅 [IoT Edge 入门][lnk-gateway-SDK]。
+若要继续完成 IoT 中心入门内容，请参阅 [IoT Edge 入门][lnk-iot-edge]。
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-schedule-jobs/servicesdknuget.png
@@ -248,7 +248,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 [lnk-c2d-methods]: iot-hub-node-node-direct-methods.md
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-fwupdate]: iot-hub-node-node-firmware-update.md
-[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx

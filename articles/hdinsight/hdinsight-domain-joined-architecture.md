@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 69378496fb7e4176243d36950e7270809248d2bb
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: d365446b7eafd373b3d1bde2ed0a407f1e917b86
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -78,74 +79,6 @@ Azure AD 先决条件：
     - 在组织单位中创建服务主体对象和计算机对象的权限
     - 创建反向 DNS 代理规则的权限
     - 将计算机加入 Azure AD 域的权限。
-
-**通过 VPN 将 HDInsight 与本地 Active Directory 集成**
-
-此体系结构类似于将 HDInsight 与 Azure IaaS 上运行的 Azure AD 集成。 唯一区别是，Azure AD 位于本地，HDInsight 与 Active Directory 之间的通信是通过 [Azure 与本地网络之间的 VPN 连接](../expressroute/expressroute-introduction.md)进行的。
-
-![将 HDInsight 群集拓扑加入域](./media/hdinsight-domain-joined-architecture/hdinsight-domain-joined-architecture_3.png)
-
-> [!NOTE]
-> 在此体系结构中，不能将 Azure Data Lake Store 与 HDInsight 群集配合使用。
-
-Azure AD 先决条件：
-
-* 必须创建一个[组织单位](../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)用于放置 HDInsight 群集 VM 以及群集使用的服务主体。
-* 必须设置 [LDAPS](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)，以便能够与 Azure AD 通信。 用于设置 LDAPS 的证书必须是实际证书（不是自签名证书）。
-* 必须针对 HDInsight 子网的 IP 地址范围（例如上图中的 10.2.0.0/24）在域中创建反向 DNS 区域。
-* 需要一个服务帐户或用户帐户， 到时要使用该帐户创建 HDInsight 群集。 此帐户必须具有以下权限：
-
-    - 在组织单位中创建服务主体对象和计算机对象的权限
-    - 创建反向 DNS 代理规则的权限
-    - 将计算机加入 Azure AD 域的权限。
-
-**将 HDInsight 与同步到 Azure AD 的本地 Active Directory 集成**
-
-此体系结构类似于将 HDInsight 与仅限云的 Azure AD 集成。 唯一区别是，本地 Active Directory 已同步到 Azure AD。 请在云中配置一个域控制器，使 HDInsight 能够与 Azure AD 集成。 可以使用 [Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-overview.md)实现此目的。 Azure AD DS 在云中创建域控制器计算机并提供其 IP 地址。 它会创建两个域控制器，以确保高可用性。
-
-目前，Azure AD DS 只在经典虚拟网络中存在。 只能使用 Azure 经典门户来访问它。 HDInsight 虚拟网络在 Azure 门户中存在，需通过 VNet 到 VNet 对等互连来与经典虚拟网络实现建立对等互连。
-
-> [!NOTE]
-> 经典虚拟网络与 Azure Resource Manager 虚拟网络之间的对等互连需要两个虚拟网络位于同一区域且属于同一 Azure 订阅。
-
-![将 HDInsight 群集拓扑加入域](./media/hdinsight-domain-joined-architecture/hdinsight-domain-joined-architecture_2.png)
-
-Azure AD 先决条件：
-
-* 必须创建一个[组织单位](../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)用于放置 HDInsight 群集 VM 以及群集使用的服务主体。
-* 配置 Azure AD DS 时，必须设置 [LDAPS](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)。 用于设置 LDAPS 的证书必须是实际证书（不是自签名证书）。
-* 必须针对 HDInsight 子网的 IP 地址范围（例如上图中的 10.2.0.0/24）在域中创建反向 DNS 区域。
-* [密码哈希](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)必须从 Azure AD 同步到 Azure AD DS 。
-* 需要一个服务帐户或用户帐户， 到时要使用该帐户创建 HDInsight 群集。 此帐户必须具有以下权限：
-
-    - 在组织单位中创建服务主体对象和计算机对象的权限
-    - 创建反向 DNS 代理规则的权限
-    - 将计算机加入 Active Directory 域的权限
-
-**将 HDInsight 与非默认的 Azure AD 集成（建议仅用于测试和开发）**
-
-此体系结构类似于将 HDInsight 与仅限云的 Azure AD 集成。 在大多数公司中，只有特定的个人才有权对 Azure AD 进行管理访问。 因此，如果需要执行概念认证或者想要尝试创建加入域的群集，一种有利的做法是在订阅中创建 Azure AD 实例，而不必等待管理员在 Azure AD 中配置必备组件。 由于这是你创建的 Azure AD 实例，因此对 Azure AD 拥有完全权限，可以配置 Azure AD DS。
-
-Azure AD DS 在云中创建域控制器计算机并提供其 IP 地址。 它会创建两个域控制器，以确保高可用性。
-
-Azure AD DS 仅在经典虚拟网络中存在，因此你需要有权访问 Azure 经典门户，并且必须创建经典虚拟网络来配置 Azure AD DS。 HDInsight 虚拟网络在 Azure 门户中存在，需通过 VNet 到 VNet 对等互连来与经典虚拟网络实现建立对等互连。
-
-> [!NOTE]
-> 经典与 Azure Resource Manager 虚拟网络之间的对等互连需要两个虚拟网络位于同一区域且属于同一 Azure 订阅。
-
-![将 HDInsight 群集拓扑加入域](./media/hdinsight-domain-joined-architecture/hdinsight-domain-joined-architecture_2.png)
-
-Azure AD 先决条件：
-
-* 必须创建一个[组织单位](../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)用于放置 HDInsight 群集 VM 以及群集使用的服务主体。
-* 配置 Azure AD DS 时，必须设置 [LDAPS](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)。 可以创建[自签名证书](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)来配置 LDAPS。 但是，若要使用自签名证书，必须通过 <a href="mailto:hdipreview@microsoft.com">hdipreview@microsoft.com</a> 申请例外处理。
-* 必须针对 HDInsight 子网的 IP 地址范围（例如上图中的 10.2.0.0/24）在域中创建反向 DNS 区域。
-* [密码哈希](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)必须从 Azure AD 同步到 Azure AD DS 。
-* 需要一个服务帐户或用户帐户， 到时要使用该帐户创建 HDInsight 群集。 此帐户必须具有以下权限：
-
-    - 在组织单位中创建服务主体对象和计算机对象的权限
-    - 创建反向 DNS 代理规则的权限
-    - 将计算机加入 Azure Active Directory 域的权限
 
 ## <a name="next-steps"></a>后续步骤
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。

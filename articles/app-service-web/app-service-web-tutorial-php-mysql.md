@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/05/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ae0b63bc338cb3e96eae4593b96265aafbcbc029
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 3ad716fab4f5084c38c83f4bc90a616856666b38
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>在 Azure 中构建 PHP 和 MySQL Web 应用
@@ -328,18 +328,9 @@ git commit -m "keep sensitive data out of git"
 
 使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。 
 
-> [!NOTE] 
-> 应用服务计划表示用于托管应用的物理资源集合。 分配到应用服务计划的所有应用程序将共享该计划定义的资源，在托管多个应用时可以节省成本。 
-> 
-> 应用服务计划定义： 
-> 
-> * 区域（北欧、美国东部、东南亚） 
-> * 实例大小（小、中、大） 
-> * 规模计数（一个、两个、三个实例，等等） 
-> * SKU（免费、共享、基本、标准、高级） 
-> 
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-以下示例使用“免费”定价层创建名为 _myAppServicePlan_ 的应用服务计划：
+以下示例使用**免费**定价层创建名为 _myAppServicePlan_ 的应用服务计划：
 
 ```azurecli
 az appservice plan create \
@@ -368,7 +359,7 @@ az appservice plan create \
 
 ### <a name="create-a-web-app"></a>创建 Web 应用
 
-创建应用服务计划后，请在 _myAppServicePlan_ 应用服务计划中创建 Web 应用。 该 Web 应用提供托管空间用于部署代码，并提供一个 URL 用于查看已部署的应用程序。 使用 [az appservice web create](/cli/azure/appservice/web#create) 命令创建该 Web 应用。 
+现在已创建了应用服务计划，请在 _myAppServicePlan_ 应用服务计划中创建 Web 应用。 该 Web 应用提供托管空间用于部署代码，并提供一个 URL 用于查看已部署的应用程序。 使用 [az appservice web create](/cli/azure/appservice/web#create) 命令创建该 Web 应用。 
 
 在以下命令中，请将 _&lt;appname>_ 占位符替换为你自己的唯一应用名称。 该唯一名称用作 Web 应用的默认域名的一部分，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 稍后，可以先将任何自定义 DNS 条目映射到 Web 应用，然后向用户公开该条目。 
 
@@ -504,7 +495,7 @@ az appservice web deployment user set \
     --password <minimum-8-char-capital-lowercase-number>
 ```
 
-用户名必须唯一，密码必须是强密码。 如果出现 `'Conflict'. Details: 409` 错误，请更改用户名。 如果出现 `'Bad Request'. Details: 400` 错误，请使用更强的密码。
+用户名必须唯一，密码必须是强密码。 如果收到 `'Conflict'. Details: 409` 错误，请更改用户名。 如果收到 `'Bad Request'. Details: 400` 错误，请使用更强的密码。
 
 只需创建此部署用户一次；可对所有 Azure 部署使用此用户。
 
@@ -770,7 +761,7 @@ az appservice web log tail \
 
 ## <a name="clean-up-resources"></a>清理资源
  
-如果不需要将这些资源用于其他教程（请参阅[后续步骤](#next)），可通过运行以下命令将其删除： 
+如果不需要将这些资源用于其他教程（请参阅[后续步骤](#next)），则可通过运行以下命令将其删除： 
   
 ```azurecli 
 az group delete --name myResourceGroup 

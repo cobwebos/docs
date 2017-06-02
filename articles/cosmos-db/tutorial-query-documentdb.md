@@ -1,14 +1,14 @@
 ---
 title: "如何在 Azure Cosmos DB 中使用 SQL 进行查询？ | Microsoft 文档"
 description: "了解如何在 Azure Cosmos DB 中使用 SQL 通过 DocumentDB 数据进行查询"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 tags: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: tutorial-develop
 ms.devlang: na
 ms.topic: article
@@ -17,17 +17,17 @@ ms.workload:
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: dd34ff43e78175b0d6a6e38bbd1303070f6549ab
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: a2a562c06c6302b9548e758b4c6754ec13b6001d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
 
 # <a name="azure-cosmos-db-how-to-query-using-sql"></a>Azure Cosmos DB：如何使用 SQL 进行查询？
 
-Azure Cosmos DB [DocumentDB API](../documentdb/documentdb-introduction.md) 支持使用 SQL 查询文档。 本文提供一个示例文档和两个示例 SQL 查询和结果。
+Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) 支持使用 SQL 查询文档。 本文提供一个示例文档和两个示例 SQL 查询和结果。
 
 本文涵盖以下任务： 
 
@@ -68,10 +68,10 @@ Azure Cosmos DB [DocumentDB API](../documentdb/documentdb-introduction.md) 支�
 ```
 ## <a name="where-can-i-run-sql-queries"></a>可在何处运行 SQL 查询？
 
-通过 [REST API 和 SDK](../documentdb/documentdb-query-collections-query-explorer.md) 或[查询演练](https://www.documentdb.com/sql/demo)（它对现有示例数据集运行查询），可在 Azure 门户中使用数据资源管理器运行查询。
+通过 [REST API 和 SDK](documentdb-sdk-dotnet.md) 或[查询演练](https://www.documentdb.com/sql/demo)（它对现有示例数据集运行查询），可在 Azure 门户中使用数据资源管理器运行查询。
 
 有关 SQL 查询的详细信息，请参阅：
-* [SQL 查询和 SQL 语法](../documentdb/documentdb-sql-query.md)
+* [SQL 查询和 SQL 语法](documentdb-sql-query.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -89,23 +89,34 @@ Azure Cosmos DB [DocumentDB API](../documentdb/documentdb-introduction.md) 支�
 
 **结果**
 
-    [{
-        "id": "AndersenFamily",
-        "lastName": "Andersen",
-        "parents": [
-           { "firstName": "Thomas" },
-           { "firstName": "Mary Kay"}
-        ],
-        "children": [
-           {
-               "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
-               "pets": [{ "givenName": "Fluffy" }]
-           }
-        ],
-        "address": { "state": "WA", "county": "King", "city": "seattle" },
-        "creationDate": 1431620472,
-        "isRegistered": true
-    }]
+```json
+{
+  "id": "WakefieldFamily",
+  "parents": [
+      { "familyName": "Wakefield", "givenName": "Robin" },
+      { "familyName": "Miller", "givenName": "Ben" }
+  ],
+  "children": [
+      {
+        "familyName": "Merriam", 
+        "givenName": "Jesse", 
+        "gender": "female", "grade": 1,
+        "pets": [
+            { "givenName": "Goofy" },
+            { "givenName": "Shadow" }
+        ]
+      },
+      { 
+        "familyName": "Miller", 
+         "givenName": "Lisa", 
+         "gender": "female", 
+         "grade": 8 }
+  ],
+  "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
+  "creationDate": 1431620462,
+  "isRegistered": false
+}
+```
 
 ## <a name="example-query-2"></a>示例查询 2
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 92de31c7bdb475b8d00551384842b0c5aa3fb4e0
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: c89a2ab4c39978771c940a819493b4e2283d5f9f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -29,7 +29,8 @@ ms.lasthandoff: 05/09/2017
 > [!div class="op_single_selector"]
 > - [Azure 门户](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
 网络安全组流日志是网络观察程序的一项功能，可用于查看有关通过网络安全组的入口和出口 IP 流量的信息。 这些流日志以 json 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。

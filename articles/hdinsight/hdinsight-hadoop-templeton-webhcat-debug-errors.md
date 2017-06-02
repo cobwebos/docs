@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/04/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: e322547872b9b8f9604053d6d05408b2369750d0
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 140d061fefbd9b8cd1b45061bf4dee607f2df44b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/12/2017
 * 对于 **Linux** 群集：使用 Ambari（Web 或 REST API）修改值。 有关详细信息，请参阅[使用 Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅[弃用 HDInsight 版本 3.2 和 3.3](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 ### <a name="default-configuration"></a>默认配置
 

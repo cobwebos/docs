@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 488b16623300d80a53a61badee420de106c418b0
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: c7fb1c796556baf09a34c4bc6ed71964071d5874
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -42,9 +43,6 @@ ms.lasthandoff: 03/25/2017
 * 可缩放链接到云服务的资源。 有关链接资源的更多信息，请参阅[如何：将资源链接到云服务](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service)。
 
 * 若要使应用程序具有高可用性，应确保为其部署两个或更多角色实例。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
-
-> [!WARNING]
-> 自动缩放仅适用于经典 Azure 存储帐户， 而不适用于 Azure Resource Manager 存储帐户。
 
 ## <a name="schedule-scaling"></a>计划缩放
 默认情况下，并非所有角色都遵循某一特定计划。 因此，所更改的任意设置都将应用到全年中的所有时间和日期。 如果需要，可针对以下模式之一设置手动或自动缩放：

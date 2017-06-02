@@ -17,8 +17,8 @@ ms.workload: big-data
 ms.date: 05/17/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 997c8623b9bc99074723f77237fbbbdba031d577
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 85d241d7c81d1c40abb6f98b84983aca8240463d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 05/18/2017
 Azure REST API 允许你对托管在 Azure 平台中的服务执行管理操作，包括创建新资源（例如 HDInsight 群集）。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 3.3 弃用](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 > [!NOTE]
 > 本文档中的步骤使用 [curl (https://curl.haxx.se/)](https://curl.haxx.se/) 实用工具与 Azure REST API 进行通信。

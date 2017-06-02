@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 741e67d1419eb54e0ca1913dd0d4fb5e56895bbd
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 9035dd639433f1edc628db85f1663add4abfdbd3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/18/2017
 了解如何使用脚本操作在 Azure HDInsight 上安装 Solr。 Solr 是一种功能强大的搜索平台，提供了企业级搜索功能，用于搜索由 Hadoop 管理的数据。
 
 > [!IMPORTANT]
-    > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
+    > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 > [!IMPORTANT]
 > 此文档中使用的示例脚本通过特定配置创建 Solr 群集。 如果要使用不同集合、分片、架构、副本等配置 Solr 群集，必须修改脚本和 Solr 二进制文件。

@@ -15,28 +15,16 @@ ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ef0e64cc7b52a67c8e9e735cb6aa4a378b9a8557
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: def3feb2760c0ec2bb9ff39c6ef8a85bb142a0a7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
 # <a name="get-started-with-device-management-netnode"></a>设备管理入门 (.NET/Node)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
-## <a name="introduction"></a>介绍
-后端应用可以使用 Azure IoT 中心的基元（即设备孪生和直接方法）远程启动和监视设备上的设备管理操作。  此文章提供有关后端应用和设备如何使用 IoT 中心协同工作来启动和监视远程设备重新启动的指导和代码。
-
-若要从基于云的后端应用启动和监视设备上的设备管理操作，请使用 IoT 中心基元（如[设备克隆][lnk-devtwin]和[直接方法][lnk-c2dmethod]）。 本教程说明后端应用和设备如何协同工作，实现从 IoT 中心启动和监视远程设备重新启动。
-
-使用直接方法可从云中的后端应用启动设备管理操作，例如重新启动、恢复出厂设置以及固件更新。 设备负责以下操作：
-
-* 处理从 IoT 中心发送的方法请求。
-* 在设备上启动相应的设备特定操作。
-* 通过向 IoT 中心报告的属性，提供状态更新。
-
-可以使用云中的后端应用运行设备克隆查询，以报告设备管理操作的进度。
 
 本教程演示如何：
 
@@ -68,7 +56,7 @@ ms.lasthandoff: 05/10/2017
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
 
 2. 在“解决方案资源管理器”中，右键单击“TriggerReboot”项目，然后单击“管理 NuGet 包”。
-3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。**** 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
 
     ![“NuGet 包管理器”窗口][img-servicenuget]
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
@@ -213,26 +201,11 @@ ms.lasthandoff: 05/10/2017
     ```
     node dmpatterns_getstarted_device.js
     ```
-2. 运行 C# 控制台应用 **TriggerReboot**。 右键单击“TriggerReboot”项目，选择“调试”，然后选择“启动新实例”。****
+2. 运行 C# 控制台应用 **TriggerReboot**。 右键单击“TriggerReboot”项目，选择“调试”，然后选择“启动新实例”。
 
 3. 可在控制台查看对直接方法的设备响应。
 
-## <a name="customize-and-extend-the-device-management-actions"></a>自定义和扩展设备管理操作
-IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设备孪生和云到设备方法基元启用自定义模式。 设备管理操作的其他示例包括恢复出厂设置、固件更新、软件更新、电源管理、网络和连接管理以及数据加密。
-
-## <a name="device-maintenance-windows"></a>设备维护时段
-通常情况下，将设备配置为在某一时间执行操作，以最大程度减少中断和停机时间。  设备维护时段是一种常用模式，用于定义设备应更新其配置的时间。 后端解决方案使用设备克隆所需属性在设备上定义并激活策略，以启用维护时段。 当设备收到维护时段策略时，它可以使用设备克隆报告属性报告策略状态。 然后，后端应用可以使用设备克隆查询来证明设备和每个策略的符合性。
-
-## <a name="next-steps"></a>后续步骤
-在本教程中，将使用直接方法触发设备上的远程重新启动。 使用报告属性报告设备上次重新启动时间，并查询设备孪生从云中发现设备上次重新启动时间。
-
-若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请参阅：
-
-[教程：如何进行固件更新][lnk-fwupdate]
-
-若要了解如何扩展 IoT 解决方案以及在多个设备上计划方法调用，请参阅[计划和广播作业][lnk-tutorial-jobs]教程。
-
-若要继续完成 IoT 中心入门内容，请参阅 [IoT Edge 入门][lnk-gateway-SDK]。
+[!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 
 <!-- images and links -->
 [img-output]: media/iot-hub-get-started-with-dm/image6.png
@@ -243,12 +216,9 @@ IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设�
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-fwupdate]: iot-hub-node-node-firmware-update.md
 [Azure portal]: https://portal.azure.com/
 [Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-[lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
-[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

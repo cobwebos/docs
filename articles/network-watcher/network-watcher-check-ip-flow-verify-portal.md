@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 1aa8fff31d8d1908b1ea93cb970487d08ea4adf6
-ms.openlocfilehash: ddd6fcc8de133a5ff5f427d070c6c6ec207d9236
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 7db29c186cf6e6f3b40a680ab76f1d2763f806ba
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -26,14 +27,16 @@ ms.lasthandoff: 03/31/2017
 > [!div class="op_single_selector"]
 > - [Azure 门户](network-watcher-check-ip-flow-verify-portal.md)
 > - [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
-> - [CLI](network-watcher-check-ip-flow-verify-cli.md)
+> - [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-check-ip-flow-verify-cli.md)
 > - [Azure REST API](network-watcher-check-ip-flow-verify-rest.md)
+
 
 “IP 流验证”是网络观察程序的一项功能，用于验证是否允许流量进出虚拟机。 可以针对传入或传出流量运行验证。 此方案对于获取虚拟机是否可以与外部资源或其他资源通信的当前状态很有用。 可以使用“IP 流验证”功能验证网络安全组 (NSG) 规则是否正确配置，以及对 NSG 规则所阻止的流进行故障排除。 使用“IP 流验证”功能的另一个原因是确保要阻止的流量已由 NSG 正确阻止。
 
 ## <a name="before-you-begin"></a>开始之前
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序，或者已有网络观察程序的现有实例。 此方案还假定要使用的是存在有效虚拟机的资源组。
+此方案假定用户已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序，或者已经有网络观察程序的实例。 此方案还假定要使用的包含有效虚拟机的资源组已存在。
 
 ## <a name="scenario"></a>方案
 
@@ -58,7 +61,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-如果流量被阻止且不应被阻止，请参阅[管理网络安全组](../virtual-network/virtual-network-manage-nsg-arm-portal.md)找到定义的网络安全组和安全规则。
+如果流量不应被阻止但却被阻止，请参阅[管理网络安全组](../virtual-network/virtual-network-manage-nsg-arm-portal.md)，查找已定义的网络安全组和安全规则。
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: fa79ab0ab80481c8969c6fa653e92b10985cab3b
-ms.openlocfilehash: 44a59a43745494eb943711a5afcb6e436a25a44d
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 363fdd9f1de933bb4050f91e1e111aaf3e419058
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -25,7 +26,8 @@ ms.lasthandoff: 03/31/2017
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
-> - [CLI](network-watcher-security-group-view-cli.md)
+> - [CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 安全组视图返回已应用于虚拟机的已配置的有效网络安全规则。 此功能可用于审核和诊断已在 VM 上配置以确保正确允许或拒绝流量的网络安全组和规则。 在本文中，我们将说明如何使用 PowerShell 检索虚拟机的已配置的有效安全规则

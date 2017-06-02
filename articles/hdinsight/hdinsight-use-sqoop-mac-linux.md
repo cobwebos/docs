@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: a1e46f8cdcbb4dbb0f3bd64d677cd06a2e31d884
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 8d71c1d870083365a1c106507ceb5f2661ee4ac6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/16/2017
 了解如何使用 Apache Sqoop 在 Azure HDInsight 中的 Hadoop 群集与 Azure SQL 数据库或 Microsoft SQL Server 数据库之间进行导入和导出。 本文档中的步骤直接从 Hadoop 群集的头节点使用 `sqoop` 命令。 可以使用 SSH 连接到头节点并运行本文档中的命令。
 
 > [!IMPORTANT]
-> 本文档中的步骤仅适用于使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
+> 本文档中的步骤仅适用于使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 ## <a name="install-freetds"></a>安装 FreeTDS
 

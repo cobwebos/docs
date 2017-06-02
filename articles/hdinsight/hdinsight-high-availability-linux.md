@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 8e2c1ccb003adafeaf315b23171f49d5b3f50cdb
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 7ad2a150cd4a7223b6eababb8519140ba856cd6e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -32,7 +32,7 @@ HDInsight 群集提供两个头节点，提升 Hadoop 服务和作业运行的�
 Hadoop 通过将服务和数据复制到群集的多个节点中来实现高可用性和可靠性。 不过，Hadoop 的标准分发功能通常只能有一个头节点。 单个头节点发生任何中断都可能导致群集停止工作。 HDInsight 提供了两个头节点来提高 Hadoop 的可靠性和可用性。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 ## <a name="availability-and-reliability-of-nodes"></a>节点的可用性和可靠性
 
@@ -195,7 +195,7 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 与使用 SSH 客户端一样，在连接到群集时，必须提供 SSH 用户帐户名和群集的 SSH 地址。 例如，`sftp username@mycluster-ssh.azurehdinsight.net`。 在出现提示时，提供帐户密码或使用 `-i` 参数提供公钥。
 
-建立连接后，会出现 `sftp>` 提示符。 在此提示符下，可以更改目录以及上载和下载文件。 例如：以下命令将目录切换到 **/var/log/hadoop/hdfs** 目录，然后下载该目录中的所有文件。
+建立连接后，会出现 `sftp>` 提示符。 在此提示符下，可以更改目录以及上传和下载文件。 例如：以下命令将目录切换到 **/var/log/hadoop/hdfs** 目录，然后下载该目录中的所有文件。
 
     cd /var/log/hadoop/hdfs
     get *

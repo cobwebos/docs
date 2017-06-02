@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 05/18/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: d41fb4a9566db2e10b11129ab402f5c303b79344
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 9a36d686ba39b5168860a20e8c4db357888df6a7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -125,7 +125,7 @@ ms.lasthandoff: 05/13/2017
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
      
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [SAML SSO for Confluence by resolution GmbH 客户支持团队](mailto:c.eitel@resolution.de)。 
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [SAML SSO for Confluence by resolution GmbH 客户支持团队](https://www.resolution.de/go/support)。 
 
 5. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
 
@@ -290,7 +290,7 @@ ms.lasthandoff: 05/13/2017
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“SAML SSO for Confluence by resolution GmbH”磁贴就会自动登录到 SAML SSO for Confluence by resolution GmbH 应用程序。
-有关访问面板的详细信息，请参阅 [introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -15,10 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: d8acfd6e0206e8e97b7d49e280a7e72e0acadb6d
-ms.openlocfilehash: 9ce5278e66afb81c5cbfe3662c6654d39bbc9a54
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: a5bc3a72eccc48ec26ef5f029d780175d66080c0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
@@ -74,7 +75,7 @@ ms.lasthandoff: 03/01/2017
 * 主机系统能够将以下资源专用于预配虚拟阵列：
   
   * 至少 4 个核心。
-  * 至少 8 GB 的 RAM。 如果打算将虚拟阵列配置为文件服务器，8 GB 支持 200 万个文件。 需要 16 GB 的 RAM 才能支持 200-400 万个计划文件。
+  * 至少 8 GB 的 RAM。 如果打算将虚拟阵列配置为文件服务器，8 GB 支持 200 万个文件。 需要 16 GB 的 RAM 才能支持 200-400 万个文件。
   * 一个网络接口。
   * 一个 500 GB 的用于系统数据的虚拟磁盘。
 

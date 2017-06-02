@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: a33a2b64bba917f186437f071cb0ee2326154879
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: ce96113ad979997c555bc64698c0b78822b525ad
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 05/04/2017
 * 基于 Linux 的 HDInsight 上的 Hadoop 群集
 
   > [!IMPORTANT]
-  > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
+  > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 * 文本编辑器
 
@@ -133,146 +133,11 @@ Python 可以使用 `sys` 模块从 STDIN 读取数据，并使用 `print` 输�
 
 若要确保文件具有适当的行尾，请使用以下 PowerShell 脚本：
 
-```powershell
-# Set $original_file to the Python file name
-$text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
-[IO.File]::WriteAllText($original_file, $text)
-```
+[!code-powershell[main](../../powershell_scripts/hdinsight/streaming-python/streaming-python.ps1?range=138-140)]
 
 使用以下 PowerShell 脚本上传文件、运行作业以及查看输出：
 
-```powershell
-# Login to your Azure subscription
-# Is there an active Azure subscription?
-$sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
-if(-not($sub))
-{
-    Add-AzureRmAccount
-}
-
-# Get cluster info
-$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-# Get the login (HTTPS) credentials for the cluster
-$creds=Get-Credential -Message "Enter the login for the cluster" -UserName "admin"
-$clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-$storageInfo = $clusterInfo.DefaultStorageAccount.split('.')
-$defaultStoreageType = $storageInfo[1]
-$defaultStorageName = $storageInfo[0]
-
-# Progress indicator
-$activity="Python MapReduce"
-Write-Progress -Activity $activity -Status "Uploading mapper and reducer..."
-
-# Upload the files
-switch ($defaultStoreageType)
-{
-    "blob" {
-        # Get the blob storage information for the cluster
-        $resourceGroup = $clusterInfo.ResourceGroup
-        $storageContainer=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=(Get-AzureRmStorageAccountKey `
-            -Name $defaultStorageName `
-            -ResourceGroupName $resourceGroup)[0].Value
-        # Create a storage context and upload the file
-        $context = New-AzureStorageContext `
-            -StorageAccountName $defaultStorageName `
-            -StorageAccountKey $storageAccountKey
-        # Upload the mapper.py file
-        Set-AzureStorageBlobContent `
-            -File .\mapper.py `
-            -Blob "mapper.py" `
-            -Container $storageContainer `
-            -Context $context
-        # Upload the reducer.py file
-        Set-AzureStorageBlobContent `
-            -File .\reducer.py `
-            -Blob "reducer.py" `
-            -Container $storageContainer `
-            -Context $context `
-    }
-    "azuredatalakestore" {
-        # Get the Data Lake Store name
-        # Get the root of the HDInsight cluster azuredatalakestore
-        $clusterRoot=$clusterInfo.DefaultStorageRootPath
-        # Upload the files. Prepend the destination with the cluster root
-        Import-AzureRmDataLakeStoreItem -AccountName $defaultStorageName `
-            -Path .\mapper.py `
-            -Destination "$clusterRoot/mapper.py" `
-            -Force
-        Import-AzureRmDataLakeStoreItem -AccountName $defaultStorageName `
-            -Path .\reducer.py `
-            -Destination "$clusterRoot/reducer.py" `
-            -Force
-    }
-    default {
-        Throw "Unknown storage type: $defaultStoreageType"
-    }
-}
-
-# Create the streaming job definition
-# Note: This assumes that the mapper.py and reducer.py
-#       are in the root of default storage. If you put them in a
-#       subdirectory, change the -Files parameter to the correct path.
-$jobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
-    -Files "/mapper.py", "/reducer.py" `
-    -Mapper "mapper.py" `
-    -Reducer "reducer.py" `
-    -InputPath "/example/data/gutenberg/davinci.txt" `
-    -OutputPath "/example/wordcountout"
-
-# Start the job
-Write-Progress -Activity $activity -Status "Starting the MapReduce job..."
-$job = Start-AzureRmHDInsightJob `
-    -ClusterName $clusterName `
-    -JobDefinition $jobDefinition `
-    -HttpCredential $creds
-
-# Wait for the job to complete
-Write-Progress -Activity $activity -Status "Waiting for the job to complete..."
-Wait-AzureRmHDInsightJob `
-    -JobId $job.JobId `
-    -ClusterName $clusterName `
-    -HttpCredential $creds
-
-# Display the results of the job
-Write-Progress -Activity $activity -Status "Downloading job output..."
-switch ($defaultStoreageType)
-{
-    "blob" {
-        # Get the blob storage information for the cluster
-        $resourceGroup = $clusterInfo.ResourceGroup
-        $storageContainer=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=(Get-AzureRmStorageAccountKey `
-            -Name $defaultStorageName `
-            -ResourceGroupName $resourceGroup)[0].Value
-        # Create a storage context and download the file
-        $context = New-AzureStorageContext `
-            -StorageAccountName $defaultStorageName `
-            -StorageAccountKey $storageAccountKey
-        # Download the file
-        Get-AzureStorageBlobContent `
-            -Container $storageContainer `
-            -Blob "example/wordcountout/part-00000" `
-            -Context $context `
-            -Destination "./output.txt"
-        # Display the output
-        Get-Content "./output.txt"
-    }
-    "azuredatalakestore" {
-        # Get the Data Lake Store name
-        # Get the root of the HDInsight cluster azuredatalakestore
-        $clusterRoot=$clusterInfo.DefaultStorageRootPath
-        # Download the file. Prepend the destination with the cluster root
-        # NOTE: Unlike getting a blob, this just gets the content and no
-        #       file is created locally.
-        $sourcePath=$clusterRoot + "example/wordcountout/part-00000"
-        Get-AzureRmDataLakeStoreItemContent -Account $defaultStorageName -Path $sourcePath -Confirm
-    }
-    default {
-        Throw "Unknown storage type: $defaultStoreageType"
-    }
-}
-```
+[!code-powershell[main](../../powershell_scripts/hdinsight/streaming-python/streaming-python.ps1?range=5-134)]
 
 ## <a name="run-from-an-ssh-session"></a>从 SSH 会话运行
 

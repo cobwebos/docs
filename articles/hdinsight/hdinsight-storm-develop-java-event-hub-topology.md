@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/03/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: e650731c3186b47adeb0e799a852961c30338550
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: ec20115e8316b96d740e1966494096964ec884b1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -33,7 +34,7 @@ Azure 事件中心可让你处理网站、应用程序和设备中的大量数�
 * Apache Storm on HDInsight 3.5 版群集。 有关详细信息，请参阅 [Storm on HDInsight 群集入门](hdinsight-apache-storm-tutorial-get-started-linux.md)。
 
     > [!IMPORTANT]
-    > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅[弃用 HDInsight 3.3 和 3.4](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
+    > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 * [Azure 事件中心](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)。
 
@@ -124,7 +125,7 @@ HDInsight 基于 Hortonworks Data Platform。 为了确保项目与配合 HDInsi
 
 #### <a name="the-hdfsbolt-and-wasb-components"></a>HdfsBolt 和 WASB 组件
 
-HdfsBolt 一般用于将数据存储到 Hadoop 分布式文件系统 (HDFS)。 但是，HDInsight 群集使用 Azure 存储空间 (WASB) 作为默认的数据存储区，因此我们必须加载多个组件，使 HdfsBolt 识别 WASB 文件系统。
+HdfsBolt 一般用于将数据存储到 Hadoop 分布式文件系统 (HDFS)。 但是，HDInsight 群集使用 Azure 存储 (WASB) 作为默认的数据存储区，因此我们必须加载多个组件，使 HdfsBolt 识别 WASB 文件系统。
 
 ```xml
 <!--HdfsBolt stuff -->
@@ -242,6 +243,7 @@ HdfsBolt 一般用于将数据存储到 Hadoop 分布式文件系统 (HDFS)。 �
     <includePluginDependencies>false</includePluginDependencies>
     <classpathScope>compile</classpathScope>
     <mainClass>${storm.topology}</mainClass>
+    <cleanupDaemonThreads>false</cleanupDaemonThreads>
     </configuration>
 </plugin>
 ```

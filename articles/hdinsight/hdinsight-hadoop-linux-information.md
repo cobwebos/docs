@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 89c3eb1c501f455cfa154014665fef25af346873
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: f4ff9c9a76cb5e33c5474ce3b535c3e582dff890
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/25/2017
 Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运行的 Hadoop。 在大多数情况下，它的工作方式应该与其他任何 Hadoop-on-Linux 安装完全相同。 本文档指出了你应该注意的具体差异。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -108,7 +109,7 @@ Hadoop 相关文件可在群集节点上的 `/usr/hdp` 中找到。 此目录包
 HDInsight 使用 Azure 存储中的 Blob 或 Azure Data Lake Store 作为默认存储。 这些服务提供以下优势：
 
 * 成本低廉的长期存储
-* 可从外部服务访问，例如网站、文件上载/下载实用程序、各种语言 SDK 和 Web 浏览器
+* 可从外部服务访问，例如网站、文件上传/下载实用程序、各种语言 SDK 和 Web 浏览器
 
 > [!WARNING]
 > HDInsight 仅支持通用 Azure 存储帐户。 它当前不支持 __Blob 存储__帐户类型。

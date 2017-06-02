@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: a71b3f455c2e84cd6aa4401621a24d5585e0da3c
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 3a401be134d034ee6ed4c88df4ed728b727894c0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -31,38 +31,13 @@ ms.lasthandoff: 04/28/2017
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="create-a-ruby-application"></a>创建 Ruby 应用程序
-有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)。
-
-## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
-若要使用服务总线，请下载并使用 Azure Ruby 包，其中包括一组便于与存储 REST 服务进行通信的库。
-
-### <a name="use-rubygems-to-obtain-the-package"></a>使用 RubyGems 获取该程序包
-1. 使用命令行接口，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
-2. 在命令窗口中键入“gem install azure”以安装 gem 和依赖项。
-
-### <a name="import-the-package"></a>导入包
-使用常用的文本编辑器将以下内容添加到你要在其中使用存储的 Ruby 文件的顶部：
-
-```ruby
-require "azure"
-```
-
-## <a name="set-up-a-service-bus-connection"></a>设置服务总线连接
-Azure 模块将读取环境变量 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_SERVICEBUS\_ACCESS\_KEY** 以获取连接到命名空间所需的信息。 如果未设置这些环境变量，则在使用 **Azure::ServiceBusService** 之前必须通过以下代码指定命名空间信息：
-
-```ruby
-Azure.config.sb_namespace = "<your azure service bus namespace>"
-Azure.config.sb_access_key = "<your azure service bus access key>"
-```
-
-将命名空间值设置为你创建的值，而不是整个 URL 的值。 例如，使用 **"yourexamplenamespace"**，而不是 "yourexamplenamespace.servicebus.windows.net"。
+[!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="create-a-topic"></a>创建主题
 可以通过 **Azure::ServiceBusService** 对象处理主题。 以下代码将创建 **Azure::ServiceBusService** 对象。 若要创建主题，请使用 **create\_topic()** 方法。 以下示例创建一个主题或输出存在的错误。
 
 ```ruby
-azure_service_bus_service = Azure::ServiceBusService.new
+azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
 begin
   topic = azure_service_bus_service.create_queue("test-topic")
 rescue

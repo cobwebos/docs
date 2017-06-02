@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 02/05/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 0570e5eb36a5e7d85faf941e37c5fb5ee9970d80
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 7b0c48ae7dfc31a6693fb192e519c58aeb6217b6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/12/2017
 [Maven](http://maven.apache.org/) 是一种软件项目管理和综合工具，可用于为 Java 项目构建软件、文档和报告。 本文将介绍如何使用 Maven 创建基本 Java 应用程序，该应用程序可在 Azure HDInsight 群集中创建、查询和删除 HBase 表。
 
 > [!IMPORTANT]
-> 本文档中的步骤需要使用 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> 本文档中的步骤需要使用 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 ## <a name="requirements"></a>要求
 * [Java 平台 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 或更高版本
@@ -367,7 +368,7 @@ ms.lasthandoff: 04/12/2017
    > [!NOTE]
    > **hbaseapp-1.0-SNAPSHOT.jar** 文件是 uber jar（有时称为 fat jar），其中包含运行应用程序所需的所有依赖项。
 
-## <a name="upload-the-jar-file-and-start-a-job"></a>上载 JAR 文件并启动作业
+## <a name="upload-the-jar-file-and-start-a-job"></a>上传 JAR 文件并启动作业
 可使用多种方法将文件上传到 HDInsight 群集，如[在 HDInsight 中为 Hadoop 作业上传数据](hdinsight-upload-data.md)中所述。 以下步骤使用 Azure PowerShell。
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
