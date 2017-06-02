@@ -2,7 +2,6 @@
 ## [什么是 Data Lake Analytics？](data-lake-analytics-overview.md)
 
 # 入门
-## [交互式教程：分析网站日志](data-lake-analytics-use-interactive-tutorials.md)
 ## [Azure 门户](data-lake-analytics-get-started-portal.md)
 ## [PowerShell](data-lake-analytics-get-started-powershell.md)
 ## [.NET SDK](data-lake-analytics-get-started-net-sdk.md)
@@ -27,6 +26,8 @@
 
 ## 创建解决方案
 ### [分析网站日志](data-lake-analytics-analyze-weblogs.md)
+### [交互式教程：分析网站日志](data-lake-analytics-use-interactive-tutorials.md)
+
 
 ## 管理
 ### [Azure 门户](data-lake-analytics-manage-use-portal.md)

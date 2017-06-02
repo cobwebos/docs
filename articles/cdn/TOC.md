@@ -6,7 +6,7 @@
 
 # 如何
 ## 集成
-### [Web 应用](../app-service-web/cdn-websites-with-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+### [Web 应用](../app-service-web/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
 ### [云服务](cdn-cloud-service-with-cdn.md)
 ### [存储](cdn-create-a-storage-account-with-cdn.md)
 ### [跨域资源共享](cdn-cors.md)
