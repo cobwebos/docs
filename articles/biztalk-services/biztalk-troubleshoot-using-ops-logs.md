@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: c4a8ea0612ab4792f2fccb2295bdf365b742111d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c0c83361f94ffd9c30d7fcc551ff4b85ad7d6fa5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk 服务：利用操作日志进行故障排除
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 ## <a name="what-are-the-operation-logs"></a>什么是操作日志
 操作日志是 Azure 经典门户中提供的一项管理服务功能，可让你查看针对 Azure 服务（包括 BizTalk 服务）执行的操作的历史日志。 这允许查看与 BizTalk 服务订阅的管理操作相关的历史数据，时间可以追溯到 180 天前。
 
@@ -36,7 +41,7 @@ ms.openlocfilehash: c4a8ea0612ab4792f2fccb2295bdf365b742111d
 3. 选择复选标记可以查看筛选后的列表。 下图显示了与 testbiztalkservice 相关的活动： ![查看操作日志][ViewLogs] 
 4. 若要查看有关特定操作的详细信息，请选择相应的行，然后在底部的任务栏中单击“详细信息”。
 
-## <a name="a-namebizopsaoperations-tracked-using-azure-management-services"></a><a name="bizops"></a>使用 Azure 管理服务跟踪的操作
+## <a name="bizops"></a>使用 Azure 管理服务跟踪的操作
 下表列出了使用 Azure 管理服务跟踪的操作：
 
 | 操作名称 | 任务 |
@@ -58,7 +63,7 @@ ms.openlocfilehash: c4a8ea0612ab4792f2fccb2295bdf365b742111d
 | PurgeBackupBizTalkService |用于清除超过保留期的 BizTalk 服务备份的操作 |
 
 ## <a name="see-also"></a>另请参阅
-* [备份 BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=325584)
+* [Backup BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=325584)（备份 BizTalk 服务）
 * [从备份还原 BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=325582)
 * [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](http://go.microsoft.com/fwlink/p/?LinkID=302279)
 * [BizTalk 服务：使用 Azure 经典门户预配](http://go.microsoft.com/fwlink/p/?LinkID=302280)
@@ -69,10 +74,5 @@ ms.openlocfilehash: c4a8ea0612ab4792f2fccb2295bdf365b742111d
 * [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

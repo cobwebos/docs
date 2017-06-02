@@ -1,6 +1,6 @@
 ---
-title: "在 Azure App Service 中保护应用安全"
-description: "了解如何在 Azure App Service 中保护 Web 应用、移动应用后端或 API 应用。"
+title: "在 Azure 应用服务中保护应用安全"
+description: "了解如何在 Azure 应用服务中保护 Web 应用、移动应用后端或 API 应用。"
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,17 +14,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: eaf3df69428124127ef3daf134bc948cd0988ec6
-ms.openlocfilehash: c1956e97444077f197ab5d0fd67097ddea0f7244
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 3071bf565b14966de2293205026c4524d7b0f0c5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
-# <a name="secure-an-app-in-azure-app-service"></a>在 Azure App Service 中保护应用安全
-本文介绍如何在 Azure App Service 中保护 Web 应用、移动应用后端或 API 应用。 
+# <a name="secure-an-app-in-azure-app-service"></a>在 Azure 应用服务中保护应用安全
+本文介绍如何在 Azure 应用服务中保护 Web 应用、移动应用后端或 API 应用。 
 
-Azure App Service 中的安全性有两个级别： 
+Azure 应用服务中的安全性有两个级别： 
 
 * **基础结构和平台安全性** - 相信 Azure 能为你提供所需的服务以实际在云中安全地运行任务。
 * **应用程序安全性** - 需要安全地设计应用本身。 这包括如何与 Azure Active Directory 集成、如何管理证书，以及如何确保你可以安全地与不同服务通信。 
@@ -56,7 +57,7 @@ Azure 负责保护运行应用程序的基础结构和平台，而你负责保�
 如果想要执行自己的渗透测试，或者想要使用其他扫描程序套件或提供程序，则必须按照 [Azure 渗透测试审批流程](https://security-forms.azure.com/penetration-testing/terms)来进行并获得事先批准才能执行所需的渗透测试。
 
 ## <a name="https"></a>保护与客户的通信
-如果使用为应用服务应用创建的 **\*.azurewebsites.net** 域名，则可以立即使用 HTTPS，因为 SSL 证书是针对所有 **\*.azurewebsites.net** 域名提供的。 如果你的网站使用[自定义域名](web-sites-custom-domain-name.md)，则可以上载 SSL 证书，为自定义域[启用 HTTPS](web-sites-configure-ssl-certificate.md)。
+如果使用为应用服务应用创建的 **\*.azurewebsites.net** 域名，则可以立即使用 HTTPS，因为 SSL 证书是针对所有 **\*.azurewebsites.net** 域名提供的。 如果你的网站使用[自定义域名](app-service-web-tutorial-custom-domain.md)，则可以上传 SSL 证书，为自定义域[启用 HTTPS](app-service-web-tutorial-custom-ssl.md)。
 
 启用 [HTTPS](https://en.wikipedia.org/wiki/HTTPS) 可帮助防范对应用与其用户之间的通信进行的 MITM 攻击。
 
@@ -89,7 +90,7 @@ Azure 负责保护运行应用程序的基础结构和平台，而你负责保�
 在应用服务中存储配置信息使应用管理员可以锁定生产应用的敏感信息。 开发人员可以针对应用开发使用单独的一组配置设置，并且这些设置可以自动由应用服务中配置的设置所取代。 甚至开发人员也无需知道为生产应用配置的机密。 有关在应用服务中配置应用设置和连接字符串的详细信息，请参阅[配置 Web 应用](web-sites-configure.md)。
 
 ### <a name="ftps"></a>FTPS
-Azure App Service 通过 **FTPS** 提供对应用文件系统的安全 FTP 访问。 这样一来，您可以安全地访问 Web 应用上的应用程序代码以及诊断日志。 建议你始终使用 FTPS 而不是 FTP。 
+Azure 应用服务通过 **FTPS** 提供对应用文件系统的安全 FTP 访问。 这样一来，您可以安全地访问 Web 应用上的应用程序代码以及诊断日志。 建议你始终使用 FTPS 而不是 FTP。 
 
 按照以下步骤操作，可以找到你的应用的 FTPS 链接：
 
@@ -111,11 +112,11 @@ Azure App Service 通过 **FTPS** 提供对应用文件系统的安全 FTP 访�
 有关应用服务应用的日志记录信息（可能在检测攻击时很有用），请参阅[启用诊断日志记录](web-sites-enable-diagnostic-log.md)。
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://azure.microsoft.com/try/app-service/)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
 ## <a name="whats-changed"></a>发生的更改
-* 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 有关从网站更改为 应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 

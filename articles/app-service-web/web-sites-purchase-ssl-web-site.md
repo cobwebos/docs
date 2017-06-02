@@ -15,13 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo;aelnably
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: c4e7ee86ad9dc7a51fff9e948757faaf5ca9b9c4
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: fb38555f1f299352f06deae1ca231895163068e5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 ---
-# <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure App Service 购买和配置 SSL 证书
+# <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
 在本教程中，将保护 Web 应用的安全，方式是为 **[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)**购买 SSL 证书、将其安全存储在 [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) 中并与自定义域进行关联。
 
@@ -91,7 +92,7 @@ SSL 证书购买过程完成之后，需要打开“[应用服务证书](https:/
 ## <a name="step-5---assign-certificate-to-app-service-app"></a>步骤 5 - 将证书分配到应用服务应用
 
 > [!NOTE]
-> 在执行本部分中的这些步骤之前，必须将某个自定义域名与你的应用相关联。 有关详细信息，请参阅 **[为 Web 应用配置自定义域名](web-sites-custom-domain-name.md)**。
+> 在执行本部分中的这些步骤之前，必须将某个自定义域名与你的应用相关联。 有关详细信息，请参阅 **[为 Web 应用配置自定义域名](app-service-web-tutorial-custom-domain.md)**。
 >
 
 在 [Azure 门户](https://portal.azure.com/)中，单击页面左侧的“应用服务”选项。

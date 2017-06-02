@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 19d8d860e39139d3003c216659b7203e2482154e
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: b961254274409215d79b5cb2c9ee230a97b42769
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -45,10 +48,5 @@ ms.openlocfilehash: 19d8d860e39139d3003c216659b7203e2482154e
 如果禁用 Live SDK 支持，将确保系统只会将应用程序密码写入 Azure AD 数据存储。  Azure AD 数据存储包含企业级法规，使其遵守特定的标准，例如遵守 FISMA。  如果启用 Live SDK 支持，应用程序可能不会遵守其中某些标准。
 
 如果你只打算使用 Azure AD v2.0 终结点，则可以安全地禁用 Live SDK 支持。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

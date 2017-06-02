@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: beverst
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 554843c5f3161a45ff984b000944f546b44dd472
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: ca086f76e50cb27f012bb2e7f05595be5fdcb241
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>在 Azure 中构建 Docker Python 和 PostgreSQL Web 应用
@@ -355,16 +355,7 @@ docker push <registry_name>.azurecr.io/flask-postgresql-sample
 
 使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。 
 
-> [!NOTE] 
-> 应用服务计划表示用于托管应用的物理资源集合。 分配到应用服务计划的所有应用程序将共享该计划定义的资源，在托管多个应用时可以节省成本。 
-> 
-> 应用服务计划定义： 
-> 
-> * 区域（北欧、美国东部、东南亚，等等） 
-> * 实例大小（小、中、大） 
-> * 规模计数（一个、两个、三个实例，等等） 
-> * SKU（免费、共享、基本、标准、高级） 
-> 
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 以下示例使用 S1 定价层创建名为 `myAppServicePlan` 的基于 Linux 的应用服务计划。
 

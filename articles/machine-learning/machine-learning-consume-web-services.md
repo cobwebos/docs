@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/05/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: f4f3caed8390ba3a80d6cf1282f4d2751c67ae6b
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 650ac9e8607c7c3b26cc2eebfe78169331800edd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -150,7 +151,7 @@ RRS 的一个用处就是验证应用程序的可靠性。 在这种情况下，
             ],
             "ColumnTypes": [
               "Numeric"
-            ].
+            ],
           "Values": [
             [
               "0"
@@ -159,10 +160,11 @@ RRS 的一个用处就是验证应用程序的可靠性。 在这种情况下，
               "1"
             ]
           ]
-        }
-      },
+         }
+       },
       "GlobalParameters": {}
-    }
+     }
+   }
 
 下方为运行 C# 的代码示例。 对于传统 Web 服务，可在 **API 帮助页**或“使用”页底部找到代码示例。 对于新 Web 服务，可在“使用”页找到代码示例。
 

@@ -1,25 +1,25 @@
 ---
 title: "Azure Cosmos DB：在 .NET 中使用图形 API 进行开发 | Microsoft Docs"
 description: "了解如何通过 .NET 使用 Azure Cosmos DB 的 DocumentDB API 进行开发"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: cc8df0be-672b-493e-95a4-26dd52632261
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: arramac
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 64c412fc6b47da73e5430a4db4c007e4cf95aa47
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 94909fd1db426267eb60e5d7f4d753de82ca0377
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 05/31/2017
 
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用图形 API 进行开发
@@ -45,7 +45,7 @@ Gremlin 是功能性编程语言，支持写入操作 (DML) 与查询和遍历�
 请确保你具有以下内容：
 
 * 有效的 Azure 帐户。 如果没有，可以注册 [免费帐户](https://azure.microsoft.com/free/)。 
-    * 或者，也可以在本教程中使用 [Azure DocumentDB Emulator](../documentdb/documentdb-nosql-local-emulator.md)。
+    * 或者，也可以在本教程中使用 [Azure DocumentDB Emulator](local-emulator.md)。
 * [Visual Studio](http://www.visualstudio.com/)。
 
 ## <a name="create-database-account"></a>创建数据库帐户
@@ -55,11 +55,11 @@ Gremlin 是功能性编程语言，支持写入操作 (DML) 与查询和遍历�
 > [!TIP]
 > * 已有一个 Azure Cosmos DB 帐户？ 如果有，请跳到[设置 Visual Studio 解决方案](#SetupVS)
 > * 是否具有 Azure DocumentDB 帐户？ 如果有，则该帐户现为 Azure Cosmos DB 帐户，你可以直接跳到[设置 Visual Studio 解决方案](#SetupVS)。  
-> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](../documentdb/documentdb-nosql-local-emulator.md) 中的步骤设置该模拟器，然后直接跳到[设置 Visual Studio 解决方案](#SetupVS)。 
+> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](local-emulator.md) 中的步骤设置该模拟器，然后直接跳到[设置 Visual Studio 解决方案](#SetupVS)。 
 >
 > 
 
-[!INCLUDE [cosmosdb-create-dbaccount-graph](../../includes/cosmosdb-create-dbaccount-graph.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
 ## <a id="SetupVS"></a>设置 Visual Studio 解决方案
 1. 在计算机上打开 Visual Studio。
@@ -98,7 +98,7 @@ DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
 
 ## <a id="create-database"></a>创建数据库 
 
-现在，从 [DocumentDB .NET SDK](../documentdb/documentdb-sdk-dotnet.md) 使用 DocumentClient 类的 [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) 方法或 [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) 方法创建一个 Azure Cosmos DB [数据库](../documentdb/documentdb-resources.md#databases)。  
+现在，从 [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) 使用 DocumentClient 类的 [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) 方法或 [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) 方法创建一个 Azure Cosmos DB [数据库](documentdb-resources.md#databases)。  
 
 ```csharp 
 Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "graphdb" }); 
@@ -286,5 +286,5 @@ IDocumentQuery<Vertex> friendsOfFriendsOfThomas = client.CreateGremlinQuery<Vert
 现可使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
-> [使用 Gremlin 实现的查询](tutorial-query-graph.md)
+> [使用 Gremlin 查询](tutorial-query-graph.md)
 

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c801dc221d4aaa2c3ed0a7d10c5d58065b26e427
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 24e0372f024e574d049c63f444b5e8f6b0dfd065
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,8 +29,6 @@ ms.lasthandoff: 03/22/2017
 本教程使用适用于 HDInsight Spark 群集的 Jupyter Notebook 运行作业，从 Data Lake Store 帐户中读取数据。
 
 ## <a name="prerequisites"></a>先决条件
-
-* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * Azure Data Lake Store 帐户。 遵循[使用 Azure 门户，实现 Azure Data Lake Store 入门](../data-lake-store/data-lake-store-get-started-portal.md)中的说明。
 
@@ -83,7 +82,7 @@ ms.lasthandoff: 03/22/2017
 
 3. 创建新的笔记本。 单击“新建”，然后单击“PySpark”。
 
-    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-use-with-data-lake-store/hdispark.note.jupyter.createnotebook.png "创建新的 Jupyter 笔记本")
+    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "创建新的 Jupyter 笔记本")
 
 4. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 为此，请将以下代码片段粘贴到某个单元中，然后按 **SHIFT + ENTER**。
 
@@ -91,7 +90,7 @@ ms.lasthandoff: 03/22/2017
 
     每次在 Jupyter 中运行作业时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和笔记本标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。 作业完成后，实心圆将变成空心圆。
 
-     ![Jupyter 笔记本作业的状态](./media/hdinsight-apache-spark-use-with-data-lake-store/hdispark.jupyter.job.status.png "Jupyter 笔记本作业的状态")
+     ![Jupyter 笔记本作业的状态](./media/hdinsight-apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter 笔记本作业的状态")
 
 5. 使用已复制到 Data Lake Store 帐户的 **HVAC.csv** 文件将示例数据上传到临时表。 可使用以下 URL 模式访问 Data Lake Store 帐户中的数据。
 
@@ -131,11 +130,11 @@ ms.lasthandoff: 03/22/2017
 
 7. 作业成功完成后，默认情况下会显示以下表格输出。
 
-      ![查询结果的表输出](./media/hdinsight-apache-spark-use-with-data-lake-store/tabular.output.png "查询结果的表输出")
+      ![查询结果的表输出](./media/hdinsight-apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "查询结果的表输出")
 
      你也可以在其他视觉效果中查看结果。 例如，同一输出的分区图看起来如下所示。
 
-     ![查询结果分区图](./media/hdinsight-apache-spark-use-with-data-lake-store/area.output.png "查询结果分区图")
+     ![查询结果分区图](./media/hdinsight-apache-spark-use-with-data-lake-store/jupyter-area-output.png "查询结果分区图")
 
 8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这将会关闭笔记本。
 
