@@ -13,8 +13,9 @@ ms.workload: na
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 04/09/2017
+ms.date: 06/01/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: cd7ab0bbe92fa32d23a841b0b17bee8510f6b406
@@ -27,6 +28,10 @@ ms.lasthandoff: 05/15/2017
 此示例脚本使用相关资源创建 Function App，然后将 `www.<yourdomain>` 映射到它。 若要映射到自定义域，必须在应用服务计划（而不是消耗计划）中创建 Function App。 Azure Functions 仅支持使用 A 记录映射自定义域。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>示例脚本
 

@@ -46,7 +46,7 @@ ms.lasthandoff: 05/15/2017
 
 运行如下命令来删除资源组、规模集和 VM 以及所有相关资源。
 
-```azurecli
+```azurecli-interactive 
 az group delete -n myResourceGroup
 ```
 

@@ -56,7 +56,7 @@ apt-get -y install nginx
 
 运行以下命令来删除资源组、VM 和所有相关资源。
 
-```azurecli
+```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 

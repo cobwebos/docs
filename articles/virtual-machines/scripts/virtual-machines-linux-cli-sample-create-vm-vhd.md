@@ -47,7 +47,7 @@ ms.lasthandoff: 05/15/2017
 
 运行以下命令来删除资源组、VM 和所有相关资源。
 
-```azurecli
+```azurecli-interactive 
 az group delete -n az-cli-vhd
 ```
 

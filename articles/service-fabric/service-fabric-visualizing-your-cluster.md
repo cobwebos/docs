@@ -3,7 +3,7 @@ title: "使用 Service Fabric Explorer 可视化群集 | Microsoft 文档"
 description: "Service Fabric Explorer 是一个用于检验和管理 Microsoft Azure Service Fabric 群集中的云应用程序和节点的 Web 工具。"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2017
-ms.author: seanmck
-translationtype: Human Translation
+ms.date: 06/02/2017
+ms.author: ryanwi
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 2bf6bd76b653e30f38595631eff576d8eeb8efda
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 
