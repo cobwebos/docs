@@ -12,9 +12,10 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/16/2017
 ms.author: rachelap
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: 0cd7e7c55e77863c142800cdc11d6ea144c38293
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/18/2017
 
 
@@ -98,7 +99,7 @@ public static Mail Run(TraceWriter log, string input, out Mail message)
 ```javascript
 module.exports = function (context, input) {    
     var message = {
-        to: "recipient@contoso.com",
+         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
         from: "sender@contoso.com",        
         subject: "Azure news",
         content: [{
@@ -119,3 +120,4 @@ module.exports = function (context, input) {
 - [Azure Functions 最佳做法](functions-best-practices.md)，列出了创建 Azure 函数时要使用的最佳做法。
 
 - [Azure Functions 开发人员参考](functions-reference.md)，这是可供程序员参考的有关为函数编写代码以及定义触发器和绑定的参考资料。
+

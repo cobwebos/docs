@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: anhoh
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 7b3bf2ebb02b748801f418066e9f16cb0197cde5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
-
 
 ---
 # <a name="how-to-import-data-into-azure-cosmos-db-for-the-documentdb-api"></a>如何将数据导入用于 DocumentDB API 的 Azure Cosmos DB？

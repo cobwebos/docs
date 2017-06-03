@@ -80,7 +80,7 @@ az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Mic
 
 运行脚本示例后，可以使用以下命令删除资源组、VM 以及所有相关的资源。
 
-```azurecli
+```azurecli-interactive 
 az group delete -n myResourceGroup --no-wait --yes
 ```
 
