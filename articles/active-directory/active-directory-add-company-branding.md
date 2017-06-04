@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 05/23/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 144132cf0d591e398d5a6ebafb06fd915eec38b8
-ms.openlocfilehash: 1ec1a20dec318153923afd6a0875545d1e102f29
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: c558bd5f2b7fae91483cc2c6724c40442bb65045
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -170,9 +170,9 @@ fs3。 在顶部菜单栏中，单击“配置”。
 5. 在“自定义品牌”页上，选择“编辑现有品牌设置”，然后转到下一页。
 6. 根据要删除哪些元素，执行以下一项或多项操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“横幅徽标”下，选择“删除上载的徽标”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“横幅徽标”下，选择“删除上传的徽标”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“磁贴徽标”下，选择“删除上载的徽标”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“磁贴徽标”下，选择“删除上传的徽标”。
 
     c. 删除所有文本框中的文本。
 
