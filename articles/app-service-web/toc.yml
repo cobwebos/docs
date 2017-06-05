@@ -93,12 +93,8 @@
         href: app-service-web-intellij-create-hello-world-web-app.md
       - name: 使用用于 Java 的 Azure SDK
         href: java-create-azure-website-using-java-sdk.md
-      - name: 上载现有应用
+      - name: 上传现有应用
         href: web-sites-java-add-app.md
-      - name: 远程调试 Eclipse
-        href: app-service-web-debug-java-web-app-in-eclipse.md
-      - name: 远程调试 IntelliJ
-        href: app-service-web-debug-java-web-app-in-intellij.md
     - name: Python
       items:
       - name: 将 Django 应用与 MySQL 配合使用
@@ -162,8 +158,6 @@
       items:
       - name: 购买域
         href: custom-dns-web-site-buydomains-web-app.md
-      - name: 映射第三方域
-        href: web-sites-custom-domain-name.md
       - name: 使用流量管理器映射域
         href: web-sites-traffic-manager-custom-domain-name.md
       - name: 映射 GoDaddy 域
@@ -204,10 +198,6 @@
         href: web-sites-authentication-authorization.md
       - name: 将应用与多租户数据库配合使用
         href: web-sites-dotnet-entity-framework-row-level-security.md
-    - name: 分配自定义 SSL
-      items:
-      - name: 配置第三方 SSL 证书
-        href: web-sites-configure-ssl-certificate.md
     - name: 实施 HTTPS
       href: web-sites-configure-ssl-certificate.md#enforce-https-on-your-app
     - name: 配置 TLS 相互身份验证
@@ -278,6 +268,16 @@
       href: app-service-web-troubleshoot-http-502-http-503.md
     - name: 排查性能问题
       href: app-service-web-troubleshoot-performance-degradation.md
+    - name: 常见问题
+      items:
+      - name: 可用性、性能和应用程序常见问题解答
+        href: app-service-web-availability-performance-application-issues-faq.md
+      - name: 部署常见问题解答
+        href: app-service-web-deployment-faq.md
+      - name: 开放源代码技术常见问题解答
+        href: app-service-web-open-source-technologies-faq.md
+      - name: 配置和管理常见问题解答
+        href: app-service-web-configuration-and-management-faq.md
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/app-service/
   - name: 配额信息

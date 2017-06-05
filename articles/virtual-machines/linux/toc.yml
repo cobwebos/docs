@@ -62,7 +62,7 @@
     href: ../virtual-machines-instancemetadataservice-overview.md
   - name: 容器
     href: containers.md
-  - name: 资源管理器
+  - name: Resource Manager
     href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     items:
     - name: 部署模型
@@ -140,6 +140,14 @@
       href: move-vm.md
     - name: 创建高度可用的 VM
       href: create-cli-complete.md
+    - name: Ansible
+      items:
+      - name: 安装和配置
+        href: ansible-install-configure.md
+      - name: 创建基本 VM
+        href: ansible-create-vm.md
+      - name: 创建完整 VM
+        href: ansible-create-complete-vm.md
     - name: 使用 VM 模板部署应用
       items:
       - name: 教程概述
@@ -190,11 +198,11 @@
       href: cli-ps-findimage.md
     - name: 创建自定义 VM 映像
       href: create-upload-generic.md
-    - name: 上载自定义 VM 映像
+    - name: 上传自定义 VM 映像
       href: upload-vhd.md
     - name: 将现有 VM 捕获到映像中
       href: capture-image.md
-    - name: 创建 Azure 认可的映像
+    - name: 创建 Azure 映像
       items:
       - name: Ubuntu
         href: create-upload-ubuntu.md
@@ -206,6 +214,8 @@
         href: create-upload-centos.md
       - name: Oracle Linux
         href: oracle-create-upload-vhd.md
+      - name: OpenBSD
+        href: create-upload-openbsd.md
   - name: 管理 VM 存储
     items:
     - name: Azure 托管磁盘

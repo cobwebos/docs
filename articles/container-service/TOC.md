@@ -11,6 +11,7 @@
 ## [部署群集 - Azure CLI](container-service-create-acs-cluster-cli.md)
 ## [将 CI/CD 用于 Kubernetes 和 Jenkins](container-service-kubernetes-jenkins.md)
 ## [将 CI/CD 用于 Docker Swarm 和 VSTS](container-service-docker-swarm-setup-ci-cd.md)
+## [通过 ACS 引擎将 CI/CD 与 Docker Swarm 模式和 VSTS 配合使用](container-service-docker-swarm-mode-setup-ci-cd-acs-engine.md)
 
 # 概念
 ## [保护容器](container-service-security.md)

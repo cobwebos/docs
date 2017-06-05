@@ -3,6 +3,7 @@
 # 入门
 ## [创建 Azure AD B2C 目录](active-directory-b2c-get-started.md)
 ## [注册应用程序](active-directory-b2c-app-registration.md)
+## [内置策略](active-directory-b2c-reference-policies.md)
 ## 移动应用和桌面应用
 ### [概述](active-directory-b2c-reference-oauth-code.md)
 ### iOS
@@ -63,6 +64,7 @@
 #### [获取其他声明](active-directory-b2c-rest-api-step-custom.md)
 ### 自定义登录
 #### [配置用户输入](active-directory-b2c-configure-signup-self-asserted-custom.md)
+#### [自定义属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [自定义 UI](active-directory-b2c-ui-customization-custom.md)
 #### [自定义令牌](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
 ### 故障排除
@@ -74,7 +76,6 @@
 ## 术语表
 ### [应用程序的类型](active-directory-b2c-apps.md)
 ### [身份验证协议](active-directory-b2c-reference-protocols.md)
-### [内置策略](active-directory-b2c-reference-policies.md)
 ### [令牌](active-directory-b2c-reference-tokens.md)
 ## [上市区域和数据驻留](active-directory-b2c-reference-tenant-type.md)
 ## [启用计费](active-directory-b2c-how-to-enable-billing.md)

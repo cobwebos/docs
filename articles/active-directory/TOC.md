@@ -5,6 +5,7 @@
 ## [了解 Azure 标识解决方案](understand-azure-identity-solutions.md)
 ## [预览 Azure 门户体验](active-directory-preview-explainer.md)
 
+
 # 入门
 ## [获取 Azure AD 租户](active-directory-howto-tenant.md)
 ## [注册 Azure AD Premium](active-directory-get-started-premium.md)
@@ -14,7 +15,8 @@
 ### [经典门户](active-directory-licensing-what-is.md)
 ## [为组织获取 Azure](sign-up-organization.md)
 ## [常见问题](active-directory-faq.md)
-## [SaaS 应用教程](active-directory-saas-tutorial-list.md)
+## [如何获取对 Azure Active Directory 的支持](active-directory-troubleshooting-support-howto.md)
+## [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
 
 # 如何
 ## 规划和设计
