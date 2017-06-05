@@ -14,29 +14,30 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/22/2017
+ms.date: 05/24/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 31be50ca3f64cc183e516f1b0f06f5a4265f6103
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: bf003a3677ed27bc833de59ef61f7637a6899d37
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="run-ad-hoc-analytics-queries-across-all-wingtip-saas-tenants"></a>对所有 Wingtip SaaS 租户运行即席分析查询
 
-在本教程中，将创建即席分析数据库并对所有租户运行多个查询。 这些查询可以提取隐藏在 WTP 应用的日常操作数据中的信息。
+在本教程中，将创建即席分析数据库并对所有租户运行多个查询。 这些查询可以提取隐藏在 Wingtip SaaS 应用的日常操作数据中的信息。
 
 为了运行即席分析查询（对多个租户），Wingtip SaaS 应用使用[弹性查询](sql-database-elastic-query-overview.md)以及分析数据库。
 
 
-本教程将介绍如何执行下列操作：
+本教程介绍以下内容：
 
 > [!div class="checklist"]
 
-> * 部署即席分析数据库
-> * 对所有租户数据库运行分布式查询
+> * 每个数据库中用于跨租户查询的全局视图
+> * 如何部署即席分析数据库
+> * 如何对所有租户数据库运行分布式查询
 
 
 
@@ -57,23 +58,19 @@ SaaS 应用程序提供的大好机会之一是使用集中存储在云中的大
 Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 [下载 Wingtip SaaS 脚本的步骤](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
 
 
-## <a name="explore-the-global-views-in-the-tenant-databases"></a>浏览租户数据库中的全局视图
+## <a name="explore-the-global-views"></a>浏览全局视图
 
-Wingtip SaaS 应用程序使用“一数据库一租户”模型生成，因此租户数据库架构是从单租户角度定义的。 特定于租户的信息存在于名为“Venue”的单个表中，该表始终只有一行，并且被进一步设计为堆栈，没有主键。**  架构中的其他表不需与 Venue 表相关联，因为在正常使用时，数据属于哪个租户是没有任何疑问的。**  但在跨所有数据库进行查询时，将数据库中表的数据关联到特定的租户变得很重要。 为了简化这一情况，可以向租户数据库添加一组视图，即提供每个租户的“全局”视图。 这些全局视图将一个租户 ID 投影到每个表中，以便进行全局查询。 这样就可以轻松标识来自每个租户的数据。 为了方便，已在所有租户数据库中预先创建了这些视图（此外还在 golden DB 中创建，以便在预配新租户时可以使用这些视图）。
+Wingtip SaaS 应用程序使用“一数据库一租户”模型生成，因此租户数据库架构是从单租户角度定义的。 特定于租户的信息存在于名为“Venue”的单个表中，该表始终只有一行，并且被进一步设计为堆栈，没有主键。  架构中的其他表不需与 Venue 表相关联，因为在正常使用时，数据属于哪个租户是没有任何疑问的。  但在跨所有数据库进行查询时，将数据库中表的数据关联到特定的租户变得很重要。 为了简化这一情况，可以向租户数据库添加一组视图，即提供每个租户的“全局”视图。 这些全局视图将一个租户 ID 投影到每个表中，以便进行全局查询。 这样就可以轻松标识来自每个租户的数据。 为了方便，已在所有租户数据库中预先创建了这些视图（此外还在 golden DB 中创建，以便在预配新租户时可以使用这些全局视图）。
 
 1. 打开 SSMS 并[连接到 tenants1-&lt;USER&gt; 服务器](sql-database-wtp-overview.md#explore-database-schema-and-execute-sql-queries-using-ssms)。
-1. 展开“数据库”，右键单击“contosoconcerthall”，然后选择“新建查询”。****
-1. 若要浏览全局视图，请运行以下查询：
+1. 展开“数据库”，右键单击“contosoconcerthall”，然后选择“新建查询”。
+1. 运行以下查询，了解单租户表和全局视图的差异：
 
    ```T-SQL
    -- This is the base Venue table, that has no VenueId associated.
    SELECT * FROM Venue
 
    -- Notice the plural name 'Venues'. This view projects a VenueId column.
-   -- In the sample database we calculated an integer id from a hash of the Venue name,
-   -- but any approach could be used to introduce a unique value.
-   -- This is similar to how we create the tenant key in the catalog,
-   -- but there is no requirement that the catalog key and this id be the same.
    SELECT * FROM Venues
 
    -- The base Events table which has no VenueId column.
@@ -83,41 +80,46 @@ Wingtip SaaS 应用程序使用“一数据库一租户”模型生成，因此�
    SELECT * FROM VenueEvents
    ```
 
+在示例数据库中，我们根据地点名称的哈希计算出了一个整数 ID，但你可以使用任何方法来引入唯一值。 这类似于在目录中创建租户密钥的方法，但不要求 adhocanalytics 数据库中的目录密钥和租户 ID 保持相同。
+
 若要检查某个视图并查看其创建方式，请执行以下操作：
 
 1. 在“对象资源管理器”中，展开“contosoconcethall” > “视图”：
 
    ![视图](media/sql-database-saas-tutorial-adhoc-analytics/views.png)
 
-1. 右键单击“dbo.Venues”。****
+1. 右键单击“dbo.Venues”。
 1. 选择“将视图脚本编写为” > “CREATE TO” > “新建查询编辑器窗口”
 
-对任何视图执行此操作即可检查其创建方式。**
+对任何视图执行此操作即可检查其创建方式。
 
 ## <a name="deploy-the-database-used-for-ad-hoc-analytics-queries"></a>部署用于即席分析查询的数据库
 
-本练习部署 adhocanalytics 数据库。** 该数据库包含用于跨所有租户数据库进行查询的架构。 该数据库部署到现有的编录服务器中，后者是包含所有管理相关数据库的服务器。
+本练习部署 adhocanalytics 数据库。 该数据库包含用于跨所有租户数据库进行查询的架构。 该数据库部署到现有的编录服务器中，后者是包含所有管理相关数据库的服务器。
 
-1. 在 *PowerShell ISE* 中打开 .\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalytics.ps1* 并设置以下值：
-   * **$DemoScenario** = 2，**部署即席分析数据库**。
-
-1. 在脚本中向下滚动到包含数据库架构的 SQL 脚本。  查看脚本，注意以下内容：
+1. 打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\Deploy-AdhocAnalyticsDB.ps1
+1. 向下滚动到将 `$commandText` 分配给 SQL 脚本的节。 查看脚本，注意以下内容：
 
    1. 弹性查询使用数据库范围的凭据来访问每个租户数据库。 该凭据需要能够在所有数据库中使用，通常应向其授予启用这些即席查询所需的最小权限。
    1. 外部数据源，已定义为在编录数据库中使用租户分片映射。  用此作为外部数据源，就可以在发出查询时将查询分发到在编录中注册的所有数据库。
    1. 外部表，引用在上一部分介绍的全局视图。
-   1. 已创建并填充的本地表“VenueTypes”。**  由于此引用数据表在所有租户数据库中很常见，因此可以在这里将其作为本地表的代表。对于某些查询来说，它可以减少在租户数据库和 adhocanalytics 数据库之间移动的数据量。**
+   1. 已创建并填充的本地表“VenueTypes”。  由于此引用数据表在所有租户数据库中很常见，因此可以在这里将其作为本地表的代表。对于某些查询来说，它可以减少在租户数据库和 adhocanalytics 数据库之间移动的数据量。
 
-1. 按 F5 运行脚本并创建 adhocanalytics 数据库。**
+
+1. 此时请在 PowerShell ISE 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\Demo-AdhocAnalytics.ps1 并设置以下值：
+   * **$DemoScenario** = 2，**部署即席分析数据库**。
+
+1. 按 F5 运行脚本并创建 adhocanalytics 数据库。
 
    可以忽略此处的“RPC 服务器不可用”的警告。
 
-
 现在已有 *adhocanalytics* 数据库，可以使用它运行分布式查询，并对所有租户收集信息！
+
+![adhocanalytics 数据库](media/sql-database-saas-tutorial-adhoc-analytics/adhocanalytics.png)
 
 ## <a name="run-ad-hoc-analytics-queries"></a>运行即席分析查询
 
-本练习将运行即席分析查询，从 WTP 应用程序发现租户见解。
+设置 adhocanalytics 数据库后，请运行一些即席查询：
 
 1. 在 SSMS 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalyticsQueries.sql*。
 1. 确保已连接到 **adhocanalytics** 数据库
@@ -141,6 +143,6 @@ Wingtip SaaS 应用程序使用“一数据库一租户”模型生成，因此�
 
 ## <a name="additional-resources"></a>其他资源
 
-* [基于初始 Wingtip SaaS 应用程序部署编写的其他教程](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* 其他[基于 Wingtip SaaS 应用程序编写的教程](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [弹性查询](sql-database-elastic-query-overview.md)
 

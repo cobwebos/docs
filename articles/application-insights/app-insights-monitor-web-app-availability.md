@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 05/25/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0916c10afd526abaaf6c8e1e3aa311af5c7d84cd
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 74cd4dbf74afbf5e7e0e7d0b7aca49b5aa214b83
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 05/10/2017
 有两种类型的可用性测试：
 
 * [URL ping 测试](#create)：可以在 Azure 门户中创建的简单测试。
-* [多步骤 Web 测试](#multi-step-web-tests)：可以在 Visual Studio Enterprise 中创建并上载到门户的测试。
+* [多步骤 Web 测试](#multi-step-web-tests)：可以在 Visual Studio Enterprise 中创建并上传到门户的测试。
 
 对于每个应用程序资源，最多可以创建 25 个可用性测试。
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 05/10/2017
 > 对多步骤 Web 测试要收取费用。 [定价方案](http://azure.microsoft.com/pricing/details/application-insights/)。
 > 
 
-若要创建多步骤测试，可以使用 Visual Studio Enterprise 来录制方案，然后将录制内容上载到 Application Insights。 Application Insights 将按特定间隔重放该方案，并验证响应。
+若要创建多步骤测试，可以使用 Visual Studio Enterprise 来录制方案，然后将录制内容上传到 Application Insights。 Application Insights 将按特定间隔重放该方案，并验证响应。
 
 > [!NOTE]
 > 不能在测试中使用编码的函数或循环。 测试必须完全包含在 .webtest 脚本中。 但是，你可以使用标准插件。
@@ -155,11 +155,11 @@ ms.lasthandoff: 05/10/2017
 
     ![在 Visual Studio 中，打开 .webtest 文件并单击“运行”。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
 
-#### <a name="2-upload-the-web-test-to-application-insights"></a>2.将 Web 测试上载到 Application Insights
+#### <a name="2-upload-the-web-test-to-application-insights"></a>2.将 Web 测试上传到 Application Insights
 1. 在 Application Insights 门户中创建 Web 测试。
 
     ![在 Web 测试边栏选项卡中选择“添加”。](./media/app-insights-monitor-web-app-availability/16-another-test.png)
-2. 选择多步骤测试并上载 .webtest 文件。
+2. 选择多步骤测试并上传 .webtest 文件。
 
     ![选择多步骤 Web 测试。](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
 
@@ -200,7 +200,7 @@ Web 测试插件提供时间参数化方式。
 
     ![在测试参数中使用 {{plug-in name}}。](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-name.png)
 
-现在，将测试上载到门户。 每次运行测试时，将使用动态值。
+现在，将测试上传到门户。 每次运行测试时，将使用动态值。
 
 ## <a name="dealing-with-sign-in"></a>处理登录
 如果用户登录应用，可以使用许多选项来模拟登录，以便可以在登录后测试页面。 使用的方法取决于应用提供的安全性类型。
@@ -246,6 +246,13 @@ Web 测试插件提供时间参数化方式。
 
 测试完成时，将显示响应时间和成功率。
 
+
+![性能测试](./media/app-insights-monitor-web-app-availability/perf-test.png)
+
+> [!TIP]
+> 若要观察性能测试的效果，请使用[实时流](app-insights-live-stream.md)和[探查器](app-insights-profiler.md)。
+>
+
 ## <a name="automation"></a>自动化
 * [使用 PowerShell 脚本自动设置可用性测试](app-insights-powershell.md#add-an-availability-test)。
 * 设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 。
@@ -266,7 +273,7 @@ Web 测试插件提供时间参数化方式。
     
     * 请将防火墙配置为允许从[我们的 Web 测试代理 IP 地址](app-insights-ip-addresses.md)发出的传入请求。
     * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 你的测试进程可以通过核心 SDK 包中的 [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果不会显示在可用性 Web 测试边栏选项卡中，但会作为可用性结果显示在分析、搜索和指标资源管理器中。
-* *上载多步骤 Web 测试失败*
+* *上传多步骤 Web 测试失败*
 
     存在 300 K 大小限制。
 

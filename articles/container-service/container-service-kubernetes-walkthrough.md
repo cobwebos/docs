@@ -18,10 +18,10 @@ ms.date: 05/08/2017
 ms.author: anhowe
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2ec155129374c03ba7e0ecaa5d2bf29a1d3111aa
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 0604a85192ed632b621113b98cc44172c584ea01
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -78,7 +78,7 @@ az acs create --orchestrator-type=kubernetes --resource-group $RESOURCE_GROUP --
 数分钟后，命令完成，你会有一个可以运行的 Kubernetes 群集。
 
 > [!IMPORTANT]
-> 如果帐户没有创建 Azure AD 服务主体的权限，该命令会生成类似于`Insufficient privileges to complete the operation.`的错误。有关详细信息，请参阅[关于 Kubernetes 群集的服务主体](container-service-kubernetes-service-principal.md)。
+> 如果帐户没有创建 Azure AD 服务主体所需的权限，该命令会生成类似于“权限不足，无法完成操作”的错误 有关详细信息，请参阅[关于 Kubernetes 群集的服务主体](container-service-kubernetes-service-principal.md)。
 > 
 
 

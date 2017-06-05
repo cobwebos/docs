@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/24/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 90ed1d5ca50bfb19a9d1c5d258e9588e05893270
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 97da0f4dc5d5528bfb803eefe9037651939a8efd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -84,7 +84,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 仪表板将显示以下信息：
 
-* 一个“工厂列表”面板，显示解决方案中的状态、位置和当前生产配置。 第一次运行解决方案时有多个模拟设备。 进行生产线模拟时，每条生产线有三个真实的 OPC UA 服务器，执行模拟任务并共享数据。 
+* 一个“工厂列表”面板，显示解决方案中的状态、位置和当前生产配置。 第一次运行解决方案时有多个模拟设备。 进行生产线模拟时，每条生产线有三个真实的 OPC UA 服务器，执行模拟任务并共享数据。 有关 OPC UA 的详细信息，请参阅[常见问题解答][lnk-faq]。
 * 一个**地图**，用于显示每个连接到解决方案的设备的位置。 该解决方案可以使用必应地图 API，在地图上根据信息来绘图。 如果订阅启用了必应地图企业版 API，则会自动使用此功能。 否则，请参阅[常见问题][lnk-faq]，了解如何将地图变成动态地图。
 * 一个“警报”面板，显示在遥测或 OEE/KPI 值超出特定阈值时生成的警报。
 * 一个“设备综合效率”面板，显示整个企业的 OEE 值，或者显示所查看的工厂/生产线/装配站。 该值是从装配站视图聚合到企业级别的聚合值。 可以进一步分析 OEE 图及其构成元素。

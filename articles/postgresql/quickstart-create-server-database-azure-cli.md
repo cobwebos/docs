@@ -14,8 +14,8 @@ ms.devlang: azurecli
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 793d948b25a2b6c408359de03433746a9494e1d1
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: fdeed4a1749e2c0115fe68b1b4318e1f0ddecbe5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/25/2017
 
@@ -135,22 +135,22 @@ CREATE DATABASE mypgsqldb;
 
 使用 GUI 工具 _pgAdmin_ 连接到 Azure PostgreSQL 服务器
 1.    在客户端计算机上启动 _pgAdmin_ 应用程序。 可以从 http://www.pgadmin.org/ 安装 _pgAdmin_。
-2.    从“快速链接”菜单选择“添加新服务器”。****
-3.    在“常规”选项卡的“创建 - 服务器”对话框中，输入服务器的唯一友好名称。**** 例如“Azure PostgreSQL 服务器”。
+2.    从“快速链接”菜单选择“添加新服务器”。
+3.    在“常规”选项卡的“创建 - 服务器”对话框中，输入服务器的唯一友好名称。 例如“Azure PostgreSQL 服务器”。
  ![pgAdmin 工具 - 创建 - 服务器](./media/quickstart-create-server-database-azure-cli/1-pgadmin-create-server.png)
-4.    在“连接”选项卡的“创建 - 服务器”对话框中，执行以下操作：****
-    - 在“主机名/地址”框中输入完全限定的服务器名称（例如 **mypgserver-20170401.postgres.database.azure.com**）。**** 
-    - 将端口 5432 输入到“端口”框中。**** 
-    - 将此前在本快速入门中获得的**服务器管理器登录名 (user@mypgserver)** 以及在创建服务器时输入的密码分别输入“用户名”和“密码”框中。****
-    - 选择“必需”作为“SSL 模式”。**** 默认情况下，所有 Azure PostgreSQL 服务器在创建时都会启用 SSL 强制。 若要关闭 SSL 强制，请参阅[强制 SSL](./concepts-ssl-connection-security.md) 中的详细信息。
+4.    在“连接”选项卡的“创建 - 服务器”对话框中，执行以下操作：
+    - 在“主机名/地址”框中输入完全限定的服务器名称（例如 **mypgserver-20170401.postgres.database.azure.com**）。 
+    - 将端口 5432 输入到“端口”框中。 
+    - 将此前在本快速入门中获得的**服务器管理器登录名 (user@mypgserver)** 以及在创建服务器时输入的密码分别输入“用户名”和“密码”框中。
+    - 选择“必需”作为“SSL 模式”。 默认情况下，所有 Azure PostgreSQL 服务器在创建时都会启用 SSL 强制。 若要关闭 SSL 强制，请参阅[强制 SSL](./concepts-ssl-connection-security.md) 中的详细信息。
 
     ![pgAdmin - 创建 - 服务器](./media/quickstart-create-server-database-azure-cli/2-pgadmin-create-server.png)
 5.    单击“保存” 。
 6.    在浏览器左窗格中，展开“服务器组”。 选择你的服务器：**Azure PostgreSQL 服务器**。
-7.  选择已连接到的**服务器**，然后选择其下的“数据库”。**** 
+7.  选择已连接到的**服务器**，然后选择其下的“数据库”。 
 8.    右键单击“数据库”以创建数据库。
 9.    使用 **mypgsqldb** 作为数据库名称，并选择服务器管理员登录名 **mylogin** 作为其所有者。
-10. 单击“保存”创建空数据库。****
+10. 单击“保存”创建空数据库。
 11. 在“浏览器”中，展开“服务器”组。 展开已创建的服务器，此时会看到其下的数据库 **mypgsqldb**。
  ![pgAdmin - 创建 - 数据库](./media/quickstart-create-server-database-azure-cli/3-pgadmin-database.png)
 
@@ -172,5 +172,6 @@ az postgres server delete --resource-group myresourcegroup --name mypgserver-201
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 使用[导出和导入](./howto-migrate-using-export-and-import.md)或[转储和还原](./howto-migrate-using-dump-and-restore.md)迁移数据库。
-- 有关此服务的技术概述，请参阅[什么是 Azure Database for PostgreSQL？](overview.md)
+> [!div class="nextstepaction"]
+> [使用导出和导入功能迁移数据库](./howto-migrate-using-export-and-import.md)
+

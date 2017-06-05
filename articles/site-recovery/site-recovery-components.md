@@ -14,23 +14,29 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 4674985363bc1267449e018ab15a53757a8fd32d
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 3d2b3509666633df4f6f6f0c385af3667f4bcf3e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
-# <a name="how-does-azure-site-recovery-work"></a>Azure Site Recovery 的工作原理
 
-本文介绍 [Azure Site Recovery](site-recovery-overview.md) 服务的基础体系结构以及它运行时必需的组件。
+# <a name="how-does-azure-site-recovery-work-for-on-premises-infrastructure"></a>如何将 Azure Site Recovery 用于本地基础结构？
+
+> [!div class="op_single_selector"]
+> * [复制 Azure 虚拟机](site-recovery-azure-to-azure-architecture.md)
+> * [复制本地机](site-recovery-components.md)
+
+本文介绍 [Azure Site Recovery](site-recovery-overview.md) 服务的基础体系结构以及将工作负荷从本地复制到 Azure 所需的组件。
 
 请将任何评论发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
 
 ## <a name="replicate-to-azure"></a>复制到 Azure
 
-可以将以下内容复制到 Azure：
+可以将下述本地基础结构复制到 Azure 并对其进行保护：
 
 - **VMware**：本地 VMware VM，运行在[支持的主机](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)上。 可以复制运行[支持的操作系统](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)的 VMware VM
 - **Hyper-V**：本地 Hyper-V VM，运行在[支持的主机](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)上。
@@ -42,12 +48,11 @@ ms.lasthandoff: 03/15/2017
 
 区域 | 组件 | 详细信息
 --- | --- | ---
-**Azure** | 在 Azure 中，需要创建 Azure 帐户、Azure 存储帐户和 Azure 网络。 | 存储和网络帐户可以是 Resource Manager 帐户或经典帐户。<br/><br/>  复制的数据存储在存储帐户中；从本地站点故障转移时，将使用复制的数据创建 Azure VM。 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
 **配置服务器** | 单个管理服务器 (VMWare VM) 运行所有本地组件 - 配置服务器、进程服务器、主目标服务器 | 配置服务器在本地和 Azure 之间协调通信并管理数据复制。
  **进程服务器**：  | 默认安装在配置服务器上。 | 充当复制网关。 接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。<br/><br/> 进程服务器还处理用于保护计算机的移动服务的推送安装，并执行 VMware VM 的自动发现。<br/><br/> 随着部署扩大，可以添加作为进程服务器运行的独立专用进程服务器，目的仅在于处理更大的复制流量。
  **主目标服务器** | 默认在本地配置服务器上安装。 | 处理从 Azure 进行故障回复期间产生的复制数据。<br/><br/> 如果故障回复流量很大，可以单独部署一台主目标服务器用于故障回复。
-**VMware 服务器** | VMware VM 托管在 vSphere ESXi 服务器上，我们建议使用 vCenter 服务器来管理主机。 | 可将 VMware 服务器添加到恢复服务保管库。<br/><br/> I
-**复制的计算机** | 移动服务将安装在要复制的每个 VMware VM 上。 可在每台计算机上手动安装，或者通过进程服务器进行推送安装。
+**VMware 服务器** | VMware VM 托管在 vSphere ESXi 服务器上，我们建议使用 vCenter 服务器来管理主机。 | 可将 VMware 服务器添加到恢复服务保管库。<br/><br/>
+**复制的计算机** | 移动服务将安装在要复制的每个 VMware VM 上。 可在每台计算机上手动安装，或者通过进程服务器进行推送安装。| -
 
 **图 1：VMware 到 Azure 的组件**
 
@@ -76,14 +81,6 @@ ms.lasthandoff: 03/15/2017
 3. 运行故障转移时，将在 Azure 中创建副本 VM。 提交故障转移，开始从副本 Azure VM 访问工作负荷。
 4. 当本地主站点再次可用时，便可以故障回复。 设置故障回复基础结构，开始将计算机从辅助站点复制到主站点，然后从辅助站点运行计划外故障转移。 提交此故障转移后，数据将回到本地，此时需要再次启用目标为 Azure 的复制。 [了解详细信息](site-recovery-failback-azure-to-vmware.md)
 
-故障回复有以下几项要求：
-
-
-- **Azure 中的临时进程服务器**：如果要在故障转移后从 Azure 故障回复，必须将 Azure VM 设置为进程服务器，以处理来自 Azure 的复制。 故障回复完成后，可以删除此 VM。
-- **VPN 连接**：若要进行故障回复，需要设置从 Azure 网络到本地站点的 VPN 连接（或 Azure ExpressRoute）。
-- **单独的本地主目标服务器**：本地主目标服务器用于处理故障回复。 主目标服务器默认安装在管理服务器上，但如果要故障回复大量数据，应该设置独立的本地主目标服务器。
-- **故障回复策略**：若要复制回到本地站点，需要创建故障回复策略。 创建复制策略已自动创建故障回复策略。
-
 **图 3：VMware/物理机故障回复**
 
 ![故障回复](./media/site-recovery-components/enhanced-failback.png)
@@ -96,16 +93,6 @@ ms.lasthandoff: 03/15/2017
 - 需要构建本地 VMware 基础结构，用于故障回复。 无法故障回复到物理服务器。
 
 ## <a name="hyper-v-to-azure"></a>Hyper-V 到 Azure
-
-将 Hyper-V VM 复制到 Azure 时需要提供：
-
-**区域** | **组件** | **详细信息**
---- | --- | ---
-**Azure** | 在 Azure 中，需要创建 Microsoft Azure 帐户、Azure 存储帐户和 Azure 网络。 | 存储和网络帐户可以是基于 Resource Manager 的帐户或经典帐户。<br/><br/> 复制的数据存储在存储帐户中；从本地站点故障转移时，将使用复制的数据创建 Azure VM。<br/><br/> 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
-**VMM 服务器** | 位于 VMM 云中的 Hyper-V 主机 | 如果 Hyper-V 主机在 VMM 云中托管，则可在恢复服务保管库中注册 VMM 服务器。<br/><br/> 在 VMM 服务器上，可以安装 Site Recovery 提供程序来协调与 Azure 的复制。<br/><br/> 若要配置网络映射，需设置逻辑网络和 VM 网络。 VM 网络应链接到与云关联的逻辑网络。
-**Hyper-V 主机** | Hyper-V 服务器在部署时，可以使用（也可以不使用）VMM 服务器。 | 如果没有 VMM 服务器，则会将 Site Recovery 提供程序安装在主机上，以便协调通过 Internet 进行的与 Site Recovery 的复制。 如果有 VMM 服务器，则会将提供程序安装在其上，而不是安装在主机上。<br/><br/> 恢复服务代理安装在主机上，用于处理数据复制。<br/><br/> 来自提供程序和代理的通信都是安全且经过加密的。 Azure 存储空间中的复制数据也已加密。
-**Hyper-V VM** | Hyper-V 主机服务器上需要一个或多个 VM。 | 不需在 VM 上显式安装任何内容
-
 
 ### <a name="replication-process"></a>复制过程
 
@@ -152,7 +139,6 @@ ms.lasthandoff: 03/15/2017
 
 **区域** | **组件** | **详细信息**
 --- | --- | ---
-**Azure** | InMage Scout。 | 若要获取 InMage Scout，需要 Azure 订阅。<br/><br/> 创建恢复服务保管库后，可以下载 InMage Scout 并安装最新的更新，以设置部署。
 **进程服务器** | 位于主站点 | 可以部署进程服务器来处理缓存、压缩和数据优化操作。<br/><br/> 它还可以将安装的统一代理推送到你要保护的计算机。
 **配置服务器** | 位于辅助站点 | 配置服务器可以通过管理网站或 vContinuum 控制台管理、配置和监视部署。
 **vContinuum 服务器** | 可选。 安装在配置服务器所在的同一位置。 | 它提供一个控制台用于管理和监视受保护的环境。
@@ -180,7 +166,6 @@ ms.lasthandoff: 03/15/2017
 
 **区域** | **组件** | **详细信息**
 --- | --- | ---
-**Azure** | 需要一个 Microsoft Azure 帐户。 |
 **VMM 服务器** | 我们建议在主站点和辅助站点中各一个 VMM 服务器 | 每个 VMM 服务器都应连接到 Internet。<br/><br/> 每台服务器应至少包含一个设置了 Hyper-V 功能配置文件的 VMM 私有云。<br/><br/> 在 VMM 服务器上安装 Azure Site Recovery 提供程序。 提供程序通过 Internet 使用 Site Recovery 服务协调和安排复制。 提供程序与 Azure 之间的通信是安全的且经过加密的。
 **Hyper-V 服务器** |  主要和辅助 VMM 云中需要一台或多台 Hyper-V 主机服务器。<br/><br/> 服务器应已连接到 Internet。<br/><br/> 使用 Kerberos 或证书身份验证通过 LAN 或 VPN 在主要和辅助 Hyper-V 主机服务器之间复制数据。  
 **Hyper-V VM** | 位于源 Hyper-V 主机服务器上。 | 源主机服务器应该至少有一个要复制的 VM。

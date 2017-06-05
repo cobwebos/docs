@@ -12,16 +12,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 04/11/2017
+ms.date: 05/30/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 1d208f931af4704528309780b45e170627f1753c
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: db851023c8620bec6583184326029d1a3e99ad88
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
-# <a name="how-to-use-azure-redis-cache"></a>如何使用 Azure Redis Cache
+# <a name="how-to-use-azure-redis-cache"></a>如何使用 Azure Redis 缓存
 > [!div class="op_single_selector"]
 > * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
 > * [ASP.NET](cache-web-app-howto.md)
@@ -37,7 +38,7 @@ Microsoft Azure Redis 缓存提供以下层：
 
 * **基本** - 单个节点。 多种大小，最大 53 GB。
 * **标准** - 双节点主/副本配置。 多种大小，最大 53 GB。 99.9% SLA。
-* **高级** - 双节点主/副本配置，最多有 10 个分片。 从 6 GB 到 530 GB 的多种大小（有关详细信息，请与我们联系）。 标准层的所有功能加上其他功能，包括支持 [Redis 群集](cache-how-to-premium-clustering.md)、[Redis 持久性](cache-how-to-premium-persistence.md)和 [Azure 虚拟网络](cache-how-to-premium-vnet.md)。 99.9% SLA。
+* **高级** - 双节点主/副本配置，最多有 10 个分片。 多个大小（从 6 GB 到 530 GB）。 标准层的所有功能加上其他功能，包括支持 [Redis 群集](cache-how-to-premium-clustering.md)、[Redis 持久性](cache-how-to-premium-persistence.md)和 [Azure 虚拟网络](cache-how-to-premium-vnet.md)。 99.9% SLA。
 
 每个级别在功能和定价方面存在差异。 有关定价信息，请参阅[缓存定价详细信息][Cache Pricing Details]。
 
@@ -45,8 +46,8 @@ Microsoft Azure Redis 缓存提供以下层：
 
 <a name="getting-started-cache-service"></a>
 
-## <a name="get-started-with-azure-redis-cache"></a>开始使用 Azure Redis Cache
-Azure Redis Cache 非常容易上手。 若要开始使用，需要首先设置和配置缓存。 接下来，配置缓存客户端，以便它们可以访问缓存。 在配置了缓存客户端后，就可以开始使用它们。
+## <a name="get-started-with-azure-redis-cache"></a>开始使用 Azure Redis 缓存
+Azure Redis 缓存非常容易上手。 若要开始使用，需要首先设置和配置缓存。 接下来，配置缓存客户端，以便它们可以访问缓存。 在配置了缓存客户端后，就可以开始使用它们。
 
 * [创建缓存][Create the cache]
 * [配置缓存客户端][Configure the cache clients]
