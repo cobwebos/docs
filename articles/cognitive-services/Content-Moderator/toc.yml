@@ -1,57 +1,56 @@
-- name: "Content Moderator Documentation"
+- name: 内容审查器文档
   href: ../index.md
-- name: "Overview"
+- name: 概述
   items: 
-  - name: "Learn about the Content Moderator API"
+  - name: 了解内容审查器 API
     href: overview.md
-- name: "Get started"
+- name: 入门
   items: 
-  - name: "Get started with Content Moderator"
+  - name: 内容审查器入门
     href: quick-start.md
-- name: "How to"
+- name: 如何
   items: 
-  - name: "Review tool user guide"
+  - name: 查看工具用户指南
     items:
-    - name: "Human in the loop"
+    - name: 人机共生
       href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: "Create team"
+    - name: 创建团队
       href: Review-Tool-User-Guide/Sign-up.md
-    - name: "Upload images"
+    - name: 上传图像
       href: Review-Tool-User-Guide/Upload-Images.md
-    - name: "Image reviews"
+    - name: 图像评审
       href: Review-Tool-User-Guide/Review-Moderated-Images.md
-    - name: "Text reviews"
+    - name: 文本评审
       href: Review-Tool-User-Guide/Text-Reviews.md
-    - name: "Team and subteams"
+    - name: 团队和子团队
       href: Review-Tool-User-Guide/SubTeams.md
-    - name: "Using workflows"
+    - name: 使用工作流
       href: Review-Tool-User-Guide/Workflows.md
-    - name: "Settings"
+    - name: 设置
       href: Review-Tool-User-Guide/Configure.md
-    - name: "View dashboard"
+    - name: 查看仪表板
       href: Review-Tool-User-Guide/View-Dashboard.md
-- name: "Reference"
+- name: 引用
   items: 
-  - name: "API Reference Guide"  
+  - name: API 参考指南
+  
     href: api-reference.md
     items:
-  - name: "Review APIs"
+  - name: 查看 API
     href: review-api.md
-  - name: "Review Authentication"
-    href: Review-API-Authentication.md
-  - name: "Image moderation"
+  - name: 图像审查
     href: image-moderation-api.md
-  - name: "Text moderation"
+  - name: 文本审查
     href: text-moderation-api.md
-  - name: "Text moderation - languages"
+  - name: 文本审查 - 语言
     href: Text-Moderation-API-Languages.md
-  - name: "Video moderation"
+  - name: 视频审查
     href: video-moderation-api.md
-- name: "Resources"
+- name: 资源
   items:  
-  - name: "Windows SDK"
+  - name: Windows SDK
     href: https://github.com/MicrosoftContentModerator/Microsoft.CognitiveServices.ContentModerator-Windows/
-  - name: "Samples"
+  - name: 示例
     href: https://azure.microsoft.com/resources/samples/?service=cognitive-services
-  - name: "FAQ"
+  - name: 常见问题
     href: FAQs.md

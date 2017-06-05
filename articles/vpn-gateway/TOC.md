@@ -7,6 +7,7 @@
 ## [规划和设计 VPN 网关](vpn-gateway-plan-design.md)
 ## [关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)
 ## [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)
+## [关于加密要求](vpn-gateway-about-compliance-crypto.md)
 ## [关于 BGP 和 VPN 网关](vpn-gateway-bgp-overview.md)
 ## [关于高可用连接](vpn-gateway-highlyavailable.md)
 
@@ -32,18 +33,25 @@
 ## 配置部署模型之间的 VNet 到 VNet 连接
 ### [Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
-## [配置站点到站点和 ExpressRoute 的共存连接](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
-## 配置强制隧道
-### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
-### [PowerShell（经典）](vpn-gateway-about-forced-tunneling.md)
+## 配置站点到站点和 ExpressRoute 的共存连接
+### [PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## 配置多个站点到站点连接
 ### [Azure 门户](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 ### [PowerShell（经典）](vpn-gateway-multi-site.md)
-## [为 VPN 网关配置 BGP](vpn-gateway-bgp-resource-manager-ps.md)
-## [配置高可用性主动-主动连接](vpn-gateway-activeactive-rm-powershell.md)
+## 连接多个基于策略的 VPN 设备
+### [PowerShell](vpn-gateway-connect-multiple-policybased-rm-ps.md)
+## 在连接上配置 IPsec/IKE 策略
+### [PowerShell](vpn-gateway-ipsecikepolicy-rm-powershell.md)
+## 配置高可用的主动-主动连接
+### [PowerShell](vpn-gateway-activeactive-rm-powershell.md)
+## 为 VPN 网关配置 BGP
+### [PowerShell](vpn-gateway-bgp-resource-manager-ps.md)
+## 配置强制隧道
+### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
+### [PowerShell（经典）](vpn-gateway-about-forced-tunneling.md)
 ## 修改本地网络网关设置
 ### [PowerShell](vpn-gateway-modify-local-network-gateway.md)
-### [CLI](vpn-gateway-modify-local-network-gateway-cli.md)
+### [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [验证 VPN 网关连接](vpn-gateway-verify-connection-resource-manager.md)
 ## [重置 VPN 网关](vpn-gateway-resetgw-classic.md)
 ## 删除 VPN 网关
@@ -55,11 +63,11 @@
 ### [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
 
 # 引用
-## [PowerShell](/powershell/module/azurerm.network)
-## [PowerShell（经典）](/powershell/module/azure/?view=azuresmps-3.7.0)
-## [REST](https://docs.microsoft.com/rest/api/network/virtualnetworkgateways)
+## [PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)
+## [PowerShell（经典）](/powershell/module/azure/?view=azuresmps-3.7.0#networking)
+## [REST](/rest/api/network/virtualnetworkgateways)
 ## [REST（经典）](https://msdn.microsoft.com/library/jj154113)
-## [Azure CLI](https://docs.microsoft.com/cli/azure/network/vnet-gateway)
+## [Azure CLI](/cli/azure/network/vnet-gateway)
 
 # 相关内容
 ## [虚拟网络](/azure/virtual-network/)

@@ -41,6 +41,7 @@
 ### [载入用于管理的计算机](automation-dsc-onboarding.md)
 ### [编译 DSC 配置](automation-dsc-compile.md)
 ### [使用 Chocolatey 进行连续部署](automation-dsc-cd-chocolatey.md)
+### [将 Azure Automation DSC 报告数据转发到 OMS Log Analytics](automation-dsc-diagnostics.md)
 ## 管理自动化资产
 ### [证书](automation-certificates.md)
 ### [连接](automation-connections.md)

@@ -223,7 +223,7 @@
 #### [群集 Resource Manager 体系结构](service-fabric-cluster-resource-manager-architecture.md)
 #### [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)
 #### [应用程序组概述](service-fabric-cluster-resource-manager-application-groups.md)
-#### [配置群集资源管理器设置](service-fabric-cluster-resource-manager-configure-services.md)
+#### [配置群集 Resource Manager 设置](service-fabric-cluster-resource-manager-configure-services.md)
 #### [资源消耗度量值](service-fabric-cluster-resource-manager-metrics.md)
 #### [使用服务相关性](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
 #### [服务放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
@@ -235,25 +235,27 @@
 
 ### [连接到安全群集](service-fabric-connect-to-secure-cluster.md)
 
-## 检查应用程序和群集运行状况
-### [监视 Service Fabric 运行状况](service-fabric-health-introduction.md)
-### [报告并检查服务运行状况](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-### [添加自定义运行状况报告](service-fabric-report-health.md)
-### [使用系统运行状况报告进行故障排除](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-### [查看运行状况报告](service-fabric-view-entities-aggregated-health.md)
-
 ## 监视和诊断
 ### [监视和诊断应用程序](service-fabric-diagnostics-overview.md)
-### 在本地监视和诊断服务
-#### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
-#### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
-### Azure 诊断日志
-#### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
-#### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
-### [从服务进程收集日志](service-fabric-diagnostic-collect-logs-without-an-agent.md)
-### [监视 Windows Server 容器](service-fabric-diagnostics-containers-windowsserver.md)
-### [有状态的 Reliable Services 中的诊断](service-fabric-reliable-services-diagnostics.md)
-### [Reliable Actors 中的诊断](service-fabric-reliable-actors-diagnostics.md)
+### 生成事件
+#### [生成基础结构级别事件](service-fabric-diagnostics-event-generation-infra.md)
+##### [Reliable Services 事件](service-fabric-reliable-services-diagnostics.md)
+##### [Reliable Actors 事件](service-fabric-reliable-actors-diagnostics.md)
+#### [生成应用程序级别事件](service-fabric-diagnostics-event-generation-app.md)
+### 检查应用程序和群集运行状况
+#### [监视 Service Fabric 运行状况](service-fabric-health-introduction.md)
+#### [报告并检查服务运行状况](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+#### [添加自定义运行状况报告](service-fabric-report-health.md)
+#### [使用系统运行状况报告进行故障排除](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+#### [查看运行状况报告](service-fabric-view-entities-aggregated-health.md)
+### 聚合事件
+#### [使用 EventFlow 聚合事件](service-fabric-diagnostics-event-aggregation-eventflow.md)
+#### 使用 Azure 诊断聚合事件
+##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
+##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
+### 分析事件
+#### [使用 Application Insights 分析事件](service-fabric-diagnostics-event-analysis-appinsights.md)
+#### [使用 OMS 分析事件](service-fabric-diagnostics-event-analysis-oms.md)
 ### [排查本地群集的故障](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # 引用

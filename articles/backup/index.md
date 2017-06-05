@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 4d159b2cec70d9491a562f460629d8efa511d695
-ms.openlocfilehash: 29466a465865dc17350eb4aa70a86f9c973b693a
-ms.lasthandoff: 02/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 3d8b07dc9903a48f6481ceda1922479cc7cd9ef6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 ---
 #<a name="backup-documentation"></a>备份文档
@@ -78,7 +79,7 @@ ms.lasthandoff: 02/09/2017
         </a>
     </li>
      <li>
-        <a href="/azure/backup/backup-azure-vms-first-look">
+        <a href="/azure/backup/backup-azure-backup-server-vmware">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -88,7 +89,7 @@ ms.lasthandoff: 02/09/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>开始使用 Azure 备份来备份 Azure 虚拟机</h3>
+                        <h3>开始使用 Azure 备份服务器备份 VMware 服务器</h3>
                     </div>
                 </div>
             </div>
@@ -143,7 +144,17 @@ ms.lasthandoff: 02/09/2017
             </div>
         </div>
     </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/recoveryservices">恢复服务 REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
 </ul>
-
-
 

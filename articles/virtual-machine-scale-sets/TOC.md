@@ -12,7 +12,7 @@
 
 ## 创建模板
 ### [了解规模集模板](virtual-machine-scale-sets-mvss-start.md)
-### [添加虚拟网络](virtual-machine-scale-sets-mvss-existing-vnet.md)
+### [使用现有虚拟网络](virtual-machine-scale-sets-mvss-existing-vnet.md)
 ### [使用自定义映像](virtual-machine-scale-sets-mvss-custom-image.md)
 
 ## 部署
