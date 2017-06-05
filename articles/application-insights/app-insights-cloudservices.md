@@ -3,6 +3,7 @@ title: "Azure 云服务的 Application Insights | Microsoft Docs"
 description: "使用 Application Insights 有效监视 Web 角色和辅助角色"
 services: application-insights
 documentationcenter: 
+keywords: "WAD2AI, Azure 诊断"
 author: CFreemanwa
 manager: carmonm
 editor: alancameronwills
@@ -15,15 +16,15 @@ ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bfae0fcf992c38d7afef6140fdd79d87ab0ecb4f
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: a5e5cc37c4635b78279a5e240603b6a728922eb8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
-[Application Insights][start] 可监视 [Microsoft Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，你可以针对每个开发生命周期确定合理的设计方向。
+可以通过 [Application Insights][start] 来监视 [Microsoft Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障情况和使用情况，只需将 Application Insights 的 SDK 提供的数据与云服务提供的 [Azure 诊断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)数据进行组合分析即可。 通过收到的有关应用在现实中的性能和有效性的反馈，你可以针对每个开发生命周期确定合理的设计方向。
 
 ![示例](./media/app-insights-cloudservices/sample.png)
 
@@ -143,7 +144,7 @@ ms.lasthandoff: 05/10/2017
 * 请参阅[故障排除][qna]。
 
 ## <a name="view-azure-diagnostic-events"></a>查看 Azure 诊断事件
-在何处可以找到诊断信息：
+在 Application Insights 中的何处查找 [Azure 诊断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)信息：
 
 * 性能计数器显示为自定义指标。 
 * Windows 事件日志显示为跟踪和自定义事件。
