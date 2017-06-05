@@ -12,10 +12,6 @@
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
-### 使用模拟网关
-#### [Linux 上的模拟](iot-hub-linux-iot-edge-get-started.md)
-#### [Windows 上的模拟](iot-hub-windows-iot-edge-get-started.md)
-
 ### 使用物理设备
 #### [将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [将 Raspberry Pi 与 C 配合使用](iot-hub-raspberry-pi-kit-c-get-started.md)
@@ -31,6 +27,8 @@
 ##### [将 Intel NUC 设置为网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 ##### [将网关连接到 IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 ##### [使用网关进行数据转换](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+
+### [使用联机设备模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)
 
 ## [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
 ## [将 IoT 中心消息保存到 Azure 数据存储](iot-hub-store-data-in-azure-table-storage.md)
@@ -48,15 +46,21 @@
 ### [支持其他协议](iot-hub-protocol-gateway.md)
 ## [开发](iot-hub-how-to.md)
 ### [开发人员指南](iot-hub-devguide.md)
-#### [发送和接收消息](iot-hub-devguide-messaging.md)
 #### [设备到云的功能指南](iot-hub-devguide-d2c-guidance.md)
 #### [云到设备的功能指南](iot-hub-devguide-c2d-guidance.md)
-#### [从设备上载文件](iot-hub-devguide-file-upload.md)
+#### [发送和接收消息](iot-hub-devguide-messaging.md)
+##### [将设备到云的消息发送到 IoT 中心](iot-hub-devguide-messages-d2c.md)
+##### [从内置终结点读取设备到云的消息](iot-hub-devguide-messages-read-builtin.md)
+##### [对设备到云的消息使用自定义终结点和路由规则](iot-hub-devguide-messages-read-custom.md)
+##### [从 IoT 中心发送云到设备的消息](iot-hub-devguide-messages-c2d.md)
+##### [创建和读取 IoT 中心消息](iot-hub-devguide-messages-construct.md)
+#### [从设备上传文件](iot-hub-devguide-file-upload.md)
 #### [管理设备标识](iot-hub-devguide-identity-registry.md)
 #### [控制对 IoT 中心的访问](iot-hub-devguide-security.md)
 #### [了解设备孪生](iot-hub-devguide-device-twins.md)
 #### [对设备调用直接方法](iot-hub-devguide-direct-methods.md)
 #### [在多个设备上计划作业](iot-hub-devguide-jobs.md)
+#### [选择通信协议](iot-hub-devguide-protocols.md)
 #### [IoT 中心终结点](iot-hub-devguide-endpoints.md)
 #### [查询语言](iot-hub-devguide-query-language.md)
 #### [配额和限制](iot-hub-devguide-quotas-throttling.md)
@@ -74,7 +78,7 @@
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
-### [从设备上载文件](iot-hub-csharp-csharp-file-upload.md)
+### [从设备上传文件](iot-hub-csharp-csharp-file-upload.md)
 ### 设备孪生入门
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-twin-getstarted.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-getstarted.md)
@@ -105,7 +109,7 @@
 #### [使用 REST API](iot-hub-rm-rest.md)
 #### [通过 PowerShell 使用模板](iot-hub-rm-template-powershell.md)
 #### [通过 .NET 使用模板](iot-hub-rm-template.md)
-### 配置文件上载
+### 配置文件上传
 #### [使用门户](iot-hub-configure-file-upload.md)
 #### [使用 PowerShell](iot-hub-configure-file-upload-powershell.md)
 #### [使用 CLI 2.0](iot-hub-configure-file-upload-cli.md)
@@ -119,18 +123,22 @@
 ### [安全体系结构](iot-hub-security-architecture.md)
 ### [保护 IoT 部署](iot-hub-security-deployment.md)
 ## IoT Edge
+### 入门
+#### [Linux](iot-hub-linux-iot-edge-get-started.md)
+#### [Windows](iot-hub-windows-iot-edge-get-started.md)
 ### 模拟设备
 #### [Linux](iot-hub-linux-iot-edge-simulated-device.md)
 #### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
 ### [使用真实设备](iot-hub-iot-edge-physical-device.md)
 
 # 引用
-## [Azure CLI 2.0 预览版](/cli/azure/iot)
+## [Azure CLI 2.0](/cli/azure/iot)
 ## [.NET（服务）](/dotnet/api/microsoft.azure.devices)
 ## [.NET（设备）](/dotnet/api/microsoft.azure.devices.client)
 ## [Java（服务）](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java（设备）](/java/api/com.microsoft.azure.sdk.iot.device)
-## [Azure IoT SDK](http://azure.github.io/azure-iot-sdks/)
+## [Node.js SDK](http://azure.github.io/azure-iot-sdk-node/)
+## [C 设备 SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST（资源提供程序）](https://docs.microsoft.com/rest/api/iothub/iothubresource)
 ## [REST（设备标识）](https://docs.microsoft.com/rest/api/iothub/deviceapi)

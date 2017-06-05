@@ -69,7 +69,7 @@
     href: functions-how-to-use-azure-function-app-settings.md
   - name: Azure Functions 的连续部署
     href: functions-continuous-deployment.md
-  - name: 使用基础结构即代码部署 Azure Functions
+  - name: 自动执行资源部署
     href: functions-infrastructure-as-code.md
   - name: 监视 Azure Functions
     href: functions-monitoring.md
@@ -85,35 +85,31 @@
   items:
   - name: 绑定
     items:
-    - name: Cosmos DB 绑定
+    - name: Blob 存储
+      href: functions-bindings-storage-blob.md
+    - name: Cosmos DB
       href: functions-bindings-documentdb.md
-    - name: 事件中心绑定
+    - name: 事件中心
       href: functions-bindings-event-hubs.md
-    - name: HTTP 和 Webhook 绑定
+    - name: 外部文件
+      href: functions-bindings-external-file.md
+    - name: HTTP 和 webhook
       href: functions-bindings-http-webhook.md
-    - name: 移动应用绑定
+    - name: 移动应用
       href: functions-bindings-mobile-apps.md
-    - name: 通知中心输出绑定
+    - name: 通知中心
       href: functions-bindings-notification-hubs.md
-    - name: 用于队列和主题的服务总线触发器与绑定
+    - name: 队列存储
+      href: functions-bindings-storage-queue.md
+    - name: SendGrid
+      href: functions-bindings-sendgrid.md
+    - name: 服务总线
       href: functions-bindings-service-bus.md
-    - name: Sendgrid 绑定
-      href: functions-bindings-sendgrid.md
-    - name: 存储绑定
-      items:
-      - name: Blob 绑定
-        href: functions-bindings-storage-blob.md
-      - name: 队列绑定
-        href: functions-bindings-storage-queue.md
-      - name: 表绑定
-        href: functions-bindings-storage-table.md
-      - name: 外部文件绑定
-        href: functions-bindings-external-file.md
-    - name: SendGrid 绑定
-      href: functions-bindings-sendgrid.md
-    - name: 计时器触发器
+    - name: 表存储
+      href: functions-bindings-storage-table.md
+    - name: 计时器
       href: functions-bindings-timer.md
-    - name: Twilio 输出绑定
+    - name: Twilio
       href: functions-bindings-twilio.md
   - name: OpenAPI 参考
     href: functions-api-definition.md     
