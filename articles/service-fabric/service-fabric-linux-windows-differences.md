@@ -15,25 +15,28 @@ ms.workload: NA
 ms.date: 03/23/2017
 ms.author: subramar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 00c1f10f7df865344233143ce9cdf546e64acca0
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: e2d21b28c482427c60f708171336e6901b50e544
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
 # <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>Linux 上的 Service Fabric（预览版）与 Windows 上的 Service Fabric（正式版）之间的差异
 
-由于 Linux 上的 Service Fabric 是预览版，因此某些在 Windows 上受支持的功能，在 Linux 上尚不受支持。 最终，当 Linux 上的 Service Fabric 公开发布时，这些功能集会一致。
+由于 Linux 上的 Service Fabric 是预览版，因此某些在 Windows 上受支持的功能，在 Linux 上尚不受支持。 最终，当 Linux 上的 Service Fabric 公开发布时，这些功能集会一致。 在即将发布的版本中，此功能差异会缩小。 最新发行版（即 Windows 上的 5.6 版和 Linux 上的 5.5 版）之间存在以下差异： 
 
-* Linux 不支持 Reliable Collections（和 Reliable Stateful Services）。
-* ReverseProxy 在 Linux 上不可用。
-* 独立安装程序在 Linux 上不可用。
-* 清单文件的 XML 架构验证不在 Linux 上执行。 
-* Linux 不支持控制台重定向。 
-* 故障分析服务 (FAS) 在 Linux 上不可用。
-* Azure Active Directory 支持在 Linux 上不可用。
-* Powershell 命令的某些 CLI 命令对等项不可用。
+* Reliable Collections（和 Reliable Stateful Services） 
+* ReverseProxy 
+* 独立安装程序 
+* 清单文件的 XML 架构验证 
+* 控制台重定向 
+* 故障分析服务 (FAS)
+* Docker Compose 和 Docker Volume 以及适用于容器的日志记录驱动程序 
+* 容器和服务的资源调控 
+* DNS 服务
+* Azure Active Directory 支持
+* 某些 PowerShell 命令的 CLI 命令对等项 
 * 只能针对 Linux 群集运行部分 Powershell 命令（在下一部分展开介绍）。
 
 >[!NOTE]

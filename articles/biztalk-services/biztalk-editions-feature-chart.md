@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: b8d2b49a416883376302c9b3cc5924877b404a95
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk 服务：版本图表
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Azure BizTalk 服务提供多个版本。 借助本文确定适合你的方案和业务需求的版本。
 
 ## <a name="compare-the-editions"></a>比较版本
@@ -251,10 +256,5 @@ BizTalk 适配器服务由 Azure BizTalk 服务使用。 BizTalk 适配器服务
 * [BizTalk 服务：限制](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk 服务：颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)<br/>
 * [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

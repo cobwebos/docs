@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 1478a2eedad496d3113fef28920d10859d11b1ce
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: f35f693131bd1f4f47b161afb0a4f38d4f00bbd6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -47,18 +47,20 @@ ms.lasthandoff: 05/12/2017
 
 ## <a name="create-a-timer-triggered-function"></a>创建计时器触发的函数
 
-1. 展开 Function App，依次单击“函数”旁边的 **+** 按钮、与所需语言相对应的 **TimerTrigger** 模板。 然后，使用表中指定的设置，并单击“创建”：
+1. 展开 Function App，依次单击“函数”旁边的 **+** 按钮、与所需语言相对应的 **TimerTrigger** 模板。 然后使用表中指定的设置：
 
-| 设置 | 建议的值 | 说明 |
-|---|---|---|
-| **为函数命名** | TimerTriggerCSharp1 | 定义计时器触发的函数的名称。 |
-| **[计划](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 六字段 [CRON 表达式](http://en.wikipedia.org/wiki/Cron#CRON_expression)，计划函数每分钟运行一次。 |
+    ![在 Azure 门户中创建计时器触发的函数。](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
 
-将使用所选语言创建一个每分钟运行一次的函数。
+    | 设置 | 建议的值 | 说明 |
+    |---|---|---|
+    | **为函数命名** | TimerTriggerCSharp1 | 定义计时器触发的函数的名称。 |
+    | **[计划](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 六字段 [CRON 表达式](http://en.wikipedia.org/wiki/Cron#CRON_expression)，计划函数每分钟运行一次。 |
 
-1. 通过查看写入日志的跟踪信息来验证执行情况。
+2. 单击“创建” 。 将使用所选语言创建一个每分钟运行一次的函数。
 
-![Azure 门户中的“函数日志”查看器。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
+3. 通过查看写入日志的跟踪信息来验证执行情况。
+
+    ![Azure 门户中的“函数日志”查看器。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
 现在，可以更改函数的计划，减少其运行频率，例如每小时运行一次。 
 

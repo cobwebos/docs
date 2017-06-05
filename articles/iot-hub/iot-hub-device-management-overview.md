@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2017
 ms.author: briz
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 352c42ddeef5537f9b912ddfe6a72b6b5342835b
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 7ae476dbaf51ae90cc3c5948b0ec8901d7a536da
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -64,7 +65,7 @@ IoT 带来了一系列独特的设备管理难题，每个企业级解决方案�
     *其他阅读材料*：[使用直接方法][lnk-c2d-methods]、[对设备调用直接方法][lnk-methods-devguide]、[如何使用设备孪生属性][lnk-twin-properties]、[计划和广播作业][lnk-jobs]、[在多台设备上计划作业][lnk-jobs-devguide]。
 * **监视**：监视总体设备集合运行状况、正在进行的操作的状态并针对可能需要操作员注意的问题向操作员发出警报。  应用设备孪生以允许设备报告实时操作情况和更新操作的状态。 使用设备孪生查询生成显示最直接问题的功能强大的仪表板报告。
   
-    *其他阅读材料*：[如何使用设备孪生属性][lnk-twin-properties]、[用于设备孪生和作业的 IoT 中心查询语言][lnk-query-language]。
+    其他阅读材料：[如何使用设备孪生属性][lnk-twin-properties]、[用于设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query-language]。
 * **停用**：在发生故障、升级周期后，或在服务生存期结束时更换或停用设备。  使用设备孪生来维护设备信息（如果正在更换物理设备），或者将设备信息存档（如果正在停用设备）。 使用 IoT 中心标识注册表来安全地撤销设备标识和凭据。
   
     *其他阅读材料*：[如何使用设备孪生属性][lnk-twin-properties]、[管理设备标识][lnk-identity-registry]。

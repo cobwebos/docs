@@ -10,17 +10,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
-ms.custom: quick start manage
+ms.custom: quick start manage, mvc
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 05/24/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 45405c7bb9993d1fd529b25b599c3cd7f459843c
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 82c8a34fcccb6d19dc82110a6d95a80d748835f0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -28,10 +29,13 @@ ms.lasthandoff: 04/20/2017
 
 [Visual Studio Code](https://code.visualstudio.com/docs) 是一种图形代码编辑器，适用于 Linux、macOS 和 Windows，并且支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。 本快速入门演示了如何使用 Visual Studio Code 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
 
+## <a name="prerequisites"></a>先决条件
+
 此快速入门使用以下某个快速入门中创建的资源作为其起点：
 
 - [创建 DB - 门户](sql-database-get-started-portal.md)
 - [创建 DB - CLI](sql-database-get-started-cli.md)
+- [创建 DB - PowerShell](sql-database-get-started-powershell.md)
 
 在开始之前，请确保已安装最新版 [Visual Studio Code](https://code.visualstudio.com/Download) 并加载 [mssql 扩展](https://aka.ms/mssql-marketplace)。 有关 mssql 扩展的安装指南，请参阅 [Install VS Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code)（安装 VS Code）和 [mssql for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)（适用于 Visual Studio Code 的 mssql）。 
 
@@ -96,17 +100,15 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 4. 按照提示为新的连接配置文件指定连接属性。 指定每个值后，按 **ENTER** 继续。 
 
-   下表介绍了连接配置文件的属性。
-
-   | 设置 | 说明 |
-   |-----|-----|
-   | **服务器名称** | 输入完全限定的服务器名称，例如 **mynewserver20170313.database.windows.net** |
-   | **数据库名称** | 输入数据库名称，例如 **mySampleDatabase** |
-   | **身份验证** | 选择 SQL 登录名 |
-   | **用户名** | 输入服务器管理员帐户 |
-   | **密码(SQL 登录名)** | 输入服务器管理员帐户的密码 | 
-   | **保存密码?** | 选择“是”或“否” |
-   | **[可选] 输入此配置文件的名称** | 输入连接配置文件名称，例如 **mySampleDatabase**。 
+   | 设置       | 建议的值 | 说明 |
+   | ------------ | ------------------ | ------------------------------------------------- | 
+   | **服务器名称 | 完全限定的服务器名称 | 该名称应类似于：mynewserver20170313.database.windows.net。 |
+   | **数据库名称** | mySampleDatabase | 要连接到其中的数据库的名称。 |
+   | **身份验证** | SQL 登录名| SQL 身份验证是本教程中配置的唯一身份验证类型。 |
+   | **用户名** | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
+   | **密码(SQL 登录名)** | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
+   | **保存密码?** | 是或否 | 如果不希望每次都输入密码，则请选择“是”。 |
+   | 输入此配置文件的名称 | 配置文件名称，例如 mySampleDatabase。 | 保存配置文件名称可以在后续登录时加快连接速度。 | 
 
 5. 按 **ESC** 键关闭信息消息，该消息通知你，配置文件已创建并连接。
 

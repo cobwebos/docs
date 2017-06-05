@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/16/2017
+ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 89c19e9b64fc4e1fea68c717fd5f5e0e054ac10c
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: cc85ae1c6642e763e57327c151ec68845f7673f7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -55,11 +55,9 @@ Azure Analysis Services 支持 1200 和 1400 预览版兼容级别的表格模�
 ## <a name="data-sources"></a>数据源
 部署到 Azure 中服务器的数据模型支持连接到组织或云中的本地数据源。 为混合 BI 解决方案合并来自本地和云数据源的数据。
 
-![数据源](./media/analysis-services-overview/aas-overview-data-sources.png)
+由于服务器处于云中，因此可无缝连接到云数据源。 连接到本地数据源时，[本地数据网关](analysis-services-gateway.md)可确保快速、安全地连接到云中的服务器。
 
-由于服务器处于云中，因此可无缝连接到云数据源。 连接本地数据源时，[本地数据网关](analysis-services-gateway.md)可确保快速、安全地连接到云中的 Analysis Services 服务器。
-
-\* 仅限表格 1400 模型。
+若要详细了解哪些本地数据源受支持，请参阅 [Azure Analysis Services 中支持的数据源](analysis-services-datasource.md)。
 
 
 ## <a name="explore-your-data-from-anywhere"></a>随时随地浏览数据

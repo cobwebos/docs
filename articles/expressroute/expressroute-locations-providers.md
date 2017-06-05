@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/22/2017
-ms.author: cherylmc
+ms.date: 05/24/2017
+ms.author: kaanan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: b72acb9c1d2b746bfdc3ac724b9c8760e0d4b257
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 597c0840f5b8bca3c19c644782d7cac20833ce1a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
@@ -42,7 +42,7 @@ ms.lasthandoff: 05/23/2017
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
-| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛+、拉斯维加斯、洛杉矶、迈阿密、纽约、西雅图、硅谷、华盛顿特区、蒙特利尔、魁北克市、多伦多 |
+| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、西雅图、硅谷、华盛顿特区、蒙特利尔、魁北克市、多伦多 |
 | **南美洲** |巴西南部 |圣保罗 |
 | **欧洲** |北欧、西欧、英国西部、英国南部 |阿姆斯特丹、都柏林、伦敦、纽波特（威尔士）、巴黎 |
 | **亚洲** |东亚、东南亚 |中国香港特别行政区、新加坡 |
@@ -76,7 +76,7 @@ ms.lasthandoff: 05/23/2017
 | **金奈** | Airtel+、Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **芝加哥** |AT&T NetBond、Comcast、Equinix、Level 3 Communications、Megaport、Verizon、Zayo Group |
 | **达拉斯** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon、Zayo Group+ |
-| **丹佛** |CoreSite+ |
+| **丹佛** |CoreSite |
 | **都柏林** |Colt、Telecity Group |
 | **香港** |Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **拉斯维加斯** |Level 3 Communications+、Megaport |
@@ -86,8 +86,8 @@ ms.lasthandoff: 05/23/2017
 | **迈阿密** |Megaport |
 | **Montreal** |Bell Canada、Cologix |
 | **Mumbai** |Airtel+、Tata Communications |
-| **Newport(Wales)** |Next Generation Data |
 | **纽约** |Coresite、Equinix、Megaport、Zayo Group |
+| **Newport(Wales)** |Next Generation Data |
 | **大阪** |Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、Softbank |
 | **巴黎** |Interxion、Equinix |
 | **魁北克市** | Megaport |
@@ -129,7 +129,7 @@ ms.lasthandoff: 05/23/2017
 | **柏林** |Colt+、e-shelter、Megaport+ |
 | **法兰克福** |Colt、Equinix、Interxion |
 
-## <a name="c1partners"></a>通过未列出的服务提供商建立连接
+## <a name="c1partners"></a>通过 Exchange 提供商建立的连接
 如果前面部分中未列出你的连接服务提供商，你仍可以建立连接。
 
 * 请咨询你的连接服务提供商，以确定他们是否已连接到上表中列出的任何 Exchange 提供商。 你可以访问以下链接，以收集 Exchange 提供商所提供的服务的详细信息。 已有多个连接提供商连接到以太网 Exchange。
@@ -145,6 +145,7 @@ ms.lasthandoff: 05/23/2017
 * 从 Exchange 连接服务提供商处订购一条 ExpressRoute 线路以连接到 Microsoft。
   * 根据 [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md) 中的步骤来设置连接。
 
+## <a name="c1partners"></a>通过其他服务提供商建立的连接
 | **位置** | **Exchange** | **连接提供商** |
 | --- | --- | --- |
 | **阿姆斯特丹** | Equinix、Telecity | Eurofiber、Fastweb S.p.A、Nianet |
@@ -155,7 +156,7 @@ ms.lasthandoff: 05/23/2017
 | **洛杉矶** | Equinix |Transtelco |
 | **马德里** | Level3 | Zertia |
 | **Montreal** | Cologix、Equinix | Airgate Technologies Inc、Cogeco Peer 1、Rogers |
-| **纽约** |Equinix | Lightower |
+| **纽约** |Equinix、Megaport | Lightower、Webair |
 | **西雅图** |Equinix | Alaska Communications |
 | **硅谷** |Equinix | Cox Business、Windstream |
 | **新加坡** |Equinix |1CLOUDSTAR、Epsilon Telecommunications Limited |

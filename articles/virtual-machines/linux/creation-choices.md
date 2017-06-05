@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 756711abb014829971af126c5cb60c12e79c920e
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: b2f93579eb1c7a69d0dbd1b0ef112aed9b2168c3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 05/11/2017
     az group create --name myResourceGroup --location eastus
     ```
     
-  * 使用 [az vm create](/cli/azure/vm#create) 并使用最新的 *UbuntuLTS* 映像创建名为 *myVM* 的 VM，并生成 SSH 密钥（如果它们尚不存在于 *~/.ssh* 中）：
+  * 使用 [az vm create](/cli/azure/vm#create) 通过最新的 *UbuntuLTS* 映像创建名为 *myVM* 的 VM，并生成 SSH 密钥（如果 *~/.ssh* 中尚无此类密钥）：
 
     ```azurecli
     az vm create \
@@ -67,7 +67,7 @@ ms.lasthandoff: 05/11/2017
 
 
 ## <a name="operating-system-and-image-choices"></a>操作系统和映像选项
-创建 VM 时，可根据要运行的操作系统选择映像。 Azure 及其合作伙伴提供了许多映像，其中一些映像包括预安装的应用程序和工具。 也可上载自己的某个映像（请参阅[以下部分](#use-your-own-image)）。
+创建 VM 时，可根据要运行的操作系统选择映像。 Azure 及其合作伙伴提供了许多映像，其中一些映像包括预安装的应用程序和工具。 也可上传自己的某个映像（请参阅[以下部分](#use-your-own-image)）。
 
 ### <a name="azure-images"></a>Azure 映像
 使用 [az vm image](/cli/azure/vm/image) 命令，按发布者、发行版本和内部版本查看可用的内容。
@@ -111,7 +111,7 @@ az vm image list --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS --
 | UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |最新 |
 
 ### <a name="use-your-own-image"></a>使用你自己的映像
-如果需要特定自定义，可以通过捕获现有的 Azure VM 使用基于该 VM 的映像。 也可以上载本地创建的映像。 有关受支持的发行版以及如何使用你自己的映像的详细信息，请参阅以下文章：
+如果需要特定自定义，可以通过捕获现有的 Azure VM 使用基于该 VM 的映像。 也可以上传本地创建的映像。 有关受支持的发行版以及如何使用你自己的映像的详细信息，请参阅以下文章：
 
 * [Azure endorsed distributions（Azure 认可的分发版）](endorsed-distros.md)
 * [Information for non-endorsed distributions（有关未认可分发版的信息）](create-upload-generic.md)

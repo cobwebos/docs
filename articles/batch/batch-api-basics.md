@@ -1,5 +1,5 @@
 ---
-title: "面向开发人员的 Azure 批处理概述 | Microsoft 文档"
+title: "面向开发人员的 Azure Batch 概述 | Microsoft 文档"
 description: "从开发的角度了解 Batch 服务的功能及其 API。"
 services: batch
 documentationcenter: .net
@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 05/05/2017
+ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f8279eb672e58c7718ffb8e00a89bc1fce31174f
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 84f9677daebe13f54a54802b1b16cc6487a0b845
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -38,11 +38,11 @@ ms.lasthandoff: 05/10/2017
 几乎所有使用 Batch 服务处理并行工作负荷的应用程序和服务都使用以下典型高级工作流：
 
 1. 将要处理的**数据文件**上传到 [Azure 存储][azure_storage]帐户。 Batch 包含访问 Azure Blob 存储的内置支持，在运行任务时，任务可以将这些文件下载到 [计算节点](#compute-node) 。
-2. 上载任务所要运行的 **应用程序文件** 。 这些文件可能是二进制文件或脚本及其依赖项，并由作业中的任务执行。 任务可以从存储帐户下载这些文件，或者，你可以使用 Batch 的 [应用程序包](#application-packages) 功能来管理和部署应用程序。
+2. 上传任务所要运行的 **应用程序文件** 。 这些文件可能是二进制文件或脚本及其依赖项，并由作业中的任务执行。 任务可以从存储帐户下载这些文件，或者，你可以使用 Batch 的 [应用程序包](#application-packages) 功能来管理和部署应用程序。
 3. 创建计算节点的 [池](#pool) 。 创建池时，可以指定池的计算节点数目、其大小和操作系统。 运行作业中的每个任务时，会将任务分配到池中的某个节点以执行。
 4. 创建 [作业](#job)。 作业管理任务的集合。 你可以将每个作业关联到要运行该作业的任务的特定池。
-5. 将 [任务](#task) 添加到作业。 每个任务将运行上载的应用程序或脚本，以处理它从存储帐户下载的数据文件。 当每个任务完成时，可将其输出上载到 Azure 存储空间。
-6. 监视作业进度并从 Azure 存储空间检索任务输出。
+5. 将 [任务](#task) 添加到作业。 每个任务将运行上传的应用程序或脚本，以处理它从存储帐户下载的数据文件。 当每个任务完成时，可将其输出上传到 Azure 存储。
+6. 监视作业进度并从 Azure 存储检索任务输出。
 
 以下部分介绍上述资源，以及可实现分布式计算方案的其他批处理资源。
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 05/10/2017
 ## <a name="account"></a>帐户
 批处理帐户是批处理服务中唯一标识的实体。 所有处理都与一个 Batch 帐户相关联。
 
-可以通过 [Azure 门户](batch-account-create-portal.md)或编程方式（例如使用[批处理管理 .NET 库](batch-management-dotnet.md)）创建 Azure 批处理帐户。 创建帐户时，可以关联 Azure 存储帐户。
+可以通过 [Azure 门户](batch-account-create-portal.md)或编程方式（例如使用[批处理管理 .NET 库](batch-management-dotnet.md)）创建 Azure Batch 帐户。 创建帐户时，可以关联 Azure 存储帐户。
 
 批处理支持两种帐户配置，二者都基于“池分配模式”属性。 这两个配置允许你访问与批处理[池](#pool)相关的不同功能（见本文后面部分）。
 
@@ -174,7 +174,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
     可以指定应在其中创建池计算节点的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 的 ID。 有关详细信息，请参阅[池网络配置](#pool-network-configuration)部分。
 
 > [!IMPORTANT]
-> 所有批处理帐户都有默认**配额**，用于限制批处理帐户中的**核心**（因此也包括计算节点）数目。 可以在 [Quotas and limits for the Azure Batch service](batch-quota-limit.md)（Azure 批处理服务的配额和限制）中找到默认配额以及如何[提高配额](batch-quota-limit.md#increase-a-quota)（例如批处理帐户中的核心数目上限）的说明。 如果你有类似于“为什么我的池不能包含 X 个以上的节点？ ”的疑惑，则原因可能在于此核心配额。
+> 所有批处理帐户都有默认**配额**，用于限制批处理帐户中的**核心**（因此也包括计算节点）数目。 可以在 [Quotas and limits for the Azure Batch service](batch-quota-limit.md)（Azure Batch 服务的配额和限制）中找到默认配额以及如何[提高配额](batch-quota-limit.md#increase-a-quota)（例如 Batch 帐户中的核心数目上限）的说明。 如果你有类似于“为什么我的池不能包含 X 个以上的节点？ ”的疑惑，则原因可能在于此核心配额。
 >
 >
 
@@ -235,7 +235,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 启动任务的主要优点是可以包含全部所需的信息，使你能够配置计算节点，以及安装执行任务所需的应用程序。 因此，增加池中的节点数量与指定新的目标节点计数一样简单。 启动任务向 Batch 服务提供配置新节点并使其准备好接受任务所需的信息。
 
-与任何 Azure Batch 任务一样，除了指定要执行的**命令行**以外，还可以指定 [Azure 存储][azure_storage]中的**资源文件**列表。 Batch 服务先将资源文件从 Azure 存储空间复制到节点，然后运行命令行。 对于池启动任务，文件列表通常包含任务应用程序及其依赖项。
+与任何 Azure Batch 任务一样，除了指定要执行的**命令行**以外，还可以指定 [Azure 存储][azure_storage]中的**资源文件**列表。 Batch 服务先将资源文件从 Azure 存储复制到节点，然后运行命令行。 对于池启动任务，文件列表通常包含任务应用程序及其依赖项。
 
 但是，启动任务还可能包含计算节点上运行的所有任务使用的引用数据。 例如，启动任务的命令行可执行 `robocopy` 操作，将应用程序文件（已指定为资源文件并下载到节点）从启动任务的[工作目录](#files-and-directories)复制到[共享文件夹](#files-and-directories)，然后然后运行 MSI 或 `setup.exe`。
 
@@ -266,7 +266,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 Batch 提供作业准备任务来设置作业前的执行。 作业释放任务用于作业后的维护或清理。
 
 * **作业准备任务**：在任何其他作业任务执行之前，作业准备任务在计划要运行任务的所有计算节点上运行。 你可以使用作业准备任务可以复制所有任务共享的、但对作业唯一的数据。
-* **作业释放任务**：作业完成后，作业释放任务将在池中至少运行了一个任务的每个节点上运行。 你可以使用作业释放任务可删除作业准备任务所复制的数据，或压缩并上载诊断日志数据。
+* **作业释放任务**：作业完成后，作业释放任务将在池中至少运行了一个任务的每个节点上运行。 你可以使用作业释放任务可删除作业准备任务所复制的数据，或压缩并上传诊断日志数据。
 
 作业准备和释放任务允许指定调用任务时要运行的命令行。 这些任务提供许多功能，例如文件下载、提升权限的执行、自定义环境变量、最大执行持续时间、重试计数和文件保留时间。
 
@@ -320,7 +320,7 @@ Batch 服务在节点上公开文件系统的一部分作为 *根目录*。 任�
 >
 
 ## <a name="application-packages"></a>应用程序包
-[应用程序包](batch-application-packages.md) 功能可为池中的计算节点提供简单的应用程序管理和部署能力。 可以上载和管理任务运行的多个应用程序版本，包括二进制文件和支持文件。 然后可以将一个或多个这样的应用程序自动部署到池中的计算节点。
+[应用程序包](batch-application-packages.md) 功能可为池中的计算节点提供简单的应用程序管理和部署能力。 可以上传和管理任务运行的多个应用程序版本，包括二进制文件和支持文件。 然后可以将一个或多个这样的应用程序自动部署到池中的计算节点。
 
 可以在池和任务级别指定应用程序包。 指定池应用程序包时，应用程序将部署到池中的每个节点。 指定任务应用程序包时，应用程序只在运行任务的命令行之前，部署到计划要运行作业的至少一个任务的节点。
 
@@ -344,18 +344,24 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 ## <a name="pool-network-configuration"></a>池网络配置
 
-在 Azure 批处理中创建计算节点池时，可以使用 API 指定应在其中创建池计算节点的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 的 ID。
+在 Azure Batch 中创建计算节点池时，可以指定应在其中创建池计算节点的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 的子网 ID。
 
 * VNet 必须满足以下条件：
 
-   * 与 Azure 批处理帐户在同一 Azure **区域**中。
-   * 与 Azure 批处理帐户在同一**订阅**中。
+   * 与 Azure Batch 帐户在同一 Azure **区域**中。
+   * 与 Azure Batch 帐户在同一**订阅**中。
 
-* VNet 应该具有足够的可用 **IP 地址**以适应池的 `targetDedicated` 属性。 如果子网没有足够的可用 IP 地址，批处理服务将分配池中的部分计算节点，并返回调整大小错误。
+* 支持的 VNet 类型取决于为 Batch 帐户分配池的方式：
+    - 如果在创建 Batch 帐户时将其 poolAllocationMode 属性设置为“BatchService”，则指定的 VNet 必须是经典 VNet。
+    - 如果在创建 Batch 帐户时将其 poolAllocationMode 属性设置为“UserSubscription”，则指定的 VNet 可以是经典 VNet，也可以是 Azure Resource Manager VNet。 创建的池必须带有虚拟机配置才能使用 VNet。 不支持创建的带云服务配置的池。
+
+* 如果在创建 Batch 帐户时将其 poolAllocationMode 属性设置为“BatchService”，则必须提供 Batch 服务主体访问 VNet 所需的权限。 名为“Microsoft Azure Batch”或“MicrosoftAzureBatch”的 Batch 服务主体必须为指定的 VNet 提供[经典虚拟机参与者基于角色的访问控制 (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/#classic-virtual-machine-contributor) 角色。 如果未提供指定的 RBAC 角色，Batch 服务会返回“400 (请求错误)”。
+
+* 指定的子网应有足够的可用 IP 地址来提供给所有的目标节点，即池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总计。 如果子网没有足够的可用 IP 地址，批处理服务将分配池中的部分计算节点，并返回调整大小错误。
 
 * 指定的子网必须允许来自批处理服务的通信，才能在计算节点上计划任务。 如果与 VNet 关联的**网络安全组 (NSG)** 拒绝与计算节点通信，则批处理服务会将计算节点的状态设置为“不可用”。
 
-* 如果指定的 VNet 具有关联的 NSG，则必须启用入站通信。 对于 Linux 池和 Windows 池，必须启用端口 29876 和 29877。 可以分别为 Linux 池的 SSH 或 Windows 池的 RDP 选择性地启用（或选择性地筛选）端口 22 或 3389。
+* 如果指定的 VNet 存在关联的网络安全组 (NSG)，则必须为入站通信启用数个保留的系统端口。 对于使用虚拟机配置创建的池，请启用端口 29876 和 29877，以及端口 22（适用于 Linux）和 3389（适用于 Windows）。 对于使用云服务配置创建的池，请启用端口 10100、20100 和 30100。 另请在端口 443 上启用到 Azure 存储的出站连接。
 
 VNet 的其他设置取决于批处理帐户的池分配模式。
 
@@ -415,16 +421,24 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 ### <a name="task-failure-handling"></a>任务失败处理
 任务失败划分为以下类别：
 
-* **计划失败**
+* 预处理失败
 
-    如果为任务指定的文件传输出于任何原因失败，将为该任务设置“计划错误”。
+    如果任务无法启动，则会为任务设置预处理错误。  
 
-    如果任务的资源文件已移动、存储帐户不再可用，或者发生其他使文件无法成功复制到节点的问题，则可能会出现计划错误。
+    如果任务的资源文件已移动、存储帐户不再可用，或者发生其他使文件无法成功复制到节点的问题，则可能会出现预处理错误。
+
+* 文件上传失败
+
+    如果为任务指定的文件上传由于某种原因而失败，则会为该任务设置文件上传错误。
+
+    如果提供的用于访问 Azure 存储的 SAS 无效或未提供写权限，如果存储帐户不再可用，或者如果遇到了另一问题，导致无法从节点成功复制文件，则可能会发生文件上传错误。    
+
 * **应用程序失败**
 
     任务命令行指定的进程也可能会失败。 如果任务执行的进程返回非零退出代码，则将该进程视为失败（请参阅下一部分中的 *任务退出代码* ）。
 
     对于应用程序失败，可以将 Batch 配置为自动重试任务，并最多重试指定的次数。
+
 * **约束失败**
 
     可以设置一个约束来指定作业或任务的最大执行持续期间，即 *maxWallClockTime*。 此约束可用于终止未能继续进行的任务。
@@ -435,6 +449,7 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 * `stderr` 和 `stdout`
 
     在执行过程中，应用程序可以生成诊断输出，这些信息可用于排查问题。 如前一部分[文件和目录](#files-and-directories)中所述，批处理服务会将标准输出和标准错误输出发送到计算节点上的任务目录中的 `stdout.txt` 和 `stderr.txt` 文件。 可以使用 Azure 门户或 Batch SDK 之一下载这些文件。 例如，可以使用 Batch .NET 库中的 [ComputeNode.GetNodeFile][net_getfile_node] 和 [CloudTask.GetNodeFile][net_getfile_task] 检索这些文件和其他文件来进行故障排除。
+
 * **任务退出代码**
 
     如前所述，如果任务执行的程序返回非零退出代码，则 Batch 服务会将此任务标记为失败。 当任务执行某个进程时，Batch 将使用 *进程的返回代码*填充任务的退出代码属性。 请务必注意，任务的退出代码**不是**由 Batch 服务确定， 而是由进程本身或此进程在其上运行的操作系统确定。
@@ -445,7 +460,7 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 间歇性的问题也有可能会导致任务挂起，或者花费很长时间才能完成执行。 可为任务设置最长的执行时间间隔。 如果超出最长执行时间间隔，Batch 服务会中断任务应用程序。
 
 ### <a name="connecting-to-compute-nodes"></a>连接到计算节点
-可通过远程登录到计算节点来进一步执行调试和故障排除。 可以使用 Azure 门户下载 Windows 节点的远程桌面协议 (RDP) 文件，并获取 Linux 节点的安全外壳 (SSH) 连接信息。 也可以使用 Batch API（例如，使用 [Batch .NET][net_rdpfile] 或 [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes)）执行此操作。
+可通过远程登录到计算节点来进一步执行调试和故障排除。 可以使用 Azure 门户下载 Windows 节点的远程桌面协议 (RDP) 文件，并获取 Linux 节点的安全外壳 (SSH) 连接信息。 也可以使用 Batch API（例如，使用 [Batch .NET][net_rdpfile] 或 [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh)）执行此操作。
 
 > [!IMPORTANT]
 > 若要通过 RDP 或 SSH 连接到某个节点，必须先在该节点上创建一个用户。 为此，可以使用 Azure 门户通过 Batch REST API [将用户帐户添加到节点][rest_create_user]、在 Batch .NET 中调用 [ComputeNode.CreateComputeNodeUser][net_create_user] 方法，或在 Batch Python 模块中调用 [add_user][py_add_user] 方法。
