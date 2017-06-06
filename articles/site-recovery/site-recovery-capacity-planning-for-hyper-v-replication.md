@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/06/2017
+ms.date: 06/05/2017
 ms.author: nisoneji
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb078183b24cd5c5172b48f1135eced061220cf5
 ms.openlocfilehash: 3c0c00bf9e4380a682ff1e155fb6d9a3826f4b00
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -133,9 +135,4 @@ ms.openlocfilehash: 3c0c00bf9e4380a682ff1e155fb6d9a3826f4b00
 * [将 VMM 云中的 Hyper-V VM 复制到 Azure](site-recovery-vmm-to-azure.md)
 * [将 Hyper-V VM 复制（不使用 VMM）到 Azure](site-recovery-hyper-v-site-to-azure.md)
 * [在 VMM 站点之间复制 Hyper-V VM](site-recovery-vmm-to-vmm.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

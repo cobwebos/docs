@@ -3,7 +3,7 @@ title: "使用 .NET Framework 将事件发送到 Azure 事件中心 | Microsoft 
 description: "使用 .NET Framework 将事件发送到事件中心入门"
 services: event-hubs
 documentationcenter: 
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/08/2017
-ms.author: jotaub;sethm
-translationtype: Human Translation
+ms.author: sethm
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: 306c9c5cb06caa186bc0b7f431a5412dfe810722
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/19/2017
 
 
