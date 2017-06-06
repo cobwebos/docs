@@ -40,7 +40,7 @@ ms.lasthandoff: 02/17/2017
 * 下载[框架项目](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip)，或下载[已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)。 每个下载内容都是 Visual Studio 2013 解决方案。
 * 还需要一个可在其中创建用户和注册应用的 Azure AD 租户。 如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
-准备好后，请按照以下&4; 个部分中的步骤操作。
+准备好后，请按照以下 4 个部分中的步骤操作。
 
 ## <a name="step-1-set-up-your-xamarin-development-environment"></a>步骤 1：设置 Xamarin 开发环境
 由于本教程包含 iOS、Android 和 Windows 的项目，因此需要 Visual Studio 和 Xamarin。 若要创建所需的环境，请完成 MSDN 上[设置和安装 Visual Studio 与 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 中的过程。 这些说明包含的材料可供你在等待安装完成时查看，以深入了解 Xamarin。
