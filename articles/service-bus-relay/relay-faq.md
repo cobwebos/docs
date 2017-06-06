@@ -3,7 +3,7 @@ title: "Azure 中继常见问题 | Microsoft Docs"
 description: "获取 Azure 中继的某些常见问题的解答。"
 services: service-bus-relay
 documentationcenter: na
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2017
-ms.author: jotaub;sethm
+ms.author: sethm
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: cc44d59100104253447e474a49254d8b6bd68d8c

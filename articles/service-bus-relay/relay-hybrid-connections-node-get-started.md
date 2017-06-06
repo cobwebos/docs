@@ -3,7 +3,7 @@ title: "开始在 Node 中使用 Azure 中继混合连接 | Microsoft 文档"
 description: "如何为混合连接编写节点控制台应用程序"
 services: service-bus-relay
 documentationcenter: node
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
@@ -13,7 +13,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 05/22/2017
-ms.author: jotaub;sethm
+ms.author: sethm
 ms.translationtype: Human Translation
 ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
 ms.openlocfilehash: a97082b38d146964d77cd9029ce74baa781c6c27

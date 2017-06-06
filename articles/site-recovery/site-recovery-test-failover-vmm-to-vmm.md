@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 2/15/2017
+ms.date: 06/05/2017
 ms.author: pratshar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b1a5b2879a7b98ec4ad3e8ebbc9e95c0740d89f
 ms.openlocfilehash: 3aaa005319b1ce2a10cd913c63b31860d31b797e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/23/2017
 
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 02/23/2017
 > * [测试故障转移（VMM 到 VMM）](./site-recovery-test-failover-vmm-to-vmm.md)
 
 
-本文提供有关针对使用 VMM 托管本地站点作为恢复站点、受 Site Recovery 保护的虚拟机和物理服务器执行测试故障转移或灾难恢复演练的信息与说明。 
+本文提供有关针对使用 VMM 托管本地站点作为恢复站点、受 Site Recovery 保护的虚拟机和物理服务器执行测试故障转移或灾难恢复演练的信息与说明。
 
 请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
@@ -49,7 +50,7 @@ ms.lasthandoff: 02/23/2017
 如果测试故障转移中涉及的虚拟机使用 DHCP，则应在为进行测试故障转移创建的隔离网络中创建测试 DHCP 服务器。
 
 ### <a name="prepare-active-directory"></a>准备 Active Directory
-要运行测试故障转移以进行应用程序测试，测试中需要生产用 Active Directory 环境的副本。 如需更多详细信息，请参阅 [Active Directory 的测试性故障转移注意事项](site-recovery-active-directory.md#test-failover-considerations)部分。 
+要运行测试故障转移以进行应用程序测试，测试中需要生产用 Active Directory 环境的副本。 如需更多详细信息，请参阅 [Active Directory 的测试性故障转移注意事项](site-recovery-active-directory.md#test-failover-considerations)部分。
 
 ### <a name="prepare-dns"></a>准备 DNS
 按如下所述准备 DNS 服务器以进行测试故障转移：
@@ -76,9 +77,9 @@ ms.lasthandoff: 02/23/2017
 
 1. 选择“**恢复计划**” > “*recoveryplan_name*”。 单击“**故障转移**” > “**测试故障转移**”。
 1. 在“测试故障转移”边栏选项卡上，指定在测试故障转移后，虚拟机应如何连接到网络。 有关详细信息，请查看[网络选项](#network-options-in-site-recovery)。
-1. 在“**作业**”选项卡上跟踪故障转移进度。 
+1. 在“**作业**”选项卡上跟踪故障转移进度。
 1. 完成后，验证虚拟机是否成功启动。
-1. 完成后，在恢复计划上单击“清理测试故障转移”。 在“**说明**”中，记录并保存与测试性故障转移相关联的任何观测结果。 此时会删除在测试故障转移期间创建的虚拟机和网络。 
+1. 完成后，在恢复计划上单击“清理测试故障转移”。 在“**说明**”中，记录并保存与测试性故障转移相关联的任何观测结果。 此时会删除在测试故障转移期间创建的虚拟机和网络。
 
 
 ## <a name="network-options-in-site-recovery"></a>Site Recovery 中的网络选项
@@ -97,10 +98,10 @@ ms.lasthandoff: 02/23/2017
 >
 
 
-## <a name="test-failover-to-a-production-network-on-recovery-site"></a>在恢复站点上执行到生产网络的测试故障转移 
+## <a name="test-failover-to-a-production-network-on-recovery-site"></a>在恢复站点上执行到生产网络的测试故障转移
 执行测试故障转移时，建议选择与“网络映射”中提供的生产恢复站点网络不同的网络。 但是，如果你确实想要在故障转移后的虚拟机中验证端到端网络连接，请注意以下几点：
 
-1. 确保在执行测试故障转移时主虚拟机已关闭。 否则，同一网络中会同时运行两个具有相同标识的虚拟机，这可能会导致意外的后果。 
+1. 确保在执行测试故障转移时主虚拟机已关闭。 否则，同一网络中会同时运行两个具有相同标识的虚拟机，这可能会导致意外的后果。
 1. 清理测试故障转移虚拟机时，在测试故障转移虚拟机中所做的全部更改都会丢失。 这些更改不会复制回主虚拟机。
 1. 以这种方式执行测试会导致生产应用程序发生停机。 灾难恢复演练正在进行时，应该告诉应用程序的用户不要使用该应用程序。  
 
