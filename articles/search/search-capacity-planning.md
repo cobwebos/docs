@@ -126,7 +126,7 @@ Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请�
 >
 
 ## <a name="billing-formula-for-replica-and-partition-resources"></a>副本和分区资源的计费公式
-计算特定组合所用 SU 数的公式为副本数乘以分区数的积，即 (R X P = SU)。 例如，3 个副本乘以&3; 个分区，按&9; 个 SU 计费。
+计算特定组合所用 SU 数的公式为副本数乘以分区数的积，即 (R X P = SU)。 例如，3 个副本乘以 3 个分区，按 9 个 SU 计费。
 
 每个 SU 的成本由层决定。基本层的每个 SU 成本低于标准层。 有关每层的费率，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。
 
