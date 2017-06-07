@@ -87,7 +87,7 @@ ms.lasthandoff: 05/18/2017
 
 可以使用以下任一选项在 Raspberry Pi 3 设备上安装 Raspbian。
 
-* 若要安装最新版本的 Raspbian，请使用 [NOOBS][ lnk-noobs] 图形用户界面。
+* 若要安装最新版本的 Raspbian，请使用 [NOOBS][lnk-noobs] 图形用户界面。
 * 手动[下载][lnk-raspbian] Raspbian 操作系统的最新映像，并将其写入 SD 卡中。
 
 ### <a name="install-bluez-537"></a>安装 BlueZ 5.37

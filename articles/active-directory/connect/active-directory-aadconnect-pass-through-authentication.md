@@ -64,7 +64,7 @@ Azure AD 直通身份验证功能为这些组织提供一个简单的解决方�
 - 适用于 Windows 10 设备的 Azure AD Join。
 
 >[!IMPORTANT]
->启用直通身份验证时，默认还会启用密码同步，这样就可以实现直通身份验证功能目前尚不支持的方案（旧式 Office 客户端应用程序、Exchange ActiveSync 和适用于 Windows 10 设备的 Azure AD Join）。 密码同步只在这些特定的方案中充当回退机制。 如果不需要密码同步，可以在 Azure AD Connect 向导中的“可选功能”[](active-directory-aadconnect-get-started-custom.md#optional-features)页上将它关闭。
+>启用直通身份验证时，默认还会启用密码同步，这样就可以实现直通身份验证功能目前尚不支持的方案（旧式 Office 客户端应用程序、Exchange ActiveSync 和适用于 Windows 10 设备的 Azure AD Join）。 密码同步只在这些特定的方案中充当回退机制。 如果不需要密码同步，可以在 Azure AD Connect 向导中的 [可选功能](active-directory-aadconnect-get-started-custom.md#optional-features) 页上将它关闭。
 
 ### <a name="prerequisites"></a>先决条件
 

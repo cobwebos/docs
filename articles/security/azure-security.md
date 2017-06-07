@@ -77,7 +77,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 本部分提供了关于安全操作中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="operations-management-suite-security-and-audit-dashboard"></a>Operations Management Suite 安全和审核仪表板
-[OMS 安全和审核解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助[内置搜索查询](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 “安全和审核”[](https://technet.microsoft.com/library/mt484091.aspx)仪表板是主屏幕，提供 OMS 中安全的所有相关内容。 它提供计算机安全状态的高级洞见。 还允许查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
+[OMS 安全和审核解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助[内置搜索查询](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 [安全和审核](https://technet.microsoft.com/library/mt484091.aspx)仪表板是主屏幕，提供 OMS 中安全的所有相关内容。 它提供计算机安全状态的高级洞见。 还允许查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
 
 此外，检测到特定事件时，可以将 OMS 安全性和符合性配置为[自动执行特定操作](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)。
 

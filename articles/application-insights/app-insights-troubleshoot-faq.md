@@ -252,7 +252,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 ### <a name="firewall-door"></a>防火墙门
 
-允许 Web 服务器将遥测发送到终结点 https://dc.services.visualstudio.com:443 和 https://rt.services.visualstudio.com:443。 
+允许 Web 服务器将遥测发送到终结点 https://dc.services.visualstudio.com:443 和 https://rt.services.visualstudio.com:443 。 
 
 ### <a name="proxy"></a>代理
 
