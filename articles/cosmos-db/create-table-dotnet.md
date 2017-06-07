@@ -105,7 +105,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“密钥”，然后单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 app.config 文件中。
 
-    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-documentdb-dotnet-core/keys.png)
+    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-table-dotnet/keys.png)
 
 2. 在 Visual Studio 中，打开 app.config 文件。 
 

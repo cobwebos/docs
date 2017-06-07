@@ -281,7 +281,7 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 
 ## <a name="feedback"></a>反馈
 
-本文档是否涵盖你感兴趣的自定义内容？ 请在“用户之声”[](https://feedback.azure.com/forums/321918-azure-iot)中添加功能建议，或写下对本文的评语。 
+本文档是否涵盖你感兴趣的自定义内容？ 请在 [用户之声](https://feedback.azure.com/forums/321918-azure-iot) 中添加功能建议，或写下对本文的评语。 
 
 ## <a name="next-steps"></a>后续步骤
 

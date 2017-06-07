@@ -46,7 +46,7 @@ VPN 网关需要 `-GatewayType` *Vpn*。
     
 ## <a name="gwsku"></a>网关 SKU
 
-[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-original-include.md)]
+[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
 ### <a name="configuring-the-gateway-sku"></a>配置网关 SKU
 ####<a name="specifying-the-gateway-sku-in-the-azure-portal"></a>在 Azure 门户中指定网关 SKU
