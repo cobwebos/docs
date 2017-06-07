@@ -44,7 +44,7 @@ ms.lasthandoff: 05/10/2017
 
 | 标题 | 说明 |
 | --- | --- |
-| Power BI 输出通用版本 |[Power BI 输出](stream-analytics-power-bi-dashboard.md)现已正式发布。 已删除 Power BI 为期 90 天的授权期限。 有关需要续订授权的方案的详细信息，请参阅创建 Power BI 仪表板的“续订授权”[](stream-analytics-power-bi-dashboard.md#renew-authorization)部分。 |
+| Power BI 输出通用版本 |[Power BI 输出](stream-analytics-power-bi-dashboard.md)现已正式发布。 已删除 Power BI 为期 90 天的授权期限。 有关需要续订授权的方案的详细信息，请参阅创建 Power BI 仪表板的 [续订授权](stream-analytics-power-bi-dashboard.md#renew-authorization) 部分。 |
 
 ## <a name="notes-for-03032016-release-of-stream-analytics"></a>流分析 03/03/2016 版说明
 此版本包含以下更新。
