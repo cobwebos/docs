@@ -116,7 +116,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）为登录到�
 
 可通过 Azure AD Connect 启用 Azure AD 无缝 SSO。
 
-如果你要执行 Azure AD Connect 全新安装，请选择“自定义安装路径”。[](active-directory-aadconnect-get-started-custom.md) 在“用户登录”页上，选中“启用单一登录”选项。
+如果你要执行 Azure AD Connect 全新安装，请选择 [自定义安装路径](active-directory-aadconnect-get-started-custom.md)。 在“用户登录”页上，选中“启用单一登录”选项。
 
 ![Azure AD Connect - 用户登录](./media/active-directory-aadconnect-sso/sso8.png)
 
