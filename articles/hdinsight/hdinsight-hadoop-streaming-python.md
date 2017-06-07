@@ -165,7 +165,7 @@ Python 可以使用 `sys` 模块从 STDIN 读取数据，并使用 `print` 输�
 3. 若要确保 mapper.py 和 reducer.py 具有正确的行尾，请使用以下命令：
 
     ```bash
-    perl -pi -e 's/\r\n/\n/g' mappery.py
+    perl -pi -e 's/\r\n/\n/g' mapper.py
     perl -pi -e 's/\r\n/\n/g' reducer.py
     ```
 

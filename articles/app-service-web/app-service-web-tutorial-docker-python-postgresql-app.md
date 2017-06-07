@@ -37,9 +37,9 @@ ms.lasthandoff: 06/01/2017
 1. [下载并安装 Docker Community Edition](https://www.docker.com/community-edition)
 1. [下载和安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="test-local-postgresql-installation-and-create-a-database"></a>测试本地 PostgreSQL 安装并创建数据库
 执行此步骤时，请确保本地 PostgreSQL 数据库正在运行。

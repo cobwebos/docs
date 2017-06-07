@@ -30,6 +30,10 @@ ms.lasthandoff: 05/15/2017
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="sample-script"></a>示例脚本
 
 [!code-azurecli-interactive[主要](../../../cli_scripts/app-service/deploy-deployment-slot/deploy-deployment-slot.sh "创建 Web 应用并将代码部署到过渡环境")]

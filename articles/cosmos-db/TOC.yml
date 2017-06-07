@@ -313,7 +313,7 @@
 - name: 资源
   items:
   - name: 定价
-    href: https://azure.microsoft.com/pricing/details/documentdb/
+    href: https://azure.microsoft.com/pricing/details/cosmos-db/
   - name: 常见问题
     href: faq.md
   - name: 堆栈溢出
