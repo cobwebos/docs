@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "（已弃用）二项式分布套件 - Azure | Microsoft Docs"
+description: "（已弃用）二项式分布套件"
+services: machine-learning
+documentationcenter: 
+author: ireiter
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 6d102d57-8f20-4ab3-be31-02fcfe4d15ed
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: ireiter
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: d719d01ae1b3f748d3f3ebc5587f9f0f969dad21
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 4d4a343be86909acf054eaaf9cc4a1b0df5a4209
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/11/2017
 
 
 ---

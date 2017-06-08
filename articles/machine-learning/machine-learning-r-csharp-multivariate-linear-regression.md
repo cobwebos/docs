@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "（已弃用）多变量线性回归 - Azure | Microsoft Docs"
+description: "（已弃用）多变量线性回归"
+services: machine-learning
+documentationcenter: 
+author: jaymathe
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 2fb78220-ced9-4564-a439-9e5df6772994
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: jaymathe
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 36b2da99b41f349444c6295fdbea09e235e5dcf5
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1ee1eae91185c1893b55be2046343d78dd6c48b
+ms.openlocfilehash: 96780fccdf887548b0f6e525736f1d507cf30486
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/20/2017
 
 
 ---

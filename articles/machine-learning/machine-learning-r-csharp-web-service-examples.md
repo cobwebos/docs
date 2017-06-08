@@ -1,11 +1,28 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "（已弃用）使用 R 生成的机器学习 Web 服务示例 - Azure | Microsoft Docs"
+description: "（已弃用）找到一组使用 R 代码和机器学习创建的有用 Web 服务示例，并发布到 Azure 应用商店。"
+keywords: "csharp, r 代码, Web 服务示例"
+services: machine-learning
+documentationcenter: 
+author: jaymathe
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 97d66cb7-6a84-4ae9-8095-0b5f5ba82d7f
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: jaymathe
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: ece5ca060d81d2246b28753cd203aea304b443ff
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 303fb71faf73d4a1b6d17b4ca66b83b15157332b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/11/2017
 
 
 ---
