@@ -11,14 +11,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: deprecated
+ms.topic: article
 ms.date: 01/18/2017
 ms.author: zhangya;bradsev
-ROBOTS: NOINDEX, NOFOLLOW
+ROBOTS: NOINDEX
 redirect_url: machine-learning-data-science-create-features
-translationtype: Human Translation
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ba61d00f277af579c87a130336ead9879b82a6de
 ms.openlocfilehash: c6b88355df430e78594fc1283c9df01ad6e27e20
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/13/2016
 
 
 ---
@@ -78,7 +81,7 @@ ms.openlocfilehash: c6b88355df430e78594fc1283c9df01ad6e27e20
 
 ![比较性能结果](./media/machine-learning-feature-selection-and-engineering/result1.png)
 
-### <a name="a-nameexample2a-example-2-creating-features-in-text-mining"></a><a name="example2"></a> 示例 2：使用文本挖掘创建特征
+### <a name="example2"></a> 示例 2：使用文本挖掘创建特征
 特征工程广泛应用于与文本挖掘相关的任务，如文档分类和情绪分析。 例如，想要将文档分成几个类别时，典型的假设是包含在一个文档类别中的单词或短语不太可能出现在另一个文档类别中。 换句话说，单词或短语分布的频率能够描绘不同文档类别的特征。 在文本挖掘应用程序中，需要特征工程过程来创建涉及单词或短语频率的特征，因为文本内容的各个部分通常用作输入数据。
 
 为了完成这个任务，应用被称为*特征哈希*的技术将任意文本特征有效地转换为索引。 该方法通过将哈希函数应用于特征并将它们的哈希值直接用作索引来起作用，而不是将每个文本特征（单词或短语）与特定索引相关联。
@@ -133,9 +136,4 @@ Azure 机器学习工作室提供了适用于特征选择的模块。 如下图�
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

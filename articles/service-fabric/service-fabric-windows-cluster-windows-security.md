@@ -14,9 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/28/2017
 ms.author: ryanwi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: b8842047351da6fdb547e0b09492b89fad962bee
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/30/2017
 
 
@@ -34,7 +35,6 @@ ms.lasthandoff: 03/30/2017
 
 ```  
 "security": {  
-            "ServerCredentialType": "Windows",  
             "WindowsIdentities": {  
                 "ClustergMSAIdentity": "accountname@fqdn"  
                 "ClusterSPN": "fqdn"  

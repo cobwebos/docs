@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "（已弃用）使用 Azure 机器学习的生存分析 | Microsoft Docs"
+description: "（已弃用）生存分析事件发生概率"
+services: machine-learning
+documentationcenter: 
+author: zhangya
+manager: jhubbard
+editor: cgronlun
+ms.assetid: a142fc45-cdfb-4971-910e-05dab8bc699e
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: zhangya
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 38a086281ec9a93961caf492036aeed27091a462
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2d9feed054fb4641e660c685d396260246ed1d54
+ms.openlocfilehash: 32ae345bb1d4bc364440543ea5c273e9b358ae40
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -27,7 +43,7 @@ ms.lasthandoff: 05/03/2017
 > 
 
 ## <a name="consumption-of-web-service"></a>Web 服务的使用
-Web 服务的输入数据架构如下表所示。 需要以下六条信息作为输入：训练数据、测试数据、感兴趣的时间、“时间”维度的索引、“事件”维度的索引和变量类型（连续或因素）。 训练数据用字符串表示，其中以逗号分隔行，以分号分隔列。 数据的特征数是灵活的。 输入字符串中的所有元素必须都是数字。 在训练数据中，“时间”维度表示自研究的起点（病患接受药物治疗方案、学生开始攻读博士学位、汽车开始发动等），到发生感兴趣的事件（病患再度用药、学生取得博士学位、汽车刹车片失灵等）所经过的时间单位数（天、年、里程数等）。 “事件”维度指示感兴趣的事件是否发生在研究结束时。 “事件 = 1”的值表示感兴趣的事件发生在“时间”维度所指示的时间；而“事件 = 0”表示到“时间”维度所指示的时间为止都未发生感兴趣的事件。
+Web 服务的输入数据架构如下表所示。 需要以下六条信息作为输入：训练数据、测试数据、感兴趣的时间、“时间”维度的索引、“事件”维度的索引和变量类型（连续或因素）。 训练数据用字符串表示，其中以逗号分隔行，以分号分隔列。 数据的特征数是灵活的。 输入字符串中的所有元素必须都是数字。 在训练数据中，“时间”维度表示自研究的起点（病患接受药物治疗方案、学生开始攻读博士学位、汽车开始发动等），到发生感兴趣的事件（病患再度用药、学生取得博士学位、汽车刹车片失灵等）所经过的时间单位数（天、年、里程数等）。 “事件”维度指示感兴趣的事件是否发生在研究结束时。 “事件 =&1;”的值表示感兴趣的事件发生在“时间”维度所指示的时间；而“事件 =&0;”表示到“时间”维度所指示的时间为止都未发生感兴趣的事件。
 
 * trainingdata - 字符串。 行由逗号分隔，列由分号分隔。 每个行包含“时间”维度、“事件”维度和预测器变量。
 * testingdata - 包含特定对象预测器变量的一行数据。

@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "（已弃用）常见问题解答 - 在 Azure 应用商店中发布和使用机器学习应用 | Microsoft Docs"
+description: "（已弃用）在 Azure 应用商店中发布机器学习应用的相关常见问题解答"
+services: machine-learning
+documentationcenter: 
+author: bharaths
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 26b3a1e7-8b9a-4004-98bc-17456d4c25e8
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: bharaths
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 4f6e2816a55eb48fe947cc5bf21ee466e8116feb
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
+ms.openlocfilehash: 9e2d4a2d46bd461a71217cd2b2d75f5a50e8b617
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/10/2017
 
 
 ---

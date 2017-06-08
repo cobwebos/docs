@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 06/07/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 0cb1b04bcfab1f1864ae0ce867be02a8bf8c827c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/12/2017
 
 
@@ -80,12 +81,12 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 1. 每隔两分钟，AD Connect 服务器上的密码同步代理都会通过用于同步 DC 之间数据的标准 [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) 复制协议，从 DC 请求存储的密码哈希（unicodePwd 属性）。 服务帐户必须具有“复制目录更改”和“复制所有目录更改”AD 权限（默认情况下，在安装时授予），才能获取密码哈希。
 2. 在发送前，DC 将使用密钥（即 RPC 会话密钥的 [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt) 哈希）和 salt 对 MD4 密码哈希进行加密。 然后，它通过 RPC 将结果发送到密码同步代理。 DC 还使用 DC 复制协议将 salt 传递给同步代理，因此该代理将能够解密信封。
-3.    密码同步代理获得加密的信封后，将使用 [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx)和 salt 生成密钥，以便将收到的数据重新解密为其原始的 MD4 格式。 密码同步代理无需有权访问明文密码。 密码同步代理使用 MD5 完全是为了实现与 DC 的复制协议兼容性，并仅在本地 的 DC 和密码同步代理之间使用。
-4.    密码同步代理通过先将哈希转换为 32 字节的十六进制字符串，然后使用 UTF-16 编码重新将此字符串转换为二进制，来将 16 字节的二进制密码哈希扩展为 64 字节。
-5.    密码同步代理通过将 salt（包含 10 字节长度的 salt）添加到 64 字节的二进制字符串，来进一步保护原始哈希。
-6.    然后，密码同步代理将 MD4 哈希与 salt 组合在一起，并将其输入到 [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 函数。 使用 [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) 键控哈希算法的 1000 次迭代。 
-7.    密码同步代理获取生成的 32 字节哈希，将 salt 和 SHA256 迭代次数连接到它（以供 Azure AD 使用），然后通过 SSL 将该字符串从 Azure AD Connect 传输到 Azure AD。</br> 
-8.    当用户尝试登录到 Azure AD 并输入其密码时，将通过同一 MD4+salt+PBKDF2+HMAC-SHA256 过程运行密码。 如果生成的哈希与 Azure AD 中存储的哈希匹配，则用户输入的密码正确并进行身份验证。 
+3.  密码同步代理获得加密的信封后，将使用 [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx)和 salt 生成密钥，以便将收到的数据重新解密为其原始的 MD4 格式。 密码同步代理无需有权访问明文密码。 密码同步代理使用 MD5 完全是为了实现与 DC 的复制协议兼容性，并仅在本地 的 DC 和密码同步代理之间使用。
+4.  密码同步代理通过先将哈希转换为 32 字节的十六进制字符串，然后使用 UTF-16 编码重新将此字符串转换为二进制，来将 16 字节的二进制密码哈希扩展为 64 字节。
+5.  密码同步代理通过将 salt（包含 10 字节长度的 salt）添加到 64 字节的二进制字符串，来进一步保护原始哈希。
+6.  然后，密码同步代理将 MD4 哈希与 salt 组合在一起，并将其输入到 [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 函数。 使用 [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) 键控哈希算法的 1000 次迭代。 
+7.  密码同步代理获取生成的 32 字节哈希，将 salt 和 SHA256 迭代次数连接到它（以供 Azure AD 使用），然后通过 SSL 将该字符串从 Azure AD Connect 传输到 Azure AD。</br> 
+8.  当用户尝试登录到 Azure AD 并输入其密码时，将通过同一 MD4+salt+PBKDF2+HMAC-SHA256 过程运行密码。 如果生成的哈希与 Azure AD 中存储的哈希匹配，则用户输入的密码正确并进行身份验证。 
 
 >[!Note] 
 >原始 MD4 哈希不会传送到 Azure AD。 与之相反，传输的是原始 MD4 哈希的 SHA256 哈希。 因此，如果获取了 Azure AD 中存储的哈希，将无法在本地“传递哈希”攻击中使用。

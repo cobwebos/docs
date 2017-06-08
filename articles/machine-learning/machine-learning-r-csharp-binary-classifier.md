@@ -1,11 +1,27 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "（已弃用）二元分类器 - Azure | Microsoft Docs"
+description: "（已弃用）二元分类器"
+services: machine-learning
+documentationcenter: 
+author: jaymathe
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 8045038a-9dcf-44b9-a6de-7f1f8e791575
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: jaymathe
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 6dfd2beac84b00969b678a12b102328879d3d9bc
-ms.lasthandoff: 05/03/2017
+redirect_document_id: TRUE
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: d1d4f35a7e77a5fac1e8ecb1a82c14cca3406676
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/11/2017
 
 
 ---
