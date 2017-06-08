@@ -1,6 +1,6 @@
 ---
-title: "使用 Powershell 创建和上载 VM 映像 | Microsoft Docs"
-description: "了解如何使用经典部署模型和 Azure Powershell 创建并上载通用化 Windows Server 映像 (VHD)。"
+title: "使用 Powershell 创建和上传 VM 映像 | Microsoft Docs"
+description: "了解如何使用经典部署模型和 Azure Powershell 创建并上传通用化 Windows Server 映像 (VHD)。"
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -13,20 +13,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2016
+ms.date: 05/23/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 62c428215c5bd89789ae65bd420281a2f16f33a1
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 1d2b51f2a8a03a94b7ce92af54f89128bcfc9471
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
 # <a name="create-and-upload-a-windows-server-vhd-to-azure"></a>创建 Windows Server VHD 并将其上传到 Azure
-本文说明如何上载自己的通用化 VM 映像作为虚拟硬盘 (VHD)，以便使用它来创建虚拟机。 有关 Microsoft Azure 中的磁盘和 VHD 的更多详细信息，请参阅[关于虚拟机的磁盘和 VHD](../../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+本文说明如何上传自己的通用化 VM 映像作为虚拟硬盘 (VHD)，以便使用它来创建虚拟机。 有关 Microsoft Azure 中的磁盘和 VHD 的更多详细信息，请参阅[关于虚拟机的磁盘和 VHD](../../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 也可以使用 Resource Manager 模型来[上载](../../virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)虚拟机。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 也可以使用 Resource Manager 模型来[上传](../upload-generalized-managed.md)虚拟机。
 
 ## <a name="prerequisites"></a>先决条件
 本文假定已具备以下条件：
@@ -55,7 +56,7 @@ ms.lasthandoff: 04/27/2017
 6. 单击 **“确定”**。
 
 ## <a name="step-2-create-a-storage-account-and-a-container"></a>步骤 2：创建存储帐户和容器
-你需要一个 Azure 存储帐户，以便有一个可向其上载 .vhd 文件的位置。 此步骤演示了如何创建一个帐户，或如何从现有帐户获取需要的信息。 将 &lsaquo; 和 &rsaquo; 括号中的变量替换为自己的信息。
+你需要一个 Azure 存储帐户，以便有一个可向其上传 .vhd 文件的位置。 此步骤演示了如何创建一个帐户，或如何从现有帐户获取需要的信息。 将 &lsaquo; 和 &rsaquo; 括号中的变量替换为自己的信息。
 
 1. 登录
 
@@ -87,8 +88,8 @@ ms.lasthandoff: 04/27/2017
     New-AzureStorageContainer -Name <ContainerName> -Permission Off
     ```
 
-## <a name="step-3-upload-the-vhd-file"></a>步骤 3：上载 .vhd 文件
-使用 [Add-AzureVhd](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevhd) 上载 VHD。
+## <a name="step-3-upload-the-vhd-file"></a>步骤 3：上传 .vhd 文件
+使用 [Add-AzureVhd](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevhd) 上传 VHD。
 
 在上一步骤使用的 Azure PowerShell 窗口中键入以下命令，并将 &lsaquo; 和 &rsaquo; 括号中的变量替换为自己的信息。
 
@@ -104,5 +105,5 @@ Add-AzureVMImage -ImageName <ImageName> -MediaLocation "https://<StorageAccountN
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在可以使用上载的映像来[创建自定义的 VM](createportal.md)。
+现在可以使用上传的映像来[创建自定义的 VM](createportal.md)。
 

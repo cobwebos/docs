@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: e9171844e2fbac7a4e734be9144b30d1bbd0397f
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: f36ce029acebfccdfa84122a86ea3a642c048b8c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -76,6 +77,12 @@ IoT 中心对其不同的功能实施其他限制。
 
 > [!NOTE]
 > 目前，可以连接到单个 IoT 中心的设备的最大数目是 500,000。 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/en-us/support/options/)。
+
+## <a name="latency"></a>延迟
+IoT 中心致力于降低所有操作的延迟。 但是，由于网络条件和其他不可预知的因素，它无法保证最大延迟，在设计解决方案时，请避免对任何 IoT 中心操作的最大延迟做出任何假设。 请在离设备最近的 Azure 区域中预配 IoT 中心，并考虑在设备上或在离设备近的网关上使用 Azure IoT Edge 执行易受延迟影响的操作。
+
+如前所述，多个 IoT 中心单位影响限制，但未提供任何附加延迟权益或保证。
+如果操作延迟意外增加，请与 [Microsoft 支持](https://azure.microsoft.com/en-us/support/options/)联系。
 
 ## <a name="next-steps"></a>后续步骤
 此 IoT 中心开发人员指南中的其他参考主题包括：

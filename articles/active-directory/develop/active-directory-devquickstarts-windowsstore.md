@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3a78fe76119d1c748b5b75c00148a3e2a6f4a2b8
 ms.openlocfilehash: adfc28c7e41f49ce65309a316703fba57463040f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/17/2017
 
 
@@ -38,7 +40,7 @@ ms.lasthandoff: 02/17/2017
 * 下载[框架项目](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/skeleton.zip)，或下载[已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip)。 每个下载内容都是 Visual Studio 2015 解决方案。
 * 还需要一个可在其中创建用户和注册应用的 Azure AD 租户。 如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
-准备好后，请按照以下&3; 个部分中的步骤操作。
+准备好后，请按照以下 3 个部分中的步骤操作。
 
 ## <a name="step-1-register-the-directorysearcher-app"></a>步骤 1：注册 DirectorySearcher 应用
 若要让应用获取令牌，首先需要在 Azure AD 租户中注册该应用，并授予其访问 Azure AD 图形 API 的权限。 方法如下：

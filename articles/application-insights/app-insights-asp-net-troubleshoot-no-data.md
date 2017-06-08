@@ -3,7 +3,7 @@ title: "排查无数据问题 - 用于 .NET 的 Application Insights"
 description: "在 Azure Application Insights 中看不到数据？ 试试这里。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
 ms.service: application-insights

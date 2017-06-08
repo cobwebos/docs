@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 64427583dba57716c23e1a01df820a263c5e7298
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: ef766161f53b92003c266f26af10a37790d8fad8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -38,7 +40,7 @@ U-SQL 数据库包含：
 每个 Azure Data Lake Analytics 帐户都有与其关联的默认 Azure Data Lake Store 帐户。 该 Data Lake Store 帐户称作默认 Data Lake Store 帐户。 U-SQL 目录存储在 /catalog 文件夹下的默认 Data Lake Store 帐户中。 不要删除 /catalog 文件夹中的任何文件。
 
 ### <a name="use-azure-portal"></a>使用 Azure 门户
-请参阅[使用门户管理 Data Lake Analytics](data-lake-analytics-manage-use-portal.md#view-u-sql-catalog)
+请参阅[使用门户管理 Data Lake Analytics](data-lake-analytics-manage-use-portal.md#manage-data-lake-analytics-accounts)
 
 ### <a name="use-data-lake-tools-for-visual-studio"></a>使用适用于 Visual Studio 的 Data Lake 工具。
 适用于 Visual Studio 的 Data Lake Tools 可用于管理目录。  有关此工具的详细信息，请参阅[使用适用于 Visual Studio 的 Data Lake 工具](data-lake-analytics-data-lake-tools-get-started.md)。
@@ -60,30 +62,24 @@ U-SQL 数据库包含：
 
 ## <a name="see-also"></a>另请参阅
 * 入门
-  
+
   * [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
   * [Get started with Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md)
   * [通过 Azure .NET SDK 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-net-sdk.md)
   * [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
   * [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)
 * U-SQL 和开发
-  
+
   * [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)
   * [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
   * [为 Data Lake Analytics 作业开发 U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 * 管理
-  
+
   * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
   * [使用 Azure PowerShell 管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-powershell.md)
   * [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 * 端到端教程
-  
+
   * [使用 Azure Data Lake Analytics 交互式教程](data-lake-analytics-use-interactive-tutorials.md)
   * [使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

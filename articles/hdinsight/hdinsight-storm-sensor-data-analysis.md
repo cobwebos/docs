@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ff207312c036970c780daeceefd74b7cb6ff2de9
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 25e0a25a4468acf001f1ce4e6d62ceef1b420955
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/12/2017
 > [!NOTE]
 > 本文档中的信息和示例演示需要安装 HDInsight 3.5。
 >
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -91,7 +92,7 @@ ms.lasthandoff: 04/12/2017
 > [!NOTE]
 > 这是一个简化的拓扑视图。 在运行时，每个组件的实例为每个分区创建事件中心所读取。 这些实例分布在群集中，节点和数据在它们之间路由，如下所示：
 > 
-> * 从 spout 到分析器的数据已经过负载平衡。
+> * 从 spout 到分析器的数据已经过负载均衡。
 > * 从分析器到仪表板和 HBase 的数据按设备 ID 进行分组，因此，来自同一设备的消息始终流向同一组件。
 
 ### <a name="topology-components"></a>拓扑组件

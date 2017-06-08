@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: ff7d5c372500c2cd392ed65a921d8a994b090f23
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1bd7e8b6ba9e2f7f1150c8d88c46a4828ac078d4
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 7eb5903a5b010c7a6c2f1e427c596b931c6ec1a1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="next-steps"></a>后续步骤
 可以在下列文章中，阅读与此处讨论的技术相关的更为详细的信息，以及有关如何使用网络安全组的快速入门指南：
 
-* [快速入门 - 使用 Azure CLI 创建网络安全组和 ACL 规则](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
+* [快速入门 - 使用 Azure CLI 创建网络安全组和 ACL 规则](nsg-quickstart.md)  
 * [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)  
 * [什么是网络安全组 (NSG)？](../../virtual-network/virtual-networks-nsg.md)  
 * [Azure Resource Manager 中负载均衡器的概述](../../load-balancer/load-balancer-arm.md) 

@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 2/15/2017
+ms.date: 06/05/2017
 ms.author: pratshar
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
@@ -59,7 +59,7 @@ ms.lasthandoff: 05/02/2017
 
 
 > [!TIP]
-> Site Recovery 尝试在名称相同的子网中创建测试虚拟机，并使用虚拟机的“计算与网络”设置中提供的同一 IP。 如果为测试故障转移提供的 Azure 虚拟网络中没有同名的子网，则会按字母顺序在第一个子网中创建测试虚拟机。 如果目标 IP 附属于所选子网，则 Site Recovery 会尝试使用该目标 IP 创建测试故障转移虚拟机。 如果目标 IP 不属于所选子网，则将使用所选子网中任一可用 IP 创建测试故障转移虚拟机。 
+> Site Recovery 尝试在名称相同的子网中创建测试虚拟机，并使用虚拟机的“计算与网络”设置中提供的同一 IP。 如果为测试故障转移提供的 Azure 虚拟网络中没有同名的子网，则会按字母顺序在第一个子网中创建测试虚拟机。 如果目标 IP 附属于所选子网，则 Site Recovery 会尝试使用该目标 IP 创建测试故障转移虚拟机。 如果目标 IP 不属于所选子网，则将使用所选子网中任一可用 IP 创建测试故障转移虚拟机。
 >
 >
 

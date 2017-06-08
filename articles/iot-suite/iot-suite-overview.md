@@ -16,10 +16,11 @@ ms.workload: na
 ms.date: 04/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 309a36b1aa5db95a287b7a6b21449f9d61880cf4
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: c57c0ddbe8e33d77c6f07f58dfe3236733f6c62f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -47,7 +48,7 @@ Azure 物联网 (IoT) 服务提供有各种功能。 这些企业级服务让你
 
 * Azure IoT 套件的核心是 [Azure IoT 中心][lnk-iot-hub]服务。 该服务提供设备到云和云到设备的消息传送功能，并充当云和其他主要 IoT 套件服务的网关。 该服务允许你从你的设备大量接收消息，并将命令发送给你的设备。 使用该服务，还能够[管理自己的设备][lnk-device-management]。 例如，可以配置、重启一个或多个连接到该中心的设备，或对其执行恢复出厂设置。
 * [Azure 流分析][lnk-asa]提供移动中的数据分析。 IoT 套件使用该服务来处理传入遥测、执行聚合以及检测事件。 预配置解决方案也会使用流分析来处理包含数据（例如元数据或来自设备的命令响应）的信息消息。 这些解决方案使用流分析来处理来自你设备的消息，并将这些消息传送给其他服务。
-* [Azure 存储][lnk-azure-storage]和 [Azure DocumentDB][lnk-document-db] 提供数据存储功能。 预配置解决方案使用 blob 存储来存储遥测数据并使其可用于分析。 这些解决方案使用 DocumentDB 来存储设备元数据，以及启用解决方案的设备管理功能。
+* [Azure 存储][lnk-azure-storage]和 [Azure Cosmos DB][lnk-document-db] 提供数据存储功能。 预配置解决方案使用 blob 存储来存储遥测数据并使其可用于分析。 这些解决方案使用 Cosmos DB 来存储设备元数据，以及启用解决方案的设备管理功能。
 * [Azure Web 应用][lnk-web-apps] 和 [Microsoft Power BI][lnk-power-bi] 提供数据可视化功能。 借助 Power BI 的灵活性，你可以快速生成自己的交互式仪表板（使用 IoT 套件数据）。
 
 有关典型 IoT 解决方案体系结构的概述，请参阅 [Microsoft Azure 和物联网 (IoT)][iot-suite-what-is-azure-iot]。

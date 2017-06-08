@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 000440fb2c38eadc0ffdcab84a3c23bb034e834f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/09/2017
-
 
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>将现有的自定义 DNS 名称映射到 Azure Web 应用
@@ -217,6 +217,8 @@ DNS 记录页如以下屏幕截图所示：
 DNS 记录页应如以下屏幕截图所示：
 
 ![DNS 记录页](./media/app-service-web-tutorial-custom-domain/a-record.png)
+
+<a name="enable-a"></a>
 
 ### <a name="enable-the-a-record-mapping-in-your-app"></a>在应用中启用 A 记录映射
 

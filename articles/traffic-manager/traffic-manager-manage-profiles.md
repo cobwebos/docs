@@ -1,6 +1,6 @@
 ---
 title: "管理 Azure 流量管理器配置文件 | Microsoft Docs"
-description: "本文帮助你创建、禁用、启用、删除流量管理器配置文件以及查看 Azure 流量管理器配置文件的历史记录。"
+description: "本文帮助你创建、禁用、启用和删除 Azure 流量管理器配置文件。"
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 05/10/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 7e7de7dc1eca6903403afef03fdd6afb98ff16c9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 3d30024920295298ad2a8a6e22e11ef829934255
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -24,19 +26,22 @@ ms.openlocfilehash: 7e7de7dc1eca6903403afef03fdd6afb98ff16c9
 
 流量管理器配置文件使用流量路由方法控制云服务或网站终结点的流量分布。 本文介绍如何创建和管理这些配置文件。
 
-## <a name="create-a-traffic-manager-profile-using-quick-create"></a>使用“快速创建”创建流量管理器配置文件
+## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
-可以使用 Azure 经典门户中的“快速创建”快速创建流量管理器配置文件。 “快速创建”允许你创建具有基本配置设置的配置文件。 但是，无法使用“快速创建”设置以下设置：终结点集（云服务和网站）、“故障转移”流量路由方法的故障转移顺序，或监视设置。 在创建配置文件后，可以在 Azure 经典门户中配置这些设置。 流量管理器支持每个配置文件最多 200 个终结点。 但是，大多数使用方案只需要少量的终结点。
+可以使用 Azure 门户创建流量管理器配置文件。 在创建配置文件后，可以在 Azure 门户中配置终结点、监视以及其他设置。 流量管理器支持每个配置文件最多 200 个终结点。 但是，大多数使用方案只需要少量的终结点。
 
 ### <a name="to-create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
-1. **将云服务和网站部署到生产环境中。** 有关云服务的详细信息，请参阅 [云服务](http://go.microsoft.com/fwlink/p/?LinkId=314074)。 有关网站的详细信息，请参阅 [网站](http://go.microsoft.com/fwlink/p/?LinkId=393327)。
-2. **登录到 Azure 经典门户**。 单击门户左下角的“新建”，单击“网络服务”>“流量管理器”，然后单击“快速创建”，开始对配置文件进行配置。
-3. **配置 DNS 前缀。**  为流量管理器配置文件提供唯一的 DNS 前缀名称。 可以只为流量管理器域名指定前缀。
-4. **选择订阅。**  选择适当的 Azure 订阅。 每个配置文件都与一个订阅相关联。 如果只有一个订阅，此选项将不显示。
-5. **选择流量路由方法。** 在“流量路由策略”中选择流量路由方法。 有关流量路由方法的详细信息，请参阅[关于流量管理器流量路由方法](traffic-manager-routing-methods.md)。
-6. **单击“创建”创建配置文件**。 完成配置文件配置后，可以在 Azure 经典门户中的“流量管理器”窗格中找到你的配置文件。
-7. **在 Azure 经典门户中配置终结点、监视和其他设置。** 使用“快速创建”只能配置基本设置。 需要配置其他设置，例如终结点列表以及终结点故障转移顺序。
+1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。 
+2. 在“中心”菜单上，单击“新建” > “网络” > “全部查看”，单击“流量管理器配置文件”，打开“创建流量管理器配置文件”边栏选项卡，然后单击“创建”。
+3. 在“创建流量管理器配置文件”边栏选项卡上，按如下所示完成输入：
+    1. 在**名称**中，提供配置文件的名称。 此名称必须在 trafficmanager.net 区域中唯一，并将生成 DNS 名称（<name>,trafficmanager.net），该名称用于访问流量管理器配置文件。
+    2. 在**路由方法**中，选择“优先级”路由方法。
+    3. 在**订阅**中，选择要创建此配置文件的订阅
+    4. 在**资源组**中，创建新的资源组，以在其下放置此配置文件。
+    5. 在**资源组位置**中，选择资源组的位置。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。
+    6. 单击“创建” 。
+    7. 流量管理器配置文件的全局部署完成后，它将在相应的资源组中作为资源之一列出。
 
 ## <a name="disable-enable-or-delete-a-profile"></a>禁用、启用或删除配置文件
 
@@ -46,47 +51,29 @@ ms.openlocfilehash: 7e7de7dc1eca6903403afef03fdd6afb98ff16c9
 
 1. 如果使用自定义域名，请更改 Internet DNS 服务器上的 CNAME 记录，使它不再指向流量管理器配置文件。
 2. 流量将不再通过流量管理器配置文件设置定向到终结点。
-3. 选择你要禁用的配置文件。 在“流量管理器”页上，单击配置文件名称旁边的列突出显示该配置文件。 请注意，单击配置文件的名称或名称旁边的箭头会打开配置文件的设置页。
-4. 在选择配置文件后，单击页面底部的“禁用”  。
+3. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。
+2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，然后在显示的结果中单击该流量管理器配置文件。
+3. 在“流量管理器配置文件”边栏选项卡中，单击“概述”，在“概述”边栏选项卡中单击“禁用”，然后确认禁用流量管理器配置文件。
 
 ### <a name="to-enable-a-profile"></a>启用配置文件
 
-1. 选择你要禁用的配置文件。 在“流量管理器”页上，单击配置文件名称旁边的列突出显示该配置文件。 请注意，单击配置文件的名称或名称旁边的箭头会打开配置文件的设置页。
-2. 在选择配置文件后，单击页面底部的“启用”  。
-3. 如果使用自定义域名，请在 Internet DNS 服务器上创建一条指向流量管理器配置文件域名的 CNAME 资源记录。
-4. 然后，流量将再次定向到终结点。
+1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。
+2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，然后在显示的结果中单击该流量管理器配置文件。
+3. 在“流量管理器配置文件”边栏选项卡中，单击“概述”，然后在“概述”边栏选项卡中单击“启用”。
+5. 如果使用自定义域名，请在 Internet DNS 服务器上创建一条指向流量管理器配置文件域名的 CNAME 资源记录。
+6. 然后，流量将再次定向到终结点。
 
 ### <a name="to-delete-a-profile"></a>删除配置文件
 
 1. 确保你的 Internet DNS 服务器上的 DNS 资源记录不再使用指向你的流量管理器配置文件域名的 CNAME 资源记录。
-2. 选择你要禁用的配置文件。 在“流量管理器”页上，单击配置文件名称旁边的列突出显示该配置文件。 请注意，单击配置文件的名称或名称旁边的箭头会打开配置文件的设置页。
-3. 在选择配置文件后，单击页面底部的“删除”  。
-
-## <a name="view-traffic-manager-profile-change-history"></a>查看流量管理器配置文件更改历史记录
-
-可在 Azure 经典门户的“管理服务”中查看流量管理器配置文件的更改历史记录。
-
-### <a name="to-view-your-traffic-manager-change-history"></a>查看流量管理器配置文件更改历史记录
-
-1. 在 Azure 经典门户的左侧窗格中，单击“管理服务” 。
-2. 在管理服务页面上，单击“操作日志”
-3. 在“操作日志”页面上，你可以筛选查看流量管理器配置文件的更改历史记录。 在选择筛选选项后，单击相应的复选标记来查看结果。
-
-   * 若要查看所有配置文件的更改，请选择订阅和时间范围，然后从“类型”快捷菜单中选择“流量管理器”。
-   * 若要按配置文件名称进行筛选，请在“服务名称”字段中键入配置文件的名称或者从快捷菜单中选择该名称。
-   * 若要查看每项单独更改的详细信息，请选择包含你要查看的更改的行，然后单击页面底部的“详细信息”。 在“操作详细信息”窗口中，可以查看在操作过程中创建或更新的 API 对象的 XML 表示形式。
+2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，然后在显示的结果中单击该流量管理器配置文件。
+3. 在“流量管理器配置文件”边栏选项卡中，单击“概述”，在“概述”边栏选项卡中单击“删除”，然后确认删除流量管理器配置文件。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [添加终结点](traffic-manager-endpoints.md)
-* [配置故障转移路由方法](traffic-manager-configure-failover-routing-method.md)
-* [配置轮循机制路由方法](traffic-manager-configure-round-robin-routing-method.md)
+* [配置优先级路由方法](traffic-manager-configure-priority-routing-method.md)
+* [配置地域路由方法](traffic-manager-configure-geographic-routing-method.md) 
+* [配置加权路由方法](traffic-manager-configure-weighted-routing-method.md)
 * [配置性能路由方法](traffic-manager-configure-performance-routing-method.md)
-* [将公司 Internet 域指向流量管理器域名](traffic-manager-point-internet-domain.md)
-* [流量管理器降级状态疑难解答](traffic-manager-troubleshooting-degraded.md)
-
-
-
-<!--HONumber=Nov16_HO5-->
-
 

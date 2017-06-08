@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 05/15/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 9b75d0ede3ec1b291936ee0a53778afe10ba91db
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 9932ac04699f49b7a3ea3dabe4d380fdc4d05ec1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的字符串函数
 
-资源管理器提供以下用于处理字符串的函数：
+Resource Manager 提供以下用于处理字符串的函数：
 
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
@@ -939,21 +939,21 @@ ms.lasthandoff: 04/28/2017
 <a id="replace" />
 
 ## <a name="replace"></a>replace
-`replace(originalString, oldCharacter, newCharacter)`
+`replace(originalString, oldString, newString)`
 
-如果在所有实例中特定字符串中的一个字符已被替换为另一个字符时，则返回新的字符串。
+返回其中某个字符串的所有实例均替换为另一个字符串的新字符串。
 
 ### <a name="parameters"></a>parameters
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| originalString |是 |字符串 |包含将某一个字符替换为另一个字符的所有实例的值。 |
-| oldCharacter |是 |字符串 |要从原始字符串中删除的字符。 |
-| newCharacter |是 |字符串 |要添加到已删除字符的位置的字符。 |
+| originalString |是 |字符串 |包含某一个字符串的所有实例均替换为另一个字符串的值。 |
+| oldString |是 |字符串 |要从原始字符串中删除的字符串。 |
+| newString |是 |字符串 |要添加以替代已删除字符串的字符串。 |
 
 ### <a name="examples"></a>示例
 
-以下示例演示如何从用户提供的字符串中删除所有的短划线。
+以下示例演示如何从用户提供的字符串中删除所有短划线，以及如何将字符串的一部分替换为其他字符串。
 
 ```json
 {
@@ -967,9 +967,13 @@ ms.lasthandoff: 04/28/2017
     },
     "resources": [],
     "outputs": {
-        "stringOutput": {
+        "firstOutput": {
             "type": "string",
             "value": "[replace(parameters('testString'),'-', '')]"
+        },
+        "secodeOutput": {
+            "type": "string",
+            "value": "[replace(parameters('testString'),'1234', 'xxxx')]"
         }
     }
 }

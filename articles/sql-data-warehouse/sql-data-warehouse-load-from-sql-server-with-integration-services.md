@@ -3,7 +3,7 @@ title: "将数据从 SQL Server 载入 Azure SQL 数据仓库 (SSIS) | Microsoft
 description: "演示如何创建 SQL Server Integration Services (SSIS) 包，以便将数据从各种数据源移动到 SQL 数据仓库。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: douglaslms
+author: ckarst
 manager: jhubbard
 editor: 
 ms.assetid: e2c252e9-0828-47c2-a808-e3bea46c134a
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
 ms.date: 03/30/2017
-ms.author: douglasl;barbkess
-translationtype: Human Translation
+ms.author: cakarst;douglasl;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: d208f783e5b4e7786350706d8025e6e13f45f0d2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 

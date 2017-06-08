@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: b319970e0fd744b21bd0362f1de500a0f182d52e
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1bafa072519cff1599a0cae1d361207ad0fa35d5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -41,7 +42,7 @@ ms.lasthandoff: 03/10/2017
 
 2. 编码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加一个触发器，然后向逻辑应用中添加一个操作。
 
-3.    在搜索框中，输入“x12”作为筛选器。 选择“X12 - 编码为 X12 消息(按协议名称)”，或者选择“X12 - 编码为 X&12; 消息(按标识)”。
+3.    在搜索框中，输入“x12”作为筛选器。 选择“X12 - 编码为 X12 消息(按协议名称)”，或者选择“X12 - 编码为 X 12 消息(按标识)”。****
    
     ![搜索“x12”](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
@@ -92,6 +93,9 @@ X12 编码连接器执行以下任务：
 * 请求技术和/或功能确认（如果已配置）。
   * 技术确认作为标头验证的结果生成。 技术确认报告地址接收方进行的交换标头和尾部处理的状态
   * 功能确认作为正文验证的结果生成。 功能确认报告在处理收到的文档时遇到的每个错误
+
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/x12/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 

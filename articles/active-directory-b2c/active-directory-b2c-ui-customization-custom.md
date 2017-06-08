@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeeda
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 215f9baeda7cd0bcf3fd66893919575647849e7d
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 9de6a57671cf65c4aa5d8695d21e0932175b1183
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/22/2017
 
 ---
 # <a name="azure-active-directory-b2c-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C：在自定义策略中进行 UI 自定义
@@ -30,14 +30,6 @@ ms.lasthandoff: 05/02/2017
 ## <a name="prerequisites"></a>先决条件
 
 在继续之前，必须先完成[自定义策略入门](active-directory-b2c-get-started-custom.md)。  应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
-
-### <a name="confirming-your-b2c-tenant"></a>确认 B2C 租户
-
-由于自定义策略仍以个人预览提供，因此请确认为自定义策略上传启用了 Azure AD B2C 租户：
-
-1. 在 [Azure 门户](https://portal.azure.com)中，[切换到 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后打开 Azure AD B2C 边栏选项卡。
-1. 单击“所有策略”。
-1. 确保“上传策略”按钮可用。  如果该按钮被禁用，请向 AADB2CPreview@microsoft.com 发送电子邮件。
 
 ## <a name="the-page-ui-customization-feature"></a>页面 UI 自定义功能
 
@@ -96,10 +88,10 @@ ms.lasthandoff: 05/02/2017
 1. 对于“名称”，请键入 `$root`。
 1. 将“访问类型”设置为“Blob”。
 1. 单击“$root”打开新容器。
-1. 单击“上载” 。
+1. 单击“上传” 。
 1. 单击 `Select a file` 旁边的文件夹图标。
 1. 浏览到在[前面部分](#the-page-ui-customization-feature)创建的 `customize-ui.html`。
-1. 单击“上载” 。
+1. 单击“上传” 。
 1. 选择上传的、名为 `customize-ui.html` 的 Blob。
 1. 单击“URL”旁边的复制按钮。
 1. 打开浏览器并导航到此 URL。  如果无法访问此 URL，请确保容器访问类型设置为 Blob。

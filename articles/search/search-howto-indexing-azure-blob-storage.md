@@ -14,10 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/15/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: e14da5fa10533d922a6263e8f52a53c0eaa23393
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: faa6d403aa130738ae0b58ba1ffc828a1e37e9f4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -341,7 +342,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 ## <a name="indexing-documents-along-with-related-data"></a>对文档以及相关数据进行索引
 
 文档可能具有关联的元数据（例如创建文档的部门），作为结构化数据存储在以下位置之一。
--   SQL 数据库或 DocumentDB 等独立数据存储空间。
+-   SQL 数据库或 Azure Cosmos DB 等独立数据存储空间。
 -   作为自定义元数据直接附加到 Azure Blob 存储中的每个文档。 （有关详细信息，请参阅 [Setting and Retrieving Properties and Metadata for Blob Resources](https://docs.microsoft.com/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources) [设置和检索 Blob 资源的属性和元数据]。）
 
 可以通过为每个文档及其元数据分配相同的唯一键值，以及通过为每个索引器指定 `mergeOrUpload` 操作，来对文档及其元数据进行索引。 有关此解决方案的详细说明，请参阅外部文章：[Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)（在 Azure 搜索中组合使用文档与其他数据）。

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.date: 04/24/2017
 ms.author: ashmaka
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 25f4ef15390ed5b97bd2927126f5ecf250d2daf9
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: db227bfea10255322c090e68b197cfb2dd1cf15b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
-Azure 搜索是一种搜索即服务云解决方案，它将服务器和基础结构的管理委托给 Microsoft，为用户提供随时可用的服务，用户可在填充数据后使用此服务将搜索添加到 Web 或移动应用程序。 借助 Azure 搜索，可以使用简单的 [REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) 或 [.NET SDK](search-howto-dotnet-sdk.md) 在应用程序中添加稳定的搜索体验，无需管理搜索基础结构或精通搜索技术。
+Azure 搜索是一种搜索即服务云解决方案，它将服务器和基础结构的管理委托给 Microsoft，为用户提供随时可用的服务，用户可在填充数据后使用此服务将搜索添加到 Web 或移动应用程序。 借助 Azure 搜索，可以使用简单的 [REST API](/rest/api/searchservice/) 或 [.NET SDK](search-howto-dotnet-sdk.md) 在应用程序中添加稳定的搜索体验，无需管理搜索基础结构或精通搜索技术。
 
 <a name="feature-drilldown"></a>
 
@@ -39,7 +39,7 @@ Azure 搜索支持适用于 [56 种不同语言](https://docs.microsoft.com/rest
 
 ### <a name="data-integration"></a>数据集成
 
-你可以推送 JSON 数据结构来填充 Azure 搜索索引。 另外，对于受支持的数据源，你可以使用[索引器](search-indexer-overview.md)自动爬网式搜索 Azure SQL 数据库、Azure DocumentDB 或 [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，以便将搜索索引的内容与主要数据存储同步。
+你可以推送 JSON 数据结构来填充 Azure 搜索索引。 另外，对于受支持的数据源，可以使用[索引器](search-indexer-overview.md)自动爬网式搜索 [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-documentdb.md) 或 [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，以便将搜索索引的内容与主要数据存储同步。
 
 *文档破解*实现了[主要文件格式的索引编制](search-howto-indexing-azure-blob-storage.md)，包括 Microsoft Office、PDF 和 HTML 文档。
 
@@ -53,7 +53,7 @@ Azure 搜索支持适用于 [56 种不同语言](https://docs.microsoft.com/rest
 
 + **命中项突出显示**[向搜索结果中的匹配关键字应用可视化格式设置](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。 可以选择哪些字段返回突出显示的片段。
 
-+ **简单计分**是 Azure 搜索的主要优点。 [计分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)用于在文档中自行将相关性建模为值的函数。 例如，你可能希望较新产品或打折产品显示在搜索结果的顶部位置。 也可以基于已跟踪和单独存储的客户搜索首选项将标记用于个性化计分，来生成计分配置文件。
++ **简单计分**是 Azure 搜索的主要优点。 [计分配置文件](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)用于在文档中自行将相关性建模为值的函数。 例如，你可能希望较新产品或打折产品显示在搜索结果的顶部位置。 也可以基于已跟踪和单独存储的客户搜索首选项将标记用于个性化计分，来生成计分配置文件。
 
 + **排序**通过索引架构提供给多个字段，然后使用单个搜索参数在查询时切换。
 
@@ -83,7 +83,7 @@ Azure 搜索可以智能地处理、筛选和显示地理位置。 它可以让�
 
 ## <a name="how-it-works"></a>工作原理
 ### <a name="step-1-provision-service"></a>步骤 1：预配服务
-可以通过 [Azure 门户](https://portal.azure.com/)或 [Azure 资源管理 API](https://msdn.microsoft.com/library/azure/dn832684.aspx) 调整 Azure 搜索服务。 可以选择与其他订阅者共享的免费服务，或者服务专用的资源[付费层](https://azure.microsoft.com/pricing/details/search/)。
+可以通过 [Azure 门户](https://portal.azure.com/)或 [Azure 资源管理 API](/rest/api/searchmanagement/) 调整 Azure 搜索服务。 可以选择与其他订阅者共享的免费服务，或者服务专用的资源[付费层](https://azure.microsoft.com/pricing/details/search/)。
 
 对于付费层，可朝两个维度缩放服务： 
 
@@ -95,14 +95,14 @@ Azure 搜索可以智能地处理、筛选和显示地理位置。 它可以让�
 ### <a name="step-2-create-index"></a>步骤 2：创建索引
 上传可搜索的内容之前，必须先定义 Azure 搜索索引。 索引类似于用于保存数据的数据库表，可接受搜索查询。 定义要映射的索引架构，以反映要搜索的文档结构，这类似于数据库中的字段。
 
-架构可在 Azure 门户中创建，也可以[使用 .NET SDK](search-howto-dotnet-sdk.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn798941.aspx) 以编程方式创建。
+架构可在 Azure 门户中创建，也可以[使用 .NET SDK](search-howto-dotnet-sdk.md) 或 [REST API](/rest/api/searchservice/) 以编程方式创建。
 
 ### <a name="step-3-index-data"></a>步骤 3：索引数据
 定义索引后，便可以上传内容。 可以使用推送或提取模型。
 
-提取模型从外部数据源检索数据。 支持通过*索引器*检索数据。索引器可以简化和自动数据引入的方方面面，例如，连接、读取和序列化数据。 [索引器](/rest/api/searchservice/Indexer-ope)适用于 Azure DocumentDB、Azure SQL 数据库、Azure Blob 存储，以及 Azure VM 中托管的 SQL Server。 可以针对按需刷新或计划的数据刷新配置索引器。
+提取模型从外部数据源检索数据。 支持通过*索引器*检索数据。索引器可以简化和自动数据引入的方方面面，例如，连接、读取和序列化数据。 [索引器](/rest/api/searchservice/Indexer-operations)适用于 Azure Cosmos DB、Azure SQL 数据库、Azure Blob 存储，以及 Azure VM 中托管的 SQL Server。 可以针对按需刷新或计划的数据刷新配置索引器。
 
-推模型通过 SDK 或 REST API 进行提供，用于将更新的文档发送到索引。 可以从使用 JSON 格式的几乎任何数据集推送数据。 有关加载数据的指南，请参阅[添加、更新或删除文档](https://msdn.microsoft.com/library/azure/dn798930.aspx)或[如何使用.NET SDK）](search-howto-dotnet-sdk.md)。
+推模型通过 SDK 或 REST API 进行提供，用于将更新的文档发送到索引。 可以从使用 JSON 格式的几乎任何数据集推送数据。 有关加载数据的指南，请参阅[添加、更新或删除文档](/rest/api/searchservice/addupdate-or-delete-documents)或[如何使用.NET SDK）](search-howto-dotnet-sdk.md)。
 
 ### <a name="step-4-search"></a>步骤 4：搜索
 填充索引后，可以通过将简单的 HTTP 请求与 REST API 或 .NET SDK 结合使用，向服务终结点[发出搜索查询](/rest/api/searchservice/Search-Documents)。
@@ -140,7 +140,7 @@ Azure 搜索可以智能地处理、筛选和显示地理位置。 它可以让�
 
 |平台 |说明 |
 |-----|------------|
-|[REST](https://docs.microsoft.com/rest/api/searchservice/) | 任何编程平台和语言（包括 Xamarin、Java 和 JavaScript）支持的 HTTP 命令|
+|[REST](/rest/api/searchservice/) | 任何编程平台和语言（包括 Xamarin、Java 和 JavaScript）支持的 HTTP 命令|
 |[.NET SDK](search-howto-dotnet-sdk.md) | REST API 的 .NET 包装器以 C# 和其他针对 .NET Framework 的托管代码语言提供了有效编码。 |
 
 ## <a name="free-trial"></a>免费试用

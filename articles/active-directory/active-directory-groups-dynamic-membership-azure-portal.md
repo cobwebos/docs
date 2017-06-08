@@ -1,6 +1,6 @@
 ---
 
-title: "Azure Active Directory 预览版中基于属性的动态组成员身份 | Microsoft 文档"
+title: "Azure Active Directory 中基于属性的动态组成员身份 | Microsoft Docs"
 description: "如何为动态组成员身份创建高级规则，包括支持的表达式规则运算符和参数。"
 services: active-directory
 documentationcenter: 
@@ -13,20 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6ef550047a28a6070cad5da2e00cf18fbca3f9fa
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: da03dc8afa58ddfe97301dabed186ed325410937
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory-preview"></a>在 Azure Active Directory 预览版中为动态组成员身份创建基于属性的规则
-可以在 Azure 门户中创建高级规则来启用 Azure Active Directory (Azure AD) 预览版组的更复杂的基于属性的动态成员身份。 [预览版包括哪些内容？](active-directory-preview-explainer.md) 
-
-本文详细介绍了用于创建动态成员身份规则的属性和语法。
+# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
+在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于创建动态成员身份规则的属性和语法。
 
 ## <a name="to-create-the-advanced-rule"></a>创建高级规则
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。

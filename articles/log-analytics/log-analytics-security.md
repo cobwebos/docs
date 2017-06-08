@@ -3,7 +3,7 @@ title: "Log Analytics 数据安全 | Microsoft 文档"
 description: "了解 Log Analytics 如何保护你的隐私和数据安全。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
-ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: d0f4323c22858300d95af7407cdb14995507ee60
-ms.openlocfilehash: 952697dff7dca2779a6eb5375afa41c0b130aad4
-ms.lasthandoff: 11/23/2016
+ms.date: 05/03/2017
+ms.author: magoedte
+ms.translationtype: Human Translation
+ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
+ms.openlocfilehash: fa33a031a9e05f3079f1ed68d2ac0902b3070fa6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -109,7 +110,9 @@ Microsoft 会向 Microsoft 董事会呈报有关所有信息安全计划的年�
 ## <a name="certifications-and-attestations"></a>认证和证明
 OMS Log Analytics 满足以下要求：
 
-* [ISO/IEC 27001](http://www.iso.org/iso/home/standards/management-standards/iso27001.htm) 和 [ISO/IEC 27018:2014](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498) 标准
+* [ISO/IEC 27001](http://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
+* [ISO/IEC 27018:2014](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
+* [ISO 22301](https://azure.microsoft.com/en-us/blog/iso22301/)
 * PCI 安全标准委员会制定的[支付卡行业（PCI 标准）数据安全标准 (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI)。
 * [服务组织控制 (SOC) 1 类型 1 和 SOC 2 类型 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) 标准
 * [HIPAA 和 HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)（对于具有 HIPAA 业务合作协议的公司）

@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: jehollan
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: be14485c9070d7dce5ecbaea778f31f30e13cfa9
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ddb7c2fd9437cb342e68b5a1ad47f9bd06ec476b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -208,7 +209,7 @@ Azure 逻辑应用提供一组丰富的工具和模式，帮助确保集成可�
 ## <a name="azure-diagnostics-and-telemetry"></a>Azure 诊断和遥测
 
 上述模式非常适合于处理运行中的错误和异常，不过也可以独立于运行本身来标识和响应错误。 
-[Azure 诊断](../logic-apps/logic-apps-monitor-your-logic-apps.md)提供了一种简单方式，可将所有工作流事件（包括所有运行和操作状态）发送到 Azure 存储帐户或 Azure 事件中心。 若要评估运行状态，可以监视日志和指标，或将它们发布到偏好的任何监视工具中。 一种潜在选项是通过 Azure 事件中心将所有事件流式传输到[流分析](https://azure.microsoft.com/services/stream-analytics/)。 在流分析中，可以编写从诊断日志进行的任何异常、平均值或失败的实时查询。 流分析可以方便地输出到其他数据源，如队列、主题、SQL、DocumentDB 和 Power BI。
+[Azure 诊断](../logic-apps/logic-apps-monitor-your-logic-apps.md)提供了一种简单方式，可将所有工作流事件（包括所有运行和操作状态）发送到 Azure 存储帐户或 Azure 事件中心。 若要评估运行状态，可以监视日志和指标，或将它们发布到偏好的任何监视工具中。 一种潜在选项是通过 Azure 事件中心将所有事件流式传输到[流分析](https://azure.microsoft.com/services/stream-analytics/)。 在流分析中，可以编写从诊断日志进行的任何异常、平均值或失败的实时查询。 流分析可以轻松输出到其他数据源，如队列、主题、SQL、Azure Cosmos DB 和 Power BI。
 
 ## <a name="next-steps"></a>后续步骤
 

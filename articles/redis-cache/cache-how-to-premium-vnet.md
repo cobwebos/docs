@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 05/11/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: cf3c1a3c669e0da810c32939492cb262e76492c7
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 945da7ce2ab5f2d479d96a6ed2896a0ba7e0747e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/14/2017
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能的选择上具有灵活性，其中包括高级层功能，如群集、暂留和虚拟网络支持。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
 
 > [!NOTE]
-> Azure Redis 缓存同时支持经典 VNet 和资源管理器 VNet。
+> Azure Redis 缓存同时支持经典 VNet 和Resource Manager VNet。
 > 
 > 
 
@@ -48,7 +49,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 从“子网”下拉列表中选择所需的子网，然后指定所需的“静态 IP 地址”。 如果使用经典 VNet，则“静态 IP 地址”字段是可选的；如果未指定任何地址，将从选定的子网中选择一个。
 
 > [!IMPORTANT]
-> 将 Azure Redis 缓存部署到资源管理器 VNet 时，缓存必须位于专用子网中，其中只能包含 Azure Redis 缓存实例，而不能包含其他任何资源。 如果尝试将 Azure Redis 缓存部署到包含其他资源的资源管理器 VNet 子网，部署将会失败。
+> 将 Azure Redis 缓存部署到Resource Manager VNet 时，缓存必须位于专用子网中，其中只能包含 Azure Redis 缓存实例，而不能包含其他任何资源。 如果尝试将 Azure Redis 缓存部署到包含其他资源的Resource Manager VNet 子网，部署将会失败。
 > 
 > 
 
@@ -90,24 +91,55 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 * [在 VNET 中托管缓存时，是否可以使用所有缓存功能？](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
 ## <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Azure Redis 缓存和 VNet 有哪些常见的错误配置问题？
-在 VNet 中托管 Azure Redis 缓存时，会使用下表中的端口。 如果这些端口受阻，则缓存可能无法正常工作。 在 VNet 中使用 Azure Redis 缓存时，阻止这些端口中的一个或多个是最常见的错误配置问题。
+在 VNet 中托管 Azure Redis 缓存时，将使用下表中的端口。 
 
-| 端口 | Direction | 传输协议 | 目的 | 远程 IP |
+>[!IMPORTANT]
+>如果下表中的端口受阻，则缓存可能无法正常工作。 在 VNet 中使用 Azure Redis 缓存时，阻止这些端口中的一个或多个是最常见的错误配置问题。
+> 
+> 
+
+- [出站端口要求](#outbound-port-requirements)
+- [入站端口要求](#inbound-port-requirements)
+
+### <a name="outbound-port-requirements"></a>出站端口要求
+
+有 7 个出站端口要求。
+
+- 必要时，可通过客户端的本地审核设备执行到 Internet 的所有出站连接。
+- 3 个端口将流量路由到服务 Azure 存储和 Azure DNS 的 Azure 终结点。
+- 剩余端口用途不同，针对内部 Redis 子网通信。 内部 Redis 子网通信不需要子网 NSG 规则。
+
+| 端口 | 方向 | 传输协议 | 目的 | 远程 IP |
 | --- | --- | --- | --- | --- |
-| 80、443 |出站 |TCP |Azure 存储空间/PKI (Internet) 上的 Redis 依赖关系 |* |
+| 80、443 |出站 |TCP |Azure 存储/PKI (Internet) 上的 Redis 依赖关系 |* |
 | 53 |出站 |TCP/UDP |DNS (Internet/VNet) 上的 Redis 依赖关系 |* |
-| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 |VIRTUAL_NETWORK、AZURE_LOADBALANCER |
-| 8443 |入站/出站 |TCP |Redis 的实现详细信息 |VIRTUAL_NETWORK |
-| 8500 |入站 |TCP/UDP |Azure 负载均衡 |AZURE_LOADBALANCER |
-| 10221-10231 |入站/出站 |TCP |Redis 的实现详细信息（可以将远程终结点限制为 VIRTUAL_NETWORK） |VIRTUAL_NETWORK、AZURE_LOADBALANCER |
-| 13000-13999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 |VIRTUAL_NETWORK、AZURE_LOADBALANCER |
-| 15000-15999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 |VIRTUAL_NETWORK、AZURE_LOADBALANCER |
-| 16001 |入站 |TCP/UDP |Azure 负载均衡 |AZURE_LOADBALANCER |
-| 20226 |入站+出站 |TCP |Redis 群集的实现详细信息 |VIRTUAL_NETWORK |
+| 8443 |出站 |TCP |Redis 内部通信 | （Redis 子网） |
+| 10221-10231 |出站 |TCP |Redis 内部通信 | （Redis 子网） |
+| 20226 |出站 |TCP |Redis 内部通信 |（Redis 子网） |
+| 13000-13999 |出站 |TCP |Redis 内部通信 |（Redis 子网） |
+| 15000-15999 |出站 |TCP |Redis 内部通信 |（Redis 子网） |
+
+
+### <a name="inbound-port-requirements"></a>入站端口要求
+
+有 8 个入站端口范围要求。 这些范围内的入站请求是指从同一 VNET 上托管的其他服务入站或者来自 Redis 子网通信内部。
+
+| 端口 | 方向 | 传输协议 | 目的 | 远程 IP |
+| --- | --- | --- | --- | --- |
+| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 |虚拟网络、Azure 负载均衡器 |
+| 8443 |入站 |TCP |Redis 内部通信 |（Redis 子网） |
+| 8500 |入站 |TCP/UDP |Azure 负载均衡 |Azure 负载均衡器 |
+| 10221-10231 |入站 |TCP |Redis 内部通信 |（Redis 子网）、Azure 负载均衡器 |
+| 13000-13999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 |虚拟网络、Azure 负载均衡器 |
+| 15000-15999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 |虚拟网络、Azure 负载均衡器 |
+| 16001 |入站 |TCP/UDP |Azure 负载均衡 |Azure 负载均衡器 |
+| 20226 |入站 |TCP |Redis 内部通信 |（Redis 子网） |
+
+### <a name="additional-vnet-network-connectivity-requirements"></a>其他 VNET 网络连接要求
 
 在虚拟网络中，可能一开始不符合 Azure Redis 缓存的网络连接要求。 在虚拟网络中使用时，Azure Redis 缓存需要以下所有项才能正常运行。
 
-* 与全球 Azure 存储空间终结点建立的出站网络连接。 这包括位于 Azure Redis 缓存实例区域的终结点，以及位于**其他** Azure 区域的存储终结点。 Azure 存储终结点在以下 DNS 域下解析：*table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net* 和 *file.core.windows.net*。 
+* 与全球 Azure 存储终结点建立的出站网络连接。 这包括位于 Azure Redis 缓存实例区域的终结点，以及位于**其他** Azure 区域的存储终结点。 Azure 存储终结点在以下 DNS 域下解析：*table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net* 和 *file.core.windows.net*。 
 * 与 *ocsp.msocsp.com*、*mscrl.microsoft.com* 和 *crl.microsoft.com* 建立的出站网络连接。 需要此连接才能支持 SSL 功能。
 * 虚拟网络的 DNS 设置必须能够解析前面几点所提到的所有终结点和域。 确保已针对虚拟网络配置并维护有效的 DNS 基础结构即可符合这些 DNS 要求。
 * 到以下 Azure 监视终结点的出站网络连接，这些终结点在下列 DNS 域下进行解析：shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net、azglobal-red.azglobal.metrics.nsatc.net。
@@ -116,7 +148,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 只能对高级缓存使用 VNet。
 
 ### <a name="why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others"></a>为什么在某些子网中创建 Redis 缓存失败，而在其他子网中不会失败？
-如果要将 Azure Redis 缓存部署到资源管理器 VNet，缓存必须位于不包含任何其他资源类型的专用子网中。 如果尝试将 Azure Redis 缓存部署到包含其他资源的资源管理器 VNet 子网，部署将失败。 必须先删除该子网中的现有资源，然后才能创建新的 Redis 缓存。
+如果要将 Azure Redis 缓存部署到Resource Manager VNet，缓存必须位于不包含任何其他资源类型的专用子网中。 如果尝试将 Azure Redis 缓存部署到包含其他资源的Resource Manager VNet 子网，部署将失败。 必须先删除该子网中的现有资源，然后才能创建新的 Redis 缓存。
 
 只要你有足够的可用 IP 地址，就可以将多种类型的资源部署到经典 VNet。
 

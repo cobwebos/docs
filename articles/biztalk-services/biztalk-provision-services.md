@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 299a6fb23cd0fa725324bbdbdc669ff125a99d1b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>使用 Azure 门户创建 BizTalk 服务
 
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
+
 > [!TIP]
 > 若要登录 Azure 门户，需要使用 Azure 帐户和 Azure 订阅。 如果你没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。 请参阅 [Azure 免费试用](http://go.microsoft.com/fwlink/p/?LinkID=239738)。
-> 
-> 
+
 
 ## <a name="create-a-biztalk-service"></a>创建 BizTalk 服务
 你不一定能够使用所有的 BizTalk 服务设置，这取决于你选择的版本。
@@ -65,10 +69,8 @@ ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
     </td>
     </tr>
     </table>
-   选择“下一步”箭头。
-5. 输入存储和数据库设置：
-   
-    <table border="1">
+选择“下一步”箭头。
+5. 输入存储和数据库设置：  <table border="1">
     <tr>
     <td><strong>监视/存档存储帐户</strong></td>
     <td>选择一个现有存储帐户，或创建一个新的存储帐户。 <br/><br/>如果要创建新的存储帐户，请输入“存储帐户名称”。<strong></strong></td>
@@ -78,21 +80,19 @@ ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
     <td>如果你要使用现有的 Azure SQL 数据库，需保证它没有被其他 BizTalk 服务使用。 你需要使用创建该 Azure SQL 数据库服务器时输入的登录名和密码。<br/><br/><strong>提示</strong>：在与 BizTalk 服务相同的区域中创建跟踪数据库和监视/存档存储帐户。</td>
     </tr>
     </table>
-   选择“下一步”箭头。
-6. 输入数据库设置：
-   
-    <table border="1">
+选择“下一步”箭头。
+6. 输入数据库设置：  <table border="1">
     <tr>
     <td><strong>Name</strong></td>
     <td>如果在上一屏幕中选择了“创建新的 SQL 数据库实例”，将会提供此设置。<strong></strong>
     <br/><br/>
-    输入 BizTalk 服务要使用的 SQL 数据库名称。</td>
+输入 BizTalk 服务要使用的 SQL 数据库名称。</td>
     </tr>
     <tr>
     <td><strong>服务器</strong></td>
     <td>如果在上一屏幕中选择了“创建新的 SQL 数据库实例”，将会提供此设置。<strong></strong>
     <br/><br/>
-    选择现有的 SQL 数据库服务器或创建新的 SQL 数据库服务器。</td>
+选择现有的 SQL 数据库服务器或创建新的 SQL 数据库服务器。</td>
     </tr>
     <tr>
     <td><strong>服务器登录名</strong></td>
@@ -120,7 +120,7 @@ ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
 * [添加生产就绪证书](#AddCert)
 * [获取 Access Control 命名空间](#ACS)
 
-#### <a name="a-nameinstallcertainstall-the-certificate-on-a-local-computer"></a><a name="InstallCert"></a>在本地计算机上安装证书
+#### <a name="InstallCert"></a>在本地计算机上安装证书
 自签名证书是 BizTalk 服务预配的一部分，会随 BizTalk 服务订阅创建和关联。 必须下载此证书，然后将它安装到在其中部署 BizTalk 服务应用程序或将消息发送到 BizTalk 服务终结点的计算机上。
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
@@ -130,13 +130,13 @@ ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
    ![修改 SSL 证书][QuickGlance]
 5. 双击该证书，然后运行向导以安装证书。 确保在“受信任的根证书颁发机构”  存储下安装该证书。
 
-#### <a name="a-nameaddcertaadd-a-production-ready-certificate"></a><a name="AddCert"></a>添加生产就绪证书
+#### <a name="AddCert"></a>添加生产就绪证书
 在创建 BizTalk 服务时自动创建的自签名证书仅限在开发环境中使用。 对于生产方案，使用生产就绪证书替换它。
 
 1. 在“仪表板”选项卡上，选择“更新 SSL 证书”。
 2. 浏览到包括 BizTalk 服务名称的专有 SSL 证书 (*CertificateName*.pfx)，输入密码，然后单击复选标记。
 
-#### <a name="a-nameacsaget-the-access-control-namespace"></a><a name="ACS"></a>获取 Access Control 命名空间
+#### <a name="ACS"></a>获取 Access Control 命名空间
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
 2. 在左侧导航窗格中选择“BizTalk 服务”  ，然后选择你的 BizTalk 服务。
 3. 在任务栏中，选择“连接信息”：  
@@ -171,7 +171,7 @@ Access Control 服务标识是一组凭据，这些凭据允许应用程序或�
 <td>Azure 订阅</td>
 <td>订阅可以确定谁可以登录 Azure 门户。 帐户持有人可在 <a HREF="https://account.windowsazure.com/Subscriptions"> Azure 订阅</a>中创建订阅。
 <br/><br/>
-Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管理这些帐户。 例如，Azure 帐户持有人创建一个名为 <em>BizTalkServiceSubscription</em> 的订阅，并向贵公司内的 BizTalk 管理员（例如，ContosoBTSAdmins@live.com)）授予对此订阅的访问权限。 在这种情况下，BizTalk 管理员可登录 Azure 门户，并对订阅中的所有托管服务（包括 Azure BizTalk 服务）拥有完全管理员权限。 BizTalk 管理员不是 Azure 帐户持有人，因此无法访问任何结算信息。
+Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管理这些帐户。 例如，Azure 帐户持有人创建一个名为 <em>BizTalkServiceSubscription</em> 的订阅，并向贵公司内的 BizTalk 管理员（例如，ContosoBTSAdmins@live.com）授予对此订阅的访问权限。 在这种情况下，BizTalk 管理员可登录 Azure 门户，并对订阅中的所有托管服务（包括 Azure BizTalk 服务）拥有完全管理员权限。 BizTalk 管理员不是 Azure 帐户持有人，因此无法访问任何结算信息。
 <br/><br/>
 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">在 Azure 门户中管理订阅和存储帐户</a>提供了详细信息。
 </td>
@@ -232,8 +232,8 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 <br/>
 
 <ul>
-<li><strong>增强型密钥使用</strong>：Azure BizTalk 服务要求至少进行服务器身份验证。</li>
-<li><strong>公用名</strong>：请输入 Azure BizTalk 服务 URL 的完全限定域名 (FQDN)。 请参阅本文中的<a HREF="#BizTalk">创建 BizTalk 服务</a>。</li>
+<li><strong></strong>增强型密钥使用：Azure BizTalk 服务要求至少进行服务器身份验证。</li>
+<li><strong></strong>公用名：请输入 Azure BizTalk 服务 URL 的完全限定域名 (FQDN)。 请参阅本文中的<a HREF="#BizTalk">创建 BizTalk 服务</a>。</li>
 </ul>
 <br/>
 创建 BizTalk 服务后，便可以添加新的或不同的证书。
@@ -271,9 +271,4 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 [QuickGlance]: ./media/biztalk-provision-services/WABS_QuickGlance.png
 [ACSServiceIdentities]: ./media/biztalk-provision-services/WABS_ACSServiceIdentities.png
 [HybridConnectionTab]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

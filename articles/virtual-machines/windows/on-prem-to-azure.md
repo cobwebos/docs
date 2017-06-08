@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 9da3cf830857211fe414f55e250e222b9d17438b
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 098904d8b5262d8a19d1c10003e0bcaa668ef2dc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -42,7 +43,7 @@ ms.lasthandoff: 03/31/2017
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | 你希望将现有 AWS EC2 实例迁移到 Azure 托管磁盘                                     | [从 Amazon Web Services (AWS) 迁移到 Azure 托管磁盘](aws-to-azure.md)                           |
 | 你希望将其他虚拟化平台中的 VM 用作创建多个 Azure VM 的映像。 | [使用托管磁盘将通用化 VHD 上传到 Azure 并创建新 VM](upload-generalized-managed.md) |
-| 你希望在 Azure 中重新创建一个唯一自定义 VM。                                                      | [使用托管磁盘将专用 VHD 上传到 Azure 并创建新 VM](upload-specialized.md)         |
+| 你希望在 Azure 中重新创建一个唯一自定义 VM。                                                      | [使用托管磁盘将专用 VHD 上传到 Azure 并创建新 VM](create-vm-specialized.md)         |
 
 
 ## <a name="overview-of-managed-disks"></a>托管磁盘概述

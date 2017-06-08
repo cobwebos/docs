@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 132c1cf6b06924b8d23d696ea732856886be975d
-ms.lasthandoff: 05/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1aebecdaacd3525bec07a9359e52d2bc3d1539de
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -76,7 +77,8 @@ WAImportExport 工具仅兼容 64 位 Windows 操作系统。 请参阅[操作�
 >
 
 ### <a name="hard-disk-drives"></a>硬盘驱动器
-只支持将 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II 或 III 内部硬盘驱动器用于导入/导出服务。 可以使用容量最高为 10 TB 的硬盘驱动器。
+只支持将 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II 或 III 内部 HDD 用于导入/导出服务。 单个导入/导出作业最多可以有 10 个 HDD/SSD，并且每个 HDD/SSD 可以为任意大小。 大量驱动器可以分布在多个作业上，并且可创建的作业数没有限制。 
+
 对于导入作业，将处理驱动器上的第一个数据卷。 该数据卷必须使用 NTFS 进行格式化。
 
 > [!IMPORTANT]
@@ -508,6 +510,14 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 请参阅 [Azure 备份中的脱机备份工作流](../backup/backup-azure-backup-import-export.md)。
 
+**一次装运的最大 HDD 数量是多少？
+
+一次装运中可以有任意数量的 HDD，如果磁盘属于多个作业，则建议 a) 将磁盘标记上相应的作业名称。 b) 使用后缀为 -1、-2 等的跟踪号码更新作业。
+  
+**什么是磁盘导入/导出支持的最大块 Blob 和页 Blob 大小？
+
+最大块 Blob 大小大约为 4.768TB 或 5,000,000 MB。
+最大页 Blob 大小为 1TB。
 ## <a name="next-steps"></a>后续步骤
 
 * [设置 WAImportExport 工具](storage-import-export-tool-how-to.md)

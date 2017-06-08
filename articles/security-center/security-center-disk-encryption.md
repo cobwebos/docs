@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 859c0bf3afec46e07b8b8da73fffbc37f3f7959d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: d3817d44bb21162afe799fd13368fbf902521416
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -53,7 +54,7 @@ ms.lasthandoff: 04/27/2017
 ## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>获取并运行 Azure 磁盘加密先决条件配置脚本
 Azure 磁盘加密先决条件配置脚本将设置加密 Azure 虚拟机所需的所有先决条件。
 
-1. 转到 GitHub 页，其中包含 [Azure Disk Encryption Prerequisite Setup Script](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)（Azure 磁盘加密先决条件设置脚本）。
+1. 转到 GitHub 页，其中包含 [Azure Disk Encryption Prerequisite Setup Script](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)（Azure 磁盘加密先决条件设置脚本）。
 2. 在 GibHub 页上，单击“原始”按钮。
 3. 使用 **CTRL-A** 选择页面上的所有文本，然后使用 **CTRL-C** 将页面上的所有文本复制到剪贴板。
 4. 打开“记事本”，将复制的文本粘贴到记事本中。

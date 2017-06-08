@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 209f8869e9ed681285865154bdd4d2d7a0f22456
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 7701d46be70901d361f8a045c386bfa4cdaf98b6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -145,6 +146,7 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 |版本历史记录 | [版本历史记录](active-directory-aadconnect-version-history.md)|
 |比较 DirSync、Azure ADSync 和 Azure AD Connect | [目录集成工具比较](../active-directory-hybrid-identity-design-considerations-tools-comparison.md)|
 |Azure AD 的非 ADFS 兼容性列表 | [Azure AD 联合身份验证兼容性列表](active-directory-aadconnect-federation-compatibility.md)|
+|配置 SAML 2.0 Idp|[将 SAML 2.0 标识提供者 (IdP) 用于单一登录](active-directory-aadconnect-federation-saml-idp.md)|
 |同步的属性 | [同步的属性](active-directory-aadconnectsync-attributes-synchronized.md)|
 |使用 Azure AD Connect Health 进行监视 | [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md)|
 |常见问题 | [Azure AD Connect 常见问题](active-directory-aadconnect-faq.md)|

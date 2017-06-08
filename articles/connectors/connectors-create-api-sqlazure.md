@@ -14,11 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2016
-ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
-ms.openlocfilehash: ce3a622db8667df8b3f1d1391c2aa0d7e1e012a5
-ms.lasthandoff: 01/20/2017
+ms.author: mandia; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3c228be32539050123b01c5ccd74547b0d04ed28
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -51,7 +52,7 @@ ms.lasthandoff: 01/20/2017
 此连接器没有任何触发器。 使用其他触发器启动逻辑应用，例如重复触发器、HTTP Webhook 触发器、可用于其他连接器的触发器等。 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)提供了一个示例。
 
 ## <a name="use-an-action"></a>使用操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
+操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 1. 选择加号。 可看到多个选项：“添加操作”、“添加条件”或“更多”选项之一。
    
@@ -72,152 +73,8 @@ ms.lasthandoff: 01/20/2017
    > 
 5. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
 
-## <a name="technical-details"></a>技术详细信息
-## <a name="sql-database-actions"></a>SQL 数据库操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 SQL 数据库连接器包括以下操作。 
-
-| 操作 | 说明 |
-| --- | --- |
-| [ExecuteProcedure](connectors-create-api-sqlazure.md#execute-stored-procedure) |执行 SQL 中的存储过程 |
-| [GetRow](connectors-create-api-sqlazure.md#get-row) |从 SQL 表中检索单个行 |
-| [GetRows](connectors-create-api-sqlazure.md#get-rows) |从 SQL 表中检索多个行 |
-| [InsertRow](connectors-create-api-sqlazure.md#insert-row) |在 SQL 表中插入一个新行 |
-| [DeleteRow](connectors-create-api-sqlazure.md#delete-row) |从 SQL 表中删除行 |
-| [GetTables](connectors-create-api-sqlazure.md#get-tables) |从 SQL 数据库中检索表 |
-| [UpdateRow](connectors-create-api-sqlazure.md#update-row) |更新 SQL 表中的现有行 |
-
-### <a name="action-details"></a>操作详细信息
-在此部分中，查看有关每项操作的具体详细信息，包括任何必需或可选的输入属性以及与连接器相关联的任何相应输出。
-
-#### <a name="execute-stored-procedure"></a>执行存储过程
-执行 SQL 中的存储过程。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| procedure * |过程名称 |要执行的存储过程的名称 |
-| 参数 * |输入参数 |参数是动态的，并且基于所选的存储过程。 <br/><br/> 例如，如果使用 Adventure Works 示例数据库，请选择 *ufnGetCustomerInformation* 存储过程。 显示**客户 ID** 输入参数。 输入“6”或其他客户 ID 之一。 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-ProcedureResult：携带存储过程执行的结果
-
-| 属性名称 | 数据类型 | 说明 |
-| --- | --- | --- |
-| OutputParameters |对象 |输出参数值 |
-| ReturnCode |integer |过程的返回代码 |
-| ResultSets |对象 |结果集 |
-
-#### <a name="get-row"></a>获取行
-从 SQL 表中检索单个行。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| table * |表名称 |SQL 表的名称 |
-| id * |行 ID |要检索的行的唯一标识符 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-项目
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ItemInternalId |字符串 |
-
-#### <a name="get-rows"></a>获取行
-从 SQL 表中检索多个行。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| table* |表名称 |SQL 表的名称 |
-| $skip |跳过计数 |要跳过的项数（默认值 = 0） |
-| $top |最大获取计数 |要检索的最大项数（默认值 = 256） |
-| $filter |筛选查询 |要限制项数的 ODATA 筛选查询 |
-| $orderby |排序依据 |用于指定项顺序的 ODATA orderBy 查询 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-ItemsList
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| value |数组 |
-
-#### <a name="insert-row"></a>插入行
-在 SQL 表中插入一个新行。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| table* |表名称 |SQL 表的名称 |
-| item* |行 |要插入 SQL 的指定表中的行 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-项目
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ItemInternalId |字符串 |
-
-#### <a name="delete-row"></a>删除行
-从 SQL 表中删除行。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| table* |表名称 |SQL 表的名称 |
-| id* |行 ID |要删除的行的唯一标识符 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-无。
-
-#### <a name="get-tables"></a>获取表
-从 SQL 数据库中检索表。  
-
-此调用没有任何参数。 
-
-##### <a name="output-details"></a>输出详细信息
-TablesList
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| value |数组 |
-
-#### <a name="update-row"></a>更新行
-更新 SQL 表中的现有行。  
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| table* |表名称 |SQL 表的名称 |
-| id* |行 ID |要更新的行的唯一标识符 |
-| item* |行 |具有已更新值的行 |
-
-星号 (*) 表示该属性是必需的。
-
-##### <a name="output-details"></a>输出详细信息
-项目
-
-| 属性名称 | 数据类型 |
-| --- | --- |
-| ItemInternalId |字符串 |
-
-### <a name="http-responses"></a>HTTP 响应
-调用不同的操作时，可能会收到特定响应。 下表概述了这些响应及其说明：  
-
-| Name | 说明 |
-| --- | --- |
-| 200 |确定 |
-| 202 |已接受 |
-| 400 |错误的请求 |
-| 401 |未授权 |
-| 403 |禁止 |
-| 404 |未找到 |
-| 500 |内部服务器错误。 发生未知错误 |
-| default |操作失败。 |
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/sql/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。

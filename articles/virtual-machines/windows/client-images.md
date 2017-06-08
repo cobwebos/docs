@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b53bd4d9db9c1ca030a770e56427f35204b90ab3
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 61054d9e118a3c90dec3330004625a25102a08cc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -27,10 +28,10 @@ ms.lasthandoff: 03/31/2017
 ## <a name="subscription-eligibility"></a>订阅条件
 有效的 Visual Studio 订户（已获取 Visual Studio 订阅许可证的用户）可以使用 Windows 客户端进行开发和测试。 可以在自己的硬件上，以及在任何类型的 Azure 订阅中运行的 Azure 虚拟机上使用 Windows 客户端。 不能在 Azure 上针对一般生产目的部署或使用 Windows 客户端，不是有效 Visual Studio 订户的用户也不能使用 Windows 客户端。
 
-为方便起见，我们在 Azure 库的[符合条件的开发/测试产品](#eligible-offers)中提供了某些 Windows 10 映像。 属于任一产品类型的 Visual Studio 订户也可以[适当地准备和创建](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 64 位 Windows 7、Windows 8 或 Windows 10 映像，然后[上载到 Azure](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 仅限有效的 Visual Studio 订户用于开发/测试目的。
+为方便起见，我们在 Azure 库的[符合条件的开发/测试产品](#eligible-offers)中提供了某些 Windows 10 映像。 属于任一产品类型的 Visual Studio 订户也可以[适当地准备和创建](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 64 位 Windows 7、Windows 8 或 Windows 10 映像，然后[上传到 Azure](upload-generalized-managed.md)。 仅限有效的 Visual Studio 订户用于开发/测试目的。
 
 ## <a name="eligible-offers"></a>符合条件的产品
-下表详细描述了可通过 Azure 库部署 Windows 10 的产品 ID。 只有在以下产品中才能看到 Windows 10 映像。 需要以其他产品类型运行 Windows 客户端的 Visual Studio 订户需要[适当地准备和创建](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 64 位 Windows 7、Windows 8 或 Windows 10 映像，[然后上载到 Azure](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+下表详细描述了可通过 Azure 库部署 Windows 10 的产品 ID。 只有在以下产品中才能看到 Windows 10 映像。 需要以其他产品类型运行 Windows 客户端的 Visual Studio 订户需要[适当地准备和创建](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 64 位 Windows 7、Windows 8 或 Windows 10 映像，[然后上传到 Azure](upload-generalized-managed.md)。
 
 | 产品名称 | 产品编号 | 可用客户端映像 |
 |:--- |:---:|:---:|
@@ -44,15 +45,17 @@ ms.lasthandoff: 03/31/2017
 | [Enterprise 开发/测试](https://azure.microsoft.com/ofers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>检查 Azure 订阅
-如果不知道自己的产品 ID，可以通过 Azure 门户或帐户门户获取。
+如果不知道自己的产品 ID，可以使用以下两种方式之一通过 Azure 门户获取：  
 
-订阅产品 ID 显示在 Azure 门户的“订阅”边栏选项卡中：
+- 在“订阅”边栏选项卡上：
 
-![Azure 门户中的产品 ID 详细信息](./media/client-images/offer_id_azure_portal.png) 
+  ![Azure 门户中的产品 ID 详细信息](./media/client-images/offer-id-azure-portal.png) 
+
+- 或者，单击“计费”，然后单击订阅 ID。 产品 ID 将显示在“计费”边栏选项卡中。
 
 也可以从 Azure 帐户门户的 [订阅](http://account.windowsazure.com/Subscriptions) 选项卡查看产品 ID：
 
-![Azure 帐户门户中的产品 ID 详细信息](./media/client-images/offer_id_azure_account_portal.png) 
+![Azure 帐户门户中的产品 ID 详细信息](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>后续步骤
 现在，可以使用 [PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、[Resource Manager 模板](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或 [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) 部署 VM。

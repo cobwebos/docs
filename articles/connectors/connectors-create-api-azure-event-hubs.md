@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: estfan; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: e776d095356e10ef47ca49e2a8b9f97d63fb80be
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: fd691f898e26bea0a304bcf52e5df9ee7db8b818
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -36,14 +37,14 @@ ms.lasthandoff: 04/04/2017
 <a name="permissions-connection-string"></a>
 ## <a name="check-event-hubs-namespace-permissions-and-find-the-connection-string"></a>检查事件中心命名空间权限，找到连接字符串
 
-若要让逻辑应用访问某个服务，必须在逻辑应用和该服务之间创建[连接](./connectors-overview.md)（如果尚未创建）。 该连接授权逻辑应用访问数据。
-若要让逻辑应用访问事件中心，你必须有事件中心命名空间的“管理”权限和连接字符串。
+若要让逻辑应用访问某个服务，必须在逻辑应用和该服务之间创建[连接](./connectors-overview.md)（如果尚未创建）。** 该连接授权逻辑应用访问数据。
+若要让逻辑应用访问事件中心，你必须有事件中心命名空间的“管理”权限和连接字符串。****
 
 若要检查权限并获取连接字符串，请执行以下步骤。
 
 1.  登录 [Azure 门户](https://portal.azure.com "Azure portal")。 
 
-2.  转到事件中心命名空间，而不是特定的事件中心。 在命名空间边栏选项卡的“设置”下，选择“共享访问策略”。 在“声明”下，检查你是否有该命名空间的“管理”权限。
+2.  转到事件中心命名空间，而不是特定的事件中心。** 在命名空间边栏选项卡的“设置”下，选择“共享访问策略”。**** 在“声明”下，检查你是否有该命名空间的“管理”权限。****
 
     ![管理事件中心命名空间的权限](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 04/04/2017
     > [!TIP]
     > 若要确认连接字符串是与你的事件中心命名空间关联，还是与特定的事件中心关联，请检查该连接字符串中是否存在 `EntityPath` 参数。 如果找到了该参数，则说明连接字符串适用于特定的事件中心“实体”，不是适用于你的逻辑应用的正确字符串。
 
-4.  现在（在向逻辑应用添加事件中心触发器或操作以后），当系统提示你输入凭据时，你就可以连接到事件中心命名空间。 为连接提供一个名称，输入复制的连接字符串，然后选择“创建”。
+4.  现在（在向逻辑应用添加事件中心触发器或操作以后），当系统提示你输入凭据时，你就可以连接到事件中心命名空间。 为连接提供一个名称，输入复制的连接字符串，然后选择“创建”。****
 
     ![输入事件中心命名空间的连接字符串](./media/connectors-create-api-azure-event-hubs/event-hubs-connection.png)
 
@@ -65,7 +66,7 @@ ms.lasthandoff: 04/04/2017
 
 ## <a name="start-workflow-when-your-event-hub-receives-new-events"></a>当事件中心接收新事件时启动工作流
 
-[触发器](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)是一个事件，在逻辑应用中启动工作流。 若要在新事件发送到事件中心时启动工作流，请执行以下步骤，以便添加用于检测该事件的触发器。
+[触发器](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)是一个事件，在逻辑应用中启动工作流。** 若要在新事件发送到事件中心时启动工作流，请执行以下步骤，以便添加用于检测该事件的触发器。
 
 1.  在 [Azure 门户](https://portal.azure.com "Azure 门户")中转到现有的逻辑应用，或者创建一个空白逻辑应用。
 
@@ -78,14 +79,14 @@ ms.lasthandoff: 04/04/2017
 
     ![输入事件中心命名空间的连接字符串](./media/connectors-create-api-azure-event-hubs/event-hubs-connection.png)
 
-    创建连接后，将会显示“当事件在事件中心可用时”触发器的设置。
+    创建连接后，将会显示“当事件在事件中心可用时”触发器的设置。****
 
     ![与“当事件中心接收新事件时”相对应的触发器设置](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
 3.  输入或选择要监视的事件中心的名称。 根据你想多久一次检查事件中心，选择频率和时间间隔。
 
     > [!TIP]
-    > （可选）若要选择一个用于读取事件的使用者组，请选择“显示高级选项”。 
+    > （可选）若要选择一个用于读取事件的使用者组，请选择“显示高级选项”。**** 
 
     ![指定事件中心或使用者组](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger-details.png)
 
@@ -97,7 +98,7 @@ ms.lasthandoff: 04/04/2017
 
 [*操作*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)是逻辑应用工作流执行的任务。 将触发器添加到逻辑应用后，可以添加一个操作，以便使用该触发器生成的数据执行操作。 若要将事件从逻辑应用发送到事件中心，请执行以下步骤。
 
-1.  在逻辑应用设计器的逻辑应用触发器下，选择“新步骤” > “添加操作”。
+1.  在逻辑应用设计器的逻辑应用触发器下，选择“新步骤” > “添加操作”。****
 
     ![选择“新步骤”，然后选择“添加操作”](./media/connectors-create-api-azure-event-hubs/add-action.png)
 
@@ -112,7 +113,7 @@ ms.lasthandoff: 04/04/2017
 3.  输入事件的必要详细信息，例如要向其发送事件的事件中心的名称。 输入与事件有关的任何其他可选详细信息，例如该事件的内容。
 
     > [!TIP]
-    > （可选）若要指定事件中心分区，以便向其发送事件，请选择“显示高级选项”。 
+    > （可选）若要指定事件中心分区，以便向其发送事件，请选择“显示高级选项”。**** 
 
     ![输入事件中心名称以及可选的事件详细信息](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
@@ -122,19 +123,8 @@ ms.lasthandoff: 04/04/2017
 
     你现在已设置一个用于从逻辑应用发送事件的操作。 
 
-## <a name="technical-details"></a>技术详细信息
-
-### <a name="triggers"></a>触发器
-
-| 触发器 | 说明 |
-| --- | --- |
-| 当事件在事件中心可用时 | 当事件在指定的事件中心可用时，触发一个工作流。 |
-
-### <a name="actions"></a>操作
-
-| 操作 | 说明 |
-| --- | --- |
-| 发送事件 | 将事件发送到指定的事件中心。 |
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/eventhubs/)。 
 
 ## <a name="get-help"></a>获取帮助
 

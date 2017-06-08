@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 284b239860481cf76f647d78f6a7b5e2b7cf9a3b
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: af7d5b03e1490ed8d90021980f14c47281e8a655
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -79,6 +80,7 @@ ms.lasthandoff: 04/26/2017
 
 目前不是，但将来会成为默认选项。
 
+
 **是否可以创建一个空托管磁盘？**
 
 可以，可创建空磁盘。 可独立于 VM 创建托管磁盘，也就是说不需要将磁盘附加到 VM。
@@ -126,6 +128,10 @@ Azure 托管磁盘当前仅支持本地冗余存储 (LRS)。
 
 在使用专用（未经过 sysprep 处理或通用化）OS 磁盘预配 VM 时能否更改计算机名称属性？否。 无法更新计算机名称属性。 新 VM 将从创建 OS 磁盘时所用的父 VM 继承该属性。 
 
+**在哪里可找到用于使用托管磁盘创建 VM 的示例 Azure Resource Manager 模板**
+* https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md
+* https://github.com/chagarw/MDPP
+
 ## <a name="managed-disks-and-port-8443"></a>托管磁盘和端口 8443
 
 **为何客户必需使用 Azure 托管磁盘在端口 8443 上为 VM 解除阻止出站流量？**
@@ -144,7 +150,7 @@ Azure VM 代理使用端口 8443 将每个 VM 扩展的状态报告给 Azure 平
 
 不会成功部署该扩展。 扩展的状态将为未知。 
 
-**如果使用 ARM 模板来预配多个阻止了端口 8443 的 VM（一个 VM 带扩展，另一个 VM 依赖于第一个 VM），会发生什么情况？**
+**如果使用 Azure Resource Manager 模板来预配多个阻止了端口 8443 的 VM（一个 VM 带扩展，另一个 VM 依赖于第一个 VM），会发生什么情况？**
 
 第一个 VM 会显示部署失败，因为扩展未成功部署。 第二个 VM 不会部署。 
 

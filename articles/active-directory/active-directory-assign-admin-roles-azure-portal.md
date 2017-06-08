@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
-ms.author: femila
+ms.date: 05/23/2017
+ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: e8d3eb7e336383eb639e55656b26d881e8c2adb0
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 8e8723c6dc81012a0dddd4e0a28c4d4af6828c6c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/29/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/29/2017
 
 * **计费管理员**：进行采购、管理订阅、管理支持票证并监视服务运行状况。
 
-* **合规性管理员**：拥有此角色的用户具有 Office 365 安全与合规中心和 Exchange 管理中心中的管理权限。 有关详细信息，请参阅“[关于 Office 365 管理员角色](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1)”。
+* **合规性管理员**：拥有此角色的用户具有 Office 365 安全与合规中心和 Exchange 管理中心中的管理权限。 有关详细信息，请参阅“[关于 Office 365 管理员角色](https://support.office.com/en-us/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)”。
 
 * **CRM 服务管理员**：具有此角色的用户在 Microsoft CRM Online（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 
@@ -139,6 +139,20 @@ ms.lasthandoff: 03/29/2017
 
 ## <a name="details-about-the-global-administrator-role"></a>有关全局管理员角色的详细信息
 全局管理员有权访问所有管理功能。 默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 只有全局管理员才能分配其他管理员角色。
+
+### <a name="to-add-a-colleague-as-a-global-administrator"></a>将某个同事添加为全局管理员
+
+1. 使用租户目录的全局管理员的帐户登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
+
+   ![打开 Azure AD 管理中心](./media/active-directory-assign-admin-roles-azure-portal/active-directory-admin-center.png)
+
+2. 选择“用户和组”&gt;“所有用户”
+
+3. 找到要指定为全局管理员的用户，并打开该用户的边栏选项卡。
+
+4. 在“用户”边栏选项卡中，选择“目录角色”。
+ 
+5. 在“目录角色”边栏选项卡中，选择“全局管理员”角色，并保存。
 
 ## <a name="assign-or-remove-administrator-roles"></a>分配或删除管理员角色
 若要了解如何在 Azure Active Directory 中向用户分配管理角色，请参阅[在 Azure Active Directory 预览版中向用户分配管理角色](active-directory-users-assign-role-azure-portal.md)。

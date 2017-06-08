@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: ed2fc2b34ff10acc806daec84986f8db58e713c3
-ms.openlocfilehash: 84cd0c3eb2753a209d0aebda405f0b98a487140d
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 2c967d759806b47862179ecf9e9a89801134192a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -44,7 +45,7 @@ ms.lasthandoff: 02/17/2017
 
 测试本教程中的步骤应遵循以下建议：
 
-* 不应使用生产环境，除非有此必要。
+* 除非必要，请勿使用生产环境。
 * 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。 
 
 ## <a name="scenario-description"></a>方案描述
@@ -137,7 +138,7 @@ ms.lasthandoff: 02/17/2017
    
     2. 在“回复 URL”文本框中，粘贴你在上一步骤中从 Litmos 应用程序复制的值。
    
-    3. 单击“资源组名称” 的 Azure 数据工厂。
+    3. 单击“下一步”。
 9. 在“在 Litmos 处配置单一登录”页上，执行以下步骤：
    
     ![Azure AD 单一登录][2] 
@@ -174,7 +175,7 @@ ms.lasthandoff: 02/17/2017
     | --- | --- |
     | Email |user.mail |
     | FirstName |user.givenname |
-    | Lastname |user.surname |
+    | LastName |user.surname |
     
     对于上表中的每个数据行，执行以下步骤：
     
@@ -214,7 +215,7 @@ ms.lasthandoff: 02/17/2017
    
     2. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    3. 单击“资源组名称” 的 Azure 数据工厂。
+    3. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤： 
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-litmos-tutorial/create_aaduser_06.png) 
@@ -226,7 +227,7 @@ ms.lasthandoff: 02/17/2017
    3. 在“显示名称”文本框中，键入“Britta Simon”。
    
    4. 在“角色”列表中，选择“用户”。
-   5. 单击“资源组名称” 的 Azure 数据工厂。
+   5. 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-litmos-tutorial/create_aaduser_07.png) 

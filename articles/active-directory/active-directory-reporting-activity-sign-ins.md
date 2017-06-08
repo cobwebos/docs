@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory 门户中的“登录活动”报告 | Microsoft Docs"
 description: "Azure Active Directory 门户中的“登录活动”报告简介"
 services: active-directory
@@ -16,10 +15,10 @@ ms.workload: identity
 ms.date: 05/04/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 19cd81c1e6020523d1bea3ec76c957ce22f931ca
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 0e8ae05b5f8644d4dfd0e6205224cabfb0919531
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -37,6 +36,17 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
     - **已标记为存在风险的用户** - 风险用户是指可能已泄露的用户帐户。 有关详细信息，请参阅“已标记为存在风险的用户”。
 
 本主题概述登录活动。
+
+## <a name="pre-requisite"></a>先决条件
+
+### <a name="who-can-access-the-data"></a>谁可以访问该数据？
+* 安全管理员或安全读者角色中的用户
+* 全局管理员
+* 任何用户（非管理员）都可以访问自己的登录活动 
+
+### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
+* 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告
+
 
 ## <a name="signs-in-activities"></a>登录活动
 

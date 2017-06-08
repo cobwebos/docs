@@ -1,6 +1,6 @@
 ---
-title: "将 Apache Spark 与 Kafka on Azure HDInsight 配合使用 | Microsoft Docs"
-description: "了解如何使用 Spark on HDInsight 读取数据并将数据写入 Kafka on HDInsight 群集。 此示例使用 Jupyter 笔记本中的 Scala 将随机数据写入到 Kafka on HDInsight，然后使用 Spark 流式处理读取它。"
+title: "Apache Spark 流式处理与 Kafka - Azure HDInsight | Microsoft Docs"
+description: "了解如何使用 HDInsight 上的 Apache Spark 读取数据并将数据写入 Apache Kafka on HDInsight。 此示例使用 Jupyter 笔记本中的 Scala 将数据写入到 Kafka on HDInsight，然后使用 Spark 流式处理读取它。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,32 +13,23 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/13/2017
+ms.date: 05/15/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: c56decc1f7603795e027ce20363c387c593999ae
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: ceff0df193b3356ed2a23f381ea65369063957b1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 ---
 # <a name="use-apache-spark-with-kafka-preview-on-hdinsight"></a>将 Apache Spark 与 Kafka on HDInsight（预览版）配合使用
 
-可使用 Apache Spark 以流式方式将数据传入或传出 Apache Kafka。 在此文档中，了解如何使用 Spark on HDInsight 中的 Jupyter 笔记本以流式方式将数据传入或传出 Kafka。
+了解如何使用 Apache Spark 以流式方式将数据传入或传出 Apache Kafka。 在此文档中，了解如何使用 Spark on HDInsight 中的 Jupyter 笔记本以流式方式将数据传入或传出 Kafka。
 
 > [!NOTE]
 > 本文档中的步骤创建了一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于 Azure 虚拟网络中，允许 Spark 群集直接与 Kafka 群集进行通信。
-> 
+>
 > 完成本文档中的步骤后，请记得删除这些群集，避免支付额外费用。
-
-## <a name="prerequisites"></a>先决条件
-
-* Azure 订阅
-
-* SSH 客户端（需要 `ssh` 和 `scp` 命令）- 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-* [cURL](https://curl.haxx.se/) - 跨平台实用工具，用于发出 HTTP 请求。
-
-* [jq](https://stedolan.github.io/jq/) - 跨平台实用工具，用于分析 JSON 文档。
 
 ## <a name="create-the-clusters"></a>创建群集
 
@@ -53,9 +44,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 1. 使用以下按钮登录到 Azure，然后在 Azure 门户中打开模板。
     
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Azure Resource Manager 模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet.json** 中。
+    Azure Resource Manager 模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v2.json** 中。
 
 2. 使用以下信息来填充“自定义部署”边栏选项卡上的项：
    
@@ -63,7 +54,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
    
     * **资源组**：创建一个资源组或选择现有的资源组。 此组包含 HDInsight 群集。
 
-    * **位置**：选择在地理上邻近的位置。 此位置必须匹配“设置”部分中的位置。
+    * **位置**：选择在地理上邻近的位置。
 
     * **基群集名称**：此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 **hdi** 创建名为 spark-hdi__ 的 Spark 群集和名为 **kafka-hdi** 的 Kafka 群集。
 
@@ -74,8 +65,6 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     * **SSH 用户名**：创建 Spark 和 Kafka 群集的 SSH 用户。
 
     * **SSH 密码**：Spark 和 Kafka 群集的 SSH 用户密码。
-
-    * **位置**：在其中创建群集的区域。
 
 3. 阅读“条款和条件”，然后选择“我同意上述条款和条件”。
 
@@ -114,28 +103,50 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 项目中的每个单元格包含注释或说明代码作用的文本部分。
 
-##<a id="kafkahosts"></a>Kafka 主机信息
+## <a id="kafkahosts"></a>Kafka 主机信息
 
 创建与 Kafka on HDInsight 配合使用的应用程序时，应首先获取 Kafka 中转站和 Kafka 群集的 Zookeeper 主机的信息。 客户端应用程序利用此操作与 Kafka 通信。
 
 > [!NOTE]
 > 不可通过 Internet 直接访问 Kafka 中转站和 Zookeeper 主机。 使用 Kafka 的任何应用程序必须在 Kafka 群集上运行，或在与 Kafka 群集相同的 Azure 虚拟网络中运行。 在这种情况下，该示例在同一虚拟网络中的 Spark on HDInsight 群集上运行。
 
-从开发环境中使用以下命令来检索中转站和 Zookeeper 的信息。 使用创建群集时使用的登录（管理员）密码替换 __PASSWORD__。 用创建群集时使用的基名称替换 __BASENAME__。
+从开发环境中使用以下命令来检索中转站和 Zookeeper 的信息：
 
 * 获取 __Kafka 中转站__信息：
 
-        curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
+    ```bash
+    curl -u admin:$PASSWORD -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
+    ```
 
-    > [!IMPORTANT]
-    > 使用 Windows PowerShell 的此命令时，可能收到有关 shell 引用的错误。 如果出现此情况，请使用以下命令：`curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")'`
+    > [!NOTE]
+    > 将 `$PASSWORD` 设置为在创建群集时使用的登录（管理员）密码。 将 `$CLUSTERNAME` 设置为在创建群集时使用的基名称。
+
+    ```powershell
+    $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
+        -Credential $creds
+    $respObj = ConvertFrom-Json $resp.Content
+    $brokerHosts = $respObj.host_components.HostRoles.host_name
+    ($brokerHosts -join ":9092,") + ":9092"
+    ```
+
+    > [!NOTE]
+    > 将 `$cluterName` 设置为 HDInsight 群集的名称。 出现提示时，输入群集登录（管理员）帐户的密码。
 
 * 获取 __Zookeeper 主机__信息：
 
-        curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'
-    
-    > [!IMPORTANT]
-    > 使用 Windows PowerShell 的此命令时，可能收到有关 shell 引用的错误。 如果出现此情况，请使用以下命令：`curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["""\(.host_components[].HostRoles.host_name):2181"""] | join(""",""")'`
+    ```bash
+    curl -u admin:$PASSWORD -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'
+    ```
+
+    ```powershell
+    $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" `
+        -Credential $creds
+    $respObj = ConvertFrom-Json $resp.Content
+    $zookeeperHosts = $respObj.host_components.HostRoles.host_name
+    ($zookeeperHosts -join ":2181,") + ":2181"
+    ```
 
 这两个命令均返回类似以下文本的信息：
 
@@ -150,13 +161,13 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 若要使用示例 Jupyter 笔记本，必须将其上传到 Spark 群集上的 Jupyter 笔记本服务器中。 执行以下步骤上传此笔记本：
 
-1. 在 Web 浏览器中，使用以下 URL 连接到 Spark 群集上的 Jupyter 笔记本服务器。 使用创建群集时使用的基名称替换 __BASENAME__。
+1. 在 Web 浏览器中，使用以下 URL 连接到 Spark 群集上的 Jupyter 笔记本服务器。 将 `CLUSTERNAME` 替换为 Spark 群集的名称。
 
-        https://spark-BASENAME.azurehdinsight.net/jupyter
+        https://CLUSTERNAME.azurehdinsight.net/jupyter
 
     出现提示时，输入创建群集时使用的群集登录名（管理员）和密码。
 
-2. 在页面右上角，使用“上传”按钮上传 `KafkaStreaming.ipynb` 文件。 在文件浏览器对话框中，选择此文件并选择“打开”。 
+2. 在页面右上角，使用“上传”按钮上传 `KafkaStreaming.ipynb` 文件。 在文件浏览器对话框中，选择此文件并选择“打开”。
 
     ![使用“上传”按钮来选择并上传笔记本](./media/hdinsight-apache-spark-with-kafka/upload-button.png)
 

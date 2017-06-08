@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: fc411d7605c9ef3cbd46e7522a6b565dd59f8b46
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 54adfd4cfaec086cec43ca851af9496bfb1049b2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -27,8 +28,8 @@ ms.lasthandoff: 03/31/2017
 ## <a name="next-steps"></a>后续步骤
 可以在下列文章中，阅读与此处讨论的技术相关的更为详细的信息，以及有关如何使用网络安全组的快速入门指南：
 
-* [快速入门 — 使用 Azure 门户创建网络安全组和 ACL 规则](nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)  
-* [快速入门 — 使用 Azure PowerShell 创建网络安全组和 ACL 规则](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)  
+* [快速入门 — 使用 Azure 门户创建网络安全组和 ACL 规则](nsg-quickstart-portal.md)  
+* [快速入门 — 使用 Azure PowerShell 创建网络安全组和 ACL 规则](nsg-quickstart-powershell.md)  
 * [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)  
 * [什么是网络安全组 (NSG)？](../../virtual-network/virtual-networks-nsg.md)  
 * [Azure Resource Manager 中负载均衡器的概述](../../load-balancer/load-balancer-arm.md) 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
-translationtype: Human Translation
-ms.sourcegitcommit: 37f795fe59496b0267120537115cf56d44cc5325
-ms.openlocfilehash: 60cde851a466a5b4b0752908f11272eedb246b0a
-ms.lasthandoff: 12/23/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 270f890b5ec58ffd009ff913a6df9d941889a6dc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 ---
 
@@ -30,12 +31,12 @@ ms.lasthandoff: 12/23/2016
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保具备以下条件：
-*   系统已安装 Visual Studio 2012、2013 或 2015。
-*   已安装 Azure PowerShell。 [下载 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
-*   用于初始化数据转换作业的配置设置（用于获取这些设置的说明在此处提供）。
-*   已在资源组中的混合数据资源中正确配置的作业定义。
-*   所有必需的 dll。 从 [GitHub 存储库](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下载这些 dll。
-*   github 存储库中的 `Get-ConfigurationParams.ps1` [脚本](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)。
+*    系统已安装 Visual Studio 2012、2013 或 2015。
+*    已安装 Azure PowerShell。 [下载 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+*    用于初始化数据转换作业的配置设置（用于获取这些设置的说明在此处提供）。
+*    已在资源组中的混合数据资源中正确配置的作业定义。
+*    所有必需的 dll。 从 [GitHub 存储库](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下载这些 dll。
+*    github 存储库中的 `Get-ConfigurationParams.ps1` [脚本](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)。
 
 ## <a name="step-by-step"></a>分步指南
 
@@ -51,7 +52,11 @@ ms.lasthandoff: 12/23/2016
         可以为 ActiveDirectoryKey 和 AppName 传入任何值。
 
 
-2. 此脚本将输出以下值      - 客户端 ID      - 租户 ID      - Active Directory 密钥（与上面输入的相同）      - 订阅 ID
+2. 此脚本输出以下值：
+    * 客户端 ID
+    * 租户 ID
+    * Active Directory 密钥（与上面输入的密钥相同）
+    * 订阅 ID
 
 3. 使用 Visual Studio 2012、2013 或 2015 创建 C# .NET 控制台应用程序。
 
@@ -63,7 +68,7 @@ ms.lasthandoff: 12/23/2016
     5. 对于**位置**，选择 **C:\DataTransformation**。
     6.  。
 
-4.  现在，将 [dll](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) 文件夹中存在的所有 DLL 添加为已创建的项目中的**引用**。 若要下载 dll 文件，请执行以下操作：
+4.    现在，将 [dll](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) 文件夹中存在的所有 DLL 添加为已创建的项目中的**引用**。 若要下载 dll 文件，请执行以下操作：
 
     1. 在 Visual Studio 中，转到“视图”>“解决方案资源管理器”。
     1. 单击“数据转换应用”项目左侧的箭头。 单击“引用”，然后右键单击“添加引用”。

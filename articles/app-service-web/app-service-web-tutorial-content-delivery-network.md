@@ -1,13 +1,15 @@
 ---
 title: "向 Azure App Service 添加内容交付网络 (CDN) | Microsoft Docs"
 description: "向 Azure App Service 添加内容交付网络 (CDN)，以便在全球靠近客户的服务器缓存和交付静态文件。"
-services: app-service
+services: app-service\web
 author: syntaxc4
 ms.author: cfowler
 ms.date: 05/01/2017
-ms.topic: hero-article
+ms.topic: article
 ms.service: app-service-web
 manager: erikre
+ms.workload: web
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 7208abc0e6eaa9067c5bb36a09e1bfd276fe0b0c

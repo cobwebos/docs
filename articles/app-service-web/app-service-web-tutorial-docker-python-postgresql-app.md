@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: beverst
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 554843c5f3161a45ff984b000944f546b44dd472
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: ca086f76e50cb27f012bb2e7f05595be5fdcb241
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>在 Azure 中构建 Docker Python 和 PostgreSQL Web 应用
@@ -36,6 +36,8 @@ ms.lasthandoff: 05/10/2017
 1. [下载、安装并运行 PostgreSQL](https://www.postgresql.org/download/)
 1. [下载并安装 Docker Community Edition](https://www.docker.com/community-edition)
 1. [下载和安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -120,7 +122,7 @@ Flask 示例应用程序在数据库中存储用户数据。 如果前面的操�
 
 接下来，我们将在终端窗口中使用 Azure CLI 2.0 创建所需的资源用于在 Azure 应用服务 中托管 Python 应用程序。  使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。 
 
-```azurecli 
+```azurecli-interactive 
 az login 
 ``` 
    
@@ -130,7 +132,7 @@ az login
 
 以下示例在美国西部区域创建一个资源组：
 
-```azurecli
+```azurecli-interactive
 az group create --name myResourceGroup --location "West US"
 ```
 
@@ -142,7 +144,7 @@ az group create --name myResourceGroup --location "West US"
 
 在以下命令中，请将 `<postgresql_name>` 占位符替换为你自己的唯一 PostgreSQL 服务器名称。 此唯一名称将用作 PostgreSQL 终结点 (`https://<postgresql_name>.postgres.database.azure.com`) 的一部分，因此需要在 Azure 中的所有服务器之间保持唯一。 
 
-```azurecli
+```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <my_admin_username>
 ```
 
@@ -178,7 +180,7 @@ az postgres server create --resource-group myResourceGroup --name <postgresql_na
 
 在访问该数据库之前，必须允许从所有 IP 地址访问它。 为此，可运行以下 Azure CLI 命令：
 
-```azurecli
+```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=255.255.255.255 --name AllowAllIPs
 ```
 
@@ -288,7 +290,7 @@ INFO  [alembic.runtime.migration] Will assume transactional DDL.
 
 在以下用于创建容器注册表的命令中，请将 `<registry_name>` 替换为所选的唯一 Azure 容器注册表名称。
 
-```azurecli
+```azurecli-interactive
 az acr create --name <registry_name> --resource-group myResourceGroup --location "West US" --sku Basic
 ```
 
@@ -318,7 +320,7 @@ az acr create --name <registry_name> --resource-group myResourceGroup --location
 
 必须先启用管理模式，然后才能访问凭据。
 
-```azurecli
+```azurecli-interactive
 az acr update --name <registry_name> --admin-enabled true
 az acr credential show -n <registry_name>
 ```
@@ -355,20 +357,11 @@ docker push <registry_name>.azurecr.io/flask-postgresql-sample
 
 使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。 
 
-> [!NOTE] 
-> 应用服务计划表示用于托管应用的物理资源集合。 分配到应用服务计划的所有应用程序将共享该计划定义的资源，在托管多个应用时可以节省成本。 
-> 
-> 应用服务计划定义： 
-> 
-> * 区域（北欧、美国东部、东南亚，等等） 
-> * 实例大小（小、中、大） 
-> * 规模计数（一个、两个、三个实例，等等） 
-> * SKU（免费、共享、基本、标准、高级） 
-> 
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 以下示例使用 S1 定价层创建名为 `myAppServicePlan` 的基于 Linux 的应用服务计划。
 
-```azurecli
+```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
 ```
 
@@ -416,7 +409,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 在下列命令中，请用自己的唯一应用名称替换 `<app_name>` 占位符。 该唯一名称将用作 Web 应用的默认域名的一部分，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 稍后，可以先将任何自定义 DNS 条目映射到 Web 应用，然后向用户公开该条目。 
 
-```azurecli
+```azurecli-interactive
 az appservice web create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
@@ -448,7 +441,7 @@ az appservice web create --name <app_name> --resource-group myResourceGroup --pl
 
 使用以下命令可将数据库连接详细信息指定为应用设置。 此外，我们使用了 `PORT` 变量来指定要映射 Docker 容器中的端口 5000，以便在端口 80 上接收 HTTP 流量。
 
-```azurecli
+```azurecli-interactive
 az appservice web config appsettings update --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="eventregistration" PORT=5000
 ```
 
@@ -464,7 +457,7 @@ az appservice web config container update --resource-group myResourceGroup --nam
 
 每当更新 Docker 容器或更改上述设置后，请重新启动应用，确保已应用所有设置，并从注册表中提取了最新的容器。
 
-```azurecli
+```azurecli-interactive
 az appservice web restart --resource-group myResourceGroup --name <app_name>
 ```
 

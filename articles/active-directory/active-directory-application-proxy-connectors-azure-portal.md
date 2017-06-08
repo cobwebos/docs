@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/04/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: e1c65060c2862736c76b36676f95a88d8dbab4c6
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 39049c7a1e2a4d61ef62bd06cda9ef1bb2c50c0b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/05/2017
 
 ---
 
-# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups---public-preview"></a>使用连接器组在单独的网络和位置上发布应用程序 - 公共预览版
+# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-application-proxy-connectors-azure-portal.md)
 > * [Azure 经典门户](active-directory-application-proxy-connectors.md)
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/02/2017
 
 ## <a name="azure-ad-application-proxy-and-connector-groups"></a>Azure AD 应用程序代理和连接器组
 
-客户在越来越多的方案和应用程序中使用 Azure AD 的应用程序代理。 因此，我们通过启用更多拓扑使应用代理更加灵活。 可以创建应用程序代理连接器组，这是用于分配特定连接器以服务特定应用程序的新功能。 此功能为应用程序代理生成以前不可能实现的许多用例。 在个人预览版阶段，我们目睹了大型客户使用连接器组来提高其实时应用程序代理部署。 
+客户在越来越多的方案和应用程序中使用 Azure AD 的应用程序代理。 因此，我们通过启用更多拓扑使应用代理更加灵活。 可以创建应用程序代理连接器组，这是用于分配特定连接器以服务特定应用程序的新功能。 此功能为应用程序代理生成以前不可能实现的许多用例。 
 
 基本概念是将每个应用程序代理连接器分配给连接器组。 属于同一连接器组的所有连接器作为一个单独的组，以实现高可用性和负载均衡。 默认情况下，所有连接器都属于默认组。 管理员可以在 Azure 门户中创建新组并更改这些分配。 
 

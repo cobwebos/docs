@@ -3,7 +3,7 @@ title: "将数据导入到 Azure Application Insights 中的 Analytics | Microso
 description: "导入要与应用遥测数据联接的静态数据，或者导入要使用 Analytics 查询的单独数据流。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,11 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 4f10e5a8200af870e0adb8977b9c68b9998a6de7
-ms.lasthandoff: 03/21/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: d649644959d907ff7fd6c1de360b091682f13d5b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -41,7 +42,7 @@ ms.lasthandoff: 03/21/2017
 上载的频率由用户以及用户希望数据可用于查询的速度决定。 将数据以较大块（但不要超过 1GB）的形式上载更高效。
 
 > [!NOTE]
-> *有大量要分析的数据源？* [*请考虑使用*logstash*将数据传送到 Application Insights。*](https://github.com/Microsoft/logstash-output-application-insights)
+> *有大量要分析的数据源？* [*请考虑使用* logstash *将数据传送到 Application Insights。*](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>开始之前
@@ -187,11 +188,11 @@ JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射
 * **400 错误请求**：指示请求有效负载无效。 请检查：
  * 检测密钥是否正确。
  * 时间值是否有效。 它应该是 UTC 格式的当前时间。
- * 数据是否符合架构。
+ * 事件的 JSON 是否符合架构。
 * **403 禁止访问**：已发送的 Blob 不可访问。 请确保共享访问密钥有效并且未过期。
 * **404 未找到**：
  * Blob 不存在。
- * 数据源名称错误。
+ * sourceId 错误。
 
 响应错误消息中提供了更多详细信息。
 
@@ -203,8 +204,6 @@ JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射
 ### <a name="classes"></a>类
 
 ```C#
-
-
 namespace IngestionClient 
 { 
     using System; 
@@ -357,7 +356,6 @@ namespace IngestionClient
         #endregion Private 
     } 
 } 
-
 ```
 
 ### <a name="ingest-data"></a>引入数据
@@ -365,14 +363,11 @@ namespace IngestionClient
 将此代码用于每个 Blob。 
 
 ```C#
-
-
    AnalyticsDataSourceClient client = new AnalyticsDataSourceClient(); 
 
-   var ingestionRequest = new AnalyticsDataSourceIngestionRequest("iKey", "tableId/sourceId", "blobUrlWithSas"); 
+   var ingestionRequest = new AnalyticsDataSourceIngestionRequest("iKey", "sourceId", "blobUrlWithSas"); 
 
    bool success = await client.RequestBlobIngestion(ingestionRequest);
-
 ```
 
 ## <a name="next-steps"></a>后续步骤

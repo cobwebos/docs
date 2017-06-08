@@ -1,11 +1,11 @@
 # 概述
-
 ## [什么是 Azure Analysis Services？](analysis-services-overview.md)
+## [支持的数据源](analysis-services-datasource.md)
 
-# 入门
-## [创建服务器](analysis-services-create-server.md)
-## [部署到服务器](analysis-services-deploy.md)
-## [连接](analysis-services-connect.md)
+# 快速入门
+## [创建服务器 - 门户](analysis-services-create-server.md)
+## [部署模型 - SSDT](analysis-services-deploy.md)
+
 
 # 教程
 ## 创建和部署模型
@@ -18,7 +18,7 @@
 ### [第 6 课：创建度量](tutorials/aas-lesson-6-create-measures.md)  
 ### [第 7 课： 创建关键性能指标](tutorials/aas-lesson-7-create-key-performance-indicators.md)  
 ### [第 8 课：创建透视](tutorials/aas-lesson-8-create-perspectives.md) 
-### [第 9 课：创建层次结构](tutorials/aas-lesson-9-create-hierarchies.md)  
+### [第 9 课：创建层次结构](tutorials/aas-lesson-9-create-hierarchies.md) 
 ### [第 10 课：创建分区](tutorials/aas-lesson-10-create-partitions.md) 
 ### [第 11 课：创建角色](tutorials/aas-lesson-11-create-roles.md)
 ### [第 12 课：在 Excel 中分析](tutorials/aas-lesson-12-analyze-in-excel.md)
@@ -31,12 +31,12 @@
 ## [管理服务器](analysis-services-manage.md)
 ## [管理用户](analysis-services-manage-users.md)
 ## [集成本地数据网关](analysis-services-gateway.md)
+## [连接到服务器](analysis-services-connect.md)
 ## [使用 Excel 进行连接](analysis-services-connect-excel.md)
 ## [使用 Power BI 进行连接](analysis-services-connect-pbi.md)
 ## [获取客户端库](analysis-services-data-providers.md)
 ## [备份和还原](analysis-services-backup.md)
 ## [高可用性](analysis-services-bcdr.md)
-## [数据源连接](analysis-services-datasource.md)
 ## [创建 .odc 文件](analysis-services-odc.md)
 
 # 引用

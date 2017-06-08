@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 5acfbfbe7327fc28fa909e6ef7e0f9b6ce8b0e54
-ms.openlocfilehash: e0be8f4617c2fdbe1cb6fe2f904bf9ea7056c55e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: a6dc6148c3307d41801a4c1112397f3e63006ae8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 ---
 
 
-# <a name="publish-applications-using-azure-ad-application-proxy---public-preview"></a>使用 Azure AD 应用程序代理（公共预览版）发布应用程序
+# <a name="publish-applications-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布应用程序
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-proxy-publish-azure-portal.md)
@@ -41,7 +43,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 > 若是第一次使用应用程序代理，请选择一个已经设置好进行基于密码的身份验证的应用程序。 应用程序代理支持其他类型的身份验证，但基于密码的应用是最容易快速启动并运行的。 
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，以管理员身份登录。
-2. 选择“Azure Active Directory” > “企业应用程序” > “添加”。
+2. 选择“Azure Active Directory” > “企业应用程序” > “新建应用程序”。
 
   ![添加企业应用程序](./media/application-proxy-publish-azure-portal/add-app.png)
 
@@ -97,9 +99,4 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 - [下载连接器](active-directory-application-proxy-enable.md)并[创建连接器组](active-directory-application-proxy-connectors-azure-portal.md)，以便将应用程序发布到单独的网络和位置。
 
 - 为新发布的应用[设置单一登录](application-proxy-sso-azure-portal.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

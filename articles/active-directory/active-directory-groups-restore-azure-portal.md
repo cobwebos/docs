@@ -1,5 +1,6 @@
 ---
-title: "在 Azure Active Directory 预览版中还原已删除的 Office 365 组 | Microsoft Docs"
+
+title: "在 Azure Active Directory 中还原已删除的 Office 365 组 | Microsoft Docs"
 description: "如何在 Azure Active Directory 中还原已删除的组、查看可还原的组，以及永久删除组"
 services: active-directory
 documentationcenter: 
@@ -12,19 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4e2fe22953ff74214c0c20fdf2fabceeda63be35
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 473f3e464324cc2667428485235e3b942c736382
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>在 Azure Active Directory 中还原已删除的 Office 365 组
 
-在 Azure Active Directory (Azure AD) 预览版中删除某个 Office 365 组后，删除的组将会保留，但从删除日期开始算起的 30 天内将不可见。 这样，便可以根据需要还原该组及其内容。 此功能仅适用于 Azure AD 中的 Office 365 组， 而不适用于安全组和分发组。
+在 Azure Active Directory (Azure AD) 中删除某个 Office 365 组后，删除的组将会保留，但从删除日期开始算起的 30 天内将不可见。 这样，便可以根据需要还原该组及其内容。 此功能仅适用于 Azure AD 中的 Office 365 组， 而不适用于安全组和分发组。
 
 还原组所需的权限可能是下列其中一项：
 
@@ -36,8 +38,7 @@ ms.lasthandoff: 04/27/2017
 
 
 ## <a name="how-to-view-deleted-office-365-groups-that-are-available-to-restore"></a>如何查看可还原的已删除 Office 365 组
-可以使用以下 cmdlet 查看已删除的组，确认尚未永久清除的、想要还原的一个或多个组。 这些 cmdlet 属于 [Azure Active Directory PowerShell V2 预览版模块](https://www.powershellgallery.com/packages/AzureADPreview)。 [Azure Active Directory PowerShell 版本 2](/powershell/azure/install-adv2?view=azureadps-2.0) 一文中介绍了此模块的详细信息。
-请注意，用于管理软删除和恢复的 cmdlet 位于公共预览版中，我们有时需要对预览版 cmdlet 进行重大更改。 因此，不建议在生产环境中使用这些 cmdlet。
+可以使用以下 cmdlet 查看已删除的组，确认尚未永久清除的、想要还原的一个或多个组。 这些 cmdlet 属于 [Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。 [Azure Active Directory PowerShell 版本 2](/powershell/azure/install-adv2?view=azureadps-2.0) 一文中介绍了此模块的详细信息。
 
 1.    运行以下 cmdlet，显示租户中所有已删除的但仍可还原的 Office 365 组。
   ```

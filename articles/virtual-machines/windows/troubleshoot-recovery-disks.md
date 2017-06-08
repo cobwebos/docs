@@ -4,7 +4,7 @@ title: "将 Windows 故障排除 VM 与 Azure PowerShell 联合使用 | Microsof
 description: "了解如何使用 Azure PowerShell 将 OS 磁盘连接到恢复 VM，以便排查 Azure 中的 Windows VM 问题。"
 services: virtual-machines-windows
 documentationCenter: 
-authors: iainfoulds
+authors: genlin
 manager: timlt
 editor: 
 ms.service: virtual-machines-windows
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 12/13/2016
-ms.author: iainfou
-translationtype: Human Translation
+ms.date: 05/26/2017
+ms.author: genli
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 36de0375cef661dddb384f9f7651e3faf8df793c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 

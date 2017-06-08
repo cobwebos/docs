@@ -5,11 +5,4 @@
    
     ![添加到项目的 Docker 文件](media/vs-azure-tools-docker-add-docker-support/docker-files-added.png)
 
-> [!NOTE]
-> 如果使用 [Docker for Windows Beta 版](https://beta.docker.com)，请打开 Properties\Docker.props，删除默认值并重新启动 Visaul Studio 使值生效。
-> 
-> ```
-> <DockerMachineName Condition="'$(DockerMachineName)'=='' "></DockerMachineName>
-> ```
-> 
 

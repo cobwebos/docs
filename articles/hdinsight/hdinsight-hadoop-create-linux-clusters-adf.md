@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/23/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: b515ffeebb2ebb4455c48b98d085acef7556291b
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 8bdbe30bb435f06ba206bfde81b238fe7dcf544c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -573,7 +574,9 @@ folderPath 指定保留输出数据的文件夹的路径：
 ## <a name="appendix"></a>附录
 
 ### <a name="azure-cli-script"></a>Azure CLI 脚本
-可以使用 Azure CLI 而非 Azure PowerShell 完成本教程。 若要使用 Azure CLI，请先按以下说明安装 Azure CLI：[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+可以使用 Azure CLI 而非 Azure PowerShell 完成本教程。 若要使用 Azure CLI，请先按以下说明安装 Azure CLI：
+
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 #### <a name="use-azure-cli-to-prepare-the-storage-and-copy-the-files"></a>使用 Azure CLI 准备存储并复制文件
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/28/2017
-ms.author: darosa;sethm;jotaub
+ms.author: darosa;sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 72e4c59e1282d97cfc5aa5f55861c6f70d419ce8
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: a916f643c7e6727d6053865d1c0bd2f683a53b3f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -48,11 +48,17 @@ ms.lasthandoff: 05/02/2017
 
 ### <a name="partitioned-queues-and-topics"></a>分区的队列和主题
 
-高级消息传送支持分区的队列和主题；实际上，这些实体始终分区（且不能禁用）。 但是，高级层中分区的队列和主题的工作方式不同于服务总线消息传送的标准层和基本层。 高级消息传送不使用 SQL 作为数据存储，并且也不再具有与共享平台相关联的可能的资源竞争。 因此，不需要为提高性能而分区。 此外，分区计数已从标准消息传送的 16 个减少到高级中的 2 个分区。 使用两个分区可确保可用性并且更适合高级运行时环境所要求的分区数。 有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
+高级消息传送支持分区的队列和主题；实际上，这些实体始终分区（且不能禁用）。 但是，高级层中分区的队列和主题的工作方式不同于服务总线消息传送的标准层和基本层。 高级消息传送不使用 SQL 作为数据存储，并且也不再具有与共享平台相关联的可能的资源竞争。 因此，不需要为提高性能而分区。 此外，分区计数已从标准消息传送的 16 个减少到高级中的 2 个分区。 使用两个分区可确保可用性并且更适合高级运行时环境所要求的分区数。 
+
+使用高级消息传送时，当将实体大小指定为 [MaxSizeInMegabytes](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxsizeinmegabytes#Microsoft_ServiceBus_Messaging_QueueDescription_MaxSizeInMegabytes) 时，该大小在 2 个分区之间平均拆分，这不同于[标准分区实体](service-bus-partitioning.md#standard)，在这种实体中，总大小是指定大小的 16 倍。 
+
+有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
 
 ### <a name="express-entities"></a>快速实体
 
-由于高级消息传送在一个完全隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
+由于高级消息传送在一个完全隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
+
+如果你有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
 
 ## <a name="get-started-with-premium-messaging"></a>高级消息传送入门
 

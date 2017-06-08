@@ -1,21 +1,19 @@
 ---
-title: "Azure Database for MySQL 中的服务层| Microsoft Docs&quot;"
+title: "Azure Database for MySQL 中的服务层| Microsoft Docs"
 description: "Azure Database for MySQL 中的服务层"
 services: mysql
 author: v-chenyh
-ms.author: v-chenyh
 manager: jhubbard
 editor: jasonh
-ms.assetid: 
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/16/2017
+ms.author: v-chenyh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b647db3c3a48ac6c151814ee68b3117a92c1d4d8
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 9ae42c9b151c53a1f57d6856bc29cd7f71a7f9be
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-service-tier"></a>Azure Database for MySQL 选项和性能：了解每个服务层提供的功能
@@ -39,18 +37,17 @@ Azure Database for MySQL 提供基本服务层和标准服务层。 高级服务
 | 基本 | 最适合需要在无 IOPS 保证下进行可缩放计算和存储的小型工作负荷。 示例包括用于开发或测试的服务器，或不常使用的小型应用程序。 |
 | 标准 | 非常适合需要 IOPS 保证，能够独立扩展至更高计算和存储性能以实现高吞吐量的云应用程序。 应用示例包括 Web 或分析应用程序。 |
 | 高级 | 最适合事务和 IO 需要很短延迟同时需要高 IO 和工作负荷吞吐量的工作负荷。 对许多并发用户提供最佳支持。 适用于支持关键应用程序的数据库。<br />高级服务层尚未提供预览版。 |
-| &nbsp; | &nbsp; |
+
 
 要确定服务层，首先请确定工作负荷是否需要 IOPS 保证。 然后确定需要的一些最低功能：
 
 | **服务层功能** | **基本** | **标准** | 高级 * |
 | :------------------------ | :-------- | :----------- | :------------ |
-| 最大计算单元数 | 100 | 2000 | 不适用于预览版 |
-| 最大总存储 | 1050 GB | 10000 GB | 不适用于预览版 |
+| 最大计算单元数 | 100 | 2,000 | 不适用于预览版 |
+| 最大总存储 | 1,050 GB | 10,000 GB | 不适用于预览版 |
 | 存储 IOPS 保证 | 不适用 | 是 | 不适用于预览版 |
-| 最大存储 IOPS | 不适用 | 30,000 | 不适用于预览版 |
+| 最大存储 IOPS | 不适用 | 3,000 | 不适用于预览版 |
 | 数据库备份保留期 | 7 天 | 35 天 | 35 天 |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; |
 
 > [!NOTE]
 > 预览版中的标准服务层当前最多支持 800 个计算单元，最大支持 1000 GB 存储。
@@ -63,40 +60,36 @@ Azure Database for MySQL 提供基本服务层和标准服务层。 高级服务
 > 在预览版中，基本层和标准层当前不支持动态缩放存储。 我们计划在将来添加此功能。
 
 > [!NOTE]
-> 标准服务层中，IOPS 相对预配的存储大小按 3:1 的固定比例缩放。 所含的 125 GB 存储保证预配 IOPS 为 375，其中每个 IO 的大小最多可达 256 KB。 如果预配 1000 GB，预配 IOPS 将为 3000。 必须监视服务器计算单元使用情况并进行扩展，以充分利用可用的预配 IOPS。
+> 标准服务层中，IOPS 相对预配的存储大小按 3:1 的固定比例缩放。 所含的 125 GB 存储保证预配 IOPS 为 375，其中每个 IO 的大小最多可达 256 KB。 如果预配 1,000 GB，预配 IOPS 将为 3,000。 必须监视服务器计算单元使用情况并进行扩展，以充分利用可用的预配 IOPS。
 
 ## <a name="service-tiers-and-performance-levels"></a>服务层和性能级别
 
 Azure Database for MySQL 在每个服务层内提供多个性能级别。 通过使用如下其中一种方式，你可以灵活选择最能满足具体工作负荷需求的级别：
-
 - [Azure 门户](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 与每个 MySQL 服务器中托管的数据库数量无关，你的数据库可确保获得一组资源，且服务器预期性能特征不受影响。
 
-基本服务层：
+### <a name="basic-service-tier"></a>基本服务层：
 
 | **性能级别** | **50** | **100** |
 | :-------------------- | :----- | :------ |
 | 最大计算单元数 | 50 | 100 |
 | 所含存储大小 | 50 GB | 50 GB |
-| 最大服务器存储大小\* | 1050 GB | 1050 GB |
-| 最大并发登录数 | &nbsp; | &nbsp; |
-| 最大连接数 | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; |
+| 最大服务器存储大小\* | 1,050 GB | 1,050 GB |
 
-标准服务层：
+\*最大服务器存储大小指服务器的最大预配存储大小。
+
+
+### <a name="standard-service-tier"></a>标准服务层：
 
 | **性能级别** | **100** | **200** | **400** | **800** |
 | :-------------------- | :------ | :------ | :------ | :------ |
 | 最大计算单元数 | 100 | 200 | 400 | 800 |
-| 所含存储大小和预配 IOPS | 125 GB，375 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| 最大服务器存储大小\* | 1 TB | &nbsp; | &nbsp; | &nbsp; |
-| 服务器预配 IOPS 的最大值 | 3000 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| 服务器预配 IOPS 的最大值/GB | 固定为 3 IOPS/GB | &nbsp; | &nbsp; | &nbsp; |
-| 最大并发登录数 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| 最大连接数 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
+| 所含存储大小和预配 IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS |
+| 最大服务器存储大小\* | 1 TB | 1 TB | 1 TB | 1 TB |
+| 服务器预配 IOPS 的最大值 | 3,000 IOPS | 3,000 IOPS | 3,000 IOPS | 3,000 IOPS |
+| 服务器预配 IOPS 的最大值/GB | 固定为 3 IOPS/GB | 固定为 3 IOPS/GB | 固定为 3 IOPS/GB | 固定为 3 IOPS/GB |
 
 \*最大服务器存储大小指服务器的最大预配存储大小。
 
@@ -109,12 +102,15 @@ Azure Database for MySQL 在每个服务层内提供多个性能级别。 通过
 整个扩展过程的持续时间同时取决于更改前后服务器的大小和服务层。 例如，如果服务器要将计算单元更改为标准服务层、从标准服务层更改计算单元或在标准层内更改计算单元，则应该在几分钟内完成。 更改完成之前不会应用服务器的新属性。
 
 ### <a name="documentation-about-the-steps-for-scaling-up-or-down"></a>有关增减步骤的文档
+[使用 Azure CLI 监视和缩放用于 MySQL 服务器的 Azure 数据库](scripts/sample-scale-server.md)
 
-- [使用 Azure 门户管理单个服务器](quickstart-create-mysql-server-database-using-azure-portal.md)
-- [使用 Azure CLI 管理单个服务器](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ### <a name="details-about-scaling-up-or-down"></a>有关增减的详细信息
 
 - 若要对数据库进行降级，服务器存储单元应小于目标服务层允许的最大大小。
-- 各服务层提供的还原服务各不相同。 如果进行降级，你可能无法再还原到某个时间点，或者备份保留期变短。 有关详细信息，请参阅[如何使用 Azure 门户备份和还原 Azure Database for MySQL 服务器](./howto-restore-server-portal.md)
+- 各服务层提供的还原服务各不相同。 如果进行降级，你可能无法再还原到某个时间点，或者备份保留期变短。 有关详细信息，请参阅[如何使用 Azure 门户备份和还原 Azure Database for MySQL 服务器](howto-restore-server-portal.md)
 - 更改完成之前不会应用服务器的新属性。
+
+## <a name="next-steps"></a>后续步骤
+[说明计算单元和存储单元](concepts-compute-unit-and-storage.md)
+

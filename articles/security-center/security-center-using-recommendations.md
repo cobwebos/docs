@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 安全中心建议增强安全性 | Microsoft 文档"
-description: " 了解如何使用 Azure 安全中心内的安全策略和建议来帮助减少安全攻击. "
+description: " 了解如何使用 Azure 安全中心内的安全策略和建议来帮助减少安全攻击。 "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 05/08/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 313801fc3b845cd30506b1a26918660e77d2a986
-ms.openlocfilehash: 67095e0d8752fb3a2bca692f65e77cde5fd1a966
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 36dd149812a0e8c8ca8ef2bac09c1920ec15d3ba
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -75,7 +77,7 @@ Jeff 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/
 
 1. Jeff 选择“建议”磁贴以打开“建议”边栏选项卡。
    ![选择“建议”磁贴][3]
-2. Jeff 查看建议列表。 他会看到安全中心已按优先级顺序（从最高优先级到最低优先级）提供了建议列表。 他决定处理列表上的第一个高优先级建议。 他在“建议”边栏选项卡中选择“安装终结点保护”。
+2. Jeff 查看建议列表。 他会看到安全中心已按优先级顺序（从最高优先级到最低优先级）提供了建议列表。 他决定处理列表上的高优先级建议。 他在“建议”边栏选项卡中选择“安装终结点保护”。
 3. “安装终结点保护”边栏选项卡将打开，显示未启用反恶意软件的 VM 列表。 Jeff 查看 VM 列表，选择所有 VM，然后选择“在 3 个 VM 上安装”。
    ![安装终结点保护][4]
 4. “选择终结点保护”边栏选项卡将打开，向 Jeff 提供两个反恶意软件解决方案。 Jeff 选择“Microsoft 反恶意软件”解决方案。
@@ -114,9 +116,4 @@ Jeff 获悉 [Microsoft 安全响应中心 (MSRC)](../security/azure-security-res
 [5]:./media/security-center-using-recommendations/microsoft-antimalware.png
 [6]: ./media/security-center-using-recommendations/provide-security-contact-details.png
 [7]: ./media/security-center-using-recommendations/dismiss-recommendation.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

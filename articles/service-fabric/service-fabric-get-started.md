@@ -12,12 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/22/2017
+ms.date: 05/26/2017
 ms.author: ryanwi, mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 91049ee124999269a326106cbd6fc211cc027d26
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 25243603abd2f30adc11640f00b782c8d827796e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -70,9 +71,16 @@ Service Fabric 工具是 Visual Studio 2017 中 Azure 开发和管理工作负�
 > 由此产生的不便，我们深表歉意。 
 
 当前版本包括：
-* Service Fabric SDK 2.5.216
-* Service Fabric 运行时 5.5.216
-* Visual Studio 2015 工具 1.5.50311.1
+* Service Fabric SDK 2.6.210
+* Service Fabric 运行时 5.6.210
+* Visual Studio 2015 工具 1.6.50508.2
+* Visual Studio 2017 Update 2
+
+当前预览版本包括：
+* Service Fabric SDK 255.255.2709.255
+* Service Fabric 运行时 255.255.5709.255
+* Visual Studio 2015 工具 1.6.50509.5
+* Visual Studio 2017 Update 3 Preview 1
 
 有关支持的版本列表，请参阅 [Service Fabric 支持](service-fabric-support.md)
 

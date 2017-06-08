@@ -3,7 +3,7 @@ title: "在 Azure Application Insights 中监视 Docker 应用程序 | Microsoft
 description: "Docker 性能计数器、事件和异常可连同容器化应用发送的遥测数据一起显示在 Application Insights 中。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
 ms.service: application-insights
@@ -97,7 +97,7 @@ ms.lasthandoff: 03/16/2017
 ### <a name="docker-container-events"></a>Docker 容器事件
 ![示例](./media/app-insights-docker/13.png)
 
-若要调查单个事件，请单击“搜索”。[](app-insights-diagnostic-search.md) 通过搜索和筛选找到所需的事件。 单击任一事件可查看详细信息。
+若要调查单个事件，请单击 [搜索](app-insights-diagnostic-search.md)。 通过搜索和筛选找到所需的事件。 单击任一事件可查看详细信息。
 
 ### <a name="exceptions-by-container-name"></a>按容器名称列出的异常
 ![示例](./media/app-insights-docker/14.png)

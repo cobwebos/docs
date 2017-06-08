@@ -13,9 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/30/2016
 ms.author: jejiang
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 98b04d28d1b905dad19ad6cf608733c6554f01cf
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: c49f80f8dcd330d7f46726241e7178351b9cc28f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -32,8 +34,8 @@ U-SQL 可使用户轻松使用 .Net 语言添加自己的自定义代码，例�
 若要解决这些问题，可将代码隐藏转换为程序集，并将程序集注册到 Data Lake Analytics 目录。
 
 ## <a name="prerequisites"></a>先决条件
-* Visual Studio 2015、Visual Studio 2013 Update 4 或安装有 Visual C++ 的 Visual Studio 2012
-* 用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本。  可以使用 Web 平台安装程序安装它。
+* Visual Studio 2017、Visual Studio 2015、Visual Studio 2013 Update 4 或安装有 Visual C++ 的 Visual Studio 2012
+* 用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本。  可以使用 Web 平台安装程序或 Visual Studio 安装程序来安装它
 * Data Lake Analytics 帐户。  请参阅[通过 Azure 门户实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)。
 * 请通读 [Get started with Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md)（Azure Data Lake Analytics U-SQL Studio 入门）教程。
 * 连接到 Azure。
@@ -79,8 +81,3 @@ U-SQL 可使用户轻松使用 .Net 语言添加自己的自定义代码，例�
 * [使用适用于 Visual Studio 的工具开发 U-SQL 应用程序](data-lake-analytics-data-lake-tools-get-started.md)
 * [使用 Data Lake Analytics(U-SQL) 目录](data-lake-analytics-use-u-sql-catalog.md)
 * [使用用于 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)
-
-
-<!--HONumber=Dec16_HO2-->
-
-

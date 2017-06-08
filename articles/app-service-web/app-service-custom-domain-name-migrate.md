@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d6d506eef720488969c5b33fe4b94c02752c6b58
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 6adc34f208c6c4363b73f6e42b4a4d6ae2e4483f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/03/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假定你已了解如何[将自定义域手动映射到应用服务](web-sites-custom-domain-name.md)。
+本文假定你已了解如何[将自定义域手动映射到应用服务](app-service-web-tutorial-custom-domain.md)。
 
 ## <a name="bind-the-domain-name-preemptively"></a>提前绑定域名
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 04/03/2017
 
 请遵循以下步骤进行配置：
 
-1. 首先，按照[创建 DNS 记录](web-sites-custom-domain-name.md#createdns)中的步骤，使用 DNS 注册表创建验证 TXT 记录。
+1. 首先，按照[创建 DNS 记录](app-service-web-tutorial-custom-domain.md#create-a)中的步骤，使用 DNS 注册表创建验证 TXT 记录。
 其他 TXT 记录遵循从 &lt;*子域*>.&lt;*根域*> 映射到 &lt;*appname*>.azurewebsites.net 的约定。
 有关示例，请参见下表：  
  
@@ -70,16 +71,16 @@ ms.lasthandoff: 04/03/2017
     </tr>
     </table>
 
-2. 然后，按照[为应用启用自定义域名](web-sites-custom-domain-name.md#enable)中的步骤，将自定义域名添加到 Azure 应用。
+2. 然后，按照[为应用启用自定义域名](app-service-web-tutorial-custom-domain.md#enable-a)中的步骤，将自定义域名添加到 Azure 应用。
 
     自定义域现已在 Azure 应用中启用。 只需通过域注册机构更新 DNS 记录。
 
-3. 最后，更新域的 DNS 记录，以指向 Azure 应用，如[创建 DNS 记录](web-sites-custom-domain-name.md#createdns)中所示。 
+3. 最后，更新域的 DNS 记录，以指向 Azure 应用，如[创建 DNS 记录](app-service-web-tutorial-custom-domain.md#create-a)中所示。 
 
     DNS 传播开始后，应立即将用户流量重定向至 Azure 应用。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅[在 Azure 中购买 SSL 证书](web-sites-purchase-ssl-web-site.md)或[使用其他来源的 SSL 证书](web-sites-configure-ssl-certificate.md)，以了解如何使用 HTTPS 保护自定义域名。
+请参阅[在 Azure 中购买 SSL 证书](web-sites-purchase-ssl-web-site.md)或[使用其他来源的 SSL 证书](app-service-web-tutorial-custom-ssl.md)，以了解如何使用 HTTPS 保护自定义域名。
 
 > [!NOTE]
 > 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。

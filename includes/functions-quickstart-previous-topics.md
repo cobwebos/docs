@@ -1,6 +1,1 @@
-本主题使用以下主题之一中创建的资源作为起点：
-
-+ [通过 Azure 门户创建第一个函数](../articles/azure-functions/functions-create-first-azure-function.md)
-+ [使用 Azure CLI 创建第一个函数](../articles/azure-functions/functions-create-first-azure-function-azure-cli.md)
-
-如果你尚未完成这些主题中的步骤，现在请完成这些步骤，以创建 Function App。
+本主题以在[从 Azure 门户创建你的第一个函数](../articles/azure-functions/functions-create-first-azure-function.md)主题中创建的资源为基础。 请现在就完成以下步骤，以便创建函数应用（如果尚未这样做）。

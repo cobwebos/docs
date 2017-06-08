@@ -1,5 +1,5 @@
 ---
-title: "使用 Transact-SQL 为 Azure SQL 数据库配置异地复制 | Microsoft 文档"
+title: "使用 Transact-SQL 为 Azure SQL 数据库配置异地复制 | Microsoft Docs"
 description: "使用 Transact-SQL 为 Azure SQL 数据库配置异地复制"
 services: sql-database
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 04/14/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1005f776ae85a7fc878315225c45f2270887771f
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: dad35a2b3beb2b07d5b12afb8a04ba48f8b8ef7e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -34,13 +34,15 @@ ms.lasthandoff: 05/10/2017
 > 
 > 
 
-若要使用 Transact-SQL 配置活动异地复制，需提供：
+若要使用 Transact-SQL 配置活动异地复制，需要以下项：
 
-* Azure 订阅。
-* 逻辑 Azure SQL 数据库服务器 <MyLocalServer> 和 SQL 数据库 <MyDB> - 你要复制的主数据库。
-* 一个或多个逻辑 Azure SQL 数据库服务器 <MySecondaryServer(n)> - 可充当伙伴服务器（将在其中创建辅助数据库）的逻辑服务器。
-* 主数据库上 DBManager 的登录名，拥有你要异地复制的本地数据库的 db_ownership 权限，并且是你要配置异地复制的伙伴服务器上的 DBManager。
-* SQL Server Management Studio (SSMS)
+* Azure 订阅
+* 逻辑 Azure SQL 数据库服务器 <MyLocalServer> 和 SQL 数据库 <MyDB> - 要复制的主数据库
+* 一个或多个逻辑 Azure SQL 数据库服务器 <MySecondaryServer(n)> - 可充当伙伴服务器（将在其中创建辅助数据库）的逻辑服务器
+* 作为主数据库上的 DBManager 的登录名
+* 具有要异地复制的本地数据库的 db_ownership
+* 作为要将异地复制配置到的伙伴服务器上的 DBManager
+* 最新版本的 SQL Server Management Studio (SSMS)
 
 > [!IMPORTANT]
 > 建议始终使用最新版本的 Management Studio 以保持与 Microsoft Azure 和 SQL 数据库的更新同步。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。

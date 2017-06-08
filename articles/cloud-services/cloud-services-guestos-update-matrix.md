@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/18/2017
+ms.date: 5/17/2017
 ms.author: raiye
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d471f5826cc05fb52ff4c24184628235477c075d
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 16a773e0c406f257925a9af01155ed157ffaf014
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -29,16 +30,21 @@ ms.lasthandoff: 04/19/2017
 > 
 > 
 
-<!-- -->
 
-> [!TIP]
-> 订阅[来宾 OS 更新 RSS 源][rss]，以接收有关所有来宾 OS 更改的最新通知。
+> [!NOTE]
+> 最近已弃用 RSS 源。 请继续关注即将推出的新源更新！
 > 
 > 
-
+ 
 不太确定什么是来宾 OS 或者来宾 OS 的工作原理？ 请阅读[此部分](#how-it-works)。
 
 ## <a name="news-updates"></a>新闻更新
+###### <a name="may-17-2017"></a>**2017 年 5 月 17 日**
+由于存在安全 bug，我们将禁用以下 2016 年 12 月和 2017 年 1 月的 OS 版本，这些版本不包含门户的[修复]：WA-GUEST-OS-5.4_201612-01、WA-GUEST-OS-4.39_201612-01、WA-GUEST-OS-3.46_201612-01、WA-GUEST-OS-2.59_201701-01
+
+###### <a name="may-12-2017"></a>**2017 年 5 月 12 日**
+5 月版来宾 OS 将从 5 月 12 日开始推出，预计于 6 月 13 日正式发行。
+
 ###### <a name="april-18-2017"></a>**2017 年 4 月 18 日**
 4 月版来宾 OS 于 4 月 18 日开始推出，预计于 5 月 9 日正式发行。
 
@@ -72,9 +78,10 @@ Windows Server 2016 将于 2016 年 11 月 1 日作为 OS 系列 5 推出，提�
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.6_201704-01 |2017 年 5 月 9 日 |5.8 发行后 |TBD | 
 | WA-GUEST-OS-5.5_201703-01 |2017 年 4 月 10 日 |5.7 发行后 |TBD | 
-| WA-GUEST-OS-5.4_201612-01 |2017 年 1 月 10 日 |5.6 发行后 |TBD | 
-| WA-GUEST-OS-5.3_201611-01 |2016 年 12 月 14 日 |5.5 发行后 |TBD |
+|~~WA-GUEST-OS-5.4_201612-01~~ |2017 年 1 月 10 日 |5.6 发行后 |TBD | 
+|~~WA-GUEST-OS-5.3_201611-01~~ |2016 年 12 月 14 日 |2017 年 5 月 9 日 |TBD |
 |~~WA-GUEST-OS-5.2_201610-02~~ |2016 年 11 月 1 日 |2017 年 4 月 10 日 |TBD |
 
 ## <a name="family-4-releases"></a>系列 4 发行版本
@@ -89,9 +96,10 @@ Windows Server 2016 将于 2016 年 11 月 1 日作为 OS 系列 5 推出，提�
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.41_201704-01 |2017 年 5 月 9 日 |4.43 发行后 |TBD |
 | WA-GUEST-OS-4.40_201703-01 |2017 年 4 月 10 日 |4.42 发行后 |TBD |
-| WA-GUEST-OS-4.39_201612-01 |2017 年 1 月 10 日 |4.41 发行后 |TBD |
-| WA-GUEST-OS-4.38_201611-01 |2016 年 12 月 14 日 |4.40 发行后 |TBD |
+|~~WA-GUEST-OS-4.39_201612-01~~ |2017 年 1 月 10 日 |4.41 发行后 |TBD |
+|~~WA-GUEST-OS-4.38_201611-01~~ |2016 年 12 月 14 日 |2017 年 5 月 9 日 |TBD |
 |~~WA-GUEST-OS-4.37_201610-02~~ |2016 年 11 月 16 日 |2017 年 4 月 10 日 |TBD |
 |~~WA-GUEST-OS-4.36_201609-01~~ |2016 年 10 月 13 日 |2017 年 1 月 14 日 |TBD |
 |~~WA-GUEST-OS-4.35_201608-01~~ |2016 年 9 月 13 日 |2016 年 12 月 16 日 |TBD |
@@ -115,10 +123,11 @@ Windows Server 2016 将于 2016 年 11 月 1 日作为 OS 系列 5 推出，提�
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.48_201704-01 |2017 年 5 月 9 日 |3.50 发行后 |TBD |
 | WA-GUEST-OS-3.47_201703-01 |2017 年 4 月 10 日 |3.49 发行后 |TBD |
-| WA-GUEST-OS-3.46_201612-01 |2017 年 1 月 10 日 |3.48 发行后 |TBD |
-| WA-GUEST-OS-3.45_201611-01 |2016 年 12 月 14 日 |3.47 发行后 |TBD |
-| WA-GUEST-OS-3.44_201610-02 |2016 年 11 月 16 日 |2017 年 5 月 1 日 |TBD |
+| ~~WA-GUEST-OS-3.46_201612-01~~ |2017 年 1 月 10 日 |3.48 发行后 |TBD |
+| ~~WA-GUEST-OS-3.45_201611-01~~ |2016 年 12 月 14 日 |2017 年 5 月 9 日 |TBD |
+| ~~WA-GUEST-OS-3.44_201610-02~~ |2016 年 11 月 16 日 |2017 年 5 月 1 日 |TBD |
 | ~~WA-GUEST-OS-3.43_201609-01~~ |2016 年 10 月 13 日 |2017 年 1 月 14 日 |TBD |
 | ~~WA-GUEST-OS-3.42_201608-01~~ |2016 年 9 月 13 日 |2016 年 12 月 16 日 |TBD |
 | ~~WA-GUEST-OS-3.41_201607-01~~ |2016 年 8 月 8 日 |2016 年 11 月 13 日 |TBD |
@@ -141,9 +150,10 @@ Windows Server 2016 将于 2016 年 11 月 1 日作为 OS 系列 5 推出，提�
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.61_201704-01 |2017 年 5 月 9 日 |2.63 发行后 |TBD |
 | WA-GUEST-OS-2.60_201703-01 |2017 年 4 月 10 日 |2.62 发行后 |TBD |
-| WA-GUEST-OS-2.59_201701-01 |2017 年 1 月 10 日 |2.61 发行后 |TBD |
-| WA-GUEST-OS-2.58_201612-01 |2017 年 1 月 10 日 |2.60 发行后 |TBD |
+|~~WA-GUEST-OS-2.59_201701-01~~ |2017 年 1 月 10 日 |2.61 发行后 |TBD |
+|~~WA-GUEST-OS-2.58_201612-01~~ |2017 年 1 月 10 日 |2017 年 5 月 9 日|TBD |
 |~~WA-GUEST-OS-2.57_201611-01~~ |2016 年 12 月 14 日 |2017 年 4 月 10 日 |TBD |
 |~~WA-GUEST-OS-2.56_201610-02~~ |2016 年 11 月 16 日 |2017 年 2 月 10 日 |TBD |
 |~~WA-GUEST-OS-2.55_201609-01~~ |2016 年 10 月 13 日 |2017 年 1 月 14 日 |TBD |
@@ -200,7 +210,7 @@ Windows Server 2016 将于 2016 年 11 月 1 日作为 OS 系列 5 推出，提�
 ## <a name="guest-os-system-update-process"></a>来宾 OS 系统更新过程
 本页包含有关即将发布的来宾 OS 版本的信息。 客户已表明想知道什么时候发行版本，因为如果未设为“自动”更新，他们的云服务角色将重新启动。 来宾 OS 发行版本通常会在每月第二个星期二发布 MSRC 更新之后的至少 5 天发布。 新版本包含针对每个来宾 OS 系列的所有相关 MSRC 修补程序。 
 
-Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的其中一种。 一个发行版本会受到许多因素影响，不胜列举。 此外，Azure 实际上在成千上万的计算机上运行。 这意味着无法提供重新启动你角色的准确日期和时间。 我们将使用最新信息更新[来宾 OS 更新 RSS 源][rss]，但会考虑到其时间和近似时间范围。 我们意识到这对于客户构成问题，并正在致力于限制重新启动或为重新启动定时的计划。 
+Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的其中一种。 一个发行版本会受到许多因素影响，不胜列举。 此外，Azure 实际上在成千上万的计算机上运行。 这意味着无法提供重新启动你角色的准确日期和时间。 我们意识到这对于客户构成问题，并正在致力于限制重新启动或为重新启动定时的计划。 
 
 在发布新的来宾 OS 发行版本时，可能需要一段时间才能在 Azure 中完全传播。 在将服务更新为新的来宾 OS 时，将重新启动这些服务以满足更新域限制。 设置为使用“自动”更新的服务将先获取发行版本。 在更新后，将会在 Azure 经典门户中看到为你的服务列出新的来宾 OS 版本。 在此期间，可能会发布再发行版本。 某些版本可能需要较长的部署时间，可能不会在正式发行日期后的几个星期内执行自动升级重新启动。 在来宾 OS 可用后，你可以从门户或配置文件中显式选择该版本。 
 
@@ -213,7 +223,6 @@ Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的�
 
 [Install .NET on a Cloud Service Role]: https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure.md
-[rss]: http://sxp.microsoft.com/feeds/3.0/msdntn/WindowsAzureOSUpdates
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
 [Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
 [ssl3-fixit]: http://go.microsoft.com/?linkid=9863266
@@ -230,5 +239,6 @@ Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的�
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
+[修复]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
 
 

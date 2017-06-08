@@ -3,7 +3,7 @@ title: "Azure API 管理高级策略 | Microsoft 文档"
 description: "了解可在 Azure API 管理中使用的高级策略。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 8a13348b-7856-428f-8e35-9e4273d94323
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: bfadac7b34eca2ef1f9bcabc6e267ca9572990b8
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: f9272946fe4a03a732aa686680bba054c8ef1688
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
@@ -35,18 +36,20 @@ ms.lasthandoff: 03/18/2017
   
 -   [重试](#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统将根据指定的时间间隔重复，直到执行指定的重试计数为止。  
   
--   [返回响应](#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。  
+-   [返回响应](#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。 
   
 -   [发送单向请求](#SendOneWayRequest) - 将请求发送到指定的 URL，无需等待响应。  
   
 -   [发送请求](#SendRequest) - 将请求发送到指定的 URL。  
-  
--   [设置变量](api-management-advanced-policies.md#set-variable) - 保存命名[上下文](api-management-policy-expressions.md#ContextVariables)变量中的值供以后访问。  
-  
+
+-   [设置 HTTP 代理](#SetHttpProxy) - 允许通过 HTTP 代理路由转发请求。  
+
 -   [设置请求方法](#SetRequestMethod) - 允许更改请求的 HTTP 方法。  
   
 -   [设置状态代码](#SetStatus) - 将 HTTP 状态代码更改为指定的值。  
   
+-   [设置变量](api-management-advanced-policies.md#set-variable) - 保存命名[上下文](api-management-policy-expressions.md#ContextVariables)变量中的值供以后访问。  
+
 -   [跟踪](#Trace) - 将字符串添加到 [API 检查器](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/)输出中。  
   
 -   [等待](#Wait) - 在继续下一步之前，等待括住的[发送请求](api-management-advanced-policies.md#SendRequest)、[从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey)或[控制流](api-management-advanced-policies.md#choose)策略完成。  
@@ -620,6 +623,144 @@ status code and media type. If no example or schema found, the content is empty.
   
 -   **策略范围：**所有范围  
   
+##  <a name="SetHttpProxy"></a>设置 HTTP 代理  
+ `proxy` 策略允许通过 HTTP 代理将转发的请求路由到后端。 网关和代理之间仅支持 HTTP（而不是 HTTPS）。 仅限基本和 NTLM 身份验证。
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<proxy url="http://hostname-or-ip:port" username="username" password="password" />  
+  
+```  
+  
+### <a name="example"></a>示例  
+请注意使用[属性](api-management-howto-properties.md)作为用户名和密码的值，以避免将敏感信息存储在策略文档中。  
+  
+```xml  
+<proxy url="http://192.168.1.1:8080" username={{username}} password={{password}} />
+  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|元素|说明|必选|  
+|-------------|-----------------|--------------|  
+|proxy|Root 元素|是|  
+
+### <a name="attributes"></a>属性  
+  
+|属性|说明|必选|默认|  
+|---------------|-----------------|--------------|-------------|  
+|url="string"|http://host:port 形式的代理 URL。|是|不适用|  
+|username="string"|要用于向代理进行身份验证的用户名。|否|不适用|  
+|password="string"|要用于向代理进行身份验证的密码。|否|不适用|  
+
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略段：**入站  
+  
+-   **策略范围：**所有范围  
+
+##  <a name="SetRequestMethod"></a> 设置请求方法  
+ `set-method` 策略用于更改请求的 HTTP 请求方法。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<set-method>METHOD</set-method>  
+  
+```  
+  
+### <a name="example"></a>示例  
+ 以下示例策略使用 `set-method` 策略，以示例方式演示了在 HTTP 响应代码大于或等于 500 的情况下，如何将消息发送到 Slack 聊天室。 有关此示例的详细信息，请参阅[通过 Azure API 管理服务使用外部服务](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)。  
+  
+```xml  
+<choose>  
+    <when condition="@(context.Response.StatusCode >= 500)">  
+      <send-one-way-request mode="new">  
+        <set-url>https://hooks.slack.com/services/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</set-url>  
+        <set-method>POST</set-method>  
+        <set-body>@{  
+                return new JObject(  
+                        new JProperty("username","APIM Alert"),  
+                        new JProperty("icon_emoji", ":ghost:"),  
+                        new JProperty("text", String.Format("{0} {1}\nHost: {2}\n{3} {4}\n User: {5}",  
+                                                context.Request.Method,  
+                                                context.Request.Url.Path + context.Request.Url.QueryString,  
+                                                context.Request.Url.Host,  
+                                                context.Response.StatusCode,  
+                                                context.Response.StatusReason,  
+                                                context.User.Email  
+                                                ))  
+                        ).ToString();  
+            }</set-body>  
+      </send-one-way-request>  
+    </when>  
+</choose>  
+  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|元素|说明|必选|  
+|-------------|-----------------|--------------|  
+|set-method|根元素。 此元素的值指定 HTTP 方法。|是|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、错误时  
+  
+-   **策略范围：**所有范围  
+  
+##  <a name="SetStatus"></a> 设置状态代码  
+ `set-status` 策略将 HTTP 状态代码设置为指定的值。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<set-status code="" reason=""/>  
+  
+```  
+  
+### <a name="example"></a>示例  
+ 以下示例演示如何在授权令牌无效的情况下返回 401 响应。 有关详细信息，请参阅[通过 Azure API 管理服务使用外部服务](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)  
+  
+```xml  
+<choose>  
+  <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">  
+    <return-response response-variable-name="existing response variable">  
+      <set-status code="401" reason="Unauthorized" />  
+      <set-header name="WWW-Authenticate" exists-action="override">  
+        <value>Bearer error="invalid_token"</value>  
+      </set-header>  
+    </return-response>  
+  </when>  
+</choose>  
+  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|元素|说明|必选|  
+|-------------|-----------------|--------------|  
+|set-status|根元素。|是|  
+  
+### <a name="attributes"></a>属性  
+  
+|属性|说明|必选|默认|  
+|---------------|-----------------|--------------|-------------|  
+|code="整数"|要返回的 HTTP 状态代码。|是|不适用|  
+|reason="字符串"|说明返回状态代码的原因。|是|不适用|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**出站、后端、错误时  
+  
+-   **策略范围：**所有范围  
+
 ##  <a name="set-variable"></a> 设置变量  
  `set-variable` 策略声明[上下文](api-management-policy-expressions.md#ContextVariables)变量，并为其分配通过[表达式](api-management-policy-expressions.md)或字符串文本指定的值。 如果表达式包含文本，则会将其转换为字符串，值的类型将为 `System.String`。  
   
@@ -720,106 +861,7 @@ status code and media type. If no example or schema found, the content is empty.
 -   System.Char?  
   
 -   System.DateTime?  
-  
-##  <a name="SetRequestMethod"></a> 设置请求方法  
- `set-method` 策略用于更改请求的 HTTP 请求方法。  
-  
-### <a name="policy-statement"></a>策略语句  
-  
-```xml  
-<set-method>METHOD</set-method>  
-  
-```  
-  
-### <a name="example"></a>示例  
- 以下示例策略使用 `set-method` 策略，以示例方式演示了在 HTTP 响应代码大于或等于 500 的情况下，如何将消息发送到 Slack 聊天室。 有关此示例的详细信息，请参阅[通过 Azure API 管理服务使用外部服务](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)。  
-  
-```xml  
-<choose>  
-    <when condition="@(context.Response.StatusCode >= 500)">  
-      <send-one-way-request mode="new">  
-        <set-url>https://hooks.slack.com/services/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</set-url>  
-        <set-method>POST</set-method>  
-        <set-body>@{  
-                return new JObject(  
-                        new JProperty("username","APIM Alert"),  
-                        new JProperty("icon_emoji", ":ghost:"),  
-                        new JProperty("text", String.Format("{0} {1}\nHost: {2}\n{3} {4}\n User: {5}",  
-                                                context.Request.Method,  
-                                                context.Request.Url.Path + context.Request.Url.QueryString,  
-                                                context.Request.Url.Host,  
-                                                context.Response.StatusCode,  
-                                                context.Response.StatusReason,  
-                                                context.User.Email  
-                                                ))  
-                        ).ToString();  
-            }</set-body>  
-      </send-one-way-request>  
-    </when>  
-</choose>  
-  
-```  
-  
-### <a name="elements"></a>元素  
-  
-|元素|说明|必选|  
-|-------------|-----------------|--------------|  
-|set-method|根元素。 此元素的值指定 HTTP 方法。|是|  
-  
-### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
-  
--   **策略节：**入站、错误时  
-  
--   **策略范围：**所有范围  
-  
-##  <a name="SetStatus"></a> 设置状态代码  
- `set-status` 策略将 HTTP 状态代码设置为指定的值。  
-  
-### <a name="policy-statement"></a>策略语句  
-  
-```xml  
-<set-status code="" reason=""/>  
-  
-```  
-  
-### <a name="example"></a>示例  
- 以下示例演示如何在授权令牌无效的情况下返回 401 响应。 有关详细信息，请参阅[通过 Azure API 管理服务使用外部服务](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)  
-  
-```xml  
-<choose>  
-  <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">  
-    <return-response response-variable-name="existing response variable">  
-      <set-status code="401" reason="Unauthorized" />  
-      <set-header name="WWW-Authenticate" exists-action="override">  
-        <value>Bearer error="invalid_token"</value>  
-      </set-header>  
-    </return-response>  
-  </when>  
-</choose>  
-  
-```  
-  
-### <a name="elements"></a>元素  
-  
-|元素|说明|必选|  
-|-------------|-----------------|--------------|  
-|set-status|根元素。|是|  
-  
-### <a name="attributes"></a>属性  
-  
-|属性|说明|必选|默认|  
-|---------------|-----------------|--------------|-------------|  
-|code="整数"|要返回的 HTTP 状态代码。|是|不适用|  
-|reason="字符串"|说明返回状态代码的原因。|是|不适用|  
-  
-### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
-  
--   **策略节：**出站、后端、错误时  
-  
--   **策略范围：**所有范围  
-  
+
 ##  <a name="Trace"></a> 跟踪  
  `trace` 策略将字符串添加到 [API 检查器](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/)输出中。 此策略会执行的前提是触发跟踪，即 `Ocp-Apim-Trace` 请求标头存在且设置为 `true`，同时 `Ocp-Apim-Subscription-Key` 请求标头存在且包含与管理员帐户关联的有效密钥。  
   

@@ -3,8 +3,8 @@ title: "对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数 | Microsof
 description: "了解如何使用 U-SQL 开窗函数。 "
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: a5e14b32-d5eb-4f4b-9258-e257359f9988
 ms.service: data-lake-analytics
@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data`
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 5137ccfd2c809fe17cc7fdf06941ebd797288d81
-ms.openlocfilehash: 7afbd2de08b5702371ef7dc8676fcd8d75d5e7fd
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 55d19a00198f1943a8196d31399c617397b4e5d2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -25,110 +27,65 @@ ISO/ANSI SQL 标准于 2003 年引入开窗函数。 U-SQL 采用 ANSI SQL 标�
 
 窗口函数用于在名为窗口的行集中执行运算。 窗口由 OVER 子句定义。 开窗函数解决一些关键方案，效率极高。
 
-此学习指南使用两个示例数据集引导你完成一些可在其中应用开窗函数的示例方案。 有关详细信息，请参阅 [U-SQL reference](http://go.microsoft.com/fwlink/p/?LinkId=691348)（U-SQL 参考）。
-
 开窗函数分类： 
 
 * [报表聚合函数](#reporting-aggregation-functions)，例如 SUM 或 AVG
 * [排名函数](#ranking-functions)，例如 DENSE_RANK、ROW_NUMBER、NTILE 和 RANK
 * [分析函数](#analytic-functions)（例如累积分布、百分位），不使用自联接访问上一行中的数据（在同一结果集中）
 
-**先决条件：**
-
-* 请通过以下两个教程：
-  
-  * [开始使用适用于 Visual Studio 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-get-started.md)。
-  * [对 Azure Data Lake Analytics 作业开始使用 U-SQL 开窗函数](data-lake-analytics-u-sql-get-started.md)。
-* 按照[开始使用适用于 Visual Studio 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-get-started.md)中的说明创建 Data Lake Analytic 帐户。
-* 按照[对 Azure Data Lake Analytics 作业开始使用 U-SQL 开窗函数](data-lake-analytics-u-sql-get-started.md)中的说明创建 Visual Studio U-SQL 项目。
-
 ## <a name="sample-datasets"></a>示例数据集
 本教程使用两个数据集：
 
-* QueryLog 
+### <a name="the-querylog-sample-dataset"></a>QueryLog 示例数据集
   
-    QueryLog 表示人员在搜索引擎中搜索的内容的列表。 每个查询日志包括：
+QueryLog 表示人员在搜索引擎中搜索的内容的列表。 每个查询日志包括：
   
-    - 查询 - 用户搜索的内容。
-    - 延迟 - 查询返回到用户的速度（以毫秒为单位）。
-    - 纵向 - 用户感兴趣的内容类型（Web 链接、图像、视频）。
-  
-    将以下脚本复制并粘贴到 U-SQL 项目中以构造 QueryLog 行集：
-  
-    ```
-    @querylog = 
-        SELECT * FROM ( VALUES
-            ("Banana"  , 300, "Image" ),
-            ("Cherry"  , 300, "Image" ),
-            ("Durian"  , 500, "Image" ),
-            ("Apple"   , 100, "Web"   ),
-            ("Fig"     , 200, "Web"   ),
-            ("Papaya"  , 200, "Web"   ),
-            ("Avocado" , 300, "Web"   ),
-            ("Cherry"  , 400, "Web"   ),
-            ("Durian"  , 500, "Web"   ) )
-        AS T(Query,Latency,Vertical);
-    ```
+* 查询 - 用户搜索的内容
+* 延迟 - 查询返回到用户的速度（以毫秒为单位）
+* 纵向 - 用户感兴趣的内容类型（Web 链接、图像、视频）  
+ 
+```
+@querylog = 
+    SELECT * FROM ( VALUES
+        ("Banana"  , 300, "Image" ),
+        ("Cherry"  , 300, "Image" ),
+        ("Durian"  , 500, "Image" ),
+        ("Apple"   , 100, "Web"   ),
+        ("Fig"     , 200, "Web"   ),
+        ("Papaya"  , 200, "Web"   ),
+        ("Avocado" , 300, "Web"   ),
+        ("Cherry"  , 400, "Web"   ),
+        ("Durian"  , 500, "Web"   ) )
+    AS T(Query,Latency,Vertical);
+```
 
-    在实践中，数据通常存储在文件中。 可使用以下代码访问制表符分隔的文件中的数据： 
+## <a name="the-employees-sample-dataset"></a>员工示例数据集
   
-    ```
-    @querylog = 
-    EXTRACT 
-        Query    string, 
-        Latency  int, 
-        Vertical string
-    FROM "/Samples/QueryLog.tsv"
-    USING Extractors.Tsv();
-    ```
-* 员工
+员工数据集包含以下字段：
   
-    员工数据集包含以下字段：
-  
-        - EmpID - Employee ID.
-        - EmpName  Employee name.
-        - DeptName - Department name. 
-        - DeptID - Deparment ID.
-        - Salary - Employee salary.
-  
-    将以下脚本复制并粘贴到 U-SQL 项目中以构造员工行集：
-  
-        @employees = 
-            SELECT * FROM ( VALUES
-                (1, "Noah",   "Engineering", 100, 10000),
-                (2, "Sophia", "Engineering", 100, 20000),
-                (3, "Liam",   "Engineering", 100, 30000),
-                (4, "Emma",   "HR",          200, 10000),
-                (5, "Jacob",  "HR",          200, 10000),
-                (6, "Olivia", "HR",          200, 10000),
-                (7, "Mason",  "Executive",   300, 50000),
-                (8, "Ava",    "Marketing",   400, 15000),
-                (9, "Ethan",  "Marketing",   400, 10000) )
-            AS T(EmpID, EmpName, DeptName, DeptID, Salary);
-  
-    以下语句介绍通过从数据文件中提取行集来创建行集。
-  
-        @employees = 
-        EXTRACT 
-            EmpID    int, 
-            EmpName  string, 
-            DeptName string, 
-            DeptID   int, 
-            Salary   int
-        FROM "/Samples/Employees.tsv"
-        USING Extractors.Tsv();
+* EmpID - 员工 ID
+* EmpName - 员工名称
+* DeptName - 部门名称 
+* DeptID - 部门 ID
+* Salary - 员工薪金
 
-测试教程中的示例时，必须包含行集定义。 U SQL 要求仅定义使用的行集。 部分示例只需要一个行集。
-
-添加以下语句将结果行集输出到数据文件中：
-
-    OUTPUT @result TO "/wfresult.csv" 
-        USING Outputters.Csv();
-
- 大多数示例对结果使用名为 **@result** 的变量。
+```
+@employees = 
+    SELECT * FROM ( VALUES
+        (1, "Noah",   "Engineering", 100, 10000),
+        (2, "Sophia", "Engineering", 100, 20000),
+        (3, "Liam",   "Engineering", 100, 30000),
+        (4, "Emma",   "HR",          200, 10000),
+        (5, "Jacob",  "HR",          200, 10000),
+        (6, "Olivia", "HR",          200, 10000),
+        (7, "Mason",  "Executive",   300, 50000),
+        (8, "Ava",    "Marketing",   400, 15000),
+        (9, "Ethan",  "Marketing",   400, 10000) )
+    AS T(EmpID, EmpName, DeptName, DeptID, Salary);
+```  
 
 ## <a name="compare-window-functions-to-grouping"></a>比较开窗函数与 Grouping
-开窗和分组概念相关，但也存在不同。 理解此关系非常有用。
+开窗和分组概念相关。 理解此关系非常有用。
 
 ### <a name="use-aggregation-and-grouping"></a>使用聚合和分组
 下面的查询使用聚合计算所有员工的总薪资：
@@ -138,21 +95,12 @@ ISO/ANSI SQL 标准于 2003 年引入开窗函数。 U-SQL 采用 ANSI SQL 标�
             SUM(Salary) AS TotalSalary
         FROM @employees;
 
-> [!NOTE]
-> 有关测试和检查输出的说明，请参阅[对 Azure Data Lake Analytics 作业开始使用 U-SQL 开窗函数](data-lake-analytics-u-sql-get-started.md)。
-> 
-> 
-
 其结果是一个具有单列的单行。 $165000 是整个表中的薪资值的总和。 
 
 | TotalSalary |
 | --- |
 | 165000 |
 
-> [!NOTE]
-> 如不熟悉开窗函数，记住输出中的数字非常有用。  
-> 
-> 
 
 下面的语句使用 GROUP BY 子句来计算每个部门的总薪资：
 
@@ -316,8 +264,6 @@ SalaryByDept 列的总计是 $165000，与上一脚本中的数量一致。
 | 8 |Ava |Marketing |400 |15000 |10000 |
 | 9 |Ethan |Marketing |400 |10000 |10000 |
 
-若要查看每个部门的最高薪金，请将 MIN 替换为 MAX，然后重新运行查询。
-
 ## <a name="ranking-functions"></a>排名函数
 排名函数返回 PARTITION BY 和 OVER 字句定义的每个分区中每行的排名值（LONG 类型）。 OVER 字句中的 ORDER BY 控制排名的顺序。
 
@@ -422,12 +368,15 @@ Web 垂直具有六个行。  两个额外的行将分配给前两个组。 这�
 NTILE 采用一个参数（“numgroups”）。 Numgroups 是一个正整数或较长的常数表达式，其指定每个分区必须分成的组的数量。 
 
 * 如果分区中的行数可被 numgroups 整除，则组具有相同大小。 
-* 如果分区中的行数不可被 numgroups 整除，这会导致产生两种大小的组（相差一个成员）。 较大组按 OVER 字句指定的顺序位于较小组之前。 
+* 如果分区中的行数不可被 numgroups 整除，则组的大小略有不同。 较大组按 OVER 字句指定的顺序位于较小组之前。 
 
 例如：
 
-* 100 行被划分为 4 个组：[ 25, 25, 25, 25 ]
-* 102 行被划分为 4 个组：[ 26, 26, 25, 25 ]
+    100 rows divided into 4 groups: 
+    [ 25, 25, 25, 25 ]
+
+    102 rows divided into 4 groups: 
+    [ 26, 26, 25, 25 ]
 
 ### <a name="top-n-records-per-partition-via-rank-denserank-or-rownumber"></a>每个分区中通过 RANK、DENSE_RANK 或 ROW_NUMBER 的前 N 个记录
 许多用户想要仅选择每个组的前 n 行，而这使用传统的 GROUP BY 无法实现。 
@@ -549,7 +498,12 @@ NTILE 采用一个参数（“numgroups”）。 Numgroups 是一个正整数或
 * PERCENTILE_DISC
 
 ### <a name="cumedist"></a>CUME_DIST
-CUME_DIST 计算一组值中指定值的相对位置。 CUME_DIST 会计算查询的百分比，这些要计算的查询的延迟小于或等于同一垂直中的当前查询延迟。 对于行 R，假定按升序排序，CUME_DIST 是行数，其值小于或等于 R 值，使其除以分区中计算的行数。 CUME_DIST 会返回 0 < x <= 1范围之中的数字。
+
+CUME_DIST 计算一组值中指定值的相对位置。 CUME_DIST 会计算查询的百分比，这些要计算的查询的延迟小于或等于同一垂直中的当前查询延迟。 
+
+对于行 R，假定按升序排序，CUME_DIST 是行数，其值小于或等于 R 值，使其除以分区中计算的行数。 
+
+CUME_DIST 会返回 0 < x <= 1范围之中的数字。
 
 **语法：**
 
@@ -581,7 +535,7 @@ CUME_DIST 计算一组值中指定值的相对位置。 CUME_DIST 会计算查�
 | 番木瓜 |200 |Web |0.5 |
 | 苹果 |100 |Web |0.166666666666667 |
 
-分区键是“Web”（第 4 行及以下）的分区中有六行：
+分区键是“Web”的分区中有六行
 
 * 有六行的值等于或小于 500，因此 CUME_DIST 等于 6/6=1
 * 有五行的值等于或小于 400，因此 CUME_DIST 等于 5/6=0.83
@@ -601,7 +555,7 @@ CUME_DIST 计算一组值中指定值的相对位置。 CUME_DIST 会计算查�
 ### <a name="percentrank"></a>PERCENT_RANK
 PERCENT_RANK 计算一组行内的行的相对排名。 PERCENT_RANK 用于计算行集或分区内值的相对位置。 PERCENT_RANK 返回的值的范围大于 0 且小于或等于 1。 不同于 CUME_DIST，PERCENT_RANK 第一行始终为 0。
 
-**语法：**
+语法：
 
     PERCENT_RANK() 
         OVER (
@@ -653,9 +607,13 @@ PERCENT_RANK 函数返回的值将垂直内的查询延迟排名表现为百分�
 
 **numeric_literal** - 要计算的百分位数。 该值范围必须介于 0.0 和 1.0 之间。
 
-WITHIN GROUP (ORDER BY <identifier> [ ASC | DESC ]) - 指定一列数值来排序和计算百分位数。 仅允许一个列标识符。 该表达式计算结果必须为数值类型。 不允许其他数据类型。 默认排序顺序为升序。
+    WITHIN GROUP (ORDER BY <identifier> [ ASC | DESC ])
 
-OVER ([ PARTITION BY <identifier,>…[n] ] ) - 将输出集分为分区，作为分区键，此百分位数函数将应用于此分区键。 有关详细信息，请参阅本文档的 RANKING 部分。
+指定一组数值来排序和计算百分位数。 仅允许一个列标识符。 该表达式计算结果必须为数值类型。 不允许其他数据类型。 默认排序顺序为升序。
+
+    OVER ([ PARTITION BY <identifier,>…[n] ] )
+
+基于应用百分位数函数的分区键将输入行集分为分区。 有关详细信息，请参阅本文档的 RANKING 部分。
 注意：会忽略数据集中的所有空值。
 
 **PERCENTILE_CONT** 根据列值的连续分布来计算百分位数。 结果会被插入，可能不等于该列中任何特定值。 
@@ -696,20 +654,9 @@ OVER ([ PARTITION BY <identifier,>…[n] ] ) - 将输出集分为分区，作为
 PERCENTILE_DISC 不会插入值，因此 Web 的中值是 200（输出行中的一个实际值）。
 
 ## <a name="see-also"></a>另请参阅
-* [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-* [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
-* [通过 Azure PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
-* [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
+* [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 * [使用 Azure Data Lake Analytics 交互式教程](data-lake-analytics-use-interactive-tutorials.md)
-* [使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)
 * [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)
-* [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-* [使用 Azure PowerShell 管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-powershell.md)
-* [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

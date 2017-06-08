@@ -10,8 +10,8 @@
 ## [部署群集 - 门户](container-service-deployment.md)
 ## [部署群集 - Azure CLI](container-service-create-acs-cluster-cli.md)
 ## [将 CI/CD 用于 Kubernetes 和 Jenkins](container-service-kubernetes-jenkins.md)
-## [将 CI/CD 用于 DC/OS 和 VSTS](container-service-setup-ci-cd.md)
 ## [将 CI/CD 用于 Docker Swarm 和 VSTS](container-service-docker-swarm-setup-ci-cd.md)
+## [通过 ACS 引擎将 CI/CD 与 Docker Swarm 模式和 VSTS 配合使用](container-service-docker-swarm-mode-setup-ci-cd-acs-engine.md)
 
 # 概念
 ## [保护容器](container-service-security.md)
@@ -29,6 +29,7 @@
 ### [DC/OS 中应用/用户特定的 Orchestrator](container-service-application-specific-marathon.md)
 ### [添加文件共享](container-service-dcos-fileshare.md)
 ### [使用 Azure 容器注册表](container-service-dcos-acr.md)
+### [将Canary 发布与 Vamp 配合使用](container-service-dcos-vamp-canary-release.md)
 ### 监视 DC/OS
 #### [使用 ELK 进行监视](container-service-monitoring-elk.md)
 #### [使用 OMS 进行监视](container-service-monitoring-oms.md)
@@ -43,6 +44,7 @@
 #### [使用 OMS 进行监视](container-service-kubernetes-oms.md)
 #### [使用 Datadog 进行监视](container-service-kubernetes-datadog.md)
 #### [使用 Sysdig 进行监视](container-service-kubernetes-sysdig.md)
+#### [使用 CoScale 进行监视](container-service-kubernetes-coscale.md)
 ## 使用 Docker Swarm 进行管理
 ### [Docker 和 Docker Compose](container-service-docker-swarm.md)
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/24/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 5a50f583831b398ae22416e7ade23c33846de55c
-ms.lasthandoff: 02/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 6a83d5e5939744137e11a441048ade407c63ee86
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -32,36 +33,35 @@ ms.lasthandoff: 02/03/2017
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
-使用 Azure数据工厂的**复制向导**可以快速轻松地创建管道用于实现数据引入/移动方案。 因此，建议首先使用向导为数据移动方案创建一个示例管道。 本教程说明如何创建 Azure 数据工厂、启动复制向导，以及执行一系列步骤来提供有关数据引入/移动方案的详细信息。 完成向导中的步骤后，向导会自动创建包含复制活动的管道，将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。 
+本教程介绍如何使用**复制向导**将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 
+
+使用 Azure 数据工厂**复制向导**可以快速创建数据管道，以便将数据从支持的源数据存储复制到支持的目标数据存储。 因此，建议首先使用向导为数据移动方案创建一个示例管道。 如需可以用作源和目标的数据存储的完整列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。  
+
+本教程说明如何创建 Azure 数据工厂、启动复制向导，以及执行一系列步骤来提供有关数据引入/移动方案的详细信息。 完成向导中的步骤后，向导会自动创建包含复制活动的管道，将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。
 
 ## <a name="prerequisites"></a>先决条件
-- 请阅读 [教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 了解教程概述，并完成 **先决条件** 步骤。
-
+执行本教程之前，请完成[教程概述](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)中的先决条件步骤。
 
 ## <a name="create-data-factory"></a>创建数据工厂
 本步中，使用 Azure 门户创建名为 **ADFTutorialDataFactory**的 Azure 数据工厂。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)后，单击左上角的“+ 新建”，单击“智能 + 分析”，然后单击“数据工厂”。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 单击左上角的“+ 新建”，单击“数据 + 分析”，然后单击“数据工厂”。 
    
    ![新建 -> DataFactory](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
 2. 在“新建数据工厂”  边栏选项卡中：
    
    1. 输入 **ADFTutorialDataFactory** 作为**名称**。
-       Azure 数据工厂的名称必须是全局唯一的。 如果收到错误： **数据工厂名称“ADFTutorialDataFactory”不可用**，请更改该数据工厂名称（例如改为“yournameADFTutorialDataFactory”），并尝试再次创建。 有关数据工厂项目命名规则，请参阅 [数据工厂 - 命名规则](data-factory-naming-rules.md) 主题。  
+       Azure 数据工厂的名称必须全局唯一。 如果收到错误`Data factory name “ADFTutorialDataFactory” is not available`，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactoryYYYYMMDD），然后重新尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
       
-       ![数据工厂名称不可用](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)
-      
-      > [!NOTE]
-      > 数据工厂名称可能在将来被注册为 DNS 名称，因此将变成公开可见。
-      > 
-      > 
+       ![数据工厂名称不可用](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
    2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一： 
       
       - 选择“使用现有资源组”并选择一个现有的资源组。
       - 选择“新建”并输入资源组的名称。
-         
-          本教程中部分步骤假定你使用 **ADFTutorialResourceGroup** 作为资源组名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。
+          
+        本教程中部分步骤假定你使用 **ADFTutorialResourceGroup** 作为资源组名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。
    4. 选择数据工厂的**位置**。
    5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。  
    6. 单击“创建” 。
@@ -72,21 +72,19 @@ ms.lasthandoff: 02/03/2017
    ![数据工厂主页](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
 ## <a name="launch-copy-wizard"></a>启动复制向导
-1. 在“数据工厂”主页上，单击“复制数据”磁贴，启动“复制向导”。 
+1. 在“数据工厂”边栏选项卡上单击“复制数据 [预览]”，启动“复制向导”。 
    
    > [!NOTE]
-   > 如果 Web 浏览器卡在“正在授权...”处，请禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 **login.microsoftonline.com** 创建一个例外，然后尝试再次启动该向导。
-   > 
-   > 
+   > 如果 Web 浏览器卡在“正在授权...”处，请在浏览器设置中禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 **login.microsoftonline.com** 创建一个例外，然后尝试再次启动该向导。
 2. 在“属性”  页中：
    
    1. 输入 **CopyFromBlobToAzureSql** 作为**任务名称**
    2. 输入 **说明** （可选）。
-   3. 更改“开始日期时间”和“结束日期时间”，使结束日期设置为当天，开始日期设置为当天的五天前。  
+   3. 更改“开始日期时间”和“结束日期时间”，使结束日期设置为当天，开始日期设置为五天前。  
    4. 单击“下一步”。  
       
       ![复制工具 - 属性页](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
-3. 在“源数据存储”页上，单击“Azure Blob 存储”磁贴。 此页用于指定复制任务的源数据存储。 可使用现有的数据存储链接服务，或指定新的数据存储。 要使用现有链接服务，请单击“来自现有链接服务”  ，并选择适当的链接服务。 
+3. 在“源数据存储”页上，单击“Azure Blob 存储”磁贴。 此页用于指定复制任务的源数据存储。 
    
     ![复制工具 - 源数据存储页](./media/data-factory-copy-data-wizard-tutorial/copy-tool-source-data-store-page.png)
 4. 在“指定 Azure Blob 存储帐户”  页上：
@@ -99,9 +97,8 @@ ms.lasthandoff: 02/03/2017
       ![复制工具 - 指定 Azure Blob 存储帐户](./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png)
 5. 在“选择输入文件或文件夹”  页上：
    
-   1. 请导航至“adftutorial”  文件夹。
+   1. 双击“adftutorial”（文件夹）。
    2. 选择“emp.txt”，然后单击“选择”
-   3. 单击“下一步”。 
       
       ![复制工具 - 选择输入文件或文件夹](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
 6. 在“选择输入文件或文件夹”页中，单击“下一步”。 请不要选择“二进制副本” 。 
@@ -140,23 +137,21 @@ ms.lasthandoff: 02/03/2017
 1. 在“部署”页上单击以下链接：`Click here to monitor copy pipeline`。
    
    ![复制工具 - 部署成功](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)  
-2. 查看 [使用监视应用监视和管理管道](data-factory-monitor-manage-app.md) 中的说明，学习如何监视所创建的管道。 单击“活动时段”列表中的“刷新”图标可查看分片。 
+2. 监视应用程序将在 Web 浏览器的单独选项卡中启动。   
    
-   ![监视应用](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png) 
-   
-   
-   单击“活动时段”列表底部的“刷新”按钮可查看最新状态。 状态不会自动刷新。 
+   ![监视应用](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)   
+3. 若要查看小时切片的最新状态，请单击“活动时段”列表底部的“刷新”按钮。 可以看到五个活动窗口，对应于管道开始时间和结束时间之间的五天。 列表不会自动刷新，因此可能需要单击“刷新”多次，才能看到所有活动窗口都处于“就绪”状态。 
+4. 在列表中选择一个活动窗口。 可以在右侧的**活动窗口资源管理器**中查看其详细信息。
 
-> [!NOTE]
-> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成第一个使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
-> 
-> 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。
+    ![活动窗口详细信息](media/data-factory-copy-data-wizard-tutorial/activity-window-details.png)    
 
-## <a name="see-also"></a>另请参阅
-| 主题 | 说明 |
-|:--- |:--- |
-| [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造端对端数据驱动工作流。 |
-| [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
-| [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
+    请注意，11、12、13、14、15 这几个日期的颜色为绿色，表明已生成这些日期的每日输出切片。 也可在图示视图的管道和输出数据集上看到该颜色编码。 请注意，在上一步中，两个切片已生成，一个切片当前正在处理，还有两个切片正在等待处理（根据颜色编码判断）。 
 
+    有关如何使用此应用程序的详细信息，请参阅[使用监视应用监视和管理管道](data-factory-monitor-manage-app.md)一文。
 
+## <a name="next-steps"></a>后续步骤
+在本教程中，你在复制操作中使用了 Azure Blob 存储作为源数据存储，使用了 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
+
+[!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
+
+若要详细了解在复制向导中看到的数据存储的字段/属性，请单击表中数据存储的链接。 

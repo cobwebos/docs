@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: pratshar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6e6d05d7a7595e17d026be6a448b2fa2cca9b816
 ms.openlocfilehash: a62fe406af18c9c7d9b58839bfa0d6e785b614ef
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/22/2017
 
 
 ---
 # <a name="designing-your-network-for-disaster-recovery"></a>设计用于灾难恢复的网络
+
 本文面向 IT 专业人员，他们负责构建、实施和支持业务连续性和灾难恢复 (BCDR) 基础结构，而且想要利用 Microsoft Azure Site Recovery (ASR) 来支持并增强其 BCDR 服务。 本白皮书将讨论 System Center Virtual Machine Manager 服务器部署的实际注意事项、外延式子网与子网故障转移的优缺点比较，以及如何构建 Microsoft Azure 中虚拟站点的灾难恢复。
 
 ## <a name="overview"></a>概述

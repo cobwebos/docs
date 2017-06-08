@@ -6,6 +6,7 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+editor: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
+ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 4dae8b87904fff2f2f8665d235bf790fb1e073d0
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 6d1cfd588ad60cbdf69a432b4f4baa0b13fed0d3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -76,7 +78,6 @@ ms.lasthandoff: 05/08/2017
 | Azure AD Connect 计算机事件日志包含由 PasswordResetService 引发的错误 32002。 <br> <br> 错误如下：“连接到服务总线时出错，令牌提供程序无法提供安全令牌...” | 本地环境无法连接到云中的服务总线终结点。 此错误是由于防火墙规则阻止了到特定端口或 web 地址的出站连接导致的。 有关详细信息，请参阅[网络要求](active-directory-passwords-how-it-works.md#network-requirements)。 在更新这些规则后，重新启动 AAD Sync 计算机，密码写回应当会再次开始工作。 |
 | 在工作一段时间后，联合用户或密码哈希同步的用户无法重置其密码。 | 在某些极少见的情况下，当 Azure AD Connect 已重新启动时，密码写回服务可能无法重新启动。 在这些情况下，首先，请检查是否已在本地启用了密码写回。 这可以通过使用 Azure AD Connect 向导或 powershell 来完成（请参阅上面的“操作说明”部分）。如果此功能已启用，请尝试再次通过 UI 或 PowerShell 启用或禁用此功能。 如果这不起作用，请尝试完全卸载并重新安装 Azure AD Connect。 |
 | 尝试重置其密码的联合用户或密码哈希同步的用户在提交密码后看到了一个错误，该错误指示存在服务问题。 <br ><br> 除此之外，在密码重置期间，你可能会在你的本地事件日志中看到有关管理代理被拒绝访问的消息。 | 如果在事件日志中看到这些错误，请确认 AD MA 帐户（在配置时在向导中指定的帐户）具有进行密码写回所需的权限。 <br> <br> **在授予此权限后，权限可能需要最多 1 小时来通过 DC 上的 sdprop 后台任务进行渗透。** <br> <br> 要使密码重置工作，需要将此权限标记在为其重置密码的用户对象的安全描述符上。 在此权限显示在用户对象上之前，密码重置将一直因为访问被拒绝而失败。 |
-| 无法为特殊组（例如，“域管理员”/“企业管理员”）中的用户重置密码。 | Active Directory 中的特权用户是使用 AdminSDHolder 进行保护的。 有关详细信息，请参阅 [http://technet.microsoft.com/magazine/2009.09.sdadminholder.aspx](http://technet.microsoft.com/magazine/2009.09.sdadminholder.aspx)。 <br> <br> 这意味着将定期检查这些对象上的安全描述符是否与 AdminSDHolder 中指定的安全描述符匹配，如果它们不同，将对前者进行重置。 因此，执行密码写回所需的其他权限不会渗透到这类用户。 这可能导致无法对此类用户执行密码写回。 因此，**我们不支持为这些组内的用户管理密码，因为这会破坏 AD 安全模型。**
 | 尝试重置其密码的联合用户或密码哈希同步的用户在提交密码后看到了一个错误，该错误指示存在服务问题。 <br> <br> 除此之外，在密码重置期间，你可能会在 Azure AD Connect 服务的事件日志中看到一个表示“找不到对象”错误的错误。 | 此错误通常表示同步引擎无法找到 AAD 连接器空间中的用户对象或者无法找到链接的 MV 或 AD 连接器空间对象。 <br> <br> 若要解决此问题，请确保用户确实已通过当前的 Azure AD Connect 实例从本地同步到了 AAD，并检查连接器空间和 MV 中的对象的状态。 通过“Microsoft.InfromADUserAccountEnabled.xxx”规则确认 AD CS 对象是 MV 对象的连接器。|
 | 尝试重置其密码的联合用户或密码哈希同步的用户在提交密码后看到了一个错误，该错误指示存在服务问题。 <br> <br> 除此之外，在密码重置期间，你可能会在 Azure AD Connect 服务的事件日志中看到一个表示“找到多个匹配项”错误的错误。 | 这表示同步引擎通过“Microsoft.InfromADUserAccountEnabled.xxx”检测到 MV 对象连接到了多个 AD CS 对象。 这意味着用户在多个林具有已启用的帐户。 **密码写回不支持此方案。** |
 | 密码操作因为发生配置错误而失败。 应用程序事件日志包含 <br> <br> Azure AD Connect 错误 6329，文本为：0x8023061f (操作失败，因为未在此管理代理上启用密码同步。) | 如果在启用密码写回功能之后将 Azure AD Connect 配置更改为添加新的 AD 林（或者更改为删除现有林之后再重新添加），则会发生这种情况。 在此类新添加的林中，用户的密码操作将失败。 若要解决此问题，请在林配置更改完成后，先禁用密码写回功能，然后再重新启用它。 |
@@ -211,10 +212,11 @@ ms.lasthandoff: 05/08/2017
 
 * **错误的一般说明** - 遇到了哪种错误？ 看到该错误时出现了哪种行为？ 我们如何再现该错误？ 请尽量提供详尽的信息。
 * **页面** - 在哪个页面上看到了该错误？ 请附送 URL（如果可以）和屏幕截图。
-* **日期、时间和时区** - 请包含发生错误时的确切日期和时间与**时区**。
 * **支持代码** - 用户看到该错误时生成了哪个支持代码？ 
     * 若要找到支持代码，请再现错误，然后单击屏幕底部的“支持代码”链接，将生成的 GUID 发送给支持工程师。
+    ![在屏幕底部查找支持代码][Support Code]
     * 如果所在页面的底部没有支持代码，请按 F12，搜索 SID 和 CID，然后将这两个结果发送给支持工程师。
+* **日期、时间和时区** - 请包含发生错误时的确切日期和时间与**时区**。
 * **用户 ID** - 哪个用户看到了该错误？ (user@contoso.com)
     * 是否是联合用户？
     * 是否是密码哈希同步的用户？
@@ -222,7 +224,10 @@ ms.lasthandoff: 05/08/2017
 * **许可** - 该用户是否分配有 Azure AD Premium 或 Azure AD Basic 许可证？
 * **应用程序事件日志** - 如果你使用密码写回，并且错误发生在本地基础结构中，请在联系支持人员时，包含 Azure AD Connect 服务器中的应用程序事件日志的压缩副本。
 
+    
+
 [Service Restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "重新启动 Azure AD Sync 服务"
+[Support Code]: ./media/active-directory-passwords-troubleshoot/supportcode.png "支持代码位于窗口右下方"
 
 ## <a name="next-steps"></a>后续步骤
 

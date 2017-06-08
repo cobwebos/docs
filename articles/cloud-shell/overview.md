@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 47627bc6df93db1d92aa29350fe6e48039dc6f1b
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 63f1c468b5f8f4b0bb298cb67adea8c01b065427
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/16/2017
 
 ---
 # <a name="overview-of-azure-cloud-shell-preview"></a>Azure Cloud Shell（预览版）的概述
@@ -39,19 +39,22 @@ Cloud Shell 预安装了常用的命令行工具和语言支持，因此你可�
 Cloud Shell 能够安全地自动针对每个会话执行身份验证以立即通过 Azure CLI 2.0 访问资源。
 
 ### <a name="connect-your-azure-file-storage"></a>连接 Azure 文件存储
-Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享来持久保存 $Home 目录。
+Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 `clouddrive` 来持久保存 $Home 目录。
 首次启动时，Cloud Shell 会提示将替你创建资源组、存储帐户和文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 
 
 ![](media/storage-prompt.png)
 
-将替你创建一个 LRS 存储帐户以及一个包含 5-GB 磁盘映像的 Azure 文件共享。
-此磁盘映像用来同步和持久保存 $Home 目录。 将收取常规存储费用。
+将替你创建一个 LRS 存储帐户以及一个包含 5-GB 磁盘映像的 Azure 文件共享。 文件共享作为 `clouddrive` 装载，以便文件共享与用于同步和持久保存 $Home 目录的磁盘映像交互。 将收取常规存储费用。
+
 将替你创建以下三个资源：
 1. 资源组：`cloud-shell-storage-<region>`
 2. 存储帐户：`cs-uniqueGuid`
 3. 文件共享：`cs-<user>-<domain>-com-uniqueGuid`
 
-[更深入地探究 Cloud Shell 如何持久保存文件] (persisting-shell-storage.md)。
+> [!Note]
+> $Home 目录中的所有文件（如 SSH 密钥）将持久保存在已装载的文件共享中存储的用户磁盘映像中。 在 $Home 目录和已装载的文件共享中保存文件时，请应用最佳做法。
+
+[了解 Cloud Shell 存储、更新文件共享和上载/下载文件。] (persisting-shell-storage.md)。
 
 ## <a name="concepts"></a>概念
 * Cloud Shell 在按会话按用户提供的临时计算机上运行。

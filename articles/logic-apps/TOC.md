@@ -7,6 +7,7 @@
 ## [创建第一个逻辑应用](logic-apps-create-a-logic-app.md)
 ## [逻辑应用的模板](logic-apps-use-logic-app-templates.md)
 ## [从模板创建逻辑应用](logic-apps-arm-provision.md)
+## [将 MABS 应用移到逻辑应用](logic-apps-move-from-mabs.md)
 
 # 如何
 ## 构建
@@ -80,6 +81,7 @@
 ### [定价](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [用量计量](logic-apps-pricing.md)
 
+
 # 无服务器
 ## 概述
 ### [Azure 中的无服务器产品/服务](logic-apps-serverless-overview.md)
@@ -128,6 +130,8 @@
 ### [Twitter](../connectors/connectors-create-api-twitter.md)
 ### [X12](logic-apps-enterprise-integration-x12.md)
 ### [XML 验证](logic-apps-enterprise-integration-xml-validation.md)
+
+## [连接器：完整详细信息](https://docs.microsoft.com/connectors/)
 ## 架构历史记录
 ### [GA](logic-apps-schema-2016-04-01.md)
 ### [预览](logic-apps-schema-2015-08-01.md)

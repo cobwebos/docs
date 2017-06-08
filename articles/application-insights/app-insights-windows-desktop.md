@@ -3,7 +3,7 @@ title: "监视 Windows 桌面应用的使用情况和性能"
 description: "使用 Application Insights 分析 Windows 桌面应用的使用情况和性能。"
 services: application-insights
 documentationcenter: windows
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 19040746-3315-47e7-8c60-4b3000d2ddc4
 ms.service: application-insights

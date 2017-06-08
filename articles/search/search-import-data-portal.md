@@ -1,6 +1,6 @@
 ---
 title: "在门户中将数据导入 Azure 搜索 | Microsoft 文档"
-description: "在 Azure 门户中使用 Azure 搜索的“导入数据”向导从 NoSQL DocumentDB、Blob 存储、表存储、SQL 数据库和 Azure VM 上的 SQL Server 搜索 Azure 数据。"
+description: "在 Azure 门户中使用 Azure 搜索的“导入数据”向导从 NoSQL Azure Cosmos DB、Blob 存储、表存储、SQL 数据库和 Azure VM 上的 SQL Server 搜索 Azure 数据。"
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,11 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 02/08/2017
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: d19a85e127b548e5f8979358879e8b9354934904
-ms.openlocfilehash: c03c26d0e5ea2529162262664412f4f8f7e854dc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -32,17 +34,17 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 * 基于源数据结构生成可修改的索引架构
 * 使用从数据源检索的行集将 JSON 文档加载到索引中
 
-可以使用 DocumentDB 中的示例数据试用此工作流。 有关说明，请访问 [开始在 Azure 门户中使用 Azure 搜索](search-get-started-portal.md) 。
+可以使用 Azure Cosmos DB 中的示例数据试用此工作流。 有关说明，请访问 [开始在 Azure 门户中使用 Azure 搜索](search-get-started-portal.md) 。
 
 > [!NOTE]
-> 可从 DocumentDB 仪表板启动**导入数据**向导，从而简化该数据源的索引。 在左侧导航窗格中，转到“集合” > “添加 Azure 搜索”。
+> 可从 Azure Cosmos DB 仪表板启动**导入数据**向导，进而简化该数据源的索引。 在左侧导航栏中，转到“集合” > “添加 Azure 搜索”开始操作。
 
 ## <a name="data-sources-supported-by-the-import-data-wizard"></a>“导入数据”向导支持的数据源
 “导入数据”向导支持以下数据源： 
 
 * Azure SQL 数据库
 * Azure VM 上的 SQL Server 关系数据
-* Azure DocumentDB
+* Azure Cosmos DB
 * Azure Blob 存储
 * Azure 表存储
 
@@ -58,7 +60,7 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 | **现有数据源** |如果已在搜索服务中定义索引器，则可以为另一个导入选择现有数据源定义。 |
 | **Azure SQL 数据库** |可以在此页上或通过 ADO.NET 连接字符串，指定服务名称、具有读取权限的数据库用户的凭据和数据库名称。 选择要查看或自定义属性的连接字符串选项。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。 |
 | **Azure VM 上的 SQL Server** |指定完全限定的服务名称、用户 ID 和密码以及数据库作为连接字符串。 若要使用此数据源，以前必须已在加密连接的本地存储中安装了证书。 如需说明，请参阅[与 Azure 搜索的 SQL VM 连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。 |
-| **DocumentDB** |要求包括帐户、数据库和集合。 集合中的所有文档都将包含在索引中。 可以定义查询以平展或筛选行集，或者检测已更改的文档以便进行后续数据刷新操作。 |
+| **Azure Cosmos DB** |要求包括帐户、数据库和集合。 集合中的所有文档都将包含在索引中。 可以定义查询以平展或筛选行集，或者检测已更改的文档以便进行后续数据刷新操作。 |
 | **Azure Blob 存储** |要求包括存储帐户和容器。 （可选）如果 blob 名称遵循用于分组的虚拟命名约定，可以将名称的虚拟目录部分指定为容器下的某个文件夹。 有关详细信息，请参阅[为 Blob 存储编制索引](search-howto-indexing-azure-blob-storage.md)。 |
 | **Azure 表存储** |要求包括存储帐户和表名。 （可选）可以指定一个查询来检索表的子集。 有关详细信息，请参阅[为表存储编制索引](search-howto-indexing-azure-tables.md)。 |
 
@@ -113,16 +115,11 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 若要了解有关索引器的详细信息，请查看以下链接：
 
 * [为 Azure SQL 数据库编制索引](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Indexing DocumentDB](search-howto-index-documentdb.md)
+* [为 Azure Cosmos DB 编制索引](search-howto-index-documentdb.md)
 * [为 Blob 存储编制索引](search-howto-indexing-azure-blob-storage.md)
 * [为表存储编制索引](search-howto-indexing-azure-tables.md)
 
 <!--Image references-->
 [1]: ./media/search-import-data-portal/search-import-data-command.png
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

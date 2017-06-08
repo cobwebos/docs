@@ -32,6 +32,7 @@
 ### [用户登录选项](active-directory-aadconnect-user-signin.md)
 ### [对联合的多域支持](active-directory-aadconnect-multiple-domains.md)
 ### [自动升级](active-directory-aadconnect-feature-automatic-upgrade.md)
+### [将 SAML 2.0 标识提供者 (IdP) 用于单一登录](active-directory-aadconnect-federation-saml-idp.md)
 
 
 

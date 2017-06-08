@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/28/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: ee4c87be43354696c63533d8cbf618b26a2708d3
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: de9453e6764279c481e569542433d095772f304d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -56,7 +56,28 @@ Azure 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密
 > 在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure SQL 数据仓库的所有连接始终需要经过加密 (SSL/TLS)。 在使用 JSON 编辑器创作管道时，请在“连接字符串”中添加“加密”属性并将其设置为“true”。 使用[复制向导](data-factory-azure-copy-wizard.md)时，向导会默认设置此属性。 对于 Azure 存储，可以在连接字符串中使用“HTTPS”。
 
 ### <a name="data-encryption-at-rest"></a>静态数据加密
-许多数据存储都支持静态数据加密。 我们建议为这些数据存储启用数据加密机制。 例如，为 Azure SQL 数据库和 Azure SQL 数据仓库启用透明数据加密 (TDE)。 
+某些数据存储支持静态数据加密。 我们建议为这些数据存储启用数据加密机制。 
+
+#### <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
+Azure SQL 数据仓库中的透明数据加密 (TDE) 可对静态数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 SQL 数据仓库中的数据库](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
+
+#### <a name="azure-sql-database"></a>Azure SQL 数据库
+Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅[使用 Azure SQL 数据库进行透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)。 
+
+#### <a name="azure-data-lake-store"></a>Azure Data Lake Store
+Azure Data Lake Store 还为存储在帐户中的数据提供加密。 启用后，Data Lake Store 会在保存数据前进行自动加密，在检索前进行自动解密，从而使其对访问数据的客户端透明。 有关详细信息，请参阅 [Azure Data Lake Store 中的安全性](../data-lake-store/data-lake-store-security-overview.md)。 
+
+#### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob 存储和 Azure 表存储
+Azure Blob 存储和 Azure 表存储支持存储服务加密 (SSE)，它会在将数据保存到存储中前进行自动加密，在检索前进行自动解密。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../storage/storage-service-encryption.md)。
+
+#### <a name="amazon-s3"></a>Amazon S3
+Amazon S3 支持静态数据的客户端和服务器加密。 有关详细信息，请参阅[使用加密保护数据](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)。 目前，数据工厂不支持虚拟私有云 (VPC) 中的 Amazon S3。
+
+#### <a name="amazon-redshift"></a>Amazon Redshift
+Amazon Redshift 支持静态数据的群集加密。 有关详细信息，请参阅 [Amazon Redshift 数据库加密](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)。 目前，数据工厂不支持 VPC 中的 Amazon Redshift。 
+
+#### <a name="salesforce"></a>Salesforce
+Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、自定义字段。 有关详细信息，请参阅 [Understanding the Web Server OAuth Authentication Flow](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)（了解 Web 服务器 OAuth 身份验证流）。  
 
 ## <a name="hybrid-scenarios-using-data-management-gateway"></a>混合方案（使用数据管理网关）
 混合方案需要在本地网络或虚拟网络 (Azure) 内或虚拟私有云 (Amazon) 中安装数据管理网关。 网关必须能访问本地数据存储。 有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)。 
@@ -135,7 +156,7 @@ IPSec VPN：
 | `*.azuredatalakestore.net` | 443 | （可选）目标为 Azure Data Lake Store 时需要 | 
 
 > [!NOTE] 
-> 可能需要按相应数据源的要求在企业防火墙级别管理端口/白名单域。 上表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
+> 可能需要按相应数据源的要求在企业防火墙级别管理端口/白名单域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
 
 下表提供了 Windows 防火墙的入站端口要求。
 
@@ -153,7 +174,7 @@ IPSec VPN：
 - [Azure SQL 数据库](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md#create-a-server-level-firewall-rule-in-the-azure-portal)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
-- [Azure Document DB](../documentdb/documentdb-firewall-support.md)
+- [Azure Cosmos DB](../documentdb/documentdb-firewall-support.md)
 - [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>常见问题

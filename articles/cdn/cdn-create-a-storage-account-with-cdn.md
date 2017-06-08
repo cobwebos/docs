@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
-ms.openlocfilehash: 3a0db75612531ebf947c011e9e4545f7d9590e20
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0ea23f4f59737123f4400dafc7506e121f24ae34
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>将 Azure 存储帐户与 Azure CDN 集成
-启用 CDN 可以缓存 Azure 存储空间的内容。 它通过在遍布美国、欧洲、亚洲、澳大利亚和南美洲的众多物理节点上缓存 Blob 和计算实例的静态内容，为开发人员提供一个传送高带宽内容的全球性解决方案。
+启用 CDN 可以缓存 Azure 存储的内容。 它通过在遍布美国、欧洲、亚洲、澳大利亚和南美洲的众多物理节点上缓存 Blob 和计算实例的静态内容，为开发人员提供一个传送高带宽内容的全球性解决方案。
 
 ## <a name="step-1-create-a-storage-account"></a>步骤 1：创建存储帐户
 使用以下过程为 Azure 订阅创建新的存储帐户。 通过存储帐户可访问 Azure 存储服务。 存储帐户表示用于访问下述每个 Azure 存储服务组件的最高级别的命名空间：Blob 服务、队列服务、表服务。 有关详细信息，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md)。
@@ -37,10 +39,11 @@ ms.openlocfilehash: 3a0db75612531ebf947c011e9e4545f7d9590e20
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左上角，选择“新建”。 在“新建”对话框中，选择“数据 + 存储”，然后单击“存储帐户”。
-   
-   此时将显示“创建存储帐户”边栏选项卡。
-   
-   ![创建存储帐户][create-new-storage-account]
+    
+    此时将显示“创建存储帐户”边栏选项卡。   
+
+       ![Create Storage Account][create-new-storage-account]  
+
 3. 在“名称”字段中，键入子域名称。 此条目可包含 3-24 个小写字母和数字。
    
     此值将成为用于对订阅的 Blob、队列或表资源进行寻址的 URI 中的主机名。 若要对 Blob 服务中的容器资源进行寻址，需使用以下格式的 URI，其中 *&lt;StorageAccountLabel&gt;* 是指在“输入 URL”中键入的值：
@@ -56,49 +59,42 @@ ms.openlocfilehash: 3a0db75612531ebf947c011e9e4545f7d9590e20
 7. 选择存储帐户的位置。
 8. 单击“创建” 。 创建存储帐户的过程可能需要几分钟时间完成。
 
-## <a name="step-2-create-a-new-cdn-profile"></a>步骤 2：创建新的 CDN 配置文件
-CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或多个 CDN 终结点。  你可能希望通过 Internet 域、Web 应用程序或其他条件来使用多个配置文件以组织 CDN 终结点。
+## <a name="step-2-enable-cdn-for-the-storage-account"></a>步骤 2：为存储帐户启用 CDN
 
-> [!TIP]
-> 如果已有要用于此教程的 CDN 配置文件，请转至[步骤 3](#step-3-create-a-new-cdn-endpoint)。
+利用最新的集成，现无需离开存储门户扩展即可为存储帐户启用 CDN。 
+
+1. 选择存储帐户，搜索“CDN”或从左侧导航菜单中向下滚动，然后单击“Azure CDN”。
+    
+    随即显示“Azure CDN”边栏选项卡。
+
+    ![CDN 启用导航][cdn-enable-navigation]
+    
+2. 输入所需信息，创建新的终结点
+    - CDN 配置文件：可新建配置文件或使用现有配置文件。
+    - 定价层：如果创建新的 CDN 配置文件，则只需选择定价层。
+    - CDN 终结点名称：根据选择输入终结点名称。
+
+    > [!TIP]
+       > 默认情况下，创建的 CDN 终结点将使用存储帐户的主机名作为源。
+
+    ![创建新的 CDN 终结点][cdn-new-endpoint-creation]
+
+3. 创建后，新终结点将显示在上方的终结点列表中。
+
+    ![CDN 存储新终结点][cdn-storage-new-endpoint]
+
+> [!NOTE]
+> 还可转到 Azure CDN 扩展来启用CDN。[教程](#Tutorial-cdn-create-profile)。
 > 
 > 
 
-[!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
+[!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]  
 
-## <a name="step-3-create-a-new-cdn-endpoint"></a>步骤 3：创建新的 CDN 终结点
-**为存储帐户创建新的 CDN 终结点**
+## <a name="step-3-enable-additional-cdn-features"></a>步骤 3：启用其他 CDN 功能
 
-1. 在 [Azure 管理门户](https://portal.azure.com)中，导航到 CDN 配置文件。  可能在先前步骤中将其固定到了仪表板。  如果不是，则可单击“浏览”、“CDN 配置文件”，然后单击计划向其添加终结点的配置文件。
-   
-    将出现 CDN 配置文件边栏选项卡。
-   
-    ![CDN 配置文件][cdn-profile-settings]
-2. 单击“添加终结点”  按钮。
-   
-    ![“添加终结点”按钮][cdn-new-endpoint-button]
-   
-    将出现“添加终结点”  边栏选项卡。
-   
-    ![“添加终结点”边栏选项卡][cdn-add-endpoint]
-3. 为该 CDN 终结点输入 **名称** 。  此名称可用于访问在域 `<endpointname>.azureedge.net`中缓存的资源。
-4. 在“源类型”下拉列表中，选择“存储”。  
-5. 在“源主机名”下拉列表中，选择存储帐户。
-6. 保留**源路径**、**源主机头**和**协议/源端口**的默认值。  必须至少指定一种协议（HTTP 或 HTTPS）。
-   
-   > [!NOTE]
-   > 此配置启用在 CDN 中进行缓存的存储帐户中的所有公开可见容器。  如果希望将范围限制为单个容器，请使用**源路径**。  请注意，必须将容器可见性设置为公开。
-   > 
-   > 
-7. 单击“创建”  按钮创建新的终结点。
-8. 终结点创建后，将出现在配置文件的终结点列表中。 该列表视图显示用于访问缓存内容的 URL 以及原始域。
-   
-    ![CDN 终结点][cdn-endpoint-success]
-   
-   > [!NOTE]
-   > 终结点不会立即可用。  通过 CDN 网络传播注册可能需要长达 90 分钟。 尝试立即使用 CDN 域名的用户可能会收到状态代码 404，直到可通过 CDN 访问该内容。
-   > 
-   > 
+从存储帐户的“Azure CDN”边栏选项卡中，单击列表中的 CDN 终结点，打开“CDN 配置”边栏选项卡。 可为交付内容启用其他 CDN 功能，例如压缩、查询字符串和地区筛选。 还可将自定义域映射添加到 CDN 终结点并启用自定义域 HTTPS。
+    
+![CDN 存储 CDN 配置][cdn-storage-cdn-configuration]
 
 ## <a name="step-4-access-cdn-content"></a>步骤 4：访问 CDN 内容
 若要访问 CDN 上的缓存内容，请使用门户中提供的 CDN URL。 缓存 Blob 的地址将如下所示：
@@ -106,7 +102,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 > [!NOTE]
-> 一旦启用对存储帐户或托管服务的 CDN 访问，所有公开可用的对象将有资格获得 CDN 边缘缓存。 如果你修改一个当前在 CDN 中缓存的对象，则只有 CDN 在缓存内容生存时间到期时刷新了对象的内容后，才能通过 CDN 访问新内容。
+> 一旦启用对存储帐户的 CDN 访问，所有公开可用的对象即有资格获得 CDN 边缘缓存。 如果你修改一个当前在 CDN 中缓存的对象，则只有 CDN 在缓存内容生存时间到期时刷新了对象的内容后，才能通过 CDN 访问新内容。
 > 
 > 
 
@@ -121,16 +117,9 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 ## <a name="additional-resources"></a>其他资源
 * [如何将 CDN 内容映射到自定义域](cdn-map-content-to-custom-domain.md)
+* [为自定义域启用 HTTPS](cdn-custom-ssl.md)
 
 [create-new-storage-account]: ./media/cdn-create-a-storage-account-with-cdn/CDN_CreateNewStorageAcct.png
-
-[cdn-profile-settings]: ./media/cdn-create-a-storage-account-with-cdn/cdn-profile-settings.png
-[cdn-new-endpoint-button]: ./media/cdn-create-a-storage-account-with-cdn/cdn-new-endpoint-button.png
-[cdn-add-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-add-endpoint.png
-[cdn-endpoint-success]: ./media/cdn-create-a-storage-account-with-cdn/cdn-endpoint-success.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-
+[cdn-enable-navigation]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png
+[cdn-storage-new-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png
+[cdn-storage-cdn-configuration]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png 

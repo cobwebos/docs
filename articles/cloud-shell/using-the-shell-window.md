@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 4e78dadb7fa036dcb4c5706fe774cbd85d57a746
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 69316d271fc4847565d183293013580b61695731
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
-# <a name="using-the-shell-window"></a>使用 shell 窗口
+# <a name="using-the-azure-cloud-shell-window"></a>使用 Azure Cloud Shell 窗口
+
 本文档介绍如何使用 Azure Cloud Shell 窗口。
 
 ## <a name="concurrent-sessions"></a>并发会话

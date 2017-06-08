@@ -1,14 +1,14 @@
 ---
 title: "用于 Azure Cosmos DB 的 Azure CLI 示例 | Microsoft Docs"
 description: "Azure CLI 示例 - 创建和管理 Azure Cosmos DB 帐户、数据库、容器、区域和防火墙。"
-services: cosmosdb
+services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
-ms.custom: sample
+ms.service: cosmos-db
+ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na

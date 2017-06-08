@@ -13,34 +13,41 @@
 ## 管理数据包捕获
 ### [门户](network-watcher-packet-capture-manage-portal.md)
 ### [PowerShell](network-watcher-packet-capture-manage-powershell.md)
-### [CLI](network-watcher-packet-capture-manage-cli.md)
+### [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
+### [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 ### [REST](network-watcher-packet-capture-manage-rest.md)
 ## 验证流入和流出 VM 的 IP
 ### [门户](network-watcher-check-ip-flow-verify-portal.md)
 ### [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
-### [CLI](network-watcher-check-ip-flow-verify-cli.md)
+### [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
+### [CLI 2.0](network-watcher-check-ip-flow-verify-cli.md)
 ### [REST](network-watcher-check-ip-flow-verify-rest.md)
 ## 分析下一跃点
 ### [门户](network-watcher-check-next-hop-portal.md)
 ### [PowerShell](network-watcher-check-next-hop-powershell.md)
-### [CLI](network-watcher-check-next-hop-cli.md)
+### [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
+### [CLI 2.0](network-watcher-check-next-hop-cli.md)
 ### [REST](network-watcher-check-next-hop-rest.md)
 ## 查看网络拓扑
 ### [PowerShell](network-watcher-topology-powershell.md)
-### [CLI](network-watcher-topology-cli.md)
+### [CLI 1.0](network-watcher-topology-cli-nodejs.md)
+### [CLI 2.0](network-watcher-topology-cli.md)
 ### [REST](network-watcher-topology-rest.md)
 ## VPN 网关和连接故障排除
 ### [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
-### [CLI](network-watcher-troubleshoot-manage-cli.md)
+### [CLI 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
+### [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
 ### [REST](network-watcher-troubleshoot-manage-rest.md)
 ## 分析网络安全组视图
 ### [PowerShell](network-watcher-security-group-view-powershell.md)
-### [CLI](network-watcher-security-group-view-cli.md)
+### [CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
+### [CLI 2.0](network-watcher-security-group-view-cli.md)
 ### [REST](network-watcher-security-group-view-rest.md)
 ## 配置 NSG 流日志
 ### [门户](network-watcher-nsg-flow-logging-portal.md)
 ### [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-### [CLI](network-watcher-nsg-flow-logging-cli.md)
+### [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
+### [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
 ### [REST](network-watcher-nsg-flow-logging-rest.md)
 # 如何
 ## [使用 Azure 自动化监视 VPN 网关](network-watcher-monitor-with-azure-automation.md)

@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 中构建无服务器社交媒体仪表板 | Microsoft Docs"
-description: "在 Azure 中构建无服务器社交媒体仪表板"
+title: "创建与 Azure 逻辑应用集成的函数 | Microsoft Docs"
+description: "创建一个使用 Azure 服务将推文情感分类的函数。"
 services: functions, logic-apps, cognitive-services
 keywords: "工作流, 云应用, 云服务, 业务流程, 系统集成, 企业应用程序集成, EAI"
 documentationcenter: 
-author: rick-anderson
-manager: wpickett
+author: ggailey777
+manager: erikre
 editor: 
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.service: functions
@@ -13,271 +13,266 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
-ms.author: riande
+ms.date: 05/11/2017
+ms.author: glenga, riande
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0d3eb2af197e9923d8e4a86bf1a0033f61e3c568
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: b8bf047be9796935ce815f4d803e229c7208ade5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
-# <a name="building-a-serverless-social-media-dashboard-in-azure"></a>在 Azure 中构建无服务器社交媒体仪表板
+# <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
-[Azure Functions](functions-overview.md) 与 [Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)集成，可让你使用其他 Azure 服务和第三方服务构建复杂的业务流程。 本主题演示如何从社交媒体源触发逻辑应用，并使用 [Azure 认知服务](../cognitive-services/Welcome.md)分析文本。
+Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借助这种集成，可以利用 Functions 的计算能力来与其他 Azure 服务和第三方服务进行协调。 
 
-本文介绍如何在 Azure 门户中创建一个具有以下功能的逻辑应用：
+本教程介绍如何配合使用 Functions、逻辑应用和 Azure 认知服务来分析 Twitter 文章中的情感。 HTTP 触发的函数根据情感评分将推文分类为绿色、黄色或红色。 检测到较差的情感时，会发送一封电子邮件。 
+
+![逻辑应用设计器中应用的前两个步骤的示意图](media/functions-twitter-email/designer1.png)
+
+本教程将介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 使用提供的关键字或井号标签检查新的推文。
-> * 使用“检测情感”连接器来推测推文中的情感（从差到优）。
-> * 使用 Azure 函数将推文情感处理成三个类别（RED、YELLOW 或 GREEN，分别代表差、中、优）。
-> * 使用条件来检查情感是否为 RED（差）。
-> * 如果条件为 RED，则发送电子邮件。
-
-下图显示了设计器中逻辑应用的一部分：
-
-![逻辑应用设计器中应用的前 2 个步骤的示意图](media/functions-twitter-email/designer1.png)
+> * 创建认知服务帐户。
+> * 创建一个用来对推文情感进行分类的函数。
+> * 创建连接到 Twitter 的逻辑应用。
+> * 将情感检测功能添加到逻辑应用。 
+> * 将逻辑应用连接到函数。
+> * 根据函数的响应发送电子邮件。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个 Azure 帐户。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/) 。
-* 一个 Twitter 帐户。
++ 有效的 [Twitter](https://twitter.com/) 帐户。 
++ [Outlook.com](https://outlook.com/) 帐户（用于发送通知）。
++ 本主题以在[从 Azure 门户创建第一个函数](functions-create-first-azure-function.md)主题中创建的资源为基础。  
+现在请完成以下步骤创建 Function App（如果尚未这样做）。
 
-## <a name="create-a-function-app"></a>创建 Function App
+## <a name="create-a-cognitive-services-account"></a>创建认知服务帐户
+
+需要使用认知服务帐户来检测所监视的推文的情感。
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+
+2. 单击 Azure 门户左上角的“新建”按钮。
+
+3. 单击“数据 + 分析” > “认知服务”。 然后，请使用表中指定的设置，接受条款，并选中“固定到仪表板”。
+
+    ![创建认知帐户边栏选项卡](media/functions-twitter-email/cog_svcs_account.png)
+
+    | 设置      |  建议的值   | 说明                                        |
+    | --- | --- | --- |
+    | **Name** | MyCognitiveServicesAccnt | 选择唯一的帐户名称。 |
+    | **API 类型** | 文本分析 API | 用于分析文本的 API。  |
+    | **位置** | 美国西部 | 目前只能在“美国西部”执行文本分析。 |
+    | **定价层** | F0 | 从最低的层着手。 如果已用完调用配额，请扩展到更高的层。|
+    | **资源组** | myResourceGroup | 请本教程中的所有服务使用同一个资源组。|
+
+4. 单击“创建”以创建帐户。 创建帐户后，请单击已固定到仪表板的新认知服务帐户。 
+
+5. 在该帐户中单击“密钥”，然后复制并保存“密钥 1”的值。 使用此密钥将逻辑应用连接到认知服务帐户。 
  
-[!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal2.md)]
+    ![密钥](media/functions-twitter-email/keys.png)
 
-### <a name="create-a-categorize-function"></a>创建分类函数
+## <a name="create-the-function"></a>创建函数
 
-完成 Function App 部署后，请打开新的 Function App。 在本部分，你将创建一个函数，用于将推文情感分类为三个类别（RED、YELLOW 或 GREEN，分别代表差、中、优）。
+Functions 可让你方便地卸载逻辑应用工作流中的处理任务。 本教程使用 HTTP 触发的函数来处理认知服务提供的推文情感评分，然后返回一个类别值。  
 
-![Function Apps 边栏选项卡，Functions +](media/functions-twitter-email/add_fun.png)
+1. 展开 Function App，单击“函数”旁边的 **+** 按钮，然后单击“HTTPTrigger”模板。 为函数的“名称”键入 `CategorizeSentiment`，然后单击“创建”。
 
-保留默认的“Webhook + API”、“CSharp”，然后选择“创建此函数”。
+    ![Function Apps 边栏选项卡，Functions +](media/functions-twitter-email/add_fun.png)
 
-![Function Apps 边栏选项卡，Functions +](media/functions-twitter-email/add_fun2.png)
+2. 将 run.csx 文件的内容替换为以下代码，然后单击“保存”：
 
-现已创建一个 Webhook/API 函数（也称为 HTTP 触发器），所构建的应用可根据需要调用它。 若要创建一个按计划运行的函数，请创建 Timer 函数。
-
-将 *run.csx* 文件的内容替换为以下代码：
-
-```c#
-using System.Net;
-
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
-{
-    log.Info("C# HTTP trigger function processed a request.");
-    string category = "GREEN";
-
-    // Get request body.
-    double score = await req.Content.ReadAsAsync<double>();
-
-    if (score < .3)
+    ```c#
+    using System.Net;
+    
+    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
     {
-        category = "RED";
+        // The sentiment category defaults to 'GREEN'. 
+        string category = "GREEN";
+    
+        // Get the sentiment score from the request body.
+        double score = await req.Content.ReadAsAsync<double>();
+        log.Info(string.Format("The sentiment score received is '{0}'.",
+                    score.ToString()));
+    
+        // Set the category based on the sentiment score.
+        if (score < .3)
+        {
+            category = "RED";
+        }
+        else if (score < .6)
+        {
+            category = "YELLOW";
+        }
+        return req.CreateResponse(HttpStatusCode.OK, category);
     }
-    else if (score < .6)
-    {
-        category = "YELLOW";
-    }
+    ```
+    此函数代码基于请求中收到的情感评分返回颜色类别。 
 
-    return req.CreateResponse(HttpStatusCode.OK, category);
-}
-```
+3. 若要测试该函数，请单击最右边的“测试”展开“测试”选项卡。 在“请求正文”中键入 `0.2` 的值，然后单击“运行”。 响应正文中将返回 **RED** 值。 
 
-保存更改。
+    ![在 Azure 门户中测试函数](./media/functions-twitter-email/test.png)
 
-### <a name="test-the-function"></a>测试函数
+现已创建一个可对情感评分分类的函数。 接下来，请创建用于将函数与 Twitter 和认知服务帐户集成的逻辑应用。 
 
-选择“测试”（位于代码框的右侧）。  在“请求正文”文本框中输入 0.2，然后选择“运行”。 输出显示“RED”，HTTP 状态为 200 OK。
+## <a name="create-a-logic-app"></a>创建逻辑应用   
 
- ![测试 ](media/functions-twitter-email/test.png)
+1. 在 Azure 门户中，单击左上角的“新建”按钮。
 
-## <a name="cognitive-services"></a>认知服务
+2. 单击“Enterprise Integration” > “逻辑应用”。 然后，请使用表中指定的设置，选中“固定到仪表板”，单击“创建”。
+ 
+4. 然后，请键入**名称**（例如 `TweetSentiment`），使用表中指定的设置，接受条款，并选中“固定到仪表板”。
 
-创建认知服务帐户。 需要使用认知服务帐户来检测所监视的推文的情感。
+    ![在 Azure 门户创建逻辑应用](./media/functions-twitter-email/new_logicApp.png)
 
-导航到“新建”>“智能 + 分析”>“认知服务”。 设置每个必填字段：
+    | 设置      |  建议的值   | 说明                                        |
+    | ----------------- | ------------ | ------------- |
+    | **Name** | TweetSentiment | 选择适当的应用名称。 |
+    | **资源组** | myResourceGroup | 用于分析文本的 API。  |
+    | **位置** | 美国东部 | 选择离你近的位置。 |
+    | **资源组** | myResourceGroup | 选择与前面相同的现有资源组。|
 
-![创建认知帐户边栏选项卡](media/functions-twitter-email/cog_svcs_account.png)
+4. 单击“创建”以创建逻辑应用。 创建应用后，请单击已固定到仪表板的新逻辑应用。 然后，在逻辑应用设计器中向下滚动并单击“空白逻辑应用”模板。 
 
-| 字段               | 示例值 | 注释 |
-| ----------------- | ------------ | ------------- |
-| 帐户名 | MyCognitiveServicesAccnt | 输入唯一名称。 |
-| API 类型 | 文本分析 API | 选择文本分析 |
-| 位置 | 美国西部 | 目前只能选择“美国西部” |
-| 定价层 | F0 | 如果已用完调用配额，请设置为更高的层。|
-| 资源组 | rg1 | 使用前面指定的资源组。|
+    ![“空白逻辑应用”模板](media/functions-twitter-email/blank.png)
 
-### <a name="copy-the-cognitive-services-key"></a>复制认知服务密钥
+现在，可以使用逻辑应用设计器将服务和触发器添加到应用。
 
-选择“密钥”。 后面的步骤需要密钥。
+## <a name="connect-to-twitter"></a>连接到 Twitter
 
- ![密钥](media/functions-twitter-email/keys.png)
+首先，请与你的 Twitter 帐户建立连接。 逻辑应用将轮询推文，这会触发应用运行。
 
-## <a name="create-a-logic-app"></a>创建逻辑应用
+1. 在设计器中单击“Twitter”服务，然后单击“发布新推文时”触发器。 登录到 Twitter 帐户，然后授权逻辑应用使用你的帐户。
 
-在 Azure 门户中，单击“新建”>“Enterprise Integration”>“逻辑应用”
+2. 使用表中指定的 Twitter 触发器设置。 
 
-![新建逻辑应用前置步骤](media/functions-twitter-email/new_logicApp.png)
+    ![Twitter 连接器设置](media/functions-twitter-email/azure_tweet.png)
 
-在“创建逻辑应用”边栏选项卡中输入每个字段，然后选择“创建”。
+    | 设置      |  建议的值   | 说明                                        |
+    | ----------------- | ------------ | ------------- |
+    | **搜索文本** | #Azure | 使用足够热门的井号标签按所选的间隔生成新的推文。 如果使用免费层并且井号标签过于热门，可能很快就会用完认知服务帐户中的事务配额。 |
+    | **频率** | 分钟 | 用于轮询 Twitter 的频率单位。  |
+    | **间隔** | 15 | 每两次处理 Twitter 请求所用的时间，采用频率单位。 |
 
-![创建逻辑应用前置步骤](media/functions-twitter-email/new_logicApp2.png)
+3.  单击“保存”连接到 Twitter 帐户。 
 
-创建逻辑应用后，它将在设计器中打开。 选择“空白逻辑应用”模板。
+应用现已连接到 Twitter。 接下来，请连接到文本分析以检测收集到的推文的情感。
 
-![空白逻辑应用](media/functions-twitter-email/blank.png)
+## <a name="add-sentiment-detection"></a>添加情感检测
 
-## <a name="add-a-trigger-to-twitter"></a>将触发器添加到 Twitter
+1. 单击“新建步骤”，然后单击“添加操作”。
 
-“逻辑应用设计器”显示了可以连接到的许多服务和触发器。
+    ![选择“新建步骤”，然后选择“添加操作”](media/functions-twitter-email/new_step.png)
 
-选择“Twitter”服务。
+2. 在“选择操作”中单击“文本分析”，然后单击“检测情感”操作。
 
-![Twitter 连接器](media/functions-twitter-email/twitter_connector.png)
+    ![检测情感](media/functions-twitter-email/detect_sent.png)
 
-选择“发布新推文时”触发器。
+3. 键入连接名称（例如 `MyCognitiveServicesConnection`），粘贴保存的认知服务帐户密钥，然后单击“创建”。  
 
-![“发布新推文时”触发器](media/functions-twitter-email/tw_trig.png)
+4. 单击“要分析的文本” > “推文文本”，然后单击“保存”。  
 
-登录到你的 Twitter 帐户。
+    ![检测情感](media/functions-twitter-email/ds_tta.png)
 
-![登录到你的 Twitter 帐户](media/functions-twitter-email/signin_twit.png)
+配置情感检测后，可将一个连接添加到使用情感评分输出的函数。
 
-输入密码并选择“为应用授权”。
+## <a name="connect-sentiment-output-to-your-function"></a>将情感输出连接到函数
 
-![完成上面的步骤后，在新窗口中进行 Twitter 身份验证](media/functions-twitter-email/auth_twit.png)
+1. 在逻辑应用设计器中单击“新建步骤” > “添加操作”，然后单击“Azure Functions”。 
 
-输入搜索文本、频率和间隔。 如果指定热门的井号标签（例如 #football、#soccer 或 #futbol），则可以在认知服务帐户中快速使用所有已分配的服务调用。 如果已用完调用配额，可以提高定价层。 
+2. 单击“选择 Azure 函数”，选择前面创建的 **CategorizeSentiment** 函数。  
 
-每隔 15 分钟搜索 #Azure 一次：
+    ![显示“选择 Azure 函数”的 Azure Functions 框](media/functions-twitter-email/choose_fun.png)
 
-![每隔 15 分钟搜索 #Azure 一次](media/functions-twitter-email/azure_tweet.png)
+3. 在“请求正文”中单击“评分”，然后单击“保存”。
 
-保存应用。
+    ![得分](media/functions-twitter-email/trigger_score.png)
 
-### <a name="add-a-text-analytics-connector"></a>添加“文本分析”连接器
+现在，在从逻辑应用发送情感评分时，将触发该函数。 该函数会将一个带有颜色编码的类别返回到逻辑应用。 接下来，请添加当函数返回 **RED** 情感值时要发送的电子邮件通知。 
 
-文本分析连接器可检测推文情感。
+## <a name="add-email-notifications"></a>添加电子邮件通知
 
-选择“新建步骤”，然后选择“添加操作”。
+工作流的最后一部分是当情感评分为 _RED_ 时触发电子邮件。 本主题使用 Outlook.com 连接器。 可以执行类似的步骤来使用 Gmail 或 Office 365 Outlook 连接器。   
 
-![选择“新建步骤”，然后选择“添加操作”](media/functions-twitter-email/new_step.png)
+1. 在逻辑应用设计器中，单击“新建步骤” > “添加条件”。 
 
-添加“文本分析”连接器。
+2. 单击“选择值”，然后单击“正文”。 选择“等于”，单击“选择值”并键入 `RED`，然后单击“保存”。 
 
-![选择操作窗口](media/functions-twitter-email/choose_action.png)
+    ![将条件添加到逻辑应用。](media/functions-twitter-email/condition.png)
 
-选择“检测情感”操作。 情感评分通常比较准确，但有时会错误地解释文本。
+3. 在“如果是，则不执行任何操作”中单击“添加操作”，搜索 `outlook.com`，单击“发送电子邮件”，然后登录到 Outlook.com 帐户。
+    
+    ![为条件选择操作。](media/functions-twitter-email/outlook.png)
 
-![检测情感](media/functions-twitter-email/detect_sent.png)
+    > [!NOTE]
+    > 如果没有 Outlook.com 帐户，可以选择另一个连接器，例如 Gmail 或 Office 365 Outlook
 
-### <a name="create-the-detect-sentiment-action"></a>创建“检测情感”操作
+4. 在“发送电子邮件”操作中，请使用表中指定的电子邮件设置。 
 
-  * 输入连接名称，例如 **MyKey**。
-  * 复制并粘贴在[创建认知服务帐户](#cognitive-services)步骤中创建的密钥。
-  * 选择“创建” 。
-  * 保存应用。
+    ![为“发送电子邮件”操作配置电子邮件。](media/functions-twitter-email/sendemail.png)
 
-![检测情感](media/functions-twitter-email/ta_detect_sent.png)
+    | 设置      |  建议的值   | 说明  |
+    | ----------------- | ------------ | ------------- |
+    | **To** | 键入电子邮件地址 | 接收通知的电子邮件地址。 |
+    | **主题** | 检测到消极的推文情感  | 电子邮件通知的主题行。  |
+    | **正文** | 推文文本、位置 | 单击“推文文本”和“位置”参数。 |
 
-选择“要分析的文本”旁边的“推文文本”图标。
+5.  单击“保存” 。
 
-![检测情感](media/functions-twitter-email/ds_tta.png)
+完成工作流后，可以启用逻辑应用并查看函数的工作状态。
 
-![检测情感](media/functions-twitter-email/ds_tta2.png)
+## <a name="test-the-workflow"></a>测试工作流
 
-保存应用。
+1. 在逻辑应用设计器中，单击“运行”启动应用。
 
-## <a name="connect-to-the-azure-function"></a>连接到 Azure Function
+2. 在左列中，单击“概述”查看逻辑应用的状态。 
+ 
+    ![逻辑应用执行状态](media/functions-twitter-email/over1.png)
 
-在本部分，你将添加前面创建的、已将推文情感分类为 RED、YELLOW 或 GREEN 的函数。
+3. （可选）单击某个运行查看执行详细信息。
 
-* 在逻辑应用设计器中选择“新建步骤”，然后选择“添加操作”。
-* 选择“Azure Functions”。
-* 选择“选择 Azure 函数”。
+4. 转到你的函数，查看日志，并验证是否已收到并处理情感值。
+ 
+    ![查看函数日志](media/functions-twitter-email/sent.png)
 
-![显示“选择 Azure 函数”的 Azure Functions 框](media/functions-twitter-email/choose_fun.png)
+5. 检测到潜在的消极情感时，你将收到一封电子邮件。 如果未收到电子邮件，可以更改函数代码，以便每次都返回 RED：
 
-* 选择前面创建的 Azure 函数。
-* 选择“评分”以填充“请求正文”。
+        return req.CreateResponse(HttpStatusCode.OK, "RED");
 
-![得分](media/functions-twitter-email/trigger_score.png)
+    验证电子邮件通知后，请改回原始代码：
 
-保存应用。
+        return req.CreateResponse(HttpStatusCode.OK, category);
 
-## <a name="add-email-notification"></a>添加电子邮件通知
+    > [!IMPORTANT]
+    > 完成本教程后，应禁用该逻辑应用。 禁用该应用可以避免产生执行费用，以及用完认知服务帐户中的事务配额。
 
-在本部分，我们将针对包含消极情感的推文（RED 条件）添加条件检查。
+我们已看到，将 Functions 集成到逻辑应用工作流的过程是多么简单。
 
-* 选择“新建步骤”。
-* 选择“添加条件”。
-* 在第一个“选择值”文本框中选择“正文”。
-* 在第二个“选择值”文本框中输入“RED”。
-* 保存应用。
+## <a name="disable-the-logic-app"></a>禁用逻辑应用
 
-![条件框](media/functions-twitter-email/condition.png)
+若要禁用逻辑应用，请单击“概述”，然后单击屏幕顶部的“禁用”。 这可以停止逻辑应用并避免产生费用，同时又不必删除该应用。 
 
-* 在“如果是，则不执行任何操作”框中，选择“添加操作”。
-* 在“搜索所有服务和操作”框中输入 Outlook 或 Gmail。 本教程使用 Outlook。 有关 Gmail 的说明，请参阅 [添加 Gmail 操作] (../logic-apps/logic-apps-create-a-logic-app.md#add-an-action-that-responds-to-your-trigger)。 注意：如果你已注册个人 [Microsoft 帐户](https://account.microsoft.com/account)，可以使用该帐户代替 Outlook.com 帐户。
-
-![选择操作的框](media/functions-twitter-email/outlook.png)
-
-选择“使用 Outlook.com 发送电子邮件”。
-
-![Outlook.com 框](media/functions-twitter-email/sendEmail.png)
-
-登录到 Outlook.com。
-
-![登录框](media/functions-twitter-email/signin_outlook.png)
-
-输入以下项：
-
-   * **收件人**：应该将邮件发送到的电子邮件地址。
-   * **主题**：评分。
-   * **正文**：位置和推文文本。
-
-![发送电子邮件的框](media/functions-twitter-email/sendEmail2.png)
-
-保存应用。
-选择“运行”启动应用。
-
-### <a name="check-the-status"></a>检查状态
-
-在逻辑应用边栏选项卡中选择“概述”，然后在“运行历史记录”列中选择一行：
-
-![概述边栏选项卡](media/functions-twitter-email/over1.png)
-
-下图显示了条件不为 true，因此未发送电子邮件时的运行详细信息。
-
-![概述边栏选项卡](media/functions-twitter-email/skipped.png)
-
-如果想要立即测试“发送电子邮件”函数，请执行以下操作：
-
-* 将第一个步骤（“发布新推文时”）中的“输入”更改为热门字词，例如 #football、#soccer 或 #futbol。
-
-处理热门字词所消耗的资源比处理较不热门字词要多。 在验证电子邮件是否正常工作后，可以更改搜索词。
-
-下图显示了条件为 true，因此已发送电子邮件时的运行详细信息。
-
-![概述边栏选项卡](media/functions-twitter-email/sent.png)
-
-可以选择任一服务框，显示有关用于运行的数据的详细信息。 选择“发布新推文时”显示搜索文本和所有输出，甚至包括未使用的输出。
+![函数日志](media/functions-twitter-email/disable-logic-app.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-*  [Azure Functions 简介](functions-overview.md)
-*  [Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)
-*  [添加条件和运行工作流](../logic-apps/logic-apps-use-logic-app-features.md)
-*  [逻辑应用模板](../logic-apps/logic-apps-use-logic-app-templates.md)
-*  [通过 Azure Resource Manager 模板创建逻辑应用](../logic-apps/logic-apps-arm-provision.md)
+在本教程中，你已学习了如何执行以下操作：
 
-## <a name="get-help"></a>获取帮助
+> [!div class="checklist"]
+> * 创建认知服务帐户。
+> * 创建一个用来对推文情感进行分类的函数。
+> * 创建连接到 Twitter 的逻辑应用。
+> * 将情感检测功能添加到逻辑应用。 
+> * 将逻辑应用连接到函数。
+> * 根据函数的响应发送电子邮件。
 
-若要提问、解答问题和了解其他 Azure 逻辑应用用户的活动，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+请继续学习下一教程，了解如何为函数创建无服务器 API。
 
-为了帮助我们改进 Azure 逻辑应用和连接器，敬请在 [Azure 逻辑应用用户反馈站点](http://aka.ms/logicapps-wish)上投票或发表看法。
+> [!div class="nextstepaction"] 
+> [使用 Azure Functions 创建无服务器 API](functions-create-serverless-api.md)
+
+若要详细了解逻辑应用，请参阅 [Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)。
+
 

@@ -1,7 +1,7 @@
 ---
 title: "检测和诊断 Web 应用问题 - Azure Application Insights | Microsoft Docs"
 description: "分析崩溃，并检测和诊断应用程序中的性能问题"
-author: alancameronwills
+author: CFreemanwa
 services: application-insights
 documentationcenter: 
 manager: carmonm

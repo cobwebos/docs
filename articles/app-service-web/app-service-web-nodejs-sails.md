@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 197e4c1873ecdc80c7eed3427449e2ea0d1605ba
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 09ececc567c09ea4e0b77d4d37445b7c232de23c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 05/10/2017
 * [Node.js](https://nodejs.org/)
 * [Sails.js](http://sailsjs.org/get-started)
 * [Git](http://www.git-scm.com/downloads)
-* [Azure CLI 2.0 预览版](/cli/azure/install-az-cli2)
+* [Azure CLI 2.0](/cli/azure/install-az-cli2)
 * 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
@@ -118,13 +118,13 @@ ms.lasthandoff: 05/10/2017
    
         az appservice web deployment user set --user-name <username> --password <password>
 
-3. 创建具有名称的[资源组](../azure-resource-manager/resource-group-overview.md)。 对于此 PHP 教程，实际上并不需要知道什么是资源组。
+3. 创建具有名称的[资源组](../azure-resource-manager/resource-group-overview.md)。 对于本 Node.js 教程，实际上并不需要知道什么是资源组。
 
         az group create --location "<location>" --name my-sailsjs-app-group
 
     若要查看可为 `<location>` 使用的可能值，请使用 `az appservice list-locations` CLI 命令。
 
-3. 创建具有名称的“免费”[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 对于此 PHP 教程，只需知道此计划中的 Web 应用不会产生费用。
+3. 创建具有名称的“免费”[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 对于本 Node.js 教程，只需知道此计划中的 Web 应用不会产生费用。
 
         az appservice plan create --name my-sailsjs-appservice-plan --resource-group my-sailsjs-app-group --sku FREE
 
@@ -188,7 +188,7 @@ ms.lasthandoff: 05/10/2017
 
 1. [创建具有 MongoDB 协议支持的 Cosmos DB 帐户](../documentdb/documentdb-create-mongodb-account.md)。
 2. [创建 Cosmos DB 集合和数据库](../documentdb/documentdb-create-collection.md)。 集合的名称不重要，但从 Sails.js 连接时需要数据库的名称。
-3. [查找 Cosmos DB 数据库的连接信息](../documentdb/documentdb-connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize)。
+3. [查找 Cosmos DB 数据库的连接信息](../cosmos-db/connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize)。
 2. 从命令行终端安装 MongoDB 适配器：
 
         npm install sails-mongo --save
@@ -206,7 +206,7 @@ ms.lasthandoff: 05/10/2017
         },
 
     > [!NOTE] 
-    > `ssl: true` 选项很重要，因为 [Cosmos DB 需要它](../documentdb/documentdb-connect-mongodb-account.md#connection-string-requirements)。 
+    > `ssl: true` 选项很重要，因为 [Cosmos DB 需要它](../cosmos-db/connect-mongodb-account.md#connection-string-requirements)。 
     >
     >
 

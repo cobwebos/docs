@@ -1,128 +1,127 @@
-- name: "Functions 文档"
+- name: Functions 文档
   href: index.yml
-- name: "概述"
+- name: 概述
   items:
-  - name: "关于 Functions"
+  - name: 关于 Functions
     href: functions-overview.md
-  - name: "Functions 运行时"
+  - name: Functions 运行时
     href: functions-runtime-overview.md
-  - name: "在流、逻辑应用、函数和 WebJobs 之间进行选择"
+  - name: 在流、逻辑应用、函数和 WebJobs 之间进行选择
     href: functions-compare-logic-apps-ms-flow-webjobs.md
-- name: "快速入门"
+- name: 快速入门
   expanded: true
   items:
-  - name: "创建函数 - 门户"
+  - name: 创建函数 - 门户
     href: functions-create-first-azure-function.md
-  - name: "创建函数 - Azure CLI"
+  - name: 创建函数 - Azure CLI
     href: functions-create-first-azure-function-azure-cli.md
 #  - name: Create function - Visual Studio
 #    href: functions-create-your-first-function-visual-studio.md
-  - name: "触发器"
+  - name: 触发器
     items:
-    - name: "计时器"
+    - name: 计时器
       href: functions-create-scheduled-function.md
-    - name: "GitHub Webhook"
+    - name: GitHub Webhook
       href: functions-create-github-webhook-triggered-function.md
-    - name: "Blob 存储"
+    - name: Blob 存储
       href: functions-create-storage-blob-triggered-function.md
-    - name: "队列存储"
+    - name: 队列存储
       href: functions-create-storage-queue-triggered-function.md
-  - name: "集成"
+  - name: 集成
     items:
-    - name: "存储"
+    - name: 存储
       href: functions-integrate-storage-queue-output-binding.md
-#    - name: Cosmos DB
-#      href: functions-integrate-store-unstructured-data-cosmosdb.md
-- name: "示例"
+    - name: Cosmos DB
+      href: functions-integrate-store-unstructured-data-cosmosdb.md
+- name: 示例
   items:
-  - name: "Azure CLI"
+  - name: Azure CLI
     href: functions-cli-samples.md
-- name: "教程"
+- name: 教程
   items:
-  - name: "1 - Functions 与逻辑应用"
+  - name: 1 - Functions 与逻辑应用
     href: functions-twitter-email.md
-  - name: "2 - 创建无服务器 API"
+  - name: 2 - 创建无服务器 API
     href: functions-create-serverless-api.md
-- name: "概念"
+- name: 概念
   items:
-  - name: "托管计划"
+  - name: 消耗计划和应用服务计划
     href: functions-scale.md
-  - name: "触发器和绑定"
+  - name: 触发器和绑定
     href: functions-triggers-bindings.md
-- name: "操作指南"
-  items:
-  - name: "测试 Azure Functions"
-    href: functions-test-a-function.md
-  - name: "在本地开发和调试"
-    href: functions-run-local.md
-  - name: "配置 Function App 的设置"
-    href: functions-how-to-use-azure-function-app-settings.md
-  - name: "Azure Functions 的连续部署"
-    href: functions-continuous-deployment.md
-  - name: "使用基础结构即代码部署 Azure Functions"
-    href: functions-infrastructure-as-code.md
-  - name: "监视 Azure Functions"
-    href: functions-monitoring.md
-  - name: "安装 Functions 运行时"
-    href: functions-runtime-install.md
-- name: "引用"
-  items:
-  - name: "开发函数应用"
-    href: functions-reference.md
+  - name: 语言
     items:
-    - name: "Open API 2.0"
-      href: functions-api-definition.md
-  - name: "Azure Functions 最佳做法"
-    href: functions-best-practices.md
-  - name: "绑定"
-    items:
-    - name: "DocumentDB 绑定"
-      href: functions-bindings-documentdb.md
-    - name: "事件中心绑定"
-      href: functions-bindings-event-hubs.md
-    - name: "HTTP 和 Webhook 绑定"
-      href: functions-bindings-http-webhook.md
-    - name: "移动应用绑定"
-      href: functions-bindings-mobile-apps.md
-    - name: "通知中心输出绑定"
-      href: functions-bindings-notification-hubs.md
-    - name: "用于队列和主题的服务总线触发器与绑定"
-      href: functions-bindings-service-bus.md
-    - name: "Sendgrid 绑定"
-      href: functions-bindings-sendgrid.md
-    - name: "存储绑定"
-      items:
-      - name: "Blob 绑定"
-        href: functions-bindings-storage-blob.md
-      - name: "队列绑定"
-        href: functions-bindings-storage-queue.md
-      - name: "表绑定"
-        href: functions-bindings-storage-table.md
-      - name: "外部文件绑定"
-        href: functions-bindings-external-file.md
-    - name: "SendGrid 绑定"
-      href: functions-bindings-sendgrid.md
-    - name: "计时器触发器"
-      href: functions-bindings-timer.md
-    - name: "Twilio 输出绑定"
-      href: functions-bindings-twilio.md
-  - name: "框架"
-    items:
-    - name: "C#"
+    - name: 'C# 函数概念'
       href: functions-reference-csharp.md
-    - name: "F#"
+    - name: 'F# 函数概念'
       href: functions-reference-fsharp.md
-    - name: "JavaScript"
-      href: functions-reference-node.md
-- name: "资源"
+    - name: JavaScript 函数概念
+      href: functions-reference-node.md    
+- name: 操作指南
   items:
-  - name: "定价"
+  - name: 开发人员指南
+    href: functions-reference.md
+  - name: 测试 Azure Functions
+    href: functions-test-a-function.md
+  - name: 在本地开发和调试
+    href: functions-run-local.md
+  - name: 配置 Function App 的设置
+    href: functions-how-to-use-azure-function-app-settings.md
+  - name: Azure Functions 的连续部署
+    href: functions-continuous-deployment.md
+  - name: 自动执行资源部署
+    href: functions-infrastructure-as-code.md
+  - name: 监视 Azure Functions
+    href: functions-monitoring.md
+  - name: 安装 Functions 运行时
+    href: functions-runtime-install.md
+  - name: 连接到 SQL 数据库
+    href: functions-scenario-database-table-cleanup.md
+  - name: 创建 Open API 2.0 定义
+    href: functions-api-definition-getting-started.md     
+  - name: Azure Functions 最佳做法
+    href: functions-best-practices.md     
+- name: 引用
+  items:
+  - name: 绑定
+    items:
+    - name: Blob 存储
+      href: functions-bindings-storage-blob.md
+    - name: Cosmos DB
+      href: functions-bindings-documentdb.md
+    - name: 事件中心
+      href: functions-bindings-event-hubs.md
+    - name: 外部文件
+      href: functions-bindings-external-file.md
+    - name: HTTP 和 webhook
+      href: functions-bindings-http-webhook.md
+    - name: 移动应用
+      href: functions-bindings-mobile-apps.md
+    - name: 通知中心
+      href: functions-bindings-notification-hubs.md
+    - name: 队列存储
+      href: functions-bindings-storage-queue.md
+    - name: SendGrid
+      href: functions-bindings-sendgrid.md
+    - name: 服务总线
+      href: functions-bindings-service-bus.md
+    - name: 表存储
+      href: functions-bindings-storage-table.md
+    - name: 计时器
+      href: functions-bindings-timer.md
+    - name: Twilio
+      href: functions-bindings-twilio.md
+  - name: OpenAPI 参考
+    href: functions-api-definition.md     
+- name: 资源
+  items:
+  - name: 定价
     href: https://azure.microsoft.com/pricing/details/functions/
-  - name: "MSDN 论坛"
+  - name: MSDN 论坛
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
-  - name: "堆栈溢出"
+  - name: 堆栈溢出
     href: http://stackoverflow.com/questions/tagged/azure-functions
-  - name: "Azure Functions GitHub 存储库"
+  - name: Azure Functions GitHub 存储库
     href: https://github.com/Azure/Azure-Functions/
-  - name: "服务更新"
+  - name: 服务更新
     href: https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=

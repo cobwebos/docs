@@ -1,6 +1,8 @@
 1. 运行统一安装程序安装文件。
-2. 在“开始之前”中选择“安装配置服务器和进程服务器”。
+2. 在“开始之前”中，选择“安装配置服务器和进程服务器”。
+
     ![开始之前](./media/site-recovery-add-configuration-server/combined-wiz1.png)
+
 3. 在“第三方软件许可证”中单击“我接受”，下载并安装 MySQL。
 
     ![第三方软件](./media/site-recovery-add-configuration-server/combined-wiz2.png)
@@ -9,9 +11,11 @@
     ![注册](./media/site-recovery-add-configuration-server/combined-wiz3.png)
 5. 在“Internet 设置”中，指定配置服务器上运行的提供程序如何通过 Internet 连接到 Azure Site Recovery。
 
-   * 如果想要使用当前已在计算机上设置的代理进行连接，请选择“使用现有代理设置进行连接”。
-   * 如果希望提供程序直接进行连接，请选择“不使用代理直接连接”。
-   * 如果现有代理要求身份验证，或者你想要使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”。
+   a. 如果想要使用当前已在计算机上设置的代理进行连接，请选择“使用代理服务器连接到 Azure Site Recovery”。
+
+   b. 如果希望提供程序直接进行连接，请选择“在不使用代理服务器的情况下直接连接到 Azure Site Recovery”。
+
+   c. 如果现有代理要求身份验证，或者你想要使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”。
 
      * 如果使用自定义代理，则需指定地址、端口和凭据。
      * 如果你使用代理，应事先允许[先决条件](#prerequisites)中所述的 URL。

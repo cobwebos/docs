@@ -3,7 +3,7 @@ title: "适用于 ASP.NET Core 的 Azure Application Insights | Microsoft Docs"
 description: "监视 Web 应用程序的可用性、性能和使用情况。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
 ms.service: application-insights
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/21/2017
 * 如果未看到这些菜单命令，则请遵循[手动获取入门指南](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started)进行操作。 如果创建项目时所用的版本低于 Visual Studio 2017，则可能需要执行此操作。
 
 ## <a name="using-application-insights"></a>使用 Application Insights
-登录到“Microsoft Azure 门户”[](https://portal.azure.com)，选择“所有资源”或“Application Insights”，然后选择为监视应用而创建的资源。
+登录到 [Microsoft Azure 门户](https://portal.azure.com)，选择“所有资源”或“Application Insights”，然后选择为监视应用而创建的资源。
 
 在单独的浏览器窗口中，使用你的应用一段时间。 你将看到数据显示在 Application Insights 图表中。 （可能需要单击“刷新”。）开发时可能只有少量数据，但在你发布应用并且有许多用户后，这些图表才会完整显示。 
 

@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ec6a021e087d9218856370e8bf067359de54bdb9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 41d63ef88e9f0caf3d5f74841ec4670875fdaad1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>分析Azure CDN 使用模式
-[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]以下指南介绍通过 Verizon 配置文件的管理门户查看核心报告的步骤。 还可[通过 Azure 门户](cdn-log-analysis.md)将核心分析数据导出到 Verizon 和 Akamai 配置文件的存储、事件中心或 Log Analytics (oms)。
 
-你可以通过下列报告查看 CDN 的使用模式：
+可通过下列报告查看 CDN 的使用模式：
 
 * 带宽
 * 已传输数据
@@ -32,7 +34,7 @@ ms.openlocfilehash: ec6a021e087d9218856370e8bf067359de54bdb9
 * 缓存命中率
 * 已传输 IPV4/IPV6 数据
 
-## <a name="accessing-advanced-http-reports"></a>访问高级 HTTP 报告
+## <a name="accessing-core-reports"></a>访问核心报告
 1. 从 CDN 配置文件的边栏选项卡，单击“**管理**”按钮。
    
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-reports/cdn-manage-btn.png)
@@ -136,10 +138,5 @@ ms.openlocfilehash: ec6a021e087d9218856370e8bf067359de54bdb9
 
 ## <a name="considerations"></a>注意事项
 只能生成过去 18 个月的报告。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

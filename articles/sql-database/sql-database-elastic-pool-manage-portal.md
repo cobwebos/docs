@@ -11,14 +11,15 @@ ms.assetid: 3dc9b7a3-4b10-423a-8e44-9174aca5cf3d
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 04/18/2016
+ms.date: 05/08/2017
 ms.author: ninarn
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 66f7cc63d311b6b5cd223fe0d8a9bf9f636abef1
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/20/2017
 
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/20/2017
 
 可以通过两种方法创建弹性池。 如果你知道想要的池设置，可以从头开始创建，或者根据服务的建议进行创建。 SQL 数据库具有内置智能，可以根据数据库过去的使用情况遥测数据来推荐更加经济高效的弹性池设置。
 
-可以在服务器上创建多个池，但不能将数据库从不同的服务器添加到同一个池中。 
+可以在服务器上创建多个池，但不能将数据库从不同的服务器添加到同一个池中。
 
 > [!NOTE]
 > 弹性池在所有 Azure 区域中均已正式发布 (GA)，但印度西部除外，这些区域当前仅发布了预览版。  将尽快在此区域中正式发布弹性池。
@@ -158,7 +159,7 @@ SQL 数据库服务将评估使用量历史记录，并在比使用单一数据�
 
     ![单击“编辑”](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
 
-    
+
 
 3. 。
 

@@ -61,6 +61,9 @@
 ### [视图](operations-management-suite-solutions-resources-views.md)
 ### [最佳实践](operations-management-suite-solutions-best-practices.md)
 
+## 管理方案
+### [从 runbook 收集分析数据](operations-management-suite-runbook-datacollect.md)
+
 ## [与 OMS 集成](operations-management-suite-integration.md)
 
 # 引用

@@ -13,21 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/17/2017
+ms.date: 05/02/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 188c4758843a49ca38a151835d561c5f2d58d3a0
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 5b6c65ec8431c3a55e7cbccec3db5d08974982b5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>如何在首次启动 Linux 虚拟机时对其进行自定义
-若要以快速一致的方式创建虚拟机 (VM)，通常需要某种形式的自动化。 在首次启动 VM 时实现自定义的常见方法是使用 [cloud-init](https://cloudinit.readthedocs.io)。 本教程介绍如何使用 cloud-init 自动安装程序包、配置 NGINX Web 服务器和部署 Node.js 应用。
+在前面的教程中，已学习如何通过 SSH 连接到虚拟机 (VM) 并手动安装 NGINX。 若要以快速一致的方式创建 VM，通常需要某种形式的自动化。 在首次启动 VM 时实现自定义的常见方法是使用 [cloud-init](https://cloudinit.readthedocs.io)。 本教程将介绍如何执行下列操作：
 
-可使用最新版 [Azure CLI 2.0](/cli/azure/install-azure-cli) 完成本教程中的步骤。
+> [!div class="checklist"]
+> * 创建 cloud-init 配置文件
+> * 创建使用 cloud-init 文件的 VM
+> * 在创建 VM 后，查看正在运行的 Node.js 应用
+> * 使用 Key Vault 安全地存储证书
+> * 使用 cloud-init 自动进行 NGINX 的安全部署
 
+本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 还可以通过浏览器使用 [Cloud Shell](/azure/cloud-shell/quickstart)。
 
 ## <a name="cloud-init-overview"></a>Cloud-init 概述
 [Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 在初始启动期间运行 cloud-init 时，无需额外的步骤且无需代理来应用配置。
@@ -92,10 +98,10 @@ runcmd:
 有关 cloud-init 配置选项的详细信息，请参阅 [cloud-init 配置示例](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)]
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
-使用 [az group create](/cli/azure/group#create) 创建资源组，然后才能创建 VM。 以下示例在“westus”位置创建名为“myResourceGroupAutomate”的资源组：
+使用 [az group create](/cli/azure/group#create) 创建资源组，然后才能创建 VM。 以下示例在“eastus”位置创建名为“myResourceGroupAutomate”的资源组：
 
 ```azurecli
-az group create --name myResourceGroupAutomate --location westus
+az group create --name myResourceGroupAutomate --location eastus
 ```
 
 现使用 [az vm create](/cli/azure/vm#create) 创建 VM。 使用 `--custom-data` 参数传递到 cloud-init 配置文件中。 如果未将 cloud-init.txt 配置文件保存在现有工作目录中，请提供该文件的完整路径。 以下示例创建一个名为“myAutomatedVM”的 VM：
@@ -260,7 +266,17 @@ az vm open-port \
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你学习了如何在首次启动时实现 VM 的自定义。 转到下一教程，了解如何创建自定义 VM 映像。
+在本教程中，使用 cloud-init 在首次启动时配置 VM。 你已了解如何：
 
-[创建自定义 VM 映像](./tutorial-custom-images.md)
+> [!div class="checklist"]
+> * 创建 cloud-init 配置文件
+> * 创建使用 cloud-init 文件的 VM
+> * 在创建 VM 后，查看正在运行的 Node.js 应用
+> * 使用 Key Vault 安全地存储证书
+> * 使用 cloud-init 自动进行 NGINX 的安全部署
+
+转到下一教程，了解如何创建自定义 VM 映像。
+
+> [!div class="nextstepaction"]
+> [创建自定义 VM 映像](./tutorial-custom-images.md)
 

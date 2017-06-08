@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 06f7b38f5d08f2182f08d38a11dec526042c1828
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4b496eb3d82249e8dc29833fa7bf94ffbfd87ea0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -82,7 +83,7 @@ Azure 数据工厂支持以下文件格式类型：
 * 你要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
 
 ## <a name="json-format"></a>JSON 格式
-若要**在 DocumentDB 中按原样导入/导出 JSON 文件**，请参阅[将数据移入/移出 DocumentDB](data-factory-azure-documentdb-connector.md) 一文中的[导入/导出 JSON 文档](data-factory-azure-documentdb-connector.md#importexport-json-documents)部分。
+若要在 Azure Cosmos DB 中按原样导入/导出 JSON 文件，请参阅[将数据移入/移出 Cosmos DB](data-factory-azure-documentdb-connector.md) 一文中的[导入/导出 JSON 文档](data-factory-azure-documentdb-connector.md#importexport-json-documents)部分。
 
 若要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` 节中的 `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 

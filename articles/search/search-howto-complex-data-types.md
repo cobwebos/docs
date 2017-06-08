@@ -13,11 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 09/07/2016
+ms.date: 05/01/2017
 ms.author: liamca
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a90d7d90a6f3a75e230d32fb02b5ae69909d3c31
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d576fd7bb267ae7a100589413185b595e3b2be42
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,7 +29,7 @@ ms.openlocfilehash: a90d7d90a6f3a75e230d32fb02b5ae69909d3c31
 Azure 搜索本身并不支持复杂数据类型，但经验证的解决方法包括以下两步骤过程：平展该结构，然后使用**集合**数据类型重构内部结构。 遵循本文中所述技术，可允许内容被搜索、查找、筛选和排序。
 
 ## <a name="example-of-a-complex-data-structure"></a>复杂数据结构示例
-通常，相关数据驻留为一组 JSON 或 XML 文档，或者驻留为 NoSQL 存储（如 DocumentDB）中的项目。 在结构上，挑战来自于具有需要搜索和筛选的多个子项目。  开始说明解决方法，请将列出一组联系人的以下 JSON 文档用作示例：
+通常，相关数据驻留为一组 JSON 或 XML 文档，或者驻留为 NoSQL 存储（如 Azure Cosmos DB）中的项目。 在结构上，挑战来自于具有需要搜索和筛选的多个子项目。  开始说明解决方法，请将列出一组联系人的以下 JSON 文档用作示例：
 
 ~~~~~
 [
@@ -136,11 +138,6 @@ var index = new Index()
 可以看到有关如何将复杂 JSON 数据集索引到 Azure 搜索的示例，并对此 [GitHub 存储库](https://github.com/liamca/AzureSearchComplexTypes)中的此数据集执行大量查询。
 
 ## <a name="next-step"></a>后续步骤
-在 Azure 搜索 UserVoice 页上[对复杂数据类型的本机支持进行投票](https://feedback.azure.com/forums/263029-azure-search)，并提供你希望我们考虑关于功能实现的任何其他输入。 还可以直接在 Twitter 通过 @liamca. 与我联系
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+在 Azure 搜索 UserVoice 页上[对复杂数据类型的本机支持进行投票](https://feedback.azure.com/forums/263029-azure-search)，并提供你希望我们考虑关于功能实现的任何其他输入。 还可以直接在 Twitter 通过 @liamca 与我联系。
 
 

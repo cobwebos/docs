@@ -49,11 +49,11 @@ ms.lasthandoff: 05/01/2017
 
 现在再次启动作业，并运行数分钟。 查询 temp1 和 temp2 通过 Visual Studio 云资源管理器生成下列各表：
 
-temp1 表
-![SELECT INTO temp1 表](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)****
+**temp1 表**
+![SELECT INTO temp1 表](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
-temp2 表
-![SELECT INTO temp2 表](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)****
+**temp2 表**
+![SELECT INTO temp2 表](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 可以看到，temp1 和 temp2 都拥有数据，且 temp2 中正确填充了名称列。 但是，由于输出中没有数据，因此存在问题：
 

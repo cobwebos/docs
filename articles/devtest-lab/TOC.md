@@ -9,10 +9,11 @@
 ## [创建第一个 VM](devtest-lab-create-first-vm.md)
 ## [设置启动策略](devtest-lab-get-started-with-lab-policies.md)
 
-# 如何
+# 操作指南
 ## 在实验室中使用 VM
 ### [创建 VM](devtest-lab-add-vm.md)
 ### [创建可声明的 VM](devtest-lab-add-claimable-vm.md)
+### [使用 Azure CLI 创建和管理 VM](devtest-lab-vmcli.md)
 
 ## 在实验室中使用环境
 ### [创建环境](devtest-lab-create-environment-from-arm.md)
@@ -44,6 +45,8 @@
 ## 管理虚拟网络
 ### [配置虚拟网络](devtest-lab-configure-vnet.md)
 ### [选择 IP 配置选项](devtest-lab-shared-ip.md)
+
+## [缩放实验室](devtest-lab-scale-lab.md)
 
 # 引用
 ## [CLI 2.0](/cli/azure/lab)

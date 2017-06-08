@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: cfowler
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 2916ee6ba4753efdb8823f93c951a4f678b08ae4
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: df34052acc401fb5bb1e3f808c649c0ea0bcf33c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="create-a-python-application-on-web-app"></a>在 Web 应用中创建 Python 应用程序
@@ -110,15 +110,7 @@ az group create --name myResourceGroup --location westeurope
 
 使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。
 
-> [!NOTE]
-> 应用服务计划表示用于托管应用的物理资源集合。 分配到应用服务计划的所有应用程序将共享该计划定义的资源，在托管多个应用时可以节省成本。
->
-> 应用服务计划定义：
-> * 区域（北欧、美国东部、东南亚）
-> * 实例大小（小、中、大）
-> * 规模计数（一个、两个、三个实例，等等）
-> * SKU（免费、共享、基本、标准、高级）
->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 以下示例使用**免费**定价层创建名为 `quickStartPlan` 的应用服务计划。
 

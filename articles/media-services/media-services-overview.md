@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/05/2017
 ms.author: juliako;anilmur
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: f22b87fc5bdfe2db5de39adaafe9c71d8c32b26a
-ms.lasthandoff: 01/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 0a84e69f33ae30040c2365e6a5180e17e8df7539
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -74,7 +75,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 有关介绍 Azure 媒体服务所有主要组件的操作说明系列文章，请参阅 [Azure 媒体服务分步教程](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)。 此系列文章全面概述了各个概念，并使用 AMSE 工具演示了 AMS 任务。 请注意 AMSE 工具是一种 Windows 工具。 使用 [AMS SDK for.NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java) 或 [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) 以编程方式完成的大多数任务也可以使用此工具来完成。
 
-## <a name="a-idvodscenariosadelivering-media-on-demand-with-azure-media-services-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>使用 Azure 媒体服务交付按需媒体：常见方案和任务
+## <a id="vod_scenarios"></a>使用 Azure 媒体服务交付按需媒体：常见方案和任务
 本部分描述常见方案并提供相关主题的链接。 下图显示了参与点播内容交付的主要媒体服务平台部分。
 
 ![VoD 工作流](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
@@ -126,7 +127,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
     如果使用 SAS 定位符，将从 Azure blob 存储中下载内容。 在这种情况下，流式处理终结点不需要处于已启动状态。
 4. 渐进式下载内容。
 
-## <a name="a-idlivescenariosadelivering-live-streaming-events-with-azure-media-services"></a><a id="live_scenarios"></a>使用 Azure 媒体服务传送实时流式处理事件
+## <a id="live_scenarios"></a>使用 Azure 媒体服务传送实时流式处理事件
 使用实时流式处理时，通常涉及以下组件：
 
 * 一个用于广播事件的相机。
@@ -185,8 +186,7 @@ Azure 媒体服务提供你所需的工具，以便你创建适用于大多数�
 可以通过指定要为帐户预配的**串流保留单位**和**编码保留单位**的数量来缩放**媒体服务**。
 
 也可以通过向媒体服务帐户添加存储帐户来缩放该帐户。 每个存储帐户大小限制为 500 TB。 若要在默认限制之外扩展存储，可选择将多个存储帐户附加到单个媒体服务帐户。
-媒体服务客户可以根据自身需要，选择**标准**流式处理终结点或者一个或多个**高级**流式处理终结点。 标准流式处理终结点适合用于大多数流式处理工作负荷。 它的功能与高级流单元相同。
-标准流式处理终结点适合用于大多数流式处理工作负荷。 如果高级工作负荷或流式处理容量要求无法适应标准流式处理终结点吞吐量目标，或者你希望通过调整缩放单位（也称为高级流单元）来控制 StreamingEndpoint 服务的容量，以便处理不断增长的带宽需求，则我们建议分配缩放单位。
+媒体服务客户可以根据自身需要，选择**标准**流式处理终结点或者一个或多个**高级**流式处理终结点。 标准流式处理终结点适合用于大多数流式处理工作负荷。 它的功能与高级流单元相同。 如果高级工作负荷或流式处理容量要求无法适应标准流式处理终结点吞吐量目标，或者你希望通过调整缩放单位（也称为高级流单元）来控制 StreamingEndpoint 服务的容量，以便处理不断增长的带宽需求，则我们建议分配缩放单位。
 
 [本](media-services-portal-scale-streaming-endpoints.md) 主题链接到相关的主题。
 

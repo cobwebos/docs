@@ -3,7 +3,7 @@ title: "管理 Azure Application Insights 的定价和数据量 | Microsoft Docs
 description: "在 Application Insights 中管理遥测量并监视成本。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights

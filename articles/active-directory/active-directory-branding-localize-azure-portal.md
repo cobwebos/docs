@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Active Directory 预览版的登录页中添加特定于语言的公司品牌元素 | Microsoft Docs"
+title: "在 Azure Active Directory 的登录页中添加特定于语言的公司品牌元素 | Microsoft Docs"
 description: "了解如何在 Azure 登录页中添加特定于语言的公司品牌图片和文本"
 services: active-directory
 documentationcenter: 
@@ -12,17 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fece49df6a35f09ee73bb4b9ec4c33a0529a9f59
-ms.lasthandoff: 12/29/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: e1fe8d855386ceec39edbc985538cdf32d78a13b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="add-language-specific-company-branding-to-your-sign-in-page-in-the-azure-active-directory-preview"></a>在 Azure Active Directory 预览版的登录页中添加特定于语言的公司品牌元素
-许多公司想要在他们管理的所有网站和服务上应用一致的外观，以免用户感到困惑。 Azure Active Directory 预览版提供了此功能，允许用户使用自己的公司徽标和自定义的颜色方案来自定义登录页的外观。 [预览包括哪些内容？](active-directory-preview-explainer.md) 登录页是登录到 Office 365 或其他使用 Azure AD 作为标识提供者的基于 Web 的应用程序时显示的页面。 用户与此页进行交互以输入其凭据。
+# <a name="add-language-specific-company-branding-to-your-sign-in-page-in-the-azure-active-directory"></a>在 Azure Active Directory 的登录页中添加特定于语言的公司品牌元素
+许多公司想要在他们管理的所有网站和服务上应用一致的外观，以免用户感到困惑。 Azure Active Directory 提供了此功能，允许用户使用自己的公司徽标和自定义的颜色方案来自定义登录页外观。 登录页是登录到 Office 365 或其他使用 Azure AD 作为标识提供者的基于 Web 的应用程序时显示的页面。 用户与此页进行交互以输入其凭据。
 
 ## <a name="customizing-the-sign-in-page-for-another-language"></a>自定义另一种语言的登录页面
 仅在按照[在登录页中添加公司品牌元素](active-directory-branding-custom-signon-azure-portal.md)中所述创建了自定义登录页时，才可以在自定义登录页面中添加特定于语言的元素。 可以使用一组默认的可自定义元素为每个目录配置一个登录页。 在配置完默认的页面元素集后，便可以针对不同的区域设置配置其他版本。 你还可以混搭各种元素。 例如，你可以：

@@ -1,4 +1,5 @@
 ---
+
 title: "将 Azure Active Directory 单一登录与 SaaS 应用相集成 | Microsoft Docs"
 description: "为 Azure Active Directory 中的 SaaS 应用启用单一登录身份验证和用户预配集中式访问管理。 有关如何将 Azure Active Directory 集成到 SaaS 应用的概述。"
 services: active-directory
@@ -13,11 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
-ms.openlocfilehash: a451ab54144222676e8063b764a6d22f44a690d7
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: b48488719d8bcef54e3742a338f0444db82f76d1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -72,11 +75,5 @@ Azure AD 提供多种可自定义的方式来向组织中的用户部署应用�
 
 Azure.com 库中还提供了有关所有这些问题的更多详细信息，请先阅读 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="next-steps"></a>后续步骤
-* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+此外，请不要错过[有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)。
 

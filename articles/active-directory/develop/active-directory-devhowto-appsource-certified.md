@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/28/2017
 ms.author: skwan;bryanla
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e1299c1f7f8a31f7034fc0736fcd9d66153a9758
 ms.openlocfilehash: 3290a375963bc3e625cbdb05b5f9686e8cfb34f6
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
 
 
@@ -45,7 +47,7 @@ ms.lasthandoff: 03/01/2017
 [AAD-Auth-Scenarios-Browser-To-WebApp]: ./active-directory-authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: ./active-directory-developers-guide.md
 [AAD-Howto-Multitenant-Overview]: ./active-directory-devhowto-multi-tenant-overview.md
-[AAD-QuickStart-Web-Apps]: ./active-directory-developers-guide.md#guides
+[AAD-QuickStart-Web-Apps]: ./active-directory-developers-guide.md#get-started
 
 
 <!--Image references-->

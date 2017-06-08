@@ -3,7 +3,7 @@ title: "使用 Powershell 在 Application Insights 中设置警报 | Microsoft �
 description: "自动配置 Application Insights，以获取有关指标更改的电子邮件。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
 ms.service: application-insights

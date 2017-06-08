@@ -3,7 +3,7 @@ title: "使用 Application Insights 监视应用的运行状况和使用情况"
 description: "Application Insights 入门。 分析本地或 Microsoft Azure 应用程序的使用情况、可用性和性能。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 40650472-e860-4c1b-a589-9956245df307
 ms.service: application-insights

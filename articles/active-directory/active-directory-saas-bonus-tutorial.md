@@ -13,9 +13,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2c45278318c154051469b4e4c9e4e7b63463ff1e
 ms.openlocfilehash: a527286cf3d51263faf67a59ed6efeeb62b05b9d
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/17/2017
 
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 02/17/2017
 2. 在“你希望用户如何登录 Bonus.ly”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
    ![配置单一登录](./media/active-directory-saas-bonus-tutorial/IC773683.png "配置单一登录")
-*3。在“配置应用 URL”****页上的“Bonus.ly 租户 URL”****文本框中，使用 **https://\<tenant-name\>.Bonus.ly** 模式键入 URL，然后单击“下一步”****： 
+*3。在 **配置应用 URL** 页上的 **Bonus.ly 租户** URL文本框中，使用 **https://\<tenant-name\>.Bonus.ly** 模式键入 URL，然后单击 **下一步** ： 
    
    ![配置应用 URL](./media/active-directory-saas-bonus-tutorial/IC773684.png "配置应用 URL")
 4. 在“配置 Bonus.ly 的单一登录”页上，单击“下载证书”，然后将证书文件本地另存为 **c:\\Bonusly.cer**。

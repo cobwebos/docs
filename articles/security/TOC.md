@@ -10,6 +10,7 @@
 ### [高级威胁检测](azure-threat-detection.md)
 ### [日志记录和审核](azure-log-audit.md)
 ### [公有云中的隔离](azure-isolation.md)
+### [安全技术功能](azure-security-technical-capabilities.md)
 
 # 入门
 ## [Azure 安全入门](azure-security-getting-started.md)
@@ -18,6 +19,7 @@
 
 ## 网络安全
 ### [网络安全最佳实践](azure-security-network-security-best-practices.md)
+###[Azure 网络安全](azure-network-security.md)
 ### [边界安全](../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [保护混合网络体系结构](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md?toc=%2fazure%2fsecurity%2ftoc.json)
 

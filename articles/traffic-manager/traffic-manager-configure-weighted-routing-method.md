@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: dc2111a34fa0292a21510bbd84089979faf1cb71
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 7aa4c9120d44ff1b3e59a57090ea04e3f8021fc4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 ---
 
@@ -34,7 +35,7 @@ ms.lasthandoff: 03/22/2017
 2. 在门户的搜索栏中，搜索“流量管理器配置文件”，然后单击要为其配置路由方法的配置文件名称。
 3. 在“流量管理器配置文件”边栏选项卡中，检查要包含在配置中的云服务和网站是否都存在。
 4. 在“设置”部分，单击“配置”，然后在“配置”边栏选项卡中完成如下操作：
-    1. 对于“**流量路由方法设置**”，验证流量路由方法是否是“**故障转移**”。 如果不是，请在下拉列表中单击“**故障转移**”。
+    1. 对于“流量路由方法设置”，验证流量路由方法是否是“加权”。 如果不是，请在下拉列表中单击“加权”。
     2. 为此配置文件中的所有终结点设置相同的“终结点监视器设置”，如下所示：
         1. 选择相应的“协议”，并指定“端口”号。 
         2. 对于“路径”，请键入正斜杠 */*。 若要监视终结点，必须指定路径和文件名。 正斜杠“/”是有效的相对路径条目，表示文件位于根目录（默认位置）中。

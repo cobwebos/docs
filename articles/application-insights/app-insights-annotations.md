@@ -3,7 +3,7 @@ title: "Application Insights 的版本批注 | Microsoft 文档"
 description: "为 Application Insights 中的指标资源管理器图表添加部署或版本标记。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 23173e33-d4f2-4528-a730-913a8fd5f02e
 ms.service: application-insights

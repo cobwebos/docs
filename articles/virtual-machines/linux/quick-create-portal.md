@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ff4bf9c9e3bfbd0e51cdb91be85dec15db6cd758
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 8c51af189e8086a509d44546882e1b26605dddae
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -107,13 +108,13 @@ sudo apt-get -y install nginx
 6. 单击 **“确定”**。
 
 
-## <a name="view-the-ngix-welcome-page"></a>查看 NGIX 欢迎页
+## <a name="view-the-nginx-welcome-page"></a>查看 NGINX 欢迎页
 
 安装 NGINX 并向 VM 打开端口 80 以后，即可通过 Internet 访问 webserver。 打开 Web 浏览器，输入 VM 的公共 IP 地址。 该公共 IP 地址可以在 Azure 门户的 VM 边栏选项卡上找到。
 
 ![NGINX 默认站点](./media/quick-create-cli/nginx.png) 
 
-## <a name="delete-virtual-machine"></a>删除虚拟机
+## <a name="clean-up-resources"></a>清理资源
 
 不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请从虚拟机边栏选项卡中选择该资源组，然后单击“删除”。
 

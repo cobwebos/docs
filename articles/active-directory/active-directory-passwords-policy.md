@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: f318499ac18a9d03bb108675de199481ab52fd1c
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0c586692720512d2822e67994e22e1f6d50fd921
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -28,20 +28,43 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="administrator-password-policy-differences"></a>管理员密码策略差异
 
-Microsoft 对任何 Azure 管理员角色（示例：全局管理员、支持管理员、密码管理员等）强制实施强默认密码重置策略
+Microsoft 对任何 Azure 管理员角色（例如，全局管理员、支持管理员、密码管理员等）强制实施强默认的“双重关口”密码重置策略
 
 这将禁止管理员使用安全问题，并强制实施以下项。
 
-单入口策略（需要一条身份验证数据），在以下情况下应用
+双入口策略适用于以下环境，该策略需要两条身份验证数据（电子邮件地址和电话号码）
+
+* 所有 Azure 管理员角色
+  * 支持管理员
+  * 服务支持管理员
+  * 计费管理员
+  * 合作伙伴一线支持人员
+  * 合作伙伴二线支持人员
+  * Exchange 服务管理员
+  * Lync 服务管理员
+  * 用户帐户管理员
+  * 目录编写人员
+  * 全局管理员/企业管理员
+  * SharePoint 服务管理员
+  * 符合性管理员
+  * 应用程序管理员
+  * 安全管理员
+  * 特权角色管理员
+  * Intune 服务管理员
+  * 应用程序代理服务器管理员
+  * CRM 服务管理员
+  * Power BI 服务管理员
+  
+* 试用中 30 天已过**或**
+* 虚域存在 (contoso.com) **或**
+* Azure AD Connect 正在从本地目录同步标识
+
+### <a name="exceptions"></a>异常
+单一入口策略适用于以下环境，该策略需要一条身份验证数据（电子邮件地址或电话号码）
 
 * 试用的前 30 天**或**
 * 虚域不存在 (*.onmicrosoft.com) **且** Azure AD Connect 未在同步标识
 
-双入口策略（需要两条身份验证数据），在以下情况下应用
-
-* 试用中 30 天已过**或**
-* 虚域存在 (contoso.com) **或**
-* Azure AD Connect 正在从本地目录同步标识
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>适用于所有用户帐户的 UserPrincipalName 策略
 
@@ -107,14 +130,15 @@ Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Micr
 
 ## <a name="next-steps"></a>后续步骤
 
-以下链接提供有关使用 Azure AD 进行密码重置的其他信息
+以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助密码管理 
+* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
 * [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
 * [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
 * [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
 * [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
-* [**报告** ](active-directory-passwords-reporting.md) - 了解你的用户是否访问 SSPR 功能、在何时在何处访问
-* [**深入技术探究**](active-directory-passwords-how-it-works.md) - 到幕后了解它的工作原理
-* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 在何处？ 谁？ 何时？ - 始终要问的问题的答案
-* [**故障排除**](active-directory-passwords-troubleshoot.md) -了解如何解决使用 SSPR 时遇到的常见问题
+* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
+* [**深入技术探究**](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
+* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
+* [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
+

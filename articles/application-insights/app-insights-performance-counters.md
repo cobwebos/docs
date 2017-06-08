@@ -3,7 +3,7 @@ title: "Application Insights 中的性能计数器 | Microsoft 文档"
 description: "监视 Application Insights 中的系统和自定义的 .NET 性能计数器。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
 ms.service: application-insights

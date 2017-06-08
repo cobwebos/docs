@@ -17,16 +17,16 @@ ms.workload: data-management
 ms.date: 04/21/2017
 ms.author: sashan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 364038c11f13bcb72b259618b1d7d433f48a33c1
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: b1b67a83a25159414a80382030903d300aad71f7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计高可用性服务
 
-在 Azure SQL 数据库上生成和部署高可用性服务时必须使用[故障转移组和活动异地复制](sql-database-geo-replication-overview.md)。 它可以恢复区域故障和灾难性中断，通过故障转移到辅助数据库实现快速恢复。 本文重点介绍常见应用程序模式，并根据应用程序部署要求、要针对的服务级别协议、流量延迟和成本探讨每个选项的优势和不足之处。 有关弹性池的活动异地复制的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
+在 Azure SQL 数据库上构建和部署高度可用的服务时，使用[故障转移组和活动异地复制](sql-database-geo-replication-overview.md)提供区域故障和灾难性中断的复原能力并启用快速恢复到辅助数据库。 本文重点介绍常见应用程序模式，并根据应用程序部署要求、要针对的服务级别协议、流量延迟和成本探讨每个选项的优势和不足之处。 有关弹性池的活动异地复制的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
 
 ## <a name="design-pattern-1-active-passive-deployment-for-cloud-disaster-recovery-with-a-co-located-database"></a>设计模式 1：使用归置数据库进行云灾难恢复的主动-被动部署
 此选项最适合具有以下特征的应用程序：
@@ -45,7 +45,7 @@ ms.lasthandoff: 05/10/2017
 
 ![SQL 数据库异地复制配置。 云灾难恢复。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-1.png)
 
-主要区域服务中断后，SQL 数据库服务会检测到主数据库不可访问，并基于自动故障转移策略的参数触发指向辅助数据库的故障转移。 根据应用程序 SLA，可决定配置在检测到服务中断和故障转移之间的宽限期。 配置宽限期在出现灾难性中断和无法快速恢复区域可用性时可降低数据丢失风险。 如果流量管理器在故障转移组触发数据库故障转移之前启动终结点故障转移，则 Web 应用程序无法重新连接到数据库。 数据库故障转移完成时，即可自动成功完成应用程序重新连接尝试。 
+主要区域服务中断后，SQL 数据库服务会检测到主数据库不可访问，并基于自动故障转移策略的参数触发到辅助数据库的故障转移。 根据应用程序 SLA，可决定配置在检测到服务中断和故障转移之间的宽限期。 配置宽限期在出现灾难性中断和无法快速恢复区域可用性时可降低数据丢失风险。 如果流量管理器在故障转移组触发数据库故障转移之前启动终结点故障转移，则 Web 应用程序将无法重新连接到数据库。 数据库故障转移完成时，即可自动成功完成应用程序重新连接尝试。 
 
 > [!NOTE]
 > 若要实现应用程序和数据库的完全协调故障转移，应设计适合自己的监视方法，并手动故障转移 Web 应用程序终结点和数据库。
@@ -58,7 +58,7 @@ ms.lasthandoff: 05/10/2017
 如果服务中断发生在次要区域中，主数据库和辅助数据库之间的复制链接将暂停，但由于主数据库未受影响，因此不会触发故障转移。 这种情况下，应用程序可用性未发生改变，但是暴露了应用程序的运行，因此在两个区域连续失败的情况下应用程序具有更高风险。
 
 > [!NOTE]
->我们仅建议使用单个 DR 区域进行部署配置。 这是因为大多数 Azure 地理位置都有两个区域。 这些配置不会保护你的应用程序免受这两个区域的灾难性故障的影响。 在此类失败的不可能事件中，你可以使用[异地恢复操作](sql-database-disaster-recovery.md#recover-using-geo-restore)在第三个区域中恢复数据库。
+> 我们仅建议使用单个 DR 区域进行部署配置。 这是因为大多数 Azure 地理位置都有两个区域。 这些配置不会保护你的应用程序免受这两个区域的灾难性故障的影响。 在此类失败的不可能事件中，你可以使用[异地恢复操作](sql-database-disaster-recovery.md#recover-using-geo-restore)在第三个区域中恢复数据库。
 >
 
 服务中断缓解后，辅助数据库自动与主数据库重新同步。 在同步过程中，主数据库的性能可能会略微受影响，具体取决于需要进行同步的数据量。 下图说明了次要区域中的服务中断。
@@ -129,7 +129,7 @@ ms.lasthandoff: 05/10/2017
 
 如果在宽限期内解决了主要区域中的中断问题，流量管理器会检测到主要区域的连接恢复，并将用户流量切换回区域 A 中的应用程序实例。此应用程序实例使用区域 A 中的主数据库在读写模式下进行恢复和运行。
 
-如果在区域 B 中出现服务中断，流量管理器会检测到区域 B 中应用程序终结点的故障转移，故障转移组将读写侦听器切换到区域 A。此服务中断不会影响最终用户体验，但服务中断期间会暴露主数据库。 下图对此进行了说明。
+如果在区域 B 中出现服务中断，流量管理器会检测到区域 B 中应用程序终结点出现故障，故障转移组会将只读侦听器切换到区域 A。此服务中断不会影响最终用户体验，但服务中断期间会公开主数据库。 下图对此进行了说明。
 
 ![服务中断：辅助数据库。 云灾难恢复。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-3.png)
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 05/10/2017
 * 应用程序必须能够在只读模式下运行。
 
 > [!NOTE]
-> 在区域中发生永久服务中断时，必须手动激活数据库故障转移并接受数据丢失。 应用程序将在次要区域中正常工作，并对数据库具有读写访问权限。
+> 在区域中发生永久服务中断时，请手动激活数据库故障转移并接受数据丢失。 应用程序将在次要区域中正常工作，并对数据库具有读写访问权限。
 >
 
 ## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>业务连续性规划：选择用于云灾难恢复的应用程序设计

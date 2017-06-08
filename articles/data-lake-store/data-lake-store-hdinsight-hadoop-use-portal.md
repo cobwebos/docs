@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 05/04/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 2aa5542dc095beaf951bad2b0361a3acc4468f2d
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 37211b961644fdc5567147cde946f86afb9b1aa9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -76,10 +77,9 @@ ms.lasthandoff: 04/05/2017
 
 4. 选择现有 Data Lake Store 帐户，然后输入群集特定的文件要存储到的根文件夹路径。
 
-    ![将服务主体添加到 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "将服务主体添加到 HDInsight 群集")
-
-
     在以上屏幕截图中，根文件夹路径为 /clusters/myhdiadlcluster，其中 *myhdiadlcluster* 是要创建的群集的名称。 在这种情况下，请确保 */clusters* 文件夹在 Data Lake Store 帐户中存在。 将在创建群集期间创建 *myhdiadlcluster* 文件夹。 同样，如果根路径设置为 */hdinsight/clusters/data/myhdiadlcluster*，请确保 */hdinsight/clusters/data/* 在 Data Lake Store 帐户中存在。
+
+    ![将服务主体添加到 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "将服务主体添加到 HDInsight 群集")
 
 5. 单击“Data Lake Store 访问”，配置 Data Lake Store 帐户和 HDInsight 群集之间的访问。 相关说明，请参阅[配置 HDInsight 群集和 Data Lake Store 之间的访问](#configure-access-between-hdinsight-cluster-and-data-lake-store)。
 

@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: b791be369016dd52d95ec727e46fd8b554c09047
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 89356670737ed7b9adc5df51466ce71eb73b3cd4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -28,7 +28,7 @@ SAP HANA 的安装由你负责。可以在接管新的 Azure 上的 SAP HANA（�
 
 ## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>接收 HANA 大型实例单元后的前几个步骤
 
-接收 HANA 大型实例并与该实例建立访问和连接后的**第一个步骤**是将该实例的 OS 注册到 OS 提供程序。 这包括在需要事先部署的 SUSE SMT 实例中注册 SUSE Linux OS。 或者，需要将 RedHat OS 注册到所要连接的 Red Hat 订阅管理器中。 另请参阅此[文档](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的备注。 以后若要修补 OS，也需要执行此步骤。 此任务由客户负责。 
+接收 HANA 大型实例并与该实例建立访问和连接后的**第一个步骤**是将该实例的 OS 注册到 OS 提供程序。 这包括在需要事先在 Azure 中 HANA 大型实例单元可连接的 VM 中部署了的 SUSE SMT 实例中注册 SUSE Linux OS。 或者，需要将 RedHat OS 注册到所要连接的 Red Hat 订阅管理器中。 另请参阅此[文档](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的备注。 以后若要修补 OS，也需要执行此步骤。 此任务由客户负责。 对于 SUSE，请在[此处](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)查找有关安装和配置 SMT 的文档。
 
 **第二个步骤**是检查特定 OS 发行版/版本的新修补程序和修复程序。 检查 HANA 大型实例的修补级别是否处于最新状态。 根据 OS 修补程序/版本的时间以及对 Microsoft 可以部署的映像的更改，有时可能未包含最新的修补程序。 因此，在接管 HANA 大型实例单元并将 OS 安装注册到 Linux 分发服务器后，必须执行一个步骤来检查与安全性、功能、可用性和性能相关的修补程序是否由特定的 Linux 供应商发布，以及是否需要应用这些修补程序。
 

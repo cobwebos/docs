@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2B 协作的限制 | Microsoft 文档"
-description: "Azure Active Directory B2B 协作预览版的当前限制"
+description: "Azure Active Directory B2B 协作的当前限制"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2017
+ms.date: 05/04/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: cdc951d4e16e7f0df425dba7c33d86255276f526
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: f13f4ac6e32f568fb5f56261b542e0e2c49f5b3d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/13/2017
 
 
 ---
@@ -33,7 +34,7 @@ Azure Active Directory (Azure AD) B2B 协作当前具有本文中描述的限制
 
 
 ## <a name="instant-on"></a>即时启用
-通过 B2B 协作流，我们将用户添加到目录，并在邀请兑换、应用分配等期间动态更新用户。 更新和写入通常发生在一个目录实例中，并且必须复制到所有实例中。 完成复制可能需要非零时间量。 有时，如果在目录的一个实例中编写或更新对象，但是对检索该对象的调用负载均衡到了另一个实例，则会导致授权问题。 我们已做了大量工作来消除或减少这些复制延迟，但是在某些少数情况下，它们仍然可能发生。 如果发生这种情况，刷新或重试可有所帮助。 如果正在使用 API 编写应用，则请重试后退操作，这是解决该问题的一个很好的防御措施。
+通过 B2B 协作流，我们将用户添加到目录，并在邀请兑换、应用分配等期间动态更新用户。 更新和写入通常发生在一个目录实例中，并且必须复制到所有实例中。 更新所有实例后，将完成复制。 有时，如果在目录的一个实例中编写或更新对象，但是对检索该对象的调用负载均衡到了另一个实例，则会导致授权问题。 我们已做了大量工作来消除或减少这些复制延迟，但是在某些少数情况下，它们仍然可能发生。 如果发生这种情况，刷新或重试可有所帮助。 如果正在使用 API 编写应用，则请重试后退操作，这是解决该问题的一个很好的防御措施。
 
 ## <a name="next-steps"></a>后续步骤
 

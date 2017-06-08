@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: b77a20274e22827aaa8aa4d354b62d086a19b206
-ms.openlocfilehash: 6fefb9cfa96b0a6b7acfe4d7fcb17cb13ec240a0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 032e584dc5abf59e9e3e8d80673b402f1fbf721b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -28,7 +30,12 @@ ms.openlocfilehash: 6fefb9cfa96b0a6b7acfe4d7fcb17cb13ec240a0
 > 
 > 
 
+## <a name="mtu-and-tcp-mss-settings-on-router-interfaces"></a>路由器接口上的 MTU 和 TCP MSS 设置
+* ExpressRoute 接口的 MTU 为 1500，即路由器上以太网接口的典型默认 MTU。 默认情况下，除非路由器具有不同 MTU，否则无需在路由器接口上指定值。
+* 与 Azure VPN 网关不同，不需要为 ExpressRoute 线路指定 TCP MSS。
+
 以下路由器配置示例适用于所有对等互连。 有关路由的更多详细信息，请查看 [ExpressRoute 对等互连](expressroute-circuit-peerings.md)和 [ExpressRoute 路由要求](expressroute-routing.md)。
+
 
 ## <a name="cisco-ios-xe-based-routers"></a>基于 Cisco IOS-XE 的路由器
 本部分中的示例适用于任何运行 IOS-XE OS 系列的路由器。
@@ -206,10 +213,5 @@ ms.openlocfilehash: 6fefb9cfa96b0a6b7acfe4d7fcb17cb13ec240a0
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

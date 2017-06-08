@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2017
-ms.author: stepsic
-translationtype: Human Translation
+ms.author: LADocs; stepsic
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9f7d623ec213de6d46f59547aff9d4417ac95ede
 ms.openlocfilehash: 41aafe94d24f0e22fe2256ab213c7668b670764c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/15/2017
 
 
@@ -105,7 +106,7 @@ forEach 循环可指定一个重复执行操作数组。 如果不是数组，�
 
 3.    完成后，选择“保存”。 
 
-    现在每个小时都会收到新的推文，其中有&5; 篇以上的转推会传递到 Dropbox 中名为 **tweets** 的文件夹。
+    现在每个小时都会收到新的推文，其中有 5 篇以上的转推会传递到 Dropbox 中名为 **tweets** 的文件夹。
 
 若要了解有关逻辑应用定义的详细信息，请参阅[创作逻辑应用定义](../logic-apps/logic-apps-author-definitions.md)。
 

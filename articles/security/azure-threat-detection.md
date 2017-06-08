@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: c9b2ed2f480b0c100a3f838dac8d9652be3c0391
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 854ad17006b70dfbdaf680744320a87ffb654e13
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
 
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
-## <a name="10-introduction"></a>1.0 简介
+## <a name="introduction"></a>介绍
 
-### <a name="11-overview"></a>1.1 概述
+### <a name="overview"></a>概述
 
 Microsoft 制定了一系列白皮书、安全概述、最佳做法以及清单，以帮助 Azure 客户了解 Azure 平台中和外围提供的各种安全相关功能。 这些主题涵盖各类不同宽度和深度的内容，并且定期更新。 本文档属于下面摘要部分中总结的系列的一部分。
 
-### <a name="12-azure-platform"></a>1.2 Azure 平台
+### <a name="azure-platform"></a>Azure 平台
 
 Azure 是一种开放灵活的云服务平台，支持多种操作系统、编程语言、框架、工具、数据库和设备。
 支持以下编程语言：
@@ -44,7 +44,7 @@ Azure 公有云服务支持数百万开发人员和 IT 专业人士已经有所�
 
 Azure 的基础结构（从设备到应用程序）经过设计，可同时托管数百万的客户，并为企业提供可靠的基础，使之能够满足其安全需求。 Azure 提供多种安全性配置和自定义选项，以满足应用部署的要求。 本文档可帮助满足这些要求。
 
-### <a name="13-abstract"></a>1.3 摘要
+### <a name="abstract"></a>摘要
 
 Microsoft Azure 通过 Azure Active Directory、Azure Operations Management Suite (OMS) 和 Azure 安全中心等服务提供内置的高级威胁检测功能。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
 
@@ -52,7 +52,7 @@ Microsoft Azure 通过 Azure Active Directory、Azure Operations Management Suit
 
 本白皮书重点介绍 Azure 平台和面向客户的控件的技术，不涉及 SLA、定价模型以及 DevOps 实践注意事项。
 
-## <a name="20-azure-active-directory-identity-protection"></a>2.0 Azure Active Directory Identity Protection
+## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护
 
 ![Azure Active Directory 标识保护](./media/azure-threat-detection/azure-threat-detection-fig1.png)
 
@@ -65,7 +65,7 @@ Identity Protection 使用自适应机器学习算法和启发式学习法来检
 
 除了 Azure Active Directory 与 [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) 提供的其他[条件性访问控制](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)以外，这些基于风险的策略可以自动阻止或提供自适应补救措施，包括重置密码和强制实施多重身份验证。
 
-### <a name="21-identity-protections-capabilities"></a>2.1 Identity Protection 的功能
+### <a name="identity-protections-capabilities"></a>Identity Protection 的功能
 
 Azure Active Directory Identity Protection 不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 除了 Azure Active Directory 与 EMS 提供的条件性访问控制以外，这些策略也可以自动阻止或启用自适应补救措施，包括密码重置和强制实施多重身份验证。
 
@@ -87,7 +87,7 @@ Azure Identity Protection 可帮助保护帐户和标识的一些示例包括：
 -    阻止或保护有风险用户帐户的策略
 -    要求用户注册多重身份验证的策略
 
-### <a name="22-azure-ad-privileged-identity-management-pim"></a>2.2 Azure AD Privileged Identity Management (PIM)
+### <a name="azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM)
 
 使用 [Azure Active Directory (AD) Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)，
 
@@ -103,13 +103,13 @@ Azure AD Privileged Identity Management 可帮助你实现以下操作：
 
 -    获取有关访问特权角色的警报
 
-## <a name="30-microsoft-operations-management-suite-oms"></a>3.0 Microsoft Operations Management Suite (OMS)
+## <a name="microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS)
 
 [Microsoft Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。 由于 OMS 作为基于云的服务实现，因此在基础结构服务上进行极低的投资即可快速使其启动并运行。 自动提供新增安全功能，从而节省持续维护和升级成本。
 
 除自行提供有价值的服务外，OMS 还可与 [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) 等 System Center 组件集成，将现有安全管理投资扩展到云。 System Center 和 OMS 可协同工作来提供完整的混合管理体验。
 
-### <a name="31-holistic-security-and-compliance-posture"></a>3.1 安全性与符合性总体情况
+### <a name="holistic-security-and-compliance-posture"></a>安全性与符合性总体情况
 
 [OMS 安全和审核仪表板](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助内置搜索查询找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 “安全和审核”仪表板是提供 OMS 中所有安全相关内容的主屏幕。 它提供计算机安全状态的高级洞见。 还允许查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
 
@@ -129,7 +129,7 @@ OMS 安全和审核仪表板有四个主要类别：
 
 -    常见安全查询：此选项提供用来监视环境的最常见安全查询的列表。 单击其中一个查询时，将打开“搜索”边栏选项卡及该查询的结果。
 
-### <a name="32-insight-and-analytics"></a>3.2 见解与分析
+### <a name="insight-and-analytics"></a>见解与分析
 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 的中心是托管在 Azure 云中的 OMS 存储库。
 
 ![见解与分析](./media/azure-threat-detection/azure-threat-detection-fig4.png)
@@ -150,7 +150,7 @@ OMS 安全和审核仪表板有四个主要类别：
 
 
 
-### <a name="33-automation--control-alert-on-security-configuration-drifts"></a>3.3 自动化与控制：安全配置偏移警报
+### <a name="automation--control-alert-on-security-configuration-drifts"></a>自动化和控制：安全配置偏移警报
 
 Azure 自动化通过基于 PowerShell 并在 Azure 云中运行的 Runbook 自动执行管理流程。 也可在本地数据中心内的服务器上运行 Runbook 以管理本地资源。 Azure 自动化通过 PowerShell DSC (Desired State Configuration) 提供配置管理。
 
@@ -158,7 +158,7 @@ Azure 自动化通过基于 PowerShell 并在 Azure 云中运行的 Runbook 自�
 
 可以创建和管理在 Azure 中托管的 DSC 资源，并将其应用到云和本地的系统，从而定义并自动实施其配置，或获取有关偏移的报告以帮助确保安全配置符合策略要求。
 
-## <a name="40-azure-security-center"></a>4.0 Azure 安全中心
+## <a name="azure-security-center"></a>Azure 安全中心
 
 Azure 安全中心可帮助保护 Azure 资源。 它为 Azure 订阅提供集成的安全监控和策略管理。 在该服务中，可以定义不仅针对 Azure 订阅，还针对[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)的策略，这样便可更加具体。
 
@@ -175,7 +175,7 @@ Microsoft 安全研究人员始终在不断地寻找威胁。 得益于 Microsof
 
 安全中心使用各种高级安全分析，远不止几种基于攻击特征的方法。 可利用大数据和[机器学习](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)技术的突破跨整个云结构对事件进行评估，检测那些使用手动方式不可能发现的威胁，并预测攻击的发展方式。 此类安全分析包括以下内容。
 
-### <a name="41-threat-intelligence"></a>4.1 威胁智能
+### <a name="threat-intelligence"></a>威胁智能
 
 Microsoft 提供大量的全球威胁情报。
 遥测数据的来源包括：Azure、Office 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC)。
@@ -194,7 +194,7 @@ Microsoft 提供大量的全球威胁情报。
 
 -    Azure SQL 数据库威胁检测 - Azure SQL 数据库威胁检测可以识别异常数据库活动，指示企图访问或使用数据库的异常的潜在有害尝试。
 
-### <a name="42-behavioral-analytics"></a>4.2 行为分析
+### <a name="behavioral-analytics"></a>行为分析
 
 行为分析是一种技术，该技术会对数据进行分析并将数据与一系列已知模式对比。 不过，这些模式不是简单的特征， 需要对大型数据集运用复杂的机器学习算法来确定，
 
@@ -216,13 +216,13 @@ Microsoft 提供大量的全球威胁情报。
 
 -    传出攻击：攻击者通常会以云资源为目标，目的是使用这些资源发起更多攻击。 例如，可以通过受攻击的虚拟机对其他虚拟机发起暴力破解攻击，可以发送垃圾邮件，也可以扫描 Internet 上的开放端口和其他设备。 将机器学习应用到网络流量以后，安全中心即可检测到出站网络通信何时超出标准。 就垃圾邮件来说，安全中心也可将非正常的电子邮件流量与 Office 365 提供的情报信息关联起来，确定该邮件到底是恶意邮件，还是合法的电子邮件促销活动。
 
-### <a name="43-anomaly-detection"></a>4.3 异常检测
+### <a name="anomaly-detection"></a>异常检测
 
 Azure 安全中心也通过异常检测确定威胁。 与行为分析（依赖于已知的从大型数据集派生的模式）相比，异常检测更“个性化”，注重特定于用户部署的基线。 运用机器学习确定部署的正常活动，然后生成规则，定义可能表示安全事件的异常条件。 下面是一个示例：
 
 -    入站 RDP/SSH 暴力攻击：部署中的有些虚拟机可能很忙，每天需要处理大量的登录，而其他虚拟机可能只有寥寥数个登录。 Azure 安全中心可以确定这些虚拟机的基线登录活动，并通过机器学习定义正常登录活动。 如果与为登录相关特性定义的基线之间存在任何差异，则可能会生成警报。 同样，是否具有显著性由机器学习决定。
 
-### <a name="44-continuous-threat-intelligence-monitoring"></a>4.4 连续威胁情报监视
+### <a name="continuous-threat-intelligence-monitoring"></a>连续威胁情报监视
 
 Azure 安全中心与全世界的安全性研究和数据科学团队合作，持续监视威胁态势的变化情况。 其中包括以下计划：
 
@@ -236,15 +236,15 @@ Azure 安全中心与全世界的安全性研究和数据科学团队合作，�
 
 将这些措施结合起来，形成新的改进型检测方法，使用户能够即时受益，而用户不需采取任何措施。
 
-## <a name="50-advanced-threat-detection-features---other-azure-services"></a>5.0 高级威胁检测功能 - 其他 Azure 服务
+## <a name="advanced-threat-detection-features---other-azure-services"></a>高级威胁检测功能 - 其他 Azure 服务
 
-### <a name="51-virtual-machine-microsoft-antimalware"></a>5.1 虚拟机：Microsoft 反恶意软件
+### <a name="virtual-machine-microsoft-antimalware"></a>虚拟机：Microsoft 反恶意软件
 
 适用于 Azure 的 [Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)是一个针对应用程序和租户环境所提供的单一代理解决方案，可在在后台运行而无需人工干预。 你可以根据应用程序工作负荷的需求，选择默认的基本安全性或高级的自定义配置（包括反恶意软件监视）来部署保护。 Azure 反恶意软件是为 Azure 虚拟机提供的安全选项，自动安装在所有 Azure PaaS 虚拟机上。
 
 用于部署和启用应用程序的 Microsoft 反恶意软件的 Azure 功能
 
-#### <a name="511-microsoft-antimalware-core-features"></a>5.1.1 Microsoft反恶意软件核心功能
+#### <a name="microsoft-antimalware-core-features"></a>Microsoft 反恶意软件核心功能
 
 -    实时保护 - 监视云服务中和虚拟机上的活动，以检测和阻止恶意软件的执行。
 
@@ -266,7 +266,7 @@ Azure 安全中心与全世界的安全性研究和数据科学团队合作，�
 
 -    恶意软件事件收集 - 在操作系统事件日志中记录反恶意软件服务的运行状况、可疑活动及采取的补救措施，并将这些数据收集到客户的 Azure 存储帐户。
 
-### <a name="52-azure-sql-database-threat-detection"></a>5.2 Azure SQL 数据库威胁检测
+### <a name="azure-sql-database-threat-detection"></a>Azure SQL 数据库威胁检测
 
 [Azure SQL 数据库威胁检测](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/)是内置于 Azure SQL 数据库服务的新安全智能功能。 全天候了解、分析及检测异常数据库活动，Azure SQL 数据库威胁检测可识别针对数据库的潜在威胁。
 
@@ -289,7 +289,7 @@ SQL 数据库威胁检测程序使用以下检测方法之一：
 
 -    行为检测 - 检测异常活动，这些活动是过去 30 天内未显示的数据库的异常行为。  SQL 客户端异常活动的示例有失败登录/查询次数激增、提取大量数据、异常的 canonical 查询和访问数据库所用的 IP 地址不常见
 
-### <a name="53-application-gateway-web-application-firewall"></a>5.3 应用程序网关 Web 应用程序防火墙
+### <a name="application-gateway-web-application-firewall"></a>应用程序网关 Web 应用程序防火墙
 
 [Web 应用程序防火墙](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)是 [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-webapplicationfirewall-overview)的一项功能，它为使用应用程序网关实现标准[应用程序传递控制](https://kemptechnologies.com/in/application-delivery-controllers)功能的 Web 应用程序提供保护。 Web 应用程序防火墙通过保护这些应用程序，免受 [OWASP 前 10 个常见的 Web 漏洞](https://www.owasp.org/index.php/Top_10_2010-Main)中大多数漏洞的威胁，来实现此目的
 
@@ -319,7 +319,7 @@ SQL 数据库威胁检测程序使用以下检测方法之一：
 
 -    某些合规性控件要求 WAF 解决方案保护所有面向 Internet 的终结点。 使用已启用 WAF 的应用程序网关，可以满足这些合规性要求。
 
-### <a name="54-anomaly-detection--an-api-built-with-azure-machine-learning"></a>5.4 异常检测 - 通过 Azure 机器学习生成的 API
+### <a name="anomaly-detection--an-api-built-with-azure-machine-learning"></a>异常检测 - 通过 Azure 机器学习生成的 API
 
 异常检测是使用 Azure 机器学习生成的 API，可用于检测时序数据中异常模式的不同类型。 API 将异常分数分配给时序中的每个数据点，这些分数可用于生成警报、通过仪表板进行监视或与出票系统连接。
 
@@ -354,7 +354,7 @@ SQL 数据库威胁检测程序使用以下检测方法之一：
 
 -    业务分析部门需要实时监视业务 KPI（如销售量、客户满意度、定价）的异常变化。
 
-### <a name="55-cloud-app-security"></a>5.5 Cloud App Security
+### <a name="cloud-app-security"></a>Cloud App Security
 
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) 是 Microsoft Cloud Security 堆栈的一个重要组成部分。 这是一种综合解决方案，可帮助向云迁移的组织充分利用云应用程序，同时通过提升的活动可见性保持掌控能力。 它还有助于增强跨云应用程序的对关键数据的保护能力。
 
@@ -405,7 +405,7 @@ Cloud App Security 通过以下方式将可见性集成到云端
 
 从这些源收集数据时，Cloud App Security 会对数据运行复杂的分析。 它会立即向你发出有关异常活动的警报，帮助你获得对云环境的深度了解。 可以在 Cloud App Security 中配置策略，并使用它来保护云环境中的所有内容。
 
-## <a name="60-third-party-atd-capabilities-through-azure-marketplace"></a>6.0 Azure 应用商店提供的第三方 ATD 功能
+## <a name="third-party-atd-capabilities-through-azure-marketplace"></a>Azure 应用商店提供的第三方 ATD 功能
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 

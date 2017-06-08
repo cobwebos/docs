@@ -1,6 +1,6 @@
 ---
 title: "使用 MSDeploy、主机名和 SSL 证书部署 Web 应用"
-description: "通过使用 MSDeploy 并设置自定义主机名和 SSL 证书，在 Azure 资源管理器模板中部署 Web 应用"
+description: "通过使用 MSDeploy 并设置自定义主机名和 SSL 证书，在 Azure Resource Manager 模板中部署 Web 应用"
 services: app-service\web
 manager: erikre
 documentationcenter: 
@@ -13,9 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2016
 ms.author: jodehavi
-translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: f836bffd0610224b5cb69f4f6836dbc55e0721a3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 071be50ff7f72ecd711b2c3036f39b70df01a6ba
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -36,7 +38,7 @@ ms.openlocfilehash: f836bffd0610224b5cb69f4f6836dbc55e0721a3
 
     msbuild yourwebapp.csproj /t:Package /p:PackageLocation="path\to\package.zip"
 
-这将在 PackageLocation 文件夹下创建一个压缩包。 现在，应用程序可供部署，你可以构建 Azure 资源管理器模板来执行此操作。
+这将在 PackageLocation 文件夹下创建一个压缩包。 现在，应用程序可供部署，你可以构建 Azure Resource Manager 模板来执行此操作。
 
 ### <a name="create-arm-template"></a>创建 ARM 模板
 首先，让我们创建一个基本的 ARM 模板，以便创建 Web 应用程序和托管计划（请注意，为求简洁，此处并未显示参数和变量）。
@@ -75,7 +77,7 @@ ms.openlocfilehash: f836bffd0610224b5cb69f4f6836dbc55e0721a3
         }
     }
 
-接下来，需要修改 Web 应用资源，以使用嵌套的 MSDeploy 资源。 这样便可以引用前面创建的包，并指示 Azure 资源管理器使用 MSDeploy 将包部署到 Azure WebApp。 下面显示了包含嵌套 MSDeploy 资源的 Microsoft.Web/sites 资源：
+接下来，需要修改 Web 应用资源，以使用嵌套的 MSDeploy 资源。 这样便可以引用前面创建的包，并指示 Azure Resource Manager 使用 MSDeploy 将包部署到 Azure WebApp。 下面显示了包含嵌套 MSDeploy 资源的 Microsoft.Web/sites 资源：
 
     {
         "name": "[variables('webAppName')]",
@@ -121,9 +123,9 @@ ms.openlocfilehash: f836bffd0610224b5cb69f4f6836dbc55e0721a3
 
     "packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('webDeployPackageFolder'), '/', parameters('webDeployPackageFileName'), parameters('_artifactsLocationSasToken'))]"
 
-此 **packageUri** 使用的存储帐户 URI 指向包 zip 所要上载到的存储帐户。 部署模板时，Azure Resource Manager 会利用[共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)从存储帐户将包提取到本地。 此过程将会通过一个 PowerShell 脚本自动化，该脚本将上载包，调用 Azure 管理 API 以创建所需的密钥，然后将这些密钥作为参数传入模板（*_artifactsLocation* 和 *_artifactsLocationSasToken*）。 你需要针对存储容器下包所上载到的文件夹和文件名定义参数。
+此 **packageUri** 使用的存储帐户 URI 指向包 zip 所要上传到的存储帐户。 部署模板时，Azure Resource Manager 会利用[共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)从存储帐户将包提取到本地。 此过程将会通过一个 PowerShell 脚本自动化，该脚本将上传包，调用 Azure 管理 API 以创建所需的密钥，然后将这些密钥作为参数传入模板（*_artifactsLocation* 和 *_artifactsLocationSasToken*）。 你需要针对存储容器下包所上传到的文件夹和文件名定义参数。
 
-接下来，需要加入其他嵌套资源，以设置主机名绑定来利用自定义域。 首先，需要确保拥有该主机名，然后对它进行设置，使 Azure 能够验证用户是否拥有它 - 请参阅[在 Azure 应用服务中配置自定义域名](web-sites-custom-domain-name.md)。 完成此操作后，可以将以下内容添加到模板中的 Microsoft.Web/sites 资源部分下：
+接下来，需要加入其他嵌套资源，以设置主机名绑定来利用自定义域。 首先，需要确保拥有该主机名，然后对它进行设置，使 Azure 能够验证用户是否拥有它 - 请参阅[在 Azure 应用服务中配置自定义域名](app-service-web-tutorial-custom-domain.md)。 完成此操作后，可以将以下内容添加到模板中的 Microsoft.Web/sites 资源部分下：
 
     {
         "apiVersion": "2015-08-01",
@@ -163,7 +165,7 @@ ms.openlocfilehash: f836bffd0610224b5cb69f4f6836dbc55e0721a3
 至此，ARM 模板已准备就绪。
 
 ### <a name="deploy-template"></a>部署模板
-最后一步是将上述所有组成部分整合为完整的端到端部署。 若要简化部署，可以利用用户在 Visual Studio 中创建 Azure 资源组项目时添加的 **Deploy-AzureResourceGroup.ps1** PowerShell 脚本来上载模板中所需的任何项目。 为此，必须事先创建你要使用的存储帐户。 在本示例中，我已针对要上载的 package.zip 创建了一个共享存储帐户。 脚本将利用 AzCopy 将该包上载到存储帐户。 在传入项目文件夹位置后，脚本会自动将该目录中的所有文件上载到指定的存储容器。 调用 Deploy-AzureResourceGroup.ps1 之后，必须更新 SSL 绑定，以映射自定义主机名与 SSL 证书。
+最后一步是将上述所有组成部分整合为完整的端到端部署。 若要简化部署，可以利用用户在 Visual Studio 中创建 Azure 资源组项目时添加的 **Deploy-AzureResourceGroup.ps1** PowerShell 脚本来上传模板中所需的任何项目。 为此，必须事先创建你要使用的存储帐户。 在本示例中，我已针对要上传的 package.zip 创建了一个共享存储帐户。 脚本将利用 AzCopy 将该包上传到存储帐户。 在传入项目文件夹位置后，脚本会自动将该目录中的所有文件上传到指定的存储容器。 调用 Deploy-AzureResourceGroup.ps1 之后，必须更新 SSL 绑定，以映射自定义主机名与 SSL 证书。
 
 以下 PowerShell 显示了调用 Deploy-AzureResourceGroup.ps1 的完整部署：
 
@@ -196,10 +198,5 @@ ms.openlocfilehash: f836bffd0610224b5cb69f4f6836dbc55e0721a3
     Set-AzureRmResource -ApiVersion 2014-11-01 -Name nameofwebsite -ResourceGroupName $rgName -ResourceType Microsoft.Web/sites -PropertyObject $props
 
 此时，应用程序应已部署，可以通过 https://www.yourcustomdomain.com 浏览
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

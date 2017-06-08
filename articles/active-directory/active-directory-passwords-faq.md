@@ -6,6 +6,7 @@ keywords: "Active Directory 密码管理, 密码管理, Azure AD 自助密码重
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+editor: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -14,6 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
+ms.custom: it-pro
 ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 00acd4090ed981ab2b05e955e93d1c689ea1a2e6
@@ -39,7 +41,7 @@ ms.lasthandoff: 05/03/2017
 ## <a name="password-reset-registration"></a>密码重置注册
 * **问：用户是否可以注册其自己的密码重置数据？**
 
-  > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户（网址为 http://aka.ms/ssprsetup）来注册其身份验证信息。 用户还可以通过以下方式进行注册：转到访问面板 ( http://myapps.microsoft.com )，单击配置文件选项卡，然后单击“注册密码重置”选项。
+  > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户 （网址为 http://aka.ms/ssprsetup ） 来注册其身份验证信息。 用户还可以通过以下方式进行注册：转到访问面板 ( http://myapps.microsoft.com )，单击配置文件选项卡，然后单击“注册密码重置”选项。
   >
   >
 * **问：我能否代表用户定义密码重置数据？**

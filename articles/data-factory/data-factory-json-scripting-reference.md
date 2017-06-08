@@ -13,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: ab6076d430688ee54515ec4a0d960728ae1f1e48
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 306dde28a4af82197ae5a75bee83c0e7cf219e42
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -83,7 +84,7 @@ ms.lasthandoff: 04/27/2017
 | --- | --- | --- |
 | 名称 |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动用途的文本。 |是 |
-| type |指定活动的类型。 有关不同的活动类型，请参阅文章[数据存储](#data-stores)和[转换活动](#transformation-activities)。 |是 |
+| type |指定活动的类型。 请参阅[数据存储](#data-stores)和[数据转换活动](#data-transformation-activities)部分，了解不同的活动类型。 |是 |
 | inputs |活动使用的输入表<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |是 |
 | outputs |活动使用的输出表。<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |是 |
 | linkedServiceName |活动使用的链接服务的名称。 <br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 |对 HDInsight 活动、Azure 机器学习活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需 |
@@ -371,7 +372,7 @@ structure:
 |:--- |:--- |
 | **Azure** |[Azure Blob 存储](#azure-blob-storage) |
 | &nbsp; |[Azure Data Lake Store](#azure-datalake-store) |
-| &nbsp; |[Azure DocumentDB](#azure-documentdb) |
+| &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL 数据库](#azure-sql-database) |
 | &nbsp; |[Azure SQL 数据仓库](#azure-sql-data-warehouse) |
 | &nbsp; |[Azure 搜索](#azure-search) |
@@ -775,20 +776,20 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 有关详细信息，请参阅 [Azure Data Lake Store 连接器](data-factory-azure-datalake-connector.md#copy-activity-properties)一文。 
 
-## <a name="azure-documentdb"></a>Azure DocumentDB
+## <a name="azure-cosmos-db"></a>Azure Cosmos DB  
 
 ### <a name="linked-service"></a>链接服务
-若要定义 Azure DocumentDB 链接服务，请将链接服务的**类型**设置为 **DocumentDb**，并在 **typeProperties** 节中指定以下属性：  
+若要定义 Azure Cosmos DB 链接服务，请将链接服务的“类型”设置为“DocumentDb”，并在“typeProperties”部分中指定以下属性：  
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
-| connectionString |指定连接到 Azure DocumentDB 数据库所需的信息。 |是 |
+| connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。 |是 |
 
 #### <a name="example"></a>示例
 
 ```json
 {
-    "name": "DocumentDbLinkedService",
+    "name": "CosmosDBLinkedService",
     "properties": {
         "type": "DocumentDb",
         "typeProperties": {
@@ -797,23 +798,23 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
     }
 }
 ```
-有关详细信息，请参阅 [DocumentDB 连接器](data-factory-azure-documentdb-connector.md#linked-service-properties)一文。
+有关详细信息，请参阅 [Azure Cosmos DB 连接器](data-factory-azure-documentdb-connector.md#linked-service-properties)一文。
 
 ### <a name="dataset"></a>数据集
-若要定义 Azure DocumentDB 数据集，请将数据集的**类型**设置为 **DocumentDbCollection**，并在 **typeProperties** 节中指定以下属性： 
+若要定义 Azure Cosmos DB 数据集，请将数据集的“类型”设置为“DocumentDbCollection”，并在“typeProperties”部分中指定以下属性： 
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
-| collectionName |DocumentDB 文档集的名称。 |是 |
+| collectionName |Azure Cosmos DB 集合的名称。 |是 |
 
 #### <a name="example"></a>示例
 
 ```json
 {
-    "name": "PersonDocumentDbTable",
+    "name": "PersonCosmosDBTable",
     "properties": {
         "type": "DocumentDbCollection",
-        "linkedServiceName": "DocumentDbLinkedService",
+        "linkedServiceName": "CosmosDBLinkedService",
         "typeProperties": {
             "collectionName": "Person"
         },
@@ -825,16 +826,16 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
     }
 }
 ```
-有关详细信息，请参阅 [DocumentDB 连接器](data-factory-azure-documentdb-connector.md#dataset-properties)一文。
+有关详细信息，请参阅 [Azure Cosmos DB 连接器](data-factory-azure-documentdb-connector.md#dataset-properties)一文。
 
-### <a name="documentdb-collection-source-in-copy-activity"></a>复制活动中的 DocumentDB 集合源
-如果要从 Azure DocumentDB 复制数据，请将复制活动的**源类型**设置为 **DocumentDbCollectionSource**，并在 **source** 节中指定以下属性：
+### <a name="azure-cosmos-db-collection-source-in-copy-activity"></a>复制活动中的 Azure Cosmos DB 集合源
+如果要从 Azure Cosmos DB 复制数据，请将复制活动的“源类型”设置为“DocumentDbCollectionSource”，并在“源”部分中指定以下属性：
 
 
 | **属性** | **说明** | **允许的值** | **必需** |
 | --- | --- | --- | --- |
-| query |指定要读取数据的查询。 |DocumentDB 支持的查询字符串。 <br/><br/>示例：`SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行的 SQL 语句为：`select <columns defined in structure> from mycollection` |
-| nestingSeparator |指示嵌套文档的特殊字符 |任意字符。 <br/><br/>DocumentDB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 Azure 数据工厂允许用户通过 nestingSeparator 来表示层次结构，即 上述示例中的“.”。 通过该分隔符，复制活动将根据表定义中的“Name.First”、“Name.Middle”和“Name.Last”生成包含三个子元素（First、Middle 和 Last）的“Name”对象。 |否 |
+| query |指定要读取数据的查询。 |Azure Cosmos DB 支持的查询字符串。 <br/><br/>示例：`SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行的 SQL 语句为：`select <columns defined in structure> from mycollection` |
+| nestingSeparator |指示嵌套文档的特殊字符 |任意字符。 <br/><br/>Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 Azure 数据工厂允许用户通过 nestingSeparator 来表示层次结构，即 上述示例中的“.”。 通过该分隔符，复制活动将根据表定义中的“Name.First”、“Name.Middle”和“Name.Last”生成包含三个子元素（First、Middle 和 Last）的“Name”对象。 |否 |
 
 #### <a name="example"></a>示例
 
@@ -858,7 +859,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
                 }
             },
             "inputs": [{
-                "name": "PersonDocumentDbTable"
+                "name": "PersonCosmosDBTable"
             }],
             "outputs": [{
                 "name": "PersonBlobTableOut"
@@ -866,7 +867,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
             "policy": {
                 "concurrency": 1
             },
-            "name": "CopyFromDocDbToBlob"
+            "name": "CopyFromCosmosDbToBlob"
         }],
         "start": "2016-04-01T00:00:00",
         "end": "2016-04-02T00:00:00"
@@ -874,13 +875,13 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 }
 ```
 
-### <a name="documentdb-collection-sink-in-copy-activity"></a>复制活动中的 DocumentDB 集合接收器
-如果要将数据复制到 Azure DocumentDB，请将复制活动的**接收器类型**设置为 **DocumentDbCollectionSink**，并在 **sink** 节中指定以下属性：
+### <a name="azure-cosmos-db-collection-sink-in-copy-activity"></a>复制活动中的 Azure Cosmos DB 集合接收器
+如果要将数据复制到 Azure Cosmos DB，请将复制活动的“接收器类型”设置为“DocumentDbCollectionSink”，并在“接收器”部分中指定以下属性：
 
 | **属性** | **说明** | **允许的值** | **必需** |
 | --- | --- | --- | --- |
-| nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>在上述示例中：输出表中的 `Name.First` 在 DocumentDB 文档中生成以下 JSON 结构：<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |用于分隔嵌套级别的字符。<br/><br/>默认值为 `.`（点）。 |用于分隔嵌套级别的字符。 <br/><br/>默认值为 `.`（点）。 |
-| writeBatchSize |向 DocumentDB 服务发送创建文档的并行请求数。<br/><br/>将数据复制到 DocumentDB 以及从其中复制数据时，可使用此属性对性能进行微调。 当增加 writeBatchSize 时，由于会 DocumentDB 发送更多的并行请求，因此可以获得更好的性能。 但是，需要避免可能会引发“请求速率大”的错误消息的限制。<br/><br/>限制由多种因素决定，包括文档大小、文档中的术语数、目标集合的索引策略等。对于复制操作，可以使用更佳的集合（例如 S3）实现最大吞吐量（2,500 请求单位/秒）。 |Integer |否（默认值：5） |
+| nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>在上述示例中：输出表中的 `Name.First` 在 Cosmos DB 文档中生成以下 JSON 结构：<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |用于分隔嵌套级别的字符。<br/><br/>默认值为 `.`（点）。 |用于分隔嵌套级别的字符。 <br/><br/>默认值为 `.`（点）。 |
+| writeBatchSize |向 Azure Cosmos DB 服务发送创建文档的并行请求数。<br/><br/>将数据复制到 Azure Cosmos DB 以及从其中复制数据时，可使用此属性对性能进行微调。 增加 writeBatchSize 时，由于会向 Azure Cosmos DB 发送更多的并行请求，因此可以获得更好的性能。 但是，需要避免可能会引发“请求速率大”的错误消息的限制。<br/><br/>限制由多种因素决定，包括文档大小、文档中的术语数、目标集合的索引策略等。对于复制操作，可以使用更佳的集合（例如 S3）实现最大吞吐量（2,500 请求单位/秒）。 |Integer |否（默认值：5） |
 | writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 
 #### <a name="example"></a>示例
@@ -910,12 +911,12 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
                 "name": "PersonBlobTableIn"
             }],
             "outputs": [{
-                "name": "PersonDocumentDbTableOut"
+                "name": "PersonCosmosDbTableOut"
             }],
             "policy": {
                 "concurrency": 1
             },
-            "name": "CopyFromBlobToDocDb"
+            "name": "CopyFromBlobToCosmosDb"
         }],
         "start": "2016-04-14T00:00:00",
         "end": "2016-04-15T00:00:00"
@@ -923,7 +924,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 }
 ```
 
-有关详细信息，请参阅 [DocumentDB 连接器](data-factory-azure-documentdb-connector.md#copy-activity-properties)一文。
+有关详细信息，请参阅 [Azure Cosmos DB 连接器](data-factory-azure-documentdb-connector.md#copy-activity-properties)一文。
 
 ## <a name="azure-sql-database"></a>Azure SQL 数据库
 
@@ -5097,7 +5098,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 有关详细信息，请参阅 [SQL Server 连接器](data-factory-sqlserver-connector.md#linked-service-properties)一文。
 
-## <a name="transformation-activites"></a>转换活动
+## <a name="data-transformation-activities"></a>数据转换活动
 
 活动 | 说明
 -------- | -----------

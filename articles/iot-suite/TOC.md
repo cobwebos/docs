@@ -11,6 +11,7 @@
 ## [已连接的工厂解决方案概述](iot-suite-connected-factory-overview.md)
 ## [远程监视解决方案演练](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [前瞻性维护解决方案演练](iot-suite-predictive-walkthrough.md)
+## [已连接的工厂解决方案演练](iot-suite-connected-factory-sample-walkthrough.md)
 ## [连接 Raspberry Pi](iot-suite-raspberry-pi-kit-get-started.md)
 ### 使用 C
 #### [模拟数据](iot-suite-raspberry-pi-kit-c-get-started-simulator.md)
@@ -29,7 +30,6 @@
 ### [Windows 上的 C](iot-suite-connecting-devices.md)
 ### [Linux 上的 C](iot-suite-connecting-devices-linux.md)
 ### [Node.js](iot-suite-connecting-devices-node.md)
-## [连接 mbed 设备](iot-suite-connecting-devices-mbed.md)
 ## [将逻辑应用连接到远程监视解决方案](iot-suite-logic-apps-tutorial.md)
 ## [自定义预配置解决方案](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [在远程监视解决方案中使用动态遥测](iot-suite-dynamic-telemetry.md)

@@ -3,7 +3,7 @@ title: "在 Azure SQL 数据仓库中借助 T-SQL 进行暂停、恢复、缩放
 description: "可通过调整 DWU 来提高性能的 Transact-SQL (T-SQL) 任务。 通过在非高峰期缩减性能来节省成本。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: hirokib
 manager: jhubbard
 editor: 
 ms.assetid: a970d939-2adf-4856-8a78-d4fe8ab2cceb
@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 03/30/2017
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: elbutter;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: e37a943c775261a6817169c95a931f1b268305d9
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
 

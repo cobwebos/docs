@@ -1,18 +1,18 @@
 ### <a name="prerequisites"></a>先决条件
 使用适用于 IntelliJ 的 Azure 工具包需要以下软件组件：
 
-* IntelliJ IDEA 旗舰版。 可从 <https://www.jetbrains.com/idea/download/> 下载。
+* IntelliJ IDEA 旗舰版，可从 <https://www.jetbrains.com/idea/download/> 下载。
 
 * Java 开发人员工具包 (JDK) 1.8 或更高版本。
 
-* 操作系统 - Azure Toolkit for IntelliJ 已在以下操作系统上通过测试：
+* 操作系统。 用于 IntelliJ 的 Azure 工具包已在以下操作系统上通过测试：
   
   * Windows 10、Windows 8 和 8.1、Windows 7
   * Windows Server 2012 和 2012 R2、Windows Server 2008 和 2008 R2
-  * [Mac OS X](http://www.apple.com/osx) 版本“Yosemite”及更高版本
+  * [Mac OS X](http://www.apple.com/osx) 版本“Yosemite”或更高版本
   * [Ubuntu Linux](http://www.ubuntu.com) 版本 14、15 和 16
 
-可以在 JetBrains Plugin Repository 的 [Azure Toolkit for Eclipse](https://plugins.jetbrains.com/plugin/8053) 页面中找到详细信息。
+有关详细信息，请参阅 JetBrains Plugin Repository 的 [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053)（用于 IntelliJ 的 Azure 工具包）页。
 
 <!--
 > [!IMPORTANT]

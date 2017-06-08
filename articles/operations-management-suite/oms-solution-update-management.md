@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/02/2017
+ms.date: 05/23/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 03a6c1f20632691c08f5de4afe74eacc6f79608e
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: ff8d911750a551f4a099fcba13841c98881104a9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -46,12 +46,16 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 
 然后即可在解决方案随附的仪表板中处理和汇总符合性信息，或者通过用户定义查询或预定义查询对其进行搜索。  解决方案报告计算机更新情况的依据是你被配置为通过什么源来同步。  如果将 Windows 计算机配置为向 WSUS 报告，则结果可能不同于 Microsoft 更新所显示的内容，具体取决于 WSUS 上次通过 Microsoft 更新进行同步的时间。  对于配置为向本地存储库（而不是公共存储库）报告的 Linux 计算机来说，情况也是如此。   
 
-可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。  归类为“可选”的更新不包括在 Windows 计算机的部署范围内，仅必需更新包括在其内。  计划的部署会显式指定计算机或根据特定的一组计算机的日志搜索结果来选择[计算机组](../log-analytics/log-analytics-computer-groups.md)，从而定义会接收适用更新的目标计算机。  也可通过指定计划来批准和指定一个时段，允许在该时段内安装更新。  通过 Azure 自动化中的 runbook 安装更新。  无法查看这些 runbook，它们不需要任何配置。  更新部署在创建时，将会创建一个计划，在指定的时间为包括在内的计算机启动主更新 Runbook。  此主 Runbook 会在每个代理上启动子 Runbook，以便执行所需更新的安装。       
+可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。  归类为“可选”的更新不包括在 Windows 计算机的部署范围内，仅必需更新包括在其内。**  计划的部署会显式指定计算机或根据特定的一组计算机的日志搜索结果来选择[计算机组](../log-analytics/log-analytics-computer-groups.md)，从而定义会接收适用更新的目标计算机。  也可通过指定计划来批准和指定一个时段，允许在该时段内安装更新。  通过 Azure 自动化中的 runbook 安装更新。  无法查看这些 runbook，它们不需要任何配置。  更新部署在创建时，将会创建一个计划，在指定的时间为包括在内的计算机启动主更新 Runbook。  此主 Runbook 会在每个代理上启动子 Runbook，以便执行所需更新的安装。       
 
 目标计算机会按更新部署中指定的日期和时间，以并行方式执行部署。  首先会执行扫描，验证是否仍然需要更新，如果是，则会安装相应的更新。  请务必注意，对于 WSUS 客户端计算机来说，如果更新未在 WSUS 中获得批准，则更新部署会失败。  所应用更新的结果将转发到 OMS，通过仪表板或搜索事件进行处理和汇总。     
 
 ## <a name="prerequisites"></a>先决条件
-* 该解决方案支持对 Windows Server 2008 和更高版本执行更新评估，以及对 Windows Server 2012 和更高版本执行更新部署。  不支持服务器核心和 Nano Server 安装选项。
+* 该解决方案支持对 Windows Server 2008 和更高版本执行更新评估，以及对 Windows Server 2008 R2 和更高版本执行更新部署。  不支持服务器核心和 Nano Server 安装选项。
+
+    > [!NOTE]
+    > 若要提供相关支持，以便将更新部署到 Windows Server 2008 R2，需要 .NET Framework 4.5 和 WMF 5.0 或更高版本。
+    >  
 * 不支持 Windows 客户端操作系统。  
 * Windows 代理也必须配置为与 Windows Server Update Services (WSUS) 服务器通信或有权访问 Microsoft 更新。  
   
@@ -95,7 +99,7 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 * Azure 门户中的 Azure 应用商店：选择“自动化与控制”服务或“更新管理”解决方案
 * OMS 工作区中的 OMS 解决方案库
 
-如果已在同一资源组和区域中将自动化帐户和 OMS 工作区关联到一起，则选择“自动化与控制”时会对配置进行验证，仅安装该解决方案并在两项服务中对其进行配置。  从 Azure 应用商店选择“更新管理”解决方案会产生相同的行为。  如果订阅中没有部署任一服务，则请执行“创建新的解决方案”边栏选项卡中的步骤，确认你需要安装其他预先选定的建议解决方案。  （可选）可以使用解决方案库中[添加 OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)一文所述步骤，将“更新管理”解决方案添加到 OMS 工作区。  
+如果已在同一资源组和区域中将自动化帐户和 OMS 工作区关联到一起，则选择“自动化与控制”时会对配置进行验证，仅安装该解决方案并在两项服务中对其进行配置。  从 Azure 应用商店选择“更新管理”解决方案会产生相同的行为。  如果订阅中没有部署任一服务，则请执行“创建新的解决方案”边栏选项卡中的步骤，确认你需要安装其他预先选定的建议解决方案。****  （可选）可以使用解决方案库中[添加 OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)一文所述步骤，将“更新管理”解决方案添加到 OMS 工作区。  
 
 ### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>确认 OMS 代理和 Operations Manager 管理组已连接到 OMS
 
@@ -107,12 +111,12 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 
 在 Windows 计算机上，可以通过查看以下内容来验证代理与 OMS 的连接：
 
-1.  在控制面板中打开 Microsoft Monitoring Agent，此时该代理会在“Azure Log Analytics (OMS)”选项卡上显示一条消息，指出“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。   
-2.  打开 Windows 事件日志，导航到“应用程序和服务日志\Operations Manager”，搜索来自源服务连接器的事件 ID 3000 和 5002。  这些事件指示计算机已注册到 OMS 工作区并且正在接收配置。  
+1.  在控制面板中打开 Microsoft Monitoring Agent，此时该代理会在“Azure Log Analytics (OMS)”选项卡上显示一条消息，指出“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。****   
+2.  打开 Windows 事件日志，导航到“应用程序和服务日志\Operations Manager”，搜索来自源服务连接器的事件 ID 3000 和 5002。****  这些事件指示计算机已注册到 OMS 工作区并且正在接收配置。  
 
 如果代理无法与 OMS 服务通信且已配置为通过防火墙或代理服务器与 Internet 通信，则请参阅[在 Log Analytics 中配置代理和防火墙设置](../log-analytics/log-analytics-proxy-firewall.md)，确认防火墙或代理服务器是否已正确配置。
   
-执行评估后，新添加的 Linux 代理会显示状态“已更新”。  此过程可能需要长达 6 小时的时间。 
+执行评估后，新添加的 Linux 代理会显示状态“已更新”。****  此过程可能需要长达 6 小时的时间。 
 
 若要确认 Operations Manager 管理组是否正在与 OMS 通信，请参阅[验证 Operations Manager 与 OMS 的集成](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms)。
 
@@ -140,9 +144,9 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 ## <a name="viewing-update-assessments"></a>查看更新评估
 单击“更新管理”磁贴打开“更新管理”仪表板。<br><br> ![更新管理摘要仪表板](./media/oms-solution-update-management/update-management-dashboard.png)<br> 
 
-此仪表板对更新状态按操作系统类型和更新分类（关键更新、安全更新或其他更新，例如定义更新）进行了细分。 “更新部署”磁贴在选中后，会将你重定向到“更新部署”页，你可以在其中查看计划、当前正在运行的部署、已完成部署，也可以计划一个新的部署。  
+此仪表板对更新状态按操作系统类型和更新分类（关键更新、安全更新或其他更新，例如定义更新）进行了细分。 “更新部署”磁贴在选中后，会将你重定向到“更新部署”页，你可以在其中查看计划、当前正在运行的部署、已完成部署，也可以计划一个新的部署。****  
 
-可以通过单击特定的磁贴来运行一个返回所有记录的日志搜索，也可以从“常用更新查询”列下提供的列表中选择一个查询，以便运行具有特定类别和预定义条件的查询。    
+可以通过单击特定的磁贴来运行一个返回所有记录的日志搜索，也可以从“常用更新查询”列下提供的列表中选择一个查询，以便运行具有特定类别和预定义条件的查询。****    
 
 ## <a name="installing-updates"></a>安装更新
 对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，即可通过创建“更新部署”安装所需的更新。  更新部署是为一台或多台计算机计划的所需更新安装。  除了应包括在部署范围内的计算机或计算机组，还请指定部署的日期和时间。  若要详细了解计算机组，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)。  在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。  不会反映对组所做的后续更改。  若要解决此问题，请删除计划的更新部署，然后重新创建它。 
@@ -160,7 +164,7 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 | 属性 | 说明 |
 | --- | --- |
 | Name |更新部署的名称 |
-| 计划 |计划的类型。  可用选项包括：“一次”、“每周重复一次”、“每月重复一次”。 |
+| 计划 |计划的类型。  可用选项包括：“一次”、“每周重复一次”、“每月重复一次”。** |
 | 开始时间 |计划启动更新部署的日期和时间。 |
 | 持续时间 |更新部署允许运行的分钟数。  如果在此持续时间内未安装所有更新，剩余的更新必须等待下一次更新部署。 |
 | 服务器 |受更新部署影响的计算机数。  |
@@ -185,7 +189,7 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 | --- | --- |
 | Name |用于标识更新部署的唯一名称。 |
 | 时区 |开始时间所使用的时区。 |
-| 计划类型 | 计划的类型。  可用选项包括：“一次”、“每周重复一次”、“每月重复一次”。  
+| 计划类型 | 计划的类型。  可用选项包括：“一次”、“每周重复一次”、“每月重复一次”。**  
 | 开始时间 |启动更新部署的日期和时间 **注意：**如果需要立即进行部署，则从当前时间算起，最快也得 30 分钟才能运行部署。 |
 | 持续时间 |更新部署允许运行的分钟数。  如果在此持续时间内未安装所有更新，剩余的更新必须等待下一次更新部署。 |
 | 计算机 |要包括在更新部署中并将其作为目标的计算机或计算机组的名称。  从下拉列表中选择一个或多个条目。 |

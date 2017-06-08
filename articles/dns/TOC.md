@@ -1,4 +1,5 @@
 # 概述
+
 ## [什么是 Azure DNS？](dns-overview.md)
 ## [DNS 区域和记录](dns-zones-records.md)
 ## [使用 Azure DNS 进行 DNS 委派](dns-domain-delegation.md)
@@ -18,17 +19,21 @@
 # 如何
 
 ## 管理 DNS 区域
+### [门户](dns-operations-dnszones-portal.md)
 ### [PowerShell](dns-operations-dnszones.md)
-### [Azure CLI](dns-operations-dnszones-cli.md)
+### [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
+### [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
-
-## [Manage DNS records](dns-operations-recordsets-portal.md)
+## 管理 DNS 记录
+### [门户](dns-operations-recordsets-portal.md)
 ### [PowerShell](dns-operations-recordsets.md)
-### [Azure CLI](dns-operations-recordsets-cli.md)
+### [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
+### [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 
-## [管理反向 DNS 记录](dns-reverse-dns-record-operations-ps.md)
-### [Azure CLI](dns-reverse-dns-record-operations-cli.md)
-### [PowerShell](dns-reverse-dns-record-operations-classic-ps.md)
+## 管理反向 DNS
+### [概述](dns-reverse-dns-overview.md)
+### [Azure DNS 中的主机反向查找区域](dns-reverse-dns-hosting.md)
+### [管理 Azure 服务的反向 DNS 记录](dns-reverse-dns-for-azure-services.md)
 
 ## [导入和导出 DNS 区域文件](dns-import-export.md)
 ## [与其他 Azure 服务集成](dns-for-azure-services.md)

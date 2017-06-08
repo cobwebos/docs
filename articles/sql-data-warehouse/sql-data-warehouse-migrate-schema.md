@@ -3,7 +3,7 @@ title: "将架构迁移到 SQL 数据仓库 | Microsoft 文档"
 description: "有关在开发解决方案时将架构迁移到 Azure SQL 数据仓库的技巧。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: jrowlandjones
+author: sqlmojo
 manager: jhubbard
 editor: 
 ms.assetid: 538b60c9-a07f-49bf-9ea3-1082ed6699fb
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
 ms.date: 10/31/2016
-ms.author: jrj;barbkess
-translationtype: Human Translation
+ms.author: joeyong;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 0630f43642a0be98c470032d32b74ca14ee144e5
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 

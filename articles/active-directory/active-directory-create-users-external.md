@@ -12,18 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 05/14/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 7b506668b3025774edec25b6a37b83a47d702cb0
-ms.openlocfilehash: b2eaddc631087d8b7b94e40f508bdd5da5229736
-ms.lasthandoff: 01/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 661470454775d43ce88410a6c995bbcc5e06264c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户
 > [!div class="op_single_selector"]
-> * [Azure 门户](active-directory-users-create-external-azure-portal.md)
+> * [Azure 门户](active-directory-users-create-external-azure-portal.md )
 > * [Azure 经典门户](active-directory-create-users-external.md)
 >
 >
@@ -44,9 +45,8 @@ ms.lasthandoff: 01/31/2017
 > [!IMPORTANT]
 > 如果你所在的组织使用多个域，在添加用户帐户时你应知道以下问题：
 >
-> * 若要跨域添加具有相同用户主体名称 (UPN) 的用户帐户，例如，**先**添加 geoffgrisso@contoso.onmicrosoft.com,，**再**添加 geoffgrisso@contoso.com。
-> * **不要**在添加 geoffgrisso@contoso.onmicrosoft.com 之前添加 geoffgrisso@contoso.com。 此顺序非常重要，事后想要撤消操作将很麻烦。
->
+> * 例如，若要跨域添加具有相同用户主体名称 (UPN) 的用户帐户，请**先**添加 geoffgrisso@contoso.onmicrosoft.com，**再**添加 geoffgrisso@contoso.com。
+> * **不要**在添加 geoffgrisso@contoso.onmicrosoft.com 之前添加 geoffgrisso@contoso.com。
 >
 
 如果你更改身份与本地 Active Directory 服务同步的用户的信息，则无法更改 Azure 经典门户中的用户信息。 若要更改该用户信息，请使用本地 Active Directory 管理工具。
@@ -74,15 +74,7 @@ ms.lasthandoff: 01/31/2017
 * **Dynamics CRM**：如果用户通过 PowerShell 获得许可，则允许外部用户访问 Dynamics CRM 中的已授权资源。
 * **Dynamics AX**：如果用户通过 PowerShell 获得许可，则允许外部用户访问 Dynamics AX 中的已授权资源。 适用于 [Azure AD 外部用户](#known-limitations-of-azure-ad-external-users)的限制同样适用于 Dynamics AX 中的外部用户。
 
-### <a name="known-limitations-of-azure-ad-external-users"></a>Azure AD 外部用户的已知限制
-* 身为管理员的外部用户无法将来自合作伙伴公司的用户添加到其主目录以外的目录（B2B 协作）
-* 外部用户无法同意在其主目录以外的目录中的多租户应用程序
-* PowerBI 目前不支持外部用户访问
-* Office 门户不支持向外部用户提供许可
-* 对于 Azure AD PowerShell，外部用户会登录其主目录，无法管理他们在其中是外部用户的目录
-* 配置 Dynamics CRM Outlook 插件时，外部用户可能需要手动输入 Dynamics CRM Online 租户的 URL，而不是选择“CRM Online”
-
-## <a name="whats-next"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 * [向 Azure Active Directory 添加新用户](active-directory-create-users.md)
 * [管理 Azure AD](active-directory-administer.md)
 * [在 Azure AD 中管理密码](active-directory-manage-passwords.md)

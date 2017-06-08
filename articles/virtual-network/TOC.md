@@ -17,12 +17,11 @@
 ### [网络安全组](virtual-networks-nsg.md)
 
 ## 部署
-### 虚拟网络
-#### [门户](virtual-networks-create-vnet-arm-pportal.md)
+### [虚拟网络](virtual-networks-create-vnet-arm-pportal.md)
 #### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [模板](virtual-networks-create-vnet-arm-template-click.md)
-#### [门户 经典）](virtual-networks-create-vnet-classic-pportal.md)
+#### [门户（经典）](virtual-networks-create-vnet-classic-pportal.md)
 #### [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
 #### [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
 
@@ -46,14 +45,9 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [模板](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### 网络接口
-#### [添加、更改或删除](virtual-network-network-interface.md)
-#### [添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)
-
 ### [公共 IP 地址](virtual-network-public-ip-address.md)
 
 ### 虚拟机
-#### [添加或删除网络接口](virtual-network-network-interface-vm.md) 
 #### 创建具有静态公共 IP 地址的 VM
 ##### [门户](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
@@ -81,6 +75,8 @@
 ##### [CLI](virtual-network-multiple-ip-addresses-cli.md)
 ##### [模板](virtual-network-multiple-ip-addresses-template.md)
 
+#### [创建具有加速网络的 VM](virtual-network-create-vm-accelerated-networking.md)
+
 ### 连接方案
 #### [虚拟网络 (VNet) 到 VNet](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 #### [VNet (Resource Manager) 到 VNet（经典）](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -98,23 +94,29 @@
 ##### [示例应用程序](virtual-networks-sample-app.md)
 
 ## 配置
-### 适用于 VM 的加速网络
-#### [Azure 门户](virtual-network-accelerated-networking-portal.md)
-#### [PowerShell](virtual-network-accelerated-networking-powershell.md)
-### [优化 VM 网络吞吐量](virtual-network-optimize-network-bandwidth.md)
+
 ### 访问控制列表
 #### [经典门户](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
-### [VM 和云服务的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)
+### 虚拟机
+#### [添加或删除网络接口](virtual-network-network-interface-vm.md)
+#### [VM 和云服务的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)
+#### [优化网络吞吐量](virtual-network-optimize-network-bandwidth.md)
+#### [查看和修改主机名](virtual-networks-viewing-and-modifying-hostnames.md)
 
 ## 管理
+### [虚拟网络](virtual-network-manage-network.md)
+#### [子网](virtual-network-manage-subnet.md)
+#### [对等互连](virtual-network-manage-peering.md)
 ### 网络安全组
 #### [门户](virtual-network-manage-nsg-arm-portal.md)
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [CLI](virtual-network-manage-nsg-arm-cli.md)
 #### [日志](virtual-network-nsg-manage-log.md)
+### 网络接口 (NIC)
+#### [创建、更改或删除 NIC](virtual-network-network-interface.md)
+#### [添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)
 ### 虚拟机
-#### [查看和修改主机名](virtual-networks-viewing-and-modifying-hostnames.md)
 #### [将 VM 移到其他子网](virtual-networks-move-vm-role-to-subnet.md)
 
 ## 故障排除

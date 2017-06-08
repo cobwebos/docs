@@ -3,7 +3,7 @@ title: "Azure Application Insights 中的故障排除分析| Microsoft Docs"
 description: "Application Insights Analytics 出现了问题？ 从此处开始。 "
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 9bbd5859-3584-4d80-9b6d-d5910fa48baa
 ms.service: application-insights

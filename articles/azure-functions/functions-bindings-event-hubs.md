@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/02/2016
 ms.author: wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: c8e9f9709d13295c9414e525f1f60abf0d0accb7
-ms.openlocfilehash: 0bfbfd3828aacdee0b6630ced034f2c1e0451abd
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 04a8563a0035992cfa4b7d25a4edc14e1db80e44
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -51,7 +52,7 @@ Azure Functions 支持事件中心的触发器和输出绑定。
 }
 ```
 
-`consumerGroup` 是一个可选属性，用于设置[使用者组](../event-hubs/event-hubs-what-is-event-hubs.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。  
+`consumerGroup` 是一个可选属性，用于设置[使用者组](../event-hubs/event-hubs-features.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。  
 `connection` 必须是应用设置的名称，该名称中包含事件中心命名空间的连接字符串。
 单击“命名空间”（而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。
 
@@ -85,7 +86,7 @@ Azure Functions 支持事件中心的触发器和输出绑定。
 
 <a name="triggercsharp"></a>
 
-### <a name="trigger-sample-in-c"></a>C 中的触发器示例# #
+### <a name="trigger-sample-in-c"></a>C# 中的触发器示例 #
 
 ```cs
 using System;
@@ -98,7 +99,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 
 <a name="triggerfsharp"></a>
 
-### <a name="trigger-sample-in-f"></a>F 中的触发器示例# #
+### <a name="trigger-sample-in-f"></a>F# 中的触发器示例 #
 
 ```fsharp
 let Run(myEventHubMessage: string, log: TraceWriter) =
@@ -168,7 +169,7 @@ module.exports = function (context, myEventHubMessage) {
 
 <a name="outcsharp"></a>
 
-### <a name="output-sample-in-c"></a>C 中的输出示例# #
+### <a name="output-sample-in-c"></a>C# 中的输出示例 #
 
 ```cs
 using System;
@@ -195,7 +196,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 <a name="outfsharp"></a>
 
-### <a name="output-sample-in-f"></a>F 中的输出示例# #
+### <a name="output-sample-in-f"></a>F# 中的输出示例 #
 
 ```fsharp
 let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWriter) =

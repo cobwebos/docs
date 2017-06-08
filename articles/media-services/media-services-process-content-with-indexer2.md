@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 15/05/2017
 ms.author: adsolank;juliako;
-translationtype: Human Translation
-ms.sourcegitcommit: 7065d5e87dbf47153bc89b37b56af81927b8b92b
-ms.openlocfilehash: 902e872b224b267c989f741345efdd8ef3fa8ce3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 717a8ace8c469b0529ac3c98f22b8ee5a53b3d3b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -83,6 +85,10 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
 * 葡萄牙语 [PtBr]
 * 阿拉伯语（埃及）[ArEg]
 * 日语 [JaJp]
+
+## <a name="supported-file-types"></a>支持的文件类型
+
+有关支持的文件类型的信息，请参阅[支持的编解码器/格式](media-services-media-encoder-standard-formats.md#input-containerfile-formats)部分。
 
 ## <a name="sample-code"></a>代码示例
 
@@ -278,10 +284,5 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
 
 [Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

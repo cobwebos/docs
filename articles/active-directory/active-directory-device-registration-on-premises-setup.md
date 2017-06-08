@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: fbc3807351a9d83e4bcc5ba0661001754621f430
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 7a9ec95348f4aa8a14a716a758fb362c1ede61b3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -112,10 +113,7 @@ ms.lasthandoff: 03/10/2017
    2. 安装并运行 Azure AD Connect：使用 [Azure AD Connect 的自定义安装](connect/active-directory-aadconnect-get-started-custom.md)中的说明安装 Azure AD Connect。
    3. 验证和管理目录同步 此步骤提供了有关单一登录的说明。
    
-   > [!NOTE]
-   > 根据上述链接文档所述配置与 AD FS 的联合。 你不需要配置任何预览功能。
-   > 
-   > 
+   另外，使用 AD FS 配置联合身份验证，如 [Azure AD Connect 的自定义安装](connect/active-directory-aadconnect-get-started-custom.md)中所述。
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>升级 Active Directory 域服务架构
 > [!NOTE]
@@ -220,7 +218,7 @@ Azure Active Directory 设备注册为 iOS 设备使用无线配置文件注册�
 
 将此 iOS 设备加入工作区。
 
-**如果使用 Windows 8.1 设备**，可以转到“电脑设置”> “网络” > “工作区”加入设备。
+**如果使用 Windows 8.1 设备**，可以转到“电脑设置”>“网络” > “工作区”加入设备。
 
 其中，“**relying party trust name**”是 AD FS 中的应用程序信赖方信任对象名称。
 **yourdomain.com** 是使用 Azure Active Directory 配置的域名。 例如 contoso.com。

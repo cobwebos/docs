@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: mandia
-translationtype: Human Translation
+ms.author: LADocs; mandia
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
 ms.openlocfilehash: b9b0f1970a5c7edeb9986c0d60c8bc249c50f2ac
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -84,10 +86,5 @@ ms.openlocfilehash: b9b0f1970a5c7edeb9986c0d60c8bc249c50f2ac
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")。  
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

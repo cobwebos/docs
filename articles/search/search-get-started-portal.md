@@ -13,12 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 02/22/2017
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 7945ee77be8a09dcac9ddd6b338bdd542ec18540
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e03d0ff92b0ad6d34314c55d98972997769d09f0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -199,7 +200,7 @@ ms.lasthandoff: 04/18/2017
 
   若要查看单个组件，请单击仪表板上的“索引”、“索引器”或“数据源”磁贴，显示现有对象的列表。 若要详细了解如何在不重新生成的情况下进行索引编辑，请参阅 [Update Index (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/update-index)（更新索引（Azure 搜索 REST API）。
 
-+ 尝试针对其他数据源使用上述工具和步骤。 示例数据集 `realestate-us-sample` 摘自 Azure 搜索可爬网的 Azure SQL 数据库。 除了 Azure SQL 数据库以外，Azure 搜索还可爬网 Azure VM 和 DocumentDB 上的 Azure 表存储、Blob 存储、SQL Server 中的平面数据结构中的索引并对其进行推断。 向导支持所有这些数据源。 在代码中，可以使用*索引器*轻松填充索引。
++ 尝试针对其他数据源使用上述工具和步骤。 示例数据集 `realestate-us-sample` 摘自 Azure 搜索可爬网的 Azure SQL 数据库。 除了 Azure SQL 数据库以外，Azure 搜索还可爬网 Azure VM 和 Azure Cosmos DB 上的 Azure 表存储、Blob 存储、SQL Server 中的平面数据结构中的索引并对其进行推断。 向导支持所有这些数据源。 在代码中，可以使用*索引器*轻松填充索引。
 
 + 可通过推送模型支持其他所有非索引器数据源，代码会将 JSON 格式的新行集与更改的行集推送到索引。 有关详细信息，请参阅 [Add, update, or delete documents in Azure Search](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)（在 Azure 搜索中添加、更新或删除文档）。
 

@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: a0e245121f2a9ff4109b281cd7286ed601bf64ac
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c5ec6dc244cc70591806dab171a289a0e55ff0a0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>将现有的自定义 SSL 证书绑定到 Azure Web 应用
@@ -45,7 +45,7 @@ ms.lasthandoff: 05/09/2017
 在遵循本教程之前，请确保已完成以下操作：
 
 - [创建应用服务应用](/azure/app-service/)
-- [将自定义 DNS 名称映射到 Web 应用](web-sites-custom-domain-name.md)
+- [将自定义 DNS 名称映射到 Web 应用](app-service-web-tutorial-custom-domain.md)
 - 从受信任的证书颁发机构获取 SSL 证书
 
 <a name="requirements"></a>
@@ -88,7 +88,7 @@ ms.lasthandoff: 05/09/2017
 
 ![检查定价层](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
 
-“免费”和“共享”层不支持自定义 SSL。 如果你需要进行纵向扩展，请按照下一部分操作。 否则，请关闭“选择定价层”边栏选项卡并跳到[上载和绑定 SSL 证书](#upload)。
+“免费”和“共享”层不支持自定义 SSL。 如果你需要进行纵向扩展，请按照下一部分操作。 否则，请关闭“选择定价层”边栏选项卡并跳到[上传和绑定 SSL 证书](#upload)。
 
 ### <a name="scale-up-your-app-service-plan"></a>纵向扩展应用服务计划
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 05/09/2017
 
 ## <a name="bind-your-ssl-certificate"></a>绑定 SSL 证书
 
-现已准备好将 SSL 证书上载到 Web 应用。 
+现已准备好将 SSL 证书上传到 Web 应用。 
 
 ### <a name="export-certificate-to-pfx"></a>将证书导出为 PFX
 
@@ -120,25 +120,25 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
 如果使用 IIS 或 _Certreq.exe_ 生成了证书请求，请先在本地计算机上安装证书，然后遵循[导出包含私钥的证书](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)中的步骤将其导出为 PFX。
 
-### <a name="upload-your-ssl-certificate"></a>上载 SSL 证书
+### <a name="upload-your-ssl-certificate"></a>上传 SSL 证书
 
-若要上载 SSL 证书，请在 Web 应用的左侧导航窗格中单击“SSL 证书”。
+若要上传 SSL 证书，请在 Web 应用的左侧导航窗格中单击“SSL 证书”。
 
-单击“上载证书”。
+单击“上传证书”。
 
 在“PFX 证书文件”中选择你的 PFX 文件。 在“证书密码”中，键入导出 PFX 文件时创建的密码。
 
-单击“上载” 。
+单击“上传” 。
 
-![上载证书](./media/app-service-web-tutorial-custom-ssl/upload-certificate.png)
+![上传证书](./media/app-service-web-tutorial-custom-ssl/upload-certificate.png)
 
-应用服务上载完证书后，该证书将显示在“SSL 证书”页中。
+应用服务上传完证书后，该证书将显示在“SSL 证书”页中。
 
-![上载的证书](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
+![上传的证书](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
 ### <a name="bind-your-ssl-certificate"></a>绑定 SSL 证书
 
-随后应可在“SSL 证书”页中看到上载的证书。
+随后应可在“SSL 证书”页中看到上传的证书。
 
 在“SSL 绑定”部分中，单击“添加绑定”。
 
@@ -153,7 +153,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
 ![绑定 SSL 证书](./media/app-service-web-tutorial-custom-ssl/bind-certificate.png)
 
-应用服务上载完证书后，该证书将显示在“SSL 绑定”部分中。
+应用服务上传完证书后，该证书将显示在“SSL 绑定”部分中。
 
 ![证书已绑定到 Web 应用](./media/app-service-web-tutorial-custom-ssl/certificate-bound.png)
 
@@ -234,7 +234,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
 ### <a name="azure-cli"></a>Azure CLI
 
-以下命令上载已导出的 PFX 文件并获取指纹。 
+以下命令上传已导出的 PFX 文件并获取指纹。 
 
 ```bash
 thumprint=$(az appservice web config ssl upload \

@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: efa52b5f30cab16bfde4202dbfe2c95f4464e2c4
-ms.openlocfilehash: b09b66c44ba94df12934211d5d09430adb667003
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 850bf9ef5300c72a9e7903be5bf991301d4b574f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -89,7 +91,7 @@ Azure 门户可用于从记录集中删除记录。 请注意，从记录集中�
 3. 单击边栏选项卡顶部的“**保存**”以保存你的设置。
 4. 删除记录后，记录在“**DNS 区域**”边栏选项卡中的值将反映删除操作。
 
-## <a name="a-namedeleteadelete-a-record-set"></a><a name="delete"></a>删除记录集
+## <a name="delete"></a>删除记录集
 
 1. 在记录集的“**记录集属性**”边栏选项卡中，搜单击“**删除**”。
 
@@ -105,24 +107,23 @@ Azure 门户可用于从记录集中删除记录。 请注意，从记录集中�
 
 ### <a name="modify-soa-records"></a>修改 SOA 记录
 
-不能在区域顶点 (name = "@") 从自动创建的 SOA 记录集中添加或删除记录。 但是，可以修改 SOA 记录和记录集 TTL 中的任何参数（“Host”除外）。
+不能在区域顶点（名称 =“@”）从自动创建的 SOA 记录集中添加或删除记录。 但是，可以修改 SOA 记录和记录集 TTL 中的任何参数（“Host”除外）。
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>修改区域顶点处的 NS 记录
 
-不能在区域顶点 (name = "@") 从自动创建的 NS 记录集中添加、删除或修改记录。 允许的更改仅限修改记录集 TTL。
+在每个 DNS 区域自动创建区域顶点处的 NS 记录集。 其中包含分配给该区域的 Azure DNS 名称服务器名称。
+
+可向此 NS 记录集添加其他名称服务器，从而支持与多个 DNS 提供商共同托管域。 还可修改此记录集的 TTL 和元数据。 但是，无法删除或修改预填充的 Azure DNS 名称服务器。
+
+请注意，这仅适用于区域顶点处的 NS 记录集。 区域中的其他 NS 记录集（用于委派子区域）不受约束，可进行修改。
 
 ### <a name="delete-soa-or-ns-record-sets"></a>删除 SOA 或 NS 记录集
 
-不能在创建区域时自动创建的区域顶点处 (名称 = "@") 删除 SOA 和 NS 记录集。 删除该区域时，将自动删除这些记录集。
+不能在创建区域时自动创建的区域顶点处（名称 =“@”）删除 SOA 和 NS 记录集。 删除该区域时，将自动删除这些记录集。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure DNS 的详细信息，请参阅 [Azure DNS 概述](dns-overview.md)。
 * 有关自动执行 DNS 的详细信息，请参阅[使用 .NET SDK 创建 DNS 区域和记录集](dns-sdk.md)。
 * 有关反向 DNS 记录的详细信息，请参阅[如何使用 PowerShell 管理服务的反向 DNS 记录](dns-reverse-dns-record-operations-ps.md)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

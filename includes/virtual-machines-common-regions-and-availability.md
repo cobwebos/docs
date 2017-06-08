@@ -79,7 +79,7 @@ Azure 允许用户在规定的地理区域（例如“美国西部”、“北�
 
 从 Azure 应用商店中的映像创建 VM 时，实际上是在使用模板。 Azure Resource Manager 模板是声明性的 JavaScript 对象表示法 (JSON) 文件，可用于创建包含 VM、存储、虚拟网络等的复杂应用程序环境。详细了解如何使用 [Azure Resource Manager 模板](../articles/azure-resource-manager/resource-group-overview.md)，包括如何[构建自己的模板](../articles/resource-group-authoring-templates.md)。
 
-也可以使用 [Azure CLI](../articles/virtual-machines/linux/upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Azure PowerShell](../articles/virtual-machines/windows/upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 创建自己的自定义映像并将其上载，快速创建符合特定构建要求的自定义 VM。
+也可以使用 [Azure CLI](../articles/virtual-machines/linux/upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Azure PowerShell](../articles/virtual-machines/windows/upload-generalized-managed.md) 创建自己的自定义映像并将其上传，快速创建符合特定构建要求的自定义 VM。
 
 ## <a name="availability-sets"></a>可用性集
 可用性集是 VM 的逻辑分组，可让 Azure 了解应用程序的构建方式，以便提供冗余和可用性。 建议在可用性集内创建两个或多个 VM，提供高度可用的应用程序，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 当单个 VM 使用 [Azure 高级存储](../articles/storage/storage-premium-storage.md)时，Azure SLA 适用于计划外维护事件。 可用性集由可防止硬件故障以及允许安全应用更新的两个额外分组构成 - 容错域 (FD) 和更新域 (UD)。
@@ -93,6 +93,13 @@ Azure 允许用户在规定的地理区域（例如“美国西部”、“北�
 
 #### <a name="managed-disk-fault-domains-and-availability-sets"></a>托管磁盘容错域和可用性集
 对于使用 [Azure 托管磁盘](../articles/storage/storage-faq-for-disks.md)的 VM，在使用托管可用性集时，VM 与托管磁盘容错域一致。 该一致性可确保附加到 VM 的所有托管磁盘都在同一托管磁盘容错域内。 在托管可用性集中，只能创建带托管磁盘的 VM。 托管磁盘容错域的数目因区域而异 - 每个区域两个或三个托管磁盘容错域。
+
+![托管磁盘 FD](./media/virtual-machines-common-manage-availability/md-fd.png)
+
+> [!IMPORTANT]
+> 托管可用性集的容错域的数目因区域而异 - 每个区域两到三个。 下表显示了每个区域的数目
+
+[!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
 ### <a name="update-domains"></a>更新域
 更新域是可以同时维护或重新启动的基础硬件逻辑组。 在可用性集内创建 VM 时，Azure 平台会自动将 VM 分布到这些更新域。 Azure 平台进行定期维护时，此方法可确保至少有一个应用程序实例始终保持运行状态。 在计划内维护期间，更新域的重启顺序可能不会按序进行，但一次只重启一个更新域。

@@ -3,7 +3,7 @@ title: "Azure Application Insights 中 Analytics 的演示 | Microsoft Docs"
 description: "Analytics 是 Application Insights 的强大搜索工具，本演示提供了 Analytics 中所有主要查询的简短示例。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: bddf4a6d-ea8d-4607-8531-1fe197cc57ad
 ms.service: application-insights

@@ -12,11 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/01/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 86055605be6fe264fcb53b26d87a36bcba568a53
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ab08c126b746ad6f8a835585b7e9773a505e8317
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -32,7 +35,7 @@ Azure Active Directory (Azure AD) v2.0 终结点支持各种现代应用体系�
 必须在 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com)中注册使用 v2.0 终结点的每个应用。 应用注册过程将收集这些值并将其分配给应用：
 
 * 用于唯一标识应用的**应用程序 ID**
-* 用于将响应定向回到应用的**重定向 URI**
+* 用于将响应定向回应用的重定向 URI****
 * 其他一些特定于方案的值
 
 有关详细信息，请了解如何[注册应用](active-directory-v2-app-registration.md)。
@@ -92,9 +95,9 @@ Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应�
 
 ![Web API 应用身份验证流](../../media/active-directory-v2-flows/convergence_scenarios_webapi.png)
 
-若要了解授权代码、刷新令牌和获取访问令牌的详细步骤，请参阅 [OAuth 2.0 协议](active-directory-v2-protocols-oauth-code.md)。
-
 若要了解如何使用 OAuth2 访问令牌保护 Web API，请查看[入门](active-directory-appmodel-v2-overview.md#getting-started)部分提供的 Web API 代码示例。
+
+在许多情况下，Web API 还需要对由 Azure Active Directory 保护的其他下游 Web API 发出出站请求。  为执行此操作，Web API 可以利用 Azure AD 的代理流，它允许 Web API 将传入的访问令牌替换为将在出站请求中使用的另一个访问令牌。  [此处](active-directory-v2-protocols-oauth-on-behalf-of.md)详细介绍 v2.0 终结点的代理流。
 
 ## <a name="mobile-and-native-apps"></a>移动和本机应用
 安装在设备中的应用（如移动和桌面应用）通常需要访问用于存储数据和代表用户执行各种功能的后端服务或 Web API。 这些应用可以使用 [OAuth 2.0 授权代码流](active-directory-v2-protocols-oauth-code.md)将登录凭据和授权添加到后端服务。
@@ -112,7 +115,7 @@ Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应�
 
 若要查看此方案的实际运行情况，请尝试运行[入门](active-directory-appmodel-v2-overview.md#getting-started)部分提供的单页应用代码示例之一。
 
-### <a name="daemons-and-server-side-apps"></a>守护程序和服务器端应用
+## <a name="daemons-and-server-side-apps"></a>守护程序和服务器端应用
 包含长时运行进程或无需用户交互便可操作的应用还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用可以通过 OAuth 2.0 客户端凭据流使用应用的标识（而不是用户的委派标识）来进行身份验证和获取令牌。
 
 在该流中，应用通过直接与 `/token` 终结点交互来获取令牌：
@@ -120,18 +123,4 @@ Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应�
 ![守护程序应用身份验证流](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
 若要生成守护程序，请参阅[入门](active-directory-appmodel-v2-overview.md#getting-started)部分中的客户端凭据文档，或者尝试 [.NET 示例应用](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)。
-
-## <a name="current-limitations"></a>当前限制
-目前，v2.0 终结点不支持本部分的应用类型，但在将来的开发中可能会支持。 有关 v2.0 终结点的其他限制和局限性的说明，请参阅[我是否应使用 v2.0 终结点？](active-directory-v2-limitations.md)。
-
-### <a name="chained-web-apis-on-behalf-of"></a>链接的 Web API（代理）
-许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 v2.0 终结点的保护。 此方案常见于具有 Web API 后端的本机客户端，该后端调用 Office 365 或图形 API 等 Microsoft Online 服务实例。
-
-可以使用 OAuth 2.0 JSON Web 令牌 (JWT) 持有者凭据授权（也称为[代理流](active-directory-v2-protocols.md)）来支持这种链接的 Web API 方案。 当前，v2.0 终结点中尚未实现代理流。 若要查看此流在正式版 Azure AD 服务中的工作原理，请参阅 [GitHub 上的代理代码示例](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

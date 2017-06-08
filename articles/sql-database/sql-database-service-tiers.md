@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-wms.date: 04/26/2017
+wms.date: 05/31/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 0ab804ee1dc25f1e44be856564ac8ffa87c54dea
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 9ea73d39a8fcee82e749d20accdd3a3c30cba94e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -50,13 +50,16 @@ ms.lasthandoff: 04/27/2017
 | **服务层功能** | **基本** | **标准** | **高级** | **高级 RS**|
 | :-- | --: | --: | --: | --: |
 | 最大单一数据库大小 | 2 GB | 250 GB | 4 TB*  | 500 GB  |
-| 弹性池中的最大数据库大小 | 156 GB | 2.9 TB | 500 GB | 500 GB |
+| 最大的弹性池大小 | 156 GB | 2.9 TB | 4 TB* | 750 GB |
+| 弹性池中的最大数据库大小 | 2 GB | 250 GB | 500 GB | 500 GB |
 | 每个池的数据库数目上限 | 500  | 500 | 100 | 100 |
+| 最大单一数据库 DTU | 5 | 100 | 4000 | 1000 |
+| 弹性池中的每数据库最大 DTU | 5 | 3000 | 4000 | 1000 |
 | 数据库备份保留期 | 7 天 | 35 天 | 35 天 | 35 天 |
 ||||||
 
 > [!IMPORTANT]
-> 这些额外的存储选项目前在以下区域可用：美国东部 2、美国西部、西欧、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 请参阅[当前的 4 TB 限制](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)
+> 附加的存储选项目前在以下区域中可用：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 请参阅[当前的 4 TB 限制](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)
 >
 
 确定了最低服务层后，就可以确定数据库的性能级别（DTU 数）。 通常情况下，可以先使用标准 S2 和 S3 性能级别。 对于具有高 CPU 或 IO 要求的数据库，开始适合使用高级性能级别。 高级版提供更多的 CPU，并且一开始就提供比最高标准性能水平高出 10 倍的 IO。
@@ -93,11 +96,9 @@ ms.lasthandoff: 04/27/2017
 
 池允许数据库共享和使用 eDTU 资源，无需为该池中的每个数据库分配特定性能级别。 例如，标准池中的单一数据库可使用 0 个 eDTU 到最大数据库 eDTU 数（配置池时设置的）运转。 弹性池允许多个具有不同工作负荷的数据库有效地使用在整个池中都可用的 eDTU 资源。 有关详细信息，请参阅 [弹性池的价格和性能注意事项](sql-database-elastic-pool.md) 。
 
-下表描述了池服务层的特征。
+下表描述了弹性池的资源限制。  弹性池中各个数据库的资源限制通常与池外部基于 DTU 和服务层的各个数据库相同。  例如，S2 数据库的最大并发辅助进程数为 120 个。  因此，如果池中每个数据库的最大 DTU 是 50 DTU（这等效于 S2），则标准池中数据库的最大并发辅助进程数也是 120 个辅助进程。
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
-
-池中的每个数据库也遵循该层的单一数据库特征。 例如，基本池具有每池最大会话数为 4800 - 28800 的限制，但该基本池中单个数据库具有 300 个会话数的数据库限制。
 
 ## <a name="scaling-up-or-scaling-down-an-elastic-pool"></a>上下缩放弹性池
 
@@ -122,22 +123,22 @@ ms.lasthandoff: 04/27/2017
 
 ### <a name="upgrading-to-4tb"></a>升级到 4TB 
 
-对于位于一个受支持区域中的 P11 和 P15 数据库，可将最大存储大小增加到 4 TB。 可在 Azure 门户、PowerShell 或 Transact-SQL 中执行此操作。 以下示例演示如何使用 ALTER DATABASE 命令更改最大大小：
+对于位于一个受支持区域中的 P11 和 P15 数据库，可将最大存储大小增加到 4 TB。 可在 Azure 门户或者使用 PowerShell 或 Transact-SQL 执行此操作。 以下示例演示如何使用 ALTER DATABASE 命令更改最大大小：
 
  ```sql
 ALTER DATABASE <myDatabaseName> 
    MODIFY (MAXSIZE = 4096 GB);
 ```
 
-升级现有 P11 或 P15 数据库只能由服务器级主体登录名或 dbmanager 数据库角色的成员执行。 如果在支持的区域中执行，配置将立即更新。 可以使用 [SELECT DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx) 或通过在 Azure 门户中查看数据库大小来检查此项内容。 在升级过程中，数据库将保持联机。 但是，在实际的数据库文件已升级到新的最大大小之前，你将无法利用完整的 4 TB 存储。 所需的时间长度取决于要升级的数据库的大小。  
+升级现有 P11 或 P15 数据库只能由服务器级主体登录名或 dbmanager 数据库角色的成员执行。 如果在受支持的区域中执行，配置将立即更新。 可以使用 [SELECT DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx) 或通过在 Azure 门户中查看数据库大小来检查此项内容。 在升级过程中，数据库将保持联机。 但是，在实际的数据库文件已升级到新的最大大小之前，你无法利用完整的 4 TB 存储。 所需的时间长度取决于要升级的数据库的大小。  
 
 ### <a name="error-messages"></a>错误消息
-在不支持的区域中创建或升级 P11/P15 数据库时，创建或升级操作将会失败，并出现以下错误消息：**最多带有 4 TB 存储的 P11 和 P15 数据库在美国东部 2、美国西部、东南亚、欧洲西部、加拿大东部、加拿大中部、日本东部和澳大利亚东部可用。**
+在不受支持的区域中创建或升级 P11/P15 数据库时，创建或升级操作将会失败，并出现以下错误消息：**最多带有 4 TB 存储的 P11 和 P15 数据库在美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部可用。**
 
 ## <a name="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize"></a>最大大小为 4 TB 的 P11 和 P15 数据库的当前限制
 
 - 创建或更新 P11 或 P15 数据库时，只能在 1 TB 和 4 TB 最大大小之间选择。 中间存储大小当前不受支持。
-- 即使使用的实际存储低于 1 TB，也不能将 4 TB 的数据库最大大小更改为 1 TB。 因此，不能将 P11-4TB/P15-4TB 降级到 P11-1TB/P15-1TB 或更低的性能层（例如，到 P1-P6），除非我们为其余性能层提供了更多存储选项。 此限制也适用于还原和复制方案，包括时间点、异地还原、长期备份保留以及数据库复制。 数据库配置了 4 TB 选项后，此数据库的所有还原操作都必须适合最大大小为 4 TB 的 P11/P15。
+- 即使使用的实际存储低于 1 TB，也不能将 4 TB 的数据库最大大小更改为 1 TB。 因此，不能将 P11-4TB/P15-4TB 降级到 P11-1TB/P15-1TB 或更低的性能层（例如，降级到 P1-P6），除非我们为其余性能层提供了更多存储选项。 此限制也适用于还原和复制方案，包括时间点、异地还原、长期备份保留以及数据库复制。 数据库配置了 4 TB 选项后，此数据库的所有还原操作都必须适合最大大小为 4 TB 的 P11/P15。
 - 对于“活动异地复制”方案：
    - 设置异地复制关系：如果主数据库是 P11 或 P15，则辅助数据库也必须为 P11 或 P15，更低的性能层将被拒绝作为辅助数据库，因为它们不能支持 4 TB。
    - 升级异地复制关系中的主数据库：在主数据库上将最大大小更改到 4 TB 将触发辅助数据库上的相同更改。 这两个升级都必须成功才能使主数据库上的更改生效。 4TB 选项的区域限制适用（请参阅上文）。 如果辅助数据库位于不支持 4 TB 的区域，则不会升级主数据库。

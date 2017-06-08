@@ -3,7 +3,7 @@ title: "使用 PowerShell 创建 SQL 数据仓库 | Microsoft Docs"
 description: "使用 PowerShell 创建 SQL 数据仓库"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: hirokib
 manager: jhubbard
 editor: 
 ms.assetid: 97434863-7938-4129-8949-5a119f5949e3
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: create
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: elbutter;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
 ms.openlocfilehash: 58ba34f8f99b7cd2b6a9a199bc70d79431405100
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/10/2017
 
 

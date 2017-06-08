@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: mfussell
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 0fb4cc7b3c071eeb0bff15f9a57fc7e2106d7ca7
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 81dae4c35fead96af8a8a2823952a0bd7f2e537e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -42,7 +42,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 * 你可以根据应用程序的需求来扩展应用程序的不同部分。
 * 开发团队可以更加灵活地推出更改，从而更快速和更频繁地向客户提供功能。
 
-Service Fabric 为当今很多 Microsof 服务提供支持，包括 Azure SQL 数据库、Azure DocumentDB、Cortana、Microsoft Power BI、Microsoft Intune、Azure 事件中心、Azure IoT 中心、Skype for Business 和许多核心 Azure 服务。
+Service Fabric 为当今很多 Microsof 服务提供支持，包括 Azure SQL 数据库、Azure Cosmos DB、Cortana、Microsoft Power BI、Microsoft Intune、Azure 事件中心、Azure IoT 中心、Skype for Business 和许多核心 Azure 服务。
 
 Service Fabric 适用于创建云本机服务，该服务可以根据需要先为小型服务，然后成长为包含数百或数千台计算机的大规模服务。
 

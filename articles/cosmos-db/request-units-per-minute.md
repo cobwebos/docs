@@ -1,13 +1,13 @@
 ---
 title: "Azure CosmosDB：每分钟请求单位数 (RU/m) | Microsoft Docs"
 description: "了解如何使用每分钟请求单位数来降低成本。"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: arnomicrosoft
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: acomet
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 878b7335fb5e09bc8704f7211cc6293ad6ea4bea
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: ea63b988a72801ae4c288048021a915b20a34794
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -112,7 +112,7 @@ await client.ReplaceOfferAsync(offerV2);
 
 本部分将概述非常适合用于启用每分钟请求单位数的方案。
 
-**开发/测试环境：**适合。 在开发阶段，如果你要使用不同的工作负荷测试应用程序，RU/m 可在此阶段提供灵活性。 同时，[模拟器](../documentdb/documentdb-nosql-local-emulator.md)也是一个用于测试 Azure Cosmos DB 的极佳免费工具。 但是，如果你想要在云环境中开始，RU/m 可为解决即席性能需求提供极大的灵活性。 这样就可以将更多的时间放在开发上，不需要一开始就过多地考虑性能需求。 我们建议从最小的 RU/s 预配开始，并启用 RU/m。
+**开发/测试环境：**适合。 在开发阶段，如果你要使用不同的工作负荷测试应用程序，RU/m 可在此阶段提供灵活性。 同时，[模拟器](local-emulator.md)也是一个用于测试 Azure Cosmos DB 的极佳免费工具。 但是，如果你想要在云环境中开始，RU/m 可为解决即席性能需求提供极大的灵活性。 这样就可以将更多的时间放在开发上，不需要一开始就过多地考虑性能需求。 我们建议从最小的 RU/s 预配开始，并启用 RU/m。
 
 **不可预测的高峰分钟粒度需求：**适合 – 节省：25-75%。 我们已看到了 RU/m 带来的极大改善，大多数生产方案都能适应该组。 如果某个 IoT 工作负荷在一分钟内多次出现高峰，或者在系统同时执行大量插入时运行查询，则你需要提供额外的容量来处理高峰需求。 我们建议应用下面所述的逐步方法来优化资源需求。
 
@@ -175,8 +175,8 @@ var query = client.CreateDocumentQuery<Book>(
 
 本文已介绍 Azure Cosmos DB 中的分区工作原理、如何创建分区集合，以及如何为应用程序选择适当的分区键。
 
-* 使用 Azure Cosmos DB 执行规模和性能测试。 有关示例，请参阅[使用 Azure Cosmos DB 执行性能和规模测试](../documentdb/documentdb-performance-testing.md)。
-* 开始使用 [SDK](../documentdb/documentdb-sdk-dotnet.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 编写代码
-* 了解 Azure Cosmos DB 中的[预配吞吐量](../documentdb/documentdb-request-units.md) 
+* 使用 Azure Cosmos DB 执行规模和性能测试。 有关示例，请参阅[使用 Azure Cosmos DB 执行性能和规模测试](performance-testing.md)。
+* 开始使用 [SDK](documentdb-sdk-dotnet.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 编写代码
+* 了解 Azure Cosmos DB 中的[预配吞吐量](request-units.md) 
 
 

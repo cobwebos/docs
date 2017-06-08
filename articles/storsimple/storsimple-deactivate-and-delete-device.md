@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 05/17/2017
 ms.author: anbacker
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 80fde4dfe7de89dffd39242d94fe46f68e41d611
-ms.openlocfilehash: 833dee54ef9de46c50e9e760594359baf4f89b5e
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c000a642aa088ac80cc7077453b87e9a47f96900
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 02/28/2017
 当停用设备后，存储在本地设备上的任何数据都将不再可访问。 只能恢复与存储在云中的设备关联的数据。  
 
 > [!WARNING]
-> 停用是不可撤消的永久性操作。 停用的设备不能注册到 StorSimple Manager 服务，除非是对其进行首次出厂重置。 
+> 停用是不可撤消的“永久性”操作。 停用的设备不能注册到 StorSimple Manager 服务，除非先将其重置为默认出厂设置。 
 > 
 > 出厂重置过程会删除以本地方式存储在设备上的所有数据。 因此，必须在停用设置之前对所有数据执行云快照操作。 这样即可在后面的某个阶段恢复所有数据。
 > 

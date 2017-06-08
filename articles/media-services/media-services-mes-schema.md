@@ -12,19 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 05/12/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: a526610f5b09ce73a9c192ec45ae8aafab001401
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: b35390c6eb912db966648bff4efb59cece2837b3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard 架构
 本主题描述 [Media Encoder Standard 预设](media-services-mes-presets-overview.md)基于的 XML 架构的一些元素和类型。 本主题说明元素及其有效值。 完整架构将在以后发布。  
 
-## <a name="a-namepreseta-preset-root-element"></a><a name="Preset"></a> 预设（根元素）
+## <a name="Preset"></a> 预设（根元素）
 定义编码预设。  
 
 ### <a name="elements"></a>元素
@@ -38,7 +39,7 @@ ms.lasthandoff: 02/16/2017
 | --- | --- | --- |
 | **版本**<br/><br/> 必选 |**xs:decimal** |预设版本。 以下限制适用：xs:fractionDigits 值 =“1”和 xs:minInclusive 值 =“1”，例如，**版本 =“1.0”**。 |
 
-## <a name="a-nameencodinga-encoding"></a><a name="Encoding"></a> 编码
+## <a name="Encoding"></a> 编码
 包含以下元素序列。  
 
 ### <a name="elements"></a>元素
@@ -50,7 +51,7 @@ ms.lasthandoff: 02/16/2017
 | **PngImage** |[PngImage](media-services-mes-schema.md#PngImage) |Png 图像设置。 |
 | **JpgImage** |[JpgImage](media-services-mes-schema.md#JpgImage) |Jpg 图像设置。 |
 
-## <a name="a-nameh264videoa-h264video"></a><a name="H264Video"></a> H264Video
+## <a name="H264Video"></a> H264Video
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -61,13 +62,13 @@ ms.lasthandoff: 02/16/2017
 | **SyncMode**<br/><br/> minOccurs=“0” | |将在未来版本中公开功能。 |
 | **H264Layers**<br/><br/> minOccurs=“0” |[H264Layers](media-services-mes-schema.md#H264Layers) |输出视频层的集合。 |
 
-## <a name="a-nameh264layersa-h264layers"></a><a name="H264Layers"></a> H264Layers
+## <a name="H264Layers"></a> H264Layers
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[H264Layer](media-services-mes-schema.md#H264Layer) |H264 层的集合。 |
 
-## <a name="a-nameh264layera-h264layer"></a><a name="H264Layer"></a> H264Layer
+## <a name="H264Layer"></a> H264Layer
 > [!NOTE]
 > 视频限制基于 [H264 级别](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Levels)表中描述的值。  
 > 
@@ -86,11 +87,11 @@ ms.lasthandoff: 02/16/2017
 | **BFrames**<br/><br/> minOccurs=“0” |**xs:int** |参考帧之间的 B 帧数。 |
 | **ReferenceFrames**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“3” |**xs:int** |GOP 中的参考帧数。 |
 | **EntropyMode**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“Cabac” |**xs:string** |可能是以下值之一：**Cabac** 和 **Cavlc**。 |
-| **FrameRate**<br/><br/> minOccurs=“0” |有理数 |确定输出视频的帧速率。 使用默认值“0/1”，允许编码器使用与输入视频相同的帧速率。 允许的值应为常规视频帧速率，如下所示。 但是，允许使用任何有效有理数。 例如 1/1 表示 1 fps 且有效。<br/><br/> - 12/1 (12 fps)<br/><br/> - 15/1 (15 fps)<br/><br/> - 24/1 (24 fps)<br/><br/> - 24000/1001 (23.976 fps)<br/><br/> - 25/1 (25 fps)<br/><br/>  - 30/1 (30 fps)<br/><br/> - 30000/1001 (29.97 fps) |
+| **FrameRate**<br/><br/> minOccurs=“0” |有理数 |确定输出视频的帧速率。 使用默认值“0/1”，允许编码器使用与输入视频相同的帧速率。 允许的值应为常规视频帧速率，如下所示。 但是，允许使用任何有效有理数。 例如 1/1 表示 1 fps 且有效。<br/><br/> - 12/1 (12 fps)<br/><br/> - 15/1 (15 fps)<br/><br/> - 24/1 (24 fps)<br/><br/> - 24000/1001 (23.976 fps)<br/><br/> - 25/1 (25 fps)<br/><br/>  - 30/1 (30 fps)<br/><br/> - 30000/1001 (29.97 fps) <br/> <br/>**注意** 如果要创建多比特率编码的自定义预设，然后预设的所有层**必须**使用相同的帧速率值。|
 | **AdaptiveBFrame**<br/><br/> minOccurs=“0” |**xs: boolean** |从 Azure 媒体编码器复制 |
 | **切片**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“0” |**xs:int** |确定将帧切分成多少片。 建议使用默认值。 |
 
-## <a name="a-nameaacaudioa-aacaudio"></a><a name="AACAudio"></a> AACAudio
+## <a name="AACAudio"></a> AACAudio
  包含以下元素和组的序列。  
 
  有关 AAC 的详细信息，请参阅 [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)。  
@@ -110,7 +111,7 @@ ms.lasthandoff: 02/16/2017
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs=“0” |请参阅 [ AudioGroup](media-services-mes-schema.md#AudioGroup) 的说明，了解可为每个配置文件设置的适当通道数、采样率和比特率。 |
 
-## <a name="a-nameaudiogroupa-audiogroup"></a><a name="AudioGroup"></a> AudioGroup
+## <a name="AudioGroup"></a> AudioGroup
 有关每个配置文件的有效值的详细信息，请参阅后面的“音频编解码器详细信息”表。  
 
 ### <a name="elements"></a>元素
@@ -128,14 +129,14 @@ ms.lasthandoff: 02/16/2017
 **HEAACV2**|2:<br/><br/> - 22050 : 8 &lt;= 比特率 &lt;= 10<br/><br/> - 24000 : 8 &lt;= 比特率 &lt;= 10<br/><br/> - 32000 : 12 &lt;= 比特率 &lt;= 64<br/><br/> - 44100 : 20 &lt;= 比特率 &lt;= 64<br/><br/> - 48000 : 20 &lt;= 比特率 &lt;= 64<br/><br/> - 88200 : 64 &lt;= 比特率 &lt;= 64  
   
 
-## <a name="a-nameclipa-clip"></a><a name="Clip"></a> 剪辑
+## <a name="Clip"></a> 剪辑
 ### <a name="attributes"></a>属性
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **StartTime** |**xs:duration** |指定演示文稿的开始时间。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 |
 | **持续时间** |**xs:duration** |指定演示文稿的持续时间（例如，视频中覆盖的外观）。 |
 
-## <a name="a-nameoutputa-output"></a><a name="Output"></a> 输出
+## <a name="Output"></a> 输出
 ### <a name="attributes"></a>属性
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -153,7 +154,7 @@ ms.lasthandoff: 02/16/2017
 | **{Extension}** |继承自输出文件的“类型”属性。 输出文件名将具有以下扩展名之一：“mp4”、“ts”、“jpg”、“png”或“bmp”。 |
 | **{Index}** |对于缩略图是必需的。 只应存在一次。 |
 
-## <a name="a-namevideoa-video-complex-type-inherits-from-codec"></a><a name="Video"></a> 视频（继承自编解码器的复杂类型）
+## <a name="Video"></a> 视频（继承自编解码器的复杂类型）
 ### <a name="attributes"></a>属性
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -162,7 +163,7 @@ ms.lasthandoff: 02/16/2017
 | **范围** |**xs:string** | |
 | **PreserveResolutionAfterRotation** |**xs: boolean** |有关详细说明，请参阅以下部分：[PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
 
-### <a name="a-namepreserveresolutionafterrotationa-preserveresolutionafterrotation"></a><a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
+### <a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
 建议使用 PreserveResolutionAfterRotation 标志结合以百分比表示的分辨率值（宽度 =“100％”，高度 =“100％”）。  
 
 默认情况下，Media Encoder Standard (MES) 预设中的编码分辨率设置（宽度、高度）针对 0 度旋转的视频。 例如，如果输入视频为 1280x720，且为零度旋转，则默认预设确保输出具有相同的分辨率。 请参阅下图。  
@@ -177,7 +178,7 @@ ms.lasthandoff: 02/16/2017
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 
-## <a name="a-nameformatgroupa-formatgroup-group"></a><a name="FormatGroup"></a> FormatGroup（组）
+## <a name="FormatGroup"></a> FormatGroup（组）
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -185,7 +186,7 @@ ms.lasthandoff: 02/16/2017
 | **PngFormat** |**PngFormat** | |
 | **JpgFormat** |**JpgFormat** | |
 
-## <a name="a-namebmplayera-bmplayer"></a><a name="BmpLayer"></a> BmpLayer
+## <a name="BmpLayer"></a> BmpLayer
 ### <a name="element"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -197,7 +198,7 @@ ms.lasthandoff: 02/16/2017
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
-## <a name="a-namepnglayera-pnglayer"></a><a name="PngLayer"></a> PngLayer
+## <a name="PngLayer"></a> PngLayer
 ### <a name="element"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -209,7 +210,7 @@ ms.lasthandoff: 02/16/2017
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
-## <a name="a-namejpglayera-jpglayer"></a><a name="JpgLayer"></a> JpgLayer
+## <a name="JpgLayer"></a> JpgLayer
 ### <a name="element"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
@@ -222,37 +223,37 @@ ms.lasthandoff: 02/16/2017
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
-## <a name="a-namepnglayersa-pnglayers"></a><a name="PngLayers"></a> PngLayers
+## <a name="PngLayers"></a> PngLayers
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
-## <a name="a-namebmplayersa-bmplayers"></a><a name="BmpLayers"></a> BmpLayers
+## <a name="BmpLayers"></a> BmpLayers
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
-## <a name="a-namejpglayersa-jpglayers"></a><a name="JpgLayers"></a> JpgLayers
+## <a name="JpgLayers"></a> JpgLayers
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
-## <a name="a-namebmpimagea-bmpimage-complex-type-inherits-from-video"></a><a name="BmpImage"></a> BmpImage（继承自视频的复杂类型）
+## <a name="BmpImage"></a> BmpImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs=“0” |[PngLayers](media-services-mes-schema.md#PngLayers) |Png layers |
 
-## <a name="a-namejpgimagea-jpgimage-complex-type-inherits-from-video"></a><a name="JpgImage"></a> JpgImage（继承自视频的复杂类型）
+## <a name="JpgImage"></a> JpgImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs=“0” |[PngLayers](media-services-mes-schema.md#PngLayers) |Png layers |
 
-## <a name="a-namepngimagea-pngimage-complex-type-inherits-from-video"></a><a name="PngImage"></a> PngImage（继承自视频的复杂类型）
+## <a name="PngImage"></a> PngImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |

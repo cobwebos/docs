@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 03/29/2017
+ms.date: 05/09/2017
 ms.author: barclayn
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: f7c2f702a4ff2af8bb7487d49f5c6f9bf5199a49
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5e135be1e21173add3236f851609f1df0a5b0dee
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/14/2017
 Azure Active Directory 审核事件可以帮助识别 Azure Active Directory 中发生的特权操作。 通过查看 [Azure Active Directory 审核报告事件](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md)，可以了解能够跟踪的事件类型
 
 >[!NOTE]
-必须已经成功完成[入门](security-azure-log-integration-get-started.md)文章中的步骤才能执行本文中的步骤。
+执行本文中的步骤前，应查看[入门](security-azure-log-integration-get-started.md)文章，并完成“安装后和验证”部分中步骤 3 及之前的所有步骤。
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志的步骤
 
@@ -35,9 +36,9 @@ Azure Active Directory 审核事件可以帮助识别 Azure Active Directory 中
 2. 运行以下命令：
 
  ``azlog createazureid``
- 
+
  此命令提示你登录 Azure。 此命令接着会在 Azure AD Tenant 中创建一个 Azure Active Directory 服务主体，这些 Azure AD Tenant 会托管 Azure 订阅，而在这些 Azure 订阅中，已登录的用户是管理员、协同管理员或所有者。 如果已登录的用户仅仅是 Azure AD Tenant 中的一名来宾用户，那么此命令将失败。 对 Azure 的身份验证是通过 Azure Active Directory (AD) 完成的。 为 Azlog 集成创建服务主体会创建将被赋予从 Azure 订阅的读取权限的 Azure AD ID。
- 
+
 3. 运行提供 tenantID 的命令。 需要成为租户管理员角色的成员才能运行此命令。
 
 ``Azlog.exe authorizedirectoryreader tenantId``
@@ -53,7 +54,7 @@ Azure Active Directory 审核事件可以帮助识别 Azure Active Directory 中
 
 将标准 SIEM 文件转发器连接器指向相应的文件夹，以将数据发送给 SIEM 实例。 根据所使用的 SIEM 产品，你可能需要某些字段映射。
 
-通过 [Azure 日志集成 MSDN 论坛](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)可以获得社区帮助。 在此论坛中，AzLog 社区可以对如何充分利用 Azure 日志集成相互提问和回答，并提供提示和技巧。 此外，Azure 日志集成团队也会关注此论坛，并尽可能地提供帮助。 
+通过 [Azure 日志集成 MSDN 论坛](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)可以获得社区帮助。 在此论坛中，AzLog 社区可以对如何充分利用 Azure 日志集成相互提问和回答，并提供提示和技巧。 此外，Azure 日志集成团队也会关注此论坛，并尽可能地提供帮助。
 
 你也可以打开[支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 若要执行此操作，请选择“日志集成”作为需要请求支持的服务。
 

@@ -1,8 +1,10 @@
 # 概述
 ## [什么是 Azure Active Directory？](active-directory-whatis.md)
 ## [选择版本](active-directory-editions.md)
-
 ## [关于 Azure 标识管理](identity-fundamentals.md)
+## [了解 Azure 标识解决方案](understand-azure-identity-solutions.md)
+## [预览 Azure 门户体验](active-directory-preview-explainer.md)
+
 
 # 入门
 ## [获取 Azure AD 租户](active-directory-howto-tenant.md)
@@ -13,7 +15,8 @@
 ### [经典门户](active-directory-licensing-what-is.md)
 ## [为组织获取 Azure](sign-up-organization.md)
 ## [常见问题](active-directory-faq.md)
-## [SaaS 应用教程](active-directory-saas-tutorial-list.md)
+## [如何获取对 Azure Active Directory 的支持](active-directory-troubleshooting-support-howto.md)
+## [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
 
 # 如何
 ## 规划和设计
@@ -89,18 +92,19 @@
 ### 故障排除
 #### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [在下载项中缺少数据](active-directory-reporting-troubleshoot-missing-data-download.md)
-###    以编程方式访问
+###    [以编程方式访问](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [审核参考](active-directory-reporting-api-audit-reference.md)
-#### [审核示例](active-directory-reporting-api-audit-samples.md)
-#### [获取数据](active-directory-reporting-api-with-certificates.md)
-#### [先决条件](active-directory-reporting-api-prerequisites.md)
 #### [登录参考](active-directory-reporting-api-sign-in-activity-reference.md)
+#### [先决条件](active-directory-reporting-api-prerequisites-azure-portal.md)
+#### [审核示例](active-directory-reporting-api-audit-samples.md)
 #### [登录示例](active-directory-reporting-api-sign-in-activity-samples.md)
+#### [获取数据](active-directory-reporting-api-with-certificates.md)
 ### [经典门户](active-directory-view-access-usage-reports.md)
 #### [Azure AD 报告](active-directory-reporting-getting-started.md)
 #### [报告指南](active-directory-reporting-guide.md)
 #### [已知网络](active-directory-known-networks.md)
 #### [API](active-directory-reporting-api-getting-started.md)
+##### [先决条件](active-directory-reporting-api-prerequisites.md)
 #### [审核事件](active-directory-reporting-audit-events.md)
 #### [延迟](active-directory-reporting-latencies.md)
 #### [通知](active-directory-reporting-notifications.md)
@@ -113,7 +117,7 @@
 ##### [未知源](active-directory-reporting-sign-ins-from-unknown-sources.md)
 ##### [异常登录](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
-## [管理密码](active-directory-passwords.md)
+## [管理密码](active-directory-passwords-overview.md)
 ### 用户文档
 #### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
 #### [密码最佳做法](active-directory-secure-passwords.md)
@@ -171,11 +175,14 @@
 ##### [使用 KCD 执行 SSO](active-directory-application-proxy-sso-using-kcd.md)
 ##### [使用标头执行 SSO](application-proxy-ping-access.md)
 ##### [将 SSO 与密码保管配合使用](application-proxy-sso-azure-portal.md)
-#### 了解最佳做法
+#### 概念
 ##### [连接器](application-proxy-understand-connectors.md)
 ##### [安全性](application-proxy-security-considerations.md)
 ##### [网络](application-proxy-network-topology-considerations.md)
-#### 
+
+
+##### [从 TMG 或 UAG 升级](application-proxy-transition-from-uag-tmg.md)
+
 #### 高级配置
 ##### [在单独的网络上发布](active-directory-application-proxy-connectors-azure-portal.md)
 ##### [代理服务器](application-proxy-working-with-proxy-servers.md)
@@ -186,7 +193,6 @@
 #### 发布演练
 ##### [远程桌面](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-##### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [故障排除](active-directory-application-proxy-troubleshoot.md)
 #### 使用经典门户
 ##### [下载连接器](application-proxy-enable-classic-portal.md)
@@ -201,12 +207,6 @@
 #### [删除用户](active-directory-coreapps-remove-assignment-azure-portal.md)
 #### [查看所有应用](active-directory-coreapps-view-azure-portal.md)
 #### [管理用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-
-### 开发
-#### [分配用户](active-directory-applications-guiding-developers-assigning-users.md)
-#### [分配组](active-directory-applications-guiding-developers-assigning-groups.md)
-#### [需要分配](active-directory-applications-guiding-developers-requiring-user-assignment.md)
-#### [开发 LoB 应用](active-directory-applications-guiding-developers-for-lob-applications.md)
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [自助服务访问权限](active-directory-self-service-application-access.md)
@@ -226,7 +226,7 @@
 ##### [访问面板](active-directory-application-access-panel-content-map.md)
 ##### [应用程序代理](active-directory-application-proxy-content-map.md)
 ##### [条件性访问](active-directory-application-conditional-access-content-map.md)
-
+### [开发应用](active-directory-applications-guiding-developers-for-lob-applications.md)
 ### [文档库](active-directory-apps-index.md)
 
 ## 管理目录
@@ -294,11 +294,13 @@
 ##### [按资源](role-based-access-control-configure.md)
 #### [内置角色](role-based-access-built-in-roles.md)
 #### [自定义角色](role-based-access-control-custom-roles.md)
+#### [为内部用户和外部用户分配自定义角色](role-based-access-control-create-custom-roles-for-internal-external-users.md)
 #### [报告](role-based-access-control-access-change-history-report.md)
 #### 管理角色的更多方式
 ##### [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 ##### [PowerShell](role-based-access-control-manage-access-powershell.md)
 ##### [REST](role-based-access-control-manage-access-rest.md)
+#### [提升租户管理员访问权限](role-based-access-control-tenant-admin-access.md)
 #### [故障排除](role-based-access-control-troubleshooting.md)
 #### [资源提供程序操作](role-based-access-control-resource-provider-operations.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
@@ -306,12 +308,13 @@
 ## 保护标识
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
+#### [最佳实践](active-directory-conditional-access-best-practices.md)
+#### [技术参考](active-directory-conditional-access-technical-reference.md)
 #### [支持的应用](active-directory-conditional-access-supported-apps.md)
 #### [了解设备策略](active-directory-conditional-access-device-policies.md)
 #### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
-#### [技术参考](active-directory-conditional-access-technical-reference.md)
-#### [常见问题](active-directory-conditional-faqs.md)
 #### [补救方法](active-directory-conditional-access-device-remediation.md)
+#### [常见问题](active-directory-conditional-faqs.md)
 #### [经典门户](active-directory-conditional-access.md)
 ##### [入门](active-directory-conditional-access-azuread-connected-apps.md)
 
@@ -332,6 +335,7 @@
 #### [登录体验](active-directory-identityprotection-flows.md)
 #### [模拟风险事件](active-directory-identityprotection-playbook.md)
 #### [取消阻止用户](active-directory-identityprotection-unblock-howto.md)
+#### [常见问题](active-directory-identity-protection-faqs.md)
 #### [术语表](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)

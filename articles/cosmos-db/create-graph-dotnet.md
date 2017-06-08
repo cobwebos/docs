@@ -1,25 +1,25 @@
 ---
 title: "使用图形 API 生成 Azure Cosmos DB .NET 应用程序 | Microsoft Docs"
 description: "演示了一个可以用来连接到 Azure Cosmos DB 并进行查询的 .NET 代码示例"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
-ms.service: cosmosdb
-ms.custom: quick start connect
+ms.service: cosmos-db
+ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 05/21/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 07a13c3e9e2baefe0be7ed417ba105dd23a3708d
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 597b12b98edb07e453fc3cd5a0884c584a5bfd14
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -37,23 +37,11 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
-[!INCLUDE [cosmosdb-create-dbaccount-graph](../../includes/cosmosdb-create-dbaccount-graph.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
 ## <a name="add-a-graph"></a>添加图形
 
-[!INCLUDE [cosmosdb-create-graph](../../includes/cosmosdb-create-graph.md)]
-
-## <a name="add-sample-data"></a>添加示例数据
-
-现在可以使用数据资源管理器将数据添加到图形。
-
-1. 在数据资源管理器中，依次展开 **sample-database**、**sample-graph**，单击“图形”，然后单击“新建顶点”和“新建边缘”向图形中添加项目。 使用数据资源管理器还可以缩放吞吐量，并将存储过程、用户定义的函数和触发器添加到容器中。
-
-    ![将顶点和边缘添加到数据资源管理器的图形中](./media/create-graph-dotnet/azure-cosmos-db-graph-sample-data.png)
-
-2. 添加一些项目后，单击“应用筛选器”按钮，或者右键单击“图形”，然后单击“新建图形查询”，查看数据的可视化图。 可以通过单击“样式”按钮并更改设置来更改数据的标签和样式。 下面是数据资源管理器中的示例图，显示的标签、颜色和数据全都可以修改。
-
-    ![Azure 门户的数据资源管理器中的可视化图形资源管理器](./media/create-graph-dotnet/azure-cosmos-db-graph-explorer.png)
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -154,7 +142,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 

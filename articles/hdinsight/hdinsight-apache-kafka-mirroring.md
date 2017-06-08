@@ -1,6 +1,6 @@
 ---
-title: "创建 Apache Kafka on HDInsight 群集的镜像 |Microsoft Docs"
-description: "了解如何使用 Kafka 的镜像功能，通过在辅助群集中创建主题的镜像，保留一个 Kafka on HDInsight 群集的副本。"
+title: "镜像 Apache Kafka 主题 - Azure HDInsight | Microsoft Docs"
+description: "了解如何使用 Apache Kafka 的镜像功能，通过在辅助群集中创建主题的镜像，保留一个 Kafka on HDInsight 群集的副本。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,32 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/13/2017
+ms.date: 05/15/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c7517f61944b9fdb02a3589d7c9cd83355dae6d8
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 0b8de346d8209dcfd665baf18ce054e5556a883b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/17/2017
 
 ---
-# <a name="use-mirrormaker-to-create-a-replica-of-a-kafka-on-hdinsight-cluster-preview"></a>使用 MirrorMaker 创建 Kafka on HDInsight 群集的副本（预览）
+# <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight-preview"></a>使用 MirrorMaker 通过 Kafka on HDInsight（预览版）复制 Apache Kafka 主题
 
-Apache Kafka 包含镜像功能，可用于将主题从一个 Kafka 群集复制到另一个群集。 例如，在不同 Azure 区域中的 Kafka 集群之间复制记录。
+了解如何使用 Apache Kafka 镜像功能将主题复制到辅助群集。 镜像可以作为连续进程运行，也可间断式地用作将数据从一个群集迁移到另一个群集的方法。
 
-镜像可以作为连续进程运行，也可间断式地用作将数据从一个群集迁移到另一个群集的方法。
+在此示例中，镜像用于在两个 HDInsight 群集之间复制主题。 这两个群集位于同一区域的 Azure 虚拟网络中。
 
 > [!WARNING]
 > 不应将镜像视为实现容错的方法。 源和目标群集的主题内项目的偏移量不同，因此客户端不能将两者互换使用。
-> 
+>
 > 如果担心容错，应在群集内为主题设置复制。 有关详细信息，请参阅 [Kafka on HDInsight 入门](hdinsight-apache-kafka-get-started.md)。
 
-## <a name="prerequisites"></a>先决条件
-
-* Azure 虚拟网络：源和目标 Kafka 群集必须能够直接相互通信。 HDInsight 不会在 Internet 上公开 Kafka API，因此源和目标群集必须存在于同一 Azure 虚拟网络中。
-
-* 两个 Kafka 群集：本文档使用 Azure Resource Manager 模板在 Azure 虚拟网络中创建两个 Kafka on HDInsight 群集。
-
-## <a name="how-does-mirroring-work"></a>镜像如何工作？
+## <a name="how-kafka-mirroring-works"></a>Kafka 镜像的工作原理
 
 镜像通过使用 MirrorMaker 工具（Apache Kafka 的一部分）来使用源群集上主题中的记录，然后在目标群集上创建本地副本。 MirrorMaker 使用从源群集进行读取的一个（或多个）使用者，以及会写入本地（目标）群集的一个创建器。
 
@@ -46,18 +41,22 @@ Apache Kafka 包含镜像功能，可用于将主题从一个 Kafka 群集复制
 
 ![镜像过程图示](./media/hdinsight-apache-kafka-mirroring/kafka-mirroring.png)
 
+Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的权限。 Kafka 生成者或使用者必须与 Kafka 群集中的节点在同一 Azure 虚拟网络中。 对于此示例，Kafka 源和目标群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
+
+![Azure 虚拟网络中的源和目标 Kafka 群集的图示](./media/hdinsight-apache-kafka-mirroring/spark-kafka-vnet.png)
+
 源和目标集群在节点数和分区数上可能不同，并且主题内的偏移量也不同。 镜像维护用于分区的密钥值，因此会按密钥来保留记录顺序。
 
-### <a name="mirroring-between-networks"></a>网络之间的镜像
+### <a name="mirroring-across-network-boundaries"></a>跨网络边界执行镜像操作
 
 如果需要在不同网络中的 Kafka 群集之间执行镜像操作，还需要考虑以下注意事项：
 
 * **网关**：网络必须能够在 TCPIP 级别进行通信。
 
-* **名称解析**：每个网络中的 Kafka 群集必须能够使用主机名相互连接。 这可能需要每个网络中的域名系统 (DNS) 服务器，这些网络配置为将请求转发到其他网络。 
-  
+* **名称解析**：每个网络中的 Kafka 群集必须能够使用主机名相互连接。 这可能需要每个网络中的域名系统 (DNS) 服务器，这些网络配置为将请求转发到其他网络。
+
     创建 Azure 虚拟网络时，必须指定自定义 DNS 服务器和服务器的 IP 地址，而不是使用网络提供的自动 DNS。 创建虚拟网络后，必须创建一个使用该 IP 地址的 Azure 虚拟机，然后在其上安装和配置 DNS 软件。
-  
+
     > [!WARNING]
     > 在将 HDInsight 安装到虚拟网络之前，需先创建和配置自定义 DNS 服务器。 HDInsight 不需要再进行其他配置，便可使用为虚拟网络配置的 DNS 服务器。
 
@@ -65,20 +64,13 @@ Apache Kafka 包含镜像功能，可用于将主题从一个 Kafka 群集复制
 
 ## <a name="create-kafka-clusters"></a>创建 Kafka 群集
 
-Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的权限。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 源和目标群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
-
-![Azure 虚拟网络中的源和目标 Kafka 群集的图示](./media/hdinsight-apache-kafka-mirroring/spark-kafka-vnet.png)
-
-> [!NOTE]
-> 虽然 Kafka 本身受限于虚拟网络中的通信，但可以通过 Internet 访问群集上的其他服务（例如 SSH 和 Ambari）。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。
-
 虽然可手动创建 Azure 虚拟网络和 Kafka 群集，但使用 Azure Resource Manager 模板会更简单。 使用以下步骤将 Azure 虚拟网络和两个 Kafka 群集部署到 Azure 订阅。
 
 1. 使用以下按钮登录到 Azure，然后在 Azure 门户中打开模板。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-mirror-cluster-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-kafka-mirroring/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-mirror-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-kafka-mirroring/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure Resource Manager 模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet.json**。
+    Azure Resource Manager 模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.json** 中。
 
 2. 使用以下信息来填充“自定义部署”边栏选项卡上的项：
     
@@ -86,7 +78,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
     
     * **资源组**：创建一个资源组或选择现有的资源组。 此组包含 HDInsight 群集。
 
-    * **位置**：选择在地理上邻近的位置。 此位置必须匹配“设置”部分中的位置。
+    * **位置**：选择在地理上邻近的位置。
      
     * **基群集名称**：此值将用作 Kafka 群集的基名称。 例如，输入 **hdi** 会创建名为 **source-hdi** 和 **dest-hdi** 的群集。
 
@@ -97,8 +89,6 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
     * **SSH 用户名**：要创建的源和目标 Kafka 群集的 SSH 用户。
 
     * **SSH 密码**：源和目标 Kafka 群集的 SSH 用户的密码。
-
-    * **位置**：在其中创建群集的区域。
 
 3. 阅读“条款和条件”，然后选择“我同意上述条款和条件”。
 
@@ -141,12 +131,12 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
     ```bash
     echo $SOURCE_ZKHOSTS
     ```
-   
- 这会返回类似于以下文本的信息：
-   
-       zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk6-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181
-   
- 请保存此信息。 在下一部分中使用。
+
+    这会返回类似于以下文本的信息：
+
+    `zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk6-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181`
+
+    请保存此信息。 在下一部分中使用。
 
 ## <a name="configure-mirroring"></a>配置镜像
 
@@ -173,7 +163,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
    
     此文件描述从源 Kafka 群集读取时要使用的使用者信息。 有关使用者配置的详细信息，请参阅 kafka.apache.org 中的[使用者配置](https://kafka.apache.org/documentation#consumerconfigs)。
    
-    依次按 **Ctrl-X**、**Y** 和 Enter 以保存文件。
+    若要保存文件，请使用 **Ctrl + X**、**Y**，然后按 **Enter**。
 
 3. 配置与目标群集通信的创建器之前，必须找到**目标**群集的中转站主机。 使用以下命令检索此信息：
    

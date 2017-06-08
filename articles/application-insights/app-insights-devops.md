@@ -3,7 +3,7 @@ title: "Web 应用程序性能监视 - Azure Application Insights | Microsoft Do
 description: "Application Insights 如何适应 devOps 周期"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
 ms.service: application-insights

@@ -2,7 +2,6 @@
 ## [什么是 Data Lake Analytics？](data-lake-analytics-overview.md)
 
 # 入门
-## [交互式教程：分析网站日志](data-lake-analytics-use-interactive-tutorials.md)
 ## [Azure 门户](data-lake-analytics-get-started-portal.md)
 ## [PowerShell](data-lake-analytics-get-started-powershell.md)
 ## [.NET SDK](data-lake-analytics-get-started-net-sdk.md)
@@ -17,6 +16,7 @@
 ## 开发
 ### [U-SQL 基础知识](data-lake-analytics-u-sql-get-started.md)
 ### [U-SQL 目录](data-lake-analytics-u-sql-catalog.md)
+### [U-SQL 联接](data-lake-analytics-u-sql-combine-data-with-joins.md)
 ### [U-SQL 参数](data-lake-analytics-u-sql-parameterize_scripts.md)
 ### [U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
 ### [U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
@@ -26,6 +26,8 @@
 
 ## 创建解决方案
 ### [分析网站日志](data-lake-analytics-analyze-weblogs.md)
+### [交互式教程：分析网站日志](data-lake-analytics-use-interactive-tutorials.md)
+
 
 ## 管理
 ### [Azure 门户](data-lake-analytics-manage-use-portal.md)

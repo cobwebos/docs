@@ -12,28 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/08/2016
+ms.date: 05/04/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: d15020779b398dbcd055352dbf38822b1bd02b7c
-ms.openlocfilehash: 0f0cf786f91c75f7a514790dccfbfc1f05b67e56
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 36de09434ae5082e5f92dcc9a82bba88f5b89c85
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Azure Active Directory 中企业应用程序管理的新增功能 
 
-新的 Azure 门户增强了企业应用程序管理工具，其中的一些工具已在 Azure 经典门户中提供使用，还有一些新功能可让应用的管理变得更简单有效。
+Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具，其新功能可使管理应用更简单和更高效。
 
-下面是 Azure 门户中的 Azure AD 的一些增强功能：
+下面是 [Azure 门户](https://portal.azure.com)中的 Azure AD 的一些增强功能。
 
-- 新增和改进了应用程序库体验，提供简化的应用程序创建模型，支持经典门户中熟悉的所有应用程序类型。 
-- 全新的快速入门体验，帮助用户快速开始试运行新应用程序。 
-- 只需单击几下鼠标，就能配置自助服务策略。 
-- 最后，对应用程序代理、单一登录配置和引入自己的应用程序体验做出重大改进，让用户更充分地享受新门户带来的优势。 请继续阅读，了解所有极佳的新功能！
+- 改进了应用程序库体验，提供简化的应用程序创建模型，支持你惯于使用的所有应用程序类型。 
+- 全新的快速入门体验，可帮助用户开始试运行应用程序。 
+- 只需单击几下鼠标，即可配置自助服务策略。 
+- 对应用程序代理、单一登录配置和引入自己的应用程序体验做出改进，让用户可以比以前完成更多任务。
 
-## <a name="the-new-and-improved-application-gallery"></a>新增和改进的应用程序库
+## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>对 Azure Active Directory 应用程序库做出改进
 
-现在，可以使用简化的体验添加所有偏好的应用程序，不管是我们的大规模库中的应用程序、扩展到云中的自定义应用程序，还是正在开发的全新应用程序。  在“企业应用程序”概述边栏选项卡或“所有应用程序”边栏选项卡上单击“添加”，即可开始使用这种新体验。
+添加常用的应用程序，无论这些应用程序是来自[应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)的应用程序、正在扩展到云中的自定义应用程序，还是正在开发的新应用程序。  在“企业应用程序”概述边栏选项卡或“所有应用程序”边栏选项卡上单击“添加”，即可开始使用这种新体验。
  
   ![添加应用程序](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 
@@ -148,17 +150,12 @@ ms.openlocfilehash: 0f0cf786f91c75f7a514790dccfbfc1f05b67e56
 
 ##<a name="feedback"></a>反馈
 
-我们希望各位用户能够顺利使用更新的预览版体验。 敬请不时地向我们发送反馈！ 欢迎在[反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)的**管理员门户**版块中发表有关改进的意见和想法。  我们热衷于不断推出炫酷的新功能，遵从用户的指导来塑造和定义后续版本。
+我们希望你喜欢使用改进的 Azure AD 体验。 敬请不时地向我们发送反馈！ 欢迎在[反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)的**管理员门户**版块中发表有关改进的意见和想法。  我们热衷于不断推出炫酷的新功能，遵从用户的指导来塑造和定义后续版本。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅 [Managing Applications with Azure Active Directory](active-directory-enable-sso-scenario.md)（使用 Azure Active Directory 管理应用程序）。
 
 
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

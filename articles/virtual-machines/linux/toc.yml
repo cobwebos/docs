@@ -57,11 +57,12 @@
     href: azure-vm-network-overview.md
   - name: VM 规模集
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
-  - name: 实例元数据服务 
+  - name: 实例元数据服务
+ 
     href: ../virtual-machines-instancemetadataservice-overview.md
   - name: 容器
     href: containers.md
-  - name: 资源管理器
+  - name: Resource Manager
     href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     items:
     - name: 部署模型
@@ -139,6 +140,14 @@
       href: move-vm.md
     - name: 创建高度可用的 VM
       href: create-cli-complete.md
+    - name: Ansible
+      items:
+      - name: 安装和配置
+        href: ansible-install-configure.md
+      - name: 创建基本 VM
+        href: ansible-create-vm.md
+      - name: 创建完整 VM
+        href: ansible-create-complete-vm.md
     - name: 使用 VM 模板部署应用
       items:
       - name: 教程概述
@@ -189,11 +198,11 @@
       href: cli-ps-findimage.md
     - name: 创建自定义 VM 映像
       href: create-upload-generic.md
-    - name: 上载自定义 VM 映像
+    - name: 上传自定义 VM 映像
       href: upload-vhd.md
     - name: 将现有 VM 捕获到映像中
       href: capture-image.md
-    - name: 创建 Azure 认可的映像
+    - name: 创建 Azure 映像
       items:
       - name: Ubuntu
         href: create-upload-ubuntu.md
@@ -205,6 +214,8 @@
         href: create-upload-centos.md
       - name: Oracle Linux
         href: oracle-create-upload-vhd.md
+      - name: OpenBSD
+        href: create-upload-openbsd.md
   - name: 管理 VM 存储
     items:
     - name: Azure 托管磁盘
@@ -296,6 +307,8 @@
       href: extensions-customscript.md
     - name: OMS 代理扩展
       href: extensions-oms.md
+    - name: Linux 诊断扩展
+      href: diagnostic-extension.md
   - name: 运行应用程序
     items:
     - name: Cloud Foundry
@@ -353,19 +366,24 @@
       href: migration-classic-resource-manager-faq.md
   - name: 故障排除
     items:
-    - name: 排查 SSH 连接问题
+    - name: SSH 连接
       href: troubleshoot-ssh-connection.md
       items:
       - name: 详细故障排除步骤
         href: detailed-troubleshoot-ssh-connection.md
-    - name: 应用程序访问疑难解答
+    - name: 启动诊断
+ 
+      href: boot-diagnostics.md
+    - name: 对应用程序的访问
       href: troubleshoot-app-connection.md
-    - name: 排查分配失败
+    - name: 分配失败
       href: allocation-failure.md
-    - name: 排查部署问题
+    - name: 部署问题
       href: troubleshoot-deployment-new-vm.md
     - name: 将 VM 重新部署到新的 Azure 节点
       href: redeploy-to-new-node.md
+    - name: 常见错误消息
+      href: error-messages.md
     - name: 附加虚拟硬盘以进行故障排除
       items:
       - name: Azure CLI

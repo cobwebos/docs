@@ -13,21 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 05/21/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 2ce92b3f0a21f80eb4294161d6d3a5275c992600
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: de8ffb5ef81ac9ef4a9217f275f2c96973948eb1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="create-a-custom-image-of-an-azure-vm-using-the-cli"></a>使用 CLI 创建 Azure VM 的自定义映像
 
-本教程介绍如何定义自己 Azure 虚拟机的自定义映像。 自定义映像使你能够使用已配置的映像创建 VM。 自定义映像可用于启动二进制文件和应用程序、应用程序配置、VM 数据磁盘定义以及其他 OS 配置的预加载。 创建自定义映像时，自定义的 VM 和所有附加磁盘均包括在映像中。
+自定义映像类似于应用商店映像，不同的是自定义映像的创建者是你自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，将创建自己的 Azure 虚拟机自定义映像。 你将学习如何：
 
-可使用最新版 [Azure CLI 2.0](/cli/azure/install-azure-cli) 完成本教程中的步骤。
+> [!div class="checklist"]
+> * 预配和通用化 VM
+> * 创建自定义映像
+> * 从自定义映像创建 VM
+> * 列出订阅中的所有映像
+> * 删除映像
+
+本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 还可以通过浏览器使用 [Cloud Shell](/azure/cloud-shell/quickstart)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -35,9 +42,9 @@ ms.lasthandoff: 05/03/2017
 
 若要完成本教程中的示例，必须具备现有虚拟机。 如果需要，此[脚本示例](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md)可替你创建一个虚拟机。 通过教程操作时，根据需要替换资源组和 VM 名称。
 
-## <a name="prepare-vm"></a>准备 VM
+## <a name="create-a-custom-image"></a>创建自定义映像
 
-若要创建虚拟机的映像，需通过以下方式准备 VM：取消设置、解除分配，然后将源 VM 标记为通用化。
+若要创建虚拟机的映像，需通过以下方式准备 VM：取消设置、解除分配，然后将源 VM 标记为通用化。 准备好 VM 后，可以创建映像。
 
 ### <a name="deprovision-the-vm"></a>取消设置 VM 
 
@@ -67,22 +74,22 @@ exit
 若要创建映像，需要解除分配 VM。 使用 [az vm deallocate](/cli//azure/vm#deallocate) 解除分配 VM。 
    
 ```azurecli
-az vm deallocate --resource-group myRGCaptureImage --name myVM
+az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
 最后，使用 [az vm generalize](/cli//azure/vm#generalize) 将 VM 的状态设置为“已通用化”，以便 Azure 平台知道已通用化 VM。 只能从通用化 VM 创建映像。
    
 ```azurecli
-az vm generalize --resource-group myResourceGroupImages --name myVM
+az vm generalize --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="create-the-image"></a>创建映像
+### <a name="create-the-image"></a>创建映像
 
 现在，可使用 [az image create](/cli//azure/image#create) 创建 VM 的映像。 以下示例从名为“myVM”的 VM 创建名为“myImage”的映像。
    
 ```azurecli
 az image create \
-    --resource-group myResourceGroupImages \
+    --resource-group myResourceGroup \
     --name myImage \
     --source myVM
 ```
@@ -93,17 +100,46 @@ az image create \
 
 ```azurecli
 az vm create \
-    --resource-group myResourceGroupImages \
+    --resource-group myResourceGroup \
     --name myVMfromImage \
     --image myImage \
     --admin-username azureuser \
     --generate-ssh-keys
 ```
 
+## <a name="image-management"></a>映像管理 
+
+下面是一些常见的映像管理任务示例，并说明如何使用 Azure CLI 完成这些任务。
+
+以表格格式按名称列出所有映像。
+
+```azurecli
+az image list \
+  --resource-group myResourceGroup
+```
+
+删除映像。 此示例将从 *myResourceGroup* 中删除名为 *myOldImage* 的映像。
+
+```azurecli
+az image delete \
+    --name myOldImage \
+    --resource-group myResourceGroup
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解如何创建自定义 VM 映像。 请转到下一教程，了解如何创建高度可用的虚拟机。
+在本教程中，已创建自定义 VM 映像。 你已了解如何：
 
-[创建高度可用的 VM](tutorial-availability-sets.md)。
+> [!div class="checklist"]
+> * 预配和通用化 VM
+> * 创建自定义映像
+> * 从自定义映像创建 VM
+> * 列出订阅中的所有映像
+> * 删除映像
+
+请转到下一教程，了解高度可用的虚拟机。
+
+> [!div class="nextstepaction"]
+> [创建高度可用的 VM](tutorial-availability-sets.md)。
 
 

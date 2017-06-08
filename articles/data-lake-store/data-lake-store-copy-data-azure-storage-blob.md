@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
-ms.openlocfilehash: 9f8635cd028d7d0d6a69faf6c2dc1de05dc5bb36
-ms.lasthandoff: 12/02/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 00b2f08ef40266ad4b99adfa9c8632bd817f9a81
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -25,13 +26,13 @@ ms.lasthandoff: 12/02/2016
 > [!div class="op_single_selector"]
 > * [使用 DistCp](data-lake-store-copy-data-wasb-distcp.md)
 > * [使用 AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
-> 
-> 
+>
+>
 
 Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloadadlcopy) 从以下源复制数据：
 
 * 从 Azure 存储 blob 到 Data Lake Store。 无法使用 AdlCopy 从 Data Lake Store 复制数据到 Azure 存储 blob。
-* 两个 Azure Data Lake Store 帐户之间。 
+* 两个 Azure Data Lake Store 帐户之间。
 
 此外，可在两个不同的模式下使用 AdlCopy 工具：
 
@@ -50,7 +51,7 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 ## <a name="syntax-of-the-adlcopy-tool"></a>AdlCopy 工具语法
 对 AdlCopy 工具使用以下语法
 
-    AdlCopy /Source <Blob or Data Lake Store source> /Dest <Data Lake Store destination> /SourceKey <Key for Blob account> /Account <Data Lake Analytics account> /Unit <Number of Analytics units> /Pattern 
+    AdlCopy /Source <Blob or Data Lake Store source> /Dest <Data Lake Store destination> /SourceKey <Key for Blob account> /Account <Data Lake Analytics account> /Unit <Number of Analytics units> /Pattern
 
 语法中的参数如下所述：
 
@@ -66,11 +67,11 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>使用 AdlCopy（以独立模式）从 Azure 存储 blob 复制数据
 1. 打开命令提示符，然后导航到 AdlCopy 的安装目录（通常是 `%HOMEPATH%\Documents\adlcopy`）。
 2. 运行以下命令从源容器复制特定 blob 到 Data Lake Store：
-   
+
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
-   
+
     例如：
-   
+
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
     >[AZURE.NOTE] 上述语法指定将文件复制到 Data Lake Store 帐户中的文件夹。 如果指定的文件夹名不存在，则 AdlCopy 工具会创建一个文件夹。
@@ -84,11 +85,11 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
         Copy Completed. 1 file copied.
 
 1. 也可使用以下命令从一个容器将所有 blob 复制到 Data Lake Store 帐户：
-   
+
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/ /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>        
-   
+
     例如：
-   
+
         AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest adl://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
 ### <a name="performance-considerations"></a>性能注意事项
@@ -100,27 +101,27 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 
 1. 打开命令提示符，然后导航到 AdlCopy 的安装目录（通常是 `%HOMEPATH%\Documents\adlcopy`）。
 2. 运行以下命令从一个 Data Lake Store 帐户将特定文件复制到另一帐户。
-   
+
         AdlCopy /Source adl://<source_adls_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adls_account>.azuredatalakestore.net/<path>/
-   
+
     例如：
-   
+
         AdlCopy /Source adl://mydatastore.azuredatalakestore.net/mynewfolder/909f2b.log /dest adl://mynewdatalakestore.azuredatalakestore.net/mynewfolder/
-   
+
    > [!NOTE]
    > 上述语法指定将文件复制到目标 Data Lake Store 帐户中的文件夹。 如果指定的文件夹名不存在，则 AdlCopy 工具会创建一个文件夹。
-   > 
-   > 
-   
+   >
+   >
+
     系统将提示输入 Azure 订阅（其下提供 Data Lake Store 帐户）的凭据。 会显示与下面类似的输出：
-   
+
         Initializing Copy.
         Copy Started.|
         100% data copied.
         Finishing Copy.
         Copy Completed. 1 file copied.
 3. 下面的命令会从源 Data Lake Store 帐户中的特定文件夹将所有文件复制到目标 Data Lake Store 帐户中的文件夹。
-   
+
         AdlCopy /Source adl://mydatastore.azuredatalakestore.net/mynewfolder/ /dest adl://mynewdatalakestore.azuredatalakestore.net/mynewfolder/
 
 ### <a name="performance-considerations"></a>性能注意事项
@@ -130,12 +131,12 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 ## <a name="use-adlcopy-with-data-lake-analytics-account-to-copy-data"></a>使用 AdlCopy（通过 Data Lake Analytics 帐户）复制数据
 也可使用 Data Lake Analytics 帐户运行 AdlCopy 作业，从 Azure 存储 blob 复制数据到 Data Lake Analytics。 要移动的数据大小在千兆字节和兆兆字节范围，且希望更佳和可预测性能吞吐量时，通常会使用此选项。
 
-若要结合使用 Data Lake Analytics 帐户和 AdlCopy 从 Azure 存储 Blob 进行复制，则源（Azure 存储 Blob）必须添加为 Data Lake Analytics 帐户的数据源。 有关将其他数据源添加到 Data Lake Analytics 帐户的说明，请参阅[管理 Data Lake Analytics 帐户数据源](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#manage-account-data-sources)。
+若要结合使用 Data Lake Analytics 帐户和 AdlCopy 从 Azure 存储 Blob 进行复制，则源（Azure 存储 Blob）必须添加为 Data Lake Analytics 帐户的数据源。 有关将其他数据源添加到 Data Lake Analytics 帐户的说明，请参阅[管理 Data Lake Analytics 帐户数据源](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#manage-data-sources)。
 
 > [!NOTE]
 > 如果使用 Data Lake Analytics 帐户从 Azure Data Lake Store 帐户作为源进行复制，则无需将 Data Lake Store 帐户和 Data Lake Analytics 帐户关联。 仅当源是 Azure 存储帐户时要求将源存储和 Data Lake Analytics 帐户关联。
-> 
-> 
+>
+>
 
 运行以下命令使用 Data Lake Analytics 帐户从 Azure 存储 blob复制到 Data Lake Store 帐户：
 
@@ -158,11 +159,11 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 
 1. 打开命令提示符，然后导航到 AdlCopy 的安装目录（通常是 `%HOMEPATH%\Documents\adlcopy`）。
 2. 运行以下命令从源容器的特定 blob 中将所有具有 .csv 扩展名的文件复制到 Data Lake Store：
-   
+
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
-   
+
     例如：
-   
+
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
 
 ## <a name="billing"></a>计费
@@ -176,9 +177,11 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 
 AdlCopy 支持复制包含上千个文件和文件夹的数据。 但是，如果在复制大型数据集时遇到问题，可将文件/文件夹分配到较小的子文件夹中。 AdlCopy 专用于临时副本。 如果要尝试定期复制数据，应考虑使用 [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)，此工具提供与复制操作有关的完整管理功能。
 
+## <a name="release-notes"></a>发行说明
+* 1.0.13 - 如果要通过多个 adlcopy 命令将数据复制到同一 Azure Data Lake Store 帐户，则不再需要在每次运行时重新输入凭据。 现在，Adlcopy 会在多次运行之间缓存该信息。
+
 ## <a name="next-steps"></a>后续步骤
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
-
 

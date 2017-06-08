@@ -1,9 +1,10 @@
 > [!div class="op_single_selector"]
+> * [Raspberry Pi Web 模拟器](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)   
 > * [使用 .NET 的模拟设备](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
 > * [使用 Java 的模拟设备](../articles/iot-hub/iot-hub-java-java-getstarted.md)
 > * [使用 Node.js 的模拟设备](../articles/iot-hub/iot-hub-node-node-getstarted.md)
-> * [Linux 上的模拟网关](../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md)
-> * [Windows 上的模拟网关](../articles/iot-hub/iot-hub-windows-gateway-sdk-get-started.md)
+> * [在 Linux 上模拟的 IoT Edge 网关](../articles/iot-hub/iot-hub-linux-iot-edge-get-started.md)
+> * [在 Windows 上模拟的 IoT Edge 网关](../articles/iot-hub/iot-hub-windows-iot-edge-get-started.md)
 > * [将 Raspberry Pi 与 Node.js 配合使用](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [将 Raspberry Pi 与 C 配合使用](../articles/iot-hub/iot-hub-raspberry-pi-kit-c-get-started.md)
 > * [将 Intel Edison 与 Node.js 配合使用](../articles/iot-hub/iot-hub-intel-edison-kit-node-get-started.md)
@@ -11,4 +12,4 @@
 > * [将 Adafruit Feather HUZZAH ESP8266 与 Arduino IDE 配合使用](../articles/iot-hub/iot-hub-arduino-huzzah-esp8266-get-started.md)
 > * [将 Sparkfun ESP8266 Thing Dev 与 Arduino IDE 配合使用](../articles/iot-hub/iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 > * [将 Adafruit Feather M0 与 Arduino IDE 配合使用](../articles/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
-> * [将 Intel NUC 设置为 IoT 网关](../articles/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+> * [将 Intel NUC 设置为 IoT Edge 网关](../articles/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)

@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/16/2017
+ms.date: 06/01/2017
 ms.author: ryanwi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 491f61afe899c746c193f0d3703d3212f9258e63
 ms.openlocfilehash: 578046d6939b90cb58d457087bb465006630b4c1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -47,10 +49,5 @@ ms.openlocfilehash: 578046d6939b90cb58d457087bb465006630b4c1
 | InvalidX509Store |无法打开 X509 证书存储。 |
 | InvalidSubjectName |使用者名称无效。 |
 | InvalidAllowedCommonNameList |公用名字符串列表的格式无效。 应为逗号分隔的列表。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

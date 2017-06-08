@@ -1,6 +1,6 @@
 ---
 title: "为 X12 消息解码 - Azure 逻辑应用 | Microsoft 文档"
-description: "使用 Enterprise Integration Pack 中的 X12 消息解码器为 Azure 逻辑应用验证 EDI 并为事务集生成 XML"
+description: "使用 Enterprise Integration Pack 中的 X12 消息解码器为 Azure 逻辑应用验证 EDI 并生成确认"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 717069dbe211ea9cc04925875e0f28c85ef25ac2
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6408fdf494035b37e0025dd8439e800a80bffb4e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 X12 消息
 
-使用解码 X12 消息连接器，可以验证 EDI 和特定于合作伙伴的属性，为每个事务集生成 XML 文档并为处理的事务生成确认。 若要使用此连接器，必须将此连接器添加到你的逻辑应用中的现有触发器。
+使用解码 X12 消息连接器，可针对贸易合作伙伴协议验证信封、EDI 和特定于合作伙伴的属性，将交换拆分为交易集或保留整个交换，以及为已处理的交易生成确认。 若要使用此连接器，必须将此连接器添加到你的逻辑应用中的现有触发器。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -72,7 +73,6 @@ ms.lasthandoff: 03/10/2017
 X12 解码连接器执行以下任务：
 
 * 针对贸易合作伙伴协议验证信封
-* 为每个事务集生成 XML 文档。
 * 验证 EDI 和特定于合作伙伴的属性
   * EDI 结构验证和扩展架构验证
   * 交换信封结构的验证。
@@ -83,14 +83,21 @@ X12 解码连接器执行以下任务：
   * 针对以前收到的交换检查交换控制编号。
   * 针对交换中的其他组控制编号检查组控制编号。
   * 针对该组中的其他事务集控制编号检查事务集控制编号。
-* 将整个交换转换为 XML 
-  * 将交换拆分为事务集 - 出错时挂起事务集：将交换中的每个事务集分析为单独 XML 文档。 如果交换中的一个或多个事务集未能通过验证，则 X12 解码只挂起这些事务集。
-  * 将交换拆分为事务集 - 出错时挂起交换：将交换中的每个事务集分析为单独 XML 文档。  如果交换中的一个或多个事务集未能通过验证，则 X12 解码会挂起整个交换。
-  * 保留交换 - 出错时挂起事务集：为整个批处理交换创建 XML 文档。 X12 解码只挂起未能通过验证的事务集，同时继续处理所有其他事务集
-  * 保留交换 - 出错时挂起交换：为整个批处理交换创建 XML 文档。 如果交换中的一个或多个事务集未能通过验证，则 X12 解码会挂起整个交换， 
+* 将交换拆分为交易集，或保留整个交换：
+  * 将交换拆分为交易集 - 出错时暂停交易集：将交换拆分为交易集并分析每个交易集。 
+  X12 解码操作仅将未通过验证的交易集输出到 `badMessages`，并将剩余交易集输出到 `goodMessages`。
+  * 将交换拆分为交易集 - 出错时暂停交换：将交换拆分为交易集并分析每个交易集。 
+  如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
+  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
+  X12 解码操作仅将未通过验证的交易集输出到 `badMessages`，并将剩余交易集输出到 `goodMessages`。
+  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
+  如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。 
 * 生成技术和/或功能确认（如果已配置）。
   * 技术确认作为标头验证的结果生成。 技术确认报告地址接收方进行的交换标头和尾部处理的状态。
   * 功能确认作为正文验证的结果生成。 功能确认报告在处理收到的文档时遇到的每个错误
+
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/x12/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 

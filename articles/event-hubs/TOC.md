@@ -1,5 +1,6 @@
 # 概述
 ## [什么是事件中心？](event-hubs-what-is-event-hubs.md)
+## [事件中心功能](event-hubs-features.md)
 ## [常见问题](event-hubs-faq.md)
 
 # 入门

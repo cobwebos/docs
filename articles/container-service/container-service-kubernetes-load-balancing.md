@@ -14,29 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 05/17/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: e89ec01cb47a87a45378f73d138224095bcbebed
-ms.openlocfilehash: 201d98c4f4ff29393ad308824ed0575f1ff602ee
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 9046879158a4617d478bcf1157d5ead3c1054fd8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="load-balance-containers-in-a-kubernetes-cluster-in-azure-container-service"></a>对 Azure 容器服务中 Kubernetes 内的容器进行负载均衡 
 本文介绍 Azure 容器服务中 Kubernetes 群集内的负载均衡。 负载均衡为服务提供可从外部访问的 IP 地址，可在代理 VM 中运行的 pod 之间分配网络流量。
 
-可将 Kubernetes 服务设置为使用 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) 来管理外部网络（TCP 或 UDP）流量。 经过更多的配置后，便可以针对 HTTP 或 HTTPS 流量进行负载均衡和路由，或实现更高级的方案。
+可将 Kubernetes 服务设置为使用 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)来管理外部网络 (TCP) 流量。 经过更多的配置后，便可以针对 HTTP 或 HTTPS 流量进行负载均衡和路由，或实现更高级的方案。
 
 ## <a name="prerequisites"></a>先决条件
 * 在 Azure 容器服务中[部署 Kubernetes 群集](container-service-kubernetes-walkthrough.md)
 * [将客户端连接](container-service-connect.md)到群集
 
-## <a name="azure-load-balancer"></a>Azure Load Balancer
+## <a name="azure-load-balancer"></a>Azure 负载均衡器
 
-默认情况下，在 Azure 容器服务中部署的 Kubernetes 群集包含一个用于代理 VM 的面向 Internet 的 Azure Load Balancer。 （将为主 VM 单独配置负载均衡器资源。）Azure Load Balancer 是第 4 层（TCP、UDP）负载均衡器。
+默认情况下，在 Azure 容器服务中部署的 Kubernetes 群集包含一个用于代理 VM 的面向 Internet 的 Azure 负载均衡器。 （将为主 VM 单独配置负载均衡器资源。）Azure 负载均衡器是第 4 层负载均衡器。 目前，负载均衡器仅支持 Kubernetes 中的 TCP 流量。
 
-创建 Kubernetes 服务时，可将 Azure Load Balancer 自动配置为允许访问服务。 若要配置负载均衡器，请将服务 `type` 设置为 `LoadBalancer`。 负载均衡器会创建一个规则，用于将传入服务流量的公共 IP 地址和端口号映射到代理 VM 中 pod 的专用 IP 地址和端口号（对于响应流量，则进行反向映射）。 
+创建 Kubernetes 服务时，可将 Azure 负载均衡器自动配置为允许访问服务。 若要配置负载均衡器，请将服务 `type` 设置为 `LoadBalancer`。 负载均衡器会创建一个规则，用于将传入服务流量的公共 IP 地址和端口号映射到代理 VM 中 pod 的专用 IP 地址和端口号（对于响应流量，则进行反向映射）。 
 
  下面两个示例演示如何将 Kubernetes 服务`type` 设置为 `LoadBalancer`。 （尝试运行示例后，如果不再需要部署，请将其删除。）
 
@@ -60,7 +61,7 @@ ms.lasthandoff: 02/27/2017
 
 4. 键入 `kubectl get svc` 查看群集中服务的状态。 当负载均衡器配置规则时，服务的 `EXTERNAL-IP` 显示为 `<pending>`。 几分钟后，将配置外部 IP 地址： 
 
-    ![配置 Azure Load Balancer](./media/container-service-kubernetes-load-balancing/nginx-external-ip.png)
+    ![配置 Azure 负载均衡器](./media/container-service-kubernetes-load-balancing/nginx-external-ip.png)
 
 5. 验证是否可以通过外部 IP 地址访问该服务。 例如，打开 Web 浏览器并访问所示的 IP 地址。 浏览器显示 Nginx Web 服务器正在某个容器中运行。 或者，运行 `curl` 或 `wget` 命令。 例如：
 
@@ -72,7 +73,7 @@ ms.lasthandoff: 02/27/2017
 
     ![使用 curl 访问 Nginx](./media/container-service-kubernetes-load-balancing/curl-output.png)
 
-6. 若要查看 Azure Load Balancer 的配置，请转到 [Azure 门户](https://portal.azure.com)。
+6. 若要查看 Azure 负载均衡器的配置，请转到 [Azure 门户](https://portal.azure.com)。
 
 7. 浏览容器服务群集的资源组，选择代理 VM 的负载均衡器。 该负载均衡器的名称应为容器服务相同。 （请不要选择主节点的负载均衡器，即名称中包含 **master-lb** 的负载均衡器。） 
 
@@ -92,7 +93,7 @@ ms.lasthandoff: 02/27/2017
 
 
 
-以下步骤使用 Kubernetes [留言簿示例](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook)。 此示例是基于 Redis 和 PHP Docker 映像的多层 Web 应用。 可在服务配置文件中指定前端 PHP 服务器应使用 Azure Load Balancer。
+以下步骤使用 Kubernetes [留言簿示例](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook)。 此示例是基于 Redis 和 PHP Docker 映像的多层 Web 应用。 可在服务配置文件中指定前端 PHP 服务器应使用 Azure 负载均衡器。
 
 1. 从 [GitHub](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook/all-in-one) 下载文件 `guestbook-all-in-one.yaml`。 
 2. 浏览 `frontend` 服务的 `spec`。
@@ -108,7 +109,7 @@ ms.lasthandoff: 02/27/2017
 
 5. 键入 `kubectl get svc` 查看群集中服务的状态。 当负载均衡器配置规则时，`frontend` 服务的 `EXTERNAL-IP` 显示为 `<pending>`。 几分钟后，将配置外部 IP 地址： 
 
-    ![配置 Azure Load Balancer](./media/container-service-kubernetes-load-balancing/guestbook-external-ip.png)
+    ![配置 Azure 负载均衡器](./media/container-service-kubernetes-load-balancing/guestbook-external-ip.png)
 
 6. 验证是否可以通过外部 IP 地址访问该服务。 例如，可以打开 Web 浏览器访问服务的外部 IP 地址。
 
@@ -133,7 +134,7 @@ Azure 容器服务不会自动实现 Kubernetes 入口控制器。 有多个控�
 有关详细信息，请参阅 [Nginx 入口控制器文档](https://github.com/kubernetes/ingress/tree/master/controllers/nginx/README.md)。
 
 > [!IMPORTANT]
-> 在 Azure 容器服务中使用 Nginx 入口控制器时，必须使用 `type: LoadBalancer` 将控制器部署公开为服务。 这会将 Azure Load Balancer 配置为向控制器路由流量。 有关详细信息，请参阅上一部分。
+> 在 Azure 容器服务中使用 Nginx 入口控制器时，必须使用 `type: LoadBalancer` 将控制器部署公开为服务。 这会将 Azure 负载均衡器配置为向控制器路由流量。 有关详细信息，请参阅上一部分。
 
 
 ## <a name="next-steps"></a>后续步骤

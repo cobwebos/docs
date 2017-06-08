@@ -1,4 +1,5 @@
 ---
+
 title: "Azure Active Directory 中的重置密码 | Microsoft 文档"
 description: "说明如何在 Azure Active Directory 中重置用户的密码"
 services: active-directory
@@ -12,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 15cb521e928bab6c7966d19e74d9ae3bca99ef34
-ms.openlocfilehash: a5e48f43751e90f41ffd61049a17af3ff48d132e
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: b460232b4d47e6a70fb31f6c3917f359b49df338
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="reset-the-password-for-a-user-in-azure-active-directory---public-preview"></a>在 Azure Active Directory 中重置用户的密码 - 公共预览版
+# <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>在 Azure Active Directory 中重置用户的密码
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-users-reset-password-azure-portal.md)
 > * [Azure 经典门户](active-directory-create-users-reset-password.md)

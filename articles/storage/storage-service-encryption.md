@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 05/09/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 680f41dc15b9681059847174a6910cfc937abd8b
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7b91be16b5820f379f7408b477311ea86b213ccd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,23 +30,15 @@ ms.lasthandoff: 04/21/2017
 ## <a name="overview"></a>概述
 Azure 存储空间提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。 在应用程序和 Azure 之间传输数据时，可使用[客户端加密](storage-client-side-encryption.md)、HTTPS 或 SMB 3.0 保护数据。 存储服务加密提供静态加密，以完全透明的方式处理加密、解密和密钥管理。 采用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)所有数据，它是现在最强有力的分组密码之一。
 
-SSE 的工作方式是在数据写入到 Azure 存储时对其加密，可用于 Azure Blob 存储和文件存储（预览版）。 它适用于：
+SSE 的工作方式是在数据写入到 Azure 存储时对其加密，可用于 Azure Blob 存储和文件存储。 它适用于：
 
-* 一般用途的存储帐户和 Blob 存储帐户
-* 标准存储和高级存储 
+* 标准存储：用于 Blob 和文件存储的通用存储帐户，以及 Blob 存储帐户
+* 高级存储 
 * 所有冗余级别（LRS、ZRS、GRS、RA-GRS）
 * Azure Resource Manager 存储帐户（非经典） 
-* 适用于 Blob 存储的所有区域。 有关文件存储，请查看“可用性”部分。
-
-存储服务加密 - 文件预览版 SSE 现在可用于加密文件存储中的数据。 此功能目前处于预览状态。 下面给出的是提供适用于文件存储的 SSE 的区域列表。
-
-若要参与 SSE 文件预览版，请联系 ssediscussions@microsoft.com。
+* 所有区域。
 
 若要了解详细信息，请参阅“常见问题解答”。
-
-### <a name="availability-for-file-storage"></a>文件存储的可用性
-目前，在所有 Azure 区域中提供适用于文件存储的存储服务加密。
-
 
 若要启用或禁用存储帐户的存储服务加密，请登录 [Azure 门户](https://azure.portal.com)，然后选择存储帐户。 在“设置”边栏选项卡中，寻找如屏幕截图所示的“Blob 服务”部分，然后单击“加密”。
 
@@ -58,22 +51,17 @@ SSE 的工作方式是在数据写入到 Azure 存储时对其加密，可用于
 单击“加密”设置后，可以启用或禁用存储服务加密。
 
 ![显示加密属性的门户截图](./media/storage-service-encryption/image2.png)
-<br/>*图 1.1：为 Blob 服务启用 SSE（步骤 2）*
+<br/>图 3：为 Blob 和文件服务启用 SSE（步骤 2）
 
-![显示加密属性的门户截图](./media/storage-service-encryption/image4.png)
-<br/>*图 2.1：为文件服务启用 SSE（步骤 2）*
 ## <a name="encryption-scenarios"></a>加密方案
-可以在存储帐户级别启用存储服务加密。 它支持以下客户方案：
+可以在存储帐户级别启用存储服务加密。 启用后，客户将选择要加密的服务。 它支持以下客户方案：
 
-* 加密 Blob 存储和文件存储。
-* Blob 服务（而不是文件服务）的加密功能支持加密迁移到 Resource Manager 存储帐户的经典存储帐户。
-* 只有新创建的存储帐户才支持文件存储加密。
+* 加密 Resource Manager 帐户中的 Blob 存储和文件存储。
+* 迁移到 Resource Manager 存储帐户后，立即加密经典存储帐户中的 Blob 和文件服务。
 
 SSE 具有以下限制：
 
 * 不支持经典存储帐户的加密。
-* Blob 服务（而不是文件服务）的加密功能支持加密迁移到 Resource Manager 存储帐户的经典存储帐户。
-* 只有新创建的存储帐户才支持文件存储加密。
 * 现有数据 - SSE 只将加密启用加密之后新建的数据。 例如，如果你创建新的 Resource Manager 存储帐户但未打开加密，然后将 blob 或存档 VHD 上传到该存储帐户，然后打开 SSE，则那些 Blob 不会被加密，除非重新写入或复制。
 * 应用商店支持 - 使用 [Azure 门户](https://portal.azure.com)、PowerShell 和 Azure CLI 为应用商店中创建的 VM 启用加密。 VHD 基本映像将保持未加密状态；但是，在 VM 启动之后完成的任何写入将会加密。
 * 表和队列数据将不会加密。
@@ -133,19 +121,19 @@ Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以�
 
 答：可以创建新的 Resource Manager 存储帐户，并使用 [AzCopy](storage-use-azcopy.md) 将数据从现有经典存储帐户复制到新建的 Resource Manager 存储帐户。 
 
-如果将经典存储帐户迁移到 Resource Manager 存储帐户，则在迁移过程中不会加密数据。 但是，如果迁移存储帐户后启用加密，则写入到该存储帐户的任何新数据将会加密。 有关详细信息，请参阅[Platform Supported Migration of IaaS Resources from Classic to Resource Manager](https://azure.microsoft.com/blog/iaas-migration-classic-resource-manager/)（平台支持的从经典部署模型到 Resource Manager 部署模型的 IaaS 资源迁移）。 请注意，仅 Blob 存储支持此功能。 对于文件存储预览版，用户必须创建新的 Resource Manager 存储帐户。
+如果将经典存储帐户迁移到 Resource Manager 存储帐户，由于此操作为即时操作，因此它会更改帐户的类型，但不会影响现有数据。 只有启用加密后，才会加密写入的任何新数据。 有关详细信息，请参阅[Platform Supported Migration of IaaS Resources from Classic to Resource Manager](https://azure.microsoft.com/blog/iaas-migration-classic-resource-manager/)（平台支持的从经典部署模型到 Resource Manager 部署模型的 IaaS 资源迁移）。 请注意，仅 Blob 和文件服务支持此功能。
 
 **问：我有一个现有的 Resource Manager 存储帐户。可以在其上启用 SSE 吗？**
 
-答：是的，但只加密新写入的 Blob。 它不会返回去对已经存在的数据进行加密。 文件存储预览版尚不支持此功能。
+答：可以，但只加密新写入的数据。 它不会返回去对已经存在的数据进行加密。 文件存储预览版尚不支持此功能。
 
 **问：如何加密现有 Resource Manager 存储帐户中的当前数据？**
 
-答：可以随时在 Resource Manager 存储帐户中启用 SSE。 但是，不会加密已经存在的 Blob。 若要加密这些 Blob，可以将它们复制到另一个名称或另一个容器，然后删除未加密的版本。文件存储预览版尚不支持此功能
+答：可以随时在 Resource Manager 存储帐户中启用 SSE。 但是，不会加密已经存在的数据。 若要加密现有数据，可将它们复制到另一个名称或另一个容器，然后删除未加密的版本。
 
 **问：我使用高级存储，可以使用 SSE 吗？**
 
-答：可以，标准存储和高级存储都支持 SSE。文件存储预览版尚不支持此功能。
+答：可以，SSE 支持标准存储和高级存储。  文件服务不支持高级存储。
 
 **问：如果我创建新的存储帐户并启用 SSE，然后使用该存储帐户创建新的 VM，是否表示我的 VM 已加密？**
 

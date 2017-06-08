@@ -111,7 +111,7 @@ ms.lasthandoff: 05/10/2017
     docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
     ```
 
-3. 连接到正在运行的容器。  打开 Web 浏览器，指向端口 8000 上返回的 IP 地址，例如“http://172.31.194.61:8000”。 此时会看到标题“Hello World!” 显示在浏览器中。
+3. 连接到正在运行的容器。  打开 Web 浏览器，指向端口 8000 上返回的 IP 地址，例如 “ http://172.31.194.61:8000 ” 。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 4. 若要停止容器，请运行：
 

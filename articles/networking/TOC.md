@@ -1,8 +1,10 @@
 # 概述
 ## [关于 Azure 网络](networking-overview.md)
 ## 体系结构
+### [虚拟数据中心](networking-virtual-datacenter.md)
 ### [非对称路由与多个网络路径](../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [安全网络设计](../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [中心辐射型拓扑](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
 ### [网络安全最佳实践](../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [高度可用的网络虚拟设备](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha )
 ### [结合使用负载均衡方法](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json)
@@ -43,6 +45,7 @@
 ### [验证 VM 的 IP 流](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## 示例脚本
 ### [Azure CLI](cli-samples.md)
+### [PowerShell](powershell-samples.md)
 ## 教程
 ### [对 VM 进行负载均衡](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [将计算机连接到虚拟网络](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)

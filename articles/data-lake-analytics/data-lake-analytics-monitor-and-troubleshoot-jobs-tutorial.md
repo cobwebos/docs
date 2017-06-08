@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
-ms.openlocfilehash: 1915201480f57c5f132e13bb5ce4283fbea975fe
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: b2b19a6f2ea20c414119e9dfbf84fda92dd93402
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -31,7 +33,7 @@ ms.openlocfilehash: 1915201480f57c5f132e13bb5ce4283fbea975fe
 
 * **Data Lake Analytics 作业处理的基本知识**。 请参阅 [通过 Azure 门户实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)。
 * **Data Lake Analytics 帐户**。 请参阅 [通过 Azure 门户实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)。
-* **将示例数据复制到默认的 Data Lake Store 帐户**。  请参阅 [Prepare source data](data-lake-analytics-get-started-portal.md#prepare-source-data)（准备源数据）
+* **将示例数据复制到默认的 Data Lake Store 帐户**。  请参阅 [Prepare source data](data-lake-analytics-get-started-portal.md)（准备源数据）
 
 ## <a name="submit-a-data-lake-analytics-job"></a>提交 Data Lake Analytics 作业
 现在将创建具有错误源文件名的 U-SQL 作业。  
@@ -40,7 +42,7 @@ ms.openlocfilehash: 1915201480f57c5f132e13bb5ce4283fbea975fe
 
 1. 在 **Azure 门户** 中，单击左上角的“Microsoft Azure”。
 2. 单击显示 Data Lake Analytics 帐户名的磁贴。  该帐户在创建后即已固定在此处。
-   如果该帐户未固定在此处，请参阅 [Open an Analytics account from portall](data-lake-analytics-manage-use-portal.md#access-adla-account)（从门户打开 Analytics 帐户）。
+   如果该帐户未固定在此处，请参阅 [Open an Analytics account from portall](data-lake-analytics-manage-use-portal.md#manage-data-sources)（从门户打开 Analytics 帐户）。
 3. 在顶部菜单中单击“新建作业”。
 4. 输入“作业名称”，以下 U-SQL 脚本：
 
@@ -102,9 +104,4 @@ ms.openlocfilehash: 1915201480f57c5f132e13bb5ce4283fbea975fe
 * [通过使用 Azure PowerShell 实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
 * [通过 Visual Studio 实现 Azure Data Lake Analytics U-SQL 入门](data-lake-analytics-u-sql-get-started.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

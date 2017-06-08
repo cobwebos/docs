@@ -15,6 +15,7 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/05/2017
 ms.author: allclark
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: a95c534d8f2ad5e8e2c7bdfc2b11405c70312727
@@ -28,6 +29,8 @@ ms.lasthandoff: 05/15/2017
 此示例创建一个虚拟机规模集，并应用运行自定义脚本的扩展在规模集中每个虚拟机上部署 LAMP 堆栈。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -43,7 +46,7 @@ ms.lasthandoff: 05/15/2017
 
 运行如下命令来删除资源组、规模集和 VM 以及所有相关资源。
 
-```azurecli
+```azurecli-interactive 
 az group delete -n myResourceGroup
 ```
 

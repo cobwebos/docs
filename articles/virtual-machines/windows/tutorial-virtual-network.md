@@ -13,30 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/18/2017
+ms.date: 05/02/2017
 ms.author: davidmu
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: e1b3e9756e149c5cba67f8b5c37e1d153dbf81ab
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 7fd0ace35cfe0286c874e4a75b733053aa945d39
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 虚拟网络和 Windows 虚拟机
 
-本教程介绍如何在虚拟网络 (VNet) 中创建多个虚拟机 (VM)，并在虚拟机之间配置网络连接。 完成后，可通过 Internet 在用于 HTTP 连接的端口 80 上访问“前端”VM。 含有 SQL Server 数据库的“后端”VM 将被隔离，并且只能通过端口 1433 上的前端 VM 访问。
+Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程介绍了如何在虚拟网络中创建多个虚拟机 (VM)，以及如何在虚拟机之间配置网络连接。 你将学习如何：
 
-可使用最新版 [Azure PowerShell](/powershell/azure/overview) 模块完成本教程中的步骤。
+> [!div class="checklist"]
+> * 创建虚拟网络
+> * 创建虚拟网络子网
+> * 使用网络安全组控制网络流量
+> * 查看正在运行的流量规则
+
+本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 ## <a name="create-vnet"></a>创建 VNet
 
 VNet 是你自己的网络在云中的表示形式。 VNet 是对专用于你的订阅的 Azure 云进行的逻辑隔离。 在 VNet 中，可发现子网、连接到这些子网的规则，以及从 VM 到子网的连接。
 
-创建任何其他 Azure 资源前，需要使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建一个资源组。 以下示例在“westus”位置创建名为“myRGNetwork”的资源组：
+创建任何其他 Azure 资源前，需要使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建一个资源组。 以下示例在“EastUS”位置创建名为 *myRGNetwork* 的资源组：
 
 ```powershell
-New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location westus
+New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
 子网是 VNet 的子资源，可帮助定义使用 IP 地址前缀在 CIDR 块中定义地址空间的段。 可以将 NIC 添加到子网，并连接到 VM，以便为各种工作负荷提供连接。
@@ -54,7 +61,7 @@ $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
 ```powershell
 $vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $frontendSubnet
@@ -69,7 +76,7 @@ VM 需要虚拟网络接口 (NIC) 才能在 VNet 中进行通信。 由于将通
 ```powershell
 $pip = New-AzureRmPublicIpAddress `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -AllocationMethod Static `
   -Name myPublicIPAddress
 ```
@@ -80,7 +87,7 @@ $pip = New-AzureRmPublicIpAddress `
 ```powershell
 $frontendNic = New-AzureRmNetworkInterface `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -Name myFrontendNic `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id
@@ -122,7 +129,7 @@ $frontendVM = Add-AzureRmVMNetworkInterface `
     -Id $frontendNic.Id
 New-AzureRmVM `
     -ResourceGroupName myRGNetwork `
-    -Location westus `
+    -Location EastUS `
     -VM $frontendVM
 ```
 
@@ -184,7 +191,7 @@ $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
 ```powershell
 $nsgBackend = New-AzureRmNetworkSecurityGroup `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -Name myBackendNSG `
   -SecurityRules $nsgBackendRule
 ```
@@ -213,7 +220,7 @@ $vnet = Get-AzureRmVirtualNetwork `
 ```powershell
 $backendNic = New-AzureRmNetworkInterface `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -Name myBackendNic `
   -SubnetId $vnet.Subnets[1].Id
 ```
@@ -254,7 +261,7 @@ $backendVM = Add-AzureRmVMNetworkInterface `
   -Id $backendNic.Id
 New-AzureRmVM `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -VM $backendVM
 ```
 
@@ -262,6 +269,16 @@ New-AzureRmVM `
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何创建并保护与虚拟机相关的 Azure 网络。 前往下一教程以了解使用 Azure 安全中心监视 VM 的相关信息。
+本教程介绍了如何创建和保护与虚拟机相关的 Azure 网络。 
 
-[管理虚拟机安全](./tutorial-azure-security.md)
+> [!div class="checklist"]
+> * 创建虚拟网络
+> * 创建虚拟网络子网
+> * 使用网络安全组控制网络流量
+> * 查看正在运行的流量规则
+
+请继续学习下一教程，了解如何使用 Azure 备份监视和保护虚拟机上的数据。 。
+
+> [!div class="nextstepaction"]
+> [在 Azure 中备份 Windows 虚拟机](./tutorial-backup-vms.md)
+

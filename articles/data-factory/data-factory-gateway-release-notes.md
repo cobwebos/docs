@@ -14,34 +14,44 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: spelluru
 published: true
-translationtype: Human Translation
-ms.sourcegitcommit: db0face48d84680eabd82245bd38bd49b204f9ae
-ms.openlocfilehash: a88b791bad9f71f16700ccc7efdee8ef493478a9
-ms.lasthandoff: 02/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f29bb67ea50c531278e546c9fde88fd53230bc3c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 现代数据集成的一大挑战是将数据从本地和云之间进行无缝移动。 数据工厂借助数据管理网关实现此无缝集成，后者是一个可安装在本地以实现混合数据移动的代理。
 
-有关数据管理网关及其用法的详细信息，请参阅以下文章： 
+有关数据管理网关及其用法的详细信息，请参阅以下文章：
 
 *  [数据管理网关](data-factory-data-management-gateway.md)
-*  [使用 Azure 数据工厂在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md) 
+*  [使用 Azure 数据工厂在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)
 
 
-## <a name="current-version-2762192"></a>当前版本 (2.7.6219.2)
-
-### <a name="whats-new"></a>新增功能
-- 现在可以使用服务主体向 Azure Data Lake Store 进行身份验证。 以前仅支持 OAuth。
-- 我们已经打包了新的驱动程序，用于从网关中本地数据存储上的 Oracle 读取数据。
+## <a name="current-version-2963132"></a>当前版本 (2.9.6313.2)
 
 ### <a name="enhancements-"></a>增强功能
-- 提高了从 Oracle 数据源读取数据的性能。
-- 已修复：OData 源 OAuth 令牌过期问题。
-- 已修复：Oracle 十进制超过 28 位时无法读取的问题。
+-    可将 DNS 条目添加到白名单服务总线，而不是将防火墙中的所有 Azure IP 地址列入白名单（如果需要）。 在此处了解更多详情。
+-    现在可将最多 4.75TB 数据复制到单个块 Blob 中或从中复制数据，这是块 Blob 支持的最大大小。 （早期的限制为 195GB）。
+-    已修复：在复制活动期间解压缩多个小文件时出现的内存不足问题。
+-    已修复：使用幂等性功能从 Document DB 复制到本地 SQL 时的索引超出范围问题。
+-    已修复：SQL 清理脚本对“复制向导”中的本地 SQL 不起作用。
+-    已修复：末尾有空格的列名称在复制活动中不起作用。
 
 
 ## <a name="earlier-versions"></a>早期版本
+
+## <a name="28662833"></a>2.8.66283.3
+### <a name="enhancements-"></a>增强功能
+- 已修复：网关计算机重新启动时缺少凭据的问题。
+- 已修复：在网关还原期间使用备份文件进行注册出现的问题。
+
+
+## <a name="2762401"></a>2.7.6240.1
+### <a name="enhancements-"></a>增强功能
+- 已修复：从 Oracle 作为源读取十进制 null 值不正确。
 
 ## <a name="2661922"></a>2.6.6192.2
 ### <a name="whats-new"></a>新增功能
@@ -63,7 +73,7 @@ ms.lasthandoff: 02/13/2017
 
 ### <a name="whats-new"></a>新增功能
 
-- 现可在本地存储数据源凭据。 这些凭据已加密。 使用可从现有网关导出的备份文件可在本地恢复和还原数据源凭据。 
+- 现可在本地存储数据源凭据。 这些凭据已加密。 使用可从现有网关导出的备份文件可在本地恢复和还原数据源凭据。
 
 ### <a name="enhancements-"></a>增强功能
 
@@ -89,7 +99,7 @@ ms.lasthandoff: 02/13/2017
 
 *  DB2 驱动程序现包含在网关安装包内。 无需单独安装。 
 *  DB2 现支持 z/OS、DB2 for i (AS/400) 以及已支持的平台（Linux、Unix 和 Windows）。 
-*  支持使用 DocumentDB 作为本地数据存储的源或目标
+*  支持使用 Azure Cosmos DB 作为本地数据存储的源或目标
 *  支持从/向冷/热 Blob 存储以及已支持的通用存储帐户复制数据。 
 *  允许通过具有远程登录权限的网关连接到本地 SQL Server。  
 
@@ -105,7 +115,7 @@ ms.lasthandoff: 02/13/2017
 
     *  已重新组织和简化控件。
 
-    *  可使用[无代码复制预览工具](data-factory-copy-data-wizard-tutorial.md)从存储中复制数据。 有关此功能的大体详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。 
+    *  可使用[无代码复制预览工具](data-factory-copy-data-wizard-tutorial.md)从存储中复制数据。 有关此功能的大体详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
 *  可使用数据管理网关将数据从本地 SQL Server 数据库直接传入 Azure 机器学习。
 
 *  性能提升
@@ -120,7 +130,7 @@ ms.lasthandoff: 02/13/2017
 
 *  网关事件日志的最大大小已从 1 MB 增加到 40 MB。
 
-*  网关自动更新期间如需重启，将显示警告对话框。 可选择立即重启或稍后重启。 
+*  网关自动更新期间如需重启，将显示警告对话框。 可选择立即重启或稍后重启。
 
 *  如果自动更新失败，网关安装程序最多重试三次自动更新。
 
@@ -226,7 +236,7 @@ ms.lasthandoff: 02/13/2017
 
 ### <a name="1253031"></a>1.2.5303.1
 
-*  解决了超时问题，可支持更多的耗时数据源连接。 
+*  解决了超时问题，可支持更多的耗时数据源连接。
 
 ### <a name="1155268"></a>1.1.5526.8
 

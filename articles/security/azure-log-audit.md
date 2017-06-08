@@ -16,18 +16,18 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: df1778b6a3e74d79e55dcc18c4faff7944063a2f
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 9e5c929251259a86944121e504dc033bc99e3bc4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
-## <a name="10-introduction"></a>1.0 简介
-### <a name="11-overview"></a>1.1 概述
+## <a name="introduction"></a>介绍
+### <a name="overview"></a>概述
 为了协助当前和潜在的 Azure 客户了解和使用 Azure 平台中和围绕 Azure 平台提供的各种安全相关的功能，Microsoft 制定了一系列白皮书、安全概述、最佳做法以及清单。 这些主题涵盖各类不同宽度和深度的内容，并且定期更新。 本文档属于下面摘要部分中总结的系列的一部分。
-### <a name="12-azure-platform"></a>1.2 Azure 平台
+### <a name="azure-platform"></a>Azure 平台
 Azure 是一种开放灵活的云服务平台，支持多种操作系统、编程语言、框架、工具、数据库和设备。
 
 例如，你可以：
@@ -43,7 +43,7 @@ Azure 公有云服务支持数百万开发人员和 IT 专业人士已经有所�
 
 Azure 的基础结构（从设备到应用程序）经过设计，可同时托管数百万的客户，并为企业提供可靠的基础，使之能够满足其安全需求。 此外，Azure 还提供广泛的可配置安全选项以及对这些选项进行控制的功能，方便你自定义安全措施来满足部署的独特要求。 本文档可帮助满足这些要求。
 
-### <a name="13-abstract"></a>1.3 摘要
+### <a name="abstract"></a>摘要
 审核和记录与安全相关的事件以及相关警报是有效的数据保护策略中的重要组成部分。 安全日志和报告提供可疑活动的电子记录，并帮助检测可能指示试图或已成功的外部网络渗透以及内部攻击的模式。 可以使用审核来监控用户活动、记录法规遵从性以及执行取证分析等。 发生安全事件时，警报会提供即时通知。
 
 Microsoft Azure 服务和产品提供可配置的安全审核和日志记录选项，帮助识别安全策略和机制的缺口，并解决这些缺口，以防违规。 Microsoft 服务提供以下部分选项（在某些情况下，提供所有这些选项）：集中监视、日志记录和分析系统，并由此提供持续可见性、及时警报和报告，以帮助管理设备和服务生成的大量信息。
@@ -55,7 +55,7 @@ Microsoft Azure 日志数据可导出到安全事件和事件管理 (SIEM) 系�
 > [!Note]
 > 本文中的某些建议可能会导致数据、网络或计算资源使用量增加，还可能导致许可或订阅成本增加。
 
-## <a name="20-types-of-logs-in-azure"></a>2.0 Azure 中的日志类型
+## <a name="types-of-logs-in-azure"></a>Azure 中的日志类型
 云应用程序很复杂，包含很多移动部件。 日志可以为用户提供数据，确保应用程序始终处于正常运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以使用日志记录数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
 
 Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下主要类型进行分类：
@@ -79,7 +79,7 @@ Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下
 |[Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview)|日志、异常和自定义诊断|    多个平台上面向 Web 开发人员的应用程序性能管理 (APM) 服务。|    REST API，[Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)|
 |处理数据/安全警报|    Azure 安全中心警报，OMS 警报|    安全信息和警报。|     REST API，JSON|
 
-### <a name="21-activity-log"></a>2.1 活动日志
+### <a name="activity-log"></a>活动日志
 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供相关信息，方便用户了解对订阅中的资源执行的操作。 活动日志此前称为“审核日志”或“操作日志”，因为它报告订阅的[控制平面事件](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/)。 通过活动日志，可确定订阅中对资源执行的任何写入操作（PUT、POST、DELETE）的“内容、执行者和时间”等信息。 还可以了解该操作和其他相关属性的状态。 活动日志不包括读取 (GET) 操作。
 
 此处 PUT、POST、DELETE 是指活动日志中包含的针对资源的所有写入操作。 例如，活动日志可用于在故障排除时查找错误，或用于监视组织内用户对资源的修改。
@@ -105,7 +105,7 @@ Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下
 -    使用“日志配置文件”将活动日志导出到 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)。
 
 可以使用与发出日志的订阅不同的订阅中的存储帐户或[事件中心命名空间](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive)。 配置此设置的用户必须对两个订阅都具有合适的 [RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 访问权限
-### <a name="22-azure-diagnostic-logs"></a>2.2 Azure 诊断日志
+### <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 Azure 诊断日志由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异（例如，[Windows 事件系统日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events)是一类针对 VM 的诊断日志，而 [blob、表和队列日志](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account)是针对存储帐户的诊断日志类别），并且不同于活动日志，后者用于了解对订阅中的资源执行的操作。
 
 ![Azure 诊断日志](./media/azure-log-audit/azure-log-audit-fig2.png)
@@ -148,7 +148,7 @@ Azure 诊断日志提供了多个配置选项，即 Azure 门户可使用 PowerS
 |||Microsoft.StreamAnalytics/streamingjobs|创作|
 |服务总线|[Azure 服务总线诊断日志](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
 
-### <a name="23-azure-active-directory-reporting"></a>2.3 Azure Active Directory 报告
+### <a name="azure-active-directory-reporting"></a>Azure Active Directory 报告
 Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报表和审核报表。 [Azure Active Directory 审核报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)可帮助客户识别其 Azure Active Directory 中发生的特权操作。 特权操作包括提升更改（例如，创建角色或密码重置）、更改策略配置（例如密码策略）或更改目录配置（例如，对域联合身份验证设置的更改）。
 
 报告提供了事件名称的审核记录、操作执行者、更改影响的目标资源，以及日期和时间 (UTC)。 客户可以根据[查看审核日志](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)中所述，通过 [Azure 门户](https://portal.azure.com/)检索其 Azure Active Directory 的审核事件列表。 下面是包含的报表列表：
@@ -174,7 +174,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 
 对于想要以更长的保留期存储其[审核事件](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events)的客户，可以使用报告 API 定期将审核事件提取到独立的数据存储中。
 
-### <a name="24-virtual-machine-logs-using-azure-diagnostics"></a>2.4 使用 Azure 诊断的虚拟机日志
+### <a name="virtual-machine-logs-using-azure-diagnostics"></a>使用 Azure 诊断的虚拟机日志
 [Azure 诊断](https://docs.microsoft.com/azure/azure-diagnostics)是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用多个不同源的诊断扩展。 目前支持的是 [Azure 云服务 Web 角色和辅助角色](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)，
 
 ![使用 Azure 诊断的虚拟机日志](./media/azure-log-audit/azure-log-audit-fig3.png)
@@ -191,7 +191,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 
 -    [使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-### <a name="25-storage-analytics"></a>2.5 存储分析
+### <a name="storage-analytics"></a>存储分析
 [Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)执行日志记录并为存储帐户提供指标数据。 可以使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。 存储分析日志记录可用于 [Blob、队列和表服务](https://docs.microsoft.com/azure/storage/storage-introduction)。 存储分析记录成功和失败的存储服务请求的详细信息。
 
 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。 仅在针对服务终结点发出请求时才会创建日志条目。 例如，如果存储帐户的 Blob 终结点中存在活动，而表或队列终结点中没有活动，则仅创建与 Blob 服务有关的日志。
@@ -220,7 +220,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 |     分析数据请求 |     失败的 GET 请求，错误代码为 304（未修改） |
 | 不会记录存储分析本身发出的请求，如创建或删除日志。 [存储分析记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)及[存储分析日志格式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)主题中提供了所记录数据的完整列表。 | 不会记录所有其他失败的匿名请求。 若要查看所记录数据的完整列表，请参阅 [Storage Analytics Logged Operations and Status Messages](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)（存储分析记录的操作和状态消息）和 [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)（存储分析日志格式）。 |
 
-### <a name="26-azure-networking-logs"></a>2.6 Azure 网络日志
+### <a name="azure-networking-logs"></a>Azure 网络日志
 Azure 中的网络日志记录和监视是一个综合性的功能，包括两大类别：
 
 -    [网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) - 网络观察程序中的功能提供基于方案的网络监视。 此服务包括数据包捕获、下一跃点、IP 流验证、安全组视图和 NSG 流日志。 与单独网络资源的监视不同，方案级监视提供网络资源的端到端视图。
@@ -233,7 +233,7 @@ Azure 中的网络日志记录和监视是一个综合性的功能，包括两�
 
 NSG 流日志记录 - 使用网络安全组的流日志可以捕获被组中的安全规则允许或拒绝的流量的相关日志。 这些流日志以 JSON 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
-### <a name="27-network-security-group-flow-logging"></a>2.7 网络安全组流日志记录
+### <a name="network-security-group-flow-logging"></a>网络安全组流日志记录
 
 [网络安全组流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)是网络观察程序的一项功能，可用于查看有关通过网络安全组的入口和出口 IP 流量的信息。 这些流日志以 JSON 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
@@ -267,7 +267,7 @@ NSG 流日志记录 - 使用网络安全组的流日志可以捕获被组中的�
 
 -    [网络订阅限制](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits) - 用于查看网络资源用量与限制。
 
-### <a name="28-application-insight"></a>2.8 Application Insights
+### <a name="application-insight"></a>Application Insights
 
 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。
 
@@ -315,7 +315,7 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 |[REST API](https://dev.applicationinsights.io/)|编写代码以对指标和原始数据运行查询。||
 |[连续导出](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-export-telemetry)|原始数据到达后，将其批量导出到存储。||
 
-### <a name="29-azure-security-center-alerts"></a>2.9 Azure 安全中心警报
+### <a name="azure-security-center-alerts"></a>Azure 安全中心警报
 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)会自动收集、分析以及整合 Azure 资源、网络和连接的合作伙伴解决方案（如防火墙和 Endpoint Protection 解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。
 
 安全中心可以自动从 Azure 资源、网络以及连接的合作伙伴解决方案收集安全信息，对威胁进行检测。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 安全中心会对安全警报进行重要性分类，并提供威胁处置建议。
@@ -334,7 +334,7 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 许多安全操作和事件响应团队依靠安全信息和事件管理 (SIEM) 解决方案作为会审和调查安全警报的起始点。 使用 Azure 日志集成，客户可以近实时地同步通过 Azure 诊断和 Azure 审核日志收集的安全中心警报和虚拟机安全事件，以及其日志分析或 SIEM 解决方案。
 
 
-## <a name="30-log-analytics"></a>3.0 Log Analytics
+## <a name="log-analytics"></a>Log Analytics
 
 Log Analytics 是 [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 中的服务，可帮助收集和分析云和本地环境中资源生成的数据。 使用集成的搜索和自定义仪表板，轻松分析所有工作负荷和服务器上的数百万记录，而无需考虑它们的物理位置，从而获得实时见解。
 
@@ -388,7 +388,7 @@ Log Analytics 的中心是托管在 Azure 云中的 OMS 存储库。 通过配�
 ||Microsoft.Web/<br>sites/<br>slots|||||
 
 
-## <a name="40-log-integration-with-on-premises-siem-systems"></a>4.0 与本地 SIEM 系统进行日志集成
+## <a name="log-integration-with-on-premises-siem-systems"></a>与本地 SIEM 系统进行日志集成
 [Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)使用户能够将原始日志从 Azure 资源集成到本地安全信息和事件管理 (SIEM) 系统。
 
 ![日志集成](./media/azure-log-audit/azure-log-audit-fig9.png)

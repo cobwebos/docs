@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
-ms.openlocfilehash: ed204c466c5cfb60e5ba250b9dacb2524ca384eb
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: fb91b9e9c8a805d9c7def5d9108200a2c6875fa1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -66,12 +67,12 @@ IoT 中心和设备库可帮助你应对挑战，即如何以可靠且安全的�
 * **一组丰富的设备库**。 [Azure IoT 设备 SDK][lnk-device-sdks] 适用于各种语言和平台 - C 面向很多 Linux 分发版、Windows 和实时操作系统。 Azure IoT 设备 SDK 也支持 C#、Java 和 JavaScript 等托管语言。
 * **IoT 协议和可扩展性**。 如果解决方案无法使用设备库，则 IoT 中心会公开一个公共协议，它使设备可以通过本机方式使用 MQTT v3.1.1、HTTP 1.1 或 AMQP 1.0 协议。 还可以通过以下方式扩展 IoT 中心，以便为自定义协议提供支持：
   
-  * 使用 [Azure IoT 网关 SDK][lnk-gateway-sdk]创建现场网关，该 SDK 可将自定义协议转换为 IoT 中心所理解的三个协议之一。 
+  * 使用 [Azure IoT Edge][lnk-iot-edge] 创建现场网关，以便将自定义协议转换为 IoT 中心所理解的三个协议之一。
   * 自定义 [Azure IoT 协议网关][protocol-gateway]（在云中运行的一个开放源代码组件）。
 * **扩展**。 Azure IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件。
 
 ## <a name="gateways"></a>网关
-IoT 解决方案中的网关通常是部署于云中的[协议网关][lnk-gateway]或使用设备在本地部署的[现场网关][lnk-field-gateway]。 协议网关执行协议转换，例如 MQTT 到 AMQP。 现场网关可以在边缘运行分析、制定时间敏感型决策以减少延迟、提供设备管理服务、强制实施安全和隐私约束，并且还可以执行协议转换。 这两种网关都可以充当设备与 IoT 中心之间的媒介。
+IoT 解决方案中的网关通常是部署于云中的[协议网关][lnk-iotedge]或使用设备在本地部署的[现场网关][lnk-field-gateway]。 协议网关执行协议转换，例如 MQTT 到 AMQP。 现场网关可以在边缘运行分析、制定时间敏感型决策以减少延迟、提供设备管理服务、强制实施安全和隐私约束，并且还可以执行协议转换。 这两种网关都可以充当设备与 IoT 中心之间的媒介。
 
 现场网关与简单的流量路由设备（例如网络地址转换设备或防火墙）不同，因为它通常在解决方案中管理访问和信息流中扮演主动的角色。
 
@@ -108,7 +109,7 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 [protocol-gateway]: https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md
 [lnk-service-assisted-pattern]: http://blogs.msdn.com/b/clemensv/archive/2014/02/10/service-assisted-communication-for-connected-devices.aspx "服务辅助通信，博客作者：Clemens Vasters"
 [lnk-compare]: iot-hub-compare-event-hubs.md
-[lnk-gateway]: iot-hub-protocol-gateway.md
+[lnk-iotedge]: iot-hub-protocol-gateway.md
 [lnk-field-gateway]: iot-hub-devguide-endpoints.md#field-gateways
 [lnk-devguide-identityregistry]: iot-hub-devguide-identity-registry.md
 [lnk-devguide-security]: iot-hub-devguide-security.md
@@ -117,7 +118,7 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
-[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
+[lnk-iot-edge]: https://github.com/Azure/iot-edge
 [lnk-send-messages]: iot-hub-devguide-messaging.md
 [lnk-device-management]: iot-hub-device-management-overview.md
 

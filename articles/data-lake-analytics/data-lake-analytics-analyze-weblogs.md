@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: e820ca068bd9be151c4241bb233806847855933c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: ad0610c1aed8e21f322516a4b7ea41bf55cc200e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -43,9 +45,9 @@ ms.openlocfilehash: e820ca068bd9be151c4241bb233806847855933c
 * **Data Lake Analytics 帐户**  请参阅[创建 Azure Data Lake Analytics 帐户](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)。
 
     Data Lake 工具不支持创建 Data Lake Analytics 帐户。  因此必须使用 Azure 门户、Azure PowerShell、.NET SDK 或 Azure CLI 创建该帐户。
-* **将示例数据上传到 Data Lake Analytics 帐户。** 请参阅[复制示例数据文件](data-lake-analytics-get-started-portal.md#prepare-source-data)。
+* **将示例数据上传到 Data Lake Analytics 帐户。** 请参阅[复制示例数据文件](data-lake-analytics-get-started-portal.md)。
 
-    若要运行 Data Lake Analytics 作业，需要提供一些数据。 尽管 Data Lake 工具支持上载数据，但为了方便理解本教程，这里将使用门户来上载示例数据。
+    若要运行 Data Lake Analytics 作业，需要提供一些数据。 尽管 Data Lake 工具支持上传数据，但为了方便理解本教程，这里将使用门户来上传示例数据。
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 必须先连接到 Azure，才能生成并测试任意 U SQL 脚本。
@@ -198,11 +200,6 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
 查看更多开发主题：
 
 * [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
-* [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)
+* [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)
 * [为 Data Lake Analytics 作业开发 U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

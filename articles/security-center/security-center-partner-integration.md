@@ -64,8 +64,8 @@ ms.lasthandoff: 05/01/2017
 ## <a name="see-also"></a>另请参阅
 本文档已经介绍了如何在 Azure 安全中心中集成合作伙伴的解决方案。 要了解有关安全中心的详细信息，请参阅以下内容：
 
-* [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md)
-* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)
+* [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
+* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)
 * [Azure 安全中心按类型划分的安全警报](security-center-alerts-type.md)
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。
 * [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) （通过 Azure 安全中心监视合作伙伴解决方案）- 了解如何监视合作伙伴解决方案的运行状况。

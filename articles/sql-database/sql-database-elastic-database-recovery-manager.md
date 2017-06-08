@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: ddove
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c34af1d0c1df88d13ba82fdef7ca9b33a2e55784
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: ce043e53d64a79c0ba37b500f8af9231e5372044
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -39,7 +39,7 @@ RecoveryManager 类是[弹性数据库客户端库](sql-database-elastic-databas
 GSM 和 LSM 可能因以下原因变得不同步：
 
 1. 删除其范围被认为不再被使用的分片，或重命名分片。 删除分片导致**孤立的分片映射**。 类似地，重命名的数据库同样可能会造成孤立的分片映射。 分片可能需要删除或分片位置需要更新，具体取决于更改的目的。 若要恢复已删除的数据库，请参阅[还原已删除的数据库](sql-database-recovery-using-backups.md)。
-2. 发生异地故障转移事件。 若要继续，必须有人更新服务器名称和应用程序中分片映射管理器的数据库名称，然后更新分片映射中所有分片的分片映射详细信息。 如果存在异地故障转移，此类恢复逻辑应该在故障转移工作流中自动化。 自动化修复操作可为异地冗余的数据库启用顺畅的管理，并避免人工操作。 若要了解在出现数据中心中断时用于恢复数据库的选项，请参阅[业务连续性](sql-database-business-continuity.md)和[灾难恢复](sql-database-disaster-recovery.md)。
+2. 发生异地故障转移事件。 若要继续，必须有人更新服务器名称和应用程序中分片映射管理器的数据库名称，然后更新分片映射中所有分片的分片映射详细信息。 如果存在异地故障转移，此类恢复逻辑应该在故障转移工作流中自动化。 自动化修复操作可为异地冗余的数据库启用顺畅的管理，并避免人工操作。 若要了解在出现数据中心服务中断时用于恢复数据库的选项，请参阅[业务连续性](sql-database-business-continuity.md)和[灾难恢复](sql-database-disaster-recovery.md)。
 3. 分片或 ShardMapManager 数据库将还原到较早的时间点。 若要了解使用备份的时点恢复，请参阅[使用备份恢复](sql-database-recovery-using-backups.md)。
 
 有关 Azure SQL 数据库弹性数据库工具、异地复制和还原的详细信息，请参阅以下内容： 

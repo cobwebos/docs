@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 05/03/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 52b7728c3fc702e37f5c5fe3d6544117a11464e8
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: c23e7404f9eee6f1246cafc72c6733546cc82934
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -26,6 +27,8 @@ ms.lasthandoff: 03/30/2017
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-web-application-firewall-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-web-application-firewall-powershell.md)
+
+了解如何创建启用了 Web 应用程序防火墙的应用程序网关或如何将 Web 应用程序防火墙添加到现有的应用程序网关。
 
 Azure 应用程序网关中的 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序，使其免受常见 Web 攻击的威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。
 
@@ -39,65 +42,53 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 
 如果已阅读了[使用 PowerShell 创建应用程序网关](application-gateway-create-gateway-arm.md)，就能了解创建应用程序网关时需要配置的 SKU 设置。 在应用程序网关上配置 SKU 时，WAF 会提供其他可定义的设置。 不需要对应用程序网关本身进行任何其他更改。
 
-**SKU** - 没有 WAF 的普通应用程序网关支持 **Standard\_Small**、**Standard\_Medium** 和 **Standard\_Large** 大小。 随着 WAF 的引入，还提供了其他两个 SKU，分别是 **WAF\_Medium** 和 **WAF\_Large**。 小型应用程序网关不支持 WAF。
-
-**层** - 可用值为**标准**或 **WAF**。 使用 Web 应用程序防火墙时，必须选择“WAF”。
-
-**模式** - 此设置是 WAF 的模式。 允许的值为**检测**和**阻止**。 WAF 设置为检测模式时，所有威胁都会存储在日志文件中。 在阻止模式下，仍然会记录事件，但攻击者会从应用程序网关收到“403 未授权”响应。
+| **设置** | **详细信息**
+|---|---|
+|**SKU** |没有 WAF 的普通应用程序网关支持 **Standard\_Small**、**Standard\_Medium** 和 **Standard\_Large** 大小。 随着 WAF 的引入，还提供了其他两个 SKU，分别是 **WAF\_Medium** 和 **WAF\_Large**。 小型应用程序网关不支持 WAF。|
+|**层** | 可用值为“标准”或 **WAF**。 使用 Web 应用程序防火墙时，必须选择“WAF”。|
+|**模式** | 此设置是 WAF 的模式。 允许的值为**检测**和**阻止**。 WAF 设置为检测模式时，所有威胁都会存储在日志文件中。 在阻止模式下，仍然会记录事件，但攻击者会从应用程序网关收到“403 未授权”响应。|
 
 ## <a name="add-web-application-firewall-to-an-existing-application-gateway"></a>将 Web 应用程序防火墙添加到现有的应用程序网关
 
 确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
-### <a name="step-1"></a>步骤 1
+1. 登录 Azure 帐户。
 
-登录 Azure 帐户。
+    ```powershell
+    Login-AzureRmAccount
+    ```
 
-```powershell
-Login-AzureRmAccount
-```
+2. 选择要用于此方案的订阅。
 
-### <a name="step-2"></a>步骤 2
+    ```powershell
+    Select-AzureRmSubscription -SubscriptionName "<Subscription name>"
+    ```
 
-选择要用于此方案的订阅。
+3. 检索要将 Web 应用程序防火墙添加到的网关。
 
-```powershell
-Select-AzureRmSubscription -SubscriptionName "<Subscription name>"
-```
+    ```powershell
+    $gw = Get-AzureRmApplicationGateway -Name "AdatumGateway" -ResourceGroupName "MyResourceGroup"
+    ```
 
-### <a name="step-3"></a>步骤 3
+1. 配置 Web 应用程序防火墙 SKU。 可用大小为 **WAF\_Large** 和 **WAF\_Medium**。 使用 Web 应用程序防火墙时，层必须是 **WAF**；设置 sku 时，必须确认容量。
 
-检索要将 Web 应用程序防火墙添加到的网关。
+    ```powershell
+    $gw | Set-AzureRmApplicationGatewaySku -Name WAF_Large -Tier WAF -Capacity 2
+    ```
 
-```powershell
-$gw = Get-AzureRmApplicationGateway -Name "AdatumGateway" -ResourceGroupName "MyResourceGroup"
-```
+1. 如以下示例定义，配置 WAF 设置：
 
-### <a name="step-4"></a>步骤 4
+   对于 **FirewallMode**，可用值为“阻止”和“检测”。
 
-配置 Web 应用程序防火墙 SKU。 可用大小为 **WAF\_Large** 和 **WAF\_Medium**。 使用 Web 应用程序防火墙时，层必须是 **WAF**；设置 sku 时，必须确认容量。
+    ```powershell
+    $gw | Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention
+    ```
 
-```powershell
-$gw | Set-AzureRmApplicationGatewaySku -Name WAF_Large -Tier WAF -Capacity 2
-```
+1. 使用上述步骤中定义的设置更新应用程序网关。
 
-### <a name="step-5"></a>步骤 5
-
-如以下示例定义，配置 WAF 设置：
-
-对于 **WafMode** 设置，可用值为“阻止”和“检测”。
-
-```powershell
-$gw | Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention
-```
-
-### <a name="step-6"></a>步骤 6
-
-使用上述步骤中定义的设置更新应用程序网关。
-
-```powershell
-Set-AzureRmApplicationGateway -ApplicationGateway $gw
-```
+    ```powershell
+    Set-AzureRmApplicationGateway -ApplicationGateway $gw
+    ```
 
 此命令使用 Web 应用程序防火墙更新应用程序网关。 建议查看[应用程序网关诊断](application-gateway-diagnostics.md)，以了解如何查看应用程序网关的日志。 由于 WAF 的安全特性，需要定期查看日志，以了解 Web 应用程序的安全状态。
 
@@ -107,35 +98,19 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
-### <a name="step-1"></a>步骤 1
+1. 通过运行 `Login-AzureRmAccount` 登录到 Azure，系统将提示用户使用凭据进行身份验证。
 
-登录 Azure
+1. 通过运行 `Get-AzureRmSubscription` 检查该帐户的订阅
 
-```powershell
-Login-AzureRmAccount
-```
+1. 选择要使用的 Azure 订阅。
 
-系统将提示用户使用凭据进行身份验证。
+    ```powershell
+    Select-AzureRmsubscription -SubscriptionName "<Subscription name>"
+    ```
 
-### <a name="step-2"></a>步骤 2
+### <a name="create-a-resource-group"></a>创建资源组
 
-检查该帐户的订阅。
-
-```powershell
-Get-AzureRmSubscription
-```
-
-### <a name="step-3"></a>步骤 3
-
-选择要使用的 Azure 订阅。
-
-```powershell
-Select-AzureRmsubscription -SubscriptionName "<Subscription name>"
-```
-
-### <a name="step-4"></a>步骤 4
-
-创建资源组（如果要使用现有的资源组，请跳过此步骤）。
+为应用程序网关创建资源组。
 
 ```powershell
 New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
@@ -148,154 +123,67 @@ Azure 资源管理器要求所有资源组指定一个位置。 此位置将用�
 > [!NOTE]
 > 如果你需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请查看 [custom probes and health monitoring](application-gateway-probe-overview.md) （自定义探测和运行状况监视）。
 
-### <a name="step-5"></a>步骤 5
+### <a name="configure-virtual-network"></a>配置虚拟网络
 
-分配要用于应用程序网关本身的子网地址范围。
+应用程序网关需要自己的子网。 在此步骤中，将创建一个具有 10.0.0.0/16 地址空间的虚拟网络和两个子网（一个子网用于应用程序网关，另一子网用于后端池成员）。
 
 ```powershell
+# Create a subnet configuration object for the application gateway subnet. A subnet for an application should have a minimum of 28 mask bits. This value leaves 10 available addresses in the subnet for Application Gateway instances. With a smaller subnet, you may not be able to add more instance of your application gateway in the future.
 $gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
-```
 
-> [!NOTE]
-> 应用程序的子网应至少具有 28 个掩码位。 此值会让应用程序网关实例的子网中留出 10 个可用地址。 若使用较小的子网，可能无法在未来添加更多的应用程序网关实例。
-
-
-### <a name="step-6"></a>步骤 6
-
-分配要用于后端地址池的地址范围。
-
-```powershell
+# Create a subnet configuration object for the backend pool members subnet
 $nicSubnet = New-AzureRmVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
-```
 
-### <a name="step-7"></a>步骤 7
-
-使用在[创建资源组](#create-the-resource-group)步骤中所创建的资源组中的上述子网创建虚拟网络
-
-```powershell
+# Create the virtual network with the previous created subnets
 $vnet = New-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
 ```
 
-### <a name="step-8"></a>步骤 8
+### <a name="configure-public-ip-address"></a>配置公共 IP 地址
 
-检索要用于以下步骤的虚拟网络资源和子网资源：
-
-```powershell
-$vnet = Get-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
-$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -VirtualNetwork $vnet
-$nicSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appsubnet' -VirtualNetwork $vnet
-```
-
-### <a name="step-9"></a>步骤 9
-
-创建要用于应用程序网关的公共 IP 资源。 此公共 IP 地址会用于以下步骤之一：
+若要处理外部请求，应用程序网关需要公共 IP 地址。 此公共 IP 地址不能将 `DomainNameLabel` 定义为由应用程序网关使用。
 
 ```powershell
+# Create a public IP address for use with the application gateway. Defining the domainnamelabel during creation is not supported for use with application gateway
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name 'appgwpip' -Location "West US" -AllocationMethod Dynamic
 ```
 
-> [!IMPORTANT]
-> 应用程序网关不支持使用通过定义的域标签创建的公共 IP 地址。 仅支持具有动态创建的域标签的公共 IP 地址。 如果需要应用程序网关具有友好的 DNS 名称，建议使用 CNAME 记录作为别名。
-
-
-### <a name="step-10"></a>步骤 10
-
-在创建应用程序网关之前，必须设置所有配置项。 以下步骤将创建应用程序网关资源所需的配置项。
-
-创建应用程序网关 IP 配置，此设置配置应用程序网关使用的子网。 当应用程序网关启动时，它从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
+### <a name="configure-the-application-gateway"></a>配置应用程序网关
 
 ```powershell
+# Create a IP configuration. This configures what subnet the Application Gateway uses. When Application Gateway starts, it picks up an IP address from the subnet configured and routes network traffic to the IP addresses in the back-end IP pool.
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
-```
 
-### <a name="step-11"></a>步骤 11
-
-使用后端 Web 服务器的 IP 地址配置后端 IP 地址池。 这些 IP 地址将接收来自前端 IP 终结点的网络流量。 替换以下 IP 地址，添加自己的应用程序 IP 地址终结点。
-
-```powershell
+# Create a backend pool to hold the addresses or NICs for the application that application gateway is protecting.
 $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
-```
 
-### <a name="step-12"></a>步骤 12
-
-上传要在已启用 SSL 的后端池资源上使用的证书。
-
-```powershell
+# Upload the authenication certificate that will be used to communicate with the backend servers
 $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile <full path to .cer file>
-```
 
-### <a name="step-13"></a>步骤 13
-
-配置应用程序网关后端 http 设置。 将上述步骤中上传的证书分配给 http 设置。
-
-```powershell
+# Conifugre the backend HTTP settings to be used to define how traffic is routed to the backend pool. The authenication certificate used in the previous step is added to the backend http settings.
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
-```
 
-### <a name="step-14"></a>步骤 14
-
-配置公共 IP 终结点的前端 IP 端口。 此端口是最终用户连接到的端口。
-
-```powershell
+# Create a frontend port to be used by the listener.
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
-```
 
-### <a name="step-15"></a>步骤 15
-
-创建前端 IP 配置，此设置将专用或公共 IP 地址映射到应用程序网关的前端。 以下步骤将上述步骤中的公共 IP 地址与前端 IP 配置关联。
-
-```powershell
+# Create a frontend IP configuration to associate the public IP address with the application gateway
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
-```
 
-### <a name="step-16"></a>步骤 16
-
-配置应用程序网关的证书。 此证书用于加密和解密应用程序网关上的流量。
-
-```powershell
+# Configure the certificate for the application gateway. This certificate is used to decrypt and re-encrypt the traffic on the application gateway.
 $cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
-```
 
-### <a name="step-17"></a>步骤 17
-
-创建应用程序网关的 HTTP 侦听器。 分配要使用的前端 IP 配置、端口和 SSL 证书。
-
-```powershell
+# Create the HTTP listener for the application gateway. Assign the front-end ip configuration, port, and ssl certificate to use.
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
-```
 
-### <a name="step-18"></a>步骤 18
-
-创建配置负载均衡器行为的负载均衡器路由规则。 在此示例中，创建基本轮循机制规则。
-
-```powershell
+#Create a load balancer routing rule that configures the load balancer behavior. In this example, a basic round robin rule is created.
 $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
-```
 
-### <a name="step-19"></a>步骤 19
-
-配置应用程序网关的实例大小。
-
-```powershell
+# Configure the SKU of the application gateway
 $sku = New-AzureRmApplicationGatewaySku -Name WAF_Medium -Tier WAF -Capacity 2
-```
 
-> [!NOTE]
-> 可以选择 **WAF\_Medium** 或 **WAF\_Large**，使用 WAF 时的层始终是 **WAF**。 容量是介于 1 和 10 之间的任意数字。
-
-### <a name="step-20"></a>步骤 20
-
-配置 WAF 的模式，可接受的值为**阻止**和**检测**。
-
-```powershell
+#Configure the waf configuration settings.
 $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
-```
 
-### <a name="step-21"></a>步骤 21
-
-创建包含前述步骤中所有配置项的应用程序网关。 示例中的应用程序网关名为“appgwtest”。
-
-```powershell
+# Create the application gateway utilizing all the previously created configuration objects
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert -AuthenticationCertificates $authcert
 ```
 

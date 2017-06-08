@@ -3,7 +3,7 @@ title: "创建 Azure 事件中心 | Microsoft Docs"
 description: "使用 Azure 门户创建 Azure 事件中心命名空间和事件中心"
 services: event-hubs
 documentationcenter: na
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: ff99e327-c8db-4354-9040-9c60c51a2191
@@ -12,12 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2017
-ms.author: jotaub
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 23df3a3a11d8f065d6ce2a4f14ba175d6c781ee9
-ms.lasthandoff: 04/19/2017
+ms.date: 05/03/2017
+ms.author: sethm
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 2ef14fccda5c38ebdbf9d64b4766b45503755af0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/04/2017
+
 
 ---
 
@@ -63,7 +65,7 @@ ms.lasthandoff: 04/19/2017
 ## <a name="next-steps"></a>后续步骤
 若要了解有关事件中心的详细信息，请访问以下链接：
 
-* [事件中心概述](event-hubs-overview.md)
+* [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [事件中心 API 概述](event-hubs-api-overview.md)
 
 [Azure portal]: https://portal.azure.com/

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: cc2a24b26b152671173770adfd4aefcfcb2512d4
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: f1b9beabfb0a92e5cc49d6af762693ae45a85e42
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -89,7 +89,7 @@ ms.lasthandoff: 05/02/2017
 * 数据湖分析
 * Data Lake Store
 * DNS
-* DocumentDB
+* Azure Cosmos DB
 * 事件中心
 * HDInsight 群集 - 请参阅 [HDInsight 限制](#hdinsight-limitations)
 * IoT 中心
@@ -126,19 +126,20 @@ ms.lasthandoff: 05/02/2017
 
 * AD 混合运行状况服务
 * 应用程序网关
+* 带托管磁盘的虚拟机的可用性集
 * BizTalk 服务
 * 容器服务
 * Express Route
 * 开发测试实验室 - 支持移到同一订阅中的新资源组，但不支持跨订阅移动。
 * Dynamics LCS
+* 从托管磁盘创建的映像
+* 托管磁盘
+* 托管应用程序
 * 恢复服务保管库 - 此外，也不可以移动与恢复服务保管库关联的计算、网络和存储资源，请参阅[恢复服务限制](#recovery-services-limitations)。
 * 安全
+* 从托管磁盘创建的快照
 * 证书存储在密钥保管库中的虚拟机
 * 带托管磁盘的虚拟机
-* 带托管磁盘的虚拟机的可用性集
-* 托管磁盘
-* 从托管磁盘创建的映像
-* 从托管磁盘创建的快照
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 无法在订阅之间移动从应用商店资源创建的虚拟机。 需要在当前订阅中取消设置资源，并在新的订阅中再次部署资源
 
@@ -214,7 +215,7 @@ ms.lasthandoff: 05/02/2017
 * 目标订阅不得包含任何其他经典资源。
 * 只能通过独立的适用于经典移动的 REST API 来请求移动。 将经典资源移到新订阅时，不能使用标准的 Resource Manager 移动命令。
 
-若要将经典资源移动到新订阅，请使用特定于经典资源的门户或 REST 操作。 若要了解如何通过门户移动经典资源，请参阅[使用门户](#use-portal)。 若要使用 REST，请执行以下步骤：
+若要将经典资源移动到新订阅，请使用特定于经典资源的 REST 操作。 若要使用 REST，请执行以下步骤：
 
 1. 检查源订阅是否可以参与跨订阅移动。 使用以下操作：
 

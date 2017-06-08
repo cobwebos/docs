@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 01/10/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: 6d5ee44b57ce3e60b72ff2a2d182f2b8a39ecf81
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 6ea2cfcf41900ecbf4d254cc4a195848144a0fa0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,13 +29,14 @@ ms.lasthandoff: 02/16/2017
 
 若要启动故障转移，需要提供以下各项：
 
-* 主数据库上 DBManager 的登录名，拥有你要异地复制的本地数据库的 db_ownership 权限，并且是你要配置异地复制的伙伴服务器上的 DBManager。
-* SQL Server Management Studio (SSMS)
+* 作为主数据库上的 DBManager 的登录名
+* 具有要异地复制的本地数据库的 db_ownership
+* 作为要将异地复制配置到的伙伴服务器上的 DBManager
+* 最新版本的 SQL Server Management Studio (SSMS)
 
 > [!IMPORTANT]
 > 建议始终使用最新版本的 Management Studio 以保持与 Microsoft Azure 和 SQL 数据库的更新同步。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。
-> 
-> 
+>  
 
 ## <a name="initiate-a-planned-failover-promoting-a-secondary-database-to-become-the-new-primary"></a>启动计划的故障转移，将辅助数据库升级为新的主数据库
 可以使用 **ALTER DATABASE** 语句来升级辅助数据库，以计划好的方式使它成为新的主数据库，并将现有的主数据库降级为辅助数据库。 此语句将在要升级的异地复制辅助数据库所在的 Azure SQL 数据库逻辑服务器中的 master 数据库上运行。 此功能适用于计划的故障转移（例如灾难恢复演练期间），它要求主数据库可用。
@@ -61,7 +63,7 @@ ms.lasthandoff: 02/16/2017
 > 
 
 ## <a name="initiate-an-unplanned-failover-from-the-primary-database-to-the-secondary-database"></a>启动从主数据库到辅助数据库的非计划故障转移
-可以使用 **ALTER DATABASE** 语句来升级辅助数据库，以非计划的方式使它成为新的主数据库，当主数据库不可用时，强制将现有主数据库降级为辅助数据库。 此语句将在要升级的异地复制辅助数据库所在的 Azure SQL 数据库逻辑服务器中的 master 数据库上运行。
+可以使用 **ALTER DATABASE** 语句来提升辅助数据库，以非计划的方式使它成为新的主数据库，当主数据库不再可用时，强制将现有主数据库降级为辅助数据库。 此语句将在要升级的异地复制辅助数据库所在的 Azure SQL 数据库逻辑服务器中的 master 数据库上运行。
 
 此功能适用于还原数据库的可用性至关重要并且可接受部分数据丢失的灾难恢复场合。 调用强制故障转移时，指定的辅助数据库将立即成为主数据库，并开始接受写入事务。 一旦原始主数据库能够与此新主数据库重新连接，将在原始主数据库上创建增量备份，旧的主数据库将变成新主数据库的辅助数据库；然后，它只是新主数据库的同步副本。
 
@@ -79,7 +81,7 @@ ms.lasthandoff: 02/16/2017
 4. 单击“执行”运行查询。
 
 > [!NOTE]
-> 如果在主数据库和辅助数据库在线时发出此命令，旧的主数据库将立即变为新的辅助数据库，但不会进行数据同步。 如果发出命令时主数据库正在提交事务，则可能会丢失某些数据。
+> 如果在主数据库和辅助数据库都在线时发出此命令，旧的主数据库将立即变为新的辅助数据库，但不会进行数据同步。 如果发出命令时主数据库正在提交事务，则可能会丢失某些数据。
 > 
 > 
 

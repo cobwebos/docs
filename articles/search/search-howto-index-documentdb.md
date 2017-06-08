@@ -1,40 +1,44 @@
 ---
-title: "为 Azure 搜索的 DocumentDB 数据源编制索引 | Microsoft 文档"
-description: "本文介绍如何使用 DocumentDB 作为数据源创建 Azure 搜索索引器。"
+title: "为 Azure 搜索的 Cosmos DB 数据源编制索引 | Microsoft Docs"
+description: "本文介绍如何使用 Cosmos DB 作为数据源创建 Azure 搜索索引器。"
 services: search
 documentationcenter: 
 author: chaosrealm
 manager: pablocas
 editor: 
 ms.assetid: 
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 04/11/2017
+ms.date: 05/01/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 5f657ed128103d4bf1304dfc5fae8d86ef950d87
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 333f8320820a1729a14ffc2e29446e7452aa768e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="connecting-documentdb-with-azure-search-using-indexers"></a>使用索引器连接 DocumentDB 和 Azure 搜索
+# <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>使用索引器连接 Cosmos DB 和 Azure 搜索
 
-如果想获得极佳的 DocumentDB 数据搜索体验，可使用 Azure 搜索索引器将数据提取到 Azure 搜索索引中。 在本文中，我们将说明如何将 Azure DocumentDB 与 Azure 搜索进行集成无需编写代码以维持索引编制基础结构。
+如果想获得极佳的 Cosmos DB 数据搜索体验，可使用 Azure 搜索索引器将数据提取到 Azure 搜索索引中。 本文中将展示如何将 Azure Cosmos DB 与 Azure 搜索进行集成且无需编写代码以保持编制基础结构的索引。
 
-要设置 DocumentDB 索引器，必须具有 [Azure 搜索服务](search-create-service-portal.md)，并依次创建索引、数据源和索引器。 可以使用[门户](search-import-data-portal.md)、[.NET SDK](/dotnet/api/microsoft.azure.search) 或适用于所有非. NET 语言的 [REST API](/rest/api/searchservice/) 创建这些对象。 
+若要设置 Cosmos DB 索引器，必须具有 [Azure 搜索服务](search-create-service-portal.md)，并依次创建索引、数据源和索引器。 可以使用[门户](search-import-data-portal.md)、[.NET SDK](/dotnet/api/microsoft.azure.search) 或适用于所有非. NET 语言的 [REST API](/rest/api/searchservice/) 创建这些对象。 
 
 如果选择使用门户，[导入数据向导](search-import-data-portal.md)将引导完成所有这些资源的创建操作。
 
 > [!NOTE]
-> 可从 DocumentDB 仪表板启动**导入数据**向导，进而简化该数据源的索引。 在左侧导航栏中，转到“集合” > “添加 Azure 搜索”开始操作。
+> Cosmos DB 是下一代 DocumentDB。 虽然更改了产品名称，但语法与之前相同。 请继续按照此索引器文章的指示指定 `documentdb`。 
+
+> [!TIP]
+> 可从 Cosmos DB 仪表板启动“导入数据”向导，进而简化该数据源的索引。**** 在左侧导航栏中，转到“集合” > “添加 Azure 搜索”开始操作。
 
 <a name="Concepts"></a>
 ## <a name="azure-search-indexer-concepts"></a>Azure 搜索索引器概念
-Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这些数据源操作的索引器。
+Azure 搜索支持创建和管理数据源（包括 Cosmos DB）以及针对这些数据源操作的索引器。
 
 **数据源**指定要编制索引的数据、凭据和用于识别数据更改（如修改或删除了集合内的文档）的策略。 数据源定义为独立的资源，以便它可以被多个索引器使用。
 
@@ -67,20 +71,20 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 
 请求正文包含数据源定义，其中应包括以下字段：
 
-* **名称**：选择任何名称来表示 DocumentDB 数据库。
+* 名称：选择任意名称来表示 Cosmos DB 数据库。****
 * **类型**：必须为 `documentdb`。
 * **凭据**：
   
-  * **connectionString**：必需。 采用以下格式指定连接信息到 Azure DocumentDB 数据库：`AccountEndpoint=<DocumentDB endpoint url>;AccountKey=<DocumentDB auth key>;Database=<DocumentDB database id>`
+  * **connectionString**：必需。 采用以下格式指定 Azure Cosmos DB 数据库的连接信息：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`
 * **容器**：
   
-  * **名称**：必需。 指定要编制索引的 DocumentDB 集合的 ID。
+  * **名称**：必需。 指定要编制索引的 Cosmos DB 集合的 ID。
   * **查询**：可选。 你可以指定一个查询来将一个任意 JSON 文档平整成 Azure 搜索可编制索引的平面架构。
 * **dataChangeDetectionPolicy**：推荐。 请参阅[为已更改的文档编制索引](#DataChangeDetectionPolicy)部分。
 * **dataDeletionDetectionPolicy**：可选。 请参阅[为已删除的文档编制索引](#DataDeletionDetectionPolicy)部分。
 
 ### <a name="using-queries-to-shape-indexed-data"></a>使用查询形成索引数据
-可指定 DocumentDB 查询平展嵌套的属性或数组、投影 JSON 属性并筛选要编制索引的数据。 
+可指定 Cosmos DB 查询平展嵌套的属性或数组、投影 JSON 属性并筛选要编制索引的数据。 
 
 示例文档：
 
@@ -142,7 +146,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 确保目标索引的架构与源 JSON 文档的架构或自定义查询投影的输出的架构兼容。
 
 > [!NOTE]
-> 对于分区集合，默认文档键是 DocumentDB 的 `_rid` 属性，它在 Azure 搜索中重命名为 `rid`。 此外，DocumentDB 的 `_rid` 值包含 Azure 搜索键中无效的字符。 因此，`_rid` 值采用 Base64 编码。
+> 对于分区集合，默认文档键是 Cosmos DB 的 `_rid` 属性，它在 Azure 搜索中重命名为 `rid`。 此外，Cosmos DB 的 `_rid` 值包含 Azure 搜索键中无效的字符。 因此，`_rid` 值采用 Base64 编码。
 > 
 > 
 
@@ -229,7 +233,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 
 <a name="DataChangeDetectionPolicy"></a>
 ## <a name="indexing-changed-documents"></a>为已更改的文档编制索引
-数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一支持的策略是 DocumentDB 提供的使用 `_ts`（时间戳）属性的 `High Water Mark` 策略，它按如下所示指定：
+数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一支持的策略是 Cosmos DB 提供的使用 `_ts`（时间戳）属性的 `High Water Mark` 策略，它按如下所示指定：
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -277,7 +281,7 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
     }
 
 ## <a name="NextSteps"></a>后续步骤
-祝贺你！ 现已学习如何使用 DocumentDB 索引器将 Azure DocumentDB 与 Azure 搜索进行集成。
+祝贺你！ 你已学习了如何使用 Azure Cosmos DB 索引器将 Cosmos DB 与 Azure 搜索进行集成。
 
-* 若要了解有关 Azure DocumentDB 的详细信息，请参阅 [DocumentDB 服务页](https://azure.microsoft.com/services/documentdb/)。
+* 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Cosmos DB 服务页](https://azure.microsoft.com/services/documentdb/)。
 * 若要了解有关 Azure 搜索的详细信息，请参阅[搜索服务页](https://azure.microsoft.com/services/search/)。

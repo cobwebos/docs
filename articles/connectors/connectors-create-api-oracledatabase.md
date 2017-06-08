@@ -14,11 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
-ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 1d7574110d616643c67b19e9a4bf21ee9187503d
-ms.lasthandoff: 03/31/2017
+ms.author: mandia; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 014b726c2e960029cf5896e07063e807e9ae1915
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -53,11 +54,11 @@ ms.lasthandoff: 03/31/2017
 ## <a name="add-the-connector"></a>添加连接器
 
 > [!IMPORTANT]
-> 此连接器没有任何触发器。 它只有操作。 因此，请在创建逻辑应用时，添加另一个用于启动逻辑应用的触发器，例如“计划 - 重复周期”或“请求/响应 - 响应”。 
+> 此连接器没有任何触发器。 它只有操作。 因此，请在创建逻辑应用时，添加另一个用于启动逻辑应用的触发器，例如“计划 - 重复周期”或“请求/响应 - 响应”。**** 
 
 1. 在 [Azure 门户](https://portal.azure.com)中，创建一个空白逻辑应用。
 
-2. 在启动逻辑应用时，请选择“请求/响应 - 请求”触发器： 
+2. 在启动逻辑应用时，请选择“请求/响应 - 请求”触发器：**** 
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
@@ -70,7 +71,7 @@ ms.lasthandoff: 03/31/2017
     > [!TIP]
     > 这也是查看适用于任何连接器的触发器和操作的最快方式。 键入连接器的部分名称，例如 `oracle`。 设计器会列出任何触发器和任何操作。 
 
-5. 选择其中一个操作，例如“Oracle 数据库 - 获取行”。 选择“通过本地数据网关连接”。 输入 Oracle 服务器名称、身份验证方法、用户名、密码，然后选择网关：
+5. 选择其中一个操作，例如“Oracle 数据库 - 获取行”。**** 选择“通过本地数据网关连接”。**** 输入 Oracle 服务器名称、身份验证方法、用户名、密码，然后选择网关：
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
@@ -84,7 +85,7 @@ ms.lasthandoff: 03/31/2017
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. **保存**逻辑应用，然后选择“运行”。 关闭设计器，然后在运行历史记录中查看状态。 如果该操作失败，请选择失败的消息行。 设计器会打开，并且会显示具体的失败步骤，以及错误信息。 如果该操作成功，你应该会收到一封电子邮件，其中包含你添加的信息。
+8. **保存**逻辑应用，然后选择“运行”。**** 关闭设计器，然后在运行历史记录中查看状态。 如果该操作失败，请选择失败的消息行。 设计器会打开，并且会显示具体的失败步骤，以及错误信息。 如果该操作成功，你应该会收到一封电子邮件，其中包含你添加的信息。
 
 
 ### <a name="workflow-ideas"></a>工作流创意
@@ -123,6 +124,8 @@ ms.lasthandoff: 03/31/2017
 * 包含复合键的任意表
 * 表中的嵌套对象类型
  
+## <a name="view-the-swagger"></a>查看 Swagger
+请参阅 [Swagger 详细信息](/connectors/oracle/)。 
 
 ## <a name="get-some-help"></a>获取帮助
 

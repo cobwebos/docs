@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 6563d1520149ae5ced7e2de80686ef1624ebb651
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 3ae3e5d55454a33a35950057667f9648b63bb331
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>使用 SQL 数据库在 Azure 中构建 ASP.NET 应用
@@ -111,19 +111,7 @@ ms.lasthandoff: 05/09/2017
 
 ### <a name="create-an-app-service-plan"></a>创建应用服务计划
 
-Azure Web 应用还需要一个_应用服务计划_。 
-
-> [!NOTE]
-> 应用服务计划表示用于托管应用的物理资源集合。 分配到应用服务计划的所有应用将共享该计划定义的资源，在托管多个应用时可以节省成本。 
->
-> 应用服务计划定义：
->
-> - 区域（北欧、美国东部、东南亚）
-> - 实例大小（小、中、大）
-> - 规模计数（一个、两个、三个实例，等等） 
-> - SKU（免费、共享、基本、标准、高级）
->
->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 在“应用服务计划”旁边单击“新建”。 
 

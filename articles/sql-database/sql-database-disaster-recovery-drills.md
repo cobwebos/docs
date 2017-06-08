@@ -1,6 +1,6 @@
 ---
 title: "SQL 数据库灾难恢复演练 | Microsoft 文档"
-description: "了解有关使用 Azure SQL 数据库执行灾难恢复演练，帮助任务关键型业务应用程序弹性应对故障和中断的指导和最佳实践。"
+description: "了解有关使用 Azure SQL 数据库执行灾难恢复演练，帮助任务关键型业务应用程序弹性应对故障和中断的指导和最佳做法。"
 services: sql-database
 documentationcenter: 
 author: anosov1960
@@ -15,10 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 07/31/2016
 ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 821be267a109bdcb1a1d22107f0ab4c469e6d6aa
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 1b1d65a41a794a566287dcffe3581ac58e2a965f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -41,10 +42,10 @@ ms.lasthandoff: 03/10/2017
 
 #### <a name="recovery"></a>恢复
 * 根据[此处](sql-database-disaster-recovery.md)所述，在另一台服务器中执行数据库异地还原。
-* 更改应用程序配置以连接到已恢复的数据库，并根据在[恢复后配置数据库](sql-database-disaster-recovery.md)指南完成恢复。
+* 更改应用程序配置以连接到已恢复的数据库，并按照[在恢复后配置数据库](sql-database-disaster-recovery.md)指南完成恢复。
 
 #### <a name="validation"></a>验证
-* 通过验证恢复后的应用程序完整性（例如，连接字符串、登录名、基本功能测试，或标准应用程序验收过程的其他验证部分）来完成演练。
+* 通过验证恢复后的应用程序完整性（包括连接字符串、登录名、基本功能测试，或标准应用程序验收过程的其他验证部分）来完成演练。
 
 ## <a name="geo-replication"></a>异地复制
 对于使用异地复制保护的数据库，演练过程包括按计划故障转移到辅助数据库。 计划的故障转移可确保在切换角色后主数据库和辅助数据库保持同步。 与非计划的故障转移不同，此操作不会导致数据丢失，因此可以在生产环境中执行演练。
@@ -58,7 +59,7 @@ ms.lasthandoff: 03/10/2017
 * 根据在[恢复后配置数据库](sql-database-disaster-recovery.md)指南完成恢复。
 
 #### <a name="validation"></a>验证
-* 通过验证恢复后的应用程序完整性（例如，连接字符串、登录名、基本功能测试，或标准应用程序验收过程的其他验证部分）来完成演练。
+* 通过验证恢复后的应用程序完整性（包括连接字符串、登录名、基本功能测试，或标准应用程序验收过程的其他验证部分）来完成演练。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解业务连续性方案，请参阅[连续性方案](sql-database-business-continuity.md)

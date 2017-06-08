@@ -10,12 +10,12 @@ ms.assetid:
 ms.service: postgresql-database
 ms.tgt_pltfrm: portal
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/16/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 23a93060697bc48084658bbbd895d13fd393b07b
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: a946c114824597cc55e435a455cd888816789dbf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-service-tier"></a>Azure Database for PostgreSQL 选项和性能：了解每个服务层提供的功能
@@ -46,15 +46,15 @@ ms.lasthandoff: 05/10/2017
 
 | **服务层功能** | **基本** | **标准** | 高级 * |
 | :------------------------ | :-------- | :----------- | :------------ |
-| 最大计算单元数 | 100 | 2000 | 不适用于预览版 |
-| 最大总存储 | 1050 GB | 10000 GB | 不适用于预览版 |
+| 最大计算单元数 | 100 | 2,000 | 不适用于预览版 |
+| 最大总存储 | 1,050 GB | 10,000 GB | 不适用于预览版 |
 | 存储 IOPS 保证 | 不适用 | 是 | 不适用于预览版 |
-| 最大存储 IOPS | 不适用 | 30,000 | 不适用于预览版 |
+| 最大存储 IOPS | 不适用 | 3,000 | 不适用于预览版 |
 | 数据库备份保留期 | 7 天 | 35 天 | 35 天 |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; |
+
 
 > [!NOTE]
-> 预览版中的标准服务层当前最多支持 800 个计算单元，最大支持 1000 GB 存储。
+> 预览版中的标准服务层当前最多支持 800 个计算单元，最大支持 1,000 GB 存储。
 
 确定最低服务层后，即可开始确定 PostgreSQL 服务器的性能级别（计算单元数）。 对于Web 和分析型工作负荷需要更高用户并发的应用程序，标准型 200 和 400 个计算单元通常为适用的起始值。 
 
@@ -64,44 +64,38 @@ ms.lasthandoff: 05/10/2017
 > 在预览版中，基本层和标准层当前不支持动态缩放存储。 我们计划在将来添加此功能。
 
 > [!NOTE]
-> 标准服务层中，IOPS 相对预配的存储大小按 3:1 的固定比例缩放。 所含的 125 GB 存储保证预配 IOPS 为 375，其中每个 IO 的大小最多可达 256 KB。 如果预配 1000 GB，预配 IOPS 将为 3000。 必须监视服务器计算单元使用情况并进行扩展，以充分利用可用的预配 IOPS。
+> 标准服务层中，IOPS 相对预配的存储大小按 3:1 的固定比例缩放。 所含的 125 GB 存储保证预配 IOPS 为 375，其中每个 IO 的大小最多可达 256 KB。 如果预配 1,000 GB，预配 IOPS 将为 3,000。 必须监视服务器计算单元使用情况并进行扩展，以充分利用可用的预配 IOPS。
 
 ## <a name="service-tiers-and-performance-levels"></a>服务层和性能级别
 
 Azure Database for PostgreSQL 在每个服务层内提供多个性能级别。 通过使用如下其中一种方式，你可以灵活选择最能满足具体工作负荷需求的级别：
 
-- [Azure 门户](/azure/azure-portal-overview)（网址为 [http://portal.azure.com](http://portal.azure.com)）
+- [Azure 门户](quickstart-create-server-database-portal.md)（网址为 [http://portal.azure.com](http://portal.azure.com)）
 - [Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 数据库与每个 PostgreSQL 服务器中托管的数据库数量无关，可获得稳定的一组资源，且服务器预期性能特征不受影响。
 
-基本服务层：
+### <a name="basic-service-tier"></a>基本服务层：
 
 | **性能级别** | **50** | **100** |
-| :-------------------- | :----- | :------ |
+| --------------------: | :----- | :------ |
 | 最大计算单元数 | 50 | 100 |
 | 所含存储大小 | 50 GB | 50 GB |
-| 最大服务器存储大小\* | 1050 GB | 1050 GB |
-| 最大并发登录数 | &nbsp; | &nbsp; |
-| 最大连接数 | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; |
+| 最大服务器存储大小\* | 1,050 GB | 1,050 GB |
 
-标准服务层：
+### <a name="standard-service-tier"></a>标准服务层：
 
 | **性能级别** | **100** | **200** | **400** | **800** |
-| :-------------------- | :------ | :------ | :------ | :------ |
+| --------------------: | :------ | :------ | :------ | :------ |
 | 最大计算单元数 | 100 | 200 | 400 | 800 |
-| 所含存储大小和预配 IOPS | 125 GB，375 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| 最大服务器存储大小\* | 1 TB | &nbsp; | &nbsp; | &nbsp; |
-| 服务器预配 IOPS 的最大值 | 3000 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| 服务器预配 IOPS 的最大值/GB | 固定为 3 IOPS/GB | &nbsp; | &nbsp; | &nbsp; |
-| 最大并发登录数 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| 最大连接数 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
+| 所含存储大小和预配 IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS |
+| 最大服务器存储大小\* | 1 TB | 1 TB | 1 TB | 1 TB |
+| 服务器预配 IOPS 的最大值 | 3,000 IOPS | 3,000 IOPS | 3,000 IOPS | 3,000 IOPS |
+| 服务器预配 IOPS 的最大值/GB | 固定为 3 IOPS/GB | 固定为 3 IOPS/GB | 固定为 3 IOPS/GB | 固定为 3 IOPS/GB |
 
 \*最大服务器存储大小指服务器的最大预配存储大小。
 
-## <a name="scaling-up-or-down-a-single-server"></a>增加或减少一台服务器
+## <a name="scaling-up-or-down-a-server"></a>增加或减少一个服务器
 
 初始选择服务层和性能级别后，可根据工作负荷要求动态地增加或减少服务器。 如果需要进行增减，则可使用 Azure 门户或 Azure CLI 轻松更改数据库的服务层。
 
@@ -109,10 +103,7 @@ Azure Database for PostgreSQL 在每个服务层内提供多个性能级别。 �
 
 整个扩展过程的持续时间同时取决于更改前后服务器的大小和服务层。 例如，如果服务器要将计算单元更改为标准服务层、从标准服务层更改计算单元或在标准层内更改计算单元，则应该在几分钟内完成。 更改完成之前不会应用服务器的新属性。
 
-### <a name="documentation-about-the-steps-for-scaling-up-or-down"></a>有关增减步骤的文档
-
-- [在 Azure 门户中管理单个服务器](quickstart-create-server-database-portal.md)
-- [使用 Azure CLI 管理单个数据库](quickstart-create-server-database-azure-cli.md)
+可以使用 Azure 门户增加和减少服务器，或使用 Azure CLI 监视和缩放服务器。 请参阅：[使用 Azure CLI 监视和缩放单个 PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)
 
 ### <a name="details-about-scaling-up-or-down"></a>有关增减的详细信息
 

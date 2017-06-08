@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/24/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 15b6f6c85c5a5accbd31225c277de87346a2e16f
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f47fbe0e9c6cb4d09e6233f6d26211969a5c1f00
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/27/2017
 本文介绍如何打包 Service Fabric 应用程序并为部署做好准备。
 
 ## <a name="package-layout"></a>包布局
-必须将应用程序清单、服务清单和其他必要的包文件组织为一个特定的布局，以部署到 Service Fabric 群集中。 本文中的示例清单需要组织为以下目录结构：
+必须将应用程序清单、一个或多个服务清单和其他必要的包文件组织为一个特定的布局，以部署到 Service Fabric 群集中。 本文中的示例清单需要组织为以下目录结构：
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
@@ -51,10 +52,10 @@ D:\TEMP\MYAPPLICATIONTYPE
 ## <a name="use-setupentrypoint"></a>使用 SetupEntryPoint
 **SetupEntryPoint** 的典型使用场景是需要在服务启动之前运行可执行文件，或需要使用提升的权限来执行操作时。 例如：
 
-* 设置和初始化服务可执行文件所需的环境变量。 这并不限于通过 Service Fabric 编程模型编写的可执行文件。 例如，npm.exe 需要配置一些环境变量来部署 node.js 应用程序。
+* 设置和初始化服务可执行文件所需的环境变量。 这并不仅限于通过 Service Fabric 编程模型编写的可执行文件。 例如，npm.exe 需要配置一些环境变量来部署 node.js 应用程序。
 * 通过安装安全证书设置访问控制。
 
-有关如何配置 **SetupEntryPoint** 的详细信息，请参阅[配置服务设置入口点的策略](service-fabric-application-runas-security.md)  
+有关如何配置 **SetupEntryPoint** 的详细信息，请参阅[配置服务设置入口点的策略](service-fabric-application-runas-security.md)
 
 ## <a name="configure"></a>配置 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 生成包
@@ -113,13 +114,13 @@ PS D:\temp>
 
 如果应用程序已定义[应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)，则可以将参数传递到 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) 中进行适当验证。
 
-如果知道在其中部署应用程序的群集，则建议将参数传递到映像存储区连接字符串。 在这种情况下，还需要针对已在群集中运行的前一应用程序版本对包进行验证。 例如，验证可检测是否部署了版本相同但内容不同的包。  
+如果知道要在其中部署应用程序的群集，则建议传入 `ImageStoreConnectionString` 参数。 在这种情况下，还需要针对已在群集中运行的前一应用程序版本对包进行验证。 例如，验证可检测是否部署了版本相同但内容不同的包。  
 
 应用程序经过正确打包并通过验证后，如果需要压缩，则需要基于文件的大小和数量进行评估。 
 
 ## <a name="compress-a-package"></a>压缩包
 包较大或包含大量文件时，可压缩该包以提高部署速度。 压缩可以减少文件的数量和包大小。
-[应用程序包](service-fabric-deploy-remove-applications.md#upload-the-application-package)可能比上传未压缩的包所需时间更长，但[注册](service-fabric-deploy-remove-applications.md#register-the-application-package)和[注销应用程序类型](service-fabric-deploy-remove-applications.md#unregister-an-application-type)时速度更快。
+对于压缩应用程序包，[上传应用程序包](service-fabric-deploy-remove-applications.md#upload-the-application-package)比上传未压缩的程序包（特别是如果考虑压缩时间）需要更长时间，但[注册](service-fabric-deploy-remove-applications.md#register-the-application-package)和[取消注册应用程序类型](service-fabric-deploy-remove-applications.md#unregister-an-application-type)对于压缩应用程序包而言更快。
 
 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
 压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。 

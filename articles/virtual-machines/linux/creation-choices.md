@@ -13,12 +13,13 @@ ms.devlang: azurecli
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/03/2017
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d7ff1317cdf6ccfe6b4e5035878fc4e096fcc0f9
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: b2f93579eb1c7a69d0dbd1b0ef112aed9b2168c3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -27,62 +28,46 @@ ms.lasthandoff: 04/03/2017
 
 [Azure CLI 2.0](/cli/azure/install-az-cli2) 可通过 npm 包、发行版提供的程序包或 Docker 容器跨平台使用。 为环境安装最适当的内部版本，并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户
 
-以下示例使用 Azure CLI 2.0。 请阅读每篇文章，了解有关所示命令的更多详细信息。 也可通过 [Azure CLI 1.0](creation-choices-nodejs.md) 查找有关 Linux 创建选项的示例。
-
-* [使用 Azure CLI 2.0 创建 Linux VM](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用 Azure CLI 2.0 创建 Linux VM](quick-create-cli.md)
   
-  * 此示例使用 [az group create](/cli/azure/group#create) 创建名为 `myResourceGroup` 的资源组： 
--    
+  * 使用 [az group create](/cli/azure/group#create) 创建名为 *myResourceGroup* 的资源组： 
+   
     ```azurecli
-    az group create --name myResourceGroup --location westus
+    az group create --name myResourceGroup --location eastus
     ```
     
-  * 此示例使用 [az vm create](/cli/azure/vm#create) 创建名为 `myVM` 的 VM，将最新 Debian 映像与 Azure 托管磁盘以及名为 `id_rsa.pub` 的公钥配合使用：
+  * 使用 [az vm create](/cli/azure/vm#create) 通过最新的 *UbuntuLTS* 映像创建名为 *myVM* 的 VM，并生成 SSH 密钥（如果 *~/.ssh* 中尚无此类密钥）：
 
     ```azurecli
     az vm create \
-    --image credativ:Debian:8:latest \
-     --admin-username azureuser \
-    --ssh-key-value ~/.ssh/id_rsa.pub \
-az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk  –-new --size-gb 5    --public-ip-address-dns-name myPublicDNS \
-    --resource-group myResourceGroup \
-    --location westus \
-    --name myVM
+        --resource-group myResourceGroup \
+        --name myVM \
+        --image UbuntuLTS \
+        --generate-ssh-keys
     ```
 
-    * 若要使用非托管磁盘，请向上面的命令添加 `--use-unmanaged-disks` 标志。 系统将为用户创建存储帐户。 有关详细信息，请参阅 [Azure 托管磁盘概述](../../storage/storage-managed-disks-overview.md)。
-
-* [使用 Azure 模板创建受保护的 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用 Azure 模板创建 Linux VM](create-ssh-secured-vm-from-template.md)
   
-  * 以下示例使用 [az group deployment create](/cli/azure/group/deployment#create) 创建 VM，使用存储在 GitHub 上的模板：
+  * 以下示例使用 [az group deployment create](/cli/azure/group/deployment#create) 基于 GitHub 上存储的一个模板创建 VM：
     
     ```azurecli
     az group deployment create --resource-group myResourceGroup \ 
       --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json \
       --parameters @myparameters.json
     ```
-    
-* [使用 Azure CLI 创建完整的 Linux 环境](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-  
-  * 包括在可用性集中创建负载均衡器和多个 VM。
+* [创建 Linux VM 并使用 cloud-init 进行自定义](tutorial-automate-vm-deployment.md)
 
-* [将磁盘添加到 Linux VM](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-  
-  * 以下示例使用 [az vm disk attach-new](/cli/azure/vm/disk#attach-new) 将 50 Gb 托管磁盘添加到名为 `myVM` 的现有 VM：
-  
-    ```azurecli
-    az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk  \
-    –-new --size-gb 50
-    ```
+* [在多个 Linux VM 上创建负载均衡且具有高可用性的应用程序](tutorial-load-balancer.md)
+
 
 ## <a name="azure-portal"></a>Azure 门户
 [Azure 门户](https://portal.azure.com)允许用户快速创建 VM，因为不需在系统上安装内容。 使用 Azure 门户创建 VM：
 
-* [使用 Azure 门户创建 Linux VM](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
-* [使用 Azure 门户附加磁盘](../windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用 Azure 门户创建 Linux VM](quick-create-portal.md) 
+
 
 ## <a name="operating-system-and-image-choices"></a>操作系统和映像选项
-创建 VM 时，可根据要运行的操作系统选择映像。 Azure 及其合作伙伴提供了许多映像，其中一些映像包括预安装的应用程序和工具。 也可上载自己的某个映像（请参阅[以下部分](#use-your-own-image)）。
+创建 VM 时，可根据要运行的操作系统选择映像。 Azure 及其合作伙伴提供了许多映像，其中一些映像包括预安装的应用程序和工具。 也可上传自己的某个映像（请参阅[以下部分](#use-your-own-image)）。
 
 ### <a name="azure-images"></a>Azure 映像
 使用 [az vm image](/cli/azure/vm/image) 命令，按发布者、发行版本和内部版本查看可用的内容。
@@ -90,30 +75,30 @@ az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk  –
 列出可用的发布者：
 
 ```azurecli
-az vm image list-publishers --location WestUS
+az vm image list-publishers --location eastus
 ```
 
 列出给定发布者的可用产品（服务）：
 
 ```azurecli
-az vm image list-offers --publisher Canonical --location WestUS
+az vm image list-offers --publisher Canonical --location eastus
 ```
 
 列出给定产品/服务的可用 SKU（发行版本）：
 
 ```azurecli
-az vm image list-skus --publisher Canonical --offer UbuntuServer --location WestUS
+az vm image list-skus --publisher Canonical --offer UbuntuServer --location eastus
 ```
 
 列出给定发行版的所有可用映像：
 
 ```azurecli
-az vm image list --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS --location WestUS
+az vm image list --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS --location eastus
 ```
 
-请参阅[使用 Azure CLI 导航并选择 Azure 虚拟机映像](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，获取有关浏览和使用可用映像的更多示例。
+请参阅[使用 Azure CLI 导航并选择 Azure 虚拟机映像](cli-ps-findimage.md)，获取有关浏览和使用可用映像的更多示例。
 
-**az vm create** 命令提供的别名可用于快速访问较常见的发行版及其最新版本。 使用别名比每次创建 VM 时都指定发布者、产品/服务、SKU 和版本要快速：
+[az vm create](/cli/azure/vm#create) 命令提供的别名可用于快速访问较常见的发行版及其最新版本。 使用别名比每次创建 VM 时都指定发布者、产品/服务、SKU 和版本要快速：
 
 | 别名 | 发布者 | 产品 | SKU | 版本 |
 |:--- |:--- |:--- |:--- |:--- |
@@ -126,22 +111,22 @@ az vm image list --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS --
 | UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |最新 |
 
 ### <a name="use-your-own-image"></a>使用你自己的映像
-如果需要特定自定义，可以通过*捕获*现有的 Azure VM 使用基于该 VM 的映像。 也可以上载本地创建的映像。 有关受支持的发行版以及如何使用你自己的映像的详细信息，请参阅以下文章：
+如果需要特定自定义，可以通过捕获现有的 Azure VM 使用基于该 VM 的映像。 也可以上传本地创建的映像。 有关受支持的发行版以及如何使用你自己的映像的详细信息，请参阅以下文章：
 
-* [Azure endorsed distributions（Azure 认可的分发版）](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Information for non-endorsed distributions（有关未认可分发版的信息）](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [如何捕获用作 Resource Manager 模板的 Linux 虚拟机](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* [Azure endorsed distributions（Azure 认可的分发版）](endorsed-distros.md)
+* [Information for non-endorsed distributions（有关未认可分发版的信息）](create-upload-generic.md)
+* [如何基于现有 Azure VM 创建映像](tutorial-custom-images.md)。
   
-  * 用于捕获现有 VM（使用非托管磁盘）的快速入门 **az vm** 示例命令：
+  * 下面是用于基于现有 Azure VM 创建映像的快速入门示例命令：
     
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     az vm generalize --resource-group myResourceGroup --name myVM
-    az vm capture --resource-group myResourceGroup --name myVM --vhd-name-prefix myCapturedVM
+    az vm image create --resource-group myResourceGroup --source myVM --name myImage
     ```
 
 ## <a name="next-steps"></a>后续步骤
-* 通过[门户](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[CLI](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Azure Resource Manager 模板](../windows/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)创建 Linux VM。
-* 创建 Linux VM 后，可[添加数据磁盘](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* [重置密码或 SSH 密钥和管理用户](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* 通过 [CLI](quick-create-cli.md)、从[门户](quick-create-portal.md)或使用 [Azure Resource Manager 模板](../windows/cli-deploy-templates.md)创建 Linux VM。
+* 创建 Linux VM 后，[了解 Azure 磁盘和存储](tutorial-manage-disks.md)。
+* [重置密码或 SSH 密钥并管理用户](using-vmaccess-extension.md)。
 

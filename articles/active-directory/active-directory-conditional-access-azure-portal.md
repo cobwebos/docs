@@ -13,24 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/02/2017
+ms.date: 05/11/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 85a59eddf3c453ee112f279d439c94853b2f62b5
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 5a1ce66e02943caedd52976c5dcb3cf75c23bd49
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
-# <a name="conditional-access-in-azure-active-directory---preview"></a>Azure Active Directory 中的条件性访问 - 预览版
+# <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-conditional-access-azure-portal.md)
 > * [Azure 经典门户](active-directory-conditional-access.md)
-
-
-本主题中所述的行为目前以[预览版](active-directory-preview-explainer.md)提供。
 
 在移动优先、云优先的世界中，使用 Azure Active Directory 可以实现从任意位置单一登录到设备、应用和服务。 随着 BYOD 等设备、脱离企业网络的办公和第三方 SaaS 应用的普及，IT 专业人员面临着两个对立的目标：
 
@@ -117,13 +114,17 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 - **如何** - 只要对应用的访问是根据可控的条件执行的，可能就不需要对用户如何访问云应用实施其他控制。 但是，如何对云应用的访问是通过不受信任的网络或者不合规的设备执行的，则情况可能就有所不同。 在条件语句中，可以定义特定的访问条件并附带一些要求来控制访问应用的执行方式。
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/01.png)
+    ![条件](./media/active-directory-conditional-access-azure-portal/21.png)
 
 
 ## <a name="conditions"></a>条件
 
 在 Azure Active Directory 的当前实现中，可针对以下方面定义条件：
 
+- **登录风险**：登录风险是 Azure Active Directory 所使用的一个对象，用于跟踪不是由用户帐户合法拥有者进行登录尝试的可能性。 在此对象中，可能性（高、中、低）以名为[登录风险级别](active-directory-reporting-risk-events.md#risk-level)的属性的形式存储。 在用户登录期间，如果 Azure Active Directory 检测到登录风险，则会生成此对象。 有关更多详细信息，请参阅[风险登录](active-directory-identityprotection.md#risky-sign-ins)。  
+可以将计算得到的登录风险级别用作条件性访问策略中的条件。 
+
+    ![条件](./media/active-directory-conditional-access-azure-portal/22.png)
 
 - **设备平台** – 设备平台根据设备上运行的操作系统（Android、iOS、Windows Phone、Windows）来划分特征。 可以定义要在策略中包含以及排除的设备平台。  
 若要在策略中使用设备平台，请先将“配置”开关更改为“是”，然后选择要将策略应用到的所有或单个设备平台。 如果选择单个设备平台，该策略只对这些平台产生影响。 在这种情况下，登录到其他受支持的平台不受该策略的影响。
@@ -140,65 +141,6 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 旧式身份验证是指使用基本身份验证的客户端，例如，不使用新式身份验证的旧式 Office 客户端。 旧式身份验证目前不支持条件性访问。
 
     ![条件](./media/active-directory-conditional-access-azure-portal/04.png)
-
-
-## <a name="what-you-should-know"></a>要点
-
-### <a name="do-i-need-to-assign-a-user-to-my-policy"></a>是否需要将用户分配到策略？
-
-配置条件访问策略时，至少应在其中分配一个组。 未在其中分配任何用户和组的条件性访问策略永远不会触发。
-
-如果想要将多个用户和组分配到策略，应该先分配一个用户或组，然后测试配置。 如果策略可按预期方式工作，则可以继续向其分配更多用户和组。  
-
-
-### <a name="how-are-assignments-evaluated"></a>如何计算分配？
-
-所有分配在逻辑上采用 **AND** 运算符。 如果配置了多个分配来触发策略，则必须满足所有分配。  
-
-如果需要配置一个位置条件并将其应用到从组织网络外部进行的所有连接，可通过以下方式实现此目的：
-
-- 包含**所有位置**
-- 排除**所有受信任的 IP**
-
-### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>如果在 Azure 经典门户和 Azure 门户中配置了策略，会发生什么情况？  
-仅当满足所有要求时，Azure Active Directory 才实施策略，用户才可获取访问权限。
-
-### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>如果在 Intune Silverlight 门户和 Azure 门户中配置了策略，会发生什么情况？
-仅当满足所有要求时，Azure Active Directory 才实施策略，用户才可获取访问权限。
-
-### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>如果对同一个用户配置了多个策略，会发生什么情况？  
-每次登录时，Azure Active Directory 都会评估所有策略，确保只有满足所有要求，才向该用户授予访问权限。
-
-
-### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件性访问是否适用于 Exchange ActiveSync？
-
-适用，可以在条件访问策略中使用 Exchange ActiveSync。
-
-
-### <a name="what-happens-if-i-require-multi-factor-authentication-or-a-compliant-device"></a>如果需要进行多重身份验证或需要兼容设备会出现何种状况？
-
-目前，无论使用何种设备，均将提示用户进行多重身份验证。
-
-
-## <a name="what-you-should-avoid-doing"></a>你应避免的操作
-
-条件访问框架为你提供了极大的配置灵活性。 但是，极大的灵活性也意味着在发布之前你应该仔细检查每个配置策略，以避免产生不理想的结果。 在这种情况下，你应该特别注意影响完整集的任务，例如**所有用户/组/云应用**。
-
-在你的环境中，应避免以下配置：
-
-
-**对于所有用户、所有云应用：**
-
-- **阻止访问** - 此配置将阻止你的整个组织（这绝对不是一个好的选项）。
-
-- **需要符合的设备** - 对于尚未注册其设备的用户，此策略将阻止所有访问权限（包括对 Intune 门户的访问权限）。 如果你是不具有注册设备的管理员，则此策略会阻止你回到 Azure 门户更改策略。
-
-- **需要加入域** - 如果你不具有加入域的设备，此阻止访问权限的策略还可能会阻止你组织中所有用户的访问权限。
-
-
-**对于所有用户、所有云应用、所有设备平台：**
-
-- **阻止访问** - 此配置将阻止你的整个组织（这绝对不是一个好的选项）。
 
 
 ## <a name="common-scenarios"></a>常见方案
@@ -228,3 +170,4 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 若要了解如何配置条件性访问策略，请参阅 [Get started with conditional access in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md)（Azure Active Directory 中的条件性访问入门）。
 
+有关配置条件性访问策略时的用户须知内容以及应避免的操作的更多详细信息，请参阅 

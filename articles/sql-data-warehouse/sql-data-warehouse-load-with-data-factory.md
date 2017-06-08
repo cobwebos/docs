@@ -4,7 +4,7 @@ title: "将数据载入 Azure SQL 数据仓库 – 数据工厂 | Microsoft 文�
 description: "本教程使用 Azure 数据工厂将数据载入 Azure SQL 数据仓库，并使用 SQL Server 数据库作为数据源。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: linda33wj
+author: ckarst
 manager: jhubbard
 editor: 
 tags: azure-sql-data-warehouse;azure-data-factory
@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.custom: loading
 ms.date: 02/08/2017
-ms.author: jingwang;kevin;barbkess
-translationtype: Human Translation
+ms.author: cakarst;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6474104846eefa1aa7e137e7914b7a7f1ee8a83a
 ms.openlocfilehash: aad76a633b127d23d59dae995d7a503023c5eac7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/09/2017
 
 

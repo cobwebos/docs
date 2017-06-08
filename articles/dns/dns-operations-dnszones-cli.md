@@ -13,19 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 1481fcb070f383d158c5a6ae32504e498de4a66b
-ms.openlocfilehash: ca6347e079c0e85d1e9583f77b2e43632bedb206
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 1414baf9e51d648cc3a46c4f8635040b4d276910
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 ---
 
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>如何使用 Azure CLI 2.0 管理 Azure DNS 中的 DNS 区域
 
 > [!div class="op_single_selector"]
+> * [门户](dns-operations-dnszones-portal.md)
+> * [PowerShell](dns-operations-dnszones.md)
 > * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
-> * [PowerShell](dns-operations-dnszones.md)
+
 
 本指南介绍如何通过使用适用于 Windows、Mac 和 Linux 的跨平台 Azure CLI 管理 DNS 区域。 也可以使用 [Azure PowerShell](dns-operations-dnszones.md) 或 Azure 门户管理 DNS 记区域。
 
@@ -40,7 +43,7 @@ ms.lasthandoff: 03/01/2017
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="set-up-azure-cli-20-for-azure-dns"></a>为 Azure DNS 设置 Azure CLI 2.0
+## <a name="set-up-azure-cli-20-for-azure-dns"></a>设置适用于 Azure DNS 的 Azure CLI 2.0
 
 ### <a name="before-you-begin"></a>开始之前
 
@@ -66,7 +69,7 @@ az login
 az account list
 ```
 
-### <a name="choose-which-of-your-azure-subscriptions-to-use"></a>选择要使用的 Azure 订阅。
+选择要使用的 Azure 订阅。
 
 ```azurecli
 az account set --subscription "subscription name"
@@ -74,7 +77,7 @@ az account set --subscription "subscription name"
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 但是，由于所有 DNS 资源都是全局性而非区域性的，因此资源组位置的选择不会影响 Azure DNS。
+Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 但是，由于所有 DNS 资源都是全局性而非区域性的，因此资源组位置的选择不会影响 Azure DNS。
 
 如果使用现有资源组，可跳过此步骤。
 
@@ -102,7 +105,7 @@ az network dns zone create --help
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
 ```
 
-### <a name="to-create-a-dns-zone-with-tags"></a>使用标记创建 DNS 区域。
+### <a name="to-create-a-dns-zone-with-tags"></a>使用标记创建 DNS 区域
 
 下面的示例演示如何通过 `--tags` 参数（缩写形式 `-t`）使用两个 [Azure Resource Manager 标记](dns-zones-records.md#tags)、project = demo 和 env = test创建 DNS 区域：
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 1bedede1934141927a770c97b61aeb5218652b3e
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 069457d7ef7855749f64e299e0db579e6bb2b590
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -72,7 +72,7 @@ Application Insights 支持几个已知的指标名称。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用[用于处理自定义事件和指标的 Application Insights API](app-insights-api-custom-events-metrics.md#send-metrics)。
+- 了解如何使用[用于处理自定义事件和指标的 Application Insights API](app-insights-api-custom-events-metrics.md#trackmetric)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 - 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
 

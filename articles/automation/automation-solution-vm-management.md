@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/18/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 2d6ef39ad4678d331eadd2c0bfd6ff93c99da501
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: db9f2174e9928083957f160be8c268fe21cd4169
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-- Runbook 使用 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)。  运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。  
+- Runbook 使用 [Azure 运行方式帐户](automation-offering-get-started.md#authentication-methods)。  运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。  
 
 - 此解决方案只能管理与自动化帐户位于同一订阅中的 VM。  
 

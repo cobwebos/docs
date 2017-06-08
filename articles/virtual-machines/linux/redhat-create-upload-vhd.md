@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2017
 ms.author: szark
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
 ms.openlocfilehash: bab651ffc314e64ca9b9432d1fae3ea29b8d15f5
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/29/2017
 
 
@@ -427,7 +428,7 @@ ms.lasthandoff: 04/29/2017
 
     编辑 `/etc/dracut.conf` 并添加以下内容：
 
-        add_drivers+="�hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
     重新生成 initramfs：
 

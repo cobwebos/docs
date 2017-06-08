@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 03/23/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: bec18e91ef8798a791d4b1fe93bd529593197e01
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 5ff7783081a722474bbbc38795e88da05bca78d2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.lasthandoff: 03/24/2017
 若要为应用程序配置所有必需的服务总线依赖项，最简单方法是使用[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)。 若要在项目中安装服务总线 NuGet 包，请执行以下操作：
 
 1. 在“解决方案资源管理器”中，右键单击“引用”，然后单击“管理 NuGet 包”。
-2. 单击“浏览”，搜索“Azure 服务总线”，然后选择“Microsoft Azure 服务总线”项。 单击“安装”完成安装，然后关闭对话框：
+2. 单击“浏览”，搜索“Azure 服务总线”，然后选择“Microsoft Azure 服务总线”项。 单击“安装”完成安装，然后关闭对话框：****
    
    ![][7]
 
@@ -177,7 +178,7 @@ if (!namespaceManager.SubscriptionExists("TestTopic", "AllMessages"))
 
 订阅支持的最灵活的一种筛选器是 [SqlFilter][SqlFilter] 类，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关可用于 SQL 筛选器的表达式的详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
 
-以下示例创建了一个名为 **HighMessages** 的订阅，其 [SqlFilter][SqlFilter] 对象只选择自定义 **MessageNumber** 属性大于 3 的消息。
+以下示例创建了一个名为 HighMessages 的订阅，其 [SqlFilter][SqlFilter] 对象只选择自定义 [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) 属性大于 3 的消息。
 
 ```csharp
 // Create a "HighMessages" filtered subscription.
@@ -189,7 +190,7 @@ namespaceManager.CreateSubscription("TestTopic",
    highMessagesFilter);
 ```
 
-类似地，以下示例创建一个名为 **LowMessages** 的订阅，其 [SqlFilter][SqlFilter] 只选择 **MessageNumber** 属性小于或等于 3 的消息。
+类似地，以下示例创建一个名为 LowMessages 的订阅，其 [SqlFilter][SqlFilter] 只选择 [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) 属性小于或等于 3 的消息。
 
 ```csharp
 // Create a "LowMessages" filtered subscription.
@@ -218,9 +219,9 @@ TopicClient Client =
 Client.Send(new BrokeredMessage());
 ```
 
-发送到服务总线主题的消息是 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 类的实例。 **BrokeredMessage** 对象包含一组标准属性（如 [Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) 和 [TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)）、一个用来保存自定义应用程序特定属性的词典以及大量随机应用程序数据。 应用程序可通过将任何可序列化对象传入到 **BrokeredMessage** 对象的构造函数中来设置消息的正文，然后将使用适当的 **DataContractSerializer** 序列化对象。 或者，也可以提供 **System.IO.Stream** 对象。
+发送到服务总线主题的消息是 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 类的实例。 **BrokeredMessage** 对象包含一组标准属性（如 [Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) 和 [TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.timetolive#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)）、一个用来保存自定义应用程序特定属性的词典以及大量随机应用程序数据。 应用程序可通过将任何可序列化对象传入到 **BrokeredMessage** 对象的构造函数中来设置消息的正文，然后将使用适当的 **DataContractSerializer** 序列化对象。 或者，也可以提供 **System.IO.Stream** 对象。
 
-以下示例演示了如何将五条测试消息发送到在前面的代码示例中获取的 **TestTopic** [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient) 对象。 请注意，每条消息的 [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) 属性值因循环迭代而异（这将确定哪些订阅接收它）。
+以下示例演示了如何将五条测试消息发送到在前面的代码示例中获取的 **TestTopic** [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient) 对象。 请注意，每条消息的 [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) 属性值因循环迭代而异（这将确定哪些订阅接收它）。
 
 ```csharp
 for (int i=0; i<5; i++)
@@ -289,7 +290,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 另外，还存在与订阅中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线将自动解锁该消息并使它可再次被接收。
 
-如果应用程序在处理消息之后，但在发出 [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此情况通常称作 *至少处理一次*，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可以通过使用消息的 [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) 属性来实现，该属性在多次传送尝试中保持不变。
+如果应用程序在处理消息之后，但在发出 [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此情况通常称作 *至少处理一次*，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可以通过使用消息的 [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) 属性来实现，该属性在多次传送尝试中保持不变。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
 以下示例演示了如何从 **HowToSample** 服务命名空间中删除名为 **TestTopic** 的主题。

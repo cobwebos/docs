@@ -12,26 +12,28 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 05/11/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 698c481e2eff5e0a3b893a0377d9f4cd2f052eb4
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 079632f304112e1034abbd7385506292f10e128d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/15/2017
 
 
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
 
-使用跨平台 Azure 命令行接口 (Azure CLI) 可以在 Linux、Mac 和 Windows 命令 shell 中管理 Batch 帐户和资源，例如池、作业和任务。 使用 Azure CLI，可以执行许多与通过 Batch API、Azure 门户和 Batch PowerShell cmdlet 执行的相同任务并为其编写脚本。
+Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它可以在 macOS、Linux 和 Windows 上使用。 Azure CLI 2.0 已经过优化，可以从命令行管理 Azure 资源。 可以使用 Azure CLI 管理 Azure Batch 帐户，以及管理池、作业、任务等资源。 对于通过 Batch API、Azure 门户和 Batch PowerShell cmdlet 执行的任务，许多都可以使用 Azure CLI 来编写脚本。
 
-本文基于 Azure CLI 版本 0.10.5。
+本文概述如何将 [Azure CLI 2.0 版](https://docs.microsoft.com/cli/azure/overview)与 Batch 配合使用。 请参阅 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli.md)，大致了解如何将 CLI 与 Azure 配合使用。
 
-## <a name="prerequisites"></a>先决条件
-* [安装 Azure CLI](../cli-install-nodejs.md)
-* [将 Azure CLI 连接到 Azure 订阅](../xplat-cli-connect.md)
-* 切换到 **Resource Manager 模式**：`azure config mode arm`
+Microsoft 建议使用最新版的 Azure CLI，即 2.0 版。 有关 2.0 版的详细信息，请参阅 [Azure Command Line 2.0 now generally available](https://azure.microsoft.com/blog/announcing-general-availability-of-vm-storage-and-network-azure-cli-2-0/)（Azure 命令行 2.0 现已公开发布）。
+
+## <a name="set-up-the-azure-cli"></a>设置 Azure CLI
+
+若要安装 Azure CLI，请执行[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli.md) 中概述的步骤。
 
 > [!TIP]
 > 建议经常更新 Azure CLI 安装，利用服务更新和增强功能。
@@ -39,237 +41,154 @@ ms.lasthandoff: 03/21/2017
 > 
 
 ## <a name="command-help"></a>命令帮助
-在命令后面追加 `-h` 作为唯一选项，可以在 Azure CLI 中显示每个命令的帮助文本。 例如：
 
-* 若要获取 `azure` 命令的帮助，请输入：`azure -h`
-* 若要获取 CLI 中所有 Batch 命令的列表，请使用：`azure batch -h`
-* 若要获取有关创建 Batch 帐户的帮助，请输入： `azure batch account create -h`
+在每个命令后面追加 `-h` 即可在 Azure CLI 中显示该命令的帮助文本。 忽略任何其他选项。 例如：
+
+* 若要获取 `az` 命令的帮助，请输入：`az -h`
+* 若要获取 CLI 中所有 Batch 命令的列表，请使用：`az batch -h`
+* 若要获取有关创建 Batch 帐户的帮助，请输入： `az batch account create -h`
 
 如有疑问，请使用 `-h` 命令行选项获取有关任何 Azure CLI 命令的帮助。
 
-## <a name="create-a-batch-account"></a>创建批处理帐户
-用法：
-
-    azure batch account create [options] <name>
-
-示例：
-
-    azure batch account create --location "West US"  --resource-group "resgroup001" "batchaccount001"
-
-使用指定的参数创建新的 Batch 帐户。 必须至少指定一个位置、资源组和帐户名。 如果没有资源组，请运行 `azure group create` 创建资源组，并为 `--location` 选项指定一个 Azure 区域（例如“美国西部”）。 例如：
-
-    azure group create --name "resgroup001" --location "West US"
-
 > [!NOTE]
-> Batch 帐户名必须是创建帐户的 Azure 区域内的唯一名称。 它只能包含小写字母数字字符，且长度必须为 3-24 个字符。 不能在 Batch 帐户名中使用 `-` 或 `_` 等特殊字符。
-> 
-> 
+> 早期版本的 Azure CLI 使用 `azure` 作为 CLI 命令的前缀。 在 2.0 版中，所有命令现在都带 `az` 前缀。 请务必更新脚本，对 2.0 版使用新语法。
+>
+>  
 
-### <a name="linked-storage-account-autostorage"></a>链接存储帐户（自动存储）
-（可选）在创建 Batch 帐户时，可以将 **常规用途** 存储帐户链接到该帐户。 与[批处理文件约定 .NET](batch-task-output.md) 库一样，批处理的[应用程序包](batch-application-packages.md)功能在链接的常规用途存储帐户中使用 Blob 存储。 这些可选功能可帮助部署 Batch 任务运行的应用程序，以及保存它们生成的数据。
+另请参阅 Azure CLI 参考文档，详细了解[适用于 Batch 的 Azure CLI 命令](https://docs.microsoft.com/cli/azure/batch)。 
 
-若要在创建新 Batch 帐户时将现有 Azure 存储帐户链接到该帐户，请指定 `--autostorage-account-id` 选项。 此选项需要存储帐户的完全限定资源 ID。
+## <a name="log-in-and-authenticate"></a>登录并进行身份验证
 
-首先，显示存储帐户的详细信息：
+若要将 Azure CLI 与 Batch 配合使用，需登录并进行身份验证。 请执行两个简单的步骤：
 
-    azure storage account show --resource-group "resgroup001" "storageaccount001"
+1. **登录到 Azure。** 登录到 Azure 即可访问 Azure Resource Manager 命令，包括 [Batch Management 服务](batch-management-dotnet.md)命令。  
+2. **登录到 Batch 帐户。** 登录到 Batch 帐户即可访问 Batch 服务命令。   
 
-然后，为 `--autostorage-account-id` 选项使用 **Url** 值。 Url 值以 "/subscriptions/" 开头，包含订阅 ID 和存储帐户的资源路径：
+### <a name="log-in-to-azure"></a>登录 Azure
 
-    azure batch account create --location "West US"  --resource-group "resgroup001" --autostorage-account-id "/subscriptions/8ffffff8-4444-4444-bfbf-8ffffff84444/resourceGroups/resgroup001/providers/Microsoft.Storage/storageAccounts/storageaccount001" "batchaccount001"
+可以通过多种不同的方式登录到 Azure，详见[使用 Azure CLI 2.0 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)：
 
-## <a name="delete-a-batch-account"></a>删除批处理帐户
-用法：
+1. [以交互方式登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#interactive-log-in)。 从命令行自行运行Azure CLI 命令时，请以交互方式登录。
+2. [使用服务主体登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#logging-in-with-a-service-principal)。 从脚本或应用程序运行 Azure CLI 命令时，请使用服务主体登录。
 
-    azure batch account delete [options] <name>
+本文的目的是介绍如何以交互方式登录到 Azure。 在命令行中键入 [az login](https://docs.microsoft.com/cli/azure/#login)：
 
-示例：
+```azurecli
+# Log in to Azure and authenticate interactively.
+az login
+```
 
-    azure batch account delete --resource-group "resgroup001" "batchaccount001"
+`az login` 命令返回一个用于身份验证的令牌，如下所示。 请按提供的说明打开网页，并将令牌提交到 Azure：
 
-删除指定的 Batch 帐户。 出现提示时，请确认删除帐户（删除帐户可能需要一段时间才能完成）。
+![登录 Azure](./media/batch-cli-get-started/az-login.png)
 
-## <a name="manage-account-access-keys"></a>管理帐户访问密钥
-在 Batch 帐户中 [创建和修改资源](#create-and-modify-batch-resources) 时需要使用访问密钥。
+[示例 shell 脚本](#sample-shell-scripts)部分列出的示例也演示了如何以交互方式登录到 Azure，从而启动 Azure CLI 会话。 登录后，即可调用命令来处理 Batch Management 资源，包括 Batch 帐户、密钥、应用程序包和配额。  
 
-### <a name="list-access-keys"></a>列出访问密钥
-用法：
+### <a name="log-in-to-your-batch-account"></a>登录到 Batch 帐户
 
-    azure batch account keys list [options] <name>
+若要使用 Azure CLI 来管理 Batch 资源（例如池、作业和任务），需登录到 Batch 帐户并进行身份验证。 若要登录到 Batch 服务，请使用 [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) 命令。 
 
-示例：
+可以使用两个选项对 Batch 帐户进行身份验证：
 
-    azure batch account keys list --resource-group "resgroup001" "batchaccount001"
+- **使用 Azure Active Directory (Azure AD) 身份验证。** 
 
-列出给定 Batch 帐户的帐户密钥。
+    将 Azure CLI 与 Batch 配合使用时，通过 Azure AD 进行身份验证是默认设置，建议用于大多数方案。 
+    
+    如上一部分所述，以交互方式登录到 Azure 时，系统会缓存凭据，因此 Azure CLI 可以使用这些相同的凭据将你登录到 Batch 帐户。 如果通过服务主体登录到 Azure，也会使用这些凭据登录到 Batch 帐户。
 
-### <a name="generate-a-new-access-key"></a>生成新的访问密钥
-用法：
+    Azure AD 的优势是提供基于角色的访问控制 (RBAC)。 使用 RBAC 时，用户的访问权限取决于分配给他们的角色，而不是是否拥有帐户密钥。 你可以管理 RBAC 角色而不是帐户密钥，让 Azure AD 负责访问权限和身份验证。  
 
-    azure batch account keys renew [options] --<primary|secondary> <name>
+    如果在创建 Azure Batch 帐户时将其池分配模式设置为“用户订阅”，则需使用 Azure AD 进行身份验证。 
 
-示例：
+    若要使用 Azure AD 登录到 Batch 帐户，请调用 [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) 命令： 
 
-    azure batch account keys renew --resource-group "resgroup001" --primary "batchaccount001"
+    ```azurecli
+    az batch account login -g myresource group -n mybatchaccount
+    ```
 
-为给定的 Batch 帐户重新生成指定的帐户密钥。
+- **使用“共享密钥”身份验证。**
 
-## <a name="create-and-modify-batch-resources"></a>创建和修改 Batch 资源
-可以使用 Azure CLI 创建、读取、更新和删除 (CRUD) Batch 资源，例如池、计算节点、作业和任务。 这些 CRUD 操作需要 Batch 帐户名、访问密钥和终结点。 可以使用 `-a`、`-k` 和 `-u` 选项指定这些对象，或者设置 CLI 自动使用的[环境变量](#credential-environment-variables)（如果已填充）。
+    [“共享密钥”身份验证](https://docs.microsoft.com/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key)通过帐户访问密钥对适用于 Batch 服务的 Azure CLI 命令进行身份验证。
 
-### <a name="credential-environment-variables"></a>凭据环境变量
-可以设置 `AZURE_BATCH_ACCOUNT`、`AZURE_BATCH_ACCESS_KEY` 和 `AZURE_BATCH_ENDPOINT` 环境变量，而无需每次执行命令时在命令行上指定 `-a`、`-k` 和 `-u` 选项。 Batch CLI 将使用这些变量（如果已设置），因此可以省略 `-a`、`-k` 和 `-u` 选项。 本文的余下部分假设使用这些环境变量。
+    若要通过创建 Azure CLI 脚本来自动调用 Batch 命令，则可使用“共享密钥”身份验证或 Azure AD 服务主体。 在某些方案中，使用“共享密钥”身份验证可能比创建服务主体简单。  
 
-> [!TIP]
-> 使用 `azure batch account keys list` 列出密钥，使用 `azure batch account show` 显示帐户的终结点。
-> 
-> 
+    若要使用“共享密钥”身份验证登录，请在命令行中包括 `--shared-key-auth` 选项：
 
-### <a name="json-files"></a>JSON 文件
+    ```azurecli
+    az batch account login -g myresourcegroup -n mybatchaccount --shared-key-auth
+    ```
+
+[示例 shell 脚本](#sample-shell-scripts)部分列出的示例演示了如何在使用 Azure AD 和共享密钥的情况下，通过 Azure CLI 登录到 Batch 帐户。
+
+## <a name="sample-shell-scripts"></a>示例 shell 脚本
+
+下表中列出的示例脚本演示如何将 Azure CLI 命令与 Batch 服务和 Batch Management 服务配合使用，以便完成常规任务。 这些示例脚本涵盖可以在用于 Batch 的 Azure CLI 中使用的许多命令。 
+
+| 脚本 | 说明 |
+|---|---|
+| [创建批处理帐户](./scripts/batch-cli-sample-create-account.md) | 创建 Batch 帐户并将其与存储帐户相关联。 |
+| [添加应用程序](./scripts/batch-cli-sample-add-application.md) | 添加应用程序，并上载打包的二进制文件。|
+| [管理批处理池](./scripts/batch-cli-sample-manage-pool.md) | 演示如何创建、管理池并调整其大小。 |
+| [使用批处理运行作业和任务](./scripts/batch-cli-sample-run-job.md) | 演示如何运行作业和添加任务。 |
+
+## <a name="json-files-for-resource-creation"></a>用于创建资源的 JSON 文件
+
 创建 Batch 资源（如池和作业）时，可以指定包含新资源配置的 JSON 文件，而无需将资源的参数作为命令行选项传递。 例如：
 
-`azure batch pool create my_batch_pool.json`
+```azurecli
+az batch pool create my_batch_pool.json
+```
 
-尽管可以使用命令行选项执行许多资源创建操作，但有些功能需要 JSON 格式的文件（包含资源详细信息）。 例如，若要指定启动任务的资源文件，必须使用 JSON 文件。
+尽管只使用命令行选项即可创建大多数 Batch 资源，但某些功能需要指定 JSON 格式的包含资源详细信息的文件。 例如，若要指定启动任务的资源文件，必须使用 JSON 文件。
 
-若要查找创建资源所需的 JSON，请参阅 MSDN 上的 [Batch REST API 参考][rest_api]文档。 每个“Add *resource type*”（添加 &lt;资源类型&gt;）主题都包含用于创建资源的示例 JSON，可将它用作 JSON 文件的模板。 例如，在[将池添加到帐户][rest_add_pool]中可以找到用于创建池的 JSON。
+若要查看创建资源所需的 JSON 语法，请参阅 [Batch REST API 参考][rest_api]文档。 REST API 参考中的每个“添加资源类型”主题都包含用于创建该资源的示例 JSON 脚本。 可以将这些示例 JSON 脚本用作模板，以便将 JSON 文件与 Azure CLI 配合使用。 例如，若要查看用于创建池的 JSON 语法，请参阅[向帐户添加池][rest_add_pool]。
+
+如需用于指定 JSON 文件的示例脚本，请参阅[使用 Batch 运行作业和任务](./scripts/batch-cli-sample-run-job.md)。
 
 > [!NOTE]
-> 如果在创建资源时指定 JSON 文件，则会忽略在命令行上为该资源指定的所有其他参数。
+> 如果在创建资源时指定 JSON 文件，则会忽略在命令行上为该资源指定的任何其他参数。
 > 
 > 
 
-## <a name="create-a-pool"></a>创建池
-用法：
+## <a name="efficient-queries-for-batch-resources"></a>适用于 Batch 资源的高效查询
 
-    azure batch pool create [options] [json-file]
-
-示例（虚拟机配置）：
-
-    azure batch pool create --id "pool001" --target-dedicated 1 --vm-size "STANDARD_A1" --image-publisher "Canonical" --image-offer "UbuntuServer" --image-sku "14.04.2-LTS" --node-agent-id "batch.node.ubuntu 14.04"
-
-示例（云服务配置）：
-
-    azure batch pool create --id "pool002" --target-dedicated 1 --vm-size "small" --os-family "4"
-
-在 Batch 服务中创建计算节点的池。
-
-如[批处理功能概述](batch-api-basics.md#pool)中所述，为池中的节点选择操作系统时，可以使用两个选项：“虚拟机配置”和“云服务配置”。 使用 `--image-*` 选项可创建虚拟机配置池，使用 `--os-family` 可创建云服务配置池。 不能同时指定 `--os-family` 和 `--image-*` 选项。
-
-可以指定池[应用程序包](batch-application-packages.md)以及[启动任务](batch-api-basics.md#start-task)的命令行。 若要指定启动任务的资源文件，必须改用 [JSON 文件](#json-files)。
-
-使用以下命令删除池：
-
-    azure batch pool delete [pool-id]
-
-> [!TIP]
-> 在[虚拟机映像列表](batch-linux-nodes.md#list-of-virtual-machine-images)中检查适合 `--image-*` 选项的值。
-> 
-> 
-
-## <a name="create-a-job"></a>创建作业
-用法：
-
-    azure batch job create [options] [json-file]
-
-示例：
-
-    azure batch job create --id "job001" --pool-id "pool001"
-
-将作业添加到 Batch 帐户，指定执行其任务的池。
-
-使用以下命令删除作业：
-
-    azure batch job delete [job-id]
-
-## <a name="list-pools-jobs-tasks-and-other-resources"></a>列出池、作业、任务和其他资源
 每个 Batch 资源类型都支持 `list` 命令，该命令可查询 Batch 帐户并列出该类型的资源。 例如，可以列出帐户中的池以及作业中的任务：
 
-    azure batch pool list
-    azure batch task list --job-id "job001"
+```azurecli
+az batch pool list
+az batch task list --job-id job001
+```
 
-### <a name="listing-resources-efficiently"></a>有效列出资源
-为了加快查询，可为 `list` 操作指定 **select**、**filter** 和 **expand** 子句选项。 使用这些选项限制 Batch 服务返回的数据量。 由于所有筛选发生在服务器端，因此只会返回所需的数据。 执行 list 操作时，使用这些子句可以节省带宽（因而节省时间）。
+通过 `list` 操作查询 Batch 服务时，可以指定一个 OData 子句，以便限制返回的数据量。 由于所有筛选发生在服务器端，因此只会返回请求的数据。 执行 list 操作时，使用这些子句可以节省带宽（因而节省时间）。
 
-例如，以下命令只返回 ID 以“renderTask”开头的池：
+下表介绍 Batch 服务支持的 OData 子句：
 
-    azure batch task list --job-id "job001" --filter-clause "startswith(id, 'renderTask')"
+| 子句 | 说明 |
+|---|---|
+| `--select-clause [select-clause]` | 返回每个实体的属性子集。 |
+| `--filter-clause [filter-clause]` | 仅返回与指定的 OData 表达式匹配的实体。 |
+| `--expand-clause [expand-clause]` | 通过单个基础 REST 调用获取实体信息。 expand 子句目前仅支持 `stats` 属性。 |
 
-Batch CLI 支持 Batch 服务所支持的所有三个子句：
+如需演示如何使用 OData 子句的示例脚本，请参阅[使用 Batch 运行作业和任务](./scripts/batch-cli-sample-run-job.md)。
 
-* `--select-clause [select-clause]` 返回每个实体的属性子集
-* `--filter-clause [filter-clause]` 返回与指定的 OData 表达式匹配的实体
-* `--expand-clause [expand-clause]` 通过一个基础 REST 调用获取实体信息。 expand 子句目前仅支持 `stats` 属性。
-
-有关这三个子句以及使用它们执行 list 查询的详细信息，请参阅 [Query the Azure Batch service efficiently](batch-efficient-list-queries.md)（有效查询 Azure Batch 服务）。
-
-## <a name="application-package-management"></a>应用程序包管理
-应用程序包提供将应用程序部署到池中计算节点的简化方式。 使用 Azure CLI 可以上载应用程序包、管理包版本，以及删除包。
-
-若要创建新应用程序并添加包版本，请执行以下操作：
-
-**创建** 应用程序：
-
-    azure batch application create "resgroup001" "batchaccount001" "MyTaskApplication"
-
-**添加** 应用程序包：
-
-    azure batch application package create "resgroup001" "batchaccount001" "MyTaskApplication" "1.10-beta3" package001.zip
-
-**激活** 包：
-
-    azure batch application package activate "resgroup001" "batchaccount001" "MyTaskApplication" "1.10-beta3" zip
-
-设置应用程序的**默认版本**：
-
-    azure batch application set "resgroup001" "batchaccount001" "MyTaskApplication" --default-version "1.10-beta3"
-
-### <a name="deploy-an-application-package"></a>部署应用程序包
-在创建新池时，可以指定一个或多个要部署的应用程序包。 如果创建池时指定包，该包将在节点加入池时部署到每个节点。 将节点重新启动或重置映像时，也会部署包。
-
-创建池时，请指定 `--app-package-ref` 选项，以便在池节点加入该池时，将应用程序包部署到这些节点。 `--app-package-ref` 选项接受可部署到计算节点的应用程序 ID 的分号分隔列表。
-
-    azure batch pool create --pool-id "pool001" --target-dedicated 1 --vm-size "small" --os-family "4" --app-package-ref "MyTaskApplication"
-
-使用命令行选项创建池时，目前无法指定要将*哪个*应用程序包版本部署到计算节点，例如“1.10-beta3”。 因此，在创建池之前，必须先使用 `azure batch application set [options] --default-version <version-id>` 指定应用程序的默认版本（请参阅上一部分）。 但是，如果在创建池时使用 [JSON 文件](#json-files)而不是命令行选项，则可以指定池的包版本。
-
-可以在[使用 Azure 批处理应用程序包部署应用程序](batch-application-packages.md)中找到有关应用程序包的详细信息。
-
-> [!IMPORTANT]
-> 若要使用应用程序包，必须 [将 Azure 存储帐户链接到](#linked-storage-account-autostorage) Batch 帐户。
-> 
-> 
-
-### <a name="update-a-pools-application-packages"></a>更新池的应用程序包
-若要更新分配给现有池的应用程序，请结合 `--app-package-ref` 选项发出 `azure batch pool set` 命令：
-
-    azure batch pool set --pool-id "pool001" --app-package-ref "MyTaskApplication2"
-
-若要将新应用程序包部署到已在现有池中的计算节点，必须将这些节点重新启动或重置映像：
-
-    azure batch node reboot --pool-id "pool001" --node-id "tvm-3105992504_1-20160930t164509z"
-
-> [!TIP]
-> 可以使用 `azure batch node list` 获取池中的节点列表及其节点 ID。
-> 
-> 
-
-请注意，在部署之前，必须事先配置使用默认版本的应用程序 (`azure batch application set [options] --default-version <version-id>`)。
+若要详细了解如何使用 OData 子句执行高效的列表查询，请参阅[高效查询 Azure Batch 服务](batch-efficient-list-queries.md)。
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
-本部分旨在提供排查 Azure CLI 问题时可以使用的资源。 这些资源不一定能解决所有问题，但可以帮助缩小排查范围，并提供帮助资源的链接。
+
+排查 Azure CLI 问题时，可以参考以下提示：
 
 * 使用 `-h` 获取任何 CLI 命令的 **帮助文本**
-* 使用 `-v` 和 `-vv` 显示 **verbose** 命令输出；`-vv` 表示“特别”详细，可显示实际的 REST 请求和响应。 使用这些开关可以方便地显示完整的错误输出。
-* 可以使用 `--json` 选项查看 **JSON 格式的命令输出**。 例如， `azure batch pool show "pool001" --json` 以 JSON 格式显示 pool001 的属性。 然后，可以复制并修改此输出，以便在 `--json-file` 中使用（请参阅本文前面的 [JSON 文件](#json-files) ）。
-* [MSDN 上的 Batch 论坛][batch_forum]是一个极佳的帮助资源，受到 Batch 团队成员的密切关注。 如果遇到问题或需要特定操作的帮助，请务必在这里发布问题。
-* Azure CLI 目前不一定支持所有的 Batch 资源操作。 例如，目前无法指定池的应用程序包 *版本* ，只能指定包 ID。 在这种情况下，可能需要为命令提供 `--json-file` ，而不是使用命令行选项。 请务必安装最新的 CLI 版本，获取将来所做的增强。
+* 使用 `-v` 和 `-vv` 显示**详细的**命令输出。 包括 `-vv` 标志时，Azure CLI 显示实际的 REST 请求和响应。 使用这些开关可以方便地显示完整的错误输出。
+* 可以使用 `--json` 选项查看 **JSON 格式的命令输出**。 例如， `az batch pool show pool001 --json` 以 JSON 格式显示 pool001 的属性。 然后，可以复制并修改此输出，以便在 `--json-file` 中使用（请参阅本文前面的 [JSON 文件](#json-files) ）。
+* [Batch 论坛][batch_forum]由 Batch 团队成员监管。 如果遇到问题或需要具体操作方面的帮助，可将问题发布到该论坛。
 
 ## <a name="next-steps"></a>后续步骤
-* 请参阅 [Application deployment with Azure Batch application packages](batch-application-packages.md) （使用 Azure Batch 应用程序包部署应用程序），了解如何使用此功能来管理和部署 Batch 计算节点上执行的应用程序。
-* 有关如何减少项数以及针对 Batch 查询返回的信息类型的详细信息，请参阅 [Query the Batch service efficiently](batch-efficient-list-queries.md) （有效查询 Batch 服务）。
 
-[batch_forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
+* 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
+* 有关 Batch 资源的详细信息，请参阅[适用于开发人员的 Azure Batch 概述](batch-api-basics.md)。
+* 请参阅 [Application deployment with Azure Batch application packages](batch-application-packages.md) （使用 Azure Batch 应用程序包部署应用程序），了解如何使用此功能来管理和部署 Batch 计算节点上执行的应用程序。
+
+[batch_forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx

@@ -1,5 +1,5 @@
 ---
-title: "将自定义域名添加到 Azure Active Directory 预览版 | Microsoft Docs"
+title: "将自定义域名添加到 Azure Active Directory | Microsoft Docs"
 description: "如何将公司域名添加到 Azure Active Directory，以及如何验证域名。"
 services: active-directory
 documentationcenter: 
@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: f1f3d6fa1ba29b0d43d29c7d9cccfc430fdd6f1e
-ms.openlocfilehash: 5153926f34961a397ef9632ca1f8ac868ba1986e
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 8f61e947d9667f5047729ac19dc2bf1e03a48c6b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="add-a-custom-domain-name-to-azure-active-directory-preview"></a>将自定义域名添加到 Azure Active Directory 预览版
+# <a name="add-a-custom-domain-name-to-azure-active-directory"></a>将自定义域名添加到 Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-domains-add-azure-portal.md)
 > * [Azure 经典门户](active-directory-add-domain.md)
 > 
-> 
 
-你的组织购买了一个或多个域名来开展业务，而你的用户将使用企业域名来登录你的企业网络。 使用 Azure Active Directory (Azure AD) 预览版时，也可以将企业域名添加到 Azure AD。 [预览包括哪些内容？](active-directory-preview-explainer.md) 如此一来，便可在目录中分配用户熟悉的用户名，例如“alice@contoso.com”。 过程很简单：
+你的组织购买了一个或多个域名来开展业务，而你的用户将使用企业域名来登录你的企业网络。 使用 Azure Active Directory (Azure AD) 时，也可以将企业域名添加到 Azure AD。 如此一来，便可在目录中分配用户熟悉的用户名，例如“alice@contoso.com”。 过程很简单：
 
 1. 将自定义域名添加到目录
 2. 在域名注册机构中为域名添加 DNS 条目

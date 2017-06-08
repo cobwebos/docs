@@ -15,10 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e391dc0f88bd7e065f968a490b3c1ddb1fa75978
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 312f84fe2aaf3f63fe2b8d818786ef1c570ccfe1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -51,7 +52,7 @@ ms.lasthandoff: 04/27/2017
 ### <a name="log-searches"></a>日志搜索
 [日志搜索](../log-analytics/log-analytics-log-searches.md)用于提取和分析 Log Analytics 存储库中的数据。  视图和警报可以使用日志搜索，用户也可以使用日志搜索对存储库中的数据进行临时分析。  
 
-如果你认为某些查询对用户有用，则应定义这些查询，即使视图或警报不使用这些查询。  这些查询将在门户中以“保存的搜索”形式提供给用户，你也可以将其添加到自定义视图的[“查询列表”可视化效果部件](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part)中。
+如果你认为某些查询对用户有用，则应定义这些查询，即使视图或警报不使用这些查询。  这些查询将在门户中以“保存的搜索”形式提供给用户，也可将其添加到自定义视图的[“查询列表”可视化效果部件](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part)。
 
 ### <a name="alerts"></a>警报
 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md)通过[日志搜索](#log-searches)来搜索存储库中的数据，从而确定问题。  警报会通知用户，或者自动运行某个操作作为响应。 你应该为应用程序确定不同的警报条件，并且让相应的警报规则包括在解决方案文件中。

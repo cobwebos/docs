@@ -15,10 +15,10 @@ ms.workload: data-services
 ms.date: 05/03/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 05c5476cbfd616ce47d6d93627c6e7dd4d8a0d6f
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6a5ec66172e7920a89ff8c0592224f01f19c9e41
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 05/03/2017
 
 | 标题 | 说明 |
 | --- | --- |
-| Power BI 输出通用版本 |[Power BI 输出](stream-analytics-power-bi-dashboard.md)现已正式发布。 已删除 Power BI 为期 90 天的授权期限。 有关需要续订授权的方案的详细信息，请参阅创建 Power BI 仪表板的“续订授权”[](stream-analytics-power-bi-dashboard.md#renew-authorization)部分。 |
+| Power BI 输出通用版本 |[Power BI 输出](stream-analytics-power-bi-dashboard.md)现已正式发布。 已删除 Power BI 为期 90 天的授权期限。 有关需要续订授权的方案的详细信息，请参阅创建 Power BI 仪表板的 [续订授权](stream-analytics-power-bi-dashboard.md#renew-authorization) 部分。 |
 
 ## <a name="notes-for-03032016-release-of-stream-analytics"></a>流分析 03/03/2016 版说明
 此版本包含以下更新。
@@ -85,7 +85,7 @@ ms.lasthandoff: 05/03/2017
 | --- | --- |
 | Azure IoT 套件公共预览版 |流分析包含在 Azure IoT 套件的公共预览版中。 |
 | Azure 门户集成 |除了在 Azure 管理门户中继续存在，流分析现在还集成在 [Azure 门户](https://azure.microsoft.com/overview/preview-portal/)中。 请注意，预览版门户中的流分析功能当前是 Azure 管理门户中所提供功能的子集，不支持以下操作：浏览器内的查询测试、Power BI 输出配置，以及浏览或创建订阅中具有访问权限的新输入和输出资源。 |
-| 支持 DocumentDB 输出 |流分析作业现在可以输出到 [DocumentDB](https://azure.microsoft.com/services/documentdb/)。 |
+| 支持 Cosmos DB 输出 |流分析作业现在可以输出到 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)。 |
 | 支持 IoT 中心输入 |流分析作业现在可以采集来自 IoT 中心的数据。 |
 | 用于异类事件的 TIMESTAMP BY |当单个数据流中包含多个其时间戳在不同字段中的事件类型时，你现在可以对表达式使用 [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx)，以便为每个用例指定不同时间戳字段。 |
 
