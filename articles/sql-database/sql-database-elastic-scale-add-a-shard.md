@@ -8,16 +8,18 @@ author: ddove
 editor: 
 ms.assetid: 62a349db-bebe-406f-a120-2f1986f2b286
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 540ef8379145b764d0926649095db57fddb27329
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -77,10 +79,5 @@ ms.openlocfilehash: 540ef8379145b764d0926649095db57fddb27329
 **重要说明**：仅当你确定所更新映射的范围为空时，才使用此方法。  上述方法不会在数据中检查要移动的范围，因此最好在代码中包含检查操作。  如果要移动的范围中存在行，则实际数据分发将不匹配更新的分片映射。 在这种情况下，请改用[拆分 / 合并工具](sql-database-elastic-scale-overview-split-and-merge.md)来执行操作。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

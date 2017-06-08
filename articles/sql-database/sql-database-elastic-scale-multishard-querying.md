@@ -8,16 +8,18 @@ author: torsteng
 editor: 
 ms.assetid: a4379c15-f213-4026-ab6f-a450ee9d5758
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2016
 ms.author: torsteng
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 873df52da976597ddfaa8f777b90382bfa7723fc
 ms.openlocfilehash: aa54ec3d982ea4422422bd4e520d2211aad57159
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -75,10 +77,5 @@ ms.openlocfilehash: aa54ec3d982ea4422422bd4e520d2211aad57159
 **[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient.aspx)** 类和方法。
 
 使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)管理分片。 包括名为 [Microsoft.Azure.SqlDatabase.ElasticScale.Query](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.aspx) 的命名空间，你可以通过该空间使用单个查询和结果来查询多个分片。 它提供对分片集合进行查询抽象的功能。 它还提供了备用执行策略，尤其是部分结果，以处理在对多个分片进行查询时所出现的故障。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

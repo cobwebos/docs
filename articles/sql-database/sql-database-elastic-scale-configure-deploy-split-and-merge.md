@@ -8,16 +8,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 9a993c0f-7052-46cd-aa59-073bea8d535a
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7a702354de137e1bca033146626dad1ca53fd3ed
 ms.openlocfilehash: b644ef0a8da726b2b23a4bfc81516c112be2de2e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -342,10 +344,5 @@ ms.openlocfilehash: b644ef0a8da726b2b23a4bfc81516c112be2de2e
 [3]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/staging.png
 [4]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/upload.png
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
