@@ -1,23 +1,24 @@
 ---
 title: "使用 Azure 门户创建 SQL 数据库警报 | Microsoft 文档"
 description: "使用 Azure 门户创建 SQL 数据库警报，可在满足指定条件时触发通知或自动化。"
-author: aamalvea
+author: CarlRabeler
 manager: jhubbard
 editor: 
 services: sql-database
 documentationcenter: 
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: monitor & manage
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
-ms.author: aamalvea
-translationtype: Human Translation
+ms.author: carlrab
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2679681c77dd6a3410bbe6ddbcf562924b13bfe6
 ms.openlocfilehash: afa21052281200768db24ce35a94097f23f23efe
+ms.contentlocale: zh-cn
 ms.lasthandoff: 11/17/2016
 
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 11/17/2016
 
 ## <a name="sql-database-alert-values-and-thresholds"></a>SQL 数据库警报值和阈值
 
-| 资源类型    | 指标名称 | 友好名称 | 聚合类型 | 最小警报时间窗口|
+| 资源类型 | 指标名称 | 友好名称 | 聚合类型 | 最小警报时间窗口|
 | --- | --- | --- | --- | --- |
 | SQL 数据库 | cpu_percent | CPU 百分比 | 平均值 | 5 分钟 |
 | SQL 数据库 | physical_data_read_percent | 数据 IO 百分比 | 平均值 | 5 分钟 |
@@ -91,7 +92,7 @@ ms.lasthandoff: 11/17/2016
 | SQL 数据库 | sessions_percent | 会话百分比 | 平均值 | 5 分钟 |
 | SQL 数据库 | dtu_limit | DTU 限制 | 平均值 | 5 分钟 |
 | SQL 数据库 | dtu_used | 已用的 DTU | 平均值 | 5 分钟 |
-||||||               
+||||||           
 | SQL 数据仓库 | cpu_percent | CPU 百分比 | 平均值 | 10 分钟 |
 | SQL 数据仓库 | physical_data_read_percent | 数据 IO 百分比 | 平均值 | 10 分钟 |
 | SQL 数据仓库 | storage | 数据库总大小 | 最大值 | 10 分钟 |
@@ -102,7 +103,7 @@ ms.lasthandoff: 11/17/2016
 | SQL 数据仓库 | dwu_limit | dwu 限制 | 最大值 | 10 分钟 |
 | SQL 数据仓库 | dwu_consumption_percent | DWU 百分比 | 平均值 | 10 分钟 |
 | SQL 数据仓库 | dwu_used | 已用的 DWU | 平均值 | 10 分钟 |
-||||||                     
+||||||               
 | 弹性池 | cpu_percent | CPU 百分比 | 平均值 | 5 分钟 |
 | 弹性池 | physical_data_read_percent | 数据 IO 百分比 | 平均值 | 5 分钟 |
 | 弹性池 | log_write_percent | 日志 IO 百分比 | 平均值 | 5 分钟 |

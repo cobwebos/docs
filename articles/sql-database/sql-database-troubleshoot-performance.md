@@ -9,17 +9,18 @@ editor:
 keywords: "sql 性能优化, 数据库性能优化, sql 性能优化提示, sql 数据库性能优化"
 ms.assetid: eb7b3f66-3b33-4e1b-84fb-424a928a6672
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: monitor & manage
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: v-shysun
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: faf2d9632462c434c38dc9c2d65f7c9e58f801d8
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 984adf244596578a3301719e5ac2f68a841153bf
+ms.openlocfilehash: 3bfcaf4ae29d23754a19a61f2775d1b12e3e69ba
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -39,6 +40,6 @@ ms.lasthandoff: 04/20/2017
 
 ## <a name="steps-to-improve-database-performance-with-more-resources"></a>使用更多资源提高数据库性能的步骤
 1. 对于独立数据库，可以根据需要[更改服务层](sql-database-service-tiers.md)以提高数据库性能。
-2. 对于多个数据库，请考虑使用[弹性池](sql-database-elastic-pool.md)自动缩放资源。
+2. 对于多个数据库，请考虑使用[弹性池](sql-database-elastic-pool-guidance.md)自动缩放资源。
 
 
